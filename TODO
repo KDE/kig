@@ -1,7 +1,4 @@
 * reimplement
-- CoordinatePropertyPoint -> just give PropertyObject a bool shown ?
-  this results in a problem with isInternal(), I think..  maybe a
-  CopyImpObjectType is better..
 - rmb menu's
 
 * simple:
