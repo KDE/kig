@@ -81,8 +81,10 @@ ConstructibleAction::~ConstructibleAction()
 {
 }
 
-ConstructibleAction::ConstructibleAction( ObjectConstructor* ctor )
-  : GUIAction(), mctor( ctor )
+ConstructibleAction::ConstructibleAction(
+  ObjectConstructor* ctor,
+  const char* actionname )
+  : GUIAction(), mctor( ctor ), mactionname( actionname )
 {
 }
 
@@ -109,14 +111,13 @@ void ConstructibleAction::act( KigDocument& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigDocument& doc,
-                            KActionCollection* parent,
-                            const char* actionname )
+                            KActionCollection* parent )
   : KAction( act->descriptiveName(),
              KGlobal::instance()->iconLoader()->loadIconSet(
                act->iconFileName(), KIcon::User ),
              act->shortcut(),
              0, 0,              // no slot connection
-             parent, actionname ),
+             parent, act->actionName() ),
   mact( act ),
   mdoc( doc )
 {
@@ -127,4 +128,14 @@ KigGUIAction::KigGUIAction( GUIAction* act,
 void KigGUIAction::slotActivated()
 {
   mact->act( mdoc );
+}
+
+const char* CircleByCenterAndRadiusAction::actionName() const
+{
+  return "objects_new_circlebcr";
+}
+
+const char* ConstructibleAction::actionName() const
+{
+  return mactionname;
 }

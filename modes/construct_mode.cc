@@ -77,7 +77,7 @@ void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
   }
 }
 
-void ConstructMode::rightClicked( const Objects& oco, const QPoint& p, KigWidget& w )
+void ConstructMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
 {
   // TODO ?
 }

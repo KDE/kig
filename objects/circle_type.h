@@ -19,7 +19,7 @@
 #ifndef KIG_NW_OBJECTS_CIRCLE_TYPE_H
 #define KIG_NW_OBJECTS_CIRCLE_TYPE_H
 
-#include "line_type.h"
+#include "base_type.h"
 
 class CircleBCPType
   : public ObjectABType
@@ -33,6 +33,19 @@ public:
              const Coordinate& ) const;
 
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+};
+
+class CircleBTPType
+  : public ObjectABCType
+{
+  CircleBTPType();
+  ~CircleBTPType();
+public:
+  static const CircleBCPType* instance();
+
+  ObjectImp* calc( const Coordinate& a,
+                   const Coordinate& b,
+                   const Coordinate& c ) const;
 };
 
 #endif

@@ -1,4 +1,4 @@
-// object_constructor_list.h
+// builtin_stuff.h
 // Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,30 +16,9 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_MISC_OBJECT_CONSTRUCTOR_LIST_H
-#define KIG_MISC_OBJECT_CONSTRUCTOR_LIST_H
+#ifndef KIG_MISC_BUILTIN_STUFF_H
+#define KIG_MISC_BUILTIN_STUFF_H
 
-#include <vector>
-
-class ObjectConstructor;
-class Objects;
-class KigDocument;
-class KigWidget;
-
-class ObjectConstructorList
-{
-public:
-  typedef std::vector<ObjectConstructor*> vectype;
-private:
-  vectype mctors;
-  ObjectConstructorList();
-  ~ObjectConstructorList();
-public:
-  static ObjectConstructorList* instance();
-  void add( ObjectConstructor* a );
-  vectype ctorsThatWantArgs( const Objects&, const KigDocument&,
-                             const KigWidget&, bool completeOnly = false
-    ) const;
-};
+void setupBuiltinStuff();
 
 #endif

@@ -44,3 +44,17 @@ void CircleBCPType::move( Object*, const Coordinate&,
                           const Coordinate& ) const
 {
 }
+
+CircleBCPType::CircleBCPType()
+{
+}
+
+CircleBCPType::~CircleBCPType()
+{
+}
+
+const CircleBCPType* CircleBCPType::instance()
+{
+  static CircleBCPType t;
+  return &t;
+}

@@ -21,8 +21,6 @@
 #include "object_constructor.h"
 #include "i18n.h"
 
-#include "../objects/line_type.h"
-
 ObjectConstructorList::ObjectConstructorList()
 {
 }
@@ -56,33 +54,4 @@ ObjectConstructorList::vectype ObjectConstructorList::ctorsThatWantArgs(
 void ObjectConstructorList::add( ObjectConstructor* a )
 {
   mctors.push_back( a );
-}
-
-void ObjectConstructorList::setupBuiltinTypes()
-{
-  add( new SimpleObjectTypeConstructor(
-         SegmentABType::instance(),
-         I18N_NOOP( "Segment" ),
-         I18N_NOOP( "A segment constructed from its start and end point" ),
-         "segment" ) );
-  add( new SimpleObjectTypeConstructor(
-         LineABType::instance(),
-         I18N_NOOP( "Line by Two Points" ),
-         I18N_NOOP( "A line constructed through two points"),
-         "line" ) );
-  add( new SimpleObjectTypeConstructor(
-         RayABType::instance(),
-         I18N_NOOP( "Ray" ),
-         I18N_NOOP( "A ray by its start point, and another point somewhere on it." ),
-         "ray" ) );
-  add( new SimpleObjectTypeConstructor(
-         LinePerpendLPType::instance(),
-         I18N_NOOP( "Perpendicular" ),
-         I18N_NOOP( "A line constructed through a point, perpendicular on another line or segment." ),
-         "perpendicular" ) );
-  add( new SimpleObjectTypeConstructor(
-         LineParallelLPType::instance(),
-         I18N_NOOP( "Parallel" ),
-         I18N_NOOP( "A line constructed through a point, and parallel to another line or segment" ),
-         "parallel" ) );
 }

@@ -35,8 +35,7 @@ class KigGUIAction
 public:
   KigGUIAction( GUIAction* act,
                 KigDocument& doc,
-                KActionCollection* parent,
-                const char* actionname );
+                KActionCollection* parent );
   void slotActivated();
 };
 
@@ -48,7 +47,7 @@ public:
   virtual QString description() const = 0;
   virtual QCString iconFileName() const = 0;
   virtual QString descriptiveName() const = 0;
-  virtual QCString actionName() const = 0;
+  virtual const char* actionName() const = 0;
   virtual int shortcut() const;
   virtual void act( KigDocument& ) = 0;
 };
@@ -59,13 +58,14 @@ class ConstructibleAction
   : public GUIAction
 {
   ObjectConstructor* mctor;
+  const char* mactionname;
 public:
-  ConstructibleAction( ObjectConstructor* ctor );
+  ConstructibleAction( ObjectConstructor* ctor, const char* actionname );
   ~ConstructibleAction();
   QString description() const;
   QCString iconFileName() const;
   QString descriptiveName() const;
-  QCString actionName() const;
+  const char* actionName() const;
   void act( KigDocument& );
 };
 
@@ -76,7 +76,7 @@ public:
   QString description() const;
   QCString iconFileName() const;
   QString descriptiveName() const;
-  QCString actionName() const;
+  const char* actionName() const;
   void act( KigDocument& );
 };
 
