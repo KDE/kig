@@ -86,6 +86,6 @@ void MacroWizard::accept()
 
 void MacroWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( QString::fromLatin1( "defining_macros"),
+  kapp->invokeHelp( QString::fromLatin1( "defining-macros"),
                     QString::fromLatin1( "kig" ) );
 }
