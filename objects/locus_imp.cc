@@ -53,7 +53,7 @@ bool LocusImp::contains( const Coordinate&, int, const ScreenInfo& ) const
   return false;
 }
 
-bool LocusImp::inRect( const Rect& ) const
+bool LocusImp::inRect( const Rect&, int, const ScreenInfo& ) const
 {
   // TODO ?
   return false;

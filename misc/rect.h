@@ -39,7 +39,7 @@ public:
    */
   Rect( const Coordinate bottomLeft, const Coordinate topRight );
   Rect( const Coordinate bottomLeft, const double width, const double height );
-  Rect( int xa, int ya, int xb, int yb );
+  Rect( double xa, double ya, double width, double height );
   Rect( const Rect& r );
   Rect();
 
@@ -102,6 +102,7 @@ public:
   double width() const;
   double height() const;
   bool contains( const Coordinate& p ) const;
+  bool contains( const Coordinate& p, double allowed_miss ) const;
   bool intersects( const Rect& p ) const;
   Rect normalized() const;
   friend kdbgstream& operator<<( kdbgstream& s, const Rect& t );

@@ -41,9 +41,10 @@ bool PointImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) 
   return (p - mc).length() - twidth*si.pixelWidth() < 0;
 }
 
-bool PointImp::inRect( const Rect& r ) const
+bool PointImp::inRect( const Rect& r, int width, const ScreenInfo& si ) const
 {
-  return r.contains( mc );
+  double am = si.normalMiss( width );
+  return r.contains( mc, am );
 }
 
 const uint PointImp::numberOfProperties() const

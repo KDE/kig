@@ -18,6 +18,8 @@
 
 #include "object_type_factory.h"
 
+#include "object_type.h"
+
 #include "circle_type.h"
 #include "conic_types.h"
 #include "cubic_type.h"
@@ -29,6 +31,8 @@
 #include "custom_types.h"
 
 #include <qdom.h>
+
+#include <string>
 
 ObjectTypeFactory::ObjectTypeFactory()
   : malreadysetup( false )

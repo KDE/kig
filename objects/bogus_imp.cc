@@ -31,7 +31,7 @@ bool BogusImp::contains( const Coordinate&, int, const ScreenInfo& ) const
   return false;
 }
 
-bool BogusImp::inRect( const Rect& ) const
+bool BogusImp::inRect( const Rect&, int, const ScreenInfo& ) const
 {
   return false;
 }

@@ -26,7 +26,8 @@
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 
-#include <math.h>
+#include <cmath>
+using namespace std;
 
 AngleImp::~AngleImp()
 {
@@ -54,17 +55,17 @@ bool AngleImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) 
 {
   double radius = 50*si.pixelWidth();
 
-  if ( std::fabs( (p-mpoint).length() - radius ) > si.normalMiss( width ) )
+  if ( fabs( (p-mpoint).length() - radius ) > si.normalMiss( width ) )
     return false;
 
   // and next we check if the angle is appropriate...
   Coordinate vect = p - mpoint;
-  double angle = std::atan2( vect.y, vect.x );
+  double angle = atan2( vect.y, vect.x );
   while ( angle < mstartangle ) angle += 2*M_PI;
   return angle <= mstartangle + mangle;
 }
 
-bool AngleImp::inRect( const Rect& r ) const
+bool AngleImp::inRect( const Rect& r, int, const ScreenInfo& ) const
 {
   // TODO ?
   return r.contains( mpoint );
@@ -147,7 +148,7 @@ bool VectorImp::contains( const Coordinate& o, int width, const ScreenInfo& si )
   return isOnSegment( o, ma, mb, si.normalMiss( width ) );
 }
 
-bool VectorImp::inRect( const Rect& ) const
+bool VectorImp::inRect( const Rect&, int, const ScreenInfo& ) const
 {
   // TODO ?
   return false;

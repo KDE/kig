@@ -77,7 +77,7 @@ bool CubicImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) 
   return false;
 }
 
-bool CubicImp::inRect( const Rect& ) const
+bool CubicImp::inRect( const Rect&, int, const ScreenInfo& ) const
 {
   // TODO ?
   return false;

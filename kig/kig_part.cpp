@@ -399,13 +399,13 @@ Objects KigDocument::whatAmIOn(const Coordinate& p, const ScreenInfo& si ) const
   return tmp;
 }
 
-Objects KigDocument::whatIsInHere( const Rect& p )
+Objects KigDocument::whatIsInHere( const Rect& p, const ScreenInfo& si )
 {
   Objects tmp;
   Objects nonpoints;
   for ( Objects::iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-   if(! (*i)->inRect( p ) || !(*i)->shown() || ! (*i)->valid() ) continue;
+    if(! (*i)->inRect( p, si ) || !(*i)->shown() || ! (*i)->valid() ) continue;
     if ((*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
     else nonpoints.push_back( *i );
   };
@@ -415,9 +415,9 @@ Objects KigDocument::whatIsInHere( const Rect& p )
 
 Rect KigDocument::suggestedRect() const
 {
-  if( mObjs.empty() ) return Rect( -7, -7, 7, 7 );
+  if( mObjs.empty() ) return Rect( -7., -7., 14., 14. );
   bool rectInited = false;
-  Rect r(0,0,0,0);
+  Rect r(0.,0.,0.,0.);
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
     if ( (*i)->hasimp( ObjectImp::ID_PointImp ) && (*i)->shown() )

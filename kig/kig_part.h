@@ -134,7 +134,7 @@ public:
   // what objects are under point p
   Objects whatAmIOn( const Coordinate& p, const ScreenInfo& si ) const;
 
-  Objects whatIsInHere( const Rect& p );
+  Objects whatIsInHere( const Rect& p, const ScreenInfo& );
 
   // a rect containing most of the objects, which would be a fine
   // suggestion to mapt to the widget...

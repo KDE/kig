@@ -44,7 +44,7 @@ void DragRectMode::moved( const QPoint& p, KigWidget& w )
 void DragRectMode::released( const QPoint& p, KigWidget& w, bool nc )
 {
   const Rect r =  w.fromScreen( QRect( mstart, p ) );
-  mret = mdoc.whatIsInHere( r );
+  mret = mdoc.whatIsInHere( r, w.screenInfo() );
   mnc = nc;
 
   mdoc.doneMode( this );

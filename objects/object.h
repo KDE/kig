@@ -58,7 +58,7 @@ public:
 
   virtual void draw( KigPainter& p, bool showSelection ) const = 0;
   virtual bool contains( const Coordinate& p, const ScreenInfo& si ) const = 0;
-  virtual bool inRect( const Rect& r ) const = 0;
+  virtual bool inRect( const Rect& r, const ScreenInfo& si ) const = 0;
 
   virtual bool canMove() const = 0;
   virtual void move( const Coordinate& from, const Coordinate& dist ) = 0;
@@ -151,7 +151,7 @@ public:
 
   void draw( KigPainter& p, bool showSelection ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
-  bool inRect( const Rect& r ) const;
+  bool inRect( const Rect& r, const ScreenInfo& si ) const;
 
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist );
@@ -198,7 +198,7 @@ public:
 
   void draw( KigPainter& p, bool showSelection ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
-  bool inRect( const Rect& r ) const;
+  bool inRect( const Rect& r, const ScreenInfo& ) const;
 
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist );
@@ -229,7 +229,7 @@ public:
 
   void draw( KigPainter& p, bool showSelection ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
-  bool inRect( const Rect& r ) const;
+  bool inRect( const Rect& r, const ScreenInfo& ) const;
 
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist );

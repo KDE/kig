@@ -55,9 +55,9 @@ bool RealObject::contains( const Coordinate& p, const ScreenInfo& si ) const
   return mimp->contains( p, mwidth, si );
 }
 
-bool RealObject::inRect( const Rect& r ) const
+bool RealObject::inRect( const Rect& r, const ScreenInfo& si ) const
 {
-  return mimp->inRect( r );
+  return mimp->inRect( r, mwidth, si );
 }
 
 void RealObject::move( const Coordinate& from, const Coordinate& dist )
@@ -250,7 +250,7 @@ bool DataObject::contains( const Coordinate&, const ScreenInfo& ) const
   return false;
 }
 
-bool DataObject::inRect( const Rect& ) const
+bool DataObject::inRect( const Rect&, const ScreenInfo& ) const
 {
   return false;
 }
@@ -400,7 +400,7 @@ bool PropertyObject::contains( const Coordinate&, const ScreenInfo& ) const
   return false;
 }
 
-bool PropertyObject::inRect( const Rect& ) const
+bool PropertyObject::inRect( const Rect&, const ScreenInfo& ) const
 {
   return false;
 }

@@ -51,7 +51,7 @@ bool TextImp::contains( const Coordinate& p, int, const ScreenInfo& ) const
   return mboundrect.contains( p );
 }
 
-bool TextImp::inRect( const Rect& r ) const
+bool TextImp::inRect( const Rect& r, int, const ScreenInfo& ) const
 {
   return mboundrect.intersects( r );
 }

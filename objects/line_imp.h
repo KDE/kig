@@ -38,7 +38,7 @@ public:
   AbstractLineImp( const Coordinate& a, const Coordinate& b );
   ~AbstractLineImp();
 
-  bool inRect( const Rect& r ) const;
+  bool inRect( const Rect& r, int width, const ScreenInfo& si ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;

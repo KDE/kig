@@ -67,7 +67,7 @@ bool ConicImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) 
   return fabs( len - rho ) <= si.normalMiss( width );
 }
 
-bool ConicImp::inRect( const Rect& ) const
+bool ConicImp::inRect( const Rect&, int, const ScreenInfo& ) const
 {
   // TODO
   return false;

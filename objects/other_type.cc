@@ -26,7 +26,7 @@
 
 #include <functional>
 #include <algorithm>
-#include <math.h>
+#include <cmath>
 
 static const char* constructanglethroughpoint =
   I18N_NOOP( "Construct an angle through this point" );
@@ -68,8 +68,8 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
   lvect = lvect.normalize();
   rvect = rvect.normalize();
 
-  double startangle = std::atan2( lvect.y, lvect.x );
-  double endangle = std::atan2( rvect.y, rvect.x );
+  double startangle = atan2( lvect.y, lvect.x );
+  double endangle = atan2( rvect.y, rvect.x );
   double anglelength = endangle - startangle;
   if ( anglelength < 0 ) anglelength += 2* M_PI;
   if ( startangle < 0 ) startangle += 2*M_PI;

@@ -66,10 +66,43 @@ bool CircleImp::contains( const Coordinate& p, int width, const ScreenInfo& si )
   return fabs((mcenter - p).length() - mradius) <= si.normalMiss( width );
 }
 
-bool CircleImp::inRect( const Rect& ) const
+bool CircleImp::inRect( const Rect& r, int width, const ScreenInfo& si ) const
 {
-  // TODO..
-  return false;
+  // we allow a miss of some pixels ..
+  double miss = si.normalMiss( width );
+  double bigradius = mradius + miss;
+  bigradius *= bigradius;
+  double smallradius = mradius - miss;
+  smallradius *= smallradius;
+
+  const int in = -1;
+  const int undecided = 0;
+  const int out = 1;
+
+  int inorout = undecided;
+
+  Coordinate coords[4];
+  coords[0] = r.topLeft();
+  coords[1] = r.topRight();
+  coords[2] = r.bottomRight();
+  coords[3] = r.bottomLeft();
+
+  // we check if the corners of the rect are either
+  for ( Coordinate* i = coords; i < coords + 4; ++i )
+  {
+    double t = ( *i - mcenter ).squareLength();
+    if ( t >= bigradius )
+    {
+      if ( inorout == in ) return true;
+      inorout = out;
+    }
+    else if ( t <= smallradius )
+    {
+      if ( inorout == out ) return true;
+      inorout = in;
+    }
+  }
+  return inorout == undecided;
 }
 
 bool CircleImp::valid() const

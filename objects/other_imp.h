@@ -38,7 +38,7 @@ public:
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
-  bool inRect( const Rect& r ) const;
+  bool inRect( const Rect& r, int width, const ScreenInfo& si ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
@@ -67,7 +67,7 @@ public:
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
-  bool inRect( const Rect& r ) const;
+  bool inRect( const Rect& r, int width, const ScreenInfo& si ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
