@@ -435,7 +435,7 @@ const KigDocument& KigWidget::document() const
 
 QSize KigWidget::sizeHint() const
 {
-  return QSize( 600, 400 );
+  return QSize( 630, 450 );
 }
 
 void KigWidget::wheelEvent( QWheelEvent* e )
