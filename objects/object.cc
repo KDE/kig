@@ -30,8 +30,8 @@
 
 RealObject::RealObject( const ObjectType* type, const Objects& parents )
   : ObjectWithParents( parents ),
-    mcolor( Qt::blue ), mselected( false ), mshown( true ), mwidth( 1 ), mtype( type ),
-    mimp( 0 )
+    mcolor( Qt::blue ), mselected( false ), mshown( true ),
+    mwidth( 1 ), mtype( type ), mimp( 0 )
 {
 }
 
@@ -77,7 +77,7 @@ void ObjectWithParents::calc()
 
 void RealObject::reset( const ObjectType* t, const Objects& parents )
 {
-  mtype = t;
+  setType( t );
   setParents( parents );
 }
 
@@ -171,11 +171,13 @@ void Object::delChild( Object* o )
 void ObjectWithParents::addParent( Object* o )
 {
   mparents.upush( o );
+  o->addChild( this );
 }
 
 void ObjectWithParents::delParent( Object* o )
 {
   mparents.remove( o );
+  o->delChild( this );
 }
 
 void ObjectWithParents::setParents( const Objects& parents )
@@ -357,4 +359,9 @@ bool RealObject::shown() const
 bool DataObject::shown() const
 {
   return false;
+}
+
+void RealObject::setType( const ObjectType* t )
+{
+  mtype = t;
 }

@@ -161,6 +161,7 @@ public:
   const ObjectType* type() const;
   void setImp( ObjectImp* i );
   void reset( const ObjectType* t, const Objects& parents );
+  void setType( const ObjectType* t );
 
   QColor color() const { return mcolor; };
   void setColor( const QColor c ) { mcolor = c; };
