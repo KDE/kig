@@ -54,6 +54,7 @@ TextLabelConstructionMode::TextLabelConstructionMode( KigDocument& d )
     KigWidget* w = widgets[i];
     w->setCursor( KCursor::crossCursor() );
   };
+  mwiz = new TextLabelWizard( d.widgets()[0], this );
 }
 
 void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
@@ -78,13 +79,7 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
   case SelectingLocation:
   {
     if ( ( mplc - e->pos() ).manhattanLength() > 4 ) return;
-    mcoord = v->fromScreen( mplc );
-    mwiz = new TextLabelWizard( v, this );
-    mwawd = RequestingText;
-    updateWiz();
-    mwiz->show();
-    // shouldn't be necessary, but seems to be anyway.. :(
-    updateWiz();
+    setCoordinate( v->fromScreen( mplc ) );
     break;
   }
   case RequestingText:
@@ -236,6 +231,7 @@ void TextLabelConstructionMode::updateWiz()
   if ( mlpc > percentcount )
   {
     delete_all( margs.begin() + percentcount, margs.end() );
+    margs.clear();
     margs.resize( percentcount );
   }
   else if ( mlpc < percentcount )
@@ -347,4 +343,23 @@ void TextLabelConstructionMode::objectsAdded()
     w->redrawScreen();
     w->updateScrollBars();
   };
+}
+
+void TextLabelConstructionMode::setCoordinate( const Coordinate& coord )
+{
+  mcoord = coord;
+  if ( mwawd == SelectingLocation )
+  {
+    mwawd = RequestingText;
+    updateWiz();
+    mwiz->show();
+    // shouldn't be necessary, but seems to be anyway.. :(
+    updateWiz();
+  };
+}
+
+void TextLabelConstructionMode::setText( const QString& s )
+{
+  mtext = s;
+  updateWiz();
 }

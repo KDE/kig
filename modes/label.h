@@ -33,6 +33,40 @@ class PropertyObject;
 class TextLabelConstructionMode
   : public KigMode
 {
+public:
+//protected:
+  // the protected interface for subclasses
+  TextLabelConstructionMode( KigDocument& d );
+  ~TextLabelConstructionMode();
+
+  void setCoordinate( const Coordinate& coord );
+  void setText( const QString& s );
+
+private:
+  // the KigMode interface..
+  void leftClicked( QMouseEvent*, KigWidget* );
+  void leftReleased( QMouseEvent*, KigWidget* );
+
+  void mouseMoved( QMouseEvent*, KigWidget* );
+
+  void enableActions();
+
+  void cancelConstruction();
+
+  void killMode();
+
+public:
+  // below is the interface towards TextLabelWizard...
+  void cancelPressed();
+  void finishPressed();
+  void enterTextPageEntered();
+  void selectArgumentsPageEntered();
+  void labelTextChanged();
+  void linkClicked( int );
+  void objectsAdded();
+private:
+  // private stuff..
+
   // point last clicked..
   QPoint mplc;
 
@@ -59,31 +93,8 @@ class TextLabelConstructionMode
 
   void updateWiz();
   void updateLinksLabel();
-
-public:
-  TextLabelConstructionMode( KigDocument& d );
-  ~TextLabelConstructionMode();
-
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
-
-  void mouseMoved( QMouseEvent*, KigWidget* );
-
-  void enableActions();
-
-  void cancelConstruction();
-
-  void killMode();
-
-public:
-  // below is the interface towards TextLabelWizard...
-  void cancelPressed();
-  void finishPressed();
-  void enterTextPageEntered();
-  void selectArgumentsPageEntered();
-  void labelTextChanged();
-  void linkClicked( int );
-  void objectsAdded();
 };
+
+
 
 #endif
