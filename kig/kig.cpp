@@ -112,7 +112,11 @@ void Kig::setupActions()
   m_recentFilesAction->loadEntries(config);
   delete config;
 
+#if KDE_IS_VERSION( 3, 2, 90 )
+  KStdAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
+#else
   KStdAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
+#endif
   KStdAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
 }
 
@@ -172,10 +176,14 @@ void Kig::openURL(const KURL& url)
 
 void Kig::optionsConfigureKeys()
 {
+#if KDE_IS_VERSION( 3, 2, 90 )
+  assert( false );
+#else
   KKeyDialog dlg( true, this );
   dlg.insert( actionCollection() );
   dlg.insert( m_part->actionCollection() );
   (void) dlg.configure( true );
+#endif
 }
 
 void Kig::optionsConfigureToolbars()

@@ -1,3 +1,8 @@
+2004-05-23  Dominique Devriese  <devriese@kde.org>
+
+	* replace the custom configureShortcuts code with the standard KDE
+	one if the user is running HEAD.
+
 2004-05-18  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Move ArcBTPType from other_type.* into arc_type.*.

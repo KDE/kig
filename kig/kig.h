@@ -126,7 +126,9 @@ class Kig : public KParts::MainWindow
   void optionsShowToolbar();
   void optionsShowStatusbar();
 // #endif
+// #if KDE_IS_VERSION( 3, 2, 90 )
   void optionsConfigureKeys();
+// #endif
   void optionsConfigureToolbars();
 
   void applyNewToolbarConfig();
