@@ -1,33 +1,33 @@
 <!DOCTYPE KigDocument>
-<KigDocument Version="2.0.000" >
+<KigDocument Version="0.5" >
  <ObjectHierarchy>
   <HierarchyElement given="false" typeName="NormalPoint" id="1" final="true" >
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >4.31803</param>
-   <param name="y" >2.90586</param>
+   <param name="x" >9.99611</param>
+   <param name="y" >9.67971</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="NormalPoint" id="2" final="true" >
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >3.15477</param>
-   <param name="y" >-0.191616</param>
+   <param name="x" >9.87621</param>
+   <param name="y" >-10.0286</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="NormalPoint" id="3" final="true" >
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >1.07004</param>
-   <param name="y" >4.55739</param>
+   <param name="x" >-1.32073</param>
+   <param name="y" >12.7259</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="NormalPoint" id="4" final="true" >
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >-1.76131</param>
-   <param name="y" >2.8929</param>
+   <param name="x" >-9.63092</param>
+   <param name="y" >9.86598</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="LineTTP" id="5" final="true" >
    <parent id="4" />
@@ -39,8 +39,8 @@
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >-1.36085</param>
-   <param name="y" >-0.373571</param>
+   <param name="x" >-10.4258</param>
+   <param name="y" >-10.3351</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="LineTTP" id="7" final="true" >
    <parent id="4" />

@@ -1,1 +1,1 @@
-noinst_DATA=locustest.kig locustest2.kig macrotest.kig conic5pt.kigt test.kgeo
+noinst_DATA=locustest.kig test.kgeo macro.kigt
