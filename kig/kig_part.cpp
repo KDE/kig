@@ -213,7 +213,7 @@ void KigDocument::setupActions()
   a = KStdAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
-  a->setIcon( "new" );
+  a->setIconSet( QIconSet( l->loadIcon( "view_fit_to_page", KIcon::User ) ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
