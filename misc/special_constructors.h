@@ -62,31 +62,6 @@ public:
   bool isTransform() const;
 };
 
-class ConicConicIntersectionConstructor
-  : public StandardConstructorBase
-{
-protected:
-  ArgsParser mparser;
-public:
-  ConicConicIntersectionConstructor();
-  ~ConicConicIntersectionConstructor();
-
-  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                   const KigDocument& ) const;
-  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
-  void plug( KigPart* doc, KigGUIAction* kact );
-
-  bool isTransform() const;
-};
-
-class ConicLineIntersectionConstructor
-  : public MultiObjectTypeConstructor
-{
-public:
-  ConicLineIntersectionConstructor();
-  ~ConicLineIntersectionConstructor();
-};
-
 class GenericIntersectionConstructor
   : public MergeObjectConstructor
 {

@@ -233,6 +233,18 @@ bool isOnRay( const Coordinate& o, const Coordinate& a,
     && ( a.y - b.y < fault ) == ( a.y - o.y < fault );
 }
 
+bool isOnArc( const Coordinate& o, const Coordinate& c, const double r,
+              const double sa, const double a, const double fault )
+{
+  if ( fabs( ( c - o ).length() - r ) > fault )
+    return false;
+  Coordinate d = o - c;
+  double angle = atan2( d.y, d.x );
+
+  if ( angle < sa ) angle += 2 * M_PI;
+  return angle - sa - a < 1e-4;
+}
+
 const Coordinate calcMirrorPoint( const LineData& l,
                                   const Coordinate& p )
 {
@@ -248,7 +260,7 @@ const Coordinate calcMirrorPoint( const LineData& l,
 const Coordinate calcCircleLineIntersect( const Coordinate& c,
                                           const double sqr,
                                           const LineData& l,
-                                          int side, bool& valid )
+                                          int side )
 {
   Coordinate proj = calcPointProjection( c, l );
   Coordinate hvec = proj - c;
@@ -257,19 +269,25 @@ const Coordinate calcCircleLineIntersect( const Coordinate& c,
   double sqdist = hvec.squareLength();
   double sql = sqr - sqdist;
   if ( sql < 0.0 )
-  {
-    valid = false;
-    return Coordinate();
-  }
+    return Coordinate::invalidCoord();
   else
   {
-    valid = true;
     double l = sqrt( sql );
     lvec = lvec.normalize( l );
     lvec *= side;
 
     return proj + lvec;
   };
+}
+
+const Coordinate calcArcLineIntersect( const Coordinate& c, const double sqr,
+                                       const double sa, const double angle,
+                                       const LineData& l, int side )
+{
+  const Coordinate possiblepoint = calcCircleLineIntersect( c, sqr, l, side );
+  if ( isOnArc( possiblepoint, c, sqrt( sqr ), sa, angle, test_threshold ) )
+    return possiblepoint;
+  else return Coordinate::invalidCoord();
 }
 
 const Coordinate calcPointProjection( const Coordinate& p,

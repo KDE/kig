@@ -37,6 +37,7 @@
 #include "../objects/bogus_imp.h"
 #include "../objects/conic_imp.h"
 #include "../objects/cubic_imp.h"
+#include "../objects/other_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/locus_imp.h"
 #include "../objects/circle_imp.h"
@@ -52,6 +53,39 @@
 
 #include <algorithm>
 #include <functional>
+
+class ConicConicIntersectionConstructor
+  : public StandardConstructorBase
+{
+protected:
+  ArgsParser mparser;
+public:
+  ConicConicIntersectionConstructor();
+  ~ConicConicIntersectionConstructor();
+
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+                   const KigDocument& ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
+  void plug( KigPart* doc, KigGUIAction* kact );
+
+  bool isTransform() const;
+};
+
+class ConicLineIntersectionConstructor
+  : public MultiObjectTypeConstructor
+{
+public:
+  ConicLineIntersectionConstructor();
+  ~ConicLineIntersectionConstructor();
+};
+
+class ArcLineIntersectionConstructor
+  : public MultiObjectTypeConstructor
+{
+public:
+  ArcLineIntersectionConstructor();
+  ~ArcLineIntersectionConstructor();
+};
 
 ConicRadicalConstructor::ConicRadicalConstructor()
   : StandardConstructorBase(
@@ -329,6 +363,18 @@ ConicLineIntersectionConstructor::~ConicLineIntersectionConstructor()
 {
 }
 
+ArcLineIntersectionConstructor::ArcLineIntersectionConstructor()
+  : MultiObjectTypeConstructor(
+    ArcLineIntersectionType::instance(),
+    "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+    "curvelineintersection", -1, 1 )
+{
+}
+
+ArcLineIntersectionConstructor::~ArcLineIntersectionConstructor()
+{
+}
+
 QString ConicRadicalConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
                                           const KigDocument&, const KigWidget& ) const
 {
@@ -357,6 +403,9 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
   ObjectConstructor* lineconic =
     new ConicLineIntersectionConstructor();
 
+  ObjectConstructor* arcline =
+    new ArcLineIntersectionConstructor();
+
   MultiObjectTypeConstructor* linecubic =
     new MultiObjectTypeConstructor(
       LineCubicIntersectionType::instance(),
@@ -377,6 +426,7 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
   merge( lineconic );
   merge( linecubic );
   merge( conicconic );
+  merge( arcline );
 }
 
 GenericIntersectionConstructor::~GenericIntersectionConstructor()
@@ -400,6 +450,8 @@ QString GenericIntersectionConstructor::useText(
     return i18n( "Intersect with This Line" );
   else if ( o.imp()->inherits( CubicImp::stype() ) )
     return i18n( "Intersect with This Cubic Curve" );
+  else if ( o.imp()->inherits( ArcImp::stype() ) )
+    return i18n( "Intersect with This Arc" );
   else assert( false );
   return QString::null;
 }

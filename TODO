@@ -64,7 +64,7 @@
 - add "Tools": easy tools designed for geometry, like Angle converter and
   so on...
 
-- add intersection type between arcs and the other objects.
+- add intersection type between arcs and conics/cubics.
 
 - add a magnifying glass to magnify "on-the-fly" a part of the document.
 

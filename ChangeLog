@@ -1,3 +1,7 @@
+2004-06-14  Pino Toscano <toscano.pino@tiscali.it>
+
+       * Add arc-line intersection type.
+
 2004-06-13  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Add the possibility to attach a label ( and to a point, of

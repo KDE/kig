@@ -151,8 +151,20 @@ Coordinate calcIntersectionPoint( const LineData& l, const LineData& m );
 const Coordinate calcCircleLineIntersect( const Coordinate& c,
                                           const double sqr,
                                           const LineData& l,
-                                          int side,
-                                          bool& valid );
+                                          int side );
+
+/**
+ * this calcs the intersection points of the arc with center c,
+ * radius sqrt( r ), start angle sa and angle angle, and the line l.
+ * As a arc and a line can have max two intersection points, side
+ * tells us which one we need...  It should be 1 or -1. If the line
+ * and the arc have no intersection, valid is set to false, otherwise
+ *  to true... Note that sqr is the _square_ of the radius. We do
+ * this to avoid rounding errors...
+ */
+const Coordinate calcArcLineIntersect( const Coordinate& c, const double sqr,
+                                       const double sa, const double angle,
+                                       const LineData& l, int side );
 
 /**
  * this calculates the perpendicular projection of point p on line
@@ -235,6 +247,9 @@ bool isOnSegment( const Coordinate& o, const Coordinate& a,
 
 bool isOnRay( const Coordinate& o, const Coordinate& a,
               const Coordinate& b, const double fault );
+
+bool isOnArc( const Coordinate& o, const Coordinate& c, const double r,
+              const double sa, const double a, const double fault );
 
 Coordinate calcCircleRadicalStartPoint( const Coordinate& ca,
                                         const Coordinate& cb,

@@ -89,4 +89,18 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * arc line intersection.
+ */
+class ArcLineIntersectionType
+  : public ArgsParserObjectType
+{
+  ArcLineIntersectionType();
+  ~ArcLineIntersectionType();
+public:
+  static const ArcLineIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

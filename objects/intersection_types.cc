@@ -19,11 +19,12 @@
 #include "intersection_types.h"
 
 #include "bogus_imp.h"
-#include "point_imp.h"
+#include "circle_imp.h"
 #include "conic_imp.h"
 #include "cubic_imp.h"
-#include "circle_imp.h"
 #include "line_imp.h"
+#include "other_imp.h"
+#include "point_imp.h"
 
 #include <klocale.h>
 
@@ -295,6 +296,56 @@ ObjectImp* CircleCircleIntersectionType::calc( const Args& parents, const KigDoc
 }
 
 const ObjectImpType* CircleCircleIntersectionType::resultId() const
+{
+  return PointImp::stype();
+}
+
+static const ArgsParser::spec argsspecArcLineIntersection[] =
+{
+  { ArcImp::stype(), I18N_NOOP( "Intersect with this arc" ),
+    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
+    "SHOULD NOT BE SEEN", true },
+  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ArcLineIntersectionType )
+
+ArcLineIntersectionType::ArcLineIntersectionType()
+  : ArgsParserObjectType( "ArcLineIntersection",
+                         argsspecArcLineIntersection, 3 )
+{
+}
+
+ArcLineIntersectionType::~ArcLineIntersectionType()
+{
+}
+
+const ArcLineIntersectionType* ArcLineIntersectionType::instance()
+{
+  static const ArcLineIntersectionType t;
+  return &t;
+}
+
+ObjectImp* ArcLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  int side = static_cast<const IntImp*>( parents[2] )->data();
+  assert( side == 1 || side == -1 );
+  const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
+
+  bool valid = true;
+
+  const ArcImp* c = static_cast<const ArcImp*>( parents[0] );
+  const double r = c->radius();
+  Coordinate ret = calcArcLineIntersect( c->center(), r*r, c->startAngle(),
+                                         c->angle(), line, side, valid );
+  if ( valid ) return new PointImp( ret );
+  else return new InvalidImp;
+}
+
+const ObjectImpType* ArcLineIntersectionType::resultId() const
 {
   return PointImp::stype();
 }

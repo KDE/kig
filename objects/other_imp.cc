@@ -607,13 +607,7 @@ bool ArcImp::containsPoint( const Coordinate& p, const KigDocument& ) const
 
 bool ArcImp::internalContainsPoint( const Coordinate& p, double threshold ) const
 {
-  if( fabs( (mcenter - p).length() - mradius ) > threshold )
-    return false;
-  Coordinate d = p - mcenter;
-  double angle = atan2( d.y, d.x );
-
-  if ( angle < msa ) angle += 2 * M_PI;
-  return angle - msa - ma < 1e-4;
+  return isOnArc( p, mcenter, mradius, msa, ma, threshold );
 }
 
 bool AngleImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
