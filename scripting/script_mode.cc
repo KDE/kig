@@ -95,7 +95,7 @@ void ScriptMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint&
     // and set statusbar text
 
     w.setCursor( KCursor::handCursor() );
-    QString selectstat = os.front()->imp()->type()->selectStatement();
+    QString selectstat = i18n( os.front()->imp()->type()->selectStatement() );
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );
