@@ -327,7 +327,7 @@ void KigPart::setupActions()
     i18n( "Wear infrared glasses" ), 0, this, SLOT( toggleNightVision() ),
     actionCollection(), "settings_toggle_nightvision" );
   aToggleNightVision->setToolTip( i18n( "Enable/Disable hidden objects visibility." ) );
-  aToggleAxes->setChecked( false );
+  aToggleNightVision->setChecked( false );
 
   // select coordinate system KActionMenu..
   aCoordSystem = new SetCoordinateSystemAction( *this, actionCollection() );
