@@ -170,16 +170,6 @@ ObjectImp* VectorImp::copy() const
   return new VectorImp( ma, mb );
 }
 
-const Coordinate VectorImp::a() const
-{
-  return ma;
-}
-
-const Coordinate VectorImp::b() const
-{
-  return mb;
-}
-
 const Coordinate VectorImp::dir() const
 {
   return mb - ma;
