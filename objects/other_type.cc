@@ -19,11 +19,8 @@
 #include "other_type.h"
 
 #include "bogus_imp.h"
-#include "other_imp.h"
 #include "point_imp.h"
 #include "locus_imp.h"
-
-#include "editanglesize.h"
 
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
@@ -37,65 +34,6 @@
 #include <cmath>
 
 using std::find;
-
-#include <qstringlist.h>
-
-static const char* constructanglethroughpoint =
-  I18N_NOOP( "Construct an angle through this point" );
-
-static const ArgsParser::spec argsspecAngle[] =
-{
-  { PointImp::stype(), constructanglethroughpoint,
-    I18N_NOOP( "Select a point that the first half-line of the angle should go through..." ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct an angle at this point" ),
-    I18N_NOOP( "Select the point to construct the angle in..." ), true },
-  { PointImp::stype(), constructanglethroughpoint,
-    I18N_NOOP( "Select a point that the second half-line of the angle should go through..." ), true }
-};
-
-KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AngleType )
-
-AngleType::AngleType()
-  : ArgsParserObjectType( "Angle", argsspecAngle, 3 )
-{
-}
-
-AngleType::~AngleType()
-{
-}
-
-const AngleType* AngleType::instance()
-{
-  static const AngleType t;
-  return &t;
-}
-
-ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
-{
-  if ( ! margsparser.checkArgs( parents, 2 ) ) return new InvalidImp;
-
-  std::vector<Coordinate> points;
-  for ( uint i = 0; i < parents.size(); ++i )
-    points.push_back(
-      static_cast<const PointImp*>( parents[i] )->coordinate() );
-
-  Coordinate lvect = points[0] - points[1];
-  Coordinate rvect;
-  if ( points.size() == 3 )
-    rvect = points[2] - points[1];
-  else
-  {
-    rvect = lvect.orthogonal();
-  }
-
-  double startangle = atan2( lvect.y, lvect.x );
-  double endangle = atan2( rvect.y, rvect.x );
-  double anglelength = endangle - startangle;
-  if ( anglelength < 0 ) anglelength += 2* M_PI;
-  if ( startangle < 0 ) startangle += 2*M_PI;
-
-  return new AngleImp( points[1], startangle, anglelength );
-}
 
 static const struct ArgsParser::spec argsspecLocus[] =
 {
@@ -137,11 +75,6 @@ ObjectImp* LocusType::calc( const Args& args, const KigDocument& ) const
 bool LocusType::inherits( int type ) const
 {
   return type == ID_LocusType ? true : Parent::inherits( type );
-}
-
-const ObjectImpType* AngleType::resultId() const
-{
-  return AngleImp::stype();
 }
 
 const ObjectImpType* LocusType::resultId() const
@@ -218,57 +151,6 @@ const LocusType* LocusType::instance()
   return &t;
 }
 
-QStringList AngleType::specialActions() const
-{
-  QStringList ret;
-  ret << i18n( "Set Si&ze" );
-  return ret;
-}
-
-void AngleType::executeAction(
-  int i, ObjectHolder&, ObjectTypeCalcer& t,
-  KigPart& d, KigWidget& w, NormalMode& ) const
-{
-  assert( i == 0 );
-  // pretend to use this var..
-  (void) i;
-
-  std::vector<ObjectCalcer*> parents = t.parents();
-
-  assert( margsparser.checkArgs( parents ) );
-
-  Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
-  Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
-  Coordinate c = static_cast<const PointImp*>( parents[2]->imp() )->coordinate();
-
-  Coordinate lvect = a - b;
-  Coordinate rvect = c - b;
-
-  double startangle = atan2( lvect.y, lvect.x );
-  double endangle = atan2( rvect.y, rvect.x );
-  double anglelength = endangle - startangle;
-  if ( anglelength < 0 ) anglelength += 2* M_PI;
-  if ( startangle < 0 ) startangle += 2*M_PI;
-
-  int anglelengthdeg = static_cast<int>( Goniometry::convert( anglelength, Goniometry::Rad, Goniometry::Deg ) );
-
-  double newsize = 0;
-  EditAngleSize* e = new EditAngleSize( &w, anglelengthdeg, Goniometry::Deg );
-  if( !e->exec() )
-    return;
-  newsize = Goniometry::convert( e->angle(), e->system(), Goniometry::Rad );
-
-  double newcangle = startangle + newsize;
-  Coordinate cdir( cos( newcangle ), sin( newcangle ) );
-  Coordinate nc = b + cdir.normalize( rvect.length() );
-
-  MonitorDataObjects mon( getAllParents( parents ) );
-  parents[2]->move( nc, d.document() );
-  KigCommand* kc = new KigCommand( d, i18n( "Resize Angle" ) );
-  mon.finish( kc );
-  d.history()->addCommand( kc );
-}
-
 std::vector<ObjectCalcer*> CopyObjectType::sortArgs( const std::vector<ObjectCalcer*>& os ) const
 {
   assert( os.size() == 1 );
@@ -302,6 +184,7 @@ Args CopyObjectType::sortArgs( const Args& args ) const
 bool CopyObjectType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
 {
   // TODO: vragen aan parent ?
+  // TODO: translate the above TODO ?
   return false;
 }
 

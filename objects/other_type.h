@@ -22,21 +22,6 @@
 #include "base_type.h"
 #include "../misc/object_hierarchy.h"
 
-class AngleType
-  : public ArgsParserObjectType
-{
-  AngleType();
-  ~AngleType();
-public:
-  static const AngleType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
-
-  QStringList specialActions() const;
-  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const;
-};
-
 class LocusType
   : public ArgsParserObjectType
 {
