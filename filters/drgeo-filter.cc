@@ -112,11 +112,17 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
     return false;
   }
 
+  int nfig = figures.count();
+  // no figures, no party...
+  if ( nfig == 0 )
+    return 0;
+
   int myfig = 0;
-// drgeo file has more than 1 figure, let the user choose one...
-  if ( figures.count() > 1 ) {
+  
+  if ( nfig > 1 )
+  {
+    // Dr. Geo file has more than 1 figure, let the user choose one...
     KigFilterDrgeoChooser* c = new KigFilterDrgeoChooser( figures );
-//    c->addFigures( figures );
     myfig = c->exec();
     delete c;
   }
@@ -132,12 +138,12 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
     if ( e.isNull() ) continue;
     else if ( e.tagName() == "drgeo" )
     {
-#ifdef DRGEO_DEBUG
-      kdDebug() << "- Figure: '" << e.attribute("name") << "'" << endl;
-#endif
       curfig += 1;
       if ( curfig == myfig )
       {
+#ifdef DRGEO_DEBUG
+        kdDebug() << "- Figure: '" << e.attribute("name") << "'" << endl;
+#endif
         bool grid = ( e.attribute( "grid" ) != "False" );
         return importFigure( e.firstChild(), file, grid );
       }
@@ -213,7 +219,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
     {
       x += elems[i].parents[j] + "_";
     }
-    kdDebug() << "  --> " << elems[i].id << " - " << x << endl;
+    kdDebug() << "  --> " << i << " - " << elems[i].id << " - " << x << endl;
   }
 #endif
 
@@ -223,7 +229,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
   std::vector<ObjectHolder*> holders;
   std::vector<ObjectHolder*> holders2;
   ObjectTypeCalcer* oc = 0;
-  ObjectTypeCalcer* oc2 = 0;
+  ObjectCalcer* oc2 = 0;
   int nignored = 0;
 
   // there's no need to sort the objects because it seems that DrGeo objects
@@ -292,13 +298,9 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         if ( !parents[0]->imp()->inherits( SegmentImp::stype() ) )
           KIG_FILTER_PARSE_ERROR;
-        int index1 = parents[0]->imp()->propertiesInternalNames().findIndex( "end-point-A" );
-        assert( index1 != -1 );
-        ObjectPropertyCalcer* o1 = new ObjectPropertyCalcer( parents[0], index1 );
+        ObjectPropertyCalcer* o1 = fact->propertyObjectCalcer( parents[0], "end-point-A" );
         o1->calc( *ret );
-        int index2 = parents[0]->imp()->propertiesInternalNames().findIndex( "end-point-B" );
-        assert( index2 != -1 );
-        ObjectPropertyCalcer* o2 = new ObjectPropertyCalcer( parents[0], index2 );
+        ObjectPropertyCalcer* o2 = fact->propertyObjectCalcer( parents[0], "end-point-B" );
         o2->calc( *ret );
         std::vector<ObjectCalcer*> args;
         args.push_back( o1 );
@@ -340,54 +342,37 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         if ( ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
              ( parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) )
           oc = new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents );
-        else if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) &&
-                  ( parents[1]->imp()->inherits( CircleImp::stype() ) ) )
-        {
-          bool ok;
-          int which = domelem.attribute( "extra" ).toInt( &ok );
-          if ( !ok ) KIG_FILTER_PARSE_ERROR;
-          if ( which == 0 ) which = -1;
-          else if ( which == 1 ) which = 1;
-          else KIG_FILTER_PARSE_ERROR;
-          std::vector<ObjectCalcer*> args = parents;
-          args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
-          oc = new ObjectTypeCalcer( CircleCircleIntersectionType::instance(), args );
-        }
-        else if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) &&
-                    parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) ||
-                  ( parents[1]->imp()->inherits( CircleImp::stype() ) &&
-                    parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) )
-        {
-          bool ok;
-          int which = domelem.attribute( "extra" ).toInt( &ok );
-          if ( !ok ) KIG_FILTER_PARSE_ERROR;
-          if ( which == 0 ) which = -1;
-          else if ( which == 1 ) which = 1;
-          else KIG_FILTER_PARSE_ERROR;
-          std::vector<ObjectCalcer*> args = parents;
-          args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
-          oc = new ObjectTypeCalcer( ConicLineIntersectionType::instance(), args );
-        }
-        else if ( ( parents[0]->imp()->inherits( ArcImp::stype() ) &&
-                    parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) ||
-                  ( parents[1]->imp()->inherits( ArcImp::stype() ) &&
-                    parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) )
-        {
-          bool ok;
-          int which = domelem.attribute( "extra" ).toInt( &ok );
-          if ( !ok ) KIG_FILTER_PARSE_ERROR;
-          if ( which == 0 ) which = -1;
-          else if ( which == 1 ) which = 1;
-          else KIG_FILTER_PARSE_ERROR;
-          std::vector<ObjectCalcer*> args = parents;
-          args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
-          oc = new ObjectTypeCalcer( ArcLineIntersectionType::instance(), args );
-        }
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file contains an intersection type, "
-                                    "which Kig does not currently support." ) );
-          return false;
+          bool ok;
+          int which = domelem.attribute( "extra" ).toInt( &ok );
+          if ( !ok ) KIG_FILTER_PARSE_ERROR;
+          if ( which == 1 ) which = -1;
+          else if ( which == 0 ) which = 1;
+          else KIG_FILTER_PARSE_ERROR;
+          std::vector<ObjectCalcer*> args = parents;
+          const ObjectType* type = 0;
+          args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+          if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) &&
+               ( parents[1]->imp()->inherits( CircleImp::stype() ) ) )
+            type = CircleCircleIntersectionType::instance();
+          else if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) &&
+                      parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) ||
+                    ( parents[1]->imp()->inherits( CircleImp::stype() ) &&
+                      parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) )
+            type = ConicLineIntersectionType::instance();
+          else if ( ( parents[0]->imp()->inherits( ArcImp::stype() ) &&
+                      parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) ||
+                    ( parents[1]->imp()->inherits( ArcImp::stype() ) &&
+                      parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) )
+            type = ArcLineIntersectionType::instance();
+          else
+          {
+            notSupported( file, i18n( "This Dr. Geo file contains an intersection type, "
+                                      "which Kig does not currently support." ) );
+            return false;
+          }
+          oc = new ObjectTypeCalcer( type, args );
         }
       }
       else if ( domelem.attribute( "type" ) == "Reflexion" )
@@ -429,12 +414,26 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
           type = VectorType::instance();
         else if( domelem.tagName() == "circle" )
           type = CircleBCPType::instance();
+        else
+        {
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    domelem.attribute( "type" ) ) );
+          return false;
+        }
         oc = new ObjectTypeCalcer( type, parents );
       }
       else if( domelem.attribute( "type" ) == "3pts" )
       {
         if( domelem.tagName() == "arcCircle" )
           type = ArcBTPType::instance();
+        else
+        {
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    domelem.attribute( "type" ) ) );
+          return false;
+        }
         oc = new ObjectTypeCalcer( type, parents );
       }
       else if( domelem.attribute( "type" ) == "segment" )
@@ -442,14 +441,19 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         if( domelem.tagName() == "circle" )
         {
           type = CircleBPRType::instance();
-          int index = parents[1]->imp()->propertiesInternalNames().findIndex( "length" );
-          assert( index != -1 );
-          ObjectPropertyCalcer* o = new ObjectPropertyCalcer( parents[1], index );
+          ObjectPropertyCalcer* o = fact->propertyObjectCalcer( parents[1], "length" );
           o->calc( *ret );
           ObjectCalcer* a = parents[0];
           parents.clear();
           parents.push_back( a );
           parents.push_back( o );
+        }
+        else
+        {
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    domelem.attribute( "type" ) ) );
+          return false;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -609,10 +613,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       if ( domelem.attribute( "type" ) == "3pts" )
       {
         if ( parents.size() != 3 ) KIG_FILTER_PARSE_ERROR;
-        oc = new ObjectTypeCalcer( AngleType::instance(), parents );
-        oc->calc( *ret );
-        const Coordinate c = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
-        oc2 = filtersConstructTextObject( c, oc, "angle-degrees", *ret, false );
+        oc = new ObjectTypeCalcer( HalfAngleType::instance(), parents );
       }
       else
       {
@@ -684,9 +685,10 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
                                 "which Kig does not currently support." ) );
       return false;
     }
-    else if ( domelem.tagName() == "boundingBox" )
+    else if ( ( domelem.tagName() == "boundingBox" ) ||
+              ( domelem.tagName() == "customUI" ) )
     {
-      // ignoring this element, since it isn't useful to us (for the moment)...
+      // ignoring these elements, since they are not useful to us...
       nignored++;
     }
     else
@@ -704,9 +706,12 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       continue;
 
 // reading color
-    QColor co = domelem.attribute( "color" );
+    QColor co( domelem.attribute( "color" ) );
     if ( ! co.isValid() )
-      co = Qt::blue;
+      if ( domelem.attribute( "color" ) == "Bordeaux" )
+        co.setRgb( 145, 0, 0 );
+      else
+        co = Qt::blue;
 // reading width and style
 // Dashed -> the little one
 // Normal -> the medium
@@ -746,12 +751,33 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
     kdDebug() << ">>>>>>>>> calc" << endl;
 #endif
     holders[curid-1-nignored]->calc( *ret );
+
+    if ( domelem.tagName() == "point" )
+    {
+      if ( !strname.isEmpty() )
+      {
+        std::vector<ObjectCalcer*> args2;
+        args2.push_back( o->nameCalcer() );
+        oc2 = fact->attachedLabelCalcer( QString::fromLatin1( "%1" ), oc,
+                 static_cast<const PointImp*>( oc->imp() )->coordinate(),
+                 false, args2, *ret );
+        co = Qt::black;
+      }
+    }
+    else if ( domelem.tagName() == "angle" )
+    {
+      oc2 = filtersConstructTextObject(
+               static_cast<const PointImp*>( holders[curid-1-nignored]->calcer()->parents()[1]->imp() )->coordinate(),
+               holders[curid-1-nignored]->calcer(), "angle-degrees", *ret, false );
+    }
+
     oc = 0;
 
     if ( oc2 != 0 )
     {
       oc2->calc( *ret );
-      ObjectHolder* o2 = new ObjectHolder( oc2 );
+      ObjectDrawer* d2 = new ObjectDrawer( co );
+      ObjectHolder* o2 = new ObjectHolder( oc2, d2 );
       holders2.push_back( o2 );
       oc2 = 0;
     }
