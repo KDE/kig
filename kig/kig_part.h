@@ -123,10 +123,12 @@ public:
   void addView(KigView*) { numViews++; };
   void delView(KigView*) { numViews--; };
 
-  const Objects& objects() { return mObjs;};
+  const Objects& objects() const { return mObjs;};
   const CoordinateSystem& coordinateSystem() const;
   KigMode* mode() { return mMode; };
   void setMode( KigMode* );
+  void runMode( KigMode* );
+  void doneMode( KigMode* );
 
   // what objects are under point p
   Objects whatAmIOn( const Coordinate& p, const ScreenInfo& si ) const;

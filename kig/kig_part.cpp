@@ -60,6 +60,7 @@
 #include <kinstance.h>
 #include <kfiledialog.h>
 #include <kaction.h>
+#include <kapplication.h>
 #include <ktoolbar.h>
 #include <kmainwindow.h>
 #include <kstdaction.h>
@@ -73,6 +74,9 @@
 
 #include <qfile.h>
 #include <qtimer.h>
+#if QT_VERSION >= 0x030100
+#include <qeventloop.h>
+#endif
 
 #include <algorithm>
 
@@ -695,4 +699,29 @@ bool KigDocument::internalSaveAs()
 KigView* KigDocument::mainWidget()
 {
   return m_widget;
+}
+
+void KigDocument::runMode( KigMode* m )
+{
+  KigMode* prev = mMode;
+
+  setMode( m );
+
+#if QT_VERSION >= 0x030100
+  (void) kapp->eventLoop()->enterLoop();
+#else
+  (void) kapp->enter_loop();
+#endif
+
+  setMode( prev );
+}
+
+void KigDocument::doneMode( KigMode* d )
+{
+  assert( d == mMode );
+#if QT_VERSION >= 0x030100
+  kapp->eventLoop()->exitLoop();
+#else
+  kapp->exit_loop();
+#endif
 }
