@@ -235,9 +235,8 @@ void KigPart::setupActions()
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  tmp = l->loadIcon( "stop", KIcon::Toolbar);
   aCancelConstruction = new KAction(
-      i18n("Cancel Construction"), tmp, Key_Escape, this,
+      i18n("Cancel Construction"), "stop", Key_Escape, this,
       SLOT(cancelConstruction()), actionCollection(), "cancel_construction");
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
