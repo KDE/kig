@@ -44,9 +44,7 @@
   ( see filters/drgeo-filter-status.txt ), add the possibility to ignore
   errors on loading
 
-- "export to *": add stuff like java applets, etc...
-
-- add support for saving/opening native compressed files like myfile.kigz.
+- "export to *": add stuff like java applets, kmplot documents, etc...
 
 * objects
 
@@ -71,7 +69,7 @@
   allow for importing from/exporting to other formula formats such as
   KFormula, OOFormula and MathML.
 
-- fillable polygons/shapes..
+- other types of fillable shapes, like arc sector, arc segment...
 
 - defined integrals, as a particular case of filled shapes.
 
