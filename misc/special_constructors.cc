@@ -365,6 +365,8 @@ QString GenericIntersectionConstructor::useText(
     return i18n( "Intersect with This Conic" );
   else if ( o.hasimp( ObjectImp::ID_LineImp ) )
     return i18n( "Intersect with This Line" );
+  else if ( o.hasimp( ObjectImp::ID_CubicImp ) )
+    return i18n( "Intersect with This Cubic" );
   else assert(
     false );
 }
