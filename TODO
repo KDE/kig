@@ -5,6 +5,8 @@
 
 * not too hard:
 
+- make the code in filters/ --enable-final compliant.
+
 - Provide some nice stuff for differential geometry: velocity vector
    of a curve, curvature vector, osculating parabole, osculating
    circle, evolute.  Most of this is fairly trivial to implement, but
