@@ -613,8 +613,11 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
     popup.addAction( menu, i18n( "Unhide &All" ), nextfree++ );
-    popup.addAction( menu, i18n( "Zoom &In" ), nextfree++ );
-    popup.addAction( menu, i18n( "Zoom &Out" ), nextfree++ );
+    KIconLoader* l = KGlobal::iconLoader();
+    QPixmap p = l->loadIcon( "viewmag+", KIcon::Toolbar );
+    popup.addAction( menu, p, i18n( "Zoom &In" ), nextfree++ );
+    p = l->loadIcon( "viewmag-", KIcon::Toolbar );
+    popup.addAction( menu, p, i18n( "Zoom &Out" ), nextfree++ );
     if ( popup.widget().isFullScreen() )
       popup.addAction( menu, i18n( "E&xit Full Screen Mode" ), nextfree++ );
   }
