@@ -112,6 +112,7 @@ Object::~Object()
 
 bool Object::hasimp( int type ) const
 {
+  assert( imp() );
   return imp()->inherits( type );
 }
 
@@ -168,9 +169,17 @@ void Object::delChild( Object* o )
   childRemoved();
 }
 
-void ObjectWithParents::addParent( Object* o )
+void ObjectWithParents::addParent( Object* o, bool atfront )
 {
-  mparents.upush( o );
+  if ( ! atfront )
+    mparents.push_back( o );
+  else
+  {
+    Objects nparents( mparents.size() + 1, 0 );
+    nparents[0] = o;
+    std::copy( mparents.begin(), mparents.end(), nparents.begin() + 1 );
+    mparents = nparents;
+  };
   o->addChild( this );
 }
 
@@ -304,7 +313,7 @@ void Object::childAdded()
 {
 }
 
-void Object::addParent( Object* )
+void Object::addParent( Object*, bool )
 {
   assert( false );
 }

@@ -160,59 +160,59 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
         elems[id-1].parents.push_back( pid );
       }
     };
+  };
 
-    os.resize( elems.size(), 0 );
+  os.resize( elems.size(), 0 );
 
-    // now we do a topological sort of the elems..
-    std::vector<HierElem> sortedElems = sortElems( elems );
+  // now we do a topological sort of the elems..
+  std::vector<HierElem> sortedElems = sortElems( elems );
 
-    // and now we go over them again, this time filling up os..
-    for ( uint i = 0; i < sortedElems.size(); ++i )
+  // and now we go over them again, this time filling up os..
+  for ( uint i = 0; i < sortedElems.size(); ++i )
+  {
+    HierElem& elem = sortedElems[i];
+    QDomElement e = elem.el;
+    QString tmp;
+
+    tmp = e.attribute("typeName");
+    if(tmp.isNull()) return ParseError;
+    QCString type = tmp.utf8();
+
+    QColor color = Qt::blue;
+    bool shown = true;
+    for ( QDomNode n = e.firstChild(); !n.isNull(); n = n.nextSibling() )
     {
-      HierElem& elem = sortedElems[i];
-      QDomElement e = elem.el;
-      QString tmp;
-
-      tmp = e.attribute("typeName");
-      if(tmp.isNull()) return ParseError;
-      QCString type = tmp.utf8();
-
-      QColor color = Qt::blue;
-      bool shown = true;
-      for ( QDomNode n = e.firstChild(); !n.isNull(); n = n.nextSibling() )
+      QDomElement el = n.toElement();
+      if ( el.isNull() ) return ParseError;
+      if ( el.tagName() == "param" )
       {
-        QDomElement el = n.toElement();
-        if ( el.isNull() ) return ParseError;
-        if ( el.tagName() == "param" )
+        QString name = el.attribute( "name" );
+        if ( name.isNull() ) return ParseError;
+        if ( name == "color" )
         {
-          QString name = el.attribute( "name" );
-          if ( name.isNull() ) return ParseError;
-          if ( name == "color" )
-          {
-            color = QColor( el.text() );
-            if ( !color.isValid() )
-              return ParseError;
-          }
-          else if ( name == "shown" )
-          {
-            shown = el.text() == "true" || el.text() == "yes";
-          };
+          color = QColor( el.text() );
+          if ( !color.isValid() ) return ParseError;
+        }
+        else if ( name == "shown" )
+        {
+          shown = el.text() == "true" || el.text() == "yes";
         };
       };
-      Objects parents;
-      for ( uint i = 0; i < elem.parents.size(); ++i )
-      {
-        assert( os[elem.parents[i] - 1] );
-        parents.push_back( os[elem.parents[i] - 1] );
-      };
-
-      RealObject* o = new RealObject( 0, parents );
-      o->setShown( shown );
-      o->setColor( color );
-
-      if ( ! oldElemToNewObject( type, e, *o ) ) return ParseError;
-      os[elem.id-1] = o;
     };
+    Objects parents;
+    for ( uint i = 0; i < elem.parents.size(); ++i )
+    {
+      assert( os[elem.parents[i] - 1] );
+      parents.push_back( os[elem.parents[i] - 1] );
+    };
+
+    RealObject* o = new RealObject( 0, parents );
+    o->setShown( shown );
+    o->setColor( color );
+
+    if ( ! oldElemToNewObject( type, e, *o ) ) return ParseError;
+    o->calc();
+    os[elem.id-1] = o;
   };
 
   to.setObjects( os );
@@ -225,6 +225,7 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
 {
   if ( type == "NormalPoint" )
   {
+    o.setWidth( 5 ); // proper width default
     bool constrained = false;
     double param = 0.;
     double x = 0.;
@@ -267,8 +268,10 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     }
     else
     {
+      assert( o.parents().size() == 1 );
       o.setType( ConstrainedPointType::instance() );
-      o.addParent( new DataObject( new DoubleImp( param ) ) );
+      o.addParent( new DataObject( new DoubleImp( param ) ), true );
+      assert( o.parents().size() == 2 );
     };
     return true;
   }

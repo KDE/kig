@@ -92,7 +92,7 @@ public:
   void addChild( Object* o );
   void delChild( Object* o );
 
-  virtual void addParent( Object* o );
+  virtual void addParent( Object* o, bool atfront = false );
   virtual void delParent( Object* o );
   virtual void setParents( const Objects& parents );
 };
@@ -106,7 +106,7 @@ protected:
   ObjectWithParents( const Objects& parents );
   ~ObjectWithParents();
 public:
-  void addParent( Object* o );
+  void addParent( Object* o, bool atfront = false );
   void delParent( Object* o );
   void setParents( const Objects& parents );
   Objects parents() const;
