@@ -22,7 +22,10 @@
 #include "other_imp.h"
 #include "point_imp.h"
 #include "locus_imp.h"
+#include "object.h"
 
+#include <functional>
+#include <algorithm>
 #include <math.h>
 
 AngleType::AngleType()
@@ -103,9 +106,14 @@ ObjectType* LocusType::copy() const
 
 ObjectImp* LocusType::calc( const Args& args ) const
 {
-  if ( args.size() != 1 ) return new InvalidImp;
+  using namespace std;
+
+  if ( args.size() < 1 ) return new InvalidImp;
   assert( args[0]->inherits( ObjectImp::ID_CurveImp ) );
   const CurveImp* curveimp = static_cast<const CurveImp*>( args.front() );
-  return new LocusImp( curveimp, mhier );
+
+  Args fixedargs( args.begin() + 1, args.end() );
+
+  return new LocusImp( curveimp, mhier.withFixedArgs( fixedargs ) );
 }
 

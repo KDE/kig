@@ -21,6 +21,7 @@
 #include "i18n.h"
 #include "objects.h"
 #include "kigpainter.h"
+#include "calcpaths.h"
 
 #include "../objects/object.h"
 #include "../objects/object_type.h"
@@ -115,13 +116,13 @@ void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
   if ( parents.size() != 2 ) return;
   const Object* constrained = parents.front();
   const Object* moving = parents.back();
-  if ( constrained->parents().size() < 1 )
+  if ( ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
   {
     // moving is in fact the constrained point.. swap them..
     moving = constrained;
     constrained = parents.back();
   };
-  assert( constrained->parents().size() == 1 );
+  assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
   const ObjectImp* oimp = constrained->parents().front()->imp();
   assert( oimp->inherits( ObjectImp::ID_CurveImp ) );
@@ -141,33 +142,40 @@ const int LocusConstructor::wantArgs(
   int ret = margsparser.check( os );
   if ( ret == ArgsChecker::Invalid ) return ret;
   else if ( os.size() != 2 ) return ret;
-  return ( os.front()->parents().size() == 1 ||
-           os.back()->parents().size() == 1 ) ?
-                                         ret : ArgsChecker::Invalid;
+  return ( os.front()->type()->inherits( ObjectType::ID_ConstrainedPointType ) ||
+           os.back()->type()->inherits( ObjectType::ID_ConstrainedPointType ) ) ?
+    ret : ArgsChecker::Invalid;
 }
 
 Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget& ) const
 {
+  using namespace std;
+
   assert ( parents.size() == 2 );
   const Object* constrained = parents.front();
   const Object* moving = parents.back();
-  if ( constrained->parents().size() < 1 )
+  if ( !constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
   {
     // moving is in fact the constrained point.. swap them..
     moving = constrained;
     constrained = parents.back();
   };
-  assert( constrained->parents().size() == 1 );
+  assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
-  ObjectHierarchy hier( Objects( const_cast<Object*>( constrained ) ),
-                        moving );
+  Objects locusparents( const_cast<Object*>( constrained ) );
+  Objects sideOfTree = sideOfTreePath( Objects( const_cast<Object*>( constrained ) ), moving );
+  copy( sideOfTree.begin(), sideOfTree.end(), back_inserter( locusparents ) );
+
+  ObjectHierarchy hier( locusparents, moving );
 
   Object* curve = const_cast<Object*>( constrained->parents().front() );
   assert( curve->has( ObjectImp::ID_CurveImp ) );
+  // a locus object does not depend on the constrained point, but on
+  // the curve it is on..
+  locusparents[0] = curve;
 
   LocusType* t = new LocusType( hier );
-  Objects args( curve );
 
-  Object* ret = new Object( t, args, Args() );
+  Object* ret = new Object( t, locusparents, Args() );
   return Objects( ret );
 }
