@@ -31,17 +31,28 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                  I18N_NOOP("Original author, maintenance, design and lots of code."),
 		  "devriese@kde.org" );
 
-  tmp->addCredit("Maurizio Paolini",
+  tmp->addAuthor("Maurizio Paolini",
 		 I18N_NOOP( "Did the more math intensive work all around kig, "
-                            "most importantly conics, cubics and transformations "
-                            "support." ),
+                            "including, but not limited to conics, cubics and "
+                            "transformations support." ),
 		 "paolini@dmf.bs.unicatt.it");
 
-  tmp->addCredit( "Franco Pasquarelli",
+  tmp->addAuthor( "Franco Pasquarelli",
                   I18N_NOOP( "Helped with the implementation of the Locus object, "
                              "there's some math involved in doing it right, and "
-                             "Franco basically wrote the difficult parts for me." ),
+                             "Franco basically wrote the difficult parts." ),
                   "pasqui@dmf.bs.unicatt.it" );
+
+  tmp->addCredit( "Pino Toscano",
+                  I18N_NOOP( "The Italian translator, who also gave me lots of "
+                             "useful feedback, "
+                             "like feature requests and bug reports." ),
+                  "toscano.pino@tiscali.it" );
+
+  tmp->addCredit( "Eric Depagne",
+                  I18N_NOOP( "The French translator, who also sent me some useful "
+                             "feedback, like feature requests and bug reports." ),
+                  "edepagne@eso.org" );
 
   tmp->addCredit("Marc Bartsch",
 		  I18N_NOOP("Author of KGeo, where i got inspiration, "
@@ -54,7 +65,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 		  "ibaran@mit.edu");
 
   tmp->addCredit("Christophe Devriese",
-                 I18N_NOOP( "My brother, I got him to write the algorithm for "
+                 I18N_NOOP( "domi's brother, who he got to write the algorithm for "
                             "calculating the center of the circle with three "
                             "points given." ),
                  "oelewapperke@ulyssis.org" );
