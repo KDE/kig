@@ -22,7 +22,7 @@ class Locus
     : public Curve
 {
 public:
-  // number of points to include...
+  // number of points to include, i think this is a nice default...
   static const int numberOfPoints = 100;
 public:
   Locus() : cp(0), point(0), hierarchy(0) { };

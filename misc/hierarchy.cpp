@@ -28,6 +28,7 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
       ConstrainedPoint* cp;
       if ((cp = Object::toConstrainedPoint(o))) param = cp->getP();
       elem = new HierarchyElement(o->vBaseTypeName(), allElems.size() + 1, param);
+      elem->actual = o;
       gegElems.push_back(elem);
       allElems.push_back(elem);
       elemHash[o] = elem;
@@ -36,6 +37,7 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
   for (Objects::iterator i(inFinalObjs); (o = i.current()); ++i)
     {
       elem = new HierarchyElement(o->vFullTypeName(), allElems.size() + 1);
+      elem->actual = o;
       finElems.push_back(elem);
       allElems.push_back(elem);
       elemHash[o] = elem;
@@ -70,6 +72,7 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
 	    if (elem2 == elemHash.end())
 	      {
 		elem3 = new HierarchyElement(j->vFullTypeName(), allElems.size() + 1);
+		elem3->actual = j;
 		tmp2.add(j);
 		allElems.add(elem3);
 		elemHash[j] = elem3;
@@ -315,7 +318,7 @@ void ObjectHierarchy::calc()
       for (ElemList::iterator i = tmp.begin(); i != tmp.end(); ++i)
 	{
 	  for (ElemList::const_iterator j = (*i)->getChildren().begin();
-	       j != (*i)->getChildren().begin();
+	       j != (*i)->getChildren().end();
 	       ++j)
 	    {
 	      (*j)->actual->calc();

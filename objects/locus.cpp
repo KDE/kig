@@ -8,7 +8,9 @@ void Locus::draw(QPainter& p, bool ss) const
 {
   // todo: draw lines between the points instead of only the
   // points...
-  p.setPen(ss&&selected?QPen(Qt::red) : QPen(Qt::blue));
+  if (ss && selected ) p.setPen( QPen(Qt::red) );
+  else p.setPen( QPen(Qt::blue) );
+  kdDebug() << k_funcinfo << "number of points: " << points.size() << endl;
   for (PointList::const_iterator i = points.begin(); i!=points.end(); ++i)
     {
       p.drawPoint(i->toQPoint());
@@ -48,45 +50,42 @@ QString Locus::wantArg( const Object* o ) const
 
 bool Locus::selectArg(Object* o)
 {
-  ConstrainedPoint* tmpCp;
-  Point* tmpPt;
-  if (!cp && (tmpCp = toConstrainedPoint(o)))
+  if (!cp && (cp = toConstrainedPoint(o)))
     {
-      cp = tmpCp;
       cp->addChild(this);
     }
   else 
     {
-      tmpPt = toPoint(o);
-      assert (!point && tmpPt);
-      point = tmpPt;
+      assert (!point);
+      point = toPoint(o);
+      assert (point);
       point->addChild(this);
-      complete = true;
     };
-  if (complete) 
-    {
-      Objects given;
-      given.append(cp);
-      Objects final;
-      final.append(point);
-      hierarchy = new ObjectHierarchy(given, final, 0);
-      double oldP = cp->getP();
-      double period = double(1)/numberOfPoints;
-      for (double i = 0; i < 1; i += period)
-	{
-	  cp->setP(i);
-	  hierarchy->calc();
-	  points.push_back(*point);
-	};
-      cp->setP(oldP);
-      hierarchy->calc();
-      kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
-    };
+  if (cp && point) { complete = true; calc(); }
   return complete;
 }
 
 void Locus::calc()
 {
+  points.clear();
+  Objects given;
+  given.append(cp);
+  Objects final;
+  final.append(point);
+  hierarchy = new ObjectHierarchy(given, final, 0);
+  double oldP = cp->getP();
+  double period = double(1)/numberOfPoints;
+  for (double i = 0; i <= 1; i += period)
+    {
+      cp->setP(i);
+      cp->calc();
+      hierarchy->calc();
+      points.push_back(*point);
+    };
+  cp->setP(oldP);
+  cp->calc();
+  hierarchy->calc();
+  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
 }
 
 void Locus::getOverlay(QPtrList<QRect>& list, const QRect& border) const
