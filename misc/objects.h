@@ -25,6 +25,10 @@
 #include <vector>
 #include <algorithm>
 
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif
+
 class KigWidget;
 
 // this used to be a class with convenience functions, but i've
