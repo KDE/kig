@@ -1,3 +1,10 @@
+2003-06-20  Dominique Devriese  <devriese@kde.org>
+
+	* fix this bug: "3) When I select a segment, in his popup there are
+	two same entry in Construct submenu, called Mid point an
+	Midpoint. Why?" as reported by Pino Toscano
+	
+
 2003-06-11  Dominique Devriese  <devriese@kde.org>
 
 	* move transformations to their own menu entry, thanks to Pino
