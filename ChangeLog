@@ -1,3 +1,7 @@
+2003-11-14  Dominique Devriese  <devriese@kde.org>
+
+	* Fix two crashes in TextLabelRedefineMode.
+
 2003-11-10  Dominique Devriese  <devriese@kde.org>
 
 	* bump the version number to 0.6.1

@@ -90,6 +90,7 @@ TextLabelModeBase::TextLabelModeBase( KigDocument& doc )
   : KigMode( doc ), d( new Private )
 {
   d->locationparent = 0;
+  d->lpc = 0;
   d->mwawd = SelectingLocation;
   d->wiz = new TextLabelWizard( doc.widgets()[0], this );
 }
@@ -520,7 +521,8 @@ void TextLabelRedefineMode::finish(
   assert( firstthree[2]->hasimp( StringImp::stype() ) );
 
   assert( firstthree[0]->inherits( Object::ID_DataObject ) );
-  assert( firstthree[1]->inherits( Object::ID_DataObject ) );
+  // see the "we don't do this..." comment below, it applies here too..
+//  assert( firstthree[1]->inherits( Object::ID_DataObject ) );
   assert( firstthree[2]->inherits( Object::ID_DataObject ) );
   static_cast<DataObject*>( firstthree[0] )->setImp( new IntImp( needframe ? 1 : 0 ) );
 
