@@ -28,6 +28,7 @@
 #include "../objects/text_imp.h"
 #include "../objects/circle_imp.h"
 #include "../objects/point_imp.h"
+#include "../objects/other_imp.h"
 #include "../misc/common.h"
 
 #include <kaction.h>
@@ -196,7 +197,7 @@ void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, i
   mstream << "0 "; // line_style: Solid
   mstream << width << " "; // thickness: *1/80 inch
   mstream << "0 "; // TODO pen_color: default
-  mstream << "7 "; // TODO fill_color: default
+  mstream << "7 "; // TODO fill_color: white
   mstream << "50 "; // depth: 50
   mstream << "-1 "; // pen_style: unused by XFig
   mstream << "-1 "; // area_fill: no fill
@@ -295,7 +296,7 @@ void XFigExportImpVisitor::visit( const CircleImp* imp )
   if ( width == -1 ) width = 1;
   mstream << width << " " // thickness: *1/80 inch
           << "0 " // TODO pen_color: default
-          << "7 " // TODO fill_color: default
+          << "7 " // TODO fill_color: white
           << "50 " // depth: 50
           << "-1 " // pen_style: unused by XFig
           << "-1 " // area_fill: no fill
@@ -341,9 +342,46 @@ void XFigExportImpVisitor::visit( const RayImp* imp )
   emitLine( a, b, width );
 }
 
-void XFigExportImpVisitor::visit( const ArcImp* )
+void XFigExportImpVisitor::visit( const ArcImp* imp )
 {
-  // TODO
+  const Coordinate center = imp->center();
+  const double radius = imp->radius();
+  const double startangle = imp->startAngle();
+  const double endangle = startangle + imp->angle();
+  const double middleangle = ( startangle + endangle ) / 2;
+  const Coordinate ad = Coordinate( cos( startangle ), sin( startangle ) ).normalize( radius );
+  const Coordinate bd = Coordinate( cos( middleangle ), sin( middleangle ) ).normalize( radius );
+  const Coordinate cd = Coordinate( cos( endangle ), sin( endangle ) ).normalize( radius );
+  const QPoint a = convertCoord( center + ad );
+  const QPoint b = convertCoord( center + bd );
+  const QPoint c = convertCoord( center + cd );
+  const QPoint cent = convertCoord( center );
+
+  mstream << "5 "  // Ellipse type
+          << "1 "  // subtype: open ended arc
+          << "0 "; // line_style: Solid
+  int width = mcurobj->width();
+  if ( width == -1 ) width = 1;
+  mstream << width << " " // thickness: *1/80 inch
+          << "0 " // TODO pen_color: default
+          << "7 " // TODO fill_color: white
+          << "50 " // depth: 50
+          << "-1 " // pen_style: unused by XFig
+          << "-1 " // area_fill: no fill
+          << "0.000 " // style_val: the distance between dots and
+                      // dashes in case of dotted or dashed lines..
+          << "0 "; // cap_style: Butt..
+  // 0 is clockwise, 1 is counterclockwise .
+  int direction = imp->angle() > 0 ? 0 : 1;
+    // direction next
+  mstream << direction << " "  // direction..
+          << "0 "  // forward_arrow: no
+          << "0 "  // backward_arrow: no
+          << cent.x() << " " << cent.y() << " " // the center..
+          << a.x() << " " << a.y() << " " // x1, y1
+          << b.x() << " " << b.y() << " " // x2, y2
+          << c.x() << " " << c.y() << " " // x3, y3
+          << "\n";
 }
 
 void XFigExporter::run( const KigDocument& doc, KigWidget& w )
