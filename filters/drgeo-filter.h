@@ -25,10 +25,6 @@
 
 class QDomNode;
 class KigDocument;
-//class ObjectFactory;
-//class ObjectCalcer;
-//class ObjectHolder;
-//class KigWidget;
 class QString;
 
 class KigFilterDrgeo

@@ -1,17 +1,52 @@
-point     most (no On_curve & Intersection)
-ray       ok
-vector    ok
-line      ok + parallel + perpendicular
-circle    bcp
-numer     ok
-angle     ok (no label with measure)
-arc       ok
+Dr. Geo filter status
+=====================
 
-to implement:
- - locus (maybe they work)
- - polygon (also in Kig :-) )
- - transformation
+Global status
+=============
 
-knwon problems:
- - it causes Kig to crash when making a new ObjectTypeCalcer with a parent not 
-   implemented yet.
+Import:  yes (partially)
+Export:  no
+
+Import
+======
+
+Objects implemented
+-------------------
+
+Points            ok
+Rays              ok
+Vectors           ok
+Lines             ok
+Circles           ok
+Numbers           value (with a label), pt_abscissa & pt_ordinate (coord with 
+                  ( x, y ) for each of them)
+Angles            ok (no label with measure)
+Arcs              ok
+Transformations   translation, central reflection, line reflection, rotation
+Intersections     line-line
+
+Colors            most
+Visibility        ok
+Styles            most
+
+Objects to implement
+--------------------
+
+Points            On_curve
+Locuses           may work
+Polygons          also in Kig :-)
+Transformations   homotety, scaling
+Intersection      conic-line, circle-circle
+
+Colors            Label
+Styles            dashed style for all objects (except Points)
+
+Known problems
+--------------
+
+No known problems about supported objects.
+
+Export
+======
+
+Not implemented yet
