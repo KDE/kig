@@ -243,7 +243,7 @@ void Kig::fileOpen()
                                                                      "*.seg|KSeg Documents (*.seg)" ) );
 
   // domi: disabled for now, reenable when ready
-  //                                                                   "*.fgeo|DrGeo Documents (*.fgeo)\n" ) );
+  //                                                                   "*.fgeo|Dr. Geo Documents (*.fgeo)" ) );
 
   if (!file_name.isEmpty()) openURL(file_name);
 }
