@@ -618,7 +618,7 @@ Coordinate PolarCoords::snapToGrid( const Coordinate& c,
   // screen..
   const double sqrt2 = 1.4142135623;
 
-  QRect r = w.rect();
+  Rect r = w.showingRect();
 
   const double hmax = sqrt2 * r.right();
   const double hmin = sqrt2 * r.left();

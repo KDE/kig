@@ -1,5 +1,7 @@
 2003-07-03  Dominique Devriese  <devriese@kde.org>
 
+	* make snapToGrid work for PolarCoordinateSystem
+
 	* make shift -> snap to grid work in PointConstructionMode and
 	normal Construction Mode too..
 
