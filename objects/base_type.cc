@@ -55,9 +55,7 @@ void ObjectABType::move( RealObject* o,
                          const KigDocument& d ) const
 {
   Objects parents = o->parents();
-  assert( parents.size() == 2 );
-  assert( parents[0]->hasimp( PointImp::stype() ) );
-  assert( parents[1]->hasimp( PointImp::stype() ) );
+  assert( margsparser.checkArgs( parents ) );
   const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
   const Coordinate dist = b - a;
@@ -85,7 +83,6 @@ ObjectImp* ObjectLPType::calc( const Args& args, const KigDocument& ) const
 const Coordinate ObjectABType::moveReferencePoint( const RealObject* o ) const
 {
   Objects parents = o->parents();
-  assert( parents.size() == 2 );
-  assert( parents[0]->hasimp( PointImp::stype() ) );
+  assert( margsparser.checkArgs( parents ) );
   return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
 }
