@@ -165,17 +165,18 @@ void LocusImp::getInterval( double& x1, double& x2,
                             double incr,const Coordinate& p,
                             const KigDocument& doc) const
 {
-  double epsilon = incr/100;
+  double epsilon = incr/1000;
   double x3 = x1 + epsilon;
-  double mm = getDist(x1,p,doc);
-  double mm1 = getDist(x3,p,doc);
-  if( mm < mm1 ) return;
+  double mm = getDist( x1, p, doc);
+  double mm1 = getDist( x3, p, doc);
+  if( mm  <= mm1 ) return;
   else
   {
+    x2 = x3;
     while( mm > mm1 )
     {
       x3 = x2;
-      x1 += 10 * epsilon;
+      x1 += 500 * epsilon;
       mm = getDist( x1, p, doc );
       x2 = x1 + epsilon;
       mm1 = getDist( x2, p, doc );
@@ -198,15 +199,14 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
   // for a local minimum from there on.  If we find one, we keep it if
   // it is the lowest of all the ones we've already found..
 
-  const double epsilon=1.e-4;
-  const int N=50;
-  const double incr=1./(double) N;
+  const int N = 60;
+  const double incr = 1. / (double) N;
 
   // xm is the best parameter we've found so far, fxm is the distance
   // to the locus from that point.  We start with some
   // pseudo-values..
-  double fxm=10000000.;
-  double xm=2.;
+  double fxm = 10000000.;
+  double xm = 2.;
 
   int j = 0;
 
@@ -222,26 +222,7 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
     // don't consider intervals where the distance is increasing..
     if ( fabs( x1 - j * incr ) > 1.e-8 )
     {
-      // Franco: could you comment on this code a bit.  As I see it,
-      // you're looking for a sequence of three fibonacci numbers,
-      // that are big enough to divide ( x2 - x1 ) in some 10000
-      // pieces, but I can't figure out why you would do that.  Also:
-      // doesn't this code belong in getParamofmin() ?
-      int it = 1;
-      int i = 1;
-      int jj = 1;
-      while( (x2-x1)/(double) (2*jj) > epsilon)
-      {
-        int M=i+jj;
-	i=jj;
-	jj=M;
-	it++;
-      }
-      int t[3];
-      t[0]=jj;
-      t[1]=i+jj;
-      t[2]=t[1]+t[0];
-      double xm1 = getParamofmin( x1, x2, it, p, t, doc);
+      double xm1 = getParamofmin( x1, x2, p, doc);
       double fxm1 = getDist( xm1, p, doc );
       if( fxm1 < fxm )
       {
@@ -249,7 +230,7 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
         xm=xm1;
 	fxm=fxm1;
       }
-      j = max( N, (int) ( x2 / incr + 1 ) ) - 1;
+      j = (int) ( x2 / incr );
     }
     j++;
   }
@@ -257,62 +238,81 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
 }
 
 /**
- * Franco: could you comment this function a little, please ?
- * This seems to calculate the minimum of the distance of the point
- * with parameter to the locus by taking an interval, dividing it in (
- * about ) 2, checking in which half the result should be, and
- * continuing there..  I'm not sure what the fibonacci numbers in t
- * are necessary for.
+ * This function calculate the parameter of the point that realize the 
+ * minimum in [a,b] of the distance between the points of the locus and
+ * the point of coordinate p, using the Fibonacci method.
+ * This method is optimal in the sence that assigned a number of
+ * iteration it reduce to minimum the interval that contain the
+ * minimum of the function
  */
-double LocusImp::getParamofmin( double a, double b, int it,
-                                const Coordinate& p,int t[3],
+double LocusImp::getParamofmin( double a, double b, 
+                                const Coordinate& p,
                                 const KigDocument& doc ) const
 {
-  double epsilon = (b-a)/(4*t[2]);
+  double epsilon = 1.e-4;
+  // I compute the it number of iteration of the Fibonacci method
+  // to obtain a error between the computed and the exact minimum
+  // less than epsilon
+  int it = 2;
+  int i = 1;
+  int jj = 1;
+  while( ( b - a ) / (double) ( 2 * jj ) > epsilon )
+  {
+    int M= i + jj;
+    i= jj;
+    jj= M;
+    it++;
+  }
+  int t[3];
+  t[0]= jj;
+  t[1]= i + jj;
+  t[2]= t[1] + t[0];
 
   double x = ( b - a ) / t[2];
   double x1 = a + t[0] * x;
   double x2 = a + t[1] * x;
-  double fx1=getDist(x1,p,doc) ;
-  double fx2=getDist(x2,p,doc);
+  double fx1 = getDist( x1, p, doc) ;
+  double fx2 = getDist( x2, p, doc);
+
   if (fx1 < fx2)
-    b=x2;
+    b = x2;
   else
-    a=x1;
+    a = x1;
 
   for( int k=1; k <= it - 2; ++k )
   {
     if ( fx1 < fx2 )
     {
-      x=x1;
-      x1=a+x2-x1;
-      x2=x;
-      fx2=fx1;
-      fx1=getDist(x1,p,doc);
+      x = x1;
+      x1 = a + x2 - x1;
+      x2 = x;
+      fx2 = fx1;
+      fx1 = getDist( x1, p, doc);
     }
     else
     {
-      x=x2;
-      x2=b-x2+x1;
-      x1=x;
-      fx1=fx2;
-      fx2=getDist(x2,p,doc);
+      x = x2;
+      x2 = b - x2 + x1;
+      x1 = x;
+      fx1 = fx2;
+      fx2 = getDist( x2, p, doc);
     }
     if (fx1 < fx2 )
-      b=x2;
+      b = x2;
     else
-      a=x1;
+      a = x1;
   }
-  x1=(a+b)/2.;
-  x2=x1+epsilon;
-  x1=x1-epsilon;
-  fx1=getDist(x1,p,doc);
-  fx2=getDist(x2,p,doc);
+  x1 = ( a + b ) / 2.;
+  x2 = x1 + epsilon / 2.;
+  x1 = x1 - epsilon / 2.;
+  fx1 = getDist( x1, p, doc);
+  fx2 = getDist( x2, p, doc);
   if (fx1 < fx2)
-    b=x2;
+    b = x2;
   else
-    a=x1;
+    a = x1;
 
-  x=(a+b)/2.;
+  x = fmod( ( a +b ) / 2., 1 );
+  if( x < 0 ) x += 1.;
   return(x);
 }

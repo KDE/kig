@@ -58,7 +58,7 @@ public:
   int id() const;
   double getDist(double param, const Coordinate& p, const KigDocument& doc) const;
   void getInterval(double& x1,double& x2,double incr,const Coordinate& p, const KigDocument& doc) const;
-  double getParamofmin(double a, double b, int M,const Coordinate& p,int t[3], const KigDocument& doc) const;
+  double getParamofmin(double a, double b, const Coordinate& p, const KigDocument& doc) const;
 };
 
 #endif
