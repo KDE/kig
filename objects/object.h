@@ -41,6 +41,7 @@ class Vector;
 class Ray;
 class Line;
 class Circle;
+class Conic;
 class Curve;
 class NormalPoint;
 class TextLabel;
@@ -150,6 +151,7 @@ public:
   virtual Ray* toRay() { return 0; };
   virtual Line* toLine() { return 0; };
   virtual Circle* toCircle() { return 0; };
+  virtual Conic* toConic() { return 0; };
   virtual Curve* toCurve() { return 0; };
   virtual NormalPoint* toNormalPoint() { return 0; };
   virtual TextLabel* toTextLabel() { return 0; };
@@ -162,6 +164,7 @@ public:
   virtual const Ray* toRay() const { return 0; };
   virtual const Line* toLine() const { return 0; };
   virtual const Circle* toCircle() const { return 0; };
+  virtual const Conic* toConic() const { return 0; };
   virtual const Curve* toCurve() const { return 0; };
   virtual const NormalPoint* toNormalPoint() const { return 0; };
   virtual const TextLabel* toTextLabel() const { return 0; };

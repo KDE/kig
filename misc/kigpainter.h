@@ -175,6 +175,12 @@ public:
    */
   void drawArc( const Rect& surroundingRect, int startAngle, int angle );
 
+  /**
+   * draw a conic..
+   */
+  void drawConic( Coordinate focus1, double pdimen,
+                  double ecostheta0, double esintheta );
+
   /*
    * draw text...
    * @see QPainter::drawText()

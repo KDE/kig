@@ -109,6 +109,7 @@
   <Action name="objects_new_arc" />
   <Action name="objects_new_locus" />
   <Action name="objects_new_textlabel" />
+  <Action name="objects_new_ellipsebffp" />
   <ActionList name="user_other_types" />
   <ActionList name="user_circle_types" />
 </ToolBar>

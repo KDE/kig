@@ -259,8 +259,8 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
 
   // some stuff we may need:
   Coordinate p3 = p2 - p1;
-  double length = p3.length();
   Rect border = window();
+  double length = p3.length();
   // if length is smaller than one, we risk getting a divide by zero
   length = std::max( length, 1. );
   p3 *= overlayRectSize();
@@ -272,7 +272,6 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
   r.normalize();
 
   for (;;) {
-    // sanity check...
     Rect tR( Coordinate( 0, 0 ), overlayRectSize(), overlayRectSize() );
     Coordinate tP = p1+p3*counter;
     tR.setCenter(tP);
@@ -423,4 +422,40 @@ void KigPainter::drawArc( const Rect& surroundingRect, int startAngle, int angle
 void KigPainter::drawFatPoint( const Coordinate& p )
 {
     drawFatPoint( p, 5 * pixelWidth() );
+}
+
+void KigPainter::drawConic( Coordinate focus1, double pdimen, double ecostheta, double esintheta )
+{
+  // this code is by Maurizio Paolini, I ( Dominique ) adapted it a
+  // bit afterwards..
+
+  // we manage our own overlay, because the one from drawSegment is
+  // way too slow here and generates too much rects..
+  bool tNeedOverlay = mNeedOverlay;
+  mNeedOverlay = false;
+  Rect overlay;
+
+  // the number of points we visit..
+  static const int sDrawPrecision = 200;
+
+  // oldpos contains the point that we should draw a line towards from
+  // the next point...
+  Coordinate oldpos = focus1 + Coordinate( pdimen / ( 1.0 - ecostheta ), 0 );
+  const double stepDist = 2*M_PI / sDrawPrecision;
+
+  for ( int step = 1; step <= sDrawPrecision; ++step )
+  {
+    double theta = step * stepDist;
+    double costheta = cos( theta );
+    double sintheta = sin( theta );
+    double ecosthetamtheta = costheta*ecostheta + sintheta*esintheta;
+    double rho = pdimen / (1.0 - ecosthetamtheta);
+    Coordinate pos = focus1 + rho * Coordinate( costheta, sintheta );
+    overlay.setContains( pos );
+    drawSegment (oldpos, pos);
+    oldpos = pos;
+  }
+
+  mOverlay.push_back( toScreen( overlay ) );
+  mNeedOverlay = tNeedOverlay;
 }

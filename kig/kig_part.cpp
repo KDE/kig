@@ -29,6 +29,7 @@
 
 #include "../modes/normal.h"
 #include "../objects/circle.h"
+#include "../objects/conic.h"
 #include "../objects/segment.h"
 #include "../objects/normalpoint.h"
 #include "../objects/midpoint.h"
@@ -181,6 +182,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<LineRadical> );
     Object::addBuiltinType( new TStdType<CircleBCP> );
     Object::addBuiltinType( new TStdType<CircleBTP> );
+    Object::addBuiltinType( new TStdType<EllipseBFFP> );
     Object::addBuiltinType( new TStdType<MidPoint> );
     Object::addBuiltinType( new TStdType<IntersectionPoint> );
     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
@@ -542,6 +544,8 @@ void KigDocument::addType( Type* t, bool user )
       aMNewLine.append( a );
     else if (t->baseTypeName() == Circle::sBaseTypeName())
       aMNewCircle.append( a );
+    else if (t->baseTypeName() == Conic::sBaseTypeName())
+      aMNewOther.append( a );
     else if (t->baseTypeName() == Segment::sBaseTypeName())
       aMNewSegment.append( a );
     else

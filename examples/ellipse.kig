@@ -1,0 +1,30 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="0.2.0" >
+<ObjectHierarchy>
+<HierarchyElement given="false" typeName="NormalPoint" id="1" final="true" >
+<param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-5.76253</param>
+   <param name="y" >0.831135</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="2" final="true" >
+<param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >1.77309</param>
+   <param name="y" >1.20053</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="3" final="true" >
+<param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-2.29024</param>
+   <param name="y" >4.15567</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="EllipseBFFP" id="4" final="true" >
+<parent id="1" />
+   <parent id="2" />
+   <parent id="3" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement> </ObjectHierarchy></KigDocument>
