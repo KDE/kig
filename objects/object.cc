@@ -451,4 +451,14 @@ void Object::move( const Coordinate&, const Coordinate&,
   assert( false );
 }
 
+QColor Object::color() const
+{
+  assert( false );
+}
+
+QColor RealObject::color() const
+{
+  return mcolor;
+}
+
 

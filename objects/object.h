@@ -69,6 +69,7 @@ public:
   virtual bool shown() const = 0;
   virtual void setShown( bool s );
 
+  virtual QColor color() const;
   virtual void setColor( const QColor& c );
 
   virtual void setSelected( bool s );
@@ -169,7 +170,7 @@ public:
   void setImp( ObjectImp* i );
   void setType( const ObjectType* t );
 
-  QColor color() const { return mcolor; };
+  QColor color() const;
   void setColor( const QColor& c );
 
   bool selected() const { return mselected; };
