@@ -7,11 +7,6 @@
 
 - make the code in filters/ --enable-final compliant.
 
-- Provide some nice stuff for differential geometry: velocity vector
-   of a curve, curvature vector, osculating parabole, osculating
-   circle, evolute.  Most of this is fairly trivial to implement, but
-   very cool :)
-
 - let the user select where the vector sum starts, instead of drawing
    it in the start point of the first vector.
 
@@ -70,6 +65,11 @@
 - implement cut, copy and paste for objects...
 
 * harder:
+
+- Provide some nice stuff for differential geometry: velocity vector
+   of a curve, curvature vector, osculating parabole, osculating
+   circle, evolute.  Most of this is not too difficult to implement, but
+   very cool :)
 
 - when moving an object that wants to move its parents, try to check if
    it is itself not an indirect child of one of the parents it is
