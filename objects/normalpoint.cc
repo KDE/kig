@@ -24,6 +24,7 @@
 
 #include "../modes/constructing.h"
 #include "../modes/moving.h"
+#include "../modes/popup.h"
 
 QString i18n( const char* );
 
@@ -537,16 +538,13 @@ const char* NormalPoint::sActionName()
   return "objects_new_normalpoint";
 }
 
-const QStringList NormalPoint::objectActions() const
+void NormalPoint::addActions( NormalModePopupObjects& popup )
 {
-  QStringList l;
-  l << i18n( "Redefine this point..." );
-  return l;
+  popup.addNormalAction( NormalModePopupObjects::virtualActionsOffset + 10, i18n( "Redefine this point..." ) );
 }
 
-void NormalPoint::doAction( int which, KigDocument* d, KigWidget* v, NormalMode* m )
+void NormalPoint::doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m )
 {
-  assert( which == 0 );
+  assert( which == NormalModePopupObjects::virtualActionsOffset + 10 );
   d->setMode( new NormalPointRedefineMode( this, d, v, m ) );
-  return;
 }

@@ -28,6 +28,7 @@
 class AbstractLine
   : public Curve
 {
+  int msize;
 public:
   AbstractLine();
   AbstractLine( const AbstractLine& l );

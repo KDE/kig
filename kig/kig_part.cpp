@@ -436,7 +436,7 @@ Objects KigDocument::whatIsInHere( const Rect& p )
 
 Rect KigDocument::suggestedRect()
 {
-  if( mObjs.empty() ) return Rect( -2, -2, 2, 2 );
+  if( mObjs.empty() ) return Rect( -7, -7, 7, 7 );
   bool rectInited = false;
   Rect r(0,0,0,0);
   Point* p;

@@ -27,7 +27,7 @@
 #include "../misc/i18n.h"
 
 Point::Point( const Coordinate& p )
- : mC( p )
+  : mC( p ), msize( 5 )
 {
 };
 
@@ -42,7 +42,7 @@ void Point::draw (KigPainter& p, bool ss) const
   p.setBrushStyle( Qt::SolidPattern );
   p.setBrushColor( s ? Qt::red : mColor );
   p.setPen( QPen ( s ? Qt::red : mColor, 1 ) );
-  p.drawPoint( mC, false );
+  p.drawFatPoint( mC, msize );
   p.setBrush (Qt::NoBrush);
 };
 
@@ -97,10 +97,31 @@ void Point::setY(const double inY)
 }
 
 Point::Point()
+  : mC(), msize( 5 )
 {
 }
 
 Point::Point( const Point& p )
-  : Object( p ), mC( p.mC )
+  : Object( p ), mC( p.mC ), msize( 5 )
 {
+}
+
+std::map<QCString,QString> Point::getParams()
+{
+  std::map<QCString, QString> ret = Object::getParams();
+  ret["point-size"] = QString::number( msize );
+  return ret;
+}
+
+void Point::setParams( const std::map<QCString,QString>& m )
+{
+  Object::setParams( m );
+  std::map<QCString, QString>::const_iterator p = m.find( "point-size" );
+  if ( p == m.end() ) msize = 5;
+  else
+  {
+    bool ok = true;
+    msize = p->second.toInt( &ok );
+    if ( ! ok ) msize = 5;
+  };
 }

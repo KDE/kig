@@ -185,7 +185,7 @@ void MirrorPoint::sDrawPrelim( KigPainter& p, const Objects& os )
     d = 2* c->getCoord() - q->getCoord();
   };
   p.setPen( QPen( Qt::red, 1 ) );
-  p.drawPoint( d, false );
+  p.drawFatPoint( d );
 }
 
 Object::WantArgsResult MirrorPoint::sWantArgs( const Objects& os )

@@ -49,6 +49,9 @@ public:
 
   const Coordinate& getCoord() const;
 
+  virtual std::map<QCString,QString> getParams ();
+  virtual void setParams ( const std::map<QCString,QString>& );
+
 public:
   double getX() const;
   double getY() const;
@@ -57,6 +60,7 @@ public:
 
 protected:
   Coordinate mC;
+  int msize;
 };
 
 #endif // POINT_H

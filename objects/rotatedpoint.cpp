@@ -160,7 +160,7 @@ void RotatedPoint::sDrawPrelim( KigPainter& p, const Objects& os )
   Coordinate c = calcRotatedPoint( cp, cc, ma->size() );
 
   p.setPen( QPen( Qt::red, 1 ) );
-  p.drawPoint( c, false );
+  p.drawFatPoint( c );
 }
 
 Object::WantArgsResult RotatedPoint::sWantArgs( const Objects& os )

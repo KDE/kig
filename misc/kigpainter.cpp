@@ -72,21 +72,19 @@ void KigPainter::drawSegment( const Coordinate& from, const Coordinate& to )
   if( mNeedOverlay ) segmentOverlay( from, to );
 }
 
-void KigPainter::drawPoint( const Coordinate& p, bool s )
+void KigPainter::drawFatPoint( const Coordinate& p, int size )
 {
-  if( s )
-  {
-    mP.drawPoint( toScreen(p) );
-    if( mNeedOverlay ) pointOverlay( p );
-  }
-  else
-  {
-    setBrushStyle( Qt::SolidPattern );
-    QRect r( 0, 0, 5, 5 );
-    r.moveCenter( toScreen( p ) );
-    mP.drawEllipse( r );
-    if( mNeedOverlay ) mOverlay.push_back( r );
-  }
+  setBrushStyle( Qt::SolidPattern );
+  QRect r( 0, 0, size, size );
+  r.moveCenter( toScreen( p ) );
+  mP.drawEllipse( r );
+  if( mNeedOverlay ) mOverlay.push_back( r );
+}
+
+void KigPainter::drawPoint( const Coordinate& p )
+{
+  mP.drawPoint( toScreen(p) );
+  if( mNeedOverlay ) pointOverlay( p );
 }
 
 void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )

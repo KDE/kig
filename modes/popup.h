@@ -23,8 +23,12 @@
 
 #include <kpopupmenu.h>
 
+#include <map>
+
 #include "../objects/object.h"
 #include "../misc/objects.h"
+
+using std::map;
 
 class KigDocument;
 class KigWidget;
@@ -35,23 +39,27 @@ class NormalModePopupObjects
 {
   Q_OBJECT
 
-  static const uint titleId = 0;
-  static const uint useId = 1;
-  static const uint colorId = 2;
-  static const uint moveId = 3;
-  static const uint deleteId = 4;
-  static const uint hideId = 5;
-  static const uint restOffset = 6;
-
   QPoint mp;
   KigDocument* mdoc;
   KigWidget* mview;
   Objects mobjs;
   NormalMode* mmode;
 
+  static const uint titleId = 0;
+  static const uint useId = 1;
+  static const uint colorId = 2;
+  static const uint moveId = 3;
+  static const uint deleteId = 4;
+  static const uint hideId = 5;
+
+  // see the addPopupMenu() function for this...
+  map<const QPopupMenu*, int> mpopupmap;
+
   QPopupMenu* colorMenu( QWidget* parent );
   const QColor* color( int );
 
+  // i could do some of these as virtual actions, but they need to be
+  // appliable to multiple objects at the same time...
   void addColorPopup();
   void addUsePopup();
   void addHideItem();
@@ -65,10 +73,33 @@ public:
                           NormalMode* mode, const Objects& objs );
   ~NormalModePopupObjects() {};
 
+  static const uint virtualActionsOffset = 6;
+
+  // these two are the functions that objects can add objects to us
+  // with, in their addActions() method...
+  // here, id should be unique for all popup menu's defined by a type
+  // of object..  Don't forget to take into account any id's that your
+  // parent may use.  If one of these actions is selected, then
+  // Object::doPopupAction() will be called with the appropriate
+  // arguments ( the first one being the id you give here, and the
+  // second one being the index of the action in @param actions (
+  // starting at 0 )... )
+  void addPopupAction( uint id, const QStringList& actions );
+
+  // with this function, objects may add a normal action to us.  id
+  // should be unique for all actions that an object defines ( note
+  // that it can be the same as id's for popup menu's given
+  // above.. ).  Don't forget to consider the id's that your parent
+  // uses...  If this action gets selected by the user, then
+  // Object::doNormalAction will be called with the appropriate
+  // arguments...
+  void addNormalAction( uint id, const QString& name );
+
 protected slots:
   void doAction( int );
   void doUse( int );
-  void setColor( int );
+  void doSetColor( int );
+  void doPopup( int );
 };
 
 

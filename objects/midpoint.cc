@@ -169,5 +169,5 @@ void MidPoint::sDrawPrelim( KigPainter& p, const Objects& args )
     Coordinate a = p->getCoord(), b = q->getCoord();
     m = ( a + b ) / 2;
   };
-  p.drawPoint( m, false );
+  p.drawFatPoint( m );
 }

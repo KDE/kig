@@ -155,7 +155,7 @@ void TranslatedPoint::sDrawPrelim( KigPainter& p, const Objects& os )
   assert( q && v );
   Coordinate c = q->getCoord() + v->getDir();
   p.setPen( QPen( Qt::red, 1 ) );
-  p.drawPoint( c, false );
+  p.drawFatPoint( c );
 }
 
 Object::WantArgsResult TranslatedPoint::sWantArgs( const Objects& os )

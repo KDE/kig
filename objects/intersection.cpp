@@ -174,7 +174,7 @@ void IntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
     };
   };
   p.setPen( QPen( Qt::red, 1 ) );
-  p.drawPoint( calcIntersectionPoint( pa, pb, pc, pd ), false );
+  p.drawFatPoint( calcIntersectionPoint( pa, pb, pc, pd ) );
 }
 
 Object::WantArgsResult IntersectionPoint::sWantArgs( const Objects& os )
@@ -297,8 +297,8 @@ void CircleLineIntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os 
                                                 false, valid );
   if ( valid )
   {
-    p.drawPoint( d, false );
-    p.drawPoint( e, false );
+    p.drawFatPoint( d );
+    p.drawFatPoint( e );
   };
 }
 

@@ -148,11 +148,17 @@ public:
   void drawLine ( const Coordinate& p1, const Coordinate& p2 );
 
   /**
-   * draw a point...
-   * small == true means only draw a single dot, otherwise an ellipse
-   * will be drawn as for Point objects
+   * draw a point...  This means a single point, as in
+   * QPainter::drawPoint(), unlike drawFatPoint()...
    */
-  void drawPoint( const Coordinate& p, bool small = true );
+  void drawPoint( const Coordinate& p );
+
+  /**
+   * draw a thick point..  This is what the user sees when he draws a
+   * point.  In fact it isn't a point, but a filled ellipse of a
+   * certain @param size...
+   */
+  void drawFatPoint( const Coordinate& p, int size = 5 );
 
   /**
    * draw a polygon defined by the points in pts...

@@ -143,16 +143,6 @@ void Object::drawWrap(KigPainter& p, bool ss) const
   if ( mshown && mvalid ) draw(p,ss);
 }
 
-const QStringList Object::objectActions() const
-{
-  return QStringList();
-}
-
-void Object::doAction( int, KigDocument*, KigWidget*, NormalMode* )
-{
-  return;
-}
-
 void Object::addBuiltinType( Type* t )
 {
   stypes.addType( t );
@@ -223,4 +213,19 @@ bool Object::shown() const
 void Object::setShown( bool in )
 {
   mshown = in;
+}
+
+void Object::addActions( NormalModePopupObjects& )
+{
+  return;
+}
+
+void Object::doNormalAction( int, KigDocument*, KigWidget*, NormalMode* )
+{
+  return;
+}
+
+void Object::doPopupAction( int, int, KigDocument*, KigWidget*, NormalMode* )
+{
+  return;
 }

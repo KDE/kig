@@ -98,8 +98,8 @@ public:
 
   static KigMode* sConstructMode( Type*, KigDocument*, NormalMode* );
 
-  const QStringList objectActions() const;
-  void doAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
+  virtual void addActions( NormalModePopupObjects& );
+  virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
 
   virtual Objects getParents() const;
   virtual void calc( const ScreenInfo& s );

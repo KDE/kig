@@ -85,11 +85,10 @@ void NormalModePopupObjects::doAction( int i )
   {
     // i >= restOffset, which means that one of the object specific actions was
     // activated...
-    assert( (uint) i >= restOffset );
+    assert( (uint) i >= virtualActionsOffset );
     assert( mobjs.size() == 1 );
     Object* o = mobjs[0];
-    assert( ((uint)i) - restOffset < o->objectActions().size() );
-    o->doAction( i - restOffset, mdoc, mview, mmode );
+    o->doNormalAction( i, mdoc, mview, mmode );
   }
   };
   mmode->clearSelection();
@@ -127,7 +126,7 @@ QPopupMenu* NormalModePopupObjects::colorMenu( QWidget* parent )
   return m;
 }
 
-void NormalModePopupObjects::setColor( int c )
+void NormalModePopupObjects::doSetColor( int c )
 {
   const QColor* d = color( c );
   assert( d );
@@ -195,14 +194,8 @@ void NormalModePopupObjects::addVirtualItems()
 {
   if ( mobjs.size() == 1 )
   {
-    uint id = restOffset;
     // we show the object-specific actions...
-    QStringList l = mobjs[0]->objectActions();
-    for ( QStringList::const_iterator i = l.begin(); i != l.end(); ++i, ++id )
-    {
-      uint rid = insertItem( *i, id );
-      assert( rid == id );
-    };
+    mobjs[0]->addActions( *this );
   };
 }
 
@@ -248,4 +241,37 @@ void NormalModePopupObjects::doUse( int id )
     assert( false );
     break;
   };
+}
+
+void NormalModePopupObjects::addPopupAction( uint id, const QStringList& actions )
+{
+  QPopupMenu* popup = new QPopupMenu( this, "Virtual popup" );
+  connect( popup, SIGNAL( activated( int ) ), SLOT( doPopup( int ) ) );
+  int tid = 0;
+  for ( QStringList::const_iterator i = actions.begin(); i != actions.end(); ++i, ++tid )
+  {
+    int rid = popup->insertItem( *i, tid );
+    assert( rid == tid );
+  };
+  mpopupmap[popup] = id;
+}
+
+void NormalModePopupObjects::addNormalAction( uint id, const QString& name )
+{
+  uint rid = insertItem( name, id );
+  assert( rid == id );
+}
+
+void NormalModePopupObjects::doPopup( int id )
+{
+  // sender() is a very ugly QObject member that returns the object
+  // that called this slot.  Did I mention i find the entire Qt Object
+  // Model ugly as hell ?  /me throws the Design Patterns book at the
+  // TrollTech coders...
+  // but we use it here anyway, since we need it...
+  const QObject* qo = sender();
+  int popupid = mpopupmap[static_cast<const QPopupMenu*>( qo )];
+  assert( mobjs.size() == 1 );
+  Object* o = mobjs[0];
+  o->doPopupAction( popupid, id, mdoc, mview, mmode );
 }

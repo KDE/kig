@@ -54,6 +54,7 @@ class Rect;
 class NormalMode;
 class ScreenInfo;
 class StdConstructibleType;
+class NormalModePopupObjects;
 
 /**
  * Object is a base class representing all objects (e.g. points, lines etc.).
@@ -280,8 +281,9 @@ public:
    * popup menu for a single object is shown.  An example is
    * NormalPoint that has a "redefine" action...
    */
-  virtual const QStringList objectActions() const;
-  virtual void doAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
+  virtual void addActions( NormalModePopupObjects& );
+  virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
+  virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m );
 
 protected:
   QColor mColor;
