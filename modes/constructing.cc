@@ -104,7 +104,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
     Coordinate d( i, i );
     p.drawSimpleText( c + d*2, s );
     p.drawPoint( c, false );
-    v->setCursor( KCursor::arrowCursor() );
+    v->setCursor( KCursor::blankCursor() );
   }
   else
   {

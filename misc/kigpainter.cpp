@@ -75,12 +75,15 @@ void KigPainter::drawSegment( const Coordinate& from, const Coordinate& to )
 void KigPainter::drawPoint( const Coordinate& p, bool s )
 {
   if( s )
-    {
-      mP.drawPoint( toScreen(p) );
-      if( mNeedOverlay ) pointOverlay( p );
-    }
+  {
+    mP.drawPoint( toScreen(p) );
+    if( mNeedOverlay ) pointOverlay( p );
+  }
   else
+  {
+    setBrushStyle( Qt::SolidPattern );
     drawCircle( p, 2*pixelWidth() );
+  }
 }
 
 void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )
