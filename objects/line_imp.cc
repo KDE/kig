@@ -101,7 +101,7 @@ const QCStringList AbstractLineImp::properties() const
 
 const uint SegmentImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 2;
+  return Parent::numberOfProperties() + 4;
 }
 
 const QCStringList SegmentImp::propertiesInternalNames() const
@@ -109,6 +109,8 @@ const QCStringList SegmentImp::propertiesInternalNames() const
   QCStringList s = Parent::propertiesInternalNames();
   s << I18N_NOOP( "length" );
   s << I18N_NOOP( "mid-point" );
+  s << I18N_NOOP( "end-point-A" );
+  s << I18N_NOOP( "end-point-B" );
   assert( s.size() == SegmentImp::numberOfProperties() );
   return s;
 }
@@ -118,6 +120,8 @@ const QCStringList SegmentImp::properties() const
   QCStringList s = Parent::properties();
   s << I18N_NOOP( "Length" );
   s << I18N_NOOP( "Mid Point" );
+  s << I18N_NOOP( "First End Point" );
+  s << I18N_NOOP( "Second End Point" );
   assert( s.size() == SegmentImp::numberOfProperties() );
   return s;
 }
@@ -131,24 +135,35 @@ const ObjectImpType* SegmentImp::impRequirementForProperty( uint which ) const
 
 const char* SegmentImp::iconForProperty( uint which ) const
 {
+  int pnum = 0;
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
-  else if ( which == Parent::numberOfProperties() )
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return "distance"; // length
-  else if ( which == Parent::numberOfProperties() + 1 )
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return "bisection"; // mid point
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return "endpoint1"; // mid point
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return "endpoint2"; // mid point
   else assert( false );
   return "";
 }
 
 ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
 {
+  int pnum = 0;
+
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
-  else if ( which == Parent::numberOfProperties() )
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return new DoubleImp( mdata.dir().length() );
-  else if ( which == Parent::numberOfProperties() + 1 )
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return new PointImp( ( mdata.a + mdata.b ) / 2 );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return new PointImp( mdata.a );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return new PointImp( mdata.b );
   else assert( false );
   return new InvalidImp;
 }
