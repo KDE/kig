@@ -209,6 +209,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       }
       case G_SCALED:
       {
+        return NotSupported;
         o = new RealObject( ScalingOverCenterType::instance(), parents );
         break;
       }
