@@ -1,10 +1,11 @@
+* very necessary
+
+- save and load ObjectDrawer styles !
+
 * not too hard:
 
 - create a ObjectImp::surroundingRect function, and use it in
    calculating the preferred screen size
-
-- support line styles in Kig.  The code in ObjectDrawer is already
-   there, it just needs the UI support...
 
 - make it possible to zoom to a very specific part of the screen (
    i.e. from (x0,y0) to (x1,y1)
@@ -44,10 +45,8 @@
 
 - fillable polygons/shapes..
 
-- filters: more input filters ( get cabri to work somewhat, Dr.Genius
-  perhaps )
-
-- export to SVG
+- filters: more input filters ( get cabri to work somewhat ), improve
+  and activate Dr. Geo filter ( see filters/drgeo-filter-status.txt )
 
 * hard :
 
@@ -55,8 +54,8 @@
   features.  E.g. I have been asked to allow the user to limit himself
   to compass-ruler constructions..
 
-- "export to *".  We already have images and XFig files, i'd like to
-  add stuff like java applets etc ... :)
+- "export to *": add stuff like java applets, images in Encapsulated
+   Postcript (eps) format, SVG documents, etc...
 
 - koffice support ? 
 
