@@ -18,12 +18,14 @@
 
 #include "object_type_factory.h"
 
-#include "object_type.h"
-#include "line_type.h"
-#include "point_type.h"
 #include "circle_type.h"
-#include "cubic_type.h"
 #include "conic_types.h"
+#include "cubic_type.h"
+#include "intersection_types.h"
+#include "line_type.h"
+#include "other_type.h"
+#include "transform_types.h"
+#include "point_type.h"
 
 ObjectTypeFactory::ObjectTypeFactory()
   : malreadysetup( false )
@@ -65,7 +67,7 @@ void ObjectTypeFactory::setupBuiltinTypes()
   add( CircleBCPType::instance() );
   add( CircleBTPType::instance() );
 
-  // conic_type.h
+  // conic_types.h
   add( ConicB5PType::instance() );
   add( ConicBAAPType::instance() );
   add( EllipseBFFPType::instance() );
@@ -100,7 +102,6 @@ void ObjectTypeFactory::setupBuiltinTypes()
   // other_type.h
   add( AngleType::instance() );
   add( VectorType::instance() );
-  add( LocusType::instance() );
 
   // point_type.h
   add( FixedPointType::instance() );
