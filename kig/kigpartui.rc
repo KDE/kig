@@ -119,6 +119,7 @@
       <Action name="objects_new_rotation" />
       <Action name="objects_new_scalingovercenter" />
       <Action name="objects_new_scalingoverline" />
+      <Action name="objects_new_similitude" />
       <Action name="objects_new_harmonichomology" />
       <Action name="objects_new_affinitygi3p" />
       <Action name="objects_new_projectivitygi4p" />
@@ -217,6 +218,7 @@
     <Action name="objects_new_rotation" />
     <Action name="objects_new_scalingovercenter" />
     <Action name="objects_new_scalingoverline" />
+    <Action name="objects_new_similitude" />
     <Action name="objects_new_harmonichomology" />
     <Action name="objects_new_affinitygi3p" />
     <Action name="objects_new_projectivitygi4p" />

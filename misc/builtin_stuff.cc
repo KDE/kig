@@ -364,6 +364,14 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline" ) );
 
     c = new SimpleObjectTypeConstructor(
+      SimilitudeType::instance(),
+      I18N_NOOP( "Apply a similitude" ),
+      I18N_NOOP( "Apply a similitude to an object ( the sequence of a scaling and rotation around a center )" ),
+      "similitude" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_similitude" ) );
+
+    c = new SimpleObjectTypeConstructor(
       HarmonicHomologyType::instance(),
       I18N_NOOP( "Harmonic Homology" ),
       I18N_NOOP( "The harmonic homology with a given center and a given axis (this is a projective transformation)" ),

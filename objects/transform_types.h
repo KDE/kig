@@ -176,4 +176,17 @@ public:
   bool isTransform() const;
 };
 
+class SimilitudeType
+  : public ArgsParserObjectType
+{
+  SimilitudeType();
+  ~SimilitudeType();
+public:
+  static const SimilitudeType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+  bool isTransform() const;
+};
+
 #endif

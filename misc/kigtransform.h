@@ -146,6 +146,13 @@ public:
                                                   const Coordinate& t );
 
   /**
+   * Similitude.  Sequence of a rotation and a scaling with relation
+   * to a certain center.
+   */
+  static const Transformation similitude(
+    const Coordinate& center, double theta, double factor );
+
+  /**
    * Sequence.  This creates a Transformation that executes first
    * transformation b, and then a.
    */

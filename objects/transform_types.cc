@@ -585,3 +585,53 @@ bool ApplyTransformationObjectType::isTransform() const
 {
   return true;
 }
+
+bool SimilitudeType::isTransform() const
+{
+  return true;
+}
+
+const ObjectImpType* SimilitudeType::resultId() const
+{
+  return ObjectImp::stype();
+}
+
+const SimilitudeType* SimilitudeType::instance()
+{
+  static const SimilitudeType t;
+  return &t;
+}
+
+ObjectImp* SimilitudeType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  Coordinate c = static_cast<const PointImp*>( args[1] )->coordinate();
+  Coordinate a = static_cast<const PointImp*>( args[2] )->coordinate();
+  Coordinate b = static_cast<const PointImp*>( args[3] )->coordinate();
+  a -= c;
+  b -= c;
+  double factor = sqrt( b.squareLength()/a.squareLength() );
+  double theta = atan2( b.y, b.x ) - atan2( a.y, a.x );
+
+  return args[0]->transform( Transformation::similitude( c, theta, factor ) );
+}
+
+SimilitudeType::~SimilitudeType()
+{
+}
+
+static const ArgsParser::spec argsspecSimilitude[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Apply a similitude to this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "Apply a similitude with this center" ), false },
+  { PointImp::stype(), I18N_NOOP( "Apply a similitude mapping this point onto another point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Apply a similitude mapping a point onto this point" ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( SimilitudeType )
+
+SimilitudeType::SimilitudeType()
+  : ArgsParserObjectType( "Similitude", argsspecSimilitude, 4 )
+{
+}

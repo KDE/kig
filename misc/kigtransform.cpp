@@ -27,6 +27,7 @@
 #include <cmath>
 
 #include <klocale.h>
+#include <kdebug.h>
 
 // Transformation getProjectiveTransformation ( int argsnum,
 //     Object *transforms[], bool& valid )
@@ -716,4 +717,24 @@ bool operator==( const Transformation& lhs, const Transformation& rhs )
       if ( lhs.data( i, j ) != rhs.data( i, j ) )
         return false;
   return true;
+}
+
+const Transformation Transformation::similitude(
+  const Coordinate& center, double theta, double factor )
+{
+  kdDebug() << k_funcinfo << "theta: " << theta << " factor: " << factor << endl;
+  Transformation ret;
+  double costheta = cos( theta );
+  double sintheta = sin( theta );
+  ret.mdata[0][0] = 1;
+  ret.mdata[0][1] = 0;
+  ret.mdata[0][2] = 0;
+  ret.mdata[1][0] = ( 1 - factor*costheta )*center.x + factor*sintheta*center.y;
+  ret.mdata[1][1] = factor*costheta;
+  ret.mdata[1][2] = -factor*sintheta;
+  ret.mdata[2][0] = -factor*sintheta*center.x + ( 1 - factor*costheta )*center.y;
+  ret.mdata[2][1] = factor*sintheta;
+  ret.mdata[2][2] = factor*costheta;
+  assert( ( ret.apply( center ) - center ).length() < 1e-5 );
+  return ret;
 }
