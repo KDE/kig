@@ -30,9 +30,9 @@ class Transformation;
 class LineData;
 
 /**
- * This class represents an equation of a conic in the form
- * "ax^2 + by^2 + cxy + dx + ey + f = 0".  The coefficients are stored
- * in the order a - f.
+ * Cartesian Conic Data. This class represents an equation of a conic
+ * in the form "ax^2 + by^2 + cxy + dx + ey + f = 0".
+ * \internal The coefficients are stored in the order a - f.
  */
 class ConicCartesianData
 {
