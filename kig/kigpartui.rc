@@ -96,6 +96,7 @@
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_script_object" />
+	<Action name="objects_new_measuretransport" />
 	<ActionList name="user_other_types" />
       </Menu>
       <Separator />

@@ -409,6 +409,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_containstest" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      MeasureTransportType::instance(),
+      I18N_NOOP( "Measure transport" ),
+      I18N_NOOP( "Transport the measure of a segment over a circle." ),
+      "measuretransport" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_measuretransport" ) );
+
     // the generic intersection constructor..
     c = new GenericIntersectionConstructor();
     ctors->add( c );

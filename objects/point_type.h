@@ -21,6 +21,7 @@
 
 #include "base_type.h"
 #include "common.h"
+#include "circle_imp.h"
 
 class FixedPointType
   : public ArgsParserObjectType
@@ -77,6 +78,21 @@ class MidPointType
 public:
   static const MidPointType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  const ObjectImpType* resultId() const;
+};
+
+class MeasureTransportType
+  : public ArgsParserObjectType
+{
+  MeasureTransportType();
+  ~MeasureTransportType();
+public:
+  static const MeasureTransportType* instance();
+
+  bool inherits( int type ) const;
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  bool canMove() const;
   const ObjectImpType* resultId() const;
 };
 

@@ -297,3 +297,59 @@ std::vector<ObjectCalcer*> ConstrainedPointType::movableParents( const ObjectTyp
   ret.push_back( ourobj.parents()[0] );
   return ret;
 }
+
+ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& doc ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  const CircleImp* c = static_cast<const CircleImp*>( parents[0] );
+  const PointImp* p = static_cast<const PointImp*>( parents[1] );
+  const SegmentImp* s = static_cast<const SegmentImp*>( parents[2] );
+  double param = c->getParam( p->coordinate(), doc );
+  double measure = s->length();
+  measure /= 2*c->radius()*M_PI;
+  param += measure;
+  while (param > 1) param -= 1;
+
+//  const Coordinate nc = static_cast<const CurveImp*>c->getPoint( param, doc );
+  const Coordinate nc = c->getPoint( param, doc );
+  if ( nc.valid() ) return new PointImp( nc );
+  else return new InvalidImp;
+}
+
+const ArgsParser::spec argsspecMeasureTransport[] =
+{
+  { CircleImp::stype(), "transport measure on this circle" },
+  { PointImp::stype(), "project this point onto the circle" },
+  { SegmentImp::stype(), "Segment to transport" }
+};
+
+MeasureTransportType::MeasureTransportType()
+  : ArgsParserObjectType( "MeasureTransport", argsspecMeasureTransport, 3 )
+{
+}
+
+MeasureTransportType::~MeasureTransportType()
+{
+}
+
+bool MeasureTransportType::canMove() const
+{
+  return false;
+}
+
+bool MeasureTransportType::inherits( int type ) const
+{
+  return type == ID_ConstrainedPointType;
+}
+
+const MeasureTransportType* MeasureTransportType::instance()
+{
+  static const MeasureTransportType t;
+  return &t;
+}
+
+const ObjectImpType* MeasureTransportType::resultId() const
+{
+  return PointImp::stype();
+}
