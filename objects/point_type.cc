@@ -409,7 +409,7 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
 {
   double measure;
 
-  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  if ( parents.size() != 3 ) return new InvalidImp;
 
   if ( parents[0]->inherits (SegmentImp::stype()) )
   {
@@ -454,20 +454,14 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
   return new InvalidImp;
 }
 
-static const ArgsParser::spec argsspecMeasureTransport[] =
-{
-  { ObjectImp::stype(), "Segment/Arc to transport",
-    I18N_NOOP( "Select the segment/arc to transport on the circle/line..." ), false },
-  { ObjectImp::stype(), "Transport a measure on this circle/line",
-    I18N_NOOP( "Select the circle/line on which to transport a measure..." ), true },
-  { PointImp::stype(), "Start transport from this point of the circle/line",
-    I18N_NOOP( "Select a point on the circle/line..." ), false }
-};
+//    I18N_NOOP( "Select the segment/arc to transport on the circle/line..." ), false },
+//    I18N_NOOP( "Select the circle/line on which to transport a measure..." ), true },
+//    I18N_NOOP( "Select a point on the circle/line..." ), false }
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MeasureTransportType )
 
 MeasureTransportType::MeasureTransportType()
-  : ArgsParserObjectType( "TransportOfMeasure", argsspecMeasureTransport, 3 )
+  : ObjectType( "TransportOfMeasure" )
 {
 }
 
@@ -484,6 +478,43 @@ const MeasureTransportType* MeasureTransportType::instance()
 const ObjectImpType* MeasureTransportType::resultId() const
 {
   return PointImp::stype();
+}
+
+const ObjectImpType* MeasureTransportType::impRequirement( const ObjectImp* obj, const Args& parents ) const
+{
+  if ( obj->inherits( PointImp::stype () ) && parents.size() < 3 )
+    return PointImp::stype ();
+
+  if ( obj->inherits( LineImp::stype () ) && parents.size() < 2 )
+    return LineImp::stype ();
+
+  if ( obj->inherits( CircleImp::stype () ) && parents.size() < 2 )
+    return CircleImp::stype ();
+
+  if ( obj->inherits( SegmentImp::stype () ) && parents.size() < 1 )
+    return SegmentImp::stype ();
+
+  if ( obj->inherits( ArcImp::stype () ) && parents.size() < 1 )
+    return ArcImp::stype ();
+
+  return 0;
+}
+
+bool MeasureTransportType::isDefinedOnOrThrough( const ObjectImp* o, const Args& ) const
+{
+  if ( o->inherits( LineImp::stype() ) ) return true;
+  if ( o->inherits( CircleImp::stype() ) ) return true;
+  return false;
+}
+
+std::vector<ObjectCalcer*> MeasureTransportType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+{
+  return args;  /* should already be in correct order */
+}
+
+Args MeasureTransportType::sortArgs( const Args& args ) const
+{
+  return args;
 }
 
 /* - transport of measure (old, for compatibility with prev. kig files) - */

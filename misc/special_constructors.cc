@@ -43,6 +43,7 @@
 #include "../objects/other_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/point_imp.h"
+#include "../objects/point_type.h"
 #include "../objects/polygon_imp.h"
 #include "../objects/tangent_type.h"
 #include "../objects/centerofcurvature_type.h"
@@ -756,16 +757,6 @@ QString ConicRadicalConstructor::useText( const ObjectCalcer& o, const std::vect
  * points we shall use a Generic constructor, like that for intersections.
  */
 
-/*
-    c = new SimpleObjectTypeConstructor(
-      ProjectivityB2QuType::instance(),
-      I18N_NOOP( "Generic Projective Transformation" ),
-      I18N_NOOP( "The unique projective transformation that maps 4 given points onto 4 other given points" ),
-      "genericprojectivity" );
-    ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_projectivityb2qu" ) );
- */
-
 GenericAffinityConstructor::GenericAffinityConstructor()
   : MergeObjectConstructor(
     I18N_NOOP( "Generic Affinity" ),
@@ -813,6 +804,175 @@ GenericProjectivityConstructor::GenericProjectivityConstructor()
 }
 
 GenericProjectivityConstructor::~GenericProjectivityConstructor() {}
+
+/*
+ * Transport of Measure 
+ */
+
+MeasureTransportConstructor::MeasureTransportConstructor()
+  : mtype( MeasureTransportType::instance() )
+{
+}
+
+MeasureTransportConstructor::~MeasureTransportConstructor()
+{
+}
+
+const QString MeasureTransportConstructor::descriptiveName() const
+{
+  return i18n("Measure Transport");
+}
+
+const QString MeasureTransportConstructor::description() const
+{
+  return i18n("Transport the measure of a segment or arc over a line or circle.");
+}
+
+const QCString MeasureTransportConstructor::iconFileName( const bool ) const
+{
+  return "measuretransport";
+}
+
+const bool MeasureTransportConstructor::isAlreadySelectedOK(
+ const std::vector<ObjectCalcer*>&, const int& ) const
+{
+  return false;
+}
+
+/*
+ * we want the arguments in the exact order, this makes
+ * the code simpler, but I guess it is also less confusing
+ * to the user
+ */
+
+const int MeasureTransportConstructor::wantArgs( 
+                                const std::vector<ObjectCalcer*>& os,
+                                const KigDocument&,
+                                const KigWidget& ) const
+{
+  if ( os.size() == 0 ) return ArgsParser::Valid;
+
+  if ( ! os[0]->imp()->inherits( SegmentImp::stype() ) &&
+       ! os[0]->imp()->inherits( ArcImp::stype() ) )
+    return ArgsParser::Invalid;
+
+  if ( os.size() == 1 ) return ArgsParser::Valid;
+
+  if ( ! os[1]->imp()->inherits( LineImp::stype() ) &&
+       ! os[1]->imp()->inherits( CircleImp::stype() ) )
+    return ArgsParser::Invalid;
+
+  if ( os.size() == 2 ) return ArgsParser::Valid;
+
+  if ( ! os[2]->imp()->inherits( PointImp::stype() ) )
+    return ArgsParser::Invalid;
+
+  // TODO: insert here a check that this point lies on the
+  // curve defined by os[1]
+
+  if ( os.size() == 3 ) return ArgsParser::Complete;
+
+  return ArgsParser::Invalid;
+}
+
+void MeasureTransportConstructor::handleArgs(
+  const std::vector<ObjectCalcer*>& os, KigPart& d,
+  KigWidget& v ) const
+{
+  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
+  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    (*i)->calc( d.document() );
+  }
+
+  d.addObjects( bos );
+}
+
+void MeasureTransportConstructor::handlePrelim(
+  KigPainter& p, const std::vector<ObjectCalcer*>& os,
+  const KigDocument& d, const KigWidget&
+  ) const
+{
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
+
+  ObjectDrawer drawer( Qt::red );
+  drawprelim( drawer, p, os, d );
+}
+
+void MeasureTransportConstructor::drawprelim( const ObjectDrawer& drawer, 
+                         KigPainter& p, 
+                         const std::vector<ObjectCalcer*>& parents,
+                         const KigDocument& doc ) const
+{
+  Args args;
+  using namespace std;
+  transform( parents.begin(), parents.end(),
+             back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
+  ObjectImp* data = mtype->calc( args, doc );
+  drawer.draw( *data, p, true );
+  delete data;
+}
+
+QString MeasureTransportConstructor::useText( const ObjectCalcer& o, 
+                        const std::vector<ObjectCalcer*>& os,
+                        const KigDocument&, const KigWidget& ) const
+{
+  if ( o.imp()->inherits( SegmentImp::stype() ) )
+    return i18n("Segment to transport");
+  if ( o.imp()->inherits( ArcImp::stype() ) )
+    return i18n("Arc to transport");
+  if ( o.imp()->inherits( LineImp::stype() ) )
+    return i18n("Transport a measure on this line");
+  if ( o.imp()->inherits( CircleImp::stype() ) )
+    return i18n("Transport a measure on this circle");
+  if ( o.imp()->inherits( PointImp::stype() ) )
+  {
+    if ( os[1]->imp()->inherits( CircleImp::stype() ) )
+      return i18n("Start transport from this point of the circle");
+    if ( os[1]->imp()->inherits( LineImp::stype() ) )
+      return i18n("Start transport from this point of the line");
+    else 
+      return i18n("Start transport from this point of the curve");
+      // well, this isn't impemented yet, should never get here
+  }
+  return "";
+}
+
+QString MeasureTransportConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>&, const KigDocument&,
+  const KigWidget& ) const
+{
+//TODO
+  return i18n("Select a point to be a vertex of the new polygon...");
+}
+
+std::vector<ObjectHolder*> MeasureTransportConstructor::build( 
+    const std::vector<ObjectCalcer*>& parents, 
+    KigDocument&, KigWidget& ) const
+{
+  assert ( parents.size() == 3 );
+//  std::vector<ObjectCalcer*> args;
+//  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
+  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, parents );
+  ObjectHolder* h = new ObjectHolder( calcer );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( h );
+  return ret;
+}
+
+void MeasureTransportConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool MeasureTransportConstructor::isTransform() const
+{
+  return false;
+}
 
 /*
  * Generic intersection

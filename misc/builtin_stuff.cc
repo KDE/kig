@@ -589,21 +589,17 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_vectorequalitytest" ) );
 
-    c = new SimpleObjectTypeConstructor(
-      MeasureTransportType::instance(),
-      I18N_NOOP( "Measure Transport" ),
-      I18N_NOOP( "Transport the measure of a segment or arc over a line or circle." ),
-      "measuretransport" );
+    c = new MeasureTransportConstructor();
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_measuretransport" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_measuretransport" ));
 
 //    c = new SimpleObjectTypeConstructor(
-//      MeasureTransportTypeOld::instance(),
-//      I18N_NOOP( "Measure Transport (old)" ),
-//      I18N_NOOP( "Transport the measure of a segment over a circle." ),
+//      MeasureTransportType::instance(),
+//      I18N_NOOP( "Measure Transport" ),
+//      I18N_NOOP( "Transport the measure of a segment or arc over a line or circle." ),
 //      "measuretransport" );
 //    ctors->add( c );
-//    actions->add( new ConstructibleAction( c, "objects_new_measuretransport_old" ) );
+//    actions->add( new ConstructibleAction( c, "objects_new_measuretransport" ) );
 
     // the generic intersection constructor..
     c = new GenericIntersectionConstructor();

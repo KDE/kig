@@ -107,7 +107,7 @@ public:
 };
 
 class MeasureTransportType
-  : public ArgsParserObjectType
+  : public ObjectType
 {
   MeasureTransportType();
   ~MeasureTransportType();
@@ -116,6 +116,10 @@ public:
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args )const;
+  Args sortArgs( const Args& args ) const;
 };
 
 class MeasureTransportTypeOld
