@@ -206,8 +206,8 @@ MovingMode::~MovingMode()
 
 void PointRedefineMode::stopMove()
 {
-  Objects parents = mp->parents();
-  const ObjectType* type = mp->type();
+  ReferenceObject newparentsref( mp->parents() );
+  const ObjectType* newtype = mp->type();
   mp->setType( moldtype );
   mp->setParents( moldparents );
   mp->calc( mdoc );
@@ -218,7 +218,7 @@ void PointRedefineMode::stopMove()
 
   KigCommand* command = new KigCommand( mdoc, i18n( "Redefine Point" ) );
   command->addTask(
-    new ChangeParentsAndTypeTask( mp, parents, type ) );
+    new ChangeParentsAndTypeTask( mp, newparentsref.parents(), newtype ) );
   command->addTask( mmon->finish() );
   mdoc.history()->addCommand( command );
 }
