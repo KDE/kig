@@ -295,8 +295,8 @@ bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret, cons
   if ( ! sok ) return false;
 
   QString version = docelem.attribute( "Version" );
-  QRegExp re( "(\\d+)\\.(\\d+)\\.(\\d+)" );
-  re.match( version );
+//  QRegExp re( "(\\d+)\\.(\\d+)\\.(\\d+)" );
+//  re.match( version );
   // unused..
 //  int major = re.cap( 1 ).toInt( &sok );
 //  int minor = re.cap( 2 ).toInt( &sok );

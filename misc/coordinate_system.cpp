@@ -33,8 +33,6 @@
 #include <knumvalidator.h>
 #include <kmessagebox.h>
 #include <klineeditdlg.h>
-#include <klocale.h>
-#include <kglobal.h>
 
 #include <cmath>
 #include <string>

@@ -36,6 +36,7 @@
 #include <kapplication.h>
 #include <klocale.h>
 #include <kimageio.h>
+#include <assert.h>
 
 #include <assert.h>
 
