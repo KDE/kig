@@ -132,3 +132,144 @@ than a struct with some convenience methods.  It does not have any
 virtual methods, or have any complex semantics.  It keeps information
 like the thickness of an object, its color, and whether or not it is
 hidden.
+
+
+2. Interesting Issues
+---------------------
+
+Here, I explain some parts of the design that may at first look
+difficult to understand.  This part assumes you have read the above.
+
+
+2.1 Text labels 
+
+Text labels in Kig are designed in a pretty flexible
+way.  I will explain all the classes involved.
+
+2.1.1 TextImp
+
+First of all, there is the TextImp class.  It is an ObjectImp (
+cf. supra ), and thus represents a piece of text that can be drawn on
+the document.  It contains a QString ( the text to be shown ), a
+coordinate ( the location to draw it ), and a boolean saying whether a
+frame should be drawn around it.  As with all ObjectImp's, it does not
+contain any code for calculating it, or how it behaves on user input.
+Most of this is handled by the TextType class.
+
+2.1.2 TextType
+
+The TextType class is an implementation of an ObjectType.  It contains
+code specifying how to calculate a TextImp from its parents, and for
+how it behaves on user input.  A text object has at least three
+parents, and can handle any number of optional arguments.  The three
+mandatory arguments are an int, which is set to 1 or 0 depending on
+whether the label needs a surrounding box, a PointImp, containing the
+location of the text label, and a string containing the text of the
+label.  The text can contain tokens like '%1', '%2' etc.  Every
+additional argument is used to replace the lowest-numbered of those
+tokens, with its string representation.  The function
+ObjectImp::fillInNextEscape is used for this.
+
+For example, if a TextType has the following parents:
+a IntImp with value 0
+a PointImp with value (0,0)
+a String with value "This segment is %1 units long."
+a DoubleImp with value 3.9
+
+This would result in a string being drawn at the coordinate (0,0),
+with no surrounding box, and showing the text "This segment is 3.9
+units long.".
+
+All this gives labels in Kig a lot of flexibility.
+
+2.2 Locuses
+
+Locuses are a mathematical concept that has been modelled in Kig.
+Loosely defined, a locus is the mathematical shape defined by the set
+of points that a certain point moves through while another point is
+moved over its constraints.  This can be used to define mathematical
+objects like conics, and various other things.  It has been modelled
+in Kig in the most flexible way I can imagine, and I must say that I'm
+proud of this design.
+
+2.2.1 Constrained points
+
+In the implementation of this, we use the concept of constrained
+points.  This is a point that is attached to a certain curve.  It is
+implemented in Kig by the ConstrainedPointType, which takes a CurveImp
+and a DoubleImp as parents and calculates a Point from these by using
+the CurveImp::getPoint function.
+
+2.2.2 The Implementation
+
+When a Locus is constructed by the user, Kig receives two points, at
+least one of which is a Constrained point, and the other one somehow
+depends on the first.  This is checked before trying to construct a
+Locus, and the user is not allowed to try to construct locuses from
+other sorts of points.
+
+Next, Kig takes a look at the ObjectCalcer hierarchy.  We look at the
+smallest part of the hierarchy that contains all paths from the first
+point to the second point.  We then determine all objects that are not
+*on* one of those paths ( meaning that they are not calculated from
+the first point, or another object that is on one of those paths ),
+but that are parents of one or more objects that are on those paths.
+I call this set of objects the "side of the path" sometimes in the
+code.  The function that finds them is called sideOfTreePath.
+
+Next, an ObjectHierarchy object is constructed, which stores the way
+to calculate the second point from the first point and the objects
+from the previous paragraph.
+
+An object is then constructed that has as parent the curve parent that
+the first point is constrained to, the HierarchyImp containing the
+ObjectHierarchy from the previous paragraph, and all the objects from
+the "side of the tree".  This new object is an ObjectTypeCalcer with
+the LocusType as its type.  In its calc() function, it calculates a
+LocusImp by taking the objecthierarchy and substituting all the
+current values of the objects from the "side of the path", resulting
+in an ObjectHierarchy that takes one PointImp and calculates another
+PointImp from that.  The LocusImp then contains the new
+ObjectHierarchy and the current value of the curve that the first
+point is constrained to.  In the drawing function of this LocusImp,
+points on the curve are calculated, and then the hierarchy is used to
+calculated from those points the location of the second point.  A
+dynamic feedback algorithm, which has been written with a lot of help
+from the mathematician "Franco Pasquarelli" is used to determine which
+of the points on the curve should be used.
+
+2.2.3 The Rationale
+
+The above explanation may seem very complicated, but I am very much
+convinced that this *is* the proper way to handle locuses.  I will
+here try explain why I think it is superior to the much simpler
+implementation that is used by much other programs.
+
+The basic alternative implementation involves just keeping a pointer
+to the first and second point in the locus object, and when the locus
+is drawn, the first point is moved over all its possible locations,
+the second point is calculated, and a point is drawn at its new
+location.
+
+The reason I think that this is a bad implementation is that it is not
+possible to model the real dependency relations properly in this
+scheme.  For example, the locus object would then be made dependent on
+the constrained point.  This is wrong because when the constrained
+point moves within the limits of the curve constraining it, the locus
+does by definition not change.  Also, if the constrained point is
+redefined so that it is no longer constrained to any curve, this is a
+major problem, because it would invalidate the locus.  Another point
+is that in practice, the locus depends on more objects than its
+parents alone.  This is not a good thing, because it makes it
+impossible to optimise drawing of the objects, using the information
+about which objects depend on which others, because this information
+is invalid.
+
+The reason we need to calculate the "side of the path" above is that,
+together with the curve that the first point is constrained to, these
+are the objects that the locus is really dependent on.
+
+The current Kig system correctly models all dependency relations to
+the extent possible, while keeping a correct implementation.
+
+
