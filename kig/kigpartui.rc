@@ -22,9 +22,9 @@
     <Action name="view_fit_to_page" />
   </Menu>
   <Menu name="objects">
-    <text>Objects</text>
+    <text>&amp;Objects</text>
     <Menu name="new_line">
-	<text>Lines</text>
+	<text>&amp;Lines</text>
 	<Action name="objects_new_linettp" />
 	<Action name="objects_new_lineperpend" />
 	<Action name="objects_new_lineparallel" />
@@ -34,7 +34,7 @@
 	<ActionList name="user_segment_types" />
     </Menu>
     <Menu name="new_point">
-	<text>Points</text>
+	<text>&amp;Points</text>
 	  <Action name="objects_new_normalpoint" />
 	  <Action name="objects_new_midpoint" />
 	  <Action name="objects_new_intersection" />
@@ -45,14 +45,14 @@
 	  <ActionList name="user_point_types" />
     </Menu>
     <Menu name="new_circle">
-	<text>Circles</text>
+	<text>&amp;Circles</text>
 	<Action name="objects_new_circlebcp" />
 	<Action name="objects_new_circlebtp" />
 	<ActionList name="user_circle_types" />
 	<Action name="objects_new_lineradical" />
     </Menu>	
     <Menu name="new_conic">
-	<text>Conics</text>
+	<text>Co&amp;nics</text>
 	<Action name="objects_new_ellipsebffp" />
 	<Action name="objects_new_hyperbolabffp" />
 	<Action name="objects_new_conicb5p" />
@@ -69,7 +69,7 @@
 	<Action name="objects_new_lineconicradical" />
     </Menu>
     <Menu name="new_transformation">
-	<text>Transformation</text>
+	<text>&amp;Transformation</text>
 	<Action name="objects_new_translation" />
 	<Action name="objects_new_pointreflection" />
 	<Action name="objects_new_linereflection" />
@@ -80,7 +80,7 @@
 	<Action name="objects_new_projectiverotation" />
     </Menu>
     <Menu name="new_other">
-	<text>Other</text>
+	<text>&amp;Other</text>
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
@@ -95,7 +95,7 @@
     <Action name="cancel_construction" />
   </Menu>
   <Menu name="types">
-    <text>Types</text>
+    <text>&amp;Types</text>
     <Action name="macro_action" />
     <Action name="types_edit" />
   </Menu>

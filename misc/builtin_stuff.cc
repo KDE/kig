@@ -53,7 +53,7 @@ void setupBuiltinStuff()
 
     // line by two points..
     c = new SimpleObjectTypeConstructor(
-      LineABType::instance(), I18N_NOOP( "Line by Two Points" ),
+      LineABType::instance(), I18N_NOOP( "Line by two points" ),
       I18N_NOOP( "A line constructed through two points"), "line" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linettp" ) );
@@ -84,21 +84,21 @@ void setupBuiltinStuff()
 
     // circle
     c = new SimpleObjectTypeConstructor(
-      CircleBCPType::instance(), I18N_NOOP( "Circle by Center and Point" ),
+      CircleBCPType::instance(), I18N_NOOP( "Circle by center and point" ),
       I18N_NOOP( "A circle constructed by its center and a point on its border" ),
       "circle" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebcp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      CircleBTPType::instance(), I18N_NOOP( "Circle by Three Points" ),
+      CircleBTPType::instance(), I18N_NOOP( "Circle by three points" ),
       I18N_NOOP( "A circle constructed through three points" ),
       "circlebtp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebtp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      ConicB5PType::instance(), I18N_NOOP( "Conic by Five Points" ),
+      ConicB5PType::instance(), I18N_NOOP( "Conic by five points" ),
       I18N_NOOP( "A conic constructed through five points" ),
       "conicb5p" );
     ctors->add( c );
@@ -106,7 +106,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ConicBAAPType::instance(),
-      I18N_NOOP( "Hyperbola by Asymptotes and Point" ),
+      I18N_NOOP( "Hyperbola by asymptotes and point" ),
       I18N_NOOP( "A hyperbola with given asymptotes through a point" ),
       "conicbaap" );
     ctors->add( c );
@@ -114,7 +114,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       EllipseBFFPType::instance(),
-      I18N_NOOP( "Ellipse by Focuses and Point" ),
+      I18N_NOOP( "Ellipse by focuses and point" ),
       I18N_NOOP( "An ellipse constructed by its focuses and a point on its border" ),
       "ellipsebffp" );
     ctors->add( c );
@@ -122,7 +122,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       HyperbolaBFFPType::instance(),
-      I18N_NOOP( "Hyperbola by Focuses and Point" ),
+      I18N_NOOP( "Hyperbola by focuses and point" ),
       I18N_NOOP( "A hyperbola constructed by its focuses and a point on its border" ),
       "hyperbolabffp" );
     ctors->add( c );
@@ -130,7 +130,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ConicBDFPType::instance(),
-      I18N_NOOP( "Conic by Directrix, Focus and Point" ),
+      I18N_NOOP( "Conic by directrix, focus and point" ),
       I18N_NOOP( "A conic with given directrix and focus, through a point" ),
       "conicbdfp" );
     ctors->add( c );
@@ -138,7 +138,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ParabolaBTPType::instance(),
-      I18N_NOOP( "Vertical Parabola by Three Points" ),
+      I18N_NOOP( "Vertical parabola by three points" ),
       I18N_NOOP( "A vertical parabola constructed through three points" ),
       "parabolabtp" );
     ctors->add( c );
@@ -146,7 +146,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       CubicB9PType::instance(),
-      I18N_NOOP( "Cubic by Nine Points" ),
+      I18N_NOOP( "Cubic by nine points" ),
       I18N_NOOP( "A cubic constructed through nine points" ),
       "cubicb9p" );
     ctors->add( c );
@@ -154,7 +154,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ConicPolarPointType::instance(),
-      I18N_NOOP( "Polar Point of a Line" ),
+      I18N_NOOP( "Polar point of a line" ),
       I18N_NOOP( "The polar point of a line with respect to a conic." ),
       "polarpoint" );
     ctors->add( c );
@@ -162,7 +162,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ConicPolarLineType::instance(),
-      I18N_NOOP( "Polar Line of a Point" ),
+      I18N_NOOP( "Polar line of a point" ),
       I18N_NOOP( "The polar line of a point with respect to a conic." ),
       "polarline" );
     ctors->add( c );
@@ -170,7 +170,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       CubicNodeB6PType::instance(),
-      I18N_NOOP( "Cubic With Node by Six Points" ),
+      I18N_NOOP( "Cubic with node by six points" ),
       I18N_NOOP( "A cubic with a nodal point at the origin through six points" ),
       "cubicnodeb6p" );
     ctors->add( c );
@@ -178,7 +178,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       CubicCuspB4PType::instance(),
-      I18N_NOOP( "Cubic With Cusp by Four Points" ),
+      I18N_NOOP( "Cubic with cusp by four points" ),
       I18N_NOOP( "A cubic with a horizontal cusp at the origin through four points" ),
       "cubiccuspb4p" );
     ctors->add( c );
@@ -186,7 +186,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ConicDirectrixType::instance(),
-      I18N_NOOP( "Directrix of a Conic" ),
+      I18N_NOOP( "Directrix of a conic" ),
       I18N_NOOP( "The directrix line of a conic." ),
       "directrix" );
     ctors->add( c );
@@ -194,7 +194,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       AngleType::instance(),
-      I18N_NOOP( "Angle by Three Points" ),
+      I18N_NOOP( "Angle by three points" ),
       I18N_NOOP( "An angle defined by three points" ),
       "angle" );
     ctors->add( c );
@@ -202,7 +202,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       EquilateralHyperbolaB4PType::instance(),
-      I18N_NOOP( "Equilateral Hyperbola by Four Points" ),
+      I18N_NOOP( "Equilateral hyperbola by four points" ),
       I18N_NOOP( "An equilateral hyperbola constructed through four points" ),
       "equilateralhyperbolab4p" );
     ctors->add( c );
@@ -235,7 +235,7 @@ void setupBuiltinStuff()
     // Transformation stuff..
     c = new SimpleObjectTypeConstructor(
       TranslatedType::instance(),
-      I18N_NOOP( "Translation" ),
+      I18N_NOOP( "Translate" ),
       I18N_NOOP( "The translation of an object by a vector" ),
       "translation" );
     ctors->add( c );
@@ -243,7 +243,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       PointReflectionType::instance(),
-      I18N_NOOP( "Point reflection" ),
+      I18N_NOOP( "Reflect over point" ),
       I18N_NOOP( "The reflection of an object over a point" ),
       "pointreflection" );
     ctors->add( c );
@@ -251,7 +251,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       LineReflectionType::instance(),
-      I18N_NOOP( "Mirrored object" ),
+      I18N_NOOP( "Mirror" ),
       I18N_NOOP( "The reflection of an object over a line" ),
       "linereflection" );
     ctors->add( c );
@@ -259,7 +259,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       RotationType::instance(),
-      I18N_NOOP( "Rotated object" ),
+      I18N_NOOP( "Rotate" ),
       I18N_NOOP( "An object rotated by an angle around a point" ),
       "rotation" );
     ctors->add( c );
@@ -267,7 +267,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ScalingOverCenterType::instance(),
-      I18N_NOOP( "Scaled object" ),
+      I18N_NOOP( "Scale" ),
       I18N_NOOP( "Scale an object over a point, by the ratio given by the length of a segment" ),
       "scalingovercenter" );
     ctors->add( c );
@@ -275,7 +275,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ScalingOverLineType::instance(),
-      I18N_NOOP( "Object scaled over line" ),
+      I18N_NOOP( "Scale over line" ),
       I18N_NOOP( "An object scaled over a point, by the ratio given by the length of a segment" ),
       "scalingoverline" );
     ctors->add( c );
@@ -283,7 +283,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       CastShadowType::instance(),
-      I18N_NOOP( "Shadow of an object" ),
+      I18N_NOOP( "Draw projective shadow" ),
       I18N_NOOP( "The shadow of an object with a given light source and projection plane (indicated by a line)" ),
       "castshadow" );
     ctors->add( c );
@@ -291,7 +291,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ProjectiveRotationType::instance(),
-      I18N_NOOP( "Projectively rotated object" ),
+      I18N_NOOP( "Projectively rotated" ),
       I18N_NOOP( "An object projectively rotated by an angle and a ray" ),
       "projectiverotation" );
     ctors->add( c );
@@ -299,7 +299,7 @@ void setupBuiltinStuff()
 
     c = new MultiObjectTypeConstructor(
       ConicAsymptoteType::instance(),
-      I18N_NOOP( "Asymptotes of a Hyperbola" ),
+      I18N_NOOP( "Asymptotes of a hyperbola" ),
       I18N_NOOP( "The two asymptotes of a hyperbola." ),
       "conicasymptotes", -1, 1 );
     ctors->add( c );

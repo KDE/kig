@@ -40,7 +40,7 @@
 
 ConicRadicalConstructor::ConicRadicalConstructor()
   : StandardConstructorBase(
-    I18N_NOOP( "Radical Line for Conics" ),
+    I18N_NOOP( "Radical line for conics" ),
     I18N_NOOP( "The lines constructed through the intersections of two conics.  This is also defined for non-intersecting conics." ),
     "conicsradicalline", mparser ),
     mtype( ConicRadicalType::instance() ),

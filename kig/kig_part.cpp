@@ -126,7 +126,7 @@ void KigDocument::setupActions()
 
   tmp = l->loadIcon( "delete", KIcon::User);
   aDeleteObjects = new KAction(
-      i18n("Delete Objects"), "editdelete", Key_Delete, this,
+      i18n("&Delete Objects"), "editdelete", Key_Delete, this,
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
@@ -139,19 +139,19 @@ void KigDocument::setupActions()
   aCancelConstruction->setEnabled(false);
 
   aShowHidden = new KAction(
-    i18n("Unhide All"), 0, this, SLOT( showHidden() ),
+    i18n("Unhide &All"), 0, this, SLOT( showHidden() ),
     actionCollection(), "edit_unhide_all");
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
   tmp = l->loadIcon("gear", KIcon::Toolbar);
   aNewMacro = new KAction(
-    i18n("New Macro..."), tmp, 0, this, SLOT(newMacro()),
+    i18n("&New Macro..."), tmp, 0, this, SLOT(newMacro()),
     actionCollection(), "macro_action");
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction(
-    i18n("Types Manager"), 0, this, SLOT(editTypes()),
+    i18n("&Types Manager"), 0, this, SLOT(editTypes()),
     actionCollection(), "types_edit");
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 

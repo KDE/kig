@@ -85,7 +85,7 @@ void KigView::setupActions()
                                          mdoc->actionCollection() );
   aCenterScreen->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
-  aExportToImage = new KAction( i18n( "Export to Image..." ), 0,
+  aExportToImage = new KAction( i18n( "&Export to Image..." ), 0,
                                 this, SLOT( slotExportToImage() ),
                                 mdoc->actionCollection(), "file_export_to_image" );
   aExportToImage->setWhatsThis( i18n( "This function allows you to export the currently "
