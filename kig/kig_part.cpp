@@ -182,7 +182,9 @@ void KigDocument::setupActions()
   aMNewOther->setToolTip(i18n("Construct a new object of a special type"));
 
   tmp = l->loadIcon( "pointxy", KIcon::User );
-  (void) new AddFixedPointAction( this, tmp, actionCollection() );
+  KAction* a = new AddFixedPointAction( this, tmp, actionCollection() );
+
+  a->plug( aMNewPoint );
 };
 
 void KigDocument::setupTypes()
