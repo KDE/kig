@@ -121,6 +121,7 @@ QString XFigExporter::exportToStatement() const
   return i18n( "Export to &XFig file" );
 }
 
+
 QString XFigExporter::menuEntryName() const
 {
   return i18n( "&XFig file" );
@@ -145,6 +146,8 @@ class XFigExportImpVisitor
       ret /= msr.width();
       return ret.toQPoint();
     };
+
+  void emitLine( const Coordinate& a, const Coordinate& b, int width );
 public:
   void visit( Object* obj );
 
@@ -179,12 +182,17 @@ void XFigExportImpVisitor::visit( const LineImp* imp )
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
   calcBorderPoints( a, b, msr );
+  int width = mcurobj->width();
+  if ( width == -1 ) width = 1;
 
+  emitLine( a, b, width );
+};
+
+void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, int width )
+{
   mstream << "2 "; // polyline type;
   mstream << "1 "; // polyline subtype;
   mstream << "0 "; // line_style: Solid
-  int width = mcurobj->width();
-  if ( width == -1 ) width = 1;
   mstream << width << " "; // thickness: *1/80 inch
   mstream << "0 "; // TODO pen_color: default
   mstream << "7 "; // TODO fill_color: default
@@ -298,39 +306,22 @@ void XFigExportImpVisitor::visit( const SegmentImp* imp )
 {
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
-
-  mstream << "2 "; // polyline type;
-  mstream << "1 "; // polyline subtype;
-  mstream << "0 "; // line_style: Solid
   int width = mcurobj->width();
   if ( width == -1 ) width = 1;
-  mstream << width << " "; // thickness: *1/80 inch
-  mstream << "0 "; // TODO pen_color: default
-  mstream << "7 "; // TODO fill_color: default
-  mstream << "50 "; // depth: 50
-  mstream << "-1 "; // pen_style: unused by XFig
-  mstream << "-1 "; // area_fill: no fill
-  mstream << "0.000 "; // style_val: the distance between dots and
-                       // dashes in case of dotted or dashed lines..
-  mstream << "0 "; // join_style: Miter
-  mstream << "0 "; // cap_style: Butt
-  mstream << "-1 "; // radius in case of an arc-box, but we're a
-                    // polyline, so nothing here..
-  mstream << "0 "; // forward arrow: no
-  mstream << "0 "; // backward arrow: no
-  mstream << "2"; // a two points polyline..
 
-  mstream << "\n\t ";
+  emitLine( a, b, width );
+};
 
-  QPoint ca = convertCoord( a );
-  QPoint cb = convertCoord( b );
-
-  mstream << ca.x() << " " << ca.y() << " " << cb.x() << " " << cb.y() << "\n";
-}
-
-void XFigExportImpVisitor::visit( const RayImp* )
+void XFigExportImpVisitor::visit( const RayImp* imp )
 {
+  Coordinate a = imp->data().a;
+  Coordinate b = imp->data().b;
+  calcRayBorderPoints( a, b, msr );
 
+  int width = mcurobj->width();
+  if ( width == -1 ) width = 1;
+
+  emitLine( a, b, width );
 }
 
 void XFigExportImpVisitor::visit( const ArcImp* )
