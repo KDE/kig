@@ -30,12 +30,19 @@
 
 #include <qpainter.h>
 #include <qregexp.h>
+
+#include <kdebug.h>
 #include <kglobal.h>
 #include <klocale.h>
-#include <kdebug.h>
-#include <knumvalidator.h>
 #include <kmessagebox.h>
+#include <knumvalidator.h>
+#include <kdeversion.h>
+#if KDE_IS_VERSION( 3, 1, 90 )
+#include <kinputdialog.h>
+#else
 #include <klineeditdlg.h>
+#endif
+
 #include <string>
 #include <math.h>
 
@@ -497,8 +504,11 @@ const Coordinate CoordinateSystem::getCoordFromUser( const QString& caption,
   while ( ! done )
   {
     QValidator* vtor = coordinateValidator();
-    value = KLineEditDlg::getText(
-      caption, label, value, ok, parent, vtor );
+#if KDE_IS_VERSION( 3, 1, 90 )
+    value = KInputDialog::getText( caption, label, value, ok, parent, 0, vtor );
+#else
+    value = KLineEditDlg::getText( caption, label, value, ok, parent, vtor );
+#endif
     delete vtor;
 
     if ( ! *ok ) return Coordinate();
