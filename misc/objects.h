@@ -56,15 +56,10 @@ public:
   // get the combined span of all our objects
   QRect getSpan() const;
   
-  // draw all our objects, cf. Object::draw
-  void draw ( QPainter& p, bool showSelection ) const;
-  
   // convenience: call calc() on all objects...
   // TODO: replace Objects::calc() with ObjectHierarchy::calc() ?
   void calc() const;
   
-  // convenience: get the combined objectOverlayList from our children
-  QPtrList<QRect> getOverlay( const QRect& border) const;
 };
 
 #endif

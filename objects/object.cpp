@@ -80,10 +80,6 @@ const Circle* Object::toCircle(const Object* o)
   return dynamic_cast<const Circle*>(tmp);
 }
 
-void Object::saveXML( QDomDocument&, QDomElement& )
-{
-}
-
 const Curve* Object::toCurve(const Object* o)
 {
   const Object* tmp = o;
@@ -114,4 +110,25 @@ ConstrainedPoint* Object::toConstrainedPoint(Object* o)
   MacroObjectOne* tmp2;
   if ((tmp2=dynamic_cast<MacroObjectOne*>(tmp))) tmp = tmp2->getFinal();
   return dynamic_cast<ConstrainedPoint*>(tmp);
+}
+
+Objects Object::getAllChildren() const
+{
+  // what we are going to return...
+  Objects tmp;
+  // objects to iterate over...
+  Objects objs = children;
+  // contains the objects to iterate over the next time around...
+  Objects objs2;
+  while (!objs.isEmpty())
+    {
+      for (Object* i = objs.first(); i; i = objs.next())
+	{
+	  tmp.add(i);
+	  objs2 |= i->getChildren();
+	};
+      objs = objs2;
+      objs2.clear();
+    };
+  return tmp;
 }

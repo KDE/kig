@@ -24,9 +24,11 @@ void Circle::draw (QPainter& p, bool ss) const
   drawCircle(p, qpc, radius);
 };
 
-bool Circle::inRect (const QRect& r) const
+bool Circle::inRect (const QRect& /*r*/) const
 {
+#ifdef __GNUC__
 #warning TODO
+#endif
   // not implemented yet, i'm thinking: take the diagonals of the
   // rect, their intersections with the circle, and check their
   // positions...
@@ -332,6 +334,7 @@ void CircleBTP::getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, con
   circleGetOverlay(nQpc, calcRadius (nQpc, *p1), list, border);
 }
 CircleBCP::CircleBCP(const CircleBCP& c)
+  : Circle()
 {
   poc = c.poc;
   poc->addChild(this);
@@ -341,6 +344,7 @@ CircleBCP::CircleBCP(const CircleBCP& c)
   if (complete) calc();
 }
 CircleBTP::CircleBTP(const CircleBTP& c)
+  : Circle()
 {
   p1=c.p1;
   p1->addChild(this);

@@ -37,6 +37,8 @@ MacroObjectOne::~MacroObjectOne()
 
 void MacroObjectOne::draw(QPainter& p, bool ss) const
 {
+  final->setSelected(selected);
+  final->setShown(shown);
   final->draw(p, ss);
 }
 

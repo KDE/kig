@@ -3,7 +3,6 @@
 KigIface::KigIface()
   : DCOPObject("KigIface")
 {
-    
 }
 
 KigIface::~KigIface()

@@ -144,15 +144,6 @@ void MidPoint::calc()
   setY(((p1->getY() + p2->getY())/2));
 }
 
-void Point::saveXML(QDomDocument& doc, QDomElement& parentElem)
-{
-  assert (getParents().isEmpty());
-  QDomElement elem = doc.createElement("Point");
-  elem.setAttribute("x", x);
-  elem.setAttribute("y", y);
-  parentElem.appendChild(elem);
-}
-
 ConstrainedPoint::ConstrainedPoint(Curve* inC, const QPoint& inPt)
   : c(inC)
 {
@@ -208,4 +199,46 @@ ConstrainedPoint::ConstrainedPoint( const ConstrainedPoint& cp)
   c->addChild(this);
   complete = cp.complete;
   if (complete) calc();
+}
+
+map<QCString,double> Point::getParams()
+{
+  map<QCString,double> tmp;
+  tmp["x"] = x;
+  tmp["y"] = y;
+  return tmp;
+}
+
+void Point::setParams(const map<QCString,double>& m)
+{
+  x = m.find("x")->second;
+  y = m.find("y")->second;
+};
+map<QCString,double> ConstrainedPoint::getParams()
+{
+  map<QCString,double> tmp;
+  tmp["param"] = p;
+  return tmp;
+}
+void ConstrainedPoint::setParams(const map<QCString,double>& m)
+{
+  p = m.find("param")->second;
+}
+
+ConstrainedPoint::ConstrainedPoint(const double inP)
+  : p(inP), c(0)
+{
+};
+
+ConstrainedPoint::ConstrainedPoint()
+  : p(0.5), c(0)
+{
+    
+}
+map<QCString,double> MidPoint::getParams()
+{
+  return map<QCString, double>();
+}
+void MidPoint::setParams( const map<QCString,double>& /*m*/)
+{
 }

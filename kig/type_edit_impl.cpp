@@ -122,4 +122,3 @@ void KigTypeEditImpl::importTypes()
       };
     };
 }
-

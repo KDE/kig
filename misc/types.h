@@ -16,6 +16,7 @@ public:
   Types( KigDocument* inDoc, const QString& file_name);
   ~Types() {};
   void deleteAll();
+  void saveToDir(const QString& dir_name);
   void saveToFile(const QString& file_name);
   Type* findType(const QCString& type) const;
   Object* newObject( const QCString& type );

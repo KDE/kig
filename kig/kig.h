@@ -35,19 +35,22 @@ class Kig : public KParts::MainWindow, virtual public KigIface
    * Default Destructor
    */
   virtual ~Kig();
+
  public slots:
-  /**
-   * this opens url in this window
+  /** 
+   * Open file in this window
+   * @param file file to open
    */
-  void load(const KURL& url);
+  void load (const KURL& file);
 
   /** 
    * this opens the file specified in s in a new window
    * 
-   * @param s 
+   * @param s
    */
   void openURL (const QString& s) { openURL(KURL(s)); };
-  void openURL (const KURL& url);
+  void openURL (const KURL& s);
+
  protected:
   
   /** 
@@ -86,6 +89,9 @@ class Kig : public KParts::MainWindow, virtual public KigIface
 
  private slots:
   void fileNew();
+  void fileOpen();
+  void fileSaveAs();
+  void fileSave();
   void optionsShowToolbar();
   void optionsShowStatusbar();
   void optionsConfigureKeys();
@@ -94,7 +100,6 @@ class Kig : public KParts::MainWindow, virtual public KigIface
   void applyNewToolbarConfig();
 
  private:
-  void setupAccel();
   void setupActions();
 
   KParts::ReadWritePart *m_part;

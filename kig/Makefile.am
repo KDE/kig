@@ -35,7 +35,7 @@ shelldesktop_DATA = kig.desktop
 
 # this is where the shell's XML-GUI resource file goes
 shellrcdir   = $(kde_datadir)/kig
-shellrc_DATA = kig_shell.rc
+shellrc_DATA = kigui.rc
 
 #########################################################################
 # KPART SECTION
@@ -53,4 +53,4 @@ partdesktop_DATA = kig_part.desktop
 
 # this is where the part's XML-GUI resource file goes
 partrcdir   = $(kde_datadir)/kigpart
-partrc_DATA = kig_part.rc
+partrc_DATA = kigpartui.rc

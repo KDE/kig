@@ -10,6 +10,7 @@
 #include <kurldrag.h>
 #include <kedittoolbar.h>
 #include <kaction.h>
+#include <kfiledialog.h>
 #include <kstdaction.h>
 #include <kstatusbar.h>
 #include <klibloader.h>
@@ -23,12 +24,9 @@ Kig::Kig()
     KigIface()
 {
   // set the shell's ui resource file
-  setXMLFile("kig_shell.rc");
+  setXMLFile("kigui.rc");
   // then, setup our actions
   setupActions();
-  
-  // and a status bar
-  statusBar()->show();
   
   // this routine will find and load our Part.  it finds the Part by
   // name which is a bad idea usually.. but it's alright in this
@@ -58,32 +56,36 @@ Kig::Kig()
     }
   resize (640,480);
 
-  if (!kapp->dcopClient()->isRegistered())
-    {
-      kapp->dcopClient()->registerAs("kigiface");
-      kapp->dcopClient()->setDefaultObject( objId() );
-    };
+  // we have dcop
+  kapp->dcopClient()->setDefaultObject( objId() );
+
+  // we have drag'n'drop
   setAcceptDrops(true);
 }
 
 Kig::~Kig()
 {
-}
-
-void Kig::load(const KURL& url)
-{
-  m_recentFilesAction->addURL( url );
-  m_part->openURL( url );
+  KConfig* config = new KConfig("kig.rc");
+  m_recentFilesAction->saveEntries(config);
+  delete config;
 }
 
 void Kig::setupActions()
 {
   KStdAction::openNew(this, SLOT(fileNew()), actionCollection());
+  KStdAction::open(this, SLOT(fileOpen()), actionCollection());
+  KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
+  KStdAction::save(this, SLOT(fileSave()), actionCollection());
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
   m_toolbarAction = KStdAction::showToolbar(this, SLOT(optionsShowToolbar()), actionCollection());
   m_statusbarAction = KStdAction::showStatusbar(this, SLOT(optionsShowStatusbar()), actionCollection());
-  m_recentFilesAction = KStdAction::openRecent(this, SLOT(load(const KURL&)), actionCollection());
+
+  // FIXME: this (recent files) should be app-wide, not specific to each window...
+  m_recentFilesAction = KStdAction::openRecent(this, SLOT(openURL(const KURL&)), actionCollection());
+  KConfig* config = new KConfig("kig.rc");
+  m_recentFilesAction->loadEntries(config);
+  delete config;
 
   KStdAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
   KStdAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
@@ -94,7 +96,7 @@ void Kig::saveProperties(KConfig* config)
   // the 'config' object points to the session managed
   // config file.  anything you write here will be available
   // later when this app is restored
-  m_recentFilesAction->saveEntries(config);
+  config->writePathEntry("fileName", m_part->url().path());
 }
 
 void Kig::readProperties(KConfig* config)
@@ -103,7 +105,13 @@ void Kig::readProperties(KConfig* config)
   // config file.  this function is automatically called whenever
   // the app is being restored.  read in here whatever you wrote
   // in 'saveProperties'
-  m_recentFilesAction->loadEntries(config);
+  load ( KURL(config->readPathEntry("fileName")));
+}
+
+void Kig::load(const KURL& url)
+{
+  m_recentFilesAction->addURL( url );
+  m_part->openURL( url );
 }
 
 void Kig::fileNew()
@@ -116,11 +124,17 @@ void Kig::fileNew()
   (new Kig)->show();
 }
 
+void Kig::openURL(const KURL& url)
+{
+  // called for opening a file, the style guide says we need a new
+  // window for this...
+  Kig* widget = new Kig;
+  widget->show();
+  widget->load(url);
+}
 
 void Kig::optionsShowToolbar()
 {
-  // this is all very cut and paste code for showing/hiding the
-  // toolbar
   if (m_toolbarAction->isChecked())
     toolBar()->show();
   else
@@ -129,8 +143,6 @@ void Kig::optionsShowToolbar()
 
 void Kig::optionsShowStatusbar()
 {
-  // this is all very cut and paste code for showing/hiding the
-  // statusbar
   if (m_statusbarAction->isChecked())
     statusBar()->show();
   else
@@ -139,7 +151,7 @@ void Kig::optionsShowStatusbar()
 
 void Kig::optionsConfigureKeys()
 {
-  KKeyDialog::configureKeys(actionCollection(), "kig_shell.rc");
+  KKeyDialog::configureKeys(actionCollection(), "kigui.rc");
 }
 
 void Kig::optionsConfigureToolbars()
@@ -156,13 +168,6 @@ void Kig::optionsConfigureToolbars()
 void Kig::applyNewToolbarConfig()
 {
   applyMainWindowSettings(KGlobal::config(), "MainWindow");
-}
-
-void Kig::openURL(const KURL& url)
-{
-  Kig* widget = new Kig;
-  widget->show();
-  widget->load(url);
 }
 
 bool Kig::queryClose()
@@ -205,6 +210,27 @@ void Kig::dropEvent(QDropEvent* e)
 	   k->load(*u);
 	};
     };
+}
+
+void Kig::fileOpen()
+{
+  // this slot is connected to the KStdAction::open action...
+  QString file_name = KFileDialog::getOpenFileName(":document", "*.kig");
+
+  if (!file_name.isEmpty()) openURL(file_name);
+}
+
+void Kig::fileSaveAs()
+{
+  // this slot is connected to the KStdAction::saveAs action...
+  QString file_name = KFileDialog::getSaveFileName(":document", "*.kig\n*");
+  if (!file_name.isEmpty()) m_part->saveAs(file_name);
+}
+
+void Kig::fileSave()
+{
+  // this slot is connected to the KStdAction::save action...
+  m_part->save();
 }
 
 #include "kig.moc"

@@ -27,7 +27,9 @@ MType::MType( ObjectHierarchy* inHier, KigDocument* inDoc)
 
 Object* MTypeOne::newObject()
 {
-  return new MacroObjectOne(hier);
+  Object* o = new MacroObjectOne(hier);
+  kdDebug() << k_funcinfo << o << endl;
+  return o;
 }
 
 void MTypeOne::saveXML( QDomDocument& doc, QDomNode& p) const

@@ -1,12 +1,7 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="kig_part" version="1">
 <MenuBar>
-  <Menu name="file">
-    <Action name="file_open"/>
-    <Separator/>
-    <Action name="file_save"/>
-    <Action name="file_save_as"/>
-    <Separator/>
+  <Menu name="file"><text>&amp;File</text>
     <Action name="full_screen"/>
   </Menu>
   <Menu name="new">
@@ -24,16 +19,12 @@
   </Menu>
 </MenuBar>
 <ToolBar name="mainToolBar">
-  <Action name="file_open"/>
-  <Action name="file_save"/>
-  <Action name="file_print"/>
-	<Separator/>
   <Action name="edit_undo"/>
   <Action name="edit_redo"/>
   <Action name="delete_objects"/>
   <Action name="cancel_construction"/>
   <Action name="macro_action"/>
-	<Separator/>
+  <Separator/>
   <Action name="full_screen"/>
 </ToolBar>
 <ToolBar name="new_stuff_toolbar">

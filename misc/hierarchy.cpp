@@ -8,9 +8,9 @@
 
 #include "../objects/point.h"
 
-ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs, 
-				  const Objects& inFinalObjs, 
-				  KigDocument* inDoc)
+ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs, 
+				 const Objects& inFinalObjs, 
+				 KigDocument* inDoc)
   : doc (inDoc)
 {
   // here we construct the hierarchy
@@ -24,20 +24,19 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
   Object* o;
   for (Objects::iterator i(inGegObjs); (o = i.current()); ++i)
     {
-      double param = 0;
-      ConstrainedPoint* cp;
-      if ((cp = Object::toConstrainedPoint(o))) param = cp->getP();
-      elem = new HierarchyElement(o->vBaseTypeName(), allElems.size() + 1, param);
+      elem = new HierarchyElement(o->vBaseTypeName(), allElems.size() + 1);
       elem->actual = o;
+      elem->setParams(o->getParams());
       gegElems.push_back(elem);
       allElems.push_back(elem);
-      elemHash[o] = elem;
+      elemHash[o]=elem;
     };
   // next: we do the final objects
   for (Objects::iterator i(inFinalObjs); (o = i.current()); ++i)
     {
       elem = new HierarchyElement(o->vFullTypeName(), allElems.size() + 1);
       elem->actual = o;
+      elem->setParams(o->getParams());
       finElems.push_back(elem);
       allElems.push_back(elem);
       elemHash[o] = elem;
@@ -73,6 +72,7 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
 	      {
 		elem3 = new HierarchyElement(j->vFullTypeName(), allElems.size() + 1);
 		elem3->actual = j;
+		elem3->setParams(j->getParams());
 		tmp2.add(j);
 		allElems.add(elem3);
 		elemHash[j] = elem3;
@@ -96,18 +96,14 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
   while (( obj = it.current()))
     {
       (*elem)->actual = obj;
+      // doesn't seem necessary, but you never know...
+      (*elem)->setParams(obj->getParams());
       ++elem; ++it;
     };
   for (ElemList::const_iterator i = finElems.begin(); i != finElems.end(); ++i)
     {
-      if ((*i)->getTypeName() == "ConstrainedPoint")
-	{
-	  (*i)->actual = new ConstrainedPoint((*i)->getParam());
-	}
-      else
-	{
-	  (*i)->actual = doc->newObject((*i)->getTypeName());
-	};
+      (*i)->actual = doc->newObject((*i)->getTypeName());
+      (*i)->actual->setParams((*i)->getParams());
       cos.add((*i)->actual);
     };
   // temporary's
@@ -133,10 +129,9 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
 	      {
 		// we construct it, and add it to the necessary places
 		Object* appel;
-		if ((*j)->getTypeName() == "ConstrainedPoint")
-		  appel = new ConstrainedPoint((*j)->getParam());
-		else appel = doc->newObject((*j)->getTypeName());
+		appel = doc->newObject((*j)->getTypeName());
 		assert(appel);
+		appel->setParams((*j)->getParams());
 		(*j)->actual = appel;
 		cos.add(appel);
 		// we should also construct its parents
@@ -204,62 +199,72 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
       // not, we construct it.  tmpE should contain the correct
       // element after this.
       Hash::iterator i = tmphash.find(id);
-      if ( i != tmphash.end() ) {
-	// already constructed:
-	tmpE = i->second;
-      } else {
-	// not constructed yet, so we construct it here...
-	
-	// fetch the typeName
-	QString tmpTN = e.attribute("typeName");
-	assert(tmpTN);
-	QCString typeName = tmpTN.utf8();
-	
-	// fetch the param if it is a ConstrainedPoint
-	if (tmpTN == "ConstrainedPoint")
-	  {
-	    QString tmpP = e.attribute("param");
-	    assert (tmpP);
-	    double param = tmpP.toDouble(&ok);
-	    assert(ok);
-	    tmpE = new HierarchyElement(typeName, id, param);
-	  }
-	else tmpE = new HierarchyElement(typeName,id);
-	tmphash[id] = tmpE;
-      };
+      if ( i != tmphash.end() )
+	{
+	  // already constructed:
+	  tmpE = i->second;
+	}
+      else
+	{
+	  // not constructed yet, so we construct it here...
+	  
+	  // fetch the typeName
+	  QString tmpTN = e.attribute("typeName");
+	  assert(tmpTN);
+	  QCString typeName = tmpTN.utf8();
+	  
+	  tmpE = new HierarchyElement(typeName, id);
+	  tmphash[id] = tmpE;
+	};
 
-      // now take care of the parents:
+      // now take care of the parents and the params:
       for (QDomNode node = n.firstChild(); !node.isNull(); node = node.nextSibling())
 	{
-	  // fetch the element
+	  // fetch the elemento
 	  QDomElement e = node.toElement();
 	  assert (!e.isNull());
-	  assert (e.tagName() == "parent");
-	  
-	  // fetch the id
-	  QString tmpId = e.attribute("id");
-	  bool ok;
-	  int id = tmpId.toInt(&ok);
-	  assert(ok);
-
-	  // we look if we have already constructed this element, and
-	  // if not, we construct it.
-	  Hash::iterator i = tmphash.find(id);
-	  if ( i != tmphash.end() ) {
-	    // already constructed:
-	    tmpE->addParent(i->second);
-	  } else {
-	    // not constructed yet, so we construct it here...
-	    
-	    // fetch the typeName
-	    QString tmpTN = e.attribute("typeName");
-	    assert(tmpTN);
-	    QCString typeName = tmpTN.utf8();
-	    HierarchyElement* tmp = new HierarchyElement(typeName,id);
-	    tmpE->addParent(tmp);
-	    tmphash[id] = tmp;
-	  };
-	};
+	  if (e.tagName() == "parent")
+	    {	  
+	      // fetch the id
+	      QString tmpId = e.attribute("id");
+	      bool ok;
+	      int id = tmpId.toInt(&ok);
+	      assert(ok);
+	      
+	      // we look if we have already constructed this element, and
+	      // if not, we construct it.
+	      Hash::iterator i = tmphash.find(id);
+	      if ( i != tmphash.end() )
+		{
+		  // already constructed:
+		  tmpE->addParent(i->second);
+		}
+	      else
+		{
+		  // not constructed yet, so we construct it here...
+		  // fetch the typeName
+		  QString tmpTN = e.attribute("typeName");
+		  assert(tmpTN);
+		  QCString typeName = tmpTN.utf8();
+		  HierarchyElement* tmp = new HierarchyElement(typeName,id);
+		  tmpE->addParent(tmp);
+		  tmphash[id] = tmp;
+		}
+	    } // e.tagName() == "parent"
+	  else
+	    { // it's not a parent, it's a param..
+	      Q_ASSERT (e.tagName() == "param");
+	      QString name = e.attribute("name");
+	      QDomText t = e.firstChild().toText();
+	      Q_ASSERT (!t.isNull());
+	      bool ok;
+	      double value = t.data().toDouble(&ok);
+	      Q_ASSERT(ok);
+	      tmpE->setParam(name.latin1(), value);
+	    }; // we just handled the param child tag
+	}; // end of loop over all child tags
+      // we just constructed tmpE, and gave it all of its params and
+      // parents... 
       // next, we add tmpE to the relevant places:
       allElems.push_back(tmpE);
 
@@ -282,8 +287,6 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
   e.setAttribute("typeName", typeName);
   e.setAttribute("id", id);
 
-  if (typeName == "ConstrainedPoint") e.setAttribute ("param", param);
-
   // if we're only writing a reference to ourselves, we don't need all
   // this information..
   if (!ref) {
@@ -293,6 +296,15 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
     // references to our parents
     for (ElemList::const_iterator i = parents.begin(); i != parents.end(); ++i)
       (*i)->saveXML(doc,e,true);
+    // save our params
+    for (pMap::const_iterator i = params.begin(); i != params.end(); ++i)
+      {
+	QDomElement p = doc.createElement("param");
+	p.setAttribute("name", i->first);
+	QDomText t = doc.createTextNode(QString::number(i->second));
+	p.appendChild(t);
+	e.appendChild(p);
+      };
   };
   p.appendChild(e);
 };

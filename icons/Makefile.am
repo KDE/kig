@@ -1,2 +1,9 @@
 datadir = $(kde_datadir)/kig/toolbar
-data_DATA = exit.png filenew.png fileopen.png fileprint.png filesave.png help.png window_fullscreen.png angle.png arc.png areaCircle.png attacher.png baseCircle.png bisection.png circle.png circumference.png distance.png eraser.png line.png mirrorPoint.png move.png moveGrid.png parallel.png perpendicular.png point.png pointer.png intersection.png pointOnLine.png pointxy.png ray.png rotation.png segment.png slope.png text.png tracer.png triangle.png vector.png paint.png line1.png line2.png line3.png line4.png line5.png point1.png point10.png point11.png point12.png point13.png point14.png point2.png point3.png point4.png point5.png point6.png point7.png point8.png point9.png sizer.png macro.png
+data_DATA = angle.png arc.png areaCircle.png attacher.png baseCircle.png \
+	    bisection.png circle.png circumference.png distance.png \
+	    eraser.png intersection.png line1.png line2.png line3.png \
+	    line4.png line5.png line.png mirrorPoint.png paint.png parallel.png \
+	    perpendicular.png point1.png point2.png point3.png point4.png \
+	    point5.png point6.png point7.png point8.png pointOnLine.png point.png \
+	    pointxy.png ray.png rotation.png segment.png sizer.png slope.png \
+	    text.png triangle.png vector.png window_fullscreen.png

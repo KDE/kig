@@ -14,8 +14,8 @@ Here is some information to developers who want to check out my code:
   kparts, so i just do a "make install" every time, and then simply run the
   program, you prolly want to do "./configure --enable-debug=full
   --prefix=/usr" (/usr is for Debian, maybe you need another prefix
-  (/opt/kde ?)) (meanwhile, i do know, the solution is in a developer faq on
-  developer.kde.org
+  (/opt/kde ?)) (meanwhile, i found out, the solution is in a
+  developer faq on developer.kde.org
   (http://developer.kde.org/documentation/other/developer-faq.html#q67.1)
 
 - debugging doesn't work for me.  Gdb seems to get line numbers in shared
@@ -62,8 +62,6 @@ I did get much inspiration from the source of both programs, and i used some
 source and many pictures from Kig, I would therefore want to thank both
 developers for their work.
 
-I would, by the way, also want to thank every other free software hacker for
-their great work, and for the great fundaments they have given other
-developers to build upon.
+I also want to thank everyone who contributed something to Kig.
 
 Dominique Devriese

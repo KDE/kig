@@ -28,17 +28,17 @@ class KigTypeEditImpl : public TypeEditDialogUI
   Types* types;
 
 public:
-    KigTypeEditImpl( KigDocument* inDoc );
-    ~KigTypeEditImpl();
+  KigTypeEditImpl( KigDocument* inDoc );
+  ~KigTypeEditImpl();
 
 public slots:
-    void helpSlot();
-    void okSlot();
-
+  void helpSlot();
+  void okSlot();
+  
 protected slots:
-    void deleteType();
-    void exportType();
-    void importTypes();
+  void deleteType();
+  void exportType();
+  void importTypes();
 
 };
 

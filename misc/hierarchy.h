@@ -35,26 +35,29 @@ public:
 
 class HierarchyElement
 {
+  typedef map<QCString,double> pMap;
 protected:
   QCString typeName;
   ElemList parents;
   ElemList children;
+  map<QCString,double> params;
   int id;
-  double param;
-//   QString description;
 public:
+  void setParam(QCString name, double value) { params[name] = value; };
+  void setParams(const map<QCString, double>& p) { params = p; };
+  const map<QCString,double> getParams() { return params; };
   HierarchyElement(QCString inTN, 
-// 		   QString description,
-		   int inId,
-		   double inParam = 0
-		   ) : typeName(inTN), id(inId), param(inParam), actual(0) {};
+		   int inId
+		   )
+    : typeName(inTN), id(inId), actual(0)
+  {
+  };
   void addParent ( HierarchyElement* e ) { parents.push_back(e); e->addChild(this);};
   void addChild (HierarchyElement* e ) { children.push_back(e); };
   void saveXML ( QDomDocument& d, QDomElement& parentElem,
 		 bool reference, bool given=false,
 		 bool final=false) const;
   int getId() { return id; };
-  double getParam() { return param; };
   QCString getTypeName() { return typeName;};
   const ElemList& getParents() { return parents; };
   const ElemList& getChildren() { return children; };

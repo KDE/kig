@@ -13,13 +13,14 @@ class Point
 : public Object
 {
  public:
-  Point() {};
+  Point() : x(0), y(0) {};
   Point(double inX, double inY) : x(inX), y(inY) { complete = true;};
   Point(const QPoint& p) : x(p.x()), y(p.y()) { complete = true; };
   Point(const Point& p) : Object(p), x(p.getX()), y(p.getY()) {};
   Point* copy() { return new Point (*this); };
 
-  void saveXML(QDomDocument& doc, QDomElement& parentElem);
+  map<QCString,double> getParams();
+  void setParams( const map<QCString,double>& m);
 
   QPoint toQPoint() const { return QPoint(qRound(x),qRound(y));};
 
@@ -105,6 +106,9 @@ public:
   void unselectArg (Object*);
   Objects getParents() const { Objects tmp; tmp.append(p1); tmp.append(p2); return tmp; };
 
+  map<QCString,double> getParams();
+  void setParams( const map<QCString,double>& /*m*/);
+
   void startMove(const QPoint&);
   void moveTo(const QPoint&);
   void stopMove();
@@ -128,7 +132,8 @@ class ConstrainedPoint
 {
 public:
   ConstrainedPoint(Curve* inC, const QPoint& inPt);
-  ConstrainedPoint(const double inP) : p(inP), c(0) {};
+  ConstrainedPoint(const double inP);
+  ConstrainedPoint();
   ~ConstrainedPoint() {};
   ConstrainedPoint( const ConstrainedPoint& c);
   
@@ -150,6 +155,9 @@ public:
 
   double getP() { return p; };
   void setP(double inP) { p = inP; };
+
+  map<QCString,double> getParams();
+  void setParams( const map<QCString,double>& m);
 protected:
   double p;
   Curve* c;

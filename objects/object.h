@@ -3,6 +3,7 @@
 
 #include <list>
 #include <algorithm>
+#include <map>
 
 #include <qcstring.h>
 #include <qpoint.h>
@@ -31,12 +32,14 @@ class Object
   // "return new <Type>(*this);" (if you have a good copy constructor...)
   virtual Object* copy() = 0;
 
-  // saving is done rather special:
-  // we only save a few independent objects, and we have an
-  // ObjectHierarchy ($srcdir/misc/hierarchy.h) of all the
-  // rest. Result is that you only need to implement this if you're a
-  // completely independent object, which means, i think, only Point
-  virtual void saveXML ( QDomDocument& doc, QDomElement& parentElem );
+  // only object types that have "parameters" need this, a parameter
+  // is something which you cannot calculate from your parents,
+  // e.g. an independent point's params are its coordinates, a
+  // ConstrainedPoint's also got a param..
+  // The object should do e->addParam() for every one of its
+  // parameters
+  virtual map<QCString,double> getParams () {return map<QCString, double>();};
+  virtual void setParams ( const map<QCString,double>& ) {};
 
   // getting types from this object: easier to type and supports
   // MacroObjectOne
@@ -143,6 +146,9 @@ class Object
   Objects children;
  public:
   const Objects& getChildren() const { return children;};
+  // our children + our children's children + ...
+  Objects getAllChildren() const;
+
   void addChild(Object* o) { children.add(o); };
   void delChild(Object* o) { children.remove(o); };
   // returns all objects the object depends upon ( the args it selected )

@@ -22,6 +22,9 @@ public:
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "IntersectionPoint"; };
 
+  map<QCString,double> getParams() { return map<QCString, double>(); };
+  void setParams( const map<QCString,double>& /*m*/) {};
+
   void moved( ) { calc(); };
   QString wantArg(const Object* o) const;
   bool selectArg(Object* o);

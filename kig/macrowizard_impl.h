@@ -2,34 +2,38 @@
 #define MACROWIZARDIMPL_H
 #include "macrowizard.h"
 
+#include "../misc/objects.h"
+
+#include <klineedit.h>
 class KigDocument;
 
 class MacroWizardImpl : public MacroWizard
 { 
-    Q_OBJECT
+  Q_OBJECT
 
 protected:
-    KigDocument* document;
+  KigDocument* document;
+
 public:
-    MacroWizardImpl( KigDocument* parent);
-    ~MacroWizardImpl();
+  MacroWizardImpl( KigDocument* parent);
+  ~MacroWizardImpl();
+
+  Objects givenObjs;
+  Objects finalObjs;
   
 public slots:
-  void setFinishable(const QString&);
-  
-  // we reimplement the QDialog reject() to emit the canceled() signal
-  virtual void reject() { emit canceled(); MacroWizard::reject(); };
-  // we also reimplement the QWizard::next() and back() functions
-  virtual void next() { emit stepMacro(); MacroWizard::next(); };
-  virtual void back() { emit stepBackMacro(); MacroWizard::back();};
-  // we also reimplement QDialog::accept() to emit the stepMacro() signal
-  virtual void accept() { emit finishMacro(); MacroWizard::accept(); };
+  void setFinishable(const QString&) { updateNexts(); };
 
-signals:
-  void canceled();
-  void stepMacro();
-  void stepBackMacro();
-  void finishMacro();
+  /** 
+   * en-/disable the next and finish buttons...
+   * 
+   */
+  void updateNexts();
+
+  virtual void reject();
+  virtual void next();
+  virtual void back();
+  virtual void accept();
 
 };
 

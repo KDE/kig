@@ -139,19 +139,20 @@ Point IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3,
   long double b = (yd-yc)/(xd-xc);
   
   long double nx, ny;
-  if ((fabsl(xb - xa)> 2) && (fabsl(xd - xc) > 2))
+  if ((fabsl(xb - xa)> 1) && (fabsl(xd - xc) > 1))
   {
     nx = (yc - ya + xa*a - xc*b)/(a-b);
     ny = (nx-xa)*a+ya;
   }
   else {
+    kdDebug() << k_funcinfo << "damn" << endl;
     // we would have had a divide by zero
-    if (fabsl(xb - xa) <= 2) {
+    if (fabsl(xb - xa) <= 1) {
       // xa == xb --> the first line is almost vertical
       nx = (xb+xa)/2;
       ny = (nx-xc)*b+yc;
     }
-    else if ( fabs(xd - xc) <= 2 ) {
+    else if ( fabs(xd - xc) <= 1 ) {
       // the other line is almost vertical
       nx = (xd+xc)/2;
       ny = (nx-xa)*a+ya;

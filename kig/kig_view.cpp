@@ -20,9 +20,8 @@ KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool in
     document(inDoc),
     plc(0,0),
     pmt(0,0),
-    mode (NMode),
-    nmode (nmMoving),
-    cmode (cmMoving),
+    isMovingObjects(false),
+    isDraggingRect(false),
     stillPix(size()),
     curPix(size()),
     kiosk(0),
@@ -36,20 +35,17 @@ KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool in
       kiosKontext->insertItem(i18n("Quit Fullscreen Mode"), this, SIGNAL(endKiosk()), Key_Escape);
     }
   document->addView(this);
-   connect(document, SIGNAL(selectionChanged(const Object*)), this, SLOT(redrawOneObject(const Object*)));
-  connect( document, SIGNAL( startedMoving() ), this, SLOT( redrawStillPix() ) );
-  connect( document, SIGNAL( cosMoved() ), this, SLOT( paintOnPartOfWidget()));
-  connect( document, SIGNAL( stoppedMoving() ), this, SLOT( redrawStillPix() ) );
-//   connect( document, SIGNAL( objectAdded() ), this, SLOT( redrawStillPix() ) );
-  connect( document, SIGNAL( allChanged() ), this, SLOT( redrawStillPix() ) );
-  connect( document, SIGNAL( modeChanged() ), this, SLOT( setMode() ) );
+  connect( document, SIGNAL( repaintOneObject(const Object*)), this, SLOT(updateObject(const Object*)) );
+  connect( document, SIGNAL( allChanged() ), this, SLOT( updateAll() ) );
+
   setFocusPolicy(QWidget::ClickFocus);
   setMouseTracking(true);
-  redrawStillPix();
 
-  objectOverlayList.setAutoDelete(true);
   curPix.resize(size());
   stillPix.resize( size() );
+
+  redrawStillPix();
+  updateWidget(true);
 };
 
 KigView::~KigView()
@@ -58,273 +54,217 @@ KigView::~KigView()
   delete kiosKontext;
 };
 
-void KigView::setReadOnly (bool ro)
-{
-  readOnly = ro;
-};
-
 void KigView::paintEvent(QPaintEvent*)
 {
-  paintOnWidget(true);
+  updateWidget(true);
 }
 
 void KigView::mousePressEvent (QMouseEvent* e)
 {
   pmt = plc = e->pos();
   oco = document->whatAmIOn(plc);
-  switch (mode)
+  if (oco.isEmpty())
     {
-    case SMode:
-      // we use nmode for SMode too... (lazyness...)
-      if (oco.isEmpty()) nmode = nmClickedNowhere;
-      else nmode = nmClickedForSelecting;
-      break;
-    case NMode:
-      if (oco.isEmpty())
-	{
-	  if (e->button() & MidButton) nmode = nmClickedForNewPoint;
-	  else if (e->button() & LeftButton) nmode = nmClickedNowhere;
-	  else if (e->button() & RightButton && isKiosk) { kiosKontext->popup(e->pos()); }
-	  else { nmode = nmNothing; displayText(0); paintOnWidget(false); }
-	}
-      else 
-	{
-	  if (e->button() & RightButton) { nmode = nmNothing; displayText(0); paintOnWidget(false); }
-	  else if (e->button() & MidButton) { nmode = nmClickedForNewPoint; displayText(0); paintOnWidget(false); }
-	  else nmode = nmClickedForSelecting;
-	};
-      break;
-    case CMode:
-      if (!oco.isEmpty() && (e->button() == LeftButton))
-	cmode = cmClicked;
-      else if (e->button() & MidButton)
-	cmode = cmClickedForNewPoint;
-      else cmode = cmNothing;
-      break;
-    default:
-      break;
+      // clicked on an empty spot...
+      if ((e->button() & RightButton) && isKiosk) kiosKontext->popup(e->pos());
+      if ((e->button() & LeftButton) && document->canSelectRect()) isDraggingRect = true;
+      updateCurPix();
+      displayText(0);
+      updateWidget();
+    }
+  else
+    {
+      updateCurPix();
+      // clicked on one or more objects...
+      if (e->button() & LeftButton) displayText(oco.first()->vTBaseTypeName());
+      else displayText(0);
+      updateWidget();
     };
-//   kdDebug() << "new mode: " << (mode == CMode?"cmode":"nmode") << endl;
-//   kdDebug() << "new cmode: " << cmode << endl;
-//   kdDebug() << "new nmode: " << nmode << endl;
 };
 
 void KigView::mouseMoveEvent (QMouseEvent* e)
 {
   pmt = e->pos();
-  QString s;
-  switch(mode)
+
+  // moving the sos if that's necessary...
+  if ( isMovingObjects )
     {
-    case SMode:
-      switch (nmode)
-	{
-	case nmClickedNowhere:
-	  paintOnWidget(false);
-	  break;
-	case nmMoving:
-	  {
-	    oco = document->whatAmIOn(e->pos());
-	    const Objects& ocor = oco;
-	    if (!(ocor.isEmpty()))
-	      {
-		setCursor (KCursor::handCursor());
-		displayText(oco.getFirst()->vTBaseTypeName());
-	      }
-	    else
-	      {
-		setCursor(KCursor::arrowCursor());
-		displayText(0);
-	      }
-	    paintOnWidget(false);
-	    break;
-	  }
-	case nmClickedForSelecting:
-	  if ((plc-pmt).manhattanLength() > 3)
-	    {
-	      nmode = nmNothing;
-	    };
-	  break;
-	default:
-	  break;
-	};
-      break;
-    case NMode:
-      switch (nmode)
-	{
-	case nmClickedNowhere:
-	  paintOnWidget(false);
-	  break;
-	case nmMoving:
-	  oco = document->whatAmIOn(e->pos());
-	  if (!oco.isEmpty())
-	    {
-	      setCursor (KCursor::handCursor());
-// 	      kdDebug() << k_funcinfo << static_cast<Object*>(oco.begin()) << " " << static_cast<Object*>(oco.end())<< endl;
-	      displayText(oco.getFirst()->vTBaseTypeName());
-	    }
-	  else { setCursor(KCursor::arrowCursor()); displayText(0); }
-	  paintOnWidget(false);
-	  break;
-	case nmClickedForSelecting:
-	  if ((plc-pmt).manhattanLength() > 3)
-	    {
-	      Objects tmp = oco & document->getSos();
-	      if (tmp.isEmpty()) 
-		{
-		  if (!(e->state() & ShiftButton)) document->clearSelection();
-		  document->selectObject(oco.getFirst());
-		}
-	      else
-		{
-		  document->startMovingSos(plc);
-		  setMode();
-		};
-	    };
-	  break;
-	case nmClickedForNewPoint:
-	  if ((plc-pmt).manhattanLength() > 3)
-	    {
-	      nmode = nmNothing;
-	      displayText(0);
-	      paintOnWidget(false);
-	    };
-	  break;
-	default:
-	  break;
-	};
-      break;
-    case CMode:
-      switch (cmode)
-	{
-	case cmMoving:
-	  oco = document->whatAmIOn(e->pos());
-	  if (!oco.isEmpty() && (s = document->getObc()->wantArg(oco.getFirst())))
-	    {
-	      setCursor (KCursor::handCursor());
-	      displayText(s);
-	      paintOnWidget(false);
-	      break;
-	    }
-	  setCursor (KCursor::arrowCursor());
-	  displayText(i18n("Constructing a %1").arg(document->getObc()->vTBaseTypeName()));
-	  paintOnWidget(false);
-	  break;
-	case cmClicked:
-	  if ((plc-pmt).manhattanLength() > 3)
-	    cmode = cmNothing;
-	  break;
-	case cmClickedForNewPoint:
-	  if ((e->pos() - plc).manhattanLength() > 3) cmode = cmNothing;
-	  break;
-	default:
-	  break;
-	};
-      break;
-    case MMode:
+      updateCurPix();
       document->moveSosTo(e->pos());
-      paintOnWidget(false);
-      break;
-    default:
-      break;
+      drawObjects(document->getMovingObjects(), curPix);
+      updateWidget(false);
+      return;
+    };
+
+  // the selection rect for selecting all objects inside it...
+  if (isDraggingRect)
+    {
+      updateCurPix();
+      drawRect();
+      updateWidget();
+      return;
+    };
+
+  if (document->getObc())
+    {
+      updateCurPix();
+      // draw a preliminary image of what the object will look like...
+      drawPrelim();
+      // -> if he's over a selectable object, we tell him what it
+      // would be used for, or else, we just tell him what he's
+      // constructing...
+      Objects where = document->whatAmIOn(pmt);
+      if (where.isEmpty())
+	{
+	  displayText(i18n("Constructing a %1").arg(document->getObc()->vTBaseTypeName()));
+	  setCursor(KCursor::arrowCursor());
+	}
+      else
+	{
+	  displayText(document->getObc()->wantArg(where.first()));
+      	  setCursor (KCursor::handCursor());
+	};
+      updateWidget();
+      return;
+    };
+
+  if (!oco.isEmpty())
+    {
+      // the user clicked on something...
+      if ((plc-pmt).manhattanLength() > 3 && document->canMoveObjects())
+	{
+	  // the user wants to move these objects...
+	  if ( (oco & document->getSos()).isEmpty())
+	    {
+	      // he clicked on something that isn't currently
+	      // selected...
+	      // we first select it (taking the Ctrl- and Shift-
+	      // buttons into account)
+	      if (!(e->state() & (ControlButton | ShiftButton)))
+		document->clearSelection();
+	      document->selectObject(oco.first());
+	      // we don't call drawObject, since this is done by
+	      // document->selectObject... 
+	    };
+	  // we start moving the sos...
+	  isMovingObjects = true;
+	  Objects stillObjs;
+	  document->startMovingSos(plc,stillObjs);
+	  redrawStillPix();
+	  drawObjects(stillObjs, stillPix);
+	  updateCurPix();
+	  // we immediately show our changes by calling ourselves
+	  // again... 
+	  this->mouseMoveEvent(e);
+	  return;
+	};
+      updateCurPix();
+      displayText(oco.first()->vTBaseTypeName());
+      updateWidget(false);
+    };
+
+  if (!(e->state() & (LeftButton | MidButton | RightButton)))
+    {
+      // the user didn't click, and is just moving around his
+      // cursor...
+      Objects where = document->whatAmIOn(pmt);
+      updateCurPix();
+      // no obc
+      // --> we just tell the user what he's moving over...
+      if (where.isEmpty())
+	{
+	  setCursor(KCursor::arrowCursor());
+	  displayText(0);
+	}
+      else
+	{
+	  setCursor (KCursor::handCursor());
+	  displayText(where.getFirst()->vTBaseTypeName());
+	};
+      updateWidget(false);
+      return;
     };
 };
 
 void KigView::mouseReleaseEvent (QMouseEvent* e)
 {
-//   kdDebug() << "KigView::mouseReleaseEvent" << endl;
-  Point* p;
-  switch(mode)
+  if ( isMovingObjects )
     {
-    case SMode:
-      switch(nmode)
+      document->stopMovingSos();
+      isMovingObjects = false;
+      redrawStillPix();
+      updateWidget();
+    }
+  else if ( isDraggingRect )
+    {
+      if (! (e->state() & (ControlButton | ShiftButton)))
 	{
-	case nmClickedNowhere:
-	  document->macroSelect(QRect(plc,pmt));
-	  break;
-	case nmClickedForSelecting:
-	  document->macroSelect(oco.getFirst());
-	  break;
-	default:
-	  break;
+	  document->clearSelection();
 	};
-      break;
-    case NMode:
-      switch (nmode)
+      document->selectObjects(QRect(pmt, plc).normalize());
+      // we don't call drawObjects, this is done for us by
+      // document->selectObjects()...
+      isDraggingRect = false;
+      updateWidget();
+    }
+  else if (!oco.isEmpty() && (e->button() & LeftButton) && (pmt-plc).manhattanLength() < 4 && document->canSelectObject(oco.first()))
+    {
+      if (oco.getFirst()->getSelected())
 	{
-	case nmClickedNowhere:
-	  if (!(e->state() & ShiftButton)) document->clearSelection();
-	  document->selectObjects (QRect(plc, pmt));
-	  break;
-	case nmClickedForNewPoint:
-	  if (oco.count() > 0 && Object::toCurve(oco.getFirst()) && oco.getFirst()->contains(plc))
+	  if (e->state() & (ShiftButton | ControlButton))
 	    {
-	      p = new ConstrainedPoint(Object::toCurve(oco.getFirst()),plc);
+	      if (document->canUnselect()) document->unselect(oco.getFirst());
+	      // we don't call drawObject, since document->unselect
+	      // does this for us...
+	      updateWidget();
 	    }
 	  else
 	    {
-	      p = new Point(plc);
+	      if (document->canUnselect())
+		{
+		  document->clearSelection();
+		  document->selectObject(oco.getFirst());
+		};
+	      // we don't call drawObject, since the document
+	      // does this for us...
+	      updateWidget();
 	    };
-// 	  kdDebug() << "new point: " << p << endl;
-	  document->addObject(p);
-	  break;
-	case nmClickedForSelecting:
-          if ( oco.getFirst()->getSelected() )
-          {
-              if ( e->state() & ShiftButton )
-              {
-                  document->unselect( oco.getFirst() );
-                  break;
-              }
-              else document->clearSelection();
-          };
-          if (!(e->state() & ShiftButton)) document->clearSelection();
-          document->selectObject(oco.getFirst());
-          break;
-	default:
-	  break;
-	};
-      break;
-    case CMode:
-      switch(cmode)
+	}
+      else
 	{
-	case cmClicked:
-	  if (document->getObc()->wantArg(oco.getFirst()))
-	    document->obcSelectArg(oco.getFirst());
-	  else {document->delObc(); document->selectObject(oco.getFirst());}
-	  break;
-	case cmClickedForNewPoint:
-	  p = new Point (e->pos());
-	  if (!document->getObc()->wantArg(p)) {
-	    delete p;
-	    break;
-	  }
-	  document->addObject(p);
-	  document->obcSelectArg(p);
-	  break;
-	default:
-	  break;
+	  if (!(e->state() & (ShiftButton | ControlButton)) && document->canUnselect())
+	    document->clearSelection();
+	  document->selectObject(oco.first());
+	  // we don't call drawObject, since the document
+	  // does this for us...
+	  updateWidget();
 	};
-      break;
-    case MMode:
-      document->stopMovingSos();
-      break;
-    default:
-      break;
+    }
+  else if (document->canAddObjects() && (e->button() == MidButton) && (pmt-plc).manhattanLength() < 4)
+    {
+      Point* p;
+      if (!oco.isEmpty() && Object::toCurve(oco.first()))
+	{
+	  // add a ConstrainedPoint...
+	  p = new ConstrainedPoint(Object::toCurve(oco.getFirst()),plc);
+	}
+      else
+	{
+	  // add a normal Point...
+	  p = new Point(plc);
+	};
+      document->addObject(p);
+      // we don't call drawObject, since the document
+      // does this for us...
+      if (document->getObc())
+	{
+	  if (document->canSelectObject(p))
+	    document->selectObject(p);
+	};
+      updateWidget();
     };
-  setMode();
-  nmode = nmMoving;
-  cmode = cmMoving;
-  displayText(0);
-  paintOnWidget(false);
+  oco.clear();
 };
-
-void KigView::setMode()
-{
-  if (document->getObc()) mode = CMode;
-  else if (!document->getCos().isEmpty()) mode = MMode;
-  else if (document->isConstructingMacro()) mode = SMode;
-  else mode = NMode;
-}
 
 void KigView::startKioskMode()
 {
@@ -349,8 +289,17 @@ void KigView::endKioskMode()
 
 void KigView::redrawStillPix()
 {
-  stillPix.fill(Qt::white); 
-  QPainter p(&stillPix );
+  stillPix.fill(Qt::white);
+  drawGrid();
+  if (isMovingObjects) return;
+  drawObjects(document->getObjects(), stillPix);
+  bitBlt(&curPix, QPoint(0, 0), &stillPix, QRect(QPoint(0,0),size()));
+  oldOverlay.append (new QRect (QPoint(0,0), size()));
+};
+
+void KigView::drawGrid()
+{
+  QPainter p( &stillPix );
   // this grid comes from KGeo
   p.save();
   p.setWindow(-size().width() / 2, -size().height() / 2, size().width(), size().height());
@@ -366,7 +315,7 @@ void KigView::redrawStillPix()
     {
       p.drawLine( -maxX * unitInPixel, k * unitInPixel, maxX * unitInPixel, k * unitInPixel );
     }
-
+  
   // axes:
   p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
   p.drawLine( -maxX * unitInPixel, 0, maxX * unitInPixel, 0 );
@@ -397,96 +346,111 @@ void KigView::redrawStillPix()
   a.setPoints ( 3, - 3, top - 6, 0, top - 13, 3, top - 6 );
   p.drawPolygon( a, true );
   p.drawLine( 0, top, 0, top - 6 );
-
+  
   p.restore();
-  const Objects* obj = &( document->getStos() );
-  if ( obj->isEmpty() && document->getCos().isEmpty()) obj = &( document->getObjects() );
-  obj->draw( p,true );
-  bitBlt(&curPix, 0,0,&stillPix);
-  objectOverlayList.clear();
-  paintOnWidget( true );
 };
 
-void KigView::paintOnWidget( bool needRedraw )
+void KigView::updateWidget( bool needRedraw )
 {
-  //maybe i should add an option to configure for this ?
 #undef SHOW_OVERLAY_RECTS
 #ifdef SHOW_OVERLAY_RECTS
   QPainter debug (this);
   debug.setPen(Qt::yellow);
-#endif
-  for (QRect* i =objectOverlayList.first(); i ; i = objectOverlayList.next())
+#endif // SHOW_OVERLAY_RECTS
+  if (needRedraw)
     {
-      bitBlt(&curPix, i->topLeft(), &stillPix, *i);
-    };
-  // since objectOverlayList has autoDelete turned on, this also
-  // deletes all included QRects
-  QPtrList<QRect> nList;
-
-  const Objects& objs = document->getCos();
-  QPainter p( &curPix );
-  objs.draw( p,true );
-  nList = objs.getOverlay(QRect(0,0,width(), height()));
-
-  if ((mode==NMode || mode == SMode )&& nmode == nmClickedNowhere)
+      // if necessary, we just redraw everything...
+      bitBlt (this, 0, 0, &curPix);
+    }
+  else
     {
-      QPen pen(Qt::black, 1, Qt::DotLine);
-      p.setPen(pen);
-      p.setBrush(QBrush(Qt::cyan,Dense6Pattern));
-      QRect* r = new QRect(plc, pmt);
-      *r = r->normalize();
-      p.drawRect(*r);
-      nList.append(r);
-    };
-
-  if (mode==CMode && cmode == cmMoving)
-    {
-      document->getObc()->drawPrelim(p,mapFromGlobal(QCursor::pos()));
-      document->getObc()->getPrelimOverlay(nList,QRect(0,0,width(), height()), mapFromGlobal(QCursor::pos()));
-    };
-  if (tbd)
-    {
-      // tf = text formatting flags
-      int tf = AlignLeft | AlignTop | DontClip | WordBreak;
-      // we need the rect where we're going to paint text
-      QRect* tmpRect = new QRect(p.boundingRect(pmt.x(), pmt.y(), 900, 50, tf, tbd));
-      p.setPen(QPen(Qt::blue, 1, SolidLine));
-      p.setBrush(Qt::NoBrush);
-      p.drawText(pmt.x(), pmt.y(), 900 ,50, tf, tbd);
-      nList.append(tmpRect);
-//       p.drawText(pmt, tbd);
-    };
-  if (needRedraw) { bitBlt (this, 0, 0, &curPix); return; };
-  for (QRect* i = nList.first(); i; i = nList.next())
-    {
-      bitBlt( this, i->topLeft(), &curPix, *i );
+      // we undo our old changes...
+      for (QRect* i = oldOverlay.first(); i; i = oldOverlay.next())
+	bitBlt( this, i->topLeft(), &curPix, *i );
+      // we add our new changes...
+      for (QRect* i = overlay.first(); i; i = overlay.next())
+	{
+	  bitBlt( this, i->topLeft(), &curPix, *i );
 #ifdef SHOW_OVERLAY_RECTS
-      debug.drawRect(*i);
+	  debug.drawRect(*i);
 #endif
+	};
     };
-  for (QRect* i = objectOverlayList.first(); i; i = objectOverlayList.next())
-    bitBlt( this, i->topLeft(), &curPix, *i );
-  objectOverlayList.clear();
-  objectOverlayList = nList;
-}
+  oldOverlay.setAutoDelete(true);
+  oldOverlay.clear();
+  oldOverlay.setAutoDelete(false);
+  if (needRedraw)
+    {
+      oldOverlay.append (new QRect(QPoint(0,0), size()));
+      overlay.setAutoDelete(true);
+    }
+  else
+    {
+      oldOverlay = overlay;
+      overlay.setAutoDelete(false);
+    };
+  overlay.clear();
+  return;
+};
 
-void KigView::redrawOneObject(const Object* o)
+void KigView::drawObject(const Object* o, QPixmap& pix)
 {
-  QPainter p;
-  p.begin(&stillPix);
-  o->drawWrap(p, true);
-  p.end();
-  p.begin(&curPix);
-  o->drawWrap(p,true);
-  p.end();
-  p.begin(this);
-  o->drawWrap(p,true);
-  p.end();
-}
+  QPainter p( &pix );
+  o->drawWrap( p, true );
+  o->getOverlayWrap(overlay, QRect(QPoint(0,0), size()));
+};
+
+void KigView::drawRect()
+{
+  QPainter p(&curPix);
+  QPen pen(Qt::black, 1, Qt::DotLine);
+  p.setPen(pen);
+  p.setBrush(QBrush(Qt::cyan,Dense6Pattern));
+  QRect* r = new QRect(plc, pmt);
+  *r = r->normalize();
+  p.drawRect(*r);
+  overlay.append(r);
+};
+
+void KigView::drawPrelim()
+{
+  QPainter p(&curPix);
+  document->getObc()->drawPrelim(p,mapFromGlobal(QCursor::pos()));
+  document->getObc()->getPrelimOverlay(overlay,QRect(QPoint(0,0),size()), mapFromGlobal(QCursor::pos()));
+};
+
+void KigView::drawTbd()
+{
+  if (tbd.isNull()) return;
+  QPainter p(&curPix);
+  // tf = text formatting flags
+  int tf = AlignLeft | AlignTop | DontClip | WordBreak;
+  // we need the rect where we're going to paint text
+  QRect* tmpRect = new QRect(p.boundingRect(pmt.x(), pmt.y(), 900, 50, tf, tbd));
+  p.setPen(QPen(Qt::blue, 1, SolidLine));
+  p.setBrush(Qt::NoBrush);
+  p.drawText(pmt.x(), pmt.y(), 900 ,50, tf, tbd);
+  overlay.append(tmpRect);
+};
 
 void KigView::resizeEvent(QResizeEvent*)
 {
   curPix.resize(size());
   stillPix.resize( size() );
   redrawStillPix();
+  updateWidget(true);
+}
+
+void KigView::drawObjects(const Objects& os, QPixmap& p )
+{
+  Objects::iterator it(os);
+  Object* i;
+  for (; (i = it.current()); ++it)
+    drawObject(i,p);
+}
+void KigView::updateCurPix()
+{
+  // we make curPix look like stillPix again...
+  for (QRect* i = oldOverlay.first(); i ; i = oldOverlay.next())
+    bitBlt(&curPix, i->topLeft(), &stillPix, *i);
 }

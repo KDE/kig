@@ -15,19 +15,3 @@ void Objects::calc() const
   for (iterator i(*this);(o=i.current()); ++i)
     o->calc();
 };
-
-void Objects::draw( QPainter& p, bool showSelection ) const
-{
-  Object* o;
-  for (iterator i(*this); (o=i.current()); ++i)
-    o->drawWrap(p, showSelection);
-};
-
-QPtrList<QRect> Objects::getOverlay( const QRect& border) const
-{
-  QPtrList<QRect> tmp;
-  Object* o;
-  for (iterator i(*this); (o = i.current()); ++i)
-    o->getOverlayWrap(tmp, border);
-  return tmp;
-};
