@@ -39,7 +39,7 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
   // object could move its parents...
   for ( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
     (*i)->startMove( c );
-  kdDebug() << k_funcinfo << c << endl;
+//  kdDebug() << k_funcinfo << c << endl;
   amo.clear();
   nmo.clear();
   Objects tmp( emo ), tmp2;

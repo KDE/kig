@@ -47,7 +47,7 @@ class NormalModePopupObjects
 public:
   NormalModePopupObjects( KigDocument* doc, KigView* view,
                           NormalMode* mode, const Objects& objs );
-  ~NormalModePopupObjects();
+  ~NormalModePopupObjects() {};
 protected slots:
   void activated( int );
   void setColor( int );
