@@ -403,6 +403,10 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
       QDomElement e = doc.createElement( "Object" );
       idmap[*i] = id;
       e.setAttribute( "id", id++ );
+      e.setAttribute( "type", (*i)->type()->fullName() );
+      e.setAttribute( "color", (*i)->color().name() );
+      e.setAttribute( "shown", QString::fromLatin1( (*i)->shown() ? "true" : "false" ) );
+      e.setAttribute( "width", QString::number( (*i)->width() ) );
 
       const Objects& parents = (*i)->parents();
       for ( Objects::const_iterator i = parents.begin(); i != parents.end(); ++i )
