@@ -309,7 +309,7 @@ void GaussianElimination( double *matrix[], int numrows, int numcols,
 void BackwardSubstitution( double *matrix[], int numrows, int numcols,
         int exchange[], double solution[] )
 {
-  // the system is homogeneous and underdetermined, the last unknown(s) 
+  // the system is homogeneous and underdetermined, the last unknown(s)
   // are chosen = 1
   for ( int j = numrows; j < numcols; ++j )
   {
@@ -337,10 +337,6 @@ void BackwardSubstitution( double *matrix[], int numrows, int numcols,
     solution[jmax] = t;
   }
 }
-
-/*
- *
- */
 
 bool Invert3by3matrix ( double m[3][3], double inv[3][3] )
 {

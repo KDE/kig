@@ -29,7 +29,7 @@ double calcCubicRoot ( double xmin, double xmax, double a,
 int calcCubicVariations (double x, double a, double b, double c,
       double d, double p1a, double p1b, double p0a);
 
-double calcCubicRootwithNewton ( double ymin, double ymax, double a, 
+double calcCubicRootwithNewton ( double ymin, double ymax, double a,
     double b, double c, double d, double tol );
 
 void GaussianElimination( double *matrix[], int numrows, int numcols,
@@ -38,6 +38,6 @@ void GaussianElimination( double *matrix[], int numrows, int numcols,
 void BackwardSubstitution( double *matrix[], int numrows, int numcols,
     int scambio[], double solution[] );
 
-bool Invert3by3matrix ( double m[3][3], double inv[3][3] );
+bool Invert3by3matrix ( const double m[3][3], double inv[3][3] );
 
 #endif // KIG_MISC_KIGNUMERICN_H

@@ -22,7 +22,7 @@
 #ifndef KIG_MISC_KIGTRANSFORM_H
 #define KIG_MISC_KIGTRANSFORM_H
 
-class Coordinate;
+#include "coordinate.h"
 
 class Transformation
 {
