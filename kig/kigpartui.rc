@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kig_part" version="4">
+<kpartgui name="kig_part" version="5">
   <MenuBar>
     <Menu name="file">
       <text>&amp;File</text>
@@ -20,7 +20,6 @@
     </Menu>
     <Menu name="view">
       <text>&amp;View</text>
-      <Action name="view_fullscreen" />
       <Action name="view_zoom_in" />
       <Action name="view_zoom_out" />
       <Action name="view_fit_to_page" />
@@ -113,6 +112,9 @@
       <Action name="macro_action" />
       <Action name="types_edit" />
     </Menu>
+    <Menu name="settings">
+      <Action name="fullscreen" />
+    </Menu>
   </MenuBar>
   <Toolbar name="mainToolBar">
     <text>Main Toolbar</text>
@@ -190,7 +192,7 @@
     <text>View</text>
     <Action name="view_zoom_in" />
     <Action name="view_zoom_out" />
-    <Action name="view_fullscreen" />
+    <Action name="fullscreen" />
     <Action name="view_fit_to_page" />
     <Action name="view_select_shown_rect" />
   </Toolbar>
