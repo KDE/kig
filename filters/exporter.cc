@@ -343,7 +343,7 @@ void XFigExportImpVisitor::visit( const RayImp* imp )
 
 void XFigExportImpVisitor::visit( const ArcImp* )
 {
-
+  // TODO when I implement arcs :)
 }
 
 void XFigExporter::run( const KigDocument& doc, KigWidget& w )
