@@ -143,6 +143,7 @@ KigFilter::Result KigFilterCabri::load( const QString /*from*/, Objects& /*os*/ 
 //   for (std::vector<ObjectData>::iterator i = objs.begin(); i != objs.end(); ++i)
 //     os.upush(i->o);
 //   return OK;
+  return NotSupported;
 }
 
 

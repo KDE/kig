@@ -276,7 +276,7 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
       }
       else if ( name == "point-size" )
       {
-        o.setWidth( e.text().toDouble( &ok ) );
+        o.setWidth( e.text().toInt( &ok ) );
         if ( ! ok ) return false;
       };
     };
