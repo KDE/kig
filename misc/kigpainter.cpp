@@ -978,7 +978,7 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
     }
   }
 
-  if ( ! workstack.empty () );
+  if ( ! workstack.empty () )
   {
     kdDebug() << "Stack not empty in drawLocus!\n" << endl;
     while ( ! workstack.empty () ) workstack.pop ();
