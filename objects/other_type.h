@@ -23,7 +23,7 @@
 #include "../misc/object_hierarchy.h"
 
 class AngleType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   AngleType();
   ~AngleType();
@@ -49,9 +49,9 @@ public:
 };
 
 class LocusType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
-  typedef ArgparserObjectType Parent;
+  typedef ArgsParserObjectType Parent;
   LocusType();
   ~LocusType();
 public:
@@ -84,9 +84,9 @@ public:
  * an arc by a start point, an intermediate point and an end point
  */
 class ArcBTPType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
-  typedef ArgparserObjectType Parent;
+  typedef ArgsParserObjectType Parent;
   ArcBTPType();
   ~ArcBTPType();
 public:

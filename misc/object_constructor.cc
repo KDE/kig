@@ -96,7 +96,7 @@ void StandardConstructorBase::handlePrelim(
 }
 
 SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
-  const ArgparserObjectType* t, const char* descname,
+  const ArgsParserObjectType* t, const char* descname,
   const char* desc, const char* iconfile )
   : StandardConstructorBase( descname, desc, iconfile,
                              t->argParser() ),
@@ -132,7 +132,7 @@ StandardConstructorBase::~StandardConstructorBase()
 }
 
 MultiObjectTypeConstructor::MultiObjectTypeConstructor(
-  const ArgparserObjectType* t, const char* descname,
+  const ArgsParserObjectType* t, const char* descname,
   const char* desc, const char* iconfile,
   const std::vector<int>& params )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
@@ -142,7 +142,7 @@ MultiObjectTypeConstructor::MultiObjectTypeConstructor(
 }
 
 MultiObjectTypeConstructor::MultiObjectTypeConstructor(
-  const ArgparserObjectType* t, const char* descname,
+  const ArgsParserObjectType* t, const char* descname,
   const char* desc, const char* iconfile,
   int a, int b, int c, int d )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),

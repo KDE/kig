@@ -22,7 +22,7 @@
 #include "object_type.h"
 
 class CubicB9PType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   CubicB9PType();
   ~CubicB9PType();
@@ -33,7 +33,7 @@ public:
 };
 
 class CubicNodeB6PType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   CubicNodeB6PType();
   ~CubicNodeB6PType();
@@ -44,7 +44,7 @@ public:
 };
 
 class CubicCuspB4PType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   CubicCuspB4PType();
   ~CubicCuspB4PType();

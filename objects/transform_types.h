@@ -22,7 +22,7 @@
 #include "object_type.h"
 
 class TranslatedType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   TranslatedType();
   ~TranslatedType();
@@ -35,7 +35,7 @@ public:
 };
 
 class PointReflectionType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   PointReflectionType();
   ~PointReflectionType();
@@ -48,7 +48,7 @@ public:
 };
 
 class LineReflectionType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   LineReflectionType();
   ~LineReflectionType();
@@ -61,7 +61,7 @@ public:
 };
 
 class RotationType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   RotationType();
   ~RotationType();
@@ -74,7 +74,7 @@ public:
 };
 
 class ScalingOverCenterType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   ScalingOverCenterType();
   ~ScalingOverCenterType();
@@ -87,7 +87,7 @@ public:
 };
 
 class ScalingOverLineType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   ScalingOverLineType();
   ~ScalingOverLineType();
@@ -100,7 +100,7 @@ public:
 };
 
 class ProjectiveRotationType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   ProjectiveRotationType();
   ~ProjectiveRotationType();
@@ -113,7 +113,7 @@ public:
 };
 
 class CastShadowType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   CastShadowType();
   ~CastShadowType();
@@ -126,7 +126,7 @@ public:
 };
 
 class ApplyTransformationObjectType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   ApplyTransformationObjectType();
   ~ApplyTransformationObjectType();

@@ -23,7 +23,7 @@
 #include "common.h"
 
 class FixedPointType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   FixedPointType();
   ~FixedPointType();
@@ -45,7 +45,7 @@ public:
 };
 
 class ConstrainedPointType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   ConstrainedPointType();
   ~ConstrainedPointType();

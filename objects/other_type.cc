@@ -49,7 +49,7 @@ static const ArgsParser::spec argsspecAngle[] =
 };
 
 AngleType::AngleType()
-  : ArgparserObjectType( "Angle", argsspecAngle, 3 )
+  : ArgsParserObjectType( "Angle", argsspecAngle, 3 )
 {
 }
 
@@ -119,7 +119,7 @@ static const struct ArgsParser::spec argsspecLocus[] =
 };
 
 LocusType::LocusType()
-  : ArgparserObjectType( "Locus", argsspecLocus, 2 )
+  : ArgsParserObjectType( "Locus", argsspecLocus, 2 )
 {
 }
 
@@ -224,7 +224,7 @@ static const ArgsParser::spec argsspecArcBTP[] =
 };
 
 ArcBTPType::ArcBTPType()
-  : ArgparserObjectType( "ArcBTP", argsspecArcBTP, 3 )
+  : ArgsParserObjectType( "ArcBTP", argsspecArcBTP, 3 )
 {
 }
 

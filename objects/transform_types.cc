@@ -34,7 +34,7 @@ static const ArgsParser::spec argsspecTranslation[] =
 };
 
 TranslatedType::TranslatedType()
-  : ArgparserObjectType( "Translation", argsspecTranslation, 2 )
+  : ArgsParserObjectType( "Translation", argsspecTranslation, 2 )
 {
 }
 
@@ -67,7 +67,7 @@ static const ArgsParser::spec argsspecPointReflection[] =
 };
 
 PointReflectionType::PointReflectionType()
-  : ArgparserObjectType( "PointReflection", argsspecPointReflection, 2 )
+  : ArgsParserObjectType( "PointReflection", argsspecPointReflection, 2 )
 {
 }
 
@@ -100,7 +100,7 @@ static const ArgsParser::spec argsspecLineReflection[] =
 };
 
 LineReflectionType::LineReflectionType()
-  : ArgparserObjectType( "LineReflection", argsspecLineReflection, 2 )
+  : ArgsParserObjectType( "LineReflection", argsspecLineReflection, 2 )
 {
 }
 
@@ -133,7 +133,7 @@ static const ArgsParser::spec argsspecRotation[] =
 };
 
 RotationType::RotationType()
-  : ArgparserObjectType( "Rotation", argsspecRotation, 3 )
+  : ArgsParserObjectType( "Rotation", argsspecRotation, 3 )
 {
 }
 
@@ -167,7 +167,7 @@ static const ArgsParser::spec argsspecScalingOverCenter[] =
 };
 
 ScalingOverCenterType::ScalingOverCenterType()
-  : ArgparserObjectType( "ScalingOverCenter", argsspecScalingOverCenter, 3 )
+  : ArgsParserObjectType( "ScalingOverCenter", argsspecScalingOverCenter, 3 )
 {
 }
 
@@ -201,7 +201,7 @@ static const ArgsParser::spec argsspecScalingOverLine[] =
 };
 
 ScalingOverLineType::ScalingOverLineType()
-  : ArgparserObjectType( "ScalingOverLine", argsspecScalingOverLine, 3 )
+  : ArgsParserObjectType( "ScalingOverLine", argsspecScalingOverLine, 3 )
 {
 }
 
@@ -235,7 +235,7 @@ static const ArgsParser::spec argsspecProjectiveRotation[] =
 };
 
 ProjectiveRotationType::ProjectiveRotationType()
-  : ArgparserObjectType( "ProjectiveRotation", argsspecProjectiveRotation, 3 )
+  : ArgsParserObjectType( "ProjectiveRotation", argsspecProjectiveRotation, 3 )
 {
 }
 
@@ -276,7 +276,7 @@ static const ArgsParser::spec argsspecCastShadow[] =
 };
 
 CastShadowType::CastShadowType()
-  : ArgparserObjectType( "CastShadow", argsspecCastShadow, 3 )
+  : ArgsParserObjectType( "CastShadow", argsspecCastShadow, 3 )
 {
 }
 
@@ -388,7 +388,7 @@ static const ArgsParser::spec argsspecApplyTransformation[] =
 };
 
 ApplyTransformationObjectType::ApplyTransformationObjectType()
-  : ArgparserObjectType( "ApplyTransformation", argsspecApplyTransformation, 2 )
+  : ArgsParserObjectType( "ApplyTransformation", argsspecApplyTransformation, 2 )
 {
 }
 

@@ -40,7 +40,7 @@ public:
  * Circle by point and radius.
  */
 class CircleBPRType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   CircleBPRType();
   ~CircleBPRType();
@@ -55,7 +55,7 @@ public:
  * Circle by three points
  */
 class CircleBTPType
-  : public ArgparserObjectType
+  : public ArgsParserObjectType
 {
   CircleBTPType();
   ~CircleBTPType();

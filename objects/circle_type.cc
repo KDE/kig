@@ -66,7 +66,7 @@ static const ArgsParser::spec argsspecCircleBTP[] =
 };
 
 CircleBTPType::CircleBTPType()
-  : ArgparserObjectType( "CircleBTP", argsspecCircleBTP, 3 )
+  : ArgsParserObjectType( "CircleBTP", argsspecCircleBTP, 3 )
 {
 }
 
@@ -140,7 +140,7 @@ static const ArgsParser::spec argsspecCircleBPR[] =
 };
 
 CircleBPRType::CircleBPRType()
-  : ArgparserObjectType( "CircleBPR", argsspecCircleBPR, 2 )
+  : ArgsParserObjectType( "CircleBPR", argsspecCircleBPR, 2 )
 {
 }
 

@@ -41,7 +41,7 @@ static const ArgsParser::spec argsspecFixedPoint[] =
 };
 
 FixedPointType::FixedPointType()
-  : ArgparserObjectType( "FixedPoint", argsspecFixedPoint, 1 )
+  : ArgsParserObjectType( "FixedPoint", argsspecFixedPoint, 1 )
 {
 }
 
@@ -79,7 +79,7 @@ const ArgsParser::spec argsspecConstrainedPoint[] =
 };
 
 ConstrainedPointType::ConstrainedPointType()
-  : ArgparserObjectType( "ConstrainedPoint", argsspecConstrainedPoint, 2 )
+  : ArgsParserObjectType( "ConstrainedPoint", argsspecConstrainedPoint, 2 )
 {
 }
 

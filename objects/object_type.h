@@ -84,12 +84,12 @@ public:
  * This is a convenience subclass of ObjectType that a type should
  * inherit from if its parents can be specified in an argparser..
  */
-class ArgparserObjectType
+class ArgsParserObjectType
   : public ObjectType
 {
 protected:
   const ArgsParser margsparser;
-  ArgparserObjectType( const char fulltypename[],
+  ArgsParserObjectType( const char fulltypename[],
                        const struct ArgsParser::spec argsspec[],
                        int n );
 public:

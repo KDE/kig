@@ -33,7 +33,7 @@ static const ArgsParser::spec argsspecConicLineIntersection[] =
 };
 
 ConicLineIntersectionType::ConicLineIntersectionType()
-  : ArgparserObjectType( "ConicLineIntersection",
+  : ArgsParserObjectType( "ConicLineIntersection",
                          argsspecConicLineIntersection, 3 )
 {
 }
@@ -92,7 +92,7 @@ static const ArgsParser::spec argsspecLineLineIntersection[] =
 };
 
 LineLineIntersectionType::LineLineIntersectionType()
-  : ArgparserObjectType( "LineLineIntersection",
+  : ArgsParserObjectType( "LineLineIntersection",
                          argsspecLineLineIntersection, 2 )
 {
 }
@@ -127,7 +127,7 @@ static const ArgsParser::spec argsspecLineCubicIntersection[] =
 };
 
 LineCubicIntersectionType::LineCubicIntersectionType()
-  : ArgparserObjectType( "LineCubicIntersection",
+  : ArgsParserObjectType( "LineCubicIntersection",
                          argsspecLineCubicIntersection, 3 )
 {
 }

@@ -1,5 +1,7 @@
 2003-09-02  Dominique Devriese  <devriese@kde.org>
 
+	* rename ArgparserObjectType to ArgsParserObjectType
+
 	* remove ArgsChecker class, and rename ArgParser to ArgsParser
 
 2003-09-02  Dominique Devriese  <devriese@kde.org>

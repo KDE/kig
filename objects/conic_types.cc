@@ -38,7 +38,7 @@ static const struct ArgsParser::spec argsspecConicB5P[] =
 };
 
 ConicB5PType::ConicB5PType()
-  : ArgparserObjectType( "ConicB5P", argsspecConicB5P, 5 )
+  : ArgsParserObjectType( "ConicB5P", argsspecConicB5P, 5 )
 {
 }
 
@@ -80,7 +80,7 @@ static const ArgsParser::spec argsspecConicBAAP[] =
 };
 
 ConicBAAPType::ConicBAAPType()
-  : ArgparserObjectType( "ConicBAAP", argsspecConicBAAP, 3 )
+  : ArgsParserObjectType( "ConicBAAP", argsspecConicBAAP, 3 )
 {
 }
 
@@ -124,7 +124,7 @@ ObjectImp* ConicBFFPType::calc( const Args& parents, const KigDocument& ) const
 }
 
 ConicBFFPType::ConicBFFPType( const char* fullname, const ArgsParser::spec* spec, int n )
-  : ArgparserObjectType( fullname, spec, n )
+  : ArgsParserObjectType( fullname, spec, n )
 {
 
 }
@@ -207,7 +207,7 @@ static const struct ArgsParser::spec argsspecConicBDFP[] =
 };
 
 ConicBDFPType::ConicBDFPType()
-  : ArgparserObjectType( "ConicBDFP", argsspecConicBDFP, 3 )
+  : ArgsParserObjectType( "ConicBDFP", argsspecConicBDFP, 3 )
 {
 }
 
@@ -260,7 +260,7 @@ static const ArgsParser::spec argsspecParabolaBTP[] =
 };
 
 ParabolaBTPType::ParabolaBTPType()
-  : ArgparserObjectType( "ParabolaBTP", argsspecParabolaBTP, 3 )
+  : ArgsParserObjectType( "ParabolaBTP", argsspecParabolaBTP, 3 )
 {
 }
 
@@ -296,7 +296,7 @@ static const ArgsParser::spec argsspecConicPolarPoint[] =
 };
 
 ConicPolarPointType::ConicPolarPointType()
-  : ArgparserObjectType( "ConicPolarPoint", argsspecConicPolarPoint, 2 )
+  : ArgsParserObjectType( "ConicPolarPoint", argsspecConicPolarPoint, 2 )
 {
 }
 
@@ -331,7 +331,7 @@ static const ArgsParser::spec argsspecConicPolarLine[] =
 };
 
 ConicPolarLineType::ConicPolarLineType()
-  : ArgparserObjectType( "ConicPolarLine", argsspecConicPolarLine, 2 )
+  : ArgsParserObjectType( "ConicPolarLine", argsspecConicPolarLine, 2 )
 {
 }
 
@@ -365,7 +365,7 @@ static const ArgsParser::spec argsspecConicDirectrix[] =
 };
 
 ConicDirectrixType::ConicDirectrixType()
-  : ArgparserObjectType( "ConicDirectrix", argsspecConicDirectrix, 1 )
+  : ArgsParserObjectType( "ConicDirectrix", argsspecConicDirectrix, 1 )
 {
 }
 
@@ -407,7 +407,7 @@ static const ArgsParser::spec argsspecHyperbolaB4P[] =
 };
 
 EquilateralHyperbolaB4PType::EquilateralHyperbolaB4PType()
-  : ArgparserObjectType( "EquilateralHyperbolaB4P", argsspecHyperbolaB4P, 4 )
+  : ArgsParserObjectType( "EquilateralHyperbolaB4P", argsspecHyperbolaB4P, 4 )
 {
 }
 
@@ -478,7 +478,7 @@ static const ArgsParser::spec argsspecConicAsymptote[] =
 };
 
 ConicAsymptoteType::ConicAsymptoteType()
-  : ArgparserObjectType( "ConicAsymptote", argsspecConicAsymptote, 2 )
+  : ArgsParserObjectType( "ConicAsymptote", argsspecConicAsymptote, 2 )
 {
 }
 
@@ -518,7 +518,7 @@ static const ArgsParser::spec argsspecConicRadical[] =
 };
 
 ConicRadicalType::ConicRadicalType()
-  : ArgparserObjectType( "ConicRadical", argsspecConicRadical, 4 )
+  : ArgsParserObjectType( "ConicRadical", argsspecConicRadical, 4 )
 {
 }
 
