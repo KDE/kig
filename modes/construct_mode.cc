@@ -59,9 +59,17 @@ BaseConstructMode::~BaseConstructMode()
 void BaseConstructMode::leftClickedObject(
   ObjectHolder* o, const QPoint& p, KigWidget& w, bool )
 {
-  bool alreadyselected = std::find( mparents.begin(), mparents.end(), o ) != mparents.end();
+  std::vector<ObjectHolder*>::iterator it = std::find( mparents.begin(), mparents.end(), o );
   std::vector<ObjectCalcer*> nargs = getCalcers( mparents );
-  if ( o && !alreadyselected )
+//
+// mp: duplicationchecked controls whether the arguments list is
+// free of duplications or if a duplication is safe (asking this to
+// the Constructor class through the "isAlreadySelectedOK" method).
+//
+  bool duplicationchecked = 
+        ( it == mparents.end() ) || 
+        isAlreadySelectedOK( nargs, it - mparents.begin() );
+  if ( o && duplicationchecked )
   {
     nargs.push_back( o->calcer() );
     if ( wantArgs( nargs, mdoc.document(), w ) )
@@ -120,14 +128,18 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
 
   redefinePoint( mpt.get(), ncoord, mdoc.document(), w );
 
-  bool alreadyselected = false;
+  bool duplicationchecked = false;
   std::vector<ObjectCalcer*> args = getCalcers( mparents );
   if ( ! os.empty() )
   {
-    alreadyselected = std::find( mparents.begin(), mparents.end(), os.front() ) != mparents.end();
-    if ( ! alreadyselected ) args.push_back( os.front()->calcer() );
+    std::vector<ObjectHolder*>::iterator it 
+          = std::find( mparents.begin(), mparents.end(), os.front() );
+    bool duplicationchecked = 
+          ( it == mparents.end() ) || 
+          isAlreadySelectedOK( args, it - mparents.begin() );
+    if ( duplicationchecked ) args.push_back( os.front()->calcer() );
   }
-  if ( !os.empty() && ! alreadyselected && wantArgs( args, mdoc.document(), w ) )
+  if ( !os.empty() && duplicationchecked && wantArgs( args, mdoc.document(), w ) )
   {
     handlePrelim( args, p, pter, w );
 
@@ -273,6 +285,12 @@ void ConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& args, const 
   pter.drawTextStd( textloc, o );
 }
 
+int ConstructMode::isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+                                        const int& pos )
+{
+  return mctor->isAlreadySelectedOK( os, pos );
+}
+
 int ConstructMode::wantArgs( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w )
 {
   return mctor->wantArgs( os, d, w );
@@ -331,6 +349,12 @@ void ConstructMode::handleArgs( const std::vector<ObjectCalcer*>& args, KigWidge
 {
   mctor->handleArgs( args, mdoc, w );
   finish();
+}
+
+int TestConstructMode::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, 
+                                            const int& )
+{
+  return false;
 }
 
 int TestConstructMode::wantArgs( const std::vector<ObjectCalcer*>& os, KigDocument&, KigWidget& )

@@ -50,6 +50,11 @@ public:
   virtual const QString description() const = 0;
   virtual const QCString iconFileName( const bool canBeNull = false ) const = 0;
 
+  // the following function is called in case of duplication of arguments
+  // and returns true if this is acceptable; this will return false for
+  // typical objects
+  virtual const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+                              const int& ) const = 0;
   // can this constructor do something useful with os ?  return
   // ArgsParser::Complete, Valid or NotGood
   virtual const int wantArgs( const std::vector<ObjectCalcer*>& os,
@@ -132,6 +137,8 @@ public:
   const QString description() const;
   const QCString iconFileName( const bool canBeNull = false ) const;
 
+  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+                                  const int& ) const;
   virtual const int wantArgs(
     const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v
@@ -282,6 +289,8 @@ public:
   const QString description() const;
   const QCString iconFileName( const bool canBeNull = false ) const;
 
+  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+                                  const int& ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d,
                       const KigWidget& v
@@ -336,6 +345,8 @@ public:
   const QString description() const;
   const QCString iconFileName( const bool canBeNull = false ) const;
 
+  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+                                  const int& ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
                       const KigWidget& v ) const;
 

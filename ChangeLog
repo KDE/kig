@@ -1,3 +1,11 @@
+2005-01-15  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* the new ObjectConstructor::isAlreadySelectedOK method is a
+	technical addition, it returns false for all normal objects
+	(meaning that duplicated arguments are not acceptable). This
+	is introduced in order to implement the construction of
+	polygons "a la Drgeo".
+
 2005-01-12  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Created a new KigPainter::drawArea() to draw and fill closed

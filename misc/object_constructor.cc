@@ -58,6 +58,11 @@ const QCString StandardConstructorBase::iconFileName( const bool ) const
   return miconfile;
 }
 
+const bool StandardConstructorBase::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+{
+  return false;
+}
+
 StandardConstructorBase::StandardConstructorBase(
   const char* descname, const char* desc,
   const char* iconfile, const ArgsParser& parser )
@@ -246,6 +251,11 @@ const QCString MergeObjectConstructor::iconFileName( const bool ) const
   return miconfilename;
 }
 
+const bool MergeObjectConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+{
+  return false;
+}
+
 const int MergeObjectConstructor::wantArgs(
   const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v ) const
 {
@@ -373,6 +383,11 @@ const QString MacroConstructor::description() const
 const QCString MacroConstructor::iconFileName( const bool canBeNull ) const
 {
   return ( miconfile.isNull() && !canBeNull ) ? QCString( "gear" ) : miconfile;
+}
+
+const bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+{
+  return false;
 }
 
 const int MacroConstructor::wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument&,
