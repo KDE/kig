@@ -171,6 +171,9 @@ void Arc::stopMove()
 
 void Arc::calc( const ScreenInfo& si )
 {
+  mvalid = true;
+  for ( Point** i = mpts; i < mpts + 3; ++i )
+    mvalid &= (*i)->valid();
   Coordinate cds[3];
   std::transform( mpts, mpts+3, cds, std::mem_fun( &Point::getCoord ) );
 
@@ -199,9 +202,12 @@ void Arc::calc( const ScreenInfo& si )
   {
     lvect = lvect.normalize();
     double dstartangle = std::acos( lvect.x ) * 2880 / M_PI;
+    if ( lvect.y < 0 ) dstartangle = 5760 - dstartangle;
     kdDebug() << k_funcinfo << dstartangle << endl;
     rvect = rvect.normalize();
-    double danglelength = 180 - std::acos( rvect.x ) * 2880 / M_PI - dstartangle;
+    double dendangle = std::acos( -rvect.x ) * 2880 / M_PI;
+    if ( rvect.y < 0 ) dendangle = -dendangle;
+    double danglelength = 2880 - dendangle - dstartangle;
     kdDebug() << k_funcinfo << danglelength << endl;
     startangle = static_cast<int>( dstartangle );
     if ( startangle < 0 ) startangle += 5760;
