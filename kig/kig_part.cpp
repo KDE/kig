@@ -397,7 +397,7 @@ Objects KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
 
 Rect KigDocument::suggestedRect() const
 {
-  if( mObjs.empty() ) return Rect( -7., -7., 14., 14. );
+  if( mObjs.empty() ) return Rect( -6., -6., 12., 12. );
   bool rectInited = false;
   Rect r(0.,0.,0.,0.);
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
