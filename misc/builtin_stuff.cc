@@ -189,6 +189,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_angle" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      EquilateralHyperbolaB4PType::instance(),
+      I18N_NOOP( "Equilateral Hyperbola by Four Points" ),
+      I18N_NOOP( "An equilateral hyperbola constructed through four points" ),
+      "equilateralhyperbolab4p" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_equilateralhyperbolab4p" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;

@@ -198,11 +198,13 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TStdType<CubicB9P> );
 //     Object::addBuiltinType( new TStdType<PointPolar> );
 //     Object::addBuiltinType( new TStdType<LinePolar> );
+//     Object::addBuiltinType( new TStdType<LineDirectrix> );
+//     Object::addBuiltinType( new TStdType<Angle> );
+//     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
 
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
 //     Object::addBuiltinType( new TStdType<LineRadical> );
 //     Object::addBuiltinType( new TMultiType<LineConicRadical> );
-//     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
 //     Object::addBuiltinType( new TStdType<MidPoint> );
 //     Object::addBuiltinType( new TStdType<IntersectionPoint> );
 //     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
@@ -210,8 +212,6 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
 //     Object::addBuiltinType( new TStdType<Locus> );
 //     Object::addBuiltinType( new TStdType<Vector> );
-//     Object::addBuiltinType( new TStdType<Angle> );
-//     Object::addBuiltinType( new TStdType<LineDirectrix> );
 //     Object::addBuiltinType( new TType<TextLabel> );
 //     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
 //     Object::addBuiltinType( new TStdType<TranslatedPoint> );

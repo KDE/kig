@@ -339,3 +339,33 @@ ObjectImp* ConicDirectrixType::calc( const Args& parents,
   Coordinate b = a + Coordinate(-es,ec);
   return new LineImp( a, b );
 }
+
+static const ArgParser::spec argsspec4p[] =
+{
+  { ObjectImp::ID_PointImp, 4 }
+};
+
+EquilateralHyperbolaB4PType::EquilateralHyperbolaB4PType()
+  : ObjectType( "conic", "EquilateralHyperbolaB4P", argsspec4p, 1 )
+{
+}
+
+EquilateralHyperbolaB4PType::~EquilateralHyperbolaB4PType()
+{
+}
+
+const EquilateralHyperbolaB4PType* EquilateralHyperbolaB4PType::instance()
+{
+  static const EquilateralHyperbolaB4PType t;
+  return &t;
+}
+
+ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents,
+                                              const KigWidget& ) const
+{
+  std::vector<Coordinate> pts;
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+      pts.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+  return new ConicImpCart( calcConicThroughPoints( pts, equilateral ) );
+}

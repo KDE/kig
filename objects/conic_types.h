@@ -94,6 +94,16 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
 };
 
+class EquilateralHyperbolaB4PType
+  : public ObjectType
+{
+  EquilateralHyperbolaB4PType();
+  ~EquilateralHyperbolaB4PType();
+public:
+  static const EquilateralHyperbolaB4PType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+};
+
 class ConicPolarPointType
   : public ObjectType
 {
