@@ -1,107 +1,86 @@
-// /**
-//  This file is part of Kig, a KDE program for Interactive Geometry...
-//  Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
+/**
+ This file is part of Kig, a KDE program for Interactive Geometry...
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation; either version 2 of the License, or
-//  (at your option) any later version.
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-//  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
-//  USA
-// **/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+ USA
+**/
 
-// #ifndef KIG_POPUP_H
-// #define KIG_POPUP_H
+#ifndef KIG_POPUP_H
+#define KIG_POPUP_H
 
-// #include <kpopupmenu.h>
+#include <kpopupmenu.h>
 
-// #include <map>
+#include <map>
 
-// #include "../objects/object.h"
-// #include "../misc/objects.h"
+#include "../misc/objects.h"
 
-// using std::map;
+using std::map;
 
-// class KigDocument;
-// class KigWidget;
-// class NormalMode;
+class KigDocument;
+class KigWidget;
+class NormalMode;
+class PopupActionProvider;
 
-// class NormalModePopupObjects
-//   : public KPopupMenu
-// {
-//   Q_OBJECT
+/**
+ * This is the popup menu that appears when you click on selected
+ * objects in NormalMode..  It's quite complex, since it has to fetch
+ * a lot of information from various places, and dispatch it again
+ * when the user selects something.
+ */
+class NormalModePopupObjects
+  : public KPopupMenu
+{
+  Q_OBJECT
 
-//   QPoint mplc;
-//   KigDocument& mdoc;
-//   KigWidget* mview;
-//   Objects mobjs;
-//   NormalMode* mmode;
+public:
+  NormalModePopupObjects( KigDocument& doc, KigWidget& view,
+                          NormalMode& mode, const Objects& objs );
+  ~NormalModePopupObjects();
 
-//   static const uint titleId = 0;
-//   static const uint useId = 1;
-//   static const uint colorId = 2;
-//   static const uint moveId = 3;
-//   static const uint deleteId = 4;
-//   static const uint hideId = 5;
+  // the different "menu's", the toplevel is considered as just
+  // another menu..
+  enum { TransformMenu = 0, ConstructMenu, StartMenu, ShowMenu,
+         SetColorMenu, SetSizeMenu, ToplevelMenu };
 
-//   // see the addPopupAction() function for this...
-//   map<const QPopupMenu*, int> mpopupmap;
+  // used by the PopupActionProvider's to add actions to us..
+  void addAction( int menu, const QString& name, int id );
+  void addAction( int menu, const QPixmap& pix, int id );
 
-//   QPopupMenu* colorMenu( QWidget* parent );
-//   const QColor* color( int );
+  Objects objects() { return mobjs; };
 
-//   // i could do some of these as virtual actions, but they need to be
-//   // appliable to multiple objects at the same time...
-//   void addColorPopup();
-//   void addUsePopup();
-//   void addHideItem();
-//   void addMoveItem();
-//   void addDeleteItem();
-//   void addVirtualItems();       // this adds the objects own actions (
-//                                 // see Object::objectActions() )...
+protected:
+  void activateAction( int menu, int action );
 
-// public:
-//   NormalModePopupObjects( KigDocument& doc, KigWidget* view,
-//                           NormalMode* mode, const Objects& objs );
-//   ~NormalModePopupObjects() {};
+private slots:
+  void transformMenuSlot( int );
+  void constructMenuSlot( int );
+  void startMenuSlot( int );
+  void showMenuSlot( int );
+  void toplevelMenuSlot( int );
 
-//   static const uint virtualActionsOffset = 6;
+protected:
+  QPoint mplc;
+  KigDocument& mdoc;
+  KigWidget& mview;
+  Objects mobjs;
+  NormalMode& mmode;
 
-//   const KigWidget& widget() const;
+  std::vector<PopupActionProvider*> mproviders;
 
-//   // these two are the functions that objects can add objects to us
-//   // with, in their addActions() method...
-//   // here, id should be unique for all popup menu's defined by a type
-//   // of object..  Don't forget to take into account any id's that your
-//   // parent may use.  If one of these actions is selected, then
-//   // Object::doPopupAction() will be called with the appropriate
-//   // arguments ( the first one being the id you give here, and the
-//   // second one being the index of the action in @param qp... )
-//   void addPopupAction( uint id, const QString& name, QPopupMenu* qp );
+  QPopupMenu* mmenus[6];
+};
 
-//   // with this function, objects may add a normal action to us.  id
-//   // should be unique for all actions that an object defines ( note
-//   // that it can be the same as id's for popup menu's given
-//   // above.. ).  Don't forget to consider the id's that your parent
-//   // uses...  If this action gets selected by the user, then
-//   // Object::doNormalAction will be called with the appropriate
-//   // arguments...
-//   void addNormalAction( uint id, const QString& name );
-
-// protected slots:
-//   void doAction( int );
-//   void doUse( int );
-//   void doSetColor( int );
-//   void doPopup( int );
-// };
-
-
-// #endif
+#endif

@@ -77,17 +77,9 @@ void NormalMode::unselectObject( Object* o )
 void NormalMode::clearSelection()
 {
   for ( Objects::iterator i = sos.begin(); i != sos.end(); ++i )
-  {
-    assert( (*i)->inherits( Object::ID_RealObject ) );
-    static_cast<RealObject*>(*i)->setSelected( false );
-  };
+    (*i)->setSelected( false );
   sos.clear();
 }
-
-// KigObjectsPopup* NormalMode::popup( const Objects& )
-// {
-//   return 0;
-// }
 
 // KigDocumentPopup* NormalMode::popup( KigDocument* )
 // {
@@ -98,10 +90,8 @@ void NormalMode::showHidden()
 {
   const Objects& os = mdoc.objects();
   for (Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-  {
-    assert( (*i)->inherits( Object::ID_RealObject ) );
-    static_cast<RealObject*>(*i)->setShown( true );
-  };
+    if( !(*i)->isInternal() )
+      (*i)->setShown( true );
   objectsAdded();
 }
 
@@ -223,7 +213,7 @@ void NormalMode::midClicked( const QPoint& p, KigWidget& w )
 
 void NormalMode::rightClicked( const Objects& os,
                                const QPoint&,
-                               KigWidget& )
+                               KigWidget& w )
 {
   // TODO
   if( !os.empty() )
@@ -231,17 +221,18 @@ void NormalMode::rightClicked( const Objects& os,
     if( !sos.contains( os.front() ) )
     {
       clearSelection();
-      selectObject( oco.front() );
+      selectObject( os.front() );
     };
-//     // show a popup menu...
-//     NormalModePopupObjects* p = new NormalModePopupObjects( mdoc, v, this, sos );
-//     p->exec( QCursor::pos() );
-//     delete p;
+    // show a popup menu...
+    NormalModePopupObjects* p = new NormalModePopupObjects( mdoc, w, *this, sos );
+    p->exec( QCursor::pos() );
+    delete p;
   }
   else
   {
 //     KigDocumentPopup* m = popup( mdoc );
 //     if( m ) m->exec( w.mapToGlobal( plc ) );
+//     delete m;
   };
 }
 

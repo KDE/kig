@@ -61,6 +61,7 @@ protected:
   void newMacro();
   void editTypes();
 
+public:
   void selectObject( Object* o );
   void selectObjects( Objects& os );
   void unselectObject( Object* o );
@@ -71,9 +72,6 @@ protected:
 protected:
   // selected objects...
   Objects sos;
-
-  // objects clicked on...
-  Objects oco;
 };
 
 #endif
