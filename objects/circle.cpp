@@ -203,26 +203,35 @@ inline double determinant (double a, double b, double c, double d)
   return a*d-b*c;
 };
 
-Coordinate CircleBTP::calcCenter(double ax, double ay, double bx, double by, double cx, double cy) const
+Coordinate CircleBTP::calcCenter( Coordinate a, Coordinate b, Coordinate c )
 {
-  // prevent crashes...
-  if ( ( ax == bx ) && ( ay == by ) ) return Coordinate( (ax + bx) / 2, (ay + by) / 2 );
-  if ( ( ax == cx ) && ( ay == cy ) ) return Coordinate( (ax + bx) / 2, (ay + by) / 2 );
-  if ( ( bx == cx ) && ( by == cy ) ) return Coordinate( (ax + bx) / 2, (ay + by) / 2 );
-  double xdo = bx-ax;
-  double ydo = by-ay;
+  // this algorithm is written by my brother, Christophe Devriese
+  // <oelewapperke@ulyssis.org> ...
+  // I don't get it myself :)
 
-  double xao = cx-ax;
-  double yao = cy-ay;
+  double xdo = b.x-a.x;
+  double ydo = b.y-a.y;
+
+  double xao = c.x-a.x;
+  double yao = c.y-a.y;
 
   double a2 = sqr(xdo) + sqr(ydo);
   double b2 = sqr(xao) + sqr(yao);
 
   double numerator = (xdo * yao - xao * ydo);
+  if ( numerator == 0 )
+  {
+    // problem:  xdo * yao == xao * ydo <=> xdo/ydo == xao / yao
+    // this means that the lines ac and ab have the same direction,
+    // which means they're the same line..
+    // FIXME: i would normally throw an error here, but KDE doesn't
+    // use exceptions, so i'm returning a bogus point :(
+    return (a+c)/2;
+  };
   double denominator = 0.5 / numerator;
 
-  double centerx = ax - (ydo * b2 - yao * a2) * denominator;
-  double centery = ay + (xdo * b2 - xao * a2) * denominator;
+  double centerx = a.x - (ydo * b2 - yao * a2) * denominator;
+  double centery = a.y + (xdo * b2 - xao * a2) * denominator;
 
   return Coordinate(centerx, centery);
 }
@@ -257,63 +266,52 @@ void CircleBTP::drawPrelim( KigPainter& p, const Object* o ) const
 {
   if (!p1 || !shown) return;
   assert( o->toPoint() );
-  Coordinate c = o->toPoint()->getCoord();
-  double xa = p1->getX();
-  double ya = p1->getY();
-  double xb = c.x;
-  double yb = c.y;
-  double xc, yc;
-  if (p2) { xc=p2->getX(); yc = p2->getY(); }
+  Coordinate a = p1->getCoord();
+  Coordinate b = o->toPoint()->getCoord();
+  Coordinate c;
+  if (p2) { c=p2->getCoord(); }
   else {
     // we pick the third point so that the three points form a
     // triangle with equal sides...
 
-    // TODO: fix :)
-
     // midpoint:
-    double xm  = (xa + xb)/2;
-    double ym = (ya+yb)/2;
-    // direction of the perpend:
-    if ( yb != ya )
+    Coordinate m = ( c + a ) / 2;
+    if ( b.y != a.y )
     {
-      double m = -(xb-xa)/(yb-ya);
+      // direction of the perpend:
+      double d = -(b.y-a.x)/(b.y-a.y);
 
       // length:
       // sqrt( 3 ) == tan( 60° )
       // hypot( ... ) == half the length of the segment |ab|
-      double l = sqrt(3) * hypot( xa - xb, ya - yb ) / 2;
+      double l = sqrt(3) * hypot( a.x - b.x, a.y - b.y ) / 2;
 
-      double dx = sqrt( l / ( pow( m, 2 ) + 1 ) );
-      double dy = sqrt( l / ( pow( m, -2 ) + 1 ) );
-      if( m < 0 ) dy = -dy;
+      double dx = sqrt( l / ( pow( d, 2 ) + 1 ) );
+      double dy = sqrt( l / ( pow( d, -2 ) + 1 ) );
+      if( d < 0 ) dy = -dy;
 
-      xc = xm + dx;
-      yc = ym + dy;
+      c.x = m.x + dx;
+      c.y = m.y + dy;
     }
     else
     {
-      xc = xm;
-      yc = ym + ( xa - xb );
+      c.x = m.x;
+      c.y = m.y + ( a.x - b.x );
     };
   };
   p.setPen(QPen (Qt::red, 1));
-  Coordinate nC = calcCenter(xa, ya, xb, yb, xc, yc);
-  p.drawCircle(nC,
-	       calcRadius( nC, c )
-	       );
+  Coordinate nC = calcCenter( a, b, c );
+  p.drawCircle(nC, calcRadius( nC, c ) );
 }
 
 void CircleBTP::calc()
 {
-  double ax = p1->getX();
-  double ay = p1->getY();
-  double bx = p2->getX();
-  double by = p2->getY();
-  double cx = p3->getX();
-  double cy = p3->getY();
+  Coordinate a = p1->getCoord();
+  Coordinate b = p2->getCoord();
+  Coordinate c = p3->getCoord();
   // the center coords:
-  qpc = calcCenter(ax,ay,bx,by,cx,cy);
-  radius = calcRadius(qpc, p3->getCoord());
+  qpc = calcCenter( a, b, c );
+  radius = calcRadius( qpc, c );
 };
 
 CircleBCP::CircleBCP(const CircleBCP& c)

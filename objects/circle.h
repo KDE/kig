@@ -138,7 +138,7 @@ protected:
   Point* p3;
 
   void calc();
-  Coordinate calcCenter(double, double, double, double, double, double) const;
+  static Coordinate calcCenter( Coordinate, Coordinate, Coordinate );
 };
 
 #endif
