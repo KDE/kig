@@ -287,6 +287,33 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
             type == "LineTransform" || type == "RayTransform" || type == "SegmentTransform" ||
             type == "PointTransform" )
   {
+    uint size = o.parents().size();
+    if ( size < 2 ) return false;
+    const ObjectType* t = 0;
+    const Object* transform = o.parents()[1];
+    if ( transform->hasimp( ObjectImp::ID_VectorImp ) )
+      t = TranslatedType::instance();
+    else if ( transform->hasimp( ObjectImp::ID_PointImp ) )
+      t = PointReflectionType::instance();
+    else if ( transform->hasimp( ObjectImp::ID_RayImp ) )
+      t = ProjectiveRotationType::instance();
+    else if ( transform->hasimp( ObjectImp::ID_AngleImp ) )
+      t = RotationType::instance();
+    else if ( transform->hasimp( ObjectImp::ID_SegmentImp ) )
+    {
+      if ( size != 3 ) return false;
+      transform = o.parents()[2];
+      if ( transform->hasimp( ObjectImp::ID_PointImp ) )
+        t = ScalingOverCenterType::instance();
+      else if ( transform->hasimp( ObjectImp::ID_LineImp ) )
+        t = ScalingOverLineType::instance();
+    }
+    else if ( transform->hasimp( ObjectImp::ID_LineImp ) )
+      // line at the end, cause a ray and a segment are also
+      // "lines"..
+      t = LineReflectionType::instance();
+    o.setType( t );
+    return true;
   }
   else
   {
