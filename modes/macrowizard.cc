@@ -17,7 +17,7 @@
 // // 02111-1307, USA.
 
 // #include "macrowizard.h"
-// #include "macrowizard.moc"
+#include "macrowizard.moc"
 
 // #include "macro.h"
 

@@ -20,7 +20,7 @@
 
 
 // #include "typesdialog.h"
-// #include "typesdialog.moc"
+#include "typesdialog.moc"
 
 // #include "../kig/kig_part.h"
 // #include "../misc/type.h"
