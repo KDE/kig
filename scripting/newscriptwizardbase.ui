@@ -8,12 +8,12 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>724</width>
-            <height>418</height>
+            <width>600</width>
+            <height>360</height>
         </rect>
     </property>
     <property name="caption">
-        <string>New Script Object</string>
+        <string>New Script</string>
     </property>
     <widget class="QWidget">
         <property name="name">
@@ -31,7 +31,11 @@
                     <cstring>textLabel1</cstring>
                 </property>
                 <property name="text">
-                    <string>Select the argument objects ( if any ) in the Kig window and press next.</string>
+                    <string>Select the argument objects ( if any )
+in the Kig window and press "Next".</string>
+                </property>
+                <property name="alignment">
+                    <set>AlignCenter</set>
                 </property>
             </widget>
         </vbox>
@@ -49,10 +53,10 @@
             </property>
             <widget class="QLabel">
                 <property name="name">
-                    <cstring>textLabel2</cstring>
+                    <cstring>labelFillCode</cstring>
                 </property>
                 <property name="text">
-                    <string>Now fill in the python code:</string>
+                    <string>Now fill in the Python code:</string>
                 </property>
             </widget>
             <widget class="KTextEdit">
