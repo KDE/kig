@@ -190,14 +190,15 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       char* parent;
       int parentIndex;
       for ( parent = parents.first(); parent; parent = parents.next())
-	{
-	  bool ok;
-	  parentIndex = QString(parent).toInt(&ok);
-	  if (!ok)
-	    return ParseError;
-	  if (parentIndex != 0 )
-            os[i]->selectArg(os[parentIndex-1]);
-	};
+      {
+        bool ok;
+        parentIndex = QString(parent).toInt(&ok);
+        if (!ok)
+          return ParseError;
+        if (parentIndex != 0 )
+          os[i]->selectArg(os[parentIndex-1]);
+      };
+      os[i]->calc();
     }; // for loop ( setting parents...
   return OK;
 }
