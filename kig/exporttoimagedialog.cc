@@ -23,6 +23,7 @@
 
 #include <knuminput.h>
 #include <kpushbutton.h>
+#include <kurlrequester.h>
 
 ExportToImageDialog::ExportToImageDialog( KigView* v, KigDocument* d )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),
@@ -33,7 +34,7 @@ ExportToImageDialog::ExportToImageDialog( KigView* v, KigDocument* d )
 
   URLRequester->setFilter( // TODO
     "*" );
-  URLRequester->setMode( KFileDialog::File | KFileDialog::LocalOnly );
+  URLRequester->setMode( KFile::File | KFile::LocalOnly );
 
   connect( OKButton, SIGNAL( clicked() ), this, SLOT( slotOKPressed() ) );
   connect( CancelButton, SIGNAL( clicked() ), this, SLOT( slotCancelPressed() ) );
