@@ -22,6 +22,7 @@
 #include "property.h"
 
 #include "../misc/screeninfo.h"
+#include "../misc/common.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 
@@ -107,4 +108,75 @@ bool AngleImp::inherits( int typeID ) const
 ObjectImp* AngleImp::copy() const
 {
   return new AngleImp( mpoint, mstartangle, mangle );
+}
+
+VectorImp::VectorImp( const Coordinate& a, const Coordinate& b )
+  : ma( a ), mb( b )
+{
+}
+
+VectorImp::~VectorImp()
+{
+}
+
+ObjectImp* VectorImp::transform( const Transformation& ) const
+{
+  // TODO ?
+  return new InvalidImp;
+}
+
+void VectorImp::draw( KigPainter& p ) const
+{
+  p.drawVector( ma, mb );
+}
+
+bool VectorImp::contains( const Coordinate& o, const ScreenInfo& si ) const
+{
+  return isOnSegment( o, ma, mb, si.normalMiss() );
+}
+
+bool VectorImp::inRect( const Rect& ) const
+{
+  // TODO ?
+  return false;
+}
+
+const uint VectorImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties();
+}
+
+const QCStringList VectorImp::properties() const
+{
+  return Parent::properties();
+}
+
+const Property VectorImp::property( uint which, const KigWidget& w ) const
+{
+  return Parent::property( which, w );
+}
+
+bool VectorImp::inherits( int type ) const
+{
+  return type == ID_VectorImp ? true : Parent::inherits( type );
+}
+
+ObjectImp* VectorImp::copy() const
+{
+  return new VectorImp( ma, mb );
+}
+
+const Coordinate VectorImp::a()
+{
+  return ma;
+}
+
+const Coordinate VectorImp::b()
+{
+  return mb;
+}
+
+const Coordinate VectorImp::dir()
+{
+  return mb - ma;
 }

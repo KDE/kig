@@ -31,4 +31,14 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& ) const;
 };
 
+class VectorType
+  : public ObjectABType
+{
+  VectorType();
+  ~VectorType();
+public:
+  static const VectorType* instance();
+  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+};
+
 #endif

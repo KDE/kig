@@ -62,3 +62,23 @@ ObjectImp* AngleType::calc( const Args& parents, const KigWidget& ) const
 
   return new AngleImp( points[1], startangle, anglelength );
 }
+
+VectorType::VectorType()
+  : ObjectABType( "vector", "Vector" )
+{
+}
+
+VectorType::~VectorType()
+{
+}
+
+const VectorType* VectorType::instance()
+{
+  static const VectorType t;
+  return &t;
+}
+
+ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
+{
+  return new VectorImp( a, b );
+}

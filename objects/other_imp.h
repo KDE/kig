@@ -50,4 +50,31 @@ public:
   const double size() const;
 };
 
+class VectorImp
+  : public ObjectImp
+{
+  typedef ObjectImp Parent;
+  const Coordinate ma;
+  const Coordinate mb;
+public:
+  VectorImp( const Coordinate& a, const Coordinate& b );
+  ~VectorImp();
+
+  ObjectImp* transform( const Transformation& ) const;
+
+  void draw( KigPainter& p ) const;
+  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
+  bool inRect( const Rect& r ) const;
+
+  const uint numberOfProperties() const;
+  const QCStringList properties() const;
+  const Property property( uint which, const KigWidget& w ) const;
+
+  bool inherits( int typeID ) const;
+  ObjectImp* copy() const;
+
+  const Coordinate a();
+  const Coordinate b();
+  const Coordinate dir();
+};
 #endif

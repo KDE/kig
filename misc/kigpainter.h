@@ -187,6 +187,12 @@ public:
                   const double angle );
 
   /**
+   * draw a vector ( with an arrow etc. )
+   */
+
+  void drawVector( const Coordinate& a, const Coordinate& b );
+
+  /**
    * draw a conic..
    */
   void drawConic( const ConicPolarData& data );

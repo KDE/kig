@@ -206,6 +206,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_midpoint" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      VectorType::instance(),
+      I18N_NOOP( "Vector" ),
+      I18N_NOOP( "Construct a vector from two given points." ),
+      "vector" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_vector" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;

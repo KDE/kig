@@ -773,3 +773,23 @@ void KigPainter::drawPolygon( const std::vector<Coordinate>& pts,
     points.push_back( toScreen( pts[i] ) );
   drawPolygon( points, winding, index, npoints );
 }
+
+void KigPainter::drawVector( const Coordinate& a, const Coordinate& b )
+{
+  // bugfix...
+  if ( a == b ) return;
+  // the segment
+  drawSegment( a, b );
+  // the arrows...
+  Coordinate dir = b - a;
+  Coordinate perp( dir.y, -dir.x );
+  double length = perp.length();
+  perp *= 10* pixelWidth();
+  perp /= length;
+  dir *= 10 * pixelWidth();
+  dir /= length;
+  Coordinate c = b - dir + perp;
+  Coordinate d = b - dir - perp;
+  drawSegment( b, c );
+  drawSegment( b, d );
+}
