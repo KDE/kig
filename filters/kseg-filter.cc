@@ -24,6 +24,7 @@
 #include "../objects/object.h"
 #include "../objects/object_factory.h"
 #include "../objects/line_type.h"
+#include "../objects/circle_type.h"
 #include "../misc/coordinate.h"
 
 #include <qfont.h>
@@ -204,7 +205,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
     case G_CIRCLE:
     {
       if ( nparents != 2 ) return ParseError;
-      RealObject* o = new RealObject( CircleABType::instance(), parents );
+      RealObject* o = new RealObject( CircleBCPType::instance(), parents );
       o->setWidth( style.pen.width() );
       o->setColor( style.pen.color() );
       object = o;
