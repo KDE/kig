@@ -112,7 +112,8 @@ KigExportManager::~KigExportManager()
 void KigExportManager::addMenuAction( const KigDocument* doc, KigWidget* w,
                                       KActionCollection* coll )
 {
-  KActionMenu* m = new KActionMenu( i18n( "&Export To" ), coll, "file_export" );
+  KActionMenu* m =
+    new KActionMenu( i18n( "&Export To" ), coll, "file_export" );
   for ( uint i = 0; i < mexporters.size(); ++i )
     m->insert( new ExporterAction( doc, w, coll, mexporters[i] ) );
 }
