@@ -22,11 +22,15 @@
 #include "point_imp.h"
 #include "bogus_imp.h"
 
+#include <cmath>
+
 static const ArgsParser::spec argsspecAreParallel[] =
 {
   { AbstractLineImp::stype(), I18N_NOOP( "Is this line parallel?" ), false },
   { AbstractLineImp::stype(), I18N_NOOP( "Parallel to this line?" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AreParallelType )
 
 AreParallelType::AreParallelType()
   : ArgsParserObjectType( "AreParallel",
@@ -67,6 +71,8 @@ static const ArgsParser::spec argsspecAreOrthogonal[] =
   { AbstractLineImp::stype(), I18N_NOOP( "Is this line orthogonal?" ), false },
   { AbstractLineImp::stype(), I18N_NOOP( "Orthogonal to this line?" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AreOrthogonalType )
 
 AreOrthogonalType::AreOrthogonalType()
   : ArgsParserObjectType( "AreOrthogonal",
@@ -109,6 +115,8 @@ static const ArgsParser::spec argsspecAreCollinear[] =
   { PointImp::stype(), I18N_NOOP( "with this third point" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AreCollinearType )
+
 AreCollinearType::AreCollinearType()
   : ArgsParserObjectType( "AreCollinear",
                          argsspecAreCollinear, 3 )
@@ -149,6 +157,8 @@ static const ArgsParser::spec containsTestArgsSpec[] =
   { CurveImp::stype(), I18N_NOOP( "Check whether the point is on this curve" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ContainsTestType )
+
 ContainsTestType::ContainsTestType()
   : ArgsParserObjectType( "ContainsTest", containsTestArgsSpec, 2 )
 {
@@ -181,3 +191,44 @@ const ObjectImpType* ContainsTestType::resultId() const
   return TestResultImp::stype();
 }
 
+static const ArgsParser::spec argsspecSameDistanceType[] =
+{
+  { PointImp::stype(), I18N_NOOP( "Check if this point have the same distance" ), false },
+  { PointImp::stype(), I18N_NOOP( "from this point" ), false },
+  { PointImp::stype(), I18N_NOOP( "and from this second point" ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( SameDistanceType )
+
+SameDistanceType::SameDistanceType()
+  : ArgsParserObjectType( "SameDistanceType", argsspecSameDistanceType, 3 )
+{
+}
+
+SameDistanceType::~SameDistanceType()
+{
+}
+
+const SameDistanceType* SameDistanceType::instance()
+{
+  static const SameDistanceType t;
+  return &t;
+}
+
+ObjectImp* SameDistanceType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  const Coordinate& p1 = static_cast<const PointImp*>( parents[0] )->coordinate();
+  const Coordinate& p2 = static_cast<const PointImp*>( parents[1] )->coordinate();
+  const Coordinate& p3 = static_cast<const PointImp*>( parents[2] )->coordinate();
+
+  if ( fabs( ( p1 - p2 ).length() - ( p1 - p3 ).length() ) < 10e-5  )
+    return new TestResultImp( i18n( "The two distances are the same." ) );
+  else
+    return new TestResultImp( i18n( "The two distances are not the same." ) );
+}
+
+const ObjectImpType* SameDistanceType::resultId() const
+{
+  return TestResultImp::stype();
+}

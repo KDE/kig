@@ -123,6 +123,7 @@
       <Action name="objects_new_areorthogonal" />
       <Action name="objects_new_arecollinear" />
       <Action name="objects_new_containstest" />
+      <Action name="objects_new_distancetest" />
     </Menu>
     <Menu name="types">
       <text>&amp;Types</text>

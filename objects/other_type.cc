@@ -50,6 +50,8 @@ static const ArgsParser::spec argsspecAngle[] =
   { PointImp::stype(), constructanglethroughpoint, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AngleType )
+
 AngleType::AngleType()
   : ArgsParserObjectType( "Angle", argsspecAngle, 3 )
 {
@@ -92,6 +94,8 @@ static const ArgsParser::spec argsspecVector[] =
   { PointImp::stype(), I18N_NOOP( "Construct a vector to this point" ), true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VectorType )
+
 VectorType::VectorType()
   : ObjectABType( "Vector", argsspecVector, 2 )
 {
@@ -117,6 +121,8 @@ static const struct ArgsParser::spec argsspecLocus[] =
   { HierarchyImp::stype(), "hierarchy", false },
   { CurveImp::stype(), "curve", false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LocusType )
 
 LocusType::LocusType()
   : ArgsParserObjectType( "Locus", argsspecLocus, 2 )
@@ -166,6 +172,8 @@ const ObjectImpType* LocusType::resultId() const
 {
   return LocusImp::stype();
 }
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CopyObjectType )
 
 CopyObjectType::CopyObjectType()
   : ObjectType( "Copy" )
@@ -240,6 +248,8 @@ static const ArgsParser::spec argsspecArcBTP[] =
   { PointImp::stype(), I18N_NOOP( "Construct an arc through this point" ), true },
   { PointImp::stype(), I18N_NOOP( "Construct an arc ending at this point" ), true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ArcBTPType )
 
 ArcBTPType::ArcBTPType()
   : ArgsParserObjectType( "ArcBTP", argsspecArcBTP, 3 )

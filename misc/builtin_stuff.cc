@@ -414,9 +414,17 @@ void setupBuiltinStuff()
       I18N_NOOP( "Contains Test" ),
       I18N_NOOP( "Test whether a given curve contains a given point" ),
       "testcontains" );
-
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_containstest" ) );
+
+    c = new TestConstructor(
+      SameDistanceType::instance(),
+      I18N_NOOP( "Distance Test" ),
+      I18N_NOOP( "Test whether a given point have the same distance from a given point "
+                 "and from another given point" ),
+      "testdistance" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_distancetest" ) );
 
     c = new SimpleObjectTypeConstructor(
       MeasureTransportType::instance(),

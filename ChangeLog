@@ -1,6 +1,24 @@
+2004-04-23  Dominique Devriese  <devriese@kde.org>
+
+	* Add a segment-midpoint icon from Julien Narboux
+	<Julien.Narboux@inria.fr>.
+
+	* Implement a scheme that automatically instantiates the singleton
+	ObjectType's.  Now, the ObjectType constructor now adds itself to
+	ObjectTypeFactory, so that we cannot forget to do it.  This fixes
+	loading of files containing property test objects.
+
+	* Remove the old code that removed $appdata/kig-types/*.kigt on
+	exit, as it's not necessary anymore.
+
 2004-04-22  Dominique Devriese  <devriese@kde.org>
 
 	* Add a "opposite vector" property to VectorImp.
+
+2004-04-21  Pino Toscano <toscano.pino@tiscali.it>
+
+       * Add a SameDistanceType, to check whether a point have the same
+       distance from a second point and from a third point.
 
 2004-04-21  Dominique Devriese  <devriese@kde.org>
 

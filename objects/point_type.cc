@@ -39,6 +39,8 @@ static const ArgsParser::spec argsspecFixedPoint[] =
   { DoubleImp::stype(), "y", false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( FixedPointType )
+
 FixedPointType::FixedPointType()
   : ArgsParserObjectType( "FixedPoint", argsspecFixedPoint, 2 )
 {
@@ -73,6 +75,8 @@ const ArgsParser::spec argsspecConstrainedPoint[] =
   { DoubleImp::stype(), "parameter", false },
   { CurveImp::stype(), "Constrain the point to this curve", true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConstrainedPointType )
 
 ConstrainedPointType::ConstrainedPointType()
   : ArgsParserObjectType( "ConstrainedPoint", argsspecConstrainedPoint, 2 )
@@ -131,6 +135,8 @@ static const ArgsParser::spec argsspecMidPoint[] =
   { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another point" ), false },
   { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another point" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MidPointType )
 
 MidPointType::MidPointType()
   : ObjectABType( "MidPoint", argsspecMidPoint, 2 )
@@ -323,6 +329,8 @@ static const ArgsParser::spec argsspecMeasureTransport[] =
   { PointImp::stype(), "project this point onto the circle", false },
   { SegmentImp::stype(), "Segment to transport", false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MeasureTransportType )
 
 MeasureTransportType::MeasureTransportType()
   : ArgsParserObjectType( "MeasureTransport", argsspecMeasureTransport, 3 )

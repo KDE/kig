@@ -27,11 +27,6 @@ kigicondata_DATA = \
 	genericprojectivity.png \
 	hyperbolabffp.png \
 	intersection.png \
-	line1.png \
-	line2.png \
-	line3.png \
-	line4.png \
-	line5.png \
 	line.png \
 	locus.png \
 	mirrorpoint.png \
@@ -40,14 +35,6 @@ kigicondata_DATA = \
 	parabolabtp.png \
 	parallel.png \
 	perpendicular.png \
-	point1.png \
-	point2.png \
-	point3.png \
-	point4.png \
-	point5.png \
-	point6.png \
-	point7.png \
-	point8.png \
 	pointOnLine.png	\
 	point.png \
 	pointxy.png \
@@ -59,6 +46,7 @@ kigicondata_DATA = \
 	script-python.png \
 	segment.png \
 	segmentaxis.png \
+	segment-midpoint.png \
 	sizer.png \
 	slope.png \
 	stretch.png \

@@ -39,7 +39,7 @@ Objects to implement
 Points            Coordinate
 Lines             pt_slope
 Circle            radius
-Numberics         distance_pt_line
+Numberics         distance_pt_line, distance_pt_circle
 Angles            vectors
 Locuses           at the moment not functional, depends on on_curve points
 Polygons          also in Kig

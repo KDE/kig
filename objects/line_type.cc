@@ -39,6 +39,8 @@ static const ArgsParser::spec argsspecSegmentAB[] =
   { PointImp::stype(), I18N_NOOP( "Construct a segment ending at this point" ), true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( SegmentABType )
+
 SegmentABType::SegmentABType()
   : ObjectABType( "SegmentAB", argsspecSegmentAB, 2 )
 {
@@ -67,6 +69,8 @@ static const ArgsParser::spec argsspecLineAB[] =
   { PointImp::stype(), constructlineabstat, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineABType )
+
 LineABType::LineABType()
   : ObjectABType( "LineAB", argsspecLineAB, 2 )
 {
@@ -92,6 +96,8 @@ static const ArgsParser::spec argsspecRayAB[] =
   { PointImp::stype(), I18N_NOOP( "Construct a half-line starting at this point" ), true },
   { PointImp::stype(), I18N_NOOP( "Construct a half-line through this point" ), true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( RayABType )
 
 RayABType::RayABType()
   : ObjectABType( "RayAB", argsspecRayAB, 2 )
@@ -133,6 +139,8 @@ static const ArgsParser::spec argsspecLineParallel[] =
   { PointImp::stype(), I18N_NOOP( "Construct a parallel through this point" ), true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineParallelLPType )
+
 LineParallelLPType::LineParallelLPType()
   : ObjectLPType( "LineParallel", argsspecLineParallel, 2 )
 {
@@ -161,6 +169,8 @@ static const ArgsParser::spec argsspecLinePerpend[] =
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a perpendicular of this line" ), false },
   { PointImp::stype(), I18N_NOOP( "Construct a perpendicular through this point" ), true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LinePerpendLPType )
 
 LinePerpendLPType::LinePerpendLPType()
   : ObjectLPType( "LinePerpend", argsspecLinePerpend, 2 )

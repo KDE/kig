@@ -65,4 +65,15 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class SameDistanceType
+  : public ArgsParserObjectType
+{
+  SameDistanceType();
+  ~SameDistanceType();
+public:
+  static const SameDistanceType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

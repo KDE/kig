@@ -34,6 +34,8 @@ static const ArgsParser::spec argsspecCircleBCP[] =
   { PointImp::stype(), constructcirclethroughpointstat, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleBCPType )
+
 CircleBCPType::CircleBCPType()
   : ObjectABType( "CircleBCP", argsspecCircleBCP, 2 )
 {
@@ -66,6 +68,8 @@ static const ArgsParser::spec argsspecCircleBTP[] =
   { PointImp::stype(), constructcirclethroughpointstat, true },
   { PointImp::stype(), constructcirclethroughpointstat, true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleBTPType )
 
 CircleBTPType::CircleBTPType()
   : ArgsParserObjectType( "CircleBTP", argsspecCircleBTP, 3 )
@@ -138,6 +142,8 @@ static const ArgsParser::spec argsspecCircleBPR[] =
   { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ), false },
   { DoubleImp::stype(), "UNUSED", false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleBPRType )
 
 CircleBPRType::CircleBPRType()
   : ArgsParserObjectType( "CircleBPR", argsspecCircleBPR, 2 )

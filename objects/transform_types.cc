@@ -33,6 +33,8 @@ static const ArgsParser::spec argsspecTranslation[] =
   { VectorImp::stype(), I18N_NOOP("Translate by this vector"), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TranslatedType )
+
 TranslatedType::TranslatedType()
   : ArgsParserObjectType( "Translation", argsspecTranslation, 2 )
 {
@@ -64,6 +66,8 @@ static const ArgsParser::spec argsspecPointReflection[] =
   { PointImp::stype(), I18N_NOOP( "Reflect in this point" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PointReflectionType )
+
 PointReflectionType::PointReflectionType()
   : ArgsParserObjectType( "PointReflection", argsspecPointReflection, 2 )
 {
@@ -94,6 +98,8 @@ static const ArgsParser::spec argsspecLineReflection[] =
   { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ), false },
   { AbstractLineImp::stype(), I18N_NOOP( "Reflect in this line" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineReflectionType )
 
 LineReflectionType::LineReflectionType()
   : ArgsParserObjectType( "LineReflection", argsspecLineReflection, 2 )
@@ -127,6 +133,8 @@ static const ArgsParser::spec argsspecRotation[] =
   { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( RotationType )
+
 RotationType::RotationType()
   : ArgsParserObjectType( "Rotation", argsspecRotation, 3 )
 {
@@ -158,6 +166,8 @@ static const ArgsParser::spec argsspecScalingOverCenter[] =
   { PointImp::stype(), I18N_NOOP( "Scale with this center" ), false },
   { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ScalingOverCenterType )
 
 ScalingOverCenterType::ScalingOverCenterType()
   : ArgsParserObjectType( "ScalingOverCenter", argsspecScalingOverCenter, 3 )
@@ -191,6 +201,8 @@ static const ArgsParser::spec argsspecScalingOverLine[] =
   { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ScalingOverLineType )
+
 ScalingOverLineType::ScalingOverLineType()
   : ArgsParserObjectType( "ScalingOverLine", argsspecScalingOverLine, 3 )
 {
@@ -222,6 +234,8 @@ static const ArgsParser::spec argsspecProjectiveRotation[] =
   { RayImp::stype(), I18N_NOOP( "Projectively rotate with this half-line" ), false },
   { AngleImp::stype(), I18N_NOOP( "Projectively rotate by this angle" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ProjectiveRotationType )
 
 ProjectiveRotationType::ProjectiveRotationType()
   : ArgsParserObjectType( "ProjectiveRotation", argsspecProjectiveRotation, 3 )
@@ -259,6 +273,8 @@ static const ArgsParser::spec argsspecHarmonicHomology[] =
     I18N_NOOP( "Harmonic Homology with this axis" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( HarmonicHomologyType )
+
 HarmonicHomologyType::HarmonicHomologyType()
   : ArgsParserObjectType( "HarmonicHomology", argsspecHarmonicHomology, 3 )
 {
@@ -294,6 +310,8 @@ static const ArgsParser::spec argsspecAffinityGI3P[] =
   { PointImp::stype(), I18N_NOOP( "Transformed position of second point" ), false },
   { PointImp::stype(), I18N_NOOP( "Transformed position of third point" ), false },
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AffinityGI3PType )
 
 AffinityGI3PType::AffinityGI3PType()
   : ArgsParserObjectType( "AffinityGI3P", argsspecAffinityGI3P, 7 )
@@ -345,6 +363,8 @@ static const ArgsParser::spec argsspecProjectivityGI4P[] =
   { PointImp::stype(), I18N_NOOP( "Transformed position of fourth point" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ProjectivityGI4PType )
+
 ProjectivityGI4PType::ProjectivityGI4PType()
   : ArgsParserObjectType( "ProjectivityGI4P", argsspecProjectivityGI4P, 9 )
 {
@@ -389,6 +409,8 @@ static const ArgsParser::spec argsspecCastShadow[] =
   { AbstractLineImp::stype(),
     I18N_NOOP( "Cast a shadow on the horizon represented by this line" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CastShadowType )
 
 CastShadowType::CastShadowType()
   : ArgsParserObjectType( "CastShadow", argsspecCastShadow, 3 )
@@ -530,6 +552,8 @@ static const ArgsParser::spec argsspecApplyTransformation[] =
   { ObjectImp::stype(), I18N_NOOP( "Transform this object" ), false },
   { TransformationImp::stype(), I18N_NOOP( "Transform using this transformation" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ApplyTransformationObjectType )
 
 ApplyTransformationObjectType::ApplyTransformationObjectType()
   : ArgsParserObjectType( "ApplyTransformation", argsspecApplyTransformation, 2 )

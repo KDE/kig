@@ -39,6 +39,8 @@ static const struct ArgsParser::spec argsspecConicB5P[] =
   { PointImp::stype(), constructstatement, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicB5PType )
+
 ConicB5PType::ConicB5PType()
   : ArgsParserObjectType( "ConicB5P", argsspecConicB5P, 5 )
 {
@@ -75,6 +77,8 @@ static const ArgsParser::spec argsspecConicBAAP[] =
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a conic with this asymptote" ), false },
   { PointImp::stype(), I18N_NOOP( "Construct a conic through this point" ), true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicBAAPType )
 
 ConicBAAPType::ConicBAAPType()
   : ArgsParserObjectType( "ConicBAAP", argsspecConicBAAP, 3 )
@@ -132,6 +136,8 @@ static const ArgsParser::spec argsspecEllipseBFFP[] =
   { PointImp::stype(), I18N_NOOP( "Construct an ellipse through this point" ), true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( EllipseBFFPType )
+
 EllipseBFFPType::EllipseBFFPType()
   : ConicBFFPType( "EllipseBFFP", argsspecEllipseBFFP, 3 )
 {
@@ -161,6 +167,8 @@ static const ArgsParser::spec argsspecHyperbolaBFFP[] =
   { PointImp::stype(), constructhyperbolawithfocusstat, false },
   { PointImp::stype(), I18N_NOOP( "Construct a hyperbola through this point" ), true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( HyperbolaBFFPType )
 
 HyperbolaBFFPType::HyperbolaBFFPType()
   : ConicBFFPType( "HyperbolaBFFP", argsspecHyperbolaBFFP, 3 )
@@ -194,6 +202,8 @@ static const struct ArgsParser::spec argsspecConicBDFP[] =
   { PointImp::stype(), I18N_NOOP( "Construct a conic with this point as focus" ), false },
   { PointImp::stype(), I18N_NOOP( "Construct a conic through this point" ), true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicBDFPType )
 
 ConicBDFPType::ConicBDFPType()
   : ArgsParserObjectType( "ConicBDFP", argsspecConicBDFP, 3 )
@@ -237,6 +247,8 @@ static const ArgsParser::spec argsspecParabolaBTP[] =
   { PointImp::stype(), constructparabolathroughpointstat, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ParabolaBTPType )
+
 ParabolaBTPType::ParabolaBTPType()
   : ArgsParserObjectType( "ParabolaBTP", argsspecParabolaBTP, 3 )
 {
@@ -274,6 +286,8 @@ static const ArgsParser::spec argsspecConicPolarPoint[] =
   { AbstractLineImp::stype(), I18N_NOOP( "Construct the polar point of this line" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicPolarPointType )
+
 ConicPolarPointType::ConicPolarPointType()
   : ArgsParserObjectType( "ConicPolarPoint", argsspecConicPolarPoint, 2 )
 {
@@ -307,6 +321,8 @@ static const ArgsParser::spec argsspecConicPolarLine[] =
   { PointImp::stype(), I18N_NOOP( "Construct the polar line of this point" ), false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicPolarLineType )
+
 ConicPolarLineType::ConicPolarLineType()
   : ArgsParserObjectType( "ConicPolarLine", argsspecConicPolarLine, 2 )
 {
@@ -338,6 +354,8 @@ static const ArgsParser::spec argsspecConicDirectrix[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Construct the directrix of this conic" ), false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicDirectrixType )
 
 ConicDirectrixType::ConicDirectrixType()
   : ArgsParserObjectType( "ConicDirectrix", argsspecConicDirectrix, 1 )
@@ -380,6 +398,8 @@ static const ArgsParser::spec argsspecHyperbolaB4P[] =
   { PointImp::stype(), hyperbolatpstatement, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( EquilateralHyperbolaB4PType )
+
 EquilateralHyperbolaB4PType::EquilateralHyperbolaB4PType()
   : ArgsParserObjectType( "EquilateralHyperbolaB4P", argsspecHyperbolaB4P, 4 )
 {
@@ -416,6 +436,8 @@ static const ArgsParser::spec argsspecParabolaBDP[] =
   { PointImp::stype(), I18N_NOOP( "Construct a parabola through this point" ), true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ParabolaBDPType )
+
 ParabolaBDPType::ParabolaBDPType()
   : ObjectLPType( "ParabolaBDP", argsspecParabolaBDP, 2 )
 {
@@ -451,6 +473,8 @@ static const ArgsParser::spec argsspecConicAsymptote[] =
   { ConicImp::stype(), I18N_NOOP( "Construct the asymptotes of this conic" ), false },
   { IntImp::stype(), "param", false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicAsymptoteType )
 
 ConicAsymptoteType::ConicAsymptoteType()
   : ArgsParserObjectType( "ConicAsymptote", argsspecConicAsymptote, 2 )
@@ -492,6 +516,8 @@ static const ArgsParser::spec argsspecConicRadical[] =
   { IntImp::stype(), "param", false },
   { IntImp::stype(), "param", false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicRadicalType )
 
 ConicRadicalType::ConicRadicalType()
   : ArgsParserObjectType( "ConicRadical", argsspecConicRadical, 4 )

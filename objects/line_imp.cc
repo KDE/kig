@@ -142,7 +142,7 @@ const char* SegmentImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return "distance"; // length
   else if ( which == Parent::numberOfProperties() + pnum++ )
-    return "bisection"; // mid point
+    return "segment-midpoint"; // mid point
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return "endpoint1"; // mid point
   else if ( which == Parent::numberOfProperties() + pnum++ )

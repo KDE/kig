@@ -271,24 +271,6 @@ KigDocument::~KigDocument()
 {
   GUIActionList::instance()->unregDoc( this );
 
-  // TODO: remove some time in the future..  doesn't really hurt, but
-  // well, it's not really necessary either..  However, I'm not going
-  // to remove this in the next release yet, since it would cause
-  // duplication of macro types combined with the changing to use
-  // macro.kigt instead of macro files named after the macro they
-  // contain..
-  // remove old types:
-  QStringList relFiles;
-  QStringList dataFiles =
-    KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
-                                        true, false, relFiles);
-  for ( QStringList::iterator file = dataFiles.begin();
-        file != dataFiles.end(); ++file )
-  {
-    QFile f( *file );
-    f.remove();
-  };
-
   // save our types...
   QString typesDir = KGlobal::dirs()->saveLocation("appdata", "kig-types");
   if (typesDir[typesDir.length() - 1] != '/') typesDir += '/';

@@ -34,6 +34,8 @@ static const ArgsParser::spec argsspecConicLineIntersection[] =
   { IntImp::stype(), "param", false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicLineIntersectionType )
+
 ConicLineIntersectionType::ConicLineIntersectionType()
   : ArgsParserObjectType( "ConicLineIntersection",
                          argsspecConicLineIntersection, 3 )
@@ -84,6 +86,8 @@ static const ArgsParser::spec argsspecConicLineOtherIntersection[] =
   { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
   { PointImp::stype(), I18N_NOOP( "Already computed intersection point"), true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicLineOtherIntersectionType )
 
 ConicLineOtherIntersectionType::ConicLineOtherIntersectionType()
   : ArgsParserObjectType( "ConicLineOtherIntersection",
@@ -142,6 +146,8 @@ static const ArgsParser::spec argsspecLineLineIntersection[] =
   { AbstractLineImp::stype(), constructlinestat, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineLineIntersectionType )
+
 LineLineIntersectionType::LineLineIntersectionType()
   : ArgsParserObjectType( "LineLineIntersection",
                          argsspecLineLineIntersection, 2 )
@@ -174,6 +180,8 @@ static const ArgsParser::spec argsspecLineCubicIntersection[] =
   { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
   { IntImp::stype(), "param", false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineCubicIntersectionType )
 
 LineCubicIntersectionType::LineCubicIntersectionType()
   : ArgsParserObjectType( "LineCubicIntersection",
@@ -231,6 +239,8 @@ static const ArgsParser::spec argsspecCircleCircleIntersection[] =
   { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ), true },
   { IntImp::stype(), "param", false }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleCircleIntersectionType )
 
 CircleCircleIntersectionType::CircleCircleIntersectionType()
   : ArgsParserObjectType( "CircleCircleIntersection",

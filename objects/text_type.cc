@@ -42,6 +42,8 @@ static const ArgsParser::spec arggspeccs[] =
   { StringImp::stype(), "UNUSED", false }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TextType )
+
 TextType::TextType()
   : ObjectType( "Label" ), mparser( arggspeccs, 3 )
 {

@@ -15,7 +15,9 @@
 
 - When selecting an argument of a certain type, show something like
    "Select a vector", so that the user is not confused, looking for an
-   object he can't find.
+   object he can't find ( maybe using a side list with an arrow for every
+   step of the construction and a KToggleAction like "Settings->Show Side
+   List" to show/hide it ).
 
 - add intersection type between arcs and the other objects.
 
@@ -53,9 +55,9 @@
 
 - fillable polygons/shapes..
 
-- filters: more input filters, improve and activate Dr. Geo filter
-  ( see filters/drgeo-filter-status.txt ) and Cabri filter, add the
-  possibility to ignore errors on loading
+- filters: more input filters, improve Cabri filter and Dr. Geo filter
+  ( see filters/drgeo-filter-status.txt ), add the possibility to ignore
+  errors on loading
 
 * hard :
 
@@ -73,9 +75,9 @@
   text representation of the dependencies..
 
 - add support for work via command line without GUI. Possible options
-  and uses:
-  -c, --convert <filename.ext> => Kig will convert the file in its own
-  format and output the file <filename.kig>
+  and uses:<br>
+  -c, --convert filename.ext => Kig will convert the file in its own
+  format and output the file filename.kig
 
 - defined integrals, as a particular case of filled shapes...
 

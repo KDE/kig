@@ -19,6 +19,7 @@
 #include "object_type.h"
 
 #include "bogus_imp.h"
+#include "object_type_factory.h"
 
 #include "../misc/coordinate.h"
 
@@ -38,6 +39,7 @@ ObjectType::~ObjectType()
 ObjectType::ObjectType( const char fulltypename[] )
   : mfulltypename( fulltypename )
 {
+  ObjectTypeFactory::instance()->add( this );
 }
 
 bool ObjectType::canMove() const

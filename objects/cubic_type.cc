@@ -39,6 +39,8 @@ static const struct ArgsParser::spec argsspecCubicB9P[] =
   { PointImp::stype(), cubictpstatement, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicB9PType )
+
 CubicB9PType::CubicB9PType()
   : ArgsParserObjectType( "CubicB9P", argsspecCubicB9P, 9 )
 {
@@ -79,6 +81,8 @@ static const ArgsParser::spec argsspecCubicNodeB6P[] =
   { PointImp::stype(), cubictpstatement, true }
 };
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicNodeB6PType )
+
 CubicNodeB6PType::CubicNodeB6PType()
   : ArgsParserObjectType( "CubicNodeB6P", argsspecCubicNodeB6P, 6 )
 {
@@ -116,6 +120,8 @@ static const ArgsParser::spec argsspecCubicCuspB4P[] =
   { PointImp::stype(), cubictpstatement, true },
   { PointImp::stype(), cubictpstatement, true }
 };
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicCuspB4PType )
 
 CubicCuspB4PType::CubicCuspB4PType()
   : ArgsParserObjectType( "CubicCuspB4P", argsspecCubicCuspB4P, 4 )
