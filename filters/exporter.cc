@@ -91,7 +91,7 @@ KigExportManager::KigExportManager()
 {
   mexporters.push_back( new ImageExporter );
   // working on this one ;)
-  mexporters.push_back( new XFigExporter );
+//  mexporters.push_back( new XFigExporter );
 }
 
 KigExportManager::~KigExportManager()
