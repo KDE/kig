@@ -54,6 +54,7 @@ ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigPart* part )
 
   URLRequester->setFilter( KImageIO::pattern( KImageIO::Writing ) );
   URLRequester->setMode( KFile::File | KFile::LocalOnly );
+  URLRequester->setCaption( i18n( "Export to Image" ) );
 
   connect( OKButton, SIGNAL( clicked() ), this, SLOT( slotOKPressed() ) );
   connect( CancelButton, SIGNAL( clicked() ), this, SLOT( slotCancelPressed() ) );
