@@ -165,10 +165,10 @@ void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i, const Scr
   if( !( r.contains( first->pt ) || r.contains( last->pt ) ) && i > 20 ) return;
   double p = (first->pm+last->pm)/2;
   CPts::iterator n = addPoint( p, si );
-  if( ( n->pt - first->pt ).length() > (1.5*si.pixelWidth()) )
+  if( i <= 20 || ( n->pt - first->pt ).length() > (1.5*si.pixelWidth()) )
     recurse( n, first, i, si );
   if (i > numberOfSamples) return;
-  if( ( n->pt - last->pt ).length() > (1.5*si.pixelWidth()) )
+  if( i <= 20 || ( n->pt - last->pt ).length() > (1.5*si.pixelWidth()) )
     recurse( n, last, i, si );
   if (i > numberOfSamples) return;
 }
