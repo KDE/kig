@@ -678,7 +678,7 @@ void PolarCoords::drawGridLine( KigPainter& p, const Coordinate& c,
     double vertAngle;
   };
 
-  iterdata_t iterdata[] =
+  static const iterdata_t iterdata[] =
     {
       { +1, +1, &Rect::topRight, &Rect::bottomLeft, 0, M_PI/2 },
       { -1, +1, &Rect::topLeft, &Rect::bottomRight, M_PI, M_PI / 2 },
