@@ -1,7 +1,5 @@
 <?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd"
-[
-  <!ENTITY kig "<application>Kig</application>">
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kseg "<application>KSeg</application>">
   <!ENTITY cabri "<application>Cabri</application>">
   <!ENTITY drgenius "<application>Dr.Genius</application>">
@@ -24,12 +22,12 @@
 	  <address><email>devriese@kde.org</email></address>
 	</affiliation>
       </author>
+    <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
 
-    <!-- TRANS:ROLES_OF_TRANSLATORS -->
 
     <copyright>
-      <year>2002-2003</year> <holder>Dominique Devriese</holder>
+      <year>2002</year><year>2003</year> <holder>Dominique Devriese</holder>
     </copyright>
 
     <legalnotice>&FDLNotice;</legalnotice>
@@ -38,9 +36,7 @@
     
     <abstract>
       <para>
-	&kig; is a &kde; application for Interactive Geometry.  It is
-	meant as a replacement for the free programs &kgeo; and
-	&kseg;, and for commercial applications like &cabri;
+	&kig; is a &kde; application for Interactive Geometry.
       </para>
     </abstract>
 
@@ -82,10 +78,10 @@
       interesting macro, that you think might be useful for other
       people, you can mail it to me at
       <email>devriese@kde.org</email>, so I can include it in the
-      distribution ( if you do this, it will be licensed under the
+      distribution (if you do this, it will be licensed under the
       terms of &kig;'s license, the <ulink
       url="http://www.gnu.org/licenses/licenses.html#GPL">GPL</ulink>,
-      so that other people can freely use and adapt it ).
+      so that other people can freely use and adapt it).
     </para>
   </chapter>
 
@@ -96,21 +92,20 @@
       <section id="constructing-points">
 	<title>Constructing points</title>
 	<para>
-	  You can construct points in several ways:
+	  You can construct points in several ways:</para>
 	  <itemizedlist>
 	    <listitem>
 	      <para>
 		Select <menuchoice><guimenu>Objects</guimenu>
 		<guisubmenu>Points</guisubmenu><guimenuitem> Normal
-		Point</guimenuitem></menuchoice> from the menu bar or
+		Point</guimenuitem></menuchoice> from the menubar or
 		press the appropriate button in the toolbar.  You can
 		then construct a point by clicking on the desired
-		position in the window.  <note><para>Actually, this
+		position in the window.</para>  <note><para>Actually, this
 		works the same way for constructing other objects as
-		well: click on the desired menu bar entry or toolbar
+		well: click on the desired menubar entry or toolbar
 		button and select the necessary objects to construct
 		the object.</para></note>
-	      </para>
 	    </listitem>
 	    <listitem>
 	      <para>
@@ -132,7 +127,7 @@
 	      </para>
 	    </listitem>
 	  </itemizedlist>
-	</para>
+
 	<screenshot>
 	  <screeninfo>A point has been constructed</screeninfo>
 	  <mediaobject>
@@ -185,9 +180,9 @@
 	</para>
 	<para>
 	  You can always cancel the construction of the new object by
-	  pressing the <keycap>Escape</keycap> button or by clicking
-	  on the "Stop" button (red octagon with an 'X') on the
-	  toolbar.
+	  pressing the &Esc; button or by clicking
+	  on the <guiicon>Stop</guiicon> button (red octagon with an
+	  <quote>X</quote>) on the toolbar.
 	</para>
 	<screenshot>
 	  <screeninfo>Constructing a circle.</screeninfo>
@@ -250,20 +245,20 @@
       </para>
       <para>
 	When the objects you want to move are selected, you can start
-	moving them by <mousebutton>left</mousebutton> clicking and
-	dragging on any one of them.  When you're done, simply release
-	the left mouse button.
+	moving them by &LMB; clicking and
+	dragging on any one of them.  When you are done, simply release
+	the &LMB;.
       </para>
-      <note><para>For some types of objects ( mostly complicated
-      Locuses ), moving objects can be slow on older hardware.  This
+      <note><para>For some types of objects (mostly complicated
+      Locuses), moving objects can be slow on older hardware.  This
       is unfortunate, but inevitable, given the calculations involved.
       </para></note> <note><para>If you
-      <mousebutton>right-</mousebutton>click one of the selected
+      &RMB; click one of the selected
       objects, and choose
-      <menuchoice><guimenuitem>"move"</guimenuitem></menuchoice>,
+      <guimenuitem>Move</guimenuitem>,
       movement of the mouse will move the object. When the object is
       moved to the desired position, another
-      <mousebutton>left</mousebutton> button click will stop the
+      &LMB; click will stop the
       movement.  </para></note>
     </section>
     <section id="deleting-objects">
@@ -280,14 +275,14 @@
 	  </listitem>
 	  <listitem>
 	    <para>
-	      Press the delete button on the toolbar.
+	      Press the <guiicon>delete</guiicon> button on the toolbar.
 	    </para>
 	  </listitem>
 	  <listitem>
 	    <para>
-	      <mousebutton>Right-</mousebutton>click on one of the
+	      &RMB; click on one of the
 	      objects, and select
-	      <menuchoice><guimenuitem>Delete</guimenuitem></menuchoice>
+	      <guimenuitem>Delete</guimenuitem>
 	      in the <link linkend="objects-context-menus">context
 	      menu</link> that appears.
 
@@ -300,9 +295,9 @@
       <title>Showing and hiding objects</title>
       <para>
 	In &kig;, objects can be hidden.  This is done by selecting
-	the objects, <mousebutton>right-</mousebutton>clicking one of
+	the objects, &RMB; clicking one of
 	them, and selecting
-	<menuchoice><guimenuitem>Hide</guimenuitem></menuchoice> in
+	<guimenuitem>Hide</guimenuitem> in
 	the <link linkend="objects-context-menus">context menu</link>
 	that appears..
       </para>
@@ -317,8 +312,9 @@
       <title>Undo/Redo</title>
       <para>
 	In &kig;, you can undo almost any change you do to the
-	document.  Just use the undo/redo buttons on the toolbar, or
-	the appropriate shortcuts..
+	document.  Just use the
+	<guiicon>undo</guiicon>/<guiicon>redo</guiicon> buttons on the
+	toolbar, or the appropriate shortcuts.
       </para>
     </section>
     <section id="full-screen-mode">
@@ -331,10 +327,10 @@
       </para>
       <para>
 	To leave Full Screen mode,
-	<mousebutton>Right</mousebutton>-click the screen on a place
+	&RMB; click the screen on a place
 	where there is no object present, and select
-	<menuchoice><guimenuitem>Exit Full Screen Mode</guimenuitem>
-	</menuchoice>, or press the <keycap>Escape</keycap> key.
+	<guimenuitem>Exit Full Screen Mode</guimenuitem>, or press the
+	&Esc; key. 
       </para>
     </section>
   </chapter>
@@ -342,13 +338,11 @@
   <chapter id="kig-object-types">
     <title>&kig; Object Types</title>
     <para>
-      &kig; supports a rather large number of object types.  You are
-      encouraged to try out the various objects, as I think this is a
-      better way to find out about them than reading about them in
-      some boring manual ;).  Please note that not all of the
-      available object types are shown in the toolbars, but that there
-      are also some objects that you can only construct via the
-      <guimenu>Objects</guimenu> menu in the menu bar.  Of course, as
+      &kig; supports a rather large number of object types.  Please
+      note that not all of the available object types are shown in the
+      toolbars, but that there are also some objects that you can only
+      construct via the <guimenu>Objects</guimenu> menu in the menu
+      bar.  Of course, as 
       with all &kde; applications, what appears in the toolbars is
       configurable.  Try out the
       <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure
@@ -363,24 +357,22 @@
       <title>Context Menus</title>
       <para>
 	&kig; has context menus for its objects.  Try
-	<mousebutton>right-</mousebutton>clicking on an object to see
+	&RMB; clicking on an object to see
 	a context menu appear.  There are many options: for
 	constructing other objects, setting colors, and even hiding,
 	moving or deleting objects.  Some objects have options of
-	their own ( e.g. you can redefine certain points to be
-	constrained to a line where they previously weren't, etc ).
-	Try out these options for yourself ;). They should be very
-	straightforward to understand.
+	their own (&eg; you can redefine certain points to be
+	constrained to a line where they previously weren't, &etc;).
+	These options should be very straightforward to understand.
       </para>
     </section>
     <section id="document-context-menus">
       <title>Document context menus</title>
       <para>
-	<mousebutton>Right-</mousebutton>clicking on the document (
-	i.e. not on an object ) will present a popup that you can use
-	to start constructing a new object, change the coordinate
-	system used, show hidden objects, and even zoom in and zoom
-	out of the document.
+	&RMB; clicking on the document (&ie; not on an object) will
+	present a popup that you can use to start constructing a new
+	object, change the coordinate system used, show hidden
+	objects, and even zoom in and zoom out of the document.
       </para>
     </section>
     <section id="defining-macros">
@@ -392,12 +384,11 @@
       </para>
       <para>
 	For example: Suppose you want to make a macro for constructing
-	a circle from three points on it ( suppose you missed the fact
-	that &kig; provides a native type for this purpose ;) ), then
-	you would just construct three points, some perpendiculars and
-	midpoints until you find the center, and construct the circle
-	by the center you constructed and one of the previous points.
-	The following image should make this a bit more clear.
+	a circle from three points on it, then you would just
+	construct three points, some perpendiculars and midpoints
+	until you find the center, and construct the circle by the
+	center you constructed and one of the previous points.  The
+	following image should make this a bit more clear.
       </para>
       <screenshot>
 	<screeninfo>Test running macros</screeninfo>
@@ -419,7 +410,7 @@
 	are the three points.  Select the three points (click on them
 	for selecting, click again for unselecting) and click the
 	<guibutton>next</guibutton> button to continue. Finally,
-	select the last objects ( only the circle in our example ).
+	select the last objects (only the circle in our example).
       </para>
 
       <screenshot>
@@ -443,9 +434,8 @@
 
       <para>
 	To use the new macro type, click its button on the toolbar or
-	use the <menuchoice><guimenu>Objects</guimenu></menuchoice>
-	menu. Building a macro object is just like constructing any other 
-	object.
+	use the <guimenu>Objects</guimenu> menu. Building a macro
+	object is just like constructing any other object.
       </para>
       <screenshot>
 	<screeninfo>Using your new type</screeninfo>
@@ -468,7 +458,7 @@
 	You do not have to manually save or load macro definitions.
 	However, &kig; does allow you to do more with the macros.  If
 	you select <guimenuitem>Manage Types</guimenuitem> from the
-	<guimenu>Types</guimenu>-menu, you will see a dialog where you
+	<guimenu>Types</guimenu> menu, you will see a dialog where you
 	can edit your types.  It allows you to delete types that are
 	no longer used, export them to a file, or even load them from
 	another file.
@@ -491,19 +481,19 @@
 	&kig; allows you to add text labels to a construction.  This
 	is very useful for showing names, explanations or other text
 	in constructions.  &kig; can also display variable information
-	about objects ( a.k.a. properties ).
+	about objects (also known as <quote>properties</quote>).
       </para>
       <para>
         To start constructing a text label, simply press the Text
         Label button in the &kig; toolbar or select
         <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
         </guisubmenu><guimenuitem>Text label</guimenuitem>
-        </menuchoice> in the menu bar.
+        </menuchoice> in the menubar.
       </para>
       <para>
 	Next, you have to choose a location for the text label.  You
 	can either just select a random location on the screen, or
-	choose to "attach" the label to another object.
+	choose to <quote>attach</quote> the label to another object.
       </para>
       <screenshot>
 	<screeninfo>Attaching a label to a circle...</screeninfo>
@@ -519,7 +509,8 @@
       <para>
         You now reach the text label dialog.  Here, you can type in
         the text that you want to show in the new label, and click
-        "Finish". The label should now be present on your document.
+        <guibutton>Finish</guibutton>. The label should now be present
+        on your document. 
       </para>
       <screenshot>
 	<screeninfo>The Text Label Dialog</screeninfo>
@@ -535,32 +526,34 @@
       <para>
         The previous example was a simple one, and limited to just
         text.  However, there is also support for showing variable
-        information about objects in a label (e.g. you can construct a
-        label showing the text "This segment is %1 units long.." where
-        "%1" would be dynamically replaced with the length of a
-        specific segment).
+        information about objects in a label (&eg; you can construct a
+        label showing the text <quote>This segment is %1 units
+        long.</quote> where <token>%1</token> would be dynamically
+        replaced with the length of a specific segment).
       </para>
       <para>
-        To do this, enter a text with a number of placeholders ( "%1",
-        "%2" etc. ) in it.  When you are finished, press the
-        <guibutton>Next</guibutton> button to continue. If you want to
-        change the text or variables later, you can go back using the
-        <guibutton>Back</guibutton> button.
+        To do this, enter a text with a number of placeholders (
+        <token>%1</token>, <token>%2</token> &etc;) in it.  When you
+        are finished, press the <guibutton>Next</guibutton> button to
+        continue. If you want to change the text or variables later,
+        you can go back using the <guibutton>Back</guibutton> button.
       </para>
       <para>
         The wizard now shows the text you entered with all
-        placeholders replaced by something like "argument 1".
-        Selecting what to show as a certain argument is done by first
-        clicking the argument in question.  Then click on the object
-        about which you want to show information, and then select an
-        interesting piece of information in the popup menu that
-        appears.  E.g. in the example above, you would click "argument
-        1", click on the correct segment in the main &kig; window, and
-        select the property "Length".  Afterwards, you can fill in the
-        rest of the variable parts, or select another property for one
-        of the variable parts if you wish to change it.  When you are
-        ready, click the <guibutton>Finish</guibutton> button to
-        complete the construction of the text label.
+        placeholders replaced by something like <guilabel>argument
+        1</guilabel>.  Selecting what to show as a certain argument is
+        done by first clicking the argument in question.  Then click
+        on the object about which you want to show information, and
+        then select an interesting piece of information in the popup
+        menu that appears.  For instance, in the example above, you
+        would click <guilabel>argument 1</guilabel>, click on the
+        correct segment in the main &kig; window, and select the
+        property <guilabel>Length</guilabel>.  Afterwards, you can
+        fill in the rest of the variable parts, or select another
+        property for one of the variable parts if you wish to change
+        it.  When you are ready, click the
+        <guibutton>Finish</guibutton> button to complete the
+        construction of the text label.
       </para>
       <screenshot>
 	<screeninfo>Selecting a property for a variable
@@ -583,19 +576,18 @@
 	&kig; has support for geometrical locuses.  A locus is a
 	concept from high school math.  Briefly put, it is the figure
 	defined by all the points that a point moves over, when
-	another point moves along its constraints..  This may sound a
-	little complicated, but in fact, it's not a difficult concept.
-	I'll try to explain the idea by example.
+	another point moves along its constraints.  This may sound a
+	little complicated, but in fact, it's not a difficult concept,
+	as the following example demonstrates.
       </para>
       <para>
 	Consider the following geometrical construction: We draw a
-	circle, and a point that can move over its surface ( construct
+	circle, and a point that can move over its surface (construct
 	this point by positioning the cursor on a circle, and clicking
-	the <mousebutton>Middle</mousebutton> mouse button.  If you
-	then try to move the resulting point, you'll see that you
-	can't move it off the circle ).  Then, we draw a segment from
-	that point to the center of the circle, and the midpoint of
-	that segment.
+	the &MMB;.  If you then try to move the resulting point,
+	you'll see that you cannot move it off the circle).  Then, we
+	draw a segment from that point to the center of the circle,
+	and the midpoint of that segment.
       </para>
       <screenshot>
 	<screeninfo>A simple locus construction</screeninfo>
@@ -627,10 +619,10 @@
 	  <guisubmenu>Other</guisubmenu>
 	  <guimenuitem>Locus</guimenuitem>
 	</menuchoice>
-	from the menu bar.  Then select the constrained point as the
-	moving point ( the text "Moving Point" will appear as you move
-	the mouse over it ), and the other as the dependent point.
-	The locus will then appear.
+	from the menubar.  Then select the constrained point as the
+	moving point (the text <guilabel>Moving Point</guilabel> will
+	appear as you move the mouse over it ), and the other as the
+	dependent point.  The locus will then appear.
       </para>
     </section>
   </chapter>
@@ -641,28 +633,26 @@
       &kig; allows the user to create custom types in the Python
       scripting language.  This is a very advanced feature, and I know
       of only one other Interactive Geometry program that has similar
-      functionality ( the GNOME program &drgenius; ).  It seems that
-      the &kig; scripting system is more flexible, but that could be
-      due to my huge bias of course ;).
+      functionality (the GNOME program &drgenius;). 
     </para>
     <para>
       Python Scripting in &kig; basically allows you to create your
       own way to define an object from certain parent objects.  For
-      example, if you're a math teacher, and you have some fancy way
+      example, if you are a math teacher, and you have some fancy way
       of calculating an interesting point of a conic, then instead of
       messing with complex constructions and macro's, you could just
       write down in Python code how the point is to be calculated and
       &kig; will show it for you.
     </para>
     <para>
-      Again, I will try to explain this by example.  Suppose you were
-      not aware of the &kig; builtin MidPoint type, and you wanted to
-      show the midpoint of two given points.  You would then click on
-      the <guibutton>Python Script</guibutton> button in the toolbar,
-      or select <menuchoice> <guimenu>Objects</guimenu>
-      <guisubmenu>Other</guisubmenu> <guimenuitem>Script
-      Object</guimenuitem> </menuchoice> from the menu bar.  You are
-      then presented with a wizard that allows you to proceed.
+      Suppose you were not aware of the &kig; builtin MidPoint type,
+      and you wanted to show the midpoint of two given points.  You
+      would then click on the <guibutton>Python Script</guibutton>
+      button in the toolbar, or select <menuchoice>
+      <guimenu>Objects</guimenu> <guisubmenu>Other</guisubmenu>
+      <guimenuitem>Script Object</guimenuitem> </menuchoice> from the
+      menubar.  You are then presented with a wizard that allows you
+      to proceed.
     </para>
     <screenshot>
       <screeninfo>The Script Object Wizard</screeninfo>
@@ -687,39 +677,41 @@
       are already in place.  It is important to make sure that your
       code is valid Python code.  People familiar with Python will
       note that we are actually defining a Python function called
-      calc.  It is therefore necessary to adhere to the Python rules
-      for defining functions.  For example, every line of the function
-      should start with a tab.  The first line not starting with a tab
-      ends the definition of the function.  
+      <function>calc</function>.  It is therefore necessary to adhere
+      to the Python rules for defining functions.  For example, every
+      line of the function should start with a <keysym>Tab</keysym>.
+      The first line not starting with a <keysym>tab</keysym> ends the
+      definition of the function.
     </para>
     <para>
       The python function that should be defined is called
-      &quot;calc&quot;, and in our case accepts two arguments.  These
-      are the objects you have selected as arguments in the previous
-      screen.  There will be as much arguments as you have selected
-      there.  They are called arg1 and arg2, but you can change their
-      names to something more meaningful if you want.
+      <quote>calc</quote>, and in our case accepts two arguments.
+      These are the objects you have selected as arguments in the
+      previous screen.  There will be as much arguments as you have
+      selected there.  They are called <parameter>arg1</parameter> and
+      <parameter>arg2</parameter>, but you can change their names to
+      something more meaningful if you want.
     </para>
     <para>
       In the function, you can do all sorts of calculations that you
       deem necessary, using the two arguments if needed.  You should
       return the object you want to appear.  In our case, this is a
       Point object.  The two arguments are also Point objects, and we
-      can use the Point.coordinate() function to get hold of the
-      coordinates of the two given points.  
+      can use the <function>Point.coordinate()</function> function to
+      get hold of the coordinates of the two given points.
     </para>
     <para>
       The calculation necessary in our example is very simple, we
       simply add the two coordinates together, and divide the result
       by two.  We then construct a new point using that coordinate.
-      The python code needed is:
-      <programlisting>
-	def calc( a, b ):
-		m = ( a.coordinate() + b.coordinate() ) / 2;
-		return Point( m )
+      The python code needed is:</para>
 
-      </programlisting>
-    </para>
+<programlisting>
+   def calc( a, b ):
+        m = ( a.coordinate() + b.coordinate() ) / 2;
+	return Point( m )
+</programlisting>
+
     <screenshot>
       <screeninfo>Entering the code</screeninfo>
       <mediaobject>
@@ -727,7 +719,7 @@
 	  <imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>Entering the code for the midpoint in the Script Object wizard...</phrase>
+	  <phrase>Entering the code for the midpoint in the Script Object wizard.</phrase>
 	</textobject>
       </mediaobject>
     </screenshot>
@@ -746,27 +738,25 @@
 	</imageobject>
 	<textobject>
 	  <phrase>
-	    The newly constructed Script Object.  It is visually
-	    identical to the normal mid point object, so this is
-	    actually a rather non-interesting screenshot ;)
+	    The newly constructed Script Object.
 	  </phrase>
 	</textobject>
       </mediaobject>
     </screenshot>
     <para>
       All objects in &kig; can be used in the Python code. As we have
-      seen above, points are of the Point class, and you can use
-      e.g. the Point.coordinate() method.  You can also return all
-      kinds of objects, not just Points.  Many more classes and
-      methods are available from the &kig; Python code, and a more
-      complete reference on them is provided <ulink
+      seen above, points are of the Point class, and you can use &eg;
+      the <function>Point.coordinate()</function> method.  You can
+      also return all kinds of objects, not just Points.  Many more
+      classes and methods are available from the &kig; Python code,
+      and a more complete reference on them is provided <ulink
       url="http://edu.kde.org/kig/manual/scripting-api/index.html">here</ulink>.
     </para>
   </chapter>
 
   <chapter id="kig-features">
     <title>&kig; Features</title>
-    <para>
+
       <itemizedlist>
 	<listitem>
 	  <para>
@@ -780,8 +770,8 @@
 	    Free software programs are developed in a very open
 	    spirit, and its developers are usually very responsive to
 	    user feedback.  Therefore, if you have any questions,
-	    complaints, or whatever about &kig;, please let me know at
-	    <email>devriese@kde.org</email>.
+	    complaints, or whatever about &kig;, please let the author
+	    know at <email>devriese@kde.org</email>.
 	  </para>
 	</listitem>
 	<listitem>
@@ -797,7 +787,7 @@
 	  <para>
 	    Working with &kig; should be very straightforward.
 	    Constructing objects is easy and interactive, with
-	    preliminary results being shown, etc.  Moving, selecting
+	    preliminary results being shown, &etc;.  Moving, selecting
 	    and building all work as one would expect them to.  Undo
 	    support should also be very intuitive.
 	  </para>
@@ -825,10 +815,10 @@
 	</listitem>
 	<listitem>
 	  <para>
-	    &kig; allows you to export a kig file to some interesting
+	    &kig; allows you to export a &kig; file to some interesting
 	    formats, like images, and XFig files.  This is rather
 	    useful, because not all programs support the &kig; file
-	    format yet ;).
+	    format yet.
 	  </para>
 	</listitem>
 	<listitem>
@@ -840,64 +830,12 @@
 	  <para>
 	    &kig; aims to be compatible with its competitors.. This is
 	    why it supports the &kgeo; file format, the &kseg; file
-	    format, and I'm working on other formats as well.
+	    format, and support for other formats is planned also.
 	  </para>
 	</listitem>
       </itemizedlist>
-    </para>
   </chapter>
 
-  <chapter id="contributing">
-    <title>Contribute</title>
-    <section id="kig-is-free">
-      <title>Free Software</title>
-      <para>
-	&kig; is <ulink
-	url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware">
-	Free Software</ulink>.  This means that its source code is
-	freely available on the internet, and everyone can use it,
-	read it, modify it, and distribute it.  I work on it as a
-	hobby project, and I have already learned a lot about
-	programming, C++, KDE/Qt, math, software collaboration and open
-	source projects in the process.
-      </para>
-    </section>
-    <section id="contribute-to-kig">
-      <title>Contribute</title>
-      <para>
-	The point of this chapter is to point you ( the user ) to the
-	rights that &kig;'s license gives you.  As with all free
-	software, you are allowed ( and encouraged :) to fix problems
-	you encounter while using it, to add features you miss, to
-	distribute your modified program, and to send these
-	modifications to me at <email>devriese@kde.org</email>, so
-	that I can include them in the next version for others to
-	enjoy.  I personally have no financial interest in this
-	project whatsoever, so this isn't just marketing-speak here
-	;).
-      </para>
-      <para>
-	If you are uncertain of your rights to use this software, or
-	other peoples right to use any modifications you make to this
-	program etc., please read the license.  You can find it in the
-	COPYING file in the &kig; source tree or the license tab in
-	the About Kig dialog.
-      </para>
-    </section>
-    <section id="howto-contribute">
-      <title>How to contribute ?</title>
-      <para>
-	Any contributions are welcome.  If you think the icons suck,
-	or that the manual needs updating, or you have this really
-	cool macro that you want to share with the world, do not
-	hesitate to send it to me.  Please note that your
-	contributions will be distributed under the terms of the GNU
-	GPL; you can find the terms of this license in the COPYING
-	file in the &kig; source tree, and further along in this
-	manual...
-      </para>
-    </section>
-  </chapter>
 
   <chapter id="faq">
     <title>Questions and Answers</title>
@@ -938,6 +876,58 @@
       &install.compile.documentation;
     </sect1>
 
+  </appendix>
+
+  <appendix id="contributing">
+    <title>Contribute</title>
+    <section id="kig-is-free">
+      <title>Free Software</title>
+      <para>
+	&kig; is <ulink
+	url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware">
+	Free Software</ulink>.  This means that its source code is
+	freely available on the Internet, and everyone can use it,
+	read it, modify it, and distribute it.  I work on it as a
+	hobby project, and I have already learned a lot about
+	programming, C++, &kde;/&Qt;, math, software collaboration and open
+	source projects in the process.
+      </para>
+    </section>
+    <section id="contribute-to-kig">
+      <title>Contribute</title>
+      <para>
+	The point of this chapter is to point you (the user) to the
+	rights that &kig;'s license gives you.  As with all free
+	software, you are allowed (and encouraged) to fix problems
+	you encounter while using it, to add features you miss, to
+	distribute your modified program, and to send these
+	modifications to me at <email>devriese@kde.org</email>, so
+	that I can include them in the next version for others to
+	enjoy.  I personally have no financial interest in this
+	project whatsoever, so this isn't just marketing-speak here.
+      </para>
+      <para>
+	If you are uncertain of your rights to use this software, or
+	other peoples right to use any modifications you make to this
+	program &etc;, please read the license.  You can find it in the
+	<filename>COPYING</filename> file in the &kig; source tree or
+	the license tab in the <guilabel>About Kig</guilabel> dialog.
+      </para>
+    </section>
+    <section id="howto-contribute">
+      <title>How to contribute ?</title>
+      <para>
+	Any contributions are welcome.  If you think the icons suck,
+	or that the manual needs updating, or you have this really
+	cool macro that you want to share with the world, do not
+	hesitate to send it to me.  Please note that your
+	contributions will be distributed under the terms of the GNU
+	GPL; you can find the terms of this license in the
+	<filename>COPYING</filename> file in the &kig; source tree,
+	and in the <link linkend="credits">Credits and
+	Licenses</link> chapter in this manual.
+      </para>
+    </section>
   </appendix>
 
   &documentation.index;
