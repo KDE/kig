@@ -23,9 +23,25 @@
 
 #include <algorithm>
 
+void ArgParser::initialize( const struct spec* args, int n )
+{
+  std::vector<spec> vect( args, args + n );
+  initialize( vect );
+}
+
+ArgParser::ArgParser()
+{
+}
 
 ArgParser::ArgParser( const std::vector<spec>& args )
 {
+  initialize( args );
+}
+
+void ArgParser::initialize( const std::vector<spec>& args )
+{
+  margs.clear();
+  manyobjsspec.clear();
   for ( uint i = 0; i < args.size(); ++i )
     if ( args[i].type != ObjectImp::ID_AnyImp )
       margs.push_back( args[i] );
@@ -34,10 +50,7 @@ ArgParser::ArgParser( const std::vector<spec>& args )
 
 ArgParser::ArgParser( const spec* args, int n )
 {
-  for ( int i = 0; i < n; ++i )
-    if ( args[i].type != ObjectImp::ID_AnyImp )
-      margs.push_back( args[i] );
-    else manyobjsspec.push_back( args[i].usetext );
+  initialize( args, n );
 }
 
 ArgParser::ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec )

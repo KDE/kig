@@ -57,6 +57,10 @@ public:
   ArgParser( const struct spec* args, int n );
   ArgParser( const std::vector<spec>& args );
   ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec );
+  ArgParser();
+
+  void initialize( const std::vector<spec>& args );
+  void initialize( const struct spec* args, int n );
   // returns a new ArgParser that wants the same args, except for the
   // ones of the given type..
   ArgParser without( int type ) const;
