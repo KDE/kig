@@ -27,6 +27,7 @@
 #include "../objects/circle.h"
 #include "../objects/segment.h"
 #include "kigtransform.h"
+#include "kignumerics.h"
 #include "i18n.h"
 
 #include <cmath>
@@ -333,7 +334,7 @@ const Transformation Transformation::scaling( double factor, const LineData& l )
   return ret;
 }
 
-const Transformation Transformation::projectiveRotation( 
+const Transformation Transformation::projectiveRotation(
   double alpha, const Coordinate& d )
 {
   Transformation ret;
