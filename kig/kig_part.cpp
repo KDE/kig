@@ -310,9 +310,9 @@ bool KigDocument::openFile()
         "doesn't understand.  It is possible that the file somehow got "
         "corrupted and is no longer usable.  If you know that the file is "
         "valid, and you think Kig should be able to open it, you can try to "
-        "send me a copy of the file and ask me nicely to check it out.  If "
-        "you want more certain results, you can always do the work yourself "
-        "( since Kig is Free Software ), and send me a patch."
+        "send me a copy of the file and ask me to check it out.  If you want "
+        "more certain results, you can always do the work yourself ( since Kig "
+        "is Free Software ), and send me a patch."
                             ) );
     return false;
   };
@@ -700,4 +700,10 @@ void KigDocument::doneMode( KigMode* d )
 #else
   kapp->exit_loop();
 #endif
+}
+
+void KigDocument::setObjects( const Objects& os )
+{
+  assert( mObjs.empty() );
+  mObjs = os;
 }

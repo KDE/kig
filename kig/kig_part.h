@@ -123,6 +123,7 @@ public:
   void delView(KigView*) { numViews--; };
 
   const Objects& objects() const { return mObjs;};
+  void setObjects( const Objects& os );
   const CoordinateSystem& coordinateSystem() const;
   KigMode* mode() { return mMode; };
   void setMode( KigMode* );
