@@ -14,3 +14,6 @@ messages: rc.cpp
 
 dummy.cpp: 
 	touch dummy.cpp
+
+TAGS: 
+	find -name '*.cc' -o -name '*.cpp' -o -name '*.h' | etags -
