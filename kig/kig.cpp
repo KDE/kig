@@ -3,7 +3,6 @@
  *
  */
 #include "kig.h"
-#include "splashscreen.h"
 
 #include <kkeydialog.h>
 #include <kconfig.h>

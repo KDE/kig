@@ -1,7 +1,5 @@
 #include "kig.h"
 
-#include "splashscreen.h"
-
 #include <kapp.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
@@ -28,8 +26,6 @@ int main(int argc, char **argv)
   KCmdLineArgs::init(argc, argv, &about);
   KCmdLineArgs::addCmdLineOptions( options );
   KApplication app;
-
-  SplashScreen::showSplashScreen();
 
   // see if we are starting with session management
   if (app.isRestored())
