@@ -487,7 +487,6 @@ void KigDocument::enableConstructActions( bool enabled )
   for_each( aActions.begin(), aActions.end(),
             bind2nd( mem_fun( &KAction::setEnabled ),
                      enabled ) );
-  aFixedPoint->setEnabled( enabled );
 }
 
 void KigDocument::unplugActionLists()

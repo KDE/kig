@@ -213,7 +213,6 @@ public:
   KAction* aNewMacro;
   KAction* aShowHidden;
   KAction* aConfigureTypes;
-  KAction* aFixedPoint;
   myvector<KigGUIAction*> aActions;
 
   /**
