@@ -1,5 +1,8 @@
 2003-07-02  Dominique Devriese  <devriese@kde.org>
 
+	* fix some use of uninitialised value in dragrectmode, which
+	caused the dragrect to not work at random times
+
 	* fix the clearing of the selection when the user clicks on an
 	empty point..
 

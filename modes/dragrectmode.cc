@@ -27,7 +27,8 @@
 #include <kaction.h>
 
 DragRectMode::DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w )
-  : KigMode( d ), mstart( start ), mnc( true ), mstartselected( true )
+  : KigMode( d ), mstart( start ), mnc( true ), mstartselected( true ),
+    mcancelled( false )
 {
   moved( start, w );
 }
