@@ -103,7 +103,6 @@ template <class Collection>
 Collection parse( const Collection& os, uint numberofanyobjects,
                   const std::vector<ArgParser::spec> margs )
 {
-//  assert( check( os ) != Invalid );
   Collection ret( margs.size() + numberofanyobjects, 0 );
 
   uint anyobjscounter = 0;
@@ -117,8 +116,8 @@ Collection parse( const Collection& os, uint numberofanyobjects,
         ret[i] = *o;
         goto added;
       }
-    assert( anyobjscounter < numberofanyobjects );
-    ret[margs.size() + anyobjscounter++]= *o;
+    if( anyobjscounter < numberofanyobjects )
+      ret[margs.size() + anyobjscounter++]= *o;
   added:
     ;
   };

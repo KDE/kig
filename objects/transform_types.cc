@@ -52,6 +52,7 @@ ObjectImp* TranslatedType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
+  if ( !args[0] || ! args[1] ) return new InvalidImp;
   assert( args[0]->inherits( ObjectImp::ID_VectorImp ) );
 
   Coordinate dir = static_cast<const VectorImp*>( args[0] )->dir();
@@ -84,7 +85,7 @@ ObjectImp* PointReflectionType::calc( const Args& targs, const KigDocument& ) co
 {
   if ( targs.size() != 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
-  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
+  if( !args[0] ) return new InvalidImp;
 
   Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
   Transformation t = Transformation::pointReflection( center );
@@ -116,7 +117,7 @@ ObjectImp* LineReflectionType::calc( const Args& targs, const KigDocument& ) con
 {
   if ( targs.size() != 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
-  assert( args[0]->inherits( ObjectImp::ID_LineImp ) );
+  if( !args[0] ) return new InvalidImp;
 
   LineData d = static_cast<const AbstractLineImp*>( args[0] )->data();
   Transformation t = Transformation::lineReflection( d );
@@ -149,8 +150,7 @@ ObjectImp* RotationType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 3 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
-  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
-  assert( args[1]->inherits( ObjectImp::ID_AngleImp ) );
+  if( !args[0] || ! args[1] ) return new InvalidImp;
 
   Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
   double angle = static_cast<const AngleImp*>( args[1] )->size();
@@ -184,8 +184,7 @@ ObjectImp* ScalingOverCenterType::calc( const Args& targs, const KigDocument& ) 
 {
   if ( targs.size() != 3 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
-  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
-  assert( args[1]->inherits( ObjectImp::ID_SegmentImp ) );
+  if( !args[0] || ! args[1] ) return new InvalidImp;
 
   Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
   double ratio = static_cast<const SegmentImp*>( args[1] )->length();
@@ -219,8 +218,7 @@ ObjectImp* ScalingOverLineType::calc( const Args& targs, const KigDocument& ) co
 {
   if ( targs.size() != 3 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
-  assert( args[0]->inherits( ObjectImp::ID_LineImp ) );
-  assert( args[1]->inherits( ObjectImp::ID_SegmentImp ) );
+  if( !args[0] || ! args[1] ) return new InvalidImp;
 
   LineData line = static_cast<const AbstractLineImp*>( args[0] )->data();
   double ratio = static_cast<const SegmentImp*>( args[1] )->length();
@@ -295,8 +293,7 @@ ObjectImp* CastShadowType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 3 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
-  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
-  assert( args[1]->inherits( ObjectImp::ID_LineImp ) );
+  if( !args[0] || ! args[1] || ! args[2] ) return new InvalidImp;
   Coordinate lightsrc = static_cast<const PointImp*>( args[0] )->coordinate();
   LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
   return args[2]->transform(

@@ -57,13 +57,11 @@ const CubicB9PType* CubicB9PType::instance()
 ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
 {
   std::vector<Coordinate> points;
-
-  uint size = os.size();
-  if ( size < 2 ) return new InvalidImp;
-  for ( uint i = 0; i < size; ++i )
+  if ( os.size() < 2 ) return new InvalidImp;
+  for ( uint i = 0; i < os.size(); ++i )
     if( os[i]->inherits( ObjectImp::ID_PointImp ) )
       points.push_back( static_cast<const PointImp*>( os[i] )->coordinate() );
-
+  if ( points.size() != os.size() ) return new InvalidImp;
   return new CubicImp( calcCubicThroughPoints( points ) );
 }
 
@@ -99,7 +97,7 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) con
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
     if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
-  if ( points.size() < 2 ) return new InvalidImp;
+  if ( points.size() != parents.size() ) return new InvalidImp;
   return new CubicImp( calcCubicNodeThroughPoints( points ) );
 }
 
@@ -134,10 +132,12 @@ ObjectImp* CubicCuspB4PType::calc( const Args& parents, const KigDocument& ) con
 
   for ( uint i = 0; i < parents.size(); ++i )
   {
-    assert( parents[i]->inherits( ObjectImp::ID_PointImp ) );
-    points.push_back(
-      static_cast<const PointImp*>( parents[i] )->coordinate() );
+    if( parents[i]->inherits( ObjectImp::ID_PointImp ) )
+      points.push_back(
+        static_cast<const PointImp*>( parents[i] )->coordinate() );
   };
+  if ( points.size() != parents.size() )
+    return new InvalidImp;
   return new CubicImp( calcCubicCuspThroughPoints( points ) );
 }
 

@@ -19,7 +19,7 @@
 #ifndef KIG_OBJECTS_OTHER_IMP_H
 #define KIG_OBJECTS_OTHER_IMP_H
 
-#include "object_imp.h"
+#include "curve_imp.h"
 #include "../misc/coordinate.h"
 
 class AngleImp
@@ -84,4 +84,39 @@ public:
 
   int id() const;
 };
+
+// class ArcImp
+//   : public CurveImp
+// {
+//   typedef CurveImp Parent;
+//   Coordinate mcenter;
+//   double mradius;
+//   double msa;
+//   double ma;
+// public:
+//   ArcImp( const Coordinate& center, const double radius,
+//           const double startangle, const double angle );
+//   ~ArcImp();
+//   ArcImp* copy() const;
+
+//   ObjectImp* transform( const Transformation& t ) const;
+
+//   void draw( KigPainter& p ) const;
+//   bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+//   bool inRect( const Rect& r, int width, const KigWidget& si ) const;
+//   bool valid() const;
+
+//   const uint numberOfProperties() const;
+//   const QCStringList properties() const;
+//   const QCStringList propertiesInternalNames() const;
+//   ObjectImp* property( uint which, const KigDocument& d ) const;
+//   int impRequirementForProperty( uint which ) const;
+
+//   bool inherits( int typeID ) const;
+
+//   int id() const;
+
+//   const char* baseName() const;
+// };
+
 #endif

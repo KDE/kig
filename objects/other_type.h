@@ -48,9 +48,9 @@ class LocusType
   : public ArgparserObjectType
 {
   typedef ArgparserObjectType Parent;
-public:
   LocusType();
   ~LocusType();
+public:
   static const LocusType* instance();
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
@@ -75,5 +75,26 @@ public:
   int impRequirement( const ObjectImp* o, const Args& parents ) const;
   int resultId() const;
 };
+
+// /**
+//  * an arc by center and a start and end point
+//  */
+// class ArcBCTPType
+//   : public ArgparserObjectType
+// {
+//   typedef ArgparserObjectType Parent;
+//   ArcBCTPType();
+//   ~ArcBCTPType();
+// public:
+//   static const ArcType* instance();
+
+//   ObjectImp* calc( const Args& args, const KigDocument& ) const;
+
+//   const ObjectHierarchy& hierarchy() const;
+//   int impRequirement( const ObjectImp* o, const Args& parents ) const;
+
+//   bool inherits( int type ) const;
+//   int resultId() const;
+// };
 
 #endif

@@ -55,13 +55,14 @@ const AngleType* AngleType::instance()
 
 ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 3 ) return new InvalidImp;
+  if ( parents.size() != 3 ) return new InvalidImp;
   std::vector<Coordinate> points;
   for ( uint i = 0; i < parents.size(); ++i )
     if ( parents[i]->inherits( ObjectImp::ID_PointImp ) )
       points.push_back(
         static_cast<const PointImp*>( parents[i] )->coordinate() );
-  if ( points.size() < 3 ) return new InvalidImp;
+  if ( points.size() != parents.size() )
+    return new InvalidImp;
 
   Coordinate lvect = points[0] - points[1];
   Coordinate rvect = points[2] - points[1];
@@ -125,6 +126,7 @@ ObjectImp* LocusType::calc( const Args& targs, const KigDocument& ) const
   if ( targs.size() < 2 ) return new InvalidImp;
   const Args firsttwo( targs.begin(), targs.begin() + 2 );
   const Args args = margsparser.parse( firsttwo );
+  if ( ! args[0] || !args[1] ) return new InvalidImp;
   const ObjectHierarchy& hier =
     static_cast<const HierarchyImp*>( args[0] )->data();
   const CurveImp* curveimp = static_cast<const CurveImp*>( args[1] );
@@ -207,4 +209,5 @@ const LocusType* LocusType::instance()
   static const LocusType t;
   return &t;
 }
+
 

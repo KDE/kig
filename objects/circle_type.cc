@@ -72,15 +72,16 @@ CircleBTPType::~CircleBTPType()
 {
 }
 
-ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
+ObjectImp* CircleBTPType::calc( const Args& targs, const KigDocument& ) const
 {
-  if ( args.size() < 2 ) return new InvalidImp;
-  for ( uint i = 0; i < args.size(); ++i )
-    if ( !args[i]->inherits( ObjectImp::ID_PointImp ) ) return new InvalidImp;
+  if ( targs.size() < 2 || targs.size() > 3 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  if ( ! args[0] || ! args[1] || ( targs.size() == 3 && !args[2] ) )
+    return new InvalidImp;
   const Coordinate a = static_cast<const PointImp*>( args[0] )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( args[1] )->coordinate();
   Coordinate c;
-  if ( args.size() == 3 )
+  if ( args[2] )
     c = static_cast<const PointImp*>( args[2] )->coordinate();
   else
   {
@@ -185,8 +186,8 @@ const CircleBPRType* CircleBPRType::instance()
 
 ObjectImp* CircleBPRType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( args.size() != 2 ) return new InvalidImp;
   const Args a = margsparser.parse( args );
+  if ( ! a[0] || ! a[1] ) return new InvalidImp;
   const Coordinate c = static_cast<const PointImp*>( a[0] )->coordinate();
   double r = static_cast<const DoubleImp*>( a[1] )->data();
   return new CircleImp( c, r );

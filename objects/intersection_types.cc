@@ -50,12 +50,13 @@ const ConicLineIntersectionType* ConicLineIntersectionType::instance()
 
 ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 3 ) return new InvalidImp;
+  if ( parents.size() != 3 ) return new InvalidImp;
   Args p = margsparser.parse( parents );
-  if ( !p[0] || ! p[0]->inherits( ObjectImp::ID_ConicImp ) ||
-       !p[1] || ! p[1]->inherits( ObjectImp::ID_LineImp ) ||
-       !p[2] || ! p[2]->inherits( ObjectImp::ID_IntImp )
-    ) return new InvalidImp;
+  if ( ! p[0] || !p[1] || !p[2] )
+    return new InvalidImp;
+  assert ( p[0]->inherits( ObjectImp::ID_ConicImp ) &&
+           p[1]->inherits( ObjectImp::ID_LineImp ) &&
+           p[2]->inherits( ObjectImp::ID_IntImp ) );
 
   int side = static_cast<const IntImp*>( p[2] )->data();
   assert( side == 1 || side == -1 );
@@ -108,7 +109,7 @@ const LineLineIntersectionType* LineLineIntersectionType::instance()
 
 ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 2 ||
+  if ( parents.size() != 2 ||
        !parents[0]->inherits( ObjectImp::ID_LineImp ) ||
        !parents[1]->inherits( ObjectImp::ID_LineImp ) )
     return new InvalidImp;
@@ -143,9 +144,9 @@ const LineCubicIntersectionType* LineCubicIntersectionType::instance()
 
 ObjectImp* LineCubicIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 3 ) return new InvalidImp;
+  if ( parents.size() != 3 ) return new InvalidImp;
   Args p = margsparser.parse( parents );
-  if ( !p[0] || !p[1] || ! p[2] ) return new InvalidImp;
+  if ( ! p[0] || ! p[1] || ! p[2] ) return new InvalidImp;
   int which = static_cast<const IntImp*>( p[2] )->data();
   bool valid = true;
   const Coordinate c = calcCubicLineIntersect(

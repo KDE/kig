@@ -66,11 +66,11 @@ int TextType::impRequirement( const ObjectImp* oi, const Args& args ) const
 
 ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
 {
-  assert( parents.size() >= 3 );
+  if( parents.size() < 3 ) return new InvalidImp;
   Args firstthree( parents.begin(), parents.begin() + 3 );
   Args varargs( parents.begin() + 3,  parents.end() );
   Args os = mparser.parse( firstthree );
-
+  if ( ! os[0] || ! os[1] || ! os[2] ) return new InvalidImp;
   assert( os[0]->inherits( ObjectImp::ID_IntImp ) );
   assert( os[1]->inherits( ObjectImp::ID_PointImp ) );
   assert( os[2]->inherits( ObjectImp::ID_StringImp ) );

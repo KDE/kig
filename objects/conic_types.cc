@@ -55,7 +55,7 @@ ObjectImp* ConicB5PType::calc( const Args& parents, const KigDocument& ) const
     if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
 
-  if ( points.empty() ) return new InvalidImp;
+  if ( points.size() != parents.size() ) return new InvalidImp;
   else return new ConicImpCart(
     calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry ) );
 }
@@ -90,8 +90,10 @@ const ConicBAAPType* ConicBAAPType::instance()
 
 ObjectImp* ConicBAAPType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 3 ) return new InvalidImp;
+  if ( parents.size() != 3 ) return new InvalidImp;
   Args parsed = margsparser.parse( parents );
+  if ( ! parsed[0] || ! parsed[1] || ! parsed[2] )
+    return new InvalidImp;
   assert( parsed[0]->inherits( ObjectImp::ID_LineImp ) );
   assert( parsed[1]->inherits( ObjectImp::ID_LineImp ) );
   assert( parsed[2]->inherits( ObjectImp::ID_PointImp ) );
@@ -104,13 +106,14 @@ ObjectImp* ConicBAAPType::calc( const Args& parents, const KigDocument& ) const
 
 ObjectImp* ConicBFFPType::calc( const Args& parents, const KigDocument& ) const
 {
+  if ( parents.size() < 2 ) return new InvalidImp;
   std::vector<Coordinate> cs;
 
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
     if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
       cs.push_back( static_cast<const PointImp*>( *i )->coordinate() );
 
-  if ( cs.size() < 2 ) return new InvalidImp;
+  if ( cs.size() != parents.size() ) return new InvalidImp;
   else return new ConicImpPolar( calcConicBFFP( cs, type() ) );
 }
 
@@ -209,20 +212,25 @@ ConicBDFPType::~ConicBDFPType()
 ObjectImp* ConicBDFPType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
+
   Args parsed = margsparser.parse( parents );
 
-  if ( ! parsed[2] || ! parsed[2]->inherits( ObjectImp::ID_LineImp ) )
+  if ( ! parsed[0] || ! parsed[2] || ( parents.size() == 3 && !parsed[1] ) )
     return new InvalidImp;
-  if ( ! parsed[0] || ! parsed[0]->inherits( ObjectImp::ID_PointImp ) )
-    return new InvalidImp;
-  if ( parsed[1] && !parsed[1]->inherits( ObjectImp::ID_PointImp ) )
-    return new InvalidImp;
+
+  assert( parsed[2]->inherits( ObjectImp::ID_LineImp ) );
   const LineData line = static_cast<const AbstractLineImp*>( parsed[2] )->data();
+
+  assert( parsed[0]->inherits( ObjectImp::ID_PointImp ) );
   const Coordinate focus =
     static_cast<const PointImp*>( parsed[0] )->coordinate();
+
   Coordinate point;
   if ( parsed[1] )
+  {
+    assert( parsed[1]->inherits( ObjectImp::ID_PointImp ) );
     point = static_cast<const PointImp*>( parsed[1] )->coordinate();
+  }
   else
   {
     /* !!!! costruisci point come punto medio dell'altezza tra fuoco e d. */
@@ -267,7 +275,7 @@ ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigDocument& ) cons
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
     if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
-  if ( points.size() < 2 ) return new InvalidImp;
+  if ( points.size() != parents.size() ) return new InvalidImp;
   return new ConicImpCart(
     calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry ) );
 }
@@ -295,9 +303,10 @@ const ConicPolarPointType* ConicPolarPointType::instance()
 
 ObjectImp* ConicPolarPointType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 2 ) return new InvalidImp;
+  if ( parents.size() != 2 ) return new InvalidImp;
   Args parsed = margsparser.parse( parents );
-  if ( parsed.size() < 2 || ! parsed[0] || ! parsed[1] ) return new InvalidImp;
+  if ( ! parsed[0] || ! parsed[1] )
+    return new InvalidImp;
   const ConicCartesianData c = static_cast<const ConicImp*>( parsed[0] )->cartesianData();
   const LineData l = static_cast<const AbstractLineImp*>( parsed[1] )->data();
   bool valid = true;
@@ -329,9 +338,10 @@ const ConicPolarLineType* ConicPolarLineType::instance()
 
 ObjectImp* ConicPolarLineType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 2 ) return new InvalidImp;
+  if ( parents.size() != 2 ) return new InvalidImp;
   Args parsed = margsparser.parse( parents );
-  if ( parsed.size() < 2 || ! parsed[0] || ! parsed[1] ) return new InvalidImp;
+  if ( !parsed[0] || ! parsed[1] )
+    return new InvalidImp;
   const ConicCartesianData c = static_cast<const ConicImp*>( parsed[0] )->cartesianData();
   const Coordinate p = static_cast<const PointImp*>( parsed[1] )->coordinate();
   bool valid = true;
@@ -363,7 +373,8 @@ const ConicDirectrixType* ConicDirectrixType::instance()
 ObjectImp* ConicDirectrixType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() != 1 ) return new InvalidImp;
-
+  if ( ! parents[0]->valid() ) return new InvalidImp;
+  assert( parents[0]->inherits( ObjectImp::ID_ConicImp ) );
   const ConicPolarData data =
     static_cast<const ConicImp*>( parents[0] )->polarData();
 
@@ -407,6 +418,8 @@ ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents, const KigDocu
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
     if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
       pts.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+
+  if ( parents.size() != pts.size() ) return new InvalidImp;
   return new ConicImpCart( calcConicThroughPoints( pts, equilateral ) );
 }
 
@@ -470,9 +483,10 @@ const ConicAsymptoteType* ConicAsymptoteType::instance()
 
 ObjectImp* ConicAsymptoteType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 2 ) return new InvalidImp;
+  if ( parents.size() != 2 ) return new InvalidImp;
   Args p = margsparser.parse( parents );
-  if ( !p[0] || ! p[0] ) return new InvalidImp;
+  if ( ! p[0] || ! p[1] )
+    return new InvalidImp;
   bool valid = true;
   const LineData ret = calcConicAsymptote(
     static_cast<const ConicImp*>( p[0] )->cartesianData(),
@@ -507,7 +521,8 @@ ObjectImp* ConicRadicalType::calc( const Args& parents, const KigDocument& ) con
 {
   if ( parents.size() != 4 ) return new InvalidImp;
   Args p = margsparser.parse( parents );
-  if ( !p[0] || ! p[1] || ! p[2] || !p[3] ) return new InvalidImp;
+  if ( ! p[0] || ! p[1] || ! p[2] || ! p[3] )
+    return new InvalidImp;
   if ( p[0]->inherits( ObjectImp::ID_CircleImp ) &&
        p[1]->inherits( ObjectImp::ID_CircleImp ) )
   {

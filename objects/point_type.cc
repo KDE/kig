@@ -59,10 +59,9 @@ ObjectImp* FixedPointType::calc( const Args& parents, const KigDocument& ) const
 
 ObjectImp* ConstrainedPointType::calc( const Args& tparents, const KigDocument& doc ) const
 {
-  assert( tparents.size() == 2 );
   Args parents = margsparser.parse( tparents );
-  assert( parents[0]->inherits( ObjectImp::ID_DoubleImp ) );
-  assert( parents[1]->inherits( ObjectImp::ID_CurveImp ) );
+  if( ! parents[0] || ! parents[1] )
+    return new InvalidImp;
   double param = static_cast<const DoubleImp*>( parents[0] )->data();
   return new PointImp( static_cast<const CurveImp*>( parents[1] )->getPoint( param, doc ) );
 }

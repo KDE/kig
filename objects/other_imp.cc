@@ -222,4 +222,83 @@ int VectorImp::id() const
   return ID_VectorImp;
 }
 
+// ArcImp::ArcImp( const Coordinate& center, const double radius,
+//                 const double startangle, const double angle )
+//   : CurveImp(), mcenter( center ), mradius( radius ),
+//     msa( startangle ), ma( angle )
+// {
+// }
 
+// ArcImp::~ArcImp()
+// {
+// }
+
+// ArcImp* ArcImp::copy() const
+// {
+//   return new ArcImp( mcenter, mradius, msa, ma );
+// }
+
+// ObjectImp* ArcImp::transform( const Transformation& t ) const
+// {
+//   return new InvalidImp();
+// }
+
+// void ArcImp::draw( KigPainter& p ) const
+// {
+//   p.drawArc( mcenter, mradius, msa, ma );
+// }
+
+// bool ArcImp::contains( const Coordinate& p, int width, const KigWidget& si ) const
+// {
+//   return false;
+// }
+
+// bool ArcImp::inRect( const Rect& r, int width, const KigWidget& si ) const
+// {
+//   return false;
+// }
+
+// bool ArcImp::valid() const
+// {
+//   return true;
+// }
+
+// const uint ArcImp::numberOfProperties() const
+// {
+//   return 0;
+// }
+
+// const QCStringList ArcImp::properties() const
+// {
+//   return Parent::properties();
+// }
+
+// const QCStringList ArcImp::propertiesInternalNames() const
+// {
+//   return Parent::propertiesInternalNames();
+// }
+
+// ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
+// {
+//   return Parent::property( which, d );
+// }
+
+// int ArcImp::impRequirementForProperty( uint which ) const
+// {
+//   return Parent::impRequirementForProperty( which );
+// }
+
+// bool ArcImp::inherits( int type ) const
+// {
+//   return type == ID_ArcImp ? true : Parent::inherits( type );
+// }
+
+// int ArcImp::id() const
+// {
+//   return ID_ArcImp;
+// }
+
+// const char* ArcImp::baseName() const
+// {
+//   return I18N_NOOP( "arc" );
+// }

@@ -87,7 +87,8 @@ public:
     ID_ConicImp,
     ID_CubicImp,
     ID_SegmentImp,
-    ID_RayImp
+    ID_RayImp,
+    ID_ArcImp
   };
 
   // this translates an id ( e.g. ID_AnyImp ) to its name ( e.g. "any" )
