@@ -42,6 +42,7 @@
 TextLabelConstructionMode::~TextLabelConstructionMode()
 {
   delete mwiz;
+  delete_all( margs.begin(), margs.end() );
 }
 
 TextLabelConstructionMode::TextLabelConstructionMode( KigDocument& d )
@@ -218,6 +219,7 @@ void TextLabelConstructionMode::finishPressed()
     else
     {
       Objects args( margs.begin(), margs.end() );
+      margs.clear();
       Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe, args );
       labelos.calc( mdoc );
       copy( labelos.begin(), labelos.end(), back_inserter( args ) );
