@@ -24,8 +24,11 @@
 #include <qlabel.h>
 #include <qlayout.h>
 
-#include <kactionclasses.h>
-#include <kactioncollection.h>
+//#include <kactionclasses.h>
+//#include <kactioncollection.h>
+// make it still work on old kde 3.1...
+#include <kaction.h>
+//
 #include <kapplication.h>
 #include <kglobalsettings.h>
 #include <kpopupmenu.h>
