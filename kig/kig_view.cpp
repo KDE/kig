@@ -456,7 +456,7 @@ void KigView::scrollHorizontal( int delta )
   else
     for ( int i = 0; i >= delta; i -= 120 )
       mbottomscroll->addLine();
-};
+}
 
 void KigView::scrollVertical( int delta )
 {
