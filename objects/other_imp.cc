@@ -654,11 +654,12 @@ Rect VectorImp::surroundingRect() const
 
 Rect ArcImp::surroundingRect() const
 {
-  // the returned rect should contain the center point, the two end
+  // the returned rect should contain the center point(?), the two end
   // points, and all extreme x and y positions in between.
-  Rect ret( mcenter, 0, 0 );
+  //Rect ret( mcenter, 0, 0 );
   double a = msa;
-  ret.setContains( mcenter + mradius*Coordinate( cos( a ), sin( a ) ) );
+  //ret.setContains( mcenter + mradius*Coordinate( cos( a ), sin( a ) ) );
+  Rect ret ( mcenter + mradius*Coordinate( cos( a ), sin( a ) ), 0, 0 );
   a = msa + ma;
   ret.setContains( mcenter + mradius*Coordinate( cos( a ), sin( a ) ) );
   for ( a = -2*M_PI; a <= 2*M_PI; a+=M_PI/2 )
