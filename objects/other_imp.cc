@@ -83,9 +83,9 @@ const uint AngleImp::numberOfProperties() const
 const QCStringList AngleImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
-  l << I18N_NOOP( "angle-radian" );
-  l << I18N_NOOP( "angle-degrees" );
-  l << I18N_NOOP( "angle-bisector" );
+  l << "angle-radian";
+  l << "angle-degrees";
+  l << "angle-bisector";
   assert( l.size() == AngleImp::numberOfProperties() );
   return l;
 }
