@@ -1,0 +1,257 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>ExportToImageDialogBase</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>ExportToImageDialogBase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>437</width>
+            <height>199</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>11</number>
+        </property>
+        <property name="spacing">
+            <number>6</number>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>ExplanationTextLabel</cstring>
+            </property>
+            <property name="text">
+                <string>Select a file name and resolution for the image file to save the screen to..</string>
+            </property>
+            <property name="alignment">
+                <set>WordBreak|AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="QFrame">
+            <property name="name">
+                <cstring>Frame3</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>Layout1</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>URLLabel</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Image file:</string>
+                            </property>
+                        </widget>
+                        <widget class="KURLRequester">
+                            <property name="name">
+                                <cstring>URLRequester</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>Layout6</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>ResolutionLabel</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Resolution:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>Layout4</cstring>
+                            </property>
+                            <vbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <property name="margin">
+                                    <number>0</number>
+                                </property>
+                                <property name="spacing">
+                                    <number>6</number>
+                                </property>
+                                <widget class="QLayoutWidget">
+                                    <property name="name">
+                                        <cstring>Layout2</cstring>
+                                    </property>
+                                    <hbox>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <property name="margin">
+                                            <number>0</number>
+                                        </property>
+                                        <property name="spacing">
+                                            <number>6</number>
+                                        </property>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>WidthLabel</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Width:</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="KIntNumInput">
+                                            <property name="name">
+                                                <cstring>KIntNumInput1</cstring>
+                                            </property>
+                                            <property name="minValue">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="suffix">
+                                                <string> pixels</string>
+                                            </property>
+                                        </widget>
+                                    </hbox>
+                                </widget>
+                                <widget class="QLayoutWidget">
+                                    <property name="name">
+                                        <cstring>Layout3</cstring>
+                                    </property>
+                                    <hbox>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <property name="margin">
+                                            <number>0</number>
+                                        </property>
+                                        <property name="spacing">
+                                            <number>6</number>
+                                        </property>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>HeightLabel</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Height:</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="KIntNumInput">
+                                            <property name="name">
+                                                <cstring>KIntNumInput2</cstring>
+                                            </property>
+                                            <property name="minValue">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="suffix">
+                                                <string> pixels</string>
+                                            </property>
+                                        </widget>
+                                    </hbox>
+                                </widget>
+                            </vbox>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="Line">
+            <property name="name">
+                <cstring>Line1</cstring>
+            </property>
+            <property name="frameShape" stdset="0">
+                <enum>HLine</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>Layout7</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="KPushButton">
+                    <property name="name">
+                        <cstring>CancelButton</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string>Cancel</string>
+                    </property>
+                </widget>
+                <widget class="KPushButton">
+                    <property name="name">
+                        <cstring>OKButton</cstring>
+                    </property>
+                    <property name="text">
+                        <string>OK</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
