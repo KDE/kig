@@ -332,17 +332,22 @@ void ArcImp::visit( ObjectImpVisitor* vtor ) const
   vtor->visit( this );
 }
 
-double ArcImp::getParam( const Coordinate& c, const KigDocument& d ) const
+double ArcImp::getParam( const Coordinate& c, const KigDocument& ) const
 {
-  // TODO
-  return 0.;
+  Coordinate d = (c - mcenter).normalize();
+  double angle = atan2( d.y, d.x );
+  angle -= msa;
+  angle = max( 0., min( angle, ma ) );
+  angle /= ma;
+  return angle;
 }
 
-const Coordinate ArcImp::getPoint( double p, bool& valid, const KigDocument& d ) const
+const Coordinate ArcImp::getPoint( double p, bool& valid, const KigDocument& ) const
 {
-  // TODO
-  valid = false;
-  return Coordinate();
+  valid = true;
+  double angle = msa + p * ma;
+  Coordinate d = Coordinate( cos( angle ), sin( angle ) ) * mradius;
+  return mcenter + d;
 }
 
 const Coordinate ArcImp::center() const
