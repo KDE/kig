@@ -1,4 +1,7 @@
 * harder:
+- add a redefine action to text labels..
+- multiline text labels..
+- set the size of an angle, like set length for segments..
 - decouple the link between how an object is calc'ed and whether or
   not it is internal or drawn.  ( all combinations are possible,
   except that internal objects are never drawn ).  Internal objects
@@ -16,7 +19,7 @@
 - move stillPix into movingMode, so the other modes won't suffer from
    its overhead...
 - add full undo support for everything the user might do: moving is
-  done, the minor issues remain
+  done, along with some other things, some less important issues remain
 
 * hard :
 - figure out a way to allow the user to enable and disable certain
@@ -27,7 +30,7 @@
    behind ;) 
 - check "property's", like "is point x on line y"
 - "export to *".  We already have images and XFig files, i'd like to
-  add stuff like vector drawing formats, java applets ... :)
+  add stuff like java applets etc ... :)
 - figure out some cool way to "attach" a textlabel to an object.. 
 - koffice support ? 
 
