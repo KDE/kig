@@ -24,7 +24,7 @@ AC_ARG_ENABLE( kig-python-scripting,
   [  kig_enable_python_scripting=yes] )
 
 if test "x$kig_enable_python_scripting" != xno; then
-  kig_enable_python_scripting = "yes" # either yes or no..
+  kig_enable_python_scripting="yes" # either yes or no..
   KDE_CHECK_PYTHON( [], [[KIG_PYTHON_NOT_FOUND]] )
 fi
 
