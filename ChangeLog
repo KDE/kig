@@ -1,5 +1,7 @@
 2004-05-28  Dominique Devriese  <devriese@kde.org>
 
+	* Add a test file "testalotofeverything.kig"
+
 	* Add a Similitude transformation.
 
 	* Add a VectorEqualityTestType.

@@ -3,6 +3,18 @@
 - document mathematical i18n strings, so that the translators have a
    clue about how to translate them !
 
+- There is a pretty strange bug in kig when you use the accel keys.
+   Open Kig, type p to start constructing a point.  Click somewhere to
+   construct one.  Now click p again, and press escape to cancel the
+   construction.  It will not work, and you will have to construct as
+   many points as times you pressed escape ( or perhaps the times you
+   pressed esc square or sth like that ).  Anyway, this is due to how
+   Kig works with some strange Qt event loop stuff to make its modes
+   work, along with a strange way in kaccel of working.  I have a
+   patch against kdecore/kaccel.cpp that should fix it, but the real
+   fix is to get rid of the entire event loop stuff and think of a
+   better way to manage all this.
+
 * not too hard:
 
 - make the code in filters/ --enable-final compliant.
