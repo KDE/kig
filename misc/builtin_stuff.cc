@@ -155,6 +155,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_pointpolar" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      ConicPolarLineType::instance(),
+      I18N_NOOP( "Polar Line of a Point" ),
+      I18N_NOOP( "The polar line of a point with respect to a conic." ),
+      "polarline" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_linepolar" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;

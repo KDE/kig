@@ -235,14 +235,14 @@ ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigWidget& ) const
     calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry ) );
 }
 
-static const ArgParser::spec argsspec1c[] =
+static const ArgParser::spec argsspeccl[] =
 {
   { ObjectImp::ID_ConicImp, 1 },
   { ObjectImp::ID_LineImp, 1 }
 };
 
 ConicPolarPointType::ConicPolarPointType()
-  : ObjectType( "point", "ConicPolarPoint", argsspec1c, 2 )
+  : ObjectType( "point", "ConicPolarPoint", argsspeccl, 2 )
 {
 }
 
@@ -266,5 +266,39 @@ ObjectImp* ConicPolarPointType::calc( const Args& parents, const KigWidget& ) co
   bool valid = true;
   const Coordinate p = calcConicPolarPoint( c, l, valid );
   if ( valid ) return new PointImp( p );
+  else return new InvalidImp;
+}
+
+static const ArgParser::spec argsspeccp[] =
+{
+  { ObjectImp::ID_ConicImp, 1 },
+  { ObjectImp::ID_PointImp, 1 }
+};
+
+ConicPolarLineType::ConicPolarLineType()
+  : ObjectType( "conic", "ConicPolarLine", argsspeccp, 2 )
+{
+}
+
+ConicPolarLineType::~ConicPolarLineType()
+{
+}
+
+const ConicPolarLineType* ConicPolarLineType::instance()
+{
+  static const ConicPolarLineType t;
+  return &t;
+}
+
+ObjectImp* ConicPolarLineType::calc( const Args& parents, const KigWidget& ) const
+{
+  if ( parents.size() < 2 ) return new InvalidImp;
+  Args parsed = margsparser.parse( parents );
+  if ( parsed.size() < 2 || ! parsed[0] || ! parsed[1] ) return new InvalidImp;
+  const ConicCartesianData c = static_cast<const ConicImp*>( parsed[0] )->cartesianData();
+  const Coordinate p = static_cast<const PointImp*>( parsed[1] )->coordinate();
+  bool valid = true;
+  const LineData l = calcConicPolarLine( c, p, valid );
+  if ( valid ) return new LineImp( l );
   else return new InvalidImp;
 }
