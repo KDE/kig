@@ -1,3 +1,9 @@
+2004-11-08  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Scaling and stretching can be defined using two segments to obtain the
+        scaling ratio (as the ratio of their length).  Added in the Transformations menu,
+	not in the Transformations toolban, which is crowded enough already :-)
+
 2004-11-06  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Added osculating circle and evolute of a curve as a

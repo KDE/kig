@@ -86,6 +86,19 @@ public:
   bool isTransform() const;
 };
 
+class ScalingOverCenter2Type
+  : public ArgsParserObjectType
+{
+  ScalingOverCenter2Type();
+  ~ScalingOverCenter2Type();
+public:
+  static const ScalingOverCenter2Type* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+  bool isTransform() const;
+};
+
 class ScalingOverLineType
   : public ArgsParserObjectType
 {
@@ -93,6 +106,19 @@ class ScalingOverLineType
   ~ScalingOverLineType();
 public:
   static const ScalingOverLineType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+  bool isTransform() const;
+};
+
+class ScalingOverLine2Type
+  : public ArgsParserObjectType
+{
+  ScalingOverLine2Type();
+  ~ScalingOverLine2Type();
+public:
+  static const ScalingOverLine2Type* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 

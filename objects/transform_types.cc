@@ -206,6 +206,46 @@ ObjectImp* ScalingOverCenterType::calc( const Args& args, const KigDocument& ) c
   return args[0]->transform( Transformation::scalingOverPoint( ratio, center ) );
 }
 
+static const ArgsParser::spec argsspecScalingOverCenter2[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ),
+    I18N_NOOP( "Select the object to scale..." ), false },
+  { PointImp::stype(), I18N_NOOP( "Scale with this center" ),
+    I18N_NOOP( "Select the center point of the scaling..." ), false },
+  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ),
+    I18N_NOOP( "Select the first of two segments whose ratio is the factor of the scaling..." ), false },
+  { SegmentImp::stype(), I18N_NOOP( "...to the length of this other segment" ),
+    I18N_NOOP( "Select the second of two segments whose ratio is the factor of the scaling..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ScalingOverCenter2Type )
+
+ScalingOverCenter2Type::ScalingOverCenter2Type()
+  : ArgsParserObjectType( "ScalingOverCenter2", argsspecScalingOverCenter2, 4 )
+{
+}
+
+ScalingOverCenter2Type::~ScalingOverCenter2Type()
+{
+}
+
+const ScalingOverCenter2Type* ScalingOverCenter2Type::instance()
+{
+  static const ScalingOverCenter2Type t;
+  return &t;
+}
+
+ObjectImp* ScalingOverCenter2Type::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
+  double ratio = static_cast<const SegmentImp*>( args[3] )->length()/
+                 static_cast<const SegmentImp*>( args[2] )->length();
+
+  return args[0]->transform( Transformation::scalingOverPoint( ratio, center ) );
+}
+
 static const ArgsParser::spec argsspecScalingOverLine[] =
 {
   { ObjectImp::stype(), I18N_NOOP( "Scale this object" ), I18N_NOOP( "Select the object to scale" ), false },
@@ -236,6 +276,42 @@ ObjectImp* ScalingOverLineType::calc( const Args& args, const KigDocument& ) con
 
   LineData line = static_cast<const AbstractLineImp*>( args[1] )->data();
   double ratio = static_cast<const SegmentImp*>( args[2] )->length();
+
+  return args[0]->transform( Transformation::scalingOverLine( ratio, line ) );
+}
+
+static const ArgsParser::spec argsspecScalingOverLine2[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ), I18N_NOOP( "Select the object to scale" ), false },
+  { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ), I18N_NOOP( "Select the line to scale over" ), false },
+  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ), I18N_NOOP( "Select the first of two segments whose ratio is the factor for the scaling" ), false },
+  { SegmentImp::stype(), I18N_NOOP( "...to the length of this segment" ), I18N_NOOP( "Select the second of two segments whose ratio is the factor for the scaling" ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ScalingOverLine2Type )
+
+ScalingOverLine2Type::ScalingOverLine2Type()
+  : ArgsParserObjectType( "ScalingOverLine2", argsspecScalingOverLine2, 4 )
+{
+}
+
+ScalingOverLine2Type::~ScalingOverLine2Type()
+{
+}
+
+const ScalingOverLine2Type* ScalingOverLine2Type::instance()
+{
+  static const ScalingOverLine2Type t;
+  return &t;
+}
+
+ObjectImp* ScalingOverLine2Type::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  LineData line = static_cast<const AbstractLineImp*>( args[1] )->data();
+  double ratio = static_cast<const SegmentImp*>( args[3] )->length()/
+                 static_cast<const SegmentImp*>( args[2] )->length();
 
   return args[0]->transform( Transformation::scalingOverLine( ratio, line ) );
 }
@@ -495,7 +571,17 @@ const ObjectImpType* ScalingOverCenterType::resultId() const
   return ObjectImp::stype();
 }
 
+const ObjectImpType* ScalingOverCenter2Type::resultId() const
+{
+  return ObjectImp::stype();
+}
+
 const ObjectImpType* ScalingOverLineType::resultId() const
+{
+  return ObjectImp::stype();
+}
+
+const ObjectImpType* ScalingOverLine2Type::resultId() const
 {
   return ObjectImp::stype();
 }
@@ -550,7 +636,17 @@ bool ScalingOverCenterType::isTransform() const
   return true;
 }
 
+bool ScalingOverCenter2Type::isTransform() const
+{
+  return true;
+}
+
 bool ScalingOverLineType::isTransform() const
+{
+  return true;
+}
+
+bool ScalingOverLine2Type::isTransform() const
 {
   return true;
 }

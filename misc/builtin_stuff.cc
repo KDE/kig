@@ -369,6 +369,22 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline" ) );
 
     c = new SimpleObjectTypeConstructor(
+      ScalingOverCenter2Type::instance(),
+      I18N_NOOP( "Scale (ratio given by two segments)" ),
+      I18N_NOOP( "Scale an object over a point, by the ratio given by the length of two segments" ),
+      "scale" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_scalingovercenter2" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      ScalingOverLine2Type::instance(),
+      I18N_NOOP( "Scale over Line (ratio given by two segments)" ),
+      I18N_NOOP( "An object scaled over a line, by the ratio given by the length of two segments" ),
+      "stretch" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_scalingoverline2" ) );
+
+    c = new SimpleObjectTypeConstructor(
       SimilitudeType::instance(),
       I18N_NOOP( "Apply Similitude" ),
       I18N_NOOP( "Apply a similitude to an object ( the sequence of a scaling and rotation around a center )" ),
