@@ -178,3 +178,8 @@ bool Coordinate::valid() const
 {
   return abs( x ) != double_inf && abs( y ) != double_inf;
 }
+
+double operator*( const Coordinate& a, const Coordinate& b )
+{
+  return a.x * b.x + a.y * b.y;
+}
