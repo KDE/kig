@@ -56,6 +56,7 @@ public:
   Coordinate& operator+= ( const Coordinate& c );
   Coordinate& operator-= ( const Coordinate& c );
   Coordinate& operator*= ( const double r );
+  Coordinate& operator*= ( const int r );
   Coordinate& operator/= ( const double r );
 public:
   double x;

@@ -120,6 +120,13 @@ Coordinate& Coordinate::operator*=( const double r )
   return *this;
 };
 
+Coordinate& Coordinate::operator*=( const int r )
+{
+  x *= r;
+  y *= r;
+  return *this;
+};
+
 Coordinate& Coordinate::operator/=( const double r )
 {
   x /= r;
