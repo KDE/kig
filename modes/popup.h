@@ -21,47 +21,71 @@
 #ifndef KIG_POPUP_H
 #define KIG_POPUP_H
 
-#include <qpopupmenu.h>
+#include <kpopupmenu.h>
 
 #include "../objects/object.h"
 #include "../misc/objects.h"
 
 class KigDocument;
 class KigView;
+class NormalMode;
 
-class KigObjectsPopup
-  : public QPopupMenu
+class NormalModePopupObjects
+  : public KPopupMenu
 {
   Q_OBJECT
-public slots:
-  void select();
-  void unselect();
-  void hideObjects();
-  void startMoving();
+  QPoint mp;
+  KigDocument* mdoc;
+  KigView* mview;
+  Objects mobjs;
+  NormalMode* mmode;
+  QPopupMenu* mcolorpopup;
+  QPopupMenu* colorMenu( QWidget* parent );
+  const QColor* color( int );
+  QPopupMenu* constructMenu( QWidget* parent );
+  QPopupMenu* virtualMenu( QWidget* parent );
+public:
+  NormalModePopupObjects( KigDocument* doc, KigView* view,
+                          NormalMode* mode, const Objects& objs );
+  ~NormalModePopupObjects();
+protected slots:
+  void activated( int );
   void setColor( int );
-
-public:
-  KigObjectsPopup( KigDocument*, KigView*, const Objects& os );
-  ~KigObjectsPopup();
-  bool isValid() const { return mValid; };
-  int exec( const QPoint& p );
-protected:
-  KigDocument* mDoc;
-  KigView* mView;
-  Objects mObjs;
-  QPoint mStart;
-  bool mValid;
-  QPopupMenu* mColorPopup;
-  static const QColor* color( int i );
-  static QPopupMenu* colorMenu( QWidget* );
 };
 
-class KigDocumentPopup
-  : public QPopupMenu
-{
-  KigDocument* mDoc;
-public:
-  KigDocumentPopup( KigDocument* );
-};
+// class KigObjectsPopup
+//   : public QPopupMenu
+// {
+//   Q_OBJECT
+// public slots:
+//   void selectObjects();
+//   void unselectObjects();
+//   void hideObjects();
+//   void startMoving();
+//   void setColor( int );
+
+// public:
+//   KigObjectsPopup( KigDocument*, KigView*, const Objects& os );
+//   ~KigObjectsPopup();
+//   bool isValid() const { return mValid; };
+//   int exec( const QPoint& p );
+// protected:
+//   KigDocument* mDoc;
+//   KigView* mView;
+//   Objects mObjs;
+//   QPoint mStart;
+//   bool mValid;
+//   QPopupMenu* mColorPopup;
+//   static const QColor* color( int i );
+//   static QPopupMenu* colorMenu( QWidget* );
+// };
+
+// class KigDocumentPopup
+//   : public QPopupMenu
+// {
+//   KigDocument* mDoc;
+// public:
+//   KigDocumentPopup( KigDocument* );
+// };
 
 #endif

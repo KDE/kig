@@ -206,14 +206,14 @@ void NormalMode::rightClicked( QMouseEvent* e, KigView* v )
       clearSelection();
       selectObject( oco.front() );
     };
-    // show a popup menu...
-    KigObjectsPopup* m = popup( sos );
-    if( m ) m->exec( v->mapToGlobal( plc ) );
+//     // show a popup menu...
+//     KigObjectsPopup* m = popup( sos );
+//     if( m ) m->exec( v->mapToGlobal( plc ) );
   }
   else
   {
-    KigDocumentPopup* m = popup( mDoc );
-    if( m ) m->exec( v->mapToGlobal( plc ) );
+//     KigDocumentPopup* m = popup( mDoc );
+//     if( m ) m->exec( v->mapToGlobal( plc ) );
   };
 }
 
@@ -238,9 +238,9 @@ void NormalMode::mouseMoved( QMouseEvent* e, KigView* v )
     mDoc->emitStatusBarText( 0 );
     v->updateWidget();
   }
-  else 
+  else
   {
-    // the cursor is over an object, show object type next to cursor 
+    // the cursor is over an object, show object type next to cursor
     // and set statusbar text
 
     v->setCursor( KCursor::handCursor() );
@@ -250,9 +250,9 @@ void NormalMode::mouseMoved( QMouseEvent* e, KigView* v )
     mDoc->emitStatusBarText( i18n( "Select this %1" ).arg( typeName ) );     KigPainter p( v->screenInfo(), &v->curPix );
 
     // set the text next to the arrow cursor
-    QPoint point = e->pos(); 
+    QPoint point = e->pos();
     point.setX(point.x()+15);
-    
+
     p.drawTextStd( point, typeName );
     v->updateWidget( p.overlay() );
   };
@@ -309,15 +309,15 @@ void NormalMode::clearSelection()
   sos.clear();
 }
 
-KigObjectsPopup* NormalMode::popup( const Objects& )
-{
-  return 0;
-}
+// KigObjectsPopup* NormalMode::popup( const Objects& )
+// {
+//   return 0;
+// }
 
-KigDocumentPopup* NormalMode::popup( KigDocument* )
-{
-  return 0;
-}
+// KigDocumentPopup* NormalMode::popup( KigDocument* )
+// {
+//   return 0;
+// }
 
 void NormalMode::showHidden()
 {

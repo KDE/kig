@@ -26,8 +26,6 @@
 #include <qpoint.h>
 
 class Object;
-class KigObjectsPopup;
-class KigDocumentPopup;
 
 class NormalMode
   : public KigMode
@@ -46,7 +44,7 @@ public:
   void rightReleased( QMouseEvent*, KigView* );
 
   /**
-   * The user is just moving around his cursor, 
+   * The user is just moving around his cursor,
    * without having clicked anywhere...
    */
   void mouseMoved( QMouseEvent*, KigView* );
@@ -73,8 +71,8 @@ public:
   void unselectObject( Object* o );
   void clearSelection();
 
-  KigObjectsPopup* popup( const Objects& os );
-  KigDocumentPopup* popup( KigDocument* );
+//   KigObjectsPopup* popup( const Objects& os );
+//   KigDocumentPopup* popup( KigDocument* );
 protected:
   // selected objects...
   Objects sos;
