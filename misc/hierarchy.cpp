@@ -273,26 +273,30 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
   e.setAttribute("id", mid);
   // if we're only writing a reference to ourselves, this is all the
   // info we need...
-  if ( ref ) return;
-  // our typename
-  e.setAttribute("typeName", fullTypeName() );
-  // are we given/final ?
-  e.setAttribute("given", given?"true":"false");
-  e.setAttribute("final", final?"true":"false");
-  // given objects need not know their parents or params..
-  if ( given ) return;
-  // references to our parents
-  for( ElemList::const_iterator i = mparents.begin();
-       i != mparents.end(); ++i )
-    (*i)->saveXML(doc,e,true);
-  // save our params
-  for( pMap::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
+  if ( ! ref )
   {
-    QDomElement p = doc.createElement("param");
-    p.setAttribute("name", i->first);
-    QDomText t = doc.createTextNode(i->second);
-    p.appendChild(t);
-    e.appendChild(p);
+    // our typename
+    e.setAttribute("typeName", fullTypeName() );
+    // are we given/final ?
+    e.setAttribute("given", given?"true":"false");
+    e.setAttribute("final", final?"true":"false");
+    // given objects need not know their parents or params..
+    if ( ! given )
+    {
+      // references to our parents
+      for( ElemList::const_iterator i = mparents.begin();
+           i != mparents.end(); ++i )
+        (*i)->saveXML(doc,e,true);
+      // save our params
+      for( pMap::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
+      {
+        QDomElement p = doc.createElement("param");
+        p.setAttribute("name", i->first);
+        QDomText t = doc.createTextNode(i->second);
+        p.appendChild(t);
+        e.appendChild(p);
+      };
+    };
   };
   p.appendChild(e);
 };
