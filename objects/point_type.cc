@@ -312,15 +312,18 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
   const CircleImp* c = static_cast<const CircleImp*>( parents[0] );
-  const PointImp* p = static_cast<const PointImp*>( parents[1] );
+  const Coordinate& p = static_cast<const PointImp*>( parents[1] )->coordinate();
+
+  if ( !c->containsPoint( p, doc ) )
+    return new InvalidImp;
+
   const SegmentImp* s = static_cast<const SegmentImp*>( parents[2] );
-  double param = c->getParam( p->coordinate(), doc );
+  double param = c->getParam( p, doc );
   double measure = s->length();
   measure /= 2*c->radius()*M_PI;
   param += measure;
   while (param > 1) param -= 1;
 
-//  const Coordinate nc = static_cast<const CurveImp*>c->getPoint( param, doc );
   const Coordinate nc = c->getPoint( param, doc );
   if ( nc.valid() ) return new PointImp( nc );
   else return new InvalidImp;
@@ -330,8 +333,8 @@ static const ArgsParser::spec argsspecMeasureTransport[] =
 {
   { CircleImp::stype(), "Transport a measure on this circle",
     I18N_NOOP( "Select the circle on which to transport a measure..." ), true },
-  { PointImp::stype(), "Project this point onto the circle",
-    I18N_NOOP( "Select the point to project onto the circle..." ), false },
+  { PointImp::stype(), "Start transport from this point of the circle",
+    I18N_NOOP( "Select a point on the circle..." ), false },
   { SegmentImp::stype(), "Segment to transport",
     I18N_NOOP( "Select the segment to transport on the circle..." ), false }
 };
