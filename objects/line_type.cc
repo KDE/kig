@@ -225,7 +225,7 @@ void SegmentABType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
 
   MonitorDataObjects mon( getAllParents( parents ) );
   parents[1]->move( nb, d );
-  KigCommand* cd = new KigCommand( d, i18n( "Resize &Segment" ) );
+  KigCommand* cd = new KigCommand( d, i18n( "Resize Segment" ) );
   mon.finish( cd );
   d.history()->addCommand( cd );
 }
