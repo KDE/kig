@@ -1,9 +1,9 @@
 <tip category="Kig">
 <html>
-<p>One of the most powerful tools in Kig are the menu's that you can
+<p>One of the most powerful tools in Kig are the menus that you can
 enter by right-clicking on an object, or on some empty space in the
-document.  You can use it to give objects names, change their colors,
-and line styles and lots of other interesting things.</p>
+document.  You can use them to give objects names, change their colors
+and line styles, and lots of other interesting things.</p>
 </html>
 </tip>
 
@@ -17,8 +17,8 @@ button</em>.</p>
 
 <tip category="Kig">
 <html>
-<p>Kig can open several file format: its files (<code>.kig</code> files),
-<em>KGeo</em> files, <em>KSeg</em> files and, partially, <em>Dr. Geo</em>
+<p>Kig can open several file formats: its files (<code>.kig</code> files),
+<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>
 files.</p>
 </html>
 </tip>
@@ -26,6 +26,6 @@ files.</p>
 <tip category="Kig">
 <html>
 <p>Kig has more than 40 objects and 10 trasformations you can construct and use
-in your documents! Open the <em>Objects</em> menu to know them all.</p>
+in your documents: open the <em>Objects</em> menu to see them all.</p>
 </html>
 </tip>
