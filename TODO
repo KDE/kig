@@ -1,6 +1,7 @@
 * not too hard:
 
-- make it possible to not show the coordinate grid
+- make it possible to not show the coordinate grid, and to customize
+   it in various ways.
 
 - fix ObjectHierarchy::resultDoesNotDependOnGiven to check whether
    *all* the result objects depend on the given objects.
