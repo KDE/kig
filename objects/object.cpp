@@ -29,9 +29,10 @@
 #include "macro.h"
 
 Object::Object()
-  : selected(false), shown (true), complete (false)
+  : selected(false), shown (true), complete (false), valid(true)
 {
 };
+
 void Object::setSelected(bool in)
 {
   selected = in;

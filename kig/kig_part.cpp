@@ -186,6 +186,14 @@ void KigDocument::setupTypes()
 	   i18n("Construct a line through a point, and parallel to "
 		"another line or segment"),
 	   0));
+  addType(new TType<LineRadical>
+	  (this,
+	   "radical",
+	   i18n("Radical Line"),
+	   i18n("Construct a \"Radical Line\": a line through the "
+		"intersections of two circles.  This is also defined for "
+		"non-intersecting circles..."),
+	   0));
   // circles
   addType(new TType<CircleBCP>
 	  (this,

@@ -73,11 +73,11 @@ class Object
   static ConstrainedPoint* toConstrainedPoint(Object* o);
 
   static const Point* toPoint(const Object* o);
-  static  const Segment* toSegment(const Object* o);
-  static  const Line* toLine(const Object* o);
-  static  const Circle* toCircle(const Object* o);
-  static  const Curve* toCurve(const Object* o);
-  static  const ConstrainedPoint* toConstrainedPoint(const Object* o);
+  static const Segment* toSegment(const Object* o);
+  static const Line* toLine(const Object* o);
+  static const Circle* toCircle(const Object* o);
+  static const Curve* toCurve(const Object* o);
+  static const ConstrainedPoint* toConstrainedPoint(const Object* o);
 
   // type identification:
   // there are 3x2 functions: you don't need all of them in your
@@ -163,6 +163,18 @@ class Object
   bool complete;
  public:
   bool getComplete() const { return complete; };
+ protected:
+  // an object is valid if it's in a state where its position and such
+  // is defined: example: the intersection of a line and a circle:
+  // this can be defined and undefined ( unless you start playing with
+  // complex numbers, which is useless to us... )
+  // objects are unvalid if
+  // 1 its parents are unvalid..
+  // 2 the object itself is unvalid due to its definition...
+  // you should check for these cases in your calc() routine...
+  bool valid;
+ public:
+  bool getValid() const { return valid; };
  protected:
   // objects we know, and that know us: if they move, we move too, and vice versa
   Objects children;

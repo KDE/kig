@@ -47,6 +47,14 @@ public:
   inline Coordinate operator- () const;
   inline double distance ( const Coordinate& p ) const;
   inline double length () const;
+  inline double squareLength() const;
+  // returns a vector which is orthogonal on this vector
+  // this relation always holds:
+  // <pre>
+  // Coordinate a = ...;
+  // assert( a*a.orthogonal() ) == -1;
+  // </pre>
+  inline Coordinate orthogonal() const;
   inline bool operator== ( const Coordinate& p ) const;
   inline bool operator!=( const Coordinate& p ) const;
   inline Coordinate round() const;
@@ -157,6 +165,16 @@ double Coordinate::distance( const Coordinate& p ) const
 double Coordinate::length() const
 {
   return sqrt(x*x+y*y);
+};
+
+double Coordinate::squareLength() const
+{
+  return x*x+y*y;
+};
+
+Coordinate Coordinate::orthogonal() const
+{
+  return Coordinate( -y, x );
 };
 
 bool Coordinate::operator==( const Coordinate& p ) const

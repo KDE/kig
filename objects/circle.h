@@ -42,6 +42,9 @@ class Circle
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
+  Coordinate getCenter() const { return qpc; };
+  double getRadius() const { return radius; };
+  
 protected:
   Coordinate qpc;
   double radius;

@@ -18,11 +18,9 @@
  USA
 **/
 
-
 #include "line.h"
-
 #include "segment.h"
-#include "intersection.h"
+#include "circle.h"
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -318,6 +316,7 @@ bool LineParallel::selectArg(Object* o)
       assert (!line);
       line = l;
     };
+  // or even a point...
   Point* p;
   if ((p = toPoint(o)))
     {
@@ -407,4 +406,97 @@ LinePerpend::LinePerpend(const LinePerpend& l)
   point->addChild(this);
   complete = l.complete;
   if (complete) calc();
+}
+
+Objects LineRadical::getParents() const
+{
+  Objects objs;
+  if( c1 ) objs.append( c1 );
+  if( c2 ) objs.append( c2 );
+  return objs;
+}
+
+LineRadical::LineRadical(const LineRadical& l)
+  : Line()
+{
+  c1 = l.c1;
+  if( c1 ) c1->addChild( this );
+  c2 = l.c2;
+  if( c2 ) c2->addChild( this );
+  complete = l.complete;
+  calc();
+}
+
+QString LineRadical::wantArg( const Object* o ) const
+{
+  if( toCircle( o ) && !c1 || !c2 ) return i18n("Radical Line of this circle");
+  return QString::null;
+}
+
+bool LineRadical::selectArg( Object* o )
+{
+  assert( !c2 );
+  Circle* c = toCircle( o );
+  assert( c );
+  if( !c1 ) c1 = c; else c2 = c;
+  o->addChild( this );
+  complete = c2;
+  if( complete ) calc();
+  return complete;
+}
+
+void LineRadical::drawPrelim( KigPainter&, const Coordinate& ) const
+{
+  return;
+}
+
+void LineRadical::calc()
+{
+  if( !c1 && !c2 )
+    {
+      assert( complete == false );
+      return;
+    };
+
+  Coordinate ce1, ce2, direc, startpoint;
+  double r1sq, r2sq, dsq, lambda;
+
+  ce1 = c1->getCenter();
+  ce2 = c2->getCenter();
+  // the radical line is not defined if the centers are the same...
+  if( ce1 == ce2 || !c1->getValid() || !c2->getValid() )
+    {
+      valid = false;
+      return;
+    }
+  else valid = true; // else always defined...
+
+  r1sq = c1->getRadius();
+  r1sq = r1sq * r1sq;
+  r2sq = c2->getRadius();
+  r2sq = r2sq * r2sq;
+
+  direc = ce2 - ce1;
+  startpoint = (ce1 + ce2)/2;
+
+  dsq = direc.squareLength();
+  if (dsq == 0)
+    {
+      lambda = 0.0;
+    }
+  else
+    {
+      lambda = (r1sq - r2sq) / dsq / 2;
+    }
+  direc *= lambda;
+  startpoint = startpoint + direc;
+  //  startCoords.coords = startpoint;
+  p1 = startpoint;
+  //  endCoords.coords = startpoint + direc.orthogonal();
+  p2 = startpoint + direc.orthogonal();
+}
+
+LineRadical::LineRadical()
+  : c1( 0 ), c2( 0 )
+{
 }

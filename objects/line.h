@@ -168,4 +168,43 @@ protected:
   Point* point;
 
 };
+
+/**
+ * implements a radical line...
+ * Maurizio Paolini wrote this as a patch for KGeo, after which i
+ * ported it to Kig..
+ * @author Maurizio Paolini
+ */
+class LineRadical
+  : public Line
+{
+public:
+  LineRadical();
+  ~LineRadical() {};
+  LineRadical (const LineRadical& l);
+  LineRadical* copy() { return new LineRadical (*this); };
+
+  virtual QCString vFullTypeName() const { return sFullTypeName(); };
+  static QCString sFullTypeName() { return "LineRadical"; };
+
+  // arguments
+  QString wantArg ( const Object* ) const;
+  bool selectArg (Object* which);
+  Objects getParents() const;
+//   void unselectArg (Object* which);
+  void drawPrelim ( KigPainter&, const Coordinate& ) const;
+
+  // moving
+  // we don't move unless our parents do...
+  void startMove(const Coordinate&) {};
+  void moveTo(const Coordinate&) {};
+  void stopMove() {};
+  //  void cancelMove() {};
+
+  void calc();
+
+protected:
+  Circle* c1;
+  Circle* c2;
+};
 #endif
