@@ -5,7 +5,10 @@
 
 2004-06-14  Pino Toscano <toscano.pino@tiscali.it>
 
-       * Add arc-line intersection type.
+	* A new tab in the Print dialog allow the user to choose whether
+	to print grid and/or axes.
+ 
+	* Add arc-line intersection type.
 
 2004-06-13  Pino Toscano <toscano.pino@tiscali.it>
 

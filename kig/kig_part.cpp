@@ -56,14 +56,18 @@
 #include <kmainwindow.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
-#include <kparts/genericfactory.h>
 #include <kprinter.h>
 #include <kstandarddirs.h>
 #include <kstdaction.h>
 #include <ktoolbar.h>
+#include <kparts/genericfactory.h>
+#include <kdeprint/kprintdialogpage.h>
 
+#include <qcheckbox.h>
 #include <qfile.h>
+#include <qlayout.h>
 #include <qpaintdevicemetrics.h>
+#include <qsizepolicy.h>
 #include <qtimer.h>
 #if QT_VERSION >= 0x030100
 #include <qeventloop.h>
@@ -104,6 +108,65 @@ void SetCoordinateSystemAction::slotActivated( int index )
   assert( sys );
   md.history()->addCommand( KigCommand::changeCoordSystemCommand( md, sys ) );
   setCurrentItem( index );
+}
+
+class KigPrintDialogPage
+  : public KPrintDialogPage
+{
+//  Q_OBJECT
+
+public:
+  KigPrintDialogPage( QWidget* parent = 0, const char* name = 0 );
+  ~KigPrintDialogPage();
+
+  void getOptions( QMap<QString,QString>& opts, bool );
+  void setOptions( const QMap<QString,QString>& opts );
+  bool isValid( QString& );
+
+private:
+  QCheckBox *showgrid;
+  QCheckBox *showaxes;
+};
+
+KigPrintDialogPage::KigPrintDialogPage( QWidget* parent, const char* name )
+ : KPrintDialogPage( parent, name )
+{
+  setTitle( i18n( "Kig Options" ) );
+
+ QVBoxLayout* vl = new QVBoxLayout( this, 0 , 11 );
+
+ showgrid = new QCheckBox( i18n( "Show grid" ), this );
+ vl->addWidget( showgrid );
+
+ showaxes = new QCheckBox( i18n( "Show axes" ), this );
+ vl->addWidget( showaxes );
+
+ vl->addItem( new QSpacerItem( 10, 10, QSizePolicy::Fixed, QSizePolicy::Expanding ) );
+}
+
+KigPrintDialogPage::~KigPrintDialogPage()
+{
+}
+
+void KigPrintDialogPage::getOptions( QMap< QString, QString >& opts, bool )
+{
+  opts[ "kde-kig-showgrid" ] = QString::number( showgrid->isChecked() );
+  opts[ "kde-kig-showaxes" ] = QString::number( showaxes->isChecked() );
+}
+
+void KigPrintDialogPage::setOptions( const QMap< QString, QString >& opts )
+{
+  QString tmp = opts[ "kde-kig-showgrid" ];
+  bool bt = ( tmp != "0" );
+  showgrid->setChecked( bt );
+  tmp = opts[ "kde-kig-showaxes" ];
+  bt = ( tmp != "0" );
+  showaxes->setChecked( bt );
+}
+
+bool KigPrintDialogPage::isValid( QString& )
+{
+  return true;
 }
 
 KigPart::KigPart( QWidget *parentWidget, const char *,
@@ -712,6 +775,11 @@ void KigPart::filePrintPreview()
 void KigPart::filePrint()
 {
   KPrinter printer;
+  KigPrintDialogPage* kp = new KigPrintDialogPage();
+  printer.addDialogPage( kp );
+  printer.setFullPage( true );
+  printer.setOption( "kde-kig-showgrid", QString::number( document().grid() ) );
+  printer.setOption( "kde-kig-showaxes", QString::number( document().axes() ) );
   if ( printer.setup( m_widget, i18n("Print Geometry") ) )
   {
     doPrint( printer );
@@ -742,7 +810,19 @@ void KigPart::doPrint( KPrinter& printer )
   ScreenInfo si( rect, qrect );
   KigPainter painter( si, &printer, document() );
   painter.setWholeWinOverlay();
-  painter.drawGrid( document().coordinateSystem(), document().grid(), document().axes() );
+  bool sg = true;
+  bool sa = true;
+  if ( !printer.previewOnly() )
+  {
+    sg = ( printer.option( "kde-kig-showgrid" ) != "0" );
+    sa = ( printer.option( "kde-kig-showaxes" ) != "0" );
+  }
+  else
+  {
+    sg = document().grid();
+    sg = document().axes();
+  }
+  painter.drawGrid( document().coordinateSystem(), sg, sa );
   painter.drawObjects( document().objects(), false );
 }
 
