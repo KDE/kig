@@ -128,7 +128,7 @@ ArgParser::ArgParser( const std::vector<spec>& args )
     mwantedobjscount += margs[i].number;
 }
 
-ArgParser ArgParser::without( int type )
+ArgParser ArgParser::without( int type ) const
 {
   std::vector<spec> ret;
   ret.reserve( margs.size() - 1 );

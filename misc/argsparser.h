@@ -54,7 +54,7 @@ public:
   ArgParser( const std::vector<spec>& args );
   // returns a new ArgParser that wants the same args, except for the
   // ones of the given type..
-  ArgParser without( int type );
+  ArgParser without( int type ) const;
   int check( const Objects& os ) const;
   Args parse( const Args& os ) const;
   Objects parse( const Objects& os ) const;
