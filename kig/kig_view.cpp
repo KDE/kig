@@ -66,7 +66,7 @@ KigWidget::KigWidget( KigDocument* doc,
   setBackgroundMode( Qt::NoBackground );
   setMouseTracking(true);
 
-  curPix.resize(size());
+  curPix.resize( size() );
   stillPix.resize( size() );
 };
 
@@ -185,14 +185,6 @@ void KigWidget::updateCurPix( const std::vector<QRect>& ol )
 void KigWidget::recenterScreen()
 {
   msi.setShownRect( matchScreenShape(mdocument->suggestedRect()) );
-//   kdDebug() << k_funcinfo << endl
-//  // 	    << "(0,0): " << toScreen(Coordinate(0,0)) << endl
-// // 	    << "(-3,-2): " << toScreen( Coordinate(-3,-2)) << endl
-// // 	    << "(3,2): " << toScreen( Coordinate(3,2)) << endl;
-//  	    << "showingRect:" << showingRect() << endl
-//  	    << "fromScreen(...): " << fromScreen(QRect(QPoint(0,0), size()))
-//  	    << endl;
-  redrawScreen();
   updateScrollBars();
 }
 
@@ -323,7 +315,8 @@ KigView::KigView( KigDocument* doc,
   setupActions();
 
   mrealwidget->recenterScreen();
-  mrealwidget->redrawScreen( false );
+  // don't draw anything here, since the window size will still be wrong..
+  //   mrealwidget->redrawScreen( false );
 }
 
 void KigView::updateScrollBars()
