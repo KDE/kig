@@ -254,6 +254,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
     };
     assert( object );
     ret[i] = object;
+    object->calc( todoc );
   };
 
   // selection groups ( we ignore them, but we pretend to read them
