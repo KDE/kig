@@ -115,7 +115,7 @@ std::vector<ObjectHolder*> ConicRadicalConstructor::build( const std::vector<Obj
 static const struct ArgsParser::spec argsspecpp[] =
 {
   { PointImp::stype(), I18N_NOOP( "Moving Point" ),
-    I18N_NOOP( "Select the moving point, that will be moved around while drawing the locus..." ), false },
+    I18N_NOOP( "Select the moving point, which will be moved around while drawing the locus..." ), false },
   { PointImp::stype(), I18N_NOOP( "Following Point" ),
     I18N_NOOP( "Select the following point, whose locations the locus will be drawn through..." ), true }
 };

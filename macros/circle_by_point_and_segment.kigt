@@ -12,7 +12,7 @@
    </input>
    <input requirement="segment" id="2">
     <UseText>Construct a circle with the radius given by the length of this segment</UseText>
-    <SelectStatement>Select the segment of which the length gives the radius of the new circle...</SelectStatement>
+    <SelectStatement>Select the segment whose length gives the radius of the new circle...</SelectStatement>
    </input>
    <intermediate action="fetch-property" property="length" id="3" >
     <arg>2</arg>
