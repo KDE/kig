@@ -1,3 +1,8 @@
+2003-07-27  Dominique Devriese  <devriese@kde.org>
+
+	* add documentation about attaching text labels and locuses to the
+	index.docbook file
+
 2003-07-23  Dominique Devriese  <devriese@kde.org>
 
 	* add a nifty python scripting example that shows the graph of a
