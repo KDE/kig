@@ -384,6 +384,53 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     o.setType( t );
     return true;
   }
+  else if ( type == "TextLabel" )
+  {
+    bool ok = true;
+    Objects parents = o.parents();
+    Objects propos;
+    Coordinate c;
+    QString text;
+    for ( QDomElement el = e.firstChild().toElement(); ! el.isNull();
+          el = el.nextSibling().toElement() )
+    {
+      if ( el.tagName() == "param" )
+      {
+        QString name = el.attribute( "name" );
+        if ( name == "coordinate-x" )
+        {
+          c.x = el.text().toDouble( &ok );
+          if ( ! ok ) return false;
+        }
+        else if ( name == "coordinate-y" )
+        {
+          c.y = el.text().toDouble( &ok );
+          if ( ! ok ) return false;
+        }
+        else if ( name.left( 20 ) == "property-for-object-" )
+        {
+          int nparent = name.mid( 20 ).toInt( &ok );
+          if( ! ok ) return false;
+          QCString prop = translateOldKigPropertyName( el.text() );
+          int propid = parents[nparent]->propertiesInternalNames().findIndex( prop );
+          if ( propid == -1 ) return false;
+          propos.push_back( new PropertyObject( parents[nparent], propid ) );
+        }
+        else if ( name == "text" )
+          text = el.text();
+      };
+    };
+    propos.calc( kdoc );
+    copy( propos.begin(), propos.end(), back_inserter( dataos ) );
+    Objects labelos = ObjectFactory::instance()->label( text, c, false, propos );
+    labelos.calc( kdoc );
+    copy( labelos.begin(), labelos.end() - 1, back_inserter( dataos ) );
+    RealObject* label = static_cast<RealObject*>( labelos.back() );
+    o.setType( label->type() );
+    o.setParents( label->parents(), kdoc );
+    delete label;
+    return true;
+  }
   else
   {
     const ObjectType* t = 0;
@@ -411,6 +458,8 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
       t = ConicPolarPointType::instance();
     else if ( type == "RotatedPoint" )
       t = RotationType::instance();
+    else if ( type == "Segment" )
+      t = SegmentABType::instance();
     else if ( type == "TranslatedPoint" )
       t = TranslatedType::instance();
     else
