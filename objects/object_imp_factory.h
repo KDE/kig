@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef OBJECT_IMP_FACTORY_H
-#define OBJECT_IMP_FACTORY_H
+#ifndef KIG_OBJECTS_OBJECT_IMP_FACTORY_H
+#define KIG_OBJECTS_OBJECT_IMP_FACTORY_H
 
 #include "common.h"
 
