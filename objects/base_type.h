@@ -28,7 +28,7 @@ class ObjectABType
 {
   static const struct ArgParser::spec argsspec[];
 protected:
-  ObjectABType( const char* basetypename, const char* fulltypename );
+  ObjectABType( const char* fulltypename );
   ~ObjectABType();
   ObjectImp* calc( const Args& args ) const;
   bool canMove() const;
@@ -42,7 +42,7 @@ class ObjectABCType
 {
   static const struct ArgParser::spec argsspec[];
 protected:
-  ObjectABCType( const char* basetypename, const char* fulltypename );
+  ObjectABCType( const char* fulltypename );
   ~ObjectABCType();
 };
 
@@ -51,7 +51,7 @@ class ObjectLPType
 {
   static const struct ArgParser::spec argsspec[];
 protected:
-  ObjectLPType( const char* basename, const char* fullname );
+  ObjectLPType( const char* fullname );
   ~ObjectLPType();
 public:
   ObjectImp* calc( const Args& args ) const;

@@ -46,7 +46,9 @@ public:
   bool inherits( int typeID ) const;
 
   ObjectImp* transform( const Transformation& ) const;
+
   PointImp* copy() const;
+  const char* baseName() const;
 };
 
 #endif

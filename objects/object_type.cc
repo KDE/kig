@@ -20,16 +20,6 @@
 
 #include "../misc/i18n.h"
 
-const QCString ObjectType::baseName() const
-{
-  return mbasetypename;
-}
-
-const QString ObjectType::translatedBaseName() const
-{
-  return i18n( mbasetypename );
-}
-
 const char* ObjectType::fullName() const
 {
   return mfulltypename;
@@ -39,11 +29,10 @@ ObjectType::~ObjectType()
 {
 }
 
-ObjectType::ObjectType( const char basetypename[],
-                        const char fulltypename[],
+ObjectType::ObjectType( const char fulltypename[],
                         const struct ArgParser::spec argsspec[],
                         int n )
-  : mbasetypename( basetypename ), mfulltypename( fulltypename ),
+  : mfulltypename( fulltypename ),
     margsparser( argsspec, n )
 {
 }

@@ -330,3 +330,18 @@ LineImp::LineImp( const LineData& d )
   : AbstractLineImp( d )
 {
 }
+
+const char* SegmentImp::baseName() const
+{
+  return I18N_NOOP( "segment" );
+}
+
+const char* RayImp::baseName() const
+{
+  return I18N_NOOP( "ray" );
+}
+
+const char* LineImp::baseName() const
+{
+  return I18N_NOOP( "line" );
+}

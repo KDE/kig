@@ -83,12 +83,12 @@ void RealObject::reset( const ObjectType* t, const Objects& parents )
 
 QCString RealObject::baseTypeName() const
 {
-  return mtype->baseName();
+  return mimp->baseName();
 }
 
 QString RealObject::translatedBaseTypeName() const
 {
-  return mtype->translatedBaseName();
+  return mimp->translatedBaseName();
 }
 
 void RealObject::setImp( ObjectImp* i )

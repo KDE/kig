@@ -93,3 +93,8 @@ void PointImp::setCoordinate( const Coordinate& c )
 {
   mc = c;
 }
+
+const char* PointImp::baseName() const
+{
+  return I18N_NOOP( "point" );
+}

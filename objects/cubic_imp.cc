@@ -27,6 +27,7 @@
 #include "../misc/common.h"
 
 #include <math.h>
+#include <klocale.h>
 
 CubicImp::CubicImp( const CubicCartesianData& data )
   : CurveImp(), mdata( data )
@@ -301,4 +302,9 @@ const Property CubicImp::property( uint which, const KigWidget& w ) const
 const CubicCartesianData CubicImp::data() const
 {
   return mdata;
+}
+
+const char* CubicImp::baseName() const
+{
+  return I18N_NOOP( "cubic" );
 }

@@ -45,6 +45,7 @@ public:
 
   bool inherits( int type ) const;
   ObjectImp* copy() const;
+  const char* baseName() const;
 
   double getParam( const Coordinate& point ) const;
   const Coordinate getPoint( double param ) const;

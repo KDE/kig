@@ -32,6 +32,7 @@ protected:
   ~ConicImp();
 public:
   bool inherits( int typeID ) const;
+  const char* baseName() const;
 
   ObjectImp* transform( const Transformation& ) const;
 

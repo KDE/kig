@@ -30,8 +30,8 @@ const struct ArgParser::spec ObjectABType::argsspec[] =
   { ObjectImp::ID_PointImp, 2 }
 };
 
-ObjectABType::ObjectABType( const char* basetypename, const char* fulltypename )
-  : ObjectType( basetypename, fulltypename, argsspec, 1 )
+ObjectABType::ObjectABType( const char* fulltypename )
+  : ObjectType( fulltypename, argsspec, 1 )
 {
 }
 
@@ -70,8 +70,8 @@ const struct ArgParser::spec ObjectABCType::argsspec[] =
   { ObjectImp::ID_PointImp, 3 }
 };
 
-ObjectABCType::ObjectABCType( const char* basetypename, const char* fulltypename )
-  : ObjectType( basetypename, fulltypename, argsspec, 1 )
+ObjectABCType::ObjectABCType( const char* fulltypename )
+  : ObjectType( fulltypename, argsspec, 1 )
 {
 }
 
@@ -85,8 +85,8 @@ const struct ArgParser::spec ObjectLPType::argsspec[] =
   { ObjectImp::ID_PointImp, 1 }
 };
 
-ObjectLPType::ObjectLPType( const char* basename, const char* fullname )
-  : ObjectType( basename, fullname, argsspec, 2 )
+ObjectLPType::ObjectLPType( const char* fullname )
+  : ObjectType( fullname, argsspec, 2 )
 {
 }
 

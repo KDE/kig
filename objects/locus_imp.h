@@ -32,6 +32,7 @@ public:
   LocusImp( const CurveImp*, const ObjectHierarchy& );
   ~LocusImp();
   LocusImp* copy() const;
+  const char* baseName() const;
 
   bool inherits( int type ) const;
 

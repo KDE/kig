@@ -199,3 +199,8 @@ CircleImp* CircleImp::copy() const
 {
   return new CircleImp( mcenter, mradius );
 }
+
+const char* CircleImp::baseName() const
+{
+  return I18N_NOOP( "circle" );
+}

@@ -33,7 +33,7 @@ static const ArgParser::spec argsspeccl[] =
 };
 
 ConicLineIntersectionType::ConicLineIntersectionType()
-  : ObjectType( "point", "ConicLineIntersection",
+  : ObjectType( "ConicLineIntersection",
                 argsspeccl, 3 )
 {
 }
@@ -88,7 +88,7 @@ static const ArgParser::spec argsspecll[] =
 };
 
 LineLineIntersectionType::LineLineIntersectionType()
-  : ObjectType( "point", "LineLineIntersection",
+  : ObjectType( "LineLineIntersection",
                 argsspecll, 1 )
 {
 }
@@ -123,7 +123,7 @@ static const ArgParser::spec argsspeclcu[] =
 };
 
 LineCubicIntersectionType::LineCubicIntersectionType()
-  : ObjectType( "point", "LineCubicIntersection",
+  : ObjectType( "LineCubicIntersection",
                 argsspeclcu, 3 )
 {
 }

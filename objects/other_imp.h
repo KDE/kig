@@ -46,6 +46,7 @@ public:
 
   bool inherits( int typeID ) const;
   ObjectImp* copy() const;
+  const char* baseName() const;
 
   const double size() const;
 };
@@ -72,6 +73,7 @@ public:
 
   bool inherits( int typeID ) const;
   ObjectImp* copy() const;
+  const char* baseName() const;
 
   const Coordinate a();
   const Coordinate b();

@@ -72,6 +72,9 @@ public:
   virtual bool inherits( int typeID ) const = 0;
 
   virtual ObjectImp* copy() const = 0;
+
+  virtual const char* baseName() const = 0;
+  QString translatedBaseName() const;
 };
 
 #endif

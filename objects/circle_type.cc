@@ -23,7 +23,7 @@
 #include "point_imp.h"
 
 CircleBCPType::CircleBCPType()
-  : ObjectABType( "circle", "CircleBCP" )
+  : ObjectABType( "CircleBCP" )
 {
 }
 
@@ -49,7 +49,7 @@ const CircleBTPType* CircleBTPType::instance()
 }
 
 CircleBTPType::CircleBTPType()
-  : ObjectABCType( "circle", "CircleBTP" )
+  : ObjectABCType( "CircleBTP" )
 {
 }
 

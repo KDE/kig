@@ -20,6 +20,8 @@
 
 #include "../misc/coordinate.h"
 
+#include <klocale.h>
+
 ObjectImp::ObjectImp()
 {
 }
@@ -36,4 +38,9 @@ bool ObjectImp::valid() const
 bool ObjectImp::inherits( int ) const
 {
   return false;
+}
+
+QString ObjectImp::translatedBaseName() const
+{
+  return i18n( baseName() );
 }

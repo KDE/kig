@@ -180,3 +180,13 @@ const Coordinate VectorImp::dir()
 {
   return mb - ma;
 }
+
+const char* AngleImp::baseName() const
+{
+  return I18N_NOOP( "angle" );
+}
+
+const char* VectorImp::baseName() const
+{
+  return I18N_NOOP( "vector" );
+}

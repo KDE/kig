@@ -28,7 +28,7 @@ static const struct ArgParser::spec argsspec9p[] =
 };
 
 CubicB9PType::CubicB9PType()
-  : ObjectType( "cubic", "CubicB9P", argsspec9p, 1 )
+  : ObjectType( "CubicB9P", argsspec9p, 1 )
 {
 }
 
@@ -61,7 +61,7 @@ static const ArgParser::spec argsspec6p[] =
 };
 
 CubicNodeB6PType::CubicNodeB6PType()
-  : ObjectType( "cubic", "CubicNodeB6P", argsspec6p, 1 )
+  : ObjectType( "CubicNodeB6P", argsspec6p, 1 )
 {
 }
 

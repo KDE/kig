@@ -32,7 +32,7 @@ static const struct ArgParser::spec argsspec5p[] =
 };
 
 ConicB5PType::ConicB5PType()
-  : ObjectType( "conic", "ConicB5P", argsspec5p, 1 )
+  : ObjectType( "ConicB5P", argsspec5p, 1 )
 {
 }
 
@@ -67,7 +67,7 @@ static const ArgParser::spec argsspecllp[] =
 };
 
 ConicBAAPType::ConicBAAPType()
-  : ObjectType( "conic", "ConicBAAP", argsspecllp, 2 )
+  : ObjectType( "ConicBAAP", argsspecllp, 2 )
 {
 }
 
@@ -108,7 +108,7 @@ ObjectImp* ConicBFFPType::calc( const Args& parents ) const
 }
 
 ConicBFFPType::ConicBFFPType( const char* fullname )
-  : ObjectABCType( "conic", fullname )
+  : ObjectABCType( fullname )
 {
 }
 
@@ -169,7 +169,7 @@ static const struct ArgParser::spec argsspeclpp[] =
 };
 
 ConicBDFPType::ConicBDFPType()
-  : ObjectType( "conic", "ConicBDFP", argsspeclpp, 2 )
+  : ObjectType( "ConicBDFP", argsspeclpp, 2 )
 {
 }
 
@@ -207,7 +207,7 @@ ObjectImp* ConicBDFPType::calc( const Args& parents ) const
 }
 
 ParabolaBTPType::ParabolaBTPType()
-  : ObjectABCType( "conic", "ParabolaBTP" )
+  : ObjectABCType( "ParabolaBTP" )
 {
 }
 
@@ -240,7 +240,7 @@ static const ArgParser::spec argsspeccl[] =
 };
 
 ConicPolarPointType::ConicPolarPointType()
-  : ObjectType( "point", "ConicPolarPoint", argsspeccl, 2 )
+  : ObjectType( "ConicPolarPoint", argsspeccl, 2 )
 {
 }
 
@@ -274,7 +274,7 @@ static const ArgParser::spec argsspeccp[] =
 };
 
 ConicPolarLineType::ConicPolarLineType()
-  : ObjectType( "conic", "ConicPolarLine", argsspeccp, 2 )
+  : ObjectType( "ConicPolarLine", argsspeccp, 2 )
 {
 }
 
@@ -307,7 +307,7 @@ static const ArgParser::spec argsspecc[] =
 };
 
 ConicDirectrixType::ConicDirectrixType()
-  : ObjectType( "line", "ConicDirectrix", argsspecc, 1 )
+  : ObjectType( "ConicDirectrix", argsspecc, 1 )
 {
 }
 
@@ -343,7 +343,7 @@ static const ArgParser::spec argsspec4p[] =
 };
 
 EquilateralHyperbolaB4PType::EquilateralHyperbolaB4PType()
-  : ObjectType( "conic", "EquilateralHyperbolaB4P", argsspec4p, 1 )
+  : ObjectType( "EquilateralHyperbolaB4P", argsspec4p, 1 )
 {
 }
 
@@ -367,7 +367,7 @@ ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents ) const
 }
 
 ParabolaBDPType::ParabolaBDPType()
-  : ObjectLPType( "conic", "ParabolaBDP" )
+  : ObjectLPType( "ParabolaBDP" )
 {
 }
 
@@ -404,7 +404,7 @@ static const ArgParser::spec argsspecci[] =
 };
 
 ConicAsymptoteType::ConicAsymptoteType()
-  : ObjectType( "line", "ConicAsymptote", argsspecci, 2 )
+  : ObjectType( "ConicAsymptote", argsspecci, 2 )
 {
 }
 
@@ -439,7 +439,7 @@ static const ArgParser::spec argsspecccl[] =
 };
 
 ConicRadicalType::ConicRadicalType()
-  : ObjectType( "line", "ConicRadical", argsspecccl, 2 )
+  : ObjectType( "ConicRadical", argsspecccl, 2 )
 {
 }
 

@@ -22,6 +22,7 @@
 
 #include <qcstring.h>
 #include <qstringlist.h>
+#include <klocale.h>
 
 void BogusImp::draw( KigPainter& ) const
 {
@@ -125,4 +126,24 @@ bool InvalidImp::inherits( int t ) const
 
 InvalidImp::InvalidImp()
 {
+}
+
+const char* InvalidImp::baseName() const
+{
+  return "invalid";
+}
+
+const char* DoubleImp::baseName() const
+{
+  return I18N_NOOP( "floating point number" );
+}
+
+const char* IntImp::baseName() const
+{
+  return I18N_NOOP( "integral number" );
+}
+
+const char* StringImp::baseName() const
+{
+  return I18N_NOOP( "string" );
 }

@@ -26,7 +26,7 @@
 #include "../misc/common.h"
 
 SegmentABType::SegmentABType()
-  : ObjectABType( "segment", "SegmentAB" )
+  : ObjectABType( "SegmentAB" )
 {
 }
 
@@ -46,7 +46,7 @@ ObjectImp* SegmentABType::calc( const Coordinate& a, const Coordinate& b ) const
 }
 
 LineABType::LineABType()
-  : ObjectABType( "line", "LineAB" )
+  : ObjectABType( "LineAB" )
 {
 }
 
@@ -67,7 +67,7 @@ ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
 
 
 RayABType::RayABType()
-  : ObjectABType( "ray", "RayAB" )
+  : ObjectABType( "RayAB" )
 {
 }
 
@@ -101,7 +101,7 @@ ObjectImp* LinePerpendLPType::calc(
 }
 
 LineParallelLPType::LineParallelLPType()
-  : ObjectLPType( "line", "LineParallel" )
+  : ObjectLPType( "LineParallel" )
 {
 }
 
@@ -124,7 +124,7 @@ ObjectImp* LineParallelLPType::calc(
 }
 
 LinePerpendLPType::LinePerpendLPType()
-  : ObjectLPType( "line", "LinePerpend" )
+  : ObjectLPType( "LinePerpend" )
 {
 }
 

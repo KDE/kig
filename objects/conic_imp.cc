@@ -265,3 +265,8 @@ ConicImp::~ConicImp()
 ConicImpCart::~ConicImpCart()
 {
 }
+
+const char* ConicImp::baseName() const
+{
+  return I18N_NOOP( "conic" );
+}

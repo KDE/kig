@@ -30,12 +30,10 @@
  */
 class ObjectType
 {
-  const char* mbasetypename;
   const char* mfulltypename;
 protected:
   const ArgParser margsparser;
-  ObjectType( const char basetypename[],
-              const char fulltypename[],
+  ObjectType( const char fulltypename[],
               const struct ArgParser::spec margsspec[],
               int n );
 public:
@@ -52,8 +50,6 @@ public:
   virtual void move( RealObject* ourobj, const Coordinate& from,
                      const Coordinate& dist ) const;
 
-  const QCString baseName() const;
-  const QString translatedBaseName() const;
   const char* fullName() const;
 
   const ArgParser& argsParser() const;

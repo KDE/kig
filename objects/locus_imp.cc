@@ -26,6 +26,8 @@
 #include "../misc/kigpainter.h"
 #include "../misc/coordinate.h"
 
+#include <klocale.h>
+
 LocusImp::~LocusImp()
 {
 }
@@ -105,4 +107,9 @@ const Property LocusImp::property( uint which, const KigWidget& w ) const
 LocusImp* LocusImp::copy() const
 {
   return new LocusImp( mcurve, mhier );
+}
+
+const char* LocusImp::baseName() const
+{
+  return I18N_NOOP( "locus" );
 }

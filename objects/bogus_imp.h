@@ -57,6 +57,7 @@ public:
   bool valid() const;
   bool inherits( int t ) const;
   InvalidImp* copy() const;
+  const char* baseName() const;
 };
 
 class DoubleImp
@@ -73,6 +74,7 @@ public:
   bool inherits( int typeID ) const;
 
   DoubleImp* copy() const;
+  const char* baseName() const;
 };
 
 class IntImp
@@ -88,6 +90,7 @@ public:
 
   bool inherits( int typeID ) const;
   IntImp* copy() const;
+  const char* baseName() const;
 };
 
 class StringImp
@@ -103,6 +106,7 @@ public:
 
   bool inherits( int typeID ) const;
   StringImp* copy() const;
+  const char* baseName() const;
 };
 
 #endif

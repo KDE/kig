@@ -78,6 +78,7 @@ public:
   const Property property( uint which, const KigWidget& w ) const;
 
   SegmentImp* copy() const;
+  const char* baseName() const;
 };
 
 class RayImp
@@ -98,6 +99,7 @@ public:
 
   int type() const;
   RayImp* copy() const;
+  const char* baseName() const;
 };
 
 class LineImp
@@ -118,6 +120,7 @@ public:
 
   int type() const;
   LineImp* copy() const;
+  const char* baseName() const;
 };
 
 #endif

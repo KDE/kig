@@ -29,7 +29,7 @@
 #include <math.h>
 
 AngleType::AngleType()
-  : ObjectABCType( "angle", "Angle" )
+  : ObjectABCType( "Angle" )
 {
 }
 
@@ -68,7 +68,7 @@ ObjectImp* AngleType::calc( const Args& parents ) const
 }
 
 VectorType::VectorType()
-  : ObjectABType( "vector", "Vector" )
+  : ObjectABType( "Vector" )
 {
 }
 
@@ -93,7 +93,7 @@ static const struct ArgParser::spec argsspec1c[] =
 };
 
 LocusType::LocusType( const ObjectHierarchy& hier )
-  : ObjectType( "locus", "Locus", argsspec1c, 1 ), mhier( hier )
+  : ObjectType( "Locus", argsspec1c, 1 ), mhier( hier )
 {
 }
 

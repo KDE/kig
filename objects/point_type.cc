@@ -29,7 +29,7 @@ static const ArgParser::spec argsspecdd[] =
 };
 
 FixedPointType::FixedPointType()
-  : ObjectType( "point", "FixedPoint", argsspecdd, 1 )
+  : ObjectType( "FixedPoint", argsspecdd, 1 )
 {
 }
 
@@ -64,7 +64,7 @@ const ArgParser::spec argsspecdc[] =
 };
 
 ConstrainedPointType::ConstrainedPointType()
-  : ObjectType( "point", "ConstrainedPoint", argsspecdc, 2 )
+  : ObjectType( "ConstrainedPoint", argsspecdc, 2 )
 {
 }
 
@@ -129,7 +129,7 @@ bool FixedPointType::canMove() const
 }
 
 MidPointType::MidPointType()
-  : ObjectABType( "point", "MidPoint" )
+  : ObjectABType( "MidPoint" )
 {
 }
 
