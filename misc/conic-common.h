@@ -122,17 +122,35 @@ public:
 bool operator==( const ConicPolarData& lhs, const ConicPolarData& rhs );
 
 /**
- * This function calcs a cartesian conic equation such that the
- * given points are on the conic..  There can be at most 5 and at
- * least 1 point.  If there are less than 5, than the coefficients
- * will be chosen to 1.0 if possible
+ * These are the constraint values that can be passed to the
+ * calcConicThroughPoints function.  Their meaning is as follows:
+ * noconstraint: no additional points will be calculated.
+ * zerotilt: force the symmetry axes to be parallel to the coordinate
+ *           system ( zero tilt ).
+ * parabolaifzt: the returned conic should be a parabola ( if used in
+ *               combination with zerotilt )
+ * circleifzt: the returned conic should be a circle ( if used in
+ *             combination with zerotilt )
+ * equilateral: the returned conic should be equilateral
+ * ysymmetry: the returned conic should be symmetric over the Y-axis.
+ * xsymmetry: the returned conic should be symmetric over the X-axis.
  */
-
 enum LinearConstraints {
   noconstraint, zerotilt, parabolaifzt, circleifzt,
   equilateral, ysymmetry, xsymmetry
 };
 
+/**
+ * Calculate a conic through a given set of points.  points should
+ * contain at least one, and at most five points.  If there are five
+ * points, then the conic is completely defined.  If there are less,
+ * then additional points will be calculated according to the
+ * constraints given.  See above for the various constraints.
+ *
+ * An invalid ConicCartesianData is returned if there is no conic
+ * through the given set of points, or if not enough constraints are
+ * given for a conic to be calculated.
+ */
 const ConicCartesianData calcConicThroughPoints (
     const std::vector<Coordinate>& points,
     const LinearConstraints c1 = noconstraint,
@@ -169,29 +187,92 @@ const ConicCartesianData calcConicByAsymptotes(
   const LineData& line2,
   const Coordinate& p );
 
+/**
+ * This function calculates the polar line of the point cpole with
+ * respect to the given conic data.  As the last argument, you should
+ * pass a reference to a boolean.  This boolean will be set to true if
+ * the returned LineData is valid, and to false if the returned line
+ * is not valid.  The latter condition only occurs if a "line at
+ * infinity" would have had to be returned.
+ */
 const LineData calcConicPolarLine (
   const ConicCartesianData& data,
   const Coordinate& cpole,
   bool& valid );
 
+/**
+ * This function calculates the polar point of the line polar with
+ * respect to the given conic data.  As the last argument, you should
+ * pass a reference to a boolean.  This boolean will be set to true if
+ * the returned LineData is valid, and to false if the returned line
+ * is not valid.  The latter condition only occurs if a "point at
+ * infinity" would have had to be returned.
+ */
 const Coordinate calcConicPolarPoint (
   const ConicCartesianData& data,
   const LineData& polar,
   bool& valid );
 
+/**
+ * This function calculates the intersection of a given line ( l ) and
+ * a given conic ( c ).  A line and a conic have two intersections in
+ * general, and as such, which should be set to -1 or 1 depending on
+ * which intersection you want.  As the last argument, you should pass
+ * a reference to a boolean.  This boolean will be set to true if the
+ * returned point is valid, and to false if the returned point is not
+ * valid.  The latter condition only occurs if the given conic and
+ * line do not have the specified intersection.
+ *
+ * knownparam is something special:  If you already know one
+ * intersection of the line and the conic, and you want the other one,
+ * then you should set which to 0, knownparam to the curve parameter
+ * of the point you already know ( i.e. the value returned by
+ * conicimp->getParam( otherpoint ) ).
+ */
 const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
                                          const LineData& l,
 					 double knownparam,
                                          int which, bool& valid );
 
+/**
+ * This function calculates the asymptote of the given conic ( data ).
+ * A conic has two asymptotes in general, so which should be set to +1
+ * or -1 depending on which asymptote you want.  As the last argument,
+ * you should pass a reference to a boolean.  This boolean will be set
+ * to true if the returned line is valid, and to false if the returned
+ * line is not valid.  The latter condition only occurs if the given
+ * conic does not have the specified asymptote.
+ */
 const LineData calcConicAsymptote(
   const ConicCartesianData data,
   int which, bool &valid );
 
+/**
+ * This function calculates the radical line of two conics.  A radical
+ * line is the line that goes through two of the intersections of two
+ * conics.  Since two conics have up to four intersections in general,
+ * there are three sets of two radical lines.  zeroindex specifies
+ * which set of radical lines you want ( set it to 1, 2 or 3 ), and
+ * which is set to -1 or +1 depending on which of the two radical
+ * lines in the set you want.  As the last argument, you should pass a
+ * reference to a boolean.  This boolean will be set to true if the
+ * returned line is valid, and to false if the returned line is not
+ * valid.  The latter condition only occurs if the given conics do not
+ * have the specified radical line.
+ */
 const LineData calcConicRadical( const ConicCartesianData& cequation1,
                                  const ConicCartesianData& cequation2,
                                  int which, int zeroindex, bool& valid );
 
+/**
+ * This calculates the image of the given conic ( data ) through the
+ * given transformation ( t ).  As the last argument, you should pass
+ * a reference to a boolean.  This boolean will be set to true if the
+ * returned line is valid, and to false if the returned line is not
+ * valid.  The latter condition only occurs if the given
+ * transformation is singular, and as such, the transformation of the
+ * conic cannot be calculated.
+ */
 const ConicCartesianData calcConicTransformation (
   const ConicCartesianData& data,
   const Transformation& t, bool& valid );

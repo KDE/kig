@@ -172,7 +172,8 @@ const ConicCartesianData calcConicThroughPoints (
   const LinearConstraints c4,
   const LinearConstraints c5 )
 {
-  // points is a vector of at least 5 points through which the conic is
+  assert( 0 < points.size() && points.size() <= 5 );
+  // points is a vector of up to 5 points through which the conic is
   // constrained.
   // this routine should compute the coefficients in the cartesian equation
   //    a x^2 + b y^2 + c xy + d x + e y + f = 0

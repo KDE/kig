@@ -1,5 +1,7 @@
 2004-04-20  Dominique Devriese  <devriese@kde.org>
 
+	* Add some documentation to the functions in misc/conic-common.h
+
 	* Rename "Cubic" to "Cubic Curve", as discussed with Maurizio
 	Paolini and Jaap Woldringh.
 
