@@ -6,4 +6,6 @@ Icon=kig
 Type=Application
 DocPath=kig/kig.html
 Comment=KDE Interactive Geometry
+Comment[da]=KDE Interaktiv geometri
+Comment[nl]=KDE Interaktieve Meetkunde
 Terminal=0
