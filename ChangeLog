@@ -1,3 +1,9 @@
+2003-12-15  Dominique Devriese  <devriese@kde.org>
+
+	* Another try at fixing the ArgsParser parsing order.  I think
+	I've tried most problematic cases, and they all seem to work
+	properly.  Let's pray for the best ;)
+
 2003-12-10  Dominique Devriese  <devriese@kde.org>
 
 	* Fix a crash when using a macro having the moving point of a

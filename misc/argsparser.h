@@ -33,16 +33,11 @@ public:
 private:
   // the args spec..
   std::vector<spec> margs;
-  // sometimes a random object is requested: any type goes.  Those
-  // requests require some special treatment.  This vector holds the
-  // usetexts for those requests..
-  std::vector<const char*> manyobjsspec;
 
   spec findSpec( const ObjectImp* o, const Args& parents ) const;
 public:
   ArgsParser( const struct spec* args, int n );
   ArgsParser( const std::vector<spec>& args );
-  ArgsParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec );
   ArgsParser();
   ~ArgsParser();
 

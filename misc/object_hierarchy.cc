@@ -433,6 +433,16 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
       // ApplyTypeNode
       QCString typen = e.attribute( "type" ).latin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
+
+
+
+
+      // BUG: what if the type doesn't exist ?
+
+
+
+
+
       assert( type );
       std::vector<int> parents;
       for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
