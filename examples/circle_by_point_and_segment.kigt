@@ -1,0 +1,20 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.4.0" >
+ <Macro>
+  <Name>Circle by Point and Segment</Name>
+  <Description>A circle defined by its center and the length of a segment as the radius</Description>
+  <ActionName>objects_new_circlebps</ActionName>
+  <IconFileName>circlebps</IconFileName>
+  <Construction>
+   <input requirement="point" id="1" />
+   <input requirement="segment" id="2" />
+   <intermediate action="fetch-property" property="length" id="3" >
+    <arg>2</arg>
+   </intermediate>
+   <result action="calc" type="CircleBPR" id="4" >
+    <arg>1</arg>
+    <arg>3</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

@@ -48,6 +48,7 @@
 	<text>&amp;Circles</text>
 	<Action name="objects_new_circlebcp" />
 	<Action name="objects_new_circlebtp" />
+	<Action name="objects_new_circlebps" />
 	<ActionList name="user_circle_types" />
     </Menu>	
     <Menu name="new_conic">
@@ -133,6 +134,7 @@
 <Toolbar name="circle_toolbar" position="left"><text>Circles</text>
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
+  <Action name="objects_new_circlebps" />
   <ActionList name="user_circle_types" />
 </Toolbar>  
 <Toolbar name="conic_toolbar" position="left"><text>Conics</text>

@@ -308,6 +308,7 @@ bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret, cons
   {
     QString name, description;
     ObjectHierarchy* hierarchy;
+    QCString actionname, iconfile;
     if ( macroelem.tagName() != "Macro" ) continue; // forward compat ?
     for ( QDomElement dataelem = macroelem.firstChild().toElement();
           ! dataelem.isNull(); dataelem = dataelem.nextSibling().toElement() )
@@ -318,13 +319,17 @@ bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret, cons
         description = dataelem.text();
       else if ( dataelem.tagName() == "Construction" )
         hierarchy = new ObjectHierarchy( dataelem );
+      else if ( dataelem.tagName() == "ActionName" )
+        actionname = dataelem.text().latin1();
+      else if ( dataelem.tagName() == "IconFileName" )
+        iconfile = dataelem.text().latin1();
       else continue;
     };
     assert( hierarchy );
     MacroConstructor* ctor =
-      new MacroConstructor( *hierarchy, name, description );
+      new MacroConstructor( *hierarchy, name, description, iconfile );
     delete hierarchy;
-    GUIAction* act = new ConstructibleAction( ctor, 0 );
+    GUIAction* act = new ConstructibleAction( ctor, actionname );
     Macro* macro = new Macro( act, ctor );
     ret.push_back( macro );
   };

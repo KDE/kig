@@ -293,17 +293,20 @@ QString MergeObjectConstructor::useText( const Object& o, const Objects& sel,
 }
 
 MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const QString& name,
-                                    const QString& desc )
+                                    const QString& desc, const QCString& iconfile )
   : ObjectConstructor(), mhier( hier ), mname( name ), mdesc( desc ),
+    mbuiltin( false ), miconfile( iconfile ),
     mparser( mhier.argParser() )
 {
 }
 
 MacroConstructor::MacroConstructor(
   const Objects& input, const Objects& output,
-  const QString& name, const QString& description )
+  const QString& name, const QString& description,
+  const QCString& iconfile )
   : ObjectConstructor(), mhier( input, output ),
-    mname( name ), mdesc( description ),
+    mname( name ), mdesc( description ), mbuiltin( false ),
+    miconfile( iconfile ),
     mparser( mhier.argParser() )
 {
 }
@@ -324,7 +327,7 @@ const QString MacroConstructor::description() const
 
 const QCString MacroConstructor::iconFileName() const
 {
-  return "gear";
+  return miconfile.isNull() ? "gear" : miconfile;
 }
 
 const int MacroConstructor::wantArgs( const Objects& os, const KigDocument&,
@@ -391,6 +394,7 @@ void MergeObjectConstructor::plug( KigDocument*, KigGUIAction* )
 
 void MacroConstructor::plug( KigDocument* doc, KigGUIAction* kact )
 {
+  if ( mbuiltin ) return;
   if ( mhier.numberOfResults() != 1 )
     doc->aMNewOther.append( kact );
   else
@@ -434,5 +438,10 @@ bool MergeObjectConstructor::isTransform() const
 bool MacroConstructor::isTransform() const
 {
   return false;
+}
+
+void MacroConstructor::setBuiltin( bool builtin )
+{
+  mbuiltin = builtin;
 }
 

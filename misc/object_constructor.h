@@ -263,12 +263,16 @@ class MacroConstructor
   ObjectHierarchy mhier;
   const QString mname;
   const QString mdesc;
+  bool mbuiltin;
+  const QCString miconfile;
   ArgParser mparser;
 public:
   MacroConstructor( const Objects& input, const Objects& output,
-                    const QString& name, const QString& description );
+                    const QString& name, const QString& description,
+                    const QCString& iconfile = 0 );
   MacroConstructor( const ObjectHierarchy& hier, const QString& name,
-                    const QString& desc );
+                    const QString& desc,
+                    const QCString& iconfile = 0 );
   ~MacroConstructor();
 
   const ObjectHierarchy& hierarchy() const;
@@ -292,6 +296,8 @@ public:
     ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
+
+  void setBuiltin( bool builtin );
 
   // is this the ctor for a transformation type.  We want to know this
   // cause transform types are shown separately in an object's RMB

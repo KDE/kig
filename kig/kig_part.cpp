@@ -174,6 +174,7 @@ void KigDocument::setupActions()
 void KigDocument::setupTypes()
 {
   setupBuiltinStuff();
+  setupBuiltinMacros();
   setupMacroTypes();
   GUIActionList& l = *GUIActionList::instance();
   for ( uint i = 0; i < l.actions().size(); ++i )
@@ -182,8 +183,6 @@ void KigDocument::setupTypes()
     aActions.push_back( ret );
     ret->plug( this );
   };
-  // TODO
-//     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
 };
 
 KigDocument::~KigDocument()
@@ -663,7 +662,8 @@ void KigDocument::setupMacroTypes()
   if ( ! alreadysetup )
   {
     alreadysetup = true;
-    // our saved macro types:
+
+    // the user's saved macro types:
     QStringList dataFiles =
       KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
                                         true, false );
@@ -682,4 +682,36 @@ void KigDocument::setupMacroTypes()
   // hack: we need to plug the action lists _after_ the gui is
   // built.. i can't find a better solution than this...
   QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
+}
+
+void KigDocument::setupBuiltinMacros()
+{
+  static bool alreadysetup = false;
+  if ( ! alreadysetup )
+  {
+    alreadysetup = true;
+    // builtin macro types ( we try to make the user think these are
+    // normal types )..
+    QStringList builtinfiles =
+      KGlobal::dirs()->findAllResources( "appdata", "builtin-macros/*.kigt", true, false );
+    for ( QStringList::iterator file = builtinfiles.begin();
+          file != builtinfiles.end(); ++file )
+    {
+      myvector<Macro*> macros;
+      bool ok = MacroList::instance()->load( *file, macros, *this );
+      if ( ! ok ) continue;
+      for ( uint i = 0; i < macros.size(); ++i )
+      {
+        ObjectConstructorList* ctors = ObjectConstructorList::instance();
+        GUIActionList* actions = GUIActionList::instance();
+        Macro* macro = macros[i];
+        macro->ctor->setBuiltin( true );
+        ctors->add( macro->ctor );
+        actions->add( macro->action );
+        macro->ctor = 0;
+        macro->action = 0;
+        delete macro;
+      };
+    };
+  };
 }
