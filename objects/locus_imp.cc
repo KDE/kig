@@ -20,6 +20,7 @@
 
 #include "bogus_imp.h"
 #include "point_imp.h"
+#include "object.h"
 #include "../misc/object_hierarchy.h"
 #include "../misc/kigpainter.h"
 #include "../misc/coordinate.h"
@@ -79,5 +80,15 @@ const Coordinate LocusImp::getPoint( double param ) const
     ret = static_cast<PointImp*>( imp )->coordinate();
   delete imp;
   return ret;
+}
+
+LocusImp::LocusImp( const Object* movingpoint, const Object* tracingpoint )
+  : mcurve( 0 ), mhier( new ObjectHierarchy( Objects( const_cast<Object*>( movingpoint ) ),
+                                             tracingpoint ) )
+{
+  // the ObjectType should make sure we have a ConstrainedPointImp
+  // parent, we just assert it..
+  assert( movingpoint->has( ObjectImp::ID_PointImp ) && movingpoint->parents().size() == 0 );
+  mcurve = static_cast<const CurveImp*>( movingpoint->parents().front()->imp() );
 }
 
