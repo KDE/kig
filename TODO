@@ -1,8 +1,6 @@
 simple:
-- get rid of segmentOverlay warnings on startup..
 - implement the helpSlot()'s in the wizards..
 - change resizeEvent to not recenter the screen..
-- implement a polar CoordinateSystem..
 - rearrange some of the icons to match KGeo's appearance..
 
 harder:
@@ -25,6 +23,9 @@ hard :
 - rework Macro support into something simpler: make it into types that
   simply add a lot of normal ( as in: builtin ) objects instead of one
   ugly object of the Macro class ( which, erm.. sucks :)
+- scripting !  The GNOME Interactive Geometry program Dr. Genius seems
+  to have this already ( albeit in Guile ;) ), so Kig can't lag behind
+  ;)
 - figure out some cool way to "attach" a textlabel to an object..
 - koffice support ?
 
