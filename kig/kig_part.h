@@ -146,12 +146,6 @@ public:
   void delObject(Object* inObject);
   void delObjects( const Objects& os );
 
-  // change the specified objects' color...
-  void setColor( const Objects& o, const QColor& c );
-
-  // hide objs..
-  void hideObjects( const Objects& o );
-
 /************* internal stuff *************/
 protected:
   void _addObject( Object* inObject );
