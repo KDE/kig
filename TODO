@@ -1,5 +1,10 @@
 * not too hard:
 
+- make it possible to not show the coordinate grid
+
+- fix ObjectHierarchy::resultDoesNotDependOnGiven to check whether
+   *all* the result objects depend on the given objects.
+
 - export cubics to the python scripting stuff..
 
 - add support for working with angles in degrees in the set size
