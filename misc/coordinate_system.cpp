@@ -27,6 +27,8 @@
 
 #include <qpainter.h>
 #include <qregexp.h>
+#include <kglobal.h>
+#include <klocale.h>
 #include <kdebug.h>
 
 #include <cmath>
@@ -50,21 +52,28 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   // other time :)
   Rect sr = d.suggestedRect();
   double m = max( sr.width(), sr.height() );
-  int l;
-  if ( m < 1 ) l = 3 - (int) log10( m );
-  else l = (int) log10( m ) + 2;
-  return QString::fromLatin1("( %1; %2 )").arg(p.x, 0, 'g', l ).arg(p.y, 0, 'g', l );
+  int l = max( 0, (int) ( 3 - log10( m ) ) );
+  QString xs = KGlobal::locale()->formatNumber( p.x, l );
+  QString ys = KGlobal::locale()->formatNumber( p.x, l );
+  return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
 };
 
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp r("^([^,]+),([^\\)]+)$");
+  QRegExp r("^([^;]+);(.+)$");
   ok = ( r.search(s) == 0 );
   if (ok)
   {
-    return Coordinate(r.cap(1).toDouble(&ok), r.cap(2).toDouble(&ok));
+    QString xs = r.cap(1);
+    QString ys = r.cap(2);
+    KLocale* l = KGlobal::locale();
+    double x = l->readNumber( xs, &ok );
+    if ( ! ok ) return Coordinate();
+    double y = l->readNumber( ys, &ok );
+    if ( ! ok ) return Coordinate();
+    return Coordinate( x, y );
   }
-  else return Coordinate();
+  return Coordinate();
 };
 
 /**
@@ -125,10 +134,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   const double vgraphmin = floor( vmin / vd ) * vd;
   const double vgraphmax = ceil( vmax / vd ) * vd;
 
-  // this would be the number of decimals we show, but Qt has no
-  // facilities for applying this..
-//   const int hnfrac = max( (int) - floor( log10( hd ) ), 0 );
-//   const int vnfrac = max( (int) - floor( log10( vd ) ), 0 );
+  const int hnfrac = max( (int) - floor( log10( hd ) ), 0 );
+  const int vnfrac = max( (int) - floor( log10( vd ) ), 0 );
 
   /****** the grid lines ******/
   if ( showgrid )
@@ -164,7 +171,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
 
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
-        QString().setNum( i ), AlignLeft | AlignTop
+        KGlobal::locale()->formatNumber( i, hnfrac ),
+        AlignLeft | AlignTop
         );
     };
     // y axis...
@@ -172,7 +180,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
     {
       if( fabs( i ) < 1e-8 ) continue;
       p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
-                   QString().setNum( i ), AlignBottom | AlignLeft
+                   KGlobal::locale()->formatNumber( i, vnfrac ),
+                   AlignBottom | AlignLeft
         );
     };
     // arrows on the ends of the axes...
@@ -200,7 +209,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
 
 QString EuclideanCoords::coordinateFormatNotice() const
 {
-  return i18n( "Enter coordinates in the following form: \"x,y\", where "
+  return i18n( "Enter coordinates in the following form: \"x;y\", where "
                "x is the x coordinate, and y is the y coordinate." );
 }
 
@@ -228,33 +237,37 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
 {
   Rect sr = d.suggestedRect();
   double m = max( sr.width(), sr.height() );
-  int l;
-  if ( m < 1 ) l = 3 - (int) log10( m );
-  else l = (int) log10( m ) + 2;
+  int l = max( 0, (int) ( 3 - log10( m ) ) );
 
   double r = pt.length();
   double theta = atan2( pt.y, pt.x );
 
-  return QString::fromLatin1("( %1; %2 )").arg(r, 0, 'g', l ).arg( theta );
+  QString rs = KGlobal::locale()->formatNumber( r, l );
+  QString ts = KGlobal::locale()->formatNumber( theta, 2 );
+
+  return QString::fromLatin1("( %1; %2 )").arg( rs ).arg( ts );
 }
 
 QString PolarCoords::coordinateFormatNotice() const
 {
-  return i18n( "Enter coordinates in the following form: \"r, \xCE\xB8\", where " // \xCE\xB8 is utf8 for the greek theta sign..
-               "r and theta are the polar coordinates." );
+  // \xCE\xB8 is utf8 for the greek theta sign..
+  return i18n( "Enter coordinates in the following form: \"r; \xCE\xB8\", where "
+               "r and \xCE\xB8 are the polar coordinates." );
 }
 
 Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp regexp("^([^,]+),([^\\)]+)$");
-  ok = ( regexp.search(s) == 0 );
+  QRegExp regexp("^([^;]+);(.+)$");
+  ok = ( regexp.search( s ) == 0 );
   if (ok)
   {
-    double r = regexp.cap( 1 ).toDouble( &ok );
+    QString rs = regexp.cap( 1 );
+    double r = KGlobal::locale()->readNumber( rs, &ok );
     if ( ! ok ) return Coordinate();
-    double theta = regexp.cap(2).toDouble( &ok );
+    QString ts = regexp.cap( 2 );
+    double theta = KGlobal::locale()->readNumber( ts, &ok );
     if ( ! ok ) return Coordinate();
-    return Coordinate( cos( theta )*r, sin( theta ) * r );
+    return Coordinate( cos( theta ) * r, sin( theta ) * r );
   }
   else return Coordinate();
 }
@@ -289,6 +302,10 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   const double vgraphmin = floor( vmin / vd ) * vd;
   const double vgraphmax = ceil( vmax / vd ) * vd;
 
+  const int hnfrac = max( (int) - floor( log10( hd ) ), 0 );
+  const int vnfrac = max( (int) - floor( log10( vd ) ), 0 );
+  const int nfrac = max( hnfrac, vnfrac );
+
   /****** the grid lines ******/
   if ( showgrid )
   {
@@ -298,9 +315,10 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
 
     // we also want the circles that don't fit entirely in the
     // screen..
+    Coordinate c( 0, 0 );
     p.setPen( QPen( lightGray, 0, DotLine ) );
     for ( double i = begin; i <= end + d / 2; i += d )
-      p.drawCircle( Coordinate( 0, 0 ), fabs( i ) );
+      p.drawCircle( c, fabs( i ) );
   }
 
   /****** the axes ******/
@@ -321,17 +339,20 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
       // through the 0 etc. )
       if( fabs( i ) < 1e-8 ) continue;
 
+      QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
-        QString().setNum( fabs( i ) ), AlignLeft | AlignTop
-        );
+        is, AlignLeft | AlignTop );
     };
     // y axis...
     for ( double i = vgraphmin; i <= vgraphmax + vd / 2; i += vd )
     {
       if( fabs( i ) < 1e-8 ) continue;
+
+      QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
+
       p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
-                   QString().setNum( fabs( i ) ), AlignBottom | AlignLeft
+                   is, AlignBottom | AlignLeft
         );
     };
     // arrows on the ends of the axes...
