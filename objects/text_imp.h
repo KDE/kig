@@ -56,6 +56,8 @@ public:
   int id() const;
 
   const char* baseName() const;
+
+  QString text() const;
 };
 
 #endif

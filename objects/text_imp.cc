@@ -63,22 +63,31 @@ bool TextImp::valid() const
 
 const uint TextImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties();
+  return Parent::numberOfProperties() + 1;
 }
 
 const QCStringList TextImp::propertiesInternalNames() const
 {
-  return Parent::propertiesInternalNames();
+  QCStringList ret = Parent::propertiesInternalNames();
+  ret << "text";
+  return ret;
 }
 
 const QCStringList TextImp::properties() const
 {
-  return Parent::properties();
+  QCStringList ret = Parent::properties();
+  ret << I18N_NOOP( "Text" );
+  return ret;
 }
 
 ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
 {
-  return Parent::property( which, w );
+  assert( which < TextImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  else if ( which == Parent::numberOfProperties() )
+    return new StringImp( text() );
+  else assert( false );
 }
 
 bool TextImp::inherits( int id ) const
@@ -94,5 +103,10 @@ int TextImp::id() const
 const char* TextImp::baseName() const
 {
   return "label";
+}
+
+QString TextImp::text() const
+{
+  return mtext;
 }
 
