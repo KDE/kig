@@ -1,5 +1,7 @@
 2003-06-27  Dominique Devriese  <devriese@kde.org>
 
+	* add a "Set Coordinate System" menu to the Settings menu..
+
 	* make shift snap to grid in moving mode, and rework the moving
 	API to something a bit saner in the process..
 

@@ -77,6 +77,32 @@ KAboutData* KigDocument::createAboutData()
   return kigAboutData( "kigpart", I18N_NOOP( "KigPart" ) );
 }
 
+class SetCoordinateSystemAction
+  : public KAction
+{
+  KigDocument& md;
+  uint mn;
+public:
+  SetCoordinateSystemAction( const QString text, KigDocument& d,
+                             uint i, KActionCollection* parent );
+  void slotActivated();
+};
+
+SetCoordinateSystemAction::SetCoordinateSystemAction(
+  const QString text, KigDocument& d,
+  uint i, KActionCollection* parent )
+  : KAction( text, 0, 0, 0, parent, 0 ),
+    md( d ), mn( i )
+{
+};
+
+void SetCoordinateSystemAction::slotActivated()
+{
+  CoordinateSystem* sys = CoordinateSystemFactory::build( mn );
+  assert( sys );
+  md.history()->addCommand( KigCommand::changeCoordSystemCommand( md, sys ) );
+};
+
 KigDocument::KigDocument( QWidget *parentWidget, const char *,
 			  QObject *parent, const char *name,
 			  const QStringList& )
@@ -180,7 +206,7 @@ void KigDocument::setupActions()
   a->setWhatsThis( i18n( "Zoom in on the document" ) );
 
   a = KStdAction::zoomOut( m_widget, SLOT( slotZoomOut() ),
-                                  actionCollection() );
+                           actionCollection() );
   a->setToolTip( i18n( "Zoom out of the document" ) );
   a->setWhatsThis( i18n( "Zoom out of the document" ) );
 
@@ -215,6 +241,15 @@ void KigDocument::setupActions()
     actionCollection(), "view_select_shown_rect" );
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+
+  // select coordinate system KActionMenu..
+  KActionMenu* am =
+    new KActionMenu( i18n( "&Set Coordinate System" ), actionCollection(),
+                     "settings_set_coordinate_system" );
+  QStringList csnames = CoordinateSystemFactory::names();
+  for ( uint i = 0; i < csnames.size(); ++i )
+    am->insert( new SetCoordinateSystemAction( csnames[i], *this, i,
+                                               actionCollection() ) );
 };
 
 void KigDocument::setupTypes()

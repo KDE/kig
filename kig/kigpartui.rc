@@ -119,6 +119,7 @@
     </Menu>
     <Menu name="settings">
       <Action name="fullscreen" />
+      <Action name="settings_set_coordinate_system" />
     </Menu>
   </MenuBar>
   <Toolbar name="mainToolBar">
