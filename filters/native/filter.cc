@@ -320,7 +320,7 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     else
     {
       t = ObjectTypeFactory::instance()->find( type );
-      if ( ! t ) return ParseError;
+      if ( ! t ) return false;
     };
     o.setType( t );
     return true;
