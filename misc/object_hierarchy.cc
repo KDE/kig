@@ -44,7 +44,7 @@ public:
 
   virtual void apply( std::vector<ObjectCalcer*>& stack, int loc ) const = 0;
 
-  virtual bool dependsOnGiven( int highestGiven ) const = 0;
+  virtual void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const = 0;
 };
 
 ObjectHierarchy::Node::~Node()
@@ -67,7 +67,7 @@ public:
               int loc, const KigDocument& ) const;
   void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
 
-  bool dependsOnGiven( int highestGiven ) const;
+  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
 };
 
 void PushStackNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
@@ -75,8 +75,9 @@ void PushStackNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
   stack[loc] = new ObjectConstCalcer( mimp->copy() );
 }
 
-bool PushStackNode::dependsOnGiven( int ) const {
-  return false;
+void PushStackNode::checkDependsOnGiven( std::vector<bool>&, int ) const {
+  // pushstacknode depends on nothing..
+  return;
 }
 
 int PushStackNode::id() const { return ID_PushStack; }
@@ -116,16 +117,17 @@ public:
               int loc, const KigDocument& ) const;
   void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
 
-  bool dependsOnGiven( int highestGiven ) const;
+  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
 };
 
 int ApplyTypeNode::id() const { return ID_ApplyType; }
 
-bool ApplyTypeNode::dependsOnGiven( int h ) const
+void ApplyTypeNode::checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const
 {
+  bool result = false;
   for ( uint i = 0; i < mparents.size(); ++i )
-    if ( mparents[i] <= h ) return true;
-  return false;
+    if ( dependsstack[mparents[i]] == true ) result = true;
+  dependsstack[loc] = result;
 }
 
 ApplyTypeNode::~ApplyTypeNode()
@@ -173,7 +175,7 @@ public:
   ~FetchPropertyNode();
   Node* copy() const;
 
-  bool dependsOnGiven( int highestGiven ) const;
+  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
   int parent() const { return mparent; };
   const QCString& propinternalname() const { return mname; };
 
@@ -187,9 +189,9 @@ FetchPropertyNode::~FetchPropertyNode()
 {
 }
 
-bool FetchPropertyNode::dependsOnGiven( int h ) const
+void FetchPropertyNode::checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const
 {
-  return mparent <= h;
+  dependsstack[loc] = dependsstack[mparent];
 }
 
 ObjectHierarchy::Node* FetchPropertyNode::copy() const
@@ -588,13 +590,16 @@ bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs )
 
 bool ObjectHierarchy::resultDoesNotDependOnGiven() const
 {
-  bool result = true;
+  std::vector<bool> dependsstack( mnodes.size() + mnumberofargs, false );
+
+  for ( uint i = 0; i < mnumberofargs; ++i )
+    dependsstack[i] = true;
   for ( uint i = 0; i < mnodes.size(); ++i )
-  {
-    if ( mnodes[i]->dependsOnGiven( mnumberofargs - 1 ) )
-      result = false;
-  };
-  return result;
+    mnodes[i]->checkDependsOnGiven( dependsstack, i + mnumberofargs );
+  for ( uint i = dependsstack.size() - mnumberofresults; i < dependsstack.size(); ++i )
+    if ( !dependsstack[i] )
+      return true;
+  return false;
 }
 
 // returns the "minimum" of a and b ( in the partially ordered set of
