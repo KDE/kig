@@ -26,8 +26,10 @@
 #include "../objects/normalpoint.h"
 
 #include <qevent.h>
+#include <qeventloop.h>
 #include <kcursor.h>
 #include <kapplication.h>
+#include <qglobal.h>
 
 SelectionModeBase::SelectionModeBase( KigDocument* d )
   : KigMode( d )
@@ -92,7 +94,7 @@ void SelectionModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
   {
     // clicked on selected objects...
     // as before, we only use moco.front()
-    unselectObject( moco.front() );
+    unselectObject( moco.front(), *v );
     cos.push_back( moco.front() );
   };
 
@@ -214,7 +216,11 @@ void SelectionModeBase::selectObject( Object* o, KigWidget& w )
 
 void SelectionModeBase::finish()
 {
+#if QT_VERSION >= 0x030100
   kapp->eventLoop()->exitLoop();
+#else
+  kapp->exit_loop();
+#endif
 }
 
 const Objects& SelectionModeBase::selection() const
@@ -225,7 +231,11 @@ const Objects& SelectionModeBase::selection() const
 void SelectionModeBase::run( KigMode* prev )
 {
   mDoc->setMode( this );
-  kapp->eventLoop()->enterLoop();
+#if QT_VERSION >= 0x030100
+  (void) kapp->eventLoop()->enterLoop();
+#else
+  (void) kapp->enter_loop();
+#endif
   mDoc->setMode( prev );
 }
 
@@ -239,14 +249,13 @@ void StandAloneSelectionMode::selectionChanged( KigWidget& )
 
 bool StandAloneSelectionMode::wantObject( const Object& o, KigWidget& )
 {
-  int res = mchecker.check( selection().with( &o ) );
+  int res = mchecker.check( selection().with( const_cast<Object*>( &o ) ) );
   return res & ArgsChecker::Valid;
 }
 
 StandAloneSelectionMode::StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d )
   : SelectionModeBase( d ), mchecker( c )
 {
-
 }
 
 void SelectionModeBase::unselectObject( Object* o, KigWidget& w )
