@@ -234,6 +234,26 @@ AddFixedPointAction::~AddFixedPointAction()
 {
 }
 
+void GUIAction::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+int ConstructibleAction::shortcut() const
+{
+  return mshortcut;
+}
+
+int ConstructTextLabelAction::shortcut() const
+{
+  return Qt::Key_B;
+}
+
+int AddFixedPointAction::shortcut() const
+{
+  return Qt::Key_F;
+}
+
+#if 0
 TestAction::TestAction( const char* actionname )
   : mactionname( actionname )
 {
@@ -263,25 +283,70 @@ const char* TestAction::actionName() const
   return mactionname;
 }
 
-void TestAction::act( KigDocument& )
+void TestAction::act( KigDocument& doc )
+{
+  const char* script =
+    "def calc( a ):\n\treturn Point( a.coordinate() + Coordinate( 2, 0 ) )\n";
+  Object* constantpoint = ObjectFactory::instance()->fixedPoint( Coordinate( -1, -1 ) );
+  constantpoint->calc( doc );
+
+  Object* codeobject = new DataObject( new StringImp( QString::fromLatin1( script ) ) );
+  Object* compiledcode = new RealObject( PythonCompileType::instance(), Objects( codeobject ) );
+  compiledcode->calc( doc );
+
+  Objects args( compiledcode );
+  args.push_back( constantpoint );
+  Object* scriptobject = new RealObject( PythonExecuteType::instance(), args );
+  scriptobject->calc( doc );
+
+  doc.addObject( constantpoint );
+  doc.addObject( scriptobject );
+}
+
+#endif // if 0 ( TestAction )
+
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+#include "../scripting/python_type.h"
+#include "../scripting/script_mode.h"
+
+NewScriptAction::NewScriptAction( const char* actionname )
+  : GUIAction(), mactionname( actionname )
 {
 }
 
-void GUIAction::plug( KigDocument*, KigGUIAction* )
+NewScriptAction::~NewScriptAction()
 {
 }
 
-int ConstructibleAction::shortcut() const
+QString NewScriptAction::description() const
 {
-  return mshortcut;
+  return i18n( "Construct a new script object." );
 }
 
-int ConstructTextLabelAction::shortcut() const
+QCString NewScriptAction::iconFileName() const
 {
-  return Qt::Key_B;
+  return "";
 }
 
-int AddFixedPointAction::shortcut() const
+QString NewScriptAction::descriptiveName() const
 {
-  return Qt::Key_F;
+  return i18n( "Script Object" );
 }
+
+const char* NewScriptAction::actionName() const
+{
+  return mactionname;
+}
+
+void NewScriptAction::act( KigDocument& doc )
+{
+  ScriptMode m( doc );
+  doc.runMode( &m );
+}
+
+int NewScriptAction::shortcut() const
+{
+  return 0;
+}
+
+#endif // if KIG_ENABLE_PYTHON_SCRIPTING ( NewScriptAction )

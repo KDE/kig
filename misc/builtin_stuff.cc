@@ -18,6 +18,8 @@
 
 #include "builtin_stuff.h"
 
+#include <config.h>
+
 #include "object_constructor.h"
 #include "lists.h"
 #include "special_constructors.h"
@@ -364,6 +366,10 @@ void setupBuiltinStuff()
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );
     actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );
+
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+    actions->add( new NewScriptAction( "objects_new_script_object" ) );
+#endif
 
 #if 0
     actions->add( new TestAction( "test_stuff" ) );

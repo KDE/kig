@@ -1,0 +1,29 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="0.5.1" >
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Objects>
+  <Data internal="true" type="double" id="1" >-3.93514</Data>
+  <Data internal="true" type="double" id="2" >2.97568</Data>
+  <Data internal="true" type="double" id="3" >-2.03636</Data>
+  <Data internal="true" type="double" id="4" >1.57224</Data>
+  <Data internal="true" type="string" id="5" >def calc( arg1, arg2 ):
+	return Point( ( arg1.coordinate() + arg2.coordinate() ) / 2 )
+</Data>
+  <Object width="-1" internal="false" shown="true" type="FixedPoint" id="6" color="#0000ff" >
+   <Parent id="1" />
+   <Parent id="2" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="FixedPoint" id="7" color="#0000ff" >
+   <Parent id="3" />
+   <Parent id="4" />
+  </Object>
+  <Object width="-1" internal="true" shown="true" type="PythonCompileType" id="8" color="#0000ff" >
+   <Parent id="5" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="PythonExecuteType" id="9" color="#0000ff" >
+   <Parent id="8" />
+   <Parent id="6" />
+   <Parent id="7" />
+  </Object>
+ </Objects>
+</KigDocument>

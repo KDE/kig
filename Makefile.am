@@ -1,11 +1,19 @@
-SUBDIRS = objects misc modes icons filters examples kig mimetypes macros
+if KIG_COMPILE_PYTHON_SCRIPTING
+scriptingdir = scripting
+scriptinglib = scripting/libscripting.la
+else
+scriptingdir =
+scriptinglib =
+endif
+
+SUBDIRS = objects misc modes icons filters examples kig mimetypes macros $(scriptingdir)
 
 kde_module_LTLIBRARIES = libkigpart.la
 libkigpart_la_SOURCES = dummy.cpp
 libkigpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkigpart_la_LIBADD  = $(LIB_KPARTS) \
 	misc/libmisc.la objects/libobjects.la filters/libfilters.la \
-	modes/libmodes.la kig/libkigparttemp.la
+	modes/libmodes.la $(scriptinglib) kig/libkigparttemp.la
 
 messages: rc.cpp
 	$(EXTRACTRC) *.rc */*.rc >> rc.cpp

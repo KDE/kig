@@ -5,6 +5,9 @@
 
 2003-07-03  Dominique Devriese  <devriese@kde.org>
 
+	* add Python scripting support.  Rather large addition, involving
+	a lot of autoconf and automake magic..
+
 	* make snapToGrid work for PolarCoordinateSystem
 
 	* make shift -> snap to grid work in PointConstructionMode and

@@ -18,8 +18,9 @@
 
 #include "object_type_factory.h"
 
-#include "object_type.h"
+#include <config.h>
 
+#include "object_type.h"
 #include "circle_type.h"
 #include "conic_types.h"
 #include "cubic_type.h"
@@ -30,8 +31,11 @@
 #include "transform_types.h"
 #include "point_type.h"
 
-#include <qdom.h>
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+#include "../scripting/python_type.h"
+#endif
 
+#include <qdom.h>
 #include <string>
 
 ObjectTypeFactory::ObjectTypeFactory()
@@ -129,4 +133,10 @@ void ObjectTypeFactory::setupBuiltinTypes()
   add( ScalingOverLineType::instance() );
   add( ProjectiveRotationType::instance() );
   add( CastShadowType::instance() );
+
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+  // python types
+  add( PythonCompileType::instance() );
+  add( PythonExecuteType::instance() );
+#endif
 }

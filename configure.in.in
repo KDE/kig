@@ -1,0 +1,51 @@
+KDE_LANG_CPLUSPLUS
+
+# this variable is set to true if we need to warn the user that Python
+# scripting support has been disabled due to missing headers or libs
+# or whatever..  It's not set if the user explicitly disabled python
+# scripting ( "./configure --disable-kig-python-scripting" ).  We
+# complain about this at the end of the ./configure script.  Check out
+# configure.in.bot for the code..
+kig_warn_about_disabling_python="no"
+
+AC_DEFUN( KIG_PYTHON_NOT_FOUND, [
+  AC_MSG_ERROR( 
+    [[Kig needs the Python and Boost.Python libraries and their headers \
+installed for its Python scripting support.  One of both was not \
+found, and Python scripting will be disabled.]] );
+  kig_warn_about_disabling_python="yes"
+  kig_enable_python_scripting="no" ] )
+
+AC_ARG_ENABLE( kig-python-scripting, 
+  [  --disable-kig-python-scripting	Disable Kig Python Scripting support],
+  [  kig_enable_python_scripting=$enableval ],
+  [  kig_enable_python_scripting=yes] )
+
+if test "x$kig_enable_python_scripting" != xno; then
+  kig_enable_python_scripting = "yes" # either yes or no..
+  KDE_CHECK_PYTHON( [], [[KIG_PYTHON_NOT_FOUND]] )
+fi
+
+if test "x$kig_enable_python_scripting" != xno; then
+  kig_ac_old_cppflags="$CPPFLAGS"
+  kig_ac_old_cxxflags="$CXXFLAGS"
+  kig_ac_old_ldflags="$LDFLAGS"
+
+  CPPFLAGS="$CPPFLAGS $PYTHONINC"
+  CXXFLAGS="$CXXFLAGS $USE_EXCEPTIONS"
+  LDFLAGS="$LDFLAGS $PYTHONLIB $LIBPYTHON"
+
+  AC_CHECK_HEADER(boost/python.hpp,,[KIG_PYTHON_NOT_FOUND] )
+
+  KDE_CHECK_LIB( boost_python, main, [], [KIG_PYTHON_NOT_FOUND] )
+
+  CPPFLAGS="$kig_ac_old_cppflags"
+  CXXFLAGS="$kig_ac_old_cxxflags"
+  LDFLAGS="$kig_ac_old_ldflags"
+fi
+
+if test "x$kig_enable_python_scripting" != xno; then
+  AC_DEFINE( KIG_ENABLE_PYTHON_SCRIPTING, 1, [Defined if Kig Python scripting is enabled] )
+fi
+
+AM_CONDITIONAL(KIG_COMPILE_PYTHON_SCRIPTING, test x$kig_enable_python_scripting != xno)

@@ -1,0 +1,70 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>NewScriptWizardBase</class>
+<widget class="QWizard">
+    <property name="name">
+        <cstring>NewScriptWizardBase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>510</width>
+            <height>414</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>New Script Object</string>
+    </property>
+    <widget class="QWidget">
+        <property name="name">
+            <cstring>mpargs</cstring>
+        </property>
+        <attribute name="title">
+            <string>Select arguments</string>
+        </attribute>
+        <vbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1</cstring>
+                </property>
+                <property name="text">
+                    <string>Select the argument objects ( if any ) in the Kig window and press next.</string>
+                </property>
+            </widget>
+        </vbox>
+    </widget>
+    <widget class="QWidget">
+        <property name="name">
+            <cstring>mpcode</cstring>
+        </property>
+        <attribute name="title">
+            <string>Enter the code</string>
+        </attribute>
+        <vbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel2</cstring>
+                </property>
+                <property name="text">
+                    <string>Now fill in the python code..</string>
+                </property>
+            </widget>
+            <widget class="KTextEdit">
+                <property name="name">
+                    <cstring>codeeditor</cstring>
+                </property>
+            </widget>
+        </vbox>
+    </widget>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>ktextedit.h</includehint>
+</includehints>
+</UI>

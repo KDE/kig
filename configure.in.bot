@@ -1,0 +1,14 @@
+if test x$kig_warn_about_disabling_python = xyes; then
+  echo ""
+  echo "Kig Python scripting support has been disabled, because you "
+  echo "are missing the necessary headers and/or libraries."
+  echo "In order to use Kig Python scripting, you need to have "
+  echo "Python installed, along with its development package ( e.g. "
+  echo "libpython-dev ), and also the Boost.Python library, along with "
+  echo "its development package ( e.g. libboost-python-dev )."
+  echo ""
+  echo "Kig will continue to function without Python scripting support, "
+  echo "but you will not be able to created Python scripted objects, or "
+  echo "load Kig files that use them."
+  echo ""
+fi

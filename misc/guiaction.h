@@ -19,6 +19,8 @@
 #ifndef KIG_MISC_GUIACTION_H
 #define KIG_MISC_GUIACTION_H
 
+#include <config.h>
+
 #include <qstring.h>
 #include <qcstring.h>
 #include <kaction.h>
@@ -125,6 +127,7 @@ public:
   void act( KigDocument& );
 };
 
+#if 0
 class TestAction
   : public GUIAction
 {
@@ -138,5 +141,25 @@ public:
   const char* actionName() const;
   void act( KigDocument& );
 };
+#endif
+
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+
+class NewScriptAction
+  : public GUIAction
+{
+  const char* mactionname;
+public:
+  NewScriptAction( const char* actionname );
+  ~NewScriptAction();
+  QString description() const;
+  QCString iconFileName() const;
+  QString descriptiveName() const;
+  const char* actionName() const;
+  void act( KigDocument& );
+  int shortcut() const;
+};
+
+#endif // KIG_ENABLE_PYTHON_SCRIPTING
 
 #endif
