@@ -29,10 +29,10 @@ class LocusImp
   typedef CurveImp Parent;
   const CurveImp* mcurve;
   const ObjectHierarchy& mhier;
-protected:
-  ~LocusImp();
 public:
   LocusImp( const CurveImp*, const ObjectHierarchy& );
+  ~LocusImp();
+  LocusImp* copy() const;
 
   bool inherits( int type ) const;
 
@@ -44,9 +44,9 @@ public:
   bool valid() const;
 
   // TODO ?
-//   const uint numberOfProperties() const;
-//   const QCStringList properties() const;
-//   const Property property( uint which, const KigWidget& w ) const;
+  const uint numberOfProperties() const;
+  const QCStringList properties() const;
+  const Property property( uint which, const KigWidget& w ) const;
 
   double getParam( const Coordinate& point ) const;
   const Coordinate getPoint( double param ) const;

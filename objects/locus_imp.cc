@@ -21,6 +21,7 @@
 #include "bogus_imp.h"
 #include "point_imp.h"
 #include "object.h"
+#include "property.h"
 #include "../misc/object_hierarchy.h"
 #include "../misc/kigpainter.h"
 #include "../misc/coordinate.h"
@@ -86,3 +87,22 @@ LocusImp::LocusImp( const CurveImp* curve, const ObjectHierarchy& hier )
 {
 }
 
+const uint LocusImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties();
+}
+
+const QCStringList LocusImp::properties() const
+{
+  return Parent::properties();
+}
+
+const Property LocusImp::property( uint which, const KigWidget& w ) const
+{
+  return Parent::property( which, w );
+}
+
+LocusImp* LocusImp::copy() const
+{
+  return new LocusImp( mcurve, mhier );
+}
