@@ -59,8 +59,6 @@
 typedef KParts::GenericFactory<KigDocument> KigDocumentFactory;
 K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigDocumentFactory );
 
-Types KigDocument::types;
-
 KAboutData* KigDocument::createAboutData()
 {
   return kigAboutData( "kigpart", I18N_NOOP( "KigPart" ) );
@@ -314,16 +312,29 @@ bool KigDocument::saveFile()
     return false;
   };
 
-  if ( filter->save( mObjs, m_file ) == KigFilter::OK )
+  KigFilter::Result result = filter->save( mObjs, m_file );
+  if ( result == KigFilter::OK )
   {
     setModified ( false );
     mhistory->documentSaved();
     return true;
   }
-  else
+  else // if ( result == KigFilter::NotSupported )
   {
-    return false;
+    // we don't support this mime type...
+    KMessageBox::sorry
+      (
+        widget(),
+        i18n( "You tried to save to a file of type \"%1\".  Unfortunately, "
+              "Kig doesn't support this format.  If you think the format in "
+              "question would be worth implementing support for, you can "
+              "always ask me nicely on mailto:fritmebufstek@pandora.be "
+              "or do the work yourself and send me a patch."
+          ).arg(mimeType->name()),
+        i18n( "Format not supported" )
+        );
   };
+  return false;
 };
 
 void KigDocument::addObject(Object* o)

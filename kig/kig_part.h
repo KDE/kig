@@ -203,9 +203,6 @@ protected:
 
   KigView* m_widget;
 
-  // the types are global to the entire application...
-  static Types types;
-
   // our internal document data:
   // first all objects we contain: all of them are in there, except
   // the obc.
