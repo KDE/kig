@@ -268,7 +268,8 @@ void NormalMode::enableActions()
 
 void NormalMode::deleteObjects()
 {
-  // TODO...
+  mDoc->delObjects( sos );
+  sos.clear();
 }
 
 void NormalMode::selectObject( Object* o )
