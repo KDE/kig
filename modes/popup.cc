@@ -208,9 +208,9 @@ void NormalModePopupObjects::toplevelMenuSlot( int i )
 void NormalModePopupObjects::activateAction( int menu, int action )
 {
   bool done = false;
-  // we need action - 2 cause we called fillUpMenu with nextfree set
-  // to 2 initially..
-  action -= 2;
+  // we need action - 10 cause we called fillUpMenu with nextfree set
+  // to 10 initially..
+  action -= 10;
   for ( uint i = 0; ! done && i < mproviders.size(); ++i )
     done = mproviders[i]->executeAction( menu, action, mobjs, *this, mdoc, mview, mmode );
 }
@@ -371,10 +371,11 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
   {
     int ret = (*i)->wantArgs( popup.objects(), d, v );
     if ( ret == ArgsChecker::Invalid ) continue;
-    if ( ( menu == NormalModePopupObjects::TransformMenu && (*i)->isTransform() ) ||
-         ( menu == NormalModePopupObjects::ConstructMenu && ret == ArgsChecker::Complete ) ||
-         ( menu == NormalModePopupObjects::StartMenu && ret == ArgsChecker::Valid && ! (*i)->isTransform() )
-        )
+    bool add = false;
+    if ( (*i)->isTransform() && popup.objects().size() == 1 ) add = menu == NormalModePopupObjects::TransformMenu;
+    else if ( ret == ArgsChecker::Complete ) add = menu == NormalModePopupObjects::ConstructMenu;
+    else add = menu == NormalModePopupObjects::StartMenu;
+    if ( add )
     {
       popup.addAction( menu, (*i)->descriptiveName(), nextfree++ );
       mctors[menu].push_back( *i );
