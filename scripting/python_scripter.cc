@@ -178,18 +178,47 @@ public:
   dict mainnamespace;
 };
 
+// allocates a new string using new [], and copies contents into it..
+static char* newstring( const char* contents )
+{
+  char* ret = new char[strlen( contents ) + 1];
+  strcpy( ret, contents );
+  return ret;
+};
+
 PythonScripter::PythonScripter()
 {
   d = new Private;
 
   // tell the python interpreter about our API..
-  PyImport_AppendInittab( "kig", initkig );
+
+  // the newstring stuff is to prevent warnings about conversion from
+  // const char* to char*..
+  char* s = newstring( "kig" );
+  PyImport_AppendInittab( s, initkig );
+  //  we can't delete this yet, since python keeps a pointer to it..
+  // This means we have a small but harmless memory leak here, but it
+  // doesn't hurt at all, since it could only be freed at the end of
+  // the program, at which time it is freed by the system anyway if we
+  // don't do it..
+  //delete [] s;
+
   Py_Initialize();
-  PyRun_SimpleString( "import kig;" );
-  PyRun_SimpleString( "from kig import *;" );
+
+  s = newstring( "import kig;" );
+  PyRun_SimpleString( s );
+  delete [] s;
+
+  s = newstring( "from kig import *;" );
+  PyRun_SimpleString( s );
+  delete [] s;
 
   // find the main namespace..
-  handle<> main_module(borrowed( PyImport_AddModule("__main__") ));
+
+  s = newstring( "__main__" );
+  handle<> main_module( borrowed( PyImport_AddModule( s ) ) );
+  delete [] s;
+
   handle<> mnh(borrowed( PyModule_GetDict(main_module.get()) ));
   d->mainnamespace = extract<dict>( mnh.get() );
 }

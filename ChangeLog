@@ -1,3 +1,9 @@
+2003-07-17  Dominique Devriese  <devriese@kde.org>
+
+	* fix the "conversion from const char* to char*" problem in
+	python_scripter.cc.  This introduces a small, harmless memory leak
+	because of how the python libs work..
+
 2003-07-16  Dominique Devriese  <devriese@kde.org>
 
 	* add documentation about installing the python dev libs to
