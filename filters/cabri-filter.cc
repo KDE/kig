@@ -46,7 +46,7 @@ bool KigFilterCabri::supportMime( const QString mime )
 
 // this function reads a line, and converts all line delimiters
 // ("\r\n" or "\n" to unix-style "\n").
-static QCString readLine( QFile& f, bool& eof )
+static QString readLine( QFile& f, bool& eof )
 {
   QCString s;
   char r;
@@ -65,7 +65,7 @@ static QCString readLine( QFile& f, bool& eof )
     s += r;
   };
   s += '\n';
-  return s;
+  return QString::fromLatin1( s );
 }
 
 struct ObjectData
@@ -82,25 +82,23 @@ static ObjectData readObject( QFile& f )
   ObjectData n;
   n.valid = false;
   bool eof;
-  QCString l = readLine( f, eof );
+  QString l = readLine( f, eof );
   // n.valid == false, so this is cool...
   if( eof ) return n;
 
   QRegExp re( "^(\\d+): *([^,]+), \\d+, CN:(\\d+), VN:(\\d+)$" );
 
-//  if ( ! re.match( l ) ) return n;
+  if ( ! re.match( l ) ) return n;
 
   // the first number is the id
-  QString idS = re.cap( 1 );
   bool ok = true;
-  int id = idS.toInt( &ok );
+  int id = re.cap( 1 ).toInt( &ok );
   if( ! ok ) return n;
   n.id = id;
 
   QString type = re.cap( 2 );
 
-  QString nparentss = re.cap( 3 );
-  int nparents = nparentss.toInt( & ok );
+  int nparents = re.cap( 3 ).toInt( & ok );
   if ( ! ok ) return n;
 
   // TODO...

@@ -1,9 +1,5 @@
 * harder:
 
-- make full-screen mode work like konqueror's ( Ctrl+Shift+F toggle's
-  full-screen mode, not escape ! ).  Check out slotToggleFullScreen()
-  in konq_mainwindow.cc to see how it's done :)
-
 - decouple the link between how an object is calc'ed and whether or
   not it is internal or drawn.  ( all combinations are possible,
   except that internal objects are never drawn ).  Internal objects

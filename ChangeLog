@@ -1,3 +1,11 @@
+2003-05-21  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* fix the full screen mode, to use the correct shortcut for
+		starting and stopping it, and use QWidget::showFullScreen, instead
+		of creating a full screen pseudo-dialog etc.
+
+	* "branch off" release 0.5, and update the version strings etc.
+
 2003-05-17  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* add a toolbar icon ( i.e. GUIAction ) for constructing an angle

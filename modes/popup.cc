@@ -630,8 +630,8 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
     popup.addAction( menu, p, i18n( "Zoom &In" ), nextfree++ );
     p = l->loadIcon( "viewmag-", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "Zoom &Out" ), nextfree++ );
-    if ( popup.widget().isFullScreen() )
-      popup.addAction( menu, i18n( "E&xit Full Screen Mode" ), nextfree++ );
+    p = l->loadIcon( "window_fullscreen", KIcon::User );
+    popup.addAction( menu, p, i18n( "Toggle &Full Screen Mode" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
   {
@@ -644,7 +644,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
 
 bool BuiltinDocumentActionsProvider::executeAction(
   int menu, int& id, const Objects&,
-  NormalModePopupObjects& popup,
+  NormalModePopupObjects&,
   KigDocument& doc, KigWidget& w, NormalMode& m )
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
@@ -666,18 +666,12 @@ bool BuiltinDocumentActionsProvider::executeAction(
       w.zoomOut();
       return true;
     }
-    else if ( popup.widget().isFullScreen() )
+    else if ( id == 3 )
     {
-      if ( id == 3 )
-      {
-        assert( w.view()->parent()->inherits( "QDialog" ) );
-        static_cast<QDialog*>( w.view()->parent() )->close();
-        return true;
-      }
-      else
-        id -= 1;
-    };
-    id -= 3;
+      w.view()->toggleFullScreen();
+      return true;
+    }
+    id -= 4;
     return false;
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )

@@ -113,10 +113,15 @@ public:
   ~KigWidget();
 
   bool isFullScreen() const;
+  void setFullScreen( bool f );
 
   const KigView* view() const {
     return mview;
-  }
+  };
+
+  KigView* view() {
+    return mview;
+  };
 
   /**
    * The following are functions used by KigMode's to tell us to draw
@@ -182,7 +187,7 @@ public:
 
   const KigDocument& document() const;
 
-public slots:
+public:
   // this is connected to KigDocument::recenterScreen, check that signal
   // out for an explanation...
   void recenterScreen();
@@ -191,8 +196,6 @@ public slots:
   void zoomOut();
 
   void redrawScreen( bool paintOnWidget = true );
-
-  void slotFullScreen();
 };
 
 /**
@@ -205,12 +208,6 @@ class KigView
   : public QWidget
 {
   Q_OBJECT
-
-  KAction* aZoomIn;
-  KAction* aZoomOut;
-  KAction* aCenterScreen;
-  KAction* aExportToImage;
-  KAction* aFullScreen;
 
   QGridLayout* mlayout;
   QScrollBar* mrightscroll;
@@ -240,6 +237,10 @@ public:
 
 public slots:
   void updateScrollBars();
+  void zoomIn();
+  void zoomOut();
+  void recenterScreen();
+  void toggleFullScreen();
 
 private slots:
   void slotRightScrollValueChanged( int );

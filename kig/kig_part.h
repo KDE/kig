@@ -196,12 +196,18 @@ public:
   QPtrList<KAction> aMNewAll;
   QPtrList<KAction> aMNewConic;
 
+
+  KAction* aZoomIn;
+  KAction* aZoomOut;
+  KAction* aCenterScreen;
+  KAction* aExportToImage;
+  KAction* aFullScreen;
+
   KAction* aCancelConstruction;
   KAction* aDeleteObjects;
   KAction* aNewMacro;
   KAction* aShowHidden;
   KAction* aConfigureTypes;
-  KAction* aFullScreen;
   KAction* aFixedPoint;
   myvector<KigGUIAction*> aActions;
 
