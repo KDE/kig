@@ -1,6 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Maurizio Paolini <paolini@dmf.unicatt.it>
+ Copyright (C) 2003  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -43,15 +44,14 @@
 void LineTransform::calc()
 {
   mvalid = true;
-  double transformation[3][3];
 
-  mvalid = getProjectiveTransformation (
-     argsnum, mtransformargs, transformation );
+  Transformation transfo = getProjectiveTransformation (
+     argsnum, mtransformargs, mvalid );
 
   if ( mvalid )
   {
-    mpa = calcTransformedPoint ( mline->p1(), transformation, mvalid );
-    mpb = calcTransformedPoint ( mline->p2(), transformation, mvalid );
+    mpa = transfo.apply ( mline->p1(), mvalid );
+    mpb = transfo.apply ( mline->p2(), mvalid );
   }
 }
 
@@ -119,8 +119,7 @@ QString LineTransform::sUseText( const Objects& os, const Object* o)
 void LineTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   Object *transformations[MAXTRANSFORMARGS];
-  bool valid;
-  double transformation[3][3];
+  bool valid = true;
 
   int argsnum = os.size() - 1;
   assert( argsnum <= MAXTRANSFORMARGS );
@@ -135,18 +134,17 @@ void LineTransform::sDrawPrelim( KigPainter& p, const Objects& os )
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( argsnum,
-      transformations, transformation );
+  Transformation transfo = getProjectiveTransformation (
+    argsnum, transformations, valid );
 
   if ( ! valid ) return;
 
   p.setPen(QPen (Qt::red, 1));
 
-  Coordinate a = calcTransformedPoint ( line->p1(), transformation, valid );
-  Coordinate b = calcTransformedPoint ( line->p2(), transformation, valid );
-  p.drawLine( a, b );
+  Coordinate a = transfo.apply ( line->p1(), valid );
+  Coordinate b = transfo.apply ( line->p2(), valid );
 
-  return;
+  if ( valid ) p.drawLine( a, b );
 }
 
 LineTransform::LineTransform( const Objects& os )
@@ -176,14 +174,12 @@ LineTransform::LineTransform( const Objects& os )
 void PointTransform::calc()
 {
   mvalid = true;
-  double transformation[3][3];
-
-  mvalid = getProjectiveTransformation (
-     argsnum, mtransformargs, transformation );
+  Transformation transfo = getProjectiveTransformation (
+     argsnum, mtransformargs, mvalid );
 
   if ( mvalid )
   {
-    mC = calcTransformedPoint ( mpoint->getCoord(), transformation, mvalid );
+    mC = transfo.apply ( mpoint->getCoord(), mvalid );
   }
 }
 
@@ -252,7 +248,6 @@ void PointTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   Object *transformations[MAXTRANSFORMARGS];
   bool valid;
-  double transformation[3][3];
 
   int argsnum = os.size() - 1;
   assert( argsnum <= MAXTRANSFORMARGS );
@@ -267,16 +262,14 @@ void PointTransform::sDrawPrelim( KigPainter& p, const Objects& os )
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( argsnum,
-      transformations, transformation );
+  Transformation transfo = getProjectiveTransformation (
+    argsnum, transformations, valid );
 
   if ( ! valid ) return;
 
-  Coordinate pp = calcTransformedPoint ( point->getCoord(), 
-                   transformation, valid );
-  sDrawPrelimPoint( p, pp );
+  Coordinate pp = transfo.apply ( point->getCoord(), valid );
 
-  return;
+  if ( valid ) sDrawPrelimPoint( p, pp );
 }
 
 PointTransform::PointTransform( const Objects& os )
@@ -306,15 +299,14 @@ PointTransform::PointTransform( const Objects& os )
 void SegmentTransform::calc()
 {
   mvalid = true;
-  double transformation[3][3];
 
-  mvalid = getProjectiveTransformation (
-     argsnum, mtransformargs, transformation );
+  Transformation transfo = getProjectiveTransformation (
+     argsnum, mtransformargs, mvalid );
 
   if ( mvalid )
   {
-    mpa = calcTransformedPoint ( msegment->p1(), transformation, mvalid );
-    mpb = calcTransformedPoint ( msegment->p2(), transformation, mvalid );
+    mpa = transfo.apply ( msegment->p1(), mvalid );
+    mpb = transfo.apply ( msegment->p2(), mvalid );
   }
 }
 
@@ -335,7 +327,7 @@ Objects SegmentTransform::getParents() const
 }
 
 SegmentTransform::SegmentTransform(const SegmentTransform& c)
-  : Segment ( c ), msegment( c.msegment ), 
+  : Segment ( c ), msegment( c.msegment ),
     argsnum ( c.argsnum )
 {
   for ( int i = 0; i < c.argsnum; i++ )
@@ -384,7 +376,6 @@ void SegmentTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   Object *transformations[MAXTRANSFORMARGS];
   bool valid;
-  double transformation[3][3];
 
   int argsnum = os.size() - 1;
   assert( argsnum <= MAXTRANSFORMARGS );
@@ -399,15 +390,15 @@ void SegmentTransform::sDrawPrelim( KigPainter& p, const Objects& os )
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( argsnum,
-      transformations, transformation );
+  Transformation transfo = getProjectiveTransformation (
+    argsnum, transformations, valid );
 
   if ( ! valid ) return;
 
   p.setPen(QPen (Qt::red, 1));
 
-  Coordinate a = calcTransformedPoint ( segment->p1(), transformation, valid );
-  Coordinate b = calcTransformedPoint ( segment->p2(), transformation, valid );
+  Coordinate a = transfo.apply ( segment->p1(), valid );
+  Coordinate b = transfo.apply ( segment->p2(), valid );
   p.drawSegment( a, b );
 
   return;
@@ -440,15 +431,14 @@ SegmentTransform::SegmentTransform( const Objects& os )
 void RayTransform::calc()
 {
   mvalid = true;
-  double transformation[3][3];
 
-  mvalid = getProjectiveTransformation (
-     argsnum, mtransformargs, transformation );
+  Transformation transfo = getProjectiveTransformation (
+     argsnum, mtransformargs, mvalid );
 
   if ( mvalid )
   {
-    mpa = calcTransformedPoint ( mray->p1(), transformation, mvalid );
-    mpb = calcTransformedPoint ( mray->p2(), transformation, mvalid );
+    mpa = transfo.apply ( mray->p1(), mvalid );
+    mpb = transfo.apply ( mray->p2(), mvalid );
   }
 }
 
@@ -517,7 +507,6 @@ void RayTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   Object *transformations[MAXTRANSFORMARGS];
   bool valid;
-  double transformation[3][3];
 
   int argsnum = os.size() - 1;
   assert( argsnum <= MAXTRANSFORMARGS );
@@ -532,18 +521,16 @@ void RayTransform::sDrawPrelim( KigPainter& p, const Objects& os )
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( argsnum,
-      transformations, transformation );
+  Transformation transfo = getProjectiveTransformation (
+    argsnum, transformations, valid );
 
   if ( ! valid ) return;
 
   p.setPen(QPen (Qt::red, 1));
 
-  Coordinate a = calcTransformedPoint ( ray->p1(), transformation, valid );
-  Coordinate b = calcTransformedPoint ( ray->p2(), transformation, valid );
-  p.drawRay( a, b );
-
-  return;
+  Coordinate a = transfo.apply ( ray->p1(), valid );
+  Coordinate b = transfo.apply ( ray->p2(), valid );
+  if ( valid ) p.drawRay( a, b );
 }
 
 RayTransform::RayTransform( const Objects& os )
@@ -573,21 +560,20 @@ RayTransform::RayTransform( const Objects& os )
 void CircleTransform::calc()
 {
   mvalid = true;
-  double transformation[3][3];
 
-  mvalid = getProjectiveTransformation (
-     argsnum, mtransformargs, transformation );
+  Transformation transfo = getProjectiveTransformation (
+     argsnum, mtransformargs, mvalid );
 
-  if ( ! isHomoteticTransformation (transformation) )
+  if ( ! transfo.isHomothetic() )
   {
     mvalid = false;
     return;
   }
   if ( mvalid )
   {
-    qpc = calcTransformedPoint ( mcircle->center(), transformation, mvalid );
-    double det = transformation[1][1]*transformation[2][2] -
-                 transformation[1][2]*transformation[2][1];
+    qpc = transfo.apply ( mcircle->center(), mvalid );
+    double det = transfo.data( 1, 1 )*transfo.data( 2, 2 ) -
+                 transfo.data( 1, 2 )*transfo.data( 2, 1 );
     mradius = sqrt(fabs(det))*mcircle->radius();
   }
 }
@@ -657,7 +643,6 @@ void CircleTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   Object *transformations[MAXTRANSFORMARGS];
   bool valid;
-  double transformation[3][3];
 
   int argsnum = os.size() - 1;
   assert( argsnum <= MAXTRANSFORMARGS );
@@ -672,19 +657,18 @@ void CircleTransform::sDrawPrelim( KigPainter& p, const Objects& os )
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( argsnum,
-      transformations, transformation );
+  Transformation transfo = getProjectiveTransformation(
+    argsnum, transformations, valid );
 
   if ( ! valid ) return;
 
-  if ( ! isHomoteticTransformation (transformation)) return;
+  if ( ! transfo.isHomothetic()) return;
 
   p.setPen(QPen (Qt::red, 1));
 
-  Coordinate cc = calcTransformedPoint ( circle->center(), 
-    transformation, valid );
-  double det = transformation[1][1]*transformation[2][2] -
-               transformation[1][2]*transformation[2][1];
+  Coordinate cc = transfo.apply ( circle->center(), valid );
+  double det = transfo.data( 1, 1 )*transfo.data( 2, 2 ) -
+               transfo.data( 1, 2 )*transfo.data( 2, 1 );
   double radius = sqrt(fabs(det))*circle->radius();
   p.drawCircle( cc, radius );
 
@@ -718,16 +702,15 @@ CircleTransform::CircleTransform( const Objects& os )
 void ConicTransform::calc()
 {
   mvalid = true;
-  double transformation[3][3];
 
-  mvalid = getProjectiveTransformation (
-     argsnum, mtransformargs, transformation );
+  Transformation transfo = getProjectiveTransformation (
+     argsnum, mtransformargs, mvalid );
 
   if ( mvalid )
   {
-    mequation = ConicPolarEquationData ( 
+    mequation = ConicPolarEquationData (
       calcConicTransformation ( mconic->cartesianEquationData(),
-                                transformation, mvalid )
+                                transfo, mvalid )
       );
   }
 }
@@ -802,7 +785,6 @@ void ConicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   Object *transformations[MAXTRANSFORMARGS];
   bool valid;
-  double transformation[3][3];
 
   int argsnum = os.size() - 1;
   assert( argsnum <= MAXTRANSFORMARGS );
@@ -817,15 +799,15 @@ void ConicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( argsnum,
-      transformations, transformation );
+  Transformation transfo = getProjectiveTransformation(
+    argsnum, transformations, valid );
 
   if ( ! valid ) return;
 
   p.setPen(QPen (Qt::red, 1));
   p.drawConic( ConicPolarEquationData (
     calcConicTransformation ( conic->cartesianEquationData(),
-                              transformation, valid )
+                              transfo, valid )
     ) );
 
   return;
@@ -858,15 +840,14 @@ ConicTransform::ConicTransform( const Objects& os )
 void CubicTransform::calc()
 {
   mvalid = true;
-  double transformation[3][3];
 
-  mvalid = getProjectiveTransformation ( 
-     argsnum, mtransformargs, transformation );
+  Transformation transfo = getProjectiveTransformation (
+     argsnum, mtransformargs, mvalid );
 
   if ( mvalid )
   {
-    cequation = calcCubicTransformation ( mcubic->cartesianEquationData(), 
-                                          transformation, mvalid );
+    cequation = calcCubicTransformation ( mcubic->cartesianEquationData(),
+                                          transfo, mvalid );
   }
 }
 
@@ -938,7 +919,7 @@ Object::WantArgsResult CubicTransform::sWantArgs( const Objects& os )
 QString CubicTransform::sUseText( const Objects& os, const Object* o)
 {
   if ( os.size() == 0 ) return i18n( "Transform this cubic" );
-  if ( os.size() >= 2 && o == *(os.end()-1) ) 
+  if ( os.size() >= 2 && o == *(os.end()-1) )
     return i18n("Finish construction");
   return getTransformMessage ( os, o );
 }
@@ -947,7 +928,6 @@ void CubicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   Object *transformations[MAXTRANSFORMARGS];
   bool valid;
-  double transformation[3][3];
 
   int argsnum = os.size() - 1;
   assert( argsnum <= MAXTRANSFORMARGS );
@@ -956,8 +936,8 @@ void CubicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 
   assert ((*i)->toCubic());
   Cubic *cubic = (*i++)->toCubic();
- 
-  if ( argsnum > 1 && *(os.end()-1) == *(os.end()-2)) 
+
+  if ( argsnum > 1 && *(os.end()-1) == *(os.end()-2))
         argsnum--;
   for ( int j = 0; j < argsnum; j++ )
   {
@@ -965,15 +945,15 @@ void CubicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( argsnum, 
-      transformations, transformation );
+  Transformation transfo = getProjectiveTransformation ( argsnum,
+      transformations, valid );
 
   if ( ! valid ) return;
 
   p.setPen(QPen (Qt::red, 1));
   p.drawCubic(
     calcCubicTransformation ( cubic->cartesianEquationData(),
-                              transformation, valid )
+                              transfo, valid )
     );
 
   return;
@@ -1005,11 +985,10 @@ CubicTransform::CubicTransform( const Objects& os )
 
 const ConicCartesianEquationData calcConicTransformation (
     ConicCartesianEquationData data,
-    double t[3][3], bool& valid )
+    const Transformation& t, bool& valid )
 {
   double a[3][3];
   double b[3][3];
-  double ti[3][3];
   ConicCartesianEquationData dataout;
 
   a[1][1] = data.coeffs[0];
@@ -1019,7 +998,7 @@ const ConicCartesianEquationData calcConicTransformation (
   a[0][2] = a[2][0] = data.coeffs[4]/2;
   a[0][0] = data.coeffs[5];
 
-  valid = Invert3by3matrix ( t, ti );
+  Transformation ti = t.inverse( valid );
   if ( ! valid ) return dataout;
 
   for (int i = 0; i < 3; i++)
@@ -1031,7 +1010,7 @@ const ConicCartesianEquationData calcConicTransformation (
       {
         for (int jj = 0; jj < 3; jj++)
         {
-	  b[i][j] += a[ii][jj]*ti[ii][i]*ti[jj][j];
+	  b[i][j] += a[ii][jj]*ti.data( ii, i )*ti.data( jj, j );
 	}
       }
     }
@@ -1046,11 +1025,10 @@ const ConicCartesianEquationData calcConicTransformation (
 
 const CubicCartesianEquationData calcCubicTransformation (
     CubicCartesianEquationData data,
-    double t[3][3], bool& valid )
+    const Transformation& t, bool& valid )
 {
   double a[3][3][3];
   double b[3][3][3];
-  double ti[3][3];
   CubicCartesianEquationData dataout;
 
   int icount = 0;
@@ -1076,7 +1054,7 @@ const CubicCartesianEquationData calcCubicTransformation (
 	  else             // case aijk  (i<j<k)
 	  {
 	    a[i][j][k] /= 6.;
-	    a[i][k][j] = a[j][i][k] = a[j][k][i] = 
+	    a[i][k][j] = a[j][i][k] = a[j][k][i] =
                          a[k][i][j] = a[k][j][i] = a[i][j][k];
 	  }
 	}
@@ -1084,7 +1062,7 @@ const CubicCartesianEquationData calcCubicTransformation (
     }
   }
 
-  valid = Invert3by3matrix ( t, ti );
+  Transformation ti = t.inverse( valid );
   if ( ! valid ) return dataout;
 
   for (int i = 0; i < 3; i++)
@@ -1100,7 +1078,7 @@ const CubicCartesianEquationData calcCubicTransformation (
           {
             for (int kk = 0; kk < 3; kk++)
             {
-	      b[i][j][k] += a[ii][jj][kk]*ti[ii][i]*ti[jj][j]*ti[kk][k];
+	      b[i][j][k] += a[ii][jj][kk]*ti.data( ii, i )*ti.data( jj, j )*ti.data( kk, k );
 	    }
 	  }
 	}

@@ -1,6 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Maurizio Paolini <paolini@dmf.unicatt.it>
+ Copyright (C) 2003  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -28,101 +29,84 @@
 #include "kigtransform.h"
 #include "i18n.h"
 
-bool getProjectiveTransformation ( int argsnum,
-    Object *transforms[], double lt[3][3] )
+#include <cmath>
+#include "../objects/object.h"
+
+Transformation getProjectiveTransformation ( int argsnum,
+    Object *transforms[], bool& valid )
 {
-  for (int i = 0; i < 3; i++)
-  {
-    for (int j = 0; j < 3; j++)
-    {
-      lt[i][j] = 0.;
-    }
-  }
-  for (int i = 0; i < 3; i++) lt[i][i] = 1.;
+  valid = true;
 
   assert ( argsnum > 0 );
   int argn = 0;
   Object* transform = transforms[argn++];
   if (transform->toVector())
   {
+    // translation
+    assert (argn == argsnum);
     Vector* v = transform->toVector();
     Coordinate dir = v->getDir();
-    lt[1][0] = dir.x;
-    lt[2][0] = dir.y;
-    assert (argn == argsnum);
-    return true;
+    return Transformation::translation( dir );
   }
 
   if (transform->toPoint())
   {
-    Point* p = transform->toPoint();
-    lt[1][1] = lt[2][2] = -1;
-    lt[1][0] = 2*p->getX();
-    lt[2][0] = 2*p->getY();
+    // point reflection ( or is point symmetry the correct term ? )
     assert (argn == argsnum);
-    return true;
+    Point* p = transform->toPoint();
+    return Transformation::pointReflection( p->getCoord() );
   }
 
   if (transform->toLine())
   {
+    // line reflection ( or is it line symmetry ? )
     Line* line = transform->toLine();
-    Coordinate a = line->p1();
-    Coordinate d = line->direction();
-    double dirnormsq = d.x*d.x + d.y*d.y;
-    double adotnu = (a.y*d.x - a.x*d.y)/dirnormsq;
-    lt[1][0] = -2*adotnu*d.y;
-    lt[2][0] =  2*adotnu*d.x;
-    lt[1][1] -= 2*d.y*d.y/dirnormsq;
-    lt[2][2] -= 2*d.x*d.x/dirnormsq;
-    lt[1][2]  = lt[2][1] = 2*d.x*d.y/dirnormsq;
     assert (argn == argsnum);
-    return true;
+    return Transformation::lineReflection( line->lineData() );
   }
 
   if (transform->toRay())
   {
-    Ray* line = transform->toRay();
-    Coordinate d = line->direction().normalize();
-    double alpha = 0.1*M_PI/2;  // a small angle for the DrawPrelim
-    if (argn < argsnum)
-    {
-      Angle* angle = transforms[argn++]->toAngle();
-      alpha = angle->size();
-    }
-    lt[0][0] =  cos(alpha);
-    lt[1][1] =  cos(alpha)*d.x*d.x + d.y*d.y;
-    lt[0][1] = -sin(alpha)*d.x;
-    lt[1][0] =  sin(alpha)*d.x;
-    lt[0][2] = -sin(alpha)*d.y;
-    lt[2][0] =  sin(alpha)*d.y;
-    lt[1][2] =  cos(alpha)*d.x*d.y - d.x*d.y;
-    lt[2][1] =  cos(alpha)*d.x*d.y - d.x*d.y;
-    lt[2][2] =  cos(alpha)*d.y*d.y + d.x*d.x;
-    assert (argn == argsnum);
-    return true;
+    // domi: sorry, but what kind of transformation does this do ?
+    //       i'm guessing it's some sort of rotation, but i'm not
+    //       really sure..
+//     Ray* line = transform->toRay();
+//     Coordinate d = line->direction().normalize();
+//     double alpha = 0.1*M_PI/2;  // a small angle for the DrawPrelim
+//     if (argn < argsnum)
+//     {
+//       Angle* angle = transforms[argn++]->toAngle();
+//       alpha = angle->size();
+//     }
+//     lt[0][0] =  cos(alpha);
+//     lt[1][1] =  cos(alpha)*d.x*d.x + d.y*d.y;
+//     lt[0][1] = -sin(alpha)*d.x;
+//     lt[1][0] =  sin(alpha)*d.x;
+//     lt[0][2] = -sin(alpha)*d.y;
+//     lt[2][0] =  sin(alpha)*d.y;
+//     lt[1][2] =  cos(alpha)*d.x*d.y - d.x*d.y;
+//     lt[2][1] =  cos(alpha)*d.x*d.y - d.x*d.y;
+//     lt[2][2] =  cos(alpha)*d.y*d.y + d.x*d.x;
+//     assert (argn == argsnum);
+//     return true;
   }
 
   if (transform->toAngle())
   {
-    double x = 0.;
-    double y = 0.;
+    // rotation..
+    Coordinate center = Coordinate( 0., 0. );
     if (argn < argsnum)
     {
       Object* arg = transforms[argn++];
       assert (arg->toPoint());
-      Point* p = arg->toPoint();
-      x = p->getX();
-      y = p->getY();
+      center = arg->toPoint()->getCoord();
     }
     Angle* angle = transform->toAngle();
     double alpha = angle->size();
-    lt[1][1] = lt[2][2] = cos(alpha);
-    lt[1][2] = -sin(alpha);
-    lt[2][1] = sin(alpha);
-    lt[1][0] = x - lt[1][1]*x - lt[1][2]*y;
-    lt[2][0] = y - lt[2][1]*x - lt[2][2]*y;
+
     assert (argn == argsnum);
-    return true;
+
+    return Transformation::rotation( alpha, center );
   }
 
   if (transform->toSegment())  // this is a scaling
@@ -130,13 +114,11 @@ bool getProjectiveTransformation ( int argsnum,
     Segment* segment = transform->toSegment();
     Coordinate p = segment->p2() - segment->p1();
     double s = p.length();
-    double x = 0;
-    double y = 0;
-    lt[1][1] = lt[2][2] = s;
     if (argn < argsnum)
     {
       Object* arg = transforms[argn++];
-      if (arg->toSegment())
+      if (arg->toSegment()) // s is the length of the first segment
+                            // divided by the length of the second..
       {
         Segment* segment = arg->toSegment();
         Coordinate p = segment->p2() - segment->p1();
@@ -146,33 +128,24 @@ bool getProjectiveTransformation ( int argsnum,
       if (arg->toPoint())   // scaling w.r. to a point
       {
         Point* p = arg->toPoint();
-        x = p->getX();
-        y = p->getY();
-        lt[1][1] = lt[2][2] = s;
-        lt[1][0] = x - s*x;
-        lt[2][0] = y - s*y;
         assert (argn == argsnum);
-        return true;
+        return Transformation::scaling( s, p->getCoord() );
       }
       if (arg->toLine())  // scaling w.r. to a line
       {
         Line* line = arg->toLine();
-        Coordinate a = line->p1();
-        Coordinate d = line->direction();
-        double dirnormsq = d.x*d.x + d.y*d.y;
-        lt[1][1] = (d.x*d.x + s*d.y*d.y)/dirnormsq;
-        lt[2][2] = (d.y*d.y + s*d.x*d.x)/dirnormsq;
-        lt[1][2] = lt[2][1] = (d.x*d.y - s*d.x*d.y)/dirnormsq;
-
-        lt[1][0] = a.x - lt[1][1]*a.x - lt[1][2]*a.y;
-        lt[2][0] = a.y - lt[2][1]*a.x - lt[2][2]*a.y;
+        assert( argn == argsnum );
+        return Transformation::scaling( s, line->lineData() );
       }
     }
+
+    // domi: is this reached ?  can i assert( false ) here ?
     assert (argn == argsnum);
-    return true;
+    return Transformation::identity();
   }
 
-  return false;
+  valid = false;
+  return Transformation::identity();
 }
 
 tWantArgsResult WantTransformation ( Objects::const_iterator& i,
@@ -234,7 +207,7 @@ QString getTransformMessage ( const Objects& os, const Object *o )
 
     case 2:   // we ask for the first parameter of the transformation
     case 3:
-    if (os[1]->toAngle()) 
+    if (os[1]->toAngle())
     {
       if (o->toPoint()) return i18n("about this point");
       assert (false);
@@ -261,41 +234,114 @@ QString getTransformMessage ( const Objects& os, const Object *o )
   return i18n("Use this transformation");
 }
 
-/*
+
+/* domi: not necessary anymore, homotheticness is kept as a bool in
+ *       the Transformation class..
  * decide if the given transformation is homotetic
  */
+// bool isHomoteticTransformation ( double transformation[3][3] )
+// {
+//   if (transformation[0][1] != 0 || transformation[0][2] != 0) return (false);
+//   // test the orthogonality of the matrix 2x2 of second and third rows
+//   // and columns
+//   if (fabs(fabs(transformation[1][1]) -
+//             fabs(transformation[2][2])) > 1e-8) return (false);
+//   if (fabs(fabs(transformation[1][2]) -
+//             fabs(transformation[2][1])) > 1e-8) return (false);
 
-bool isHomoteticTransformation ( double transformation[3][3] )
+//   return transformation[1][2] * transformation[2][1] *
+//          transformation[1][1] * transformation[2][2] <= 0.;
+// }
+
+const Transformation Transformation::identity()
 {
-  if (transformation[0][1] != 0 || transformation[0][2] != 0) return (false);
-  // test the orthogonality of the matrix 2x2 of second and third rows
-  // and columns
-  if (fabs(fabs(transformation[1][1]) -
-            fabs(transformation[2][2])) > 1e-8) return (false);
-  if (fabs(fabs(transformation[1][2]) -
-            fabs(transformation[2][1])) > 1e-8) return (false);
-
-  return transformation[1][2] * transformation[2][1] *
-         transformation[1][1] * transformation[2][2] <= 0.;
+  Transformation ret;
+  for ( int i = 0; i < 3; ++i )
+    for ( int j = 0; j < 3; ++j )
+      ret.mdata[i][j] = ( i == j ? 1 : 0 );
+  ret.mIsHomothety = true;
+  return ret;
 }
 
-/*
- * transform a point (given in cartesian coordinates)
- * using a projective transformation
- */
-
-const Coordinate calcTransformedPoint ( Coordinate p,
-                  double transformation[3][3], bool& valid )
+const Transformation Transformation::scaling( double factor, const Coordinate& center )
 {
+  Transformation ret;
+  for ( int i = 0; i < 3; ++i )
+    for ( int j = 0; j < 3; ++j )
+      ret.mdata[i][j] = ( i == j ? factor : 0 );
+  ret.mdata[0][0] = 1;
+  ret.mdata[1][0] = center.x - factor * center.x;
+  ret.mdata[2][0] = center.y - factor * center.y;
+  ret.mIsHomothety = true;
+  return ret;
+}
+
+const Transformation Transformation::translation( const Coordinate& c )
+{
+  Transformation ret = identity();
+  ret.mdata[1][0] = c.x;
+  ret.mdata[2][0] = c.y;
+  return ret;
+}
+
+const Transformation Transformation::pointReflection( const Coordinate& c )
+{
+  return scaling( -1, c );
+}
+
+const Transformation operator*( const Transformation& a, const Transformation& b )
+{
+  // just multiply the two matrices..
+  Transformation ret;
+
+  for ( int i = 0; i < 3; ++i )
+    for ( int j = 0; j < 3; ++j )
+    {
+      ret.mdata[i][j] = 0;
+      for ( int k = 0; k < 3; ++k )
+        ret.mdata[i][j] += a.mdata[i][k] * b.mdata[k][j];
+    };
+
+  ret.mIsHomothety = a.mIsHomothety && b.mIsHomothety;
+
+  return ret;
+};
+
+const Transformation Transformation::lineReflection( const LineData& l )
+{
+  return scaling( -1, l );
+}
+
+const Transformation Transformation::scaling( double factor, const LineData& l )
+{
+  Transformation ret = identity();
+
+  Coordinate a = l.a;
+  Coordinate d = l.dir();
+  double dirnormsq = d.squareLength();
+  ret.mdata[1][1] = (d.x*d.x + factor*d.y*d.y)/dirnormsq;
+  ret.mdata[2][2] = (d.y*d.y + factor*d.x*d.x)/dirnormsq;
+  ret.mdata[1][2] = ret.mdata[2][1] = (d.x*d.y - factor*d.x*d.y)/dirnormsq;
+
+  ret.mdata[1][0] = a.x - ret.mdata[1][1]*a.x - ret.mdata[1][2]*a.y;
+  ret.mdata[2][0] = a.y - ret.mdata[2][1]*a.x - ret.mdata[2][2]*a.y;
+
+  ret.mIsHomothety = true;
+  return ret;
+}
+
+const Coordinate Transformation::apply( const Coordinate& p, bool& valid ) const
+{
+  valid = true;
   double phom[3] = {1., p.x, p.y};
-  double rhom[3] = {0., 0., 0.};
+  double rhom[3];
 
 
   for (int i = 0; i < 3; i++)
   {
     for (int j = 0; j < 3; j++)
     {
-      rhom[i] += transformation[i][j]*phom[j];
+      rhom[i] += mdata[i][j]*phom[j];
     }
   }
 
@@ -306,4 +352,41 @@ const Coordinate calcTransformedPoint ( Coordinate p,
   }
 
   return Coordinate (rhom[1]/rhom[0], rhom[2]/rhom[0]);
+}
+
+const Transformation Transformation::rotation( double alpha, const Coordinate& center )
+{
+  Transformation ret = identity();
+
+  double x = center.x;
+  double y = center.y;
+
+  ret.mdata[1][1] = ret.mdata[2][2] = cos(alpha);
+  ret.mdata[1][2] = -sin(alpha);
+  ret.mdata[2][1] = sin(alpha);
+  ret.mdata[1][0] = x - ret.mdata[1][1]*x - ret.mdata[1][2]*y;
+  ret.mdata[2][0] = y - ret.mdata[2][1]*x - ret.mdata[2][2]*y;
+
+  return ret;
+}
+
+bool Transformation::isHomothetic() const
+{
+  return mIsHomothety;
+}
+
+double Transformation::data( int r, int c ) const
+{
+  return mdata[r][c];
+}
+
+const Transformation Transformation::inverse( bool& valid ) const
+{
+  Transformation ret;
+
+  valid = Invert3by3matrix( mdata, ret.mdata );
+
+  // domi: is the inverse of a homothetic matrix a homothety ?
+  ret.mIsHomothety = false;
+
 }

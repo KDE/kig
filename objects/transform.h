@@ -1,6 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Maurizio Paolini <paolini@dmf.unicatt.it>
+ Copyright (C) 2003  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -38,6 +39,8 @@
 #include "../misc/common.h"
 
 #define MAXTRANSFORMARGS 10
+
+class Transformation;
 
 class LineTransform
   : public Line
@@ -255,11 +258,11 @@ protected:
 
 const ConicCartesianEquationData calcConicTransformation (
     ConicCartesianEquationData data,
-    double transformation[3][3], bool& valid );
+    const Transformation&, bool& valid );
 
 const CubicCartesianEquationData calcCubicTransformation (
     CubicCartesianEquationData data,
-    double transformation[3][3], bool& valid );
+    const Transformation&, bool& valid );
 
 class CubicTransform
   : public Cubic
