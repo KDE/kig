@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>EditTypeBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>450</width>
-            <height>140</height>
+            <width>481</width>
+            <height>142</height>
         </rect>
     </property>
     <property name="sizePolicy">
@@ -83,6 +83,9 @@
                                     <property name="name">
                                         <cstring>editName</cstring>
                                     </property>
+                                    <property name="whatsThis" stdset="0">
+                                        <string>Here you can edit the name of the current macro type.</string>
+                                    </property>
                                 </widget>
                             </hbox>
                         </widget>
@@ -112,6 +115,9 @@
                                     <property name="name">
                                         <cstring>editDescription</cstring>
                                     </property>
+                                    <property name="whatsThis" stdset="0">
+                                        <string>Here you can edit the description of the current macro type. This field is optional, so you can also leave this empty: if you do so, then your macro type will have no description.</string>
+                                    </property>
                                 </widget>
                             </hbox>
                         </widget>
@@ -131,6 +137,9 @@
                             </property>
                             <property name="text">
                                 <string></string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Use this button to change the icon of the current macro type.</string>
                             </property>
                         </widget>
                         <spacer>

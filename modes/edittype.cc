@@ -25,23 +25,23 @@
 
 #include <kapplication.h>
 #include <kicondialog.h>
-#include <kiconloader.h>
 #include <klineedit.h>
 #include <klocale.h>
+#include <kmessagebox.h>
 #include <kpushbutton.h>
+#include <kstdguiitem.h>
 
 EditType::EditType( QWidget* parent, QString name, QString desc, QString icon )
   : EditTypeBase( parent, "edittype", true ), mname( name ), mdesc( desc ), micon( icon )
 {
   // improving GUI look'n'feel...
-  il = KGlobal::iconLoader();
-  buttonHelp->setIconSet( QIconSet( il->loadIcon( "help", KIcon::Small ) ) );
-  buttonOk->setIconSet( QIconSet( il->loadIcon( "button_ok", KIcon::Small ) ) );
-  buttonCancel->setIconSet( QIconSet( il->loadIcon( "button_cancel", KIcon::Small ) ) );
+  buttonHelp->setGuiItem( KStdGuiItem::help() );
+  buttonOk->setGuiItem( KStdGuiItem::ok() );
+  buttonCancel->setGuiItem( KStdGuiItem::cancel() );
 
   editName->setText( mname );
   editDescription->setText( mdesc );
-  typeIcon->setIcon( !micon.isNull() ? micon : "gear" );
+  typeIcon->setIcon( !micon.isEmpty() ? micon : "gear" );
 }
 
 EditType::~EditType()
@@ -56,10 +56,16 @@ void EditType::helpSlot()
 
 void EditType::okSlot()
 {
+  QString tmp = editName->text();
+  if ( tmp.isEmpty() )
+  {
+    KMessageBox::information( this, i18n( "The name of the macro can not be empty." ) );
+    return;
+  }
+
   bool namechanged = false;
   bool descchanged = false;
   bool iconchanged = false;
-  QString tmp = editName->text();
   if ( tmp != mname )
   {
     mname = tmp;

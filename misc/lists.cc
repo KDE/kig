@@ -344,6 +344,8 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
 //  int mminor = re.cap( 3 ).toInt( &sok );
 //  if ( ! sok ) return false;
 
+  int unnamedindex = 1;
+
   for ( QDomElement macroelem = docelem.firstChild().toElement();
         ! macroelem.isNull(); macroelem = macroelem.nextSibling().toElement() )
   {
@@ -367,6 +369,9 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
       else continue;
     };
     assert( hierarchy );
+    // if the macro has no name, we give it a bogus name...
+    if ( name.isEmpty() )
+      name = i18n( "Unnamed Macro #%1" ).arg( unnamedindex++ );
     MacroConstructor* ctor =
       new MacroConstructor( *hierarchy, i18n( name.latin1() ), i18n( description.latin1() ), iconfile );
     delete hierarchy;

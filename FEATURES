@@ -24,12 +24,12 @@ here are some nice Kig features i'd like to show off :)
   Currently Kig has read-write support for native files ( which is an
   imho clean xml format ) and for the older version of the Kig file
   format; read support for KGeo, KSeg and, partially, for Dr. Geo
-  files. This is an area where we plan working on ( Cabri at least
-  read support )...
-- Kig has an option "Export to image", which allows you to export a
-  kig document into one of the graphics formats that KDE or Qt
-  support...  This is useful since not all other programs support Kig
-  files yet... ;)
+  and Cabri files. This is an area where we plan working on...
+- Kig can export a document in several formats: the most common are
+  images, and you can choose among the types supported by Qt and KDE.
+  Moreover, the other supported formats are: XFig files, and SVG and
+  LaTeX documents. These are useful since not all other programs
+  support Kig files yet... ;)
 - Kig is very compatible with the program it was intended to replace,
   KGeo.  It supports all of its Object types and most of its file
   format... 

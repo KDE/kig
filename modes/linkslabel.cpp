@@ -1,4 +1,3 @@
-// test.cpp
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This library is free software; you can redistribute it and/or

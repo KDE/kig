@@ -516,7 +516,7 @@ bool NameObjectActionsProvider::executeAction(
       if ( !namecalcer )
       {
         justadded = true;
-        ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "unnamed object" ) ) );
+        ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "<unnamed object>" ) ) );
         os[0]->setNameCalcer( c );
         namecalcer = c;
       }
@@ -547,7 +547,7 @@ bool NameObjectActionsProvider::executeAction(
     ObjectCalcer* namecalcer = os[0]->nameCalcer();
     if ( !namecalcer )
     {
-      ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "unnamed object" ) ) );
+      ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "<unnamed object>" ) ) );
       os[0]->setNameCalcer( c );
       namecalcer = c;
     }

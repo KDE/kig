@@ -1,4 +1,3 @@
-// label.cpp
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -161,7 +160,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
       argcalcer = o->nameCalcer();
       if ( !argcalcer )
       {
-        ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "unnamed object" ) ) );
+        ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "<unnamed object>" ) ) );
         o->setNameCalcer( c );
         argcalcer = c;
       }

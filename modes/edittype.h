@@ -24,8 +24,6 @@
 
 #include "edittypebase.h"
 
-#include <kiconloader.h>
-
 class EditType : public EditTypeBase
 {
   Q_OBJECT
@@ -33,7 +31,6 @@ class EditType : public EditTypeBase
   QString mname;
   QString mdesc;
   QString micon;
-  const KIconLoader* il;
 public:
   EditType( QWidget* parent, QString name = QString::null, QString desc = QString::null, QString icon = QString::null );
   ~EditType();

@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>TypesDialogBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -83,7 +83,7 @@
                         <string>Select types here...</string>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>This is a list of the current macro types... You can select, delete, export and import them...</string>
+                        <string>This is a list of the current macro types... You can select, edit, delete, export and import them...</string>
                     </property>
                 </widget>
             </hbox>
@@ -111,6 +111,9 @@
                             <property name="text">
                                 <string>Edit...</string>
                             </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Edit the selected type.</string>
+                            </property>
                         </widget>
                         <widget class="KPushButton">
                             <property name="name">
@@ -118,6 +121,9 @@
                             </property>
                             <property name="text">
                                 <string>Delete</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Delete all the selected types in the list.</string>
                             </property>
                         </widget>
                     </vbox>
@@ -154,6 +160,9 @@
                             <property name="text">
                                 <string>Export...</string>
                             </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Export all the selected types to a file.</string>
+                            </property>
                         </widget>
                         <widget class="KPushButton">
                             <property name="name">
@@ -161,6 +170,9 @@
                             </property>
                             <property name="text">
                                 <string>Import...</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>Import macros that are contained in one or more files.</string>
                             </property>
                         </widget>
                     </vbox>
@@ -201,6 +213,9 @@
                     </property>
                     <property name="text">
                         <string>&amp;Help</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+H</string>
                     </property>
                     <property name="autoDefault">
                         <bool>true</bool>

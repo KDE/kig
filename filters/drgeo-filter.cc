@@ -278,14 +278,12 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         else if ( ce.tagName() == "value" )
           values = ce.text();
       }
-      bool ok;
-      bool ok2;
-      bool ok3;
-      double x = xs.toDouble( &ok );
-      double y = ys.toDouble( &ok2 );
-      double value = values.toDouble( &ok3 );
       if ( domelem.attribute( "type" ) == "Free" )
       {
+        bool ok;
+        bool ok2;
+        double x = xs.toDouble( &ok );
+        double y = ys.toDouble( &ok2 );
         if ( ! ( ok && ok2 ) )
           KIG_FILTER_PARSE_ERROR;
         oc = fact->fixedPointCalcer( Coordinate( x, y ) );
@@ -308,6 +306,8 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       }
       else if ( domelem.attribute( "type" ) == "On_curve" )
       {
+        bool ok3;
+        double value = values.toDouble( &ok3 );
         if ( ! ok3 )
           KIG_FILTER_PARSE_ERROR;
         if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) ||

@@ -1,3 +1,16 @@
+2004-12-14  Pino Toscano <toscano.pino@tiscali.it>
+
+	* More tooltips and "what's this" to some dialog.
+
+	* No more file name in every file.
+
+	* More control on macro name: when loading from file, if a macro
+	has no name, we'll assign it a bogus one (like "Unnamed macro
+	#id"). Furthermore, we ensure that the user don't set an empty
+	name for a macro in the Edit Types Dialog.
+
+	* Other misc changes.
+
 2004-11-09  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Made kig.dektop and kig_part.desktop more compliant to
