@@ -36,7 +36,7 @@ struct ConicCartesianEquationData
 {
   double coeffs[6];
 public:
-  ConicCartesianEquationData();
+  explicit ConicCartesianEquationData();
   ConicCartesianEquationData( double a, double b, double c,
                               double d, double e, double f )
     {
