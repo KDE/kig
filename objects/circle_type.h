@@ -24,13 +24,10 @@
 class CircleBCPType
   : public ObjectABType
 {
+public:
   CircleBCPType();
   ~CircleBCPType();
-public:
-  static const CircleBCPType* instance();
-
-  void move( Object*, const Coordinate&,
-             const Coordinate& ) const;
+  ObjectType* copy() const;
 
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
@@ -38,13 +35,12 @@ public:
 class CircleBTPType
   : public ObjectABCType
 {
-  CircleBTPType();
-  ~CircleBTPType();
-
   const Coordinate calcCenter( const Coordinate& a, const Coordinate& b,
                                const Coordinate& b ) const;
 public:
-  static const CircleBTPType* instance();
+  CircleBTPType();
+  ~CircleBTPType();
+  ObjectType* copy() const;
 
   ObjectImp* calc( const Args& args, const KigWidget& ) const;
 };

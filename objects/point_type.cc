@@ -23,22 +23,19 @@
 #include "curve_imp.h"
 #include "bogus_imp.h"
 
-const FixedPointType FixedPointType::sself;
-const ConstrainedPointType ConstrainedPointType::sself;
-
-const ArgParser::spec FixedPointType::argsspec[1] =
+static const ArgParser::spec argsspecdd[1] =
 {
   { ObjectImp::ID_DoubleImp, 2 }
 };
 
-const ArgParser::spec ConstrainedPointType::argsspec[2] =
+static const ArgParser::spec argsspecdc[2] =
 {
   { ObjectImp::ID_DoubleImp, 1 },
   { ObjectImp::ID_CurveImp, 1 }
 };
 
 FixedPointType::FixedPointType()
-  : ObjectType( "point", "FixedPoint", argsspec, 1 )
+  : ObjectType( "point", "FixedPoint", argsspecdd, 1 )
 {
 }
 
@@ -57,16 +54,6 @@ ObjectImp* FixedPointType::calc( const Args& parents, const KigWidget& ) const
   return d;
 }
 
-const FixedPointType* FixedPointType::instance()
-{
-  return &sself;
-}
-
-const ConstrainedPointType* ConstrainedPointType::instance()
-{
-  return &sself;
-}
-
 ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigWidget& ) const
 {
   assert( parents.size() == 2 );
@@ -77,7 +64,7 @@ ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigWidget& ) c
 }
 
 ConstrainedPointType::ConstrainedPointType()
-  : ObjectType( "point", "ConstrainedPoint", argsspec, 2 )
+  : ObjectType( "point", "ConstrainedPoint", argsspecdc, 2 )
 {
 }
 
@@ -102,7 +89,7 @@ void FixedPointType::move( Object* ourobj, const Coordinate&,
   na.push_back( new DoubleImp( oy->data() + dist.y ) );
 
   // commit..
-  ourobj->reset( this, na, ourobj->parents() );
+  ourobj->reset( new FixedPointType, na, ourobj->parents() );
 }
 
 void ConstrainedPointType::move( Object* ourobj, const Coordinate&,
@@ -128,7 +115,7 @@ void ConstrainedPointType::move( Object* ourobj, const Coordinate&,
   na.push_back( new DoubleImp( np ) );
 
   // commit..
-  ourobj->reset( this, na, ourobj->parents() );
+  ourobj->reset( new ConstrainedPointType, na, ourobj->parents() );
 }
 
 bool ConstrainedPointType::canMove() const
@@ -150,13 +137,22 @@ MidPointType::~MidPointType()
 {
 }
 
-const MidPointType* MidPointType::instance()
-{
-  static const MidPointType t;
-  return &t;
-}
-
 ObjectImp* MidPointType::calc( const Coordinate& a, const Coordinate& b ) const
 {
   return new PointImp( ( a + b ) / 2 );
+}
+
+ObjectType* FixedPointType::copy() const
+{
+  return new FixedPointType;
+}
+
+ObjectType* MidPointType::copy() const
+{
+  return new MidPointType;
+}
+
+ObjectType* ConstrainedPointType::copy() const
+{
+  return new ConstrainedPointType;
 }

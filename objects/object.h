@@ -40,7 +40,7 @@ class Object
   bool mshown;
   int mwidth;
 
-  const ObjectType* mtype;
+  ObjectType* mtype;
   ODP mimp;
 
   Objects mparents;
@@ -48,7 +48,7 @@ class Object
 
   Objects mchildren;
 public:
-  Object( const ObjectType* type, const Objects& parents, const Args& fixedargs );
+  Object( ObjectType* type, const Objects& parents, const Args& fixedargs );
   Object( const Object& o );
   ~Object();
 
@@ -58,7 +58,7 @@ public:
 
   void setImp( ObjectImp* i );
 
-  void reset( const ObjectType* t, const Args& fixedArgs, const Objects& parents );
+  void reset( ObjectType* t, const Args& fixedArgs, const Objects& parents );
 
   double getParam( const Coordinate& c ) const;
   const Coordinate getPoint( double param ) const;

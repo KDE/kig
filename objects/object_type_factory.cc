@@ -59,31 +59,31 @@ void ObjectTypeFactory::setupBuiltinTypes()
   assert( ! malreadysetup );
   malreadysetup = true;
   // line_type.h
-  add( SegmentABType::instance() );
-  add( LineABType::instance() );
-  add( RayABType::instance() );
-  add( LinePerpendLPType::instance() );
-  add( LineParallelLPType::instance() );
+  add( new SegmentABType );
+  add( new LineABType );
+  add( new RayABType );
+  add( new LinePerpendLPType );
+  add( new LineParallelLPType );
 
   // point_type.h
-  add( FixedPointType::instance() );
-  add( ConstrainedPointType::instance() );
+  add( new FixedPointType );
+  add( new ConstrainedPointType );
 
   // circle_type.h
-  add( CircleBCPType::instance() );
-  add( CircleBTPType::instance() );
+  add( new CircleBCPType );
+  add( new CircleBTPType );
 
   // conic_type.h
-  add( ConicB5PType::instance() );
-  add( ConicBAAPType::instance() );
-  add( EllipseBFFPType::instance() );
-  add( HyperbolaBFFPType::instance() );
-  add( ConicBDFPType::instance() );
-  add( ParabolaBTPType::instance() );
-  add( ConicPolarPointType::instance() );
-  add( ConicPolarLineType::instance() );
+  add( new ConicB5PType );
+  add( new ConicBAAPType );
+  add( new EllipseBFFPType );
+  add( new HyperbolaBFFPType );
+  add( new ConicBDFPType );
+  add( new ParabolaBTPType );
+  add( new ConicPolarPointType );
+  add( new ConicPolarLineType );
 
   // cubic_type.h
-  add( CubicB9PType::instance() );
-  add( CubicNodeB6PType::instance() );
+  add( new CubicB9PType );
+  add( new CubicNodeB6PType );
 }

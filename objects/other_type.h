@@ -24,20 +24,20 @@
 class AngleType
   : public ObjectABCType
 {
+public:
   AngleType();
   ~AngleType();
-public:
-  static const AngleType* instance();
+  ObjectType* copy() const;
   ObjectImp* calc( const Args& parents, const KigWidget& ) const;
 };
 
 class VectorType
   : public ObjectABType
 {
+public:
   VectorType();
   ~VectorType();
-public:
-  static const VectorType* instance();
+  ObjectType* copy() const;
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
 

@@ -88,7 +88,7 @@ void StandardConstructorBase::handlePrelim(
 }
 
 SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
-  const ObjectType* t, const char* descname,
+  ObjectType* t, const char* descname,
   const char* desc, const char* iconfile )
   : StandardConstructorBase( descname, desc, iconfile,
                              t->argsParser() ),
@@ -98,6 +98,7 @@ SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
 
 SimpleObjectTypeConstructor::~SimpleObjectTypeConstructor()
 {
+  delete mtype;
 }
 
 void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& parents, const KigWidget& w ) const
@@ -118,7 +119,7 @@ void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& pare
 Objects SimpleObjectTypeConstructor::build(
   const Objects& os, KigDocument&, KigWidget& ) const
 {
-  Object* n = new Object( mtype, os, Args() );
+  Object* n = new Object( mtype->copy(), os, Args() );
   return Objects( n );
 }
 
@@ -127,7 +128,7 @@ StandardConstructorBase::~StandardConstructorBase()
 }
 
 MultiObjectTypeConstructor::MultiObjectTypeConstructor(
-  const ObjectType* t, const char* descname,
+  ObjectType* t, const char* descname,
   const char* desc, const char* iconfile,
   const std::vector<int>& params )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
@@ -137,7 +138,7 @@ MultiObjectTypeConstructor::MultiObjectTypeConstructor(
 }
 
 MultiObjectTypeConstructor::MultiObjectTypeConstructor(
-  const ObjectType* t, const char* descname,
+  ObjectType* t, const char* descname,
   const char* desc, const char* iconfile,
   int a, int b, int c, int d )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
@@ -152,6 +153,7 @@ MultiObjectTypeConstructor::MultiObjectTypeConstructor(
 
 MultiObjectTypeConstructor::~MultiObjectTypeConstructor()
 {
+  delete mtype;
 }
 
 void MultiObjectTypeConstructor::drawprelim( KigPainter& p,
@@ -188,7 +190,7 @@ Objects MultiObjectTypeConstructor::build(
   {
     Args args;
     args.push_back( new IntImp( *i ) );
-    Object* n = new Object( mtype, os, args );
+    Object* n = new Object( mtype->copy(), os, args );
     ret.push_back( n );
   };
   return ret;

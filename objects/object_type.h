@@ -26,7 +26,10 @@
  * The ObjectType class is a thing that represents the "behaviour" for
  * a certain type..  This basically means that it decides what
  * @ref ObjectImp the object gets in the calc() function, how the
- * object move()'s etc.
+ * object move()'s etc.  There is an ObjectType per object, so it can
+ * cache data.  However, it must not be able to recalc this data from
+ * its parents and fixedargs, and it must check if the cached data
+ * doesn't need to be recalced before using it..
  */
 class ObjectType
 {
@@ -40,6 +43,7 @@ protected:
               int n );
 public:
   virtual ~ObjectType();
+  virtual ObjectType* copy() const = 0;
 
   virtual ObjectImp* calc( const Args& parents, const KigWidget& w ) const = 0;
 

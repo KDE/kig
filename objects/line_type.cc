@@ -34,12 +34,6 @@ SegmentABType::~SegmentABType()
 {
 }
 
-const SegmentABType* SegmentABType::instance()
-{
-  static const SegmentABType s;
-  return &s;
-}
-
 ObjectImp* SegmentABType::calc( const Coordinate& a, const Coordinate& b ) const
 {
   return new SegmentImp( a, b );
@@ -52,12 +46,6 @@ LineABType::LineABType()
 
 LineABType::~LineABType()
 {
-}
-
-const LineABType* LineABType::instance()
-{
-  static const LineABType s;
-  return &s;
 }
 
 ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
@@ -75,21 +63,9 @@ RayABType::~RayABType()
 {
 }
 
-const RayABType* RayABType::instance()
-{
-  static const RayABType s;
-  return &s;
-}
-
 ObjectImp* RayABType::calc( const Coordinate& a, const Coordinate& b ) const
 {
   return new RayImp( a, b );
-}
-
-LinePerpendLPType* LinePerpendLPType::instance()
-{
-  static LinePerpendLPType l;
-  return &l;
 }
 
 ObjectImp* LinePerpendLPType::calc(
@@ -109,12 +85,6 @@ LineParallelLPType::~LineParallelLPType()
 {
 }
 
-LineParallelLPType* LineParallelLPType::instance()
-{
-  static LineParallelLPType l;
-  return &l;
-}
-
 ObjectImp* LineParallelLPType::calc(
   const LineData& a,
   const Coordinate& b ) const
@@ -130,4 +100,29 @@ LinePerpendLPType::LinePerpendLPType()
 
 LinePerpendLPType::~LinePerpendLPType()
 {
+}
+
+ObjectType* LineABType::copy() const
+{
+  return new LineABType;
+}
+
+ObjectType* RayABType::copy() const
+{
+  return new RayABType;
+}
+
+ObjectType* LinePerpendLPType::copy() const
+{
+  return new LinePerpendLPType;
+}
+
+ObjectType* LineParallelLPType::copy() const
+{
+  return new LineParallelLPType;
+}
+
+ObjectType* SegmentABType::copy() const
+{
+  return new SegmentABType;
 }

@@ -31,26 +31,9 @@ CircleBCPType::~CircleBCPType()
 {
 }
 
-const CircleBCPType* CircleBCPType::instance()
-{
-  static const CircleBCPType s;
-  return &s;
-}
-
 ObjectImp* CircleBCPType::calc( const Coordinate& a, const Coordinate& b ) const
 {
   return new CircleImp( a, ( b - a ).length() );
-}
-
-void CircleBCPType::move( Object*, const Coordinate&,
-                          const Coordinate& ) const
-{
-}
-
-const CircleBTPType* CircleBTPType::instance()
-{
-  static const CircleBTPType t;
-  return &t;
 }
 
 CircleBTPType::CircleBTPType()
@@ -140,4 +123,14 @@ const Coordinate CircleBTPType::calcCenter(
   double centery = a.y + (xdo * b2 - xao * a2) * denominator;
 
   return Coordinate(centerx, centery);
+}
+
+ObjectType* CircleBCPType::copy() const
+{
+  return new CircleBCPType;
+}
+
+ObjectType* CircleBTPType::copy() const
+{
+  return new CircleBTPType;
 }

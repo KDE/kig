@@ -33,12 +33,6 @@ AngleType::~AngleType()
 {
 }
 
-const AngleType* AngleType::instance()
-{
-  static const AngleType t;
-  return &t;
-}
-
 ObjectImp* AngleType::calc( const Args& parents, const KigWidget& ) const
 {
   if ( parents.size() < 3 ) return new InvalidImp;
@@ -72,13 +66,17 @@ VectorType::~VectorType()
 {
 }
 
-const VectorType* VectorType::instance()
-{
-  static const VectorType t;
-  return &t;
-}
-
 ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
 {
   return new VectorImp( a, b );
+}
+
+ObjectType* AngleType::copy() const
+{
+  return new AngleType;
+}
+
+ObjectType* VectorType::copy() const
+{
+  return new AngleType;
 }

@@ -28,7 +28,7 @@
 #include <functional>
 #include <algorithm>
 
-Object::Object( const ObjectType* type, const Objects& parents, const Args& fixedArgs )
+Object::Object( ObjectType* type, const Objects& parents, const Args& fixedArgs )
   : mcolor( Qt::blue ), mselected( false ), mshown( true ), mwidth( 1 ), mtype( type ),
     mimp( 0 ), mparents( parents ), mfixedargs( fixedArgs )
 {
@@ -45,6 +45,8 @@ Object::~Object()
   // that they're dying too, which would cause segfaults...
   for ( Objects::iterator i = mchildren.begin(); i != mchildren.end(); ++i )
     (*i)->delParent( this );
+
+  delete mtype;
 }
 
 const uint Object::numberOfProperties() const
@@ -167,14 +169,17 @@ bool Object::has( int typeID ) const
   return mimp->inherits( typeID );
 }
 
-void Object::reset( const ObjectType* t, const Args& fixedArgs, const Objects& parents )
+void Object::reset( ObjectType* t, const Args& fixedArgs, const Objects& parents )
 {
+  delete mtype;
   mtype = t;
-  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
-    (*i)->delChild( this );
+
   for ( Args::const_iterator i = mfixedargs.begin(); i != mfixedargs.end(); ++i )
     delete *i;
   mfixedargs = fixedArgs;
+
+  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
+    (*i)->delChild( this );
   mparents = parents;
   for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
     (*i)->addChild( this );
@@ -204,7 +209,7 @@ QString Object::translatedBaseTypeName() const
 
 Object::Object( const Object& o )
   : mcolor( o.mcolor ), mselected( o.mselected ), mshown( o.mshown ),
-    mwidth( 1 ), mtype( o.mtype ), mimp( o.mimp->copy() ), mparents( o.mparents )
+    mwidth( 1 ), mtype( o.mtype->copy() ), mimp( o.mimp->copy() ), mparents( o.mparents )
 {
   for ( Objects::const_iterator i = mparents.begin(); i != mparents.end(); ++i )
     (*i)->addChild( this );

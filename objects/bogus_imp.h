@@ -23,6 +23,14 @@
 
 #include <qstring.h>
 
+/**
+ * These ObjectImp's are not really in that they don't represent
+ * objects.  They exist because ObjectImp's also serve another
+ * purpose, namely containing data.  They can be loaded and saved, and
+ * the Object class contains some fixedArgs, that are fixed for the
+ * object at hand ( e.g. the Coordinates of a fixed point ).  These
+ * ObjectImp's are pure data, and serve only to be loaded and saved..
+ */
 class BogusImp
   : public ObjectImp
 {

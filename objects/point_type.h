@@ -25,14 +25,10 @@
 class FixedPointType
   : public ObjectType
 {
-  static const FixedPointType sself;
-
-  static const ArgParser::spec argsspec[1];
 public:
   FixedPointType();
   ~FixedPointType();
-
-  static const FixedPointType* instance();
+  ObjectType* copy() const;
 
   ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
   bool canMove() const;
@@ -43,14 +39,10 @@ public:
 class ConstrainedPointType
   : public ObjectType
 {
-  static const ConstrainedPointType sself;
-
-  static const ArgParser::spec argsspec[2];
 public:
   ConstrainedPointType();
   ~ConstrainedPointType();
-
-  static const ConstrainedPointType* instance();
+  ObjectType* copy() const;
 
   ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
   bool canMove() const;
@@ -61,10 +53,11 @@ public:
 class MidPointType
   : public ObjectABType
 {
+public:
   MidPointType();
   ~MidPointType();
-public:
-  static const MidPointType* instance();
+  ObjectType* copy() const;
+
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
 

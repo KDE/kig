@@ -38,13 +38,14 @@ ConicRadicalConstructor::ConicRadicalConstructor()
     I18N_NOOP( "Radical Line for Conics" ),
     I18N_NOOP( "The lines constructed through the intersections of two conics.  This is also defined for non-intersecting conics." ),
     "conicsradicalline", mparser ),
-    mtype( ConicRadicalType::instance() ),
-    mparser( ConicRadicalType::instance()->argsParser().without( ObjectImp::ID_IntImp ) )
+    mtype( new ConicRadicalType ),
+    mparser( mtype->argsParser().without( ObjectImp::ID_IntImp ) )
 {
 }
 
 ConicRadicalConstructor::~ConicRadicalConstructor()
 {
+  delete mtype;
 }
 
 void ConicRadicalConstructor::drawprelim(
@@ -85,7 +86,7 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
     Args args;
     args.push_back( new IntImp( i ) );
     args.push_back( new IntImp( 1 ) );
-    ret.push_back( new Object( mtype, os, args ) );
+    ret.push_back( new Object( mtype->copy(), os, args ) );
   };
   return ret;
 }
