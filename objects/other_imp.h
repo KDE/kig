@@ -75,8 +75,8 @@ public:
   ObjectImp* copy() const;
   const char* baseName() const;
 
-  const Coordinate a();
-  const Coordinate b();
-  const Coordinate dir();
+  const Coordinate a() const;
+  const Coordinate b() const;
+  const Coordinate dir() const;
 };
 #endif
