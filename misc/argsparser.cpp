@@ -22,6 +22,7 @@
 #include "../objects/object_imp.h"
 
 #include <algorithm>
+#include <kdebug.h>
 
 void ArgParser::initialize( const struct spec* args, int n )
 {
@@ -176,11 +177,24 @@ ArgParser::spec ArgParser::findSpec( const ObjectImp* obj, const Args& parents )
   ret.type = -1;
   ret.usetext = 0;
 
-  int numberofanyobjects = manyobjsspec.size();
+  uint numberofanyobjects = manyobjsspec.size();
+  uint anyobjscounter = 0;
+
+  // special case hack for some transformation types that take an
+  // argument and an AnyImp..  if anyone has a better solution, please
+  // tell me :)
+  if ( parents.size() == 1 && numberofanyobjects > 0 )
+  {
+    assert( parents[0] == obj );
+    ret.type = ObjectImp::ID_AnyImp;
+    ret.usetext = manyobjsspec[0];
+    return ret;
+  }
 
   std::vector<bool> found( margs.size() );
 
-  for ( Args::const_iterator o = parents.begin(); o != parents.end(); ++o )
+  for ( Args::const_reverse_iterator o = parents.rbegin();
+        o != parents.rend(); ++o )
   {
     for ( uint i = 0; i < margs.size(); ++i )
     {
@@ -188,27 +202,27 @@ ArgParser::spec ArgParser::findSpec( const ObjectImp* obj, const Args& parents )
       {
         // object o is of a type that we're looking for
         found[i] = true;
-        // i know that "goto's are evil", but they're very useful and
-        // completely harmless if you use them as better "break;"
+        if ( *o == obj ) return margs[i];
+        // i know that "goto's are *evil*", but they're very useful
+        // and completely harmless if you use them as better "break;"
         // statements.. trust me ;)
         goto matched;
       };
     };
-    if ( --numberofanyobjects < 0 )
-      return ret;
+    if ( anyobjscounter < numberofanyobjects )
+    {
+      if ( *o == obj )
+      {
+        ret.type = ObjectImp::ID_AnyImp;
+        ret.usetext = manyobjsspec[anyobjscounter];
+        return ret;
+      };
+      ++anyobjscounter;
+    };
   matched:
     ;
   };
-
-  for ( uint i = 0; i < margs.size(); ++i )
-    if ( obj->inherits( margs[i].type ) && ! found[i] )
-      return margs[i];
-
-  assert( numberofanyobjects >= 0 );
-  if ( numberofanyobjects == 0 ) return ret;
-
-  ret.type = ObjectImp::ID_AnyImp;
-  ret.usetext = manyobjsspec[manyobjsspec.size() - numberofanyobjects];
+  kdDebug() << k_funcinfo << "no proper spec found :(" << endl;
   return ret;
 }
 

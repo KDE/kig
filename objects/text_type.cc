@@ -63,11 +63,10 @@ int TextType::resultId() const
 int TextType::impRequirement( const ObjectImp* oi, const Args& args ) const
 {
   Args firstthree( args.begin(), args.begin() + 3 );
-  if ( mparser.check( firstthree ) == ArgsChecker::Complete )
+  if ( find( firstthree.begin(), firstthree.end(), oi ) != firstthree.end() )
+    return mparser.impRequirement( oi, firstthree );
+  else
     return ObjectImp::ID_AnyImp;
-  else if ( oi->inherits( ObjectImp::ID_StringImp ) ) return ObjectImp::ID_StringImp;
-  else if ( oi->inherits( ObjectImp::ID_PointImp ) ) return ObjectImp::ID_PointImp;
-  else return ObjectImp::ID_IntImp;
 }
 
 ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const

@@ -276,6 +276,7 @@ QString StandardConstructorBase::useText( const Object& o, const Objects& sel,
   using namespace std;
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &Object::imp ) );
+  args.push_back( o.imp() );
 
   const char* ret = margsparser.usetext( o.imp(), args );
   if ( ! ret ) return QString::null;
@@ -354,6 +355,7 @@ QString MacroConstructor::useText( const Object& o, const Objects& sel,
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &Object::imp ) );
+  args.push_back( o.imp() );
   return mparser.usetext( o.imp(), args );
 }
 

@@ -68,8 +68,8 @@ public:
   int check( const Objects& os ) const;
   int check( const Args& os ) const;
   // returns the usetext for the argument that o would be used for,
-  // if sel.with( o ) were used as parents..
-  // o is not in sel.
+  // if sel were used as parents..
+  // o should be in sel...
   const char* usetext( const ObjectImp* o, const Args& sel ) const;
 
   // this reorders the objects or args so that they are in the same
@@ -77,6 +77,8 @@ public:
   Objects parse( const Objects& os ) const;
   Args parse( const Args& os ) const;
 
+  // returns the minimal ObjectImp ID that o needs to inherit in order
+  // to be useful..  o should be part of parents.
   int impRequirement( const ObjectImp* o, const Args& parents ) const;
 };
 

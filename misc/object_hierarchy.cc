@@ -256,7 +256,6 @@ int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenm
     {
       Object* parent = o->parents()[i];
       Objects oparents = o->parents();
-      oparents.remove( parent );
 
       margrequirements[parents[i]] = kMax( margrequirements[parents[i]],
                                            o->impRequirement( parent, oparents ) );

@@ -34,6 +34,8 @@
 #include <algorithm>
 #include <cmath>
 
+using std::find;
+
 #include <qstringlist.h>
 
 static const char* constructanglethroughpoint =
@@ -202,12 +204,10 @@ int CopyObjectType::resultId() const
 int LocusType::impRequirement( const ObjectImp* o, const Args& parents ) const
 {
   Args firsttwo( parents.begin(), parents.begin() + 2 );
-  if ( margsparser.check( firsttwo ) == ArgsChecker::Invalid )
-  {
-    return o->inherits( ObjectImp::ID_HierarchyImp ) ? ObjectImp::ID_HierarchyImp
-      : ObjectImp::ID_CurveImp;
-  }
-  else return ObjectImp::ID_AnyImp;
+  if ( find( firsttwo.begin(), firsttwo.end(), o ) != firsttwo.end() )
+    return margsparser.impRequirement( o, firsttwo );
+  else
+    return ObjectImp::ID_AnyImp;
 }
 
 const LocusType* LocusType::instance()

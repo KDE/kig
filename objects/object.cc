@@ -464,6 +464,7 @@ int RealObject::impRequirement( Object* o, const Objects& os ) const
   args.reserve( mparents.size() );
   transform( os.begin(), os.end(),
              back_inserter( args ), mem_fun( &Object::imp ) );
+  assert( find( args.begin(), args.end(), o->imp() ) != args.end() );
   return mtype->impRequirement( o->imp(), args );
 }
 
