@@ -50,9 +50,7 @@ void LocusImp::draw( KigPainter& p ) const
 
 bool LocusImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  double param = getParam( p, w.document() );
-  double dist = getDist( param, p, w.document() );
-  return fabs( dist ) <= w.screenInfo().normalMiss( width );
+  return internalContainsPoint( p, w.screenInfo().normalMiss( width ), w.document() );
 }
 
 bool LocusImp::inRect( const Rect&, int, const KigWidget& ) const
@@ -339,4 +337,16 @@ const ObjectImpType* LocusImp::stype()
 const ObjectImpType* LocusImp::type() const
 {
   return LocusImp::stype();
+}
+
+bool LocusImp::containsPoint( const Coordinate& p, const KigDocument& doc ) const
+{
+  return internalContainsPoint( p, test_threshold, doc );
+}
+
+bool LocusImp::internalContainsPoint( const Coordinate& p, double threshold, const KigDocument& doc ) const
+{
+  double param = getParam( p, doc );
+  double dist = getDist( param, p, doc );
+  return fabs( dist ) <= threshold;
 }

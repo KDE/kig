@@ -143,3 +143,41 @@ const ObjectImpType* AreCollinearType::resultId() const
   return TestResultImp::stype();
 }
 
+static const ArgsParser::spec containsTestArgsSpec[] =
+{
+  { PointImp::stype(), I18N_NOOP( "Check whether this point is on a curve" ) },
+  { CurveImp::stype(), I18N_NOOP( "Check whether the point is on this curve" ) }
+};
+
+ContainsTestType::ContainsTestType()
+  : ArgsParserObjectType( "ContainsTest", containsTestArgsSpec, 2 )
+{
+}
+
+ContainsTestType::~ContainsTestType()
+{
+}
+
+const ContainsTestType* ContainsTestType::instance()
+{
+  static const ContainsTestType t;
+  return &t;
+}
+
+ObjectImp* ContainsTestType::calc( const Args& parents, const KigDocument& doc ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  const Coordinate& p = static_cast<const PointImp*>( parents[0] )->coordinate();
+  const CurveImp* c = static_cast<const CurveImp*>( parents[1] );
+
+  if ( c->containsPoint( p, doc ) )
+    return new TestResultImp( i18n( "This curve contains the point." ) );
+  else
+    return new TestResultImp( i18n( "This curve does not contain the point." ) );
+}
+
+const ObjectImpType* ContainsTestType::resultId() const
+{
+  return TestResultImp::stype();
+}
+

@@ -184,7 +184,7 @@ void SegmentImp::draw( KigPainter& p ) const
 
 bool SegmentImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  return isOnSegment( p, mdata.a, mdata.b, w.screenInfo().normalMiss( width ) );
+  return internalContainsPoint( p, w.screenInfo().normalMiss( width ) );
 }
 
 void RayImp::draw( KigPainter& p ) const
@@ -194,7 +194,7 @@ void RayImp::draw( KigPainter& p ) const
 
 bool RayImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  return isOnRay( p, mdata.a, mdata.b, w.screenInfo().normalMiss( width ) );
+  return internalContainsPoint( p, w.screenInfo().normalMiss( width ) );
 }
 
 void LineImp::draw( KigPainter& p ) const
@@ -204,7 +204,7 @@ void LineImp::draw( KigPainter& p ) const
 
 bool LineImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  return isOnLine( p, mdata.a, mdata.b, w.screenInfo().normalMiss( width ) );
+  return internalContainsPoint( p, w.screenInfo().normalMiss( width ) );
 }
 
 SegmentImp::SegmentImp( const Coordinate& a, const Coordinate& b )
@@ -470,4 +470,34 @@ const ObjectImpType* RayImp::type() const
 const ObjectImpType* LineImp::type() const
 {
   return LineImp::stype();
+}
+
+bool SegmentImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+{
+  return internalContainsPoint( p, test_threshold );
+}
+
+bool SegmentImp::internalContainsPoint( const Coordinate& p, double threshold ) const
+{
+  return isOnSegment( p, mdata.a, mdata.b, threshold );
+}
+
+bool RayImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+{
+  return internalContainsPoint( p, test_threshold );
+}
+
+bool RayImp::internalContainsPoint( const Coordinate& p, double threshold ) const
+{
+  return isOnRay( p, mdata.a, mdata.b, threshold );
+}
+
+bool LineImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+{
+  return internalContainsPoint( p, test_threshold );
+}
+
+bool LineImp::internalContainsPoint( const Coordinate& p, double threshold ) const
+{
+  return isOnLine( p, mdata.a, mdata.b, threshold );
 }

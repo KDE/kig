@@ -399,6 +399,12 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_arecollinear" ) );
 
+    c = new TestConstructor( ContainsTestType::instance(), "Contains Test",
+                             "Test whether a given curve contains a given point", "" );
+
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_containstest" ) );
+
     // the generic intersection constructor..
     c = new GenericIntersectionConstructor();
     ctors->add( c );

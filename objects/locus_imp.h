@@ -87,6 +87,9 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool equals( const ObjectImp& rhs ) const;
+
+  bool containsPoint( const Coordinate& p, const KigDocument& d ) const;
+  bool internalContainsPoint( const Coordinate& p, double threshold, const KigDocument& doc ) const;
 };
 
 #endif

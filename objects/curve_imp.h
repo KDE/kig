@@ -48,6 +48,13 @@ public:
   virtual const Coordinate getPoint( double param, const KigDocument& ) const = 0;
 
   virtual CurveImp* copy() const = 0;
+
+  /**
+   * Return whether this Curve contains the given point.   This should
+   * be a numerical approximation of course.  You can/should use the value
+   * test_threshold in common.h as a threshold value.
+   */
+  virtual bool containsPoint( const Coordinate& p, const KigDocument& ) const = 0;
 };
 
 #endif

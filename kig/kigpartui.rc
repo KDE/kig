@@ -121,6 +121,7 @@
       <Action name="objects_new_areparallel" />
       <Action name="objects_new_areorthogonal" />
       <Action name="objects_new_arecollinear" />
+      <Action name="objects_new_containstest" />
     </Menu>
     <Menu name="types">
       <text>&amp;Types</text>
@@ -201,6 +202,13 @@
     <Action name="objects_new_affinitygi3p" />
     <Action name="objects_new_projectivitygi4p" />
   </ToolBar>
+  <ToolBar name="tests_toolbar" position="right">
+    <text>Tests</text>
+      <Action name="objects_new_areparallel" />
+      <Action name="objects_new_areorthogonal" />
+      <Action name="objects_new_arecollinear" />
+      <Action name="objects_new_containstest" />
+  </toolbar>
   <ToolBar name="rest_toolbar" position="left">
     <text>Rest</text>
     <Action name="objects_new_locus" />

@@ -120,9 +120,11 @@ public:
    */
   double length() const;
 
-
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
+
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
 /**
@@ -162,6 +164,9 @@ public:
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
+
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
 /**
@@ -199,6 +204,9 @@ public:
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
+
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
 #endif

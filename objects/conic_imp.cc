@@ -23,6 +23,7 @@
 
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
+#include "../misc/common.h"
 #include "../misc/coordinate_system.h"
 
 #include "../kig/kig_part.h"
@@ -48,24 +49,7 @@ bool ConicImp::valid() const
 
 bool ConicImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
 {
-  const ConicPolarData d = polarData();
-
-  Coordinate focus1 = d.focus1;
-  double ecostheta0 = d.ecostheta0;
-  double esintheta0 = d.esintheta0;
-  double pdimen = d.pdimen;
-
-  Coordinate pos = o - focus1;
-  double len = pos.length();
-  double costheta = pos.x / len;
-  double sintheta = pos.y / len;
-
-  double ecosthetamtheta0 = costheta*ecostheta0 + sintheta*esintheta0;
-  double rho = pdimen / (1.0 - ecosthetamtheta0);
-
-  if ( fabs(len - rho) <= w.screenInfo().normalMiss( width ) ) return true;
-  rho = - pdimen / ( 1.0 + ecosthetamtheta0 );
-  return fabs( len - rho ) <= w.screenInfo().normalMiss( width );
+  return internalContainsPoint( o, w.screenInfo().normalMiss( width ) );
 }
 
 bool ConicImp::inRect( const Rect&, int, const KigWidget& ) const
@@ -334,4 +318,31 @@ const ObjectImpType* ConicImp::stype()
 const ObjectImpType* ConicImp::type() const
 {
   return ConicImp::stype();
+}
+
+bool ConicImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+{
+  return internalContainsPoint( p, test_threshold );
+}
+
+bool ConicImp::internalContainsPoint( const Coordinate& p, double threshold ) const
+{
+  const ConicPolarData d = polarData();
+
+  Coordinate focus1 = d.focus1;
+  double ecostheta0 = d.ecostheta0;
+  double esintheta0 = d.esintheta0;
+  double pdimen = d.pdimen;
+
+  Coordinate pos = p - focus1;
+  double len = pos.length();
+  double costheta = pos.x / len;
+  double sintheta = pos.y / len;
+
+  double ecosthetamtheta0 = costheta*ecostheta0 + sintheta*esintheta0;
+  double rho = pdimen / (1.0 - ecosthetamtheta0);
+
+  if ( fabs(len - rho) <= threshold ) return true;
+  rho = - pdimen / ( 1.0 + ecosthetamtheta0 );
+  return fabs( len - rho ) <= threshold;
 }

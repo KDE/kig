@@ -54,29 +54,7 @@ void CubicImp::draw( KigPainter& p ) const
 
 bool CubicImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
 {
-  double a000 = mdata.coeffs[0];
-  double a001 = mdata.coeffs[1];
-  double a002 = mdata.coeffs[2];
-  double a011 = mdata.coeffs[3];
-  double a012 = mdata.coeffs[4];
-  double a022 = mdata.coeffs[5];
-  double a111 = mdata.coeffs[6];
-  double a112 = mdata.coeffs[7];
-  double a122 = mdata.coeffs[8];
-  double a222 = mdata.coeffs[9];
-
-  double x = o.x;
-  double y = o.y;
-
-  double f = a000 + a001*x + a002*y + a011*x*x + a012*x*y + a022*y*y +
-             a111*x*x*x + a112*x*x*y + a122*x*y*y + a222*y*y*y;
-  double fx = a001 + 2*a011*x + a012*y + 3*a111*x*x + 2*a112*x*y + a122*y*y;
-  double fy = a002 + a012*x + 2*a022*y + a112*x*x + 2*a122*x*y + 3*a222*y*y;
-
-  double dist = fabs(f)/(fabs(fx) + fabs(fy));
-
-  return dist <= w.screenInfo().normalMiss( width );
-  return false;
+  return internalContainsPoint( o, w.screenInfo().normalMiss( width ) );
 }
 
 bool CubicImp::inRect( const Rect&, int, const KigWidget& ) const
@@ -358,4 +336,35 @@ const ObjectImpType* CubicImp::stype()
     I18N_NOOP( "Hide a Cubic" )
     );
   return &t;
+}
+
+bool CubicImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+{
+  return internalContainsPoint( p, test_threshold );
+}
+
+bool CubicImp::internalContainsPoint( const Coordinate& p, double threshold ) const
+{
+  double a000 = mdata.coeffs[0];
+  double a001 = mdata.coeffs[1];
+  double a002 = mdata.coeffs[2];
+  double a011 = mdata.coeffs[3];
+  double a012 = mdata.coeffs[4];
+  double a022 = mdata.coeffs[5];
+  double a111 = mdata.coeffs[6];
+  double a112 = mdata.coeffs[7];
+  double a122 = mdata.coeffs[8];
+  double a222 = mdata.coeffs[9];
+
+  double x = p.x;
+  double y = p.y;
+
+  double f = a000 + a001*x + a002*y + a011*x*x + a012*x*y + a022*y*y +
+             a111*x*x*x + a112*x*x*y + a122*x*y*y + a222*y*y*y;
+  double fx = a001 + 2*a011*x + a012*y + 3*a111*x*x + 2*a112*x*y + a122*y*y;
+  double fy = a002 + a012*x + 2*a022*y + a112*x*x + 2*a122*x*y + 3*a222*y*y;
+
+  double dist = fabs(f)/(fabs(fx) + fabs(fy));
+
+  return dist <= threshold;
 }

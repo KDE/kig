@@ -54,4 +54,15 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class ContainsTestType
+  : public ArgsParserObjectType
+{
+  ContainsTestType();
+  ~ContainsTestType();
+public:
+  static const ContainsTestType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

@@ -1,3 +1,8 @@
+2004-02-23  Dominique Devriese  <devriese@kde.org>
+
+	* Add a ContainsTestType, testing whether a given point is on a
+	given curve.
+
 2004-02-17  Dominique Devriese  <devriese@kde.org>
 
 	* Add the possibility to give an item a custom color in the 
