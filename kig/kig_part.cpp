@@ -172,10 +172,11 @@ void KigDocument::setupTypes()
 {
   setupBuiltinStuff();
   GUIActionList& l = *GUIActionList::instance();
-  kdDebug() << k_funcinfo << l.actions().size() << endl;
   for ( uint i = 0; i < l.actions().size(); ++i )
   {
-    new KigGUIAction( l.actions()[i], *this, actionCollection() );
+    aActions.push_back(
+      new KigGUIAction( l.actions()[i], *this, actionCollection() )
+      );
   };
 //   if ( Object::types().empty() )
 //   {

@@ -139,3 +139,46 @@ const char* ConstructibleAction::actionName() const
 {
   return mactionname;
 }
+
+ConstructPointAction::~ConstructPointAction()
+{
+}
+
+QString ConstructPointAction::description() const
+{
+  return i18n(
+    "A normal point, i.e. one that is either independent or attached "
+    "to a line, circle, segment."
+    );
+}
+
+QCString ConstructPointAction::iconFileName() const
+{
+  return "point4";
+}
+
+QString ConstructPointAction::descriptiveName() const
+{
+  return i18n("Point");
+}
+
+const char* ConstructPointAction::actionName() const
+{
+  return mactionname;
+}
+
+int ConstructPointAction::shortcut() const
+{
+  return 0;
+}
+
+void ConstructPointAction::act( KigDocument& d )
+{
+  PointConstructMode m( d );
+  d.runMode( &m );
+}
+
+ConstructPointAction::ConstructPointAction( const char* actionname )
+  : mactionname( actionname )
+{
+}

@@ -96,12 +96,12 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
   // object could move its parents...
 
   Objects objs( emo );
-  Objects tmp( emo );
   for ( Objects::const_iterator i = emo.begin(); i != emo.end(); ++i )
   {
     objs.upush( *i );
-    tmp |= (*i)->parents();
+    objs |= (*i)->parents();
   };
+  Objects tmp = objs;
   for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
     objs |= (*i)->getAllChildren();
 

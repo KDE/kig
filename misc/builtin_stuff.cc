@@ -90,6 +90,7 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebtp" ) );
 
+    actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;
 };

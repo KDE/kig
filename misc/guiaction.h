@@ -69,6 +69,22 @@ public:
   void act( KigDocument& );
 };
 
+class ConstructPointAction
+  : public GUIAction
+{
+  const char* mactionname;
+public:
+  ConstructPointAction( const char* actionname );
+  ~ConstructPointAction();
+
+  QString description() const;
+  QCString iconFileName() const;
+  QString descriptiveName() const;
+  const char* actionName() const;
+  int shortcut() const;
+  void act( KigDocument& );
+};
+
 class CircleByCenterAndRadiusAction
   : public GUIAction
 {

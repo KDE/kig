@@ -43,4 +43,19 @@ protected:
   void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
 };
 
+class PointConstructMode
+  : public BaseMode
+{
+  Object* mpt;
+public:
+  PointConstructMode( KigDocument& d );
+  ~PointConstructMode();
+protected:
+  void leftClickedObject( Object* o, const QPoint& p,
+                          KigWidget& w, bool ctrlOrShiftDown );
+  void midClicked( const QPoint& p, KigWidget& w );
+  void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
+  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
+};
+
 #endif

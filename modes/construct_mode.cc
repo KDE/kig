@@ -43,7 +43,11 @@ void ConstructMode::leftClickedObject(
   ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
                                             mdoc, w );
   mpt->calc( w );
-  if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
+  if ( o && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
+  {
+    selectObject( o, p, w );
+  }
+  else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
   {
     // add mpt to the document..
     Object* pt = mpt;
@@ -53,10 +57,6 @@ void ConstructMode::leftClickedObject(
                                                     mdoc, w );
 
     selectObject( pt, p, w );
-  }
-  else if ( o && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
-  {
-    selectObject( o, p, w );
   }
   else
   {
@@ -92,15 +92,15 @@ void ConstructMode::mouseMoved( const Objects& os,
   ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
                                             mdoc, w );
   mpt->calc( w );
-  if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
+  if ( !os.empty() && mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
+  {
+    mctor->handlePrelim( pter, mparents.with( os.front() ), mdoc, w );
+    w.setCursor( KCursor::handCursor() );
+  }
+  else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
   {
     mpt->draw( pter, true );
     mctor->handlePrelim( pter, mparents.with( mpt ), mdoc, w );
-    w.setCursor( KCursor::handCursor() );
-  }
-  else if ( mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
-  {
-    mctor->handlePrelim( pter, mparents.with( os.front() ), mdoc, w );
     w.setCursor( KCursor::handCursor() );
   }
   else
@@ -125,4 +125,51 @@ void ConstructMode::selectObject( Object* o, const QPoint&, KigWidget& w )
   };
 
   w.redrawScreen();
+}
+
+PointConstructMode::PointConstructMode( KigDocument& d )
+  : BaseMode( d ),
+    mpt( ObjectFactory::instance()->fixedPoint( Coordinate() ) )
+{
+}
+
+PointConstructMode::~PointConstructMode()
+{
+  delete mpt;
+}
+
+void PointConstructMode::leftClickedObject(
+  Object*, const QPoint&, KigWidget& w, bool )
+{
+  mdoc.addObject( mpt );
+  mpt = 0;
+  w.redrawScreen();
+  mdoc.doneMode( this );
+}
+
+void PointConstructMode::midClicked( const QPoint& p, KigWidget& w )
+{
+  leftClickedObject( 0, p, w, true );
+}
+
+void PointConstructMode::rightClicked( const Objects&, const QPoint&,
+                                       KigWidget& )
+{
+  // TODO ?
+}
+
+void PointConstructMode::mouseMoved(
+  const Objects&,
+  const QPoint& p,
+  KigWidget& w )
+{
+  w.updateCurPix();
+  KigPainter pter( w.screenInfo(), &w.curPix );
+  ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
+                                            mdoc, w );
+  mpt->calc( w );
+  mpt->draw( pter, true );
+  w.setCursor( KCursor::blankCursor() );
+
+  w.updateWidget( pter.overlay() );
 }
