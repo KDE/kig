@@ -198,6 +198,8 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
     Object::addBuiltinType( new TStdType<ConicB5P> );
     Object::addBuiltinType( new TStdType<CubicB9P> );
+    Object::addBuiltinType( new TStdType<CubicNodeB6P> );
+    Object::addBuiltinType( new TStdType<CubicCuspB4P> );
     Object::addBuiltinType( new TStdType<ParabolaBTP> );
     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
     Object::addBuiltinType( new TStdType<MidPoint> );

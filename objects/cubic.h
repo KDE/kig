@@ -72,6 +72,12 @@ public:
 const CubicCartesianEquationData calcCubicThroughPoints (
     const std::vector<Coordinate>& points );
 
+const CubicCartesianEquationData calcCubicCuspThroughPoints (
+    const std::vector<Coordinate>& points );
+
+const CubicCartesianEquationData calcCubicNodeThroughPoints (
+    const std::vector<Coordinate>& points );
+
 double calcCubicYvalue ( double x, double ymin, double ymax,
                          int root, CubicCartesianEquationData data,
                          bool& valid, int& numroots );
@@ -86,7 +92,7 @@ void calcCubicLineRestriction ( CubicCartesianEquationData data,
 
 /**
  * This is the abstract base class for cubics.
- * For now just CubicB9P
+ * (CubicB9P, CubicNodeB6P)
  */
 class Cubic
   : public Curve
@@ -142,6 +148,82 @@ public:
 
 protected:
   Point* pts[9];
+
+  void calc();
+};
+
+/*
+ * cubic with a cusp (with horizontal tangent) at the origin and 
+ * constrained through other 4 points
+ */
+
+class CubicCuspB4P
+  : public Cubic
+{
+public:
+  CubicCuspB4P( const Objects& os );
+  ~CubicCuspB4P() {};
+  CubicCuspB4P(const CubicCuspB4P& c);
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "CubicCuspB4P"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "cubiccuspb4p"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // passing arguments
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* );
+  static void sDrawPrelim( KigPainter& p, const Objects& os );
+
+  Objects getParents() const;
+
+protected:
+  Point* pts[4];
+
+  void calc();
+};
+
+/*
+ * cubic with a nodal point at the origin and constrained through other
+ * 6 points
+ */
+
+class CubicNodeB6P
+  : public Cubic
+{
+public:
+  CubicNodeB6P( const Objects& os );
+  ~CubicNodeB6P() {};
+  CubicNodeB6P(const CubicNodeB6P& c);
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "CubicNodeB6P"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "cubicnodeb6p"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // passing arguments
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* );
+  static void sDrawPrelim( KigPainter& p, const Objects& os );
+
+  Objects getParents() const;
+
+protected:
+  Point* pts[6];
 
   void calc();
 };

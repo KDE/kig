@@ -26,6 +26,7 @@
 
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
+//#include "../misc/kigtransform.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/i18n.h"
 #include "../kig/kig_view.h"
@@ -296,6 +297,10 @@ const CubicCartesianEquationData Cubic::cartesianEquationData() const
   return cequation;
 }
 
+/*
+ * cubic through 9 given points
+ */
+
 void CubicB9P::calc()
 {
   std::vector<Coordinate> points;
@@ -369,16 +374,16 @@ void CubicB9P::sDrawPrelim( KigPainter& p, const Objects& os )
     points.push_back( os[i]->toPoint()->getCoord() );
   };
 
-  if ( size <= 5 )
-  {
-    p.setPen(QPen (Qt::green, 1));
-    p.drawConic(
-      ConicPolarEquationData(
-        calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry )
-        )
-      );
-    return;
-  }
+//  if ( size <= 5 )
+//  {
+//    p.setPen(QPen (Qt::green, 1));
+//    p.drawConic(
+//      ConicPolarEquationData(
+//        calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry )
+//        )
+//      );
+//    return;
+//  }
 
   p.setPen(QPen (Qt::red, 1));
   p.drawCubic(
@@ -399,6 +404,204 @@ CubicB9P::CubicB9P( const Objects& os )
     pts[i-os.begin()] = static_cast<Point*>( *i );
   };
 }
+
+/*
+ * cubic with cusp at the origin (with horizontal tangent) through 4 points
+ */
+
+void CubicCuspB4P::calc()
+{
+  std::vector<Coordinate> points;
+
+  mvalid = true;
+  for ( Point** ipt = pts; ipt < pts + 4; ++ipt )
+    mvalid &= (*ipt)->valid();
+  if ( mvalid )
+  {
+    std::transform( pts, pts + 4, std::back_inserter( points ),
+                    std::mem_fun( &Point::getCoord ) );
+    cequation = calcCubicCuspThroughPoints( points );
+  }
+}
+
+const char* CubicCuspB4P::sActionName()
+{
+  return "objects_new_cubiccuspb4p";
+}
+
+Objects CubicCuspB4P::getParents() const
+{
+  Objects objs ( pts, pts+4 );
+  return objs;
+}
+
+CubicCuspB4P::CubicCuspB4P(const CubicCuspB4P& c)
+  : Cubic( c )
+{
+  for ( int i = 0; i < 4; i++ )
+  {
+    pts[i]=c.pts[i];
+    pts[i]->addChild(this);
+  }
+}
+
+const QString CubicCuspB4P::sDescriptiveName()
+{
+  return i18n("Cubic with cusp by four points");
+}
+
+const QString CubicCuspB4P::sDescription()
+{
+  return i18n( "A cubic with a horizontal cusp at the origin through four points" );
+}
+
+Object::WantArgsResult CubicCuspB4P::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size > 4 || size < 1 ) return NotGood;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( ! (*i)->toPoint() ) return NotGood;
+  return size == 4 ? Complete : NotComplete;
+}
+
+QString CubicCuspB4P::sUseText( const Objects&, const Object* )
+{
+  return i18n("Through point");
+}
+
+void CubicCuspB4P::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  std::vector<Coordinate> points;
+
+  uint size = os.size();
+  assert( size > 0 && size <= 4 );
+  if ( size < 2 ) return;  // don't drawprelim if too few points
+  for ( uint i = 0; i < size; ++i )
+  {
+    assert( os[i]->toPoint() );
+    points.push_back( os[i]->toPoint()->getCoord() );
+  };
+
+  p.setPen(QPen (Qt::red, 1));
+  p.drawCubic(
+      calcCubicCuspThroughPoints( points )
+      );
+
+  return;
+}
+
+CubicCuspB4P::CubicCuspB4P( const Objects& os )
+  : Cubic()
+{
+  assert( os.size() == 4 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    assert( (*i)->toPoint() );
+    (*i)->addChild( this );
+    pts[i-os.begin()] = static_cast<Point*>( *i );
+  };
+}
+
+/*
+ * cubic with node at the origin through 6 points
+ */
+
+void CubicNodeB6P::calc()
+{
+  std::vector<Coordinate> points;
+
+  mvalid = true;
+  for ( Point** ipt = pts; ipt < pts + 6; ++ipt )
+    mvalid &= (*ipt)->valid();
+  if ( mvalid )
+  {
+    std::transform( pts, pts + 6, std::back_inserter( points ),
+                    std::mem_fun( &Point::getCoord ) );
+    cequation = calcCubicNodeThroughPoints( points );
+  }
+}
+
+const char* CubicNodeB6P::sActionName()
+{
+  return "objects_new_cubicnodeb6p";
+}
+
+Objects CubicNodeB6P::getParents() const
+{
+  Objects objs ( pts, pts+6 );
+  return objs;
+}
+
+CubicNodeB6P::CubicNodeB6P(const CubicNodeB6P& c)
+  : Cubic( c )
+{
+  for ( int i = 0; i < 6; i++ )
+  {
+    pts[i]=c.pts[i];
+    pts[i]->addChild(this);
+  }
+}
+
+const QString CubicNodeB6P::sDescriptiveName()
+{
+  return i18n("Cubic with node by six points");
+}
+
+const QString CubicNodeB6P::sDescription()
+{
+  return i18n( "A cubic with a nodal point at the origin through six points" );
+}
+
+Object::WantArgsResult CubicNodeB6P::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size > 6 || size < 1 ) return NotGood;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( ! (*i)->toPoint() ) return NotGood;
+  return size == 6 ? Complete : NotComplete;
+}
+
+QString CubicNodeB6P::sUseText( const Objects&, const Object* )
+{
+  return i18n("Through point");
+}
+
+void CubicNodeB6P::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  std::vector<Coordinate> points;
+
+  uint size = os.size();
+  assert( size > 0 && size <= 6 );
+  if ( size < 2 ) return;  // don't drawprelim if too few points
+  for ( uint i = 0; i < size; ++i )
+  {
+    assert( os[i]->toPoint() );
+    points.push_back( os[i]->toPoint()->getCoord() );
+  };
+
+  p.setPen(QPen (Qt::red, 1));
+  p.drawCubic(
+      calcCubicNodeThroughPoints( points )
+      );
+
+  return;
+}
+
+CubicNodeB6P::CubicNodeB6P( const Objects& os )
+  : Cubic()
+{
+  assert( os.size() == 6 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    assert( (*i)->toPoint() );
+    (*i)->addChild( this );
+    pts[i-os.begin()] = static_cast<Point*>( *i );
+  };
+}
+
+/*
+ * coefficients of the cartesian equation for cubics
+ */
 
 CubicCartesianEquationData::CubicCartesianEquationData()
 {
@@ -487,6 +690,192 @@ const CubicCartesianEquationData calcCubicThroughPoints (
 	break;
       case 6:
         matrix[numpoints][1] = 1.0;
+	break;
+
+      default:
+        addedconstraint = false;
+        break;
+    }
+
+    if (addedconstraint) ++numpoints;
+  }
+
+  GaussianElimination( matrix, numpoints, 10, scambio );
+  // fine della fase di eliminazione
+  BackwardSubstitution( matrix, numpoints, 10, scambio, solution );
+
+  // now solution should contain the correct coefficients..
+  return CubicCartesianEquationData( solution );
+}
+
+const CubicCartesianEquationData calcCubicCuspThroughPoints (
+    const std::vector<Coordinate>& points )
+{
+  // points is a vector of at most 4 points through which the cubic is
+  // constrained. Moreover the cubic is required to have a cusp at the
+  // origin.
+
+  // 9 rows, 10 columns..
+  double row0[10];
+  double row1[10];
+  double row2[10];
+  double row3[10];
+  double row4[10];
+  double row5[10];
+  double row6[10];
+  double row7[10];
+  double row8[10];
+  double *matrix[9] = {row0, row1, row2, row3, row4, row5, row6, row7, row8};
+  double solution[10];
+  int scambio[10];
+
+  int numpoints = points.size();
+  int numconstraints = 9;
+
+  // fill in the matrix elements
+  for ( int i = 0; i < numpoints; ++i )
+  {
+    double xi = points[i].x;
+    double yi = points[i].y;
+    matrix[i][0] = 1.0;
+    matrix[i][1] = xi;
+    matrix[i][2] = yi;
+    matrix[i][3] = xi*xi;
+    matrix[i][4] = xi*yi;
+    matrix[i][5] = yi*yi;
+    matrix[i][6] = xi*xi*xi;
+    matrix[i][7] = xi*xi*yi;
+    matrix[i][8] = xi*yi*yi;
+    matrix[i][9] = yi*yi*yi;
+  }
+
+  for ( int i = 0; i < numconstraints; i++ )
+  {
+    if (numpoints >= 9) break;    // don't add constraints if we have enough
+    for (int j = 0; j < 10; ++j) matrix[numpoints][j] = 0.0;
+    bool addedconstraint = true;
+    switch (i)
+    {
+      case 0:
+	matrix[numpoints][0] = 1.0;   // through the origin
+	break;
+      case 1:
+	matrix[numpoints][1] = 1.0;
+	break;
+      case 2:
+	matrix[numpoints][2] = 1.0;   // no first degree term
+	break;
+      case 3:
+        matrix[numpoints][3] = 1.0;   // a011 (x^2 coeff) = 0
+	break;
+      case 4:
+        matrix[numpoints][4] = 1.0;   // a012 (xy coeff) = 0
+	break;
+      case 5:
+        matrix[numpoints][7] = 1.0;
+        matrix[numpoints][8] = -1.0;
+        break;
+      case 6:
+        matrix[numpoints][7] = 1.0;
+	break;
+      case 7:
+        matrix[numpoints][9] = 1.0;
+	break;
+      case 8:
+        matrix[numpoints][6] = 1.0;
+	break;
+
+      default:
+        addedconstraint = false;
+        break;
+    }
+
+    if (addedconstraint) ++numpoints;
+  }
+
+  GaussianElimination( matrix, numpoints, 10, scambio );
+  // fine della fase di eliminazione
+  BackwardSubstitution( matrix, numpoints, 10, scambio, solution );
+
+  // now solution should contain the correct coefficients..
+  return CubicCartesianEquationData( solution );
+}
+
+const CubicCartesianEquationData calcCubicNodeThroughPoints (
+    const std::vector<Coordinate>& points )
+{
+  // points is a vector of at most 6 points through which the cubic is
+  // constrained. Moreover the cubic is required to have a node at the
+  // origin.
+
+  // 9 rows, 10 columns..
+  double row0[10];
+  double row1[10];
+  double row2[10];
+  double row3[10];
+  double row4[10];
+  double row5[10];
+  double row6[10];
+  double row7[10];
+  double row8[10];
+  double *matrix[9] = {row0, row1, row2, row3, row4, row5, row6, row7, row8};
+  double solution[10];
+  int scambio[10];
+
+  int numpoints = points.size();
+  int numconstraints = 9;
+
+  // fill in the matrix elements
+  for ( int i = 0; i < numpoints; ++i )
+  {
+    double xi = points[i].x;
+    double yi = points[i].y;
+    matrix[i][0] = 1.0;
+    matrix[i][1] = xi;
+    matrix[i][2] = yi;
+    matrix[i][3] = xi*xi;
+    matrix[i][4] = xi*yi;
+    matrix[i][5] = yi*yi;
+    matrix[i][6] = xi*xi*xi;
+    matrix[i][7] = xi*xi*yi;
+    matrix[i][8] = xi*yi*yi;
+    matrix[i][9] = yi*yi*yi;
+  }
+
+  for ( int i = 0; i < numconstraints; i++ )
+  {
+    if (numpoints >= 9) break;    // don't add constraints if we have enough
+    for (int j = 0; j < 10; ++j) matrix[numpoints][j] = 0.0;
+    bool addedconstraint = true;
+    switch (i)
+    {
+      case 0:
+	matrix[numpoints][0] = 1.0;
+	break;
+      case 1:
+	matrix[numpoints][1] = 1.0;
+	break;
+      case 2:
+	matrix[numpoints][2] = 1.0;
+	break;
+      case 3:
+        matrix[numpoints][7] = 1.0;
+        matrix[numpoints][8] = -1.0;
+        break;
+      case 4:
+        matrix[numpoints][7] = 1.0;
+	break;
+      case 5:
+        matrix[numpoints][9] = 1.0;
+	break;
+      case 6:
+        matrix[numpoints][4] = 1.0;
+	break;
+      case 7:
+        matrix[numpoints][5] = 1.0;
+	break;
+      case 8:
+        matrix[numpoints][3] = 1.0;
 	break;
 
       default:
