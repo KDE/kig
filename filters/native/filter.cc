@@ -422,6 +422,7 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
     else assert( false );
   };
 //  return NotSupported;
+  docelem.appendChild( objectselem );
 
   doc.appendChild( docelem );
   stream << doc.toCString();
@@ -429,7 +430,71 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
   return OK;
 }
 
-KigFilter::Result KigFilterNative::loadNew( const QDomElement&, KigDocument& )
+KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocument& kdoc )
 {
+  for ( QDomNode n = docelem.firstChild(); ! n.isNull(); n = n.nextSibling() )
+  {
+    QDomElement e = n.toElement();
+    if ( e.isNull() ) continue;
+    if ( e.tagName() == "CoordinateSystem" )
+    {
+      const QCString str = e.text().latin1();
+      CoordinateSystem* s = CoordinateSystemFactory::build( type );
+      if ( ! s ) return NotSupported;
+      else kdoc.setCoordinateSystem( s );
+    }
+    else if ( e.tagName() == "Objects" )
+    {
+      // first pass: do a topological sort of the objects, to support
+      // randomly ordered files...
+      std::vector<HierElem> elems;
+      QDomElement objectselem = e;
+      for ( QDomNode o = objectselem.firstChild(); ! o.isNull(); o = o.nextSibling() )
+      {
+        e = o.toElement();
+        if ( e.isNull() ) continue;
+        if ( e.tagName() == "Data" )
+        {
+          // fetch the id
+          tmp = e.attribute("id");
+          if(tmp.isNull()) return ParseError;
+          uint id = tmp.toInt(&ok);
+          if ( !ok ) return ParseError;
+
+          extendVect( elems, id );
+          elems[id-1].el = e;
+        }
+        else if ( e.tagName() == "Object" )
+        {
+          tmp = e.attribute( "id" );
+          if ( tmp.isNull() ) return ParseError;
+          uint id = tmp.toInt( &ok );
+          if ( ! ok ) return ParseError;
+
+          for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
+          {
+            QDomElement f = p.toElement();
+            if ( f.isNull() ) continue;
+            if ( f.tagName() == "Parent" )
+            {
+              tmp = f.attribute( "id" );
+              if ( tmp.isNull() ) return ParseError;
+              uint pid = tmp.toInt( &ok );
+              if ( ! ok ) return ParseError;
+
+              extendVect( elems, pid );
+              elems[id-1].parents.push_back( pid );
+            }
+          }
+
+          extendVect( elems, id );
+          elems[id-1].el = e;
+        }
+        else continue;
+      };
+    }
+    else continue; // be forward-compatible..
+  };
+
   return NotSupported;
 }
