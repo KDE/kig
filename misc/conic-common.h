@@ -66,7 +66,7 @@ public:
   explicit ConicPolarData( const ConicCartesianData& data );
   explicit ConicPolarData();
   ConicPolarData( const Coordinate& focus1, double dimen,
-                          double ecostheta0, double esintheta0 );
+                  double ecostheta0, double esintheta0 );
 
   Coordinate focus1;
   double pdimen;
