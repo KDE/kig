@@ -1,10 +1,12 @@
-<?xml version="1.0" ?> <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML
-V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd" [ <!ENTITY kig
-"<application>Kig</application>"> <!ENTITY kseg
-"<application>KSeg</application>"> <!ENTITY cabri
-"<application>Cabri</application>"> <!ENTITY package "kdeedu">
-<!ENTITY % addindex "IGNORE"> <!ENTITY % English "INCLUDE"><!-- change
-language only here --> ]>
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd" [
+  <!ENTITY kig "<application>Kig</application>">
+  <!ENTITY kseg "<application>KSeg</application>">
+  <!ENTITY cabri "<application>Cabri</application>">
+  <!ENTITY package "kdeedu">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % English "INCLUDE"><!-- change language only here -->
+]>
 
 <book lang="&language;">
 
