@@ -402,7 +402,6 @@ Objects KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
 
 Rect KigDocument::suggestedRect() const
 {
-  if( mObjs.empty() ) return Rect( -6., -6., 12., 12. );
   bool rectInited = false;
   Rect r(0.,0.,0.,0.);
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
@@ -418,13 +417,15 @@ Rect KigDocument::suggestedRect() const
         r.setContains( static_cast<const PointImp*>( (*i)->imp() )->coordinate() );
     };
   };
+
+  if ( ! rectInited )
+    return Rect( -5.5, -5.5, 11., 11. );
   r.setContains( Coordinate( 0, 0 ) );
-  Coordinate centre = r.center();
-  r.setWidth(r.width()*2);
   if (r.width() == 0) r.setWidth( 1 );
-  r.setHeight(r.height()*2);
   if (r.height() == 0) r.setHeight( 1 );
-  r.setCenter(centre);
+  Coordinate center = r.center();
+  r *= 2;
+  r.setCenter(center);
   return r;
 }
 

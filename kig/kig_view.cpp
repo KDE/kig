@@ -505,7 +505,7 @@ void KigWidget::slotFullScreen()
   kiosk->show();
 
   KigWidget* w = v->realWidget();
-  w->msi.setShownRect( showingRect() );
+  w->msi.setShownRect( w->matchScreenShape( showingRect() ) );
   w->redrawScreen();
   w->updateScrollBars();
 }

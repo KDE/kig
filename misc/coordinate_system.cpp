@@ -219,7 +219,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   // the number of intervals we would like to have:
   // we try to have one of them per 25 pixels or so..
   const int ntick = static_cast<int>(
-    kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 25. ) + 1;
+    kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 40. ) + 1;
 
   const double hrange = nicenum( hmax - hmin, false );
   const double vrange = nicenum( vmax - vmin, false );
@@ -227,10 +227,10 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   const double hd = nicenum( hrange / ( ntick - 1 ), true );
   const double vd = nicenum( vrange / ( ntick - 1 ), true );
 
-  const double hgraphmin = floor( hmin / hd) * hd;
-  const double hgraphmax = ceil( hmax / hd ) * hd;
-  const double vgraphmin = floor( vmin / vd ) * vd;
-  const double vgraphmax = ceil( vmax / vd ) * vd;
+  const double hgraphmin = ceil( hmin / hd) * hd;
+  const double hgraphmax = floor( hmax / hd ) * hd;
+  const double vgraphmin = ceil( vmin / vd ) * vd;
+  const double vgraphmax = floor( vmax / vd ) * vd;
 
   const int hnfrac = max( (int) - floor( log10( hd ) ), 0 );
   const int vnfrac = max( (int) - floor( log10( vd ) ), 0 );
@@ -277,7 +277,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
     for ( double i = vgraphmin; i <= vgraphmax + vd/2; i += vd )
     {
       if( fabs( i ) < 1e-8 ) continue;
-      p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
+      p.drawText ( Rect( Coordinate( 0, i ), 2*hd, vd ).normalized(),
                    KGlobal::locale()->formatNumber( i, vnfrac ),
                    AlignBottom | AlignLeft
         );
