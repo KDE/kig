@@ -287,6 +287,21 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
           args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
           oc = new ObjectTypeCalcer( CircleCircleIntersectionType::instance(), args );
         }
+        else if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) &&
+                    parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) ||
+                  ( parents[1]->imp()->inherits( CircleImp::stype() ) &&
+                    parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) )
+        {
+          bool ok;
+          int which = domelem.attribute( "extra" ).toInt( &ok );
+          if ( !ok ) KIG_FILTER_PARSE_ERROR;
+          if ( which == 0 ) which = -1;
+          else if ( which == 1 ) which = 1;
+          else KIG_FILTER_PARSE_ERROR;
+          std::vector<ObjectCalcer*> args = parents;
+          args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+          oc = new ObjectTypeCalcer( ConicLineIntersectionType::instance(), args );
+        }
         else
         {
           notSupported( file, i18n( "This Dr. Geo file contains an intersection type, "
