@@ -328,10 +328,15 @@ const ObjectImpType* ConstrainedPointType::resultId() const
   return PointImp::stype();
 }
 
-const ObjectImpType* CursorPointType::impRequirement( const ObjectImp*, const Args& parents ) const
+const ObjectImpType* CursorPointType::impRequirement( const ObjectImp* o, const Args& parents ) const
 {
-  if ( parents.size() >= 2 ) return 0;
-  return DoubleImp::stype();
+  if ( o->inherits( DoubleImp::stype() ) )
+    return DoubleImp::stype();
+
+  if ( o->inherits( PointImp::stype() ) )
+    return PointImp::stype();
+
+  return 0;
 }
 
 bool CursorPointType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
@@ -562,19 +567,19 @@ const ObjectImpType* MeasureTransportType::resultId() const
 
 const ObjectImpType* MeasureTransportType::impRequirement( const ObjectImp* obj, const Args& parents ) const
 {
-  if ( obj->inherits( PointImp::stype () ) && parents.size() < 3 )
+  if ( obj->inherits( PointImp::stype () )  )
     return PointImp::stype ();
 
-  if ( obj->inherits( LineImp::stype () ) && parents.size() < 2 )
+  if ( obj->inherits( LineImp::stype () ) )
     return LineImp::stype ();
 
-  if ( obj->inherits( CircleImp::stype () ) && parents.size() < 2 )
+  if ( obj->inherits( CircleImp::stype () ) )
     return CircleImp::stype ();
 
-  if ( obj->inherits( SegmentImp::stype () ) && parents.size() < 1 )
+  if ( obj->inherits( SegmentImp::stype () ) )
     return SegmentImp::stype ();
 
-  if ( obj->inherits( ArcImp::stype () ) && parents.size() < 1 )
+  if ( obj->inherits( ArcImp::stype () ) )
     return ArcImp::stype ();
 
   return 0;

@@ -178,19 +178,7 @@ const ObjectImpType* PolygonBNPType::resultId() const
 
 const ObjectImpType* PolygonBNPType::impRequirement( const ObjectImp* obj, const Args& parents ) const
 {
-  bool found = false;
-
-  for ( Args::const_iterator o = parents.begin();
-        o != parents.end(); ++o )
-  {
-    if ( (*o)->inherits( PointImp::stype() ) && !found )
-    {
-      // object o is of a type that we're looking for
-      found = true;
-      if ( *o == obj ) return PointImp::stype();
-    }
-  }
-  return 0;
+  return PointImp::stype();
 }
 
 bool PolygonBNPType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
@@ -340,13 +328,11 @@ const ObjectImpType* PolygonBCVType::resultId() const
 
 const ObjectImpType* PolygonBCVType::impRequirement( const ObjectImp* obj, const Args& parents ) const
 {
-  if ( parents.size() < 3 )
-  {
-    if ( obj->inherits( PointImp::stype() ) )
-      return PointImp::stype();
-  }
-  else if ( obj->inherits( BogusPointImp::stype() ) )
-    return BogusPointImp::stype();
+  if ( obj->inherits( PointImp::stype() ) )
+    return PointImp::stype();
+
+  if ( obj->inherits( IntImp::stype() ) )
+    return IntImp::stype();
 
   return 0;
 }
