@@ -91,7 +91,7 @@ void setupBuiltinStuff()
     // circle
     c = new SimpleObjectTypeConstructor(
       CircleBCPType::instance(), I18N_NOOP( "Circle by Center && Point" ),
-      I18N_NOOP( "A circle constructed by its center and a point on its circumference" ),
+      I18N_NOOP( "A circle constructed by its center and a point that pertains to it" ),
       "circlebcp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebcp", Qt::Key_C ) );
@@ -136,7 +136,7 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       EllipseBFFPType::instance(),
       I18N_NOOP( "Ellipse by Focuses && Point" ),
-      I18N_NOOP( "An ellipse constructed by its focuses and a point on its circumference" ),
+      I18N_NOOP( "An ellipse constructed by its focuses and a point that pertains to it" ),
       "ellipsebffp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_ellipsebffp" ) );
@@ -144,7 +144,7 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       HyperbolaBFFPType::instance(),
       I18N_NOOP( "Hyperbola by Focuses && Point" ),
-      I18N_NOOP( "A hyperbola constructed by its focuses and a point on its circumference" ),
+      I18N_NOOP( "A hyperbola constructed by its focuses and a point that pertains to it" ),
       "hyperbolabffp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_hyperbolabffp" ) );
@@ -346,8 +346,8 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ProjectivityGI4PType::instance(),
-      I18N_NOOP( "Generic projectivity" ),
-      I18N_NOOP( "The unique projectivity that maps 4 given points onto 4 other given points" ),
+      I18N_NOOP( "Generic projective transformation" ),
+      I18N_NOOP( "The unique projective transformation that maps 4 given points onto 4 other given points" ),
       "genericprojectivity" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_projectivitygi4p" ) );

@@ -334,7 +334,7 @@ ObjectImp* AffinityGI3PType::calc( const Args& args, const KigDocument& ) const
 
 static const ArgsParser::spec argsspecProjectivityGI4P[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Generic projectivity of this object" ), false },
+  { ObjectImp::stype(), I18N_NOOP( "Generic projective transformation of this object" ), false },
   { PointImp::stype(), I18N_NOOP( "First of 4 starting points" ), false },
   { PointImp::stype(), I18N_NOOP( "Second of 4 starting points" ), false },
   { PointImp::stype(), I18N_NOOP( "Third of 4 starting points" ), false },
