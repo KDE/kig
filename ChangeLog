@@ -1,3 +1,7 @@
+2004-10-13  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Added construction of the tangent to a locus
+
 2004-10-11  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Added PoligonBCVType for regular poligons with n sides

@@ -21,6 +21,7 @@
 #include "bogus_imp.h"
 #include "conic_imp.h"
 #include "cubic_imp.h"
+#include "curve_imp.h"
 #include "other_imp.h"
 #include "point_imp.h"
 #include "line_imp.h"
@@ -210,6 +211,81 @@ ObjectImp* TangentCubicType::calc( const Args& args, const KigDocument& doc ) co
 }
 
 const ObjectImpType* TangentCubicType::resultId() const
+{
+  return LineImp::stype();
+}
+
+/**** Curve (locus) starts here ****/
+
+static const ArgsParser::spec argsspecTangentCurve[] =
+{
+  { CurveImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this curve" ),
+    I18N_NOOP( "Select the curve..." ), false },
+  { PointImp::stype(), constructlinetangentpoint,
+    I18N_NOOP( "Select the point for the tangent to go through..." ), true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TangentCurveType )
+
+TangentCurveType::TangentCurveType()
+  : ArgsParserObjectType( "TangentCurve", argsspecTangentCurve, 2 )
+{
+}
+
+TangentCurveType::~TangentCurveType()
+{
+}
+
+const TangentCurveType* TangentCurveType::instance()
+{
+  static const TangentCurveType t;
+  return &t;
+}
+
+ObjectImp* TangentCurveType::calc( const Args& args, const KigDocument& doc ) const
+{
+  if ( !margsparser.checkArgs( args ) )
+    return new InvalidImp;
+
+  const CurveImp* curve = static_cast<const CurveImp*>( args[0] );
+  const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
+  if ( !curve->containsPoint( p, doc ) )
+    return new InvalidImp;
+
+  const double t = curve->getParam( p, doc );
+  const double tau0 = 1e-3;
+  const double sigma = 1e-5;
+  const int maxiter = 20;
+
+  double tau = tau0;
+  Coordinate tang, err;
+  double tplus = t + tau;
+  double tminus = t - tau;
+  if ( tplus > 1 ) {tplus = 1; tminus = 1 - 2*tau;}
+  if ( tminus < 0 ) {tminus = 0; tplus = 2*tau;}
+  Coordinate tangold = (curve->getPoint( tplus, doc ) - curve->getPoint( tminus, doc ))/(2*tau);
+
+  for (int i = 0; i < maxiter; i++)
+  {
+    tau = tau/2;
+    tplus = t + tau;
+    if ( tplus > 1 ) {tplus = 1; tminus = 1 - 2*tau;}
+    tminus = t - tau;
+    if ( tminus < 0 ) {tminus = 0; tplus = 2*tau;}
+    tang = (curve->getPoint( tplus, doc ) - curve->getPoint( tminus, doc ))/(2*tau);
+    err = (tangold - tang)/3;
+    if (err.length() < sigma)
+    {
+      tang = (4*tang - tangold)/3;
+      const LineData tangent = LineData( p, p + tang );
+      return new LineImp( tangent );
+    }
+    tangold = tang;
+  }
+  return new InvalidImp;
+}
+
+const ObjectImpType* TangentCurveType::resultId() const
 {
   return LineImp::stype();
 }

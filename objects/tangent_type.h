@@ -66,4 +66,19 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * the line tangent to a curve
+ */
+class TangentCurveType
+  : public ArgsParserObjectType
+{
+  typedef ArgsParserObjectType Parent;
+  TangentCurveType();
+  ~TangentCurveType();
+public:
+  static const TangentCurveType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

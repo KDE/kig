@@ -697,9 +697,16 @@ TangentConstructor::TangentConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "tangentcubic" );
 
+  SimpleObjectTypeConstructor* curve =
+    new SimpleObjectTypeConstructor(
+      TangentCurveType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "tangentcurve" );
+
   merge( conic );
   merge( arc );
   merge( cubic );
+  merge( curve );
 }
 
 TangentConstructor::~TangentConstructor()
