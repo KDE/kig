@@ -334,18 +334,20 @@ void CircleBTP::sDrawPrelim( KigPainter& p, const Objects& os )
     // triangle with equal sides...
 
     // midpoint:
-    Coordinate m = ( c + a ) / 2;
+    Coordinate m = ( b + a ) / 2;
     if ( b.y != a.y )
     {
       // direction of the perpend:
-      double d = -(b.y-a.x)/(b.y-a.y);
+      double d = -(b.x-a.x)/(b.y-a.y);
 
       // length:
       // sqrt( 3 ) == tan( 60° ) == sqrt( 2^2 - 1^2 )
       double l = sqrt(3) * (a-b).length() / 2;
 
-      double dx = sqrt( l / ( pow( d, 2 ) + 1 ) );
-      double dy = sqrt( l / ( pow( d, -2 ) + 1 ) );
+      double d2 = sqr( d );
+      double l2 = sqr( l );
+      double dx = sqrt( l2 / ( d2 + 1 ) );
+      double dy = sqrt( l2 * d2 / ( d2 + 1 ) );
       if( d < 0 ) dy = -dy;
 
       c.x = m.x + dx;
