@@ -28,7 +28,6 @@
 #include <string>
 
 #include "../../objects/object.h"
-#include "../../misc/hierarchy.h"
 
 KigFilterCabri::KigFilterCabri()
 {
