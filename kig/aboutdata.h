@@ -27,8 +27,15 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
   KAboutData* tmp = new KAboutData( name, iname, version,
 				   description, KAboutData::License_GPL,
 				   "(C) 2002, Dominique Devriese");
-  tmp->addAuthor("Dominique Devriese", I18N_NOOP("Coding"),
+  tmp->addAuthor("Dominique Devriese",
+                 I18N_NOOP("Original author, maintenance, design and lots of code."),
 		  "devriese@kde.org" );
+
+  tmp->addCredit("Maurizio Paolini",
+		 I18N_NOOP( "Did the more math intensive work all around kig, "
+                            "most importantly conics and transformations "
+                            "support." ),
+		 "paolini@dmf.bs.unicatt.it");
 
   tmp->addCredit("Marc Bartsch",
 		  I18N_NOOP("Author of KGeo, where i got inspiration, "
@@ -39,14 +46,6 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 		  I18N_NOOP("Author of KSeg, another program that has been a "
 			    "source of inspiration for Kig"),
 		  "ibaran@mit.edu");
-
-  tmp->addCredit("Maurizio Paolini",
-		 I18N_NOOP( "Wrote the radical line and the circle-line "
-                            "intersection as a patch for kgeo, which i "
-                            "ported to kig. Gave me some cool ideas on the "
-                            "object system, and did some really _great_ work "
-                            "on Kig's Conic support." ),
-		 "paolini@dmf.bs.unicatt.it");
 
   tmp->addCredit("Christophe Devriese",
                  I18N_NOOP( "My brother, I got him to write the algorithm for "
