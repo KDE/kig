@@ -31,4 +31,24 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
 };
 
+class LineLineIntersectionType
+  : public ObjectType
+{
+  LineLineIntersectionType();
+  ~LineLineIntersectionType();
+public:
+  static const LineLineIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+};
+
+class LineCubicIntersectionType
+  : public ObjectType
+{
+  LineCubicIntersectionType();
+  ~LineCubicIntersectionType();
+public:
+  static const LineCubicIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+};
+
 #endif

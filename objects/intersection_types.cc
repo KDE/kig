@@ -21,6 +21,7 @@
 #include "bogus_imp.h"
 #include "point_imp.h"
 #include "conic_imp.h"
+#include "cubic_imp.h"
 #include "circle_imp.h"
 #include "line_imp.h"
 
@@ -59,7 +60,7 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents,
 
   int side = static_cast<const IntImp*>( p[2] )->data();
   assert( side == 1 || side == -1 );
-  const LineData line = static_cast<const LineImp*>( p[1] )->data();
+  const LineData line = static_cast<const AbstractLineImp*>( p[1] )->data();
 
   bool valid = true;
   Coordinate ret;
@@ -82,3 +83,75 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents,
   else return new InvalidImp;
 }
 
+static const ArgParser::spec argsspecll[] =
+{
+  { ObjectImp::ID_LineImp, 2 }
+};
+
+LineLineIntersectionType::LineLineIntersectionType()
+  : ObjectType( "point", "LineLineIntersection",
+                argsspecll, 1 )
+{
+}
+
+LineLineIntersectionType::~LineLineIntersectionType()
+{
+}
+
+const LineLineIntersectionType* LineLineIntersectionType::instance()
+{
+  static const LineLineIntersectionType t;
+  return &t;
+}
+
+ObjectImp* LineLineIntersectionType::calc( const Args& parents,
+                                           const KigWidget& ) const
+{
+  if ( parents.size() < 2 ||
+       !parents[0]->inherits( ObjectImp::ID_LineImp ) ||
+       !parents[1]->inherits( ObjectImp::ID_LineImp ) )
+    return new InvalidImp;
+  return new PointImp(
+    calcIntersectionPoint(
+      static_cast<const AbstractLineImp*>( parents[0] )->data(),
+      static_cast<const AbstractLineImp*>( parents[1] )->data() ) );
+}
+
+static const ArgParser::spec argsspeclcu[] =
+{
+  { ObjectImp::ID_CubicImp, 1 },
+  { ObjectImp::ID_LineImp, 1 },
+  { ObjectImp::ID_IntImp, 1 }
+};
+
+LineCubicIntersectionType::LineCubicIntersectionType()
+  : ObjectType( "point", "LineCubicIntersection",
+                argsspeclcu, 3 )
+{
+}
+
+LineCubicIntersectionType::~LineCubicIntersectionType()
+{
+}
+
+const LineCubicIntersectionType* LineCubicIntersectionType::instance()
+{
+  static const LineCubicIntersectionType t;
+  return &t;
+}
+
+ObjectImp* LineCubicIntersectionType::calc( const Args& parents,
+                                            const KigWidget& ) const
+{
+  if ( parents.size() < 3 ) return new InvalidImp;
+  Args p = margsparser.parse( parents );
+  if ( !p[0] || !p[1] || ! p[2] ) return new InvalidImp;
+  int which = static_cast<const IntImp*>( p[2] )->data();
+  bool valid = true;
+  const Coordinate c = calcCubicLineIntersect(
+    static_cast<const CubicImp*>( p[0] )->data(),
+    static_cast<const AbstractLineImp*>( p[1] )->data(),
+    which, valid );
+  if ( valid ) return new PointImp( c );
+  else return new InvalidImp;
+}
