@@ -811,7 +811,7 @@ KigDocument& KigPart::document()
 
 extern "C" int convertToNative( const KURL& url, const QCString& outfile )
 {
-  kdDebug() << "converting " << url << " to " << outfile << endl;
+  kdDebug() << "converting " << url.prettyURL() << " to " << outfile << endl;
 
   if ( ! url.isLocalFile() )
   {
