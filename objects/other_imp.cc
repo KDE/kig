@@ -20,6 +20,7 @@
 
 #include "bogus_imp.h"
 #include "point_imp.h"
+#include "line_imp.h"
 
 #include "../misc/screeninfo.h"
 #include "../misc/common.h"
@@ -76,7 +77,7 @@ bool AngleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 
 const uint AngleImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 2;
+  return Parent::numberOfProperties() + 3;
 }
 
 const QCStringList AngleImp::propertiesInternalNames() const
@@ -84,6 +85,7 @@ const QCStringList AngleImp::propertiesInternalNames() const
   QCStringList l = Parent::propertiesInternalNames();
   l << I18N_NOOP( "angle-radian" );
   l << I18N_NOOP( "angle-degrees" );
+  l << I18N_NOOP( "angle-bisector" );
   assert( l.size() == AngleImp::numberOfProperties() );
   return l;
 }
@@ -93,6 +95,7 @@ const QCStringList AngleImp::properties() const
   QCStringList l = Parent::properties();
   l << I18N_NOOP( "Angle in Radians" );
   l << I18N_NOOP( "Angle in Degrees" );
+  l << I18N_NOOP( "Angle Bisector" );
   assert( l.size() == AngleImp::numberOfProperties() );
   return l;
 }
@@ -112,6 +115,8 @@ const char* AngleImp::iconForProperty( uint which ) const
     return "angle-size"; // size in radians
   else if ( which == Parent::numberOfProperties() + 1 )
     return "angle-size"; // size in degrees
+  else if ( which == Parent::numberOfProperties() + 2 )
+    return "angle-bisector"; // angle bisector..
   else assert( false );
 }
 
@@ -123,6 +128,12 @@ ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
     return new DoubleImp( size() );
   else if ( which == Parent::numberOfProperties() + 1 )
     return new DoubleImp( size() * 180 / M_PI );
+  else if ( which == Parent::numberOfProperties() + 2 )
+  {
+    const double angle = mstartangle + mangle / 2;
+    Coordinate p2 = mpoint + Coordinate( cos( angle ), sin( angle ) ) * 10;
+    return new RayImp( mpoint, p2 );
+  }
   else assert( false );
 }
 

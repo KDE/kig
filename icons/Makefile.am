@@ -1,6 +1,7 @@
 kigicondatadir = $(kde_datadir)/kig/toolbar
 kigicondata_DATA = \
 	angle.png \
+	angle-bisector.png \
 	angle-size.png \
 	areaCircle.png \
 	arc.png \
