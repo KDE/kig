@@ -23,6 +23,13 @@
 #include "guiaction.h"
 #include "../kig/kig_part.h"
 
+#include <qfile.h>
+#include <qtextstream.h>
+#include <qdom.h>
+#include <qregexp.h>
+#include <algorithm>
+using namespace std;
+
 GUIActionList* GUIActionList::instance()
 {
   static GUIActionList l;
@@ -49,6 +56,18 @@ void GUIActionList::unregDoc( KigDocument* d )
   mdocs.remove( d );
 }
 
+void GUIActionList::add( const myvector<GUIAction*>& a )
+{
+  copy( a.begin(), a.end(), back_inserter( mactions ) );
+  for ( uint i = 0; i < mdocs.size(); ++i )
+  {
+    KigDocument::GUIUpdateToken t = mdocs[i]->startGUIActionUpdate();
+    for ( uint j = 0; j < a.size(); ++j )
+      mdocs[i]->actionAdded( a[j], t );
+    mdocs[i]->endGUIActionUpdate( t );
+  };
+}
+
 void GUIActionList::add( GUIAction* a )
 {
   mactions.push_back( a );
@@ -60,7 +79,7 @@ void GUIActionList::add( GUIAction* a )
   };
 }
 
-void GUIActionList::remove( myvector<GUIAction*> a )
+void GUIActionList::remove( const myvector<GUIAction*>& a )
 {
   for ( uint i = 0; i < a.size(); ++i )
   {
@@ -129,7 +148,7 @@ void ObjectConstructorList::add( ObjectConstructor* a )
   mctors.push_back( a );
 }
 
-Macro::Macro( GUIAction* a, ObjectConstructor* c )
+Macro::Macro( GUIAction* a, MacroConstructor* c )
   : action( a ), ctor( c )
 {
 }
@@ -163,6 +182,18 @@ MacroList* MacroList::instance()
   return &t;
 }
 
+void MacroList::add( const myvector<Macro*>& ms )
+{
+  copy( ms.begin(), ms.end(), back_inserter( mdata ) );
+  myvector<GUIAction*> acts;
+  for ( uint i = 0; i < ms.size(); ++i )
+  {
+    ObjectConstructorList::instance()->add( ms[i]->ctor );
+    acts.push_back( ms[i]->action );
+  };
+  GUIActionList::instance()->add( acts );
+}
+
 void MacroList::add( Macro* m )
 {
   mdata.push_back( m );
@@ -189,3 +220,116 @@ Macro::~Macro()
 {
 }
 
+bool MacroList::save( Macro* m, const QString& f )
+{
+  return save( myvector<Macro*>( m ), f );
+};
+
+bool MacroList::save( const myvector<Macro*>& ms, const QString& f )
+{
+  QDomDocument doc( "KigMacroFile" );
+
+  QDomElement docelem = doc.createElement( "KigMacroFile" );
+  docelem.setAttribute( "Version", "0.4.0" );
+  docelem.setAttribute( "Number", ms.size() );
+
+  for ( uint i = 0; i < ms.size(); ++i )
+  {
+    MacroConstructor* ctor = ms[i]->ctor;
+
+    QDomElement macroelem = doc.createElement( "Macro" );
+
+    // name
+    QDomElement nameelem = doc.createElement( "Name" );
+    nameelem.appendChild( doc.createTextNode( ctor->descriptiveName() ) );
+    macroelem.appendChild( nameelem );
+
+    // desc
+    QDomElement descelem = doc.createElement( "Description" );
+    descelem.appendChild( doc.createTextNode( ctor->description() ) );
+    macroelem.appendChild( descelem );
+
+    // data
+    QDomElement hierelem = doc.createElement( "Construction" );
+    ctor->hierarchy().serialize( hierelem, doc );
+    macroelem.appendChild( hierelem );
+
+    docelem.appendChild( macroelem );
+  };
+
+  doc.appendChild( docelem );
+
+  QFile file( f );
+  if ( ! file.open( IO_WriteOnly ) )
+    return false;
+  QTextStream stream( &file );
+  stream << doc.toCString();
+  return true;
+}
+
+bool MacroList::load( const QString& f, myvector<Macro*>& ret )
+{
+  QFile file( f );
+  if ( ! file.open( IO_ReadOnly ) )
+    return false;
+  QDomDocument doc( "KigMacroFile" );
+  if ( !doc.setContent( &file ) )
+    return false;
+  file.close();
+  QDomElement main = doc.documentElement();
+
+  if ( main.tagName() == "KigMacroFile" )
+    return loadNew( main, ret );
+  else
+    return loadOld( main, ret );
+};
+
+bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret )
+{
+  bool sok = true;
+  // unused..
+//  int number = docelem.attribute( "Number" ).toInt( &sok );
+  if ( ! sok ) return false;
+
+  QString version = docelem.attribute( "Version" );
+  QRegExp re( "(\\d+)\\.(\\d+)\\.(\\d+)" );
+  re.match( version );
+  // unused..
+//  int major = re.cap( 1 ).toInt( &sok );
+//  int minor = re.cap( 2 ).toInt( &sok );
+//  int mminor = re.cap( 3 ).toInt( &sok );
+//  if ( ! sok ) return false;
+
+  for ( QDomElement macroelem = docelem.firstChild().toElement();
+        ! macroelem.isNull(); macroelem = macroelem.nextSibling().toElement() )
+  {
+    QString name, description;
+    ObjectHierarchy* hierarchy;
+    if ( macroelem.tagName() != "Macro" ) continue; // forward compat ?
+    for ( QDomElement dataelem = macroelem.firstChild().toElement();
+          ! dataelem.isNull(); dataelem = dataelem.nextSibling().toElement() )
+    {
+      if ( dataelem.tagName() == "Name" )
+        name = dataelem.text();
+      else if ( dataelem.tagName() == "Description" )
+        description = dataelem.text();
+      else if ( dataelem.tagName() == "Construction" )
+        hierarchy = new ObjectHierarchy( dataelem );
+      else continue;
+    };
+    assert( hierarchy );
+    MacroConstructor* ctor =
+      new MacroConstructor( *hierarchy, name, description );
+    delete hierarchy;
+    GUIAction* act = new ConstructibleAction( ctor, 0 );
+    Macro* macro = new Macro( act, ctor );
+    ret.push_back( macro );
+  };
+  return true;
+}
+
+bool MacroList::loadOld( const QDomElement& docelem, myvector<Macro*>& ret )
+{
+  // TODO
+  return false;
+}

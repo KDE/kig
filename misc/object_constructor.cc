@@ -292,9 +292,16 @@ QString MergeObjectConstructor::useText( const Object& o, const Objects& sel,
   return QString::null;
 }
 
+MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const QString& name,
+                                    const QString& desc )
+  : ObjectConstructor(), mhier( hier ), mname( name ), mdesc( desc ),
+    mparser( mhier.argParser() )
+{
+}
+
 MacroConstructor::MacroConstructor(
   const Objects& input, const Objects& output,
-  const QString name, const QString description )
+  const QString& name, const QString& description )
   : ObjectConstructor(), mhier( input, output ),
     mname( name ), mdesc( description ),
     mparser( mhier.argParser() )
@@ -398,5 +405,10 @@ void MacroConstructor::plug( KigDocument* doc, KigGUIAction* kact )
     };
   };
   doc->aMNewAll.append( kact );
+}
+
+const ObjectHierarchy& MacroConstructor::hierarchy() const
+{
+  return mhier;
 }
 

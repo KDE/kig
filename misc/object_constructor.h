@@ -258,8 +258,12 @@ class MacroConstructor
   ArgParser mparser;
 public:
   MacroConstructor( const Objects& input, const Objects& output,
-                    const QString name, const QString description );
+                    const QString& name, const QString& description );
+  MacroConstructor( const ObjectHierarchy& hier, const QString& name,
+                    const QString& desc );
   ~MacroConstructor();
+
+  const ObjectHierarchy& hierarchy() const;
 
   const QString descriptiveName() const;
   const QString description() const;

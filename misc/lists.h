@@ -23,9 +23,12 @@
 
 class GUIAction;
 class ObjectConstructor;
+class MacroConstructor;
 class Objects;
 class KigDocument;
 class KigWidget;
+class QString;
+class QDomElement;
 
 /**
  * List of GUIActions for the parts to show.  Note that the list owns
@@ -51,8 +54,9 @@ public:
   void unregDoc( KigDocument* d );
 
   void add( GUIAction* a );
+  void add( const myvector<GUIAction*>& a );
   void remove( GUIAction* a );
-  void remove( myvector<GUIAction*> a );
+  void remove( const myvector<GUIAction*>& a );
 };
 
 /**
@@ -84,8 +88,8 @@ class Macro
 {
 public:
   GUIAction* action;
-  ObjectConstructor* ctor;
-  Macro( GUIAction* a, ObjectConstructor* c );
+  MacroConstructor* ctor;
+  Macro( GUIAction* a, MacroConstructor* c );
   ~Macro();
 };
 
@@ -113,6 +117,7 @@ public:
    * ctor in the relevant places..
    */
   void add( Macro* m );
+  void add( const myvector<Macro*>& ms );
 
   /**
    * Remove macro m.  Macrolist takes care of deleting everything, and
@@ -121,9 +126,27 @@ public:
   void remove( Macro* m );
 
   /**
+   * Save macro(s) m to file f..
+   */
+  bool save( Macro* m, const QString& f );
+  bool save( const myvector<Macro*>& ms, const QString& f );
+
+  /**
+   * load macro's from file f..
+   * note that this just returns the loaded macro's, and doesn't add
+   * them to the various lists.  Use add() if you want
+   * that behaviour..
+   */
+  bool load( const QString& f, myvector<Macro*>& ret );
+
+  /**
    * get access to the list of macro's..
    */
   const vectype& macros() const;
+
+private:
+  bool loadNew( const QDomElement& docelem, myvector<Macro*>& ret );
+  bool loadOld( const QDomElement& docelem, myvector<Macro*>& ret );
 };
 
 #endif
