@@ -45,9 +45,9 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                              "Franco wrote the most difficult parts." ),
                   "pasqui@dmf.bs.unicatt.it" );
 
-  tmp->addCredit( "Pino Toscano",
-                  I18N_NOOP( "The Italian translator, who also gave me lots of "
-                             "useful feedback, "
+  tmp->addAuthor( "Pino Toscano",
+                  I18N_NOOP( "Worked on the DrGeo import filter and the Italian translations,"
+                             "also gave me lots of useful feedback, "
                              "like feature requests and bug reports." ),
                   "toscano.pino@tiscali.it" );
 
