@@ -37,7 +37,7 @@ public:
   const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
   void move( RealObject* ourobj, const Coordinate& to,
              const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 
   QStringList specialActions() const;
   void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
@@ -60,7 +60,7 @@ public:
   const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
   void move( RealObject* ourobj, const Coordinate& to,
              const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 
   QStringList specialActions() const;
   void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
@@ -75,7 +75,7 @@ class MidPointType
 public:
   static const MidPointType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 #endif

@@ -30,7 +30,7 @@ class AngleType
 public:
   static const AngleType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 
   QStringList specialActions() const;
   void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
@@ -45,7 +45,7 @@ class VectorType
 public:
   static const VectorType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class LocusType
@@ -60,10 +60,10 @@ public:
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
 
   const ObjectHierarchy& hierarchy() const;
-  int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
 
   bool inherits( int type ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class CopyObjectType
@@ -76,8 +76,8 @@ public:
   static CopyObjectType* instance();
   bool inherits( int type ) const;
   ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
-  int impRequirement( const ObjectImp* o, const Args& parents ) const;
-  int resultId() const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* resultId() const;
 };
 
 /**
@@ -94,10 +94,10 @@ public:
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
 
-  int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
 
   bool inherits( int type ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 #endif

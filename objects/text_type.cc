@@ -33,9 +33,9 @@
 
 static const ArgParser::spec arggspeccs[] =
 {
-  { ObjectImp::ID_IntImp, "UNUSED" },
-  { ObjectImp::ID_PointImp, "UNUSED" },
-  { ObjectImp::ID_StringImp, "UNUSED" }
+  { IntImp::stype(), "UNUSED" },
+  { PointImp::stype(), "UNUSED" },
+  { StringImp::stype(), "UNUSED" }
 };
 
 TextType::TextType()
@@ -53,18 +53,18 @@ const TextType* TextType::instance()
   return &t;
 }
 
-int TextType::resultId() const
+const ObjectImpType* TextType::resultId() const
 {
-  return ObjectImp::ID_TextImp;
+  return TextImp::stype();
 }
 
-int TextType::impRequirement( const ObjectImp* oi, const Args& args ) const
+const ObjectImpType* TextType::impRequirement( const ObjectImp* oi, const Args& args ) const
 {
   Args firstthree( args.begin(), args.begin() + 3 );
   if ( find( firstthree.begin(), firstthree.end(), oi ) != firstthree.end() )
     return mparser.impRequirement( oi, firstthree );
   else
-    return ObjectImp::ID_AnyImp;
+    return ObjectImp::stype();
 }
 
 ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
@@ -74,9 +74,9 @@ ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
   Args varargs( parents.begin() + 3,  parents.end() );
   Args os = mparser.parse( firstthree );
   if ( ! os[0] || ! os[1] || ! os[2] ) return new InvalidImp;
-  assert( os[0]->inherits( ObjectImp::ID_IntImp ) );
-  assert( os[1]->inherits( ObjectImp::ID_PointImp ) );
-  assert( os[2]->inherits( ObjectImp::ID_StringImp ) );
+  assert( os[0]->inherits( IntImp::stype() ) );
+  assert( os[1]->inherits( PointImp::stype() ) );
+  assert( os[2]->inherits( StringImp::stype() ) );
   int frame = static_cast<const IntImp*>( os[0] )->data();
   bool needframe = frame != 0;
   const Coordinate t = static_cast<const PointImp*>( os[1] )->coordinate();
@@ -124,11 +124,11 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
   Objects firstthree( parents.begin(), parents.begin() + 3 );
   Objects os = mparser.parse( firstthree );
 
-  assert( os[0]->hasimp( ObjectImp::ID_IntImp ) );
+  assert( os[0]->hasimp( IntImp::stype() ) );
   assert( os[0]->inherits( Object::ID_DataObject ) );
-  assert( os[1]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( os[1]->hasimp( PointImp::stype() ) );
   assert( os[2]->inherits( Object::ID_DataObject ) );
-  assert( os[2]->hasimp( ObjectImp::ID_StringImp ) );
+  assert( os[2]->hasimp( StringImp::stype() ) );
 
   if ( i == 0 )
   {
@@ -158,7 +158,7 @@ const ArgParser& TextType::argParser() const
 
 const Coordinate TextType::moveReferencePoint( const RealObject* ourobj ) const
 {
-  if ( ourobj->hasimp( ObjectImp::ID_TextImp ) )
+  if ( ourobj->hasimp( TextImp::stype() ) )
     return static_cast<const TextImp*>( ourobj->imp() )->coordinate();
   else return Coordinate::invalidCoord();
 }

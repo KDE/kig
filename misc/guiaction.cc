@@ -28,6 +28,8 @@
 #include "../modes/construct_mode.h"
 #include "../modes/label.h"
 #include "../objects/object_factory.h"
+#include "../objects/object.h"
+#include "../objects/bogus_imp.h"
 
 #include <kiconloader.h>
 
@@ -283,4 +285,3 @@ int AddFixedPointAction::shortcut() const
 {
   return Qt::Key_F;
 }
-

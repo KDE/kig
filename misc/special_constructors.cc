@@ -36,8 +36,11 @@
 #include "../objects/point_imp.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/conic_imp.h"
+#include "../objects/cubic_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/locus_imp.h"
+#include "../objects/circle_imp.h"
+#include "../objects/line_imp.h"
 
 #include "../kig/kig_part.h"
 
@@ -54,7 +57,7 @@ ConicRadicalConstructor::ConicRadicalConstructor()
                "non-intersecting conics." ),
     "conicsradicalline", mparser ),
     mtype( ConicRadicalType::instance() ),
-    mparser( mtype->argParser().without( ObjectImp::ID_IntImp ) )
+    mparser( mtype->argParser().without( IntImp::stype() ) )
 {
 }
 
@@ -65,8 +68,8 @@ ConicRadicalConstructor::~ConicRadicalConstructor()
 void ConicRadicalConstructor::drawprelim(
   KigPainter& p, const Objects& parents, const KigDocument& doc ) const
 {
-  if ( parents.size() == 2 && parents[0]->hasimp( ObjectImp::ID_ConicImp ) &&
-       parents[1]->hasimp( ObjectImp::ID_ConicImp ) )
+  if ( parents.size() == 2 && parents[0]->hasimp( ConicImp::stype() ) &&
+       parents[1]->hasimp( ConicImp::stype() ) )
   {
     Args args;
     using namespace std;
@@ -107,8 +110,8 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
 
 static const struct ArgParser::spec argsspecpp[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Moving Point" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "following" ) }
+  { PointImp::stype(), I18N_NOOP( "Moving Point" ) },
+  { PointImp::stype(), I18N_NOOP( "following" ) }
 };
 
 LocusConstructor::LocusConstructor()
@@ -142,9 +145,9 @@ void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents,
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
   const ObjectImp* oimp = constrained->parents().back()->imp();
-  if( !oimp->inherits( ObjectImp::ID_CurveImp ) )
+  if( !oimp->inherits( CurveImp::stype() ) )
     oimp = constrained->parents().front()->imp();
-  assert( oimp->inherits( ObjectImp::ID_CurveImp ) );
+  assert( oimp->inherits( CurveImp::stype() ) );
   const CurveImp* cimp = static_cast<const CurveImp*>( oimp );
 
   ObjectHierarchy hier( Objects( const_cast<RealObject*>( constrained ) ),
@@ -208,8 +211,8 @@ bool LocusConstructor::isTransform() const
 }
 
 static const ArgParser::spec argsspectc[] = {
-  { ObjectImp::ID_ConicImp, "" },
-  { ObjectImp::ID_ConicImp, "" }
+  { ConicImp::stype(), "" },
+  { ConicImp::stype(), "" }
 };
 
 ConicConicIntersectionConstructor::ConicConicIntersectionConstructor()
@@ -227,8 +230,8 @@ void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const Objects
                                                     const KigDocument& ) const
 {
   if ( parents.size() != 2 ) return;
-  assert ( parents[0]->hasimp( ObjectImp::ID_ConicImp ) &&
-           parents[1]->hasimp( ObjectImp::ID_ConicImp ) );
+  assert ( parents[0]->hasimp( ConicImp::stype() ) &&
+           parents[1]->hasimp( ConicImp::stype() ) );
   const ConicCartesianData conica =
     static_cast<const ConicImp*>( parents[0]->imp() )->cartesianData();
   const ConicCartesianData conicb =
@@ -307,7 +310,7 @@ ConicLineIntersectionConstructor::~ConicLineIntersectionConstructor()
 QString ConicRadicalConstructor::useText( const Object& o, const Objects&,
                                           const KigDocument&, const KigWidget& ) const
 {
-  if ( o.hasimp( ObjectImp::ID_CircleImp ) )
+  if ( o.hasimp( CircleImp::stype() ) )
     return i18n( "Construct the Radical Lines of This Circle" );
   else
     return i18n( "Construct the Radical Lines of This Conic" );
@@ -360,13 +363,13 @@ QString GenericIntersectionConstructor::useText(
   const Object& o, const Objects&,
   const KigDocument&, const KigWidget& ) const
 {
-  if ( o.hasimp( ObjectImp::ID_CircleImp ) )
+  if ( o.hasimp( CircleImp::stype() ) )
     return i18n( "Intersect with This Circle" );
-  else if ( o.hasimp( ObjectImp::ID_ConicImp ) )
+  else if ( o.hasimp( ConicImp::stype() ) )
     return i18n( "Intersect with This Conic" );
-  else if ( o.hasimp( ObjectImp::ID_LineImp ) )
+  else if ( o.hasimp( AbstractLineImp::stype() ) )
     return i18n( "Intersect with This Line" );
-  else if ( o.hasimp( ObjectImp::ID_CubicImp ) )
+  else if ( o.hasimp( CubicImp::stype() ) )
     return i18n( "Intersect with This Cubic" );
   else assert( false );
   return QString::null;
@@ -374,8 +377,8 @@ QString GenericIntersectionConstructor::useText(
 
 static const ArgParser::spec argsspecMidPointOfTwoPoints[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the midpoint of this point" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the midpoint of this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) }
 };
 
 MidPointOfTwoPointsConstructor::MidPointOfTwoPointsConstructor()
@@ -395,8 +398,8 @@ void MidPointOfTwoPointsConstructor::drawprelim(
   const KigDocument& ) const
 {
   if ( parents.size() != 2 ) return;
-  assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
-  assert( parents[1]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( parents[0]->hasimp( PointImp::stype() ) );
+  assert( parents[1]->hasimp( PointImp::stype() ) );
   const Coordinate m =
     ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
       static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;

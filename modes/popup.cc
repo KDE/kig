@@ -26,6 +26,8 @@
 #include "../kig/kig_commands.h"
 #include "../misc/i18n.h"
 #include "../objects/object_imp.h"
+#include "../objects/bogus_imp.h"
+#include "../objects/point_imp.h"
 #include "../objects/object.h"
 #include "../objects/other_type.h"
 #include "../objects/object_factory.h"
@@ -145,7 +147,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
   connect( this, SIGNAL( activated( int ) ), this, SLOT( toplevelMenuSlot( int ) ) );
 
   insertTitle( empty ? i18n( "Kig Document" )
-               : single ? ObjectImp::translatedName( objs[0]->imp()->id() )
+               : single ? objs[0]->imp()->type()->translatedName()
                : i18n( "%1 Objects" ).arg( objs.size() ), 1 );
 
   if ( empty )
@@ -292,7 +294,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     QColor color = os.front()->color();
     for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
     {
-      if ( ! (*i)->imp()->inherits( ObjectImp::ID_PointImp ) )
+      if ( ! (*i)->imp()->inherits( PointImp::stype() ) )
         point = false;
       if ( (*i)->color() != color ) samecolor = false;
     };
@@ -528,12 +530,12 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
     {
       // we don't want imp's like DoubleImp, since we can't show them
       // anyway..
-      add &= ! prop->inherits( ObjectImp::ID_BogusImp );
+      add &= ! prop->inherits( BogusImp::stype() );
       // we don't want to construct PointImp's coordinate property,
       // since it would construct a point at the same place as its
       // parent..
-      add &= ! ( o->hasimp( ObjectImp::ID_PointImp ) &&
-                 prop->inherits( ObjectImp::ID_PointImp ) );
+      add &= ! ( o->hasimp( PointImp::stype() ) &&
+                 prop->inherits( PointImp::stype() ) );
     }
     else if ( menu == NormalModePopupObjects::ShowMenu )
       add &= prop->canFillInNextEscape();

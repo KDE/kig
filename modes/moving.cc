@@ -143,7 +143,7 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
 void MovingMode::stopMove()
 {
   QString text = d->emo.size() == 1 ?
-                 ObjectImp::moveAStatement( d->emo[0]->imp()->id() ) :
+                 d->emo[0]->imp()->type()->moveAStatement() :
                  i18n( "Move %1 Objects" ).arg( d->emo.size() );
   KigCommand* mc = new KigCommand( mdoc, text );
   mc->addTask( d->mon->finish() );

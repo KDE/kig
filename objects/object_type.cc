@@ -59,7 +59,7 @@ ArgparserObjectType::ArgparserObjectType( const char fulltypename[],
 {
 }
 
-int ArgparserObjectType::impRequirement( const ObjectImp* o, const Args& parents ) const
+const ObjectImpType* ArgparserObjectType::impRequirement( const ObjectImp* o, const Args& parents ) const
 {
   return margsparser.impRequirement( o, parents );
 }

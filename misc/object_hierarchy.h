@@ -23,6 +23,7 @@
 
 #include <map>
 
+class ObjectImpType;
 class ArgParser;
 
 class ObjectHierarchy
@@ -33,7 +34,7 @@ private:
   std::vector<Node*> mnodes;
   uint mnumberofargs;
   uint mnumberofresults;
-  std::vector<int> margrequirements;
+  std::vector<const ObjectImpType*> margrequirements;
 
   int visit( const Object* o, std::map<const Object*, int>&,
              bool isresult = false);
@@ -70,7 +71,7 @@ public:
   uint numberOfArgs() const { return mnumberofargs; };
   uint numberOfResults() const { return mnumberofresults; };
 
-  int idOfLastResult() const;
+  const ObjectImpType* idOfLastResult() const;
   bool resultDoesNotDependOnGiven() const;
 
   ObjectHierarchy transformFinalObject( const Transformation& t ) const;

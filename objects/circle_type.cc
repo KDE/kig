@@ -28,8 +28,8 @@ static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a ci
 
 static const ArgParser::spec argsspecCircleBCP[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a circle with this center" ) },
-  { ObjectImp::ID_PointImp, constructcirclethroughpointstat }
+  { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ) },
+  { PointImp::stype(), constructcirclethroughpointstat }
 };
 
 CircleBCPType::CircleBCPType()
@@ -60,9 +60,9 @@ const CircleBTPType* CircleBTPType::instance()
 
 static const ArgParser::spec argsspecCircleBTP[] =
 {
-  { ObjectImp::ID_PointImp, constructcirclethroughpointstat },
-  { ObjectImp::ID_PointImp, constructcirclethroughpointstat },
-  { ObjectImp::ID_PointImp, constructcirclethroughpointstat }
+  { PointImp::stype(), constructcirclethroughpointstat },
+  { PointImp::stype(), constructcirclethroughpointstat },
+  { PointImp::stype(), constructcirclethroughpointstat }
 };
 
 CircleBTPType::CircleBTPType()
@@ -123,20 +123,20 @@ ObjectImp* CircleBTPType::calc( const Args& targs, const KigDocument& ) const
   else return new InvalidImp;
 }
 
-int CircleBCPType::resultId() const
+const ObjectImpType* CircleBCPType::resultId() const
 {
-  return ObjectImp::ID_CircleImp;
+  return CircleImp::stype();
 }
 
-int CircleBTPType::resultId() const
+const ObjectImpType* CircleBTPType::resultId() const
 {
-  return ObjectImp::ID_CircleImp;
+  return CircleImp::stype();
 }
 
 static const ArgParser::spec argsspecCircleBPR[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a circle with this center" ) },
-  { ObjectImp::ID_DoubleImp, "UNUSED" }
+  { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ) },
+  { DoubleImp::stype(), "UNUSED" }
 };
 
 CircleBPRType::CircleBPRType()
@@ -158,14 +158,14 @@ ObjectImp* CircleBPRType::calc( const Args& args, const KigDocument& ) const
 {
   const Args a = margsparser.parse( args );
   if ( ! a[0] || ! a[1] ) return new InvalidImp;
-  assert( a[0]->inherits( ObjectImp::ID_PointImp ) );
+  assert( a[0]->inherits( PointImp::stype() ) );
   const Coordinate c = static_cast<const PointImp*>( a[0] )->coordinate();
-  assert( a[1]->inherits( ObjectImp::ID_DoubleImp ) );
+  assert( a[1]->inherits( DoubleImp::stype() ) );
   double r = static_cast<const DoubleImp*>( a[1] )->data();
   return new CircleImp( c, r );
 }
 
-int CircleBPRType::resultId() const
+const ObjectImpType* CircleBPRType::resultId() const
 {
-  return ObjectImp::ID_CircleImp;
+  return CircleImp::stype();
 }

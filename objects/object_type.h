@@ -55,13 +55,13 @@ public:
   // Supposing that parents.with( o ) would be given as parents to
   // this type's calc function, this function returns the ObjectImp id
   // that o should at least have..
-  virtual int impRequirement( const ObjectImp* o, const Args& parents ) const = 0;
+  virtual const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const = 0;
 
   // returns the ObjectImp id of the ObjectImp's produced by this
   // ObjectType..  if the ObjectType can return different sorts of
   // ObjectImp's, it should return the biggest common id, or
   // ID_AnyImp..
-  virtual int resultId() const = 0;
+  virtual const ObjectImpType* resultId() const = 0;
 
   // is this object type a transformation type.  We want to know this
   // cause transform types are shown separately in an object's RMB
@@ -93,7 +93,7 @@ protected:
                        const struct ArgParser::spec argsspec[],
                        int n );
 public:
-  int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ArgParser& argParser() const;
 };
 

@@ -43,9 +43,9 @@ static const char* constructanglethroughpoint =
 
 static const ArgParser::spec argsspecAngle[] =
 {
-  { ObjectImp::ID_PointImp, constructanglethroughpoint },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an angle at this point" ) },
-  { ObjectImp::ID_PointImp, constructanglethroughpoint }
+  { PointImp::stype(), constructanglethroughpoint },
+  { PointImp::stype(), I18N_NOOP( "Construct an angle at this point" ) },
+  { PointImp::stype(), constructanglethroughpoint }
 };
 
 AngleType::AngleType()
@@ -68,7 +68,7 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
   if ( parents.size() != 3 ) return new InvalidImp;
   std::vector<Coordinate> points;
   for ( uint i = 0; i < parents.size(); ++i )
-    if ( parents[i]->inherits( ObjectImp::ID_PointImp ) )
+    if ( parents[i]->inherits( PointImp::stype() ) )
       points.push_back(
         static_cast<const PointImp*>( parents[i] )->coordinate() );
   if ( points.size() != parents.size() )
@@ -88,8 +88,8 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 
 static const ArgParser::spec argsspecVector[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a vector from this point" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a vector to this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a vector from this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a vector to this point" ) }
 };
 
 VectorType::VectorType()
@@ -114,8 +114,8 @@ ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const struct ArgParser::spec argsspecLocus[] =
 {
-  { ObjectImp::ID_HierarchyImp, "hierarchy" },
-  { ObjectImp::ID_CurveImp, "curve" }
+  { HierarchyImp::stype(), "hierarchy" },
+  { CurveImp::stype(), "curve" }
 };
 
 LocusType::LocusType()
@@ -149,19 +149,19 @@ bool LocusType::inherits( int type ) const
   return type == ID_LocusType ? true : Parent::inherits( type );
 }
 
-int AngleType::resultId() const
+const ObjectImpType* AngleType::resultId() const
 {
-  return ObjectImp::ID_AngleImp;
+  return AngleImp::stype();
 }
 
-int VectorType::resultId() const
+const ObjectImpType* VectorType::resultId() const
 {
-  return ObjectImp::ID_VectorImp;
+  return VectorImp::stype();
 }
 
-int LocusType::resultId() const
+const ObjectImpType* LocusType::resultId() const
 {
-  return ObjectImp::ID_LocusImp;
+  return LocusImp::stype();
 }
 
 CopyObjectType::CopyObjectType()
@@ -190,24 +190,24 @@ ObjectImp* CopyObjectType::calc( const Args& parents, const KigDocument& ) const
   return parents[0]->copy();
 }
 
-int CopyObjectType::impRequirement( const ObjectImp*, const Args& ) const
+const ObjectImpType* CopyObjectType::impRequirement( const ObjectImp*, const Args& ) const
 {
-  return ObjectImp::ID_AnyImp;
+  return ObjectImp::stype();
 }
 
-int CopyObjectType::resultId() const
+const ObjectImpType* CopyObjectType::resultId() const
 {
   // we don't know what we return..
-  return ObjectImp::ID_AnyImp;
+  return ObjectImp::stype();
 }
 
-int LocusType::impRequirement( const ObjectImp* o, const Args& parents ) const
+const ObjectImpType* LocusType::impRequirement( const ObjectImp* o, const Args& parents ) const
 {
   Args firsttwo( parents.begin(), parents.begin() + 2 );
   if ( find( firsttwo.begin(), firsttwo.end(), o ) != firsttwo.end() )
     return margsparser.impRequirement( o, firsttwo );
   else
-    return ObjectImp::ID_AnyImp;
+    return ObjectImp::stype();
 }
 
 const LocusType* LocusType::instance()
@@ -218,9 +218,9 @@ const LocusType* LocusType::instance()
 
 static const ArgParser::spec argsspecArcBTP[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an arc starting at this point" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an arc through this point" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an arc ending at this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct an arc starting at this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct an arc through this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct an arc ending at this point" ) }
 };
 
 ArcBTPType::ArcBTPType()
@@ -242,8 +242,8 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
 {
   if ( args.size() < 2 ) return new InvalidImp;
   if ( args.size() > 3 ) return new InvalidImp;
-  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
-  assert( args[1]->inherits( ObjectImp::ID_PointImp ) );
+  assert( args[0]->inherits( PointImp::stype() ) );
+  assert( args[1]->inherits( PointImp::stype() ) );
   const Coordinate a =
     static_cast<const PointImp*>( args[0] )->coordinate();
   const Coordinate b =
@@ -253,7 +253,7 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
   double startangle = 0.;
   if ( args.size() == 3 )
   {
-    assert( args[2]->inherits( ObjectImp::ID_PointImp ) );
+    assert( args[2]->inherits( PointImp::stype() ) );
     Coordinate c = static_cast<const PointImp*>( args[2] )->coordinate();
     center = calcCenter( a, b, c );
     if ( ! center.valid() ) return new InvalidImp;
@@ -298,9 +298,9 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
   return new ArcImp( center, radius, startangle, angle );
 }
 
-int ArcBTPType::impRequirement( const ObjectImp*, const Args& ) const
+const ObjectImpType* ArcBTPType::impRequirement( const ObjectImp*, const Args& ) const
 {
-  return ObjectImp::ID_PointImp;
+  return PointImp::stype();
 }
 
 bool ArcBTPType::inherits( int type ) const
@@ -308,9 +308,9 @@ bool ArcBTPType::inherits( int type ) const
   return Parent::inherits( type );
 }
 
-int ArcBTPType::resultId() const
+const ObjectImpType* ArcBTPType::resultId() const
 {
-  return ObjectImp::ID_ArcImp;
+  return ArcImp::stype();
 }
 
 QStringList AngleType::specialActions() const
@@ -331,9 +331,9 @@ void AngleType::executeAction(
   Objects parents = o->parents();
   assert( parents.size() == 3 );
 
-  if ( ! parents[0]->hasimp( ObjectImp::ID_PointImp ) ||
-       ! parents[1]->hasimp( ObjectImp::ID_PointImp ) ||
-       ! parents[2]->hasimp( ObjectImp::ID_PointImp ) )
+  if ( ! parents[0]->hasimp( PointImp::stype() ) ||
+       ! parents[1]->hasimp( PointImp::stype() ) ||
+       ! parents[2]->hasimp( PointImp::stype() ) )
     return;
 
   Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();

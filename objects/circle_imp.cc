@@ -143,11 +143,11 @@ const QCStringList CircleImp::properties() const
   return l;
 }
 
-int CircleImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* CircleImp::impRequirementForProperty( uint which ) const
 {
   if ( which < CurveImp::numberOfProperties() )
     return CurveImp::impRequirementForProperty( which );
-  else return ID_CircleImp;
+  else return CircleImp::stype();
 }
 
 const char* CircleImp::iconForProperty( uint which ) const
@@ -236,11 +236,6 @@ QString CircleImp::cartesianEquationString( const KigDocument& ) const
   return ret;
 }
 
-bool CircleImp::inherits( int typeID ) const
-{
-  return typeID == ID_CircleImp ? true : Parent::inherits( typeID );
-}
-
 Coordinate CircleImp::focus1() const
 {
   return center();
@@ -276,11 +271,6 @@ CircleImp* CircleImp::copy() const
   return new CircleImp( mcenter, mradius );
 }
 
-const char* CircleImp::baseName() const
-{
-  return I18N_NOOP( "circle" );
-}
-
 double CircleImp::getParam( const Coordinate& point, const KigDocument& ) const
 {
   Coordinate tmp = point - mcenter;
@@ -295,11 +285,6 @@ const Coordinate CircleImp::getPoint( double p, bool& valid, const KigDocument& 
   return mcenter + Coordinate (cos(p * 2 * M_PI), sin(p * 2 * M_PI)) * mradius;
 }
 
-int CircleImp::id() const
-{
-  return ID_CircleImp;
-}
-
 void CircleImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
@@ -307,8 +292,24 @@ void CircleImp::visit( ObjectImpVisitor* vtor ) const
 
 bool CircleImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_CircleImp ) &&
+  return rhs.inherits( CircleImp::stype() ) &&
     static_cast<const CircleImp&>( rhs ).center() == center() &&
     static_cast<const CircleImp&>( rhs ).radius() == radius();
 }
 
+const ObjectImpType* CircleImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "circle",
+    I18N_NOOP( "circle" ),
+    I18N_NOOP( "Select this circle" ),
+    I18N_NOOP( "Remove a Circle" ),
+    I18N_NOOP( "Add a Circle" ),
+    I18N_NOOP( "Move a Circle" ) );
+  return &t;
+};
+
+const ObjectImpType* CircleImp::type() const
+{
+  return CircleImp::stype();
+}

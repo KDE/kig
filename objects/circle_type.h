@@ -33,7 +33,7 @@ public:
   static const CircleBCPType* instance();
 
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 /**
@@ -48,7 +48,7 @@ public:
   static const CircleBPRType* instance();
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 /**
@@ -64,7 +64,7 @@ public:
   static const CircleBTPType* instance();
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 #endif

@@ -23,6 +23,8 @@
 
 #include "../objects/common.h"
 
+class ObjectImpType;
+
 class ArgsChecker
 {
 public:
@@ -43,7 +45,7 @@ class ArgParser
   : public ArgsChecker
 {
 public:
-  struct spec { int type; const char* usetext; };
+  struct spec { const ObjectImpType* type; const char* usetext; };
 private:
   // the args spec..
   std::vector<spec> margs;
@@ -63,7 +65,7 @@ public:
   void initialize( const struct spec* args, int n );
   // returns a new ArgParser that wants the same args, except for the
   // ones of the given type..
-  ArgParser without( int type ) const;
+  ArgParser without( const ObjectImpType* type ) const;
   // checks if os matches the argument list this parser should parse..
   int check( const Objects& os ) const;
   int check( const Args& os ) const;
@@ -79,7 +81,7 @@ public:
 
   // returns the minimal ObjectImp ID that o needs to inherit in order
   // to be useful..  o should be part of parents.
-  int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
 };
 
 #endif

@@ -18,7 +18,14 @@
 
 #include "curve_imp.h"
 
-bool CurveImp::inherits( int typeID ) const
+const ObjectImpType* CurveImp::stype()
 {
-  return typeID == ID_CurveImp ? true : Parent::inherits( typeID );
-}
+  static const ObjectImpType t(
+    Parent::stype(), "curve",
+    I18N_NOOP( "curve" ),
+    I18N_NOOP( "Select this curve" ),
+    I18N_NOOP( "Remove a Curve" ),
+    I18N_NOOP( "Add a Curve" ),
+    I18N_NOOP( "Move a Curve" ) );
+  return &t;
+};

@@ -224,6 +224,19 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument&
   };
 }
 
+// returns the "minimum" of a and b ( in the partially ordered set of
+// ObjectImpType's, using the inherits member function as comparison,
+// if you for some reason like this sort of non-sense ;) ).  This
+// basically means: return the type that inherits the other type,
+// because if another type inherits the lowermost type, then it will
+// also inherit the other..
+const ObjectImpType* lowermost( const ObjectImpType* a, const ObjectImpType* b )
+{
+  if ( a->inherits( b ) ) return a;
+  assert( b->inherits( a ) );
+  return b;
+};
+
 int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenmap,
                             bool isresult )
 {
@@ -284,8 +297,9 @@ int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenm
       Object* parent = o->parents()[i];
       Objects oparents = o->parents();
 
-      margrequirements[parents[i]] = kMax( margrequirements[parents[i]],
-                                           o->impRequirement( parent, oparents ) );
+      margrequirements[parents[i]] =
+        lowermost( margrequirements[parents[i]],
+                   o->impRequirement( parent, oparents ) );
     };
   };
   if ( o->inherits( Object::ID_RealObject ) )
@@ -341,7 +355,7 @@ ObjectHierarchy ObjectHierarchy::withFixedArgs( const Args& a ) const
 ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
   : mnumberofargs( from.size() ), mnumberofresults( 1 )
 {
-  margrequirements.resize( from.size(), ObjectImp::ID_AnyImp );
+  margrequirements.resize( from.size(), ObjectImp::stype() );
   std::map<const Object*, int> seenmap;
   for ( uint i = 0; i < from.size(); ++i )
     seenmap[from[i]] = i;
@@ -355,7 +369,7 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
 ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
   : mnumberofargs( from.size() ), mnumberofresults( to.size() )
 {
-  margrequirements.resize( from.size(), ObjectImp::ID_AnyImp );
+  margrequirements.resize( from.size(), ObjectImp::stype() );
   std::map<const Object*, int> seenmap;
   for ( uint i = 0; i < from.size(); ++i )
     seenmap[from[i]] = i;
@@ -377,7 +391,7 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
   {
     QDomElement e = doc.createElement( "input" );
     e.setAttribute( "id", id++ );
-    e.setAttribute( "requirement", ObjectImp::idToString( margrequirements[i] ) );
+    e.setAttribute( "requirement", margrequirements[i]->internalName() );
     parent.appendChild( e );
   }
 
@@ -439,9 +453,9 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
     mnumberofargs = kMax( id, mnumberofargs );
 
     tmp = e.attribute( "requirement" );
-    int req = ObjectImp::stringToID( tmp.latin1() );
-    if ( req == -1 ) req = ObjectImp::ID_AnyImp; // sucks, i know..
-    margrequirements.resize( mnumberofargs, ObjectImp::ID_AnyImp );
+    const ObjectImpType* req = ObjectImpType::typeFromInternalName( tmp.latin1() );
+    if ( req == 0 ) req = ObjectImp::stype(); // sucks, i know..
+    margrequirements.resize( mnumberofargs, ObjectImp::stype() );
     margrequirements[id - 1] = req;
   }
   for (; !e.isNull(); e = e.nextSibling().toElement() )
@@ -501,10 +515,10 @@ ArgParser ObjectHierarchy::argParser() const
   std::vector<ArgParser::spec> specs;
   for ( uint i = 0; i < margrequirements.size(); ++i )
   {
-    int req = margrequirements[i];
+    const ObjectImpType* req = margrequirements[i];
     ArgParser::spec spec;
     spec.type = req;
-    spec.usetext = ObjectImp::selectStatement( req );
+    spec.usetext = req->selectStatement();
     assert( spec.usetext );
     specs.push_back( spec );
   };
@@ -535,13 +549,13 @@ Objects ObjectHierarchy::buildObjects( const Objects& os, const KigDocument& doc
   return ret;
 }
 
-int ObjectHierarchy::idOfLastResult() const
+const ObjectImpType* ObjectHierarchy::idOfLastResult() const
 {
   const Node* n = mnodes.back();
   if ( n->id() == Node::ID_PushStack )
-    return static_cast<const PushStackNode*>( n )->imp()->id();
+    return static_cast<const PushStackNode*>( n )->imp()->type();
   else if ( n->id() == Node::ID_FetchProp )
-    return ObjectImp::ID_AnyImp;
+    return ObjectImp::stype();
   else
     return static_cast<const ApplyTypeNode*>( n )->type()->resultId();
 }

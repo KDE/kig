@@ -30,8 +30,8 @@ public:
   ~TextType();
   static const TextType* instance();
 
-  int impRequirement( const ObjectImp* o, const Args& parents ) const;
-  int resultId() const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* resultId() const;
 
   ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
 

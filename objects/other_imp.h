@@ -25,11 +25,13 @@
 class AngleImp
   : public ObjectImp
 {
-  typedef ObjectImp Parent;
   const Coordinate mpoint;
   const double mstartangle;
   const double mangle;
 public:
+  typedef ObjectImp Parent;
+  static const ObjectImpType* stype();
+
   AngleImp( const Coordinate& pt, double start_angle_in_radials,
             double angle_in_radials );
   ~AngleImp();
@@ -45,14 +47,12 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
-  bool inherits( int typeID ) const;
   ObjectImp* copy() const;
-  const char* baseName() const;
 
   const double size() const;
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   const Coordinate point() const { return mpoint; };
@@ -65,10 +65,12 @@ public:
 class VectorImp
   : public ObjectImp
 {
-  typedef ObjectImp Parent;
   const Coordinate ma;
   const Coordinate mb;
 public:
+  typedef ObjectImp Parent;
+  static const ObjectImpType* stype();
+
   VectorImp( const Coordinate& a, const Coordinate& b );
   ~VectorImp();
 
@@ -83,17 +85,15 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
-  bool inherits( int typeID ) const;
   ObjectImp* copy() const;
-  const char* baseName() const;
 
   const Coordinate dir() const;
   const Coordinate a() const;
   const Coordinate b() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool equals( const ObjectImp& rhs ) const;
@@ -102,12 +102,14 @@ public:
 class ArcImp
   : public CurveImp
 {
-  typedef CurveImp Parent;
   Coordinate mcenter;
   double mradius;
   double msa;
   double ma;
 public:
+  typedef CurveImp Parent;
+  static const ObjectImpType* stype();
+
   ArcImp( const Coordinate& center, const double radius,
           const double startangle, const double angle );
   ~ArcImp();
@@ -125,14 +127,10 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
-  bool inherits( int type ) const;
-
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
-
-  const char* baseName() const;
 
   double getParam( const Coordinate& c, const KigDocument& d ) const;
   const Coordinate getPoint( double p, bool& valid, const KigDocument& d ) const;

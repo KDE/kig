@@ -178,7 +178,7 @@ class PropertyObjectConstructor
   const char* mpropinternalname;
 public:
   PropertyObjectConstructor(
-    const int imprequirement, const char* usetext,
+    const ObjectImpType* imprequirement, const char* usetext,
     const char* descname, const char* desc,
     const char* iconfile, const char* propertyinternalname );
 

@@ -28,9 +28,11 @@ class LineData;
 class CubicImp
   : public CurveImp
 {
-  typedef CurveImp Parent;
   const CubicCartesianData mdata;
 public:
+  typedef CurveImp Parent;
+  static const ObjectImpType* stype();
+
   CubicImp( const CubicCartesianData& data );
   ~CubicImp();
 
@@ -44,11 +46,9 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
-  bool inherits( int type ) const;
   CubicImp* copy() const;
-  const char* baseName() const;
 
   double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
@@ -58,7 +58,7 @@ protected:
 public:
   const CubicCartesianData data() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool equals( const ObjectImp& rhs ) const;

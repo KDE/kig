@@ -36,8 +36,8 @@
 
 static const ArgParser::spec argsspecFixedPoint[] =
 {
-  { ObjectImp::ID_DoubleImp, "x" },
-  { ObjectImp::ID_DoubleImp, "y" }
+  { DoubleImp::stype(), "x" },
+  { DoubleImp::stype(), "y" }
 };
 
 FixedPointType::FixedPointType()
@@ -52,8 +52,8 @@ FixedPointType::~FixedPointType()
 ObjectImp* FixedPointType::calc( const Args& parents, const KigDocument& ) const
 {
   assert( parents.size() == 2 );
-  assert( parents[0]->inherits( ObjectImp::ID_DoubleImp ) );
-  assert( parents[1]->inherits( ObjectImp::ID_DoubleImp ) );
+  assert( parents[0]->inherits( DoubleImp::stype() ) );
+  assert( parents[1]->inherits( DoubleImp::stype() ) );
   double a = static_cast<const DoubleImp*>( parents[0] )->data();
   double b = static_cast<const DoubleImp*>( parents[1] )->data();
   PointImp* d = new PointImp( Coordinate( a, b ) );
@@ -74,8 +74,8 @@ ObjectImp* ConstrainedPointType::calc( const Args& tparents, const KigDocument& 
 
 const ArgParser::spec argsspecConstrainedPoint[] =
 {
-  { ObjectImp::ID_DoubleImp, "parameter" },
-  { ObjectImp::ID_CurveImp, "Constrain the point to this curve" }
+  { DoubleImp::stype(), "parameter" },
+  { CurveImp::stype(), "Constrain the point to this curve" }
 };
 
 ConstrainedPointType::ConstrainedPointType()
@@ -110,7 +110,7 @@ void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& to,
   Objects parents = ourobj->parents();
   assert( parents.size() == 2 );
   const CurveImp* ci = 0;
-  if( parents.back()->hasimp( ObjectImp::ID_CurveImp ) )
+  if( parents.back()->hasimp( CurveImp::stype() ) )
     ci = static_cast<const CurveImp*>( parents.back()->imp() );
   else ci = static_cast<const CurveImp*>( parents.front()->imp() );
 
@@ -118,11 +118,11 @@ void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& to,
   const double np = ci->getParam( to, d );
 
   Object* paramo = 0;
-  if ( parents[0]->hasimp( ObjectImp::ID_DoubleImp ) )
+  if ( parents[0]->hasimp( DoubleImp::stype() ) )
     paramo = parents[0];
   else paramo = parents[1];
   assert( paramo->inherits( Object::ID_DataObject ) );
-  assert( paramo->hasimp( ObjectImp::ID_DoubleImp ) );
+  assert( paramo->hasimp( DoubleImp::stype() ) );
 
   static_cast<DataObject*>( paramo )->setImp( new DoubleImp( np ) );
 }
@@ -139,8 +139,8 @@ bool FixedPointType::canMove() const
 
 static const ArgParser::spec argsspecMidPoint[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the midpoint of this point" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the midpoint of this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) }
 };
 
 MidPointType::MidPointType()
@@ -180,19 +180,19 @@ const FixedPointType* FixedPointType::instance()
   return &t;
 }
 
-int FixedPointType::resultId() const
+const ObjectImpType* FixedPointType::resultId() const
 {
-  return ObjectImp::ID_PointImp;
+  return PointImp::stype();
 }
 
-int ConstrainedPointType::resultId() const
+const ObjectImpType* ConstrainedPointType::resultId() const
 {
-  return ObjectImp::ID_PointImp;
+  return PointImp::stype();
 }
 
-int MidPointType::resultId() const
+const ObjectImpType* MidPointType::resultId() const
 {
-  return ObjectImp::ID_PointImp;
+  return PointImp::stype();
 }
 
 QStringList FixedPointType::specialActions() const
@@ -228,7 +228,7 @@ void FixedPointType::executeAction(
   {
     bool ok = true;
     Coordinate oldc;
-    if ( o->hasimp( ObjectImp::ID_PointImp ) )
+    if ( o->hasimp( PointImp::stype() ) )
       oldc = static_cast<const PointImp*>( o->imp() )->coordinate();
     Coordinate c = d.coordinateSystem().getCoordFromUser(
       i18n( "Set Coordinate" ), i18n( "Enter the new coordinate: " ),
@@ -237,7 +237,7 @@ void FixedPointType::executeAction(
 
     MonitorDataObjects mon( getAllParents( Objects( o ) ) );
     o->move( c, d );
-    KigCommand* kc = new KigCommand( d, ObjectImp::moveAStatement( ObjectImp::ID_PointImp ) );
+    KigCommand* kc = new KigCommand( d, PointImp::stype()->moveAStatement() );
     kc->addTask( mon.finish() );
 
     d.history()->addCommand( kc );
@@ -264,7 +264,7 @@ void ConstrainedPointType::executeAction(
   {
     Objects parents = margsparser.parse( o->parents() );
     if ( parents[0]->inherits( Object::ID_DataObject ) &&
-         parents[0]->hasimp( ObjectImp::ID_DoubleImp ) )
+         parents[0]->hasimp( DoubleImp::stype() ) )
     {
       DataObject* po = static_cast<DataObject*>( parents[0] );
       double oldp = static_cast<const DoubleImp*>( po->imp() )->data();
@@ -291,14 +291,14 @@ void ConstrainedPointType::executeAction(
 
 const Coordinate FixedPointType::moveReferencePoint( const RealObject* ourobj ) const
 {
-  if ( ourobj->hasimp( ObjectImp::ID_PointImp ) )
+  if ( ourobj->hasimp( PointImp::stype() ) )
     return static_cast<const PointImp*>( ourobj->imp() )->coordinate();
   else return Coordinate::invalidCoord();
 }
 
 const Coordinate ConstrainedPointType::moveReferencePoint( const RealObject* ourobj ) const
 {
-  if ( ourobj->hasimp( ObjectImp::ID_PointImp ) )
+  if ( ourobj->hasimp( PointImp::stype() ) )
     return static_cast<const PointImp*>( ourobj->imp() )->coordinate();
   else return Coordinate::invalidCoord();
 }

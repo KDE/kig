@@ -44,7 +44,7 @@ void ArgParser::initialize( const std::vector<spec>& args )
   margs.clear();
   manyobjsspec.clear();
   for ( uint i = 0; i < args.size(); ++i )
-    if ( args[i].type != ObjectImp::ID_AnyImp )
+    if ( args[i].type != ObjectImp::stype() )
       margs.push_back( args[i] );
     else manyobjsspec.push_back( args[i].usetext );
 }
@@ -60,12 +60,12 @@ ArgParser::ArgParser( const std::vector<spec>& args, const std::vector<const cha
 }
 
 
-static bool hasimp( const Object& o, int imptype )
+static bool hasimp( const Object& o, const ObjectImpType* imptype )
 {
   return o.hasimp( imptype );
 };
 
-static bool hasimp( const ObjectImp& o, int imptype )
+static bool hasimp( const ObjectImp& o, const ObjectImpType* imptype )
 {
   return o.inherits( imptype );
 };
@@ -159,9 +159,9 @@ ArgsChecker::~ArgsChecker()
 {
 }
 
-ArgParser ArgParser::without( int type ) const
+ArgParser ArgParser::without( const ObjectImpType* type ) const
 {
-  if ( type == ObjectImp::ID_AnyImp )
+  if ( type == ObjectImp::stype() )
     return ArgParser( margs, std::vector<const char*>() );
   std::vector<spec> ret;
   ret.reserve( margs.size() - 1 );
@@ -174,19 +174,19 @@ ArgParser ArgParser::without( int type ) const
 ArgParser::spec ArgParser::findSpec( const ObjectImp* obj, const Args& parents ) const
 {
   spec ret;
-  ret.type = -1;
+  ret.type = 0;
   ret.usetext = 0;
 
   uint numberofanyobjects = manyobjsspec.size();
   uint anyobjscounter = 0;
 
   // special case hack for some transformation types that take an
-  // argument and an AnyImp..  if anyone has a better solution, please
+  // argument and an ObjectImp..  if anyone has a better solution, please
   // tell me :)
   if ( parents.size() == 1 && numberofanyobjects > 0 )
   {
     assert( parents[0] == obj );
-    ret.type = ObjectImp::ID_AnyImp;
+    ret.type = ObjectImp::stype();
     ret.usetext = manyobjsspec[0];
     return ret;
   }
@@ -213,7 +213,7 @@ ArgParser::spec ArgParser::findSpec( const ObjectImp* obj, const Args& parents )
     {
       if ( *o == obj )
       {
-        ret.type = ObjectImp::ID_AnyImp;
+        ret.type = ObjectImp::stype();
         ret.usetext = manyobjsspec[anyobjscounter];
         return ret;
       };
@@ -226,7 +226,8 @@ ArgParser::spec ArgParser::findSpec( const ObjectImp* obj, const Args& parents )
   return ret;
 }
 
-int ArgParser::impRequirement( const ObjectImp* o, const Args& parents ) const
+const ObjectImpType* ArgParser::impRequirement(
+  const ObjectImp* o, const Args& parents ) const
 {
   spec s = findSpec( o, parents );
   return s.type;

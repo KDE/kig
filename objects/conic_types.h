@@ -29,7 +29,7 @@ class ConicB5PType
 public:
   static const ConicB5PType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ConicBAAPType
@@ -40,7 +40,7 @@ class ConicBAAPType
 public:
   static const ConicBAAPType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ConicBFFPType
@@ -54,7 +54,7 @@ public:
 
   // -1 for hyperbola, 1 for ellipse..
   virtual int type() const = 0;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class EllipseBFFPType
@@ -85,7 +85,7 @@ class ConicBDFPType
 public:
   static const ConicBDFPType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ParabolaBTPType
@@ -96,7 +96,7 @@ class ParabolaBTPType
 public:
   static const ParabolaBTPType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class EquilateralHyperbolaB4PType
@@ -107,7 +107,7 @@ class EquilateralHyperbolaB4PType
 public:
   static const EquilateralHyperbolaB4PType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ConicPolarPointType
@@ -118,7 +118,7 @@ class ConicPolarPointType
 public:
   static const ConicPolarPointType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ConicPolarLineType
@@ -129,7 +129,7 @@ class ConicPolarLineType
 public:
   static const ConicPolarLineType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ConicDirectrixType
@@ -140,7 +140,7 @@ class ConicDirectrixType
 public:
   static const ConicDirectrixType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ParabolaBDPType
@@ -151,7 +151,7 @@ class ParabolaBDPType
 public:
   static const ParabolaBDPType* instance();
   ObjectImp* calc( const LineData& l, const Coordinate& c ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ConicAsymptoteType
@@ -162,7 +162,7 @@ class ConicAsymptoteType
 public:
   static const ConicAsymptoteType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 class ConicRadicalType
@@ -173,7 +173,7 @@ class ConicRadicalType
 public:
   static const ConicRadicalType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  int resultId() const;
+  const ObjectImpType* resultId() const;
 };
 
 #endif

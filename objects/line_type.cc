@@ -34,8 +34,8 @@
 
 static const ArgParser::spec argsspecSegmentAB[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a segment from this point" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a segment to this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a segment from this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a segment to this point" ) }
 };
 
 SegmentABType::SegmentABType()
@@ -62,8 +62,8 @@ static const char constructlineabstat[] = I18N_NOOP( "Construct a line through t
 
 static const ArgParser::spec argsspecLineAB[] =
 {
-  { ObjectImp::ID_PointImp, constructlineabstat },
-  { ObjectImp::ID_PointImp, constructlineabstat }
+  { PointImp::stype(), constructlineabstat },
+  { PointImp::stype(), constructlineabstat }
 };
 
 LineABType::LineABType()
@@ -88,8 +88,8 @@ ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const ArgParser::spec argsspecRayAB[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a ray from this point" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a ray through this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a ray from this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a ray through this point" ) }
 };
 
 RayABType::RayABType()
@@ -128,8 +128,8 @@ ObjectImp* LinePerpendLPType::calc(
 
 static const ArgParser::spec argsspecLineParallel[] =
 {
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct a parallel of this line" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a parallel through this point" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct a parallel of this line" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a parallel through this point" ) }
 };
 
 LineParallelLPType::LineParallelLPType()
@@ -157,8 +157,8 @@ ObjectImp* LineParallelLPType::calc(
 
 static const ArgParser::spec argsspecLinePerpend[] =
 {
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct a perpendicular of this line" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a perpendicular through this point" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct a perpendicular of this line" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a perpendicular through this point" ) }
 };
 
 LinePerpendLPType::LinePerpendLPType()
@@ -170,29 +170,29 @@ LinePerpendLPType::~LinePerpendLPType()
 {
 }
 
-int SegmentABType::resultId() const
+const ObjectImpType* SegmentABType::resultId() const
 {
-  return ObjectImp::ID_SegmentImp;
+  return SegmentImp::stype();
 }
 
-int LineABType::resultId() const
+const ObjectImpType* LineABType::resultId() const
 {
-  return ObjectImp::ID_LineImp;
+  return LineImp::stype();
 }
 
-int RayABType::resultId() const
+const ObjectImpType* RayABType::resultId() const
 {
-  return ObjectImp::ID_RayImp;
+  return RayImp::stype();
 }
 
-int LinePerpendLPType::resultId() const
+const ObjectImpType* LinePerpendLPType::resultId() const
 {
-  return ObjectImp::ID_LineImp;
+  return LineImp::stype();
 }
 
-int LineParallelLPType::resultId() const
+const ObjectImpType* LineParallelLPType::resultId() const
 {
-  return ObjectImp::ID_LineImp;
+  return LineImp::stype();
 }
 
 QStringList SegmentABType::specialActions() const
@@ -212,8 +212,8 @@ void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidg
   Objects parents = o->parents();
   assert( parents.size() == 2 );
 
-  if ( ! parents[0]->hasimp( ObjectImp::ID_PointImp ) ||
-       ! parents[1]->hasimp( ObjectImp::ID_PointImp ) )
+  if ( ! parents[0]->hasimp( PointImp::stype() ) ||
+       ! parents[1]->hasimp( PointImp::stype() ) )
     return;
 
   Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();

@@ -90,7 +90,7 @@ Object::~Object()
   assert( mchildren.empty() );
 }
 
-bool Object::hasimp( int type ) const
+bool Object::hasimp( const ObjectImpType* type ) const
 {
   assert( imp() );
   return imp()->inherits( type );
@@ -439,7 +439,7 @@ void RealObject::setWidth( int width )
   mwidth = width;
 }
 
-int RealObject::impRequirement( Object* o, const Objects& os ) const
+const ObjectImpType* RealObject::impRequirement( Object* o, const Objects& os ) const
 {
   Args args;
   args.reserve( mparents.size() );
@@ -449,18 +449,18 @@ int RealObject::impRequirement( Object* o, const Objects& os ) const
   return mtype->impRequirement( o->imp(), args );
 }
 
-int Object::impRequirement( Object*, const Objects& ) const
+const ObjectImpType* Object::impRequirement( Object*, const Objects& ) const
 {
   assert( false );
-  return ObjectImp::ID_AnyImp;
+  return ObjectImp::stype();
 }
 
-int PropertyObject::impRequirement( Object*, const Objects& ) const
+const ObjectImpType* PropertyObject::impRequirement( Object*, const Objects& ) const
 {
   return mparent->impRequirementForProperty( mpropid );
 }
 
-int Object::impRequirementForProperty( uint which ) const
+const ObjectImpType* Object::impRequirementForProperty( uint which ) const
 {
   return imp()->impRequirementForProperty( which );
 }

@@ -119,26 +119,24 @@ static bool oldElemToNewObject( const QCString type,
     if ( size < 2 ) return false;
     const ObjectType* t = 0;
     const Object* transform = o.parents()[1];
-    if ( transform->hasimp( ObjectImp::ID_VectorImp ) )
+    if ( transform->hasimp( VectorImp::stype() ) )
       t = TranslatedType::instance();
-    else if ( transform->hasimp( ObjectImp::ID_PointImp ) )
+    else if ( transform->hasimp( PointImp::stype() ) )
       t = PointReflectionType::instance();
-    else if ( transform->hasimp( ObjectImp::ID_RayImp ) )
+    else if ( transform->hasimp( RayImp::stype() ) )
       t = ProjectiveRotationType::instance();
-    else if ( transform->hasimp( ObjectImp::ID_AngleImp ) )
+    else if ( transform->hasimp( AngleImp::stype() ) )
       t = RotationType::instance();
-    else if ( transform->hasimp( ObjectImp::ID_SegmentImp ) )
+    else if ( transform->hasimp( SegmentImp::stype() ) )
     {
       if ( size != 3 ) return false;
       transform = o.parents()[2];
-      if ( transform->hasimp( ObjectImp::ID_PointImp ) )
+      if ( transform->hasimp( PointImp::stype() ) )
         t = ScalingOverCenterType::instance();
-      else if ( transform->hasimp( ObjectImp::ID_LineImp ) )
+      else if ( transform->hasimp( AbstractLineImp::stype() ) )
         t = ScalingOverLineType::instance();
     }
-    else if ( transform->hasimp( ObjectImp::ID_LineImp ) )
-      // line at the end, cause a ray and a segment are also
-      // "lines"..
+    else if ( transform->hasimp( LineImp::stype() ) )
       t = LineReflectionType::instance();
     o.setType( t );
   }

@@ -76,6 +76,69 @@ public:
 typedef unsigned int uint;
 
 /**
+ * Instances of this class represent a certain ObjectImp type.  Every
+ * ObjectImp type should have a static ObjectImpType member, that it
+ * returns a reference to in its type() function..  It's really not
+ * much more than a nice enum.
+ */
+class ObjectImpType
+{
+  const ObjectImpType* mparent;
+  const char* minternalname;
+  const char* mtranslatedname;
+  const char* mselectstatement;
+  const char* mremoveastatement;
+  const char* maddastatement;
+  const char* mmoveastatement;
+  class StaticPrivate;
+  static StaticPrivate* sd();
+public:
+  /**
+   * returns the type with name string.  Do *not* call this from
+   * functions that can be called at static initializer time !  It
+   * depends on information that is only available after that stage
+   * and will crash if used too early..
+   */
+  static const ObjectImpType* typeFromInternalName( const char* string );
+
+  /**
+   * Construct an ObjectImpType, with a lot of data about your
+   * ObjectImp type.  translatedname is a translatable string like
+   * "segment", selectstatement is a translatable string like "Select
+   * a Segment", removeastatement is a translatable string like
+   * "Remove a Segment", addastatement is a translatable string like
+   * "Add a Segment", moveastatement is a translatable string like
+   * "Move a Segment".  All translatable strings should have I18N_NOOP
+   * around them !
+   * @param parent is the ObjectImpType of your parent ObjectImp
+   * type.  Never give 0 as parent, except for the top ObjectImp
+   * ObjectImpType..
+   */
+  ObjectImpType( const ObjectImpType* parent, const char* internalname,
+                 const char* translatedname, const char* selectstatement,
+                 const char* removeastatement, const char* addastatement,
+                 const char* moveastatement );
+  ~ObjectImpType();
+
+  bool inherits( const ObjectImpType* t ) const;
+  //void serialize( const ObjectImp& imp );
+  const char* internalName() const;
+  QString translatedName() const;
+  // returns a translated string of the form "Select this %1" (
+  // e.g. "Select this segment" ).
+  const char* selectStatement() const;
+  // returns a translated string of the form "remove a xxx" (
+  // e.g. "Remove a segment" ).
+  QString removeAStatement() const;
+  // returns a translated string of the form "add a xxx" (
+  // e.g. "Add a segment" ).
+  QString addAStatement() const;
+  // returns a translated string of the form "move a xxx" (
+  // e.g. "Move a segment" ).
+  QString moveAStatement() const;
+};
+
+/**
  * The ObjectImp class represents the behaviour of an object after it
  * is calculated.   This means how to draw() it, whether it claims to
  * contain a certain point etc.  It is also the class where the
@@ -84,95 +147,39 @@ typedef unsigned int uint;
 class ObjectImp
 {
 public:
+  static const ObjectImpType* stype();
   ObjectImp();
   virtual ~ObjectImp();
+
+  bool inherits( const ObjectImpType* t ) const;
 
   virtual ObjectImp* transform( const Transformation& ) const = 0;
 
   virtual void draw( KigPainter& p ) const = 0;
-  virtual bool contains( const Coordinate& p, int width, const KigWidget& si ) const = 0;
-  virtual bool inRect( const Rect& r, int width, const KigWidget& si ) const = 0;
+  virtual bool contains( const Coordinate& p, int width,
+                         const KigWidget& si ) const = 0;
+  virtual bool inRect( const Rect& r, int width,
+                       const KigWidget& si ) const = 0;
   virtual bool valid() const;
 
-  virtual const uint numberOfProperties() const = 0;
+  virtual const uint numberOfProperties() const;
   // the names of the properties as perceived by the user..  put
   // I18N_NOOP's around them here..
-  virtual const QCStringList properties() const = 0;
+  virtual const QCStringList properties() const;
   // the names of the properties as known only by kig internally.  No
   // need for I18N_NOOP.  Preferably choose some lowercase name with
   // only letters and dashes, no spaces..
-  virtual const QCStringList propertiesInternalNames() const = 0;
-  virtual ObjectImp* property( uint which, const KigDocument& d ) const = 0;
-  // sometimes we need to know which type an imp needs to be at least
+  virtual const QCStringList propertiesInternalNames() const;
+  virtual ObjectImp* property( uint which, const KigDocument& d ) const;
+  // Sometimes we need to know which type an imp needs to be at least
   // in order to have the imp with number which.  Macro's need it
-  // foremost.  This function answers that question
-  virtual int impRequirementForProperty( uint which ) const = 0;
-  // what icon should be shown when talking about this property ?
-  virtual const char* iconForProperty( uint which ) const = 0;
+  // foremost.  This function answers that question..
+  virtual const ObjectImpType* impRequirementForProperty( uint which ) const;
+  // What icon should be shown when talking about this property ?
+  virtual const char* iconForProperty( uint which ) const;
 
-  enum {
-    // we guarantee that "more specialized" types are lower in the list
-    // than "less specialized".  E.g. ID_LineImp means: a ray, a line
-    // or a segment.  Therefore, ID_SegmentImp has a higher value than
-    // ID_LineImp..
-
-    // matches any object type..
-    ID_AnyImp = 0,
-
-    // Pseudo-object imp types, these are only used as fixed args for
-    // various object types..
-    ID_BogusImp,
-    ID_IntImp,
-    ID_DoubleImp,
-    ID_StringImp,
-    ID_InvalidImp,
-    ID_HierarchyImp,
-    ID_TransformationImp,
-
-    // two id's that match multiple types of imp's..
-    ID_CurveImp,
-    ID_LineImp,
-
-    // Real object types..
-    ID_PointImp,
-    ID_TextImp,
-    ID_AngleImp,
-    ID_VectorImp,
-    ID_LocusImp,
-    ID_CircleImp,
-    ID_ConicImp,
-    ID_CubicImp,
-    ID_SegmentImp,
-    ID_RayImp,
-    ID_ArcImp
-  };
-
-  // this translates an id ( e.g. ID_AnyImp ) to its name ( e.g. "any" )
-  static const char* idToString( int id );
-  static QString translatedName( int id );
-  // this translates an id ( e.g. ID_SegmentImp ) to a translated
-  // string of the form "Select this %1" ( e.g. "Select this segment"
-  // ).
-  static const char* selectStatement( int id );
-
-  static QString removeAStatement( int id );
-  static QString addAStatement( int id );
-  static QString moveAStatement( int id );
-
-  // this translates a string ( e.g. "any" ) to its name (
-  // e.g. ID_AnyImp )
-  static int stringToID( const QCString& string );
-
-  // we declare this abstract, but we provide an implementation
-  // anyway.. This simply means we demand every subclass to implement
-  // it, but it can call our implementation if it wants to..
-  virtual bool inherits( int typeID ) const = 0;
-
-  // this gives the bottom-most "id" of this imp.
-  virtual int id() const = 0;
+  virtual const ObjectImpType* type() const = 0;
   virtual void visit( ObjectImpVisitor* vtor ) const = 0;
-
-  virtual const char* baseName() const = 0;
 
   virtual ObjectImp* copy() const = 0;
 

@@ -28,12 +28,13 @@ class LineData;
 class AbstractLineImp
   : public CurveImp
 {
-  typedef CurveImp Parent;
-
 protected:
   LineData mdata;
 
 public:
+  typedef CurveImp Parent;
+  static const ObjectImpType* stype();
+
   AbstractLineImp( const LineData& d );
   AbstractLineImp( const Coordinate& a, const Coordinate& b );
   ~AbstractLineImp();
@@ -45,16 +46,11 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
-
-  bool inherits( int typeID ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
   double slope() const;
   const QString equationString() const;
   LineData data() const;
-
-  // returns 0 for segment, 1 for ray, 2 for line...
-  virtual int type() const = 0;
 
   bool equals( const ObjectImp& rhs ) const;
 };
@@ -62,20 +58,17 @@ public:
 class SegmentImp
   : public AbstractLineImp
 {
-  typedef AbstractLineImp Parent;
-
 public:
+  typedef AbstractLineImp Parent;
+  static const ObjectImpType* stype();
+
   SegmentImp( const Coordinate& a, const Coordinate& b );
   SegmentImp( const LineData& d );
-
-  bool inherits( int type ) const;
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
 
   ObjectImp* transform( const Transformation& ) const;
-
-  int type() const;
 
   const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
@@ -85,27 +78,25 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
   SegmentImp* copy() const;
-  const char* baseName() const;
 
   double length() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 };
 
 class RayImp
   : public AbstractLineImp
 {
-  typedef AbstractLineImp Parent;
-
 public:
+  typedef AbstractLineImp Parent;
+  static const ObjectImpType* stype();
+
   RayImp( const Coordinate& a, const Coordinate& b );
   RayImp( const LineData& d );
-
-  bool inherits( int type ) const;
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
@@ -115,20 +106,19 @@ public:
   const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
-  int type() const;
   RayImp* copy() const;
-  const char* baseName() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 };
 
 class LineImp
   : public AbstractLineImp
 {
-  typedef AbstractLineImp Parent;
-
 public:
+  typedef AbstractLineImp Parent;
+  static const ObjectImpType* stype();
+
   LineImp( const Coordinate& a, const Coordinate& b );
   LineImp( const LineData& d );
   void draw( KigPainter& p ) const;
@@ -139,11 +129,9 @@ public:
   const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
-  int type() const;
   LineImp* copy() const;
-  const char* baseName() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 };
 

@@ -69,11 +69,11 @@ const QCStringList PointImp::properties() const
   return l;
 }
 
-int PointImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* PointImp::impRequirementForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
-  else return ID_PointImp;
+  else return PointImp::stype();
 }
 
 const char* PointImp::iconForProperty( uint which ) const
@@ -105,11 +105,6 @@ PointImp* PointImp::copy() const
   return new PointImp( mc );
 }
 
-bool PointImp::inherits( int typeID ) const
-{
-  return typeID == ID_PointImp ? true : Parent::inherits( typeID );
-}
-
 ObjectImp* PointImp::transform( const Transformation& t ) const
 {
   bool valid = true;
@@ -121,16 +116,6 @@ ObjectImp* PointImp::transform( const Transformation& t ) const
 void PointImp::setCoordinate( const Coordinate& c )
 {
   mc = c;
-}
-
-const char* PointImp::baseName() const
-{
-  return I18N_NOOP( "point" );
-}
-
-int PointImp::id() const
-{
-  return ID_PointImp;
 }
 
 void PointImp::fillInNextEscape( QString& s, const KigDocument& doc ) const
@@ -145,11 +130,28 @@ void PointImp::visit( ObjectImpVisitor* vtor ) const
 
 bool PointImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_PointImp ) &&
+  return rhs.inherits( PointImp::stype() ) &&
     static_cast<const PointImp&>( rhs ).coordinate() == coordinate();
 }
 
 bool PointImp::canFillInNextEscape() const
 {
   return true;
+}
+
+const ObjectImpType* PointImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "point",
+    I18N_NOOP( "point" ),
+    I18N_NOOP( "Select this point" ),
+    I18N_NOOP( "Remove a Point" ),
+    I18N_NOOP( "Add a Point" ),
+    I18N_NOOP( "Move a Point" ) );
+  return &t;
+};
+
+const ObjectImpType* PointImp::type() const
+{
+  return PointImp::stype();
 }

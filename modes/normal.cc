@@ -141,11 +141,10 @@ void NormalMode::dragRect( const QPoint& p, KigWidget& w )
 {
   DragRectMode d( p, mdoc, w );
   mdoc.runMode( &d );
-  bool cancelled = d.cancelled();
 
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
 
-  if ( ! cancelled )
+  if ( ! d.cancelled() )
   {
     Objects sel = d.ret();
     Objects cos = sel;
@@ -267,7 +266,7 @@ void NormalMode::mouseMoved( const Objects& os,
 
     w.setCursor( KCursor::handCursor() );
 
-    QString stat = i18n( ObjectImp::selectStatement( os.front()->imp()->id() ) );
+    QString stat = i18n( os.front()->imp()->type()->selectStatement() );
 
     // statusbar text
     mdoc.emitStatusBarText( stat );

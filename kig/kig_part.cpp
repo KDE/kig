@@ -430,7 +430,7 @@ Objects KigDocument::whatAmIOn(const Coordinate& p, const KigWidget& w ) const
   for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
   {
     if(!(*i)->contains(p, w) || !(*i)->shown() || !(*i)->valid()) continue;
-    if ( (*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
+    if ( (*i)->hasimp( PointImp::stype() ) ) tmp.push_back( *i );
     else nonpoints.push_back( *i );
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
@@ -445,7 +445,7 @@ Objects KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
   for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
   {
     if(! (*i)->inRect( p, w ) || !(*i)->shown() || ! (*i)->valid() ) continue;
-    if ((*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
+    if ((*i)->hasimp( PointImp::stype() ) ) tmp.push_back( *i );
     else nonpoints.push_back( *i );
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
@@ -459,7 +459,7 @@ Rect KigDocument::suggestedRect() const
   const Objects objs = objects();
   for (Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
   {
-    if ( (*i)->shown() && (*i)->hasimp( ObjectImp::ID_PointImp ) )
+    if ( (*i)->shown() && (*i)->hasimp( PointImp::stype() ) )
     {
       if( !rectInited )
       {

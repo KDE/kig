@@ -26,13 +26,12 @@
 class ConicImp
   : public CurveImp
 {
-  typedef CurveImp Parent;
 protected:
   ConicImp();
   ~ConicImp();
 public:
-  bool inherits( int typeID ) const;
-  const char* baseName() const;
+  typedef CurveImp Parent;
+  static const ObjectImpType* stype();
 
   ObjectImp* transform( const Transformation& ) const;
 
@@ -42,7 +41,7 @@ public:
   bool valid() const;
 
   const uint numberOfProperties() const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
   const char* iconForProperty( uint which ) const;
@@ -63,7 +62,7 @@ public:
   virtual Coordinate focus1() const;
   virtual Coordinate focus2() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool equals( const ObjectImp& rhs ) const;

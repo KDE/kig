@@ -39,11 +39,6 @@ LocusImp::~LocusImp()
   delete mcurve;
 }
 
-bool LocusImp::inherits( int type ) const
-{
-  return type == ID_LocusImp ? true : Parent::inherits( type );
-}
-
 ObjectImp* LocusImp::transform( const Transformation& t ) const
 {
   return new LocusImp( mcurve->copy(), mhier.transformFinalObject( t ) );
@@ -67,11 +62,6 @@ bool LocusImp::inRect( const Rect&, int, const KigWidget& ) const
   return false;
 }
 
-bool LocusImp::valid() const
-{
-  return true;
-}
-
 const Coordinate LocusImp::getPoint( double param, bool& valid, const KigDocument& doc ) const
 {
   Coordinate arg = mcurve->getPoint( param, valid, doc );
@@ -83,7 +73,7 @@ const Coordinate LocusImp::getPoint( double param, bool& valid, const KigDocumen
   assert( calcret.size() == 1 );
   ObjectImp* imp = calcret.front();
   Coordinate ret;
-  if ( imp->inherits( ObjectImp::ID_PointImp ) )
+  if ( imp->inherits( PointImp::stype() ) )
   {
     valid = true;
     ret = static_cast<PointImp*>( imp )->coordinate();
@@ -115,7 +105,7 @@ const QCStringList LocusImp::properties() const
   return Parent::properties();
 }
 
-int LocusImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* LocusImp::impRequirementForProperty( uint which ) const
 {
   return Parent::impRequirementForProperty( which );
 }
@@ -135,11 +125,6 @@ LocusImp* LocusImp::copy() const
   return new LocusImp( mcurve->copy(), mhier );
 }
 
-const char* LocusImp::baseName() const
-{
-  return I18N_NOOP( "locus" );
-}
-
 const CurveImp* LocusImp::curve() const
 {
   return mcurve;
@@ -148,11 +133,6 @@ const CurveImp* LocusImp::curve() const
 const ObjectHierarchy& LocusImp::hierarchy() const
 {
   return mhier;
-}
-
-int LocusImp::id() const
-{
-  return ID_LocusImp;
 }
 
 /**
@@ -338,8 +318,24 @@ void LocusImp::visit( ObjectImpVisitor* vtor ) const
 
 bool LocusImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_LocusImp ) &&
+  return rhs.inherits( LocusImp::stype() ) &&
     static_cast<const LocusImp&>( rhs ).curve()->equals( *curve() ) &&
     static_cast<const LocusImp&>( rhs ).hierarchy() == hierarchy();
 }
 
+const ObjectImpType* LocusImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "locus",
+    I18N_NOOP( "locus" ),
+    I18N_NOOP( "Select this locus" ),
+    I18N_NOOP( "Remove a Locus" ),
+    I18N_NOOP( "Add a Locus" ),
+    I18N_NOOP( "Move a Locus" ) );
+  return &t;
+};
+
+const ObjectImpType* LocusImp::type() const
+{
+  return LocusImp::stype();
+}

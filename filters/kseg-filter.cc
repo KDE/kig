@@ -23,6 +23,9 @@
 #include "../kig/kig_part.h"
 #include "../objects/object.h"
 #include "../objects/bogus_imp.h"
+#include "../objects/line_imp.h"
+#include "../objects/conic_imp.h"
+#include "../objects/point_imp.h"
 #include "../objects/object_factory.h"
 #include "../objects/line_type.h"
 #include "../objects/circle_type.h"
@@ -88,8 +91,8 @@ static RealObject* intersectionPoint( const Objects& parents, Objects& ret, int 
   int nconics = 0;
   for ( int i = 0; i < 2; ++i )
   {
-    if ( parents[i]->hasimp( ObjectImp::ID_LineImp ) ) ++nlines;
-    else if ( parents[i]->hasimp( ObjectImp::ID_ConicImp ) ) ++nconics;
+    if ( parents[i]->hasimp( AbstractLineImp::stype() ) ) ++nlines;
+    else if ( parents[i]->hasimp( ConicImp::stype() ) ) ++nconics;
     else return 0;
   };
   if ( nlines == 2 )
@@ -329,7 +332,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         {
           // midpoint of a segment..
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-          if ( !parents[0]->hasimp( ObjectImp::ID_SegmentImp ) )
+          if ( !parents[0]->hasimp( SegmentImp::stype() ) )
             KIG_FILTER_PARSE_ERROR;
           int index = parents[0]->propertiesInternalNames().findIndex( "mid-point" );
           assert( index != -1 );
@@ -384,7 +387,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           return false;
           // TODO
 //           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-//           if ( !parents[0]->hasimp( ObjectImp::ID_AngleImp ) ) KIG_FILTER_PARSE_ERROR;
+//           if ( !parents[0]->hasimp( AngleImp::stype() ) ) KIG_FILTER_PARSE_ERROR;
 //           int index = parents[0]->propertiesInternalNames().findIndex( "mid-point" );
 //           assert( index != -1 );
 //           ret.push_back( new PropertyObject( parents[0], index ) );
@@ -438,7 +441,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         {
           Object* point;
           Object* segment;
-          if ( parents[0]->hasimp( ObjectImp::ID_PointImp ) )
+          if ( parents[0]->hasimp( PointImp::stype() ) )
           {
             point = parents[0];
             segment = parents[1];

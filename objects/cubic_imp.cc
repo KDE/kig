@@ -85,11 +85,6 @@ bool CubicImp::inRect( const Rect&, int, const KigWidget& ) const
   return false;
 }
 
-bool CubicImp::inherits( int type ) const
-{
-  return type == ID_CubicImp ? true : Parent::inherits( type );
-}
-
 CubicImp* CubicImp::copy() const
 {
   return new CubicImp( mdata );
@@ -129,10 +124,10 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
     calcCubicLineRestriction ( mdata, p, v, a, b, c, d );
     if ( a < 0 )
     {
-       a *= -1;
-       b *= -1;
-       c *= -1;
-       d *= -1;
+      a *= -1;
+      b *= -1;
+      c *= -1;
+      d *= -1;
     }
 
     // computing the coefficients of the Sturm sequence
@@ -144,7 +139,7 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
     bool valid;
     int numroots;
     double lambda = calcCubicRoot ( -1e10, 1e10, a, b, c, d, variations, valid,
-                               numroots );
+                                    numroots );
     if ( valid )
     {
       Coordinate pnew = p + lambda*v;
@@ -154,7 +149,7 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
   }
 
   if (x > 0) t = x/(1+x);
-    else t = x/(1-x);
+  else t = x/(1-x);
   t = 0.5*(t + 1);
   t /= 3;
 
@@ -311,7 +306,7 @@ const QCStringList CubicImp::properties() const
   return Parent::properties();
 }
 
-int CubicImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* CubicImp::impRequirementForProperty( uint which ) const
 {
   return Parent::impRequirementForProperty( which );
 }
@@ -332,16 +327,6 @@ const CubicCartesianData CubicImp::data() const
   return mdata;
 }
 
-const char* CubicImp::baseName() const
-{
-  return I18N_NOOP( "cubic" );
-}
-
-int CubicImp::id() const
-{
-  return ID_CubicImp;
-}
-
 void CubicImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
@@ -349,7 +334,23 @@ void CubicImp::visit( ObjectImpVisitor* vtor ) const
 
 bool CubicImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_CubicImp ) &&
+  return rhs.inherits( CubicImp::stype() ) &&
     static_cast<const CubicImp&>( rhs ).data() == data();
 }
 
+const ObjectImpType* CubicImp::type() const
+{
+  return CubicImp::stype();
+}
+
+const ObjectImpType* CubicImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "cubic",
+    I18N_NOOP( "cubic" ),
+    I18N_NOOP( "Select this cubic" ),
+    I18N_NOOP( "Remove a Cubic" ),
+    I18N_NOOP( "Add a Cubic" ),
+    I18N_NOOP( "Move a Cubic" ) );
+  return &t;
+};

@@ -424,16 +424,16 @@ void TextLabelConstructionMode::finish(
 TextLabelRedefineMode::TextLabelRedefineMode( KigDocument& d, RealObject* label )
   : TextLabelModeBase( d ), mlabel( label )
 {
-  assert( label->hasimp( ObjectImp::ID_TextImp ) );
+  assert( label->hasimp( TextImp::stype() ) );
   Objects parents = label->parents();
   assert( parents.size() >= 3 );
   Objects firstthree( parents.begin(), parents.begin() + 3 );
   Objects rest( parents.begin() + 3, parents.end() );
   firstthree = TextType::instance()->argParser().parse( firstthree );
 
-  assert( firstthree[0]->hasimp( ObjectImp::ID_IntImp ) );
-  assert( firstthree[1]->hasimp( ObjectImp::ID_PointImp ) );
-  assert( firstthree[2]->hasimp( ObjectImp::ID_StringImp ) );
+  assert( firstthree[0]->hasimp( IntImp::stype() ) );
+  assert( firstthree[1]->hasimp( PointImp::stype() ) );
+  assert( firstthree[2]->hasimp( StringImp::stype() ) );
 
   bool frame = static_cast<const IntImp*>( firstthree[0]->imp() )->data() != 0;
   Coordinate coord = static_cast<const PointImp*>( firstthree[1]->imp() )->coordinate();
@@ -473,9 +473,9 @@ void TextLabelRedefineMode::finish(
   KigCommand* kc = new KigCommand( mdoc, i18n( "Change Label" ) );
   MonitorDataObjects mon( firstthree );
 
-  assert( firstthree[0]->hasimp( ObjectImp::ID_IntImp ) );
-  assert( firstthree[1]->hasimp( ObjectImp::ID_PointImp ) );
-  assert( firstthree[2]->hasimp( ObjectImp::ID_StringImp ) );
+  assert( firstthree[0]->hasimp( IntImp::stype() ) );
+  assert( firstthree[1]->hasimp( PointImp::stype() ) );
+  assert( firstthree[2]->hasimp( StringImp::stype() ) );
 
   assert( firstthree[0]->inherits( Object::ID_DataObject ) );
   assert( firstthree[1]->inherits( Object::ID_DataObject ) );

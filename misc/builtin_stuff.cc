@@ -33,6 +33,8 @@
 #include "../objects/other_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/point_type.h"
+#include "../objects/other_imp.h"
+#include "../objects/line_imp.h"
 
 void setupBuiltinStuff()
 {
@@ -106,7 +108,7 @@ void setupBuiltinStuff()
     // we only register the guiaction, cause it makes sense to have a
     // toolbar icon for this..
     static PropertyObjectConstructor anglebisectionctor(
-      ObjectImp::ID_AngleImp, I18N_NOOP( "Construct the bisector of this angle" ),
+      AngleImp::stype(), I18N_NOOP( "Construct the bisector of this angle" ),
       I18N_NOOP( "Angle Bisector" ), I18N_NOOP( "The bisector of an angle" ),
       "angle-bisector", "angle-bisector" );
     actions->add( new ConstructibleAction( &anglebisectionctor, "objects_new_angle_bisector" ) );
@@ -235,7 +237,7 @@ void setupBuiltinStuff()
 
       ObjectConstructor* mpotp = new MidPointOfTwoPointsConstructor();
       ObjectConstructor* mpos = new PropertyObjectConstructor(
-        ObjectImp::ID_SegmentImp, I18N_NOOP( "Construct the midpoint of this segment" ),
+        SegmentImp::stype(), I18N_NOOP( "Construct the midpoint of this segment" ),
         "", "", "", "mid-point" );
 
       // make this a static object, so it gets deleted at the end of

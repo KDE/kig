@@ -24,16 +24,15 @@
 class CircleImp
   : public ConicImp
 {
-  typedef ConicImp Parent;
-
   Coordinate mcenter;
   double mradius;
 public:
+  typedef ConicImp Parent;
+  static const ObjectImpType* stype();
+
   CircleImp( const Coordinate& center, double radius );
   ~CircleImp();
   CircleImp* copy() const;
-  bool inherits( int typeID ) const;
-  const char* baseName() const;
 
   ObjectImp* transform( const Transformation& ) const;
 
@@ -50,9 +49,9 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   // various information about us:

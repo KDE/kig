@@ -1,5 +1,10 @@
 2003-07-02  Dominique Devriese  <devriese@kde.org>
 
+	* sanitize the ObjectImp inherits() system.  It now uses static
+	objects instead of enum values, this also eliminates some ugly
+	functions in ObjectImp, and allows for more flexible addition of
+	new ObjectImp types..
+
 	* fix a memory leak in KigDocument, which did not delete its
 	KCommandHistory..
 

@@ -28,15 +28,15 @@ static const char cubictpstatement[] = I18N_NOOP( "Construct a cubic through thi
 
 static const struct ArgParser::spec argsspecCubicB9P[] =
 {
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement }
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement }
 };
 
 CubicB9PType::CubicB9PType()
@@ -59,7 +59,7 @@ ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
   std::vector<Coordinate> points;
   if ( os.size() < 2 ) return new InvalidImp;
   for ( uint i = 0; i < os.size(); ++i )
-    if( os[i]->inherits( ObjectImp::ID_PointImp ) )
+    if( os[i]->inherits( PointImp::stype() ) )
       points.push_back( static_cast<const PointImp*>( os[i] )->coordinate() );
   if ( points.size() != os.size() ) return new InvalidImp;
   CubicCartesianData d = calcCubicThroughPoints( points );
@@ -69,12 +69,12 @@ ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
 
 static const ArgParser::spec argsspecCubicNodeB6P[] =
 {
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement }
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement }
 };
 
 CubicNodeB6PType::CubicNodeB6PType()
@@ -97,7 +97,7 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) con
   if ( parents.size() < 2 ) return new InvalidImp;
   std::vector<Coordinate> points;
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
-    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+    if ( (*i)->inherits( PointImp::stype() ) )
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
   if ( points.size() != parents.size() ) return new InvalidImp;
   CubicCartesianData d = calcCubicNodeThroughPoints( points );
@@ -107,10 +107,10 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) con
 
 static const ArgParser::spec argsspecCubicCuspB4P[] =
 {
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement },
-  { ObjectImp::ID_PointImp, cubictpstatement }
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement },
+  { PointImp::stype(), cubictpstatement }
 };
 
 CubicCuspB4PType::CubicCuspB4PType()
@@ -136,7 +136,7 @@ ObjectImp* CubicCuspB4PType::calc( const Args& parents, const KigDocument& ) con
 
   for ( uint i = 0; i < parents.size(); ++i )
   {
-    if( parents[i]->inherits( ObjectImp::ID_PointImp ) )
+    if( parents[i]->inherits( PointImp::stype() ) )
       points.push_back(
         static_cast<const PointImp*>( parents[i] )->coordinate() );
   };
@@ -147,17 +147,17 @@ ObjectImp* CubicCuspB4PType::calc( const Args& parents, const KigDocument& ) con
   else return new InvalidImp;
 }
 
-int CubicB9PType::resultId() const
+const ObjectImpType* CubicB9PType::resultId() const
 {
-  return ObjectImp::ID_CubicImp;
+  return CubicImp::stype();
 }
 
-int CubicNodeB6PType::resultId() const
+const ObjectImpType* CubicNodeB6PType::resultId() const
 {
-  return ObjectImp::ID_CubicImp;
+  return CubicImp::stype();
 }
 
-int CubicCuspB4PType::resultId() const
+const ObjectImpType* CubicCuspB4PType::resultId() const
 {
-  return ObjectImp::ID_CubicImp;
+  return CubicImp::stype();
 }

@@ -103,11 +103,11 @@ const QCStringList ConicImp::properties() const
   return l;
 }
 
-int ConicImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* ConicImp::impRequirementForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
-  else return ID_ConicImp;
+  else return ConicImp::stype();
 }
 
 const char* ConicImp::iconForProperty( uint which ) const
@@ -174,11 +174,6 @@ const Coordinate ConicImp::getPoint( double p, bool& valid, const KigDocument& )
   double sintheta = sin(p * 2 * M_PI);
   double rho = d.pdimen / (1 - costheta* d.ecostheta0 - sintheta* d.esintheta0);
   return d.focus1 + Coordinate (costheta, sintheta) * rho;
-}
-
-bool ConicImp::inherits( int typeID ) const
-{
-  return typeID == ID_ConicImp ? true : Parent::inherits( typeID );
 }
 
 int ConicImp::conicType() const
@@ -310,16 +305,6 @@ ConicImpCart::~ConicImpCart()
 {
 }
 
-const char* ConicImp::baseName() const
-{
-  return I18N_NOOP( "conic" );
-}
-
-int ConicImp::id() const
-{
-  return ID_ConicImp;
-}
-
 void ConicImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
@@ -327,6 +312,23 @@ void ConicImp::visit( ObjectImpVisitor* vtor ) const
 
 bool ConicImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_ConicImp ) &&
+  return rhs.inherits( ConicImp::stype() ) &&
     static_cast<const ConicImp&>( rhs ).polarData() == polarData();
+}
+
+const ObjectImpType* ConicImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "conic",
+    I18N_NOOP( "conic" ),
+    I18N_NOOP( "Select this conic" ),
+    I18N_NOOP( "Remove a Conic" ),
+    I18N_NOOP( "Add a Conic" ),
+    I18N_NOOP( "Move a Conic" ) );
+  return &t;
+};
+
+const ObjectImpType* ConicImp::type() const
+{
+  return ConicImp::stype();
 }

@@ -80,11 +80,11 @@ const QCStringList TextImp::properties() const
   return ret;
 }
 
-int TextImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* TextImp::impRequirementForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
-  return ID_TextImp;
+  return TextImp::stype();
 }
 
 const char* TextImp::iconForProperty( uint which ) const
@@ -107,21 +107,6 @@ ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
   return new InvalidImp;
 }
 
-bool TextImp::inherits( int id ) const
-{
-  return id == ID_TextImp ? true : Parent::inherits( id );
-}
-
-int TextImp::id() const
-{
-  return ID_TextImp;
-}
-
-const char* TextImp::baseName() const
-{
-  return "label";
-}
-
 QString TextImp::text() const
 {
   return mtext;
@@ -139,7 +124,7 @@ const Coordinate TextImp::coordinate() const
 
 bool TextImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_TextImp ) &&
+  return rhs.inherits( TextImp::stype() ) &&
     static_cast<const TextImp&>( rhs ).coordinate() == coordinate() &&
     static_cast<const TextImp&>( rhs ).text() == text() &&
     static_cast<const TextImp&>( rhs ).hasFrame() == hasFrame();
@@ -150,3 +135,19 @@ bool TextImp::hasFrame() const
   return mframe;
 }
 
+const ObjectImpType* TextImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "label",
+    I18N_NOOP( "label" ),
+    I18N_NOOP( "Select this label" ),
+    I18N_NOOP( "Remove a Label" ),
+    I18N_NOOP( "Add a Label" ),
+    I18N_NOOP( "Move a Label" ) );
+  return &t;
+};
+
+const ObjectImpType* TextImp::type() const
+{
+  return TextImp::stype();
+}

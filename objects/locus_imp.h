@@ -31,24 +31,25 @@
  * used to make it possible for Locus to be updated when some of the
  * other objects that appear in the path from the moving point to the
  * dependent point change.
+ *
  * This may seem rather complicated, but I think it is absolutely
  * necessary to support locuses using Kig's object system.  It would
  * be very bad for LocusImp to have to keep references to its parents
  * as Objects ( since only the objects know how they are related to
- * their parents ).  This is how we used to do it, but this method is
- * far superior.  First and foremost because the separation between
- * ObjectImp and Object is something that Kig depends on very much,
- * and because every ObjectImp should contain all the data it needs
- * itself.  ObjectImp's are entirely independent objects.  That's also
- * why we don't keep a pointer to the old CurveImp, but a copy of
- * it..
+ * their parents ).  This is how we used to do it, but the current
+ * method is far superior.  First and foremost because the separation
+ * between ObjectImp and Object is something that Kig depends on very
+ * much, and because every ObjectImp should contain all the data it
+ * needs itself.  ObjectImp's are entirely independent objects.
+ * That's also why we don't keep a pointer to the old CurveImp, but a
+ * copy of it..
+ *
  * i hope this is a bit clear, if not, feel free to ask for
  * explanation of what you don't understand..
  */
 class LocusImp
   : public CurveImp
 {
-  typedef CurveImp Parent;
   CurveImp* mcurve;
   const ObjectHierarchy mhier;
 
@@ -56,19 +57,18 @@ class LocusImp
   void getInterval(double& x1,double& x2,double incr,const Coordinate& p, const KigDocument& doc) const;
   double getParamofmin(double a, double b, const Coordinate& p, const KigDocument& doc) const;
 public:
+  typedef CurveImp Parent;
+  static const ObjectImpType* stype();
+
   LocusImp( CurveImp*, const ObjectHierarchy& );
   ~LocusImp();
   LocusImp* copy() const;
-  const char* baseName() const;
-
-  bool inherits( int type ) const;
 
   ObjectImp* transform( const Transformation& ) const;
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
-  bool valid() const;
   double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
 
@@ -78,12 +78,12 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
   const CurveImp* curve() const;
   const ObjectHierarchy& hierarchy() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool equals( const ObjectImp& rhs ) const;

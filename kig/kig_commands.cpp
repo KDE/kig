@@ -90,7 +90,7 @@ KigCommand* KigCommand::removeCommand( KigDocument& doc, const Objects& os )
 {
   QString text;
   if ( os.size() == 1 )
-    text = ObjectImp::removeAStatement( os.back()->imp()->id() );
+    text = os.back()->imp()->type()->removeAStatement();
   else
     text = i18n( "Remove %1 Objects" ).arg( os.size() );
   KigCommand* ret = new KigCommand( doc, text );
@@ -102,7 +102,7 @@ KigCommand* KigCommand::addCommand( KigDocument& doc, const Objects& os )
 {
   QString text;
   if ( os.size() == 1 )
-    text = ObjectImp::addAStatement( os.back()->imp()->id() );
+    text = os.back()->imp()->type()->addAStatement();
   else
     text = i18n( "Add %1 Objects" ).arg( os.size() );
   KigCommand* ret = new KigCommand( doc, text );

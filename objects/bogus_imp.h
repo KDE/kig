@@ -41,31 +41,21 @@ public:
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& w ) const;
   bool inRect( const Rect& r, int width, const KigWidget& w ) const;
-  bool valid() const;
 
   ObjectImp* transform( const Transformation& ) const;
-
-  bool inherits( int type ) const;
-  const uint numberOfProperties() const;
-  const QCStringList properties() const;
-  const QCStringList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& d ) const;
-  const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
 };
 
 class InvalidImp
   : public BogusImp
 {
-  typedef BogusImp Parent;
 public:
-  InvalidImp();
-  bool valid() const;
-  bool inherits( int t ) const;
-  InvalidImp* copy() const;
-  const char* baseName() const;
+  static const ObjectImpType* stype();
+  typedef BogusImp Parent;
 
-  int id() const;
+  InvalidImp();
+  InvalidImp* copy() const;
+
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool canFillInNextEscape() const;
@@ -77,20 +67,19 @@ public:
 class DoubleImp
   : public BogusImp
 {
-  typedef BogusImp Parent;
   double mdata;
 public:
+  static const ObjectImpType* stype();
+  typedef BogusImp Parent;
+
   DoubleImp( const double d );
 
   double data() const { return mdata; };
   void setData( double d ) { mdata = d; };
 
-  bool inherits( int typeID ) const;
-
   DoubleImp* copy() const;
-  const char* baseName() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool canFillInNextEscape() const;
@@ -102,19 +91,19 @@ public:
 class IntImp
   : public BogusImp
 {
-  typedef BogusImp Parent;
   int mdata;
 public:
+  static const ObjectImpType* stype();
+  typedef BogusImp Parent;
+
   IntImp( const int d );
 
   int data() const { return mdata; };
   void setData( int d )  { mdata = d; }
 
-  bool inherits( int typeID ) const;
   IntImp* copy() const;
-  const char* baseName() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool canFillInNextEscape() const;
@@ -126,19 +115,19 @@ public:
 class StringImp
   : public BogusImp
 {
-  typedef BogusImp Parent;
   QString mdata;
 public:
+  static const ObjectImpType* stype();
+  typedef BogusImp Parent;
+
   StringImp( const QString& d );
 
   const QString& data() const { return mdata; };
   void setData( const QString& s ) { mdata = s; }
 
-  bool inherits( int typeID ) const;
   StringImp* copy() const;
-  const char* baseName() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool canFillInNextEscape() const;
@@ -150,19 +139,20 @@ public:
 class HierarchyImp
   : public BogusImp
 {
-  typedef BogusImp Parent;
   ObjectHierarchy mdata;
 public:
+  static const ObjectImpType* stype();
+  typedef BogusImp Parent;
+
   HierarchyImp( const ObjectHierarchy& h );
 
   const ObjectHierarchy& data() const { return mdata; };
   void setData( const ObjectHierarchy& h ) { mdata = h; };
 
-  bool inherits( int type ) const;
   HierarchyImp* copy() const;
   const char* baseName() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool equals( const ObjectImp& rhs ) const;
@@ -178,19 +168,19 @@ public:
 class TransformationImp
   : public BogusImp
 {
-  typedef BogusImp Parent;
   Transformation mdata;
 public:
+  static const ObjectImpType* stype();
+  typedef BogusImp Parent;
+
   TransformationImp( const Transformation& h );
 
   const Transformation& data() const { return mdata; };
   void setData( const Transformation& h ) { mdata = h; };
 
-  bool inherits( int type ) const;
   TransformationImp* copy() const;
-  const char* baseName() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool equals( const ObjectImp& rhs ) const;

@@ -78,33 +78,33 @@ static void addCoordinateElement( const char* name, const Coordinate& d, QDomEle
 QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
                                      QDomDocument& doc ) const
 {
-  if( d.inherits( ObjectImp::ID_IntImp ) )
+  if( d.inherits( IntImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
         QString::number( static_cast<const IntImp&>( d ).data() ) ) );
     return QString::fromLatin1( "int" );
   }
-  else if ( d.inherits( ObjectImp::ID_DoubleImp ) )
+  else if ( d.inherits( DoubleImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
         QString::number( static_cast<const DoubleImp&>( d ).data() ) ) );
     return QString::fromLatin1( "double" );
   }
-  else if( d.inherits( ObjectImp::ID_StringImp ) )
+  else if( d.inherits( StringImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
         static_cast<const StringImp&>( d ).data() ) );
     return QString::fromLatin1( "string" );
   }
-  else if( d.inherits( ObjectImp::ID_HierarchyImp ) )
+  else if( d.inherits( HierarchyImp::stype() ) )
   {
     static_cast<const HierarchyImp&>( d ).data().serialize( parent, doc );
     return QString::fromLatin1( "hierarchy" );
   }
-  else if ( d.inherits( ObjectImp::ID_TransformationImp ) )
+  else if ( d.inherits( TransformationImp::stype() ) )
   {
     const Transformation& trans = static_cast<const TransformationImp&>( d ).data();
 
@@ -129,36 +129,36 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
 
     return QString::fromLatin1( "transformation" );
   }
-  else if( d.inherits( ObjectImp::ID_LineImp ) )
+  else if( d.inherits( AbstractLineImp::stype() ) )
   {
     LineData l = static_cast<const AbstractLineImp&>( d ).data();
     addCoordinateElement( "a", l.a, parent, doc );
     addCoordinateElement( "b", l.b, parent, doc );
-    if( d.inherits( ObjectImp::ID_SegmentImp ) )
+    if( d.inherits( SegmentImp::stype() ) )
       return QString::fromLatin1( "segment" );
-    else if( d.inherits( ObjectImp::ID_RayImp ) )
+    else if( d.inherits( RayImp::stype() ) )
       return QString::fromLatin1( "ray" );
     else return QString::fromLatin1( "line" );
   }
-  else if( d.inherits( ObjectImp::ID_PointImp ) )
+  else if( d.inherits( PointImp::stype() ) )
   {
     addXYElements( static_cast<const PointImp&>( d ).coordinate(),
                    parent, doc );
     return QString::fromLatin1( "point" );
   }
-  else if( d.inherits( ObjectImp::ID_TextImp ) )
+  else if( d.inherits( TextImp::stype() ) )
   {
     QString text = static_cast<const TextImp&>( d ).text();
     parent.appendChild(
       doc.createTextNode( text ) );
     return QString::fromLatin1( "text" );
   }
-  else if( d.inherits( ObjectImp::ID_AngleImp ) )
+  else if( d.inherits( AngleImp::stype() ) )
   {
     addDoubleElement( "size", static_cast<const AngleImp&>( d ).size(), parent, doc );
     return QString::fromLatin1( "angle" );
   }
-  else if ( d.inherits( ObjectImp::ID_ArcImp ) )
+  else if ( d.inherits( ArcImp::stype() ) )
   {
     const ArcImp& a = static_cast<const ArcImp&>( d );
     addCoordinateElement( "center", a.center(), parent, doc );
@@ -167,13 +167,13 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     addDoubleElement( "angle", a.angle(), parent, doc );
     return QString::fromLatin1( "arc" );
   }
-  else if( d.inherits( ObjectImp::ID_VectorImp ) )
+  else if( d.inherits( VectorImp::stype() ) )
   {
     Coordinate dir = static_cast<const VectorImp&>( d ).dir();
     addXYElements( dir, parent, doc );
     return QString::fromLatin1( "vector" );
   }
-  else if( d.inherits( ObjectImp::ID_LocusImp ) )
+  else if( d.inherits( LocusImp::stype() ) )
   {
     const LocusImp& locus = static_cast<const LocusImp&>( d );
 
@@ -191,14 +191,14 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
 
     return QString::fromLatin1( "locus" );
   }
-  else if( d.inherits( ObjectImp::ID_CircleImp ) )
+  else if( d.inherits( CircleImp::stype() ) )
   {
     const CircleImp& c = static_cast<const CircleImp&>( d );
     addCoordinateElement( "center", c.center(), parent, doc );
     addDoubleElement( "radius", c.radius(), parent, doc );
     return QString::fromLatin1( "circle" );
   }
-  else if( d.inherits( ObjectImp::ID_ConicImp ) )
+  else if( d.inherits( ConicImp::stype() ) )
   {
     const ConicPolarData data = static_cast<const ConicImp&>( d ).polarData();
     addCoordinateElement( "focus1", data.focus1, parent, doc );
@@ -207,7 +207,7 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     addDoubleElement( "esintheta0", data.esintheta0, parent, doc );
     return QString::fromLatin1( "conic" );
   }
-  else if( d.inherits( ObjectImp::ID_CubicImp ) )
+  else if( d.inherits( CubicImp::stype() ) )
   {
     const CubicCartesianData data = static_cast<const CubicImp&>( d ).data();
     QDomElement coeffs = doc.createElement( "coefficients" );
@@ -383,7 +383,7 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
     if ( curvee.isNull() || curvee.tagName() != "curve" ) return 0;
     QString type = curvee.attribute( "type" );
     ObjectImp* oi = deserialize( type, curvee );
-    if ( ! oi || ! oi->inherits( ObjectImp::ID_CurveImp ) ) return 0;
+    if ( ! oi || ! oi->inherits( CurveImp::stype() ) ) return 0;
     //CurveImp* curvei = static_cast<CurveImp*>( oi );
 
     QDomElement hiere = curvee.nextSibling().toElement();

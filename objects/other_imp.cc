@@ -100,11 +100,11 @@ const QCStringList AngleImp::properties() const
   return l;
 }
 
-int AngleImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* AngleImp::impRequirementForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
-  else return ID_AngleImp;
+  else return AngleImp::stype();
 }
 
 const char* AngleImp::iconForProperty( uint which ) const
@@ -142,11 +142,6 @@ ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
 const double AngleImp::size() const
 {
   return mangle;
-}
-
-bool AngleImp::inherits( int typeID ) const
-{
-  return typeID == ID_AngleImp ? true : Parent::inherits( typeID );
 }
 
 ObjectImp* AngleImp::copy() const
@@ -202,7 +197,7 @@ const QCStringList VectorImp::properties() const
   return Parent::properties();
 }
 
-int VectorImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* VectorImp::impRequirementForProperty( uint which ) const
 {
   return Parent::impRequirementForProperty( which );
 }
@@ -217,11 +212,6 @@ ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
   return Parent::property( which, w );
 }
 
-bool VectorImp::inherits( int type ) const
-{
-  return type == ID_VectorImp ? true : Parent::inherits( type );
-}
-
 ObjectImp* VectorImp::copy() const
 {
   return new VectorImp( ma, mb );
@@ -230,26 +220,6 @@ ObjectImp* VectorImp::copy() const
 const Coordinate VectorImp::dir() const
 {
   return mb - ma;
-}
-
-const char* AngleImp::baseName() const
-{
-  return I18N_NOOP( "angle" );
-}
-
-const char* VectorImp::baseName() const
-{
-  return I18N_NOOP( "vector" );
-}
-
-int AngleImp::id() const
-{
-  return ID_AngleImp;
-}
-
-int VectorImp::id() const
-{
-  return ID_VectorImp;
 }
 
 void AngleImp::visit( ObjectImpVisitor* vtor ) const
@@ -408,27 +378,12 @@ ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
   return new InvalidImp;
 }
 
-int ArcImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* ArcImp::impRequirementForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else
-    return ID_ArcImp;
-}
-
-bool ArcImp::inherits( int type ) const
-{
-  return type == ID_ArcImp ? true : Parent::inherits( type );
-}
-
-int ArcImp::id() const
-{
-  return ID_ArcImp;
-}
-
-const char* ArcImp::baseName() const
-{
-  return I18N_NOOP( "arc" );
+    return ArcImp::stype();
 }
 
 void ArcImp::visit( ObjectImpVisitor* vtor ) const
@@ -490,7 +445,7 @@ const Coordinate VectorImp::b() const
 
 bool ArcImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_ArcImp ) &&
+  return rhs.inherits( ArcImp::stype() ) &&
     static_cast<const ArcImp&>( rhs ).radius() == radius() &&
     static_cast<const ArcImp&>( rhs ).startAngle() == startAngle() &&
     static_cast<const ArcImp&>( rhs ).angle() == angle();
@@ -498,7 +453,7 @@ bool ArcImp::equals( const ObjectImp& rhs ) const
 
 bool AngleImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_AngleImp ) &&
+  return rhs.inherits( AngleImp::stype() ) &&
     static_cast<const AngleImp&>( rhs ).point() == point() &&
     static_cast<const AngleImp&>( rhs ).startAngle() == startAngle() &&
     static_cast<const AngleImp&>( rhs ).angle() == angle();
@@ -506,7 +461,56 @@ bool AngleImp::equals( const ObjectImp& rhs ) const
 
 bool VectorImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_VectorImp ) &&
+  return rhs.inherits( VectorImp::stype() ) &&
     static_cast<const VectorImp&>( rhs ).a() == a() &&
     static_cast<const VectorImp&>( rhs ).b() == b();
+}
+
+const ObjectImpType* AngleImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "angle",
+    I18N_NOOP( "angle" ),
+    I18N_NOOP( "Select this angle" ),
+    I18N_NOOP( "Remove an Angle" ),
+    I18N_NOOP( "Add an Angle" ),
+    I18N_NOOP( "Move an Angle" ) );
+  return &t;
+};
+const ObjectImpType* VectorImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "vector",
+    I18N_NOOP( "vector" ),
+    I18N_NOOP( "Select this vector" ),
+    I18N_NOOP( "Remove a Vector" ),
+    I18N_NOOP( "Add a Vector" ),
+    I18N_NOOP( "Move a Vector" ) );
+  return &t;
+};
+const ObjectImpType* ArcImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "arc",
+    I18N_NOOP( "arc" ),
+    I18N_NOOP( "Select this arc" ),
+    I18N_NOOP( "Remove an Arc" ),
+    I18N_NOOP( "Add an Arc" ),
+    I18N_NOOP( "Move an Arc" ) );
+  return &t;
+};
+
+const ObjectImpType* AngleImp::type() const
+{
+  return AngleImp::stype();
+}
+
+const ObjectImpType* VectorImp::type() const
+{
+  return VectorImp::stype();
+}
+
+const ObjectImpType* ArcImp::type() const
+{
+  return ArcImp::stype();
 }

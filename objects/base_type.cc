@@ -54,8 +54,8 @@ void ObjectABType::move( RealObject* o,
 {
   Objects parents = o->parents();
   assert( parents.size() == 2 );
-  assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
-  assert( parents[1]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( parents[0]->hasimp( PointImp::stype() ) );
+  assert( parents[1]->hasimp( PointImp::stype() ) );
   const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
   const Coordinate dist = b - a;
@@ -85,6 +85,6 @@ const Coordinate ObjectABType::moveReferencePoint( const RealObject* o ) const
 {
   Objects parents = o->parents();
   assert( parents.size() == 2 );
-  assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( parents[0]->hasimp( PointImp::stype() ) );
   return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
 }

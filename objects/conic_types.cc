@@ -30,11 +30,11 @@ static const char constructstatement[] = I18N_NOOP( "Construct a conic through t
 
 static const struct ArgParser::spec argsspecConicB5P[] =
 {
-  { ObjectImp::ID_PointImp, constructstatement },
-  { ObjectImp::ID_PointImp, constructstatement },
-  { ObjectImp::ID_PointImp, constructstatement },
-  { ObjectImp::ID_PointImp, constructstatement },
-  { ObjectImp::ID_PointImp, constructstatement }
+  { PointImp::stype(), constructstatement },
+  { PointImp::stype(), constructstatement },
+  { PointImp::stype(), constructstatement },
+  { PointImp::stype(), constructstatement },
+  { PointImp::stype(), constructstatement }
 };
 
 ConicB5PType::ConicB5PType()
@@ -52,7 +52,7 @@ ObjectImp* ConicB5PType::calc( const Args& parents, const KigDocument& ) const
   std::vector<Coordinate> points;
 
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
-    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+    if ( (*i)->inherits( PointImp::stype() ) )
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
 
   if ( points.size() != parents.size() ) return new InvalidImp;
@@ -74,9 +74,9 @@ const ConicB5PType* ConicB5PType::instance()
 
 static const ArgParser::spec argsspecConicBAAP[] =
 {
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct a conic with this asymptote" ) },
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct a conic with this asymptote" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a conic through this point" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct a conic with this asymptote" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct a conic with this asymptote" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a conic through this point" ) }
 };
 
 ConicBAAPType::ConicBAAPType()
@@ -100,9 +100,9 @@ ObjectImp* ConicBAAPType::calc( const Args& parents, const KigDocument& ) const
   Args parsed = margsparser.parse( parents );
   if ( ! parsed[0] || ! parsed[1] || ! parsed[2] )
     return new InvalidImp;
-  assert( parsed[0]->inherits( ObjectImp::ID_LineImp ) );
-  assert( parsed[1]->inherits( ObjectImp::ID_LineImp ) );
-  assert( parsed[2]->inherits( ObjectImp::ID_PointImp ) );
+  assert( parsed[0]->inherits( AbstractLineImp::stype() ) );
+  assert( parsed[1]->inherits( AbstractLineImp::stype() ) );
+  assert( parsed[2]->inherits( PointImp::stype() ) );
   const LineData la = static_cast<const AbstractLineImp*>( parsed[0] )->data();
   const LineData lb = static_cast<const AbstractLineImp*>( parsed[1] )->data();
   const Coordinate c = static_cast<const PointImp*>( parsed[2] )->coordinate();
@@ -116,7 +116,7 @@ ObjectImp* ConicBFFPType::calc( const Args& parents, const KigDocument& ) const
   std::vector<Coordinate> cs;
 
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
-    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+    if ( (*i)->inherits( PointImp::stype() ) )
       cs.push_back( static_cast<const PointImp*>( *i )->coordinate() );
 
   if ( cs.size() != parents.size() ) return new InvalidImp;
@@ -138,9 +138,9 @@ static const char constructellipsewithfocusstat[] =
 
 static const ArgParser::spec argsspecEllipseBFFP[] =
 {
-  { ObjectImp::ID_PointImp, constructellipsewithfocusstat },
-  { ObjectImp::ID_PointImp, constructellipsewithfocusstat },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an ellipse through this point" ) }
+  { PointImp::stype(), constructellipsewithfocusstat },
+  { PointImp::stype(), constructellipsewithfocusstat },
+  { PointImp::stype(), I18N_NOOP( "Construct an ellipse through this point" ) }
 };
 
 EllipseBFFPType::EllipseBFFPType()
@@ -168,9 +168,9 @@ static const char constructhyperbolawithfocusstat[] =
 
 static const ArgParser::spec argsspecHyperbolaBFFP[] =
 {
-  { ObjectImp::ID_PointImp, constructhyperbolawithfocusstat },
-  { ObjectImp::ID_PointImp, constructhyperbolawithfocusstat },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a hyperbola through this point" ) }
+  { PointImp::stype(), constructhyperbolawithfocusstat },
+  { PointImp::stype(), constructhyperbolawithfocusstat },
+  { PointImp::stype(), I18N_NOOP( "Construct a hyperbola through this point" ) }
 };
 
 HyperbolaBFFPType::HyperbolaBFFPType()
@@ -201,9 +201,9 @@ const ConicBDFPType* ConicBDFPType::instance()
 
 static const struct ArgParser::spec argsspecConicBDFP[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a conic with this point as focus" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a conic through this point" ) },
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct a conic with this line as directrix" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a conic with this point as focus" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a conic through this point" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct a conic with this line as directrix" ) }
 };
 
 ConicBDFPType::ConicBDFPType()
@@ -224,17 +224,17 @@ ObjectImp* ConicBDFPType::calc( const Args& parents, const KigDocument& ) const
   if ( ! parsed[0] || ! parsed[2] || ( parents.size() == 3 && !parsed[1] ) )
     return new InvalidImp;
 
-  assert( parsed[2]->inherits( ObjectImp::ID_LineImp ) );
+  assert( parsed[2]->inherits( AbstractLineImp::stype() ) );
   const LineData line = static_cast<const AbstractLineImp*>( parsed[2] )->data();
 
-  assert( parsed[0]->inherits( ObjectImp::ID_PointImp ) );
+  assert( parsed[0]->inherits( PointImp::stype() ) );
   const Coordinate focus =
     static_cast<const PointImp*>( parsed[0] )->coordinate();
 
   Coordinate point;
   if ( parsed[1] )
   {
-    assert( parsed[1]->inherits( ObjectImp::ID_PointImp ) );
+    assert( parsed[1]->inherits( PointImp::stype() ) );
     point = static_cast<const PointImp*>( parsed[1] )->coordinate();
   }
   else
@@ -254,9 +254,9 @@ static const char constructparabolathroughpointstat[] =
 
 static const ArgParser::spec argsspecParabolaBTP[] =
 {
-  { ObjectImp::ID_PointImp, constructparabolathroughpointstat },
-  { ObjectImp::ID_PointImp, constructparabolathroughpointstat },
-  { ObjectImp::ID_PointImp, constructparabolathroughpointstat }
+  { PointImp::stype(), constructparabolathroughpointstat },
+  { PointImp::stype(), constructparabolathroughpointstat },
+  { PointImp::stype(), constructparabolathroughpointstat }
 };
 
 ParabolaBTPType::ParabolaBTPType()
@@ -279,7 +279,7 @@ ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigDocument& ) cons
   if ( parents.size() < 2 ) return new InvalidImp;
   std::vector<Coordinate> points;
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
-    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+    if ( (*i)->inherits( PointImp::stype() ) )
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
   if ( points.size() != parents.size() ) return new InvalidImp;
   ConicCartesianData d =
@@ -291,8 +291,8 @@ ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigDocument& ) cons
 
 static const ArgParser::spec argsspecConicPolarPoint[] =
 {
-  { ObjectImp::ID_ConicImp, I18N_NOOP( "Construct a polar point wrt. this conic" ) },
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct the polar point of this line" ) }
+  { ConicImp::stype(), I18N_NOOP( "Construct a polar point wrt. this conic" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct the polar point of this line" ) }
 };
 
 ConicPolarPointType::ConicPolarPointType()
@@ -326,8 +326,8 @@ ObjectImp* ConicPolarPointType::calc( const Args& parents, const KigDocument& ) 
 
 static const ArgParser::spec argsspecConicPolarLine[] =
 {
-  { ObjectImp::ID_ConicImp, I18N_NOOP( "Construct a polar line wrt. this conic" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the polar line of this point" ) }
+  { ConicImp::stype(), I18N_NOOP( "Construct a polar line wrt. this conic" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct the polar line of this point" ) }
 };
 
 ConicPolarLineType::ConicPolarLineType()
@@ -361,7 +361,7 @@ ObjectImp* ConicPolarLineType::calc( const Args& parents, const KigDocument& ) c
 
 static const ArgParser::spec argsspecConicDirectrix[] =
 {
-  { ObjectImp::ID_ConicImp, I18N_NOOP( "Construct the directrix of this conic" ) }
+  { ConicImp::stype(), I18N_NOOP( "Construct the directrix of this conic" ) }
 };
 
 ConicDirectrixType::ConicDirectrixType()
@@ -383,7 +383,7 @@ ObjectImp* ConicDirectrixType::calc( const Args& parents, const KigDocument& ) c
 {
   if ( parents.size() != 1 ) return new InvalidImp;
   if ( ! parents[0]->valid() ) return new InvalidImp;
-  assert( parents[0]->inherits( ObjectImp::ID_ConicImp ) );
+  assert( parents[0]->inherits( ConicImp::stype() ) );
   const ConicPolarData data =
     static_cast<const ConicImp*>( parents[0] )->polarData();
 
@@ -400,10 +400,10 @@ static const char hyperbolatpstatement[] = I18N_NOOP( "Construct a hyperbola thr
 
 static const ArgParser::spec argsspecHyperbolaB4P[] =
 {
-  { ObjectImp::ID_PointImp, hyperbolatpstatement },
-  { ObjectImp::ID_PointImp, hyperbolatpstatement },
-  { ObjectImp::ID_PointImp, hyperbolatpstatement },
-  { ObjectImp::ID_PointImp, hyperbolatpstatement }
+  { PointImp::stype(), hyperbolatpstatement },
+  { PointImp::stype(), hyperbolatpstatement },
+  { PointImp::stype(), hyperbolatpstatement },
+  { PointImp::stype(), hyperbolatpstatement }
 };
 
 EquilateralHyperbolaB4PType::EquilateralHyperbolaB4PType()
@@ -425,7 +425,7 @@ ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents, const KigDocu
 {
   std::vector<Coordinate> pts;
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
-    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+    if ( (*i)->inherits( PointImp::stype() ) )
       pts.push_back( static_cast<const PointImp*>( *i )->coordinate() );
 
   if ( parents.size() != pts.size() ) return new InvalidImp;
@@ -436,8 +436,8 @@ ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents, const KigDocu
 
 static const ArgParser::spec argsspecParabolaBDP[] =
 {
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct a parabola with this directrix" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a parabola through this point" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct a parabola with this directrix" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a parabola through this point" ) }
 };
 
 ParabolaBDPType::ParabolaBDPType()
@@ -473,8 +473,8 @@ ObjectImp* ParabolaBDPType::calc( const LineData& l,
 
 static const ArgParser::spec argsspecConicAsymptote[] =
 {
-  { ObjectImp::ID_ConicImp, I18N_NOOP( "Construct the asymptotes of this conic" ) },
-  { ObjectImp::ID_IntImp, "param" }
+  { ConicImp::stype(), I18N_NOOP( "Construct the asymptotes of this conic" ) },
+  { IntImp::stype(), "param" }
 };
 
 ConicAsymptoteType::ConicAsymptoteType()
@@ -511,10 +511,10 @@ static const char radicallinesstatement[] = I18N_NOOP( "Construct the radical li
 
 static const ArgParser::spec argsspecConicRadical[] =
 {
-  { ObjectImp::ID_ConicImp, radicallinesstatement },
-  { ObjectImp::ID_ConicImp, radicallinesstatement },
-  { ObjectImp::ID_IntImp, "param" },
-  { ObjectImp::ID_IntImp, "param" }
+  { ConicImp::stype(), radicallinesstatement },
+  { ConicImp::stype(), radicallinesstatement },
+  { IntImp::stype(), "param" },
+  { IntImp::stype(), "param" }
 };
 
 ConicRadicalType::ConicRadicalType()
@@ -534,8 +534,8 @@ ObjectImp* ConicRadicalType::calc( const Args& parents, const KigDocument& ) con
   Args p = margsparser.parse( parents );
   if ( ! p[0] || ! p[1] || ! p[2] || ! p[3] )
     return new InvalidImp;
-  if ( p[0]->inherits( ObjectImp::ID_CircleImp ) &&
-       p[1]->inherits( ObjectImp::ID_CircleImp ) )
+  if ( p[0]->inherits( CircleImp::stype() ) &&
+       p[1]->inherits( CircleImp::stype() ) )
   {
     if( static_cast<const IntImp*>( p[2] )->data() != 1 )
       return new InvalidImp;
@@ -567,63 +567,63 @@ ConicRadicalType::~ConicRadicalType()
 {
 }
 
-int ConicB5PType::resultId() const
+const ObjectImpType* ConicB5PType::resultId() const
 {
-  return ObjectImp::ID_ConicImp;
+  return ConicImp::stype();
 }
 
-int ConicBAAPType::resultId() const
+const ObjectImpType* ConicBAAPType::resultId() const
 {
-  return ObjectImp::ID_ConicImp;
+  return ConicImp::stype();
 }
 
-int ConicBFFPType::resultId() const
+const ObjectImpType* ConicBFFPType::resultId() const
 {
-  return ObjectImp::ID_ConicImp;
+  return ConicImp::stype();
 }
 
-int ConicBDFPType::resultId() const
+const ObjectImpType* ConicBDFPType::resultId() const
 {
-  return ObjectImp::ID_ConicImp;
+  return ConicImp::stype();
 }
 
-int ParabolaBTPType::resultId() const
+const ObjectImpType* ParabolaBTPType::resultId() const
 {
-  return ObjectImp::ID_ConicImp;
+  return ConicImp::stype();
 }
 
-int EquilateralHyperbolaB4PType::resultId() const
+const ObjectImpType* EquilateralHyperbolaB4PType::resultId() const
 {
-  return ObjectImp::ID_ConicImp;
+  return ConicImp::stype();
 }
 
-int ConicPolarPointType::resultId() const
+const ObjectImpType* ConicPolarPointType::resultId() const
 {
-  return ObjectImp::ID_PointImp;
+  return PointImp::stype();
 }
 
-int ConicPolarLineType::resultId() const
+const ObjectImpType* ConicPolarLineType::resultId() const
 {
-  return ObjectImp::ID_LineImp;
+  return LineImp::stype();
 }
 
-int ConicDirectrixType::resultId() const
+const ObjectImpType* ConicDirectrixType::resultId() const
 {
-  return ObjectImp::ID_LineImp;
+  return LineImp::stype();
 }
 
-int ParabolaBDPType::resultId() const
+const ObjectImpType* ParabolaBDPType::resultId() const
 {
-  return ObjectImp::ID_ConicImp;
+  return ConicImp::stype();
 }
 
-int ConicAsymptoteType::resultId() const
+const ObjectImpType* ConicAsymptoteType::resultId() const
 {
-  return ObjectImp::ID_LineImp;
+  return LineImp::stype();
 }
 
-int ConicRadicalType::resultId() const
+const ObjectImpType* ConicRadicalType::resultId() const
 {
-  return ObjectImp::ID_LineImp;
+  return LineImp::stype();
 }
 

@@ -25,9 +25,11 @@
 class PointImp
   : public ObjectImp
 {
-  typedef ObjectImp Parent;
   Coordinate mc;
 public:
+  typedef ObjectImp Parent;
+  static const ObjectImpType* stype();
+
   PointImp( const Coordinate& c );
   ~PointImp();
 
@@ -43,16 +45,13 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
-
-  bool inherits( int typeID ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
   ObjectImp* transform( const Transformation& ) const;
 
   PointImp* copy() const;
-  const char* baseName() const;
 
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   void fillInNextEscape( QString& s, const KigDocument& ) const;

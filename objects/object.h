@@ -22,6 +22,8 @@
 #include <qcolor.h>
 #include "common.h"
 
+class ObjectImpType;
+
 /**
  * The Object class is an ABC that represents a separate piece of the
  * Kig document.  This includes the user-perceived RealObjects, but
@@ -57,7 +59,7 @@ public:
    * @see ObjectType::impRequirement and
    * ObjectImp::impRequirementForProperty
    */
-  virtual int impRequirement( Object* o, const Objects& os ) const;
+  virtual const ObjectImpType* impRequirement( Object* o, const Objects& os ) const;
 
   virtual void draw( KigPainter& p, bool showSelection ) const = 0;
   virtual bool contains( const Coordinate& p, const KigWidget& si ) const = 0;
@@ -88,13 +90,13 @@ public:
   // for..
 
   // -> ObjectImp::inherits()
-  bool hasimp( int type ) const;
+  bool hasimp( const ObjectImpType* type ) const;
 
   bool valid() const;
 
   const uint numberOfProperties() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
   const char* iconForProperty( uint which ) const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
@@ -193,7 +195,7 @@ public:
   int width() const { return mwidth; };
   void setWidth( int width );
 
-  int impRequirement( Object* o, const Objects& os ) const;
+  const ObjectImpType* impRequirement( Object* o, const Objects& os ) const;
 };
 
 /**
@@ -255,7 +257,7 @@ public:
 
   bool shown() const;
 
-  int impRequirement( Object* o, const Objects& os ) const;
+  const ObjectImpType* impRequirement( Object* o, const Objects& os ) const;
 };
 
 /**

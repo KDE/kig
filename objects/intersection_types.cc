@@ -27,9 +27,9 @@
 
 static const ArgParser::spec argsspecConicLineIntersection[] =
 {
-  { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with this conic" ) },
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Intersect with this line" ) },
-  { ObjectImp::ID_IntImp, "param" }
+  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ) },
+  { IntImp::stype(), "param" }
 };
 
 ConicLineIntersectionType::ConicLineIntersectionType()
@@ -54,9 +54,9 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
   Args p = margsparser.parse( parents );
   if ( ! p[0] || !p[1] || !p[2] )
     return new InvalidImp;
-  assert ( p[0]->inherits( ObjectImp::ID_ConicImp ) &&
-           p[1]->inherits( ObjectImp::ID_LineImp ) &&
-           p[2]->inherits( ObjectImp::ID_IntImp ) );
+  assert ( p[0]->inherits( ConicImp::stype() ) &&
+           p[1]->inherits( AbstractLineImp::stype() ) &&
+           p[2]->inherits( IntImp::stype() ) );
 
   int side = static_cast<const IntImp*>( p[2] )->data();
   assert( side == 1 || side == -1 );
@@ -64,7 +64,7 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
 
   bool valid = true;
   Coordinate ret;
-  if ( p[0]->inherits( ObjectImp::ID_CircleImp ) )
+  if ( p[0]->inherits( CircleImp::stype() ) )
   {
     // easy case..
     const CircleImp* c = static_cast<const CircleImp*>( p[0] );
@@ -87,8 +87,8 @@ static const char constructlinestat[] = I18N_NOOP( "Intersect with this line" );
 
 static const ArgParser::spec argsspecLineLineIntersection[] =
 {
-  { ObjectImp::ID_LineImp, constructlinestat },
-  { ObjectImp::ID_LineImp, constructlinestat }
+  { AbstractLineImp::stype(), constructlinestat },
+  { AbstractLineImp::stype(), constructlinestat }
 };
 
 LineLineIntersectionType::LineLineIntersectionType()
@@ -110,8 +110,8 @@ const LineLineIntersectionType* LineLineIntersectionType::instance()
 ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() != 2 ||
-       !parents[0]->inherits( ObjectImp::ID_LineImp ) ||
-       !parents[1]->inherits( ObjectImp::ID_LineImp ) )
+       !parents[0]->inherits( AbstractLineImp::stype() ) ||
+       !parents[1]->inherits( AbstractLineImp::stype() ) )
     return new InvalidImp;
   return new PointImp(
     calcIntersectionPoint(
@@ -121,9 +121,9 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocumen
 
 static const ArgParser::spec argsspecLineCubicIntersection[] =
 {
-  { ObjectImp::ID_CubicImp, I18N_NOOP( "Intersect with this cubic" ) },
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Intersect with this line" ) },
-  { ObjectImp::ID_IntImp, "param" }
+  { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ) },
+  { IntImp::stype(), "param" }
 };
 
 LineCubicIntersectionType::LineCubicIntersectionType()
@@ -157,17 +157,17 @@ ObjectImp* LineCubicIntersectionType::calc( const Args& parents, const KigDocume
   else return new InvalidImp;
 }
 
-int ConicLineIntersectionType::resultId() const
+const ObjectImpType* ConicLineIntersectionType::resultId() const
 {
-  return ObjectImp::ID_PointImp;
+  return PointImp::stype();
 }
 
-int LineLineIntersectionType::resultId() const
+const ObjectImpType* LineLineIntersectionType::resultId() const
 {
-  return ObjectImp::ID_PointImp;
+  return PointImp::stype();
 }
 
-int LineCubicIntersectionType::resultId() const
+const ObjectImpType* LineCubicIntersectionType::resultId() const
 {
-  return ObjectImp::ID_PointImp;
+  return PointImp::stype();
 }

@@ -218,7 +218,8 @@ void DefineMacroMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget
     // and set statusbar text
 
     w.setCursor( KCursor::handCursor() );
-    QString selectstat = ObjectImp::selectStatement( os.front()->imp()->id() );
+    QString selectstat =
+      os.front()->imp()->type()->selectStatement();
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );

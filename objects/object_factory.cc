@@ -54,7 +54,7 @@ Object* ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d,
 {
   Objects os = d.whatAmIOn( c, w );
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-    if ( (*i)->hasimp( ObjectImp::ID_CurveImp ) )
+    if ( (*i)->hasimp( CurveImp::stype() ) )
       return constrainedPoint( *i, c, d );
   return fixedPoint( c );
 }
@@ -71,7 +71,7 @@ void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
   // we don't want one of our children as a parent...
   Objects children = point->getAllChildren();
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-    if ( (*i)->hasimp( ObjectImp::ID_CurveImp ) && ! children.contains( *i ) )
+    if ( (*i)->hasimp( CurveImp::stype() ) && ! children.contains( *i ) )
     {
       v = *i;
       break;
@@ -90,7 +90,7 @@ void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       Object* dataobj = 0;
       Objects parents = point->parents();
       assert( parents.size() == 2 );
-      if ( parents[0]->hasimp( ObjectImp::ID_DoubleImp ) )
+      if ( parents[0]->hasimp( DoubleImp::stype() ) )
         dataobj = parents[0];
       else dataobj = parents[1];
 
@@ -158,9 +158,9 @@ Object* ObjectFactory::locus( const Objects& parents )
   ObjectHierarchy hier( hierparents, moving );
 
   Object* curve = const_cast<Object*>( constrained->parents().back() );
-  if ( ! curve->hasimp( ObjectImp::ID_CurveImp ) )
+  if ( ! curve->hasimp( CurveImp::stype() ) )
     curve = const_cast<Object*>( constrained->parents().front() );
-  assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
+  assert( curve->hasimp( CurveImp::stype() ) );
 
   Objects realparents( 2 + sideOfTree.size(), 0 );
   realparents[0] = curve;
@@ -185,7 +185,7 @@ Object* ObjectFactory::label( const QString& s, const Coordinate& loc,
 
 Object* ObjectFactory::constrainedPoint( Object* curve, double param )
 {
-  assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
+  assert( curve->hasimp( CurveImp::stype() ) );
   Objects parents;
   parents.push_back( curve );
   parents.push_back( new DataObject( new DoubleImp( param ) ) );
@@ -194,7 +194,7 @@ Object* ObjectFactory::constrainedPoint( Object* curve, double param )
 
 Object* ObjectFactory::constrainedPoint( Object* curve, const Coordinate& c, const KigDocument& d )
 {
-  assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
+  assert( curve->hasimp( CurveImp::stype() ) );
   double param = static_cast<const CurveImp*>( curve->imp() )->getParam( c, d );
   return constrainedPoint( curve, param );
 }

@@ -31,6 +31,9 @@
 #include "../objects/other_type.h"
 #include "../objects/object_imp.h"
 #include "../objects/bogus_imp.h"
+#include "../objects/line_imp.h"
+#include "../objects/circle_imp.h"
+#include "../objects/point_imp.h"
 
 #include <qpen.h>
 
@@ -134,7 +137,7 @@ MultiObjectTypeConstructor::MultiObjectTypeConstructor(
   const std::vector<int>& params )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mtype( t ), mparams( params ),
-    mparser( t->argParser().without( ObjectImp::ID_IntImp ) )
+    mparser( t->argParser().without( IntImp::stype() ) )
 {
 }
 
@@ -144,7 +147,7 @@ MultiObjectTypeConstructor::MultiObjectTypeConstructor(
   int a, int b, int c, int d )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mtype( t ), mparams(),
-    mparser( t->argParser().without( ObjectImp::ID_IntImp ) )
+    mparser( t->argParser().without( IntImp::stype() ) )
 {
   mparams.push_back( a );
   mparams.push_back( b );
@@ -402,15 +405,18 @@ void MacroConstructor::plug( KigDocument* doc, KigGUIAction* kact )
     doc->aMNewOther.append( kact );
   else
   {
-    switch( mhier.idOfLastResult() )
-    {
-    case ObjectImp::ID_SegmentImp: doc->aMNewSegment.append( kact ); break;
-    case ObjectImp::ID_PointImp: doc->aMNewPoint.append( kact ); break;
-    case ObjectImp::ID_CircleImp: doc->aMNewCircle.append( kact ); break;
-    case ObjectImp::ID_LineImp: doc->aMNewLine.append( kact ); break;
-    case ObjectImp::ID_ConicImp: doc->aMNewConic.append( kact ); break;
-    default: doc->aMNewOther.append( kact ); break;
-    };
+    if ( mhier.idOfLastResult() == SegmentImp::stype() )
+      doc->aMNewSegment.append( kact );
+    else if ( mhier.idOfLastResult() == PointImp::stype() )
+      doc->aMNewPoint.append( kact );
+    else if ( mhier.idOfLastResult() == CircleImp::stype() )
+      doc->aMNewCircle.append( kact );
+    else if ( mhier.idOfLastResult()->inherits( AbstractLineImp::stype() ) )
+      // line or ray
+      doc->aMNewLine.append( kact );
+    else if ( mhier.idOfLastResult() == ConicImp::stype() )
+      doc->aMNewConic.append( kact );
+    else doc->aMNewOther.append( kact );
   };
   doc->aMNewAll.append( kact );
 }
@@ -454,7 +460,7 @@ bool ObjectConstructor::isIntersection() const
 }
 
 PropertyObjectConstructor::PropertyObjectConstructor(
-  const int imprequirement, const char* usetext,
+  const ObjectImpType* imprequirement, const char* usetext,
   const char* descname, const char* desc,
   const char* iconfile, const char* propertyinternalname )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),

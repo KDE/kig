@@ -36,37 +36,6 @@ bool BogusImp::inRect( const Rect&, int, const KigWidget& ) const
   return false;
 }
 
-bool BogusImp::valid() const
-{
-  return true;
-}
-
-const uint BogusImp::numberOfProperties() const
-{
-  return 0;
-}
-
-const QCStringList BogusImp::properties() const
-{
-  return QCStringList();
-}
-
-int BogusImp::impRequirementForProperty( uint which ) const
-{
-  return Parent::impRequirementForProperty( which );
-}
-
-ObjectImp* BogusImp::property( uint, const KigDocument& ) const
-{
-  return new InvalidImp;
-}
-
-const char* BogusImp::iconForProperty( uint ) const
-{
-  assert( false );
-  return "";
-}
-
 DoubleImp::DoubleImp( const double d )
   : mdata( d )
 {
@@ -97,29 +66,9 @@ StringImp* StringImp::copy() const
   return new StringImp( mdata );
 }
 
-bool DoubleImp::inherits( int typeID ) const
-{
-  return typeID == ID_DoubleImp ? true : Parent::inherits( typeID );
-}
-
-bool IntImp::inherits( int typeID ) const
-{
-  return typeID == ID_IntImp ? true : Parent::inherits( typeID );
-}
-
-bool StringImp::inherits( int typeID ) const
-{
-  return typeID == ID_StringImp ? true : Parent::inherits( typeID );
-}
-
 ObjectImp* BogusImp::transform( const Transformation& ) const
 {
   return copy();
-}
-
-bool InvalidImp::valid() const
-{
-  return false;
 }
 
 InvalidImp* InvalidImp::copy() const
@@ -127,58 +76,8 @@ InvalidImp* InvalidImp::copy() const
   return new InvalidImp();
 }
 
-bool InvalidImp::inherits( int t ) const
-{
-  return Parent::inherits( t );
-}
-
 InvalidImp::InvalidImp()
 {
-}
-
-const char* InvalidImp::baseName() const
-{
-  return "invalid";
-}
-
-const char* DoubleImp::baseName() const
-{
-  return I18N_NOOP( "floating point number" );
-}
-
-const char* IntImp::baseName() const
-{
-  return I18N_NOOP( "integral number" );
-}
-
-const char* StringImp::baseName() const
-{
-  return I18N_NOOP( "string" );
-}
-
-int InvalidImp::id() const
-{
-  return ID_InvalidImp;
-}
-
-int DoubleImp::id() const
-{
-  return ID_DoubleImp;
-}
-
-int IntImp::id() const
-{
-  return ID_IntImp;
-}
-
-int StringImp::id() const
-{
-  return ID_StringImp;
-}
-
-const QCStringList BogusImp::propertiesInternalNames() const
-{
-  return QCStringList();
 }
 
 void InvalidImp::fillInNextEscape( QString& s, const KigDocument& ) const
@@ -206,24 +105,9 @@ HierarchyImp::HierarchyImp( const ObjectHierarchy& h )
 {
 }
 
-bool HierarchyImp::inherits( int type ) const
-{
-  return type == ID_HierarchyImp ? true : Parent::inherits( type );
-}
-
 HierarchyImp* HierarchyImp::copy() const
 {
   return new HierarchyImp( mdata );
-}
-
-const char* HierarchyImp::baseName() const
-{
-  return I18N_NOOP( "Hierarchy" );
-}
-
-int HierarchyImp::id() const
-{
-  return ID_HierarchyImp;
 }
 
 void InvalidImp::visit( ObjectImpVisitor* vtor ) const
@@ -256,24 +140,9 @@ TransformationImp::TransformationImp( const Transformation& h )
 {
 }
 
-bool TransformationImp::inherits( int type ) const
-{
-  return type == ID_TransformationImp ? true : Parent::inherits( type );
-}
-
 TransformationImp* TransformationImp::copy() const
 {
   return new TransformationImp( mdata );
-}
-
-const char* TransformationImp::baseName() const
-{
-  return I18N_NOOP( "transformation" );
-}
-
-int TransformationImp::id() const
-{
-  return ID_TransformationImp;
 }
 
 void TransformationImp::visit( ObjectImpVisitor* vtor ) const
@@ -288,31 +157,31 @@ bool InvalidImp::equals( const ObjectImp& rhs ) const
 
 bool DoubleImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_DoubleImp ) &&
+  return rhs.inherits( DoubleImp::stype() ) &&
     static_cast<const DoubleImp&>( rhs ).data() == mdata;
 }
 
 bool IntImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_IntImp ) &&
+  return rhs.inherits( IntImp::stype() ) &&
     static_cast<const IntImp&>( rhs ).data() == mdata;
 }
 
 bool StringImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_StringImp ) &&
+  return rhs.inherits( StringImp::stype() ) &&
     static_cast<const StringImp&>( rhs ).data() == mdata;
 }
 
 bool HierarchyImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_HierarchyImp ) &&
+  return rhs.inherits( HierarchyImp::stype() ) &&
     static_cast<const HierarchyImp&>( rhs ).data() == mdata;
 }
 
 bool TransformationImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_TransformationImp ) &&
+  return rhs.inherits( TransformationImp::stype() ) &&
     static_cast<const TransformationImp&>( rhs ).data() == mdata;
 }
 
@@ -336,8 +205,98 @@ bool StringImp::canFillInNextEscape() const
   return true;
 }
 
-bool BogusImp::inherits( int type ) const
+const ObjectImpType* InvalidImp::stype()
 {
-  return type == ID_BogusImp ? true : Parent::inherits( type );
+  static const ObjectImpType t(
+    Parent::stype(), "invalid", 0, 0, 0, 0, 0 );
+  return &t;
+};
+
+const ObjectImpType* StringImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "string",
+    I18N_NOOP( "string" ),
+    I18N_NOOP( "Select this string" ),
+    I18N_NOOP( "Remove a String" ),
+    I18N_NOOP( "Add a String" ),
+    I18N_NOOP( "Move a String" ) );
+  return &t;
+};
+const ObjectImpType* HierarchyImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "hierarchy",
+    I18N_NOOP( "hierarchy" ),
+    I18N_NOOP( "Select this hierarchy" ),
+    I18N_NOOP( "Remove a Hierarchy" ),
+    I18N_NOOP( "Add a Hierarchy" ),
+    I18N_NOOP( "Move a Hierarchy" ) );
+  return &t;
+};
+const ObjectImpType* TransformationImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "transformation",
+    I18N_NOOP( "transformation" ),
+    I18N_NOOP( "Select this transformation" ),
+    I18N_NOOP( "Remove a Transformation" ),
+    I18N_NOOP( "Add a Transformation" ),
+    I18N_NOOP( "Move a Transformation" ) );
+  return &t;
+};
+
+const ObjectImpType* InvalidImp::type() const
+{
+  return InvalidImp::stype();
+}
+
+const ObjectImpType* DoubleImp::type() const
+{
+  return DoubleImp::stype();
+}
+
+const ObjectImpType* IntImp::type() const
+{
+  return IntImp::stype();
+}
+
+const ObjectImpType* StringImp::type() const
+{
+  return StringImp::stype();
+}
+
+const ObjectImpType* HierarchyImp::type() const
+{
+  return HierarchyImp::stype();
+}
+
+const ObjectImpType* TransformationImp::type() const
+{
+  return TransformationImp::stype();
+}
+
+const ObjectImpType* DoubleImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "double",
+    I18N_NOOP( "double" ),
+    I18N_NOOP( "Select this number" ),
+    I18N_NOOP( "Remove a Number" ),
+    I18N_NOOP( "Add a Number" ),
+    I18N_NOOP( "Move a Number" ) );
+  return &t;
+}
+
+const ObjectImpType* IntImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "int",
+    I18N_NOOP( "int" ),
+    I18N_NOOP( "Select this number" ),
+    I18N_NOOP( "Remove a Number" ),
+    I18N_NOOP( "Add a Number" ),
+    I18N_NOOP( "Move a Number" ) );
+  return &t;
 }
 

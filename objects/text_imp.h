@@ -27,7 +27,6 @@
 class TextImp
   : public ObjectImp
 {
-  typedef ObjectImp Parent;
   QString mtext;
   Coordinate mloc;
   bool mframe;
@@ -35,6 +34,9 @@ class TextImp
   // the contains() function..
   mutable Rect mboundrect;
 public:
+  typedef ObjectImp Parent;
+  static const ObjectImpType* stype();
+
   TextImp( const QString& text, const Coordinate& loc, bool frame = false );
   TextImp* copy() const;
   ~TextImp();
@@ -51,14 +53,10 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
-  int impRequirementForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
-  bool inherits( int typeID ) const;
-
-  int id() const;
+  const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
-
-  const char* baseName() const;
 
   QString text() const;
   const Coordinate coordinate() const;

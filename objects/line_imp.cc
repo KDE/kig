@@ -50,11 +50,11 @@ const uint AbstractLineImp::numberOfProperties() const
   return Parent::numberOfProperties() + 2;
 }
 
-int AbstractLineImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* AbstractLineImp::impRequirementForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
-  else return ID_LineImp;
+  else return AbstractLineImp::stype();
 }
 
 const char* AbstractLineImp::iconForProperty( uint which ) const
@@ -99,21 +99,6 @@ const QCStringList AbstractLineImp::properties() const
   return l;
 }
 
-int SegmentImp::type() const
-{
-  return 0;
-}
-
-int RayImp::type() const
-{
-  return 1;
-}
-
-int LineImp::type() const
-{
-  return 2;
-}
-
 const uint SegmentImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 2;
@@ -137,11 +122,11 @@ const QCStringList SegmentImp::properties() const
   return s;
 }
 
-int SegmentImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* SegmentImp::impRequirementForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
-  else return ID_SegmentImp;
+  else return SegmentImp::stype();
 }
 
 const char* SegmentImp::iconForProperty( uint which ) const
@@ -252,11 +237,6 @@ LineImp* LineImp::copy() const
   return new LineImp( mdata );
 }
 
-bool AbstractLineImp::inherits( int typeID ) const
-{
-  return typeID == ID_LineImp ? true : Parent::inherits( typeID );
-}
-
 const Coordinate SegmentImp::getPoint( double param, bool& valid, const KigDocument& ) const
 {
   valid = true;
@@ -329,10 +309,10 @@ const Coordinate LineImp::getPoint( double p, bool& valid, const KigDocument& ) 
   if ( p >= 1. ) p = 1 - 1e-6;
   p = 2*p - 1;
   if (p > 0) p = p/(1 - p);
-    else p = p/(1 + p);
+  else p = p/(1 + p);
 //  p *= 1024;    // such multiplying factor could be useful in order to
-                  // have more points near infinity, at the expense of
-                  // points near ma and mb
+  // have more points near infinity, at the expense of
+  // points near ma and mb
   return mdata.a + p*mdata.dir();
 }
 
@@ -349,7 +329,7 @@ double LineImp::getParam( const Coordinate& point, const KigDocument& ) const
   double p = (pa.x*ba.x + pa.y*ba.y)/balsq;
 //  p /= 1024;
   if (p > 0) p = p/(1+p);
-    else p = p/(1-p);
+  else p = p/(1-p);
 
   return 0.5*(p + 1);
 }
@@ -401,49 +381,9 @@ LineImp::LineImp( const LineData& d )
 {
 }
 
-const char* SegmentImp::baseName() const
-{
-  return I18N_NOOP( "segment" );
-}
-
-const char* RayImp::baseName() const
-{
-  return I18N_NOOP( "ray" );
-}
-
-const char* LineImp::baseName() const
-{
-  return I18N_NOOP( "line" );
-}
-
-bool SegmentImp::inherits( int type ) const
-{
-  return type == ID_SegmentImp ? true : Parent::inherits( type );
-}
-
 double SegmentImp::length() const
 {
   return mdata.length();
-}
-
-bool RayImp::inherits( int type ) const
-{
-  return type == ID_RayImp ? true : Parent::inherits( type );
-}
-
-int SegmentImp::id() const
-{
-  return ID_SegmentImp;
-}
-
-int RayImp::id() const
-{
-  return ID_RayImp;
-}
-
-int LineImp::id() const
-{
-  return ID_LineImp;
 }
 
 void SegmentImp::visit( ObjectImpVisitor* vtor ) const
@@ -463,7 +403,69 @@ void LineImp::visit( ObjectImpVisitor* vtor ) const
 
 bool AbstractLineImp::equals( const ObjectImp& rhs ) const
 {
-  return rhs.inherits( ID_LineImp ) &&
-    static_cast<const AbstractLineImp&>( rhs ).data() == data() &&
-    static_cast<const AbstractLineImp&>( rhs ).type() == type();
+  return rhs.type() == type() &&
+    static_cast<const AbstractLineImp&>( rhs ).data() == data();
+}
+
+const ObjectImpType* AbstractLineImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "line",
+    I18N_NOOP( "line" ),
+    I18N_NOOP( "Select this line" ),
+    I18N_NOOP( "Remove a Line" ),
+    I18N_NOOP( "Add a Line" ),
+    I18N_NOOP( "Move a Line" ) );
+  return &t;
+};
+
+const ObjectImpType* LineImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "line",
+    I18N_NOOP( "line" ),
+    I18N_NOOP( "Select this line" ),
+    I18N_NOOP( "Remove a Line" ),
+    I18N_NOOP( "Add a Line" ),
+    I18N_NOOP( "Move a Line" ) );
+  return &t;
+};
+
+const ObjectImpType* SegmentImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "segment",
+    I18N_NOOP( "segment" ),
+    I18N_NOOP( "Select this segment" ),
+    I18N_NOOP( "Remove a Segment" ),
+    I18N_NOOP( "Add a Segment" ),
+    I18N_NOOP( "Move a Segment" ) );
+  return &t;
+};
+
+const ObjectImpType* RayImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "ray",
+    I18N_NOOP( "ray" ),
+    I18N_NOOP( "Select this ray" ),
+    I18N_NOOP( "Remove a Ray" ),
+    I18N_NOOP( "Add a Ray" ),
+    I18N_NOOP( "Move a Ray" ) );
+  return &t;
+};
+
+const ObjectImpType* SegmentImp::type() const
+{
+  return SegmentImp::stype();
+}
+
+const ObjectImpType* RayImp::type() const
+{
+  return RayImp::stype();
+}
+
+const ObjectImpType* LineImp::type() const
+{
+  return LineImp::stype();
 }
