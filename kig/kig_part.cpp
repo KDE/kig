@@ -244,6 +244,7 @@ bool KigDocument::openFile()
   // findByURL... 
   KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
   QFile file;
+  KTempFile* tempFile = 0;
   if ( mimeType->name() != QString::fromLatin1("application/x-kig") )
     {
       kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
@@ -260,8 +261,8 @@ bool KigDocument::openFile()
 	  );
 	return false;
       };
-      KTempFile tempFile;
-      filter->convert (m_file, tempFile);
+      tempFile = new KTempFile( locateLocal( "tmp","kig-" ), QString::fromUtf8("kig") );
+      filter->convert (m_file, *tempFile);
       //      KMessageBox::sorry(widget(), QString::fromLatin1("this is for debugging, read the file") + tempFile.name() );
       file.setName (tempFile.name());
     }
@@ -271,7 +272,15 @@ bool KigDocument::openFile()
       file.setName(m_file);
     };
   
-  if (!file.open(IO_ReadOnly)) return false;
+  if (!file.open(IO_ReadOnly))
+    {
+      if( tempFile )
+	{
+	  tempFile->unlink();
+	  delete tempFile;
+	};
+      return false;
+    };
 
   objects.deleteAll();
   // TODO: more error detection
@@ -304,6 +313,12 @@ bool KigDocument::openFile()
 
   emit recenterScreen();
   emit allChanged();
+  
+  if( tempFile )
+    {
+      tempFile->unlink();
+      delete tempFile;
+    };
   return true;
 }
 
