@@ -179,8 +179,19 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       switch( descendtype )
       {
       case G_TRANSLATED:
-        o = new RealObject( TranslatedType::instance(), parents );
+      {
+        Objects vectorparents( parents.begin() + 1, parents.end() );
+        RealObject* vector = new RealObject( VectorType::instance(), vectorparents );
+        vector->setShown( false );
+        ret.push_back( vector );
+        vector->calc( todoc );
+
+        Objects transparents;
+        transparents.push_back( parents[0] );
+        transparents.push_back( vector );
+        o = new RealObject( TranslatedType::instance(), transparents );
         break;
+      }
       case G_ROTATED:
         o = new RealObject( RotationType::instance(), parents );
         break;
