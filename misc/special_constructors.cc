@@ -128,7 +128,7 @@ void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
   };
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
-  const ObjectImp* oimp = constrained->parents().front()->imp();
+  const ObjectImp* oimp = constrained->parents().back()->imp();
   assert( oimp->inherits( ObjectImp::ID_CurveImp ) );
   const CurveImp* cimp = static_cast<const CurveImp*>( oimp );
 
@@ -178,7 +178,7 @@ Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget
 
   ObjectHierarchy hier( locusparents, moving );
 
-  Object* curve = const_cast<Object*>( constrained->parents().front() );
+  Object* curve = const_cast<Object*>( constrained->parents().back() );
   assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
   // a locus object does not depend on the constrained point, but on
   // the curve it is on..
