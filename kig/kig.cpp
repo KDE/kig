@@ -215,7 +215,7 @@ void Kig::dropEvent(QDropEvent* e)
 void Kig::fileOpen()
 {
   // this slot is connected to the KStdAction::open action...
-  QString file_name = KFileDialog::getOpenFileName(":document", "*.kig");
+  QString file_name = KFileDialog::getOpenFileName(":document", i18n("*.kig|Kig Documents"));
 
   if (!file_name.isEmpty()) openURL(file_name);
 }
@@ -223,7 +223,7 @@ void Kig::fileOpen()
 void Kig::fileSaveAs()
 {
   // this slot is connected to the KStdAction::saveAs action...
-  QString file_name = KFileDialog::getSaveFileName(":document", "*.kig\n*");
+  QString file_name = KFileDialog::getSaveFileName(":document", i18n("*.kig|Kig Documents\n*|All files"));
   if (!file_name.isEmpty()) m_part->saveAs(file_name);
 }
 

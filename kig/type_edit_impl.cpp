@@ -102,7 +102,7 @@ void KigTypeEditImpl::exportType()
       if (i->isSelected()) types.add(static_cast<TypeListElement*>(i)->getType());
     };
   if (types.empty()) return;
-  QString file_name = KFileDialog::getSaveFileName(":macro", "*.kigt\n*");
+  QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types files\n*"));
   if (!file_name) return;
   types.saveToFile(file_name);
 };
