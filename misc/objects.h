@@ -15,8 +15,8 @@ class Object;
 class Objects
   : public QPtrList<Object>
 {
-  typedef QPtrListIterator<Object> iterator;
 public:
+  typedef QPtrListIterator<Object> iterator;
   // deletes all objects
   void deleteAll();
 
