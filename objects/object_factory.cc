@@ -138,14 +138,18 @@ RealObject* ObjectFactory::locus( const Objects& parents )
 
 Objects ObjectFactory::label( const QString& s, const Coordinate& loc, const Objects& nparents )
 {
-  Objects parents( nparents.begin(), nparents.end() );
-  Objects os;
-  os.push_back( new DataObject( new StringImp( s ) ) );
-  os.push_back( new DataObject( new PointImp( loc ) ) );
-  parents.push_back( os[0] );
-  parents.push_back( os[1] );
+  using namespace std;
+
+  Objects ret;
+  Objects parents;
+  parents.reserve( nparents.size() + 2 );
+  parents.push_back( new DataObject( new StringImp( s ) ) );
+  parents.push_back( new DataObject( new PointImp( loc ) ) );
+  ret.push_back( parents[0] );
+  ret.push_back( parents[1] );
+  copy( nparents.begin(), nparents.end(), back_inserter( parents ) );
 
   RealObject* r = new RealObject( TextType::instance(), parents );
-  os.push_back( r );
-  return os;
+  ret.push_back( r );
+  return ret;
 }
