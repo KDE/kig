@@ -80,10 +80,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   : KParts::ReadWritePart( parent, name ),
     mMode( 0 ),
     numViews(0),
-    s( new EuclideanCoords )
+    mcoordsystem( new EuclideanCoords )
 {
-  documents().push_back( this );
-
   // we need an instance
   setInstance( KigDocumentFactory::instance() );
 
@@ -112,6 +110,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   setModified (false);
 
   mMode = new NormalMode( *this );
+
+  GUIActionList::instance()->regDoc( this );
 }
 
 void KigDocument::setupActions()
@@ -174,50 +174,12 @@ void KigDocument::setupTypes()
   GUIActionList& l = *GUIActionList::instance();
   for ( uint i = 0; i < l.actions().size(); ++i )
   {
-    aActions.push_back(
-      new KigGUIAction( l.actions()[i], *this, actionCollection() )
-      );
+    KigGUIAction* ret = new KigGUIAction( l.actions()[i], *this, actionCollection() );
+    aActions.push_back( ret );
+    ret->plug( this );
   };
-//   if ( Object::types().empty() )
-//   {
-
-//     Object::addBuiltinType( new TStdType<Segment> );
-//     Object::addBuiltinType( new TStdType<LineTTP> );
-//     Object::addBuiltinType( new TStdType<LinePerpend> );
-//     Object::addBuiltinType( new TStdType<LineParallel> );
-//     Object::addBuiltinType( new TStdType<CircleBCP> );
-//     Object::addBuiltinType( new TStdType<CircleBTP> );
-//     Object::addBuiltinType( new TStdType<Ray> );
-//     Object::addBuiltinType( new TType<NormalPoint> );
-//     Object::addBuiltinType( new TStdType<ConicB5P> );
-//     Object::addBuiltinType( new TStdType<ConicBAAP> );
-//     Object::addBuiltinType( new TStdType<EllipseBFFP> );
-//     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
-//     Object::addBuiltinType( new TStdType<ConicBDFP> );
-//     Object::addBuiltinType( new TStdType<ParabolaBTP> );
-//     Object::addBuiltinType( new TStdType<CubicB9P> );
-//     Object::addBuiltinType( new TStdType<PointPolar> );
-//     Object::addBuiltinType( new TStdType<LinePolar> );
-//     Object::addBuiltinType( new TStdType<LineDirectrix> );
-//     Object::addBuiltinType( new TStdType<Angle> );
-//     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
-//     Object::addBuiltinType( new TStdType<MidPoint> );
-//     Object::addBuiltinType( new TStdType<Vector> );
-//     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
-//     Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
-//     Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
-//     Object::addBuiltinType( new TStdType<IntersectionPoint> );
-//     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
-//     Object::addBuiltinType( new TStdType<LineRadical> );
-//     Object::addBuiltinType( new TMultiType<LineConicRadical> );
-
-//     Object::addBuiltinType( new TStdType<Locus> );
 //     Object::addBuiltinType( new TType<TextLabel> );
 //     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
-
-//     Object::addBuiltinType( new TStdType<TranslatedPoint> );
-//     Object::addBuiltinType( new TStdType<MirrorPoint> );
-//     Object::addBuiltinType( new TStdType<RotatedPoint> );
 
 //     // our saved macro types:
 //     QStringList relFiles;
@@ -248,9 +210,9 @@ void KigDocument::setupTypes()
 
 KigDocument::~KigDocument()
 {
-  documents().remove( this );
+  GUIActionList::instance()->unregDoc( this );
 
-  // remove old types:
+  // emove old types:
   QStringList relFiles;
   QStringList dataFiles =
     KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
@@ -272,8 +234,11 @@ KigDocument::~KigDocument()
   delete_all( mObjs.begin(), mObjs.end() );
   mObjs.clear();
 
+  delete_all( aActions.begin(), aActions.end() );
+  aActions.clear();
+
   // cleanup
-  delete s;
+  delete mcoordsystem;
   delete mMode;
 }
 
@@ -480,8 +445,8 @@ Rect KigDocument::suggestedRect()
 
 const CoordinateSystem& KigDocument::coordinateSystem() const
 {
-  assert( s );
-  return *s;
+  assert( mcoordsystem );
+  return *mcoordsystem;
 }
 
 void KigDocument::setMode( KigMode* m )
@@ -569,35 +534,12 @@ void KigDocument::delObjects( const Objects& os )
 //   aActions.push_back( a );
 // }
 
-// grr.. stupid QPtrList.. yay for the STL..
-void setEnabled( QPtrList<KAction>& l, bool e )
-{
-  for ( KAction* a = l.first(); a; a = l.next() )
-  {
-    a->setEnabled( e );
-  };
-};
-
 void KigDocument::enableConstructActions( bool enabled )
 {
   std::for_each( aActions.begin(), aActions.end(),
                  std::bind2nd( std::mem_fun( &KAction::setEnabled ),
                                enabled ) );
   aFixedPoint->setEnabled( enabled );
-
-  setEnabled( aMNewConic, enabled );
-  setEnabled( aMNewSegment, enabled );
-  setEnabled( aMNewPoint, enabled );
-  setEnabled( aMNewCircle, enabled );
-  setEnabled( aMNewLine, enabled );
-  setEnabled( aMNewOther, enabled );
-  setEnabled( aMNewAll, enabled );
-}
-
-myvector<KigDocument*>& KigDocument::documents()
-{
-  static myvector<KigDocument*> vect;
-  return vect;
 }
 
 // void KigDocument::removeAction( KAction* a )
@@ -630,6 +572,7 @@ void KigDocument::plugActionLists()
   plugActionList( "user_point_types", aMNewPoint );
   plugActionList( "user_circle_types", aMNewCircle );
   plugActionList( "user_line_types", aMNewLine );
+  plugActionList( "user_conic_types", aMNewConic );
   plugActionList( "user_other_types", aMNewOther );
   plugActionList( "user_types", aMNewAll );
 };
@@ -712,6 +655,39 @@ void KigDocument::setObjects( const Objects& os )
 
 void KigDocument::setCoordinateSystem( CoordinateSystem* cs )
 {
-  delete s;
-  s = cs;
+  delete mcoordsystem;
+  mcoordsystem = cs;
+}
+
+void KigDocument::actionRemoved( GUIAction* a )
+{
+  KigGUIAction* rem = 0;
+  for ( myvector<KigGUIAction*>::iterator i = aActions.begin(); i != aActions.end(); ++i )
+  {
+    if ( (*i)->guiAction() == a ) rem = *i;
+  };
+  assert( rem );
+  aActions.remove( rem );
+  aMNewSegment.remove( rem );
+  aMNewConic.remove( rem );
+  aMNewPoint.remove( rem );
+  aMNewCircle.remove( rem );
+  aMNewLine.remove( rem );
+  aMNewOther.remove( rem );
+  aMNewAll.remove( rem );
+  unplugActionLists();
+  plugActionLists();
+  delete rem;
+}
+
+void KigDocument::actionAdded( GUIAction* a )
+{
+  // we don't pass actionCollection() as parent, because that is for
+  // actions with names that might appear in kigpartui.rc
+  KigGUIAction* ret = new KigGUIAction( a, *this, actionCollection() );
+  aActions.push_back( ret );
+  ret->plug( this );
+
+  unplugActionLists();
+  plugActionLists();
 }

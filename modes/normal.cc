@@ -107,8 +107,8 @@ void NormalMode::showHidden()
 
 void NormalMode::newMacro()
 {
-//   DefineMacroMode* m = new DefineMacroMode( mdoc, this );
-//   mdoc.setMode( m );
+  DefineMacroMode m( mdoc );
+  mdoc.runMode( &m );
 }
 
 void NormalMode::objectsAdded()

@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_NW_OBJECTS_CIRCLE_TYPE_H
-#define KIG_NW_OBJECTS_CIRCLE_TYPE_H
+#ifndef KIG_OBJECTS_CIRCLE_TYPE_H
+#define KIG_OBJECTS_CIRCLE_TYPE_H
 
 #include "base_type.h"
 
@@ -30,6 +30,7 @@ public:
   static const CircleBCPType* instance();
 
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  int resultId() const;
 };
 
 class CircleBTPType
@@ -44,6 +45,7 @@ public:
   static const CircleBTPType* instance();
 
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 #endif

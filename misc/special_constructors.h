@@ -31,6 +31,7 @@ public:
   ~ConicRadicalConstructor();
   void drawprelim( KigPainter& p, const Objects& parents ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 class LocusConstructor
@@ -50,6 +51,7 @@ public:
   QString useText( const Object& o, const Objects& sel ) const;
   void drawprelim( KigPainter& p, const Objects& parents ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 #endif

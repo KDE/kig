@@ -19,6 +19,7 @@
 #include "guiaction_list.h"
 
 #include "guiaction.h"
+#include "../kig/kig_part.h"
 
 GUIActionList* GUIActionList::instance()
 {
@@ -28,7 +29,7 @@ GUIActionList* GUIActionList::instance()
 
 GUIActionList::~GUIActionList()
 {
-  for ( vectype::iterator i = mactions.begin(); i != mactions.end(); ++i )
+  for ( avectype::iterator i = mactions.begin(); i != mactions.end(); ++i )
     delete *i;
 }
 
@@ -36,7 +37,26 @@ GUIActionList::GUIActionList()
 {
 }
 
+void GUIActionList::regDoc( KigDocument* d )
+{
+  mdocs.push_back( d );
+}
+
+void GUIActionList::unregDoc( KigDocument* d )
+{
+  mdocs.remove( d );
+}
+
 void GUIActionList::add( GUIAction* a )
 {
   mactions.push_back( a );
+  for ( uint i = 0; i < mdocs.size(); ++i )
+    mdocs[i]->actionAdded( a );
+}
+
+void GUIActionList::remove( GUIAction* a )
+{
+  mactions.remove( a );
+  for ( uint i = 0; i < mdocs.size(); ++i )
+    mdocs[i]->actionRemoved( a );
 }

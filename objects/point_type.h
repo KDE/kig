@@ -36,6 +36,7 @@ public:
   bool canMove() const;
   void move( RealObject* ourobj, const Coordinate& from,
              const Coordinate& dist ) const;
+  int resultId() const;
 };
 
 class ConstrainedPointType
@@ -52,6 +53,7 @@ public:
   bool canMove() const;
   void move( RealObject* ourobj, const Coordinate& from,
              const Coordinate& dist ) const;
+  int resultId() const;
 };
 
 class MidPointType
@@ -62,6 +64,7 @@ class MidPointType
 public:
   static const MidPointType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  int resultId() const;
 };
 
 #endif

@@ -150,14 +150,20 @@ const Objects Object::getAllChildren() const
 
 void Object::addChild( Object* o )
 {
-  mchildren.upush( o );
-  childAdded();
+  if ( ! mchildren.contains( o ) )
+  {
+    mchildren.push_back( o );
+    childAdded();
+  };
 }
 
 void Object::delChild( Object* o )
 {
-  mchildren.remove( o );
-  childRemoved();
+  if ( mchildren.contains( o ) )
+  {
+    mchildren.remove( o );
+    childRemoved();
+  };
 }
 
 void ObjectWithParents::addParent( Object* o )
@@ -354,4 +360,13 @@ void RealObject::setSelected( bool s )
 
 void Object::setSelected( bool )
 {
+}
+
+void Object::setShown( bool )
+{
+}
+
+void RealObject::setShown( bool shown )
+{
+  mshown = shown;
 }

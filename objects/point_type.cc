@@ -172,3 +172,18 @@ const FixedPointType* FixedPointType::instance()
   static const FixedPointType t;
   return &t;
 }
+
+int FixedPointType::resultId() const
+{
+  return ObjectImp::ID_PointImp;
+}
+
+int ConstrainedPointType::resultId() const
+{
+  return ObjectImp::ID_PointImp;
+}
+
+int MidPointType::resultId() const
+{
+  return ObjectImp::ID_PointImp;
+}

@@ -19,22 +19,32 @@
 #ifndef KIG_NW_MISC_GUIACTION_LIST_H
 #define KIG_NW_MISC_GUIACTION_LIST_H
 
-#include <vector>
+#include "objects.h"
 
 class GUIAction;
+class KigDocument;
 
 class GUIActionList
 {
 public:
-  typedef std::vector<GUIAction*> vectype;
+  typedef myvector<GUIAction*> avectype;
+  typedef myvector<KigDocument*> dvectype;
 private:
-  vectype mactions;
+  avectype mactions;
+  dvectype mdocs;
   GUIActionList();
   ~GUIActionList();
 public:
   static GUIActionList* instance();
-  const vectype& actions() const { return mactions; };
+  const avectype& actions() const { return mactions; };
+
+  // register this document, so that it receives notifications for
+  // added and removed actions..
+  void regDoc( KigDocument* d );
+  void unregDoc( KigDocument* d );
+
   void add( GUIAction* a );
+  void remove( GUIAction* a );
 };
 
 #endif

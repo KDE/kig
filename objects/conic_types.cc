@@ -541,3 +541,63 @@ ConicRadicalType::~ConicRadicalType()
 {
 }
 
+int ConicB5PType::resultId() const
+{
+  return ObjectImp::ID_ConicImp;
+}
+
+int ConicBAAPType::resultId() const
+{
+  return ObjectImp::ID_ConicImp;
+}
+
+int ConicBFFPType::resultId() const
+{
+  return ObjectImp::ID_ConicImp;
+}
+
+int ConicBDFPType::resultId() const
+{
+  return ObjectImp::ID_ConicImp;
+}
+
+int ParabolaBTPType::resultId() const
+{
+  return ObjectImp::ID_ConicImp;
+}
+
+int EquilateralHyperbolaB4PType::resultId() const
+{
+  return ObjectImp::ID_ConicImp;
+}
+
+int ConicPolarPointType::resultId() const
+{
+  return ObjectImp::ID_PointImp;
+}
+
+int ConicPolarLineType::resultId() const
+{
+  return ObjectImp::ID_LineImp;
+}
+
+int ConicDirectrixType::resultId() const
+{
+  return ObjectImp::ID_LineImp;
+}
+
+int ParabolaBDPType::resultId() const
+{
+  return ObjectImp::ID_ConicImp;
+}
+
+int ConicAsymptoteType::resultId() const
+{
+  return ObjectImp::ID_LineImp;
+}
+
+int ConicRadicalType::resultId() const
+{
+  return ObjectImp::ID_LineImp;
+}
+

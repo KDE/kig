@@ -151,3 +151,13 @@ const Coordinate CircleBTPType::calcCenter(
 
   return Coordinate(centerx, centery);
 }
+
+int CircleBCPType::resultId() const
+{
+  return ObjectImp::ID_CircleImp;
+}
+
+int CircleBTPType::resultId() const
+{
+  return ObjectImp::ID_CircleImp;
+}

@@ -24,6 +24,7 @@
 
 class KigPainter;
 class KigDocument;
+class KigGUIAction;
 class KigWidget;
 class ObjectType;
 class Objects;
@@ -81,6 +82,8 @@ public:
                              const KigDocument& d,
                              const KigWidget& v
     ) const = 0;
+
+  virtual void plug( KigDocument* doc, KigGUIAction* kact ) = 0;
 };
 
 /**
@@ -154,6 +157,8 @@ public:
   Objects build( const Objects& os,
                  KigDocument& d,
                  KigWidget& w ) const;
+
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 /**
@@ -191,6 +196,8 @@ public:
   Objects build( const Objects& os,
                  KigDocument& d,
                  KigWidget& w ) const;
+
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 /**
@@ -229,6 +236,8 @@ public:
 
   void handlePrelim( KigPainter& p, const Objects& sel,
                      const KigDocument& d, const KigWidget& v ) const;
+
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 class MacroConstructor
@@ -272,6 +281,8 @@ public:
   void handlePrelim( KigPainter& p, const Objects& sel,
                      const KigDocument& d, const KigWidget& v
     ) const;
+
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 #endif

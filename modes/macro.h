@@ -37,7 +37,8 @@ public:
   void dragRect( const QPoint& p, KigWidget& w );
   void leftClickedObject( Object* o, const QPoint& p,
                           KigWidget& w, bool ctrlOrShiftDown );
-//  void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
+  void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
+  void midClicked( const QPoint& p, KigWidget& w );
   void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
 
   // called by MacroWizard class

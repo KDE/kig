@@ -302,3 +302,43 @@ ObjectImp* CastShadowType::calc( const Args& targs ) const
   return args[2]->transform(
     Transformation::castShadow( lightsrc, d ) );
 }
+
+int TranslatedType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+int PointReflectionType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+int LineReflectionType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+int RotationType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+int ScalingOverCenterType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+int ScalingOverLineType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+int ProjectiveRotationType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+int CastShadowType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}

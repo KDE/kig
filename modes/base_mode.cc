@@ -123,18 +123,6 @@ void BaseMode::leftClickedObject( Object*, const QPoint&,
 {
 }
 
-void BaseMode::midClicked( const QPoint&, KigWidget& )
-{
-}
-
-void BaseMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
-{
-}
-
-void BaseMode::mouseMoved( const Objects&, const QPoint&, KigWidget& )
-{
-}
-
 void BaseMode::dragObject( const Objects&, const QPoint&,
                            KigWidget&, bool )
 {

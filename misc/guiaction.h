@@ -35,8 +35,12 @@ class KigGUIAction
 public:
   KigGUIAction( GUIAction* act,
                 KigDocument& doc,
-                KActionCollection* parent );
+                QObject* parent );
   void slotActivated();
+
+  GUIAction* guiAction();
+
+  void plug( KigDocument* doc );
 };
 
 class GUIAction
@@ -50,6 +54,8 @@ public:
   virtual const char* actionName() const = 0;
   virtual int shortcut() const;
   virtual void act( KigDocument& ) = 0;
+
+  virtual void plug( KigDocument* doc, KigGUIAction* kact ) = 0;
 };
 
 class ObjectConstructor;
@@ -67,6 +73,7 @@ public:
   QString descriptiveName() const;
   const char* actionName() const;
   void act( KigDocument& );
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 class ConstructPointAction
@@ -83,6 +90,7 @@ public:
   const char* actionName() const;
   int shortcut() const;
   void act( KigDocument& );
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 class CircleByCenterAndRadiusAction
@@ -94,6 +102,7 @@ public:
   QString descriptiveName() const;
   const char* actionName() const;
   void act( KigDocument& );
+  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 #endif

@@ -29,6 +29,7 @@ class TranslatedType
 public:
   static const TranslatedType* instance();
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 class PointReflectionType
@@ -39,6 +40,7 @@ class PointReflectionType
 public:
   static const PointReflectionType* instance();
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 class LineReflectionType
@@ -49,6 +51,7 @@ class LineReflectionType
 public:
   static const LineReflectionType* instance();
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 class RotationType
@@ -59,6 +62,7 @@ class RotationType
 public:
   static const RotationType* instance();
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 class ScalingOverCenterType
@@ -69,6 +73,7 @@ class ScalingOverCenterType
 public:
   static const ScalingOverCenterType* instance();
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 class ScalingOverLineType
@@ -79,6 +84,7 @@ class ScalingOverLineType
 public:
   static const ScalingOverLineType* instance();
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 class ProjectiveRotationType
@@ -89,6 +95,7 @@ class ProjectiveRotationType
 public:
   static const ProjectiveRotationType* instance();
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 class CastShadowType
@@ -99,6 +106,7 @@ class CastShadowType
 public:
   static const CastShadowType* instance();
   ObjectImp* calc( const Args& args ) const;
+  int resultId() const;
 };
 
 #endif

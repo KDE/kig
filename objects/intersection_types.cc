@@ -155,3 +155,18 @@ ObjectImp* LineCubicIntersectionType::calc( const Args& parents ) const
   if ( valid ) return new PointImp( c );
   else return new InvalidImp;
 }
+
+int ConicLineIntersectionType::resultId() const
+{
+  return ObjectImp::ID_PointImp;
+}
+
+int LineLineIntersectionType::resultId() const
+{
+  return ObjectImp::ID_PointImp;
+}
+
+int LineCubicIntersectionType::resultId() const
+{
+  return ObjectImp::ID_PointImp;
+}

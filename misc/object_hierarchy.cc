@@ -211,9 +211,9 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
       transform( oparents.begin(), oparents.end(), back_inserter( oargs ),
                  mem_fun( &Object::imp ) );
 
-      margrequirements[i] = kMax( margrequirements[i],
-                                  ro->type()->impRequirement(
-                                    parentimp, oargs ) );
+      margrequirements[parents[i]] = kMax( margrequirements[parents[i]],
+                                           ro->type()->impRequirement(
+                                             parentimp, oargs ) );
 
     };
   };
@@ -399,8 +399,18 @@ Objects ObjectHierarchy::buildObjects( const Objects& os ) const
     mnodes[i]->apply( stack, mnumberofargs + i );
 
   for ( uint i = mnumberofargs; i < stack.size() - mnumberofresults; ++i )
-    if ( stack[i]->inherits( Object::ID_RealObject ) )
-      static_cast<RealObject*>( stack[i] )->setShown( false );
+    stack[i]->setShown( false );
 
-  return stack;
+  Objects ret( stack.begin() + mnumberofargs, stack.end() );
+
+  return ret;
+}
+
+int ObjectHierarchy::idOfLastResult() const
+{
+  const Node* n = mnodes.back();
+  if ( n->id() == Node::ID_PushStack )
+    return static_cast<const PushStackNode*>( n )->imp()->id();
+  else
+    return static_cast<const ApplyTypeNode*>( n )->type()->resultId();
 }

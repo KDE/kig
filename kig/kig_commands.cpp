@@ -49,8 +49,6 @@ void AddObjectsCommand::execute()
   {
     (*i)->calc();
     document->_addObject(*i);
-    if ( (*i)->inherits( Object::ID_RealObject ) )
-      static_cast<RealObject*>(*i)->setShown( true );
   }
   undone = false;
   document->mode()->objectsAdded();
@@ -61,8 +59,6 @@ void AddObjectsCommand::unexecute()
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
     document->_delObject(*i);
-    if ( (*i)->inherits( Object::ID_RealObject ) )
-      static_cast<RealObject*>(*i)->setShown( false );
   };
   undone=true;
   document->mode()->objectsRemoved();
@@ -105,8 +101,6 @@ void RemoveObjectsCommand::execute()
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
     document->_delObject(*i);
-    if ( (*i)->inherits( Object::ID_RealObject ) )
-      static_cast<RealObject*>(*i)->setShown( false );
   };
   undone=false;
   document->mode()->objectsRemoved();
@@ -118,8 +112,6 @@ void RemoveObjectsCommand::unexecute()
   {
     (*i)->calc();
     document->_addObject(*i);
-    if ( (*i)->inherits( Object::ID_RealObject ) )
-      static_cast<RealObject*>(*i)->setShown( true );
   };
   undone = true;
   document->mode()->objectsAdded();

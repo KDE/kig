@@ -41,6 +41,8 @@ class CoordinateSystem;
 class MacroWizardImpl;
 class KigView;
 class Object;
+class KigGUIAction;
+class GUIAction;
 class ScreenInfo;
 
 /**
@@ -71,8 +73,6 @@ public:
    * Destructor
    */
   virtual ~KigDocument();
-
-  static myvector<KigDocument*>& documents();
 
   KigView* mainWidget();
 
@@ -197,7 +197,10 @@ public:
   KAction* aConfigureTypes;
   KAction* aFullScreen;
   KAction* aFixedPoint;
-  myvector<KAction*> aActions;
+  myvector<KigGUIAction*> aActions;
+
+  void actionAdded( GUIAction* a );
+  void actionRemoved( GUIAction* a );
 
   KCommandHistory* history();
 
@@ -224,7 +227,7 @@ protected:
    * not so different from an object itself ( uses KigPainter to draw
    * itself too...).
    */
-  CoordinateSystem* s;
+  CoordinateSystem* mcoordsystem;
 };
 
 #endif // KIGPART_H

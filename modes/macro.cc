@@ -24,7 +24,10 @@
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
 #include "../misc/object_constructor.h"
+#include "../misc/object_constructor_list.h"
 #include "../misc/i18n.h"
+#include "../misc/guiaction_list.h"
+#include "../misc/guiaction.h"
 #include "../objects/object_imp.h"
 
 #include <klineedit.h>
@@ -110,8 +113,10 @@ void DefineMacroMode::finishPressed()
     new MacroConstructor( mgiven, mfinal,
                           mwizard->KLineEdit2->text(),
                           mwizard->KLineEdit1->text() );
-  // FIXME..
-//  Object::addUserType( type );
+
+  ObjectConstructorList::instance()->add( ctor );
+  GUIActionList::instance()->add( new ConstructibleAction( ctor, 0 ) );
+
   abandonMacro();
 }
 
@@ -148,6 +153,8 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
   pter.drawObjects( cos );
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
+
+  updateNexts();
 }
 
 void DefineMacroMode::leftClickedObject( Object* o, const QPoint&,
@@ -170,9 +177,11 @@ void DefineMacroMode::leftClickedObject( Object* o, const QPoint&,
   p.drawObject( o );
   w.updateCurPix( p.overlay() );
   w.updateWidget();
+
+  updateNexts();
 }
 
-void DefineMacroMode::mouseMoved( const Objects& os, const QPoint&, KigWidget& w )
+void DefineMacroMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget& w )
 {
   w.updateCurPix();
 
@@ -195,11 +204,19 @@ void DefineMacroMode::mouseMoved( const Objects& os, const QPoint&, KigWidget& w
     KigPainter p( w.screenInfo(), &w.curPix );
 
     // set the text next to the arrow cursor
-    QPoint point = plc;
+    QPoint point = pt;
     point.setX(point.x()+15);
 
     p.drawTextStd( point, selectstat );
     w.updateWidget( p.overlay() );
   }
+}
+
+void DefineMacroMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
+{
+}
+
+void DefineMacroMode::midClicked( const QPoint&, KigWidget& )
+{
 }
 

@@ -22,6 +22,7 @@
 #include "objects.h"
 #include "kigpainter.h"
 #include "calcpaths.h"
+#include "guiaction.h"
 
 #include "../objects/object.h"
 #include "../objects/object_factory.h"
@@ -32,6 +33,8 @@
 #include "../objects/bogus_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/locus_imp.h"
+
+#include "../kig/kig_part.h"
 
 #include <qpen.h>
 
@@ -170,4 +173,12 @@ QString LocusConstructor::useText( const Object& o, const Objects& ) const
        static_cast<const RealObject&>( o ).type()->inherits( ObjectType::ID_ConstrainedPointType )
     ) return i18n( "Moving point" );
   else return i18n( "Dependent point" );
+}
+
+void ConicRadicalConstructor::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+void LocusConstructor::plug( KigDocument*, KigGUIAction* )
+{
 }

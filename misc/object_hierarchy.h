@@ -58,6 +58,9 @@ public:
   ArgParser argParser() const;
 
   uint numberOfArgs() const { return mnumberofargs; };
+  uint numberOfResults() const { return mnumberofresults; };
+
+  int idOfLastResult() const;
 };
 
 #endif

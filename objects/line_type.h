@@ -32,6 +32,7 @@ public:
   static const SegmentABType* instance();
 
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  int resultId() const;
 };
 
 class LineABType
@@ -42,6 +43,7 @@ class LineABType
 public:
   static const LineABType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  int resultId() const;
 };
 
 class RayABType
@@ -52,6 +54,7 @@ class RayABType
 public:
   static const RayABType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  int resultId() const;
 };
 
 class LinePerpendLPType
@@ -62,6 +65,7 @@ class LinePerpendLPType
 public:
   static LinePerpendLPType* instance();
   ObjectImp* calc( const LineData& a, const Coordinate& b ) const;
+  int resultId() const;
 };
 
 class LineParallelLPType
@@ -72,6 +76,7 @@ class LineParallelLPType
 public:
   static LineParallelLPType* instance();
   ObjectImp* calc( const LineData& a, const Coordinate& b ) const;
+  int resultId() const;
 };
 
 #endif

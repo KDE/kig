@@ -163,3 +163,28 @@ LinePerpendLPType::LinePerpendLPType()
 LinePerpendLPType::~LinePerpendLPType()
 {
 }
+
+int SegmentABType::resultId() const
+{
+  return ObjectImp::ID_SegmentImp;
+}
+
+int LineABType::resultId() const
+{
+  return ObjectImp::ID_LineImp;
+}
+
+int RayABType::resultId() const
+{
+  return ObjectImp::ID_RayImp;
+}
+
+int LinePerpendLPType::resultId() const
+{
+  return ObjectImp::ID_LineImp;
+}
+
+int LineParallelLPType::resultId() const
+{
+  return ObjectImp::ID_LineImp;
+}

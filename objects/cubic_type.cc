@@ -140,3 +140,18 @@ ObjectImp* CubicCuspB4PType::calc( const Args& parents ) const
   };
   return new CubicImp( calcCubicCuspThroughPoints( points ) );
 }
+
+int CubicB9PType::resultId() const
+{
+  return ObjectImp::ID_CubicImp;
+}
+
+int CubicNodeB6PType::resultId() const
+{
+  return ObjectImp::ID_CubicImp;
+}
+
+int CubicCuspB4PType::resultId() const
+{
+  return ObjectImp::ID_CubicImp;
+}

@@ -67,6 +67,8 @@ public:
 
   virtual bool shown() const = 0;
 
+  virtual void setShown( bool s );
+
   virtual void setSelected( bool s );
 
   // these are simply forwarded to the ObjectImp...
@@ -166,7 +168,7 @@ public:
   void setSelected( bool s );
 
   bool shown() const;
-  void setShown( bool shown ) { mshown = shown; };
+  void setShown( bool shown );
 
   int width() const { return mwidth; };
   void setWidth( int width ) { mwidth = width; };

@@ -22,6 +22,7 @@
 #include "objects.h"
 #include "argsparser.h"
 #include "kigpainter.h"
+#include "guiaction.h"
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
@@ -360,10 +361,46 @@ void MacroConstructor::handlePrelim( KigPainter& p, const Objects& sel,
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &Object::imp ) );
   std::vector<ObjectImp*> ret = mhier.calc( args );
-  for ( uint i = 0; i < args.size(); ++i )
+  for ( uint i = 0; i < ret.size(); ++i )
   {
+    p.setBrushStyle( Qt::NoBrush );
+    p.setBrushColor( Qt::red );
+    p.setPen( QPen ( Qt::red,  1) );
+    p.setWidth( -1 ); // -1 means the default width for the object being
+                      // drawn..
     ret[i]->draw( p );
     delete ret[i];
   };
+}
+
+void SimpleObjectTypeConstructor::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+void MultiObjectTypeConstructor::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+void MergeObjectConstructor::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+void MacroConstructor::plug( KigDocument* doc, KigGUIAction* kact )
+{
+  if ( mhier.numberOfResults() != 1 )
+    doc->aMNewOther.append( kact );
+  else
+  {
+    switch( mhier.idOfLastResult() )
+    {
+    case ObjectImp::ID_SegmentImp: doc->aMNewSegment.append( kact ); break;
+    case ObjectImp::ID_PointImp: doc->aMNewPoint.append( kact ); break;
+    case ObjectImp::ID_CircleImp: doc->aMNewCircle.append( kact ); break;
+    case ObjectImp::ID_LineImp: doc->aMNewLine.append( kact ); break;
+    case ObjectImp::ID_ConicImp: doc->aMNewConic.append( kact ); break;
+    default: doc->aMNewOther.append( kact ); break;
+    };
+  };
+  doc->aMNewAll.append( kact );
 }
 

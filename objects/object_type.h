@@ -62,6 +62,12 @@ public:
   // convenience function, equivalent to argsParser().impRequirement(
   // o, parents );
   int impRequirement( const ObjectImp* o, const Args& parents ) const;
+
+  // returns the ObjectImp id of the ObjectImp's produced by this
+  // ObjectType..  if the ObjectType can return different sorts of
+  // ObjectImp's, it should return the biggest common id, or
+  // ID_AnyImp..
+  virtual int resultId() const = 0;
 };
 
 /**

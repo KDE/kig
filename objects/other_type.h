@@ -30,6 +30,7 @@ class AngleType
 public:
   static const AngleType* instance();
   ObjectImp* calc( const Args& parents ) const;
+  int resultId() const;
 };
 
 class VectorType
@@ -40,6 +41,7 @@ class VectorType
 public:
   static const VectorType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  int resultId() const;
 };
 
 class LocusType
@@ -55,6 +57,7 @@ public:
   const ObjectHierarchy& hierarchy() const;
 
   bool inherits( int type ) const;
+  int resultId() const;
 };
 
 #endif

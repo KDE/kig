@@ -111,7 +111,7 @@ void ConstructibleAction::act( KigDocument& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigDocument& doc,
-                            KActionCollection* parent )
+                            QObject* parent )
   : KAction( act->descriptiveName(),
              KGlobal::instance()->iconLoader()->loadIcon(
                act->iconFileName(), KIcon::User ),
@@ -180,5 +180,28 @@ void ConstructPointAction::act( KigDocument& d )
 
 ConstructPointAction::ConstructPointAction( const char* actionname )
   : mactionname( actionname )
+{
+}
+
+GUIAction* KigGUIAction::guiAction()
+{
+  return mact;
+}
+
+void KigGUIAction::plug( KigDocument* doc )
+{
+  mact->plug( doc, this );
+}
+
+void ConstructibleAction::plug( KigDocument* doc, KigGUIAction* kact )
+{
+  mctor->plug( doc, kact );
+}
+
+void ConstructPointAction::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+void CircleByCenterAndRadiusAction::plug( KigDocument*, KigGUIAction* )
 {
 }

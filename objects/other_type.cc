@@ -140,3 +140,18 @@ const ObjectHierarchy& LocusType::hierarchy() const
   return mhier;
 }
 
+int AngleType::resultId() const
+{
+  return ObjectImp::ID_AngleImp;
+}
+
+int VectorType::resultId() const
+{
+  return ObjectImp::ID_VectorImp;
+}
+
+int LocusType::resultId() const
+{
+  return ObjectImp::ID_LocusImp;
+}
+
