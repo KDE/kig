@@ -744,6 +744,12 @@ const Transformation Transformation::inverse( bool& valid ) const
 
 Transformation::Transformation()
 {
+  // this is the constructor used by the static Transformation
+  // creation functions, so mIsHomothety is in general false
+  mIsHomothety = false;
+  for ( int i = 0; i < 3; ++i )
+    for ( int j = 0; i < 3; ++j )
+      mdata[i][j] = ( i == j ) ? 1 : 0;
 }
 
 Transformation::~Transformation()
@@ -785,6 +791,7 @@ const Transformation Transformation::similitude(
 {
   //kdDebug() << k_funcinfo << "theta: " << theta << " factor: " << factor << endl;
   Transformation ret;
+  ret.mIsHomothety = true;
   double costheta = cos( theta );
   double sintheta = sin( theta );
   ret.mdata[0][0] = 1;
