@@ -15,7 +15,7 @@
 #include <iostream>
 
 KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool inIsKiosk)
-  : QWidget(parent, name, WPaintClever | WResizeNoErase | WRepaintNoErase),
+  : QWidget(parent, name),
     stillPix(size()),
     curPix(size()),
     document(inDoc),
@@ -47,6 +47,8 @@ KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool in
   redrawStillPix();
 
   objectOverlayList.setAutoDelete(true);
+  curPix.resize(size());
+  stillPix.resize( size() );
 };
 
 KigView::~KigView()
@@ -329,7 +331,7 @@ void KigView::endKioskMode()
 
 void KigView::redrawStillPix()
 {
-  stillPix.resize( size() );
+  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   stillPix.fill(Qt::white); 
   QPainter p(&stillPix );
   // this grid comes from KGeo
@@ -391,9 +393,9 @@ void KigView::redrawStillPix()
 
 void KigView::paintOnWidget( bool needRedraw )
 {
-  curPix.resize( size() );
+  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   //maybe i should add an option to configure for this ?
-// #define SHOW_OVERLAY_RECTS
+#undef SHOW_OVERLAY_RECTS
 #ifdef SHOW_OVERLAY_RECTS
   QPainter debug (this);
   debug.setPen(Qt::yellow);
@@ -469,5 +471,7 @@ void KigView::redrawOneObject(const Object* o)
 
 void KigView::resizeEvent(QResizeEvent*)
 {
+  curPix.resize(size());
+  stillPix.resize( size() );
   redrawStillPix();
 }
