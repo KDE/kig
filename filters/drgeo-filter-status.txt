@@ -20,10 +20,10 @@ Lines             ok
 Circles           ok
 Numbers           value (with a label), segment_length, circle_perimeter, 
                   arc_length, distance_2pts, vector_norm, pt_abscissa, 
-                  pt_ordinate, vector_abscissa, vector_ordinate
+                  pt_ordinate, vector_abscissa, vector_ordinate, slope
 Angles            ok (no label with measure)
 Arcs              ok
-Transformations   translation, central reflection, line reflection, rotation
+Transformations   translation, central & line reflection, rotation
 Intersections     line-line, circle-circle, circle-line
 Scripts           as a label
 Equations         line, circle

@@ -25,6 +25,8 @@
 #include <qnamespace.h>
 #include <cassert>
 
+#include <kdebug.h>
+
 void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
 {
   if ( mshown )
@@ -137,4 +139,58 @@ ObjectDrawer::ObjectDrawer()
 bool ObjectDrawer::inRect( const ObjectImp& imp, const Rect& r, const KigWidget& w ) const
 {
   return mshown && imp.inRect( r, mwidth, w );
+}
+
+int ObjectDrawer::pointStyleFromString( QString& style )
+{
+  if ( style == "Round" )
+    return 0;
+  else if ( style == "RoundEmpty" )
+    return 1;
+  else if ( style == "Rectangular" )
+    return 2;
+  else if ( style == "RectangularEmpty" )
+    return 3;
+  else if ( style == "Cross" )
+    return 4;
+  kdDebug() << "unknown point style: " << style << endl;
+  return 0;
+}
+
+QString ObjectDrawer::pointStyleToString() const
+{
+  if ( mpointstyle == 0 )
+    return "Round";
+  else if ( mpointstyle == 1 )
+    return "RoundEmpty";
+  else if ( mpointstyle == 2 )
+    return "Rectangular";
+  else if ( mpointstyle == 3 )
+    return "RectangularEmpty";
+  else if ( mpointstyle == 4 )
+    return "Cross";
+  return QString::null;
+}
+
+Qt::PenStyle ObjectDrawer::styleFromString( QString& style )
+{
+  if ( style == "SolidLine" )
+    return Qt::SolidLine;
+  else if ( style == "DashLine" )
+    return Qt::DashLine;
+  else if ( style == "DotLine" )
+    return Qt::DotLine;
+  kdDebug() << "unknown style: " << style << endl;
+  return Qt::SolidLine;
+}
+
+QString ObjectDrawer::styleToString() const
+{
+  if ( mpointstyle == Qt::SolidLine )
+    return "SolidLine";
+  else if ( mpointstyle == Qt::DashLine )
+    return "DashLine";
+  else if ( mpointstyle == Qt::DotLine )
+    return "DotLine";
+  return "SolidLine";
 }

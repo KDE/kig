@@ -25,13 +25,13 @@
 #include "../misc/kigpainter.h"
 #include "../misc/object_constructor.h"
 #include "../misc/lists.h"
-#include "../misc/i18n.h"
 #include "../misc/guiaction.h"
 #include "../objects/object_imp.h"
 
 #include <klineedit.h>
 #include <kmessagebox.h>
 #include <kcursor.h>
+#include <klocale.h>
 
 #include <functional>
 #include <algorithm>

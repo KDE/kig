@@ -18,7 +18,6 @@
 
 #include "special_constructors.h"
 
-#include "i18n.h"
 #include "kigpainter.h"
 #include "calcpaths.h"
 #include "guiaction.h"
@@ -48,6 +47,8 @@
 #include "../modes/construct_mode.h"
 
 #include <qpen.h>
+
+#include <klocale.h>
 
 #include <algorithm>
 #include <functional>

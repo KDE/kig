@@ -1,3 +1,20 @@
+2004-04-15  Pino Toscano <toscano.pino@tiscali.it>
+
+	* More work in Dr. Geo filter: add a new object and simplifying a
+	bit his internal structure.
+
+	* Kig now ask the user what to do when he/she tries to save to
+	a file in another format than Kig's own.
+
+	* Improve Python scripting's API: add vectors, angles and arcs.
+
+	* Add i18n for TestConstructor's.
+
+	* Improved NewScriptAction class to support, without other
+	changes, other scripting languages.
+
+	* Some little here-and-there improvements
+
 2004-04-11  Dominique Devriese  <devriese@kde.org>
 
 	* Improve Kig embedded in Konqueror experience: make translations
@@ -11,8 +28,8 @@
 
 2004-04-10  Pino Toscano <toscano.pino@tiscali.it>
 
-	* Improved angle size editing, making possible choosing
-	between degrees, radians and gradians.
+	* Improved angle size editing, making possible choosing between
+	degrees, radians and gradians.
 
 	* More work in Dr. Geo filter.
 
@@ -34,8 +51,8 @@
 
 2004-04-05  Pino Toscano <toscano.pino@tiscali.it>
 
-	* A new look for type list in the type dialog: a listview
-	instead of a listbox that should make easier editing a type.
+	* A new look for type list in the type dialog: a listview instead
+	of a listbox that should make easier editing a type.
 
 2004-04-04  Pino Toscano <toscano.pino@tiscali.it>
 
@@ -44,8 +61,8 @@
 	* Some work on types dialog: icon of every type is now visible,
 	and made a sort of skeleton to modify type's data.
 
-	* Made buttons of some dialogs like other KDE dialogs ones
-	  (with icons and correct alignment).
+	* Made buttons of some dialogs like other KDE dialogs ones (with
+	icons and correct alignment).
 
 	* Kig now ask the user when exporting type(s) to an already
 	existant file.

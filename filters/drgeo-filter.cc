@@ -19,6 +19,8 @@
 
 #include "drgeo-filter.h"
 
+#include "drgeo-filter-chooser.h"
+
 #include "../objects/object_holder.h"
 #include "../objects/object_drawer.h"
 #include "../objects/object_calcer.h"
@@ -40,10 +42,10 @@
 #include "../misc/coordinate.h"
 #include "../misc/coordinate_system.h"
 #include "../kig/kig_part.h"
-#include "drgeo-filter-chooser.h"
 
 #include <qfile.h>
 #include <qnamespace.h>
+
 #include <klocale.h>
 
 KigFilterDrgeo::KigFilterDrgeo()
@@ -105,7 +107,7 @@ bool KigFilterDrgeo::load( const QString& file, KigDocument& to )
     delete c;
   }
 
-  kdDebug() << "Content of drgeo file:" << endl;
+  kdDebug() << "drgeo file " << file << endl;
   int curfig = -1;
 
   for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
@@ -332,11 +334,35 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       }
       kdDebug() << "+++++++++ oc:" << oc << endl;
     }
-    else if ( domelem.tagName() == "line" )
+    else if( ( domelem.tagName() == "line" ) ||
+             ( domelem.tagName() == "halfLine" ) ||
+             ( domelem.tagName() == "segment" ) ||
+             ( domelem.tagName() == "vector" ) ||
+             ( domelem.tagName() == "circle" ) ||
+             ( domelem.tagName() == "arcCircle" ) )
     {
-      kdDebug() << "+++++++++ Line - " << domelem.attribute( "type" ) << endl;
+      kdDebug() << "+++++++++ " << domelem.tagName() << " - " << domelem.attribute( "type" ) << endl;
+      const ObjectType* type = 0;
       if ( domelem.attribute( "type" ) == "2pts" )
-        oc = new ObjectTypeCalcer( LineABType::instance(), parents );
+      {
+        if( domelem.tagName() == "line" )
+          type = LineABType::instance();
+        else if( domelem.tagName() == "halfLine" )
+          type = RayABType::instance();
+        else if( domelem.tagName() == "segment" )
+          type = SegmentABType::instance();
+        else if( domelem.tagName() == "vector" )
+          type = VectorType::instance();
+        else if( domelem.tagName() == "circle" )
+          type = CircleBCPType::instance();
+        oc = new ObjectTypeCalcer( type, parents );
+      }
+      else if( domelem.attribute( "type" ) == "3pts" )
+      {
+        if( domelem.tagName() == "arcCircle" )
+          type = ArcBTPType::instance();
+        oc = new ObjectTypeCalcer( type, parents );
+      }
       else if ( domelem.attribute( "type" ) == "perpendicular" )
         oc = new ObjectTypeCalcer( LinePerpendLPType::instance(), parents );
       else if ( domelem.attribute( "type" ) == "parallel" )
@@ -358,95 +384,8 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       }
       kdDebug() << "+++++++++ oc:" << oc << endl;
     }
-    else if ( domelem.tagName() == "halfLine" )
-    {
-      kdDebug() << "+++++++++ halfLine - " << domelem.attribute( "type" ) << endl;
-      if ( domelem.attribute( "type" ) == "2pts" )
-        oc = new ObjectTypeCalcer( RayABType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Reflexion" )
-        oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Symmetry" )
-        oc = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Translation" )
-        oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Rotation" )
-        oc = new ObjectTypeCalcer( RotationType::instance(), parents );
-      else
-      {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
-                                  domelem.attribute( "type" ) ) );
-        return false;
-      }
-      kdDebug() << "+++++++++ oc:" << oc << endl;
-    }
-    else if ( domelem.tagName() == "segment" )
-    {
-      kdDebug() << "+++++++++ segment - " << domelem.attribute( "type" ) << endl;
-      if ( domelem.attribute( "type" ) == "2pts" )
-        oc = new ObjectTypeCalcer( SegmentABType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Reflexion" )
-        oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Symmetry" )
-        oc = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Translation" )
-        oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Rotation" )
-        oc = new ObjectTypeCalcer( RotationType::instance(), parents );
-      else
-      {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
-                                  domelem.attribute( "type" ) ) );
-        return false;
-      }
-      kdDebug() << "+++++++++ oc:" << oc << endl;
-    }
-    else if ( domelem.tagName() == "vector" )
-    {
-      kdDebug() << "+++++++++ vector - " << domelem.attribute( "type" ) << endl;
-      if ( domelem.attribute( "type" ) == "2pts" )
-        oc = new ObjectTypeCalcer( VectorType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Reflexion" )
-        oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Symmetry" )
-        oc = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Translation" )
-        oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Rotation" )
-        oc = new ObjectTypeCalcer( RotationType::instance(), parents );
-      else
-      {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
-                                  domelem.attribute( "type" ) ) );
-        return false;
-      }
-      kdDebug() << "+++++++++ oc:" << oc << endl;
-    }
-    else if ( domelem.tagName() == "circle" )
-    {
-      kdDebug() << "+++++++++ circle - " << domelem.attribute( "type" ) << endl;
-      if ( domelem.attribute( "type" ) == "2pts" )
-        oc = new ObjectTypeCalcer( CircleBCPType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Reflexion" )
-        oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Symmetry" )
-        oc = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Translation" )
-        oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Rotation" )
-        oc = new ObjectTypeCalcer( RotationType::instance(), parents );
-      else
-      {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
-                                  domelem.attribute( "type" ) ) );
-        return false;
-      }
-      kdDebug() << "+++++++++ oc:" << oc << endl;
-    }
-    else if ( domelem.tagName() == "numeric" )
+    else if( ( domelem.tagName() == "numeric" ) ||
+             ( domelem.tagName() == "equation" ) )
     {
       QString xs;
       QString ys;
@@ -468,14 +407,15 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
           value = ce.text();
         }
       }
-      kdDebug() << "+++++++++ numeric - " << domelem.attribute( "type" ) << endl;
+      kdDebug() << "+++++++++ " << domelem.tagName() << " - " << domelem.attribute( "type" ) << endl;
       bool ok;
       bool ok2;
       double x = xs.toDouble( &ok );
       double y = ys.toDouble( &ok2 );
       if ( ! ( ok && ok2 ) )
         KIG_FILTER_PARSE_ERROR;
-// ugly hack to show numerics...
+      // types of 'numeric'
+      // ugly hack to show value numerics...
       if ( domelem.attribute( "type" ) == "value" )
         oc = fact->labelCalcer( value, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), doc );
       else if ( domelem.attribute( "type" ) == "pt_abscissa" )
@@ -534,45 +474,14 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "length-y", doc );
       }
-      else
+      else if ( domelem.attribute( "type" ) == "slope" )
       {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
-                                  domelem.attribute( "type" ) ) );
-        return false;
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "slope", doc );
       }
-      kdDebug() << "+++++++++ oc:" << oc << endl;
-    }
-    else if ( domelem.tagName() == "equation" )
-    {
-      QString xs;
-      QString ys;
-      QString value;
-      for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
-      {
-        QDomElement ce = c.toElement();
-        if ( ce.isNull() ) continue;
-        else if ( ce.tagName() == "x" )
-        {
-          xs = ce.text();
-        }
-        else if ( ce.tagName() == "y" )
-        {
-          ys = ce.text();
-        }
-        else if ( ce.tagName() == "value" )
-        {
-          value = ce.text();
-        }
-      }
-      kdDebug() << "+++++++++ equation - " << domelem.attribute( "type" ) << endl;
-      bool ok;
-      bool ok2;
-      double x = xs.toDouble( &ok );
-      double y = ys.toDouble( &ok2 );
-      if ( ! ( ok && ok2 ) )
-        KIG_FILTER_PARSE_ERROR;
-      if ( domelem.attribute( "type" ) == "line" )
+      // types of 'equation'
+      else if ( domelem.attribute( "type" ) == "line" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         Coordinate m( x, y );
@@ -584,28 +493,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "cartesian-equation", doc );
       }
-      else
-      {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
-                                  domelem.attribute( "type" ) ) );
-        return false;
-      }
-      kdDebug() << "+++++++++ oc:" << oc << endl;
-    }
-    else if ( domelem.tagName() == "arcCircle" )
-    {
-      kdDebug() << "+++++++++ arcCircle - " << domelem.attribute( "type" ) << endl;
-      if ( domelem.attribute( "type" ) == "3pts" )
-        oc = new ObjectTypeCalcer( ArcBTPType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Reflexion" )
-        oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Symmetry" )
-        oc = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Translation" )
-        oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Rotation" )
-        oc = new ObjectTypeCalcer( RotationType::instance(), parents );
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
@@ -647,17 +534,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       kdDebug() << "+++++++++ angle - " << domelem.attribute( "type" ) << endl;
       if ( domelem.attribute( "type" ) == "3pts" )
         oc = new ObjectTypeCalcer( AngleType::instance(), parents );
-// pino: commented out, because Dr. Geo seems have no trasformation for angles
-/*
-      else if ( domelem.attribute( "type" ) == "Reflexion" )
-        oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Symmetry" )
-        oc = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Translation" )
-        oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Rotation" )
-        oc = new ObjectTypeCalcer( RotationType::instance(), parents );
-*/
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
@@ -699,6 +575,9 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       // since kig doesn't support Scheme scripts, it will write script's text
       // in a label, so the user can freely see the code and make whatever
       // he/she wants
+      // possible idea: construct a new script object with the parents of scheme
+      // one and the scheme code inserted commented... depends on a better
+      // managing of arguments in scripts?
       if ( domelem.attribute( "type" ) == "nitems" )
         oc = fact->labelCalcer( text, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), doc );
       else
@@ -762,21 +641,13 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 // Thick  -> the biggest one
     int w = -1;
     Qt::PenStyle s = Qt::SolidLine;
-    int pointstyle = 0;
+//    int pointstyle = 0;
     if ( domelem.tagName() == "point" )
     {
       if ( domelem.attribute( "thickness" ) == "Normal" )
         w = 7;
       else if ( domelem.attribute( "thickness" ) == "Thick" )
         w = 9;
-      if ( domelem.attribute( "style" ) == "RoundEmpty" )
-        pointstyle = 1;
-      else if ( domelem.attribute( "style" ) == "Rectangular" )
-        pointstyle = 2;
-      else if ( domelem.attribute( "style" ) == "RectangularEmpty" )
-        pointstyle = 3;
-      else if ( domelem.attribute( "style" ) == "Cross" )
-        pointstyle = 4;
     }
     else if ( ( domelem.tagName() == "line" ) ||
               ( domelem.tagName() == "halfLine" ) ||
@@ -791,13 +662,15 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       if ( domelem.attribute( "thickness" ) == "Thick" )
         w = 2;
     }
+    QString ps = domelem.attribute( "style" );
+    int pointstyle = ObjectDrawer::pointStyleFromString( ps );
 // show this object?
     bool show = ( domelem.attribute( "masked" ) != "True" );
 // costructing the ObjectDrawer*
     ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
     assert( d );
 
-    kdDebug() << ">>>>>>>>> Creating ObjectHolder*" << endl;
+//    kdDebug() << ">>>>>>>>> Creating ObjectHolder*" << endl;
     ObjectHolder* o = new ObjectHolder( oc, d );
     holders.push_back( o );
     kdDebug() << ">>>>>>>>> calc" << endl;

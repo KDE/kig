@@ -1,4 +1,4 @@
-// filter.cc
+// native-filter.cc
 // Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -562,7 +562,14 @@ bool KigFilterNative::load07( const QString& file, const QDomElement& docelem, K
         int width = tmp.toInt( &ok );
         if ( ! ok ) width = -1;
 
+//        tmp = e.attribute( "style" );
+//        Qt::PenStyle style = ObjectDrawer::styleFromString( tmp );
+
+//        tmp = e.attribute( "point-style" );
+//        int pointstyle = ObjectDrawer::pointStyleFromString( tmp );
+
         ObjectDrawer* drawer = new ObjectDrawer( color, width, shown );
+//        ObjectDrawer* drawer = new ObjectDrawer( color, width, shown, style, pointstyle );
         holders.push_back( new ObjectHolder( calcer, drawer ) );
       }
     }
@@ -656,7 +663,8 @@ bool KigFilterNative::save07( const KigDocument& kdoc, const QString& to )
     drawelem.setAttribute( "color", d->color().name() );
     drawelem.setAttribute( "shown", QString::fromLatin1( d->shown() ? "true" : "false" ) );
     drawelem.setAttribute( "width", QString::number( d->width() ) );
-//    drawelem.setAttribute( "point-style" )
+//    drawelem.setAttribute( "style", d->styleToString() );
+//    drawelem.setAttribute( "point-style", d->pointStyleToString() );
 
     windowelem.appendChild( drawelem );
   };

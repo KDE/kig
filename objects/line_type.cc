@@ -1,4 +1,4 @@
-// segment.cc
+// line_type.cc
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -28,14 +28,15 @@
 #include "../kig/kig_commands.h"
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
-#include "../misc/i18n.h"
 
 #include <qstringlist.h>
 
+#include <klocale.h>
+
 static const ArgsParser::spec argsspecSegmentAB[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a segment ending at this point" ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct a segment starting at this point" ), true }
+  { PointImp::stype(), I18N_NOOP( "Construct a segment starting at this point" ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct a segment ending at this point" ), true }
 };
 
 SegmentABType::SegmentABType()

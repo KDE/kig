@@ -364,15 +364,12 @@ bool KigDocument::saveFile()
   if ( mimeType->name() != "application/x-kig" )
   {
     // we don't support this mime type...
-    KMessageBox::sorry
-      (
-        widget(),
-        i18n( "Kig does not support saving to any other file format than "
-              "its own." ),
-//              "its own." ).arg( mimeType->name() ),
-        i18n( "Format not Supported" )
-        );
-    return false;
+    if( KMessageBox::warningYesNo( widget(),
+                     i18n( "Kig does not support saving to any other file format than "
+                           "its own. Save to Kig's format instead?" ),
+                     i18n( "Format not Supported" ) ) == KMessageBox::No )
+      return false;
+    internalSaveAs();
   };
 
   if ( KigFilters::instance()->save( *this, m_file ) )
@@ -626,7 +623,7 @@ bool KigDocument::internalSaveAs()
   {
     int ret = KMessageBox::warningYesNo( m_widget,
                                          i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
-                                         .arg( file_name ) );
+                                         .arg( file_name ), i18n( "Overwrite File?" ) );
     if ( ret != KMessageBox::Yes )
     {
       return false;

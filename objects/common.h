@@ -25,7 +25,7 @@
 #include <qvaluelist.h>
 #include <qstringlist.h>
 #include <cassert>
-#include "../misc/i18n.h"
+#include <klocale.h>
 
 class Coordinate;
 class KigDocument;

@@ -22,12 +22,13 @@
 #include "point_imp.h"
 
 #include "../misc/kigpainter.h"
-#include "../misc/i18n.h"
 #include "../misc/common.h"
 #include "../misc/coordinate_system.h"
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+
+#include <klocale.h>
 
 ObjectImp* ConicImp::transform( const Transformation& t ) const
 {
@@ -78,7 +79,7 @@ const QCStringList ConicImp::propertiesInternalNames() const
 const QCStringList ConicImp::properties() const
 {
   QCStringList l = Parent::properties();
-  l << I18N_NOOP( "Type" );
+  l << I18N_NOOP( "Conic Type" );
   l << I18N_NOOP( "First Focus" );
   l << I18N_NOOP( "Second Focus" );
   l << I18N_NOOP( "Cartesian Equation" );

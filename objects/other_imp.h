@@ -94,6 +94,7 @@ public:
   const Coordinate dir() const;
   const Coordinate a() const;
   const Coordinate b() const;
+  const double length() const;
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
@@ -142,6 +143,7 @@ public:
   double radius() const;
   double startAngle() const;
   double angle() const;
+  const double sectorSurface() const;
 
   bool equals( const ObjectImp& rhs ) const;
 

@@ -21,10 +21,11 @@
 #include "bogus_imp.h"
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
-#include "../misc/i18n.h"
 #include "../misc/coordinate_system.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+
+#include <klocale.h>
 
 PointImp::PointImp( const Coordinate& c )
   : mc( c )

@@ -21,7 +21,6 @@
 
 #include "coordinate_system.h"
 #include "coordinate.h"
-#include "i18n.h"
 #include "object_constructor.h"
 
 #include "../kig/kig_part.h"
@@ -31,6 +30,7 @@
 #include "../objects/bogus_imp.h"
 
 #include <kiconloader.h>
+#include <klocale.h>
 
 int GUIAction::shortcut() const
 {
@@ -309,8 +309,10 @@ void TestAction::act( KigDocument& doc )
 #include "../scripting/python_type.h"
 #include "../scripting/script_mode.h"
 
-NewScriptAction::NewScriptAction( const char* actionname )
-  : GUIAction(), mactionname( actionname )
+NewScriptAction::NewScriptAction( const char* descname, const char* description,
+                                  const char* icon, const char* actionname )
+  : GUIAction(), mdescname( descname ), mdescription( description ),
+    micon( icon ), mactionname( actionname )
 {
 }
 
@@ -320,17 +322,17 @@ NewScriptAction::~NewScriptAction()
 
 QString NewScriptAction::description() const
 {
-  return i18n( "Construct a new script object." );
+  return i18n( mdescription );
 }
 
 QCString NewScriptAction::iconFileName() const
 {
-  return "script";
+  return micon;
 }
 
 QString NewScriptAction::descriptiveName() const
 {
-  return i18n( "Script Object" );
+  return i18n( mdescname );
 }
 
 const char* NewScriptAction::actionName() const

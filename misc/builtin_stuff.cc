@@ -24,7 +24,6 @@
 #include "lists.h"
 #include "special_constructors.h"
 #include "guiaction.h"
-#include "i18n.h"
 
 #include "../objects/object_imp.h"
 #include "../objects/line_type.h"
@@ -38,6 +37,10 @@
 #include "../objects/point_type.h"
 #include "../objects/other_imp.h"
 #include "../objects/line_imp.h"
+
+#include <qregexp.h>
+
+#include <klocale.h>
 
 void setupBuiltinStuff()
 {
@@ -384,27 +387,35 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_locus" ) );
 
     // tests
-    c = new TestConstructor( AreParallelType::instance(), "Parallel Test",
-                             "Test whether two given lines are parallel",
-			     "testparallel" );
+    c = new TestConstructor(
+      AreParallelType::instance(),
+      I18N_NOOP( "Parallel Test" ),
+      I18N_NOOP( "Test whether two given lines are parallel" ),
+      "testparallel" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_areparallel" ) );
 
-    c = new TestConstructor( AreOrthogonalType::instance(), "Orthogonal Test",
-                             "Test whether two given lines are orthogonal",
-		             "testorthogonal" );
+    c = new TestConstructor(
+      AreOrthogonalType::instance(),
+      I18N_NOOP( "Orthogonal Test" ),
+      I18N_NOOP( "Test whether two given lines are orthogonal" ),
+      "testorthogonal" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_areorthogonal" ) );
 
-    c = new TestConstructor( AreCollinearType::instance(), "Collinear Test",
-                             "Test whether three given points are collinear",
-			     "testcollinear" );
+    c = new TestConstructor(
+      AreCollinearType::instance(),
+      I18N_NOOP( "Collinear Test" ),
+      I18N_NOOP( "Test whether three given points are collinear" ),
+      "testcollinear" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_arecollinear" ) );
 
-    c = new TestConstructor( ContainsTestType::instance(), "Contains Test",
-                             "Test whether a given curve contains a given point",
-                             "testcontains" );
+    c = new TestConstructor(
+      ContainsTestType::instance(),
+      I18N_NOOP( "Contains Test" ),
+      I18N_NOOP( "Test whether a given curve contains a given point" ),
+      "testcontains" );
 
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_containstest" ) );
@@ -427,7 +438,12 @@ void setupBuiltinStuff()
     actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );
 
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
-    actions->add( new NewScriptAction( "objects_new_script_object" ) );
+
+    actions->add( new NewScriptAction(
+                        I18N_NOOP( "Python Script" ),
+                        I18N_NOOP( "Construct a new Python script." ),
+                        "script",
+                        "objects_new_script_object" ) );
 #endif
 
 #if 0

@@ -25,7 +25,6 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../kig/kig_commands.h"
-#include "../misc/i18n.h"
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
 #include "../objects/object_factory.h"
@@ -38,6 +37,7 @@
 #include <kcursor.h>
 #include <kmessagebox.h>
 #include <kaction.h>
+#include <klocale.h>
 #include <qtextedit.h>
 #include <kdebug.h>
 #include <kiconloader.h>

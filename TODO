@@ -14,7 +14,7 @@
 - make it possible to zoom to a very specific part of the screen,
    i.e. from (x0,y0) to (x1,y1)
 
-- export vectors and cubics to the python scripting stuff...
+- Python scripting: export cubics, improve existing API.
 
 - add support for work with other measure units (cm, inches, etc...)
   than just pixels...

@@ -32,6 +32,7 @@
 #include "../objects/point_imp.h"
 #include "../objects/line_imp.h"
 #include "../objects/circle_imp.h"
+#include "../objects/other_imp.h"
 
 using namespace boost::python;
 
@@ -219,6 +220,35 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "squareRadius", &CircleImp::squareRadius )
     .def( "surface", &CircleImp::surface )
     .def( "circumference", &CircleImp::circumference )
+    ;
+
+  class_<VectorImp, bases<ObjectImp> >( "Vector", init<Coordinate, Coordinate>() )
+    .def( "stype", &VectorImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "length", &VectorImp::length )
+    .def( "dir", &VectorImp::dir )
+    ;
+
+  class_<AngleImp, bases<ObjectImp> >( "Angle", init<Coordinate, double, double>() )
+    .def( "stype", &AngleImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "size", &AngleImp::size )
+    .def( "point", &AngleImp::point )
+    .def( "startAngle", &AngleImp::startAngle )
+    .def( "angle", &AngleImp::angle )
+    ;
+
+  class_<ArcImp, bases<ObjectImp> >( "Arc", init<Coordinate, double, double, double>() )
+    .def( "stype", &ArcImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "startAngle", &ArcImp::startAngle )
+    .def( "angle", &ArcImp::angle )
+    .def( "radius", &ArcImp::radius )
+    .def( "center", &ArcImp::center )
+    .def( "sectorSurface", &ArcImp::sectorSurface )
     ;
 
   class_<BogusImp, bases<ObjectImp>, boost::noncopyable >( "BogusObject", no_init )

@@ -238,7 +238,7 @@ ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   else if ( which == Parent::numberOfProperties() )
-    return new DoubleImp( ( ma - mb ).length() );
+    return new DoubleImp( length() );
   else if ( which == Parent::numberOfProperties() + 1 )
     return new PointImp( ( ma + mb ) / 2 );
   else if ( which == Parent::numberOfProperties() + 2 )
@@ -267,6 +267,11 @@ void AngleImp::visit( ObjectImpVisitor* vtor ) const
 void VectorImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
+}
+
+const double VectorImp::length() const
+{
+  return ( ma - mb ).length();
 }
 
 ArcImp::ArcImp( const Coordinate& center, const double radius,
@@ -402,11 +407,16 @@ ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
   else if ( which == Parent::numberOfProperties() + 3 )
     return new DoubleImp( ma );
   else if ( which == Parent::numberOfProperties() + 4 )
-    return new DoubleImp( mradius * mradius * ma / 2 );
+    return new DoubleImp( sectorSurface() );
   else if ( which == Parent::numberOfProperties() + 5 )
     return new DoubleImp( mradius * ma );
   else assert( false );
   return new InvalidImp;
+}
+
+const double ArcImp::sectorSurface() const
+{
+  return mradius * mradius * ma / 2;
 }
 
 const ObjectImpType* ArcImp::impRequirementForProperty( uint which ) const

@@ -52,7 +52,7 @@ void ObjectImp::fillInNextEscape( QString&, const KigDocument& ) const
 const QCStringList ObjectImp::properties() const
 {
   QCStringList ret;
-  ret << I18N_NOOP( "Base Object Type" );
+  ret << I18N_NOOP( "Object Type" );
   return ret;
 }
 

@@ -25,7 +25,6 @@
 #include "../objects/object_imp.h"
 #include "../objects/object_drawer.h"
 #include "../misc/kigpainter.h"
-#include "../misc/i18n.h"
 #include "popup.h"
 #include "moving.h"
 #include "macro.h"
@@ -35,6 +34,7 @@
 #include <kcursor.h>
 #include <kaction.h>
 #include <kcommand.h>
+#include <klocale.h>
 
 #include <algorithm>
 #include <functional>

@@ -20,10 +20,11 @@
 
 #include "bogus_imp.h"
 
-#include "../misc/i18n.h"
 #include "../misc/coordinate.h"
 
 #include <qstringlist.h>
+
+#include <klocale.h>
 
 const char* ObjectType::fullName() const
 {

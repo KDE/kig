@@ -18,7 +18,6 @@
 
 #include "object_constructor.h"
 
-#include "i18n.h"
 #include "argsparser.h"
 #include "kigpainter.h"
 #include "guiaction.h"
@@ -39,6 +38,8 @@
 #include "../modes/construct_mode.h"
 
 #include <qpen.h>
+
+#include <klocale.h>
 
 #include <algorithm>
 #include <functional>

@@ -149,8 +149,11 @@ class NewScriptAction
   : public GUIAction
 {
   const char* mactionname;
+  const char* mdescname;
+  const char* mdescription;
+  const char* micon;
 public:
-  NewScriptAction( const char* actionname );
+  NewScriptAction( const char* actionname, const char* descname, const char* description, const char* icon );
   ~NewScriptAction();
   QString description() const;
   QCString iconFileName() const;

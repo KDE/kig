@@ -22,10 +22,11 @@
 #include "kigtransform.h"
 
 #include "kignumerics.h"
-#include "i18n.h"
 #include "common.h"
 
 #include <cmath>
+
+#include <klocale.h>
 
 // Transformation getProjectiveTransformation ( int argsnum,
 //     Object *transforms[], bool& valid )

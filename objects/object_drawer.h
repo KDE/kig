@@ -81,7 +81,10 @@ public:
   Qt::PenStyle style() const;
   // return pointStyle for points
   int pointStyle() const;
-
+  // return pointStyle trasnformed in a string
+  QString pointStyleToString() const;
+  // return style trasnformed in a string
+  QString styleToString() const;
   // returns a new ObjectDrawer that is identical to this one.. except
   // that the shown state is set to s..
   ObjectDrawer* getCopyShown( bool s ) const;
@@ -97,6 +100,9 @@ public:
   // returns a new ObjectDrawer that is identical to this one.. except
   // that the pointStyle state is set to p..
   ObjectDrawer* getCopyPointStyle( int p ) const;
+  static int pointStyleFromString( QString& style );
+  static Qt::PenStyle styleFromString( QString& style );
+
 };
 
 #endif
