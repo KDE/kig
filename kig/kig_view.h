@@ -206,11 +206,13 @@ public:
 
   void setupActions();
 
-  void updateScrollBars();
-
   const ScreenInfo& screenInfo() const;
 
   KigWidget* realWidget();
+
+public slots:
+  void updateScrollBars();
+
 private slots:
   void slotRightScrollValueChanged( int );
   void slotBottomScrollValueChanged( int );

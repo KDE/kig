@@ -302,9 +302,13 @@ KigView::KigView( KigDocument* doc,
   mrightscroll->setTracking( true );
   connect( mrightscroll, SIGNAL( valueChanged( int ) ),
            this, SLOT( slotRightScrollValueChanged( int ) ) );
+  connect( mrightscroll, SIGNAL( sliderReleased() ),
+           this, SLOT( updateScrollBars() ) );
   mbottomscroll = new QScrollBar( Horizontal, this, "Bottom Scrollbar" );
   connect( mbottomscroll, SIGNAL( valueChanged( int ) ),
            this, SLOT( slotBottomScrollValueChanged( int ) ) );
+  connect( mbottomscroll, SIGNAL( sliderReleased() ),
+           this, SLOT( updateScrollBars() ) );
   mrealwidget = new KigWidget( doc, this, this, "Kig Widget" );
   mlayout->addWidget( mbottomscroll, 1, 0 );
   mlayout->addWidget( mrealwidget, 0, 0 );
@@ -361,7 +365,7 @@ void KigView::updateScrollBars()
   // shouldn't have done this.. :( ), we invert the value that the
   // scrollbar shows.  This is inverted again in
   // slotRightScrollValueChanged()...
-  mrightscroll->setValue( rightmax - ( sr.bottom() / pw ) );
+  mrightscroll->setValue( rightmin + ( rightmax - ( sr.bottom() / pw ) ) );
 
   mbottomscroll->setMinValue( er.left() / pw );
   mbottomscroll->setMaxValue( ( er.right() - sr.width() ) / pw );
@@ -383,7 +387,7 @@ void KigView::slotRightScrollValueChanged( int v )
   {
     // we invert the inversion that was done in updateScrollBars() (
     // check the documentation there..; )
-    v = mrightscroll->maxValue() - v;
+    v = mrightscroll->minValue() + ( mrightscroll->maxValue() - v );
     double pw = mrealwidget->screenInfo().pixelWidth();
     double nb = double( v ) * pw;
     mrealwidget->scrollSetBottom( nb );
