@@ -27,6 +27,7 @@
 #include "../kig/kig_commands.h"
 #include "../misc/i18n.h"
 #include "../misc/common.h"
+#include "../objects/object.h"
 #include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/point_imp.h"
@@ -43,33 +44,67 @@
 #include <qpopupmenu.h>
 #include <qcheckbox.h>
 
+class TextLabelModeBase::Private
+{
+public:
+  // point last clicked..
+  QPoint plc;
+  // the currently selected coordinate
+  Coordinate mcoord;
+
+  // the text is only kept in the text input widget, not here
+  // QString mtext;
+
+  // the property objects we'll be using as args, we keep a reference
+  // to them in the args object, and keep a pointer to them ( or 0 )
+  // in the correct order in args ( separately, because we can't use
+  // the order of the parents of a ReferenceObject, and certainly
+  // can't give 0 as a parent..
+  ReferenceObject argsref;
+  argvect args;
+
+  // if we're ReallySelectingArgs, then this var points to the arg
+  // we're currently selecting...
+  int mwaaws;
+
+  // last percent count...
+  uint lpc;
+
+  TextLabelWizard* wiz;
+
+  // What Are We Doing
+  wawdtype mwawd;
+};
+
 TextLabelModeBase::~TextLabelModeBase()
 {
-  delete mwiz;
-  delete_all( margs.begin(), margs.end() );
+  delete d->wiz;
+  delete d;
 }
 
-TextLabelModeBase::TextLabelModeBase( KigDocument& d )
-  : KigMode( d ), mlpc( 0 ), mwiz( 0 ), mwawd( SelectingLocation )
+TextLabelModeBase::TextLabelModeBase( KigDocument& doc )
+  : KigMode( doc ), d( new Private )
 {
+  d->wiz = 0;
+  d->mwawd = SelectingLocation;
   const std::vector<KigWidget*>& widgets = mdoc.widgets();
   for ( uint i = 0; i < widgets.size(); ++i )
   {
     KigWidget* w = widgets[i];
     w->setCursor( KCursor::crossCursor() );
   };
-  mwiz = new TextLabelWizard( d.widgets()[0], this );
+  d->wiz = new TextLabelWizard( doc.widgets()[0], this );
 }
 
 void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
 {
-  mplc = e->pos();
-  switch( mwawd )
+  d->plc = e->pos();
+  switch( d->mwawd )
   {
   case RequestingText:
   case SelectingArgs:
-    mwiz->raise();
-    mwiz->setActiveWindow();
+    d->wiz->raise();
+    d->wiz->setActiveWindow();
     break;
   default:
     break;
@@ -78,23 +113,23 @@ void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
 
 void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
 {
-  switch( mwawd )
+  switch( d->mwawd )
   {
   case SelectingLocation:
   {
-    if ( ( mplc - e->pos() ).manhattanLength() > 4 ) return;
-    setCoordinate( v->fromScreen( mplc ) );
+    if ( ( d->plc - e->pos() ).manhattanLength() > 4 ) return;
+    setCoordinate( v->fromScreen( d->plc ) );
     break;
   }
   case RequestingText:
   case SelectingArgs:
-    mwiz->raise();
-    mwiz->setActiveWindow();
+    d->wiz->raise();
+    d->wiz->setActiveWindow();
     break;
   case ReallySelectingArgs:
   {
-    if ( ( mplc - e->pos() ).manhattanLength() > 4 ) break;
-    Objects os = mdoc.whatAmIOn( v->fromScreen( mplc ), *v );
+    if ( ( d->plc - e->pos() ).manhattanLength() > 4 ) break;
+    Objects os = mdoc.whatAmIOn( v->fromScreen( d->plc ), *v );
     if ( os.empty() ) break;
     Object* o = os[0];
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
@@ -116,12 +151,16 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
       };
       assert( t == i );
     };
-    int result = p->exec( v->mapToGlobal( mplc ) );
+    int result = p->exec( v->mapToGlobal( d->plc ) );
     if ( result == -1 ) break;
     assert( static_cast<uint>( result ) < l.size() );
-    delete margs[mwaaws];
-    margs[mwaaws] = new PropertyObject( o, result );
-    margs[mwaaws]->calc( mdoc );
+    PropertyObject* n = new PropertyObject( o, result );
+    if ( d->args[d->mwaaws] )
+      d->argsref.delParent( d->args[d->mwaaws] );
+    d->argsref.addParent( n );
+    d->args[d->mwaaws] = n;
+
+    n->calc( mdoc );
     updateLinksLabel();
     updateWiz();
     break;
@@ -151,7 +190,7 @@ void TextLabelModeBase::enableActions()
 
 void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
-  if ( mwawd == ReallySelectingArgs )
+  if ( d->mwawd == ReallySelectingArgs )
   {
     Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
     if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
@@ -188,18 +227,16 @@ static uint percentCount( const QString& s )
 
 void TextLabelModeBase::finishPressed()
 {
-  bool needframe = mwiz->needFrameCheckBox->isChecked();
-  QString s = mwiz->labelTextInput->text();
+  bool needframe = d->wiz->needFrameCheckBox->isChecked();
+  QString s = d->wiz->labelTextInput->text();
 
-  assert( percentCount( s ) == margs.size() );
-  if ( mwiz->currentPage() == mwiz->enter_text_page )
-    assert( margs.size() == 0 );
+  assert( percentCount( s ) == d->args.size() );
+  if ( d->wiz->currentPage() == d->wiz->enter_text_page )
+    assert( d->args.size() == 0 );
 
   bool finished = true;
-  for ( argvect::iterator i = margs.begin(); i != margs.end(); ++i )
-  {
+  for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
     finished &= ( *i != 0 );
-  };
 
   if ( ! finished )
     KMessageBox::sorry( mdoc.widget(),
@@ -207,49 +244,53 @@ void TextLabelModeBase::finishPressed()
                               "value for. Please remove them or select enough arguments." ) );
   else
   {
-    finish( mcoord, s, margs, needframe );
-    margs.clear();
+    finish( d->mcoord, s, d->args, needframe );
     killMode();
   };
 }
 
 void TextLabelModeBase::updateWiz()
 {
-  QString s = mwiz->labelTextInput->text();
+  QString s = d->wiz->labelTextInput->text();
   uint percentcount = percentCount( s );
-  if ( mlpc > percentcount )
+  if ( d->lpc > percentcount )
   {
-    delete_all( margs.begin() + percentcount, margs.end() );
-    margs.clear();
-    margs.resize( percentcount );
+    // prevent deletion of the objects we still need..
+    Objects keepos;
+    for ( argvect::iterator i = d->args.begin();
+          i != d->args.begin() + percentcount; ++i )
+      if (*i)
+        keepos.push_back( *i );
+    ReferenceObject newref( keepos );
+    d->argsref.clearParents();
+    d->argsref.setParents( keepos );
+    d->args = argvect( d->args.begin(), d->args.begin() + percentcount );
   }
-  else if ( mlpc < percentcount )
+  else if ( d->lpc < percentcount )
   {
-    margs.resize( percentcount, 0 );
+    d->args.resize( percentcount, 0 );
   };
 
   if ( percentcount == 0 && ! s.isEmpty() )
   {
-    mwiz->setNextEnabled( mwiz->enter_text_page, false );
-    mwiz->setFinishEnabled( mwiz->enter_text_page, true );
-    mwiz->setAppropriate( mwiz->select_arguments_page, false );
+    d->wiz->setNextEnabled( d->wiz->enter_text_page, false );
+    d->wiz->setFinishEnabled( d->wiz->enter_text_page, true );
+    d->wiz->setAppropriate( d->wiz->select_arguments_page, false );
   }
   else
   {
-    mwiz->setAppropriate( mwiz->select_arguments_page, !s.isEmpty() );
-    mwiz->setNextEnabled( mwiz->enter_text_page, ! s.isEmpty() );
-    mwiz->setFinishEnabled( mwiz->enter_text_page, false );
+    d->wiz->setAppropriate( d->wiz->select_arguments_page, !s.isEmpty() );
+    d->wiz->setNextEnabled( d->wiz->enter_text_page, ! s.isEmpty() );
+    d->wiz->setFinishEnabled( d->wiz->enter_text_page, false );
     bool finished = true;
-    for ( argvect::iterator i = margs.begin(); i != margs.end(); ++i )
-    {
+    for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
       finished &= ( *i != 0 );
-    };
-    assert( percentCount( s ) == margs.size() );
+    assert( percentCount( s ) == d->args.size() );
 
-    mwiz->setFinishEnabled( mwiz->select_arguments_page, finished );
+    d->wiz->setFinishEnabled( d->wiz->select_arguments_page, finished );
   };
 
-  mlpc = percentcount;
+  d->lpc = percentcount;
 }
 
 void TextLabelModeBase::labelTextChanged()
@@ -259,8 +300,8 @@ void TextLabelModeBase::labelTextChanged()
 
 void TextLabelModeBase::updateLinksLabel()
 {
-  LinksLabel::LinksLabelEditBuf buf = mwiz->myCustomWidget1->startEdit();
-  QString s = mwiz->labelTextInput->text();
+  LinksLabel::LinksLabelEditBuf buf = d->wiz->myCustomWidget1->startEdit();
+  QString s = d->wiz->labelTextInput->text();
   QRegExp re( "%[0-9]" );
   int prevpos = 0;
   int pos = 0;
@@ -278,22 +319,22 @@ void TextLabelModeBase::updateLinksLabel()
       // fetch the text part...
       QString subs = s.mid( prevpos, pos - prevpos );
       // and add it...
-      mwiz->myCustomWidget1->addText( subs, buf );
+      d->wiz->myCustomWidget1->addText( subs, buf );
     };
     // we always need a link part...
     QString linktext( "%1" );
-    assert( count < margs.size() );
-    if ( margs[count] )
+    assert( count < d->args.size() );
+    if ( d->args[count] )
     {
       // if the user has already selected a property, then we show its
       // value...
-      margs[count]->imp()->fillInNextEscape( linktext, mdoc );
+      d->args[count]->imp()->fillInNextEscape( linktext, mdoc );
     }
     else
       // otherwise, we show a stub...
       linktext = i18n( "argument %1" ).arg( count + 1 );
 
-    mwiz->myCustomWidget1->addLink( linktext, buf );
+    d->wiz->myCustomWidget1->addLink( linktext, buf );
     // set pos and prevpos to the next char after the last match, so
     // we don't enter infinite loops...
     pos += 2;
@@ -302,12 +343,12 @@ void TextLabelModeBase::updateLinksLabel()
   };
 
   if ( static_cast<uint>( prevpos ) != s.length() )
-    mwiz->myCustomWidget1->addText( s.mid( prevpos ), buf );
+    d->wiz->myCustomWidget1->addText( s.mid( prevpos ), buf );
 
-  mwiz->myCustomWidget1->applyEdit( buf );
-  mwiz->relayoutArgsPage();
+  d->wiz->myCustomWidget1->applyEdit( buf );
+  d->wiz->relayoutArgsPage();
 
-  mwiz->resize( mwiz->size() );
+  d->wiz->resize( d->wiz->size() );
 }
 
 void TextLabelModeBase::linkClicked( int i )
@@ -315,10 +356,10 @@ void TextLabelModeBase::linkClicked( int i )
   mdoc.widget()->setActiveWindow();
   mdoc.widget()->raise();
 
-  assert( margs.size() >= static_cast<uint>( i + 1 ) );
+  assert( d->args.size() >= static_cast<uint>( i + 1 ) );
 
-  mwawd = ReallySelectingArgs;
-  mwaaws = i;
+  d->mwawd = ReallySelectingArgs;
+  d->mwaaws = i;
 
   mdoc.emitStatusBarText( i18n( "Selecting argument %1" ).arg( i + 1 ) );
 }
@@ -336,12 +377,12 @@ void TextLabelModeBase::redrawScreen()
 
 void TextLabelModeBase::setCoordinate( const Coordinate& coord )
 {
-  mcoord = coord;
-  if ( mwawd == SelectingLocation )
+  d->mcoord = coord;
+  if ( d->mwawd == SelectingLocation )
   {
-    mwawd = RequestingText;
+    d->mwawd = RequestingText;
     updateWiz();
-    mwiz->show();
+    d->wiz->show();
     // shouldn't be necessary, but seems to be anyway.. :(
     updateWiz();
   };
@@ -349,14 +390,15 @@ void TextLabelModeBase::setCoordinate( const Coordinate& coord )
 
 void TextLabelModeBase::setText( const QString& s )
 {
-  mwiz->labelTextInput->setText( s );
+  d->wiz->labelTextInput->setText( s );
 }
 
 void TextLabelModeBase::setPropertyObjects( const argvect& props )
 {
-  delete_all( margs.begin(), margs.end() );
-  margs = props;
-  for ( argvect::iterator i = margs.begin(); i != margs.end(); ++i )
+  Objects n( props.begin(), props.end() );
+  d->argsref.setParents( n );
+  d->args = props;
+  for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
     (*i)->calc( mdoc );
 }
 
@@ -460,5 +502,5 @@ void TextLabelRedefineMode::finish(
 
 void TextLabelModeBase::setFrame( bool f )
 {
-  mwiz->needFrameCheckBox->setChecked( f );
+  d->wiz->needFrameCheckBox->setChecked( f );
 }

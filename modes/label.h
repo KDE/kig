@@ -21,8 +21,6 @@
 
 #include "mode.h"
 
-#include "../misc/coordinate.h"
-
 #include <vector>
 
 class TextLabelWizard;
@@ -30,6 +28,8 @@ class NormalMode;
 class Object;
 class RealObject;
 class PropertyObject;
+class Coordinate;
+class QString;
 
 /**
  * this is the base class for TextLabelConstructionMode and
@@ -40,6 +40,19 @@ class PropertyObject;
 class TextLabelModeBase
   : public KigMode
 {
+  class Private;
+  Private* d;
+
+public:
+  // below is the interface towards TextLabelWizard...
+  void cancelPressed();
+  void finishPressed();
+  void enterTextPageEntered();
+  void selectArgumentsPageEntered();
+  void labelTextChanged();
+  void linkClicked( int );
+  void redrawScreen();
+
 protected:
   typedef std::vector<PropertyObject*> argvect;
   // the protected interface for subclasses
@@ -69,41 +82,14 @@ private:
 
   void killMode();
 
-public:
-  // below is the interface towards TextLabelWizard...
-  void cancelPressed();
-  void finishPressed();
-  void enterTextPageEntered();
-  void selectArgumentsPageEntered();
-  void labelTextChanged();
-  void linkClicked( int );
-  void redrawScreen();
 private:
-  // private stuff..
-
-  // point last clicked..
-  QPoint mplc;
-
-  Coordinate mcoord;
-  // the text is only kept in the text input widget, not here
-//   QString mtext;
-  argvect margs;
-
-  // if we're ReallySelectingArgs, then this var points to the arg
-  // we're currently selecting...
-  int mwaaws;
-
-  // last percent count...
-  uint mlpc;
-
-  TextLabelWizard* mwiz;
-
+  //internal
   // What Are We Doing...
   // the diff between SelectingArgs and ReallySelectingArgs is that
   // the latter means the user is selecting an arg in the kig window,
   // whereas the first only means that he's looking at the second
   // page of the wizard...
-  enum { SelectingLocation, RequestingText, SelectingArgs, ReallySelectingArgs } mwawd;
+  typedef enum { SelectingLocation, RequestingText, SelectingArgs, ReallySelectingArgs } wawdtype;
 
   void updateWiz();
   void updateLinksLabel();

@@ -1,3 +1,9 @@
+2003-06-24  Dominique Devriese  <devriese@kde.org>
+
+	* fix a crash bug reported by Pino Toscano, that occurs because
+	TextLabelRedefineMode was not yet updated to the new
+	reference-counting Object's stuff..
+
 2003-06-21  Dominique Devriese  <devriese@kde.org>
 
 	* Implement Select all, Unselect all and Invert selection.
