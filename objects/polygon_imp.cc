@@ -19,6 +19,7 @@
 
 #include "bogus_imp.h"
 #include "line_imp.h"
+#include "point_imp.h"
 
 #include "../misc/common.h"
 #include "../misc/coordinate.h"
@@ -169,13 +170,15 @@ bool PolygonImp::valid() const
 
 const uint PolygonImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 1;
+  return Parent::numberOfProperties() + 3;
 }
 
 const QCStringList PolygonImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
   l += "polygon-perimeter";
+  l += "polygon-surface";
+  l += "center-of-mass";
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -184,6 +187,8 @@ const QCStringList PolygonImp::properties() const
 {
   QCStringList l = Parent::properties();
   l += I18N_NOOP( "Perimeter" );
+  l += I18N_NOOP( "Surface" );
+  l += I18N_NOOP( "Center of Mass" );
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -202,6 +207,10 @@ const char* PolygonImp::iconForProperty( uint which ) const
     return Parent::iconForProperty( which );
   else if ( which == Parent::numberOfProperties() )
     return "circumference"; // perimeter
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return "areaCircle"; // surface
+  else if ( which == Parent::numberOfProperties() + 2 )
+    return "baseCircle"; // center of mass
   else assert( false );
   return "";
 }
@@ -221,6 +230,30 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
       circumference += ( mpoints[i] - mpoints[prev] ).length();
     }
     return new DoubleImp( circumference );
+  }
+  else if ( which == Parent::numberOfProperties() + 1)
+  {
+    double surface2 = 0.0;
+    Coordinate prevpoint = mpoints.back();
+    for ( uint i = 0; i < mpoints.size(); ++i )
+    {
+      Coordinate point = mpoints[i];
+      surface2 += ( point.x - prevpoint.x ) * ( point.y + prevpoint.y ); 
+      prevpoint = point;
+    }
+    return new DoubleImp( fabs( surface2 / 2 ) );
+  }
+  else if ( which == Parent::numberOfProperties() + 2)
+  {
+    Coordinate sum = Coordinate( 0, 0);
+    Coordinate prevpoint = mpoints.back();
+    for ( uint i = 0; i < mpoints.size(); ++i )
+    {
+      Coordinate point = mpoints[i];
+      sum += point;
+      prevpoint = point;
+    }
+    return new PointImp( sum / mpoints.size() );
   }
   else assert( false );
   return new InvalidImp;
