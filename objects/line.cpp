@@ -7,6 +7,7 @@
 
 #define max(a,b) ((a>b)?a:b)
 #define min(a,b) ((a>b)?b:a)
+#define SIGN(x) (x < 0 ? -1 : 1)
 
 bool Line::contains(const QPoint& o, bool strict) const
 {
@@ -42,14 +43,30 @@ bool Line::inRect(const QRect& p) const
     return false;
 }
 
-Point Line::getPoint(double /*param*/) const
+Point Line::getPoint(double p) const
 {
-  return Point( 0,0 );
-}
+  // this code is copied from the KSeg source (with some
+  // modifications), thanks to the author Ilya Baran
+  double c = (p - 0.5) * 2;
 
-double Line::getParam(const Point&) const
+  if(c >= 0) c = pow(c, 1./81.) / 2.;
+  else c = -pow(-c, 1./81.) / 2.;
+
+  c = c * M_PI;
+
+  return qp1 + Point(qp1-qp2).normalize() * tan(c);
+};
+
+double Line::getParam(const Point& p) const
 {
-  return 0;
+  // this code is copied from the KSeg source (with some
+  // modifications), thanks to the author Ilya Baran
+  Point dir = p-Point(qp1);
+  double c = atan((p - p1).length()) * SIGN((p - qp1).getX()/(qp1 - qp2).getX());
+  c/=M_PI;
+  c = pow (2*c,81);
+  //  return c / M_PI * (1 + SMALL) + 0.5;
+  return c / 2 +0.5;
 }
 
 void Line::calcVars()
