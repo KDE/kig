@@ -113,7 +113,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
                             KigDocument& doc,
                             KActionCollection* parent )
   : KAction( act->descriptiveName(),
-             KGlobal::instance()->iconLoader()->loadIconSet(
+             KGlobal::instance()->iconLoader()->loadIcon(
                act->iconFileName(), KIcon::User ),
              act->shortcut(),
              0, 0,              // no slot connection
