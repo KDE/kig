@@ -101,7 +101,8 @@ static const struct ArgParser::spec argsspecpp[] =
 };
 
 LocusConstructor::LocusConstructor()
-  : StandardConstructorBase( "Locus", "A locus", "locus", margsparser ),
+  : StandardConstructorBase( I18N_NOOP( "Locus" ), I18N_NOOP( "A locus" ),
+                             "locus", margsparser ),
     margsparser( argsspecpp, 2 )
 {
 }
