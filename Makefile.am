@@ -10,6 +10,11 @@ libkigpart_la_LIBADD  = $(LIB_QT) $(LIB_KPARTS) $(LIB_KFILE) \
 messages: rc.cpp
 	$(EXTRACTRC) *.rc */*.rc >> rc.cpp
 	$(EXTRACTRC) $(find -name '*.ui') >> rc.cpp
+	for file in macros/*.kigt; do \
+		echo "extracting from $$file"; \
+		cat "$$file" | grep '<Name>' | sed -e 's/^ *<Name>\([^<]*\)<\/Name>/i18n( "\1" );/' >> rc.cpp; \
+		cat "$$file" | grep '<Description>' | sed -e 's/^ *<Description>\([^<]*\)<\/Description>/i18n( "\1" );/' >> rc.cpp; \
+	done
 	$(XGETTEXT) -ki18n -kI18N_NOOP rc.cpp */*.h */*.cc */*.cpp -o $(podir)/kig.pot
 
 dummy.cpp: 
