@@ -247,7 +247,7 @@ static QCString translateOldKigPropertyName( const QString& whichproperty )
   // a lot of them are simply the lower case of the other ones..
   QCString ret = whichproperty.lower().latin1();
   // this deals with lots of names too..
-  ret.replace( ' ', "-" );
+  ret.replace( QRegExp( QString::fromLatin1( " " ) ), "-" );
   if ( ret == "angle-in-radians" )
     ret = "angle-radian";
   else if ( ret == "angle-in-degrees" )
