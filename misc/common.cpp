@@ -426,7 +426,8 @@ const Coordinate calcCenter(
     // which means they're the same line..
     // FIXME: i would normally throw an error here, but KDE doesn't
     // use exceptions, so i'm returning a bogus point :(
-    return (a+c)/2;
+    return a.invalidCoord();
+    /* return (a+c)/2; */
   };
   double denominator = 0.5 / numerator;
 

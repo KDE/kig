@@ -256,6 +256,7 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
     assert( args[2]->inherits( ObjectImp::ID_PointImp ) );
     Coordinate c = static_cast<const PointImp*>( args[2] )->coordinate();
     center = calcCenter( a, b, c );
+    if ( ! center.valid() ) return new InvalidImp;
     Coordinate ad = a - center;
     Coordinate bd = b - center;
     Coordinate cd = c - center;

@@ -118,7 +118,9 @@ ObjectImp* CircleBTPType::calc( const Args& targs, const KigDocument& ) const
   };
 
   const Coordinate center = calcCenter( a, b, c );
-  return new CircleImp( center, (center - a ).length() );
+  if ( center.valid() )
+    return new CircleImp( center, (center - a ).length() );
+  else return new InvalidImp;
 }
 
 int CircleBCPType::resultId() const

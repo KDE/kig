@@ -1,3 +1,8 @@
+2003-05-15  Maurizio Paolini  <paolini@dmf.unicatt.it>
+
+	* take advantage of the new invalid coordinate when creating circles
+		and arcs through three aligned points
+
 2003-05-13  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* fix compilation with --enable-final
@@ -19,7 +24,7 @@
 		point->transform->reflect over a point works properly
 		point->transform->now.. 
 
-2003-05-09  Mauizio Paolini  <paolini@dmf.unicatt.it>
+2003-05-09  Maurizio Paolini  <paolini@dmf.unicatt.it>
 
 	* the drawLocus is now changed to function as a generic drawCurve.
 		The changes are very little, and the locusCalcPoint is no
