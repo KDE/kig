@@ -78,7 +78,7 @@ CircleBTPType::~CircleBTPType()
 
 ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( args, 2 ) ) return new InvalidImp;
 
   const Coordinate a = static_cast<const PointImp*>( args[0] )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( args[1] )->coordinate();
