@@ -490,6 +490,19 @@ void KigDocument::addType( Type* t )
     aMNewSegment->insert( a );
   else
     aMNewOther->insert( a );
+  aActions.push_back( a );
+}
+
+void KigDocument::enableConstructActions( bool enabled )
+{
+  std::for_each( aActions.begin(), aActions.end(),
+                 std::bind2nd( std::mem_fun( &KAction::setEnabled ),
+                               enabled ) );
+  aMNewSegment->setEnabled( enabled );
+  aMNewPoint->setEnabled( enabled );
+  aMNewCircle->setEnabled( enabled );
+  aMNewLine->setEnabled( enabled );
+  aMNewOther->setEnabled( enabled );
 }
 
 myvector<KigDocument*>& KigDocument::documents()
@@ -505,4 +518,5 @@ void KigDocument::removeAction( KAction* a )
   aMNewCircle->remove( a );
   aMNewLine->remove( a );
   aMNewOther->remove( a );
+  aActions.remove( a );
 }

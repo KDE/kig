@@ -23,8 +23,9 @@
 #define KIGPART_H
 
 #include <kparts/part.h>
+#include <qptrlist.h>
 
-#include "../objects/object.h"
+#include "../misc/objects.h"
 #include "../misc/rect.h"
 #include "../misc/types.h"
 
@@ -39,6 +40,7 @@ class KigObjectsPopup;
 class CoordinateSystem;
 class MacroWizardImpl;
 class KigView;
+class Object;
 
 /**
  * This is a "Part".  It that does all the real work in a KPart
@@ -186,12 +188,15 @@ public:
   KAction* aShowHidden;
   KAction* aConfigureTypes;
   KAction* aFullScreen;
+  myvector<KAction*> aActions;
 
   KCommandHistory* history();
 
   void addType( Type* );
 
   void removeAction( KAction* a );
+
+  void enableConstructActions( bool enabled );
 
 protected:
   int numViews;

@@ -26,11 +26,7 @@
 
 void KigMode::enableActions()
 {
-  mDoc->aMNewSegment->setEnabled( false );
-  mDoc->aMNewPoint->setEnabled( false );
-  mDoc->aMNewCircle->setEnabled( false );
-  mDoc->aMNewLine->setEnabled( false );
-  mDoc->aMNewOther->setEnabled( false );
+  mDoc->enableConstructActions( false );
   mDoc->aCancelConstruction->setEnabled( false );
   mDoc->aConfigureTypes->setEnabled( false );
   mDoc->aDeleteObjects->setEnabled( false );

@@ -256,11 +256,7 @@ void NormalMode::mouseMoved( QMouseEvent* e, KigView* v )
 void NormalMode::enableActions()
 {
   KigMode::enableActions();
-  mDoc->aMNewSegment->setEnabled( true );
-  mDoc->aMNewPoint->setEnabled( true );
-  mDoc->aMNewCircle->setEnabled( true );
-  mDoc->aMNewLine->setEnabled( true );
-  mDoc->aMNewOther->setEnabled( true );
+  mDoc->enableConstructActions( true );
   mDoc->aDeleteObjects->setEnabled( true );
   mDoc->aShowHidden->setEnabled( true );
   mDoc->aNewMacro->setEnabled( true );

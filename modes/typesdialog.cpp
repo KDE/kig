@@ -23,8 +23,8 @@
 #include "typesdialog.moc"
 
 #include "../kig/kig_part.h"
-
 #include "../misc/type.h"
+#include "../objects/object.h"
 
 #include <kfiledialog.h>
 #include <kmessagebox.h>
