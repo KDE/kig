@@ -24,20 +24,20 @@
 class CubicB9PType
   : public ObjectType
 {
-public:
   CubicB9PType();
   ~CubicB9PType();
-  ObjectType* copy() const;
+public:
+  static const CubicB9PType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class CubicNodeB6PType
   : public ObjectType
 {
-public:
   CubicNodeB6PType();
   ~CubicNodeB6PType();
-  ObjectType* copy() const;
+public:
+  static const CubicNodeB6PType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 

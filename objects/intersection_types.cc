@@ -42,6 +42,12 @@ ConicLineIntersectionType::~ConicLineIntersectionType()
 {
 }
 
+const ConicLineIntersectionType* ConicLineIntersectionType::instance()
+{
+  static const ConicLineIntersectionType t;
+  return &t;
+}
+
 ObjectImp* ConicLineIntersectionType::calc( const Args& parents ) const
 {
   if ( parents.size() < 3 ) return new InvalidImp;
@@ -91,6 +97,12 @@ LineLineIntersectionType::~LineLineIntersectionType()
 {
 }
 
+const LineLineIntersectionType* LineLineIntersectionType::instance()
+{
+  static const LineLineIntersectionType t;
+  return &t;
+}
+
 ObjectImp* LineLineIntersectionType::calc( const Args& parents ) const
 {
   if ( parents.size() < 2 ||
@@ -120,6 +132,12 @@ LineCubicIntersectionType::~LineCubicIntersectionType()
 {
 }
 
+const LineCubicIntersectionType* LineCubicIntersectionType::instance()
+{
+  static const LineCubicIntersectionType t;
+  return &t;
+}
+
 ObjectImp* LineCubicIntersectionType::calc( const Args& parents ) const
 {
   if ( parents.size() < 3 ) return new InvalidImp;
@@ -133,19 +151,4 @@ ObjectImp* LineCubicIntersectionType::calc( const Args& parents ) const
     which, valid );
   if ( valid ) return new PointImp( c );
   else return new InvalidImp;
-}
-
-ObjectType* ConicLineIntersectionType::copy() const
-{
-  return new ConicLineIntersectionType;
-}
-
-ObjectType* LineLineIntersectionType::copy() const
-{
-  return new LineLineIntersectionType;
-}
-
-ObjectType* LineCubicIntersectionType::copy() const
-{
-  return new LineCubicIntersectionType;
 }

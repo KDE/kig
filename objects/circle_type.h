@@ -24,10 +24,10 @@
 class CircleBCPType
   : public ObjectABType
 {
-public:
   CircleBCPType();
   ~CircleBCPType();
-  ObjectType* copy() const;
+public:
+  static const CircleBCPType* instance();
 
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
@@ -35,12 +35,13 @@ public:
 class CircleBTPType
   : public ObjectABCType
 {
+  CircleBTPType();
+  ~CircleBTPType();
+
   const Coordinate calcCenter( const Coordinate& a, const Coordinate& b,
                                const Coordinate& b ) const;
 public:
-  CircleBTPType();
-  ~CircleBTPType();
-  ObjectType* copy() const;
+  static const CircleBTPType* instance();
 
   ObjectImp* calc( const Args& args ) const;
 };

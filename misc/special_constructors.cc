@@ -24,6 +24,7 @@
 #include "calcpaths.h"
 
 #include "../objects/object.h"
+#include "../objects/custom_types.h"
 #include "../objects/object_type.h"
 #include "../objects/conic_types.h"
 #include "../objects/object_imp.h"
@@ -41,14 +42,13 @@ ConicRadicalConstructor::ConicRadicalConstructor()
     I18N_NOOP( "Radical Line for Conics" ),
     I18N_NOOP( "The lines constructed through the intersections of two conics.  This is also defined for non-intersecting conics." ),
     "conicsradicalline", mparser ),
-    mtype( new ConicRadicalType ),
+    mtype( ConicRadicalType::instance() ),
     mparser( mtype->argsParser().without( ObjectImp::ID_IntImp ) )
 {
 }
 
 ConicRadicalConstructor::~ConicRadicalConstructor()
 {
-  delete mtype;
 }
 
 void ConicRadicalConstructor::drawprelim(
@@ -88,7 +88,7 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
     Args args;
     args.push_back( new IntImp( i ) );
     args.push_back( new IntImp( 1 ) );
-    ret.push_back( new Object( mtype->copy(), os, args ) );
+    ret.push_back( new Object( mtype, os, args ) );
   };
   return ret;
 }
@@ -175,6 +175,7 @@ Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget
   locusparents[0] = curve;
 
   LocusType* t = new LocusType( hier );
+  CustomTypes::instance().add( t );
 
   Object* ret = new Object( t, locusparents, Args() );
   return Objects( ret );

@@ -44,7 +44,7 @@ void setupBuiltinStuff()
 
     // segment...
     c = new SimpleObjectTypeConstructor(
-      new SegmentABType, I18N_NOOP( "Segment" ),
+      SegmentABType::instance(), I18N_NOOP( "Segment" ),
       I18N_NOOP( "A segment constructed from its start and end point" ),
       "segment" );
     ctors->add( c );
@@ -52,14 +52,14 @@ void setupBuiltinStuff()
 
     // line by two points..
     c = new SimpleObjectTypeConstructor(
-      new LineABType, I18N_NOOP( "Line by Two Points" ),
+      LineABType::instance(), I18N_NOOP( "Line by Two Points" ),
       I18N_NOOP( "A line constructed through two points"), "line" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linettp" ) );
 
     // ray by two points..
     c = new SimpleObjectTypeConstructor(
-      new RayABType, I18N_NOOP( "Ray" ),
+      RayABType::instance(), I18N_NOOP( "Ray" ),
       I18N_NOOP( "A ray by its start point, and another point somewhere on it." ),
       "ray" );
     ctors->add( c );
@@ -67,7 +67,7 @@ void setupBuiltinStuff()
 
     // perpendicular line
     c = new SimpleObjectTypeConstructor(
-      new LinePerpendLPType, I18N_NOOP( "Perpendicular" ),
+      LinePerpendLPType::instance(), I18N_NOOP( "Perpendicular" ),
       I18N_NOOP( "A line constructed through a point, perpendicular on another line or segment." ),
       "perpendicular" );
     ctors->add( c );
@@ -75,7 +75,7 @@ void setupBuiltinStuff()
 
     // parallel line
     c = new SimpleObjectTypeConstructor(
-      new LineParallelLPType, I18N_NOOP( "Parallel" ),
+      LineParallelLPType::instance(), I18N_NOOP( "Parallel" ),
       I18N_NOOP( "A line constructed through a point, and parallel to another line or segment" ),
       "parallel" );
     ctors->add( c );
@@ -83,28 +83,28 @@ void setupBuiltinStuff()
 
     // circle
     c = new SimpleObjectTypeConstructor(
-      new CircleBCPType, I18N_NOOP( "Circle by Center and Point" ),
+      CircleBCPType::instance(), I18N_NOOP( "Circle by Center and Point" ),
       I18N_NOOP( "A circle constructed by its center and a point on its border" ),
       "circle" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebcp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new CircleBTPType, I18N_NOOP( "Circle by Three Points" ),
+      CircleBTPType::instance(), I18N_NOOP( "Circle by Three Points" ),
       I18N_NOOP( "A circle constructed through three points" ),
       "circlebtp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebtp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new ConicB5PType, I18N_NOOP( "Conic by Five Points" ),
+      ConicB5PType::instance(), I18N_NOOP( "Conic by Five Points" ),
       I18N_NOOP( "A conic constructed through five points" ),
       "conicb5p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicb5p" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new ConicBAAPType,
+      ConicBAAPType::instance(),
       I18N_NOOP( "Hyperbola by Asymptotes and Point" ),
       I18N_NOOP( "A hyperbola with given asymptotes through a point" ),
       "conicbaap" );
@@ -112,7 +112,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_conicbaap" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new EllipseBFFPType,
+      EllipseBFFPType::instance(),
       I18N_NOOP( "Ellipse by Focuses and Point" ),
       I18N_NOOP( "An ellipse constructed by its focuses and a point on its border" ),
       "ellipsebffp" );
@@ -120,7 +120,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_ellipsebffp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new HyperbolaBFFPType,
+      HyperbolaBFFPType::instance(),
       I18N_NOOP( "Hyperbola by Focuses and Point" ),
       I18N_NOOP( "A hyperbola constructed by its focuses and a point on its border" ),
       "hyperbolabffp" );
@@ -128,7 +128,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_hyperbolabffp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new ConicBDFPType,
+      ConicBDFPType::instance(),
       I18N_NOOP( "Conic by Directrix, Focus and Point" ),
       I18N_NOOP( "A conic with given directrix and focus, through a point" ),
       "conicbdfp" );
@@ -136,7 +136,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_conicbdfp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new ParabolaBTPType,
+      ParabolaBTPType::instance(),
       I18N_NOOP( "Vertical Parabola by Three Points" ),
       I18N_NOOP( "A vertical parabola constructed through three points" ),
       "parabolabtp" );
@@ -144,7 +144,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_parabolabtp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new CubicB9PType,
+      CubicB9PType::instance(),
       I18N_NOOP( "Cubic by Nine Points" ),
       I18N_NOOP( "A cubic constructed through nine points" ),
       "cubicb9p" );
@@ -152,7 +152,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_cubicb9p" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new ConicPolarPointType,
+      ConicPolarPointType::instance(),
       I18N_NOOP( "Polar Point of a Line" ),
       I18N_NOOP( "The polar point of a line with respect to a conic." ),
       "polarpoint" );
@@ -160,7 +160,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_pointpolar" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new ConicPolarLineType,
+      ConicPolarLineType::instance(),
       I18N_NOOP( "Polar Line of a Point" ),
       I18N_NOOP( "The polar line of a point with respect to a conic." ),
       "polarline" );
@@ -168,7 +168,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_linepolar" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new CubicNodeB6PType,
+      CubicNodeB6PType::instance(),
       I18N_NOOP( "Cubic With Node by Six Points" ),
       I18N_NOOP( "A cubic with a nodal point at the origin through six points" ),
       "cubicnodeb6p" );
@@ -177,7 +177,7 @@ void setupBuiltinStuff()
     // actions->add( new ConstructibleAction( c, "objects_new_cubicnodeb6p" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new ConicDirectrixType,
+      ConicDirectrixType::instance(),
       I18N_NOOP( "Directrix of a Conic" ),
       I18N_NOOP( "The directrix line of a conic." ),
       "directrix" );
@@ -185,7 +185,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_linedirectrix" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new AngleType,
+      AngleType::instance(),
       I18N_NOOP( "Angle by Three Points" ),
       I18N_NOOP( "An angle defined by three points" ),
       "angle" );
@@ -193,7 +193,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_angle" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new EquilateralHyperbolaB4PType,
+      EquilateralHyperbolaB4PType::instance(),
       I18N_NOOP( "Equilateral Hyperbola by Four Points" ),
       I18N_NOOP( "An equilateral hyperbola constructed through four points" ),
       "equilateralhyperbolab4p" );
@@ -201,7 +201,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_equilateralhyperbolab4p" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new MidPointType,
+      MidPointType::instance(),
       I18N_NOOP( "Midpoint" ),
       I18N_NOOP( "The midpoint of a segment or two other points" ),
       "bisection" );
@@ -209,7 +209,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_midpoint" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new VectorType,
+      VectorType::instance(),
       I18N_NOOP( "Vector" ),
       I18N_NOOP( "Construct a vector from two given points." ),
       "vector" );
@@ -217,7 +217,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_vector" ) );
 
     c = new SimpleObjectTypeConstructor(
-      new ParabolaBDPType,
+      ParabolaBDPType::instance(),
       I18N_NOOP( "Parabola by directrix and focus" ),
       I18N_NOOP( "A parabola defined by its directrix and focus" ),
       "parabolabdp" );
@@ -225,7 +225,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_parabolabdp" ) );
 
     c = new MultiObjectTypeConstructor(
-      new ConicAsymptoteType,
+      ConicAsymptoteType::instance(),
       I18N_NOOP( "Asymptotes of a Hyperbola" ),
       I18N_NOOP( "The two asymptotes of a hyperbola." ),
       "conicasymptotes", -1, 1 );
@@ -247,18 +247,18 @@ void setupBuiltinStuff()
       // subconstructors:
       ObjectConstructor* lineline =
         new SimpleObjectTypeConstructor(
-          new LineLineIntersectionType,
+          LineLineIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN", // you shouldn't see
                                                 // these
           "intersection" );
       ObjectConstructor* lineconic =
         new MultiObjectTypeConstructor(
-          new ConicLineIntersectionType,
+          ConicLineIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
           "intersection", -1, 1 );
       ObjectConstructor* linecubic =
         new MultiObjectTypeConstructor(
-          new LineCubicIntersectionType,
+          LineCubicIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
           "intersection", 1, 2, 3 );
 

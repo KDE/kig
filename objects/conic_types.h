@@ -24,20 +24,20 @@
 class ConicB5PType
   : public ObjectType
 {
-public:
   ConicB5PType();
   ~ConicB5PType();
-  ObjectType* copy() const;
+public:
+  static const ConicB5PType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicBAAPType
   : public ObjectType
 {
-public:
   ConicBAAPType();
   ~ConicBAAPType();
-  ObjectType* copy() const;
+public:
+  static const ConicBAAPType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
@@ -57,110 +57,110 @@ public:
 class EllipseBFFPType
   : public ConicBFFPType
 {
-public:
   EllipseBFFPType();
   ~EllipseBFFPType();
-  ObjectType* copy() const;
+public:
+  static const EllipseBFFPType* instance();
   int type() const;
 };
 
 class HyperbolaBFFPType
   : public ConicBFFPType
 {
-public:
   HyperbolaBFFPType();
   ~HyperbolaBFFPType();
-  ObjectType* copy() const;
+public:
+  static const HyperbolaBFFPType* instance();
   int type() const;
 };
 
 class ConicBDFPType
   : public ObjectType
 {
-public:
   ConicBDFPType();
   ~ConicBDFPType();
-  ObjectType* copy() const;
+public:
+  static const ConicBDFPType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class ParabolaBTPType
   : public ObjectABCType
 {
-public:
   ParabolaBTPType();
   ~ParabolaBTPType();
-  ObjectType* copy() const;
+public:
+  static const ParabolaBTPType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class EquilateralHyperbolaB4PType
   : public ObjectType
 {
-public:
   EquilateralHyperbolaB4PType();
   ~EquilateralHyperbolaB4PType();
-  ObjectType* copy() const;
+public:
+  static const EquilateralHyperbolaB4PType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicPolarPointType
   : public ObjectType
 {
-public:
   ConicPolarPointType();
   ~ConicPolarPointType();
-  ObjectType* copy() const;
+public:
+  static const ConicPolarPointType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicPolarLineType
   : public ObjectType
 {
-public:
   ConicPolarLineType();
   ~ConicPolarLineType();
-  ObjectType* copy() const;
+public:
+  static const ConicPolarLineType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicDirectrixType
   : public ObjectType
 {
-public:
   ConicDirectrixType();
   ~ConicDirectrixType();
-  ObjectType* copy() const;
+public:
+  static const ConicDirectrixType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class ParabolaBDPType
   : public ObjectLPType
 {
-public:
   ParabolaBDPType();
   ~ParabolaBDPType();
-  ObjectType* copy() const;
+public:
+  static const ParabolaBDPType* instance();
   ObjectImp* calc( const LineData& l, const Coordinate& c ) const;
 };
 
 class ConicAsymptoteType
   : public ObjectType
 {
-public:
   ConicAsymptoteType();
   ~ConicAsymptoteType();
-  ObjectType* copy() const;
+public:
+  static const ConicAsymptoteType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicRadicalType
   : public ObjectType
 {
-public:
   ConicRadicalType();
   ~ConicRadicalType();
-  ObjectType* copy() const;
+public:
+  static const ConicRadicalType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 

@@ -35,7 +35,7 @@ Object* ObjectFactory::fixedPoint( const Coordinate& c )
   Args fixedargs;
   fixedargs.push_back( x );
   fixedargs.push_back( y );
-  Object* o = new Object( new FixedPointType,
+  Object* o = new Object( FixedPointType::instance(),
                           Objects(), fixedargs );
   return o;
 }
@@ -73,7 +73,7 @@ void ObjectFactory::redefinePoint( Object* point, const Coordinate& c,
     // a constrained point...
     Args a;
     a.push_back( new DoubleImp( v->getParam( c ) ) );
-    point->reset( new ConstrainedPointType,
+    point->reset( ConstrainedPointType::instance(),
                   a, Objects( v ) );
   }
   else
@@ -82,6 +82,6 @@ void ObjectFactory::redefinePoint( Object* point, const Coordinate& c,
     Args a;
     a.push_back( new DoubleImp( c.x ) );
     a.push_back( new DoubleImp( c.y ) );
-    point->reset( new FixedPointType, a, Objects() );
+    point->reset( FixedPointType::instance(), a, Objects() );
   }
 }

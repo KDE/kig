@@ -33,30 +33,30 @@
 class ConicLineIntersectionType
   : public ObjectType
 {
-public:
   ConicLineIntersectionType();
   ~ConicLineIntersectionType();
-  ObjectType* copy() const;
+public:
+  static const ConicLineIntersectionType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class LineLineIntersectionType
   : public ObjectType
 {
-public:
   LineLineIntersectionType();
   ~LineLineIntersectionType();
-  ObjectType* copy() const;
+public:
+  static const LineLineIntersectionType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 
 class LineCubicIntersectionType
   : public ObjectType
 {
-public:
   LineCubicIntersectionType();
   ~LineCubicIntersectionType();
-  ObjectType* copy() const;
+public:
+  static const LineCubicIntersectionType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 

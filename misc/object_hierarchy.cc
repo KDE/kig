@@ -66,10 +66,10 @@ void PushStackNode::apply( std::vector<const ObjectImp*>& stack,
 class ApplyTypeNode
   : public ObjectHierarchy::Node
 {
-  ObjectType* mtype;
+  const ObjectType* mtype;
   std::vector<int> mparents;
 public:
-  ApplyTypeNode( ObjectType* type, const std::vector<int>& parents )
+  ApplyTypeNode( const ObjectType* type, const std::vector<int>& parents )
     : mtype( type ), mparents( parents ) {};
   ~ApplyTypeNode();
   Node* copy() const;
@@ -79,12 +79,11 @@ public:
 
 ApplyTypeNode::~ApplyTypeNode()
 {
-  delete mtype;
 }
 
 ObjectHierarchy::Node* ApplyTypeNode::copy() const
 {
-  return new ApplyTypeNode( mtype->copy(), mparents );
+  return new ApplyTypeNode( mtype, mparents );
 };
 
 void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
@@ -149,7 +148,7 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
       parents[args.size() + i] = mnumberofargs + mnodes.size() - 1;
     };
   };
-  mnodes.push_back( new ApplyTypeNode( o->type()->copy(), parents ) );
+  mnodes.push_back( new ApplyTypeNode( o->type(), parents ) );
   return mnumberofargs + mnodes.size() - 1;
 }
 

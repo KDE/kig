@@ -54,6 +54,12 @@ ObjectImp* ConicB5PType::calc( const Args& parents ) const
     calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry ) );
 }
 
+const ConicB5PType* ConicB5PType::instance()
+{
+  static const ConicB5PType t;
+  return &t;
+}
+
 static const ArgParser::spec argsspecllp[] =
 {
   { ObjectImp::ID_LineImp, 2 },
@@ -67,6 +73,12 @@ ConicBAAPType::ConicBAAPType()
 
 ConicBAAPType::~ConicBAAPType()
 {
+}
+
+const ConicBAAPType* ConicBAAPType::instance()
+{
+  static const ConicBAAPType t;
+  return &t;
 }
 
 ObjectImp* ConicBAAPType::calc( const Args& parents ) const
@@ -118,6 +130,12 @@ int EllipseBFFPType::type() const
   return 1;
 }
 
+const EllipseBFFPType* EllipseBFFPType::instance()
+{
+  static const EllipseBFFPType t;
+  return &t;
+}
+
 HyperbolaBFFPType::HyperbolaBFFPType()
   : ConicBFFPType( "HyperbolaBFFP" )
 {
@@ -127,9 +145,21 @@ HyperbolaBFFPType::~HyperbolaBFFPType()
 {
 }
 
+const HyperbolaBFFPType* HyperbolaBFFPType::instance()
+{
+  static const HyperbolaBFFPType t;
+  return &t;
+}
+
 int HyperbolaBFFPType::type() const
 {
   return -1;
+}
+
+const ConicBDFPType* ConicBDFPType::instance()
+{
+  static const ConicBDFPType t;
+  return &t;
 }
 
 static const struct ArgParser::spec argsspeclpp[] =
@@ -185,6 +215,12 @@ ParabolaBTPType::~ParabolaBTPType()
 {
 }
 
+const ParabolaBTPType* ParabolaBTPType::instance()
+{
+  static const ParabolaBTPType t;
+  return &t;
+}
+
 ObjectImp* ParabolaBTPType::calc( const Args& parents ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
@@ -210,6 +246,12 @@ ConicPolarPointType::ConicPolarPointType()
 
 ConicPolarPointType::~ConicPolarPointType()
 {
+}
+
+const ConicPolarPointType* ConicPolarPointType::instance()
+{
+  static const ConicPolarPointType t;
+  return &t;
 }
 
 ObjectImp* ConicPolarPointType::calc( const Args& parents ) const
@@ -240,6 +282,12 @@ ConicPolarLineType::~ConicPolarLineType()
 {
 }
 
+const ConicPolarLineType* ConicPolarLineType::instance()
+{
+  static const ConicPolarLineType t;
+  return &t;
+}
+
 ObjectImp* ConicPolarLineType::calc( const Args& parents ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
@@ -265,6 +313,12 @@ ConicDirectrixType::ConicDirectrixType()
 
 ConicDirectrixType::~ConicDirectrixType()
 {
+}
+
+const ConicDirectrixType* ConicDirectrixType::instance()
+{
+  static const ConicDirectrixType t;
+  return &t;
 }
 
 ObjectImp* ConicDirectrixType::calc( const Args& parents ) const
@@ -297,6 +351,12 @@ EquilateralHyperbolaB4PType::~EquilateralHyperbolaB4PType()
 {
 }
 
+const EquilateralHyperbolaB4PType* EquilateralHyperbolaB4PType::instance()
+{
+  static const EquilateralHyperbolaB4PType t;
+  return &t;
+}
+
 ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents ) const
 {
   std::vector<Coordinate> pts;
@@ -313,6 +373,12 @@ ParabolaBDPType::ParabolaBDPType()
 
 ParabolaBDPType::~ParabolaBDPType()
 {
+}
+
+const ParabolaBDPType* ParabolaBDPType::instance()
+{
+  static const ParabolaBDPType t;
+  return &t;
 }
 
 ObjectImp* ParabolaBDPType::calc( const LineData& l,
@@ -346,6 +412,12 @@ ConicAsymptoteType::~ConicAsymptoteType()
 {
 }
 
+const ConicAsymptoteType* ConicAsymptoteType::instance()
+{
+  static const ConicAsymptoteType t;
+  return &t;
+}
+
 ObjectImp* ConicAsymptoteType::calc( const Args& parents ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
@@ -369,6 +441,12 @@ static const ArgParser::spec argsspecccl[] =
 ConicRadicalType::ConicRadicalType()
   : ObjectType( "line", "ConicRadical", argsspecccl, 2 )
 {
+}
+
+const ConicRadicalType* ConicRadicalType::instance()
+{
+  static const ConicRadicalType t;
+  return &t;
 }
 
 ObjectImp* ConicRadicalType::calc( const Args& parents ) const
@@ -407,69 +485,4 @@ ObjectImp* ConicRadicalType::calc( const Args& parents ) const
 
 ConicRadicalType::~ConicRadicalType()
 {
-}
-
-ObjectType* ConicB5PType::copy() const
-{
-  return new ConicB5PType;
-}
-
-ObjectType* ConicBAAPType::copy() const
-{
-  return new ConicBAAPType;
-}
-
-ObjectType* EllipseBFFPType::copy() const
-{
-  return new EllipseBFFPType;
-}
-
-ObjectType* HyperbolaBFFPType::copy() const
-{
-  return new HyperbolaBFFPType;
-}
-
-ObjectType* ConicBDFPType::copy() const
-{
-  return new ConicBDFPType;
-}
-
-ObjectType* ParabolaBTPType::copy() const
-{
-  return new ParabolaBTPType;
-}
-
-ObjectType* EquilateralHyperbolaB4PType::copy() const
-{
-  return new EquilateralHyperbolaB4PType;
-}
-
-ObjectType* ConicPolarPointType::copy() const
-{
-  return new ConicPolarPointType;
-}
-
-ObjectType* ConicPolarLineType::copy() const
-{
-  return new ConicPolarLineType;
-}
-
-ObjectType* ConicDirectrixType::copy() const
-{
-  return new ConicDirectrixType;
-}
-
-ObjectType* ParabolaBDPType::copy() const
-{
-  return new ParabolaBDPType;
-}
-
-ObjectType* ConicAsymptoteType::copy() const
-{
-  return new ConicAsymptoteType;
-}
-
-ObjectType* ConicRadicalType::copy() const
-{
-  return new ConicRadicalType;
 }

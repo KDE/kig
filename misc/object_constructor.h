@@ -136,10 +136,10 @@ public:
 class SimpleObjectTypeConstructor
   : public StandardConstructorBase
 {
-  ObjectType* mtype;
+  const ObjectType* mtype;
 public:
   SimpleObjectTypeConstructor(
-    ObjectType* t, const char* descname,
+    const ObjectType* t, const char* descname,
     const char* desc, const char* iconfile );
 
   ~SimpleObjectTypeConstructor();
@@ -167,16 +167,16 @@ public:
 class MultiObjectTypeConstructor
   : public StandardConstructorBase
 {
-  ObjectType* mtype;
+  const ObjectType* mtype;
   std::vector<int> mparams;
   ArgParser mparser;
 public:
   MultiObjectTypeConstructor(
-    ObjectType* t, const char* descname,
+    const ObjectType* t, const char* descname,
     const char* desc, const char* iconfile,
     const std::vector<int>& params );
   MultiObjectTypeConstructor(
-    ObjectType* t, const char* descname,
+    const ObjectType* t, const char* descname,
     const char* desc, const char* iconfile,
     int a, int b, int c = -999, int d = -999 );
   ~MultiObjectTypeConstructor();

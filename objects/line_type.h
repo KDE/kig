@@ -26,10 +26,10 @@ class LineData;
 class SegmentABType
   : public ObjectABType
 {
-public:
   SegmentABType();
   ~SegmentABType();
-  ObjectType* copy() const;
+public:
+  static const SegmentABType* instance();
 
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
@@ -37,44 +37,40 @@ public:
 class LineABType
   : public ObjectABType
 {
-public:
   LineABType();
   ~LineABType();
-  ObjectType* copy() const;
-
+public:
+  static const LineABType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
 
 class RayABType
   : public ObjectABType
 {
-public:
   RayABType();
   ~RayABType();
-  ObjectType* copy() const;
-
+public:
+  static const RayABType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
 
 class LinePerpendLPType
   : public ObjectLPType
 {
-public:
   LinePerpendLPType();
   ~LinePerpendLPType();
-  ObjectType* copy() const;
-
+public:
+  static LinePerpendLPType* instance();
   ObjectImp* calc( const LineData& a, const Coordinate& b ) const;
 };
 
 class LineParallelLPType
   : public ObjectLPType
 {
-public:
   LineParallelLPType();
   ~LineParallelLPType();
-  ObjectType* copy() const;
-
+public:
+  static LineParallelLPType* instance();
   ObjectImp* calc( const LineData& a, const Coordinate& b ) const;
 };
 

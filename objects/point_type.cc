@@ -23,15 +23,9 @@
 #include "curve_imp.h"
 #include "bogus_imp.h"
 
-static const ArgParser::spec argsspecdd[1] =
+static const ArgParser::spec argsspecdd[] =
 {
   { ObjectImp::ID_DoubleImp, 2 }
-};
-
-static const ArgParser::spec argsspecdc[2] =
-{
-  { ObjectImp::ID_DoubleImp, 1 },
-  { ObjectImp::ID_CurveImp, 1 }
 };
 
 FixedPointType::FixedPointType()
@@ -63,6 +57,12 @@ ObjectImp* ConstrainedPointType::calc( const Args& parents ) const
   return new PointImp( static_cast<const CurveImp*>( parents[1] )->getPoint( param ) );
 }
 
+const ArgParser::spec argsspecdc[] =
+{
+  { ObjectImp::ID_DoubleImp, 1 },
+  { ObjectImp::ID_CurveImp, 1 }
+};
+
 ConstrainedPointType::ConstrainedPointType()
   : ObjectType( "point", "ConstrainedPoint", argsspecdc, 2 )
 {
@@ -89,7 +89,7 @@ void FixedPointType::move( Object* ourobj, const Coordinate&,
   na.push_back( new DoubleImp( oy->data() + dist.y ) );
 
   // commit..
-  ourobj->reset( new FixedPointType, na, ourobj->parents() );
+  ourobj->reset( this, na, ourobj->parents() );
 }
 
 void ConstrainedPointType::move( Object* ourobj, const Coordinate&,
@@ -115,7 +115,7 @@ void ConstrainedPointType::move( Object* ourobj, const Coordinate&,
   na.push_back( new DoubleImp( np ) );
 
   // commit..
-  ourobj->reset( new ConstrainedPointType, na, ourobj->parents() );
+  ourobj->reset( this, na, ourobj->parents() );
 }
 
 bool ConstrainedPointType::canMove() const
@@ -137,27 +137,30 @@ MidPointType::~MidPointType()
 {
 }
 
+const MidPointType* MidPointType::instance()
+{
+  static const MidPointType t;
+  return &t;
+}
+
 ObjectImp* MidPointType::calc( const Coordinate& a, const Coordinate& b ) const
 {
   return new PointImp( ( a + b ) / 2 );
 }
 
-ObjectType* FixedPointType::copy() const
-{
-  return new FixedPointType;
-}
-
-ObjectType* MidPointType::copy() const
-{
-  return new MidPointType;
-}
-
-ObjectType* ConstrainedPointType::copy() const
-{
-  return new ConstrainedPointType;
-}
-
 bool ConstrainedPointType::inherits( int type ) const
 {
   return type == ID_ConstrainedPointType;
+}
+
+const ConstrainedPointType* ConstrainedPointType::instance()
+{
+  static const ConstrainedPointType t;
+  return &t;
+}
+
+const FixedPointType* FixedPointType::instance()
+{
+  static const FixedPointType t;
+  return &t;
 }

@@ -25,10 +25,12 @@
 class FixedPointType
   : public ObjectType
 {
-public:
   FixedPointType();
   ~FixedPointType();
-  ObjectType* copy() const;
+
+  static const ArgParser::spec argsspec[1];
+public:
+  static const FixedPointType* instance();
 
   ObjectImp* calc( const Args& parents ) const;
   bool canMove() const;
@@ -39,13 +41,12 @@ public:
 class ConstrainedPointType
   : public ObjectType
 {
-public:
   ConstrainedPointType();
   ~ConstrainedPointType();
+public:
+  static const ConstrainedPointType* instance();
 
   bool inherits( int type ) const;
-
-  ObjectType* copy() const;
 
   ObjectImp* calc( const Args& parents ) const;
   bool canMove() const;
@@ -56,11 +57,10 @@ public:
 class MidPointType
   : public ObjectABType
 {
-public:
   MidPointType();
   ~MidPointType();
-  ObjectType* copy() const;
-
+public:
+  static const MidPointType* instance();
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
 

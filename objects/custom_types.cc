@@ -1,4 +1,4 @@
-// other_type.h
+// custom_types.cc
 // Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,42 +16,23 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_MISC_OTHER_TYPE_H
-#define KIG_MISC_OTHER_TYPE_H
+#include "custom_types.h"
 
-#include "base_type.h"
-#include "../misc/object_hierarchy.h"
-
-class AngleType
-  : public ObjectABCType
+CustomTypes::CustomTypes()
 {
-  AngleType();
-  ~AngleType();
-public:
-  static const AngleType* instance();
-  ObjectImp* calc( const Args& parents ) const;
-};
+}
 
-class VectorType
-  : public ObjectABType
+CustomTypes::~CustomTypes()
 {
-  VectorType();
-  ~VectorType();
-public:
-  static const VectorType* instance();
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
-};
+}
 
-class LocusType
-  : public ObjectType
+CustomTypes& CustomTypes::instance()
 {
-  typedef ObjectType Parent;
-  ObjectHierarchy mhier;
-public:
-  LocusType( const ObjectHierarchy& mhier );
-  ~LocusType();
-  ObjectType* copy() const;
-  ObjectImp* calc( const Args& args ) const;
-};
+  static CustomTypes t;
+  return t;
+}
 
-#endif
+void CustomTypes::add( ObjectType* t )
+{
+  mdata.push_back( t );
+}

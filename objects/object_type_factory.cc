@@ -49,11 +49,11 @@ void ObjectTypeFactory::add( const ObjectType* type )
   mmap[std::string( type->fullName() )] = type;
 }
 
-ObjectType* ObjectTypeFactory::build( const char* name ) const
+const ObjectType* ObjectTypeFactory::find( const char* name ) const
 {
   maptype::const_iterator i = mmap.find( std::string( name ) );
   if ( i == mmap.end() ) return 0;
-  else return i->second->copy();
+  else return i->second;
 }
 
 void ObjectTypeFactory::setupBuiltinTypes()
@@ -61,31 +61,31 @@ void ObjectTypeFactory::setupBuiltinTypes()
   assert( ! malreadysetup );
   malreadysetup = true;
   // line_type.h
-  add( new SegmentABType );
-  add( new LineABType );
-  add( new RayABType );
-  add( new LinePerpendLPType );
-  add( new LineParallelLPType );
+  add( SegmentABType::instance() );
+  add( LineABType::instance() );
+  add( RayABType::instance() );
+  add( LinePerpendLPType::instance() );
+  add( LineParallelLPType::instance() );
 
   // point_type.h
-  add( new FixedPointType );
-  add( new ConstrainedPointType );
+  add( FixedPointType::instance() );
+  add( ConstrainedPointType::instance() );
 
   // circle_type.h
-  add( new CircleBCPType );
-  add( new CircleBTPType );
+  add( CircleBCPType::instance() );
+  add( CircleBTPType::instance() );
 
   // conic_type.h
-  add( new ConicB5PType );
-  add( new ConicBAAPType );
-  add( new EllipseBFFPType );
-  add( new HyperbolaBFFPType );
-  add( new ConicBDFPType );
-  add( new ParabolaBTPType );
-  add( new ConicPolarPointType );
-  add( new ConicPolarLineType );
+  add( ConicB5PType::instance() );
+  add( ConicBAAPType::instance() );
+  add( EllipseBFFPType::instance() );
+  add( HyperbolaBFFPType::instance() );
+  add( ConicBDFPType::instance() );
+  add( ParabolaBTPType::instance() );
+  add( ConicPolarPointType::instance() );
+  add( ConicPolarLineType::instance() );
 
   // cubic_type.h
-  add( new CubicB9PType );
-  add( new CubicNodeB6PType );
+  add( CubicB9PType::instance() );
+  add( CubicNodeB6PType::instance() );
 }

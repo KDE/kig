@@ -21,7 +21,6 @@
 
 #include "common.h"
 
-#include <string>
 #include <map>
 
 class ObjectTypeFactory
@@ -35,7 +34,7 @@ class ObjectTypeFactory
 public:
   static ObjectTypeFactory* instance();
   void add( const ObjectType* type );
-  ObjectType* build( const char* name ) const;
+  const ObjectType* find( const char* name ) const;
 };
 
 #endif

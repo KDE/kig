@@ -36,6 +36,12 @@ CubicB9PType::~CubicB9PType()
 {
 }
 
+const CubicB9PType* CubicB9PType::instance()
+{
+  static const CubicB9PType t;
+  return &t;
+}
+
 ObjectImp* CubicB9PType::calc( const Args& os ) const
 {
   std::vector<Coordinate> points;
@@ -63,6 +69,12 @@ CubicNodeB6PType::~CubicNodeB6PType()
 {
 }
 
+const CubicNodeB6PType* CubicNodeB6PType::instance()
+{
+  static const CubicNodeB6PType t;
+  return &t;
+}
+
 ObjectImp* CubicNodeB6PType::calc( const Args& parents ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
@@ -72,14 +84,4 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents ) const
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
   if ( points.size() < 2 ) return new InvalidImp;
   return new CubicImp( calcCubicNodeThroughPoints( points ) );
-}
-
-ObjectType* CubicNodeB6PType::copy() const
-{
-  return new CubicNodeB6PType;
-}
-
-ObjectType* CubicB9PType::copy() const
-{
-  return new CubicB9PType;
 }
