@@ -114,6 +114,10 @@ public:
 
   bool isFullScreen() const;
 
+  const KigView* view() const {
+    return mview;
+  }
+
   /**
    * The following are functions used by KigMode's to tell us to draw
    * stuff...
@@ -158,6 +162,7 @@ public:
    * These are mapped by the KigView using the ScreenInfo class.
    */
   const Rect showingRect() const;
+  void setShowingRect( const Rect& r );
 
   const Coordinate fromScreen( const QPoint& p );
   const Rect fromScreen( const QRect& r );
@@ -220,6 +225,7 @@ class KigView
 
 public:
   KigView( KigDocument* inDoc,
+           bool fullscreen = false,
 	   QWidget* parent = 0,
 	   const char* name = 0
 	   );

@@ -654,8 +654,8 @@ bool BuiltinDocumentActionsProvider::executeAction(
     {
       if ( id == 3 )
       {
-        assert( w.parent()->inherits( "QDialog" ) );
-        static_cast<QDialog*>( w.parent() )->close();
+        assert( w.view()->parent()->inherits( "QDialog" ) );
+        static_cast<QDialog*>( w.view()->parent() )->close();
         return true;
       }
       else

@@ -309,10 +309,11 @@ const Rect KigWidget::fromScreen( const QRect& r )
 
 void KigWidget::updateScrollBars()
 {
-  if ( mview ) mview->updateScrollBars();
+  mview->updateScrollBars();
 }
 
 KigView::KigView( KigDocument* doc,
+                  bool fullscreen,
                   QWidget* parent,
                   const char* name )
   : QWidget( parent, name ),
@@ -334,7 +335,7 @@ KigView::KigView( KigDocument* doc,
            this, SLOT( slotBottomScrollValueChanged( int ) ) );
   connect( mbottomscroll, SIGNAL( sliderReleased() ),
            this, SLOT( updateScrollBars() ) );
-  mrealwidget = new KigWidget( doc, this, this, "Kig Widget" );
+  mrealwidget = new KigWidget( doc, this, this, "Kig Widget", fullscreen );
   mlayout->addWidget( mbottomscroll, 1, 0 );
   mlayout->addWidget( mrealwidget, 0, 0 );
   mlayout->addWidget( mrightscroll, 0, 1 );
@@ -476,7 +477,7 @@ QSize KigWidget::sizeHint() const
 void KigWidget::wheelEvent( QWheelEvent* e )
 {
   int delta = e->delta();
-  if ( mview ) mview->scrollVertical( delta );
+  mview->scrollVertical( delta );
 }
 
 void KigView::scrollVertical( int delta )
@@ -497,11 +498,16 @@ void KigWidget::slotFullScreen()
 
   QDialog* kiosk = new QDialog( 0, 0, false, WStyle_Customize | WStyle_NoBorder );
   kiosk->setGeometry( r );
-  KigWidget* w = new KigWidget( mdocument, 0, kiosk, 0, true );
-  w->setGeometry( QRect( QPoint( 0, 0 ), r.size() ) );
-  w->redrawScreen();
+  KigView* v = new KigView( mdocument, true, kiosk, 0 );
+  v->setGeometry( QRect( QPoint( 0, 0 ), r.size() ) );
+
   kiosk->raise();
   kiosk->show();
+
+  KigWidget* w = v->realWidget();
+  w->msi.setShownRect( showingRect() );
+  w->redrawScreen();
+  w->updateScrollBars();
 }
 
 bool KigWidget::isFullScreen() const

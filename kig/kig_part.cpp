@@ -89,7 +89,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   setInstance( KigDocumentFactory::instance() );
 
   // we need a widget, to actually show the document
-  m_widget = new KigView(this, parentWidget, "kig_view");
+  m_widget = new KigView(this, false, parentWidget, "kig_view");
   // notify the part that this is our internal widget
   setWidget( m_widget );
 
