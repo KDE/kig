@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Kig
+Name[hi]=केआईजी
 Name[pa]=ਕਿਗ
 Name[ta]=கிக்
 Name[xx]=xxKigxx
@@ -17,6 +18,7 @@ GenericName[et]=Interaktiivne geomeetria
 GenericName[fi]=KDE:n Interaktiivinen Geometria
 GenericName[fr]=Géométrie interactive
 GenericName[gl]=Xeometría interactiva
+GenericName[hi]=इंटरएक्टिव ज्यॉमिती
 GenericName[hr]=Interaktivna geometrija
 GenericName[hu]=Interaktív geometria
 GenericName[is]=Gagnvirk rúmfræði
@@ -37,6 +39,7 @@ GenericName[sr@Latn]=Интерактивна геометрија
 GenericName[sv]=Interaktiv geometri
 GenericName[ta]= ஊடாடும் வடிவியல்
 GenericName[tg]=Геометрияи интерактивӣ
+GenericName[tr]=Etkileşimli Geometri
 GenericName[uk]=Інтерактивна геометрія
 GenericName[ven]=Geometry yau shumea nayo
 GenericName[xh]=Umyili Wesiboniso Esingaphakathi
