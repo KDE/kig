@@ -42,6 +42,8 @@ public:
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   bool valid() const;
+  double getParam( const Coordinate& point, const KigDocument& ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
 
   // TODO ?
   const uint numberOfProperties() const;
@@ -50,13 +52,13 @@ public:
   ObjectImp* property( uint which, const KigDocument& w ) const;
   int impRequirementForProperty( uint which ) const;
 
-  double getParam( const Coordinate& point, const KigDocument& ) const;
-  const Coordinate getPoint( double param, const KigDocument& ) const;
-
   const CurveImp* curve() const;
   const ObjectHierarchy& hierarchy() const;
 
   int id() const;
+  double getDist(double param, const Coordinate& p, const KigDocument& doc) const;
+  void getInterval(double& x1,double& x2,double& incr,const Coordinate& p, const KigDocument& doc) const;
+  double getParamofmin(double a, double b, int M,const Coordinate& p,int t[3], const KigDocument& doc) const;
 };
 
 #endif
