@@ -474,7 +474,7 @@ void KigWidget::slotRecenterScreen()
   Rect nr = mdocument->suggestedRect();
   KigCommand* cd =
     new KigCommand( *mdocument,
-                    i18n( "Recenter the View" ) );
+                    i18n( "Recenter View" ) );
 
   cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
   mdocument->history()->addCommand( cd );
@@ -504,7 +504,7 @@ void KigWidget::zoomRect()
     Rect nr = d.rect();
     KigCommand* cd =
       new KigCommand( *mdocument,
-                      i18n( "Change the Shown Part of the Screen" ) );
+                      i18n( "Change Shown Part of Screen" ) );
 
     cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
     mdocument->history()->addCommand( cd );
