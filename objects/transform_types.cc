@@ -19,6 +19,8 @@
 #include "transform_types.h"
 
 #include "bogus_imp.h"
+#include "point_imp.h"
+#include "line_imp.h"
 #include "other_imp.h"
 #include "../misc/coordinate.h"
 #include "../misc/kigtransform.h"
@@ -51,5 +53,67 @@ ObjectImp* TranslatedType::calc( const Args& args ) const
 
   Coordinate dir = static_cast<const VectorImp*>( args[1] )->dir();
   Transformation t = Transformation::translation( dir );
+  return args[0]->transform( t );
+}
+
+static const ArgParser::spec argsspecap[] =
+{
+  { ObjectImp::ID_AnyImp, 1 },
+  { ObjectImp::ID_PointImp, 1 }
+};
+
+PointReflectionType::PointReflectionType()
+  : ObjectType( "PointReflection", argsspecap, 2 )
+{
+}
+
+PointReflectionType::~PointReflectionType()
+{
+}
+
+const PointReflectionType* PointReflectionType::instance()
+{
+  static const PointReflectionType t;
+  return &t;
+}
+
+ObjectImp* PointReflectionType::calc( const Args& args ) const
+{
+  if ( args.size() != 2 ) return new InvalidImp;
+  assert( args[1]->inherits( ObjectImp::ID_PointImp ) );
+
+  Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
+  Transformation t = Transformation::pointReflection( center );
+  return args[0]->transform( t );
+}
+
+static const ArgParser::spec argsspecal[] =
+{
+  { ObjectImp::ID_AnyImp, 1 },
+  { ObjectImp::ID_LineImp, 1 }
+};
+
+LineReflectionType::LineReflectionType()
+  : ObjectType( "LineReflection", argsspecal, 2 )
+{
+}
+
+LineReflectionType::~LineReflectionType()
+{
+}
+
+const LineReflectionType* LineReflectionType::instance()
+{
+  static const LineReflectionType t;
+  return &t;
+}
+
+ObjectImp* LineReflectionType::calc( const Args& args ) const
+{
+  if ( args.size() != 2 ) return new InvalidImp;
+  assert( args[1]->inherits( ObjectImp::ID_LineImp ) );
+
+  LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
+  Transformation t = Transformation::lineReflection( d );
   return args[0]->transform( t );
 }

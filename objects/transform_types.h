@@ -31,4 +31,24 @@ public:
   ObjectImp* calc( const Args& args ) const;
 };
 
+class PointReflectionType
+  : public ObjectType
+{
+  PointReflectionType();
+  ~PointReflectionType();
+public:
+  static const PointReflectionType* instance();
+  ObjectImp* calc( const Args& args ) const;
+};
+
+class LineReflectionType
+  : public ObjectType
+{
+  LineReflectionType();
+  ~LineReflectionType();
+public:
+  static const LineReflectionType* instance();
+  ObjectImp* calc( const Args& args ) const;
+};
+
 #endif

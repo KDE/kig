@@ -71,6 +71,8 @@
     <Menu name="new_transformation">
 	<text>Transformation</text>
 	<Action name="objects_new_translation" />
+	<Action name="objects_new_pointreflection" />
+	<Action name="objects_new_linereflection" />
     </Menu>
     <Menu name="new_other">
 	<text>Other</text>
@@ -138,7 +140,9 @@
   <Action name="objects_new_lineconicradical" />
 </Toolbar>    
 <ToolBar name="transformation_toolbar"><text>Transformation</text>
-    <Action name="objects_new_translation" />
+  <Action name="objects_new_translation" />
+  <Action name="objects_new_pointreflection" />
+  <Action name="objects_new_linereflection" />
 </Toolbar>
 <ToolBar name="rest_toolbar"><text>Rest</text>
   <Action name="objects_new_angle" />

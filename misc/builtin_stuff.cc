@@ -228,11 +228,27 @@ void setupBuiltinStuff()
     // Transformation stuff..
     c = new SimpleObjectTypeConstructor(
       TranslatedType::instance(),
-      I18N_NOOP( "Translation of an object" ),
+      I18N_NOOP( "Translation" ),
       I18N_NOOP( "The translation of an object by a vector" ),
       "translation" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_translation" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      PointReflectionType::instance(),
+      I18N_NOOP( "Point reflection" ),
+      I18N_NOOP( "The reflection of an object over a point" ),
+      "pointreflection" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_pointreflection" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      LineReflectionType::instance(),
+      I18N_NOOP( "Mirrored object" ),
+      I18N_NOOP( "The reflection of an object over a line" ),
+      "linereflection" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_linereflection" ) );
 
     c = new MultiObjectTypeConstructor(
       ConicAsymptoteType::instance(),
