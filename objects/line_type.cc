@@ -228,7 +228,7 @@ void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidg
   Coordinate nb = a + ( b - a ).normalize( length );
 
   MonitorDataObjects mon( getAllParents( parents ) );
-  parents[1]->move( b, nb - b, d );
+  parents[1]->move( nb, d );
   KigCommand* cd = new KigCommand( d, i18n( "Resize &Segment" ) );
   cd->addTask( mon.finish() );
   d.history()->addCommand( cd );

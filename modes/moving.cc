@@ -32,6 +32,7 @@
 
 #include <functional>
 #include <algorithm>
+#include <map>
 
 void MovingModeBase::initScreen( const Objects& tin )
 {
@@ -88,7 +89,10 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
-  moveTo( c );
+
+
+  bool snaptogrid = e->state() & Qt::ShiftButton;
+  moveTo( c, snaptogrid );
   amo.calc( mdoc );
   KigPainter p( v->screenInfo(), &v->curPix, mdoc );
   p.drawObjects( amo );
@@ -96,21 +100,34 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   v->updateScrollBars();
 };
 
+class MovingMode::Private
+{
+public:
+  // explicitly moving objects: these are the objects that the user
+  // requested to move...
+  Objects emo;
+  // point where we started moving..
+  Coordinate pwwsm;
+  MonitorDataObjects* mon;
+  std::map<const Object*, Coordinate> refmap;
+};
+
 MovingMode::MovingMode( const Objects& os, const Coordinate& c,
                         KigWidget& v, KigDocument& doc )
-  : MovingModeBase( doc, v ), pwwlmt( c ),
-    mon( 0 )
+  : MovingModeBase( doc, v ), d( new Private )
 {
+  d->pwwsm = c;
   Objects objs;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
     if ( (*i)->canMove() )
     {
-      emo.upush( *i );
+      d->emo.upush( *i );
+      d->refmap[*i] = (*i)->moveReferencePoint();
       objs.upush( *i );
       objs |= getAllParents( Objects( *i ) );
     };
 
-  mon = new MonitorDataObjects( objs );
+  d->mon = new MonitorDataObjects( objs );
 
   Objects tmp = objs;
   for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
@@ -121,19 +138,23 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
 
 void MovingMode::stopMove()
 {
-  QString text = emo.size() == 1 ?
-                 ObjectImp::moveAStatement( emo[0]->imp()->id() ) :
-                 i18n( "Move %1 Objects" ).arg( emo.size() );
+  QString text = d->emo.size() == 1 ?
+                 ObjectImp::moveAStatement( d->emo[0]->imp()->id() ) :
+                 i18n( "Move %1 Objects" ).arg( d->emo.size() );
   KigCommand* mc = new KigCommand( mdoc, text );
-  mc->addTask( mon->finish() );
+  mc->addTask( d->mon->finish() );
   mdoc.history()->addCommand( mc );
 }
 
-void MovingMode::moveTo( const Coordinate& o )
+void MovingMode::moveTo( const Coordinate& o, bool snaptogrid )
 {
-  for( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
-    (*i)->move( pwwlmt, o - pwwlmt, mdoc );
-  pwwlmt = o;
+  for( Objects::iterator i = d->emo.begin(); i != d->emo.end(); ++i )
+  {
+    assert( d->refmap.find( *i ) != d->refmap.end() );
+    Coordinate nc = d->refmap[*i] + ( o - d->pwwsm );
+    if ( snaptogrid ) nc = mdoc.coordinateSystem().snapToGrid( nc, mview );
+    (*i)->move( nc, mdoc );
+  };
 }
 
 PointRedefineMode::PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& v )
@@ -148,9 +169,11 @@ PointRedefineMode::PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& 
   initScreen( os );
 }
 
-void PointRedefineMode::moveTo( const Coordinate& o )
+void PointRedefineMode::moveTo( const Coordinate& o, bool snaptogrid )
 {
-  (void) ObjectFactory::instance()->redefinePoint( mp, o, mdoc, mview );
+  Coordinate realo =
+    snaptogrid ? mdoc.coordinateSystem().snapToGrid( o, mview ) : o;
+  (void) ObjectFactory::instance()->redefinePoint( mp, realo, mdoc, mview );
 }
 
 PointRedefineMode::~PointRedefineMode()
@@ -173,7 +196,8 @@ void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
 
 MovingMode::~MovingMode()
 {
-  delete mon;
+  delete d->mon;
+  delete d;
 }
 
 void PointRedefineMode::stopMove()

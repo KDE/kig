@@ -60,7 +60,7 @@ Object* ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d,
 }
 
 void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
-                                      KigDocument& doc, const KigWidget& w )
+                                   KigDocument& doc, const KigWidget& w )
 {
   assert( tpoint->inherits( Object::ID_RealObject ) );
   RealObject* point = static_cast<RealObject*>( tpoint );
@@ -129,8 +129,7 @@ void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
     {
       // point used to be fixed -> simply update the DataObject's
       // we can use the point's move function for that..
-      const Coordinate oldcoord = static_cast<const PointImp*>( point->imp() )->coordinate();
-      point->move( oldcoord, c - oldcoord, doc );
+      point->move( c, doc );
     };
   }
 }

@@ -63,7 +63,7 @@ protected:
   // Object::stopMove() and moveTo()...  Note that no calc()'ing or
   // drawing is to be done..
   virtual void stopMove() = 0;
-  virtual void moveTo( const Coordinate& o ) = 0;
+  virtual void moveTo( const Coordinate& o, bool snaptogrid ) = 0;
 
 public:
   void leftReleased( QMouseEvent*, KigWidget* );
@@ -74,14 +74,10 @@ public:
 class MovingMode
   : public MovingModeBase
 {
-  // explicitly moving objects: these are the objects that the user
-  // requested to move...
-  Coordinate pwwlmt;
-  Objects emo;
+  class Private;
+  Private* d;
   void stopMove();
-  void moveTo( const Coordinate& o );
-
-  MonitorDataObjects* mon;
+  void moveTo( const Coordinate& o, bool snaptogrid );
 public:
   MovingMode( const Objects& objects, const Coordinate& c,
 	      KigWidget&, KigDocument& );
@@ -97,7 +93,7 @@ class PointRedefineMode
   ReferenceObject* mref;
   MonitorDataObjects* mmon;
   void stopMove();
-  void moveTo( const Coordinate& o );
+  void moveTo( const Coordinate& o, bool snaptogrid );
 public:
   PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& v );
   ~PointRedefineMode();

@@ -65,10 +65,9 @@ bool RealObject::inRect( const Rect& r, const KigWidget& w ) const
   return mimp->inRect( r, mwidth, w );
 }
 
-void RealObject::move( const Coordinate& from, const Coordinate& dist,
-                       const KigDocument& d )
+void RealObject::move( const Coordinate& to, const KigDocument& d )
 {
-  mtype->move( this, from, dist, d );
+  mtype->move( this, to, d );
 }
 
 void ObjectWithParents::calc( const KigDocument& d )
@@ -419,8 +418,7 @@ bool Object::canMove() const
   return false;
 }
 
-void Object::move( const Coordinate&, const Coordinate&,
-                   const KigDocument& )
+void Object::move( const Coordinate&, const KigDocument& )
 {
   assert( false );
 }
@@ -529,4 +527,14 @@ bool ReferenceObject::contains( const Coordinate&, const KigWidget& ) const
 ReferenceObject::ReferenceObject()
   : ObjectWithParents( Objects() )
 {
+}
+
+const Coordinate Object::moveReferencePoint() const
+{
+  return Coordinate::invalidCoord();
+}
+
+const Coordinate RealObject::moveReferencePoint() const
+{
+  return mtype->moveReferencePoint( this );
 }

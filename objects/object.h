@@ -64,8 +64,14 @@ public:
   virtual bool inRect( const Rect& r, const KigWidget& si ) const = 0;
 
   virtual bool canMove() const;
-  virtual void move( const Coordinate& from, const Coordinate& dist,
-                     const KigDocument& );
+  // what point should MovingMode think this object is currently on ?
+  // If the user then moves his mouse by (x,y), then move() will be
+  // called with to set to moveReferencePoint + (x,y)..
+  // a point should just return its current location, a segment should
+  // probably return the coordinate of one of its points, or the
+  // center or whatever..  just make sure your object moves properly ;)
+  virtual const Coordinate moveReferencePoint() const;
+  virtual void move( const Coordinate& to, const KigDocument& );
 
   virtual void calc( const KigDocument& ) = 0;
 
@@ -169,7 +175,8 @@ public:
   bool inRect( const Rect& r, const KigWidget& ) const;
 
   bool canMove() const;
-  void move( const Coordinate& from, const Coordinate& dist, const KigDocument& );
+  const Coordinate moveReferencePoint() const;
+  void move( const Coordinate& dist, const KigDocument& );
 
   const ObjectType* type() const;
   void setType( const ObjectType* t );

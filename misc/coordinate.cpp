@@ -153,7 +153,8 @@ const Coordinate Coordinate::orthogonal() const
 
 const Coordinate Coordinate::normalize( double l ) const
 {
-  return ( *this * l ) / length();
+  double oldlength = length();
+  return ( *this * l ) / oldlength;
 };
 
 const Coordinate Coordinate::round() const

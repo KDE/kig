@@ -46,8 +46,9 @@ public:
   virtual ObjectImp* calc( const Args& parents, const KigDocument& d ) const = 0;
 
   virtual bool canMove() const;
-  virtual void move( RealObject* ourobj, const Coordinate& from,
-                     const Coordinate& dist, const KigDocument& d ) const;
+  virtual const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
+  virtual void move( RealObject* ourobj, const Coordinate& to,
+                     const KigDocument& d ) const;
 
   const char* fullName() const;
 

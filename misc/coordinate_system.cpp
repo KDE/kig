@@ -19,8 +19,10 @@
 **/
 
 #include "coordinate_system.h"
+#include "coordinate.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 
 #include "i18n.h"
 #include "common.h"
@@ -579,3 +581,72 @@ QString CoordinateSystemFactory::setCoordinateSystemStatement( int id )
   }
 }
 
+Coordinate EuclideanCoords::snapToGrid( const Coordinate& c,
+                                        const KigWidget& w ) const
+{
+  Rect rect = w.showingRect();
+  // we recalc the interval stuff since there is no way to cache it..
+
+  // this function is again inspired upon ( public domain ) code from
+  // the first Graphics Gems book.  Credits to Paul S. Heckbert, who
+  // wrote the "Nice number for graph labels" gem.
+
+  const double hmax = rect.right();
+  const double hmin = rect.left();
+  const double vmax = rect.top();
+  const double vmin = rect.bottom();
+
+  // the number of intervals we would like to have:
+  // we try to have one of them per 40 pixels or so..
+  const int ntick = static_cast<int>(
+    kigMax( hmax - hmin, vmax - vmin ) / w.pixelWidth() / 40. ) + 1;
+
+  const double hrange = nicenum( hmax - hmin, false );
+  const double vrange = nicenum( vmax - vmin, false );
+
+  const double hd = nicenum( hrange / ( ntick - 1 ), true );
+  const double vd = nicenum( vrange / ( ntick - 1 ), true );
+
+  const double hgraphmin = ceil( hmin / hd) * hd;
+  const double vgraphmin = ceil( vmin / vd ) * vd;
+
+
+  double nx = round( ( c.x - hgraphmin ) / hd ) * hd + hgraphmin;
+  double ny = round( ( c.y - vgraphmin ) / vd ) * vd + vgraphmin;
+  return Coordinate( nx, ny );
+}
+
+Coordinate PolarCoords::snapToGrid( const Coordinate& c,
+                                    const KigWidget& w ) const
+{
+  // we reuse the drawGrid code to find
+
+  // we multiply by sqrt( 2 ) cause we don't want to miss circles in
+  // the corners, that intersect with the axes outside of the
+  // screen..
+  const double sqrt2 = 1.4142135623;
+
+  QRect r = w.rect();
+
+  const double hmax = sqrt2 * r.right();
+  const double hmin = sqrt2 * r.left();
+  const double vmax = sqrt2 * r.top();
+  const double vmin = sqrt2 * r.bottom();
+
+  // the intervals:
+  // we try to have one of them per 40 pixels or so..
+  const int ntick = static_cast<int>(
+    kigMax( hmax - hmin, vmax - vmin ) / w.pixelWidth() / 40 ) + 1;
+
+  const double hrange = nicenum( hmax - hmin, false );
+  const double vrange = nicenum( vmax - vmin, false );
+
+  const double hd = nicenum( hrange / ( ntick - 1 ), true );
+  const double vd = nicenum( vrange / ( ntick - 1 ), true );
+
+  double d = kigMin( hd, vd );
+
+  double dist = c.length();
+  double ndist = round( dist / d ) * d;
+  return c.normalize( ndist );
+}

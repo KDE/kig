@@ -365,7 +365,7 @@ void AngleType::executeAction(
   Coordinate nc = b + cdir.normalize( rvect.length() );
 
   MonitorDataObjects mon( getAllParents( parents ) );
-  parents[2]->move( c, nc - c, d );
+  parents[2]->move( nc, d );
   KigCommand* kc = new KigCommand( d, i18n( "Resize &Angle" ) );
   kc->addTask( mon.finish() );
   d.history()->addCommand( kc );

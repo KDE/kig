@@ -49,14 +49,18 @@ bool ObjectABType::canMove() const
 }
 
 void ObjectABType::move( RealObject* o,
-                         const Coordinate& from,
-                         const Coordinate& dist,
+                         const Coordinate& to,
                          const KigDocument& d ) const
 {
   Objects parents = o->parents();
   assert( parents.size() == 2 );
-  parents[0]->move( from, dist, d );
-  parents[1]->move( from, dist, d );
+  assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( parents[1]->hasimp( ObjectImp::ID_PointImp ) );
+  const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  const Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
+  const Coordinate dist = b - a;
+  parents[0]->move( to, d );
+  parents[1]->move( to + dist, d );
 }
 
 ObjectLPType::ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n )
@@ -75,4 +79,12 @@ ObjectImp* ObjectLPType::calc( const Args& targs, const KigDocument& ) const
   LineData l = static_cast<const AbstractLineImp*>( args[0] )->data();
   Coordinate c = static_cast<const PointImp*>( args[1] )->coordinate();
   return calc( l, c );
+}
+
+const Coordinate ObjectABType::moveReferencePoint( const RealObject* o ) const
+{
+  Objects parents = o->parents();
+  assert( parents.size() == 2 );
+  assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
+  return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
 }

@@ -34,8 +34,9 @@ public:
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   bool canMove() const;
-  void move( RealObject* ourobj, const Coordinate& from,
-             const Coordinate& dist, const KigDocument& ) const;
+  const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
+  void move( RealObject* ourobj, const Coordinate& to,
+             const KigDocument& ) const;
   int resultId() const;
 
   QStringList specialActions() const;
@@ -56,8 +57,9 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
 
   bool canMove() const;
-  void move( RealObject* ourobj, const Coordinate& from,
-             const Coordinate& dist, const KigDocument& ) const;
+  const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
+  void move( RealObject* ourobj, const Coordinate& to,
+             const KigDocument& ) const;
   int resultId() const;
 
   QStringList specialActions() const;

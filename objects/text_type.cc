@@ -26,8 +26,8 @@
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_commands.h"
-
 #include "../modes/label.h"
+#include "../misc/coordinate_system.h"
 
 #include <qstringlist.h>
 
@@ -95,8 +95,8 @@ bool TextType::canMove() const
   return true;
 }
 
-void TextType::move( RealObject* ourobj, const Coordinate&,
-                     const Coordinate& dist, const KigDocument& ) const
+void TextType::move( RealObject* ourobj, const Coordinate& to,
+                     const KigDocument& ) const
 {
   const Objects parents = ourobj->parents();
   assert( parents.size() >= 3 );
@@ -104,9 +104,7 @@ void TextType::move( RealObject* ourobj, const Coordinate&,
   const Objects ps = mparser.parse( firstthree );
   assert( ps[1]->inherits( Object::ID_DataObject ) );
   DataObject* c = static_cast<DataObject*>( ps[1] );
-  const PointImp* p = static_cast<const PointImp*>( c->imp() );
-  const Coordinate n = p->coordinate() + dist;
-  c->setImp( new PointImp( n ) );
+  c->setImp( new PointImp( to ) );
 }
 
 QStringList TextType::specialActions() const
@@ -156,4 +154,11 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
 const ArgParser& TextType::argParser() const
 {
   return mparser;
+}
+
+const Coordinate TextType::moveReferencePoint( const RealObject* ourobj ) const
+{
+  if ( ourobj->hasimp( ObjectImp::ID_TextImp ) )
+    return static_cast<const TextImp*>( ourobj->imp() )->coordinate();
+  else return Coordinate::invalidCoord();
 }

@@ -87,8 +87,8 @@ ConstrainedPointType::~ConstrainedPointType()
 {
 }
 
-void FixedPointType::move( RealObject* ourobj, const Coordinate&,
-                           const Coordinate& dist, const KigDocument& ) const
+void FixedPointType::move( RealObject* ourobj, const Coordinate& to,
+                           const KigDocument& ) const
 {
   // fetch the old coord..;
   Objects pa = ourobj->parents();
@@ -99,22 +99,13 @@ void FixedPointType::move( RealObject* ourobj, const Coordinate&,
   DataObject* ox = static_cast<DataObject*>( pa.front() );
   DataObject* oy = static_cast<DataObject*>( pa.back() );
 
-  assert( ox->hasimp( ObjectImp::ID_DoubleImp ) );
-  assert( oy->hasimp( ObjectImp::ID_DoubleImp ) );
-
-  const DoubleImp* dx = static_cast<const DoubleImp*>( pa.front()->imp() );
-  const DoubleImp* dy = static_cast<const DoubleImp*>( pa.back()->imp() );
-
-  ox->setImp( new DoubleImp( dx->data() + dist.x ) );
-  oy->setImp( new DoubleImp( dy->data() + dist.y ) );
+  ox->setImp( new DoubleImp( to.x ) );
+  oy->setImp( new DoubleImp( to.y ) );
 }
 
-void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& from,
-                                 const Coordinate& dist, const KigDocument& d ) const
+void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& to,
+                                 const KigDocument& d ) const
 {
-  // fetch the new coord the user wants..
-  const Coordinate nc = from + dist;
-
   // fetch the CurveImp..
   Objects parents = ourobj->parents();
   assert( parents.size() == 2 );
@@ -124,7 +115,7 @@ void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& from,
   else ci = static_cast<const CurveImp*>( parents.front()->imp() );
 
   // fetch the new param..
-  const double np = ci->getParam( nc, d );
+  const double np = ci->getParam( to, d );
 
   Object* paramo = 0;
   if ( parents[0]->hasimp( ObjectImp::ID_DoubleImp ) )
@@ -245,7 +236,7 @@ void FixedPointType::executeAction(
     if ( ! ok ) break;
 
     MonitorDataObjects mon( getAllParents( Objects( o ) ) );
-    o->move( oldc, c - oldc, d );
+    o->move( c, d );
     KigCommand* kc = new KigCommand( d, ObjectImp::moveAStatement( ObjectImp::ID_PointImp ) );
     kc->addTask( mon.finish() );
 
@@ -296,4 +287,18 @@ void ConstrainedPointType::executeAction(
   default:
     assert( false );
   };
+}
+
+const Coordinate FixedPointType::moveReferencePoint( const RealObject* ourobj ) const
+{
+  if ( ourobj->hasimp( ObjectImp::ID_PointImp ) )
+    return static_cast<const PointImp*>( ourobj->imp() )->coordinate();
+  else return Coordinate::invalidCoord();
+}
+
+const Coordinate ConstrainedPointType::moveReferencePoint( const RealObject* ourobj ) const
+{
+  if ( ourobj->hasimp( ObjectImp::ID_PointImp ) )
+    return static_cast<const PointImp*>( ourobj->imp() )->coordinate();
+  else return Coordinate::invalidCoord();
 }

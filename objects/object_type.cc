@@ -19,6 +19,7 @@
 #include "object_type.h"
 
 #include "../misc/i18n.h"
+#include "../misc/coordinate.h"
 
 #include <qstringlist.h>
 
@@ -42,7 +43,7 @@ bool ObjectType::canMove() const
 }
 
 void ObjectType::move( RealObject*, const Coordinate&,
-                       const Coordinate&, const KigDocument& ) const
+                       const KigDocument& ) const
 {
 }
 
@@ -82,6 +83,11 @@ void ObjectType::executeAction( int, RealObject*, KigDocument&, KigWidget&,
                                 NormalMode& ) const
 {
   assert( false );
+}
+
+const Coordinate ObjectType::moveReferencePoint( const RealObject* ) const
+{
+  return Coordinate::invalidCoord();
 }
 
 

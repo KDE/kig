@@ -69,12 +69,14 @@ public:
    */
   virtual QString coordinateFormatNotice() const = 0;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const = 0;
-  virtual void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const = 0;
+  virtual void drawGrid ( KigPainter& p, bool showgrid = true,
+                          bool showaxes = true ) const = 0;
+  virtual QValidator* coordinateValidator() const = 0;
+  virtual Coordinate snapToGrid( const Coordinate& c,
+                                 const KigWidget& w ) const = 0;
 
   virtual const char* type() const = 0;
   virtual int id() const = 0;
-
-  virtual QValidator* coordinateValidator() const = 0;
 };
 
 class EuclideanCoords
@@ -86,12 +88,14 @@ public:
   QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
   QString coordinateFormatNotice() const;
   Coordinate toScreen (const QString& pt, bool& ok) const;
-  void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
+  void drawGrid ( KigPainter& p, bool showgrid = true,
+                  bool showaxes = true ) const;
+  QValidator* coordinateValidator() const;
+  Coordinate snapToGrid( const Coordinate& c,
+                         const KigWidget& w ) const;
 
   const char* type() const;
   int id() const;
-
-  QValidator* coordinateValidator() const;
 };
 
 class PolarCoords
@@ -103,12 +107,14 @@ public:
   QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
   QString coordinateFormatNotice() const;
   Coordinate toScreen (const QString& pt, bool& ok) const;
-  void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
+  void drawGrid ( KigPainter& p, bool showgrid = true,
+                  bool showaxes = true ) const;
+  QValidator* coordinateValidator() const;
+  Coordinate snapToGrid( const Coordinate& c,
+                         const KigWidget& w ) const;
 
   const char* type() const;
   int id() const;
-
-  QValidator* coordinateValidator() const;
 };
 
 #endif
