@@ -84,7 +84,6 @@
 	  <Action name="objects_new_decagonbcv" />
         </Menu>
 	<Action name="objects_new_polygonvertices" />
-	<Action name="objects_new_polygonlineintersection" />
       </Menu>
       <Menu name="new_vector" icon="vector">
 	<text>&amp;Vectors &amp;&amp; Segments</text>

@@ -721,12 +721,19 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "circlecircleintersection", -1, 1 );
 
+  SimpleObjectTypeConstructor* polygonline =
+    new SimpleObjectTypeConstructor(
+      PolygonLineIntersectionType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "curvelineintersection" );
+
   merge( lineline );
   merge( circlecircle );
   merge( lineconic );
   merge( linecubic );
   merge( conicconic );
   merge( arcline );
+  merge( polygonline );
 }
 
 GenericIntersectionConstructor::~GenericIntersectionConstructor()
@@ -752,6 +759,8 @@ QString GenericIntersectionConstructor::useText(
     return i18n( "Intersect with This Cubic Curve" );
   else if ( o.imp()->inherits( ArcImp::stype() ) )
     return i18n( "Intersect with This Arc" );
+  else if ( o.imp()->inherits( PolygonImp::stype() ) )
+    return i18n( "Intersect with This Polygon" );
   else assert( false );
   return QString::null;
 }
