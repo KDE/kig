@@ -84,4 +84,26 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class LineByVectorType
+  : public ArgsParserObjectType
+{
+  LineByVectorType();
+  ~LineByVectorType();
+public:
+  static const LineByVectorType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+class HalflineByVectorType
+  : public ArgsParserObjectType
+{
+  HalflineByVectorType();
+  ~HalflineByVectorType();
+public:
+  static const HalflineByVectorType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

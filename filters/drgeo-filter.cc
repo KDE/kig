@@ -218,7 +218,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         KIG_FILTER_PARSE_ERROR;
       parents.push_back( holders[parentid-nignored]->calcer() );
     };
-    if ( parents.size() > 1 )
+    if ( parents.size() > 0 )
       kdDebug() << "+++++++++ parents: " << parents[0] << " " << parents[1] << " " << parents[2] << endl;
     else
       kdDebug() << "+++++++++ parents: NO" << endl;
@@ -270,8 +270,13 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       {
         if ( ! ok3 )
           KIG_FILTER_PARSE_ERROR;
-        if ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) )
-          oc = fact->constrainedPointCalcer( parents[0], Coordinate( value, 0 ), doc );
+        if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) ||
+             ( parents[0]->imp()->inherits( SegmentImp::stype() ) ) )
+          oc = fact->constrainedPointCalcer( parents[0], value );
+//        else if ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) )
+//          oc = fact->constrainedPointCalcer( parents[0], Coordinate( value, 0 ), doc );
+        else if ( parents[0]->imp()->inherits( ArcImp::stype() ) )
+          oc = fact->constrainedPointCalcer( parents[0], 1 - value );
         else
         {
 //          oc = fact->constrainedPointCalcer( parents[0], value );
@@ -383,8 +388,9 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
           assert( index != -1 );
           ObjectPropertyCalcer* o = new ObjectPropertyCalcer( parents[1], index );
           o->calc( doc );
+          ObjectCalcer* a = parents[0];
           parents.clear();
-          parents.push_back( parents[0] );
+          parents.push_back( a );
           parents.push_back( o );
         }
         oc = new ObjectTypeCalcer( type, parents );
@@ -560,7 +566,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 /*
     else if ( domelem.tagName() == "angle" )
     {
-      PointImp* p = static_cast<const PointImp*>( parents[0]->imp() );
+      PointImp* p = static_cast<const PointImp*>( parents[1]->imp() );
       if ( domelem.attribute( "type" ) == "3pts" )
       {
         if ( parents.size() == 3 )
@@ -634,13 +640,16 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     }
     else if ( domelem.tagName() == "locus" )
     {
-      notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
-                                domelem.attribute( "type" ) ) );
-      return false;
 //      if ( domelem.attribute( "type" ) == "None" )
 //      {
 //        oc = new ObjectTypeCalcer( LocusType::instance(), parents );
+//      }
+//      else
+//      {
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  domelem.attribute( "type" ) ) );
+        return false;
 //      }
       kdDebug() << "+++++++++ oc:" << oc << endl;
     }
@@ -679,7 +688,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 // Thick  -> the biggest one
     int w = -1;
     Qt::PenStyle s = Qt::SolidLine;
-//    int pointstyle = 0;
     if ( domelem.tagName() == "point" )
     {
       if ( domelem.attribute( "thickness" ) == "Normal" )

@@ -36,24 +36,24 @@ Grid              ok
 Objects to implement
 --------------------
 
-Points            Coordinate
-Lines             pt_slope
-Circle            radius
+Points            Coordinate(*)
+Lines             pt_slope(*)
+Circle            radius(*)
 Numberics         distance_pt_line, distance_pt_circle
 Angles            vectors
 Locuses           at the moment not functional, depends on on_curve points
 Polygons          also in Kig
-Transformations   scaling
+Transformations   scaling(*)
 Intersections     arc-line (also in Kig)
 boundingBox       temporarily ignored
 
-General: objects which depend on numerics
+(*) objects which depend on numeric's
 
 Known problems
 --------------
 
-* Angles(3pts): no label with measure
-* Point(On_curve): works only with lines (I hope)
+* Angle(3pts): no label with measure
+* Point(On_curve): works only with segments, circles and arcs (I hope)
 
 Export
 ======

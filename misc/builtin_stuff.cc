@@ -273,6 +273,22 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_vectorsum", 0 ) );
 
     c = new SimpleObjectTypeConstructor(
+      LineByVectorType::instance(),
+      I18N_NOOP( "Line By Vector" ),
+      I18N_NOOP( "Construct the line by a given vector though a given point." ),
+      "linebyvector" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_linebyvector", 0 ) );
+
+    c = new SimpleObjectTypeConstructor(
+      HalflineByVectorType::instance(),
+      I18N_NOOP( "Half-line By Vector" ),
+      I18N_NOOP( "Construct the half-line by a given vector starting at given point." ),
+      "halflinebyvector" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_halflinebyvector", 0 ) );
+
+    c = new SimpleObjectTypeConstructor(
       ArcBTPType::instance(),
       I18N_NOOP( "Arc" ),
       I18N_NOOP( "Construct an arc through three points." ),

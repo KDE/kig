@@ -1,3 +1,10 @@
+2004-04-30  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Add line and half-line by vector.
+
+	* More work on Dr. Geo filter to support some types of On_curve
+	points.
+
 2004-04-30  Dominique Devriese  <devriese@kde.org>
 
 	* properly generate python error output for compile errors.

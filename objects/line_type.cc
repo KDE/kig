@@ -19,9 +19,10 @@
 #include "line_type.h"
 
 #include "bogus_imp.h"
-#include "point_imp.h"
 #include "line_imp.h"
 #include "object_holder.h"
+#include "other_imp.h"
+#include "point_imp.h"
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
@@ -91,9 +92,11 @@ ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
   return new LineImp( a, b );
 }
 
+static const char constructhalflinestartingstat[] = I18N_NOOP( "Construct a half-line starting at this point" );
+
 static const ArgsParser::spec argsspecRayAB[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a half-line starting at this point" ), true },
+  { PointImp::stype(), constructhalflinestartingstat, true },
   { PointImp::stype(), I18N_NOOP( "Construct a half-line through this point" ), true }
 };
 
@@ -239,4 +242,80 @@ void SegmentABType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
   KigCommand* cd = new KigCommand( d, i18n( "Resize Segment" ) );
   mon.finish( cd );
   d.history()->addCommand( cd );
+}
+
+static const ArgsParser::spec argsspecLineByVector[] =
+{
+  { VectorImp::stype(), I18N_NOOP( "Construct a line by this vector" ), true },
+  { PointImp::stype(), constructlineabstat, true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineByVectorType )
+
+LineByVectorType::LineByVectorType()
+  : ArgsParserObjectType( "LineByVector", argsspecLineByVector, 2 )
+{
+}
+
+LineByVectorType::~LineByVectorType()
+{
+}
+
+const LineByVectorType* LineByVectorType::instance()
+{
+  static const LineByVectorType s;
+  return &s;
+}
+
+ObjectImp* LineByVectorType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  const VectorImp& a = *static_cast<const VectorImp*>( args[0] );
+  const PointImp& b = *static_cast<const PointImp*>( args[1] );
+
+  return new LineImp(  b.coordinate(), b.coordinate() + a.dir() );
+}
+
+const ObjectImpType* LineByVectorType::resultId() const
+{
+  return LineImp::stype();
+}
+
+static const ArgsParser::spec argsspecHalflineByVector[] =
+{
+  { VectorImp::stype(), I18N_NOOP( "Construct a half-line by this vector" ), true },
+  { PointImp::stype(), constructhalflinestartingstat, true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( HalflineByVectorType )
+
+HalflineByVectorType::HalflineByVectorType()
+  : ArgsParserObjectType( "HalflineByVector", argsspecHalflineByVector, 2 )
+{
+}
+
+HalflineByVectorType::~HalflineByVectorType()
+{
+}
+
+const HalflineByVectorType* HalflineByVectorType::instance()
+{
+  static const HalflineByVectorType s;
+  return &s;
+}
+
+ObjectImp* HalflineByVectorType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  const VectorImp& a = *static_cast<const VectorImp*>( args[0] );
+  const PointImp& b = *static_cast<const PointImp*>( args[1] );
+
+  return new RayImp(  b.coordinate(), b.coordinate() + a.dir() );
+}
+
+const ObjectImpType* HalflineByVectorType::resultId() const
+{
+  return RayImp::stype();
 }

@@ -9,8 +9,6 @@
 
 - write *-filter-status.txt's for the kseg and cabri filters.
 
-- line and half-line by vector.
-
 - Three new transformations: projection on a line, orthogonally and
   according to a given direction, and a similitude ( homothecy +
   rotation ).
@@ -49,7 +47,8 @@
 
 * harder:
 
-- allow for using kformula formulas in the document.
+- allow for using kformula w/o OOFormula w/o MathML formulas in the
+  document.
 
 - rework the ObjectConstructor and GUIAction stuff into something more
    general, and more clean.  See the comment for
@@ -71,8 +70,8 @@
 
 * hard :
 
-- save a "sesssion", i.e.: record how a document is moved, and save it
-   to e.g. a flash file or something like that.
+- save a "session", i.e.: record how a document is moved, and save it to
+  e.g. a flash file or something like that.
 
 - figure out a way to allow the user to enable and disable certain
   features.  E.g. I have been asked to allow the user to limit himself
