@@ -286,7 +286,7 @@ PolygonBNPTypeConstructor::~PolygonBNPTypeConstructor()
 
 const QString PolygonBNPTypeConstructor::descriptiveName() const
 {
-  return i18n("Polygon by its vertices");
+  return i18n("Polygon by Its Vertices");
 }
 
 const QString PolygonBNPTypeConstructor::description() const
@@ -570,7 +570,7 @@ PolygonBCVConstructor::~PolygonBCVConstructor()
 
 const QString PolygonBCVConstructor::descriptiveName() const
 {
-  return i18n("Regular polygon with given center");
+  return i18n("Regular Polygon with Given Center");
 }
 
 const QString PolygonBCVConstructor::description() const
@@ -1042,7 +1042,7 @@ GenericProjectivityConstructor::~GenericProjectivityConstructor() {}
 
 InversionConstructor::InversionConstructor()
   : MergeObjectConstructor(
-    I18N_NOOP( "Inversion of a point, line or circle" ),
+    I18N_NOOP( "Inversion of Point, Line or Circle" ),
     I18N_NOOP( "The inversion of a point, line or circle with respect to a circle" ),
     "inversion" )
 {

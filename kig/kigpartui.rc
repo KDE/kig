@@ -93,7 +93,7 @@
 	<Action name="objects_new_parabolabtp" />
 	<ActionList name="user_conic_types" />
 	<Menu name="new_moreconics" icon="conicsradicalline">
-	  <text>More conics</text>
+	  <text>More Conics</text>
 	  <Action name="objects_new_parabolabdp" />
 	  <Action name="objects_new_equilateralhyperbolab4p" />
 	  <Action name="objects_new_conicbdfp" />

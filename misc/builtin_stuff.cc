@@ -445,7 +445,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       TriangleB3PType::instance(),
-      I18N_NOOP( "Triangle by its vertices" ),
+      I18N_NOOP( "Triangle by Its Vertices" ),
       I18N_NOOP( "Construct a triangle given its three vertices." ),
       "triangle" );
     ctors->add( c );
