@@ -60,6 +60,8 @@ public:
   void addAction( int menu, const QPixmap& pix, int id );
 
   Objects objects() { return mobjs; };
+  KigDocument& document() { return mdoc; };
+  KigWidget& widget() { return mview; };
 
 protected:
   void activateAction( int menu, int action );
