@@ -230,7 +230,7 @@ protected:
   // Where Are We in the process of collecting gegObjs and finObjs:
   enum { macroSGO, macroSFO, macroSN, macroDN } macroWAW;
 public:
-  bool isConstructingMacro() { return macroWAW != macroDN; };
+  bool isConstructingMacro() { return macroWAW != macroDN && macroWAW != macroSN; };
 protected:
   MacroWizardImpl* m_pMacroWizard;
 public slots:

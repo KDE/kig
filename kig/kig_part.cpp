@@ -37,8 +37,9 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   : KParts::ReadWritePart(parent, name),
     obc(0),
     _changed(false),
-    numViews(0),
-    m_pMacroWizard(0)
+    macroWAW(macroDN),
+    m_pMacroWizard(0),
+    numViews(0)
 {
   // we need an instance
   setInstance( KigPartFactory::instance() );
