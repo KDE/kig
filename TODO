@@ -1,6 +1,10 @@
+reimplement:
+- macro's
+- labels
+- rmb menu's
+
 simple:
 - implement the helpSlot()'s in the wizards..
-- rearrange some of the icons to match KGeo's appearance..
 
 harder:
 - fix the KDE style issues, there are quite some problems, i guess i
@@ -19,9 +23,6 @@ harder:
   its overhead...  
 
 hard :
-- rework Macro support into something simpler: make it into types that
-  simply add a lot of normal ( as in: builtin ) objects instead of one
-  ugly object of the Macro class ( which, erm.. sucks :)
 - scripting !  The GNOME Interactive Geometry program Dr. Genius seems
   to have this already ( albeit in Guile ;) ), so Kig can't lag behind
   ;)
