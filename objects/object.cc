@@ -82,16 +82,6 @@ void RealObject::reset( const ObjectType* t, const Objects& parents )
   setParents( parents );
 }
 
-// QCString RealObject::baseTypeName() const
-// {
-//   return mimp->baseName();
-// }
-
-// QString RealObject::translatedBaseTypeName() const
-// {
-//   return mimp->translatedBaseName();
-// }
-
 void RealObject::setImp( ObjectImp* i )
 {
   delete mimp;
@@ -276,16 +266,6 @@ void DataObject::move( const Coordinate&, const Coordinate& )
 void DataObject::calc()
 {
 }
-
-// QCString DataObject::baseTypeName() const
-// {
-//   return "SHOULDNOTBESEEN";
-// }
-
-// QString DataObject::translatedBaseTypeName() const
-// {
-//   return QString::fromUtf8( "SHOULDNOTBESEEN" );
-// }
 
 void DataObject::childAdded()
 {

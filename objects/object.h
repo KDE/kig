@@ -65,9 +65,6 @@ public:
 
   virtual void calc() = 0;
 
-//   virtual QCString baseTypeName() const = 0;
-//   virtual QString translatedBaseTypeName() const = 0;
-
   virtual bool shown() const = 0;
 
   virtual void setSelected( bool s );
@@ -154,9 +151,6 @@ public:
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist );
 
-//   QCString baseTypeName() const;
-//   QString translatedBaseTypeName() const;
-
   void calc();
 
 
@@ -210,9 +204,6 @@ public:
   void move( const Coordinate& from, const Coordinate& dist );
 
   void calc();
-
-//   QCString baseTypeName() const;
-//   QString translatedBaseTypeName() const;
 
   bool shown() const;
 };
