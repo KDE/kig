@@ -24,6 +24,7 @@
       <Action name="view_zoom_in" />
       <Action name="view_zoom_out" />
       <Action name="view_fit_to_page" />
+      <Action name="view_select_shown_rect" />
     </Menu>
     <Menu name="objects">
       <text>&amp;Objects</text>
@@ -97,6 +98,7 @@
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_angle" />
 	<Action name="objects_new_angle_bisector" />
+	<Action name="objects_new_script_object" />
 	<ActionList name="user_other_types" />
       </Menu>
       <Separator />
@@ -175,13 +177,15 @@
     <Action name="objects_new_angle_bisector" />
     <Action name="objects_new_locus" />
     <Action name="objects_new_textlabel" />
+    <Action name="objects_new_script_object" />
     <ActionList name="user_other_types" />
   </Toolbar>
   <Toolbar name="view_toolbar">
-<text>View</text>
+    <text>View</text>
     <Action name="view_zoom_in" />
     <Action name="view_zoom_out" />
     <Action name="view_fullscreen" />
-    <Action name="view_fit_to_page"/>
+    <Action name="view_fit_to_page" />
+    <Action name="view_select_shown_rect" />
   </Toolbar>
 </kpartgui>

@@ -26,6 +26,7 @@
 #include "../misc/coordinate_system.h"
 
 #include "../modes/mode.h"
+#include "../modes/dragrectmode.h"
 
 #include <qdialog.h>
 #include <qwhatsthis.h>
@@ -190,27 +191,7 @@ void KigWidget::recenterScreen()
 
 Rect KigWidget::matchScreenShape( const Rect& r ) const
 {
-//   kdDebug() << k_funcinfo << "input: " << r << endl;
-  Rect s = r;
-  Coordinate c = r.center();
-  double v = double(r.width())/r.height(); // document dimensions
-  double w = double(size().width())/size().height(); // widget
-						     // dimensions
-  // we don't show less than r, if the dimensions don't match, we
-  // extend r into some dimension...
-  if( v > w )
-  {
-    // not high enough...
-    s.setHeight( s.width() / w );
-  }
-  else
-  {
-    // not wide enough...
-    s.setWidth( s.height() * w );
-  };
-  s.setCenter(c);
-//   kdDebug() << k_funcinfo << "output: " << s << endl;
-  return s.normalized();
+  return r.matchShape( Rect::fromQRect( rect() ) );
 }
 
 void KigWidget::zoomIn()
@@ -493,4 +474,22 @@ void KigView::toggleFullScreen()
 void KigWidget::setFullScreen( bool f )
 {
   misfullscreen = f;
+}
+
+void KigWidget::zoomRect()
+{
+  mdocument->emitStatusBarText( i18n( "Select the rectangle that should be shown." ) );
+  DragRectMode d( *mdocument, *this );
+  mdocument->runMode( &d );
+  Rect nr = d.rect();
+
+  nr = nr.matchShape( Rect::fromQRect( rect() ) );
+  msi.setShownRect( nr );
+  redrawScreen();
+  updateScrollBars();
+}
+
+void KigView::zoomRect()
+{
+  mrealwidget->zoomRect();
 }

@@ -186,6 +186,12 @@ void KigDocument::setupActions()
     actionCollection(), "view_fullscreen" );
   a->setToolTip( i18n( "View this document full-screen." ) );
   a->setWhatsThis( i18n( "View this document full-screen." ) );
+
+  a = new KAction(
+    i18n( "Select Shown Area" ), 0, m_widget, SLOT( zoomRect() ),
+    actionCollection(), "view_select_shown_rect" );
+  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
+  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 };
 
 void KigDocument::setupTypes()

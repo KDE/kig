@@ -186,6 +186,7 @@ public:
   // ...
   void zoomIn();
   void zoomOut();
+  void zoomRect();
 
   void redrawScreen( bool paintOnWidget = true );
 };
@@ -231,6 +232,7 @@ public slots:
   void updateScrollBars();
   void zoomIn();
   void zoomOut();
+  void zoomRect();
   void recenterScreen();
   void toggleFullScreen();
 
