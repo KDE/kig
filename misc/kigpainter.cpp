@@ -824,10 +824,6 @@ inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHi
 
 void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
 {
-  /// this function is based on drawConic, and its code comes mostly
-  /// from there too..  ( drawConic was based on an old version of
-  /// drawLocus, actually, but that's ancient history by now :) )
-
   // we manage our own overlay
   bool tNeedOverlay = mNeedOverlay;
   mNeedOverlay = false;
@@ -871,7 +867,7 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   Coordinate coo2 = locusGetCoord( 1, curve, hier, valid, mdoc );
   if ( ! valid ) coo2 = coo2.invalidCoord();
   workstack.push( workitem(
-                    coordparampair( 0, coo1 ), 
+                    coordparampair( 0, coo1 ),
                     coordparampair( 1, coo2 ),
                     0 ) );
 
