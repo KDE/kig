@@ -64,7 +64,7 @@ void ExportToSVGDialog::slotOKPressed()
   {
     int ret = KMessageBox::warningYesNo( mv,
                                          i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
-                                         .arg( filename ), i18n( "Overwrite file?" ) );
+                                         .arg( filename ), i18n( "Overwrite File?" ) );
     if ( ret != KMessageBox::Yes ) return;
   };
 
