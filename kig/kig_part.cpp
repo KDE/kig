@@ -1,3 +1,24 @@
+/**
+ This file is part of Kig, a KDE program for Interactive Geometry...
+ Copyright (C) 2002  Dominique Devriese
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+ USA
+**/
+
+
 #include "kig_part.h"
 #include "kig_part.moc"
 
@@ -32,6 +53,7 @@
 #include <kglobal.h>
 #include <klineedit.h>
 #include <kmimetype.h>
+#include <kimageio.h>
 
 #include <qfile.h>
 #include <qtextstream.h>
@@ -324,37 +346,63 @@ bool KigDocument::openFile()
 
 bool KigDocument::saveFile()
 {
-  // if we aren't read-write, return immediately
-  if (!isReadWrite())
-    return false;
+//   // if we aren't read-write, return immediately
+//   if (!isReadWrite())
+//     return false;
 
   // m_file is always local, so we use QFile
+
   QFile file(m_file);
   if (file.open(IO_WriteOnly) == false)
-    return false;
+    {
+      KMessagebox::error( this, i18n("Could not open file %1").arg(m_file) );
+      return false;
+    };
 
-  QTextStream stream(&file);
+  if( KMimeType::findByURL( m_file, 0, true, true )->name() == QString::fromUtf8("application/x-kig") )
+    {
+      
+      QTextStream stream(&file);
+      
+      QDomDocument doc("KigDocument");
+      QDomElement elem = doc.createElement( "KigDocument" );
+      elem.setAttribute( "Version", "2.0.000" );
+      
+      // saving is done very easily:
+      // we create an ObjectHierarchy with no "given" objects, and all
+      // objects as "final" objects...
+      Objects given;
+      ObjectHierarchy hier( given, objects, this);
+      hier.saveXML( doc, elem );
+      
+      doc.appendChild(elem);
+      
+      stream << doc.toCString();
+      
+      file.close();
+      
+      setModified ( false );
+      return true;
+    }
+  else
+    {
+      // we support saving to image files too...
+      QString type = KImageIO::type( m_file );
+      if( !KImageIO::canWrite( type ) )
+      	{
+	  KMessageBox::sorry( widget(), i18n("Image type not supported") );
+	  return false;
+	};
 
-  QDomDocument doc("KigDocument");
-  QDomElement elem = doc.createElement( "KigDocument" );
-  elem.setAttribute( "Version", "2.0.000" );
+      if( KMessageBox::warningYesNo( this, i18n("You are about to save your file to an image file.  When doing this, a lot of information is lost.  You can't load a saved image file back into kig.  Save to a normal .kig file if you still need to edit the file after exiting Kig.  Continue ?"), QString::null, KStdGuiItem::yes(), KStdGuiItem::no(), "kig_save_to_image_warning" ) != KMessageBox::Yes ) return false;
 
-  // saving is done very easily:
-  // we create an ObjectHierarchy with no "given" objects, and all
-  // objects as "final" objects...
-  Objects given;
-  ObjectHierarchy hier( given, objects, this);
-  hier.saveXML( doc, elem );
-  
-  doc.appendChild(elem);
-
-  stream << doc.toCString();
-
-  file.close();
-
-  setModified ( false );
-  return true;
-}
+      QImage im;
+      widget()->drawScreen( &im );
+      im.save( m_file, KImageIO::type( m_file ), -1 );
+      
+      return true; 
+    };
+};
 
 void KigDocument::addObject(Object* o)
 {

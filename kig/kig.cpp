@@ -1,3 +1,24 @@
+/**
+ This file is part of Kig, a KDE program for Interactive Geometry...
+ Copyright (C) 2002  Dominique Devriese
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+ USA
+**/
+
+
 /*
  * kig.cpp
  *
@@ -18,6 +39,7 @@
 #include <kdebug.h>
 #include <kapplication.h>
 #include <klocale.h>
+#include <kimageio.h>
 
 Kig::Kig()
   : KParts::MainWindow( 0L, "Kig" ),
@@ -223,7 +245,17 @@ void Kig::fileOpen()
 void Kig::fileSaveAs()
 {
   // this slot is connected to the KStdAction::saveAs action...
-  QString file_name = KFileDialog::getSaveFileName(":document", i18n("*.kig|Kig Documents (*.kig)\n*|All files (*)"));
+  QString formats;
+  formats = QString::fromUtf8("*.kig|Kig Documents (*.kig)");
+
+  formats += "\n";
+  formats += KImageIO::pattern( KImageIO::Writing );
+//   for( QStringList::iterator i = s.begin(); i != s.end(); ++i )
+//     {
+//       formats += "\n"
+//     };
+
+  QString file_name = KFileDialog::getSaveFileName(":document", formats );
   if (!file_name.isEmpty()) m_part->saveAs(file_name);
 }
 

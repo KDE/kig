@@ -1,3 +1,24 @@
+/**
+ This file is part of Kig, a KDE program for Interactive Geometry...
+ Copyright (C) 2002  Dominique Devriese
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+ USA
+**/
+
+
 #ifndef KIG_VIEW_H
 #define KIG_VIEW_H
 
@@ -20,6 +41,8 @@ class KigView
 public:
   KigView( KigDocument* inDoc, QWidget* parent = 0, const char* name = 0, bool inIsKiosk = false);
   ~KigView();
+
+  void drawScreen( QPaintDevice* d );
 
 public slots:
   void startKioskMode();
@@ -81,10 +104,9 @@ protected:
   // this means bitBlting "stillPix" on "curPix"
   void updateCurPix();
   // draw a single object (on p)
-  void drawObject(const Object* o, QPixmap& p);
+  void drawObject(const Object* o, KigPainter& p);
   // draw these objects (on p)
-  void drawObjects(const Objects& os, QPixmap& p);
-  void drawObjects(const Objects& os) { drawObjects(os, curPix); };
+  void drawObjects(const Objects& os, KigPainter& p);
   // draw the Text Being Displayed (on curPix)
   // @ref displayText()
   void drawTbd();
@@ -92,7 +114,7 @@ protected:
   // @ref isDraggingRect
   void drawRect();
   // draw the grid... (on stillPix)
-  void drawGrid();
+  void drawGrid( KigPainter& p );
   // draw the obc preliminarily... (i.e. before it's entirely
   // constructed) (on curPix)
   void drawPrelim(); 

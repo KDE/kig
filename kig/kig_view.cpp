@@ -1,3 +1,24 @@
+/**
+ This file is part of Kig, a KDE program for Interactive Geometry...
+ Copyright (C) 2002  Dominique Devriese
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+ USA
+**/
+
+
 #include "kig_view.h"
 #include "kig_view.moc"
 
@@ -300,17 +321,16 @@ void KigView::endKioskMode()
 void KigView::redrawStillPix()
 {
   stillPix.fill(Qt::white);
-  drawGrid();
+  KigPainter( this, &stillPix );
+  drawGrid( p );
   if (isMovingObjects) return;
-  drawObjects(document->getObjects(), stillPix);
+  drawObjects( document->getObjects(), p );
   bitBlt(&curPix, QPoint(0, 0), &stillPix, QRect(QPoint(0,0),size()));
   oldOverlay.push_back ( QRect( QPoint(0,0), size() ) );
 };
 
-void KigView::drawGrid()
+void KigView::drawGrid( KigPainter& p )
 {
-  KigPainter p( this, &stillPix );
-
   document->getCoordinateSystem()->drawGrid( p );
 };
 
@@ -353,9 +373,8 @@ void KigView::updateWidget( bool needRedraw )
   return;
 };
 
-void KigView::drawObject(const Object* o, QPixmap& pix)
+void KigView::drawObject(const Object* o, KigPainter& p)
 {
-  KigPainter p( this, &pix );
   o->drawWrap( p, true );
 };
 
@@ -399,9 +418,8 @@ void KigView::resizeEvent(QResizeEvent*)
   updateWidget(true);
 }
 
-void KigView::drawObjects(const Objects& os, QPixmap& p )
+void KigView::drawObjects(const Objects& os, KigPainter& p )
 {
-  KigPainter pt( this, &p );
   Objects::iterator it(os);
   Object* i;
   for (; (i = it.current()); ++it)
@@ -479,4 +497,11 @@ Rect KigView::matchScreenShape( const Rect& r )
   s.setCenter(c);
   kdDebug() << k_funcinfo << "output: " << s << endl;
   return s.normalized();
+}
+
+void KigView::drawScreen( QPaintDevice* d )
+{
+  KigPainter p( this, d );
+  drawGrid( p );
+  drawObjects( document->getObjects(), p );
 }
