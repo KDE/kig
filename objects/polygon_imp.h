@@ -84,6 +84,9 @@ public:
 
   bool equals( const ObjectImp& rhs ) const;
   bool isInPolygon( const Coordinate& p ) const;
+  int windingNumber() const;
+  bool isMonotoneSteering() const;
+  bool isConvex() const;
 };
 
 #endif

@@ -403,3 +403,75 @@ Rect PolygonImp::surroundingRect() const
   }
   return r;
 }
+
+int PolygonImp::windingNumber() const
+{
+  /*
+   * this is defined as the sum of the external angles while at
+   * all vertices, then normalized by 2pi.  The external angle
+   * is the angle we steer at each vertex while we walk along the
+   * boundary of the polygon.
+   * In the end we only need to count how many time we cross the (1,0)
+   * direction (positive x-axis) with a positive sign if we cross while
+   * steering left and a negative sign viceversa
+   */
+
+  int winding = 0;
+  uint npoints = mpoints.size();
+  Coordinate prevside = mpoints[0] - mpoints[npoints-1];
+  for ( uint i = 0; i < npoints; ++i )
+  {
+    uint nexti = i + 1;
+    if ( nexti >= npoints ) nexti = 0;
+    Coordinate side = mpoints[nexti] - mpoints[i];
+    double vecprod = side.x*prevside.y - side.y*prevside.x;
+    int steeringdir = ( vecprod > 0 ) ? 1 : -1;
+    if ( vecprod == 0.0 || side.y*prevside.y > 0 )
+    {
+      prevside = side;
+      continue;   // cannot cross the (1,0) direction
+    }
+    if ( side.y*steeringdir < 0 && prevside.y*steeringdir >= 0 )
+      winding -= steeringdir;
+    prevside = side;
+  }
+  return winding;
+}
+
+bool PolygonImp::isMonotoneSteering() const
+{
+  /*
+   * returns true if while walking along the boundary,
+   * steering is always in the same direction
+   */
+
+  uint npoints = mpoints.size();
+  Coordinate prevside = mpoints[0] - mpoints[npoints-1];
+  int prevsteeringdir = 0;
+  for ( uint i = 0; i < npoints; ++i )
+  {
+    uint nexti = i + 1;
+    if ( nexti >= npoints ) nexti = 0;
+    Coordinate side = mpoints[nexti] - mpoints[i];
+    double vecprod = side.x*prevside.y - side.y*prevside.x;
+    int steeringdir = ( vecprod > 0 ) ? 1 : -1;
+    if ( vecprod == 0.0 )
+    {
+      prevside = side;
+      continue;   // going straight
+    }
+    if ( prevsteeringdir*steeringdir < 0 ) return false;
+    prevside = side;
+    prevsteeringdir = steeringdir;
+  }
+  return true;
+}
+
+bool PolygonImp::isConvex() const
+{
+  if ( ! isMonotoneSteering() ) return false;
+  int winding = windingNumber();
+  if ( winding < 0 ) winding = -winding;
+  assert ( winding > 0 );
+  return winding == 1;
+}
