@@ -22,6 +22,7 @@
 #include "coordinate_system.h"
 
 #include "i18n.h"
+#include "common.h"
 
 #include <qpainter.h>
 #include <qregexp.h>
@@ -29,6 +30,7 @@
 
 #include <cmath>
 
+using std::ceil;
 using std::floor;
 using std::pow;
 
@@ -57,31 +59,39 @@ Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 void EuclideanCoords::drawGrid( KigPainter& p ) const
 {
   // the intervals:
-  const double hInterval =
-    pow( 10, floor( log10( p.window().width() / 2.5 ) ) );
-  const double vInterval = hInterval;
+  // we try to have one of them per 50 pixels or so..
+  const int numIntervals = static_cast<int>(
+    kigMin( p.window().width(), p.window().height() ) / p.pixelWidth() / 50 );
+  const double vInterval =
+    pow( 10, floor(
+             log10(
+                 kigMax(
+                     p.window().height(),
+                     p.window().width()
+                     ) * 2 / numIntervals ) ) );
+  const double hInterval = vInterval;
 
 
   // this grid comes largely from KGeo
   const double dMinX = p.window().left();
-  const int iMinX = static_cast<int>( dMinX / hInterval );
+  const int iMinX = static_cast<int>( ( dMinX + hInterval / 4 ) / hInterval );
   const double dMaxX = p.window().right();
-  const int iMaxX = static_cast<int>( dMaxX / hInterval );
+  const int iMaxX = static_cast<int>( ( dMaxX - hInterval / 4 ) / hInterval );
   const double dMinY = p.window().bottom();
-  const int iMinY = static_cast<int>( dMinY / vInterval );
+  const int iMinY = static_cast<int>( ( dMinY + hInterval / 4 ) / vInterval );
   const double dMaxY = p.window().top();
-  const int iMaxY = static_cast<int>( dMaxY / vInterval );
+  const int iMaxY = static_cast<int>( ( dMaxY - hInterval / 4 ) / vInterval );
 
   /****** the grid lines ******/
   p.setPen( QPen( lightGray, 0, DotLine ) );
   // vertical lines...
   for ( int i = iMinX; i <= iMaxX; ++i )
-    p.drawSegment( Coordinate( i * hInterval, dMinY ),
-		   Coordinate( i * hInterval, dMaxY ) );
+    p.drawSegment( Coordinate( i * hInterval, iMinY * vInterval ),
+		   Coordinate( i * hInterval, iMaxY * vInterval ) );
   // horizontal lines...
   for ( int i = iMinY; i <= iMaxY; ++i )
-    p.drawSegment( Coordinate( dMinX, i * vInterval ),
-		   Coordinate( dMaxX, i * vInterval ) );
+    p.drawSegment( Coordinate( iMinX * hInterval, i * vInterval ),
+		   Coordinate( iMaxX * hInterval, i * vInterval ) );
 
   /****** the axes ******/
   p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
@@ -104,7 +114,7 @@ void EuclideanCoords::drawGrid( KigPainter& p ) const
     if( i == 0 ) continue;
 
     p.drawText(
-      Rect( Coordinate( i * hInterval, 0 ), hStep*hInterval, -vInterval ).normalized(),
+      Rect( Coordinate( i * hInterval, 0 ), hStep*hInterval, -2*vInterval ).normalized(),
       QString().setNum( i * hInterval ),
       AlignLeft | AlignTop
       );
