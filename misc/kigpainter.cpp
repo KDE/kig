@@ -608,16 +608,22 @@ void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
   vect = vect * 6 / vectlen;
   orthvect = orthvect * 6 / vectlen;
 
-  std::vector<QPoint> arrow;
-  arrow.push_back( end );
-  arrow.push_back( end + orthvect + vect );
-  arrow.push_back( end + orthvect - vect );
+  QPointArray arrow( 3 );
+  arrow.setPoint( 0, end );
+  arrow.setPoint( 1, end + orthvect + vect );
+  arrow.setPoint( 2, end + orthvect - vect );
+//  std::vector<QPoint> arrow;
+//  arrow.push_back( end );
+//  arrow.push_back( end + orthvect + vect );
+//  arrow.push_back( end + orthvect - vect );
 
   setBrushStyle( Qt::SolidPattern );
-  drawPolygon( arrow );
+//  drawPolygon( arrow );
+  mP.drawPolygon( arrow, false, 0, -1 );
 
 //  if ( mNeedOverlay ) mOverlay.push_back( toScreen( r ) );
-  setWholeWinOverlay();
+  setWholeWinOverlay();   //mp: ugly! why not compute a correct overlay?
+                          //    mOverlay.push_back( arrow.boundingRect() ); 
 }
 
 void KigPainter::drawPolygon( const std::vector<Coordinate>& pts,

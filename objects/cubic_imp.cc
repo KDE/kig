@@ -268,35 +268,61 @@ const Coordinate CubicImp::getPoint( double p ) const
 
 const uint CubicImp::numberOfProperties() const
 {
-  // TODO ?
-  return Parent::numberOfProperties();
+  return Parent::numberOfProperties() + 1;
 }
 
 const QCStringList CubicImp::propertiesInternalNames() const
 {
-  return Parent::propertiesInternalNames();
+	QCStringList l = Parent::propertiesInternalNames();
+  l << "cartesian-equation";
+  assert( l.size() == CubicImp::numberOfProperties() );
+  return l;
+
 }
+
+/*
+ * cartesian equation property contributed by Carlo Sardi
+ */
 
 const QCStringList CubicImp::properties() const
 {
-  // TODO ?
-  return Parent::properties();
+ 	QCStringList l = Parent::properties();
+  l << I18N_NOOP( "Cartesian Equation" );
+  assert( l.size() == CubicImp::numberOfProperties() );
+  return l;
+
 }
 
 const ObjectImpType* CubicImp::impRequirementForProperty( uint which ) const
 {
-  return Parent::impRequirementForProperty( which );
+	if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return CubicImp::stype();
 }
 
 const char* CubicImp::iconForProperty( uint which ) const
 {
-  return Parent::iconForProperty( which );
+	int pnum = 0;
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  if ( which == Parent::numberOfProperties() + pnum++ )
+    return "text"; // cartesian equation string
+  else 
+		assert( false );
+  return "";
 }
 
 ObjectImp* CubicImp::property( uint which, const KigDocument& w ) const
 {
-  // TODO ?
-  return Parent::property( which, w );
+	int pnum = 0;
+
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+	if ( which == Parent::numberOfProperties() + pnum++ )
+    return new StringImp( cartesianEquationString( w ) );
+	else 
+		assert( false );
+	return new InvalidImp;
 }
 
 const CubicCartesianData CubicImp::data() const
@@ -378,4 +404,41 @@ Rect CubicImp::surroundingRect() const
   // it's probably possible to calculate this if it exists, but for
   // now we don't.
   return Rect::invalidRect();
+}
+
+QString CubicImp::cartesianEquationString( const KigDocument& ) const
+{
+  QString ret = i18n( "%7 x³+ %10 y³ + %8 x²y + %9 xy² +%6 y² + %4 x² + %5 xy + %2 x + %3 y + %1 = 0" );
+  ret = ret.arg( mdata.coeffs[0], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[1], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[2], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[3], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[4], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[5], 0, 'g', 3 );
+	ret = ret.arg( mdata.coeffs[6], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[7], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[8], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[9], 0, 'g', 3 );
+
+  return ret;
+/*	double a000 = mdata.coeffs[0];
+  double a001 = mdata.coeffs[1];
+  double a002 = mdata.coeffs[2];
+  double a011 = mdata.coeffs[3];
+  double a012 = mdata.coeffs[4];
+  double a022 = mdata.coeffs[5];
+  double a111 = mdata.coeffs[6];
+  double a112 = mdata.coeffs[7];
+  double a122 = mdata.coeffs[8];
+  double a222 = mdata.coeffs[9];*/
+	//
+//  // first the y^3 coefficient, it coming only from a222:
+//  double a = a222;
+//  // next the y^2 coefficient (from a122 and a022):
+//  double b = a122*x + a022;
+//  // next the y coefficient (from a112, a012 and a002):
+//  double c = a112*x*x + a012*x + a002;
+//  // finally the constant coefficient (from a111, a011, a001 and a000):
+//  double d = a111*x*x*x + a011*x*x + a001*x + a000;
+
 }
