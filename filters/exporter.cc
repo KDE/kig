@@ -135,9 +135,13 @@ class XFigExportImpVisitor
 
   QPoint convertCoord( const Coordinate& c )
     {
-      Coordinate ret = ( c - msr.bottomLeft() )*9450;
+      Coordinate ret = ( c - msr.bottomLeft() );
+      ret.y = msr.height() - ret.y;
+      kdDebug() << "msr: " << msr << endl
+                << "ret: " << ret << endl
+                << "c: " << c << endl;
+      ret *= 9450;
       ret /= msr.width();
-      ret.y = 9450 - ret.y;
       return ret.toQPoint();
     };
 public:
@@ -171,11 +175,9 @@ void XFigExportImpVisitor::visit( Object* obj )
 
 void XFigExportImpVisitor::visit( const LineImp* imp )
 {
-  Coordinate a = imp->data().a - mw.showingRect().bottomLeft();
-  Coordinate b = imp->data().b - mw.showingRect().bottomLeft();
-  Rect rect( Coordinate( 0, 0 ),
-             mw.showingRect().topRight() - mw.showingRect().bottomLeft() );
-  calcBorderPoints( a, b, rect );
+  Coordinate a = imp->data().a;
+  Coordinate b = imp->data().b;
+  calcBorderPoints( a, b, msr );
 
   mstream << "2 "; // polyline type;
   mstream << "1 "; // polyline subtype;
