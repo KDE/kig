@@ -207,3 +207,30 @@ ObjectImp* ConicBDFPType::calc( const Args& parents, const KigWidget& ) const
   };
   return new ConicImpPolar( calcConicBDFP( line, focus, point ) );
 }
+
+ParabolaBTPType::ParabolaBTPType()
+  : ObjectABCType( "conic", "ParabolaBTP" )
+{
+}
+
+ParabolaBTPType::~ParabolaBTPType()
+{
+}
+
+const ParabolaBTPType* ParabolaBTPType::instance()
+{
+  static const ParabolaBTPType t;
+  return &t;
+}
+
+ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigWidget& ) const
+{
+  if ( parents.size() < 2 ) return new InvalidImp;
+  std::vector<Coordinate> points;
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+      points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+  if ( points.size() < 2 ) return new InvalidImp;
+  return new ConicImpCart(
+    calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry ) );
+}

@@ -130,6 +130,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicbdfp" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      ParabolaBTPType::instance(),
+      I18N_NOOP( "Vertical Parabola by Three Points" ),
+      I18N_NOOP( "A vertical parabola constructed through three points" ),
+      "parabolabtp" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_parabolabtp" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;

@@ -84,4 +84,14 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
 };
 
+class ParabolaBTPType
+  : public ObjectABCType
+{
+  ParabolaBTPType();
+  ~ParabolaBTPType();
+public:
+  static const ParabolaBTPType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+};
+
 #endif
