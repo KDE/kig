@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<drgenius>
+  <drgeo name="Figure 1" scale="30.000000" origin_x="0.000000" origin_y="0.000000" grid="False">
+    <point id="827A5C0" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>-5.833333</x>
+      <y>2.950000</y>
+    </point>
+    <point id="8248660" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>-4.666666</x>
+      <y>-0.783334</y>
+    </point>
+    <point id="822A6B0" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>2.333334</x>
+      <y>-0.216667</y>
+    </point>
+    <line id="822BC80" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="827A5C0"/>
+      <parent ref="8248660"/>
+    </line>
+    <line id="8249A48" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="822A6B0"/>
+      <parent ref="8248660"/>
+    </line>
+    <angle id="82B86D8" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="822A6B0"/>
+      <parent ref="8248660"/>
+      <parent ref="827A5C0"/>
+    </angle>
+  </drgeo>
+</drgenius>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<drgenius>
+  <drgeo name="Figure 1" scale="30.000000" origin_x="0.000000" origin_y="0.000000" grid="False">
+    <point id="82257B8" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>-6.700000</x>
+      <y>2.250000</y>
+    </point>
+    <point id="8250458" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>0.266667</x>
+      <y>2.083333</y>
+    </point>
+    <point id="8250D30" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>-0.800000</x>
+      <y>-2.516667</y>
+    </point>
+    <point id="8255158" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>-2.766667</x>
+      <y>1.883333</y>
+    </point>
+    <point id="8226648" type="Middle_2pts" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <parent ref="82257B8"/>
+      <parent ref="8255158"/>
+    </point>
+    <halfLine id="8225B10" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8250D30"/>
+      <parent ref="8250458"/>
+    </halfLine>
+    <point id="82043A0" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>-2.833333</x>
+      <y>-0.983334</y>
+    </point>
+    <point id="8115668" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>1.500000</x>
+      <y>1.883333</y>
+    </point>
+    <point id="82AED28" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>-0.566667</x>
+      <y>3.983333</y>
+    </point>
+    <segment id="82B0888" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82257B8"/>
+      <parent ref="82AED28"/>
+    </segment>
+    <line id="82B1B80" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82043A0"/>
+      <parent ref="8115668"/>
+    </line>
+    <point id="82B26F0" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>-5.533333</x>
+      <y>-0.383333</y>
+    </point>
+    <vector id="82A3948" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <Ox>-2.800000</Ox>
+      <Oy>1.883333</Oy>
+      <parent ref="8255158"/>
+      <parent ref="82B26F0"/>
+    </vector>
+    <point id="82B4358" type="Free" color="Red" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <x>3.166667</x>
+      <y>-0.683333</y>
+    </point>
+    <circle id="82B5918" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82B4358"/>
+      <parent ref="8115668"/>
+    </circle>
+    <arcCircle id="82B5D30" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82257B8"/>
+      <parent ref="82B26F0"/>
+      <parent ref="8250D30"/>
+    </arcCircle>
+  </drgeo>
+</drgenius>
