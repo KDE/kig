@@ -249,46 +249,6 @@ LineRadical::LineRadical(const LineRadical& l)
   if( c2 ) c2->addChild( this );
 }
 
-void LineRadical::calc( const ScreenInfo& )
-{
-  Coordinate ce1, ce2, direc, startpoint;
-  double r1sq, r2sq, dsq, lambda;
-
-  ce1 = c1->getCenter();
-  ce2 = c2->getCenter();
-  // the radical line is not defined if the centers are the same...
-  if( ce1 == ce2 || !c1->valid() || !c2->valid() )
-  {
-    mvalid = false;
-  }
-  else
-  {
-    mvalid = true; // else always defined...
-
-    r1sq = c1->radius();
-    r1sq = r1sq * r1sq;
-    r2sq = c2->radius();
-    r2sq = r2sq * r2sq;
-
-    direc = ce2 - ce1;
-    startpoint = (ce1 + ce2)/2;
-
-    dsq = direc.squareLength();
-    if (dsq == 0)
-    {
-      lambda = 0.0;
-    }
-    else
-    {
-      lambda = (r1sq - r2sq) / dsq / 2;
-    }
-    direc *= lambda;
-    startpoint = startpoint + direc;
-    p1 = startpoint;
-    p2 = startpoint + direc.orthogonal();
-  };
-}
-
 Line* Line::toLine()
 {
   return this;
@@ -361,7 +321,7 @@ const char* LineParallel::sActionName()
 
 const char* LineRadical::sActionName()
 {
-  return "objects_new_radicalline";
+  return "objects_new_lineradical";
 }
 
 Line::Line( const Line& l )
@@ -565,6 +525,38 @@ LineRadical::LineRadical( const Objects& os )
   c2->addChild( this );
 }
 
+Coordinate calcRadicalStartPoint( const Coordinate& ca, const Coordinate& cb,
+                                  double sqra, double sqrb )
+{
+  Coordinate direc = cb - ca;
+  Coordinate m = (ca + cb)/2;
+
+  double dsq = direc.squareLength();
+  double lambda = dsq == 0.0 ? 0.0
+                  : (sqra - sqrb) / (2*dsq);
+
+  direc *= lambda;
+  return m + direc;
+};
+
+void LineRadical::calc( const ScreenInfo& )
+{
+  Coordinate ce1 = c1->getCenter();
+  Coordinate ce2 = c2->getCenter();
+  // the radical line is not defined if the centers are the same...
+  if( ce1 == ce2 || !c1->valid() || !c2->valid() )
+  {
+    mvalid = false;
+  }
+  else
+  {
+    mvalid = true; // else always defined...
+
+    p1 = calcRadicalStartPoint( ce1, ce2, c1->squareRadius(), c2->squareRadius() );
+    p2 = calcPointOnPerpend( ce1, ce2, p1 );
+  };
+}
+
 void LineRadical::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 2 ) return;
@@ -573,17 +565,23 @@ void LineRadical::sDrawPrelim( KigPainter& p, const Objects& os )
   assert ( ca && cb );
   Coordinate pa = ca->getCenter();
   Coordinate pb = cb->getCenter();
-  Coordinate m = ( pa + pb ) / 2;
+  Coordinate s = calcRadicalStartPoint( pa, pb, ca->squareRadius(), cb->squareRadius() );
   p.setPen( QPen (Qt::red,1) );
-  p.drawLine( m, calcPointOnPerpend( pa, pb, m ) );
+  p.drawLine( s, calcPointOnPerpend( pa, pb, s ) );
 }
 
 Object::WantArgsResult LineRadical::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   if ( size != 1 && size != 2 ) return NotGood;
+  // we don't want the same circle twice...
+  Circle* c = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
     if ( ! (*i)->toCircle() ) return NotGood;
+    else if( c == (*i)->toCircle() ) return NotGood;
+    else c = (*i)->toCircle();
+  };
   return size == 2 ? Complete : NotComplete;
 }
 
