@@ -22,6 +22,8 @@
 #include "point_imp.h"
 #include "bogus_imp.h"
 
+#include <vector>
+
 static const struct ArgParser::spec argsspec9p[] =
 {
   { ObjectImp::ID_PointImp, 9 }
@@ -110,7 +112,7 @@ ObjectImp* CubicCuspB4PType::calc( const Args& parents ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   if ( parents.size() > 4 ) return new InvalidImp;
-  vector<Coordinate> points;
+  std::vector<Coordinate> points;
 
   for ( uint i = 0; i < parents.size(); ++i )
   {
