@@ -126,37 +126,57 @@ void IntersectionPoint::calc()
 
 Point IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3, const Point& p4)
 {
-  long double xa = p1.getX(),
-    xb = p2.getX(),
-    xc = p3.getX(),
-    xd = p4.getX();
-  long double ya = p1.getY(),
-    yb = p2.getY(),
-    yc = p3.getY(),
-    yd = p4.getY();
-  
-  long double a = (yb-ya)/(xb-xa);
-  long double b = (yd-yc)/(xd-xc);
+  double
+    dxa = p1.getX(),
+    dxb = p2.getX(),
+    dxc = p3.getX(),
+    dxd = p4.getX();
+  double
+    dya = p1.getY(),
+    dyb = p2.getY(),
+    dyc = p3.getY(),
+    dyd = p4.getY();
+  Line::calcEndPoints( dxa, dxb, dya, dyb, QRect(0,0,500,500));
+  Line::calcEndPoints( dxc, dxd, dyc, dyd, QRect(0,0,500,500));
+
+  long double xa=dxa;
+  long double xb=dxb;
+  long double xc=dxc;
+  long double xd=dxd;
+
+  long double ya=dya;
+  long double yb=dyb;
+  long double yc=dyc;
+  long double yd=dyd;
   
   long double nx, ny;
-  if ((fabsl(xb - xa)> 1) && (fabsl(xd - xc) > 1))
-  {
-    nx = (yc - ya + xa*a - xc*b)/(a-b);
-    ny = (nx-xa)*a+ya;
-  }
-  else {
-    kdDebug() << k_funcinfo << "damn" << endl;
-    // we would have had a divide by zero
-    if (fabsl(xb - xa) <= 1) {
-      // xa == xb --> the first line is almost vertical
-      nx = (xb+xa)/2;
-      ny = (nx-xc)*b+yc;
-    }
-    else if ( fabs(xd - xc) <= 1 ) {
-      // the other line is almost vertical
-      nx = (xd+xc)/2;
+  if ((fabsl(xb - xa)> 0.5) && (fabsl(xd - xc) > 0.5))
+    {
+      long double a = (yb-ya)/(xb-xa);
+      long double b = (yd-yc)/(xd-xc);
+      nx = (yc - ya + xa*a - xc*b)/(a-b);
       ny = (nx-xa)*a+ya;
     }
-  }
+  else
+    {
+      // we would have had a divide by zero
+      if ( fabsl( yb-ya ) > 0.5 && fabsl( yd-yc ) > 0.5 )
+	{
+	  // so now, we first calc the y values, and then the x's...
+	  long double a = (xb-xa)/(yb-ya);
+	  long double b = (xd-xc)/(yd-yc);
+	  ny = ( xc - xa + ya*a - yc*b ) / (a-b);
+	  nx = ( ny - ya)*a + xa;
+	}
+      else
+	{
+	  if ( fabsl(yb-ya) <= 0.5 )
+	    {
+#warning TODO !!!!!
+//	    FIXME: what to do now ?
+	      kdDebug() << "damn" << endl;
+	    };
+	};
+    }
   return Point( nx, ny );
 };
