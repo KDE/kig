@@ -58,7 +58,6 @@ int BogusImp::impRequirementForProperty( uint which ) const
 
 ObjectImp* BogusImp::property( uint, const KigDocument& ) const
 {
-  assert( false );
   return new InvalidImp;
 }
 
