@@ -158,6 +158,7 @@ void ConstrainedPoint::moveTo(const Coordinate& pt)
 bool ConstrainedPoint::selectArg( Object* o)
 {
   if (!c) c = Object::toCurve(o);
+  c->addChild( this );
   return c;
 }
 QString ConstrainedPoint::wantArg(const Object* o) const

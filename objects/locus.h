@@ -23,7 +23,7 @@ class Locus
 {
 public:
   // number of points to include, i think this is a nice default...
-  static const int numberOfSamples = 300;
+  static const int numberOfSamples = 500;
 public:
   Locus() : cp(0), obj(0), hierarchy(0) { };
   ~Locus() { objs.deleteAll(); };

@@ -5,11 +5,11 @@
 #include <kdebug.h>
 
 /**
- * Locus: the calc routines of this class are quite unusual:
+ * Locus: the calc routines of this class are a bit unusual:
  * if( !isPointLocus() ) all is as usual...
  * but otherwise, we try to find better points by keeping the window()
  * from the last draw, and only taking the points which are in that
- * rect... this is what realCalc() and calc() is about...
+ * rect...
  */
 
 void Locus::draw(KigPainter& p, bool ss) const
