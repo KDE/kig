@@ -538,5 +538,5 @@ void NormalPoint::doNormalAction( int which, KigDocument* d, KigWidget* v, Norma
 
 bool NormalPoint::isa( int type ) const
 {
-  return type == ConstrainedPointT ? constrainedImp() : Parent::isa( type );
+  return type == ConstrainedPointT ? !!constrainedImp() : Parent::isa( type );
 }
