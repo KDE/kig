@@ -114,3 +114,13 @@ const char* LocusImp::baseName() const
 {
   return I18N_NOOP( "locus" );
 }
+
+const CurveImp* LocusImp::curve() const
+{
+  return mcurve;
+}
+
+const ObjectHierarchy& LocusImp::hierarchy() const
+{
+  return mhier;
+}

@@ -50,6 +50,9 @@ public:
 
   double getParam( const Coordinate& point ) const;
   const Coordinate getPoint( double param ) const;
+
+  const CurveImp* curve() const;
+  const ObjectHierarchy& hierarchy() const;
 };
 
 #endif
