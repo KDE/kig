@@ -1,146 +1,111 @@
 <!DOCTYPE KigDocument>
-<KigDocument Version="0.3.0" >
- <ObjectHierarchy>
-  <HierarchyElement given="false" typeName="NormalPoint" id="1" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >-6.73585</param>
-   <param name="y" >-1.0566</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="2" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >-2.99371</param>
-   <param name="y" >2.15723</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="CircleBCP" id="3" final="true" >
-   <parent id="1" />
-   <parent id="2" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="4" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >-5.45912</param>
-   <param name="y" >4.40252</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="5" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >-6.16352</param>
-   <param name="y" >2.11321</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="Segment" id="6" final="true" >
-   <parent id="4" />
-   <parent id="5" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="CircleLineIntersectionPoint" id="7" final="true" >
-   <parent id="3" />
-   <parent id="6" />
-   <param name="circlelineintersect-side" >first</param>
-   <param name="color" >#0000ff</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="CircleLineIntersectionPoint" id="8" final="true" >
-   <parent id="3" />
-   <parent id="6" />
-   <param name="circlelineintersect-side" >second</param>
-   <param name="color" >#0000ff</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="9" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >-12.1069</param>
-   <param name="y" >1.0566</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="10" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >2.50943</param>
-   <param name="y" >-1.10063</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineTTP" id="11" final="true" >
-   <parent id="9" />
-   <parent id="10" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="ConicLineIntersectionPoint" id="12" final="true" >
-   <parent id="3" />
-   <parent id="11" />
-   <param name="color" >#0000ff</param>
-   <param name="coniclineintersect-side" >1</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="ConicLineIntersectionPoint" id="13" final="true" >
-   <parent id="3" />
-   <parent id="11" />
-   <param name="color" >#0000ff</param>
-   <param name="coniclineintersect-side" >-1</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="14" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >1.84906</param>
-   <param name="y" >1.45283</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="15" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >7.04403</param>
-   <param name="y" >1.49686</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="16" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >6.42767</param>
-   <param name="y" >-0.440252</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="HyperbolaBFFP" id="17" final="true" >
-   <parent id="14" />
-   <parent id="15" />
-   <parent id="16" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineConicAsymptotes" id="18" final="true" >
-   <parent id="17" />
-   <param name="color" >#0000ff</param>
-   <param name="lineconicasymptotes-branch" >1</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineConicAsymptotes" id="19" final="true" >
-   <parent id="17" />
-   <param name="color" >#0000ff</param>
-   <param name="lineconicasymptotes-branch" >-1</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
- </ObjectHierarchy>
+<KigDocument Version="0.6.0" >
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Objects>
+  <Data internal="true" type="double" id="1" >-6.73585</Data>
+  <Data internal="true" type="double" id="2" >-1.0566</Data>
+  <Data internal="true" type="double" id="3" >-2.92721</Data>
+  <Data internal="true" type="double" id="4" >2.22373</Data>
+  <Data internal="true" type="double" id="5" >-5.45912</Data>
+  <Data internal="true" type="double" id="6" >4.40252</Data>
+  <Data internal="true" type="double" id="7" >-6.16352</Data>
+  <Data internal="true" type="double" id="8" >2.11321</Data>
+  <Data internal="true" type="int" id="9" >-1</Data>
+  <Data internal="true" type="int" id="10" >1</Data>
+  <Data internal="true" type="double" id="11" >-12.1069</Data>
+  <Data internal="true" type="double" id="12" >1.0566</Data>
+  <Data internal="true" type="double" id="13" >2.50943</Data>
+  <Data internal="true" type="double" id="14" >-1.10063</Data>
+  <Data internal="true" type="int" id="15" >1</Data>
+  <Data internal="true" type="int" id="16" >-1</Data>
+  <Data internal="true" type="double" id="17" >1.84906</Data>
+  <Data internal="true" type="double" id="18" >1.45283</Data>
+  <Data internal="true" type="double" id="19" >7.04403</Data>
+  <Data internal="true" type="double" id="20" >1.49686</Data>
+  <Data internal="true" type="double" id="21" >6.42767</Data>
+  <Data internal="true" type="double" id="22" >-0.440252</Data>
+  <Data internal="true" type="int" id="23" >1</Data>
+  <Data internal="true" type="int" id="24" >-1</Data>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="25" color="#0000ff" >
+   <Parent id="1" />
+   <Parent id="2" />
+  </Object>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="26" color="#0000ff" >
+   <Parent id="3" />
+   <Parent id="4" />
+  </Object>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="27" color="#0000ff" >
+   <Parent id="5" />
+   <Parent id="6" />
+  </Object>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="28" color="#0000ff" >
+   <Parent id="7" />
+   <Parent id="8" />
+  </Object>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="29" color="#0000ff" >
+   <Parent id="11" />
+   <Parent id="12" />
+  </Object>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="30" color="#0000ff" >
+   <Parent id="13" />
+   <Parent id="14" />
+  </Object>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="31" color="#0000ff" >
+   <Parent id="17" />
+   <Parent id="18" />
+  </Object>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="32" color="#0000ff" >
+   <Parent id="19" />
+   <Parent id="20" />
+  </Object>
+  <Object width="5" internal="false" shown="true" type="FixedPoint" id="33" color="#0000ff" >
+   <Parent id="21" />
+   <Parent id="22" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="CircleBCP" id="34" color="#0000ff" >
+   <Parent id="25" />
+   <Parent id="26" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="SegmentAB" id="35" color="#0000ff" >
+   <Parent id="27" />
+   <Parent id="28" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="LineAB" id="36" color="#0000ff" >
+   <Parent id="29" />
+   <Parent id="30" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="HyperbolaBFFP" id="37" color="#0000ff" >
+   <Parent id="31" />
+   <Parent id="32" />
+   <Parent id="33" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="ConicLineIntersection" id="38" color="#0000ff" >
+   <Parent id="34" />
+   <Parent id="35" />
+   <Parent id="9" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="ConicLineIntersection" id="39" color="#0000ff" >
+   <Parent id="34" />
+   <Parent id="35" />
+   <Parent id="10" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="ConicLineIntersection" id="40" color="#0000ff" >
+   <Parent id="34" />
+   <Parent id="36" />
+   <Parent id="15" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="ConicLineIntersection" id="41" color="#0000ff" >
+   <Parent id="34" />
+   <Parent id="36" />
+   <Parent id="16" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="ConicAsymptote" id="42" color="#0000ff" >
+   <Parent id="37" />
+   <Parent id="23" />
+  </Object>
+  <Object width="-1" internal="false" shown="true" type="ConicAsymptote" id="43" color="#0000ff" >
+   <Parent id="37" />
+   <Parent id="24" />
+  </Object>
+ </Objects>
 </KigDocument>
