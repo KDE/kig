@@ -22,6 +22,7 @@
 
 #include "../misc/hierarchy.h"
 #include "../misc/calcpaths.h"
+#include "../misc/coordinate.h"
 #include "../misc/type.h"
 #include "../misc/i18n.h"
 
@@ -131,9 +132,31 @@ MacroObjectOne::MacroObjectOne(const MacroObjectOne& m)
 }
 
 MacroObject::MacroObject( const MacroObject& m )
-  : Object( m ), hier( m.hier ), arguments( m.arguments )
+  : Curve( m ), hier( m.hier ), arguments( m.arguments )
 {
   std::for_each( arguments.begin(), arguments.end(),
                  std::bind2nd(
                      std::mem_fun( &Object::addChild ), this ) );
+}
+
+Curve* MacroObjectOne::toCurve()
+{
+  return final->toCurve() ? this : 0;
+}
+
+double MacroObjectOne::getParam( const Coordinate& c ) const
+{
+  assert( toCurve() );
+  return final->toCurve()->getParam( c );
+}
+
+Coordinate MacroObjectOne::getPoint( double param ) const
+{
+  assert( toCurve() );
+  return final->toCurve()->getPoint( param );
+}
+
+const Curve* MacroObjectOne::toCurve() const
+{
+  return final->toCurve() ? this : 0;
 }

@@ -90,22 +90,37 @@ Coordinate Locus::getPoint( double param ) const
   // save the old param..
   double tmp = cp->constrainedImp()->getP();
   cp->constrainedImp()->setP(param);
+  Rect __tr;
+  ScreenInfo si ( __tr, QRect() );
+  cp->calc( si );
 
   // calc the new coord..
   // hack... hope no-one tries recursive Locuses...
-  calcpath.calc( ScreenInfo( Rect(), QRect() ) );
+  calcpath.calc( si );
   Coordinate t = mp->getCoord();
 
   // restore the old param...
   cp->constrainedImp()->setP(tmp);
+  cp->calc( si );
   // hack... hope no-one tries recursive Locuses...
-  calcpath.calc( ScreenInfo( Rect(), QRect() ) );
+  calcpath.calc( si );
   return t;
 }
 
-double Locus::getParam(const Coordinate&) const
+double Locus::getParam( const Coordinate& p ) const
 {
-  return 0.5;
+  double optimalparam = 0.5;
+  double optimaldistance = 10000000;
+  for ( CPts::const_iterator i = pts.begin(); i != pts.end(); ++i )
+  {
+    double dist = ( i->pt - p ).length();
+    if ( dist < optimaldistance )
+    {
+      optimalparam = i->pm;
+      optimaldistance = dist;
+    };
+  };
+  return optimalparam;
 }
 
 inline Locus::CPts::iterator Locus::addPoint( double param, const ScreenInfo& r )

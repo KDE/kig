@@ -21,14 +21,14 @@
 #ifndef MACRO_H
 #define MACRO_H
 
-#include "object.h"
+#include "curve.h"
 
 class ObjectHierarchy;
 class ScreenInfo;
 class MType;
 
 class MacroObject
-  : public Object
+  : public Curve
 {
 public:
   MacroObject( ObjectHierarchy* inHier, const Objects& args );
@@ -70,6 +70,11 @@ public:
   const QString vDescription() const { return 0; };
   const QCString vIconFileName() const { return 0; };
   Objects getParents() const { return arguments; };
+
+  Curve* toCurve();
+  const Curve* toCurve() const;
+  double getParam( const Coordinate& c ) const;
+  Coordinate getPoint( double param ) const;
 };
 
 // class MacroObjectMulti
