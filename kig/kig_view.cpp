@@ -22,6 +22,7 @@
 #include "kig_view.moc"
 
 #include "kig_part.h"
+#include "exporttoimagedialog.h"
 #include "../objects/object.h"
 #include "../objects/point.h"
 #include "../misc/coordinate_system.h"
@@ -447,5 +448,6 @@ KigWidget* KigView::realWidget()
 
 void KigView::slotExportToImage()
 {
-
+  ExportToImageDialog* d = new ExportToImageDialog( this, mdoc );
+  d->exec();
 }

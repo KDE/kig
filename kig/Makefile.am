@@ -42,7 +42,8 @@ kde_module_LTLIBRARIES = libkigpart.la
 
 # the Part's source, library search path, and link libraries
 libkigpart_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp \
-			constructactions.cc kig_actions.cpp
+			constructactions.cc kig_actions.cpp \
+			exporttoimagedialogbase.ui exporttoimagedialog.cc
 libkigpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkigpart_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) ../misc/libmisc.la \
 			../objects/libobjects.la ../filters/libfilters.la \

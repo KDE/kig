@@ -145,7 +145,7 @@
                                         </widget>
                                         <widget class="KIntNumInput">
                                             <property name="name">
-                                                <cstring>KIntNumInput1</cstring>
+                                                <cstring>WidthInput</cstring>
                                             </property>
                                             <property name="minValue">
                                                 <number>0</number>
@@ -180,7 +180,7 @@
                                         </widget>
                                         <widget class="KIntNumInput">
                                             <property name="name">
-                                                <cstring>KIntNumInput2</cstring>
+                                                <cstring>HeightInput</cstring>
                                             </property>
                                             <property name="minValue">
                                                 <number>0</number>
