@@ -714,3 +714,13 @@ void KigPainter::drawLine( const LineData& d )
   LineData l = calcBorderPoints( d, window() );
   drawSegment( l.a, l.b );
 }
+
+void KigPainter::drawSegment( const LineData& d )
+{
+  drawSegment( d.a, d.b );
+}
+
+void KigPainter::drawRay( const LineData& d )
+{
+  drawRay( d.a, d.b );
+}

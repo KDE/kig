@@ -141,11 +141,13 @@ public:
    * draw a segment...
    */
   void drawSegment ( const Coordinate& from, const Coordinate& to );
+  void drawSegment( const LineData& d );
 
   /**
    * draw a ray...
    */
   void drawRay( const Coordinate& a, const Coordinate& b );
+  void drawRay( const LineData& d );
 
   /**
    * draw a line...

@@ -144,19 +144,19 @@ const Coordinate calcMirrorPoint( const LineData& l,
  * is o on the line defined by point a and point b ?
  * fault is the allowed difference...
  */
-bool isOnLine( const Coordinate o, const Coordinate a,
-               const Coordinate b, const double fault );
+bool isOnLine( const Coordinate& o, const Coordinate& a,
+               const Coordinate& b, const double fault );
 
 /**
  * is o on the segment defined by point a and point b ?
  * this calls isOnLine(), but also checks if o is "between" a and b...
  * fault is the allowed difference...
  */
-bool isOnSegment( const Coordinate o, const Coordinate a,
-                  const Coordinate b, const double fault );
+bool isOnSegment( const Coordinate& o, const Coordinate& a,
+                  const Coordinate& b, const double fault );
 
-bool isOnRay( const Coordinate o, const Coordinate a,
-              const Coordinate b, const double fault );
+bool isOnRay( const Coordinate& o, const Coordinate& a,
+              const Coordinate& b, const double fault );
 
 Coordinate calcCircleRadicalStartPoint( const Coordinate& ca,
                                         const Coordinate& cb,

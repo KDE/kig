@@ -232,8 +232,8 @@ void calcRayBorderPoints( const double xa, const double ya, double& xb,
   kdError() << k_funcinfo << "damn" << endl;
 };
 
-bool isOnLine( const Coordinate o, const Coordinate a,
-               const Coordinate b, const double fault )
+bool isOnLine( const Coordinate& o, const Coordinate& a,
+               const Coordinate& b, const double fault )
 {
   double x1 = a.x;
   double y1 = a.y;
@@ -256,8 +256,8 @@ bool isOnLine( const Coordinate o, const Coordinate a,
   // homogeneous ones, so all z's equal 1
 };
 
-bool isOnSegment( const Coordinate o, const Coordinate a,
-                  const Coordinate b, const double fault )
+bool isOnSegment( const Coordinate& o, const Coordinate& a,
+                  const Coordinate& b, const double fault )
 {
   return isOnLine( o, a, b, fault )
     // not too far to the right
@@ -270,8 +270,8 @@ bool isOnSegment( const Coordinate o, const Coordinate a,
     && ( o.y - kigMax (a.y, b.y) < fault );
 };
 
-bool isOnRay( const Coordinate o, const Coordinate a,
-              const Coordinate b, const double fault )
+bool isOnRay( const Coordinate& o, const Coordinate& a,
+              const Coordinate& b, const double fault )
 {
   return isOnLine( o, a, b, fault )
     // not too far in front of a horizontally..
