@@ -268,7 +268,7 @@ void Object::doPopupAction( int popupid, int actionid, KigDocument* doc, KigWidg
     uint pid = static_cast<uint>( actionid );
     assert( property( pid, *w ).type() == Property::Coord );
     Object* o = new CoordinatePropertyPoint( this, pid );
-    o->calc();
+    o->calcForWidget( *w );
     doc->addObject( o );
     w->redrawScreen();
   }
