@@ -60,8 +60,6 @@ class CircleBTPType
   CircleBTPType();
   ~CircleBTPType();
 
-  const Coordinate calcCenter( const Coordinate& a, const Coordinate& b,
-                               const Coordinate& b ) const;
 public:
   static const CircleBTPType* instance();
 

@@ -22,6 +22,8 @@
 #include "bogus_imp.h"
 #include "point_imp.h"
 
+#include "../misc/common.h"
+
 static const char* constructcirclethroughpointstat = I18N_NOOP( "Construct a circle through this point" );
 
 static const ArgParser::spec argsspecCircleBCP[] =
@@ -117,40 +119,6 @@ ObjectImp* CircleBTPType::calc( const Args& targs, const KigDocument& ) const
 
   const Coordinate center = calcCenter( a, b, c );
   return new CircleImp( center, (center - a ).length() );
-}
-
-const Coordinate CircleBTPType::calcCenter(
-  const Coordinate& a, const Coordinate& b, const Coordinate& c ) const
-{
-  // this algorithm is written by my brother, Christophe Devriese
-  // <oelewapperke@ulyssis.org> ...
-  // I don't get it myself :)
-
-  double xdo = b.x-a.x;
-  double ydo = b.y-a.y;
-
-  double xao = c.x-a.x;
-  double yao = c.y-a.y;
-
-  double a2 = xdo*xdo + ydo*ydo;
-  double b2 = xao*xao + yao*yao;
-
-  double numerator = (xdo * yao - xao * ydo);
-  if ( numerator == 0 )
-  {
-    // problem:  xdo * yao == xao * ydo <=> xdo/ydo == xao / yao
-    // this means that the lines ac and ab have the same direction,
-    // which means they're the same line..
-    // FIXME: i would normally throw an error here, but KDE doesn't
-    // use exceptions, so i'm returning a bogus point :(
-    return (a+c)/2;
-  };
-  double denominator = 0.5 / numerator;
-
-  double centerx = a.x - (ydo * b2 - yao * a2) * denominator;
-  double centery = a.y + (xdo * b2 - xao * a2) * denominator;
-
-  return Coordinate(centerx, centery);
 }
 
 int CircleBCPType::resultId() const
