@@ -159,7 +159,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
 
   for ( int i = TransformMenu; i <= ToplevelMenu; ++i )
   {
-    int nextfree = 2;
+    int nextfree = 10;
     for ( uint j = 0; j < mproviders.size(); ++j )
       mproviders[j]->fillUpMenu( *this, i, nextfree );
   };
@@ -172,10 +172,11 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
       i18n( "Set Color" ),
       i18n( "Set Size" )
     };
+  int index = 1;
   for ( int i = 0; i < 6; ++i )
   {
     if ( mmenus[i]->count() == 0 ) continue;
-    insertItem( menunames[i], mmenus[i] );
+    insertItem( menunames[i], mmenus[i], i, index++ );
   };
 }
 
