@@ -130,12 +130,29 @@ public slots:
   // update one object on the screen...
   void updateObject(const Object* o)
   {
-    drawObject(o, stillPix);
-    drawObject(o, curPix);
+    {
+      KigPainter p( this, &stillPix );
+      drawObject(o, p);
+    }
+    {
+      KigPainter p( this, &curPix );
+      drawObject(o, p);
+    };
     updateWidget();
   };
   // update a few objects...
-  void updateObjects(const Objects& o) { drawObjects(o); updateWidget(); };
+  void updateObjects(const Objects& o)
+  {
+    {
+      KigPainter p( this, &stillPix );
+      drawObjects(o, p);
+    }
+    {
+      KigPainter p( this, &curPix );
+      drawObjects(o, p);
+    };
+    updateWidget();
+  };
 
 public:
   // the part of the document we're currently showing, this is

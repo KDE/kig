@@ -355,12 +355,12 @@ bool KigDocument::saveFile()
   QFile file(m_file);
   if (file.open(IO_WriteOnly) == false)
     {
-      KMessagebox::error( this, i18n("Could not open file %1").arg(m_file) );
+      KMessageBox::error( widget(), i18n("Could not open file %1").arg(m_file) );
       return false;
     };
 
-  if( KMimeType::findByURL( m_file, 0, true, true )->name() == QString::fromUtf8("application/x-kig") )
-    {
+//   if( KMimeType::findByURL( m_file, 0, true, true )->name() == QString::fromUtf8("application/x-kig") )
+//     {
       
       QTextStream stream(&file);
       
@@ -383,25 +383,25 @@ bool KigDocument::saveFile()
       
       setModified ( false );
       return true;
-    }
-  else
-    {
-      // we support saving to image files too...
-      QString type = KImageIO::type( m_file );
-      if( !KImageIO::canWrite( type ) )
-      	{
-	  KMessageBox::sorry( widget(), i18n("Image type not supported") );
-	  return false;
-	};
+//     }
+//   else
+//     {
+//       // we support saving to image files too...
+//       QString type = KImageIO::type( m_file );
+//       if( !KImageIO::canWrite( type ) )
+//       	{
+// 	  KMessageBox::sorry( widget(), i18n("Image type not supported") );
+// 	  return false;
+// 	};
 
-      if( KMessageBox::warningYesNo( this, i18n("You are about to save your file to an image file.  When doing this, a lot of information is lost.  You can't load a saved image file back into kig.  Save to a normal .kig file if you still need to edit the file after exiting Kig.  Continue ?"), QString::null, KStdGuiItem::yes(), KStdGuiItem::no(), "kig_save_to_image_warning" ) != KMessageBox::Yes ) return false;
+//       if( KMessageBox::warningYesNo( widget(), i18n("You are about to save your file to an image file.  When doing this, a lot of information is lost.  You can't load a saved image file back into kig.  Save to a normal .kig file if you still need to edit the file after exiting Kig.  Continue ?"), QString::null, KStdGuiItem::yes(), KStdGuiItem::no(), "kig_save_to_image_warning" ) != KMessageBox::Yes ) return false;
 
-      QImage im;
-      widget()->drawScreen( &im );
-      im.save( m_file, KImageIO::type( m_file ), -1 );
+//       QImage im;
+//       widget()->drawScreen( &im );
+//       im.save( m_file, KImageIO::type( m_file ), -1 );
       
-      return true; 
-    };
+//       return true; 
+//     };
 };
 
 void KigDocument::addObject(Object* o)

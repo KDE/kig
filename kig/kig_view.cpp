@@ -120,7 +120,8 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
     {
       updateCurPix();
       document->moveSosTo(fromScreen(pmt));
-      drawObjects(document->getMovingObjects(), curPix);
+      KigPainter p( this, &curPix );
+      drawObjects(document->getMovingObjects(), p);
       updateWidget(false);
       return;
     };
@@ -180,7 +181,8 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
 	  Objects stillObjs;
 	  document->startMovingSos(fromScreen(plc),stillObjs);
 	  redrawStillPix();
-	  drawObjects(stillObjs, stillPix);
+	  KigPainter p( this, &stillPix );
+	  drawObjects(stillObjs, p);
 	  updateCurPix();
 	  // we immediately show our changes by calling ourselves
 	  // again... 
@@ -321,7 +323,7 @@ void KigView::endKioskMode()
 void KigView::redrawStillPix()
 {
   stillPix.fill(Qt::white);
-  KigPainter( this, &stillPix );
+  KigPainter p( this, &stillPix );
   drawGrid( p );
   if (isMovingObjects) return;
   drawObjects( document->getObjects(), p );
@@ -423,7 +425,7 @@ void KigView::drawObjects(const Objects& os, KigPainter& p )
   Objects::iterator it(os);
   Object* i;
   for (; (i = it.current()); ++it)
-    i->drawWrap( pt, true );
+    i->drawWrap( p, true );
 }
 
 void KigView::updateCurPix()

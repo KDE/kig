@@ -248,12 +248,8 @@ void Kig::fileSaveAs()
   QString formats;
   formats = QString::fromUtf8("*.kig|Kig Documents (*.kig)");
 
-  formats += "\n";
-  formats += KImageIO::pattern( KImageIO::Writing );
-//   for( QStringList::iterator i = s.begin(); i != s.end(); ++i )
-//     {
-//       formats += "\n"
-//     };
+  //  formats += "\n";
+  //  formats += KImageIO::pattern( KImageIO::Writing );
 
   QString file_name = KFileDialog::getSaveFileName(":document", formats );
   if (!file_name.isEmpty()) m_part->saveAs(file_name);
