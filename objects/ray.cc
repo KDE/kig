@@ -245,3 +245,8 @@ bool Ray::isa( int type ) const
 {
   return type == RayT ? true : Parent::isa( type );
 }
+
+Ray::Ray( const Ray& s )
+  : AbstractLine( s ), mpa( s.mpa ), mpb( s.mpb )
+{
+}
