@@ -172,16 +172,17 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
     case G_POINT:
     {
       RealObject* point = 0;
-      if ( nparents == 0 )
+      switch( descendtype )
       {
+      case G_FREE_POINT:
         // fixed point
+        if ( nparents != 0 ) return ParseError;
         Coordinate c = readKSegCoordinate( stream );
         Objects os = ObjectFactory::instance()->fixedPoint( c );
         point = static_cast<RealObject*>( os[2] );
         copy( os.begin(), os.begin() + 2, back_inserter( ret ) );
-      }
-      else
-      {
+        break;
+      case G_CONSTRAINED_POINT:
         // constrained point
         double p;
         stream >> p;
@@ -191,6 +192,16 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         Objects os = ObjectFactory::instance()->constrainedPoint( parent, p );
         point = static_cast<RealObject*>( os[1] );
         ret.push_back( os[0] );
+        break;
+      case G_INTERSECTION_POINT:
+        break;
+      case G_INTERSECTION2_POINT:
+        break;
+      case G_MID_POINT:
+        // midpoint of a segment..
+        break;
+      default:
+        return ParseError;
       };
       point->calc( todoc );
       assert( point );
@@ -203,10 +214,17 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
     case G_SEGMENT:
     {
       if ( nparents != 2 ) return ParseError;
-      RealObject* o = new RealObject( SegmentABType::instance(), parents );
-      o->setWidth( style.pen.width() );
-      o->setColor( style.pen.color() );
-      object = o;
+      switch( descendtype )
+      {
+      case G_ENDPOINTS_SEGMENT:
+        RealObject* o = new RealObject( SegmentABType::instance(), parents );
+        o->setWidth( style.pen.width() );
+        o->setColor( style.pen.color() );
+        object = o;
+        break;
+      default:
+        return ParseError;
+      };
       break;
     };
     case G_RAY:
@@ -233,6 +251,8 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       case G_PERPENDICULAR_LINE:
         o = new RealObject( LinePerpendLPType::instance(), parents );
         break;
+      default:
+        return ParseError;
       };
       assert( o );
       o->setWidth( style.pen.width() );

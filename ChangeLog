@@ -1,3 +1,8 @@
+2003-05-08  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* add support for parallel and perpendicular types to the kseg
+		import filter..
+
 2003-05-08  Maurizio Paolini  <paolini@dmf.unicatt.it>
 
         * fixed drawing problem while building a cubic by 9 points.  The
