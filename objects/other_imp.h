@@ -54,6 +54,12 @@ public:
   const double size() const;
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
+
+  const Coordinate point() const { return mpoint; };
+  const double startAngle() const { return mstartangle; };
+  const double angle() const { return mangle; };
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 class VectorImp
@@ -89,6 +95,8 @@ public:
 
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 class ArcImp
@@ -133,6 +141,8 @@ public:
   double radius() const;
   double startAngle() const;
   double angle() const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 #endif

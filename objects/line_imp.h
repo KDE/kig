@@ -55,6 +55,8 @@ public:
 
   // returns 0 for segment, 1 for ray, 2 for line...
   virtual int type() const = 0;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 class SegmentImp

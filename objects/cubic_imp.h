@@ -60,6 +60,8 @@ public:
 
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 #endif

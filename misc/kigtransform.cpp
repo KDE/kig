@@ -477,3 +477,12 @@ Transformation::Transformation( double data[3][3], bool ishomothety )
     for ( int j = 0; j < 3; ++j )
       mdata[i][j] = data[i][j];
 }
+
+bool operator==( const Transformation& lhs, const Transformation& rhs )
+{
+  for ( int i = 0; i < 3; ++i )
+    for ( int j = 0; j < 3; ++j )
+      if ( lhs.data( i, j ) != rhs.data( i, j ) )
+        return false;
+  return true;
+};

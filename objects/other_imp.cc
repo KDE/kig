@@ -404,3 +404,26 @@ const Coordinate VectorImp::b() const
 {
   return mb;
 }
+
+bool ArcImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_ArcImp ) &&
+    static_cast<const ArcImp&>( rhs ).radius() == radius() &&
+    static_cast<const ArcImp&>( rhs ).startAngle() == startAngle() &&
+    static_cast<const ArcImp&>( rhs ).angle() == angle();
+}
+
+bool AngleImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_AngleImp ) &&
+    static_cast<const AngleImp&>( rhs ).point() == point() &&
+    static_cast<const AngleImp&>( rhs ).startAngle() == startAngle() &&
+    static_cast<const AngleImp&>( rhs ).angle() == angle();
+}
+
+bool VectorImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_VectorImp ) &&
+    static_cast<const VectorImp&>( rhs ).a() == a() &&
+    static_cast<const VectorImp&>( rhs ).b() == b();
+}

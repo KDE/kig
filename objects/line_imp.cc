@@ -446,3 +446,10 @@ void LineImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
+
+bool AbstractLineImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_LineImp ) &&
+    static_cast<const AbstractLineImp&>( rhs ).data() == data() &&
+    static_cast<const AbstractLineImp&>( rhs ).type() == type();
+}

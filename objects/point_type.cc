@@ -29,6 +29,7 @@
 #include "../misc/calcpaths.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+#include "../kig/kig_commands.h"
 
 #include <qstringlist.h>
 
@@ -241,11 +242,12 @@ void FixedPointType::executeAction(
       i18n( "Set Coordinate" ), i18n( "Enter the new coordinate: " ),
       d, &w, &ok, &oldc );
     if ( ! ok ) break;
+
+    MonitorDataObjects mon( getAllParents( Objects( o ) ) );
     o->move( oldc, c - oldc, d );
-    Objects children = o->parents().getAllChildren();
-    children = calcPath( children );
-    children.calc( d );
-    w.redrawScreen();
+    KigCommand* kc = mon.finish( d, ObjectImp::moveAStatement( ObjectImp::ID_PointImp ) );
+
+    d.history()->addCommand( kc );
     break;
   };
   case 1:
@@ -280,10 +282,10 @@ void ConstrainedPointType::executeAction(
         oldp, &w, &ok, 0, 1, 4 );
       if ( ! ok ) return;
 
+      Objects monos( po );
+      MonitorDataObjects mon( monos );
       po->setImp( new DoubleImp( newp ) );
-      o->calc( d );
-
-      w.redrawScreen();
+      d.history()->addCommand( mon.finish( d, i18n( "Change the parameter of a constrained point" ) ) );
     };
     break;
   };

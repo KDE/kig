@@ -75,6 +75,8 @@ public:
 
   QString cartesianEquationString( const KigDocument& w ) const;
   QString polarEquationString( const KigDocument& w ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 #endif

@@ -497,3 +497,11 @@ const CubicCartesianData calcCubicTransformation (
 
   return dataout;
 }
+
+bool operator==( const CubicCartesianData& lhs, const CubicCartesianData& rhs )
+{
+  for ( int i = 0; i < 10; ++i )
+    if ( lhs.coeffs[i] != rhs.coeffs[i] )
+      return false;
+  return true;
+};

@@ -29,6 +29,7 @@ class Coordinate;
 class NormalPoint;
 class KigWidget;
 class KigDocument;
+class MonitorDataObjects;
 
 /**
  * "Template method" pattern ( see the Design patterns book ):
@@ -75,10 +76,10 @@ class MovingMode
   // requested to move...
   Coordinate pwwlmt;
   Objects emo;
-  class Private;
-  Private* d;
   void stopMove();
   void moveTo( const Coordinate& o );
+
+  MonitorDataObjects* mon;
 public:
   MovingMode( const Objects& objects, const Coordinate& c,
 	      KigWidget&, KigDocument& );

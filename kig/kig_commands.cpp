@@ -27,6 +27,8 @@
 #include "../objects/object_imp.h"
 #include "../misc/calcpaths.h"
 
+#include <vector>
+
 static int countRealObjects( const Objects& os )
 {
   int ret = 0;
@@ -153,7 +155,7 @@ struct MoveObjectData
   ObjectImp* newimp;
 };
 
-class MoveCommand::Private
+class ChangeObjectImpsCommand::Private
 {
 public:
   typedef std::vector<MoveObjectData> datavect;
@@ -161,19 +163,13 @@ public:
   bool undone;
 };
 
-MoveCommand::MoveCommand( KigDocument& inDoc, int n )
-  : KigCommand (inDoc, i18n("Move %1 Objects").arg( n ) ),
-    d( new Private )
-{
-}
-
-MoveCommand::MoveCommand( KigDocument& doc, const QString& text )
+ChangeObjectImpsCommand::ChangeObjectImpsCommand( KigDocument& doc, const QString& text )
   : KigCommand( doc, text ),
     d( new Private )
 {
 }
 
-MoveCommand::~MoveCommand()
+ChangeObjectImpsCommand::~ChangeObjectImpsCommand()
 {
   for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
   {
@@ -183,7 +179,7 @@ MoveCommand::~MoveCommand()
   delete d;
 }
 
-void MoveCommand::execute()
+void ChangeObjectImpsCommand::execute()
 {
   Objects children;
   for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
@@ -197,7 +193,7 @@ void MoveCommand::execute()
   d->undone = false;
 }
 
-void MoveCommand::unexecute()
+void ChangeObjectImpsCommand::unexecute()
 {
   Objects children;
   for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
@@ -211,12 +207,63 @@ void MoveCommand::unexecute()
   d->undone = true;
 }
 
-void MoveCommand::addObject( DataObject* o, ObjectImp* oldimp, ObjectImp* newimp )
+void ChangeObjectImpsCommand::addObject( DataObject* o, ObjectImp* oldimp, ObjectImp* newimp )
 {
   MoveObjectData n;
   n.o = o;
   n.oldimp = oldimp;
   n.newimp = newimp;
   d->data.push_back( n );
+}
+
+struct MoveDataStruct
+{
+  DataObject* o;
+  ObjectImp* oldimp;
+  MoveDataStruct( DataObject* io, ObjectImp* oi )
+    : o( io ), oldimp( oi ) { }
+
+};
+
+class MonitorDataObjects::Private
+{
+public:
+  std::vector<MoveDataStruct> movedata;
+};
+
+MonitorDataObjects::MonitorDataObjects( const Objects& objs )
+  : d( new Private )
+{
+  monitor( objs );
+}
+
+void MonitorDataObjects::monitor( const Objects& objs )
+{
+  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+    if ( (*i)->inherits( Object::ID_DataObject ) )
+    {
+      MoveDataStruct n( static_cast<DataObject*>( *i ), (*i)->imp()->copy() );
+      d->movedata.push_back( n );
+    };
+}
+
+ChangeObjectImpsCommand* MonitorDataObjects::finish( KigDocument& doc, const QString& text )
+{
+  ChangeObjectImpsCommand* ret = new ChangeObjectImpsCommand( doc, text );
+  for ( uint i = 0; i < d->movedata.size(); ++i )
+  {
+    DataObject* o = d->movedata[i].o;
+    if ( ! d->movedata[i].oldimp->equals( *o->imp() ) )
+      ret->addObject( o, d->movedata[i].oldimp, o->imp()->copy() );
+    else
+      delete d->movedata[i].oldimp;
+  };
+  d->movedata.clear();
+  return ret;
+}
+
+MonitorDataObjects::~MonitorDataObjects()
+{
+  delete d;
 }
 

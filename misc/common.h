@@ -64,6 +64,8 @@ public:
   LineData( const Coordinate& na, const Coordinate& nb ) : a( na ), b( nb ) {};
 };
 
+bool operator==( const LineData& l, const LineData& r );
+
 /**
  * This calcs the rotation of point a around point c by arc arc.  Arc
  * is in radians, in the range 0 < arc < 2*pi ...

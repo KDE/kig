@@ -470,3 +470,8 @@ bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
     ( imp->contains( bottomint, width, w ) && r.contains( bottomint, miss ) ) ||
     ( imp->contains( topint, width, w ) && r.contains( topint, miss ) );
 };
+
+bool operator==( const LineData& l, const LineData& r )
+{
+  return l.a == r.a && l.b == r.b;
+};

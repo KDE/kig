@@ -135,3 +135,16 @@ const Coordinate TextImp::coordinate() const
   return mloc;
 }
 
+bool TextImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_TextImp ) &&
+    static_cast<const TextImp&>( rhs ).coordinate() == coordinate() &&
+    static_cast<const TextImp&>( rhs ).text() == text() &&
+    static_cast<const TextImp&>( rhs ).hasFrame() == hasFrame();
+}
+
+bool TextImp::hasFrame() const
+{
+  return mframe;
+}
+

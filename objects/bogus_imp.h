@@ -68,6 +68,8 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   void fillInNextEscape( QString& s, const KigDocument& ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 class DoubleImp
@@ -90,6 +92,8 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   void fillInNextEscape( QString& s, const KigDocument& ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 class IntImp
@@ -111,6 +115,8 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   void fillInNextEscape( QString& s, const KigDocument& ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 class StringImp
@@ -132,6 +138,8 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   void fillInNextEscape( QString& s, const KigDocument& ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 class HierarchyImp
@@ -151,6 +159,8 @@ public:
 
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 /**
@@ -177,6 +187,8 @@ public:
 
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 #endif

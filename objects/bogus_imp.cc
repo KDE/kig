@@ -281,3 +281,38 @@ void TransformationImp::visit( ObjectImpVisitor* vtor ) const
   vtor->visit( this );
 }
 
+bool InvalidImp::equals( const ObjectImp& rhs ) const
+{
+  return !rhs.valid();
+}
+
+bool DoubleImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_DoubleImp ) &&
+    static_cast<const DoubleImp&>( rhs ).data() == mdata;
+}
+
+bool IntImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_IntImp ) &&
+    static_cast<const IntImp&>( rhs ).data() == mdata;
+}
+
+bool StringImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_StringImp ) &&
+    static_cast<const StringImp&>( rhs ).data() == mdata;
+}
+
+bool HierarchyImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_HierarchyImp ) &&
+    static_cast<const HierarchyImp&>( rhs ).data() == mdata;
+}
+
+bool TransformationImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_TransformationImp ) &&
+    static_cast<const TransformationImp&>( rhs ).data() == mdata;
+}
+

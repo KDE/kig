@@ -24,6 +24,8 @@
 #include "object.h"
 
 #include "../kig/kig_view.h"
+#include "../kig/kig_part.h"
+#include "../kig/kig_commands.h"
 
 #include <qstringlist.h>
 #include <qvalidator.h>
@@ -166,11 +168,11 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
 
   if ( i == 0 )
   {
+    Objects monos( os[0] );
+    MonitorDataObjects mon( monos );
     int n = (static_cast<const IntImp*>( os[0]->imp() )->data() + 1) % 2;
     static_cast<DataObject*>( os[0] )->setImp( new IntImp( n ) );
-
-    o->calc( doc );
-    w.redrawScreen();
+    doc.history()->addCommand( mon.finish( doc, i18n( "Toggle a label's frame" ) ) );
   }
   else if ( i == 1 )
   {
@@ -180,17 +182,18 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
     PercentStringValidator val( numargs );
     bool ok = true;
     QString ret = KLineEditDlg::getText(
-      i18n( "Set String" ),
+      i18n( "Change Label Text" ),
       i18n( "Set the new string to be shown in the text label.  "
             "Variable arguments are referenced with %1 to %9." ),
       s, &ok, &w, &val );
 
     if ( ok )
     {
+      Objects monos( os[2] );
+      MonitorDataObjects mon( monos );
       static_cast<DataObject*>( os[2] )->setImp(
         new StringImp( ret ) );
-      o->calc( doc );
-      w.redrawScreen();
+      doc.history()->addCommand( mon.finish( doc, i18n( "Change a label's text" ) ) );
     };
   }
   else assert( false );

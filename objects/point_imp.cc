@@ -140,3 +140,9 @@ void PointImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
+
+bool PointImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_PointImp ) &&
+    static_cast<const PointImp&>( rhs ).coordinate() == coordinate();
+}

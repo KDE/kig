@@ -72,7 +72,7 @@ public:
 };
 
 const Transformation operator*( const Transformation&, const Transformation& );
-
+bool operator==( const Transformation& lhs, const Transformation& rhs );
 
 class Object;
 class Objects;

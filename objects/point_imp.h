@@ -56,6 +56,8 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   void fillInNextEscape( QString& s, const KigDocument& ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 #endif

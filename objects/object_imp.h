@@ -176,5 +176,12 @@ public:
   // the imp in question, standard implementation does an assert(
   // false );
   virtual void fillInNextEscape( QString& s, const KigDocument& ) const;
+
+  /**
+   * this function checks whether rhs is of the same imp type, and
+   * whether it contains the same data.  It is used by the KigCommand
+   * stuff to see what the user has changed during a move..
+   */
+  virtual bool equals( const ObjectImp& rhs ) const = 0;
 };
 #endif

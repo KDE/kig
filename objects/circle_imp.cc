@@ -303,3 +303,10 @@ void CircleImp::visit( ObjectImpVisitor* vtor ) const
   vtor->visit( this );
 }
 
+bool CircleImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_CircleImp ) &&
+    static_cast<const CircleImp&>( rhs ).center() == center() &&
+    static_cast<const CircleImp&>( rhs ).radius() == radius();
+}
+

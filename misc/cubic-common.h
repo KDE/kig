@@ -35,9 +35,9 @@ public:
   double coeffs[10];
   explicit CubicCartesianData();
   CubicCartesianData( double a000, double a001, double a002,
-                              double a011, double a012, double a022,
-                              double a111, double a112, double a122,
-                              double a222 )
+                      double a011, double a012, double a022,
+                      double a111, double a112, double a122,
+                      double a222 )
     {
       coeffs[0] = a000;
       coeffs[1] = a001;
@@ -52,6 +52,8 @@ public:
     };
   CubicCartesianData( const double incoeffs[10] );
 };
+
+bool operator==( const CubicCartesianData& lhs, const CubicCartesianData& rhs );
 
 /**
  * This function calcs a cartesian cubic equation such that the

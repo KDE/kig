@@ -75,22 +75,18 @@ protected:
   Objects os;
 };
 
-class MoveCommand
+class ChangeObjectImpsCommand
   : public KigCommand
 {
 public:
   /**
-   * Construct a MoveCommand that will have "Move n objects" as text
-   */
-  MoveCommand( KigDocument& doc, int n );
-  /**
-   * Construct a MoveCommand and set the text explicitly ( you should
+   * Construct a ChangeObjectImpsCommand and set the text explicitly ( you should
    * use ObjectImp::moveAStatement() if you're moving a single
    * object..
    */
-  MoveCommand( KigDocument& doc, const QString& text );
+  ChangeObjectImpsCommand( KigDocument& doc, const QString& text );
 
-  ~MoveCommand();
+  ~ChangeObjectImpsCommand();
 
   /**
    * add a changed dataobject.  this class gains ownership of the
@@ -103,6 +99,40 @@ public:
 protected:
   class Private;
   Private* d;
+};
+
+/**
+ * this class monitors a set of DataObjects for changes and returns an
+ * appropriate ChangeObjectImpsCommand if necessary..
+ * E.g.  MovingMode wants to move certain objects, so it monitors all
+ * the parents of the explicitly moving objects:
+ *   MonitorDataObjects mon( getAllParents( emo ) );
+ * It then moves them around, and when it is finished, it asks for a
+ * KigCommand, and applies that..
+ *   ChangeObjectImpsCommand* command = mon.finish();
+ */
+class MonitorDataObjects
+{
+  class Private;
+  Private* d;
+public:
+  /**
+   * all the DataObjects in objs will be watched..
+   */
+  MonitorDataObjects( const Objects& objs );
+  ~MonitorDataObjects();
+
+  /**
+   * add objs to the list of objs to be watched, and save their
+   * current imp's..
+   */
+  void monitor( const Objects& objs );
+
+  /**
+   * get the command..  text shown will be text..  monitoring stops
+   * after this is called..
+   */
+  ChangeObjectImpsCommand* finish( KigDocument&, const QString& text );
 };
 
 #endif

@@ -62,6 +62,9 @@ public:
 
   QString text() const;
   const Coordinate coordinate() const;
+  bool hasFrame() const;
+
+  bool equals( const ObjectImp& rhs ) const;
 };
 
 #endif

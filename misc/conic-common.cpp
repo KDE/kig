@@ -844,3 +844,12 @@ const ConicCartesianData calcConicTransformation (
 ConicCartesianData::ConicCartesianData()
 {
 }
+
+bool operator==( const ConicPolarData& lhs, const ConicPolarData& rhs )
+{
+  return lhs.focus1 == rhs.focus1 &&
+         lhs.pdimen == rhs.pdimen &&
+     lhs.ecostheta0 == rhs.ecostheta0 &&
+     lhs.esintheta0 == rhs.esintheta0;
+};
+

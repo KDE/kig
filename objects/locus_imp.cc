@@ -337,3 +337,10 @@ void LocusImp::visit( ObjectImpVisitor* vtor ) const
   vtor->visit( this );
 }
 
+bool LocusImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_LocusImp ) &&
+    static_cast<const LocusImp&>( rhs ).curve()->equals( *curve() ) &&
+    static_cast<const LocusImp&>( rhs ).hierarchy() == hierarchy();
+}
+

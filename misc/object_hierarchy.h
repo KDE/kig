@@ -36,6 +36,9 @@ private:
   std::vector<int> margrequirements;
 
   int visit( const Object* o, std::map<const Object*, int>& );
+
+  friend bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs );
+
 public:
   ObjectHierarchy( const Objects& from, const Object* to );
   ObjectHierarchy( const Objects& from, const Objects& to );
@@ -67,5 +70,7 @@ public:
 
   ObjectHierarchy transformFinalObject( const Transformation& t ) const;
 };
+
+bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs );
 
 #endif

@@ -24,6 +24,8 @@
 #include "object.h"
 
 #include "../kig/kig_view.h"
+#include "../kig/kig_part.h"
+#include "../kig/kig_commands.h"
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
 #include "../misc/i18n.h"
@@ -223,11 +225,7 @@ void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidg
 
   Coordinate nb = a + ( b - a ).normalize( length );
 
+  MonitorDataObjects mon( getAllParents( parents ) );
   parents[1]->move( b, nb - b, d );
-  parents[1]->calc( d );
-  Objects children = parents[1]->getAllChildren();
-  children = calcPath( children );
-  children.calc( d );
-
-  w.redrawScreen();
+  d.history()->addCommand( mon.finish( d, i18n( "Resize a &Segment" ) ) );
 }

@@ -98,25 +98,10 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   v->updateScrollBars();
 };
 
-struct MoveDataStruct
-{
-  DataObject* o;
-  ObjectImp* oldimp;
-  MoveDataStruct( DataObject* io, ObjectImp* oi )
-    : o( io ), oldimp( oi ) { }
-
-};
-
-class MovingMode::Private
-{
-public:
-  std::vector<MoveDataStruct> movedata;
-};
-
 MovingMode::MovingMode( const Objects& os, const Coordinate& c,
                         KigWidget& v, KigDocument& doc )
   : MovingModeBase( doc, v ), pwwlmt( c ),
-    d( new Private )
+    mon( 0 )
 {
   Objects objs;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
@@ -127,12 +112,7 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
       objs |= getAllParents( Objects( *i ) );
     };
 
-  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
-    if ( (*i)->inherits( Object::ID_DataObject ) )
-    {
-      MoveDataStruct n( static_cast<DataObject*>( *i ), (*i)->imp()->copy() );
-      d->movedata.push_back( n );
-    };
+  mon = new MonitorDataObjects( objs );
 
   Objects tmp = objs;
   for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
@@ -143,18 +123,10 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
 
 void MovingMode::stopMove()
 {
-  MoveCommand* mc = 0;
-  if ( emo.size() == 1 )
-    mc = new MoveCommand( mdoc, ObjectImp::moveAStatement( emo[0]->imp()->id() ) );
-  else
-    mc = new MoveCommand( mdoc, emo.size() );
-  assert( mc );
-
-  for ( uint i = 0; i < d->movedata.size(); ++i )
-  {
-    DataObject* o = d->movedata[i].o;
-    mc->addObject( o, d->movedata[i].oldimp, o->imp()->copy() );
-  };
+  QString text = emo.size() == 1 ?
+                 ObjectImp::moveAStatement( emo[0]->imp()->id() ) :
+                 i18n( "Move %1 Objects" ).arg( emo.size() );
+  ChangeObjectImpsCommand* mc = mon->finish( mdoc, text );
 
   mdoc.history()->addCommand( mc );
 }
@@ -201,7 +173,7 @@ void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
 
 MovingMode::~MovingMode()
 {
-  delete d;
+  delete mon;
 }
 
 void PointRedefineMode::stopMove()

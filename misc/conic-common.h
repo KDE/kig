@@ -74,6 +74,8 @@ public:
   double esintheta0;
 };
 
+bool operator==( const ConicPolarData& lhs, const ConicPolarData& rhs );
+
 /**
  * This function calcs a cartesian conic equation such that the
  * given points are on the conic..  There can be at most 5 and at

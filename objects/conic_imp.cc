@@ -320,3 +320,9 @@ void ConicImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
+
+bool ConicImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_ConicImp ) &&
+    static_cast<const ConicImp&>( rhs ).polarData() == polarData();
+}

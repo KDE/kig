@@ -345,3 +345,9 @@ void CubicImp::visit( ObjectImpVisitor* vtor ) const
   vtor->visit( this );
 }
 
+bool CubicImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( ID_CubicImp ) &&
+    static_cast<const CubicImp&>( rhs ).data() == data();
+}
+

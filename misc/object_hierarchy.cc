@@ -518,3 +518,21 @@ ObjectHierarchy ObjectHierarchy::transformFinalObject( const Transformation& t )
   ret.mnodes.push_back( new ApplyTypeNode( type, parents ) );
   return ret;
 }
+
+bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs )
+{
+  if ( ! ( lhs.mnumberofargs == rhs.mnumberofargs &&
+           lhs.mnumberofresults == rhs.mnumberofresults &&
+           lhs.margrequirements == rhs.margrequirements &&
+           lhs.mnodes.size() == rhs.mnodes.size() ) )
+    return false;
+
+  // this isn't entirely correct, but it will do, because we don't
+  // really want to know whether the hierarchies are different, but
+  // whether rhs has changed with regard to lhs..
+  for ( uint i = 0; i < lhs.mnodes.size(); ++i )
+    if ( lhs.mnodes[i] != lhs.mnodes[i] )
+      return false;
+
+  return true;
+};
