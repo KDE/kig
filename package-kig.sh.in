@@ -13,7 +13,6 @@ rm -rf $TEMPDIR
 mkdir $TEMPDIR
 cd $TEMPDIR
 
-cd $TEMPDIR
 ~domi/src/kdesdk/scripts/cvs2dist \
 	--name "$NAME" \
 	--version "$VERSION" \
