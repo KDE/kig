@@ -26,6 +26,7 @@
 #include "../objects/object.h"
 #include "../objects/line_imp.h"
 #include "../objects/circle_imp.h"
+#include "../objects/point_imp.h"
 #include "../misc/common.h"
 
 #include <kaction.h>
@@ -137,9 +138,9 @@ class XFigExportImpVisitor
     {
       Coordinate ret = ( c - msr.bottomLeft() );
       ret.y = msr.height() - ret.y;
-      kdDebug() << "msr: " << msr << endl
-                << "ret: " << ret << endl
-                << "c: " << c << endl;
+//       kdDebug() << "msr: " << msr << endl
+//                 << "ret: " << ret << endl
+//                 << "c: " << c << endl;
       ret *= 9450;
       ret /= msr.width();
       return ret.toQPoint();
@@ -210,25 +211,47 @@ void XFigExportImpVisitor::visit( const LineImp* imp )
 
 void XFigExportImpVisitor::visit( const PointImp* imp )
 {
+  const QPoint center = convertCoord( imp->coordinate() );
+  int width = mcurobj->width();
+  if ( width == -1 ) width = 5;
 
+  mstream << "1 "  // Ellipse type
+          << "3 "  // circle defined by radius subtype
+          << "0 "; // line_style: Solid
+  mstream << "1 " << " " // thickness: *1/80 inch
+          << "0 " // TODO pen_color: default
+          << "0 " // TODO fill_color: black
+          << "50 " // depth: 50
+          << "-1 " // pen_style: unused by XFig
+          << "20 " // area_fill: full saturation of the fill color
+          << "0.000 " // style_val: the distance between dots and
+                      // dashes in case of dotted or dashed lines..
+          << "1 "  // direction: always 1
+          << "0.0000 "  // angle: the radius of the x-axis: 0
+          << center.x() << " " << center.y() << " " // the center..
+          << width << " " << width << " " // radius_x and radius_y
+          << center.x() << " " // start_x and start_y, appear
+          << center.y() << " " // unused..
+          << center.x() + width << " " // end_x and end_y,
+          << center.y() << "\n";        // appear unused too...
 }
 
-void XFigExportImpVisitor::visit( const TextImp* imp )
+void XFigExportImpVisitor::visit( const TextImp* )
 {
 
 }
 
-void XFigExportImpVisitor::visit( const AngleImp* imp )
+void XFigExportImpVisitor::visit( const AngleImp* )
 {
 
 }
 
-void XFigExportImpVisitor::visit( const VectorImp* imp )
+void XFigExportImpVisitor::visit( const VectorImp* )
 {
 
 }
 
-void XFigExportImpVisitor::visit( const LocusImp* imp )
+void XFigExportImpVisitor::visit( const LocusImp* )
 {
 
 }
@@ -262,26 +285,26 @@ void XFigExportImpVisitor::visit( const CircleImp* imp )
           << center.y() << "\n";        // appear unused too...
 }
 
-void XFigExportImpVisitor::visit( const ConicImp* imp )
+void XFigExportImpVisitor::visit( const ConicImp* )
 {
 }
 
-void XFigExportImpVisitor::visit( const CubicImp* imp )
-{
-
-}
-
-void XFigExportImpVisitor::visit( const SegmentImp* imp )
+void XFigExportImpVisitor::visit( const CubicImp* )
 {
 
 }
 
-void XFigExportImpVisitor::visit( const RayImp* imp )
+void XFigExportImpVisitor::visit( const SegmentImp* )
 {
 
 }
 
-void XFigExportImpVisitor::visit( const ArcImp* imp )
+void XFigExportImpVisitor::visit( const RayImp* )
+{
+
+}
+
+void XFigExportImpVisitor::visit( const ArcImp* )
 {
 
 }
