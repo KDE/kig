@@ -1,8 +1,14 @@
+2003-05-12  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* add an angle bisector property
+
 2003-05-10  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
-	* fix the ReflectedType to take the object being transformed as
-		the first argument, so that the right-click->transform
-		works properly..
+	* fix the transformation types for cases where the object being
+		transformed is the same as one of the arguments that the
+		transformation needs..  E.g. right-click on a
+		point->transform->reflect over a point works properly
+		point->transform->now.. 
 
 2003-05-09  Mauizio Paolini  <paolini@dmf.unicatt.it>
 
