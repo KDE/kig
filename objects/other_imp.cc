@@ -213,7 +213,7 @@ const char* VectorImp::iconForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
-  else if ( which == Parent::numberOfProperties() + 1 )
+  else if ( which == Parent::numberOfProperties() )
     return "bisection"; // mid point
   else assert( false );
   return "";
