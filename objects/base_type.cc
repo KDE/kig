@@ -54,11 +54,12 @@ void ObjectABType::move( RealObject* o,
 {
   Objects parents = o->parents();
   assert( parents.size() == 2 );
-  assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
-  assert( parents[1]->hasimp( ObjectImp::ID_PointImp ) );
-
-  parents[0]->move( from, dist, d );
-  parents[1]->move( from, dist, d );
+  if ( parents[0]->hasimp( ObjectImp::ID_PointImp ) &&
+       parents[1]->hasimp( ObjectImp::ID_PointImp )
+  {
+    parents[0]->move( from, dist, d );
+    parents[1]->move( from, dist, d );
+  };
 }
 
 ObjectLPType::ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n )
