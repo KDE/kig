@@ -42,11 +42,8 @@ public:
   Coordinate b;
   const Coordinate dir() const { return b - a; };
   LineData() : a(), b() {};
-  LineData( const Coordinate na, const Coordinate nb ) : a( na ), b( nb ) {};
+  LineData( const Coordinate& na, const Coordinate& nb ) : a( na ), b( nb ) {};
 };
-
-// i'm too lazy, i know :)
-typedef LineData RayData;
 
 /**
  * This calcs the rotation of point a around point c by arc arc.  Arc
