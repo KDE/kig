@@ -232,7 +232,7 @@ void KigPainter::circleOverlayRecurse( const Coordinate& centre,
   // the rect contains some of the circle
   // -> if it's small enough, we keep it
   if( currentRect.width() < overlayRectSize() ) {
-    mOverlay.push_back( toScreen( currentRect) );
+    mOverlay.push_back( toScreenEnlarge( currentRect) );
   } else {
     // this func works recursive: we subdivide the current rect, and if
     // it is of a good size, we keep it, otherwise we handle it again
@@ -498,6 +498,9 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
   // we manage our own overlay
   bool tNeedOverlay = mNeedOverlay;
   mNeedOverlay = false;
+  QPen pen = mP.pen();
+  pen.setCapStyle( Qt::RoundCap );
+  mP.setPen( pen );
 
   // this stack contains pairs of Coordinates that we still need to
   // process:
@@ -622,6 +625,8 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
     }
   }
   mNeedOverlay = tNeedOverlay;
+  pen.setCapStyle( Qt::FlatCap );
+  mP.setPen( pen );
 }
 
 void KigPainter::drawCubicRecurse (

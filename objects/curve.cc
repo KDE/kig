@@ -41,7 +41,7 @@ void Curve::addActions( NormalModePopupObjects& p )
   bool ok = false;
   if ( this->toAbstractLine() ) ok = true;
   if ( this->toConic() ) ok = true;
-  if ( this->toCircle() ) ok = false;
+//  if ( this->toCircle() ) ok = false;
   if ( ! ok ) return;
 
   QPopupMenu* pop = new QPopupMenu( &p, "curve virtual popup" );
