@@ -76,12 +76,12 @@ bool ConicImp::inRect( const Rect&, int, const KigWidget& ) const
 
 const uint ConicImp::numberOfProperties() const
 {
-  return CurveImp::numberOfProperties() + 5;
+  return Parent::numberOfProperties() + 5;
 }
 
 const QCStringList ConicImp::propertiesInternalNames() const
 {
-  QCStringList l = CurveImp::propertiesInternalNames();
+  QCStringList l = Parent::propertiesInternalNames();
   l << I18N_NOOP( "type" );
   l << I18N_NOOP( "first-focus" );
   l << I18N_NOOP( "second-focus" );
@@ -93,7 +93,7 @@ const QCStringList ConicImp::propertiesInternalNames() const
 
 const QCStringList ConicImp::properties() const
 {
-  QCStringList l = CurveImp::properties();
+  QCStringList l = Parent::properties();
   l << I18N_NOOP( "Type" );
   l << I18N_NOOP( "First Focus" );
   l << I18N_NOOP( "Second Focus" );
@@ -103,21 +103,28 @@ const QCStringList ConicImp::properties() const
   return l;
 }
 
+int ConicImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return ID_ConicImp;
+}
+
 ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
 {
   int pnum = 0;
 
-  if ( which < CurveImp::numberOfProperties() )
-    return CurveImp::property( which, w );
-  if ( which == CurveImp::numberOfProperties() + pnum++ )
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  if ( which == Parent::numberOfProperties() + pnum++ )
     return new StringImp( conicTypeString() );
-  else if ( which == CurveImp::numberOfProperties() + pnum++ )
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return new PointImp( focus1() );
-  else if ( which == CurveImp::numberOfProperties() + pnum++ )
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return new PointImp( focus2() );
-  else if ( which == CurveImp::numberOfProperties() + pnum++ )
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return new StringImp( cartesianEquationString( w ) );
-  else if ( which == CurveImp::numberOfProperties() + pnum++ )
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return new StringImp( polarEquationString( w ) );
   else assert( false );
 }
@@ -289,4 +296,5 @@ int ConicImp::id() const
 {
   return ID_ConicImp;
 }
+
 

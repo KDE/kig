@@ -69,6 +69,13 @@ const QCStringList PointImp::properties() const
   return l;
 }
 
+int PointImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return ID_PointImp;
+}
+
 ObjectImp* PointImp::property( uint which, const KigDocument& d ) const
 {
   if ( which < Parent::numberOfProperties() )
@@ -119,4 +126,5 @@ void PointImp::fillInNextEscape( QString& s, const KigDocument& doc ) const
 {
   s = s.arg( doc.coordinateSystem().fromScreen( mc, doc ) );
 }
+
 

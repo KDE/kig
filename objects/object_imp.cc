@@ -219,3 +219,9 @@ ObjectImp* ObjectImp::property( uint i, const KigDocument& ) const
   return new InvalidImp;
 }
 
+int ObjectImp::impRequirementForProperty( uint ) const
+{
+  return ID_AnyImp;
+}
+
+

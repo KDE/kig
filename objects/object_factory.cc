@@ -106,8 +106,6 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
 
       assert( dataobj->inherits( Object::ID_DataObject ) );
       static_cast<DataObject*>( dataobj )->setImp( new DoubleImp( newparam ) );
-//       const Coordinate oldcoord = static_cast<const PointImp*>( point->imp() )->coordinate();
-//       point->move( oldcoord, c - oldcoord, doc );
 
       Objects ret;
       ret.push_back( dataobj );

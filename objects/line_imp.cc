@@ -78,6 +78,13 @@ const uint AbstractLineImp::numberOfProperties() const
   return Parent::numberOfProperties() + 2;
 }
 
+int AbstractLineImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return ID_LineImp;
+}
+
 ObjectImp* AbstractLineImp::property( uint which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
@@ -141,6 +148,13 @@ const QCStringList SegmentImp::properties() const
   s << I18N_NOOP( "Length" );
   assert( s.size() == SegmentImp::numberOfProperties() );
   return s;
+}
+
+int SegmentImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return ID_SegmentImp;
 }
 
 ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
@@ -423,3 +437,5 @@ int LineImp::id() const
 {
   return ID_LineImp;
 }
+
+

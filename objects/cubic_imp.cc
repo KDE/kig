@@ -306,6 +306,11 @@ const QCStringList CubicImp::properties() const
   return Parent::properties();
 }
 
+int CubicImp::impRequirementForProperty( uint which ) const
+{
+  return Parent::impRequirementForProperty( which );
+}
+
 ObjectImp* CubicImp::property( uint which, const KigDocument& w ) const
 {
   // TODO ?
@@ -326,4 +331,5 @@ int CubicImp::id() const
 {
   return ID_CubicImp;
 }
+
 

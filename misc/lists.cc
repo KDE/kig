@@ -375,6 +375,7 @@ bool MacroList::loadOld( const QDomElement& docelem, myvector<Macro*>& ret, cons
       given.push_back( r );
     };
 
+    assert( e.attribute( "given" ) != "true" );
     Objects os( given.begin(), given.end() );
     Objects final;
 
@@ -385,7 +386,10 @@ bool MacroList::loadOld( const QDomElement& docelem, myvector<Macro*>& ret, cons
     ObjectHierarchy hierarchy( given, final.front() );
 
     delete_all( os.begin(), os.end() );
+    os.clear();
+    final.clear();
     delete_all( givendata.begin(), givendata.end() );
+    givendata.clear();
 
     MacroConstructor* ctor =
       new MacroConstructor( hierarchy, name, QString::null );

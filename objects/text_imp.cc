@@ -80,6 +80,13 @@ const QCStringList TextImp::properties() const
   return ret;
 }
 
+int TextImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  return ID_TextImp;
+}
+
 ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
 {
   assert( which < TextImp::numberOfProperties() );
@@ -109,4 +116,5 @@ QString TextImp::text() const
 {
   return mtext;
 }
+
 

@@ -143,6 +143,13 @@ const QCStringList CircleImp::properties() const
   return l;
 }
 
+int CircleImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < CurveImp::numberOfProperties() )
+    return CurveImp::impRequirementForProperty( which );
+  else return ID_CircleImp;
+}
+
 ObjectImp* CircleImp::property( uint which, const KigDocument& w ) const
 {
   assert( which < CircleImp::numberOfProperties() );
@@ -269,3 +276,4 @@ int CircleImp::id() const
 {
   return ID_CircleImp;
 }
+

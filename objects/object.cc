@@ -30,6 +30,8 @@
 #include <functional>
 #include <algorithm>
 
+using namespace std;
+
 RealObject::RealObject( const ObjectType* type, const Objects& parents )
   : ObjectWithParents( parents ),
     mcolor( Qt::blue ), mselected( false ), mshown( true ),
@@ -288,12 +290,6 @@ bool RealObject::inherits( int type ) const
   return type == ID_RealObject;
 }
 
-void RealObject::calc( const KigDocument& d )
-{
-  // no idea why this is necessary
-  ObjectWithParents::calc( d );
-}
-
 void DataObject::setImp( ObjectImp* imp )
 {
   delete mimp;
@@ -401,8 +397,9 @@ bool PropertyObject::inRect( const Rect&, const KigWidget& ) const
 
 void PropertyObject::calc( const KigDocument& d )
 {
+  ObjectImp* imp = mparent->property( mpropid, d );
   delete mimp;
-  mimp = mparent->property( mpropid, d );
+  mimp = imp;
 }
 
 bool PropertyObject::shown() const
@@ -461,4 +458,33 @@ QColor RealObject::color() const
 void RealObject::setWidth( int width )
 {
   mwidth = width;
+}
+
+int RealObject::impRequirement( Object* o, const Objects& os ) const
+{
+  Args args;
+  args.reserve( mparents.size() );
+  transform( os.begin(), os.end(),
+             back_inserter( args ), mem_fun( &Object::imp ) );
+  return mtype->impRequirement( o->imp(), args );
+}
+
+int Object::impRequirement( Object*, const Objects& ) const
+{
+  assert( false );
+}
+
+int PropertyObject::impRequirement( Object*, const Objects& ) const
+{
+  return mparent->impRequirementForProperty( mpropid );
+}
+
+int Object::impRequirementForProperty( uint which ) const
+{
+  return imp()->impRequirementForProperty( which );
+}
+
+void RealObject::calc( const KigDocument& d )
+{
+  ObjectWithParents::calc( d );
 }

@@ -31,11 +31,12 @@
 class ObjectHierarchy::Node
 {
 public:
-  enum { ID_PushStack, ID_ApplyType };
+  enum { ID_PushStack, ID_ApplyType, ID_FetchProp };
   virtual int id() const = 0;
 
   virtual ~Node();
   virtual Node* copy() const = 0;
+
   virtual void apply( std::vector<const ObjectImp*>& stack, int loc,
                       const KigDocument& ) const = 0;
 
@@ -136,6 +137,61 @@ void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
   stack[loc] = mtype->calc( args, doc );
 };
 
+class FetchPropertyNode
+  : public ObjectHierarchy::Node
+{
+  mutable int mpropid;
+  int mparent;
+  const QCString mname;
+public:
+  // propid is a cache of the location of name in the parent's
+  // propertiesInternalNames(), just as it is in PropertyObject.  We
+  // don't want to ever save this value, since we cannot guarantee it
+  // remains consistent if we add properties some place..
+  FetchPropertyNode( const int parent, const QCString& name, const int propid = -1 )
+    : mpropid( propid ), mparent( parent ), mname( name ) {};
+  ~FetchPropertyNode();
+  Node* copy() const;
+
+  int parent() const { return mparent; };
+  const QCString& propinternalname() const { return mname; };
+
+  int id() const;
+  void apply( std::vector<const ObjectImp*>& stack,
+              int loc, const KigDocument& ) const;
+  void apply( Objects& stack, int loc ) const;
+};
+
+FetchPropertyNode::~FetchPropertyNode()
+{
+};
+
+ObjectHierarchy::Node* FetchPropertyNode::copy() const
+{
+  return new FetchPropertyNode( mparent, mname, mpropid );
+};
+
+int FetchPropertyNode::id() const
+{
+  return ID_FetchProp;
+};
+
+void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
+                               int loc, const KigDocument& d ) const
+{
+  assert( stack[mparent] );
+  if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
+  assert( mpropid != -1 );
+  stack[loc] = stack[mparent]->property( mpropid, d );
+};
+
+void FetchPropertyNode::apply( Objects& stack, int loc ) const
+{
+  if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
+  assert( mpropid != -1 );
+  stack[loc] = new PropertyObject( stack[mparent], mpropid );
+};
+
 std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument& doc ) const
 {
   assert( a.size() == mnumberofargs );
@@ -175,16 +231,12 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
 
 int ObjectHierarchy::visit( const Object* o, const Objects& from )
 {
-  // TODO: update for PropertyObject's
   using namespace std;
 
   for ( uint i = 0; i < from.size(); ++i )
     if ( from[i] == o ) return i;
   Objects p( o->parents() );
   if ( p.empty() ) return -1;
-
-  assert( o->inherits( Object::ID_RealObject ) );
-  const RealObject* ro = static_cast<const RealObject*>( o );
 
   bool neednode = false;
   std::vector<int> parents;
@@ -206,20 +258,24 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
     }
     else if ( (uint) parents[i] < mnumberofargs )
     {
-      const ObjectImp* parentimp = o->parents()[i]->imp();
-      Args oargs;
+      Object* parent = o->parents()[i];
       Objects oparents = o->parents();
-      oparents.remove( o->parents()[i] );
-      transform( oparents.begin(), oparents.end(), back_inserter( oargs ),
-                 mem_fun( &Object::imp ) );
+      oparents.remove( parent );
 
       margrequirements[parents[i]] = kMax( margrequirements[parents[i]],
-                                           ro->type()->impRequirement(
-                                             parentimp, oargs ) );
-
+                                           o->impRequirement( parent, oparents ) );
     };
   };
-  mnodes.push_back( new ApplyTypeNode( ro->type(), parents ) );
+  if ( o->inherits( Object::ID_RealObject ) )
+    mnodes.push_back( new ApplyTypeNode( static_cast<const RealObject*>( o )->type(), parents ) );
+  else if ( o->inherits( Object::ID_PropertyObject ) )
+  {
+    assert( parents.size() == 1 );
+    int parent = parents.front();
+    Object* op = p[parent];
+    uint propid = static_cast<const PropertyObject*>( o )->propId();
+    mnodes.push_back( new FetchPropertyNode( parent, op->propertiesInternalNames()[propid], propid ) );
+  } else assert( false );
   return mnumberofargs + mnodes.size() - 1;
 }
 
@@ -273,13 +329,14 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
     e.setAttribute( "requirement", ObjectImp::idToString( margrequirements[i] ) );
     parent.appendChild( e );
   }
+
   for ( uint i = 0; i < mnodes.size(); ++i )
   {
     bool result = mnodes.size() - ( id - mnumberofargs - 1 ) <= mnumberofresults;
     QDomElement e = doc.createElement( result ? "result" : "intermediate" );
     e.setAttribute( "id", id++ );
 
-    if ( mnodes[i]->id() == ObjectHierarchy::Node::ID_ApplyType )
+    if ( mnodes[i]->id() == Node::ID_ApplyType )
     {
       const ApplyTypeNode* node = static_cast<const ApplyTypeNode*>( mnodes[i] );
       e.setAttribute( "action", "calc" );
@@ -291,6 +348,15 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
         arge.appendChild( doc.createTextNode( QString::number( parent ) ) );
         e.appendChild( arge );
       };
+    }
+    else if ( mnodes[i]->id() == Node::ID_FetchProp )
+    {
+      const FetchPropertyNode* node = static_cast<const FetchPropertyNode*>( mnodes[i] );
+      e.setAttribute( "action", "fetch-property" );
+      e.setAttribute( "property", node->propinternalname() );
+      QDomElement arge = doc.createElement( "arg" );
+      arge.appendChild( doc.createTextNode( QString::number( node->parent() + 1 ) ) );
+      e.appendChild( arge );
     }
     else
     {
@@ -357,6 +423,15 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
       };
       newnode = new ApplyTypeNode( type, parents );
     }
+    else if ( tmp == "fetch-property" )
+    {
+      // FetchPropertyNode
+      QCString propname = e.attribute( "property" ).latin1();
+      QDomElement arge = e.firstChild().toElement();
+      int parent = arge.text().toInt( &ok );
+      if ( ! ok ) continue;
+      newnode = new FetchPropertyNode( parent - 1, propname );
+    }
     else
     {
       // PushStackNode
@@ -387,7 +462,7 @@ ArgParser ObjectHierarchy::argParser() const
   return ArgParser( specs );
 }
 
-Objects ObjectHierarchy::buildObjects( const Objects& os ) const
+Objects ObjectHierarchy::buildObjects( const Objects& os, const KigDocument& doc ) const
 {
   assert( os.size() == mnumberofargs );
   for ( uint i = 0; i < os.size(); ++i )
@@ -398,7 +473,10 @@ Objects ObjectHierarchy::buildObjects( const Objects& os ) const
   std::copy( os.begin(), os.end(), stack.begin() );
 
   for( uint i = 0; i < mnodes.size(); ++i )
+  {
     mnodes[i]->apply( stack, mnumberofargs + i );
+    stack[mnumberofargs + i]->calc( doc );
+  };
 
   for ( uint i = mnumberofargs; i < stack.size() - mnumberofresults; ++i )
     stack[i]->setShown( false );
@@ -413,6 +491,8 @@ int ObjectHierarchy::idOfLastResult() const
   const Node* n = mnodes.back();
   if ( n->id() == Node::ID_PushStack )
     return static_cast<const PushStackNode*>( n )->imp()->id();
+  else if ( n->id() == Node::ID_FetchProp )
+    return ObjectImp::ID_AnyImp;
   else
     return static_cast<const ApplyTypeNode*>( n )->type()->resultId();
 }

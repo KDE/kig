@@ -29,23 +29,28 @@
 #include <kcursor.h>
 #include <kaction.h>
 
-static void redefinePoint( Objects& mpt, const Coordinate& c, KigDocument& doc, const KigWidget& w )
+static void redefinePoint( Object* mpt, const Coordinate& c, KigDocument& doc, const KigWidget& w )
 {
-  mpt = ObjectFactory::instance()->redefinePoint( mpt.back(), c, doc, w );
-  mpt.calc( doc );
+  ObjectFactory::instance()->redefinePoint( mpt, c, doc, w );
+  mpt->calc( doc );
 };
 
 ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
   : BaseMode( d ), mctor( ctor ),
-    mpt( ObjectFactory::instance()->fixedPoint( Coordinate( 0, 0 ) ) )
+    mpt( 0 )
 {
-  mpt.calc( d );
+  Objects pos = ObjectFactory::instance()->fixedPoint( Coordinate( 0, 0 ) );
+  d._addObjects( Objects( pos.begin(), pos.end() - 1 ) );
+  mpt = pos.back();
+  mpt->calc( d );
 }
 
 ConstructMode::~ConstructMode()
 {
-  delete_all( mpt.begin(), mpt.end() );
-  mpt.clear();
+  // allow the mpt to remove its obsolete parents from the
+  // document...
+  mpt->setParents( Objects(), &mdoc );
+  delete mpt;
 }
 
 void ConstructMode::leftClickedObject(
@@ -55,15 +60,17 @@ void ConstructMode::leftClickedObject(
   {
     selectObject( o, w );
   }
-  else if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
+  else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
   {
     // add mpt to the document..
-    mdoc.addObjects( mpt );
-    selectObject( mpt[2], w );
+    mdoc.addObject( mpt );
+    selectObject( mpt, w );
     // get a new mpt for our further use..
-    mpt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ),
-                                                    mdoc, w );
-    mpt.calc( mdoc );
+    Objects pos = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ),
+                                                            mdoc, w );
+    mdoc._addObjects( Objects( pos.begin(), pos.end() - 1 ) );
+    mpt = pos.back();
+    mpt->calc( mdoc );
   }
   else
   {
@@ -72,13 +79,16 @@ void ConstructMode::leftClickedObject(
 
 void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
+  if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
   {
-    mdoc.addObjects( mpt );
+    mdoc.addObject( mpt );
 
-    selectObject( mpt[2], w );
+    selectObject( mpt, w );
 
-    mpt = ObjectFactory::instance()->fixedPoint( w.fromScreen( p ) );
+    Objects pos = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
+    mdoc._addObjects( Objects( pos.begin(), pos.end() - 1 ) );
+    mpt = pos.back();
+    mpt->calc( mdoc );
   }
 }
 
@@ -111,12 +121,12 @@ void ConstructMode::mouseMoved( const Objects& os,
 
     w.setCursor( KCursor::handCursor() );
   }
-  else if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
+  else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
   {
-    mpt[2]->draw( pter, true );
-    mctor->handlePrelim( pter, mparents.with( mpt[2] ), mdoc, w );
+    mpt->draw( pter, true );
+    mctor->handlePrelim( pter, mparents.with( mpt ), mdoc, w );
 
-    QString o = mctor->useText( *mpt[2], mparents, mdoc, w );
+    QString o = mctor->useText( *mpt, mparents, mdoc, w );
     mdoc.emitStatusBarText( o );
     pter.drawTextStd( textloc, o );
 
@@ -151,22 +161,31 @@ void ConstructMode::selectObject( Object* o, KigWidget& w )
 
 PointConstructMode::PointConstructMode( KigDocument& d )
   : BaseMode( d ),
-    mpt( ObjectFactory::instance()->fixedPoint( Coordinate() ) )
+    mpt( 0 )
 {
-  mpt.calc( d );
+  // we add the data objects to the document cause
+  // ObjectFactory::redefinePoint does that too, and this way, we can
+  // depend on them already being known by the doc when we add the
+  // mpt..
+  Objects pos = ObjectFactory::instance()->fixedPoint( Coordinate() );
+  d._addObjects( Objects( pos.begin(), pos.end() - 1 ) );
+  mpt = pos.back();
+  mpt->calc( d );
 }
 
 PointConstructMode::~PointConstructMode()
 {
-  delete_all( mpt.begin(), mpt.end() );
-  mpt.clear();
+  // allow the mpt to remove its obsolete parents from the
+  // document...
+  if ( mpt ) mpt->setParents( Objects(), &mdoc );
+  delete mpt;
 }
 
 void PointConstructMode::leftClickedObject(
   Object*, const QPoint&, KigWidget& w, bool )
 {
-  mdoc.addObjects( mpt );
-  mpt.clear();
+  mdoc.addObject( mpt );
+  mpt = 0;
   w.redrawScreen();
   mdoc.doneMode( this );
 }
@@ -191,9 +210,8 @@ void PointConstructMode::mouseMoved(
   KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
 
   redefinePoint( mpt, w.fromScreen( p ), mdoc, w );
-  mpt.calc( mdoc );
 
-  mpt[2]->draw( pter, true );
+  mpt->draw( pter, true );
   w.setCursor( KCursor::blankCursor() );
 
   w.updateWidget( pter.overlay() );

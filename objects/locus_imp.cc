@@ -106,6 +106,11 @@ const QCStringList LocusImp::properties() const
   return Parent::properties();
 }
 
+int LocusImp::impRequirementForProperty( uint which ) const
+{
+  return Parent::impRequirementForProperty( which );
+}
+
 ObjectImp* LocusImp::property( uint which, const KigDocument& w ) const
 {
   return Parent::property( which, w );
@@ -135,4 +140,5 @@ int LocusImp::id() const
 {
   return ID_LocusImp;
 }
+
 

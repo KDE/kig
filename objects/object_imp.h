@@ -51,6 +51,10 @@ public:
   // only letters and dashes, no spaces..
   virtual const QCStringList propertiesInternalNames() const = 0;
   virtual ObjectImp* property( uint which, const KigDocument& d ) const = 0;
+  // sometimes we need to know which type an imp needs to be at least
+  // in order to have the imp with number which.  Macro's need it
+  // foremost.  This function answers that question
+  virtual int impRequirementForProperty( uint which ) const = 0;
 
   enum {
     // we guarantee that "more specialized" types are lower in the list

@@ -44,6 +44,7 @@ public:
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
+  int impRequirementForProperty( uint which ) const;
 
   bool inherits( int typeID ) const;
 
@@ -80,6 +81,7 @@ public:
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
+  int impRequirementForProperty( uint which ) const;
 
   SegmentImp* copy() const;
   const char* baseName() const;

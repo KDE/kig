@@ -54,7 +54,7 @@ public:
 
   // build a set of objects that interdepend according to this
   // ObjectHierarchy..
-  Objects buildObjects( const Objects& os ) const;
+  Objects buildObjects( const Objects& os, const KigDocument& ) const;
 
   ArgParser argParser() const;
 

@@ -337,7 +337,7 @@ void MacroConstructor::handleArgs( const Objects& os, KigDocument& d,
                                    KigWidget& ) const
 {
   Objects args = mparser.parse( os );
-  Objects bos = mhier.buildObjects( args );
+  Objects bos = mhier.buildObjects( args, d );
   bos.calc( d );
   d.addObjects( bos );
 }

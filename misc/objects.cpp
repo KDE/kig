@@ -38,9 +38,7 @@ Objects Objects::with( Object* o ) const
 void Objects::calc( const KigDocument& d ) const
 {
   for ( const_iterator i = begin(); i != end(); ++i )
-  {
     (*i)->calc( d );
-  };
 }
 
 void Objects::setSelected( bool sel )

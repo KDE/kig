@@ -29,11 +29,8 @@ class ConstructMode
 {
   const ObjectConstructor* mctor;
   // this is the point that we move around, in case the user wants to
-  // add a point somewhere..  it's a set of two data objects and a
-  // point object.
-  // TODO: remove this, and replace it by creating a new PointImp when
-  // necessary, and building a complete object only when necessary..
-  Objects mpt;
+  // add a point somewhere..
+  Object* mpt;
 
   Objects mparents;
 
@@ -57,9 +54,8 @@ class PointConstructMode
   : public BaseMode
 {
   // this is the point that we move around, for the user to add
-  // somewhere..  it's a set of two DataObjects and a point
-  // RealObject.
-  Objects mpt;
+  // somewhere..
+  Object* mpt;
 public:
   PointConstructMode( KigDocument& d );
   ~PointConstructMode();

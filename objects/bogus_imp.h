@@ -48,6 +48,7 @@ public:
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
+  int impRequirementForProperty( uint which ) const;
 };
 
 class InvalidImp

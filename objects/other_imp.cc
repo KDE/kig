@@ -95,6 +95,13 @@ const QCStringList AngleImp::properties() const
   return l;
 }
 
+int AngleImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return ID_AngleImp;
+}
+
 ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
@@ -170,6 +177,11 @@ const QCStringList VectorImp::properties() const
   return Parent::properties();
 }
 
+int VectorImp::impRequirementForProperty( uint which ) const
+{
+  return Parent::impRequirementForProperty( which );
+}
+
 ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
 {
   return Parent::property( which, w );
@@ -209,4 +221,5 @@ int VectorImp::id() const
 {
   return ID_VectorImp;
 }
+
 

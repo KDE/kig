@@ -446,9 +446,9 @@ void KigDocument::setMode( KigMode* m )
   mMode = m;
   m->enableActions();
 }
-void KigDocument::_addObjects( Objects& o)
+void KigDocument::_addObjects( const Objects& o)
 {
-  for( Objects::iterator i = o.begin(); i != o.end(); ++i )
+  for( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
     _addObject( *i );
 }
 

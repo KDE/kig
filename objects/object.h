@@ -52,6 +52,13 @@ public:
 
   virtual const ObjectImp* imp() const = 0;
   virtual Objects parents() const = 0;
+  /**
+   * what imp does an object need to have in order to be a valid
+   * parent replacing o where os are the other parents..
+   * @see ObjectType::impRequirement and
+   * ObjectImp::impRequirementForProperty
+   */
+  virtual int impRequirement( Object* o, const Objects& os ) const;
 
   virtual void draw( KigPainter& p, bool showSelection ) const = 0;
   virtual bool contains( const Coordinate& p, const KigWidget& si ) const = 0;
@@ -82,6 +89,7 @@ public:
 
   const uint numberOfProperties() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
+  int impRequirementForProperty( uint which ) const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
 
@@ -150,6 +158,11 @@ public:
   RealObject( const ObjectType* type, const Objects& parents );
   ~RealObject();
 
+  // c++ doesn't consider our parent's calc function when looking for
+  // a calc function with this signature, because we have another calc
+  // function..
+  void calc( const KigDocument& );
+
   bool inherits( int type ) const;
   bool isInternal() const;
 
@@ -161,9 +174,6 @@ public:
 
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist, const KigDocument& );
-
-  void calc( const KigDocument& d );
-
 
   const ObjectType* type() const;
   void setType( const ObjectType* t );
@@ -179,6 +189,8 @@ public:
 
   int width() const { return mwidth; };
   void setWidth( int width );
+
+  int impRequirement( Object* o, const Objects& os ) const;
 };
 
 /**
@@ -237,6 +249,8 @@ public:
   bool shown() const;
 
   void delParent( Object* o );
+
+  int impRequirement( Object* o, const Objects& os ) const;
 };
 
 #endif

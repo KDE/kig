@@ -316,8 +316,6 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
 {
   bool ok = true;
 
-  int oretsize = ret.size();
-
   std::vector<HierElem> elems;
 
   for (QDomElement e = firstelement; !e.isNull(); e = e.nextSibling().toElement() )
@@ -347,20 +345,23 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
     };
   };
 
-  ret.resize( oretsize + elems.size(), 0 );
+  ret.resize( elems.size(), 0 );
 
   // now we do a topological sort of the elems..
   std::vector<HierElem> sortedElems = sortElems( elems );
+
+  assert( sortedElems.size() == elems.size() );
 
   // data objects that certain objects need..  we add them with the
   // rest at the end..
   Objects dataos;
 
   // and now we go over them again, this time filling up ret..
-  for ( uint i = oretsize; i < sortedElems.size(); ++i )
+  for ( uint i = 0; i < sortedElems.size(); ++i )
   {
     HierElem& elem = sortedElems[i];
     QDomElement e = elem.el;
+    if ( e.isNull() ) continue;
     QString tmp;
 
     tmp = e.attribute( "final" );
@@ -411,8 +412,13 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
     if ( final ) finalos.push_back( o );
   };
 
+  assert( ret.size() == elems.size() );
+
   ret.reserve( ret.size() + dataos.size() );
   copy( dataos.begin(), dataos.end(), back_inserter( ret ) );
+
+  for ( uint i = 0; i < ret.size(); ++i )
+    assert( ret[i] );
 
   return true;
 };

@@ -161,8 +161,8 @@ protected:
 
 public:
   void _addObject( Object* inObject );
-  void _addObjects( Objects& o);
-  void _delObject(Object* inObject);
+  void _addObjects( const Objects& o);
+  void _delObject( Object* inObject );
 
 protected:
   void setupActions();

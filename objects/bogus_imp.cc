@@ -51,6 +51,11 @@ const QCStringList BogusImp::properties() const
   return QCStringList();
 }
 
+int BogusImp::impRequirementForProperty( uint which ) const
+{
+  return Parent::impRequirementForProperty( which );
+}
+
 ObjectImp* BogusImp::property( uint, const KigDocument& ) const
 {
   assert( false );
@@ -215,4 +220,5 @@ int HierarchyImp::id() const
 {
   return ID_HierarchyImp;
 }
+
 
