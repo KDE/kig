@@ -19,7 +19,7 @@ rm -rf $TEMPDIR
 mkdir $TEMPDIR
 cd $TEMPDIR
 
-I18NLANGS="..."
+I18NLANGS=""
 
 ~domi/downloads/cvs2dist \
 	--name "$NAME" \
@@ -28,8 +28,6 @@ I18NLANGS="..."
 	--i18n-dir "$I18NDIR" \
 	--i18n-langs="$I18NLANGS" \
 	--log="$TEMPDIR/log" \
-	~/src/test/kdenonbeta kig \
-	-r "kig/kig_part.h"
-	
+	~/src/test/kdenonbeta kig
 
 cd $OLDPWD
