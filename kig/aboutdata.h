@@ -33,7 +33,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 
   tmp->addCredit("Maurizio Paolini",
 		 I18N_NOOP( "Did the more math intensive work all around kig, "
-                            "most importantly conics and transformations "
+                            "most importantly conics, cubics and transformations "
                             "support." ),
 		 "paolini@dmf.bs.unicatt.it");
 
