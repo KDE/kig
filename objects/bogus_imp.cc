@@ -337,7 +337,7 @@ const QCStringList TestResultImp::properties() const
 const QCStringList TestResultImp::propertiesInternalNames() const
 {
   QCStringList s = Parent::propertiesInternalNames();
-  s << I18N_NOOP( "test-result" );
+  s << "test-result";
   assert( s.size() == TestResultImp::numberOfProperties() );
   return s;
 }

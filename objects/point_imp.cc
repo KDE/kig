@@ -50,13 +50,15 @@ bool PointImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 
 const uint PointImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 1;
+  return Parent::numberOfProperties() + 3;
 }
 
 const QCStringList PointImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
   l << "coordinate";
+  l << "coordinate-x";
+  l << "coordinate-y";
   assert( l.size() == PointImp::numberOfProperties() );
   return l;
 }
@@ -65,6 +67,8 @@ const QCStringList PointImp::properties() const
 {
   QCStringList l = Parent::properties();
   l << I18N_NOOP( "Coordinate" );
+  l << I18N_NOOP( "X coordinate" );
+  l << I18N_NOOP( "Y coordinate" );
   assert( l.size() == PointImp::numberOfProperties() );
   return l;
 }
@@ -82,6 +86,10 @@ const char* PointImp::iconForProperty( uint which ) const
     return Parent::iconForProperty( which );
   if ( which == Parent::numberOfProperties() )
     return "pointxy"; // coordinate
+  if ( which == Parent::numberOfProperties() + 1 )
+    return "pointxy"; // coordinate-x
+  if ( which == Parent::numberOfProperties() + 2 )
+    return "pointxy"; // coordinate-y
   else assert( false );
   return "";
 }
@@ -92,6 +100,10 @@ ObjectImp* PointImp::property( uint which, const KigDocument& d ) const
     return Parent::property( which, d );
   if ( which == Parent::numberOfProperties() )
     return new PointImp( mc );
+  if ( which == Parent::numberOfProperties() + 1 )
+    return new DoubleImp( mc.x );
+  if ( which == Parent::numberOfProperties() + 2 )
+    return new DoubleImp( mc.y );
   else assert( false );
   return new InvalidImp;
 }

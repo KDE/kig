@@ -472,12 +472,17 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 // ugly hack to show numerics...
       if ( domelem.attribute( "type" ) == "value" )
         oc = fact->labelCalcer( value, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), doc );
-      else if ( ( domelem.attribute( "type" ) == "pt_abscissa" ) ||
-                ( domelem.attribute( "type" ) == "pt_ordinate" ) )
+      else if ( domelem.attribute( "type" ) == "pt_abscissa" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         Coordinate m( x, y );
-        oc = constructTextObject( m, parents[0], "coordinate", doc );
+        oc = constructTextObject( m, parents[0], "coordinate-x", doc );
+      }
+      else if ( domelem.attribute( "type" ) == "pt_ordinate" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "coordinate-y", doc );
       }
       else if ( domelem.attribute( "type" ) == "segment_length" )
       {

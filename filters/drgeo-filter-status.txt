@@ -19,12 +19,12 @@ Vectors           ok
 Lines             ok
 Circles           ok
 Numbers           value (with a label), segment_length, circle_perimeter, 
-                  arc_length, distance_2pts, vector_norm, 
-                  pt_abscissa & pt_ordinate (coord with  x, y  for each of them)
+                  arc_length, distance_2pts, vector_norm, pt_abscissa, 
+                  pt_ordinate
 Angles            ok (no label with measure)
 Arcs              ok
 Transformations   translation, central reflection, line reflection, rotation
-Intersections     line-line
+Intersections     line-line, circle-circle, circle-line
 Scripts           as a label
 
 Colors            ok
@@ -35,10 +35,11 @@ Objects to implement
 --------------------
 
 Points            On_curve
+Angles            label with measure
 Locuses           may work
 Polygons          also in Kig :-)
 Transformations   scaling
-Intersection      conic-line, circle-circle
+Intersections     curve-line
 
 Styles            Points
 
