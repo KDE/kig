@@ -716,7 +716,7 @@
       kinds of objects, not just Points.  Many more classes and
       methods are available from the Kig Python code, and a more
       complete reference on them is provided <ulink
-      url="scripting-api/index.html">here</ulink>.
+      url="http://edu.kde.org/kig/manual/scripting-api/index.html">here</ulink>.
     </para>
   </chapter>
 
