@@ -20,6 +20,7 @@
 
 #include "../../kig/kig_part.h"
 #include "../../objects/object_factory.h"
+#include "../../objects/object_type_factory.h"
 #include "../../objects/object.h"
 #include "../../objects/bogus_imp.h"
 #include "../../objects/point_type.h"
@@ -77,15 +78,45 @@ KigFilter::Result KigFilterNative::load( const QString& from, KigDocument& to )
     loadNew( main, to ) : loadOld( main, to );
 }
 
-static void extendObjects( Objects& objs, uint size )
+struct HierElem
 {
-  if ( size > objs.size() )
+  int id;
+  std::vector<int> parents;
+  QDomElement el;
+};
+
+static void extendVect( std::vector<HierElem>& vect, uint size )
+{
+  if ( size > vect.size() )
   {
-    int osize = objs.size();
-    objs.resize( size, 0 );
+    int osize = vect.size();
+    vect.resize( size );
     for ( uint i = osize; i < size; ++i )
-      if ( !objs[i] ) objs[i] = new RealObject( 0, Objects() );
+      vect[i].id = i+1;
   };
+};
+
+static void visitElem( std::vector<HierElem>& ret,
+                       const std::vector<HierElem>& elems,
+                       std::vector<bool>& seen,
+                       int i )
+{
+  if ( !seen[i] )
+  {
+    for ( uint j = 0; j < elems[i].parents.size(); ++j )
+      visitElem( ret, elems, seen, elems[i].parents[j] - 1);
+    ret.push_back( elems[i] );
+    seen[i] = true;
+  };
+};
+
+static std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
+{
+  std::vector<HierElem> ret;
+  std::vector<bool> seenElems( elems.size(), false );
+  for ( uint i = 0; i < elems.size(); ++i )
+    visitElem( ret, elems, seenElems, i );
+  return ret;
 };
 
 KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument& to )
@@ -93,42 +124,18 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
   bool ok = true;
   // TODO: fix memory leaks on parse errors..
 
+  std::vector<HierElem> elems;
   Objects os;
-  std::vector<QCString> types;
-  std::vector<QDomElement> elements;
-  // first the "independent" points..
-  QDomNode n;
-  QDomElement e;
-  for ( n = main.firstChild(); !n.isNull(); n = n.nextSibling() )
-  {
-    e = n.toElement();
-    if ( e.isNull() ) return ParseError;
-    if ( e.tagName() == "ObjectHierarchy" ) break;
-    if ( e.tagName() == "Point" )
-    {
-      double x = e.attribute("x").toDouble(&ok);
-      if ( ! ok ) return ParseError;
-      double y = e.attribute("y").toDouble(&ok);
-      if ( ! ok ) return ParseError;
-      Coordinate c( x, y );
 
-      os.push_back( ObjectFactory::instance()->fixedPoint( c ) );
-    }
-    else
-      return ParseError;
-  };
-
-  QDomElement hier = e;
+  QDomElement hier = main.firstChild().toElement();
+  if ( hier.isNull() ) return ParseError;
+  if ( hier.tagName() != "ObjectHierarchy" ) return NotSupported;
   for (QDomNode n = hier.firstChild(); !n.isNull(); n = n.nextSibling())
   {
-    e = n.toElement();
+    QString tmp;
+    QDomElement e = n.toElement();
     if ( e.isNull() ) return ParseError;
     if ( e.tagName() != "HierarchyElement" ) return ParseError;
-
-    QString tmp;
-    tmp = e.attribute("typeName");
-    if(tmp.isNull()) return ParseError;
-    QCString type = tmp.utf8();
 
     // fetch the id
     tmp = e.attribute("id");
@@ -136,17 +143,9 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
     uint id = tmp.toInt(&ok);
     if ( !ok ) return ParseError;
 
-    types.resize( std::max( types.size(), id ) );
-    types[id-1] = type;
-    elements.resize( std::max( types.size(), id ) );
-    elements[id-1] = e;
+    extendVect( elems, id );
+    elems[id-1].el = e;
 
-    tmp = e.attribute( "given" );
-    bool given = tmp == "true" || tmp == "yes";
-
-    Objects parents;
-    QColor color = Qt::blue;
-    bool shown = true;
     for ( QDomNode n = e.firstChild(); !n.isNull(); n = n.nextSibling() )
     {
       QDomElement el = n.toElement();
@@ -157,39 +156,64 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
         if ( tmp.isNull() ) return ParseError;
         int pid = tmp.toInt( &ok );
         if ( ! ok ) return ParseError;
-        extendObjects( os, pid );
-        parents.push_back( os[pid-1] );
+        extendVect( elems, pid );
+        elems[id-1].parents.push_back( pid );
       }
-      else if ( el.tagName() == "param" )
+    };
+
+    os.resize( elems.size(), 0 );
+
+    // now we do a topological sort of the elems..
+    std::vector<HierElem> sortedElems = sortElems( elems );
+
+    // and now we go over them again, this time filling up os..
+    for ( uint i = 0; i < sortedElems.size(); ++i )
+    {
+      HierElem& elem = sortedElems[i];
+      QDomElement e = elem.el;
+      QString tmp;
+
+      tmp = e.attribute("typeName");
+      if(tmp.isNull()) return ParseError;
+      QCString type = tmp.utf8();
+
+      QColor color = Qt::blue;
+      bool shown = true;
+      for ( QDomNode n = e.firstChild(); !n.isNull(); n = n.nextSibling() )
       {
-        QString name = el.attribute( "name" );
-        if ( name.isNull() ) return ParseError;
-        if ( name == "color" )
+        QDomElement el = n.toElement();
+        if ( el.isNull() ) return ParseError;
+        if ( el.tagName() == "param" )
         {
-          color = QColor( el.text() );
-          if ( !color.isValid() )
-            return ParseError;
-        }
-        else if ( name == "shown" )
-        {
-          shown = el.text() == "true" || el.text() == "yes";
+          QString name = el.attribute( "name" );
+          if ( name.isNull() ) return ParseError;
+          if ( name == "color" )
+          {
+            color = QColor( el.text() );
+            if ( !color.isValid() )
+              return ParseError;
+          }
+          else if ( name == "shown" )
+          {
+            shown = el.text() == "true" || el.text() == "yes";
+          };
         };
       };
-    };
-    extendObjects( os, id );
-    if ( !given )
-    {
-      RealObject* o = static_cast<RealObject*>( os[id-1] );
-      o->setParents( parents );
-      o->setColor( color );
+      Objects parents;
+      for ( uint i = 0; i < elem.parents.size(); ++i )
+      {
+        assert( os[elem.parents[i] - 1] );
+        parents.push_back( os[elem.parents[i] - 1] );
+      };
+
+      RealObject* o = new RealObject( 0, parents );
       o->setShown( shown );
+      o->setColor( color );
+
+      if ( ! oldElemToNewObject( type, e, *o ) ) return ParseError;
+      os[elem.id-1] = o;
     };
   };
-
-  Objects t = calcPath( os );
-  for ( Objects::iterator o = t.begin(); o != t.end(); ++o )
-    if ( ! oldElemToNewObject( types[o-t.begin()], elements[o-t.begin()] , *static_cast<RealObject*>( *o ) ) )
-      return ParseError;
 
   to.setObjects( os );
   return OK;
@@ -290,6 +314,11 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
       t = RotationType::instance();
     else if ( type == "TranslatedPoint" )
       t = TranslatedType::instance();
+    else
+    {
+      t = ObjectTypeFactory::instance()->find( type );
+      if ( ! t ) return ParseError;
+    };
     o.setType( t );
     return true;
   };
