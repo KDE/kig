@@ -27,22 +27,7 @@
 
 Coordinate calcPointOnPerpend( const Coordinate& p1, const Coordinate& p2, const Coordinate& t )
 {
-  double x2,y2; // coords of another point on the perpend line
-  double xa = p1.x;
-  double xb = p2.x;
-  double ya = p1.y;
-  double yb = p2.y;
-  if ( fabs(yb - ya) > 0.00001 )
-  {
-    x2 = 0;
-    y2 = (xb-xa)*(t.x)/(yb-ya) + t.y;
-  }
-  else // the line/segment = horizontal, so the perpend is vertical
-  {
-    x2 = t.x;
-    y2 = 0;
-  };
-  return Coordinate(x2,y2);
+  return t + ( p2 - p1 ).orthogonal();
 };
 
 Coordinate calcPointOnParallel( const Coordinate& p1, const Coordinate& p2, const Coordinate& t )
@@ -63,8 +48,6 @@ Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, co
     dyb = p2.y,
     dyc = p3.y,
     dyd = p4.y;
-//   calcBorderPoints( dxa, dya, dxb, dyb, Rect(0,0,500,500));
-//   calcBorderPoints( dxc, dyc, dxd, dyd, Rect(0,0,500,500));
 
   long double xa=dxa;
   long double xb=dxb;
@@ -171,8 +154,8 @@ void calcBorderPoints( double& xa, double& ya, double& xb, double& yb, const Rec
     xb = bottom; yb = r.bottom();
   };
   if (novp < 2) {
-    kdError()<< k_funcinfo << "novp < 2 :(( " << endl;
-    xa = r.left(); ya=r.top(); xb=r.right(); yb=r.bottom();
+    // line is completely outside of the window...
+    xa = ya = xb = yb = 0;
   };
 };
 
