@@ -78,8 +78,6 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
                      ) * 2 / numIntervals ) ) );
   const double hInterval = vInterval;
 
-  kdDebug() << k_funcinfo << hInterval << endl;
-
   // this grid comes largely from KGeo
   const double dMinX = p.window().left();
   const int iMinX = static_cast<int>( ( dMinX + hInterval / 4 ) / hInterval );
@@ -265,7 +263,6 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     p.setPen( QPen( lightGray, 0, DotLine ) );
     for ( int i = begin; i <= end; ++i )
     {
-      kdDebug() << k_funcinfo << i << hInterval << endl;
       p.drawCircle( Coordinate( 0, 0 ), i*hInterval );
     };
   }
