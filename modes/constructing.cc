@@ -220,9 +220,13 @@ void StdConstructionMode::midClicked( QMouseEvent* e, KigView* )
 void StdConstructionMode::midReleased( QMouseEvent* e, KigView* v )
 {
   if ( (e->pos() - plc).manhattanLength() > 4 ) return;
-  updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
-  mDoc->addObject( mp );
-  selectArg( mp, v );
+
+  if ( mtype->wantArgs( osa.with( mp ) ) != Object::NotGood )
+  {
+    updatePoint( v->fromScreen( plc ), v->screenInfo() );
+    mDoc->addObject( mp );
+    selectArg( mp, v );
+  };
 }
 
 void StdConstructionMode::selectArg( Object* o, KigView* v )
