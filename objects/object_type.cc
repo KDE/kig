@@ -46,7 +46,10 @@ bool ObjectType::canMove() const
 
 void ObjectType::move( RealObject*, const Coordinate&, const KigDocument& ) const
 {
-  assert( false );
+  // we can't do an assert here, because sometimes ( like in
+  // ObjectABType::move, ObjectType::move is called without checking
+  // the object's canMove().
+//   assert( false );
 }
 
 bool ObjectType::inherits( int ) const
