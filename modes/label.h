@@ -28,7 +28,6 @@
 #include <vector>
 
 class TextLabelWizard;
-class NormalMode;
 class Object;
 
 class TextLabelConstructionMode
@@ -36,7 +35,6 @@ class TextLabelConstructionMode
 {
   // point last clicked..
   QPoint mplc;
-  NormalMode* mprev;
 
   Coordinate mcoord;
   QString mtext;
@@ -62,7 +60,7 @@ class TextLabelConstructionMode
   void updateLinksLabel();
 
 public:
-  TextLabelConstructionMode( NormalMode* b, KigDocument* d );
+  TextLabelConstructionMode( KigDocument& d );
   ~TextLabelConstructionMode();
   void leftClicked( QMouseEvent*, KigWidget* );
   void leftReleased( QMouseEvent*, KigWidget* );

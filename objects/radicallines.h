@@ -64,8 +64,7 @@ public:
   static Objects sMultiBuild( const Objects& args );
 
   static KigMode* sConstructMode( MultiConstructibleType* ourtype,
-                                  KigDocument* theDoc,
-                                  NormalMode* previousMode );
+                                  KigDocument& theDoc );
 
   virtual void addActions( NormalModePopupObjects& );
   virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& cp );
@@ -119,8 +118,7 @@ public:
   static Objects sMultiBuild( const Objects& args );
 
   static KigMode* sConstructMode( MultiConstructibleType* ourtype,
-                                  KigDocument* theDoc,
-                                  NormalMode* previousMode );
+                                  KigDocument& theDoc );
 };
 
 #endif

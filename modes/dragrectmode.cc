@@ -25,11 +25,59 @@
 #include <qevent.h>
 #include <qglobal.h>
 
-#if QT_VERSION >= 0x030100
-#include <qeventloop.h>
-#endif
+DragRectMode::DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w )
+  : KigMode( d ), mstart( start ), mnc( false )
+{
+  mdoc.emitStatusBarText( 0 );
+  moved( start, w );
+}
 
-#include <kapplication.h>
+void DragRectMode::moved( const QPoint& p, KigWidget& w )
+{
+  // update the rect...
+  w.updateCurPix();
+  KigPainter pt( w.screenInfo(), &w.curPix );
+  pt.drawFilledRect( QRect( p,  mstart ) );
+  w.updateWidget( pt.overlay() );
+}
+
+void DragRectMode::released( const QPoint& p, KigWidget& w, bool nc )
+{
+  const Rect r =  w.fromScreen( QRect( mstart, p ) );
+  mret = mdoc.whatIsInHere( r );
+  mnc = nc;
+
+  mdoc.doneMode( this );
+}
+
+void DragRectMode::enableActions()
+{
+  KigMode::enableActions();
+}
+
+Objects DragRectMode::ret() const
+{
+  return mret;
+}
+
+bool DragRectMode::needClear() const
+{
+  return mnc;
+}
+
+void DragRectMode::moved( QMouseEvent* e, KigWidget& w )
+{
+  moved( e->pos(), w );
+}
+
+void DragRectMode::released( QMouseEvent* e, KigWidget& w )
+{
+  released( e->pos(), w, ! ( e->state() & ( ControlButton | ShiftButton ) ) );
+}
+
+DragRectMode::~DragRectMode()
+{
+}
 
 void DragRectMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
@@ -64,81 +112,5 @@ void DragRectMode::midReleased( QMouseEvent* e, KigWidget* w )
 void DragRectMode::rightReleased( QMouseEvent* e, KigWidget* w )
 {
   released( e, *w );
-}
-
-void DragRectMode::moved( const QPoint& p, KigWidget& w )
-{
-  // update the rect...
-  w.updateCurPix();
-  KigPainter pt( w.screenInfo(), &w.curPix );
-  pt.drawFilledRect( QRect( p,  mstart ) );
-  w.updateWidget( pt.overlay() );
-}
-
-void DragRectMode::released( const QPoint& p, KigWidget& w, bool nc )
-{
-//   if (!(e->state() & (ControlButton | ShiftButton)))
-//   {
-//     // FIXME
-//   };
-  const Rect r =  w.fromScreen( QRect( mstart, p ) );
-  mret = mDoc->whatIsInHere( r );
-  mnc = nc;
-#if QT_VERSION >= 0x030100
-  kapp->eventLoop()->exitLoop();
-#else
-  kapp->exit_loop();
-#endif
-}
-
-void DragRectMode::run( const QPoint& start, KigWidget& w, KigMode* prev )
-{
-  mstart = start;
-
-  mDoc->emitStatusBarText( 0 );
-  mDoc->setMode( this );
-
-  moved( start, w );
-#if QT_VERSION >= 0x030100
-  (void) kapp->eventLoop()->enterLoop();
-#else
-  (void) kapp->enter_loop();
-#endif
-  mDoc->setMode( prev );
-}
-
-void DragRectMode::enableActions()
-{
-  KigMode::enableActions();
-}
-
-DragRectMode::DragRectMode( KigDocument* d )
-  : KigMode( d ), mnc( false )
-{
-
-}
-
-DragRectMode::~DragRectMode()
-{
-}
-
-Objects DragRectMode::ret() const
-{
-  return mret;
-}
-
-bool DragRectMode::needClear() const
-{
-  return mnc;
-}
-
-void DragRectMode::moved( QMouseEvent* e, KigWidget& w )
-{
-  moved( e->pos(), w );
-}
-
-void DragRectMode::released( QMouseEvent* e, KigWidget& w )
-{
-  released( e->pos(), w, ! ( e->state() & ( ControlButton | ShiftButton ) ) );
 }
 

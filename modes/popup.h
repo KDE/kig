@@ -40,7 +40,7 @@ class NormalModePopupObjects
   Q_OBJECT
 
   QPoint mplc;
-  KigDocument* mdoc;
+  KigDocument& mdoc;
   KigWidget* mview;
   Objects mobjs;
   NormalMode* mmode;
@@ -69,7 +69,7 @@ class NormalModePopupObjects
                                 // see Object::objectActions() )...
 
 public:
-  NormalModePopupObjects( KigDocument* doc, KigWidget* view,
+  NormalModePopupObjects( KigDocument& doc, KigWidget* view,
                           NormalMode* mode, const Objects& objs );
   ~NormalModePopupObjects() {};
 

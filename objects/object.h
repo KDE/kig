@@ -233,8 +233,7 @@ public:
    * all, only NormalPoint and TextLabel need something else...
    */
   static KigMode* sConstructMode( StdConstructibleType* ourtype,
-                                  KigDocument* theDoc,
-                                  NormalMode* previousMode );
+                                  KigDocument& theDoc );
 
   // objects also need this static method:
   // static const char* sActionName();

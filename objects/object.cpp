@@ -127,10 +127,9 @@ Object* Object::newObject( const QCString& type, const Objects& parents,
 }
 
 KigMode* Object::sConstructMode( StdConstructibleType* ourtype,
-                                 KigDocument* theDoc,
-                                 NormalMode* previousMode )
+                                 KigDocument& theDoc )
 {
-  return new StdConstructionMode( ourtype, previousMode, theDoc );
+  return new StdConstructionMode( ourtype, theDoc );
 }
 
 const QString Object::vTBaseTypeName() const

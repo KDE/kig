@@ -31,62 +31,47 @@
 #include <functional>
 #include <algorithm>
 
-MovingModeBase::MovingModeBase( NormalMode* prev, KigWidget* v, KigDocument* d )
-  : KigMode( d ), mprev( prev ), mview( v )
+void MovingModeBase::initScreen( const Objects& in )
 {
+  // here we calc what objects will be moving, and we draw the others
+  // on KigWidget::stillPix..  nmo are the Not Moving Objects
+  Objects nmo;
 
-}
-
-MovingModeBase::~MovingModeBase()
-{
-
-}
-
-void MovingModeBase::initScreen( Objects& in )
-{
+  using namespace std;
   amo = in;
   // calc nmo: basically ( mdoc->objects() - amo )
   // we use some stl magic here, tmp and tmp2 are set to os and
-  // mdoc->objects(), sorted, and then used in std::set_difference...
+  // mdoc->objects(), sorted, and then used in set_difference...
   Objects tmp( amo.begin(), amo.end() );
-  std::sort( tmp.begin(), tmp.end() );
-  Objects tmp2( mDoc->objects().begin(), mDoc->objects().end() );
-  std::sort( tmp2.begin(), tmp2.end() );
-  std::set_difference( tmp2.begin(), tmp2.end(),
-                       tmp.begin(), tmp.end(),
-                       std::back_inserter( nmo ) );
+  sort( tmp.begin(), tmp.end() );
+  Objects tmp2( mdoc.objects() );
+  sort( tmp2.begin(), tmp2.end() );
+  set_difference( tmp2.begin(), tmp2.end(),
+                  tmp.begin(), tmp.end(),
+                  back_inserter( nmo ) );
 
-  mview->clearStillPix();
-  KigPainter p( mview->screenInfo(), &mview->stillPix );
-  p.drawGrid( mDoc->coordinateSystem() );
+  mview.clearStillPix();
+  KigPainter p( mview.screenInfo(), &mview.stillPix );
+  p.drawGrid( mdoc.coordinateSystem() );
   p.drawObjects( nmo );
-// not necessary, i think.. speed is important in MovingMode...
-//   mview->drawObjects( amo, p );
+// not necessary
+//   mview.drawObjects( amo, p );
 
-  mview->updateCurPix();
+  mview.updateCurPix();
 }
-
-void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
-{
-  mouseMoved( e, v );
-};
 
 void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
 {
   // clean up after ourselves:
   amo.calcForWidget( *v );
   stopMove();
-  mDoc->setModified( true );
+  mdoc.setModified( true );
 
   // refresh the screen:
   v->redrawScreen();
   v->updateScrollBars();
 
-  // get rid of ourselves:
-  KigMode* prev = mprev;
-  KigDocument* doc = mDoc;
-  delete this;
-  doc->setMode( prev );
+  mdoc.doneMode( this );
 }
 
 void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
@@ -98,51 +83,37 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
-  // good idea ?
   v->updateScrollBars();
 };
 
 MovingMode::MovingMode( const Objects& os, const Coordinate& c,
-                        NormalMode* previousMode, KigWidget* v,
-                        KigDocument* d )
-  : MovingModeBase( previousMode, v, d ), emo( os )
+                        KigWidget& v, KigDocument& d )
+  : MovingModeBase( d, v ), emo( os )
 {
   // FIXME: fix this algorithm..., have objects tell us what other
   // objects they are going to move... e.g. only a segment moves its
   // parents, but right now, we have to take into account that every
   // object could move its parents...
   for ( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
-    (*i)->startMove( c, v->screenInfo() );
+    (*i)->startMove( c, v.screenInfo() );
 
-  Objects objs;
-  Objects tmp( emo ), tmp2;
-  while (!tmp.empty())
+  Objects objs( emo );
+  Objects tmp( emo );
+  for ( Objects::const_iterator i = emo.begin(); i != emo.end(); ++i )
   {
-    tmp2.clear();
-    // sos and their children/parents and their children's
-    // children...: these will be changing
-    for (Objects::iterator i = tmp.begin(); i != tmp.end(); ++i )
-    {
-      if (!objs.contains(*i))
-      {
-        objs.push_back(*i);
-        tmp2 |= (*i)->getChildren();
-        Objects tmp3 = (*i)->getParents();
-        tmp2 |= tmp3;
-      };
-    };
-    tmp = tmp2;
+    objs.upush( *i );
+    tmp |= (*i)->getParents();
   };
-  initScreen( objs );
-}
+  for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
+    objs |= (*i)->getAllChildren();
 
-MovingMode::~MovingMode()
-{
+  initScreen( objs );
 }
 
 void MovingMode::stopMove()
 {
-  std::for_each( emo.begin(), emo.end(), std::mem_fun( &Object::stopMove ) );
+  using namespace std;
+  for_each( emo.begin(), emo.end(), mem_fun( &Object::stopMove ) );
 }
 
 void MovingMode::moveTo( const Coordinate& o )
@@ -151,27 +122,43 @@ void MovingMode::moveTo( const Coordinate& o )
     (*i)->moveTo( o );
 }
 
-NormalPointRedefineMode::NormalPointRedefineMode( NormalPoint* p, KigDocument* d, KigWidget* v, NormalMode* m )
-  : MovingModeBase( m, v, d ), mp( p )
+PointRedefineMode::PointRedefineMode( NormalPoint* p, KigDocument& d, KigWidget& v )
+  : MovingModeBase( d, v ), mp( p )
 {
-
+  using namespace std;
   Objects os( mp );
   Objects tmp = mp->getAllChildren();
-  std::copy( tmp.begin(), tmp.end(), std::back_inserter( os ) );
-  kdDebug() << k_funcinfo << os.size() << endl;
+  copy( tmp.begin(), tmp.end(), back_inserter( os ) );
   initScreen( os );
 }
 
-void NormalPointRedefineMode::stopMove()
+void PointRedefineMode::moveTo( const Coordinate& o )
+{
+  mp->redefine( o, mdoc, mview );
+}
+
+PointRedefineMode::~PointRedefineMode()
 {
 }
 
-void NormalPointRedefineMode::moveTo( const Coordinate& o )
+MovingModeBase::MovingModeBase( KigDocument& doc, KigWidget& v )
+  : KigMode( doc ), mview( v )
 {
-  mp->redefine( o, *mDoc, *mview );
 }
 
-NormalPointRedefineMode::~NormalPointRedefineMode()
+MovingModeBase::~MovingModeBase()
 {
+}
 
+void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
+{
+  mouseMoved( e, v );
+};
+
+MovingMode::~MovingMode()
+{
+}
+
+void PointRedefineMode::stopMove()
+{
 }

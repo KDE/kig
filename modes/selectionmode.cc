@@ -34,7 +34,7 @@
 #include <qglobal.h>
 #include <kaction.h>
 
-SelectionModeBase::SelectionModeBase( KigDocument* d )
+SelectionModeBase::SelectionModeBase( KigDocument& d )
   : KigMode( d ), mcswc( true )
 {
 }
@@ -46,7 +46,7 @@ SelectionModeBase::~SelectionModeBase()
 void SelectionModeBase::leftClicked( QMouseEvent* e, KigWidget* v )
 {
   mplc = e->pos();
-  moco = mDoc->whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
+  moco = mdoc.whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
 
   if( moco.empty() )
   {
@@ -110,7 +110,7 @@ void SelectionModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
 void SelectionModeBase::midClicked( QMouseEvent* e, KigWidget* v )
 {
   mplc = e->pos();
-  moco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
+  moco = mdoc.whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   // get rid of text still showing...
   v->updateCurPix();
   v->updateWidget();
@@ -121,12 +121,12 @@ void SelectionModeBase::midReleased( QMouseEvent* e, KigWidget* v )
   if( (e->pos() - mplc).manhattanLength() > 4 ) return;
 
   // construct a new point..
-  Point* pt = NormalPoint::sensiblePoint( v->fromScreen( mplc ), *mDoc, *v );
+  Point* pt = NormalPoint::sensiblePoint( v->fromScreen( mplc ), mdoc, *v );
   pt->calcForWidget( *v );
 
   if ( wantObject( *pt, *v ) )
   {
-    mDoc->addObject( pt );
+    mdoc.addObject( pt );
 
     selectObject( pt, *v );
 
@@ -141,7 +141,7 @@ void SelectionModeBase::midReleased( QMouseEvent* e, KigWidget* v )
 void SelectionModeBase::rightClicked( QMouseEvent* e, KigWidget* w )
 {
   mplc = e->pos();
-  moco = mDoc->whatAmIOn( w->fromScreen( mplc ), w->screenInfo() );
+  moco = mdoc.whatAmIOn( w->fromScreen( mplc ), w->screenInfo() );
   // get rid of text still showing...
   w->updateCurPix();
   w->updateWidget();
@@ -151,7 +151,7 @@ void SelectionModeBase::rightClicked( QMouseEvent* e, KigWidget* w )
 
 void SelectionModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
-  Objects os = mDoc->whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
+  Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
   w->updateCurPix();
 
   if ( ! os.empty() && wantObject( *(os.front() ), *w ))
@@ -162,7 +162,7 @@ void SelectionModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
     w->setCursor( KCursor::handCursor() );
 
     QString typeName = os.front()->vTBaseTypeName();
-    mDoc->emitStatusBarText( i18n( "Select this %1" ).arg( typeName ) );
+    mdoc.emitStatusBarText( i18n( "Select this %1" ).arg( typeName ) );
 
     KigPainter p( w->screenInfo(), &w->curPix );
     QPoint point = e->pos();
@@ -174,7 +174,7 @@ void SelectionModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
   else
   {
     w->setCursor( KCursor::arrowCursor() );
-    mDoc->emitStatusBarText( 0 );
+    mdoc.emitStatusBarText( 0 );
     w->updateWidget();
   }
 }
@@ -183,7 +183,7 @@ void SelectionModeBase::enableActions()
 {
   KigMode::enableActions();
 
-  mDoc->aCancelConstruction->setEnabled( true );
+  mdoc.aCancelConstruction->setEnabled( true );
 }
 
 void SelectionModeBase::dragRect( const QPoint&, KigWidget& )
@@ -236,13 +236,13 @@ const Objects& SelectionModeBase::selection() const
 
 bool SelectionModeBase::run( KigMode* prev )
 {
-  mDoc->setMode( this );
+  mdoc.setMode( this );
 #if QT_VERSION >= 0x030100
   (void) kapp->eventLoop()->enterLoop();
 #else
   (void) kapp->enter_loop();
 #endif
-  mDoc->setMode( prev );
+  mdoc.setMode( prev );
   return mret;
 }
 
@@ -260,7 +260,7 @@ bool StandAloneSelectionMode::wantObject( const Object& o, KigWidget& )
   return res != ArgsChecker::Invalid;
 }
 
-StandAloneSelectionMode::StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d, bool cswc )
+StandAloneSelectionMode::StandAloneSelectionMode( const ArgsChecker& c, KigDocument& d, bool cswc )
   : SelectionModeBase( d ), mchecker( c )
 {
   setClearSelectWithoutControl( cswc );

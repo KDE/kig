@@ -108,7 +108,7 @@ public:
    * Object... This calls Object::sConstructMode for TType and most of
    * the times just returns new StdConstructionMode...
    */
-  virtual KigMode* constructMode( NormalMode* prev, KigDocument* doc ) = 0;
+  virtual KigMode* constructMode( KigDocument& doc ) = 0;
 
   /**
    * build an action which, when clicked, calls d->setMode(
@@ -166,7 +166,7 @@ public:
       t->setParams( params );
       return t;
     };
-  virtual KigMode* constructMode( NormalMode*, KigDocument* )
+  virtual KigMode* constructMode( KigDocument& )
     { return 0; };
   const char* actionName() const { return ""; };
 };
@@ -183,7 +183,7 @@ class TType
   const QString description() const;
   const QCString iconFileName() const;
   const char* actionName() const;
-  KigMode* constructMode( NormalMode* prev, KigDocument* doc );
+  KigMode* constructMode( KigDocument& doc );
 };
 
 /**
@@ -240,9 +240,9 @@ public:
     {
       return T::sActionName();
     };
-  KigMode* constructMode( NormalMode* prev, KigDocument* doc )
+  KigMode* constructMode( KigDocument& doc )
     {
-      return T::sConstructMode( this, doc, prev );
+      return T::sConstructMode( this, doc );
     };
   int wantArgs( const Objects& os )
     {
@@ -286,9 +286,9 @@ class TMultiType
     {
       return T::sMultiBuild( args );
     };
-  KigMode* constructMode( NormalMode* prev, KigDocument* doc )
+  KigMode* constructMode( KigDocument& doc )
     {
-      return T::sConstructMode( this, doc, prev );
+      return T::sConstructMode( this, doc );
     };
   Object* build( const Objects& parents,
                  const ParamMap& params = ParamMap() ) const
@@ -363,7 +363,7 @@ public:
   const QCString iconFileName() const;
   const char* actionName() const;
   void saveXML( QDomDocument&, QDomNode& ) const;
-  KigMode* constructMode( NormalMode* mode, KigDocument* doc );
+  KigMode* constructMode( KigDocument& doc );
   int wantArgs( const Objects& os );
   QString useText( const Objects& os, const Object* o );
   void drawPrelim( KigPainter&, const Objects& os );
@@ -376,9 +376,9 @@ const char* TType<T>::actionName() const
 }
 
 template<class T>
-KigMode* TType<T>::constructMode( NormalMode* prev, KigDocument* doc )
+KigMode* TType<T>::constructMode( KigDocument& doc )
 {
-  return T::sConstructMode( this, doc, prev );
+  return T::sConstructMode( this, doc );
 }
 
 template <class T>

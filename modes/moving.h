@@ -24,7 +24,6 @@
 #include "../misc/objects.h"
 
 class Coordinate;
-class NormalMode;
 class NormalPoint;
 class KigWidget;
 class KigDocument;
@@ -34,40 +33,37 @@ class KigDocument;
  * This is a base class for two modes: normal MovingMode: used for
  * moving a set of objects around, using Object::startMove,
  * Object::moveTo and Object::stopMove, and another mode
- * NormalPointRedefineMode, used for redefining a NormalPoint...
+ * PointRedefineMode, used for redefining a NormalPoint...
  */
 class MovingModeBase
   : public KigMode
 {
 protected:
-  MovingModeBase( NormalMode* prev, KigWidget* v, KigDocument* d );
-  ~MovingModeBase();
-  // Subclasses should call this in their constructor, when they know
-  // which objects will be moving around... They are expected to be in
-  // the right order for being calc()'ed...
-  void initScreen( Objects& amo );
-  // in these functions, subclasses should do the equivalent of
-  // Object::stopMove() and moveTo()...  Note that no calc()'ing or
-  // drawing is to be done..
-  virtual void stopMove() = 0;
-  virtual void moveTo( const Coordinate& o ) = 0;
-public:
-  void leftReleased( QMouseEvent*, KigWidget* );
-  void leftMouseMoved( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent*, KigWidget* );
+  KigWidget& mview;
 private:
   // all moving objects: these objects are all of the objects that
   // need to be redrawn every time the cursor moves, and after calc is
   // called.  Subclasses should set it in their constructors.
   Objects amo;
-  // these are the objects that are not moving at all.. It is
-  // calculated as (mdoc->objects() - amo)...
-  Objects nmo;
-
 protected:
-  NormalMode* mprev;
+  MovingModeBase( KigDocument& doc, KigWidget& v );
+  ~MovingModeBase();
 
-  KigWidget* mview;
+  // Subclasses should call this in their constructor, when they know
+  // which objects will be moving around... They are expected to be in
+  // the right order for being calc()'ed...
+  void initScreen( const Objects& amo );
+
+  // in these functions, subclasses should do the equivalent of
+  // Object::stopMove() and moveTo()...  Note that no calc()'ing or
+  // drawing is to be done..
+  virtual void stopMove() = 0;
+  virtual void moveTo( const Coordinate& o ) = 0;
+
+public:
+  void leftReleased( QMouseEvent*, KigWidget* );
+  void leftMouseMoved( QMouseEvent*, KigWidget* );
+  void mouseMoved( QMouseEvent*, KigWidget* );
 };
 
 class MovingMode
@@ -80,19 +76,19 @@ class MovingMode
   void moveTo( const Coordinate& o );
 public:
   MovingMode( const Objects& objects, const Coordinate& c,
-	      NormalMode* previousMode, KigWidget*, KigDocument* );
+	      KigWidget&, KigDocument& );
   ~MovingMode();
 };
 
-class NormalPointRedefineMode
+class PointRedefineMode
   : public MovingModeBase
 {
   NormalPoint* mp;
   void stopMove();
   void moveTo( const Coordinate& o );
 public:
-  NormalPointRedefineMode( NormalPoint* p, KigDocument* d, KigWidget* v, NormalMode* m );
-  ~NormalPointRedefineMode();
+  PointRedefineMode( NormalPoint* p, KigDocument& d, KigWidget& v );
+  ~PointRedefineMode();
 };
 
 #endif

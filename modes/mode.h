@@ -36,22 +36,23 @@ class KigMode
   : public Qt
 {
 public:
-  virtual ~KigMode() = 0;
+  virtual ~KigMode();
 
-  virtual StdConstructionMode* toStdConstructionMode();
-  virtual void leftClicked( QMouseEvent*, KigWidget* ) {};
+  StdConstructionMode* toStdConstructionMode();
+
+  virtual void leftClicked( QMouseEvent*, KigWidget* );
   // this means: mouse moved with left mouse button down (in case that
   // wasn't clear...)
-  virtual void leftMouseMoved( QMouseEvent*, KigWidget* ) {};
-  virtual void leftReleased( QMouseEvent*, KigWidget* ) {};
-  virtual void midClicked( QMouseEvent*, KigWidget* ) {};
-  virtual void midMouseMoved( QMouseEvent*, KigWidget* ) {};
-  virtual void midReleased( QMouseEvent*, KigWidget* ) {};
-  virtual void rightClicked( QMouseEvent*, KigWidget* ) {};
-  virtual void rightMouseMoved( QMouseEvent*, KigWidget* ) {};
-  virtual void rightReleased( QMouseEvent*, KigWidget* ) {};
+  virtual void leftMouseMoved( QMouseEvent*, KigWidget* );
+  virtual void leftReleased( QMouseEvent*, KigWidget* );
+  virtual void midClicked( QMouseEvent*, KigWidget* );
+  virtual void midMouseMoved( QMouseEvent*, KigWidget* );
+  virtual void midReleased( QMouseEvent*, KigWidget* );
+  virtual void rightClicked( QMouseEvent*, KigWidget* );
+  virtual void rightMouseMoved( QMouseEvent*, KigWidget* );
+  virtual void rightReleased( QMouseEvent*, KigWidget* );
   // mouse moved without any buttons down...
-  virtual void mouseMoved( QMouseEvent*, KigWidget* ) {};
+  virtual void mouseMoved( QMouseEvent*, KigWidget* );
 
   // actions: we enable the actions we want when our mode is made
   // active.  These actions are members of KigDocument, and call slots
@@ -60,12 +61,12 @@ public:
   // actions they support in enableActions().
   virtual void enableActions();
 
-  virtual void cancelConstruction() {};
-  virtual void deleteObjects() {};
-  virtual void showHidden() {};
-  virtual void newMacro() {};
-  virtual void editTypes() {};
-  virtual void startKiosk() {};
+  virtual void cancelConstruction();
+  virtual void deleteObjects();
+  virtual void showHidden();
+  virtual void newMacro();
+  virtual void editTypes();
+  virtual void startKiosk();
 
   // two special functions: because kig has undo/redo-stuff via
   // KCommands and KCommandHistory, the mode doesn't entirely control
@@ -77,13 +78,12 @@ public:
   // to refresh the screen...
   // Note: a mode doesn't need these functions unless it calls
   // mDoc->history->updateActions() in enableActions()...
-  virtual void objectsAdded() {};
-  virtual void objectsRemoved() {};
+  virtual void objectsAdded();
+  virtual void objectsRemoved();
 protected:
-  KigMode( KigDocument* d ) : mDoc( d ) {};
-  // FIXME: figure out what to do when the KigDocument deletes its
-  // KigMode* member.. we currently have memory leaks...
-  KigDocument* mDoc;
+  KigDocument& mdoc;
+
+  KigMode( KigDocument& d );
 };
 
 #endif

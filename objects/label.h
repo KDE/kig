@@ -70,8 +70,7 @@ public:
   void calc();
   void calcForWidget( const KigWidget& w );
 
-  static KigMode* sConstructMode( Type* t, KigDocument* d,
-                                  NormalMode* p );
+  static KigMode* sConstructMode( Type* t, KigDocument& d );
 
   Objects getParents() const;
 

@@ -31,7 +31,7 @@ class DefineMacroMode
   : public KigMode
 {
 public:
-  DefineMacroMode( KigDocument*, KigMode* previousMode );
+  DefineMacroMode( KigDocument& );
   ~DefineMacroMode();
   void leftClicked( QMouseEvent*, KigWidget* );
   void leftReleased( QMouseEvent*, KigWidget* );
@@ -57,7 +57,6 @@ protected:
 
   QPoint plc;
   MacroWizard* mwizard;
-  KigMode* mprev;
 
   Objects mgiven;
   Object* mfinal;

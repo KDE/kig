@@ -48,8 +48,10 @@ void ConstructAction::slotActivated()
 {
   NormalMode* nm = dynamic_cast<NormalMode*>( mdoc->mode() );
   assert( nm );
-  KigMode* m = mtype->constructMode( nm, mdoc );
-  mdoc->setMode( m );
+  KigMode* m = mtype->constructMode( *mdoc );
+  mdoc->runMode( m );
+  delete m;
+  nm->clearSelection();
 }
 
 Type* ConstructAction::type()

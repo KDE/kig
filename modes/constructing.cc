@@ -55,10 +55,9 @@ void PointConstructionMode::midReleased( QMouseEvent* e, KigWidget* v )
   leftReleased( e, v );
 }
 
-PointConstructionMode::PointConstructionMode( NormalMode* b, KigDocument* d )
+PointConstructionMode::PointConstructionMode( KigDocument& d )
   : KigMode( d ),
-    mp( NormalPoint::fixedPoint( Coordinate( 0, 0 ) ) ),
-    mprev( b )
+    mp( NormalPoint::fixedPoint( Coordinate( 0, 0 ) ) )
 {
 }
 
@@ -74,30 +73,26 @@ void PointConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 
 void PointConstructionMode::updatePoint( const Coordinate& c, const KigWidget& w )
 {
-  mp->redefine( c, *mDoc, w );
+  mp->redefine( c, mdoc, w );
   mp->calcForWidget( w );
 }
 
 void PointConstructionMode::finish( KigWidget* v )
 {
-  mDoc->addObject( mp );
+  mdoc.addObject( mp );
   mp = new NormalPoint( *mp );
   mp->calcForWidget( *v );
 
-  mprev->clearSelection();
   v->redrawScreen();
 
   v->updateScrollBars();
 
-  NormalMode* s = mprev;
-  KigDocument* d = mDoc;
-  delete this;
-  d->setMode( s );
+  mdoc.doneMode( this );
 }
 
 StdConstructionMode::StdConstructionMode( StdConstructibleType* t,
-                                          NormalMode* b, KigDocument* d )
-  : PointConstructionMode( b, d ), mtype( t )
+                                          KigDocument& d )
+  : PointConstructionMode( d ), mtype( t )
 {
 }
 
@@ -108,7 +103,7 @@ StdConstructionMode::~StdConstructionMode()
 void StdConstructionMode::leftClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
+  oco = mdoc.whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   v->updateCurPix();
   updatePoint( v->fromScreen( e->pos() ), *v );
   if( !oco.empty() )
@@ -117,11 +112,11 @@ void StdConstructionMode::leftClicked( QMouseEvent* e, KigWidget* v )
     QString s = oco.front()->vTBaseTypeName();
     p.drawTextStd( e->pos(), s );
     v->updateWidget( p.overlay() );
-    mDoc->emitStatusBarText( s );
+    mdoc.emitStatusBarText( s );
   }
   else
   {
-    mDoc->emitStatusBarText( 0 );
+    mdoc.emitStatusBarText( 0 );
     v->updateWidget();
   };
 }
@@ -141,7 +136,7 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
     if ( wantArgs( osa.with( mp ) ) != Object::NotGood )
     {
       updatePoint( v->fromScreen( plc ), *v );
-      mDoc->addObject( mp );
+      mdoc.addObject( mp );
       selectArg( mp, v );
     };
   };
@@ -151,7 +146,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   Coordinate c = v->fromScreen( e->pos() );
   // objects under cursor
-  Objects ouc = mDoc->whatAmIOn( c, v->screenInfo() );
+  Objects ouc = mdoc.whatAmIOn( c, v->screenInfo() );
   updatePoint( c, *v );
 
   // set the text next to the arrow cursor like in modes/normal.cc
@@ -168,7 +163,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 
     QString o = mtype->useText( osa, ouc.front() );
 
-    mDoc->emitStatusBarText( o );
+    mdoc.emitStatusBarText( o );
     p.drawTextStd( point , o );
     v->setCursor (KCursor::handCursor());
   }
@@ -182,7 +177,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
     mtype->drawPrelim( p, osa.with( mp ) );
 
     QString s = mtype->useText( osa, mp );
-    mDoc->emitStatusBarText( s );
+    mdoc.emitStatusBarText( s );
 
     p.drawTextStd( point, s );
     v->setCursor( KCursor::blankCursor() );
@@ -192,7 +187,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
     // mobc doesn't want either...
     // we just tell the user what he's constructing...
     QString o = i18n( "Constructing a %1" ).arg( i18n( mtype->baseTypeName() ) );
-    mDoc->emitStatusBarText( o );
+    mdoc.emitStatusBarText( o );
     p.drawTextStd( point , o );
     v->setCursor( KCursor::arrowCursor() );
   };
@@ -211,7 +206,7 @@ void StdConstructionMode::midReleased( QMouseEvent* e, KigWidget* v )
   if ( wantArgs( osa.with( mp ) ) != Object::NotGood )
   {
     updatePoint( v->fromScreen( plc ), *v );
-    mDoc->addObject( mp );
+    mdoc.addObject( mp );
     selectArg( mp, v );
   };
 }
@@ -233,16 +228,11 @@ void StdConstructionMode::selectArg( Object* o, KigWidget* v )
     buildCalcAndAdd( mtype, osa, v );
   };
 
-  mprev->clearSelection();
   v->redrawScreen();
 
   if( finished )
   {
-    // delete ourselves...
-    NormalMode* s = mprev;
-    KigDocument* d = mDoc;
-    delete this;
-    d->setMode( s );
+    mdoc.doneMode( this );
   }
 }
 
@@ -252,7 +242,7 @@ void StdConstructionMode::buildCalcAndAdd( const Type* type,
 {
   Object* o = type->build( args, Type::ParamMap() );
   o->calcForWidget( *v );
-  mDoc->addObject( o );
+  mdoc.addObject( o );
 };
 
 void StdConstructionMode::enableActions()
@@ -262,10 +252,7 @@ void StdConstructionMode::enableActions()
 
 void StdConstructionMode::cancelConstruction()
 {
-  NormalMode* p = mprev;
-  KigDocument* d = mDoc;
-  delete this;
-  d->setMode( p );
+  mdoc.doneMode( this );
 }
 
 PointConstructionMode::~PointConstructionMode()
@@ -277,15 +264,12 @@ void PointConstructionMode::enableActions()
 {
   KigMode::enableActions();
 
-  mDoc->aCancelConstruction->setEnabled( true );
+  mdoc.aCancelConstruction->setEnabled( true );
 }
 
 void PointConstructionMode::cancelConstruction()
 {
-  NormalMode* p = mprev;
-  KigDocument* d = mDoc;
-  delete this;
-  d->setMode( p );
+  mdoc.doneMode( this );
 }
 
 MultiConstructionMode::~MultiConstructionMode()
@@ -293,9 +277,8 @@ MultiConstructionMode::~MultiConstructionMode()
 }
 
 MultiConstructionMode::MultiConstructionMode( MultiConstructibleType* t,
-                                              NormalMode* b,
-                                              KigDocument* d )
-  : StdConstructionMode( t, b, d )
+                                              KigDocument& d )
+  : StdConstructionMode( t, d )
 {
 }
 
@@ -307,7 +290,7 @@ void MultiConstructionMode::buildCalcAndAdd( const Type* type,
     static_cast<const MultiConstructibleType*>( type );
   Objects os = t->multiBuild( args );
   os.calcForWidget( *v );
-  mDoc->addObjects( os );
+  mdoc.addObjects( os );
 };
 
 int StdConstructionMode::wantArgs( const Objects& o ) const

@@ -43,13 +43,13 @@
 
 TextLabelConstructionMode::~TextLabelConstructionMode()
 {
+  delete mwiz;
 }
 
-TextLabelConstructionMode::TextLabelConstructionMode( NormalMode* b,
-                                                      KigDocument* d )
-  : KigMode( d ), mprev( b ), mlpc( 0 ), mwiz( 0 ), mwawd( SelectingLocation )
+TextLabelConstructionMode::TextLabelConstructionMode( KigDocument& d )
+  : KigMode( d ), mlpc( 0 ), mwiz( 0 ), mwawd( SelectingLocation )
 {
-  d->mainWidget()->realWidget()->setCursor( KCursor::crossCursor() );
+  d.mainWidget()->realWidget()->setCursor( KCursor::crossCursor() );
 }
 
 void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
@@ -91,7 +91,7 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
   case ReallySelectingArgs:
   {
     if ( ( mplc - e->pos() ).manhattanLength() > 4 ) break;
-    Objects os = mDoc->whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
+    Objects os = mdoc.whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
     if ( os.size() < 1 ) break;
     Object* o = os[0];
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
@@ -118,11 +118,7 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
 
 void TextLabelConstructionMode::killMode()
 {
-  NormalMode* p = mprev;
-  KigDocument* d = mDoc;
-  delete mwiz;
-  delete this;
-  d->setMode( p );
+  mdoc.doneMode( this );
 }
 
 void TextLabelConstructionMode::cancelConstruction()
@@ -134,14 +130,14 @@ void TextLabelConstructionMode::enableActions()
 {
   KigMode::enableActions();
 
-  mDoc->aCancelConstruction->setEnabled( true );
+  mdoc.aCancelConstruction->setEnabled( true );
 }
 
 void TextLabelConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   if ( mwawd == ReallySelectingArgs )
   {
-    Objects os = mDoc->whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
+    Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
     if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
     else w->setCursor( KCursor::arrowCursor() );
   };
@@ -179,7 +175,7 @@ namespace {
 void TextLabelConstructionMode::finishPressed()
 {
   QString s = mwiz->labelTextInput->text();
-  KigWidget* widget = mDoc->mainWidget()->realWidget();
+  KigWidget* widget = mdoc.mainWidget()->realWidget();
   if ( mwiz->currentPage() == mwiz->enter_text_page )
   {
     // no arguments...
@@ -190,26 +186,26 @@ void TextLabelConstructionMode::finishPressed()
 //       NormalPoint* b = NormalPoint::fixedPoint( Coordinate( -1, -1 ) );
 //       a->calc( widget->screenInfo() );
 //       b->calc( widget->screenInfo() );
-//       mDoc->addObject( a );
-//       mDoc->addObject( b );
+//       mdoc.addObject( a );
+//       mdoc.addObject( b );
 //       Objects os;
 //       os.push_back( a );
 //       os.push_back( b );
 //       Segment* s = new Segment( os );
 //       s->calc( widget->screenInfo() );
-//       mDoc->addObject( s );
+//       mdoc.addObject( s );
 //       TextLabel::propvect p;
 //       p.push_back( TextLabelProperty( s, 2 ) );
 //       TextLabel* label = new TextLabel( QString::fromUtf8( "dit lijnstuk is %1 eenheden lang" ), Coordinate( 2, -2 ), p );
 //       label->calc( widget->screenInfo() );
-//       mDoc->addObject( label );
+//       mdoc.addObject( label );
 //       widget->redrawScreen();
 //       killMode();
 //       return;
 //     }
     TextLabel* label = new TextLabel( s, mcoord, TextLabel::propvect() );
     label->calcForWidget( *widget );
-    mDoc->addObject( label );
+    mdoc.addObject( label );
     widget->redrawScreen();
     killMode();
   }
@@ -223,14 +219,14 @@ void TextLabelConstructionMode::finishPressed()
     };
     finished &= percentCount( s ) == margs.size();
     if ( ! finished )
-      KMessageBox::sorry( mDoc->widget(),
+      KMessageBox::sorry( mdoc.widget(),
                           i18n( "There are '%n' parts in the text that you have not selected a "
                                 "value for. Please remove them or select enough arguments." ) );
     else
     {
       TextLabel* label = new TextLabel( s, mcoord, margs );
       label->calcForWidget( *widget );
-      mDoc->addObject( label );
+      mdoc.addObject( label );
       widget->redrawScreen();
       killMode();
     };
@@ -301,7 +297,7 @@ void TextLabelConstructionMode::updateLinksLabel()
     {
       // if the user has already selected a property, then we show its
       // value...
-      linktext = ( margs[count].getString( *mDoc, *mDoc->mainWidget()->realWidget() ) );
+      linktext = ( margs[count].getString( mdoc, *mdoc.mainWidget()->realWidget() ) );
     }
     else
       // otherwise, we show a stub...
@@ -326,13 +322,13 @@ void TextLabelConstructionMode::updateLinksLabel()
 void TextLabelConstructionMode::linkClicked( int i )
 {
   kdDebug() << k_funcinfo << endl;
-  mDoc->widget()->setActiveWindow();
-  mDoc->widget()->raise();
+  mdoc.widget()->setActiveWindow();
+  mdoc.widget()->raise();
 
   margs.resize( kigMax( margs.size(), static_cast<uint>( i + 1 ) ) );
 
   mwawd = ReallySelectingArgs;
   mwaaws = i;
 
-  mDoc->emitStatusBarText( i18n( "Selecting argument %1" ).arg( i + 1 ) );
+  mdoc.emitStatusBarText( i18n( "Selecting argument %1" ).arg( i + 1 ) );
 }

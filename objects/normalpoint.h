@@ -95,7 +95,7 @@ public:
   static const int sShortCut();
   static const char* sActionName();
 
-  static KigMode* sConstructMode( Type*, KigDocument*, NormalMode* );
+  static KigMode* sConstructMode( Type*, KigDocument& );
 
   void addActions( NormalModePopupObjects& );
   void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& cp );

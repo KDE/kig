@@ -26,17 +26,94 @@
 
 void KigMode::enableActions()
 {
-  mDoc->enableConstructActions( false );
-  mDoc->aCancelConstruction->setEnabled( false );
-  mDoc->aConfigureTypes->setEnabled( false );
-  mDoc->aDeleteObjects->setEnabled( false );
-  mDoc->aShowHidden->setEnabled( false );
-  mDoc->aNewMacro->setEnabled( false );
-  mDoc->action( "edit_undo" )->setEnabled( false );
-  mDoc->action( "edit_redo" )->setEnabled( false );
+  mdoc.enableConstructActions( false );
+  mdoc.aCancelConstruction->setEnabled( false );
+  mdoc.aConfigureTypes->setEnabled( false );
+  mdoc.aDeleteObjects->setEnabled( false );
+  mdoc.aShowHidden->setEnabled( false );
+  mdoc.aNewMacro->setEnabled( false );
+  mdoc.action( "edit_undo" )->setEnabled( false );
+  mdoc.action( "edit_redo" )->setEnabled( false );
 }
 
 KigMode::~KigMode()
+{
+}
+
+KigMode::KigMode( KigDocument& d )
+  : mdoc( d )
+{
+}
+
+void KigMode::leftClicked( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::leftMouseMoved( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::leftReleased( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::midClicked( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::midMouseMoved( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::midReleased( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::rightClicked( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::rightMouseMoved( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::rightReleased( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::mouseMoved( QMouseEvent*, KigWidget* )
+{
+}
+
+void KigMode::cancelConstruction()
+{
+}
+
+void KigMode::deleteObjects()
+{
+}
+
+void KigMode::showHidden()
+{
+}
+
+void KigMode::newMacro()
+{
+}
+
+void KigMode::editTypes()
+{
+}
+
+void KigMode::startKiosk()
+{
+}
+
+void KigMode::objectsAdded()
+{
+}
+
+void KigMode::objectsRemoved()
 {
 }
 

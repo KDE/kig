@@ -153,7 +153,7 @@ protected:
 };
 
 /*
- * cubic with a cusp (with horizontal tangent) at the origin and 
+ * cubic with a cusp (with horizontal tangent) at the origin and
  * constrained through other 4 points
  */
 
@@ -270,8 +270,7 @@ public:
   static Objects sMultiBuild( const Objects& args );
 
   static KigMode* sConstructMode( MultiConstructibleType* ourtype,
-                                  KigDocument* theDoc,
-                                  NormalMode* previousMode );
+                                  KigDocument& theDoc );
 };
 
 #endif // KIG_OBJECTS_CUBIC_H

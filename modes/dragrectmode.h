@@ -60,12 +60,8 @@ private:
   void enableActions();
 
 public:
-  DragRectMode( KigDocument* );
+  DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w );
   ~DragRectMode();
-
-  // "execute the DragRectMode". This returns after a mouse button is
-  // released..
-  void run( const QPoint& start, KigWidget& w, KigMode* prev );
 
   // this returns the selected objects..
   Objects ret() const;

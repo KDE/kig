@@ -120,10 +120,9 @@ bool TextLabel::contains( const Coordinate& o, const ScreenInfo& ) const
   return mrwdoi.contains( o );
 }
 
-KigMode* TextLabel::sConstructMode( Type*, KigDocument* d,
-                                    NormalMode* p )
+KigMode* TextLabel::sConstructMode( Type*, KigDocument& d )
 {
-  return new TextLabelConstructionMode( p, d );
+  return new TextLabelConstructionMode( d );
 }
 
 void TextLabel::startMove( const Coordinate& c, const ScreenInfo& )

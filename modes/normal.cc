@@ -33,7 +33,7 @@
 
 QString i18n( const char* );
 
-NormalMode::NormalMode( KigDocument* d )
+NormalMode::NormalMode( KigDocument& d )
   : KigMode( d )
 {
 }
@@ -45,11 +45,11 @@ NormalMode::~NormalMode()
 void NormalMode::leftClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
+  oco = mdoc.whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   if( oco.empty() )
   {
-    DragRectMode d( mDoc );
-    d.run( e->pos(), *v, this );
+    DragRectMode d( e->pos(), mdoc, *v );
+    mdoc.runMode( &d );
     Objects sel = d.ret();
 
     Objects cos = sel;
@@ -94,9 +94,8 @@ void NormalMode::leftMouseMoved( QMouseEvent* e, KigWidget* v )
       selectObject(oco.front());
     }
 
-    MovingMode* m = new MovingMode( sos, v->fromScreen( plc ),
-                                    this, v, mDoc );
-    mDoc->setMode( m );
+    MovingMode m( sos, v->fromScreen( plc ), *v, mdoc );
+    mdoc.runMode( &m );
   };
 };
 
@@ -112,7 +111,7 @@ void NormalMode::leftReleased( QMouseEvent* e, KigWidget* v )
       clearSelection();
     };
     const Rect r =  v->fromScreen( QRect( plc, e->pos() ) );
-    Objects os = mDoc->whatIsInHere( r );
+    Objects os = mdoc.whatIsInHere( r );
     for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
       if ( !cos.contains( *i ) ) cos.push_back( *i );
     selectObjects( os );
@@ -155,7 +154,7 @@ void NormalMode::leftReleased( QMouseEvent* e, KigWidget* v )
 void NormalMode::midClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
+  oco = mdoc.whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   // get rid of text still showing...
   v->updateCurPix();
   v->updateWidget();
@@ -170,9 +169,9 @@ void NormalMode::midReleased( QMouseEvent* e, KigWidget* v )
   // moved too far
   if( (e->pos() - plc).manhattanLength() > 4 ) return;
 
-  Point* pt = NormalPoint::sensiblePoint( v->fromScreen( plc ), *mDoc, *v );
+  Point* pt = NormalPoint::sensiblePoint( v->fromScreen( plc ), mdoc, *v );
   pt->calcForWidget( *v );
-  mDoc->addObject( pt );
+  mdoc.addObject( pt );
 
   // refresh the screen...
   v->redrawScreen();
@@ -182,7 +181,7 @@ void NormalMode::midReleased( QMouseEvent* e, KigWidget* v )
 void NormalMode::rightClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
+  oco = mdoc.whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
 
   // get rid of text still showing...
   v->updateCurPix();
@@ -199,7 +198,7 @@ void NormalMode::rightClicked( QMouseEvent* e, KigWidget* v )
       selectObject( oco.front() );
     };
     // show a popup menu...
-    NormalModePopupObjects* p = new NormalModePopupObjects( mDoc, v, this, sos );
+    NormalModePopupObjects* p = new NormalModePopupObjects( mdoc, v, this, sos );
     p->exec( QCursor::pos() );
     delete p;
   }
@@ -222,12 +221,12 @@ void NormalMode::rightReleased( QMouseEvent*, KigWidget* )
 
 void NormalMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
-  const Objects tmp = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
+  const Objects tmp = mdoc.whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   v->updateCurPix();
   if( tmp.empty() )
   {
     v->setCursor( KCursor::arrowCursor() );
-    mDoc->emitStatusBarText( 0 );
+    mdoc.emitStatusBarText( 0 );
     v->updateWidget();
   }
   else
@@ -239,7 +238,7 @@ void NormalMode::mouseMoved( QMouseEvent* e, KigWidget* v )
     QString typeName = tmp.front()->vTBaseTypeName();
 
     // statusbar text
-    mDoc->emitStatusBarText( i18n( "Select this %1" ).arg( typeName ) );     KigPainter p( v->screenInfo(), &v->curPix );
+    mdoc.emitStatusBarText( i18n( "Select this %1" ).arg( typeName ) );     KigPainter p( v->screenInfo(), &v->curPix );
 
     // set the text next to the arrow cursor
     QPoint point = e->pos();
@@ -253,17 +252,17 @@ void NormalMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 void NormalMode::enableActions()
 {
   KigMode::enableActions();
-  mDoc->enableConstructActions( true );
-  mDoc->aDeleteObjects->setEnabled( true );
-  mDoc->aShowHidden->setEnabled( true );
-  mDoc->aNewMacro->setEnabled( true );
-  mDoc->aConfigureTypes->setEnabled( true );
-  mDoc->history()->updateActions();
+  mdoc.enableConstructActions( true );
+  mdoc.aDeleteObjects->setEnabled( true );
+  mdoc.aShowHidden->setEnabled( true );
+  mdoc.aNewMacro->setEnabled( true );
+  mdoc.aConfigureTypes->setEnabled( true );
+  mdoc.history()->updateActions();
 }
 
 void NormalMode::deleteObjects()
 {
-  mDoc->delObjects( sos );
+  mdoc.delObjects( sos );
   sos.clear();
 }
 
@@ -307,7 +306,7 @@ void NormalMode::clearSelection()
 
 void NormalMode::showHidden()
 {
-  const Objects& os = mDoc->objects();
+  const Objects& os = mdoc.objects();
   for (Objects::const_iterator i = os.begin(); i != os.end(); ++i )
     (*i)->setShown(true);
   objectsAdded();
@@ -315,14 +314,14 @@ void NormalMode::showHidden()
 
 void NormalMode::newMacro()
 {
-  DefineMacroMode* m = new DefineMacroMode( mDoc, this );
-  mDoc->setMode( m );
+  DefineMacroMode m( mdoc );
+  mdoc.runMode( &m );
 }
 
 void NormalMode::objectsAdded()
 {
   // i know this is ugly :(
-  KigWidget* w = static_cast<KigView*>(mDoc->widget())->realWidget();
+  KigWidget* w = static_cast<KigView*>(mdoc.widget())->realWidget();
   w->redrawScreen();
   w->updateScrollBars();
 }
@@ -334,7 +333,7 @@ void NormalMode::objectsRemoved()
 
 void NormalMode::editTypes()
 {
-  TypesDialog* d = new TypesDialog( mDoc->widget() );
+  TypesDialog* d = new TypesDialog( mdoc.widget() );
   d->exec();
   delete d;
 }

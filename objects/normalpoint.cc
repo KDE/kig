@@ -307,9 +307,9 @@ NormalPointImp* ConstrainedPointImp::copy( NormalPoint* p )
   return new ConstrainedPointImp( *this, p );
 }
 
-KigMode* NormalPoint::sConstructMode( Type*, KigDocument* d, NormalMode* p )
+KigMode* NormalPoint::sConstructMode( Type*, KigDocument& d )
 {
-  return new PointConstructionMode( p, d );
+  return new PointConstructionMode( d );
 }
 
 void FixedPointImp::setParents( const Objects& os, NormalPoint* )
@@ -530,10 +530,11 @@ void NormalPoint::addActions( NormalModePopupObjects& popup )
   popup.addNormalAction( NormalModePopupObjects::virtualActionsOffset + 10, i18n( "Redefine This Point" ) );
 }
 
-void NormalPoint::doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& )
+void NormalPoint::doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode*, const Coordinate& )
 {
   assert( which == NormalModePopupObjects::virtualActionsOffset + 10 );
-  d->setMode( new NormalPointRedefineMode( this, d, v, m ) );
+  PointRedefineMode mode( this, *d, *v );
+  d->runMode( &mode );
 }
 
 bool NormalPoint::isa( int type ) const

@@ -113,9 +113,9 @@ KAction* Type::constructAction( KigDocument* d )
   return a;
 }
 
-KigMode* MType::constructMode( NormalMode* mode, KigDocument* doc )
+KigMode* MType::constructMode( KigDocument& doc )
 {
-  return new StdConstructionMode( this, mode, doc );
+  return new StdConstructionMode( this, doc );
 }
 
 void deleteAction( KAction* a )

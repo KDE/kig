@@ -26,12 +26,10 @@
 #include <qpoint.h>
 
 class Object;
-class NormalMode;
 class KigWidget;
 class Coordinate;
 
 class NormalPoint;
-class NormalMode;
 
 class Type;
 class StdConstructibleType;
@@ -43,13 +41,12 @@ class PointConstructionMode
 protected:
   QPoint plc;
   NormalPoint* mp;
-  NormalMode* mprev;
 
   void updatePoint( const Coordinate& c, const KigWidget& );
   void finish( KigWidget* v );
 
 public:
-  PointConstructionMode( NormalMode* prev, KigDocument* d );
+  PointConstructionMode( KigDocument& d );
   ~PointConstructionMode();
 
   void leftClicked( QMouseEvent* e, KigWidget* v );
@@ -107,8 +104,7 @@ protected:
   void addPointRequest( const Coordinate& c, KigWidget* v );
 
 public:
-  StdConstructionMode( StdConstructibleType* t, NormalMode* b,
-                       KigDocument* d );
+  StdConstructionMode( StdConstructibleType* t, KigDocument& d );
   ~StdConstructionMode();
 
   virtual StdConstructionMode* toStdConstructionMode();
@@ -135,8 +131,8 @@ class MultiConstructionMode
   : public StdConstructionMode
 {
 public:
-  MultiConstructionMode( MultiConstructibleType* t, NormalMode* b,
-                         KigDocument* d );
+  MultiConstructionMode( MultiConstructibleType* t,
+                         KigDocument& d );
   ~MultiConstructionMode();
   void buildCalcAndAdd( const Type* t, const Objects& arguments,
 			KigWidget* view );

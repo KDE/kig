@@ -24,16 +24,15 @@
 #include "../misc/kigpainter.h"
 #include "../misc/hierarchy.h"
 #include "../misc/type.h"
+#include "../misc/i18n.h"
 
 #include <klineedit.h>
 #include <kcursor.h>
 
-QString i18n( const char* );
-
-DefineMacroMode::DefineMacroMode( KigDocument* d, KigMode* p )
-  : KigMode( d ), mprev( p ), mfinal( 0 )
+DefineMacroMode::DefineMacroMode( KigDocument& d )
+  : KigMode( d ), mfinal( 0 )
 {
-  mwizard = new MacroWizard( d->widget(), this );
+  mwizard = new MacroWizard( d.widget(), this );
   mwizard->show();
   updateNexts();
 }
@@ -50,10 +49,7 @@ void DefineMacroMode::leftClicked( QMouseEvent* e, KigWidget* )
 
 void DefineMacroMode::abandonMacro()
 {
-  KigMode* m = mprev;
-  KigDocument* d = mDoc;
-  delete this;
-  d->setMode( m );
+  mdoc.doneMode( this );
 }
 
 void DefineMacroMode::updateNexts()
@@ -77,7 +73,7 @@ void DefineMacroMode::enableActions()
 void DefineMacroMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if ( (plc - e->pos()).manhattanLength() > 4 ) return;
-  Objects os = mDoc->whatAmIOn( v->fromScreen( plc ), v->screenInfo() );
+  Objects os = mdoc.whatAmIOn( v->fromScreen( plc ), v->screenInfo() );
   if ( os.empty() ) return;
   if( mwizard->currentPage() == mwizard->mpgiven )
   {
@@ -117,12 +113,12 @@ void DefineMacroMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
   Coordinate c = v->fromScreen( e->pos() );
-  Objects os = mDoc->whatAmIOn( c, v->screenInfo() );
+  Objects os = mdoc.whatAmIOn( c, v->screenInfo() );
   v->updateCurPix();
   if ( os.empty() )
   {
     v->setCursor( KCursor::arrowCursor() );
-    mDoc->emitStatusBarText( 0 );
+    mdoc.emitStatusBarText( 0 );
     v->updateWidget();
   }
   else
@@ -130,7 +126,7 @@ void DefineMacroMode::mouseMoved( QMouseEvent* e, KigWidget* v )
     v->setCursor( KCursor::handCursor() );
     QString typeName = os.front()->vTBaseTypeName();
     QString shownText = i18n( "Select this %1" ).arg( typeName );
-    mDoc->emitStatusBarText( shownText );
+    mdoc.emitStatusBarText( shownText );
     KigPainter p( v->screenInfo(), &v->curPix );
     p.drawTextStd( e->pos(), typeName );
     v->updateWidget( p.overlay() );
@@ -142,11 +138,11 @@ void DefineMacroMode::givenPageEntered()
   using std::for_each;
   using std::bind2nd;
   using std::mem_fun;
-  for_each( mDoc->objects().begin(), mDoc->objects().end(),
+  for_each( mdoc.objects().begin(), mdoc.objects().end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
   for_each( mgiven.begin(), mgiven.end(),
             bind2nd( mem_fun( &Object::setSelected ), true ) );
-  static_cast<KigView*>( mDoc->widget() )->realWidget()->redrawScreen();
+  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
 
   updateNexts();
 };
@@ -156,10 +152,10 @@ void DefineMacroMode::finalPageEntered()
   using std::for_each;
   using std::bind2nd;
   using std::mem_fun;
-  for_each( mDoc->objects().begin(), mDoc->objects().end(),
+  for_each( mdoc.objects().begin(), mdoc.objects().end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
   if ( mfinal ) mfinal->setSelected( true );
-  static_cast<KigView*>( mDoc->widget() )->realWidget()->redrawScreen();
+  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
 
   updateNexts();
 }
@@ -169,9 +165,9 @@ void DefineMacroMode::namePageEntered()
   using std::for_each;
   using std::bind2nd;
   using std::mem_fun;
-  for_each( mDoc->objects().begin(), mDoc->objects().end(),
+  for_each( mdoc.objects().begin(), mdoc.objects().end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
-  static_cast<KigView*>( mDoc->widget() )->realWidget()->redrawScreen();
+  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
 
   updateNexts();
 }

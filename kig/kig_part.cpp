@@ -126,7 +126,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
 
   setModified (false);
 
-  mMode = new NormalMode( this );
+  mMode = new NormalMode( *this );
 }
 
 void KigDocument::setupActions()

@@ -1,4 +1,4 @@
-// selectionmode.h
+// base_mode.h
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_MODES_SELECTIONMODE_H
-#define KIG_MODES_SELECTIONMODE_H
+#ifndef BASE_MODE_H
+#define BASE_MODE_H
 
 #include "mode.h"
 
@@ -28,16 +28,12 @@
 class Object;
 class KigWidget;
 class KigDocument;
-class ArgsChecker;
 
-class SelectionModeBase
+class BaseMode
   : public KigMode
 {
-  Objects mselection;
   QPoint mplc;
   Objects moco;
-  bool mcswc;
-  bool mret;
 
   void leftClicked( QMouseEvent* e, KigWidget* v );
   void leftMouseMoved( QMouseEvent*, KigWidget* );
@@ -47,42 +43,22 @@ class SelectionModeBase
   void rightClicked( QMouseEvent*, KigWidget* );
   void mouseMoved( QMouseEvent* e, KigWidget* v );
 
-  void cancelConstruction();
-
   void enableActions();
+protected:
+
+  virtual void dragRect( const QPoint& p, KigWidget& w ) = 0;
+  virtual void dragObject( const Objects& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown ) = 0;
+  virtual void leftClickedObject( Object* o, const QPoint& p,
+                                  KigWidget& w, bool ctrlOrShiftDown ) = 0;
+  virtual void midClicked( const QPoint& p, KigWidget& w ) = 0;
+  virtual void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w ) = 0;
+  virtual void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w ) = 0;
 
 protected:
-  virtual void selectionChanged( KigWidget& ) = 0;
-  virtual void dragRect( const QPoint& p, KigWidget& w );
-//   virtual void movedMouse( const Objects& objectsUnderCursor, KigWidget& w );
-  virtual bool wantObject( const Object& o, KigWidget& );
-  virtual void rightClicked( const Objects& os, KigWidget& w );
-  virtual void dragObject( const Objects& objectsClickedOn, const QPoint& pointClickedOn, KigWidget& w );
+  BaseMode( KigDocument& );
+  ~BaseMode();
 
-public:
-  SelectionModeBase( KigDocument& );
-  ~SelectionModeBase();
-
-  void setClearSelectWithoutControl( bool b );
-
-  bool run( KigMode* prev );
-
-  const Objects& selection() const;
-
-  void clearSelection( KigWidget& w );
-  void selectObject( Object* o, KigWidget& w );
-  void unselectObject( Object* o, KigWidget& w );
-  void finish( bool ret );
-};
-
-class StandAloneSelectionMode
-  : public SelectionModeBase
-{
-  const ArgsChecker& mchecker;
-public:
-  StandAloneSelectionMode( const ArgsChecker& c, KigDocument& d, bool cswc = false );
-  void selectionChanged( KigWidget& w );
-  virtual bool wantObject( const Object& o, KigWidget& );
+  void finish();
 };
 
 #endif

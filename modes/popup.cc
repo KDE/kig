@@ -31,7 +31,7 @@
 
 #include <qcursor.h>
 
-NormalModePopupObjects::NormalModePopupObjects( KigDocument* doc,
+NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
                                                 KigWidget* view,
                                                 NormalMode* mode,
                                                 const Objects& objs )
@@ -62,11 +62,11 @@ void NormalModePopupObjects::doAction( int i )
     // hide action..
     std::for_each( mobjs.begin(), mobjs.end(),
                    std::bind2nd( std::mem_fun( &Object::setShown ), false ) );
-    mdoc->mode()->objectsRemoved();
+    mdoc.mode()->objectsRemoved();
     break;
   case deleteId:
     // delete action..
-    mdoc->delObjects( mobjs );
+    mdoc.delObjects( mobjs );
     break;
   case moveId:
   {
@@ -75,8 +75,8 @@ void NormalModePopupObjects::doAction( int i )
     QPoint p = r.topLeft();
     p = this->mapToParent( p );
     Coordinate c = mview->fromScreen( p );
-    MovingMode* m = new MovingMode( mobjs, c, mmode, mview, mdoc );
-    mdoc->setMode( m );
+    MovingMode m( mobjs, c, *mview, mdoc );
+    mdoc.runMode( &m );
     // in this case, we return, cause we don't want objects to be
     // unselected... ( or maybe we do ? )
     return;
@@ -88,7 +88,7 @@ void NormalModePopupObjects::doAction( int i )
     assert( (uint) i >= virtualActionsOffset );
     assert( mobjs.size() == 1 );
     Object* o = mobjs[0];
-    o->doNormalAction( i, mdoc, mview, mmode, mview->fromScreen( mview->mapFromGlobal( mplc ) ) );
+    o->doNormalAction( i, &mdoc, mview, mmode, mview->fromScreen( mview->mapFromGlobal( mplc ) ) );
   }
   };
   mmode->clearSelection();
@@ -221,19 +221,20 @@ void NormalModePopupObjects::doUse( int id )
     Object* o = type->build( mobjs );
     assert( o );
     o->calcForWidget( *mview );
-    mdoc->addObject( o );
+    mdoc.addObject( o );
     mmode->clearSelection();
     break;
   };
   case Object::NotComplete:
   {
-    KigMode* m = type->constructMode( mmode, mdoc );
+    KigMode* m = type->constructMode( mdoc );
     assert( m );
     StdConstructionMode* s = m->toStdConstructionMode();
     assert( s );
     assert( s->wantArgs( mobjs ) == Object::NotComplete );
     s->selectArgs( mobjs, mview );
-    mdoc->setMode( s );
+    mdoc.runMode( s );
+    delete m;
     break;
   };
   default:
@@ -267,7 +268,7 @@ void NormalModePopupObjects::doPopup( int id )
   int popupid = mpopupmap[qp];
   assert( mobjs.size() == 1 );
   Object* o = mobjs[0];
-  o->doPopupAction( popupid, id, mdoc, mview, mmode, mview->fromScreen( mview->mapFromGlobal( mplc ) ) );
+  o->doPopupAction( popupid, id, &mdoc, mview, mmode, mview->fromScreen( mview->mapFromGlobal( mplc ) ) );
 }
 
 const KigWidget& NormalModePopupObjects::widget() const

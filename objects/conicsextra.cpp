@@ -314,10 +314,9 @@ void LineConicAsymptotes::setParams( const prop_map& map )
 
 KigMode* LineConicAsymptotes::sConstructMode(
   MultiConstructibleType* ourtype,
-  KigDocument* theDoc,
-  NormalMode* previousMode )
+  KigDocument& theDoc )
 {
-  return new MultiConstructionMode( ourtype, previousMode, theDoc );
+  return new MultiConstructionMode( ourtype, theDoc );
 }
 
 Objects LineConicAsymptotes::sMultiBuild( const Objects& args )

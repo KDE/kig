@@ -93,8 +93,7 @@ public:
   static Objects sMultiBuild( const Objects& args );
 
   static KigMode* sConstructMode( MultiConstructibleType* ourtype,
-                                  KigDocument* theDoc,
-                                  NormalMode* previousMode );
+                                  KigDocument& theDoc );
 };
 
 #endif

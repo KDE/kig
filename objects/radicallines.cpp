@@ -104,10 +104,9 @@ void LineConicRadical::setParams( const prop_map& map )
 
 KigMode*
 LineConicRadical::sConstructMode( MultiConstructibleType* ourtype,
-                                             KigDocument* theDoc,
-                                             NormalMode* previousMode )
+                                  KigDocument& theDoc )
 {
-  return new MultiConstructionMode( ourtype, previousMode, theDoc );
+  return new MultiConstructionMode( ourtype, theDoc );
 }
 
 Objects LineConicRadical::sMultiBuild( const Objects& args )
@@ -369,10 +368,9 @@ Objects ConicLineIntersectionPoint::sMultiBuild( const Objects& args )
 
 KigMode*
 ConicLineIntersectionPoint::sConstructMode( MultiConstructibleType* ourtype,
-                                             KigDocument* theDoc,
-                                             NormalMode* previousMode )
+                                             KigDocument& theDoc )
 {
-  return new MultiConstructionMode( ourtype, previousMode, theDoc );
+  return new MultiConstructionMode( ourtype, theDoc );
 }
 
 const QString ConicLineIntersectionPoint::sDescription()

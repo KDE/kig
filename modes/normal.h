@@ -31,7 +31,7 @@ class NormalMode
   : public KigMode
 {
 public:
-  NormalMode( KigDocument* );
+  NormalMode( KigDocument& );
   ~NormalMode();
   void leftClicked( QMouseEvent*, KigWidget* );
   void leftMouseMoved( QMouseEvent*, KigWidget* );

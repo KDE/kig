@@ -1123,10 +1123,9 @@ Objects CubicLineIntersectionPoint::sMultiBuild( const Objects& args )
 
 KigMode*
 CubicLineIntersectionPoint::sConstructMode( MultiConstructibleType* ourtype,
-                                            KigDocument* theDoc,
-                                            NormalMode* previousMode )
+                                            KigDocument& theDoc )
 {
-  return new MultiConstructionMode( ourtype, previousMode, theDoc );
+  return new MultiConstructionMode( ourtype, theDoc );
 }
 
 const QString CubicLineIntersectionPoint::sDescription()
