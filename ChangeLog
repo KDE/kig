@@ -13,6 +13,10 @@
 	way, so I assume it negligible.  Cubics and conics drawing now
 	correctly takes line styles into account.
 
+2004-04-27  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Implement styles and visibility for KSeg filter.
+
 2004-04-27  Dominique Devriese  <devriese@kde.org>
 
 	* Make locuses work with the line styles, by drawing them with
@@ -53,7 +57,7 @@
 
 2004-04-21  Pino Toscano <toscano.pino@tiscali.it>
 
-       * Add a SameDistanceType, to check whether a point have the same
+	* Add a SameDistanceType, to check whether a point have the same
        distance from a second point and from a third point.
 
 2004-04-21  Dominique Devriese  <devriese@kde.org>

@@ -192,7 +192,6 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
 
     // avoid g++ warnings about unused vars..
     // this doesn't really do anything..
-    (void) visible;
     (void) labelVisible;
     (void) given;
     (void) final;
@@ -281,11 +280,11 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           width = 5;
           break;
         }
-        d = new ObjectDrawer( style.brush.color(), width );
+        d = new ObjectDrawer( style.brush.color(), width, visible );
       }
       else
       {
-        d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
       };
       assert( d );
       object = new ObjectHolder( o, d );
@@ -348,7 +347,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         assert( point );
         int width = style.pointstyle == SMALL_CIRCLE ? 2 : style.pointstyle == MEDIUM_CIRCLE ? 3 : 5;
         ObjectDrawer* d =
-          new ObjectDrawer( style.brush.color(), width );
+          new ObjectDrawer( style.brush.color(), width, visible, style.pen.style() );
         object = new ObjectHolder( point, d );
         break;
       };
@@ -360,7 +359,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         {
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           ObjectTypeCalcer* o = new ObjectTypeCalcer( SegmentABType::instance(), parents );
-          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
           object = new ObjectHolder( o, d );
           break;
         }
@@ -377,7 +376,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         {
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           ObjectTypeCalcer* o = new ObjectTypeCalcer( RayABType::instance(), parents );
-          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
           object = new ObjectHolder( o, d );
           break;
         }
@@ -389,7 +388,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
 //           int index = parents[0]->propertiesInternalNames().findIndex( "angle-bisector" );
 //           assert( index != -1 );
 //           ObjectPropertyCalcer* o = new ObjectPropertyCalcer( parents[0], index );
-//           ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+//           ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
 //           object = new ObjectHolder( o, d );
           break;
         default:
@@ -416,7 +415,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           KIG_FILTER_PARSE_ERROR;
         };
         assert( o );
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
         object = new ObjectHolder( o, d );
         break;
       };
@@ -458,7 +457,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           KIG_FILTER_PARSE_ERROR;
         };
         assert( o );
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
         object = new ObjectHolder( o, d );
         break;
       };
@@ -466,7 +465,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       {
         if ( nparents != 3 ) KIG_FILTER_PARSE_ERROR;
         ObjectTypeCalcer* o = new ObjectTypeCalcer( ArcBTPType::instance(), parents );
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
         object = new ObjectHolder( o, d );
         break;
       };
@@ -498,7 +497,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       {
         if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
         ObjectTypeCalcer* o = ObjectFactory::instance()->locusCalcer( parents[0], parents[1] );
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
         object = new ObjectHolder( o, d );
         break;
       };

@@ -17,11 +17,11 @@ here are some nice Kig features i'd like to show off :)
   "--prefix" on your configure right?) , it should be there), and add
   it. then try opening macrotest.kig again
 - Kig supports various file formats...  See the filters directory.
-  Currently i have implemented read-write support for native kig files
-  ( which is an imho clean xml format ), an older version of the kig
-  file format and read support for kgeo files, but this is an area
-  where i plan working on... ( KSeg reading, Cabri at least read
-  support ).. 
+  Currently Kig has read-write support for native files ( which is an
+  imho clean xml format ) and for the older version of the Kig file
+  format; read support for KGeo, KSeg and, partially, for Dr. Geo
+  files. This is an area where we plan working on ( Cabri at least
+  read support )...
 - Kig has an option "Export to image", which allows you to export a
   kig document into one of the graphics formats that KDE or Qt
   support...  This is useful since not all other programs support Kig

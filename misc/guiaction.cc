@@ -119,7 +119,7 @@ QString ConstructPointAction::description() const
 
 QCString ConstructPointAction::iconFileName() const
 {
-  return "point4";
+  return "point";
 }
 
 QString ConstructPointAction::descriptiveName() const
