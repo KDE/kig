@@ -78,10 +78,15 @@ protected:
   // objs is just a list of pointers to objects
   Objects objs;
 
+  // the window we're in...
+  // we declare it mutable cause it's set in draw() const ...
+  // yes, i know this is ugly :(
+  mutable Rect calcRect;
+
   struct CPt
   {
-    CPt(Point inPt, double inPm) : pt(inPt), pm (inPm) {};
-    Point pt;
+    CPt(Coordinate inPt, double inPm) : pt(inPt), pm (inPm) {};
+    Coordinate pt;
     double pm;
   };
 
@@ -93,10 +98,11 @@ protected:
 
   // this is used if the obj is a point; it selects the best points
   // from the possible ones...
-  void calcPointLocus();
+  void calcPointLocus( const Rect& );
   // some functions used by calcPointLocus...
   CPts::iterator addPoint(double param);
-  void recurse(CPts::iterator, CPts::iterator, int&);
+  void recurse(CPts::iterator, CPts::iterator, int&, const Rect&);
+  void realCalc( const Rect& r );
 
   // this is used when the obj is not a point; it just takes the first
   // numberOfSamples objects it can find...

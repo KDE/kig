@@ -1,5 +1,14 @@
 #include "cabri.h"
 
+#include <qcstring.h>
+#include <qfile.h>
+#include <qtextstream.h>
+
+#include <string>
+
+#include "../objects/object.h"
+#include "../misc/hierarchy.h"
+
 KigFilterCabri::KigFilterCabri()
 {
     
@@ -26,6 +35,31 @@ struct ObjectData
   operator bool() { return valid; };
 };
 
+// this function reads a line, and converts all line delimiters
+// ("\r\n" or "\n" to unix-style "\n").
+QCString readLine( QFile& f, bool& eof )
+{
+  QCString s;
+  char r;
+  while( true )
+    {
+      r = f.getch();
+      if( r == 0 || r == -1 ) { eof = true; break; };
+      if( r == '\n' ) { eof = false; break; }
+      if( r == '\r' )
+	{
+	  r = f.getch();
+	  if( r == '\n' ) { eof = false; break; }
+	  f.ungetch( r );
+	  r = '\r';
+	};
+      s += r;
+    };
+  s += '\n';
+  return s;
+}
+
+
 ObjectData readObject( QFile& f )
 {
   ObjectData n;
@@ -36,10 +70,10 @@ ObjectData readObject( QFile& f )
   if( eof ) return n;
 
   // first a number and a colon to indicate the id:
-  int colonPos = l.find(':') 
+  int colonPos = l.find(':');
   QCString idS = l.left( colonPos );
   bool ok = true;
-  int id = idS.toInt( ok );
+  int id = idS.toInt( &ok );
   if( ! ok ) return n;
   n.id = id;
 
@@ -57,11 +91,13 @@ ObjectData readObject( QFile& f )
 
 KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
 {
+  // NOT READY...
+  return NotSupported;
   // we fill up objs with the objects from the file, and then save
   // those objects...
   std::vector<ObjectData> objs;
   
-  QFile f( sFrom );
+  QFile f( from );
   f.open( IO_ReadOnly );
 
   // this code will look more like C than C++, but that's cause i
@@ -96,7 +132,7 @@ KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
     {
       for( std::vector<int>::iterator j = i->p.begin(); j != i->p.end(); ++j )
 	{
-	  objs[*i].o->addChild( j->o );
+	  i->o->addChild( objs[*j].o );
 	};
     };
 
@@ -114,9 +150,9 @@ KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
 
   Objects go;
   Objects fo;
-  for (std::vector<Object*>::iterator i = objs.begin(); i != objs.end(); ++i)
+  for (std::vector<ObjectData>::iterator i = objs.begin(); i != objs.end(); ++i)
     {
-      fo.add(*i);
+      fo.add(i->o);
     };
   ObjectHierarchy hier ( go, fo, 0);
   hier.calc();
@@ -130,25 +166,4 @@ KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
   return OK;
 }
 
-std::string KigFilterCabri::readLine( QFile& f, bool& eof )
-{
-  std::string s;
-  char r;
-  while()
-    {
-      r = f.getch();
-      if( r == 0 || r == -1 ) { eof = true; break; };
-      if( r == '\n' ) { eof = false; break; }
-      if( r == '\r' )
-	{
-	  r = f.getch();
-	  if( r == '\n' ) { eof = false; break; }
-	  f.ungetch( r );
-	  r = '\r';
-	};
-      s += r;
-    };
-  s += '\n';
-  return s;
-}
 

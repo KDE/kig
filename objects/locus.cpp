@@ -4,8 +4,17 @@
 
 #include <kdebug.h>
 
+/**
+ * Locus: the calc routines of this class are quite unusual:
+ * if( !isPointLocus() ) all is as usual...
+ * but otherwise, we try to find better points by keeping the window()
+ * from the last draw, and only taking the points which are in that
+ * rect... this is what realCalc() and calc() is about...
+ */
+
 void Locus::draw(KigPainter& p, bool ss) const
 {
+  calcRect = p.window();
   // we don't let the points draw themselves, since that would get us
   // the big points (5x5) like we normally see them...
   // all objs are of the same type, so we only check the first
@@ -17,7 +26,7 @@ void Locus::draw(KigPainter& p, bool ss) const
       p.setPen(pen);
       for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
 	{
-	  p.drawPoint( i->pt.getCoord() );
+	  p.drawPoint( i->pt );
 	};
     }
   else
@@ -45,7 +54,7 @@ bool Locus::contains(const Coordinate& o, const double fault ) const
     {
       for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
 	{
-	  if( i->pt.contains( o, fault ) ) return true;
+	  if( ( i->pt - o ).length() < fault ) return true;
 	};
     };
   return false;
@@ -65,7 +74,7 @@ bool Locus::inRect(const Rect& r) const
     {
       for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
 	{
-	  if (i->pt.inRect(r)) return true;
+	  if( r.contains( i->pt ) ) return true;
 	};
     };
   return false;
@@ -115,10 +124,15 @@ bool Locus::selectArg(Object* o)
   return complete;
 }
 
+void Locus::realCalc( const Rect& r )
+{
+  if( isPointLocus() ) calcPointLocus( r );
+  else calcObjectLocus();
+};
+
 void Locus::calc()
 {
-  if (isPointLocus()) calcPointLocus();
-  else calcObjectLocus();
+  realCalc( calcRect );
 }
 
 Coordinate Locus::getPoint(double param) const
@@ -136,10 +150,12 @@ Coordinate Locus::getPoint(double param) const
   else t = Coordinate();
   return t;
 }
+
 double Locus::getParam(const Coordinate&) const
 {
   return 0.5;
 }
+
 void Locus::calcObjectLocus()
 {
   objs.deleteAll();
@@ -164,22 +180,23 @@ inline Locus::CPts::iterator Locus::addPoint(double param)
   cp->calc();
   hierarchy->calc();
   Point* p = Object::toPoint(obj);
-  pts.push_front(CPt(*p, param));
+  pts.push_front(CPt(p->getCoord(), param));
   return pts.begin();
 }
 
-void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i)
+void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i, const Rect& r )
 {
+  if ( i++ > numberOfSamples ) return;
+  if( !( r.contains( first->pt ) || r.contains( last->pt ) ) ) return;
   double p = (first->pm+last->pm)/2;
   CPts::iterator n = addPoint(p);
-  if (++i > numberOfSamples) return;
-  if ((n->pt.getCoord() - first->pt.getCoord()).length() >3) recurse (n, first, i);
+  if( ( n->pt - first->pt ).length() > 3 ) recurse( n, first, i, r );
   if (i > numberOfSamples) return;
-  if ((n->pt.getCoord() - last->pt.getCoord()).length() >3) recurse (n, last,i);
+  if( ( n->pt - last->pt ).length() > 3 ) recurse( n, last, i, r );
   if (i > numberOfSamples) return;
 }
 
-void Locus::calcPointLocus()
+void Locus::calcPointLocus( const Rect& r )
 {
   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   pts.clear();
@@ -196,7 +213,7 @@ void Locus::calcPointLocus()
   CPts::iterator b = addPoint(0);
   CPts::iterator e = addPoint(1);
   int i = 2;
-  recurse(b,e,i);
+  recurse(b,e,i,r);
   // reset cp and its children to their former state...
   cp->setP(oldP);
   cp->calc();
@@ -210,5 +227,4 @@ Locus::Locus(const Locus& loc)
   cp->addChild(this);
   obj->addChild(this);
   complete = loc.complete;
-  if (complete) calc();
 }

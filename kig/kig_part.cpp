@@ -264,7 +264,7 @@ bool KigDocument::openFile()
       tempFile = new KTempFile( locateLocal( "tmp","kig-" ), QString::fromUtf8("kig") );
       filter->convert (m_file, *tempFile);
       //      KMessageBox::sorry(widget(), QString::fromLatin1("this is for debugging, read the file") + tempFile.name() );
-      file.setName (tempFile.name());
+      file.setName (tempFile->name());
     }
   else
     {
