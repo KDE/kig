@@ -1,5 +1,7 @@
 2003-05-08  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
+	* add some properties to the arc object
+
 	* organise the filters directory more sanely
 
 	* fix for deleting: remove deleted objects from their children, so
