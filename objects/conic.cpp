@@ -96,7 +96,19 @@ double Conic::getParam (const Coordinate& p) const
 {
   Coordinate focus1 = mequation.focus1;
   Coordinate tmp = p - focus1;
-  return fmod(atan2(tmp.y, tmp.x) / ( 2 * M_PI ) + 1, 1);
+  double l = tmp.length();
+  double theta = atan2(tmp.y, tmp.x);
+  double costheta = cos(theta);
+  double sintheta = sin(theta);
+  double ecostheta0 = mequation.ecostheta0;
+  double esintheta0 = mequation.esintheta0;
+  double pdimen = mequation.pdimen;
+  double rho1 = pdimen / (1 - costheta*ecostheta0 - sintheta*esintheta0);
+  double rho2 = - pdimen / (1 + costheta*ecostheta0 + sintheta*esintheta0);
+  if (fabs(rho1 - l) < fabs(rho2 - l))
+    return fmod(theta / ( 2 * M_PI ) + 1, 1);
+  else
+    return fmod(theta / ( 2 * M_PI ) + 0.5, 1);
 };
 
 EllipseBFFP::EllipseBFFP( const Objects& os )
@@ -703,28 +715,29 @@ const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
   Coordinate f1 = args[0];
   Coordinate f2 = args[1];
   Coordinate d;
-  if ( args.size() == 3 )
-    d = args[2];
-  else
-  {
-    // if there are only 2 points given, then we take the third to
-    // be a point on the perpendicular through the middle of the two
-    // points..
-    Coordinate diff = f2 - f1;
-    diff /= 2;
-    d = f1 + type*diff + diff.orthogonal();
-  }
+  double eccentricity, d1, d2, dl;
 
   Coordinate f2f1 = f2 - f1;
   double f2f1l = f2f1.length();
   ret.ecostheta0 = f2f1.x / f2f1l;
   ret.esintheta0 = f2f1.y / f2f1l;
 
-  double d1 = ( d - f1 ).length();
-  double d2 = ( d - f2 ).length();
-  double dl = fabs( d1 + type * d2 );
+  if ( args.size() == 3 )
+  {
+    d = args[2];
+    d1 = ( d - f1 ).length();
+    d2 = ( d - f2 ).length();
+    dl = fabs( d1 + type * d2 );
+    eccentricity = f2f1l/dl;
+  }
+  else
+  {
+    if ( type > 0 ) eccentricity = 0.7; else eccentricity = 2.0;
+    dl = f2f1l/eccentricity;
+  }
+
   double rhomax = (dl + f2f1l) /2.0;
-  double eccentricity = f2f1l/dl;
+
   ret.ecostheta0 *= eccentricity;
   ret.esintheta0 *= eccentricity;
   ret.pdimen = type*(1 - eccentricity)*rhomax;
