@@ -165,27 +165,27 @@ void KigDocument::setupActions()
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
 
-  aZoomIn = KStdAction::zoomIn( m_widget, SLOT( zoomIn() ), actionCollection() );
-  aZoomIn->setToolTip( i18n( "Zoom in on the document" ) );
-  aZoomIn->setWhatsThis( i18n( "Zoom in on the document" ) );
+  KAction* a = KStdAction::zoomIn( m_widget, SLOT( zoomIn() ), actionCollection() );
+  a->setToolTip( i18n( "Zoom in on the document" ) );
+  a->setWhatsThis( i18n( "Zoom in on the document" ) );
 
-  aZoomOut = KStdAction::zoomOut( m_widget, SLOT( zoomOut() ),
+  a = KStdAction::zoomOut( m_widget, SLOT( zoomOut() ),
                                   actionCollection() );
-  aZoomOut->setToolTip( i18n( "Zoom out of the document" ) );
-  aZoomOut->setWhatsThis( i18n( "Zoom out of the document" ) );
+  a->setToolTip( i18n( "Zoom out of the document" ) );
+  a->setWhatsThis( i18n( "Zoom out of the document" ) );
 
-  aCenterScreen = KStdAction::fitToPage( m_widget, SLOT( recenterScreen() ),
+  a = KStdAction::fitToPage( m_widget, SLOT( recenterScreen() ),
                                          actionCollection() );
-  aCenterScreen->setToolTip( i18n( "Recenter the screen on the document" ) );
-  aCenterScreen->setWhatsThis( i18n( "Recenter the screen on the document" ) );
+  a->setToolTip( i18n( "Recenter the screen on the document" ) );
+  a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
   tmp = l->loadIcon( "window_fullscreen", KIcon::User );
-  aFullScreen = new KAction(
+  a = new KAction(
     i18n( "Full Screen" ), tmp, CTRL+SHIFT+Key_F,
     m_widget, SLOT( toggleFullScreen() ),
     actionCollection(), "view_fullscreen" );
-  aFullScreen->setToolTip( i18n( "View this document full-screen." ) );
-  aFullScreen->setWhatsThis( i18n( "View this document full-screen." ) );
+  a->setToolTip( i18n( "View this document full-screen." ) );
+  a->setWhatsThis( i18n( "View this document full-screen." ) );
 };
 
 void KigDocument::setupTypes()

@@ -202,12 +202,6 @@ public:
   QPtrList<KAction> aMNewConic;
 
 
-  KAction* aZoomIn;
-  KAction* aZoomOut;
-  KAction* aCenterScreen;
-  KAction* aExportToImage;
-  KAction* aFullScreen;
-
   KAction* aCancelConstruction;
   KAction* aDeleteObjects;
   KAction* aNewMacro;
