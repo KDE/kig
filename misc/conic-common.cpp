@@ -53,7 +53,7 @@ ConicCartesianData::ConicCartesianData(
   coeffs[3] = d;
   coeffs[4] = e;
   coeffs[5] = f;
-};
+}
 
 ConicPolarData::ConicPolarData( const ConicCartesianData& cartdata )
 {
@@ -156,7 +156,7 @@ ConicPolarData::ConicPolarData( const ConicCartesianData& cartdata )
     ecostheta0 = -ecostheta0;
     esintheta0 = -esintheta0;
   }
-};
+}
 
 const ConicCartesianData calcConicThroughPoints (
   const std::vector<Coordinate>& points,
@@ -408,12 +408,12 @@ ConicPolarData::ConicPolarData(
   double ec, double es )
   : focus1( f ), pdimen( d ), ecostheta0( ec ), esintheta0( es )
 {
-};
+}
 
 ConicPolarData::ConicPolarData()
   : focus1(), pdimen( 0 ), ecostheta0( 0 ), esintheta0( 0 )
 {
-};
+}
 
 const ConicPolarData calcConicBDFP(
   const LineData& directrix,
@@ -442,7 +442,7 @@ const ConicPolarData calcConicBDFP(
   ret.focus1 = cfocus;
 
   return ret;
-};
+}
 
 ConicCartesianData::ConicCartesianData( const double incoeffs[6] )
 {
@@ -490,7 +490,7 @@ const LineData calcConicAsymptote(
   ret.a = Coordinate(xc, yc);
   ret.b = ret.a + displacement;
   return ret;
-};
+}
 
 const ConicCartesianData calcConicByAsymptotes(
   const LineData& line1,
@@ -852,7 +852,7 @@ bool operator==( const ConicPolarData& lhs, const ConicPolarData& rhs )
          lhs.pdimen == rhs.pdimen &&
      lhs.ecostheta0 == rhs.ecostheta0 &&
      lhs.esintheta0 == rhs.esintheta0;
-};
+}
 
 ConicCartesianData ConicCartesianData::invalidData()
 {

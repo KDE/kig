@@ -151,7 +151,7 @@ const ObjectImpType* PointImp::stype()
     I18N_NOOP( "Attach to this point" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* PointImp::type() const
 {

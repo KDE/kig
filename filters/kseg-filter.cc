@@ -82,7 +82,7 @@ static Coordinate readKSegCoordinate( QDataStream& stream )
   t *= 14;
   t /= 600;
   return t + Coordinate( -7, -7 );
-};
+}
 
 static RealObject* intersectionPoint( const Objects& parents, Objects& ret, int which )
 {
@@ -121,7 +121,7 @@ static RealObject* intersectionPoint( const Objects& parents, Objects& ret, int 
     return new RealObject( ConicLineIntersectionType::instance(), iparents );
   }
   else return 0;
-};
+}
 
 bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
 {

@@ -97,7 +97,7 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
   v->updateScrollBars();
-};
+}
 
 class MovingMode::Private
 {
@@ -195,7 +195,7 @@ MovingModeBase::~MovingModeBase()
 void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
 {
   mouseMoved( e, v );
-};
+}
 
 MovingMode::~MovingMode()
 {

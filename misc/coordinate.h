@@ -88,7 +88,7 @@ const Coordinate operator* ( const double r, const Coordinate& a );
 double Coordinate::squareLength() const
 {
   return x*x+y*y;
-};
+}
 
 #endif
 

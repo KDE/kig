@@ -259,7 +259,7 @@ static uint percentCount( const QString& s )
     offset += re.matchedLength();
   };
   return percentcount;
-};
+}
 
 void TextLabelModeBase::finishPressed()
 {

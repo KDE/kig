@@ -33,12 +33,12 @@
 Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t )
 {
   return calcPointOnPerpend( l.b - l.a, t );
-};
+}
 
 Coordinate calcPointOnPerpend( const Coordinate& dir, const Coordinate& t )
 {
   return t + ( dir ).orthogonal();
-};
+}
 
 Coordinate calcPointOnParallel( const LineData& l, const Coordinate& t )
 {
@@ -48,7 +48,7 @@ Coordinate calcPointOnParallel( const LineData& l, const Coordinate& t )
 Coordinate calcPointOnParallel( const Coordinate& dir, const Coordinate& t )
 {
   return t + dir*5;
-};
+}
 
 Coordinate calcIntersectionPoint( const LineData& l1, const LineData& l2 )
 {
@@ -133,19 +133,19 @@ Coordinate calcIntersectionPoint( const LineData& l1, const LineData& l2 )
       nx = xb; ny = yb;
     };
   return Coordinate( nx, ny );
-};
+}
 
 void calcBorderPoints( Coordinate& p1, Coordinate& p2, const Rect& r )
 {
   calcBorderPoints( p1.x, p1.y, p2.x, p2.y, r );
-};
+}
 
 const LineData calcBorderPoints( const LineData& l, const Rect& r )
 {
   LineData ret( l );
   calcBorderPoints( ret.a.x, ret.a.y, ret.b.x, ret.b.y, r );
   return ret;
-};
+}
 
 void calcBorderPoints( double& xa, double& ya, double& xb, double& yb, const Rect& r )
 {
@@ -182,12 +182,12 @@ void calcBorderPoints( double& xa, double& ya, double& xb, double& yb, const Rec
     // line is completely outside of the window...
     xa = ya = xb = yb = 0;
   };
-};
+}
 
 void calcRayBorderPoints( const Coordinate& a, Coordinate& b, const Rect& r )
 {
   calcRayBorderPoints( a.x, a.y, b.x, b.y, r );
-};
+}
 
 void calcRayBorderPoints( const double xa, const double ya, double& xb,
                           double& yb, const Rect& r )
@@ -239,7 +239,7 @@ void calcRayBorderPoints( const double xa, const double ya, double& xb,
     return;
   };
   kdError() << k_funcinfo << "damn" << endl;
-};
+}
 
 bool isOnLine( const Coordinate& o, const Coordinate& a,
                const Coordinate& b, const double fault )
@@ -263,7 +263,7 @@ bool isOnLine( const Coordinate& o, const Coordinate& a,
   // equals 0, then p(x,y,z) is on the line containing points
   // p1(x1,y1,z1) and p2 here, we're working with normal coords, no
   // homogeneous ones, so all z's equal 1
-};
+}
 
 bool isOnSegment( const Coordinate& o, const Coordinate& a,
                   const Coordinate& b, const double fault )
@@ -277,7 +277,7 @@ bool isOnSegment( const Coordinate& o, const Coordinate& a,
     && ( kigMin (a.y, b.y) - o.y < fault )
     // not too low
     && ( o.y - kigMax (a.y, b.y) < fault );
-};
+}
 
 bool isOnRay( const Coordinate& o, const Coordinate& a,
               const Coordinate& b, const double fault )
@@ -287,7 +287,7 @@ bool isOnRay( const Coordinate& o, const Coordinate& a,
     && ( a.x - b.x < fault ) == ( a.x - o.x < fault )
     // not too far in front of a vertically..
     && ( a.y - b.y < fault ) == ( a.y - o.y < fault );
-};
+}
 
 const Coordinate calcMirrorPoint( const LineData& l,
                                   const Coordinate& p )
@@ -326,14 +326,14 @@ const Coordinate calcCircleLineIntersect( const Coordinate& c,
 
     return proj + lvec;
   };
-};
+}
 
 const Coordinate calcPointProjection( const Coordinate& p,
                                       const LineData& l )
 {
   Coordinate orth = l.dir().orthogonal();
   return p + orth.normalize( calcDistancePointLine( p, l ) );
-};
+}
 
 double calcDistancePointLine( const Coordinate& p,
                               const LineData& l )
@@ -346,7 +346,7 @@ double calcDistancePointLine( const Coordinate& p,
   double y = p.y;
   double norm = l.dir().length();
   return ( yb * x - ya * x - xb * y + xa * y + xb * ya - yb * xa ) / norm;
-};
+}
 
 Coordinate calcRotatedPoint( const Coordinate& a, const Coordinate& c, const double arc )
 {
@@ -366,7 +366,7 @@ Coordinate calcRotatedPoint( const Coordinate& a, const Coordinate& c, const dou
   Coordinate ret( std::cos( asum ), std::sin( asum ) );
   ret = ret.normalize( ( a -c ).length() );
   return ret + c;
-};
+}
 
 Coordinate calcCircleRadicalStartPoint( const Coordinate& ca, const Coordinate& cb,
                                         double sqra, double sqrb )
@@ -380,7 +380,7 @@ Coordinate calcCircleRadicalStartPoint( const Coordinate& ca, const Coordinate& 
 
   direc *= lambda;
   return m + direc;
-};
+}
 
 double getDoubleFromUser( const QString& caption, const QString& label, double value,
                           QWidget* parent, bool* ok, double min, double max, int decimals )
@@ -400,7 +400,7 @@ double getDoubleFromUser( const QString& caption, const QString& label, double v
     ret = input.toDouble( & myok );
   if ( ok ) *ok = myok;
   return ret;
-};
+}
 
 const Coordinate calcCenter(
   const Coordinate& a, const Coordinate& b, const Coordinate& c )
@@ -470,12 +470,12 @@ bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
     ( imp->contains( rightint, width, w ) && r.contains( rightint, miss ) ) ||
     ( imp->contains( bottomint, width, w ) && r.contains( bottomint, miss ) ) ||
     ( imp->contains( topint, width, w ) && r.contains( topint, miss ) );
-};
+}
 
 bool operator==( const LineData& l, const LineData& r )
 {
   return l.a == r.a && l.b == r.b;
-};
+}
 
 const double double_inf = HUGE_VAL;
 

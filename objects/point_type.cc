@@ -216,7 +216,7 @@ static void redefinePoint( RealObject* o, KigDocument& d, KigWidget& w,
 {
   PointRedefineMode pm( o, d, w );
   d.runMode( &pm );
-};
+}
 
 void FixedPointType::executeAction(
   int i, RealObject* o, KigDocument& d, KigWidget& w,

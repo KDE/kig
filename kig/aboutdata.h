@@ -89,4 +89,4 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                       I18N_NOOP( "_: EMAIL OF TRANSLATORS\\nYour emails" ) );
 
   return tmp;
-};
+}

@@ -300,7 +300,7 @@ const Transformation operator*( const Transformation& a, const Transformation& b
   ret.mIsHomothety = a.mIsHomothety && b.mIsHomothety;
 
   return ret;
-};
+}
 
 const Transformation Transformation::lineReflection( const LineData& l )
 {
@@ -509,4 +509,4 @@ bool operator==( const Transformation& lhs, const Transformation& rhs )
       if ( lhs.data( i, j ) != rhs.data( i, j ) )
         return false;
   return true;
-};
+}

@@ -37,7 +37,7 @@ GUIActionList* GUIActionList::instance()
 {
   static GUIActionList l;
   return &l;
-};
+}
 
 GUIActionList::~GUIActionList()
 {
@@ -226,7 +226,7 @@ Macro::~Macro()
 bool MacroList::save( Macro* m, const QString& f )
 {
   return save( myvector<Macro*>( m ), f );
-};
+}
 
 bool MacroList::save( const myvector<Macro*>& ms, const QString& f )
 {
@@ -285,7 +285,7 @@ bool MacroList::load( const QString& f, myvector<Macro*>& ret, const KigDocument
     return loadNew( main, ret, kdoc );
   else
     return loadOld( main, ret, kdoc );
-};
+}
 
 bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret, const KigDocument& )
 {

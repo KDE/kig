@@ -135,13 +135,13 @@ void AddObjectsTask::execute( KigDocument& doc )
 {
   doc._addObjects( mobjsref.parents() );
   undone = false;
-};
+}
 
 void AddObjectsTask::unexecute( KigDocument& doc )
 {
   doc._delObjects( mobjsref.parents() );
   undone = true;
-};
+}
 
 AddObjectsTask::~AddObjectsTask()
 {

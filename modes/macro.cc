@@ -84,7 +84,7 @@ void DefineMacroMode::givenPageEntered()
   static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
 
   updateNexts();
-};
+}
 
 void DefineMacroMode::finalPageEntered()
 {

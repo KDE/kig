@@ -273,7 +273,7 @@ QCString translateOldKigPropertyName( const QString& whichproperty )
   else if ( ret == "angle-in-degrees" )
     ret = "angle-degrees";
   return ret;
-};
+}
 
 void extendVect( std::vector<HierElem>& vect, uint size )
 {
@@ -284,7 +284,7 @@ void extendVect( std::vector<HierElem>& vect, uint size )
     for ( uint i = osize; i < size; ++i )
       vect[i].id = i+1;
   };
-};
+}
 
 static void visitElem( std::vector<HierElem>& ret,
                        const std::vector<HierElem>& elems,
@@ -298,7 +298,7 @@ static void visitElem( std::vector<HierElem>& ret,
     ret.push_back( elems[i] );
     seen[i] = true;
   };
-};
+}
 
 std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
 {
@@ -307,7 +307,7 @@ std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
   for ( uint i = 0; i < elems.size(); ++i )
     visitElem( ret, elems, seenElems, i );
   return ret;
-};
+}
 
 bool parseOldObjectHierarchyElements( const QDomElement& firstelement,
                                       const Objects& given, ReferenceObject& retref,
@@ -416,7 +416,7 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement,
   retref.setParents( ret );
 
   return true;
-};
+}
 
 Object* randomObjectForType( const QCString& type )
 {
@@ -477,4 +477,4 @@ Object* randomObjectForType( const QCString& type )
     else
       return new DataObject( new ConicImpCart( ConicCartesianData( 1, 2, 3, 4, 5, 6 ) ) );
   };
-};
+}

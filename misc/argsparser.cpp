@@ -63,12 +63,12 @@ ArgParser::ArgParser( const std::vector<spec>& args, const std::vector<const cha
 static bool hasimp( const Object& o, const ObjectImpType* imptype )
 {
   return o.hasimp( imptype );
-};
+}
 
 static bool hasimp( const ObjectImp& o, const ObjectImpType* imptype )
 {
   return o.inherits( imptype );
-};
+}
 
 // we use a template method that is used for both Objects and Args to
 // not have to write the same thing twice..
@@ -101,7 +101,7 @@ static int check( const Collection& c, int numberofanyobjects,
   for( uint i = 0; i < margs.size(); ++i )
     if ( !found[i] ) return ArgsChecker::Valid;
   return ArgsChecker::Complete;
-};
+}
 
 int ArgParser::check( const Args& os ) const
 {
@@ -136,7 +136,7 @@ Collection parse( const Collection& os, uint numberofanyobjects,
     ;
   };
   return ret;
-};
+}
 
 Args ArgParser::parse( const Args& os ) const
 {

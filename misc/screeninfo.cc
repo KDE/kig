@@ -31,7 +31,7 @@ Rect ScreenInfo::fromScreen( const QRect& r ) const
     fromScreen( r.topLeft() ),
     fromScreen( r.bottomRight() )
     ).normalized();
-};
+}
 
 Coordinate ScreenInfo::fromScreen( const QPoint& p ) const
 {

@@ -32,7 +32,7 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
            this, SLOT( nameTextChanged( const QString& ) ) );
   connect( this, SIGNAL( helpClicked() ), this,
            SLOT( slotHelpClicked() ) );
-};
+}
 
 MacroWizard::~MacroWizard()
 {

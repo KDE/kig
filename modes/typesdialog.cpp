@@ -104,7 +104,7 @@ void TypesDialog::deleteType()
   for ( std::vector<Macro*>::iterator j = selectedTypes.begin();
         j != selectedTypes.end(); ++j)
     MacroList::instance()->remove( *j );
-};
+}
 
 void TypesDialog::exportType()
 {
@@ -118,7 +118,7 @@ void TypesDialog::exportType()
   QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types Files\n*|All Files"));
   if ( !file_name.isNull() )
     MacroList::instance()->save( types, file_name );
-};
+}
 
 void TypesDialog::importTypes()
 {
@@ -149,4 +149,4 @@ MacroListElement::MacroListElement( Macro* m )
   : QListBoxText( m->action->descriptiveName() ),
     macro( m )
 {
-};
+}

@@ -147,7 +147,7 @@ const ObjectImpType* TextImp::stype()
     I18N_NOOP( "Attach to this label" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* TextImp::type() const
 {

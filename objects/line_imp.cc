@@ -412,7 +412,7 @@ const ObjectImpType* AbstractLineImp::stype()
   static const ObjectImpType t(
     Parent::stype(), "line", 0, 0, 0, 0, 0, 0 );
   return &t;
-};
+}
 
 const ObjectImpType* LineImp::stype()
 {
@@ -426,7 +426,7 @@ const ObjectImpType* LineImp::stype()
     I18N_NOOP( "Attach to this line" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* SegmentImp::stype()
 {
@@ -440,7 +440,7 @@ const ObjectImpType* SegmentImp::stype()
     I18N_NOOP( "Attach to this segment" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* RayImp::stype()
 {
@@ -454,7 +454,7 @@ const ObjectImpType* RayImp::stype()
     I18N_NOOP( "Attach to this ray" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* SegmentImp::type() const
 {

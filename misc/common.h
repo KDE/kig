@@ -204,12 +204,12 @@ template <typename T>
 T kigMin( const T& a, const T& b )
 {
   return a < b ? a : b;
-};
+}
 
 template <typename T>
 T kigMax( const T& a, const T& b )
 {
   return a > b ? a : b;
-};
+}
 
 #endif

@@ -47,7 +47,7 @@ int KigApplication::newInstance()
   handleArgs(args);
   args->clear();
   return 0;
-};
+}
 
 void KigApplication::handleArgs( KCmdLineArgs* args )
 {
@@ -65,7 +65,7 @@ void KigApplication::handleArgs( KCmdLineArgs* args )
       widget->load( args->url( i ) );
     }
   }
-};
+}
 
 int main(int argc, char **argv)
 {

@@ -355,4 +355,4 @@ const ObjectImpType* CubicImp::stype()
     I18N_NOOP( "Attach to this cubic" )
     );
   return &t;
-};
+}

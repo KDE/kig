@@ -335,7 +335,7 @@ const ObjectImpType* LocusImp::stype()
     I18N_NOOP( "Attach to this locus" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* LocusImp::type() const
 {

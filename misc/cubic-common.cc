@@ -27,13 +27,13 @@
 CubicCartesianData::CubicCartesianData()
 {
   std::fill( coeffs, coeffs + 10, 0 );
-};
+}
 
 CubicCartesianData::CubicCartesianData(
             const double incoeffs[10] )
 {
   std::copy( incoeffs, incoeffs + 10, coeffs );
-};
+}
 
 const CubicCartesianData calcCubicThroughPoints (
     const std::vector<Coordinate>& points )
@@ -507,7 +507,7 @@ bool operator==( const CubicCartesianData& lhs, const CubicCartesianData& rhs )
     if ( lhs.coeffs[i] != rhs.coeffs[i] )
       return false;
   return true;
-};
+}
 
 CubicCartesianData CubicCartesianData::invalidData()
 {

@@ -210,7 +210,7 @@ const ObjectImpType* InvalidImp::stype()
   static const ObjectImpType t(
     Parent::stype(), "invalid", 0, 0, 0, 0, 0, 0 );
   return &t;
-};
+}
 
 const ObjectImpType* StringImp::stype()
 {
@@ -224,7 +224,7 @@ const ObjectImpType* StringImp::stype()
     I18N_NOOP( "Attach to this string" )
     );
   return &t;
-};
+}
 const ObjectImpType* HierarchyImp::stype()
 {
   static const ObjectImpType t(
@@ -237,7 +237,7 @@ const ObjectImpType* HierarchyImp::stype()
     I18N_NOOP( "Attach to this hierarchy" )
     );
   return &t;
-};
+}
 const ObjectImpType* TransformationImp::stype()
 {
   static const ObjectImpType t(
@@ -250,7 +250,7 @@ const ObjectImpType* TransformationImp::stype()
     I18N_NOOP( "Attach to this transformation" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* InvalidImp::type() const
 {

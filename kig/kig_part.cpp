@@ -70,7 +70,7 @@ using namespace std;
 
 // export this library...
 typedef KParts::GenericFactory<KigDocument> KigDocumentFactory;
-K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigDocumentFactory );
+K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigDocumentFactory )
 
 KAboutData* KigDocument::createAboutData()
 {
@@ -94,14 +94,14 @@ SetCoordinateSystemAction::SetCoordinateSystemAction(
   : KAction( text, 0, 0, 0, parent, 0 ),
     md( d ), mn( i )
 {
-};
+}
 
 void SetCoordinateSystemAction::slotActivated()
 {
   CoordinateSystem* sys = CoordinateSystemFactory::build( mn );
   assert( sys );
   md.history()->addCommand( KigCommand::changeCoordSystemCommand( md, sys ) );
-};
+}
 
 KigDocument::KigDocument( QWidget *parentWidget, const char *,
 			  QObject *parent, const char *name,
@@ -250,7 +250,7 @@ void KigDocument::setupActions()
   for ( uint i = 0; i < csnames.size(); ++i )
     am->insert( new SetCoordinateSystemAction( csnames[i], *this, i,
                                                actionCollection() ) );
-};
+}
 
 void KigDocument::setupTypes()
 {
@@ -264,7 +264,7 @@ void KigDocument::setupTypes()
     aActions.push_back( ret );
     ret->plug( this );
   };
-};
+}
 
 KigDocument::~KigDocument()
 {
@@ -379,12 +379,12 @@ bool KigDocument::saveFile()
     return true;
   }
   return false;
-};
+}
 
 void KigDocument::addObject(Object* o)
 {
   mhistory->addCommand( KigCommand::addCommand( *this, o ) );
-};
+}
 
 void KigDocument::addObjects( const Objects& os )
 {
@@ -395,7 +395,7 @@ void KigDocument::_addObject( Object* o )
 {
   mobjsref.addParent( o );
   setModified(true);
-};
+}
 
 void KigDocument::delObject(Object* o)
 {
@@ -403,7 +403,7 @@ void KigDocument::delObject(Object* o)
   Objects all = o->getAllChildren();
   all.upush(o);
   mhistory->addCommand( KigCommand::removeCommand( *this, all ) );
-};
+}
 
 void KigDocument::_delObjects( const Objects& o )
 {
@@ -420,7 +420,7 @@ void KigDocument::_delObject(Object* o)
   mobjsref.delParent( o );
   o->setSelected( false );
   setModified(true);
-};
+}
 
 Objects KigDocument::whatAmIOn(const Coordinate& p, const KigWidget& w ) const
 {
@@ -450,7 +450,7 @@ Objects KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
   return tmp;
-};
+}
 
 Rect KigDocument::suggestedRect() const
 {
@@ -566,7 +566,7 @@ void KigDocument::unplugActionLists()
   unplugActionList( "user_line_types" );
   unplugActionList( "user_other_types" );
   unplugActionList( "user_types" );
-};
+}
 
 void KigDocument::plugActionLists()
 {
@@ -577,7 +577,7 @@ void KigDocument::plugActionLists()
   plugActionList( "user_line_types", aMNewLine );
   plugActionList( "user_other_types", aMNewOther );
   plugActionList( "user_types", aMNewAll );
-};
+}
 
 void KigDocument::emitStatusBarText( const QString& text )
 {

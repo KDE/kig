@@ -48,7 +48,7 @@ public:
   myvector( uint size, const T& l )
     : parent( size, l ) {};
   template<class Iter> myvector( Iter b, Iter e )
-    : std::vector<T>( b, e ) {};
+    : std::vector<T>( b, e ) {}
 
   // constructs a vector with a single element in it...
   explicit myvector( const T& element );
@@ -80,31 +80,31 @@ myvector<T> myvector<T>::with( const T& o ) const
   myvector<T> ret( *this );
   ret.push_back( o );
   return ret;
-};
+}
 
 template<class T>
 myvector<T>::myvector( const T& t )
 {
   push_back( t );
-};
+}
 
 template<class T>
 myvector<T>::myvector()
 {
-};
+}
 
 template<class T>
 bool myvector<T>::contains( const T& o ) const
 {
-  return std::find( begin(), end(), o ) != end();
-};
+  return std::find( std::vector<T>::begin(), std::vector<T>::end(), o ) != std::vector<T>::end();
+}
 
 template<class T>
 void myvector<T>::upush( const T& b )
 {
-  if ( std::find( begin(), end(), b ) == end() )
+  if ( std::find( std::vector<T>::begin(), std::vector<T>::end(), b ) == std::vector<T>::end() )
     push_back( b );
-};
+}
 
 template<class T>
 void myvector<T>::upush( const myvector<T>& os )
@@ -112,13 +112,13 @@ void myvector<T>::upush( const myvector<T>& os )
   for ( const_iterator i = os.begin();
         i != os.end(); ++i )
     upush( *i );
-};
+}
 
 template<class T>
 void myvector<T>::remove_first( const T& o )
 {
   iterator i;
-  if( (i = std::find( begin(), end(), o ) ) != end() )
+  if( (i = std::find( std::vector<T>::begin(), std::vector<T>::end(), o ) ) != std::vector<T>::end() )
     erase( i );
 }
 
@@ -126,9 +126,9 @@ template<class T>
 void myvector<T>::remove( const T& o )
 {
   iterator i;
-  while ( (i = std::find( begin(), end(), o ) ) != end() )
+  while ( (i = std::find( std::vector<T>::begin(), std::vector<T>::end(), o ) ) != std::vector<T>::end() )
     erase( i );
-};
+}
 
 template<class T>
 myvector<T> operator&( const myvector<T>& o, const myvector<T>& s )
@@ -137,7 +137,7 @@ myvector<T> operator&( const myvector<T>& o, const myvector<T>& s )
   std::set_intersection( o.begin(), o.end(), s.begin(), s.end(),
                          std::back_inserter( result ) );
   return result;
-};
+}
 
 template<class T>
 myvector<T> operator|( const myvector<T>& o, const myvector<T>& s )
@@ -146,14 +146,14 @@ myvector<T> operator|( const myvector<T>& o, const myvector<T>& s )
   std::set_union( o.begin(), o.end(), s.begin(), s.end(),
                        std::back_inserter( result ) );
   return result;
-};
+}
 
 template<class iter>
 void delete_all( iter current, iter end )
 {
   for ( ; current != end; ++current )
     delete *current;
-};
+}
 
 class Objects
   : public myvector<Object*>
@@ -161,7 +161,7 @@ class Objects
 public:
   Objects() {};
   Objects( uint n, Object* l = 0 ) : myvector<Object*>( n, l ) {};
-  template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {};
+  template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {}
   Objects( const Objects& os ) : myvector<Object*>( os ) {};
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
   void calc( const KigDocument& ) const;

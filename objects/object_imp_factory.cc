@@ -59,21 +59,21 @@ static void addXYElements( const Coordinate& c, QDomElement& parent, QDomDocumen
     doc.createTextNode(
       QString::number( c.y ) ) );
   parent.appendChild( ye );
-};
+}
 
 static void addDoubleElement( const char* name, double d, QDomElement& parent, QDomDocument& doc )
 {
   QDomElement e = doc.createElement( name );
   e.appendChild( doc.createTextNode( QString::number( d ) ) );
   parent.appendChild( e );
-};
+}
 
 static void addCoordinateElement( const char* name, const Coordinate& d, QDomElement& p, QDomDocument& doc )
 {
   QDomElement e = doc.createElement( name );
   addXYElements( d, e, doc );
   p.appendChild( e );
-};
+}
 
 QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
                                      QDomDocument& doc ) const
@@ -249,7 +249,7 @@ static Coordinate readXYElements( const QDomElement& e, bool& ok )
   else y = ye.text().toDouble( &ok );
 
   return Coordinate( x, y );
-};
+}
 
 static Coordinate readCoordinateElement( QDomNode n, bool& ok,
                                          const char* tagname )
@@ -262,7 +262,7 @@ static Coordinate readCoordinateElement( QDomNode n, bool& ok,
     return ret;
   }
   return readXYElements( e, ok );
-};
+}
 
 static double readDoubleElement( QDomNode n, bool& ok,
                                  const char* tagname )
@@ -274,7 +274,7 @@ static double readDoubleElement( QDomNode n, bool& ok,
     return 0.;
   };
   return e.text().toDouble( &ok );
-};
+}
 
 ObjectImp* ObjectImpFactory::deserialize( const QString& type,
                                           const QDomElement& parent ) const

@@ -35,7 +35,7 @@ static void redefinePoint( Object* mpt, const Coordinate& c, KigDocument& doc, c
 {
   ObjectFactory::instance()->redefinePoint( mpt, c, doc, w );
   mpt->calc( doc );
-};
+}
 
 ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
   : BaseMode( d ), mctor( ctor ),

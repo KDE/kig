@@ -45,7 +45,7 @@
 bool KigFilterKGeo::supportMime( const QString& mime )
 {
   return mime == "application/x-kgeo";
-};
+}
 
 bool KigFilterKGeo::load( const QString& sFrom, KigDocument& doc )
 {
@@ -70,7 +70,7 @@ struct HierarchyElement
   int id;
   std::vector<int> parents;
 };
-};
+}
 
 static void visitElem( std::vector<HierarchyElement>& ret,
                        const std::vector<HierarchyElement>& elems,
@@ -84,7 +84,7 @@ static void visitElem( std::vector<HierarchyElement>& ret,
     ret.push_back( elems[i] );
     seen[i] = true;
   };
-};
+}
 
 static std::vector<HierarchyElement> sortElems( const std::vector<HierarchyElement> elems )
 {
@@ -93,7 +93,7 @@ static std::vector<HierarchyElement> sortElems( const std::vector<HierarchyEleme
   for ( uint i = 0; i < elems.size(); ++i )
     visitElem( ret, elems, seenElems, i );
   return ret;
-};
+}
 
 // constructs a text object with text "%1", location c, and variable
 // parts given by the argument arg of obj o.
@@ -106,7 +106,7 @@ static Object* constructTextObject( const Coordinate& c, Object* o,
   propo->calc( doc );
   return fact->label( QString::fromLatin1( "%1" ), c, true,
                       Objects( propo ), doc );
-};
+}
 
 bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocument& doc )
 {

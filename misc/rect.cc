@@ -24,7 +24,7 @@ bool operator==( const Rect& r, const Rect& s )
   return ( r.bottomLeft() == s.bottomLeft()
            && r.width() == s.width()
            && r.height() == s.height() );
-};
+}
 
 kdbgstream& operator<<( kdbgstream& s, const Rect& t )
 {
@@ -34,7 +34,7 @@ kdbgstream& operator<<( kdbgstream& s, const Rect& t )
     << "top: " << t.top()
     << endl;
   return s;
-};
+}
 
 Rect::Rect( const Coordinate bottomLeft, const Coordinate topRight )
   : mBottomLeft(bottomLeft)
@@ -58,7 +58,7 @@ Rect::Rect( double xa, double ya, double width, double height )
     mheight( height )
 {
   normalize();
-};
+}
 
 Rect::Rect( const Rect& r )
   : mBottomLeft (r.mBottomLeft),
@@ -72,7 +72,7 @@ Rect::Rect()
   : mwidth(0),
     mheight(0)
 {
-};
+}
 
 void Rect::setBottomLeft( const Coordinate p )
 {
@@ -99,24 +99,24 @@ void Rect::setLeft( const double p )
   double r = right();
   mBottomLeft.x = p;
   setRight( r );
-};
+}
 
 void Rect::setRight( const double p )
 {
   mwidth = p - left();
-};
+}
 
 void Rect::setBottom( const double p )
 {
   double t = top();
   mBottomLeft.y = p;
   setTop( t );
-};
+}
 
 void Rect::setTop( const double p )
 {
   mheight = p - bottom();
-};
+}
 
 void Rect::setWidth( const double w )
 {
@@ -145,13 +145,13 @@ void Rect::normalize()
 void Rect::moveBy( const Coordinate p )
 {
   mBottomLeft += p;
-};
+}
 
 void Rect::scale( const double r )
 {
   mwidth *= r;
   mheight *= r;
-};
+}
 
 
 QRect Rect::toQRect() const
@@ -187,7 +187,7 @@ Coordinate Rect::center() const
 double Rect::left() const
 {
   return mBottomLeft.x;
-};
+}
 double Rect::right() const
 {
   return left() + mwidth;
@@ -195,12 +195,12 @@ double Rect::right() const
 double Rect::bottom() const
 {
   return mBottomLeft.y;
-};
+}
 
 double Rect::top() const
 {
   return bottom() + mheight;
-};
+}
 
 double Rect::width() const
 {
@@ -226,7 +226,7 @@ bool Rect::contains( const Coordinate& p ) const
     p.y >= bottom() &&
     p.x - left() <= width() &&
     p.y - bottom() <= height();
-};
+}
 
 bool Rect::intersects( const Rect& p ) const
 {
@@ -236,7 +236,7 @@ bool Rect::intersects( const Rect& p ) const
   if( p.bottom() < bottom() && p.top() < bottom()) return false;
   if( p.bottom() > top() && p.top() > top()) return false;
   return true;
-};
+}
 
 void Rect::setContains( Coordinate p )
 {
@@ -245,19 +245,19 @@ void Rect::setContains( Coordinate p )
   if( p.x > right() ) setRight(p.x);
   if( p.y < bottom() ) setBottom( p.y );
   if( p.y > top() ) setTop( p.y );
-};
+}
 
 Rect Rect::normalized() const
 {
   Rect t = *this;
   (void) t.normalize();
   return t;
-};
+}
 
 Rect Rect::fromQRect( const QRect& r )
 {
   return Rect( r.left(), r.top(), r.right(), r.bottom() );
-};
+}
 
 void Rect::setTopLeft( const Coordinate p )
 {
@@ -270,7 +270,7 @@ Rect operator|( const Rect& lhs, const Rect& rhs )
   Rect r( lhs );
   r |= rhs;
   return r;
-};
+}
 
 void Rect::eat( const Rect& r )
 {

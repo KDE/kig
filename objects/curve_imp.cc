@@ -30,4 +30,4 @@ const ObjectImpType* CurveImp::stype()
     I18N_NOOP( "Attach to this curve" )
     );
   return &t;
-};
+}

@@ -45,7 +45,7 @@
 static bool operator<( const QColor& a, const QColor& b )
 {
   return a.rgb() < b.rgb();
-};
+}
 
 class ExporterAction
   : public KAction
@@ -64,12 +64,12 @@ ExporterAction::ExporterAction( const KigDocument* doc, KigWidget* w,
   : KAction( exp->menuEntryName(), KShortcut(), 0, 0, parent ),
     mexp( exp ), mdoc( doc ), mw( w )
 {
-};
+}
 
 void ExporterAction::slotActivated()
 {
   mexp->run( *mdoc, *mw );
-};
+}
 
 KigExporter::~KigExporter()
 {
@@ -207,7 +207,7 @@ void XFigExportImpVisitor::mapColor( Object* obj )
             << color.name() << "\n";
     mcolormap[color] = newcolorid;
   }
-};
+}
 
 void XFigExportImpVisitor::visit( Object* obj )
 {
@@ -217,7 +217,7 @@ void XFigExportImpVisitor::visit( Object* obj )
   mcurcolorid = mcolormap[ obj->color() ];
   mcurobj = static_cast<RealObject*>( obj );
   obj->imp()->visit( this );
-};
+}
 
 void XFigExportImpVisitor::visit( const LineImp* imp )
 {
@@ -228,7 +228,7 @@ void XFigExportImpVisitor::visit( const LineImp* imp )
   if ( width == -1 ) width = 1;
 
   emitLine( a, b, width );
-};
+}
 
 void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, int width, bool vector )
 {
@@ -435,7 +435,7 @@ void XFigExportImpVisitor::visit( const SegmentImp* imp )
   if ( width == -1 ) width = 1;
 
   emitLine( a, b, width );
-};
+}
 
 void XFigExportImpVisitor::visit( const RayImp* imp )
 {

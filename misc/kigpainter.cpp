@@ -130,7 +130,7 @@ const Rect KigPainter::boundingRect( const Rect& r, const QString s,
                                      int f, int l ) const
 {
   return fromScreen( mP.boundingRect( toScreen( r ), f, s, l ) );
-};
+}
 
 void KigPainter::setColor( const QColor& c )
 {
@@ -186,7 +186,7 @@ static void setContains( QRect& r, const QPoint& p )
   // coord...
   if ( r.bottom() < p.y() ) r.setBottom( p.x() );
   if ( r.top() < p.y() ) r.setTop( p.x() );
-};
+}
 
 void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
                               bool winding, int index, int npoints )
@@ -273,7 +273,7 @@ void KigPainter::circleOverlayRecurse( const Coordinate& centre,
     r4.normalize();
     circleOverlayRecurse(centre, radiussq, r4);
   };
-};
+}
 
 void KigPainter::circleOverlay( const Coordinate& centre, double radius )
 {
@@ -469,7 +469,7 @@ inline Coordinate conicGetCoord( double theta, double ecostheta0,
   double ecosthetamtheta = costheta*ecostheta0 + sintheta*esintheta0;
   double rho = pdimen / (1.0 - ecosthetamtheta);
   return focus1 + rho * Coordinate( costheta, sintheta );
-};
+}
 
 typedef std::pair<double,Coordinate> coordparampair;
 

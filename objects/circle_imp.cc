@@ -169,7 +169,7 @@ const char* CircleImp::iconForProperty( uint which ) const
     return "text"; // polar equation
   else assert( false );
   return "";
-};
+}
 
 ObjectImp* CircleImp::property( uint which, const KigDocument& w ) const
 {
@@ -309,7 +309,7 @@ const ObjectImpType* CircleImp::stype()
     I18N_NOOP( "Attach to this circle" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* CircleImp::type() const
 {

@@ -48,7 +48,7 @@ kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
 {
   s << "x: " << t.x() << " y: " << t.y();
   return s;
-};
+}
 
 KigWidget::KigWidget( KigDocument* doc,
                       KigView* view,
@@ -72,12 +72,12 @@ KigWidget::KigWidget( KigDocument* doc,
 
   curPix.resize( size() );
   stillPix.resize( size() );
-};
+}
 
 KigWidget::~KigWidget()
 {
   mdocument->delWidget( this );
-};
+}
 
 void KigWidget::paintEvent(QPaintEvent*)
 {
@@ -92,7 +92,7 @@ void KigWidget::mousePressEvent (QMouseEvent* e)
     return mdocument->mode()->midClicked( e, this );
   if ( e->button() & Qt::RightButton )
     return mdocument->mode()->rightClicked( e, this );
-};
+}
 
 void KigWidget::mouseMoveEvent (QMouseEvent* e)
 {
@@ -103,7 +103,7 @@ void KigWidget::mouseMoveEvent (QMouseEvent* e)
   if ( e->state() & Qt::RightButton )
     return mdocument->mode()->rightMouseMoved( e, this );
   return mdocument->mode()->mouseMoved( e, this );
-};
+}
 
 void KigWidget::mouseReleaseEvent (QMouseEvent* e)
 {
@@ -113,7 +113,7 @@ void KigWidget::mouseReleaseEvent (QMouseEvent* e)
     return mdocument->mode()->midReleased( e, this );
   if ( e->state() & Qt::RightButton )
     return mdocument->mode()->rightReleased( e, this );
-};
+}
 
 void KigWidget::updateWidget( const std::vector<QRect>& overlay )
 {
@@ -134,7 +134,7 @@ void KigWidget::updateWidget( const std::vector<QRect>& overlay )
 #endif
   };
   oldOverlay = overlay;
-};
+}
 
 void KigWidget::updateEntireWidget()
 {

@@ -147,7 +147,7 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   QString xs = KGlobal::locale()->formatNumber( p.x, l );
   QString ys = KGlobal::locale()->formatNumber( p.y, l );
   return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
-};
+}
 
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
@@ -167,7 +167,7 @@ Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
     return Coordinate( x, y );
   }
   return Coordinate();
-};
+}
 
 /**
  * copied and adapted from a ( public domain ) function i found in the
@@ -196,7 +196,7 @@ static double nicenum( double x, bool round )
     else nf = 10.;
   };
   return nf * pow( 10., exp );
-};
+}
 
 void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
 {

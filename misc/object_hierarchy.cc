@@ -47,7 +47,7 @@ public:
 
 ObjectHierarchy::Node::~Node()
 {
-};
+}
 
 class PushStackNode
   : public ObjectHierarchy::Node
@@ -69,25 +69,25 @@ public:
 void PushStackNode::apply( Objects& stack, int loc ) const
 {
   stack[loc] = new DataObject( mimp->copy() );
-};
+}
 
-int PushStackNode::id() const { return ID_PushStack; };
+int PushStackNode::id() const { return ID_PushStack; }
 
 PushStackNode::~PushStackNode()
 {
   delete mimp;
-};
+}
 
 ObjectHierarchy::Node* PushStackNode::copy() const
 {
   return new PushStackNode( mimp->copy() );
-};
+}
 
 void PushStackNode::apply( std::vector<const ObjectImp*>& stack,
                            int loc, const KigDocument& ) const
 {
   stack[loc] = mimp->copy();
-};
+}
 
 class ApplyTypeNode
   : public ObjectHierarchy::Node
@@ -109,7 +109,7 @@ public:
   void apply( Objects& stack, int loc ) const;
 };
 
-int ApplyTypeNode::id() const { return ID_ApplyType; };
+int ApplyTypeNode::id() const { return ID_ApplyType; }
 
 ApplyTypeNode::~ApplyTypeNode()
 {
@@ -118,7 +118,7 @@ ApplyTypeNode::~ApplyTypeNode()
 ObjectHierarchy::Node* ApplyTypeNode::copy() const
 {
   return new ApplyTypeNode( mtype, mparents );
-};
+}
 
 void ApplyTypeNode::apply( Objects& stack, int loc ) const
 {
@@ -126,7 +126,7 @@ void ApplyTypeNode::apply( Objects& stack, int loc ) const
   for ( uint i = 0; i < mparents.size(); ++i )
     parents.push_back( stack[ mparents[i] ] );
   stack[loc] = new RealObject( mtype, parents );
-};
+}
 
 void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
                            int loc, const KigDocument& doc ) const
@@ -137,7 +137,7 @@ void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
     args.push_back( stack[mparents[i]] );
   };
   stack[loc] = mtype->calc( args, doc );
-};
+}
 
 class FetchPropertyNode
   : public ObjectHierarchy::Node
@@ -166,17 +166,17 @@ public:
 
 FetchPropertyNode::~FetchPropertyNode()
 {
-};
+}
 
 ObjectHierarchy::Node* FetchPropertyNode::copy() const
 {
   return new FetchPropertyNode( mparent, mname, mpropid );
-};
+}
 
 int FetchPropertyNode::id() const
 {
   return ID_FetchProp;
-};
+}
 
 void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
                                int loc, const KigDocument& d ) const
@@ -185,14 +185,14 @@ void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
   if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
   assert( mpropid != -1 );
   stack[loc] = stack[mparent]->property( mpropid, d );
-};
+}
 
 void FetchPropertyNode::apply( Objects& stack, int loc ) const
 {
   if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
   assert( mpropid != -1 );
   stack[loc] = new PropertyObject( stack[mparent], mpropid );
-};
+}
 
 std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument& doc ) const
 {
@@ -548,7 +548,7 @@ bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs )
       return false;
 
   return true;
-};
+}
 
 bool ObjectHierarchy::resultDoesNotDependOnGiven() const
 {
@@ -571,7 +571,7 @@ const ObjectImpType* lowermost( const ObjectImpType* a, const ObjectImpType* b )
   if ( a->inherits( b ) ) return a;
   assert( b->inherits( a ) );
   return b;
-};
+}
 
 // this function is part of the visit procedure really.  It is
 // factored out, because it recurses for cache ObjectImp's.  What this

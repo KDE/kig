@@ -328,7 +328,7 @@ const ObjectImpType* ConicImp::stype()
     I18N_NOOP( "Attach to this conic" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* ConicImp::type() const
 {

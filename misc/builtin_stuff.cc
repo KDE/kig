@@ -377,4 +377,4 @@ void setupBuiltinStuff()
   };
 
   done = true;
-};
+}

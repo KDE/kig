@@ -71,7 +71,7 @@ Objects calcPath( const Objects& os )
   };
   std::reverse( ret.begin(), ret.end() );
   return ret;
-};
+}
 
 bool addBranch( const Objects& o, const Object* to, Objects& ret )
 {
@@ -92,7 +92,7 @@ bool addBranch( const Objects& o, const Object* to, Objects& ret )
     };
   };
   return rb;
-};
+}
 
 Objects calcPath( const Objects& from, const Object* to )
 {
@@ -110,7 +110,7 @@ Objects calcPath( const Objects& from, const Object* to )
   };
   std::reverse( ret.begin(), ret.end() );
   return ret;
-};
+}
 
 static void addNonCache( Object* o, Objects& ret )
 {
@@ -122,7 +122,7 @@ static void addNonCache( Object* o, Objects& ret )
     for ( uint i = 0; i < parents.size(); ++i )
       addNonCache( parents[i], ret );
   };
-};
+}
 
 static bool visit( const Object* o, const Objects& from, Objects& ret )
 {
@@ -151,14 +151,14 @@ static bool visit( const Object* o, const Objects& from, Objects& ret )
   };
 
   return somedepend;
-};
+}
 
 Objects sideOfTreePath( const Objects& from, const Object* to )
 {
   Objects ret;
   visit( to, from, ret );
   return ret;
-};
+}
 
 Objects getAllParents( const Objects& objs )
 {
@@ -178,4 +178,4 @@ Objects getAllParents( const Objects& objs )
     end = ret.end();
   };
   return ret;
-};
+}

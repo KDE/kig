@@ -478,7 +478,7 @@ const ObjectImpType* AngleImp::stype()
     I18N_NOOP( "Attach to this angle" )
     );
   return &t;
-};
+}
 const ObjectImpType* VectorImp::stype()
 {
   static const ObjectImpType t(
@@ -491,7 +491,7 @@ const ObjectImpType* VectorImp::stype()
     I18N_NOOP( "Attach to this vector" )
     );
   return &t;
-};
+}
 const ObjectImpType* ArcImp::stype()
 {
   static const ObjectImpType t(
@@ -504,7 +504,7 @@ const ObjectImpType* ArcImp::stype()
     I18N_NOOP( "Attach to this arc" )
     );
   return &t;
-};
+}
 
 const ObjectImpType* AngleImp::type() const
 {

@@ -90,8 +90,8 @@ void LinksLabel::addLink( const QString& s, LinksLabelEditBuf& buf )
 }
 
 namespace {
-  void deleteObj( QObject* o ) { delete o; };
-};
+  void deleteObj( QObject* o ) { delete o; }
+}
 
 void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
 {
