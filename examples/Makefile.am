@@ -1,0 +1,1 @@
+noinst_DATA=locustest.kig locustest2.kig macrotest.kig conic5pt.kig test.kgeo
