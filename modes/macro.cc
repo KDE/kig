@@ -110,7 +110,17 @@ void DefineMacroMode::namePageEntered()
                               "Please press Back, and construct the objects "
                               "in the correct order..." ) );
     mwizard->back();
-  };
+  }
+  else if( !hier.allGivenObjectsUsed() )
+  {
+    KMessageBox::sorry( mwizard,
+                        i18n( "One of the given objects is not used in the "
+                              "calculation of the resultant objects.  This "
+                              "probably means you are expecting Kig to do "
+                              "something impossible.  Please check the "
+                              "macro and try again." ) );
+    mwizard->back();
+  }
 
   static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen( std::vector<ObjectHolder*>() );
 

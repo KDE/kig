@@ -79,7 +79,9 @@ public:
   uint numberOfResults() const { return mnumberofresults; };
 
   const ObjectImpType* idOfLastResult() const;
+
   bool resultDoesNotDependOnGiven() const;
+  bool allGivenObjectsUsed() const;
 
   ObjectHierarchy transformFinalObject( const Transformation& t ) const;
 };

@@ -44,7 +44,19 @@ public:
 
   virtual void apply( std::vector<ObjectCalcer*>& stack, int loc ) const = 0;
 
+  // this function is used to check whether the final objects depend
+  // on the given objects.  The dependsstack contains a set of
+  // booleans telling which parts of the hierarchy certainly depend on
+  // the given objects.  In this function, the node should check
+  // whether any of its parents have true set, and if so, set its own
+  // value to true.
   virtual void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const = 0;
+  // this function is used to check whether the given objects are all
+  // used by one or more of the final objects.  The usedstack contains
+  // a set of booleans telling which parts of the hierarchy are
+  // certainly ancestors of the final objects.  In this function, the
+  // node should set all of its parents' booleans to true.
+  virtual void checkArgumentsUsed( std::vector<bool>& usedstack ) const = 0;
 };
 
 ObjectHierarchy::Node::~Node()
@@ -68,7 +80,12 @@ public:
   void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
 
   void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
+  void checkArgumentsUsed( std::vector<bool>& usedstack ) const;
 };
+
+void PushStackNode::checkArgumentsUsed( std::vector<bool>& ) const
+{
+}
 
 void PushStackNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
 {
@@ -118,9 +135,18 @@ public:
   void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
 
   void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
+  void checkArgumentsUsed( std::vector<bool>& usedstack ) const;
 };
 
 int ApplyTypeNode::id() const { return ID_ApplyType; }
+
+void ApplyTypeNode::checkArgumentsUsed( std::vector<bool>& usedstack ) const
+{
+  for ( uint i = 0; i < mparents.size(); ++i )
+  {
+    usedstack[mparents[i]] = true;
+  }
+}
 
 void ApplyTypeNode::checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const
 {
@@ -176,6 +202,7 @@ public:
   Node* copy() const;
 
   void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
+  void checkArgumentsUsed( std::vector<bool>& usedstack ) const;
   int parent() const { return mparent; };
   const QCString& propinternalname() const { return mname; };
 
@@ -187,6 +214,11 @@ public:
 
 FetchPropertyNode::~FetchPropertyNode()
 {
+}
+
+void FetchPropertyNode::checkArgumentsUsed( std::vector<bool>& usedstack ) const
+{
+  usedstack[mparent] = true;
 }
 
 void FetchPropertyNode::checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const
@@ -678,5 +710,18 @@ ObjectHierarchy::ObjectHierarchy( const ObjectCalcer* from, const ObjectCalcer* 
   std::vector<ObjectCalcer*> tov;
   tov.push_back( const_cast<ObjectCalcer*>( to ) );
   init( fromv, tov );
+}
+
+bool ObjectHierarchy::allGivenObjectsUsed() const
+{
+  std::vector<bool> usedstack( mnodes.size() + mnumberofargs, false );
+  for ( uint i = mnodes.size() - mnumberofresults; i < mnodes.size(); ++i )
+    usedstack[i + mnumberofargs] = true;
+  for ( int i = mnodes.size() - 1; i >= 0; --i )
+    if ( usedstack[i + mnumberofargs] )
+      mnodes[i]->checkArgumentsUsed( usedstack );
+  for ( uint i = 0; i < mnumberofargs; ++i )
+    if ( ! usedstack[i] ) return false;
+  return true;
 }
 

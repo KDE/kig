@@ -1,5 +1,8 @@
 2004-03-09  Dominique Devriese  <devriese@kde.org>
 
+	* Fix the macro system to reject macro's where not all of the
+	given objects are used.
+
 	* Fix the macro system to properly check whether the final objects
 	depend on the given objects, and fix a problem with the wrong
 	object being selected as the final object in some rare cases.
