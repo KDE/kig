@@ -14,11 +14,11 @@ mkdir $TEMPDIR
 cd $TEMPDIR
 
 cd $TEMPDIR
-~domi/src/cvs2dist \
+~domi/src/kdesdk/scripts/cvs2dist \
 	--name "$NAME" \
 	--version "$VERSION" \
 	--log="$TEMPDIR/log" \
-	~/src/kdeedu kig
+	~/src/package/kdeedu kig
 
 cd $OLDPWD
 
