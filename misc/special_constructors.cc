@@ -252,7 +252,7 @@ void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const Objects
   };
 }
 
-Objects ConicConicIntersectionConstructor::build( const Objects& os, KigDocument&,
+Objects ConicConicIntersectionConstructor::build( const Objects& os, KigDocument& doc,
                                                   KigWidget& ) const
 {
   assert( os.size() == 2 );
@@ -270,6 +270,7 @@ Objects ConicConicIntersectionConstructor::build( const Objects& os, KigDocument
     RealObject* radical =
       new RealObject( ConicRadicalType::instance(), parents );
     radical->setShown( false );
+    radical->calc( doc );
     ret.push_back( radical );
     for ( int wi = -1; wi < 2; wi += 2 )
     {
