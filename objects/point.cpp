@@ -146,7 +146,7 @@ void Point::addActions( NormalModePopupObjects& p )
   p.addPopupAction( 10, i18n( "Set size..." ), pop );
 }
 
-void Point::doPopupAction( int popupid, int actionid, KigDocument*, KigWidget* w, NormalMode* )
+void Point::doPopupAction( int popupid, int actionid, KigDocument*, KigWidget* w, NormalMode*, const Coordinate& )
 {
   if ( popupid == 10 )
   {

@@ -310,10 +310,11 @@ public:
    * This is a list of object-specific actions that appears when a
    * popup menu for a single object is shown.  An example is
    * NormalPoint that has a "redefine" action...
+   * cp is the position where the popup menu appeared on screen..
    */
   virtual void addActions( NormalModePopupObjects& );
-  virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
-  virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m );
+  virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& cp );
+  virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m, const Coordinate& cp );
 
 protected:
   QColor mColor;

@@ -94,7 +94,8 @@ class Conic
    */
   int conicType() const;
   QString type() const;
-
+  QString cartesianEquationString() const;
+  QString polarEquationString() const;
   ConicCartesianEquationData cartesianEquationData() const;
   ConicPolarEquationData polarEquationData() const;
   Coordinate focus1() const;

@@ -39,7 +39,7 @@ class NormalModePopupObjects
 {
   Q_OBJECT
 
-  QPoint mp;
+  QPoint mplc;
   KigDocument* mdoc;
   KigWidget* mview;
   Objects mobjs;

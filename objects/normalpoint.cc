@@ -545,7 +545,7 @@ void NormalPoint::addActions( NormalModePopupObjects& popup )
   popup.addNormalAction( NormalModePopupObjects::virtualActionsOffset + 10, i18n( "Redefine this point..." ) );
 }
 
-void NormalPoint::doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m )
+void NormalPoint::doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& )
 {
   assert( which == NormalModePopupObjects::virtualActionsOffset + 10 );
   d->setMode( new NormalPointRedefineMode( this, d, v, m ) );

@@ -35,7 +35,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument* doc,
                                                 KigWidget* view,
                                                 NormalMode* mode,
                                                 const Objects& objs )
-  : mdoc( doc ), mview( view ), mobjs( objs ), mmode( mode )
+  : mplc( QCursor::pos() ), mdoc( doc ), mview( view ), mobjs( objs ), mmode( mode )
 {
   assert ( ! objs.empty() );
   bool single = objs.size() == 1;
@@ -88,7 +88,7 @@ void NormalModePopupObjects::doAction( int i )
     assert( (uint) i >= virtualActionsOffset );
     assert( mobjs.size() == 1 );
     Object* o = mobjs[0];
-    o->doNormalAction( i, mdoc, mview, mmode );
+    o->doNormalAction( i, mdoc, mview, mmode, mview->fromScreen( mview->mapFromGlobal( mplc ) ) );
   }
   };
   mmode->clearSelection();
@@ -267,5 +267,5 @@ void NormalModePopupObjects::doPopup( int id )
   int popupid = mpopupmap[qp];
   assert( mobjs.size() == 1 );
   Object* o = mobjs[0];
-  o->doPopupAction( popupid, id, mdoc, mview, mmode );
+  o->doPopupAction( popupid, id, mdoc, mview, mmode, mview->fromScreen( mview->mapFromGlobal( mplc ) ) );
 }

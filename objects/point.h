@@ -53,7 +53,7 @@ public:
   virtual void setParams ( const prop_map& );
 
   virtual void addActions( NormalModePopupObjects& );
-  virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m );
+  virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m, const Coordinate& );
 
   virtual const uint numberOfProperties() const;
   virtual const Property property( uint which ) const;

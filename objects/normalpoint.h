@@ -99,7 +99,7 @@ public:
   static KigMode* sConstructMode( Type*, KigDocument*, NormalMode* );
 
   virtual void addActions( NormalModePopupObjects& );
-  virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
+  virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& cp );
 
   virtual Objects getParents() const;
   virtual void calc();

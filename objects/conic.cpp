@@ -924,7 +924,7 @@ Coordinate Conic::focus2() const
 
 const uint Conic::numberOfProperties() const
 {
-  return Curve::numberOfProperties() + 3;
+  return Curve::numberOfProperties() + 4;
 }
 
 const Property Conic::property( uint which ) const
@@ -938,6 +938,8 @@ const Property Conic::property( uint which ) const
     return Property( focus1() );
   else if ( which == Curve::numberOfProperties() + pnum++ )
     return Property( focus2() );
+  else if ( which == Curve::numberOfProperties() + pnum++ )
+    return Property( cartesianEquationString() );
   else assert( false );
 }
 
@@ -947,6 +949,21 @@ const QCStringList Conic::properties() const
   l << I18N_NOOP( "Type" );
   l << I18N_NOOP( "First focus" );
   l << I18N_NOOP( "Second focus" );
+  l << I18N_NOOP( "Cartesian equation" );
+  assert( l.size() == Conic::numberOfProperties() );
   return l;
+}
+
+QString Conic::cartesianEquationString() const
+{
+  QString ret = i18n( "%1 x^2 + %2 y^2 + %3 xy + %4 x + %5 y + %6" );
+  ConicCartesianEquationData data = cartesianEquationData();
+  ret = ret.arg( data.coeffs[0], 0, 'g', 3 );
+  ret = ret.arg( data.coeffs[1], 0, 'g', 3 );
+  ret = ret.arg( data.coeffs[2], 0, 'g', 3 );
+  ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
+  ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
+  ret = ret.arg( data.coeffs[5], 0, 'g', 3 );
+  return ret;
 }
 

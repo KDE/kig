@@ -21,6 +21,8 @@
 #include "object.h"
 
 #include "coordproppoint.h"
+#include "label.h"
+#include "property.h"
 
 #include "../misc/types.h"
 #include "../misc/type.h"
@@ -32,6 +34,7 @@
 
 #include <klocale.h>
 #include <qpopupmenu.h>
+#include <qcursor.h>
 
 myvector<Type*> Object::sbuiltintypes;
 myvector<Type*> Object::susertypes;
@@ -240,23 +243,47 @@ void Object::addActions( NormalModePopupObjects& m )
   };
 
   m.addPopupAction( 3849, i18n( "Construct the ..." ), pm );
+
+  pm = new QPopupMenu( &m, "construct_textlabels_menu" );
+  for ( uint i = 0; i < numberOfProperties(); ++i )
+  {
+    Property p = property( i );
+    QString str = i18n( s[i] );
+    uint id = pm->insertItem( str, i );
+    assert( i == id );
+  };
+  m.addPopupAction( 3850, i18n( "Show the ..." ), pm );
+
   return;
 }
 
-void Object::doNormalAction( int, KigDocument*, KigWidget*, NormalMode* )
+void Object::doNormalAction( int, KigDocument*, KigWidget*, NormalMode*, const Coordinate& )
 {
   return;
 }
 
-void Object::doPopupAction( int popupid, int actionid, KigDocument* doc, KigWidget* w, NormalMode*)
+void Object::doPopupAction( int popupid, int actionid, KigDocument* doc, KigWidget* w, NormalMode*, const Coordinate& cp )
 {
-  assert( popupid == 3849 );
-  uint pid = static_cast<uint>( actionid );
-  assert( property( pid ).type() == Property::Coord );
-  Object* o = new CoordinatePropertyPoint( this, pid );
-  o->calc();
-  doc->addObject( o );
-  w->redrawScreen();
+  if( popupid == 3849 )
+  {
+    uint pid = static_cast<uint>( actionid );
+    assert( property( pid ).type() == Property::Coord );
+    Object* o = new CoordinatePropertyPoint( this, pid );
+    o->calc();
+    doc->addObject( o );
+    w->redrawScreen();
+  }
+  else if ( popupid == 3850 )
+  {
+    uint pid = static_cast<uint>( actionid );
+    TextLabel::propvect props;
+    props.push_back( TextLabelProperty( this, pid ) );
+    Object* o = new TextLabel( QString::fromLatin1( "%1" ), cp, props );
+    o->calcForWidget( *w );
+    doc->addObject( o );
+    w->redrawScreen();
+  }
+  else assert( false );
 }
 
 const QCStringList Object::properties() const
