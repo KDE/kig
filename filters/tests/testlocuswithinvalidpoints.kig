@@ -1,0 +1,177 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="0.7.1" >
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Hierarchy>
+  <Data type="int" id="1" >0</Data>
+  <Data type="hierarchy" id="2" >
+   <input requirement="point" id="1" />
+   <input requirement="double" id="2" />
+   <input requirement="circle" id="3" />
+   <input requirement="int" id="4" />
+   <intermediate action="calc" type="CircleBPR" id="5" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="calc" type="CircleCircleIntersection" id="6" >
+    <arg>3</arg>
+    <arg>5</arg>
+    <arg>4</arg>
+   </intermediate>
+   <intermediate action="calc" type="SegmentAB" id="7" >
+    <arg>6</arg>
+    <arg>1</arg>
+   </intermediate>
+   <result action="fetch-property" property="mid-point" id="8" >
+    <arg>7</arg>
+   </result>
+  </Data>
+  <Data type="double" id="3" >-1.40273</Data>
+  <Data type="double" id="4" >-0.608162</Data>
+  <Data type="int" id="5" >1</Data>
+  <Data type="int" id="6" >0</Data>
+  <Data type="double" id="7" >1.74813</Data>
+  <Data type="double" id="8" >-8.26962</Data>
+  <Data type="double" id="9" >-2.18736</Data>
+  <Data type="double" id="10" >-9.17811</Data>
+  <Data type="double" id="11" >-8.44019</Data>
+  <Data type="double" id="12" >-9.66304</Data>
+  <Data type="string" id="13" >Q</Data>
+  <Data type="double" id="14" >3.24779</Data>
+  <Data type="double" id="15" >-0.401053</Data>
+  <Data type="double" id="16" >3.41264</Data>
+  <Data type="double" id="17" >-0.327406</Data>
+  <Data type="double" id="18" >2.46458</Data>
+  <Data type="double" id="19" >-9.94648</Data>
+  <Data type="string" id="20" >P</Data>
+  <Data type="double" id="21" >-0.816147</Data>
+  <Data type="int" id="22" >-1</Data>
+  <Data type="double" id="23" >-5.54805</Data>
+  <Data type="double" id="24" >0.177996</Data>
+  <Object type="FixedPoint" id="25" >
+   <Parent id="8" />
+   <Parent id="7" />
+  </Object>
+  <Object type="FixedPoint" id="26" >
+   <Parent id="12" />
+   <Parent id="14" />
+  </Object>
+  <Object type="FixedPoint" id="27" >
+   <Parent id="10" />
+   <Parent id="15" />
+  </Object>
+  <Object type="FixedPoint" id="28" >
+   <Parent id="11" />
+   <Parent id="16" />
+  </Object>
+  <Object type="FixedPoint" id="29" >
+   <Parent id="4" />
+   <Parent id="18" />
+  </Object>
+  <Object type="FixedPoint" id="30" >
+   <Parent id="19" />
+   <Parent id="9" />
+  </Object>
+  <Object type="FixedPoint" id="31" >
+   <Parent id="17" />
+   <Parent id="21" />
+  </Object>
+  <Object type="FixedPoint" id="32" >
+   <Parent id="23" />
+   <Parent id="3" />
+  </Object>
+  <Object type="SegmentAB" id="33" >
+   <Parent id="27" />
+   <Parent id="25" />
+  </Object>
+  <Object type="SegmentAB" id="34" >
+   <Parent id="26" />
+   <Parent id="28" />
+  </Object>
+  <Object type="SegmentAB" id="35" >
+   <Parent id="30" />
+   <Parent id="32" />
+  </Object>
+  <Property which="length" id="36" >
+   <Parent id="33" />
+  </Property>
+  <Property which="length" id="37" >
+   <Parent id="34" />
+  </Property>
+  <Property which="length" id="38" >
+   <Parent id="35" />
+  </Property>
+  <Object type="CircleBPR" id="39" >
+   <Parent id="29" />
+   <Parent id="36" />
+  </Object>
+  <Object type="CircleBPR" id="40" >
+   <Parent id="31" />
+   <Parent id="37" />
+  </Object>
+  <Object type="ConstrainedPoint" id="41" >
+   <Parent id="24" />
+   <Parent id="40" />
+  </Object>
+  <Object type="Locus" id="42" >
+   <Parent id="2" />
+   <Parent id="40" />
+   <Parent id="38" />
+   <Parent id="39" />
+   <Parent id="5" />
+  </Object>
+  <Object type="CircleBPR" id="43" >
+   <Parent id="41" />
+   <Parent id="38" />
+  </Object>
+  <Object type="Label" id="44" >
+   <Parent id="1" />
+   <Parent id="41" />
+   <Parent id="20" />
+  </Object>
+  <Object type="CircleCircleIntersection" id="45" >
+   <Parent id="39" />
+   <Parent id="43" />
+   <Parent id="22" />
+  </Object>
+  <Object type="CircleCircleIntersection" id="46" >
+   <Parent id="39" />
+   <Parent id="43" />
+   <Parent id="5" />
+  </Object>
+  <Object type="SegmentAB" id="47" >
+   <Parent id="46" />
+   <Parent id="41" />
+  </Object>
+  <Property which="mid-point" id="48" >
+   <Parent id="47" />
+  </Property>
+  <Object type="Label" id="49" >
+   <Parent id="6" />
+   <Parent id="48" />
+   <Parent id="13" />
+  </Object>
+ </Hierarchy>
+ <View>
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="44" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="26" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="42" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="43" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="33" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="30" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="46" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="49" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="41" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="31" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="27" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="35" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="28" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="40" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="32" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="39" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="45" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="25" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="29" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="48" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="34" />
+ </View>
+</KigDocument>

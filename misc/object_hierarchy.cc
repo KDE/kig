@@ -178,9 +178,7 @@ void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
 {
   Args args;
   for ( uint i = 0; i < mparents.size(); ++i )
-  {
     args.push_back( stack[mparents[i]] );
-  };
   args = mtype->sortArgs( args );
   stack[loc] = mtype->calc( args, doc );
 }
@@ -241,8 +239,10 @@ void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
 {
   assert( stack[mparent] );
   if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
-  assert( mpropid != -1 );
-  stack[loc] = stack[mparent]->property( mpropid, d );
+  if ( mpropid != -1 )
+    stack[loc] = stack[mparent]->property( mpropid, d );
+  else
+    stack[loc] = new InvalidImp();
 }
 
 void FetchPropertyNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
