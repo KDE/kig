@@ -1,0 +1,13 @@
+Only in python/converter: as_to_python_function.hpp~
+diff -u -r python-old/object/make_ptr_instance.hpp python/object/make_ptr_instance.hpp
+--- python-old/object/make_ptr_instance.hpp	2003-04-22 14:35:28.000000000 +0200
++++ python/object/make_ptr_instance.hpp	2003-06-28 15:09:05.000000000 +0200
+@@ -34,7 +34,7 @@
+     template <class U>
+     static inline PyTypeObject* get_class_object_impl(U const volatile* p)
+     {
+-        PyTypeObject* derived = get_derived_class_object(is_polymorphic<U>::type(), p);
++        PyTypeObject* derived = get_derived_class_object(typename is_polymorphic<U>::type(), p);
+         if (derived)
+             return derived;
+         return converter::registered<T>::converters.get_class_object();

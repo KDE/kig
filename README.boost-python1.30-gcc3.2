@@ -1,0 +1,19 @@
+There is a bug in Boost.Python version 1.30 when compiled with GCC
+3.2.  This causes an error on compiling.  It is a known problem, and
+due to the stricter typename checking in more recent GCC versions.
+The new Boost.Python version will contain a fix for this problem, but
+it might take some more months for this version to become available,
+and some distributions ( including Debian, not including Red Hat ( at
+this time, 22-9-2003, at least ) ).  In the mean time, I have included
+a patch to the boost.python headers in the Kig distribution that fixes
+this problem.  It is called boost-python1.30-gcc3.2.patch, and should
+be applied in the following way.
+
+Open a console window, and go to the directory containing the
+Boost.Python headers.  This will most likely be called something like
+"/usr/include/boost/python/".  Then execute the following commands (
+before giving these commands, replace "/dir/to/kig/distribution/" by
+the directory where you put the downloaded kig distribution ):
+
+cd object
+patch make_ptr_instance.hpp < /dir/to/kig/distribution/boost-python1.30-gcc3.2.patch
