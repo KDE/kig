@@ -29,7 +29,7 @@
 #include <algorithm>
 
 #ifdef HAVE_IEEEFP_H
-#include <ieeeefp.h>
+#include <ieeefp.h>
 #endif
 
 ConicCartesianData::ConicCartesianData(
