@@ -98,7 +98,8 @@ void MacroObjectOne::calc( const ScreenInfo& r )
           ( *i )->delChild( *j );
 
       for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
-        (*i)->setShown(false);
+        if ( ! arguments.contains( *i ) )
+          (*i)->setShown(false);
 
       constructed = true;
     };

@@ -46,9 +46,9 @@ void Locus::draw(KigPainter& p, bool ss) const
     {
       p.setPen( QPen( selected && ss ? Qt::red : mColor ) );
       for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
-	{
+      {
 	  p.drawPoint( i->pt );
-	};
+      };
     }
   else
   {
@@ -181,15 +181,6 @@ void Locus::calcPointLocus( const ScreenInfo& r )
   pts.clear();
   pts.reserve( numberOfSamples );
   double oldP = cp->constrainedImp()->getP();
-  // TODO: improve (cf. KSeg: choose which samples we want...)
-//   double period = double(1)/numberOfSamples;
-//   for (double i = 0; i <= 1; i += period)
-//     {
-//       cp->setP(i);
-//       cp->calc();
-//       hierarchy->calc();
-//       objs.push_back(obj->copy());
-//     };
   CPts::iterator b = addPoint( 0, r );
   CPts::iterator e = addPoint( 1, r );
   int i = 2;
