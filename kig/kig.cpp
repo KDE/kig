@@ -40,6 +40,8 @@
 Kig::Kig()
   : KParts::MainWindow( 0L, "Kig" ), m_part( 0 )
 {
+  // setting the configation file
+  config = new KConfig( "kigrc" );
   // set the shell's ui resource file
   setXMLFile("kigui.rc");
   // then, setup our actions
@@ -90,7 +92,6 @@ Kig::Kig()
 
 Kig::~Kig()
 {
-  KConfig* config = new KConfig("kigrc");
   m_recentFilesAction->saveEntries(config);
   delete config;
 }
@@ -111,9 +112,7 @@ void Kig::setupActions()
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
   m_recentFilesAction = KStdAction::openRecent(this, SLOT(openURL(const KURL&)), actionCollection());
-  KConfig* config = new KConfig("kigrc");
   m_recentFilesAction->loadEntries(config);
-  delete config;
 
 #if KDE_IS_VERSION( 3, 2, 90 )
   KStdAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );

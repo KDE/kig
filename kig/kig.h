@@ -144,6 +144,8 @@ class Kig : public KParts::MainWindow
 //#endif
   KRecentFilesAction *m_recentFilesAction;
 
+  KConfig* config;
+
   static bool kimageioRegistered;
 };
 
