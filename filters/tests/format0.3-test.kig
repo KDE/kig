@@ -1,0 +1,116 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="0.3.0" >
+<ObjectHierarchy>
+<HierarchyElement given="false" typeName="NormalPoint" id="1" final="true" >
+<param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-8.28</param>
+   <param name="y" >3.48</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="2" final="true" >
+<param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-1.76</param>
+   <param name="y" >-5.08</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="3" final="true" >
+<param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-1.6</param>
+   <param name="y" >2.52</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="4" final="true" >
+<param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-4.48</param>
+   <param name="y" >7.88</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="5" final="true" >
+<parent id="1" />
+   <parent id="2" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LinePerpend" id="6" final="true" >
+<parent id="5" />
+   <parent id="2" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >false</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LinePerpend" id="7" final="true" >
+<parent id="5" />
+   <parent id="3" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="8" final="true" >
+<parent id="4" />
+   <parent id="3" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="IntersectionPoint" id="9" final="true" >
+<parent id="8" />
+   <parent id="6" />
+   <param name="color" >#0000ff</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="10" final="true" >
+<parent id="7" />
+   <param name="color" >#0000ff</param>
+   <param name="implementation-type" >Constrained</param>
+   <param name="param" >0.153824</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="CircleBCP" id="11" final="true" >
+<parent id="3" />
+   <parent id="10" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="12" final="true" >
+<parent id="4" />
+   <parent id="10" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="IntersectionPoint" id="13" final="true" >
+<parent id="12" />
+   <parent id="6" />
+   <param name="color" >#0000ff</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="Vector" id="14" final="true" >
+<parent id="9" />
+   <parent id="13" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="TranslatedPoint" id="15" final="true" >
+<parent id="2" />
+   <parent id="14" />
+   <param name="color" >#0000ff</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineParallel" id="16" final="true" >
+<parent id="5" />
+   <parent id="15" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="CircleLineIntersectionPoint" id="17" final="true" >
+<parent id="11" />
+   <parent id="16" />
+   <param name="circlelineintersect-side" >first</param>
+   <param name="color" >#0000ff</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="CircleLineIntersectionPoint" id="18" final="true" >
+<parent id="11" />
+   <parent id="16" />
+   <param name="circlelineintersect-side" >second</param>
+   <param name="color" >#0000ff</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>  </HierarchyElement>
+  <HierarchyElement given="false" typeName="Locus" id="19" final="true" >
+<parent id="10" />
+   <parent id="18" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>  </HierarchyElement> </ObjectHierarchy></KigDocument>
+
