@@ -1,3 +1,11 @@
+2004-02-14  Dominique Devriese  <devriese@kde.org>
+
+	* Fix a bug waiting to pop up in construct_mode.cc, where you
+	select the same object twice.
+
+	* Add documentation about the locus and textlabel design to the
+	DESIGN document.
+
 2004-02-10  Dominique Devriese  <devriese@kde.org>
 
 	* Fix a bug which caused Kig to crash on moving a text label by

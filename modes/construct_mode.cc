@@ -121,7 +121,7 @@ void ConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoi
   if ( ! os.empty() )
   {
     alreadyselected = std::find( mparents.begin(), mparents.end(), os.front() ) != mparents.end();
-    args.push_back( os.front()->calcer() );
+    if ( ! alreadyselected ) args.push_back( os.front()->calcer() );
   }
   if ( !os.empty() && ! alreadyselected && mctor->wantArgs( args, mdoc, w ) )
   {
