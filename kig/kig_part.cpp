@@ -219,7 +219,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<MirrorPoint> );
     Object::addBuiltinType( new TStdType<Locus> );
     Object::addBuiltinType( new TStdType<Vector> );
-    Object::addBuiltinType( new TStdType<Ray> );
+    Object::addBuiltinType( new TStdType<RayAB> );
     Object::addBuiltinType( new TStdType<Angle> );
     Object::addBuiltinType( new TStdType<LineDirectrix> );
     Object::addBuiltinType( new TStdType<LinePolar> );

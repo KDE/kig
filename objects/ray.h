@@ -28,15 +28,38 @@ class Ray
 {
   typedef AbstractLine Parent;
 public:
-  Ray( const Objects& os );
+  Ray() {};
   Ray( const Ray& s );
-  ~Ray();
+  ~Ray() {};
 
   bool isa( int type ) const;
 
   // some type information
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();
+
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
+  void draw ( KigPainter& p, bool showSelection ) const;
+
+  bool inRect (const Rect&) const;
+
+  Coordinate getPoint (double param) const;
+  double getParam (const Coordinate&) const;
+
+  const Coordinate p1() const;
+  const Coordinate p2() const;
+protected:
+  Coordinate mpa, mpb;
+};
+
+class RayAB
+  : public Ray
+{
+public:
+  RayAB( const Objects& os );
+  RayAB( const RayAB& s );
+  ~RayAB();
+
   const QCString vFullTypeName() const;
   static QCString sFullTypeName();
   const QString vDescriptiveName() const;
@@ -49,33 +72,22 @@ public:
   static const int sShortCut();
   static const char* sActionName();
 
-  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
-  void draw ( KigPainter& p, bool showSelection ) const;
-
-  bool inRect (const Rect&) const;
-
   // arguments
   static void sDrawPrelim ( KigPainter&, const Objects& o );
   static Object::WantArgsResult sWantArgs ( const Objects& os );
   static QString sUseText( const Objects& os, const Object* o );
-
-  Objects getParents() const;
 
   // moving
   void startMove(const Coordinate&, const ScreenInfo& si );
   void moveTo(const Coordinate&);
   void stopMove();
 
+  Objects getParents() const;
+
   void calc();
 
-  Coordinate getPoint (double param) const;
-  double getParam (const Coordinate&) const;
-
-  const Coordinate p1() const;
-  const Coordinate p2() const;
 protected:
-  Point* mpa, *mpb;
+  Point *pt1, *pt2;
   Coordinate pwwsm; // point where we started moving
 };
-
 #endif

@@ -30,47 +30,48 @@
 #include <qpen.h>
 #include <math.h>
 
-Ray::Ray( const Objects& os )
-  : mpa( 0 ), mpb( 0 )
+RayAB::RayAB( const Objects& os )
+  : pt1( 0 ), pt2( 0 )
 {
   assert( os.size() == 2 );
-  mpa = os[0]->toPoint();
-  mpb = os[1]->toPoint();
-  assert( mpa && mpb );
-  mpa->addChild( this );
-  mpb->addChild( this );
+  pt1 = os[0]->toPoint();
+  pt2 = os[1]->toPoint();
+  assert( pt1 && pt2 );
+  pt1->addChild( this );
+  pt2->addChild( this );
 }
 
-Ray::Ray(const Ray& s)
-  : AbstractLine( s ), mpa( s.mpa ), mpb( s.mpb )
+RayAB::RayAB(const RayAB& s)
+  : Ray( s ), pt1( s.pt1 ), pt2( s.pt2 )
 {
-  mpa->addChild(this);
-  mpb->addChild(this);
+  pt1->addChild(this);
+  pt2->addChild(this);
 }
 
-Ray::~Ray()
+RayAB::~RayAB()
 {
 }
 
 bool Ray::contains(const Coordinate& o, const ScreenInfo& si ) const
 {
-  return isOnRay( o, mpa->getCoord(), mpb->getCoord(), si.normalMiss() );
+  return isOnRay( o, mpa, mpb, si.normalMiss() );
 }
 
 void Ray::draw(KigPainter& p, bool ss) const
 {
   p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
-  p.drawRay( mpa->getCoord(), mpb->getCoord() );
+  p.drawRay( mpa, mpb );
 }
 
 bool Ray::inRect(const Rect& p) const
 {
   // TODO: implement for real...
-  if ( mpa->inRect( p ) || mpb->inRect( p ) ) return true;
+//  if ( mpa->inRect( p ) || mpb->inRect( p ) ) return true;
+  if ( p.contains( mpa ) || p.contains( mpb ) ) return true;
   return false;
 }
 
-Object::WantArgsResult Ray::sWantArgs( const Objects& os )
+Object::WantArgsResult RayAB::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   if ( size != 1 && size != 2 ) return NotGood;
@@ -79,56 +80,65 @@ Object::WantArgsResult Ray::sWantArgs( const Objects& os )
   return size == 2 ? Complete : NotComplete;
 };
 
-QString Ray::sUseText( const Objects& os, const Object* o )
+QString RayAB::sUseText( const Objects& os, const Object* o )
 {
   if ( os.size() == 2 || ( os.size() == 1 && o ) ) return i18n( "Ray through this point" );
   return i18n( "Ray starting at this point" );
 }
 
-void Ray::startMove(const Coordinate& p, const ScreenInfo& si )
+void RayAB::startMove(const Coordinate& p, const ScreenInfo& si )
 {
   pwwsm = p;
-  assert( mpa && mpb );
-  mpa->startMove( p, si );
-  mpb->startMove( p, si );
+  assert( pt1 && pt2 );
+  pt1->startMove( p, si );
+  pt2->startMove( p, si );
 }
 
-void Ray::moveTo(const Coordinate& p)
+void RayAB::moveTo(const Coordinate& p)
 {
-  mpa->moveTo( p );
-  mpb->moveTo( p );
+  pt1->moveTo( p );
+  pt2->moveTo( p );
 }
 
-void Ray::stopMove()
+void RayAB::stopMove()
 {
 }
 
-void Ray::calc()
+void RayAB::calc()
 {
-  mvalid = mpa->valid() && mpb->valid();
+  mvalid = pt1->valid() && pt2->valid();
+  mpa = pt1->getCoord();
+  mpb = pt2->getCoord();
 }
 
 Coordinate Ray::getPoint(double param) const
 {
-  Coordinate dir = mpb->getCoord() - mpa->getCoord();
+  Coordinate dir = mpb - mpa;
   param = 1.0/param - 1.0;
-  return mpa->getCoord() + dir*param;
+  return mpa + dir*param;
 }
 
 double Ray::getParam(const Coordinate& p) const
 {
-  const LineData ld = lineData();
-  Coordinate pt = calcPointOnPerpend( ld, p );
-  pt = calcIntersectionPoint( ld, LineData( p, pt ));
-  // if pt is over the end of the ray ( i.e. it's on the line
-  // which the ray is a part of, but not of the ray itself..;
-  // ) we set it to the start point of the ray...
-  Coordinate dir = ld.b - ld.a;
-  pt -= ld.a;
-  double param;
-  if ( dir.x != 0 ) param = pt.x / dir.x;
-  else if ( dir.y != 0 ) param = pt.y / dir.y;
-  else param = 0.;
+//  const LineData ld = lineData();
+//  Coordinate pt = calcPointOnPerpend( ld, p );
+//  pt = calcIntersectionPoint( ld, LineData( p, pt ));
+//  // if pt is over the end of the ray ( i.e. it's on the line
+//  // which the ray is a part of, but not of the ray itself..;
+//  // ) we set it to the start point of the ray...
+//  Coordinate dir = ld.b - ld.a;
+//  pt -= ld.a;
+  Coordinate pa = p - mpa;
+  Coordinate ba = mpb - mpa;
+  double balsq = ba.x*ba.x + ba.y*ba.y;
+  assert (balsq > 0);
+
+  double param = (pa.x*ba.x + pa.y*ba.y)/balsq;
+
+//  double param;
+//  if ( dir.x != 0 ) param = pt.x / dir.x;
+//  else if ( dir.y != 0 ) param = pt.y / dir.y;
+//  else param = 0.;
   if ( param < 0. ) param = 0.;
 
   // mp:  let's try with 1/(x+1),  this reverses the mapping, but
@@ -142,15 +152,15 @@ double Ray::getParam(const Coordinate& p) const
   return param;
 }
 
-Objects Ray::getParents() const
+Objects RayAB::getParents() const
 {
   Objects objs;
-  objs.push_back( mpa );
-  objs.push_back( mpb );
+  objs.push_back( pt1 );
+  objs.push_back( pt2 );
   return objs;
 }
 
-void Ray::sDrawPrelim( KigPainter& p, const Objects& os )
+void RayAB::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 2 ) return;
   assert( os[0]->toPoint() && os[1]->toPoint() );
@@ -170,67 +180,67 @@ QCString Ray::sBaseTypeName()
   return I18N_NOOP("Ray");
 }
 
-const QCString Ray::vFullTypeName() const
+const QCString RayAB::vFullTypeName() const
 {
   return sFullTypeName();
 }
 
-QCString Ray::sFullTypeName()
+QCString RayAB::sFullTypeName()
 {
   return I18N_NOOP("Ray");
 }
 
-const QString Ray::vDescriptiveName() const
+const QString RayAB::vDescriptiveName() const
 {
   return sDescriptiveName();
 }
 
-const QString Ray::sDescriptiveName()
+const QString RayAB::sDescriptiveName()
 {
   return i18n( "Ray" );
 }
 
-const QString Ray::vDescription() const
+const QString RayAB::vDescription() const
 {
   return sDescription();
 }
 
-const QString Ray::sDescription()
+const QString RayAB::sDescription()
 {
   return i18n( "A ray by its start point, and another point somewhere on it." );               
 }
 
-const QCString Ray::vIconFileName() const
+const QCString RayAB::vIconFileName() const
 {
   return sIconFileName();
 }
 
-const QCString Ray::sIconFileName()
+const QCString RayAB::sIconFileName()
 {
   return "ray";
 }
 
-const int Ray::vShortCut() const
+const int RayAB::vShortCut() const
 {
   return sShortCut();
 }
 
-const int Ray::sShortCut()
+const int RayAB::sShortCut()
 {
   return 0;
 }
 
 const Coordinate Ray::p1() const
 {
-  return mpa->getCoord();
+  return mpa;
 }
 
 const Coordinate Ray::p2() const
 {
-  return mpb->getCoord();
+  return mpb;
 }
 
-const char* Ray::sActionName()
+const char* RayAB::sActionName()
 {
   return "objects_new_ray";
 }
