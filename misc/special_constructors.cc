@@ -485,13 +485,76 @@ bool PolygonVertexTypeConstructor::isTransform() const
 }
 
 /*
- * poligon by center and vertex
+ * construction of polygon sides
  */
 
-//static const ArgsParser::spec argsspectc[] = {
-//  { PointImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true },
-//  { PointImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true }
-//};
+static const struct ArgsParser::spec argsspecps[] =
+{
+  { PolygonImp::stype(), I18N_NOOP( "Polygon" ),
+    I18N_NOOP( "Construct the sides of this polygon..." ), false }
+};
+
+PolygonSideTypeConstructor::PolygonSideTypeConstructor()
+  : StandardConstructorBase( I18N_NOOP( "Sides of a Polygon" ), 
+       I18N_NOOP( "The sides of a polygon." ),
+       "polygonsides", margsparser ),
+    mtype( PolygonSideType::instance() ),
+    margsparser( argsspecps, 1 )
+{
+}
+
+PolygonSideTypeConstructor::~PolygonSideTypeConstructor()
+{
+}
+
+void PolygonSideTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+                                   const KigDocument& ) const
+{
+  if ( parents.size() != 1 ) return;
+
+  const PolygonImp* polygon = dynamic_cast<const PolygonImp*>( parents.front()->imp() );
+  const std::vector<Coordinate> points = polygon->points();
+
+  uint sides = points.size();
+  for ( uint i = 0; i < sides; ++i )
+  {
+    uint nexti = ( i + 1 < sides )?(i + 1):0;
+    SegmentImp segment = SegmentImp( points[i], points[nexti] );
+    drawer.draw( segment, p, true );
+  }
+}
+
+std::vector<ObjectHolder*> PolygonSideTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
+{
+  std::vector<ObjectHolder*> ret;
+  assert( parents.size() == 1 );
+  const PolygonImp* polygon = dynamic_cast<const PolygonImp*>( parents.front()->imp() );
+  const std::vector<Coordinate> points = polygon->points();
+
+  uint sides = points.size();
+
+  for ( uint i = 0; i < sides; ++i )
+  {
+    ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( i ) );
+    std::vector<ObjectCalcer*> args( parents );
+    args.push_back( d );
+    ret.push_back( new ObjectHolder( new ObjectTypeCalcer( mtype, args ) ) );
+  }
+  return ret;
+}
+
+void PolygonSideTypeConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool PolygonSideTypeConstructor::isTransform() const
+{
+  return false;
+}
+
+/*
+ * poligon by center and vertex
+ */
 
 PoligonBCVConstructor::PoligonBCVConstructor(
   const char* descname, const char* desc, const char* iconfile,

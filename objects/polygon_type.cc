@@ -386,3 +386,49 @@ const ObjectImpType* PolygonVertexType::resultId() const
 {
   return PointImp::stype();
 }
+
+/* polygon sides  */
+
+static const ArgsParser::spec argsspecPolygonSide[] =
+{
+  { PolygonImp::stype(), I18N_NOOP( "Construct the sides of this polygon" ),
+    I18N_NOOP( "Select the polygon of which you want to construct the sides..." ), false },
+  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PolygonSideType )
+
+PolygonSideType::PolygonSideType()
+  : ArgsParserObjectType( "PolygonSide", argsspecPolygonSide, 2 )
+{
+}
+
+PolygonSideType::~PolygonSideType()
+{
+}
+
+const PolygonSideType* PolygonSideType::instance()
+{
+  static const PolygonSideType t;
+  return &t;
+}
+
+ObjectImp* PolygonSideType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  const std::vector<Coordinate> ppoints = static_cast<const PolygonImp*>( parents[0] )->points();
+  const uint i = static_cast<const IntImp*>( parents[1] )->data();
+
+  if ( i >= ppoints.size() ) return new InvalidImp;
+
+  uint nexti = i + 1;
+  if ( nexti >= ppoints.size() ) nexti = 0;
+
+  return new SegmentImp( ppoints[i], ppoints[nexti] );
+}
+
+const ObjectImpType* PolygonSideType::resultId() const
+{
+  return SegmentImp::stype();
+}

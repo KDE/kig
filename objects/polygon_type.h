@@ -96,4 +96,15 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class PolygonSideType
+  : public ArgsParserObjectType
+{
+  PolygonSideType();
+  ~PolygonSideType();
+public:
+  static const PolygonSideType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

@@ -514,17 +514,13 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_decagonbcv" ) );
 
-//    c = new SimpleObjectTypeConstructor(
-//      PolygonLineIntersectionType::instance(),
-//      I18N_NOOP( "Polygon-Line intersection" ),
-//      I18N_NOOP( "Construct the intersection of a polygon with a line." ),
-//      "polygonlineintersection" );
-//    ctors->add( c );
-//    actions->add( new ConstructibleAction( c, "objects_new_polygonlineintersection" ) );
-
     c = new PolygonVertexTypeConstructor();
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_polygonvertices" ));
+
+    c = new PolygonSideTypeConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_polygonsides" ));
 
     /* ----------- end polygons --------- */
 

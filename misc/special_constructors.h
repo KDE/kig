@@ -35,6 +35,21 @@ public:
   bool isTransform() const;
 };
 
+class PolygonSideTypeConstructor
+  : public StandardConstructorBase
+{
+  const ArgsParserObjectType* mtype;
+  ArgsParser margsparser;
+public:
+  PolygonSideTypeConstructor();
+  ~PolygonSideTypeConstructor();
+
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
+  void plug( KigPart* doc, KigGUIAction* kact );
+  bool isTransform() const;
+};
+
 class PolygonBNPTypeConstructor
   : public ObjectConstructor
 {
