@@ -22,13 +22,10 @@ MacroWizardImpl::MacroWizardImpl( KigDocument* inDoc)
   connect (document, SIGNAL (selectionChanged()), this, SLOT(updateNexts()));
 }
 
-/*  
- *  Destroys the object and frees any allocated resources
- */
 MacroWizardImpl::~MacroWizardImpl()
 {
-    // no need to delete child widgets, Qt does it all for us
 }
+
 void MacroWizardImpl::accept()
 {
   // finish the macro
@@ -104,6 +101,8 @@ void MacroWizardImpl::back()
 
 void MacroWizardImpl::reject()
 {
+  MacroWizard::reject();
+  document->clearSelection();
 }
 
 void MacroWizardImpl::updateNexts()
