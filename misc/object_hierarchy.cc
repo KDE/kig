@@ -223,16 +223,6 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument&
   };
 }
 
-ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
-  : mnumberofargs( from.size() ), mnumberofresults( 1 )
-{
-  margrequirements.resize( from.size(), -1 );
-  std::map<const Object*, int> seenmap;
-  for ( uint i = 0; i < from.size(); ++i )
-    seenmap[from[i]] = i;
-  visit( to, seenmap );
-}
-
 int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenmap )
 {
   using namespace std;
@@ -318,10 +308,20 @@ ObjectHierarchy ObjectHierarchy::withFixedArgs( const Args& a ) const
   return ret;
 }
 
+ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
+  : mnumberofargs( from.size() ), mnumberofresults( 1 )
+{
+  margrequirements.resize( from.size(), ObjectImp::ID_AnyImp );
+  std::map<const Object*, int> seenmap;
+  for ( uint i = 0; i < from.size(); ++i )
+    seenmap[from[i]] = i;
+  visit( to, seenmap );
+}
+
 ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
   : mnumberofargs( from.size() ), mnumberofresults( to.size() )
 {
-  margrequirements.resize( from.size(), -1 );
+  margrequirements.resize( from.size(), ObjectImp::ID_AnyImp );
   std::map<const Object*, int> seenmap;
   for ( uint i = 0; i < from.size(); ++i )
     seenmap[from[i]] = i;
@@ -400,7 +400,7 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
     tmp = e.attribute( "requirement" );
     int req = ObjectImp::stringToID( tmp.latin1() );
     if ( req == -1 ) req = ObjectImp::ID_AnyImp; // sucks, i know..
-    margrequirements.resize( mnumberofargs, -1 );
+    margrequirements.resize( mnumberofargs, ObjectImp::ID_AnyImp );
     margrequirements[id - 1] = req;
   }
   for (; !e.isNull(); e = e.nextSibling().toElement() )
@@ -461,7 +461,6 @@ ArgParser ObjectHierarchy::argParser() const
   for ( uint i = 0; i < margrequirements.size(); ++i )
   {
     int req = margrequirements[i];
-    assert( req != -1 );
     ArgParser::spec spec;
     spec.type = req;
     spec.usetext = ObjectImp::selectStatement( req );
