@@ -20,11 +20,11 @@
 #include "drgeo-filter-chooser.h"
 #include "drgeo-filter-chooser.moc"
 
-#include <qlistbox.h>
-#include <kpushbutton.h>
-#include <kmessagebox.h>
-#include <klocale.h>
 #include <kiconloader.h>
+#include <klistbox.h>
+#include <klocale.h>
+#include <kmessagebox.h>
+#include <kpushbutton.h>
 
 KigFilterDrgeoChooser::KigFilterDrgeoChooser( QStringList& l )
   : KigFilterDrgeoChooserBase( 0, "drgeo_filter", true )
@@ -38,13 +38,6 @@ KigFilterDrgeoChooser::KigFilterDrgeoChooser( QStringList& l )
   connect( OKButton, SIGNAL( clicked() ), this, SLOT( slotOKPressed() ) );
   connect( CancelButton, SIGNAL( clicked() ), this, SLOT( slotCancelPressed() ) );
 }
-
-/*
-void KigFilterDrgeoChooser::addFigures( QStringList* l )
-{
-  FigureListBox->insertStringList(l);
-}
-*/
 
 void KigFilterDrgeoChooser::slotOKPressed()
 {
@@ -65,4 +58,9 @@ void KigFilterDrgeoChooser::slotCancelPressed()
 KigFilterDrgeoChooser::~KigFilterDrgeoChooser()
 {
 
+}
+
+void KigFilterDrgeoChooser::slotExecuted( QListBoxItem* i )
+{
+  done( FigureListBox->index( i ) );
 }

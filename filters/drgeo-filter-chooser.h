@@ -22,6 +22,7 @@
 
 #include "drgeo-filter-chooserbase.h"
 
+class QListBoxItem;
 class QStringList;
 
 class KigFilterDrgeoChooser
@@ -32,10 +33,10 @@ class KigFilterDrgeoChooser
 public:
   KigFilterDrgeoChooser( QStringList& l );
   ~KigFilterDrgeoChooser();
-//  void addFigures( QStringList* l );
 public slots:
   void slotOKPressed();
   void slotCancelPressed();
+  void slotExecuted( QListBoxItem* );
 };
 
 #endif

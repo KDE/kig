@@ -51,7 +51,7 @@ Please select which to import.</string>
                 <property name="spacing">
                     <number>6</number>
                 </property>
-                <widget class="QListBox">
+                <widget class="KListBox">
                     <property name="name">
                         <cstring>FigureListBox</cstring>
                     </property>
@@ -133,6 +133,7 @@ Please select which to import.</string>
 </widget>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
+    <includehint>klistbox.h</includehint>
     <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>
 </includehints>
