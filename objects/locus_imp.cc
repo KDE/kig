@@ -193,9 +193,11 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
 
   // xm is the best parameter we've found so far, fxm is the distance
   // to the locus from that point.  We start with some
-  // pseudo-values..
-  double fxm = 10000000.;
-  double xm = 2.;
+  // pseudo-values.
+  // (mp) note that if the distance is actually increasing in the
+  // whole interval [0,1] this value will be returned in the end.
+  double xm = 0.;
+  double fxm = getDist( xm, p, doc );
 
   int j = 0;
 
