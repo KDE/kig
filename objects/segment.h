@@ -30,15 +30,43 @@ class Segment
 {
   typedef AbstractLine Parent;
 public:
-  Segment( const Objects& os );
+  Segment() {};
   Segment( const Segment& s );
-  ~Segment();
+  ~Segment() {};
 
   bool isa( int type ) const;
 
   // some type information
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();
+
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
+  void draw ( KigPainter& p, bool showSelection ) const;
+
+  bool inRect (const Rect&) const;
+
+  Coordinate getPoint (double param) const;
+  double getParam (const Coordinate&) const;
+
+  const Coordinate p1() const;
+  const Coordinate p2() const;
+
+  const uint numberOfProperties() const;
+  const Property property( uint which, const KigWidget& w ) const;
+  const QCStringList properties() const;
+
+protected:
+  Coordinate mpa, mpb;
+};
+
+class SegmentAB
+  : public Segment
+{
+public:
+  SegmentAB( const Objects& os );
+  SegmentAB( const SegmentAB& s );
+  ~SegmentAB();
+
   const QCString vFullTypeName() const;
   static QCString sFullTypeName();
   const QString vDescriptiveName() const;
@@ -50,11 +78,6 @@ public:
   const int vShortCut() const;
   static const int sShortCut();
   static const char* sActionName();
-
-  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
-  void draw ( KigPainter& p, bool showSelection ) const;
-
-  bool inRect (const Rect&) const;
 
   // arguments
   static void sDrawPrelim ( KigPainter&, const Objects& o );
@@ -70,19 +93,8 @@ public:
 
   void calc();
 
-  Coordinate getPoint (double param) const;
-  double getParam (const Coordinate&) const;
-
-  const Coordinate p1() const;
-  const Coordinate p2() const;
-
-  const uint numberOfProperties() const;
-  const Property property( uint which, const KigWidget& w ) const;
-  const QCStringList properties() const;
-
 protected:
-  Point* mpa, *mpb;
+  Point* pt1, *pt2;
   Coordinate pwwsm; // point where we started moving
 };
-
 #endif

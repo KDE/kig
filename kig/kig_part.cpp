@@ -183,7 +183,7 @@ void KigDocument::setupTypes()
 {
   if ( Object::types().empty() )
   {
-    Object::addBuiltinType( new TStdType<Segment> );
+    Object::addBuiltinType( new TStdType<SegmentAB> );
     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
     Object::addBuiltinType( new TStdType<ConicBAAP> );
     Object::addBuiltinType( new TStdType<ConicBDFP> );

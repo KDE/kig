@@ -29,40 +29,41 @@
 
 #include "../misc/i18n.h"
 
-Segment::Segment( const Objects& os )
- : mpa( 0 ), mpb( 0 )
+SegmentAB::SegmentAB( const Objects& os )
+ : pt1( 0 ), pt2( 0 )
 {
   assert( os.size() == 2 );
-  mpa = os[0]->toPoint();
-  mpb = os[1]->toPoint();
-  assert( mpa && mpb );
-  mpa->addChild( this );
-  mpb->addChild( this );
+  pt1 = os[0]->toPoint();
+  pt2 = os[1]->toPoint();
+  assert( pt1 && pt2 );
+  pt1->addChild( this );
+  pt2->addChild( this );
 }
 
-Segment::~Segment()
+SegmentAB::~SegmentAB()
 {
 }
 
 bool Segment::contains(const Coordinate& o, const ScreenInfo& si ) const
 {
-  return isOnSegment( o, mpa->getCoord(), mpb->getCoord(), si.normalMiss() );
+  return isOnSegment( o, mpa, mpb, si.normalMiss() );
 }
 
 void Segment::draw(KigPainter& p, bool ss) const
 {
   p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
-  p.drawSegment( mpa->getCoord(), mpb->getCoord() );
+  p.drawSegment( mpa, mpb );
 }
 
 bool Segment::inRect(const Rect& p) const
 {
   // TODO: implement for real...
-  if ( mpa->inRect( p ) || mpb->inRect( p ) ) return true;
+//  if ( mpa->inRect( p ) || mpb->inRect( p ) ) return true;
+  if ( p.contains( mpa ) || p.contains( mpb ) ) return true;
   return false;
 }
 
-Object::WantArgsResult Segment::sWantArgs( const Objects& os )
+Object::WantArgsResult SegmentAB::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   if ( size != 1 && size != 2 ) return NotGood;
@@ -71,65 +72,65 @@ Object::WantArgsResult Segment::sWantArgs( const Objects& os )
   return size == 2 ? Complete : NotComplete;
 };
 
-QString Segment::sUseText( const Objects& os, const Object* o )
+QString SegmentAB::sUseText( const Objects& os, const Object* o )
 {
   if ( os.size() == 2 || ( os.size() == 1 && o ) ) return i18n( "End point" );
   return i18n( "Start point" );
 }
 
-void Segment::startMove(const Coordinate& p, const ScreenInfo& si )
+void SegmentAB::startMove(const Coordinate& p, const ScreenInfo& si )
 {
   pwwsm = p;
-  assert( mpa && mpb );
-  mpa->startMove( p, si );
-  mpb->startMove( p, si );
+  assert( pt1 && pt2 );
+  pt1->startMove( p, si );
+  pt2->startMove( p, si );
 }
 
-void Segment::moveTo(const Coordinate& p)
+void SegmentAB::moveTo(const Coordinate& p)
 {
-  mpa->moveTo( p );
-  mpb->moveTo( p );
+  pt1->moveTo( p );
+  pt2->moveTo( p );
 }
 
-void Segment::stopMove()
+void SegmentAB::stopMove()
 {
 }
 
-void Segment::calc()
+void SegmentAB::calc()
 {
-  mvalid = mpa->valid() && mpb->valid();
+  mvalid = pt1->valid() && pt2->valid();
+  mpa = pt1->getCoord();
+  mpb = pt2->getCoord();
 }
 
 Coordinate Segment::getPoint(double param) const
 {
-  Coordinate dir = mpb->getCoord() - mpa->getCoord();
-  return mpa->getCoord() + dir*param;
+  Coordinate dir = mpb - mpa;
+  return mpa + dir*param;
 }
 
 double Segment::getParam(const Coordinate& p) const
 {
-  Coordinate pt = calcPointOnPerpend( lineData(), p );
-  pt = calcIntersectionPoint( lineData(), LineData( p, pt ) );
-  // if pt is over the end of the segment ( i.e. it's on the line
-  // which the segment is a part of, but not of the segment itself..;
-  // ) we set it to one of the end points of the segment...
-  if ((pt - mpa->getCoord()).length() > (mpb->getCoord() - mpa->getCoord()).length() )
-    pt = mpb->getCoord();
-  else if ( (pt- mpb->getCoord()).length() > (mpb->getCoord() - mpa->getCoord()).length() )
-    pt = mpa->getCoord();
-  if (mpb->getCoord() == mpa->getCoord()) return 0;
-  return ((pt - mpa->getCoord()).length())/((mpb->getCoord()-mpa->getCoord()).length());
+  Coordinate pa = p - mpa;
+  Coordinate ba = mpb - mpa;
+  double balsq = ba.x*ba.x + ba.y*ba.y;
+  assert (balsq > 0);
+
+  double t = (pa.x*ba.x + pa.y*ba.y)/balsq;
+  if ( t < 0 ) return 0.;
+  if ( t > 1 ) return 1.;
+  return t;
 }
 
-Objects Segment::getParents() const
+Objects SegmentAB::getParents() const
 {
   Objects objs;
-  objs.push_back( mpa );
-  objs.push_back( mpb );
+  objs.push_back( pt1 );
+  objs.push_back( pt2 );
   return objs;
 }
 
-void Segment::sDrawPrelim( KigPainter& p, const Objects& os )
+void SegmentAB::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 2 ) return;
   assert( os[0]->toPoint() && os[1]->toPoint() );
@@ -142,8 +143,13 @@ void Segment::sDrawPrelim( KigPainter& p, const Objects& os )
 Segment::Segment(const Segment& s)
   : AbstractLine( s ), mpa( s.mpa ), mpb( s.mpb )
 {
-  mpa->addChild(this);
-  mpb->addChild(this);
+}
+
+SegmentAB::SegmentAB(const SegmentAB& s)
+  : Segment( s ), pt1( s.pt1 ), pt2( s.pt2 )
+{
+  pt1->addChild(this);
+  pt2->addChild(this);
 }
 
 const QCString Segment::vBaseTypeName() const
@@ -156,69 +162,69 @@ QCString Segment::sBaseTypeName()
   return I18N_NOOP("Segment");
 }
 
-const QCString Segment::vFullTypeName() const
+const QCString SegmentAB::vFullTypeName() const
 {
   return sFullTypeName();
 }
 
-QCString Segment::sFullTypeName()
+QCString SegmentAB::sFullTypeName()
 {
   return I18N_NOOP("Segment");
 }
 
-const QString Segment::vDescriptiveName() const
+const QString SegmentAB::vDescriptiveName() const
 {
   return sDescriptiveName();
 }
 
-const QString Segment::sDescriptiveName()
+const QString SegmentAB::sDescriptiveName()
 {
   return i18n( "Segment" );
 }
 
-const QString Segment::vDescription() const
+const QString SegmentAB::vDescription() const
 {
   return sDescription();
 }
 
-const QString Segment::sDescription()
+const QString SegmentAB::sDescription()
 {
   return i18n( "A segment constructed from its start and end point" );
 }
 
-const QCString Segment::vIconFileName() const
+const QCString SegmentAB::vIconFileName() const
 {
   return sIconFileName();
 }
 
-const QCString Segment::sIconFileName()
+const QCString SegmentAB::sIconFileName()
 {
   return "segment";
 }
 
-const int Segment::vShortCut() const
+const int SegmentAB::vShortCut() const
 {
   return sShortCut();
 }
 
-const int Segment::sShortCut()
+const int SegmentAB::sShortCut()
 {
   return CTRL+Key_S;
 }
 
-const char* Segment::sActionName()
+const char* SegmentAB::sActionName()
 {
   return "objects_new_segment";
 }
 
 const Coordinate Segment::p1() const
 {
-  return mpa->getCoord();
+  return mpa;
 }
 
 const Coordinate Segment::p2() const
 {
-  return mpb->getCoord();
+  return mpb;
 }
 
 const uint Segment::numberOfProperties() const
