@@ -1,4 +1,4 @@
-SUBDIRS = objects misc modes icons filters examples kig mimetypes
+SUBDIRS = objects misc modes icons filters examples kig mimetypes macros
 
 kde_module_LTLIBRARIES = libkigpart.la
 libkigpart_la_SOURCES = dummy.cpp
