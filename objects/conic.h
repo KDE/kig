@@ -144,11 +144,6 @@ protected:
 public:
   static Object::WantArgsResult sWantArgs( const Objects& os );
 
-  //moving is disabled..
-  void startMove(const Coordinate&, const ScreenInfo& );
-  void moveTo(const Coordinate&);
-  void stopMove();
-
 protected:
   Point* poc; // point on conic
   Point* focus1;
@@ -242,11 +237,6 @@ public:
   static void sDrawPrelim( KigPainter& p, const Objects& os );
 
   Objects getParents() const;
-
-  //moving
-  void startMove(const Coordinate&, const ScreenInfo& ) {};
-  void moveTo(const Coordinate&) {};
-  void stopMove() {};
 
 protected:
   Point* pts[5];

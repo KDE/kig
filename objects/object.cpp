@@ -253,3 +253,18 @@ void Object::calcForWidget( const KigWidget& )
 {
   calc();
 }
+
+void Object::startMove( const Coordinate&, const ScreenInfo& )
+{
+  // default is that we don't move..
+}
+
+void Object::moveTo(const Coordinate&)
+{
+  // default is that we don't move..
+}
+
+void Object::stopMove()
+{
+  // default is that we don't move..
+}

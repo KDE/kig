@@ -75,11 +75,6 @@ public:
   static QString sUseText( const Objects&, const Object* o );
   static void sDrawPrelim( KigPainter& p, const Objects& args );
 
-  // moving
-  void startMove(const Coordinate&, const ScreenInfo&);
-  void moveTo(const Coordinate&);
-  void stopMove();
-
   void calc();
   void calcForWidget( const KigWidget& );
 

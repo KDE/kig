@@ -68,11 +68,6 @@ public:
 
   Objects getParents() const;
 
-  // moving
-  void startMove(const Coordinate&, const ScreenInfo&);
-  void moveTo(const Coordinate&);
-  void stopMove();
-
   void calc();
   void calcForWidget( const KigWidget& w );
 

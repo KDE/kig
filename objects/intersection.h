@@ -54,10 +54,6 @@ public:
   static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
 
-  void startMove(const Coordinate&, const ScreenInfo& );
-  void moveTo(const Coordinate& );
-  void stopMove();
-
   void calc();
 };
 
@@ -92,10 +88,6 @@ public:
   static Object::WantArgsResult sWantArgs ( const Objects& os );
   static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
-
-  void startMove(const Coordinate&, const ScreenInfo& );
-  void moveTo(const Coordinate& );
-  void stopMove();
 
   void calc();
 

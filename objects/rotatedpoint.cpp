@@ -108,18 +108,6 @@ const int RotatedPoint::sShortCut()
   return 0;
 }
 
-void RotatedPoint::startMove(const Coordinate&, const ScreenInfo& )
-{
-}
-
-void RotatedPoint::moveTo(const Coordinate& )
-{
-}
-
-void RotatedPoint::stopMove()
-{
-}
-
 const char* RotatedPoint::sActionName()
 {
   return "objects_new_rotatedpoint";

@@ -208,21 +208,6 @@ const Conic* Conic::toConic() const
   return this;
 }
 
-void ConicBFFP::startMove(const Coordinate&, const ScreenInfo&)
-{
-  // moving is disabled..
-}
-
-void ConicBFFP::moveTo(const Coordinate&)
-{
-  // moving is disabled..
-}
-
-void ConicBFFP::stopMove()
-{
-  // moving is disabled..
-};
-
 const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& points )
 {
   // points is a vector of exactly 5 points through which the conic is

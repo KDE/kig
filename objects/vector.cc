@@ -204,18 +204,6 @@ Objects Vector::getParents() const
   return ret;
 }
 
-void Vector::startMove(const Coordinate&, const ScreenInfo&)
-{
-}
-
-void Vector::moveTo(const Coordinate&)
-{
-}
-
-void Vector::stopMove()
-{
-}
-
 void Vector::calc()
 {
   mvalid = p1->valid() && p2->valid();

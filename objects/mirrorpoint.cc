@@ -124,18 +124,6 @@ const int MirrorPoint::sShortCut()
   return 0;
 }
 
-void MirrorPoint::startMove(const Coordinate&, const ScreenInfo& )
-{
-}
-
-void MirrorPoint::moveTo(const Coordinate& )
-{
-}
-
-void MirrorPoint::stopMove()
-{
-}
-
 const char* MirrorPoint::sActionName()
 {
   return "objects_new_mirrorpoint";

@@ -111,18 +111,6 @@ const int TranslatedPoint::sShortCut()
   return 0;
 }
 
-void TranslatedPoint::startMove(const Coordinate&, const ScreenInfo& )
-{
-}
-
-void TranslatedPoint::moveTo(const Coordinate& )
-{
-}
-
-void TranslatedPoint::stopMove()
-{
-}
-
 const char* TranslatedPoint::sActionName()
 {
   return "objects_new_translatedpoint";

@@ -95,10 +95,6 @@ public:
 
   Objects getParents() const;
 
-  //moving is disabled..
-  void startMove(const Coordinate&, const ScreenInfo& );
-  void moveTo(const Coordinate&);
-  void stopMove();
 protected:
   Point* poc; // point on circle
   Point* centre;
@@ -131,12 +127,6 @@ public:
   static void sDrawPrelim( KigPainter& p, const Objects& os );
 
   Objects getParents() const;
-
-  //moving
-  void startMove(const Coordinate&, const ScreenInfo& ) {};
-  void moveTo(const Coordinate&) {};
-  void stopMove() {};
-  void cancelMove() {};
 
 protected:
   Point* pts[3];

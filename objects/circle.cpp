@@ -363,21 +363,6 @@ const Circle* Circle::toCircle() const
   return this;
 }
 
-void CircleBCP::startMove(const Coordinate&, const ScreenInfo&)
-{
-  // moving is disabled..
-}
-
-void CircleBCP::moveTo(const Coordinate&)
-{
-  // moving is disabled..
-}
-
-void CircleBCP::stopMove()
-{
-  // moving is disabled..
-};
-
 const uint Circle::numberOfProperties() const
 {
   return Curve::numberOfProperties() + 3;

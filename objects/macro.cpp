@@ -74,6 +74,7 @@ void MacroObjectOne::moveTo(const Coordinate& p)
 {
   final->moveTo(p);
 }
+
 void MacroObjectOne::stopMove()
 {
   final->stopMove();

@@ -67,11 +67,6 @@ public:
 
   Objects getParents() const;
 
-  // moving
-  void startMove(const Coordinate&, const ScreenInfo&);
-  void moveTo(const Coordinate&);
-  void stopMove();
-
   void calc();
 
   const Coordinate getP1() const;

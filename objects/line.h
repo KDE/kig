@@ -43,11 +43,6 @@ public:
   void draw (KigPainter& p, bool showSelection) const;
   bool inRect (const Rect&) const;
 
-  // moving
-  void startMove(const Coordinate&, const ScreenInfo&) = 0;
-  void moveTo(const Coordinate&) = 0;
-  void stopMove() = 0;
-
   // implement the Curve interface...
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
@@ -130,11 +125,6 @@ public:
 
   Objects getParents() const;
 
-  // moving
-  void startMove(const Coordinate&, const ScreenInfo&);
-  void moveTo(const Coordinate&);
-  void stopMove();
-
   void calc();
 
 protected:
@@ -169,11 +159,6 @@ public:
   static Object::WantArgsResult sWantArgs ( const Objects& os );
   static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
-
-  // moving
-  void startMove(const Coordinate&, const ScreenInfo&) {};
-  void moveTo(const Coordinate&) {};
-  void stopMove() {};
 
   void calc();
 
@@ -214,12 +199,6 @@ public:
   static Object::WantArgsResult sWantArgs ( const Objects& os );
   static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
-
-  // moving
-  // we don't move unless our parents do...
-  void startMove(const Coordinate&, const ScreenInfo&) {};
-  void moveTo(const Coordinate&) {};
-  void stopMove() {};
 
   void calc();
 

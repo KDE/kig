@@ -128,18 +128,6 @@ LinePerpend::~LinePerpend()
 {
 }
 
-void LinePerpend::startMove(const Coordinate&, const ScreenInfo&)
-{
-}
-
-void LinePerpend::moveTo(const Coordinate&)
-{
-
-}
-void LinePerpend::stopMove()
-{
-}
-
 void LinePerpend::calc()
 {
   assert (point && mdir );

@@ -159,18 +159,6 @@ Objects Arc::getParents() const
   return ret;
 }
 
-void Arc::startMove(const Coordinate&, const ScreenInfo&)
-{
-}
-
-void Arc::moveTo(const Coordinate&)
-{
-}
-
-void Arc::stopMove()
-{
-}
-
 void Arc::calcForWidget( const KigWidget& w )
 {
   calc();

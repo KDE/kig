@@ -54,7 +54,7 @@ public:
   void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
   void stopMove();
-  void cancelMove();
+
   void calc();
   void drawPrelim( KigPainter&, const Object* ) const {};
 protected:

@@ -285,9 +285,9 @@ public:
   // sos contains the objects that are being moved.
   // the point is where the cursor is,  check the point implementation for an
   // example
-  virtual void startMove( const Coordinate&, const ScreenInfo& ) = 0;
-  virtual void moveTo(const Coordinate&) = 0;
-  virtual void stopMove() = 0;
+  virtual void startMove( const Coordinate&, const ScreenInfo& );
+  virtual void moveTo(const Coordinate&);
+  virtual void stopMove();
 
   /**
    * Informs the object that it ( or one of its parents ) has been

@@ -119,18 +119,6 @@ const int IntersectionPoint::sShortCut()
   return CTRL+Key_I;
 }
 
-void IntersectionPoint::startMove(const Coordinate&, const ScreenInfo& )
-{
-}
-
-void IntersectionPoint::moveTo(const Coordinate& )
-{
-}
-
-void IntersectionPoint::stopMove()
-{
-}
-
 const char* IntersectionPoint::sActionName()
 {
   return "objects_new_intersectionpoint";
@@ -333,18 +321,6 @@ Objects CircleLineIntersectionPoint::getParents() const
   o.push_back( mcircle );
   o.push_back( mline );
   return o;
-}
-
-void CircleLineIntersectionPoint::startMove(const Coordinate&, const ScreenInfo& )
-{
-}
-
-void CircleLineIntersectionPoint::moveTo(const Coordinate& )
-{
-}
-
-void CircleLineIntersectionPoint::stopMove()
-{
 }
 
 void CircleLineIntersectionPoint::calc()

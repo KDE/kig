@@ -250,18 +250,6 @@ const int Locus::sShortCut()
   return 0;
 }
 
-void Locus::startMove(const Coordinate&, const ScreenInfo&)
-{
-}
-
-void Locus::moveTo(const Coordinate&)
-{
-}
-
-void Locus::stopMove()
-{
-}
-
 const char* Locus::sActionName()
 {
   return "objects_new_locus";
