@@ -114,7 +114,6 @@ void TextLabel::setParams( const prop_map& m )
 
 void TextLabel::draw(KigPainter& p, bool ) const
 {
-  kdDebug() << k_funcinfo << endl;
   p.setColor( mColor );
   p.drawSimpleText( mcoord, mcurtext );
   mrwdoi = p.simpleBoundingRect( mcoord, mtext );
