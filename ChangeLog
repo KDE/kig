@@ -1,5 +1,13 @@
 2003-07-23  Dominique Devriese  <devriese@kde.org>
 
+	* add a nifty python scripting example that shows the graph of a
+	sine curve, but can in fact be used to show any function's graph
+	you would come up with.  It uses python scripting and the locus
+	facility in a clever way to do this.  In fact, I stole the idea
+	from something I saw Hilaire Fernandes do with the Dr.Genius guile
+	scripting on a presentation at FOSDEM.  Kig - of course ;) - does
+	it way cooler.. :)
+
 	* add support for using the python math package in Kig python
 	scripts, by importing it from PythonScripter's ctor, and by making
 	Kig load its part library with RTLD_GLOBAL, to eliminate a problem
