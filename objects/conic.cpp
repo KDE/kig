@@ -239,6 +239,48 @@ const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& 
     matrix[i][5] = 1.0;
   }
 
+  // if less than 5 points, force the symmetry axes to be
+  // parallel to the coordinate system (zero tilt): c = 0
+  if (numpoints < 5)
+  {
+    for (int j = 0; j < 6; ++j) matrix[numpoints][j] = 0.0;
+    matrix[numpoints][2] = 1.0;
+    ++numpoints;
+  }
+
+  // if not enough constraints, force a parabula: b = c = 0
+  if (numpoints < 5)
+  {
+    for (int j = 0; j < 6; j++) matrix[numpoints][j] = 0.0;
+    matrix[numpoints][1] = 1.0;
+    numpoints++;
+  }
+
+//   // if not enough constraints force a circle: c = 0, a = b
+//   if (numpoints < 5)
+//   {
+//     for (int j = 0; j < 6; j++) matrix[numpoints][j] = 0.0;
+//     matrix[numpoints][0] = 1.0;
+//     matrix[numpoints][1] = -1.0;
+//     numpoints++;
+//   }
+
+  // if not enough constraints force symmetry about y-axis: d = 0
+  if (numpoints < 5)
+  {
+    for (int j = 0; j < 6; j++) matrix[numpoints][j] = 0.0;
+    matrix[numpoints][3] = 1.0;
+    numpoints++;
+  }
+
+//  // if not enough constraints force symmetry about x-axis: e = 0
+//  if (numpoints < 5)
+//  {
+//    for (int j = 0; j < 6; j++) matrix[numpoints][j] = 0.0;
+//    matrix[numpoints][4] = 1.0;
+//    numpoints++;
+//  }
+
   // start gaussian elimination
   for ( int k = 0; k < numpoints; ++k )
   {
@@ -497,6 +539,7 @@ void ConicB5P::sDrawPrelim( KigPainter& p, const Objects& os )
 
   uint size = os.size();
   assert( size > 0 && size < 6 );
+  if ( size < 2 ) return;  // don't drawprelim if too few points
   for ( uint i = 0; i < size; ++i )
   {
     assert( os[i]->toPoint() );
