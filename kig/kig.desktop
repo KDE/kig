@@ -1,10 +1,25 @@
 [Desktop Entry]
 Name=Kig
+Name[ar]=كيج
 GenericName=Interactive Geometry
+GenericName[bs]=Interaktivna geometrija
+GenericName[da]=Interaktiv geometri
+GenericName[el]=Aλληλεπιδραστική γεωμετρία
+GenericName[et]=Interaktiivne geomeetria
+GenericName[fr]=Géométrie interactive
+GenericName[ja]=インタラクティブジオメトリ
+GenericName[lt]=Interaktyvi geometrija
+GenericName[nl]=interactieve geometrie
+GenericName[pl]=Interaktywna geometria
+GenericName[pt_BR]=Geometria Interativa
+GenericName[sv]=Interaktiv geometri
+GenericName[ven]=Geometry yau shumea nayo
+GenericName[xh]=Umyili Wesiboniso Esingaphakathi
+GenericName[zu]=Ukubekeka Kwebalazwe Kokukhulumisanayo
 Exec=kig %i %m -caption "%c"
 MimeType=application/x-kig;application/x-kgeo;
 Icon=kig
 Type=Application
-DocPath=kig/kig.html
+DocPath=kig/index.html
 Terminal=0
 Categories=Qt;KDE;Education;Math
