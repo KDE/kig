@@ -168,6 +168,35 @@ public:
 };
 
 /**
+ * A standard implementation of StandardConstructorBase for property
+ * objects...
+ */
+class PropertyObjectConstructor
+  : public StandardConstructorBase
+{
+  ArgParser mparser;
+  const char* mpropinternalname;
+public:
+  PropertyObjectConstructor(
+    const int imprequirement, const char* usetext,
+    const char* descname, const char* desc,
+    const char* iconfile, const char* propertyinternalname );
+
+  ~PropertyObjectConstructor();
+
+  void drawprelim( KigPainter& p, const Objects& parents,
+                   const KigDocument& ) const;
+
+  Objects build( const Objects& os,
+                 KigDocument& d,
+                 KigWidget& w ) const;
+
+  void plug( KigDocument* doc, KigGUIAction* kact );
+
+  bool isTransform() const;
+};
+
+/**
  * This class is the equivalent of @ref SimpleObjectTypeConstructor
  * for object types that are constructed in groups of more than one.
  * For example, the intersection of a circle and line in general

@@ -30,8 +30,10 @@
 #include "../objects/object_factory.h"
 #include "../objects/object_type.h"
 #include "../objects/conic_types.h"
+#include "../objects/line_type.h"
 #include "../objects/intersection_types.h"
 #include "../objects/object_imp.h"
+#include "../objects/point_imp.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/conic_imp.h"
 #include "../objects/other_type.h"
@@ -369,4 +371,58 @@ QString GenericIntersectionConstructor::useText(
     return i18n( "Intersect with This Cubic" );
   else assert(
     false );
+}
+
+static const ArgParser::spec argsspecMidPointOfTwoPoints[] =
+{
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the midpoint of this point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the midpoint of this point" ) }
+};
+
+MidPointOfTwoPointsConstructor::MidPointOfTwoPointsConstructor()
+  : StandardConstructorBase( "", "", "", mparser ),
+    mparser( argsspecMidPointOfTwoPoints, 2 )
+{
+}
+
+MidPointOfTwoPointsConstructor::~MidPointOfTwoPointsConstructor()
+{
+}
+
+void MidPointOfTwoPointsConstructor::drawprelim(
+  KigPainter& p, const Objects& parents,
+  const KigDocument& ) const
+{
+  if ( parents.size() != 2 ) return;
+  assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( parents[1]->hasimp( ObjectImp::ID_PointImp ) );
+  const Coordinate m =
+    ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
+      static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
+  PointImp( m ).draw( p );
+}
+
+Objects MidPointOfTwoPointsConstructor::build(
+  const Objects& os, KigDocument& d, KigWidget& ) const
+{
+  RealObject* seg = new RealObject( SegmentABType::instance(), os );
+  seg->setShown( false );
+  seg->calc( d );
+  int index = seg->imp()->propertiesInternalNames().findIndex( "mid-point" );
+  assert( index != -1 );
+  PropertyObject* prop = new PropertyObject( seg, index );
+  RealObject* point = new RealObject( CopyObjectType::instance(), Objects( prop ) );
+  Objects ret( seg );
+  ret.push_back( prop );
+  ret.push_back( point );
+  return ret;
+}
+
+void MidPointOfTwoPointsConstructor::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+bool MidPointOfTwoPointsConstructor::isTransform() const
+{
+  return false;
 }

@@ -24,6 +24,7 @@
 #include "guiaction.h"
 #include "i18n.h"
 
+#include "../objects/object_imp.h"
 #include "../objects/line_type.h"
 #include "../objects/intersection_types.h"
 #include "../objects/circle_type.h"
@@ -207,13 +208,20 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_equilateralhyperbolab4p" ) );
 
-    c = new SimpleObjectTypeConstructor(
-      MidPointType::instance(),
-      I18N_NOOP( "Midpoint" ),
-      I18N_NOOP( "The midpoint of a segment or two other points" ),
-      "bisection" );
-    ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_midpoint" ) );
+    {
+      ObjectConstructor* mpotp = new MidPointOfTwoPointsConstructor();
+      ObjectConstructor* mpos = new PropertyObjectConstructor(
+        ObjectImp::ID_SegmentImp, I18N_NOOP( "Construct the midpoint of this segment" ),
+        "", "", "", "mid-point" );
+      MergeObjectConstructor* m = new MergeObjectConstructor(
+        I18N_NOOP( "Midpoint" ),
+        I18N_NOOP( "The midpoint of a segment or two other points" ),
+        "bisection" );
+      m->merge( mpotp );
+      m->merge( mpos );
+      ctors->add( m );
+      actions->add( new ConstructibleAction( m, "objects_new_midpoint" ) );
+    };
 
     c = new SimpleObjectTypeConstructor(
       VectorType::instance(),

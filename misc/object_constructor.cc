@@ -28,6 +28,7 @@
 #include "../kig/kig_view.h"
 
 #include "../objects/object_type.h"
+#include "../objects/other_type.h"
 #include "../objects/object_imp.h"
 #include "../objects/bogus_imp.h"
 
@@ -447,6 +448,55 @@ void MacroConstructor::setBuiltin( bool builtin )
 }
 
 bool ObjectConstructor::isIntersection() const
+{
+  return false;
+}
+
+PropertyObjectConstructor::PropertyObjectConstructor(
+  const int imprequirement, const char* usetext,
+  const char* descname, const char* desc,
+  const char* iconfile, const char* propertyinternalname )
+  : StandardConstructorBase( descname, desc, iconfile, mparser ),
+    mpropinternalname( propertyinternalname )
+{
+  ArgParser::spec argsspec[1];
+  argsspec[0].type = imprequirement;
+  argsspec[0].usetext = usetext;
+  mparser.initialize( argsspec, 1 );
+}
+
+PropertyObjectConstructor::~PropertyObjectConstructor()
+{
+}
+
+void PropertyObjectConstructor::drawprelim(
+  KigPainter& p, const Objects& parents,
+  const KigDocument& d ) const
+{
+  int index = parents[0]->propertiesInternalNames().findIndex( mpropinternalname );
+  assert ( index != -1 );
+  ObjectImp* imp = parents[0]->property( index, d );
+  imp->draw( p );
+  delete imp;
+}
+
+Objects PropertyObjectConstructor::build(
+  const Objects& parents, KigDocument&,
+  KigWidget& ) const
+{
+  int index = parents[0]->propertiesInternalNames().findIndex( mpropinternalname );
+  assert( index != -1 );
+  Objects ret;
+  ret.push_back( new PropertyObject( parents[0], index ) );
+  ret.push_back( new RealObject( CopyObjectType::instance(), ret ) );
+  return ret;
+}
+
+void PropertyObjectConstructor::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+bool PropertyObjectConstructor::isTransform() const
 {
   return false;
 }
