@@ -64,8 +64,10 @@ public:
 };
 
 
-CoordinateValidator::CoordinateValidator()
-  : QValidator( 0, 0 ), mpolar( polar ), mdv( 0, 0 ), mre( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
+CoordinateValidator::CoordinateValidator( bool polar )
+  : QValidator( 0, 0 ), mpolar( polar ), mdv( 0, 0 ),
+    mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?"
+         : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
 {
 }
 
@@ -77,9 +79,14 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
 {
   QString tinput = input;
   if ( tinput[tinput.length() - 1 ] == ')' ) tinput.truncate( tinput.length() - 1 );
-  while ( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
+  if ( mpolar )
+  {
+    if ( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
+    if ( tinput[tinput.length() - 1 ] == '°' ) tinput.truncate( tinput.length() - 1 );
+  };
+  if( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
   if ( tinput[0] == '(' ) tinput = tinput.mid( 1 );
-  while ( tinput[0] == ' ' ) tinput = tinput.mid( 1 );
+  if( tinput[0] == ' ' ) tinput = tinput.mid( 1 );
   int scp = tinput.find( ';' );
   if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Valid;
   else
@@ -115,9 +122,13 @@ void CoordinateValidator::fixup( QString & input ) const
   {
     sc = input.length();
     KLocale* l = KGlobal::locale();
-    input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
-                  QString::fromLatin1( "0" ) + l->decimalSymbol() +
-                  QString::fromLatin1( "0" ) );
+    if ( mpolar )
+      input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
+                    QString::fromLatin1( "0°" ) );
+    else
+      input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
+                    QString::fromLatin1( "0" ) + l->decimalSymbol() +
+                    QString::fromLatin1( "0" ) );
   };
   mre.exactMatch( input );
   QString ds1 = mre.cap( 1 );
@@ -340,14 +351,13 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
 QString PolarCoords::coordinateFormatNotice() const
 {
   // \xCE\xB8 is utf8 for the greek theta sign..
-  return i18n( "Enter coordinates in the following form: \"r; \xCE\xB8\", where "
+  return i18n( "Enter coordinates in the following form: \"r; \xCE\xB8°\", where "
                "r and \xCE\xB8 are the polar coordinates." );
 }
 
 Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?"
-                 "^([^;]+);(.+)$");
+  QRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?" );
   ok = ( regexp.search( s ) == 0 );
   if (ok)
   {
@@ -474,12 +484,12 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
 
 QValidator* EuclideanCoords::coordinateValidator() const
 {
-  return new CoordinateValidator();
+  return new CoordinateValidator( false );
 }
 
 QValidator* PolarCoords::coordinateValidator() const
 {
-  return new CoordinateValidator();
+  return new CoordinateValidator( true );
 }
 
 const Coordinate CoordinateSystem::getCoordFromUser( const QString& caption,
