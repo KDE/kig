@@ -20,15 +20,14 @@
 #define KIG_OBJECTS_LOCUS_IMP_H
 
 #include "curve_imp.h"
-
-class ObjectHierarchy;
+#include "../misc/object_hierarchy.h"
 
 class LocusImp
   : public CurveImp
 {
   typedef CurveImp Parent;
   const CurveImp* mcurve;
-  const ObjectHierarchy& mhier;
+  const ObjectHierarchy mhier;
 public:
   LocusImp( const CurveImp*, const ObjectHierarchy& );
   ~LocusImp();
