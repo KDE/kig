@@ -297,4 +297,9 @@ int ConicImp::id() const
   return ID_ConicImp;
 }
 
+void ConicImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
 

@@ -58,6 +58,7 @@ public:
   const CubicCartesianData data() const;
 
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 };
 
 #endif

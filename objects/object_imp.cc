@@ -224,4 +224,80 @@ int ObjectImp::impRequirementForProperty( uint ) const
   return ID_AnyImp;
 }
 
+void ObjectImpVisitor::visit( const ObjectImp* imp )
+{
+  imp->visit( this );
+}
 
+void ObjectImpVisitor::visit( const IntImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const DoubleImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const StringImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const InvalidImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const HierarchyImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const LineImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const PointImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const TextImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const AngleImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const VectorImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const LocusImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const CircleImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const ConicImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const CubicImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const SegmentImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const RayImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const ArcImp* )
+{
+}
+
+ObjectImpVisitor::~ObjectImpVisitor()
+{
+
+}

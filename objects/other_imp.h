@@ -52,6 +52,7 @@ public:
 
   const double size() const;
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 };
 
 class VectorImp
@@ -83,6 +84,7 @@ public:
   const Coordinate dir() const;
 
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 };
 
 // class ArcImp

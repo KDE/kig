@@ -332,4 +332,9 @@ int CubicImp::id() const
   return ID_CubicImp;
 }
 
+void CubicImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
 

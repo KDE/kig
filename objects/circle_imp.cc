@@ -277,3 +277,8 @@ int CircleImp::id() const
   return ID_CircleImp;
 }
 
+void CircleImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+

@@ -238,14 +238,14 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
 }
 
 /**
- * This function calculate the parameter of the point that realize the 
+ * This function calculate the parameter of the point that realize the
  * minimum in [a,b] of the distance between the points of the locus and
  * the point of coordinate p, using the Fibonacci method.
  * This method is optimal in the sence that assigned a number of
  * iteration it reduce to minimum the interval that contain the
  * minimum of the function
  */
-double LocusImp::getParamofmin( double a, double b, 
+double LocusImp::getParamofmin( double a, double b,
                                 const Coordinate& p,
                                 const KigDocument& doc ) const
 {
@@ -315,4 +315,9 @@ double LocusImp::getParamofmin( double a, double b,
   x = fmod( ( a +b ) / 2., 1 );
   if( x < 0 ) x += 1.;
   return(x);
+}
+
+void LocusImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
 }

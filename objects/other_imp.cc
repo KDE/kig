@@ -222,6 +222,15 @@ int VectorImp::id() const
   return ID_VectorImp;
 }
 
+void AngleImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+void VectorImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
 // ArcImp::ArcImp( const Coordinate& center, const double radius,
 //                 const double startangle, const double angle )
 //   : CurveImp(), mcenter( center ), mradius( radius ),

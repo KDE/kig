@@ -89,6 +89,7 @@ public:
   double length() const;
 
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 };
 
 class RayImp
@@ -115,6 +116,7 @@ public:
   const char* baseName() const;
 
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 };
 
 class LineImp
@@ -138,6 +140,7 @@ public:
   const char* baseName() const;
 
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 };
 
 #endif

@@ -21,6 +21,49 @@
 
 #include "common.h"
 
+class IntImp;
+class DoubleImp;
+class StringImp;
+class InvalidImp;
+class HierarchyImp;
+class CurveImp;
+class LineImp;
+class PointImp;
+class TextImp;
+class AngleImp;
+class VectorImp;
+class LocusImp;
+class CircleImp;
+class ConicImp;
+class CubicImp;
+class SegmentImp;
+class RayImp;
+class ArcImp;
+
+class ObjectImpVisitor
+{
+public:
+  virtual ~ObjectImpVisitor();
+  void visit( const ObjectImp* imp );
+  virtual void visit( const IntImp* imp );
+  virtual void visit( const DoubleImp* imp );
+  virtual void visit( const StringImp* imp );
+  virtual void visit( const InvalidImp* imp );
+  virtual void visit( const HierarchyImp* imp );
+  virtual void visit( const LineImp* imp );
+  virtual void visit( const PointImp* imp );
+  virtual void visit( const TextImp* imp );
+  virtual void visit( const AngleImp* imp );
+  virtual void visit( const VectorImp* imp );
+  virtual void visit( const LocusImp* imp );
+  virtual void visit( const CircleImp* imp );
+  virtual void visit( const ConicImp* imp );
+  virtual void visit( const CubicImp* imp );
+  virtual void visit( const SegmentImp* imp );
+  virtual void visit( const RayImp* imp );
+  virtual void visit( const ArcImp* imp );
+};
+
 typedef unsigned int uint;
 
 /**
@@ -113,6 +156,7 @@ public:
 
   // this gives the bottom-most "id" of this imp.
   virtual int id() const = 0;
+  virtual void visit( ObjectImpVisitor* vtor ) const = 0;
 
   virtual const char* baseName() const = 0;
 
@@ -127,5 +171,4 @@ public:
   // false );
   virtual void fillInNextEscape( QString& s, const KigDocument& ) const;
 };
-
 #endif

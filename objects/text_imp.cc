@@ -117,4 +117,9 @@ QString TextImp::text() const
   return mtext;
 }
 
+void TextImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
 

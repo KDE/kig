@@ -438,4 +438,19 @@ int LineImp::id() const
   return ID_LineImp;
 }
 
+void SegmentImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+void RayImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+void LineImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
 

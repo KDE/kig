@@ -220,4 +220,29 @@ int HierarchyImp::id() const
   return ID_HierarchyImp;
 }
 
+void InvalidImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+void DoubleImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+void IntImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+void StringImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+void HierarchyImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
 

@@ -52,6 +52,7 @@ public:
   int impRequirementForProperty( uint which ) const;
 
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 
   // various information about us:
   const Coordinate center() const;

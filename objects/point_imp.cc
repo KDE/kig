@@ -127,4 +127,9 @@ void PointImp::fillInNextEscape( QString& s, const KigDocument& doc ) const
   s = s.arg( doc.coordinateSystem().fromScreen( mc, doc ) );
 }
 
+void PointImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
 

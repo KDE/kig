@@ -55,6 +55,7 @@ public:
   bool inherits( int typeID ) const;
 
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 
   const char* baseName() const;
 

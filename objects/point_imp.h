@@ -52,6 +52,7 @@ public:
   const char* baseName() const;
 
   int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 
   void fillInNextEscape( QString& s, const KigDocument& ) const;
 };
