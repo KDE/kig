@@ -400,6 +400,7 @@ bool ObjectConstructorActionsProvider::executeAction(
   {
     ctor->handleArgs( os, doc, w );
     m.clearSelection();
+    w.redrawScreen();
   }
   else
   {

@@ -213,7 +213,16 @@ KigDocument::~KigDocument()
   MacroList* macrolist = MacroList::instance();
   macrolist->save( macrolist->macros(), typesDir + "macros.kigt" );
 
-  delete_all( mObjs.begin(), mObjs.end() );
+  //  this leads to crashes, cause sometimes an object deletes its
+  //  parents, and we try to delete it a second time..
+  // delete_all( mObjs.begin(), mObjs.end() );
+  while ( ! mObjs.empty() )
+  {
+    Object* o = mObjs.back();
+    mObjs.erase( mObjs.end() - 1 );
+    delete o;
+  };
+
   mObjs.clear();
 
   delete_all( aActions.begin(), aActions.end() );
