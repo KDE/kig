@@ -631,7 +631,7 @@ bool KigDocument::internalSaveAs()
       return false;
     }
   }
-  saveAs(file_name);
+  saveAs(KURL::fromPathOrURL( file_name ));
   return true;
 }
 
