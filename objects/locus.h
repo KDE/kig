@@ -23,7 +23,7 @@ class Locus
 {
 public:
   // number of points to include, i think this is a nice default...
-  static const int numberOfSamples = 150;
+  static const int numberOfSamples = 300;
 public:
   Locus() : cp(0), obj(0), hierarchy(0) { };
   ~Locus() { objs.deleteAll(); };
@@ -53,13 +53,7 @@ public:
 
   void calc();
 
-  // this is used if the obj is a point; it selects the best points
-  // from the possible ones...
-  void calcPointLocus();
-  // this is used when the obj is not a point; it just takes the first
-  // numberOfSamples objects it can find...
-  void calcObjectLocus();
-
+public:
   Point getPoint (double param) const;
   double getParam (const Point&) const;
 
@@ -77,9 +71,39 @@ protected:
   ConstrainedPoint* cp;
   Object* obj;
 
+  bool isPointLocus() const { return _pointLocus; }
+  bool _pointLocus;
+
   // don't use this for fillUp or saving, since it has 0 for
   // KigDocument pointer...
   ObjectHierarchy* hierarchy;
+
+  // objs is just a list of pointers to objects
   Objects objs;
+
+  struct CPt
+  {
+    CPt(Point inPt, double inPm) : pt(inPt), pm (inPm) {};
+    Point pt;
+    double pm;
+  };
+
+  typedef list<CPt> CPts;
+
+  // for calcPointLocus we need some special magic, so it is a special
+  // type...
+  CPts pts;
+
+  // this is used if the obj is a point; it selects the best points
+  // from the possible ones...
+  void calcPointLocus();
+  // some functions used by calcPointLocus...
+  CPts::iterator addPoint(double param);
+  void recurse(CPts::iterator, CPts::iterator, int&);
+
+  // this is used when the obj is not a point; it just takes the first
+  // numberOfSamples objects it can find...
+  void calcObjectLocus();
+
 };
 #endif
