@@ -32,13 +32,6 @@
 
 #include <kdebug.h>
 
-/**
- * Locus: the calc routines of this class are a bit unusual:
- * they're the reason we gave calc() the argument showingRect.
- * calcPointLocus only keeps points that are within the current
- * showing rect...
- */
-
 void Locus::draw(KigPainter& p, bool ss) const
 {
   // here, we simply draw the set of points we calced in the
@@ -88,7 +81,7 @@ void Locus::calcForWidget( const KigWidget& w )
     };
 
     int i = 17;
-    // minlength is the square of the maximum size that we allow
+    // maxlength is the square of the maximum size that we allow
     // between two points..
     double maxlength = 1.5 * w.pixelWidth();
     maxlength *= maxlength;
