@@ -28,8 +28,10 @@ class LineData;
 
 /**
  * Class representing a transformation.  More specifically, this class
- * represents a generic affine 2-dimensional transformation. Various
- * common transformations can be used.
+ * represents a pretty generic 2-dimensional transformation. Various
+ * common transformations can be used.  Construct a Transformation by
+ * using one of its static members, and use it either with its
+ * Transformation::apply method, or the ObjectImp::transform method.
  */
 class Transformation
 {
@@ -41,52 +43,101 @@ public:
   Transformation( double data[3][3], bool ishomothety );
 
   /**
-   * Apply.  Apply this transformation to the Coordinate c.
+   * Apply this Tranformation.  Apply this transformation to the
+   * Coordinate c.  Can return an invalid Coordinate.
    */
   const Coordinate apply( const Coordinate& c ) const;
 
+  /**
+   * Returns whether this is a homothetic transformation.
+   */
   bool isHomothetic() const;
   double getAffineDeterminant() const;
   double getRotationAngle() const;
   const Coordinate apply2by2only( const Coordinate& c ) const;
-  // a homothetic transformation maintains the ratio's of lengths.
-  // This means that every length is multiplied by a fixed number when
-  // it is projected...  This function does that calculation for
-  // you..
+  /**
+   * \ifnot creating-python-scripting-doc
+   * a homothetic transformation maintains the ratio's of lengths.
+   * This means that every length is multiplied by a fixed number when
+   * it is projected...  This function does that calculation for
+   * you..
+   * \endif
+   */
   double apply( double length ) const;
   double data( int r, int c ) const;
+  /**
+   * The inverse Transformation.  Returns the inverse Transformation
+   * of this Transformation.
+   */
   const Transformation inverse( bool& valid ) const;
 
-  // don't do anything..
+  /**
+   * Identity.  Returns the Identity Transformation, i.e. a
+   * Transformation that doesn't do anything.
+   */
   static const Transformation identity();
-  // scale over a point..
+  /**
+   * Scaling.  Returns a Transformation that scales points by a
+   * certain factor with relation to a center point.
+   */
   static const Transformation scaling( double factor, const Coordinate& center = Coordinate() );
-  // scale over a line..
+  /**
+   * Scaling.  Returns a Transformation that scales points by a
+   * certain factor with relation to a line.  Note: This is not a
+   * homothetic transformation.
+   */
   static const Transformation scaling( double factor, const LineData& l );
-  // translate..
+  /**
+   * Translation.  Returns a Translation by a vector c.
+   */
   static const Transformation translation( const Coordinate& c );
-  // rotate..
+  /**
+   * Rotation.  Returns a Rotation by a certain angle, around a
+   * certain center.
+   */
   static const Transformation rotation( double angle, const Coordinate& center = Coordinate() );
-  // reflect over a point..  this equals scaling( -1, c )
+  /**
+   * Point Reflection.  Returns a reflection over a point
+   * \note This equals scaling( -1, c );
+   */
   static const Transformation pointReflection( const Coordinate& c );
-  // reflect over a line.. this equals scaling( -1, l );
+  /**
+   * Line Reflection.  Returns a reflection over a line
+   * \note This equals scaling( -1, l );
+   */
   static const Transformation lineReflection( const LineData& l );
-  // cast a shadow, given a light source and a line indicating a plane
+  /**
+   * Cast Shadow.  Returns a Transformation that transforms points in
+   * such a way that it appears to cast a shadow, given a certain
+   * light source, and a line indicating a plane.
+   */
   static const Transformation castShadow( const Coordinate& ls,
-                                              const LineData& d );
-  // this is a test example of a projective non-affine transformation
+                                          const LineData& d );
+  /**
+   * Projective Rotation.  This is really only a test example of a
+   * projective non-affine transformation...
+   */
   static const Transformation projectiveRotation( double alpha,
-                                              const Coordinate& d,
-                                              const Coordinate& t );
+                                                  const Coordinate& d,
+                                                  const Coordinate& t );
 
-  friend const Transformation operator*( const Transformation&, const Transformation& );
+  /**
+   * Sequence.  This creates a Transformation that executes first
+   * transformation b, and then a.
+   */
+  friend const Transformation operator*( const Transformation& a, const Transformation& b );
+
+  /**
+   * Equality.  Tests two Transformation's for equality.
+   */
+  friend bool operator==( const Transformation& lhs, const Transformation& rhs );
 };
 
 const Transformation operator*( const Transformation&, const Transformation& );
 bool operator==( const Transformation& lhs, const Transformation& rhs );
 
-class Object;
-class Objects;
+// class Object;
+// class Objects;
 
 // enum tWantArgsResult { tComplete, tNotComplete, tNotGood };
 

@@ -55,17 +55,42 @@ extern const double double_inf;
 double getDoubleFromUser( const QString& caption, const QString& label, double value,
                           QWidget* parent, bool* ok, double min, double max, int decimals );
 
-// this class represents the data needed for defining a line.
+/**
+ * Class representing a line.  Used by various functions in Kig.
+ */
 class LineData {
 public:
-  Coordinate a;
-  Coordinate b;
-  const Coordinate dir() const { return b - a; };
-  double length() const { return ( b - a ).length(); };
+  /**
+   * \ifnot creating-python-scripting-doc
+   * Default constructor.  Sets a and b to the origin.
+   * \endif
+   */
   LineData() : a(), b() {};
+  /**
+   * Constructor.  Sets a and b to the given Coordinates.
+   */
   LineData( const Coordinate& na, const Coordinate& nb ) : a( na ), b( nb ) {};
+  /**
+   * One point on the line.
+   */
+  Coordinate a;
+  /**
+   * Another point on the line.
+   */
+  Coordinate b;
+  /**
+   * The direction of the line.  Equivalent to b - a.
+   */
+  const Coordinate dir() const { return b - a; };
+  /**
+   * The lenght from a to b.
+   */
+  double length() const { return ( b - a ).length(); };
 };
 
+/**
+ * Equality.  Tests two LineData's for equality.
+ */
 bool operator==( const LineData& l, const LineData& r );
 
 /**
