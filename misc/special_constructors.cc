@@ -356,10 +356,12 @@ void PolygonBNPTypeConstructor::handlePrelim(
   drawprelim( drawer, p, args, d );
 }
 
-QString PolygonBNPTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>&,
+QString PolygonBNPTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
                                           const KigDocument&, const KigWidget& ) const
 {
-  return i18n("Construct a polygon with this vertex");
+  if ( os.size() > 3 ) 
+    return i18n("... with this vertex (click on the first vertex to terminate construction)");
+  else return i18n("Construct a polygon with this vertex");
 }
 
 QString PolygonBNPTypeConstructor::selectStatement(
@@ -850,8 +852,6 @@ QString GenericIntersectionConstructor::useText(
       else if ( o.imp()->inherits( PolygonImp::stype() ) )
         return i18n( "with this Polygon" );
       else assert( false );
-      break;
-    default:
       break;
   }
 
