@@ -19,10 +19,10 @@
 **/
 
 
-#ifndef KGEO_H
-#define KGEO_H
+#ifndef KIG_FILTERS_KGEO_FILTER_H
+#define KIG_FILTERS_KGEO_FILTER_H
 
-#include "../filter.h"
+#include "filter.h"
 
 class KSimpleConfig;
 

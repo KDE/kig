@@ -18,24 +18,24 @@
  USA
 **/
 
-#include "filter.h"
+#include "kgeo-filter.h"
 
-#include "resource.h"
+#include "kgeo-resource.h"
 
-#include "../../kig/kig_part.h"
-#include "../../misc/objects.h"
-#include "../../objects/object.h"
-#include "../../objects/bogus_imp.h"
-#include "../../objects/point_imp.h"
-#include "../../objects/text_type.h"
-#include "../../objects/circle_imp.h"
-#include "../../objects/object_factory.h"
-#include "../../objects/line_type.h"
-#include "../../objects/circle_type.h"
-#include "../../objects/point_type.h"
-#include "../../objects/other_type.h"
-#include "../../objects/transform_types.h"
-#include "../../objects/intersection_types.h"
+#include "../kig/kig_part.h"
+#include "../misc/objects.h"
+#include "../objects/object.h"
+#include "../objects/bogus_imp.h"
+#include "../objects/point_imp.h"
+#include "../objects/text_type.h"
+#include "../objects/circle_imp.h"
+#include "../objects/object_factory.h"
+#include "../objects/line_type.h"
+#include "../objects/circle_type.h"
+#include "../objects/point_type.h"
+#include "../objects/other_type.h"
+#include "../objects/transform_types.h"
+#include "../objects/intersection_types.h"
 
 #include <ksimpleconfig.h>
 

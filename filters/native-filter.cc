@@ -16,16 +16,16 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#include "filter.h"
+#include "native-filter.h"
 
-#include "../../kig/kig_part.h"
-#include "../../objects/object_type.h"
-#include "../../objects/object_type_factory.h"
-#include "../../objects/object.h"
-#include "../../objects/object_imp_factory.h"
-#include "../../misc/calcpaths.h"
-#include "../../misc/coordinate_system.h"
-#include "../../misc/oldkigformat.h"
+#include "../kig/kig_part.h"
+#include "../objects/object_type.h"
+#include "../objects/object_type_factory.h"
+#include "../objects/object.h"
+#include "../objects/object_imp_factory.h"
+#include "../misc/calcpaths.h"
+#include "../misc/coordinate_system.h"
+#include "../misc/oldkigformat.h"
 
 #include <qfile.h>
 #include <qregexp.h>

@@ -18,8 +18,7 @@
  USA
 **/
 
-
-#include "filter.h"
+#include "cabri-filter.h"
 
 #include <qcstring.h>
 #include <qfile.h>
@@ -27,7 +26,7 @@
 
 #include <string>
 
-#include "../../objects/object.h"
+#include "../objects/object.h"
 
 KigFilterCabri::KigFilterCabri()
 {

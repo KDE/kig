@@ -1,5 +1,3 @@
-SUBDIRS=native kgeo cabri
-
 INCLUDES=$(all_includes)
 
 METASOURCES = AUTO
@@ -9,11 +7,18 @@ noinst_HEADERS= \
 	filter.h \
 	exporter.h \
 	exporttoimagedialog.h \
-	kseg-filter.h
+	kseg-filter.h \
+	kseg-defs.h \
+	kgeo-filter.h \
+	kgeo-resource.h \
+	cabri-filter.h \
+	native-filter.h
 libfilters_la_SOURCES= \
 	filter.cc \
 	exporter.cc \
 	exporttoimagedialogbase.ui \
 	exporttoimagedialog.cc \
-	kseg-filter.cc
-libfilters_la_LIBADD=native/libnative.la kgeo/libkgeo.la cabri/libcabri.la
+	kseg-filter.cc \
+	cabri-filter.cc \
+	kgeo-filter.cc \
+	native-filter.cc

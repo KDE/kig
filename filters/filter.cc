@@ -21,9 +21,9 @@
 
 #include "filter.h"
 
-#include "kgeo/filter.h"
-#include "cabri/filter.h"
-#include "native/filter.h"
+#include "kgeo-filter.h"
+#include "cabri-filter.h"
+#include "native-filter.h"
 #include "kseg-filter.h"
 
 KigFilters* KigFilters::sThis;

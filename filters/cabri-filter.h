@@ -29,10 +29,10 @@ because of the democratic right we all have to reverse-engineer any
 lawfully owned product...
 */
 
-#ifndef KIG_CABRI_H
-#define KIG_CABRI_H
+#ifndef KIG_FILTERS_CABRI_FILTER_H
+#define KIG_FILTERS_CABRI_FILTER_H
 
-#include "../filter.h"
+#include "filter.h"
 
 //  This is an import filter for the output of the commercial program
 //  Cabri ("CAhier de BRouillon Interactif" or something like that),

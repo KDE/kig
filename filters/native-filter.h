@@ -16,10 +16,10 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef FILTERS_NEWNATIVE_FILTER_H
-#define FILTERS_NEWNATIVE_FILTER_H
+#ifndef KIG_FILTERS_NATIVE_FILTER_H
+#define KIG_FILTERS_NATIVE_FILTER_H
 
-#include "../filter.h"
+#include "filter.h"
 
 class QDomElement;
 class KigDocument;
