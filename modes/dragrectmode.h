@@ -23,17 +23,16 @@
 #include "mode.h"
 
 #include "../misc/objects.h"
+#include "../misc/rect.h"
 
 #include <qpoint.h>
 
 /**
  * DragRectMode is a mode that provides a rect for selecting the
- * objects inside it.  It uses some QEventLoop magic to provide a very
- * clean interface.  Here's an example of how to use it, from
- * normal.cc:
+ * objects inside it.  Here's an example of how to use it
  * <code>
- * DragRectMode d( mDoc );
- * d.run( e->pos(), *v, this );
+ * DragRectMode d( e->pos(), document, widget );
+ * mDoc.runMode( &d );
  * Objects sel = d.ret();
  * </code>
  */
@@ -42,17 +41,24 @@ class DragRectMode
 {
   QPoint mstart;
   Objects mret;
+  Rect mrect;
   bool mnc;
+  bool mstartselected;
 private:
+  void clicked( const QPoint& p, KigWidget& w );
+  void clicked( const QMouseEvent* e, KigWidget& w );
   void released( const QPoint& p, KigWidget& w, bool nc );
   void released( QMouseEvent* e, KigWidget& w );
   void moved( const QPoint& p, KigWidget& w );
   void moved( QMouseEvent*, KigWidget& w );
 
+  void leftClicked( QMouseEvent*, KigWidget* );
   void leftMouseMoved( QMouseEvent*, KigWidget* );
   void leftReleased( QMouseEvent*, KigWidget* );
+  void midClicked( QMouseEvent*, KigWidget* );
   void midMouseMoved( QMouseEvent*, KigWidget* );
   void midReleased( QMouseEvent*, KigWidget* );
+  void rightClicked( QMouseEvent*, KigWidget* );
   void rightMouseMoved( QMouseEvent*, KigWidget* );
   void rightReleased( QMouseEvent*, KigWidget* );
   void mouseMoved( QMouseEvent*, KigWidget* );
@@ -61,10 +67,14 @@ private:
 
 public:
   DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w );
+  DragRectMode( KigDocument& d, KigWidget& w );
   ~DragRectMode();
 
   // this returns the selected objects..
   Objects ret() const;
+
+  // this returns the selected rect..
+  Rect rect() const;
 
   // this returns false if the control or shift button were pressed
   // when the mouse button was released, and true otherwise.  This is

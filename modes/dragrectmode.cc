@@ -26,28 +26,42 @@
 #include <qglobal.h>
 
 DragRectMode::DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w )
-  : KigMode( d ), mstart( start ), mnc( false )
+  : KigMode( d ), mstart( start ), mnc( false ), mstartselected( true )
 {
-  mdoc.emitStatusBarText( 0 );
   moved( start, w );
+}
+
+DragRectMode::DragRectMode( KigDocument& d, KigWidget& w )
+  : KigMode( d ), mnc( false ), mstartselected( false )
+{
+  w.updateCurPix();
+  w.updateWidget();
 }
 
 void DragRectMode::moved( const QPoint& p, KigWidget& w )
 {
   // update the rect...
   w.updateCurPix();
-  KigPainter pt( w.screenInfo(), &w.curPix, mdoc );
-  pt.drawFilledRect( QRect( p,  mstart ) );
-  w.updateWidget( pt.overlay() );
+  std::vector<QRect> overlay;
+  if ( mstartselected )
+  {
+    KigPainter pt( w.screenInfo(), &w.curPix, mdoc );
+    pt.drawFilledRect( QRect( p,  mstart ) );
+    overlay = pt.overlay();
+  };
+  w.updateWidget( overlay );
 }
 
 void DragRectMode::released( const QPoint& p, KigWidget& w, bool nc )
 {
-  const Rect r =  w.fromScreen( QRect( mstart, p ) );
-  mret = mdoc.whatIsInHere( r, w );
-  mnc = nc;
+  if ( mstartselected )
+  {
+    mrect =  w.fromScreen( QRect( mstart, p ) );
+    mret = mdoc.whatIsInHere( mrect, w );
+    mnc = nc;
 
-  mdoc.doneMode( this );
+    mdoc.doneMode( this );
+  };
 }
 
 void DragRectMode::enableActions()
@@ -112,5 +126,39 @@ void DragRectMode::midReleased( QMouseEvent* e, KigWidget* w )
 void DragRectMode::rightReleased( QMouseEvent* e, KigWidget* w )
 {
   released( e, *w );
+}
+
+Rect DragRectMode::rect() const
+{
+  return mrect;
+}
+
+void DragRectMode::clicked( const QMouseEvent* e, KigWidget& w )
+{
+  clicked( e->pos(), w );
+}
+
+void DragRectMode::leftClicked( QMouseEvent* e, KigWidget* w )
+{
+  clicked( e, *w );
+}
+
+void DragRectMode::midClicked( QMouseEvent* e, KigWidget* w )
+{
+  clicked( e, *w );
+}
+
+void DragRectMode::rightClicked( QMouseEvent* e, KigWidget* w )
+{
+  clicked( e, *w );
+}
+
+void DragRectMode::clicked( const QPoint& p, KigWidget& )
+{
+  if ( !mstartselected )
+  {
+    mstartselected = true;
+    mstart = p;
+  };
 }
 
