@@ -23,13 +23,12 @@
 
 class ObjectHierarchy
 {
-  // making this private to prevent me from forgetting to implement
-  // it, or prevent it from causing trouble..
-  class Node;
   std::vector<Node*> mnodes;
   uint mnumberofargs;
   int visit( const Object* o, const Objects& from );
 public:
+  class Node;
+
   ObjectHierarchy( const Objects& from, const Object* to );
   ObjectHierarchy( const ObjectHierarchy& h );
   ~ObjectHierarchy();
