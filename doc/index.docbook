@@ -73,10 +73,10 @@
       <email>devriese@kde.org</email>.
     </para>
     <para>
-      Since &kig; supports macros and locuses, it allows for some
+      Since &kig; supports macros and the construction of locuses, it allows for some
       rather advanced macros to be defined.  If you have created an
-      interesting macro, that you think might be useful for other
-      people, you can mail it to me at
+      interesting macro, which you think might be useful for other
+      people, please mail it to me at
       <email>devriese@kde.org</email>, so I can include it in the
       distribution (if you do this, it will be licensed under the
       terms of &kig;'s license, the <ulink
@@ -100,7 +100,7 @@
 		<guisubmenu>Points</guisubmenu><guimenuitem> Normal
 		Point</guimenuitem></menuchoice> from the menubar or
 		press the appropriate button in the toolbar.  You can
-		then construct a point by clicking on the desired
+		then construct a point by clicking at the desired
 		position in the window.</para>  <note><para>Actually, this
 		works the same way for constructing other objects as
 		well: click on the desired menubar entry or toolbar
@@ -110,7 +110,7 @@
 	    <listitem>
 	      <para>
 		Since you often need to construct points, simply
-		clicking somewhere on the screen with the
+		clicking somewhere in the screen with the
 		<mousebutton>middle</mousebutton> mouse button will
 		construct a point for you, without going to a menu or
 		button.
@@ -145,7 +145,7 @@
       <section id="constructing-other-objects">
 	<title>Constructing Other Objects</title>
 	<para>
-	  Constructing objects other than points is normally done by
+	  Constructing objects other than points is usually done by
 	  selecting the appropriate entry in the
 	  <guimenu>Objects</guimenu> menu, or by clicking on one of
 	  the toolbar buttons.
@@ -165,16 +165,16 @@
 	<para>
 	  This will start the construction of the chosen object type.
 	  All of these types require arguments.  For example, if you
-	  selected a circle by center and point, you will need to give
-	  it two points: one for the center, and one for the point on
+	  selected to construct a circle by center and point, you will need to give
+	  two points: one for the center, and one for the point on
 	  the circle.
 	</para>
 	<para>
-	  To select these arguments, simply click on the object you
-	  want to use.  If you move over an object that can be used to
-	  construct the object, a preliminary image will be shown of
-	  what the object will look like.  For objects that require
-	  points as arguments, you can construct a new point at the
+	  These arguments are objects too, which can also be selected, simply by clicking on them.
+	  When you move the cursor over an argument you want to use to construct an object,
+	  a preliminary image will be shown of
+	  the object, so you 'll know what it will look like.  For objects that require
+	  points as arguments, you can place a new point at the
 	  current cursor position and select it by clicking the
 	  <mousebutton>left</mousebutton> mousebutton.
 	</para>
@@ -209,7 +209,7 @@
 	  <para>
 	    Simply clicking on an object causes that object to be
 	    selected, clearing the current selection.  If you don't
-	    want that behavior, hold down the &Ctrl; key while
+	    want that behaviour, hold down the &Ctrl; key while
 	    clicking on an object.
 	  </para>
 	</listitem>
@@ -249,17 +249,17 @@
 	dragging on any one of them.  When you are done, simply release
 	the &LMB;.
       </para>
-      <note><para>For some types of objects (mostly complicated
-      Locuses), moving objects can be slow on older hardware.  This
+      <note><para>For some types of objects (especially when defined by complicated
+      locuses), moving them can be slow on old hardware.  This
       is unfortunate, but inevitable, given the calculations involved.
       </para></note> <note><para>If you
       &RMB; click one of the selected
       objects, and choose
       <guimenuitem>Move</guimenuitem>,
-      movement of the mouse will move the object. When the object is
+      moving the mouse will move the object. When the object is
       moved to the desired position, another
       &LMB; click will stop the
-      movement.  </para></note>
+      moving of the object.  </para></note>
     </section>
     <section id="deleting-objects">
       <title>Deleting objects</title>
@@ -311,7 +311,7 @@
     <section id="undo-redo">
       <title>Undo/Redo</title>
       <para>
-	In &kig;, you can undo almost any change you do to the
+	In &kig;, you can undo almost any change you make in the
 	document.  Just use the
 	<guiicon>undo</guiicon>/<guiicon>redo</guiicon> buttons on the
 	toolbar, or the appropriate shortcuts.
@@ -327,7 +327,7 @@
       </para>
       <para>
 	To leave Full Screen mode,
-	&RMB; click the screen on a place
+	&RMB; click the screen at a place
 	where there is no object present, and select
 	<guimenuitem>Exit Full Screen Mode</guimenuitem>, or press the
 	&Esc; key. 
@@ -357,12 +357,12 @@
       <title>Context Menus</title>
       <para>
 	&kig; has context menus for its objects.  Try
-	&RMB; clicking on an object to see
+	&RMB; clicking on an object in order to see
 	a context menu appear.  There are many options: for
-	constructing other objects, setting colors, and even hiding,
+	constructing other objects, setting colours, and even hiding,
 	moving or deleting objects.  Some objects have options of
 	their own (&eg; you can redefine certain points to be
-	constrained to a line where they previously weren't, &etc;).
+	constrained to a line if they previously weren't, &etc;).
 	These options should be very straightforward to understand.
       </para>
     </section>
@@ -379,15 +379,15 @@
       <title>Defining Macros</title>
       <para>
 	One of the more advanced features in &kig; is its support for
-	macros.  This allows you to define a new type of objects by
-	combining other ones.
+	macros.  This allows you to define new types of objects from
+	other ones which are defined already.
       </para>
       <para>
 	For example: Suppose you want to make a macro for constructing
 	a circle from three points on it, then you would just
 	construct three points, some perpendiculars and midpoints
 	until you find the center, and construct the circle by the
-	center you constructed and one of the previous points.  The
+	center you constructed and one of the three given points.  The
 	following image should make this a bit more clear.
       </para>
       <screenshot>
@@ -425,7 +425,7 @@
 	</mediaobject>
       </screenshot>
 
-      <para> After the previous steps were completed, click the
+      <para> After the previous steps are completed, click the
       <guibutton>next</guibutton> button to continue.  Enter a name
       and optionally a description for your new type, and click the
       <guibutton>Finish</guibutton> button.  Your macro type is now
@@ -434,7 +434,7 @@
 
       <para>
 	To use the new macro type, click its button on the toolbar or
-	use the <guimenu>Objects</guimenu> menu. Building a macro
+	use the <guimenu>Objects</guimenu> menu. Constructing a macro
 	object is just like constructing any other object.
       </para>
       <screenshot>
@@ -479,8 +479,8 @@
       <title>Text labels</title>
       <para>
 	&kig; allows you to add text labels to a construction.  This
-	is very useful for showing names, explanations or other text
-	in constructions.  &kig; can also display variable information
+	is very useful for adding names, explanations or other text
+	to constructions.  &kig; can also display variable information
 	about objects (also known as <quote>properties</quote>).
       </para>
       <para>
@@ -493,7 +493,7 @@
       <para>
 	Next, you have to choose a location for the text label.  You
 	can either just select a random location on the screen, or
-	choose to <quote>attach</quote> the label to another object.
+	choose to <quote>attach</quote> the label to an object.
       </para>
       <screenshot>
 	<screeninfo>Attaching a label to a circle...</screeninfo>
@@ -507,10 +507,9 @@
 	</mediaobject>
       </screenshot>
       <para>
-        You now reach the text label dialog.  Here, you can type in
-        the text that you want to show in the new label, and click
-        <guibutton>Finish</guibutton>. The label should now be present
-        on your document. 
+        After you have selected where to put the label, the text label dialog appears.  Here, you can type in
+        the text that you want in the new label, and click
+        <guibutton>Finish</guibutton>. You should now see the label in your document.
       </para>
       <screenshot>
 	<screeninfo>The Text Label Dialog</screeninfo>
@@ -527,24 +526,24 @@
         The previous example was a simple one, and limited to just
         text.  However, there is also support for showing variable
         information about objects in a label (&eg; you can construct a
-        label showing the text <quote>This segment is %1 units
+        label with the text <quote>This segment is %1 units
         long.</quote> where <token>%1</token> would be dynamically
         replaced with the length of a specific segment).
       </para>
       <para>
         To do this, enter a text with a number of placeholders (
-        <token>%1</token>, <token>%2</token> &etc;) in it.  When you
-        are finished, press the <guibutton>Next</guibutton> button to
+        <token>%1</token>, <token>%2</token> &etc;) in it.
+        Then, press the <guibutton>Next</guibutton> button to
         continue. If you want to change the text or variables later,
         you can go back using the <guibutton>Back</guibutton> button.
       </para>
       <para>
         The wizard now shows the text you entered with all
         placeholders replaced by something like <guilabel>argument
-        1</guilabel>.  Selecting what to show as a certain argument is
-        done by first clicking the argument in question.  Then click
-        on the object about which you want to show information, and
-        then select an interesting piece of information in the popup
+        1</guilabel>.  Selecting the property connected to a certain argument is
+        done by first clicking on the argument in question.  Then click
+        on the object that you need and that has this property, and
+        then select the property itself in the popup
         menu that appears.  For instance, in the example above, you
         would click <guilabel>argument 1</guilabel>, click on the
         correct segment in the main &kig; window, and select the
@@ -573,16 +572,15 @@
     <section id="locuses">
     <title>Locuses</title>
       <para>
-	&kig; has support for geometrical locuses.  A locus is a
-	concept from high school math.  Briefly put, it is the figure
-	defined by all the points that a point moves over, when
-	another point moves along its constraints.  This may sound a
-	little complicated, but in fact, it's not a difficult concept,
-	as the following example demonstrates.
+	&kig; supports the use of locuses.  A locus is mathematically defined as
+	the set of all points or lines that satisfy or are
+        determined by specific conditions; as in "the locus of points
+        equidistant from a given point is a circle".
+	Next I will show an example of how in the program a locus is used.
       </para>
       <para>
 	Consider the following geometrical construction: We draw a
-	circle, and a point that can move over its surface (construct
+	circle, and a point that can move only along its circumference (construct
 	this point by positioning the cursor on a circle, and clicking
 	the &MMB;.  If you then try to move the resulting point,
 	you'll see that you cannot move it off the circle).  Then, we
@@ -590,7 +588,7 @@
 	and the midpoint of that segment.
       </para>
       <screenshot>
-	<screeninfo>A simple locus construction</screeninfo>
+	<screeninfo>A simple construction using a locus</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata
@@ -598,22 +596,20 @@
 	      format="PNG"/>
 	  </imageobject>
 	  <textobject>
-	    <phrase>A simple locus construction</phrase>
+	    <phrase>A simple construction using a locus</phrase>
 	  </textobject>
 	</mediaobject>
       </screenshot>
       <para>
 	Now if you move the point that is constrained to the circle,
-	you can see that the second point moves along with it.  If you
-	would hold a pen above the second point, and you move the
+	you 'll see that the second point moves along with it.  If you
+	would hold a pen at the second point, and move the
 	first point around the entire circle, a new circle, half the
-	size of the other would be drawn.  We'll see below that this
-	is exactly what a locus does.  The path that the second point
-	travels while the first moves around the circle is what the
-	locus will look like.
+	size of the other would be drawn. The path that the second point
+	travels while the first one moves around the circle is it's locus.
       </para>
       <para>
-	Actually constructing the locus is very easy.  Click the locus
+	Actually constructing the locus of a point is very easy.  Click the locus
 	button in the toolbar, or select
 	<menuchoice><guimenu>Objects</guimenu>
 	  <guisubmenu>Other</guisubmenu>
@@ -622,7 +618,7 @@
 	from the menubar.  Then select the constrained point as the
 	moving point (the text <guilabel>Moving Point</guilabel> will
 	appear as you move the mouse over it ), and the other as the
-	dependent point.  The locus will then appear.
+	dependent point.  The locus of the dependent point will then be drawn.
       </para>
     </section>
   </chapter>
@@ -632,17 +628,17 @@
     <para>
       &kig; allows the user to create custom types in the Python
       scripting language.  This is a very advanced feature, and I know
-      of only one other Interactive Geometry program that has similar
+      of only one other Interactive Geometry program that has a similar
       functionality (the GNOME program &drgenius;). 
     </para>
     <para>
       Python Scripting in &kig; basically allows you to create your
-      own way to define an object from certain parent objects.  For
+      own objects from certain parent objects.  For
       example, if you are a math teacher, and you have some fancy way
-      of calculating an interesting point of a conic, then instead of
+      of calculating an interesting point on a conic, then instead of
       messing with complex constructions and macro's, you could just
       write down in Python code how the point is to be calculated and
-      &kig; will show it for you.
+      then &kig; will show it for you.
     </para>
     <para>
       Suppose you were not aware of the &kig; builtin MidPoint type,
@@ -668,7 +664,7 @@
     <para>
       The first thing you have to do is select the arguments for the
       script object.  In our example, this means the two points of
-      which we want to show the midpoint.  Select them in the &kig; 
+      which we want to show the midpoint.  Select them in the &kig;
       main window, and click <guibutton>Next</guibutton> to proceed.
     </para>
     <para>
@@ -676,7 +672,7 @@
       the code for you script object.  Template code and some comments
       are already in place.  It is important to make sure that your
       code is valid Python code.  People familiar with Python will
-      note that we are actually defining a Python function called
+      notice that we are actually defining a Python function called
       <function>calc</function>.  It is therefore necessary to adhere
       to the Python rules for defining functions.  For example, every
       line of the function should start with a <keysym>Tab</keysym>.
@@ -684,10 +680,10 @@
       definition of the function.
     </para>
     <para>
-      The python function that should be defined is called
-      <quote>calc</quote>, and in our case accepts two arguments.
+      The python function that we want to define is called
+      <quote>calc</quote>, and in our case it accepts two arguments.
       These are the objects you have selected as arguments in the
-      previous screen.  There will be as much arguments as you have
+      previous screen.  You need as many arguments as you have
       selected there.  They are called <parameter>arg1</parameter> and
       <parameter>arg2</parameter>, but you can change their names to
       something more meaningful if you want.
@@ -695,15 +691,15 @@
     <para>
       In the function, you can do all sorts of calculations that you
       deem necessary, using the two arguments if needed.  You should
-      return the object you want to appear.  In our case, this is a
+      return the object you want to define.  In our case, this is a
       Point object.  The two arguments are also Point objects, and we
       can use the <function>Point.coordinate()</function> function to
-      get hold of the coordinates of the two given points.
+      define the coordinates of the two given points.
     </para>
     <para>
       The calculation necessary in our example is very simple, we
-      simply add the two coordinates together, and divide the result
-      by two.  We then construct a new point using that coordinate.
+      simply add the two sets of coordinates, and divide the new set
+      by two.  We then construct a new point using the result.
       The python code needed is:</para>
 
 <programlisting>
@@ -724,10 +720,10 @@
       </mediaobject>
     </screenshot>
     <para>
-      If you now click the <guibutton>Finish</guibutton> button, then
-      the new object will appear in the &kig; document. If you move 
-      one of the points, then the newly created point will move along 
-      with them. A lot more powerful objects can be built in this way,
+      If you now click the <guibutton>Finish</guibutton> button,
+      the new object will appear in the &kig; document. If you move
+      one of the points, the newly created point will move along
+      with it. A lot more powerful objects can be built in this way,
       you are encouraged to try it out.
     </para>
     <screenshot>
@@ -748,8 +744,8 @@
       seen above, points are of the Point class, and you can use &eg;
       the <function>Point.coordinate()</function> method.  You can
       also return all kinds of objects, not just Points.  Many more
-      classes and methods are available from the &kig; Python code,
-      and a more complete reference on them is provided <ulink
+      classes and methods are available in the &kig; Python code,
+      and a more complete reference is provided <ulink
       url="http://edu.kde.org/kig/manual/scripting-api/index.html">here</ulink>.
     </para>
   </chapter>
@@ -777,7 +773,7 @@
 	<listitem>
 	  <para>
 	    &kig; is a KPart application, which means that you can
-	    embed it in other &kde; software.  If you open a <literal
+	    embed it into other &kde; software.  If you open a <literal
 	    role="extension">.kig</literal> file in &konqueror;, it
 	    can be opened directly in the &konqueror; screen without
 	    the need to start an external application.
@@ -828,7 +824,7 @@
 	</listitem>
 	<listitem>
 	  <para>
-	    &kig; aims to be compatible with its competitors.. This is
+	    &kig; aims to be compatible with its competitors. This is
 	    why it supports the &kgeo; file format, the &kseg; file
 	    format, and support for other formats is planned also.
 	  </para>
@@ -896,15 +892,15 @@
     <section id="contribute-to-kig">
       <title>Contribute</title>
       <para>
-	The point of this chapter is to point you (the user) to the
+	In this chapter I want to point out to you (the user) the
 	rights that &kig;'s license gives you.  As with all free
 	software, you are allowed (and encouraged) to fix problems
 	you encounter while using it, to add features you miss, to
 	distribute your modified program, and to send these
 	modifications to me at <email>devriese@kde.org</email>, so
 	that I can include them in the next version for others to
-	enjoy.  I personally have no financial interest in this
-	project whatsoever, so this isn't just marketing-speak here.
+	enjoy.  Please note I personally have no financial interest in this
+	project whatsoever.
       </para>
       <para>
 	If you are uncertain of your rights to use this software, or
@@ -917,10 +913,10 @@
     <section id="howto-contribute">
       <title>How to contribute ?</title>
       <para>
-	Any contributions are welcome.  If you think the icons suck,
-	or that the manual needs updating, or you have this really
+	Any contributions are welcome.  If you don't like the icons,
+	or think that the manual needs updating, or if you have this really
 	cool macro that you want to share with the world, do not
-	hesitate to send it to me.  Please note that your
+	hesitate and send it to me.  Please note that your
 	contributions will be distributed under the terms of the &GNU;
 	GPL; you can find the terms of this license in the
 	<filename>COPYING</filename> file in the &kig; source tree,
