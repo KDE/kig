@@ -331,3 +331,25 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     //  p.drawLine( 0, top, 0, top - 6 );
   }; // if( showaxes )
 }
+
+static const char* euclideanTypeString = "Euclidean";
+static const char* polarTypeString = "Polar";
+
+CoordinateSystem* CoordinateSystemFactory::build( const char* type )
+{
+  if ( std::string( euclideanTypeString ) == type )
+    return new EuclideanCoords;
+  if ( std::string( polarTypeString ) == type )
+    return new PolarCoords;
+  else return 0;
+}
+
+const char* EuclideanCoords::type() const
+{
+  return euclideanTypeString;
+}
+
+const char* PolarCoords::type() const
+{
+  return polarTypeString;
+}
