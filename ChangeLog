@@ -1,12 +1,17 @@
-2003-05-28  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-30  Dominique Devriese  <devriese@kde.org>
+
+	* Add an option to select the part of the screen that should be
+		shown by dragging a rect..
+
+2003-05-28  Dominique Devriese  <devriese@kde.org>
 
 	* fix warnings when compiling with --disable-debug
 
-2003-05-26  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-26  Dominique Devriese  <devriese@kde.org>
 
 	* fix a crash bug for a weird cubic situation
 
-2003-05-25  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-25  Dominique Devriese  <devriese@kde.org>
 
 	* implement another of Stephan Binner's suggestions: in the set
 		coordinate system popup, show a checked mark next to the 
@@ -16,7 +21,7 @@
 	* fix a bug that caused the "circle by center and point" type to
 		not be visible..
 
-2003-05-24  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-24  Dominique Devriese  <devriese@kde.org>
 
 	* when the user tries to construct a macro that constructs an
 		object from its children, warn him instead of
@@ -24,15 +29,15 @@
 
 	* improve the export to image dialog, as suggested by Stephan Binner
 
-2003-05-23  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-23  Dominique Devriese  <devriese@kde.org>
 
 	* remove some obsolete code and clean some older code up..
 
-2003-05-22  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-22  Dominique Devriese  <devriese@kde.org>
 
 	* add simple printing support using the fantastic KDE-Print lib
 
-2003-05-21  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-21  Dominique Devriese  <devriese@kde.org>
 
 	* fix the full screen mode, to use the correct shortcut for
 		starting and stopping it, and use QWidget::showFullScreen, instead
@@ -40,7 +45,7 @@
 
 	* "branch off" release 0.5, and update the version strings etc.
 
-2003-05-17  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-17  Dominique Devriese  <devriese@kde.org>
 
 	* add a toolbar icon ( i.e. GUIAction ) for constructing an angle
 		bisector..
@@ -50,11 +55,11 @@
 	* take advantage of the new invalid coordinate when creating circles
 		and arcs through three aligned points
 
-2003-05-13  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-13  Dominique Devriese  <devriese@kde.org>
 
 	* fix compilation with --enable-final
 
-2003-05-12  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-12  Dominique Devriese  <devriese@kde.org>
 
 	* fix a crash bug for macro's involving PropertyImp
 
@@ -63,7 +68,7 @@
 
 	* add an angle bisector property
 
-2003-05-10  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-10  Dominique Devriese  <devriese@kde.org>
 
 	* fix the transformation types for cases where the object being
 		transformed is the same as one of the arguments that the
@@ -81,7 +86,7 @@
 		no problems arise with the new setup.  The generic drawCurve
 		is used in place of drawCubic.
 
-2003-05-08  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-08  Dominique Devriese  <devriese@kde.org>
 
 	* add support for quite some more types to the kseg import filter
 
@@ -91,7 +96,7 @@
 		problem was located in calcCubicRoot when the degree is
 		less than 3
 
-2003-05-08  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-08  Dominique Devriese  <devriese@kde.org>
 
 	* add some properties to the arc object
 
@@ -100,24 +105,24 @@
 	* fix for deleting: remove deleted objects from their children, so
 		  they don't appear in saved files
 
-2003-05-07  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-07  Dominique Devriese  <devriese@kde.org>
 
 	* more undo support: redefining text labels and points is undoable
 		  now..
 
 	* small undo stuff cleanup
 
-2003-05-06  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-06  Dominique Devriese  <devriese@kde.org>
 
 	* fix the change text action for text labels to reuse the label
 		  construction dialog.  this makes it support multi-line
 		  labels, and changing the parameters
 
-2003-05-05  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-05  Dominique Devriese  <devriese@kde.org>
 
 	* add zoom in/out icons to the document popup menu
 
-2003-05-03  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+2003-05-03  Dominique Devriese  <devriese@kde.org>
 
 	* add support for multiline text labels..  still needs some
 		  further work.. 
