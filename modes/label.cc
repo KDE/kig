@@ -170,7 +170,7 @@ void TextLabelConstructionMode::selectArgumentsPageEntered()
 
 void TextLabelConstructionMode::cancelPressed()
 {
-  killMode();
+  cancelConstruction();
 }
 
 static uint percentCount( const QString& s )
@@ -199,8 +199,8 @@ void TextLabelConstructionMode::finishPressed()
 
     Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe );
     labelos.calc( mdoc );
-    killMode();
     mdoc.addObjects( labelos );
+    killMode();
   }
   else
   {
@@ -220,9 +220,9 @@ void TextLabelConstructionMode::finishPressed()
       Objects args( margs.begin(), margs.end() );
       Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe, args );
       labelos.calc( mdoc );
-      killMode();
       copy( labelos.begin(), labelos.end(), back_inserter( args ) );
       mdoc.addObjects( args );
+      killMode();
     };
   };
 }
