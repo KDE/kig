@@ -22,14 +22,18 @@ if test x$kig_warn_about_disabling_python = xyes; then
   echo ""
 fi
 
-if test x$kig_enable_python_scripting = xyes; then
+if test "x$kig_enable_python_scripting" = "xyes"; then
     # tell users about the Boost.Python 1.30 + GCC 3.2+ problem and patch. 
-    echo ""
-    echo "WARNING"
-    echo "======="
-    echo "There is a problem when using Boost.Python 1.30 with GCC version "
-    echo "3.2 and above.  If you are using this combination, then you should "
-    echo "read the file README.boost-python1.30-gcc3.2 included in the Kig "
-    echo "distribution before trying to compile kig or it will fail with a "
-    echo "parse error."
+    cat << EOF
+
+Kig WARNING
+===========
+There is a problem using unpatched Boost.Python 1.30 in combination
+with GCC 3.2 and above.  In some distributions, like Debian sarge, 
+this problem has been fixed, but in other distributions, the problem 
+may still be there.  If you encounter problems while compiling Kig, 
+then you should try to re-run configure with the option 
+"--disable-kig-python-scripting".  This may fix the compilation, but 
+you will not be able to use the Kig Python Scripting.
+EOF
 fi

@@ -1,5 +1,13 @@
 2003-08-25  Dominique Devriese  <devriese@kde.org>
 
+	* update the configure.in.* files and remove
+	README.boost-python1.30-gcc3.2 and boost-python1.30-gcc3.2.patch
+	because distributing a Boost.Python patch with Kig is really
+	stupid, and because the Debian packagers have already applied the
+	patch in their version of Boost.Python, and so should the other
+	distro's.  Seems I need to thank Ben Burton for suggesting to the
+	Debian packagers to apply the patch.
+
 	* fix a wrong "lib not found error" in configure.in.in by removing
 	-pedantic from CXXFLAGS while trying to compile.
 
