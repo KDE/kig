@@ -41,6 +41,7 @@ public:
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
+  const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
 
   bool inherits( int type ) const;

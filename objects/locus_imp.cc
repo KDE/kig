@@ -96,6 +96,11 @@ const uint LocusImp::numberOfProperties() const
   return Parent::numberOfProperties();
 }
 
+const QCStringList LocusImp::propertiesInternalNames() const
+{
+  return Parent::propertiesInternalNames();
+}
+
 const QCStringList LocusImp::properties() const
 {
   return Parent::properties();
@@ -130,3 +135,4 @@ int LocusImp::id() const
 {
   return ID_LocusImp;
 }
+

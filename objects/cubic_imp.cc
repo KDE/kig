@@ -289,6 +289,11 @@ const uint CubicImp::numberOfProperties() const
   return Parent::numberOfProperties();
 }
 
+const QCStringList CubicImp::propertiesInternalNames() const
+{
+  return Parent::propertiesInternalNames();
+}
+
 const QCStringList CubicImp::properties() const
 {
   // TODO ?
@@ -315,3 +320,4 @@ int CubicImp::id() const
 {
   return ID_CubicImp;
 }
+

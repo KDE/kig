@@ -57,6 +57,15 @@ ObjectImp* AbstractLineImp::property( uint which, const KigDocument& w ) const
   else assert( false );
 }
 
+const QCStringList AbstractLineImp::propertiesInternalNames() const
+{
+  QCStringList l = Parent::propertiesInternalNames();
+  l << I18N_NOOP( "slope" );
+  l << I18N_NOOP( "equation" );
+  assert( l.size() == AbstractLineImp::numberOfProperties() );
+  return l;
+}
+
 const QCStringList AbstractLineImp::properties() const
 {
   QCStringList l = Parent::properties();
@@ -84,6 +93,14 @@ int LineImp::type() const
 const uint SegmentImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
+}
+
+const QCStringList SegmentImp::propertiesInternalNames() const
+{
+  QCStringList s = Parent::propertiesInternalNames();
+  s << I18N_NOOP( "length" );
+  assert( s.size() == SegmentImp::numberOfProperties() );
+  return s;
 }
 
 const QCStringList SegmentImp::properties() const

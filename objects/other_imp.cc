@@ -75,6 +75,15 @@ const uint AngleImp::numberOfProperties() const
   return Parent::numberOfProperties() + 2;
 }
 
+const QCStringList AngleImp::propertiesInternalNames() const
+{
+  QCStringList l = Parent::propertiesInternalNames();
+  l << I18N_NOOP( "angle-radian" );
+  l << I18N_NOOP( "angle-degrees" );
+  assert( l.size() == AngleImp::numberOfProperties() );
+  return l;
+}
+
 const QCStringList AngleImp::properties() const
 {
   QCStringList l = Parent::properties();
@@ -149,6 +158,11 @@ const uint VectorImp::numberOfProperties() const
   return Parent::numberOfProperties();
 }
 
+const QCStringList VectorImp::propertiesInternalNames() const
+{
+  return Parent::propertiesInternalNames();
+}
+
 const QCStringList VectorImp::properties() const
 {
   return Parent::properties();
@@ -193,3 +207,4 @@ int VectorImp::id() const
 {
   return ID_VectorImp;
 }
+

@@ -165,3 +165,8 @@ int StringImp::id() const
 {
   return ID_StringImp;
 }
+
+const QCStringList BogusImp::propertiesInternalNames() const
+{
+  return QCStringList();
+}

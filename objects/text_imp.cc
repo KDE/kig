@@ -66,6 +66,11 @@ const uint TextImp::numberOfProperties() const
   return Parent::numberOfProperties();
 }
 
+const QCStringList TextImp::propertiesInternalNames() const
+{
+  return Parent::propertiesInternalNames();
+}
+
 const QCStringList TextImp::properties() const
 {
   return Parent::properties();
@@ -90,3 +95,4 @@ const char* TextImp::baseName() const
 {
   return "label";
 }
+

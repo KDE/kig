@@ -43,7 +43,13 @@ public:
   virtual bool valid() const;
 
   virtual const uint numberOfProperties() const = 0;
+  // the names of the properties as perceived by the user..  put
+  // I18N_NOOP's around them here..
   virtual const QCStringList properties() const = 0;
+  // the names of the properties as known only by kig internally.  No
+  // need for I18N_NOOP.  Preferably choose some lowercase name with
+  // only letters and dashes, no spaces..
+  virtual const QCStringList propertiesInternalNames() const = 0;
   virtual ObjectImp* property( uint which, const KigDocument& d ) const = 0;
 
   enum {

@@ -46,7 +46,8 @@ public:
 
   enum {
     ID_RealObject,
-    ID_DataObject
+    ID_DataObject,
+    ID_PropertyObject
   };
 
   virtual bool inherits( int type ) const;
@@ -82,6 +83,7 @@ public:
   const uint numberOfProperties() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const QCStringList properties() const;
+  const QCStringList propertiesInternalNames() const;
 
   // every kind of object can have children, and there is no easier
   // way of knowing which they are than to store their pointers.
@@ -220,6 +222,9 @@ public:
 
   const ObjectImp* imp() const;
   Objects parents() const;
+
+  const Object* parent() const;
+  int propId() const;
 
   void draw( KigPainter& p, bool showSelection ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;

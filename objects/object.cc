@@ -116,6 +116,11 @@ ObjectImp* Object::property( uint which, const KigDocument& w ) const
   return imp()->property( which, w );
 }
 
+const QCStringList Object::propertiesInternalNames() const
+{
+  return imp()->propertiesInternalNames();
+}
+
 const QCStringList Object::properties() const
 {
   return imp()->properties();
@@ -363,9 +368,9 @@ PropertyObject::~PropertyObject()
 {
 }
 
-bool PropertyObject::inherits( int ) const
+bool PropertyObject::inherits( int type ) const
 {
-  return false;
+  return type == ID_PropertyObject;
 }
 
 bool PropertyObject::isInternal() const
@@ -416,3 +421,14 @@ bool PropertyObject::shown() const
 {
   return false;
 }
+
+const Object* PropertyObject::parent() const
+{
+  return mparent;
+}
+
+int PropertyObject::propId() const
+{
+  return mpropid;
+}
+

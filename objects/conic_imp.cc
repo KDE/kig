@@ -78,6 +78,18 @@ const uint ConicImp::numberOfProperties() const
   return CurveImp::numberOfProperties() + 5;
 }
 
+const QCStringList ConicImp::propertiesInternalNames() const
+{
+  QCStringList l = CurveImp::propertiesInternalNames();
+  l << I18N_NOOP( "type" );
+  l << I18N_NOOP( "first-focus" );
+  l << I18N_NOOP( "second-focus" );
+  l << I18N_NOOP( "cartesian-equation" );
+  l << I18N_NOOP( "polar-equation" );
+  assert( l.size() == ConicImp::numberOfProperties() );
+  return l;
+}
+
 const QCStringList ConicImp::properties() const
 {
   QCStringList l = CurveImp::properties();
@@ -276,3 +288,4 @@ int ConicImp::id() const
 {
   return ID_ConicImp;
 }
+
