@@ -261,8 +261,12 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
   Coordinate p3 = p2 - p1;
   Rect border = window();
   double length = p3.length();
-  // if length is smaller than one, we risk getting a divide by zero
-  length = std::max( length, 1. );
+  if ( length < 10e-20 )
+  {
+    // hopefully prevent SIGZERO's
+    mOverlay.push_back( Rect( p1, p2 ) );
+    return;
+  };
   p3 *= overlayRectSize();
   p3 /= length;
 
@@ -470,7 +474,7 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
     coordparampair( 0, conicGetCoord( 0, ecostheta0, esintheta0,
                                       pdimen, focus1 ) );
 
-  for ( double i = 1./20; i <= 2*M_PI; i += 1./20 )
+  for ( double i = M_PI/20; i <= 2*M_PI; i += M_PI/20 )
   {
     Coordinate c = conicGetCoord( i, ecostheta0, esintheta0,
                                   pdimen, focus1 );
