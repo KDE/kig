@@ -16,7 +16,7 @@ libkigpart_la_LIBADD  = $(LIB_KPARTS) \
 	modes/libmodes.la $(scriptinglib) kig/libkigparttemp.la
 
 messages: rc.cpp
-	$(EXTRACTRC) *.rc */*.rc >> rc.cpp
+	$(EXTRACTRC) */*.rc >> rc.cpp
 	$(EXTRACTRC) */*.ui >> rc.cpp
 	for file in macros/*.kigt; do \
 		cat "$$file" | grep '<Name>' | sed -e 's/^ *<Name>\([^<]*\)<\/Name>/i18n( "\1" );/' | sed -e 's/&amp;/\&/g' >> rc.cpp; \
