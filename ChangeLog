@@ -19,6 +19,8 @@
 
 	* The KSeg filter can import bisector lines.
 
+	* Add a new tip.
+
 2004-09-02  Dominique Devriese  <devriese@kde.org>
 
 	* Commit David Vignoni's new kig_doc icon

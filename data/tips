@@ -19,7 +19,7 @@ button</em>.</p>
 <html>
 <p>Kig can open several file formats: its files (<code>.kig</code> files),
 <em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>
-files.</p>
+and <em>Cabri&#8482;</em> files.</p>
 </html>
 </tip>
 
@@ -27,5 +27,14 @@ files.</p>
 <html>
 <p>Kig has more than 40 objects and 10 trasformations you can construct and use
 in your documents: open the <em>Objects</em> menu to see them all.</p>
+</html>
+</tip>
+
+<tip category="Kig">
+<html>
+<p>You can use the selected objects to start the construction of an object
+which requires the selected objects as arguments. For example, if you have two
+points selected, you can choose <em>Start->Circle by Three Points</em> from the
+popup menu to start constructing a circle by three points.</p>
 </html>
 </tip>
