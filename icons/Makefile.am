@@ -8,4 +8,5 @@ data_DATA = angle.png arc.png areaCircle.png attacher.png baseCircle.png \
 	    point8.png pointOnLine.png point.png pointxy.png ray.png \
 	    rotation.png segment.png sizer.png slope.png text.png \
 	    triangle.png vector.png window_fullscreen.png move.png \
-	    circlebtp.png
+	    circlebtp.png circlelineintersection.png radicalline.png \
+	    ellipsebffp.png
