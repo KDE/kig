@@ -33,6 +33,9 @@
 #include "../../objects/line_type.h"
 #include "../../objects/circle_type.h"
 #include "../../objects/point_type.h"
+#include "../../objects/other_type.h"
+#include "../../objects/transform_types.h"
+#include "../../objects/intersection_types.h"
 
 #include <ksimpleconfig.h>
 
@@ -149,7 +152,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 
   std::vector<HierElem> sortedElems = sortElems( elems );
   Objects dataos;
-  Objects os( number, (Object*)0 );
+  os.resize( number, 0 );
   ObjectFactory* factory = ObjectFactory::instance();
 
   // now we iterate over the elems again in the newly determined
@@ -165,7 +168,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 //    kdDebug() << k_funcinfo << "objID: " << objID << endl;
 
     Objects parents;
-    for ( int j = 0; j < e.parents.size(); ++j )
+    for ( uint j = 0; j < e.parents.size(); ++j )
     {
       int parentid = e.parents[j];
       parents.push_back( os[parentid] );
@@ -236,7 +239,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
     }
     case ID_move:
     {
-      os[id] = new RealObject( TranslationType::instance(), parents );
+      os[id] = new RealObject( TranslatedType::instance(), parents );
       break;
     }
     case ID_mirrorPoint:
@@ -295,8 +298,8 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       dataos.push_back( new RealObject( SegmentABType::instance(), parents ) );
       Object* segment = dataos.back();
       segment->setShown( false );
-      Coordinate m = ( static_cast<const PointImp*>( parents[0] )->coordinate() +
-                       static_cast<const PointImp*>( parents[1] )->coordinate() ) / 2;
+      Coordinate m = ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
+                       static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
       parents.clear();
       os[i] = constructTextObject( m, segment, "length", dataos );
       break;
@@ -311,7 +314,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       if ( parents.size() != 1 ) return ParseError;
       const CircleImp* circle = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate c = circle->center() + Coordinate( circle->radius(), 0 );
-      os[i] = constructTextObject( c, circle, "surface", dataos );
+      os[i] = constructTextObject( c, parents[0], "surface", dataos );
       break;
     }
     case ID_slope:
@@ -332,8 +335,8 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
     {
       if ( parents.size() != 1 ) return ParseError;
       const CircleImp* c = static_cast<const CircleImp*>( parents[0]->imp() );
-      const Coordinate c = c->center() + Coordinate( c->radius(), 0 );
-      os[i] = constructTextObject( c, parents[0], "circumference", dataos );
+      const Coordinate m = c->center() + Coordinate( c->radius(), 0 );
+      os[i] = constructTextObject( m, parents[0], "circumference", dataos );
       break;
     }
     case ID_rotation:
