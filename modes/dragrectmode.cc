@@ -27,13 +27,13 @@
 #include <kaction.h>
 
 DragRectMode::DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w )
-  : KigMode( d ), mstart( start ), mnc( false ), mstartselected( true )
+  : KigMode( d ), mstart( start ), mnc( true ), mstartselected( true )
 {
   moved( start, w );
 }
 
 DragRectMode::DragRectMode( KigDocument& d, KigWidget& w )
-  : KigMode( d ), mnc( false ), mstartselected( false ),
+  : KigMode( d ), mnc( true ), mstartselected( false ),
     mcancelled( false )
 {
   w.updateCurPix();

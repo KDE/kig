@@ -1,3 +1,8 @@
+2003-07-02  Dominique Devriese  <devriese@kde.org>
+
+	* fix the clearing of the selection when the user clicks on an
+	empty point..
+
 2003-06-27  Dominique Devriese  <devriese@kde.org>
 
 	* implement helpSlot() in ManageTypesDialog..
