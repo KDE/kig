@@ -161,3 +161,33 @@ int CircleBTPType::resultId() const
 {
   return ObjectImp::ID_CircleImp;
 }
+
+static const ArgParser::spec argsspecpd[] =
+{
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a circle with this center" ) },
+  { ObjectImp::ID_DoubleImp, "UNUSED" }
+};
+
+CircleBPRType::CircleBPRType()
+  : ArgparserObjectType( "CircleBPR", argsspecpd, 2 )
+{
+}
+
+CircleBPRType::~CircleBPRType()
+{
+}
+
+const CircleBPRType* CircleBPRType::instance()
+{
+  static const CircleBPRType t;
+  return &t;
+}
+
+ObjectImp* CircleBPRType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( args.size() != 2 ) return new InvalidImp;
+  const Args a = margsparser.parse( args );
+  const Coordinate c = static_cast<const PointImp*>( a[0] )->coordinate();
+  double r = static_cast<const DoubleImp*>( a[1] )->data();
+  return new CircleImp( c, r );
+}

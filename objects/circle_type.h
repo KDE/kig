@@ -33,6 +33,18 @@ public:
   int resultId() const;
 };
 
+class CircleBPRType
+  : public ArgparserObjectType
+{
+  CircleBPRType();
+  ~CircleBPRType();
+public:
+  static const CircleBPRType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  int resultId() const;
+};
+
 class CircleBTPType
   : public ArgparserObjectType
 {
