@@ -254,6 +254,16 @@ BOOST_PYTHON_MODULE_INIT( kig )
 //     .def( "data", &StringImp::data )
 //     .def( "setData", &StringImp::setData )
     ;
+
+//   class_<CubicCartesianData>
+
+//   class_<CubicImp, bases<CurveImp> >( "Cubic", init<CubicCartesianData>() )
+//     .def( "stype", &CubicImp::stype,
+//           return_value_policy<reference_existing_object>() )
+//     .staticmethod( "stype" )
+//     .def( "data", &CubicImp::data )
+//     ;
+
 };
 
 PythonScripter* PythonScripter::instance()
