@@ -122,22 +122,20 @@ KigDocument* KigFilterNative::load( const QString& file )
   bool ok = true;
   int major = versionre.cap( 1 ).toInt( &ok );
   bool ok2 = true;
-  int minor = versionre.cap( 2 ).toInt( &ok );
-  if ( minor < 0 )
-    KIG_FILTER_PARSE_ERROR;
+  int minor = versionre.cap( 2 ).toInt( &ok2 );
   if ( ! ok || ! ok2 )
     KIG_FILTER_PARSE_ERROR;
 
   //   int minorminor = versionre.cap( 4 ).toInt( &ok );
 
-  // we only support 0.* and 1.0 for now.
-  if ( major != 0 && !( major == 1 && minor < 1 ) )
+  // we only support 0.[0-7] and 1.0.*
+  if ( ( major == 0 && minor > 7 ) || ( major == 1 && minor > 0 ) )
   {
     notSupported( file, i18n( "This file was created by Kig version \"%1\", "
                               "which this version cannot open." ).arg( version ) );
     return false;
   }
-  else if ( minor <= 3 )
+  else if ( major == 0 && minor <= 3 )
   {
     notSupported( file, i18n( "This file was created by Kig version \"%1\".\n"
                               "Support for older Kig formats (pre-0.4) has been "
@@ -148,7 +146,7 @@ KigDocument* KigFilterNative::load( const QString& file )
                               "new format." ).arg( version ) );
     return false;
   }
-  else if ( minor <= 6 )
+  else if ( major == 0 && minor <= 6 )
     return load04( file, main );
   else
     return load07( file, main );
