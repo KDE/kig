@@ -1,21 +1,21 @@
 /**
- This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
+   This file is part of Kig, a KDE program for Interactive Geometry...
+   Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
- USA
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+   USA
 **/
 
 #include "kigpainter.h"
@@ -113,7 +113,7 @@ void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags, in
 }
 
 const Rect KigPainter::boundingRect( const Rect& r, const QString s,
-                                      int f, int l ) const
+                                     int f, int l ) const
 {
   return fromScreen( mP.boundingRect( toScreen( r ), f, s, l ) );
 };
@@ -171,11 +171,11 @@ void KigPainter::drawPolygon( const std::vector<Coordinate>& pts, bool winding, 
   QPointArray t( pts.size() );
   int c = 0;
   for( std::vector<Coordinate>::const_iterator i = pts.begin(); i != pts.end(); ++i )
-    {
-      sr.setContains( *i );
-      QPoint tt = toScreen (*i);
-      t.putPoints( c++, 1, tt.x(), tt.y() );
-    };
+  {
+    sr.setContains( *i );
+    QPoint tt = toScreen (*i);
+    t.putPoints( c++, 1, tt.x(), tt.y() );
+  };
   mP.drawPolygon( t, winding, index, npoints );
   mOverlay.push_back( toScreen( sr ) );
 }
@@ -290,17 +290,17 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
     Coordinate tP = p1+p3*counter;
     tR.setCenter(tP);
     if (!tR.intersects(r))
-      {
-	//kdDebug()<< "stopped after "<< counter << " passes." << endl;
-	break;
-      }
+    {
+      //kdDebug()<< "stopped after "<< counter << " passes." << endl;
+      break;
+    }
     if (tR.intersects(border)) mOverlay.push_back( toScreen( tR ) );
     if (++counter > 100)
-      {
-	kdError()<< k_funcinfo << "counter got too big :( " << endl;
-	break;
-      }
+    {
+      kdError()<< k_funcinfo << "counter got too big :( " << endl;
+      break;
     }
+  }
 }
 
 double KigPainter::overlayRectSize()
@@ -398,7 +398,7 @@ const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const QString s 
 }
 
 const Rect KigPainter::boundingRect( const Coordinate& c, const QString s,
-                                      int f, int l ) const
+                                     int f, int l ) const
 {
   return boundingRect( Rect( c, mP.window().right(), mP.window().top() ),
                        s, f, l );
@@ -433,7 +433,7 @@ void KigPainter::drawArc( const Rect& surroundingRect, int startAngle, int angle
 
 void KigPainter::drawFatPoint( const Coordinate& p )
 {
-    drawFatPoint( p, 5 * pixelWidth() );
+  drawFatPoint( p, 5 * pixelWidth() );
 }
 
 inline Coordinate conicGetCoord( double theta, double ecostheta0,
@@ -447,6 +447,18 @@ inline Coordinate conicGetCoord( double theta, double ecostheta0,
   double rho = pdimen / (1.0 - ecosthetamtheta);
   return focus1 + rho * Coordinate( costheta, sintheta );
 };
+
+typedef std::pair<double,Coordinate> coordparampair;
+
+struct workitem
+{
+  workitem( coordparampair f, coordparampair s, Rect *o) :
+    first(f), second(s), overlay(o) {};
+  coordparampair first;
+  coordparampair second;
+  Rect		 *overlay;
+};
+//typedef std::pair<coordparampair, coordparampair> workitem;
 
 void KigPainter::drawConic( const ConicPolarEquationData& data )
 {
@@ -470,27 +482,40 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
   // we manage our own overlay
   bool tNeedOverlay = mNeedOverlay;
   mNeedOverlay = false;
-  Rect overlay;
 
   // this stack contains pairs of Coordinates that we still need to
   // process:
-  typedef std::pair<double,Coordinate> coordparampair;
-  typedef std::pair<coordparampair, coordparampair> workitem;
   std::stack<workitem> workstack;
+  // mp: this stack contains all the generated overlays:
+  // the strategy for generating the overlay structure is the same
+  // recursive-like used to draw the segments: a new rectangle is
+  // generated whenever the length of a segment becomes lower than
+  // overlayRectSize(), or if the segment would be draw anyway
+  // to avoid strange things happening we impose that the distance
+  // in parameter space be less than a threshold before generating
+  // any overlay.
+  //
+  // The third parameter in workitem is a pointer into a stack of
+  // all generated rectangles (in real coordinate space); if 0
+  // there is no rectangles associated to that segment yet.
+  //
+  // Using the final mOverlay stack would be much more efficient, but
+  // 1. needs transformations into window space
+  // 2. would be more difficult to drop rectangles not intersecting
+  //    the window.
+  std::stack<Rect> overlaystack;
 
-  // first work on some 20 initial points and push them onto the
-  // stack.. :
-  coordparampair prev =
-    coordparampair( 0, conicGetCoord( 0, ecostheta0, esintheta0,
-                                      pdimen, focus1 ) );
-
-  for ( double i = M_PI/20; i <= 2*M_PI; i += M_PI/20 )
-  {
-    Coordinate c = conicGetCoord( i, ecostheta0, esintheta0,
-                                  pdimen, focus1 );
-    workstack.push( workitem( coordparampair( i, c ), prev ) );
-    prev = coordparampair( i, c );
-  };
+  // mp: the original version in which an initial set of 20 intervals
+  // were pushed onto the stack is replaced by a single interval and
+  // by forcing subdivision till h < hmax (with more or less the same
+  // final result).
+  // First push the [0,2*pi] interval into the stack:
+  workstack.push( workitem(
+                    coordparampair( 0, conicGetCoord( 0, ecostheta0, esintheta0,
+                                                      pdimen, focus1 ) ),
+                    coordparampair( 2*M_PI, conicGetCoord( 2*M_PI, ecostheta0, esintheta0,
+                                                           pdimen, focus1 ) ),
+                    0 ) );
 
   // maxlength is the square of the maximum size that we allow
   // between two points..
@@ -500,8 +525,11 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
   double sigma = maxlength/4;
   // distance between two parameter values cannot be too small
   double hmin = 1e-4;
+  // distance between two parameter values cannot be too large
+  double hmax = M_PI/20;
+  double hmaxoverlay = M_PI/4;
 
-  int count = 20;              // the number of points we've already
+  int count = 1;               // the number of segments we've already
                                // visited...
   static const int maxnumberofpoints = 1000;
 
@@ -521,19 +549,28 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
       Coordinate p1 = curitem.second.second;
       double t2 = ( curitem.first.first + curitem.second.first ) / 2;
       double h = fabs( curitem.second.first - curitem.first.first ) /2;
+      Rect *overlaypt = curitem.overlay;
       Coordinate p2 = conicGetCoord( t2, ecostheta0, esintheta0,
-                                    pdimen, focus1 );
+                                     pdimen, focus1 );
+      bool dooverlay = ! overlaypt && h < hmaxoverlay
+ && fabs( p0.x - p1.x ) <= overlayRectSize()
+ && fabs( p0.y - p1.y ) <= overlayRectSize();
       bool addn = sr.contains( p2 );
       // estimated error between the curve and the segments
       double errsq = (0.5*p0 + 0.5*p1 - p2).squareLength();
       errsq /= 4;
       curitemok = false;
-      if ( errsq < sigma || h < hmin )
+      bool dodraw = h < hmax && ( errsq < sigma || h < hmin );
+      if ( tNeedOverlay && ( dooverlay || dodraw ) )
+      {
+        Rect newoverlay( p0, p1 );
+        overlaystack.push( newoverlay );
+        overlaypt = &overlaystack.top();
+      }
+      if ( overlaypt ) overlaypt->setContains( p2 );
+      if ( dodraw )
       {
         // draw the two segments
-        overlay.setContains( p0 );
-        overlay.setContains( p1 );
-        overlay.setContains( p2 );
         QPoint tp0 = toScreen(p0);
         QPoint tp1 = toScreen(p1);
         QPoint tp2 = toScreen(p2);
@@ -543,18 +580,31 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
       else
       {
         // push into stack in order to process both subintervals
-        if (addn || sr.contains( p0 ) )
-          workstack.push( workitem( curitem.first, coordparampair( t2, p2 ) ) );
-        if (addn || sr.contains( p1 ) )
+        if (addn || sr.contains( p0 ) || h >= hmax)
+          workstack.push( workitem( curitem.first, coordparampair( t2, p2 ),
+                                    overlaypt ) );
+        if (addn || sr.contains( p1 ) || h >= hmax)
         {
-          curitem = workitem( coordparampair( t2, p2 ), curitem.second );
+          curitem = workitem( coordparampair( t2, p2 ), curitem.second ,
+                              overlaypt );
           curitemok = true;
         }
       }
     }
   }
 
-  mOverlay.push_back( toScreen( overlay ) );
+  assert ( tNeedOverlay || overlaystack.empty() );
+  if ( tNeedOverlay )
+  {
+    Rect border = window();
+    while ( ! overlaystack.empty() )
+    {
+      Rect overlay = overlaystack.top();
+      overlaystack.pop();
+      if (overlay.intersects( border ))
+        mOverlay.push_back( toScreen( overlay ) );
+    }
+  }
   mNeedOverlay = tNeedOverlay;
 }
 
