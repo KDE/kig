@@ -52,10 +52,10 @@ public:
   QString toString( const KigDocument& d, const KigWidget& w );
 
   // what type of property is this ?
-  const int type();
-  const double doubleData();
-  const QString qstringData();
-  const Coordinate coordData();
+  const int type() const;
+  const double doubleData() const;
+  const QString qstringData() const;
+  const Coordinate coordData() const;
 };
 
 // this struct holds information about how to reach a given

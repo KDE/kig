@@ -98,6 +98,9 @@ class Conic
   ConicPolarEquationData polarEquationData() const;
   Coordinate focus1() const;
 
+  virtual const uint numberOfProperties() const;
+  virtual const Property property( uint which ) const;
+  virtual const QCStringList properties() const;
 protected:
   ConicPolarEquationData mequation;
 };

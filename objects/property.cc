@@ -26,18 +26,18 @@
 
 #include <qstring.h>
 
-const int Property::type()
+const int Property::type() const
 {
   return mtype;
 }
 
-const double Property::doubleData()
+const double Property::doubleData() const
 {
   assert ( mtype == Double );
   return mdata.d;
 }
 
-const QString Property::qstringData()
+const QString Property::qstringData() const
 {
   assert( mtype == String );
   return *mdata.qs;
@@ -103,7 +103,7 @@ Property::Property( const Coordinate& c )
   mdata.coord = new Coordinate( c );
 }
 
-const Coordinate Property::coordData()
+const Coordinate Property::coordData() const
 {
   assert( mtype == Coord );
   return *mdata.coord;

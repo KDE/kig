@@ -764,3 +764,23 @@ Coordinate Conic::focus1() const
   return mequation.focus1;
 }
 
+const uint Conic::numberOfProperties() const
+{
+  return Curve::numberOfProperties() + 1;
+}
+
+const Property Conic::property( uint which ) const
+{
+  if ( which < Curve::numberOfProperties() ) return Curve::property( which );
+  if ( which == Curve::numberOfProperties() )
+    return Property( focus1() );
+  else assert( false );
+}
+
+const QCStringList Conic::properties() const
+{
+  QCStringList l = Curve::properties();
+  l << I18N_NOOP( "First focus" );
+  return l;
+}
+

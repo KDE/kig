@@ -474,8 +474,8 @@ Coordinate calcRadicalStartPoint( const Coordinate& ca, const Coordinate& cb,
 
 void LineRadical::calc()
 {
-  Coordinate ce1 = c1->getCenter();
-  Coordinate ce2 = c2->getCenter();
+  Coordinate ce1 = c1->center();
+  Coordinate ce2 = c2->center();
   // the radical line is not defined if the centers are the same...
   if( ce1 == ce2 || !c1->valid() || !c2->valid() )
   {
@@ -496,8 +496,8 @@ void LineRadical::sDrawPrelim( KigPainter& p, const Objects& os )
   Circle* ca = os[0]->toCircle();
   Circle* cb = os[1]->toCircle();
   assert ( ca && cb );
-  Coordinate pa = ca->getCenter();
-  Coordinate pb = cb->getCenter();
+  Coordinate pa = ca->center();
+  Coordinate pb = cb->center();
   Coordinate s = calcRadicalStartPoint( pa, pb, ca->squareRadius(), cb->squareRadius() );
   p.setPen( QPen (Qt::red,1) );
   p.drawLine( s, calcPointOnPerpend( pa, pb, s ) );

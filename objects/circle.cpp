@@ -365,7 +365,7 @@ const Circle* Circle::toCircle() const
 
 const uint Circle::numberOfProperties() const
 {
-  return Curve::numberOfProperties() + 3;
+  return Curve::numberOfProperties() + 4;
 }
 
 const Property Circle::property( uint which ) const
@@ -378,6 +378,8 @@ const Property Circle::property( uint which ) const
     return Property( circumference() );
   else if ( which == Curve::numberOfProperties() + 2 )
     return Property( radius() );
+  else if ( which == Curve::numberOfProperties() + 3 )
+    return Property( center() );
   else assert( false );
 }
 
@@ -387,6 +389,7 @@ const QCStringList Circle::properties() const
   l << I18N_NOOP( "Surface" );
   l << I18N_NOOP( "Circumference" );
   l << I18N_NOOP( "Radius" );
+  l << I18N_NOOP( "Center" );
   assert( l.size() == Circle::numberOfProperties() );
   return l;
 }
@@ -399,4 +402,9 @@ double Circle::surface() const
 double Circle::circumference() const
 {
   return 2 * M_PI * radius();
+}
+
+Coordinate Circle::center() const
+{
+  return qpc;
 }

@@ -20,13 +20,18 @@
 
 #include "object.h"
 
+#include "coordproppoint.h"
+
 #include "../misc/types.h"
 #include "../misc/type.h"
 #include "../modes/constructing.h"
+#include "../modes/popup.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 
 #include <klocale.h>
+#include <qpopupmenu.h>
 
 myvector<Type*> Object::sbuiltintypes;
 myvector<Type*> Object::susertypes;
@@ -215,8 +220,26 @@ void Object::setShown( bool in )
   mshown = in;
 }
 
-void Object::addActions( NormalModePopupObjects& )
+void Object::addActions( NormalModePopupObjects& m )
 {
+  QPopupMenu* pm = new QPopupMenu( &m, "construct_coord_props_menu" );
+
+  bool content = false;         // true if we have content..
+
+  QCStringList s = properties();
+  for ( uint i = 0; i < numberOfProperties(); ++i )
+  {
+    Property p = property( i );
+    if ( p.type() == Property::Coord )
+    {
+      content = true;
+      QString str = i18n( s[i] );
+      uint id = pm->insertItem( str, i );
+      assert( id == i );
+    };
+  };
+
+  m.addPopupAction( 3849, i18n( "Construct a ..." ), pm );
   return;
 }
 
@@ -225,9 +248,15 @@ void Object::doNormalAction( int, KigDocument*, KigWidget*, NormalMode* )
   return;
 }
 
-void Object::doPopupAction( int, int, KigDocument*, KigWidget*, NormalMode* )
+void Object::doPopupAction( int popupid, int actionid, KigDocument* doc, KigWidget* w, NormalMode*)
 {
-  return;
+  assert( popupid == 3849 );
+  uint pid = static_cast<uint>( actionid );
+  assert( property( pid ).type() == Property::Coord );
+  Object* o = new CoordinatePropertyPoint( this, pid );
+  o->calc();
+  doc->addObject( o );
+  w->redrawScreen();
 }
 
 const QCStringList Object::properties() const

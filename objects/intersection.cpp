@@ -274,7 +274,7 @@ void CircleLineIntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os 
     if ( ! l ) l = (*i)->toAbstractLine();
   };
   assert( c && l );
-  const Coordinate center = c->getCenter();
+  const Coordinate center = c->center();
   const double sqr = c->squareRadius();
   const Coordinate a = l->p1();
   const Coordinate b = l->p2();
@@ -327,7 +327,7 @@ void CircleLineIntersectionPoint::calc()
 {
   assert( mcircle && mline );
   Coordinate t;
-  t = calcCircleLineIntersect( mcircle->getCenter(), mcircle->squareRadius(),
+  t = calcCircleLineIntersect( mcircle->center(), mcircle->squareRadius(),
                                mline->p1(), mline->p2(), mside, mvalid );
   if ( mvalid ) mC = t;
 }

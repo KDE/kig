@@ -50,7 +50,7 @@ class Circle
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  Coordinate getCenter() const { return qpc; };
+  Coordinate center() const;
   double radius() const;
   double squareRadius() const;
   double surface() const;
