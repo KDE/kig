@@ -39,6 +39,7 @@
 #include "../objects/other_type.h"
 #include "../objects/point_imp.h"
 #include "../objects/point_type.h"
+#include "../objects/polygon_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
@@ -486,9 +487,11 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       };
       case G_POLYGON:
       {
-        notSupported( file, i18n( "This KSeg file contains a polygon object, "
-                                  "which Kig does not currently support." ) );
-        return false;
+        if ( nparents < 3 ) KIG_FILTER_PARSE_ERROR;
+        ObjectTypeCalcer* o = new ObjectTypeCalcer( PolygonBNPType::instance(), parents );
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
+        object = new ObjectHolder( o, d );
+        break;
       };
       case G_CIRCLEINTERIOR:
       {

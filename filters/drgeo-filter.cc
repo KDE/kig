@@ -45,6 +45,7 @@
 #include "../objects/other_type.h"
 #include "../objects/point_imp.h"
 #include "../objects/point_type.h"
+#include "../objects/polygon_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
@@ -399,7 +400,8 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
              ( domelem.tagName() == "segment" ) ||
              ( domelem.tagName() == "vector" ) ||
              ( domelem.tagName() == "circle" ) ||
-             ( domelem.tagName() == "arcCircle" ) )
+             ( domelem.tagName() == "arcCircle" ) ||
+             ( domelem.tagName() == "polygon" ) )
     {
       const ObjectType* type = 0;
       if ( domelem.attribute( "type" ) == "2pts" )
@@ -447,6 +449,22 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
           parents.clear();
           parents.push_back( a );
           parents.push_back( o );
+        }
+        else
+        {
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    domelem.attribute( "type" ) ) );
+          return false;
+        }
+        oc = new ObjectTypeCalcer( type, parents );
+      }
+      else if( domelem.attribute( "type" ) == "npts" )
+      {
+        if( domelem.tagName() == "polygon" )
+        {
+          if ( parents.size() < 3 ) KIG_FILTER_PARSE_ERROR;
+          type = PolygonBNPType::instance();
         }
         else
         {
@@ -678,12 +696,6 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
 #ifdef DRGEO_DEBUG
       kdDebug() << "+++++++++ oc:" << oc << endl;
 #endif
-    }
-    else if ( domelem.tagName() == "polygon" )
-    {
-      notSupported( file, i18n( "This Dr. Geo file contains a polygon object, "
-                                "which Kig does not currently support." ) );
-      return false;
     }
     else if ( ( domelem.tagName() == "boundingBox" ) ||
               ( domelem.tagName() == "customUI" ) )

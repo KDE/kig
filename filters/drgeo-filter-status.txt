@@ -17,6 +17,7 @@ Transformations   most
 Intersections     most
 Scripts           as a label
 Equations         ok
+Polygons          ok
 
 Colors            ok
 Visibility        ok
@@ -31,7 +32,6 @@ Lines             pt_slope(*)
 Circle            radius(*)
 Numberics         distance_pt_circle
 Angles            vectors
-Polygons          (**)
 Transformations   scaling(*)
 Intersections     arc-circle(**), locus-other object(**)
 
