@@ -290,6 +290,93 @@ protected:
   void calc();
 };
 
+/*
+ * hyperbola with given asymptotes and through a point
+ */
+class ConicBAAP
+  : public Conic
+{
+public:
+  ConicBAAP( const Objects& os );
+  ~ConicBAAP() {};
+  ConicBAAP(const ConicBAAP& c);
+  ConicBAAP* copy() { return new ConicBAAP(*this); };
 
+  virtual const ConicPolarEquationData polarEquationData() const;
+  virtual const ConicCartesianEquationData cartesianEquationData() const;
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "ConicBAAP"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "conicbaap"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // passing arguments
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* );
+  static void sDrawPrelim( KigPainter& p, const Objects& os );
+
+  Objects getParents() const;
+
+protected:
+  AbstractLine *ml1;
+  AbstractLine *ml2;
+  Point* mp;
+
+  ConicPolarEquationData pequation;
+  ConicCartesianEquationData cequation;
+
+  void calc();
+};
+
+/*
+ * conic by directrix, focus and point
+ */
+class ConicBDFP
+  : public Conic
+{
+public:
+  ConicBDFP( const Objects& os );
+  ~ConicBDFP() {};
+  ConicBDFP(const ConicBDFP& c);
+  ConicBDFP* copy() { return new ConicBDFP(*this); };
+
+  virtual const ConicPolarEquationData polarEquationData() const;
+  virtual const ConicCartesianEquationData cartesianEquationData() const;
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "ConicBDFP"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "conicbdfp"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // passing arguments
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* );
+  static void sDrawPrelim( KigPainter& p, const Objects& os );
+
+  Objects getParents() const;
+
+protected:
+  AbstractLine* mdirectrix;
+  Point* mfocus;
+  Point* mpoint;
+
+  ConicPolarEquationData pequation;
+
+  void calc();
+};
 
 #endif // KIG_OBJECTS_CONIC_H

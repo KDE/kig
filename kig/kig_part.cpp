@@ -180,6 +180,8 @@ void KigDocument::setupTypes()
   {
     Object::addBuiltinType( new TStdType<Segment> );
     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
+    Object::addBuiltinType( new TStdType<ConicBAAP> );
+    Object::addBuiltinType( new TStdType<ConicBDFP> );
     Object::addBuiltinType( new TStdType<RotatedPoint> );
     Object::addBuiltinType( new TStdType<LineTTP> );
     Object::addBuiltinType( new TStdType<LinePerpend> );

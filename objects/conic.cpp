@@ -21,6 +21,7 @@
 #include "conic.h"
 
 #include "point.h"
+#include "abstractline.h"
 
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
@@ -790,4 +791,288 @@ const ConicCartesianEquationData EquilateralHyperbolaB4P::cartesianEquationData(
 const ConicPolarEquationData EquilateralHyperbolaB4P::polarEquationData() const
 {
   return pequation;
+}
+
+
+void ConicBAAP::calc()
+{
+  mvalid = true;
+  cequation = calcConicByAsymptotes( ml1->lineData(),
+                                     ml2->lineData(),
+                                     mp->getCoord() );
+  pequation = ConicPolarEquationData( cequation );
+}
+
+const char* ConicBAAP::sActionName()
+{
+  return "objects_new_conicbaap";
+}
+
+Objects ConicBAAP::getParents() const
+{
+  Objects objs;
+  objs.push_back( ml1 );
+  objs.push_back( ml2 );
+  objs.push_back( mp );
+  return objs;
+}
+
+ConicBAAP::ConicBAAP(const ConicBAAP& c)
+  : Conic( c ), ml1( c.ml1 ), ml2( c.ml2 ), mp( c.mp ),
+    pequation( c.pequation ), cequation( c.cequation )
+{
+  ml1->addChild(this);
+  ml2->addChild(this);
+  mp->addChild(this);
+}
+
+const QString ConicBAAP::sDescriptiveName()
+{
+  return i18n( "Hyperbola by asymptotes and point" );
+}
+
+const QString ConicBAAP::sDescription()
+{
+  return i18n( "A hyperbola with given asymptotes through a point" );
+}
+
+Object::WantArgsResult ConicBAAP::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size > 3 || size < 1 ) return NotGood;
+  uint lines = 0;
+  uint points = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( (*i)->toAbstractLine() ) ++lines;
+    if ( (*i)->toPoint() ) ++points;
+  }
+  if ( lines + points != size ) return NotGood;
+  if ( lines > 2 ) return NotGood;
+  if ( points > 1 ) return NotGood;
+  return size == 3 ? Complete : NotComplete;
+}
+
+QString ConicBAAP::sUseText( const Objects&, const Object* o)
+{
+  if ( o->toAbstractLine() ) return i18n("With this asymptote");
+  assert ( o->toPoint() );
+  return i18n("Through this point");
+}
+
+void ConicBAAP::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  uint size = os.size();
+  AbstractLine* lines[3] = {0, 0, 0};
+  Point *point = 0;
+  assert( size >= 1 && size <= 3 );
+  if ( size < 3 ) return;  // don't drawprelim if too few points
+  uint ii = 0;
+  for ( uint i = 0; i < size; ++i )
+  {
+    if ( os[i]->toAbstractLine() )
+      lines[ii++] = os[i]->toAbstractLine();
+    else if ( os[i]->toPoint() && (point == 0) )
+      point = os[i]->toPoint();
+    else assert ( false );
+  }
+
+  assert ( point && lines[0] && lines[1] && ii == 2 );
+
+  p.setPen(QPen (Qt::red, 1));
+  p.drawConic(
+    ConicPolarEquationData(
+      calcConicByAsymptotes(
+        lines[0]->lineData(), lines[1]->lineData(), point->getCoord()
+        )
+      )
+    );
+  return;
+}
+
+ConicBAAP::ConicBAAP( const Objects& os )
+  : Conic()
+{
+  AbstractLine* lines[3] = {0, 0, 0};
+  Point *point = 0;
+  uint size = os.size();
+  assert( size == 3 );
+  uint ii = 0;
+  for ( uint i = 0; i < size; ++i )
+  {
+    if ( os[i]->toAbstractLine() )
+      lines[ii++] = os[i]->toAbstractLine();
+    else if ( os[i]->toPoint() && (point == 0) )
+      point = os[i]->toPoint();
+    else assert ( false );
+  }
+
+  assert ( point && lines[0] && lines[1] && ii == 2 );
+  ml1 = lines[0];
+  ml1->addChild( this );
+  ml2 = lines[1];
+  ml2->addChild( this );
+  mp = point;
+  mp->addChild( this );
+}
+
+const ConicPolarEquationData ConicBAAP::polarEquationData() const
+{
+  return pequation;
+}
+
+const ConicCartesianEquationData ConicBAAP::cartesianEquationData() const
+{
+  return cequation;
+}
+
+void ConicBDFP::calc()
+{
+  mvalid = true;
+  pequation = calcConicBDFP( mdirectrix->lineData(),
+                             mfocus->getCoord(),
+                             mpoint->getCoord() );
+}
+
+const char* ConicBDFP::sActionName()
+{
+  return "objects_new_conicbdfp";
+}
+
+Objects ConicBDFP::getParents() const
+{
+  Objects objs;
+  objs.push_back( mdirectrix );
+  objs.push_back( mfocus );
+  objs.push_back( mpoint );
+  return objs;
+}
+
+ConicBDFP::ConicBDFP(const ConicBDFP& c)
+  : Conic( c ), mdirectrix( c.mdirectrix ), mfocus( c.mfocus ),
+    mpoint( c.mpoint ), pequation( c.pequation )
+{
+  mdirectrix->addChild(this);
+  mfocus->addChild(this);
+  mpoint->addChild(this);
+}
+
+const QString ConicBDFP::sDescriptiveName()
+{
+  return i18n("Conic by directrix, focus and point");
+}
+
+const QString ConicBDFP::sDescription()
+{
+  return i18n( "A conic with given directrix and focus, through a point" );
+}
+
+Object::WantArgsResult ConicBDFP::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size > 3 || size < 1 ) return NotGood;
+  uint points = 0;
+  uint lines = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( (*i)->toPoint() ) ++points;
+    if ( (*i)->toAbstractLine() ) ++lines;
+  }
+  if ( points + lines != size ) return NotGood;
+  if ( points > 2 ) return NotGood;
+  if ( lines > 1 ) return NotGood;
+  return size == 3 ? Complete : NotComplete;
+}
+
+QString ConicBDFP::sUseText( const Objects& os, const Object* o)
+{
+  if ( o->toAbstractLine() ) return i18n("With this directrix");
+  assert ( o->toPoint() );
+  bool gotfocus = false;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if (! gotfocus ) gotfocus = (*i)->toPoint();
+  }
+  if ( gotfocus ) return i18n("Through this point");
+  return i18n( "With this focus" );
+}
+
+void ConicBDFP::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  uint size = os.size();
+  Point* points[3] = {0, 0, 0};
+  AbstractLine* directrix = 0;
+  assert( size >= 1 && size <= 3 );
+  uint ii = 0;
+  for ( uint i = 0; i < size; ++i )
+  {
+    if ( os[i]->toPoint() )
+      points[ii++] = os[i]->toPoint();
+    else if ( os[i]->toAbstractLine() && ! directrix )
+      directrix = os[i]->toAbstractLine();
+    else assert ( false );
+  }
+
+  Coordinate cpoint;
+  if ( ! directrix || ! points[0] ) return;
+  Coordinate cfocus = points[0]->getCoord();
+  if ( points[1] )
+  {
+    cpoint = points[1]->getCoord();
+  }
+  else
+  {
+    /* !!!! costruisci point come punto medio dell'altezza tra fuoco e d. */
+    Coordinate ba = directrix->p2() - directrix->p1();
+    Coordinate fa = cfocus - directrix->p1();
+    double balsq = ba.x*ba.x + ba.y*ba.y;
+    double scal = (fa.x*ba.x + fa.y*ba.y)/balsq;
+    cpoint = 0.5*(directrix->p1() + cfocus + scal*ba);
+  }
+
+  p.setPen(QPen (Qt::red, 1));
+  p.drawConic(
+    calcConicBDFP(
+      directrix->lineData(),
+      cfocus,
+      cpoint
+      )
+    );
+  return;
+}
+
+ConicBDFP::ConicBDFP( const Objects& os )
+  : Conic()
+{
+  Point* points[3] = {0, 0, 0};
+  AbstractLine* directrix = 0;
+  uint size = os.size();
+  assert( size == 3 );
+  uint ii = 0;
+  for ( uint i = 0; i < size; ++i )
+  {
+    if ( os[i]->toPoint() )
+      points[ii++] = os[i]->toPoint();
+    else if ( os[i]->toAbstractLine() && (directrix == 0) )
+      directrix = os[i]->toAbstractLine();
+    else assert ( false );
+  }
+
+  assert ( directrix && points[0] && points[1] && ii == 2 );
+  mfocus = points[0];
+  mfocus->addChild( this );
+  mpoint = points[1];
+  mpoint->addChild( this );
+  mdirectrix = directrix;
+  mdirectrix->addChild( this );
+}
+
+const ConicPolarEquationData ConicBDFP::polarEquationData() const
+{
+  return pequation;
+}
+
+const ConicCartesianEquationData ConicBDFP::cartesianEquationData() const
+{
+  return ConicCartesianEquationData( pequation );
 }
