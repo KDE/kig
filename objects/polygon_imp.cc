@@ -225,7 +225,7 @@ const QCStringList PolygonImp::properties() const
   l += I18N_NOOP( "Number of sides" );
   l += I18N_NOOP( "Perimeter" );
   l += I18N_NOOP( "Surface" );
-  l += I18N_NOOP( "Center of Mass" );
+  l += I18N_NOOP( "Center of Mass of the Vertices" );
   l += I18N_NOOP( "Winding Number" );
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
