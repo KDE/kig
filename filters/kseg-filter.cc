@@ -377,6 +377,8 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         case G_BISECTOR_RAY:
           return NotSupported;
           break;
+        default:
+          return ParseError;
         };
         break;
       };
