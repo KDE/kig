@@ -51,7 +51,7 @@ void CubicImp::draw( KigPainter& p ) const
   p.drawCubic( mdata );
 }
 
-bool CubicImp::contains( const Coordinate& o, const ScreenInfo& si ) const
+bool CubicImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) const
 {
   double a000 = mdata.coeffs[0];
   double a001 = mdata.coeffs[1];
@@ -74,7 +74,7 @@ bool CubicImp::contains( const Coordinate& o, const ScreenInfo& si ) const
 
   double dist = fabs(f)/(fabs(fx) + fabs(fy));
 
-  return dist <= si.normalMiss();
+  return dist <= si.normalMiss( width );
   return false;
 }
 

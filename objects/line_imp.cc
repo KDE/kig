@@ -130,9 +130,9 @@ void SegmentImp::draw( KigPainter& p ) const
   p.drawSegment( mdata );
 }
 
-bool SegmentImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+bool SegmentImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
 {
-  return isOnSegment( p, mdata.a, mdata.b, si.normalMiss() );
+  return isOnSegment( p, mdata.a, mdata.b, si.normalMiss( width ) );
 }
 
 void RayImp::draw( KigPainter& p ) const
@@ -140,9 +140,9 @@ void RayImp::draw( KigPainter& p ) const
   p.drawRay( mdata );
 }
 
-bool RayImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+bool RayImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
 {
-  return isOnRay( p, mdata.a, mdata.b, si.normalMiss() );
+  return isOnRay( p, mdata.a, mdata.b, si.normalMiss( width ) );
 }
 
 void LineImp::draw( KigPainter& p ) const
@@ -150,9 +150,9 @@ void LineImp::draw( KigPainter& p ) const
   p.drawLine( mdata );
 }
 
-bool LineImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+bool LineImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
 {
-  return isOnLine( p, mdata.a, mdata.b, si.normalMiss() );
+  return isOnLine( p, mdata.a, mdata.b, si.normalMiss( width ) );
 }
 
 SegmentImp::SegmentImp( const Coordinate& a, const Coordinate& b )

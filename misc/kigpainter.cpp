@@ -82,8 +82,10 @@ void KigPainter::drawSegment( const Coordinate& from, const Coordinate& to )
   if( mNeedOverlay ) segmentOverlay( from, to );
 }
 
-void KigPainter::drawFatPoint( const Coordinate& p, double radius )
+void KigPainter::drawFatPoint( const Coordinate& p )
 {
+  mP.setPen( QPen( color, 1, style ) );
+  double radius = width * pixelWidth();
   setBrushStyle( Qt::SolidPattern );
   Coordinate rad( radius, radius );
   rad /= 2;
@@ -93,6 +95,7 @@ void KigPainter::drawFatPoint( const Coordinate& p, double radius )
   QRect qr = toScreen( r );
   mP.drawEllipse( qr );
   if( mNeedOverlay ) mOverlay.push_back( qr );
+  mP.setPen( QPen( color, width, style ) );
 }
 
 void KigPainter::drawPoint( const Coordinate& p )
@@ -451,11 +454,6 @@ void KigPainter::drawRay( const Coordinate& a, const Coordinate& b )
   Coordinate tb = b;
   calcRayBorderPoints( a, tb, window() );
   drawSegment( a, tb );
-}
-
-void KigPainter::drawFatPoint( const Coordinate& p )
-{
-  drawFatPoint( p, 5 * pixelWidth() );
 }
 
 inline Coordinate conicGetCoord( double theta, double ecostheta0,

@@ -37,7 +37,7 @@ class BogusImp
   typedef ObjectImp Parent;
 public:
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
   bool inRect( const Rect& r ) const;
   bool valid() const;
 

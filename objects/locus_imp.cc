@@ -47,7 +47,7 @@ void LocusImp::draw( KigPainter& p ) const
   p.drawLocus( mcurve, mhier );
 }
 
-bool LocusImp::contains( const Coordinate&, const ScreenInfo& ) const
+bool LocusImp::contains( const Coordinate&, int, const ScreenInfo& ) const
 {
   // TODO
   return false;

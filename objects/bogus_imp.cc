@@ -28,7 +28,7 @@ void BogusImp::draw( KigPainter& ) const
 {
 }
 
-bool BogusImp::contains( const Coordinate&, const ScreenInfo& ) const
+bool BogusImp::contains( const Coordinate&, int, const ScreenInfo& ) const
 {
   return false;
 }

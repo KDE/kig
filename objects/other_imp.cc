@@ -51,11 +51,11 @@ AngleImp::AngleImp( const Coordinate& pt, double start_angle_in_radials,
 {
 }
 
-bool AngleImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+bool AngleImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
 {
   double radius = 50*si.pixelWidth();
 
-  if ( std::fabs( (p-mpoint).length() - radius ) > si.normalMiss() )
+  if ( std::fabs( (p-mpoint).length() - radius ) > si.normalMiss( width ) )
     return false;
 
   // and next we check if the angle is appropriate...
@@ -134,9 +134,9 @@ void VectorImp::draw( KigPainter& p ) const
   p.drawVector( ma, mb );
 }
 
-bool VectorImp::contains( const Coordinate& o, const ScreenInfo& si ) const
+bool VectorImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) const
 {
-  return isOnSegment( o, ma, mb, si.normalMiss() );
+  return isOnSegment( o, ma, mb, si.normalMiss( width ) );
 }
 
 bool VectorImp::inRect( const Rect& ) const

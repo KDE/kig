@@ -46,7 +46,7 @@ bool ConicImp::valid() const
   return true;
 }
 
-bool ConicImp::contains( const Coordinate& o, const ScreenInfo& si ) const
+bool ConicImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) const
 {
   const ConicPolarData d = polarData();
 
@@ -63,9 +63,9 @@ bool ConicImp::contains( const Coordinate& o, const ScreenInfo& si ) const
   double ecosthetamtheta0 = costheta*ecostheta0 + sintheta*esintheta0;
   double rho = pdimen / (1.0 - ecosthetamtheta0);
 
-  if ( fabs(len - rho) <= si.normalMiss() ) return true;
+  if ( fabs(len - rho) <= si.normalMiss( width ) ) return true;
   rho = - pdimen / ( 1.0 + ecosthetamtheta0 );
-  return fabs( len - rho ) <= si.normalMiss();
+  return fabs( len - rho ) <= si.normalMiss( width );
 }
 
 bool ConicImp::inRect( const Rect& ) const

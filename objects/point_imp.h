@@ -27,7 +27,6 @@ class PointImp
 {
   typedef ObjectImp Parent;
   Coordinate mc;
-  int msize;
 public:
   PointImp( const Coordinate& c );
   ~PointImp();
@@ -36,7 +35,7 @@ public:
   void setCoordinate( const Coordinate& c );
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
   bool inRect( const Rect& r ) const;
 
   const uint numberOfProperties() const;

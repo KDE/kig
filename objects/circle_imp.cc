@@ -61,9 +61,9 @@ void CircleImp::draw( KigPainter& p ) const
   p.drawCircle( mcenter, mradius );
 }
 
-bool CircleImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+bool CircleImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
 {
-  return fabs((mcenter - p).length() - mradius) <= si.normalMiss();
+  return fabs((mcenter - p).length() - mradius) <= si.normalMiss( width );
 }
 
 bool CircleImp::inRect( const Rect& ) const

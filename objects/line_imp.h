@@ -66,7 +66,7 @@ public:
   bool inherits( int type ) const;
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
 
   ObjectImp* transform( const Transformation& ) const;
 
@@ -97,7 +97,7 @@ public:
   bool inherits( int type ) const;
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
 
   ObjectImp* transform( const Transformation& ) const;
 
@@ -118,7 +118,7 @@ public:
   LineImp( const Coordinate& a, const Coordinate& b );
   LineImp( const LineData& d );
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
 
   ObjectImp* transform( const Transformation& ) const;
 

@@ -171,6 +171,9 @@ public:
 
   bool shown() const;
   void setShown( bool shown ) { mshown = shown; };
+
+  int width() const { return mwidth; };
+  void setWidth( int width ) { mwidth = width; };
 };
 
 /**

@@ -52,7 +52,7 @@ void RealObject::draw( KigPainter& p, bool ss ) const
 
 bool RealObject::contains( const Coordinate& p, const ScreenInfo& si ) const
 {
-  return mimp->contains( p, si );
+  return mimp->contains( p, mwidth, si );
 }
 
 bool RealObject::inRect( const Rect& r ) const

@@ -26,18 +26,18 @@
 #include "property.h"
 
 PointImp::PointImp( const Coordinate& c )
-  : mc( c ), msize( 5 )
+  : mc( c )
 {
 }
 
 void PointImp::draw( KigPainter& p ) const
 {
-  p.drawFatPoint( mc, msize * p.pixelWidth() );
+  p.drawFatPoint( mc );
 }
 
-bool PointImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+bool PointImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
 {
-  return (p - mc).length() - msize*si.pixelWidth() < 0;
+  return (p - mc).length() - width*si.pixelWidth() < 0;
 }
 
 bool PointImp::inRect( const Rect& r ) const

@@ -175,8 +175,7 @@ public:
    * point.  In fact it isn't a point, but a filled circle of a
    * certain @param radius...
    */
-  void drawFatPoint( const Coordinate& p, double radius );
-  void drawFatPoint( const Coordinate& p );   // default args don't seem to work properly..
+  void drawFatPoint( const Coordinate& p );
 
   /**
    * draw a polygon defined by the points in pts...
