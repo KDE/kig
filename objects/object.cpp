@@ -29,7 +29,7 @@
 #include "macro.h"
 
 Object::Object()
-  : selected(false), shown (true), complete (false), valid(true)
+  : mColor( Qt::blue ), selected(false), shown (true), complete (false), valid(true)
 {
 };
 
@@ -153,4 +153,14 @@ Objects Object::getAllChildren() const
       objs2.clear();
     };
   return tmp;
+}
+
+std::map<QCString,double> Object::getParams()
+{
+  return std::map<QCString, double>();
+}
+
+void Object::setParams( const std::map<QCString,double>& )
+{
+    
 }

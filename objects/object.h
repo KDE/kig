@@ -60,8 +60,11 @@ class Object
   // ConstrainedPoint's also got a param..
   // The object should do e->addParam() for every one of its
   // parameters
-  virtual std::map<QCString,double> getParams () {return std::map<QCString, double>();};
-  virtual void setParams ( const std::map<QCString,double>& ) {};
+  // Objects that reimplement this should call Object::getParams() and
+  // setParams() after you've handled your params.. --> to set params
+  // common to all objects like the color...
+  virtual std::map<QCString,double> getParams ();
+  virtual void setParams ( const std::map<QCString,double>& );
 
   // getting types from this object: easier to type and supports
   // MacroObjectOne
@@ -147,6 +150,14 @@ class Object
   // moved (or other situations), and that it should recalculate any
   // of its variables
   virtual void calc() = 0;
+protected:
+  // the color --> note that the selected color can't be changed ( i'm
+  // thinking about whether this is necessary...
+  QColor mColor;
+public:
+  QColor color() const { return mColor; };
+  void setColor( const QColor c ) { mColor = c; };
+
  protected:
   // are we selected?
   bool selected;

@@ -172,6 +172,11 @@ void LineTTP::stopMove()
 
 void LineTTP::calc()
 {
+  if( !pt1->getValid() || !pt2->getValid() )
+    {
+      valid = false;
+      return;
+    };
   p1 = pt1->getCoord();
   p2 = pt2->getCoord();
 };
