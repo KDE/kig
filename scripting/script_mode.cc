@@ -34,7 +34,6 @@
 #include <kcursor.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
-#include <ktextedit.h>
 
 void ScriptMode::dragRect( const QPoint& p, KigWidget& w )
 {
@@ -117,7 +116,6 @@ ScriptMode::ScriptMode( KigPart& doc )
     mwawd( SelectingArgs )
 {
   mwizard = new NewScriptWizard( doc.widget(), this );
-  mwizard->labelFillCode->setText( ScriptType::fillCodeStatement( ScriptType::Unknown ) );
   mwizard->show();
 
   doc.redrawScreen();
@@ -152,11 +150,11 @@ void ScriptMode::enableActions()
 
 void ScriptMode::codePageEntered()
 {
-  if ( mwizard->codeeditor->text().isEmpty() )
+  if ( mwizard->text().isEmpty() )
   {
     // insert template code..
     QString tempcode = ScriptType::templateCode( mtype, margs.size() );
-    mwizard->codeeditor->setText( tempcode );
+    mwizard->setText( tempcode );
   };
   mwizard->setFinishEnabled( mwizard->mpcode, true );
   mwawd = EnteringCode;
@@ -176,7 +174,7 @@ bool ScriptMode::queryFinish()
 {
   std::vector<ObjectCalcer*> args;
 
-  QString script = mwizard->codeeditor->text();
+  QString script = mwizard->text();
   args.push_back( new ObjectConstCalcer( new StringImp( script ) ) );
 
   ObjectTypeCalcer* compiledscript =
@@ -233,12 +231,12 @@ void ScriptMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&,
 void ScriptMode::setScriptType( ScriptType::Type type )
 {
   mtype = type;
+  mwizard->setType( mtype );
   if ( mtype != ScriptType::Unknown )
   {
     KIconLoader* il = mpart.instance()->iconLoader();
     mwizard->setIcon( il->loadIcon( ScriptType::icon( mtype ), KIcon::User ) );
   }
-  mwizard->labelFillCode->setText( ScriptType::fillCodeStatement( mtype ) );
 }
 
 void ScriptMode::addArgs( const std::vector<ObjectHolder*>& obj, KigWidget& w )

@@ -630,5 +630,5 @@ QString TangentConstructor::selectStatement(
   if ( sel.size() == 0 )
     return i18n( "Select the object..." );
   else
-    return i18n( "Select point..." );
+    return i18n( "Select the point for the tangent to go through..." );
 }

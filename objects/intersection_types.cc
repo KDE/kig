@@ -28,12 +28,13 @@
 
 #include <klocale.h>
 
+static const char intersectlinestat[] = I18N_NOOP( "Intersect with this line" );
+
 static const ArgsParser::spec argsspecConicLineIntersection[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
     "SHOULD NOT BE SEEN", true },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
-    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 
@@ -86,8 +87,7 @@ static const ArgsParser::spec argsspecConicLineOtherIntersection[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
     "SHOULD NOT BE SEEN", true },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
-    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true },
   { PointImp::stype(), I18N_NOOP( "Already computed intersection point"),
     "SHOULD NOT BE SEEN", true }
 };
@@ -141,14 +141,10 @@ ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigD
   else return new InvalidImp;
 }
 
-static const char constructlinestat[] = I18N_NOOP( "Intersect with this line" );
-
 static const ArgsParser::spec argsspecLineLineIntersection[] =
 {
-  { AbstractLineImp::stype(), constructlinestat,
-    "SHOULD NOT BE SEEN", true },
-  { AbstractLineImp::stype(), constructlinestat,
-    "SHOULD NOT BE SEEN", true }
+  { AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineLineIntersectionType )
@@ -187,8 +183,7 @@ static const ArgsParser::spec argsspecLineCubicIntersection[] =
 {
   { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic curve" ),
     "SHOULD NOT BE SEEN", true },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
-    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 
@@ -300,8 +295,7 @@ static const ArgsParser::spec argsspecArcLineIntersection[] =
 {
   { ArcImp::stype(), I18N_NOOP( "Intersect with this arc" ),
     "SHOULD NOT BE SEEN", true },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
-    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 

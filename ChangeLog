@@ -1,3 +1,17 @@
+2004-09-13  Pino Toscano <toscano.pino@tiscali.it>
+
+	* The script code editor now can use the Kate KTextEditor, and
+	consequently we can use its interfaces to do some various thing,
+	like the syntax highlight of the code. Moreover if the
+	KTextEditor::Document could not be created, will be used a
+	standard KTextEdit as the code editor.
+
+	* Some i18n fixes.
+
+2003-09-10  Maurizio Paolini  <paolini@dmf.unicatt.it>
+
+	* Now it's possible to construct the tanget to a conic.
+
 2004-09-05  Pino Toscano <toscano.pino@tiscali.it>
 
 	* A new LaTex exporter.

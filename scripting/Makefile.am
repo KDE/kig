@@ -14,6 +14,9 @@ libscripting_la_SOURCES = \
 	script_mode.cc \
 	newscriptwizardbase.ui \
 	newscriptwizard.cc
-libscripting_la_LIBADD = $(BOOST_PYTHON_LIBS) $(PYTHON_LIBS)
+libscripting_la_LIBADD = $(BOOST_PYTHON_LIBS) $(PYTHON_LIBS) -lkatepartinterfaces
 libscripting_la_LDFLAGS = $(PYTHON_LDFLAGS)
 METASOURCES=AUTO
+
+xml_DATA = python-kig.xml
+xmldir = $(kde_datadir)/katepart/syntax

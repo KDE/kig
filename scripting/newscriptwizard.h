@@ -21,6 +21,15 @@
 
 #include "newscriptwizardbase.h"
 
+#include "script-common.h"
+
+#include <ktextedit.h>
+#include <ktexteditor/document.h>
+#include <ktexteditor/highlightinginterface.h>
+#include <ktexteditor/view.h>
+
+#include <algorithm>
+
 class ScriptMode;
 
 class NewScriptWizard
@@ -36,9 +45,29 @@ public:
   void next();
   void reject();
 
+  void setText( QString& text );
+  QString text();
+
+  void setType( ScriptType::Type type );
+
 public slots:
   void slotHelpClicked();
   void accept();
+
+  void slotUndo();
+  void slotRedo();
+  void slotCut();
+  void slotCopy();
+  void slotPaste();
+
+protected:
+  KTextEdit* textedit;
+  KTextEditor::Document* document;
+  KTextEditor::HighlightingInterface* hli;
+  KTextEditor::View* editor;
+
+  uint noHlStyle;
+  bool prevDynWordWrap;
 };
 
 #endif

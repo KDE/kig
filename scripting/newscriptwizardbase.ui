@@ -8,7 +8,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>600</width>
+            <width>610</width>
             <height>360</height>
         </rect>
     </property>
@@ -51,18 +51,23 @@ in the Kig window and press "Next".</string>
             <property name="name">
                 <cstring>unnamed</cstring>
             </property>
-            <widget class="QLabel">
+            <widget class="QLayoutWidget">
                 <property name="name">
-                    <cstring>labelFillCode</cstring>
+                    <cstring>gridLayout</cstring>
                 </property>
-                <property name="text">
-                    <string>Now fill in the Python code:</string>
-                </property>
-            </widget>
-            <widget class="KTextEdit">
-                <property name="name">
-                    <cstring>codeeditor</cstring>
-                </property>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QLabel" row="0" column="0">
+                        <property name="name">
+                            <cstring>labelFillCode</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Now fill in the code:</string>
+                        </property>
+                    </widget>
+                </grid>
             </widget>
         </vbox>
     </widget>

@@ -79,12 +79,9 @@
 - extend ObjectFactory::sensiblePointCalcer to also construct
    intersection points of stuff... (pino: done for lines)
 
-- add the possibiity to construct the tangent to a cubic.
-
 * harder:
 
-- use the KTextEditor interface ( with highlisght style, tools and more )
-  for the script code editor.
+- improve the KTextEditor interface in the script code wizard.
 
 - make DoubleImp a "visible" object with uses like Dr. Geo numeric
   values.
@@ -105,8 +102,9 @@
 - add intersection types: arc-arc; arc-conic; arc-cubic; conic-cubic;
   cubic-cubic; locus-other object.
 
-- allow for using kformula w/o OOFormula w/o MathML formulas in the
-  document.
+- create a formula label to display math formulas in the document, and
+  allow for importing from/export to other formula formats such as
+  KFormula, OOFormula and MathML.
 
 - rework the ObjectConstructor and GUIAction stuff into something more
    general, and more clean.  See the comment for
@@ -135,7 +133,7 @@
   features.  E.g. I have been asked to allow the user to limit himself
   to compass-ruler constructions..
 
-- "export to *": add stuff like java applets, SVG documents, latex, etc...
+- "export to *": add stuff like java applets, SVG documents, etc...
 
 - add support for saving/opening native compressed files like
   'myfile.kig.gz' or 'myfile.kig.bz2'.
