@@ -20,6 +20,7 @@
    think... 
 - move stillPix into movingMode, so the other modes won't suffer from
    its overhead...
+- add full undo support for everything the user might do
 
 * hard :
 - scripting !  The GNOME Interactive Geometry program Dr. Genius seems
