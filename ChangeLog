@@ -1,5 +1,8 @@
 2004-02-24  Dominique Devriese  <devriese@kde.org>
 
+	* Make the configure.in.in stuff properly detect python on RH
+	-> many thanks to Maurizio for helping me with this.
+
 	* Fix some problems with the useText, that were introduced with 
 	the new tests stuff.
 

@@ -13,4 +13,5 @@ libscripting_la_SOURCES = \
 	newscriptwizardbase.ui \
 	newscriptwizard.cc
 libscripting_la_LIBADD = $(BOOST_PYTHON_LIBS) $(PYTHON_LIBS)
+libscripting_la_LDFLAGS = $(PYTHON_LDFLAGS)
 METASOURCES=AUTO
