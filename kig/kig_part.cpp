@@ -328,6 +328,10 @@ bool KigDocument::openFile()
       assert (!e.isNull());
       if (e.tagName() == "ObjectHierarchy") break;
       // TODO: make this more generic somehow, error detection
+      // UPDATE: this has been made more generic via
+      // Object::getParam/setParam and the corresponding code in
+      // misc/hierarchy.cpp.  It is kept here for the holy Backward
+      // Compatibility... 
       if (e.tagName() == "Point")
 	_addObject( new Point(e.attribute("x").toInt(), e.attribute("y").toInt()));
     };
@@ -726,6 +730,9 @@ Object* KigDocument::newObject(const QCString& type)
   if (t) return t;
   // these are points which we don't add to the types variable because
   // the user can't construct them in the normal way...
+  // UPDATE: this has been improved upon via Object::getParam() and
+  // friends..  It is kept here for Backwards Compatibility, and
+  // because i'm not entirely sure that it's not used any more ;)
   else if (type == "ConstrainedPoint") return new ConstrainedPoint;
   else if (type == "Point") return new Point;
   return 0;
