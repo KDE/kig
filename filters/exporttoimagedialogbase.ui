@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>439</width>
-            <height>270</height>
+            <width>545</width>
+            <height>338</height>
         </rect>
     </property>
     <property name="caption">
@@ -36,29 +36,49 @@
                 <set>WordBreak|AlignVCenter</set>
             </property>
         </widget>
-        <widget class="QFrame">
+        <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>Frame3</cstring>
+                <cstring>Layout1</cstring>
             </property>
-            <property name="frameShape">
-                <enum>StyledPanel</enum>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>URLLabel_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Image file:</string>
+                    </property>
+                </widget>
+                <widget class="KURLRequester">
+                    <property name="name">
+                        <cstring>URLRequester</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>groupBox1</cstring>
             </property>
-            <property name="frameShadow">
-                <enum>Raised</enum>
+            <property name="title">
+                <string>Resolution</string>
             </property>
             <vbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <property name="margin">
-                    <number>11</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
                 <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>Layout1</cstring>
+                        <cstring>Layout2_2</cstring>
                     </property>
                     <hbox>
                         <property name="name">
@@ -72,22 +92,28 @@
                         </property>
                         <widget class="QLabel">
                             <property name="name">
-                                <cstring>URLLabel</cstring>
+                                <cstring>WidthLabel_2</cstring>
                             </property>
                             <property name="text">
-                                <string>Image file:</string>
+                                <string>Width:</string>
                             </property>
                         </widget>
-                        <widget class="KURLRequester">
+                        <widget class="KIntNumInput">
                             <property name="name">
-                                <cstring>URLRequester</cstring>
+                                <cstring>WidthInput</cstring>
+                            </property>
+                            <property name="minValue">
+                                <number>0</number>
+                            </property>
+                            <property name="suffix">
+                                <string> pixels</string>
                             </property>
                         </widget>
                     </hbox>
                 </widget>
                 <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>Layout6</cstring>
+                        <cstring>Layout3_2</cstring>
                     </property>
                     <hbox>
                         <property name="name">
@@ -101,133 +127,58 @@
                         </property>
                         <widget class="QLabel">
                             <property name="name">
-                                <cstring>ResolutionLabel</cstring>
+                                <cstring>HeightLabel_2</cstring>
                             </property>
                             <property name="text">
-                                <string>Resolution:</string>
+                                <string>Height:</string>
                             </property>
                         </widget>
-                        <widget class="QLayoutWidget">
+                        <widget class="KIntNumInput">
                             <property name="name">
-                                <cstring>Layout4</cstring>
+                                <cstring>HeightInput</cstring>
                             </property>
-                            <vbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <property name="margin">
-                                    <number>0</number>
-                                </property>
-                                <property name="spacing">
-                                    <number>6</number>
-                                </property>
-                                <widget class="QLayoutWidget">
-                                    <property name="name">
-                                        <cstring>Layout2</cstring>
-                                    </property>
-                                    <hbox>
-                                        <property name="name">
-                                            <cstring>unnamed</cstring>
-                                        </property>
-                                        <property name="margin">
-                                            <number>0</number>
-                                        </property>
-                                        <property name="spacing">
-                                            <number>6</number>
-                                        </property>
-                                        <widget class="QLabel">
-                                            <property name="name">
-                                                <cstring>WidthLabel</cstring>
-                                            </property>
-                                            <property name="text">
-                                                <string>Width:</string>
-                                            </property>
-                                        </widget>
-                                        <widget class="KIntNumInput">
-                                            <property name="name">
-                                                <cstring>WidthInput</cstring>
-                                            </property>
-                                            <property name="minValue">
-                                                <number>0</number>
-                                            </property>
-                                            <property name="suffix">
-                                                <string> pixels</string>
-                                            </property>
-                                        </widget>
-                                    </hbox>
-                                </widget>
-                                <widget class="QLayoutWidget">
-                                    <property name="name">
-                                        <cstring>Layout3</cstring>
-                                    </property>
-                                    <hbox>
-                                        <property name="name">
-                                            <cstring>unnamed</cstring>
-                                        </property>
-                                        <property name="margin">
-                                            <number>0</number>
-                                        </property>
-                                        <property name="spacing">
-                                            <number>6</number>
-                                        </property>
-                                        <widget class="QLabel">
-                                            <property name="name">
-                                                <cstring>HeightLabel</cstring>
-                                            </property>
-                                            <property name="text">
-                                                <string>Height:</string>
-                                            </property>
-                                        </widget>
-                                        <widget class="KIntNumInput">
-                                            <property name="name">
-                                                <cstring>HeightInput</cstring>
-                                            </property>
-                                            <property name="minValue">
-                                                <number>0</number>
-                                            </property>
-                                            <property name="suffix">
-                                                <string> pixels</string>
-                                            </property>
-                                        </widget>
-                                    </hbox>
-                                </widget>
-                            </vbox>
-                        </widget>
-                    </hbox>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout7</cstring>
-                    </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QCheckBox">
-                            <property name="name">
-                                <cstring>showgridCheckBox</cstring>
+                            <property name="minValue">
+                                <number>0</number>
                             </property>
-                            <property name="text">
-                                <string>Show grid lines</string>
-                            </property>
-                            <property name="checked">
-                                <bool>true</bool>
-                            </property>
-                        </widget>
-                        <widget class="QCheckBox">
-                            <property name="name">
-                                <cstring>showAxesCheckBox</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Show axes</string>
-                            </property>
-                            <property name="checked">
-                                <bool>true</bool>
+                            <property name="suffix">
+                                <string> pixels</string>
                             </property>
                         </widget>
                     </hbox>
                 </widget>
             </vbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout7</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>showgridCheckBox</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Show grid lines</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>showAxesCheckBox</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Show axes</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </hbox>
         </widget>
         <widget class="Line">
             <property name="name">
