@@ -288,7 +288,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 //        }
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file contains an intersection types "
+          notSupported( file, i18n( "This Dr. Geo file contains an intersection type "
                                     "which Kig does not currently support." ) );
           return false;
         }
