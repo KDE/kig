@@ -813,6 +813,7 @@ inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHi
   }
   else
     valid = false;
+  delete o;
   return ret;
 };
 
