@@ -40,7 +40,12 @@ public:
   virtual ~ObjectType();
 
   enum {
-    ID_ConstrainedPointType
+    ID_BuiltinType,
+    ID_CustomType,
+    ID_UserDefinedType,
+
+    ID_ConstrainedPointType,
+    ID_LocusType
   };
   virtual bool inherits( int type ) const;
 
@@ -53,6 +58,50 @@ public:
   const char* fullName() const;
 
   const ArgParser& argsParser() const;
+};
+
+/**
+ * This is a base class for builting types.  Their being builtin has
+ * the advantage that we don't need to save them..
+ */
+class BuiltinType
+  : public ObjectType
+{
+  typedef ObjectType Parent;
+public:
+  BuiltinType( const char fulltypename[],
+               const struct ArgParser::spec margsspec[],
+               int n, int any = 0 );
+  ~BuiltinType();
+
+  bool inherits( int type ) const;
+};
+
+/**
+ * Custom types are types that are not builtin.  Some of their data
+ * needs to be saved along with documents.  They are not necessarily
+ * user defined types ( well, the user didn't explicitly define them
+ * ).
+ * E.g.: LocusType can not depend on the parent relationships of its
+ * arguments, so it saves an ObjectHierarchy.  This has the added
+ * benefit that the hierarchy doesn't need to be recalculated, and
+ * that its parent relationships are correct wrt. moving.  This means
+ * however that LocusType is a CustomType, since a different instance
+ * of it is created for every locus constructed..  MacroType is a
+ * CustomType too..
+ */
+class CustomType
+  : public ObjectType
+{
+  typedef ObjectType Parent;
+public:
+  CustomType( const char fulltypename[],
+              const struct ArgParser::spec margsspec[],
+              int n, int any = 0 );
+
+  ~CustomType();
+
+  bool inherits( int type ) const;
 };
 
 #endif

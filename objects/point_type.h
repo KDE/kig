@@ -23,7 +23,7 @@
 #include "common.h"
 
 class FixedPointType
-  : public ObjectType
+  : public BuiltinType
 {
   FixedPointType();
   ~FixedPointType();
@@ -39,7 +39,7 @@ public:
 };
 
 class ConstrainedPointType
-  : public ObjectType
+  : public BuiltinType
 {
   ConstrainedPointType();
   ~ConstrainedPointType();

@@ -31,7 +31,7 @@ const struct ArgParser::spec ObjectABType::argsspec[] =
 };
 
 ObjectABType::ObjectABType( const char* fulltypename )
-  : ObjectType( fulltypename, argsspec, 1 )
+  : BuiltinType( fulltypename, argsspec, 1 )
 {
 }
 
@@ -71,7 +71,7 @@ const struct ArgParser::spec ObjectABCType::argsspec[] =
 };
 
 ObjectABCType::ObjectABCType( const char* fulltypename )
-  : ObjectType( fulltypename, argsspec, 1 )
+  : BuiltinType( fulltypename, argsspec, 1 )
 {
 }
 
@@ -86,7 +86,7 @@ const struct ArgParser::spec ObjectLPType::argsspec[] =
 };
 
 ObjectLPType::ObjectLPType( const char* fullname )
-  : ObjectType( fullname, argsspec, 2 )
+  : BuiltinType( fullname, argsspec, 2 )
 {
 }
 

@@ -19,9 +19,9 @@
 #ifndef KIG_OBJECTS_CUSTOM_TYPES_H
 #define KIG_OBJECTS_CUSTOM_TYPES_H
 
-#include <vector>
+#include "common.h"
 
-class ObjectType;
+#include <vector>
 
 /**
  * This is a container for all custom types the user creates.  Custom
@@ -30,12 +30,12 @@ class ObjectType;
  */
 class CustomTypes
 {
-  std::vector<ObjectType*> mdata;
+  std::vector<CustomType*> mdata;
   CustomTypes();
   ~CustomTypes();
 public:
-  static CustomTypes& instance();
-  void add( ObjectType* t );
+  static CustomTypes* instance();
+  void add( CustomType* t );
 };
 
 #endif

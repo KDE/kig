@@ -93,17 +93,12 @@ static const struct ArgParser::spec argsspec1c[] =
 };
 
 LocusType::LocusType( const ObjectHierarchy& hier )
-  : ObjectType( "Locus", argsspec1c, 1 ), mhier( hier )
+  : CustomType( "Locus", argsspec1c, 1 ), mhier( hier )
 {
 }
 
 LocusType::~LocusType()
 {
-}
-
-ObjectType* LocusType::copy() const
-{
-  return new LocusType( mhier );
 }
 
 ObjectImp* LocusType::calc( const Args& args ) const
@@ -117,5 +112,15 @@ ObjectImp* LocusType::calc( const Args& args ) const
   Args fixedargs( args.begin() + 1, args.end() );
 
   return new LocusImp( curveimp->copy(), mhier.withFixedArgs( fixedargs ) );
+}
+
+bool LocusType::inherits( int type ) const
+{
+  return type == ID_LocusType ? true : Parent::inherits( type );
+}
+
+const ObjectHierarchy& LocusType::hierarchy() const
+{
+  return mhier;
 }
 

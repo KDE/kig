@@ -26,6 +26,9 @@
 #include "other_type.h"
 #include "transform_types.h"
 #include "point_type.h"
+#include "custom_types.h"
+
+#include <qdom.h>
 
 ObjectTypeFactory::ObjectTypeFactory()
   : malreadysetup( false )
@@ -116,4 +119,42 @@ void ObjectTypeFactory::setupBuiltinTypes()
   add( ScalingOverCenterType::instance() );
   add( ScalingOverLineType::instance() );
   add( ProjectiveRotationType::instance() );
+}
+
+QString ObjectTypeFactory::serialize( const CustomType& t,
+                                      QDomElement& parent,
+                                      QDomDocument& doc )
+{
+  if ( t.inherits( ObjectType::ID_LocusType ) )
+  {
+    const LocusType& type = static_cast<const LocusType&>( t );
+
+    QDomElement hierelem = doc.createElement( "Hierarchy" );
+    type.hierarchy().serialize( hierelem, doc );
+
+    parent.appendChild( hierelem );
+
+    return QString::fromLatin1( "Locus" );
+  }
+//   else if ( t.inherits( ObjectType::ID_MacroType ) )
+//   {
+//   }
+  else assert( false );
+}
+
+CustomType* ObjectTypeFactory::deserialize( const QString& type, QDomElement& parent )
+{
+  CustomType* ret = 0;
+  if ( type == "Locus" )
+  {
+    QDomElement hierelem = parent.firstChild().toElement();
+    if ( hierelem.isNull() || hierelem.tagName() != "Hierarchy" ) ret = 0;
+    else {
+      ObjectHierarchy hier( hierelem );
+      ret = new LocusType( hier );
+    };
+  }
+  if ( ! ret ) return 0;
+  CustomTypes::instance()->add( ret );
+  return ret;
 }

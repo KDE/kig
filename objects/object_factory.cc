@@ -127,7 +127,7 @@ RealObject* ObjectFactory::locus( const Objects& parents )
   locusparents[0] = curve;
 
   LocusType* t = new LocusType( hier );
-  CustomTypes::instance().add( t );
+  CustomTypes::instance()->add( t );
 
   return new RealObject( t, locusparents );
 }

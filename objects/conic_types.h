@@ -22,7 +22,7 @@
 #include "base_type.h"
 
 class ConicB5PType
-  : public ObjectType
+  : public BuiltinType
 {
   ConicB5PType();
   ~ConicB5PType();
@@ -32,7 +32,7 @@ public:
 };
 
 class ConicBAAPType
-  : public ObjectType
+  : public BuiltinType
 {
   ConicBAAPType();
   ~ConicBAAPType();
@@ -75,7 +75,7 @@ public:
 };
 
 class ConicBDFPType
-  : public ObjectType
+  : public BuiltinType
 {
   ConicBDFPType();
   ~ConicBDFPType();
@@ -95,7 +95,7 @@ public:
 };
 
 class EquilateralHyperbolaB4PType
-  : public ObjectType
+  : public BuiltinType
 {
   EquilateralHyperbolaB4PType();
   ~EquilateralHyperbolaB4PType();
@@ -105,7 +105,7 @@ public:
 };
 
 class ConicPolarPointType
-  : public ObjectType
+  : public BuiltinType
 {
   ConicPolarPointType();
   ~ConicPolarPointType();
@@ -115,7 +115,7 @@ public:
 };
 
 class ConicPolarLineType
-  : public ObjectType
+  : public BuiltinType
 {
   ConicPolarLineType();
   ~ConicPolarLineType();
@@ -125,7 +125,7 @@ public:
 };
 
 class ConicDirectrixType
-  : public ObjectType
+  : public BuiltinType
 {
   ConicDirectrixType();
   ~ConicDirectrixType();
@@ -145,7 +145,7 @@ public:
 };
 
 class ConicAsymptoteType
-  : public ObjectType
+  : public BuiltinType
 {
   ConicAsymptoteType();
   ~ConicAsymptoteType();
@@ -155,7 +155,7 @@ public:
 };
 
 class ConicRadicalType
-  : public ObjectType
+  : public BuiltinType
 {
   ConicRadicalType();
   ~ConicRadicalType();

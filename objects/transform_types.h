@@ -22,7 +22,7 @@
 #include "object_type.h"
 
 class TranslatedType
-  : public ObjectType
+  : public BuiltinType
 {
   TranslatedType();
   ~TranslatedType();
@@ -32,7 +32,7 @@ public:
 };
 
 class PointReflectionType
-  : public ObjectType
+  : public BuiltinType
 {
   PointReflectionType();
   ~PointReflectionType();
@@ -42,7 +42,7 @@ public:
 };
 
 class LineReflectionType
-  : public ObjectType
+  : public BuiltinType
 {
   LineReflectionType();
   ~LineReflectionType();
@@ -52,7 +52,7 @@ public:
 };
 
 class RotationType
-  : public ObjectType
+  : public BuiltinType
 {
   RotationType();
   ~RotationType();
@@ -62,7 +62,7 @@ public:
 };
 
 class ScalingOverCenterType
-  : public ObjectType
+  : public BuiltinType
 {
   ScalingOverCenterType();
   ~ScalingOverCenterType();
@@ -72,7 +72,7 @@ public:
 };
 
 class ScalingOverLineType
-  : public ObjectType
+  : public BuiltinType
 {
   ScalingOverLineType();
   ~ScalingOverLineType();
@@ -82,7 +82,7 @@ public:
 };
 
 class ProjectiveRotationType
-  : public ObjectType
+  : public BuiltinType
 {
   ProjectiveRotationType();
   ~ProjectiveRotationType();
@@ -92,7 +92,7 @@ public:
 };
 
 class CastShadowType
-  : public ObjectType
+  : public BuiltinType
 {
   CastShadowType();
   ~CastShadowType();

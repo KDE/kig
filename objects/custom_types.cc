@@ -26,13 +26,13 @@ CustomTypes::~CustomTypes()
 {
 }
 
-CustomTypes& CustomTypes::instance()
+CustomTypes* CustomTypes::instance()
 {
   static CustomTypes t;
-  return t;
+  return &t;
 }
 
-void CustomTypes::add( ObjectType* t )
+void CustomTypes::add( CustomType* t )
 {
   mdata.push_back( t );
 }

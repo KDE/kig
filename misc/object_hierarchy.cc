@@ -216,7 +216,7 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
     visit( *i, from );
 }
 
-void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc )
+void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
 {
   int id = 1;
   for ( uint i = 0; i < mnumberofargs; ++i )
@@ -270,7 +270,7 @@ ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
     bool result = e.tagName() == "result";
-    if ( result ) ++mnumberofargs;
+    if ( result ) ++mnumberofresults;
 
     QString tmp = e.attribute( "id" );
     int id = tmp.toInt( &ok );
@@ -306,7 +306,7 @@ ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
       ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e );
       newnode = new PushStackNode( imp );
     };
-    mnodes.resize( kMax( id, (int) mnodes.size() ) );
-    mnodes[id - 1] = newnode;
+    mnodes.resize( kMax( id - mnumberofargs, mnodes.size() ) );
+    mnodes[id - mnumberofargs - 1] = newnode;
   };
 }

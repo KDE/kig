@@ -22,7 +22,7 @@
 #include "object_type.h"
 
 class CubicB9PType
-  : public ObjectType
+  : public BuiltinType
 {
   CubicB9PType();
   ~CubicB9PType();
@@ -32,7 +32,7 @@ public:
 };
 
 class CubicNodeB6PType
-  : public ObjectType
+  : public BuiltinType
 {
   CubicNodeB6PType();
   ~CubicNodeB6PType();
@@ -42,12 +42,12 @@ public:
 };
 
 class CubicCuspB4PType
-  : public ObjectType
+  : public BuiltinType
 {
   CubicCuspB4PType();
   ~CubicCuspB4PType();
 public:
-  static const ObjectType* instance();
+  static const CubicCuspB4PType* instance();
   ObjectImp* calc( const Args& parents ) const;
 };
 

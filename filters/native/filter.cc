@@ -20,6 +20,7 @@
 
 #include "../../kig/kig_part.h"
 #include "../../objects/object_factory.h"
+#include "../../objects/custom_types.h"
 #include "../../objects/object_type_factory.h"
 #include "../../objects/object.h"
 #include "../../objects/bogus_imp.h"
@@ -362,6 +363,8 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
 
 KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString& to )
 {
+  using namespace std;
+
   QFile file( to );
   if ( ! file.open( IO_WriteOnly ) )
     return FileNotFound;
@@ -379,10 +382,36 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
   cselem.appendChild( doc.createTextNode( kdoc.coordinateSystem().type() ) );
   docelem.appendChild( cselem );
 
-  QDomElement objectselem = doc.createElement( "Objects" );
-
   Objects objs = kdoc.objects();
   objs = getAllParents( objs );
+
+  // save the custom types..
+  std::vector<const CustomType*> customtypes;
+  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+  {
+    if ( (*i)->inherits( Object::ID_RealObject ) )
+    {
+      const ObjectType* type = static_cast<const RealObject*>( *i )->type();
+      if ( type->inherits( ObjectType::ID_CustomType ) )
+        customtypes.push_back( static_cast<const CustomType*>( type ) );
+    }
+  }
+  if ( !customtypes.empty() )
+  {
+    QDomElement ctelem = doc.createElement( "Types" );
+    for ( uint i = 0; i < customtypes.size(); ++i )
+    {
+      QDomElement typeelem = doc.createElement( "Type" );
+      QString tmp = ObjectTypeFactory::instance()->serialize( *customtypes[i], typeelem, doc );
+      typeelem.setAttribute( "type", tmp );
+      typeelem.setAttribute( "id", QString::fromLatin1( "custom-%1" ).arg( i + 1 ) );
+      ctelem.appendChild( typeelem );
+    };
+    docelem.appendChild( ctelem );
+  };
+
+  // save the objects..
+  QDomElement objectselem = doc.createElement( "Objects" );
   objs = calcPath( objs );
 
   std::map<Object*, int> idmap;
@@ -406,7 +435,16 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
       QDomElement e = doc.createElement( "Object" );
       idmap[*i] = id;
       e.setAttribute( "id", id++ );
-      e.setAttribute( "type", o->type()->fullName() );
+
+      if ( o->type()->inherits( ObjectType::ID_CustomType ) )
+      {
+        // custom types that we have saved along are identified with "custom-id"
+        uint cid = find( customtypes.begin(), customtypes.end(), o->type() ) - customtypes.begin();
+        assert( cid < customtypes.size() );
+        e.setAttribute( "type", QString::fromLatin1( "custom-%1" ).arg( cid + 1 ) );
+      }
+      else e.setAttribute( "type", o->type()->fullName() );
+
       e.setAttribute( "color", o->color().name() );
       e.setAttribute( "shown", QString::fromLatin1( o->shown() ? "true" : "false" ) );
       e.setAttribute( "width", QString::number( o->width() ) );
@@ -437,6 +475,9 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
 KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocument& kdoc )
 {
   bool ok = true;
+
+  std::vector<CustomType*> customtypes;
+
   for ( QDomNode n = docelem.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
     QDomElement e = n.toElement();
@@ -447,6 +488,25 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
       CoordinateSystem* s = CoordinateSystemFactory::build( type );
       if ( ! s ) return NotSupported;
       else kdoc.setCoordinateSystem( s );
+    }
+    else if ( e.tagName() == "Types" )
+    {
+      QDomElement typeselem = e;
+      for ( QDomNode o = typeselem.firstChild(); ! o.isNull(); o = o.nextSibling() )
+      {
+        QDomElement typeelem = o.toElement();
+        if ( typeelem.isNull() ) return ParseError;
+        if ( typeelem.tagName() != "Type" ) return ParseError;
+        QString tmp = typeelem.attribute( "type" );
+        CustomType* type = ObjectTypeFactory::instance()->deserialize( tmp, typeelem );
+        tmp = typeelem.attribute( "id" );
+        if ( tmp.left( 7 ) != "custom-" ) return ParseError;
+        int id = tmp.mid( 7 ).toInt( &ok );
+        if ( ! ok ) return ParseError;
+
+        customtypes.resize( kMax( (uint) id, customtypes.size() ), 0 );
+        customtypes[id-1] = type;
+      };
     }
     else if ( e.tagName() == "Objects" )
     {
@@ -518,7 +578,16 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         {
           QString tmp = e.attribute( "type" );
           if ( tmp.isNull() ) return ParseError;
-          const ObjectType* type = ObjectTypeFactory::instance()->find( tmp.latin1() );
+
+          const ObjectType* type = 0;
+          if ( tmp.left( 7 ) == "custom-" )
+          {
+            int id = tmp.mid( 7 ).toInt( &ok );
+            if ( ! ok ) return ParseError;
+            type = customtypes[id-1];
+          }
+          else
+            type = ObjectTypeFactory::instance()->find( tmp.latin1() );
           if ( !type ) return ParseError;
 
           tmp = e.attribute( "color" );
@@ -548,6 +617,8 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         else continue;
       }
       kdoc.setObjects( ret );
+      for ( uint i = 0; i < customtypes.size(); ++i )
+        CustomTypes::instance()->add( customtypes[i] );
     }
     else continue; // be forward-compatible..
   };

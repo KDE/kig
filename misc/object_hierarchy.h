@@ -41,7 +41,7 @@ public:
   ObjectHierarchy withFixedArgs( const Args& a ) const;
   std::vector<ObjectImp*> calc( const Args& a ) const;
 
-  void serialize( QDomElement& parent, QDomDocument& doc );
+  void serialize( QDomElement& parent, QDomDocument& doc ) const;
   // deserialize..
   ObjectHierarchy( QDomElement& parent );
 };

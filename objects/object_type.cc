@@ -56,3 +56,37 @@ bool ObjectType::inherits( int ) const
 {
   return false;
 }
+
+BuiltinType::BuiltinType(
+  const char fulltypename[],
+  const struct ArgParser::spec margsspec[],
+  int n, int any )
+  : ObjectType( fulltypename, margsspec, n, any )
+{
+}
+
+BuiltinType::~BuiltinType()
+{
+}
+
+bool BuiltinType::inherits( int type ) const
+{
+  return type == ID_BuiltinType ? true : Parent::inherits( type );
+}
+
+bool CustomType::inherits( int type ) const
+{
+  return type == ID_CustomType ? true : Parent::inherits( type );
+}
+
+CustomType::~CustomType()
+{
+}
+
+CustomType::CustomType( const char fulltypename[],
+                        const struct ArgParser::spec argsspec[],
+                        int n, int any )
+  : ObjectType( fulltypename, argsspec, n, any )
+{
+}
+

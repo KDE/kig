@@ -43,15 +43,18 @@ public:
 };
 
 class LocusType
-  : public ObjectType
+  : public CustomType
 {
-  typedef ObjectType Parent;
+  typedef CustomType Parent;
   ObjectHierarchy mhier;
 public:
   LocusType( const ObjectHierarchy& mhier );
   ~LocusType();
-  ObjectType* copy() const;
   ObjectImp* calc( const Args& args ) const;
+
+  const ObjectHierarchy& hierarchy() const;
+
+  bool inherits( int type ) const;
 };
 
 #endif

@@ -30,7 +30,7 @@ static const struct ArgParser::spec argsspec9p[] =
 };
 
 CubicB9PType::CubicB9PType()
-  : ObjectType( "CubicB9P", argsspec9p, 1 )
+  : BuiltinType( "CubicB9P", argsspec9p, 1 )
 {
 }
 
@@ -63,7 +63,7 @@ static const ArgParser::spec argsspec6p[] =
 };
 
 CubicNodeB6PType::CubicNodeB6PType()
-  : ObjectType( "CubicNodeB6P", argsspec6p, 1 )
+  : BuiltinType( "CubicNodeB6P", argsspec6p, 1 )
 {
 }
 
@@ -94,7 +94,7 @@ static const ArgParser::spec argsspec4p[] =
 };
 
 CubicCuspB4PType::CubicCuspB4PType()
-  : ObjectType( "CubicCuspB4P", argsspec4p, 1 )
+  : BuiltinType( "CubicCuspB4P", argsspec4p, 1 )
 {
 }
 
@@ -102,7 +102,7 @@ CubicCuspB4PType::~CubicCuspB4PType()
 {
 }
 
-const ObjectType* CubicCuspB4PType::instance()
+const CubicCuspB4PType* CubicCuspB4PType::instance()
 {
   static const CubicCuspB4PType t;
   return &t;

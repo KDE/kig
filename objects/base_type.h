@@ -24,7 +24,7 @@
 class LineData;
 
 class ObjectABType
-  : public ObjectType
+  : public BuiltinType
 {
   static const struct ArgParser::spec argsspec[];
 protected:
@@ -38,7 +38,7 @@ protected:
 };
 
 class ObjectABCType
-  : public ObjectType
+  : public BuiltinType
 {
   static const struct ArgParser::spec argsspec[];
 protected:
@@ -47,7 +47,7 @@ protected:
 };
 
 class ObjectLPType
-  : public ObjectType
+  : public BuiltinType
 {
   static const struct ArgParser::spec argsspec[];
 protected:

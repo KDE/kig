@@ -35,6 +35,12 @@ public:
   static ObjectTypeFactory* instance();
   void add( const ObjectType* type );
   const ObjectType* find( const char* name ) const;
+
+  // saves data as subelements of parent, and returns a type string...
+  QString serialize( const CustomType& t, QDomElement& parent, QDomDocument& doc );
+  // given the type string returned by serialize, and the QDomElement
+  // that serialize saved to, this function returns a new CustomType..
+  CustomType* deserialize( const QString& type, QDomElement& parent );
 };
 
 #endif
