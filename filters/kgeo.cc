@@ -5,6 +5,9 @@
 #include "../misc/hierarchy.h"
 #include "../objects/point.h"
 #include "../objects/segment.h"
+#include "../objects/circle.h"
+#include "../objects/line.h"
+// #include "../objects/
 
 #include "kgeo_resource.h"
 
@@ -100,14 +103,76 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
 	    if (!ok) return ParseError;
 	    p->setX(x);
 	    p->setY(y);
+	    break;
 	  }
-	  break;
 	case ID_segment:
 	  {
 	    objs.push_back(new Segment);
+	    break;
 	  };
-	  break;
-// TODO
+	case ID_circle:
+	  {
+	    objs.push_back( new CircleBCP );
+	    break;
+	  };
+	case ID_line:
+	  {
+	    objs.push_back( new LineTTP );
+	    break;
+	  }
+// 	case ID_bisection:
+// 	  {
+// 	    objs.append( new Bisection() );
+// 	    break;
+// 	  };
+// 	case ID_fixedCircle:
+// 	  objs.append( new FixedCircle() );
+// 	  break;
+// 	case ID_pointOfConc:
+// 	  objs.append( new PointOfConc() );
+// 	  break;
+// 	case ID_angle:
+// 	  objs.append( new Angle() );
+// 	  break;
+// 	case ID_mirrorPoint:
+// 	  objs.append( new MirrorPoint() );
+// 	  break;
+// 	case ID_distance:
+// 	  objs.append( new Distance() );
+// 	  break;
+// 	case ID_arc:
+// 	  objs.append( new Arc() );
+// 	  break;
+// 	case ID_area:
+// 	  objs.append( new Area() );
+// 	  break;
+// 	case ID_slope:
+// 	  objs.append( new Slope() );
+// 	  break;
+// 	case ID_circumference:
+// 	  objs.append( new Circumference() );
+// 	  break;
+// 	case ID_vector:
+// 	  objs.append( new Vector() );
+// 	  break;
+// 	case ID_ray:
+// 	  objs.append( new Ray() );
+// 	  break;
+// 	case ID_perpendicular:
+// 	  objs.append( new Perpendicular() );
+// 	  break;
+// 	case ID_parallel:
+// 	  objs.append( new Parallel() );
+// 	  break;
+// 	case ID_move:
+// 	  objs.append( new Move() );
+// 	  break;
+// 	case ID_rotation:
+// 	  objs.append( new Rotation() );
+// 	  break;
+// 	case ID_text:
+// 	  objs.append( new Text() );
+// 	  break;
 	default:
 	  return ParseError;
 	}; // switch of objID

@@ -5,7 +5,7 @@ Draw=0,0,0
 [Main]
 Axes=true
 Grid=true
-Number=3
+Number=6
 Numbers=true
 Scaling=false
 Version=KGeo 1.0.2
@@ -17,8 +17,8 @@ Color=0,0,0
 Geo=1
 Parents=
 Position=1
-QPointX=8.3
-QPointY=1.4
+QPointX=-2.6
+QPointY=1.6
 Size=3
 
 [Object 2]
@@ -26,12 +26,33 @@ Color=0,0,0
 Geo=1
 Parents=
 Position=1
-QPointX=4.8
-QPointY=4.2
+QPointX=-3.4
+QPointY=2.4
 Size=3
 
 [Object 3]
 Color=0,0,0
-Geo=2
+Geo=3
 Parents=1,2
+Size=1
+
+[Object 4]
+Color=0,0,0
+Geo=4
+Parents=1,2
+Size=1
+
+[Object 5]
+Color=0,0,0
+Geo=1
+Parents=
+Position=1
+QPointX=-0.9
+QPointY=4.2
+Size=3
+
+[Object 6]
+Color=0,0,0
+Geo=2
+Parents=1,5
 Size=1
