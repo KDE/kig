@@ -38,12 +38,16 @@ class NormalPoint
   NormalPointImp* mimp;
   void setImp( NormalPointImp* i );
 
+  // tparents is used to hold the parents between the construction of
+  // the Object, and setParams() or setImp() where our mimp is
+  // defined...
+  Objects tparents;
 public:
   NormalPoint( NormalPointImp* );
   // this is for allowing us to be constructed by the native file
   // format filter... it sets mimp to 0 and waits for setParams() to
   // set it to something useful...
-  NormalPoint();
+  NormalPoint( const Objects& os );
   NormalPoint( const NormalPoint& );
 
   ~NormalPoint();
@@ -94,13 +98,6 @@ public:
 
   static KigMode* sConstructMode( Type*, KigDocument*, NormalMode* );
 
-  // no drawPrelim...
-  virtual void drawPrelim( KigPainter&, const Object* ) const;
-
-  // passing arguments
-  virtual QString wantArg( const Object* ) const;
-  virtual bool selectArg( Object * );
-
   // no args => no parents
   virtual Objects getParents() const;
   virtual void calc( const ScreenInfo& s );
@@ -137,8 +134,7 @@ class NormalPointImp
   virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p ) = 0;
   virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p ) = 0;
 
-  virtual QString wantArg( const Object* ) const = 0;
-  virtual bool selectArg( Object *, NormalPoint* ) = 0;
+  virtual void setParents( const Objects& os, NormalPoint* p ) = 0;
   virtual void unselectArgs( NormalPoint* ) = 0;
 
   virtual Objects getParents() = 0;
@@ -176,11 +172,9 @@ public:
   virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p );
   virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p );
 
-  virtual QString wantArg(const Object*) const;
-
   virtual Objects getParents();
 
-  virtual bool selectArg( Object *, NormalPoint* );
+  virtual void setParents( const Objects& os, NormalPoint* p );
   virtual void unselectArgs( NormalPoint* np );
 };
 
@@ -194,7 +188,7 @@ class ConstrainedPointImp
   double mparam;
   Curve* mcurve;
 
-  ConstrainedPointImp( const Coordinate& d, Curve* c, NormalPoint* );
+  ConstrainedPointImp( const Coordinate& d, Curve* c );
   ConstrainedPointImp();
   ConstrainedPointImp( const ConstrainedPointImp& p, NormalPoint* np );
 
@@ -221,8 +215,7 @@ public:
   virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p );
   virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p );
 
-  virtual QString wantArg(const Object*) const;
-  virtual bool selectArg( Object *, NormalPoint* );
+  virtual void setParents( const Objects& os, NormalPoint* p );
   virtual void unselectArgs( NormalPoint* );
 
   virtual Objects getParents();

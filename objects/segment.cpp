@@ -30,9 +30,16 @@
 
 #include "../misc/i18n.h"
 
-Segment::Segment()
+Segment::Segment( const Objects& os )
  : p1( 0 ), p2( 0 )
 {
+  assert( os.size() == 2 );
+  assert( os[0]->toPoint() );
+  assert( os[1]->toPoint() );
+  p1 = static_cast<Point*>(os[0]);
+  p2 = static_cast<Point*>(os[1]);
+  p1->addChild( this );
+  p2->addChild( this );
 }
 
 Segment::~Segment()
@@ -78,38 +85,19 @@ bool Segment::inRect(const Rect& p) const
   return false;
 }
 
-QString Segment::wantArg( const Object* o) const
+Object::WantArgsResult Segment::sWantArgs( const Objects& os )
 {
-  if (complete) return 0;
-  if ( !o->toPoint() ) return 0;
-  if ( !p1 ) return i18n( "Start point" );
-  if ( !p2 ) return i18n( "End point" );
-  return 0;
-}
+  uint size = os.size();
+  if ( size != 1 && size != 2 ) return NotGood;
+  if ( !os[0]->toPoint() || ( size == 2 && !os[1]->toPoint() ) )
+      return NotGood;
+  return size == 2 ? Complete : NotComplete;
+};
 
-bool Segment::selectArg(Object* o)
+QString Segment::sUseText( const Objects& os, const Object* o )
 {
-  Point* p = o->toPoint();
-  assert(p);
-  assert (! (p1 && p2));
-  if ( !p1 ) p1 = p;
-  else p2 = p;
-  o->addChild(this);
-  return complete=p2;
-}
-
-void Segment::unselectArg(Object* which)
-{
-  if ( which == p1 )
-  {
-    p1 = p2; p2 = 0;
-    which->delChild(this);
-  }
-  if ( which == p2 )
-  {
-    p2 = 0;
-    which->delChild(this);
-  };
+  if ( os.size() == 2 || ( os.size() == 1 && o ) ) return i18n( "End point" );
+  return i18n( "Start point" );
 }
 
 void Segment::startMove(const Coordinate& p)
@@ -169,13 +157,14 @@ Objects Segment::getParents() const
   return objs;
 }
 
-void Segment::drawPrelim( KigPainter& p, const Object* o ) const
+void Segment::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  if( !(shown && p1 ) ) return;
-  assert( o->toPoint() );
-  Coordinate c = o->toPoint()->getCoord();
+  if ( os.size() != 2 ) return;
+  assert( os[0]->toPoint() && os[1]->toPoint() );
+  Coordinate a = os[0]->toPoint()->getCoord();
+  Coordinate b = os[1]->toPoint()->getCoord();
   p.setPen( QPen( Qt::red, 1));
-  p.drawSegment( p1->getCoord(), c );
+  p.drawSegment( a, b );
 }
 
 Segment::Segment(const Segment& s)
@@ -260,11 +249,6 @@ const int Segment::sShortCut()
   return CTRL+Key_S;
 }
 
-QCString Segment::iType() const
-{
-  return I18N_NOOP("segment");
-}
-
 const Coordinate Segment::getP1() const
 {
   return p1->getCoord();
@@ -275,15 +259,15 @@ const Coordinate Segment::getP2() const
   return p2->getCoord();
 }
 
-Point* Segment::getPoint2()
-{
-  return p2;
-}
+// Point* Segment::getPoint2()
+// {
+//   return p2;
+// }
 
-Point* Segment::getPoint1()
-{
-  return p1;
-}
+// Point* Segment::getPoint1()
+// {
+//   return p1;
+// }
 
 const char* Segment::sActionName()
 {

@@ -50,9 +50,8 @@ protected:
   Coordinate qpc;
   double radius;
 
-  double calcRadius( const Point* c, const Point* p ) const;
-  double calcRadius( const Coordinate& c, const Coordinate& p ) const;
-  double calcRadius( const Point* c, const Coordinate& p ) const;
+  static double calcRadius( const Point* c, const Point* p );
+  static double calcRadius( const Coordinate& c, const Coordinate& p );
 };
 
 // a circle composed by a centre and a point on the circle
@@ -60,7 +59,7 @@ class CircleBCP
   : public Circle
 {
 public:
-  CircleBCP();
+  CircleBCP( const Objects& os );
   ~CircleBCP(){};
   CircleBCP(const CircleBCP& c);
   CircleBCP* copy() { return new CircleBCP(*this); };
@@ -78,13 +77,13 @@ public:
   static const char* sActionName();
 
   void calc( const ScreenInfo& showingRect );
-  void drawPrelim ( KigPainter&, const Object* prelimArg ) const;
 
   // passing arguments
-  QString wantArg (const Object*) const;
-  bool selectArg (Object*);
-  void unselectArg (Object*);
-    Objects getParents() const;
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects&, const Object* o );
+  static void sDrawPrelim( KigPainter& p, const Objects& args );
+
+  Objects getParents() const;
 
   //moving
   void startMove(const Coordinate&);
@@ -102,7 +101,7 @@ class CircleBTP
   : public Circle
 {
 public:
-  CircleBTP() :p1(0), p2(0), p3(0) {};
+  CircleBTP( const Objects& os );
   ~CircleBTP() {};
   CircleBTP(const CircleBTP& c);
   CircleBTP* copy() { return new CircleBTP(*this); };
@@ -119,13 +118,12 @@ public:
   static const int sShortCut() { return 0; };
   static const char* sActionName();
 
-  void drawPrelim ( KigPainter&, const Object* ) const;
-
   // passing arguments
-  QString wantArg (const Object*) const;
-  bool selectArg (Object*);
-  void unselectArg (Object*);
-    Objects getParents() const;
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* );
+  static void sDrawPrelim( KigPainter& p, const Objects& os );
+
+  Objects getParents() const;
 
   //moving
   void startMove(const Coordinate&) {};
@@ -134,9 +132,7 @@ public:
   void cancelMove() {};
 
 protected:
-  Point* p1;
-  Point* p2;
-  Point* p3;
+  Point* pts[3];
 
   void calc( const ScreenInfo& showingRect );
   static Coordinate calcCenter( Coordinate, Coordinate, Coordinate );

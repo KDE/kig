@@ -18,7 +18,6 @@
  USA
 **/
 
-
 #include "hierarchy.h"
 
 #include "types.h"
@@ -30,6 +29,30 @@
 #include <qdom.h>
 
 #include "../objects/point.h"
+
+Objects ElemList::actuals()
+{
+  Objects tmp;
+  for ( iterator i = begin(); i != end(); ++i )
+  {
+    tmp.push_back( (*i)->mactual );
+  };
+  return tmp;
+}
+
+void ElemList::clean() const
+{
+  for( const_iterator i = begin(); i != end(); ++i )
+  {
+    (*i)->mactual = 0;
+    (*i)->mcpc = 0;
+  };
+}
+
+ObjectHierarchy::ObjectHierarchy( QDomElement& ourElement )
+{
+  loadXML(ourElement);
+}
 
 ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
 				 const Objects& inFinalObjs )
@@ -44,9 +67,7 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
   // the geg in gegObjs stands for) objects
   for( Objects::const_iterator i = inGegObjs.begin(); i != inGegObjs.end(); ++i )
   {
-    elem = new HierarchyElement( (*i)->vFullTypeName(), allElems.size() + 1 );
-    elem->actual = *i;
-    elem->setParams( (*i)->getParams());
+    elem = new HierarchyElement( *i, allElems.size() + 1 );
     gegElems.push_back(elem);
     allElems.push_back(elem);
     elemHash[*i]=elem;
@@ -54,17 +75,14 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
   // next: we do the final objects
   for( Objects::const_iterator i = inFinalObjs.begin(); i != inFinalObjs.end(); ++i )
   {
-    elem = new HierarchyElement( (*i)->vFullTypeName(), allElems.size() + 1 );
-    elem->actual = *i;
-    elem->setParams( (*i)->getParams() );
+    elem = new HierarchyElement( *i, allElems.size() + 1 );
     finElems.push_back(elem);
     allElems.push_back(elem);
     elemHash[*i] = elem;
   };
 
-  // some temporary stuff i use
   Objects tmp = inFinalObjs;
-  Objects tmp2, tmp3;
+  Objects tmp2;
   ElemHash::iterator elem2;
   HierarchyElement* elem3;
   // tmp contains objects whose parents need to be handled
@@ -72,8 +90,7 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
   {
     // tmp2 is a temporary, used to contain objects which will form
     // tmp in the next round, if we encounter an object whose parents
-    // need to be handled, we add it to tmp2, so that it will be
-    // handled in the next round
+    // need to be handled, we add it to tmp2
     tmp2.clear();
     // we make a pass over all objects in tmp
     for( Objects::iterator i = tmp.begin(); i != tmp.end(); ++i )
@@ -81,7 +98,7 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
       // *i should already be in the hash
       elem = elemHash.find(*i)->second;
       // tmp3 are the parents of the object we're handling
-      tmp3 = (*i)->getParents();
+      Objects tmp3 = (*i)->getParents();
       for (Objects::iterator j = tmp3.begin(); j != tmp3.end(); ++j )
       {
         // elem2 is a map::iterator, we use it to find elem3,
@@ -89,11 +106,9 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
         elem2 = elemHash.find( *j );
         if (elem2 == elemHash.end())
         {
-          elem3 = new HierarchyElement((*j)->vFullTypeName(), allElems.size() + 1);
-          elem3->actual = *j;
-          elem3->setParams((*j)->getParams());
+          elem3 = new HierarchyElement( *j, allElems.size() + 1);
           tmp2.upush(*j);
-          allElems.add(elem3);
+          allElems.push_back(elem3);
           elemHash[*j] = elem3;
         }
         else elem3 = elem2->second;
@@ -106,74 +121,61 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
 
 Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
 {
+  // init our return value
   Objects cos;
+
+  // cleanups
   assert (gegElems.size() == inGegObjs.size());
-  allElems.cleanActuals();
+  allElems.clean();
+
+  // init our gegElems...
   ElemList::const_iterator elem = gegElems.begin();
-  for ( Objects::const_iterator i = inGegObjs.begin(); i != inGegObjs.end(); ++i, ++elem )
+  for( Objects::const_iterator i = inGegObjs.begin();
+       i != inGegObjs.end(); ++i, ++elem )
+    (*elem)->setActual( *i );
+  // we need some independent elements to start constructing from.  We
+  // can use the given elems of course, but in some situations, there
+  // are no given elems, and then we need to find some independent
+  // elements..
+  ElemList indElems = gegElems;
+  for ( ElemList::const_iterator i = allElems.begin(); i != allElems.end(); ++i )
   {
-    (*elem)->actual = *i;
-    // doesn't seem necessary, but you never know...
-    (*elem)->setParams((*i)->getParams());
+    if ( (*i)->parents().empty() )
+    {
+      assert((*i)->tryBuild());
+      cos.push_back( (*i)->actual() );
+      indElems.push_back( *i );
+    };
   };
-  for (ElemList::const_iterator i = finElems.begin(); i != finElems.end(); ++i)
-  {
-    (*i)->actual = Object::newObject((*i)->fullTypeName());
-    (*i)->actual->setParams((*i)->getParams());
-    cos.upush((*i)->actual);
-  };
-  // temporary's
-  ElemList tmp = finElems;
-  ElemList tmp2, tmp3;
+
+  ElemList tmp = indElems, tmp2;
   // tmp contains elems we're constructing the children of...
   while ( !tmp.empty() )
   {
     // these are the next objects we'll be making a pass over, they
-    // will be copied onto tmp. tmp2 is only there to not disturb tmp
-    // within a run.
+    // will be copied onto tmp at the end of this loop... tmp2 is only
+    // there to not disturb tmp within a run.
     tmp2.clear();
-    // we pass over all objects we're constructing the children of
-    for ( ElemList::const_iterator i = tmp.begin(); i != tmp.end(); ++i)
+    // we iterate over tmp...
+    for ( ElemList::iterator i = tmp.begin(); i != tmp.end(); ++i)
     {
       // pass over all of the current object's children
-      for ( ElemList::const_iterator j = (*i)->getParents().begin();
-            j != (*i)->getParents().end();
-            ++j)
+      for ( ElemList::const_iterator j = (*i)->children().begin();
+            j != (*i)->children().end(); ++j )
       {
-        // if we haven't constructed the object yet...
-        if (!(*j)->actual)
+        // we try to construct the object.. this only works if all of
+        // its parents have been constructed already..
+        if ((*j)->tryBuild())
         {
-          // we construct it, and add it to the necessary places
-          Object* appel;
-          appel = Object::newObject((*j)->fullTypeName());
-          assert(appel);
-          appel->setParams((*j)->getParams());
-          (*j)->actual = appel;
-          cos.upush(appel);
-          // we should also construct its parents
-          tmp2.add(*j);
-        };
-
-        // select its parent as an arg...
-        (void) (*i)->actual->selectArg((*j)->actual);
-
-        // we don't do addChild since that should be done by the
-        // child's selectArg() function
-      };
-    };
+          cos.push_back((*j)->actual());
+          // we now handle its children..
+          tmp2.push_back(*j);
+        }; // if( tryBuild() )
+      }; // loop over (*i)->children()
+    }; // loop over tmp
     tmp = tmp2;
-  };
+  }; // while ( ! tmp.empty() );
   return cos;
-}
-
-void ElemList::deleteAll()
-{
-  for (iterator i = begin(); i != end(); ++i) delete *i;
-}
-
-void ElemList::cleanActuals() const
-{
-  for (const_iterator i = begin(); i != end(); ++i) (*i)->actual = 0;
 }
 
 void ObjectHierarchy::loadXML( QDomElement& ourElement)
@@ -181,40 +183,27 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
   // clear everything...
   gegElems.clear();
   finElems.clear();
-  allElems.deleteAll();
+  delete_all( allElems.begin(), allElems.end() );
   allElems.clear();
 
-  // a hash to know which elements we already constructed...
-  // an int-hash is a vector :)
-  typedef vector<HierarchyElement*> Hash;
-  Hash tmphash;
+  // vector containing the elements we already constructed.  ( the
+  // elements are in the order of their id()'s...
+  vector<HierarchyElement*> tac;
 
   // load data:
   // we pass over the dom hierarchy twice:
-  // first we construct all the HierarchyElement, an then we pass each
+  // first we construct all the HierarchyElements, an then we pass each
   // object its parents...
   for (QDomNode n = ourElement.firstChild(); !n.isNull(); n = n.nextSibling())
   {
     QDomElement e = n.toElement();
-    assert (!e.isNull());
-    assert (e.tagName() == "HierarchyElement");
 
-    // fetch the id
-    QString tmpId = e.attribute("id");
-    bool ok;
-    int id = tmpId.toInt(&ok);
-    assert(ok);
-
-    // fetch the typeName
-    QString tmpTN = e.attribute("typeName");
-    assert(tmpTN);
-    QCString typeName = tmpTN.utf8();
-
-    HierarchyElement* tmpE = new HierarchyElement(typeName, id);
+    HierarchyElement* tmpE = new HierarchyElement( e );
     // static cast, to prevent warnings about "comparison between
     // signed and unsigned..."
-    if( id > static_cast<int>(tmphash.size()) ) tmphash.resize( id );
-    tmphash[id - 1] = tmpE;
+    // yes, the numbers are correct, there are no off-by-ones here..
+    if( tmpE->id() > tac.size() ) tac.resize( tmpE->id() );
+    tac[tmpE->id() - 1] = tmpE;
 
     allElems.push_back(tmpE);
   };
@@ -229,13 +218,13 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
     // fetch the id
     QString tmpId = e.attribute("id");
     bool ok;
-    int id = tmpId.toInt(&ok);
+    uint id = tmpId.toInt(&ok);
     assert(ok);
 
-    // static cast, to prevent warnings about "comparison between
-    // signed and unsigned..."
-    assert( id <= static_cast<int>(tmphash.size()) );
-    HierarchyElement* tmpE = tmphash[id -1];
+    // find the HierarchyElement..
+    assert( id <= tac.size() );
+    HierarchyElement* tmpE = tac[id -1];
+    assert( id == tmpE->id() );
 
     // two params we handle:
     QString tmpGiven = e.attribute("given");
@@ -262,7 +251,7 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
         int id = tmpId.toInt(&ok);
         assert(ok);
 
-        HierarchyElement* i = tmphash[id -1];
+        HierarchyElement* i = tac[id -1];
         tmpE->addParent(i);
       } // e.tagName() == "parent"
       else
@@ -281,29 +270,29 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
 			       ref, bool given, bool final) const
 {
   QDomElement e = doc.createElement(ref?"parent":"HierarchyElement");
-  e.setAttribute("id", id);
-
-  // if we're only writing a reference to ourselves, we don't need all
-  // this information..
-  if (!ref) {
-    // our typename
-    e.setAttribute("typeName", fullTypeName() );
-
-    // whether we are given/final:
-    e.setAttribute("given", given?"true":"false");
-    e.setAttribute("final", final?"true":"false");
-    // references to our parents
-    for (ElemList::const_iterator i = parents.begin(); i != parents.end(); ++i)
-      (*i)->saveXML(doc,e,true);
-    // save our params
-    for (pMap::const_iterator i = params.begin(); i != params.end(); ++i)
-      {
-	QDomElement p = doc.createElement("param");
-	p.setAttribute("name", i->first);
-	QDomText t = doc.createTextNode(i->second);
-	p.appendChild(t);
-	e.appendChild(p);
-      };
+  e.setAttribute("id", mid);
+  // if we're only writing a reference to ourselves, this is all the
+  // info we need...
+  if ( ref ) return;
+  // our typename
+  e.setAttribute("typeName", fullTypeName() );
+  // are we given/final ?
+  e.setAttribute("given", given?"true":"false");
+  e.setAttribute("final", final?"true":"false");
+  // given objects need not know their parents or params..
+  if ( given ) return;
+  // references to our parents
+  for( ElemList::const_iterator i = mparents.begin();
+       i != mparents.end(); ++i )
+    (*i)->saveXML(doc,e,true);
+  // save our params
+  for( pMap::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
+  {
+    QDomElement p = doc.createElement("param");
+    p.setAttribute("name", i->first);
+    QDomText t = doc.createTextNode(i->second);
+    p.appendChild(t);
+    e.appendChild(p);
   };
   p.appendChild(e);
 };
@@ -325,11 +314,40 @@ void ObjectHierarchy::saveXML( QDomDocument& doc, QDomElement& p ) const
   p.appendChild(m);
 }
 
-HierarchyElement::HierarchyElement(QCString inTN, int inId )
-  : mtype( Object::types().findType( inTN ) ), id(inId), actual(0)
+HierarchyElement::HierarchyElement( Object* rep, int id )
+  : mtype( Object::types().findType( rep->vFullTypeName() ) ),
+    mid( id ), mparams( rep->getParams() ), mactual( rep ), mcpc( 0 )
 {
   assert( mtype );
-};
+  assert( mactual );
+}
+
+void HierarchyElement::setParam( const QCString name, const QString value )
+{
+  mparams[name] = value;
+}
+
+void HierarchyElement::addParent( HierarchyElement* e )
+{
+  assert( ! mparents.contains( e ) );
+  mparents.push_back(e);
+  e->addChild(this);
+}
+
+uint HierarchyElement::id() const
+{
+  return mid;
+}
+
+const ElemList& HierarchyElement::parents()
+{
+  return mparents;
+}
+
+const ElemList& HierarchyElement::children()
+{
+  return mchildren;
+}
 
 QCString HierarchyElement::fullTypeName() const
 {
@@ -339,4 +357,66 @@ QCString HierarchyElement::fullTypeName() const
 QCString HierarchyElement::baseTypeName() const
 {
   return mtype->baseTypeName();
+};
+
+void HierarchyElement::addChild(HierarchyElement* e )
+{
+  mchildren.push_back( e );
+}
+
+bool HierarchyElement::tryBuild()
+{
+  if ( mactual ) return false;
+  if ( mcpc == mparents.size() )
+  {
+    Object* o = mtype->build( mparents.actuals(), mparams );
+    assert( o );
+    setActual( o );
+    return true;
+  };
+  return false;
+}
+
+void HierarchyElement::setActual( Object* a )
+{
+  assert( ! mactual );
+  mactual = a;
+  for ( ElemList::iterator i = mchildren.begin(); i != mchildren.end(); ++i )
+    ++((*i)->mcpc);
+}
+Object* HierarchyElement::actual()
+{
+  return mactual;
+}
+
+HierarchyElement::HierarchyElement( const QDomElement& e )
+  : mactual( 0 ), mcpc( 0 )
+{
+  assert (!e.isNull());
+  assert (e.tagName() == "HierarchyElement");
+
+  // fetch the typeName
+  QString tmpTN = e.attribute("typeName");
+  assert(tmpTN);
+  QCString typeName = tmpTN.utf8();
+
+  mtype = Object::types().findType( typeName );
+  assert( mtype );
+
+  // fetch the id
+  QString tmpId = e.attribute("id");
+  bool ok;
+  mid = tmpId.toInt(&ok);
+  assert(ok);
+};
+
+HierarchyElement::HierarchyElement( const QCString type, uint id )
+  : mtype( Object::types().findType( type ) ), mid( id ), mactual( 0 ),
+    mcpc( 0 )
+{
+}
+
+ObjectHierarchy::ObjectHierarchy( const ElemList& all )
+  : allElems( all ), finElems( all )
+{
 }

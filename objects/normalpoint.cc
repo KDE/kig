@@ -31,9 +31,10 @@ NormalPoint* NormalPoint::copy()
   return new NormalPoint( *this );
 }
 
-NormalPoint::NormalPoint()
-  : mimp( 0 )
+NormalPoint::NormalPoint( const Objects& os )
+  : mimp( 0 ), tparents( os )
 {
+
 }
 
 NormalPoint::NormalPoint( const NormalPoint& p )
@@ -71,8 +72,9 @@ void NormalPoint::redefine( const Coordinate& c,
     mimp->unselectArgs( this );
     delete mimp;
     mimp = 0;
+    tparents = Objects( v );
     // we build a new ConstrainedPointImp...
-    mimp = new ConstrainedPointImp( c, v, this );
+    setImp( new ConstrainedPointImp( c, v ) );
     return;
   };
 
@@ -162,6 +164,8 @@ void NormalPoint::setParams( const std::map<QCString, QString>& m )
     kdError() << k_funcinfo << "error in file !" << endl;
     mimp = new FixedPointImp();
   }
+  mimp->setParents( tparents, this );
+  tparents.clear();
   mimp->readParams( m, this );
 };
 
@@ -183,11 +187,9 @@ void FixedPointImp::readParams( const std::map<QCString, QString>& m,
   p->setCoord( pwwca );
 }
 
-ConstrainedPointImp::ConstrainedPointImp( const Coordinate& d, Curve* c,
-                                          NormalPoint* np )
+ConstrainedPointImp::ConstrainedPointImp( const Coordinate& d, Curve* c )
   : NormalPointImp(), mparam( c->getParam( d ) ), mcurve( c )
 {
-  mcurve->addChild( np );
 }
 
 ConstrainedPointImp::ConstrainedPointImp()
@@ -303,47 +305,23 @@ KigMode* NormalPoint::sConstructMode( Type*, KigDocument* d, NormalMode* p )
   return new PointConstructionMode( p, d );
 }
 
-QString FixedPointImp::wantArg(const Object*) const
+void FixedPointImp::setParents( const Objects& os, NormalPoint* )
 {
-  return 0;
+  assert( os.empty() );
 }
 
-bool FixedPointImp::selectArg( Object *, NormalPoint* )
+void ConstrainedPointImp::setParents( const Objects& os, NormalPoint* p )
 {
-  // not used...
-  return false;
-}
-
-QString ConstrainedPointImp::wantArg( const Object* o ) const
-{
-  // not used...
-  const Curve* c = o->toCurve();
-  if ( !c ) return 0;
-  return QString::fromUtf8( "The curve" );
-}
-
-bool ConstrainedPointImp::selectArg( Object* o, NormalPoint* p )
-{
-  Curve* c = o->toCurve();
+  assert( os.size() == 1 );
+  Curve* c = os.front()->toCurve();
   assert( c );
   mcurve = c;
   c->addChild( p );
-  return true;
 }
 
 void NormalPoint::stopMove()
 {
   mimp->stopMove( this );
-}
-
-QString NormalPoint::wantArg( const Object* o ) const
-{
-  return mimp->wantArg( o );
-}
-
-bool NormalPoint::selectArg( Object * o )
-{
-  return mimp->selectArg( o, this );
 }
 
 void NormalPoint::startMove( const Coordinate& c )
@@ -419,10 +397,6 @@ const int NormalPoint::sShortCut()
   return 0;
 }
 
-void NormalPoint::drawPrelim( KigPainter &, const Object* ) const
-{
-}
-
 FixedPointImp* NormalPointImp::toFixed()
 {
   return 0;
@@ -495,15 +469,15 @@ QString ConstrainedPointImp::type()
 
 NormalPoint* NormalPoint::fixedPoint( const Coordinate& c )
 {
-  NormalPoint* p = new NormalPoint();
+  NormalPoint* p = new NormalPoint( Objects() );
   p->setImp( new FixedPointImp( c ) );
   return p;
 }
 
 NormalPoint* NormalPoint::constrainedPoint( Curve* c, const Coordinate& d )
 {
-  NormalPoint* p = new NormalPoint();
-  p->setImp( new ConstrainedPointImp( d, c, p ) );
+  NormalPoint* p = new NormalPoint( Objects( c ) );
+  p->setImp( new ConstrainedPointImp( d, c ) );
   return p;
 }
 
@@ -530,6 +504,8 @@ void FixedPointImp::unselectArgs( NormalPoint* )
 void NormalPoint::setImp( NormalPointImp* i )
 {
   mimp = i;
+  i->setParents( tparents, this );
+  tparents.clear();
 }
 
 NormalPoint* NormalPoint::sensiblePoint( const Coordinate& c,

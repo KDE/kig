@@ -29,8 +29,8 @@ class Segment
   : public Curve
 {
 public:
-  Segment();
-  Segment(const Segment& s);
+  Segment( const Objects& os );
+  Segment( const Segment& s );
   Segment* copy();
   ~Segment();
 
@@ -52,35 +52,32 @@ public:
   static const int sShortCut();
   static const char* sActionName();
 
-  QCString iType() const;
   bool contains (const Coordinate& o, const double fault ) const;
   void draw ( KigPainter& p, bool showSelection ) const;
-  void drawPrelim ( KigPainter&, const Object* o ) const;
 
   bool inRect (const Rect&) const;
 
   // arguments
-  QString wantArg ( const Object* ) const;
-  bool selectArg (Object* which);
-  void unselectArg (Object* which);
+  static void sDrawPrelim ( KigPainter&, const Objects& o );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
+
   Objects getParents() const;
 
   // moving
   void startMove(const Coordinate&);
   void moveTo(const Coordinate&);
   void stopMove();
-  //     void cancelMove();
 
   void calc( const ScreenInfo& );
-  void deleted( Object* o );
 
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
   const Coordinate getP1() const;
   const Coordinate getP2() const;
-  Point* getPoint1();
-  Point* getPoint2();
+//   Point* getPoint1();
+//   Point* getPoint2();
 protected:
   Point* p1, *p2;
   Coordinate pwwsm; // point where we started moving

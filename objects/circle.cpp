@@ -68,37 +68,16 @@ double Circle::getParam (const Coordinate& p) const
   return fmod(atan2(tmp.y, tmp.x) / ( 2 * M_PI ) + 1, 1);
 };
 
-CircleBCP::CircleBCP()
+CircleBCP::CircleBCP( const Objects& os )
   : poc (0), centre(0)
 {
-};
-
-QString CircleBCP::wantArg (const Object* o) const
-{
-  if (complete) return 0;
-  if (! o->toPoint()) return 0;
-  if (!centre) return i18n("Center point");
-  assert (!poc); // we're not completed, and do have a center...
-  return i18n("Through point");
-};
-
-bool CircleBCP::selectArg (Object* o)
-{
-  assert (!complete);
-  Point* p;
-  assert ((p=o->toPoint()));
-  if(centre) poc = p;
-  else centre = p;
-  o->addChild(this);
-  if(poc) { return complete = true;};
-  return false;
-};
-
-void CircleBCP::unselectArg(Object* o)
-{
-  assert (centre == o);
-  o->delChild(this);
-  centre = 0;
+  assert( os.size() == 2 );
+  centre = os[0]->toPoint();
+  poc = os[1]->toPoint();
+  assert( poc );
+  assert( centre );
+  poc->addChild( this );
+  centre->addChild( this );
 };
 
 void CircleBCP::startMove(const Coordinate& p)
@@ -128,7 +107,7 @@ void CircleBCP::moveTo(const Coordinate& p)
   }
   else if (wawm == movingPoc)
   {
-    double nRadius = calcRadius(centre,p);
+    double nRadius = calcRadius(centre->getCoord(),p);
     Coordinate nPoc= centre->getCoord() + (poc->getCoord()-centre->getCoord())*(nRadius/radius);
     poc->moveTo(nPoc);
   };
@@ -151,36 +130,6 @@ void CircleBCP::calc( const ScreenInfo& )
     qpc = centre->getCoord();
   };
 };
-
-QString CircleBTP::wantArg(const Object* o) const
-{
-  if ( ! o->toPoint() ) return 0;
-  if ( !p1 || !p2 || !p3 ) return i18n("Through point");
-  else return 0;
-}
-
-bool CircleBTP::selectArg(Object* o)
-{
-  Point* p = o->toPoint();
-  assert(p);
-  if (!p1) p1 = p;
-  else if (!p2) p2 = p;
-  else p3 = p;
-  o->addChild(this);
-  if (p3) { return complete = true; };
-  return false;
-}
-
-void CircleBTP::unselectArg(Object* o)
-{
-  assert (p1 == o || p2 == o || p3 == o);
-  if (p1 == o)
-    p1 = p3;
-  else if (p2 == o)
-    p2 = p3;
-  p3 = 0;
-  o->delChild(this);
-}
 
 inline double sqr (double x)
 {
@@ -227,10 +176,7 @@ Coordinate CircleBTP::calcCenter( Coordinate a, Coordinate b, Coordinate c )
 
 Objects CircleBTP::getParents() const
 {
-  Objects objs;
-  objs.push_back( p1 );
-  objs.push_back( p2 );
-  objs.push_back( p3 );
+  Objects objs ( pts, pts+3 );
   return objs;
 }
 
@@ -242,62 +188,11 @@ Objects CircleBCP::getParents() const
   return objs;
 }
 
-void CircleBCP::drawPrelim( KigPainter& p, const Object* arg ) const
-{
-  if (!centre || !shown) return;
-  assert( arg->toPoint() );
-  Coordinate c = arg->toPoint()->getCoord();
-  p.setPen(QPen (Qt::red, 1));
-  p.drawCircle( centre->getCoord(), calcRadius( centre,c ) );
-};
-
-void CircleBTP::drawPrelim( KigPainter& p, const Object* o ) const
-{
-  if (!p1 || !shown) return;
-  assert( o->toPoint() );
-  Coordinate a = p1->getCoord();
-  Coordinate b = o->toPoint()->getCoord();
-  Coordinate c;
-  if (p2) { c=p2->getCoord(); }
-  else {
-    // we pick the third point so that the three points form a
-    // triangle with equal sides...
-
-    // midpoint:
-    Coordinate m = ( c + a ) / 2;
-    if ( b.y != a.y )
-    {
-      // direction of the perpend:
-      double d = -(b.y-a.x)/(b.y-a.y);
-
-      // length:
-      // sqrt( 3 ) == tan( 60° )
-      // hypot( ... ) == half the length of the segment |ab|
-      double l = sqrt(3) * hypot( a.x - b.x, a.y - b.y ) / 2;
-
-      double dx = sqrt( l / ( pow( d, 2 ) + 1 ) );
-      double dy = sqrt( l / ( pow( d, -2 ) + 1 ) );
-      if( d < 0 ) dy = -dy;
-
-      c.x = m.x + dx;
-      c.y = m.y + dy;
-    }
-    else
-    {
-      c.x = m.x;
-      c.y = m.y + ( a.x - b.x );
-    };
-  };
-  p.setPen(QPen (Qt::red, 1));
-  Coordinate nC = calcCenter( a, b, c );
-  p.drawCircle(nC, calcRadius( nC, c ) );
-}
-
 void CircleBTP::calc( const ScreenInfo& )
 {
-  Coordinate a = p1->getCoord();
-  Coordinate b = p2->getCoord();
-  Coordinate c = p3->getCoord();
+  Coordinate a = pts[0]->getCoord();
+  Coordinate b = pts[1]->getCoord();
+  Coordinate c = pts[2]->getCoord();
   // the center coords:
   qpc = calcCenter( a, b, c );
   radius = calcRadius( qpc, c );
@@ -311,26 +206,23 @@ CircleBCP::CircleBCP(const CircleBCP& c)
 }
 
 CircleBTP::CircleBTP(const CircleBTP& c)
-  : Circle( c ), p1( c.p1 ), p2( c.p2 ), p3( c.p3 )
+  : Circle( c )
 {
-  p1->addChild(this);
-  p2->addChild(this);
-  p3->addChild(this);
+  for ( int i = 0; i != 3; ++i )
+  {
+    pts[i]=c.pts[i];
+    pts[i]->addChild(this);
+  }
 }
 
-double Circle::calcRadius( const Point* c, const Point* p ) const
+double Circle::calcRadius( const Point* c, const Point* p )
 {
   return calcRadius( c->getCoord(), p->getCoord() );
 }
 
-double Circle::calcRadius( const Coordinate& c, const Coordinate& p ) const
+double Circle::calcRadius( const Coordinate& c, const Coordinate& p )
 {
   return ( c - p ).length();
-}
-
-double Circle::calcRadius( const Point* c, const Coordinate& p ) const
-{
-  return calcRadius( c->getCoord(), p);
 }
 
 const QCString Circle::sBaseTypeName()
@@ -373,4 +265,110 @@ const char* CircleBTP::sActionName()
 Circle::Circle( const Circle& c )
   : Curve( c ), qpc( c.qpc ), radius( c.radius )
 {
+}
+
+Object::WantArgsResult CircleBCP::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size > 2 ) return NotGood;
+  if ( size < 1 ) return NotGood;
+  if ( !os[0]->toPoint() ) return NotGood;
+  if ( size == 2 ) return os[1]->toPoint() ? Complete : NotGood;
+  else return NotComplete;
+}
+
+QString CircleBCP::sUseText( const Objects& os, const Object* )
+{
+  switch ( os.size() )
+  {
+  case 0:
+    return i18n( "Circle with this center" );
+  case 1:
+    return i18n( "Circle through this point" );
+  default:
+    return 0;
+  };
+}
+
+void CircleBCP::sDrawPrelim( KigPainter& p, const Objects& args )
+{
+  if ( args.size() != 2 ) return;
+  if ( ! ( args[0]->toPoint() && args[1]->toPoint() ) ) return;
+  Coordinate c = args[0]->toPoint()->getCoord();
+  Coordinate d = args[1]->toPoint()->getCoord();
+  p.setPen(QPen (Qt::red, 1));
+  p.drawCircle( c, calcRadius( c, d ) );
+}
+
+Object::WantArgsResult CircleBTP::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size > 3 || size < 1 ) return NotGood;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( ! (*i)->toPoint() ) return NotGood;
+  return size == 3 ? Complete : NotComplete;
+}
+
+QString CircleBTP::sUseText( const Objects&, const Object* )
+{
+  return i18n("Through point");
+}
+
+void CircleBTP::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  uint size = os.size();
+  if ( size != 2 && size != 3 ) return;
+  assert( os[0]->toPoint() );
+  assert( os[1]->toPoint() );
+  Coordinate a = os[0]->toPoint()->getCoord();
+  Coordinate b = os[1]->toPoint()->getCoord();
+  Coordinate c;
+  if ( size == 3 )
+  {
+    assert( os[2]->toPoint() );
+    c = os[2]->toPoint()->getCoord();
+  }
+  else
+  {
+    // we pick the third point so that the three points form a
+    // triangle with equal sides...
+
+    // midpoint:
+    Coordinate m = ( c + a ) / 2;
+    if ( b.y != a.y )
+    {
+      // direction of the perpend:
+      double d = -(b.y-a.x)/(b.y-a.y);
+
+      // length:
+      // sqrt( 3 ) == tan( 60° ) == sqrt( 2^2 - 1^2 )
+      double l = sqrt(3) * (a-b).length() / 2;
+
+      double dx = sqrt( l / ( pow( d, 2 ) + 1 ) );
+      double dy = sqrt( l / ( pow( d, -2 ) + 1 ) );
+      if( d < 0 ) dy = -dy;
+
+      c.x = m.x + dx;
+      c.y = m.y + dy;
+    }
+    else
+    {
+      c.x = m.x;
+      c.y = m.y + ( a.x - b.x );
+    };
+  };
+  p.setPen(QPen (Qt::red, 1));
+  Coordinate nC = calcCenter( a, b, c );
+  p.drawCircle(nC, calcRadius( nC, c ) );
+}
+
+CircleBTP::CircleBTP( const Objects& os )
+{
+  assert( os.size() == 3 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    assert( (*i)->toPoint() );
+    (*i)->addChild( this );
+    pts[i-os.begin()] = static_cast<Point*>( *i );
+  };
 }

@@ -192,18 +192,18 @@ void KigDocument::setupTypes()
   Types& types = Object::types();
   if ( types.empty() )
   {
-    types.addType( new TType<Segment> );
-    types.addType( new TType<LineTTP> );
-    types.addType( new TType<LinePerpend> );
-    types.addType( new TType<LineParallel> );
-    types.addType( new TType<LineRadical> );
-    types.addType( new TType<CircleBCP> );
-    types.addType( new TType<CircleBTP> );
-    types.addType( new TType<NormalPoint> );
-    types.addType( new TType<MidPoint> );
-    types.addType( new TType<IntersectionPoint> );
-    types.addType( new TType<Locus> );
+    types.addType( new TStdType<Segment> );
+    types.addType( new TStdType<LineTTP> );
+    types.addType( new TStdType<LinePerpend> );
+    types.addType( new TStdType<LineParallel> );
+    types.addType( new TStdType<LineRadical> );
+    types.addType( new TStdType<CircleBCP> );
+    types.addType( new TStdType<CircleBTP> );
+    types.addType( new TStdType<MidPoint> );
+    types.addType( new TStdType<IntersectionPoint> );
+    types.addType( new TStdType<Locus> );
     types.addType( new TType<TextLabel> );
+    types.addType( new TType<NormalPoint> );
 
     // our saved macro types:
     QStringList relFiles;

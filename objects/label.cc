@@ -23,9 +23,10 @@
 
 #include "../modes/constructing.h"
 
-TextLabel::TextLabel()
+TextLabel::TextLabel( const Objects& os )
   : Object()
 {
+  assert( os.empty() );
 }
 TextLabel::TextLabel( const TextLabel& l )
   : Object( l ), mtext( l.mtext ), mcoord( l.mcoord )

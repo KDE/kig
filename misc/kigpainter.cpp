@@ -344,11 +344,6 @@ void KigPainter::drawFilledRect( const QRect& r )
   drawRect( r.normalize() );
 }
 
-void KigPainter::drawPrelim( const Object* o, const Object* prelimArg )
-{
-  o->drawPrelim( *this, prelimArg );
-}
-
 void KigPainter::drawTextStd( const QPoint& p, const QString& s )
 {
   if ( ! s ) return;

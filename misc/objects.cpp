@@ -35,3 +35,10 @@ void Objects::calc( const ScreenInfo& r ) const
     (*i)->calc( r );
   };
 }
+
+Objects Objects::with( Object* o )
+{
+  Objects os( *this );
+  os.push_back( o );
+  return os;
+}

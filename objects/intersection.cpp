@@ -24,80 +24,11 @@
 #include "circle.h"
 #include "line.h"
 
+#include "../misc/kigpainter.h"
+
 #include <kdebug.h>
 #include <klocale.h>
 
-QString IntersectionPoint::wantArg(const Object* o) const
-{
-  if (o->vBaseTypeName() == Point::sBaseTypeName()) return 0;
-  int tmp = 0;
-  if (segment1) ++tmp;
-  if (segment2) ++tmp;
-  if (line1) ++tmp;
-  if (line2) ++tmp;
-  if (circle1) ++tmp;
-  if (circle2) ++tmp;
-  if (tmp < 2) return i18n("On %1").arg(o->vTBaseTypeName());
-  else return 0;
-}
-
-bool IntersectionPoint::selectArg(Object* o)
-{
-  Segment* s;
-  Line* l;
-  Circle* c;
-  if ((s = o->toSegment())) {
-    if (segment1) segment2 = s;
-    else segment1 = s;
-  }
-  else if ((l = o->toLine())) {
-    if (line1) line2 = l;
-    else line1 = l;
-  }
-  else if ((c = o->toCircle())) {
-    if (circle1) circle2 = c;
-    else circle1 = c;
-  }
-  else {
-    kdError() << k_funcinfo << " wrong argument: " << o->vBaseTypeName() <<endl;
-    // shouldn't happen...
-    assert( false );
-  };
-  o->addChild(this);
-  int tmp = 0;
-  if (segment1) ++tmp;
-  if (segment2) ++tmp;
-  if (line1) ++tmp;
-  if (line2) ++tmp;
-  if (circle1) ++tmp;
-  if (circle2) ++tmp;
-  if (tmp > 1) return complete = true;
-  return complete = false;
-}
-
-void IntersectionPoint::unselectArg(Object* o)
-{
-  Segment* s;
-  Line* l;
-  Circle* c;
-  if ((s = o->toSegment())) {
-    if (segment1 == s) segment1 = segment2;
-    segment2 = 0;
-  }
-  else if ((l = o->toLine())) {
-    if (line1 == l) line1 = line2;
-    line2 = 0;
-  }
-  else if ((c = o->toCircle())) {
-    if (circle1 == c) circle1 = circle2;
-    circle2 = 0;
-  }
-  else {
-    kdError() << k_funcinfo << "wrong argument: " << o->vBaseTypeName() <<endl;
-    return;
-  };
-  complete = false;
-}
 Objects IntersectionPoint::getParents() const
 {
   Objects tmp;
@@ -105,8 +36,6 @@ Objects IntersectionPoint::getParents() const
   if (segment2) tmp.push_back(segment2);
   if (line1) tmp.push_back(line1);
   if (line2) tmp.push_back(line2);
-  if (circle1) tmp.push_back(circle1);
-  if (circle2) tmp.push_back(circle2);
   return tmp;
 };
 
@@ -186,16 +115,12 @@ const QString IntersectionPoint::sDescription()
 IntersectionPoint::IntersectionPoint( const IntersectionPoint& p )
   : Point( p ),
     segment1( p.segment1 ), segment2( p.segment2 ),
-    line1( p.line1 ), line2( p.line2 ),
-    circle1( p.circle1 ), circle2( p.circle2 )
+    line1( p.line1 ), line2( p.line2 )
 {
-};
-
-IntersectionPoint::IntersectionPoint()
-  : segment1(0), segment2(0),
-    line1(0), line2(0),
-    circle1(0), circle2(0)
-{
+  if ( segment1 ) segment1->addChild( this );
+  if ( segment2 ) segment2->addChild( this );
+  if ( line1 ) line1->addChild( this );
+  if ( line2 ) line2->addChild( this );
 };
 
 IntersectionPoint::~IntersectionPoint()
@@ -259,15 +184,91 @@ void IntersectionPoint::stopMove()
 {
 }
 
-void IntersectionPoint::cancelMove()
-{
-}
-
-void IntersectionPoint::drawPrelim( KigPainter&, const Object* ) const
-{
-}
-
 const char* IntersectionPoint::sActionName()
 {
   return "objects_new_intersectionpoint";
+}
+
+IntersectionPoint::IntersectionPoint( const Objects& os )
+  : segment1( 0 ), segment2( 0 ), line1( 0), line2( 0 )
+{
+  assert( os.size() == 2 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( (*i)->toSegment() )
+    {
+      if ( ! segment1 ) segment1 = (*i)->toSegment();
+      else if ( ! segment2 ) segment2 = (*i)->toSegment();
+      else assert( false );
+    }
+    else if ( (*i)->toLine() )
+    {
+      if ( ! line1 ) line1 = (*i)->toLine();
+      else if ( ! line2 ) line2 = (*i)->toLine();
+      else assert( false );
+    }
+    else assert( false );
+  };
+  if ( segment1 ) segment1->addChild( this );
+  if ( segment2 ) segment2->addChild( this );
+  if ( line1 ) line1->addChild( this );
+  if ( line2 ) line2->addChild( this );
+}
+
+void IntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  if ( os.size() != 2 ) return;
+  Segment* s = 0;
+  Line* l = 0;
+  Coordinate pa, pb, pc, pd;
+  bool gota = false;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( ( s = (*i)->toSegment() ) )
+    {
+      if ( gota )
+      {
+        pc = s->getP1();
+        pd = s->getP2();
+      }
+      else
+      {
+        pa = s->getP1();
+        pb = s->getP2();
+        gota = true;
+      }
+    }
+    else if ( ( l = (*i)->toLine() ) )
+    {
+      if ( gota )
+      {
+        pc = l->getP1();
+        pd = l->getP2();
+      }
+      else
+      {
+        pa = l->getP1();
+        pb = l->getP2();
+        gota = true;
+      }
+    }
+    else assert( false );
+  };
+  p.drawPoint( calcIntersectionPoint( pa, pb, pc, pd ), false );
+}
+
+Object::WantArgsResult IntersectionPoint::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size != 1 && size != 2 ) return NotGood;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if( ! ( (*i)->toSegment() || (*i)->toLine() ) ) return NotGood;
+  };
+  return size == 2 ? Complete : NotComplete;
+}
+
+QString IntersectionPoint::sUseText( const Objects&, const Object* o )
+{
+  return i18n("Point on this %1").arg(o->vTBaseTypeName());
 }

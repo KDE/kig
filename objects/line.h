@@ -35,7 +35,7 @@ public:
   ~Line() {};
 
   // type identification
-  virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
+  virtual const QCString vBaseTypeName() const;
   static const QCString sBaseTypeName();
 
   virtual Line* toLine();
@@ -45,16 +45,10 @@ public:
   void draw (KigPainter& p, bool showSelection) const;
   bool inRect (const Rect&) const;
 
-  // arguments
-  QString wantArg ( const Object* ) const = 0;
-  bool selectArg (Object* which) = 0;
-//   void unselectArg (Object* which) = 0;
-
   // moving
   void startMove(const Coordinate&) = 0;
   void moveTo(const Coordinate&) = 0;
   void stopMove() = 0;
-//   void cancelMove() = 0;
 
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
@@ -72,9 +66,9 @@ class LineTTP
   : public Line
 {
 public:
-  LineTTP() : pt1(0), pt2(0) { };
-  ~LineTTP();
+  LineTTP( const Objects& os );
   LineTTP(const LineTTP& l);
+  ~LineTTP();
   LineTTP* copy() { return new LineTTP(*this); };
 
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
@@ -90,17 +84,15 @@ public:
   static const char* sActionName();
 
   // arguments
-  QString wantArg ( const Object* ) const;
-  bool selectArg (Object* which);
-  void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Object* ) const;
+  static void sDrawPrelim ( KigPainter&, const Objects& o );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
 
   // moving
   void startMove(const Coordinate&);
   void moveTo(const Coordinate&);
   void stopMove();
-//   void cancelMove();
 
   void calc( const ScreenInfo& );
 
@@ -115,9 +107,9 @@ class LinePerpend
   : public Line
 {
 public:
-  LinePerpend() : segment(0), line(0), point(0) {};
+  LinePerpend( const Objects& os );
+  LinePerpend( const LinePerpend& l );
   ~LinePerpend();
-  LinePerpend(const LinePerpend& l);
   LinePerpend* copy() { return new LinePerpend (*this);};
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
@@ -133,17 +125,16 @@ public:
   static const char* sActionName();
 
   // arguments
-  QString wantArg ( const Object* ) const;
-  bool selectArg (Object* which);
-    Objects getParents() const;
-//   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Object* ) const;
+  static void sDrawPrelim ( KigPainter& p, const Objects& os );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
+
+  Objects getParents() const;
 
   // moving
   void startMove(const Coordinate&);
   void moveTo(const Coordinate&);
   void stopMove();
-  void cancelMove();
 
   void calc( const ScreenInfo& );
 
@@ -158,9 +149,9 @@ class LineParallel
   : public Line
 {
 public:
-  LineParallel() : segment(0), line(0), point(0) {};
-  ~LineParallel() {};
+  LineParallel( const Objects& o );
   LineParallel (const LineParallel& l);
+  ~LineParallel() {};
   LineParallel* copy() { return new LineParallel (*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
@@ -176,17 +167,15 @@ public:
   static const char* sActionName();
 
   // arguments
-  QString wantArg ( const Object* ) const;
-  bool selectArg (Object* which);
+  static void sDrawPrelim ( KigPainter& p, const Objects& os );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
-//   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Object* ) const;
 
   // moving
   void startMove(const Coordinate&) {};
   void moveTo(const Coordinate&) {};
   void stopMove() {};
-  void cancelMove() {};
 
   void calc( const ScreenInfo& );
 
@@ -194,23 +183,22 @@ protected:
   Segment* segment;
   Line* line;
   Point* point;
-
 };
 
 /**
  * implements a radical line...
- * Maurizio Paolini wrote this as a patch for KGeo, after which i
- * ported it to Kig..
+ * Maurizio Paolini wrote this as a patch for KGeo.  I ported it to
+ * Kig..
  * @author Maurizio Paolini
  */
 class LineRadical
   : public Line
 {
 public:
-  LineRadical();
+  LineRadical( const Objects& os );
+  LineRadical( const LineRadical& l );
   ~LineRadical() {};
-  LineRadical (const LineRadical& l);
-  LineRadical* copy() { return new LineRadical (*this); };
+  LineRadical* copy();
 
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineRadical"; };
@@ -225,18 +213,16 @@ public:
   static const char* sActionName();
 
   // arguments
-  QString wantArg ( const Object* ) const;
-  bool selectArg (Object* which);
+  static void sDrawPrelim ( KigPainter& p, const Objects& os );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
-//   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Object* arg ) const;
 
   // moving
   // we don't move unless our parents do...
   void startMove(const Coordinate&) {};
   void moveTo(const Coordinate&) {};
   void stopMove() {};
-  //  void cancelMove() {};
 
   void calc( const ScreenInfo& );
 

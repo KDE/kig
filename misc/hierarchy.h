@@ -18,7 +18,6 @@
  USA
 **/
 
-
 #ifndef HIERARCHY_H
 #define HIERARCHY_H
 
@@ -26,11 +25,10 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
-
 #include <qcstring.h>
 
 #include "../objects/object.h"
+#include "objects.h"
 
 class KigDocument;
 class HierarchyElement;
@@ -41,49 +39,52 @@ class QDomElement;
 class QDomDocument;
 
 class ElemList
-  : public std::vector<HierarchyElement*>
+  : public myvector<HierarchyElement*>
 {
 public:
-  void add (HierarchyElement* e)
-  {
-    if (find (begin(), end(), e) == end())
-      push_back(e);
-  };
-  bool contains(const HierarchyElement* h) const
-  {
-    return find(begin(),end(),h) != end();
-  };
   // sets all HierarchyElement::actual 's to 0
-  void cleanActuals() const;
-  void deleteAll();
+  void clean() const;
+  Objects actuals();
 };
 
 class HierarchyElement
 {
-  typedef map<QCString,QString> pMap;
 protected:
+  typedef map<QCString,QString> pMap;
   Type* mtype;
-  ElemList parents;
-  ElemList children;
-  pMap params;
-  int id;
-  void addChild (HierarchyElement* e ) { children.push_back(e); };
+  // TODO ? remove mid ?
+  uint mid;
+  pMap mparams;
+  // these two are temporary variables used on filling up the
+  // hierarchy.  What we do is: mcpc contains the number of parents
+  // whose mactual has already been built or set.  We only build our
+  // mactual if ( mcpc == mparents.size() ), and when we do, we inform
+  // our children that this has been done by increasing their mcpc...
+  Object* mactual;
+  uint mcpc;
+  ElemList mparents;
+  ElemList mchildren;
+  void addChild (HierarchyElement* e );
+  friend class ElemList;
 public:
-  const Type* type() { return mtype; };
-  void setParam( const QCString name, const QString value ) { params[name] = value; };
-  void setParams(const pMap& p ) { params = p; };
-  const pMap getParams() { return params; };
-  HierarchyElement(QCString inTN, int inId );
-  void addParent ( HierarchyElement* e ) { parents.push_back(e); e->addChild(this);};
-  void saveXML ( QDomDocument& d, QDomElement& parentElem,
-		 bool reference, bool given=false,
-		 bool final=false) const;
-  int getId() { return id; };
+  HierarchyElement( Object* rep, int id );
+  HierarchyElement( const QDomElement& e );
+  HierarchyElement( const QCString type, uint id );
+  // see the explanation of mactual and mcpc above...
+  bool tryBuild();
+  void setActual( Object* a );
+
+  Object* actual();
+  void setParam( const QCString name, const QString value );
+  void addParent( HierarchyElement* e );
+  void saveXML( QDomDocument& d, QDomElement& parentElem,
+                bool reference, bool given=false,
+                bool final=false) const;
   QCString fullTypeName() const;
   QCString baseTypeName() const;
-  const ElemList& getParents() { return parents; };
-  const ElemList& getChildren() { return children; };
-  Object* actual;
+  uint id() const;
+  const ElemList& parents();
+  const ElemList& children();
 };
 
 // an ObjectHierarchy keeps a structure of objects, and their
@@ -100,7 +101,11 @@ public:
   // represents the structure of its arguments, so that fillUp will be
   // able to do something intelligent.
   ObjectHierarchy( const Objects& inGegObjs, const Objects& inFinalObjs );
-  ObjectHierarchy ( QDomElement& ourElement ) { loadXML(ourElement); };
+  ObjectHierarchy( QDomElement& ourElement );
+  // this is only used by the input filters.  They construct their
+  // ElemList themselves, and then only use ObjectHierarchy to
+  // fillUp()..
+  ObjectHierarchy( const ElemList& allElems );
   const ElemList& getGegElems() { return gegElems; };
   const ElemList& getFinElems() { return finElems; };
   const ElemList& getAllElems() { return allElems; };

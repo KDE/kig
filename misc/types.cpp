@@ -33,10 +33,12 @@
 #include <qtextstream.h>
 #include <qdom.h>
 
-Object* Types::buildObject( const QCString& type ) const
+Object* Types::buildObject( const QCString& type,
+                            const Objects& parents,
+                            const Type::ParamMap& params ) const
 {
   Type* b = findType( type );
-  if ( b ) return b->build();
+  if ( b ) return b->build( parents, params );
   else return 0;
 }
 

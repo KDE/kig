@@ -28,7 +28,7 @@ class TextLabel
   : public Object
 {
 public:
-  TextLabel();
+  TextLabel( const Objects& os );
   TextLabel( const TextLabel& l );
   TextLabel( const QString text, const Coordinate c );
   ~TextLabel();

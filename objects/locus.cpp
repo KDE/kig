@@ -90,36 +90,6 @@ bool Locus::inRect(const Rect& r) const
   return false;
 }
 
-QString Locus::wantArg( const Object* o ) const
-{
-  if (o->toNormalPoint() && o->toNormalPoint()->constrainedImp() && !cp)
-    return i18n("Moving point");
-  if (!obj)
-    return i18n("Dependent object");
-  return 0;
-}
-
-bool Locus::selectArg(Object* o)
-{
-  if (!cp && (cp = o->toNormalPoint() ) && o->toNormalPoint()->constrainedImp() )
-    cp->addChild(this);
-  else
-  {
-    assert (!obj);
-    obj = o;
-    obj->addChild(this);
-    // if obj is a point, we are a pointLocus
-    _pointLocus = (bool) obj->toPoint();
-    kdDebug() << k_funcinfo << " at line no. " << __LINE__
-              << " - _pointLocus: " << _pointLocus << endl;
-  };
-  if (cp && obj)
-  {
-    complete = true;
-  }
-  return complete;
-}
-
 void Locus::calc( const ScreenInfo& r )
 {
   if ( calcpath.empty() )
@@ -227,11 +197,10 @@ void Locus::calcPointLocus( const ScreenInfo& r )
 }
 
 Locus::Locus(const Locus& loc)
-  : Curve(), cp(loc.cp), obj(loc.obj)
+  : Curve(), cp(loc.cp), obj(loc.obj), _pointLocus( loc._pointLocus )
 {
   cp->addChild(this);
   obj->addChild(this);
-  complete = loc.complete;
   calcpath = calcPath( Objects( cp ), obj );
   // we always want to calc obj after its arguments...
   calcpath.push_back( obj );
@@ -244,11 +213,6 @@ Objects Locus::getParents() const
   tmp.push_back(obj);
   return tmp;
 }
-
-Locus::Locus()
- : cp(0), obj(0)
-{
-};
 
 Locus::~Locus()
 {
@@ -322,10 +286,6 @@ const int Locus::sShortCut()
   return 0;
 }
 
-void Locus::drawPrelim( KigPainter&, const Object* ) const
-{
-}
-
 void Locus::startMove(const Coordinate&)
 {
 }
@@ -346,4 +306,47 @@ bool Locus::isPointLocus() const
 const char* Locus::sActionName()
 {
   return "objects_new_locus";
+}
+
+Locus::Locus( const Objects& os )
+{
+  assert( os.size() == 2 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( (*i)->toNormalPoint() && (*i)->toNormalPoint()->constrainedImp() )
+      cp = (*i)->toNormalPoint();
+    else
+    {
+      obj = *i;
+      _pointLocus = (*i)->toPoint();
+    }
+  };
+  assert ( cp && obj );
+  cp->addChild( this );
+  obj->addChild( this );
+};
+
+Object::WantArgsResult Locus::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size != 1 && size != 2 ) return NotGood;
+  bool gotcp = false;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( (*i)->toNormalPoint() && (*i)->toNormalPoint()->constrainedImp() )
+      gotcp = true;
+  };
+  if ( ! gotcp && size == 2 ) return NotGood;
+  return size == 2 ? Complete : NotComplete;
+}
+
+QString Locus::sUseText( const Objects&, const Object* o )
+{
+  if (o->toNormalPoint() && o->toNormalPoint()->constrainedImp() )
+    return i18n("Moving point");
+  return i18n("Dependent object");
+}
+
+void Locus::sDrawPrelim( KigPainter&, const Objects& )
+{
 }

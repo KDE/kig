@@ -33,27 +33,6 @@
 
 #include <functional> // for std::mem_fun and std::bind2nd
 
-/*
-void ConstructingMode::rightReleased( QMouseEvent* e, KigView* v )
-{
-  if( (plc - e->pos()).manhattanLength() > 3 ) return;
-  if( !oco.empty() )
-    {
-      // show a popup menu...
-      // first clear the text..
-      v->updateCurPix();
-      mDoc->emitStatusBarText( 0 );
-      v->updateWidget();
-      Object* o = oco.front();
-//       KigObjectsPopup* m = 0;
-      Objects os;
-      os.append( o );
-//       if( osa.contains( o ) ) m = popup( os, v );
-    };
-}
-
-*/
-
 void PointConstructionMode::updateScreen( KigView* v )
 {
   v->clearStillPix();
@@ -86,8 +65,7 @@ void PointConstructionMode::midReleased( QMouseEvent* e, KigView* v )
   leftReleased( e, v );
 }
 
-PointConstructionMode::PointConstructionMode( NormalMode* b,
-                                              KigDocument* d )
+PointConstructionMode::PointConstructionMode( NormalMode* b, KigDocument* d )
   : KigMode( d ),
     mp( NormalPoint::fixedPoint( Coordinate( 0, 0 ) ) ),
     mprev( b )
@@ -125,10 +103,9 @@ void PointConstructionMode::finish( KigView* v )
   d->setMode( s );
 }
 
-StdConstructionMode::StdConstructionMode( Object* obc, NormalMode* b,
-                                          KigDocument* d )
-  : PointConstructionMode( b, d ),
-    mobc( obc )
+StdConstructionMode::StdConstructionMode( StdConstructibleType* t,
+                                          NormalMode* b, KigDocument* d )
+  : PointConstructionMode( b, d ), mtype( t )
 {
 }
 
@@ -162,13 +139,14 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
   if( ( e->pos() - plc ).manhattanLength() > 4 ) return;
 
   // if the user clicked on an obj, first see if we can use that...
-  if( ! oco.empty() && mobc->wantArg( oco.front() ) )
+  if( ! oco.empty() &&
+      mtype->wantArgs( osa.with( oco.front() ) ) != Object::NotGood )
     selectArg( oco.front(), v );
   else
   {
     // oco is empty or the obc doesn't like it...
     // so we try if it wants our point..
-    if ( mobc->wantArg( mp ) )
+    if ( mtype->wantArgs( osa.with( mp ) ) != Object::NotGood )
     {
       updatePoint( v->fromScreen( plc ), v->screenInfo() );
       mDoc->addObject( mp );
@@ -185,33 +163,33 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
   updatePoint( c, v->screenInfo() );
 
   // set the text next to the arrow cursor like in modes/normal.cc
-  QPoint point = e->pos(); 
+  QPoint point = e->pos();
   point.setX(point.x()+15);
 
   v->updateCurPix();
   KigPainter p( v->screenInfo(), &v->curPix );
-  if ( ! ouc.empty() && mobc->wantArg( ouc.front() ) )
+  if ( ! ouc.empty() && mtype->wantArgs( osa.with( ouc.front() ) ) != Object::NotGood )
   {
     // the object wants the arg currently under the cursor...
     // draw mobc...
-    p.drawPrelim( mobc, ouc.front() );
+    mtype->drawPrelim( p, osa.with( ouc.front() ) );
 
-    QString o = mobc->wantArg( ouc.front() );
+    QString o = mtype->useText( osa, ouc.front() );
 
     mDoc->emitStatusBarText( o );
     p.drawTextStd( point , o );
     v->setCursor (KCursor::handCursor());
   }
   // see if mobc wants the point we're dragging around...
-  else if ( mobc->wantArg( mp ) )
+  else if ( mtype->wantArgs( osa.with( mp ) ) != Object::NotGood )
   {
     // it does...
     // so we first draw the point, then mobc, and then the text that
     // wantArg returns...
     p.drawObject( mp, true );
-    p.drawPrelim( mobc, mp );
+    mtype->drawPrelim( p, osa.with( mp ) );
 
-    QString s = mobc->wantArg( mp );
+    QString s = mtype->useText( osa, mp );
     mDoc->emitStatusBarText( s );
 
     // we draw the text a bit to the bottom so it doesn't end up on
@@ -226,7 +204,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
   {
     // mobc doesn't want either...
     // we just tell the user what he's constructing...
-    QString o = i18n( "Constructing a %1" ).arg( mobc->vTBaseTypeName() );
+    QString o = i18n( "Constructing a %1" ).arg( i18n( mtype->baseTypeName() ) );
     mDoc->emitStatusBarText( o );
     p.drawTextStd( point , o );
     v->setCursor( KCursor::arrowCursor() );
@@ -255,11 +233,15 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
 //   calcing is not necessary here, since
 //  all of the data is copied along
 //  mp->calc( v->screenInfo() );
-  bool finished = mobc->selectArg( o );
+  osa.push_back( o );
+  int a = mtype->wantArgs( osa );
+  assert( a != Object::NotGood );
+  bool finished = ( a == Object::Complete );
   if( finished )
   {
-    mobc->calc( v->screenInfo() );
-    mDoc->addObject( mobc );
+    Object* o = mtype->build( osa, Type::ParamMap() );
+    o->calc( v->screenInfo() );
+    mDoc->addObject( o );
   };
 
   updateScreen( v );
@@ -282,7 +264,6 @@ void StdConstructionMode::enableActions()
 
 void StdConstructionMode::cancelConstruction()
 {
-  delete mobc;
   NormalMode* p = mprev;
   KigDocument* d = mDoc;
   delete this;

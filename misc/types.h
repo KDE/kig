@@ -26,7 +26,8 @@
 
 #include <map>
 
-class Type;
+#include "type.h"
+
 class Object;
 
 typedef std::map<QCString, Type*> _tm;
@@ -69,7 +70,9 @@ public:
   /**
    * builds an object of type type...
    */
-  Object* buildObject( const QCString& type ) const;
+  Object* buildObject( const QCString& type,
+                       const Objects& parents,
+                       const Type::ParamMap& params = Type::ParamMap() ) const;
   /**
    * t should be constructed via new, and not touched anymore
    * afterwards...  this also adds a new action to every

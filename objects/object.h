@@ -47,6 +47,7 @@ class Coordinate;
 class Rect;
 class NormalMode;
 class ScreenInfo;
+class StdConstructibleType;
 
 /**
  * Object is a base class representing all objects (e.g. points, lines etc.).
@@ -58,8 +59,12 @@ class Object
 {
 public:
   static Types& types();
-  static Object* newObject( const QCString& type );
+  static Object* newObject( const QCString& type, const Objects& parents,
+                            const std::map<QCString, QString>& params );
 public:
+  // if you want to use StdConstructionMode, you need a constructor
+  // like Object( const Objects& args ); See the functions wantArgs(),
+  // drawPrelim() and useText() for more information...
   Object();
   Object( const Object& o );
   virtual ~Object() {};
@@ -133,7 +138,7 @@ public:
   virtual const QString vDescriptiveName() const = 0;
   // static const QString sDescriptiveName() const = 0;
 
-  /** 
+  /**
    * Gives an explanation like i18n( "A circle which is defined by
    * its center and a point on its edge." ). Do _NOT_ forget the
    * i18n() call !!!
@@ -141,7 +146,7 @@ public:
   virtual const QString vDescription() const = 0;
   // static const QString sDescription() const = 0;
 
-  /** 
+  /**
    * Gives the filename of a icon file.  e.g. "segment" for Segment,
    * "point4" for FixedPoint etc.  return 0 or "" if you don't have an
    * icon.
@@ -149,11 +154,13 @@ public:
   virtual const QCString vIconFileName() const = 0;
   // static const QCString vIconFileName() = 0;
 
-  /** 
+
+  /**
    * This is used by TType, this implementation is good for almost
-   * all, only NormalPoint needs something else...
+   * all, only NormalPoint and TextLabel need something else...
    */
-  static KigMode* sConstructMode( Type* ourtype, KigDocument* theDoc,
+  static KigMode* sConstructMode( StdConstructibleType* ourtype,
+                                  KigDocument* theDoc,
                                   NormalMode* previousMode );
 
   // objects also need this static method:
@@ -169,7 +176,7 @@ public:
 
   virtual void draw (KigPainter& p, bool showSelection) const = 0;
 
-  /** 
+  /**
    * Whether the object contains o.
    * allowed_miss contains the maximum distance there may be between
    * o and your object...
@@ -181,25 +188,25 @@ public:
    */
   virtual bool inRect (const Rect& r) const = 0;
 
-  // for passing args to objects
-  // if it uses the normal ConstructingMode, an object is constructed
-  // by creating it and next passing it arguments via selectArg() till
-  // it says it's finished.
-  // return a string that you want the ui to show, return what you
-  // would use the object for,  if it were selected. return 0 if you
-  // don't want it...
-  virtual QString wantArg ( const Object* ) const = 0;
-  // return true if you're finished
-  // if which was already selected,  unselect it
-  // here, you should only store the pointer, not do any calculations,
-  // those are to be done in calc()
-  virtual bool selectArg (Object* which) = 0;
-  
-  /**
-   * Draw a preliminary version of yourself, as if prelimArg had been
-   * selected...
-   */
-  virtual void drawPrelim (KigPainter& p, const Object* prelimArg ) const = 0;
+  // objects that want to use StdConstructingMode as a
+  // constructingmode, need these 3 static functions...
+
+  enum WantArgsResult { Complete, NotComplete, NotGood };
+  // wantArgs asks whether the object can use the objects provided.
+  // If the args are enough, return Complete, if you don't
+  // want them return NotGood, and NotComplete otherwise...
+
+  // static WantArgsResult sWantArgs( const Objects& );
+
+  // this should return a text like i18n( "Circle through this point"
+  // ) if you're a circle, and o is a point...  This is only
+  // guaranteed to return something sane if sWantArgs(..) returns
+  // (Not)Complete...
+  // static QString sUseText( const Objects&, const Object* o )
+
+  // this draws the object as if it had been constructed with os as
+  // arguments..
+  // static void sDrawPrelim( KigPainter&, const Objects& os );
 
   // for moving
   // sos contains the objects that are being moved.
@@ -217,7 +224,7 @@ public:
    * that are in the rect, and throws away the rest... )
    */
   virtual void calc( const ScreenInfo& showingRect ) = 0;
-  
+
 protected:
   QColor mColor;
 public:
@@ -237,10 +244,6 @@ public:
   bool getShown() const { return shown; };
   void setShown(bool inShown) { shown = inShown; };
  protected:
-  bool complete;
- public:
-  bool getComplete() const { return complete; };
- protected:
   /**
    * An object is valid if it's in a state where its position and such
    * is defined: example: the intersection of a line and a circle:
@@ -259,10 +262,10 @@ public:
    * objects we know, and that know us: if they move, we move too, and vice versa
    */
   Objects children;
-  
+
  public:
   const Objects& getChildren() const { return children;};
-  /** 
+  /**
    * our children + our children's children + ...
    */
   Objects getAllChildren() const;

@@ -27,7 +27,7 @@
 #include <klocale.h>
 
 Object::Object()
-  : mColor( Qt::blue ), selected(false), shown (true), complete (false), valid(true)
+  : mColor( Qt::blue ), selected(false), shown (true), valid(true)
 {
 };
 
@@ -88,15 +88,17 @@ Types& Object::types()
   return t;
 }
 
-Object* Object::newObject( const QCString& type )
+Object* Object::newObject( const QCString& type, const Objects& parents,
+                           const std::map<QCString, QString>& params )
 {
-  return types().buildObject( type );
+  return types().buildObject( type, parents, params );
 }
 
-KigMode* Object::sConstructMode( Type* ourtype, KigDocument* theDoc,
+KigMode* Object::sConstructMode( StdConstructibleType* ourtype,
+                                 KigDocument* theDoc,
                                  NormalMode* previousMode )
 {
-  return new StdConstructionMode( ourtype->build(), previousMode, theDoc );
+  return new StdConstructionMode( ourtype, previousMode, theDoc );
 }
 
 const QString Object::vTBaseTypeName() const
@@ -116,7 +118,7 @@ void Object::delChild(Object* o)
 
 Object::Object( const Object& o )
     : mColor( o.mColor ), selected( false ), shown( true ),
-      complete( o.complete ), valid( o.valid )
+      valid( o.valid )
 {
 
 }

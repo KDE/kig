@@ -33,6 +33,7 @@ class Coordinate;
 
 class NormalPoint;
 class NormalMode;
+class StdConstructibleType;
 
 class PointConstructionMode
   : public KigMode
@@ -79,11 +80,13 @@ class StdConstructionMode
   : public PointConstructionMode
 {
   // object being constructed
-  Object* mobc;
+  StdConstructibleType* mtype;
   // point last clicked..
   QPoint plc;
   // Objects clicked on...
   Objects oco;
+  // Objects selected as args
+  Objects osa;
 
 protected:
   void selectArg( Object* o, KigView* v );
@@ -92,7 +95,8 @@ protected:
   void addPointRequest( const Coordinate& c, KigView* v );
 
 public:
-  StdConstructionMode( Object* obc, NormalMode* b,  KigDocument* d );
+  StdConstructionMode( StdConstructibleType* t, NormalMode* b,
+                       KigDocument* d );
   ~StdConstructionMode();
   void leftClicked( QMouseEvent*, KigView* );
   void leftReleased( QMouseEvent*, KigView* );

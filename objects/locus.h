@@ -31,13 +31,13 @@
 class ObjectHierarchy;
 
 // this object is inspired on KSeg source, credits for all of the
-// ideas go to Ilya Baran <ibaran@mit.edu>
+// ideas go to the KSeg author Ilya Baran <ibaran@mit.edu>
 // a locus object is a mathematical locus.  It is defined by a
 // constrained point, which moves over a curve, and an object,
 // which somehow depends on that point.  The locus contains all
 // objects the object moves over as the point moves over all of
 // its possible positions...
-// this is implemented by having a Locus simply contain some 150
+// this is implemented by having a Locus simply contain some 500
 // objects (hmm...:)
 // drawing is done by simply drawing the points...
 class Locus
@@ -47,9 +47,9 @@ public:
   // number of points to include, i think this is a nice default...
   static const int numberOfSamples = 1000;
 public:
-  Locus();
+  Locus( const Objects& os );
+  Locus( const Locus& loc );
   ~Locus();
-  Locus(const Locus& loc);
   Locus* copy();
 
   virtual const QCString vBaseTypeName() const;
@@ -71,10 +71,9 @@ public:
   bool inRect (const Rect&) const;
 
   // arguments
-  QString wantArg ( const Object* ) const;
-  bool selectArg (Object* which);
-//   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Object* ) const;
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects&, const Object* o );
+  static void sDrawPrelim( KigPainter& p, const Objects& args );
 
   // moving
   void startMove(const Coordinate&);

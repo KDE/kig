@@ -22,34 +22,18 @@
 
 #include "../misc/hierarchy.h"
 #include "../misc/calcpaths.h"
+#include "../misc/i18n.h"
 
-QString i18n( const char* );
-
-QString MacroObject::wantArg( const Object* o) const
+MacroObject::MacroObject( ObjectHierarchy* inHier, const Objects& args )
+  : hier(inHier), arguments( args )
 {
-  if( complete ) return 0;
-  if( o->vBaseTypeName() != hier->getGegElems()[arguments.size()]->baseTypeName()) return 0;
-  else return i18n("Select this %1").arg(o->vTBaseTypeName());
-};
-
-bool MacroObject::selectArg(Object* o)
-{
-  assert(o->vBaseTypeName() == hier->getGegElems()[arguments.size()]->baseTypeName());
-  arguments.push_back( o );
-  o->addChild(this);
-  if (arguments.size() != hier->getGegElems().size()) return false;
-  return complete = true;
+  assert( args.size() == inHier->getGegElems().size() );
 }
 
-MacroObject::MacroObject(ObjectHierarchy* inHier)
-  : hier(inHier)
+MacroObjectOne::MacroObjectOne( ObjectHierarchy* inHier, const Objects& args )
+  : MacroObject( inHier, args ), final( 0 ), constructed( false )
 {
-}
-
-MacroObjectOne::MacroObjectOne( ObjectHierarchy* inHier )
-  : MacroObject(inHier), final(0), constructed(false)
-{
-//   assert (inHier->getFinElems().size() == 1);
+  assert (inHier->getFinElems().size() == 1);
 }
 
 MacroObjectOne::~MacroObjectOne()
@@ -75,14 +59,11 @@ bool MacroObjectOne::inRect(const Rect& r) const
   return final->inRect(r);
 }
 
-void MacroObjectOne::drawPrelim(KigPainter&, const Object* ) const
-{
-};
-
 void MacroObjectOne::startMove(const Coordinate& p)
 {
   final->startMove(p);
 };
+
 void MacroObjectOne::moveTo(const Coordinate& p)
 {
   final->moveTo(p);
@@ -96,7 +77,7 @@ void MacroObjectOne::calc( const ScreenInfo& r )
 {
   if (!constructed) {
     hier->fillUp(arguments);
-    final = hier->getFinElems()[0]->actual;
+    final = hier->getFinElems()[0]->actual();
     cos = calcPath( arguments, final );
 
     cos.calc( r );
@@ -113,8 +94,7 @@ void MacroObjectOne::calc( const ScreenInfo& r )
   };
   // this should have the right order, since we used calcPath to find
   // cos...
-  for ( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
-    (*i)->calc( r );
+  cos.calc( r );
   final->calc( r );
 }
 

@@ -18,7 +18,6 @@
  USA
 **/
 
-
 #ifndef INTERSECTION_H
 #define INTERSECTION_H
 
@@ -35,10 +34,8 @@ class IntersectionPoint
   Segment* segment2;
   Line* line1;
   Line* line2;
-  Circle* circle1;
-  Circle* circle2;
 public:
-  IntersectionPoint();
+  IntersectionPoint( const Objects& os );
   IntersectionPoint( const IntersectionPoint& p );
   ~IntersectionPoint();
 
@@ -56,9 +53,9 @@ public:
   static const int sShortCut();
   static const char* sActionName();
 
-  QString wantArg(const Object* o) const;
-  bool selectArg(Object* o);
-  void unselectArg(Object* o);
+  static void sDrawPrelim ( KigPainter& p, const Objects& os );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
 
   void startMove(const Coordinate& );

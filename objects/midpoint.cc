@@ -20,68 +20,30 @@
 
 #include "segment.h"
 
+#include "../misc/kigpainter.h"
+
 #include <klocale.h>
 
-MidPoint::MidPoint()
- :p1(0), p2(0)
-{
-};
-
 MidPoint::MidPoint(const MidPoint& m)
-  : Point( m ), p1( m.p1 ), p2( m.p2 )
+  : Point( m ), p1( m.p1 ), p2( m.p2 ), s( m.s )
 {
-  p1->addChild(this);
-  p2->addChild(this);
+  if ( p1 ) p1->addChild(this);
+  if ( p2 ) p2->addChild(this);
+  if ( s ) s->addChild( this );
 }
 
 MidPoint::~MidPoint()
 {
 }
 
-QString MidPoint::wantArg(const Object* o) const
-{
-  if ( o->toSegment() )
-    {
-      if(!p1 && !p2) return i18n("On segment");
-      else return 0;
-    };
-  if ( ! o->toPoint() ) return 0;
-  if (!p1) return i18n("First point");
-  else if (!p2) return i18n("Second point");
-  return 0;
-};
-
-bool MidPoint::selectArg(Object* o)
-{
-  Segment* s;
-  if ((s = o->toSegment() ) )
-    {
-      assert (!(p1 ||p2));
-      selectArg(s->getPoint1());
-      return selectArg(s->getPoint2());
-    };
-  // if we get here, o should be a point
-  Point* p = o->toPoint();
-  assert (p);
-
-  if (!p1) p1 = p;
-  else if (!p2)
-    {
-      p2 = p;
-      complete = true;
-    }
-  else { kdError() << k_funcinfo << " selectArg on a complete midpoint... " << endl; return true; };
-  o->addChild(this);
-  return complete;
-};
-
 void MidPoint::startMove(const Coordinate& p)
 {
-  if (contains(p,false))
-    {
-      howm = howmMoving;
-      p2->startMove(p2->getCoord());
-    }
+  if (contains(p,false) && p1 )
+  {
+    assert( p1 && p2 );
+    howm = howmMoving;
+    p2->startMove(p2->getCoord());
+  }
   else howm = howmFollowing;
 }
 
@@ -99,8 +61,16 @@ void MidPoint::stopMove()
 
 void MidPoint::calc( const ScreenInfo& )
 {
-  assert (p1 && p2);
-  mC = ( p1->getCoord() + p2->getCoord() ) / 2;
+  if ( p1 || p2 )
+  {
+    assert( p1 && p2 );
+    mC = ( p1->getCoord() + p2->getCoord() ) / 2;
+  }
+  else
+  {
+    assert( s );
+    mC = ( s->getP1() + s->getP2() ) / 2;
+  };
 }
 
 const QString MidPoint::sDescriptiveName()
@@ -110,10 +80,90 @@ const QString MidPoint::sDescriptiveName()
 
 const QString MidPoint::sDescription()
 {
-  return i18n( "The midpoint of a segment or of two other points" );
+  return i18n( "The midpoint of a segment or two other points" );
 }
 
 const char* MidPoint::sActionName()
 {
   return "objects_new_midpoint";
+}
+
+MidPoint::MidPoint( const Objects& os )
+  : p1( 0 ), p2( 0 ), s( 0 )
+{
+  uint size = os.size();
+  if ( size == 2 )
+  {
+    p1 = os[0]->toPoint();
+    assert( p1 );
+    p1->addChild( this );
+    p2 = os[1]->toPoint();
+    assert( p2 );
+    p2->addChild( this );
+  }
+  else
+  {
+    assert( size == 1 );
+    s = os[0]->toSegment();
+    assert( s );
+    s->addChild( this );
+  };
+}
+
+Objects MidPoint::getParents() const
+{
+  Objects tmp;
+  if ( p1 ) tmp.push_back(p1);
+  if ( p2 ) tmp.push_back(p2);
+  if ( s ) tmp.push_back( s );
+  return tmp;
+}
+
+Object::WantArgsResult MidPoint::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size == 2 )
+  {
+    if ( os[0]->toPoint() && os[1]->toPoint() ) return Complete;
+    return NotGood;
+  }
+  if ( size != 1 ) return NotGood;
+  if ( os[0]->toSegment() ) return Complete;
+  if ( os[0]->toPoint() ) return NotComplete;
+  return NotGood;
+}
+
+QString MidPoint::sUseText( const Objects& os, const Object* o )
+{
+  if ( o->toPoint() ) return os.empty() ? i18n( "First point" )
+                        : i18n( "Second point" );
+  else if ( o->toSegment() ) return i18n( "Midpoint of this segment" );
+  else assert( false );
+}
+
+void MidPoint::sDrawPrelim( KigPainter& p, const Objects& args )
+{
+  uint size = args.size();
+  Coordinate m;
+  if ( size == 1 )
+  {
+    Segment* s;
+    if ( args[0]->toPoint() ) return;
+    else if ( ( s = args[0]->toSegment() ) )
+    {
+      Coordinate a = s->getP1(), b = s->getP2();
+      m = (a+b)/2;
+    }
+    else assert( false );
+  }
+  else
+  {
+    assert( size == 2 );
+    Point* p = args[0]->toPoint();
+    Point* q = args[1]->toPoint();
+    assert( p && q );
+    Coordinate a = p->getCoord(), b = q->getCoord();
+    m = ( a + b ) / 2;
+  };
+  p.drawPoint( m, false );
 }

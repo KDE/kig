@@ -24,12 +24,9 @@
 #include "resource.h"
 
 #include "../../misc/objects.h"
+#include "../../misc/hierarchy.h"
 #include "../../objects/object.h"
 #include "../../objects/normalpoint.h"
-#include "../../objects/midpoint.h"
-#include "../../objects/segment.h"
-#include "../../objects/circle.h"
-#include "../../objects/line.h"
 
 #include <ksimpleconfig.h>
 
@@ -56,7 +53,7 @@ KigFilter::Result KigFilterKGeo::loadMetrics(KSimpleConfig* c )
   c->setGroup("Main");
   xMax = c->readNumEntry("XMax", 16);
   yMax = c->readNumEntry("YMax", 11);
-  // the rest is not relevant to us (yet)...
+  // the rest is not relevant to us (yet ?)...
   return OK;
 }
 
@@ -64,65 +61,79 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 {
   QString group;
   c->setGroup("Main");
-  int number = c->readNumEntry ("Number");
+  uint number = c->readNumEntry ("Number");
   kdDebug() << k_funcinfo << "number of objects: " << number << endl;
 
+  // how do we work: we construct ourselves an ObjectHierarchy by
+  // manually using constructing the HierarchyElements, and then
+  // calling ObjectHierarchy::fillUp()..  Most Objects don't need
+  // params, but for those who do, we only set the most important
+  // ones, and trust the defaults for the rest..
+  ElemList allElems;
+
   // create all objects:
-  for (int i = 0; i < number; ++i)
+  for( uint i = 0; i < number; ++i )
+  {
+    // fetch the information...
+    group = "";
+    group.setNum(i+1);
+    group.prepend("Object ");
+    c->setGroup(group);
+    int objID = c->readNumEntry( "Geo" );
+    kdDebug() << k_funcinfo << "objID: " << objID << endl;
+
+    // here we construct a hierarchyelement for the current
+    // object.. parents are dealt with later...
+    HierarchyElement* e = 0;
+
+    switch (objID)
     {
-      group = "";
-      group.setNum(i+1);
-      group.prepend("Object ");
-      c->setGroup(group);
-      int objID = c->readNumEntry( "Geo" );
-      kdDebug() << k_funcinfo << "objID: " << objID << endl;
-      Object* no = 0;
-      switch (objID)
-	{
-	case ID_point:
-	  {
-	    // fetch the coordinates...
-	    bool ok;
-	    QString strX = c->readEntry("QPointX");
-	    QString strY = c->readEntry("QPointY");
-	    double x = strX.toDouble(&ok);
-	    if (!ok) return ParseError;
-	    double y = strY.toDouble(&ok);
-	    if (!ok) return ParseError;
-            NormalPoint* p = NormalPoint::fixedPoint( Coordinate( x, y ) );
-	    no = p;
-	    break;
-	  }
-	case ID_segment:
-	  {
-	    no = new Segment;
-	    break;
-	  };
-	case ID_circle:
-	  {
-	    no = new CircleBCP;
-	    break;
-	  };
-	case ID_line:
-	  {
-	    no = new LineTTP;
-	    break;
-	  }
- 	case ID_bisection:
- 	  {
- 	    no = new MidPoint();
- 	    break;
- 	  };
- 	case ID_perpendicular:
-	  {
-	    no = new LinePerpend();
-	    break;
-	  }
- 	case ID_parallel:
-	  {
-	    no = new LineParallel();
-	    break;
-	  }
+    case ID_point:
+    {
+      // fetch the coordinates...
+      bool ok;
+      QString strX = c->readEntry("QPointX");
+      QString strY = c->readEntry("QPointY");
+      double x = strX.toDouble(&ok);
+      if (!ok) return ParseError;
+      double y = strY.toDouble(&ok);
+      if (!ok) return ParseError;
+      e = new HierarchyElement( "NormalPoint", i );
+      e->setParam( "implementation-type", "Fixed" );
+      e->setParam( "x", QString::number( x ) );
+      e->setParam( "y", QString::number( y ) );
+      break;
+    }
+    case ID_segment:
+    {
+      e = new HierarchyElement( "Segment", i );
+      break;
+    }
+    case ID_circle:
+    {
+      e = new HierarchyElement( "CircleBCP", i );
+      break;
+    }
+    case ID_line:
+    {
+      e = new HierarchyElement( "LineTTP", i );
+      break;
+    }
+    case ID_bisection:
+    {
+      e = new HierarchyElement( "MidPoint", i );
+      break;
+    };
+    case ID_perpendicular:
+    {
+      e = new HierarchyElement( "LinePerpend", i );
+      break;
+    }
+    case ID_parallel:
+    {
+      e = new HierarchyElement( "LineParallel", i );
+      break;
+    }
 //  	case ID_pointOfConc:
 // 	  {
 // 	    objs.push_back( new PointOfConc() );
@@ -167,38 +178,45 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 // 	case ID_rotation:
 // 	  objs.push_back( new Rotation() );
 // 	  break;
-	default:
-	  return ParseError;
-	}; // switch of objID
+    default:
+      return ParseError;
+    }; // switch of objID
 
-      // color...
-      QColor co = c->readColorEntry( "Color" );
-      if( !co.isValid() ) return ParseError;
-      no->setColor( co );
-      os.push_back( no );
-    }; // for loop (creating objects...
+    // set the color...
+    QColor co = c->readColorEntry( "Color" );
+    if( !co.isValid() ) return ParseError;
+    e->setParam( "color", co.name() );
+
+    allElems.push_back( e );
+  }; // for loop (creating HierarchyElements..
+
+  assert( allElems.size() == number );
 
   // now we iterate again to set the parents correct...
-  for (int i = 0; i < number; ++i)
+  for ( uint i = 0; i < number; ++i )
+  {
+    QStrList parents;
+    group = "";
+    group.setNum(i+1);
+    group.prepend ("Object ");
+    c->setGroup(group);
+    c->readListEntry("Parents", parents);
+    char* parent;
+    int parentIndex;
+    for( parent = parents.first(); parent; parent = parents.next())
     {
-      QStrList parents;
-      group = "";
-      group.setNum(i+1);
-      group.prepend ("Object ");
-      c->setGroup(group);
-      c->readListEntry("Parents", parents);
-      char* parent;
-      int parentIndex;
-      for ( parent = parents.first(); parent; parent = parents.next())
-      {
-        bool ok;
-        parentIndex = QString(parent).toInt(&ok);
-        if (!ok)
-          return ParseError;
-        if (parentIndex != 0 )
-          os[i]->selectArg(os[parentIndex-1]);
-      };
-    }; // for loop ( setting parents...
+      bool ok;
+      parentIndex = QString(parent).toInt(&ok);
+      if (!ok)
+        return ParseError;
+      if( parentIndex != 0 )
+        allElems[i]->addParent( allElems[parentIndex-1] );
+    };
+  }; // for loop ( setting parents...
+
+  ObjectHierarchy hier( allElems );
+  os = hier.fillUp( Objects() );
+
   return OK;
 }
 

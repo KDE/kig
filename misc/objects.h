@@ -37,6 +37,9 @@ class myvector
 {
 public:
   myvector();
+  template<class Iter> myvector( Iter b, Iter e )
+    : std::vector<T>( b, e ) {};
+
   // constructs a vector with a single element in it...
   explicit myvector( const T& element );
 
@@ -56,6 +59,16 @@ public:
 
   // remove all occurences of o..
   void remove( const T& o );
+
+  myvector<T> with( const T& o );
+};
+
+template<class T>
+myvector<T> myvector<T>::with( const T& o )
+{
+  myvector<T> ret( *this );
+  ret.push_back( o );
+  return ret;
 };
 
 template<class T>
@@ -63,7 +76,6 @@ myvector<T>::myvector( const T& t )
 {
   push_back( t );
 };
-
 
 template<class T>
 myvector<T>::myvector()
@@ -131,9 +143,11 @@ class Objects
 {
 public:
   Objects() {};
+  template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {};
   Objects( const Objects& os ) : myvector<Object*>( os ) {};
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
   void calc( const ScreenInfo& r ) const;
+  Objects with( Object* );
 };
 
 #endif

@@ -28,10 +28,9 @@ class MidPoint
   : public Point
 {
 public:
-  MidPoint();
+  MidPoint( const Objects& os );
+  MidPoint( const MidPoint& m );
   ~MidPoint();
-  MidPoint(const MidPoint& m);
-
   MidPoint* copy() { return new MidPoint(*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
@@ -46,10 +45,11 @@ public:
   static const int sShortCut() { return 0; };
   static const char* sActionName();
 
-  QString wantArg(const Object* o) const;
-  bool selectArg( Object* );
-  void unselectArg (Object*);
-  Objects getParents() const { Objects tmp; tmp.push_back(p1); tmp.push_back(p2); return tmp; };
+  // passing arguments
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects&, const Object* o );
+  static void sDrawPrelim( KigPainter& p, const Objects& args );
+  Objects getParents() const;
 
   void startMove(const Coordinate&);
   void moveTo(const Coordinate&);
@@ -61,6 +61,7 @@ protected:
   enum { howmMoving, howmFollowing } howm; // how are we moving
   Point* p1;
   Point* p2;
+  Segment* s;
 };
 
 #endif

@@ -18,15 +18,18 @@
  USA
 **/
 
-
 #include "type.h"
 
 #include "hierarchy.h"
+#include "i18n.h"
 
 #include "../kig/constructactions.h"
 #include "../kig/kig_part.h"
 #include "../modes/constructing.h"
+#include "../objects/object.h"
 #include "../objects/macro.h"
+
+#include <algorithm>
 
 #include <qregexp.h>
 #include <qfile.h>
@@ -46,9 +49,10 @@ MType::MType( ObjectHierarchy* hier, const QString name, const QString desc )
 {
 }
 
-Object* MType::build()
+Object* MType::build( const Objects& parents,
+                      const std::map<QCString, QString>& )
 {
-  return new MacroObjectOne( mhier );
+  return new MacroObjectOne( mhier, parents );
 }
 
 void MType::saveXML( QDomDocument& doc, QDomNode& p ) const
@@ -80,7 +84,7 @@ const QCString MType::fullName() const
 
 const QCString MType::baseTypeName() const
 {
-  return mhier->getFinElems().front()->type()->baseTypeName();
+  return mhier->getFinElems().front()->baseTypeName();
 }
 
 const QString MType::descriptiveName() const
@@ -108,7 +112,7 @@ KAction* Type::constructAction( KigDocument* d )
 
 KigMode* MType::constructMode( NormalMode* mode, KigDocument* doc )
 {
-  return new StdConstructionMode( build(), mode, doc );
+  return new StdConstructionMode( this, mode, doc );
 }
 
 void deleteAction( KAction* a )
@@ -122,10 +126,31 @@ void deleteAction( KAction* a )
 
 void Type::deleteActions()
 {
-  for_each( mactions.begin(), mactions.end(), &deleteAction );
+  std::for_each( mactions.begin(), mactions.end(), &deleteAction );
 }
 
 const char* MType::actionName() const
 {
   return "";
+}
+
+int MType::wantArgs( const Objects& os )
+{
+  if( os.size() > mhier->getGegElems().size() ) return Object::NotGood;
+  int c = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i, ++c )
+  {
+    if( (*i)->vBaseTypeName() != mhier->getGegElems()[c]->baseTypeName()) return Object::NotGood;
+  };
+  return os.size() == mhier->getGegElems().size() ? Object::Complete : Object::NotComplete;
+}
+
+QString MType::useText( const Objects&, const Object* o )
+{
+  return i18n("Select this %1").arg(o->vTBaseTypeName());
+}
+
+void MType::drawPrelim( KigPainter&, const Objects& )
+{
+  // TODO ?
 }

@@ -33,7 +33,6 @@
 
 bool Line::contains(const Coordinate& o, const double fault ) const
 {
-  if ( !complete ) return false;
   // check your math theory ( homogeneous coördinates ) for this
   double tmp = fabs( o.x * (p1.y-p2.y) + o.y*(p2.x-p1.x) + p1.x*p2.y - p1.y*p2.x );
   return tmp < ( fault * (p2-p1).length());
@@ -47,7 +46,8 @@ bool Line::contains(const Coordinate& o, const double fault ) const
   //       |---|---|---|
   // equals 0, then p(x,y,z) is on the line containing points
   // p1(x1,y1,z1) and p2
-  // here, we're working with normal coords, no homogeneous ones, so all z's equal 1
+  // here, we're working with normal coords, no homogeneous ones, so
+  // all z's equal 1
 }
 
 void Line::draw(KigPainter& p, bool ss) const
@@ -58,10 +58,9 @@ void Line::draw(KigPainter& p, bool ss) const
 
 bool Line::inRect(const Rect& p) const
 {
-    if ( !complete ) return false;
-    // TODO: implement for real...
-    if ( p.contains( p1 ) || p.contains( p2 ) ) return true;
-    return false;
+  // TODO: implement for real...
+  if ( p.contains( p1 ) || p.contains( p2 ) ) return true;
+  return false;
 }
 
 Coordinate Line::getPoint(double p) const
@@ -109,41 +108,6 @@ LineTTP::~LineTTP()
 {
 }
 
-QString LineTTP::wantArg( const Object* o) const
-{
-  if (complete) return 0;
-  if ( ! o->toPoint()) return 0;
-  if ( !pt1 ) return i18n( "Point 1" );
-  if ( !pt2 ) return i18n( "Point 2" );
-  return 0;
-}
-
-bool LineTTP::selectArg(Object* o)
-{
-  Point* p= o->toPoint();
-  assert(p);
-  assert (!(pt1 && pt2));
-  if ( !pt1 ) pt1 = p;
-  else pt2 = p;
-  o->addChild(this);
-  return complete=pt2;
-}
-
-void LineTTP::unselectArg(Object* which)
-{
-  if ( which == pt1 )
-  {
-    pt1 = pt2; pt2 = 0;
-    which->delChild(this);
-  }
-  if ( which == pt2 )
-  {
-    pt2 = 0;
-    which->delChild(this);
-  };
-  complete = false;
-}
-
 void LineTTP::startMove(const Coordinate& p)
 {
   pwwsm = p;
@@ -177,52 +141,16 @@ LinePerpend::~LinePerpend()
 {
 }
 
-QString LinePerpend::wantArg( const Object* o) const
-{
-  if (o->toSegment() && !segment && !line ) return i18n("On segment");
-  if (o->toLine() && !segment && !line ) return i18n("On line");
-  if (o->toPoint() && !point ) return i18n("Through point");
-  return 0;
-}
-
-bool LinePerpend::selectArg(Object* o)
-{
-  Segment* s;
-  assert (!(point && (line || segment)));
-  if ((s= o->toSegment()))
-    segment = s;
-  Line* l;
-  if ((l = o->toLine()))
-    line = l;
-  Point* p;
-  if ((p = o->toPoint()))
-    point = p;
-  o->addChild(this);
-  if (point && (line || segment)) { complete = true; };
-  return complete;
-}
-
-// void LinePerpend::unselectArg(Object* o)
-// {
-//   if ( o == segment) { segment->delChild(this); segment = 0; complete = false; return;};
-//   if ( o == line) { line->delChild(this); line = 0; complete = false; return;};
-//   if ( o == point) { point->delChild(this); point = 0; complete = false; return;};
-// }
 void LinePerpend::startMove(const Coordinate&)
 {
-
 }
+
 void LinePerpend::moveTo(const Coordinate&)
 {
 
 }
 void LinePerpend::stopMove()
 {
-
-}
-void LinePerpend::cancelMove()
-{
-
 }
 
 void LinePerpend::calc( const ScreenInfo& )
@@ -261,97 +189,6 @@ Objects LinePerpend::getParents() const
   return objs;
 }
 
-void LineTTP::drawPrelim( KigPainter& p, const Object* arg ) const
-{
-  if (!pt1 || !shown) return;
-  assert( arg->toPoint() );
-  Coordinate pt = arg->toPoint()->getCoord();
-  p.setPen (QPen (Qt::red,1));
-  p.drawLine( pt1->getCoord(), pt );
-}
-
-void LinePerpend::drawPrelim( KigPainter& p, const Object* arg ) const
-{
-  // we need a point, and a line or segment, and we can get it from
-  // args we selected already + our own argument arg...
-  // first a point:
-  Coordinate tpoint;
-  if ( point ) tpoint = point->getCoord();
-  else
-  {
-    // arg should be a point...
-    if ( !arg->toPoint() ) return;
-    tpoint = arg->toPoint()->getCoord();
-  };
-  // next a line or segment... --> these both just give us two
-  // coords...
-  Coordinate t1, t2;
-  // do we have a line or segment selected already ?
-  if ( line )
-  {
-    t1 = line->getP1();
-    t2 = line->getP2();
-  }
-  else if ( segment )
-  {
-    t1 = segment->getP1();
-    t2 = segment->getP2();
-  }
-  else if ( arg->toLine() )
-  {
-    t1 = arg->toLine()->getP1();
-    t2 = arg->toLine()->getP2();
-  }
-  else if ( arg->toSegment() )
-  {
-    t1 = arg->toSegment()->getP1();
-    t2 = arg->toSegment()->getP2();
-  }
-  else return; // not enough args...
-
-  // now we have what we need, so we draw things...
-  p.setPen (QPen (Qt::red,1));
-  p.drawLine( tpoint, calcPointOnPerpend( t1, t2, tpoint ) );
-}
-
-QString LineParallel::wantArg( const Object* o) const
-{
-  if (o->toSegment() && !segment && !line ) return i18n("On segment");
-  if (o->toLine() && !segment && !line ) return i18n("On line");
-  if (o->toPoint() && !point ) return i18n("Through point");
-  return 0;
-}
-
-bool LineParallel::selectArg(Object* o)
-{
-  // we shouldn't be finished yet...
-  assert (!(point && (line || segment)));
-  // is this a segment ?
-  Segment* s;
-  if ((s= o->toSegment()))
-    {
-      assert (!segment);
-      segment = s;
-    };
-  // perhaps a line...
-  Line* l;
-  if ((l = o->toLine()))
-    {
-      assert (!line);
-      line = l;
-    };
-  // or even a point...
-  Point* p;
-  if ((p = o->toPoint()))
-    {
-      assert (!point);
-      point = p;
-    };
-  o->addChild(this);
-  if (point && (line || segment)) { complete = true; };
-  return complete;
-}
-
 Objects LineParallel::getParents() const
 {
   Objects objs;
@@ -359,50 +196,6 @@ Objects LineParallel::getParents() const
   else objs.push_back( line );
   objs.push_back( point );
   return objs;
-}
-
-void LineParallel::drawPrelim( KigPainter& p , const Object* arg ) const
-{
-  // we need a point, and a line or segment, and we can get it from
-  // args we selected already + our own argument arg...
-  // first a point:
-  Coordinate tpoint;
-  if ( point ) tpoint = point->toPoint()->getCoord();
-  else
-  {
-    // arg should be a point...
-    if ( !arg->toPoint() ) return;
-    tpoint = arg->toPoint()->getCoord();
-  };
-  // next a line or segment... --> these both just give us two
-  // coords...
-  Coordinate t1, t2;
-  // do we have a line or segment selected already ?
-  if ( line )
-  {
-    t1 = line->getP1();
-    t2 = line->getP2();
-  }
-  else if ( segment )
-  {
-    t1 = line->getP1();
-    t2 = line->getP2();
-  }
-  else if ( arg->toLine() )
-  {
-    t1 = arg->toLine()->getP1();
-    t2 = arg->toLine()->getP2();
-  }
-  else if ( arg->toSegment() )
-  {
-    t1 = arg->toSegment()->getP1();
-    t2 = arg->toSegment()->getP2();
-  }
-  else return; // not enough args...
-
-  // now we have what we need, so we draw things...
-  p.setPen (QPen (Qt::red,1));
-  p.drawLine( tpoint, calcPointOnParallel( t1, t2, tpoint ) );
 }
 
 void LineParallel::calc( const ScreenInfo& )
@@ -461,35 +254,9 @@ LineRadical::LineRadical(const LineRadical& l)
   if( c2 ) c2->addChild( this );
 }
 
-QString LineRadical::wantArg( const Object* o ) const
-{
-  if( o->toCircle() && ( !c1 || !c2 ) ) return i18n("Radical Line of this circle");
-  return QString::null;
-}
-
-bool LineRadical::selectArg( Object* o )
-{
-  assert( !c2 );
-  Circle* c = o->toCircle();
-  assert( c );
-  if( !c1 ) c1 = c; else c2 = c;
-  o->addChild( this );
-  complete = c2;
-  return complete;
-}
-
-void LineRadical::drawPrelim( KigPainter&, const Object* ) const
-{
-  return;
-}
-
 void LineRadical::calc( const ScreenInfo& )
 {
-  if( !c1 && !c2 )
-  {
-    assert( complete == false );
-    return;
-  };
+  if( !c1 && !c2 ) return;
 
   Coordinate ce1, ce2, direc, startpoint;
   double r1sq, r2sq, dsq, lambda;
@@ -527,11 +294,6 @@ void LineRadical::calc( const ScreenInfo& )
   p1 = startpoint;
   //  endCoords.coords = startpoint + direc.orthogonal();
   p2 = startpoint + direc.orthogonal();
-}
-
-LineRadical::LineRadical()
-  : c1( 0 ), c2( 0 )
-{
 }
 
 Line* Line::toLine()
@@ -612,5 +374,227 @@ const char* LineRadical::sActionName()
 Line::Line( const Line& l )
   : Curve( l ), p1( l.p1 ), p2( l.p2 ), pwwsm( l.pwwsm )
 {
+}
 
+const QCString Line::vBaseTypeName() const
+{
+  return sBaseTypeName();
+}
+
+LineTTP::LineTTP( const Objects& os )
+ : pt1(0), pt2(0)
+{
+  assert( os.size() == 2 );
+  pt1 = os[0]->toPoint();
+  pt2 = os[1]->toPoint();
+  assert( pt1 && pt2 );
+  pt1->addChild( this );
+  pt2->addChild( this );
+}
+
+Object::WantArgsResult LineTTP::sWantArgs( const Objects& os )
+{
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( ! (*i)->toPoint() ) return NotGood;
+  uint size = os.size();
+  if ( size != 1 && size != 2 ) return NotGood;
+  return size == 2 ? Complete : NotComplete;
+}
+
+QString LineTTP::sUseText( const Objects& os, const Object* )
+{
+  uint size = os.size();
+  return size == 1 ? i18n( "Last Point" ) : i18n( "First Point" );
+}
+
+void LineTTP::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  if ( os.size() != 2 ) return;
+  assert( os[0]->toPoint() && os[1]->toPoint() );
+  Coordinate a = os[0]->toPoint()->getCoord();
+  Coordinate b = os[1]->toPoint()->getCoord();
+  p.setPen (QPen (Qt::red,1));
+  p.drawLine( a, b );
+}
+
+LinePerpend::LinePerpend( const Objects& os )
+ : segment(0), line(0), point(0)
+{
+  assert( os.size() == 2 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( ! point ) point = (*i)->toPoint();
+    if ( ! segment ) segment = (*i)->toSegment();
+    if ( ! line ) line = (*i)->toLine();
+  };
+  assert( point && ( segment || line ) );
+  point->addChild( this );
+  if ( segment ) segment->addChild( this );
+  if ( line ) line->addChild( this );
+}
+
+void LinePerpend::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  if ( os.size() != 2 ) return;
+  Point* pt = 0;
+  Segment* s = 0;
+  Line* l = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( !pt ) pt = (*i)->toPoint();
+    if ( !s ) s = (*i)->toSegment();
+    if ( !l ) l = (*i)->toLine();
+  };
+  assert( pt && ( s || l ) );
+
+  Coordinate pc = pt->getCoord();
+
+  // next a line or segment... --> these both just give us two
+  // coords...
+  Coordinate t1, t2;
+  // do we have a line or segment selected already ?
+  if ( l )
+  {
+    t1 = l->getP1();
+    t2 = l->getP2();
+  }
+  else
+  {
+    t1 = s->getP1();
+    t2 = s->getP2();
+  }
+
+  // now we have what we need, so we draw things...
+  p.setPen (QPen (Qt::red,1));
+  p.drawLine( pc, calcPointOnPerpend( t1, t2, pc ) );
+}
+
+LineParallel::LineParallel( const Objects& o )
+ : segment(0), line(0), point(0)
+{
+  assert( o.size() == 2 );
+  for ( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
+  {
+    if ( ! point ) point = (*i)->toPoint();
+    if ( ! segment ) segment = (*i)->toSegment();
+    if ( ! line ) line = (*i)->toLine();
+  };
+  assert( point && ( segment || line ) );
+  point->addChild( this );
+  if ( segment ) segment->addChild( this );
+  if ( line ) line->addChild( this );
+}
+
+void LineParallel::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  if ( os.size() != 2 ) return;
+  Point* q = 0;
+  Segment* s = 0;
+  Line* l = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( !q ) q = (*i)->toPoint();
+    if ( !s ) s = (*i)->toSegment();
+    if ( !l ) l = (*i)->toLine();
+  };
+  assert( q && ( s || l ) );
+  Coordinate pt = q->getCoord();
+  Coordinate pa, pb;
+  if ( l )
+  {
+    pa = l->getP1();
+    pb = l->getP2();
+  }
+  else
+  {
+    pa = s->getP1();
+    pb = s->getP2();
+  }
+
+  p.setPen( QPen (Qt::red,1) );
+  p.drawLine( pt, calcPointOnParallel( pa, pb, pt ) );
+}
+
+Object::WantArgsResult LinePerpend::sWantArgs( const Objects& os )
+{
+  // i know i'm lazy, but lineperpend needs exactly the same as
+  // LineParallel...
+  return LineParallel::sWantArgs( os );
+};
+
+Object::WantArgsResult LineParallel::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size != 1 && size != 2 ) return NotGood;
+  uint pt = 0;
+  uint s = 0;
+  uint l = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( (*i)->toPoint() ) ++pt;
+    else if ( (*i)->toSegment() ) ++s;
+    else if ( (*i)->toLine() ) ++l;
+    else return NotGood;
+  };
+  if ( pt > 1 ) return NotGood;
+  if ( s + l > 1 ) return NotGood;
+  return size == 2 ? Complete : NotComplete;
+}
+
+QString LinePerpend::sUseText( const Objects&, const Object* o )
+{
+  if ( o->toPoint() ) return i18n( "Perpendicular line through this point" );
+  else if ( o->toSegment() ) return i18n( "Line perpendicular on this segment" );
+  else if ( o->toLine() ) return i18n( "Line perpendicular on this line" );
+  else assert( false );
+}
+
+QString LineParallel::sUseText( const Objects&, const Object* o )
+{
+  if ( o->toPoint() ) return i18n( "Parallel line through this point" );
+  else if ( o->toSegment() ) return i18n( "Line parallel on this segment" );
+  else if ( o->toLine() ) return i18n( "Line parallel on this line" );
+  else assert( false );
+}
+
+LineRadical* LineRadical::copy()
+{
+  return new LineRadical (*this);
+}
+
+LineRadical::LineRadical( const Objects& os )
+{
+  assert( os.size() == 2 );
+  c1 = os[0]->toCircle();
+  c2 = os[1]->toCircle();
+  assert( c1 && c2 );
+  c1->addChild( this );
+  c2->addChild( this );
+}
+
+void LineRadical::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  if ( os.size() != 2 ) return;
+  Circle* ca = os[0]->toCircle();
+  Circle* cb = os[1]->toCircle();
+  assert ( ca && cb );
+  Coordinate pa = ca->getCenter();
+  Coordinate pb = cb->getCenter();
+  Coordinate m = ( pa + pb ) / 2;
+  p.setPen( QPen (Qt::red,1) );
+  p.drawLine( m, calcPointOnPerpend( pa, pb, m ) );
+}
+
+Object::WantArgsResult LineRadical::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size != 1 && size != 2 ) return NotGood;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( ! (*i)->toCircle() ) return NotGood;
+  return size == 2 ? Complete : NotComplete;
+}
+
+QString LineRadical::sUseText( const Objects&, const Object* )
+{
+  return i18n("Radical Line of this circle");
 }
