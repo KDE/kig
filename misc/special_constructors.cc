@@ -272,10 +272,6 @@ bool LocusConstructor::isTransform() const
  * generic polygon constructor
  */
 
-//static const struct ArgsParser::spec argsspecPolygonBNP =
-//  { PointImp::stype(), I18N_NOOP( "Construct a polygon with this vertex" ), 
-//    I18N_NOOP( "Select a point to be a vertex of the new polygon..." ), false };
-
 PolygonBNPTypeConstructor::PolygonBNPTypeConstructor()
   : mtype( PolygonBNPType::instance() )
 {
@@ -826,29 +822,39 @@ QString GenericIntersectionConstructor::useText(
   switch (os.size())
   {
     case 1:
-      preamble = i18n( "Intersect " );
+      if ( o.imp()->inherits( CircleImp::stype() ) )
+        return i18n( "Intersect this Circle" );
+      else if ( o.imp()->inherits( ConicImp::stype() ) )
+        return i18n( "Intersect this Conic" );
+      else if ( o.imp()->inherits( AbstractLineImp::stype() ) )
+        return i18n( "Intersect this Line" );
+      else if ( o.imp()->inherits( CubicImp::stype() ) )
+        return i18n( "Intersect this Cubic Curve" );
+      else if ( o.imp()->inherits( ArcImp::stype() ) )
+        return i18n( "Intersect this Arc" );
+      else if ( o.imp()->inherits( PolygonImp::stype() ) )
+        return i18n( "Intersect this Polygon" );
+      else assert( false );
       break;
     case 2:
-      preamble = i18n( "with " );
+      if ( o.imp()->inherits( CircleImp::stype() ) )
+        return i18n( "with this Circle" );
+      else if ( o.imp()->inherits( ConicImp::stype() ) )
+        return i18n( "with this Conic" );
+      else if ( o.imp()->inherits( AbstractLineImp::stype() ) )
+        return i18n( "with this Line" );
+      else if ( o.imp()->inherits( CubicImp::stype() ) )
+        return i18n( "with this Cubic Curve" );
+      else if ( o.imp()->inherits( ArcImp::stype() ) )
+        return i18n( "with this Arc" );
+      else if ( o.imp()->inherits( PolygonImp::stype() ) )
+        return i18n( "with this Polygon" );
+      else assert( false );
       break;
     default:
-      preamble = i18n( "Intersect with " );  // this should never happen...
+      return QString::null;
       break;
   }
-  if ( o.imp()->inherits( CircleImp::stype() ) )
-    return preamble + i18n( "This Circle" );
-  else if ( o.imp()->inherits( ConicImp::stype() ) )
-    return preamble + i18n( "This Conic" );
-  else if ( o.imp()->inherits( AbstractLineImp::stype() ) )
-    return preamble + i18n( "This Line" );
-  else if ( o.imp()->inherits( CubicImp::stype() ) )
-    return preamble + i18n( "This Cubic Curve" );
-  else if ( o.imp()->inherits( ArcImp::stype() ) )
-    return preamble + i18n( "This Arc" );
-  else if ( o.imp()->inherits( PolygonImp::stype() ) )
-    return preamble + i18n( "This Polygon" );
-  else assert( false );
-  return QString::null;
 }
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =

@@ -1,3 +1,9 @@
+2005-01-18  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* now the construction of a generic affinity and a generic
+	projectivity (defined by the image of 3 or 4 points) takes
+	advantage of the existence of polygon.
+
 2005-01-15  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* new PolygonBNPType corresponding to a polygon with a
