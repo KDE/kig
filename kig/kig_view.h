@@ -60,6 +60,7 @@ class KigWidget : public QWidget
   void mouseReleaseEvent (QMouseEvent* e);
   void paintEvent (QPaintEvent* e);
   void resizeEvent(QResizeEvent*);
+  QSize sizeHint() const;
 
   // this is called to match a rect's dimensions to the dimensions of
   // the window before we set mViewRect to it.  This is done cause we

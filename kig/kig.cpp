@@ -77,7 +77,6 @@ Kig::Kig()
       KApplication::exit();
       return;
   }
-  resize (640,480);
 
   // we have drag'n'drop
   setAcceptDrops(true);
