@@ -136,16 +136,16 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       EllipseBFFPType::instance(),
-      I18N_NOOP( "Ellipse by Foci && Point" ),
-      I18N_NOOP( "An ellipse constructed by its foci and a point that pertains to it" ),
+      I18N_NOOP( "Ellipse by Focuses && Point" ), // focuses is used in preference to foci
+      I18N_NOOP( "An ellipse constructed by its focuses and a point that pertains to it" ),
       "ellipsebffp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_ellipsebffp" ) );
 
     c = new SimpleObjectTypeConstructor(
       HyperbolaBFFPType::instance(),
-      I18N_NOOP( "Hyperbola by Foci && Point" ),
-      I18N_NOOP( "A hyperbola constructed by its foci and a point that pertains to it" ),
+      I18N_NOOP( "Hyperbola by Focuses && Point" ), // focuses is used in preference to foci
+      I18N_NOOP( "A hyperbola constructed by its focuses and a point that pertains to it" ),
       "hyperbolabffp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_hyperbolabffp" ) );
