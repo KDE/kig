@@ -25,6 +25,7 @@
 #include "../objects/object_imp.h"
 #include "../objects/object.h"
 #include "../objects/line_imp.h"
+#include "../objects/text_imp.h"
 #include "../objects/circle_imp.h"
 #include "../objects/point_imp.h"
 #include "../misc/common.h"
@@ -245,9 +246,25 @@ void XFigExportImpVisitor::visit( const PointImp* imp )
           << center.y() << "\n";        // appear unused too...
 }
 
-void XFigExportImpVisitor::visit( const TextImp* )
+void XFigExportImpVisitor::visit( const TextImp* imp )
 {
+  QString text = imp->text();
+  QPoint coord = convertCoord( imp->coordinate() );
 
+  mstream << "4 "    // text type
+          << "0 "    // subtype: left justified
+          << "0 "    // TODO: color: black
+          << "50 "   // depth: 50
+          << "-1 "   // pen style: unused
+          << "0 "    // font: default
+          << "11 "   // font-size: 11
+          << "0 "    // angle
+          << "0 "    // font-flags: all the defaults..
+          << "500 500 " // height, width: large enough..
+          << coord.x() << " " // x, y
+          << coord.y() << " "
+          << text.ascii() << "\001" // text, terminated by \001
+          << "\n";
 }
 
 void XFigExportImpVisitor::visit( const AngleImp* )
