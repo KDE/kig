@@ -331,12 +331,12 @@ KigDocument* KigFilterCabri::load( const QString& file )
 
   const ObjectFactory* fact = ObjectFactory::instance();
 
-  CabriObject obj;
   std::vector<ObjectCalcer*> args;
   ObjectCalcer* oc = 0;
 
   while ( ! f.atEnd() )
   {
+    CabriObject obj;
     // we do one object each iteration..
     if ( !readObject( f, obj ) )
       return 0;
