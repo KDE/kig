@@ -579,7 +579,8 @@ const Property Conic::property( uint which, const KigWidget& w ) const
 {
   int pnum = 0;
 
-  if ( which < Curve::numberOfProperties() ) return Curve::property( which, w );
+  if ( which < Curve::numberOfProperties() )
+    return Curve::property( which, w );
   if ( which == Curve::numberOfProperties() + pnum++ )
     return Property( conicTypeString() );
   else if ( which == Curve::numberOfProperties() + pnum++ )
