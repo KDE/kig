@@ -440,27 +440,40 @@ inline Coordinate conicGetCoord( double theta, double ecostheta0,
 
 void KigPainter::drawConic( const ConicPolarEquationData& data )
 {
+  // @author Maurizio Paolini wrote an original version of this, ( the
+  // math in conicGetCoord() is still his ), I ( Dominique ) adapted
+  // it afterwards to use a distribution mechanism as explained
+  // below. )
+
+  // this function works more or less like Locus::calcForWidget():
+  // we calc some initial points, draw them, and then keep checking if
+  // the point with the param in between two other points.  If the
+  // point with that param is not too close to one of them, and if it
+  // is in the current window(), then we draw it, and put it on the
+  // stack for further processing...
+
   Coordinate focus1 = data.focus1;
   double pdimen = data.pdimen;
   double ecostheta0 = data.ecostheta0;
   double esintheta0 = data.esintheta0;
-
-  // this code is by Maurizio Paolini, I ( Dominique ) adapted it a
-  // bit afterwards..
 
   // we manage our own overlay
   bool tNeedOverlay = mNeedOverlay;
   mNeedOverlay = false;
   Rect overlay;
 
+  // this stack contains pairs of Coordinates that we still need to
+  // process:
   typedef std::pair<double,Coordinate> coordparampair;
   typedef std::pair<coordparampair, coordparampair> workitem;
   std::stack<workitem> workstack;
 
-  // first work on some 20 initial points:
+  // first work on some 20 initial points and push them onto the
+  // stack.. :
   coordparampair prev =
     coordparampair( 0, conicGetCoord( 0, ecostheta0, esintheta0,
                                       pdimen, focus1 ) );
+
   for ( double i = 1./20; i <= 2*M_PI; i += 1./20 )
   {
     Coordinate c = conicGetCoord( i, ecostheta0, esintheta0,
@@ -470,15 +483,14 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
     prev = coordparampair( i, c );
   };
 
-  int count = 20;              // the number of points we've already
-                               // visited...
-
   // maxlength is the square of the maximum size that we allow
   // between two points..
   double maxlength = 1.5 * pixelWidth();
   maxlength *= maxlength;
 
   // sanity check...
+  int count = 20;              // the number of points we've already
+                               // visited...
   static const int maxnumberofpoints = 1000;
 
   const Rect& sr = window();
