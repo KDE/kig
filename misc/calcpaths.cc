@@ -22,6 +22,52 @@
 
 #include <algorithm>
 
+// mp:
+// The previous algorithm by Dominique had an exponential complexity
+// for some constructions (e.g. a sequence of "n" triangles each inscribed
+// into the previous).
+// The new version is directly taken from a book of Alan Bertossi
+// "Algoritmi e strutture dati"
+
+void localdfs( ObjectCalcer* obj,
+               std::vector<ObjectCalcer*>& visited,
+               std::vector<ObjectCalcer*>& all);
+
+std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& os )
+{
+  // "all" is the Objects var we're building, in reverse ordering
+  std::vector<ObjectCalcer*> visited;
+  std::vector<ObjectCalcer*> all;
+
+  for ( std::vector<ObjectCalcer*>::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    if ( std::find( visited.begin(), visited.end(), *i ) == visited.end() )
+    {
+      localdfs( *i, visited, all );
+    }
+  }
+
+  std::reverse( all.begin(), all.end() );
+  return all;
+}
+
+void localdfs( ObjectCalcer* obj,
+               std::vector<ObjectCalcer*>& visited,
+               std::vector<ObjectCalcer*>& all)
+{
+  visited.push_back( obj );
+  const std::vector<ObjectCalcer*> o = obj->children();
+  for ( std::vector<ObjectCalcer*>::const_iterator i = o.begin(); i != o.end(); ++i )
+  {
+    if ( std::find( visited.begin(), visited.end(), *i ) == visited.end() )
+      localdfs( *i, visited, all );
+  }
+  all.push_back( obj );
+}
+
+// old calcPath commented out...
+
+#ifdef UNDEF
 // these first two functions were written before i read stuff about
 // graph theory and algorithms, so i'm sure they're far from optimal.
 // However, they seem to work fine, and i don't think there's a real
@@ -73,6 +119,7 @@ std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& os )
   std::reverse( ret.begin(), ret.end() );
   return ret;
 }
+#endif
 
 bool addBranch( const std::vector<ObjectCalcer*>& o, const ObjectCalcer* to, std::vector<ObjectCalcer*>& ret )
 {

@@ -1,3 +1,8 @@
+2005-02-07  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Bug fix: new algorithm for calcPath in calcpath.cc; the
+	previous had exponential complexity for some examples
+
 2005-02-03  Dominique Devriese  <devriese@kde.org>
 
 	* Add a nice new locus example: trifolium-of-delongchamps.kig
