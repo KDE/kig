@@ -112,7 +112,7 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
 //  doc.appendChild( QDomImplementation().createDocumentType( ... ) );
 
   QDomElement docelem = doc.createElement( "KigDocument" );
-  docelem.setAttribute( "Version", "0.4.0" );
+  docelem.setAttribute( "Version", "0.4.1" );
 
   // save the coordinate system type..
   QDomElement cselem = doc.createElement( "CoordinateSystem" );

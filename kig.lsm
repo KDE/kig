@@ -1,6 +1,6 @@
 Begin3
 Title:          Kig
-Version:        0.4.0
+Version:        0.4.1
 Entered-date:   8 Dec 02
 Description:    Kig is an application meant to allow high school
 		students to interactively explore mathematical
@@ -11,8 +11,8 @@ Author:         Dominique Devriese <devriese@kde.org>
 Maintained-by:  Dominique Devriese <devriese@kde.org>
 Home-page:      http://edu.kde.org/kig
 Primary-site:   ftp://ftp.kde.org/pub/kde/stable/apps/KDE3.x/math/
-                xxxxxx  kig-0.4.0.tar.bz2
-                xxx     kig-0.4.0.lsm
+                xxxxxx  kig-0.4.1.tar.bz2
+                xxx     kig-0.4.1.lsm
 Platform:       Unix
 Copying-policy: GPL
 End
