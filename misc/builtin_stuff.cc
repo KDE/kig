@@ -25,18 +25,19 @@
 #include "special_constructors.h"
 #include "guiaction.h"
 
-#include "../objects/object_imp.h"
-#include "../objects/line_type.h"
-#include "../objects/intersection_types.h"
 #include "../objects/circle_type.h"
 #include "../objects/conic_types.h"
 #include "../objects/cubic_type.h"
+#include "../objects/intersection_types.h"
+#include "../objects/line_imp.h"
+#include "../objects/line_type.h"
+#include "../objects/object_imp.h"
+#include "../objects/other_imp.h"
 #include "../objects/other_type.h"
+#include "../objects/point_type.h"
 #include "../objects/tests_type.h"
 #include "../objects/transform_types.h"
-#include "../objects/point_type.h"
-#include "../objects/other_imp.h"
-#include "../objects/line_imp.h"
+#include "../objects/vector_type.h"
 
 #include <klocale.h>
 
@@ -262,6 +263,14 @@ void setupBuiltinStuff()
       "vector" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_vector", Qt::Key_V ) );
+
+    c = new SimpleObjectTypeConstructor(
+      VectorSumType::instance(),
+      I18N_NOOP( "Vector Sum" ),
+      I18N_NOOP( "Construct the vector sum of two vectors." ),
+      "vectorsum" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_vectorsum", 0 ) );
 
     c = new SimpleObjectTypeConstructor(
       ArcBTPType::instance(),

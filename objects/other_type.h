@@ -1,5 +1,5 @@
 // other_type.h
-// Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
+// Copyright (C) 2003-2004  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -37,17 +37,6 @@ public:
                       KigDocument& d, KigWidget& w, NormalMode& m ) const;
 };
 
-class VectorType
-  : public ObjectABType
-{
-  VectorType();
-  ~VectorType();
-public:
-  static const VectorType* instance();
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
-};
-
 class LocusType
   : public ArgsParserObjectType
 {
@@ -59,7 +48,6 @@ public:
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
 
-  const ObjectHierarchy& hierarchy() const;
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
 
   bool inherits( int type ) const;

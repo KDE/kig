@@ -31,7 +31,7 @@ public:
   ~ConicRadicalConstructor();
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
-  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
 
@@ -55,7 +55,7 @@ public:
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
 
-  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
 
@@ -71,7 +71,7 @@ public:
   ConicConicIntersectionConstructor();
   ~ConicConicIntersectionConstructor();
 
-  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
@@ -107,7 +107,7 @@ class MidPointOfTwoPointsConstructor
 public:
   MidPointOfTwoPointsConstructor();
   ~MidPointOfTwoPointsConstructor();
-  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d,
                  KigWidget& w ) const;
@@ -123,7 +123,7 @@ public:
   TestConstructor( const ArgsParserObjectType* type, const char* descname,
     const char* desc, const char* iconfile );
   ~TestConstructor();
-  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d,
                  KigWidget& w ) const;

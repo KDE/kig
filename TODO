@@ -7,8 +7,6 @@
 
 - line and half-line by vector.
 
-- Vector sum.
-
 - Three new transformations: projection on a line, orthogonally and
   according to a given direction, and a similitude ( homothecy +
   rotation ).

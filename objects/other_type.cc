@@ -88,34 +88,6 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
   return new AngleImp( points[1], startangle, anglelength );
 }
 
-static const ArgsParser::spec argsspecVector[] =
-{
-  { PointImp::stype(), I18N_NOOP( "Construct a vector from this point" ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct a vector to this point" ), true }
-};
-
-KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VectorType )
-
-VectorType::VectorType()
-  : ObjectABType( "Vector", argsspecVector, 2 )
-{
-}
-
-VectorType::~VectorType()
-{
-}
-
-const VectorType* VectorType::instance()
-{
-  static const VectorType t;
-  return &t;
-}
-
-ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
-{
-  return new VectorImp( a, b );
-}
-
 static const struct ArgsParser::spec argsspecLocus[] =
 {
   { HierarchyImp::stype(), "hierarchy", false },
@@ -161,11 +133,6 @@ bool LocusType::inherits( int type ) const
 const ObjectImpType* AngleType::resultId() const
 {
   return AngleImp::stype();
-}
-
-const ObjectImpType* VectorType::resultId() const
-{
-  return VectorImp::stype();
 }
 
 const ObjectImpType* LocusType::resultId() const

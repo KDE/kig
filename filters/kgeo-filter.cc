@@ -35,6 +35,7 @@
 #include "../objects/point_type.h"
 #include "../objects/text_type.h"
 #include "../objects/transform_types.h"
+#include "../objects/vector_type.h"
 
 #include <ksimpleconfig.h>
 

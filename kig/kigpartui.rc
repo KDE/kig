@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kig_part" version="6">
+<kpartgui name="kig_part" version="7">
   <MenuBar>
     <Menu name="file">
       <text>&amp;File</text>
@@ -38,10 +38,14 @@
 	<Action name="objects_new_lineperpend" />
 	<Action name="objects_new_lineparallel" />
 	<Action name="objects_new_ray" />
+	<ActionList name="user_line_types" />
+      </Menu>
+      <Menu name="new_vector">
+	<text>&amp;Vectors and Segments</text>
 	<Action name="objects_new_segment" />
 	<Action name="objects_new_segment_axis" />
 	<Action name="objects_new_vector" />
-	<ActionList name="user_line_types" />
+	<Action name="objects_new_vectorsum" />
 	<ActionList name="user_segment_types" />
       </Menu>
       <Menu name="new_point">
@@ -160,15 +164,19 @@
   </ToolBar>
   <ToolBar name="line_toolbar" position="left">
     <text>Lines</text>
-    <Action name="objects_new_segment" />
-    <Action name="objects_new_segment_axis" />
     <Action name="objects_new_linettp" />
-    <Action name="objects_new_vector" />
     <Action name="objects_new_ray" />
     <Action name="objects_new_lineperpend" />
     <Action name="objects_new_lineparallel" />
     <ActionList name="user_line_types" />
     <ActionList name="user_segment_types" />
+  </ToolBar>
+  <ToolBar name="vectseg_toolbar" position="left">
+    <text>Vectors &amp; Segments</text>
+    <Action name="objects_new_segment" />
+    <Action name="objects_new_segment_axis" />
+    <Action name="objects_new_vector" />
+    <Action name="objects_new_vectorsum" />
   </ToolBar>
   <ToolBar name="circle_toolbar" position="left">
     <text>Circles</text>

@@ -41,6 +41,12 @@
 KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device,
                         const KigDocument& doc, bool no )
   : mP ( device ),
+    color( Qt::blue ),
+    style( Qt::SolidLine ),
+    pointstyle( 0 ),
+    width( -1 ),
+    brushStyle( Qt::NoBrush ),
+    brushColor( Qt::blue ),
     mdoc( doc ),
     msi( si ),
     mNeedOverlay( no ),

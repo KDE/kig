@@ -101,7 +101,9 @@ void StandardConstructorBase::handlePrelim(
   p.setPen( QPen ( Qt::red,  1) );
   p.setWidth( -1 ); // -1 means the default width for the object being
                     // drawn..
-  drawprelim( p, args, d );
+
+  ObjectDrawer drawer( Qt::red );
+  drawprelim( drawer, p, args, d );
 }
 
 SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
@@ -117,7 +119,7 @@ SimpleObjectTypeConstructor::~SimpleObjectTypeConstructor()
 {
 }
 
-void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+void SimpleObjectTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                               const KigDocument& doc ) const
 {
   Args args;
@@ -125,7 +127,7 @@ void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const std::vector<O
   transform( parents.begin(), parents.end(),
              back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
   ObjectImp* data = mtype->calc( args, doc );
-  data->draw( p );
+  drawer.draw( *data, p, true );
   delete data;
 }
 
@@ -171,7 +173,7 @@ MultiObjectTypeConstructor::~MultiObjectTypeConstructor()
 {
 }
 
-void MultiObjectTypeConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+void MultiObjectTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                              const KigDocument& doc ) const
 {
   Args args;
@@ -184,7 +186,7 @@ void MultiObjectTypeConstructor::drawprelim( KigPainter& p, const std::vector<Ob
     IntImp param( *i );
     args.push_back( &param );
     ObjectImp* data = mtype->calc( args, doc );
-    data->draw( p );
+    drawer.draw( *data, p, true );
     delete data;
     args.pop_back();
   };
@@ -492,13 +494,13 @@ PropertyObjectConstructor::~PropertyObjectConstructor()
 }
 
 void PropertyObjectConstructor::drawprelim(
-  KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
   const KigDocument& d ) const
 {
   int index = parents[0]->imp()->propertiesInternalNames().findIndex( mpropinternalname );
   assert ( index != -1 );
   ObjectImp* imp = parents[0]->imp()->property( index, d );
-  imp->draw( p );
+  drawer.draw( *imp, p, true );
   delete imp;
 }
 

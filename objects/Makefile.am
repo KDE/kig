@@ -30,7 +30,8 @@ noinst_HEADERS=\
 	tests_type.h \
 	text_imp.h \
 	text_type.h \
-	transform_types.h
+	transform_types.h \
+	vector_type.h
 libobjects_la_SOURCES=\
 	base_type.cc \
 	bogus_imp.cc \
@@ -63,6 +64,7 @@ libobjects_la_SOURCES=\
 	tests_type.cc \
 	text_imp.cc \
 	text_type.cc \
-	transform_types.cc
+	transform_types.cc \
+	vector_type.cc
 libobjects_la_LIBADD=-lm
 METASOURCES=AUTO

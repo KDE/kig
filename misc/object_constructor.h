@@ -141,7 +141,7 @@ public:
                      const KigDocument& d, const KigWidget& v
     ) const;
 
-  virtual void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  virtual void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                            const KigDocument& ) const = 0;
 
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
@@ -168,7 +168,7 @@ public:
 
   ~SimpleObjectTypeConstructor();
 
-  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
 
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
@@ -197,7 +197,7 @@ public:
 
   ~PropertyObjectConstructor();
 
-  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
 
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
@@ -237,7 +237,7 @@ public:
     int a, int b, int c = -999, int d = -999 );
   ~MultiObjectTypeConstructor();
 
-  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
 
   std::vector<ObjectHolder*> build(

@@ -70,7 +70,7 @@ ConicRadicalConstructor::~ConicRadicalConstructor()
 }
 
 void ConicRadicalConstructor::drawprelim(
-  KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& doc ) const
+  const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& doc ) const
 {
   if ( parents.size() == 2 && parents[0]->imp()->inherits( ConicImp::stype() ) &&
        parents[1]->imp()->inherits( ConicImp::stype() ) )
@@ -85,7 +85,7 @@ void ConicRadicalConstructor::drawprelim(
       args.push_back( &root );
       args.push_back( &zeroindex );
       ObjectImp* data = mtype->calc( args, doc );
-      data->draw( p );
+      drawer.draw( *data, p, true );
       delete data; data = 0;
       args.pop_back();
       args.pop_back();
@@ -128,7 +128,7 @@ LocusConstructor::~LocusConstructor()
 {
 }
 
-void LocusConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+void LocusConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                    const KigDocument& ) const
 {
   // this function is rather ugly, but it is necessary to do it this
@@ -155,7 +155,7 @@ void LocusConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer
   ObjectHierarchy hier( constrained, moving );
 
   LocusImp limp( cimp->copy(), hier );
-  limp.draw( p );
+  drawer.draw( limp, p, true );
 }
 
 const int LocusConstructor::wantArgs(
@@ -245,7 +245,7 @@ ConicConicIntersectionConstructor::~ConicConicIntersectionConstructor()
 {
 }
 
-void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+void ConicConicIntersectionConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                                     const KigDocument& ) const
 {
   if ( parents.size() != 2 ) return;
@@ -265,7 +265,10 @@ void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const std::ve
       {
         bool ok2 = true;
         Coordinate c = calcConicLineIntersect( conica, radical, 0.0, wi, ok2 );
-        if ( ok2 ) p.drawFatPoint( c );
+        if ( ok2 ) {
+          PointImp pi( c );
+          drawer.draw( pi, p, true );
+        }
       };
     };
   };
@@ -417,7 +420,7 @@ MidPointOfTwoPointsConstructor::~MidPointOfTwoPointsConstructor()
 }
 
 void MidPointOfTwoPointsConstructor::drawprelim(
-  KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
   const KigDocument& ) const
 {
   if ( parents.size() != 2 ) return;
@@ -426,7 +429,7 @@ void MidPointOfTwoPointsConstructor::drawprelim(
   const Coordinate m =
     ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
       static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
-  PointImp( m ).draw( p );
+  drawer.draw( PointImp( m ), p, true );
 }
 
 std::vector<ObjectHolder*> MidPointOfTwoPointsConstructor::build(
@@ -463,7 +466,7 @@ TestConstructor::~TestConstructor()
 {
 }
 
-void TestConstructor::drawprelim( KigPainter&, const std::vector<ObjectCalcer*>&,
+void TestConstructor::drawprelim( const ObjectDrawer&, KigPainter&, const std::vector<ObjectCalcer*>&,
                                   const KigDocument& ) const
 {
   // not used, only here because of the wrong
