@@ -330,6 +330,29 @@ bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret )
 
 bool MacroList::loadOld( const QDomElement& docelem, myvector<Macro*>& ret )
 {
-  // TODO
+  assert( docelem.tagName() == "Types" );
+  // loop over all macro's in the file
+  for ( QDomElement mtypeel = docelem.firstChild().toElement();
+        ! mtypeel.isNull(); mtypeel = mtypeel.nextSibling().toElement() )
+  {
+    assert( mtypeel.tagName() == "MType" );
+    QString name = mtypeel.attribute( "name" );
+    QDomElement hierel = mtypeel.firstChild().toElement();
+    assert( hierel.tagName() == "ObjectHierarchy" );
+
+    for ( QDomElement e = hierel.firstChild().toElement(); ! e.isNull();
+          e = e.nextSibling().toElement() )
+    {
+      assert( e.tagName() == "HierarchyElement" );
+      if ( e.attribute( "given" ) != "true" )
+        break;
+
+    };
+  };
   return false;
+}
+
+const ObjectConstructorList::vectype& ObjectConstructorList::constructors() const
+{
+  return mctors;
 }

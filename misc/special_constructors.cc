@@ -182,3 +182,13 @@ void ConicRadicalConstructor::plug( KigDocument*, KigGUIAction* )
 void LocusConstructor::plug( KigDocument*, KigGUIAction* )
 {
 }
+
+bool ConicRadicalConstructor::isTransform() const
+{
+  return mtype->isTransform();
+}
+
+bool LocusConstructor::isTransform() const
+{
+  return false;
+}

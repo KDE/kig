@@ -290,7 +290,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ProjectiveRotationType::instance(),
-      I18N_NOOP( "Projectively rotated" ),
+      I18N_NOOP( "Rotate projectively" ),
       I18N_NOOP( "An object projectively rotated by an angle and a ray" ),
       "projectiverotation" );
     ctors->add( c );

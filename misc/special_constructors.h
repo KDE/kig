@@ -32,6 +32,8 @@ public:
   void drawprelim( KigPainter& p, const Objects& parents, const KigDocument& ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
+
+  bool isTransform() const;
 };
 
 class LocusConstructor
@@ -52,6 +54,8 @@ public:
   void drawprelim( KigPainter& p, const Objects& parents, const KigDocument& ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
+
+  bool isTransform() const;
 };
 
 #endif

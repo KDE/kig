@@ -85,6 +85,8 @@ public:
     ) const = 0;
 
   virtual void plug( KigDocument* doc, KigGUIAction* kact ) = 0;
+
+  virtual bool isTransform() const = 0;
 };
 
 /**
@@ -160,6 +162,8 @@ public:
                  KigWidget& w ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
+
+  bool isTransform() const;
 };
 
 /**
@@ -199,6 +203,8 @@ public:
                  KigWidget& w ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
+
+  bool isTransform() const;
 };
 
 /**
@@ -239,6 +245,8 @@ public:
                      const KigDocument& d, const KigWidget& v ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
+
+  bool isTransform() const;
 };
 
 /**
@@ -284,6 +292,11 @@ public:
     ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
+
+  // is this the ctor for a transformation type.  We want to know this
+  // cause transform types are shown separately in an object's RMB
+  // menu..
+  bool isTransform() const;
 };
 
 #endif

@@ -412,3 +412,26 @@ const ObjectHierarchy& MacroConstructor::hierarchy() const
   return mhier;
 }
 
+bool SimpleObjectTypeConstructor::isTransform() const
+{
+  return mtype->isTransform();
+}
+
+bool MultiObjectTypeConstructor::isTransform() const
+{
+  return mtype->isTransform();
+}
+
+bool MergeObjectConstructor::isTransform() const
+{
+  bool ret = false;
+  for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
+    ret |= (*i)->isTransform();
+  return ret;
+}
+
+bool MacroConstructor::isTransform() const
+{
+  return false;
+}
+

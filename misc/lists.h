@@ -78,6 +78,7 @@ public:
   vectype ctorsThatWantArgs( const Objects&, const KigDocument&,
                              const KigWidget&, bool completeOnly = false
     ) const;
+  const vectype& constructors() const;
 };
 
 /**
