@@ -108,6 +108,7 @@ void PointConstructionMode::updatePoint( const Coordinate& c, double fault )
 void PointConstructionMode::finish( KigView* v )
 {
   mDoc->addObject( mp );
+  mp = mp->copy();
 
   updateScreen( v );
 
@@ -171,9 +172,9 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
 
 void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 {
-  // objects under cursor
   Coordinate c = v->fromScreen( e->pos() );
-  Objects ouc = mDoc->whatAmIOn( c, 3*v->pixelWidth() );
+  // objects under cursor
+  Objects ouc = mDoc->whatAmIOn( c, 5*v->pixelWidth() );
   updatePoint( c, v->pixelWidth() );
 
   v->updateCurPix();

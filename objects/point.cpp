@@ -137,7 +137,7 @@ NormalPoint* NormalPoint::copy()
 }
 
 NormalPoint::NormalPoint( NormalPointImp* i )
-  : mimp( i )
+  : mimp( 0 )
 {
   setImp( i );
 }
@@ -181,36 +181,36 @@ NormalPointImp* NormalPoint::NPImpForCoord( const Coordinate& c,
       {
         // we already have a ConstrainedPointImp...
         // so we use it...
-        prev->toConstrained()->redefine( v, c );
-        return prev;
+        // UPDATE: or we don't cause this leads to trouble... :(
+//         prev->toConstrained()->redefine( v, c );
+//         return prev;
       }
       // we have a FixedPointImp...
-      // so we delete it...
-      delete prev;
+      // we don't need this, but we don't delete it, cause this is
+      // done in setImp();
     };
     // we build a new ConstrainedPointImp...
     return new ConstrainedPointImp( c, v );
   }
-  else
+  // else ( we returned before, so i can leave out the else...
+
+  // we need a FixedPointImp...
+  if ( prev )
   {
-    // we need a FixedPointImp...
-    if ( prev )
+    // we already have something...
+    if ( prev->toFixed() )
     {
-      // we already have something...
-      if ( prev->toFixed() )
-      {
-        // we already have a FixedPointImp..
-        // so we use it...
-        prev->toFixed()->setCoord( c );
-        return prev;
-      };
-      // we have a ConstrainedPointImp..
-      // so we delete it...
-      delete prev;
+      // we already have a FixedPointImp..
+      // so we use it...
+      prev->toFixed()->setCoord( c );
+      return prev;
     };
-    // we build a new FixedPointImp...
-    return new FixedPointImp( c );
+    // we have a ConstrainedPointImp..
+    // we don't need this, but we don't delete it, cause this is
+    // done in setImp();
   };
+  // we build a new FixedPointImp...
+  return new FixedPointImp( c );
 }
 
 NormalPointImp::~NormalPointImp()
@@ -351,11 +351,11 @@ FixedPointImp::FixedPointImp( const FixedPointImp& p, NormalPoint* )
 {
 }
 
-ConstrainedPointImp::ConstrainedPointImp( const ConstrainedPointImp& p, NormalPoint* d )
+ConstrainedPointImp::ConstrainedPointImp( const ConstrainedPointImp& p )
+  : NormalPointImp( p )
 {
   mparam = p.mparam;
   mcurve = p.mcurve;
-  mcurve->addChild( d );
 }
 
 void NormalPoint::calc()
@@ -399,14 +399,15 @@ const ConstrainedPointImp* NormalPoint::constrainedImp() const
 {
   return mimp->toConstrained();
 }
+
 QString ConstrainedPointImp::sType()
 {
   return QString::fromUtf8( "Constrained" );
 }
 
-NormalPointImp* ConstrainedPointImp::copy( NormalPoint* p )
+NormalPointImp* ConstrainedPointImp::copy( NormalPoint* )
 {
-  return new ConstrainedPointImp( *this, p );
+  return new ConstrainedPointImp( *this );
 }
 
 KAction* NormalPoint::sConstructAction( KigDocument*, Type*, int )
@@ -439,6 +440,7 @@ bool ConstrainedPointImp::selectArg( Object * o, NormalPoint* p )
   Curve* c = o->toCurve();
   if ( ! c ) return false;
   mcurve = c;
+  c->addChild( p );
   calc( p );
   return true;
 }
@@ -470,17 +472,13 @@ void NormalPoint::moveTo( const Coordinate& c )
 
 void NormalPoint::setImp( NormalPointImp* imp )
 {
-  if ( mimp != imp && mimp )
-  delete mimp;
+  if ( mimp != imp )
+  {
+    delete mimp;
+  };
   mimp = imp;
   mimp->calc( this );
 }
-
-void ConstrainedPointImp::redefine( Curve* c, const Coordinate d )
-{
-  mcurve = c;
-  mparam = c->getParam( d );
-};
 
 void FixedPointImp::setCoord( const Coordinate& c )
 {

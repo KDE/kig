@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -35,15 +35,15 @@ Coordinate calcPointOnPerpend( const Coordinate& p1, const Coordinate& p2, const
   double ya = p1.y;
   double yb = p2.y;
   if ( fabs(yb - ya) > 0.001 )
-    {
-      x2 = 0;
-      y2 = (xb-xa)*(t.x)/(yb-ya) + t.y;
-    }
+  {
+    x2 = 0;
+    y2 = (xb-xa)*(t.x)/(yb-ya) + t.y;
+  }
   else // the line/segment = horizontal, so the perpend is vertical
-    {
-      x2 = t.x;
-      y2 = 0;
-    };
+  {
+    x2 = t.x;
+    y2 = 0;
+  };
   return Coordinate(x2,y2);
 };
 
@@ -77,7 +77,7 @@ Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, co
   long double yb=dyb;
   long double yc=dyc;
   long double yd=dyd;
-  
+
   long double nx, ny;
   if ((fabsl(xb - xa)> 0.001) && (fabsl(xd - xc) > 0.001))
     {

@@ -52,7 +52,7 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
       if (!amo.contains(*i))
       {
         amo.push_back(*i);
-        tmp2 = (*i)->getChildren();
+        tmp2 |= (*i)->getChildren();
         Objects tmp3 = (*i)->getParents();
         tmp2 |= tmp3;
       };

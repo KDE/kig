@@ -154,8 +154,13 @@ double Segment::getParam(const Coordinate& p) const
 {
   Coordinate pt = calcPointOnPerpend(p1->getCoord(), p2->getCoord(), p);
   pt = calcIntersectionPoint(p1->getCoord(), p2->getCoord(), p, pt);
-  if ((pt - p1->getCoord()).length() > (p2->getCoord() - p1->getCoord()).length() || (pt- p2->getCoord()).length() > (p2->getCoord() - p1->getCoord()).length()) pt = p2->getCoord();
-  if(!contains(pt, false)) kdError() << k_funcinfo << endl;
+  // if pt is over the end of the segment ( i.e. it's on the line
+  // which the segment is a part of, but not of the segment itself..;
+  // ) we set it to one of the end points of the segment...
+  if ((pt - p1->getCoord()).length() > (p2->getCoord() - p1->getCoord()).length() )
+    pt = p2->getCoord();
+  else if ( (pt- p2->getCoord()).length() > (p2->getCoord() - p1->getCoord()).length() )
+    pt = p1->getCoord();
   if (p2->getCoord() == p1->getCoord()) return 0;
   return ((pt - p1->getCoord()).length())/((p2->getCoord()-p1->getCoord()).length());
 }

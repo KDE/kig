@@ -70,7 +70,7 @@ public:
  * objects.  Check out object.h or compiler errors to find out which
  * ones... :)
  *
- * the inheritance from PointConstructionMode is an implentation
+ * the inheritance from PointConstructionMode is an implementation
  * inheritance, but i'm not using private inheritance since we also
  * need to inherit from KigMode and don't want to start messing with
  * virtual inheritance...

@@ -228,11 +228,9 @@ class ConstrainedPointImp
 public:
   ConstrainedPointImp( const Coordinate& d, Curve* c );
   ConstrainedPointImp();
-  ConstrainedPointImp( const ConstrainedPointImp& p, NormalPoint* d );
+  ConstrainedPointImp( const ConstrainedPointImp& p );
 
   virtual NormalPointImp* copy( NormalPoint* p );
-
-  void redefine( Curve* c, const Coordinate c );
 
   virtual ConstrainedPointImp* toConstrained() { return this; };
   virtual const ConstrainedPointImp* toConstrained() const { return this; };
