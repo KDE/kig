@@ -178,6 +178,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
   stream >> count;
 
   ret.resize( count, 0 );
+  const ObjectFactory* fact = ObjectFactory::instance();
 
   // KSeg topologically sorts the objects before saving, that means we
   // can read the entire file in one iteration..
@@ -319,7 +320,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           // fixed point
           if ( nparents != 0 ) KIG_FILTER_PARSE_ERROR;
           Coordinate c = readKSegCoordinate( stream );
-          point = ObjectFactory::instance()->fixedPointCalcer( c );
+          point = fact->fixedPointCalcer( c );
           break;
         }
         case G_CONSTRAINED_POINT:
@@ -330,7 +331,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           assert( nparents == 1 );
           ObjectCalcer* parent = parents[0];
           assert( parent );
-          point = ObjectFactory::instance()->constrainedPointCalcer( parent, p );
+          point = fact->constrainedPointCalcer( parent, p );
           break;
         }
         case G_INTERSECTION_POINT:
@@ -398,16 +399,14 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           break;
         }
         case G_BISECTOR_RAY:
-          return false;
-          // TODO
-//           if ( nparents != 1 ) KIG_FILTER_PARSE_ERROR;
-//           if ( !parents[0]->imp()->inherits( AngleImp::stype() ) ) KIG_FILTER_PARSE_ERROR;
-//           int index = parents[0]->propertiesInternalNames().findIndex( "angle-bisector" );
-//           assert( index != -1 );
-//           ObjectPropertyCalcer* o = new ObjectPropertyCalcer( parents[0], index );
-//           ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-//           object = new ObjectHolder( o, d );
+        {
+          ObjectTypeCalcer* angle = new ObjectTypeCalcer( HalfAngleType::instance(), parents );
+          angle->calc( *retdoc );
+          ObjectPropertyCalcer* o = fact->propertyObjectCalcer( angle, "angle-bisector" );
+          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
+          object = new ObjectHolder( o, d );
           break;
+        }
         default:
           KIG_FILTER_PARSE_ERROR;
         };
@@ -513,7 +512,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       case G_LOCUS:
       {
         if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-        ObjectTypeCalcer* o = ObjectFactory::instance()->locusCalcer( parents[0], parents[1] );
+        ObjectTypeCalcer* o = fact->locusCalcer( parents[0], parents[1] );
         ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
         object = new ObjectHolder( o, d );
         break;

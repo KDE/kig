@@ -19,6 +19,8 @@
 #ifndef KIG_SCRIPTING_SCRIPT_MODE_H
 #define KIG_SCRIPTING_SCRIPT_MODE_H
 
+#include "script-common.h"
+
 #include "../modes/base_mode.h"
 
 #include <set>
@@ -34,10 +36,13 @@ class ScriptMode
   std::set<ObjectHolder*> margs;
   NewScriptWizard* mwizard;
 
+  KigPart& mpart;
+
   enum WAWD { SelectingArgs, EnteringCode };
   WAWD mwawd;
 
-  QString mtype;
+  ScriptType::Type mtype;
+
 public:
   ScriptMode( KigPart& doc );
   ~ScriptMode();
@@ -63,7 +68,12 @@ public:
 
   void enableActions();
 
-  void setScriptType( QString& type );
+  void setScriptType( ScriptType::Type type );
+
+  void addArgs( const std::vector<ObjectHolder*>& obj, KigWidget& w );
+
+  void goToCodePage();
+
 };
 
 #endif

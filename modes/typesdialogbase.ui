@@ -237,6 +237,14 @@
                         <bool>true</bool>
                     </property>
                 </widget>
+                <widget class="KPushButton">
+                    <property name="name">
+                        <cstring>buttonCancel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Cancel</string>
+                    </property>
+                </widget>
             </hbox>
         </widget>
     </vbox>
@@ -286,6 +294,12 @@
         <receiver>TypesDialogBase</receiver>
         <slot>contextMenuRequested(QListViewItem*,const QPoint&amp;,int)</slot>
     </connection>
+    <connection>
+        <sender>buttonCancel</sender>
+        <signal>clicked()</signal>
+        <receiver>TypesDialogBase</receiver>
+        <slot>cancelSlot()</slot>
+    </connection>
 </connections>
 <slots>
     <slot access="protected">deleteType()</slot>
@@ -295,10 +309,12 @@
     <slot>okSlot()</slot>
     <slot access="protected">editType()</slot>
     <slot access="protected">contextMenuRequested( QListViewItem* i, const QPoint&amp; p, int c )</slot>
+    <slot>cancelSlot()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klistview.h</includehint>
+    <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>

@@ -19,18 +19,20 @@
 #include "script_mode.h"
 
 #include "newscriptwizard.h"
-
 #include "python_type.h"
 #include "python_scripter.h"
 
-#include "../modes/dragrectmode.h"
-#include "../objects/object_imp.h"
-#include "../objects/bogus_imp.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
+#include "../modes/dragrectmode.h"
+#include "../objects/bogus_imp.h"
+#include "../objects/object_imp.h"
+
+#include <qlabel.h>
 
 #include <kcursor.h>
+#include <kiconloader.h>
 #include <kmessagebox.h>
 #include <ktextedit.h>
 
@@ -111,10 +113,11 @@ void ScriptMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint&
 }
 
 ScriptMode::ScriptMode( KigPart& doc )
-  : BaseMode( doc ), mwizard( 0 ),
+  : BaseMode( doc ), mwizard( 0 ), mpart( doc ),
     mwawd( SelectingArgs )
 {
   mwizard = new NewScriptWizard( doc.widget(), this );
+  mwizard->labelFillCode->setText( ScriptType::fillCodeStatement( ScriptType::Unknown ) );
   mwizard->show();
 
   doc.redrawScreen();
@@ -152,28 +155,7 @@ void ScriptMode::codePageEntered()
   if ( mwizard->codeeditor->text().isEmpty() )
   {
     // insert template code..
-    QString tempcode = QString::fromLatin1( "def calc( " );
-    bool firstarg = true;
-    QString temparg = i18n( "Note to translators: this should be a default "
-                            "name for an argument in a Python function. The "
-                            "default is \"arg%1\" which would become arg1, "
-                            "arg2, etc. Give something which seems "
-                            "appropriate for your language.", "arg%1" );
-
-    for ( uint i = 0; i < margs.size(); ++i )
-    {
-      if ( !firstarg ) tempcode += ", ";
-      firstarg = false;
-      tempcode += temparg.arg( i + 1 );
-    };
-    tempcode +=
-      " ):\n"
-      "\t# Calculate whatever you want to show here, and return it.\n"
-      "\t# For example, to implement a mid point, you would put this \n"
-      "\t# code here:\n"
-      "\t#\treturn Point( ( arg1.coordinate() + arg2.coordinate() ) / 2 )\n"
-      "\t# Please refer to the manual for more information.\n"
-      "\t\n";
+    QString tempcode = ScriptType::templateCode( mtype, margs.size() );
     mwizard->codeeditor->setText( tempcode );
   };
   mwizard->setFinishEnabled( mwizard->mpcode, true );
@@ -248,8 +230,29 @@ void ScriptMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&,
 {
 }
 
-void ScriptMode::setScriptType( QString& type )
+void ScriptMode::setScriptType( ScriptType::Type type )
 {
   mtype = type;
+  if ( mtype != ScriptType::Unknown )
+  {
+    KIconLoader* il = mpart.instance()->iconLoader();
+    mwizard->setIcon( il->loadIcon( ScriptType::icon( mtype ), KIcon::User ) );
+  }
+  mwizard->labelFillCode->setText( ScriptType::fillCodeStatement( mtype ) );
 }
 
+void ScriptMode::addArgs( const std::vector<ObjectHolder*>& obj, KigWidget& w )
+{
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
+
+  std::copy( obj.begin(), obj.end(), std::inserter( margs, margs.begin() ) );
+  pter.drawObjects( obj, true );
+
+  w.updateCurPix( pter.overlay() );
+  w.updateWidget();
+}
+
+void ScriptMode::goToCodePage()
+{
+  mwizard->next();
+}

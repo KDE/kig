@@ -74,12 +74,6 @@
 - add support for work with other measure units (cm, inches, etc...)
   than just pixels...
 
-- add the possibility to modify a type in the "manage types" dialog.
-  (pino: partially done)
-
-- add an option to the objects popup to start a script object with the
-  selected object as arguments...
-
 - implement cut, copy and paste for objects...
 
 - extend ObjectFactory::sensiblePointCalcer to also construct

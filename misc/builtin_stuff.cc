@@ -507,12 +507,12 @@ void setupBuiltinStuff()
     actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );
 
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
+#include "../scripting/script-common.h"
     actions->add( new NewScriptAction(
                         I18N_NOOP( "Python Script" ),
                         I18N_NOOP( "Construct a new Python script." ),
-                        "script-python",
-                        "python",
-                        "objects_new_script_python" ) );
+                        "objects_new_script_python",
+                        ScriptType::Python ) );
 #endif
 
 #if 0

@@ -4,11 +4,13 @@ noinst_LTLIBRARIES=libscripting.la
 noinst_HEADERS = \
 	python_type.h \
 	python_scripter.h \
+	script-common.h \
 	script_mode.h \
 	newscriptwizard.h
 libscripting_la_SOURCES = \
 	python_type.cc \
 	python_scripter.cc \
+	script-common.cc \
 	script_mode.cc \
 	newscriptwizardbase.ui \
 	newscriptwizard.cc

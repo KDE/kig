@@ -48,6 +48,7 @@ public:
 public slots:
   void helpSlot();
   void okSlot();
+  void cancelSlot();
 
 protected slots:
   void deleteType();

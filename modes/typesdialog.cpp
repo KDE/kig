@@ -64,6 +64,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   il = part.instance()->iconLoader();
   buttonHelp->setIconSet( QIconSet( il->loadIcon( "help", KIcon::Small ) ) );
   buttonOk->setIconSet( QIconSet( il->loadIcon( "button_ok", KIcon::Small ) ) );
+  buttonCancel->setIconSet( QIconSet( il->loadIcon( "button_cancel", KIcon::Small ) ) );
   buttonEdit->setIconSet( QIconSet( il->loadIcon( "edit", KIcon::Small ) ) );
   buttonRemove->setIconSet( QIconSet( il->loadIcon( "editdelete", KIcon::Small ) ) );
   buttonExport->setIconSet( QIconSet( il->loadIcon( "fileexport", KIcon::Small ) ) );
@@ -84,6 +85,9 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   popup->insertSeparator();
   popup->insertItem( QIconSet( il->loadIcon( "fileexport", KIcon::Small ) ),
                      i18n( "E&xport..." ), this, SLOT( exportType() ) );
+
+  // saving types
+  part.saveTypes();
 }
 
 QListViewItem* TypesDialog::newListItem( Macro* m )
@@ -110,6 +114,9 @@ void TypesDialog::helpSlot()
 
 void TypesDialog::okSlot()
 {
+  mpart.saveTypes();
+  mpart.deleteTypes();
+  mpart.loadTypes();
   accept();
 }
 
@@ -267,4 +274,11 @@ void TypesDialog::loadAllMacros()
   {
     typeList->insertItem( newListItem( *i ) );
   }
+}
+
+void TypesDialog::cancelSlot()
+{
+  mpart.deleteTypes();
+  mpart.loadTypes();
+  reject();
 }

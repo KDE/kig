@@ -316,11 +316,15 @@ void TestAction::act( KigPart& doc )
 #include "../scripting/script_mode.h"
 
 NewScriptAction::NewScriptAction( const char* descname, const char* description,
-                                  const char* icon, const char* type,
-                                  const char* actionname )
+                                  const char* actionname, const ScriptType::Type type,
+                                  const char* icon )
   : GUIAction(), mactionname( actionname ), mdescname( descname ),
     mdescription( description ), micon( icon ), mtype( type )
 {
+  if ( micon == "" )
+  {
+    micon = ScriptType::icon( type );
+  }
 }
 
 NewScriptAction::~NewScriptAction()
@@ -350,8 +354,7 @@ const char* NewScriptAction::actionName() const
 void NewScriptAction::act( KigPart& doc )
 {
   ScriptMode m( doc );
-  QString t( mtype );
-  m.setScriptType( t );
+  m.setScriptType( mtype );
   doc.runMode( &m );
 }
 

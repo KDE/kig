@@ -1,3 +1,24 @@
+2004-09-05  Pino Toscano <toscano.pino@tiscali.it>
+
+	* A new LaTex exporter.
+
+	* Add a new little system to handle script's properties like
+	icon, template code and stuff related to script type.
+
+	* Now any change in the Types Dialog is applied when the users
+	click OK. If Cancel is pressed, any change is lost, even types
+	addition/deletion. This is done by saving the types when Types
+	Dialog is started.
+
+	* Now the user can choose Start->Python Script from the popup
+	menu to start a new Python script with the selected objects as
+	arguments. If there are no objects selected, the Script Wizard
+	starts as usual.
+
+	* Add the main Kig icons with size 22 and 64.
+
+	* The KSeg filter can import bisector lines.
+
 2004-09-02  Dominique Devriese  <devriese@kde.org>
 
 	* Commit David Vignoni's new kig_doc icon
@@ -6,15 +27,9 @@
 
 	* Implement Vector difference as internal macro.
 
-2004-09-01  Pino Toscano <toscano.pino@tiscali.it>
-
 	* The Type list has a popup menu to edit, delete and export types.
 
-2004-09-01  Pino Toscano <toscano.pino@tiscali.it>
-
 	* Small changes to Script Wizard UI.
-
-2004-09-01  Pino Toscano <toscano.pino@tiscali.it>
 
 	* kfile_kig read also the compatibility version.
 

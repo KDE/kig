@@ -236,6 +236,12 @@ protected:
 public:
   const KigDocument& document() const;
   KigDocument& document();
+
+/***************** types handling *******************/
+  void saveTypes();
+  void loadTypes();
+  void deleteTypes();
+
 };
 
 #endif // KIGPART_H

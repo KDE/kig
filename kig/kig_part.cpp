@@ -75,6 +75,8 @@
 
 using namespace std;
 
+static const QString typesFile = "macros.kigt";
+
 // export this library...
 typedef KParts::GenericFactory<KigPart> KigPartFactory;
 K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigPartFactory )
@@ -347,10 +349,7 @@ KigPart::~KigPart()
   GUIActionList::instance()->unregDoc( this );
 
   // save our types...
-  QString typesDir = KGlobal::dirs()->saveLocation("appdata", "kig-types");
-  if (typesDir[typesDir.length() - 1] != '/') typesDir += '/';
-  MacroList* macrolist = MacroList::instance();
-  macrolist->save( macrolist->macros(), typesDir + "macros.kigt" );
+  saveTypes();
 
   // objects get deleted automatically, when mobjsref gets
   // destructed..
@@ -985,4 +984,47 @@ void KigPart::toggleAxes()
 void KigPart::coordSystemChanged( int id )
 {
   aCoordSystem->setCurrentItem( id );
+}
+
+void KigPart::saveTypes()
+{
+  QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
+  if ( typesDir[ typesDir.length() - 1 ] != '/' )
+    typesDir += '/';
+  QString typesFileWithPath = typesDir + typesFile;
+
+  // removing existant types file
+  if ( QFile::exists( typesFileWithPath ) )
+    QFile::remove( typesFileWithPath );
+
+  MacroList* macrolist = MacroList::instance();
+  macrolist->save( macrolist->macros(), typesFileWithPath );
+}
+
+void KigPart::loadTypes()
+{
+  QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
+  if ( typesDir[ typesDir.length() - 1 ] != '/' )
+    typesDir += '/';
+  QString typesFileWithPath = typesDir + typesFile;
+
+  if ( QFile::exists( typesFileWithPath ) )
+  {
+    std::vector<Macro*> macros;
+    MacroList::instance()->load( typesFileWithPath, macros, *this );
+    MacroList::instance()->add( macros );
+  }
+}
+
+void KigPart::deleteTypes()
+{
+  unplugActionLists();
+  typedef MacroList::vectype vec;
+  MacroList* macrolist = MacroList::instance();
+  const vec& macros = macrolist->macros();
+  for ( vec::const_reverse_iterator i = macros.rbegin(); i != macros.rend(); ++i )
+  {
+    macrolist->remove( *i );
+  }
+  plugActionLists();
 }

@@ -60,6 +60,8 @@
 #include <klineeditdlg.h>
 #endif
 
+#include <config.h>
+
 using namespace std;
 
 class NormalModePopupObjects;
@@ -158,6 +160,22 @@ public:
                       KigPart& doc, KigWidget& w, NormalMode& m );
 };
 
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+#include "../scripting/script-common.h"
+#include "../scripting/script_mode.h"
+
+class ScriptActionsProvider
+  : public PopupActionProvider
+{
+  int mns;
+public:
+  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
+  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
+                      NormalModePopupObjects& popup,
+                      KigPart& doc, KigWidget& w, NormalMode& m );
+};
+#endif
+
 NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
                                                 KigWidget& view,
                                                 NormalMode& mode,
@@ -204,6 +222,10 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     // stuff like "redefine point" for a fixed or constrained point..
     mproviders.push_back( new ObjectTypeActionsProvider() );
   }
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+  // script action..
+  mproviders.push_back( new ScriptActionsProvider() );
+#endif
 
   for ( int i = 0; i < (int) NumberOfMenus; ++i )
     mmenus[i] = new QPopupMenu( this );
@@ -976,3 +998,44 @@ void NormalModePopupObjects::setChecked( int menu, int n, bool checked )
 {
   mmenus[menu]->setItemChecked( n, checked );
 }
+
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
+{
+  if ( menu == NormalModePopupObjects::StartMenu )
+  {
+    KIconLoader* l = popup.part().instance()->iconLoader();
+    QPixmap p = l->loadIcon( ScriptType::icon( ScriptType::Python ), KIcon::User );
+    popup.addAction( menu, p, i18n( "Python Script" ), nextfree++ );
+    mns++;
+  }
+}
+
+bool ScriptActionsProvider::executeAction(
+  int menu, int& id, const std::vector<ObjectHolder*>& os,
+  NormalModePopupObjects&, KigPart& doc, KigWidget& w, NormalMode& mode )
+{
+  if ( menu == NormalModePopupObjects::StartMenu )
+  {
+    if ( id == 0 )
+    {
+      ScriptMode m( doc );
+      m.setScriptType( ScriptType::Python );
+      if ( os.size() > 0 )
+      {
+        mode.clearSelection();
+        m.addArgs( os, w );
+        m.goToCodePage();
+      }
+      doc.runMode( &m );
+      return true;
+    }
+    else
+    {
+      id -= mns;
+    }
+  }
+
+  return false;
+}
+#endif

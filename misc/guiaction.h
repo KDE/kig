@@ -21,6 +21,10 @@
 
 #include <config.h>
 
+#ifdef KIG_ENABLE_PYTHON_SCRIPTING
+#include "../scripting/script-common.h"
+#endif
+
 #include <qstring.h>
 #include <qcstring.h>
 #include <kaction.h>
@@ -152,10 +156,11 @@ class NewScriptAction
   const char* mdescname;
   const char* mdescription;
   const char* micon;
-  const char* mtype;
+  const ScriptType::Type mtype;
 public:
-  NewScriptAction( const char* descname, const char* description, const char* icon,
-  const char* type, const char* actionname );
+  NewScriptAction( const char* descname, const char* description,
+                   const char* actionname, const ScriptType::Type type,
+                   const char* icon = "" );
   ~NewScriptAction();
   QString description() const;
   QCString iconFileName() const;
