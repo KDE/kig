@@ -317,7 +317,7 @@ ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
     uint id = tmp.toInt( &ok );
     if ( ! ok ) continue;
 
-    mnumberofargs = kMax( id + 1, mnumberofargs );
+    mnumberofargs = kMax( id, mnumberofargs );
 
     tmp = e.attribute( "requirement" );
     int req = ObjectImp::stringToID( tmp.latin1() );
