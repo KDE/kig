@@ -183,8 +183,10 @@ void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
 {
   assert( stack[mparent] );
   if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
-  assert( mpropid != -1 );
-  stack[loc] = stack[mparent]->property( mpropid, d );
+  if ( mpropid != -1 )
+    stack[loc] = stack[mparent]->property( mpropid, d );
+  else
+    stack[loc] = new InvalidImp();
 }
 
 void FetchPropertyNode::apply( Objects& stack, int loc ) const
