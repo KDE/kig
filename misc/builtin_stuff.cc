@@ -252,7 +252,7 @@ void setupBuiltinStuff()
       LineReflectionType::instance(),
       I18N_NOOP( "Mirror" ),
       I18N_NOOP( "The reflection of an object over a line" ),
-      "linereflection" );
+      "mirrorpoint" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linereflection" ) );
 
