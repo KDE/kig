@@ -85,3 +85,38 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents ) const
   if ( points.size() < 2 ) return new InvalidImp;
   return new CubicImp( calcCubicNodeThroughPoints( points ) );
 }
+
+static const ArgParser::spec argsspec4p[] =
+{
+  { ObjectImp::ID_PointImp, 4 }
+};
+
+CubicCuspB4PType::CubicCuspB4PType()
+  : ObjectType( "CubicCuspB4P", argsspec4p, 1 )
+{
+}
+
+CubicCuspB4PType::~CubicCuspB4PType()
+{
+}
+
+const ObjectType* CubicCuspB4PType::instance()
+{
+  static const CubicCuspB4PType t;
+  return &t;
+}
+
+ObjectImp* CubicCuspB4PType::calc( const Args& parents ) const
+{
+  if ( parents.size() < 2 ) return new InvalidImp;
+  if ( parents.size() > 4 ) return new InvalidImp;
+  vector<Coordinate> points;
+
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    assert( parents[i]->inherits( ObjectImp::ID_PointImp ) );
+    points.push_back(
+      static_cast<const PointImp*>( parents[i] )->coordinate() );
+  };
+  return new CubicImp( calcCubicCuspThroughPoints( points ) );
+}

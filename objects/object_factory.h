@@ -37,6 +37,8 @@ public:
 
   void redefinePoint( RealObject* point, const Coordinate& c,
                       const KigDocument& d, const KigWidget& w );
+
+  RealObject* locus( const Objects& parents );
 };
 
 #endif

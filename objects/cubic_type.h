@@ -41,4 +41,14 @@ public:
   ObjectImp* calc( const Args& parents ) const;
 };
 
+class CubicCuspB4PType
+  : public ObjectType
+{
+  CubicCuspB4PType();
+  ~CubicCuspB4PType();
+public:
+  static const ObjectType* instance();
+  ObjectImp* calc( const Args& parents ) const;
+};
+
 #endif
