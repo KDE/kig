@@ -19,8 +19,8 @@
 **/
 
 
-#ifndef KIGCALC_H
-#define KIGCALC_H
+#ifndef KIG_MISC_COMMON_H
+#define KIG_MISC_COMMON_H
 
 #include "coordinate.h"
 #include "rect.h"

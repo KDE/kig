@@ -133,6 +133,10 @@ Coordinate calcIntersectionPoint( const LineData& l1, const LineData& l2 )
   return Coordinate( nx, ny );
 };
 
+void calcBorderPoints( Coordinate& p1, Coordinate& p2, const Rect& r )
+{
+  calcBorderPoints( p1.x, p1.y, p2.x, p2.y, r );
+};
 
 const LineData calcBorderPoints( const LineData& l, const Rect& r )
 {
