@@ -366,9 +366,10 @@ const Coordinate calcConicPolarPoint (
 
 const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
                                          const LineData& l,
+					 double knownparam,
                                          int which, bool& valid )
 {
-  assert( which == 1 || which == -1 );
+  assert( which == 1 || which == -1 || which == 0 );
 
   double aa = c.coeffs[0];
   double bb = c.coeffs[1];
@@ -386,6 +387,13 @@ const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
   double bbb = 2*aa*x*dx + 2*bb*y*dy + cc*x*dy + cc*y*dx + dd*dx + ee*dy;
   double ccc = aa*x*x + bb*y*y + cc*x*y + dd*x + ee*y + ff;
 
+  double t;
+  if ( which == 0 )  /* i.e. we have a known intersection */
+  {
+    t = - bbb/aaa - knownparam;
+    return l.a + t*(l.b - l.a);
+  }
+
   double discrim = bbb*bbb - 4*aaa*ccc;
   if (discrim < 0.0)
   {
@@ -395,7 +403,6 @@ const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
   else
   {
     valid = true;
-    double t;
     if ( which*bbb > 0 )
     {
       t = bbb + which*sqrt(discrim);

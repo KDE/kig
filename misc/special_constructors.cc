@@ -263,7 +263,7 @@ void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const std::ve
       for ( int wi = -1; wi < 2; wi += 2 )
       {
         bool ok2 = true;
-        Coordinate c = calcConicLineIntersect( conica, radical, wi, ok2 );
+        Coordinate c = calcConicLineIntersect( conica, radical, 0.0, wi, ok2 );
         if ( ok2 ) p.drawFatPoint( c );
       };
     };

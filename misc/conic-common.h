@@ -181,6 +181,7 @@ const Coordinate calcConicPolarPoint (
 
 const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
                                          const LineData& l,
+					 double knownparam,
                                          int which, bool& valid );
 
 const LineData calcConicAsymptote(
