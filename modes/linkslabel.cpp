@@ -120,4 +120,8 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
   p->layout->addItem( spacer );
 
   p->layout->activate();
+  layout()->activate();
+  QWidget* parent = static_cast<QWidget*>( this->parent() );
+  parent->layout()->activate();
+  parent->update();
 }

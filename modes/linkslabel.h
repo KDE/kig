@@ -42,7 +42,7 @@ public:
   private:
     // declare these private so only LinksLabel can use them...
     LinksLabelEditBuf() {};
-    typedef std::vector<pair<bool,QString> > vec;
+    typedef std::vector<std::pair<bool,QString> > vec;
     vec data;
   };
 
