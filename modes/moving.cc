@@ -21,7 +21,7 @@
 #include "normal.h"
 
 #include "../objects/object.h"
-#include "../objects/normalpoint.h"
+#include "../objects/object_factory.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
@@ -31,15 +31,25 @@
 #include <functional>
 #include <algorithm>
 
-void MovingModeBase::initScreen( const Objects& in )
+void MovingModeBase::initScreen( const Objects& tin )
 {
+  // temporary fix before i finally fix the moving objects selection
+  // algorithm: don't try to move DataObjects..
+  Objects in;
+  Objects docobjs = mdoc.objects();
+  for ( uint i = 0; i < tin.size(); ++i )
+    if ( docobjs.contains( tin[i] ) )
+         // don't try to move objects that have been
+         // deleted from the document..
+      in.push_back( tin[i] );
+
   // here we calc what objects will be moving, and we draw the others
   // on KigWidget::stillPix..  nmo are the Not Moving Objects
   Objects nmo;
 
   using namespace std;
   amo = in;
-  // calc nmo: basically ( mdoc->objects() - amo )
+  // calc nmo: basically ( mdoc.objects() - amo )
   // we use some stl magic here, tmp and tmp2 are set to os and
   // mdoc->objects(), sorted, and then used in set_difference...
   Objects tmp( amo.begin(), amo.end() );
@@ -51,19 +61,19 @@ void MovingModeBase::initScreen( const Objects& in )
                   back_inserter( nmo ) );
 
   mview.clearStillPix();
-  KigPainter p( mview.screenInfo(), &mview.stillPix );
+  KigPainter p( mview.screenInfo(), &mview.stillPix, mdoc );
   p.drawGrid( mdoc.coordinateSystem() );
   p.drawObjects( nmo );
-// not necessary
-//   mview.drawObjects( amo, p );
-
   mview.updateCurPix();
+
+  KigPainter p2( mview.screenInfo(), &mview.curPix, mdoc );
+  p2.drawObjects( amo );
 }
 
 void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
 {
   // clean up after ourselves:
-  amo.calcForWidget( *v );
+  amo.calc( mdoc );
   stopMove();
   mdoc.setModified( true );
 
@@ -79,8 +89,8 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
   moveTo( c );
-  amo.calcForWidget( *v );
-  KigPainter p( v->screenInfo(), &v->curPix );
+  amo.calc( mdoc );
+  KigPainter p( v->screenInfo(), &v->curPix, mdoc );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
   v->updateScrollBars();
@@ -88,22 +98,19 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
 
 MovingMode::MovingMode( const Objects& os, const Coordinate& c,
                         KigWidget& v, KigDocument& d )
-  : MovingModeBase( d, v ), emo( os )
+  : MovingModeBase( d, v ), pwwlmt( c ), emo( os )
 {
   // FIXME: fix this algorithm..., have objects tell us what other
   // objects they are going to move... e.g. only a segment moves its
   // parents, but right now, we have to take into account that every
   // object could move its parents...
-  for ( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
-    (*i)->startMove( c, v.screenInfo() );
 
   Objects objs( emo );
-  Objects tmp( emo );
   for ( Objects::const_iterator i = emo.begin(); i != emo.end(); ++i )
   {
-    objs.upush( *i );
-    tmp |= (*i)->getParents();
+    objs |= (*i)->parents();
   };
+  Objects tmp = objs;
   for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
     objs |= (*i)->getAllChildren();
 
@@ -112,17 +119,16 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
 
 void MovingMode::stopMove()
 {
-  using namespace std;
-  for_each( emo.begin(), emo.end(), mem_fun( &Object::stopMove ) );
 }
 
 void MovingMode::moveTo( const Coordinate& o )
 {
   for( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
-    (*i)->moveTo( o );
+    (*i)->move( pwwlmt, o - pwwlmt, mdoc );
+  pwwlmt = o;
 }
 
-PointRedefineMode::PointRedefineMode( NormalPoint* p, KigDocument& d, KigWidget& v )
+PointRedefineMode::PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& v )
   : MovingModeBase( d, v ), mp( p )
 {
   using namespace std;
@@ -134,7 +140,7 @@ PointRedefineMode::PointRedefineMode( NormalPoint* p, KigDocument& d, KigWidget&
 
 void PointRedefineMode::moveTo( const Coordinate& o )
 {
-  mp->redefine( o, mdoc, mview );
+  (void) ObjectFactory::instance()->redefinePoint( mp, o, mdoc, mview );
 }
 
 PointRedefineMode::~PointRedefineMode()

@@ -31,7 +31,8 @@ class KSimpleConfig;
 // supposed to be its successor, and this import filter is part of my
 // attempt to achieve that :)
 
-// NOT ALL OF KGEO'S FORMAT IS SUPPORTED YET...
+// Status: a significant part of kgeo's format is supported, not all
+// yet, though..
 
 class KigFilterKGeo
   : public KigFilter
@@ -39,11 +40,11 @@ class KigFilterKGeo
 public:
   KigFilterKGeo();
   ~KigFilterKGeo();
-  virtual bool supportMime ( const QString mime );
-  virtual Result load ( const QString from, Objects& to );
+  bool supportMime ( const QString& mime );
+  Result load ( const QString& from, KigDocument& to );
 protected:
   Result loadMetrics (KSimpleConfig* );
-  Result loadObjects (KSimpleConfig*, Objects& os );
+  Result loadObjects (KSimpleConfig*, KigDocument& os );
 
   int xMax;
   int yMax;

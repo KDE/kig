@@ -25,13 +25,6 @@
 #include <qpoint.h>
 #include <kdebug.h>
 
-// including cmath doesn't work properly here...
-extern "C"
-{
-  double sqrt( double );
-  double round( double );
-}
-
 class Coordinate
 {
 public:

@@ -26,20 +26,17 @@
 #include "../kig/kig_view.h"
 #include "../misc/i18n.h"
 #include "../misc/common.h"
-#include "../misc/coordinate_system.h"
-#include "../objects/label.h"
-#include "../objects/normalpoint.h"
-#include "../objects/segment.h"
+#include "../objects/object_factory.h"
+#include "../objects/object_imp.h"
 
 #include <kcursor.h>
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <klineedit.h>
 #include <kdebug.h>
-#include <qwidget.h>
 #include <qregexp.h>
 #include <qpopupmenu.h>
-#include <qstring.h>
+#include <qcheckbox.h>
 
 TextLabelConstructionMode::~TextLabelConstructionMode()
 {
@@ -91,8 +88,8 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
   case ReallySelectingArgs:
   {
     if ( ( mplc - e->pos() ).manhattanLength() > 4 ) break;
-    Objects os = mdoc.whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
-    if ( os.size() < 1 ) break;
+    Objects os = mdoc.whatAmIOn( v->fromScreen( mplc ), *v );
+    if ( os.empty() ) break;
     Object* o = os[0];
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
     QCStringList l = o->properties();
@@ -100,12 +97,15 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
     for ( int i = 0; static_cast<uint>( i ) < l.size(); ++i )
     {
       QString s = i18n( l[i] );
-      assert( p->insertItem( s, i ) == i );
+      int t = p->insertItem( s, i );
+      assert( t == i );
     };
     int result = p->exec( v->mapToGlobal( mplc ) );
     if ( result == -1 ) break;
     assert( static_cast<uint>( result ) < l.size() );
-    margs[mwaaws]=TextLabelProperty( o, result );
+    delete margs[mwaaws];
+    margs[mwaaws] = new PropertyObject( o, result );
+    margs[mwaaws]->calc( mdoc );
     updateLinksLabel();
     updateWiz();
     break;
@@ -137,7 +137,7 @@ void TextLabelConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   if ( mwawd == ReallySelectingArgs )
   {
-    Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
+    Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
     if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
     else w->setCursor( KCursor::arrowCursor() );
   };
@@ -157,55 +157,32 @@ void TextLabelConstructionMode::cancelPressed()
   killMode();
 }
 
-namespace {
-  uint percentCount( const QString& s )
+static uint percentCount( const QString& s )
+{
+  QRegExp re( QString::fromUtf8( "%[0-9]" ) );
+  int offset = 0;
+  uint percentcount = 0;
+  while ( ( offset = re.search( s, offset ) ) != -1 )
   {
-    QRegExp re( QString::fromUtf8( "%[0-9]" ) );
-    int offset = 0;
-    uint percentcount = 0;
-    while ( ( offset = re.search( s, offset ) ) != -1 )
-    {
-      ++percentcount;
-      offset += re.matchedLength();
-    };
-    return percentcount;
+    ++percentcount;
+    offset += re.matchedLength();
   };
+  return percentcount;
 };
 
 void TextLabelConstructionMode::finishPressed()
 {
+  bool needframe = mwiz->needFrameCheckBox->isChecked();
   QString s = mwiz->labelTextInput->text();
   KigWidget* widget = mdoc.mainWidget()->realWidget();
   if ( mwiz->currentPage() == mwiz->enter_text_page )
   {
     // no arguments...
     assert( percentCount( s ) == 0 );
-//     if ( s == QString::fromUtf8( "magic test" ) )
-//     {
-//       NormalPoint* a = NormalPoint::fixedPoint( Coordinate( 1, 1 ) );
-//       NormalPoint* b = NormalPoint::fixedPoint( Coordinate( -1, -1 ) );
-//       a->calc( widget->screenInfo() );
-//       b->calc( widget->screenInfo() );
-//       mdoc.addObject( a );
-//       mdoc.addObject( b );
-//       Objects os;
-//       os.push_back( a );
-//       os.push_back( b );
-//       Segment* s = new Segment( os );
-//       s->calc( widget->screenInfo() );
-//       mdoc.addObject( s );
-//       TextLabel::propvect p;
-//       p.push_back( TextLabelProperty( s, 2 ) );
-//       TextLabel* label = new TextLabel( QString::fromUtf8( "dit lijnstuk is %1 eenheden lang" ), Coordinate( 2, -2 ), p );
-//       label->calc( widget->screenInfo() );
-//       mdoc.addObject( label );
-//       widget->redrawScreen();
-//       killMode();
-//       return;
-//     }
-    TextLabel* label = new TextLabel( s, mcoord, TextLabel::propvect() );
-    label->calcForWidget( *widget );
-    mdoc.addObject( label );
+
+    Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe );
+    labelos.calc( mdoc );
+    mdoc.addObjects( labelos );
     widget->redrawScreen();
     killMode();
   }
@@ -213,20 +190,22 @@ void TextLabelConstructionMode::finishPressed()
   {
     // user wants a text label with args...
     bool finished = true;
-    for ( TextLabel::propvect::iterator i = margs.begin(); i != margs.end(); ++i )
+    for ( argvect::iterator i = margs.begin(); i != margs.end(); ++i )
     {
-      finished &= i->valid();
+      finished &= ( *i != 0 );
     };
-    finished &= percentCount( s ) == margs.size();
+    assert( percentCount( s ) == margs.size() );
     if ( ! finished )
       KMessageBox::sorry( mdoc.widget(),
                           i18n( "There are '%n' parts in the text that you have not selected a "
                                 "value for. Please remove them or select enough arguments." ) );
     else
     {
-      TextLabel* label = new TextLabel( s, mcoord, margs );
-      label->calcForWidget( *widget );
-      mdoc.addObject( label );
+      Objects args( margs.begin(), margs.end() );
+      Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe, args );
+      labelos.calc( mdoc );
+      mdoc.addObjects( labelos );
+      mdoc.addObjects( args );
       widget->redrawScreen();
       killMode();
     };
@@ -237,7 +216,15 @@ void TextLabelConstructionMode::updateWiz()
 {
   QString s = mwiz->labelTextInput->text();
   uint percentcount = percentCount( s );
-  if ( mlpc != percentcount ) margs.clear();
+  if ( mlpc > percentcount )
+  {
+    delete_all( margs.begin() + percentcount, margs.end() );
+    margs.resize( percentcount );
+  }
+  else if ( mlpc < percentcount )
+  {
+    margs.resize( percentcount, 0 );
+  };
 
   if ( percentcount == 0 && ! s.isEmpty() )
   {
@@ -251,11 +238,11 @@ void TextLabelConstructionMode::updateWiz()
     mwiz->setNextEnabled( mwiz->enter_text_page, ! s.isEmpty() );
     mwiz->setFinishEnabled( mwiz->enter_text_page, false );
     bool finished = true;
-    for ( TextLabel::propvect::iterator i = margs.begin(); i != margs.end(); ++i )
+    for ( argvect::iterator i = margs.begin(); i != margs.end(); ++i )
     {
-      finished &= i->valid();
+      finished &= ( *i != 0 );
     };
-    finished &= percentcount == margs.size();
+    assert( percentCount( s ) == margs.size() );
 
     mwiz->setFinishEnabled( mwiz->select_arguments_page, finished );
   };
@@ -292,12 +279,13 @@ void TextLabelConstructionMode::updateLinksLabel()
       mwiz->myCustomWidget1->addText( subs, buf );
     };
     // we always need a link part...
-    QString linktext;
-    if ( count < margs.size() && margs[count].valid() )
+    QString linktext( "%1" );
+    assert( count < margs.size() );
+    if ( margs[count] )
     {
       // if the user has already selected a property, then we show its
       // value...
-      linktext = ( margs[count].getString( mdoc, *mdoc.mainWidget()->realWidget() ) );
+      margs[count]->imp()->fillInNextEscape( linktext, mdoc );
     }
     else
       // otherwise, we show a stub...
@@ -321,11 +309,10 @@ void TextLabelConstructionMode::updateLinksLabel()
 
 void TextLabelConstructionMode::linkClicked( int i )
 {
-  kdDebug() << k_funcinfo << endl;
   mdoc.widget()->setActiveWindow();
   mdoc.widget()->raise();
 
-  margs.resize( kigMax( margs.size(), static_cast<uint>( i + 1 ) ) );
+  assert( margs.size() >= static_cast<uint>( i + 1 ) );
 
   mwawd = ReallySelectingArgs;
   mwaaws = i;

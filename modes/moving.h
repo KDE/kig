@@ -22,7 +22,9 @@
 #include "mode.h"
 
 #include "../misc/objects.h"
+#include "../misc/coordinate.h"
 
+class RealObject;
 class Coordinate;
 class NormalPoint;
 class KigWidget;
@@ -43,7 +45,7 @@ protected:
 private:
   // all moving objects: these objects are all of the objects that
   // need to be redrawn every time the cursor moves, and after calc is
-  // called.  Subclasses should set it in their constructors.
+  // called.
   Objects amo;
 protected:
   MovingModeBase( KigDocument& doc, KigWidget& v );
@@ -71,6 +73,7 @@ class MovingMode
 {
   // explicitly moving objects: these are the objects that the user
   // requested to move...
+  Coordinate pwwlmt;
   Objects emo;
   void stopMove();
   void moveTo( const Coordinate& o );
@@ -83,11 +86,11 @@ public:
 class PointRedefineMode
   : public MovingModeBase
 {
-  NormalPoint* mp;
+  RealObject* mp;
   void stopMove();
   void moveTo( const Coordinate& o );
 public:
-  PointRedefineMode( NormalPoint* p, KigDocument& d, KigWidget& v );
+  PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& v );
   ~PointRedefineMode();
 };
 

@@ -37,6 +37,11 @@ public:
   const Coordinate apply( const Coordinate& c, bool& valid ) const;
 
   bool isHomothetic() const;
+  // a homothetic transformation maintains the ratio's of lengths.
+  // This means that every length is multiplied by a fixed number when
+  // it is projected...  This function does that calculation for
+  // you..
+  double apply( double length ) const;
   double data( int r, int c ) const;
   const Transformation inverse( bool& valid ) const;
 
@@ -54,6 +59,9 @@ public:
   static const Transformation pointReflection( const Coordinate& c );
   // reflect over a line.. this equals scaling( -1, l );
   static const Transformation lineReflection( const LineData& l );
+  // cast a shadow, given a light source and a line indicating a plane
+  static const Transformation castShadow( const Coordinate& ls,
+                                              const LineData& d );
   // this is a test example of a projective non-affine transformation
   static const Transformation projectiveRotation( double alpha,
                                               const Coordinate& d,
@@ -68,16 +76,16 @@ const Transformation operator*( const Transformation&, const Transformation& );
 class Object;
 class Objects;
 
-enum tWantArgsResult { tComplete, tNotComplete, tNotGood };
+// enum tWantArgsResult { tComplete, tNotComplete, tNotGood };
 
-Transformation getProjectiveTransformation(
-  int transformationsnum, Object *mtransformations[],
-  bool& valid );
+// Transformation getProjectiveTransformation(
+//   int transformationsnum, Object *mtransformations[],
+//   bool& valid );
 
-tWantArgsResult WantTransformation ( Objects::const_iterator& i,
-         const Objects& os );
+// tWantArgsResult WantTransformation ( Objects::const_iterator& i,
+//          const Objects& os );
 
-QString getTransformMessage ( const Objects& os, const Object *o );
+// QString getTransformMessage ( const Objects& os, const Object *o );
 
 // bool isHomoteticTransformation ( double transformation[3][3] );
 

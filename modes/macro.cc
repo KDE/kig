@@ -19,18 +19,26 @@
 #include "macro.h"
 
 #include "macrowizard.h"
+#include "dragrectmode.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
-#include "../misc/hierarchy.h"
-#include "../misc/type.h"
+#include "../misc/object_constructor.h"
+#include "../misc/lists.h"
 #include "../misc/i18n.h"
+#include "../misc/guiaction.h"
+#include "../objects/object_imp.h"
 
 #include <klineedit.h>
 #include <kcursor.h>
 
+#include <functional>
+#include <algorithm>
+
+using namespace std;
+
 DefineMacroMode::DefineMacroMode( KigDocument& d )
-  : KigMode( d ), mfinal( 0 )
+  : BaseMode( d )
 {
   mwizard = new MacroWizard( d.widget(), this );
   mwizard->show();
@@ -40,11 +48,6 @@ DefineMacroMode::DefineMacroMode( KigDocument& d )
 DefineMacroMode::~DefineMacroMode()
 {
   delete mwizard;
-}
-
-void DefineMacroMode::leftClicked( QMouseEvent* e, KigWidget* )
-{
-  plc = e->pos();
 }
 
 void DefineMacroMode::abandonMacro()
@@ -57,7 +60,7 @@ void DefineMacroMode::updateNexts()
   mwizard->setNextEnabled( mwizard->mpgiven,
                            !mgiven.empty() );
   mwizard->setNextEnabled( mwizard->mpfinal,
-                           mfinal );
+                           !mfinal.empty() );
   mwizard->setFinishEnabled(
     mwizard->mpname,
     !mwizard->KLineEdit2->text().isEmpty()
@@ -70,74 +73,8 @@ void DefineMacroMode::enableActions()
   // we don't enable any actions...
 }
 
-void DefineMacroMode::leftReleased( QMouseEvent* e, KigWidget* v )
-{
-  if ( (plc - e->pos()).manhattanLength() > 4 ) return;
-  Objects os = mdoc.whatAmIOn( v->fromScreen( plc ), v->screenInfo() );
-  if ( os.empty() ) return;
-  if( mwizard->currentPage() == mwizard->mpgiven )
-  {
-    if ( mgiven.contains( os.front() ) )
-    {
-      mgiven.remove( os.front() );
-      os.front()->setSelected( false );
-    }
-    else
-    {
-      mgiven.push_back( os.front() );
-      os.front()->setSelected( true );
-    };
-  }
-  else if ( mwizard->currentPage() == mwizard->mpfinal )
-  {
-    if ( mfinal ) mfinal->setSelected( false );
-    mfinal = os.front();
-    mfinal->setSelected( true );
-  }
-  else
-    return;
-  v->redrawScreen();
-  updateNexts();
-}
-
-void DefineMacroMode::rightClicked( QMouseEvent*, KigWidget* )
-{
-// TODO
-}
-void DefineMacroMode::rightReleased( QMouseEvent*, KigWidget* )
-{
-// TODO
-}
-
-void DefineMacroMode::mouseMoved( QMouseEvent* e, KigWidget* v )
-{
-  if ( mwizard->currentPage() == mwizard->mpname ) return;
-  Coordinate c = v->fromScreen( e->pos() );
-  Objects os = mdoc.whatAmIOn( c, v->screenInfo() );
-  v->updateCurPix();
-  if ( os.empty() )
-  {
-    v->setCursor( KCursor::arrowCursor() );
-    mdoc.emitStatusBarText( 0 );
-    v->updateWidget();
-  }
-  else
-  {
-    v->setCursor( KCursor::handCursor() );
-    QString typeName = os.front()->vTBaseTypeName();
-    QString shownText = i18n( "Select this %1" ).arg( typeName );
-    mdoc.emitStatusBarText( shownText );
-    KigPainter p( v->screenInfo(), &v->curPix );
-    p.drawTextStd( e->pos(), typeName );
-    v->updateWidget( p.overlay() );
-  };
-}
-
 void DefineMacroMode::givenPageEntered()
 {
-  using std::for_each;
-  using std::bind2nd;
-  using std::mem_fun;
   for_each( mdoc.objects().begin(), mdoc.objects().end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
   for_each( mgiven.begin(), mgiven.end(),
@@ -152,9 +89,8 @@ void DefineMacroMode::finalPageEntered()
   using std::for_each;
   using std::bind2nd;
   using std::mem_fun;
-  for_each( mdoc.objects().begin(), mdoc.objects().end(),
-            bind2nd( mem_fun( &Object::setSelected ), false ) );
-  if ( mfinal ) mfinal->setSelected( true );
+  mgiven.setSelected( false );
+  mfinal.setSelected( true );
   static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
 
   updateNexts();
@@ -174,10 +110,13 @@ void DefineMacroMode::namePageEntered()
 
 void DefineMacroMode::finishPressed()
 {
-  ObjectHierarchy* hier = new ObjectHierarchy( mgiven, Objects( mfinal ) );
-  MType* type = new MType( hier, mwizard->KLineEdit2->text(),
-                           mwizard->KLineEdit1->text() );
-  Object::addUserType( type );
+  MacroConstructor* ctor =
+    new MacroConstructor( mgiven, mfinal,
+                          mwizard->KLineEdit2->text(),
+                          mwizard->KLineEdit1->text() );
+  ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
+  MacroList::instance()->add( new Macro( act, ctor ) );
+
   abandonMacro();
 }
 
@@ -190,3 +129,94 @@ void DefineMacroMode::macroNameChanged()
 {
   updateNexts();
 }
+
+void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
+{
+  if ( mwizard->currentPage() == mwizard->mpname ) return;
+  Objects* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
+  // the objects that we change..
+  Objects cos;
+  DragRectMode dm( p, mdoc, w );
+  mdoc.runMode( &dm );
+  Objects ret = dm.ret();
+  if ( dm.needClear() )
+  {
+    cos = *objs;
+    objs->setSelected( false );
+    objs->clear();
+  };
+  cos |= ret;
+  ret.setSelected( true );
+  objs->upush( ret );
+
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
+  pter.drawObjects( cos );
+  w.updateCurPix( pter.overlay() );
+  w.updateWidget();
+
+  updateNexts();
+}
+
+void DefineMacroMode::leftClickedObject( Object* o, const QPoint&,
+                                         KigWidget& w, bool )
+{
+  if ( mwizard->currentPage() == mwizard->mpname ) return;
+  Objects* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
+  if ( objs->contains( o ) )
+  {
+    objs->remove( o );
+    o->setSelected( false );
+  }
+  else
+  {
+    objs->push_back( o );
+    o->setSelected( true );
+  };
+
+  KigPainter p( w.screenInfo(), &w.stillPix, mdoc );
+  p.drawObject( o );
+  w.updateCurPix( p.overlay() );
+  w.updateWidget();
+
+  updateNexts();
+}
+
+void DefineMacroMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget& w )
+{
+  w.updateCurPix();
+
+  if ( os.empty() )
+  {
+    w.setCursor( KCursor::arrowCursor() );
+    mdoc.emitStatusBarText( 0 );
+    w.updateWidget();
+  }
+  else
+  {
+    // the cursor is over an object, show object type next to cursor
+    // and set statusbar text
+
+    w.setCursor( KCursor::handCursor() );
+    QString selectstat = ObjectImp::selectStatement( os.front()->imp()->id() );
+
+    // statusbar text
+    mdoc.emitStatusBarText( selectstat );
+    KigPainter p( w.screenInfo(), &w.curPix, mdoc );
+
+    // set the text next to the arrow cursor
+    QPoint point = pt;
+    point.setX(point.x()+15);
+
+    p.drawTextStd( point, selectstat );
+    w.updateWidget( p.overlay() );
+  }
+}
+
+void DefineMacroMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
+{
+}
+
+void DefineMacroMode::midClicked( const QPoint&, KigWidget& )
+{
+}
+

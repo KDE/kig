@@ -27,6 +27,14 @@
 
 #include <qobject.h>
 
+class CoordinateSystem;
+
+class CoordinateSystemFactory
+{
+public:
+  static CoordinateSystem* build( const char* type );
+};
+
 // a CoordinateSystem is what the user sees: it is kept by KigPart to
 // show the user a grid, and to show the coordinates of points... it
 // allows for weird CoordinateSystem's like homogeneous or
@@ -39,9 +47,9 @@ class CoordinateSystem
   : public Qt
 {
 public:
-  CoordinateSystem() {};
-  virtual ~CoordinateSystem() {};
-  virtual QString fromScreen ( const Coordinate& pt, const KigWidget& w ) const = 0;
+  CoordinateSystem();
+  virtual ~CoordinateSystem();
+  virtual QString fromScreen ( const Coordinate& pt, const KigDocument& w ) const = 0;
   /**
    * This returns a notice to say in which format coordinates should
    * be entered.  This should be something like:
@@ -50,7 +58,9 @@ public:
    */
   virtual QString coordinateFormatNotice() const = 0;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const = 0;
-  virtual void drawGrid ( KigPainter& p ) const = 0;
+  virtual void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const = 0;
+
+  virtual const char* type() const = 0;
 };
 
 class EuclideanCoords
@@ -58,11 +68,27 @@ class EuclideanCoords
 {
 public:
   EuclideanCoords();
-  ~EuclideanCoords() {};
-  virtual QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
-  virtual QString coordinateFormatNotice() const;
-  virtual Coordinate toScreen (const QString& pt, bool& ok) const;
-  virtual void drawGrid ( KigPainter& p ) const;
+  ~EuclideanCoords();
+  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
+  QString coordinateFormatNotice() const;
+  Coordinate toScreen (const QString& pt, bool& ok) const;
+  void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
+
+  const char* type() const;
+};
+
+class PolarCoords
+  : public CoordinateSystem
+{
+public:
+  PolarCoords();
+  ~PolarCoords();
+  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
+  QString coordinateFormatNotice() const;
+  Coordinate toScreen (const QString& pt, bool& ok) const;
+  void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
+
+  const char* type() const;
 };
 
 #endif

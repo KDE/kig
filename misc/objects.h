@@ -32,10 +32,10 @@
 #include <sys/types.h>
 #endif
 
+class KigDocument;
 class KigWidget;
 
-// this used to be a class with convenience functions, but i've
-// replaced them all with stl stuff...
+// collection class with some convenience funcs..
 class Object;
 
 template<class T>
@@ -126,7 +126,7 @@ myvector<T> operator&( const myvector<T>& o, const myvector<T>& s )
 {
   myvector<T> result;
   std::set_intersection( o.begin(), o.end(), s.begin(), s.end(),
-                       std::back_inserter( result ) );
+                         std::back_inserter( result ) );
   return result;
 };
 
@@ -143,9 +143,7 @@ template<class iter>
 void delete_all( iter current, iter end )
 {
   for ( ; current != end; ++current )
-  {
     delete *current;
-  };
 };
 
 class Objects
@@ -157,9 +155,9 @@ public:
   template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {};
   Objects( const Objects& os ) : myvector<Object*>( os ) {};
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
-  void calc() const;
-  void calcForWidget( const KigWidget& w ) const;
+  void calc( const KigDocument& ) const;
   Objects with( Object* ) const;
+  void setSelected( bool sel );
 };
 
 #endif

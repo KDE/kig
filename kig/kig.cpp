@@ -18,8 +18,6 @@
  USA
 **/
 
-#include <assert.h>
-
 #include "kig.h"
 #include "kig.moc"
 
@@ -38,6 +36,8 @@
 #include <kapplication.h>
 #include <klocale.h>
 #include <kimageio.h>
+
+#include <assert.h>
 
 Kig::Kig()
   : KParts::MainWindow( 0L, "Kig" )
@@ -74,7 +74,6 @@ Kig::Kig()
       KApplication::exit();
       return;
   }
-  resize (640,480);
 
   // we have drag'n'drop
   setAcceptDrops(true);

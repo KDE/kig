@@ -28,14 +28,6 @@
 
 // this used to be a bit more filled up :)
 
-void Objects::calc() const
-{
-  for ( const_iterator i = begin(); i != end(); ++i )
-  {
-    (*i)->calc();
-  };
-}
-
 Objects Objects::with( Object* o ) const
 {
   Objects os( *this );
@@ -43,10 +35,14 @@ Objects Objects::with( Object* o ) const
   return os;
 }
 
-void Objects::calcForWidget( const KigWidget& w ) const
+void Objects::calc( const KigDocument& d ) const
 {
   for ( const_iterator i = begin(); i != end(); ++i )
-  {
-    (*i)->calcForWidget( w );
-  };
+    (*i)->calc( d );
+}
+
+void Objects::setSelected( bool sel )
+{
+  for ( iterator i = begin(); i != end(); ++i )
+    (*i)->setSelected( sel );
 }

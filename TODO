@@ -1,35 +1,34 @@
-simple:
-- get rid of segmentOverlay warnings on startup..
+* simple:
 - implement the helpSlot()'s in the wizards..
-- change resizeEvent to not recenter the screen..
+- make the scroll wheel work in the kig window..
 
-harder:
-- fix the KDE style issues, there are quite some problems, i guess i
-  should try out kdenonbeta/scheck ...
+* harder:
 - filters: more input filters ( get cabri to work somewhat, kseg
-  support... )  and output filters...
+   support... )  and output filters...  
 - implement Circle by center and radius
 - printing... (cf. the kdeprint tutorial on printing.kde.org ...
 - Finally fix the move dependencies... i am thinking of making
-  Object::startMove() into Object::startMove( Objects& ).  Objects
-  could decide on what objects are already moving how they will move,
-  and they add themselves and other things they will be moving to the
-  Objects variable.  This should finally fix the move dependencies, i
-  think... 
+   Object::startMove() into Object::startMove( Objects& ).  Objects
+   could decide on what objects are already moving how they will move,
+   and they add themselves and other things they will be moving to the
+   Objects variable.  This should finally fix the move dependencies, i
+   think... 
 - move stillPix into movingMode, so the other modes won't suffer from
-  its overhead...  
+   its overhead...
+- add full undo support for everything the user might do
 
-hard :
-- transformations like in KSeg...
-- rework Macro support into something simpler: make it into types that
-  simply add a lot of normal ( as in: builtin ) objects instead of one
-  ugly object of the Macro class ( which, erm.. sucks :)
-- rearrange some of the icons to match KGeo's appearance..
-- figure out some cool way to "attach" a textlabel to an object..
-- koffice support ?
+* hard :
+- figure out a way to allow the user to enable and disable certain
+  features.  E.g. I have been asked to allow the user to limit himself
+  to compass-ruler constructions..
+- scripting !  The GNOME Interactive Geometry program Dr. Genius seems
+   to have this already ( albeit in Guile ;) ), so Kig can't lag
+   behind ;) 
+- figure out some cool way to "attach" a textlabel to an object.. 
+- koffice support ? 
 
-future ?
+* future ?
 - there should be a way to link a figure to a (html?) file containing
-  exercises.  Teachers would be able to create exercises for Kig.  I'm
-  thinking of doing this with HTML (& KHTML) + scripting ( but this is
-  _distant_ future.. )  
+   exercises.  Teachers would be able to create exercises for Kig.
+   I'm thinking of doing this with HTML (& KHTML) + scripting ( but
+   this is _distant_ future.. )

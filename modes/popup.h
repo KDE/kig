@@ -18,90 +18,69 @@
  USA
 **/
 
-#ifndef KIG_POPUP_H
-#define KIG_POPUP_H
+#ifndef KIG_MODES_POPUP_H
+#define KIG_MODES_POPUP_H
 
 #include <kpopupmenu.h>
 
-#include <map>
-
-#include "../objects/object.h"
 #include "../misc/objects.h"
-
-using std::map;
 
 class KigDocument;
 class KigWidget;
 class NormalMode;
+class PopupActionProvider;
 
+/**
+ * This is the popup menu that appears when you click on selected
+ * objects in NormalMode..  It's quite complex, since it has to fetch
+ * a lot of information from various places, and dispatch it again
+ * when the user selects something.
+ */
 class NormalModePopupObjects
   : public KPopupMenu
 {
   Q_OBJECT
 
+public:
+  NormalModePopupObjects( KigDocument& doc, KigWidget& view,
+                          NormalMode& mode, const Objects& objs );
+  ~NormalModePopupObjects();
+
+  // the different "menu's", the toplevel is considered as just
+  // another menu..
+  enum { TransformMenu = 0, ConstructMenu, StartMenu, ShowMenu,
+         SetColorMenu, SetSizeMenu, ToplevelMenu };
+
+  // used by the PopupActionProvider's to add actions to us..
+  void addAction( int menu, const QString& name, int id );
+  void addAction( int menu, const QPixmap& pix, int id );
+
+  Objects objects() { return mobjs; };
+  KigDocument& document() { return mdoc; };
+  KigWidget& widget() { return mview; };
+
+protected:
+  void activateAction( int menu, int action );
+
+private slots:
+  void transformMenuSlot( int );
+  void constructMenuSlot( int );
+  void startMenuSlot( int );
+  void showMenuSlot( int );
+  void setColorMenuSlot( int );
+  void setSizeMenuSlot( int );
+  void toplevelMenuSlot( int );
+
+protected:
   QPoint mplc;
   KigDocument& mdoc;
-  KigWidget* mview;
+  KigWidget& mview;
   Objects mobjs;
-  NormalMode* mmode;
+  NormalMode& mmode;
 
-  static const uint titleId = 0;
-  static const uint useId = 1;
-  static const uint colorId = 2;
-  static const uint moveId = 3;
-  static const uint deleteId = 4;
-  static const uint hideId = 5;
+  std::vector<PopupActionProvider*> mproviders;
 
-  // see the addPopupAction() function for this...
-  map<const QPopupMenu*, int> mpopupmap;
-
-  QPopupMenu* colorMenu( QWidget* parent );
-  const QColor* color( int );
-
-  // i could do some of these as virtual actions, but they need to be
-  // appliable to multiple objects at the same time...
-  void addColorPopup();
-  void addUsePopup();
-  void addHideItem();
-  void addMoveItem();
-  void addDeleteItem();
-  void addVirtualItems();       // this adds the objects own actions (
-                                // see Object::objectActions() )...
-
-public:
-  NormalModePopupObjects( KigDocument& doc, KigWidget* view,
-                          NormalMode* mode, const Objects& objs );
-  ~NormalModePopupObjects() {};
-
-  static const uint virtualActionsOffset = 6;
-
-  const KigWidget& widget() const;
-
-  // these two are the functions that objects can add objects to us
-  // with, in their addActions() method...
-  // here, id should be unique for all popup menu's defined by a type
-  // of object..  Don't forget to take into account any id's that your
-  // parent may use.  If one of these actions is selected, then
-  // Object::doPopupAction() will be called with the appropriate
-  // arguments ( the first one being the id you give here, and the
-  // second one being the index of the action in @param qp... )
-  void addPopupAction( uint id, const QString& name, QPopupMenu* qp );
-
-  // with this function, objects may add a normal action to us.  id
-  // should be unique for all actions that an object defines ( note
-  // that it can be the same as id's for popup menu's given
-  // above.. ).  Don't forget to consider the id's that your parent
-  // uses...  If this action gets selected by the user, then
-  // Object::doNormalAction will be called with the appropriate
-  // arguments...
-  void addNormalAction( uint id, const QString& name );
-
-protected slots:
-  void doAction( int );
-  void doUse( int );
-  void doSetColor( int );
-  void doPopup( int );
+  QPopupMenu* mmenus[6];
 };
-
 
 #endif

@@ -42,6 +42,7 @@ public:
   Coordinate a;
   Coordinate b;
   const Coordinate dir() const { return b - a; };
+  double length() const { return ( b - a ).length(); };
   LineData() : a(), b() {};
   LineData( const Coordinate& na, const Coordinate& nb ) : a( na ), b( nb ) {};
 };
@@ -86,15 +87,15 @@ Coordinate calcIntersectionPoint( const LineData& l, const LineData& m );
  * this calcs the intersection points of the circle with center c and
  * radius sqrt( r ), and the line l.  As a circle and a
  * line have two intersection points, side tells us which one we
- * need...  If the line and the circle have no intersection, valid is
- * set to false, otherwise to true...
+ * need...  It should be 1 or -1.  If the line and the circle have no
+ * intersection, valid is set to false, otherwise to true...
  * Note that sqr is the _square_ of the radius.  We do this to avoid
  * rounding errors...
  */
 const Coordinate calcCircleLineIntersect( const Coordinate& c,
                                           const double sqr,
                                           const LineData& l,
-                                          bool side,
+                                          int side,
                                           bool& valid );
 
 /**
@@ -145,19 +146,19 @@ const Coordinate calcMirrorPoint( const LineData& l,
  * is o on the line defined by point a and point b ?
  * fault is the allowed difference...
  */
-bool isOnLine( const Coordinate o, const Coordinate a,
-               const Coordinate b, const double fault );
+bool isOnLine( const Coordinate& o, const Coordinate& a,
+               const Coordinate& b, const double fault );
 
 /**
  * is o on the segment defined by point a and point b ?
  * this calls isOnLine(), but also checks if o is "between" a and b...
  * fault is the allowed difference...
  */
-bool isOnSegment( const Coordinate o, const Coordinate a,
-                  const Coordinate b, const double fault );
+bool isOnSegment( const Coordinate& o, const Coordinate& a,
+                  const Coordinate& b, const double fault );
 
-bool isOnRay( const Coordinate o, const Coordinate a,
-              const Coordinate b, const double fault );
+bool isOnRay( const Coordinate& o, const Coordinate& a,
+              const Coordinate& b, const double fault );
 
 Coordinate calcCircleRadicalStartPoint( const Coordinate& ca,
                                         const Coordinate& cb,

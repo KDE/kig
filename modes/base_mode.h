@@ -43,6 +43,7 @@ class BaseMode
   void rightClicked( QMouseEvent*, KigWidget* );
   void mouseMoved( QMouseEvent* e, KigWidget* v );
 
+protected:
   void enableActions();
 protected:
 
@@ -57,8 +58,6 @@ protected:
 protected:
   BaseMode( KigDocument& );
   ~BaseMode();
-
-  void finish();
 };
 
 #endif

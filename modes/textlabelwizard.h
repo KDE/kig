@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef TEXTLABELWIZARD_H
-#define TEXTLABELWIZARD_H
+#ifndef KIG_MODES_TEXTLABELWIZARD_H
+#define KIG_MODES_TEXTLABELWIZARD_H
 
 #include "textlabelwizardbase.h"
 

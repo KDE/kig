@@ -27,7 +27,6 @@
 
 #include "../misc/objects.h"
 #include "../misc/rect.h"
-#include "../misc/types.h"
 
 class QWidget;
 class KURL;
@@ -42,6 +41,8 @@ class CoordinateSystem;
 class MacroWizardImpl;
 class KigView;
 class Object;
+class KigGUIAction;
+class GUIAction;
 class ScreenInfo;
 
 /**
@@ -72,8 +73,6 @@ public:
    * Destructor
    */
   virtual ~KigDocument();
-
-  static myvector<KigDocument*>& documents();
 
   KigView* mainWidget();
 
@@ -124,20 +123,22 @@ public:
   void delView(KigView*) { numViews--; };
 
   const Objects& objects() const { return mObjs;};
+  void setObjects( const Objects& os );
   const CoordinateSystem& coordinateSystem() const;
+  void setCoordinateSystem( CoordinateSystem* s );
   KigMode* mode() { return mMode; };
   void setMode( KigMode* );
   void runMode( KigMode* );
   void doneMode( KigMode* );
 
   // what objects are under point p
-  Objects whatAmIOn( const Coordinate& p, const ScreenInfo& si ) const;
+  Objects whatAmIOn( const Coordinate& p, const KigWidget& si ) const;
 
-  Objects whatIsInHere( const Rect& p );
+  Objects whatIsInHere( const Rect& p, const KigWidget& );
 
   // a rect containing most of the objects, which would be a fine
   // suggestion to mapt to the widget...
-  Rect suggestedRect();
+  Rect suggestedRect() const;
 
 signals: // these signals are for telling KigView it should do something...
   // emitted when we want to suggest a new size for the view (
@@ -158,12 +159,15 @@ public:
 protected:
   bool internalSaveAs();
 
+public:
   void _addObject( Object* inObject );
-  void _addObjects( Objects& o);
-  void _delObject(Object* inObject);
+  void _addObjects( const Objects& o);
+  void _delObject( Object* inObject );
 
+protected:
   void setupActions();
   void setupTypes();
+  void setupMacroTypes();
 
 protected:
   KigMode* mMode;
@@ -196,20 +200,24 @@ public:
   KAction* aConfigureTypes;
   KAction* aFullScreen;
   KAction* aFixedPoint;
-  myvector<KAction*> aActions;
-
-  KCommandHistory* history();
+  myvector<KigGUIAction*> aActions;
 
   /**
-   * These two are called by Object::addUserType(..., true ).. This is
-   * how the part is notified of new user Types being added..
-   * we also call it in our constructor with user == false for
-   * builtin types...
+   * the "token" keeps some objects that should be deleted, we only
+   * delete them after we replug the actionLists..  calling these
+   * functions should be done like:
+   * GUIUpdateToken t = doc->startGUIActionUpdate();
+   * doc->action[Added|Removed]( act, t );
+   * ...
+   * doc->endGUIActionUpdate( t );
    */
-  void addType( Type*, bool user = true );
-  void removeType( Type* );
+  typedef std::vector<KigGUIAction*> GUIUpdateToken;
+  GUIUpdateToken startGUIActionUpdate();
+  void actionAdded( GUIAction* a, GUIUpdateToken& t );
+  void actionRemoved( GUIAction* a, GUIUpdateToken& t );
+  void endGUIActionUpdate( GUIUpdateToken& t );
 
-  void removeAction( KAction* a );
+  KCommandHistory* history();
 
   void enableConstructActions( bool enabled );
 
@@ -234,7 +242,7 @@ protected:
    * not so different from an object itself ( uses KigPainter to draw
    * itself too...).
    */
-  CoordinateSystem* s;
+  CoordinateSystem* mcoordsystem;
 };
 
 #endif // KIGPART_H

@@ -48,7 +48,7 @@ QPoint ScreenInfo::toScreen( const Coordinate& p ) const
   t *= mqrect.width();
   t /= mkrect.width();
   // invert the y-axis: 0 is at the bottom !
-  return QPoint( t.x, mqrect.height() - t.y );
+  return QPoint( (int) t.x, mqrect.height() - (int) t.y );
 }
 
 QRect ScreenInfo::toScreen( const Rect& r ) const
@@ -86,7 +86,8 @@ void ScreenInfo::setViewRect( const QRect& r )
   mqrect = r;
 }
 
-double ScreenInfo::normalMiss() const
+double ScreenInfo::normalMiss( int width ) const
 {
-  return 3*pixelWidth();
+  int twidth = width == -1 ? 1 : width;
+  return (twidth+2)*pixelWidth();
 }

@@ -18,7 +18,6 @@
  USA
 **/
 
-
 #include "kig_part.h"
 #include "kig_part.moc"
 
@@ -28,32 +27,18 @@
 #include "kig_actions.h"
 
 #include "../modes/normal.h"
-#include "../objects/circle.h"
-#include "../objects/conic.h"
-#include "../objects/coniclines.h"
-#include "../objects/conicsextra.h"
-#include "../objects/cubic.h"
-#include "../objects/transform.h"
-#include "../objects/segment.h"
-#include "../objects/normalpoint.h"
-#include "../objects/midpoint.h"
-#include "../objects/line.h"
-#include "../objects/radicallines.h"
-#include "../objects/macro.h"
-#include "../objects/label.h"
-#include "../objects/intersection.h"
-#include "../objects/locus.h"
-#include "../objects/vector.h"
-#include "../objects/translatedpoint.h"
-#include "../objects/mirrorpoint.h"
-#include "../objects/ray.h"
-#include "../objects/coordproppoint.h"
-#include "../objects/rotatedpoint.h"
-#include "../objects/angle.h"
-#include "../misc/type.h"
+
+#include "../objects/object.h"
+#include "../objects/point_imp.h"
+
+#include "../misc/guiaction.h"
+#include "../misc/lists.h"
+#include "../misc/object_constructor.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/calcpaths.h"
 #include "../misc/objects.h"
+#include "../misc/builtin_stuff.h"
+
 #include "../filters/filter.h"
 
 #include <kparts/genericfactory.h>
@@ -79,6 +64,9 @@
 #endif
 
 #include <algorithm>
+#include <functional>
+
+using namespace std;
 
 // export this library...
 typedef KParts::GenericFactory<KigDocument> KigDocumentFactory;
@@ -95,10 +83,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   : KParts::ReadWritePart( parent, name ),
     mMode( 0 ),
     numViews(0),
-    s( new EuclideanCoords )
+    mcoordsystem( new EuclideanCoords )
 {
-  documents().push_back( this );
-
   // we need an instance
   setInstance( KigDocumentFactory::instance() );
 
@@ -127,6 +113,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   setModified (false);
 
   mMode = new NormalMode( *this );
+
+  GUIActionList::instance()->regDoc( this );
 }
 
 void KigDocument::setupActions()
@@ -141,7 +129,7 @@ void KigDocument::setupActions()
 
   tmp = l->loadIcon( "delete", KIcon::User);
   aDeleteObjects = new KAction(
-      i18n("Delete Objects"), "editdelete", Key_Delete, this,
+      i18n("&Delete Objects"), "editdelete", Key_Delete, this,
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
@@ -154,19 +142,19 @@ void KigDocument::setupActions()
   aCancelConstruction->setEnabled(false);
 
   aShowHidden = new KAction(
-    i18n("Unhide All"), 0, this, SLOT( showHidden() ),
+    i18n("Unhide &All"), 0, this, SLOT( showHidden() ),
     actionCollection(), "edit_unhide_all");
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
   tmp = l->loadIcon("gear", KIcon::Toolbar);
   aNewMacro = new KAction(
-    i18n("New Macro..."), tmp, 0, this, SLOT(newMacro()),
+    i18n("&New Macro..."), tmp, 0, this, SLOT(newMacro()),
     actionCollection(), "macro_action");
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction(
-    i18n("Types Manager"), 0, this, SLOT(editTypes()),
+    i18n("&Types Manager"), 0, this, SLOT(editTypes()),
     actionCollection(), "types_edit");
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
@@ -180,97 +168,41 @@ void KigDocument::setupActions()
   aFixedPoint = new AddFixedPointAction( this, tmp, actionCollection() );
 
   tmp = l->loadIcon( "new", KIcon::User );
-  (void) new TestAction( this, tmp, actionCollection() );
+  new TestAction( this, tmp, actionCollection() );
 };
 
 void KigDocument::setupTypes()
 {
-  if ( Object::types().empty() )
+  setupBuiltinStuff();
+  setupMacroTypes();
+  GUIActionList& l = *GUIActionList::instance();
+  for ( uint i = 0; i < l.actions().size(); ++i )
   {
-    Object::addBuiltinType( new TStdType<SegmentAB> );
-    Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
-    Object::addBuiltinType( new TStdType<ConicBAAP> );
-    Object::addBuiltinType( new TStdType<ConicBDFP> );
-    Object::addBuiltinType( new TStdType<RotatedPoint> );
-    Object::addBuiltinType( new TStdType<LineTTP> );
-    Object::addBuiltinType( new TStdType<LinePerpend> );
-    Object::addBuiltinType( new TStdType<LineParallel> );
-    Object::addBuiltinType( new TStdType<LineRadical> );
-    Object::addBuiltinType( new TMultiType<LineConicRadical> );
-    Object::addBuiltinType( new TStdType<PointTransform> );
-    Object::addBuiltinType( new TStdType<LineTransform> );
-    Object::addBuiltinType( new TStdType<SegmentTransform> );
-    Object::addBuiltinType( new TStdType<RayTransform> );
-    Object::addBuiltinType( new TStdType<CircleTransform> );
-    Object::addBuiltinType( new TStdType<ConicTransform> );
-    Object::addBuiltinType( new TStdType<CircleBCP> );
-    Object::addBuiltinType( new TStdType<CircleBTP> );
-    Object::addBuiltinType( new TStdType<EllipseBFFP> );
-    Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
-    Object::addBuiltinType( new TStdType<ConicB5P> );
-    Object::addBuiltinType( new TStdType<CubicB9P> );
-    Object::addBuiltinType( new TStdType<CubicNodeB6P> );
-    Object::addBuiltinType( new TStdType<CubicCuspB4P> );
-    Object::addBuiltinType( new TStdType<CubicTransform> );
-    Object::addBuiltinType( new TStdType<ParabolaBTP> );
-    Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
-    Object::addBuiltinType( new TStdType<MidPoint> );
-    Object::addBuiltinType( new TStdType<IntersectionPoint> );
-    Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
-    Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
-    Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
-    Object::addBuiltinType( new TStdType<TranslatedPoint> );
-    Object::addBuiltinType( new TStdType<MirrorPoint> );
-    Object::addBuiltinType( new TStdType<Locus> );
-    Object::addBuiltinType( new TStdType<Vector> );
-    Object::addBuiltinType( new TStdType<RayAB> );
-    Object::addBuiltinType( new TStdType<Angle> );
-    Object::addBuiltinType( new TStdType<LineDirectrix> );
-    Object::addBuiltinType( new TStdType<LinePolar> );
-    Object::addBuiltinType( new TStdType<PointPolar> );
-    Object::addBuiltinType( new TType<TextLabel> );
-    Object::addBuiltinType( new TType<NormalPoint> );
-    Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
-
-    // our saved macro types:
-    QStringList relFiles;
-    QStringList dataFiles =
-      KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
-                                        true, false, relFiles);
-    for ( QStringList::iterator file = dataFiles.begin();
-          file != dataFiles.end();
-          ++file )
-    {
-      kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
-      Types t ( *file);
-      Object::addUserTypes( t, false );
-    }
+    KigGUIAction* ret = new KigGUIAction( l.actions()[i], *this, actionCollection() );
+    aActions.push_back( ret );
+    ret->plug( this );
   };
-  typedef myvector<Type*> vect;
-  const vect& v = Object::builtinTypes();
-  for ( vect::const_iterator i = v.begin(); i != v.end(); ++i )
-    addType( *i, false );
-  const vect& w = Object::userTypes();
-  for ( vect::const_iterator i = w.begin(); i != w.end(); ++i )
-    addType( *i, true );
-
-  // hack: we need to plug the action lists _after_ the gui is
-  // built.. i can't find a better solution than this...
-  QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
+  // TODO
+//     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
 };
 
 KigDocument::~KigDocument()
 {
-  documents().remove( this );
+  GUIActionList::instance()->unregDoc( this );
 
+  // TODO: remove some time in the future..  doesn't really hurt, but
+  // well, it's not really necessary either..  However, I'm not going
+  // to remove this in the next release yet, since it would cause
+  // duplication of macro types combined with the changing to use
+  // macro.kigt instead of macro files named after the macro they
+  // contain..
   // remove old types:
   QStringList relFiles;
   QStringList dataFiles =
     KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
                                         true, false, relFiles);
   for ( QStringList::iterator file = dataFiles.begin();
-        file != dataFiles.end();
-        ++file )
+        file != dataFiles.end(); ++file )
   {
     QFile f( *file );
     kdDebug() << "removing: " << *file << endl;
@@ -281,12 +213,26 @@ KigDocument::~KigDocument()
   QString typesDir = KGlobal::dirs()->saveLocation("appdata", "kig-types");
   if (typesDir[typesDir.length() - 1] != '/') typesDir += '/';
   kdDebug() << k_funcinfo << " : saving types to: " << typesDir << endl;
-  Object::types().saveToDir(typesDir);
-  delete_all( mObjs.begin(), mObjs.end() );
+  MacroList* macrolist = MacroList::instance();
+  macrolist->save( macrolist->macros(), typesDir + "macros.kigt" );
+
+  //  this leads to crashes, cause sometimes an object deletes its
+  //  parents, and we try to delete it a second time..
+  // delete_all( mObjs.begin(), mObjs.end() );
+  while ( ! mObjs.empty() )
+  {
+    Object* o = mObjs.back();
+    mObjs.erase( mObjs.end() - 1 );
+    delete o;
+  };
+
   mObjs.clear();
 
+  delete_all( aActions.begin(), aActions.end() );
+  aActions.clear();
+
   // cleanup
-  delete s;
+  delete mcoordsystem;
   delete mMode;
 }
 
@@ -316,37 +262,28 @@ bool KigDocument::openFile()
         );
     return false;
   };
-  Objects os;
-  if ( filter->load (m_file, os) != KigFilter::OK )
+  if ( filter->load (m_file, *this) != KigFilter::OK )
   {
-    delete_all( os.begin(), os.end() );
-    os.clear();
     KMessageBox::sorry( widget(), i18n(
         "The file you tried to open contains some elements that Kig currently "
         "doesn't understand.  It is possible that the file somehow got "
         "corrupted and is no longer usable.  If you know that the file is "
         "valid, and you think Kig should be able to open it, you can try to "
-        "send me a copy of the file and ask me nicely to check it out.  If "
-        "you want more certain results, you can always do the work yourself "
-        "( since Kig is Free Software ), and send me a patch."
+        "send me a copy of the file and ask me to check it out.  If you want "
+        "more certain results, you can always do the work yourself ( since Kig "
+        "is Free Software ), and send me a patch."
                             ) );
     return false;
   };
 
-  delete_all( mObjs.begin(), mObjs.end() );
-  mObjs.clear();
-  mObjs = os;
   setModified(false);
   mhistory->clear();
 
-  Objects tmp = calcPath( os );
-  tmp.calc();
+  Objects tmp = calcPath( mObjs );
+  tmp.calc( *this );
   emit recenterScreen();
-  // we do it again to avoid problems with points on locuses and such,
-  // for which the size of the current screen matters..
-  tmp.calcForWidget( *m_widget->realWidget() );
-  emit recenterScreen();
-  tmp.calcForWidget( *m_widget->realWidget() );
+
+  mainWidget()->realWidget()->redrawScreen();
 
   return true;
 }
@@ -376,7 +313,7 @@ bool KigDocument::saveFile()
     return false;
   };
 
-  KigFilter::Result result = filter->save( mObjs, m_file );
+  KigFilter::Result result = filter->save( *this, m_file );
   if ( result == KigFilter::OK )
   {
     setModified ( false );
@@ -423,7 +360,6 @@ void KigDocument::addObjects( const Objects& os )
 
 void KigDocument::_addObject( Object* o )
 {
-  Q_ASSERT (o != 0);
   mObjs.push_back( o );
   setModified(true);
 };
@@ -439,55 +375,54 @@ void KigDocument::delObject(Object* o)
 void KigDocument::_delObject(Object* o)
 {
   mObjs.remove( o );
-  o->setSelected(false);
+  o->setSelected( false );
   setModified(true);
 };
 
-Objects KigDocument::whatAmIOn(const Coordinate& p, const ScreenInfo& si ) const
+Objects KigDocument::whatAmIOn(const Coordinate& p, const KigWidget& w ) const
 {
   Objects tmp;
   Objects nonpoints;
   for ( Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if(!(*i)->contains(p, si) || !(*i)->shown() || !(*i)->valid()) continue;
-    if ( (*i)->toPoint()) tmp.push_back(*i);
+    if(!(*i)->contains(p, w) || !(*i)->shown() || !(*i)->valid()) continue;
+    if ( (*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
     else nonpoints.push_back( *i );
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
   return tmp;
 }
 
-Objects KigDocument::whatIsInHere( const Rect& p )
+Objects KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
 {
   Objects tmp;
   Objects nonpoints;
   for ( Objects::iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if(! (*i)->inRect( p ) || !(*i)->shown() || ! (*i)->valid() ) continue;
-    if ((*i)->toPoint()) tmp.push_back(*i);
-    else nonpoints.push_back(*i);
+    if(! (*i)->inRect( p, w ) || !(*i)->shown() || ! (*i)->valid() ) continue;
+    if ((*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
+    else nonpoints.push_back( *i );
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
   return tmp;
 };
 
-Rect KigDocument::suggestedRect()
+Rect KigDocument::suggestedRect() const
 {
-  if( mObjs.empty() ) return Rect( -7, -7, 7, 7 );
+  if( mObjs.empty() ) return Rect( -6., -6., 12., 12. );
   bool rectInited = false;
-  Rect r(0,0,0,0);
-  Point* p;
+  Rect r(0.,0.,0.,0.);
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if ((p = (*i)->toPoint()) && p->shown() && p->valid())
+    if ( (*i)->shown() && (*i)->hasimp( ObjectImp::ID_PointImp ) )
     {
       if( !rectInited )
       {
-        r.setCenter( p->getCoord() );
+        r.setCenter( static_cast<const PointImp*>( (*i)->imp() )->coordinate() );
         rectInited = true;
       }
       else
-        r.setContains(p->getCoord());
+        r.setContains( static_cast<const PointImp*>( (*i)->imp() )->coordinate() );
     };
   };
   r.setContains( Coordinate( 0, 0 ) );
@@ -502,8 +437,8 @@ Rect KigDocument::suggestedRect()
 
 const CoordinateSystem& KigDocument::coordinateSystem() const
 {
-  assert( s );
-  return *s;
+  assert( mcoordsystem );
+  return *mcoordsystem;
 }
 
 void KigDocument::setMode( KigMode* m )
@@ -511,9 +446,9 @@ void KigDocument::setMode( KigMode* m )
   mMode = m;
   m->enableActions();
 }
-void KigDocument::_addObjects( Objects& o)
+void KigDocument::_addObjects( const Objects& o)
 {
-  for( Objects::iterator i = o.begin(); i != o.end(); ++i )
+  for( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
     _addObject( *i );
 }
 
@@ -559,79 +494,24 @@ KCommandHistory* KigDocument::history()
 
 void KigDocument::delObjects( const Objects& os )
 {
-  Objects dos;
-  dos = os;
+  Objects tos;
+  tos = os;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-    dos.upush( (*i)->getAllChildren() );
+    tos.upush( (*i)->getAllChildren() );
+  Objects dos = os;
+  for ( Objects::iterator i = tos.begin(); i != tos.end(); ++i )
+    if ( mObjs.contains( *i ) )
+      dos.upush( *i );
   if ( dos.empty() ) return;
   mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
 }
 
-void KigDocument::addType( Type* t, bool user )
-{
-  KAction* a = t->constructAction( this );
-  if ( ! a ) return;
-  if ( user )
-  {
-    aMNewAll.append( a );
-    if (t->baseTypeName() == Point::sBaseTypeName())
-      aMNewPoint.append( a );
-    else if (t->baseTypeName() == Line::sBaseTypeName())
-      aMNewLine.append( a );
-    else if (t->baseTypeName() == Circle::sBaseTypeName())
-      aMNewCircle.append( a );
-    else if (t->baseTypeName() == Conic::sBaseTypeName())
-      aMNewConic.append( a );
-    else if (t->baseTypeName() == Segment::sBaseTypeName())
-      aMNewSegment.append( a );
-    else
-      aMNewOther.append( a );
-  };
-
-  aActions.push_back( a );
-}
-
-// grr.. stupid QPtrList.. yay for the STL..
-void setEnabled( QPtrList<KAction>& l, bool e )
-{
-  for ( KAction* a = l.first(); a; a = l.next() )
-  {
-    a->setEnabled( e );
-  };
-};
-
 void KigDocument::enableConstructActions( bool enabled )
 {
-  std::for_each( aActions.begin(), aActions.end(),
-                 std::bind2nd( std::mem_fun( &KAction::setEnabled ),
-                               enabled ) );
+  for_each( aActions.begin(), aActions.end(),
+            bind2nd( mem_fun( &KAction::setEnabled ),
+                     enabled ) );
   aFixedPoint->setEnabled( enabled );
-
-  setEnabled( aMNewConic, enabled );
-  setEnabled( aMNewSegment, enabled );
-  setEnabled( aMNewPoint, enabled );
-  setEnabled( aMNewCircle, enabled );
-  setEnabled( aMNewLine, enabled );
-  setEnabled( aMNewOther, enabled );
-  setEnabled( aMNewAll, enabled );
-}
-
-myvector<KigDocument*>& KigDocument::documents()
-{
-  static myvector<KigDocument*> vect;
-  return vect;
-}
-
-void KigDocument::removeAction( KAction* a )
-{
-  aMNewSegment.remove( a );
-  aMNewConic.remove( a );
-  aMNewPoint.remove( a );
-  aMNewCircle.remove( a );
-  aMNewLine.remove( a );
-  aMNewOther.remove( a );
-  aMNewAll.remove( a );
-  aActions.remove( a );
 }
 
 void KigDocument::unplugActionLists()
@@ -724,4 +604,82 @@ void KigDocument::doneMode( KigMode* d )
 #else
   kapp->exit_loop();
 #endif
+}
+
+void KigDocument::setObjects( const Objects& os )
+{
+  assert( mObjs.empty() );
+  mObjs = os;
+}
+
+void KigDocument::setCoordinateSystem( CoordinateSystem* cs )
+{
+  delete mcoordsystem;
+  mcoordsystem = cs;
+}
+
+void KigDocument::actionRemoved( GUIAction* a, GUIUpdateToken& t )
+{
+  KigGUIAction* rem = 0;
+  for ( myvector<KigGUIAction*>::iterator i = aActions.begin(); i != aActions.end(); ++i )
+  {
+    if ( (*i)->guiAction() == a ) rem = *i;
+  };
+  assert( rem );
+  aActions.remove( rem );
+  aMNewSegment.remove( rem );
+  aMNewConic.remove( rem );
+  aMNewPoint.remove( rem );
+  aMNewCircle.remove( rem );
+  aMNewLine.remove( rem );
+  aMNewOther.remove( rem );
+  aMNewAll.remove( rem );
+  t.push_back( rem );
+}
+
+void KigDocument::actionAdded( GUIAction* a, GUIUpdateToken& )
+{
+  KigGUIAction* ret = new KigGUIAction( a, *this, actionCollection() );
+  aActions.push_back( ret );
+  ret->plug( this );
+}
+
+void KigDocument::endGUIActionUpdate( GUIUpdateToken& t )
+{
+  unplugActionLists();
+  plugActionLists();
+  delete_all( t.begin(), t.end() );
+  t.clear();
+}
+
+KigDocument::GUIUpdateToken KigDocument::startGUIActionUpdate()
+{
+  return GUIUpdateToken();
+}
+
+void KigDocument::setupMacroTypes()
+{
+  static bool alreadysetup = false;
+  if ( ! alreadysetup )
+  {
+    alreadysetup = true;
+    // our saved macro types:
+    QStringList dataFiles =
+      KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
+                                        true, false );
+    myvector<Macro*> macros;
+    for ( QStringList::iterator file = dataFiles.begin();
+          file != dataFiles.end(); ++file )
+    {
+      myvector<Macro*> nmacros;
+      kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
+      bool ok = MacroList::instance()->load( *file, nmacros, *this );
+      if ( ! ok ) continue;
+      copy( nmacros.begin(), nmacros.end(), back_inserter( macros ) );
+    }
+    MacroList::instance()->add( macros );
+  };
+  // hack: we need to plug the action lists _after_ the gui is
+  // built.. i can't find a better solution than this...
+  QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
 }

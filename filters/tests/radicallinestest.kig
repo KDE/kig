@@ -1,0 +1,102 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="0.3.0" >
+ <ObjectHierarchy>
+  <HierarchyElement given="false" typeName="NormalPoint" id="1" final="true" >
+   <param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-3.43396</param>
+   <param name="y" >1.54088</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="2" final="true" >
+   <param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-1.10063</param>
+   <param name="y" >1.98113</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="CircleBCP" id="3" final="true" >
+   <parent id="1" />
+   <parent id="2" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="4" final="true" >
+   <param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-0.0880503</param>
+   <param name="y" >-0.748428</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="5" final="true" >
+   <param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-2.28931</param>
+   <param name="y" >0.968553</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="6" final="true" >
+   <param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >-0.836478</param>
+   <param name="y" >4.35849</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="CircleBTP" id="7" final="true" >
+   <parent id="4" />
+   <parent id="5" />
+   <parent id="6" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineConicRadical" id="8" final="true" >
+   <parent id="3" />
+   <parent id="7" />
+   <param name="color" >#0000ff</param>
+   <param name="lineconicradical-branch" >1</param>
+   <param name="lineconicradical-zero" >1</param>
+   <param name="shown" >true</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineConicRadical" id="9" final="true" >
+   <parent id="3" />
+   <parent id="7" />
+   <param name="color" >#0000ff</param>
+   <param name="lineconicradical-branch" >-1</param>
+   <param name="lineconicradical-zero" >1</param>
+   <param name="shown" >true</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="10" final="true" >
+   <param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >5.50314</param>
+   <param name="y" >-0.0440252</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="NormalPoint" id="11" final="true" >
+   <param name="color" >#0000ff</param>
+   <param name="implementation-type" >Fixed</param>
+   <param name="point-size" >5</param>
+   <param name="shown" >true</param>
+   <param name="x" >1.01258</param>
+   <param name="y" >1.80503</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="CircleBCP" id="12" final="true" >
+   <parent id="10" />
+   <parent id="11" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineRadical" id="13" final="true" >
+   <parent id="7" />
+   <parent id="12" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>
+  </HierarchyElement>
+ </ObjectHierarchy>
+</KigDocument>

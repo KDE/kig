@@ -23,7 +23,8 @@
 #include "typesdialog.moc"
 
 #include "../kig/kig_part.h"
-#include "../misc/type.h"
+#include "../misc/lists.h"
+#include "../misc/guiaction.h"
 #include "../objects/object.h"
 
 #include <kfiledialog.h>
@@ -35,19 +36,17 @@
 #include <qstringlist.h>
 
 #include <vector>
-#include <assert.h>
+#include <algorithm>
+using namespace std;
 
-/*
- * constructor
- */
-TypesDialog::TypesDialog( QWidget* parent )
-  : TypesDialogBase( parent, "Manage Types Dialog", true )
+TypesDialog::TypesDialog( QWidget* parent, const KigDocument& doc )
+  : TypesDialogBase( parent, "types_dialog", true ), mdoc( doc )
 {
-  typedef myvector<Type*> vec;
-  const vec& types = Object::userTypes();
-  for ( vec::const_iterator i = types.begin(); i != types.end(); ++i )
+  typedef MacroList::vectype vec;
+  const vec& macros = MacroList::instance()->macros();
+  for ( vec::const_iterator i = macros.begin(); i != macros.end(); ++i )
   {
-    typeList->insertItem( new TypeListElement( *i ) );
+    typeList->insertItem( new MacroListElement( *i ) );
   };
 }
 
@@ -68,12 +67,12 @@ void TypesDialog::okSlot()
 void TypesDialog::deleteType()
 {
   std::vector<QListBoxItem*> items;
-  std::vector<Type*> selectedTypes;
-  for (QListBoxItem* i = typeList->firstItem(); i; i = i->next())
+  std::vector<Macro*> selectedTypes;
+  for( QListBoxItem* i = typeList->firstItem(); i; i = i->next() )
   {
     if (i->isSelected())
     {
-      selectedTypes.push_back(static_cast<TypeListElement*>(i)->getType());
+      selectedTypes.push_back(static_cast<MacroListElement*>(i)->getMacro());
       items.push_back(i);
     };
   };
@@ -82,7 +81,7 @@ void TypesDialog::deleteType()
   {
     if (KMessageBox::warningContinueCancel
 	(this,
-	 i18n("Are you sure you want to delete the type named \"%1\"?").arg(selectedTypes.front()->descriptiveName()),
+	 i18n("Are you sure you want to delete the type named \"%1\"?").arg(selectedTypes.front()->action->descriptiveName()),
 	 i18n("Are you sure?"),
 	 i18n("Continue"),
 	 "deleteTypeWarning") ==KMessageBox::Cancel ) return;
@@ -100,57 +99,52 @@ void TypesDialog::deleteType()
     assert (appel != -1);
     typeList->removeItem(appel);
   };
-  for ( std::vector<Type*>::iterator i = selectedTypes.begin();
-        i != selectedTypes.end(); ++i)
-  {
-    Object::removeUserType(*i);
-    // we don't delete the type, because there might be objects around
-    // depending on the ObjectHierarchy of the type..
-    // what we do is to tell it to delete all actions it has defined,
-    // so it will seem to the user that the type is gone...
-    // TODO: a type MacroObjectHierarchy, which maintains a reference
-    // count of objects using it, and a bool telling it whether its
-    // type is still visible.  On saving we should also save any
-    // ObjectHierarchy's that are used...
-  };
+  for ( std::vector<Macro*>::iterator j = selectedTypes.begin();
+        j != selectedTypes.end(); ++j)
+    MacroList::instance()->remove( *j );
 };
 
-/*
- * protected slot
- */
 void TypesDialog::exportType()
 {
-  Types types;
+  myvector<Macro*> types;
   for (QListBoxItem* i = typeList->firstItem(); i; i = i->next())
   {
     if (i->isSelected())
-      types.addType(static_cast<TypeListElement*>(i)->getType());
+      types.push_back(static_cast<MacroListElement*>(i)->getMacro());
   };
   if (types.empty()) return;
   QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types files\n*"));
-  if ( ! file_name.isNull() ) types.saveToFile(file_name);
-  types.clear();
+  if ( !file_name.isNull() )
+    MacroList::instance()->save( types, file_name );
 };
 
-/*
- * protected slot
- */
 void TypesDialog::importTypes()
 {
   QStringList file_names =
-    KFileDialog::getOpenFileNames(":importTypes", "*.kigt", this, "Import Types");
+    KFileDialog::getOpenFileNames(":importTypes", i18n("*.kigt|Kig Types files\n*"), this, "Import Types");
+
+  myvector<Macro*> macros;
+
   for ( QStringList::Iterator i = file_names.begin();
         i != file_names.end(); ++i)
   {
-    Types t( *i );
-    for (Types::iterator i = t.begin(); i != t.end(); ++i)
-      typeList->insertItem(new TypeListElement(i->second));
-    Object::addUserTypes(t);
+    myvector<Macro*> nmacros;
+    bool ok = MacroList::instance()->load( *i, nmacros, mdoc );
+    if ( ! ok )
+    {
+      KMessageBox::sorry( this, i18n( "Could not open macro file '%1'" ).arg( *i ) );
+      continue;
+    };
+    copy( nmacros.begin(), nmacros.end(), back_inserter( macros ) );
   };
+  MacroList::instance()->add( macros );
+
+  for ( uint i = 0; i < macros.size(); ++i )
+    typeList->insertItem( new MacroListElement( macros[i] ) );
 }
 
-TypeListElement::TypeListElement( Type* inType )
-  : QListBoxText( inType->descriptiveName() ),
-    type( inType )
+MacroListElement::MacroListElement( Macro* m )
+  : QListBoxText( m->action->descriptiveName() ),
+    macro( m )
 {
 };

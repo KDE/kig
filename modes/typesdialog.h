@@ -18,22 +18,22 @@
  USA
 **/
 
-#ifndef KIGTYPEEDITIMPL_H
-#define KIGTYPEEDITIMPL_H
+#ifndef KIG_MODES_TYPESDIALOG_H
+#define KIG_MODES_TYPESDIALOG_H
 
 #include "typesdialogbase.h"
 
 #include <klistbox.h>
 
-class Type;
+class Macro;
 
-class TypeListElement
+class MacroListElement
   : public QListBoxText
 {
-  Type* type;
+  Macro* macro;
 public:
-  TypeListElement(Type* inType);
-  Type* getType() { return type; };
+  MacroListElement( Macro* m );
+  Macro* getMacro() { return macro; };
 };
 
 class KigDocument;
@@ -42,8 +42,10 @@ class TypesDialog : public TypesDialogBase
 {
   Q_OBJECT
 
+  // necessary because some MacroList functions need it..
+  const KigDocument& mdoc;
 public:
-  TypesDialog( QWidget* parent );
+  TypesDialog( QWidget* parent, const KigDocument& );
   ~TypesDialog();
 
 public slots:
@@ -56,4 +58,4 @@ protected slots:
   void importTypes();
 };
 
-#endif // KIGTYPEEDITIMPL_H
+#endif

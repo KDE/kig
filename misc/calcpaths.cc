@@ -21,6 +21,10 @@
 #include "objects.h"
 #include "../objects/object.h"
 
+// these first two functions were written before i read stuff about
+// graph theory and algorithms, so i'm sure they're far from optimal.
+// However, they seem to work fine, and i don't think there's a real
+// need for optimisation here..
 Objects calcPath( const Objects& os )
 {
   // this is a little experiment of mine, i don't know if it is the
@@ -45,7 +49,7 @@ Objects calcPath( const Objects& os )
   {
     for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
     {
-      const Objects& o = (*i)->getChildren();
+      const Objects& o = (*i)->children();
       std::copy( o.begin(), o.end(), std::back_inserter( all ) );
       std::copy( o.begin(), o.end(), std::back_inserter( tmp2 ) );
     };
@@ -77,7 +81,7 @@ bool addBranch( const Objects& o, const Object* to, Objects& ret )
     }
     else
     {
-      if ( addBranch( (*i)->getChildren(), to, ret ) )
+      if ( addBranch( (*i)->children(), to, ret ) )
       {
         rb = true;
         ret.push_back( *i );
@@ -93,7 +97,7 @@ Objects calcPath( const Objects& from, const Object* to )
 
   for ( Objects::const_iterator i = from.begin(); i != from.end(); ++i )
   {
-    (void) addBranch( (*i)->getChildren(), to, all );
+    (void) addBranch( (*i)->children(), to, all );
   };
 
   Objects ret;
@@ -102,5 +106,60 @@ Objects calcPath( const Objects& from, const Object* to )
     if ( ! ret.contains( *i ) ) ret.push_back( *i );
   };
   std::reverse( ret.begin(), ret.end() );
+  return ret;
+};
+
+static bool visit( const Object* o, const Objects& from, Objects& ret )
+{
+  // this function returns true if the visited object depends on one
+  // of the objects in from.  If we encounter objects that are on the
+  // side of the tree path ( they do not depend on from themselves,
+  // but their direct children do ), then we add them to ret.
+  if ( from.contains( const_cast<Object*>( o ) ) ) return true;
+
+  std::vector<bool> deps( o->parents().size(), false );
+  bool somedepend = false;
+  bool alldepend = true;
+  for ( uint i = 0; i < o->parents().size(); ++i )
+  {
+    bool v = visit( o->parents()[i], from, ret );
+    somedepend |= v;
+    alldepend &= v;
+    deps[i] = v;
+  };
+  if ( somedepend && ! alldepend )
+  {
+    for ( uint i = 0; i < deps.size(); ++i )
+      if ( ! deps[i] )
+        ret.upush( o->parents()[i] );
+  };
+
+  return somedepend;
+};
+
+Objects sideOfTreePath( const Objects& from, const Object* to )
+{
+  Objects ret;
+  visit( to, from, ret );
+  return ret;
+};
+
+Objects getAllParents( const Objects& objs )
+{
+  using namespace std;
+  Objects ret( objs );
+  Objects::const_iterator begin = ret.begin();
+  Objects::const_iterator end = ret.end();
+  while ( begin != end )
+  {
+    Objects tmp;
+    for ( Objects::const_iterator i = begin; i != end; ++i )
+      tmp.upush( (*i)->parents() );
+
+    uint oldsize = ret.size();
+    ret |= tmp;
+    begin = ret.begin() + oldsize;
+    end = ret.end();
+  };
   return ret;
 };

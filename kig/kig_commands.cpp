@@ -18,26 +18,34 @@
  USA
 **/
 
-
 #include "kig_commands.h"
 #include "kig_commands.moc"
 
 #include "kig_part.h"
 
 #include "../modes/mode.h"
+#include "../objects/object_imp.h"
+
+static int countRealObjects( const Objects& os )
+{
+  int ret = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( !(*i)->isInternal() ) ++ret;
+  return ret;
+};
 
 AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand( inDoc,
-		inOs.size() == 1 ?
-		  i18n("Add a %1").arg(inOs.front()->vTBaseTypeName()) :
-		  i18n( "Add %1 objects" ).arg( os.size() ) ),
+		countRealObjects( inOs ) == 1 ?
+                ObjectImp::addAStatement( inOs.back()->imp()->id() ) :
+                i18n( "Add %1 objects" ).arg( countRealObjects( inOs ) ) ),
     undone(true),
     os (inOs)
 {
 }
 
 AddObjectsCommand::AddObjectsCommand( KigDocument* inDoc, Object* o )
-    : KigCommand ( inDoc, i18n( "Add a %1" ).arg( o->vTBaseTypeName() ) ),
+    : KigCommand ( inDoc, ObjectImp::addAStatement( o->imp()->id() ) ),
       undone( true )
 {
   os.push_back( o );
@@ -46,7 +54,10 @@ AddObjectsCommand::AddObjectsCommand( KigDocument* inDoc, Object* o )
 void AddObjectsCommand::execute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+  {
+    (*i)->calc( *document );
     document->_addObject(*i);
+  }
   undone = false;
   document->mode()->objectsAdded();
 };
@@ -54,33 +65,58 @@ void AddObjectsCommand::execute()
 void AddObjectsCommand::unexecute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+  {
     document->_delObject(*i);
+  };
   undone=true;
   document->mode()->objectsRemoved();
 };
 
+// this function is used by the AddObjectsCommand and
+// RemoveObjectsCommand destructors.  They have to delete the objects
+// they contain, but what this function adds is that they also delete
+// their parents if those are internal and have no more children.
+// Same goes for their deleted parents' parents etc.  This to avoid
+// KigDocument keeping useless DataObjects around after all their
+// children have been deleted..
+static void deleteObjectsAndDeadParents( Objects& os, KigDocument& d )
+{
+  while ( !os.empty() )
+  {
+    Objects tmp;
+    for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    {
+      d._delObject( *i );
+      Objects parents = (*i)->parents();
+      delete *i;
+      for ( Objects::iterator j = parents.begin(); j != parents.end(); ++j )
+        if ( (*j)->isInternal() && (*j)->children().empty() && ! os.contains( *j ) )
+          tmp.upush( *j );
+    };
+    os = tmp;
+  };
+};
+
 AddObjectsCommand::~AddObjectsCommand()
 {
-  if (undone) delete_all( os.begin(), os.end() );
+  if ( undone )
+  {
+    deleteObjectsAndDeadParents( os, *document );
+  };
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand(inDoc,
-	       inOs.size() == 1 ?
-   	         i18n("Remove a %1").arg(inOs.front()->vTBaseTypeName()) :
-	         i18n( "Remove %1 objects" ).arg( inOs.size()) ),
+	       countRealObjects( inOs ) == 1 ?
+               ObjectImp::removeAStatement( inOs.back()->imp()->id() ) :
+               i18n( "Remove %1 objects" ).arg( countRealObjects( inOs ) ) ),
     undone( false ),
     os( inOs )
 {
-  Objects tmp;
-  // we delete the children too
-  for (Objects::iterator i = os.begin(); i != os.end(); ++i )
-    tmp |= (*i)->getChildren();
-  os |= tmp;
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
-  : KigCommand( inDoc, i18n("Remove a %1").arg(o->vTBaseTypeName()) ),
+  : KigCommand( inDoc, ObjectImp::removeAStatement( o->imp()->id() ) ),
     undone( false )
 {
   os.push_back( o );
@@ -88,7 +124,10 @@ RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
 
 RemoveObjectsCommand::~RemoveObjectsCommand()
 {
-  if (!undone) delete_all(os.begin(), os.end() );
+  if (!undone)
+  {
+    deleteObjectsAndDeadParents( os, *document );
+  };
 }
 
 void RemoveObjectsCommand::execute()
@@ -96,10 +135,6 @@ void RemoveObjectsCommand::execute()
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
     document->_delObject(*i);
-    // the parents should let go of their children (quite a dramatic scene we have here :)
-    Objects appel = (*i)->getParents();
-    for (Objects::iterator j = appel.begin(); j != appel.end(); ++j )
-      (*j)->delChild(*i);
   };
   undone=false;
   document->mode()->objectsRemoved();
@@ -109,11 +144,8 @@ void RemoveObjectsCommand::unexecute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
+    (*i)->calc( *document );
     document->_addObject(*i);
-    // drama again: parents finding their lost children...
-    Objects appel = (*i)->getParents();
-    for (Objects::iterator j = appel.begin(); j != appel.end(); ++j )
-      (*j)->addChild(*i);
   };
   undone = true;
   document->mode()->objectsAdded();
@@ -121,10 +153,8 @@ void RemoveObjectsCommand::unexecute()
 
 void MoveCommand::execute()
 {
-
 }
 
 void MoveCommand::unexecute()
 {
-
 }

@@ -18,6 +18,11 @@
 
 #include "coordinate.h"
 
+#include <qglobal.h>
+#include <cmath>
+
+using namespace std;
+
 Coordinate Coordinate::fromQPoint( const QPoint& p )
 {
   return Coordinate( p.x(), p.y() );
@@ -144,11 +149,11 @@ const Coordinate Coordinate::normalize( double l ) const
 
 const Coordinate Coordinate::round() const
 {
-  return Coordinate( ::round( x ), ::round( y ) );
+  return Coordinate( qRound( x ), qRound( y ) );
 };
 
 QPoint Coordinate::toQPoint() const
 {
   Coordinate t = round();
-  return QPoint( t.x, t.y );
+  return QPoint( (int) t.x, (int) t.y );
 };

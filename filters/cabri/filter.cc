@@ -28,7 +28,6 @@
 #include <string>
 
 #include "../../objects/object.h"
-#include "../../misc/hierarchy.h"
 
 KigFilterCabri::KigFilterCabri()
 {
@@ -98,52 +97,53 @@ KigFilterCabri::ObjectData KigFilterCabri::readObject( QFile& f )
   return n;
 };
 
-KigFilter::Result KigFilterCabri::load( const QString from, Objects& os )
+KigFilter::Result KigFilterCabri::load( const QString /*from*/, Objects& /*os*/ )
 {
-  // NOT READY...
+//   // NOT READY...
+//   return NotSupported;
+
+//   std::vector<ObjectData> objs;
+//   QFile f( from );
+//   f.open( IO_ReadOnly );
+
+//   bool eof;
+
+//   QCString s = readLine( f, eof );
+//   QCString a = s.left( 21 );
+//   QCString b = s.mid( 22 );
+//   if( eof || ( a != "Figure CabriII vers. " ) || ( b != "DOS 1.0" && b != "MS-Windows 1.0" ) )
+//     return NotSupported;
+//   // next we have:
+//   // line 2: empty line
+//   // line 3: window dimensions -> we don't need/use that...
+//   // line 4: empty line
+//   // line 5 through 8: center point
+//   // line 9 through 12: axes
+//   // so we skip 11 lines...
+//   for( int i = 0; i != 11; ++i)
+//     (void) readLine( f, eof );
+
+//   // all Cabri files seem to at least have these center and axes...
+//   if( eof ) return NotSupported;
+
+//   // next, we get the objects we want...
+//   ObjectData o;
+//   // fetch the objects...
+//   while( ( o = readObject( f ) ) ) objs.push_back(o);
+//   // get the dependencies right...
+//   for( std::vector<ObjectData>::iterator i = objs.begin(); i != objs.end(); ++i )
+//   {
+//     for( std::vector<int>::iterator j = i->p.begin(); j != i->p.end(); ++j )
+//     {
+//       i->o->addChild( objs[*j].o );
+//     };
+//   };
+
+//   // commit the data
+//   for (std::vector<ObjectData>::iterator i = objs.begin(); i != objs.end(); ++i)
+//     os.upush(i->o);
+//   return OK;
   return NotSupported;
-
-  std::vector<ObjectData> objs;
-  QFile f( from );
-  f.open( IO_ReadOnly );
-
-  bool eof;
-
-  QCString s = readLine( f, eof );
-  QCString a = s.left( 21 );
-  QCString b = s.mid( 22 );
-  if( eof || ( a != "Figure CabriII vers. " ) || ( b != "DOS 1.0" && b != "MS-Windows 1.0" ) )
-    return NotSupported;
-  // next we have:
-  // line 2: empty line
-  // line 3: window dimensions -> we don't need/use that...
-  // line 4: empty line
-  // line 5 through 8: center point
-  // line 9 through 12: axes
-  // so we skip 11 lines...
-  for( int i = 0; i != 11; ++i)
-    (void) readLine( f, eof );
-
-  // all Cabri files seem to at least have these center and axes...
-  if( eof ) return NotSupported;
-
-  // next, we get the objects we want...
-  ObjectData o;
-  // fetch the objects...
-  while( ( o = readObject( f ) ) ) objs.push_back(o);
-  // get the dependencies right...
-  for( std::vector<ObjectData>::iterator i = objs.begin(); i != objs.end(); ++i )
-  {
-    for( std::vector<int>::iterator j = i->p.begin(); j != i->p.end(); ++j )
-    {
-      i->o->addChild( objs[*j].o );
-    };
-  };
-
-  // commit the data
-  for (std::vector<ObjectData>::iterator i = objs.begin(); i != objs.end(); ++i)
-    os.upush(i->o);
-  return OK;
 }
 
 

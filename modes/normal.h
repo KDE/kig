@@ -19,7 +19,7 @@
 #ifndef NORMAL_H
 #define NORMAL_H
 
-#include "mode.h"
+#include "base_mode.h"
 
 #include "../misc/objects.h"
 
@@ -28,22 +28,22 @@
 class Object;
 
 class NormalMode
-  : public KigMode
+  : public BaseMode
 {
 public:
   NormalMode( KigDocument& );
   ~NormalMode();
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void leftMouseMoved( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
-  void midClicked( QMouseEvent*, KigWidget* v );
-  void midMouseMoved( QMouseEvent*, KigWidget* );
-  void midReleased( QMouseEvent*, KigWidget* );
-  void rightClicked( QMouseEvent*, KigWidget* );
-  void rightMouseMoved( QMouseEvent*, KigWidget* );
-  void rightReleased( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent*, KigWidget* );
+protected:
+  virtual void dragRect( const QPoint& p, KigWidget& w );
+  virtual void dragObject( const Objects& os, const QPoint& pointClickedOn,
+                           KigWidget& w, bool ctrlOrShiftDown );
+  virtual void leftClickedObject( Object* o, const QPoint& p,
+                                  KigWidget& w, bool ctrlOrShiftDown );
+  virtual void midClicked( const QPoint& p, KigWidget& w );
+  virtual void rightClicked( const Objects& os, const QPoint& p, KigWidget& w );
+  virtual void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
 
+protected:
   /**
    * Objcects were added by a command in mDoc->history.
    */
@@ -61,6 +61,7 @@ public:
   void newMacro();
   void editTypes();
 
+public:
   void selectObject( Object* o );
   void selectObjects( Objects& os );
   void unselectObject( Object* o );
@@ -71,12 +72,6 @@ public:
 protected:
   // selected objects...
   Objects sos;
-
-  // objects clicked on...
-  Objects oco;
-
-  // point last clicked..
-  QPoint plc;
 };
 
 #endif

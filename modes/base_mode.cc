@@ -40,7 +40,7 @@ void BaseMode::leftClicked( QMouseEvent* e, KigWidget* v )
   v->updateWidget();
 
   mplc = e->pos();
-  moco = mdoc.whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
+  moco = mdoc.whatAmIOn( v->fromScreen( mplc ), *v );
 
   if( moco.empty() )
   {
@@ -84,7 +84,7 @@ void BaseMode::midClicked( QMouseEvent* e, KigWidget* v )
   v->updateWidget();
 
   mplc = e->pos();
-  moco = mdoc.whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
+  moco = mdoc.whatAmIOn( v->fromScreen( e->pos() ), *v );
 }
 
 void BaseMode::midReleased( QMouseEvent* e, KigWidget* v )
@@ -103,14 +103,14 @@ void BaseMode::rightClicked( QMouseEvent* e, KigWidget* w )
   w->setCursor( KCursor::arrowCursor() );
 
   mplc = e->pos();
-  moco = mdoc.whatAmIOn( w->fromScreen( mplc ), w->screenInfo() );
+  moco = mdoc.whatAmIOn( w->fromScreen( mplc ), *w );
 
   rightClicked( moco, mplc, *w );
 }
 
 void BaseMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
-  Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
+  Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
   mouseMoved( os, e->pos(), *w );
 }
 
@@ -120,18 +120,6 @@ void BaseMode::dragRect( const QPoint&, KigWidget& )
 
 void BaseMode::leftClickedObject( Object*, const QPoint&,
                                   KigWidget&, bool )
-{
-}
-
-void BaseMode::midClicked( const QPoint&, KigWidget& )
-{
-}
-
-void BaseMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
-{
-}
-
-void BaseMode::mouseMoved( const Objects&, const QPoint&, KigWidget& )
 {
 }
 

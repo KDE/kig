@@ -1,0 +1,391 @@
+// object_imp_factory.cc
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
+
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+// 02111-1307, USA.
+
+#include "object_imp_factory.h"
+
+#include "object_imp.h"
+#include "bogus_imp.h"
+#include "circle_imp.h"
+#include "conic_imp.h"
+#include "cubic_imp.h"
+#include "line_imp.h"
+#include "locus_imp.h"
+#include "other_imp.h"
+#include "point_imp.h"
+#include "text_imp.h"
+
+#include "../misc/coordinate.h"
+
+#include <qdom.h>
+
+const ObjectImpFactory* ObjectImpFactory::instance()
+{
+  static const ObjectImpFactory t;
+  return &t;
+}
+
+ObjectImpFactory::ObjectImpFactory()
+{
+}
+
+ObjectImpFactory::~ObjectImpFactory()
+{
+}
+
+static void addXYElements( const Coordinate& c, QDomElement& parent, QDomDocument& doc )
+{
+  QDomElement xe = doc.createElement( "x" );
+  xe.appendChild(
+    doc.createTextNode(
+      QString::number( c.x ) ) );
+  parent.appendChild( xe );
+  QDomElement ye = doc.createElement( "y" );
+  ye.appendChild(
+    doc.createTextNode(
+      QString::number( c.y ) ) );
+  parent.appendChild( ye );
+};
+
+static void addDoubleElement( const char* name, double d, QDomElement& parent, QDomDocument& doc )
+{
+  QDomElement e = doc.createElement( name );
+  e.appendChild( doc.createTextNode( QString::number( d ) ) );
+  parent.appendChild( e );
+};
+
+static void addCoordinateElement( const char* name, const Coordinate& d, QDomElement& p, QDomDocument& doc )
+{
+  QDomElement e = doc.createElement( name );
+  addXYElements( d, e, doc );
+  p.appendChild( e );
+};
+
+QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
+                                     QDomDocument& doc ) const
+{
+  if( d.inherits( ObjectImp::ID_IntImp ) )
+  {
+    parent.appendChild(
+      doc.createTextNode(
+        QString::number( static_cast<const IntImp&>( d ).data() ) ) );
+    return QString::fromLatin1( "int" );
+  }
+  else if ( d.inherits( ObjectImp::ID_DoubleImp ) )
+  {
+    parent.appendChild(
+      doc.createTextNode(
+        QString::number( static_cast<const DoubleImp&>( d ).data() ) ) );
+    return QString::fromLatin1( "double" );
+  }
+  else if( d.inherits( ObjectImp::ID_StringImp ) )
+  {
+    parent.appendChild(
+      doc.createTextNode(
+        static_cast<const StringImp&>( d ).data() ) );
+    return QString::fromLatin1( "string" );
+  }
+  else if( d.inherits( ObjectImp::ID_HierarchyImp ) )
+  {
+    static_cast<const HierarchyImp&>( d ).data().serialize( parent, doc );
+    return QString::fromLatin1( "hierarchy" );
+  }
+  else if( d.inherits( ObjectImp::ID_LineImp ) )
+  {
+    LineData l = static_cast<const AbstractLineImp&>( d ).data();
+    addCoordinateElement( "a", l.a, parent, doc );
+    addCoordinateElement( "b", l.b, parent, doc );
+    if( d.inherits( ObjectImp::ID_SegmentImp ) )
+      return QString::fromLatin1( "segment" );
+    else if( d.inherits( ObjectImp::ID_RayImp ) )
+      return QString::fromLatin1( "ray" );
+    else return QString::fromLatin1( "line" );
+  }
+  else if( d.inherits( ObjectImp::ID_PointImp ) )
+  {
+    addXYElements( static_cast<const PointImp&>( d ).coordinate(),
+                   parent, doc );
+    return QString::fromLatin1( "point" );
+  }
+  else if( d.inherits( ObjectImp::ID_TextImp ) )
+  {
+    QString text = static_cast<const TextImp&>( d ).text();
+    parent.appendChild(
+      doc.createTextNode( text ) );
+    return QString::fromLatin1( "text" );
+  }
+  else if( d.inherits( ObjectImp::ID_AngleImp ) )
+  {
+    addDoubleElement( "size", static_cast<const AngleImp&>( d ).size(), parent, doc );
+    return QString::fromLatin1( "angle" );
+  }
+  else if( d.inherits( ObjectImp::ID_VectorImp ) )
+  {
+    Coordinate dir = static_cast<const VectorImp&>( d ).dir();
+    addXYElements( dir, parent, doc );
+    return QString::fromLatin1( "vector" );
+  }
+  else if( d.inherits( ObjectImp::ID_LocusImp ) )
+  {
+    const LocusImp& locus = static_cast<const LocusImp&>( d );
+
+    // serialize the curve..
+    QDomElement curve = doc.createElement( "curve" );
+    const CurveImp& curveimp = *locus.curve();
+    QString type = serialize( curveimp, curve, doc );
+    curve.setAttribute( "type", type );
+    parent.appendChild( curve );
+
+    // serialize the hierarchy..
+    QDomElement hier = doc.createElement( "calculation" );
+    locus.hierarchy().serialize( hier, doc );
+    parent.appendChild( hier );
+
+    return QString::fromLatin1( "locus" );
+  }
+  else if( d.inherits( ObjectImp::ID_CircleImp ) )
+  {
+    const CircleImp& c = static_cast<const CircleImp&>( d );
+    addCoordinateElement( "center", c.center(), parent, doc );
+    addDoubleElement( "radius", c.radius(), parent, doc );
+    return QString::fromLatin1( "circle" );
+  }
+  else if( d.inherits( ObjectImp::ID_ConicImp ) )
+  {
+    const ConicPolarData data = static_cast<const ConicImp&>( d ).polarData();
+    addCoordinateElement( "focus1", data.focus1, parent, doc );
+    addDoubleElement( "pdimen", data.pdimen, parent, doc );
+    addDoubleElement( "ecostheta0", data.ecostheta0, parent, doc );
+    addDoubleElement( "esintheta0", data.esintheta0, parent, doc );
+    return QString::fromLatin1( "conic" );
+  }
+  else if( d.inherits( ObjectImp::ID_CubicImp ) )
+  {
+    const CubicCartesianData data = static_cast<const CubicImp&>( d ).data();
+    QDomElement coeffs = doc.createElement( "coefficients" );
+    addDoubleElement( "a000", data.coeffs[0], coeffs, doc );
+    addDoubleElement( "a001", data.coeffs[1], coeffs, doc );
+    addDoubleElement( "a002", data.coeffs[2], coeffs, doc );
+    addDoubleElement( "a011", data.coeffs[3], coeffs, doc );
+    addDoubleElement( "a012", data.coeffs[4], coeffs, doc );
+    addDoubleElement( "a022", data.coeffs[5], coeffs, doc );
+    addDoubleElement( "a111", data.coeffs[6], coeffs, doc );
+    addDoubleElement( "a112", data.coeffs[7], coeffs, doc );
+    addDoubleElement( "a122", data.coeffs[8], coeffs, doc );
+    addDoubleElement( "a222", data.coeffs[9], coeffs, doc );
+    parent.appendChild( coeffs );
+    return QString::fromLatin1( "cubic" );
+  }
+  assert( false );
+}
+
+static Coordinate readXYElements( const QDomElement& e, bool& ok )
+{
+  double x, y;
+  ok = true;
+  QDomElement xe = e.firstChild().toElement();
+  if ( xe.isNull() || xe.tagName() != "x" )
+    ok = false;
+  else x = xe.text().toDouble( &ok );
+  if ( ! ok ) return Coordinate();
+  QDomElement ye = xe.nextSibling().toElement();
+  if ( ye.isNull() || ye.tagName() != "y" ) ok = false;
+  else y = ye.text().toDouble( &ok );
+  if ( ! ok ) return Coordinate();
+  return Coordinate( x, y );
+};
+
+static Coordinate readCoordinateElement( QDomNode n, bool& ok,
+                                         const char* tagname )
+{
+  QDomElement e = n.toElement();
+  if ( e.isNull() || e.tagName() != tagname )
+  {
+    ok = false;
+    Coordinate ret;
+    return ret;
+  }
+  return readXYElements( e, ok );
+};
+
+static double readDoubleElement( QDomNode n, bool& ok,
+                                 const char* tagname )
+{
+  QDomElement e = n.toElement();
+  if ( e.isNull() || e.tagName() != tagname )
+  {
+    ok = false;
+    return 0.;
+  };
+  return e.text().toDouble( &ok );
+};
+
+ObjectImp* ObjectImpFactory::deserialize( const QString& type,
+                                          const QDomElement& parent ) const
+{
+  bool ok = true;
+  if ( type == "int" )
+  {
+    int ret = parent.text().toInt( &ok );
+    if ( ! ok ) return 0;
+    else return new IntImp( ret );
+  }
+  else if ( type == "double" )
+  {
+    double ret = parent.text().toDouble( &ok );
+    if ( ! ok ) return 0;
+    else return new DoubleImp( ret );
+  }
+  else if ( type == "string" )
+  {
+    return new StringImp( parent.text() );
+  }
+  else if ( type == "hierarchy" )
+  {
+    return new HierarchyImp( ObjectHierarchy( parent ) );
+  }
+  else if ( type == "point" )
+  {
+    Coordinate ret = readXYElements( parent, ok );
+    if ( ! ok ) return 0;
+    else return new PointImp( ret );
+  }
+  else if ( type == "line" || type == "segment" || type == "ray" )
+  {
+    QDomNode n = parent.firstChild();
+    Coordinate a = readCoordinateElement( n, ok, "a" );
+    if ( !ok ) return 0;
+    n = n.nextSibling();
+    Coordinate b = readCoordinateElement( n, ok, "b" );
+    if ( ! ok ) return 0;
+    if ( type == "line" ) return new LineImp( a, b );
+    else if ( type == "segment" ) return new SegmentImp( a, b );
+    else return new RayImp( a, b );
+  }
+  else if( type == "angle" )
+  {
+    double size = readDoubleElement( parent.firstChild(), ok, "size" );
+    if ( ! ok ) return 0;
+    return new AngleImp( Coordinate(), 0, size );
+  }
+  else if( type == "vector" )
+  {
+    Coordinate dir = readXYElements( parent, ok );
+    if ( ! ok ) return 0;
+    else return new VectorImp( Coordinate(), dir );
+  }
+  else if( type == "locus" )
+  {
+    QDomElement curvee = parent.firstChild().toElement();
+    if ( curvee.isNull() || curvee.tagName() != "curve" ) return 0;
+    QString type = curvee.attribute( "type" );
+    ObjectImp* oi = deserialize( type, curvee );
+    if ( ! oi || ! oi->inherits( ObjectImp::ID_CurveImp ) ) return 0;
+    //CurveImp* curvei = static_cast<CurveImp*>( oi );
+
+    QDomElement hiere = curvee.nextSibling().toElement();
+    if ( hiere.isNull() || hiere.tagName() != "calculation" ) return 0;
+    assert( false );    // TODO
+//    return new LocusImp( curvei, hier );
+  }
+  else if( type == "circle" )
+  {
+    QDomNode n = parent.firstChild();
+    Coordinate center = readCoordinateElement( n, ok, "center" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double radius = readDoubleElement( n, ok, "radius" );
+    if ( ! ok ) return 0;
+
+    return new CircleImp( center, radius );
+  }
+  else if( type == "conic" )
+  {
+    QDomNode n = parent.firstChild();
+    Coordinate focus1 = readCoordinateElement( n, ok, "focus1" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double pdimen = readDoubleElement( n, ok, "pdimen" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double ecostheta0 = readDoubleElement( n, ok, "ecostheta0" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double esintheta0 = readDoubleElement( n, ok, "esintheta0" );
+    if ( ! ok ) return 0;
+
+    return new ConicImpPolar(
+      ConicPolarData( focus1, pdimen, ecostheta0, esintheta0 ) );
+  }
+  else if( type == "cubic" )
+  {
+    QDomElement coeffse = parent.firstChild().toElement();
+    if ( coeffse.isNull() || coeffse.tagName() != "coefficients" )
+      return 0;
+
+    QDomNode n = coeffse.firstChild();
+    double a000 = readDoubleElement( n, ok, "a000" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a001 = readDoubleElement( n, ok, "a001" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a002 = readDoubleElement( n, ok, "a002" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a011 = readDoubleElement( n, ok, "a011" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a012 = readDoubleElement( n, ok, "a012" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a022 = readDoubleElement( n, ok, "a022" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a111 = readDoubleElement( n, ok, "a111" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a112 = readDoubleElement( n, ok, "a112" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a122 = readDoubleElement( n, ok, "a112" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a222 = readDoubleElement( n, ok, "a222" );
+    if ( ! ok ) return 0;
+
+    return new CubicImp( CubicCartesianData( a000, a001, a002,
+                                             a011, a012, a022,
+                                             a111, a112, a122,
+                                             a222 ) );
+  }
+  assert( false );
+}
+

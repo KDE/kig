@@ -19,211 +19,205 @@
  USA
 **/
 
-#include "../objects/point.h"
-#include "../objects/line.h"
-#include "../objects/vector.h"
-#include "../objects/ray.h"
-#include "../objects/angle.h"
-#include "../objects/circle.h"
-#include "../objects/segment.h"
 #include "kigtransform.h"
+
 #include "kignumerics.h"
 #include "i18n.h"
+#include "common.h"
 
 #include <cmath>
-#include "../objects/object.h"
 
-Transformation getProjectiveTransformation ( int argsnum,
-    Object *transforms[], bool& valid )
-{
-  valid = true;
+// Transformation getProjectiveTransformation ( int argsnum,
+//     Object *transforms[], bool& valid )
+// {
+//   valid = true;
 
-  assert ( argsnum > 0 );
-  int argn = 0;
-  Object* transform = transforms[argn++];
-  if (transform->toVector())
-  {
-    // translation
-    assert (argn == argsnum);
-    Vector* v = transform->toVector();
-    Coordinate dir = v->getDir();
-    return Transformation::translation( dir );
-  }
+//   assert ( argsnum > 0 );
+//   int argn = 0;
+//   Object* transform = transforms[argn++];
+//   if (transform->toVector())
+//   {
+//     // translation
+//     assert (argn == argsnum);
+//     Vector* v = transform->toVector();
+//     Coordinate dir = v->getDir();
+//     return Transformation::translation( dir );
+//   }
 
-  if (transform->toPoint())
-  {
-    // point reflection ( or is point symmetry the correct term ? )
-    assert (argn == argsnum);
-    Point* p = transform->toPoint();
-    return Transformation::pointReflection( p->getCoord() );
-  }
+//   if (transform->toPoint())
+//   {
+//     // point reflection ( or is point symmetry the correct term ? )
+//     assert (argn == argsnum);
+//     Point* p = transform->toPoint();
+//     return Transformation::pointReflection( p->getCoord() );
+//   }
 
-  if (transform->toLine())
-  {
-    // line reflection ( or is it line symmetry ? )
-    Line* line = transform->toLine();
-    assert (argn == argsnum);
-    return Transformation::lineReflection( line->lineData() );
-  }
+//   if (transform->toLine())
+//   {
+//     // line reflection ( or is it line symmetry ? )
+//     Line* line = transform->toLine();
+//     assert (argn == argsnum);
+//     return Transformation::lineReflection( line->lineData() );
+//   }
 
-  if (transform->toRay())
-  {
-    // domi: sorry, but what kind of transformation does this do ?
-    //       i'm guessing it's some sort of rotation, but i'm not
-    //       really sure..
-     Ray* line = transform->toRay();
-     Coordinate d = line->direction().normalize();
-     Coordinate t = line->p1();
-     double alpha = 0.1*M_PI/2;  // a small angle for the DrawPrelim
-     if (argn < argsnum)
-     {
-       Angle* angle = transforms[argn++]->toAngle();
-       alpha = angle->size();
-     }
-     assert (argn == argsnum);
-     return Transformation::projectiveRotation( alpha, d, t );
-  }
+//   if (transform->toRay())
+//   {
+//     // domi: sorry, but what kind of transformation does this do ?
+//     //       i'm guessing it's some sort of rotation, but i'm not
+//     //       really sure..
+//      Ray* line = transform->toRay();
+//      Coordinate d = line->direction().normalize();
+//      Coordinate t = line->p1();
+//      double alpha = 0.1*M_PI/2;  // a small angle for the DrawPrelim
+//      if (argn < argsnum)
+//      {
+//        Angle* angle = transforms[argn++]->toAngle();
+//        alpha = angle->size();
+//      }
+//      assert (argn == argsnum);
+//      return Transformation::projectiveRotation( alpha, d, t );
+//   }
 
-  if (transform->toAngle())
-  {
-    // rotation..
-    Coordinate center = Coordinate( 0., 0. );
-    if (argn < argsnum)
-    {
-      Object* arg = transforms[argn++];
-      assert (arg->toPoint());
-      center = arg->toPoint()->getCoord();
-    }
-    Angle* angle = transform->toAngle();
-    double alpha = angle->size();
+//   if (transform->toAngle())
+//   {
+//     // rotation..
+//     Coordinate center = Coordinate( 0., 0. );
+//     if (argn < argsnum)
+//     {
+//       Object* arg = transforms[argn++];
+//       assert (arg->toPoint());
+//       center = arg->toPoint()->getCoord();
+//     }
+//     Angle* angle = transform->toAngle();
+//     double alpha = angle->size();
 
-    assert (argn == argsnum);
+//     assert (argn == argsnum);
 
-    return Transformation::rotation( alpha, center );
-  }
+//     return Transformation::rotation( alpha, center );
+//   }
 
-  if (transform->toSegment())  // this is a scaling
-  {
-    Segment* segment = transform->toSegment();
-    Coordinate p = segment->p2() - segment->p1();
-    double s = p.length();
-    if (argn < argsnum)
-    {
-      Object* arg = transforms[argn++];
-      if (arg->toSegment()) // s is the length of the first segment
-                            // divided by the length of the second..
-      {
-        Segment* segment = arg->toSegment();
-        Coordinate p = segment->p2() - segment->p1();
-        s /= p.length();
-        if (argn < argsnum) arg = transforms[argn++];
-      }
-      if (arg->toPoint())   // scaling w.r. to a point
-      {
-        Point* p = arg->toPoint();
-        assert (argn == argsnum);
-        return Transformation::scaling( s, p->getCoord() );
-      }
-      if (arg->toLine())  // scaling w.r. to a line
-      {
-        Line* line = arg->toLine();
-        assert( argn == argsnum );
-        return Transformation::scaling( s, line->lineData() );
-      }
-    }
+//   if (transform->toSegment())  // this is a scaling
+//   {
+//     Segment* segment = transform->toSegment();
+//     Coordinate p = segment->p2() - segment->p1();
+//     double s = p.length();
+//     if (argn < argsnum)
+//     {
+//       Object* arg = transforms[argn++];
+//       if (arg->toSegment()) // s is the length of the first segment
+//                             // divided by the length of the second..
+//       {
+//         Segment* segment = arg->toSegment();
+//         Coordinate p = segment->p2() - segment->p1();
+//         s /= p.length();
+//         if (argn < argsnum) arg = transforms[argn++];
+//       }
+//       if (arg->toPoint())   // scaling w.r. to a point
+//       {
+//         Point* p = arg->toPoint();
+//         assert (argn == argsnum);
+//         return Transformation::scaling( s, p->getCoord() );
+//       }
+//       if (arg->toLine())  // scaling w.r. to a line
+//       {
+//         Line* line = arg->toLine();
+//         assert( argn == argsnum );
+//         return Transformation::scaling( s, line->lineData() );
+//       }
+//     }
 
-    return Transformation::scaling( s, Coordinate( 0., 0. ) );
-  }
+//     return Transformation::scaling( s, Coordinate( 0., 0. ) );
+//   }
 
-  valid = false;
-  return Transformation::identity();
-}
+//   valid = false;
+//   return Transformation::identity();
+// }
 
-tWantArgsResult WantTransformation ( Objects::const_iterator& i,
-      const Objects& os )
-{
-  Object* o = *i++;
-  if (o->toVector()) return tComplete;
-  if (o->toPoint()) return tComplete;
-  if (o->toLine()) return tComplete;
-  if (o->toAngle())
-  {
-    if ( i == os.end() ) return tNotComplete;
-    o = *i++;
-    if (o->toPoint()) return tComplete;
-    if (o->toLine()) return tComplete;
-    return tNotGood;
-  }
-  if (o->toRay())
-  {
-    if ( i == os.end() ) return tNotComplete;
-    o = *i++;
-    if (o->toAngle()) return tComplete;
-    return tNotGood;
-  }
-  if (o->toSegment())
-  {
-    if ( i == os.end() ) return tNotComplete;
-    o = *i++;
-    if ( o->toSegment() )
-    {
-      if ( i == os.end() ) return tNotComplete;
-      o = *i++;
-    }
-    if (o->toPoint()) return tComplete;
-    if (o->toLine()) return tComplete;
-    return tNotGood;
-  }
-  return tNotGood;
-}
+// tWantArgsResult WantTransformation ( Objects::const_iterator& i,
+//       const Objects& os )
+// {
+//   Object* o = *i++;
+//   if (o->toVector()) return tComplete;
+//   if (o->toPoint()) return tComplete;
+//   if (o->toLine()) return tComplete;
+//   if (o->toAngle())
+//   {
+//     if ( i == os.end() ) return tNotComplete;
+//     o = *i++;
+//     if (o->toPoint()) return tComplete;
+//     if (o->toLine()) return tComplete;
+//     return tNotGood;
+//   }
+//   if (o->toRay())
+//   {
+//     if ( i == os.end() ) return tNotComplete;
+//     o = *i++;
+//     if (o->toAngle()) return tComplete;
+//     return tNotGood;
+//   }
+//   if (o->toSegment())
+//   {
+//     if ( i == os.end() ) return tNotComplete;
+//     o = *i++;
+//     if ( o->toSegment() )
+//     {
+//       if ( i == os.end() ) return tNotComplete;
+//       o = *i++;
+//     }
+//     if (o->toPoint()) return tComplete;
+//     if (o->toLine()) return tComplete;
+//     return tNotGood;
+//   }
+//   return tNotGood;
+// }
 
-QString getTransformMessage ( const Objects& os, const Object *o )
-{
-  int size = os.size();
-  switch (size)
-  {
-    case 1:
-    if (o->toVector()) return i18n("translate by this vector");
-    if (o->toPoint()) return i18n("central symmetry by this point. You"
-     " can obtain different transformations by clicking on lines (reflection),"
-     " vectors (translation), angles (rotation), segments (scaling) and rays"
-     " (projective transformation)");
-    if (o->toLine()) return i18n("reflect by this line");
-    if (o->toAngle()) return i18n("rotate by this angle");
-    if (o->toSegment()) return i18n("scale using the length of this vector");
-    if (o->toRay()) return i18n("a projective transformation in the direction"
-     " indicated by this ray, it is a rotation in the projective plane"
-     " about a point at infinity");
-    return i18n("Use this transformation");
+// QString getTransformMessage ( const Objects& os, const Object *o )
+// {
+//   int size = os.size();
+//   switch (size)
+//   {
+//     case 1:
+//     if (o->toVector()) return i18n("translate by this vector");
+//     if (o->toPoint()) return i18n("central symmetry by this point. You"
+//      " can obtain different transformations by clicking on lines (reflection),"
+//      " vectors (translation), angles (rotation), segments (scaling) and rays"
+//      " (projective transformation)");
+//     if (o->toLine()) return i18n("reflect by this line");
+//     if (o->toAngle()) return i18n("rotate by this angle");
+//     if (o->toSegment()) return i18n("scale using the length of this vector");
+//     if (o->toRay()) return i18n("a projective transformation in the direction"
+//      " indicated by this ray, it is a rotation in the projective plane"
+//      " about a point at infinity");
+//     return i18n("Use this transformation");
 
-    case 2:   // we ask for the first parameter of the transformation
-    case 3:
-    if (os[1]->toAngle())
-    {
-      if (o->toPoint()) return i18n("about this point");
-      assert (false);
-    }
-    if (os[1]->toSegment())
-    {
-      if (o->toSegment())
-        return i18n("relative to the length of this other vector");
-      if (o->toPoint())
-        return i18n("about this point");
-      if (o->toLine())
-        return i18n("about this line");
-    }
-    if (os[1]->toRay())
-    {
-      if (o->toAngle()) return i18n("rotate by this angle in the projective"
-       " plane");
-    }
-    return i18n("Using this object");
+//     case 2:   // we ask for the first parameter of the transformation
+//     case 3:
+//     if (os[1]->toAngle())
+//     {
+//       if (o->toPoint()) return i18n("about this point");
+//       assert (false);
+//     }
+//     if (os[1]->toSegment())
+//     {
+//       if (o->toSegment())
+//         return i18n("relative to the length of this other vector");
+//       if (o->toPoint())
+//         return i18n("about this point");
+//       if (o->toLine())
+//         return i18n("about this line");
+//     }
+//     if (os[1]->toRay())
+//     {
+//       if (o->toAngle()) return i18n("rotate by this angle in the projective"
+//        " plane");
+//     }
+//     return i18n("Using this object");
 
-    default: assert(false);
-  }
+//     default: assert(false);
+//   }
 
-  return i18n("Use this transformation");
-}
+//   return i18n("Use this transformation");
+// }
 
 
 /* domi: not necessary anymore, homotheticness is kept as a bool in
@@ -335,19 +329,57 @@ const Transformation Transformation::scaling( double factor, const LineData& l )
   return ret;
 }
 
+const Transformation Transformation::castShadow(
+  const Coordinate& lightsrc, const LineData& l )
+{
+  // first deal with the line l, I need to find an appropriate reflection
+  // that transforms l onto the x-axis
+
+  Coordinate d = l.dir();
+  Coordinate a = l.a;
+  double k = d.length();
+  if ( d.x < 0 ) k *= -1;         // for numerical stability
+  Coordinate w = d + Coordinate( k, 0 );
+  // w /= w.length();
+  // w defines a Householder transformation, but we don't need to normalize
+  // it here.
+  // warning: this w is the orthogonal of the w of the textbooks!
+  // this is fine for us since in this way it indicates the line direction
+  Coordinate ra = Coordinate ( a.x + w.y*a.y/(2*w.x), a.y/2 );
+  Transformation sym = lineReflection ( LineData( ra, ra + w ) );
+
+  // in the new coordinates the line is the x-axis
+  // I must transform the point
+
+  bool isvalid = true;
+  Coordinate modlightsrc = sym.apply ( lightsrc, isvalid ); 
+  Transformation ret = identity();
+  ret.mdata[0][0] =  2*modlightsrc.y;
+  ret.mdata[0][2] = -1;
+  ret.mdata[1][1] =  2*modlightsrc.y;
+  ret.mdata[1][2] = -modlightsrc.x;
+  ret.mdata[2][2] =  modlightsrc.y;
+
+  ret.mIsHomothety = false;
+  return sym*ret*sym;
+//  return translation( t )*ret*translation( -t );
+}
+
 const Transformation Transformation::projectiveRotation(
   double alpha, const Coordinate& d, const Coordinate& t )
 {
   Transformation ret;
-  ret.mdata[0][0] =  cos(alpha);
-  ret.mdata[1][1] =  cos(alpha)*d.x*d.x + d.y*d.y;
-  ret.mdata[0][1] = -sin(alpha)*d.x;
-  ret.mdata[1][0] =  sin(alpha)*d.x;
-  ret.mdata[0][2] = -sin(alpha)*d.y;
-  ret.mdata[2][0] =  sin(alpha)*d.y;
-  ret.mdata[1][2] =  cos(alpha)*d.x*d.y - d.x*d.y;
-  ret.mdata[2][1] =  cos(alpha)*d.x*d.y - d.x*d.y;
-  ret.mdata[2][2] =  cos(alpha)*d.y*d.y + d.x*d.x;
+  double cosalpha = cos( alpha );
+  double sinalpha = sin( alpha );
+  ret.mdata[0][0] =  cosalpha;
+  ret.mdata[1][1] =  cosalpha*d.x*d.x + d.y*d.y;
+  ret.mdata[0][1] = -sinalpha*d.x;
+  ret.mdata[1][0] =  sinalpha*d.x;
+  ret.mdata[0][2] = -sinalpha*d.y;
+  ret.mdata[2][0] =  sinalpha*d.y;
+  ret.mdata[1][2] =  cosalpha*d.x*d.y - d.x*d.y;
+  ret.mdata[2][1] =  cosalpha*d.x*d.y - d.x*d.y;
+  ret.mdata[2][2] =  cosalpha*d.y*d.y + d.x*d.x;
 
   ret.mIsHomothety = false;
   return translation( t )*ret*translation( -t );
@@ -384,9 +416,12 @@ const Transformation Transformation::rotation( double alpha, const Coordinate& c
   double x = center.x;
   double y = center.y;
 
-  ret.mdata[1][1] = ret.mdata[2][2] = cos(alpha);
-  ret.mdata[1][2] = -sin(alpha);
-  ret.mdata[2][1] = sin(alpha);
+  double cosalpha = cos( alpha );
+  double sinalpha = sin( alpha );
+
+  ret.mdata[1][1] = ret.mdata[2][2] = cosalpha;
+  ret.mdata[1][2] = -sinalpha;
+  ret.mdata[2][1] = sinalpha;
   ret.mdata[1][0] = x - ret.mdata[1][1]*x - ret.mdata[1][2]*y;
   ret.mdata[2][0] = y - ret.mdata[2][1]*x - ret.mdata[2][2]*y;
 
@@ -425,4 +460,12 @@ Transformation::Transformation()
 
 Transformation::~Transformation()
 {
+}
+
+double Transformation::apply( double length ) const
+{
+  assert( isHomothetic() );
+  double det = mdata[1][1]*mdata[2][2] -
+               mdata[1][2]*mdata[2][1];
+  return sqrt( fabs( det ) ) * length;
 }

@@ -39,7 +39,7 @@ KigFilter* KigFilters::find(const QString& mime)
 KigFilters::KigFilters()
 {
   mFilters.push_back( new KigFilterKGeo );
-  mFilters.push_back( new KigFilterCabri );
+//   mFilters.push_back( new KigFilterCabri );
   mFilters.push_back( new KigFilterNative );
 }
 
@@ -48,8 +48,21 @@ KigFilters* KigFilters::instance()
   return sThis ? sThis : ( sThis = new KigFilters() );
 }
 
-KigFilter::Result KigFilter::save( const Objects&, const QString )
+KigFilter::Result KigFilter::save( const KigDocument&, const QString& )
 {
   // most filters don't have saving...
   return NotSupported;
+}
+
+KigFilter::KigFilter()
+{
+}
+
+KigFilter::~KigFilter()
+{
+}
+
+bool KigFilter::supportMime( const QString& )
+{
+  return false;
 }

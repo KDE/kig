@@ -19,7 +19,7 @@
 #ifndef MACRO_H
 #define MACRO_H
 
-#include "mode.h"
+#include "base_mode.h"
 
 #include "../misc/objects.h"
 
@@ -28,18 +28,18 @@
 class MacroWizard;
 
 class DefineMacroMode
-  : public KigMode
+  : public BaseMode
 {
 public:
   DefineMacroMode( KigDocument& );
   ~DefineMacroMode();
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
-  void rightClicked( QMouseEvent*, KigWidget* );
-  void rightReleased( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent*, KigWidget* );
 
-  void enableActions();
+  void dragRect( const QPoint& p, KigWidget& w );
+  void leftClickedObject( Object* o, const QPoint& p,
+                          KigWidget& w, bool ctrlOrShiftDown );
+  void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
+  void midClicked( const QPoint& p, KigWidget& w );
+  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
 
   // called by MacroWizard class
   void givenPageEntered();
@@ -50,6 +50,7 @@ public:
   void macroNameChanged();
 
 protected:
+  void enableActions();
   // update the enabled state of the next buttons on the wizard...
   void updateNexts();
   // quit this mode...
@@ -59,7 +60,7 @@ protected:
   MacroWizard* mwizard;
 
   Objects mgiven;
-  Object* mfinal;
+  Objects mfinal;
 };
 
 #endif

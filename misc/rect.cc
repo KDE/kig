@@ -52,10 +52,10 @@ Rect::Rect( const Coordinate p, const double width, const double height )
   normalize();
 }
 
-Rect::Rect( int xa, int ya, int xb, int yb )
+Rect::Rect( double xa, double ya, double width, double height )
   : mBottomLeft( xa, ya ),
-    mwidth( xb - xa ),
-    mheight( yb - ya )
+    mwidth( width ),
+    mheight( height )
 {
   normalize();
 };
@@ -212,6 +212,14 @@ double Rect::height() const
   return mheight;
 }
 
+bool Rect::contains( const Coordinate& p, double allowed_miss ) const
+{
+  return p.x - left() >= - allowed_miss &&
+    p.y - bottom() >= - allowed_miss &&
+    p.x - left() - width() <= allowed_miss &&
+    p.y - bottom() - height() <= allowed_miss;
+}
+
 bool Rect::contains( const Coordinate& p ) const
 {
   return p.x >= left() &&
@@ -254,6 +262,7 @@ Rect Rect::fromQRect( const QRect& r )
 void Rect::setTopLeft( const Coordinate p )
 {
   Coordinate bl = Coordinate( p.x, p.y - mheight );
+  setBottomLeft( bl );
 }
 
 Rect operator|( const Rect& lhs, const Rect& rhs )
@@ -270,3 +279,5 @@ void Rect::eat( const Rect& r )
   setBottom( kigMin( bottom(), r.bottom() ) );
   setTop( kigMax( top(), r.top() ) );
 }
+
+

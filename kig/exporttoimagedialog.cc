@@ -25,6 +25,7 @@
 #include "../misc/i18n.h"
 #include "../misc/kigpainter.h"
 
+#include <qcheckbox.h>
 #include <knuminput.h>
 #include <kpushbutton.h>
 #include <kurlrequester.h>
@@ -91,8 +92,9 @@ void ExportToImageDialog::slotOKPressed()
 
   QPixmap img( QSize( WidthInput->value(), HeightInput->value() ) );
   img.fill( Qt::white );
-  KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img );
-  p.drawGrid( md->coordinateSystem() );
+  KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img, *md);
+  p.setWholeWinOverlay();
+  p.drawGrid( md->coordinateSystem(), showgridCheckBox->isOn(), showAxesCheckBox->isOn() );
   p.drawObjects( md->objects() );
   if ( ! img.save( filename, type.latin1() ) )
   {

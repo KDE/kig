@@ -31,6 +31,7 @@
 class Object;
 class KigFilter;
 class ScreenInfo;
+class KigDocument;
 
 class KigFilters
 {
@@ -48,18 +49,20 @@ protected:
 class KigFilter
 {
 public:
-  KigFilter() {};
-  virtual ~KigFilter() {};
+  KigFilter();
+  virtual ~KigFilter();
 
   typedef enum { OK, FileNotFound, ParseError, NotSupported } Result;
 
   // can the filter handle this mimetype ?
-  virtual bool supportMime ( const QString /*mime*/ ) { return false; };
+  virtual bool supportMime ( const QString& mime );
 
-  // load file file, fill up os.
-  virtual Result load ( const QString from, Objects& os ) = 0;
+  // load file fromfile..  ( don't forget to make this atomic, this
+  // means: only really change to's data when you're sure no error
+  // will occur in reading/parsing the file..
+  virtual Result load ( const QString& fromfile, KigDocument& to ) = 0;
 
   // ...
-  virtual Result save ( const Objects& os, const QString file );
+  virtual Result save ( const KigDocument& data, const QString& tofile );
 };
 #endif

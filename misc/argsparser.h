@@ -19,9 +19,9 @@
 #ifndef KIG_MISC_ARGSPARSER_H
 #define KIG_MISC_ARGSPARSER_H
 
-#include <map>
+#include <vector>
 
-class Objects;
+#include "../objects/common.h"
 
 class ArgsChecker
 {
@@ -43,18 +43,37 @@ class ArgParser
   : public ArgsChecker
 {
 public:
-  struct spec { int type; int number; };
+  struct spec { int type; const char* usetext; };
 private:
-  // the number of different types we are looking for..
-  int mndt;
-  // the total number of objects we're looking for..
-  int mwantedobjscount;
   // the args spec..
-  const struct spec* margs;
+  std::vector<spec> margs;
+  // sometimes a random object is requested: any type goes.  Those
+  // requests require some special treatment.  This vector holds the
+  // usetexts for those requests..
+  std::vector<const char*> manyobjsspec;
+
+  spec findSpec( const ObjectImp* o, const Args& parents ) const;
 public:
   ArgParser( const struct spec* args, int n );
+  ArgParser( const std::vector<spec>& args );
+  ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec );
+  // returns a new ArgParser that wants the same args, except for the
+  // ones of the given type..
+  ArgParser without( int type ) const;
+  // checks if os matches the argument list this parser should parse..
   int check( const Objects& os ) const;
+  int check( const Args& os ) const;
+  // returns the usetext for the argument that o would be used for,
+  // if sel.with( o ) were used as parents..
+  // o is not in sel.
+  const char* usetext( const ObjectImp* o, const Args& sel ) const;
+
+  // this reorders the objects or args so that they are in the same
+  // order as the requested arguments..
   Objects parse( const Objects& os ) const;
+  Args parse( const Args& os ) const;
+
+  int impRequirement( const ObjectImp* o, const Args& parents ) const;
 };
 
 #endif

@@ -22,13 +22,13 @@
 #include "mode.h"
 
 #include "../misc/coordinate.h"
-#include "../objects/property.h"
-#include "../objects/label.h"
 
 #include <vector>
 
 class TextLabelWizard;
+class NormalMode;
 class Object;
+class PropertyObject;
 
 class TextLabelConstructionMode
   : public KigMode
@@ -38,7 +38,8 @@ class TextLabelConstructionMode
 
   Coordinate mcoord;
   QString mtext;
-  TextLabel::propvect margs;
+  typedef std::vector<PropertyObject*> argvect;
+  argvect margs;
 
   // if we're ReallySelectingArgs, then this var points to the arg
   // we're currently selecting...

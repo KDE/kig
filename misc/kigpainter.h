@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
+ Copyright (C) 2002-2003  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -36,16 +36,17 @@ class KigWidget;
 class QPaintDevice;
 class CoordinateSystem;
 class Object;
-class ConicPolarEquationData;
-class CubicCartesianEquationData;
-struct LineData;
+class ObjectHierarchy;
+class ConicPolarData;
+class CubicCartesianData;
+class LineData;
+class CurveImp;
 
 /**
  * KigPainter is an extended qpainter...
  * currently the only difference is that it translates coordinates
  * from and to the internal coordinates/ the widget coordinates...
  * it calls KigWidget::appendOverlay() for all of the places it draws in...
- * i'm planning to do more advanced stuff here, @see the TODO file...
  */
 class KigPainter
   : public Qt
@@ -57,10 +58,11 @@ protected:
 
   QColor color;
   PenStyle style;
-  uint width;
+  int width;
   BrushStyle brushStyle;
   QColor brushColor;
 
+  const KigDocument& mdoc;
   ScreenInfo msi;
 
   bool mNeedOverlay;
@@ -73,7 +75,8 @@ public:
    * needOverlay sets whether we try to remember the places we're
    * drawing on using the various overlay methods. @see overlay()
    */
-  KigPainter( const ScreenInfo& r, QPaintDevice* device, bool needOverlay = true );
+  KigPainter( const ScreenInfo& r, QPaintDevice* device, const KigDocument& doc,
+              bool needOverlay = true );
   ~KigPainter();
 
   // what rect are we drawing on ?
@@ -88,7 +91,10 @@ public:
   // colors and stuff...
   void setStyle( const PenStyle c );
   void setColor( const QColor& c );
-  void setWidth( const uint c );
+  void setWidth( const int c ); // setting this to -1 means to use
+                                 // the default width for the object
+                                 // being drawn..  a point -> 5, other
+                                 // objects -> 1
   void setPen( const QPen& p );
   void setBrushStyle( const BrushStyle c );
   void setBrush( const QBrush& b );
@@ -106,10 +112,17 @@ public:
   void setWholeWinOverlay();
 
   /**
-   * draw an object
+   * draw an object ( by calling its draw function.. )
    */
   void drawObject( const Object* o, bool ss = true );
   void drawObjects( const Objects& os );
+
+  /**
+   * draw a locus...  h is an objectHierarchy that takes one argument,
+   * a PointImp, and returns a PointImp... curve is the curve over
+   * which a point should be iterated..
+   */
+  void drawLocus( const CurveImp* curve, const ObjectHierarchy& h );
 
   /**
    * draws text in a standard manner, convenience function...
@@ -147,6 +160,7 @@ public:
    * draw a ray...
    */
   void drawRay( const Coordinate& a, const Coordinate& b );
+  void drawRay( const LineData& d );
 
   /**
    * draw a line...
@@ -165,12 +179,12 @@ public:
    * point.  In fact it isn't a point, but a filled circle of a
    * certain @param radius...
    */
-  void drawFatPoint( const Coordinate& p, double radius );
-  void drawFatPoint( const Coordinate& p );   // default args don't seem to work properly..
+  void drawFatPoint( const Coordinate& p );
 
   /**
    * draw a polygon defined by the points in pts...
    */
+  void drawPolygon( const std::vector<QPoint>& pts, bool winding = false, int index = 0, int npoints = -1 );
   void drawPolygon( const std::vector<Coordinate>& pts, bool winding = false, int index = 0, int npoints = -1 );
 
   /**
@@ -181,22 +195,30 @@ public:
    * @see QPainter::drawArc
    */
   void drawAngle( const Rect& surroundingRect, int startAngle, int angle );
+  void drawAngle( const Coordinate& point, const double startangle,
+                  const double angle );
+
+  /**
+   * draw a vector ( with an arrow etc. )
+   */
+
+  void drawVector( const Coordinate& a, const Coordinate& b );
 
   /**
    * draw a conic..
    */
-  void drawConic( const ConicPolarEquationData& data );
+  void drawConic( const ConicPolarData& data );
 
   /**
    * draw a cubic..
    */
-  void drawCubic( const CubicCartesianEquationData& data );
+  void drawCubic( const CubicCartesianData& data );
   void drawCubicRecurse(
                    double& xleft, double& yleft, bool& validleft,
                    int& numrootsleft,
                    double& xright, double& yright, bool& validright,
                    int& numrootsright,
-                   const CubicCartesianEquationData& data, int& root,
+                   const CubicCartesianData& data, int& root,
                    double& ymin, double& ymax, double& tol,
                    bool& tNeedOverlay, Rect& overlay);
 
@@ -210,6 +232,7 @@ public:
                  int textFlags = 0, int len = -1);
 
   void drawSimpleText( const Coordinate& c, const QString s );
+  void drawTextFrame( const Rect& frame, const QString& s, bool frame );
 
   const Rect boundingRect( const Rect& r, const QString s,
                             int f = 0, int l = -1 ) const;
@@ -219,7 +242,7 @@ public:
 
   const Rect simpleBoundingRect( const Coordinate& c, const QString s );
 
-  void drawGrid( const CoordinateSystem& c );
+  void drawGrid( const CoordinateSystem& c, bool showGrid = true, bool showAxes = true );
 
   const std::vector<QRect>& overlay() { return mOverlay; };
 

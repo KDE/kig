@@ -26,6 +26,7 @@
  * calc()-ing.  This means that child objects must appear after their
  * parents.  We assume here that none of the objects in os have
  * children or parents that aren't also in os.
+ * ( for you graph people, this is just a topological sort.. )
  */
 Objects calcPath( const Objects& os );
 
@@ -39,5 +40,21 @@ Objects calcPath( const Objects& os );
  * somewhere in the middle of the calc-path towards to...
  */
 Objects calcPath( const Objects& from, const Object* to );
+
+/**
+ * This function returns all objects on the side of the path through
+ * the dependency tree from from down to to.  This means that we look
+ * for any objects that don't depend on any of the objects in from
+ * themselves, but of which one of the direct children does.  We need
+ * this function for Locus stuff...
+ */
+Objects sideOfTreePath( const Objects& from, const Object* to );
+
+/**
+ * This function returns all objects above the @p given in the
+ * dependency graph.  The @p given objects are also included
+ * themselves..
+ */
+Objects getAllParents( const Objects& objs );
 
 #endif

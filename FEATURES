@@ -16,17 +16,12 @@ here are some nice Kig features i'd like to show off :)
   "KigPart" (if you installed Kig correctly (did you get the
   "--prefix" on your configure right?) , it should be there), and add
   it. then try opening macrotest.kig again
-- recently, i added support for Locuses, this is another thing from
-  KSeg which i also implemented in my program.  It's a very cool idea,
-  and it supports rather advanded stuff like conic's in an easy (for
-  the developer :) way...
-  To see it work, check out the locustest.kig file in the examples
-  directory 
 - Kig supports various file formats...  See the filters directory.
-  Currently i have implemented read-write support for 
-  native kig files ( which is an imho clean xml format ), and read
-  support for kgeo files, but this is an area where i plan working
-  on... ( KGeo and KSeg read-write, Cabri at least read support )..
+  Currently i have implemented read-write support for native kig files
+  ( which is an imho clean xml format ), an older version of the kig
+  file format and read support for kgeo files, but this is an area
+  where i plan working on... ( KSeg reading, Cabri at least read
+  support ).. 
 - Kig has an option "Export to image", which allows you to export a
   kig document into one of the graphics formats that KDE or Qt
   support...  This is useful since not all other programs support Kig
@@ -37,6 +32,9 @@ here are some nice Kig features i'd like to show off :)
 - There is a very flexible mechanism for supporting TextLabels with
   variable parts..  Check out the text label wizard for more
   explanation... 
+- nice support for Locuses, inspired by KSeg's version of this.  Check
+  the documentation and examples/locustest.kig for more info..
+- various nice objects: conics, cubics etc.
 
 PLANNED FEATURES
 For a list of planned features, check out the TODO file.

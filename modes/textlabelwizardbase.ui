@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>488</width>
-            <height>278</height>
+            <height>248</height>
         </rect>
     </property>
     <property name="caption">
@@ -32,7 +32,6 @@
                 </property>
                 <property name="text">
                     <string>Enter the text for your label here and press "Next".
-
 If you want to show variable parts, then put %1, %2, ... at the appropriate places (e.g. "This segment is %1 units long.").</string>
                 </property>
                 <property name="alignment">
@@ -42,6 +41,14 @@ If you want to show variable parts, then put %1, %2, ... at the appropriate plac
             <widget class="KLineEdit">
                 <property name="name">
                     <cstring>labelTextInput</cstring>
+                </property>
+            </widget>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>needFrameCheckBox</cstring>
+                </property>
+                <property name="text">
+                    <string>Show text in a frame</string>
                 </property>
             </widget>
         </vbox>
