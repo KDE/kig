@@ -100,6 +100,19 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
   for ( int i = 0; i < 6; ++i )
     mmenus[i] = new QPopupMenu( this );
 
+  connect( mmenus[TransformMenu], SIGNAL( activated( int ) ),
+           this, SLOT( transformMenuSlot( int ) ) );
+  connect( mmenus[ConstructMenu], SIGNAL( activated( int ) ),
+           this, SLOT( constructMenuSlot( int ) ) );
+  connect( mmenus[StartMenu], SIGNAL( activated( int ) ),
+           this, SLOT( startMenuSlot( int ) ) );
+  connect( mmenus[ShowMenu], SIGNAL( activated( int ) ),
+           this, SLOT( showMenuSlot( int ) ) );
+  connect( mmenus[SetColorMenu], SIGNAL( activated( int ) ),
+           this, SLOT( setColorMenuSlot( int ) ) );
+  connect( mmenus[SetSizeMenu], SIGNAL( activated( int ) ),
+           this, SLOT( setSizeMenuSlot( int ) ) );
+
   for ( int i = TransformMenu; i <= ToplevelMenu; ++i )
   {
     int nextfree = 2;
@@ -292,7 +305,9 @@ bool BuiltinActionsProvider::executeAction(
 
     for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
       if ( (*i)->inherits( Object::ID_RealObject ) )
-        static_cast<RealObject*>(*i)->setWidth( id + 1 );
+        static_cast<RealObject*>(*i)->setWidth( 3 + 2*id );
+    mode.clearSelection();
+    w.redrawScreen();
   }
   return true;
 }
@@ -313,4 +328,14 @@ void NormalModePopupObjects::addAction( int menu, const QPixmap& pix, int id )
   else m = mmenus[menu];
   int ret = m->insertItem( pix, id );
   assert( ret == id );
+}
+
+void NormalModePopupObjects::setColorMenuSlot( int i )
+{
+  activateAction( SetColorMenu, i );
+}
+
+void NormalModePopupObjects::setSizeMenuSlot( int i )
+{
+  activateAction( SetSizeMenu, i );
 }

@@ -69,6 +69,8 @@ private slots:
   void constructMenuSlot( int );
   void startMenuSlot( int );
   void showMenuSlot( int );
+  void setColorMenuSlot( int );
+  void setSizeMenuSlot( int );
   void toplevelMenuSlot( int );
 
 protected:
