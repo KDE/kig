@@ -38,7 +38,7 @@ KigFilter* KigFilters::find(const QString& mime)
 
 KigFilters::KigFilters()
 {
-//   mFilters.push_back( new KigFilterKGeo );
+  mFilters.push_back( new KigFilterKGeo );
 //   mFilters.push_back( new KigFilterCabri );
   mFilters.push_back( new KigFilterNative );
 }

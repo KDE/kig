@@ -70,14 +70,16 @@ KigFilter::Result KigFilterKGeo::loadMetrics(KSimpleConfig* c )
   return OK;
 }
 
-struct HierElem
+namespace {
+struct HierarchyElement
 {
   int id;
   std::vector<int> parents;
 };
+};
 
-static void visitElem( std::vector<HierElem>& ret,
-                       const std::vector<HierElem>& elems,
+static void visitElem( std::vector<HierarchyElement>& ret,
+                       const std::vector<HierarchyElement>& elems,
                        std::vector<bool>& seen,
                        int i )
 {
@@ -90,9 +92,9 @@ static void visitElem( std::vector<HierElem>& ret,
   };
 };
 
-static std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
+static std::vector<HierarchyElement> sortElems( const std::vector<HierarchyElement> elems )
 {
-  std::vector<HierElem> ret;
+  std::vector<HierarchyElement> ret;
   std::vector<bool> seenElems( elems.size(), false );
   for ( uint i = 0; i < elems.size(); ++i )
     visitElem( ret, elems, seenElems, i );
@@ -121,36 +123,35 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
   QString group;
   bool ok = true;
   c->setGroup("Main");
-  uint number = c->readNumEntry ("Number");
-  kdDebug() << k_funcinfo << "number of objects: " << number << endl;
+  int number = c->readNumEntry ("Number");
 
   // first we determine the parent relationships, and sort the
   // elements in an order that we can be sure all of an object's
   // parents will have been handled before it is handled itself..
   // ( aka topological sort of the parent relations graph..
-  std::vector<HierElem> elems;
+  std::vector<HierarchyElement> elems;
   elems.reserve( number );
 
-  for ( uint i = 0; i < number; ++i )
+  for ( int i = 0; i < number; ++i )
   {
-    HierElem elem;
+    HierarchyElement elem;
     elem.id = i;
     group.setNum( i + 1 );
     group.prepend( "Object " );
     c->setGroup( group );
     QStrList parents;
     c->readListEntry( "Parents", parents );
+    elems.push_back( elem );
     for ( const char* parent = parents.first(); parent; parent = parents.next() )
     {
       int parentIndex = QString::fromLatin1( parent ).toInt( &ok );
       if ( ! ok ) return ParseError;
       if ( parentIndex != 0 )
-        elems[i].parents.push_back( parentIndex );
+        elems[i].parents.push_back( parentIndex - 1 );
     };
-    elems.push_back( elem );
   };
 
-  std::vector<HierElem> sortedElems = sortElems( elems );
+  std::vector<HierarchyElement> sortedElems = sortElems( elems );
   Objects dataos;
   os.resize( number, 0 );
   ObjectFactory* factory = ObjectFactory::instance();
@@ -159,13 +160,12 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
   // order..
   for ( uint i = 0; i < sortedElems.size(); ++i )
   {
-    const HierElem& e = sortedElems[i];
+    const HierarchyElement& e = sortedElems[i];
     int id = e.id;
     group.setNum( id + 1 );
     group.prepend( "Object " );
     c->setGroup( group );
     int objID = c->readNumEntry( "Geo" );
-//    kdDebug() << k_funcinfo << "objID: " << objID << endl;
 
     Objects parents;
     for ( uint j = 0; j < e.parents.size(); ++j )
