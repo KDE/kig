@@ -100,8 +100,8 @@ public:
   static Rect fromQRect( const QRect& );
 protected:
   Coordinate mBottomLeft;
-  double mWidth;
-  double mHeight;
+  double mwidth;
+  double mheight;
 };
 
 bool operator==( const Rect& r, const Rect& s );

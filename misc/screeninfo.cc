@@ -28,15 +28,15 @@ ScreenInfo::ScreenInfo( const Rect& docRect, const QRect& viewRect )
 Rect ScreenInfo::fromScreen( const QRect& r ) const
 {
   return Rect(
-    fromScreen(r.topLeft()),
-    fromScreen(r.bottomRight() )
+    fromScreen( r.topLeft() ),
+    fromScreen( r.bottomRight() )
     ).normalized();
 };
 
 Coordinate ScreenInfo::fromScreen( const QPoint& p ) const
 {
   // invert the y-axis: 0 is at the bottom !
-  Coordinate t( p.x(), mqrect.height() - p.y() );
+  Coordinate t( p.x(), mkrect.height() - p.y() );
   t *= mkrect.width();
   t /= mqrect.width();
   return t + mkrect.bottomLeft();
@@ -51,10 +51,10 @@ QPoint ScreenInfo::toScreen( const Coordinate& p ) const
   return QPoint( t.x, mqrect.height() - t.y );
 }
 
-QRect ScreenInfo::toScreen( const Rect r ) const
+QRect ScreenInfo::toScreen( const Rect& r ) const
 {
   return QRect(
-    toScreen( r.bottomLeft()),
+    toScreen( r.bottomLeft() ),
     toScreen( r.topRight() )
     ).normalize();
 }
@@ -76,7 +76,7 @@ void ScreenInfo::setShownRect( const Rect& r )
   mkrect = r;
 }
 
-const QRect& ScreenInfo::viewRect() const
+const QRect ScreenInfo::viewRect() const
 {
   return mqrect;
 }

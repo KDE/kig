@@ -40,7 +40,7 @@ public:
   Rect fromScreen( const QRect& r ) const;
 
   QPoint toScreen( const Coordinate& p ) const;
-  QRect toScreen( const Rect r ) const;
+  QRect toScreen( const Rect& r ) const;
 
   double pixelWidth() const;
 
@@ -48,7 +48,7 @@ public:
 
   void setShownRect( const Rect& r );
 
-  const QRect& viewRect() const;
+  const QRect viewRect() const;
 
   void setViewRect( const QRect& r );
 };

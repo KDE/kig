@@ -5,6 +5,6 @@ noinst_HEADERS = common.h coordinate.h coordinate_system.h hierarchy.h \
 		screeninfo.h calcpaths.h
 libmisc_la_SOURCES = common.cpp coordinate_system.cpp hierarchy.cpp \
 		type.cpp types.cpp kigpainter.cpp objects.cpp \
-		screeninfo.cc calcpaths.cc rect.cc
+		screeninfo.cc calcpaths.cc rect.cc coordinate.cpp
 libmisc_la_LIBADD=-lm
 METASOURCES=AUTO
