@@ -237,9 +237,8 @@ LineImp* LineImp::copy() const
   return new LineImp( mdata );
 }
 
-const Coordinate SegmentImp::getPoint( double param, bool& valid, const KigDocument& ) const
+const Coordinate SegmentImp::getPoint( double param, const KigDocument& ) const
 {
-  valid = true;
   return mdata.a + mdata.dir()*param;
 }
 
@@ -263,9 +262,8 @@ LineData AbstractLineImp::data() const
   return mdata;
 }
 
-const Coordinate RayImp::getPoint( double param, bool& valid, const KigDocument& ) const
+const Coordinate RayImp::getPoint( double param, const KigDocument& ) const
 {
-  valid = true;
   param = 1.0/param - 1.0;
   return mdata.a + mdata.dir()*param;
 }
@@ -297,9 +295,8 @@ double RayImp::getParam( const Coordinate& p, const KigDocument& ) const
   return param;
 }
 
-const Coordinate LineImp::getPoint( double p, bool& valid, const KigDocument& ) const
+const Coordinate LineImp::getPoint( double p, const KigDocument& ) const
 {
-  valid = true;
   // inspired upon KSeg
 
   // we need to spread the points over the line, it should also come near
@@ -407,7 +404,8 @@ bool AbstractLineImp::equals( const ObjectImp& rhs ) const
 const ObjectImpType* AbstractLineImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "line", I18N_NOOP( "line" ), I18N_NOOP( "Select this line" ), 0, 0, 0, 0 );
+    Parent::stype(), "line", I18N_NOOP( "line" ),
+    I18N_NOOP( "Select a Line" ), 0, 0, 0, 0, 0, 0 );
   return &t;
 }
 
@@ -420,7 +418,9 @@ const ObjectImpType* LineImp::stype()
     I18N_NOOP( "Remove a Line" ),
     I18N_NOOP( "Add a Line" ),
     I18N_NOOP( "Move a Line" ),
-    I18N_NOOP( "Attach to this line" )
+    I18N_NOOP( "Attach to this line" ),
+    I18N_NOOP( "Show a Line" ),
+    I18N_NOOP( "Hide a Line" )
     );
   return &t;
 }
@@ -434,7 +434,9 @@ const ObjectImpType* SegmentImp::stype()
     I18N_NOOP( "Remove a Segment" ),
     I18N_NOOP( "Add a Segment" ),
     I18N_NOOP( "Move a Segment" ),
-    I18N_NOOP( "Attach to this segment" )
+    I18N_NOOP( "Attach to this segment" ),
+    I18N_NOOP( "Show a Segment" ),
+    I18N_NOOP( "Hide a Segment" )
     );
   return &t;
 }
@@ -448,7 +450,9 @@ const ObjectImpType* RayImp::stype()
     I18N_NOOP( "Remove a Ray" ),
     I18N_NOOP( "Add a Ray" ),
     I18N_NOOP( "Move a Ray" ),
-    I18N_NOOP( "Attach to this ray" )
+    I18N_NOOP( "Attach to this ray" ),
+    I18N_NOOP( "Show a Ray" ),
+    I18N_NOOP( "Hide a Ray" )
     );
   return &t;
 }

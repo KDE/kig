@@ -20,7 +20,6 @@
 
 #include "bogus_imp.h"
 #include "point_imp.h"
-#include "object.h"
 #include "../misc/object_hierarchy.h"
 #include "../misc/kigpainter.h"
 #include "../misc/coordinate.h"
@@ -62,10 +61,10 @@ bool LocusImp::inRect( const Rect&, int, const KigWidget& ) const
   return false;
 }
 
-const Coordinate LocusImp::getPoint( double param, bool& valid, const KigDocument& doc ) const
+const Coordinate LocusImp::getPoint( double param, const KigDocument& doc ) const
 {
-  Coordinate arg = mcurve->getPoint( param, valid, doc );
-  if ( ! valid ) return Coordinate();
+  Coordinate arg = mcurve->getPoint( param, doc );
+  if ( ! arg.valid() ) return arg;
   PointImp argimp( arg );
   Args args;
   args.push_back( &argimp );
@@ -74,12 +73,9 @@ const Coordinate LocusImp::getPoint( double param, bool& valid, const KigDocumen
   ObjectImp* imp = calcret.front();
   Coordinate ret;
   if ( imp->inherits( PointImp::stype() ) )
-  {
-    valid = true;
     ret = static_cast<PointImp*>( imp )->coordinate();
-  }
   else
-    valid = false;
+    ret = Coordinate::invalidCoord();
 
   delete imp;
   return ret;
@@ -144,9 +140,10 @@ double LocusImp::getDist(double param, const Coordinate& p, const KigDocument& d
 {
   param = fmod( param, 1 );
   if( param < 0 ) param += 1.;
-  bool valid = true;
-  Coordinate p1 = getPoint( param, valid, doc );
-  return valid ? ( p1 - p ).length() : +double_inf;
+  Coordinate p1 = getPoint( param, doc );
+  // i don't think the p1.valid() switch is really necessary, but I
+  // prefer to not take any chances :)
+  return p1.valid() ? ( p1 - p ).length() : +double_inf;
 }
 
 /**
@@ -332,7 +329,9 @@ const ObjectImpType* LocusImp::stype()
     I18N_NOOP( "Remove a Locus" ),
     I18N_NOOP( "Add a Locus" ),
     I18N_NOOP( "Move a Locus" ),
-    I18N_NOOP( "Attach to this locus" )
+    I18N_NOOP( "Attach to this locus" ),
+    I18N_NOOP( "Show a Locus" ),
+    I18N_NOOP( "Hide a Locus" )
     );
   return &t;
 }

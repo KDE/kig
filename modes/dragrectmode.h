@@ -22,10 +22,12 @@
 
 #include "mode.h"
 
-#include "../misc/objects.h"
 #include "../misc/rect.h"
 
 #include <qpoint.h>
+#include <vector>
+
+class ObjectHolder;
 
 /**
  * DragRectMode is a mode that provides a rect for selecting the
@@ -40,7 +42,7 @@ class DragRectMode
   : public KigMode
 {
   QPoint mstart;
-  Objects mret;
+  std::vector<ObjectHolder*> mret;
   Rect mrect;
   bool mnc;
   bool mstartselected;
@@ -74,7 +76,7 @@ public:
   ~DragRectMode();
 
   // this returns the selected objects..
-  Objects ret() const;
+  std::vector<ObjectHolder*> ret() const;
 
   // this returns the selected rect..
   Rect rect() const;

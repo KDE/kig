@@ -23,12 +23,13 @@
 
 #include <kpopupmenu.h>
 
-#include "../misc/objects.h"
+#include <vector>
 
 class KigDocument;
 class KigWidget;
 class NormalMode;
 class PopupActionProvider;
+class ObjectHolder;
 
 /**
  * This is the popup menu that appears when you click on selected
@@ -48,7 +49,7 @@ class NormalModePopupObjects
 
 public:
   NormalModePopupObjects( KigDocument& doc, KigWidget& view,
-                          NormalMode& mode, const Objects& objs );
+                          NormalMode& mode, const std::vector<ObjectHolder*>& objs );
   ~NormalModePopupObjects();
 
   // the different "menu's", the toplevel is considered as just
@@ -65,7 +66,7 @@ public:
   // set the checked state of the n'th item in menu to checked..
   void setChecked( int menu, int n, bool checked );
 
-  Objects objects() const { return mobjs; };
+  std::vector<ObjectHolder*> objects() const { return mobjs; };
   KigDocument& document() { return mdoc; };
   KigWidget& widget() { return mview; };
 
@@ -86,7 +87,7 @@ protected:
   QPoint mplc;
   KigDocument& mdoc;
   KigWidget& mview;
-  Objects mobjs;
+  std::vector<ObjectHolder*> mobjs;
   NormalMode& mmode;
 
   std::vector<PopupActionProvider*> mproviders;

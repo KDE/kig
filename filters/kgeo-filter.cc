@@ -23,19 +23,18 @@
 #include "kgeo-resource.h"
 
 #include "../kig/kig_part.h"
-#include "../misc/objects.h"
-#include "../objects/object.h"
 #include "../objects/bogus_imp.h"
-#include "../objects/point_imp.h"
-#include "../objects/text_type.h"
 #include "../objects/circle_imp.h"
-#include "../objects/object_factory.h"
-#include "../objects/line_type.h"
 #include "../objects/circle_type.h"
-#include "../objects/point_type.h"
-#include "../objects/other_type.h"
-#include "../objects/transform_types.h"
 #include "../objects/intersection_types.h"
+#include "../objects/line_type.h"
+#include "../objects/object_drawer.h"
+#include "../objects/object_factory.h"
+#include "../objects/other_type.h"
+#include "../objects/point_imp.h"
+#include "../objects/point_type.h"
+#include "../objects/text_type.h"
+#include "../objects/transform_types.h"
 
 #include <ksimpleconfig.h>
 
@@ -97,15 +96,17 @@ static std::vector<HierarchyElement> sortElems( const std::vector<HierarchyEleme
 
 // constructs a text object with text "%1", location c, and variable
 // parts given by the argument arg of obj o.
-static Object* constructTextObject( const Coordinate& c, Object* o,
-                                    const QCString& arg,
-                                    const KigDocument& doc )
+static ObjectTypeCalcer* constructTextObject(
+  const Coordinate& c, ObjectCalcer* o,
+  const QCString& arg, const KigDocument& doc )
 {
-  ObjectFactory* fact = ObjectFactory::instance();
-  Object* propo = fact->propertyObject( o, arg );
+  const ObjectFactory* fact = ObjectFactory::instance();
+  ObjectCalcer* propo = fact->propertyObjectCalcer( o, arg );
   propo->calc( doc );
-  return fact->label( QString::fromLatin1( "%1" ), c, true,
-                      Objects( propo ), doc );
+  std::vector<ObjectCalcer*> args;
+  args.push_back( propo );
+  return fact->labelCalcer( QString::fromLatin1( "%1" ), c, true,
+                            args, doc );
 }
 
 bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocument& doc )
@@ -143,9 +144,9 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
   };
 
   std::vector<HierarchyElement> sortedElems = sortElems( elems );
-  Objects os;
+  std::vector<ObjectHolder*> os;
   os.resize( number, 0 );
-  ObjectFactory* factory = ObjectFactory::instance();
+  const ObjectFactory* factory = ObjectFactory::instance();
 
   // now we iterate over the elems again in the newly determined
   // order..
@@ -158,13 +159,14 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
     c->setGroup( group );
     int objID = c->readNumEntry( "Geo" );
 
-    Objects parents;
+    std::vector<ObjectCalcer*> parents;
     for ( uint j = 0; j < e.parents.size(); ++j )
     {
       int parentid = e.parents[j];
-      parents.push_back( os[parentid] );
+      parents.push_back( os[parentid]->calcer() );
     };
 
+    ObjectCalcer* o = 0;
     switch (objID)
     {
     case ID_point:
@@ -178,69 +180,71 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       if (!ok) KIG_FILTER_PARSE_ERROR;
       double y = strY.toDouble(&ok);
       if (!ok) KIG_FILTER_PARSE_ERROR;
-      Object* pos = factory->fixedPoint( Coordinate( x, y ) );
-      pos->calc( doc );
-      os[id] = pos;
+      o = factory->fixedPointCalcer( Coordinate( x, y ) );
       break;
     }
     case ID_segment:
     {
-      os[id] = new RealObject( SegmentABType::instance(), parents );
+      o = new ObjectTypeCalcer( SegmentABType::instance(), parents );
       break;
     }
     case ID_circle:
     {
-      os[id] = new RealObject( CircleBCPType::instance(), parents );
+      o = new ObjectTypeCalcer( CircleBCPType::instance(), parents );
       break;
     }
     case ID_line:
     {
-      os[id] = new RealObject( LineABType::instance(), parents );
+      o = new ObjectTypeCalcer( LineABType::instance(), parents );
       break;
     }
     case ID_bisection:
     {
-      // if this is the bisection of a segment, just take the
-      // segment's two parents..
-      if ( parents.size() == 1 )
-        parents = parents[0]->parents();
-      if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
-      os[id] = new RealObject( MidPointType::instance(), parents );
+      // if this is the bisection of two points, first build a segment
+      // between them..
+      if ( parents.size() == 2 )
+      {
+        ObjectTypeCalcer* seg = new ObjectTypeCalcer( SegmentABType::instance(), parents );
+        parents.clear();
+        parents.push_back( seg );
+      }
+      if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+      o = factory->propertyObjectCalcer( parents[0], "mid-point" );
       break;
     };
     case ID_perpendicular:
     {
-      os[id] = new RealObject( LinePerpendLPType::instance(), parents );
+      o = new ObjectTypeCalcer( LinePerpendLPType::instance(), parents );
       break;
     }
     case ID_parallel:
     {
-      os[id] = new RealObject( LineParallelLPType::instance(), parents );
+      o = new ObjectTypeCalcer( LineParallelLPType::instance(), parents );
       break;
     }
     case ID_vector:
     {
-      os[id] = new RealObject( VectorType::instance(), parents );
+      o = new ObjectTypeCalcer( VectorType::instance(), parents );
       break;
     }
     case ID_ray:
     {
-      os[id] = new RealObject( RayABType::instance(), parents );
+      o = new ObjectTypeCalcer( RayABType::instance(), parents );
       break;
     }
     case ID_move:
     {
-      os[id] = new RealObject( TranslatedType::instance(), parents );
+      o = new ObjectTypeCalcer( TranslatedType::instance(), parents );
       break;
     }
     case ID_mirrorPoint:
     {
-      os[id] = new RealObject( PointReflectionType::instance(), parents );
+      o = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
       break;
     }
     case ID_pointOfConc:
     {
-      os[id] = new RealObject( LineLineIntersectionType::instance(), parents );
+      o = new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents );
       break;
     }
     case ID_text:
@@ -254,48 +258,47 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       // we don't want the center, but the top left..
       x -= width / 80;
       y -= height / 80;
-      Object* label = factory->label( text, Coordinate( x, y ), frame, Objects(), doc );
-      os[id] = label;
+      o = factory->labelCalcer(
+        text, Coordinate( x, y ), frame, std::vector<ObjectCalcer*>(), doc );
       break;
     }
     case ID_fixedCircle:
     {
       double r = c->readDoubleNumEntry( "Radius" );
-      parents.push_back( new DataObject( new DoubleImp( r ) ) );
-      os[id] = new RealObject( CircleBPRType::instance(), parents );
+      parents.push_back( new ObjectConstCalcer( new DoubleImp( r ) ) );
+      o = new ObjectTypeCalcer( CircleBPRType::instance(), parents );
       break;
     }
     case ID_angle:
     {
       if ( parents.size() == 3 )
       {
-        Object* ao = new RealObject( AngleType::instance(), parents );
-        ao->setShown( false );
+        ObjectTypeCalcer* ao = new ObjectTypeCalcer( AngleType::instance(), parents );
         ao->calc( doc );
-        parents = Objects( ao );
+        parents.clear();
+        parents.push_back( ao );
       };
       if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-      Object* angle = parents[0];
+      ObjectCalcer* angle = parents[0];
       parents.clear();
       const Coordinate c =
         static_cast<const PointImp*>( angle->parents()[1]->imp() )->coordinate();
-      os[i] = constructTextObject( c, angle, "angle-degrees", doc );
+      o = constructTextObject( c, angle, "angle-degrees", doc );
       break;
     }
     case ID_distance:
     {
       if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
-      Object* segment = new RealObject( SegmentABType::instance(), parents );
+      ObjectTypeCalcer* segment = new ObjectTypeCalcer( SegmentABType::instance(), parents );
       segment->calc( doc );
-      segment->setShown( false );
       Coordinate m = ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
                        static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
-      os[i] = constructTextObject( m, segment, "length", doc );
+      o = constructTextObject( m, segment, "length", doc );
       break;
     }
     case ID_arc:
     {
-      os[id] = new RealObject( AngleType::instance(), parents );
+      o = new ObjectTypeCalcer( AngleType::instance(), parents );
       break;
     }
     case ID_area:
@@ -303,7 +306,7 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
       const CircleImp* circle = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate c = circle->center() + Coordinate( circle->radius(), 0 );
-      os[i] = constructTextObject( c, parents[0], "surface", doc );
+      o = constructTextObject( c, parents[0], "surface", doc );
       break;
     }
     case ID_slope:
@@ -315,10 +318,9 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       const Coordinate c = (
         static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
         static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
-      Object* line = new RealObject( LineABType::instance(), parents );
-      line->setShown( false );
+      ObjectTypeCalcer* line = new ObjectTypeCalcer( LineABType::instance(), parents );
       line->calc( doc );
-      os[i] = constructTextObject( c, line, "slope", doc );
+      o = constructTextObject( c, line, "slope", doc );
       break;
     }
     case ID_circumference:
@@ -326,28 +328,35 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
       const CircleImp* c = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate m = c->center() + Coordinate( c->radius(), 0 );
-      os[i] = constructTextObject( m, parents[0], "circumference", doc );
+      o = constructTextObject( m, parents[0], "circumference", doc );
       break;
     }
     case ID_rotation:
     {
       // in kig, the rotated object should be last..
-      Object* t = parents[2];
+      ObjectCalcer* t = parents[2];
       parents[2] = parents[0];
       parents[0] = t;
-      os[i] = new RealObject( RotationType::instance(), parents );
+      o = new ObjectTypeCalcer( RotationType::instance(), parents );
       break;
     }
     default:
       KIG_FILTER_PARSE_ERROR;
     };
 
-    os[i]->calc( doc );
+    ObjectDrawer* d = 0;
 
     // set the color...
     QColor co = c->readColorEntry( "Color" );
     if( co.isValid() )
-      os[i]->setColor( co );
+      d = new ObjectDrawer( co );
+    else
+      d = new ObjectDrawer;
+
+    assert( d );
+
+    os[i] = new ObjectHolder( o, d );
+    os[i]->calc( doc );
   }; // for loop (creating HierarchyElements..
 
   doc.setObjects( os );

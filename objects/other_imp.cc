@@ -183,32 +183,50 @@ bool VectorImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 
 const uint VectorImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties();
+  return Parent::numberOfProperties() + 1;
 }
 
 const QCStringList VectorImp::propertiesInternalNames() const
 {
-  return Parent::propertiesInternalNames();
+  QCStringList ret = Parent::propertiesInternalNames();
+  ret << I18N_NOOP( "vect-mid-point" );
+  assert( ret.size() == VectorImp::numberOfProperties() );
+  return ret;
 }
 
 const QCStringList VectorImp::properties() const
 {
-  return Parent::properties();
+  QCStringList ret = Parent::properties();
+  ret << I18N_NOOP( "Midpoint" );
+  assert( ret.size() == VectorImp::numberOfProperties() );
+  return ret;
 }
 
 const ObjectImpType* VectorImp::impRequirementForProperty( uint which ) const
 {
-  return Parent::impRequirementForProperty( which );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return VectorImp::stype();
 }
 
 const char* VectorImp::iconForProperty( uint which ) const
 {
-  return Parent::iconForProperty( which );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return "bisection"; // mid point
+  else assert( false );
+  return "";
 }
 
 ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
 {
-  return Parent::property( which, w );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  else if ( which == Parent::numberOfProperties() )
+    return new PointImp( ( ma + mb ) / 2 );
+  else assert( false );
+  return new InvalidImp;
 }
 
 ObjectImp* VectorImp::copy() const
@@ -404,9 +422,8 @@ double ArcImp::getParam( const Coordinate& c, const KigDocument& ) const
   return angle;
 }
 
-const Coordinate ArcImp::getPoint( double p, bool& valid, const KigDocument& ) const
+const Coordinate ArcImp::getPoint( double p, const KigDocument& ) const
 {
-  valid = true;
   double angle = msa + p * ma;
   Coordinate d = Coordinate( cos( angle ), sin( angle ) ) * mradius;
   return mcenter + d;
@@ -474,7 +491,9 @@ const ObjectImpType* AngleImp::stype()
     I18N_NOOP( "Remove an Angle" ),
     I18N_NOOP( "Add an Angle" ),
     I18N_NOOP( "Move an Angle" ),
-    I18N_NOOP( "Attach to this angle" )
+    I18N_NOOP( "Attach to this angle" ),
+    I18N_NOOP( "Show a Angle" ),
+    I18N_NOOP( "Hide a Angle" )
     );
   return &t;
 }
@@ -487,7 +506,9 @@ const ObjectImpType* VectorImp::stype()
     I18N_NOOP( "Remove a Vector" ),
     I18N_NOOP( "Add a Vector" ),
     I18N_NOOP( "Move a Vector" ),
-    I18N_NOOP( "Attach to this vector" )
+    I18N_NOOP( "Attach to this vector" ),
+    I18N_NOOP( "Show a Vector" ),
+    I18N_NOOP( "Hide a Vector" )
     );
   return &t;
 }
@@ -500,7 +521,9 @@ const ObjectImpType* ArcImp::stype()
     I18N_NOOP( "Remove an Arc" ),
     I18N_NOOP( "Add an Arc" ),
     I18N_NOOP( "Move an Arc" ),
-    I18N_NOOP( "Attach to this arc" )
+    I18N_NOOP( "Attach to this arc" ),
+    I18N_NOOP( "Show a Arc" ),
+    I18N_NOOP( "Hide a Arc" )
     );
   return &t;
 }

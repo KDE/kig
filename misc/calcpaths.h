@@ -19,14 +19,14 @@
 #ifndef KIG_MISC_CALCPATHS_H
 #define KIG_MISC_CALCPATHS_H
 
-#include "objects.h"
+#include "../objects/common.h"
 
 /**
  * This function sorts os such that they're in the right order for
  * calc()-ing.  This means that child objects must appear after their
  * parents ( for you graph people, this is just a topological sort.. )
  */
-Objects calcPath( const Objects& os );
+std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& os );
 
 /**
  * This is a different function for more or less the same purpose.  It
@@ -37,7 +37,7 @@ Objects calcPath( const Objects& os );
  * from are normally not included in the output, unless they appear
  * somewhere in the middle of the calc-path towards to...
  */
-Objects calcPath( const Objects& from, const Object* to );
+std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
 
 /**
  * This function returns all objects on the side of the path through
@@ -46,22 +46,34 @@ Objects calcPath( const Objects& from, const Object* to );
  * themselves, but of which one of the direct children does.  We need
  * this function for Locus stuff...
  */
-Objects sideOfTreePath( const Objects& from, const Object* to );
+std::vector<ObjectCalcer*> sideOfTreePath( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
 
 /**
  * This function returns all objects above the @p given in the
  * dependency graph.  The @p given objects are also included
  * themselves..
  */
-Objects getAllParents( const Objects& objs );
+std::vector<ObjectCalcer*> getAllParents( const std::vector<ObjectCalcer*>& objs );
 /**
  * @overload
  */
-Objects getAllParents( Object* obj );
+std::vector<ObjectCalcer*> getAllParents( ObjectCalcer* obj );
+
+/**
+ * This function returns all objects below the objects in objs in the
+ * dependency graphy.  The objects in objs are also included
+ * themselves..
+ */
+std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> objs );
+
+/**
+ * @overload
+ */
+std::set<ObjectCalcer*> getAllChildren( ObjectCalcer* obj );
 
 /**
  * Returns true if o is a descendant of any of the objects in os..
  */
-bool isChild( const Object* o, const Objects& os );
+bool isChild( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& os );
 
 #endif

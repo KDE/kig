@@ -28,7 +28,6 @@
 #include "../modes/construct_mode.h"
 #include "../modes/label.h"
 #include "../objects/object_factory.h"
-#include "../objects/object.h"
 #include "../objects/bogus_imp.h"
 
 #include <kiconloader.h>
@@ -220,7 +219,7 @@ void AddFixedPointAction::act( KigDocument& doc )
     doc.coordinateSystem().coordinateFormatNotice(),
     doc, doc.widget(), &ok );
   if ( ! ok ) return;
-  Object* p = ObjectFactory::instance()->fixedPoint( c );
+  ObjectHolder* p = ObjectFactory::instance()->fixedPoint( c );
   p->calc( doc );
   doc.addObject( p );
 }

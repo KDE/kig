@@ -4,19 +4,22 @@ METASOURCES = AUTO
 
 noinst_LTLIBRARIES=libfilters.la
 noinst_HEADERS= \
-	filter.h \
+	cabri-filter.h \
 	exporter.h \
 	exporttoimagedialog.h \
-	kseg-filter.h \
-	kseg-defs.h \
+	filter.h \
 	kgeo-filter.h \
 	kgeo-resource.h \
+	kseg-defs.h \
+	kseg-filter.h \
 	native-filter.h
 libfilters_la_SOURCES= \
-	filter.cc \
+	cabri-filter.cc \
 	exporter.cc \
-	exporttoimagedialogbase.ui \
 	exporttoimagedialog.cc \
-	kseg-filter.cc \
+	exporttoimagedialogbase.ui \
+	filter.cc \
 	kgeo-filter.cc \
+	kseg-filter.cc \
 	native-filter.cc
+

@@ -27,13 +27,23 @@ class QDomElement;
 class QCString;
 
 // Kig's native format.  Between versions 0.3.1 and 0.4, there was a
-// change in the file format, and this filter is designed to support
-// both of them ( for reading, that is...)
+// change in the file format.  This filter no longer supports pre-0.4
+// formats, it did up until Kig 0.6.
 class KigFilterNative
   : public KigFilter
 {
-  bool loadOld( const QString& file, const QDomElement& doc, KigDocument& to );
-  bool loadNew( const QString& file, const QDomElement& doc, KigDocument& to );
+  // this is the load function for the Kig format that is used,
+  // starting at Kig 0.4
+  bool load04( const QString& file, const QDomElement& doc, KigDocument& to );
+  // this is the load function for the Kig format that is used
+  // starting at Kig 0.7
+  bool load07( const QString& file, const QDomElement& doc, KigDocument& to );
+
+  // save in the pre-0.7 Kig format..
+  bool save04( const KigDocument& data, const QString& file );
+
+  // save in the Kig format that is used starting at Kig 0.7
+  bool save07( const KigDocument& data, const QString& file );
 
   KigFilterNative();
   ~KigFilterNative();

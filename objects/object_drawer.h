@@ -1,0 +1,88 @@
+// object_drawer.h
+// Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
+
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+// 02111-1307, USA.
+
+#ifndef KIG_OBJECTS_OBJECT_DRAWER_H
+#define KIG_OBJECTS_OBJECT_DRAWER_H
+
+#include <qcolor.h>
+
+class ObjectImp;
+class KigPainter;
+class Coordinate;
+class KigWidget;
+class Rect;
+
+/**
+ * A class holding some information about how a certain object is
+ * drawn on the window.
+ *
+ * An ObjectDrawer is used by an ObjectHolder to keep information
+ * about how to draw an ObjectImp on the window.  It is really nothing
+ * more than a struct with some convenience methods.  It does not have
+ * any virtual methods, or have any complex semantics.  It keeps
+ * information like the thickness of an object, its color, and whether
+ * or not it is hidden.
+ *
+ * @note The default width of an object depends on its type.  E.g. A
+ * point is by default drawn at width 5, a line at width 1.
+ * Therefore, there is a special width -1, which means "the default
+ * width for this object".
+ */
+class ObjectDrawer
+{
+  QColor mcolor;
+  bool mshown;
+  int mwidth;
+public:
+  /**
+   * Construct a new ObjectDrawer with a default color ( Qt::blue ),
+   * width ( -1 ), and shown state ( true ).
+   */
+  ObjectDrawer();
+  ObjectDrawer( const QColor& color, int width = -1, bool shown = true );
+  // Draw the object imp on kigpainter p.  If selected is true, it is
+  // drawn in red, otherwise in its normal color.
+  void draw( const ObjectImp& imp, KigPainter& p, bool selected ) const;
+  // returns whether the object imp contains coordinate p.  This is
+  // dependent on whether it is shown ( when it will never contain
+  // anything ), and on its width..
+  bool contains( const ObjectImp& imp, const Coordinate& p, const KigWidget& w ) const;
+  // returns whether the object imp is in the rectangle r.  This is
+  // dependent on whether it is shown and on its width..
+  bool inRect( const ObjectImp& imp, const Rect& r, const KigWidget& w ) const;
+
+  // returns whether the object this ObjectDrawer is responsible for
+  // will be drawn or not..
+  bool shown() const;
+  // returns the color that the object will be drawn in
+  QColor color() const;
+  // return the width of the object
+  int width() const;
+
+  // returns a new ObjectDrawer that is identical to this one.. except
+  // that the shown state is set to s..
+  ObjectDrawer* getCopyShown( bool s ) const;
+  // returns a new ObjectDrawer that is identical to this one.. except
+  // that the color is set to c..
+  ObjectDrawer* getCopyColor( const QColor& c ) const;
+  // returns a new ObjectDrawer that is identical to this one.. except
+  // that the width is set to w..
+  ObjectDrawer* getCopyWidth( int w ) const;
+};
+
+#endif

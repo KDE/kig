@@ -19,7 +19,6 @@
 #include "object_constructor.h"
 
 #include "i18n.h"
-#include "objects.h"
 #include "argsparser.h"
 #include "kigpainter.h"
 #include "guiaction.h"
@@ -27,6 +26,8 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
+#include "../objects/object_holder.h"
+#include "../objects/object_drawer.h"
 #include "../objects/object_type.h"
 #include "../objects/other_type.h"
 #include "../objects/object_imp.h"
@@ -65,7 +66,7 @@ StandardConstructorBase::StandardConstructorBase(
 {
 }
 
-const int StandardConstructorBase::wantArgs( const Objects& os,
+const int StandardConstructorBase::wantArgs( const std::vector<ObjectCalcer*>& os,
                                              const KigDocument&,
                                              const KigWidget& ) const
 {
@@ -73,21 +74,25 @@ const int StandardConstructorBase::wantArgs( const Objects& os,
 }
 
 void StandardConstructorBase::handleArgs(
-  const Objects& os, KigDocument& d,
+  const std::vector<ObjectCalcer*>& os, KigDocument& d,
   KigWidget& v ) const
 {
-  Objects bos = build( os, d, v );
-  bos.calc( d );
+  std::vector<ObjectHolder*> bos = build( os, d, v );
+  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    (*i)->calc( d );
+  }
   d.addObjects( bos );
 }
 
 void StandardConstructorBase::handlePrelim(
-  KigPainter& p, const Objects& os,
+  KigPainter& p, const std::vector<ObjectCalcer*>& os,
   const KigDocument& d, const KigWidget&
   ) const
 {
   assert ( margsparser.check( os ) != ArgsParser::Invalid );
-  Objects args = margsparser.parse( os );
+  std::vector<ObjectCalcer*> args = margsparser.parse( os );
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
   p.setPen( QPen ( Qt::red,  1) );
@@ -109,23 +114,26 @@ SimpleObjectTypeConstructor::~SimpleObjectTypeConstructor()
 {
 }
 
-void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& parents,
+void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                               const KigDocument& doc ) const
 {
   Args args;
   using namespace std;
   transform( parents.begin(), parents.end(),
-             back_inserter( args ), mem_fun( &Object::imp ) );
+             back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
   ObjectImp* data = mtype->calc( args, doc );
   data->draw( p );
   delete data;
 }
 
-Objects SimpleObjectTypeConstructor::build(
-  const Objects& os, KigDocument&, KigWidget& ) const
+std::vector<ObjectHolder*> SimpleObjectTypeConstructor::build(
+  const std::vector<ObjectCalcer*>& os, KigDocument&, KigWidget& ) const
 {
-  RealObject* n = new RealObject( mtype, os );
-  return Objects( n );
+  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, os );
+  ObjectHolder* h = new ObjectHolder( calcer );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( h );
+  return ret;
 }
 
 StandardConstructorBase::~StandardConstructorBase()
@@ -160,13 +168,13 @@ MultiObjectTypeConstructor::~MultiObjectTypeConstructor()
 {
 }
 
-void MultiObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& parents,
+void MultiObjectTypeConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                              const KigDocument& doc ) const
 {
   Args args;
   using namespace std;
   transform( parents.begin(), parents.end(),
-             back_inserter( args ), mem_fun( &Object::imp ) );
+             back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
   for ( vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
   {
@@ -174,27 +182,24 @@ void MultiObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& paren
     args.push_back( &param );
     ObjectImp* data = mtype->calc( args, doc );
     data->draw( p );
-    delete data; data = 0;
+    delete data;
     args.pop_back();
   };
 }
 
-Objects MultiObjectTypeConstructor::build(
-  const Objects& os, KigDocument&, KigWidget& ) const
+std::vector<ObjectHolder*> MultiObjectTypeConstructor::build(
+  const std::vector<ObjectCalcer*>& os, KigDocument&, KigWidget& ) const
 {
-  Objects ret;
-  using namespace std;
-  for ( vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
+  std::vector<ObjectHolder*> ret;
+  for ( std::vector<int>::const_iterator i = mparams.begin();
+        i != mparams.end(); ++i )
   {
-    DataObject* d = new DataObject( new IntImp( *i ) );
+    ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( *i ) );
 
-    Objects args;
-    copy( os.begin(), os.end(), back_inserter( args ) );
+    std::vector<ObjectCalcer*> args( os );
     args.push_back( d );
-    RealObject* n = new RealObject( mtype, args );
 
-    ret.push_back( d );
-    ret.push_back( n );
+    ret.push_back( new ObjectHolder( new ObjectTypeCalcer( mtype, args ) ) );
   };
   return ret;
 }
@@ -237,7 +242,7 @@ const QCString MergeObjectConstructor::iconFileName() const
 }
 
 const int MergeObjectConstructor::wantArgs(
-  const Objects& os, const KigDocument& d, const KigWidget& v ) const
+  const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v ) const
 {
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
@@ -248,7 +253,7 @@ const int MergeObjectConstructor::wantArgs(
 }
 
 void MergeObjectConstructor::handleArgs(
-  const Objects& os, KigDocument& d, KigWidget& v ) const
+  const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& v ) const
 {
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
@@ -263,7 +268,7 @@ void MergeObjectConstructor::handleArgs(
 }
 
 void MergeObjectConstructor::handlePrelim(
-  KigPainter& p, const Objects& sel,
+  KigPainter& p, const std::vector<ObjectCalcer*>& sel,
   const KigDocument& d, const KigWidget& v ) const
 {
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
@@ -277,12 +282,12 @@ void MergeObjectConstructor::handlePrelim(
   };
 }
 
-QString StandardConstructorBase::useText( const Object& o, const Objects& sel,
+QString StandardConstructorBase::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                                           const KigDocument&, const KigWidget& ) const
 {
   using namespace std;
   Args args;
-  transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &Object::imp ) );
+  transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
   args.push_back( o.imp() );
 
   const char* ret = margsparser.usetext( o.imp(), args );
@@ -290,12 +295,14 @@ QString StandardConstructorBase::useText( const Object& o, const Objects& sel,
   return i18n( ret );
 }
 
-QString MergeObjectConstructor::useText( const Object& o, const Objects& sel,
+QString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                                          const KigDocument& d, const KigWidget& v ) const
 {
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
-    int w = (*i)->wantArgs( sel.with( const_cast<Object*>( &o ) ), d, v );
+    std::vector<ObjectCalcer*> args( sel );
+    args.push_back( const_cast<ObjectCalcer*>( &o ) );
+    int w = (*i)->wantArgs( args, d, v );
     if ( w != ArgsParser::Invalid ) return (*i)->useText( o, sel, d, v );
   };
   return QString::null;
@@ -310,7 +317,7 @@ MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const QString& 
 }
 
 MacroConstructor::MacroConstructor(
-  const Objects& input, const Objects& output,
+  const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
   const QString& name, const QString& description,
   const QCString& iconfile )
   : ObjectConstructor(), mhier( input, output ),
@@ -339,34 +346,41 @@ const QCString MacroConstructor::iconFileName() const
   return miconfile.isNull() ? QCString( "gear" ) : miconfile;
 }
 
-const int MacroConstructor::wantArgs( const Objects& os, const KigDocument&,
+const int MacroConstructor::wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument&,
                                       const KigWidget& ) const
 {
   return mparser.check( os );
 }
 
-void MacroConstructor::handleArgs( const Objects& os, KigDocument& d,
+void MacroConstructor::handleArgs( const std::vector<ObjectCalcer*>& os, KigDocument& d,
                                    KigWidget& ) const
 {
-  Objects args = mparser.parse( os );
-  Objects bos = mhier.buildObjects( args, d );
-  bos.calc( d );
-  d.addObjects( bos );
+  std::vector<ObjectCalcer*> args = mparser.parse( os );
+  std::vector<ObjectCalcer*> bos = mhier.buildObjects( args, d );
+  std::vector<ObjectHolder*> hos;
+  for ( std::vector<ObjectCalcer*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    hos.push_back( new ObjectHolder( *i ) );
+    hos.back()->calc( d );
+  }
+
+  d.addObjects( hos );
 }
 
-QString MacroConstructor::useText( const Object& o, const Objects& sel,
+QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                                    const KigDocument&, const KigWidget&
   ) const
 {
   using namespace std;
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
-             mem_fun( &Object::imp ) );
+             mem_fun( &ObjectCalcer::imp ) );
   args.push_back( o.imp() );
   return mparser.usetext( o.imp(), args );
 }
 
-void MacroConstructor::handlePrelim( KigPainter& p, const Objects& sel,
+void MacroConstructor::handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
                                      const KigDocument& doc, const KigWidget&
   ) const
 {
@@ -375,16 +389,13 @@ void MacroConstructor::handlePrelim( KigPainter& p, const Objects& sel,
   using namespace std;
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
-             mem_fun( &Object::imp ) );
+             mem_fun( &ObjectCalcer::imp ) );
   args = mparser.parse( args );
   std::vector<ObjectImp*> ret = mhier.calc( args, doc );
   for ( uint i = 0; i < ret.size(); ++i )
   {
-    p.setBrushStyle( Qt::NoBrush );
-    p.setBrushColor( Qt::red );
-    p.setPen( QPen ( Qt::red,  1) );
-    p.setWidth( -1 ); // -1 means the default width for the object being
-                      // drawn..
+    ObjectDrawer d;
+    d.draw( *ret[i], p, true );
     ret[i]->draw( p );
     delete ret[i];
   };
@@ -481,25 +492,26 @@ PropertyObjectConstructor::~PropertyObjectConstructor()
 }
 
 void PropertyObjectConstructor::drawprelim(
-  KigPainter& p, const Objects& parents,
+  KigPainter& p, const std::vector<ObjectCalcer*>& parents,
   const KigDocument& d ) const
 {
-  int index = parents[0]->propertiesInternalNames().findIndex( mpropinternalname );
+  int index = parents[0]->imp()->propertiesInternalNames().findIndex( mpropinternalname );
   assert ( index != -1 );
-  ObjectImp* imp = parents[0]->property( index, d );
+  ObjectImp* imp = parents[0]->imp()->property( index, d );
   imp->draw( p );
   delete imp;
 }
 
-Objects PropertyObjectConstructor::build(
-  const Objects& parents, KigDocument&,
+std::vector<ObjectHolder*> PropertyObjectConstructor::build(
+  const std::vector<ObjectCalcer*>& parents, KigDocument&,
   KigWidget& ) const
 {
-  int index = parents[0]->propertiesInternalNames().findIndex( mpropinternalname );
+  int index = parents[0]->imp()->propertiesInternalNames().findIndex( mpropinternalname );
   assert( index != -1 );
-  Objects ret;
-  ret.push_back( new PropertyObject( parents[0], index ) );
-  ret.push_back( new RealObject( CopyObjectType::instance(), ret ) );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back(
+    new ObjectHolder(
+      new ObjectPropertyCalcer( parents[0], index ) ) );
   return ret;
 }
 

@@ -21,8 +21,8 @@
 
 #include "mode.h"
 
-#include "../misc/objects.h"
 #include "../misc/coordinate.h"
+#include "../objects/object_calcer.h"
 
 class ObjectType;
 class Coordinate;
@@ -30,10 +30,6 @@ class NormalPoint;
 class KigWidget;
 class KigDocument;
 class MonitorDataObjects;
-class PropertyObject;
-class ReferenceObject;
-class RealObject;
-class Object;
 
 /**
  * "Template method" pattern ( see the Design patterns book ):
@@ -51,7 +47,8 @@ private:
   // all moving objects: these objects are all of the objects that
   // need to be redrawn every time the cursor moves, and after calc is
   // called.
-  Objects amo;
+  std::vector<ObjectCalcer*> mcalcable;
+  std::vector<ObjectHolder*> mdrawable;
 protected:
   MovingModeBase( KigDocument& doc, KigWidget& v );
   ~MovingModeBase();
@@ -59,7 +56,7 @@ protected:
   // Subclasses should call this in their constructor, when they know
   // which objects will be moving around... They are expected to be in
   // the right order for being calc()'ed...
-  void initScreen( const Objects& amo );
+  void initScreen( const std::vector<ObjectCalcer*>& amo );
 
   // in these functions, subclasses should do the equivalent of
   // Object::stopMove() and moveTo()...  Note that no calc()'ing or
@@ -81,7 +78,7 @@ class MovingMode
   void stopMove();
   void moveTo( const Coordinate& o, bool snaptogrid );
 public:
-  MovingMode( const Objects& objects, const Coordinate& c,
+  MovingMode( const std::vector<ObjectHolder*>& objects, const Coordinate& c,
 	      KigWidget&, KigDocument& );
   ~MovingMode();
 };
@@ -89,15 +86,14 @@ public:
 class PointRedefineMode
   : public MovingModeBase
 {
-  RealObject* mp;
-  Objects moldparents;
+  ObjectHolder* mp;
+  std::vector<ObjectCalcer::shared_ptr> moldparents;
   const ObjectType* moldtype;
-  ReferenceObject* mref;
   MonitorDataObjects* mmon;
   void stopMove();
   void moveTo( const Coordinate& o, bool snaptogrid );
 public:
-  PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& v );
+  PointRedefineMode( ObjectHolder* p, KigDocument& d, KigWidget& v );
   ~PointRedefineMode();
 };
 

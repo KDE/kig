@@ -26,9 +26,9 @@
 #include "../kig/kig_commands.h"
 #include "../misc/i18n.h"
 #include "../objects/object_imp.h"
+#include "../objects/object_drawer.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/point_imp.h"
-#include "../objects/object.h"
 #include "../objects/other_type.h"
 #include "../objects/object_factory.h"
 #include "../misc/lists.h"
@@ -75,7 +75,7 @@ public:
    * much actions you added ( unless it's a fixed number, of course
    * ).
    */
-  virtual bool executeAction( int menu, int& id, const Objects& os,
+  virtual bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
                               NormalModePopupObjects& popup,
                               KigDocument& doc, KigWidget& w, NormalMode& m ) = 0;
 };
@@ -85,7 +85,7 @@ class BuiltinObjectActionsProvider
 {
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
-  bool executeAction( int menu, int& id, const Objects& os,
+  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
                       NormalModePopupObjects& popup,
                       KigDocument& doc, KigWidget& w, NormalMode& m );
 };
@@ -97,7 +97,7 @@ class BuiltinDocumentActionsProvider
   bool misfullscreen;
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
-  bool executeAction( int menu, int& id, const Objects& os,
+  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
                       NormalModePopupObjects& popup,
                       KigDocument& doc, KigWidget& w, NormalMode& m );
 };
@@ -108,7 +108,7 @@ class ObjectConstructorActionsProvider
   std::vector<ObjectConstructor*> mctors[NormalModePopupObjects::NumberOfMenus];
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
-  bool executeAction( int menu, int& id, const Objects& os,
+  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
                       NormalModePopupObjects& popup,
                       KigDocument& doc, KigWidget& w, NormalMode& m );
 };
@@ -119,7 +119,7 @@ class PropertiesActionsProvider
   std::vector<int> mprops[3];
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
-  bool executeAction( int menu, int& id, const Objects& os,
+  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
                       NormalModePopupObjects& popup,
                       KigDocument& doc, KigWidget& w, NormalMode& m );
 };
@@ -130,7 +130,7 @@ class ObjectTypeActionsProvider
   int mnoa;
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
-  bool executeAction( int menu, int& id, const Objects& os,
+  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
                       NormalModePopupObjects& popup,
                       KigDocument& doc, KigWidget& w, NormalMode& m );
 };
@@ -138,7 +138,7 @@ public:
 NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
                                                 KigWidget& view,
                                                 NormalMode& mode,
-                                                const Objects& objs )
+                                                const std::vector<ObjectHolder*>& objs )
   : KPopupMenu( &view ), mplc( QCursor::pos() ), mdoc( doc ), mview( view ), mobjs( objs ),
     mmode( mode )
 {
@@ -148,7 +148,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
 
   insertTitle( empty ? i18n( "Kig Document" )
                : single ? objs[0]->imp()->type()->translatedName()
-               : i18n( "%1 Objects" ).arg( objs.size() ), 1 );
+               : i18n( "%1 std::vector<ObjectHolder*>" ).arg( objs.size() ), 1 );
 
   if ( empty )
   {
@@ -290,13 +290,13 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
   {
     bool point = true;
     bool samecolor = true;
-    Objects os = popup.objects();
-    QColor color = os.front()->color();
-    for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    std::vector<ObjectHolder*> os = popup.objects();
+    QColor color = os.front()->drawer()->color();
+    for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
     {
       if ( ! (*i)->imp()->inherits( PointImp::stype() ) )
         point = false;
-      if ( (*i)->color() != color ) samecolor = false;
+      if ( (*i)->drawer()->color() != color ) samecolor = false;
     };
     if ( ! samecolor ) color = Qt::blue;
     QPixmap p( point ? 20 : 50, 20 );
@@ -324,7 +324,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
 }
 
 bool BuiltinObjectActionsProvider::executeAction(
-  int menu, int& id, const Objects& os, NormalModePopupObjects& popup,
+  int menu, int& id, const std::vector<ObjectHolder*>& os, NormalModePopupObjects& popup,
   KigDocument& doc, KigWidget& w, NormalMode& mode )
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
@@ -338,9 +338,7 @@ bool BuiltinObjectActionsProvider::executeAction(
     {
     case 0:
       // hide the objects..
-      for_each( os.begin(), os.end(),
-                bind2nd( mem_fun( &Object::setShown ), false ) );
-      doc.mode()->redrawScreen();
+      doc.hideObjects( os );
       break;
     case 1:
     {
@@ -371,11 +369,12 @@ bool BuiltinObjectActionsProvider::executeAction(
       return false;
     };
     const QColor* color = colors[id];
+    KigCommand* kc = new KigCommand( doc, i18n( "Change Object Color" ) );
     assert( color );
-    for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-      (*i)->setColor( *color );
+    for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
+      kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyColor( *color ) ) );
+    doc.history()->addCommand( kc );
     mode.clearSelection();
-    w.redrawScreen();
     return true;
   }
   else if ( menu == NormalModePopupObjects::SetSizeMenu )
@@ -386,11 +385,11 @@ bool BuiltinObjectActionsProvider::executeAction(
       return false;
     };
 
-    for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-      if ( (*i)->inherits( Object::ID_RealObject ) )
-        static_cast<RealObject*>(*i)->setWidth( 1 + 2*id );
+    KigCommand* kc = new KigCommand( doc, i18n( "Change Object Width" ) );
+    for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
+      kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyWidth( 1 + 2 * id ) ) );
+    doc.history()->addCommand( kc );
     mode.clearSelection();
-    w.redrawScreen();
     return true;
   }
   else return false;
@@ -412,7 +411,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     }
     else
     {
-      int ret = (*i)->wantArgs( popup.objects(), d, v );
+      int ret = (*i)->wantArgs( getCalcers( popup.objects() ), d, v );
       if ( ret == ArgsParser::Invalid ) continue;
       if ( (*i)->isTransform() && popup.objects().size() == 1 ) add = menu == NormalModePopupObjects::TransformMenu;
       else if ( ( *i )->isIntersection() ) add = menu == NormalModePopupObjects::ToplevelMenu;
@@ -435,7 +434,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
 }
 
 bool ObjectConstructorActionsProvider::executeAction(
-  int menu, int& id, const Objects& os,
+  int menu, int& id, const std::vector<ObjectHolder*>& os,
   NormalModePopupObjects&,
   KigDocument& doc, KigWidget& w, NormalMode& m )
 {
@@ -446,11 +445,11 @@ bool ObjectConstructorActionsProvider::executeAction(
   }
 
   ObjectConstructor* ctor = mctors[menu][id];
-  if ( ! os.empty() && ctor->wantArgs( os, doc, w ) == ArgsParser::Complete )
+  std::vector<ObjectCalcer*> osc = getCalcers( os );
+  if ( ! os.empty() && ctor->wantArgs( osc, doc, w ) == ArgsParser::Complete )
   {
-    ctor->handleArgs( os, doc, w );
+    ctor->handleArgs( osc, doc, w );
     m.clearSelection();
-    w.redrawScreen();
   }
   else
   {
@@ -517,14 +516,14 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
                                             int menu, int& nextfree )
 {
   if ( popup.objects().size() != 1 ) return;
-  Object* o = popup.objects()[0];
-  uint np = o->numberOfProperties();
+  ObjectHolder* o = popup.objects()[0];
+  uint np = o->imp()->numberOfProperties();
   if ( menu != NormalModePopupObjects::ConstructMenu &&
        menu != NormalModePopupObjects::ShowMenu ) return;
   for ( uint i = 0; i < np; ++i )
   {
-    ObjectImp* prop = o->property( i, popup.document() );
-    const char* iconfile = o->iconForProperty( i );
+    ObjectImp* prop = o->imp()->property( i, popup.document() );
+    const char* iconfile = o->imp()->iconForProperty( i );
     bool add = true;
     if ( menu == NormalModePopupObjects::ConstructMenu )
     {
@@ -534,7 +533,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
       // we don't want to construct PointImp's coordinate property,
       // since it would construct a point at the same place as its
       // parent..
-      add &= ! ( o->hasimp( PointImp::stype() ) &&
+      add &= ! ( o->imp()->inherits( PointImp::stype() ) &&
                  prop->inherits( PointImp::stype() ) );
     }
     else if ( menu == NormalModePopupObjects::ShowMenu )
@@ -544,11 +543,11 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
       if ( iconfile && *iconfile )
       {
         QPixmap pix = KGlobal::iconLoader()->loadIcon( iconfile, KIcon::User );
-        popup.addAction( menu, pix, i18n( o->properties()[i] ), nextfree++ );
+        popup.addAction( menu, pix, i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else
       {
-        popup.addAction( menu, i18n( o->properties()[i] ), nextfree++ );
+        popup.addAction( menu, i18n( o->imp()->properties()[i] ), nextfree++ );
       };
       mprops[menu-1].push_back( i );
     };
@@ -557,7 +556,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
 }
 
 bool PropertiesActionsProvider::executeAction(
-  int menu, int& id, const Objects& os,
+  int menu, int& id, const std::vector<ObjectHolder*>& os,
   NormalModePopupObjects& popup,
   KigDocument& doc, KigWidget& w, NormalMode& )
 {
@@ -571,25 +570,24 @@ bool PropertiesActionsProvider::executeAction(
   }
   int propid = mprops[menu-1][id];
   assert( os.size() == 1 );
-  Object* parent = os[0];
+  ObjectHolder* parent = os[0];
   if ( menu == NormalModePopupObjects::ShowMenu )
   {
-    Objects ret;
-    ret.push_back( new PropertyObject( parent, propid ) );
-    ret.back()->calc( doc );
+    std::vector<ObjectCalcer*> args;
+    args.push_back( new ObjectPropertyCalcer( parent->calcer(), propid ) );
+    args.back()->calc( doc );
     Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
-    Object* label = ObjectFactory::instance()->attachedLabel(
-      QString::fromLatin1( "%1" ), parent, c,
-      false, ret, doc );
+    ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
+      QString::fromLatin1( "%1" ), parent->calcer(), c,
+      false, args, doc );
     doc.addObject( label );
   }
   else
   {
-    Objects ret;
-    ret.push_back( new PropertyObject( parent, propid ) );
-    ret.push_back( new RealObject( CopyObjectType::instance(), ret ) );
-    ret.calc( doc );
-    doc.addObjects( ret );
+    ObjectHolder* h = new ObjectHolder(
+      new ObjectPropertyCalcer( parent->calcer(), propid ) );
+    h->calc( doc );
+    doc.addObject( h );
   };
   return true;
 }
@@ -599,10 +597,10 @@ void ObjectTypeActionsProvider::fillUpMenu(
 {
   if ( popup.objects().size() != 1 ) return;
   if ( menu != NormalModePopupObjects::ToplevelMenu ) return;
-  Object* to = popup.objects()[0];
-  if ( ! to->inherits( Object::ID_RealObject ) ) return;
-  RealObject* o = static_cast<RealObject*>( to );
-  const ObjectType* t = o->type();
+  ObjectHolder* to = popup.objects()[0];
+  ObjectTypeCalcer* c = dynamic_cast<ObjectTypeCalcer*>( to->calcer() );
+  if ( ! c ) return;
+  const ObjectType* t = c->type();
 
   QStringList l = t->specialActions();
   mnoa = l.count();
@@ -611,7 +609,7 @@ void ObjectTypeActionsProvider::fillUpMenu(
 }
 
 bool ObjectTypeActionsProvider::executeAction(
-  int menu, int& id, const Objects& os,
+  int menu, int& id, const std::vector<ObjectHolder*>& os,
   NormalModePopupObjects&,
   KigDocument& doc, KigWidget& w, NormalMode& m )
 {
@@ -621,9 +619,11 @@ bool ObjectTypeActionsProvider::executeAction(
     id -= mnoa;
     return false;
   }
-  assert( os.size() == 1 && os[0]->inherits( Object::ID_RealObject ) );
-  RealObject* o = static_cast<RealObject*>( os[0] );
-  o->type()->executeAction( id, o, doc, w, m );
+  assert( os.size() == 1 );
+  ObjectTypeCalcer* oc = dynamic_cast<ObjectTypeCalcer*>( os[0]->calcer() );
+  assert(  oc );
+
+  oc->type()->executeAction( id, *os[0], *oc, doc, w, m );
   return true;
 }
 
@@ -653,7 +653,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
 }
 
 bool BuiltinDocumentActionsProvider::executeAction(
-  int menu, int& id, const Objects&,
+  int menu, int& id, const std::vector<ObjectHolder*>&,
   NormalModePopupObjects&,
   KigDocument& doc, KigWidget& w, NormalMode& m )
 {
@@ -663,7 +663,6 @@ bool BuiltinDocumentActionsProvider::executeAction(
     {
       doc.showHidden();
       m.clearSelection();
-      w.redrawScreen();
       return true;
     }
     else if ( id == 1 )

@@ -44,7 +44,7 @@ bool ObjectType::canMove() const
   return false;
 }
 
-void ObjectType::move( RealObject*, const Coordinate&, const KigDocument& ) const
+void ObjectType::move( ObjectTypeCalcer&, const Coordinate&, const KigDocument& ) const
 {
   // we can't do an assert here, because sometimes ( like in
   // ObjectABType::move, ObjectType::move is called without checking
@@ -84,57 +84,30 @@ QStringList ObjectType::specialActions() const
   return QStringList();
 }
 
-void ObjectType::executeAction( int, RealObject*, KigDocument&, KigWidget&,
+void ObjectType::executeAction( int, ObjectHolder&, ObjectTypeCalcer&, KigDocument&, KigWidget&,
                                 NormalMode& ) const
 {
   assert( false );
 }
 
-const Coordinate ObjectType::moveReferencePoint( const RealObject* ) const
+const Coordinate ObjectType::moveReferencePoint( const ObjectTypeCalcer& ) const
 {
   assert( false );
   return Coordinate::invalidCoord();
 }
 
-Objects ArgsParserObjectType::sortArgs( const Objects& args ) const
+std::vector<ObjectCalcer*> ArgsParserObjectType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
 {
   return margsparser.parse( args );
 }
 
-DummyObjectType* DummyObjectType::instance()
+Args ArgsParserObjectType::sortArgs( const Args& args ) const
 {
-  static DummyObjectType ret;
-  return &ret;
+  return margsparser.parse( args );
 }
 
-ObjectImp* DummyObjectType::calc( const Args&, const KigDocument& ) const
+std::vector<ObjectCalcer*> ObjectType::movableParents( const ObjectTypeCalcer& ourobj ) const
 {
-  return new InvalidImp;
+  return std::vector<ObjectCalcer*>();
 }
-
-DummyObjectType::DummyObjectType()
-  : ObjectType( "DummyObjectType" )
-{
-
-}
-
-const ObjectImpType* DummyObjectType::impRequirement( const ObjectImp*, const Args& ) const
-{
-  return ObjectImp::stype();
-}
-
-const ObjectImpType* DummyObjectType::resultId() const
-{
-  return InvalidImp::stype();
-}
-
-Objects DummyObjectType::sortArgs( const Objects& args ) const
-{
-  return args;
-}
-
-DummyObjectType::~DummyObjectType()
-{
-}
-
 

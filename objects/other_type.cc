@@ -22,7 +22,6 @@
 #include "other_imp.h"
 #include "point_imp.h"
 #include "locus_imp.h"
-#include "object.h"
 
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
@@ -335,20 +334,16 @@ QStringList AngleType::specialActions() const
 }
 
 void AngleType::executeAction(
-  int i, RealObject* o, KigDocument& d, KigWidget& w,
-  NormalMode& ) const
+  int i, ObjectHolder&, ObjectTypeCalcer& t,
+  KigDocument& d, KigWidget& w, NormalMode& ) const
 {
+  assert( i == 0 );
   // pretend to use this var..
   (void) i;
-  assert( i == 0 );
 
-  Objects parents = o->parents();
-  assert( parents.size() == 3 );
+  std::vector<ObjectCalcer*> parents = t.parents();
 
-  if ( ! parents[0]->hasimp( PointImp::stype() ) ||
-       ! parents[1]->hasimp( PointImp::stype() ) ||
-       ! parents[2]->hasimp( PointImp::stype() ) )
-    return;
+  assert( margsparser.checkArgs( parents ) );
 
   Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
   Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
@@ -381,21 +376,37 @@ void AngleType::executeAction(
   MonitorDataObjects mon( getAllParents( parents ) );
   parents[2]->move( nc, d );
   KigCommand* kc = new KigCommand( d, i18n( "Resize &Angle" ) );
-  kc->addTask( mon.finish() );
+  mon.finish( kc );
   d.history()->addCommand( kc );
 }
 
-Objects CopyObjectType::sortArgs( const Objects& os ) const
+std::vector<ObjectCalcer*> CopyObjectType::sortArgs( const std::vector<ObjectCalcer*>& os ) const
 {
   assert( os.size() == 1 );
   return os;
 }
 
-Objects LocusType::sortArgs( const Objects& args ) const
+std::vector<ObjectCalcer*> LocusType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
 {
   assert( args.size() >= 2 );
-  Objects firsttwo( args.begin(), args.begin() + 2 );
+  std::vector<ObjectCalcer*> firsttwo( args.begin(), args.begin() + 2 );
   firsttwo = margsparser.parse( firsttwo );
   std::copy( args.begin() + 2, args.end(), std::back_inserter( firsttwo ) );
   return firsttwo;
 }
+
+Args LocusType::sortArgs( const Args& args ) const
+{
+  assert( args.size() >= 2 );
+  Args firsttwo( args.begin(), args.begin() + 2 );
+  firsttwo = margsparser.parse( firsttwo );
+  std::copy( args.begin() + 2, args.end(), std::back_inserter( firsttwo ) );
+  return firsttwo;
+}
+
+Args CopyObjectType::sortArgs( const Args& args ) const
+{
+  assert( args.size() == 1 );
+  return args;
+}
+

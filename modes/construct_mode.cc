@@ -18,8 +18,8 @@
 
 #include "construct_mode.h"
 
-#include "../objects/object.h"
 #include "../objects/object_factory.h"
+#include "../objects/object_drawer.h"
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
@@ -31,69 +31,77 @@
 #include <kcursor.h>
 #include <kaction.h>
 
-static void redefinePoint( Object* mpt, const Coordinate& c, KigDocument& doc, const KigWidget& w )
+#include <algorithm>
+
+static void redefinePoint( ObjectTypeCalcer* mpt, const Coordinate& c, KigDocument& doc, const KigWidget& w )
 {
   ObjectFactory::instance()->redefinePoint( mpt, c, doc, w );
   mpt->calc( doc );
 }
 
 ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
-  : BaseMode( d ), mctor( ctor ),
-    mpt( 0 )
+  : BaseMode( d ), mctor( ctor )
 {
-  mpt = ObjectFactory::instance()->fixedPoint( Coordinate( 0, 0 ) );
+  mpt = ObjectFactory::instance()->fixedPointCalcer( Coordinate( 0, 0 ) );
   mpt->calc( d );
 }
 
 ConstructMode::~ConstructMode()
 {
-  delete mpt;
 }
 
 void ConstructMode::leftClickedObject(
-  Object* o, const QPoint& p, KigWidget& w, bool )
+  ObjectHolder* o, const QPoint& p, KigWidget& w, bool )
 {
-  if ( o && !mparents.contains( o ) && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
+  bool alreadyselected = std::find( mparents.begin(), mparents.end(), o ) != mparents.end();
+  std::vector<ObjectCalcer*> nargs = getCalcers( mparents );
+  if ( o && !alreadyselected )
   {
-    selectObject( o, w );
+    nargs.push_back( o->calcer() );
+    if ( mctor->wantArgs( nargs, mdoc, w ) )
+    {
+      selectObject( o, w );
+      return;
+    }
   }
-  else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
+
+  nargs = getCalcers( mparents );
+  nargs.push_back( mpt.get() );
+  if ( mctor->wantArgs( nargs, mdoc, w ) )
   {
     // add mpt to the document..
-    mdoc.addObject( mpt );
-    selectObject( mpt, w );
+    ObjectHolder* n = new ObjectHolder( mpt.get() );
+    mdoc.addObject( n );
+    selectObject( n, w );
     // get a new mpt for our further use..
-    mpt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ),
-                                                             mdoc, w );
+    mpt = ObjectFactory::instance()->sensiblePointCalcer( w.fromScreen( p ), mdoc, w );
     mpt->calc( mdoc );
   }
-  else
-  {
-  };
 }
 
 void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
+  std::vector<ObjectCalcer*> args = getCalcers( mparents );
+  args.push_back( mpt.get() );
+  if ( mctor->wantArgs( args, mdoc, w ) )
   {
-    mdoc.addObject( mpt );
+    ObjectHolder* n = new ObjectHolder( mpt.get() );
+    mdoc.addObject( n );
 
-    selectObject( mpt, w );
+    selectObject( n, w );
 
-    mpt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
+    mpt = ObjectFactory::instance()->sensiblePointCalcer( w.fromScreen( p ), mdoc, w );
     mpt->calc( mdoc );
   }
 }
 
-void ConstructMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
+void ConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
 {
   // TODO ?
 }
 
-void ConstructMode::mouseMoved( const Objects& os,
-                                const QPoint& p,
-                                KigWidget& w,
-                                bool shiftpressed )
+void ConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
+                                KigWidget& w, bool shiftpressed )
 {
   w.updateCurPix();
   KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
@@ -106,25 +114,20 @@ void ConstructMode::mouseMoved( const Objects& os,
   if ( shiftpressed )
     ncoord = mdoc.coordinateSystem().snapToGrid( ncoord, w );
 
-  redefinePoint( mpt, ncoord, mdoc, w );
+  redefinePoint( mpt.get(), ncoord, mdoc, w );
 
-  if ( !os.empty() && !mparents.contains( os.front() ) &&
-       mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
+  bool alreadyselected = false;
+  std::vector<ObjectCalcer*> args = getCalcers( mparents );
+  if ( ! os.empty() )
   {
-    mctor->handlePrelim( pter, mparents.with( os.front() ), mdoc, w );
-
-    QString o = mctor->useText( *os.front(), mparents, mdoc, w );
-    mdoc.emitStatusBarText( o );
-    pter.drawTextStd( textloc, o );
-
-    w.setCursor( KCursor::handCursor() );
+    alreadyselected = std::find( mparents.begin(), mparents.end(), os.front() ) != mparents.end();
+    args.push_back( os.front()->calcer() );
   }
-  else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
+  if ( !os.empty() && ! alreadyselected && mctor->wantArgs( args, mdoc, w ) )
   {
-    mpt->draw( pter, true );
-    mctor->handlePrelim( pter, mparents.with( mpt ), mdoc, w );
+    mctor->handlePrelim( pter, args, mdoc, w );
 
-    QString o = mctor->useText( *mpt, mparents, mdoc, w );
+    QString o = mctor->useText( *os.front()->calcer(), args, mdoc, w );
     mdoc.emitStatusBarText( o );
     pter.drawTextStd( textloc, o );
 
@@ -132,50 +135,63 @@ void ConstructMode::mouseMoved( const Objects& os,
   }
   else
   {
-    w.setCursor( KCursor::arrowCursor() );
-  };
+    std::vector<ObjectCalcer*> args = getCalcers( mparents );
+    args.push_back( mpt.get() );
+    if ( mctor->wantArgs( args, mdoc, w ) )
+    {
+      ObjectDrawer d;
+      d.draw( *mpt->imp(), pter, true );
+      mctor->handlePrelim( pter, args, mdoc, w );
+
+      QString o = mctor->useText( *mpt, args, mdoc, w );
+      mdoc.emitStatusBarText( o );
+      pter.drawTextStd( textloc, o );
+
+      w.setCursor( KCursor::handCursor() );
+    }
+    else
+    {
+      w.setCursor( KCursor::arrowCursor() );
+    }
+  }
   w.updateWidget( pter.overlay() );
 }
 
-void ConstructMode::selectObject( Object* o, KigWidget& w )
+void ConstructMode::selectObject( ObjectHolder* o, KigWidget& w )
 {
   mparents.push_back( o );
-  o->setSelected( true );
+  std::vector<ObjectCalcer*> args = getCalcers( mparents );
 
-  if ( mctor->wantArgs( mparents, mdoc, w ) == ArgsParser::Complete )
+  if ( mctor->wantArgs( args, mdoc, w ) == ArgsParser::Complete )
   {
-    mctor->handleArgs( mparents, mdoc, w );
+    mctor->handleArgs( args, mdoc, w );
     // finish off..
     finish();
   };
 
-  w.redrawScreen();
+  w.redrawScreen( mparents );
 }
 
 PointConstructMode::PointConstructMode( KigDocument& d )
-  : BaseMode( d ),
-    mpt( 0 )
+  : BaseMode( d )
 {
   // we add the data objects to the document cause
   // ObjectFactory::redefinePoint does that too, and this way, we can
   // depend on them already being known by the doc when we add the
   // mpt..
-  mpt = ObjectFactory::instance()->fixedPoint( Coordinate() );
+  mpt = ObjectFactory::instance()->fixedPointCalcer( Coordinate() );
   mpt->calc( d );
 }
 
 PointConstructMode::~PointConstructMode()
 {
-  // delete mpt and its obsolete parents..
-  delete mpt;
 }
 
 void PointConstructMode::leftClickedObject(
-  Object*, const QPoint&, KigWidget& w, bool )
+  ObjectHolder*, const QPoint&, KigWidget& w, bool )
 {
-  mdoc.addObject( mpt );
-  mpt = 0;
-  w.redrawScreen();
+  mdoc.addObject( new ObjectHolder( mpt.get() ) );
+  w.redrawScreen( std::vector<ObjectHolder*>() );
   mdoc.doneMode( this );
 }
 
@@ -184,14 +200,14 @@ void PointConstructMode::midClicked( const QPoint& p, KigWidget& w )
   leftClickedObject( 0, p, w, true );
 }
 
-void PointConstructMode::rightClicked( const Objects&, const QPoint&,
+void PointConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&,
                                        KigWidget& )
 {
   // TODO ?
 }
 
 void PointConstructMode::mouseMoved(
-  const Objects&,
+  const std::vector<ObjectHolder*>&,
   const QPoint& p,
   KigWidget& w,
   bool shiftpressed )
@@ -203,9 +219,10 @@ void PointConstructMode::mouseMoved(
   if ( shiftpressed )
     ncoord = mdoc.coordinateSystem().snapToGrid( ncoord, w );
 
-  redefinePoint( mpt, ncoord, mdoc, w );
+  redefinePoint( mpt.get(), ncoord, mdoc, w );
 
-  mpt->draw( pter, true );
+  ObjectDrawer d;
+  d.draw( *mpt->imp(), pter, true );
   w.setCursor( KCursor::blankCursor() );
 
   w.updateWidget( pter.overlay() );
@@ -235,11 +252,12 @@ void PointConstructMode::cancelConstruction()
   mdoc.doneMode( this );
 }
 
-void ConstructMode::selectObjects( const Objects& os, KigWidget& w )
+void ConstructMode::selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w )
 {
-  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    assert( mctor->wantArgs( mparents, mdoc, w ) != ArgsParser::Complete );
+    std::vector<ObjectCalcer*> args = getCalcers( mparents );
+    assert( mctor->wantArgs( args, mdoc, w ) != ArgsParser::Complete );
     selectObject( *i, w );
   };
 }

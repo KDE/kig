@@ -178,12 +178,16 @@ ObjectImpType::ObjectImpType( const ObjectImpType* parent,
                               const char* removeastatement,
                               const char* addastatement,
                               const char* moveastatement,
-                              const char* attachtothisstatement )
+                              const char* attachtothisstatement,
+                              const char* showastatement,
+                              const char* hideastatement )
   : mparent( parent ), minternalname( internalname ),
     mtranslatedname( translatedname ), mselectstatement( selectstatement ),
     mremoveastatement( removeastatement ), maddastatement( addastatement ),
     mmoveastatement( moveastatement ),
-    mattachtothisstatement( attachtothisstatement )
+    mattachtothisstatement( attachtothisstatement ),
+    mshowastatement( showastatement ),
+    mhideastatement( hideastatement )
 {
   sd()->namemap[minternalname] = this;
 }
@@ -250,7 +254,9 @@ const ObjectImpType* ObjectImp::stype()
     I18N_NOOP( "Remove an object" ),
     I18N_NOOP( "Add an object" ),
     I18N_NOOP( "Move an object" ),
-    I18N_NOOP( "Attach to this object" ) );
+    I18N_NOOP( "Attach to this object" ),
+    I18N_NOOP( "Show an object" ),
+    I18N_NOOP( "Hide an object" ) );
   return &t;
 }
 
@@ -268,4 +274,14 @@ bool ObjectImp::isCache() const
 QString ObjectImpType::attachToThisStatement() const
 {
   return i18n( mattachtothisstatement );
+}
+
+QString ObjectImpType::showAStatement() const
+{
+  return i18n( mshowastatement );
+}
+
+QString ObjectImpType::hideAStatement() const
+{
+  return i18n( mhideastatement );
 }

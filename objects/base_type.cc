@@ -21,7 +21,7 @@
 #include "point_imp.h"
 #include "line_imp.h"
 #include "bogus_imp.h"
-#include "object.h"
+#include "object_calcer.h"
 
 #include "../misc/common.h"
 
@@ -50,11 +50,10 @@ bool ObjectABType::canMove() const
   return true;
 }
 
-void ObjectABType::move( RealObject* o,
-                         const Coordinate& to,
+void ObjectABType::move( ObjectTypeCalcer& o, const Coordinate& to,
                          const KigDocument& d ) const
 {
-  Objects parents = o->parents();
+  std::vector<ObjectCalcer*> parents = o.parents();
   assert( margsparser.checkArgs( parents ) );
   const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
@@ -80,9 +79,21 @@ ObjectImp* ObjectLPType::calc( const Args& args, const KigDocument& ) const
   return calc( l, c );
 }
 
-const Coordinate ObjectABType::moveReferencePoint( const RealObject* o ) const
+const Coordinate ObjectABType::moveReferencePoint( const ObjectTypeCalcer& o ) const
 {
-  Objects parents = o->parents();
+  std::vector<ObjectCalcer*> parents = o.parents();
   assert( margsparser.checkArgs( parents ) );
   return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> ObjectABType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
+  std::set<ObjectCalcer*> ret;
+  std::vector<ObjectCalcer*> tmp = parents[0]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  tmp = parents[1]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  ret.insert( parents.begin(), parents.end() );
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
 }

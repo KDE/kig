@@ -21,13 +21,13 @@
 #include "object_constructor.h"
 #include "i18n.h"
 #include "guiaction.h"
-#include "oldkigformat.h"
+// #include "oldkigformat.h"
 #include "object_hierarchy.h"
-#include "../objects/object.h"
 #include "../kig/kig_part.h"
 
 #include "config.h"
 
+#include <kmessagebox.h>
 #include <qfile.h>
 #include <qtextstream.h>
 #include <qdom.h>
@@ -53,61 +53,61 @@ GUIActionList::GUIActionList()
 
 void GUIActionList::regDoc( KigDocument* d )
 {
-  mdocs.push_back( d );
+  mdocs.insert( d );
 }
 
 void GUIActionList::unregDoc( KigDocument* d )
 {
-  mdocs.remove( d );
+  mdocs.erase( d );
 }
 
-void GUIActionList::add( const myvector<GUIAction*>& a )
+void GUIActionList::add( const std::vector<GUIAction*>& a )
 {
-  copy( a.begin(), a.end(), back_inserter( mactions ) );
-  for ( uint i = 0; i < mdocs.size(); ++i )
+  copy( a.begin(), a.end(), inserter( mactions, mactions.begin() ) );
+  for ( dvectype::iterator i = mdocs.begin(); i != mdocs.end(); ++i )
   {
-    KigDocument::GUIUpdateToken t = mdocs[i]->startGUIActionUpdate();
+    KigDocument::GUIUpdateToken t = (*i)->startGUIActionUpdate();
     for ( uint j = 0; j < a.size(); ++j )
-      mdocs[i]->actionAdded( a[j], t );
-    mdocs[i]->endGUIActionUpdate( t );
+      (*i)->actionAdded( a[j], t );
+    (*i)->endGUIActionUpdate( t );
   };
 }
 
 void GUIActionList::add( GUIAction* a )
 {
-  mactions.push_back( a );
-  for ( uint i = 0; i < mdocs.size(); ++i )
+  mactions.insert( a );
+  for ( dvectype::iterator i = mdocs.begin(); i != mdocs.end(); ++i )
   {
-    KigDocument::GUIUpdateToken t = mdocs[i]->startGUIActionUpdate();
-    mdocs[i]->actionAdded( a, t );
-    mdocs[i]->endGUIActionUpdate( t );
+    KigDocument::GUIUpdateToken t = (*i)->startGUIActionUpdate();
+    (*i)->actionAdded( a, t );
+    (*i)->endGUIActionUpdate( t );
   };
 }
 
-void GUIActionList::remove( const myvector<GUIAction*>& a )
+void GUIActionList::remove( const std::vector<GUIAction*>& a )
 {
   for ( uint i = 0; i < a.size(); ++i )
   {
-    mactions.remove( a[i] );
+    mactions.erase( a[i] );
   };
-  for ( uint i = 0; i < mdocs.size(); ++i )
+  for ( dvectype::iterator i = mdocs.begin(); i != mdocs.end(); ++i )
   {
-    KigDocument::GUIUpdateToken t = mdocs[i]->startGUIActionUpdate();
+    KigDocument::GUIUpdateToken t = (*i)->startGUIActionUpdate();
     for ( uint j = 0; j < a.size(); ++j )
-      mdocs[i]->actionRemoved( a[j], t );
-    mdocs[i]->endGUIActionUpdate( t );
+      (*i)->actionRemoved( a[j], t );
+    (*i)->endGUIActionUpdate( t );
   };
   delete_all( a.begin(), a.end() );
 }
 
 void GUIActionList::remove( GUIAction* a )
 {
-  mactions.remove( a );
-  for ( uint i = 0; i < mdocs.size(); ++i )
+  mactions.erase( a );
+  for ( dvectype::iterator i = mdocs.begin(); i != mdocs.end(); ++i )
   {
-    KigDocument::GUIUpdateToken t = mdocs[i]->startGUIActionUpdate();
-    mdocs[i]->actionRemoved( a, t );
-    mdocs[i]->endGUIActionUpdate( t );
+    KigDocument::GUIUpdateToken t = (*i)->startGUIActionUpdate();
+    (*i)->actionRemoved( a, t );
+    (*i)->endGUIActionUpdate( t );
   };
   delete a;
 }
@@ -129,7 +129,7 @@ ObjectConstructorList* ObjectConstructorList::instance()
 }
 
 ObjectConstructorList::vectype ObjectConstructorList::ctorsThatWantArgs(
-  const Objects& os, const KigDocument& d,
+  const std::vector<ObjectCalcer*>& os, const KigDocument& d,
   const KigWidget& w, bool co ) const
 {
   vectype ret;
@@ -144,7 +144,7 @@ ObjectConstructorList::vectype ObjectConstructorList::ctorsThatWantArgs(
 
 void ObjectConstructorList::remove( ObjectConstructor* a )
 {
-  mctors.remove( a );
+  vect_remove( mctors, a );
   delete a;
 }
 
@@ -164,8 +164,8 @@ MacroList::MacroList()
 
 MacroList::~MacroList()
 {
-  myvector<GUIAction*> actions;
-  myvector<ObjectConstructor*> ctors;
+  std::vector<GUIAction*> actions;
+  std::vector<ObjectConstructor*> ctors;
   for ( vectype::iterator i = mdata.begin(); i != mdata.end(); ++i )
   {
     Macro* m = *i;
@@ -187,10 +187,10 @@ MacroList* MacroList::instance()
   return &t;
 }
 
-void MacroList::add( const myvector<Macro*>& ms )
+void MacroList::add( const std::vector<Macro*>& ms )
 {
   copy( ms.begin(), ms.end(), back_inserter( mdata ) );
-  myvector<GUIAction*> acts;
+  std::vector<GUIAction*> acts;
   for ( uint i = 0; i < ms.size(); ++i )
   {
     ObjectConstructorList::instance()->add( ms[i]->ctor );
@@ -210,7 +210,8 @@ void MacroList::remove( Macro* m )
 {
   GUIAction* a = m->action;
   ObjectConstructor* c = m->ctor;
-  mdata.remove( m );
+  mdata.erase( std::remove( mdata.begin(), mdata.end(), m ),
+               mdata.end() );
   delete m;
   GUIActionList::instance()->remove( a );
   ObjectConstructorList::instance()->remove( c );
@@ -227,10 +228,12 @@ Macro::~Macro()
 
 bool MacroList::save( Macro* m, const QString& f )
 {
-  return save( myvector<Macro*>( m ), f );
+  std::vector<Macro*> ms;
+  ms.push_back( m );
+  return save( ms, f );
 }
 
-bool MacroList::save( const myvector<Macro*>& ms, const QString& f )
+bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
 {
   QDomDocument doc( "KigMacroFile" );
 
@@ -272,24 +275,39 @@ bool MacroList::save( const myvector<Macro*>& ms, const QString& f )
   return true;
 }
 
-bool MacroList::load( const QString& f, myvector<Macro*>& ret, const KigDocument& kdoc )
+bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigDocument& kdoc )
 {
   QFile file( f );
   if ( ! file.open( IO_ReadOnly ) )
+  {
+    KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'" ).arg( f ) );
     return false;
+  }
   QDomDocument doc( "KigMacroFile" );
   if ( !doc.setContent( &file ) )
+  {
+    KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'" ).arg( f ) );
     return false;
+  }
   file.close();
   QDomElement main = doc.documentElement();
 
   if ( main.tagName() == "KigMacroFile" )
     return loadNew( main, ret, kdoc );
   else
-    return loadOld( main, ret, kdoc );
+  {
+    KMessageBox::detailedSorry(
+      0, i18n( "Kig cannot open the macro file \"%1\"." ).arg( f ),
+      i18n( "This file was created by a very old Kig version ( pre-0.4 )."
+            "Support for this format has been removed from recent Kig.  "
+            "You can try to import this macro using an older Kig version "
+            "( 0.4 to 0.6 ) and then export it again in the new format." ),
+      i18n( "Not Supported" ) );
+    return false;
+  }
 }
 
-bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret, const KigDocument& )
+bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, const KigDocument& )
 {
   bool sok = true;
   // unused..
@@ -332,67 +350,6 @@ bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret, cons
       new MacroConstructor( *hierarchy, name, description, iconfile );
     delete hierarchy;
     GUIAction* act = new ConstructibleAction( ctor, actionname );
-    Macro* macro = new Macro( act, ctor );
-    ret.push_back( macro );
-  };
-  return true;
-}
-
-bool MacroList::loadOld( const QDomElement& docelem, myvector<Macro*>& ret, const KigDocument& doc )
-{
-  assert( docelem.tagName() == "Types" );
-  // loop over all macro's in the file
-  for ( QDomElement mtypeel = docelem.firstChild().toElement();
-        ! mtypeel.isNull(); mtypeel = mtypeel.nextSibling().toElement() )
-  {
-    assert( mtypeel.tagName() == "MType" );
-    QString name = mtypeel.attribute( "name" );
-    QDomElement hierel = mtypeel.firstChild().toElement();
-    assert( hierel.tagName() == "ObjectHierarchy" );
-
-    // what we do here is: we fill up all the "given" objects with
-    // pseudo-objects generated by the randomObjectForType() function,
-    // then construct their child object using the rest of the old
-    // hierarchy, and then construct a new hierarchy using the
-    // generated objects.  This allows us to reuse the code from the
-    // import filter, which doesn't build a hierarchy, but generates
-    // the objects directly.  Rebuilding the hierarchy also allows us
-    // to make better use of the new style ObjectHierarchy features
-    // like the use of impRequirement to figure out what type
-    // requirements a macro has..
-
-    Objects given;
-
-    QDomElement e = hierel.firstChild().toElement();
-    for ( ; ! e.isNull(); e = e.nextSibling().toElement() )
-    {
-      assert( e.tagName() == "HierarchyElement" );
-      if ( e.attribute( "given" ) != "true" )
-        break;
-      QString tmp = e.attribute("typeName");
-      if(tmp.isNull()) return false;
-      QCString type = tmp.latin1();
-
-      Object* r = randomObjectForType( type );
-      r->parents().calc( doc );
-      r->calc( doc );
-      given.push_back( r );
-    };
-
-    assert( e.attribute( "given" ) != "true" );
-    ReferenceObject ref;
-    Objects final;
-
-    if ( !parseOldObjectHierarchyElements( e, given, ref,
-                                           final, doc ) ) return false;
-
-    assert( !final.empty() );
-
-    ObjectHierarchy hierarchy( given, final.front() );
-
-    MacroConstructor* ctor =
-      new MacroConstructor( hierarchy, name, QString::null );
-    GUIAction* act = new ConstructibleAction( ctor, 0 );
     Macro* macro = new Macro( act, ctor );
     ret.push_back( macro );
   };

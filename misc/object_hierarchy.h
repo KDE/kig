@@ -38,16 +38,19 @@ private:
   std::vector<const ObjectImpType*> margrequirements;
 
   // these two are really part of the constructor...
-  int visit( const Object* o, std::map<const Object*, int>&,
+  int visit( const ObjectCalcer* o, std::map<const ObjectCalcer*, int>&,
              bool isresult = false);
-  int storeObject( const Object*, const Objects& po, std::vector<int>& pl,
-                   std::map<const Object*, int>& seenmap );
+  int storeObject( const ObjectCalcer*, const std::vector<ObjectCalcer*>& po, std::vector<int>& pl,
+                   std::map<const ObjectCalcer*, int>& seenmap );
 
   friend bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs );
 
+  void init( const std::vector<ObjectCalcer*>& from, const std::vector<ObjectCalcer*>& to );
+
 public:
-  ObjectHierarchy( const Objects& from, const Object* to );
-  ObjectHierarchy( const Objects& from, const Objects& to );
+  ObjectHierarchy( const ObjectCalcer* from, const ObjectCalcer* to );
+  ObjectHierarchy( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
+  ObjectHierarchy( const std::vector<ObjectCalcer*>& from, const std::vector<ObjectCalcer*>& to );
   ObjectHierarchy( const ObjectHierarchy& h );
   ~ObjectHierarchy();
 
@@ -68,7 +71,7 @@ public:
   // objects that connect the given objects with the returned objects,
   // can only be found by following the returned objects' parents()
   // methods..
-  Objects buildObjects( const Objects& os, const KigDocument& ) const;
+  std::vector<ObjectCalcer*> buildObjects( const std::vector<ObjectCalcer*>& os, const KigDocument& ) const;
 
   ArgsParser argParser() const;
 

@@ -21,9 +21,8 @@
 
 #include "base_mode.h"
 
-#include "../misc/objects.h"
-
 #include <qpoint.h>
+#include <set>
 
 class NormalMode
   : public BaseMode
@@ -33,13 +32,13 @@ public:
   ~NormalMode();
 protected:
   void dragRect( const QPoint& p, KigWidget& w );
-  void dragObject( const Objects& os, const QPoint& pointClickedOn,
-                           KigWidget& w, bool ctrlOrShiftDown );
-  void leftClickedObject( Object* o, const QPoint& p,
-                                  KigWidget& w, bool ctrlOrShiftDown );
+  void dragObject( const std::vector<ObjectHolder*>& os, const QPoint& pointClickedOn,
+                   KigWidget& w, bool ctrlOrShiftDown );
+  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+                          KigWidget& w, bool ctrlOrShiftDown );
   void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const Objects& os, const QPoint& p, KigWidget& w );
-  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w,
+  void rightClicked( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w,
                    bool shiftpressed );
   void selectAll();
   void deselectAll();
@@ -49,7 +48,7 @@ protected:
   /**
    * Objcects were added..
    */
-  void redrawScreen();
+  void redrawScreen( KigWidget* );
 
   void enableActions();
 
@@ -59,16 +58,16 @@ protected:
   void editTypes();
 
 public:
-  void selectObject( Object* o );
-  void selectObjects( const Objects& os );
-  void unselectObject( Object* o );
+  void selectObject( ObjectHolder* o );
+  void selectObjects( const std::vector<ObjectHolder*>& os );
+  void unselectObject( ObjectHolder* o );
   void clearSelection();
 
 //   KigObjectsPopup* popup( const Objects& os );
 //   KigDocumentPopup* popup( KigDocument* );
 protected:
   // selected objects...
-  Objects sos;
+  std::set<ObjectHolder*> sos;
 };
 
 #endif

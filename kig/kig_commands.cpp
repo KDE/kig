@@ -26,6 +26,7 @@
 
 #include "../modes/mode.h"
 #include "../objects/object_imp.h"
+#include "../objects/object_drawer.h"
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate_system.h"
 
@@ -59,14 +60,14 @@ void KigCommand::execute()
 {
   for ( uint i = 0; i < d->tasks.size(); ++i )
     d->tasks[i]->execute( d->doc );
-  d->doc.mode()->redrawScreen();
+  d->doc.redrawScreen();
 }
 
 void KigCommand::unexecute()
 {
   for ( uint i = 0; i < d->tasks.size(); ++i )
     d->tasks[i]->unexecute( d->doc );
-  d->doc.mode()->redrawScreen();
+  d->doc.redrawScreen();
 }
 
 void KigCommand::addTask( KigCommandTask* t )
@@ -74,20 +75,23 @@ void KigCommand::addTask( KigCommandTask* t )
   d->tasks.push_back( t );
 }
 
-KigCommand* KigCommand::removeCommand( KigDocument& doc, Object* o )
+KigCommand* KigCommand::removeCommand( KigDocument& doc, ObjectHolder* o )
 {
-  Objects os( o );
+  std::vector<ObjectHolder*> os;
+  os.push_back( o );
+  return removeCommand( doc, os );
+}
+
+KigCommand* KigCommand::addCommand( KigDocument& doc, ObjectHolder* o )
+{
+  std::vector<ObjectHolder*> os;
+  os.push_back( o );
   return addCommand( doc, os );
 }
 
-KigCommand* KigCommand::addCommand( KigDocument& doc, Object* o )
+KigCommand* KigCommand::removeCommand( KigDocument& doc, const std::vector<ObjectHolder*>& os )
 {
-  Objects os( o );
-  return addCommand( doc, os );
-}
-
-KigCommand* KigCommand::removeCommand( KigDocument& doc, const Objects& os )
-{
+  assert( os.size() > 0 );
   QString text;
   if ( os.size() == 1 )
     text = os.back()->imp()->type()->removeAStatement();
@@ -98,7 +102,7 @@ KigCommand* KigCommand::removeCommand( KigDocument& doc, const Objects& os )
   return ret;
 }
 
-KigCommand* KigCommand::addCommand( KigDocument& doc, const Objects& os )
+KigCommand* KigCommand::addCommand( KigDocument& doc, const std::vector<ObjectHolder*>& os )
 {
   QString text;
   if ( os.size() == 1 )
@@ -126,28 +130,32 @@ KigCommandTask::~KigCommandTask()
 {
 }
 
-AddObjectsTask::AddObjectsTask( const Objects& os)
-  : KigCommandTask(), undone( true ), mobjsref( os )
+AddObjectsTask::AddObjectsTask( const std::vector<ObjectHolder*>& os)
+  : KigCommandTask(), undone( true ), mobjs( os )
 {
 }
 
 void AddObjectsTask::execute( KigDocument& doc )
 {
-  doc._addObjects( mobjsref.parents() );
+  doc._addObjects( mobjs );
   undone = false;
 }
 
 void AddObjectsTask::unexecute( KigDocument& doc )
 {
-  doc._delObjects( mobjsref.parents() );
+  doc._delObjects( mobjs );
   undone = true;
 }
 
 AddObjectsTask::~AddObjectsTask()
 {
+  if ( undone )
+    for ( std::vector<ObjectHolder*>::iterator i = mobjs.begin();
+          i != mobjs.end(); ++i )
+      delete *i;
 }
 
-RemoveObjectsTask::RemoveObjectsTask( const Objects& os )
+RemoveObjectsTask::RemoveObjectsTask( const std::vector<ObjectHolder*>& os )
   : AddObjectsTask( os )
 {
   undone = false;
@@ -163,65 +171,33 @@ void RemoveObjectsTask::unexecute( KigDocument& doc )
   AddObjectsTask::execute( doc );
 }
 
-struct MoveObjectData
-{
-  DataObject* o;
-  ObjectImp* newimp;
-};
-
-class ChangeObjectImpsTask::Private
-{
-public:
-  typedef vector<MoveObjectData> datavect;
-  datavect data;
-};
-
-ChangeObjectImpsTask::ChangeObjectImpsTask()
-  : KigCommandTask(), d( new Private )
+ChangeObjectConstCalcerTask::ChangeObjectConstCalcerTask( ObjectConstCalcer* calcer, ObjectImp* newimp )
+  : KigCommandTask(), mcalcer( calcer ), mnewimp( newimp )
 {
 }
 
-ChangeObjectImpsTask::~ChangeObjectImpsTask()
+void ChangeObjectConstCalcerTask::execute( KigDocument& doc )
 {
-  for ( Private::datavect::iterator i = d->data.begin();
-        i != d->data.end(); ++i )
-  {
-    delete i->newimp;
-  };
-  delete d;
+  mnewimp = mcalcer->switchImp( mnewimp );
+
+  std::set<ObjectCalcer*> allchildren = getAllChildren( mcalcer.get() );
+  std::vector<ObjectCalcer*> allchildrenvect( allchildren.begin(), allchildren.end() );
+  allchildrenvect = calcPath( allchildrenvect );
+  for ( std::vector<ObjectCalcer*>::iterator i = allchildrenvect.begin();
+        i != allchildrenvect.end(); ++i )
+    ( *i )->calc( doc );
 }
 
-void ChangeObjectImpsTask::execute( KigDocument& doc )
-{
-  Objects children;
-  for ( Private::datavect::iterator i = d->data.begin();
-        i != d->data.end(); ++i )
-  {
-    i->newimp = i->o->switchImp( i->newimp );
-    children.upush( i->o->getAllChildren() );
-  };
-  children = calcPath( children );
-  children.calc( doc );
-}
-
-void ChangeObjectImpsTask::unexecute( KigDocument& doc )
+void ChangeObjectConstCalcerTask::unexecute( KigDocument& doc )
 {
   execute( doc );
 }
 
-void ChangeObjectImpsTask::addObject( DataObject* o, ObjectImp* newimp )
-{
-  MoveObjectData n;
-  n.o = o;
-  n.newimp = newimp;
-  d->data.push_back( n );
-}
-
 struct MoveDataStruct
 {
-  DataObject* o;
+  ObjectConstCalcer* o;
   ObjectImp* oldimp;
-  MoveDataStruct( DataObject* io, ObjectImp* oi )
+  MoveDataStruct( ObjectConstCalcer* io, ObjectImp* oi )
     : o( io ), oldimp( oi ) { }
 };
 
@@ -231,38 +207,36 @@ public:
   vector<MoveDataStruct> movedata;
 };
 
-MonitorDataObjects::MonitorDataObjects( const Objects& objs )
+MonitorDataObjects::MonitorDataObjects( const std::vector<ObjectCalcer*>& objs )
   : d( new Private )
 {
   monitor( objs );
 }
 
-void MonitorDataObjects::monitor( const Objects& objs )
+void MonitorDataObjects::monitor( const std::vector<ObjectCalcer*>& objs )
 {
-  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
-    if ( (*i)->inherits( Object::ID_DataObject ) )
+  for ( std::vector<ObjectCalcer*>::const_iterator i = objs.begin(); i != objs.end(); ++i )
+    if ( dynamic_cast<ObjectConstCalcer*>( *i ) )
     {
-      MoveDataStruct n( static_cast<DataObject*>( *i ), (*i)->imp()->copy() );
+      MoveDataStruct n( static_cast<ObjectConstCalcer*>( *i ), (*i)->imp()->copy() );
       d->movedata.push_back( n );
     };
 }
 
-ChangeObjectImpsTask* MonitorDataObjects::finish()
+void MonitorDataObjects::finish( KigCommand* comm )
 {
-  ChangeObjectImpsTask* ret = new ChangeObjectImpsTask();
   for ( uint i = 0; i < d->movedata.size(); ++i )
   {
-    DataObject* o = d->movedata[i].o;
+    ObjectConstCalcer* o = d->movedata[i].o;
     if ( ! d->movedata[i].oldimp->equals( *o->imp() ) )
     {
       ObjectImp* newimp = o->switchImp( d->movedata[i].oldimp );
-      ret->addObject( o, newimp );
+      comm->addTask( new ChangeObjectConstCalcerTask( o, newimp ) );
     }
     else
       delete d->movedata[i].oldimp;
   };
   d->movedata.clear();
-  return ret;
 }
 
 MonitorDataObjects::~MonitorDataObjects()
@@ -279,7 +253,9 @@ ChangeCoordSystemTask::ChangeCoordSystemTask( CoordinateSystem* s )
 void ChangeCoordSystemTask::execute( KigDocument& doc )
 {
   mcs = doc.switchCoordinateSystem( mcs );
-  calcPath( doc.objects() ).calc( doc );
+  std::vector<ObjectCalcer*> calcpath = calcPath( getCalcers( doc.objects() ) );
+  for ( std::vector<ObjectCalcer*>::iterator i = calcpath.begin(); i != calcpath.end(); ++i )
+    ( *i )->calc( doc );
 }
 
 void ChangeCoordSystemTask::unexecute( KigDocument& doc )
@@ -295,8 +271,8 @@ ChangeCoordSystemTask::~ChangeCoordSystemTask()
 class ChangeParentsAndTypeTask::Private
 {
 public:
-  RealObject* o;
-  ReferenceObject newparentsref;
+  ObjectTypeCalcer* o;
+  std::vector<ObjectCalcer::shared_ptr> newparents;
   const ObjectType* newtype;
 };
 
@@ -306,30 +282,41 @@ ChangeParentsAndTypeTask::~ChangeParentsAndTypeTask()
 }
 
 ChangeParentsAndTypeTask::ChangeParentsAndTypeTask(
-  RealObject* o, const Objects& newparents,
+  ObjectTypeCalcer* o, const std::vector<ObjectCalcer*>& newparents,
   const ObjectType* newtype )
   : KigCommandTask(), d( new Private )
 {
   d->o = o;
-  d->newparentsref.setParents( newparents );
+  std::copy( newparents.begin(), newparents.end(),
+             std::back_inserter( d->newparents ) );
   d->newtype = newtype;
 }
 
 void ChangeParentsAndTypeTask::execute( KigDocument& doc )
 {
-  Objects tmp( d->o );
-
   const ObjectType* oldtype = d->o->type();
   d->o->setType( d->newtype );
   d->newtype = oldtype;
 
-  ReferenceObject newparentsref( d->newparentsref.parents() );
-  d->newparentsref.setParents( d->o->parents() );
-  d->o->setParents( newparentsref.parents() );
+  std::vector<ObjectCalcer*> oldparentso = d->o->parents();
+  std::vector<ObjectCalcer::shared_ptr> oldparents(
+    oldparentso.begin(), oldparentso.end() );
+  std::vector<ObjectCalcer*> newparents;
+  for ( std::vector<ObjectCalcer::shared_ptr>::iterator i = d->newparents.begin();
+        i != d->newparents.end(); ++i )
+    newparents.push_back( i->get() );
+  d->o->setParents( newparents );
+  d->newparents = oldparents;
 
-  d->o->parents().calc( doc );
+  for ( std::vector<ObjectCalcer*>::iterator i = newparents.begin(); i != newparents.end(); ++i )
+    ( *i )->calc( doc );
   d->o->calc( doc );
-  d->o->getAllChildren().calc( doc );
+  std::set<ObjectCalcer*> allchildren = getAllChildren( d->o );
+  std::vector<ObjectCalcer*> allchildrenvect( allchildren.begin(), allchildren.end() );
+  allchildrenvect = calcPath( allchildrenvect );
+  for ( std::vector<ObjectCalcer*>::iterator i = allchildrenvect.begin();
+        i != allchildrenvect.end(); ++i )
+    ( *i )->calc( doc );
 }
 
 void ChangeParentsAndTypeTask::unexecute( KigDocument& doc )
@@ -357,11 +344,11 @@ KigViewShownRectChangeTask::~KigViewShownRectChangeTask()
   delete d;
 }
 
-void KigViewShownRectChangeTask::execute( KigDocument& )
+void KigViewShownRectChangeTask::execute( KigDocument& doc )
 {
   Rect oldrect = d->v.showingRect();
   d->v.setShowingRect( d->rect );
-  d->v.redrawScreen();
+  doc.mode()->redrawScreen( &d->v );
   d->v.updateScrollBars();
   d->rect = oldrect;
 }
@@ -369,5 +356,36 @@ void KigViewShownRectChangeTask::execute( KigDocument& )
 void KigViewShownRectChangeTask::unexecute( KigDocument& doc )
 {
   execute( doc );
+}
+
+ChangeObjectDrawerTask::~ChangeObjectDrawerTask()
+{
+  delete mnewdrawer;
+}
+
+ChangeObjectDrawerTask::ChangeObjectDrawerTask(
+  ObjectHolder* holder, ObjectDrawer* newdrawer )
+  : KigCommandTask(), mholder( holder ), mnewdrawer( newdrawer )
+{
+}
+
+void ChangeObjectDrawerTask::execute( KigDocument& )
+{
+  mnewdrawer = mholder->switchDrawer( mnewdrawer );
+}
+
+void ChangeObjectDrawerTask::unexecute( KigDocument& doc )
+{
+  execute( doc );
+}
+
+MonitorDataObjects::MonitorDataObjects( ObjectCalcer* c )
+  : d( new Private )
+{
+  if ( dynamic_cast<ObjectConstCalcer*>( c ) )
+  {
+    MoveDataStruct n( static_cast<ObjectConstCalcer*>( c ), c->imp()->copy() );
+    d->movedata.push_back( n );
+  };
 }
 

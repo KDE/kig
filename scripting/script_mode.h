@@ -21,6 +21,8 @@
 
 #include "../modes/base_mode.h"
 
+#include <set>
+
 class NewScriptWizard;
 
 /**
@@ -29,7 +31,7 @@ class NewScriptWizard;
 class ScriptMode
   : public BaseMode
 {
-  Objects margs;
+  std::set<ObjectHolder*> margs;
   NewScriptWizard* mwizard;
 
   enum WAWD { SelectingArgs, EnteringCode };
@@ -40,11 +42,12 @@ public:
 
   void dragRect( const QPoint& p, KigWidget& w );
 //  void dragObject( const Objects& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
-  void leftClickedObject( Object* o, const QPoint& p,
+  void leftClickedObject( ObjectHolder* o, const QPoint& p,
                           KigWidget& w, bool actrlOrShiftDown );
-  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
+                   KigWidget& w, bool shiftpressed );
   void midClicked( const QPoint&, KigWidget& );
-  void rightClicked( const Objects&, const QPoint&, KigWidget& );
+  void rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& );
 
   void argsPageEntered();
   void codePageEntered();
@@ -52,7 +55,7 @@ public:
   bool queryFinish();
   bool queryCancel();
 
-  void redrawScreen();
+  void redrawScreen( KigWidget* w );
 
   void killMode();
 

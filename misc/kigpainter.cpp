@@ -21,7 +21,7 @@
 #include "kigpainter.h"
 
 #include "../kig/kig_view.h"
-#include "../objects/object.h"
+#include "../objects/object_holder.h"
 #include "../objects/curve_imp.h"
 #include "../objects/point_imp.h"
 #include "object_hierarchy.h"
@@ -364,17 +364,14 @@ void KigPainter::drawGrid( const CoordinateSystem& c, bool showGrid, bool showAx
   setWholeWinOverlay();
 }
 
-void KigPainter::drawObject( const Object* o, bool ss )
+void KigPainter::drawObject( const ObjectHolder* o, bool ss )
 {
   o->draw( *this, ss );
 }
 
-void KigPainter::drawObjects( const Objects& os )
+void KigPainter::drawObjects( const std::vector<ObjectHolder*>& os, bool sel )
 {
-  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-  {
-    drawObject( *i );
-  };
+  drawObjects( os.begin(), os.end(), sel );
 }
 
 void KigPainter::drawFilledRect( const QRect& r )
@@ -864,10 +861,8 @@ void KigPainter::drawCurve( const CurveImp* curve )
   // final result).
   // First push the [0,1] interval into the stack:
 
-  Coordinate coo1 = curve->getPoint( 0, valid, mdoc );
-  if ( ! valid ) coo1 = coo1.invalidCoord();
-  Coordinate coo2 = curve->getPoint( 1, valid, mdoc );
-  if ( ! valid ) coo2 = coo2.invalidCoord();
+  Coordinate coo1 = curve->getPoint( 0, mdoc );
+  Coordinate coo2 = curve->getPoint( 1, mdoc );
   workstack.push( workitem(
                     coordparampair( 0, coo1 ),
                     coordparampair( 1, coo2 ),
@@ -903,11 +898,9 @@ void KigPainter::drawCurve( const CurveImp* curve )
       double t0 = curitem.first.first;
       double t1 = curitem.second.first;
       Coordinate p0 = curitem.first.second;
-      bool valid0 = true;
-      if ( ! p0.valid() ) valid0 = false;
+      bool valid0 = p0.valid();
       Coordinate p1 = curitem.second.second;
-      bool valid1 = true;
-      if ( ! p1.valid() ) valid1 = false;
+      bool valid1 = p1.valid();
 
       // we take the middle parameter of the two previous points...
       double t2 = ( t0 + t1 ) / 2;
@@ -926,12 +919,11 @@ void KigPainter::drawCurve( const CurveImp* curve )
 //      }
 
       Rect *overlaypt = curitem.overlay;
-      Coordinate p2 = curve->getPoint( t2, valid, mdoc );
-      if ( ! valid ) p2 = p2.invalidCoord();
-      bool allvalid = valid && valid0 && valid1;
+      Coordinate p2 = curve->getPoint( t2, mdoc );
+      bool allvalid = p2.valid() && valid0 && valid1;
       bool dooverlay = ! overlaypt && h < hmaxoverlay && valid0 && valid1
- && fabs( p0.x - p1.x ) <= overlayRectSize()
- && fabs( p0.y - p1.y ) <= overlayRectSize();
+                       && fabs( p0.x - p1.x ) <= overlayRectSize()
+                       && fabs( p0.y - p1.y ) <= overlayRectSize();
       bool addn = valid && sr.contains( p2 );
       // estimated error between the curve and the segments
       double errsq = 1e21;

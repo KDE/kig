@@ -34,14 +34,15 @@ public:
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   bool canMove() const;
-  const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
-  void move( RealObject* ourobj, const Coordinate& to,
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
              const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 
   QStringList specialActions() const;
-  void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
-                      NormalMode& m ) const;
+  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
+                      KigDocument& d, KigWidget& w, NormalMode& m ) const;
 };
 
 class ConstrainedPointType
@@ -57,13 +58,14 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
 
   bool canMove() const;
-  const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
-  void move( RealObject* ourobj, const Coordinate& to,
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
              const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 
   QStringList specialActions() const;
-  void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
+  void executeAction( int i, ObjectHolder&, ObjectTypeCalcer& o, KigDocument& d, KigWidget& w,
                       NormalMode& m ) const;
 };
 

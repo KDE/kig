@@ -92,6 +92,8 @@ class ObjectImpType
   const char* maddastatement;
   const char* mmoveastatement;
   const char* mattachtothisstatement;
+  const char* mshowastatement;
+  const char* mhideastatement;
   class StaticPrivate;
   static StaticPrivate* sd();
 public:
@@ -120,7 +122,8 @@ public:
                  const char* translatedname, const char* selectstatement,
                  const char* removeastatement, const char* addastatement,
                  const char* moveastatement,
-                 const char* attachtothisstatement );
+                 const char* attachtothisstatement, const char* showastatement,
+                 const char* hideastatement );
   ~ObjectImpType();
 
   /**
@@ -147,17 +150,17 @@ public:
 
   /**
    * Returns a translated string of the form "Remove a xxx".
-   * E.g. "Remove a segment".
+   * E.g. "Remove a Segment".
    */
   QString removeAStatement() const;
   /**
    * Returns a translated string of the form "Add a xxx".
-   * E.g. "Add a segment".
+   * E.g. "Add a Segment".
    */
   QString addAStatement() const;
   /**
    * Returns a translated string of the form "Move a xxx".
-   * E.g. "Move a segment".
+   * E.g. "Move a Segment".
    */
   QString moveAStatement() const;
   /**
@@ -166,6 +169,18 @@ public:
    * \internal This is used by the text label construction mode
    */
   QString attachToThisStatement() const;
+
+  /**
+   * Returns a translated string of the form "Show a xxx".
+   * E.g. "Show a Segment".
+   */
+  QString showAStatement() const;
+
+  /**
+   * Returns a translated string of the form "Hide a xxx".
+   * E.g. "Hide a Segment".
+   */
+  QString hideAStatement() const;
 };
 
 /**

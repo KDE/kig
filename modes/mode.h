@@ -70,17 +70,11 @@ public:
   virtual void deselectAll();
   virtual void invertSelection();
 
-  // two special functions: because kig has undo/redo-stuff via
-  // KCommands and KCommandHistory, the mode doesn't entirely control
-  // when an object is added or removed.  These slots are called
-  // whenever KigAddObjectsCommand or KigRemoveObjectsCommand add or
-  // remove objects from the document.  KigDocument::addObject
-  // internally works with Commands, so if you called that, one of
-  // these funcs are going to get called next...  It's up to the mode
-  // to refresh the screen...
-  // Note: a mode doesn't need these functions unless it calls
-  // mDoc->history->updateActions() in enableActions()...
-  virtual void redrawScreen();
+  /**
+   * Redraw the document on KigWidget w.  It's up to the mode to
+   * refresh the screen...
+   */
+  virtual void redrawScreen( KigWidget* w );
 protected:
   KigDocument& mdoc;
 

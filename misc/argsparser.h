@@ -19,17 +19,88 @@
 #ifndef KIG_MISC_ARGSPARSER_H
 #define KIG_MISC_ARGSPARSER_H
 
-#include <vector>
-
 #include "../objects/common.h"
 
 class ObjectImpType;
 
+/**
+ * This class is meant to take care of checking the types of the
+ * parents to ObjectCalcer's, and to put them in the correct order.
+ * An ObjectType should construct an ArgsParser with a specification
+ * of the arguments it wants.  This specification is given as an array
+ * of ArgsParser::spec structs.  This struct contains a pointer to an
+ * ObjectImpType ( which is the type you want the argument to have ),
+ * and a string ( which is an I18N_NOOP'd string describing what you
+ * will be using the argument for ).
+ *
+ * An ObjectType using an ArgsParser to take care of the various
+ * things that it can handle ( impRequirement and the sortArgs
+ * functions ), should inherit from ArgsParserObjectType, which takes
+ * care of calling the ArgsParser for these things...  It also allows
+ * you to use a certain ObjectConstructor for your type.
+ *
+ * E.g., let's see what CircleBCPType has for its arguments spec:
+ * here's some code:
+ * <code>
+ * static const ArgsParser::spec argsspecTranslation[] =
+ * {
+ *   { ObjectImp::stype(), I18N_NOOP("Translate this object") },
+ *   { VectorImp::stype(), I18N_NOOP("Translate by this vector") }
+ * };
+ *
+ * TranslatedType::TranslatedType()
+ *   : ArgsParserObjectType( "Translation", argsspecTranslation, 2 )
+ * {
+ * }
+ *
+ * ObjectImp* TranslatedType::calc( const Args& args, const KigDocument& ) const
+ * {
+ *   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+ *
+ *   Coordinate dir = static_cast<const VectorImp*>( args[1] )->dir();
+ *   Transformation t = Transformation::translation( dir );
+ *
+ *   return args[0]->transform( t );
+ * }
+ * </code>
+ *
+ * As you can see above, the argsspec can be declared right in the
+ * cpp-file.  The usetexts explain to the user what the argument in
+ * question will be used for.  In the constructor, you simply call the
+ * ArgsParserObjectType with the argsspec struct you defined, and the
+ * number of arguments in the argsspec ( in this case 2 ).
+ *
+ * In the calc function, you can rely on the arguments already being
+ * in the correct order ( the same order as you put them in in the
+ * arguments spec.  You should use the checkArgs function to check if
+ * all the arguments are valid, and if they aren't return a
+ * InvalidImp.  All objects can always become invalid ( e.g. an
+ * intersection point of two non-intersecting conics can become valid
+ * again when the conics move ), and you should always check for this.
+ *
+ * An interesting to note here is that the first argument is of a more
+ * general type than the second.  A VectorImp is *also* an ObjectImp.
+ * In general, when this happens, you should put the more general type
+ * first, as in general this produces the results that the user
+ * expects.  I have no formal proof for this, just talking from
+ * experience.  It might be that you experience different things, but
+ * unless you're sure of the results, put the more general type first.
+ *
+ * This class uses a pretty basic algorithm for doing the parsing (
+ * e.g. if a match fails in one order, it does not try a different
+ * order, which could perhaps be necessary in the case of having more
+ * general argument types in the same argument spec ).  However, the
+ * current algorithm works in all the situation where I've tested it,
+ * and I don't feel the need to change it.  Feel free to do so if you
+ * like, but even if you do, I'm not sure if I will include it in
+ * mainline Kig.
+ */
 class ArgsParser
 {
 public:
+  // this are some enum values that we return from some functions.
+  enum { Invalid = 0, Valid = 1, Complete = 2 };
   struct spec { const ObjectImpType* type; const char* usetext; };
-  enum { Invalid, Valid, Complete };
 private:
   // the args spec..
   std::vector<spec> margs;
@@ -43,12 +114,13 @@ public:
 
   void initialize( const std::vector<spec>& args );
   void initialize( const struct spec* args, int n );
+
   // returns a new ArgsParser that wants the same args, except for the
   // ones of the given type..
   ArgsParser without( const ObjectImpType* type ) const;
   // checks if os matches the argument list this parser should parse..
-  int check( const Objects& os ) const;
   int check( const Args& os ) const;
+  int check( const std::vector<ObjectCalcer*>& os ) const;
   // returns the usetext for the argument that o would be used for,
   // if sel were used as parents..
   // o should be in sel...
@@ -56,8 +128,8 @@ public:
 
   // this reorders the objects or args so that they are in the same
   // order as the requested arguments..
-  Objects parse( const Objects& os ) const;
   Args parse( const Args& os ) const;
+  std::vector<ObjectCalcer*> parse( const std::vector<ObjectCalcer*>& os ) const;
 
   // returns the minimal ObjectImp ID that o needs to inherit in order
   // to be useful..  o should be part of parents.
@@ -75,8 +147,8 @@ public:
   // required args.  These args need to be at the end of argsspec +
   // anyobjsspec.  If minobjects is not provided, then it is assumed
   // that all args are necessary.
-  bool checkArgs( const Objects& os ) const;
-  bool checkArgs( const Objects& os, uint minobjects ) const;
+  bool checkArgs( const std::vector<ObjectCalcer*>& os ) const;
+  bool checkArgs( const std::vector<ObjectCalcer*>& os, uint minobjects ) const;
   bool checkArgs( const Args& os ) const;
   bool checkArgs( const Args& os, uint minobjects ) const;
 };

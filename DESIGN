@@ -1,0 +1,134 @@
+EXPLANATION OF THE KIG DESIGN
+=============================
+
+1. Object system
+----------------
+
+The Kig Object System is a design I'm particularly proud of.  It
+started out pretty basic, but has undergone some major revisions, that
+have proven very succesful.  Currently, I have just made one more
+major change, and I think this will be the last majore change to it
+for quite some time to come.  That's also why I'm writing this
+explanation for other developers.
+
+
+
+1.1 ObjectImp's:  Basic objects.
+
+An ObjectImp represents the current state of an object in Kig.  It
+keeps information about what type of object it is ( e.g. a line, a
+point, a circle etc. ), and its exact data ( e.g. the center and
+radius of the circle ).  It is *not* in any way aware of how the
+object was calculated from its parents (e.g. is this a line that is
+constructed as the parallel of another line, or as the line going
+through two given points ? ) or how it is drawn on the window (
+e.g. the thickness of the line, its color etc. ).
+
+There is also the notion of BogusImp's in Kig.  These are special
+kinds of ObjectImp's that *only* hold data.  They do not represent any
+real object that can be drawn on a window.  Their use is *only* in
+holding data for other objects to use.  Examples are StringImp,
+IntImp, ConicImp etc.
+
+There are a lot of ObjectImp's in Kig, most of them are in files
+called *_imp.h and *_imp.cc or *_imp.cpp in the objects subdirectory.
+Examples are PointImp, LineImp, ConicImp, CircleImp, CubicImp,
+AngleImp etc.
+
+There is also the concept of ObjectImpType's.  These identify a kind
+of ObjectImp.  They carry information about the inheritance among the
+different ObjectImp types, and some strings identifying them.  You can
+get hold of the ObjectImpType of a certain ObjectImp by using its
+type() method, you can also get hold of them by name using
+ObjectImpFactory.
+
+
+1.2 ObjectCalcer's: calculating ObjectImp's from other ObjectImp's
+
+An ObjectCalcer is an object that represents an algorithm for
+calculating an ObjectImp from other ObjectImp's.  It is also a node in
+the dependency graph of a certain document. E.g. a LineImp can be
+calculated from the two PointImp's it has to go through; every time
+either of them moves, this calculation is redone.  In this case, there
+would be an ObjectCalcer that keeps a reference to its two parents (
+the ObjectCalcer's representing the points ), and that will calculate
+its ObjectImp value every time it is asked to do so ( i.e. every time
+one of its parents moves.. ).
+
+Because of the complex relations that ObjectCalcer's hold to other
+ObjectCalcer's and to other classes, they have been made
+reference-counted.  This means that they keep a count internally of
+how much times a pointer to them is held.  If this count reaches 0,
+this means that nobody needs them anymore, and they delete themselves.
+E.g. an ObjectCalcer always keeps a reference to its parents, to
+ensure that those aren't deleted before it is deleted.  
+
+In the inheritance graph of a document, the lowermost objects keep
+references to their parents and those keep reference to their parents,
+so that all of the top of the graph is kept alive.  Of course, someone
+needs to keep a reference to the bottommost objects in the graph,
+because otherwise, the entire graph would be deleted.  As we will see
+later, an external class ( ObjectHolder ) keeps a reference to the
+ObjectCalcer's that the user is aware of.  Thus, the reference
+counting system makes sure that all the objects that the user knows
+about, and all of their ancestors are kept alive, and the others die.
+At the end of the program, this reference is released, and all the
+objects are deleted.
+
+A special case of an ObjectCalcer is the ObjectConstCalcer.  This is
+an ObjectCalcer that has no parents, and only holds some data.  The
+data is held as an ObjectImp of some type, and it will remain
+constant, and no calculation needs to be done to get it, it is just
+returned every time it is needed.
+
+Other ObjectCalcer's are ObjectPropertyCalcer and ObjectTypeCalcer.
+ObjectTypeCalcer is a ObjectCalcer that calculates an object according
+to what a ObjectType object specifies.  It basically forwards all
+calculations to that object ( check below ).  An ObjectPropertyCalcer
+gets data from a property of a certain object.  In fact, ObjectImp's
+can specify property's ( e.g. properties of a circle are its radius,
+its circumference, its center etc. An angle has its bisector as a
+LineImp property ), and they are returned as ObjectImp's of an
+appropriate type.  The ObjectPropertyCalcer just gets one of the
+properties of a certain ObjectImp and stores it.
+
+
+1.3 ObjectType's: a specification of how to calculate an object.
+
+An ObjectType represents a certain algorithm to calculate an ObjectImp
+from other ObjectImp's.  Unlike an ObjectCalcer, it does not
+participate in the inheritance graph, and there is only one
+instantiation of each type of ObjectType.  An ObjectTypeCalcer is an
+ObjectCalcer that keeps a pointer to a certain ObjectType, and
+forwards all requests it gets to its ObjectType.  It's very normal
+that multiple ObjectTypeCalcer's share the same ObjectType.
+
+There are very much ObjectType's in Kig, check out all of the files
+that end in *_type.* or *_types.* in the objects subdirectory of the
+Kig source code.
+
+
+1.4 ObjectHolder's: a link from the document to the hierarchy
+
+An ObjectHolder represents an object as it is known to the document.
+It keeps a pointer to an ObjectCalcer, where it gets its data ( the
+ObjectImp that the ObjectCalcer holds ) from.  It also holds
+information about how to draw this ObjectImp on the window, by keeping
+a pointer to an ObjectDrawer ( see below ).  In its draw method, it
+gets the ObjectImp from the ObjectCalcer, and passes it to the
+ObjectDrawer, asking it to draw the ObjectImp on the window.
+
+The document ( check the KigDocument class ) holds a list of these
+ObjectHolder's.  This is its only link with the ObjectCalcer
+dependency graph.  An ObjectHolder keeps a reference to its ObjectCalcer.
+
+
+1.5 ObjectDrawer: An intelligent struct keeping some data about how to
+    draw an ObjectImp on screen.
+
+An ObjectDrawer is used by an ObjectHolder to keep information about
+how to draw an ObjectImp on the window.  It is really nothing more
+than a struct with some convenience methods.  It does not have any
+virtual methods, or have any complex semantics.  It keeps information
+like the thickness of an object, its color, and whether or not it is
+hidden.

@@ -21,12 +21,12 @@
 #include "kseg-defs.h"
 
 #include "../kig/kig_part.h"
-#include "../objects/object.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/line_imp.h"
 #include "../objects/conic_imp.h"
 #include "../objects/point_imp.h"
 #include "../objects/object_factory.h"
+#include "../objects/object_drawer.h"
 #include "../objects/line_type.h"
 #include "../objects/circle_type.h"
 #include "../objects/conic_types.h"
@@ -84,41 +84,36 @@ static Coordinate readKSegCoordinate( QDataStream& stream )
   return t + Coordinate( -7, -7 );
 }
 
-static RealObject* intersectionPoint( const Objects& parents, Objects& ret, int which )
+static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& parents, int which )
 {
   if ( parents.size() != 2 ) return 0;
   int nlines = 0;
   int nconics = 0;
   for ( int i = 0; i < 2; ++i )
   {
-    if ( parents[i]->hasimp( AbstractLineImp::stype() ) ) ++nlines;
-    else if ( parents[i]->hasimp( ConicImp::stype() ) ) ++nconics;
+    if ( parents[i]->imp()->inherits( AbstractLineImp::stype() ) ) ++nlines;
+    else if ( parents[i]->imp()->inherits( ConicImp::stype() ) ) ++nconics;
     else return 0;
   };
   if ( nlines == 2 )
-    return which == 1 ? new RealObject( LineLineIntersectionType::instance(), parents ) : 0;
+    return which == 1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : 0;
   else if ( nlines == 1 && nconics == 1 )
   {
-    Objects intparents( parents );
-    ret.push_back( new DataObject( new IntImp( which ) ) );
-    intparents.push_back( ret.back() );
-    return new RealObject( ConicLineIntersectionType::instance(), intparents );
+    std::vector<ObjectCalcer*> intparents( parents );
+    intparents.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+    return new ObjectTypeCalcer( ConicLineIntersectionType::instance(), intparents );
   }
   else if ( nlines == 0 && nconics == 2 )
   {
-    Objects rparents( parents );
-    ret.push_back( new DataObject( new IntImp( 1 ) ) );
-    rparents.push_back( ret.back() );
-    ret.push_back( new DataObject( new IntImp( 1 ) ) );
-    rparents.push_back( ret.back() );
-    ret.push_back( new RealObject( ConicRadicalType::instance(), rparents ) );
-    ret.back()->setShown( false );
-    Objects iparents;
+    std::vector<ObjectCalcer*> rparents( parents );
+    rparents.push_back( new ObjectConstCalcer( new IntImp( 1 ) ) );
+    rparents.push_back( new ObjectConstCalcer( new IntImp( 1 ) ) );
+    rparents.push_back( new ObjectTypeCalcer( ConicRadicalType::instance(), rparents ) );
+    std::vector<ObjectCalcer*> iparents;
     iparents.push_back( parents[0] );
-    iparents.push_back( ret.back() );
-    ret.push_back( new DataObject( new IntImp( which ) ) );
-    iparents.push_back( ret.back() );
-    return new RealObject( ConicLineIntersectionType::instance(), iparents );
+    iparents.push_back( rparents.back() );
+    iparents.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+    return new ObjectTypeCalcer( ConicLineIntersectionType::instance(), iparents );
   }
   else return 0;
 }
@@ -158,7 +153,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
     stream >> drawstyles[i].brush;
   };
 
-  Objects ret;
+  std::vector<ObjectHolder*> ret;
 
   // G_refs
   unsigned int count;
@@ -174,12 +169,12 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
     stream >> styleid;
     short nparents;
     stream >> nparents;
-    Objects parents( nparents, 0 );
+    std::vector<ObjectCalcer*> parents( nparents, 0 );
     for ( short j = 0; j < nparents; ++j )
     {
       int parent;
       stream >> parent;
-      parents[j] = ret[parent];
+      parents[j] = ret[parent]->calcer();
     };
 
     // read the object..
@@ -218,41 +213,38 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
     };
 
     // now load the object data..
-    Object* object = 0;
+    ObjectHolder* object = 0;
 
     if ( descendtype <= G_REFLECTED )
     {
-      RealObject* o = 0;
+      ObjectTypeCalcer* o = 0;
       // this is a transformed object..
       switch( descendtype )
       {
       case G_TRANSLATED:
       {
-        Objects vectorparents( parents.begin() + 1, parents.end() );
-        RealObject* vector = new RealObject( VectorType::instance(), vectorparents );
-        vector->setShown( false );
-        ret.push_back( vector );
+        std::vector<ObjectCalcer*> vectorparents( parents.begin() + 1, parents.end() );
+        ObjectTypeCalcer* vector = new ObjectTypeCalcer( VectorType::instance(), vectorparents );
         vector->calc( todoc );
 
-        Objects transparents;
+        std::vector<ObjectCalcer*> transparents;
         transparents.push_back( parents[0] );
         transparents.push_back( vector );
+        o = new ObjectTypeCalcer( TranslatedType::instance(), transparents );
         o = new RealObject( TranslatedType::instance(), transparents );
         break;
       }
       case G_ROTATED:
       {
-        Objects angleparents( parents.begin() + 2, parents.end() );
-        RealObject* angle = new RealObject( AngleType::instance(), angleparents );
-        angle->setShown( false );
-        ret.push_back( angle );
+        std::vector<ObjectCalcer*> angleparents( parents.begin() + 2, parents.end() );
+        ObjectTypeCalcer* angle = new ObjectTypeCalcer( AngleType::instance(), angleparents );
         angle->calc( todoc );
 
-        Objects rotparents;
+        std::vector<ObjectCalcer*> rotparents;
         rotparents.push_back( parents[0] );
         rotparents.push_back( parents[1] );
         rotparents.push_back( angle );
-        o = new RealObject( RotationType::instance(), rotparents );
+        o = new ObjectTypeCalcer( RotationType::instance(), rotparents );
         break;
       }
       case G_SCALED:
@@ -262,36 +254,48 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
                                   "transformation, which Kig currently "
                                   "cannot import." ) );
         return false;
-        o = new RealObject( ScalingOverCenterType::instance(), parents );
+        o = new ObjectTypeCalcer( ScalingOverCenterType::instance(), parents );
         break;
       }
       case G_REFLECTED:
       {
-        Objects mirparents( parents.begin(), parents.end() );
-        o = new RealObject( LineReflectionType::instance(), mirparents );
+        std::vector<ObjectCalcer*> mirparents( parents.begin(), parents.end() );
+        o = new ObjectTypeCalcer( LineReflectionType::instance(), mirparents );
         break;
       }
-      };
+      }
       assert( o );
+      ObjectDrawer* d;
       if ( type == G_POINT )
       {
-        o->setWidth( style.pointstyle == SMALL_CIRCLE ? 2 :
-                     style.pointstyle == MEDIUM_CIRCLE ? 3 : 5 );
-        o->setColor( style.brush.color() );
+        int width;
+        switch( style.pointstyle )
+        {
+        case SMALL_CIRCLE:
+          width = 2;
+          break;
+        case MEDIUM_CIRCLE:
+          width = 3;
+          break;
+        default:
+          width = 5;
+          break;
+        }
+        d = new ObjectDrawer( style.brush.color(), width );
       }
       else
       {
-        o->setWidth( style.pen.width() );
-        o->setColor( style.pen.color() );
+        d = new ObjectDrawer( style.pen.color(), style.pen.width() );
       };
-      object = o;
+      assert( d );
+      object = new ObjectHolder( o, d );
     }
     else
       switch( type )
       {
       case G_POINT:
       {
-        RealObject* point = 0;
+        ObjectCalcer* point = 0;
         switch( descendtype )
         {
         case G_FREE_POINT:
@@ -299,8 +303,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           // fixed point
           if ( nparents != 0 ) KIG_FILTER_PARSE_ERROR;
           Coordinate c = readKSegCoordinate( stream );
-          Object* po = ObjectFactory::instance()->fixedPoint( c );
-          point = static_cast<RealObject*>( po );
+          point = ObjectFactory::instance()->fixedPointCalcer( c );
           break;
         }
         case G_CONSTRAINED_POINT:
@@ -309,10 +312,9 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           double p;
           stream >> p;
           assert( nparents == 1 );
-          Object* parent = parents[0];
+          ObjectCalcer* parent = parents[0];
           assert( parent );
-          Object* os = ObjectFactory::instance()->constrainedPoint( parent, p );
-          point = static_cast<RealObject*>( os );
+          point = ObjectFactory::instance()->constrainedPointCalcer( parent, p );
           break;
         }
         case G_INTERSECTION_POINT:
@@ -321,36 +323,33 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           // for all objects G_INTERSECTION_POINT gets the
           // first intersection of its parents, G_INTERSECTION2_POINT
           // represents the second, if present.
-          point = intersectionPoint( parents, ret, 1 );
+          point = intersectionPoint( parents, 1 );
           if ( ! point ) KIG_FILTER_PARSE_ERROR;
           break;
         }
         case G_INTERSECTION2_POINT:
-          point = intersectionPoint( parents, ret, -1 );
+          point = intersectionPoint( parents, -1 );
           if ( ! point ) KIG_FILTER_PARSE_ERROR;
           break;
         case G_MID_POINT:
         {
           // midpoint of a segment..
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-          if ( !parents[0]->hasimp( SegmentImp::stype() ) )
+          if ( !parents[0]->imp()->inherits( SegmentImp::stype() ) )
             KIG_FILTER_PARSE_ERROR;
-          int index = parents[0]->propertiesInternalNames().findIndex( "mid-point" );
+          int index = parents[0]->imp()->propertiesInternalNames().findIndex( "mid-point" );
           assert( index != -1 );
-          ret.push_back( new PropertyObject( parents[0], index ) );
-          Objects nparents( ret.back() );
-          ret.back()->calc( todoc );
-          point = new RealObject( CopyObjectType::instance(), nparents );
+          point = new ObjectPropertyCalcer( parents[0], index );
           break;
         }
         default:
           KIG_FILTER_PARSE_ERROR;
         };
         assert( point );
-        point->setWidth( style.pointstyle == SMALL_CIRCLE ? 2 :
-                         style.pointstyle == MEDIUM_CIRCLE ? 3 : 5 );
-        point->setColor( style.brush.color() );
-        object = point;
+        int width = style.pointstyle == SMALL_CIRCLE ? 2 : style.pointstyle == MEDIUM_CIRCLE ? 3 : 5;
+        ObjectDrawer* d =
+          new ObjectDrawer( style.brush.color(), width );
+        object = new ObjectHolder( point, d );
         break;
       };
       case G_SEGMENT:
@@ -360,10 +359,9 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         case G_ENDPOINTS_SEGMENT:
         {
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-          RealObject* o = new RealObject( SegmentABType::instance(), parents );
-          o->setWidth( style.pen.width() );
-          o->setColor( style.pen.color() );
-          object = o;
+          ObjectTypeCalcer* o = new ObjectTypeCalcer( SegmentABType::instance(), parents );
+          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+          object = new ObjectHolder( o, d );
           break;
         }
         default:
@@ -378,23 +376,21 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         case G_TWOPOINTS_RAY:
         {
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-          RealObject* o = new RealObject( RayABType::instance(), parents );
-          o->setWidth( style.pen.width() );
-          o->setColor( style.pen.color() );
-          object = o;
+          ObjectTypeCalcer* o = new ObjectTypeCalcer( RayABType::instance(), parents );
+          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+          object = new ObjectHolder( o, d );
           break;
         }
         case G_BISECTOR_RAY:
           return false;
           // TODO
-//           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-//           if ( !parents[0]->hasimp( AngleImp::stype() ) ) KIG_FILTER_PARSE_ERROR;
-//           int index = parents[0]->propertiesInternalNames().findIndex( "mid-point" );
+//           if ( nparents != 1 ) KIG_FILTER_PARSE_ERROR;
+//           if ( !parents[0]->imp()->inherits( AngleImp::stype() ) ) KIG_FILTER_PARSE_ERROR;
+//           int index = parents[0]->propertiesInternalNames().findIndex( "angle-bisector" );
 //           assert( index != -1 );
-//           ret.push_back( new PropertyObject( parents[0], index ) );
-//           Objects nparents( ret.end() - 1, ret.end() );
-//           ret.back()->calc( todoc );
-//           point = new RealObject( CopyObjectType::instance(), nparents );
+//           ObjectPropertyCalcer* o = new ObjectPropertyCalcer( parents[0], index );
+//           ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+//           object = new ObjectHolder( o, d );
           break;
         default:
           KIG_FILTER_PARSE_ERROR;
@@ -404,45 +400,42 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       case G_LINE:
       {
         if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-        RealObject* o = 0;
+        ObjectTypeCalcer* o = 0;
         switch( descendtype )
         {
         case G_TWOPOINTS_LINE:
-          o = new RealObject( LineABType::instance(), parents );
+          o = new ObjectTypeCalcer( LineABType::instance(), parents );
           break;
         case G_PARALLEL_LINE:
-          o = new RealObject( LineParallelLPType::instance(), parents );
+          o = new ObjectTypeCalcer( LineParallelLPType::instance(), parents );
           break;
         case G_PERPENDICULAR_LINE:
-          o = new RealObject( LinePerpendLPType::instance(), parents );
+          o = new ObjectTypeCalcer( LinePerpendLPType::instance(), parents );
           break;
         default:
           KIG_FILTER_PARSE_ERROR;
         };
         assert( o );
-        o->setWidth( style.pen.width() );
-        o->setColor( style.pen.color() );
-        object = o;
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        object = new ObjectHolder( o, d );
         break;
       };
       case G_CIRCLE:
       {
+        ObjectTypeCalcer* o = 0;
         switch( descendtype )
         {
         case G_CENTERPOINT_CIRCLE:
         {
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-          RealObject* o = new RealObject( CircleBCPType::instance(), parents );
-          o->setWidth( style.pen.width() );
-          o->setColor( style.pen.color() );
-          object = o;
+          o = new ObjectTypeCalcer( CircleBCPType::instance(), parents );
           break;
         }
         case G_CENTERRADIUS_CIRCLE:
         {
-          Object* point;
-          Object* segment;
-          if ( parents[0]->hasimp( PointImp::stype() ) )
+          ObjectCalcer* point;
+          ObjectCalcer* segment;
+          if ( parents[0]->imp()->inherits( PointImp::stype() ) )
           {
             point = parents[0];
             segment = parents[1];
@@ -452,31 +445,29 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
             point = parents[1];
             segment = parents[0];
           };
-          int index = segment->propertiesInternalNames().findIndex( "length" );
+          int index = segment->imp()->propertiesInternalNames().findIndex( "length" );
           if ( index == -1 ) KIG_FILTER_PARSE_ERROR;
-          Object* length = new PropertyObject( segment, index );
-          ret.push_back( length );
-          Objects cparents;
+          ObjectPropertyCalcer* length = new ObjectPropertyCalcer( segment, index );
+          std::vector<ObjectCalcer*> cparents;
           cparents.push_back( point );
           cparents.push_back( length );
-          RealObject* o = new RealObject( CircleBPRType::instance(), cparents );
-          o->setWidth( style.pen.width() );
-          o->setColor( style.pen.color() );
-          object = o;
+          o = new ObjectTypeCalcer( CircleBPRType::instance(), cparents );
           break;
         }
         default:
           KIG_FILTER_PARSE_ERROR;
         };
+        assert( o );
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        object = new ObjectHolder( o, d );
         break;
       };
       case G_ARC:
       {
         if ( nparents != 3 ) KIG_FILTER_PARSE_ERROR;
-        RealObject* o = new RealObject( ArcBTPType::instance(), parents );
-        o->setWidth( style.pen.width() );
-        o->setColor( style.pen.color() );
-        object = o;
+        ObjectTypeCalcer* o = new ObjectTypeCalcer( ArcBTPType::instance(), parents );
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        object = new ObjectHolder( o, d );
         break;
       };
       case G_POLYGON:
@@ -506,9 +497,9 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       case G_LOCUS:
       {
         if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-        object = ObjectFactory::instance()->locus( parents );
-        static_cast<RealObject*>( object )->setWidth( style.pen.width() );
-        static_cast<RealObject*>( object )->setColor( style.pen.color() );
+        ObjectTypeCalcer* o = ObjectFactory::instance()->locusCalcer( parents[0], parents[1] );
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width() );
+        object = new ObjectHolder( o, d );
         break;
       };
       case G_MEASURE:

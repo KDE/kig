@@ -21,18 +21,18 @@
 
 #include "mode.h"
 
-#include "../misc/objects.h"
-
 #include <qpoint.h>
+#include <vector>
 
 class KigWidget;
 class KigDocument;
+class ObjectHolder;
 
 class BaseMode
   : public KigMode
 {
   QPoint mplc;
-  Objects moco;
+  std::vector<ObjectHolder*> moco;
 
   void leftClicked( QMouseEvent* e, KigWidget* v );
   void leftMouseMoved( QMouseEvent*, KigWidget* );
@@ -47,12 +47,12 @@ protected:
 protected:
 
   virtual void dragRect( const QPoint& p, KigWidget& w );
-  virtual void dragObject( const Objects& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
-  virtual void leftClickedObject( Object* o, const QPoint& p,
+  virtual void dragObject( const std::vector<ObjectHolder*>& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
+  virtual void leftClickedObject( ObjectHolder* o, const QPoint& p,
                                   KigWidget& w, bool ctrlOrShiftDown ) = 0;
   virtual void midClicked( const QPoint& p, KigWidget& w ) = 0;
-  virtual void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w ) = 0;
-  virtual void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w, bool shiftpressed ) = 0;
+  virtual void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w ) = 0;
+  virtual void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed ) = 0;
 
 protected:
   BaseMode( KigDocument& );

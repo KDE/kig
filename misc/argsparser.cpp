@@ -18,9 +18,10 @@
 
 #include "argsparser.h"
 
-#include "../objects/object.h"
 #include "../objects/object_imp.h"
+#include "../objects/object_holder.h"
 
+#include <cassert>
 #include <algorithm>
 #include <kdebug.h>
 
@@ -49,9 +50,9 @@ ArgsParser::ArgsParser( const spec* args, int n )
   initialize( args, n );
 }
 
-static bool hasimp( const Object& o, const ObjectImpType* imptype )
+static bool hasimp( const ObjectCalcer& o, const ObjectImpType* imptype )
 {
-  return o.hasimp( imptype );
+  return o.imp()->inherits( imptype );
 }
 
 static bool hasimp( const ObjectImp& o, const ObjectImpType* imptype )
@@ -64,9 +65,9 @@ static bool isvalid( const ObjectImp& o )
   return o.valid();
 }
 
-static bool isvalid( const Object& o )
+static bool isvalid( const ObjectCalcer& o )
 {
-  return o.valid();
+  return o.imp()->valid();
 }
 
 // we use a template method that is used for both Objects and Args to
@@ -101,12 +102,12 @@ int ArgsParser::check( const Args& os ) const
   return ::check( os, margs );
 }
 
-int ArgsParser::check( const Objects& os ) const
+int ArgsParser::check( const std::vector<ObjectCalcer*>& os ) const
 {
   return ::check( os, margs );
 }
 
-template <class Collection>
+template <typename Collection>
 static Collection parse( const Collection& os,
                          const std::vector<ArgsParser::spec> margs )
 {
@@ -137,13 +138,9 @@ Args ArgsParser::parse( const Args& os ) const
   return ::parse( os, margs );
 }
 
-Objects ArgsParser::parse( const Objects& os ) const
+std::vector<ObjectCalcer*> ArgsParser::parse( const std::vector<ObjectCalcer*>& os ) const
 {
   return ::parse( os, margs );
-}
-
-ArgsParser::~ArgsParser()
-{
 }
 
 ArgsParser ArgsParser::without( const ObjectImpType* type ) const
@@ -224,13 +221,17 @@ bool ArgsParser::checkArgs( const Args& os, uint min ) const
   return ::checkArgs( os, min, margs );
 }
 
-bool ArgsParser::checkArgs( const Objects& os ) const
+bool ArgsParser::checkArgs( const std::vector<ObjectCalcer*>& os ) const
 {
   return checkArgs( os, margs.size() );
 }
 
-bool ArgsParser::checkArgs( const Objects& os, uint min ) const
+bool ArgsParser::checkArgs( const std::vector<ObjectCalcer*>& os, uint minobjects ) const
 {
-  return ::checkArgs( os, min, margs );
+  return ::checkArgs( os, minobjects, margs );
+}
+
+ArgsParser::~ArgsParser()
+{
 }
 

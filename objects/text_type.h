@@ -35,16 +35,18 @@ public:
 
   ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
 
-  Objects sortArgs( const Objects& os ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const;
+  Args sortArgs( const Args& args ) const;
 
   bool canMove() const;
-  const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
-  void move( RealObject* ourobj, const Coordinate& to,
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
              const KigDocument& ) const;
 
   QStringList specialActions() const;
-  void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
-                      NormalMode& m ) const;
+  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+                      KigDocument& d, KigWidget& w, NormalMode& m ) const;
 
   const ArgsParser& argParser() const;
 };

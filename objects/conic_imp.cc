@@ -165,9 +165,8 @@ double ConicImp::getParam( const Coordinate& p, const KigDocument& ) const
     return fmod(theta / ( 2 * M_PI ) + 0.5, 1);
 }
 
-const Coordinate ConicImp::getPoint( double p, bool& valid, const KigDocument& ) const
+const Coordinate ConicImp::getPoint( double p, const KigDocument& ) const
 {
-  valid = true;
   const ConicPolarData d = polarData();
 
   double costheta = cos(p * 2 * M_PI);
@@ -325,7 +324,9 @@ const ObjectImpType* ConicImp::stype()
     I18N_NOOP( "Remove a Conic" ),
     I18N_NOOP( "Add a Conic" ),
     I18N_NOOP( "Move a Conic" ),
-    I18N_NOOP( "Attach to this conic" )
+    I18N_NOOP( "Attach to this conic" ),
+    I18N_NOOP( "Show a Conic" ),
+    I18N_NOOP( "Hide a Conic" )
     );
   return &t;
 }

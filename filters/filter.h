@@ -26,8 +26,6 @@
 
 #include <vector>
 
-#include "../misc/objects.h"
-
 class KigFilter;
 class ScreenInfo;
 class KigDocument;

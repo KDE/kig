@@ -25,8 +25,8 @@
 #include <kparts/part.h>
 #include <qptrlist.h>
 
-#include "../misc/objects.h"
-#include "../objects/object.h"
+#include "../objects/object_holder.h"
+#include "../objects/common.h"
 
 class KAboutData;
 class KActionMenu;
@@ -44,7 +44,6 @@ class KigMode;
 class KigObjectsPopup;
 class KigView;
 class MacroWizardImpl;
-class Object;
 class Rect;
 class ScreenInfo;
 
@@ -94,6 +93,8 @@ protected:
 
 public:
   void emitStatusBarText( const QString& text );
+  void redrawScreen();
+  void redrawScreen( KigWidget* w );
 
 public slots:
   void fileSaveAs();
@@ -125,11 +126,9 @@ public:
   void delWidget( KigWidget* );
 
   // these are the objects that the user is aware of..
-  const Objects objects() const;
-  // these are the objects that exist, including those that we added
-  // behind the user's back..
-  const Objects allObjects() const;
-  void setObjects( const Objects& os );
+  const std::vector<ObjectHolder*> objects() const;
+  const std::set<ObjectHolder*> objectsSet() const;
+  void setObjects( const std::vector<ObjectHolder*>& os );
   const CoordinateSystem& coordinateSystem() const;
 
   /**
@@ -147,9 +146,9 @@ public:
   void doneMode( KigMode* );
 
   // what objects are under point p
-  Objects whatAmIOn( const Coordinate& p, const KigWidget& si ) const;
+  std::vector<ObjectHolder*> whatAmIOn( const Coordinate& p, const KigWidget& si ) const;
 
-  Objects whatIsInHere( const Rect& p, const KigWidget& );
+  std::vector<ObjectHolder*> whatIsInHere( const Rect& p, const KigWidget& );
 
   // a rect containing most of the objects, which would be a fine
   // suggestion to mapt to the widget...
@@ -165,20 +164,22 @@ public:
   // guess what these do...
   // actually, they only add a command object to the history, the real
   // work is done in _addObject() and _delObject()
-  void addObject(Object* inObject);
-  void addObjects( const Objects& os );
-  void delObject(Object* inObject);
-  void delObjects( const Objects& os );
+  void addObject(ObjectHolder* inObject);
+  void addObjects( const std::vector<ObjectHolder*>& os );
+  void delObject(ObjectHolder* inObject);
+  void delObjects( const std::vector<ObjectHolder*>& os );
+  void hideObjects( const std::vector<ObjectHolder*>& os );
+  void showObjects( const std::vector<ObjectHolder*>& os );
 
 /************* internal stuff *************/
 protected:
   bool internalSaveAs();
 
 public:
-  void _addObject( Object* inObject );
-  void _addObjects( const Objects& o);
-  void _delObject( Object* inObject );
-  void _delObjects( const Objects& o );
+  void _addObject( ObjectHolder* inObject );
+  void _addObjects( const std::vector<ObjectHolder*>& o);
+  void _delObject( ObjectHolder* inObject );
+  void _delObjects( const std::vector<ObjectHolder*>& o );
 
 protected:
   void setupActions();
@@ -219,7 +220,7 @@ public:
   KAction* aNewMacro;
   KAction* aShowHidden;
   KAction* aConfigureTypes;
-  myvector<KigGUIAction*> aActions;
+  std::vector<KigGUIAction*> aActions;
 
   /**
    * the "token" keeps some objects that should be deleted, we only
@@ -248,15 +249,9 @@ protected:
   KigView* m_widget;
 
   /**
-   * Here we keep the objects in the document.  We keep them in a
-   * reference object, so noone would get the idea of deleting them..
-   * These are not all the objects, there are objects that are not
-   * really part of the document, as the user sees it.  Those are
-   * internal, their reference count can go to zero if one of their
-   * children gets decref'ed.  The objects that we keep here can never
-   * reach a ref count of zero, because this object ref's them..
+   * Here we keep the objects in the document.
    */
-  ReferenceObject mobjsref;
+  std::set<ObjectHolder*> mobjs;
 
   /**
    * The CoordinateSystem as the user sees it: this has little to do

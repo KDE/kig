@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_NW_OBJECTS_BASE_TYPE_H
-#define KIG_NW_OBJECTS_BASE_TYPE_H
+#ifndef KIG_OBJECTS_BASE_TYPE_H
+#define KIG_OBJECTS_BASE_TYPE_H
 
 #include "object_type.h"
 
@@ -34,9 +34,10 @@ protected:
 public:
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   bool canMove() const;
-  const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
-  void move( RealObject* o, const Coordinate& to,
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& o, const Coordinate& to,
              const KigDocument& d ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
 
   virtual ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const = 0;
 };

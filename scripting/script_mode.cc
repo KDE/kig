@@ -40,44 +40,45 @@ void ScriptMode::dragRect( const QPoint& p, KigWidget& w )
 
   DragRectMode dm( p, mdoc, w );
   mdoc.runMode( &dm );
-  Objects ret = dm.ret();
-  Objects cos;
-  if ( dm.needClear() )
-  {
-    cos = margs;
-    margs.setSelected( false );
-    margs.clear();
-  };
-
-  cos.upush( ret );
-  margs.upush( ret );
-  ret.setSelected( true );
+  std::vector<ObjectHolder*> ret = dm.ret();
 
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
-  pter.drawObjects( cos );
+  if ( dm.needClear() )
+  {
+    std::vector<ObjectHolder*> tmp( margs.begin(), margs.begin() );
+    pter.drawObjects( tmp, false );
+    margs.clear();
+  }
+
+  std::copy( ret.begin(), ret.end(), std::inserter( margs, margs.begin() ) );
+  pter.drawObjects( ret, true );
+
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
 }
 
-void ScriptMode::leftClickedObject( Object* o, const QPoint&,
+void ScriptMode::leftClickedObject( ObjectHolder* o, const QPoint&,
                                     KigWidget& w, bool )
 {
   if ( mwawd != SelectingArgs ) return;
 
-  if ( margs.contains( o ) )
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
+
+  if ( margs.find( o ) != margs.end() )
   {
-    margs.remove( o );
-    o->setSelected( false );
+    margs.erase( o );
+    pter.drawObject( o, false );
   }
   else
   {
-    margs.push_back( o );
-    o->setSelected( true );
+    margs.insert( o );
+    pter.drawObject( o, true );
   };
-  w.redrawScreen();
+  w.updateCurPix( pter.overlay() );
+  w.updateWidget();
 }
 
-void ScriptMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget& w, bool )
+void ScriptMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& pt, KigWidget& w, bool )
 {
   if ( mwawd != SelectingArgs ) return;
 
@@ -116,9 +117,7 @@ ScriptMode::ScriptMode( KigDocument& doc )
   mwizard = new NewScriptWizard( doc.widget(), this );
   mwizard->show();
 
-  Objects docos = mdoc.objects();
-  docos.setSelected( false );
-  redrawScreen();
+  doc.redrawScreen();
 }
 
 ScriptMode::~ScriptMode()
@@ -139,8 +138,7 @@ bool ScriptMode::queryCancel()
 void ScriptMode::argsPageEntered()
 {
   mwawd = SelectingArgs;
-  margs.setSelected( true );
-  redrawScreen();
+  mdoc.redrawScreen();
 }
 
 void ScriptMode::enableActions()
@@ -182,37 +180,37 @@ void ScriptMode::codePageEntered()
   };
   mwizard->setFinishEnabled( mwizard->mpcode, true );
   mwawd = EnteringCode;
-  Objects docos = mdoc.objects();
-  docos.setSelected( false );
-  redrawScreen();
+  mdoc.redrawScreen();
 }
 
-void ScriptMode::redrawScreen()
+void ScriptMode::redrawScreen( KigWidget* w )
 {
-  const std::vector<KigWidget*>& widgets = mdoc.widgets();
-  for ( uint i = 0; i < widgets.size(); ++i )
-  {
-    KigWidget* w = widgets[i];
-    w->redrawScreen();
-    w->updateScrollBars();
-  };
+  std::vector<ObjectHolder*> sel;
+  if ( mwawd == SelectingArgs )
+    sel = std::vector<ObjectHolder*>( margs.begin(), margs.end() );
+  w->redrawScreen( sel );
+  w->updateScrollBars();
 }
 
 bool ScriptMode::queryFinish()
 {
-  QString script = mwizard->codeeditor->text();
-  Object* scripto = new DataObject( new StringImp( script ) );
+  std::vector<ObjectCalcer*> args;
 
-  Object* compiledscript =
-    new RealObject( PythonCompileType::instance(), Objects( scripto ) );
+  QString script = mwizard->codeeditor->text();
+  args.push_back( new ObjectConstCalcer( new StringImp( script ) ) );
+
+  ObjectTypeCalcer* compiledscript =
+    new ObjectTypeCalcer( PythonCompileType::instance(), args );
   compiledscript->calc( mdoc );
 
-  Objects args;
+  args.clear();
   args.push_back( compiledscript );
-  copy( margs.begin(), margs.end(), back_inserter( args ) );
+  for ( std::set<ObjectHolder*>::iterator i = margs.begin();
+        i != margs.end(); ++i )
+    args.push_back( ( *i )->calcer() );
 
-  Object* reto = new RealObject( PythonExecuteType::instance(), args );
-  ReferenceObject ref( reto );
+  ObjectTypeCalcer::shared_ptr reto =
+    new ObjectTypeCalcer( PythonExecuteType::instance(), args );
   reto->calc( mdoc );
 
   if ( reto->imp()->inherits( InvalidImp::stype() ) )
@@ -238,7 +236,7 @@ bool ScriptMode::queryFinish()
   }
   else
   {
-    mdoc.addObject( reto );
+    mdoc.addObject( new ObjectHolder( reto.get() ) );
     killMode();
     return true;
   }
@@ -248,7 +246,7 @@ void ScriptMode::midClicked( const QPoint&, KigWidget& )
 {
 }
 
-void ScriptMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
+void ScriptMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
 {
 }
 

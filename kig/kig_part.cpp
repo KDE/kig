@@ -36,8 +36,8 @@
 #include "../misc/object_constructor.h"
 #include "../misc/screeninfo.h"
 #include "../modes/normal.h"
-#include "../objects/object.h"
 #include "../objects/point_imp.h"
+#include "../objects/object_drawer.h"
 
 #include <kaction.h>
 #include <kapplication.h>
@@ -113,6 +113,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   // we need an instance
   setInstance( KigDocumentFactory::instance() );
 
+  mMode = new NormalMode( *this );
+
   // we need a widget, to actually show the document
   m_widget = new KigView(this, false, parentWidget, "kig_view");
   // notify the part that this is our internal widget
@@ -136,8 +138,6 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   setReadWrite(true);
 
   setModified (false);
-
-  mMode = new NormalMode( *this );
 
   GUIActionList::instance()->regDoc( this );
 }
@@ -258,9 +258,10 @@ void KigDocument::setupTypes()
   setupBuiltinMacros();
   setupMacroTypes();
   GUIActionList& l = *GUIActionList::instance();
-  for ( uint i = 0; i < l.actions().size(); ++i )
+  typedef GUIActionList::avectype::const_iterator iter;
+  for ( iter i = l.actions().begin(); i != l.actions().end(); ++i )
   {
-    KigGUIAction* ret = new KigGUIAction( l.actions()[i], *this, actionCollection() );
+    KigGUIAction* ret = new KigGUIAction( *i, *this, actionCollection() );
     aActions.push_back( ret );
     ret->plug( this );
   };
@@ -345,11 +346,12 @@ bool KigDocument::openFile()
   setModified(false);
   mhistory->clear();
 
-  Objects tmp = calcPath( objects() );
-  tmp.calc( *this );
+  std::vector<ObjectCalcer*> tmp = calcPath( getAllParents( getCalcers( objects() ) ) );
+  for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
+    ( *i )->calc( *this );
   emit recenterScreen();
 
-  mode()->redrawScreen();
+  redrawScreen();
 
   return true;
 }
@@ -381,85 +383,84 @@ bool KigDocument::saveFile()
   return false;
 }
 
-void KigDocument::addObject(Object* o)
+void KigDocument::addObject(ObjectHolder* o)
 {
   mhistory->addCommand( KigCommand::addCommand( *this, o ) );
 }
 
-void KigDocument::addObjects( const Objects& os )
+void KigDocument::addObjects( const std::vector<ObjectHolder*>& os )
 {
   mhistory->addCommand( KigCommand::addCommand( *this, os ) );
 }
 
-void KigDocument::_addObject( Object* o )
+void KigDocument::_addObject( ObjectHolder* o )
 {
-  mobjsref.addParent( o );
+  mobjs.insert( o );
   setModified(true);
 }
 
-void KigDocument::delObject(Object* o)
+void KigDocument::delObject( ObjectHolder* o )
 {
   // we delete all children and their children etc. too...
-  Objects all = o->getAllChildren();
-  all.upush(o);
-  mhistory->addCommand( KigCommand::removeCommand( *this, all ) );
+  std::vector<ObjectHolder*> os;
+  os.push_back( o );
+  delObjects( os );
 }
 
-void KigDocument::_delObjects( const Objects& o )
+void KigDocument::_delObjects( const std::vector<ObjectHolder*>& o )
 {
-  for ( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
+  for ( std::vector<ObjectHolder*>::const_iterator i = o.begin();
+        i != o.end(); ++i )
   {
-    mobjsref.delParent( *i );
-    (*i)->setSelected( false );
+    mobjs.erase( *i );
   };
   setModified( true );
 }
 
-void KigDocument::_delObject(Object* o)
+void KigDocument::_delObject(ObjectHolder* o)
 {
-  mobjsref.delParent( o );
-  o->setSelected( false );
+  mobjs.erase( o );
   setModified(true);
 }
 
-Objects KigDocument::whatAmIOn(const Coordinate& p, const KigWidget& w ) const
+std::vector<ObjectHolder*> KigDocument::whatAmIOn(const Coordinate& p, const KigWidget& w ) const
 {
-  Objects tmp;
-  Objects nonpoints;
-  const Objects objs = objects();
-  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+  std::vector<ObjectHolder*> ret;
+  std::vector<ObjectHolder*> nonpoints;
+  for ( std::set<ObjectHolder*>::const_iterator i = mobjs.begin();
+        i != mobjs.end(); ++i )
   {
-    if(!(*i)->contains(p, w) || !(*i)->shown() || !(*i)->valid()) continue;
-    if ( (*i)->hasimp( PointImp::stype() ) ) tmp.push_back( *i );
+    if(!(*i)->contains(p, w)) continue;
+    if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
     else nonpoints.push_back( *i );
   };
-  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
-  return tmp;
+  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( ret ) );
+  return ret;
 }
 
-Objects KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
+std::vector<ObjectHolder*> KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
 {
-  Objects tmp;
-  Objects nonpoints;
-  const Objects objs = objects();
-  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+  std::vector<ObjectHolder*> ret;
+  std::vector<ObjectHolder*> nonpoints;
+  for ( std::set<ObjectHolder*>::const_iterator i = mobjs.begin();
+        i != mobjs.end(); ++i )
   {
-    if(! (*i)->inRect( p, w ) || !(*i)->shown() || ! (*i)->valid() ) continue;
-    if ((*i)->hasimp( PointImp::stype() ) ) tmp.push_back( *i );
+    if(! (*i)->inRect( p, w ) ) continue;
+    if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
     else nonpoints.push_back( *i );
   };
-  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
-  return tmp;
+  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( ret ) );
+  return ret;
 }
 
 Rect KigDocument::suggestedRect() const
 {
   bool rectInited = false;
   Rect r(0.,0.,0.,0.);
-  const Objects objs = objects();
-  for (Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+  for ( std::set<ObjectHolder*>::const_iterator i = mobjs.begin();
+        i != mobjs.end(); ++i )
   {
-    if ( (*i)->shown() && (*i)->hasimp( PointImp::stype() ) )
+    if ( (*i)->shown() && (*i)->imp()->inherits( PointImp::stype() ) )
     {
       if( !rectInited )
       {
@@ -474,8 +475,8 @@ Rect KigDocument::suggestedRect() const
   if ( ! rectInited )
     return Rect( -5.5, -5.5, 11., 11. );
   r.setContains( Coordinate( 0, 0 ) );
-  if (r.width() == 0) r.setWidth( 1 );
-  if (r.height() == 0) r.setHeight( 1 );
+  if( r.width() == 0 ) r.setWidth( 1 );
+  if( r.height() == 0 ) r.setHeight( 1 );
   Coordinate center = r.center();
   r *= 2;
   r.setCenter(center);
@@ -492,12 +493,15 @@ void KigDocument::setMode( KigMode* m )
 {
   mMode = m;
   m->enableActions();
+  redrawScreen();
 }
 
-void KigDocument::_addObjects( const Objects& os )
+void KigDocument::_addObjects( const std::vector<ObjectHolder*>& os )
 {
-  os.calc( *this );
-  mobjsref.addParents( os );
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
+        i != os.end(); ++i )
+    ( *i )->calc( *this );
+  std::copy( os.begin(), os.end(), std::inserter( mobjs, mobjs.begin() ) );
   setModified( true );
 }
 
@@ -536,18 +540,30 @@ KCommandHistory* KigDocument::history()
   return mhistory;
 }
 
-void KigDocument::delObjects( const Objects& os )
+void KigDocument::delObjects( const std::vector<ObjectHolder*>& os )
 {
-  Objects tos = os.getAllChildren();
-  tos |= os;
+  if ( os.size() < 1 ) return;
+  std::set<ObjectHolder*> delobjs;
 
-  const Objects objs = objects();
-  Objects dos;
-  for ( Objects::iterator i = tos.begin(); i != tos.end(); ++i )
-    if ( objs.contains( *i ) )
-      dos.upush( *i );
-  if ( dos.empty() ) return;
-  mhistory->addCommand( KigCommand::removeCommand( *this, dos ) );
+  std::set<ObjectCalcer*> delcalcers = getAllChildren( getCalcers( os ) );
+  std::map<ObjectCalcer*, ObjectHolder*> holdermap;
+
+  for ( std::set<ObjectHolder*>::iterator i = mobjs.begin();
+        i != mobjs.end(); ++i )
+    holdermap[( *i )->calcer()] = *i;
+
+  for ( std::set<ObjectCalcer*>::iterator i = delcalcers.begin();
+        i != delcalcers.end(); ++i )
+  {
+    std::map<ObjectCalcer*, ObjectHolder*>::iterator j = holdermap.find( *i );
+    if ( j != holdermap.end() )
+      delobjs.insert( j->second );
+  }
+
+  assert( delobjs.size() >= os.size() );
+
+  std::vector<ObjectHolder*> delobjsvect( delobjs.begin(), delobjs.end() );
+  mhistory->addCommand( KigCommand::removeCommand( *this, delobjsvect ) );
 }
 
 void KigDocument::enableConstructActions( bool enabled )
@@ -647,10 +663,14 @@ void KigDocument::doneMode( KigMode* d )
 #endif
 }
 
-void KigDocument::setObjects( const Objects& os )
+void KigDocument::setObjects( const std::vector<ObjectHolder*>& os )
 {
   assert( objects().empty() );
-  mobjsref.setParents( os );
+  mobjs.clear();
+  mobjs.insert( os.begin(), os.end() );
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
+        i != os.end(); ++i )
+    ( *i )->calc( *this );
 }
 
 void KigDocument::setCoordinateSystem( CoordinateSystem* cs )
@@ -662,12 +682,16 @@ void KigDocument::setCoordinateSystem( CoordinateSystem* cs )
 void KigDocument::actionRemoved( GUIAction* a, GUIUpdateToken& t )
 {
   KigGUIAction* rem = 0;
-  for ( myvector<KigGUIAction*>::iterator i = aActions.begin(); i != aActions.end(); ++i )
+  for ( std::vector<KigGUIAction*>::iterator i = aActions.begin(); i != aActions.end(); ++i )
   {
-    if ( (*i)->guiAction() == a ) rem = *i;
+    if ( (*i)->guiAction() == a )
+    {
+      rem = *i;
+      aActions.erase( i );
+      break;
+    }
   };
   assert( rem );
-  aActions.remove( rem );
   aMNewSegment.remove( rem );
   aMNewConic.remove( rem );
   aMNewPoint.remove( rem );
@@ -709,11 +733,11 @@ void KigDocument::setupMacroTypes()
     QStringList dataFiles =
       KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
                                         true, false );
-    myvector<Macro*> macros;
+    std::vector<Macro*> macros;
     for ( QStringList::iterator file = dataFiles.begin();
           file != dataFiles.end(); ++file )
     {
-      myvector<Macro*> nmacros;
+      std::vector<Macro*> nmacros;
       bool ok = MacroList::instance()->load( *file, nmacros, *this );
       if ( ! ok ) continue;
       copy( nmacros.begin(), nmacros.end(), back_inserter( macros ) );
@@ -738,7 +762,7 @@ void KigDocument::setupBuiltinMacros()
     for ( QStringList::iterator file = builtinfiles.begin();
           file != builtinfiles.end(); ++file )
     {
-      myvector<Macro*> macros;
+      std::vector<Macro*> macros;
       bool ok = MacroList::instance()->load( *file, macros, *this );
       if ( ! ok ) continue;
       for ( uint i = 0; i < macros.size(); ++i )
@@ -820,17 +844,13 @@ void KigDocument::doPrint( KPrinter& printer )
   KigPainter painter( si, &printer, *this );
   painter.setWholeWinOverlay();
   painter.drawGrid( coordinateSystem() );
-  painter.drawObjects( objects() );
+  painter.drawObjects( objects(), false );
 }
 
-const Objects KigDocument::objects() const
+const std::vector<ObjectHolder*> KigDocument::objects() const
 {
-  return mobjsref.parents();
-}
-
-const Objects KigDocument::allObjects() const
-{
-  return getAllParents( objects() );
+  std::vector<ObjectHolder*> ret( mobjs.begin(), mobjs.end() );
+  return ret;
 }
 
 void KigDocument::slotSelectAll()
@@ -846,4 +866,61 @@ void KigDocument::slotDeselectAll()
 void KigDocument::slotInvertSelection()
 {
   mMode->invertSelection();
+}
+
+void KigDocument::hideObjects( const std::vector<ObjectHolder*>& inos )
+{
+  std::vector<ObjectHolder*> os;
+  for (std::vector<ObjectHolder*>::const_iterator i = inos.begin(); i != inos.end(); ++i )
+  {
+    if ( (*i)->shown() )
+      os.push_back( *i );
+  };
+  KigCommand* kc = 0;
+  if ( os.size() == 0 ) return;
+  else if ( os.size() == 1 )
+    kc = new KigCommand( *this, os[0]->imp()->type()->hideAStatement() );
+  else kc = new KigCommand( *this, i18n( "Hide %n objects" ).arg( os.size() ) );
+  for ( std::vector<ObjectHolder*>::iterator i = os.begin();
+        i != os.end(); ++i )
+    kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( false ) ) );
+  mhistory->addCommand( kc );
+}
+
+void KigDocument::showObjects( const std::vector<ObjectHolder*>& inos )
+{
+  std::vector<ObjectHolder*> os;
+  for (std::vector<ObjectHolder*>::const_iterator i = inos.begin(); i != inos.end(); ++i )
+  {
+    if ( !(*i)->shown() )
+      os.push_back( *i );
+  };
+  KigCommand* kc = 0;
+  if ( os.size() == 0 ) return;
+  else if ( os.size() == 1 )
+    kc = new KigCommand( *this, os[0]->imp()->type()->showAStatement() );
+  else kc = new KigCommand( *this, i18n( "Show %n objects" ).arg( os.size() ) );
+  for ( std::vector<ObjectHolder*>::iterator i = os.begin();
+        i != os.end(); ++i )
+    kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( true ) ) );
+  mhistory->addCommand( kc );
+}
+
+const std::set<ObjectHolder*> KigDocument::objectsSet() const
+{
+  return mobjs;
+}
+
+void KigDocument::redrawScreen( KigWidget* w )
+{
+  mode()->redrawScreen( w );
+}
+
+void KigDocument::redrawScreen()
+{
+  for ( std::vector<KigWidget*>::iterator i = mwidgets.begin();
+        i != mwidgets.end(); ++i )
+  {
+    mode()->redrawScreen( *i );
+  }
 }

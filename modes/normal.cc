@@ -20,8 +20,10 @@
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
+#include "../kig/kig_commands.h"
 #include "../objects/object_factory.h"
 #include "../objects/object_imp.h"
+#include "../objects/object_drawer.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 #include "popup.h"
@@ -55,34 +57,31 @@ void NormalMode::enableActions()
 
 void NormalMode::deleteObjects()
 {
-  mdoc.delObjects( sos );
+  std::vector<ObjectHolder*> sel( sos.begin(), sos.end() );
+  mdoc.delObjects( sel );
   sos.clear();
 }
 
-void NormalMode::selectObject( Object* o )
+void NormalMode::selectObject( ObjectHolder* o )
 {
-  sos.push_back( o );
-  o->setSelected( true );
+  sos.insert( o );
 }
 
-void NormalMode::selectObjects( const Objects& os )
+void NormalMode::selectObjects( const std::vector<ObjectHolder*>& os )
 {
   // hehe, don't you love this c++ stuff ;)
-  for_each( os.begin(), os.end(),
-            bind1st( mem_fun( &NormalMode::selectObject ), this ) );
+  std::for_each( os.begin(), os.end(),
+                 std::bind1st(
+                   std::mem_fun( &NormalMode::selectObject ), this ) );
 }
 
-void NormalMode::unselectObject( Object* o )
+void NormalMode::unselectObject( ObjectHolder* o )
 {
-  assert( o->inherits( Object::ID_RealObject ) );
-  static_cast<RealObject*>( o )->setSelected( false );
-  sos.remove( o );
+  sos.erase( o );
 }
 
 void NormalMode::clearSelection()
 {
-  for ( Objects::iterator i = sos.begin(); i != sos.end(); ++i )
-    (*i)->setSelected( false );
   sos.clear();
 }
 
@@ -93,10 +92,7 @@ void NormalMode::clearSelection()
 
 void NormalMode::showHidden()
 {
-  const Objects os = mdoc.objects();
-  for (Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-    (*i)->setShown( true );
-  redrawScreen();
+  mdoc.showObjects( mdoc.objects() );
 }
 
 void NormalMode::newMacro()
@@ -105,21 +101,16 @@ void NormalMode::newMacro()
   mdoc.runMode( &m );
 }
 
-void NormalMode::redrawScreen()
+void NormalMode::redrawScreen( KigWidget* w )
 {
   // unselect removed objects..
-  Objects nsos;
-  for ( uint i = 0; i < sos.size(); ++i )
-    if ( mdoc.objects().contains( sos[i] ) )
-      nsos.push_back( sos[i] );
-  sos = nsos;
-  const std::vector<KigWidget*>& widgets = mdoc.widgets();
-  for ( uint i = 0; i < widgets.size(); ++i )
-  {
-    KigWidget* w = widgets[i];
-    w->redrawScreen();
-    w->updateScrollBars();
-  };
+  std::vector<ObjectHolder*> nsos;
+  const std::set<ObjectHolder*> docobjs = mdoc.objectsSet();
+  std::set_intersection( docobjs.begin(), docobjs.end(), sos.begin(), sos.end(),
+                         std::back_inserter( nsos ) );
+  sos = std::set<ObjectHolder*>( nsos.begin(), nsos.end() );
+  w->redrawScreen( nsos, true );
+  w->updateScrollBars();
 }
 
 void NormalMode::editTypes()
@@ -146,28 +137,27 @@ void NormalMode::dragRect( const QPoint& p, KigWidget& w )
 
   if ( ! d.cancelled() )
   {
-    Objects sel = d.ret();
-    Objects cos = sel;
+    std::vector<ObjectHolder*> sel = d.ret();
 
     if ( d.needClear() )
     {
-      cos |= sos;
+      pter.drawObjects( sos.begin(), sos.end(), false );
       clearSelection();
     };
 
     selectObjects( sel );
-    pter.drawObjects( cos );
+    pter.drawObjects( sel, true );
   };
 
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
 }
 
-void NormalMode::dragObject( const Objects& oco, const QPoint& pco,
+void NormalMode::dragObject( const std::vector<ObjectHolder*>& oco, const QPoint& pco,
                              KigWidget& w, bool ctrlOrShiftDown )
 {
   // first determine what to move...
-  if( !sos.contains( oco.front() ) )
+  if( sos.find( oco.front() ) == sos.end() )
   {
     // the user clicked on something that is currently not
     // selected... --> we select it, taking the Ctrl- and
@@ -176,46 +166,45 @@ void NormalMode::dragObject( const Objects& oco, const QPoint& pco,
     selectObject(oco.front());
   }
 
-  MovingMode m( sos, w.fromScreen( pco ), w, mdoc );
+  std::vector<ObjectHolder*> sosv( sos.begin(), sos.end() );
+  MovingMode m( sosv, w.fromScreen( pco ), w, mdoc );
   mdoc.runMode( &m );
 }
 
-void NormalMode::leftClickedObject( Object* o, const QPoint&,
+void NormalMode::leftClickedObject( ObjectHolder* o, const QPoint&,
                                     KigWidget& w, bool ctrlOrShiftDown )
 {
-  Objects cos; // objects whose selection changed..
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
 
   if ( ! o )
   {
-    cos = sos;
+    pter.drawObjects( sos.begin(), sos.end(), false );
     clearSelection();
   }
-  else if( !sos.contains( o ) )
+  else if( sos.find( o ) == sos.end() )
   {
     // clicked on an object that wasn't selected....
     if (!ctrlOrShiftDown)
     {
-      cos = sos;
+      pter.drawObjects( sos.begin(), sos.end(), false );
       clearSelection();
     };
+    pter.drawObject( o, true );
     selectObject( o );
-    cos.push_back( o );
   }
   else
   {
     // clicked on an object that was selected....
+    pter.drawObject( o, false );
     unselectObject( o );
-    cos.push_back( o );
   };
-  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
-  pter.drawObjects( cos );
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
 }
 
 void NormalMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  Object* pto = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
+  ObjectHolder* pto = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
   pto->calc( mdoc );
   mdoc.addObject( pto );
 
@@ -225,30 +214,30 @@ void NormalMode::midClicked( const QPoint& p, KigWidget& w )
 //   w.updateScrollBars();
 }
 
-void NormalMode::rightClicked( const Objects& os,
+void NormalMode::rightClicked( const std::vector<ObjectHolder*>& os,
                                const QPoint&,
                                KigWidget& w )
 {
   if( !os.empty() )
   {
-    if( !sos.contains( os.front() ) )
+    if( sos.find( os.front() ) == sos.end() )
     {
       clearSelection();
       selectObject( os.front() );
     };
     // show a popup menu...
-    NormalModePopupObjects* p = new NormalModePopupObjects( mdoc, w, *this, sos );
-    p->exec( QCursor::pos() );
-    delete p;
+    std::vector<ObjectHolder*> sosv( sos.begin(), sos.end() );
+    NormalModePopupObjects p( mdoc, w, *this, sosv );
+    p.exec( QCursor::pos() );
   }
   else
   {
-    NormalModePopupObjects p( mdoc, w, *this, Objects() );
+    NormalModePopupObjects p( mdoc, w, *this, std::vector<ObjectHolder*>() );
     p.exec( QCursor::pos() );
   };
 }
 
-void NormalMode::mouseMoved( const Objects& os,
+void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
                              const QPoint& plc,
                              KigWidget& w,
                              bool )
@@ -284,28 +273,25 @@ void NormalMode::mouseMoved( const Objects& os,
 
 void NormalMode::selectAll()
 {
-  const Objects os = mdoc.objects();
+  const std::vector<ObjectHolder*> os = mdoc.objects();
   selectObjects( os );
-  redrawScreen();
+  mdoc.redrawScreen();
 }
 
 void NormalMode::deselectAll()
 {
   clearSelection();
-  redrawScreen();
+  mdoc.redrawScreen();
 }
 
 void NormalMode::invertSelection()
 {
-  Objects sel = sos;
-  Objects os = mdoc.objects();
+  std::vector<ObjectHolder*> os = mdoc.objects();
+  std::set<ObjectHolder*> oldsel = sos;
   clearSelection();
-  for ( Objects::const_iterator i = os.begin();
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
         i != os.end(); ++i )
-    if ( ! sel.contains( *i ) )
-    {
-      (*i)->setSelected( true );
-      sos.push_back( *i );
-    }
-  redrawScreen();
+    if ( oldsel.find( *i ) == oldsel.end() )
+      sos.insert( *i );
+  mdoc.redrawScreen();
 }

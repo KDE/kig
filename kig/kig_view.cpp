@@ -23,7 +23,6 @@
 
 #include "kig_part.h"
 #include "kig_commands.h"
-#include "../objects/object.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/kigpainter.h"
 #include "../modes/mode.h"
@@ -43,6 +42,7 @@
 #include <kiconloader.h>
 
 #include <cmath>
+#include <algorithm>
 
 kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
 {
@@ -166,7 +166,7 @@ void KigWidget::resizeEvent( QResizeEvent* e )
   // don't..
   if ( nsize.width() / osize.width() > 4 ) recenterScreen();
 
-  redrawScreen();
+  mdocument->redrawScreen( this );
   updateScrollBars();
 }
 
@@ -233,13 +233,19 @@ void KigWidget::clearStillPix()
   oldOverlay.push_back ( QRect( QPoint(0,0), size() ) );
 }
 
-void KigWidget::redrawScreen( bool dos )
+void KigWidget::redrawScreen( const std::vector<ObjectHolder*>& selection, bool dos )
 {
+  std::vector<ObjectHolder*> nonselection;
+  std::set<ObjectHolder*> objs = mdocument->objectsSet();
+  std::set_difference( objs.begin(), objs.end(), selection.begin(), selection.end(),
+                       std::back_inserter( nonselection ) );
+
   // update the screen...
   clearStillPix();
   KigPainter p( msi, &stillPix, *mdocument );
   p.drawGrid( mdocument->coordinateSystem() );
-  p.drawObjects( mdocument->objects() );
+  p.drawObjects( selection, true );
+  p.drawObjects( nonselection, false );
   updateCurPix( p.overlay() );
   if ( dos ) updateEntireWidget();
 }
@@ -284,7 +290,7 @@ KigView::KigView( KigDocument* doc,
     mupdatingscrollbars( false ),
     mrealwidget( 0 ), mdoc( doc )
 {
-  connect( doc, SIGNAL( recenterScreen() ), this, SLOT( slotRecenterScreen() ) );
+  connect( doc, SIGNAL( recenterScreen() ), this, SLOT( slotInternalRecenterScreen() ) );
 
   mlayout = new QGridLayout( this, 2, 2 );
   mrightscroll = new QScrollBar( Vertical, this, "Right Scrollbar" );
@@ -306,7 +312,7 @@ KigView::KigView( KigDocument* doc,
 
   resize( sizeHint() );
   mrealwidget->recenterScreen();
-  mrealwidget->redrawScreen();
+  doc->redrawScreen( mrealwidget );
   updateScrollBars();
 }
 
@@ -401,7 +407,7 @@ void KigWidget::scrollSetBottom( double rhs )
   bl.y = rhs;
   sr.setBottomLeft( bl );
   msi.setShownRect( sr );
-  redrawScreen();
+  mdocument->redrawScreen( this );
 }
 
 void KigWidget::scrollSetLeft( double rhs )
@@ -411,7 +417,7 @@ void KigWidget::scrollSetLeft( double rhs )
   bl.x = rhs;
   sr.setBottomLeft( bl );
   msi.setShownRect( sr );
-  redrawScreen();
+  mdocument->redrawScreen( this );
 }
 
 const ScreenInfo& KigView::screenInfo() const
@@ -524,7 +530,7 @@ void KigWidget::zoomRect()
     mdocument->history()->addCommand( cd );
   };
 
-  redrawScreen();
+  mdocument->redrawScreen( this );
   updateScrollBars();
 }
 
@@ -541,4 +547,9 @@ void KigWidget::setShowingRect( const Rect& r )
 void KigView::slotRecenterScreen()
 {
   mrealwidget->slotRecenterScreen();
+}
+
+void KigView::slotInternalRecenterScreen()
+{
+  mrealwidget->recenterScreen();
 }

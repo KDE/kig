@@ -95,7 +95,8 @@ void ExportToImageDialog::slotOKPressed()
   KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img, *md);
   p.setWholeWinOverlay();
   p.drawGrid( md->coordinateSystem(), showgridCheckBox->isOn(), showAxesCheckBox->isOn() );
-  p.drawObjects( md->objects() );
+  // FIXME: show the selections ?
+  p.drawObjects( md->objects(), false );
   if ( ! img.save( filename, type.latin1() ) )
   {
     KMessageBox::error( mv, i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );

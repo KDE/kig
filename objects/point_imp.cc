@@ -147,7 +147,9 @@ const ObjectImpType* PointImp::stype()
     I18N_NOOP( "Remove a Point" ),
     I18N_NOOP( "Add a Point" ),
     I18N_NOOP( "Move a Point" ),
-    I18N_NOOP( "Attach to this point" )
+    I18N_NOOP( "Attach to this point" ),
+    I18N_NOOP( "Show a Point" ),
+    I18N_NOOP( "Hide a Point" )
     );
   return &t;
 }

@@ -18,13 +18,6 @@
 
 - make the dialogs not pop up over the main window..
 
-- decouple the link between how an object is calc'ed and whether or
-  not it is drawn.  This will require another file format change, I
-  think..
-
-- undo support for changing the size and color of an object ( depends
-  on the previous item )..
-
 - make the python scripting work more like the macro system.  Make it
   a way to define new object types that can be reused more than once,
   instead of making it just a way to add *one* object..

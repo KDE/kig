@@ -43,7 +43,7 @@ KigFilters::KigFilters()
 {
   mFilters.push_back( KigFilterKGeo::instance() );
   mFilters.push_back( KigFilterKSeg::instance() );
-//   mFilters.push_back( new KigFilterCabri );
+  mFilters.push_back( KigFilterCabri::instance() );
   mFilters.push_back( KigFilterNative::instance() );
 }
 

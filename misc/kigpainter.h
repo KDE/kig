@@ -24,7 +24,6 @@
 
 #include "coordinate.h"
 #include "rect.h"
-#include "objects.h"
 #include "screeninfo.h"
 
 #include <qpainter.h>
@@ -35,12 +34,13 @@
 class KigWidget;
 class QPaintDevice;
 class CoordinateSystem;
-class Object;
 class ObjectHierarchy;
 class ConicPolarData;
 class CubicCartesianData;
 class LineData;
 class CurveImp;
+class KigDocument;
+class ObjectHolder;
 
 /**
  * KigPainter is an extended qpainter...
@@ -114,8 +114,14 @@ public:
   /**
    * draw an object ( by calling its draw function.. )
    */
-  void drawObject( const Object* o, bool ss = true );
-  void drawObjects( const Objects& os );
+  void drawObject( const ObjectHolder* o, bool sel );
+  void drawObjects( const std::vector<ObjectHolder*>& os, bool sel );
+  template<typename iter>
+  void drawObjects( iter begin, iter end, bool sel )
+    {
+      for ( ; begin != end; ++begin )
+        drawObject( *begin, sel );
+    }
 
   /**
    * draw a generic curve...

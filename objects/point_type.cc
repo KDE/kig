@@ -18,7 +18,6 @@
 
 #include "point_type.h"
 
-#include "object.h"
 #include "point_imp.h"
 #include "curve_imp.h"
 #include "line_imp.h"
@@ -64,9 +63,8 @@ ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigDocument& d
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
   double param = static_cast<const DoubleImp*>( parents[0] )->data();
-  bool valid = true;
-  const Coordinate nc = static_cast<const CurveImp*>( parents[1] )->getPoint( param, valid, doc );
-  if ( valid ) return new PointImp( nc );
+  const Coordinate nc = static_cast<const CurveImp*>( parents[1] )->getPoint( param, doc );
+  if ( nc.valid() ) return new PointImp( nc );
   else return new InvalidImp;
 }
 
@@ -85,31 +83,31 @@ ConstrainedPointType::~ConstrainedPointType()
 {
 }
 
-void FixedPointType::move( RealObject* ourobj, const Coordinate& to,
+void FixedPointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
                            const KigDocument& ) const
 {
   // fetch the old coord..;
-  Objects pa = ourobj->parents();
+  std::vector<ObjectCalcer*> pa = ourobj.parents();
   assert( margsparser.checkArgs( pa ) );
-  assert( pa.front()->inherits( Object::ID_DataObject ) );
-  assert( pa.back()->inherits( Object::ID_DataObject ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( pa.front() ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( pa.back() ) );
 
-  DataObject* ox = static_cast<DataObject*>( pa.front() );
-  DataObject* oy = static_cast<DataObject*>( pa.back() );
+  ObjectConstCalcer* ox = static_cast<ObjectConstCalcer*>( pa.front() );
+  ObjectConstCalcer* oy = static_cast<ObjectConstCalcer*>( pa.back() );
 
   ox->setImp( new DoubleImp( to.x ) );
   oy->setImp( new DoubleImp( to.y ) );
 }
 
-void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& to,
+void ConstrainedPointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
                                  const KigDocument& d ) const
 {
   // fetch the CurveImp..
-  Objects parents = ourobj->parents();
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
   assert( margsparser.checkArgs( parents ) );
 
-  assert( parents[0]->inherits( Object::ID_DataObject ) );
-  DataObject* paramo = static_cast<DataObject*>( parents[0] );
+  assert( dynamic_cast<ObjectConstCalcer*>( parents[0] ) );
+  ObjectConstCalcer* paramo = static_cast<ObjectConstCalcer*>( parents[0] );
   const CurveImp* ci = static_cast<const CurveImp*>( parents[1]->imp() );
 
   // fetch the new param..
@@ -202,40 +200,38 @@ QStringList ConstrainedPointType::specialActions() const
   return ret;
 }
 
-static void redefinePoint( RealObject* o, KigDocument& d, KigWidget& w,
-                           NormalMode& )
+static void redefinePoint( ObjectHolder* o, KigDocument& d, KigWidget& w )
 {
   PointRedefineMode pm( o, d, w );
   d.runMode( &pm );
 }
 
 void FixedPointType::executeAction(
-  int i, RealObject* o, KigDocument& d, KigWidget& w,
-  NormalMode& m ) const
+  int i, ObjectHolder& oh, ObjectTypeCalcer& o,
+  KigDocument& d, KigWidget& w, NormalMode& ) const
 {
   switch( i )
   {
   case 0:
   {
     bool ok = true;
-    Coordinate oldc;
-    if ( o->hasimp( PointImp::stype() ) )
-      oldc = static_cast<const PointImp*>( o->imp() )->coordinate();
+    assert ( o.imp()->inherits( PointImp::stype() ) );
+    Coordinate oldc = static_cast<const PointImp*>( o.imp() )->coordinate();
     Coordinate c = d.coordinateSystem().getCoordFromUser(
       i18n( "Set Coordinate" ), i18n( "Enter the new coordinate: " ),
       d, &w, &ok, &oldc );
     if ( ! ok ) break;
 
-    MonitorDataObjects mon( getAllParents( Objects( o ) ) );
-    o->move( c, d );
+    MonitorDataObjects mon( getAllParents( &o ) );
+    o.move( c, d );
     KigCommand* kc = new KigCommand( d, PointImp::stype()->moveAStatement() );
-    kc->addTask( mon.finish() );
+    mon.finish( kc );
 
     d.history()->addCommand( kc );
     break;
   };
   case 1:
-    redefinePoint( o, d, w, m );
+    redefinePoint( &oh, d, w );
     break;
   default:
     assert( false );
@@ -243,36 +239,34 @@ void FixedPointType::executeAction(
 }
 
 void ConstrainedPointType::executeAction(
-  int i, RealObject* o, KigDocument& d, KigWidget& w,
-  NormalMode& m ) const
+  int i, ObjectHolder& oh, ObjectTypeCalcer& o, KigDocument& d, KigWidget& w,
+  NormalMode& ) const
 {
   switch( i )
   {
   case 1:
-    redefinePoint( o, d, w, m );
+    redefinePoint( &oh, d, w );
     break;
   case 0:
   {
-    Objects parents = o->parents();
-    if ( parents[0]->inherits( Object::ID_DataObject ) &&
-         parents[0]->hasimp( DoubleImp::stype() ) )
-    {
-      DataObject* po = static_cast<DataObject*>( parents[0] );
-      double oldp = static_cast<const DoubleImp*>( po->imp() )->data();
+    std::vector<ObjectCalcer*> parents = o.parents();
+    assert( dynamic_cast<ObjectConstCalcer*>( parents[0] ) &&
+            parents[0]->imp()->inherits( DoubleImp::stype() ) );
 
-      bool ok = true;
-      double newp = getDoubleFromUser(
-        i18n( "Set Point Parameter" ), i18n( "Choose the new parameter: " ),
-        oldp, &w, &ok, 0, 1, 4 );
-      if ( ! ok ) return;
+    ObjectConstCalcer* po = static_cast<ObjectConstCalcer*>( parents[0] );
+    double oldp = static_cast<const DoubleImp*>( po->imp() )->data();
 
-      Objects monos( po );
-      MonitorDataObjects mon( monos );
-      po->setImp( new DoubleImp( newp ) );
-      KigCommand* kc = new KigCommand( d, i18n( "Change Parameter of Constrained Point" ) );
-      kc->addTask( mon.finish() );
-      d.history()->addCommand( kc );
-    };
+    bool ok = true;
+    double newp = getDoubleFromUser(
+      i18n( "Set Point Parameter" ), i18n( "Choose the new parameter: " ),
+      oldp, &w, &ok, 0, 1, 4 );
+    if ( ! ok ) return;
+
+    MonitorDataObjects mon( parents );
+    po->setImp( new DoubleImp( newp ) );
+    KigCommand* kc = new KigCommand( d, i18n( "Change Parameter of Constrained Point" ) );
+    mon.finish( kc );
+    d.history()->addCommand( kc );
     break;
   };
   default:
@@ -280,14 +274,26 @@ void ConstrainedPointType::executeAction(
   };
 }
 
-const Coordinate FixedPointType::moveReferencePoint( const RealObject* ourobj ) const
+const Coordinate FixedPointType::moveReferencePoint( const ObjectTypeCalcer& ourobj ) const
 {
-  return static_cast<const PointImp*>( ourobj->imp() )->coordinate();
+  assert( ourobj.imp()->inherits( PointImp::stype() ) );
+  return static_cast<const PointImp*>( ourobj.imp() )->coordinate();
 }
 
-const Coordinate ConstrainedPointType::moveReferencePoint( const RealObject* ourobj ) const
+const Coordinate ConstrainedPointType::moveReferencePoint( const ObjectTypeCalcer& ourobj ) const
 {
-  if ( ourobj->hasimp( PointImp::stype() ) )
-    return static_cast<const PointImp*>( ourobj->imp() )->coordinate();
-  else return Coordinate::invalidCoord();
+  assert( ourobj.imp()->inherits( PointImp::stype() ) );
+  return static_cast<const PointImp*>( ourobj.imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> FixedPointType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  return ourobj.parents();
+}
+
+std::vector<ObjectCalcer*> ConstrainedPointType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> ret;
+  ret.push_back( ourobj.parents()[0] );
+  return ret;
 }

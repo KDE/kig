@@ -21,7 +21,10 @@
 
 #include "base_mode.h"
 
+#include "../objects/object_calcer.h"
+
 class ObjectConstructor;
+class ObjectCalcer;
 
 class ConstructMode
   : public BaseMode
@@ -29,21 +32,21 @@ class ConstructMode
   const ObjectConstructor* mctor;
   // this is the point that we move around, in case the user wants to
   // add a point somewhere..
-  Object* mpt;
+  ObjectTypeCalcer::shared_ptr mpt;
 
-  Objects mparents;
+  std::vector<ObjectHolder*> mparents;
 
 public:
-  void selectObject( Object* o, KigWidget& w );
-  void selectObjects( const Objects& os, KigWidget& w );
+  void selectObject( ObjectHolder* o, KigWidget& w );
+  void selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w );
   ConstructMode( KigDocument& d, const ObjectConstructor* ctor );
   ~ConstructMode();
 protected:
-  void leftClickedObject( Object* o, const QPoint& p,
+  void leftClickedObject( ObjectHolder* o, const QPoint& p,
                           KigWidget& w, bool ctrlOrShiftDown );
   void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
 
   void enableActions();
   void cancelConstruction();
@@ -55,16 +58,16 @@ class PointConstructMode
 {
   // this is the point that we move around, for the user to add
   // somewhere..
-  Object* mpt;
+  ObjectTypeCalcer::shared_ptr mpt;
 public:
   PointConstructMode( KigDocument& d );
   ~PointConstructMode();
 protected:
-  void leftClickedObject( Object* o, const QPoint& p,
-                          KigWidget& w, bool ctrlOrShiftDown );
+  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+                                KigWidget& w, bool ctrlOrShiftDown );
   void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
 
   void enableActions();
   void cancelConstruction();

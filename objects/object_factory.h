@@ -25,19 +25,23 @@ class ObjectFactory
 {
 public:
 
-  static ObjectFactory* instance();
+  static const ObjectFactory* instance();
 
   // this returns a fixed point.  Note that the returned object is
   // not added to the document..
-  Object* fixedPoint( const Coordinate& c );
+  ObjectHolder* fixedPoint( const Coordinate& c ) const;
+  ObjectTypeCalcer* fixedPointCalcer( const Coordinate& c ) const;
 
   // this returns a constrained point. Note that the returned object
   // is not added to the document..
-  Object* constrainedPoint( Object* curve, double param );
+  ObjectHolder* constrainedPoint( ObjectCalcer* curve, double param ) const;
+  ObjectTypeCalcer* constrainedPointCalcer( ObjectCalcer* curve, double param ) const;
   // @overload, changes nothing to the semantics, only calcs the param
   // value for you..
-  Object* constrainedPoint( Object* curve, const Coordinate& c,
-                                const KigDocument& );
+  ObjectTypeCalcer* constrainedPointCalcer(
+    ObjectCalcer* curve, const Coordinate& c, const KigDocument& ) const;
+  ObjectHolder* constrainedPoint(
+    ObjectCalcer* curve, const Coordinate& c, const KigDocument& ) const;
 
   // this returns a "sensible point".
   // By a "sensible point", I mean a point that would be about what
@@ -46,42 +50,54 @@ public:
   // point.  I might add the possibility for an intersection point
   // sometime.. Note that the returned object is not added to
   // the document..
-  Object* sensiblePoint( const Coordinate& c,
-                         const KigDocument& d,
-                         const KigWidget& w
-    );
+  ObjectTypeCalcer* sensiblePointCalcer(
+    const Coordinate& c, const KigDocument& d, const KigWidget& w ) const;
+  ObjectHolder* sensiblePoint(
+    const Coordinate& c, const KigDocument& d, const KigWidget& w ) const;
 
   // set point to what sensiblePoint would have returned..
-  void redefinePoint( Object* point, const Coordinate& c,
-                      KigDocument& d, const KigWidget& w );
+  void redefinePoint( ObjectTypeCalcer* point, const Coordinate& c,
+                      KigDocument& d, const KigWidget& w ) const;
 
   // return a locus, defined by the two points ( one constrained, and
-  // one following ) in parents.  The semantics of LocusType are a bit
+  // one following ) a and b.  a should be the constrained point, and
+  // thus, it has to be of type ObjectTypeCalcer where a->type() is of
+  // type ConstrainedPointType.  The semantics of LocusType are a bit
   // weird ( but I believe correct :) ), so this function takes care
   // of the complication there..
-  Object* locus( const Objects& parents );
+  ObjectTypeCalcer* locusCalcer( ObjectCalcer* a, ObjectCalcer* b ) const;
+  ObjectHolder* locus( ObjectCalcer* a, ObjectCalcer* b ) const;
 
   // returns a label with text s at point c..  It ( and its parents )
   // is calced already...
-  Object* label( const QString& s, const Coordinate& loc,
-                 bool needframe,
-                 const Objects& parents,
-                 const KigDocument& doc );
+  ObjectHolder* label(
+    const QString& s, const Coordinate& loc,
+    bool needframe, const std::vector<ObjectCalcer*>& parents,
+    const KigDocument& doc ) const;
+  ObjectTypeCalcer* labelCalcer(
+    const QString& s, const Coordinate& loc,
+    bool needframe, const std::vector<ObjectCalcer*>& parents,
+    const KigDocument& doc ) const;
 
   // this one does the same as the above, only that the new label is
   // attached to locationparent if it is non-null..
-  Object* attachedLabel( const QString& s,
-                 Object* locationparent,
-                 const Coordinate& loc,
-                 bool needframe,
-                 const Objects& parents,
-                 const KigDocument& doc );
+  ObjectTypeCalcer* attachedLabelCalcer(
+    const QString& s, ObjectCalcer* locationparent,
+    const Coordinate& loc, bool needframe,
+    const std::vector<ObjectCalcer*>& parents,
+    const KigDocument& doc ) const;
+  ObjectHolder* attachedLabel(
+    const QString& s, ObjectCalcer* locationparent,
+    const Coordinate& loc, bool needframe,
+    const std::vector<ObjectCalcer*>& parents,
+    const KigDocument& doc ) const;
 
   // returns a property object for the property p of object o.  NOTE
   // that o should have already been calc'd, or this will fail and
   // return 0..  The returned object also needs to be calced after
   // this..
-  Object* propertyObject( Object* o, const char* p );
+  ObjectPropertyCalcer* propertyObjectCalcer( ObjectCalcer* o, const char* p ) const;
+  ObjectHolder* propertyObject( ObjectCalcer* o, const char* p ) const;
 };
 
 #endif

@@ -74,7 +74,7 @@ void DragRectMode::enableActions()
   mdoc.aCancelConstruction->setEnabled( true );
 }
 
-Objects DragRectMode::ret() const
+std::vector<ObjectHolder*> DragRectMode::ret() const
 {
   return mret;
 }

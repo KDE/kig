@@ -1,6 +1,6 @@
 INCLUDES=$(all_includes)
 noinst_LTLIBRARIES=libobjects.la
-noinst_HEADERS= \
+noinst_HEADERS=\
 	base_type.h \
 	bogus_imp.h \
 	circle_imp.h \
@@ -15,8 +15,10 @@ noinst_HEADERS= \
 	line_imp.h \
 	line_type.h \
 	locus_imp.h \
-	object.h \
+	object_calcer.h \
+	object_drawer.h \
 	object_factory.h \
+	object_holder.h \
 	object_imp.h \
 	object_imp_factory.h \
 	object_type.h \
@@ -32,6 +34,7 @@ libobjects_la_SOURCES=\
 	bogus_imp.cc \
 	circle_imp.cc \
 	circle_type.cc \
+	common.cc \
 	conic_imp.cc \
 	conic_types.cc \
 	cubic_imp.cc \
@@ -41,8 +44,10 @@ libobjects_la_SOURCES=\
 	line_imp.cc \
 	line_type.cc \
 	locus_imp.cc \
-	object.cc \
+	object_calcer.cc \
+	object_drawer.cc \
 	object_factory.cc \
+	object_holder.cc \
 	object_imp.cc \
 	object_imp_factory.cc \
 	object_type.cc \

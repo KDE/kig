@@ -23,7 +23,8 @@
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
 #include "../objects/object_imp.h"
-#include "../objects/object.h"
+#include "../objects/object_holder.h"
+#include "../objects/object_drawer.h"
 #include "../objects/line_imp.h"
 #include "../objects/text_imp.h"
 #include "../objects/circle_imp.h"
@@ -143,7 +144,7 @@ class XFigExportImpVisitor
   : public ObjectImpVisitor
 {
   QTextStream& mstream;
-  RealObject* mcurobj;
+  ObjectHolder* mcurobj;
   const KigWidget& mw;
   Rect msr;
   std::map<const QColor, int> mcolormap;
@@ -164,8 +165,8 @@ class XFigExportImpVisitor
 
   void emitLine( const Coordinate& a, const Coordinate& b, int width, bool vector = false );
 public:
-  void visit( Object* obj );
-  void mapColor( Object* obj );
+  void visit( ObjectHolder* obj );
+  void mapColor( const ObjectDrawer* obj );
 
   XFigExportImpVisitor( QTextStream& s, const KigWidget& w )
     : mstream( s ), mw( w ), msr( mw.showingRect() ),
@@ -195,7 +196,7 @@ public:
   void visit( const ArcImp* imp );
 };
 
-void XFigExportImpVisitor::mapColor( Object* obj )
+void XFigExportImpVisitor::mapColor( const ObjectDrawer* obj )
 {
   if ( ! obj->shown() ) return;
   QColor color = obj->color();
@@ -209,13 +210,12 @@ void XFigExportImpVisitor::mapColor( Object* obj )
   }
 }
 
-void XFigExportImpVisitor::visit( Object* obj )
+void XFigExportImpVisitor::visit( ObjectHolder* obj )
 {
-  if ( ! obj->shown() ) return;
-  assert( obj->inherits( Object::ID_RealObject ) );
-  assert( mcolormap.find( obj->color() ) != mcolormap.end() );
-  mcurcolorid = mcolormap[ obj->color() ];
-  mcurobj = static_cast<RealObject*>( obj );
+  if ( ! obj->drawer()->shown() ) return;
+  assert( mcolormap.find( obj->drawer()->color() ) != mcolormap.end() );
+  mcurcolorid = mcolormap[ obj->drawer()->color() ];
+  mcurobj = obj;
   obj->imp()->visit( this );
 }
 
@@ -224,7 +224,7 @@ void XFigExportImpVisitor::visit( const LineImp* imp )
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
   calcBorderPoints( a, b, msr );
-  int width = mcurobj->width();
+  int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
 
   emitLine( a, b, width );
@@ -275,7 +275,7 @@ void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, i
 void XFigExportImpVisitor::visit( const PointImp* imp )
 {
   const QPoint center = convertCoord( imp->coordinate() );
-  int width = mcurobj->width();
+  int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 5;
   width *= 10;
 
@@ -327,7 +327,7 @@ void XFigExportImpVisitor::visit( const AngleImp* )
 
 void XFigExportImpVisitor::visit( const VectorImp* imp )
 {
-  int width = mcurobj->width();
+  int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
   emitLine( imp->a(), imp->b(), width, true );
 }
@@ -346,7 +346,7 @@ void XFigExportImpVisitor::visit( const CircleImp* imp )
   mstream << "1 "  // Ellipse type
           << "3 "  // circle defined by radius subtype
           << "0 "; // line_style: Solid
-  int width = mcurobj->width();
+  int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
   mstream << width << " " // thickness: *1/80 inch
           << mcurcolorid << " " // pen_color: default
@@ -368,7 +368,7 @@ void XFigExportImpVisitor::visit( const CircleImp* imp )
 
 void XFigExportImpVisitor::visit( const ConicImp* imp )
 {
-  int width = mcurobj->width();
+  int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
   if ( imp->conicType() == 1 )
   {
@@ -431,7 +431,7 @@ void XFigExportImpVisitor::visit( const SegmentImp* imp )
 {
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
-  int width = mcurobj->width();
+  int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
 
   emitLine( a, b, width );
@@ -443,7 +443,7 @@ void XFigExportImpVisitor::visit( const RayImp* imp )
   Coordinate b = imp->data().b;
   calcRayBorderPoints( a, b, msr );
 
-  int width = mcurobj->width();
+  int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
 
   emitLine( a, b, width );
@@ -467,7 +467,7 @@ void XFigExportImpVisitor::visit( const ArcImp* imp )
   mstream << "5 "  // Ellipse type
           << "1 "  // subtype: open ended arc
           << "0 "; // line_style: Solid
-  int width = mcurobj->width();
+  int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
   mstream << width << " " // thickness: *1/80 inch
           << mcurcolorid << " " // pen_color: default
@@ -522,16 +522,16 @@ void XFigExporter::run( const KigDocument& doc, KigWidget& w )
   stream << "-2\n";
   stream << "1200 2\n";
 
-  Objects os = doc.objects();
+  std::vector<ObjectHolder*> os = doc.objects();
   XFigExportImpVisitor visitor( stream, w );
 
-  for ( Objects::const_iterator i = os.begin();
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
         i != os.end(); ++i )
   {
-    visitor.mapColor( *i );
+    visitor.mapColor( ( *i )->drawer() );
   };
 
-  for ( Objects::const_iterator i = os.begin();
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
         i != os.end(); ++i )
   {
     visitor.visit( *i );

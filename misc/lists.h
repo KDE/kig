@@ -19,16 +19,17 @@
 #ifndef KIG_MISC_LISTS_H
 #define KIG_MISC_LISTS_H
 
-#include "objects.h"
+#include <vector>
+#include <set>
 
 class GUIAction;
 class ObjectConstructor;
 class MacroConstructor;
-class Objects;
 class KigDocument;
 class KigWidget;
 class QString;
 class QDomElement;
+class ObjectCalcer;
 
 /**
  * List of GUIActions for the parts to show.  Note that the list owns
@@ -37,8 +38,8 @@ class QDomElement;
 class GUIActionList
 {
 public:
-  typedef myvector<GUIAction*> avectype;
-  typedef myvector<KigDocument*> dvectype;
+  typedef std::set<GUIAction*> avectype;
+  typedef std::set<KigDocument*> dvectype;
 private:
   avectype mactions;
   dvectype mdocs;
@@ -54,9 +55,9 @@ public:
   void unregDoc( KigDocument* d );
 
   void add( GUIAction* a );
-  void add( const myvector<GUIAction*>& a );
+  void add( const std::vector<GUIAction*>& a );
   void remove( GUIAction* a );
-  void remove( const myvector<GUIAction*>& a );
+  void remove( const std::vector<GUIAction*>& a );
 };
 
 /**
@@ -66,7 +67,7 @@ public:
 class ObjectConstructorList
 {
 public:
-  typedef myvector<ObjectConstructor*> vectype;
+  typedef std::vector<ObjectConstructor*> vectype;
 private:
   vectype mctors;
   ObjectConstructorList();
@@ -75,7 +76,7 @@ public:
   static ObjectConstructorList* instance();
   void add( ObjectConstructor* a );
   void remove( ObjectConstructor* a );
-  vectype ctorsThatWantArgs( const Objects&, const KigDocument&,
+  vectype ctorsThatWantArgs( const std::vector<ObjectCalcer*>&, const KigDocument&,
                              const KigWidget&, bool completeOnly = false
     ) const;
   const vectype& constructors() const;
@@ -102,7 +103,7 @@ public:
 class MacroList
 {
 public:
-  typedef myvector<Macro*> vectype;
+  typedef std::vector<Macro*> vectype;
 private:
   vectype mdata;
   MacroList();
@@ -149,8 +150,7 @@ public:
   const vectype& macros() const;
 
 private:
-  bool loadNew( const QDomElement& docelem, myvector<Macro*>& ret, const KigDocument& );
-  bool loadOld( const QDomElement& docelem, myvector<Macro*>& ret, const KigDocument& );
+  bool loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, const KigDocument& );
 };
 
 #endif

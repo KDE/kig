@@ -280,9 +280,8 @@ double CircleImp::getParam( const Coordinate& point, const KigDocument& ) const
   else return ret + 1;
 }
 
-const Coordinate CircleImp::getPoint( double p, bool& valid, const KigDocument& ) const
+const Coordinate CircleImp::getPoint( double p, const KigDocument& ) const
 {
-  valid = true;
   return mcenter + Coordinate (cos(p * 2 * M_PI), sin(p * 2 * M_PI)) * mradius;
 }
 
@@ -307,7 +306,9 @@ const ObjectImpType* CircleImp::stype()
     I18N_NOOP( "Remove a Circle" ),
     I18N_NOOP( "Add a Circle" ),
     I18N_NOOP( "Move a Circle" ),
-    I18N_NOOP( "Attach to this circle" )
+    I18N_NOOP( "Attach to this circle" ),
+    I18N_NOOP( "Show a Circle" ),
+    I18N_NOOP( "Hide a Circle" )
     );
   return &t;
 }

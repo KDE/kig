@@ -52,7 +52,7 @@ public:
   bool valid() const;
 
   double getParam( const Coordinate& point, const KigDocument& ) const;
-  const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;

@@ -108,7 +108,7 @@ void KigMode::editTypes()
 {
 }
 
-void KigMode::redrawScreen()
+void KigMode::redrawScreen( KigWidget* )
 {
 }
 

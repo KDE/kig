@@ -26,7 +26,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include "../objects/object.h"
+#include "../objects/object_holder.h"
 
 class KigDocument;
 class CoordinateSystem;
@@ -49,15 +49,15 @@ public:
    * To avoid confusion, this doesn't add a command to anything, this
    * creates an AddCommand ;)
    */
-  static KigCommand* addCommand( KigDocument& doc, const Objects& os );
-  static KigCommand* addCommand( KigDocument& doc, Object* os );
+  static KigCommand* addCommand( KigDocument& doc, const std::vector<ObjectHolder*>& os );
+  static KigCommand* addCommand( KigDocument& doc, ObjectHolder* os );
   /**
    * make sure that when you delete something, you are also deleting
    * its parents.  This class assumes you've done that.
    * KigDocument::delObjects takes care of this for you.
    */
-  static KigCommand* removeCommand( KigDocument& doc, const Objects& os );
-  static KigCommand* removeCommand( KigDocument& doc, Object* o );
+  static KigCommand* removeCommand( KigDocument& doc, const std::vector<ObjectHolder*>& os );
+  static KigCommand* removeCommand( KigDocument& doc, ObjectHolder* o );
 
   static KigCommand* changeCoordSystemCommand( KigDocument& doc, CoordinateSystem* s );
 
@@ -81,45 +81,36 @@ class AddObjectsTask
   : public KigCommandTask
 {
 public:
-  AddObjectsTask( const Objects& os);
+  AddObjectsTask( const std::vector<ObjectHolder*>& os);
   ~AddObjectsTask ();
   void execute( KigDocument& doc );
   void unexecute( KigDocument& doc );
 protected:
   bool undone;
 
-  // we keep a reference to the objects we contain, so they don't get
-  // deleted..
-  ReferenceObject mobjsref;
+  std::vector<ObjectHolder*> mobjs;
 };
 
 class RemoveObjectsTask
   : public AddObjectsTask
 {
 public:
-  RemoveObjectsTask( const Objects& os );
+  RemoveObjectsTask( const std::vector<ObjectHolder*>& os );
   void execute( KigDocument& );
   void unexecute( KigDocument& );
 };
 
-class ChangeObjectImpsTask
+class ChangeObjectConstCalcerTask
   : public KigCommandTask
 {
 public:
-  ChangeObjectImpsTask();
-  ~ChangeObjectImpsTask();
-
-  /**
-   * add a changed dataobject.  this class gains ownership of the
-   * imp, you should pass a copy.. ( @see ObjectImp::copy() )
-   */
-  void addObject( DataObject* o, ObjectImp* newimp );
+  ChangeObjectConstCalcerTask( ObjectConstCalcer* calcer, ObjectImp* newimp );
 
   void execute( KigDocument& );
   void unexecute( KigDocument& );
 protected:
-  class Private;
-  Private* d;
+  ObjectConstCalcer::shared_ptr mcalcer;
+  ObjectImp* mnewimp;
 };
 
 /**
@@ -128,9 +119,10 @@ protected:
  * E.g.  MovingMode wants to move certain objects, so it monitors all
  * the parents of the explicitly moving objects:
  *   MonitorDataObjects mon( getAllParents( emo ) );
- * It then moves them around, and when it is finished, it asks for a
- * KigCommand, and applies that..
- *   ChangeObjectImpsCommand* command = mon.finish();
+ * It then moves them around, and when it is finished, it asks to add
+ * the KigCommandTasks to a KigCommand, and applies that..
+ *   KigCommand* comm = new KigCommand( doc, i18n( "Move Stuff" ) );
+ *   mon.finish( comm );
  */
 class MonitorDataObjects
 {
@@ -140,20 +132,21 @@ public:
   /**
    * all the DataObjects in objs will be watched..
    */
-  MonitorDataObjects( const Objects& objs );
+  MonitorDataObjects( const std::vector<ObjectCalcer*>& objs );
+  MonitorDataObjects( ObjectCalcer* c );
   ~MonitorDataObjects();
 
   /**
    * add objs to the list of objs to be watched, and save their
    * current imp's..
    */
-  void monitor( const Objects& objs );
+  void monitor( const std::vector<ObjectCalcer*>& objs );
 
   /**
-   * get the command..  text shown will be text..  monitoring stops
-   * after this is called..
+   * add the generated KigCommandTasks to the command comm..
+   * monitoring stops after this is called..
    */
-  ChangeObjectImpsTask* finish();
+  void finish( KigCommand* comm);
 };
 
 class ChangeCoordSystemTask
@@ -177,7 +170,7 @@ class ChangeParentsAndTypeTask
   class Private;
   Private* d;
 public:
-  ChangeParentsAndTypeTask( RealObject* o, const Objects& newparents,
+  ChangeParentsAndTypeTask( ObjectTypeCalcer* o, const std::vector<ObjectCalcer*>& newparents,
                             const ObjectType* newtype );
   ~ChangeParentsAndTypeTask();
 
@@ -193,6 +186,19 @@ class KigViewShownRectChangeTask
 public:
   KigViewShownRectChangeTask( KigWidget& v, const Rect& newrect );
   ~KigViewShownRectChangeTask();
+
+  void execute( KigDocument& doc );
+  void unexecute( KigDocument& doc );
+};
+
+class ChangeObjectDrawerTask
+  : public KigCommandTask
+{
+  ObjectHolder* mholder;
+  ObjectDrawer* mnewdrawer;
+public:
+  ChangeObjectDrawerTask( ObjectHolder* holder, ObjectDrawer* newdrawer );
+  ~ChangeObjectDrawerTask();
 
   void execute( KigDocument& doc );
   void unexecute( KigDocument& doc );

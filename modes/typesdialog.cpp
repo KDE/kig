@@ -25,7 +25,6 @@
 #include "../kig/kig_part.h"
 #include "../misc/lists.h"
 #include "../misc/guiaction.h"
-#include "../objects/object.h"
 
 #include <kfiledialog.h>
 #include <kmessagebox.h>
@@ -38,7 +37,6 @@
 
 #include <vector>
 #include <algorithm>
-using namespace std;
 
 TypesDialog::TypesDialog( QWidget* parent, const KigDocument& doc )
   : TypesDialogBase( parent, "types_dialog", true ), mdoc( doc )
@@ -108,7 +106,7 @@ void TypesDialog::deleteType()
 
 void TypesDialog::exportType()
 {
-  myvector<Macro*> types;
+  std::vector<Macro*> types;
   for (QListBoxItem* i = typeList->firstItem(); i; i = i->next())
   {
     if (i->isSelected())
@@ -125,19 +123,16 @@ void TypesDialog::importTypes()
   QStringList file_names =
     KFileDialog::getOpenFileNames(":importTypes", i18n("*.kigt|Kig Types Files\n*|All Files"), this, "Import Types");
 
-  myvector<Macro*> macros;
+  std::vector<Macro*> macros;
 
   for ( QStringList::Iterator i = file_names.begin();
         i != file_names.end(); ++i)
   {
-    myvector<Macro*> nmacros;
+    std::vector<Macro*> nmacros;
     bool ok = MacroList::instance()->load( *i, nmacros, mdoc );
     if ( ! ok )
-    {
-      KMessageBox::sorry( this, i18n( "Could not open macro file '%1'" ).arg( *i ) );
       continue;
-    };
-    copy( nmacros.begin(), nmacros.end(), back_inserter( macros ) );
+    std::copy( nmacros.begin(), nmacros.end(), std::back_inserter( macros ) );
   };
   MacroList::instance()->add( macros );
 

@@ -54,7 +54,7 @@ PythonCompiledScriptImp::PythonCompiledScriptImp( const CompiledPythonScript& s 
 const ObjectImpType* PythonCompiledScriptImp::stype()
 {
   static const ObjectImpType t( BogusImp::stype(), "python-compiled-script-imp",
-                                0, 0, 0, 0, 0, 0 );
+                                0, 0, 0, 0, 0, 0, 0, 0 );
   return &t;
 }
 
@@ -162,12 +162,23 @@ const ObjectImpType* PythonExecuteType::resultId() const
   return ObjectImp::stype();
 }
 
-Objects PythonCompileType::sortArgs( const Objects& args ) const
+std::vector<ObjectCalcer*> PythonCompileType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
 {
   return args;
 }
 
-Objects PythonExecuteType::sortArgs( const Objects& args ) const
+Args PythonCompileType::sortArgs( const Args& args ) const
 {
   return args;
 }
+
+std::vector<ObjectCalcer*> PythonExecuteType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+{
+  return args;
+}
+
+Args PythonExecuteType::sortArgs( const Args& args ) const
+{
+  return args;
+}
+

@@ -1,3 +1,7 @@
+2004-01-18  Dominique Devriese  <devriese@kde.org>
+
+	* bump the version number to 0.7.1
+
 2003-12-16  Dominique Devriese  <devriese@kde.org>
 
 	* Fix the scrolling for horizontal scrolling using the alt button
@@ -31,7 +35,54 @@
 	
 	* fix the ArgsParser parsing order, properly this time..
 
+2003-10-20  Dominique Devriese  <devriese@kde.org>
+
+	* Work on the Cabri import filter, so that it actually becomes
+	usable for some easier files..
+
+	* Improve the errors given by the "New Script Wizard", by making
+	it get a proper error description from the python interpreter.
+
 2003-10-09  Dominique Devriese  <devriese@kde.org>
+
+	* Add a lot of documentation to the new classes.
+
+	* Fix the moving system again, it now only redraws exactly those
+	objects that need to be redrawn.  E.g. when a constrained point
+	was moved, before it was assumed that all of its parents, and
+	their children would move, whereas in reality, a constrained point
+	does not move the curve it is constrained to.  This is now taken
+	into account for.  This much optimizes the case where we move the
+	constrained point in examples/sine-curve.kig.
+
+	* Added a DESIGN document, documenting the Kig object system
+	design.  I think that is rather finished now, and it's probably
+	about time to try and make some other people than myself get it ;)
+
+	* Remove support for the ancient pre-0.4 file format that we still
+	supported opening.  If you still have old files around using it,
+	you should convert them to the new format, by opening them with a
+	Kig version between 0.4 to 0.6, and re-saving them.  Maintaining
+	compatibility with these old files doesn't seem very useful,
+	because I don't think there are many files in this format
+	available, and therefore I didn't think it was worth the trouble
+	of porting the code to the new object system.
+
+	* Introduce a new file format that matches the new object system
+	better.  Files in the old format can still be opened seamlessly.
+
+	* Add undo/redo support for changing visible aspects of an object
+	( size, color, shown state ).  In the new system, this was as easy
+	as replacing the ObjectDrawer of an ObjectHolder with another one.
+
+	* Another ( hopefully the last ) major change to the object
+	system.  Decouple the link between how an object is calced and how
+	it is drawn.  We now have a hierarchy structure of ObjectCalcer's
+	describing various objects and their interrelations.  On top of
+	that, there are the ObjectHolder's, which hold a link to an
+	ObjectCalcer from the hierarchy, and keep an ObjectDrawer
+	describing how to draw it.  The document only keeps a list of
+	ObjectHolder's, nothing else..
 
 	* make the New Script Wizard give an error when the script does
 	not generate a valid ObjectImp.

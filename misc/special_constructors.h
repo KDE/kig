@@ -29,10 +29,10 @@ class ConicRadicalConstructor
 public:
   ConicRadicalConstructor();
   ~ConicRadicalConstructor();
-  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
-  void drawprelim( KigPainter& p, const Objects& parents, const KigDocument& ) const;
-  Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
+  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
 
   bool isTransform() const;
@@ -49,14 +49,14 @@ public:
   // something about the objects that an ArgsParser can't know about,
   // namely, whether the first point is a constrained point...
   const int wantArgs(
-    const Objects& os, const KigDocument& d,
+    const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v
     ) const;
-  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
 
-  void drawprelim( KigPainter& p, const Objects& parents, const KigDocument& ) const;
-  Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
+  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
 
   bool isTransform() const;
@@ -71,9 +71,9 @@ public:
   ConicConicIntersectionConstructor();
   ~ConicConicIntersectionConstructor();
 
-  void drawprelim( KigPainter& p, const Objects& parents,
+  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
-  Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
 
   bool isTransform() const;
@@ -96,7 +96,7 @@ public:
 
   bool isIntersection() const;
 
-  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
 };
 
@@ -107,9 +107,9 @@ class MidPointOfTwoPointsConstructor
 public:
   MidPointOfTwoPointsConstructor();
   ~MidPointOfTwoPointsConstructor();
-  void drawprelim( KigPainter& p, const Objects& parents,
+  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
-  Objects build( const Objects& os, KigDocument& d,
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d,
                  KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
   bool isTransform() const;

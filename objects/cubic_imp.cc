@@ -153,19 +153,18 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
   t = 0.5*(t + 1);
   t /= 3;
 
-  bool valid1, valid2, valid3;
-  Coordinate p1 = internalGetPoint ( t, valid1 );
-  Coordinate p2 = internalGetPoint ( t + 1.0/3.0, valid2 );
-  Coordinate p3 = internalGetPoint ( t + 2.0/3.0, valid3 );
+  Coordinate p1 = internalGetPoint ( t );
+  Coordinate p2 = internalGetPoint ( t + 1.0/3.0 );
+  Coordinate p3 = internalGetPoint ( t + 2.0/3.0 );
 
   double mint = t;
-  double mindist = valid1 ? fabs ( y - p1.y ) : double_inf;
-  if ( valid2 && fabs ( y - p2.y ) < mindist )
+  double mindist = p1.valid() ? fabs ( y - p1.y ) : double_inf;
+  if ( p2.valid() && fabs ( y - p2.y ) < mindist )
   {
     mint = t + 1.0/3.0;
     mindist = fabs ( y - p2.y );
   }
-  if ( valid3 && fabs ( y - p3.y ) < mindist )
+  if ( p3.valid() && fabs ( y - p3.y ) < mindist )
   {
     mint = t + 2.0/3.0;
   }
@@ -173,12 +172,12 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
   return mint;
 }
 
-const Coordinate CubicImp::getPoint( double p, bool& valid, const KigDocument& ) const
+const Coordinate CubicImp::getPoint( double p, const KigDocument& ) const
 {
-  return internalGetPoint( p, valid );
+  return internalGetPoint( p );
 }
 
-const Coordinate CubicImp::internalGetPoint( double p, bool& valid ) const
+const Coordinate CubicImp::internalGetPoint( double p ) const
 {
   /*
    * this isn't really elegant...
@@ -274,9 +273,11 @@ const Coordinate CubicImp::internalGetPoint( double p, bool& valid ) const
 //  }
 
   int numroots;
+  bool valid = true;
   double y = calcCubicYvalue ( x, -double_inf, double_inf, root, mdata, valid,
                                numroots );
-  return Coordinate(x,y);
+  if ( ! valid ) return Coordinate::invalidCoord();
+  else return Coordinate(x,y);
 //  if ( valid ) return Coordinate(x,y);
 //  root--; if ( root <= 0) root += 3;
 //  y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
@@ -352,7 +353,9 @@ const ObjectImpType* CubicImp::stype()
     I18N_NOOP( "Remove a Cubic" ),
     I18N_NOOP( "Add a Cubic" ),
     I18N_NOOP( "Move a Cubic" ),
-    I18N_NOOP( "Attach to this cubic" )
+    I18N_NOOP( "Attach to this cubic" ),
+    I18N_NOOP( "Show a Cubic" ),
+    I18N_NOOP( "Hide a Cubic" )
     );
   return &t;
 }

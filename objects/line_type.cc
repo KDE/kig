@@ -21,7 +21,7 @@
 #include "bogus_imp.h"
 #include "point_imp.h"
 #include "line_imp.h"
-#include "object.h"
+#include "object_holder.h"
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
@@ -34,8 +34,8 @@
 
 static const ArgsParser::spec argsspecSegmentAB[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a segment from this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct a segment to this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a segment ending at this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a segment starting at this point" ) }
 };
 
 SegmentABType::SegmentABType()
@@ -88,8 +88,8 @@ ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const ArgsParser::spec argsspecRayAB[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a ray from this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct a ray through this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a ray through this point" ) },
+  { PointImp::stype(), I18N_NOOP( "Construct a ray starting at this point" ) }
 };
 
 RayABType::RayABType()
@@ -202,19 +202,15 @@ QStringList SegmentABType::specialActions() const
   return ret;
 }
 
-void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
-                                   NormalMode& ) const
+void SegmentABType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
+                                   KigDocument& d, KigWidget& w, NormalMode& ) const
 {
   assert( i == 0 );
   // pretend to use this var..
   (void) i;
 
-  Objects parents = o->parents();
-  assert( parents.size() == 2 );
-
-  if ( ! parents[0]->hasimp( PointImp::stype() ) ||
-       ! parents[1]->hasimp( PointImp::stype() ) )
-    return;
+  std::vector<ObjectCalcer*> parents = c.parents();
+  assert( margsparser.checkArgs( parents ) );
 
   Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
   Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
@@ -230,6 +226,6 @@ void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidg
   MonitorDataObjects mon( getAllParents( parents ) );
   parents[1]->move( nb, d );
   KigCommand* cd = new KigCommand( d, i18n( "Resize &Segment" ) );
-  cd->addTask( mon.finish() );
+  mon.finish( cd );
   d.history()->addCommand( cd );
 }

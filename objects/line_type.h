@@ -36,8 +36,8 @@ public:
 
   QStringList specialActions() const;
   // execute the i'th action from the specialActions above..
-  void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
-                      NormalMode& m ) const;
+  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+                      KigDocument& d, KigWidget& w, NormalMode& m ) const;
 };
 
 class LineABType

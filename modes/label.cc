@@ -28,7 +28,6 @@
 #include "../misc/i18n.h"
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
-#include "../objects/object.h"
 #include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/curve_imp.h"
@@ -46,6 +45,9 @@
 #include <qpopupmenu.h>
 #include <qcheckbox.h>
 
+#include <algorithm>
+#include <functional>
+
 class TextLabelModeBase::Private
 {
 public:
@@ -54,7 +56,7 @@ public:
   // the currently selected coordinate
   Coordinate mcoord;
   // the possible parent object that defines the location of the label..
-  Object* locationparent;
+  ObjectCalcer* locationparent;
 
   // the text is only kept in the text input widget, not here
   // QString mtext;
@@ -64,7 +66,6 @@ public:
   // in the correct order in args ( separately, because we can't use
   // the order of the parents of a ReferenceObject, and certainly
   // can't give 0 as a parent..
-  ReferenceObject argsref;
   argvect args;
 
   // if we're ReallySelectingArgs, then this var points to the arg
@@ -128,16 +129,16 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
   case ReallySelectingArgs:
   {
     if ( ( d->plc - e->pos() ).manhattanLength() > 4 ) break;
-    Objects os = mdoc.whatAmIOn( v->fromScreen( d->plc ), *v );
+    std::vector<ObjectHolder*> os = mdoc.whatAmIOn( v->fromScreen( d->plc ), *v );
     if ( os.empty() ) break;
-    Object* o = os[0];
+    ObjectHolder* o = os[0];
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
-    QCStringList l = o->properties();
-    assert( l.size() == o->numberOfProperties() );
+    QCStringList l = o->imp()->properties();
+    assert( l.size() == o->imp()->numberOfProperties() );
     for ( int i = 0; static_cast<uint>( i ) < l.size(); ++i )
     {
       QString s = i18n( l[i] );
-      const char* iconfile = o->iconForProperty( i );
+      const char* iconfile = o->imp()->iconForProperty( i );
       int t;
       if ( iconfile && *iconfile )
       {
@@ -153,10 +154,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     int result = p->exec( v->mapToGlobal( d->plc ) );
     if ( result == -1 ) break;
     assert( static_cast<uint>( result ) < l.size() );
-    PropertyObject* n = new PropertyObject( o, result );
-    if ( d->args[d->mwaaws] )
-      d->argsref.delParent( d->args[d->mwaaws] );
-    d->argsref.addParent( n );
+    ObjectPropertyCalcer* n = new ObjectPropertyCalcer( o->calcer(), result );
     d->args[d->mwaaws] = n;
 
     n->calc( mdoc );
@@ -191,22 +189,22 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   if ( d->mwawd == ReallySelectingArgs )
   {
-    Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
+    std::vector<ObjectHolder*> os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
     if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
     else w->setCursor( KCursor::arrowCursor() );
   }
   else if ( d->mwawd == SelectingLocation )
   {
-    Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
+    std::vector<ObjectHolder*> os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
     bool attachable = false;
     d->locationparent = 0;
-    for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    for ( std::vector<ObjectHolder*>::iterator i = os.begin(); i != os.end(); ++i )
     {
-      if( (*i)->hasimp( PointImp::stype() ) ||
-          (*i)->hasimp( CurveImp::stype() ) )
+      if( (*i)->imp()->inherits( PointImp::stype() ) ||
+          (*i)->imp()->inherits( CurveImp::stype() ) )
       {
         attachable = true;
-        d->locationparent = *i;
+        d->locationparent = (*i)->calcer();
         break;
       };
     };
@@ -292,15 +290,6 @@ void TextLabelModeBase::updateWiz()
   uint percentcount = percentCount( s );
   if ( d->lpc > percentcount )
   {
-    // prevent deletion of the objects we still need..
-    Objects keepos;
-    for ( argvect::iterator i = d->args.begin();
-          i != d->args.begin() + percentcount; ++i )
-      if (*i)
-        keepos.push_back( *i );
-    ReferenceObject newref( keepos );
-    d->argsref.clearParents();
-    d->argsref.setParents( keepos );
     d->args = argvect( d->args.begin(), d->args.begin() + percentcount );
   }
   else if ( d->lpc < percentcount )
@@ -401,15 +390,10 @@ void TextLabelModeBase::linkClicked( int i )
   mdoc.emitStatusBarText( i18n( "Selecting argument %1" ).arg( i + 1 ) );
 }
 
-void TextLabelModeBase::redrawScreen()
+void TextLabelModeBase::redrawScreen( KigWidget* w )
 {
-  const std::vector<KigWidget*>& widgets = mdoc.widgets();
-  for ( uint i = 0; i < widgets.size(); ++i )
-  {
-    KigWidget* w = widgets[i];
-    w->redrawScreen();
-    w->updateScrollBars();
-  };
+  w->redrawScreen( std::vector<ObjectHolder*>() );
+  w->updateScrollBars();
 }
 
 void TextLabelModeBase::setCoordinate( const Coordinate& coord )
@@ -432,8 +416,6 @@ void TextLabelModeBase::setText( const QString& s )
 
 void TextLabelModeBase::setPropertyObjects( const argvect& props )
 {
-  Objects n( props.begin(), props.end() );
-  d->argsref.setParents( n );
   d->args = props;
   for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
     (*i)->calc( mdoc );
@@ -451,10 +433,14 @@ TextLabelConstructionMode::~TextLabelConstructionMode()
 void TextLabelConstructionMode::finish(
   const Coordinate& coord, const QString& s,
   const argvect& props, bool needframe,
-  Object* locationparent )
+  ObjectCalcer* locationparent )
 {
-  Objects args( props.begin(), props.end() );
-  Object* label = 0;
+  std::vector<ObjectCalcer*> args;
+  for ( argvect::const_iterator i = props.begin();
+        i != props.end(); ++i )
+    args.push_back( i->get() );
+
+  ObjectHolder* label = 0;
   if ( locationparent )
     label = ObjectFactory::instance()->attachedLabel( s, locationparent, coord, needframe, args, mdoc );
   else
@@ -462,19 +448,19 @@ void TextLabelConstructionMode::finish(
   mdoc.addObject( label );
 }
 
-TextLabelRedefineMode::TextLabelRedefineMode( KigDocument& d, RealObject* label )
+TextLabelRedefineMode::TextLabelRedefineMode( KigDocument& d, ObjectTypeCalcer* label )
   : TextLabelModeBase( d ), mlabel( label )
 {
-  assert( label->hasimp( TextImp::stype() ) );
-  Objects parents = label->parents();
+  assert( label->imp()->inherits( TextImp::stype() ) );
+  std::vector<ObjectCalcer*> parents = label->parents();
   assert( parents.size() >= 3 );
-  Objects firstthree( parents.begin(), parents.begin() + 3 );
-  Objects rest( parents.begin() + 3, parents.end() );
+  std::vector<ObjectCalcer*> firstthree( parents.begin(), parents.begin() + 3 );
+  std::vector<ObjectCalcer*> rest( parents.begin() + 3, parents.end() );
   firstthree = TextType::instance()->argParser().parse( firstthree );
 
-  assert( firstthree[0]->hasimp( IntImp::stype() ) );
-  assert( firstthree[1]->hasimp( PointImp::stype() ) );
-  assert( firstthree[2]->hasimp( StringImp::stype() ) );
+  assert( firstthree[0]->imp()->inherits( IntImp::stype() ) );
+  assert( firstthree[1]->imp()->inherits( PointImp::stype() ) );
+  assert( firstthree[2]->imp()->inherits( StringImp::stype() ) );
 
   bool frame = static_cast<const IntImp*>( firstthree[0]->imp() )->data() != 0;
   Coordinate coord = static_cast<const PointImp*>( firstthree[1]->imp() )->coordinate();
@@ -488,9 +474,9 @@ TextLabelRedefineMode::TextLabelRedefineMode( KigDocument& d, RealObject* label 
   argvect v;
   for ( uint i = 0; i < rest.size(); ++i )
   {
-    assert( rest[i]->inherits( Object::ID_PropertyObject ) );
-    PropertyObject* o = static_cast<PropertyObject*>( rest[i] );
-    PropertyObject* n = new PropertyObject( o->parent(), o->propId() );
+    assert( dynamic_cast<ObjectPropertyCalcer*>( rest[i] ) );
+    ObjectPropertyCalcer* o = static_cast<ObjectPropertyCalcer*>( rest[i] );
+    ObjectPropertyCalcer* n = new ObjectPropertyCalcer( o->parent(), o->propId() );
     v.push_back( n );
   };
   assert( v.size() == rest.size() );
@@ -505,26 +491,24 @@ TextLabelRedefineMode::~TextLabelRedefineMode()
 void TextLabelRedefineMode::finish(
   const Coordinate& coord, const QString& s,
   const argvect& props, bool needframe,
-  Object* locationparent )
+  ObjectCalcer* locationparent )
 {
-  Objects parents = mlabel->parents();
+  std::vector<ObjectCalcer*> parents = mlabel->parents();
   assert( parents.size() >= 3 );
-  Objects firstthree( parents.begin(), parents.begin() + 3 );
-  Objects rest( parents.begin() + 3, parents.end() );
+  std::vector<ObjectCalcer*> firstthree( parents.begin(), parents.begin() + 3 );
+  std::vector<ObjectCalcer*> rest( parents.begin() + 3, parents.end() );
   firstthree = TextType::instance()->argParser().parse( firstthree );
 
   KigCommand* kc = new KigCommand( mdoc, i18n( "Change Label" ) );
   MonitorDataObjects mon( firstthree );
 
-  assert( firstthree[0]->hasimp( IntImp::stype() ) );
-  assert( firstthree[1]->hasimp( PointImp::stype() ) );
-  assert( firstthree[2]->hasimp( StringImp::stype() ) );
+  assert( firstthree[0]->imp()->inherits( IntImp::stype() ) );
+  assert( firstthree[1]->imp()->inherits( PointImp::stype() ) );
+  assert( firstthree[2]->imp()->inherits( StringImp::stype() ) );
 
-  assert( firstthree[0]->inherits( Object::ID_DataObject ) );
-  // see the "we don't do this..." comment below, it applies here too..
-//  assert( firstthree[1]->inherits( Object::ID_DataObject ) );
-  assert( firstthree[2]->inherits( Object::ID_DataObject ) );
-  static_cast<DataObject*>( firstthree[0] )->setImp( new IntImp( needframe ? 1 : 0 ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( firstthree[0] ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( firstthree[2] ) );
+  static_cast<ObjectConstCalcer*>( firstthree[0] )->setImp( new IntImp( needframe ? 1 : 0 ) );
 
   // we don't do this, because
   // 1 this isn't necessarily a DataObject, we also support it to be a
@@ -535,28 +519,32 @@ void TextLabelRedefineMode::finish(
   // static_cast<DataObject*>( firstthree[1] )->setImp( new PointImp(
   // coord ) );
 
-  static_cast<DataObject*>( firstthree[2] )->setImp( new StringImp( s ) );
-  kc->addTask( mon.finish() );
+  static_cast<ObjectConstCalcer*>( firstthree[2] )->setImp( new StringImp( s ) );
+  mon.finish( kc );
 
-  Objects oldparents = mlabel->parents();
-  Objects p( props.begin(), props.end() );
-  p.calc( mdoc );
+  std::vector<ObjectCalcer*> oldparents = mlabel->parents();
+  std::vector<ObjectCalcer*> p;
+  for ( argvect::const_iterator i = props.begin();
+        i != props.end(); ++i )
+    p.push_back( i->get() );
+  for ( std::vector<ObjectCalcer*>::iterator i = p.begin();
+        i != p.end(); ++i )
+    ( *i )->calc( mdoc );
 
-  Objects np = firstthree;
-  if ( locationparent && locationparent->hasimp( CurveImp::stype() ) )
+  std::vector<ObjectCalcer*> np = firstthree;
+  if ( locationparent && locationparent->imp()->inherits( CurveImp::stype() ) )
   {
     double param = static_cast<const CurveImp*>( locationparent->imp() )->getParam( coord, mdoc );
-    np[1] = ObjectFactory::instance()->constrainedPoint( locationparent, param );
-    np[1]->setShown( false );
+    np[1] = ObjectFactory::instance()->constrainedPointCalcer( locationparent, param );
     np[1]->calc( mdoc );
   }
   else if ( locationparent )
   {
-    assert( locationparent->hasimp( PointImp::stype() ) );
+    assert( locationparent->imp()->inherits( PointImp::stype() ) );
     np[1] = locationparent;
   }
   else
-    np[1] = new DataObject( new PointImp( coord ) );
+    np[1] = new ObjectConstCalcer( new PointImp( coord ) );
 
   copy( p.begin(), p.end(), back_inserter( np ) );
 
@@ -572,7 +560,7 @@ void TextLabelModeBase::setFrame( bool f )
   d->wiz->needFrameCheckBox->setChecked( f );
 }
 
-void TextLabelModeBase::setLocationParent( Object* o )
+void TextLabelModeBase::setLocationParent( ObjectCalcer* o )
 {
   d->locationparent = o;
 }

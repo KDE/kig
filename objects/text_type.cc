@@ -21,7 +21,6 @@
 #include "text_imp.h"
 #include "bogus_imp.h"
 #include "point_imp.h"
-#include "object.h"
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
@@ -94,15 +93,15 @@ bool TextType::canMove() const
   return true;
 }
 
-void TextType::move( RealObject* ourobj, const Coordinate& to,
+void TextType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
                      const KigDocument& d ) const
 {
-  const Objects parents = ourobj->parents();
+  const std::vector<ObjectCalcer*> parents = ourobj.parents();
   assert( parents.size() >= 3 );
-  const Objects firstthree( parents.begin(), parents.begin() + 3 );
-  if( firstthree[1]->inherits( Object::ID_DataObject ) )
+  const std::vector<ObjectCalcer*> firstthree( parents.begin(), parents.begin() + 3 );
+  if( dynamic_cast<ObjectConstCalcer*>( firstthree[1] ) )
   {
-    DataObject* c = static_cast<DataObject*>( firstthree[1] );
+    ObjectConstCalcer* c = static_cast<ObjectConstCalcer*>( firstthree[1] );
     c->setImp( new PointImp( to ) );
   }
   else
@@ -117,35 +116,35 @@ QStringList TextType::specialActions() const
   return ret;
 }
 
-void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget& w,
+void TextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+                              KigDocument& doc, KigWidget&,
                               NormalMode& ) const
 {
-  Objects parents = o->parents();
+  std::vector<ObjectCalcer*> parents = c.parents();
   assert( parents.size() >= 3 );
 
-  Objects firstthree( parents.begin(), parents.begin() + 3 );
+  std::vector<ObjectCalcer*> firstthree( parents.begin(), parents.begin() + 3 );
 
   assert( mparser.checkArgs( firstthree ) );
-  assert( firstthree[0]->inherits( Object::ID_DataObject ) );
-  assert( firstthree[2]->inherits( Object::ID_DataObject ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( firstthree[0] ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( firstthree[2] ) );
 
   if ( i == 0 )
   {
     // toggle label frame
-    Objects monos( firstthree[0] );
-    MonitorDataObjects mon( monos );
     int n = (static_cast<const IntImp*>( firstthree[0]->imp() )->data() + 1) % 2;
-    static_cast<DataObject*>( firstthree[0] )->setImp( new IntImp( n ) );
     KigCommand* kc = new KigCommand( doc, i18n( "Toggle Label Frame" ) );
-    kc->addTask( mon.finish() );
+    kc->addTask( new ChangeObjectConstCalcerTask(
+                   static_cast<ObjectConstCalcer*>( firstthree[0] ),
+                   new IntImp( n ) ) );
     doc.history()->addCommand( kc );
   }
   else if ( i == 1 )
   {
+    assert( dynamic_cast<ObjectTypeCalcer*>( o.calcer() ) );
     // redefine..
-    TextLabelRedefineMode m( doc, o );
+    TextLabelRedefineMode m( doc, static_cast<ObjectTypeCalcer*>( o.calcer() ) );
     doc.runMode( &m );
-    w.redrawScreen();
   }
   else assert( false );
 }
@@ -155,18 +154,35 @@ const ArgsParser& TextType::argParser() const
   return mparser;
 }
 
-const Coordinate TextType::moveReferencePoint( const RealObject* ourobj ) const
+const Coordinate TextType::moveReferencePoint( const ObjectTypeCalcer& ourobj ) const
 {
-  if ( ourobj->hasimp( TextImp::stype() ) )
-    return static_cast<const TextImp*>( ourobj->imp() )->coordinate();
-  else return Coordinate::invalidCoord();
+  assert( ourobj.imp()->inherits( TextImp::stype() ) );
+  return static_cast<const TextImp*>( ourobj.imp() )->coordinate();
 }
 
-Objects TextType::sortArgs( const Objects& os ) const
+std::vector<ObjectCalcer*> TextType::sortArgs( const std::vector<ObjectCalcer*>& os ) const
 {
   assert( os.size() >= 3 );
-  Objects ret( os.begin(), os.begin() + 3 );
+  std::vector<ObjectCalcer*> ret( os.begin(), os.begin() + 3 );
   ret = mparser.parse( ret );
   std::copy( os.begin() + 3,  os.end(), std::back_inserter( ret ) );
+  return ret;
+}
+
+Args TextType::sortArgs( const Args& args ) const
+{
+  assert( args.size() >= 3 );
+  Args ret( args.begin(), args.begin() + 3 );
+  ret = mparser.parse( ret );
+  std::copy( args.begin() + 3,  args.end(), std::back_inserter( ret ) );
+  return ret;
+}
+
+std::vector<ObjectCalcer*> TextType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  const std::vector<ObjectCalcer*> parents = ourobj.parents();
+  assert( parents.size() >= 3 );
+  std::vector<ObjectCalcer*> ret = parents[1]->movableParents();
+  ret.push_back( parents[1] );
   return ret;
 }

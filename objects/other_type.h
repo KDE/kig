@@ -33,8 +33,8 @@ public:
   const ObjectImpType* resultId() const;
 
   QStringList specialActions() const;
-  void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
-                      NormalMode& m ) const;
+  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+                      KigDocument& d, KigWidget& w, NormalMode& m ) const;
 };
 
 class VectorType
@@ -65,7 +65,8 @@ public:
   bool inherits( int type ) const;
   const ObjectImpType* resultId() const;
 
-  Objects sortArgs( const Objects& args ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
+  Args sortArgs( const Args& args ) const;
 };
 
 class CopyObjectType
@@ -80,7 +81,8 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
-  Objects sortArgs( const Objects& os ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const;
+  Args sortArgs( const Args& args ) const;
 };
 
 /**

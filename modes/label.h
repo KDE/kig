@@ -21,15 +21,17 @@
 
 #include "mode.h"
 
+#include "../objects/object_calcer.h"
+
 #include <vector>
 
 class TextLabelWizard;
 class NormalMode;
-class Object;
-class RealObject;
-class PropertyObject;
 class Coordinate;
 class QString;
+class ObjectPropertyCalcer;
+class ObjectTypeCalcer;
+class ObjectCalcer;
 
 /**
  * this is the base class for TextLabelConstructionMode and
@@ -51,17 +53,17 @@ public:
   void selectArgumentsPageEntered();
   void labelTextChanged();
   void linkClicked( int );
-  void redrawScreen();
+  void redrawScreen( KigWidget* w );
 
 protected:
-  typedef std::vector<PropertyObject*> argvect;
+  typedef std::vector<ObjectPropertyCalcer::shared_ptr> argvect;
   // the protected interface for subclasses
   TextLabelModeBase( KigDocument& d );
   ~TextLabelModeBase();
 
   void setCoordinate( const Coordinate& coord );
   void setText( const QString& s );
-  void setLocationParent( Object* o );
+  void setLocationParent( ObjectCalcer* o );
   // objects you pass here, should be newly created property objects,
   // that have no children..
   void setPropertyObjects( const argvect& props );
@@ -69,7 +71,7 @@ protected:
 
   virtual void finish( const Coordinate& s, const QString& s,
                        const argvect& props, bool needframe,
-                       Object* locationparent ) = 0;
+                       ObjectCalcer* locationparent ) = 0;
 
 private:
   // the KigMode interface..
@@ -106,18 +108,18 @@ public:
 
   void finish( const Coordinate& coord, const QString& s,
                const argvect& props, bool needframe,
-               Object* locationparent );
+               ObjectCalcer* locationparent );
 };
 
 class TextLabelRedefineMode
   : public TextLabelModeBase
 {
-  RealObject* mlabel;
+  ObjectTypeCalcer* mlabel;
   void finish( const Coordinate& coord, const QString& s,
                const argvect& props, bool needframe,
-               Object* locationparent );
+               ObjectCalcer* locationparent );
 public:
-  TextLabelRedefineMode( KigDocument& d, RealObject* label );
+  TextLabelRedefineMode( KigDocument& d, ObjectTypeCalcer* label );
   ~TextLabelRedefineMode();
 };
 

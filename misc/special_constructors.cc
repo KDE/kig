@@ -19,16 +19,17 @@
 #include "special_constructors.h"
 
 #include "i18n.h"
-#include "objects.h"
 #include "kigpainter.h"
 #include "calcpaths.h"
 #include "guiaction.h"
 #include "conic-common.h"
 #include "common.h"
 
-#include "../objects/object.h"
 #include "../objects/object_factory.h"
 #include "../objects/object_type.h"
+#include "../objects/object_holder.h"
+#include "../objects/object_drawer.h"
+#include "../objects/object_calcer.h"
 #include "../objects/conic_types.h"
 #include "../objects/line_type.h"
 #include "../objects/intersection_types.h"
@@ -66,15 +67,14 @@ ConicRadicalConstructor::~ConicRadicalConstructor()
 }
 
 void ConicRadicalConstructor::drawprelim(
-  KigPainter& p, const Objects& parents, const KigDocument& doc ) const
+  KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& doc ) const
 {
-  if ( parents.size() == 2 && parents[0]->hasimp( ConicImp::stype() ) &&
-       parents[1]->hasimp( ConicImp::stype() ) )
+  if ( parents.size() == 2 && parents[0]->imp()->inherits( ConicImp::stype() ) &&
+       parents[1]->imp()->inherits( ConicImp::stype() ) )
   {
     Args args;
-    using namespace std;
-    transform( parents.begin(), parents.end(),
-               back_inserter( args ), mem_fun( &Object::imp ) );
+    std::transform( parents.begin(), parents.end(),
+                    std::back_inserter( args ), std::mem_fun( &ObjectCalcer::imp ) );
     for ( int i = -1; i < 2; i += 2 )
     {
       IntImp root( i );
@@ -90,20 +90,20 @@ void ConicRadicalConstructor::drawprelim(
   };
 }
 
-Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidget& ) const
+std::vector<ObjectHolder*> ConicRadicalConstructor::build( const std::vector<ObjectCalcer*>& os, KigDocument&, KigWidget& ) const
 {
   using namespace std;
-  Objects ret;
+  std::vector<ObjectHolder*> ret;
   for ( int i = -1; i < 2; i += 2 )
   {
-    Objects args;
-    copy( os.begin(), os.end(), back_inserter( args ) );
-    args.push_back( new DataObject( new IntImp( i ) ) );
+    std::vector<ObjectCalcer*> args;
+    std::copy( os.begin(), os.end(), back_inserter( args ) );
+    args.push_back( new ObjectConstCalcer( new IntImp( i ) ) );
     // TODO ? use only one zeroindex dataobject, so that if you switch
     // one radical line around, then the other switches along..
-    args.push_back( new DataObject( new IntImp( 1 ) ) );
-    copy( args.begin() + 2, args.end(), back_inserter( ret ) );
-    ret.push_back( new RealObject( mtype, args ) );
+    args.push_back( new ObjectConstCalcer( new IntImp( 1 ) ) );
+    ret.push_back(
+      new ObjectHolder( new ObjectTypeCalcer( mtype, args ) ) );
   };
   return ret;
 }
@@ -125,22 +125,22 @@ LocusConstructor::~LocusConstructor()
 {
 }
 
-void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents,
+void LocusConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                    const KigDocument& ) const
 {
   // this function is rather ugly, but it is necessary to do it this
   // way in order to play nice with Kig's design..
 
   if ( parents.size() != 2 ) return;
-  assert( parents.front()->inherits( Object::ID_RealObject ) );
-  const RealObject* constrained = static_cast<RealObject*>( parents.front() );
-  const Object* moving = parents.back();
+  assert( dynamic_cast<const ObjectTypeCalcer*>( parents.front() ) );
+  const ObjectTypeCalcer* constrained = static_cast<ObjectTypeCalcer*>( parents.front() );
+  const ObjectCalcer* moving = parents.back();
   if ( ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
   {
     // moving is in fact the constrained point.. swap them..
     moving = constrained;
-    assert( parents.back()->inherits( Object::ID_RealObject ) );
-    constrained = static_cast<RealObject*>( parents.back() );
+    assert( dynamic_cast<const ObjectTypeCalcer*>( parents.back() ) );
+    constrained = static_cast<const ObjectTypeCalcer*>( parents.back() );
   };
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
@@ -150,44 +150,49 @@ void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents,
   assert( oimp->inherits( CurveImp::stype() ) );
   const CurveImp* cimp = static_cast<const CurveImp*>( oimp );
 
-  ObjectHierarchy hier( Objects( const_cast<RealObject*>( constrained ) ),
-                        moving );
+  ObjectHierarchy hier( constrained, moving );
 
   LocusImp limp( cimp->copy(), hier );
   limp.draw( p );
 }
 
 const int LocusConstructor::wantArgs(
- const Objects& os, const KigDocument&, const KigWidget&
+ const std::vector<ObjectCalcer*>& os, const KigDocument&, const KigWidget&
  ) const
 {
   int ret = margsparser.check( os );
   if ( ret == ArgsParser::Invalid ) return ret;
   else if ( os.size() != 2 ) return ret;
-  if ( os[0]->inherits( Object::ID_RealObject ) &&
-       static_cast<RealObject*>( os.front() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
-       os.front()->getAllChildren().contains( os.back() ) )
-    return ret;
-  if ( os[1]->inherits( Object::ID_RealObject ) &&
-       static_cast<RealObject*>( os.back() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
-       os.back()->getAllChildren().contains( os.front() ) )
-    return ret;
+  if ( dynamic_cast<ObjectTypeCalcer*>( os.front() ) &&
+       static_cast<ObjectTypeCalcer*>( os.front() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+  {
+    std::set<ObjectCalcer*> children = getAllChildren( os.front() );
+    return children.find( os.back() ) != children.end() ? ret : ArgsParser::Invalid;
+  }
+  if ( dynamic_cast<ObjectTypeCalcer*>( os.back() ) &&
+       static_cast<ObjectTypeCalcer*>( os.back() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+  {
+    std::set<ObjectCalcer*> children = getAllChildren( os.back() );
+    return children.find( os.front() ) != children.end() ? ret : ArgsParser::Invalid;
+  }
   return ArgsParser::Invalid;
 }
 
-Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget& ) const
+std::vector<ObjectHolder*> LocusConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
 {
-  Object* ret = ObjectFactory::instance()->locus( parents );
-  return Objects( ret );
+  std::vector<ObjectHolder*> ret;
+  assert( parents.size() == 2 );
+  ret.push_back( ObjectFactory::instance()->locus( parents[0], parents[1] ) );
+  return ret;
 }
 
-QString LocusConstructor::useText( const Object& o, const Objects& os,
+QString LocusConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& os,
                                    const KigDocument&, const KigWidget& ) const
 {
-  if ( o.inherits( Object::ID_RealObject ) &&
-       static_cast<const RealObject&>( o ).type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
-       ( os.empty() || !os[0]->inherits( Object::ID_RealObject ) ||
-         !static_cast<const RealObject*>( os[0] )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+  if ( dynamic_cast<const ObjectTypeCalcer*>( &o ) &&
+       static_cast<const ObjectTypeCalcer&>( o ).type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
+       ( os.empty() || !dynamic_cast<ObjectTypeCalcer*>( os[0] ) ||
+         !static_cast<const ObjectTypeCalcer*>( os[0] )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
     ) return i18n( "Moving Point" );
   else return i18n( "Dependent Point" );
 }
@@ -226,12 +231,12 @@ ConicConicIntersectionConstructor::~ConicConicIntersectionConstructor()
 {
 }
 
-void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const Objects& parents,
+void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                                     const KigDocument& ) const
 {
   if ( parents.size() != 2 ) return;
-  assert ( parents[0]->hasimp( ConicImp::stype() ) &&
-           parents[1]->hasimp( ConicImp::stype() ) );
+  assert ( parents[0]->imp()->inherits( ConicImp::stype() ) &&
+           parents[1]->imp()->inherits( ConicImp::stype() ) );
   const ConicCartesianData conica =
     static_cast<const ConicImp*>( parents[0]->imp() )->cartesianData();
   const ConicCartesianData conicb =
@@ -252,36 +257,32 @@ void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const Objects
   };
 }
 
-Objects ConicConicIntersectionConstructor::build( const Objects& os, KigDocument& doc,
-                                                  KigWidget& ) const
+std::vector<ObjectHolder*> ConicConicIntersectionConstructor::build(
+  const std::vector<ObjectCalcer*>& os, KigDocument& doc, KigWidget& ) const
 {
   assert( os.size() == 2 );
-  Objects ret;
-  Object* conica = os[0];
-  DataObject* zeroindexdo = new DataObject( new IntImp( 1 ) );
-  ret.push_back( zeroindexdo );
+  std::vector<ObjectHolder*> ret;
+  ObjectCalcer* conica = os[0];
+  ObjectConstCalcer* zeroindexdo = new ObjectConstCalcer( new IntImp( 1 ) );
 
   for ( int wr = -1; wr < 2; wr += 2 )
   {
-    ret.push_back( new DataObject( new IntImp( wr ) ) );
-    Objects parents = os;
-    parents.push_back( ret.back() );
-    parents.push_back( zeroindexdo );
-    RealObject* radical =
-      new RealObject( ConicRadicalType::instance(), parents );
-    radical->setShown( false );
+    std::vector<ObjectCalcer*> args = os;
+    args.push_back( new ObjectConstCalcer( new IntImp( wr ) ) );
+    args.push_back( zeroindexdo );
+    ObjectTypeCalcer* radical =
+      new ObjectTypeCalcer( ConicRadicalType::instance(), args );
     radical->calc( doc );
-    ret.push_back( radical );
     for ( int wi = -1; wi < 2; wi += 2 )
     {
-      Objects args;
+      args.clear();
       args.push_back( conica );
       args.push_back( radical );
-      ret.push_back( new DataObject( new IntImp( wi ) ) );
-      args.push_back( ret.back() );
+      args.push_back( new ObjectConstCalcer( new IntImp( wi ) ) );
       ret.push_back(
-        new RealObject(
-          ConicLineIntersectionType::instance(), args ) );
+        new ObjectHolder(
+          new ObjectTypeCalcer(
+            ConicLineIntersectionType::instance(), args ) ) );
     };
   };
   return ret;
@@ -308,10 +309,10 @@ ConicLineIntersectionConstructor::~ConicLineIntersectionConstructor()
 {
 }
 
-QString ConicRadicalConstructor::useText( const Object& o, const Objects&,
+QString ConicRadicalConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
                                           const KigDocument&, const KigWidget& ) const
 {
-  if ( o.hasimp( CircleImp::stype() ) )
+  if ( o.imp()->inherits( CircleImp::stype() ) )
     return i18n( "Construct the Radical Lines of This Circle" );
   else
     return i18n( "Construct the Radical Lines of This Conic" );
@@ -361,16 +362,16 @@ bool GenericIntersectionConstructor::isIntersection() const
 }
 
 QString GenericIntersectionConstructor::useText(
-  const Object& o, const Objects&,
+  const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
   const KigDocument&, const KigWidget& ) const
 {
-  if ( o.hasimp( CircleImp::stype() ) )
+  if ( o.imp()->inherits( CircleImp::stype() ) )
     return i18n( "Intersect with This Circle" );
-  else if ( o.hasimp( ConicImp::stype() ) )
+  else if ( o.imp()->inherits( ConicImp::stype() ) )
     return i18n( "Intersect with This Conic" );
-  else if ( o.hasimp( AbstractLineImp::stype() ) )
+  else if ( o.imp()->inherits( AbstractLineImp::stype() ) )
     return i18n( "Intersect with This Line" );
-  else if ( o.hasimp( CubicImp::stype() ) )
+  else if ( o.imp()->inherits( CubicImp::stype() ) )
     return i18n( "Intersect with This Cubic" );
   else assert( false );
   return QString::null;
@@ -395,30 +396,30 @@ MidPointOfTwoPointsConstructor::~MidPointOfTwoPointsConstructor()
 }
 
 void MidPointOfTwoPointsConstructor::drawprelim(
-  KigPainter& p, const Objects& parents,
+  KigPainter& p, const std::vector<ObjectCalcer*>& parents,
   const KigDocument& ) const
 {
   if ( parents.size() != 2 ) return;
-  assert( parents[0]->hasimp( PointImp::stype() ) );
-  assert( parents[1]->hasimp( PointImp::stype() ) );
+  assert( parents[0]->imp()->inherits( PointImp::stype() ) );
+  assert( parents[1]->imp()->inherits( PointImp::stype() ) );
   const Coordinate m =
     ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
       static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
   PointImp( m ).draw( p );
 }
 
-Objects MidPointOfTwoPointsConstructor::build(
-  const Objects& os, KigDocument& d, KigWidget& ) const
+std::vector<ObjectHolder*> MidPointOfTwoPointsConstructor::build(
+  const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& ) const
 {
-  RealObject* seg = new RealObject( SegmentABType::instance(), os );
-  seg->setShown( false );
+  ObjectTypeCalcer* seg = new ObjectTypeCalcer( SegmentABType::instance(), os );
   seg->calc( d );
-  int index = seg->propertiesInternalNames().findIndex( "mid-point" );
+  int index = seg->imp()->propertiesInternalNames().findIndex( "mid-point" );
   assert( index != -1 );
-  PropertyObject* prop = new PropertyObject( seg, index );
+  ObjectPropertyCalcer* prop = new ObjectPropertyCalcer( seg, index );
   prop->calc( d );
-  RealObject* point = new RealObject( CopyObjectType::instance(), Objects( prop ) );
-  return Objects( point );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( new ObjectHolder( prop ) );
+  return ret;
 }
 
 void MidPointOfTwoPointsConstructor::plug( KigDocument*, KigGUIAction* )

@@ -76,31 +76,31 @@ void DefineMacroMode::enableActions()
 
 void DefineMacroMode::givenPageEntered()
 {
-  Objects objs = mdoc.objects();
-  for_each( objs.begin(), objs.end(),
-            bind2nd( mem_fun( &Object::setSelected ), false ) );
-  for_each( mgiven.begin(), mgiven.end(),
-            bind2nd( mem_fun( &Object::setSelected ), true ) );
-  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
-
+  std::vector<ObjectHolder*> given( mgiven.begin(), mgiven.end() );
+  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen( given );
   updateNexts();
 }
 
 void DefineMacroMode::finalPageEntered()
 {
-  using std::for_each;
-  using std::bind2nd;
-  using std::mem_fun;
-  mgiven.setSelected( false );
-  mfinal.setSelected( true );
-  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
+  std::vector<ObjectHolder*> final( mfinal.begin(), mfinal.end() );
+  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen( final );
 
   updateNexts();
 }
 
 void DefineMacroMode::namePageEntered()
 {
-  ObjectHierarchy hier( mgiven, mfinal );
+  ObjectCalcer* (ObjectHolder::*memfun)() = &ObjectHolder::calcer;
+  std::vector<ObjectCalcer*> given;
+  std::transform( mgiven.begin(), mgiven.end(),
+                  std::back_inserter( given ),
+                  std::mem_fun( memfun ) );
+  std::vector<ObjectCalcer*> final;
+  std::transform( mfinal.begin(), mfinal.end(),
+                  std::back_inserter( final ),
+                  std::mem_fun( memfun ) );
+  ObjectHierarchy hier( given, final );
   if ( hier.resultDoesNotDependOnGiven() )
   {
     KMessageBox::sorry( mwizard,
@@ -112,20 +112,23 @@ void DefineMacroMode::namePageEntered()
     mwizard->back();
   };
 
-  using std::for_each;
-  using std::bind2nd;
-  using std::mem_fun;
-  Objects objs = mdoc.objects();
-  for_each( objs.begin(), objs.end(),
-            bind2nd( mem_fun( &Object::setSelected ), false ) );
-  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
+  static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen( std::vector<ObjectHolder*>() );
 
   updateNexts();
 }
 
 void DefineMacroMode::finishPressed()
 {
-  ObjectHierarchy hier( mgiven, mfinal );
+  ObjectCalcer* (ObjectHolder::*memfun)() = &ObjectHolder::calcer;
+  std::vector<ObjectCalcer*> given;
+  std::transform( mgiven.begin(), mgiven.end(),
+                  std::back_inserter( given ),
+                  std::mem_fun( memfun ) );
+  std::vector<ObjectCalcer*> final;
+  std::transform( mfinal.begin(), mfinal.end(),
+                  std::back_inserter( final ),
+                  std::mem_fun( memfun ) );
+  ObjectHierarchy hier( given, final );
   MacroConstructor* ctor =
     new MacroConstructor( hier,
                           mwizard->KLineEdit2->text(),
@@ -152,25 +155,21 @@ void DefineMacroMode::macroNameChanged()
 void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
-  Objects* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
-  // the objects that we change..
-  Objects cos;
+  std::set<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
   DragRectMode dm( p, mdoc, w );
   mdoc.runMode( &dm );
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
   if ( ! dm.cancelled() )
   {
-    Objects ret = dm.ret();
+    std::vector<ObjectHolder*> ret = dm.ret();
     if ( dm.needClear() )
     {
-      cos = *objs;
-      objs->setSelected( false );
+      pter.drawObjects( objs->begin(), objs->end(), false );
       objs->clear();
-    };
-    cos |= ret;
-    ret.setSelected( true );
-    objs->upush( ret );
-    pter.drawObjects( cos );
+    }
+
+    objs->insert( ret.begin(), ret.end() );
+    pter.drawObjects( objs->begin(), objs->end(), true );
   };
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
@@ -178,31 +177,24 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
   updateNexts();
 }
 
-void DefineMacroMode::leftClickedObject( Object* o, const QPoint&,
+void DefineMacroMode::leftClickedObject( ObjectHolder* o, const QPoint&,
                                          KigWidget& w, bool )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
-  Objects* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
-  if ( objs->contains( o ) )
-  {
-    objs->remove( o );
-    o->setSelected( false );
-  }
-  else
-  {
-    objs->push_back( o );
-    o->setSelected( true );
-  };
+  std::set<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
+  bool isselected = objs->find( o ) != objs->end();
+  if ( isselected ) objs->erase( o );
+  else objs->insert( o );
 
   KigPainter p( w.screenInfo(), &w.stillPix, mdoc );
-  p.drawObject( o );
+  p.drawObject( o, !isselected );
   w.updateCurPix( p.overlay() );
   w.updateWidget();
 
   updateNexts();
 }
 
-void DefineMacroMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget& w, bool )
+void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& pt, KigWidget& w, bool )
 {
   w.updateCurPix();
 
@@ -234,7 +226,7 @@ void DefineMacroMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget
   }
 }
 
-void DefineMacroMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
+void DefineMacroMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
 {
 }
 

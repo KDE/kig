@@ -51,9 +51,9 @@ public:
   CubicImp* copy() const;
 
   double getParam( const Coordinate& point, const KigDocument& ) const;
-  const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
 protected:
-  const Coordinate internalGetPoint( double param, bool& valid ) const;
+  const Coordinate internalGetPoint( double param ) const;
 
 public:
   const CubicCartesianData data() const;

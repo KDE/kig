@@ -19,31 +19,52 @@
 #ifndef KIG_OBJECTS_COMMON_H
 #define KIG_OBJECTS_COMMON_H
 
-#include <assert.h>
+#include <set>
 #include <vector>
-#include <utility>
 #include <qcstring.h>
 #include <qvaluelist.h>
-#include "../misc/objects.h"
+#include <qstringlist.h>
+#include <cassert>
 #include "../misc/i18n.h"
 
-class Object;
-class RealObject;
-class DataObject;
-class ObjectImp;
-class ObjectType;
-class KigPainter;
 class Coordinate;
-class ScreenInfo;
-class Rect;
-class KigWidget;
 class KigDocument;
-class Transformation;
-class QDomElement;
-class QDomDocument;
+class KigPainter;
+class KigWidget;
 class NormalMode;
+class ObjectCalcer;
+class ObjectDrawer;
+class ObjectHolder;
+class ObjectImp;
+class ObjectImpType;
+class ObjectPropertyCalcer;
+class ObjectType;
+class ObjectTypeCalcer;
+class QDomDocument;
+class QDomElement;
+class Rect;
+class ScreenInfo;
+class Transformation;
 
 typedef std::vector<const ObjectImp*> Args;
 typedef QValueList<QCString> QCStringList;
+
+template<typename T>
+void vect_remove( std::vector<T>& v, const T& t )
+{
+  typename std::vector<T>::iterator new_end = std::remove( v.begin(), v.end(), t );
+  v.erase( new_end, v.end() );
+}
+
+template<typename T>
+void delete_all( T begin, T end )
+{
+  for( ;begin != end; ++begin )
+  {
+    delete *begin;
+  }
+}
+
+std::vector<ObjectCalcer*> getCalcers( const std::vector<ObjectHolder*>& os );
 
 #endif

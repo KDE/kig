@@ -20,7 +20,6 @@
 
 #include "normal.h"
 
-#include "../objects/object.h"
 #include "../objects/object_imp.h"
 #include "../objects/object_factory.h"
 #include "../kig/kig_part.h"
@@ -34,52 +33,46 @@
 #include <algorithm>
 #include <map>
 
-void MovingModeBase::initScreen( const Objects& tin )
+void MovingModeBase::initScreen( const std::vector<ObjectCalcer*>& in )
 {
+  mcalcable = in;
+  std::set<ObjectCalcer*> calcableset( mcalcable.begin(), mcalcable.end() );
+
   // don't try to move objects that have been deleted from the
   // document or internal objects that the user is not aware of..
-  Objects in;
-  Objects docobjs = mdoc.allObjects();
-  for ( uint i = 0; i < tin.size(); ++i )
-    if ( docobjs.contains( tin[i] ) )
-      in.push_back( tin[i] );
+  std::vector<ObjectHolder*> docobjs = mdoc.objects();
+  for ( std::vector<ObjectHolder*>::iterator i = docobjs.begin();
+        i != docobjs.end(); ++i )
+    if ( calcableset.find( ( *i )->calcer() ) != calcableset.end() )
+      mdrawable.push_back( *i );
 
-  // here we calc what objects will be moving, and we draw the others
-  // on KigWidget::stillPix..  nmo are the Not Moving Objects
-  Objects nmo;
-
-  using namespace std;
-  amo = in;
-  // calc nmo: basically ( mdoc.objects() - amo )
-  // we use some stl magic here, tmp and tmp2 are set to os and
-  // mdoc.objects(), sorted, and then used in set_difference...
-  Objects tmp( amo.begin(), amo.end() );
-  sort( tmp.begin(), tmp.end() );
-  Objects tmp2( mdoc.objects() );
-  sort( tmp2.begin(), tmp2.end() );
-  set_difference( tmp2.begin(), tmp2.end(),
-                  tmp.begin(), tmp.end(),
-                  back_inserter( nmo ) );
+  std::set<ObjectHolder*> docobjsset( docobjs.begin(), docobjs.end() );
+  std::set<ObjectHolder*> drawableset( mdrawable.begin(), mdrawable.end() );
+  std::set<ObjectHolder*> notmovingobjs;
+  std::set_difference( docobjsset.begin(), docobjsset.end(), drawableset.begin(), drawableset.end(),
+                       std::inserter( notmovingobjs, notmovingobjs.begin() ) );
 
   mview.clearStillPix();
   KigPainter p( mview.screenInfo(), &mview.stillPix, mdoc );
   p.drawGrid( mdoc.coordinateSystem() );
-  p.drawObjects( nmo );
+  p.drawObjects( notmovingobjs.begin(), notmovingobjs.end(), false );
   mview.updateCurPix();
 
   KigPainter p2( mview.screenInfo(), &mview.curPix, mdoc );
-  p2.drawObjects( amo );
+  p2.drawObjects( drawableset.begin(), drawableset.end(), true );
 }
 
 void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
 {
   // clean up after ourselves:
-  amo.calc( mdoc );
+  for ( std::vector<ObjectCalcer*>::iterator i = mcalcable.begin();
+        i != mcalcable.end(); ++i )
+    ( *i )->calc( mdoc );
   stopMove();
   mdoc.setModified( true );
 
   // refresh the screen:
-  v->redrawScreen();
+  v->redrawScreen( std::vector<ObjectHolder*>() );
   v->updateScrollBars();
 
   mdoc.doneMode( this );
@@ -92,9 +85,14 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
 
   bool snaptogrid = e->state() & Qt::ShiftButton;
   moveTo( c, snaptogrid );
-  amo.calc( mdoc );
+  for ( std::vector<ObjectCalcer*>::iterator i = mcalcable.begin();
+        i != mcalcable.end(); ++i )
+    ( *i )->calc( mdoc );
   KigPainter p( v->screenInfo(), &v->curPix, mdoc );
-  p.drawObjects( amo );
+  // TODO: only draw the explicitly moving objects as selected, the
+  // other ones as deselected.. Needs some support from the
+  // subclasses..
+  p.drawObjects( mdrawable, true );
   v->updateWidget( p.overlay() );
   v->updateScrollBars();
 }
@@ -104,7 +102,7 @@ class MovingMode::Private
 public:
   // explicitly moving objects: these are the objects that the user
   // requested to move...
-  Objects emo;
+  std::vector<ObjectCalcer*> emo;
   // point where we started moving..
   Coordinate pwwsm;
   MonitorDataObjects* mon;
@@ -112,37 +110,41 @@ public:
   // This is the location that they claim to be at before moving
   // starts, and we use it as a reference point to determine where
   // they should move next..
-  std::map<const Object*, Coordinate> refmap;
+  std::map<const ObjectCalcer*, Coordinate> refmap;
 };
 
-MovingMode::MovingMode( const Objects& os, const Coordinate& c,
+MovingMode::MovingMode( const std::vector<ObjectHolder*>& os, const Coordinate& c,
                         KigWidget& v, KigDocument& doc )
   : MovingModeBase( doc, v ), d( new Private )
 {
   d->pwwsm = c;
-  Objects objs;
-  Objects emo;
-  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  std::vector<ObjectCalcer*> emo;
+  std::set<ObjectCalcer*> objs;
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
     if ( (*i)->canMove() )
     {
-      emo.upush( *i );
-      d->refmap[*i] = (*i)->moveReferencePoint();
-      objs.upush( *i );
-      objs |= getAllParents( Objects( *i ) );
+      emo.push_back( ( *i )->calcer() );
+      d->refmap[( *i )->calcer()] = (*i)->moveReferencePoint();
+      objs.insert( ( *i )->calcer() );
+      std::vector<ObjectCalcer*> parents = ( *i )->calcer()->movableParents();
+      objs.insert( parents.begin(), parents.end() );
     };
 
   emo = calcPath( emo );
-  for ( Objects::const_iterator i = emo.begin(); i != emo.end(); ++i )
+  for ( std::vector<ObjectCalcer*>::const_iterator i = emo.begin(); i != emo.end(); ++i )
     if ( !isChild( *i, d->emo ) )
       d->emo.push_back( *i );
 
-  d->mon = new MonitorDataObjects( objs );
+  d->mon = new MonitorDataObjects( std::vector<ObjectCalcer*>( objs.begin(),objs.end() ) );
 
-  Objects tmp = objs;
-  for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
-    objs |= (*i)->getAllChildren();
+  std::set<ObjectCalcer*> tmp = objs;
+  for ( std::set<ObjectCalcer*>::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
+  {
+    std::set<ObjectCalcer*> children = getAllChildren(*i);
+    objs.insert( children.begin(), children.end() );
+  }
 
-  initScreen( objs );
+  initScreen( calcPath( std::vector<ObjectCalcer*>( objs.begin(), objs.end() ) ) );
 }
 
 void MovingMode::stopMove()
@@ -151,13 +153,13 @@ void MovingMode::stopMove()
                  d->emo[0]->imp()->type()->moveAStatement() :
                  i18n( "Move %1 Objects" ).arg( d->emo.size() );
   KigCommand* mc = new KigCommand( mdoc, text );
-  mc->addTask( d->mon->finish() );
+  d->mon->finish( mc );
   mdoc.history()->addCommand( mc );
 }
 
 void MovingMode::moveTo( const Coordinate& o, bool snaptogrid )
 {
-  for( Objects::iterator i = d->emo.begin(); i != d->emo.end(); ++i )
+  for( std::vector<ObjectCalcer*>::iterator i = d->emo.begin(); i != d->emo.end(); ++i )
   {
     assert( d->refmap.find( *i ) != d->refmap.end() );
     Coordinate nc = d->refmap[*i] + ( o - d->pwwsm );
@@ -166,23 +168,28 @@ void MovingMode::moveTo( const Coordinate& o, bool snaptogrid )
   };
 }
 
-PointRedefineMode::PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& v )
-  : MovingModeBase( d, v ), mp( p ), moldparents( p->parents() ), moldtype( p->type() ),
-    mref( new ReferenceObject( moldparents ) ), mmon( 0 )
+PointRedefineMode::PointRedefineMode( ObjectHolder* p, KigDocument& d, KigWidget& v )
+  : MovingModeBase( d, v ), mp( p ), mmon( 0 )
 {
-  using namespace std;
-  Objects os( mp );
-  Objects tmp = mp->getAllChildren();
-  mmon = new MonitorDataObjects( getAllParents( os ) );
-  copy( tmp.begin(), tmp.end(), back_inserter( os ) );
-  initScreen( os );
+  assert( dynamic_cast<ObjectTypeCalcer*>( p->calcer() ) );
+  moldtype = static_cast<ObjectTypeCalcer*>( p->calcer() )->type();
+  std::vector<ObjectCalcer*> oldparents = p->calcer()->parents();
+  std::copy( oldparents.begin(), oldparents.end(), std::back_inserter( moldparents ) );
+
+  std::vector<ObjectCalcer*> parents = getAllParents( mp->calcer() );
+  mmon = new MonitorDataObjects( parents );
+  std::vector<ObjectCalcer*> moving = parents;
+  std::set<ObjectCalcer*> children = getAllChildren( mp->calcer() );
+  std::copy( children.begin(), children.end(), std::back_inserter( moving ) );
+  initScreen( moving );
 }
 
 void PointRedefineMode::moveTo( const Coordinate& o, bool snaptogrid )
 {
   Coordinate realo =
     snaptogrid ? mdoc.coordinateSystem().snapToGrid( o, mview ) : o;
-  (void) ObjectFactory::instance()->redefinePoint( mp, realo, mdoc, mview );
+  ObjectFactory::instance()->redefinePoint(
+    static_cast<ObjectTypeCalcer*>( mp->calcer() ), realo, mdoc, mview );
 }
 
 PointRedefineMode::~PointRedefineMode()
@@ -211,19 +218,25 @@ MovingMode::~MovingMode()
 
 void PointRedefineMode::stopMove()
 {
-  ReferenceObject newparentsref( mp->parents() );
-  const ObjectType* newtype = mp->type();
-  mp->setType( moldtype );
-  mp->setParents( moldparents );
-  mp->calc( mdoc );
+  assert( dynamic_cast<ObjectTypeCalcer*>( mp->calcer() ) );
+  ObjectTypeCalcer* mpcalc = static_cast<ObjectTypeCalcer*>(  mp->calcer() );
 
-  // mref was used to keep an artificial reference to the objects in
-  // moldparents.. we don't want it anymore after this..
-  delete mref;
+  std::vector<ObjectCalcer*> newparents = mpcalc->parents();
+  std::vector<ObjectCalcer::shared_ptr> newparentsref(
+    newparents.begin(), newparents.end() );
+  const ObjectType* newtype = mpcalc->type();
+
+  std::vector<ObjectCalcer*> oldparents;
+  for( std::vector<ObjectCalcer::shared_ptr>::iterator i = moldparents.begin();
+       i != moldparents.end(); ++i )
+    oldparents.push_back( i->get() );
+  mpcalc->setType( moldtype );
+  mpcalc->setParents( oldparents );
+  mp->calc( mdoc );
 
   KigCommand* command = new KigCommand( mdoc, i18n( "Redefine Point" ) );
   command->addTask(
-    new ChangeParentsAndTypeTask( mp, newparentsref.parents(), newtype ) );
-  command->addTask( mmon->finish() );
+    new ChangeParentsAndTypeTask( mpcalc, newparents, newtype ) );
+  mmon->finish( command );
   mdoc.history()->addCommand( command );
 }

@@ -34,7 +34,8 @@ public:
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
 
-  Objects sortArgs( const Objects& args ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
+  Args sortArgs( const Args& args ) const;
 };
 
 class PythonExecuteType
@@ -50,7 +51,8 @@ public:
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
 
-  Objects sortArgs( const Objects& args ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
+  Args sortArgs( const Args& args ) const;
 
 //   virtual QStringList specialActions() const;
 //   virtual void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,

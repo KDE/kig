@@ -19,15 +19,13 @@
 **/
 
 
-/*
-NOTE:
-This is completely free code, i have not looked at any Cabri source
-code, and have implemented this implementation of the Cabri file
-format from zero, by just looking at the input and output from a
-(properly licensed) Cabri program... I have the right to do this,
-because of the democratic right we all have to reverse-engineer any
-lawfully owned product...
-*/
+/**
+ * NOTE:
+ * This is completely free code, i have not looked at any Cabri source
+ * code, and have implemented this implementation of the Cabri file
+ * format from zero, by just looking at the input and output from a
+ * (properly licensed) Cabri program...
+ */
 
 #ifndef KIG_FILTERS_CABRI_FILTER_H
 #define KIG_FILTERS_CABRI_FILTER_H
@@ -39,18 +37,16 @@ lawfully owned product...
 //  which is being pushed by Texas Instruments, but only exists for
 //  the Winblows(tm) platform and some TI scientific calculator...
 
-// THIS IS PRE-ALPHA CODE
-
-class QFile;
-
 class KigFilterCabri
   : public KigFilter
 {
-public:
   KigFilterCabri();
   ~KigFilterCabri();
-  bool supportMime ( const QString mime );
-  bool load ( const QString from, Objects& to );
+public:
+  static KigFilterCabri* instance();
+
+  bool supportMime ( const QString& mime );
+  bool load ( const QString& fromfile, KigDocument& to );
 };
 
 #endif

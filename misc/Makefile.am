@@ -16,8 +16,6 @@ noinst_HEADERS = \
 	lists.h \
 	object_constructor.h \
 	object_hierarchy.h \
-	objects.h \
-	oldkigformat.h \
 	rect.h \
 	screeninfo.h \
 	special_constructors.h
@@ -38,8 +36,6 @@ libmisc_la_SOURCES = \
 	lists.cc \
 	object_constructor.cc \
 	object_hierarchy.cc \
-	objects.cpp \
-	oldkigformat.cc \
 	rect.cc \
 	screeninfo.cc \
 	special_constructors.cc

@@ -18,7 +18,7 @@
 
 #include "object_hierarchy.h"
 
-#include "../objects/object.h"
+#include "../objects/object_holder.h"
 #include "../objects/other_type.h"
 #include "../objects/object_imp.h"
 #include "../objects/object_imp_factory.h"
@@ -42,7 +42,7 @@ public:
   virtual void apply( std::vector<const ObjectImp*>& stack, int loc,
                       const KigDocument& ) const = 0;
 
-  virtual void apply( Objects& stack, int loc ) const = 0;
+  virtual void apply( std::vector<ObjectCalcer*>& stack, int loc ) const = 0;
 };
 
 ObjectHierarchy::Node::~Node()
@@ -63,12 +63,12 @@ public:
   Node* copy() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc, const KigDocument& ) const;
-  void apply( Objects& stack, int loc ) const;
+  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
 };
 
-void PushStackNode::apply( Objects& stack, int loc ) const
+void PushStackNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
 {
-  stack[loc] = new DataObject( mimp->copy() );
+  stack[loc] = new ObjectConstCalcer( mimp->copy() );
 }
 
 int PushStackNode::id() const { return ID_PushStack; }
@@ -106,7 +106,7 @@ public:
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc, const KigDocument& ) const;
-  void apply( Objects& stack, int loc ) const;
+  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
 };
 
 int ApplyTypeNode::id() const { return ID_ApplyType; }
@@ -120,12 +120,12 @@ ObjectHierarchy::Node* ApplyTypeNode::copy() const
   return new ApplyTypeNode( mtype, mparents );
 }
 
-void ApplyTypeNode::apply( Objects& stack, int loc ) const
+void ApplyTypeNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
 {
-  Objects parents;
+  std::vector<ObjectCalcer*> parents;
   for ( uint i = 0; i < mparents.size(); ++i )
     parents.push_back( stack[ mparents[i] ] );
-  stack[loc] = new RealObject( mtype, parents );
+  stack[loc] = new ObjectTypeCalcer( mtype, parents );
 }
 
 void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
@@ -136,6 +136,7 @@ void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
   {
     args.push_back( stack[mparents[i]] );
   };
+  args = mtype->sortArgs( args );
   stack[loc] = mtype->calc( args, doc );
 }
 
@@ -161,7 +162,7 @@ public:
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc, const KigDocument& ) const;
-  void apply( Objects& stack, int loc ) const;
+  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
 };
 
 FetchPropertyNode::~FetchPropertyNode()
@@ -187,11 +188,12 @@ void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
   stack[loc] = stack[mparent]->property( mpropid, d );
 }
 
-void FetchPropertyNode::apply( Objects& stack, int loc ) const
+void FetchPropertyNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
 {
-  if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
+  if ( mpropid == -1 )
+    mpropid = stack[mparent]->imp()->propertiesInternalNames().findIndex( mname );
   assert( mpropid != -1 );
-  stack[loc] = new PropertyObject( stack[mparent], mpropid );
+  stack[loc] = new ObjectPropertyCalcer( stack[mparent], mpropid );
 }
 
 std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument& doc ) const
@@ -224,12 +226,12 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument&
   };
 }
 
-int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenmap,
+int ObjectHierarchy::visit( const ObjectCalcer* o, std::map<const ObjectCalcer*, int>& seenmap,
                             bool isresult )
 {
   using namespace std;
 
-  std::map<const Object*, int>::iterator smi = seenmap.find( o );
+  std::map<const ObjectCalcer*, int>::iterator smi = seenmap.find( o );
   if ( smi != seenmap.end() )
   {
     if ( isresult )
@@ -247,7 +249,7 @@ int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenm
     else return smi->second;
   }
 
-  Objects p( o->parents() );
+  std::vector<ObjectCalcer*> p( o->parents() );
   // we check if o descends from the given objects..
   bool descendsfromgiven = false;
   std::vector<int> parents;
@@ -311,36 +313,35 @@ ObjectHierarchy ObjectHierarchy::withFixedArgs( const Args& a ) const
   return ret;
 }
 
-ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
-  : mnumberofargs( from.size() ), mnumberofresults( 1 )
+void ObjectHierarchy::init( const std::vector<ObjectCalcer*>& from, const std::vector<ObjectCalcer*>& to )
 {
+  mnumberofargs = from.size();
+  mnumberofresults = to.size();
   margrequirements.resize( from.size(), ObjectImp::stype() );
-  std::map<const Object*, int> seenmap;
+  std::map<const ObjectCalcer*, int> seenmap;
   for ( uint i = 0; i < from.size(); ++i )
     seenmap[from[i]] = i;
-  Objects parents = to->parents();
-  for ( Objects::const_iterator i = parents.begin();
-        i != parents.end(); ++i )
-    visit( *i, seenmap );
-  visit( to, seenmap, true );
-}
-
-ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
-  : mnumberofargs( from.size() ), mnumberofresults( to.size() )
-{
-  margrequirements.resize( from.size(), ObjectImp::stype() );
-  std::map<const Object*, int> seenmap;
-  for ( uint i = 0; i < from.size(); ++i )
-    seenmap[from[i]] = i;
-  for ( Objects::const_iterator i = to.begin(); i != to.end(); ++i )
+  for ( std::vector<ObjectCalcer*>::const_iterator i = to.begin(); i != to.end(); ++i )
   {
-    Objects parents = (*i)->parents();
-    for ( Objects::const_iterator j = parents.begin();
+    std::vector<ObjectCalcer*> parents = (*i)->parents();
+    for ( std::vector<ObjectCalcer*>::const_iterator j = parents.begin();
           j != parents.end(); ++j )
       visit( *j, seenmap );
   }
-  for ( Objects::const_iterator i = to.begin(); i != to.end(); ++i )
+  for ( std::vector<ObjectCalcer*>::const_iterator i = to.begin(); i != to.end(); ++i )
     visit( *i, seenmap, true );
+}
+
+ObjectHierarchy::ObjectHierarchy( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to )
+{
+  std::vector<ObjectCalcer*> tov;
+  tov.push_back( const_cast<ObjectCalcer*>( to ) );
+  init( from, tov );
+}
+
+ObjectHierarchy::ObjectHierarchy( const std::vector<ObjectCalcer*>& from, const std::vector<ObjectCalcer*>& to )
+{
+  init( from, to );
 }
 
 void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
@@ -494,13 +495,13 @@ ArgsParser ObjectHierarchy::argParser() const
   return ArgsParser( specs );
 }
 
-Objects ObjectHierarchy::buildObjects( const Objects& os, const KigDocument& doc ) const
+std::vector<ObjectCalcer*> ObjectHierarchy::buildObjects( const std::vector<ObjectCalcer*>& os, const KigDocument& doc ) const
 {
   assert( os.size() == mnumberofargs );
   for ( uint i = 0; i < os.size(); ++i )
-    assert( os[i]->hasimp( margrequirements[i] ) );
+    assert( os[i]->imp()->inherits( margrequirements[i] ) );
 
-  Objects stack;
+  std::vector<ObjectCalcer*> stack;
   stack.resize( mnodes.size() + mnumberofargs, 0 );
   std::copy( os.begin(), os.end(), stack.begin() );
 
@@ -510,10 +511,7 @@ Objects ObjectHierarchy::buildObjects( const Objects& os, const KigDocument& doc
     stack[mnumberofargs + i]->calc( doc );
   };
 
-  for ( uint i = mnumberofargs; i < stack.size() - mnumberofresults; ++i )
-    stack[i]->setShown( false );
-
-  Objects ret( stack.end() - mnumberofresults, stack.end() );
+  std::vector<ObjectCalcer*> ret( stack.end() - mnumberofresults, stack.end() );
 
   return ret;
 }
@@ -591,8 +589,8 @@ const ObjectImpType* lowermost( const ObjectImpType* a, const ObjectImpType* b )
 // the location of objects that are already in mnodes and -1
 // otherwise..  -1 means we have to store their ObjectImp, unless
 // they're cache ObjectImp's etc.
-int ObjectHierarchy::storeObject( const Object* o, const Objects& po, std::vector<int>& pl,
-                                  std::map<const Object*, int>& seenmap )
+int ObjectHierarchy::storeObject( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& po, std::vector<int>& pl,
+                                  std::map<const ObjectCalcer*, int>& seenmap )
 {
   for ( uint i = 0; i < po.size(); ++i )
   {
@@ -601,7 +599,7 @@ int ObjectHierarchy::storeObject( const Object* o, const Objects& po, std::vecto
       // we can't store cache ObjectImp's..
       if ( po[i]->imp()->isCache() )
       {
-        Objects parentos = po[i]->parents();
+        std::vector<ObjectCalcer*> parentos = po[i]->parents();
         std::vector<int> parentlocs( parentos.size(), -1 );
         pl[i] = storeObject( po[i], parentos, parentlocs, seenmap );
       }
@@ -613,28 +611,38 @@ int ObjectHierarchy::storeObject( const Object* o, const Objects& po, std::vecto
     }
     else if ( (uint) pl[i] < mnumberofargs )
     {
-      Object* parent = o->parents()[i];
-      Objects opl = o->parents();
+      ObjectCalcer* parent = o->parents()[i];
+      std::vector<ObjectCalcer*> opl = o->parents();
 
       margrequirements[pl[i]] =
         lowermost( margrequirements[pl[i]],
                    o->impRequirement( parent, opl ) );
     };
   };
-  if ( o->inherits( Object::ID_RealObject ) )
-    mnodes.push_back( new ApplyTypeNode( static_cast<const RealObject*>( o )->type(), pl ) );
-  else if ( o->inherits( Object::ID_PropertyObject ) )
+  if ( dynamic_cast<const ObjectTypeCalcer*>( o ) )
+    mnodes.push_back( new ApplyTypeNode( static_cast<const ObjectTypeCalcer*>( o )->type(), pl ) );
+  else if ( dynamic_cast<const ObjectPropertyCalcer*>( o ) )
   {
     assert( pl.size() == 1 );
     int parent = pl.front();
-    Object* op = po.front();
+    ObjectCalcer* op = po.front();
     assert( op );
-    uint propid = static_cast<const PropertyObject*>( o )->propId();
-    assert( propid < op->propertiesInternalNames().size() );
-    mnodes.push_back( new FetchPropertyNode( parent, op->propertiesInternalNames()[propid], propid ) );
+    uint propid = static_cast<const ObjectPropertyCalcer*>( o )->propId();
+    assert( propid < op->imp()->propertiesInternalNames().size() );
+    mnodes.push_back( new FetchPropertyNode( parent, op->imp()->propertiesInternalNames()[propid], propid ) );
   }
   else
     assert( false );
   seenmap[o] = mnumberofargs + mnodes.size() - 1;
   return mnumberofargs + mnodes.size() - 1;
 }
+
+ObjectHierarchy::ObjectHierarchy( const ObjectCalcer* from, const ObjectCalcer* to )
+{
+  std::vector<ObjectCalcer*> fromv;
+  fromv.push_back( const_cast<ObjectCalcer*>( from ) );
+  std::vector<ObjectCalcer*> tov;
+  tov.push_back( const_cast<ObjectCalcer*>( to ) );
+  init( fromv, tov );
+}
+

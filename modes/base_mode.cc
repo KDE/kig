@@ -70,7 +70,7 @@ void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if( (mplc - e->pos()).manhattanLength() > 4 ) return;
 
-  Object* o = 0;
+  ObjectHolder* o = 0;
   if ( ! moco.empty() ) o = moco.front();
   leftClickedObject( o, e->pos(), *v,
                      ( e->state() & ( ControlButton | ShiftButton) ) != 0
@@ -110,7 +110,7 @@ void BaseMode::rightClicked( QMouseEvent* e, KigWidget* w )
 
 void BaseMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
-  Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
+  std::vector<ObjectHolder*> os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
   mouseMoved( os, e->pos(), *w, e->state() & Qt::ShiftButton );
 }
 
@@ -118,12 +118,12 @@ void BaseMode::dragRect( const QPoint&, KigWidget& )
 {
 }
 
-void BaseMode::leftClickedObject( Object*, const QPoint&,
+void BaseMode::leftClickedObject( ObjectHolder*, const QPoint&,
                                   KigWidget&, bool )
 {
 }
 
-void BaseMode::dragObject( const Objects&, const QPoint&,
+void BaseMode::dragObject( const std::vector<ObjectHolder*>&, const QPoint&,
                            KigWidget&, bool )
 {
 }

@@ -70,7 +70,7 @@ public:
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   double getParam( const Coordinate& point, const KigDocument& ) const;
-  const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
 
   // TODO ?
   const uint numberOfProperties() const;

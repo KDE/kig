@@ -29,7 +29,7 @@
 
 #include <vector>
 
-#include "../objects/object.h"
+#include "../objects/object_holder.h"
 #include "../misc/rect.h"
 #include "../misc/screeninfo.h"
 
@@ -194,7 +194,7 @@ public:
 
   void zoomRect();
 
-  void redrawScreen( bool paintOnWidget = true );
+  void redrawScreen( const std::vector<ObjectHolder*>& selection, bool paintOnWidget = true );
 };
 
 /**
@@ -240,6 +240,7 @@ public slots:
   void slotZoomIn();
   void slotZoomOut();
   void zoomRect();
+  void slotInternalRecenterScreen();
   void slotRecenterScreen();
   void toggleFullScreen();
 

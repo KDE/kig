@@ -22,6 +22,8 @@
 #include "common.h"
 #include "../misc/argsparser.h"
 
+class ObjectTypeCalcer;
+
 /**
  * The ObjectType class is a thing that represents the "behaviour" for
  * a certain type..  This basically means that it decides what
@@ -46,8 +48,9 @@ public:
   virtual ObjectImp* calc( const Args& parents, const KigDocument& d ) const = 0;
 
   virtual bool canMove() const;
-  virtual const Coordinate moveReferencePoint( const RealObject* ourobj ) const;
-  virtual void move( RealObject* ourobj, const Coordinate& to,
+  virtual std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  virtual const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  virtual void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
                      const KigDocument& d ) const;
 
   const char* fullName() const;
@@ -63,7 +66,9 @@ public:
   // ID_AnyImp..
   virtual const ObjectImpType* resultId() const = 0;
 
-  virtual Objects sortArgs( const Objects& args ) const = 0;
+  virtual std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const = 0;
+
+  virtual Args sortArgs( const Args& args ) const = 0;
 
   // is this object type a transformation type.  We want to know this
   // cause transform types are shown separately in an object's RMB
@@ -78,8 +83,8 @@ public:
   // return i18n'd names for the special actions..
   virtual QStringList specialActions() const;
   // execute the i'th action from the specialActions above..
-  virtual void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
-                              NormalMode& m ) const;
+  virtual void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
+                              KigDocument& d, KigWidget& w, NormalMode& m ) const;
 };
 
 /**
@@ -92,30 +97,14 @@ class ArgsParserObjectType
 protected:
   const ArgsParser margsparser;
   ArgsParserObjectType( const char fulltypename[],
-                       const struct ArgsParser::spec argsspec[],
-                       int n );
+                        const struct ArgsParser::spec argsspec[],
+                        int n );
 public:
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ArgsParser& argsParser() const;
 
-  Objects sortArgs( const Objects& args ) const;
-};
-
-/**
- * A dummy ObjectType, ignores its args, always returns an
- * InvalidImp.  This is useful in some situations..
- */
-class DummyObjectType
-  : public ObjectType
-{
-  DummyObjectType();
-  ~DummyObjectType();
-public:
-  static DummyObjectType* instance();
-  ObjectImp* calc( const Args&, const KigDocument& ) const;
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
-  const ObjectImpType* resultId() const;
-  Objects sortArgs( const Objects& args ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
+  Args sortArgs( const Args& args ) const;
 };
 
 #endif

@@ -10,6 +10,8 @@ Hi, here are some things that might not be immediately clear :
   developer faq on developer.kde.org
   (http://developer.kde.org/documentation/other/developer-faq.html#q67.1)
 
+- There is some documentation about the design in the file DESIGN
+
 - if you want to contribute, your work is more than welcome, no matter where
   you want to help: translation, coding, art, just send me a mail at
   devriese@kde.org (preferably before you start, so you won't be

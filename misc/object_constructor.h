@@ -28,8 +28,6 @@ class KigGUIAction;
 class KigWidget;
 class ArgsParserObjectType;
 class ObjectType;
-class Objects;
-class Object;
 
 class QString;
 class QCString;
@@ -54,7 +52,7 @@ public:
 
   // can this constructor do something useful with os ?  return
   // ArgsParser::Complete, Valid or NotGood
-  virtual const int wantArgs( const Objects& os,
+  virtual const int wantArgs( const std::vector<ObjectCalcer*>& os,
                               const KigDocument& d,
                               const KigWidget& v
     ) const = 0;
@@ -63,14 +61,14 @@ public:
   // returned Complete.. handleArgs should _not_ do any
   // drawing.. after somebody calls this function, he should
   // redrawScreen() himself..
-  virtual void handleArgs( const Objects& os,
+  virtual void handleArgs( const std::vector<ObjectCalcer*>& os,
                            KigDocument& d,
                            KigWidget& v
     ) const = 0;
 
   // return a string describing what you would use o for if it were
   // selected...
-  virtual QString useText( const Object& o, const Objects& sel,
+  virtual QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const = 0;
 
@@ -79,7 +77,7 @@ public:
   // locus through some 5 points, then it will try to draw a locus
   // through whatever number of points it gets..
   virtual void handlePrelim( KigPainter& p,
-                             const Objects& sel,
+                             const std::vector<ObjectCalcer*>& sel,
                              const KigDocument& d,
                              const KigWidget& v
     ) const = 0;
@@ -113,30 +111,29 @@ public:
   const QString description() const;
   const QCString iconFileName() const;
 
-  const int wantArgs(
-    const Objects& os, const KigDocument& d,
+  virtual const int wantArgs(
+    const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v
     ) const;
 
-  void handleArgs( const Objects& os,
+  void handleArgs( const std::vector<ObjectCalcer*>& os,
                    KigDocument& d,
                    KigWidget& v
     ) const;
 
-  void handlePrelim( KigPainter& p, const Objects& sel,
+  void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
                      const KigDocument& d, const KigWidget& v
     ) const;
 
-  virtual void drawprelim( KigPainter& p, const Objects& parents,
+  virtual void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                            const KigDocument& ) const = 0;
 
-  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
-                   const KigWidget& v ) const;
+  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+                   const KigDocument& d, const KigWidget& v ) const;
 
-  virtual Objects build(
-    const Objects& os,
-    KigDocument& d,
-    KigWidget& w
+  virtual std::vector<ObjectHolder*> build(
+    const std::vector<ObjectCalcer*>& os,
+    KigDocument& d, KigWidget& w
     ) const = 0;
 };
 
@@ -155,12 +152,12 @@ public:
 
   ~SimpleObjectTypeConstructor();
 
-  void drawprelim( KigPainter& p, const Objects& parents,
+  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
 
-  Objects build( const Objects& os,
-                 KigDocument& d,
-                 KigWidget& w ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
+                                    KigDocument& d,
+                                    KigWidget& w ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
 
@@ -184,12 +181,11 @@ public:
 
   ~PropertyObjectConstructor();
 
-  void drawprelim( KigPainter& p, const Objects& parents,
+  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
 
-  Objects build( const Objects& os,
-                 KigDocument& d,
-                 KigWidget& w ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
+                                    KigDocument& d, KigWidget& w ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
 
@@ -225,12 +221,12 @@ public:
     int a, int b, int c = -999, int d = -999 );
   ~MultiObjectTypeConstructor();
 
-  void drawprelim( KigPainter& p, const Objects& parents,
+  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
 
-  Objects build( const Objects& os,
-                 KigDocument& d,
-                 KigWidget& w ) const;
+  std::vector<ObjectHolder*> build(
+    const std::vector<ObjectCalcer*>& os,
+    KigDocument& d, KigWidget& w ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
 
@@ -261,17 +257,17 @@ public:
   const QString description() const;
   const QCString iconFileName() const;
 
-  const int wantArgs( const Objects& os,
+  const int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d,
                       const KigWidget& v
     ) const;
 
-  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
-                   const KigWidget& v ) const;
+  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+                   const KigDocument& d, const KigWidget& v ) const;
 
-  void handleArgs( const Objects& os, KigDocument& d, KigWidget& v ) const;
+  void handleArgs( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& v ) const;
 
-  void handlePrelim( KigPainter& p, const Objects& sel,
+  void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
                      const KigDocument& d, const KigWidget& v ) const;
 
   void plug( KigDocument* doc, KigGUIAction* kact );
@@ -297,7 +293,7 @@ class MacroConstructor
   const QCString miconfile;
   ArgsParser mparser;
 public:
-  MacroConstructor( const Objects& input, const Objects& output,
+  MacroConstructor( const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
                     const QString& name, const QString& description,
                     const QCString& iconfile = 0 );
   MacroConstructor( const ObjectHierarchy& hier, const QString& name,
@@ -311,17 +307,17 @@ public:
   const QString description() const;
   const QCString iconFileName() const;
 
-  const int wantArgs( const Objects& os, const KigDocument& d,
+  const int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
                       const KigWidget& v ) const;
 
-  void handleArgs( const Objects& os, KigDocument& d,
+  void handleArgs( const std::vector<ObjectCalcer*>& os, KigDocument& d,
                    KigWidget& v ) const;
 
-  QString useText( const Object& o, const Objects& sel,
+  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v
     ) const;
 
-  void handlePrelim( KigPainter& p, const Objects& sel,
+  void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
                      const KigDocument& d, const KigWidget& v
     ) const;
 
