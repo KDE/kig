@@ -46,7 +46,7 @@ void StdConstructionMode::leftClicked( QMouseEvent* e, KigView* v )
 {
   plc = e->pos();
   v->updateCurPix();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 2*v->pixelWidth() );
+  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 3*v->pixelWidth() );
   if( !oco.empty() )
   {
     KigPainter p( v->showingRect(), &v->curPix );
@@ -80,7 +80,7 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
 void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 {
   // objects under cursor
-  Objects ouc = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 2*v->pixelWidth() );
+  Objects ouc = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 3*v->pixelWidth() );
   v->updateCurPix();
   KigPainter p( v->showingRect(), &v->curPix );
   mobc->drawPrelim( p, v->fromScreen( e->pos() ) );
