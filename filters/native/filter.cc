@@ -124,7 +124,6 @@ static std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
 KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument& to )
 {
   bool ok = true;
-  // TODO: fix memory leaks on parse errors..
 
   std::vector<HierElem> elems;
   Objects os;
@@ -212,7 +211,13 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
     o->setShown( shown );
     o->setColor( color );
 
-    if ( ! oldElemToNewObject( type, e, *o ) ) return ParseError;
+    if ( ! oldElemToNewObject( type, e, *o ) )
+    {
+      Objects all = getAllParents( os );
+      for ( Objects::iterator i = all.begin(); i != all.end(); ++i )
+        delete *i;
+      return ParseError;
+    };
     o->calc();
     os[elem.id-1] = o;
   };
@@ -273,7 +278,6 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
       assert( o.parents().size() == 1 );
       o.setType( ConstrainedPointType::instance() );
       o.addParent( new DataObject( new DoubleImp( param ) ) );
-      assert( o.parents().size() == 2 );
     };
     return true;
   }
