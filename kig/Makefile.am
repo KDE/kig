@@ -11,7 +11,7 @@ noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h
 # let automoc handle all of the meta source files (moc)
 METASOURCES = AUTO
 
-KDE_ICON = kig
+KDE_ICON = AUTO
 
 # this Makefile creates both a KPart application and a KPart
 #########################################################################
