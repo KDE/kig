@@ -38,3 +38,11 @@ points selected, you can choose <em>Start->Circle by Three Points</em> from the
 popup menu to start constructing a circle by three points.</p>
 </html>
 </tip>
+
+<tip category="Kig">
+<html>
+<p>Kig can extends its object set using external macros. You can find some
+interesting macro on Kig website:
+<a href="http://edu.kde.org/kig">http://edu.kde.org/kig</a>.</p>
+</html>
+</tip>

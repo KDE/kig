@@ -1,11 +1,11 @@
 noinst_DATA= \
-	circleBTP_by_circleBCP.kigt \
-	conic_by_locus.kigt \
-	ConicCenter.kigt \
+	cubic-locus.kig \
 	ellipse.kig \
+	figure_angle.fgeo \
+	figure_manyobjects.fgeo \
 	fregier.kigt \
-	LineConicMainAxis.kigt \
-	LineConicSecondAxis.kigt \
 	locustest.kig \
-	mirrorpoint_by_translationpoint.kigt \
-	parabolaBDF.kigt
+	parabolaBDF.kigt \
+	session_alotofthings.fgeo \
+	sine-curve.kig \
+	sine-curve.png
