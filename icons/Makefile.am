@@ -61,4 +61,5 @@ kigicondata_DATA = \
 	translation.png \
 	triangle.png \
 	vector.png \
+	view_fit_to_page.png \
 	window_fullscreen.png
