@@ -59,7 +59,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                   "edepagne@eso.org" );
 
   tmp->addCredit("Marc Bartsch",
-		  I18N_NOOP("Author of KGeo, where i got inspiration, "
+		  I18N_NOOP("Author of KGeo, where I got inspiration, "
 			    "some source, and most of the artwork from"),
 		  "marc.bartsch@web.de");
 
