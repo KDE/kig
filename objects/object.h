@@ -66,8 +66,9 @@ public:
   virtual void calc( const KigDocument& ) = 0;
 
   virtual bool shown() const = 0;
-
   virtual void setShown( bool s );
+
+  virtual void setColor( const QColor& c );
 
   virtual void setSelected( bool s );
 
@@ -164,7 +165,7 @@ public:
   void setType( const ObjectType* t );
 
   QColor color() const { return mcolor; };
-  void setColor( const QColor c ) { mcolor = c; };
+  void setColor( const QColor& c );
 
   bool selected() const { return mselected; };
   void setSelected( bool s );

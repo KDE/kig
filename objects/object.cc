@@ -443,3 +443,12 @@ void PropertyObject::delParent( Object* o )
   if ( mparent == o ) mparent = 0;
 }
 
+void Object::setColor( const QColor& )
+{
+}
+
+void RealObject::setColor( const QColor& c )
+{
+  mcolor = c;
+}
+
