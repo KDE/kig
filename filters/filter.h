@@ -39,6 +39,9 @@ public:
   static KigFilters* instance();
   KigFilter* find (const QString& mime);
 
+  // saving is always done with the native filter.  We don't support
+  // output filters..
+  bool save ( const KigDocument& data, const QString& tofile );
 protected:
   KigFilters();
   static KigFilters* sThis;
@@ -46,13 +49,28 @@ protected:
   vect mFilters;
 };
 
+// use this macro to conveniently return a very useful parse error in
+// a filter's load function..
+#define KIG_FILTER_PARSE_ERROR \
+  { \
+    QString locs = i18n( "An error was encountered at " \
+                         "line %1 in file %2." ) \
+      .arg( __LINE__ ).arg( __FILE__ ); \
+    parseError( file, locs ); \
+    return false; \
+  }
+
 class KigFilter
 {
+protected:
+  // shows errors to the user..
+  void fileNotFound( const QString& file ) const;
+  void parseError( const QString& file, const QString& explanation = QString::null ) const;
+  void notSupported( const QString& file, const QString& explanation ) const;
+  void warning( const QString& explanation ) const;
 public:
   KigFilter();
   virtual ~KigFilter();
-
-  typedef enum { OK, FileNotFound, ParseError, NotSupported } Result;
 
   // can the filter handle this mimetype ?
   virtual bool supportMime ( const QString& mime );
@@ -60,9 +78,6 @@ public:
   // load file fromfile..  ( don't forget to make this atomic, this
   // means: only really change to's data when you're sure no error
   // will occur in reading/parsing the file..
-  virtual Result load ( const QString& fromfile, KigDocument& to ) = 0;
-
-  // ...
-  virtual Result save ( const KigDocument& data, const QString& tofile );
+  virtual bool load ( const QString& fromfile, KigDocument& to ) = 0;
 };
 #endif

@@ -120,17 +120,20 @@ static RealObject* intersectionPoint( const Objects& parents, Objects& ret, int 
   else return 0;
 };
 
-KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& todoc )
+bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
 {
-  QFile file( fromfile );
-  if ( ! file.open( IO_ReadOnly ) )
-    return FileNotFound;
-  QDataStream fstream( &file );
+  QFile ffile( file );
+  if ( ! ffile.open( IO_ReadOnly ) )
+  {
+    fileNotFound( file );
+    return false;
+  };
+  QDataStream fstream( &ffile );
 
   QString versionstring;
   fstream >> versionstring;
   if ( !versionstring.startsWith( "KSeg Document Version " ) )
-    return ParseError;
+    KIG_FILTER_PARSE_ERROR;
 
   QByteArray array;
   fstream >> array;
@@ -251,7 +254,11 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       }
       case G_SCALED:
       {
-        return NotSupported;
+        // TODO
+        notSupported( file, i18n( "This KSeg document uses a scaling "
+                                  "transformation, which Kig currently "
+                                  "cannot import." ) );
+        return false;
         o = new RealObject( ScalingOverCenterType::instance(), parents );
         break;
       }
@@ -286,7 +293,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         case G_FREE_POINT:
         {
           // fixed point
-          if ( nparents != 0 ) return ParseError;
+          if ( nparents != 0 ) KIG_FILTER_PARSE_ERROR;
           Coordinate c = readKSegCoordinate( stream );
           Objects os = ObjectFactory::instance()->fixedPoint( c );
           point = static_cast<RealObject*>( os[2] );
@@ -313,18 +320,19 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           // first intersection of its parents, G_INTERSECTION2_POINT
           // represents the second, if present.
           point = intersectionPoint( parents, ret, 1 );
-          if ( ! point ) return ParseError;
+          if ( ! point ) KIG_FILTER_PARSE_ERROR;
           break;
         }
         case G_INTERSECTION2_POINT:
           point = intersectionPoint( parents, ret, -1 );
-          if ( ! point ) return ParseError;
+          if ( ! point ) KIG_FILTER_PARSE_ERROR;
           break;
         case G_MID_POINT:
         {
           // midpoint of a segment..
-          if ( parents.size() != 1 ) return ParseError;
-          if ( !parents[0]->hasimp( ObjectImp::ID_SegmentImp ) ) return ParseError;
+          if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+          if ( !parents[0]->hasimp( ObjectImp::ID_SegmentImp ) )
+            KIG_FILTER_PARSE_ERROR;
           int index = parents[0]->propertiesInternalNames().findIndex( "mid-point" );
           assert( index != -1 );
           ret.push_back( new PropertyObject( parents[0], index ) );
@@ -334,7 +342,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           break;
         }
         default:
-          return ParseError;
+          KIG_FILTER_PARSE_ERROR;
         };
         assert( point );
         point->setWidth( style.pointstyle == SMALL_CIRCLE ? 2 :
@@ -349,7 +357,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         {
         case G_ENDPOINTS_SEGMENT:
         {
-          if ( nparents != 2 ) return ParseError;
+          if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           RealObject* o = new RealObject( SegmentABType::instance(), parents );
           o->setWidth( style.pen.width() );
           o->setColor( style.pen.color() );
@@ -357,7 +365,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           break;
         }
         default:
-          return ParseError;
+          KIG_FILTER_PARSE_ERROR;
         };
         break;
       };
@@ -367,7 +375,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         {
         case G_TWOPOINTS_RAY:
         {
-          if ( nparents != 2 ) return ParseError;
+          if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           RealObject* o = new RealObject( RayABType::instance(), parents );
           o->setWidth( style.pen.width() );
           o->setColor( style.pen.color() );
@@ -375,16 +383,25 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           break;
         }
         case G_BISECTOR_RAY:
-          return NotSupported;
+          return false;
+          // TODO
+//           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+//           if ( !parents[0]->hasimp( ObjectImp::ID_AngleImp ) ) KIG_FILTER_PARSE_ERROR;
+//           int index = parents[0]->propertiesInternalNames().findIndex( "mid-point" );
+//           assert( index != -1 );
+//           ret.push_back( new PropertyObject( parents[0], index ) );
+//           Objects nparents( ret.end() - 1, ret.end() );
+//           ret.back()->calc( todoc );
+//           point = new RealObject( CopyObjectType::instance(), nparents );
           break;
         default:
-          return ParseError;
+          KIG_FILTER_PARSE_ERROR;
         };
         break;
       };
       case G_LINE:
       {
-        if ( nparents != 2 ) return ParseError;
+        if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
         RealObject* o = 0;
         switch( descendtype )
         {
@@ -398,7 +415,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           o = new RealObject( LinePerpendLPType::instance(), parents );
           break;
         default:
-          return ParseError;
+          KIG_FILTER_PARSE_ERROR;
         };
         assert( o );
         o->setWidth( style.pen.width() );
@@ -412,7 +429,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         {
         case G_CENTERPOINT_CIRCLE:
         {
-          if ( nparents != 2 ) return ParseError;
+          if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           RealObject* o = new RealObject( CircleBCPType::instance(), parents );
           o->setWidth( style.pen.width() );
           o->setColor( style.pen.color() );
@@ -434,7 +451,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
             segment = parents[0];
           };
           int index = segment->propertiesInternalNames().findIndex( "length" );
-          if ( index == -1 ) return ParseError;
+          if ( index == -1 ) KIG_FILTER_PARSE_ERROR;
           Object* length = new PropertyObject( segment, index );
           ret.push_back( length );
           Objects cparents;
@@ -447,13 +464,13 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           break;
         }
         default:
-          return ParseError;
+          KIG_FILTER_PARSE_ERROR;
         };
         break;
       };
       case G_ARC:
       {
-        if ( nparents != 3 ) return ParseError;
+        if ( nparents != 3 ) KIG_FILTER_PARSE_ERROR;
         RealObject* o = new RealObject( ArcBTPType::instance(), parents );
         o->setWidth( style.pen.width() );
         o->setColor( style.pen.color() );
@@ -461,16 +478,32 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         break;
       };
       case G_POLYGON:
-        return ParseError;
+      {
+        notSupported( file, i18n( "This KSeg file contains a polygon object, "
+                                  "which Kig does not currently support." ) );
+        return false;
+      };
       case G_CIRCLEINTERIOR:
-        return ParseError;
+      {
+        notSupported( file, i18n( "This KSeg file contains a filled circle, "
+                                  "which Kig does not currently support." ) );
+        return false;
+      };
       case G_ARCSECTOR:
-        return ParseError;
+      {
+        notSupported( file, i18n( "This KSeg file contains an arc sector, "
+                                  "which Kig does not currently support." ) );
+        return false;
+      };
       case G_ARCSEGMENT:
-        return ParseError;
+      {
+        notSupported( file, i18n( "This KSeg file contains an arc segment, "
+                                  "which Kig does not currently support." ) );
+        return false;
+      };
       case G_LOCUS:
       {
-        if ( nparents != 2 ) return ParseError;
+        if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
         Objects os = ObjectFactory::instance()->locus( parents );
         assert( os.size() == 2 );
         ret.push_back( os[0] );
@@ -480,13 +513,13 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         break;
       };
       case G_MEASURE:
-        return ParseError;
+        KIG_FILTER_PARSE_ERROR;
       case G_CALCULATE:
-        return ParseError;
+        KIG_FILTER_PARSE_ERROR;
       case G_ANNOTATION:
-        return ParseError;
+        KIG_FILTER_PARSE_ERROR;
       case G_LOOP:
-        return ParseError;
+        KIG_FILTER_PARSE_ERROR;
       };
     assert( object );
     ret[i] = object;
@@ -513,5 +546,11 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
 
   // no more data in the file..
   todoc.setObjects( ret );
-  return OK;
+  return true;
+}
+
+KigFilterKSeg* KigFilterKSeg::instance()
+{
+  static KigFilterKSeg f;
+  return &f;
 }

@@ -254,19 +254,8 @@ bool KigDocument::openFile()
         );
     return false;
   };
-  if ( filter->load (m_file, *this) != KigFilter::OK )
-  {
-    KMessageBox::sorry( widget(), i18n(
-        "The file you tried to open contains some elements that Kig currently "
-        "doesn't understand. It is possible that the file somehow got "
-        "corrupted and is no longer usable. If you know that the file is "
-        "valid, and you think Kig should be able to open it, you can try to "
-        "send me a copy of the file and ask me to check it out. If you want "
-        "more certain results, you can always do the work yourself ( since Kig "
-        "is Free Software ), and send me a patch."
-                            ) );
+  if ( !filter->load (m_file, *this) )
     return false;
-  };
 
   setModified(false);
   mhistory->clear();
@@ -285,59 +274,25 @@ bool KigDocument::saveFile()
   if ( m_file.isEmpty() ) return internalSaveAs();
   // mimetype:
   KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
-  kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
-  // filter...
-  KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
-  if ( !filter )
+  if ( mimeType->name() != "application/x-kig" )
   {
     // we don't support this mime type...
     KMessageBox::sorry
       (
         widget(),
-        i18n( "You tried to save to a file of type \"%1\". Unfortunately, "
-              "Kig doesn't support this format. If you think the format in "
-              "question would be worth implementing support for, you can "
-              "always ask me nicely on mailto:devriese@kde.org "
-              "or do the work yourself and send me a patch."
-          ).arg(mimeType->name()),
+        i18n( "Kig does not support saving to any other file format than "
+              "its own." ).arg( mimeType->name() ),
         i18n( "Format not Supported" )
         );
     return false;
   };
 
-  KigFilter::Result result = filter->save( *this, m_file );
-  if ( result == KigFilter::OK )
+  if ( KigFilters::instance()->save( *this, m_file ) )
   {
     setModified ( false );
     mhistory->documentSaved();
     return true;
   }
-  else if ( result == KigFilter::FileNotFound )
-  {
-    // i know i need to change the enum value name, but this means
-    // that the file could not be opened...
-    KMessageBox::sorry( m_widget,
-                        i18n( "The file \"%1\" could not be opened. Please "
-                              "check if the file permissions are set correctly." )
-                        .arg( m_file ) );
-    return false;
-
-  }
-  else // if ( result == KigFilter::NotSupported )
-  {
-    // we don't support this mime type...
-    KMessageBox::sorry
-      (
-        widget(),
-        i18n( "You tried to save to a file of MIME type \"%1\". Unfortunately, "
-              "Kig doesn't support this format. If you think the format in "
-              "question would be worth implementing support for, you can "
-              "always ask me nicely on mailto:devriese@kde.org "
-              "or do the work yourself and send me a patch."
-          ).arg(mimeType->name()),
-        i18n( "Format not Supported" )
-        );
-  };
   return false;
 };
 

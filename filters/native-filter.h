@@ -33,16 +33,18 @@ class RealObject;
 class KigFilterNative
   : public KigFilter
 {
-  Result loadOld( const QDomElement& doc, KigDocument& to );
-  Result loadNew( const QDomElement& doc, KigDocument& to );
-public:
+  bool loadOld( const QString& file, const QDomElement& doc, KigDocument& to );
+  bool loadNew( const QString& file, const QDomElement& doc, KigDocument& to );
+
   KigFilterNative();
   ~KigFilterNative();
+public:
+  static KigFilterNative* instance();
 
   bool supportMime( const QString& mime );
-  Result load( const QString& file, KigDocument& to );
-  Result save( const KigDocument& data, const QString& file );
+  bool load( const QString& file, KigDocument& to );
 
+  bool save( const KigDocument& data, const QString& file );
 };
 
 #endif

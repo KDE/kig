@@ -49,8 +49,8 @@ class KigFilterCabri
 public:
   KigFilterCabri();
   ~KigFilterCabri();
-  virtual bool supportMime ( const QString mime );
-  virtual Result load ( const QString from, Objects& to );
+  bool supportMime ( const QString mime );
+  bool load ( const QString from, Objects& to );
 };
 
 #endif

@@ -49,62 +49,86 @@ bool KigFilterNative::supportMime( const QString& mime )
   return mime == "application/x-kig";
 }
 
-KigFilter::Result KigFilterNative::load( const QString& from, KigDocument& to )
+bool KigFilterNative::load( const QString& file, KigDocument& to )
 {
-  QFile file( from );
-  if ( ! file.open( IO_ReadOnly ) ) return FileNotFound;
+  QFile ffile( file );
+  if ( ! ffile.open( IO_ReadOnly ) )
+  {
+    fileNotFound( file );
+    return false;
+  };
   QDomDocument doc( "KigDocument" );
-  if ( !doc.setContent( &file ) ) return ParseError;
-  file.close();
+  if ( !doc.setContent( &ffile ) )
+    KIG_FILTER_PARSE_ERROR;
+  ffile.close();
   QDomElement main = doc.documentElement();
 
   QString version = main.attribute( "Version" );
   if ( ! version ) version = main.attribute( "version" );
-  if ( ! version ) return ParseError;
+  if ( ! version )
+    KIG_FILTER_PARSE_ERROR;
 
   // matches 0.1, 0.2.0, 153.128.99 etc.
   QRegExp versionre( "(\\d+)\\.(\\d+)(\\.(\\d+))?" );
-  if ( ! versionre.exactMatch( version ) ) return ParseError;
+  if ( ! versionre.exactMatch( version ) )
+    KIG_FILTER_PARSE_ERROR;
   bool ok = true;
   int major = versionre.cap( 1 ).toInt( &ok );
-  if ( ! ok ) return ParseError;
+  bool ok2 = true;
   int minor = versionre.cap( 2 ).toInt( &ok );
-  if ( ! ok ) return ParseError;
+  if ( ! ok || ! ok2 )
+    KIG_FILTER_PARSE_ERROR;
+
 //   int minorminor = versionre.cap( 4 ).toInt( &ok );
 
   // we only support 0.* ( for now ? :)
-  if ( major != 0 ) return NotSupported;
-  if ( minor > 5 ) return NotSupported;
-  return minor > 3 ?
-    loadNew( main, to ) : loadOld( main, to );
+  if ( major != 0 || minor > 5 )
+  {
+    notSupported( file, i18n( "This file was created by Kig version \"%1\", "
+                              "which this version cannot open." ) );
+    return false;
+  }
+  if ( minor > 3 )
+    return loadNew( file, main, to );
+  else
+    return loadOld( file, main, to );
 }
 
-KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument& to )
+bool KigFilterNative::loadOld( const QString& file, const QDomElement& main, KigDocument& to )
 {
   using namespace std;
 
   QDomElement hier = main.firstChild().toElement();
-  if ( hier.isNull() ) return ParseError;
-  if ( hier.tagName() != "ObjectHierarchy" ) return NotSupported;
+  if ( hier.isNull() || hier.tagName() != "ObjectHierarchy" )
+  {
+    parseError( file, i18n( "This kig file contains errors." ) );
+    return false;
+  }
 
   Objects os;
   Objects final;
   if ( ! parseOldObjectHierarchyElements( hier.firstChild().toElement(), os, final, to ) )
-    return ParseError;
+  {
+    parseError( file, i18n( "This kig file contains errors." ) );
+    return false;
+  };
   // stop gcc from complaining about our not using this..
   final.clear();
 
   to.setObjects( os );
-  return OK;
+  return true;
 }
 
-KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString& to )
+bool KigFilterNative::save( const KigDocument& kdoc, const QString& to )
 {
   using namespace std;
 
   QFile file( to );
   if ( ! file.open( IO_WriteOnly ) )
-    return FileNotFound;
+  {
+    fileNotFound( to );
+    return false;
+  }
   QTextStream stream( &file );
   QDomDocument doc( "KigDocument" );
 
@@ -190,16 +214,15 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
     }
     else assert( false );
   };
-//  return NotSupported;
   docelem.appendChild( objectselem );
 
   doc.appendChild( docelem );
   stream << doc.toCString();
   file.close();
-  return OK;
+  return true;
 }
 
-KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocument& kdoc )
+bool KigFilterNative::loadNew( const QString& file, const QDomElement& docelem, KigDocument& kdoc )
 {
   bool ok = true;
 
@@ -211,7 +234,13 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
     {
       const QCString type = e.text().latin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type );
-      if ( ! s ) return NotSupported;
+      if ( ! s )
+      {
+        warning( i18n( "This Kig file has a coordinate system "
+                       "that this Kig version does not support. "
+                       "A standard coordinate system will be used "
+                       "instead." ) );
+      }
       else kdoc.setCoordinateSystem( s );
     }
     else if ( e.tagName() == "Objects" )
@@ -230,9 +259,8 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         {
           // fetch the id
           QString tmp = e.attribute("id");
-          if( tmp.isNull() ) return ParseError;
           id = tmp.toInt(&ok);
-          if ( !ok ) return ParseError;
+          if ( !ok ) KIG_FILTER_PARSE_ERROR;
 
           extendVect( elems, id );
           elems[id-1].el = e;
@@ -240,9 +268,8 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         else if ( e.tagName() == "Object" )
         {
           QString tmp = e.attribute( "id" );
-          if ( tmp.isNull() ) return ParseError;
           id = tmp.toInt( &ok );
-          if ( ! ok ) return ParseError;
+          if ( ! ok ) KIG_FILTER_PARSE_ERROR;
 
           extendVect( elems, id );
           elems[id-1].el = e;
@@ -255,9 +282,8 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
           if ( f.tagName() == "Parent" )
           {
             QString tmp = f.attribute( "id" );
-            if ( tmp.isNull() ) return ParseError;
             uint pid = tmp.toInt( &ok );
-            if ( ! ok ) return ParseError;
+            if ( ! ok ) KIG_FILTER_PARSE_ERROR;
 
             extendVect( elems, id );
             elems[id-1].parents.push_back( pid );
@@ -267,7 +293,7 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
 
       for ( uint i = 0; i < elems.size(); ++i )
         if ( elems[i].el.isNull() )
-          return ParseError;
+          KIG_FILTER_PARSE_ERROR;
       elems = sortElems( elems );
 
       uint oldsize = ret.size();
@@ -280,8 +306,15 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         if ( e.tagName() == "Data" )
         {
           QString tmp = e.attribute( "type" );
-          if ( tmp.isNull() ) return ParseError;
+          if ( tmp.isNull() )
+            KIG_FILTER_PARSE_ERROR;
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e );
+          if ( ! imp )
+          {
+            notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
+                                      "which this Kig version does not support." ) );
+            return false;
+          };
           ret[oldsize + i->id - 1] = new DataObject( imp );
         }
         else if ( e.tagName() == "Property" )
@@ -291,45 +324,50 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
                 ec = ec.nextSibling().toElement() )
           {
             if ( ec.tagName() == "Property" )
-            {
               propname = ec.text().latin1();
-            }
             else continue;
           };
 
-          if ( i->parents.size() != 1 ) return ParseError;
+          if ( i->parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
           Object* parent = ret[oldsize + i->parents[0] -1];
           QCStringList propnames = parent->propertiesInternalNames();
           int propid = propnames.findIndex( propname );
-          if ( propid == -1 ) return ParseError;
+          if ( propid == -1 )
+            KIG_FILTER_PARSE_ERROR;
 
           ret[oldsize + i->id - 1] = new PropertyObject( parent, propid );
         }
         else if ( e.tagName() == "Object" )
         {
           QString tmp = e.attribute( "type" );
-          if ( tmp.isNull() ) return ParseError;
+          if ( tmp.isNull() )
+            KIG_FILTER_PARSE_ERROR;
 
           const ObjectType* type =
             ObjectTypeFactory::instance()->find( tmp.latin1() );
-          if ( !type ) return ParseError;
+          if ( !type )
+          {
+            notSupported( file, i18n( "This Kig file contains a Kig object "
+                                      "of type \"%1\", that this version of "
+                                      "Kig does not support." ).arg( tmp ) );
+            return false;
+          };
 
           tmp = e.attribute( "color" );
-          if ( tmp.isNull() ) return ParseError;
           QColor color( tmp );
+          if ( !color.isValid() )
+            KIG_FILTER_PARSE_ERROR;
 
           tmp = e.attribute( "shown" );
-          if ( tmp.isNull() ) return ParseError;
-          bool shown = ! ( tmp == "false" || tmp == "no" );
+          bool shown = !( tmp == "false" || tmp == "no" );
 
           tmp = e.attribute( "width" );
-          int width;
-          if ( tmp.isNull() ) width = -1;
-          else width = tmp.toInt( &ok );
+          int width = tmp.toInt( &ok );
           if ( ! ok ) width = -1;
 
           Objects parents;
-          for ( std::vector<int>::iterator j = i->parents.begin(); j != i->parents.end(); ++j )
+          for ( std::vector<int>::iterator j = i->parents.begin();
+                j != i->parents.end(); ++j )
             parents.push_back( ret[oldsize + *j - 1] );
 
           RealObject* newobj = new RealObject( type, parents );
@@ -348,5 +386,11 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
     else continue; // be forward-compatible..
   };
 
-  return OK;
+  return true;
+}
+
+KigFilterNative* KigFilterNative::instance()
+{
+  static KigFilterNative f;
+  return &f;
 }

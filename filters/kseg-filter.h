@@ -24,12 +24,14 @@
 class KigFilterKSeg
   : public KigFilter
 {
-public:
   KigFilterKSeg();
   ~KigFilterKSeg();
 
+public:
+  static KigFilterKSeg* instance();
+
   bool supportMime ( const QString& mime );
-  Result load ( const QString& fromfile, KigDocument& to );
+  bool load ( const QString& fromfile, KigDocument& to );
 };
 
 #endif

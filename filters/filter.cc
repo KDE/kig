@@ -18,13 +18,15 @@
  USA
 **/
 
-
 #include "filter.h"
 
 #include "kgeo-filter.h"
 #include "cabri-filter.h"
 #include "native-filter.h"
 #include "kseg-filter.h"
+
+#include <kmessagebox.h>
+#include <klocale.h>
 
 KigFilters* KigFilters::sThis;
 
@@ -39,21 +41,15 @@ KigFilter* KigFilters::find(const QString& mime)
 
 KigFilters::KigFilters()
 {
-  mFilters.push_back( new KigFilterKGeo );
-  mFilters.push_back( new KigFilterKSeg );
+  mFilters.push_back( KigFilterKGeo::instance() );
+  mFilters.push_back( KigFilterKSeg::instance() );
 //   mFilters.push_back( new KigFilterCabri );
-  mFilters.push_back( new KigFilterNative );
+  mFilters.push_back( KigFilterNative::instance() );
 }
 
 KigFilters* KigFilters::instance()
 {
   return sThis ? sThis : ( sThis = new KigFilters() );
-}
-
-KigFilter::Result KigFilter::save( const KigDocument&, const QString& )
-{
-  // most filters don't have saving...
-  return NotSupported;
 }
 
 KigFilter::KigFilter()
@@ -67,4 +63,43 @@ KigFilter::~KigFilter()
 bool KigFilter::supportMime( const QString& )
 {
   return false;
+}
+
+void KigFilter::fileNotFound( const QString& file ) const
+{
+  KMessageBox::sorry( 0,
+                      i18n( "The file \"%1\" could not be opened.  "
+                            "This probably means that it does not "
+                            "exist, or that it cannot be opened due to "
+                            "its permissions" ).arg( file ) );
+}
+
+void KigFilter::parseError( const QString& file, const QString& explanation ) const
+{
+  const QString text =
+    i18n( "An error was encountered while parsing the file \"%1\".  It "
+          "cannot be opened." ).arg( file );
+  const QString title = i18n( "Parse Error" );
+
+  if ( explanation.isNull() )
+    KMessageBox::sorry( 0, text, title );
+  else
+    KMessageBox::detailedSorry( 0, text, explanation, title );
+}
+
+void KigFilter::notSupported( const QString& file, const QString& explanation ) const
+{
+  KMessageBox::detailedSorry( 0,
+                              i18n( "Kig cannot open the file \"%1\"." ).arg( file ),
+                              explanation, i18n( "Not Supported" ) );
+}
+
+void KigFilter::warning( const QString& explanation ) const
+{
+  KMessageBox::information( 0, explanation );
+}
+
+bool KigFilters::save( const KigDocument& data, const QString& tofile )
+{
+  return KigFilterNative::instance()->save( data, tofile );
 }
