@@ -88,7 +88,7 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
   case ReallySelectingArgs:
   {
     if ( ( mplc - e->pos() ).manhattanLength() > 4 ) break;
-    Objects os = mdoc.whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
+    Objects os = mdoc.whatAmIOn( v->fromScreen( mplc ), *v );
     if ( os.empty() ) break;
     Object* o = os[0];
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
@@ -137,7 +137,7 @@ void TextLabelConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   if ( mwawd == ReallySelectingArgs )
   {
-    Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
+    Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
     if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
     else w->setCursor( KCursor::arrowCursor() );
   };

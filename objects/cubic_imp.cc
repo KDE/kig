@@ -24,6 +24,7 @@
 #include "../misc/screeninfo.h"
 #include "../misc/kignumerics.h"
 #include "../misc/common.h"
+#include "../kig/kig_view.h"
 
 #include <math.h>
 #include <klocale.h>
@@ -50,7 +51,7 @@ void CubicImp::draw( KigPainter& p ) const
   p.drawCubic( mdata );
 }
 
-bool CubicImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) const
+bool CubicImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
 {
   double a000 = mdata.coeffs[0];
   double a001 = mdata.coeffs[1];
@@ -73,11 +74,11 @@ bool CubicImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) 
 
   double dist = fabs(f)/(fabs(fx) + fabs(fy));
 
-  return dist <= si.normalMiss( width );
+  return dist <= w.screenInfo().normalMiss( width );
   return false;
 }
 
-bool CubicImp::inRect( const Rect&, int, const ScreenInfo& ) const
+bool CubicImp::inRect( const Rect&, int, const KigWidget& ) const
 {
   // TODO ?
   return false;

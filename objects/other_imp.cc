@@ -25,6 +25,7 @@
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
+#include "../kig/kig_view.h"
 
 #include <cmath>
 using namespace std;
@@ -51,11 +52,11 @@ AngleImp::AngleImp( const Coordinate& pt, double start_angle_in_radials,
 {
 }
 
-bool AngleImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
+bool AngleImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  double radius = 50*si.pixelWidth();
+  double radius = 50*w.screenInfo().pixelWidth();
 
-  if ( fabs( (p-mpoint).length() - radius ) > si.normalMiss( width ) )
+  if ( fabs( (p-mpoint).length() - radius ) > w.screenInfo().normalMiss( width ) )
     return false;
 
   // and next we check if the angle is appropriate...
@@ -65,10 +66,10 @@ bool AngleImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) 
   return angle <= mstartangle + mangle;
 }
 
-bool AngleImp::inRect( const Rect& r, int, const ScreenInfo& ) const
+bool AngleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
   // TODO ?
-  return r.contains( mpoint );
+  return r.contains( mpoint, w.screenInfo().normalMiss( width ) );
 }
 
 const uint AngleImp::numberOfProperties() const
@@ -143,12 +144,12 @@ void VectorImp::draw( KigPainter& p ) const
   p.drawVector( ma, mb );
 }
 
-bool VectorImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) const
+bool VectorImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
 {
-  return isOnSegment( o, ma, mb, si.normalMiss( width ) );
+  return isOnSegment( o, ma, mb, w.screenInfo().normalMiss( width ) );
 }
 
-bool VectorImp::inRect( const Rect&, int, const ScreenInfo& ) const
+bool VectorImp::inRect( const Rect&, int, const KigWidget& ) const
 {
   // TODO ?
   return false;

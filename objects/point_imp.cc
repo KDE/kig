@@ -24,6 +24,7 @@
 #include "../misc/i18n.h"
 #include "../misc/coordinate_system.h"
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 
 PointImp::PointImp( const Coordinate& c )
   : mc( c )
@@ -35,15 +36,15 @@ void PointImp::draw( KigPainter& p ) const
   p.drawFatPoint( mc );
 }
 
-bool PointImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
+bool PointImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   int twidth = width == -1 ? 5 : width;
-  return (p - mc).length() - twidth*si.pixelWidth() < 0;
+  return (p - mc).length() - twidth*w.screenInfo().pixelWidth() < 0;
 }
 
-bool PointImp::inRect( const Rect& r, int width, const ScreenInfo& si ) const
+bool PointImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
-  double am = si.normalMiss( width );
+  double am = w.screenInfo().normalMiss( width );
   return r.contains( mc, am );
 }
 

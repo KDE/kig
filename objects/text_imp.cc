@@ -46,12 +46,12 @@ void TextImp::draw( KigPainter& p ) const
   p.drawTextFrame( mboundrect, mtext, mframe );
 }
 
-bool TextImp::contains( const Coordinate& p, int, const ScreenInfo& ) const
+bool TextImp::contains( const Coordinate& p, int, const KigWidget& ) const
 {
   return mboundrect.contains( p );
 }
 
-bool TextImp::inRect( const Rect& r, int, const ScreenInfo& ) const
+bool TextImp::inRect( const Rect& r, int, const KigWidget& ) const
 {
   return mboundrect.intersects( r );
 }

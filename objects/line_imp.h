@@ -38,7 +38,7 @@ public:
   AbstractLineImp( const Coordinate& a, const Coordinate& b );
   ~AbstractLineImp();
 
-  bool inRect( const Rect& r, int width, const ScreenInfo& si ) const;
+  bool inRect( const Rect& r, int width, const KigWidget& ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
@@ -67,7 +67,7 @@ public:
   bool inherits( int type ) const;
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
 
   ObjectImp* transform( const Transformation& ) const;
 
@@ -101,7 +101,7 @@ public:
   bool inherits( int type ) const;
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
 
   ObjectImp* transform( const Transformation& ) const;
 
@@ -124,7 +124,7 @@ public:
   LineImp( const Coordinate& a, const Coordinate& b );
   LineImp( const LineData& d );
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
 
   ObjectImp* transform( const Transformation& ) const;
 

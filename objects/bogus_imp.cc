@@ -26,12 +26,12 @@ void BogusImp::draw( KigPainter& ) const
 {
 }
 
-bool BogusImp::contains( const Coordinate&, int, const ScreenInfo& ) const
+bool BogusImp::contains( const Coordinate&, int, const KigWidget& ) const
 {
   return false;
 }
 
-bool BogusImp::inRect( const Rect&, int, const ScreenInfo& ) const
+bool BogusImp::inRect( const Rect&, int, const KigWidget& ) const
 {
   return false;
 }

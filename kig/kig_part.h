@@ -132,9 +132,9 @@ public:
   void doneMode( KigMode* );
 
   // what objects are under point p
-  Objects whatAmIOn( const Coordinate& p, const ScreenInfo& si ) const;
+  Objects whatAmIOn( const Coordinate& p, const KigWidget& si ) const;
 
-  Objects whatIsInHere( const Rect& p, const ScreenInfo& );
+  Objects whatIsInHere( const Rect& p, const KigWidget& );
 
   // a rect containing most of the objects, which would be a fine
   // suggestion to mapt to the widget...

@@ -26,6 +26,7 @@
 #include "../misc/coordinate_system.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 
 ObjectImp* ConicImp::transform( const Transformation& t ) const
 {
@@ -45,7 +46,7 @@ bool ConicImp::valid() const
   return true;
 }
 
-bool ConicImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) const
+bool ConicImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
 {
   const ConicPolarData d = polarData();
 
@@ -62,12 +63,12 @@ bool ConicImp::contains( const Coordinate& o, int width, const ScreenInfo& si ) 
   double ecosthetamtheta0 = costheta*ecostheta0 + sintheta*esintheta0;
   double rho = pdimen / (1.0 - ecosthetamtheta0);
 
-  if ( fabs(len - rho) <= si.normalMiss( width ) ) return true;
+  if ( fabs(len - rho) <= w.screenInfo().normalMiss( width ) ) return true;
   rho = - pdimen / ( 1.0 + ecosthetamtheta0 );
-  return fabs( len - rho ) <= si.normalMiss( width );
+  return fabs( len - rho ) <= w.screenInfo().normalMiss( width );
 }
 
-bool ConicImp::inRect( const Rect&, int, const ScreenInfo& ) const
+bool ConicImp::inRect( const Rect&, int, const KigWidget& ) const
 {
   // TODO
   return false;

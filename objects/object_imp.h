@@ -38,8 +38,8 @@ public:
   virtual ObjectImp* transform( const Transformation& ) const = 0;
 
   virtual void draw( KigPainter& p ) const = 0;
-  virtual bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const = 0;
-  virtual bool inRect( const Rect& r, int width, const ScreenInfo& si ) const = 0;
+  virtual bool contains( const Coordinate& p, int width, const KigWidget& si ) const = 0;
+  virtual bool inRect( const Rect& r, int width, const KigWidget& si ) const = 0;
   virtual bool valid() const;
 
   virtual const uint numberOfProperties() const = 0;

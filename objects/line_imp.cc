@@ -25,6 +25,7 @@
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
+#include "../kig/kig_view.h"
 
 #include <cmath>
 using namespace std;
@@ -38,9 +39,9 @@ AbstractLineImp::~AbstractLineImp()
 {
 }
 
-bool AbstractLineImp::inRect( const Rect& r, int width, const ScreenInfo& si ) const
+bool AbstractLineImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
-  double miss = si.normalMiss( width );
+  double miss = w.screenInfo().normalMiss( width );
   if ( fabs( mdata.a.x - mdata.b.x ) <= 1e-7 )
   {
     // too small to be useful..
@@ -66,10 +67,10 @@ bool AbstractLineImp::inRect( const Rect& r, int width, const ScreenInfo& si ) c
   // intersection is not between the begin and end point.. ) and if
   // the rect contains the intersection..  If it does, we have a winner..
   return
-    ( contains( leftint, width, si ) && r.contains( leftint, miss ) ) ||
-    ( contains( rightint, width, si ) && r.contains( rightint, miss ) ) ||
-    ( contains( bottomint, width, si ) && r.contains( bottomint, miss ) ) ||
-    ( contains( topint, width, si ) && r.contains( topint, miss ) );
+    ( contains( leftint, width, w ) && r.contains( leftint, miss ) ) ||
+    ( contains( rightint, width, w ) && r.contains( rightint, miss ) ) ||
+    ( contains( bottomint, width, w ) && r.contains( bottomint, miss ) ) ||
+    ( contains( topint, width, w ) && r.contains( topint, miss ) );
 }
 
 const uint AbstractLineImp::numberOfProperties() const
@@ -177,9 +178,9 @@ void SegmentImp::draw( KigPainter& p ) const
   p.drawSegment( mdata );
 }
 
-bool SegmentImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
+bool SegmentImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  return isOnSegment( p, mdata.a, mdata.b, si.normalMiss( width ) );
+  return isOnSegment( p, mdata.a, mdata.b, w.screenInfo().normalMiss( width ) );
 }
 
 void RayImp::draw( KigPainter& p ) const
@@ -187,9 +188,9 @@ void RayImp::draw( KigPainter& p ) const
   p.drawRay( mdata );
 }
 
-bool RayImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
+bool RayImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  return isOnRay( p, mdata.a, mdata.b, si.normalMiss( width ) );
+  return isOnRay( p, mdata.a, mdata.b, w.screenInfo().normalMiss( width ) );
 }
 
 void LineImp::draw( KigPainter& p ) const
@@ -197,9 +198,9 @@ void LineImp::draw( KigPainter& p ) const
   p.drawLine( mdata );
 }
 
-bool LineImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
+bool LineImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  return isOnLine( p, mdata.a, mdata.b, si.normalMiss( width ) );
+  return isOnLine( p, mdata.a, mdata.b, w.screenInfo().normalMiss( width ) );
 }
 
 SegmentImp::SegmentImp( const Coordinate& a, const Coordinate& b )

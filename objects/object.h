@@ -57,8 +57,8 @@ public:
   virtual Objects parents() const = 0;
 
   virtual void draw( KigPainter& p, bool showSelection ) const = 0;
-  virtual bool contains( const Coordinate& p, const ScreenInfo& si ) const = 0;
-  virtual bool inRect( const Rect& r, const ScreenInfo& si ) const = 0;
+  virtual bool contains( const Coordinate& p, const KigWidget& si ) const = 0;
+  virtual bool inRect( const Rect& r, const KigWidget& si ) const = 0;
 
   virtual bool canMove() const;
   virtual void move( const Coordinate& from, const Coordinate& dist,
@@ -151,8 +151,8 @@ public:
   const ObjectImp* imp() const;
 
   void draw( KigPainter& p, bool showSelection ) const;
-  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
-  bool inRect( const Rect& r, const ScreenInfo& si ) const;
+  bool contains( const Coordinate& p, const KigWidget& ) const;
+  bool inRect( const Rect& r, const KigWidget& ) const;
 
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist, const KigDocument& );
@@ -198,8 +198,8 @@ public:
   Objects parents() const;
 
   void draw( KigPainter& p, bool showSelection ) const;
-  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
-  bool inRect( const Rect& r, const ScreenInfo& ) const;
+  bool contains( const Coordinate& p, const KigWidget& ) const;
+  bool inRect( const Rect& r, const KigWidget& ) const;
 
   void calc( const KigDocument& );
 
@@ -226,8 +226,8 @@ public:
   int propId() const;
 
   void draw( KigPainter& p, bool showSelection ) const;
-  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
-  bool inRect( const Rect& r, const ScreenInfo& ) const;
+  bool contains( const Coordinate& p, const KigWidget& ) const;
+  bool inRect( const Rect& r, const KigWidget& ) const;
 
   void calc( const KigDocument& );
 

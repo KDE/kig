@@ -51,14 +51,14 @@ void RealObject::draw( KigPainter& p, bool ss ) const
   mimp->draw( p );
 }
 
-bool RealObject::contains( const Coordinate& p, const ScreenInfo& si ) const
+bool RealObject::contains( const Coordinate& p, const KigWidget& w ) const
 {
-  return mimp->contains( p, mwidth, si );
+  return mimp->contains( p, mwidth, w );
 }
 
-bool RealObject::inRect( const Rect& r, const ScreenInfo& si ) const
+bool RealObject::inRect( const Rect& r, const KigWidget& w ) const
 {
-  return mimp->inRect( r, mwidth, si );
+  return mimp->inRect( r, mwidth, w );
 }
 
 void RealObject::move( const Coordinate& from, const Coordinate& dist,
@@ -247,12 +247,12 @@ void DataObject::draw( KigPainter&, bool ) const
 {
 }
 
-bool DataObject::contains( const Coordinate&, const ScreenInfo& ) const
+bool DataObject::contains( const Coordinate&, const KigWidget& ) const
 {
   return false;
 }
 
-bool DataObject::inRect( const Rect&, const ScreenInfo& ) const
+bool DataObject::inRect( const Rect&, const KigWidget& ) const
 {
   return false;
 }
@@ -387,12 +387,12 @@ void PropertyObject::draw( KigPainter&, bool ) const
 {
 }
 
-bool PropertyObject::contains( const Coordinate&, const ScreenInfo& ) const
+bool PropertyObject::contains( const Coordinate&, const KigWidget& ) const
 {
   return false;
 }
 
-bool PropertyObject::inRect( const Rect&, const ScreenInfo& ) const
+bool PropertyObject::inRect( const Rect&, const KigWidget& ) const
 {
   return false;
 }

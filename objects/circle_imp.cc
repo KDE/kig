@@ -27,6 +27,7 @@
 #include "../misc/coordinate_system.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 
 #include <math.h>
 
@@ -61,15 +62,15 @@ void CircleImp::draw( KigPainter& p ) const
   p.drawCircle( mcenter, mradius );
 }
 
-bool CircleImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
+bool CircleImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  return fabs((mcenter - p).length() - mradius) <= si.normalMiss( width );
+  return fabs((mcenter - p).length() - mradius) <= w.screenInfo().normalMiss( width );
 }
 
-bool CircleImp::inRect( const Rect& r, int width, const ScreenInfo& si ) const
+bool CircleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
   // we allow a miss of some pixels ..
-  double miss = si.normalMiss( width );
+  double miss = w.screenInfo().normalMiss( width );
   double bigradius = mradius + miss;
   bigradius *= bigradius;
   double smallradius = mradius - miss;

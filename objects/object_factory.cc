@@ -68,7 +68,7 @@ void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
 {
   assert( tpoint->inherits( Object::ID_RealObject ) );
   RealObject* point = static_cast<RealObject*>( tpoint );
-  Objects o = doc.whatAmIOn( c, w.screenInfo() );
+  Objects o = doc.whatAmIOn( c, w );
   Object* v = 0;
   // we don't want one of our children as a parent...
   Objects children = point->getAllChildren();
