@@ -254,6 +254,7 @@ void IntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
     }
     else assert( false );
   };
+  p.setPen( QPen( Qt::red, 1 ) );
   p.drawPoint( calcIntersectionPoint( pa, pb, pc, pd ), false );
 }
 

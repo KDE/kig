@@ -48,27 +48,7 @@ Segment::~Segment()
 
 bool Segment::contains(const Coordinate& o, const double fault ) const
 {
-  double x1 = p1->getCoord().x;
-  double y1 = p1->getCoord().y;
-  double x2 = p2->getCoord().x;
-  double y2 = p2->getCoord().y;
-  if ( !p1 || !p2 ) return false;
-  // check your math theory ( homogeneous coördinates ) for this
-  double tmp = fabs( o.x * (y1-y2) + o.y*(x2-x1) + (x1*y2-y1*x2) );
-  return tmp < ( fault * (p2->getCoord()-p1->getCoord()).length()) // if o is on the line ( if the determinant of the matrix
-    //       |---|---|---|
-    //       | x | y | z |
-    //       |---|---|---|
-    //       | x1| y1| z1|
-    //       |---|---|---|
-    //       | x2| y2| z2|
-    //       |---|---|---|
-    // equals 0, then p(x,y,z) is on the line containing points p1(x1,y1,z1) and p2
-    // here, we're working with normal coords, no homogeneous ones, so all z's equal 1
-    && (o.x - kigMax(p1->getX(),p2->getX()) < fault ) // not too far to the right
-    && ( kigMin (p1->getX(), p2->getX()) - o.x < fault ) // not too far to the left
-    && ( kigMin (p1->getY(), p2->getY()) - o.y < fault ) // not too high
-    && ( o.y - kigMax (p1->getY(), p2->getY()) < fault ); // not too low
+  return isOnSegment( o, p1->getCoord(), p2->getCoord(), fault );
 }
 
 void Segment::draw(KigPainter& p, bool ss) const
@@ -79,7 +59,6 @@ void Segment::draw(KigPainter& p, bool ss) const
 
 bool Segment::inRect(const Rect& p) const
 {
-  if ( !p1 || !p2 ) return false;
   // TODO: implement for real...
   if ( p1->inRect( p ) || p2->inRect( p ) ) return true;
   return false;

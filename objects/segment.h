@@ -76,8 +76,6 @@ public:
 
   const Coordinate getP1() const;
   const Coordinate getP2() const;
-//   Point* getPoint1();
-//   Point* getPoint2();
 protected:
   Point* p1, *p2;
   Coordinate pwwsm; // point where we started moving

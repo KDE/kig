@@ -175,3 +175,41 @@ void calcBorderPoints( double& xa, double& ya, double& xb, double& yb, const Rec
     xa = r.left(); ya=r.top(); xb=r.right(); yb=r.bottom();
   };
 };
+
+bool isOnLine( const Coordinate o, const Coordinate a,
+               const Coordinate b, const double fault )
+{
+  double x1 = a.x;
+  double y1 = a.y;
+  double x2 = b.x;
+  double y2 = b.y;
+
+  // check your math theory ( homogeneous coördinates ) for this
+  double tmp = fabs( o.x * (y1-y2) + o.y*(x2-x1) + (x1*y2-y1*x2) );
+  return tmp < ( fault * (b-a).length());
+  // if o is on the line ( if the determinant of the matrix
+  //       |---|---|---|
+  //       | x | y | z |
+  //       |---|---|---|
+  //       | x1| y1| z1|
+  //       |---|---|---|
+  //       | x2| y2| z2|
+  //       |---|---|---|
+  // equals 0, then p(x,y,z) is on the line containing points
+  // p1(x1,y1,z1) and p2 here, we're working with normal coords, no
+  // homogeneous ones, so all z's equal 1
+};
+
+bool isOnSegment( const Coordinate o, const Coordinate a,
+                  const Coordinate b, const double fault )
+{
+  return isOnLine( o, a, b, fault )
+    // not too far to the right
+    && (o.x - kigMax(a.x,b.x) < fault )
+    // not too far to the left
+    && ( kigMin (a.x, b.x) - o.x < fault )
+    // not too high
+    && ( kigMin (a.y, b.y) - o.y < fault )
+    // not too low
+    && ( o.y - kigMax (a.y, b.y) < fault );
+};

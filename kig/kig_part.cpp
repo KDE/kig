@@ -37,6 +37,7 @@
 #include "../objects/label.h"
 #include "../objects/intersection.h"
 #include "../objects/locus.h"
+#include "../objects/vector.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/calcpaths.h"
@@ -202,6 +203,7 @@ void KigDocument::setupTypes()
     types.addType( new TStdType<MidPoint> );
     types.addType( new TStdType<IntersectionPoint> );
     types.addType( new TStdType<Locus> );
+    types.addType( new TStdType<Vector> );
     types.addType( new TType<TextLabel> );
     types.addType( new TType<NormalPoint> );
 

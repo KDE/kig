@@ -62,6 +62,21 @@ void calcBorderPoints( Coordinate& p1, Coordinate& p2, const Rect& r );
  */
 void calcBorderPoints( double& xa, double& xb, double& ya, double& yb, const Rect& r);
 
+/**
+ * is o on the line defined by point a and point b ?
+ * fault is the allowed difference...
+ */
+bool isOnLine( const Coordinate o, const Coordinate a,
+               const Coordinate b, const double fault );
+
+/**
+ * is o on the segment defined by point a and point b ?
+ * this calls isOnLine(), but also checks if o is "between" a and b...
+ * fault is the allowed difference...
+ */
+bool isOnSegment( const Coordinate o, const Coordinate a,
+               const Coordinate b, const double fault );
+
 template <typename T>
 T kigMin( const T& a, const T& b)
 {

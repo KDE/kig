@@ -18,36 +18,66 @@
  USA
 **/
 
+#ifndef KIG_OBJECTS_VECTOR_H
+#define KIG_OBJECTS_VECTOR_H
 
-#ifndef VECTOR_H
-#define VECTOR_H
+#include "object.h"
+
+#include "../misc/coordinate.h"
 
 class Vector
-: public Object
+  : public Object
 {
- public:
-  Vector() : a(0), b(0){};
-  ~Vector(){};
-  const char* type() { return I18N_NOOP("vector");};
-  void draw (KigPainter& p, bool showSelect = true);
-  bool inRect (const Rect& r) const;
-  Rect getSpan() const;
-  const char* wantArument (const char* arg);
-  bool selectArgument (Object* which)
-    {
-      if (a) { a = which; if (b) constructed = true;};
-      else if (b) { b = which; if (a) constructed = true;}
-      else cerr << "vector::selectArgument called on a vector which is ready";
-    };
-  void unselectArgument(Object* which)
-    {
-      if (a == which) { a = 0; constructed = false;}
-      else if (b == which) { b = 0; constructed = false;}
-      else cerr << "vector::unselectArgument called for an argument which hasn't been selected";
-    };
+public:
+  Vector( const Objects& os );
+  Vector( const Vector& s );
+  Vector* copy();
+  ~Vector();
 
- protected:
-  Point a, b;
+  // type identification
+  Vector* toVector();
+  const Vector* toVector() const;
+  // some type information
+  const QCString vBaseTypeName() const;
+  static QCString sBaseTypeName();
+  const QCString vFullTypeName() const;
+  static QCString sFullTypeName();
+  const QString vDescriptiveName() const;
+  static const QString sDescriptiveName();
+  const QString vDescription() const;
+  static const QString sDescription();
+  const QCString vIconFileName() const;
+  static const QCString sIconFileName();
+  const int vShortCut() const;
+  static const int sShortCut();
+  static const char* sActionName();
+
+  bool contains (const Coordinate& o, const double fault ) const;
+  void draw ( KigPainter& p, bool showSelection ) const;
+
+  static void drawVector( KigPainter& p, const Coordinate& a,
+                          const Coordinate& b );
+
+  bool inRect ( const Rect& ) const;
+
+  // arguments
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
+  static void sDrawPrelim( KigPainter&, const Objects& o );
+
+  Objects getParents() const;
+
+  // moving
+  void startMove(const Coordinate&);
+  void moveTo(const Coordinate&);
+  void stopMove();
+
+  void calc( const ScreenInfo& );
+
+  const Coordinate getP1() const;
+  const Coordinate getP2() const;
+protected:
+  Point* p1, *p2;
 };
 
 #endif

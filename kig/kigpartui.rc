@@ -63,5 +63,6 @@
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
   <Action name="objects_new_locus" />
+  <Action name="objects_new_vector" />
   <Action name="new_macro" />
 </ToolBar>

@@ -23,31 +23,17 @@
 #include "point.h"
 #include "circle.h"
 #include "../misc/kigpainter.h"
+#include "../misc/i18n.h"
+#include "../misc/common.h"
 
 #include <kdebug.h>
 #include <qpen.h>
 
 #include <cmath>
 
-#include "../misc/i18n.h"
-
 bool Line::contains(const Coordinate& o, const double fault ) const
 {
-  // check your math theory ( homogeneous coördinates ) for this
-  double tmp = fabs( o.x * (p1.y-p2.y) + o.y*(p2.x-p1.x) + p1.x*p2.y - p1.y*p2.x );
-  return tmp < ( fault * (p2-p1).length());
-  // if o is on the line ( if the determinant of the matrix
-  //       |---|---|---|
-  //       | x | y | z |
-  //       |---|---|---|
-  //       | x1| y1| z1|
-  //       |---|---|---|
-  //       | x2| y2| z2|
-  //       |---|---|---|
-  // equals 0, then p(x,y,z) is on the line containing points
-  // p1(x1,y1,z1) and p2
-  // here, we're working with normal coords, no homogeneous ones, so
-  // all z's equal 1
+  return isOnLine( o, p1, p2, fault );
 }
 
 void Line::draw(KigPainter& p, bool ss) const
