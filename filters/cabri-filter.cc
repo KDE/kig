@@ -230,14 +230,20 @@ bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
 
     tmp = secondlinere.cap( 4 );
     int lineseglength = tmp.toInt( &ok );
+    // unused
+    ( void ) lineseglength;
     if ( ! ok ) KIG_FILTER_PARSE_ERROR;
 
     tmp = secondlinere.cap( 5 );
     int linesegsplit = tmp.toInt( &ok );
+    // unused
+    ( void ) linesegsplit;
     if ( ! ok ) KIG_FILTER_PARSE_ERROR;
 
     tmp = secondlinere.cap( 6 );
     int specialAppearanceSwitch = tmp.toInt( &ok );
+    // unused
+    ( void )specialAppearanceSwitch;
     if ( ! ok ) KIG_FILTER_PARSE_ERROR;
 
     tmp = secondlinere.cap( 7 );
@@ -245,6 +251,8 @@ bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
 
     tmp = secondlinere.cap( 8 );
     bool fixed = tmp == "St";
+    // unused
+    ( void )fixed;
 
     QRegExp thirdlinere( "^(Const: ([^,]*),? ?)?(Val: (.*))?$" );
     if ( ! thirdlinere.exactMatch( line3 ) )
