@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef CURVE_IMP_H
-#define CURVE_IMP_H
+#ifndef KIG_OBJECTS_CURVE_IMP_H
+#define KIG_OBJECTS_CURVE_IMP_H
 
 #include "object_imp.h"
 
