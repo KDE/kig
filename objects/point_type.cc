@@ -25,6 +25,7 @@
 
 #include "../modes/moving.h"
 #include "../misc/coordinate_system.h"
+#include "../misc/common.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
@@ -209,6 +210,7 @@ QStringList FixedPointType::specialActions() const
 QStringList ConstrainedPointType::specialActions() const
 {
   QStringList ret;
+  ret << i18n( "Set &Parameter" );
   ret << i18n( "Redefine" );
   return ret;
 }
@@ -244,7 +246,8 @@ void FixedPointType::executeAction(
   case 1:
     redefinePoint( o, d, w, m );
     break;
-  default: assert( false );
+  default:
+    assert( false );
   };
 }
 
@@ -252,6 +255,34 @@ void ConstrainedPointType::executeAction(
   int i, RealObject* o, KigDocument& d, KigWidget& w,
   NormalMode& m ) const
 {
-  assert( i == 0 );
-  redefinePoint( o, d, w, m );
+  switch( i )
+  {
+  case 1:
+    redefinePoint( o, d, w, m );
+    break;
+  case 0:
+  {
+    Objects parents = margsparser.parse( o->parents() );
+    if ( parents[0]->inherits( Object::ID_DataObject ) &&
+         parents[0]->hasimp( ObjectImp::ID_DoubleImp ) )
+    {
+      DataObject* po = static_cast<DataObject*>( parents[0] );
+      double oldp = static_cast<const DoubleImp*>( po->imp() )->data();
+
+      bool ok = true;
+      double newp = getDoubleFromUser(
+        i18n( "Set Point Parameter" ), i18n( "Choose the new parameter: " ),
+        oldp, &w, &ok, 0, 1, 4 );
+      if ( ! ok ) return;
+
+      po->setImp( new DoubleImp( newp ) );
+      o->calc( d );
+
+      w.redrawScreen();
+    };
+    break;
+  };
+  default:
+    assert( false );
+  };
 }

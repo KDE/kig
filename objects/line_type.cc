@@ -28,8 +28,6 @@
 #include "../misc/i18n.h"
 
 #include <qstringlist.h>
-#include <knumvalidator.h>
-#include <klineeditdlg.h>
 
 static const ArgParser::spec argsspecSegmentAB[] =
 {
@@ -217,14 +215,9 @@ void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidg
   Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
 
   bool ok = true;
-  KDoubleValidator vtor( -2147483647, 2147483647, 3, 0, 0 );
-  QString input =
-    KLineEditDlg::getText( i18n( "Set Segment Length" ),
-                           i18n( "Choose the new length: " ),
-                           QString::number( (b-a).length() ),
-                           &ok, &w, &vtor );
-  if ( ! ok ) return;
-  double length = KGlobal::locale()->readNumber( input, &ok );
+  double length = getDoubleFromUser(
+    i18n( "Set Segment Length" ), i18n( "Choose the new length: " ),
+    (b-a).length(), &w, &ok, -2147483647, 2147483647, 3 );
   if ( ! ok ) return;
 
   Coordinate nb = a + ( b - a ).normalize( length );

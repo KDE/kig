@@ -24,6 +24,9 @@
 #include <cmath>
 
 #include <kdebug.h>
+#include <knumvalidator.h>
+#include <klineeditdlg.h>
+#include <klocale.h>
 
 Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t )
 {
@@ -373,3 +376,17 @@ Coordinate calcCircleRadicalStartPoint( const Coordinate& ca, const Coordinate& 
   return m + direc;
 };
 
+double getDoubleFromUser( const QString& caption, const QString& label, double value,
+                          QWidget* parent, bool* ok, double min, double max, int decimals )
+{
+  KDoubleValidator vtor( min, max, decimals, 0, 0 );
+  QString input =
+    KLineEditDlg::getText( caption, label, QString::number( value ),
+                           ok, parent, &vtor );
+  bool myok = true;
+  double ret = KGlobal::locale()->readNumber( input, &myok );
+  if ( ! myok )
+    ret = input.toDouble( & myok );
+  if ( ok ) *ok = myok;
+  return ret;
+};

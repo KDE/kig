@@ -36,6 +36,9 @@
  * various places...
  */
 
+double getDoubleFromUser( const QString& caption, const QString& label, double value,
+                          QWidget* parent, bool* ok, double min, double max, int decimals );
+
 // this class represents the data needed for defining a line.
 class LineData {
 public:
