@@ -1,4 +1,4 @@
-// normal.h
+// dragrectmode.h
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,8 +16,9 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef NORMAL_H
-#define NORMAL_H
+
+#ifndef KIG_MODES_DRAGRECTMODE_H
+#define KIG_MODES_DRAGRECTMODE_H
 
 #include "mode.h"
 
@@ -25,58 +26,32 @@
 
 #include <qpoint.h>
 
-class Object;
+class QEventLoop;
 
-class NormalMode
+class DragRectMode
   : public KigMode
 {
-public:
-  NormalMode( KigDocument* );
-  ~NormalMode();
-  void leftClicked( QMouseEvent*, KigWidget* );
+  QPoint mstart;
+  QEventLoop* el;
+  Objects mret;
+private:
+  void released( const QPoint& p, KigWidget& w );
+  void moved( const QPoint& p, KigWidget& w );
+
   void leftMouseMoved( QMouseEvent*, KigWidget* );
   void leftReleased( QMouseEvent*, KigWidget* );
-  void midClicked( QMouseEvent*, KigWidget* v );
   void midMouseMoved( QMouseEvent*, KigWidget* );
   void midReleased( QMouseEvent*, KigWidget* );
-  void rightClicked( QMouseEvent*, KigWidget* );
   void rightMouseMoved( QMouseEvent*, KigWidget* );
   void rightReleased( QMouseEvent*, KigWidget* );
   void mouseMoved( QMouseEvent*, KigWidget* );
 
-  /**
-   * Objcects were added by a command in mDoc->history.
-   */
-  void objectsAdded();
-
-   /**
-   * Objcects were removed by a command in mDoc->history.
-   */
-  void objectsRemoved();
-
   void enableActions();
 
-  void deleteObjects();
-  void showHidden();
-  void newMacro();
-  void editTypes();
-
-  void selectObject( Object* o );
-  void selectObjects( Objects& os );
-  void unselectObject( Object* o );
-  void clearSelection();
-
-//   KigObjectsPopup* popup( const Objects& os );
-//   KigDocumentPopup* popup( KigDocument* );
-protected:
-  // selected objects...
-  Objects sos;
-
-  // objects clicked on...
-  Objects oco;
-
-  // point last clicked..
-  QPoint plc;
+public:
+  DragRectMode( KigDocument* );
+  ~DragRectMode();
+  Objects run( const QPoint& start, KigMode* prev );
 };
 
 #endif
