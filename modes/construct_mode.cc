@@ -296,19 +296,18 @@ void TestConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& os, cons
   std::transform( os.begin(), os.end(), std::back_inserter( args ),
                   std::mem_fun( &ObjectCalcer::imp ) );
 
-  QString usetext = i18n( mtype->argsParser().usetext( args.front(), args ) );
-  ObjectImp* data = mtype->calc( args, mdoc );
-  if ( ! data->valid() ) return;
-  assert( data->inherits( TestResultImp::stype() ) );
-  QString outputtext = static_cast<TestResultImp*>( data )->data();
-
   // usetext
+  QString usetext = i18n( mtype->argsParser().usetext( args.front(), args ) );
   QPoint textloc = p;
   textloc.setX( textloc.x() + 15 );
   mdoc.emitStatusBarText( usetext );
   pter.drawTextStd( textloc, usetext );
 
   // test result
+  ObjectImp* data = mtype->calc( args, mdoc );
+  if ( ! data->valid() ) return;
+  assert( data->inherits( TestResultImp::stype() ) );
+  QString outputtext = static_cast<TestResultImp*>( data )->data();
   TextImp ti( outputtext, w.fromScreen( p + QPoint( - 40, 30 ) ), test_has_frame_dflt );
   ti.draw( pter );
 

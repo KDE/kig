@@ -1,3 +1,8 @@
+2004-02-16  Dominique Devriese  <devriese@kde.org>
+
+	* make the usetext in TestConstructMode also appear for all other
+	arguments than the last one
+
 2004-02-15  Dominique Devriese  <devriese@kde.org>
 
 	* Add code by Maurizio Paolini, and some adaptations of his code
