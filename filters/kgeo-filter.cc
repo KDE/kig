@@ -66,6 +66,8 @@ void KigFilterKGeo::loadMetrics(KSimpleConfig* c )
   c->setGroup("Main");
   xMax = c->readNumEntry("XMax", 16);
   yMax = c->readNumEntry("YMax", 11);
+  grid = c->readBoolEntry( "Grid", true );
+  axes = c->readBoolEntry( "Axes", true );
   // the rest is not relevant to us (yet ?)...
 }
 
@@ -163,8 +165,6 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     {
     case ID_point:
     {
-      if ( ! parents.empty() )
-        KIG_FILTER_PARSE_ERROR;
       // fetch the coordinates...
       QString strX = c->readEntry("QPointX");
       QString strY = c->readEntry("QPointY");
@@ -172,7 +172,14 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
       if (!ok) KIG_FILTER_PARSE_ERROR;
       double y = strY.toDouble(&ok);
       if (!ok) KIG_FILTER_PARSE_ERROR;
-      o = factory->fixedPointCalcer( Coordinate( x, y ) );
+      Coordinate m( x, y );
+      uint nparents = parents.size();
+      if ( nparents == 0 )
+        o = factory->fixedPointCalcer( m );
+      else if ( nparents == 1 )
+        o = factory->constrainedPointCalcer( parents[0], m, *ret );
+      else
+        KIG_FILTER_PARSE_ERROR;
       break;
     }
     case ID_segment:
@@ -336,22 +343,19 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
       KIG_FILTER_PARSE_ERROR;
     };
 
-    ObjectDrawer* d = 0;
-
     // set the color...
     QColor co = c->readColorEntry( "Color" );
-    if( co.isValid() )
-      d = new ObjectDrawer( co );
-    else
-      d = new ObjectDrawer;
-
-    assert( d );
+    if( !co.isValid() )
+      co = Qt::blue;
+    ObjectDrawer* d = new ObjectDrawer( co );
 
     os[i] = new ObjectHolder( o, d );
     os[i]->calc( *ret );
   }; // for loop (creating KGeoHierarchyElements..
 
   ret->addObjects( os );
+  ret->setGrid( grid );
+  ret->setAxes( axes );
   return ret;
 }
 

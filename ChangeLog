@@ -1,8 +1,11 @@
 2004-07-20  Pino Toscano <toscano.pino@tiscali.it>
 
-	* Fixed a crash in the Types dialog.
-
+	* Add support in KGeo filter for constrained points and info
+	about the presence of grid and axes.
+ 
 	* Little fix in Cabri filter.
+
+	* Fixed a crash in the Types dialog.
 
 2004-07-18  Dominique Devriese  <devriese@kde.org>
 
@@ -47,18 +50,11 @@
 	* Now it's possible to construct the tangent to a conic or an
 	arc.
 
-	* Add support in KGeo filter for constrained points and info
-	about the presence of grid and axes.
-
 	* Add a select statement to show a message in the statusbar for
 	PropertyObjectConstructor, and use this to show an info text
 	while constructing an angle bisector.
 
 	* A new type to calc the difference between two vectors.
-
-	* Fix a bug that occurs when selecting, during the label wizard,
-	the property "Name" of an object if the object has no namecalcer
-	set.
 
 	* ObjectFactory::sensiblePointCalcer can construct line-line
 	intersections.
