@@ -294,7 +294,9 @@ std::pair<Coordinate, Coordinate> calcConicRadical( const ConicCartesianEquation
   e += lambda*e2;
   f += lambda*f2;
 
-  df = 4*a*b*f - a*e*e - b*d*d - c*c*f + c*d*e;  //this is the residual
+  // this is the determinant of the matrix of the new conic.  It
+  // should be zero, for the new conic to be degenerate.
+  df = 4*a*b*f - a*e*e - b*d*d - c*c*f + c*d*e;
 
   double discrim = c*c - 4*a*b;  // if negative ?!?
 
