@@ -30,7 +30,6 @@ Objects MirrorPoint::getParents() const
 {
   Objects tmp;
   tmp.push_back( mp );
-  if ( ms ) tmp.push_back( ms );
   if ( ml ) tmp.push_back( ml );
   if ( mc ) tmp.push_back( mc );
   return tmp;
@@ -44,20 +43,10 @@ void MirrorPoint::calc( const ScreenInfo& )
   {
     Coordinate b;
     Coordinate c;
-    if ( ms )
-    {
-      assert( ! ml );
-      mvalid &= ms->valid();
-      b = ms->getP1();
-      c = ms->getP2();
-    }
-    else
-    {
-      assert( ml );
-      mvalid &= ml->valid();
-      b = ml->getP1();
-      c = ml->getP2();
-    };
+    assert( ml );
+    mvalid &= ml->valid();
+    b = ml->p1();
+    c = ml->p2();
     if ( mvalid ) mC = calcMirrorPoint( b, c, a );
   }
   else
@@ -69,10 +58,9 @@ void MirrorPoint::calc( const ScreenInfo& )
 }
 
 MirrorPoint::MirrorPoint( const MirrorPoint& p )
-  : Point( p ), mp( p.mp ), ms( p.ms ), ml( p.ml ), mc( p.mc )
+  : Point( p ), mp( p.mp ), ml( p.ml ), mc( p.mc )
 {
   mp->addChild( this );
-  if ( ms ) ms->addChild( this );
   if ( ml ) ml->addChild( this );
   if ( mc ) mc->addChild( this );
 };
@@ -154,20 +142,18 @@ const char* MirrorPoint::sActionName()
 }
 
 MirrorPoint::MirrorPoint( const Objects& os )
-  : Point(), mp( 0 ), ms( 0 ), ml( 0 ), mc( 0 )
+  : Point(), mp( 0 ), ml( 0 ), mc( 0 )
 {
   assert( os.size() == 2 );
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! mp ) mp = (*i)->toPoint();
     else if ( ! mc ) mc = (*i)->toPoint();
-    if ( ! ms ) ms = (*i)->toSegment();
-    if ( ! ml ) ml = (*i)->toLine();
+    if ( ! ml ) ml = (*i)->toAbstractLine();
   };
-  assert( mp && ( ms || ml || mc ) );
+  assert( mp && ( ml || mc ) );
   mp->addChild( this );
   if ( ml ) ml->addChild( this );
-  if ( ms ) ms->addChild( this );
   if ( mc ) mc->addChild( this );
 }
 
@@ -175,24 +161,22 @@ void MirrorPoint::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 2 ) return;
   Point* q = 0;
-  Segment* s = 0;
-  Line* l = 0;
+  AbstractLine* l = 0;
   Point* c = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! q ) q = (*i)->toPoint();
     else if ( ! c ) c = (*i)->toPoint();
-    if ( ! s ) s = (*i)->toSegment();
-    if ( ! l ) l = (*i)->toLine();
+    if ( ! l ) l = (*i)->toAbstractLine();
   };
-  assert( q && ( s || l || c ) );
+  assert( q && ( l || c ) );
   Coordinate d;
   if ( ! c )
   {
     Coordinate a;
     Coordinate b;
-    if ( s ) { a = s->getP1(); b = s->getP2(); }
-    else { assert( l ); a = l->getP1(); b = l->getP2(); };
+    a = l->p1();
+    b = l->p2();
     Coordinate e = q->getCoord();
     d = calcMirrorPoint( a, b, e );
   }
@@ -211,7 +195,7 @@ Object::WantArgsResult MirrorPoint::sWantArgs( const Objects& os )
   int v = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    if ( (*i)->toSegment() || (*i)->toLine() ) ++v;
+    if ( (*i)->toAbstractLine() ) ++v;
     else if ( ! (*i)->toPoint() ) return NotGood;
   };
   if ( v > 1 ) return NotGood;
@@ -225,5 +209,6 @@ QString MirrorPoint::sUseText( const Objects& os, const Object* o )
       : i18n( "Mirror over this point" );
   if ( o->toLine() ) return i18n( "Mirror over this line" );
   if ( o->toSegment() ) return i18n( "Mirror point over this segment" );
+  if ( o->toRay() ) return i18n( "Mirror point over this ray" );
   assert( false );
 }

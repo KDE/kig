@@ -19,12 +19,12 @@
 #ifndef RAY_H
 #define RAY_H
 
-#include "curve.h"
+#include "abstractline.h"
 
 #include "../misc/coordinate.h"
 
 class Ray
-  : public Curve
+  : public AbstractLine
 {
 public:
   Ray( const Objects& os );
@@ -72,10 +72,10 @@ public:
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  const Coordinate getP1() const;
-  const Coordinate getP2() const;
+  const Coordinate p1() const;
+  const Coordinate p2() const;
 protected:
-  Point* p1, *p2;
+  Point* mpa, *mpb;
   Coordinate pwwsm; // point where we started moving
 };
 

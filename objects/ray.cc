@@ -31,21 +31,21 @@
 #include <math.h>
 
 Ray::Ray( const Objects& os )
-  : p1( 0 ), p2( 0 )
+  : mpa( 0 ), mpb( 0 )
 {
   assert( os.size() == 2 );
-  p1 = os[0]->toPoint();
-  p2 = os[1]->toPoint();
-  assert( p1 && p2 );
-  p1->addChild( this );
-  p2->addChild( this );
+  mpa = os[0]->toPoint();
+  mpb = os[1]->toPoint();
+  assert( mpa && mpb );
+  mpa->addChild( this );
+  mpb->addChild( this );
 }
 
 Ray::Ray(const Ray& s)
-  : Curve( s ), p1( s.p1 ), p2( s.p2 )
+  : AbstractLine( s ), mpa( s.mpa ), mpb( s.mpb )
 {
-  p1->addChild(this);
-  p2->addChild(this);
+  mpa->addChild(this);
+  mpb->addChild(this);
 }
 
 Ray::~Ray()
@@ -54,19 +54,19 @@ Ray::~Ray()
 
 bool Ray::contains(const Coordinate& o, const double fault ) const
 {
-  return isOnRay( o, p1->getCoord(), p2->getCoord(), fault );
+  return isOnRay( o, mpa->getCoord(), mpb->getCoord(), fault );
 }
 
 void Ray::draw(KigPainter& p, bool ss) const
 {
   p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
-  p.drawRay( p1->getCoord(), p2->getCoord() );
+  p.drawRay( mpa->getCoord(), mpb->getCoord() );
 }
 
 bool Ray::inRect(const Rect& p) const
 {
   // TODO: implement for real...
-  if ( p1->inRect( p ) || p2->inRect( p ) ) return true;
+  if ( mpa->inRect( p ) || mpb->inRect( p ) ) return true;
   return false;
 }
 
@@ -88,15 +88,15 @@ QString Ray::sUseText( const Objects& os, const Object* o )
 void Ray::startMove(const Coordinate& p)
 {
   pwwsm = p;
-  assert( p1 && p2 );
-  p1->startMove( p );
-  p2->startMove( p );
+  assert( mpa && mpb );
+  mpa->startMove( p );
+  mpb->startMove( p );
 }
 
 void Ray::moveTo(const Coordinate& p)
 {
-  p1->moveTo( p );
-  p2->moveTo( p );
+  mpa->moveTo( p );
+  mpb->moveTo( p );
 }
 
 void Ray::stopMove()
@@ -105,21 +105,21 @@ void Ray::stopMove()
 
 void Ray::calc( const ScreenInfo& )
 {
-  mvalid = p1->valid() && p2->valid();
+  mvalid = mpa->valid() && mpb->valid();
 }
 
 Coordinate Ray::getPoint(double param) const
 {
-  Coordinate dir = p2->getCoord() - p1->getCoord();
+  Coordinate dir = mpb->getCoord() - mpa->getCoord();
   param += 1;
   param = pow( param, 12 ) - 1;
-  return p1->getCoord() + dir*param;
+  return mpa->getCoord() + dir*param;
 }
 
 double Ray::getParam(const Coordinate& p) const
 {
-  Coordinate a = p1->getCoord();
-  Coordinate b = p2->getCoord();
+  Coordinate a = mpa->getCoord();
+  Coordinate b = mpb->getCoord();
   Coordinate pt = calcPointOnPerpend( a, b, p );
   pt = calcIntersectionPoint( a, b, p, pt);
   // if pt is over the end of the ray ( i.e. it's on the line
@@ -142,8 +142,8 @@ double Ray::getParam(const Coordinate& p) const
 Objects Ray::getParents() const
 {
   Objects objs;
-  objs.push_back( p1 );
-  objs.push_back( p2 );
+  objs.push_back( mpa );
+  objs.push_back( mpb );
   return objs;
 }
 
@@ -233,14 +233,14 @@ const int Ray::sShortCut()
   return 0;
 }
 
-const Coordinate Ray::getP1() const
+const Coordinate Ray::p1() const
 {
-  return p1->getCoord();
+  return mpa->getCoord();
 }
 
-const Coordinate Ray::getP2() const
+const Coordinate Ray::p2() const
 {
-  return p2->getCoord();
+  return mpb->getCoord();
 }
 
 const char* Ray::sActionName()

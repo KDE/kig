@@ -23,18 +23,13 @@
 
 #include "point.h"
 
-class Segment;
-class Line;
-
 class MultiConstructibleType;
 
 class IntersectionPoint
   : public Point
 {
-  Segment* segment1;
-  Segment* segment2;
-  Line* line1;
-  Line* line2;
+  AbstractLine* mla;
+  AbstractLine* mlb;
 public:
   IntersectionPoint( const Objects& os );
   IntersectionPoint( const IntersectionPoint& p );
@@ -70,7 +65,7 @@ class CircleLineIntersectionPoint
   : public Point
 {
   Circle* mcircle;
-  Line* mline;
+  AbstractLine* mline;
   // there are two points, this variable remembers which of them we
   // are...
   bool mside;

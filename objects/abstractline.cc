@@ -1,5 +1,5 @@
-// kiosk.h
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// abstractline.cc
+// Copyright (C)  2002  Dominique Devriese <fritmebufstek@pandora.be>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -16,25 +16,20 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIOSK_H
-#define KIOSK_H
+#include "abstractline.h"
 
-#include "mode.h"
+#include "../misc/coordinate.h"
 
-// Kiosk mode == full screen...
-class KioskMode
-  : public KigMode
+AbstractLine::AbstractLine()
 {
-public:
-  KioskMode( KigDocument* );
-  ~KioskMode();
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void midClicked( QMouseEvent*, KigWidget* );
-  void rightClicked( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
-  void midReleased( QMouseEvent*, KigWidget* );
-  void rightReleased( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent*, KigWidget* );
-};
+}
 
-#endif
+AbstractLine::AbstractLine( const AbstractLine& l )
+  : Curve( l )
+{
+}
+
+const Coordinate AbstractLine::direction()
+{
+  return p2() - p1();
+}

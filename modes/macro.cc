@@ -43,7 +43,7 @@ DefineMacroMode::~DefineMacroMode()
   delete mwizard;
 }
 
-void DefineMacroMode::leftClicked( QMouseEvent* e, KigView* )
+void DefineMacroMode::leftClicked( QMouseEvent* e, KigWidget* )
 {
   plc = e->pos();
 }
@@ -74,7 +74,7 @@ void DefineMacroMode::enableActions()
   // we don't enable any actions...
 }
 
-void DefineMacroMode::leftReleased( QMouseEvent* e, KigView* v )
+void DefineMacroMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if ( (plc - e->pos()).manhattanLength() > 4 ) return;
   Objects os = mDoc->whatAmIOn( v->fromScreen( plc ), 4*v->pixelWidth() );
@@ -104,16 +104,16 @@ void DefineMacroMode::leftReleased( QMouseEvent* e, KigView* v )
   updateNexts();
 }
 
-void DefineMacroMode::rightClicked( QMouseEvent*, KigView* )
+void DefineMacroMode::rightClicked( QMouseEvent*, KigWidget* )
 {
 // TODO
 }
-void DefineMacroMode::rightReleased( QMouseEvent*, KigView* )
+void DefineMacroMode::rightReleased( QMouseEvent*, KigWidget* )
 {
 // TODO
 }
 
-void DefineMacroMode::mouseMoved( QMouseEvent* e, KigView* v )
+void DefineMacroMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
   Coordinate c = v->fromScreen( e->pos() );
@@ -146,7 +146,7 @@ void DefineMacroMode::givenPageEntered()
             bind2nd( mem_fun( &Object::setSelected ), false ) );
   for_each( mgiven.begin(), mgiven.end(),
             bind2nd( mem_fun( &Object::setSelected ), true ) );
-  static_cast<KigView*>( mDoc->widget() )->redrawScreen();
+  static_cast<KigView*>( mDoc->widget() )->realWidget()->redrawScreen();
 
   updateNexts();
 };
@@ -159,7 +159,7 @@ void DefineMacroMode::finalPageEntered()
   for_each( mDoc->objects().begin(), mDoc->objects().end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
   if ( mfinal ) mfinal->setSelected( true );
-  static_cast<KigView*>( mDoc->widget() )->redrawScreen();
+  static_cast<KigView*>( mDoc->widget() )->realWidget()->redrawScreen();
 
   updateNexts();
 }
@@ -171,7 +171,7 @@ void DefineMacroMode::namePageEntered()
   using std::mem_fun;
   for_each( mDoc->objects().begin(), mDoc->objects().end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
-  static_cast<KigView*>( mDoc->widget() )->redrawScreen();
+  static_cast<KigView*>( mDoc->widget() )->realWidget()->redrawScreen();
 
   updateNexts();
 }

@@ -23,15 +23,13 @@
 
 #include "point.h"
 
-class Segment;
-class Line;
+class AbstractLine;
 
 class MirrorPoint
   : public Point
 {
   Point* mp;
-  Segment* ms;
-  Line* ml;
+  AbstractLine* ml;
   Point* mc;
 public:
   MirrorPoint( const Objects& os );

@@ -26,7 +26,7 @@
 class Coordinate;
 class NormalMode;
 class NormalPoint;
-class KigView;
+class KigWidget;
 class KigDocument;
 
 /**
@@ -40,7 +40,7 @@ class MovingModeBase
   : public KigMode
 {
 protected:
-  MovingModeBase( NormalMode* prev, KigView* v, KigDocument* d );
+  MovingModeBase( NormalMode* prev, KigWidget* v, KigDocument* d );
   ~MovingModeBase();
   // Subclasses should call this in their constructor, when they know
   // which objects will be moving around... They are expected to be in
@@ -52,9 +52,9 @@ protected:
   virtual void stopMove() = 0;
   virtual void moveTo( const Coordinate& o ) = 0;
 public:
-  void leftReleased( QMouseEvent*, KigView* );
-  void leftMouseMoved( QMouseEvent*, KigView* );
-  void mouseMoved( QMouseEvent*, KigView* );
+  void leftReleased( QMouseEvent*, KigWidget* );
+  void leftMouseMoved( QMouseEvent*, KigWidget* );
+  void mouseMoved( QMouseEvent*, KigWidget* );
 private:
   // all moving objects: these objects are all of the objects that
   // need to be redrawn every time the cursor moves, and after calc is
@@ -67,7 +67,7 @@ private:
 protected:
   NormalMode* mprev;
 
-  KigView* mview;
+  KigWidget* mview;
 };
 
 class MovingMode
@@ -80,7 +80,7 @@ class MovingMode
   void moveTo( const Coordinate& o );
 public:
   MovingMode( const Objects& objects, const Coordinate& c,
-	      NormalMode* previousMode, KigView*, KigDocument* );
+	      NormalMode* previousMode, KigWidget*, KigDocument* );
   ~MovingMode();
 };
 
@@ -91,7 +91,7 @@ class NormalPointRedefineMode
   void stopMove();
   void moveTo( const Coordinate& o );
 public:
-  NormalPointRedefineMode( NormalPoint* p, KigDocument* d, KigView* v, NormalMode* m );
+  NormalPointRedefineMode( NormalPoint* p, KigDocument* d, KigWidget* v, NormalMode* m );
   ~NormalPointRedefineMode();
 };
 

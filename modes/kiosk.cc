@@ -10,31 +10,31 @@ KioskMode::~KioskMode()
 {
 
 }
-void KioskMode::leftClicked( QMouseEvent*, KigView* )
+void KioskMode::leftClicked( QMouseEvent*, KigWidget* )
 {
 
 }
-void KioskMode::midClicked( QMouseEvent*, KigView* )
+void KioskMode::midClicked( QMouseEvent*, KigWidget* )
 {
 
 }
-void KioskMode::rightClicked( QMouseEvent*, KigView* )
+void KioskMode::rightClicked( QMouseEvent*, KigWidget* )
 {
 
 }
-void KioskMode::leftReleased( QMouseEvent*, KigView* )
+void KioskMode::leftReleased( QMouseEvent*, KigWidget* )
 {
 
 }
-void KioskMode::midReleased( QMouseEvent*, KigView* )
+void KioskMode::midReleased( QMouseEvent*, KigWidget* )
 {
 
 }
-void KioskMode::rightReleased( QMouseEvent*, KigView* )
+void KioskMode::rightReleased( QMouseEvent*, KigWidget* )
 {
 
 }
-void KioskMode::mouseMoved( QMouseEvent*, KigView* )
+void KioskMode::mouseMoved( QMouseEvent*, KigWidget* )
 {
 
 }

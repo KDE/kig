@@ -27,7 +27,7 @@
 #include "../misc/objects.h"
 
 class KigDocument;
-class KigView;
+class KigWidget;
 class NormalMode;
 
 class NormalModePopupObjects
@@ -45,7 +45,7 @@ class NormalModePopupObjects
 
   QPoint mp;
   KigDocument* mdoc;
-  KigView* mview;
+  KigWidget* mview;
   Objects mobjs;
   NormalMode* mmode;
 
@@ -61,7 +61,7 @@ class NormalModePopupObjects
                                 // see Object::objectActions() )...
 
 public:
-  NormalModePopupObjects( KigDocument* doc, KigView* view,
+  NormalModePopupObjects( KigDocument* doc, KigWidget* view,
                           NormalMode* mode, const Objects& objs );
   ~NormalModePopupObjects() {};
 

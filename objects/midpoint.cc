@@ -73,7 +73,7 @@ void MidPoint::calc( const ScreenInfo& )
     assert( s );
     assert( !p1 && ! p2 );
     mvalid = s->valid();
-    if ( mvalid ) mC = ( s->getP1() + s->getP2() ) / 2;
+    if ( mvalid ) mC = ( s->p1() + s->p2() ) / 2;
   };
 }
 
@@ -155,7 +155,7 @@ void MidPoint::sDrawPrelim( KigPainter& p, const Objects& args )
     if ( args[0]->toPoint() ) return;
     else if ( ( s = args[0]->toSegment() ) )
     {
-      Coordinate a = s->getP1(), b = s->getP2();
+      Coordinate a = s->p1(), b = s->p2();
       m = (a+b)/2;
     }
     else assert( false );

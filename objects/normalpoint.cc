@@ -545,7 +545,7 @@ const QStringList NormalPoint::objectActions() const
   return l;
 }
 
-void NormalPoint::doAction( int which, KigDocument* d, KigView* v, NormalMode* m )
+void NormalPoint::doAction( int which, KigDocument* d, KigWidget* v, NormalMode* m )
 {
   assert( which == 0 );
   d->setMode( new NormalPointRedefineMode( this, d, v, m ) );

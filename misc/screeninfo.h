@@ -26,7 +26,7 @@
 /**
  * ScreenInfo is a simple utility class that maps a region of the
  * document onto a region of the screen.  It is used by both
- * KigPainter and KigView, and the objects use it in their calc()
+ * KigPainter and KigWidget, and the objects use it in their calc()
  * method...
  */
 class ScreenInfo

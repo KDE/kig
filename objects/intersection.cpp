@@ -20,8 +20,8 @@
 
 #include "intersection.h"
 
-#include "segment.h"
-#include "line.h"
+#include "abstractline.h"
+
 #include "circle.h"
 
 #include "../modes/constructing.h"
@@ -34,10 +34,8 @@
 Objects IntersectionPoint::getParents() const
 {
   Objects tmp;
-  if (segment1) tmp.push_back(segment1);
-  if (segment2) tmp.push_back(segment2);
-  if (line1) tmp.push_back(line1);
-  if (line2) tmp.push_back(line2);
+  tmp.push_back( mla );
+  tmp.push_back( mlb );
   return tmp;
 };
 
@@ -45,67 +43,12 @@ void IntersectionPoint::calc( const ScreenInfo& )
 {
   mvalid = true;
   Coordinate t1, t2, t3, t4;
-  bool gotfirst = false;
-  if ( segment1 )
-  {
-    mvalid &= segment1->valid();
-    if ( gotfirst )
-    {
-      t3 = segment1->getP1();
-      t4 = segment1->getP2();
-    }
-    else
-    {
-      t1 = segment1->getP1();
-      t2 = segment1->getP2();
-      gotfirst = true;
-    };
-  };
-  if ( segment2 )
-  {
-    mvalid &= segment2->valid();
-    if ( gotfirst )
-    {
-      t3 = segment2->getP1();
-      t4 = segment2->getP2();
-    }
-    else
-    {
-      t1 = segment2->getP1();
-      t2 = segment2->getP2();
-      gotfirst = true;
-    };
-  };
-  if ( line1 )
-  {
-    mvalid &= line1->valid();
-    if ( gotfirst )
-    {
-      t3 = line1->getP1();
-      t4 = line1->getP2();
-    }
-    else
-    {
-      t1 = line1->getP1();
-      t2 = line1->getP2();
-      gotfirst = true;
-    };
-  };
-  if ( line2 )
-  {
-    mvalid &= line2->valid();
-    if ( gotfirst )
-    {
-      t3 = line2->getP1();
-      t4 = line2->getP2();
-    }
-    else
-    {
-      t1 = line2->getP1();
-      t2 = line2->getP2();
-      gotfirst = true;
-    };
-  };
+  mvalid &= mla->valid();
+  t1 = mla->p1();
+  t2 = mla->p2();
+  mvalid &= mlb->valid();
+  t3 = mlb->p1();
+  t4 = mlb->p2();
   if ( mvalid ) mC = calcIntersectionPoint( t1, t2, t3, t4 );
 }
 
@@ -121,13 +64,10 @@ const QString IntersectionPoint::sDescription()
 
 IntersectionPoint::IntersectionPoint( const IntersectionPoint& p )
   : Point( p ),
-    segment1( p.segment1 ), segment2( p.segment2 ),
-    line1( p.line1 ), line2( p.line2 )
+    mla( p.mla ), mlb( p.mlb )
 {
-  if ( segment1 ) segment1->addChild( this );
-  if ( segment2 ) segment2->addChild( this );
-  if ( line1 ) line1->addChild( this );
-  if ( line2 ) line2->addChild( this );
+  mla->addChild( this );
+  mlb->addChild( this );
 };
 
 IntersectionPoint::~IntersectionPoint()
@@ -197,69 +137,41 @@ const char* IntersectionPoint::sActionName()
 }
 
 IntersectionPoint::IntersectionPoint( const Objects& os )
-  : segment1( 0 ), segment2( 0 ), line1( 0), line2( 0 )
+  : mla( 0 ), mlb( 0 )
 {
   assert( os.size() == 2 );
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    if ( (*i)->toSegment() )
-    {
-      if ( ! segment1 ) segment1 = (*i)->toSegment();
-      else if ( ! segment2 ) segment2 = (*i)->toSegment();
-      else assert( false );
-    }
-    else if ( (*i)->toLine() )
-    {
-      if ( ! line1 ) line1 = (*i)->toLine();
-      else if ( ! line2 ) line2 = (*i)->toLine();
-      else assert( false );
-    }
-    else assert( false );
+    AbstractLine* l = (*i)->toAbstractLine();
+    assert( l );
+    if ( ! mla ) mla = l;
+    else mlb = l;
   };
-  if ( segment1 ) segment1->addChild( this );
-  if ( segment2 ) segment2->addChild( this );
-  if ( line1 ) line1->addChild( this );
-  if ( line2 ) line2->addChild( this );
+  mla->addChild( this );
+  mlb->addChild( this );
 }
 
 void IntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 2 ) return;
-  Segment* s = 0;
-  Line* l = 0;
   Coordinate pa, pb, pc, pd;
   bool gota = false;
+  AbstractLine* l;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    if ( ( s = (*i)->toSegment() ) )
+    l = (*i)->toAbstractLine();
+    assert( l );
+    if ( gota )
     {
-      if ( gota )
-      {
-        pc = s->getP1();
-        pd = s->getP2();
-      }
-      else
-      {
-        pa = s->getP1();
-        pb = s->getP2();
-        gota = true;
-      }
+      pc = l->p1();
+      pd = l->p2();
     }
-    else if ( ( l = (*i)->toLine() ) )
+    else
     {
-      if ( gota )
-      {
-        pc = l->getP1();
-        pd = l->getP2();
-      }
-      else
-      {
-        pa = l->getP1();
-        pb = l->getP2();
-        gota = true;
-      }
-    }
-    else assert( false );
+      gota = true;
+      pa = l->p1();
+      pb = l->p2();
+    };
   };
   p.setPen( QPen( Qt::red, 1 ) );
   p.drawPoint( calcIntersectionPoint( pa, pb, pc, pd ), false );
@@ -271,7 +183,7 @@ Object::WantArgsResult IntersectionPoint::sWantArgs( const Objects& os )
   if ( size != 1 && size != 2 ) return NotGood;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    if( ! ( (*i)->toSegment() || (*i)->toLine() ) ) return NotGood;
+    if( ! (*i)->toAbstractLine() ) return NotGood;
   };
   return size == 2 ? Complete : NotComplete;
 }
@@ -288,7 +200,7 @@ CircleLineIntersectionPoint::CircleLineIntersectionPoint( const Objects& os )
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! mcircle ) mcircle = (*i)->toCircle();
-    if ( ! mline ) mline = (*i)->toLine();
+    if ( ! mline ) mline = (*i)->toAbstractLine();
   };
   assert( mcircle && mline );
   mcircle->addChild( this );
@@ -367,17 +279,17 @@ void CircleLineIntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os 
   assert( os.size() <= 2 );
   if ( os.size() != 2 ) return;
   Circle* c = 0;
-  Line* l = 0;
+  AbstractLine* l = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! c ) c = (*i)->toCircle();
-    if ( ! l ) l = (*i)->toLine();
+    if ( ! l ) l = (*i)->toAbstractLine();
   };
   assert( c && l );
   const Coordinate center = c->getCenter();
   const double sqr = c->squareRadius();
-  const Coordinate a = l->getP1();
-  const Coordinate b = l->getP2();
+  const Coordinate a = l->p1();
+  const Coordinate b = l->p2();
   bool valid = true;
   const Coordinate d = calcCircleLineIntersect( center, sqr, a, b,
                                                 true, valid );
@@ -399,7 +311,7 @@ Object::WantArgsResult CircleLineIntersectionPoint::sWantArgs( const Objects& os
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! gotc ) gotc = (*i)->toCircle();
-    if ( ! gotl ) gotl = (*i)->toLine();
+    if ( ! gotl ) gotl = (*i)->toAbstractLine();
   };
   if ( size == 1 ) return ( gotc || gotl ) ? NotComplete : NotGood;
   if ( size == 2 ) return ( gotc && gotl ) ? Complete : NotGood;
@@ -410,6 +322,8 @@ QString CircleLineIntersectionPoint::sUseText( const Objects&, const Object* o )
 {
   if ( o->toCircle() ) return i18n( "Intersection of a line and this circle" );
   if ( o->toLine() ) return i18n( "Intersection of a circle and this line" );
+  if ( o->toSegment() ) return i18n( "Intersection of a circle and this segment" );
+  if ( o->toRay() ) return i18n( "Intersection of a circle and this ray" );
   assert( false );
 }
 
@@ -438,7 +352,7 @@ void CircleLineIntersectionPoint::calc( const ScreenInfo& )
   assert( mcircle && mline );
   Coordinate t;
   t = calcCircleLineIntersect( mcircle->getCenter(), mcircle->squareRadius(),
-                               mline->getP1(), mline->getP2(), mside, mvalid );
+                               mline->p1(), mline->p2(), mside, mvalid );
   if ( mvalid ) mC = t;
 }
 

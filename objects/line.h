@@ -21,11 +21,11 @@
 #ifndef KIG_OBJECTS_LINE_H
 #define KIG_OBJECTS_LINE_H
 
-#include "curve.h"
+#include "abstractline.h"
 #include "../misc/common.h"
 
 class Line
-  : public Curve
+  : public AbstractLine
 {
 public:
   Line() {};
@@ -48,14 +48,15 @@ public:
   void moveTo(const Coordinate&) = 0;
   void stopMove() = 0;
 
+  // implement the Curve interface...
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  const Coordinate& getP1() const { return p1;};
-  const Coordinate& getP2() const { return p2;};
+  const Coordinate p1() const;
+  const Coordinate p2() const;
 
 protected:
-  Coordinate p1, p2;
+  Coordinate mpa, mpb;
   Coordinate pwwsm; // point where we started moving
 };
 
@@ -137,8 +138,7 @@ public:
   void calc( const ScreenInfo& );
 
 protected:
-  Segment* segment;
-  Line* line;
+  AbstractLine* mdir;
   Point* point;
 };
 
@@ -178,8 +178,7 @@ public:
   void calc( const ScreenInfo& );
 
 protected:
-  Segment* segment;
-  Line* line;
+  AbstractLine* mdir;
   Point* point;
 };
 

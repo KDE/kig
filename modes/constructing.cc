@@ -33,34 +33,24 @@
 
 #include <functional> // for std::mem_fun and std::bind2nd
 
-void PointConstructionMode::updateScreen( KigView* v )
-{
-  v->clearStillPix();
-  KigPainter p( v->screenInfo(), &v->stillPix );
-  p.drawGrid( mDoc->coordinateSystem() );
-  p.drawObjects( mDoc->objects() );
-  v->updateCurPix( p.overlay() );
-  v->updateWidget();
-}
-
-void PointConstructionMode::leftClicked( QMouseEvent* e, KigView* )
+void PointConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
 {
   plc = e->pos();
 }
 
-void PointConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
+void PointConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if( ( plc - e->pos() ).manhattanLength() > 4 ) return;
   updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
   finish( v );
 }
 
-void PointConstructionMode::midClicked( QMouseEvent* e, KigView* v )
+void PointConstructionMode::midClicked( QMouseEvent* e, KigWidget* v )
 {
   leftClicked( e, v );
 }
 
-void PointConstructionMode::midReleased( QMouseEvent* e, KigView* v )
+void PointConstructionMode::midReleased( QMouseEvent* e, KigWidget* v )
 {
   leftReleased( e, v );
 }
@@ -72,7 +62,7 @@ PointConstructionMode::PointConstructionMode( NormalMode* b, KigDocument* d )
 {
 }
 
-void PointConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
+void PointConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   v->setCursor( KCursor::blankCursor() );
   updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
@@ -88,14 +78,16 @@ void PointConstructionMode::updatePoint( const Coordinate& c, const ScreenInfo& 
   mp->calc( si );
 }
 
-void PointConstructionMode::finish( KigView* v )
+void PointConstructionMode::finish( KigWidget* v )
 {
   mDoc->addObject( mp );
   mp = mp->copy();
   mp->calc( v->screenInfo() );
 
   mprev->clearSelection();
-  updateScreen( v );
+  v->redrawScreen();
+
+  v->updateScrollBars();
 
   NormalMode* s = mprev;
   KigDocument* d = mDoc;
@@ -113,7 +105,7 @@ StdConstructionMode::~StdConstructionMode()
 {
 }
 
-void StdConstructionMode::leftClicked( QMouseEvent* e, KigView* v )
+void StdConstructionMode::leftClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
   oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 3*v->pixelWidth() );
@@ -134,7 +126,7 @@ void StdConstructionMode::leftClicked( QMouseEvent* e, KigView* v )
   };
 }
 
-void StdConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
+void StdConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if( ( e->pos() - plc ).manhattanLength() > 4 ) return;
 
@@ -155,7 +147,7 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
   };
 }
 
-void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
+void StdConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   Coordinate c = v->fromScreen( e->pos() );
   // objects under cursor
@@ -212,12 +204,12 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
   v->updateWidget( p.overlay() );
 }
 
-void StdConstructionMode::midClicked( QMouseEvent* e, KigView* )
+void StdConstructionMode::midClicked( QMouseEvent* e, KigWidget* )
 {
   plc = e->pos();
 }
 
-void StdConstructionMode::midReleased( QMouseEvent* e, KigView* v )
+void StdConstructionMode::midReleased( QMouseEvent* e, KigWidget* v )
 {
   if ( (e->pos() - plc).manhattanLength() > 4 ) return;
 
@@ -229,7 +221,7 @@ void StdConstructionMode::midReleased( QMouseEvent* e, KigView* v )
   };
 }
 
-void StdConstructionMode::selectArg( Object* o, KigView* v )
+void StdConstructionMode::selectArg( Object* o, KigWidget* v )
 {
   if ( o == mp )
     // if we're selecting our mp, we need a new one...
@@ -247,7 +239,7 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
   };
 
   mprev->clearSelection();
-  updateScreen( v );
+  v->redrawScreen();
 
   if( finished )
   {
@@ -261,7 +253,7 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
 
 void StdConstructionMode::buildCalcAndAdd( const Type* type,
 					   const Objects& args,
-					   KigView* v )
+					   KigWidget* v )
 {
   Object* o = type->build( args, Type::ParamMap() );
   o->calc( v->screenInfo() );
@@ -310,12 +302,12 @@ TextLabelConstructionMode::TextLabelConstructionMode( NormalMode* b,
   : KigMode( d ), mprev( b )
 {
 }
-void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigView* )
+void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
 {
   mplc = e->pos();
 }
 
-void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
+void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if ( ( mplc - e->pos() ).manhattanLength() > 4 ) return;
   Coordinate c = v->fromScreen( mplc );
@@ -349,7 +341,7 @@ void TextLabelConstructionMode::enableActions()
   mDoc->aCancelConstruction->setEnabled( true );
 }
 
-void TextLabelConstructionMode::mouseMoved( QMouseEvent*, KigView* v )
+void TextLabelConstructionMode::mouseMoved( QMouseEvent*, KigWidget* v )
 {
   v->setCursor( KCursor::crossCursor() );
 }
@@ -367,7 +359,7 @@ MultiConstructionMode::MultiConstructionMode( MultiConstructibleType* t,
 
 void MultiConstructionMode::buildCalcAndAdd( const Type* type,
                                              const Objects& args,
-                                             KigView* v )
+                                             KigWidget* v )
 {
   const MultiConstructibleType* t =
     static_cast<const MultiConstructibleType*>( type );
@@ -381,7 +373,7 @@ int StdConstructionMode::wantArgs( const Objects& o ) const
   return mtype->wantArgs( o );
 }
 
-void StdConstructionMode::selectArgs( const Objects& o, KigView* v )
+void StdConstructionMode::selectArgs( const Objects& o, KigWidget* v )
 {
   assert( wantArgs( o ) );
   for ( Objects::const_iterator i = o.begin(); i != o.end(); ++i )

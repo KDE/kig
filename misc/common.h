@@ -42,10 +42,23 @@
 Coordinate calcPointOnPerpend( const Coordinate& p1, const Coordinate& p2, const Coordinate& t );
 
 /**
+ * this returns a point, so that the line through point t and the
+ * point returned is perpendicular to the direction given in dir...
+ */
+Coordinate calcPointOnPerpend( const Coordinate& dir, const Coordinate& t );
+
+/**
  * this returns a point, so that the line throught point t
  * and the point returned is parallel with p1p2
  */
 Coordinate calcPointOnParallel( const Coordinate& p1, const Coordinate& p2, const Coordinate& t );
+
+/**
+ * this returns a point, so that the line throught point t
+ * and the point returned is parallel with the direction given in dir...
+ */
+Coordinate calcPointOnParallel( const Coordinate& dir, const Coordinate& t );
+
 
 /**
  * this calcs the point where p1p2 and p3p4 intersect...

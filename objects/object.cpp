@@ -148,7 +148,7 @@ const QStringList Object::objectActions() const
   return QStringList();
 }
 
-void Object::doAction( int, KigDocument*, KigView*, NormalMode* )
+void Object::doAction( int, KigDocument*, KigWidget*, NormalMode* )
 {
   return;
 }

@@ -31,6 +31,7 @@
 
 #include "../misc/objects.h"
 
+class AbstractLine;
 class Point;
 class Segment;
 class Vector;
@@ -43,7 +44,7 @@ class TextLabel;
 class Types;
 class KAction;
 class KigDocument;
-class KigView;
+class KigWidget;
 class KigMode;
 class Type;
 class KigPainter;
@@ -132,11 +133,12 @@ public:
   virtual Segment* toSegment() { return 0; };
   virtual Vector* toVector() { return 0; };
   virtual Ray* toRay() { return 0; };
-  virtual Line* toLine() { return 0; };
+//   virtual Line* toLine() { return 0; };
   virtual Circle* toCircle() { return 0; };
   virtual Curve* toCurve() { return 0; };
   virtual NormalPoint* toNormalPoint() { return 0; };
   virtual TextLabel* toTextLabel() { return 0; };
+  virtual AbstractLine* toAbstractLine() { return 0; };
 
   virtual const Point* toPoint() const { return 0; };
   virtual const Segment* toSegment() const { return 0; };
@@ -147,6 +149,7 @@ public:
   virtual const Curve* toCurve() const { return 0; };
   virtual const NormalPoint* toNormalPoint() const { return 0; };
   virtual const TextLabel* toTextLabel() const { return 0; };
+  virtual const AbstractLine* toAbstractLine() const { return 0; };
 
   // type identification:
   // there are several functions: you don't need all of them in your
@@ -275,7 +278,7 @@ public:
    * NormalPoint that has a "redefine" action...
    */
   virtual const QStringList objectActions() const;
-  virtual void doAction( int which, KigDocument* d, KigView* v, NormalMode* m );
+  virtual void doAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
 
 protected:
   QColor mColor;

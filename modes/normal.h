@@ -33,21 +33,21 @@ class NormalMode
 public:
   NormalMode( KigDocument* );
   ~NormalMode();
-  void leftClicked( QMouseEvent*, KigView* );
-  void leftMouseMoved( QMouseEvent*, KigView* );
-  void leftReleased( QMouseEvent*, KigView* );
-  void midClicked( QMouseEvent*, KigView* v );
-  void midMouseMoved( QMouseEvent*, KigView* );
-  void midReleased( QMouseEvent*, KigView* );
-  void rightClicked( QMouseEvent*, KigView* );
-  void rightMouseMoved( QMouseEvent*, KigView* );
-  void rightReleased( QMouseEvent*, KigView* );
+  void leftClicked( QMouseEvent*, KigWidget* );
+  void leftMouseMoved( QMouseEvent*, KigWidget* );
+  void leftReleased( QMouseEvent*, KigWidget* );
+  void midClicked( QMouseEvent*, KigWidget* v );
+  void midMouseMoved( QMouseEvent*, KigWidget* );
+  void midReleased( QMouseEvent*, KigWidget* );
+  void rightClicked( QMouseEvent*, KigWidget* );
+  void rightMouseMoved( QMouseEvent*, KigWidget* );
+  void rightReleased( QMouseEvent*, KigWidget* );
 
   /**
    * The user is just moving around his cursor,
    * without having clicked anywhere...
    */
-  void mouseMoved( QMouseEvent*, KigView* );
+  void mouseMoved( QMouseEvent*, KigWidget* );
 
   /**
    * Objcects were added by a command in mDoc->history.

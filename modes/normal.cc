@@ -41,7 +41,7 @@ NormalMode::~NormalMode()
 {
 }
 
-void NormalMode::leftClicked( QMouseEvent* e, KigView* v )
+void NormalMode::leftClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
   oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 2*v->pixelWidth() );
@@ -67,7 +67,7 @@ void NormalMode::leftClicked( QMouseEvent* e, KigView* v )
   };
 };
 
-void NormalMode::leftMouseMoved( QMouseEvent* e, KigView* v )
+void NormalMode::leftMouseMoved( QMouseEvent* e, KigWidget* v )
 {
   if( oco.empty() )
   {
@@ -101,7 +101,7 @@ void NormalMode::leftMouseMoved( QMouseEvent* e, KigView* v )
   };
 };
 
-void NormalMode::leftReleased( QMouseEvent* e, KigView* v )
+void NormalMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   Objects cos; // objects whose selection changed..
   if( oco.empty() )
@@ -153,7 +153,7 @@ void NormalMode::leftReleased( QMouseEvent* e, KigView* v )
   v->updateWidget();
 }
 
-void NormalMode::midClicked( QMouseEvent* e, KigView* v )
+void NormalMode::midClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
   oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 2*v->pixelWidth() );
@@ -162,11 +162,11 @@ void NormalMode::midClicked( QMouseEvent* e, KigView* v )
   v->updateWidget();
 }
 
-void NormalMode::midMouseMoved( QMouseEvent*, KigView* )
+void NormalMode::midMouseMoved( QMouseEvent*, KigWidget* )
 {
 };
 
-void NormalMode::midReleased( QMouseEvent* e, KigView* v )
+void NormalMode::midReleased( QMouseEvent* e, KigWidget* v )
 {
   // moved too far
   if( (e->pos() - plc).manhattanLength() > 4 ) return;
@@ -178,16 +178,11 @@ void NormalMode::midReleased( QMouseEvent* e, KigView* v )
   mDoc->addObject( pt );
 
   // refresh the screen...
-  v->clearStillPix();
-  KigPainter p( v->screenInfo(), &v->stillPix );
-  p.drawGrid( mDoc->coordinateSystem() );
-  p.drawObjects( mDoc->objects() );
-
-  v->updateCurPix( p.overlay() );
-  v->updateWidget();
+  v->redrawScreen();
+  v->updateScrollBars();
 }
 
-void NormalMode::rightClicked( QMouseEvent* e, KigView* v )
+void NormalMode::rightClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
   oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 2*v->pixelWidth() );
@@ -218,17 +213,17 @@ void NormalMode::rightClicked( QMouseEvent* e, KigView* v )
   };
 }
 
-void NormalMode::rightMouseMoved( QMouseEvent*, KigView* )
+void NormalMode::rightMouseMoved( QMouseEvent*, KigWidget* )
 {
   // this is handled by the popup menus ( see rightClicked() )
 };
 
-void NormalMode::rightReleased( QMouseEvent*, KigView* )
+void NormalMode::rightReleased( QMouseEvent*, KigWidget* )
 {
   // this is handled by the popup menus ( see rightClicked() )
 }
 
-void NormalMode::mouseMoved( QMouseEvent* e, KigView* v )
+void NormalMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   const Objects tmp = mDoc->whatAmIOn( v->fromScreen( e->pos() ),
                                        2 * v->pixelWidth() );
@@ -337,12 +332,14 @@ void NormalMode::newMacro()
 void NormalMode::objectsAdded()
 {
   // i know this is ugly :(
-  static_cast<KigView*>(mDoc->widget())->redrawScreen();
+  KigWidget* w = static_cast<KigView*>(mDoc->widget())->realWidget();
+  w->redrawScreen();
+  w->updateScrollBars();
 }
 
 void NormalMode::objectsRemoved()
 {
-  static_cast<KigView*>(mDoc->widget())->redrawScreen();
+  objectsAdded();
 }
 
 void NormalMode::editTypes()

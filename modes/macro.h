@@ -33,11 +33,11 @@ class DefineMacroMode
 public:
   DefineMacroMode( KigDocument*, KigMode* previousMode );
   ~DefineMacroMode();
-  void leftClicked( QMouseEvent*, KigView* );
-  void leftReleased( QMouseEvent*, KigView* );
-  void rightClicked( QMouseEvent*, KigView* );
-  void rightReleased( QMouseEvent*, KigView* );
-  void mouseMoved( QMouseEvent*, KigView* );
+  void leftClicked( QMouseEvent*, KigWidget* );
+  void leftReleased( QMouseEvent*, KigWidget* );
+  void rightClicked( QMouseEvent*, KigWidget* );
+  void rightReleased( QMouseEvent*, KigWidget* );
+  void mouseMoved( QMouseEvent*, KigWidget* );
 
   void enableActions();
 

@@ -19,7 +19,6 @@
 **/
 
 #include "line.h"
-#include "segment.h"
 #include "point.h"
 #include "circle.h"
 #include "../misc/kigpainter.h"
@@ -33,19 +32,19 @@
 
 bool Line::contains(const Coordinate& o, const double fault ) const
 {
-  return isOnLine( o, p1, p2, fault );
+  return isOnLine( o, mpa, mpb, fault );
 }
 
 void Line::draw(KigPainter& p, bool ss) const
 {
   p.setPen( ss && selected ? QPen(Qt::red,1) : QPen( mColor, 1 ));
-  p.drawLine( p1, p2 );
+  p.drawLine( mpa, mpb );
 }
 
 bool Line::inRect(const Rect& p) const
 {
   // TODO: implement for real...
-  if ( p.contains( p1 ) || p.contains( p2 ) ) return true;
+  if ( p.contains( mpa ) || p.contains( mpb ) ) return true;
   return false;
 }
 
@@ -54,8 +53,8 @@ Coordinate Line::getPoint(double p) const
   // inspired upon KSeg
   p = (p - 0.5) * 2;
 
-  Coordinate m = (p1+p2)/2;
-  Coordinate dir = (p1 - p2);
+  Coordinate m = (mpa+mpb)/2;
+  Coordinate dir = (mpa - mpb);
   // we need to spread the points over the line, it should also come near
   // the (infinite) end of the line, but most points should be near
   // the two points we contain...
@@ -72,12 +71,12 @@ double Line::getParam(const Coordinate& point) const
   // points not on the line...
 
   // first we project the point onto the line...
-  Coordinate pt = calcPointOnPerpend(p1, p2, point);
-  pt = calcIntersectionPoint(p1, p2, point, pt);
+  Coordinate pt = calcPointOnPerpend(mpa, mpb, point);
+  pt = calcIntersectionPoint(mpa, mpb, point, pt);
 
   // next we fetch the parameter
-  Coordinate m = Coordinate(p1+p2)/2;
-  Coordinate dir = p1 - p2;
+  Coordinate m = Coordinate(mpa+mpb)/2;
+  Coordinate dir = mpa - mpb;
   Coordinate d = pt-m;
 
   double p = dir.x != 0 ? d.x/dir.x : d.y / dir.y;
@@ -120,8 +119,8 @@ void LineTTP::calc( const ScreenInfo& )
   else
   {
     mvalid = true;
-    p1 = pt1->getCoord();
-    p2 = pt2->getCoord();
+    mpa = pt1->getCoord();
+    mpb = pt2->getCoord();
   };
 };
 
@@ -143,25 +142,17 @@ void LinePerpend::stopMove()
 
 void LinePerpend::calc( const ScreenInfo& )
 {
-  assert (point && (segment || line));
+  assert (point && mdir );
   mvalid = true;
   mvalid &= point->valid();
-  p1 = point->getCoord();
+  mpa = point->getCoord();
   Coordinate t1;
   Coordinate t2;
-  if (segment)
-  {
-    mvalid &= segment->valid();
-    t1 = segment->getP1();
-    t2 = segment->getP2();
-  }
-  else
-  {
-    mvalid &= line->valid();
-    t1 = line->getP1();
-    t2 = line->getP2();
-  };
-  p2 = calcPointOnPerpend(t1, t2, point->getCoord());
+
+  mvalid &= mdir->valid();
+  const Coordinate dir = mdir->direction();
+
+  mpb = calcPointOnPerpend( dir, point->getCoord());
 }
 
 Objects LineTTP::getParents() const
@@ -175,8 +166,7 @@ Objects LineTTP::getParents() const
 Objects LinePerpend::getParents() const
 {
   Objects objs;
-  if ( segment ) objs.push_back( segment );
-  else objs.push_back( line );
+  objs.push_back( mdir );
   objs.push_back( point );
   return objs;
 }
@@ -184,32 +174,20 @@ Objects LinePerpend::getParents() const
 Objects LineParallel::getParents() const
 {
   Objects objs;
-  if ( segment ) objs.push_back( segment );
-  else objs.push_back( line );
+  objs.push_back( mdir );
   objs.push_back( point );
   return objs;
 }
 
 void LineParallel::calc( const ScreenInfo& )
 {
-  assert (point && (segment || line));
+  assert (point && mdir );
   mvalid = true;
   mvalid &= point->valid();
-  p1 = point->getCoord();
-  Coordinate qpt1, qpt2;
-  if (segment)
-  {
-    mvalid &= segment->valid();
-    qpt1 = segment->getP1();
-    qpt2 = segment->getP2();
-  }
-  else
-  {
-    mvalid &= line->valid();
-    qpt1 = line->getP1();
-    qpt2 = line->getP2();
-  };
-  p2 = calcPointOnParallel(qpt1, qpt2, point->getCoord());
+  mpa = point->getCoord();
+  mvalid &= mdir->valid();
+  Coordinate dir = mdir->direction();
+  mpb = calcPointOnParallel( dir, mpa );
 }
 
 LineTTP::LineTTP(const LineTTP& l)
@@ -220,19 +198,17 @@ LineTTP::LineTTP(const LineTTP& l)
 }
 
 LineParallel::LineParallel(const LineParallel& l)
-  : Line( l ), segment( l.segment ), line( l.line ), point( l.point )
+  : Line( l ), mdir( l.mdir ), point( l.point )
 {
-  if( segment ) segment->addChild(this);
-  if( line ) line->addChild(this);
-  if( point ) point->addChild(this);
+  mdir->addChild(this);
+  point->addChild(this);
 }
 
 LinePerpend::LinePerpend(const LinePerpend& l)
-  : Line( l ), segment( l.segment ), line( l.line ), point( l.point )
+  : Line( l ), mdir( l.mdir ), point( l.point )
 {
-  if( segment ) segment->addChild(this);
-  if( line ) line->addChild(this);
-  if( point ) point->addChild(this);
+  mdir->addChild(this);
+  point->addChild(this);
 }
 
 Objects LineRadical::getParents() const
@@ -326,7 +302,7 @@ const char* LineRadical::sActionName()
 }
 
 Line::Line( const Line& l )
-  : Curve( l ), p1( l.p1 ), p2( l.p2 ), pwwsm( l.pwwsm )
+  : AbstractLine( l ), mpa( l.mpa ), mpb( l.mpb ), pwwsm( l.pwwsm )
 {
 }
 
@@ -372,101 +348,69 @@ void LineTTP::sDrawPrelim( KigPainter& p, const Objects& os )
 }
 
 LinePerpend::LinePerpend( const Objects& os )
- : segment(0), line(0), point(0)
+  : mdir( 0 ), point( 0 )
 {
   assert( os.size() == 2 );
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! point ) point = (*i)->toPoint();
-    if ( ! segment ) segment = (*i)->toSegment();
-    if ( ! line ) line = (*i)->toLine();
+    if ( ! mdir ) mdir = (*i)->toAbstractLine();
   };
-  assert( point && ( segment || line ) );
+  assert( point && mdir );
   point->addChild( this );
-  if ( segment ) segment->addChild( this );
-  if ( line ) line->addChild( this );
+  mdir->addChild( this );
 }
 
 void LinePerpend::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 2 ) return;
   Point* pt = 0;
-  Segment* s = 0;
-  Line* l = 0;
+  AbstractLine* line = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( !pt ) pt = (*i)->toPoint();
-    if ( !s ) s = (*i)->toSegment();
-    if ( !l ) l = (*i)->toLine();
+    if ( !line ) line = (*i)->toAbstractLine();
   };
-  assert( pt && ( s || l ) );
+  assert( pt && line );
 
   Coordinate pc = pt->getCoord();
 
-  // next a line or segment... --> these both just give us two
-  // coords...
-  Coordinate t1, t2;
-  // do we have a line or segment selected already ?
-  if ( l )
-  {
-    t1 = l->getP1();
-    t2 = l->getP2();
-  }
-  else
-  {
-    t1 = s->getP1();
-    t2 = s->getP2();
-  }
-
+  Coordinate dir = line->direction();
   // now we have what we need, so we draw things...
   p.setPen (QPen (Qt::red,1));
-  p.drawLine( pc, calcPointOnPerpend( t1, t2, pc ) );
+  p.drawLine( pc, calcPointOnPerpend( dir, pc ) );
 }
 
 LineParallel::LineParallel( const Objects& o )
- : segment(0), line(0), point(0)
+ : mdir(0), point(0)
 {
   assert( o.size() == 2 );
   for ( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
   {
     if ( ! point ) point = (*i)->toPoint();
-    if ( ! segment ) segment = (*i)->toSegment();
-    if ( ! line ) line = (*i)->toLine();
+    if ( ! mdir ) mdir = (*i)->toAbstractLine();
   };
-  assert( point && ( segment || line ) );
+  assert( point && mdir );
   point->addChild( this );
-  if ( segment ) segment->addChild( this );
-  if ( line ) line->addChild( this );
+  mdir->addChild( this );
 }
 
 void LineParallel::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 2 ) return;
   Point* q = 0;
-  Segment* s = 0;
-  Line* l = 0;
+  AbstractLine* l = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( !q ) q = (*i)->toPoint();
-    if ( !s ) s = (*i)->toSegment();
-    if ( !l ) l = (*i)->toLine();
+    if ( !l ) l = (*i)->toAbstractLine();
   };
-  assert( q && ( s || l ) );
+  assert( q && l );
   Coordinate pt = q->getCoord();
-  Coordinate pa, pb;
-  if ( l )
-  {
-    pa = l->getP1();
-    pb = l->getP2();
-  }
-  else
-  {
-    pa = s->getP1();
-    pb = s->getP2();
-  }
+  Coordinate dir = l->direction();
 
   p.setPen( QPen (Qt::red,1) );
-  p.drawLine( pt, calcPointOnParallel( pa, pb, pt ) );
+  p.drawLine( pt, calcPointOnParallel( dir, pt ) );
 }
 
 Object::WantArgsResult LinePerpend::sWantArgs( const Objects& os )
@@ -481,17 +425,15 @@ Object::WantArgsResult LineParallel::sWantArgs( const Objects& os )
   uint size = os.size();
   if ( size != 1 && size != 2 ) return NotGood;
   uint pt = 0;
-  uint s = 0;
   uint l = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( (*i)->toPoint() ) ++pt;
-    else if ( (*i)->toSegment() ) ++s;
-    else if ( (*i)->toLine() ) ++l;
+    else if ( (*i)->toAbstractLine() ) ++l;
     else return NotGood;
   };
   if ( pt > 1 ) return NotGood;
-  if ( s + l > 1 ) return NotGood;
+  if ( l > 1 ) return NotGood;
   return size == 2 ? Complete : NotComplete;
 }
 
@@ -500,6 +442,7 @@ QString LinePerpend::sUseText( const Objects&, const Object* o )
   if ( o->toPoint() ) return i18n( "Perpendicular line through this point" );
   else if ( o->toSegment() ) return i18n( "Line perpendicular on this segment" );
   else if ( o->toLine() ) return i18n( "Line perpendicular on this line" );
+  else if ( o->toRay() ) return i18n( "Line perpendicular on this ray" );
   else assert( false );
 }
 
@@ -508,6 +451,7 @@ QString LineParallel::sUseText( const Objects&, const Object* o )
   if ( o->toPoint() ) return i18n( "Parallel line through this point" );
   else if ( o->toSegment() ) return i18n( "Line parallel on this segment" );
   else if ( o->toLine() ) return i18n( "Line parallel on this line" );
+  else if ( o->toRay() ) return i18n( "Line parallel on this ray" );
   else assert( false );
 }
 
@@ -553,8 +497,8 @@ void LineRadical::calc( const ScreenInfo& )
   {
     mvalid = true; // else always defined...
 
-    p1 = calcRadicalStartPoint( ce1, ce2, c1->squareRadius(), c2->squareRadius() );
-    p2 = calcPointOnPerpend( ce1, ce2, p1 );
+    mpa = calcRadicalStartPoint( ce1, ce2, c1->squareRadius(), c2->squareRadius() );
+    mpb = calcPointOnPerpend( ce1, ce2, mpa );
   };
 }
 
@@ -589,4 +533,14 @@ Object::WantArgsResult LineRadical::sWantArgs( const Objects& os )
 QString LineRadical::sUseText( const Objects&, const Object* )
 {
   return i18n("Radical Line of this circle");
+}
+
+const Coordinate Line::p1() const
+{
+  return mpa;
+}
+
+const Coordinate Line::p2() const
+{
+  return mpb;
 }

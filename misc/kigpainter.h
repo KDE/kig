@@ -32,7 +32,7 @@
 
 #include <vector>
 
-class KigView;
+class KigWidget;
 class QPaintDevice;
 class CoordinateSystem;
 class Object;
@@ -41,7 +41,7 @@ class Object;
  * KigPainter is an extended qpainter...
  * currently the only difference is that it translates coordinates
  * from and to the internal coordinates/ the widget coordinates...
- * it calls KigView::appendOverlay() for all of the places it draws in...
+ * it calls KigWidget::appendOverlay() for all of the places it draws in...
  * i'm planning to do more advanced stuff here, @see the TODO file...
  */
 class KigPainter
@@ -123,7 +123,7 @@ public:
 
   /**
    * overload, mainly for drawing the selection rectangle by
-   * KigView...
+   * KigWidget...
    */
   void drawRect( const QRect& r );
 

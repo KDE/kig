@@ -30,14 +30,14 @@
 #include "../misc/i18n.h"
 
 Segment::Segment( const Objects& os )
- : p1( 0 ), p2( 0 )
+ : mpa( 0 ), mpb( 0 )
 {
   assert( os.size() == 2 );
-  p1 = os[0]->toPoint();
-  p2 = os[1]->toPoint();
-  assert( p1 && p2 );
-  p1->addChild( this );
-  p2->addChild( this );
+  mpa = os[0]->toPoint();
+  mpb = os[1]->toPoint();
+  assert( mpa && mpb );
+  mpa->addChild( this );
+  mpb->addChild( this );
 }
 
 Segment::~Segment()
@@ -46,19 +46,19 @@ Segment::~Segment()
 
 bool Segment::contains(const Coordinate& o, const double fault ) const
 {
-  return isOnSegment( o, p1->getCoord(), p2->getCoord(), fault );
+  return isOnSegment( o, mpa->getCoord(), mpb->getCoord(), fault );
 }
 
 void Segment::draw(KigPainter& p, bool ss) const
 {
   p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
-  p.drawSegment( p1->getCoord(), p2->getCoord() );
+  p.drawSegment( mpa->getCoord(), mpb->getCoord() );
 }
 
 bool Segment::inRect(const Rect& p) const
 {
   // TODO: implement for real...
-  if ( p1->inRect( p ) || p2->inRect( p ) ) return true;
+  if ( mpa->inRect( p ) || mpb->inRect( p ) ) return true;
   return false;
 }
 
@@ -80,15 +80,15 @@ QString Segment::sUseText( const Objects& os, const Object* o )
 void Segment::startMove(const Coordinate& p)
 {
   pwwsm = p;
-  assert( p1 && p2 );
-  p1->startMove( p );
-  p2->startMove( p );
+  assert( mpa && mpb );
+  mpa->startMove( p );
+  mpb->startMove( p );
 }
 
 void Segment::moveTo(const Coordinate& p)
 {
-  p1->moveTo( p );
-  p2->moveTo( p );
+  mpa->moveTo( p );
+  mpb->moveTo( p );
 }
 
 void Segment::stopMove()
@@ -97,35 +97,35 @@ void Segment::stopMove()
 
 void Segment::calc( const ScreenInfo& )
 {
-  mvalid = p1->valid() && p2->valid();
+  mvalid = mpa->valid() && mpb->valid();
 }
 
 Coordinate Segment::getPoint(double param) const
 {
-  Coordinate dir = p2->getCoord() - p1->getCoord();
-  return p1->getCoord() + dir*param;
+  Coordinate dir = mpb->getCoord() - mpa->getCoord();
+  return mpa->getCoord() + dir*param;
 }
 
 double Segment::getParam(const Coordinate& p) const
 {
-  Coordinate pt = calcPointOnPerpend(p1->getCoord(), p2->getCoord(), p);
-  pt = calcIntersectionPoint(p1->getCoord(), p2->getCoord(), p, pt);
+  Coordinate pt = calcPointOnPerpend(mpa->getCoord(), mpb->getCoord(), p);
+  pt = calcIntersectionPoint(mpa->getCoord(), mpb->getCoord(), p, pt);
   // if pt is over the end of the segment ( i.e. it's on the line
   // which the segment is a part of, but not of the segment itself..;
   // ) we set it to one of the end points of the segment...
-  if ((pt - p1->getCoord()).length() > (p2->getCoord() - p1->getCoord()).length() )
-    pt = p2->getCoord();
-  else if ( (pt- p2->getCoord()).length() > (p2->getCoord() - p1->getCoord()).length() )
-    pt = p1->getCoord();
-  if (p2->getCoord() == p1->getCoord()) return 0;
-  return ((pt - p1->getCoord()).length())/((p2->getCoord()-p1->getCoord()).length());
+  if ((pt - mpa->getCoord()).length() > (mpb->getCoord() - mpa->getCoord()).length() )
+    pt = mpb->getCoord();
+  else if ( (pt- mpb->getCoord()).length() > (mpb->getCoord() - mpa->getCoord()).length() )
+    pt = mpa->getCoord();
+  if (mpb->getCoord() == mpa->getCoord()) return 0;
+  return ((pt - mpa->getCoord()).length())/((mpb->getCoord()-mpa->getCoord()).length());
 }
 
 Objects Segment::getParents() const
 {
   Objects objs;
-  objs.push_back( p1 );
-  objs.push_back( p2 );
+  objs.push_back( mpa );
+  objs.push_back( mpb );
   return objs;
 }
 
@@ -140,10 +140,10 @@ void Segment::sDrawPrelim( KigPainter& p, const Objects& os )
 }
 
 Segment::Segment(const Segment& s)
-  : Curve( s ), p1( s.p1 ), p2( s.p2 )
+  : AbstractLine( s ), mpa( s.mpa ), mpb( s.mpb )
 {
-  p1->addChild(this);
-  p2->addChild(this);
+  mpa->addChild(this);
+  mpb->addChild(this);
 }
 
 Segment* Segment::copy()
@@ -221,27 +221,17 @@ const int Segment::sShortCut()
   return CTRL+Key_S;
 }
 
-const Coordinate Segment::getP1() const
-{
-  return p1->getCoord();
-}
-
-const Coordinate Segment::getP2() const
-{
-  return p2->getCoord();
-}
-
-// Point* Segment::getPoint2()
-// {
-//   return p2;
-// }
-
-// Point* Segment::getPoint1()
-// {
-//   return p1;
-// }
-
 const char* Segment::sActionName()
 {
   return "objects_new_segment";
+}
+
+const Coordinate Segment::p1() const
+{
+  return mpa->getCoord();
+}
+
+const Coordinate Segment::p2() const
+{
+  return mpb->getCoord();
 }

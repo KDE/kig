@@ -80,6 +80,15 @@ public:
   Rect& operator*=( const double r ) { scale(r); return *this; };
   Rect& operator/=( const double r ) { scale(1/r); return *this; };
 
+  /**
+   * This expands the rect so that it contains r.  It has synonyms
+   * '|=' and '|' below...
+   */
+  void eat( const Rect& r );
+
+  // synonym for eat..
+  Rect& operator|=( const Rect& rhs ) { eat( rhs ); return *this; };
+
   QRect toQRect() const;
   Coordinate bottomLeft() const;
   Coordinate bottomRight() const;
@@ -106,6 +115,9 @@ protected:
 
 bool operator==( const Rect& r, const Rect& s );
 inline kdbgstream& operator<<( kdbgstream& s, const Rect& t );
+// this operator returns a rect that contains both the given
+// rects..
+Rect operator|( const Rect& lhs, const Rect& rhs );
 
 #endif
 

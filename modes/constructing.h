@@ -27,7 +27,7 @@
 
 class Object;
 class NormalMode;
-class KigView;
+class KigWidget;
 class Coordinate;
 
 class NormalPoint;
@@ -46,21 +46,20 @@ protected:
   NormalMode* mprev;
 
   void updatePoint( const Coordinate& c, const ScreenInfo& );
-  void finish( KigView* v );
-  void updateScreen( KigView* v );
+  void finish( KigWidget* v );
 
 public:
   PointConstructionMode( NormalMode* prev, KigDocument* d );
   ~PointConstructionMode();
 
-  void leftClicked( QMouseEvent* e, KigView* v );
-  void leftReleased( QMouseEvent* e, KigView* v );
-  void midClicked( QMouseEvent* e, KigView* v );
-  void midReleased( QMouseEvent* e, KigView* v );
-  void rightClicked( QMouseEvent*, KigView* ) {};
-  void rightMouseMoved( QMouseEvent*, KigView* ) {};
-  void rightReleased( QMouseEvent*, KigView* ) {};
-  void mouseMoved( QMouseEvent* e, KigView* v );
+  void leftClicked( QMouseEvent* e, KigWidget* v );
+  void leftReleased( QMouseEvent* e, KigWidget* v );
+  void midClicked( QMouseEvent* e, KigWidget* v );
+  void midReleased( QMouseEvent* e, KigWidget* v );
+  void rightClicked( QMouseEvent*, KigWidget* ) {};
+  void rightMouseMoved( QMouseEvent*, KigWidget* ) {};
+  void rightReleased( QMouseEvent*, KigWidget* ) {};
+  void mouseMoved( QMouseEvent* e, KigWidget* v );
 
   void enableActions();
 
@@ -98,17 +97,17 @@ class StdConstructionMode
   Objects osa;
 
 protected:
-  void selectArg( Object* o, KigView* v );
+  void selectArg( Object* o, KigWidget* v );
 
   // see the class description above, and the implementations of this
   // function in both this class and the MultiConstructionMode
   // below for explanation...
   virtual void buildCalcAndAdd( const Type* t,
 		  		const Objects& arguments,
-				KigView* view );
+				KigWidget* view );
 
   // called by either midReleased or leftReleased...
-  void addPointRequest( const Coordinate& c, KigView* v );
+  void addPointRequest( const Coordinate& c, KigWidget* v );
 
 public:
   StdConstructionMode( StdConstructibleType* t, NormalMode* b,
@@ -117,21 +116,21 @@ public:
 
   virtual StdConstructionMode* toStdConstructionMode();
 
-  void leftClicked( QMouseEvent*, KigView* );
-  void leftReleased( QMouseEvent*, KigView* );
-  void midClicked( QMouseEvent*, KigView* );
-  void midReleased( QMouseEvent*, KigView* );
-  void rightClicked( QMouseEvent*, KigView* ) {};
-  void rightMouseMoved( QMouseEvent*, KigView* ) {};
-  void rightReleased( QMouseEvent*, KigView* ) {};
-  void mouseMoved( QMouseEvent*, KigView* );
+  void leftClicked( QMouseEvent*, KigWidget* );
+  void leftReleased( QMouseEvent*, KigWidget* );
+  void midClicked( QMouseEvent*, KigWidget* );
+  void midReleased( QMouseEvent*, KigWidget* );
+  void rightClicked( QMouseEvent*, KigWidget* ) {};
+  void rightMouseMoved( QMouseEvent*, KigWidget* ) {};
+  void rightReleased( QMouseEvent*, KigWidget* ) {};
+  void mouseMoved( QMouseEvent*, KigWidget* );
 
   void enableActions();
 
   void cancelConstruction();
 
   int wantArgs( const Objects& o ) const;
-  void selectArgs( const Objects& o, KigView* v );
+  void selectArgs( const Objects& o, KigWidget* v );
 
 };
 
@@ -143,7 +142,7 @@ public:
                          KigDocument* d );
   ~MultiConstructionMode();
   void buildCalcAndAdd( const Type* t, const Objects& arguments,
-			KigView* view );
+			KigWidget* view );
 };
 
 class TextLabelConstructionMode
@@ -156,10 +155,10 @@ class TextLabelConstructionMode
 public:
   TextLabelConstructionMode( NormalMode* b, KigDocument* d );
   ~TextLabelConstructionMode();
-  void leftClicked( QMouseEvent*, KigView* );
-  void leftReleased( QMouseEvent*, KigView* );
+  void leftClicked( QMouseEvent*, KigWidget* );
+  void leftReleased( QMouseEvent*, KigWidget* );
 
-  void mouseMoved( QMouseEvent*, KigView* );
+  void mouseMoved( QMouseEvent*, KigWidget* );
 
   void enableActions();
 

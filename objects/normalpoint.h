@@ -99,7 +99,7 @@ public:
   static KigMode* sConstructMode( Type*, KigDocument*, NormalMode* );
 
   const QStringList objectActions() const;
-  void doAction( int which, KigDocument* d, KigView* v, NormalMode* m );
+  void doAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
 
   virtual Objects getParents() const;
   virtual void calc( const ScreenInfo& s );

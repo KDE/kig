@@ -1,5 +1,5 @@
-// kiosk.h
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// direction.h
+// Copyright (C)  2002  Dominique Devriese <fritmebufstek@pandora.be>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -16,25 +16,26 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIOSK_H
-#define KIOSK_H
+#ifndef DIRECTION_H
+#define DIRECTION_H
 
-#include "mode.h"
+#include "curve.h"
 
-// Kiosk mode == full screen...
-class KioskMode
-  : public KigMode
+/**
+ * This class is an abstract interface to an object that is somewhat
+ * of a line.. Examples are Line, Segment, Ray etc.
+ */
+class AbstractLine
+  : public Curve
 {
 public:
-  KioskMode( KigDocument* );
-  ~KioskMode();
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void midClicked( QMouseEvent*, KigWidget* );
-  void rightClicked( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
-  void midReleased( QMouseEvent*, KigWidget* );
-  void rightReleased( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent*, KigWidget* );
+  AbstractLine();
+  AbstractLine( const AbstractLine& l );
+  virtual const Coordinate p1() const = 0;
+  virtual const Coordinate p2() const = 0;
+  const Coordinate direction();
+  const AbstractLine* toAbstractLine() const { return this; };
+  AbstractLine* toAbstractLine() { return this; };
 };
 
 #endif

@@ -32,7 +32,7 @@
 #include <qcursor.h>
 
 NormalModePopupObjects::NormalModePopupObjects( KigDocument* doc,
-                                                KigView* view,
+                                                KigWidget* view,
                                                 NormalMode* mode,
                                                 const Objects& objs )
   : mdoc( doc ), mview( view ), mobjs( objs ), mmode( mode )

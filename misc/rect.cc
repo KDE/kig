@@ -17,6 +17,7 @@
 // 02111-1307, USA.
 
 #include "rect.h"
+#include "common.h"
 
 bool operator==( const Rect& r, const Rect& s )
 {
@@ -253,4 +254,19 @@ Rect Rect::fromQRect( const QRect& r )
 void Rect::setTopLeft( const Coordinate p )
 {
   Coordinate bl = Coordinate( p.x, p.y - mheight );
+}
+
+Rect operator|( const Rect& lhs, const Rect& rhs )
+{
+  Rect r( lhs );
+  r |= rhs;
+  return r;
+};
+
+void Rect::eat( const Rect& r )
+{
+  setLeft( kigMin( left(), r.left() ) );
+  setRight( kigMax( right(), r.right() ) );
+  setBottom( kigMin( bottom(), r.bottom() ) );
+  setTop( kigMax( top(), r.top() ) );
 }

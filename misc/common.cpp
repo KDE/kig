@@ -27,14 +27,23 @@
 
 Coordinate calcPointOnPerpend( const Coordinate& p1, const Coordinate& p2, const Coordinate& t )
 {
-  return t + ( p2 - p1 ).orthogonal();
+  return calcPointOnPerpend( p2 - p1, t );
+};
+
+Coordinate calcPointOnPerpend( const Coordinate& dir, const Coordinate& t )
+{
+  return t + ( dir ).orthogonal();
 };
 
 Coordinate calcPointOnParallel( const Coordinate& p1, const Coordinate& p2, const Coordinate& t )
 {
-  Coordinate dir = p1-p2;
-  return t + dir*5;
+  return calcPointOnParallel( p2 - p1, t );
 }
+
+Coordinate calcPointOnParallel( const Coordinate& dir, const Coordinate& t )
+{
+  return t + dir*5;
+};
 
 Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, const Coordinate& p3, const Coordinate& p4 )
 {

@@ -34,7 +34,7 @@
 // internally, it does nothing, it could almost have been an ordinary
 // Object..., mapping coordinates from and to the screen to and from
 // the internal coordinates is done elsewhere ( KigPainter and
-// KigView... )
+// KigWidget... )
 class CoordinateSystem
   : public Qt
 {

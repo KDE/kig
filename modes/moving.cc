@@ -30,7 +30,7 @@
 #include <functional>
 #include <algorithm>
 
-MovingModeBase::MovingModeBase( NormalMode* prev, KigView* v, KigDocument* d )
+MovingModeBase::MovingModeBase( NormalMode* prev, KigWidget* v, KigDocument* d )
   : KigMode( d ), mprev( prev ), mview( v )
 {
 
@@ -65,12 +65,12 @@ void MovingModeBase::initScreen( Objects& in )
   mview->updateCurPix();
 }
 
-void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigView* v )
+void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
 {
   mouseMoved( e, v );
 };
 
-void MovingModeBase::leftReleased( QMouseEvent*, KigView* v )
+void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
 {
   // clean up after ourselves:
   amo.calc( v->screenInfo() );
@@ -79,6 +79,7 @@ void MovingModeBase::leftReleased( QMouseEvent*, KigView* v )
 
   // refresh the screen:
   v->redrawScreen();
+  v->updateScrollBars();
 
   // get rid of ourselves:
   KigMode* prev = mprev;
@@ -87,7 +88,7 @@ void MovingModeBase::leftReleased( QMouseEvent*, KigView* v )
   doc->setMode( prev );
 }
 
-void MovingModeBase::mouseMoved( QMouseEvent* e, KigView* v )
+void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
@@ -96,10 +97,12 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigView* v )
   KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
+  // good idea ?
+  v->updateScrollBars();
 };
 
 MovingMode::MovingMode( const Objects& os, const Coordinate& c,
-                        NormalMode* previousMode, KigView* v,
+                        NormalMode* previousMode, KigWidget* v,
                         KigDocument* d )
   : MovingModeBase( previousMode, v, d ), emo( os )
 {
@@ -147,7 +150,7 @@ void MovingMode::moveTo( const Coordinate& o )
     (*i)->moveTo( o );
 }
 
-NormalPointRedefineMode::NormalPointRedefineMode( NormalPoint* p, KigDocument* d, KigView* v, NormalMode* m )
+NormalPointRedefineMode::NormalPointRedefineMode( NormalPoint* p, KigDocument* d, KigWidget* v, NormalMode* m )
   : MovingModeBase( m, v, d ), mp( p )
 {
 
