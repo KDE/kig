@@ -60,6 +60,7 @@ public:
   const char* baseName() const;
 
   QString text() const;
+  const Coordinate coordinate() const;
 };
 
 #endif

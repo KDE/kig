@@ -122,4 +122,9 @@ void TextImp::visit( ObjectImpVisitor* vtor ) const
   vtor->visit( this );
 }
 
+const Coordinate TextImp::coordinate() const
+{
+  return mloc;
+}
+
 
