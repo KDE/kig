@@ -21,7 +21,7 @@
         </sizepolicy>
     </property>
     <property name="caption">
-        <string>Define a new Macro...</string>
+        <string>Define New Macro</string>
     </property>
     <widget class="QWidget">
         <property name="name">

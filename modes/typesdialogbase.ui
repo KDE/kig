@@ -87,7 +87,7 @@
                         <cstring>buttonExport</cstring>
                     </property>
                     <property name="text">
-                        <string>Export Type To File</string>
+                        <string>Export Type to File</string>
                     </property>
                 </widget>
                 <widget class="QPushButton">
