@@ -185,7 +185,8 @@ Rect KigPainter::window()
   return msi.shownRect();
 }
 
-void KigPainter::circleOverlayRecurse( const Coordinate& centre, double radius,
+void KigPainter::circleOverlayRecurse( const Coordinate& centre,
+				       double radiussq,
 				       const Rect& cr )
 {
   Rect currentRect = cr.normalized();
@@ -199,25 +200,31 @@ void KigPainter::circleOverlayRecurse( const Coordinate& centre, double radius,
   Coordinate bl = currentRect.bottomLeft();
   Coordinate c = currentRect.center();
 
-  // 1.415 should actually be 1.414...
-  double fault = currentRect.width()*1.415 + pixelWidth();
-  double radiusBig = radius + fault ;
-  double radiusSmall = radius - fault ;
+  // mp: we compute the minimum and maximum distance from the center
+  // of the circle and this rect
+  double distxmin = 0, distxmax = 0, distymin = 0, distymax = 0;
+  if ( centre.x >= tr.x ) distxmin = centre.x - tr.x;
+  if ( centre.x <= bl.x ) distxmin = bl.x - centre.x;
+  if ( centre.y >= tr.y ) distymin = centre.y - tr.y;
+  if ( centre.y <= bl.y ) distymin = bl.y - centre.y;
+  distxmax = fabs(centre.x - c.x) + currentRect.width()/2;
+  distymax = fabs(centre.y - c.y) + currentRect.height()/2;
+  // this should take into account the thickness of the line...
+  distxmin -= pixelWidth();
+  if (distxmin < 0) distxmin = 0;
+  distxmax += pixelWidth();
+  distymin -= pixelWidth();
+  if (distymin < 0) distymin = 0;
+  distymax += pixelWidth();
+  double distminsq = distxmin*distxmin + distymin*distymin;
+  double distmaxsq = distxmax*distxmax + distymax*distymax;
 
   // if the circle doesn't touch this rect, we return
   // too far from the centre
-  if (((tl - centre).length() > radiusBig) &&
-      ((tr - centre).length() > radiusBig) &&
-      ((bl - centre).length() > radiusBig) &&
-      ((br - centre).length() > radiusBig))
-    return;
+  if (distminsq > radiussq) return;
 
   // too near to the centre
-  if (((tl - centre).length() < radiusSmall) &&
-      ((tr - centre).length() < radiusSmall) &&
-      ((bl - centre).length() < radiusSmall) &&
-      ((br - centre).length() < radiusSmall))
-    return;
+  if (distmaxsq < radiussq) return;
 
   // the rect contains some of the circle
   // -> if it's small enough, we keep it
@@ -230,16 +237,16 @@ void KigPainter::circleOverlayRecurse( const Coordinate& centre, double radius,
     double height = currentRect.height() / 2;
     Rect r1 ( c, -width, -height);
     r1.normalize();
-    circleOverlayRecurse(centre, radius, r1);
+    circleOverlayRecurse(centre, radiussq, r1);
     Rect r2 ( c, width, -height);
     r2.normalize();
-    circleOverlayRecurse(centre, radius, r2);
+    circleOverlayRecurse(centre, radiussq, r2);
     Rect r3 ( c, -width, height);
     r3.normalize();
-    circleOverlayRecurse(centre, radius, r3);
+    circleOverlayRecurse(centre, radiussq, r3);
     Rect r4 ( c, width, height);
     r4.normalize();
-    circleOverlayRecurse(centre, radius, r4);
+    circleOverlayRecurse(centre, radiussq, r4);
   };
 };
 
@@ -250,7 +257,7 @@ void KigPainter::circleOverlay( const Coordinate& centre, double radius )
   Coordinate bottomLeft = centre - r;
   Coordinate topRight = centre + r;
   Rect rect( bottomLeft, topRight );
-  circleOverlayRecurse ( centre , radius, rect );
+  circleOverlayRecurse ( centre , radius*radius, rect );
 }
 
 void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
@@ -260,8 +267,11 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
   // some stuff we may need:
   Coordinate p3 = p2 - p1;
   Rect border = window();
-  double length = p3.length();
-  if ( length < 10e-20 )
+//  double length = p3.length();
+  // mp: using the l-infinity distance is more natural here
+  double length = fabs(p3.x);
+  if ( fabs( p3.y ) > length ) length = fabs( p3.y );
+  if ( length < pixelWidth() )
   {
     // hopefully prevent SIGZERO's
     mOverlay.push_back( toScreen( Rect( p1, p2 ) ) );
