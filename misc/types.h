@@ -49,6 +49,7 @@ public:
   iterator end() { return _tm::end(); };
   const_iterator end() const { return _tm::end(); };
   bool empty() const { return _tm::empty(); };
+  void clear() { _tm::clear(); };
 
   /**
    * Constructs a new Types collection, and loads its data from the

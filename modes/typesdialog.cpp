@@ -128,8 +128,8 @@ void TypesDialog::exportType()
   };
   if (types.empty()) return;
   QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types files\n*"));
-  if (!file_name) return;
-  types.saveToFile(file_name);
+  if (file_name) types.saveToFile(file_name);
+  types.clear();
 };
 
 /*
