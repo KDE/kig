@@ -18,6 +18,7 @@
 
 #include "coordinate.h"
 
+#include <qglobal.h>
 #include <cmath>
 
 using namespace std;
@@ -148,7 +149,7 @@ const Coordinate Coordinate::normalize( double l ) const
 
 const Coordinate Coordinate::round() const
 {
-  return Coordinate( ::round( x ), ::round( y ) );
+  return Coordinate( qRound( x ), qRound( y ) );
 };
 
 QPoint Coordinate::toQPoint() const
