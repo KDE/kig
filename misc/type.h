@@ -43,6 +43,7 @@ class NormalMode;
 #include <qstring.h>
 
 class MType;
+class StdConstructibleType;
 
 /**
  * this is a class which represents a type to kig, it is necessary
@@ -59,6 +60,9 @@ public:
 
   virtual MType* toMType() { return 0; };
   virtual const MType* toMType() const { return 0; };
+
+  virtual StdConstructibleType* toStdConstructible() { return 0; };
+  virtual const StdConstructibleType* toStdConstructible() const { return 0; };
 
   /**
    * return the name of this type.  This is the same name as
@@ -210,6 +214,8 @@ class StdConstructibleType
   : public Type
 {
 public:
+  virtual StdConstructibleType* toStdConstructible() { return this; };
+  virtual const StdConstructibleType* toStdConstructible() const { return this; };
   virtual int wantArgs( const Objects& ) = 0;
   virtual QString useText( const Objects&, const Object* ) = 0;
   virtual void drawPrelim( KigPainter&, const Objects& ) = 0;

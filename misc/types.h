@@ -68,6 +68,7 @@ public:
    * find the TypeRepresentant for type t
    */
   Type* findType( const QCString& t ) const;
+
   /**
    * builds an object of type type...
    */
