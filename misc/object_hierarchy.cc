@@ -18,10 +18,20 @@
 
 #include "object_hierarchy.h"
 
+#include "../objects/object_imp.h"
+#include "../objects/object_type.h"
+
 class ObjectHierarchy::Node
 {
+protected:
+  virtual ~Node();
 public:
-  virtual void apply( std::stack<ObjectImp*>& stack, const KigWidget& ) = 0;
+  virtual void apply( std::vector<const ObjectImp*>& stack, const KigWidget&,
+                      int loc ) = 0;
+};
+
+ObjectHierarchy::Node::~Node()
+{
 };
 
 class PushStackNode
@@ -29,53 +39,46 @@ class PushStackNode
 {
   ObjectImp* mimp;
 public:
-  virtual void apply( std::stack<ObjectImp*>& stack, const KigWidget& );
+  void apply( std::vector<const ObjectImp*>& stack, const KigWidget&, int loc );
 };
 
 class ApplyTypeNode
   : public ObjectHierarchy::Node
 {
   ObjectType* mtype;
-  int mnumbertopop;
+  std::vector<int> mparents;
 public:
-  virtual void apply( std::stack<ObjectImp*>& stack, const KigWidget& );
+  void apply( std::vector<const ObjectImp*>& stack, const KigWidget&, int loc );
 };
 
-void PushStackNode::apply( std::stack<ObjectImp*>& stack, const KigWidget& )
+void PushStackNode::apply( std::vector<const ObjectImp*>& stack, const KigWidget&,
+                           int loc )
 {
-  stack.push( mimp->copy() );
+  stack[loc] = mimp->copy();
 };
 
-void ApplyTypeNode::apply( std::stack<ObjectImp*>& stack, const KigWidget& w )
+void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack, const KigWidget& w,
+                           int loc )
 {
   Args args;
-  for ( int i = 0; i < mnumbertopop; ++i )
+  for ( uint i = 0; i < mparents.size(); ++i )
   {
-    if ( stack.empty() ) return;
-    args.push_back( stack.top() );
-    stack.pop();
+    args.push_back( stack[mparents[i]] );
   };
-  stack.push( mtype->calc( args, w ) );
-  for ( Args::iterator i = args.begin(); i != args.end(); ++i )
-    delete *i;
+  stack[loc] = mtype->calc( args, w );
 };
 
 ObjectImp* ObjectHierarchy::calc( const Args& a, const KigWidget& w )
 {
-  std::stack<ObjectImp*> stack;
-  std::copy( a.begin(), a.end(), std::back_inserter( stack ) );
-  for( std::vector<Node*>::iterator i = mnodes.begin(); i != mnodes.end(); ++i )
+  std::vector<const ObjectImp*> stack;
+  stack.resize( mnodes.size() + mnumberofargs, 0 );
+  std::copy( a.begin(), a.end(), stack.begin() );
+  for( uint i = 0; i < mnodes.size(); ++i )
   {
-    (*i)->apply( stack );
+    mnodes[i]->apply( stack, w, mnumberofargs + i );
   };
-  if ( stack.size() == 1 ) return stack.top();
-  else
-  {
-    while ( ! stack.empty() )
-    {
-      delete stack.top();
-      stack.pop();
-    };
-    return new InvalidImp;
-  };
+  for ( uint i = 0; i < stack.size() - 1; ++i )
+    delete stack[i];
+  if ( stack.empty() ) return 0;
+  else return const_cast<ObjectImp*>( stack.back() );
 }

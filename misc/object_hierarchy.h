@@ -25,6 +25,7 @@ class ObjectHierarchy
 {
   class Node;
   std::vector<Node*> mnodes;
+  int mnumberofargs;
 public:
   ObjectImp* calc( const Args& a, const KigWidget& w );
 };
