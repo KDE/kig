@@ -102,6 +102,10 @@ public slots:
   void filePrint();
   void filePrintPreview();
 
+  void slotSelectAll();
+  void slotDeselectAll();
+  void slotInvertSelection();
+
   void unplugActionLists();
   void plugActionLists();
 
@@ -208,6 +212,9 @@ public:
 
 
   KAction* aCancelConstruction;
+  KAction* aSelectAll;
+  KAction* aDeselectAll;
+  KAction* aInvertSelection;
   KAction* aDeleteObjects;
   KAction* aNewMacro;
   KAction* aShowHidden;

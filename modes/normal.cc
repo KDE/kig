@@ -43,6 +43,9 @@ void NormalMode::enableActions()
 {
   KigMode::enableActions();
   mdoc.enableConstructActions( true );
+  mdoc.aSelectAll->setEnabled( true );
+  mdoc.aDeselectAll->setEnabled( true );
+  mdoc.aInvertSelection->setEnabled( true );
   mdoc.aDeleteObjects->setEnabled( true );
   mdoc.aShowHidden->setEnabled( true );
   mdoc.aNewMacro->setEnabled( true );
@@ -58,12 +61,11 @@ void NormalMode::deleteObjects()
 
 void NormalMode::selectObject( Object* o )
 {
-  assert( o->inherits( Object::ID_RealObject ) );
   sos.push_back( o );
-  static_cast<RealObject*>( o )->setSelected( true );
+  o->setSelected( true );
 }
 
-void NormalMode::selectObjects( Objects& os )
+void NormalMode::selectObjects( const Objects& os )
 {
   // hehe, don't you love this c++ stuff ;)
   for_each( os.begin(), os.end(),
@@ -278,4 +280,32 @@ void NormalMode::mouseMoved( const Objects& os,
     p.drawTextStd( point, stat );
     w.updateWidget( p.overlay() );
   };
+}
+
+void NormalMode::selectAll()
+{
+  const Objects os = mdoc.objects();
+  selectObjects( os );
+  redrawScreen();
+}
+
+void NormalMode::deselectAll()
+{
+  clearSelection();
+  redrawScreen();
+}
+
+void NormalMode::invertSelection()
+{
+  Objects sel = sos;
+  Objects os = mdoc.objects();
+  clearSelection();
+  for ( Objects::const_iterator i = os.begin();
+        i != os.end(); ++i )
+    if ( ! sel.contains( *i ) )
+    {
+      (*i)->setSelected( true );
+      sos.push_back( *i );
+    }
+  redrawScreen();
 }

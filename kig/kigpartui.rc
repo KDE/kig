@@ -14,9 +14,14 @@
     </Menu>
     <Menu name="edit">
       <text>&amp;Edit</text>
-      <Action name="edit_unhide_all" />
       <Action name="edit_undo" />
       <Action name="edit_redo" />
+      <Separator />
+      <Action name="edit_select_all" />
+      <Action name="edit_deselect" />
+      <Action name="edit_invert_selection" />
+      <Separator/>
+      <Action name="edit_unhide_all" />
     </Menu>
     <Menu name="view">
       <text>&amp;View</text>
@@ -168,12 +173,12 @@
     <Action name="objects_new_lineconicradical" />
   </Toolbar>    
   <Toolbar name="angles_toolbar" position="left">
-<text>Angles</text>
+    <text>Angles</text>
     <Action name="objects_new_angle" />
     <Action name="objects_new_angle_bisector" />
   </Toolbar>
   <Toolbar name="transformation_toolbar" position="right">
-<text>Transformation</text>
+    <text>Transformation</text>
     <Action name="objects_new_translation" />
     <Action name="objects_new_pointreflection" />
     <Action name="objects_new_linereflection" />
@@ -182,7 +187,7 @@
     <Action name="objects_new_scalingoverline" />
   </Toolbar>
   <Toolbar name="rest_toolbar" position="left">
-<text>Rest</text>
+    <text>Rest</text>
     <Action name="objects_new_locus" />
     <Action name="objects_new_textlabel" />
     <Action name="objects_new_script_object" />

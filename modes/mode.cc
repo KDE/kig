@@ -27,6 +27,9 @@
 void KigMode::enableActions()
 {
   mdoc.enableConstructActions( false );
+  mdoc.aSelectAll->setEnabled( false );
+  mdoc.aDeselectAll->setEnabled( false );
+  mdoc.aInvertSelection->setEnabled( true );
   mdoc.aCancelConstruction->setEnabled( false );
   mdoc.aConfigureTypes->setEnabled( false );
   mdoc.aDeleteObjects->setEnabled( false );
@@ -105,10 +108,6 @@ void KigMode::editTypes()
 {
 }
 
-void KigMode::startKiosk()
-{
-}
-
 void KigMode::redrawScreen()
 {
 }
@@ -116,4 +115,16 @@ void KigMode::redrawScreen()
 StdConstructionMode* KigMode::toStdConstructionMode()
 {
   return 0;
+}
+
+void KigMode::selectAll()
+{
+}
+
+void KigMode::deselectAll()
+{
+}
+
+void KigMode::invertSelection()
+{
 }

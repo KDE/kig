@@ -66,7 +66,9 @@ public:
   virtual void showHidden();
   virtual void newMacro();
   virtual void editTypes();
-  virtual void startKiosk();
+  virtual void selectAll();
+  virtual void deselectAll();
+  virtual void invertSelection();
 
   // two special functions: because kig has undo/redo-stuff via
   // KCommands and KCommandHistory, the mode doesn't entirely control

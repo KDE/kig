@@ -126,6 +126,15 @@ void KigDocument::setupActions()
   (void) KStdAction::print( this, SLOT( filePrint() ), actionCollection() );
   (void) KStdAction::printPreview( this, SLOT( filePrintPreview() ), actionCollection() );
 
+  // selection actions
+  aSelectAll = KStdAction::selectAll(
+    this, SLOT( slotSelectAll() ), actionCollection() );
+  aDeselectAll = KStdAction::deselect(
+    this, SLOT( slotDeselectAll() ), actionCollection() );
+  aInvertSelection = new KAction(
+    i18n( "Invert Selection" ), "", 0, this,
+    SLOT( slotInvertSelection() ), actionCollection(),
+    "edit_invert_selection" );
 
   // we need icons...
   KIconLoader* l = KGlobal::iconLoader();
@@ -779,4 +788,19 @@ const Objects KigDocument::objects() const
 const Objects KigDocument::allObjects() const
 {
   return getAllParents( objects() );
+}
+
+void KigDocument::slotSelectAll()
+{
+  mMode->selectAll();
+}
+
+void KigDocument::slotDeselectAll()
+{
+  mMode->deselectAll();
+}
+
+void KigDocument::slotInvertSelection()
+{
+  mMode->invertSelection();
 }

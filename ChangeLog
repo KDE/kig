@@ -1,3 +1,8 @@
+2003-06-21  Dominique Devriese  <devriese@kde.org>
+
+	* Implement Select all, Unselect all and Invert selection.
+
+	
 2003-06-20  Dominique Devriese  <devriese@kde.org>
 
 	* fix this bug:"17) Add the possiblity, by pressing Esc, to stop

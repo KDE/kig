@@ -34,14 +34,17 @@ public:
   NormalMode( KigDocument& );
   ~NormalMode();
 protected:
-  virtual void dragRect( const QPoint& p, KigWidget& w );
-  virtual void dragObject( const Objects& os, const QPoint& pointClickedOn,
+  void dragRect( const QPoint& p, KigWidget& w );
+  void dragObject( const Objects& os, const QPoint& pointClickedOn,
                            KigWidget& w, bool ctrlOrShiftDown );
-  virtual void leftClickedObject( Object* o, const QPoint& p,
+  void leftClickedObject( Object* o, const QPoint& p,
                                   KigWidget& w, bool ctrlOrShiftDown );
-  virtual void midClicked( const QPoint& p, KigWidget& w );
-  virtual void rightClicked( const Objects& os, const QPoint& p, KigWidget& w );
-  virtual void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
+  void midClicked( const QPoint& p, KigWidget& w );
+  void rightClicked( const Objects& os, const QPoint& p, KigWidget& w );
+  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
+  void selectAll();
+  void deselectAll();
+  void invertSelection();
 
 protected:
   /**
@@ -58,7 +61,7 @@ protected:
 
 public:
   void selectObject( Object* o );
-  void selectObjects( Objects& os );
+  void selectObjects( const Objects& os );
   void unselectObject( Object* o );
   void clearSelection();
 
