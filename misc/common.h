@@ -87,6 +87,18 @@ const Coordinate calcCircleLineIntersect( const Coordinate& c,
                                           bool side,
                                           bool& valid );
 
+/*
+ * mp: this function computes each of the two intersections
+ * between a line given by a and b and a conic given by the
+ * cartesian equation ax^2 + by^2 + cxy + dx + ey + f = 0.
+ * the coefficients are stored in the coeffs vector in that order
+ */
+const Coordinate calcConicLineIntersect( const double * coeffs,
+                                          const Coordinate& a,
+                                          const Coordinate& b,
+                                          int which,
+                                          bool& valid );
+
 /**
  * this calculates the perpendicular projection of point p on line
  * ab...

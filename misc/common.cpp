@@ -310,6 +310,43 @@ const Coordinate calcCircleLineIntersect( const Coordinate& c,
   };
 };
 
+const Coordinate calcConicLineIntersect( const double* coeffs,
+                                          const Coordinate& a,
+                                          const Coordinate& b,
+                                          int which, bool& valid )
+{
+  double aa = coeffs[0];
+  double bb = coeffs[1];
+  double cc = coeffs[2];
+  double dd = coeffs[3];
+  double ee = coeffs[4];
+  double ff = coeffs[5];
+
+  double x = a.x;
+  double y = a.y;
+  double dx = b.x - a.x;
+  double dy = b.y - a.y;
+
+  double aaa = aa*dx*dx + bb*dy*dy + cc*dx*dy;
+  double bbb = 2*aa*x*dx + 2*bb*y*dy + cc*x*dy + cc*y*dx + dd*dx + ee*dy;
+  double ccc = aa*x*x + bb*y*y + cc*x*y + dd*x + ee*y + ff;
+
+  double discrim = bbb*bbb - 4*aaa*ccc;
+  if (discrim < 0.0)
+  {
+    valid = false;
+    return Coordinate();
+  }
+  else
+  {
+    valid = true;
+    double t = -bbb + which*sqrt(discrim);
+    t /= 2*aaa;
+
+    return a + t*(b - a);
+  }
+}
+
 const Coordinate calcPointProjection( const Coordinate& p, const Coordinate& a,
                                       const Coordinate& b )
 {
