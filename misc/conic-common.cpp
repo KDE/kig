@@ -243,7 +243,7 @@ const ConicPolarData calcConicBFFP(
   const std::vector<Coordinate>& args,
   int type )
 {
-  assert( args.size() > 1 && args.size() < 4 );
+  assert( args.size() >= 2 && args.size() <= 3 );
   assert( type == 1 || type == -1 );
 
   ConicPolarData ret;

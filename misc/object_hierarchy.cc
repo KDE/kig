@@ -524,8 +524,9 @@ ObjectHierarchy ObjectHierarchy::transformFinalObject( const Transformation& t )
   assert( mnumberofresults == 1 );
   ObjectHierarchy ret( *this );
   ret.mnodes.push_back( new PushStackNode( new TransformationImp( t ) ) );
+
   std::vector<int> parents;
-  parents.push_back( ret.mnodes.size() - 1 );
+  parents.push_back( ret.mnodes.size() - 1);
   parents.push_back( ret.mnodes.size() );
   const ObjectType* type = ApplyTransformationObjectType::instance();
   ret.mnodes.push_back( new ApplyTypeNode( type, parents ) );

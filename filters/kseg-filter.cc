@@ -235,8 +235,8 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         vector->calc( todoc );
 
         Objects transparents;
-        transparents.push_back( vector );
         transparents.push_back( parents[0] );
+        transparents.push_back( vector );
         o = new RealObject( TranslatedType::instance(), transparents );
         break;
       }
@@ -249,9 +249,9 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         angle->calc( todoc );
 
         Objects rotparents;
+        rotparents.push_back( parents[0] );
         rotparents.push_back( parents[1] );
         rotparents.push_back( angle );
-        rotparents.push_back( parents[0] );
         o = new RealObject( RotationType::instance(), rotparents );
         break;
       }
@@ -267,7 +267,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       }
       case G_REFLECTED:
       {
-        Objects mirparents( parents.rbegin(), parents.rend() );
+        Objects mirparents( parents.begin(), parents.end() );
         o = new RealObject( LineReflectionType::instance(), mirparents );
         break;
       }

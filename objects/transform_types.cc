@@ -29,8 +29,8 @@
 
 static const ArgsParser::spec argsspecTranslation[] =
 {
-  { VectorImp::stype(), I18N_NOOP("Translate by this vector") },
-  { ObjectImp::stype(), I18N_NOOP("Translate this object") }
+  { ObjectImp::stype(), I18N_NOOP("Translate this object") },
+  { VectorImp::stype(), I18N_NOOP("Translate by this vector") }
 };
 
 TranslatedType::TranslatedType()
@@ -52,16 +52,16 @@ ObjectImp* TranslatedType::calc( const Args& args, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  Coordinate dir = static_cast<const VectorImp*>( args[0] )->dir();
+  Coordinate dir = static_cast<const VectorImp*>( args[1] )->dir();
   Transformation t = Transformation::translation( dir );
 
-  return args[1]->transform( t );
+  return args[0]->transform( t );
 }
 
 static const ArgsParser::spec argsspecPointReflection[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Reflect around this point" ) },
-  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ) },
+  { PointImp::stype(), I18N_NOOP( "Reflect around this point" ) }
 };
 
 PointReflectionType::PointReflectionType()
@@ -83,16 +83,16 @@ ObjectImp* PointReflectionType::calc( const Args& args, const KigDocument& ) con
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
+  Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
   Transformation t = Transformation::pointReflection( center );
 
-  return args[1]->transform( t );
+  return args[0]->transform( t );
 }
 
 static const ArgsParser::spec argsspecLineReflection[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Reflect over this line" ) },
-  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Reflect over this line" ) }
 };
 
 LineReflectionType::LineReflectionType()
@@ -114,17 +114,17 @@ ObjectImp* LineReflectionType::calc( const Args& args, const KigDocument& ) cons
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  LineData d = static_cast<const AbstractLineImp*>( args[0] )->data();
+  LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
   Transformation t = Transformation::lineReflection( d );
 
-  return args[1]->transform( t );
+  return args[0]->transform( t );
 }
 
 static const ArgsParser::spec argsspecRotation[] =
 {
+  { ObjectImp::stype(), I18N_NOOP( "Rotate this object" ) },
   { PointImp::stype(), I18N_NOOP( "Rotate around this point" ) },
-  { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ) },
-  { ObjectImp::stype(), I18N_NOOP( "Rotate this object" ) }
+  { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ) }
 };
 
 RotationType::RotationType()
@@ -146,17 +146,17 @@ ObjectImp* RotationType::calc( const Args& args, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
-  double angle = static_cast<const AngleImp*>( args[1] )->size();
+  Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
+  double angle = static_cast<const AngleImp*>( args[2] )->size();
 
-  return args[2]->transform( Transformation::rotation( angle, center ) );
+  return args[0]->transform( Transformation::rotation( angle, center ) );
 }
 
 static const ArgsParser::spec argsspecScalingOverCenter[] =
 {
+  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ) },
   { PointImp::stype(), I18N_NOOP( "Scale with this center" ) },
-  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ) },
-  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ) }
+  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ) }
 };
 
 ScalingOverCenterType::ScalingOverCenterType()
@@ -178,17 +178,17 @@ ObjectImp* ScalingOverCenterType::calc( const Args& args, const KigDocument& ) c
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
-  double ratio = static_cast<const SegmentImp*>( args[1] )->length();
+  Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
+  double ratio = static_cast<const SegmentImp*>( args[2] )->length();
 
-  return args[2]->transform( Transformation::scaling( ratio, center ) );
+  return args[0]->transform( Transformation::scaling( ratio, center ) );
 }
 
 static const ArgsParser::spec argsspecScalingOverLine[] =
 {
+  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ) },
   { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ) },
-  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ) },
-  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ) }
+  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ) }
 };
 
 ScalingOverLineType::ScalingOverLineType()
@@ -210,17 +210,17 @@ ObjectImp* ScalingOverLineType::calc( const Args& args, const KigDocument& ) con
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  LineData line = static_cast<const AbstractLineImp*>( args[0] )->data();
-  double ratio = static_cast<const SegmentImp*>( args[1] )->length();
+  LineData line = static_cast<const AbstractLineImp*>( args[1] )->data();
+  double ratio = static_cast<const SegmentImp*>( args[2] )->length();
 
-  return args[2]->transform( Transformation::scaling( ratio, line ) );
+  return args[0]->transform( Transformation::scaling( ratio, line ) );
 }
 
 static const ArgsParser::spec argsspecProjectiveRotation[] =
 {
+  { ObjectImp::stype(), I18N_NOOP( "Projectively rotate this object" ) },
   { RayImp::stype(), I18N_NOOP( "Projectively rotate with this ray" ) },
-  { AngleImp::stype(), I18N_NOOP( "Projectively rotate by this angle" ) },
-  { ObjectImp::stype(), I18N_NOOP( "Projectively rotate this object" ) }
+  { AngleImp::stype(), I18N_NOOP( "Projectively rotate by this angle" ) }
 };
 
 ProjectiveRotationType::ProjectiveRotationType()
@@ -242,21 +242,21 @@ ObjectImp* ProjectiveRotationType::calc( const Args& args, const KigDocument& ) 
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  const RayImp* ray = static_cast<const RayImp*>( args[0] );
+  const RayImp* ray = static_cast<const RayImp*>( args[1] );
   Coordinate c1 = ray->data().a;
   Coordinate dir = ray->data().dir().normalize();
-  double alpha = static_cast<const AngleImp*>( args[1] )->size();
+  double alpha = static_cast<const AngleImp*>( args[2] )->size();
 
-  return args[2]->transform(
+  return args[0]->transform(
     Transformation::projectiveRotation( alpha, dir, c1 ) );
 }
 
 static const ArgsParser::spec argsspecCastShadow[] =
 {
+  { ObjectImp::stype(), I18N_NOOP( "Cast the shadow of this object" ) },
   { PointImp::stype(), I18N_NOOP( "Cast a shadow from this light source" ) },
   { AbstractLineImp::stype(),
-    I18N_NOOP( "Cast a shadow on the plane defined by this line" ) },
-  { ObjectImp::stype(), I18N_NOOP( "Cast the shadow of this object" ) }
+    I18N_NOOP( "Cast a shadow on the plane defined by this line" ) }
 };
 
 CastShadowType::CastShadowType()
@@ -278,9 +278,9 @@ ObjectImp* CastShadowType::calc( const Args& args, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  Coordinate lightsrc = static_cast<const PointImp*>( args[0] )->coordinate();
-  LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
-  return args[2]->transform(
+  Coordinate lightsrc = static_cast<const PointImp*>( args[1] )->coordinate();
+  LineData d = static_cast<const AbstractLineImp*>( args[2] )->data();
+  return args[0]->transform(
     Transformation::castShadow( lightsrc, d ) );
 }
 
@@ -366,8 +366,8 @@ bool CastShadowType::isTransform() const
 
 static const ArgsParser::spec argsspecApplyTransformation[] =
 {
-  { TransformationImp::stype(), I18N_NOOP( "Transform using this transformation" ) },
-  { ObjectImp::stype(), I18N_NOOP( "Transform this object" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Transform this object" ) },
+  { TransformationImp::stype(), I18N_NOOP( "Transform using this transformation" ) }
 };
 
 ApplyTransformationObjectType::ApplyTransformationObjectType()
@@ -388,7 +388,7 @@ const ApplyTransformationObjectType* ApplyTransformationObjectType::instance()
 ObjectImp* ApplyTransformationObjectType::calc( const Args& args, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
-  return args[1]->transform( static_cast<const TransformationImp*>( args[0] )->data() );
+  return args[0]->transform( static_cast<const TransformationImp*>( args[1] )->data() );
 }
 
 const ObjectImpType* ApplyTransformationObjectType::resultId() const

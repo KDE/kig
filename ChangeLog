@@ -1,3 +1,7 @@
+2003-10-22  Dominique Devriese  <devriese@kde.org>
+
+	* fix the ArgsParser parsing order, properly this time..
+
 2003-10-09  Dominique Devriese  <devriese@kde.org>
 
 	* make the New Script Wizard give an error when the script does

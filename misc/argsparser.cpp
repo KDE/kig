@@ -132,17 +132,20 @@ static Collection parse( const Collection& os, uint numberofanyobjects,
 
   uint anyobjscounter = 0;
 
-  for ( typename Collection::const_reverse_iterator o = os.rbegin(); o != os.rend(); ++o )
+  for ( typename Collection::const_iterator o = os.begin(); o != os.end(); ++o )
   {
-    for( int i = margs.size() - 1; i >= 0; --i )
-      if ( hasimp( **o, margs[i].type ) && ret[i] == 0 )
+    if( anyobjscounter < numberofanyobjects )
+    {
+      ret[anyobjscounter++]= *o;
+      goto added;
+    }
+    for( uint i = 0; i < margs.size(); ++i )
+      if ( hasimp( **o, margs[i].type ) && ret[numberofanyobjects + i] == 0 )
       {
         // object o is of a type that we're looking for
-        ret[i] = *o;
+        ret[numberofanyobjects + i] = *o;
         goto added;
       }
-    if( anyobjscounter < numberofanyobjects )
-      ret[margs.size() + anyobjscounter++]= *o;
   added:
     ;
   };
@@ -189,23 +192,23 @@ ArgsParser::spec ArgsParser::findSpec( const ObjectImp* obj, const Args& parents
   uint numberofanyobjects = manyobjsspec.size();
   uint anyobjscounter = 0;
 
-  // special case hack for some transformation types that take an
-  // argument and an ObjectImp..  if anyone has a better solution, please
-  // tell me :)
-  if ( parents.size() == 1 && numberofanyobjects > 0 )
-  {
-    assert( parents[0] == obj );
-    ret.type = ObjectImp::stype();
-    ret.usetext = manyobjsspec[0];
-    return ret;
-  }
+  std::vector<bool> found( margs.size(), false );
 
-  std::vector<bool> found( margs.size() );
-
-  for ( Args::const_reverse_iterator o = parents.rbegin();
-        o != parents.rend(); ++o )
+  for ( Args::const_iterator o = parents.begin();
+        o != parents.end(); ++o )
   {
-    for ( int i = margs.size() - 1; i >= 0; --i )
+    if ( anyobjscounter < numberofanyobjects )
+    {
+      if ( *o == obj )
+      {
+        ret.type = ObjectImp::stype();
+        ret.usetext = manyobjsspec[anyobjscounter];
+        return ret;
+      };
+      ++anyobjscounter;
+      goto matched;
+    }
+    for ( uint i = 0; i < margs.size(); ++i )
     {
       if ( (*o)->inherits( margs[i].type ) && !found[i] )
       {
@@ -217,16 +220,6 @@ ArgsParser::spec ArgsParser::findSpec( const ObjectImp* obj, const Args& parents
         // statements.. trust me ;)
         goto matched;
       };
-    };
-    if ( anyobjscounter < numberofanyobjects )
-    {
-      if ( *o == obj )
-      {
-        ret.type = ObjectImp::stype();
-        ret.usetext = manyobjsspec[anyobjscounter];
-        return ret;
-      };
-      ++anyobjscounter;
     };
   matched:
     ;
@@ -253,11 +246,11 @@ static bool checkArgs( const Collection& os, uint min, const std::vector<ArgsPar
 {
   assert( os.size() <= argsspec.size() + anyobjsspecsize );
   if( os.size() < min ) return false;
-  uint checknum = os.size() < argsspec.size() ? os.size() : argsspec.size();
-  for ( uint i = 0; i < checknum; ++i )
+  uint checknum = std::min( os.size(), argsspec.size() + anyobjsspecsize );
+  for ( uint i = anyobjsspecsize; i < checknum; ++i )
   {
     if( !isvalid( *os[i] ) ) return false;
-    if( !hasimp( *os[i], argsspec[i].type ) ) return false;
+    if( !hasimp( *os[i], argsspec[i - anyobjsspecsize].type ) ) return false;
   }
   return true;
 }
