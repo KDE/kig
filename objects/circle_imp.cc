@@ -305,7 +305,9 @@ const ObjectImpType* CircleImp::stype()
     I18N_NOOP( "Select this circle" ),
     I18N_NOOP( "Remove a Circle" ),
     I18N_NOOP( "Add a Circle" ),
-    I18N_NOOP( "Move a Circle" ) );
+    I18N_NOOP( "Move a Circle" ),
+    I18N_NOOP( "Attach to this circle" )
+    );
   return &t;
 };
 

@@ -61,13 +61,15 @@ protected:
 
   void setCoordinate( const Coordinate& coord );
   void setText( const QString& s );
+  void setLocationParent( Object* o );
   // objects you pass here, should be newly created property objects,
   // that have no children..
   void setPropertyObjects( const argvect& props );
   void setFrame( bool f );
 
   virtual void finish( const Coordinate& s, const QString& s,
-                       const argvect& props, bool needframe ) = 0;
+                       const argvect& props, bool needframe,
+                       Object* locationparent ) = 0;
 
 private:
   // the KigMode interface..
@@ -103,7 +105,8 @@ public:
   ~TextLabelConstructionMode();
 
   void finish( const Coordinate& coord, const QString& s,
-               const argvect& props, bool needframe );
+               const argvect& props, bool needframe,
+               Object* locationparent );
 };
 
 class TextLabelRedefineMode
@@ -111,7 +114,8 @@ class TextLabelRedefineMode
 {
   RealObject* mlabel;
   void finish( const Coordinate& coord, const QString& s,
-               const argvect& props, bool needframe );
+               const argvect& props, bool needframe,
+               Object* locationparent );
 public:
   TextLabelRedefineMode( KigDocument& d, RealObject* label );
   ~TextLabelRedefineMode();

@@ -351,6 +351,8 @@ const ObjectImpType* CubicImp::stype()
     I18N_NOOP( "Select this cubic" ),
     I18N_NOOP( "Remove a Cubic" ),
     I18N_NOOP( "Add a Cubic" ),
-    I18N_NOOP( "Move a Cubic" ) );
+    I18N_NOOP( "Move a Cubic" ),
+    I18N_NOOP( "Attach to this cubic" )
+    );
   return &t;
 };

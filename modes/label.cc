@@ -27,9 +27,11 @@
 #include "../kig/kig_commands.h"
 #include "../misc/i18n.h"
 #include "../misc/common.h"
+#include "../misc/kigpainter.h"
 #include "../objects/object.h"
 #include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
+#include "../objects/curve_imp.h"
 #include "../objects/point_imp.h"
 #include "../objects/text_imp.h"
 #include "../objects/text_type.h"
@@ -51,6 +53,8 @@ public:
   QPoint plc;
   // the currently selected coordinate
   Coordinate mcoord;
+  // the possible parent object that defines the location of the label..
+  Object* locationparent;
 
   // the text is only kept in the text input widget, not here
   // QString mtext;
@@ -85,14 +89,8 @@ TextLabelModeBase::~TextLabelModeBase()
 TextLabelModeBase::TextLabelModeBase( KigDocument& doc )
   : KigMode( doc ), d( new Private )
 {
-  d->wiz = 0;
+  d->locationparent = 0;
   d->mwawd = SelectingLocation;
-  const std::vector<KigWidget*>& widgets = mdoc.widgets();
-  for ( uint i = 0; i < widgets.size(); ++i )
-  {
-    KigWidget* w = widgets[i];
-    w->setCursor( KCursor::crossCursor() );
-  };
   d->wiz = new TextLabelWizard( doc.widgets()[0], this );
 }
 
@@ -195,7 +193,45 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
     Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
     if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
     else w->setCursor( KCursor::arrowCursor() );
-  };
+  }
+  else if ( d->mwawd == SelectingLocation )
+  {
+    Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
+    bool attachable = false;
+    d->locationparent = 0;
+    for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    {
+      if( (*i)->hasimp( PointImp::stype() ) ||
+          (*i)->hasimp( CurveImp::stype() ) )
+      {
+        attachable = true;
+        d->locationparent = *i;
+        break;
+      };
+    };
+    w->updateCurPix();
+    if ( attachable )
+    {
+      w->setCursor( KCursor::handCursor() );
+      QString s = d->locationparent->imp()->type()->attachToThisStatement();
+      mdoc.emitStatusBarText( s );
+
+      KigPainter p( w->screenInfo(), &w->curPix, mdoc );
+
+      // set the text next to the arrow cursor
+      QPoint point = e->pos();
+      point.setX(point.x()+15);
+
+      p.drawTextStd( point, s );
+      w->updateWidget( p.overlay() );
+    }
+    else
+    {
+      w->setCursor( KCursor::crossCursor() );
+      mdoc.emitStatusBarText( 0 );
+      w->updateWidget();
+    };
+  }
 }
 
 void TextLabelModeBase::enterTextPageEntered()
@@ -244,7 +280,7 @@ void TextLabelModeBase::finishPressed()
                               "value for. Please remove them or select enough arguments." ) );
   else
   {
-    finish( d->mcoord, s, d->args, needframe );
+    finish( d->mcoord, s, d->args, needframe, d->locationparent );
     killMode();
   };
 }
@@ -413,10 +449,15 @@ TextLabelConstructionMode::~TextLabelConstructionMode()
 
 void TextLabelConstructionMode::finish(
   const Coordinate& coord, const QString& s,
-  const argvect& props, bool needframe )
+  const argvect& props, bool needframe,
+  Object* locationparent )
 {
   Objects args( props.begin(), props.end() );
-  Object* label = ObjectFactory::instance()->label( s, coord, needframe, args, mdoc );
+  Object* label = 0;
+  if ( locationparent )
+    label = ObjectFactory::instance()->attachedLabel( s, locationparent, coord, needframe, args, mdoc );
+  else
+    label = ObjectFactory::instance()->label( s, coord, needframe, args, mdoc );
   mdoc.addObject( label );
 }
 
@@ -438,7 +479,8 @@ TextLabelRedefineMode::TextLabelRedefineMode( KigDocument& d, RealObject* label 
   Coordinate coord = static_cast<const PointImp*>( firstthree[1]->imp() )->coordinate();
   QString text = static_cast<const StringImp*>( firstthree[2]->imp() )->data();
 
-  setCoordinate( coord );
+  // don't set it, let the user redefine it..
+//  setCoordinate( coord );
   setText( text );
   setFrame( frame );
 
@@ -461,7 +503,8 @@ TextLabelRedefineMode::~TextLabelRedefineMode()
 
 void TextLabelRedefineMode::finish(
   const Coordinate& coord, const QString& s,
-  const argvect& props, bool needframe )
+  const argvect& props, bool needframe,
+  Object* locationparent )
 {
   Objects parents = mlabel->parents();
   assert( parents.size() >= 3 );
@@ -480,16 +523,39 @@ void TextLabelRedefineMode::finish(
   assert( firstthree[1]->inherits( Object::ID_DataObject ) );
   assert( firstthree[2]->inherits( Object::ID_DataObject ) );
   static_cast<DataObject*>( firstthree[0] )->setImp( new IntImp( needframe ? 1 : 0 ) );
-  static_cast<DataObject*>( firstthree[1] )->setImp( new PointImp( coord ) );
+
+  // we don't do this, because
+  // 1 this isn't necessarily a DataObject, we also support it to be a
+  //   user-known point, or an internal constrained point..
+  // 2 we don't know that we don't want it to become a user-known
+  //   point or an internal constrained point, instead of a
+  //   DataObject..
+  // static_cast<DataObject*>( firstthree[1] )->setImp( new PointImp(
+  // coord ) );
+
   static_cast<DataObject*>( firstthree[2] )->setImp( new StringImp( s ) );
   kc->addTask( mon.finish() );
 
   Objects oldparents = mlabel->parents();
   Objects p( props.begin(), props.end() );
   p.calc( mdoc );
-  mdoc._addObjects( p );
 
   Objects np = firstthree;
+  if ( locationparent && locationparent->hasimp( CurveImp::stype() ) )
+  {
+    double param = static_cast<const CurveImp*>( locationparent->imp() )->getParam( coord, mdoc );
+    np[1] = ObjectFactory::instance()->constrainedPoint( locationparent, param );
+    np[1]->setShown( false );
+    np[1]->calc( mdoc );
+  }
+  else if ( locationparent )
+  {
+    assert( locationparent->hasimp( PointImp::stype() ) );
+    np[1] = locationparent;
+  }
+  else
+    np[1] = new DataObject( new PointImp( coord ) );
+
   copy( p.begin(), p.end(), back_inserter( np ) );
 
   kc->addTask(
@@ -502,4 +568,9 @@ void TextLabelRedefineMode::finish(
 void TextLabelModeBase::setFrame( bool f )
 {
   d->wiz->needFrameCheckBox->setChecked( f );
+}
+
+void TextLabelModeBase::setLocationParent( Object* o )
+{
+  d->locationparent = o;
 }

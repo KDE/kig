@@ -90,6 +90,7 @@ class ObjectImpType
   const char* mremoveastatement;
   const char* maddastatement;
   const char* mmoveastatement;
+  const char* mattachtothisstatement;
   class StaticPrivate;
   static StaticPrivate* sd();
 public:
@@ -117,7 +118,8 @@ public:
   ObjectImpType( const ObjectImpType* parent, const char* internalname,
                  const char* translatedname, const char* selectstatement,
                  const char* removeastatement, const char* addastatement,
-                 const char* moveastatement );
+                 const char* moveastatement,
+                 const char* attachtothisstatement );
   ~ObjectImpType();
 
   bool inherits( const ObjectImpType* t ) const;
@@ -136,6 +138,10 @@ public:
   // returns a translated string of the form "move a xxx" (
   // e.g. "Move a segment" ).
   QString moveAStatement() const;
+  // returns a translated string of the form "attach to this xxx" (
+  // e.g. "Attach to this segment" ). ( used by the text label
+  // construction mode )
+  QString attachToThisStatement() const;
 };
 
 /**

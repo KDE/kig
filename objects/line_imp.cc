@@ -410,7 +410,7 @@ bool AbstractLineImp::equals( const ObjectImp& rhs ) const
 const ObjectImpType* AbstractLineImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "line", 0, 0, 0, 0, 0 );
+    Parent::stype(), "line", 0, 0, 0, 0, 0, 0 );
   return &t;
 };
 
@@ -422,7 +422,9 @@ const ObjectImpType* LineImp::stype()
     I18N_NOOP( "Select this line" ),
     I18N_NOOP( "Remove a Line" ),
     I18N_NOOP( "Add a Line" ),
-    I18N_NOOP( "Move a Line" ) );
+    I18N_NOOP( "Move a Line" ),
+    I18N_NOOP( "Attach to this line" )
+    );
   return &t;
 };
 
@@ -434,7 +436,9 @@ const ObjectImpType* SegmentImp::stype()
     I18N_NOOP( "Select this segment" ),
     I18N_NOOP( "Remove a Segment" ),
     I18N_NOOP( "Add a Segment" ),
-    I18N_NOOP( "Move a Segment" ) );
+    I18N_NOOP( "Move a Segment" ),
+    I18N_NOOP( "Attach to this segment" )
+    );
   return &t;
 };
 
@@ -446,7 +450,9 @@ const ObjectImpType* RayImp::stype()
     I18N_NOOP( "Select this ray" ),
     I18N_NOOP( "Remove a Ray" ),
     I18N_NOOP( "Add a Ray" ),
-    I18N_NOOP( "Move a Ray" ) );
+    I18N_NOOP( "Move a Ray" ),
+    I18N_NOOP( "Attach to this ray" )
+    );
   return &t;
 };
 

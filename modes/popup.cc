@@ -578,8 +578,8 @@ bool PropertiesActionsProvider::executeAction(
     ret.push_back( new PropertyObject( parent, propid ) );
     ret.back()->calc( doc );
     Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
-    Object* label = ObjectFactory::instance()->label(
-      QString::fromLatin1( "%1" ), c,
+    Object* label = ObjectFactory::instance()->attachedLabel(
+      QString::fromLatin1( "%1" ), parent, c,
       false, ret, doc );
     doc.addObject( label );
   }

@@ -26,6 +26,8 @@ const ObjectImpType* CurveImp::stype()
     I18N_NOOP( "Select this curve" ),
     I18N_NOOP( "Remove a Curve" ),
     I18N_NOOP( "Add a Curve" ),
-    I18N_NOOP( "Move a Curve" ) );
+    I18N_NOOP( "Move a Curve" ),
+    I18N_NOOP( "Attach to this curve" )
+    );
   return &t;
 };

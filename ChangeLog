@@ -1,3 +1,7 @@
+2003-07-20  Dominique Devriese  <devriese@kde.org>
+
+	* add support for attached text labels.
+
 2003-07-17  Dominique Devriese  <devriese@kde.org>
 
 	* fix the "conversion from const char* to char*" problem in

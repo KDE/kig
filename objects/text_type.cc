@@ -115,7 +115,7 @@ QStringList TextType::specialActions() const
 {
   QStringList ret;
   ret << i18n( "&Toggle Frame" );
-  ret << i18n( "C&hange..." );
+  ret << i18n( "&Redefine..." );
   return ret;
 }
 

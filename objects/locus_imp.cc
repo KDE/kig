@@ -331,7 +331,9 @@ const ObjectImpType* LocusImp::stype()
     I18N_NOOP( "Select this locus" ),
     I18N_NOOP( "Remove a Locus" ),
     I18N_NOOP( "Add a Locus" ),
-    I18N_NOOP( "Move a Locus" ) );
+    I18N_NOOP( "Move a Locus" ),
+    I18N_NOOP( "Attach to this locus" )
+    );
   return &t;
 };
 

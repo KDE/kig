@@ -177,11 +177,13 @@ ObjectImpType::ObjectImpType( const ObjectImpType* parent,
                               const char* selectstatement,
                               const char* removeastatement,
                               const char* addastatement,
-                              const char* moveastatement )
+                              const char* moveastatement,
+                              const char* attachtothisstatement )
   : mparent( parent ), minternalname( internalname ),
     mtranslatedname( translatedname ), mselectstatement( selectstatement ),
     mremoveastatement( removeastatement ), maddastatement( addastatement ),
-    mmoveastatement( moveastatement )
+    mmoveastatement( moveastatement ),
+    mattachtothisstatement( attachtothisstatement )
 {
   sd()->namemap[minternalname] = this;
 }
@@ -241,7 +243,7 @@ bool ObjectImp::inherits( const ObjectImpType* t ) const
 
 const ObjectImpType* ObjectImp::stype()
 {
-  static const ObjectImpType t( 0, "any" , 0, 0, 0, 0, 0 );
+  static const ObjectImpType t( 0, "any" , 0, 0, 0, 0, 0, 0 );
   return &t;
 }
 
@@ -254,4 +256,9 @@ ObjectImpType::StaticPrivate* ObjectImpType::sd()
 bool ObjectImp::isCache() const
 {
   return false;
+}
+
+QString ObjectImpType::attachToThisStatement() const
+{
+  return i18n( mattachtothisstatement );
 }

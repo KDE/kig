@@ -208,7 +208,7 @@ bool StringImp::canFillInNextEscape() const
 const ObjectImpType* InvalidImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "invalid", 0, 0, 0, 0, 0 );
+    Parent::stype(), "invalid", 0, 0, 0, 0, 0, 0 );
   return &t;
 };
 
@@ -220,7 +220,9 @@ const ObjectImpType* StringImp::stype()
     I18N_NOOP( "Select this string" ),
     I18N_NOOP( "Remove a String" ),
     I18N_NOOP( "Add a String" ),
-    I18N_NOOP( "Move a String" ) );
+    I18N_NOOP( "Move a String" ),
+    I18N_NOOP( "Attach to this string" )
+    );
   return &t;
 };
 const ObjectImpType* HierarchyImp::stype()
@@ -231,7 +233,9 @@ const ObjectImpType* HierarchyImp::stype()
     I18N_NOOP( "Select this hierarchy" ),
     I18N_NOOP( "Remove a Hierarchy" ),
     I18N_NOOP( "Add a Hierarchy" ),
-    I18N_NOOP( "Move a Hierarchy" ) );
+    I18N_NOOP( "Move a Hierarchy" ),
+    I18N_NOOP( "Attach to this hierarchy" )
+    );
   return &t;
 };
 const ObjectImpType* TransformationImp::stype()
@@ -242,7 +246,9 @@ const ObjectImpType* TransformationImp::stype()
     I18N_NOOP( "Select this transformation" ),
     I18N_NOOP( "Remove a Transformation" ),
     I18N_NOOP( "Add a Transformation" ),
-    I18N_NOOP( "Move a Transformation" ) );
+    I18N_NOOP( "Move a Transformation" ),
+    I18N_NOOP( "Attach to this transformation" )
+    );
   return &t;
 };
 
@@ -284,7 +290,9 @@ const ObjectImpType* DoubleImp::stype()
     I18N_NOOP( "Select this number" ),
     I18N_NOOP( "Remove a Number" ),
     I18N_NOOP( "Add a Number" ),
-    I18N_NOOP( "Move a Number" ) );
+    I18N_NOOP( "Move a Number" ),
+    I18N_NOOP( "Attach to this number" )
+    );
   return &t;
 }
 
@@ -296,7 +304,9 @@ const ObjectImpType* IntImp::stype()
     I18N_NOOP( "Select this number" ),
     I18N_NOOP( "Remove a Number" ),
     I18N_NOOP( "Add a Number" ),
-    I18N_NOOP( "Move a Number" ) );
+    I18N_NOOP( "Move a Number" ),
+    I18N_NOOP( "Attach to this number" )
+    );
   return &t;
 }
 

@@ -68,6 +68,15 @@ public:
                  const Objects& parents,
                  const KigDocument& doc );
 
+  // this one does the same as the above, only that the new label is
+  // attached to locationparent if it is non-null..
+  Object* attachedLabel( const QString& s,
+                 Object* locationparent,
+                 const Coordinate& loc,
+                 bool needframe,
+                 const Objects& parents,
+                 const KigDocument& doc );
+
   // returns a property object for the property p of object o.  NOTE
   // that o should have already been calc'd, or this will fail and
   // return 0..  The returned object also needs to be calced after

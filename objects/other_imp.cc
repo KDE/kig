@@ -474,7 +474,9 @@ const ObjectImpType* AngleImp::stype()
     I18N_NOOP( "Select this angle" ),
     I18N_NOOP( "Remove an Angle" ),
     I18N_NOOP( "Add an Angle" ),
-    I18N_NOOP( "Move an Angle" ) );
+    I18N_NOOP( "Move an Angle" ),
+    I18N_NOOP( "Attach to this angle" )
+    );
   return &t;
 };
 const ObjectImpType* VectorImp::stype()
@@ -485,7 +487,9 @@ const ObjectImpType* VectorImp::stype()
     I18N_NOOP( "Select this vector" ),
     I18N_NOOP( "Remove a Vector" ),
     I18N_NOOP( "Add a Vector" ),
-    I18N_NOOP( "Move a Vector" ) );
+    I18N_NOOP( "Move a Vector" ),
+    I18N_NOOP( "Attach to this vector" )
+    );
   return &t;
 };
 const ObjectImpType* ArcImp::stype()
@@ -496,7 +500,9 @@ const ObjectImpType* ArcImp::stype()
     I18N_NOOP( "Select this arc" ),
     I18N_NOOP( "Remove an Arc" ),
     I18N_NOOP( "Add an Arc" ),
-    I18N_NOOP( "Move an Arc" ) );
+    I18N_NOOP( "Move an Arc" ),
+    I18N_NOOP( "Attach to this arc" )
+    );
   return &t;
 };
 

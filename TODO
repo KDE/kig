@@ -32,8 +32,6 @@
 - add full undo support for everything the user might do: moving is
   done, along with some other things, some less important issues remain
 
-- figure out some cool way to "attach" a textlabel to an object.. 
-
 * hard :
 
 - figure out a way to allow the user to enable and disable certain

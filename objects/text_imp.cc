@@ -143,7 +143,9 @@ const ObjectImpType* TextImp::stype()
     I18N_NOOP( "Select this label" ),
     I18N_NOOP( "Remove a Label" ),
     I18N_NOOP( "Add a Label" ),
-    I18N_NOOP( "Move a Label" ) );
+    I18N_NOOP( "Move a Label" ),
+    I18N_NOOP( "Attach to this label" )
+    );
   return &t;
 };
 

@@ -174,12 +174,34 @@ Object* ObjectFactory::label( const QString& s, const Coordinate& loc,
                               bool needframe, const Objects& nparents,
                               const KigDocument& doc )
 {
+  return attachedLabel( s, 0, loc, needframe, nparents, doc );
+}
+
+Object* ObjectFactory::attachedLabel( const QString& s,
+                                      Object* p,
+                                      const Coordinate& loc,
+                                      bool needframe,
+                                      const Objects& nparents,
+                                      const KigDocument& doc )
+{
   using namespace std;
   Objects parents;
   parents.reserve( nparents.size() + 3 );
   parents.push_back( new DataObject( new IntImp( needframe ? 1 : 0 ) ) );
   parents.push_back( new DataObject( new StringImp( s ) ) );
-  parents.push_back( new DataObject( new PointImp( loc ) ) );
+
+  if ( p && p->hasimp( PointImp::stype() ) )
+    parents.push_back( p );
+  else if ( p && p->hasimp( CurveImp::stype() ) )
+  {
+    Object* o = constrainedPoint( p, static_cast<const CurveImp*>( p->imp() )->getParam( loc, doc ) );
+    o->calc( doc );
+    o->setShown( false );
+    parents.push_back( o );
+  }
+  else
+    parents.push_back( new DataObject( new PointImp( loc ) ) );
+
   copy( nparents.begin(), nparents.end(), back_inserter( parents ) );
   RealObject* ret = new RealObject( TextType::instance(), parents );
   ret->calc( doc );

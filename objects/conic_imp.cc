@@ -324,7 +324,9 @@ const ObjectImpType* ConicImp::stype()
     I18N_NOOP( "Select this conic" ),
     I18N_NOOP( "Remove a Conic" ),
     I18N_NOOP( "Add a Conic" ),
-    I18N_NOOP( "Move a Conic" ) );
+    I18N_NOOP( "Move a Conic" ),
+    I18N_NOOP( "Attach to this conic" )
+    );
   return &t;
 };
 
