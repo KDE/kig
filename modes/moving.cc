@@ -64,10 +64,10 @@ void MovingModeBase::initScreen( const Objects& tin )
   KigPainter p( mview.screenInfo(), &mview.stillPix, mdoc );
   p.drawGrid( mdoc.coordinateSystem() );
   p.drawObjects( nmo );
-// not necessary
-//   mview.drawObjects( amo, p );
-
   mview.updateCurPix();
+
+  KigPainter p2( mview.screenInfo(), &mview.curPix, mdoc );
+  p2.drawObjects( amo );
 }
 
 void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
