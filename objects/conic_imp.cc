@@ -121,7 +121,7 @@ ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
   else assert( false );
 }
 
-double ConicImp::getParam( const Coordinate& p ) const
+double ConicImp::getParam( const Coordinate& p, const KigDocument& ) const
 {
   const ConicPolarData d = polarData();
   Coordinate tmp = p - d.focus1;

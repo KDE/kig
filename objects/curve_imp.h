@@ -32,7 +32,7 @@ public:
   // end-points.  E.g. for a Line, getPoint(0) returns a more or less
   // infinite point.  getPoint(0.5) should return the point in the
   // middle.
-  virtual double getParam( const Coordinate& point ) const = 0;
+  virtual double getParam( const Coordinate& point, const KigDocument& ) const = 0;
   // this should be the inverse function of getPoint().
   // Note that it should also do something reasonable when p is not on
   // the curve.

@@ -74,7 +74,7 @@ public:
   int type() const;
 
   const Coordinate getPoint( double param, const KigDocument& ) const;
-  double getParam( const Coordinate& ) const;
+  double getParam( const Coordinate&, const KigDocument& ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
@@ -106,7 +106,7 @@ public:
   ObjectImp* transform( const Transformation& ) const;
 
   const Coordinate getPoint( double param, const KigDocument& ) const;
-  double getParam (const Coordinate&) const;
+  double getParam( const Coordinate&, const KigDocument& ) const;
 
   int type() const;
   RayImp* copy() const;
@@ -129,7 +129,7 @@ public:
   ObjectImp* transform( const Transformation& ) const;
 
   const Coordinate getPoint( double param, const KigDocument& ) const;
-  double getParam (const Coordinate&) const;
+  double getParam( const Coordinate&, const KigDocument& ) const;
 
   int type() const;
   LineImp* copy() const;

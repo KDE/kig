@@ -89,7 +89,7 @@ bool TextType::canMove() const
 }
 
 void TextType::move( RealObject* ourobj, const Coordinate&,
-                     const Coordinate& dist ) const
+                     const Coordinate& dist, const KigDocument& ) const
 {
   const Objects parents = ourobj->parents();
   assert( parents.size() >= 3 );

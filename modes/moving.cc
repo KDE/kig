@@ -124,7 +124,7 @@ void MovingMode::stopMove()
 void MovingMode::moveTo( const Coordinate& o )
 {
   for( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
-    (*i)->move( pwwlmt, o - pwwlmt );
+    (*i)->move( pwwlmt, o - pwwlmt, mdoc );
   pwwlmt = o;
 }
 

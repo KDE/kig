@@ -64,11 +64,11 @@ Objects ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d,
 }
 
 void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
-                                   const KigDocument& d, const KigWidget& w )
+                                   const KigDocument& doc, const KigWidget& w )
 {
   assert( tpoint->inherits( Object::ID_RealObject ) );
   RealObject* point = static_cast<RealObject*>( tpoint );
-  Objects o = d.whatAmIOn( c, w.screenInfo() );
+  Objects o = doc.whatAmIOn( c, w.screenInfo() );
   Object* v = 0;
   // we don't want one of our children as a parent...
   Objects children = point->getAllChildren();
@@ -83,7 +83,7 @@ void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
   if ( v )
   {
     // a constrained point...
-    DataObject* d = new DataObject( new DoubleImp( static_cast<const CurveImp*>( v->imp() )->getParam( c ) ) );
+    DataObject* d = new DataObject( new DoubleImp( static_cast<const CurveImp*>( v->imp() )->getParam( c, doc ) ) );
     Objects args;
     args.push_back( d );
     args.push_back( v );

@@ -42,7 +42,7 @@ public:
   bool inRect( const Rect& r, int width, const ScreenInfo& si ) const;
   bool valid() const;
 
-  double getParam( const Coordinate& point ) const;
+  double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;
 
   const uint numberOfProperties() const;

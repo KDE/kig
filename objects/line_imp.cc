@@ -242,7 +242,7 @@ const Coordinate SegmentImp::getPoint( double param, const KigDocument& ) const
   return mdata.a + mdata.dir()*param;
 }
 
-double SegmentImp::getParam( const Coordinate& p ) const
+double SegmentImp::getParam( const Coordinate& p, const KigDocument& ) const
 {
   Coordinate pt = calcPointOnPerpend( data(), p );
   pt = calcIntersectionPoint( data(), LineData( p, pt ) );
@@ -268,7 +268,7 @@ const Coordinate RayImp::getPoint( double param, const KigDocument& ) const
   return mdata.a + mdata.dir()*param;
 }
 
-double RayImp::getParam( const Coordinate& p ) const
+double RayImp::getParam( const Coordinate& p, const KigDocument& ) const
 {
   const LineData ld = data();
   Coordinate pt = calcPointOnPerpend( ld, p );
@@ -313,7 +313,7 @@ const Coordinate LineImp::getPoint( double p, const KigDocument& ) const
   return mdata.a + p*mdata.dir();
 }
 
-double LineImp::getParam( const Coordinate& point ) const
+double LineImp::getParam( const Coordinate& point, const KigDocument& ) const
 {
   // somewhat the reverse of getPoint, although it also supports
   // points not on the line...

@@ -75,7 +75,7 @@ ConstrainedPointType::~ConstrainedPointType()
 }
 
 void FixedPointType::move( RealObject* ourobj, const Coordinate&,
-                           const Coordinate& dist ) const
+                           const Coordinate& dist, const KigDocument& ) const
 {
   // fetch the old coord..;
   Objects pa = ourobj->parents();
@@ -97,7 +97,7 @@ void FixedPointType::move( RealObject* ourobj, const Coordinate&,
 }
 
 void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& from,
-                                 const Coordinate& dist ) const
+                                 const Coordinate& dist, const KigDocument& d ) const
 {
   // fetch the new coord the user wants..
   const Coordinate nc = from + dist;
@@ -109,7 +109,7 @@ void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& from,
   const CurveImp* ci = static_cast<const CurveImp*>( parents.back()->imp() );
 
   // fetch the new param..
-  const double np = ci->getParam( nc );
+  const double np = ci->getParam( nc, d );
 
   assert( parents[0]->inherits( Object::ID_DataObject ) );
   assert( parents[0]->hasimp( ObjectImp::ID_DoubleImp ) );

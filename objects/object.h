@@ -60,8 +60,9 @@ public:
   virtual bool contains( const Coordinate& p, const ScreenInfo& si ) const = 0;
   virtual bool inRect( const Rect& r, const ScreenInfo& si ) const = 0;
 
-  virtual bool canMove() const = 0;
-  virtual void move( const Coordinate& from, const Coordinate& dist ) = 0;
+  virtual bool canMove() const;
+  virtual void move( const Coordinate& from, const Coordinate& dist,
+                     const KigDocument& );
 
   virtual void calc( const KigDocument& ) = 0;
 
@@ -154,7 +155,7 @@ public:
   bool inRect( const Rect& r, const ScreenInfo& si ) const;
 
   bool canMove() const;
-  void move( const Coordinate& from, const Coordinate& dist );
+  void move( const Coordinate& from, const Coordinate& dist, const KigDocument& );
 
   void calc( const KigDocument& d );
 
@@ -200,9 +201,6 @@ public:
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
   bool inRect( const Rect& r, const ScreenInfo& ) const;
 
-  bool canMove() const;
-  void move( const Coordinate& from, const Coordinate& dist );
-
   void calc( const KigDocument& );
 
   bool shown() const;
@@ -230,9 +228,6 @@ public:
   void draw( KigPainter& p, bool showSelection ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
   bool inRect( const Rect& r, const ScreenInfo& ) const;
-
-  bool canMove() const;
-  void move( const Coordinate& from, const Coordinate& dist );
 
   void calc( const KigDocument& );
 

@@ -37,7 +37,7 @@ public:
 
   bool canMove() const;
   void move( RealObject* ourobj, const Coordinate& from,
-             const Coordinate& dist ) const;
+             const Coordinate& dist, const KigDocument& ) const;
 };
 
 #endif

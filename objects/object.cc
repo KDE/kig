@@ -24,6 +24,7 @@
 #include "../misc/kigpainter.h"
 
 #include <qpen.h>
+#include <assert.h>
 #include <functional>
 #include <algorithm>
 
@@ -60,9 +61,10 @@ bool RealObject::inRect( const Rect& r, const ScreenInfo& si ) const
   return mimp->inRect( r, mwidth, si );
 }
 
-void RealObject::move( const Coordinate& from, const Coordinate& dist )
+void RealObject::move( const Coordinate& from, const Coordinate& dist,
+                       const KigDocument& d )
 {
-  mtype->move( this, from, dist );
+  mtype->move( this, from, dist, d );
 }
 
 void ObjectWithParents::calc( const KigDocument& d )
@@ -255,16 +257,6 @@ bool DataObject::inRect( const Rect&, const ScreenInfo& ) const
   return false;
 }
 
-bool DataObject::canMove() const
-{
-  return false;
-}
-
-void DataObject::move( const Coordinate&, const Coordinate& )
-{
-//    assert( false );
-}
-
 void DataObject::calc( const KigDocument& )
 {
 }
@@ -405,15 +397,6 @@ bool PropertyObject::inRect( const Rect&, const ScreenInfo& ) const
   return false;
 }
 
-bool PropertyObject::canMove() const
-{
-  return false;
-}
-
-void PropertyObject::move( const Coordinate&, const Coordinate& )
-{
-}
-
 void PropertyObject::calc( const KigDocument& d )
 {
   delete mimp;
@@ -451,4 +434,16 @@ void RealObject::setColor( const QColor& c )
 {
   mcolor = c;
 }
+
+bool Object::canMove() const
+{
+  return false;
+}
+
+void Object::move( const Coordinate&, const Coordinate&,
+                   const KigDocument& )
+{
+  assert( false );
+}
+
 

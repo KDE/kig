@@ -64,7 +64,7 @@ bool LocusImp::valid() const
   return true;
 }
 
-double LocusImp::getParam( const Coordinate& ) const
+double LocusImp::getParam( const Coordinate&, const KigDocument& ) const
 {
   // TODO
   return 0.5;

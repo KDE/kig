@@ -48,7 +48,7 @@ public:
   CubicImp* copy() const;
   const char* baseName() const;
 
-  double getParam( const Coordinate& point ) const;
+  double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;
 protected:
   const Coordinate internalGetPoint( double param ) const;

@@ -49,7 +49,7 @@ public:
 
   virtual bool canMove() const;
   virtual void move( RealObject* ourobj, const Coordinate& from,
-                     const Coordinate& dist ) const;
+                     const Coordinate& dist, const KigDocument& d ) const;
 
   const char* fullName() const;
 

@@ -40,7 +40,7 @@ bool ObjectType::canMove() const
 }
 
 void ObjectType::move( RealObject*, const Coordinate&,
-                       const Coordinate& ) const
+                       const Coordinate&, const KigDocument& ) const
 {
 }
 

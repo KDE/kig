@@ -34,7 +34,8 @@ protected:
 public:
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   bool canMove() const;
-  void move( Object* o, const Coordinate& from, const Coordinate& dist ) const;
+  void move( RealObject* o, const Coordinate& from,
+             const Coordinate& dist, const KigDocument& d ) const;
 
   virtual ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const = 0;
 };

@@ -93,7 +93,7 @@ CubicImp* CubicImp::copy() const
   return new CubicImp( mdata );
 }
 
-double CubicImp::getParam( const Coordinate& p ) const
+double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
 {
   double x = p.x;
   double y = p.y;

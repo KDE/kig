@@ -47,17 +47,18 @@ bool ObjectABType::canMove() const
   return true;
 }
 
-void ObjectABType::move( Object* o,
+void ObjectABType::move( RealObject* o,
                          const Coordinate& from,
-                         const Coordinate& dist ) const
+                         const Coordinate& dist,
+                         const KigDocument& d ) const
 {
   Objects parents = o->parents();
   assert( parents.size() == 2 );
   assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
   assert( parents[1]->hasimp( ObjectImp::ID_PointImp ) );
 
-  parents[0]->move( from, dist );
-  parents[1]->move( from, dist );
+  parents[0]->move( from, dist, d );
+  parents[1]->move( from, dist, d );
 }
 
 ObjectLPType::ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n )

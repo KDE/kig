@@ -46,7 +46,7 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
 
-  double getParam( const Coordinate& point ) const;
+  double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;
 
   // information about ourselves..  These are all virtual, because a
