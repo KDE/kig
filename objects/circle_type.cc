@@ -191,3 +191,8 @@ ObjectImp* CircleBPRType::calc( const Args& args, const KigDocument& ) const
   double r = static_cast<const DoubleImp*>( a[1] )->data();
   return new CircleImp( c, r );
 }
+
+int CircleBPRType::resultId() const
+{
+  return ObjectImp::ID_CircleImp;
+}
