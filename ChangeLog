@@ -1,3 +1,9 @@
+2005-01-25  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* added many constructions related to polygons:
+	sides, center of mass, winding number, convexity
+	test...
+	
 2005-01-20  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* new "attaching" style for labels to objects, based on the
