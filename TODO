@@ -5,7 +5,7 @@
 	ellipse
 - locuses -> cf. KSeg
 	--> this is implemented (objects/locus.cpp), but can still be
-            improved quite a lot...
+            improved upon quite a lot...
 - koffice support !
 - i had an idea for speeding up drawing, the idea is that we
 extend qpainter to support for saving a sequence of bits:
@@ -32,3 +32,10 @@ a widget for scripting which would be usable throughout kde...
 stl-like, so we can use stl algo's and such.  Replace most of the
 members with some algo's of my own, which is cleaner
 (e.g. deleteAll()...)
+
+- change the filters idea: drop the KTempFile stuff and load directly
+to memory, move the native kig format into a normal filter
+
+- output filters
+
+- saving/printing to image files -> "export to image"
