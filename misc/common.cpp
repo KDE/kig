@@ -25,8 +25,6 @@
 
 #include <kdebug.h>
 
-#define max(x,y) ((x)<(y) ? (y) : (x))
-
 Coordinate calcPointOnPerpend( const Coordinate& p1, const Coordinate& p2, const Coordinate& t )
 {
   double x2,y2; // coords of another point on the perpend line

@@ -126,7 +126,6 @@ bool LineTTP::selectArg(Object* o)
   if ( !pt1 ) pt1 = p;
   else pt2 = p;
   o->addChild(this);
-  if (pt2) calc();
   return complete=pt2;
 }
 
@@ -163,20 +162,13 @@ void LineTTP::stopMove()
 {
 }
 
-// void LineTTP::cancelMove()
-// {
-//   p1->cancelMove();
-//   p2->cancelMove();
-//   calc();
-// }
-
-void LineTTP::calc()
+void LineTTP::calc( const ScreenInfo& )
 {
   if( !pt1->getValid() || !pt2->getValid() )
-    {
-      valid = false;
-      return;
-    };
+  {
+    valid = false;
+    return;
+  };
   p1 = pt1->getCoord();
   p2 = pt2->getCoord();
 };
@@ -233,7 +225,7 @@ void LinePerpend::cancelMove()
 
 }
 
-void LinePerpend::calc()
+void LinePerpend::calc( const ScreenInfo& )
 {
   assert (point && (segment || line));
   p1 = point->getCoord();
@@ -413,7 +405,7 @@ void LineParallel::drawPrelim( KigPainter& p , const Object* arg ) const
   p.drawLine( tpoint, calcPointOnParallel( t1, t2, tpoint ) );
 }
 
-void LineParallel::calc()
+void LineParallel::calc( const ScreenInfo& )
 {
   assert (point && (segment || line));
   p1 = point->getCoord();
@@ -432,38 +424,26 @@ void LineParallel::calc()
 }
 
 LineTTP::LineTTP(const LineTTP& l)
-  : Line()
+  : Line( l ), pt1( l.pt1 ), pt2( l.pt2 )
 {
-  pt1 = l.pt1;
   pt1->addChild(this);
-  pt2=l.pt2;
   pt2->addChild(this);
-  complete = l.complete;
-  if(complete) calc();
 }
+
 LineParallel::LineParallel(const LineParallel& l)
-  : Line()
+  : Line( l ), segment( l.segment ), line( l.line ), point( l.point )
 {
-  segment = l.segment;
-  if(segment) segment->addChild(this);
-  line = l.line;
-  if (line) line->addChild(this);
-  point = l.point;
-  point->addChild(this);
-  complete = l.complete;
-  if (complete) calc();
+  if( segment ) segment->addChild(this);
+  if( line ) line->addChild(this);
+  if( point ) point->addChild(this);
 }
+
 LinePerpend::LinePerpend(const LinePerpend& l)
-  : Line()
+  : Line( l ), segment( l.segment ), line( l.line ), point( l.point )
 {
-  segment = l.segment;
-  if(segment) segment->addChild(this);
-  line = l.line;
-  if (line) line->addChild(this);
-  point = l.point;
-  point->addChild(this);
-  complete = l.complete;
-  if (complete) calc();
+  if( segment ) segment->addChild(this);
+  if( line ) line->addChild(this);
+  if( point ) point->addChild(this);
 }
 
 Objects LineRadical::getParents() const
@@ -475,14 +455,10 @@ Objects LineRadical::getParents() const
 }
 
 LineRadical::LineRadical(const LineRadical& l)
-  : Line()
+  : Line( l ), c1( l.c1 ), c2( l.c2 )
 {
-  c1 = l.c1;
   if( c1 ) c1->addChild( this );
-  c2 = l.c2;
   if( c2 ) c2->addChild( this );
-  complete = l.complete;
-  calc();
 }
 
 QString LineRadical::wantArg( const Object* o ) const
@@ -499,7 +475,6 @@ bool LineRadical::selectArg( Object* o )
   if( !c1 ) c1 = c; else c2 = c;
   o->addChild( this );
   complete = c2;
-  if( complete ) calc();
   return complete;
 }
 
@@ -508,13 +483,13 @@ void LineRadical::drawPrelim( KigPainter&, const Object* ) const
   return;
 }
 
-void LineRadical::calc()
+void LineRadical::calc( const ScreenInfo& )
 {
   if( !c1 && !c2 )
-    {
-      assert( complete == false );
-      return;
-    };
+  {
+    assert( complete == false );
+    return;
+  };
 
   Coordinate ce1, ce2, direc, startpoint;
   double r1sq, r2sq, dsq, lambda;
@@ -523,10 +498,10 @@ void LineRadical::calc()
   ce2 = c2->getCenter();
   // the radical line is not defined if the centers are the same...
   if( ce1 == ce2 || !c1->getValid() || !c2->getValid() )
-    {
-      valid = false;
-      return;
-    }
+  {
+    valid = false;
+    return;
+  }
   else valid = true; // else always defined...
 
   r1sq = c1->getRadius();
@@ -539,13 +514,13 @@ void LineRadical::calc()
 
   dsq = direc.squareLength();
   if (dsq == 0)
-    {
-      lambda = 0.0;
-    }
+  {
+    lambda = 0.0;
+  }
   else
-    {
-      lambda = (r1sq - r2sq) / dsq / 2;
-    }
+  {
+    lambda = (r1sq - r2sq) / dsq / 2;
+  }
   direc *= lambda;
   startpoint = startpoint + direc;
   //  startCoords.coords = startpoint;
@@ -558,10 +533,12 @@ LineRadical::LineRadical()
   : c1( 0 ), c2( 0 )
 {
 }
+
 Line* Line::toLine()
 {
   return this;
 }
+
 const Line* Line::toLine() const
 {
   return this;
@@ -630,4 +607,10 @@ const char* LineParallel::sActionName()
 const char* LineRadical::sActionName()
 {
   return "objects_new_radicalline";
+}
+
+Line::Line( const Line& l )
+  : Curve( l ), p1( l.p1 ), p2( l.p2 ), pwwsm( l.pwwsm )
+{
+
 }

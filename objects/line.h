@@ -31,6 +31,7 @@ class Line
 {
 public:
   Line() {};
+  Line( const Line& l );
   ~Line() {};
 
   // type identification
@@ -54,8 +55,6 @@ public:
   void moveTo(const Coordinate&) = 0;
   void stopMove() = 0;
 //   void cancelMove() = 0;
-
-  void calc() = 0;
 
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
@@ -103,7 +102,7 @@ public:
   void stopMove();
 //   void cancelMove();
 
-  void calc();
+  void calc( const ScreenInfo& );
 
 protected:
   Point* pt1;
@@ -146,7 +145,7 @@ public:
   void stopMove();
   void cancelMove();
 
-  void calc();
+  void calc( const ScreenInfo& );
 
 protected:
   Segment* segment;
@@ -189,7 +188,7 @@ public:
   void stopMove() {};
   void cancelMove() {};
 
-  void calc();
+  void calc( const ScreenInfo& );
 
 protected:
   Segment* segment;
@@ -239,7 +238,7 @@ public:
   void stopMove() {};
   //  void cancelMove() {};
 
-  void calc();
+  void calc( const ScreenInfo& );
 
 protected:
   Circle* c1;

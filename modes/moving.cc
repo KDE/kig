@@ -67,7 +67,7 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
       nmo.push_back(*i);
   v->clearStillPix();
   {
-    KigPainter p( v->showingRect(), &v->stillPix );
+    KigPainter p( v->screenInfo(), &v->stillPix );
     p.drawGrid( mDoc->coordinateSystem() );
     p.drawObjects( nmo );
   }
@@ -92,12 +92,12 @@ void MovingMode::leftMouseMoved( QMouseEvent* e, KigView* v )
 void MovingMode::leftReleased( QMouseEvent*, KigView* v )
 {
   // clean up after ourselves:
-  std::for_each( amo.begin(), amo.end(), std::mem_fun( &Object::calc ) );
+  calc( amo, v->screenInfo() );
   std::for_each( emo.begin(), emo.end(), std::mem_fun( &Object::stopMove ) );
   mDoc->setModified( true );
   // refresh the screen:
   v->clearStillPix();
-  KigPainter p( v->showingRect(), &v->stillPix );
+  KigPainter p( v->screenInfo(), &v->stillPix );
   p.drawGrid( mDoc->coordinateSystem() );
   p.drawObjects( mDoc->objects() );
   v->updateCurPix();
@@ -116,8 +116,8 @@ void MovingMode::mouseMoved( QMouseEvent* e, KigView* v )
   Coordinate c = v->fromScreen( e->pos() );
   for( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
     (*i)->moveTo( c );
-  std::for_each( amo.begin(), amo.end(), std::mem_fun( &Object::calc ) );
-  KigPainter p( v->showingRect(), &v->curPix );
+  calc( amo, v->screenInfo() );
+  KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
 };

@@ -74,6 +74,7 @@ public:
   // checks if c is on a Curve, in which case it returns a
   // ConstrainedImp.., and otherwise returns a FixedImp...
   // fault is the argument we pass to KigDocument::whatAmIOn()...
+  // you should still call calc() after this !
   void redefine( const Coordinate& c, const KigDocument&, double fault );
 
   std::map<QCString, QString> getParams();
@@ -102,7 +103,7 @@ public:
 
   // no args => no parents
   virtual Objects getParents() const;
-  virtual void calc();
+  virtual void calc( const ScreenInfo& s );
 
   //moving
   virtual void startMove( const Coordinate& c );
@@ -130,7 +131,7 @@ class NormalPointImp
   virtual void startMove( const Coordinate& c, NormalPoint* p ) = 0;
   virtual void moveTo( const Coordinate& c, NormalPoint* p ) = 0;
   virtual void stopMove( NormalPoint* p ) = 0;
-  virtual void calc( NormalPoint* p ) = 0;
+  virtual void calc( NormalPoint* p, const ScreenInfo& s ) = 0;
 
   virtual QString type() = 0;
   virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p ) = 0;
@@ -165,7 +166,7 @@ public:
   void setCoord( const Coordinate& c );
   const Coordinate getCoord();
 
-  virtual void calc( NormalPoint* p );
+  virtual void calc( NormalPoint* p, const ScreenInfo& r );
   virtual void startMove( const Coordinate& c, NormalPoint* p );
   virtual void moveTo( const Coordinate& c, NormalPoint* p );
   virtual void stopMove( NormalPoint* p);
@@ -210,7 +211,7 @@ public:
   void setP( const double p );
   double getP();
 
-  virtual void calc( NormalPoint* p );
+  virtual void calc( NormalPoint* p, const ScreenInfo& s );
   virtual void startMove( const Coordinate& c, NormalPoint* );
   virtual void moveTo( const Coordinate& c, NormalPoint* );
   virtual void stopMove( NormalPoint* );

@@ -37,6 +37,8 @@
 #include "../objects/locus.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
+#include "../misc/hierarchy.h"
+#include "../misc/objects.h"
 #include "../filters/filter.h"
 
 #include <kparts/genericfactory.h>
@@ -283,6 +285,13 @@ bool KigDocument::openFile()
   mObjs = os;
   setModified(false);
   mhistory->clear();
+  // terrible hackery, i know..
+  Objects noObjs;
+  ObjectHierarchy hier( noObjs, mObjs );
+  hier.calc( ScreenInfo( Rect(), QRect() ) );
+  emit recenterScreen();
+  // we do it again to avoid problems with points on locuses and such...
+  hier.calc( m_widget->screenInfo() );
   emit recenterScreen();
 
   return true;

@@ -100,3 +100,8 @@ void Point::setY(const double inY)
 Point::Point()
 {
 }
+
+Point::Point( const Point& p )
+  : Object( p ), mC( p.mC )
+{
+}

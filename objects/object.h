@@ -45,6 +45,7 @@ class KigPainter;
 class Coordinate;
 class Rect;
 class NormalMode;
+class ScreenInfo;
 
 // base class representing all objects (e.g. points, lines etc.)
 class Object
@@ -55,6 +56,7 @@ public:
   static Object* newObject( const QCString& type );
 public:
   Object();
+  Object( const Object& o );
   virtual ~Object() {};
 
   // returns a copy of the object.  This should prolly simply do
@@ -187,8 +189,10 @@ public:
 
   // informs the object that it ( or one of its parents ) has been
   // moved (or other situations), and that it should recalculate any
-  // of its variables
-  virtual void calc() = 0;
+  // of its variables.  showingRect is the rect that is currently
+  // showing.  Some objects need this ( e.g. Locus only wants points
+  // that are in the rect, and throws away the rest... )
+  virtual void calc( const ScreenInfo& showingRect ) = 0;
 protected:
   QColor mColor;
 public:

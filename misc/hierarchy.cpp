@@ -102,6 +102,15 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
     };
     tmp = tmp2;
   };
+
+  // next, we calculate the independent elems.  These are the ones
+  // that have no parent arguments, and the ones we start
+  // calc()-ulating from.  They also include the given arguments.
+  indElems = gegElems;
+  for ( ElemList::iterator i = allElems.begin(); i != allElems.end(); ++i )
+  {
+    if ( (*i)->getParents().empty() ) indElems.push_back( *i );
+  };
 };
 
 Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
@@ -163,7 +172,6 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
     };
     tmp = tmp2;
   };
-  calc();
   return cos;
 }
 
@@ -182,6 +190,7 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
   // clear everything...
   gegElems.clear();
   finElems.clear();
+  indElems.clear();
   allElems.deleteAll();
   allElems.clear();
 
@@ -276,6 +285,15 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
 	    }; // we just handled the param child tag
 	}; // end of loop over the child tags of the HierarchyElement
     };
+
+  // next, we calculate the independent elems.  These are the ones
+  // that have no parent arguments, and the ones we start
+  // calc()-ulating from.  They also include the given arguments.
+  indElems = gegElems;
+  for ( ElemList::iterator i = allElems.begin(); i != allElems.end(); ++i )
+  {
+    if ( (*i)->getParents().empty() ) indElems.push_back( *i );
+  };
 };
 
 void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
@@ -326,18 +344,19 @@ void ObjectHierarchy::saveXML( QDomDocument& doc, QDomElement& p ) const
   p.appendChild(m);
 }
 
-void ObjectHierarchy::calc() const
+void ObjectHierarchy::calc( const ScreenInfo& r ) const
 {
-  ElemList tmp = gegElems, tmp2;
+  ElemList tmp = indElems, tmp2;
   while (!tmp.empty())
   {
     for (ElemList::const_iterator i = tmp.begin(); i != tmp.end(); ++i)
     {
+      (*i)->actual->calc( r );
       for (ElemList::const_iterator j = (*i)->getChildren().begin();
            j != (*i)->getChildren().end();
            ++j)
       {
-        (*j)->actual->calc();
+        (*j)->actual->calc( r );
         tmp2.push_back(*j);
       };
     };

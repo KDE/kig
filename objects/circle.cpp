@@ -123,16 +123,15 @@ void CircleBCP::startMove(const Coordinate& p)
 void CircleBCP::moveTo(const Coordinate& p)
 {
   if (wawm == lettingPocMove)
-    {
-      poc->moveTo(p);
-    }
+  {
+    poc->moveTo(p);
+  }
   else if (wawm == movingPoc)
-    {
-      double nRadius = calcRadius(centre,p);
-      Coordinate nPoc= centre->getCoord() + (poc->getCoord()-centre->getCoord())*(nRadius/radius);
-      poc->moveTo(nPoc);
-    };
-  calc();
+  {
+    double nRadius = calcRadius(centre,p);
+    Coordinate nPoc= centre->getCoord() + (poc->getCoord()-centre->getCoord())*(nRadius/radius);
+    poc->moveTo(nPoc);
+  };
 };
 
 void CircleBCP::stopMove()
@@ -144,13 +143,13 @@ void CircleBCP::cancelMove()
 {
 };
 
-void CircleBCP::calc()
+void CircleBCP::calc( const ScreenInfo& )
 {
   if (poc && centre)
-    {
-      radius = calcRadius(centre,poc);
-      qpc = centre->getCoord();
-    };
+  {
+    radius = calcRadius(centre,poc);
+    qpc = centre->getCoord();
+  };
 };
 
 QString CircleBTP::wantArg(const Object* o) const
@@ -249,7 +248,7 @@ void CircleBCP::drawPrelim( KigPainter& p, const Object* arg ) const
   assert( arg->toPoint() );
   Coordinate c = arg->toPoint()->getCoord();
   p.setPen(QPen (Qt::red, 1));
-  p.drawCircle( centre->getCoord(), calcRadius( centre,c ));
+  p.drawCircle( centre->getCoord(), calcRadius( centre,c ) );
 };
 
 void CircleBTP::drawPrelim( KigPainter& p, const Object* o ) const
@@ -294,7 +293,7 @@ void CircleBTP::drawPrelim( KigPainter& p, const Object* o ) const
   p.drawCircle(nC, calcRadius( nC, c ) );
 }
 
-void CircleBTP::calc()
+void CircleBTP::calc( const ScreenInfo& )
 {
   Coordinate a = p1->getCoord();
   Coordinate b = p2->getCoord();
@@ -305,41 +304,33 @@ void CircleBTP::calc()
 };
 
 CircleBCP::CircleBCP(const CircleBCP& c)
-  : Circle()
+  : Circle( c ), poc( c.poc ), centre( c.centre )
 {
-  poc = c.poc;
   poc->addChild(this);
-  centre = c.centre;
   centre->addChild(this);
-  complete = c.complete;
-  if (complete) calc();
 }
+
 CircleBTP::CircleBTP(const CircleBTP& c)
-  : Circle()
+  : Circle( c ), p1( c.p1 ), p2( c.p2 ), p3( c.p3 )
 {
-  p1=c.p1;
   p1->addChild(this);
-  p2=c.p2;
   p2->addChild(this);
-  p3=c.p3;
   p3->addChild(this);
-  complete = c.complete;
-  if(complete) calc();
 }
 
 double Circle::calcRadius( const Point* c, const Point* p ) const
 {
-  return (c->getCoord() - p->getCoord()).length();
+  return calcRadius( c->getCoord(), p->getCoord() );
 }
 
 double Circle::calcRadius( const Coordinate& c, const Coordinate& p ) const
 {
-  return ( c-p).length();
+  return ( c - p ).length();
 }
 
 double Circle::calcRadius( const Point* c, const Coordinate& p ) const
 {
-  return (c->getCoord() - p).length();
+  return calcRadius( c->getCoord(), p);
 }
 
 const QCString Circle::sBaseTypeName()
@@ -377,4 +368,9 @@ const char* CircleBCP::sActionName()
 const char* CircleBTP::sActionName()
 {
   return "objects_new_circlebtp";
+}
+
+Circle::Circle( const Circle& c )
+  : Curve( c ), qpc( c.qpc ), radius( c.radius )
+{
 }

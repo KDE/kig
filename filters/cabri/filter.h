@@ -50,7 +50,7 @@ public:
   KigFilterCabri();
   ~KigFilterCabri();
   virtual bool supportMime ( const QString mime );
-  virtual Result load ( const QString from, Objects& to);
+  virtual Result load ( const QString from, Objects& to );
 
 private:
   QCString readLine( QFile& f, bool& eof );

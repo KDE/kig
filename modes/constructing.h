@@ -42,7 +42,7 @@ protected:
   NormalPoint* mp;
   NormalMode* mprev;
 
-  void updatePoint( const Coordinate& c, double fault );
+  void updatePoint( const Coordinate& c, const ScreenInfo& );
   void finish( KigView* v );
   void updateScreen( KigView* v );
 

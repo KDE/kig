@@ -39,7 +39,6 @@ NormalPoint::NormalPoint()
 NormalPoint::NormalPoint( const NormalPoint& p )
   : Point( p ), mimp( p.mimp->copy( this ) )
 {
-  mimp->calc( this );
 }
 
 NormalPoint::~NormalPoint()
@@ -74,7 +73,6 @@ void NormalPoint::redefine( const Coordinate& c,
     mimp = 0;
     // we build a new ConstrainedPointImp...
     mimp = new ConstrainedPointImp( c, v, this );
-    mimp->calc( this );
     return;
   };
 
@@ -87,7 +85,6 @@ void NormalPoint::redefine( const Coordinate& c,
     // we already have a FixedPointImp..
     // so we use it...
     mimp->toFixed()->setCoord( c );
-    mimp->calc( this );
     return;
   };
   // we have a ConstrainedPointImp..
@@ -97,7 +94,6 @@ void NormalPoint::redefine( const Coordinate& c,
   mimp = 0;
   // we build a new FixedPointImp...
   mimp = new FixedPointImp( c );
-  mimp->calc( this );
 }
 
 NormalPointImp::~NormalPointImp()
@@ -118,7 +114,7 @@ void NormalPoint::setCoord( const Coordinate& c )
   mC = c;
 }
 
-void FixedPointImp::calc( NormalPoint* p )
+void FixedPointImp::calc( NormalPoint* p, const ScreenInfo& )
 {
   p->setCoord( pwwca );
 }
@@ -129,10 +125,9 @@ void FixedPointImp::startMove( const Coordinate& c, NormalPoint* p )
   pwwlmt = c;
 }
 
-void FixedPointImp::moveTo( const Coordinate& c, NormalPoint* p )
+void FixedPointImp::moveTo( const Coordinate& c, NormalPoint* )
 {
   pwwca += c - pwwlmt;
-  calc( p );
   pwwlmt = c;
 }
 
@@ -200,7 +195,7 @@ ConstrainedPointImp::ConstrainedPointImp()
 {
 }
 
-void ConstrainedPointImp::calc( NormalPoint* p)
+void ConstrainedPointImp::calc( NormalPoint* p, const ScreenInfo& )
 {
   p->setCoord( mcurve->getPoint( mparam ) );
 }
@@ -209,10 +204,9 @@ void ConstrainedPointImp::startMove( const Coordinate&, NormalPoint* )
 {
 }
 
-void ConstrainedPointImp::moveTo( const Coordinate& c, NormalPoint* p )
+void ConstrainedPointImp::moveTo( const Coordinate& c, NormalPoint* )
 {
   mparam = mcurve->getParam( c );
-  calc( p );
 }
 
 void ConstrainedPointImp::stopMove( NormalPoint* )
@@ -252,9 +246,9 @@ ConstrainedPointImp::ConstrainedPointImp( const ConstrainedPointImp& p,
   mcurve->addChild( np );
 }
 
-void NormalPoint::calc()
+void NormalPoint::calc( const ScreenInfo& r )
 {
-  mimp->calc( this );
+  mimp->calc( this, r );
 }
 
 Objects NormalPoint::getParents() const
@@ -334,7 +328,6 @@ bool ConstrainedPointImp::selectArg( Object* o, NormalPoint* p )
   assert( c );
   mcurve = c;
   c->addChild( p );
-  calc( p );
   return true;
 }
 
@@ -521,7 +514,6 @@ void ConstrainedPointImp::redefine( Curve* c, const Coordinate& p,
     unselectArgs( np );
   mcurve = c;
   mparam = c->getParam( p );
-  calc( np );
 }
 
 void ConstrainedPointImp::unselectArgs( NormalPoint* np )
@@ -538,7 +530,6 @@ void FixedPointImp::unselectArgs( NormalPoint* )
 void NormalPoint::setImp( NormalPointImp* i )
 {
   mimp = i;
-  i->calc( this );
 }
 
 NormalPoint* NormalPoint::sensiblePoint( const Coordinate& c,

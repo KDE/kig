@@ -73,7 +73,7 @@ void NormalMode::leftMouseMoved( QMouseEvent* e, KigView* v )
   {
     // dragging the selection rect...
     v->updateCurPix();
-    KigPainter p( v->showingRect(), &v->curPix );
+    KigPainter p( v->screenInfo(), &v->curPix );
     p.drawFilledRect( QRect( e->pos(),  plc ) );
     v->updateWidget( p.overlay() );
   }
@@ -147,7 +147,7 @@ void NormalMode::leftReleased( QMouseEvent* e, KigView* v )
       cos.push_back( oco.front() );
     };
   };
-  KigPainter p( v->showingRect(), &v->stillPix );
+  KigPainter p( v->screenInfo(), &v->stillPix );
   p.drawObjects( cos );
   v->updateCurPix( p.overlay() );
   v->updateWidget();
@@ -174,11 +174,12 @@ void NormalMode::midReleased( QMouseEvent* e, KigView* v )
   Point* pt;
   pt = NormalPoint::sensiblePoint( v->fromScreen( plc ),
                                    *mDoc, 3*v->pixelWidth() );
+  pt->calc( v->screenInfo() );
   mDoc->addObject( pt );
 
   // refresh the screen...
   v->clearStillPix();
-  KigPainter p( v->showingRect(), &v->stillPix );
+  KigPainter p( v->screenInfo(), &v->stillPix );
   p.drawGrid( mDoc->coordinateSystem() );
   p.drawObjects( mDoc->objects() );
 
@@ -247,7 +248,7 @@ void NormalMode::mouseMoved( QMouseEvent* e, KigView* v )
     QString typeName = tmp.front()->vTBaseTypeName();
     QString shownText = i18n( "Select this %1" ).arg( typeName );
     mDoc->emitStatusBarText( shownText );
-    KigPainter p( v->showingRect(), &v->curPix );
+    KigPainter p( v->screenInfo(), &v->curPix );
     p.drawTextStd( e->pos(), typeName );
     v->updateWidget( p.overlay() );
   };

@@ -25,6 +25,8 @@
 #include <vector>
 #include <algorithm>
 
+class ScreenInfo;
+
 // this used to be a class with convenience functions, but i've
 // replaced them all with stl stuff...
 class Object;
@@ -125,5 +127,14 @@ void delete_all( iter current, iter end )
 };
 
 typedef myvector<Object*> Objects;
+
+template<class T>
+void calc( const myvector<T>& o, const ScreenInfo& r )
+{
+  for ( typename myvector<T>::const_iterator i = o.begin(); i != o.end(); ++i )
+  {
+    (*i)->calc( r );
+  };
+}
 
 #endif

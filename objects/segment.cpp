@@ -136,7 +136,7 @@ void Segment::stopMove()
 //     p2->cancelMove();
 // }
 
-void Segment::calc()
+void Segment::calc( const ScreenInfo& )
 {
 }
 
@@ -179,14 +179,10 @@ void Segment::drawPrelim( KigPainter& p, const Object* o ) const
 }
 
 Segment::Segment(const Segment& s)
-  : Curve()
+  : Curve( s ), p1( s.p1 ), p2( s.p2 )
 {
-  p1 = s.p1;
   p1->addChild(this);
-  p2 = s.p2;
   p2->addChild(this);
-  complete = s.complete;
-  calc();
 }
 
 Segment* Segment::copy()

@@ -91,16 +91,22 @@ void MacroObjectOne::stopMove()
   final->stopMove();
 }
 
-void MacroObjectOne::calc()
+void MacroObjectOne::calc( const ScreenInfo& r )
 {
   if (!constructed) {
-    handleNewObjects( hier->fillUp(arguments) );
+    handleNewObjects( hier->fillUp(arguments), r );
     constructed = true;
   };
-  std::for_each( cos.begin(), cos.end(), std::mem_fun( &Object::calc ) );
+  for ( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
+    (*i)->calc( r );
   // two times, cause the order in which we calc sometimes sucks
-  std::for_each( cos.begin(), cos.end(), std::mem_fun( &Object::calc ) );
-  final->calc();
+  // TODO: use ObjectHierarchy::calc() here instead.  Problem is that
+  // our hier Hierarchy isn't only ours, but shared among all other
+  // macro-objects of the same 'type'.  We need to fill it up with our
+  // cos first somehow..
+  for ( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
+    (*i)->calc( r );
+  final->calc( r );
 }
 
 const QCString MacroObjectOne::vBaseTypeName() const
@@ -121,9 +127,9 @@ const QCString MacroObjectOne::vFullTypeName() const
   else return final->vFullTypeName();
 };
 
-void MacroObjectOne::handleNewObjects(const Objects& o)
+void MacroObjectOne::handleNewObjects(const Objects& o, const ScreenInfo& r )
 {
-  hier->calc();
+  hier->calc( r );
   final = hier->getFinElems()[0]->actual;
   cos = o;
   cos.remove(final);
@@ -135,11 +141,14 @@ void MacroObjectOne::handleNewObjects(const Objects& o)
 }
 
 MacroObjectOne::MacroObjectOne(const MacroObjectOne& m)
-  : MacroObject(m.hier), final(0), constructed(false)
+  : MacroObject( m ), final( 0 ), constructed(false)
 {
-  arguments=m.arguments;
-  for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
-    (*i)->addChild(this);
-  complete = m.complete;
-  if (complete) calc();
+}
+
+MacroObject::MacroObject( const MacroObject& m )
+  : Object( m ), hier( m.hier ), arguments( m.arguments )
+{
+  std::for_each( arguments.begin(), arguments.end(),
+                 std::bind2nd(
+                   std::mem_fun( &Object::addChild ), this ) );
 }

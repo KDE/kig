@@ -55,7 +55,7 @@ void ConstructingMode::rightReleased( QMouseEvent* e, KigView* v )
 void PointConstructionMode::updateScreen( KigView* v )
 {
   v->clearStillPix();
-  KigPainter p( v->showingRect(), &v->stillPix );
+  KigPainter p( v->screenInfo(), &v->stillPix );
   p.drawGrid( mDoc->coordinateSystem() );
   p.drawObjects( mDoc->objects() );
   v->updateCurPix( p.overlay() );
@@ -70,7 +70,7 @@ void PointConstructionMode::leftClicked( QMouseEvent* e, KigView* )
 void PointConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
 {
   if( ( plc - e->pos() ).manhattanLength() > 4 ) return;
-  updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
+  updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
   finish( v );
 }
 
@@ -95,22 +95,24 @@ PointConstructionMode::PointConstructionMode( NormalMode* b,
 void PointConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 {
   v->setCursor( KCursor::blankCursor() );
-  updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
+  updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
   v->updateCurPix();
-  KigPainter p( v->showingRect(), &v->curPix );
+  KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObject( mp, true );
   v->updateWidget( p.overlay() );
 }
 
-void PointConstructionMode::updatePoint( const Coordinate& c, double fault )
+void PointConstructionMode::updatePoint( const Coordinate& c, const ScreenInfo& si )
 {
-  mp->redefine( c, *mDoc, fault );
+  mp->redefine( c, *mDoc, 3*si.pixelWidth() );
+  mp->calc( si );
 }
 
 void PointConstructionMode::finish( KigView* v )
 {
   mDoc->addObject( mp );
   mp = mp->copy();
+  mp->calc( v->screenInfo() );
 
   updateScreen( v );
 
@@ -137,10 +139,10 @@ void StdConstructionMode::leftClicked( QMouseEvent* e, KigView* v )
   plc = e->pos();
   oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 3*v->pixelWidth() );
   v->updateCurPix();
-  updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
+  updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
   if( !oco.empty() )
   {
-    KigPainter p( v->showingRect(), &v->curPix );
+    KigPainter p( v->screenInfo(), &v->curPix );
     QString s = oco.front()->vTBaseTypeName();
     p.drawTextStd( e->pos(), s );
     v->updateWidget( p.overlay() );
@@ -166,6 +168,7 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
     // so we try if it wants our point..
     if ( mobc->wantArg( mp ) )
     {
+      updatePoint( v->fromScreen( plc ), v->screenInfo() );
       mDoc->addObject( mp );
       selectArg( mp, v );
     };
@@ -176,11 +179,11 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 {
   Coordinate c = v->fromScreen( e->pos() );
   // objects under cursor
-  Objects ouc = mDoc->whatAmIOn( c, 5*v->pixelWidth() );
-  updatePoint( c, v->pixelWidth() );
+  Objects ouc = mDoc->whatAmIOn( c, 3*v->pixelWidth() );
+  updatePoint( c, v->screenInfo() );
 
   v->updateCurPix();
-  KigPainter p( v->showingRect(), &v->curPix );
+  KigPainter p( v->screenInfo(), &v->curPix );
   if ( ! ouc.empty() && mobc->wantArg( ouc.front() ) )
   {
     // the object wants the arg currently under the cursor...
@@ -233,7 +236,7 @@ void StdConstructionMode::midClicked( QMouseEvent* e, KigView* )
 void StdConstructionMode::midReleased( QMouseEvent* e, KigView* v )
 {
   if ( (e->pos() - plc).manhattanLength() > 4 ) return;
-  updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
+  updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
   mDoc->addObject( mp );
   selectArg( mp, v );
 }
@@ -243,10 +246,13 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
   if ( o == mp )
     // if we're selecting our mp, we need a new one...
     mp = mp->copy();
+//   calcing is not necessary here, since
+//  all of the data is copied along
+//  mp->calc( v->screenInfo() );
   bool finished = mobc->selectArg( o );
   if( finished )
   {
-    mobc->calc();
+    mobc->calc( v->screenInfo() );
     mDoc->addObject( mobc );
   };
 

@@ -25,6 +25,7 @@
 #include "coordinate.h"
 #include "rect.h"
 #include "objects.h"
+#include "screeninfo.h"
 
 #include <qpainter.h>
 #include <qcolor.h>
@@ -55,36 +56,25 @@ protected:
   BrushStyle brushStyle;
   QColor brushColor;
 
-  Rect mViewRect;
+  ScreenInfo msi;
 
   bool mNeedOverlay;
 public:
   /**
    * construct a new KigPainter:
-   * the rect is the part of the document we map to the screen
-   * coordinates (i.e. the part which is shown) (@see toScreen,
-   * fromScreen etc.)
+   * the ScreenInfo is used to map the document coordinates to the
+   * widget coordinates.  This is done transparently to the objects.
    * needOverlay sets whether we try to remember the places we're
    * drawing on using the various overlay methods. @see overlay()
    */
-  KigPainter( const Rect& r, QPaintDevice* device, bool needOverlay = true );
+  KigPainter( const ScreenInfo& r, QPaintDevice* device, bool needOverlay = true );
   ~KigPainter();
 
   // what rect are we drawing on ?
   Rect window();
 
   QPoint toScreen( const Coordinate p );
-  inline QRect toScreen( const Rect r )
-  {
-    return QRect( toScreen( r.bottomLeft()),
-                  toScreen( r.topRight() ) ).normalize();
-  };
-
-  Coordinate fromScreen( const QPoint& p );
-  inline Rect fromScreen( const QRect& r )
-  {
-    return Rect( fromScreen(r.topLeft()), fromScreen(r.bottomRight() ) ).normalized();
-  };
+  QRect toScreen( const Rect r );
 
   // colors and stuff...
   void setStyle( const PenStyle c );

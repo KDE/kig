@@ -52,7 +52,7 @@ KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name )
     document(inDoc),
     stillPix(size()),
     curPix(size()),
-    mViewRect()
+    msi( Rect(), rect() )
 {
   setInstance( document->instance() );
   setXMLFile("kigpartui.rc");
@@ -70,7 +70,7 @@ KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name )
   recenterScreen();
 
   clearStillPix();
-  KigPainter p( mViewRect, &stillPix );
+  KigPainter p( msi, &stillPix );
   p.drawGrid( document->coordinateSystem() );
   p.drawObjects( document->objects() );
   updateCurPix( p.overlay() );
@@ -169,6 +169,7 @@ void KigView::resizeEvent(QResizeEvent*)
   recenterScreen();
   curPix.resize(size());
   stillPix.resize( size() );
+  msi.setViewRect( rect() );
   redrawScreen();
 }
 
@@ -185,21 +186,16 @@ void KigView::updateCurPix( const std::vector<QRect>& ol )
   std::copy( ol.begin(), ol.end(), std::back_inserter( oldOverlay ) );
 }
 
-Rect KigView::showingRect()
-{
-  return mViewRect;
-}
-
 void KigView::recenterScreen()
 {
-  mViewRect = matchScreenShape(document->suggestedRect());
+  msi.setShownRect( matchScreenShape(document->suggestedRect()) );
 //   kdDebug() << k_funcinfo << endl
-// // 	    << "(0,0): " << toScreen(Coordinate(0,0)) << endl
+//  // 	    << "(0,0): " << toScreen(Coordinate(0,0)) << endl
 // // 	    << "(-3,-2): " << toScreen( Coordinate(-3,-2)) << endl
 // // 	    << "(3,2): " << toScreen( Coordinate(3,2)) << endl;
-// 	    << "showingRect:" << showingRect() << endl
-// 	    << "fromScreen(...): " << fromScreen(QRect(QPoint(0,0), size()))
-// 	    << endl;
+//  	    << "showingRect:" << showingRect() << endl
+//  	    << "fromScreen(...): " << fromScreen(QRect(QPoint(0,0), size()))
+//  	    << endl;
   redrawScreen();
 }
 
@@ -230,17 +226,21 @@ Rect KigView::matchScreenShape( const Rect& r )
 
 void KigView::zoomIn()
 {
-  Coordinate c = mViewRect.center();
-  mViewRect /= 2;
-  mViewRect.setCenter( c );
+  Rect r = msi.shownRect();
+  Coordinate c = r.center();
+  r /= 2;
+  r.setCenter( c );
+  msi.setShownRect( r );
   redrawScreen();
 }
 
 void KigView::zoomOut()
 {
-  Coordinate c = mViewRect.center();
-  mViewRect *= 2;
-  mViewRect.setCenter( c );
+  Rect r = msi.shownRect();
+  Coordinate c = r.center();
+  r *= 2;
+  r.setCenter( c );
+  msi.setShownRect( r );
   redrawScreen();
 }
 
@@ -251,37 +251,38 @@ void KigView::clearStillPix()
   oldOverlay.push_back ( QRect( QPoint(0,0), size() ) );
 }
 
-QPoint KigView::toScreen( const Coordinate p )
-{
-  Coordinate t = p - mViewRect.bottomLeft();
-  t *= size().width();
-  t /= mViewRect.width();
-  // invert the y-axis: 0 is at the bottom !
-  return QPoint( t.x, size().height() - t.y );
-}
-
-Coordinate KigView::fromScreen( const QPoint& p )
-{
-  // invert the y-axis: 0 is at the bottom !
-  Coordinate t( p.x(), size().height() - p.y() );
-  t *= mViewRect.width();
-  t /= size().width();
-  return t + mViewRect.bottomLeft();
-}
-double KigView::pixelWidth()
-{
-  Coordinate a = fromScreen( QPoint( 0, 0 ) );
-  Coordinate b = fromScreen( QPoint( 0, 1000 ) );
-  return std::fabs( b.y - a.y ) / 1000;
-}
-
 void KigView::redrawScreen()
 {
   // update the screen...
   clearStillPix();
-  KigPainter p( mViewRect, &stillPix );
+  KigPainter p( msi, &stillPix );
   p.drawGrid( document->coordinateSystem() );
   p.drawObjects( document->objects() );
   updateCurPix( p.overlay() );
   updateEntireWidget();
+}
+
+const ScreenInfo& KigView::screenInfo()
+{
+  return msi;
+}
+
+const Rect KigView::showingRect()
+{
+  return msi.shownRect();
+}
+
+const Coordinate KigView::fromScreen( const QPoint& p )
+{
+  return msi.fromScreen( p );
+}
+
+double KigView::pixelWidth()
+{
+  return msi.pixelWidth();
+}
+
+const Rect KigView::fromScreen( const QRect& r )
+{
+  return msi.fromScreen( r );
 }

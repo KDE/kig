@@ -29,9 +29,9 @@
 
 #include <cmath>
 
-KigPainter::KigPainter( const Rect& r, QPaintDevice* device, bool no )
+KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device, bool no )
   : mP ( device ),
-    mViewRect( r.normalized() ),
+    msi( si ),
     mNeedOverlay( no )
 {
 }
@@ -173,7 +173,7 @@ void KigPainter::drawPolygon( const std::vector<Coordinate>& pts, bool winding, 
 
 Rect KigPainter::window()
 {
-    return mViewRect;
+  return msi.shownRect();
 }
 
 void KigPainter::circleOverlayRecurse( const Coordinate& centre, double radius,
@@ -295,9 +295,7 @@ void KigPainter::pointOverlay( const Coordinate& p1 )
 
 double KigPainter::pixelWidth()
 {
-  Coordinate a = fromScreen( QPoint( 0, 0 ) );
-  Coordinate b = fromScreen( QPoint( 0, 1000 ) );
-  return std::fabs( b.y - a.y ) / 1000;
+  return msi.pixelWidth();
 }
 
 void KigPainter::setWholeWinOverlay()
@@ -310,20 +308,7 @@ void KigPainter::setWholeWinOverlay()
 
 QPoint KigPainter::toScreen( const Coordinate p )
 {
-  Coordinate t = p - mViewRect.bottomLeft();
-  t *= mP.viewport().width();
-  t /= mViewRect.width();
-  // invert the y-axis: 0 is at the bottom !
-  return QPoint( t.x, mP.viewport().height() - t.y );
-}
-
-Coordinate KigPainter::fromScreen( const QPoint& p )
-{
-  // invert the y-axis: 0 is at the bottom !
-  Coordinate t( p.x(), mP.viewport().height() - p.y() );
-  t *= mViewRect.width();
-  t /= mP.viewport().width();
-  return t + mViewRect.bottomLeft();
+  return msi.toScreen( p );
 }
 
 void KigPainter::drawGrid( const CoordinateSystem* c )
@@ -366,7 +351,13 @@ void KigPainter::drawTextStd( const QPoint& p, const QString& s )
   // we need the rect where we're going to paint text
   setPen(QPen(Qt::blue, 1, SolidLine));
   setBrush(Qt::NoBrush);
-  drawText( Rect( fromScreen(p), window().bottomRight()
+  drawText( Rect(
+              msi.fromScreen(p), window().bottomRight()
               ).normalized(), s, tf );
 
+}
+
+QRect KigPainter::toScreen( const Rect r )
+{
+  return msi.toScreen( r );
 }

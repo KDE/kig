@@ -113,3 +113,10 @@ void Object::delChild(Object* o)
 {
   children.remove( o );
 }
+
+Object::Object( const Object& o )
+    : mColor( o.mColor ), selected( false ), shown( true ),
+      complete( o.complete ), valid( o.valid )
+{
+
+}

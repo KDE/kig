@@ -198,7 +198,6 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
         if (parentIndex != 0 )
           os[i]->selectArg(os[parentIndex-1]);
       };
-      os[i]->calc();
     }; // for loop ( setting parents...
   return OK;
 }

@@ -98,7 +98,7 @@ KigFilterCabri::ObjectData KigFilterCabri::readObject( QFile& f )
   return n;
 };
 
-KigFilter::Result KigFilterCabri::load( const QString from, Objects& os)
+KigFilter::Result KigFilterCabri::load( const QString from, Objects& os )
 {
   // NOT READY...
   return NotSupported;

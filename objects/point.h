@@ -32,6 +32,7 @@ class Point
 protected:
   Point();
   Point( const Coordinate& p );
+  Point( const Point& p );
 public:
   // type info:
   Point* toPoint();

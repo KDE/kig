@@ -32,22 +32,18 @@
 
 /**
  * Locus: the calc routines of this class are a bit unusual:
- * if( !isPointLocus() ) all is as usual...
- * but otherwise, we try to find better points by keeping the window()
- * from the last draw, and only taking the points which are in that
- * rect...
+ * they're the reason we gave calc() the argument showingRect.
+ * calcPointLocus only keeps points that are within the current
+ * showing rect...
  */
 
 void Locus::draw(KigPainter& p, bool ss) const
 {
-  calcRect = p.window();
   // we don't let the points draw themselves, since that would get us
   // the big points (5x5) like we normally see them...
   // all objs are of the same type, so we only check the first
   if (isPointLocus())
     {
-      kdDebug() << k_funcinfo << " at line no. " << __LINE__ << " - count: " << pts.size()<< endl;
-
       p.setPen( QPen( selected && ss ? Qt::red : mColor ) );
       for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
 	{
@@ -126,24 +122,17 @@ bool Locus::selectArg(Object* o)
     Objects final;
     final.push_back(obj);
     hierarchy = new ObjectHierarchy( given, final );
-    // calc...
-    calc();
   }
   return complete;
 }
 
-void Locus::realCalc( const Rect& r )
+void Locus::calc( const ScreenInfo& r )
 {
   if( isPointLocus() ) calcPointLocus( r );
-  else calcObjectLocus();
-};
-
-void Locus::calc()
-{
-  realCalc( calcRect );
+  else calcObjectLocus( r );
 }
 
-Coordinate Locus::getPoint(double param) const
+Coordinate Locus::getPoint( double param ) const
 {
   Coordinate t;
   if ( ! valid ) return Coordinate();
@@ -151,10 +140,12 @@ Coordinate Locus::getPoint(double param) const
   {
     double tmp = cp->constrainedImp()->getP();
     cp->constrainedImp()->setP(param);
-    hierarchy->calc();
+    // hack... hope no-one tries recursive Locuses...
+    hierarchy->calc( ScreenInfo( Rect(), QRect() ) );
     t= obj->toPoint()->getCoord();
     cp->constrainedImp()->setP(tmp);
-    hierarchy->calc();
+    // hack... hope no-one tries recursive Locuses...
+    hierarchy->calc( ScreenInfo( Rect(), QRect() ) );
   }
   else t = Coordinate();
   return t;
@@ -165,7 +156,7 @@ double Locus::getParam(const Coordinate&) const
   return 0.5;
 }
 
-void Locus::calcObjectLocus()
+void Locus::calcObjectLocus( const ScreenInfo& r )
 {
   if ( ! valid ) return;
   delete_all( objs.begin(), objs.end() );
@@ -175,39 +166,45 @@ void Locus::calcObjectLocus()
   for (double i = 0; i <= 1; i += period)
     {
       cp->constrainedImp()->setP(i);
-      cp->calc();
-      hierarchy->calc();
+      cp->calc( r );
+      hierarchy->calc( r );
       objs.push_back(obj->copy());
     };
   cp->constrainedImp()->setP(oldP);
-  cp->calc();
-  hierarchy->calc();
+  cp->calc( r );
+  hierarchy->calc( r );
 }
 
-inline Locus::CPts::iterator Locus::addPoint(double param)
+inline Locus::CPts::iterator Locus::addPoint( double param, const ScreenInfo& r )
 {
   cp->constrainedImp()->setP(param);
-  cp->calc();
-  hierarchy->calc();
+  cp->calc( r );
+  hierarchy->calc( r );
   Point* p = obj->toPoint();
   pts.push_front(CPt(p->getCoord(), param));
   return pts.begin();
 }
 
-void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i, const Rect& r )
+void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i, const ScreenInfo& si )
 {
+  const Rect& r = si.shownRect();
   if ( i++ > numberOfSamples ) return;
   if( !( r.contains( first->pt ) || r.contains( last->pt ) ) ) return;
   double p = (first->pm+last->pm)/2;
-  CPts::iterator n = addPoint(p);
-  if( ( n->pt - first->pt ).length() > 3 ) recurse( n, first, i, r );
+  CPts::iterator n = addPoint( p, si );
+  if( ( n->pt - first->pt ).length() > (1.5*si.pixelWidth()) )
+    recurse( n, first, i, si );
   if (i > numberOfSamples) return;
-  if( ( n->pt - last->pt ).length() > 3 ) recurse( n, last, i, r );
+  if( ( n->pt - last->pt ).length() > (1.5*si.pixelWidth()) )
+    recurse( n, last, i, si );
   if (i > numberOfSamples) return;
 }
 
-void Locus::calcPointLocus( const Rect& r )
+void Locus::calcPointLocus( const ScreenInfo& r )
 {
+  // sometimes calc() is called with an empty rect, cause the
+  // shownRect is not known yet.. we ignore those calcs...
+  if ( r.shownRect() == Rect() ) return;
   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   pts.clear();
   double oldP = cp->constrainedImp()->getP();
@@ -220,14 +217,14 @@ void Locus::calcPointLocus( const Rect& r )
 //       hierarchy->calc();
 //       objs.push_back(obj->copy());
 //     };
-  CPts::iterator b = addPoint(0);
-  CPts::iterator e = addPoint(1);
+  CPts::iterator b = addPoint( 0, r );
+  CPts::iterator e = addPoint( 1, r );
   int i = 2;
   recurse(b,e,i,r);
   // reset cp and its children to their former state...
   cp->constrainedImp()->setP(oldP);
-  cp->calc();
-  hierarchy->calc();
+  cp->calc( r );
+  hierarchy->calc( r );
   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << "  - count: " << pts.size()<< endl;
 }
 

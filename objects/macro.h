@@ -18,13 +18,13 @@
  USA
 **/
 
-
 #ifndef MACRO_H
 #define MACRO_H
 
 #include "object.h"
 
 class ObjectHierarchy;
+class ScreenInfo;
 
 class MacroObject
   : public Object
@@ -32,6 +32,7 @@ class MacroObject
 public:
   QString wantArg( const Object* o) const;
   MacroObject(ObjectHierarchy* inHier);
+  MacroObject( const MacroObject& );
   virtual ~MacroObject() {};
   bool selectArg(Object* o);
 //   void draw (KigPainter& p, bool ss) const = 0;
@@ -47,7 +48,7 @@ public:
 //   QCString vFullTypeName() const = 0;
 //   Objects getParents() const = 0;
 protected:
-  virtual void handleNewObjects (const Objects& ) = 0;
+  virtual void handleNewObjects( const Objects&, const ScreenInfo& ) = 0;
 protected:
   ObjectHierarchy* hier;
   Objects arguments;
@@ -75,7 +76,7 @@ public:
   void startMove(const Coordinate& p);
   void moveTo (const Coordinate& p);
   void stopMove();
-  void calc();
+  void calc( const ScreenInfo& );
   const QCString vBaseTypeName() const;
   const QCString vFullTypeName() const;
   const QString vDescriptiveName() const { return 0; };
@@ -83,7 +84,7 @@ public:
   const QCString vIconFileName() const { return 0; };
   Objects getParents() const { return arguments; };
 protected:
-  void handleNewObjects (const Objects& o);
+  void handleNewObjects (const Objects& o, const ScreenInfo& r );
   // have we constructed stuff yet?
   bool constructed;
 };

@@ -45,7 +45,7 @@ class Locus
 {
 public:
   // number of points to include, i think this is a nice default...
-  static const int numberOfSamples = 300;
+  static const int numberOfSamples = 600;
 public:
   Locus();
   ~Locus();
@@ -81,10 +81,10 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc();
+  void calc( const ScreenInfo& );
 
 public:
-  Coordinate getPoint (double param) const;
+  Coordinate getPoint( double param ) const;
   double getParam (const Coordinate&) const;
 
   Objects getParents() const;
@@ -103,11 +103,6 @@ protected:
   // objs is just a list of pointers to objects
   Objects objs;
 
-  // the window we're in...
-  // we declare it mutable cause it's set in draw() const ...
-  // yes, i know this is ugly :(
-  mutable Rect calcRect;
-
   struct CPt
   {
     CPt(Coordinate inPt, double inPm) : pt(inPt), pm (inPm) {};
@@ -123,14 +118,13 @@ protected:
 
   // this is used if the obj is a point; it selects the best points
   // from the possible ones...
-  void calcPointLocus( const Rect& );
+  void calcPointLocus( const ScreenInfo& );
   // some functions used by calcPointLocus...
-  CPts::iterator addPoint(double param);
-  void recurse(CPts::iterator, CPts::iterator, int&, const Rect&);
-  void realCalc( const Rect& r );
+  CPts::iterator addPoint( double param, const ScreenInfo& );
+  void recurse( CPts::iterator, CPts::iterator, int&, const ScreenInfo& );
 
   // this is used when the obj is not a point; it just takes the first
   // numberOfSamples objects it can find...
-  void calcObjectLocus();
+  void calcObjectLocus( const ScreenInfo& );
 };
 #endif

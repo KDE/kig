@@ -31,7 +31,7 @@
 
 #include "../objects/object.h"
 #include "../misc/rect.h"
-//#include "../misc/coordinates.h"
+#include "../misc/screeninfo.h"
 
 class KigDocument;
 
@@ -126,32 +126,18 @@ public:
   // 2 the document's coordinates: these are the coordinates used by
   // the KigDocument.  Objects only know of their coordinates as
   // related to this system.
-  // These are mapped by the KigView using mViewRect.  It represents
-  // the part of the document (in document coordinates) that is
-  // currently showing in the widget (mapped to the widget).
-  // This allows different KigViews to show different parts of the
-  // screen etc.
+  // These are mapped by the KigView using the ScreenInfo class.
+
+  const Rect showingRect();
+
+  const Coordinate fromScreen( const QPoint& p );
+  const Rect fromScreen( const QRect& r );
+  double pixelWidth();
 
   // the part of the document we're currently showing
   // i.e. a rectangle of the document (which has its own coordinate
   // system) which is mapped onto the widget.
-  Rect showingRect();
-
-  // TODO: remove code duplication with KigPainter
-  Coordinate fromScreen( const QPoint& p );
-  inline Rect fromScreen( const QRect& r )
-  {
-    return Rect( fromScreen(r.topLeft()), fromScreen(r.bottomRight() ) ).normalized();
-  };
-
-  QPoint toScreen( const Coordinate p );
-  inline QRect toScreen( const Rect r )
-  {
-    return QRect( toScreen( r.bottomLeft()),
-                  toScreen( r.topRight() ) ).normalize();
-  };
-
-  double pixelWidth();
+  const ScreenInfo& screenInfo();
 
 protected:
   // this is called to match a rect's dimensions to the dimensions of
@@ -179,8 +165,9 @@ protected:
   std::vector<QRect> oldOverlay;
 
   /**
-   * what part of the document are we showing...
+   * this is a class that maps from our widget coordinates to the
+   * document's coordinates ( and back ).
    */
-  Rect mViewRect;
+  ScreenInfo msi;
 };
 #endif

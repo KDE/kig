@@ -20,4 +20,10 @@
 
 #include "objects.h"
 
+#include "../objects/object.h"
+
+#include "screeninfo.h"
+#include "rect.h"
+#include <qrect.h>
+
 // this used to be a bit more filled up :)

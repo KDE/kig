@@ -30,6 +30,7 @@
 
 class Object;
 class KigFilter;
+class ScreenInfo;
 
 class KigFilters
 {

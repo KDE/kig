@@ -28,14 +28,10 @@ MidPoint::MidPoint()
 };
 
 MidPoint::MidPoint(const MidPoint& m)
-  : Point()
+  : Point( m ), p1( m.p1 ), p2( m.p2 )
 {
-  p1 = m.p1;
   p1->addChild(this);
-  p2 = m.p2;
   p2->addChild(this);
-  complete = m.complete;
-  if (complete) calc();
 }
 
 MidPoint::~MidPoint()
@@ -92,23 +88,19 @@ void MidPoint::startMove(const Coordinate& p)
 void MidPoint::moveTo(const Coordinate& p)
 {
   if (howm == howmFollowing)
-    {
-      calc();
-      return;
-    }
+    return;
   mC = p;
-  p2->moveTo( mC*2-p1->getCoord() );
+  p2->moveTo( mC * 2 - p1->getCoord() );
 }
 
 void MidPoint::stopMove()
 {
 };
 
-void MidPoint::calc()
+void MidPoint::calc( const ScreenInfo& )
 {
   assert (p1 && p2);
-  setX(((p1->getX() + p2->getX())/2));
-  setY(((p1->getY() + p2->getY())/2));
+  mC = ( p1->getCoord() + p2->getCoord() ) / 2;
 }
 
 const QString MidPoint::sDescriptiveName()

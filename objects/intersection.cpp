@@ -110,7 +110,7 @@ Objects IntersectionPoint::getParents() const
   return tmp;
 };
 
-void IntersectionPoint::calc()
+void IntersectionPoint::calc( const ScreenInfo& )
 {
   Coordinate t1, t2, t3, t4;
   bool gotfirst = false;

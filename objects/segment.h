@@ -71,7 +71,7 @@ public:
   void stopMove();
   //     void cancelMove();
 
-  void calc();
+  void calc( const ScreenInfo& );
   void deleted( Object* o );
 
   Coordinate getPoint (double param) const;

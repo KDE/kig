@@ -131,7 +131,7 @@ void DefineMacroMode::mouseMoved( QMouseEvent* e, KigView* v )
     QString typeName = os.front()->vTBaseTypeName();
     QString shownText = i18n( "Select this %1" ).arg( typeName );
     mDoc->emitStatusBarText( shownText );
-    KigPainter p( v->showingRect(), &v->curPix );
+    KigPainter p( v->screenInfo(), &v->curPix );
     p.drawTextStd( e->pos(), typeName );
     v->updateWidget( p.overlay() );
   };

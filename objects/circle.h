@@ -30,6 +30,7 @@ class Circle
 {
  public:
   Circle();
+  Circle( const Circle& c );
   ~Circle();
 
   // type identification
@@ -76,7 +77,7 @@ public:
   static const int sShortCut() { return CTRL+Key_C; };
   static const char* sActionName();
 
-  void calc ();
+  void calc( const ScreenInfo& showingRect );
   void drawPrelim ( KigPainter&, const Object* prelimArg ) const;
 
   // passing arguments
@@ -137,7 +138,7 @@ protected:
   Point* p2;
   Point* p3;
 
-  void calc();
+  void calc( const ScreenInfo& showingRect );
   static Coordinate calcCenter( Coordinate, Coordinate, Coordinate );
 };
 

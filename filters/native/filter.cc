@@ -80,7 +80,6 @@ KigFilter::Result KigFilterNative::load( const QString from, Objects& os )
   // next the hierarchy...
   ObjectHierarchy hier( e );
   Objects tmpOs = hier.fillUp( os );
-  hier.calc();
   os |= tmpOs;
   file.close();
 
