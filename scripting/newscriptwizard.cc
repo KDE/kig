@@ -23,6 +23,8 @@
 
 #include <kapplication.h>
 
+#include <assert.h>
+
 NewScriptWizard::~NewScriptWizard()
 {
 }
