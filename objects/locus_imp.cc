@@ -27,7 +27,6 @@
 
 LocusImp::~LocusImp()
 {
-  delete mhier;
 }
 
 bool LocusImp::inherits( int type ) const
@@ -42,7 +41,7 @@ ObjectImp* LocusImp::transform( const Transformation& ) const
 
 void LocusImp::draw( KigPainter& p ) const
 {
-  p.drawLocus( mcurve, *mhier );
+  p.drawLocus( mcurve, mhier );
 }
 
 bool LocusImp::contains( const Coordinate&, const ScreenInfo& ) const
@@ -74,7 +73,7 @@ const Coordinate LocusImp::getPoint( double param ) const
    PointImp argimp( arg );
   Args args;
   args.push_back( &argimp );
-  ObjectImp* imp = mhier->calc( args );
+  ObjectImp* imp = mhier.calc( args );
   Coordinate ret;
   if ( imp->inherits( ObjectImp::ID_PointImp ) )
     ret = static_cast<PointImp*>( imp )->coordinate();
@@ -82,13 +81,8 @@ const Coordinate LocusImp::getPoint( double param ) const
   return ret;
 }
 
-LocusImp::LocusImp( const Object* movingpoint, const Object* tracingpoint )
-  : mcurve( 0 ), mhier( new ObjectHierarchy( Objects( const_cast<Object*>( movingpoint ) ),
-                                             tracingpoint ) )
+LocusImp::LocusImp( const CurveImp* curve, const ObjectHierarchy& hier )
+  : mcurve( curve ), mhier( hier )
 {
-  // the ObjectType should make sure we have a ConstrainedPointImp
-  // parent, we just assert it..
-  assert( movingpoint->has( ObjectImp::ID_PointImp ) && movingpoint->parents().size() == 0 );
-  mcurve = static_cast<const CurveImp*>( movingpoint->parents().front()->imp() );
 }
 

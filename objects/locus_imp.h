@@ -28,11 +28,11 @@ class LocusImp
 {
   typedef CurveImp Parent;
   const CurveImp* mcurve;
-  ObjectHierarchy* mhier;
+  const ObjectHierarchy& mhier;
 protected:
   ~LocusImp();
 public:
-  LocusImp( const Object* movingpoint, const Object* tracingpoint );
+  LocusImp( const CurveImp*, const ObjectHierarchy& );
 
   bool inherits( int type ) const;
 
