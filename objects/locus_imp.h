@@ -22,6 +22,29 @@
 #include "curve_imp.h"
 #include "../misc/object_hierarchy.h"
 
+/**
+ * LocusImp is an imp that consists of a copy of the curveimp that the
+ * moving point moves over, and an ObjectHierarchy that can calc (
+ * given a point, and optionally some more parent objects the position
+ * of the moving point.  The hierarchy should take the moving point as
+ * its *first* argument and all others after that.  The others are
+ * used to make it possible for Locus to be updated when some of the
+ * other objects that appear in the path from the moving point to the
+ * dependent point change.
+ * This may seem rather complicated, but I think it is absolutely
+ * necessary to support locuses using Kig's object system.  It would
+ * be very bad for LocusImp to have to keep references to its parents
+ * as Objects ( since only the objects know how they are related to
+ * their parents ).  This is how we used to do it, but this method is
+ * far superior.  First and foremost because the separation between
+ * ObjectImp and Object is something that Kig depends on very much,
+ * and because every ObjectImp should contain all the data it needs
+ * itself.  ObjectImp's are entirely independent objects.  That's also
+ * why we don't keep a pointer to the old CurveImp, but a copy of
+ * it..
+ * i hope this is a bit clear, if not, feel free to ask for
+ * explanation of what you don't understand..
+ */
 class LocusImp
   : public CurveImp
 {

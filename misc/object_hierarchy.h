@@ -64,6 +64,8 @@ public:
   uint numberOfResults() const { return mnumberofresults; };
 
   int idOfLastResult() const;
+
+  ObjectHierarchy transformFinalObject( const Transformation& t ) const;
 };
 
 #endif

@@ -45,9 +45,9 @@ bool LocusImp::inherits( int type ) const
   return type == ID_LocusImp ? true : Parent::inherits( type );
 }
 
-ObjectImp* LocusImp::transform( const Transformation& ) const
+ObjectImp* LocusImp::transform( const Transformation& t ) const
 {
-  return new InvalidImp;
+  return new LocusImp( mcurve->copy(), mhier.transformFinalObject( t ) );
 }
 
 void LocusImp::draw( KigPainter& p ) const

@@ -104,6 +104,31 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     static_cast<const HierarchyImp&>( d ).data().serialize( parent, doc );
     return QString::fromLatin1( "hierarchy" );
   }
+  else if ( d.inherits( ObjectImp::ID_TransformationImp ) )
+  {
+    const Transformation& trans = static_cast<const TransformationImp&>( d ).data();
+
+    QDomElement matrixe = doc.createElement( "matrix" );
+    for ( int i = 0; i < 3; ++i )
+    {
+      for ( int j = 0; j < 3; ++j )
+      {
+        QDomElement elel = doc.createElement( "element" );
+        elel.setAttribute( "row", QString::number( i ) );
+        elel.setAttribute( "column", QString::number( j ) );
+        elel.appendChild( doc.createTextNode( QString::number( trans.data( i, j ) ) ) );
+        matrixe.appendChild( elel );
+      };
+    }
+    parent.appendChild( matrixe );
+
+    QDomElement homothetye = doc.createElement( "homothetic" );
+    const char* ishomothety = trans.isHomothetic() ? "true" : "false";
+    homothetye.appendChild( doc.createTextNode( ishomothety ) );
+    parent.appendChild( homothetye );
+
+    return QString::fromLatin1( "transformation" );
+  }
   else if( d.inherits( ObjectImp::ID_LineImp ) )
   {
     LineData l = static_cast<const AbstractLineImp&>( d ).data();
@@ -273,6 +298,37 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   else if ( type == "hierarchy" )
   {
     return new HierarchyImp( ObjectHierarchy( parent ) );
+  }
+  else if ( type == "transformation" )
+  {
+    double data[3][3];
+    bool homothetic = false;
+    for ( QDomElement childe = parent.firstChild().toElement();
+          ! childe.isNull(); childe = childe.nextSibling().toElement() )
+    {
+      if ( childe.tagName() == "matrix" )
+      {
+        for ( QDomElement elel = childe.firstChild().toElement();
+              ! elel.isNull(); elel = elel.nextSibling().toElement() )
+        {
+          if ( elel.tagName() != "element" ) return 0;
+          bool ok = true;
+          int row = elel.attribute( "row" ).toInt( &ok );
+          if ( ! ok ) return 0;
+          int column = elel.attribute( "column" ).toInt( &ok );
+          if ( ! ok ) return 0;
+          data[row][column] = elel.text().toDouble( &ok );
+          if ( ! ok ) return 0;
+        };
+      }
+      else if ( childe.tagName() == "homothetic" )
+      {
+        homothetic = childe.text() == "true";
+      }
+      else continue;
+    };
+    Transformation trans( data, homothetic );
+    return new TransformationImp( trans );
   }
   else if ( type == "point" )
   {

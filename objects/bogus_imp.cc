@@ -245,4 +245,35 @@ void HierarchyImp::visit( ObjectImpVisitor* vtor ) const
   vtor->visit( this );
 }
 
+TransformationImp::TransformationImp( const Transformation& h )
+  : mdata( h )
+{
+}
+
+bool TransformationImp::inherits( int type ) const
+{
+  return type == ID_TransformationImp ? true : Parent::inherits( type );
+}
+
+TransformationImp* TransformationImp::copy() const
+{
+  return new TransformationImp( mdata );
+}
+
+const char* TransformationImp::baseName() const
+{
+  return I18N_NOOP( "transformation" );
+}
+
+int TransformationImp::id() const
+{
+  return ID_TransformationImp;
+}
+
+void TransformationImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+
 

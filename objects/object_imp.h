@@ -26,6 +26,7 @@ class DoubleImp;
 class StringImp;
 class InvalidImp;
 class HierarchyImp;
+class TransformationImp;
 class CurveImp;
 class LineImp;
 class PointImp;
@@ -50,6 +51,7 @@ public:
   virtual void visit( const StringImp* imp );
   virtual void visit( const InvalidImp* imp );
   virtual void visit( const HierarchyImp* imp );
+  virtual void visit( const TransformationImp* imp );
   virtual void visit( const LineImp* imp );
   virtual void visit( const PointImp* imp );
   virtual void visit( const TextImp* imp );
@@ -115,6 +117,7 @@ public:
     ID_StringImp,
     ID_InvalidImp,
     ID_HierarchyImp,
+    ID_TransformationImp,
 
     // two id's that match multiple types of imp's..
     ID_CurveImp,

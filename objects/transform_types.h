@@ -125,4 +125,16 @@ public:
   bool isTransform() const;
 };
 
+class ApplyTransformationObjectType
+  : public ArgparserObjectType
+{
+  ApplyTransformationObjectType();
+  ~ApplyTransformationObjectType();
+public:
+  static const ApplyTransformationObjectType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  int resultId() const;
+  bool isTransform() const;
+};
+
 #endif

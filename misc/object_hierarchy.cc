@@ -23,6 +23,7 @@
 #include "../objects/object_imp_factory.h"
 #include "../objects/object_type_factory.h"
 #include "../objects/bogus_imp.h"
+#include "../objects/transform_types.h"
 #include "../objects/object_type.h"
 
 #include <kglobal.h>
@@ -503,4 +504,17 @@ int ObjectHierarchy::idOfLastResult() const
     return ObjectImp::ID_AnyImp;
   else
     return static_cast<const ApplyTypeNode*>( n )->type()->resultId();
+}
+
+ObjectHierarchy ObjectHierarchy::transformFinalObject( const Transformation& t ) const
+{
+  assert( mnumberofresults == 1 );
+  ObjectHierarchy ret( *this );
+  ret.mnodes.push_back( new PushStackNode( new TransformationImp( t ) ) );
+  std::vector<int> parents;
+  parents.push_back( ret.mnodes.size() - 1 );
+  parents.push_back( ret.mnodes.size() );
+  const ObjectType* type = ApplyTransformationObjectType::instance();
+  ret.mnodes.push_back( new ApplyTypeNode( type, parents ) );
+  return ret;
 }

@@ -21,6 +21,7 @@
 
 #include "object_imp.h"
 #include "../misc/object_hierarchy.h"
+#include "../misc/kigtransform.h"
 
 #include <qstring.h>
 
@@ -145,6 +146,32 @@ public:
 
   bool inherits( int type ) const;
   HierarchyImp* copy() const;
+  const char* baseName() const;
+
+  int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
+};
+
+/**
+ * Don't mistake this imp for something that draws a transformed
+ * object.  It does something completely different.  It's a pure data
+ * Imp, like DoubleImp and friends that serves only to store the data
+ * of a transformation ( see the Transformation class in
+ * ../misc/kigtransform.h
+ */
+class TransformationImp
+  : public BogusImp
+{
+  typedef BogusImp Parent;
+  Transformation mdata;
+public:
+  TransformationImp( const Transformation& h );
+
+  const Transformation& data() const { return mdata; };
+  void setData( const Transformation& h ) { mdata = h; };
+
+  bool inherits( int type ) const;
+  TransformationImp* copy() const;
   const char* baseName() const;
 
   int id() const;

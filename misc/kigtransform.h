@@ -33,6 +33,7 @@ class Transformation
   Transformation();
 public:
   ~Transformation();
+  Transformation( double data[3][3], bool ishomothety );
 
   const Coordinate apply( const Coordinate& c, bool& valid ) const;
 

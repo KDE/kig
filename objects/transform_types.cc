@@ -379,3 +379,46 @@ bool CastShadowType::isTransform() const
 {
   return true;
 }
+
+static const ArgParser::spec argsspecatot[] =
+{
+  { ObjectImp::ID_TransformationImp, I18N_NOOP( "Transform using this transformation" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Transform this object" ) }
+};
+
+ApplyTransformationObjectType::ApplyTransformationObjectType()
+  : ArgparserObjectType( "ApplyTransformation", argsspecatot, 2 )
+{
+}
+
+ApplyTransformationObjectType::~ApplyTransformationObjectType()
+{
+}
+
+const ApplyTransformationObjectType* ApplyTransformationObjectType::instance()
+{
+  static const ApplyTransformationObjectType t;
+  return &t;
+}
+
+ObjectImp* ApplyTransformationObjectType::calc( const Args& targs, const KigDocument& ) const
+{
+  assert( targs.size() == 2 );
+  kdDebug() << k_funcinfo
+            << targs[0]->baseName() << " "
+            << targs[1]->baseName() << endl;
+  const Args& args = margsparser.parse( targs );
+  assert( args[0] && args[1] );
+  assert( args[0]->inherits( ObjectImp::ID_TransformationImp ) );
+  return args[1]->transform( static_cast<const TransformationImp*>( args[0] )->data() );
+}
+
+int ApplyTransformationObjectType::resultId() const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+bool ApplyTransformationObjectType::isTransform() const
+{
+  return true;
+}

@@ -352,7 +352,7 @@ const Transformation Transformation::castShadow(
   // I must transform the point
 
   bool isvalid = true;
-  Coordinate modlightsrc = sym.apply ( lightsrc, isvalid ); 
+  Coordinate modlightsrc = sym.apply ( lightsrc, isvalid );
   Transformation ret = identity();
   ret.mdata[0][0] =  2*modlightsrc.y;
   ret.mdata[0][2] = -1;
@@ -468,4 +468,12 @@ double Transformation::apply( double length ) const
   double det = mdata[1][1]*mdata[2][2] -
                mdata[1][2]*mdata[2][1];
   return sqrt( fabs( det ) ) * length;
+}
+
+Transformation::Transformation( double data[3][3], bool ishomothety )
+  : mIsHomothety( ishomothety )
+{
+  for ( int i = 0; i < 3; ++i )
+    for ( int j = 0; j < 3; ++j )
+      mdata[i][j] = data[i][j];
 }

@@ -50,6 +50,7 @@ QString ObjectImp::translatedName( int id )
   case ID_IntImp: return i18n( "int" );
   case ID_StringImp: return i18n( "string" );
   case ID_HierarchyImp: return i18n( "hierarchy" );
+  case ID_TransformationImp: return i18n( "transformation" );
   case ID_PointImp: return i18n( "point" );
   case ID_CurveImp: return i18n( "curve" );
   case ID_LineImp: return i18n( "line" );
@@ -76,6 +77,7 @@ const char* ObjectImp::idToString( int id )
   case ID_IntImp: return "int";
   case ID_StringImp: return "string";
   case ID_HierarchyImp: return "hierarchy";
+  case ID_TransformationImp: return "transformation";
   case ID_PointImp: return "point";
   case ID_CurveImp: return "curve";
   case ID_LineImp: return "line";
@@ -102,6 +104,7 @@ const char* ObjectImp::selectStatement( int id )
   case ID_IntImp: return I18N_NOOP( "Select this number" );
   case ID_StringImp: return I18N_NOOP( "Select this string" );
   case ID_HierarchyImp: return I18N_NOOP( "Select this hierarchy" );
+  case ID_TransformationImp: return I18N_NOOP( "Select this transformation" );
   case ID_PointImp: return I18N_NOOP( "Select this point" );
   case ID_CurveImp: return I18N_NOOP( "Select this curve" );
   case ID_LineImp: return I18N_NOOP( "Select this line" );
@@ -126,6 +129,7 @@ int ObjectImp::stringToID( const QCString& string )
   if( string == "int" ) return ID_IntImp;
   if( string == "string" ) return ID_StringImp;
   if( string == "hierarchy" ) return ID_HierarchyImp;
+  if( string == "transformation" ) return ID_TransformationImp;
   if( string == "point" ) return ID_PointImp;
   if( string == "curve" ) return ID_CurveImp;
   if( string == "line" ) return ID_LineImp;
@@ -151,6 +155,7 @@ QString ObjectImp::removeAStatement( int id )
   case ID_IntImp: return i18n( "Remove a number" );
   case ID_StringImp: return i18n( "Remove a string" );
   case ID_HierarchyImp: return i18n( "Remove a hierarchy" );
+  case ID_TransformationImp: return i18n( "Remove a transformation" );
   case ID_PointImp: return i18n( "Remove a point" );
   case ID_CurveImp: return i18n( "Remove a curve" );
   case ID_LineImp: return i18n( "Remove a line" );
@@ -177,6 +182,7 @@ QString ObjectImp::addAStatement( int id )
   case ID_IntImp: return i18n( "Add a number" );
   case ID_StringImp: return i18n( "Add a string" );
   case ID_HierarchyImp: return i18n( "Add a hierarchy" );
+  case ID_TransformationImp: return i18n( "Add a transformation" );
   case ID_PointImp: return i18n( "Add a point" );
   case ID_CurveImp: return i18n( "Add a curve" );
   case ID_LineImp: return i18n( "Add a line" );
@@ -306,4 +312,8 @@ void ObjectImpVisitor::visit( const ArcImp* )
 ObjectImpVisitor::~ObjectImpVisitor()
 {
 
+}
+
+void ObjectImpVisitor::visit( const TransformationImp* )
+{
 }
