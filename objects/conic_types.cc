@@ -30,19 +30,19 @@
 
 #include <klocale.h>
 
-static const char constructstatement[] = I18N_NOOP( "Construct a conic through this point" );
+static const char conic_constructstatement[] = I18N_NOOP( "Construct a conic through this point" );
 
 static const struct ArgsParser::spec argsspecConicB5P[] =
 {
-  { PointImp::stype(), constructstatement,
+  { PointImp::stype(), conic_constructstatement,
     I18N_NOOP( "Select a point for the new conic to go through..." ), true },
-  { PointImp::stype(), constructstatement,
+  { PointImp::stype(), conic_constructstatement,
     I18N_NOOP( "Select a point for the new conic to go through..." ), true },
-  { PointImp::stype(), constructstatement,
+  { PointImp::stype(), conic_constructstatement,
     I18N_NOOP( "Select a point for the new conic to go through..." ), true },
-  { PointImp::stype(), constructstatement,
+  { PointImp::stype(), conic_constructstatement,
     I18N_NOOP( "Select a point for the new conic to go through..." ), true },
-  { PointImp::stype(), constructstatement,
+  { PointImp::stype(), conic_constructstatement,
     I18N_NOOP( "Select a point for the new conic to go through..." ),true }
 };
 

@@ -33,14 +33,14 @@
  * triangle by its vertices
  */
 
-static const char constructstatement[] = I18N_NOOP( "Construct a triangle with this vertex" );
-static const char constructstatement2[] = I18N_NOOP( "Select a point to be a vertex of the new triangle..." );
+static const char triangle_constructstatement[] = I18N_NOOP( "Construct a triangle with this vertex" );
+static const char triangle_constructstatement2[] = I18N_NOOP( "Select a point to be a vertex of the new triangle..." );
 
 static const struct ArgsParser::spec argsspecTriangleB3P[] =
 {
-  { PointImp::stype(), constructstatement, constructstatement2, true },
-  { PointImp::stype(), constructstatement, constructstatement2, true },
-  { PointImp::stype(), constructstatement, constructstatement2, true }
+  { PointImp::stype(), triangle_constructstatement, triangle_constructstatement2, true },
+  { PointImp::stype(), triangle_constructstatement, triangle_constructstatement2, true },
+  { PointImp::stype(), triangle_constructstatement, triangle_constructstatement2, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TriangleB3PType )
