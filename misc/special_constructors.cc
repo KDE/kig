@@ -746,21 +746,34 @@ bool GenericIntersectionConstructor::isIntersection() const
 }
 
 QString GenericIntersectionConstructor::useText(
-  const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
+  const ObjectCalcer& o, const std::vector<ObjectCalcer*>& os,
   const KigDocument&, const KigWidget& ) const
 {
+  QString preamble;
+  switch (os.size())
+  {
+    case 1:
+      preamble = i18n( "Intersect " );
+      break;
+    case 2:
+      preamble = i18n( "with " );
+      break;
+    default:
+      preamble = i18n( "Intersect with " );  // this should never happen...
+      break;
+  }
   if ( o.imp()->inherits( CircleImp::stype() ) )
-    return i18n( "Intersect with This Circle" );
+    return preamble + i18n( "This Circle" );
   else if ( o.imp()->inherits( ConicImp::stype() ) )
-    return i18n( "Intersect with This Conic" );
+    return preamble + i18n( "This Conic" );
   else if ( o.imp()->inherits( AbstractLineImp::stype() ) )
-    return i18n( "Intersect with This Line" );
+    return preamble + i18n( "This Line" );
   else if ( o.imp()->inherits( CubicImp::stype() ) )
-    return i18n( "Intersect with This Cubic Curve" );
+    return preamble + i18n( "This Cubic Curve" );
   else if ( o.imp()->inherits( ArcImp::stype() ) )
-    return i18n( "Intersect with This Arc" );
+    return preamble + i18n( "This Arc" );
   else if ( o.imp()->inherits( PolygonImp::stype() ) )
-    return i18n( "Intersect with This Polygon" );
+    return preamble + i18n( "This Polygon" );
   else assert( false );
   return QString::null;
 }
