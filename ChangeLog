@@ -1,3 +1,8 @@
+2004-02-08  Dominique Devriese  <devriese@kde.org>
+
+	* Fix a bug reported by Maurizio Paolini: don't crash on getting
+	the arguments for a locus in the wrong order.
+
 2004-01-21  Dominique Devriese  <devriese@kde.org>
 
 	* replace my own autoconf code in configure.in.in for checking for

@@ -132,15 +132,14 @@ void LocusConstructor::drawprelim( KigPainter& p, const std::vector<ObjectCalcer
   // way in order to play nice with Kig's design..
 
   if ( parents.size() != 2 ) return;
-  assert( dynamic_cast<const ObjectTypeCalcer*>( parents.front() ) );
-  const ObjectTypeCalcer* constrained = static_cast<ObjectTypeCalcer*>( parents.front() );
+  const ObjectTypeCalcer* constrained = dynamic_cast<ObjectTypeCalcer*>( parents.front() );
   const ObjectCalcer* moving = parents.back();
-  if ( ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+  if ( ! constrained || ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
   {
     // moving is in fact the constrained point.. swap them..
-    moving = constrained;
-    assert( dynamic_cast<const ObjectTypeCalcer*>( parents.back() ) );
-    constrained = static_cast<const ObjectTypeCalcer*>( parents.back() );
+    moving = parents.front();
+    constrained = dynamic_cast<const ObjectTypeCalcer*>( parents.back() );
+    assert( constrained );
   };
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
@@ -182,7 +181,19 @@ std::vector<ObjectHolder*> LocusConstructor::build( const std::vector<ObjectCalc
 {
   std::vector<ObjectHolder*> ret;
   assert( parents.size() == 2 );
-  ret.push_back( ObjectFactory::instance()->locus( parents[0], parents[1] ) );
+
+  ObjectTypeCalcer* constrained = dynamic_cast<ObjectTypeCalcer*>( parents.front() );
+  ObjectCalcer* moving = parents.back();
+  if ( ! constrained || ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+  {
+    // moving is in fact the constrained point.. swap them..
+    moving = parents.front();
+    constrained = dynamic_cast<ObjectTypeCalcer*>( parents.back() );
+    assert( constrained );
+  };
+  assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
+
+  ret.push_back( ObjectFactory::instance()->locus( constrained, moving ) );
   return ret;
 }
 
