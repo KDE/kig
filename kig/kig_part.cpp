@@ -880,7 +880,7 @@ void KigDocument::hideObjects( const std::vector<ObjectHolder*>& inos )
   if ( os.size() == 0 ) return;
   else if ( os.size() == 1 )
     kc = new KigCommand( *this, os[0]->imp()->type()->hideAStatement() );
-  else kc = new KigCommand( *this, i18n( "Hide %n objects" ).arg( os.size() ) );
+  else kc = new KigCommand( *this, i18n( "Hide %n object", "Hide %n objects", os.size() ) );
   for ( std::vector<ObjectHolder*>::iterator i = os.begin();
         i != os.end(); ++i )
     kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( false ) ) );
@@ -899,7 +899,7 @@ void KigDocument::showObjects( const std::vector<ObjectHolder*>& inos )
   if ( os.size() == 0 ) return;
   else if ( os.size() == 1 )
     kc = new KigCommand( *this, os[0]->imp()->type()->showAStatement() );
-  else kc = new KigCommand( *this, i18n( "Show %n objects" ).arg( os.size() ) );
+  else kc = new KigCommand( *this, i18n( "Show %n object", "Show %n objects", os.size() ) );
   for ( std::vector<ObjectHolder*>::iterator i = os.begin();
         i != os.end(); ++i )
     kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( true ) ) );

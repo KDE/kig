@@ -298,10 +298,10 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigDocum
   {
     KMessageBox::detailedSorry(
       0, i18n( "Kig cannot open the macro file \"%1\"." ).arg( f ),
-      i18n( "This file was created by a very old Kig version ( pre-0.4 )."
-            "Support for this format has been removed from recent Kig.  "
-            "You can try to import this macro using an older Kig version "
-            "( 0.4 to 0.6 ) and then export it again in the new format." ),
+      i18n( "This file was created by a very old Kig version (pre-0.4)."
+            "Support for this format has been removed from recent Kig versions. "
+            "You can try to import this macro using a previous Kig version "
+            "(0.4 to 0.6) and then export it again in the new format." ),
       i18n( "Not Supported" ) );
     return false;
   }

@@ -221,15 +221,15 @@ bool ScriptMode::queryFinish()
     {
       KMessageBox::detailedSorry(
         mwizard, i18n( "The Python interpreter caught an error during the execution of your "
-                       "script.  Please fix the script and press the Finish button again." ),
-        i18n( "The Python Interpreter generated the following error output: \n%1").arg( errtrace ) );
+                       "script. Please fix the script and click the Finish button again." ),
+        i18n( "The Python Interpreter generated the following error output:\n%1").arg( errtrace ) );
     }
     else
     {
       KMessageBox::sorry(
-        mwizard, i18n( "There seems to be an error in your script.  The Python interpreter "
+        mwizard, i18n( "There seems to be an error in your script. The Python interpreter "
                        "reported no errors, but the script does not generate "
-                       "a valid object.  Please fix the script, and press the Finish button "
+                       "a valid object. Please fix the script, and click the Finish button "
                        "again." ) );
     }
     return false;

@@ -133,13 +133,13 @@ bool KigFilterNative::load( const QString& file, KigDocument& to )
   }
   else if ( minor <= 3 )
   {
-    notSupported( file, i18n( "This file was created by Kig version \"%1\". \n"
-                              "Support for older Kig formats ( pre-0.4 ) has been "
-                              "removed from Kig. \n"
+    notSupported( file, i18n( "This file was created by Kig version \"%1\".\n"
+                              "Support for older Kig formats (pre-0.4) has been "
+                              "removed from Kig.\n"
                               "You can try to open this file with an older Kig "
-                              "version ( 0.4 to 0.6 ), \n"
+                              "version (0.4 to 0.6),\n"
                               "and then save it again, which will save it in the "
-                              "new format.." ).arg( version ) );
+                              "new format." ).arg( version ) );
     return false;
   }
   else if ( minor <= 6 )
@@ -277,7 +277,7 @@ bool KigFilterNative::load04( const QString& file, const QDomElement& docelem, K
       if ( ! s )
       {
         warning( i18n( "This Kig file has a coordinate system "
-                       "that this Kig version does not support. \n"
+                       "that this Kig version does not support.\n"
                        "A standard coordinate system will be used "
                        "instead." ) );
       }
@@ -347,10 +347,10 @@ bool KigFilterNative::load04( const QString& file, const QDomElement& docelem, K
           if ( ! imp )
           {
             notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support. \n"
+                                      "which this Kig version does not support.\n"
                                       "Perhaps you have compiled Kig without support "
-                                      "for this object type, \n"
-                                      "or perhaps you are using an older Kig version..." ) );
+                                      "for this object type,\n"
+                                      "or perhaps you are using an older Kig version." ) );
             return false;
           };
           o = new ObjectConstCalcer( imp );
@@ -385,10 +385,10 @@ bool KigFilterNative::load04( const QString& file, const QDomElement& docelem, K
           if ( !type )
           {
             notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support. \n "
+                                      "which this Kig version does not support.\n "
                                       "Perhaps you have compiled Kig without support "
-                                      "for this object type, \n"
-                                      "or perhaps you are using an older Kig version..." ) );
+                                      "for this object type,\n"
+                                      "or perhaps you are using an older Kig version." ) );
             return false;
           };
 
@@ -453,7 +453,7 @@ bool KigFilterNative::load07( const QString& file, const QDomElement& docelem, K
       if ( ! s )
       {
         warning( i18n( "This Kig file has a coordinate system "
-                       "that this Kig version does not support. \n"
+                       "that this Kig version does not support.\n"
                        "A standard coordinate system will be used "
                        "instead." ) );
       }
@@ -492,10 +492,10 @@ bool KigFilterNative::load07( const QString& file, const QDomElement& docelem, K
           if ( ! imp )
           {
             notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support. \n"
+                                      "which this Kig version does not support.\n"
                                       "Perhaps you have compiled Kig without support "
-                                      "for this object type, \n"
-                                      "or perhaps you are using an older Kig version..." ) );
+                                      "for this object type,\n"
+                                      "or perhaps you are using an older Kig version." ) );
             return false;
           }
           o = new ObjectConstCalcer( imp );

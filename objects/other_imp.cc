@@ -492,8 +492,8 @@ const ObjectImpType* AngleImp::stype()
     I18N_NOOP( "Add an Angle" ),
     I18N_NOOP( "Move an Angle" ),
     I18N_NOOP( "Attach to this angle" ),
-    I18N_NOOP( "Show a Angle" ),
-    I18N_NOOP( "Hide a Angle" )
+    I18N_NOOP( "Show an Angle" ),
+    I18N_NOOP( "Hide an Angle" )
     );
   return &t;
 }
@@ -522,8 +522,8 @@ const ObjectImpType* ArcImp::stype()
     I18N_NOOP( "Add an Arc" ),
     I18N_NOOP( "Move an Arc" ),
     I18N_NOOP( "Attach to this arc" ),
-    I18N_NOOP( "Show a Arc" ),
-    I18N_NOOP( "Hide a Arc" )
+    I18N_NOOP( "Show an Arc" ),
+    I18N_NOOP( "Hide an Arc" )
     );
   return &t;
 }
