@@ -121,9 +121,6 @@ KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
   QFile f( from );
   f.open( IO_ReadOnly );
 
-  // this code will look more like C than C++, but that's cause i
-  // think parsing text is not something that C++ is good at...
-
   bool eof;
 
   QCString s = readLine( f, eof );
