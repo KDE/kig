@@ -77,8 +77,8 @@ public:
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  const Coordinate& getP1() const;
-  const Coordinate& getP2() const;
+  const Coordinate getP1() const;
+  const Coordinate getP2() const;
   Point* getPoint1();
   Point* getPoint2();
 protected:

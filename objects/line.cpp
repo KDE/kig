@@ -284,7 +284,7 @@ void LinePerpend::drawPrelim( KigPainter& p, const Object* arg ) const
   // args we selected already + our own argument arg...
   // first a point:
   Coordinate tpoint;
-  if ( point ) tpoint = point->toPoint()->getCoord();
+  if ( point ) tpoint = point->getCoord();
   else
   {
     // arg should be a point...
@@ -302,8 +302,8 @@ void LinePerpend::drawPrelim( KigPainter& p, const Object* arg ) const
   }
   else if ( segment )
   {
-    t1 = line->getP1();
-    t2 = line->getP2();
+    t1 = segment->getP1();
+    t2 = segment->getP2();
   }
   else if ( arg->toLine() )
   {

@@ -269,12 +269,12 @@ QCString Segment::iType() const
   return I18N_NOOP("segment");
 }
 
-const Coordinate& Segment::getP1() const
+const Coordinate Segment::getP1() const
 {
   return p1->getCoord();
 }
 
-const Coordinate& Segment::getP2() const
+const Coordinate Segment::getP2() const
 {
   return p2->getCoord();
 }
