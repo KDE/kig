@@ -96,8 +96,6 @@ public:
 protected:
   Point* poc; // point on circle
   Point* centre;
-  Coordinate pwpsm; // point where poc started moving
-  enum { notMoving, movingPoc, lettingPocMove } wawm; // what are we moving ?
 };
 
 class CircleBTP
