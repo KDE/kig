@@ -944,7 +944,7 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
   for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
     ( *i )->calc( *doc );
 
-  QString out = ( outfile == "-" ) ? "" : outfile;
+  QString out = ( outfile == "-" ) ? QString::null : outfile;
   bool success = KigFilters::instance()->save( *doc, out );
   if ( !success )
   {
