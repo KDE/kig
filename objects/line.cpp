@@ -56,7 +56,6 @@ Coordinate Line::getPoint(double p) const
 
   Coordinate m = (p1+p2)/2;
   Coordinate dir = (p1 - p2);
-  if (dir.x < 0) dir = -dir;
   // we need to spread the points over the line, it should also come near
   // the (infinite) end of the line, but most points should be near
   // the two points we contain...
@@ -79,7 +78,6 @@ double Line::getParam(const Coordinate& point) const
   // next we fetch the parameter
   Coordinate m = Coordinate(p1+p2)/2;
   Coordinate dir = p1 - p2;
-  if (dir.x < 0) dir = -dir;
   Coordinate d = pt-m;
 
   double p = d.x/dir.x;
