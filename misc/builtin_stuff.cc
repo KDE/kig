@@ -66,7 +66,7 @@ void setupBuiltinStuff()
     // ray by two points..
     c = new SimpleObjectTypeConstructor(
       RayABType::instance(), I18N_NOOP( "Half-Line" ),
-      I18N_NOOP( "A ray by its start point, and another point somewhere on it." ),
+      I18N_NOOP( "A half-line by its start point, and another point somewhere on it." ),
       "ray" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_ray", Qt::Key_R ) );
@@ -289,8 +289,8 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       PointReflectionType::instance(),
-      I18N_NOOP( "Reflect over Point" ),
-      I18N_NOOP( "The reflection of an object over a point" ),
+      I18N_NOOP( "Mirror through Point" ),
+      I18N_NOOP( "An object mirrored through a point" ),
       "centralsymmetry" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_pointreflection" ) );
@@ -298,7 +298,7 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       LineReflectionType::instance(),
       I18N_NOOP( "Mirror" ),
-      I18N_NOOP( "The reflection of an object over a line" ),
+      I18N_NOOP( "An object mirrored through a line" ),
       "mirrorpoint" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linereflection" ) );
@@ -362,7 +362,7 @@ void setupBuiltinStuff()
 //     c = new SimpleObjectTypeConstructor(
 //       ProjectiveRotationType::instance(),
 //       I18N_NOOP( "Rotate Projectively" ),
-//       I18N_NOOP( "An object projectively rotated by an angle and a ray" ),
+//       I18N_NOOP( "An object projectively rotated by an angle and a half-line" ),
 //       "projectiverotation" );
 //     ctors->add( c );
 //     actions->add( new ConstructibleAction( c, "objects_new_projectiverotation" ) );

@@ -60,8 +60,8 @@ ObjectImp* TranslatedType::calc( const Args& args, const KigDocument& ) const
 
 static const ArgsParser::spec argsspecPointReflection[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ), false },
-  { PointImp::stype(), I18N_NOOP( "Reflect around this point" ), false }
+  { ObjectImp::stype(), I18N_NOOP( "Mirror this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "Mirror through this point" ), false }
 };
 
 PointReflectionType::PointReflectionType()
@@ -91,8 +91,8 @@ ObjectImp* PointReflectionType::calc( const Args& args, const KigDocument& ) con
 
 static const ArgsParser::spec argsspecLineReflection[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ), false },
-  { AbstractLineImp::stype(), I18N_NOOP( "Reflect over this line" ), false }
+  { ObjectImp::stype(), I18N_NOOP( "Mirror this object" ), false },
+  { AbstractLineImp::stype(), I18N_NOOP( "Mirror through this line" ), false }
 };
 
 LineReflectionType::LineReflectionType()
@@ -387,7 +387,7 @@ static const ArgsParser::spec argsspecCastShadow[] =
   { ObjectImp::stype(), I18N_NOOP( "Cast the shadow of this object" ), false },
   { PointImp::stype(), I18N_NOOP( "Cast a shadow from this light source" ), false },
   { AbstractLineImp::stype(),
-    I18N_NOOP( "Cast a shadow on the plane defined by this line" ), false }
+    I18N_NOOP( "Cast a shadow on the horizon represented by this line" ), false }
 };
 
 CastShadowType::CastShadowType()

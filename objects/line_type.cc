@@ -88,8 +88,8 @@ ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const ArgsParser::spec argsspecRayAB[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a ray starting at this point" ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct a ray through this point" ), true }
+  { PointImp::stype(), I18N_NOOP( "Construct a half-line starting at this point" ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct a half-line through this point" ), true }
 };
 
 RayABType::RayABType()

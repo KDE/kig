@@ -179,10 +179,10 @@
 //     case 1:
 //     if (o->toVector()) return i18n("translate by this vector");
 //     if (o->toPoint()) return i18n("central symmetry by this point. You"
-//      " can obtain different transformations by clicking on lines (reflection),"
+//      " can obtain different transformations by clicking on lines (mirror),"
 //      " vectors (translation), angles (rotation), segments (scaling) and rays"
 //      " (projective transformation)");
-//     if (o->toLine()) return i18n("reflect by this line");
+//     if (o->toLine()) return i18n("mirror through this line");
 //     if (o->toAngle()) return i18n("rotate by this angle");
 //     if (o->toSegment()) return i18n("scale using the length of this vector");
 //     if (o->toRay()) return i18n("a projective transformation in the direction"
@@ -305,7 +305,7 @@ const Transformation operator*( const Transformation& a, const Transformation& b
 const Transformation Transformation::lineReflection( const LineData& l )
 {
   Transformation ret = scaling( -1, l );
-  // a reflection is a homothety...
+  // a mirroring is a homothety...
   ret.mIsHomothety = true;
   return ret;
 }
@@ -340,7 +340,7 @@ const Transformation Transformation::harmonicHomology(
   // (r . C) Id - 2 (C tensor r)
   //
   // where r = [c, a, b], C = [1, Cx, Cy], Cx and Cy are the coordinates of
-  // the center, '.' denotes the scalar product, Id is the identity matrix, 
+  // the center, '.' denotes the scalar product, Id is the identity matrix,
   // 'tensor' is the tensor product producing a 3x3 matrix.
   //
   // note: here we decide to use coordinate '0' in place of the third coordinate
@@ -385,11 +385,11 @@ const Transformation Transformation::affinityGI3P(
   // point into 3 other given points; i.e. it depends on the coordinates of
   // a total of 6 points.  This actually amounts in solving a 6x6 linear
   // system to find the entries of a 2x2 linear transformation matrix T
-  // and of a translation vector t.  
+  // and of a translation vector t.
   // If Pi denotes one of the starting points and Qi the corresponding
   // final position we actually have to solve: Qi = t + T Pi, for i=1,2,3
   // (each one is a vector equation, so that it really gives 2 equations).
-  // In our context T and t are used to build a 3x3 projective transformation 
+  // In our context T and t are used to build a 3x3 projective transformation
   // as follows:
   //
   //    [  1  0   0  ]
@@ -476,11 +476,11 @@ const Transformation Transformation::projectivityGI4P(
   // a total of 8 points.  This actually amounts in solving an underdetermined
   // homogeneous linear system.
 
-  double 
+  double
     row0[13], row1[13], row2[13], row3[13], row4[13], row5[13], row6[13], row7[13],
     row8[13], row9[13], row10[13], row11[13];
 
-  double *matrix[12] = {row0, row1, row2, row3, row4, row5, row6, row7, 
+  double *matrix[12] = {row0, row1, row2, row3, row4, row5, row6, row7,
                         row8, row9, row10, row11};
 
   double solution[13];
@@ -521,7 +521,7 @@ const Transformation Transformation::projectivityGI4P(
   // now we can build the 3x3 transformation matrix; remember that
   // unknowns from 9 to 13 are just multiplicators that we don't need here
 
-  int k = 0;  
+  int k = 0;
   for ( int i = 0; i < 3; i++ )
   {
     for ( int j = 0; j < 3; j++ )
