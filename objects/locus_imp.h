@@ -53,6 +53,8 @@ public:
 
   const CurveImp* curve() const;
   const ObjectHierarchy& hierarchy() const;
+
+  int id() const;
 };
 
 #endif

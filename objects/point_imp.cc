@@ -98,3 +98,8 @@ const char* PointImp::baseName() const
 {
   return I18N_NOOP( "point" );
 }
+
+int PointImp::id() const
+{
+  return ID_PointImp;
+}

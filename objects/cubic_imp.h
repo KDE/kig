@@ -51,6 +51,8 @@ public:
   const Coordinate getPoint( double param ) const;
 
   const CubicCartesianData data() const;
+
+  int id() const;
 };
 
 #endif

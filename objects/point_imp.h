@@ -48,6 +48,8 @@ public:
 
   PointImp* copy() const;
   const char* baseName() const;
+
+  int id() const;
 };
 
 #endif

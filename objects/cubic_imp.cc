@@ -311,3 +311,8 @@ const char* CubicImp::baseName() const
 {
   return I18N_NOOP( "cubic" );
 }
+
+int CubicImp::id() const
+{
+  return ID_CubicImp;
+}

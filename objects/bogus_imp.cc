@@ -147,3 +147,23 @@ const char* StringImp::baseName() const
 {
   return I18N_NOOP( "string" );
 }
+
+int InvalidImp::id() const
+{
+  return ID_InvalidImp;
+}
+
+int DoubleImp::id() const
+{
+  return ID_DoubleImp;
+}
+
+int IntImp::id() const
+{
+  return ID_IntImp;
+}
+
+int StringImp::id() const
+{
+  return ID_StringImp;
+}

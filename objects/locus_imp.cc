@@ -126,3 +126,8 @@ const ObjectHierarchy& LocusImp::hierarchy() const
 {
   return mhier;
 }
+
+int LocusImp::id() const
+{
+  return ID_LocusImp;
+}

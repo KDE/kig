@@ -184,3 +184,13 @@ const char* VectorImp::baseName() const
 {
   return I18N_NOOP( "vector" );
 }
+
+int AngleImp::id() const
+{
+  return ID_AngleImp;
+}
+
+int VectorImp::id() const
+{
+  return ID_VectorImp;
+}

@@ -360,3 +360,18 @@ bool RayImp::inherits( int type ) const
 {
   return type == ID_RayImp ? true : Parent::inherits( type );
 }
+
+int SegmentImp::id() const
+{
+  return ID_SegmentImp;
+}
+
+int RayImp::id() const
+{
+  return ID_RayImp;
+}
+
+int LineImp::id() const
+{
+  return ID_LineImp;
+}

@@ -59,6 +59,8 @@ public:
   virtual const ConicPolarData polarData() const = 0;
   virtual Coordinate focus1() const;
   virtual Coordinate focus2() const;
+
+  int id() const;
 };
 
 class ConicImpCart

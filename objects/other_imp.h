@@ -49,6 +49,7 @@ public:
   const char* baseName() const;
 
   const double size() const;
+  int id() const;
 };
 
 class VectorImp
@@ -76,5 +77,7 @@ public:
   const char* baseName() const;
 
   const Coordinate dir() const;
+
+  int id() const;
 };
 #endif

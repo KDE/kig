@@ -83,6 +83,8 @@ public:
   const char* baseName() const;
 
   double length() const;
+
+  int id() const;
 };
 
 class RayImp
@@ -107,6 +109,8 @@ public:
   int type() const;
   RayImp* copy() const;
   const char* baseName() const;
+
+  int id() const;
 };
 
 class LineImp
@@ -128,6 +132,8 @@ public:
   int type() const;
   LineImp* copy() const;
   const char* baseName() const;
+
+  int id() const;
 };
 
 #endif

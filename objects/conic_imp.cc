@@ -272,3 +272,8 @@ const char* ConicImp::baseName() const
 {
   return I18N_NOOP( "conic" );
 }
+
+int ConicImp::id() const
+{
+  return ID_ConicImp;
+}
