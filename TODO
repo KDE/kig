@@ -1,5 +1,8 @@
 * not too hard:
 
+- create a ObjectImp::surroundingRect function, and use it in
+   calculating the preferred screen size
+
 - support line styles in Kig.  The code in ObjectDrawer is already
    there, it just needs the UI support...
 
