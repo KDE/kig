@@ -402,7 +402,7 @@ Rect KigDocument::suggestedRect() const
   Rect r(0.,0.,0.,0.);
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if ( (*i)->hasimp( ObjectImp::ID_PointImp ) && (*i)->shown() )
+    if ( (*i)->shown() && (*i)->hasimp( ObjectImp::ID_PointImp ) )
     {
       if( !rectInited )
       {
