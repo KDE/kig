@@ -77,7 +77,7 @@ const Coordinate LocusImp::getPoint( double param, const KigDocument& doc ) cons
   PointImp argimp( arg );
   Args args;
   args.push_back( &argimp );
-  std::vector<ObjectImp*> calcret = mhier.calc( args, doc );
+  vector<ObjectImp*> calcret = mhier.calc( args, doc );
   assert( calcret.size() == 1 );
   ObjectImp* imp = calcret.front();
   Coordinate ret;
@@ -142,6 +142,11 @@ int LocusImp::id() const
   return ID_LocusImp;
 }
 
+/**
+ * This function returns the distance between the point with parameter
+ * param and point p.  param is allowed to not be between 0 and 1, in
+ * which case we consider only the decimal part.
+ */
 double LocusImp::getDist(double param, const Coordinate& p, const KigDocument& doc) const
 {
   param = fmod( param, 1 );
@@ -150,24 +155,30 @@ double LocusImp::getDist(double param, const Coordinate& p, const KigDocument& d
   return ( p1 - p ).length();
 }
 
+/**
+ * This function searches starting from x1 for the first interval in
+ * which the function of the distance from the point at coordinate x
+ * starts to increase.  The range found is returned in the parameters
+ * x1 and x2: [x1,x2].
+ */
 void LocusImp::getInterval( double& x1, double& x2,
-                            double& incr,const Coordinate& p,
+                            double incr,const Coordinate& p,
                             const KigDocument& doc) const
 {
   double epsilon = incr/100;
   double x3 = x1 + epsilon;
   double mm = getDist(x1,p,doc);
   double mm1 = getDist(x3,p,doc);
-  if (mm < mm1) return;
+  if( mm < mm1 ) return;
   else
   {
-    while (mm > mm1)
+    while( mm > mm1 )
     {
-      x1 = x1 + 10 * epsilon;
+      x3 = x2;
+      x1 += 10 * epsilon;
       mm = getDist( x1, p, doc );
       x2 = x1 + epsilon;
       mm1 = getDist( x2, p, doc );
-      if( mm > mm1 ) x3 = x2;
     }
     x2=x1;
     x1=x3;
@@ -176,22 +187,47 @@ void LocusImp::getInterval( double& x1, double& x2,
 
 double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
 {
-  double epsilon=1.e-4;
-  int N=50;
+  // thiis function ( and related functions like getInterval etc. ) is
+  // written by Franco Pasquarelli <pasqui@dmf.bs.unicatt.it>.
+  // I ( domi ) have adapted and documented it a bit.
+
+  // consider the function that returns the distance for a point at
+  // parameter x to the locus for a given parameter x.  What we do
+  // here is look for the global minimum of this function.  We do that
+  // by dividing the range ( [0,1] ) into N parts,  and start looking
+  // for a local minimum from there on.  If we find one, we keep it if
+  // it is the lowest of all the ones we've already found..
+
+  const double epsilon=1.e-4;
+  const int N=50;
+  const double incr=1./(double) N;
+
+  // xm is the best parameter we've found so far, fxm is the distance
+  // to the locus from that point.  We start with some
+  // pseudo-values..
   double fxm=10000000.;
   double xm=2.;
-  double incr=1./(double) N;
-  double x1=0.;
-  int j = 1;
-  while (j <= N)
+
+  int j = 0;
+
+  while( j < N )
   {
-    x1=(j-1)*incr;
-    double x2=x1+incr;
+    // [x1,x2] is the range we're currently considering..
+    double x1 = j * incr;
+    double x2 = x1 + incr;
+
+    // check the range x1,x2 for the first local maximum..
     getInterval( x1, x2, incr, p, doc );
-    j++;
-    if ( fabs(x1-(j-2)*incr) > 1.e-8)
+
+    // don't consider intervals where the distance is increasing..
+    if ( fabs( x1 - j * incr ) > 1.e-8 )
     {
-      int it=1;
+      // Franco: could you comment on this code a bit.  As I see it,
+      // you're looking for a sequence of three fibonacci numbers,
+      // that are big enough to divide ( x2 - x1 ) in some 10000
+      // pieces, but I can't figure out why you would do that.  Also:
+      // doesn't this code belong in getParamofmin() ?
+      int it = 1;
       int i = 1;
       int jj = 1;
       while( (x2-x1)/(double) (2*jj) > epsilon)
@@ -199,7 +235,7 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
         int M=i+jj;
 	i=jj;
 	jj=M;
-	it=it+1;
+	it++;
       }
       int t[3];
       t[0]=jj;
@@ -209,24 +245,34 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
       double fxm1 = getDist( xm1, p, doc );
       if( fxm1 < fxm )
       {
+        // we found a new minimum, save it..
         xm=xm1;
 	fxm=fxm1;
       }
-      while ((j-1)*incr < x2 && j<=N) j++;
+      j = max( N, (int) ( x2 / incr + 1 ) ) - 1;
     }
+    j++;
   }
   return xm;
 }
 
+/**
+ * Franco: could you comment this function a little, please ?
+ * This seems to calculate the minimum of the distance of the point
+ * with parameter to the locus by taking an interval, dividing it in (
+ * about ) 2, checking in which half the result should be, and
+ * continuing there..  I'm not sure what the fibonacci numbers in t
+ * are necessary for.
+ */
 double LocusImp::getParamofmin( double a, double b, int it,
                                 const Coordinate& p,int t[3],
                                 const KigDocument& doc ) const
 {
-  double epsilon=(b-a)/(4*t[2]);
+  double epsilon = (b-a)/(4*t[2]);
 
-  double x=(b-a)/t[2];
-  double x1=a+t[0]*x;
-  double x2=a+t[1]*x;
+  double x = ( b - a ) / t[2];
+  double x1 = a + t[0] * x;
+  double x2 = a + t[1] * x;
   double fx1=getDist(x1,p,doc) ;
   double fx2=getDist(x2,p,doc);
   if (fx1 < fx2)
