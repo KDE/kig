@@ -294,19 +294,49 @@ std::pair<Coordinate, Coordinate> calcConicRadical( const ConicCartesianEquation
   e += lambda*e2;
   f += lambda*f2;
 
+  // domi:
   // this is the determinant of the matrix of the new conic.  It
   // should be zero, for the new conic to be degenerate.
   df = 4*a*b*f - a*e*e - b*d*d - c*c*f + c*d*e;
 
-  double discrim = c*c - 4*a*b;  // if negative ?!?
+  // domi:
+  // this is the negative of the determinant of the top left of the
+  // matrix.  If it is 0, then the conic is a parabola, if it is < 0,
+  // then the conic is an ellipse, if positive, the conic is a
+  // hyperbola.  In this case, it should be positive, since we have a
+  // degenerate conic, which is a degenerate case of a hyperbola..
+  double discrim = c*c - 4*a*b;
 
   if (discrim >= 0)
   {
+    // ret.first is the solution of the equation A*(x,y) = (0,0) where
+    // A is the matrix of the degenerate conic.  This is what we
+    // called in the conic theory we saw in high school a "double
+    // point".  It has the unique property that any line going through
+    // it is a "polar line" of the conic at hand.  It only exists for
+    // degenerate conics.  It has another unique property that if you
+    // take any other point on the conic, then the line between it and
+    // the double point is part of the conic.
+    // this is what we use here: we find the double point ( ret.first
+    // ), and then find another points on the conic.
+
+    // note: i think it would be better to dissolve the degenerate
+    // conic into the two lines it consists of, and to return
+    // calcConicLineIntersect with the first conic and those two
+    // lines.. this would prevent problems when the double point is
+    // infinite etc.
     ret.first = (1/discrim)*Coordinate (2*b*d - c*e, 2*a*e - c*d);
     ret.second = ret.first - Coordinate (-2*b, c + which*sqrt(discrim));
     valid = true;
   }
-  else valid = false;
+  else
+  {
+    // domi:
+    // i would put an assertion here, but well, i guess it doesn't
+    // really matter, and this prevents crashes if the math i still
+    // recall from high school happens to be wrong :)
+    valid = false;
+  };
 
   return ret;
 }
