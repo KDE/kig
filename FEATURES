@@ -6,9 +6,9 @@ here are some nice Kig features i'd like to show off :)
   circle, click the button again, type in a name.  Then check out the
   new type with the other circle types.  You can't really see the
   difference between built-in types and macro's
-- userfriendly manner of constructing things... You see things you're
-  constructing, and clicking gives you points etc.  Try constructing a
-  segment, and you'll see what i mean ( i hope :)
+- I've given quite some attention to making Kig as intuitive to use as
+  possible.  It has various unique features like the nice RMB menu's,
+  the intuitive construction mode, etc.
 - is a KPart: try opening macrotest.kig from konqueror, if it doesn't 
   work yet, open your kcontrol, then go to "File Browsing"->"File
   Associations", click add, group:"application", name:"x-kig", open
@@ -35,6 +35,7 @@ here are some nice Kig features i'd like to show off :)
 - nice support for Locuses, inspired by KSeg's version of this.  Check
   the documentation and examples/locustest.kig for more info..
 - various nice objects: conics, cubics etc.
+- flexible transformation facility
 
 PLANNED FEATURES
 For a list of planned features, check out the TODO file.
