@@ -155,3 +155,40 @@ int LocusType::resultId() const
   return ObjectImp::ID_LocusImp;
 }
 
+CopyObjectType::CopyObjectType()
+  : ObjectType( "Copy" )
+{
+}
+
+CopyObjectType::~CopyObjectType()
+{
+}
+
+CopyObjectType* CopyObjectType::instance()
+{
+  static CopyObjectType t;
+  return &t;
+}
+
+bool CopyObjectType::inherits( int ) const
+{
+  return false;
+}
+
+ObjectImp* CopyObjectType::calc( const Args& parents, const KigDocument& ) const
+{
+  assert( parents.size() == 1 );
+  return parents[0]->copy();
+}
+
+int CopyObjectType::impRequirement( const ObjectImp*, const Args& ) const
+{
+  return ObjectImp::ID_AnyImp;
+}
+
+int CopyObjectType::resultId() const
+{
+  // we don't know what we return..
+  return ObjectImp::ID_AnyImp;
+}
+

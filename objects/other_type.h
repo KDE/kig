@@ -60,4 +60,18 @@ public:
   int resultId() const;
 };
 
+class CopyObjectType
+  : public ObjectType
+{
+protected:
+  CopyObjectType();
+  ~CopyObjectType();
+public:
+  static CopyObjectType* instance();
+  bool inherits( int type ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
+  int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  int resultId() const;
+};
+
 #endif
