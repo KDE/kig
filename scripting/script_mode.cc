@@ -250,3 +250,8 @@ void ScriptMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&,
 {
 }
 
+void ScriptMode::setScriptType( QString& type )
+{
+  mtype = type;
+}
+

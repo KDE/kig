@@ -56,6 +56,7 @@ kigicondata_DATA = \
 	rotation.png \
 	scale.png \
 	script.png \
+	script-python.png \
 	segment.png \
 	segmentaxis.png \
 	sizer.png \

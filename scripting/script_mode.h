@@ -36,6 +36,8 @@ class ScriptMode
 
   enum WAWD { SelectingArgs, EnteringCode };
   WAWD mwawd;
+
+  QString mtype;
 public:
   ScriptMode( KigDocument& doc );
   ~ScriptMode();
@@ -60,6 +62,8 @@ public:
   void killMode();
 
   void enableActions();
+
+  void setScriptType( QString& type );
 };
 
 #endif

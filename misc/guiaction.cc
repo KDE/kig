@@ -310,9 +310,10 @@ void TestAction::act( KigDocument& doc )
 #include "../scripting/script_mode.h"
 
 NewScriptAction::NewScriptAction( const char* descname, const char* description,
-                                  const char* icon, const char* actionname )
-  : GUIAction(), mactionname( actionname ), mdescname( descname ),
-    mdescription( description ), micon( icon )
+                                  const char* icon, const char* type,
+                                  const char* actionname )
+  : GUIAction(), mdescname( descname ), mdescription( description ),
+    micon( icon ), mtype( type ), mactionname( actionname )
 {
 }
 
@@ -343,6 +344,8 @@ const char* NewScriptAction::actionName() const
 void NewScriptAction::act( KigDocument& doc )
 {
   ScriptMode m( doc );
+  QString t( mtype );
+  m.setScriptType( t );
   doc.runMode( &m );
 }
 

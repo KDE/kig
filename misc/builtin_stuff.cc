@@ -38,8 +38,6 @@
 #include "../objects/other_imp.h"
 #include "../objects/line_imp.h"
 
-#include <qregexp.h>
-
 #include <klocale.h>
 
 void setupBuiltinStuff()
@@ -438,12 +436,12 @@ void setupBuiltinStuff()
     actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );
 
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
-
     actions->add( new NewScriptAction(
                         I18N_NOOP( "Python Script" ),
                         I18N_NOOP( "Construct a new Python script." ),
-                        "script",
-                        "objects_new_script_object" ) );
+                        "script-python",
+                        "python",
+                        "objects_new_script_python" ) );
 #endif
 
 #if 0

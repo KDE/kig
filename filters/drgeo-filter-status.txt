@@ -13,15 +13,15 @@ Import
 Objects implemented
 -------------------
 
-Points            ok
+Points            most, On_curve (partially)
 Rays              ok
 Vectors           ok
-Lines             ok
-Circles           ok
-Numbers           value (with a label), segment_length, circle_perimeter, 
+Lines             most
+Circles           2pts, segment
+Numberics         value (with a label), segment_length, circle_perimeter, 
                   arc_length, distance_2pts, vector_norm, pt_abscissa, 
                   pt_ordinate, vector_abscissa, vector_ordinate, slope
-Angles            ok (no label with measure)
+Angles            3pts (partially)
 Arcs              ok
 Transformations   translation, central & line reflection, rotation
 Intersections     line-line, circle-circle, circle-line
@@ -31,22 +31,29 @@ Equations         line, circle
 Colors            ok
 Visibility        ok
 Styles            ok
+Grid              ok
 
 Objects to implement
 --------------------
 
-Points            On_curve
-Angles            label with measure
-Locuses           may work
-Polygons          also in Kig :-)
+Points            Coordinate
+Lines             pt_slope
+Circle            radius
+Numberics         distance_pt_line
+Angles            vectors
+Locuses           at the moment not functional, depends on on_curve points
+Polygons          also in Kig
 Transformations   scaling
 Intersections     arc-line (also in Kig)
 boundingBox       temporarily ignored
 
+General: objects which depend on numerics
+
 Known problems
 --------------
 
-No known problems about supported objects.
+* Angles(3pts): no label with measure
+* Point(On_curve): works only with lines (I hope)
 
 Export
 ======

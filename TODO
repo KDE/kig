@@ -43,9 +43,9 @@
 
 - fillable polygons/shapes..
 
-- filters: more input filters ( get cabri to work somewhat ), improve
-  and activate Dr. Geo filter ( see filters/drgeo-filter-status.txt )
-  and Cabri filter, add the possibility to ignore errors on loading
+- filters: more input filters, improve and activate Dr. Geo filter
+  ( see filters/drgeo-filter-status.txt ) and Cabri filter, add the
+  possibility to ignore errors on loading
 
 * hard :
 
@@ -66,6 +66,8 @@
   and uses:
   -c, --convert <filename.ext> => Kig will convert the file in its own
   format and output the file <filename.kig>
+
+- defined integrals, as a particular case of filled shapes...
 
 * future ?
 - there should be a way to link a figure to a (html?) file containing

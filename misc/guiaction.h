@@ -152,8 +152,10 @@ class NewScriptAction
   const char* mdescname;
   const char* mdescription;
   const char* micon;
+  const char* mtype;
 public:
-  NewScriptAction( const char* actionname, const char* descname, const char* description, const char* icon );
+  NewScriptAction( const char* descname, const char* description, const char* icon,
+  const char* type, const char* actionname );
   ~NewScriptAction();
   QString description() const;
   QCString iconFileName() const;

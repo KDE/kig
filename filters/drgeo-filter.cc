@@ -196,7 +196,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     kdDebug() << "  --> " << elems[i].id << " - " << x << endl;
   }
 
-//  kdDebug() << "---- 2ND STEP ----" << endl;
   // 2nd: let's draw!
   int curid = 0;
   const ObjectFactory* fact = ObjectFactory::instance();
@@ -225,36 +224,30 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 
     kdDebug() << ">>>>>>>>> Scanning domelem" << endl;
     QDomElement domelem = a.toElement();
+    kdDebug() << "+++++++++ " << domelem.tagName() << " - " << domelem.attribute("type") << endl;
     if ( domelem.isNull() ) continue;
     else if ( domelem.tagName() == "point" )
     {
       QString xs;
       QString ys;
-//      QString valueStr;
+      QString values;
       for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
       {
         QDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
         else if ( ce.tagName() == "x" )
-        {
           xs = ce.text();
-        }
         else if ( ce.tagName() == "y" )
-        {
           ys = ce.text();
-        }
-//        else if ( ce.tagName() == "value" )
-//        {
-//          valueStr = ce.text();
-//        }
+        else if ( ce.tagName() == "value" )
+          values = ce.text();
       }
-      kdDebug() << "+++++++++ Point - " << domelem.attribute( "type" ) << endl;
       bool ok;
       bool ok2;
-//      bool ok3;
+      bool ok3;
       double x = xs.toDouble( &ok );
       double y = ys.toDouble( &ok2 );
-//      double value = valueStr.toDouble( &ok3 );
+      double value = values.toDouble( &ok3 );
       if ( domelem.attribute( "type" ) == "Free" )
       {
         if ( ! ( ok && ok2 ) )
@@ -263,12 +256,30 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       }
       else if ( domelem.attribute( "type" ) == "Middle_2pts" )
         oc = new ObjectTypeCalcer( MidPointType::instance(), parents );
-//      else if ( domelem.attribute( "type" ) == "On_curve" )
-//      {
-//        if ( ! ok3 )
-//          KIG_FILTER_PARSE_ERROR;
-//        oc = fact->constrainedPointCalcer( parents[0], value );
-//      }
+      else if ( domelem.attribute( "type" ) == "Middle_segment" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        if ( !parents[0]->imp()->inherits( SegmentImp::stype() ) )
+          KIG_FILTER_PARSE_ERROR;
+        int index = parents[0]->imp()->propertiesInternalNames().findIndex( "mid-point" );
+        assert( index != -1 );
+        oc = new ObjectPropertyCalcer( parents[0], index );
+      }
+      else if ( domelem.attribute( "type" ) == "On_curve" )
+      {
+        if ( ! ok3 )
+          KIG_FILTER_PARSE_ERROR;
+        if ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) )
+          oc = fact->constrainedPointCalcer( parents[0], Coordinate( value, 0 ), doc );
+        else
+        {
+//          oc = fact->constrainedPointCalcer( parents[0], value );
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                      domelem.attribute( "type" ) ) );
+          return false;
+        }
+      }
       else if ( domelem.attribute( "type" ) == "Intersection" )
       {
         if ( ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
@@ -341,7 +352,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
              ( domelem.tagName() == "circle" ) ||
              ( domelem.tagName() == "arcCircle" ) )
     {
-      kdDebug() << "+++++++++ " << domelem.tagName() << " - " << domelem.attribute( "type" ) << endl;
       const ObjectType* type = 0;
       if ( domelem.attribute( "type" ) == "2pts" )
       {
@@ -361,6 +371,21 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       {
         if( domelem.tagName() == "arcCircle" )
           type = ArcBTPType::instance();
+        oc = new ObjectTypeCalcer( type, parents );
+      }
+      else if( domelem.attribute( "type" ) == "segment" )
+      {
+        if( domelem.tagName() == "circle" )
+        {
+          type = CircleBPRType::instance();
+          int index = parents[1]->imp()->propertiesInternalNames().findIndex( "length" );
+          assert( index != -1 );
+          ObjectPropertyCalcer* o = new ObjectPropertyCalcer( parents[1], index );
+          o->calc( doc );
+          parents.clear();
+          parents.push_back( parents[0] );
+          parents.push_back( o );
+        }
         oc = new ObjectTypeCalcer( type, parents );
       }
       else if ( domelem.attribute( "type" ) == "perpendicular" )
@@ -407,7 +432,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
           value = ce.text();
         }
       }
-      kdDebug() << "+++++++++ " << domelem.tagName() << " - " << domelem.attribute( "type" ) << endl;
       bool ok;
       bool ok2;
       double x = xs.toDouble( &ok );
@@ -480,6 +504,34 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "slope", doc );
       }
+/*
+      else if ( domelem.attribute( "type" ) == "distance_pt_line" )
+      {
+        if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
+        kdDebug() << ">>>>>>>>> Creating po" << endl;
+        std::vector<ObjectCalcer*> args;
+        args.push_back( parents[1] );
+        args.push_back( parents[0] );
+        ObjectTypeCalcer* po = new ObjectTypeCalcer( LinePerpendLPType::instance(), args );
+        po->calc( doc );
+        kdDebug() << ">>>>>>>>> Creating io" << endl;
+        args.clear();
+        args.push_back( parents[1] );
+        args.push_back( po );
+        ObjectTypeCalcer* io = new ObjectTypeCalcer( LineLineIntersectionType::instance(), args );
+        io->calc( doc );
+        kdDebug() << ">>>>>>>>> Creating so" << endl;
+        args.clear();
+        args.push_back( parents[0] );
+        args.push_back( po );
+        ObjectTypeCalcer* so = new ObjectTypeCalcer( SegmentABType::instance(), args );
+        so->calc( doc );
+        kdDebug() << ">>>>>>>>> " << so->imp()->inherits( SegmentImp::stype() ) << endl;
+        Coordinate m( x, y );
+        kdDebug() << ">>>>>>>>> Creating oc" << endl;
+        oc = constructTextObject( m, so, "length", doc );
+      }
+*/
       // types of 'equation'
       else if ( domelem.attribute( "type" ) == "line" )
       {
@@ -507,7 +559,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 /*
     else if ( domelem.tagName() == "angle" )
     {
-      kdDebug() << "+++++++++ angle" << endl;
       PointImp* p = static_cast<const PointImp*>( parents[0]->imp() );
       if ( domelem.attribute( "type" ) == "3pts" )
       {
@@ -531,7 +582,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 // simple angle object...
     else if ( domelem.tagName() == "angle" )
     {
-      kdDebug() << "+++++++++ angle - " << domelem.attribute( "type" ) << endl;
       if ( domelem.attribute( "type" ) == "3pts" )
         oc = new ObjectTypeCalcer( AngleType::instance(), parents );
       else
@@ -553,19 +603,12 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         QDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
         else if ( ce.tagName() == "x" )
-        {
           xs = ce.text();
-        }
         else if ( ce.tagName() == "y" )
-        {
           ys = ce.text();
-        }
         else if ( ce.tagName() == "code" )
-        {
           text = ce.text();
-        }
       }
-      kdDebug() << "+++++++++ script - " << domelem.attribute( "type" ) << endl;
       bool ok;
       bool ok2;
       double x = xs.toDouble( &ok );
@@ -590,7 +633,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     }
     else if ( domelem.tagName() == "locus" )
     {
-      kdDebug() << "+++++++++ locus - " << domelem.attribute( "type" ) << endl;
       notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                 "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                 domelem.attribute( "type" ) ) );
@@ -603,30 +645,25 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     }
     else if ( domelem.tagName() == "polygon" )
     {
-      kdDebug() << "+++++++++ polygon - " << domelem.attribute( "type" ) << endl;
       notSupported( file, i18n( "This Dr. Geo file contains a polygon object, "
                                 "which Kig does not currently support." ) );
       return false;
-//      if ( domelem.attribute( "type" ) == "npts" )
-//        oc = new ObjectTypeCalcer( ??? ::instance(), parents );
-      kdDebug() << "+++++++++ oc:" << oc << endl;
     }
     else if ( domelem.tagName() == "boundingBox" )
     {
-      kdDebug() << "+++++++++ boundingBox" << endl;
+      // ignoring this element, since it isn't useful to us (for the moment)...
       nignored++;
-// ignoring this element, since it isn't useful to us...
     }
     else
     {
-      kdDebug() << "+++++++++ UNKNOWN: " << domelem.tagName() << " - " << domelem.attribute( "type" ) << endl;
+      kdDebug() << ">>>>>>>>> UNKNOWN OBJECT" << endl;
       notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                 "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                 domelem.attribute( "type" ) ) );
       return false;
     }
     curid++;
-    kdDebug() << "+++++++++ holders.size(): " << holders.size() << endl;
+//    kdDebug() << "+++++++++ holders.size(): " << holders.size() << endl;
     if ( oc == 0 )
       continue;
     kdDebug() << ">>>>>>>>> Creating ObjectDrawer*" << endl;
@@ -670,7 +707,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
     assert( d );
 
-//    kdDebug() << ">>>>>>>>> Creating ObjectHolder*" << endl;
+// creating the ObjectHolder*
     ObjectHolder* o = new ObjectHolder( oc, d );
     holders.push_back( o );
     kdDebug() << ">>>>>>>>> calc" << endl;

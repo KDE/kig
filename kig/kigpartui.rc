@@ -95,7 +95,7 @@
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
-	<Action name="objects_new_script_object" />
+	<Action name="objects_new_script_python" />
 	<Action name="objects_new_measuretransport" />
 	<ActionList name="user_other_types" />
       </Menu>
@@ -192,7 +192,7 @@
     <Action name="objects_new_angle_bisector" />
   </ToolBar>
   <ToolBar name="transformation_toolbar" position="right">
-    <text>Transformation</text>
+    <text>Transformations</text>
     <Action name="objects_new_translation" />
     <Action name="objects_new_pointreflection" />
     <Action name="objects_new_linereflection" />
@@ -214,7 +214,7 @@
     <text>Rest</text>
     <Action name="objects_new_locus" />
     <Action name="objects_new_textlabel" />
-    <Action name="objects_new_script_object" />
+    <Action name="objects_new_script_python" />
     <ActionList name="user_other_types" />
   </ToolBar>
   <ToolBar name="view_toolbar">

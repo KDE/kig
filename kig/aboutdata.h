@@ -79,7 +79,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
   tmp->addCredit("Cabri coders",
 		  I18N_NOOP("Cabri is a commercial program like Kig, and "
 			    "gave me something to compete against :)"),
-		  "www-cabri.imag.fr");
+                  0, "www-cabri.imag.fr" );
 
   tmp->addCredit("Robert Gogolok",
                  I18N_NOOP("Gave me some good feedback on Kig, some feature "

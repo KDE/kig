@@ -117,12 +117,19 @@ void TypesDialog::deleteType()
 	 "deleteTypeWarning") ==KMessageBox::Cancel ) return;
   }
   else
-    if (KMessageBox::warningContinueCancel
+  {
+    QStringList types;
+    for ( std::vector<Macro*>::iterator j = selectedTypes.begin();
+        j != selectedTypes.end(); ++j)
+      types << ( *j )->action->descriptiveName();
+    if( KMessageBox::warningContinueCancelList
 	(this,
 	 i18n("Are you sure you want to delete these %1 types?").arg(selectedTypes.size()),
+	 types,
 	 i18n("Are you sure?"),
 	 KStdGuiItem::cont(),
 	 "deleteTypeWarning") == KMessageBox::Cancel ) return;
+  }
   for ( std::vector<QListViewItem*>::iterator i = items.begin(); i != items.end(); ++i)
   {
     int appel = typeList->itemIndex(*i);
