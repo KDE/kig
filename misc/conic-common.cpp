@@ -471,8 +471,9 @@ const LineData calcConicAsymptote(
   double d=data.coeffs[3];
   double e=data.coeffs[4];
 
+  double normabc = a*a + b*b + c*c;
   double delta = c*c - 4*a*b;
-  if (fabs(delta) < 1e-6) { valid = false; return ret; }
+  if (fabs(delta) < 1e-6*normabc) { valid = false; return ret; }
 
   double yc = (2*a*e - c*d)/delta;
   double xc = (2*b*d - c*e)/delta;
