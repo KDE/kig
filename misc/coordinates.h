@@ -20,7 +20,7 @@ class EuclideanCoords
   : public CoordinateSystem
 {
 public:
-  EuclideanCoords( int minX, int minY, int width, int height );
+  EuclideanCoords( int centerX, int centerY, int width, int height );
   ~EuclideanCoords() {};
   virtual Point fromScreen (const QPoint& pt, const QRect& r) const;
   virtual QPoint toScreen (const Point& pt, const QRect& r) const;

@@ -113,6 +113,9 @@ protected:
 		  // (to avoid flickering)
   QPtrList<QRect> overlay, oldOverlay;
 
+  // this maps the coordinates of the objects to the widget...
+  EuclideanCoords mCoords;
+
 protected:
   QDialog* kiosk;
   KPopupMenu* kiosKontext;

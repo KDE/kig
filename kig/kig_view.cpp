@@ -26,7 +26,8 @@ KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool in
     curPix(size()),
     kiosk(0),
     kiosKontext(0),
-    isKiosk(inIsKiosk)
+    isKiosk(inIsKiosk),
+    mCoords()
 {
   if (inIsKiosk)
     {
