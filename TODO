@@ -22,6 +22,8 @@
 - the coordinate system toggleaction needs updating when the coord sys
    is changed in another way.
 
+- the print dialog should not be asking for page numbers...
+
 * more or less urgently necessary
 
 - document mathematical i18n strings, so that the translators have a
