@@ -432,6 +432,7 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
 
 KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocument& kdoc )
 {
+  bool ok = true;
   for ( QDomNode n = docelem.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
     QDomElement e = n.toElement();
@@ -439,7 +440,7 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
     if ( e.tagName() == "CoordinateSystem" )
     {
       const QCString str = e.text().latin1();
-      CoordinateSystem* s = CoordinateSystemFactory::build( type );
+      CoordinateSystem* s = 0; //CoordinateSystemFactory::build( type );
       if ( ! s ) return NotSupported;
       else kdoc.setCoordinateSystem( s );
     }
@@ -456,7 +457,7 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         if ( e.tagName() == "Data" )
         {
           // fetch the id
-          tmp = e.attribute("id");
+          QString tmp = e.attribute("id");
           if(tmp.isNull()) return ParseError;
           uint id = tmp.toInt(&ok);
           if ( !ok ) return ParseError;
@@ -466,7 +467,7 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         }
         else if ( e.tagName() == "Object" )
         {
-          tmp = e.attribute( "id" );
+          QString tmp = e.attribute( "id" );
           if ( tmp.isNull() ) return ParseError;
           uint id = tmp.toInt( &ok );
           if ( ! ok ) return ParseError;

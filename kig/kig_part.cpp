@@ -708,8 +708,8 @@ void KigDocument::setObjects( const Objects& os )
   mObjs = os;
 }
 
-void KigDocument::setCoordinateSystem( CoordinateSystem* cs ) const
+void KigDocument::setCoordinateSystem( CoordinateSystem* cs )
 {
   delete s;
-  s = is;
+  s = cs;
 }
