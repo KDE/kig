@@ -44,7 +44,7 @@ public:
   Result load ( const QString& from, KigDocument& to );
 protected:
   Result loadMetrics (KSimpleConfig* );
-  Result loadObjects (KSimpleConfig*, Objects& os );
+  Result loadObjects (KSimpleConfig*, KigDocument& os );
 
   int xMax;
   int yMax;

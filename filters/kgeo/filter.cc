@@ -55,9 +55,7 @@ KigFilter::Result KigFilterKGeo::load( const QString& sFrom, KigDocument& doc )
   Result r;
   r = loadMetrics ( &config );
   if ( r != OK ) return r;
-  Objects os;
-  r = loadObjects ( &config, os );
-  doc.setObjects( os );
+  r = loadObjects ( &config, doc );
   return r;
 }
 
@@ -103,8 +101,9 @@ static std::vector<HierarchyElement> sortElems( const std::vector<HierarchyEleme
 
 // constructs a text object with text "%1", location c, and variable
 // parts given by the argument arg of obj o.
-static Object* constructTextObject( const Coordinate& c, Object* o, const QCString& arg,
-                                    Objects& dataos )
+static Object* constructTextObject( const Coordinate& c, Object* o,
+                                    const QCString& arg, Objects& dataos,
+                                    const KigDocument& doc )
 {
   Objects parents;
   dataos.push_back( new DataObject( new StringImp( QString::fromLatin1( "%1" ) ) ) );
@@ -114,10 +113,12 @@ static Object* constructTextObject( const Coordinate& c, Object* o, const QCStri
   dataos.push_back(
     new PropertyObject( o, o->propertiesInternalNames().findIndex( arg ) ) );
   parents.push_back( dataos.back() );
-  return new RealObject( TextType::instance(), parents );
+  parents.calc( doc );
+  Object* ret = new RealObject( TextType::instance(), parents );
+  return ret;
 };
 
-KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
+KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, KigDocument& doc )
 {
   using namespace std;
   QString group;
@@ -153,6 +154,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 
   std::vector<HierarchyElement> sortedElems = sortElems( elems );
   Objects dataos;
+  Objects os;
   os.resize( number, 0 );
   ObjectFactory* factory = ObjectFactory::instance();
 
@@ -188,6 +190,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       double y = strY.toDouble(&ok);
       if (!ok) return ParseError;
       Objects pos = factory->fixedPoint( Coordinate( x, y ) );
+      pos.calc( doc );
       os[id] = pos[2];
       copy( pos.begin(), pos.begin() + 2, back_inserter( dataos ) );
       break;
@@ -264,6 +267,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       x -= width / 80;
       y -= height / 80;
       Objects labelos = factory->label( text, Coordinate( x, y ) );
+      labelos.calc( doc );
       os[id] = labelos[2];
       copy( labelos.begin(), labelos.begin() + 2, back_inserter( dataos ) );
       break;
@@ -282,6 +286,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       {
         dataos.push_back( new RealObject( AngleType::instance(), parents ) );
         dataos.back()->setShown( false );
+        dataos.back()->calc( doc );
         parents = Objects( dataos.back() );
       };
       if ( parents.size() != 1 ) return ParseError;
@@ -289,19 +294,20 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       parents.clear();
       const Coordinate c =
         static_cast<const PointImp*>( angle->parents()[1]->imp() )->coordinate();
-      os[i] = constructTextObject( c, angle, "angle-degrees", dataos );
+      os[i] = constructTextObject( c, angle, "angle-degrees", dataos, doc );
       break;
     }
     case ID_distance:
     {
       if ( parents.size() != 2 ) return ParseError;
       dataos.push_back( new RealObject( SegmentABType::instance(), parents ) );
+      dataos.back()->calc( doc );
       Object* segment = dataos.back();
       segment->setShown( false );
       Coordinate m = ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
                        static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
       parents.clear();
-      os[i] = constructTextObject( m, segment, "length", dataos );
+      os[i] = constructTextObject( m, segment, "length", dataos, doc );
       break;
     }
     case ID_arc:
@@ -314,7 +320,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       if ( parents.size() != 1 ) return ParseError;
       const CircleImp* circle = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate c = circle->center() + Coordinate( circle->radius(), 0 );
-      os[i] = constructTextObject( c, parents[0], "surface", dataos );
+      os[i] = constructTextObject( c, parents[0], "surface", dataos, doc );
       break;
     }
     case ID_slope:
@@ -328,7 +334,8 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
         static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
       dataos.push_back( new RealObject( LineABType::instance(), parents ) );
       dataos.back()->setShown( false );
-      os[i] = constructTextObject( c, dataos.back(), "slope", dataos );
+      dataos.back()->calc( doc );
+      os[i] = constructTextObject( c, dataos.back(), "slope", dataos, doc );
       break;
     }
     case ID_circumference:
@@ -336,7 +343,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       if ( parents.size() != 1 ) return ParseError;
       const CircleImp* c = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate m = c->center() + Coordinate( c->radius(), 0 );
-      os[i] = constructTextObject( m, parents[0], "circumference", dataos );
+      os[i] = constructTextObject( m, parents[0], "circumference", dataos, doc );
       break;
     }
     case ID_rotation:
@@ -352,11 +359,17 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       return ParseError;
     };
 
+    os[i]->calc( doc );
+
     // set the color...
     QColor co = c->readColorEntry( "Color" );
     if( !co.isValid() ) return ParseError;
     os[i]->setColor( co );
   }; // for loop (creating HierarchyElements..
+
+  Objects objects( dataos.begin(), dataos.end() );
+  copy( os.begin(), os.end(), back_inserter( objects ) );
+  doc.setObjects( objects );
 
   return OK;
 }
