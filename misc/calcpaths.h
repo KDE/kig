@@ -24,9 +24,7 @@
 /**
  * This function sorts os such that they're in the right order for
  * calc()-ing.  This means that child objects must appear after their
- * parents.  We assume here that none of the objects in os have
- * children or parents that aren't also in os.
- * ( for you graph people, this is just a topological sort.. )
+ * parents ( for you graph people, this is just a topological sort.. )
  */
 Objects calcPath( const Objects& os );
 
@@ -56,20 +54,5 @@ Objects sideOfTreePath( const Objects& from, const Object* to );
  * themselves..
  */
 Objects getAllParents( const Objects& objs );
-
-/**
- * this function returns all the objects that are parents of an
- * object in os, that are dead.  This means that they are internal (
- * see Object::isInternal() ), and that they have no other children
- * than objects that are in os, or other dead parents..
- * It is used by functions that need to delete certain objects, to
- * find out what objects can be deleted along..
- */
-Objects deadParents( Objects& os );
-
-// this calls delChild() on all of o's parents..
-void delChildFromParents( Object* o );
-// reverses delChildFromParents..
-void addChildToParents( Object* o );
 
 #endif

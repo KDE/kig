@@ -216,9 +216,9 @@ void AddFixedPointAction::act( KigDocument& doc )
     doc.coordinateSystem().coordinateFormatNotice(),
     doc, doc.widget(), &ok );
   if ( ! ok ) return;
-  Objects p = ObjectFactory::instance()->fixedPoint( c );
-  p.calc( doc );
-  doc.addObjects( p );
+  Object* p = ObjectFactory::instance()->fixedPoint( c );
+  p->calc( doc );
+  doc.addObject( p );
 }
 
 AddFixedPointAction::AddFixedPointAction( const char* actionname )

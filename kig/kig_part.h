@@ -26,6 +26,7 @@
 #include <qptrlist.h>
 
 #include "../misc/objects.h"
+#include "../objects/object.h"
 
 class KAboutData;
 class KActionMenu;
@@ -119,7 +120,11 @@ public:
   void addWidget( KigWidget* );
   void delWidget( KigWidget* );
 
-  const Objects& objects() const { return mObjs;};
+  // these are the objects that the user is aware of..
+  const Objects objects() const;
+  // these are the objects that exist, including those that we added
+  // behind the user's back..
+  const Objects allObjects() const;
   void setObjects( const Objects& os );
   const CoordinateSystem& coordinateSystem() const;
 
@@ -236,14 +241,15 @@ protected:
   KigView* m_widget;
 
   /**
-   * Our internal document data:
-   * first all objects we contain: all of them are in there, except
-   * the obc.
-   * This is the one that owns all objects, all other object
-   * containers only contain pointers to the objects, and don't own
-   * them.
+   * Here we keep the objects in the document.  We keep them in a
+   * reference object, so noone would get the idea of deleting them..
+   * These are not all the objects, there are objects that are not
+   * really part of the document, as the user sees it.  Those are
+   * internal, their reference count can go to zero if one of their
+   * children gets decref'ed.  The objects that we keep here can never
+   * reach a ref count of zero, because this object ref's them..
    */
-  Objects mObjs;
+  ReferenceObject mobjsref;
 
   /**
    * The CoordinateSystem as the user sees it: this has little to do

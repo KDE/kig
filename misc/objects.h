@@ -69,6 +69,7 @@ public:
 
   // remove all occurences of o..
   void remove( const T& o );
+  void remove_first( const T& o );
 
   myvector<T> with( const T& o ) const;
 };
@@ -112,6 +113,14 @@ void myvector<T>::upush( const myvector<T>& os )
         i != os.end(); ++i )
     upush( *i );
 };
+
+template<class T>
+void myvector<T>::remove_first( const T& o )
+{
+  iterator i;
+  if( (i = std::find( begin(), end(), o ) ) != end() )
+    erase( i );
+}
 
 template<class T>
 void myvector<T>::remove( const T& o )

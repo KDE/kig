@@ -240,17 +240,8 @@ KigDocument::~KigDocument()
   MacroList* macrolist = MacroList::instance();
   macrolist->save( macrolist->macros(), typesDir + "macros.kigt" );
 
-  //  this leads to crashes, cause sometimes an object deletes its
-  //  parents, and we try to delete it a second time..
-  // delete_all( mObjs.begin(), mObjs.end() );
-  while ( ! mObjs.empty() )
-  {
-    Object* o = mObjs.back();
-    mObjs.erase( mObjs.end() - 1 );
-    delete o;
-  };
-
-  mObjs.clear();
+  // objects get deleted automatically, when mobjsref gets
+  // destructed..
 
   delete_all( aActions.begin(), aActions.end() );
   aActions.clear();
@@ -262,10 +253,19 @@ KigDocument::~KigDocument()
 
 bool KigDocument::openFile()
 {
+  QFileInfo fileinfo( m_file );
+  if ( ! fileinfo.exists() )
+  {
+    KMessageBox::sorry( widget(),
+                        i18n( "The file \"%1\" you tried to open does not exist.  "
+                              "Please verify that you entered the correct path." ).arg( m_file ),
+                        i18n( "File Not Found" ) );
+    return false;
+  };
+
   // m_file is always local, so we can use findByPath instead of
   // findByURL...
   KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
-  QFile file;
   kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
@@ -290,7 +290,7 @@ bool KigDocument::openFile()
   setModified(false);
   mhistory->clear();
 
-  Objects tmp = calcPath( mObjs );
+  Objects tmp = calcPath( objects() );
   tmp.calc( *this );
   emit recenterScreen();
 
@@ -338,7 +338,7 @@ void KigDocument::addObjects( const Objects& os )
 
 void KigDocument::_addObject( Object* o )
 {
-  mObjs.upush( o );
+  mobjsref.addParent( o );
   setModified(true);
 };
 
@@ -354,7 +354,7 @@ void KigDocument::_delObjects( const Objects& o )
 {
   for ( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
   {
-    mObjs.remove( *i );
+    mobjsref.delParent( *i );
     (*i)->setSelected( false );
   };
   setModified( true );
@@ -362,7 +362,7 @@ void KigDocument::_delObjects( const Objects& o )
 
 void KigDocument::_delObject(Object* o)
 {
-  mObjs.remove( o );
+  mobjsref.delParent( o );
   o->setSelected( false );
   setModified(true);
 };
@@ -371,7 +371,8 @@ Objects KigDocument::whatAmIOn(const Coordinate& p, const KigWidget& w ) const
 {
   Objects tmp;
   Objects nonpoints;
-  for ( Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
+  const Objects objs = objects();
+  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
   {
     if(!(*i)->contains(p, w) || !(*i)->shown() || !(*i)->valid()) continue;
     if ( (*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
@@ -385,7 +386,8 @@ Objects KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
 {
   Objects tmp;
   Objects nonpoints;
-  for ( Objects::iterator i = mObjs.begin(); i != mObjs.end(); ++i )
+  const Objects objs = objects();
+  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
   {
     if(! (*i)->inRect( p, w ) || !(*i)->shown() || ! (*i)->valid() ) continue;
     if ((*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
@@ -399,7 +401,8 @@ Rect KigDocument::suggestedRect() const
 {
   bool rectInited = false;
   Rect r(0.,0.,0.,0.);
-  for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
+  const Objects objs = objects();
+  for (Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
   {
     if ( (*i)->shown() && (*i)->hasimp( ObjectImp::ID_PointImp ) )
     {
@@ -438,7 +441,8 @@ void KigDocument::setMode( KigMode* m )
 
 void KigDocument::_addObjects( const Objects& os )
 {
-  mObjs |= os;
+  os.calc( *this );
+  mobjsref.addParents( os );
   setModified( true );
 }
 
@@ -479,13 +483,13 @@ KCommandHistory* KigDocument::history()
 
 void KigDocument::delObjects( const Objects& os )
 {
-  Objects tos;
-  tos = os;
-  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-    tos.upush( (*i)->getAllChildren() );
-  Objects dos = os;
+  Objects tos = os.getAllChildren();
+  tos |= os;
+
+  const Objects objs = objects();
+  Objects dos;
   for ( Objects::iterator i = tos.begin(); i != tos.end(); ++i )
-    if ( mObjs.contains( *i ) )
+    if ( objs.contains( *i ) )
       dos.upush( *i );
   if ( dos.empty() ) return;
   mhistory->addCommand( KigCommand::removeCommand( *this, dos ) );
@@ -589,8 +593,8 @@ void KigDocument::doneMode( KigMode* d )
 
 void KigDocument::setObjects( const Objects& os )
 {
-  assert( mObjs.empty() );
-  mObjs = os;
+  assert( objects().empty() );
+  mobjsref.setParents( os );
 }
 
 void KigDocument::setCoordinateSystem( CoordinateSystem* cs )
@@ -761,4 +765,14 @@ void KigDocument::doPrint( KPrinter& printer )
   painter.setWholeWinOverlay();
   painter.drawGrid( coordinateSystem() );
   painter.drawObjects( objects() );
+}
+
+const Objects KigDocument::objects() const
+{
+  return mobjsref.parents();
+}
+
+const Objects KigDocument::allObjects() const
+{
+  return getAllParents( objects() );
 }

@@ -530,7 +530,7 @@ Objects ObjectHierarchy::buildObjects( const Objects& os, const KigDocument& doc
   for ( uint i = mnumberofargs; i < stack.size() - mnumberofresults; ++i )
     stack[i]->setShown( false );
 
-  Objects ret( stack.begin() + mnumberofargs, stack.end() );
+  Objects ret( stack.end() - mnumberofresults, stack.end() );
 
   return ret;
 }

@@ -575,12 +575,11 @@ bool PropertiesActionsProvider::executeAction(
     Objects ret;
     ret.push_back( new PropertyObject( parent, propid ) );
     Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
-    Objects labelos = ObjectFactory::instance()->label(
+    Object* label = ObjectFactory::instance()->label(
       QString::fromLatin1( "%1" ), c,
       false, ret );
-    copy( labelos.begin(), labelos.end(), back_inserter( ret ) );
-    ret.calc( doc );
-    doc.addObjects( ret );
+    label->calc( doc );
+    doc.addObject( label );
   }
   else
   {

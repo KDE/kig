@@ -76,7 +76,8 @@ void DefineMacroMode::enableActions()
 
 void DefineMacroMode::givenPageEntered()
 {
-  for_each( mdoc.objects().begin(), mdoc.objects().end(),
+  Objects objs = mdoc.objects();
+  for_each( objs.begin(), objs.end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
   for_each( mgiven.begin(), mgiven.end(),
             bind2nd( mem_fun( &Object::setSelected ), true ) );
@@ -114,7 +115,8 @@ void DefineMacroMode::namePageEntered()
   using std::for_each;
   using std::bind2nd;
   using std::mem_fun;
-  for_each( mdoc.objects().begin(), mdoc.objects().end(),
+  Objects objs = mdoc.objects();
+  for_each( objs.begin(), objs.end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
   static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen();
 

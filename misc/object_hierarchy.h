@@ -59,7 +59,10 @@ public:
   ObjectHierarchy( const QDomElement& parent );
 
   // build a set of objects that interdepend according to this
-  // ObjectHierarchy..
+  // ObjectHierarchy..  Only the result objects are returned.  Helper
+  // objects that connect the given objects with the returned objects,
+  // can only be found by following the returned objects' parents()
+  // methods..
   Objects buildObjects( const Objects& os, const KigDocument& ) const;
 
   ArgParser argParser() const;

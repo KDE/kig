@@ -88,10 +88,7 @@ bool RealObject::canMove() const
 
 Object::~Object()
 {
-  // tell our children that we're dead, so they don't try to tell us
-  // that they're dying too, which would cause segfaults...
-  for ( uint i = 0; i < mchildren.size(); ++i )
-    mchildren[i]->delParent( this );
+  assert( mchildren.empty() );
 }
 
 bool Object::hasimp( int type ) const
@@ -120,7 +117,7 @@ const QCStringList Object::properties() const
   return imp()->properties();
 }
 
-const Objects& Object::children() const
+const Objects Object::children() const
 {
   return mchildren;
 }
@@ -148,12 +145,22 @@ const Objects Object::getAllChildren() const
 
 void Object::addChild( Object* o )
 {
-  mchildren.upush( o );
+  mchildren.push_back( o );
 }
 
 void Object::delChild( Object* o )
 {
-  mchildren.remove( o );
+  // the amount of children we have works like a reference count.  If
+  // there are none, we commit suicide..
+  mchildren.remove_first( o );
+  if ( mchildren.empty() )
+    delete this;
+}
+
+void ObjectWithParents::addParents( const Objects& os )
+{
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    addParent( *i );
 }
 
 void ObjectWithParents::addParent( Object* o )
@@ -165,15 +172,16 @@ void ObjectWithParents::addParent( Object* o )
 void ObjectWithParents::delParent( Object* o )
 {
   mparents.remove( o );
+  o->delChild( this );
 }
 
 void ObjectWithParents::setParents( const Objects& parents )
 {
+  for ( uint i = 0; i < parents.size(); ++i )
+    parents[i]->addChild( this );
   for ( uint i = 0; i < mparents.size(); ++i )
     mparents[i]->delChild( this );
   mparents = parents;
-  for ( uint i = 0; i < mparents.size(); ++i )
-    mparents[i]->addChild( this );
 }
 
 Objects ObjectWithParents::parents() const
@@ -256,16 +264,6 @@ void DataObject::calc( const KigDocument& )
 {
 }
 
-void Object::addParent( Object* )
-{
-  assert( false );
-}
-
-void Object::delParent( Object* )
-{
-  assert( false );
-}
-
 void Object::setParents( const Objects& )
 {
   assert( false );
@@ -337,16 +335,6 @@ void RealObject::setShown( bool shown )
   mshown = shown;
 }
 
-bool RealObject::isInternal() const
-{
-  return false;
-}
-
-bool DataObject::isInternal() const
-{
-  return true;
-}
-
 PropertyObject::PropertyObject( Object* parent, int id )
   : Object(), mimp( new InvalidImp ), mparent( parent ), mpropid( id )
 {
@@ -355,18 +343,13 @@ PropertyObject::PropertyObject( Object* parent, int id )
 
 PropertyObject::~PropertyObject()
 {
-  if ( mparent ) mparent->delChild( this );
+  mparent->delChild( this );
   delete mimp;
 }
 
 bool PropertyObject::inherits( int type ) const
 {
   return type == ID_PropertyObject;
-}
-
-bool PropertyObject::isInternal() const
-{
-  return true;
 }
 
 const ObjectImp* PropertyObject::imp() const
@@ -413,14 +396,6 @@ const Object* PropertyObject::parent() const
 int PropertyObject::propId() const
 {
   return mpropid;
-}
-
-void PropertyObject::delParent( Object* o )
-{
-  // if a parent gets deleted before us, we set mparent to zero, and
-  // wait to be deleted ourselves ( which will be immediately after
-  // this )
-  if ( mparent == o ) mparent = 0;
 }
 
 void Object::setColor( const QColor& )
@@ -500,6 +475,11 @@ Object* PropertyObject::parent()
   return mparent;
 }
 
+ReferenceObject::ReferenceObject( Object* o )
+  : ObjectWithParents( Objects( o ) )
+{
+}
+
 ReferenceObject::ReferenceObject( const Objects& os )
   : ObjectWithParents( os )
 {
@@ -507,12 +487,6 @@ ReferenceObject::ReferenceObject( const Objects& os )
 
 ReferenceObject::~ReferenceObject()
 {
-}
-
-bool ReferenceObject::isInternal() const
-{
-  // pretend to not be internal, so we don't get deleted ourselves..
-  return false;
 }
 
 const ObjectImp* ReferenceObject::imp() const
@@ -543,5 +517,10 @@ void ReferenceObject::calc( const Args&, const KigDocument& )
 bool ReferenceObject::contains( const Coordinate&, const KigWidget& ) const
 {
   return false;
+}
+
+ReferenceObject::ReferenceObject()
+  : ObjectWithParents( Objects() )
+{
 }
 

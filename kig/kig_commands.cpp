@@ -34,14 +34,6 @@ using std::vector;
 using std::max;
 using std::min;
 
-static int countRealObjects( const Objects& os )
-{
-  int ret = 0;
-  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-    if ( !(*i)->isInternal() ) ++ret;
-  return ret;
-};
-
 class KigCommand::Private
 {
 public:
@@ -95,10 +87,10 @@ KigCommand* KigCommand::addCommand( KigDocument& doc, Object* o )
 KigCommand* KigCommand::removeCommand( KigDocument& doc, const Objects& os )
 {
   QString text;
-  if ( countRealObjects( os ) == 1 )
+  if ( os.size() == 1 )
     text = ObjectImp::removeAStatement( os.back()->imp()->id() );
   else
-    text = i18n( "Remove %1 Objects" ).arg( countRealObjects( os ) );
+    text = i18n( "Remove %1 Objects" ).arg( os.size() );
   KigCommand* ret = new KigCommand( doc, text );
   ret->addTask( new RemoveObjectsTask( os ) );
   return ret;
@@ -107,10 +99,10 @@ KigCommand* KigCommand::removeCommand( KigDocument& doc, const Objects& os )
 KigCommand* KigCommand::addCommand( KigDocument& doc, const Objects& os )
 {
   QString text;
-  if ( countRealObjects( os ) == 1 )
+  if ( os.size() == 1 )
     text = ObjectImp::addAStatement( os.back()->imp()->id() );
   else
-    text = i18n( "Add %1 Objects" ).arg( countRealObjects( os ) );
+    text = i18n( "Add %1 Objects" ).arg( os.size() );
   KigCommand* ret = new KigCommand( doc, text );
   ret->addTask( new AddObjectsTask( os ) );
   return ret;
@@ -132,38 +124,25 @@ KigCommandTask::~KigCommandTask()
 {
 }
 
-AddObjectsTask::AddObjectsTask( const Objects& inOs)
-  : KigCommandTask(), undone( true ), os( inOs )
+AddObjectsTask::AddObjectsTask( const Objects& os)
+  : KigCommandTask(), undone( true ), mobjsref( os )
 {
-  os |= deadParents( os );
-  os = calcPath( os );
 }
 
 void AddObjectsTask::execute( KigDocument& doc )
 {
-  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-  {
-    addChildToParents( *i );
-    (*i)->calc( doc );
-    doc._addObject(*i);
-  }
+  doc._addObjects( mobjsref.parents() );
   undone = false;
 };
 
 void AddObjectsTask::unexecute( KigDocument& doc )
 {
-  doc._delObjects( os );
-  for ( uint i = 0; i < os.size(); ++i )
-  {
-    delChildFromParents( os[i] );
-  };
+  doc._delObjects( mobjsref.parents() );
   undone = true;
 };
 
 AddObjectsTask::~AddObjectsTask()
 {
-  if ( undone )
-    delete_all( os.begin(), os.end() );
 }
 
 RemoveObjectsTask::RemoveObjectsTask( const Objects& os )
@@ -315,14 +294,12 @@ class ChangeParentsAndTypeTask::Private
 {
 public:
   RealObject* o;
-  Objects newparents;
+  ReferenceObject newparentsref;
   const ObjectType* newtype;
-  Objects tobeadded;
 };
 
 ChangeParentsAndTypeTask::~ChangeParentsAndTypeTask()
 {
-  delete_all( d->tobeadded.begin(), d->tobeadded.end() );
   delete d;
 }
 
@@ -332,8 +309,7 @@ ChangeParentsAndTypeTask::ChangeParentsAndTypeTask(
   : KigCommandTask(), d( new Private )
 {
   d->o = o;
-  d->newparents = newparents;
-  d->tobeadded = newparents;
+  d->newparentsref.setParents( newparents );
   d->newtype = newtype;
 }
 
@@ -341,18 +317,9 @@ void ChangeParentsAndTypeTask::execute( KigDocument& doc )
 {
   Objects tmp( d->o );
 
-  Objects toberemoved = deadParents( tmp );
-  for ( Objects::iterator i = d->newparents.begin();
-        i != d->newparents.end(); ++i )
-    toberemoved.remove( *i );
-
-  doc._delObjects( toberemoved );
-  doc._addObjects( d->tobeadded );
-  d->tobeadded = toberemoved;
-
-  Objects oldparents = d->o->parents();
-  d->o->setParents( d->newparents );
-  d->newparents = oldparents;
+  ReferenceObject newparentsref( d->newparentsref.parents() );
+  d->newparentsref.setParents( d->o->parents() );
+  d->o->setParents( newparentsref.parents() );
 
   const ObjectType* oldtype = d->o->type();
   d->o->setType( d->newtype );

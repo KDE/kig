@@ -35,14 +35,12 @@
 
 void MovingModeBase::initScreen( const Objects& tin )
 {
-  // temporary fix before i finally fix the moving objects selection
-  // algorithm: don't try to move DataObjects..
+  // don't try to move objects that have been deleted from the
+  // document..
   Objects in;
-  Objects docobjs = mdoc.objects();
+  Objects docobjs = mdoc.allObjects();
   for ( uint i = 0; i < tin.size(); ++i )
     if ( docobjs.contains( tin[i] ) )
-         // don't try to move objects that have been
-         // deleted from the document..
       in.push_back( tin[i] );
 
   // here we calc what objects will be moving, and we draw the others
@@ -53,7 +51,7 @@ void MovingModeBase::initScreen( const Objects& tin )
   amo = in;
   // calc nmo: basically ( mdoc.objects() - amo )
   // we use some stl magic here, tmp and tmp2 are set to os and
-  // mdoc->objects(), sorted, and then used in set_difference...
+  // mdoc.objects(), sorted, and then used in set_difference...
   Objects tmp( amo.begin(), amo.end() );
   sort( tmp.begin(), tmp.end() );
   Objects tmp2( mdoc.objects() );

@@ -91,10 +91,9 @@ void NormalMode::clearSelection()
 
 void NormalMode::showHidden()
 {
-  const Objects& os = mdoc.objects();
+  const Objects os = mdoc.objects();
   for (Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-    if( !(*i)->isInternal() )
-      (*i)->setShown( true );
+    (*i)->setShown( true );
   redrawScreen();
 }
 
@@ -210,14 +209,14 @@ void NormalMode::leftClickedObject( Object* o, const QPoint&,
 
 void NormalMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  Objects ptos = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
-  ptos.calc( mdoc );
-  mdoc.addObjects( ptos );
+  Object* pto = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
+  pto->calc( mdoc );
+  mdoc.addObject( pto );
 
   // refresh the screen...
   // not necessary, done by addObjects, which calls NormalMode::redrawScreen..
 //  w.redrawScreen();
-  w.updateScrollBars();
+//   w.updateScrollBars();
 }
 
 void NormalMode::rightClicked( const Objects& os,

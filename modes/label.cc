@@ -374,10 +374,9 @@ void TextLabelConstructionMode::finish(
   const argvect& props, bool needframe )
 {
   Objects args( props.begin(), props.end() );
-  Objects labelos = ObjectFactory::instance()->label( s, coord, needframe, args );
-  labelos.calc( mdoc );
-  copy( labelos.begin(), labelos.end(), back_inserter( args ) );
-  mdoc.addObjects( args );
+  Object* label = ObjectFactory::instance()->label( s, coord, needframe, args );
+  label->calc( mdoc );
+  mdoc.addObject( label );
 }
 
 TextLabelRedefineMode::TextLabelRedefineMode( KigDocument& d, RealObject* label )

@@ -295,9 +295,8 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           // fixed point
           if ( nparents != 0 ) KIG_FILTER_PARSE_ERROR;
           Coordinate c = readKSegCoordinate( stream );
-          Objects os = ObjectFactory::instance()->fixedPoint( c );
-          point = static_cast<RealObject*>( os[2] );
-          copy( os.begin(), os.begin() + 2, back_inserter( ret ) );
+          Object* po = ObjectFactory::instance()->fixedPoint( c );
+          point = static_cast<RealObject*>( po );
           break;
         }
         case G_CONSTRAINED_POINT:
@@ -308,9 +307,8 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           assert( nparents == 1 );
           Object* parent = parents[0];
           assert( parent );
-          Objects os = ObjectFactory::instance()->constrainedPoint( parent, p );
-          point = static_cast<RealObject*>( os[1] );
-          ret.push_back( os[0] );
+          Object* os = ObjectFactory::instance()->constrainedPoint( parent, p );
+          point = static_cast<RealObject*>( os );
           break;
         }
         case G_INTERSECTION_POINT:
@@ -504,10 +502,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       case G_LOCUS:
       {
         if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-        Objects os = ObjectFactory::instance()->locus( parents );
-        assert( os.size() == 2 );
-        ret.push_back( os[0] );
-        object = os.back();
+        object = ObjectFactory::instance()->locus( parents );
         static_cast<RealObject*>( object )->setWidth( style.pen.width() );
         static_cast<RealObject*>( object )->setColor( style.pen.color() );
         break;

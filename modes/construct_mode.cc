@@ -40,20 +40,13 @@ ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
   : BaseMode( d ), mctor( ctor ),
     mpt( 0 )
 {
-  Objects pos = ObjectFactory::instance()->fixedPoint( Coordinate( 0, 0 ) );
-  d._addObjects( Objects( pos.begin(), pos.end() - 1 ) );
-  mpt = pos.back();
+  mpt = ObjectFactory::instance()->fixedPoint( Coordinate( 0, 0 ) );
   mpt->calc( d );
 }
 
 ConstructMode::~ConstructMode()
 {
-  // delete mpt and its obsolete parents..
-  Objects tmp( mpt );
-  Objects dp = deadParents( tmp );
-  mdoc._delObjects( dp );
   delete mpt;
-  delete_all( dp.begin(), dp.end() );
 }
 
 void ConstructMode::leftClickedObject(
@@ -69,10 +62,8 @@ void ConstructMode::leftClickedObject(
     mdoc.addObject( mpt );
     selectObject( mpt, w );
     // get a new mpt for our further use..
-    Objects pos = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ),
-                                                            mdoc, w );
-    mdoc._addObjects( Objects( pos.begin(), pos.end() - 1 ) );
-    mpt = pos.back();
+    mpt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ),
+                                                             mdoc, w );
     mpt->calc( mdoc );
   }
   else
@@ -88,9 +79,7 @@ void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
 
     selectObject( mpt, w );
 
-    Objects pos = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
-    mdoc._addObjects( Objects( pos.begin(), pos.end() - 1 ) );
-    mpt = pos.back();
+    mpt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
     mpt->calc( mdoc );
   }
 }
@@ -170,23 +159,14 @@ PointConstructMode::PointConstructMode( KigDocument& d )
   // ObjectFactory::redefinePoint does that too, and this way, we can
   // depend on them already being known by the doc when we add the
   // mpt..
-  Objects pos = ObjectFactory::instance()->fixedPoint( Coordinate() );
-  d._addObjects( Objects( pos.begin(), pos.end() - 1 ) );
-  mpt = pos.back();
+  mpt = ObjectFactory::instance()->fixedPoint( Coordinate() );
   mpt->calc( d );
 }
 
 PointConstructMode::~PointConstructMode()
 {
   // delete mpt and its obsolete parents..
-  if ( mpt )
-  {
-    Objects tmp( mpt );
-    Objects dp = deadParents( tmp );
-    mdoc._delObjects( dp );
-    delete mpt;
-    delete_all( dp.begin(), dp.end() );
-  };
+  delete mpt;
 }
 
 void PointConstructMode::leftClickedObject(

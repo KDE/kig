@@ -174,9 +174,8 @@ const int LocusConstructor::wantArgs(
 
 Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget& ) const
 {
-  Objects ret = ObjectFactory::instance()->locus( parents );
-  assert( ret.size() == 2 );
-  return ret;
+  Object* ret = ObjectFactory::instance()->locus( parents );
+  return Objects( ret );
 }
 
 QString LocusConstructor::useText( const Object& o, const Objects& os,
@@ -408,14 +407,11 @@ Objects MidPointOfTwoPointsConstructor::build(
   RealObject* seg = new RealObject( SegmentABType::instance(), os );
   seg->setShown( false );
   seg->calc( d );
-  int index = seg->imp()->propertiesInternalNames().findIndex( "mid-point" );
+  int index = seg->propertiesInternalNames().findIndex( "mid-point" );
   assert( index != -1 );
   PropertyObject* prop = new PropertyObject( seg, index );
   RealObject* point = new RealObject( CopyObjectType::instance(), Objects( prop ) );
-  Objects ret( seg );
-  ret.push_back( prop );
-  ret.push_back( point );
-  return ret;
+  return Objects( point );
 }
 
 void MidPointOfTwoPointsConstructor::plug( KigDocument*, KigGUIAction* )

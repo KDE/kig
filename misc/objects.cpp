@@ -54,3 +54,4 @@ Objects Objects::getAllChildren() const
     ret |= (*i)->getAllChildren();
   return ret;
 }
+

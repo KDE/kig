@@ -1,3 +1,15 @@
+2003-06-04  Dominique Devriese  <devriese@kde.org>
+
+	* show an appropriate error when trying to open an non-existing
+		file..
+
+	* clean up the object parent-child relation mechanism.  Rather
+	large code cleanup, that simplifies a lot of code..  Needed a
+	backwards-compatible file format extension.  This commit now also
+	adds proper treatment of internal objects, because it no longer
+	relies on the inherently wrong isInternal() hack, but features The
+	Correct Fix(tm).
+
 2003-06-03  Dominique Devriese  <devriese@kde.org>
 
 	* bugfix: show default icons for actions that don't have any.. (

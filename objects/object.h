@@ -48,7 +48,6 @@ public:
   };
 
   virtual bool inherits( int type ) const;
-  virtual bool isInternal() const = 0;
 
   virtual const ObjectImp* imp() const = 0;
   virtual Objects parents() const = 0;
@@ -97,15 +96,13 @@ public:
   // every kind of object can have children, and there is no easier
   // way of knowing which they are than to store their pointers.
   // Thus, it is the Object class's job to keep track of them..
-  const Objects& children() const;
+  const Objects children() const;
   const Objects getAllChildren() const;
 
   void addChild( Object* o );
 
   void delChild( Object* o );
 
-  virtual void addParent( Object* o );
-  virtual void delParent( Object* o );
   // this function sets the parents of this object to parents.  It
   // doesn't do anything for deleting obsolete parents etc. you should
   // do this yourself ( hint: check out the deadParents() function in
@@ -123,6 +120,7 @@ protected:
   ~ObjectWithParents();
 public:
   void addParent( Object* o );
+  void addParents( const Objects& os );
   void delParent( Object* o );
   void setParents( const Objects& parents );
   Objects parents() const;
@@ -163,7 +161,6 @@ public:
   void calc( const KigDocument& );
 
   bool inherits( int type ) const;
-  bool isInternal() const;
 
   const ObjectImp* imp() const;
 
@@ -205,7 +202,6 @@ public:
   ~DataObject();
 
   bool inherits( int type ) const;
-  bool isInternal() const;
   void setImp( ObjectImp* imp );
   /**
    * sets imp as the old imp, and returns the old one.. This exchanges
@@ -236,7 +232,6 @@ public:
   ~PropertyObject();
 
   bool inherits( int type ) const;
-  bool isInternal() const;
 
   const ObjectImp* imp() const;
   Objects parents() const;
@@ -253,23 +248,24 @@ public:
 
   bool shown() const;
 
-  void delParent( Object* o );
-
   int impRequirement( Object* o, const Objects& os ) const;
 };
 
 /**
  * This class is not an object.  It only serves to hold a reference to
- * a couple of objects, so they don't get deleted..
+ * a couple of objects, so they don't get deleted..  you can
+ * manipulate the referneced objects using the ObjectWithParents API.
  */
 class ReferenceObject
   : public ObjectWithParents
 {
 public:
+  ReferenceObject();
+  ReferenceObject( Object* o );
   ReferenceObject( const Objects& os );
   ~ReferenceObject();
 
-  bool isInternal() const;
+private:
   const ObjectImp* imp() const;
   void draw( KigPainter&, bool ) const;
   bool inRect( const Rect&, const KigWidget& ) const;

@@ -32,6 +32,7 @@ class QString;
 class QCString;
 class QDomElement;
 class RealObject;
+class ReferenceObject;
 class Objects;
 class KigDocument;
 class Object;
@@ -50,14 +51,18 @@ QCString translateOldKigPropertyName( const QString& whichproperty );
  * This function parses old ObjectHierarchy xml elements, and returns
  * a set of objects according to it.  firstelement is the first
  * element that needs parsing, you can handle some objects yourself
- * and then let this function handle the rest, by already filling up
- * ret with the objects you want to use for the elements you skip.
+ * and then let this function handle the rest, by filling up
+ * with the objects you want to use for the elements you skip.
  * This is necessary e.g. in the Macro importer, cause it needs to
  * handle the given objects itself..
  * final contains all objects in os that are marked final in the
  * hierarchy..
+ * The objects are returned as the parents of retref, because we need
+ * them to not be deleted..
  */
-bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& ret,
+bool parseOldObjectHierarchyElements( const QDomElement& firstelement,
+                                      const Objects& given,
+                                      ReferenceObject& retref,
                                       Objects& final, const KigDocument& );
 
 /**
@@ -69,7 +74,7 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
  * objects for given objects of a old hierarchy, and then builds a
  * new hierarchy from the generated objects.
  */
-Object* randomObjectForType( const QCString& type, Objects& data );
+Object* randomObjectForType( const QCString& type );
 
 struct HierElem
 {

@@ -81,7 +81,10 @@ public:
   void unexecute( KigDocument& doc );
 protected:
   bool undone;
-  Objects os;
+
+  // we keep a reference to the objects we contain, so they don't get
+  // deleted..
+  ReferenceObject mobjsref;
 };
 
 class RemoveObjectsTask

@@ -105,13 +105,21 @@ bool KigFilterNative::loadOld( const QString& file, const QDomElement& main, Kig
     return false;
   }
 
-  Objects os;
+  Objects given;
+  ReferenceObject ref;
   Objects final;
-  if ( ! parseOldObjectHierarchyElements( hier.firstChild().toElement(), os, final, to ) )
+  if ( ! parseOldObjectHierarchyElements( hier.firstChild().toElement(), given, ref,
+                                          final, to ) )
   {
     parseError( file, i18n( "This kig file contains errors." ) );
     return false;
   };
+
+  Objects os = ref.parents();
+
+  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    assert( *i );
+
   // stop gcc from complaining about our not using this..
   final.clear();
 
@@ -143,12 +151,10 @@ bool KigFilterNative::save( const KigDocument& kdoc, const QString& to )
   cselem.appendChild( doc.createTextNode( kdoc.coordinateSystem().type() ) );
   docelem.appendChild( cselem );
 
-  Objects objs = kdoc.objects();
-  uint osize = objs.size();
-  objs = getAllParents( objs );
-  assert( objs.size() == osize );
-  // pretend to use this var..
-  (void)osize;
+  Objects objs = kdoc.allObjects();
+  Objects realobjs = kdoc.objects();
+
+  assert( getAllParents( objs ).size() == objs.size() );
 
   // save the objects..
   QDomElement objectselem = doc.createElement( "Objects" );
@@ -159,11 +165,13 @@ bool KigFilterNative::save( const KigDocument& kdoc, const QString& to )
 
   for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
   {
+    bool internal = !realobjs.contains( *i );
     if ( (*i)->inherits( Object::ID_DataObject ) )
     {
       QDomElement e = doc.createElement( "Data" );
       idmap[*i] = id;
       e.setAttribute( "id", id++ );
+      e.setAttribute( "internal", QString::fromLatin1( internal ? "true" : "false" ) );
       QString ser =
         ObjectImpFactory::instance()->serialize( *(*i)->imp(), e, doc );
       e.setAttribute( "type", ser );
@@ -175,6 +183,7 @@ bool KigFilterNative::save( const KigDocument& kdoc, const QString& to )
       QDomElement e = doc.createElement( "Property" );
       idmap[*i] = id;
       e.setAttribute( "id", id++ );
+      e.setAttribute( "internal", QString::fromLatin1( internal ? "true" : "false" ) );
 
       std::map<const Object*,int>::const_iterator idp = idmap.find( o->parent() );
       assert( idp != idmap.end() );
@@ -195,6 +204,7 @@ bool KigFilterNative::save( const KigDocument& kdoc, const QString& to )
       QDomElement e = doc.createElement( "Object" );
       idmap[*i] = id;
       e.setAttribute( "id", id++ );
+      e.setAttribute( "internal", QString::fromLatin1( internal ? "true" : "false" ) );
 
       e.setAttribute( "type", o->type()->fullName() );
 
@@ -211,7 +221,7 @@ bool KigFilterNative::save( const KigDocument& kdoc, const QString& to )
         QDomElement pel = doc.createElement( "Parent" );
         pel.setAttribute( "id", pid );
         e.appendChild( pel );
-      };
+      }
       objectselem.appendChild( e );
     }
     else assert( false );
@@ -247,7 +257,9 @@ bool KigFilterNative::loadNew( const QString& file, const QDomElement& docelem, 
     }
     else if ( e.tagName() == "Objects" )
     {
-      Objects ret = kdoc.objects();
+      Objects objs = kdoc.objects();
+      Objects ret;
+
       // first pass: do a topological sort of the objects, to support
       // randomly ordered files...
       std::vector<HierElem> elems;
@@ -298,13 +310,14 @@ bool KigFilterNative::loadNew( const QString& file, const QDomElement& docelem, 
           KIG_FILTER_PARSE_ERROR;
       elems = sortElems( elems );
 
-      uint oldsize = ret.size();
-      ret.resize( oldsize + elems.size(), 0 );
+      uint oldsize = objs.size();
+      objs.resize( oldsize + elems.size(), 0 );
 
       for ( std::vector<HierElem>::iterator i = elems.begin();
             i != elems.end(); ++i )
       {
         QDomElement e = i->el;
+        bool internal = e.attribute( "internal" ) == "true" ? true : false;
         if ( e.tagName() == "Data" )
         {
           QString tmp = e.attribute( "type" );
@@ -320,7 +333,9 @@ bool KigFilterNative::loadNew( const QString& file, const QDomElement& docelem, 
                                       "an older Kig version..." ) );
             return false;
           };
-          ret[oldsize + i->id - 1] = new DataObject( imp );
+          DataObject* dao = new DataObject( imp );
+          objs[oldsize + i->id - 1] = dao;
+          if ( ! internal ) ret.push_back( dao );
         }
         else if ( e.tagName() == "Property" )
         {
@@ -334,13 +349,15 @@ bool KigFilterNative::loadNew( const QString& file, const QDomElement& docelem, 
           };
 
           if ( i->parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-          Object* parent = ret[oldsize + i->parents[0] -1];
+          Object* parent = objs[oldsize + i->parents[0] -1];
           QCStringList propnames = parent->propertiesInternalNames();
           int propid = propnames.findIndex( propname );
           if ( propid == -1 )
             KIG_FILTER_PARSE_ERROR;
 
-          ret[oldsize + i->id - 1] = new PropertyObject( parent, propid );
+          PropertyObject* po = new PropertyObject( parent, propid );
+          objs[oldsize + i->id - 1] = po;
+          if ( ! internal ) ret.push_back( po );
         }
         else if ( e.tagName() == "Object" )
         {
@@ -375,20 +392,21 @@ bool KigFilterNative::loadNew( const QString& file, const QDomElement& docelem, 
           Objects parents;
           for ( std::vector<int>::iterator j = i->parents.begin();
                 j != i->parents.end(); ++j )
-            parents.push_back( ret[oldsize + *j - 1] );
+            parents.push_back( objs[oldsize + *j - 1] );
 
           RealObject* newobj = new RealObject( type, parents );
           newobj->setColor( color );
           newobj->setShown( shown );
           newobj->setWidth( width );
-          ret[oldsize + i->id - 1] = newobj;
+          objs[oldsize + i->id - 1] = newobj;
+          if ( ! internal ) ret.push_back( newobj );
         }
         else continue;
 
         // property objects require their parents to be calced..
-        ret[oldsize + i->id - 1]->calc( kdoc );
+        objs[oldsize + i->id - 1]->calc( kdoc );
       }
-      kdoc.setObjects( ret );
+      kdoc._addObjects( ret );
     }
     else continue; // be forward-compatible..
   };

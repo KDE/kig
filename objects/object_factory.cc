@@ -35,27 +35,22 @@
 #include <algorithm>
 #include <functional>
 
-ObjectFactory* ObjectFactory::s = 0;
-
-Objects ObjectFactory::fixedPoint( const Coordinate& c )
+Object* ObjectFactory::fixedPoint( const Coordinate& c )
 {
-  DataObject* x = new DataObject( new DoubleImp( c.x ) );
-  DataObject* y = new DataObject( new DoubleImp( c.y ) );
   Objects args;
-  args.push_back( x );
-  args.push_back( y );
+  args.push_back( new DataObject( new DoubleImp( c.x ) ) );
+  args.push_back( new DataObject( new DoubleImp( c.y ) ) );
   RealObject* o = new RealObject( FixedPointType::instance(), args );
-  args.push_back( o );
-  return args;
+  return o;
 }
 
 ObjectFactory* ObjectFactory::instance()
 {
-  if ( s == 0 ) s = new ObjectFactory();
-  return s;
+  static ObjectFactory f;
+  return &f;
 }
 
-Objects ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d, const KigWidget& w )
+Object* ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d, const KigWidget& w )
 {
   Objects os = d.whatAmIOn( c, w );
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
@@ -64,7 +59,7 @@ Objects ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d,
   return fixedPoint( c );
 }
 
-Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
+void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
                                       KigDocument& doc, const KigWidget& w )
 {
   assert( tpoint->inherits( Object::ID_RealObject ) );
@@ -106,31 +101,15 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
 
       assert( dataobj->inherits( Object::ID_DataObject ) );
       static_cast<DataObject*>( dataobj )->setImp( new DoubleImp( newparam ) );
-
-      Objects ret;
-      ret.push_back( dataobj );
-      ret.push_back( point );
-      return ret;
     }
     else
     {
       // point used to be fixed -> add a new DataObject etc.
-      DataObject* d = new DataObject( new DoubleImp( newparam ) );
-      doc._addObject( d );
-
-      // set the new parents, and remove old, dead ones..
       Objects args;
-      args.push_back( d );
+      args.push_back( new DataObject( new DoubleImp( newparam ) ) );
       args.push_back( v );
-      point->setType( ConstrainedPointType::instance() );
-      Objects tmp( point );
-      Objects dp = deadParents( tmp );
       point->setParents( args );
-      doc._delObjects( dp );
-      delete_all( dp.begin(), dp.end() );
-
-      args[1] = point;
-      return args;
+      point->setType( ConstrainedPointType::instance() );
     }
   }
   else
@@ -142,17 +121,9 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       Objects a;
       a.push_back( new DataObject( new DoubleImp( c.x ) ) );
       a.push_back( new DataObject( new DoubleImp( c.y ) ) );
-      doc._addObjects( a );
 
       point->setType( FixedPointType::instance() );
-      Objects tmp( point );
-      Objects dp = deadParents( tmp );
       point->setParents( a );
-      doc._delObjects( dp );
-      delete_all( dp.begin(), dp.end() );
-
-      a.push_back( point );
-      return a;
     }
     else
     {
@@ -160,19 +131,17 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       // we can use the point's move function for that..
       const Coordinate oldcoord = static_cast<const PointImp*>( point->imp() )->coordinate();
       point->move( oldcoord, c - oldcoord, doc );
-      return point->parents().with( point );
     };
   }
 }
 
-Objects ObjectFactory::locus( const Objects& parents )
+Object* ObjectFactory::locus( const Objects& parents )
 {
-  Objects ret;
   using namespace std;
 
   assert( parents.size() == 2 );
   assert( parents.front()->inherits( Object::ID_RealObject ) );
-  const RealObject* constrained = static_cast<RealObject*>( parents.front() );
+  RealObject* constrained = static_cast<RealObject*>( parents.front() );
   const Object* moving = parents.back();
   if ( ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
   {
@@ -183,8 +152,8 @@ Objects ObjectFactory::locus( const Objects& parents )
   };
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
-  Objects hierparents( const_cast<RealObject*>( constrained ) );
-  Objects sideOfTree = sideOfTreePath( Objects( const_cast<RealObject*>( constrained ) ), moving );
+  Objects hierparents( constrained );
+  Objects sideOfTree = sideOfTreePath( hierparents, moving );
   copy( sideOfTree.begin(), sideOfTree.end(), back_inserter( hierparents ) );
 
   ObjectHierarchy hier( hierparents, moving );
@@ -196,52 +165,45 @@ Objects ObjectFactory::locus( const Objects& parents )
 
   Objects realparents( 2 + sideOfTree.size(), 0 );
   realparents[0] = curve;
-  Object* hierobj = new DataObject( new HierarchyImp( hier ) );
-  realparents[1] = hierobj;
+  realparents[1] = new DataObject( new HierarchyImp( hier ) );
   copy( sideOfTree.begin(), sideOfTree.end(), realparents.begin() + 2 );
 
-  ret.push_back( hierobj );
-  ret.push_back( new RealObject( LocusType::instance(), realparents ) );
-
-  return ret;
+  return new RealObject( LocusType::instance(), realparents );
 }
 
-Objects ObjectFactory::label( const QString& s, const Coordinate& loc,
+Object* ObjectFactory::label( const QString& s, const Coordinate& loc,
                               bool needframe, const Objects& nparents )
 {
   using namespace std;
-
-  Objects ret;
   Objects parents;
   parents.reserve( nparents.size() + 3 );
   parents.push_back( new DataObject( new IntImp( needframe ? 1 : 0 ) ) );
   parents.push_back( new DataObject( new StringImp( s ) ) );
   parents.push_back( new DataObject( new PointImp( loc ) ) );
-  ret.push_back( parents[0] );
-  ret.push_back( parents[1] );
-  ret.push_back( parents[2] );
   copy( nparents.begin(), nparents.end(), back_inserter( parents ) );
-
-  RealObject* r = new RealObject( TextType::instance(), parents );
-  ret.push_back( r );
-  return ret;
+  return new RealObject( TextType::instance(), parents );
 }
 
-Objects ObjectFactory::constrainedPoint( Object* curve, double param )
+Object* ObjectFactory::constrainedPoint( Object* curve, double param )
 {
   assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
-  Objects ret;
   Objects parents;
   parents.push_back( curve );
-  ret.push_back( new DataObject( new DoubleImp( param ) ) );
-  parents.push_back( ret.back() );
-  ret.push_back( new RealObject( ConstrainedPointType::instance(), parents ) );
-  return ret;
+  parents.push_back( new DataObject( new DoubleImp( param ) ) );
+  return new RealObject( ConstrainedPointType::instance(), parents );
 }
 
-Objects ObjectFactory::constrainedPoint( Object* curve, const Coordinate& c, const KigDocument& d )
+Object* ObjectFactory::constrainedPoint( Object* curve, const Coordinate& c, const KigDocument& d )
 {
   assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
   double param = static_cast<const CurveImp*>( curve->imp() )->getParam( c, d );
   return constrainedPoint( curve, param );
+}
+
+Object* ObjectFactory::propertyObject( Object* o, const char* p )
+{
+  int wp = o->propertiesInternalNames().findIndex( p );
+  if ( wp == -1 ) return 0;
+  PropertyObject* po = new PropertyObject( o, wp );
+  return po;
 }

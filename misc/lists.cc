@@ -360,7 +360,6 @@ bool MacroList::loadOld( const QDomElement& docelem, myvector<Macro*>& ret, cons
     // requirements a macro has..
 
     Objects given;
-    Objects givendata;
 
     QDomElement e = hierel.firstChild().toElement();
     for ( ; ! e.isNull(); e = e.nextSibling().toElement() )
@@ -372,29 +371,22 @@ bool MacroList::loadOld( const QDomElement& docelem, myvector<Macro*>& ret, cons
       if(tmp.isNull()) return false;
       QCString type = tmp.latin1();
 
-      Objects data;
-      Object* r = randomObjectForType( type, data );
-      data.calc( doc );
+      Object* r = randomObjectForType( type );
+      r->parents().calc( doc );
       r->calc( doc );
-      copy( data.begin(), data.end(), back_inserter( givendata ) );
       given.push_back( r );
     };
 
     assert( e.attribute( "given" ) != "true" );
-    Objects os( given.begin(), given.end() );
+    ReferenceObject ref;
     Objects final;
 
-    if ( !parseOldObjectHierarchyElements( e, os, final, doc ) ) return false;
+    if ( !parseOldObjectHierarchyElements( e, given, ref,
+                                           final, doc ) ) return false;
 
     assert( !final.empty() );
 
     ObjectHierarchy hierarchy( given, final.front() );
-
-    delete_all( os.begin(), os.end() );
-    os.clear();
-    final.clear();
-    delete_all( givendata.begin(), givendata.end() );
-    givendata.clear();
 
     MacroConstructor* ctor =
       new MacroConstructor( hierarchy, name, QString::null );

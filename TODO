@@ -1,7 +1,6 @@
 * harder:
 
-- replace the current isInternal() hack by simply having a
-  ReferenceObject reference all the objects that the user is aware of..
+- split up KigDocument and KigPart
 
 - decouple the link between how an object is calc'ed and whether or
   not it is internal or drawn.  ( all combinations are possible,

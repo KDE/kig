@@ -47,7 +47,6 @@
 static bool oldElemToNewObject( const QCString type,
                                 const QDomElement& e,
                                 RealObject& o,
-                                Objects& dataos,
                                 const KigDocument& kdoc )
 {
   bool ok = true;
@@ -77,7 +76,6 @@ static bool oldElemToNewObject( const QCString type,
       o.setType( ConstrainedPointType::instance() );
       DataObject* po = new DataObject( new DoubleImp( param ) );
       o.addParent( po );
-      dataos.push_back( po );
     }
     else
     {
@@ -89,32 +87,28 @@ static bool oldElemToNewObject( const QCString type,
       DataObject* yo = new DataObject( new DoubleImp( y ) );
       o.addParent( xo );
       o.addParent( yo );
-      dataos.push_back( xo );
-      dataos.push_back( yo );
       o.setType( FixedPointType::instance() );
     }
   }
   else if ( type == "Locus" )
   {
-    Objects locusos = ObjectFactory::instance()->locus( o.parents() );
-    dataos.push_back( locusos[0] );
-    RealObject* locus = static_cast<RealObject*>( locusos[1] );
+    Object* tlocus = ObjectFactory::instance()->locus( o.parents() );
+    RealObject* locus = static_cast<RealObject*>( tlocus );
     o.setType( locus->type() );
     o.setParents( locus->parents() );
+    // make sure locus gets deleted properly..
     delete locus;
   }
   else if ( type == "CoordinatePropertyPoint" )
   {
     uint size = o.parents().size();
     if ( size != 1 ) return false;
-    int wp = -1;
     QString whichproperty = params["which-property"];
     QCString which = translateOldKigPropertyName( whichproperty );
-    wp = o.parents()[0]->propertiesInternalNames().findIndex( which );
-    if ( wp == -1 ) return false;
-    dataos.push_back( new PropertyObject( o.parents()[0], wp ) );
-    dataos.back()->calc( kdoc );
-    o.setParents( Objects( dataos.back() ) );
+    Object* po = ObjectFactory::instance()->propertyObject(
+      o.parents()[0], which );
+    po->calc( kdoc );
+    o.setParents( Objects( po ) );
     o.setType( CopyObjectType::instance() );
   }
   else if ( type == "CircleTransform" || type == "ConicTransform" || type == "CubicTransform" ||
@@ -170,13 +164,13 @@ static bool oldElemToNewObject( const QCString type,
       propos.push_back( new PropertyObject( parents[i], propid ) );
     };
     propos.calc( kdoc );
-    copy( propos.begin(), propos.end(), back_inserter( dataos ) );
-    Objects labelos = ObjectFactory::instance()->label( text, c, false, propos );
-    labelos.calc( kdoc );
-    copy( labelos.begin(), labelos.end() - 1, back_inserter( dataos ) );
-    RealObject* label = static_cast<RealObject*>( labelos.back() );
+    Object* tlabel = ObjectFactory::instance()->label( text, c, false, propos );
+    assert( tlabel->inherits( Object::ID_RealObject ) );
+    RealObject* label = static_cast<RealObject*>( tlabel );
+    label->calc( kdoc );
     o.setType( label->type() );
     o.setParents( label->parents() );
+
     delete label;
   }
   else if ( type == "CircleLineIntersectionPoint" )
@@ -184,7 +178,6 @@ static bool oldElemToNewObject( const QCString type,
     QString sside = params["circlelineintersect-side"];
     int side = sside == "first" ? -1 : 1;
     DataObject* ndo = new DataObject( new IntImp( side ) );
-    dataos.push_back( ndo );
     o.addParent( ndo );
     o.setType( ConicLineIntersectionType::instance() );
   }
@@ -193,7 +186,6 @@ static bool oldElemToNewObject( const QCString type,
     int side = params["coniclineintersect-side"].toInt( & ok );
     if ( ! ok ) return false;
     DataObject* ndo = new DataObject( new IntImp( side ) );
-    dataos.push_back( ndo );
     o.addParent( ndo );
     o.setType( ConicLineIntersectionType::instance() );
   }
@@ -202,7 +194,6 @@ static bool oldElemToNewObject( const QCString type,
     int root = params["cubiclineintersect-root"].toInt( &ok );
     if ( ! ok ) return false;
     DataObject* ndo = new DataObject( new IntImp( root ) );
-    dataos.push_back( ndo );
     o.addParent( ndo );
     o.setType( LineCubicIntersectionType::instance() );
   }
@@ -211,7 +202,6 @@ static bool oldElemToNewObject( const QCString type,
     int branch = params["lineconicasymptotes-branch"].toInt( &ok );
     if ( ! ok ) return false;
     DataObject* ndo = new DataObject( new IntImp( branch ) );
-    dataos.push_back( ndo );
     o.addParent( ndo );
     o.setType( ConicAsymptoteType::instance() );
   }
@@ -233,10 +223,8 @@ static bool oldElemToNewObject( const QCString type,
       if ( ! ok ) return false;
     };
     DataObject* ndo = new DataObject( new IntImp( which ) );
-    dataos.push_back( ndo );
     o.addParent( ndo );
     ndo = new DataObject( new IntImp( zeroindex ) );
-    dataos.push_back( ndo );
     o.addParent( ndo );
     o.setType( ConicRadicalType::instance() );
   }
@@ -322,7 +310,8 @@ std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
   return ret;
 };
 
-bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& ret,
+bool parseOldObjectHierarchyElements( const QDomElement& firstelement,
+                                      const Objects& given, ReferenceObject& retref,
                                       Objects& finalos, const KigDocument& doc )
 {
   bool ok = true;
@@ -356,16 +345,14 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
     };
   };
 
+  Objects ret = given;
   ret.resize( elems.size(), 0 );
+  ReferenceObject ourref;
 
   // now we do a topological sort of the elems..
   std::vector<HierElem> sortedElems = sortElems( elems );
 
   assert( sortedElems.size() == elems.size() );
-
-  // data objects that certain objects need..  we add them with the
-  // rest at the end..
-  Objects dataos;
 
   // and now we go over them again, this time filling up ret..
   for ( uint i = 0; i < sortedElems.size(); ++i )
@@ -411,30 +398,28 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
     o->setShown( shown );
     o->setColor( color );
 
-    if ( ! oldElemToNewObject( type, e, *o, dataos, doc ) )
+    if ( ! oldElemToNewObject( type, e, *o, doc ) )
     {
-      delete_all( ret.begin(), ret.end() );
-      delete_all( dataos.begin(), dataos.end() );
+      // we don't need to delete the objects we already have, that's
+      // done by the ReferenceObject "ourref" above..
+      finalos.clear();
       return false;
     };
     o->calc( doc );
     ret[elem.id-1] = o;
+    ourref.addParent( o );
 
     if ( final ) finalos.push_back( o );
   };
 
   assert( ret.size() == elems.size() );
 
-  ret.reserve( ret.size() + dataos.size() );
-  copy( dataos.begin(), dataos.end(), back_inserter( ret ) );
-
-  for ( uint i = 0; i < ret.size(); ++i )
-    assert( ret[i] );
+  retref.setParents( ret );
 
   return true;
 };
 
-Object* randomObjectForType( const QCString& type, Objects& data )
+Object* randomObjectForType( const QCString& type )
 {
   // our job here isn't too hard.  We can simply provide DataObjects
   // for almost all object types, and the oldElemToNewObject()
@@ -454,10 +439,8 @@ Object* randomObjectForType( const QCString& type, Objects& data )
   {
     DataObject* line =
       new DataObject( new LineImp( a, b ) );
-    Objects constrainedpointos = ObjectFactory::instance()->constrainedPoint( line, .5 );
-    data.push_back( line );
-    data.push_back( constrainedpointos[0] );
-    return constrainedpointos[1];
+    Object* constrainedpoint = ObjectFactory::instance()->constrainedPoint( line, .5 );
+    return constrainedpoint;
   }
   else
   {
@@ -480,8 +463,10 @@ Object* randomObjectForType( const QCString& type, Objects& data )
       Objects pdos( pdo );
       RealObject* cro = new RealObject( CopyObjectType::instance(), pdos );
       ObjectHierarchy hier( pdos, cro );
+
       delete pdo;
       delete cro;
+
       return new DataObject( new LocusImp( new LineImp( a, b ), hier ) );
     }
     else if ( type == "TextLabel" )

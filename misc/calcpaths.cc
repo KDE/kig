@@ -50,7 +50,7 @@ Objects calcPath( const Objects& os )
   {
     for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
     {
-      const Objects& o = (*i)->children();
+      const Objects o = (*i)->children();
       std::copy( o.begin(), o.end(), std::back_inserter( all ) );
       std::copy( o.begin(), o.end(), std::back_inserter( tmp2 ) );
     };
@@ -65,7 +65,8 @@ Objects calcPath( const Objects& os )
   ret.reserve( os.size() );
   for ( Objects::reverse_iterator i = all.rbegin(); i != all.rend(); ++i )
   {
-    if ( ! ret.contains( *i ) ) ret.push_back( *i );
+    // we only add objects that appear in os..
+    if ( ! ret.contains( *i ) && os.contains( *i ) ) ret.push_back( *i );
   };
   std::reverse( ret.begin(), ret.end() );
   return ret;
@@ -162,62 +163,5 @@ Objects getAllParents( const Objects& objs )
     begin = ret.begin() + oldsize;
     end = ret.end();
   };
-  return ret;
-};
-
-// this calls delChild() on all of o's parents..
-void delChildFromParents( Object* o )
-{
-  Objects parents = o->parents();
-  for ( Objects::iterator i = parents.begin(); i != parents.end(); ++i )
-    (*i)->delChild( o );
-};
-
-void addChildToParents( Object* o )
-{
-  Objects parents = o->parents();
-  for ( Objects::iterator i = parents.begin(); i != parents.end(); ++i )
-    (*i)->addChild( o );
-};
-
-Objects deadParents( Objects& os )
-{
-  // what we do here is simulate deleting the children ( by calling
-  // delChild on their parents ), and then see if the parents have
-  // children left.. if they don't, we simulate deleting them too and
-  // continue with their parents..
-
-  Objects todo;
-  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-  {
-    todo |= (*i)->parents();
-    delChildFromParents( *i );
-  };
-
-  // these are the objects that we delChild'ed from their parents, and
-  // which we need to readd later..
-  Objects readd = os;
-
-  Objects ret;
-
-  while ( ! todo.empty() )
-  {
-    Objects newtodo;
-    for ( Objects::iterator i = todo.begin(); i != todo.end(); ++i )
-    {
-      if ( (*i)->isInternal() && (*i)->children().empty() )
-      {
-        ret.push_back( *i );
-        delChildFromParents( *i );
-        readd.push_back( *i );
-        newtodo |= (*i)->parents();
-      };
-    };
-    todo = newtodo;
-  };
-
-  for ( Objects::iterator i = readd.begin(); i != readd.end(); ++i )
-    addChildToParents( *i );
-
   return ret;
 };
