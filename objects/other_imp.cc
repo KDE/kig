@@ -108,9 +108,9 @@ const char* AngleImp::iconForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   if ( which == Parent::numberOfProperties() )
-    return "angle"; // size in radians
+    return "angle-size"; // size in radians
   else if ( which == Parent::numberOfProperties() + 1 )
-    return "angle"; // size in degrees
+    return "angle-size"; // size in degrees
   else assert( false );
 }
 
