@@ -91,9 +91,6 @@ public:
   RemoveObjectsTask( const Objects& os );
   void execute( KigDocument& );
   void unexecute( KigDocument& );
-protected:
-  bool undone;
-  Objects os;
 };
 
 class ChangeObjectImpsTask

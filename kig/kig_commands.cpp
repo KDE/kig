@@ -151,8 +151,7 @@ void AddObjectsTask::execute( KigDocument& doc )
 
 void AddObjectsTask::unexecute( KigDocument& doc )
 {
-  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-    doc._delObject(*i);
+  doc._delObjects( os );
   undone = true;
 };
 
