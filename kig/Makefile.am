@@ -27,7 +27,7 @@ kig_LDFLAGS = $(KDE_RPATH) $(all_libraries)
 kig_LDADD   = $(LIB_KPARTS)
 
 # this is where the desktop file will go 
-xdg_apps_DATA = kig.desktop
+#xdg_apps_DATA = kig.desktop
 
 # this is where the shell's XML-GUI resource file goes
 shellrcdir   = $(kde_datadir)/kig
