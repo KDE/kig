@@ -20,15 +20,17 @@
 
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
+#include "property.h"
 
 #include "../modes/label.h"
 
 #include <sstream>
+#include <functional>
 #include <algorithm>
 
 namespace {
   class getObj
-    : public unary_function<TextLabelProperty, Object*>
+    : public std::unary_function<TextLabelProperty, Object*>
   {
   public:
     inline Object* operator()( const TextLabelProperty& p ) const { return p.obj; };
