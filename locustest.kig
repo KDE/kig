@@ -1,0 +1,58 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="2.0.000" >
+ <Point x="177" y="241" />
+ <Point x="215" y="298" />
+ <Point x="326" y="287" />
+ <Point x="409" y="225" />
+ <Point x="341" y="143" />
+ <ObjectHierarchy>
+  <HierarchyElement given="true" typeName="point" id="1" final="false" />
+  <HierarchyElement given="true" typeName="point" id="2" final="false" />
+  <HierarchyElement given="true" typeName="point" id="3" final="false" />
+  <HierarchyElement given="true" typeName="point" id="4" final="false" />
+  <HierarchyElement given="true" typeName="point" id="5" final="false" />
+  <HierarchyElement given="false" typeName="LineTTP" id="6" final="true" >
+   <parent typeName="point" id="1" />
+   <parent typeName="point" id="2" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="7" final="true" >
+   <parent typeName="point" id="1" />
+   <parent typeName="point" id="4" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="8" final="true" >
+   <parent typeName="point" id="4" />
+   <parent typeName="point" id="5" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="ConstrainedPoint" id="9" final="true" >
+   <parent typeName="LineTTP" id="8" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="10" final="true" >
+   <parent typeName="ConstrainedPoint" id="9" />
+   <parent typeName="point" id="2" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="11" final="true" >
+   <parent typeName="point" id="5" />
+   <parent typeName="point" id="3" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="IntersectionPoint" id="12" final="true" >
+   <parent typeName="LineTTP" id="11" />
+   <parent typeName="LineTTP" id="6" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="13" final="true" >
+   <parent typeName="ConstrainedPoint" id="9" />
+   <parent typeName="IntersectionPoint" id="12" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="IntersectionPoint" id="14" final="true" >
+   <parent typeName="LineTTP" id="13" />
+   <parent typeName="LineTTP" id="7" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LineTTP" id="15" final="true" >
+   <parent typeName="IntersectionPoint" id="14" />
+   <parent typeName="point" id="3" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="IntersectionPoint" id="16" final="true" >
+   <parent typeName="LineTTP" id="15" />
+   <parent typeName="LineTTP" id="10" />
+  </HierarchyElement>
+ </ObjectHierarchy>
+</KigDocument>
