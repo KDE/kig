@@ -155,7 +155,7 @@ void KigWidget::resizeEvent( QResizeEvent* e )
               orect.width() * nsize.width() / osize.width(),
               orect.height() * nsize.height() / osize.height() );
   nrect = matchScreenShape( nrect );
-  nrect.setTopLeft( orect.topLeft() );
+  nrect.setCenter( orect.center() );
   msi.setShownRect( nrect );
 
   // horrible hack...  We need to somehow differentiate between the
