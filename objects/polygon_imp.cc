@@ -130,7 +130,7 @@ const uint PolygonImp::numberOfProperties() const
 const QCStringList PolygonImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
-  l += "polygon-circumference";
+  l += "polygon-perimeter";
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -138,7 +138,7 @@ const QCStringList PolygonImp::propertiesInternalNames() const
 const QCStringList PolygonImp::properties() const
 {
   QCStringList l = Parent::properties();
-  l += I18N_NOOP( "Circumference" );
+  l += I18N_NOOP( "Perimeter" );
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -156,7 +156,7 @@ const char* PolygonImp::iconForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   else if ( which == Parent::numberOfProperties() )
-    return "circumference"; // circumference
+    return "circumference"; // perimeter
   else assert( false );
   return "";
 }
