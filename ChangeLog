@@ -1,5 +1,9 @@
 2003-06-20  Dominique Devriese  <devriese@kde.org>
 
+	* add an icon for Arc's center property, this fixes: "12) Why
+	don't you use baseCircle.png as icon to show/construct the center
+	of a circle and (why not?) an arc?"
+
 	* fix: a text label constructed using "add text label" from an
 	object popup wasn't properly calced after construction..
 

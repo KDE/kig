@@ -5,6 +5,7 @@ kigicondata_DATA = \
 	angle-size.png \
 	areaCircle.png \
 	arc.png \
+	arc-center.png \
 	attacher.png \
 	baseCircle.png \
 	bisection.png \

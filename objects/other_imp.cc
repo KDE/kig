@@ -373,7 +373,7 @@ const char* ArcImp::iconForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   else if ( which == Parent::numberOfProperties() )
-    return "";
+    return "arc-center"; // center
   else if ( which == Parent::numberOfProperties() + 1 )
     return "";
   else if ( which == Parent::numberOfProperties() + 2 )
