@@ -2,6 +2,7 @@
 #define CIRCLE_H
 
 #include "curve.h"
+#include "../misc/common.h"
 
 class Circle
 : public Curve
@@ -14,31 +15,28 @@ class Circle
   virtual QCString vBaseTypeName() const { return sBaseTypeName();};
   static QCString sBaseTypeName() { return I18N_NOOP("circle"); };
 
-  bool contains (const QPoint& o, bool strict) const;
-  void draw (QPainter& p, bool showSelection) const;
-   bool inRect (const QRect&) const;
-  Point getPoint (double param) const;
-  double getParam (const Point&) const;
-  
-  static inline void drawCircle (QPainter& p, const Point& pt, const double radius)
-  {
-    QRect rect (qRound(pt.getX()-radius), qRound(pt.getY()-radius), qRound(2*radius), qRound(2*radius));
-    p.drawEllipse(rect);
-  };
-
-  void getOverlay (QPtrList<QRect>& list, const QRect& border) const { circleGetOverlay(qpc, radius, list, border); };
-  static void circleGetOverlay(const Point& centre, double radius, QPtrList<QRect>& list, const QRect& border)
-  {
-    QRect rect(centre.getX()-radius-1, centre.getY()-radius-1, 2*radius+3, 2*radius+3);
-    circleGetOverlay (centre , radius , list, border, rect);
-  };
-  static void circleGetOverlay(const Point& centre, double radius, QPtrList<QRect>& list, const QRect& border, const QRect& currentRect);
-  static inline double calcRadius(const Point& centre, const Point& point)
-  { return qRound((centre-point).length()); };
+  bool contains (const Coordinate& o, const double miss ) const;
+  void draw (KigPainter& p, bool showSelection) const;
+  bool inRect (const Rect&) const;
+  Coordinate getPoint (double param) const;
+  double getParam (const Coordinate&) const;
 
 protected:
-  Point qpc;
+  Coordinate qpc;
   double radius;
+  
+  inline double calcRadius( const Point* c, const Point* p ) const
+  {
+    return (c->getCoord() - p->getCoord()).length();
+  };
+  inline double calcRadius( const Coordinate& c, const Coordinate& p ) const
+  {
+    return ( c-p).length();
+  };
+  inline double calcRadius( const Point* c, const Coordinate& p ) const
+  {
+    return (c->getCoord() - p).length();
+  };
 };
 
 // a circle composed by a centre and a point on the circle
@@ -55,8 +53,7 @@ public:
   static QCString sFullTypeName() { return "CircleBCP"; };
 
   void calc ();
-  void drawPrelim ( QPainter&, const QPoint& ) const;
-  void getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, const QPoint& pt) const;
+  void drawPrelim ( KigPainter&, const Coordinate& ) const;
 
   // passing arguments
   QString wantArg (const Object*) const;
@@ -65,14 +62,14 @@ public:
     Objects getParents() const;
 
   //moving
-  void startMove(const QPoint&);
-  void moveTo(const QPoint&);
+  void startMove(const Coordinate&);
+  void moveTo(const Coordinate&);
   void stopMove();
   void cancelMove();
 protected:
   Point* poc; // point on circle
   Point* centre;
-  QPoint pwpsm; // point where poc started moving
+  Coordinate pwpsm; // point where poc started moving
   enum { notMoving, movingPoc, lettingPocMove } wawm; // what are we moving ?
 };
 
@@ -88,8 +85,8 @@ public:
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "CircleBTP"; };
 
-  void drawPrelim ( QPainter&, const QPoint& ) const;
-  void getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, const QPoint& pt) const;
+  void drawPrelim ( KigPainter&, const Coordinate& ) const;
+
   // passing arguments
   QString wantArg (const Object*) const;
   bool selectArg (Object*);
@@ -97,8 +94,8 @@ public:
     Objects getParents() const;
 
   //moving
-  void startMove(const QPoint&) {};
-  void moveTo(const QPoint&) {};
+  void startMove(const Coordinate&) {};
+  void moveTo(const Coordinate&) {};
   void stopMove() {};
   void cancelMove() {};
 
@@ -108,7 +105,7 @@ protected:
   Point* p3;
 
   void calc();
-  Point calcCenter(double, double, double, double, double, double) const;
+  Coordinate calcCenter(double, double, double, double, double, double) const;
 };
 
 #endif

@@ -4,8 +4,8 @@
 #include "kig_part.h"
 #include "../objects/object.h"
 #include "../objects/point.h"
+#include "../misc/coordinate_system.h"
 
-#include <qpainter.h>
 #include <qdialog.h>
 
 #include <kpopupmenu.h>
@@ -13,9 +13,13 @@
 #include <kcursor.h>
 #include <kapplication.h>
 
-#include <iostream>
+kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
+{
+  s << "x: " << t.x() << " y: " << t.y();
+  return s;
+};
 
-KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool inIsKiosk)
+KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name, bool inIsKiosk )
   : QWidget(parent, name),
     document(inDoc),
     plc(0,0),
@@ -26,7 +30,8 @@ KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool in
     curPix(size()),
     kiosk(0),
     kiosKontext(0),
-    isKiosk(inIsKiosk)
+    isKiosk(inIsKiosk),
+    mViewRect( )
 {
   if (inIsKiosk)
     {
@@ -39,11 +44,13 @@ KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool in
   connect( document, SIGNAL( allChanged() ), this, SLOT( updateAll() ) );
 
   setFocusPolicy(QWidget::ClickFocus);
+  setBackgroundMode( Qt::NoBackground );
   setMouseTracking(true);
 
   curPix.resize(size());
   stillPix.resize( size() );
 
+  recenterScreen();
   redrawStillPix();
   updateWidget(true);
 };
@@ -62,11 +69,11 @@ void KigView::paintEvent(QPaintEvent*)
 void KigView::mousePressEvent (QMouseEvent* e)
 {
   pmt = plc = e->pos();
-  oco = document->whatAmIOn(plc);
+  oco = document->whatAmIOn(fromScreen(plc), 2*pixelWidth());
   if (oco.isEmpty())
     {
       // clicked on an empty spot...
-      if ((e->button() & RightButton) && isKiosk) kiosKontext->popup(e->pos());
+      if ((e->button() & RightButton) && isKiosk) kiosKontext->popup(pmt);
       if ((e->button() & LeftButton) && document->canSelectRect()) isDraggingRect = true;
       updateCurPix();
       displayText(0);
@@ -90,7 +97,7 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
   if ( isMovingObjects )
     {
       updateCurPix();
-      document->moveSosTo(e->pos());
+      document->moveSosTo(fromScreen(pmt));
       drawObjects(document->getMovingObjects(), curPix);
       updateWidget(false);
       return;
@@ -113,7 +120,7 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
       // -> if he's over a selectable object, we tell him what it
       // would be used for, or else, we just tell him what he's
       // constructing...
-      Objects where = document->whatAmIOn(pmt);
+      Objects where = document->whatAmIOn(fromScreen(pmt), 2*pixelWidth());
       if (where.isEmpty())
 	{
 	  displayText(i18n("Constructing a %1").arg(document->getObc()->vTBaseTypeName()));
@@ -149,7 +156,7 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
 	  // we start moving the sos...
 	  isMovingObjects = true;
 	  Objects stillObjs;
-	  document->startMovingSos(plc,stillObjs);
+	  document->startMovingSos(fromScreen(plc),stillObjs);
 	  redrawStillPix();
 	  drawObjects(stillObjs, stillPix);
 	  updateCurPix();
@@ -167,7 +174,7 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
     {
       // the user didn't click, and is just moving around his
       // cursor...
-      Objects where = document->whatAmIOn(pmt);
+      Objects where = document->whatAmIOn(fromScreen(pmt), 2*pixelWidth());
       updateCurPix();
       // no obc
       // --> we just tell the user what he's moving over...
@@ -188,6 +195,8 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
 
 void KigView::mouseReleaseEvent (QMouseEvent* e)
 {
+  Coordinate __d = fromScreen(e->pos());
+  kdDebug() << k_funcinfo << __d << endl;
   if ( isMovingObjects )
     {
       document->stopMovingSos();
@@ -201,7 +210,7 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 	{
 	  document->clearSelection();
 	};
-      document->selectObjects(QRect(pmt, plc).normalize());
+      document->selectObjects(Rect(fromScreen(pmt), fromScreen(plc)).normalized());
       // we don't call drawObjects, this is done for us by
       // document->selectObjects()...
       isDraggingRect = false;
@@ -246,12 +255,12 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
       if (!oco.isEmpty() && Object::toCurve(oco.first()))
 	{
 	  // add a ConstrainedPoint...
-	  p = new ConstrainedPoint(Object::toCurve(oco.getFirst()),plc);
+	  p = new ConstrainedPoint(Object::toCurve(oco.getFirst()),fromScreen(plc));
 	}
       else
 	{
 	  // add a normal Point...
-	  p = new Point(plc);
+	  p = new Point(fromScreen(plc));
 	};
       document->addObject(p);
       // we don't call drawObject, since the document
@@ -294,81 +303,35 @@ void KigView::redrawStillPix()
   if (isMovingObjects) return;
   drawObjects(document->getObjects(), stillPix);
   bitBlt(&curPix, QPoint(0, 0), &stillPix, QRect(QPoint(0,0),size()));
-  oldOverlay.append (new QRect (QPoint(0,0), size()));
+  oldOverlay.push_back ( QRect( QPoint(0,0), size() ) );
 };
 
 void KigView::drawGrid()
 {
-  QPainter p( &stillPix );
-  // this grid comes from KGeo
-  p.save();
-  p.setWindow(-size().width() / 2, -size().height() / 2, size().width(), size().height());
-  //gridLines:
-  const int unitInPixel = 40;
-  const int maxX = (size().width() - 20)/(2*unitInPixel), maxY= (size().height() - 20)/(2*unitInPixel);
-  p.setPen( QPen( lightGray, 0.5, DotLine ) );
-  for ( int k = -maxX; k <= maxX; k++ )
-    {
-      p.drawLine( k * unitInPixel, -maxY * unitInPixel, k * unitInPixel, maxY * unitInPixel );
-    }
-  for ( int k = -maxY; k <= maxY; k++ )
-    {
-      p.drawLine( -maxX * unitInPixel, k * unitInPixel, maxX * unitInPixel, k * unitInPixel );
-    }
-  
-  // axes:
-  p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
-  p.drawLine( -maxX * unitInPixel, 0, maxX * unitInPixel, 0 );
-  p.drawLine( 0, maxY * unitInPixel, 0, -maxY * unitInPixel );
-  // numbers:
-  for ( int k = -maxX; k <= maxX; k++ )
-    {
-      if ( k != 0 )
-	{
-	  p.drawText( (k-1) * unitInPixel, 2, 2 * unitInPixel, unitInPixel, AlignHCenter | AlignTop, QString().setNum( k ) );
-	}
-    }
-  for ( int k = -maxY; k <= maxY; k++ )
-    {
-      if ( k != 0 )
-	{
-	  p.drawText( 2, ( k * unitInPixel ) - 13, 24, 24, AlignCenter, QString().setNum( -k ) );
-	}
-    }
-  int right = maxX * unitInPixel;
-  int top = -maxY * unitInPixel;
-  p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
-  p.setBrush( Qt::gray );
-  QPointArray a;
-  a.setPoints ( 3, right + 6, - 3, right + 12 , 0, right + 6, 3 );
-  p.drawPolygon( a, true );
-  p.drawLine( right, 0, right + 5, 0 );
-  a.setPoints ( 3, - 3, top - 6, 0, top - 13, 3, top - 6 );
-  p.drawPolygon( a, true );
-  p.drawLine( 0, top, 0, top - 6 );
-  
-  p.restore();
+  KigPainter p( this, &stillPix );
+
+  document->getCoordinateSystem()->drawGrid( p );
 };
 
 void KigView::updateWidget( bool needRedraw )
 {
 #undef SHOW_OVERLAY_RECTS
 #ifdef SHOW_OVERLAY_RECTS
-  QPainter debug (this);
+  QPainter debug (this, this);
   debug.setPen(Qt::yellow);
 #endif // SHOW_OVERLAY_RECTS
   if (needRedraw)
     {
       // if necessary, we just redraw everything...
-      bitBlt (this, 0, 0, &curPix);
+      bitBlt( this, QPoint( 0, 0 ), &curPix, QRect( QPoint( 0, 0 ), size() ) );
     }
   else
     {
       // we undo our old changes...
-      for (QRect* i = oldOverlay.first(); i; i = oldOverlay.next())
+      for ( std::vector<QRect>::iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
 	bitBlt( this, i->topLeft(), &curPix, *i );
       // we add our new changes...
-      for (QRect* i = overlay.first(); i; i = overlay.next())
+      for ( std::vector<QRect>::iterator i = overlay.begin(); i != overlay.end(); ++i )
 	{
 	  bitBlt( this, i->topLeft(), &curPix, *i );
 #ifdef SHOW_OVERLAY_RECTS
@@ -376,18 +339,14 @@ void KigView::updateWidget( bool needRedraw )
 #endif
 	};
     };
-  oldOverlay.setAutoDelete(true);
   oldOverlay.clear();
-  oldOverlay.setAutoDelete(false);
   if (needRedraw)
     {
-      oldOverlay.append (new QRect(QPoint(0,0), size()));
-      overlay.setAutoDelete(true);
+      oldOverlay.push_back ( QRect( QPoint(0,0), size() ) );
     }
   else
     {
       oldOverlay = overlay;
-      overlay.setAutoDelete(false);
     };
   overlay.clear();
   return;
@@ -395,46 +354,44 @@ void KigView::updateWidget( bool needRedraw )
 
 void KigView::drawObject(const Object* o, QPixmap& pix)
 {
-  QPainter p( &pix );
+  KigPainter p( this, &pix );
   o->drawWrap( p, true );
-  o->getOverlayWrap(overlay, QRect(QPoint(0,0), size()));
 };
 
 void KigView::drawRect()
 {
-  QPainter p(&curPix);
+  KigPainter p( this, &curPix );
   QPen pen(Qt::black, 1, Qt::DotLine);
   p.setPen(pen);
   p.setBrush(QBrush(Qt::cyan,Dense6Pattern));
-  QRect* r = new QRect(plc, pmt);
-  *r = r->normalize();
-  p.drawRect(*r);
-  overlay.append(r);
+  QRect r( plc, pmt );
+  p.drawRect(r.normalize());
 };
 
 void KigView::drawPrelim()
 {
-  QPainter p(&curPix);
-  document->getObc()->drawPrelim(p,mapFromGlobal(QCursor::pos()));
-  document->getObc()->getPrelimOverlay(overlay,QRect(QPoint(0,0),size()), mapFromGlobal(QCursor::pos()));
+  KigPainter p( this, &curPix );
+  document->getObc()->drawPrelim
+    ( p,
+      fromScreen( mapFromGlobal( QCursor::pos() ) )
+      );
 };
 
 void KigView::drawTbd()
 {
   if (tbd.isNull()) return;
-  QPainter p(&curPix);
+  KigPainter p(this,&curPix);
   // tf = text formatting flags
   int tf = AlignLeft | AlignTop | DontClip | WordBreak;
   // we need the rect where we're going to paint text
-  QRect* tmpRect = new QRect(p.boundingRect(pmt.x(), pmt.y(), 900, 50, tf, tbd));
   p.setPen(QPen(Qt::blue, 1, SolidLine));
   p.setBrush(Qt::NoBrush);
-  p.drawText(pmt.x(), pmt.y(), 900 ,50, tf, tbd);
-  overlay.append(tmpRect);
+  p.drawText(Rect( fromScreen(pmt), showingRect().bottomRight() ).normalized(), tbd, tf);
 };
 
 void KigView::resizeEvent(QResizeEvent*)
 {
+  recenterScreen();
   curPix.resize(size());
   stillPix.resize( size() );
   redrawStillPix();
@@ -443,14 +400,82 @@ void KigView::resizeEvent(QResizeEvent*)
 
 void KigView::drawObjects(const Objects& os, QPixmap& p )
 {
+  KigPainter pt( this, &p );
   Objects::iterator it(os);
   Object* i;
   for (; (i = it.current()); ++it)
-    drawObject(i,p);
+    i->drawWrap( pt, true );
 }
+
 void KigView::updateCurPix()
 {
   // we make curPix look like stillPix again...
-  for (QRect* i = oldOverlay.first(); i ; i = oldOverlay.next())
-    bitBlt(&curPix, i->topLeft(), &stillPix, *i);
+  for ( std::vector<QRect>::iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
+    bitBlt( &curPix, i->topLeft(), &stillPix, *i );
+}
+
+Rect KigView::showingRect()
+{
+  return mViewRect;
+}
+
+
+QPoint KigView::toScreen( const Coordinate p )
+{
+  Coordinate t = p - showingRect().bottomLeft();
+  t *= size().width();
+  t /= showingRect().width();
+  return QPoint( t.x, height() - t.y );
+}
+
+Coordinate KigView::fromScreen( const QPoint& p )
+{
+  Coordinate t( p.x(), height() - p.y() );
+  t *= showingRect().width();
+  t /= size().width();
+  return t + showingRect().bottomLeft();
+}
+
+void KigView::recenterScreen()
+{
+  mViewRect = matchScreenShape(document->suggestedRect());
+  kdDebug() << k_funcinfo << endl
+// 	    << "(0,0): " << toScreen(Coordinate(0,0)) << endl
+// 	    << "(-3,-2): " << toScreen( Coordinate(-3,-2)) << endl
+// 	    << "(3,2): " << toScreen( Coordinate(3,2)) << endl;
+	    << "showingRect:" << showingRect() << endl
+	    << "fromScreen(...): " << fromScreen(QRect(QPoint(0,0), size()))
+	    << endl;
+}
+
+double KigView::pixelWidth()
+{
+  Coordinate a = fromScreen( QPoint( 0, 0 ) );
+  Coordinate b = fromScreen( QPoint( 0, 1000 ) );
+  return fabs( b.y - a.y ) / 1000;
+}
+
+Rect KigView::matchScreenShape( const Rect& r )
+{
+  kdDebug() << k_funcinfo << "input: " << r << endl;
+  Rect s = r;
+  Coordinate c = r.center();
+  double v = double(r.width())/r.height(); // document dimensions
+  double w = double(size().width())/size().height(); // widget
+						     // dimensions
+  // we don't show less than r, if the dimensions don't match, we
+  // extend r into some dimension...
+  if( v > w )
+    {
+      // not high enough...
+      s.setHeight( s.width() / w );
+    }
+  else
+    {
+      // not wide enough...
+      s.setWidth( s.height() * w );
+    };
+  s.setCenter(c);
+  kdDebug() << k_funcinfo << "output: " << s << endl;
+  return s.normalized();
 }

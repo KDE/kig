@@ -1,7 +1,5 @@
 #include "point.h"
 
-#include <qpainter.h>
-
 #include <kdebug.h>
 
 #include <typeinfo>
@@ -9,48 +7,41 @@
 #include "segment.h"
 #include "curve.h"
 
-bool Point::contains(const QPoint& o, bool strict) const
+bool Point::contains( const Coordinate& o, const double error ) const
 {
-  if (strict) return o == QPoint(x,y);
-  return abs((o - QPoint(x,y)).manhattanLength()) < 4;
+  return (o - mC).length() <= error;
 };
 
-void Point::draw (QPainter& p, bool ss) const
+void Point::draw (KigPainter& p, bool ss) const
 {
+  kdDebug() << k_funcinfo << mC.x << " " << mC.y << endl;
   if (!shown) return;
-  p.setBrush (QBrush(Qt::blue));
+  p.setBrushStyle( Qt::SolidPattern );
+  p.setBrushColor (Qt::blue);
   p.setPen( QPen ( Qt::blue, 1 ) );
   if (selected && ss)
     {
       p.setPen( QPen (Qt::red, 1) );
-      p.setBrush (QBrush(Qt::red));
+      p.setBrushColor(Qt::red);
     };
-  p.drawEllipse(qRound(x-2), qRound(y-2),5,5);
+  p.drawPoint( mC, false );
   p.setBrush (Qt::NoBrush);
 };
 
-void Point::startMove(const QPoint& p)
+void Point::startMove(const Coordinate& p)
 {
-  pwwsm = QPoint(x,y);
   pwwlmt = p;
 };
 
-void Point::moveTo(const QPoint& p)
+void Point::moveTo(const Coordinate& p)
 {
-  x+=(p-pwwlmt).x();
-  y+=(p-pwwlmt).y();
+  mC+=p-pwwlmt;
   pwwlmt = p;
 };
 
 void Point::stopMove()
 {
 };
-
-// void Point::cancelMove()
-// {
-//   x=pwwsm.x();
-//   y=pwwsm.y();
-// };
 
 QString MidPoint::wantArg(const Object* o) const
 {
@@ -103,39 +94,31 @@ void MidPoint::unselectArg(Object* o)
   o->delChild(this);
 };
 
-void MidPoint::startMove(const QPoint& p)
+void MidPoint::startMove(const Coordinate& p)
 {
-  pwwlmt = pwwsm = p;
+  pwwlmt = p;
   if (contains(p,false))
     {
       howm = howmMoving;
-      p2->startMove(p2->toQPoint());
+      p2->startMove(p2->getCoord());
     }
   else howm = howmFollowing;
 }
 
-void MidPoint::moveTo(const QPoint& p)
+void MidPoint::moveTo(const Coordinate& p)
 {
   if (howm == howmFollowing)
     {
       calc();
       return;
     }
-  x=p.x();
-  y=p.y();
-  p2->moveTo( ( (*this)*2-*p1).toQPoint());
+  mC = p;
+  p2->moveTo( mC*2-p1->getCoord() );
 }
 
 void MidPoint::stopMove()
 {
-  pwwlmt = pwwsm = QPoint(x,y);
 };
-
-// void MidPoint::cancelMove()
-// {
-//   x = pwwsm.x();
-//   y = pwwsm.y();
-// }
 
 void MidPoint::calc()
 {
@@ -144,7 +127,7 @@ void MidPoint::calc()
   setY(((p1->getY() + p2->getY())/2));
 }
 
-ConstrainedPoint::ConstrainedPoint(Curve* inC, const QPoint& inPt)
+ConstrainedPoint::ConstrainedPoint(Curve* inC, const Coordinate& inPt)
   : c(inC)
 {
   c->addChild(this);
@@ -165,7 +148,8 @@ Objects ConstrainedPoint::getParents() const
   tmp.append(c);
   return tmp;
 }
-void ConstrainedPoint::moveTo(const QPoint& pt)
+
+void ConstrainedPoint::moveTo(const Coordinate& pt)
 {
   p = c->getParam(pt);
   calc();
@@ -203,16 +187,16 @@ ConstrainedPoint::ConstrainedPoint( const ConstrainedPoint& cp)
 
 std::map<QCString,double> Point::getParams()
 {
-    std::map<QCString,double> tmp;
-  tmp["x"] = x;
-  tmp["y"] = y;
+  std::map<QCString,double> tmp;
+  tmp["x"] = mC.x;
+  tmp["y"] = mC.y;
   return tmp;
 }
 
 void Point::setParams(const std::map<QCString,double>& m)
 {
-  x = m.find("x")->second;
-  y = m.find("y")->second;
+  mC.x = m.find("x")->second;
+  mC.y = m.find("y")->second;
 };
 std::map<QCString,double> ConstrainedPoint::getParams()
 {
@@ -239,6 +223,7 @@ std::map<QCString,double> MidPoint::getParams()
 {
   return std::map<QCString, double>();
 }
+
 void MidPoint::setParams( const std::map<QCString,double>& /*m*/)
 {
 }

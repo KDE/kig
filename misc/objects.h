@@ -20,6 +20,8 @@ public:
   // deletes all objects
   void deleteAll();
 
+  bool empty() { return isEmpty(); };
+
   Objects& operator|=( const Objects& os)
   {
     Object* tmp;

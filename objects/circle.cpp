@@ -3,6 +3,8 @@
 #include <klocale.h>
 #include <kdebug.h>
 
+#include "../misc/common.h"
+
 Circle::Circle()
 {
 };
@@ -11,39 +13,36 @@ Circle::~Circle()
 {
 };
 
-bool Circle::contains (const QPoint& o, bool strict) const
+bool Circle::contains (const Coordinate& o, const double miss) const
 {
-  return fabs(calcRadius(qpc, Point(o)) - radius) < (strict ? 1 : 5);
+  return fabs((qpc - Coordinate(o)).length() - radius) <= miss;
 };
 
-void Circle::draw (QPainter& p, bool ss) const
+void Circle::draw (KigPainter& p, bool ss) const
 {
   p.setPen(QPen (Qt::blue, 1));
   if (selected && ss)
     p.setPen(QPen (Qt::red, 1));
-  drawCircle(p, qpc, radius);
+  p.drawCircle( qpc, radius);
 };
 
-bool Circle::inRect (const QRect& /*r*/) const
+bool Circle::inRect (const Rect& /*r*/) const
 {
-#ifdef __GNUC__
-#warning TODO
-#endif
   // not implemented yet, i'm thinking: take the diagonals of the
   // rect, their intersections with the circle, and check their
   // positions...
   return false;
 };
 
-Point Circle::getPoint (double p) const
+Coordinate Circle::getPoint (double p) const
 {
-  return Point(qpc) + Point (cos(p * 2 * M_PI), sin(p * 2 * M_PI)) * radius;
+  return qpc + Coordinate (cos(p * 2 * M_PI), sin(p * 2 * M_PI)) * radius;
 };
 
-double Circle::getParam (const Point& p) const
+double Circle::getParam (const Coordinate& p) const
 {
-  Point tmp = p - Point(qpc);
-  return fmod((atan2(tmp.getY(), tmp.getX())) / ( 2 * M_PI ) + 1, 1);
+  Coordinate tmp = p - qpc;
+  return fmod(atan2(tmp.y, tmp.x) / ( 2 * M_PI ) + 1, 1);
 };
 
 CircleBCP::CircleBCP()
@@ -79,7 +78,7 @@ void CircleBCP::unselectArg(Object* o)
   centre = 0;
 };
 
-void CircleBCP::startMove(const QPoint& p)
+void CircleBCP::startMove(const Coordinate& p)
 {
   if (centre->contains(p, false))
     {
@@ -93,12 +92,12 @@ void CircleBCP::startMove(const QPoint& p)
   else
     {
       wawm=movingPoc;
-      pwpsm = QPoint(poc->getX(), poc->getY());
+      pwpsm = Coordinate(poc->getX(), poc->getY());
       poc->startMove(pwpsm);
     };
 };
 
-void CircleBCP::moveTo(const QPoint& p)
+void CircleBCP::moveTo(const Coordinate& p)
 {
   if (wawm == lettingPocMove)
     {
@@ -106,8 +105,8 @@ void CircleBCP::moveTo(const QPoint& p)
     }
   else if (wawm == movingPoc)
     {
-      double nRadius = calcRadius(*centre, Point(p));
-      QPoint nPoc= (*centre + (*poc-*centre)*(nRadius/radius)).toQPoint();
+      double nRadius = calcRadius(centre,p);
+      Coordinate nPoc= centre->getCoord() + (poc->getCoord()-centre->getCoord())*(nRadius/radius);
       poc->moveTo(nPoc);
     };
   calc();
@@ -126,8 +125,8 @@ void CircleBCP::calc()
 {
   if (poc && centre)
     {
-      radius = calcRadius(*centre, *poc);
-      qpc = *centre;
+      radius = calcRadius(centre,poc);
+      qpc = centre->getCoord();
     };
 };
 
@@ -170,7 +169,7 @@ inline double determinant (double a, double b, double c, double d)
   return a*d-b*c;
 };
 
-Point CircleBTP::calcCenter(double ax, double ay, double bx, double by, double cx, double cy) const
+Coordinate CircleBTP::calcCenter(double ax, double ay, double bx, double by, double cx, double cy) const
 {
   double xdo = bx-ax;
   double ydo = by-ay;
@@ -187,7 +186,7 @@ Point CircleBTP::calcCenter(double ax, double ay, double bx, double by, double c
   double centerx = ax - (ydo * b2 - yao * a2) * denominator;
   double centery = ay + (xdo * b2 - xao * a2) * denominator;
 
-  return Point(centerx, centery);
+  return Coordinate(centerx, centery);
 }
 
 Objects CircleBTP::getParents() const
@@ -207,49 +206,49 @@ Objects CircleBCP::getParents() const
   return objs;
 }
 
-void CircleBCP::drawPrelim( QPainter& p, const QPoint& pt) const
+void CircleBCP::drawPrelim( KigPainter& p, const Coordinate& pt) const
 {
   if (!centre || !shown) return;
   p.setPen(QPen (Qt::red, 1));
-  drawCircle(p,*centre, calcRadius(*centre, Point(pt)));
+  p.drawCircle(centre->getCoord(), calcRadius(centre,pt));
 };
 
-void CircleBCP::getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, const QPoint& t) const
-{
-  if (!centre||!shown) return;
-  circleGetOverlay(*centre, calcRadius(*centre, Point(t)),list,border);
-}
-
-void CircleBTP::drawPrelim( QPainter& p, const QPoint& t) const
+void CircleBTP::drawPrelim( KigPainter& p, const Coordinate& t) const
 {
   if (!p1 || !shown) return;
   double xa = p1->getX(), ya = p1->getY();
-  double xb = t.x(), yb = t.y();
+  double xb = t.x, yb = t.y;
   double xc,yc;
   if (p2) { xc=p2->getX(); yc = p2->getY(); }
   else {
+    // we pick the third point so that the three points form a
+    // triangle with equal sides...
+
+    // TODO: fix :)
+
     // midpoint:
     double xm  = (xa + xb)/2;
     double ym = (ya+yb)/2;
     // direction of the perpend:
     double m = -(xb-xa)/(yb-ya);
-    // 
-    double ta = 1+m*m;
-    double tb = -2*m*m*xm - m*2*ym;
-    double tc = xm*m*m + xm*m*2*ym + ym*ym - (yb-ya)*(yb-ya) - (xb-xa)*(xb-xa);
-    double det = sqrt(tb*tb-4*ta*tc);
-    xc = (tb + det)/2/ta;
-    yc = m*(xb-xm) + ym;
-    // just picking a random point till i get the above code figgered
-    // out (it's supposed to choose a point so that p(xa,ya), q(xb,yb)
-    // and r(xc,yc) form a triangle with sides of equal length.
-    xc = 359; yc = 158;
+
+    // length:
+    // sqrt( 3 ) == tan( 60° )
+    // hypot( ... ) == half the length of the segment |ab|
+    double l = sqrt(3) * hypot( xa - xb, ya - yb ) / 2;
+
+    double dx = sqrt( l / ( pow( m, 2 ) + 1 ) );
+    double dy = sqrt( l / ( pow( m, -2 ) + 1 ) );
+    if( m < 0 ) dy = -dy;
+
+    xc = xm + dx;
+    yc = xm + dy;
   };
   p.setPen(QPen (Qt::red, 1));
-  Point nQpc = calcCenter(xa, ya, xb, yb, xc, yc);
-  drawCircle(p,
-	     nQpc,
-	     calcRadius(nQpc, t));
+  Coordinate nC = calcCenter(xa, ya, xb, yb, xc, yc);
+  p.drawCircle(nC,
+	       calcRadius(nC, t)
+	       );
 }
 
 void CircleBTP::calc()
@@ -262,77 +261,9 @@ void CircleBTP::calc()
   double cy = p3->getY();
   // the center coords:
   qpc = calcCenter(ax,ay,bx,by,cx,cy);
-  radius = calcRadius(qpc, *p3);
+  radius = calcRadius(qpc, p3->getCoord());
 };
 
-void Circle::circleGetOverlay(const Point& centre, double radius, QPtrList<QRect>& list, const QRect& border, const QRect& currentRect)
-{
-  // this code is an adaptation of code from Marc Bartsch, from his KGeo
-  Point tl = currentRect.topLeft();
-  Point c = currentRect.center();
-  Point br = currentRect.bottomRight();
-  Point tr = Point(br.getX(), tl.getY());
-  Point bl = Point(tl.getX(), br.getY());
-
-  // 1.5 should actually be 1.414...
-  double fault = currentRect.width()*1.5 + 2;
-  double radiusBig = radius + fault ;
-  double radiusSmall = radius - fault ;
-
-  // if the circle doesn't touch this rect, we return
-  // too far from the centre
-  if (((tl - centre).length() > radiusBig) &&
-      ((tr - centre).length() > radiusBig) &&
-      ((bl - centre).length() > radiusBig) &&
-      ((br - centre).length() > radiusBig))
-    return;
-
-  // too near to the centre
-  if (((tl - centre).length() < radiusSmall) &&
-      ((tr - centre).length() < radiusSmall) &&
-      ((bl - centre).length() < radiusSmall) &&
-      ((br - centre).length() < radiusSmall))
-    return;
-
-  // the rect contains some of the circle
-  // -> if it's small enough, we keep it
-  if (currentRect.width() < Object::overlayRectSize()) {
-    list.append(new QRect(currentRect));
-  } else {
-    // this func works recursive: we subdivide the current rect, and if
-    // it is of a good size, we keep it, else we handle it again
-    QSize size = currentRect.size()/2;
-    size.setWidth(size.width()+1);
-    size.setHeight(size.height()+1);
-    QRect r1 (tl.getX(), tl.getY(), size.width(), size.height());
-    r1.normalize();
-    QRect r2 (c.getX(), tl.getY(), size.width(), size.height());
-    r2.normalize();
-    QRect r3 (tl.getX(), c.getY(), size.width(), size.height());
-    r3.normalize();
-    QRect r4 (c.getX(), c.getY(), size.width(), size.height());
-    r4.normalize();
-    circleGetOverlay(centre, radius, list, border, r1);
-    circleGetOverlay(centre, radius, list, border, r2);
-    circleGetOverlay(centre, radius, list, border, r3);
-    circleGetOverlay(centre, radius, list, border, r4);
-  };
-}
-void CircleBTP::getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, const QPoint& t) const
-{
-  if (!p1 || !shown) return;
-  double xb, yb;
-  if (p2) { xb=p2->getX(); yb = p2->getY(); }
-  else {
-    // we pick some random point (if anyone has better ideas, please tell me...
-    // i have had a suggestion to make this point the third corner of
-    // a triangle of p1, pt and with equal distance between the
-    // corners (gelijkzijdig in dutch, i don't know english geometry terms
-    xb = 359; yb = 158;
-  };
-  Point nQpc = calcCenter(p1->getX(), p1->getY(), xb, yb, t.x(), t.y());
-  circleGetOverlay(nQpc, calcRadius (nQpc, *p1), list, border);
-}
 CircleBCP::CircleBCP(const CircleBCP& c)
   : Circle()
 {

@@ -13,13 +13,13 @@ public:
   MacroObject(ObjectHierarchy* inHier);
   virtual ~MacroObject() {};
   bool selectArg(Object* o);
-//   void draw (QPainter& p, bool ss) const = 0;
-//   bool contains (const QPoint& p, bool strict = false) const = 0;
-//   bool inRect(const QRect& r) const = 0;
-//   QRect getSpan() const = 0;
-//   void drawPrelim (QPainter&, const QPoint& ) const = 0;
-//   void startMove(const QPoint& p) = 0;
-//   void moveTo (const QPoint& p) = 0;
+//   void draw (KigPainter& p, bool ss) const = 0;
+//   bool contains (const Coordinate& p, bool strict = false) const = 0;
+//   bool inRect(const Rect& r) const = 0;
+//   Rect getSpan() const = 0;
+//   void drawPrelim (KigPainter&, const Coordinate& ) const = 0;
+//   void startMove(const Coordinate& p) = 0;
+//   void moveTo (const Coordinate& p) = 0;
 //   void stopMove() = 0;
 //   void moved() = 0;
 //   QCString vBaseTypeName() const = 0;
@@ -45,21 +45,19 @@ public:
   MacroObjectOne(const MacroObjectOne& m);
   MacroObjectOne* copy() { return new MacroObjectOne(*this); };
   ~MacroObjectOne();
-  void draw (QPainter& p, bool ss) const;
-  bool contains (const QPoint& p, bool strict = false) const;
-  bool inRect(const QRect& r) const;
-  QRect getSpan() const;
-  void drawPrelim (QPainter&, const QPoint& ) const;
-  void getPrelimOverlay(QPtrList<QRect>&, const QRect&, const QPoint&) const {};
+  void draw (KigPainter& p, bool ss) const;
+  bool contains (const Coordinate& p, const double fault ) const;
+  bool inRect(const Rect& r) const;
+  Rect getSpan() const;
+  void drawPrelim (KigPainter&, const Coordinate& ) const;
 
-  void startMove(const QPoint& p);
-  void moveTo (const QPoint& p);
+  void startMove(const Coordinate& p);
+  void moveTo (const Coordinate& p);
   void stopMove();
   void calc();
   QCString vBaseTypeName() const;
   QCString vFullTypeName() const;
   Objects getParents() const { return arguments; };
-  void getOverlay(QPtrList<QRect>& list, const QRect& border) const { final->getOverlay(list,border); };
 protected:
   void handleNewObjects (const Objects& o);
   // have we constructed stuff yet?

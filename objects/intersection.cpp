@@ -90,93 +90,63 @@ Objects IntersectionPoint::getParents() const
 
 void IntersectionPoint::calc()
 {
-  // a counts how many p's we've already got...
-  int a = 0;
-  Point p1, p2, p3, p4;
-  if (segment1) {
-    p1 = segment1->getP1();
-    p2 = segment1->getP2();
-    ++a;
-  }
-  if (segment2) {
-    (a?p3:p1) = segment2->getP1();
-    (a?p4:p2) = segment2->getP2();
-    ++a;
-  };
-  if (a<2 && line1) {
-    (a?p3:p1) = line1->getP1();
-    (a?p4:p2) = line1->getP2();
-    ++a;
-  };
-  if (a<2 && line2) {
-    (a?p3:p1) = line2->getP1();
-    (a?p4:p2) = line2->getP2();
-    ++a;
-  };
-  Point result;
-  if (a == 2) result = calc(p1,p2,p3,p4);
-  else {
-    kdDebug() << k_funcinfo <<"not implemented yet: intersection with a circle" << endl;
-    // plain bogus value...
-    result = Point(50,50);
-  }
-  setX( result.getX());
-  setY(result.getY());
-}
-
-Point IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3, const Point& p4)
-{
-  double
-    dxa = p1.getX(),
-    dxb = p2.getX(),
-    dxc = p3.getX(),
-    dxd = p4.getX();
-  double
-    dya = p1.getY(),
-    dyb = p2.getY(),
-    dyc = p3.getY(),
-    dyd = p4.getY();
-  Line::calcEndPoints( dxa, dxb, dya, dyb, QRect(0,0,500,500));
-  Line::calcEndPoints( dxc, dxd, dyc, dyd, QRect(0,0,500,500));
-
-  long double xa=dxa;
-  long double xb=dxb;
-  long double xc=dxc;
-  long double xd=dxd;
-
-  long double ya=dya;
-  long double yb=dyb;
-  long double yc=dyc;
-  long double yd=dyd;
-  
-  long double nx, ny;
-  if ((fabsl(xb - xa)> 0.5) && (fabsl(xd - xc) > 0.5))
+  Coordinate t1, t2, t3, t4;
+  bool gotfirst = false;
+  if ( segment1 )
     {
-      long double a = (yb-ya)/(xb-xa);
-      long double b = (yd-yc)/(xd-xc);
-      nx = (yc - ya + xa*a - xc*b)/(a-b);
-      ny = (nx-xa)*a+ya;
-    }
-  else
-    {
-      // we would have had a divide by zero
-      if ( fabsl( yb-ya ) > 0.5 && fabsl( yd-yc ) > 0.5 )
+      if ( gotfirst )
 	{
-	  // so now, we first calc the y values, and then the x's...
-	  long double a = (xb-xa)/(yb-ya);
-	  long double b = (xd-xc)/(yd-yc);
-	  ny = ( xc - xa + ya*a - yc*b ) / (a-b);
-	  nx = ( ny - ya)*a + xa;
+	  t3 = segment1->getP1();
+	  t4 = segment1->getP2();
 	}
       else
 	{
-	  if ( fabsl(yb-ya) <= 0.5 )
-	    {
-#warning TODO !!!!!
-//	    FIXME: what to do now ?
-	      kdDebug() << "damn" << endl;
-	    };
+	  t1 = segment1->getP1();
+	  t2 = segment1->getP2();
+	  gotfirst = true;
 	};
-    }
-  return Point( nx, ny );
-};
+    };
+  if ( segment2 )
+    {
+      if ( gotfirst )
+	{
+	  t3 = segment2->getP1();
+	  t4 = segment2->getP2();
+	}
+      else
+	{
+	  t1 = segment2->getP1();
+	  t2 = segment2->getP2();
+	  gotfirst = true;
+	};
+    };
+  if ( line1 )
+    {
+      if ( gotfirst )
+	{
+	  t3 = line1->getP1();
+	  t4 = line1->getP2();
+	}
+      else
+	{
+	  t1 = line1->getP1();
+	  t2 = line1->getP2();
+	  gotfirst = true;
+	};
+    };
+  if ( line2 )
+    {
+      if ( gotfirst )
+	{
+	  t3 = line2->getP1();
+	  t4 = line2->getP2();
+	}
+      else
+	{
+	  t1 = line2->getP1();
+	  t2 = line2->getP2();
+	  gotfirst = true;
+	};
+    };
+  mC = calcIntersectionPoint( t1, t2, t3, t4 );
+}

@@ -35,27 +35,26 @@ public:
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "Curve"; };
 
-  void draw (QPainter& p, bool showSelection) const;
-  bool contains (const QPoint& o, bool strict = false ) const;
-  bool inRect (const QRect&) const;
+  void draw (KigPainter& p, bool showSelection) const;
+  bool contains (const Coordinate& o, const double fault ) const;
+  bool inRect (const Rect&) const;
 
   // arguments
   QString wantArg ( const Object* ) const;
   bool selectArg (Object* which);
 //   void unselectArg (Object* which);
-  void drawPrelim ( QPainter&, const QPoint& ) const {};
-  void getPrelimOverlay(QPtrList<QRect>&, const QRect&, const QPoint&) const {};
+  void drawPrelim ( KigPainter&, const Coordinate& ) const {};
 
   // moving
-  void startMove(const QPoint&) {};
-  void moveTo(const QPoint&) {};
+  void startMove(const Coordinate&) {};
+  void moveTo(const Coordinate&) {};
   void stopMove() {};
 
   void calc();
 
 public:
-  Point getPoint (double param) const;
-  double getParam (const Point&) const;
+  Coordinate getPoint (double param) const;
+  double getParam (const Coordinate&) const;
 
   Objects getParents() const
   {
@@ -64,8 +63,6 @@ public:
     tmp.append(obj);
     return tmp;
   };
-
-  void getOverlay(QPtrList<QRect>& list, const QRect& border) const;
 
 protected:
   ConstrainedPoint* cp;

@@ -194,7 +194,8 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
       QCString typeName = tmpTN.utf8();
       
       HierarchyElement* tmpE = new HierarchyElement(typeName, id);
-      tmphash[id] = tmpE;
+      if( id > tmphash.size() ) tmphash.resize( id );
+      tmphash[id - 1] = tmpE;
 
       allElems.push_back(tmpE);
     };
@@ -212,7 +213,8 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
       int id = tmpId.toInt(&ok);
       assert(ok);
 
-      HierarchyElement* tmpE = tmphash[id];
+      assert( id <= tmphash.size() );
+      HierarchyElement* tmpE = tmphash[id -1];
 
       // two params we handle:
       QString tmpGiven = e.attribute("given");
@@ -239,7 +241,7 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
 	      int id = tmpId.toInt(&ok);
 	      assert(ok);
 	      
-	      HierarchyElement* i = tmphash[id];
+	      HierarchyElement* i = tmphash[id -1];
 	      tmpE->addParent(i);
 	    } // e.tagName() == "parent"
 	  else

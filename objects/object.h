@@ -1,19 +1,20 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include <list>
+//#include <list>
 #include <algorithm>
 #include <map>
+#include <vector>
 
 #include <qcstring.h>
-#include <qpoint.h>
-#include <qpainter.h>
-#include <qrect.h>
 #include <qdom.h>
 
 #include <klocale.h>
 
 #include "../misc/objects.h"
+#include "../misc/common.h"
+#include "../misc/kigpainter.h"
+
 
 class Point;
 class Segment;
@@ -85,18 +86,18 @@ class Object
   // static QCString sFullTypeName();
 
   // drawing etc.
-  // showSelect: whether selection should be shown (we don't want to
+  // @p showSelect: whether selection should be shown (we don't want to
   // print selected stuff as selected...
-  void drawWrap(QPainter& p, bool ss) const { if (!shown) return; draw(p,ss); };
-  virtual void draw (QPainter& p, bool showSelection) const = 0;
+  void drawWrap(KigPainter& p, bool ss) const { if (!shown) return; draw(p,ss); };
+  virtual void draw (KigPainter& p, bool showSelection) const = 0;
 
-  // whether the object contains o, if(!strict), you should be less pedantic,
-  // and, so for example a point can be 3 pixels from another before this
-  // returns false
-  virtual bool contains ( const QPoint& o, bool strict = false ) const = 0;
+  // whether the object contains o
+  // allowed_miss contains the maximum distance there may be between
+  // o and your object...
+  virtual bool contains ( const Coordinate& o, const double allowed_miss ) const = 0;
 
   // are you in this rect ?
-  virtual bool inRect (const QRect&) const = 0;
+  virtual bool inRect (const Rect&) const = 0;
 
   // for passing args to objects
   // an object is constructed by creating it, putting it in document->obc,
@@ -111,14 +112,14 @@ class Object
   virtual bool selectArg (Object* which) = 0;
   // draw a preliminary version of yourself, even though you haven't got all
   // your ars yet,  the cursor is currently at pt
-  virtual void drawPrelim (QPainter& p, const QPoint& pt ) const = 0;
+  virtual void drawPrelim (KigPainter& p, const Coordinate& pt ) const = 0;
 
   // for moving
   // sos contains the objects that are being moved.
   // the point is where the cursor is,  check the point implementation for an
   // example
-  virtual void startMove(const QPoint&) = 0;
-  virtual void moveTo(const QPoint&) = 0;
+  virtual void startMove(const Coordinate&) = 0;
+  virtual void moveTo(const Coordinate&) = 0;
   virtual void stopMove() = 0;
 
   // informs the object that it ( or one of its parents ) has been
@@ -153,15 +154,6 @@ class Object
   void delChild(Object* o) { children.remove(o); };
   // returns all objects the object depends upon ( the args it selected )
   virtual Objects getParents() const = 0;
-  // this is for drawing speed: the object should append a collection
-  // of QRects (constructed using new), which contain the entire
-  // object.  Obviously: the less QRects, the faster, you are advised
-  // to return rects of about overlayRectWidth() wide.
-  // border is the border of the visible area, you should not return rects outside of the border
-  void getOverlayWrap(QPtrList<QRect>& list, const QRect& border) const { if (!shown) return; getOverlay(list,border); };
-  virtual void getOverlay(QPtrList<QRect>& list, const QRect& border) const = 0;
-  virtual void getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, const QPoint& pt) const = 0;
-  static inline int overlayRectSize() { return 24; };
 };
 
 #endif // OBJECT_H

@@ -21,14 +21,14 @@ public:
   virtual QCString vTypeName() const { return sTypeName(); };
   static QCString sTypeName() { return "CollectionObject"; };
 
-  void draw (QPainter& p, bool showSelection) const;
-  bool contains(const QPoint& o, bool strict = false) const;
-  bool inRect(const QRect& r) const;
+  void draw (KigPainter& p, bool showSelection) const;
+  bool contains(const Coordinate& o, bool strict = false) const;
+  bool inRect(const Rect& r) const;
   QString wantArg(const Object*) const = 0;
   bool selectArg(Object*) = 0;
-  void drawPrelim(QPainter&, const QPoint&) const = 0;
-  void startMove(const QPoint& p) = 0;
-  void moveTo(const QPoint& p) = 0;
+  void drawPrelim(KigPainter&, const Coordinate&) const = 0;
+  void startMove(const Coordinate& p) = 0;
+  void moveTo(const Coordinate& p) = 0;
   void stopMove() = 0;
   void calc() = 0;
   Objects getParents() const = 0;

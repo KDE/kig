@@ -8,21 +8,20 @@
 #include <cmath>
 
 #include "object.h"
+#include "../misc/coordinate.h"
 
 class Point
 : public Object
 {
  public:
-  Point() : x(0), y(0) {};
-  Point(double inX, double inY) : x(inX), y(inY) { complete = true;};
-  Point(const QPoint& p) : x(p.x()), y(p.y()) { complete = true; };
-  Point(const Point& p) : Object(p), x(p.getX()), y(p.getY()) {};
+  Point() {};
+  Point(double inX, double inY) : mC( inX, inY ) { complete = true;};
+  Point(const Coordinate& p) : mC( p ) { complete = true; };
+  Point(const Point& p) : Object(p), mC( p.getCoord() ) {};
   Point* copy() { return new Point (*this); };
 
   std::map<QCString,double> getParams();
   void setParams( const std::map<QCString,double>& m);
-
-  QPoint toQPoint() const { return QPoint(qRound(x),qRound(y));};
 
   // type identification
   virtual QCString vBaseTypeName() const { return sBaseTypeName();};
@@ -31,60 +30,36 @@ class Point
   static QCString sFullTypeName() { return "Point"; };
 
   // general members
-  bool contains (const QPoint& o, bool strict) const;
-  void draw (QPainter& p,bool showSelection = true) const;
-  void drawPrelim( QPainter &, const QPoint& ) const {};
-  bool inRect(const QRect& r) const { return r.contains(toQPoint()); };
+  virtual bool contains (const Coordinate& o, const double fault ) const;
+  virtual void draw (KigPainter& p,bool showSelection = true) const;
+  virtual void drawPrelim( KigPainter &, const Coordinate& ) const {};
+  virtual bool inRect(const Rect& r) const { return r.contains( mC ); };
   // passing arguments
-  QString wantArg(const Object*) const { return 0; };
-  bool selectArg( Object *) { return true; }; // no args
-  void unselectArg( Object *) {}; // no args
-    // no args => no parents
-    Objects getParents() const { return Objects();};
+  virtual QString wantArg(const Object*) const { return 0; };
+  virtual bool selectArg( Object *) { return true; }; // no args
+  virtual void unselectArg( Object *) {}; // no args
+  // no args => no parents
+  virtual Objects getParents() const { return Objects();};
   // looks
   QColor getColor() { return Qt::black; };
   void setColor(const QColor&) {};
   //moving
-  void startMove(const QPoint&);
-  void moveTo(const QPoint&);
-  void stopMove();
+  virtual void startMove(const Coordinate&);
+  virtual void moveTo(const Coordinate&);
+  virtual void stopMove();
 //   void cancelMove();
-  void calc(){};
+  virtual void calc(){};
 
+  const Coordinate& getCoord() const { return mC; };
 protected:
-  QPoint pwwlmt; // point where we last moved to
-  QPoint pwwsm;  // point where we started moving
-
+  Coordinate mC;
+  Coordinate pwwlmt; // point where we last moved to
 public:
-  double length () { return hypot(x,y); };
-protected:
-  double x, y;
-public:
-  double getX() const { return x;};
-  double getY() const { return y;};
-  void setX (const double inX) { x = inX; };
-  void setY (const double inY) { y = inY; };
+  double getX() const { return mC.x;};
+  double getY() const { return mC.y;};
+  void setX (const double inX) { mC.x = inX; };
+  void setY (const double inY) { mC.y = inY; };
 
-public:
-  Point operator* (double factor) const { return Point(factor*x, factor*y); };
-  Point& operator*= (double factor) { x*=factor; y*=factor; return *this; };
-  Point& operator/= (double factor) { x/=factor; y/=factor; return *this; };
-  Point operator/(double factor) const { return Point(x/factor, y/factor); };
-  Point operator+ (const Point& b) const { return Point(x+b.getX(), y+b.getY()); };
-  Point operator- (const Point& b) const { return Point(x-b.getX(), y-b.getY()); };
-  Point operator- () const { return Point (-x, -y); };
-  bool operator!=(const Point& p) const { return !operator==(p); };
-  bool operator==(const Point& p) const { return x==p.getX() && y==p.getY(); };
-  Point& operator= (const Point& p) { x = p.getX(); y = p.getY(); return *this;};
-
-  // sets length to one, while keeping x/y constant
-  Point& normalize() { x = x/length(); y = y/length(); return *this;};
-
-  void getOverlay(QPtrList<QRect>& list, const QRect& border) const
-  { 
-    QRect* tmp = new QRect(x-5, y-5,10,10); if (tmp->intersects(border)) list.append(tmp); else delete tmp;
-  };
-  void getPrelimOverlay(QPtrList<QRect>& , const QRect& , const QPoint& ) const {};
 };
 
 // midpoint of two other points
@@ -109,8 +84,8 @@ public:
   std::map<QCString,double> getParams();
   void setParams( const std:: map<QCString,double>& /*m*/);
 
-  void startMove(const QPoint&);
-  void moveTo(const QPoint&);
+  void startMove(const Coordinate&);
+  void moveTo(const Coordinate&);
   void stopMove();
   void cancelMove();
   void calc();
@@ -131,7 +106,7 @@ class ConstrainedPoint
   : public Point
 {
 public:
-  ConstrainedPoint(Curve* inC, const QPoint& inPt);
+  ConstrainedPoint(Curve* inC, const Coordinate& inPt);
   ConstrainedPoint(const double inP);
   ConstrainedPoint();
   ~ConstrainedPoint() {};
@@ -147,8 +122,8 @@ public:
   void unselectArg (Object*) {};
   Objects getParents() const;
 
-  void startMove(const QPoint&) {};
-  void moveTo(const QPoint& pt);
+  void startMove(const Coordinate&) {};
+  void moveTo(const Coordinate& pt);
   void stopMove() {};
   void cancelMove() {};
   void calc();

@@ -1,13 +1,13 @@
 #include "collection.h"
 
-void CollectionObject::draw(QPainter& p, bool ss) const
+void CollectionObject::draw(KigPainter& p, bool ss) const
 {
   Object* o;
   for (Objects::iterator i(cos); (o = i.current()); ++i)
     o->draw(p,ss);
 }
 
-bool CollectionObject::contains(const QPoint& o, bool strict ) const
+bool CollectionObject::contains(const Coordinate& o, bool strict ) const
 {
   Object* i;
   for (Objects::iterator it(cos); (i = it.current()); ++it)
@@ -15,7 +15,7 @@ bool CollectionObject::contains(const QPoint& o, bool strict ) const
   return false;
 }
 
-bool CollectionObject::inRect(const QRect& r) const
+bool CollectionObject::inRect(const Rect& r) const
 {
   Object* i;
   for (Objects::iterator it( cos ); (i = it.current()); ++it)

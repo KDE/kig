@@ -1,12 +1,11 @@
 #include "kig_part.h"
 #include "kig_part.moc"
 
-#include "kig_part.h"
-
 #include "kig_view.h"
 #include "kig_commands.h"
 #include "type_edit_impl.h"
 #include "macrowizard_impl.h"
+
 #include "../objects/circle.h"
 #include "../objects/segment.h"
 #include "../objects/point.h"
@@ -15,6 +14,7 @@
 #include "../objects/intersection.h"
 #include "../objects/locus.h"
 #include "../misc/hierarchy.h"
+#include "../misc/coordinate_system.h"
 #include "../filters/filter.h"
 
 #include <kparts/genericfactory.h>
@@ -50,8 +50,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   : KParts::ReadWritePart(parent, name),
     m_pMacroWizard(0),
     numViews(0),
-    obc(0)
-  //    ,coords ( new EuclideanCoords( -5, -5, 10, 10 ) )
+    obc(0),
+    s( new EuclideanCoords )
 {
   // we need an instance
   setInstance( KigDocumentFactory::instance() );
@@ -254,8 +254,7 @@ bool KigDocument::openFile()
 	KMessageBox::sorry 
 	  (
 	   widget(),
-	   i18n
-	   ( "You tried to open a document of type \"%1\".  Unfortunately, Kig doesn't support this format. Perhaps you can try a next release as i'm currently working on format support...").arg(mimeType->name()),
+	   i18n( "You tried to open a document of type \"%1\".  Unfortunately, Kig doesn't support this format. Perhaps you can try a next release as i'm currently working on file format support..." ).arg(mimeType->name()),
 	   i18n
 	   ("Format not supported")
 	  );
@@ -263,7 +262,7 @@ bool KigDocument::openFile()
       };
       KTempFile tempFile;
       filter->convert (m_file, tempFile);
-      KMessageBox::sorry(widget(), QString::fromLatin1("this is for debugging, read the file") + tempFile.name() );
+      //      KMessageBox::sorry(widget(), QString::fromLatin1("this is for debugging, read the file") + tempFile.name() );
       file.setName (tempFile.name());
     }
   else
@@ -297,6 +296,8 @@ bool KigDocument::openFile()
   file.close();
 
   setModified(false);
+
+  emit recenterScreen();
   emit allChanged();
   return true;
 }
@@ -373,12 +374,12 @@ void KigDocument::_delObject(Object* o)
   emit selectionChanged();
 };
 
-Objects KigDocument::whatAmIOn(const QPoint& p)
+Objects KigDocument::whatAmIOn(const Coordinate& p, const double miss )
 {
   Objects tmp;
   for ( Object* i = objects.first(); i; i = objects.next())
     {
-      if(!i->contains(p, false)) continue;
+      if(!i->contains(p, miss)) continue;
       // points go in front of the list
       if (Object::toPoint(i)) tmp.prepend(i);
       else tmp.append(i);
@@ -547,7 +548,7 @@ void KigDocument::selectObject(Object* o)
   emit selectionChanged();
 }
 
-void KigDocument::selectObjects(const QRect & r)
+void KigDocument::selectObjects(const Rect & r)
 {
   for (Object* i = objects.first(); i; i = objects.next())
     if(i->getShown() && i->inRect(r))
@@ -568,7 +569,7 @@ void KigDocument::clearSelection()
 
 /*************************** Moving ****************************/
 
-void KigDocument::startMovingSos(const QPoint& p, Objects& still)
+void KigDocument::startMovingSos(const Coordinate& p, Objects& still)
 {
   for (Object* i = sos.first(); i; i = sos.next())
     i->startMove(p);
@@ -603,7 +604,7 @@ void KigDocument::startMovingSos(const QPoint& p, Objects& still)
   updateActions();
 };
 
-void KigDocument::moveSosTo(const QPoint& p)
+void KigDocument::moveSosTo(const Coordinate& p)
 {
   for (Object* i = sos.first(); i; i = sos.next())
     i->moveTo(p);
@@ -683,4 +684,39 @@ KAboutData* KigDocument::createAboutData()
 
 
   return tmp;
+}
+
+Rect KigDocument::suggestedRect()
+{
+  if( objects.empty() ) return Rect( -2, -2, 2, 2 );
+  bool rectInited = false;
+  Rect r(0,0,0,0);
+  Object* i;
+  Point* p;
+  for (Objects::iterator it(objects); (i = it.current()); ++it)
+    {
+      if ((p=Object::toPoint(i)))
+	{
+	  if( !rectInited )
+	    {
+	      r.setCenter( p->getCoord() );
+	      rectInited = true;
+	    }
+	  else
+	    r.setContains(p->getCoord());
+	};
+    };
+  r.setContains( Coordinate( 0, 0 ) );
+  Coordinate centre = r.center();
+  r.setWidth(r.width()*2);
+  if (r.width() == 0) r.setWidth( 1 );
+  r.setHeight(r.height()*2);
+  if (r.height() == 0) r.setHeight( 1 );
+  r.setCenter(centre);
+  return r;
+}
+
+const CoordinateSystem* KigDocument::getCoordinateSystem()
+{
+  return s;
 }

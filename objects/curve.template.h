@@ -10,10 +10,10 @@ public:
   () {};
     ~() {};
     QCString type() const { return ""; };
-    bool contains (const QPoint& o, bool strict) const;
-    void draw (QPainter& p, bool selected, bool showSelection);
-  bool inRect (const QRect&) const;
-    QRect getSpan(void) const;
+    bool contains (const Coordinate& o, bool strict) const;
+    void draw (KigPainter& p, bool selected, bool showSelection);
+  bool inRect (const Rect&) const;
+    Rect getSpan(void) const;
 
     // arguments
     QString wantArg ( const Object* ) const;
@@ -21,8 +21,8 @@ public:
     void unselectArg (Object* which);
 
     // moving
-  void startMove(const QPoint&);
-  void moveTo(const QPoint&);
+  void startMove(const Coordinate&);
+  void moveTo(const Coordinate&);
     void stopMove();
     void cancelMove();
 

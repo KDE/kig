@@ -6,6 +6,8 @@
 #include <kdebug.h>
 #include <kpopupmenu.h>
 
+#include <vector>
+
 #include "../objects/object.h"
 //#include "../misc/coordinates.h"
 
@@ -22,6 +24,11 @@ public:
 public slots:
   void startKioskMode();
   void endKioskMode();
+
+  // this is connected to KigDocument::suggestRect, check that signal 
+  // out for an explanation...
+  void recenterScreen();
+
 signals:
   void endKiosk();
 signals:
@@ -108,14 +115,38 @@ public slots:
   // update a few objects...
   void updateObjects(const Objects& o) { drawObjects(o); updateWidget(); };
 
+public:
+  // the part of the document we're currently showing, this is
+  // calculated from KigDocument::suggestedRect, together with our
+  // showOffset and scale...
+  Rect showingRect();
+  Rect matchScreenShape( const Rect& r );
+  double pixelWidth();
+
+  QPoint toScreen( const Coordinate p );
+  inline QRect toScreen( const Rect r )
+  {
+    return QRect( toScreen( r.bottomLeft()), toScreen( r.topRight() ) ).normalize();
+  };
+
+  Coordinate fromScreen( const QPoint& p );
+  inline Rect fromScreen( const QRect& r )
+  {
+    return Rect( fromScreen(r.topLeft()), fromScreen(r.bottomRight() ) ).normalized();
+  };
+
 protected:
   QPixmap stillPix; // What Do the Still Objects Look Like
   QPixmap curPix; // temporary, gets bitBlt'd (copied) onto the widget
 		  // (to avoid flickering)
-  QPtrList<QRect> overlay, oldOverlay;
+  std::vector<QRect> overlay, oldOverlay;
 
-  // this maps the coordinates of the objects to the widget...
-  //  EuclideanCoords mCoords;
+  void appendOverlay( const QRect& r )
+  {
+    overlay.push_back(r);
+  }
+
+  friend class KigPainter;
 
 protected:
   QDialog* kiosk;
@@ -123,5 +154,9 @@ protected:
   KigView* kioskView;
   bool isKiosk;
 
+  /**
+   * what part of the document are we showing...
+   */
+  Rect mViewRect;
 };
 #endif

@@ -2,21 +2,21 @@
 
 #include <klocale.h>
 
-bool Segment::contains(const QPoint& o, bool strict) const
+bool Segment::contains(const Coordinate& o, bool strict) const
 {
   return false;
 }
 
-void Segment::draw(QPainter& p, bool selected, bool showSelection)
+void Segment::draw(KigPainter& p, bool selected, bool showSelection)
 {
     if ( !shown ) return;
 }
 
-bool Segment::inRect(const QRect& p) const
+bool Segment::inRect(const Rect& p) const
 {
 }
 
-QRect Segment::getSpan(void) const
+Rect Segment::getSpan(void) const
 {
 }
 
@@ -34,11 +34,11 @@ void Segment::unselectArg(Object* which)
 {
 }
 
-void Segment::startMove(const QPoint& p)
+void Segment::startMove(const Coordinate& p)
 {
 }
 
-void Segment::moveTo(const QPoint& p)
+void Segment::moveTo(const Coordinate& p)
 {
 }
 

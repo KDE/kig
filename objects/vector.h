@@ -8,9 +8,9 @@ class Vector
   Vector() : a(0), b(0){};
   ~Vector(){};
   const char* type() { return I18N_NOOP("vector");};
-  void draw (QPainter& p, bool showSelect = true);
-  bool inRect (const QRect& r) const;
-  QRect getSpan() const;
+  void draw (KigPainter& p, bool showSelect = true);
+  bool inRect (const Rect& r) const;
+  Rect getSpan() const;
   const char* wantArument (const char* arg);
   bool selectArgument (Object* which)
     {

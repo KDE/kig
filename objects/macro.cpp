@@ -35,32 +35,32 @@ MacroObjectOne::~MacroObjectOne()
   delete final;
 }
 
-void MacroObjectOne::draw(QPainter& p, bool ss) const
+void MacroObjectOne::draw(KigPainter& p, bool ss) const
 {
   final->setSelected(selected);
   final->setShown(shown);
   final->draw(p, ss);
 }
 
-bool MacroObjectOne::contains(const QPoint& p, bool strict ) const
+bool MacroObjectOne::contains(const Coordinate& p, const double fault ) const
 {
-  return final->contains(p, strict);
+  return final->contains( p, fault );
 }
 
-bool MacroObjectOne::inRect(const QRect& r) const
+bool MacroObjectOne::inRect(const Rect& r) const
 {
   return final->inRect(r);    
 }
 
-void MacroObjectOne::drawPrelim(QPainter&, const QPoint& ) const
+void MacroObjectOne::drawPrelim(KigPainter&, const Coordinate& ) const
 {
 };
 
-void MacroObjectOne::startMove(const QPoint& p)
+void MacroObjectOne::startMove(const Coordinate& p)
 {
   final->startMove(p);    
 };
-void MacroObjectOne::moveTo(const QPoint& p)
+void MacroObjectOne::moveTo(const Coordinate& p)
 {
   final->moveTo(p);    
 }

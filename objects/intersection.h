@@ -31,13 +31,12 @@ public:
   void unselectArg(Object* o);
   Objects getParents() const;
   
-  void startMove(const QPoint& ) {};
-  void moveTo(const QPoint& ) {};
+  void startMove(const Coordinate& ) {};
+  void moveTo(const Coordinate& ) {};
   void stopMove() {};
   void cancelMove() {};
   
   void calc();
-  static Point calc(const Point& p1, const Point& p2, const Point& p3, const Point& p4);
 };
 
 #endif

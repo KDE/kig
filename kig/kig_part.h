@@ -8,16 +8,16 @@
 #include "../objects/object.h"
 #include "../misc/types.h"
 #include "../misc/type.h"
+#include "../misc/rect.h"
 
-class MacroWizardImpl;
 class QWidget;
-class QPainter;
 class KURL;
 class KPopupMenu;
-class KigView;
 class KActionMenu;
 
 class CoordinateSystem;
+class MacroWizardImpl;
+class KigView;
 
 /**
  * This is a "Part".  It that does all the real work in a KPart
@@ -80,12 +80,12 @@ public:
   const Objects& getMovingObjects() { return movingObjects; };
   const Objects& getObjects() { return objects;};
 
-//   const CoordinateSystem* getCoords() { return coords; };
+  const CoordinateSystem* getCoordinateSystem();
 
   Object* getObc() const { return obc; };
 
   // what objects are under point p
-  Objects whatAmIOn(const QPoint& p);
+  Objects whatAmIOn( const Coordinate& p, const double fault );
 
   // KigView calls this to see if it's allowed to let the user move
   // stuff around.  We decide based on whether we're constructing a
@@ -98,6 +98,8 @@ public:
   bool canUnselect() { if (obc) return false; else return true; };
   bool canAddObjects() { return !m_pMacroWizard && isReadWrite(); };
 
+  Rect suggestedRect();
+
 signals: // these signals are for telling KigView it should do something...
   // emitted if the entire canvas has to be redrawn
   // i try to avoid calling this...
@@ -108,6 +110,10 @@ signals: // these signals are for telling KigView it should do something...
   // emitted only for the macrowizard to update its next buttons...
   void selectionChanged();
 
+  // emitted when we want to suggest a new size for the view (
+  // basically after loading a file, and on startup... )
+  void recenterScreen();
+  
 /************** working with our internal document **********/
 public:
   // guess what these do...
@@ -126,14 +132,14 @@ public:
   // TODO: selectObject also unselects if necessary, and wraps
   // macroSelect and obcSelectArg...
   void selectObject (Object* o);
-  void selectObjects (const QRect&);
+  void selectObjects (const Rect&);
   void selectObjects (const Objects& o);
   // unselect o
   void unselect (Object* o);
 
   // Movement:
-  void startMovingSos(const QPoint&, Objects& still);
-  void moveSosTo(const QPoint&);
+  void startMovingSos(const Coordinate&, Objects& still);
+  void moveSosTo(const Coordinate&);
   void stopMovingSos();
   //   void cancelMovingSos();
 
@@ -235,18 +241,11 @@ protected:
   // these objects are moving...
   Objects movingObjects;
 
-  // Coordinates: there are two systems:
-  // 1 the basic system, only provides a euclidean geometry with a
-  // center, and a horizontal and vertical distance
-  struct {
-    int xm;
-    int ym;
-    int dx;
-    int dy;
-  } internalCoords;
-
-//   // the coordinatesystem...
-//   CoordinateSystem* coords;
+  // the CoordinateSystem as the user sees it: this has little to do
+  // with the internal coordinates of the objects... In fact, it's
+  // not so different from an object itself ( uses KigPainter to draw
+  // itself too...)
+  CoordinateSystem* s;
 };
 
 #endif // KIGPART_H

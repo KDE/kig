@@ -4,7 +4,7 @@
 
 #include <kdebug.h>
 
-void Locus::draw(QPainter& p, bool ss) const
+void Locus::draw(KigPainter& p, bool ss) const
 {
   // we don't let the points draw themselves, since that would get us
   // the big points (5x5) like we normally see them...
@@ -17,7 +17,7 @@ void Locus::draw(QPainter& p, bool ss) const
       p.setPen(pen);
       for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
 	{
-	  p.drawPoint( i->pt.toQPoint() );
+	  p.drawPoint( i->pt.getCoord() );
 	};
     }
   else
@@ -31,27 +31,27 @@ void Locus::draw(QPainter& p, bool ss) const
     };
 }
 
-bool Locus::contains(const QPoint& o, bool strict ) const
+bool Locus::contains(const Coordinate& o, const double fault ) const
 {
   if (!isPointLocus())
     {
       Object* i;
       for (Objects::iterator it(objs); (i = it.current()); ++it)
 	{
-	  if (i->contains(o, strict)) return true;
+	  if (i->contains(o, fault)) return true;
 	};
     }
   else
     {
       for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
 	{
-	  if (i->pt.contains(o, strict)) return true;
+	  if( i->pt.contains( o, fault ) ) return true;
 	};
     };
   return false;
 }
 
-bool Locus::inRect(const QRect& r) const
+bool Locus::inRect(const Rect& r) const
 {
   if (!isPointLocus())
     {
@@ -121,43 +121,22 @@ void Locus::calc()
   else calcObjectLocus();
 }
 
-void Locus::getOverlay(QPtrList<QRect>& list, const QRect& border) const
+Coordinate Locus::getPoint(double param) const
 {
-  Object* i;
-  if (!isPointLocus())
-    {
-      for (Objects::iterator it (objs); (i = it.current()); ++it)
-	{
-	  i->getOverlay(list, border);
-	};
-    }
-  else
-    {
-      for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
-	{
-	  QRect* r = new QRect (0,0,2,2);
-	  r->moveCenter(i->pt.toQPoint());
-	  if (r->intersects(border))list.append(r);
-	};
-    };
-}
-
-Point Locus::getPoint(double param) const
-{
-  Point t;
+  Coordinate t;
   if (toPoint(obj))
     {
       double tmp = cp->getP();
       cp->setP(param);
       hierarchy->calc();
-      t= *toPoint(obj);
+      t=toPoint(obj)->getCoord();
       cp->setP(tmp);
       hierarchy->calc();
     }
-  else t = Point();
+  else t = Coordinate();
   return t;
 }
-double Locus::getParam(const Point&) const
+double Locus::getParam(const Coordinate&) const
 {
   return 0.5;
 }
@@ -194,9 +173,9 @@ void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i)
   double p = (first->pm+last->pm)/2;
   CPts::iterator n = addPoint(p);
   if (++i > numberOfSamples) return;
-  if ((n->pt - first->pt).length() >3) recurse (n, first, i);
+  if ((n->pt.getCoord() - first->pt.getCoord()).length() >3) recurse (n, first, i);
   if (i > numberOfSamples) return;
-  if ((n->pt - last->pt).length() >3) recurse (n, last,i);
+  if ((n->pt.getCoord() - last->pt.getCoord()).length() >3) recurse (n, last,i);
   if (i > numberOfSamples) return;
 }
 
