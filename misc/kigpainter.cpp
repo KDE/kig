@@ -1,6 +1,6 @@
 /**
    This file is part of Kig, a KDE program for Interactive Geometry...
-   Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
+   Copyright (C) 2002-2003  Dominique Devriese <devriese@kde.org>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,6 +31,8 @@
 
 #include <cmath>
 #include <stack>
+#include <functional>
+#include <algorithm>
 
 KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device, bool no )
   : mP ( device ),
@@ -166,21 +168,31 @@ void KigPainter::setBrushColor( const QColor& c )
   mP.setBrush( QBrush( brushColor, brushStyle ) );
 }
 
-void KigPainter::drawPolygon( const std::vector<Coordinate>& pts, bool winding, int index, int npoints )
+static void setContains( QRect& r, const QPoint& p )
 {
-  Rect sr;
+  if ( r.left() > p.x() ) r.setLeft( p.x() );
+  if ( r.right() < p.x() ) r.setRight( p.x() );
+  // this is correct, i think.  In qt the bottom has the highest y
+  // coord...
+  if ( r.bottom() < p.y() ) r.setBottom( p.x() );
+  if ( r.top() < p.y() ) r.setTop( p.x() );
+};
+
+void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
+                              bool winding, int index, int npoints )
+{
+  QRect sr;
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
   QPointArray t( pts.size() );
   int c = 0;
-  for( std::vector<Coordinate>::const_iterator i = pts.begin(); i != pts.end(); ++i )
+  for( std::vector<QPoint>::const_iterator i = pts.begin(); i != pts.end(); ++i )
   {
-    sr.setContains( *i );
-    QPoint tt = toScreen (*i);
-    t.putPoints( c++, 1, tt.x(), tt.y() );
+    setContains( sr, *i );
+    t.putPoints( c++, 1, i->x(), i->y() );
   };
   mP.drawPolygon( t, winding, index, npoints );
-  mOverlay.push_back( toScreen( sr ) );
+  mOverlay.push_back( sr );
 }
 
 Rect KigPainter::window()
@@ -435,16 +447,6 @@ void KigPainter::drawRay( const Coordinate& a, const Coordinate& b )
   Coordinate tb = b;
   calcRayBorderPoints( a, tb, window() );
   drawSegment( a, tb );
-}
-
-void KigPainter::drawAngle( const Rect& surroundingRect, int startAngle, int angle )
-{
-  mP.drawArc( toScreen( surroundingRect ), startAngle, angle );
-  Rect r = surroundingRect;
-  r *= 1.2;
-  r.setCenter( surroundingRect.center() );
-//  if ( mNeedOverlay ) mOverlay.push_back( toScreen( r ) );
-  setWholeWinOverlay();
 }
 
 void KigPainter::drawFatPoint( const Coordinate& p )
@@ -723,4 +725,51 @@ void KigPainter::drawSegment( const LineData& d )
 void KigPainter::drawRay( const LineData& d )
 {
   drawRay( d.a, d.b );
+}
+
+void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
+                            const double dangle )
+{
+  // convert to 16th of degrees...
+  const int startangle = static_cast<int>( 16*180*dstartangle / M_PI );
+  const int angle = static_cast<int>( 16*180*dangle / M_PI );
+
+  QPoint point = toScreen( cpoint );
+
+//   int radius = mP.window().width() / 5;
+  int radius = 50;
+  QRect surroundingRect( 0, 0, radius*2, radius*2 );
+  surroundingRect.moveCenter( point );
+
+  mP.drawArc( surroundingRect, startangle, angle );
+
+  // now for the arrow...
+  QPoint end( point.x() + radius * cos( dstartangle + dangle ),
+              point.y() - radius * sin( dstartangle + dangle ) );
+  QPoint vect = (end - point);
+  double vectlen = sqrt( vect.x() * vect.x() + vect.y() * vect.y() );
+  QPoint orthvect( -vect.y(), vect.x() );
+  vect = vect * 6 / vectlen;
+  orthvect = orthvect * 6 / vectlen;
+
+  std::vector<QPoint> arrow;
+  arrow.push_back( end );
+  arrow.push_back( end + orthvect + vect );
+  arrow.push_back( end + orthvect - vect );
+
+  setBrushStyle( Qt::SolidPattern );
+  drawPolygon( arrow );
+
+//  if ( mNeedOverlay ) mOverlay.push_back( toScreen( r ) );
+  setWholeWinOverlay();
+}
+
+void KigPainter::drawPolygon( const std::vector<Coordinate>& pts,
+                              bool winding, int index, int npoints )
+{
+  using namespace std;
+  vector<QPoint> points;
+  for ( uint i = 0; i < pts.size(); ++i )
+    points.push_back( toScreen( pts[i] ) );
+  drawPolygon( points, winding, index, npoints );
 }

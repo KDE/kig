@@ -28,6 +28,7 @@
 #include "../objects/circle_type.h"
 #include "../objects/conic_types.h"
 #include "../objects/cubic_type.h"
+#include "../objects/other_type.h"
 
 void setupBuiltinStuff()
 {
@@ -179,6 +180,14 @@ void setupBuiltinStuff()
       "directrix" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linedirectrix" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      AngleType::instance(),
+      I18N_NOOP( "Angle by Three Points" ),
+      I18N_NOOP( "An angle defined by three points" ),
+      "angle" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_angle" ) );
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };

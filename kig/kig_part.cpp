@@ -200,7 +200,6 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TStdType<LinePolar> );
 
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
-//     Object::addBuiltinType( new TStdType<RotatedPoint> );
 //     Object::addBuiltinType( new TStdType<LineRadical> );
 //     Object::addBuiltinType( new TMultiType<LineConicRadical> );
 //     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
@@ -209,14 +208,15 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
 //     Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
 //     Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
-//     Object::addBuiltinType( new TStdType<TranslatedPoint> );
-//     Object::addBuiltinType( new TStdType<MirrorPoint> );
 //     Object::addBuiltinType( new TStdType<Locus> );
 //     Object::addBuiltinType( new TStdType<Vector> );
 //     Object::addBuiltinType( new TStdType<Angle> );
 //     Object::addBuiltinType( new TStdType<LineDirectrix> );
 //     Object::addBuiltinType( new TType<TextLabel> );
 //     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
+//     Object::addBuiltinType( new TStdType<TranslatedPoint> );
+//     Object::addBuiltinType( new TStdType<MirrorPoint> );
+//     Object::addBuiltinType( new TStdType<RotatedPoint> );
 
 //     // our saved macro types:
 //     QStringList relFiles;

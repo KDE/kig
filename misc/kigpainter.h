@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
+ Copyright (C) 2002-2003  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -172,6 +172,7 @@ public:
   /**
    * draw a polygon defined by the points in pts...
    */
+  void drawPolygon( const std::vector<QPoint>& pts, bool winding = false, int index = 0, int npoints = -1 );
   void drawPolygon( const std::vector<Coordinate>& pts, bool winding = false, int index = 0, int npoints = -1 );
 
   /**
@@ -182,6 +183,8 @@ public:
    * @see QPainter::drawArc
    */
   void drawAngle( const Rect& surroundingRect, int startAngle, int angle );
+  void drawAngle( const Coordinate& point, const double startangle,
+                  const double angle );
 
   /**
    * draw a conic..
