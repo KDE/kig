@@ -91,7 +91,7 @@ KigExportManager::KigExportManager()
 {
   mexporters.push_back( new ImageExporter );
   // working on this one ;)
-//  mexporters.push_back( new XFigExporter );
+  mexporters.push_back( new XFigExporter );
 }
 
 KigExportManager::~KigExportManager()
@@ -149,7 +149,7 @@ class XFigExportImpVisitor
       return ret.toQPoint();
     };
 
-  void emitLine( const Coordinate& a, const Coordinate& b, int width );
+  void emitLine( const Coordinate& a, const Coordinate& b, int width, bool vector = false );
 public:
   void visit( Object* obj );
 
@@ -190,7 +190,7 @@ void XFigExportImpVisitor::visit( const LineImp* imp )
   emitLine( a, b, width );
 };
 
-void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, int width )
+void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, int width, bool vector )
 {
   mstream << "2 "; // polyline type;
   mstream << "1 "; // polyline subtype;
@@ -207,12 +207,25 @@ void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, i
   mstream << "0 "; // cap_style: Butt
   mstream << "-1 "; // radius in case of an arc-box, but we're a
                     // polyline, so nothing here..
-  mstream << "0 "; // forward arrow: no
+  if ( ! vector )
+    mstream << "0 "; // forward arrow: no
+  else
+    mstream << "1 "; // forward arrow: yes
   mstream << "0 "; // backward arrow: no
   mstream << "2"; // a two points polyline..
 
   mstream << "\n\t ";
 
+  if ( vector )
+  {
+    // first the arrow line in case of a vector..
+    mstream << "1 " // arrow_type: closed triangle
+            << "1 " // arrow_style: filled with pen color..
+            << "1.00 " // arrow_thickness: 1
+            << "195.00 " // arrow_width
+            << "165.00 " // arrow_height
+            << "\n\t";
+  }
   QPoint ca = convertCoord( a );
   QPoint cb = convertCoord( b );
 
@@ -253,7 +266,7 @@ void XFigExportImpVisitor::visit( const TextImp* imp )
   QPoint coord = convertCoord( imp->coordinate() );
 
   mstream << "4 "    // text type
-          << "0 "    // subtype: left justified
+          << "0 "    // subtype: left justfied
           << "0 "    // TODO: color: black
           << "50 "   // depth: 50
           << "-1 "   // pen style: unused
@@ -270,12 +283,13 @@ void XFigExportImpVisitor::visit( const TextImp* imp )
 
 void XFigExportImpVisitor::visit( const AngleImp* )
 {
-
 }
 
-void XFigExportImpVisitor::visit( const VectorImp* )
+void XFigExportImpVisitor::visit( const VectorImp* imp )
 {
-
+  int width = mcurobj->width();
+  if ( width == -1 ) width = 1;
+  emitLine( imp->a(), imp->b(), width, true );
 }
 
 void XFigExportImpVisitor::visit( const LocusImp* )
