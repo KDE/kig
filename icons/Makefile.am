@@ -1,4 +1,4 @@
-kigicondatadir = $(kde_datadir)/kig/toolbar
+kigicondatadir = $(kde_datadir)/kig/pics
 kigicondata_DATA = \
 	angle.png \
 	angle-bisector.png \
