@@ -36,7 +36,7 @@ class KigFilterNative
   Result loadOld( const QDomElement& doc, KigDocument& to );
   Result loadNew( const QDomElement& doc, KigDocument& to );
   bool oldElemToNewObject( const QCString type, const QDomElement& e,
-                           RealObject& o, Objects& );
+                           RealObject& o, Objects&, const KigDocument& );
 public:
   KigFilterNative();
   ~KigFilterNative();

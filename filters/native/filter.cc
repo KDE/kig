@@ -21,6 +21,7 @@
 #include "../../kig/kig_part.h"
 #include "../../objects/object_factory.h"
 #include "../../objects/custom_types.h"
+#include "../../objects/other_type.h"
 #include "../../objects/object_type_factory.h"
 #include "../../objects/object.h"
 #include "../../objects/bogus_imp.h"
@@ -220,10 +221,11 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
     o->setShown( shown );
     o->setColor( color );
 
-    if ( ! oldElemToNewObject( type, e, *o, dataos ) )
+    if ( ! oldElemToNewObject( type, e, *o, dataos, to ) )
     {
-      Objects all = getAllParents( os );
-      for ( Objects::iterator i = all.begin(); i != all.end(); ++i )
+      for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+        delete *i;
+      for ( Objects::iterator i = dataos.begin(); i != dataos.end(); ++i )
         delete *i;
       return ParseError;
     };
@@ -238,10 +240,26 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
   return OK;
 }
 
+static QCString translateOldKigPropertyName( const QString& whichproperty )
+{
+  // we need to translate the property names from old kig to new
+  // kig..
+  // a lot of them are simply the lower case of the other ones..
+  QCString ret = whichproperty.lower().latin1();
+  // this deals with lots of names too..
+  ret.replace( ' ', "-" );
+  if ( ret == "angle-in-radians" )
+    ret = "angle-radian";
+  else if ( ret == "angle-in-degrees" )
+    ret = "angle-degrees";
+  return ret;
+};
+
 bool KigFilterNative::oldElemToNewObject( const QCString type,
                                           const QDomElement& e,
                                           RealObject& o,
-                                          Objects& dataos)
+                                          Objects& dataos,
+                                          const KigDocument& kdoc )
 {
   if ( type == "NormalPoint" )
   {
@@ -306,6 +324,31 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     if ( ! locus ) return false;
     o.setType( locus->type() );
     o.setParents( locus->parents() );
+    return true;
+  }
+  else if ( type == "CoordinatePropertyPoint" )
+  {
+    uint size = o.parents().size();
+    if ( size != 1 ) return false;
+    int wp = -1;
+    for ( QDomElement el = e.firstChild().toElement(); ! el.isNull();
+          el = el.nextSibling().toElement() )
+    {
+      if ( el.tagName() == "param" )
+      {
+        if ( el.attribute( "name" ) == "which-property" )
+        {
+          QString whichproperty = el.text();
+          QCString which = translateOldKigPropertyName( whichproperty );
+          wp = o.parents()[0]->propertiesInternalNames().findIndex( which );
+        }
+      };
+    };
+    if ( wp == -1 ) return false;
+    dataos.push_back( new PropertyObject( o.parents()[0], wp ) );
+    dataos.back()->calc( kdoc );
+    o.setParents( Objects( dataos.back() ) );
+    o.setType( CopyObjectType::instance() );
     return true;
   }
   else if ( type == "CircleTransform" || type == "ConicTransform" || type == "CubicTransform" ||
@@ -376,7 +419,7 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     };
     o.setType( t );
     return true;
-  };
+  }
 }
 
 KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString& to )
