@@ -22,6 +22,7 @@
 #include "../objects/common.h"
 
 #include <map>
+#include <vector>
 
 class ObjectImpType;
 class ArgParser;
@@ -36,8 +37,11 @@ private:
   uint mnumberofresults;
   std::vector<const ObjectImpType*> margrequirements;
 
+  // these two are really part of the constructor...
   int visit( const Object* o, std::map<const Object*, int>&,
              bool isresult = false);
+  int storeObject( const Object*, const Objects& po, std::vector<int>& pl,
+                   std::map<const Object*, int>& seenmap );
 
   friend bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs );
 

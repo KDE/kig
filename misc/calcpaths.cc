@@ -20,6 +20,7 @@
 
 #include "objects.h"
 #include "../objects/object.h"
+#include "../objects/object_imp.h"
 #include "../kig/kig_part.h"
 
 // these first two functions were written before i read stuff about
@@ -111,6 +112,18 @@ Objects calcPath( const Objects& from, const Object* to )
   return ret;
 };
 
+static void addNonCache( Object* o, Objects& ret )
+{
+  if ( ! o->imp()->isCache() )
+    ret.upush( o );
+  else
+  {
+    Objects parents = o->parents();
+    for ( uint i = 0; i < parents.size(); ++i )
+      addNonCache( parents[i], ret );
+  };
+};
+
 static bool visit( const Object* o, const Objects& from, Objects& ret )
 {
   // this function returns true if the visited object depends on one
@@ -122,9 +135,10 @@ static bool visit( const Object* o, const Objects& from, Objects& ret )
   std::vector<bool> deps( o->parents().size(), false );
   bool somedepend = false;
   bool alldepend = true;
-  for ( uint i = 0; i < o->parents().size(); ++i )
+  Objects parents = o->parents();
+  for ( uint i = 0; i < parents.size(); ++i )
   {
-    bool v = visit( o->parents()[i], from, ret );
+    bool v = visit( parents[i], from, ret );
     somedepend |= v;
     alldepend &= v;
     deps[i] = v;
@@ -133,7 +147,7 @@ static bool visit( const Object* o, const Objects& from, Objects& ret )
   {
     for ( uint i = 0; i < deps.size(); ++i )
       if ( ! deps[i] )
-        ret.upush( o->parents()[i] );
+        addNonCache( parents[i], ret );
   };
 
   return somedepend;

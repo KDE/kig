@@ -160,7 +160,7 @@ public:
                          const KigWidget& si ) const = 0;
   virtual bool inRect( const Rect& r, int width,
                        const KigWidget& si ) const = 0;
-  virtual bool valid() const;
+  bool valid() const;
 
   virtual const uint numberOfProperties() const;
   // the names of the properties as perceived by the user..  put
@@ -201,5 +201,15 @@ public:
    * stuff to see what the user has changed during a move..
    */
   virtual bool equals( const ObjectImp& rhs ) const = 0;
+
+  /**
+   * Return true if this imp is just a cache imp.  This means that it
+   * will never be considered to be stored in a file or in an
+   * ObjectHierarchy.  This is useful for objects which cannot
+   * (easily and usefully) be (de)serialized, like e.g.
+   * PythonCompiledScriptImp..  For normal objects, the default
+   * implementation returns false, which is fine.
+   */
+  virtual bool isCache() const;
 };
 #endif

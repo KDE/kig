@@ -250,3 +250,8 @@ ObjectImpType::StaticPrivate* ObjectImpType::sd()
   static StaticPrivate d;
   return &d;
 }
+
+bool ObjectImp::isCache() const
+{
+  return false;
+}

@@ -1,3 +1,8 @@
+2003-07-03  Dominique Devriese  <devriese@kde.org>
+
+	* add the concept of cache objects, which cannot be stored, in
+	order to support a python compiled script ObjectImp..
+
 2003-07-02  Dominique Devriese  <devriese@kde.org>
 
 	* sanitize the ObjectImp inherits() system.  It now uses static

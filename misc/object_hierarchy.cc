@@ -224,19 +224,6 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument&
   };
 }
 
-// returns the "minimum" of a and b ( in the partially ordered set of
-// ObjectImpType's, using the inherits member function as comparison,
-// if you for some reason like this sort of non-sense ;) ).  This
-// basically means: return the type that inherits the other type,
-// because if another type inherits the lowermost type, then it will
-// also inherit the other..
-const ObjectImpType* lowermost( const ObjectImpType* a, const ObjectImpType* b )
-{
-  if ( a->inherits( b ) ) return a;
-  assert( b->inherits( a ) );
-  return b;
-};
-
 int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenmap,
                             bool isresult )
 {
@@ -276,6 +263,7 @@ int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenm
   {
     if ( isresult )
     {
+      assert( ! o->imp()->isCache() );
       // o is a result object that does not descend from the given
       // objects..  We have to just save its value here, I guess..
       mnodes.push_back( new PushStackNode( o->imp()->copy() ) );
@@ -285,39 +273,7 @@ int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenm
       return -1;
   };
 
-  for ( uint i = 0; i < p.size(); ++i )
-  {
-    if ( parents[i] == -1 )
-    {
-      mnodes.push_back( new PushStackNode( p[i]->imp()->copy() ) );
-      parents[i] = mnumberofargs + mnodes.size() - 1;
-    }
-    else if ( (uint) parents[i] < mnumberofargs )
-    {
-      Object* parent = o->parents()[i];
-      Objects oparents = o->parents();
-
-      margrequirements[parents[i]] =
-        lowermost( margrequirements[parents[i]],
-                   o->impRequirement( parent, oparents ) );
-    };
-  };
-  if ( o->inherits( Object::ID_RealObject ) )
-    mnodes.push_back( new ApplyTypeNode( static_cast<const RealObject*>( o )->type(), parents ) );
-  else if ( o->inherits( Object::ID_PropertyObject ) )
-  {
-    assert( parents.size() == 1 );
-    int parent = parents.front();
-    Object* op = p.front();
-    assert( op );
-    uint propid = static_cast<const PropertyObject*>( o )->propId();
-    assert( propid < op->propertiesInternalNames().size() );
-    mnodes.push_back( new FetchPropertyNode( parent, op->propertiesInternalNames()[propid], propid ) );
-  }
-  else
-    assert( false );
-  seenmap[o] = mnumberofargs + mnodes.size() - 1;
-  return mnumberofargs + mnodes.size() - 1;
+  return storeObject( o, p, parents, seenmap );
 }
 
 ObjectHierarchy::~ObjectHierarchy()
@@ -345,7 +301,10 @@ ObjectHierarchy ObjectHierarchy::withFixedArgs( const Args& a ) const
   std::vector<Node*> newnodes( mnodes.size() + a.size() );
   std::vector<Node*>::iterator newnodesiter = newnodes.begin();
   for ( uint i = 0; i < a.size(); ++i )
+  {
+    assert( ! a[i]->isCache() );
     *newnodesiter++ = new PushStackNode( a[i]->copy() );
+  };
   std::copy( ret.mnodes.begin(), ret.mnodes.end(), newnodesiter );
   ret.mnodes = newnodes;
 
@@ -599,4 +558,72 @@ bool ObjectHierarchy::resultDoesNotDependOnGiven() const
       return true;
   };
   return false;
+}
+
+// returns the "minimum" of a and b ( in the partially ordered set of
+// ObjectImpType's, using the inherits member function as comparison,
+// if you for some reason like this sort of non-sense ;) ).  This
+// basically means: return the type that inherits the other type,
+// because if another type inherits the lowermost type, then it will
+// also inherit the other..
+const ObjectImpType* lowermost( const ObjectImpType* a, const ObjectImpType* b )
+{
+  if ( a->inherits( b ) ) return a;
+  assert( b->inherits( a ) );
+  return b;
+};
+
+// this function is part of the visit procedure really.  It is
+// factored out, because it recurses for cache ObjectImp's.  What this
+// does is, it makes sure that object o is calcable, by putting
+// appropriate Node's in mnodes..  po is o->parents() and pl contains
+// the location of objects that are already in mnodes and -1
+// otherwise..  -1 means we have to store their ObjectImp, unless
+// they're cache ObjectImp's etc.
+int ObjectHierarchy::storeObject( const Object* o, const Objects& po, std::vector<int>& pl,
+                                  std::map<const Object*, int>& seenmap )
+{
+  for ( uint i = 0; i < po.size(); ++i )
+  {
+    if ( pl[i] == -1 )
+    {
+      // we can't store cache ObjectImp's..
+      if ( po[i]->imp()->isCache() )
+      {
+        Objects parentos = po[i]->parents();
+        std::vector<int> parentlocs( parentos.size(), -1 );
+        pl[i] = storeObject( po[i], parentos, parentlocs, seenmap );
+      }
+      else
+      {
+        mnodes.push_back( new PushStackNode( po[i]->imp()->copy() ) );
+        pl[i] = mnumberofargs + mnodes.size() - 1;
+      };
+    }
+    else if ( (uint) pl[i] < mnumberofargs )
+    {
+      Object* parent = o->parents()[i];
+      Objects opl = o->parents();
+
+      margrequirements[pl[i]] =
+        lowermost( margrequirements[pl[i]],
+                   o->impRequirement( parent, opl ) );
+    };
+  };
+  if ( o->inherits( Object::ID_RealObject ) )
+    mnodes.push_back( new ApplyTypeNode( static_cast<const RealObject*>( o )->type(), pl ) );
+  else if ( o->inherits( Object::ID_PropertyObject ) )
+  {
+    assert( pl.size() == 1 );
+    int parent = pl.front();
+    Object* op = po.front();
+    assert( op );
+    uint propid = static_cast<const PropertyObject*>( o )->propId();
+    assert( propid < op->propertiesInternalNames().size() );
+    mnodes.push_back( new FetchPropertyNode( parent, op->propertiesInternalNames()[propid], propid ) );
+  }
+  else
+    assert( false );
+  seenmap[o] = mnumberofargs + mnodes.size() - 1;
+  return mnumberofargs + mnodes.size() - 1;
 }
