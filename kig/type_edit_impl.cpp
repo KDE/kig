@@ -66,15 +66,15 @@ void KigTypeEditImpl::deleteType()
   if (types.size()==1) {
     if (KMessageBox::warningContinueCancel
 	(this,
-	 i18n("Are you sure you want to delete the type named \"%1\" ?").arg(types.front()->getActionName()),
-	 i18n("Are you sure ?"),
+	 i18n("Are you sure you want to delete the type named \"%1\"?").arg(types.front()->getActionName()),
+	 i18n("Are you sure?"),
 	 i18n("Continue"),
 	 "deleteTypeWarning") ==KMessageBox::Cancel ) return;
   } else { 
     if (KMessageBox::warningContinueCancel
 	(this,
-	 i18n("Are you sure you want to delete these %1 types ?").arg(types.size()),
-	 i18n("Are you sure ?"),
+	 i18n("Are you sure you want to delete these %1 types?").arg(types.size()),
+	 i18n("Are you sure?"),
 	 i18n("Continue"),
 	 "deleteTypeWarning") == KMessageBox::Cancel ) return;
   };

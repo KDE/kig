@@ -135,7 +135,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   addType(new TType<IntersectionPoint>
 	  (this,
 	   "intersection",
-	   i18n("IntersectionPoint"),
+	   i18n("Intersection point"),
 	   CTRL+Key_I));
   // and, brand new: locuses !
   addType(new TType<Locus>

@@ -52,7 +52,7 @@ QString CircleBCP::wantArg (const Object* o) const
 {
   if (!o->toPoint()) return 0;
   if (complete) return 0;
-  if (!centre) return i18n("Centre point");
+  if (!centre) return i18n("Center point");
   assert (!poc); // we're not completed, and do have a center...
   return i18n("Through point");
 };

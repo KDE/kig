@@ -21,7 +21,7 @@ int main(int argc, char **argv)
   about.addAuthor("Dominique Devriese", I18N_NOOP("Coding"), "fritmebufstek@pandora.be" );
   about.addCredit("Marc Bartsch", I18N_NOOP("Author of KGeo, where i got inspiration, some source, and most of the artwork from"), "marc.bartsch@web.de");
   about.addCredit("Ilya Baran", I18N_NOOP("Author of KSeg, another program that has been a source of inspiration for Kig"), "ibaran@mit.edu");
-  about.addCredit("Cabri coders", I18N_NOOP("Cabri is a commercial program like Kig, and gave me something to compete against ;)"), "www-cabri.imag.fr");
+  about.addCredit("Cabri coders", I18N_NOOP("Cabri is a commercial program like Kig, and gave me something to compete against."), "www-cabri.imag.fr");
 
   KCmdLineArgs::init(argc, argv, &about);
   KCmdLineArgs::addCmdLineOptions( options );
