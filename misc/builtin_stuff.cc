@@ -250,6 +250,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linereflection" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      RotationType::instance(),
+      I18N_NOOP( "Rotated object" ),
+      I18N_NOOP( "An object rotated by an angle around a point" ),
+      "rotation" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_rotation" ) );
+
     c = new MultiObjectTypeConstructor(
       ConicAsymptoteType::instance(),
       I18N_NOOP( "Asymptotes of a Hyperbola" ),

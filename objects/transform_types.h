@@ -51,4 +51,14 @@ public:
   ObjectImp* calc( const Args& args ) const;
 };
 
+class RotationType
+  : public ObjectType
+{
+  RotationType();
+  ~RotationType();
+public:
+  static const RotationType* instance();
+  ObjectImp* calc( const Args& args ) const;
+};
+
 #endif

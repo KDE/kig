@@ -117,3 +117,37 @@ ObjectImp* LineReflectionType::calc( const Args& targs ) const
   Transformation t = Transformation::lineReflection( d );
   return args[1]->transform( t );
 }
+
+static const ArgParser::spec argsspecpa[] =
+{
+  { ObjectImp::ID_PointImp, 1 },
+  { ObjectImp::ID_AngleImp, 1 }
+};
+
+RotationType::RotationType()
+  : ObjectType( "Rotation", argsspecpa, 2, 1 )
+{
+}
+
+RotationType::~RotationType()
+{
+}
+
+const RotationType* RotationType::instance()
+{
+  static const RotationType t;
+  return &t;
+}
+
+ObjectImp* RotationType::calc( const Args& targs ) const
+{
+  if ( targs.size() != 3 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
+  assert( args[1]->inherits( ObjectImp::ID_AngleImp ) );
+
+  Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
+  double angle = static_cast<const AngleImp*>( args[1] )->size();
+
+  return args[2]->transform( Transformation::rotation( angle, center ) );
+}
