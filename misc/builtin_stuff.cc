@@ -392,13 +392,6 @@ void setupBuiltinStuff()
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );
     actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );
 
-    // are two lines parallel?
-    c = new SimpleObjectTypeConstructor(
-      TextAreParallelType::instance(), I18N_NOOP( "Parallel?" ),
-      I18N_NOOP( "Test if two lines are parallel"), "parallel?" );
-    ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_areparallel" ) );
-
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
     actions->add( new NewScriptAction( "objects_new_script_object" ) );
 #endif

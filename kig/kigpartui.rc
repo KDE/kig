@@ -95,7 +95,6 @@
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
-	<Action name="objects_new_areparallel" />
 	<Action name="objects_new_script_object" />
 	<ActionList name="user_other_types" />
       </Menu>
