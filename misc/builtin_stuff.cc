@@ -275,7 +275,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       LineByVectorType::instance(),
-      I18N_NOOP( "Line By Vector" ),
+      I18N_NOOP( "Line by Vector" ),
       I18N_NOOP( "Construct the line by a given vector though a given point." ),
       "linebyvector" );
     ctors->add( c );
@@ -283,7 +283,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       HalflineByVectorType::instance(),
-      I18N_NOOP( "Half-line by Vector" ),
+      I18N_NOOP( "Half-Line by Vector" ),
       I18N_NOOP( "Construct the half-line by a given vector starting at given point." ),
       "halflinebyvector" );
     ctors->add( c );
