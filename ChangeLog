@@ -1,5 +1,7 @@
 2003-05-01  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
+	* perfect the grid..
+
 	* fix useless error output on startup
 
 	* add scroll bars to the full screen mode
