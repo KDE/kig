@@ -10,9 +10,6 @@
 - make it possible to zoom to a very specific part of the screen (
    i.e. from (x0,y0) to (x1,y1)
 
-- fix ObjectHierarchy::resultDoesNotDependOnGiven to check whether
-   *all* the result objects depend on the given objects.
-
 - export cubics to the python scripting stuff..
 
 - add support for working with angles in degrees in the set size
