@@ -38,4 +38,6 @@ void GaussianElimination( double *matrix[], int numrows, int numcols,
 void BackwardSubstitution( double *matrix[], int numrows, int numcols,
     int scambio[], double solution[] );
 
+bool Invert3by3matrix ( double m[3][3], double inv[3][3] );
+
 #endif // KIG_MISC_KIGNUMERICN_H
