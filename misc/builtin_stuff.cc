@@ -178,6 +178,15 @@ void setupBuiltinStuff()
     // actions->add( new ConstructibleAction( c, "objects_new_cubicnodeb6p" ) );
 
     c = new SimpleObjectTypeConstructor(
+      CubicCuspB4PType::instance(),
+      I18N_NOOP( "Cubic With Cusp by Four Points" ),
+      I18N_NOOP( "A cubic with a horizontal cusp at the origin through four points" ),
+      "cubiccuspb4p" );
+    // disabled cause it's only cluttering up the ui..
+//     ctors->add( c );
+//     actions->add( new ConstructibleAction( c, "objects_new_cubiccuspb4p" ) );
+
+    c = new SimpleObjectTypeConstructor(
       ConicDirectrixType::instance(),
       I18N_NOOP( "Directrix of a Conic" ),
       I18N_NOOP( "The directrix line of a conic." ),

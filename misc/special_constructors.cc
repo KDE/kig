@@ -24,6 +24,7 @@
 #include "calcpaths.h"
 
 #include "../objects/object.h"
+#include "../objects/object_factory.h"
 #include "../objects/custom_types.h"
 #include "../objects/object_type.h"
 #include "../objects/conic_types.h"
@@ -157,36 +158,7 @@ const int LocusConstructor::wantArgs(
 
 Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget& ) const
 {
-  using namespace std;
-
-  assert ( parents.size() == 2 );
-  assert( parents.front()->inherits( Object::ID_RealObject ) );
-  const RealObject* constrained = static_cast<RealObject*>( parents.front() );
-  const Object* moving = parents.back();
-  if ( ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
-  {
-    // moving is in fact the constrained point.. swap them..
-    moving = constrained;
-    assert( parents.back()->inherits( Object::ID_RealObject ) );
-    constrained = static_cast<RealObject*>( parents.back() );
-  };
-  assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
-
-  Objects locusparents( const_cast<RealObject*>( constrained ) );
-  Objects sideOfTree = sideOfTreePath( Objects( const_cast<RealObject*>( constrained ) ), moving );
-  copy( sideOfTree.begin(), sideOfTree.end(), back_inserter( locusparents ) );
-
-  ObjectHierarchy hier( locusparents, moving );
-
-  Object* curve = const_cast<Object*>( constrained->parents().back() );
-  assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
-  // a locus object does not depend on the constrained point, but on
-  // the curve it is on..
-  locusparents[0] = curve;
-
-  LocusType* t = new LocusType( hier );
-  CustomTypes::instance().add( t );
-
-  RealObject* ret = new RealObject( t, locusparents );
+  RealObject* ret = ObjectFactory::instance()->locus( parents );
+  assert( ret );
   return Objects( ret );
 }
