@@ -128,8 +128,8 @@ bool FixedPointType::canMove() const
 
 static const ArgsParser::spec argsspecMidPoint[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ), false },
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ), false }
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another point" ), false }
 };
 
 MidPointType::MidPointType()
