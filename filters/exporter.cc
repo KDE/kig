@@ -372,7 +372,7 @@ void XFigExportImpVisitor::visit( const ArcImp* imp )
                       // dashes in case of dotted or dashed lines..
           << "0 "; // cap_style: Butt..
   // 0 is clockwise, 1 is counterclockwise .
-  int direction = imp->angle() > 0 ? 0 : 1;
+  int direction = imp->angle() > 0 ? 1 : 0;
     // direction next
   mstream << direction << " "  // direction..
           << "0 "  // forward_arrow: no
