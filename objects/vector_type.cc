@@ -59,11 +59,11 @@ const ObjectImpType* VectorType::resultId() const
 
 static const ArgsParser::spec argsspecVectorSum[] =
 {
-  { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and another one." ),
+  { VectorImp::stype(), I18N_NOOP( "Construct the vector sum of this vector and another one." ),
     I18N_NOOP( "Select the first of the two vectors of which you want to construct the sum..." ), false },
-  { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and the other one." ),
+  { VectorImp::stype(), I18N_NOOP( "Construct the vector sum of this vector and the other one." ),
     I18N_NOOP( "Select the other of the two vectors of which you want to construct the sum..." ), false },
-  { PointImp::stype(), I18N_NOOP( "Construct the Vector Sum starting at this point." ),
+  { PointImp::stype(), I18N_NOOP( "Construct the vector sum starting at this point." ),
     I18N_NOOP( "Select the point to construct the sum vector in..." ), false }
 };
 

@@ -20,8 +20,8 @@
 
 static const ArgsParser::spec argsspecMeasureTransport[] =
 {
-  { CircleImp::stype(), I18N_NOOP( "transport measure on this circle" ) },
-  { PointImp::stype(), I18N_NOOP( "project this point onto the circle" ) },
+  { CircleImp::stype(), I18N_NOOP( "Transport a measure on this circle" ) },
+  { PointImp::stype(), I18N_NOOP( "Project this point onto the circle" ) },
   { SegmentImp::stype(), I18N_NOOP( "Segment to transport" ) }
 };
 

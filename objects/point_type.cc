@@ -328,9 +328,9 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
 
 static const ArgsParser::spec argsspecMeasureTransport[] =
 {
-  { CircleImp::stype(), "transport measure on this circle",
+  { CircleImp::stype(), "Transport a measure on this circle",
     I18N_NOOP( "Select the circle on which to transport a measure..." ), true },
-  { PointImp::stype(), "project this point onto the circle",
+  { PointImp::stype(), "Project this point onto the circle",
     I18N_NOOP( "Select the point to project onto the circle..." ), false },
   { SegmentImp::stype(), "Segment to transport",
     I18N_NOOP( "Select the segment to transport on the circle..." ), false }
