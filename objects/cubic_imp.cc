@@ -48,7 +48,6 @@ ObjectImp* CubicImp::transform( const Transformation& t ) const
 
 void CubicImp::draw( KigPainter& p ) const
 {
-//  p.drawCubic( mdata );
   p.drawCurve( this );
 }
 
@@ -131,9 +130,9 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
   t = 0.5*(t + 1);
   t /= 3;
 
-  Coordinate p1 = internalGetPoint ( t );
-  Coordinate p2 = internalGetPoint ( t + 1.0/3.0 );
-  Coordinate p3 = internalGetPoint ( t + 2.0/3.0 );
+  Coordinate p1 = getPoint ( t );
+  Coordinate p2 = getPoint ( t + 1.0/3.0 );
+  Coordinate p3 = getPoint ( t + 2.0/3.0 );
 
   double mint = t;
   double mindist = p1.valid() ? fabs ( y - p1.y ) : double_inf;
@@ -152,10 +151,10 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
 
 const Coordinate CubicImp::getPoint( double p, const KigDocument& ) const
 {
-  return internalGetPoint( p );
+  return getPoint( p );
 }
 
-const Coordinate CubicImp::internalGetPoint( double p ) const
+const Coordinate CubicImp::getPoint( double p ) const
 {
   /*
    * this isn't really elegant...

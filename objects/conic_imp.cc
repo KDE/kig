@@ -40,7 +40,7 @@ ObjectImp* ConicImp::transform( const Transformation& t ) const
 
 void ConicImp::draw( KigPainter& p ) const
 {
-  p.drawConic( polarData() );
+  p.drawCurve( this );
 }
 
 bool ConicImp::valid() const

@@ -180,6 +180,10 @@ Qt::PenStyle ObjectDrawer::styleFromString( QString& style )
     return Qt::DashLine;
   else if ( style == "DotLine" )
     return Qt::DotLine;
+  else if ( style == "DashDotLine" )
+    return Qt::DashDotLine;
+  else if ( style == "DashDotDotLine" )
+    return Qt::DashDotDotLine;
   else return Qt::SolidLine;
 }
 
@@ -191,5 +195,9 @@ QString ObjectDrawer::styleToString() const
     return "DashLine";
   else if ( mstyle == Qt::DotLine )
     return "DotLine";
+  else if ( mstyle == Qt::DashDotLine )
+    return "DashDotLine";
+  else if ( mstyle == Qt::DashDotDotLine )
+    return "DashDotDotLine";
   return "SolidLine";
 }

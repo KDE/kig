@@ -1,3 +1,14 @@
+2004-04-28  Dominique Devriese  <devriese@kde.org>
+
+	* Add two line styles: DashDotLine and DashDotDotLine
+
+	* Remove the KigPainter::drawConic and KigPainter::drawCubic
+	functions.  Conics and cubics are now drawn with the generic
+	KigPainter::drawCurve function.  The performance penalty is not
+	noticable for me, and I haven't been able to quantify it in any
+	way, so I assume it negligible.  Cubics and conics drawing now
+	correctly takes line styles into account.
+
 2004-04-27  Dominique Devriese  <devriese@kde.org>
 
 	* Make locuses work with the line styles, by drawing them with

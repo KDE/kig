@@ -366,19 +366,21 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
         popup.addAction( menu, p, nextfree++ );
       }
     else
-      for ( int i = 0; i < 3; ++i )
+    {
+      Qt::PenStyle penstyles[] = {Qt::SolidLine, Qt::DashLine, Qt::DashDotLine, Qt::DashDotDotLine, Qt::DotLine};
+      for ( int i = 0; i < (int) ( sizeof( penstyles ) / sizeof( Qt::PenStyle ) ); ++i )
       {
         QPixmap p( 50, 20 );
         p.fill( popup.eraseColor() );
         ScreenInfo si( Rect( -2.5, -1, 5, 2 ), p.rect() );
         KigPainter ptr( si, &p, popup.document(), false );
         LineImp line( Coordinate( -1, 0 ), Coordinate( 1, 0 ) );
-        const Qt::PenStyle penstyles[] = {Qt::SolidLine, Qt::DashLine, Qt::DotLine};
         Qt::PenStyle ps = penstyles[i];
         ObjectDrawer d( color, -1, true, ps, 1 );
         d.draw( line, ptr, false );
         popup.addAction( menu, p, nextfree++ );
       };
+    }
   }
 }
 
@@ -470,7 +472,7 @@ bool BuiltinObjectActionsProvider::executeAction(
         nothers++;
     };
     bool point = ( npoints > nothers );
-    int max = point ? 5 : 3;
+    int max = point ? 5 : 5;
     if ( id >= max )
     {
       id -= max;
@@ -489,20 +491,9 @@ bool BuiltinObjectActionsProvider::executeAction(
     }
     else
     {
-      Qt::PenStyle p = Qt::SolidLine;
-      switch ( id + 1 )
-      {
-        case 2:
-        {
-          p = Qt::DashLine;
-          break;
-        }
-        case 3:
-        {
-          p = Qt::DotLine;
-          break;
-        }
-      }
+      Qt::PenStyle penstyles[] = {Qt::SolidLine, Qt::DashLine, Qt::DashDotLine, Qt::DashDotDotLine, Qt::DotLine};
+      assert( id < (int)( sizeof( penstyles ) / sizeof( Qt::PenStyle ) ) );
+      Qt::PenStyle p = penstyles[id];
       KigCommand* kc = new KigCommand( doc, i18n( "Change Object Style" ) );
       for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
         if ( ! (*i)->imp()->inherits( PointImp::stype() ) )

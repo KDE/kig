@@ -53,9 +53,12 @@ public:
   CubicImp* copy() const;
 
   double getParam( const Coordinate& point, const KigDocument& ) const;
+
+  // The getPoint function doesn't need the KigDocument argument, the
+  // first getPoint function is identical to the other one.  It is
+  // only provided for implementing the CurveImp interface.
   const Coordinate getPoint( double param, const KigDocument& ) const;
-protected:
-  const Coordinate internalGetPoint( double param ) const;
+  const Coordinate getPoint( double param ) const;
 
 public:
   const CubicCartesianData data() const;
