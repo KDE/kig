@@ -99,7 +99,7 @@ ObjectImp* CircleBTPType::calc( const Args& targs, const KigDocument& ) const
 
       // length:
       // sqrt( 3 ) == tan( 60° ) == sqrt( 2^2 - 1^2 )
-      double l = sqrt(3) * (a-b).length() / 2;
+      double l = sqrt(3.) * (a-b).length() / 2;
 
       double d2 = d*d;
       double l2 = l*l;
