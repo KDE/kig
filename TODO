@@ -1,0 +1,15 @@
+- printing... (cf. the kdeprint tutorial on printing.kde.org ...
+- objects:
+	ray
+	arc
+	ellipse
+	pointonline
+- save macro objects -> in the future, the user should have a special
+directory where he can store macro's so that they get loaded every
+time a new KigPart is constructed.  He should not see this directly.
+There will be some sort of type manager, where the user can configure
+what macro's he wants to see, where he can delete macro's...
+- locuses -> cf. KSeg
+- koffice support !
+- i just had another idea for speeding up drawing (imagine moving objects without shocky movement :), the idea is that we extend qpainter to support for saving a sequence of bits: e.g. drawEllipse is extended with saveEllipse, which saves the colors on the place where the ellipse will be drawn, there would of course be the inverse.
+In practice an object would save what's on the screen before it is drawn, then draw itself, and when it should draw again, it first restores what was under it before it started.  this would make some other stuff obsolete like the getOverlay stuff which i just got to work quite nice... Anyway, this will be something for a later release, if i ever implement it...

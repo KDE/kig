@@ -1,0 +1,46 @@
+<!DOCTYPE KigDocument ><KigDocument Version="2.0.000" >
+ <Point x="332" y="53" />
+ <Point x="463" y="208" />
+ <Point x="276" y="176" />
+ <ObjectHierarchy>
+  <HierarchyElement given="true" typeName="point" id="1" final="false" />
+  <HierarchyElement given="true" typeName="point" id="2" final="false" />
+  <HierarchyElement given="true" typeName="point" id="3" final="false" />
+  <HierarchyElement given="false" typeName="Segment" id="4" final="true" >
+   <parent typeName="point" id="1" />
+   <parent typeName="point" id="2" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="Segment" id="5" final="true" >
+   <parent typeName="point" id="2" />
+   <parent typeName="point" id="3" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="Segment" id="6" final="true" >
+   <parent typeName="point" id="3" />
+   <parent typeName="point" id="1" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="MidPoint" id="7" final="true" >
+   <parent typeName="point" id="1" />
+   <parent typeName="point" id="2" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="MidPoint" id="8" final="true" >
+   <parent typeName="point" id="2" />
+   <parent typeName="point" id="3" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LinePerpend" id="9" final="true" >
+   <parent typeName="Segment" id="4" />
+   <parent typeName="MidPoint" id="7" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="LinePerpend" id="10" final="true" >
+   <parent typeName="Segment" id="5" />
+   <parent typeName="MidPoint" id="8" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="IntersectionPoint" id="11" final="true" >
+   <parent typeName="LinePerpend" id="9" />
+   <parent typeName="LinePerpend" id="10" />
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="CircleBCP" id="12" final="true" >
+   <parent typeName="IntersectionPoint" id="11" />
+   <parent typeName="point" id="1" />
+  </HierarchyElement>
+ </ObjectHierarchy>
+</KigDocument>

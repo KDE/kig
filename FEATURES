@@ -1,0 +1,21 @@
+FEATURES
+here are some nice Kig features i'd like to show off :)
+- macro's: if you want to try, open macrotest.kig, then click the
+button to the left of the fullscreen button, select the three corners
+of the triangle, then click the button again, click the circle, click
+the button again, type in a name.  Then check out the new type with
+the other circle types.  Notice that you can't really see the
+difference between built-in types and macro's
+- you see stuff as you're drawing it: to try: construct a new LineTTP
+- is a KPart: try opening macrotest.kig from konqueror, if it doesn't
+work yet, open your kcontrol, then go to "File Browsing"->"File
+Associations", click add, group:"application", name:"x-kig", open the
+"embedding" tab page for the new type, click "add", find "KigPart"
+(if you installed Kig correctly (did you get the "--prefix" on your
+configure right?) , it should be there), and add it. then try opening
+macrotest.kig again
+- saves in an xml format -> i'm still going to improve this when i'll be
+adding koffice support
+
+PLANNED FEATURES
+For a list of planned features, check out the TODO file.

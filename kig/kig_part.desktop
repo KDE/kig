@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=KigPart
+Name[de]=Kig-Objekt
+Name[eo]=Kig-Parto
+Name[es]=Parte
+Name[et]=Kig komponent
+Name[it]=PartKig
+Name[ko]=Kig ŽëŽ¶€ŽëŽ¶„
+Name[lt]=KigDalis
+Name[nl]=Kig Component
+Name[no]=Kig
+Name[sv]=Kig-del
+Name[xh]=KigIqela
+MimeType=application/x-kig
+ServiceTypes=KParts/ReadOnlyPart,KParts/ReadWritePart
+X-KDE-Library=libkigpart
+Type=Service

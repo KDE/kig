@@ -1,0 +1,44 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="kig_part" version="1">
+<MenuBar>
+  <Menu name="file">
+    <Action name="file_open"/>
+    <Separator/>
+    <Action name="file_save"/>
+    <Action name="file_save_as"/>
+    <Separator/>
+    <Action name="full_screen"/>
+  </Menu>
+  <Menu name="new">
+    <text>New</text>
+    <Action name="new_line"/>
+    <Action name="new_segment"/>
+    <Action name="new_point"/>
+    <Action name="new_circle"/>
+  </Menu>
+  <Menu name="types">
+    <text>Types</text>
+    <Action name="macro_action"/>
+    <Action name="types_edit"/>
+  </Menu>
+</MenuBar>
+<ToolBar name="mainToolBar">
+  <Action name="file_open"/>
+  <Action name="file_save"/>
+  <Action name="file_print"/>
+	<Separator/>
+  <Action name="edit_undo"/>
+  <Action name="edit_redo"/>
+  <Action name="delete_objects"/>
+  <Action name="cancel_construction"/>
+  <Action name="macro_action"/>
+	<Separator/>
+  <Action name="full_screen"/>
+</ToolBar>
+<ToolBar name="new_stuff_toolbar">
+  <Action name="new_circle" />
+  <Action name="new_segment" />
+  <Action name="new_point"/>
+  <Action name="new_line"/>
+</ToolBar>
+</kpartgui>

@@ -1,0 +1,16 @@
+Begin3
+Title:          Kig -- KDE Interactive Geometry
+Version:        0.1
+Entered-date:   
+Description:    Kig provides interactive geometry on KDE
+Keywords:       KDE2 KDE-Edu Kig Interactive Geometry
+Author:         Dominique Devriese <fritmebufstek@pandora.be>
+Maintained-by:  Dominique Devriese <fritmebufstek@pandora.be>
+Home-page:      
+Alternate-site: 
+Primary-site:   ftp://ftp.kde.org/pub/kde/unstable/apps/utils
+                xxxxxx  kig-0.1.tar.gz
+                xxx     kig-0.1.lsm
+Platform:       Linux. Needs KDE 2.x
+Copying-policy: GPL
+End
