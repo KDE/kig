@@ -7,9 +7,6 @@
 
 - make the code in filters/ --enable-final compliant.
 
-- let the user select where the vector sum starts, instead of drawing
-   it in the start point of the first vector.
-
 - add support for work via command line without GUI. Possible options
   and uses:<br />
   -c, --convert-to-native filename.ext => Kig will convert the file in its own
