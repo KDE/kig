@@ -56,9 +56,6 @@ public:
   void leftReleased( QMouseEvent* e, KigWidget* v );
   void midClicked( QMouseEvent* e, KigWidget* v );
   void midReleased( QMouseEvent* e, KigWidget* v );
-  void rightClicked( QMouseEvent*, KigWidget* ) {};
-  void rightMouseMoved( QMouseEvent*, KigWidget* ) {};
-  void rightReleased( QMouseEvent*, KigWidget* ) {};
   void mouseMoved( QMouseEvent* e, KigWidget* v );
 
   void enableActions();
