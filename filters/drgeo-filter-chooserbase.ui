@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>300</width>
-            <height>200</height>
+            <height>202</height>
         </rect>
     </property>
     <property name="caption">
@@ -87,6 +87,9 @@ Please select which to import.</string>
                     <number>6</number>
                 </property>
                 <spacer>
+                    <property name="name">
+                        <cstring>spacer</cstring>
+                    </property>
                     <property name="orientation">
                         <enum>Horizontal</enum>
                     </property>
@@ -128,8 +131,6 @@ Please select which to import.</string>
         </widget>
     </vbox>
 </widget>
-<customwidgets>
-</customwidgets>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>kpushbutton.h</includehint>
