@@ -74,9 +74,9 @@
    <Parent id="23" />
   </Object>
   <Object width="-1" shown="true" type="ScalingOverLine" id="25" color="#0000ff" >
+   <Parent id="22" />
    <Parent id="23" />
    <Parent id="20" />
-   <Parent id="22" />
   </Object>
  </Objects>
 </KigDocument>
