@@ -20,6 +20,8 @@
 
 #include "../misc/i18n.h"
 
+#include <qstringlist.h>
+
 const char* ObjectType::fullName() const
 {
   return mfulltypename;
@@ -70,6 +72,17 @@ const ArgParser& ArgparserObjectType::argParser() const
 bool ObjectType::isTransform() const
 {
   return false;
+}
+
+QStringList ObjectType::specialActions() const
+{
+  return QStringList();
+}
+
+void ObjectType::executeAction( int, RealObject*, KigDocument&, KigWidget&,
+                                NormalMode& ) const
+{
+  assert( false );
 }
 
 

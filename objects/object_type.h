@@ -66,6 +66,17 @@ public:
   // cause transform types are shown separately in an object's RMB
   // menu..
   virtual bool isTransform() const;
+
+  // ObjectType's can define some special actions, that are strictly
+  // specific to the type at hand.  E.g. a text label allows to toggle
+  // the display of a frame around the text.  Constrained and fixed
+  // points can be redefined etc.
+
+  // return i18n'd names for the special actions..
+  virtual QStringList specialActions() const;
+  // execute the i'th action from the specialActions above..
+  virtual void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
+                              NormalMode& m ) const;
 };
 
 /**

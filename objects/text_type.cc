@@ -23,6 +23,10 @@
 #include "point_imp.h"
 #include "object.h"
 
+#include "../kig/kig_view.h"
+
+#include <qstringlist.h>
+
 static const ArgParser::spec arggspeccs[] =
 {
   { ObjectImp::ID_IntImp, "UNUSED" },
@@ -100,4 +104,32 @@ void TextType::move( RealObject* ourobj, const Coordinate&,
   const PointImp* p = static_cast<const PointImp*>( c->imp() );
   const Coordinate n = p->coordinate() + dist;
   c->setImp( new PointImp( n ) );
+}
+
+QStringList TextType::specialActions() const
+{
+  QStringList ret;
+  ret << i18n( "&Toggle frame" );
+  return ret;
+}
+
+void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget& w,
+                              NormalMode& ) const
+{
+  assert( i == 0 );
+
+  Objects parents = o->parents();
+  assert( parents.size() >= 3 );
+
+  Objects firstthree( parents.begin(), parents.begin() + 3 );
+  Objects os = mparser.parse( firstthree );
+
+  assert( os[0]->hasimp( ObjectImp::ID_IntImp ) );
+  assert( os[0]->inherits( Object::ID_DataObject ) );
+
+  int n = (static_cast<const IntImp*>( os[0]->imp() )->data() + 1) % 2;
+  static_cast<DataObject*>( os[0] )->setImp( new IntImp( n ) );
+
+  o->calc( doc );
+  w.redrawScreen();
 }

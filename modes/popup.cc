@@ -506,14 +506,30 @@ void ObjectTypeActionsProvider::fillUpMenu(
 {
   if ( popup.objects().size() != 1 ) return;
   if ( menu != NormalModePopupObjects::ToplevelMenu ) return;
+  Object* to = popup.objects()[0];
+  if ( ! to->inherits( Object::ID_RealObject ) ) return;
+  RealObject* o = static_cast<RealObject*>( to );
+  const ObjectType* t = o->type();
 
+  QStringList l = t->specialActions();
+  mnoa = l.count();
+  for ( int i = 0; i < mnoa; ++i )
+    popup.addAction( menu, l[i], nextfree++ );
 }
 
 bool ObjectTypeActionsProvider::executeAction(
   int menu, int& id, const Objects& os,
-  NormalModePopupObjects& popup,
+  NormalModePopupObjects&,
   KigDocument& doc, KigWidget& w, NormalMode& m )
 {
   if ( menu != NormalModePopupObjects::ToplevelMenu ) return false;
-  return false;
+  if ( id >= mnoa )
+  {
+    id -= mnoa;
+    return false;
+  }
+  assert( os.size() == 1 && os[0]->inherits( Object::ID_RealObject ) );
+  RealObject* o = static_cast<RealObject*>( os[0] );
+  o->type()->executeAction( id, o, doc, w, m );
+  return true;
 }

@@ -41,6 +41,7 @@ class KigDocument;
 class Transformation;
 class QDomElement;
 class QDomDocument;
+class NormalMode;
 
 typedef std::vector<const ObjectImp*> Args;
 typedef QValueList<QCString> QCStringList;
