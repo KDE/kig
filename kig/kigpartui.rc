@@ -74,36 +74,39 @@
 	<Action name="objects_new_linedirectrix" />
 	<Action name="objects_new_lineconicradical" />
       </Menu>
-      <Menu name="new_transformation">
-	<text>&amp;Transformation</text>
-	<Action name="objects_new_translation" />
-	<Action name="objects_new_pointreflection" />
-	<Action name="objects_new_linereflection" />
-	<Action name="objects_new_rotation" />
-	<Action name="objects_new_scalingovercenter" />
-	<Action name="objects_new_scalingoverline" />
-	<Action name="objects_new_castshadow" />
-	<Action name="objects_new_projectiverotation" />
-      </Menu>
       <Menu name="new_cubic">
 	<text>Cu&amp;bics</text>
 	<Action name="objects_new_cubicb9p" />
 	<Action name="objects_new_cubicnodeb6p" />
 	<Action name="objects_new_cubiccuspb4p" />
       </Menu>
+      <Menu name="new_angle">
+	<text>&amp;Angles</text>
+	<Action name="objects_new_angle" />
+	<Action name="objects_new_angle_bisector" />
+      </Menu>
       <Menu name="new_other">
 	<text>&amp;Other</text>
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
-	<Action name="objects_new_angle" />
-	<Action name="objects_new_angle_bisector" />
 	<Action name="objects_new_script_object" />
 	<ActionList name="user_other_types" />
       </Menu>
       <Separator />
       <Action name="delete_objects" />
       <Action name="cancel_construction" />
+    </Menu>
+    <Menu name="new_transformation">
+      <text>&amp;Transformation</text>
+      <Action name="objects_new_translation" />
+      <Action name="objects_new_pointreflection" />
+      <Action name="objects_new_linereflection" />
+      <Action name="objects_new_rotation" />
+      <Action name="objects_new_scalingovercenter" />
+      <Action name="objects_new_scalingoverline" />
+      <Action name="objects_new_castshadow" />
+      <Action name="objects_new_projectiverotation" />
     </Menu>
     <Menu name="types">
       <text>&amp;Types</text>
@@ -162,6 +165,11 @@
     <ActionList name="user_conic_types" />
     <Action name="objects_new_lineconicradical" />
   </Toolbar>    
+  <Toolbar name="angles_toolbar" position="left">
+<text>Angles</text>
+    <Action name="objects_new_angle" />
+    <Action name="objects_new_angle_bisector" />
+  </Toolbar>
   <Toolbar name="transformation_toolbar" position="right">
 <text>Transformation</text>
     <Action name="objects_new_translation" />
@@ -173,8 +181,6 @@
   </Toolbar>
   <Toolbar name="rest_toolbar" position="left">
 <text>Rest</text>
-    <Action name="objects_new_angle" />
-    <Action name="objects_new_angle_bisector" />
     <Action name="objects_new_locus" />
     <Action name="objects_new_textlabel" />
     <Action name="objects_new_script_object" />

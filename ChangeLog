@@ -1,3 +1,13 @@
+2003-06-11  Dominique Devriese  <devriese@kde.org>
+
+	* move transformations to their own menu entry, thanks to Pino
+		Toscano
+
+	* move angle stuff to their own objects submenu, and toolbar,
+		thanks to Pino Toscano
+
+	* update the images in the docs, thanks to Pino Toscano
+
 2003-06-04  Dominique Devriese  <devriese@kde.org>
 
 	* show an appropriate error when trying to open an non-existing

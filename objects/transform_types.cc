@@ -29,8 +29,8 @@
 
 static const ArgParser::spec argsspecTranslation[] =
 {
-  { ObjectImp::ID_VectorImp, "Translate by this vector" },
-  { ObjectImp::ID_AnyImp, "Translate this object" }
+  { ObjectImp::ID_VectorImp, I18N_NOOP("Translate by this vector") },
+  { ObjectImp::ID_AnyImp, I18N_NOOP("Translate this object") }
 };
 
 TranslatedType::TranslatedType()
