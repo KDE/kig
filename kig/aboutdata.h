@@ -19,9 +19,11 @@
 #include <kaboutdata.h>
 #include <klocale.h>
 
+#include "config.h"
+
 inline KAboutData* kigAboutData( const char* name, const char* iname )
 {
-  const char* version = "v0.5.1";
+  const char* version = "v" KIGVERSION;
   const char* description = I18N_NOOP( "KDE Interactive Geometry" );
 
   KAboutData* tmp = new KAboutData( name, iname, version,

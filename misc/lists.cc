@@ -26,6 +26,8 @@
 #include "../objects/object.h"
 #include "../kig/kig_part.h"
 
+#include "config.h"
+
 #include <qfile.h>
 #include <qtextstream.h>
 #include <qdom.h>
@@ -233,7 +235,7 @@ bool MacroList::save( const myvector<Macro*>& ms, const QString& f )
   QDomDocument doc( "KigMacroFile" );
 
   QDomElement docelem = doc.createElement( "KigMacroFile" );
-  docelem.setAttribute( "Version", "0.5.1" );
+  docelem.setAttribute( "Version", KIGVERSION );
   docelem.setAttribute( "Number", ms.size() );
 
   for ( uint i = 0; i < ms.size(); ++i )

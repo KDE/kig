@@ -27,6 +27,8 @@
 #include "../misc/coordinate_system.h"
 #include "../misc/oldkigformat.h"
 
+#include "config.h"
+
 #include <qfile.h>
 #include <qregexp.h>
 #include <qdom.h>
@@ -144,7 +146,7 @@ bool KigFilterNative::save( const KigDocument& kdoc, const QString& to )
 //  doc.appendChild( QDomImplementation().createDocumentType( ... ) );
 
   QDomElement docelem = doc.createElement( "KigDocument" );
-  docelem.setAttribute( "Version", "0.5.1" );
+  docelem.setAttribute( "Version", KIGVERSION );
 
   // save the coordinate system type..
   QDomElement cselem = doc.createElement( "CoordinateSystem" );

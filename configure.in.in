@@ -1,3 +1,5 @@
+kig_version=0.5.1
+
 KDE_LANG_CPLUSPLUS
 
 # this variable is set to true if we need to warn the user that Python
@@ -54,3 +56,7 @@ if test "x$kig_enable_python_scripting" != xno; then
 fi
 
 AM_CONDITIONAL(KIG_COMPILE_PYTHON_SCRIPTING, test x$kig_enable_python_scripting != xno)
+
+AC_SUBST( KIGVERSION, $kig_version )
+AC_DEFINE_UNQUOTED( KIGVERSION, "$kig_version", [The current Kig version as a string] )
+AC_OUTPUT( kig/kig.lsm kig/README kig/package-kig.sh kig/VERSION )
