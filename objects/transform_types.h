@@ -81,4 +81,14 @@ public:
   ObjectImp* calc( const Args& args ) const;
 };
 
+class ProjectiveRotationType
+  : public ObjectType
+{
+  ProjectiveRotationType();
+  ~ProjectiveRotationType();
+public:
+  static const ProjectiveRotationType* instance();
+  ObjectImp* calc( const Args& args ) const;
+};
+
 #endif

@@ -25,6 +25,8 @@
 #include "../misc/coordinate.h"
 #include "../misc/kigtransform.h"
 
+#include <cmath>
+
 static const ArgParser::spec argsspecav[] =
 {
   { ObjectImp::ID_VectorImp, 1 }
@@ -218,4 +220,44 @@ ObjectImp* ScalingOverLineType::calc( const Args& targs ) const
   double ratio = static_cast<const SegmentImp*>( args[1] )->length();
 
   return args[2]->transform( Transformation::scaling( ratio, line ) );
+}
+
+static const ArgParser::spec argsspecra[] =
+{
+  { ObjectImp::ID_RayImp, 1 },
+  { ObjectImp::ID_AngleImp, 1 }
+};
+
+ProjectiveRotationType::ProjectiveRotationType()
+  : ObjectType( "ProjectiveRotation", argsspecra, 2, 1 )
+{
+}
+
+ProjectiveRotationType::~ProjectiveRotationType()
+{
+}
+
+const ProjectiveRotationType* ProjectiveRotationType::instance()
+{
+  static const ProjectiveRotationType t;
+  return &t;
+}
+
+ObjectImp* ProjectiveRotationType::calc( const Args& targs ) const
+{
+  if ( targs.size() < 2 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  if ( !args[2] || !args[0] ) return new InvalidImp;
+  assert( args[0]->inherits( ObjectImp::ID_RayImp ) );
+  const RayImp* ray = static_cast<const RayImp*>( args[0] );
+  Coordinate c1 = ray->data().a;
+  Coordinate dir = ray->data().dir().normalize();
+  double alpha = 0.1*M_PI/2;
+  if ( args[1] )
+  {
+    assert( args[1]->inherits( ObjectImp::ID_AngleImp ) );
+    alpha = static_cast<const AngleImp*>( args[1] )->size();
+  };
+  return args[2]->transform(
+    Transformation::projectiveRotation( alpha, dir, c1 ) );
 }

@@ -268,11 +268,19 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ScalingOverLineType::instance(),
-      I18N_NOOP( "Scaled over line" ),
-      I18N_NOOP( "Scaled an object over a point, by the ratio given by the length of a segment" ),
-      "scaling over line" );
+      I18N_NOOP( "Object scaled over line" ),
+      I18N_NOOP( "An object scaled over a point, by the ratio given by the length of a segment" ),
+      "scalingoverline" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      ProjectiveRotationType::instance(),
+      I18N_NOOP( "Projectively rotated object" ),
+      I18N_NOOP( "An object projectively rotated by an angle and a ray" ),
+      "projectiverotation" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_projectiverotation" ) );
 
     c = new MultiObjectTypeConstructor(
       ConicAsymptoteType::instance(),

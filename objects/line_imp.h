@@ -93,6 +93,9 @@ class RayImp
 public:
   RayImp( const Coordinate& a, const Coordinate& b );
   RayImp( const LineData& d );
+
+  bool inherits( int type ) const;
+
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
 

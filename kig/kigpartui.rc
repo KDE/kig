@@ -76,6 +76,7 @@
 	<Action name="objects_new_rotation" />
 	<Action name="objects_new_scalingovercenter" />
 	<Action name="objects_new_scalingoverline" />
+	<Action name="objects_new_projectiverotation" />
     </Menu>
     <Menu name="new_other">
 	<text>Other</text>

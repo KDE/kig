@@ -355,3 +355,8 @@ double SegmentImp::length() const
 {
   return mdata.length();
 }
+
+bool RayImp::inherits( int type ) const
+{
+  return type == ID_RayImp ? true : Parent::inherits( type );
+}
