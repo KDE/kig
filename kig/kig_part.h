@@ -253,6 +253,7 @@ protected:
   KAction* cancelConstructionAction;
   KAction* deleteObjectsAction;
   KAction* newMacroAction;
+  KAction* showHiddenAction;
 
   KAction* configureTypesAction;
 
