@@ -379,7 +379,9 @@ static const ArgParser::spec argsspecMidPointOfTwoPoints[] =
 };
 
 MidPointOfTwoPointsConstructor::MidPointOfTwoPointsConstructor()
-  : StandardConstructorBase( "", "", "", mparser ),
+  : StandardConstructorBase( "Mid Point",
+                             "Construct the midpoint of two points",
+                             "bisection", mparser ),
     mparser( argsspecMidPointOfTwoPoints, 2 )
 {
 }
@@ -410,6 +412,7 @@ Objects MidPointOfTwoPointsConstructor::build(
   int index = seg->propertiesInternalNames().findIndex( "mid-point" );
   assert( index != -1 );
   PropertyObject* prop = new PropertyObject( seg, index );
+  prop->calc( d );
   RealObject* point = new RealObject( CopyObjectType::instance(), Objects( prop ) );
   return Objects( point );
 }

@@ -224,18 +224,29 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_equilateralhyperbolab4p" ) );
 
     {
+      // now for the Mid Point action.  It does both the mid point of
+      // a segment, and the mid point of two points.  The midpoint of
+      // two segments just shows the mid point property, and therefore
+      // doesn't need to be added to the ctors, because there are
+      // already facilities to construct an object's properties..
+      // therefore, we add only an mpotp to the ctors, and add the
+      // merged constructor only to the actions..
+      ctors->add( new MidPointOfTwoPointsConstructor() );
+
       ObjectConstructor* mpotp = new MidPointOfTwoPointsConstructor();
       ObjectConstructor* mpos = new PropertyObjectConstructor(
         ObjectImp::ID_SegmentImp, I18N_NOOP( "Construct the midpoint of this segment" ),
         "", "", "", "mid-point" );
-      MergeObjectConstructor* m = new MergeObjectConstructor(
-        I18N_NOOP( "Midpoint" ),
+
+      // make this a static object, so it gets deleted at the end of
+      // the program.
+      static MergeObjectConstructor m(
+        I18N_NOOP( "Mid Point" ),
         I18N_NOOP( "The midpoint of a segment or two other points" ),
         "bisection" );
-      m->merge( mpotp );
-      m->merge( mpos );
-      ctors->add( m );
-      actions->add( new ConstructibleAction( m, "objects_new_midpoint" ) );
+      m.merge( mpotp );
+      m.merge( mpos );
+      actions->add( new ConstructibleAction( &m, "objects_new_midpoint" ) );
     };
 
     c = new SimpleObjectTypeConstructor(
