@@ -225,7 +225,7 @@ void KigDocument::setupActions()
 #ifdef KIG_PART_CPP_STD_FULLSCREEN_ACTION
   a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), 0 );
 #else
-  tmp = l->loadIcon( "window_fullscreen", KIcon::User );
+  tmp = l->loadIcon( "window_fullscreen", KIcon::Toolbar );
   a = new KAction(
     i18n( "Full Screen" ), tmp, CTRL+SHIFT+Key_F,
     m_widget, SLOT( toggleFullScreen() ),
@@ -368,7 +368,8 @@ bool KigDocument::saveFile()
       (
         widget(),
         i18n( "Kig does not support saving to any other file format than "
-              "its own." ).arg( mimeType->name() ),
+              "its own." ),
+//              "its own." ).arg( mimeType->name() ),
         i18n( "Format not Supported" )
         );
     return false;

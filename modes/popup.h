@@ -55,7 +55,7 @@ public:
   // the different "menu's", the toplevel is considered as just
   // another menu..
   enum { TransformMenu = 0, TestMenu, ConstructMenu, StartMenu, ShowMenu,
-         SetColorMenu, SetSizeMenu, ToplevelMenu,
+         SetColorMenu, SetSizeMenu, SetStyleMenu, ToplevelMenu,
          SetCoordinateSystemMenu, NumberOfMenus };
 
   // used by the PopupActionProvider's to add actions to us..
@@ -81,6 +81,7 @@ private slots:
   void showMenuSlot( int );
   void setColorMenuSlot( int );
   void setSizeMenuSlot( int );
+  void setStyleMenuSlot( int );
   void toplevelMenuSlot( int );
   void setCoordinateSystemMenuSlot( int );
 

@@ -83,6 +83,16 @@ ObjectDrawer* ObjectDrawer::getCopyWidth( int w ) const
   return ret;
 }
 
+ObjectDrawer* ObjectDrawer::getCopyStyle( Qt::PenStyle s ) const
+{
+  ObjectDrawer* ret = new ObjectDrawer;
+  ret->mcolor = mcolor;
+  ret->mshown = mshown;
+  ret->mwidth = mwidth;
+  ret->mstyle = s;
+  return ret;
+}
+
 int ObjectDrawer::width() const
 {
   return mwidth;

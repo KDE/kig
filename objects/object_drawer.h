@@ -53,7 +53,7 @@ class ObjectDrawer
 public:
   /**
    * Construct a new ObjectDrawer with a default color ( Qt::blue ),
-   * width ( -1 ), and shown state ( true ).
+   * width ( -1 ), shown state ( true ) and PenStyle ( SolidLine ).
    */
   ObjectDrawer();
   ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine );
@@ -85,6 +85,9 @@ public:
   // returns a new ObjectDrawer that is identical to this one.. except
   // that the width is set to w..
   ObjectDrawer* getCopyWidth( int w ) const;
+  // returns a new ObjectDrawer that is identical to this one.. except
+  // that the PenStyle state is set to s..
+  ObjectDrawer* getCopyStyle( Qt::PenStyle s ) const;
 };
 
 #endif

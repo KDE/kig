@@ -28,7 +28,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 
   KAboutData* tmp = new KAboutData( name, iname, version,
 				   description, KAboutData::License_GPL,
-				   "(C) 2002-2004, The Kig developers");
+				   I18N_NOOP( "(C) 2002-2004, The Kig developers" ) );
   tmp->addAuthor("Dominique Devriese",
                  I18N_NOOP("Original author, maintenance, design and lots of code."),
 		  "devriese@kde.org" );
@@ -41,12 +41,12 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 
   tmp->addAuthor( "Franco Pasquarelli",
                   I18N_NOOP( "Helped a lot with the implementation of the Locus object, "
-                             "there's quite some math involved in doing it right, and"
+                             "there's quite some math involved in doing it right, and "
                              "Franco wrote the most difficult parts." ),
                   "pasqui@dmf.bs.unicatt.it" );
 
   tmp->addAuthor( "Pino Toscano",
-                  I18N_NOOP( "Worked on the DrGeo import filter and the Italian translations,"
+                  I18N_NOOP( "Worked on the Dr. Geo import filter and the Italian translations, "
                              "also gave me lots of useful feedback, "
                              "like feature requests and bug reports." ),
                   "toscano.pino@tiscali.it" );

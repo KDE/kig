@@ -189,6 +189,8 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
            this, SLOT( setColorMenuSlot( int ) ) );
   connect( mmenus[SetSizeMenu], SIGNAL( activated( int ) ),
            this, SLOT( setSizeMenuSlot( int ) ) );
+  connect( mmenus[SetStyleMenu], SIGNAL( activated( int ) ),
+           this, SLOT( setStyleMenuSlot( int ) ) );
   connect( mmenus[SetCoordinateSystemMenu], SIGNAL( activated( int ) ),
            this, SLOT( setCoordinateSystemMenuSlot( int ) ) );
 
@@ -207,6 +209,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
       i18n( "Add Te&xt Label" ),
       i18n( "Set Co&lor" ),
       i18n( "Set Si&ze" ),
+      i18n( "Set St&yle" ),
       QString::null,
       i18n( "Set Coordinate S&ystem" )
     };
@@ -332,6 +335,70 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       popup.addAction( menu, p, nextfree++ );
     };
   }
+  else if ( menu == NormalModePopupObjects::SetStyleMenu )
+  {
+    bool samecolor = true;
+    int npoints = 0;
+    int nothers = 0;
+    std::vector<ObjectHolder*> os = popup.objects();
+    QColor color = os.front()->drawer()->color();
+    for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
+    {
+      if ( (*i)->imp()->inherits( PointImp::stype() ) )
+        npoints++;
+      else
+        nothers++;
+      if ( (*i)->drawer()->color() != color ) samecolor = false;
+    };
+    bool point = ( npoints > nothers );
+    if ( ! samecolor ) color = Qt::blue;
+    if ( point )
+      for ( int i = 1; i < 2; ++i )
+      {
+        QPixmap p( 20, 20 );
+        QPainter ptr( &p );
+        p.fill( popup.eraseColor() );
+//        switch ( i )
+//        {
+//          case 1:
+//          {
+            ptr.setPen( QPen( color, 1 ) );    
+            ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
+            QRect r( 6, 6, 8, 8 );
+            ptr.drawEllipse( r );
+//            break;
+//          }
+//        }
+        ptr.end();
+        popup.addAction( menu, p, nextfree++ );
+      }
+    else
+      for ( int i = 1; i < 4; ++i )
+      {
+        QPixmap p( 50, 20 );
+        QPainter ptr( &p );
+        p.fill( popup.eraseColor() );
+        ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
+        Qt::PenStyle ps = Qt::SolidLine;
+        switch ( i )
+        {
+          case 2:
+          {
+            ps = Qt::DashLine;
+            break;
+          }
+          case 3:
+          {
+            ps = Qt::DotLine;
+            break;
+          }
+        }
+        ptr.setPen( QPen( color, 1, ps ) );
+        ptr.drawLine( QPoint( 0, 10 ), QPoint( 50, 10 ) );
+        ptr.end();
+        popup.addAction( menu, p, nextfree++ );
+      };
+  }
 }
 
 bool BuiltinObjectActionsProvider::executeAction(
@@ -408,6 +475,54 @@ bool BuiltinObjectActionsProvider::executeAction(
       kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyWidth( 1 + 2 * id ) ) );
     doc.history()->addCommand( kc );
     mode.clearSelection();
+    return true;
+  }
+  else if ( menu == NormalModePopupObjects::SetStyleMenu )
+  {
+    int npoints = 0;
+    int nothers = 0;
+    for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
+    {
+      if ( (*i)->imp()->inherits( PointImp::stype() ) )
+        npoints++;
+      else
+        nothers++;
+    };
+    bool point = ( npoints > nothers );
+    int max = point ? 1 : 3;
+    if ( id >= max )
+    {
+      id -= max;
+      return false;
+    };
+
+    if ( point )
+    {
+      return true;
+    }
+    else
+    {
+      Qt::PenStyle p = Qt::SolidLine;
+      switch ( id )
+      {
+        case 2:
+        {
+          p = Qt::DashLine;
+          break;
+        }
+        case 3:
+        {
+          p = Qt::DotLine;
+          break;
+        }
+      }
+      KigCommand* kc = new KigCommand( doc, i18n( "Change Object Style" ) );
+      for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
+        if ( ! (*i)->imp()->inherits( PointImp::stype() ) )
+          kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyStyle( p ) ) );
+      doc.history()->addCommand( kc );
+      mode.clearSelection();
+    }
     return true;
   }
   else return false;
@@ -499,6 +614,11 @@ void NormalModePopupObjects::setColorMenuSlot( int i )
 void NormalModePopupObjects::setSizeMenuSlot( int i )
 {
   activateAction( SetSizeMenu, i );
+}
+
+void NormalModePopupObjects::setStyleMenuSlot( int i )
+{
+  activateAction( SetStyleMenu, i );
 }
 
 void NormalModePopupObjects::setCoordinateSystemMenuSlot( int i )
@@ -657,7 +777,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
     popup.addAction( menu, p, i18n( "Zoom &In" ), nextfree++ );
     p = l->loadIcon( "viewmag-", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "Zoom &Out" ), nextfree++ );
-    p = l->loadIcon( "window_fullscreen", KIcon::User );
+    p = l->loadIcon( "window_fullscreen", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "Toggle &Full Screen Mode" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
