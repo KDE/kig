@@ -869,6 +869,10 @@ const int MeasureTransportConstructor::wantArgs(
 
   // TODO: insert here a check that this point lies on the
   // curve defined by os[1]
+//  if ( !c->containsPoint( p, doc ) )
+//    return new InvalidImp;
+  if ( ! isPointOnCurve( os[2], os[1] ) )
+    return ArgsParser::Invalid;
 
   if ( os.size() == 3 ) return ArgsParser::Complete;
 

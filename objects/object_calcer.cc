@@ -314,7 +314,9 @@ bool ObjectTypeCalcer::isDefinedOnOrThrough( const ObjectCalcer* o ) const
     mparents.begin(), mparents.end(),
     std::back_inserter( args ),
     std::mem_fun( &ObjectCalcer::imp ) );
-  assert( std::find( args.begin(), args.end(), o->imp() ) != args.end() );
+  if ( std::find( args.begin(), args.end(), o->imp() ) == args.end() )
+    return false;
+
   return mtype->isDefinedOnOrThrough( o->imp(), args );
 }
 
