@@ -110,7 +110,7 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
   for ( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
     (*i)->startMove( c );
 
-  Objects os;
+  Objects objs;
   Objects tmp( emo ), tmp2;
   while (!tmp.empty())
   {
@@ -119,9 +119,9 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
     // children...: these will be changing
     for (Objects::iterator i = tmp.begin(); i != tmp.end(); ++i )
     {
-      if (!os.contains(*i))
+      if (!objs.contains(*i))
       {
-        os.push_back(*i);
+        objs.push_back(*i);
         tmp2 |= (*i)->getChildren();
         Objects tmp3 = (*i)->getParents();
         tmp2 |= tmp3;
@@ -129,7 +129,7 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
     };
     tmp = tmp2;
   };
-  initScreen( os );
+  initScreen( objs );
 }
 
 MovingMode::~MovingMode()
