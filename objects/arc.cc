@@ -44,7 +44,7 @@ Arc::Arc( const Objects& os )
 }
 
 Arc::Arc( const Arc& a )
-  : Object()
+  : Object( a )
 {
   std::copy( a.mpts, a.mpts+3, mpts );
   std::for_each( mpts, mpts+3, std::bind2nd( std::mem_fun( &Object::addChild ), this ) );
@@ -52,16 +52,6 @@ Arc::Arc( const Arc& a )
 
 Arc::~Arc()
 {
-}
-
-Arc* Arc::toArc()
-{
-  return this;
-}
-
-const Arc* Arc::toArc() const
-{
-  return this;
 }
 
 const QCString Arc::vBaseTypeName() const
@@ -354,4 +344,9 @@ const QCStringList Arc::properties() const
   l << I18N_NOOP( "Angle in degrees" );
   assert( l.size() == Arc::numberOfProperties() );
   return l;
+}
+
+bool Arc::isa( int type ) const
+{
+  return type == ArcT ? true : Parent::isa( type );
 }

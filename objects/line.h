@@ -27,17 +27,17 @@
 class Line
   : public AbstractLine
 {
+  typedef AbstractLine Parent;
 public:
   Line() {};
   Line( const Line& l );
   ~Line() {};
 
+  bool isa( int type ) const;
+
   // type identification
   virtual const QCString vBaseTypeName() const;
   static const QCString sBaseTypeName();
-
-  virtual Line* toLine();
-  virtual const Line* toLine() const;
 
   bool contains (const Coordinate& o, const ScreenInfo& si ) const;
   void draw (KigPainter& p, bool showSelection) const;

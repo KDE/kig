@@ -61,9 +61,6 @@ public:
   // with the same method as in redefine()...
   static NormalPoint* sensiblePoint( const Coordinate& c, const KigDocument&, const KigWidget& w );
 
-  virtual NormalPoint* toNormalPoint();
-  virtual const NormalPoint* toNormalPoint() const;
-
   FixedPointImp* fixedImp();
   const FixedPointImp* fixedImp() const;
   ConstrainedPointImp* constrainedImp();

@@ -424,11 +424,6 @@ const ConstrainedPointImp* NormalPointImp::toConstrained() const
   return 0;
 }
 
-NormalPoint* NormalPoint::toNormalPoint()
-{
-  return this;
-}
-
 FixedPointImp* FixedPointImp::toFixed()
 {
   return this;
@@ -522,11 +517,6 @@ NormalPoint* NormalPoint::sensiblePoint( const Coordinate& c,
   NormalPoint* p = fixedPoint( c );
   p->redefine( c, d, w );
   return p;
-}
-
-const NormalPoint* NormalPoint::toNormalPoint() const
-{
-  return this;
 }
 
 const char* NormalPoint::sActionName()

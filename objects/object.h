@@ -146,33 +146,33 @@ public:
 
   // getting types from this object: easier to type and supports
   // MacroObjectOne
-  virtual Point* toPoint() { return 0; };
-  virtual Segment* toSegment() { return 0; };
-  virtual Vector* toVector() { return 0; };
-  virtual Ray* toRay() { return 0; };
-  virtual Line* toLine() { return 0; };
-  virtual Circle* toCircle() { return 0; };
-  virtual Conic* toConic() { return 0; };
-  virtual Cubic* toCubic() { return 0; };
-  virtual Curve* toCurve() { return 0; };
-  virtual NormalPoint* toNormalPoint() { return 0; };
-  virtual TextLabel* toTextLabel() { return 0; };
-  virtual AbstractLine* toAbstractLine() { return 0; };
-  virtual Arc* toArc() { return 0; };
+  Point* toPoint();
+  Segment* toSegment();
+  Vector* toVector();
+  Ray* toRay();
+  Line* toLine();
+  Circle* toCircle();
+  Conic* toConic();
+  Cubic* toCubic();
+  Curve* toCurve();
+  NormalPoint* toNormalPoint();
+  TextLabel* toTextLabel();
+  AbstractLine* toAbstractLine();
+  Arc* toArc();
 
-  virtual const Point* toPoint() const { return 0; };
-  virtual const Segment* toSegment() const { return 0; };
-  virtual const Vector* toVector() const { return 0; };
-  virtual const Ray* toRay() const { return 0; };
-  virtual const Line* toLine() const { return 0; };
-  virtual const Circle* toCircle() const { return 0; };
-  virtual const Conic* toConic() const { return 0; };
-  virtual const Cubic* toCubic() const { return 0; };
-  virtual const Curve* toCurve() const { return 0; };
-  virtual const NormalPoint* toNormalPoint() const { return 0; };
-  virtual const TextLabel* toTextLabel() const { return 0; };
-  virtual const AbstractLine* toAbstractLine() const { return 0; };
-  virtual const Arc* toArc() const { return 0; };
+  const Point* toPoint() const;
+  const Segment* toSegment() const;
+  const Vector* toVector() const;
+  const Ray* toRay() const;
+  const Line* toLine() const;
+  const Circle* toCircle() const;
+  const Conic* toConic() const;
+  const Cubic* toCubic() const;
+  const Curve* toCurve() const;
+  const NormalPoint* toNormalPoint() const;
+  const TextLabel* toTextLabel() const;
+  const AbstractLine* toAbstractLine() const;
+  const Arc* toArc() const;
 
   // type identification:
   // there are several functions: you don't need all of them in your
@@ -375,6 +375,9 @@ public:
   enum ObjectType {
     PointT,
     AbstractLineT,
+    SegmentT,
+    LineT,
+    CubicT,
     ArcT,
     CircleT,
     ConicT,

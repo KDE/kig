@@ -1,4 +1,4 @@
-// direction.h
+// curve.cc
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,39 +16,9 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef ABSTRACTLINE_H
-#define ABSTRACTLINE_H
-
 #include "curve.h"
 
-struct LineData;
-
-/**
- * This class is an abstract interface to an object that is somewhat
- * of a line.. Examples are Line, Segment, Ray etc.
- */
-class AbstractLine
-  : public Curve
+bool Curve::isa( int type ) const
 {
-  typedef Curve Parent;
-  int msize;
-public:
-  AbstractLine();
-  AbstractLine( const AbstractLine& l );
-  virtual const Coordinate p1() const = 0;
-  virtual const Coordinate p2() const = 0;
-  const LineData lineData() const;
-
-  const Coordinate direction() const;
-
-  virtual bool isa( int type ) const;
-
-  double slope() const;
-
-  const uint numberOfProperties() const;
-  const Property property( uint which, const KigWidget& w ) const;
-  const QCStringList properties() const;
-  const QString equationString( const KigWidget& w ) const;
-};
-
-#endif
+  return type == CurveT ? true : Parent::isa( type );
+}

@@ -354,16 +354,6 @@ double Circle::radius() const
   return mradius;
 }
 
-Circle* Circle::toCircle()
-{
-  return this;
-}
-
-const Circle* Circle::toCircle() const
-{
-  return this;
-}
-
 const ConicCartesianEquationData Circle::cartesianEquationData() const
 {
   Coordinate c = center();
@@ -462,4 +452,9 @@ Coordinate Circle::focus1() const
 Coordinate Circle::focus2() const
 {
   return focus1();
+}
+
+bool Circle::isa( int type ) const
+{
+  return type == CircleT ? true : Parent::isa( type );
 }

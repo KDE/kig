@@ -208,16 +208,6 @@ void ConicBFFP::sDrawPrelimCommon( KigPainter& p, const Objects& args, int type)
   p.drawConic( data );
 }
 
-Conic* Conic::toConic()
-{
-  return this;
-}
-
-const Conic* Conic::toConic() const
-{
-  return this;
-}
-
 void ConicB5P::calc()
 {
   std::vector<Coordinate> points;
@@ -544,7 +534,7 @@ int Conic::conicType() const
   return 0;
 }
 
-QString Conic::type() const
+QString Conic::conicTypeString() const
 {
   switch (conicType())
   {
@@ -591,7 +581,7 @@ const Property Conic::property( uint which, const KigWidget& w ) const
 
   if ( which < Curve::numberOfProperties() ) return Curve::property( which, w );
   if ( which == Curve::numberOfProperties() + pnum++ )
-    return Property( type() );
+    return Property( conicTypeString() );
   else if ( which == Curve::numberOfProperties() + pnum++ )
     return Property( focus1() );
   else if ( which == Curve::numberOfProperties() + pnum++ )
@@ -1065,4 +1055,9 @@ const ConicPolarEquationData ConicBDFP::polarEquationData() const
 const ConicCartesianEquationData ConicBDFP::cartesianEquationData() const
 {
   return ConicCartesianEquationData( pequation );
+}
+
+bool Conic::isa( int type ) const
+{
+  return type == ConicT ? true : Parent::isa( type );
 }

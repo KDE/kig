@@ -137,16 +137,6 @@ void TextLabel::moveTo( const Coordinate& c )
   mpwwmt = c;
 }
 
-const TextLabel* TextLabel::toTextLabel() const
-{
-  return this;
-}
-
-TextLabel* TextLabel::toTextLabel()
-{
-  return this;
-}
-
 const QCString TextLabel::vBaseTypeName() const
 {
   return sBaseTypeName();
@@ -272,4 +262,9 @@ const QCStringList TextLabel::properties() const
   l << I18N_NOOP( "Text" );
   assert( l.size() == TextLabel::numberOfProperties() );
   return l;
+}
+
+bool TextLabel::isa( int type ) const
+{
+  return type == TextLabelT ? true : Parent::isa( type );
 }

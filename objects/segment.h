@@ -28,14 +28,14 @@
 class Segment
   : public AbstractLine
 {
+  typedef AbstractLine Parent;
 public:
   Segment( const Objects& os );
   Segment( const Segment& s );
   ~Segment();
 
-  // type identification
-  Segment* toSegment();
-  const Segment* toSegment() const;
+  bool isa( int type ) const;
+
   // some type information
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();

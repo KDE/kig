@@ -26,14 +26,14 @@
 class Ray
   : public AbstractLine
 {
+  typedef AbstractLine Parent;
 public:
   Ray( const Objects& os );
   Ray( const Ray& s );
   ~Ray();
 
-  // type identification
-  Ray* toRay();
-  const Ray* toRay() const;
+  bool isa( int type ) const;
+
   // some type information
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();

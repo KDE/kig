@@ -48,16 +48,6 @@ void Point::draw (KigPainter& p, bool ss) const
   p.setBrush (Qt::NoBrush);
 };
 
-Point* Point::toPoint()
-{
-  return this;
-}
-
-const Point* Point::toPoint() const
-{
-  return this;
-}
-
 const QCString Point::vBaseTypeName() const
 {
   return sBaseTypeName();
@@ -182,4 +172,9 @@ void Point::sDrawPrelimPoint( KigPainter& pt, const Coordinate& p )
   pt.setPen( QPen (Qt::red,1) );
   pt.setBrushColor( Qt::red );
   pt.drawFatPoint( p );
+}
+
+bool Point::isa( int type ) const
+{
+  return type == PointT ? true : Parent::isa( type );
 }

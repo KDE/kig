@@ -210,16 +210,6 @@ LineRadical::LineRadical(const LineRadical& l)
   if( c2 ) c2->addChild( this );
 }
 
-Line* Line::toLine()
-{
-  return this;
-}
-
-const Line* Line::toLine() const
-{
-  return this;
-}
-
 const QCString Line::sBaseTypeName()
 {
   return I18N_NOOP("line");
@@ -507,4 +497,9 @@ const Coordinate Line::p1() const
 const Coordinate Line::p2() const
 {
   return mpb;
+}
+
+bool Line::isa( int type ) const
+{
+  return type == LineT ? true : Parent::isa( type );
 }

@@ -32,13 +32,13 @@
 class Arc
   : public Object
 {
+  typedef Object Parent;
 public:
   Arc( const Objects& os );
   Arc( const Arc& a );
   ~Arc();
 
-  Arc* toArc();
-  const Arc* toArc() const;
+  virtual bool isa( int type ) const;
 
   // some type information
   const QCString vBaseTypeName() const;

@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef LABEL_H
-#define LABEL_H
+#ifndef KIG_OBJECTS_LABEL_H
+#define KIG_OBJECTS_LABEL_H
 
 #include "object.h"
 
@@ -29,6 +29,7 @@
 class TextLabel
   : public Object
 {
+  typedef Object Parent;
 public:
   typedef std::vector<TextLabelProperty> propvect;
 
@@ -37,11 +38,10 @@ public:
   TextLabel( const QString text, const Coordinate c, const propvect& props );
   ~TextLabel();
 
+  virtual bool isa( int type ) const;
+
   prop_map getParams ();
   void setParams ( const prop_map& );
-
-  const TextLabel* toTextLabel() const;
-  TextLabel* toTextLabel();
 
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();

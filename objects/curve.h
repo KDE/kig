@@ -18,9 +18,8 @@
  USA
 **/
 
-
-#ifndef CURVE_H
-#define CURVE_H
+#ifndef KIG_OBJECTS_CURVE_H
+#define KIG_OBJECTS_CURVE_H
 
 #include "object.h"
 
@@ -29,9 +28,9 @@
 class Curve
 : public Object
 {
+  typedef Object Parent;
 public:
-  Curve* toCurve() { return this; };
-  const Curve* toCurve() const { return this; };
+  virtual bool isa( int type ) const;
 
   // param is between 0 and 1.  Note that 0 and 1 should be the
   // end-points.  E.g. for a Line, getPoint(0) returns an infinite
@@ -43,4 +42,4 @@ public:
   virtual double getParam ( const Coordinate& p ) const = 0;
 };
 
-#endif // CURVE_H
+#endif // KIG_OBJECTS_CURVE_H

@@ -29,6 +29,7 @@
 class Circle
   : public Conic
 {
+  typedef Conic Parent;
  public:
   Circle();
   Circle( const Circle& c );
@@ -38,8 +39,7 @@ class Circle
   const Property property( uint which, const KigWidget& w ) const;
   const QCStringList properties() const;
 
-  Circle* toCircle();
-  const Circle* toCircle() const;
+  virtual bool isa( int type ) const;
 
   // type identification
   virtual const QCString vBaseTypeName() const { return sBaseTypeName();};

@@ -49,16 +49,6 @@ Vector::~Vector()
 {
 };
 
-Vector* Vector::toVector()
-{
-  return this;
-}
-
-const Vector* Vector::toVector() const
-{
-  return this;
-}
-
 const QCString Vector::vBaseTypeName() const
 {
   return sBaseTypeName();
@@ -217,4 +207,9 @@ const Coordinate Vector::getP2() const
 const Coordinate Vector::getDir() const
 {
   return getP2() - getP1();
+}
+
+bool Vector::isa( int type ) const
+{
+  return type == VectorT ? true : Parent::isa( type );
 }

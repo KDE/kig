@@ -22,6 +22,15 @@
 
 #include "coordproppoint.h"
 #include "label.h"
+#include "segment.h"
+#include "vector.h"
+#include "ray.h"
+#include "arc.h"
+#include "line.h"
+#include "circle.h"
+#include "conic.h"
+#include "cubic.h"
+#include "normalpoint.h"
 #include "property.h"
 
 #include "../misc/types.h"
@@ -324,7 +333,138 @@ void Object::stopMove()
   // default is that we don't move..
 }
 
-bool Object::isa( int type ) const
+bool Object::isa( int ) const
 {
   return false;
 }
+
+Point* Object::toPoint()
+{
+  return isa( PointT ) ? static_cast<Point*>( this ) : 0;
+}
+
+Segment* Object::toSegment()
+{
+  return isa( SegmentT ) ? static_cast<Segment*>( this ) : 0;
+};
+
+Vector* Object::toVector()
+{
+  return isa( VectorT ) ? static_cast<Vector*>( this ) : 0;
+};
+
+Ray* Object::toRay()
+{
+  return isa( RayT ) ? static_cast<Ray*>( this ) : 0;
+};
+
+Line* Object::toLine()
+{
+  return isa( LineT ) ? static_cast<Line*>( this ) : 0;
+};
+
+Circle* Object::toCircle()
+{
+  return isa( CircleT ) ? static_cast<Circle*>( this ) : 0;
+};
+
+Conic* Object::toConic()
+{
+  return isa( ConicT ) ? static_cast<Conic*>( this ) : 0;
+};
+
+Cubic* Object::toCubic()
+{
+  return isa( CubicT ) ? static_cast<Cubic*>( this ) : 0;
+};
+
+Curve* Object::toCurve()
+{
+  return isa( CurveT ) ? static_cast<Curve*>( this ) : 0;
+};
+
+NormalPoint* Object::toNormalPoint()
+{
+  return isa( NormalPointT ) ? static_cast<NormalPoint*>( this ) : 0;
+};
+
+TextLabel* Object::toTextLabel()
+{
+  return isa( TextLabelT ) ? static_cast<TextLabel*>( this ) : 0;
+};
+
+AbstractLine* Object::toAbstractLine()
+{
+  return isa( AbstractLineT ) ? static_cast<AbstractLine*>( this ) : 0;
+};
+
+Arc* Object::toArc()
+{
+  return isa( ArcT ) ? static_cast<Arc*>( this ) : 0;
+};
+
+const Point* Object::toPoint() const
+{
+  return isa( PointT ) ? static_cast<const Point*>( this ) : 0;
+};
+
+const Segment* Object::toSegment() const
+{
+  return isa( SegmentT ) ? static_cast<const Segment*>( this ) : 0;
+};
+
+const Vector* Object::toVector() const
+{
+  return isa( VectorT ) ? static_cast<const Vector*>( this ) : 0;
+};
+
+const Ray* Object::toRay() const
+{
+  return isa( RayT ) ? static_cast<const Ray*>( this ) : 0;
+};
+
+const Line* Object::toLine() const
+{
+  return isa( LineT ) ? static_cast<const Line*>( this ) : 0;
+};
+
+const Circle* Object::toCircle() const
+{
+  return isa( CircleT ) ? static_cast<const Circle*>( this ) : 0;
+};
+
+const Conic* Object::toConic() const
+{
+  return isa( ConicT ) ? static_cast<const Conic*>( this ) : 0;
+};
+
+const Cubic* Object::toCubic() const
+{
+  return isa( CubicT ) ? static_cast<const Cubic*>( this ) : 0;
+};
+
+const Curve* Object::toCurve() const
+{
+  return isa( CurveT ) ? static_cast<const Curve*>( this ) : 0;
+};
+
+const NormalPoint* Object::toNormalPoint() const
+{
+  return isa( NormalPointT ) ? static_cast<const NormalPoint*>( this ) : 0;
+};
+
+const TextLabel* Object::toTextLabel() const
+{
+  return isa( TextLabelT ) ? static_cast<const TextLabel*>( this ) : 0;
+};
+
+const AbstractLine* Object::toAbstractLine() const
+{
+  return isa( AbstractLineT ) ? static_cast<const AbstractLine*>( this ) : 0;
+};
+
+const Arc* Object::toArc() const
+{
+  return isa( ArcT ) ? static_cast<const Arc*>( this ) : 0;
+};
+

@@ -40,9 +40,6 @@ public:
   CoordinatePropertyPoint( const CoordinatePropertyPoint& p );
   ~CoordinatePropertyPoint();
 
-  virtual CoordinatePropertyPoint* toCooordinatePropertyPoint();
-  virtual const CoordinatePropertyPoint* toCooordinatePropertyPoint() const;
-
   prop_map getParams();
   void setParams( const prop_map& m );
 

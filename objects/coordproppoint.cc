@@ -38,16 +38,6 @@ CoordinatePropertyPoint::~CoordinatePropertyPoint()
 {
 }
 
-CoordinatePropertyPoint* CoordinatePropertyPoint::toCooordinatePropertyPoint()
-{
-  return this;
-}
-
-const CoordinatePropertyPoint* CoordinatePropertyPoint::toCooordinatePropertyPoint() const
-{
-  return this;
-}
-
 Object::prop_map CoordinatePropertyPoint::getParams()
 {
   prop_map m = Point::getParams();

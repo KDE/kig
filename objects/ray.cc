@@ -160,16 +160,6 @@ void Ray::sDrawPrelim( KigPainter& p, const Objects& os )
   p.drawRay( a, b );
 }
 
-Ray* Ray::toRay()
-{
-  return this;
-}
-
-const Ray* Ray::toRay() const
-{
-  return this;
-}
-
 const QCString Ray::vBaseTypeName() const
 {
   return sBaseTypeName();
@@ -244,4 +234,9 @@ const Coordinate Ray::p2() const
 const char* Ray::sActionName()
 {
   return "objects_new_ray";
+}
+
+bool Ray::isa( int type ) const
+{
+  return type == RayT ? true : Parent::isa( type );
 }

@@ -86,3 +86,8 @@ const LineData AbstractLine::lineData() const
 {
   return LineData( p1(), p2() );
 }
+
+bool AbstractLine::isa( int type ) const
+{
+  return type == AbstractLineT ? true : Parent::isa( type );
+}

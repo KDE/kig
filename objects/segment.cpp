@@ -146,16 +146,6 @@ Segment::Segment(const Segment& s)
   mpb->addChild(this);
 }
 
-Segment* Segment::toSegment()
-{
-  return this;
-}
-
-const Segment* Segment::toSegment() const
-{
-  return this;
-}
-
 const QCString Segment::vBaseTypeName() const
 {
   return sBaseTypeName();
@@ -253,4 +243,9 @@ const QCStringList Segment::properties() const
   s << I18N_NOOP( "Length" );
   assert( s.size() == Segment::numberOfProperties() );
   return s;
+}
+
+bool Segment::isa( int type ) const
+{
+  return type == SegmentT ? true : Parent::isa( type );
 }

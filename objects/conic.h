@@ -36,13 +36,13 @@
 class Conic
   : public Curve
 {
+  typedef Curve Parent;
  public:
   Conic();
   Conic( const Conic& c );
   ~Conic();
 
-  Conic* toConic();
-  const Conic* toConic() const;
+  virtual bool isa( int type ) const;
 
   // type identification
   virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
@@ -59,7 +59,7 @@ class Conic
    * parabola's...
    */
   virtual int conicType() const;
-  virtual QString type() const;
+  virtual QString conicTypeString() const;
   virtual QString cartesianEquationString( const KigWidget& w ) const;
   virtual QString polarEquationString( const KigWidget& w ) const;
   virtual const ConicCartesianEquationData cartesianEquationData() const;

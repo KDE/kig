@@ -29,14 +29,13 @@ class Rect;
 class Point
 : public Object
 {
+  typedef Object Parent;
 protected:
   Point();
   Point( const Coordinate& p );
   Point( const Point& p );
 public:
-  // type info:
-  Point* toPoint();
-  const Point* toPoint() const;
+  bool isa( int type ) const;
 
   // type identification
   virtual const QCString vBaseTypeName() const;

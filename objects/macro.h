@@ -47,11 +47,13 @@ class MacroObjectOne
   Object* final;
   const MType* mtype;
 public:
-  const Object* getFinal() const { return final; };
-  Object* getFinal() { return final; };
   MacroObjectOne( const MType* type, ObjectHierarchy* inHier, const Objects& args );
   MacroObjectOne(const MacroObjectOne& m);
   ~MacroObjectOne();
+
+  const Curve* toCurve() const;
+  Curve* toCurve();
+
   void draw (KigPainter& p, bool ss) const;
   bool contains (const Coordinate& p, const ScreenInfo& si ) const;
   bool inRect(const Rect& r) const;
@@ -70,8 +72,6 @@ public:
   const QCString vIconFileName() const { return 0; };
   Objects getParents() const { return arguments; };
 
-  Curve* toCurve();
-  const Curve* toCurve() const;
   double getParam( const Coordinate& c ) const;
   Coordinate getPoint( double param ) const;
 

@@ -28,14 +28,14 @@
 class Vector
   : public Object
 {
+  typedef Object Parent;
 public:
   Vector( const Objects& os );
   Vector( const Vector& s );
   ~Vector();
 
-  // type identification
-  Vector* toVector();
-  const Vector* toVector() const;
+  bool isa( int type ) const;
+
   // some type information
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();
