@@ -65,9 +65,14 @@ ObjectImp* TriangleB3PType::calc( const Args& parents, const KigDocument& ) cons
   if ( ! margsparser.checkArgs( parents, 1 ) ) return new InvalidImp;
   std::vector<Coordinate> points;
 
+  Coordinate centerofmass3 = Coordinate( 0, 0 );
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
-    points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
-  return new PolygonImp( points );
+  {
+    Coordinate point = static_cast<const PointImp*>( *i )->coordinate();
+    centerofmass3 += point;
+    points.push_back( point );
+  }
+  return new PolygonImp( 3, points, centerofmass3/3 );
 }
 
 const ObjectImpType* TriangleB3PType::resultId() const
@@ -145,9 +150,17 @@ ObjectImp* PolygonBNPType::calc( const Args& parents, const KigDocument& ) const
 //  if ( parents[0] != parents[count] ) return new InvalidImp;
   std::vector<Coordinate> points;
 
+  uint npoints = 0;
+  Coordinate centerofmassn = Coordinate( 0, 0 );
+
   for ( uint i = 0; i < count; ++i )
-    points.push_back( static_cast<const PointImp*>( parents[i] )->coordinate() );
-  return new PolygonImp( points );
+  {
+    npoints++;
+    Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
+    centerofmassn += point;
+    points.push_back( point );
+  }
+  return new PolygonImp( npoints, points, centerofmassn/npoints );
 }
 
 const ObjectImpType* PolygonBNPType::resultId() const
@@ -248,7 +261,7 @@ ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
                                          stheta1*dx + ctheta1*dy );
     vertexes.push_back( v1 );
   }
-  return new PolygonImp( vertexes );
+  return new PolygonImp( uint (sides), vertexes, center );
 }
 
 const ObjectImpType* PoligonBCVType::resultId() const

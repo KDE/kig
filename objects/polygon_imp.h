@@ -19,7 +19,7 @@
 #define KIG_OBJECTS_POLYGON_IMP_H
 
 #include "object_imp.h"
-
+#include "../misc/coordinate.h"
 #include <vector>
 
 /**
@@ -28,7 +28,9 @@
 class PolygonImp
   : public ObjectImp
 {
+  uint mnpoints;
   std::vector<Coordinate> mpoints;
+  Coordinate mcenterofmass;
 public:
   typedef ObjectImp Parent;
   /**
@@ -42,6 +44,8 @@ public:
    * Constructs a polygon.
    */
   PolygonImp( const std::vector<Coordinate>& points );
+  PolygonImp( const uint nsides, const std::vector<Coordinate>& points, 
+              const Coordinate& centerofmass );
   ~PolygonImp();
   PolygonImp* copy() const;
 
@@ -69,7 +73,10 @@ public:
    * Returns the vector with polygon points.
    */
   const std::vector<Coordinate> points() const; 
-
+  /**
+   * Returns the center of mass of the polygon.
+   */
+  const Coordinate centerOfMass() const; 
   /**
    * Returns the number of points of this polygon.
    */

@@ -33,9 +33,25 @@
 
 #include <math.h>
 
+PolygonImp::PolygonImp( uint npoints, const std::vector<Coordinate>& points,
+                        const Coordinate& centerofmass )
+  : mnpoints( npoints ), mpoints( points ), mcenterofmass( centerofmass )
+{
+//  mpoints = points;
+}
+
 PolygonImp::PolygonImp( const std::vector<Coordinate>& points )
 {
+  uint npoints = points.size();
+  Coordinate centerofmassn = Coordinate( 0, 0 );
+
+  for ( uint i = 0; i < npoints; ++i )
+  {
+    centerofmassn += points[i];
+  }
   mpoints = points;
+  mcenterofmass = centerofmassn/npoints;
+  mnpoints = npoints;
 }
 
 PolygonImp::~PolygonImp()
@@ -44,7 +60,7 @@ PolygonImp::~PolygonImp()
 
 Coordinate PolygonImp::attachPoint() const
 {
-  return mpoints[0];
+  return mcenterofmass;
 }
 
 ObjectImp* PolygonImp::transform( const Transformation& t ) const
@@ -235,9 +251,8 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
     return Parent::property( which, w );
   else if ( which == Parent::numberOfProperties() )
   {
-    uint nsides = mpoints.size();
-    // number of sides
-    return new IntImp( nsides );
+    // number of points
+    return new IntImp( mnpoints );
   }
   else if ( which == Parent::numberOfProperties() + 1)
   {
@@ -264,15 +279,7 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
   }
   else if ( which == Parent::numberOfProperties() + 3)
   {
-    Coordinate sum = Coordinate( 0, 0);
-    Coordinate prevpoint = mpoints.back();
-    for ( uint i = 0; i < mpoints.size(); ++i )
-    {
-      Coordinate point = mpoints[i];
-      sum += point;
-      prevpoint = point;
-    }
-    return new PointImp( sum / mpoints.size() );
+    return new PointImp( mcenterofmass );
   }
   else assert( false );
   return new InvalidImp;
@@ -288,7 +295,7 @@ const std::vector<Coordinate> PolygonImp::points() const
 
 const uint PolygonImp::npoints() const
 {
-  return mpoints.size();
+  return mnpoints;
 }
 
 PolygonImp* PolygonImp::copy() const
