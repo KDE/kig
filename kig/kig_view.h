@@ -232,6 +232,7 @@ public:
   const ScreenInfo& screenInfo() const;
 
   KigWidget* realWidget() const;
+  void scrollHorizontal( int delta );
   void scrollVertical( int delta );
 
 public slots:

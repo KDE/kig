@@ -441,8 +441,22 @@ QSize KigWidget::sizeHint() const
 void KigWidget::wheelEvent( QWheelEvent* e )
 {
   int delta = e->delta();
-  mview->scrollVertical( delta );
+  Qt::Orientation orient = e->orientation();
+  if ( orient == Qt::Vertical )
+    mview->scrollVertical( delta );
+  else
+    mview->scrollHorizontal( delta );
 }
+
+void KigView::scrollHorizontal( int delta )
+{
+  if ( delta >= 0 )
+    for ( int i = 0; i < delta; i += 120 )
+      mbottomscroll->subtractLine();
+  else
+    for ( int i = 0; i >= delta; i -= 120 )
+      mbottomscroll->addLine();
+};
 
 void KigView::scrollVertical( int delta )
 {
