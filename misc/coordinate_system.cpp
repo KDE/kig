@@ -208,7 +208,7 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigWidget& w ) cons
 
 QString PolarCoords::coordinateFormatNotice() const
 {
-  return i18n( "Enter coordinates in the following form: \"r, theta\", where "
+  return i18n( "Enter coordinates in the following form: \"r, \xCE\xB8\", where " // \xCE\xB8 is utf8 for the greek theta sign..
                "r and theta are the polar coordinates." );
   // doesn't seem portable :(
 //   return i18n( "Enter coordinates in the following form: \"r,\u0x03B8\", where "
