@@ -33,6 +33,7 @@
 #include "../objects/coniclines.h"
 #include "../objects/conicsextra.h"
 #include "../objects/cubic.h"
+#include "../objects/transform.h"
 #include "../objects/segment.h"
 #include "../objects/normalpoint.h"
 #include "../objects/midpoint.h"
@@ -192,6 +193,12 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<LineParallel> );
     Object::addBuiltinType( new TStdType<LineRadical> );
     Object::addBuiltinType( new TMultiType<LineConicRadical> );
+    Object::addBuiltinType( new TStdType<PointTransform> );
+    Object::addBuiltinType( new TStdType<LineTransform> );
+    Object::addBuiltinType( new TStdType<SegmentTransform> );
+    Object::addBuiltinType( new TStdType<RayTransform> );
+    Object::addBuiltinType( new TStdType<CircleTransform> );
+    Object::addBuiltinType( new TStdType<ConicTransform> );
     Object::addBuiltinType( new TStdType<CircleBCP> );
     Object::addBuiltinType( new TStdType<CircleBTP> );
     Object::addBuiltinType( new TStdType<EllipseBFFP> );
@@ -200,6 +207,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<CubicB9P> );
     Object::addBuiltinType( new TStdType<CubicNodeB6P> );
     Object::addBuiltinType( new TStdType<CubicCuspB4P> );
+    Object::addBuiltinType( new TStdType<CubicTransform> );
     Object::addBuiltinType( new TStdType<ParabolaBTP> );
     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
     Object::addBuiltinType( new TStdType<MidPoint> );
