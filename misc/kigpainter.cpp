@@ -867,7 +867,7 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   // First push the [0,1] interval into the stack:
   workstack.push( workitem(
                     coordparampair( 0, locusGetCoord( 0, curve, hier, valid, mdoc ) ), ///
-                    coordparampair( 1, locusGetCoord( 0, curve, hier, valid, mdoc ) ), ///
+                    coordparampair( 1, locusGetCoord( 1, curve, hier, valid, mdoc ) ), ///
                     0 ) );
 
   // maxlength is the square of the maximum size that we allow
@@ -877,10 +877,10 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   // error squared is required to be less that sigma (half pixel)
   double sigma = maxlength/4;
   // distance between two parameter values cannot be too small
-  double hmin = 1e-4;
+  double hmin = 3e-5;
   // distance between two parameter values cannot be too large
-  double hmax = M_PI/20; ///
-  double hmaxoverlay = M_PI/4; ///
+  double hmax = 1.0/40;
+  double hmaxoverlay = 1.0/8;
 
   int count = 1;               // the number of segments we've already
                                // visited...
@@ -930,7 +930,7 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
         mP.drawLine( tp0, tp2 );
         mP.drawLine( tp2, tp1 );
       }
-      else if ( valid ) ///
+      else if ( valid && h >= hmin)
       {
         // push into stack in order to process both subintervals
         if (addn || sr.contains( p0 ) || h >= hmax)
@@ -946,6 +946,12 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
     }
   }
 
+  if ( ! workstack.empty () );
+  {
+    kdDebug() << "Stack not empty in drawLocus!\n" << endl;
+    while ( ! workstack.empty () ) workstack.pop ();
+  }
+  assert ( workstack.empty() );
   assert ( tNeedOverlay || overlaystack.empty() );
   if ( tNeedOverlay )
   {
