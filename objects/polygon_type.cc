@@ -21,6 +21,7 @@
 #include "line_imp.h"
 #include "point_imp.h"
 #include "polygon_imp.h"
+#include "object_calcer.h"
 
 #include "../misc/common.h"
 
@@ -72,6 +73,48 @@ ObjectImp* TriangleB3PType::calc( const Args& parents, const KigDocument& ) cons
 const ObjectImpType* TriangleB3PType::resultId() const
 {
   return PolygonImp::stype();
+}
+
+bool TriangleB3PType::canMove() const
+{
+  return true;
+}
+
+void TriangleB3PType::move( ObjectTypeCalcer& o, const Coordinate& to,
+                         const KigDocument& d ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  assert( margsparser.checkArgs( parents ) );
+  const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  const Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
+  const Coordinate c = static_cast<const PointImp*>( parents[2]->imp() )->coordinate();
+  if ( parents[0]->canMove() )
+    parents[0]->move( to, d );
+  if ( parents[1]->canMove() )
+    parents[1]->move( to + b - a, d );
+  if ( parents[2]->canMove() )
+    parents[2]->move( to + c - a, d );
+}
+
+const Coordinate TriangleB3PType::moveReferencePoint( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  assert( margsparser.checkArgs( parents ) );
+  return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> TriangleB3PType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
+  std::set<ObjectCalcer*> ret;
+  std::vector<ObjectCalcer*> tmp = parents[0]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  tmp = parents[1]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  tmp = parents[2]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  ret.insert( parents.begin(), parents.end() );
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
 }
 
 /*

@@ -33,6 +33,11 @@ public:
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
+  bool canMove() const;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& o, const Coordinate& to,
+             const KigDocument& d ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
 };
 
 /**
