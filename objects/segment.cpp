@@ -168,11 +168,6 @@ const QCString SegmentAB::vFullTypeName() const
   return sFullTypeName();
 }
 
-QCString SegmentAB::sFullTypeName()
-{
-  return I18N_NOOP("Segment");
-}
-
 const QString SegmentAB::vDescriptiveName() const
 {
   return sDescriptiveName();

@@ -369,11 +369,6 @@ const QCString NormalPoint::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString NormalPoint::sFullTypeName()
-{
-  return "NormalPoint";
-}
-
 const QString NormalPoint::vDescriptiveName() const
 {
   return sDescriptiveName();

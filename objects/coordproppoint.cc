@@ -60,11 +60,6 @@ const QCString CoordinatePropertyPoint::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString CoordinatePropertyPoint::sFullTypeName()
-{
-  return "CoordinatePropertyPoint";
-}
-
 const QString CoordinatePropertyPoint::vDescriptiveName() const
 {
   return i18n( mparent->properties()[mpropindex] );

@@ -69,11 +69,6 @@ const QCString Angle::vFullTypeName() const
   return sFullTypeName();
 }
 
-QCString Angle::sFullTypeName()
-{
-  return "Angle";
-}
-
 const QString Angle::vDescriptiveName() const
 {
   return sDescriptiveName();

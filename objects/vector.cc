@@ -64,11 +64,6 @@ const QCString Vector::vFullTypeName() const
   return sFullTypeName();
 }
 
-QCString Vector::sFullTypeName()
-{
-  return "Vector";
-}
-
 const QString Vector::vDescriptiveName() const
 {
   return sDescriptiveName();

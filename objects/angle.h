@@ -44,7 +44,7 @@ public:
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();
   const QCString vFullTypeName() const;
-  static QCString sFullTypeName();
+  static QCString sFullTypeName() { return "Angle"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

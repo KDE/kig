@@ -151,11 +151,6 @@ const QCString TextLabel::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString TextLabel::sFullTypeName()
-{
-  return "TextLabel";
-}
-
 const QString TextLabel::vDescriptiveName() const
 {
   return sDescriptiveName();

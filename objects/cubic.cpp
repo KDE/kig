@@ -966,11 +966,6 @@ const QCString CubicLineIntersectionPoint::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString CubicLineIntersectionPoint::sFullTypeName()
-{
-  return "CubicLineIntersectionPoint";
-}
-
 const QString CubicLineIntersectionPoint::vDescriptiveName() const
 {
   return sDescriptiveName();

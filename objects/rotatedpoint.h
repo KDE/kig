@@ -35,7 +35,7 @@ public:
   ~RotatedPoint();
 
   const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "RotatedPoint"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

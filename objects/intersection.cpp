@@ -73,11 +73,6 @@ const QCString IntersectionPoint::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString IntersectionPoint::sFullTypeName()
-{
-  return "IntersectionPoint";
-}
-
 const QString IntersectionPoint::vDescriptiveName() const
 {
   return sDescriptiveName();
@@ -194,11 +189,6 @@ CircleLineIntersectionPoint::~CircleLineIntersectionPoint()
 const QCString CircleLineIntersectionPoint::vFullTypeName() const
 {
   return sFullTypeName();
-}
-
-const QCString CircleLineIntersectionPoint::sFullTypeName()
-{
-  return "CircleLineIntersectionPoint";
 }
 
 const QString CircleLineIntersectionPoint::vDescriptiveName() const

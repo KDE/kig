@@ -47,7 +47,7 @@ public:
   static QCString sBaseTypeName();
 
   const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "TextLabel"; };
 
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();

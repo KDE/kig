@@ -70,11 +70,6 @@ const QCString MirrorPoint::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString MirrorPoint::sFullTypeName()
-{
-  return "MirrorPoint";
-}
-
 const QString MirrorPoint::vDescriptiveName() const
 {
   return sDescriptiveName();

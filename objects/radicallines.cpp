@@ -211,11 +211,6 @@ const QCString ConicLineIntersectionPoint::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString ConicLineIntersectionPoint::sFullTypeName()
-{
-  return "ConicLineIntersectionPoint";
-}
-
 const QString ConicLineIntersectionPoint::vDescriptiveName() const
 {
   return sDescriptiveName();

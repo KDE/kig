@@ -68,7 +68,7 @@ public:
   ~SegmentAB();
 
   const QCString vFullTypeName() const;
-  static QCString sFullTypeName();
+  static QCString sFullTypeName() { return "Segment"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

@@ -40,7 +40,7 @@ public:
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();
   const QCString vFullTypeName() const;
-  static QCString sFullTypeName();
+  static QCString sFullTypeName() { return "Vector"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

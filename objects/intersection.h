@@ -36,7 +36,7 @@ public:
   ~IntersectionPoint();
 
   const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "IntersectionPoint"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;
@@ -69,7 +69,7 @@ public:
   ~CircleLineIntersectionPoint();
 
   const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "CircleLineIntersectionPoint"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

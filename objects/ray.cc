@@ -186,11 +186,6 @@ const QCString RayAB::vFullTypeName() const
   return sFullTypeName();
 }
 
-QCString RayAB::sFullTypeName()
-{
-  return I18N_NOOP("Ray");
-}
-
 const QString RayAB::vDescriptiveName() const
 {
   return sDescriptiveName();
@@ -208,7 +203,7 @@ const QString RayAB::vDescription() const
 
 const QString RayAB::sDescription()
 {
-  return i18n( "A ray by its start point, and another point somewhere on it." );               
+  return i18n( "A ray by its start point, and another point somewhere on it." );
 }
 
 const QCString RayAB::vIconFileName() const

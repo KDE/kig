@@ -54,7 +54,7 @@ public:
   virtual const QCString vBaseTypeName() const;
   static const QCString sBaseTypeName();
   virtual const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "Locus"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

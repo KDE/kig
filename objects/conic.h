@@ -117,7 +117,7 @@ public:
   ~EllipseBFFP();
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "EllipseBFFP"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
   static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };

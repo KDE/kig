@@ -232,11 +232,6 @@ const QCString Locus::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString Locus::sFullTypeName()
-{
-  return "Locus";
-}
-
 const QString Locus::vDescriptiveName() const
 {
   return sDescriptiveName();

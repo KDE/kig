@@ -405,11 +405,6 @@ EllipseBFFP::~EllipseBFFP()
 {
 }
 
-const QCString EllipseBFFP::sFullTypeName()
-{
-  return "EllipseBFFP";
-}
-
 HyperbolaBFFP::~HyperbolaBFFP()
 {
 }

@@ -61,7 +61,7 @@ public:
   ~RayAB();
 
   const QCString vFullTypeName() const;
-  static QCString sFullTypeName();
+  static QCString sFullTypeName() { return "Ray"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

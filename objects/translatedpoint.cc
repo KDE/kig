@@ -60,11 +60,6 @@ const QCString TranslatedPoint::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString TranslatedPoint::sFullTypeName()
-{
-  return "TranslatedPoint";
-}
-
 const QString TranslatedPoint::vDescriptiveName() const
 {
   return sDescriptiveName();

@@ -44,7 +44,7 @@ public:
   void setParams( const prop_map& m );
 
   virtual const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "CoordinatePropertyPoint"; };
   const QString vDescriptiveName() const;
   const QString vDescription() const;
   const QCString vIconFileName() const;

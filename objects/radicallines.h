@@ -94,7 +94,7 @@ public:
   ~ConicLineIntersectionPoint();
 
   const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "ConicLineIntersectionPoint"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

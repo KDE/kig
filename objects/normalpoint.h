@@ -84,7 +84,7 @@ public:
   void setParams( const prop_map& m );
 
   virtual const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "NormalPoint"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

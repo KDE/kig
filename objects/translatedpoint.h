@@ -36,7 +36,7 @@ public:
   ~TranslatedPoint();
 
   const QCString vFullTypeName() const;
-  static const QCString sFullTypeName();
+  static const QCString sFullTypeName() { return "TranslatedPoint"; };
   const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
   const QString vDescription() const;

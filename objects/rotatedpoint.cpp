@@ -57,11 +57,6 @@ const QCString RotatedPoint::vFullTypeName() const
   return sFullTypeName();
 }
 
-const QCString RotatedPoint::sFullTypeName()
-{
-  return "RotatedPoint";
-}
-
 const QString RotatedPoint::vDescriptiveName() const
 {
   return sDescriptiveName();
