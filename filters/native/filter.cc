@@ -219,7 +219,7 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
         delete *i;
       return ParseError;
     };
-    o->calc();
+    o->calc( to );
     os[elem.id-1] = o;
   };
 

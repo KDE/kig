@@ -46,14 +46,14 @@ const uint AbstractLineImp::numberOfProperties() const
   return Parent::numberOfProperties() + 2;
 }
 
-ObjectImp* AbstractLineImp::property( uint which, const KigWidget& w ) const
+ObjectImp* AbstractLineImp::property( uint which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   if ( which == Parent::numberOfProperties() )
     return new DoubleImp( slope() );
   if ( which == Parent::numberOfProperties() + 1 )
-    return new StringImp( equationString( w ) );
+    return new StringImp( equationString() );
   else assert( false );
 }
 
@@ -94,7 +94,7 @@ const QCStringList SegmentImp::properties() const
   return s;
 }
 
-ObjectImp* SegmentImp::property( uint which, const KigWidget& w ) const
+ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
@@ -109,7 +109,7 @@ double AbstractLineImp::slope() const
   return diff.y / diff.x;
 }
 
-const QString AbstractLineImp::equationString( const KigWidget& ) const
+const QString AbstractLineImp::equationString() const
 {
   QString ret = QString::fromUtf8( "y = %1x + %2" );
   Coordinate p = mdata.a;

@@ -42,7 +42,7 @@ public:
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
-  ObjectImp* property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigDocument& w ) const;
 
   bool inherits( int typeID ) const;
   ObjectImp* copy() const;
@@ -70,7 +70,7 @@ public:
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
-  ObjectImp* property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigDocument& w ) const;
 
   bool inherits( int typeID ) const;
   ObjectImp* copy() const;

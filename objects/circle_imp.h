@@ -44,7 +44,7 @@ public:
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
-  ObjectImp* property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigDocument& w ) const;
 
   // various information about us:
   const Coordinate center() const;
@@ -64,8 +64,8 @@ public:
   Coordinate focus1() const;
   Coordinate focus2() const;
 
-  QString cartesianEquationString( const KigWidget& w ) const;
-  QString polarEquationString( const KigWidget& w ) const;
+  QString cartesianEquationString( const KigDocument& w ) const;
+  QString polarEquationString( const KigDocument& w ) const;
 };
 
 #endif

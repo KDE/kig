@@ -51,7 +51,7 @@ const QCStringList BogusImp::properties() const
   return QCStringList();
 }
 
-ObjectImp* BogusImp::property( uint, const KigWidget& ) const
+ObjectImp* BogusImp::property( uint, const KigDocument& ) const
 {
   assert( false );
   return new InvalidImp;

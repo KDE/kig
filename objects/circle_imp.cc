@@ -26,7 +26,6 @@
 #include "../misc/i18n.h"
 #include "../misc/coordinate_system.h"
 
-#include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
 
 #include <math.h>
@@ -97,7 +96,7 @@ const QCStringList CircleImp::properties() const
   return l;
 }
 
-ObjectImp* CircleImp::property( uint which, const KigWidget& w ) const
+ObjectImp* CircleImp::property( uint which, const KigDocument& w ) const
 {
   assert( which < CircleImp::numberOfProperties() );
   if ( which < CurveImp::numberOfProperties() )
@@ -142,16 +141,16 @@ double CircleImp::circumference() const
   return 2 * M_PI * radius();
 }
 
-QString CircleImp::polarEquationString( const KigWidget& w ) const
+QString CircleImp::polarEquationString( const KigDocument& w ) const
 {
   QString ret = i18n( "rho = %1   [centered at %2]" );
   ConicPolarData data = polarData();
   ret = ret.arg( data.pdimen, 0, 'g', 3 );
-  ret = ret.arg( w.document().coordinateSystem().fromScreen( data.focus1, w ) );
+  ret = ret.arg( w.coordinateSystem().fromScreen( data.focus1, w ) );
   return ret;
 }
 
-QString CircleImp::cartesianEquationString( const KigWidget& ) const
+QString CircleImp::cartesianEquationString( const KigDocument& ) const
 {
   QString ret = i18n( "x^2 + y^2 + %1 x + %2 y + %3 = 0" );
   ConicCartesianData data = cartesianData();

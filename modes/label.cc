@@ -177,7 +177,7 @@ void TextLabelConstructionMode::finishPressed()
     assert( percentCount( s ) == 0 );
 
     Objects labelos = ObjectFactory::instance()->label( s, mcoord );
-    labelos.calc();
+    labelos.calc( mdoc );
     mdoc.addObjects( labelos );
     widget->redrawScreen();
     killMode();

@@ -32,6 +32,7 @@
 #include <sys/types.h>
 #endif
 
+class KigDocument;
 class KigWidget;
 
 // collection class with some convenience funcs..
@@ -156,7 +157,7 @@ public:
   template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {};
   Objects( const Objects& os ) : myvector<Object*>( os ) {};
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
-  void calc() const;
+  void calc( const KigDocument& ) const;
   Objects with( Object* ) const;
   void setSelected( bool sel );
 };

@@ -25,7 +25,6 @@
 #include "../misc/i18n.h"
 #include "../misc/coordinate_system.h"
 
-#include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
 
 ObjectImp* ConicImp::transform( const Transformation& t ) const
@@ -91,7 +90,7 @@ const QCStringList ConicImp::properties() const
   return l;
 }
 
-ObjectImp* ConicImp::property( uint which, const KigWidget& w ) const
+ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
 {
   int pnum = 0;
 
@@ -170,7 +169,7 @@ QString ConicImp::conicTypeString() const
   }
 }
 
-QString ConicImp::cartesianEquationString( const KigWidget& ) const
+QString ConicImp::cartesianEquationString( const KigDocument& ) const
 {
   QString ret = i18n( "%1 x^2 + %2 y^2 + %3 xy + %4 x + %5 y + %6 = 0" );
   ConicCartesianData data = cartesianData();
@@ -183,7 +182,7 @@ QString ConicImp::cartesianEquationString( const KigWidget& ) const
   return ret;
 }
 
-QString ConicImp::polarEquationString( const KigWidget& w ) const
+QString ConicImp::polarEquationString( const KigDocument& w ) const
 {
   QString ret = i18n( "rho = %1/(1 + %2 cos theta + %3 sin theta)\n    [centered at %4]" );
   const ConicPolarData data = polarData();
@@ -192,7 +191,7 @@ QString ConicImp::polarEquationString( const KigWidget& w ) const
   ret = ret.arg( -data.ecostheta0, 0, 'g', 3 );
   ret = ret.arg( -data.esintheta0, 0, 'g', 3 );
 
-  ret = ret.arg( w.document().coordinateSystem().fromScreen( data.focus1, w ) );
+  ret = ret.arg( w.coordinateSystem().fromScreen( data.focus1, w ) );
   return ret;
 }
 

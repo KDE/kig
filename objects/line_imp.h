@@ -42,12 +42,12 @@ public:
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
-  ObjectImp* property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigDocument& d ) const;
 
   bool inherits( int typeID ) const;
 
   double slope() const;
-  const QString equationString( const KigWidget& w ) const;
+  const QString equationString() const;
   LineData data() const;
 
   // returns 0 for segment, 1 for ray, 2 for line...
@@ -77,7 +77,7 @@ public:
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
-  ObjectImp* property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigDocument& d ) const;
 
   SegmentImp* copy() const;
   const char* baseName() const;

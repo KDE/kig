@@ -138,7 +138,7 @@ public:
 
   // a rect containing most of the objects, which would be a fine
   // suggestion to mapt to the widget...
-  Rect suggestedRect();
+  Rect suggestedRect() const;
 
 signals: // these signals are for telling KigView it should do something...
   // emitted when we want to suggest a new size for the view (
@@ -159,10 +159,12 @@ public:
 protected:
   bool internalSaveAs();
 
+public:
   void _addObject( Object* inObject );
   void _addObjects( Objects& o);
   void _delObject(Object* inObject);
 
+protected:
   void setupActions();
   void setupTypes();
 

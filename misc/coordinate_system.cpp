@@ -20,7 +20,7 @@
 
 #include "coordinate_system.h"
 
-#include "../kig/kig_view.h"
+#include "../kig/kig_part.h"
 
 #include "i18n.h"
 #include "common.h"
@@ -41,9 +41,13 @@ EuclideanCoords::EuclideanCoords()
 {
 }
 
-QString EuclideanCoords::fromScreen( const Coordinate& p, const KigWidget& w ) const
+QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d ) const
 {
-  Rect sr = w.screenInfo().shownRect();
+  // i used to use the widget size here, but that's no good idea,
+  // since an object isn't asked to recalc every time the widget size
+  // changes..  might be a good idea to do that, but well, maybe some
+  // other time :)
+  Rect sr = d.suggestedRect();
   double m = max( sr.width(), sr.height() );
   double l;
   if ( m < 1 ) l = 3 - log10( m );
@@ -190,9 +194,9 @@ PolarCoords::~PolarCoords()
 {
 }
 
-QString PolarCoords::fromScreen( const Coordinate& pt, const KigWidget& w ) const
+QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) const
 {
-  Rect sr = w.screenInfo().shownRect();
+  Rect sr = d.suggestedRect();
   double m = max( sr.width(), sr.height() );
   double l;
   if ( m < 1 ) l = 3 - log10( m );

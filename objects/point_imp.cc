@@ -57,10 +57,10 @@ const QCStringList PointImp::properties() const
   return l;
 }
 
-ObjectImp* PointImp::property( uint which, const KigWidget& w ) const
+ObjectImp* PointImp::property( uint which, const KigDocument& d ) const
 {
   if ( which < Parent::numberOfProperties() )
-    return Parent::property( which, w );
+    return Parent::property( which, d );
   if ( which == Parent::numberOfProperties() )
     return new PointImp( mc );
   else assert( false );

@@ -47,7 +47,7 @@ void AddObjectsCommand::execute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
-    (*i)->calc();
+    (*i)->calc( *document );
     document->_addObject(*i);
   }
   undone = false;
@@ -64,9 +64,37 @@ void AddObjectsCommand::unexecute()
   document->mode()->objectsRemoved();
 };
 
+// this function is used by the AddObjectsCommand and
+// RemoveObjectsCommand destructors.  They have to delete the objects
+// they contain, but what this function adds is that they also delete
+// their parents if those are internal and have no more children.
+// Same goes for their deleted parents' parents etc.  This to avoid
+// KigDocument keeping useless DataObjects around after all their
+// children have been deleted..
+static void deleteObjectsAndDeadParents( Objects& os, KigDocument& d )
+{
+  while ( !os.empty() )
+  {
+    Objects tmp;
+    for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    {
+      d._delObject( *i );
+      Objects parents = (*i)->parents();
+      delete *i;
+      for ( Objects::iterator j = parents.begin(); j != parents.end(); ++j )
+        if ( (*j)->isInternal() && (*j)->children().empty() && ! os.contains( *j ) )
+          tmp.upush( *j );
+    };
+    os = tmp;
+  };
+};
+
 AddObjectsCommand::~AddObjectsCommand()
 {
-  if (undone) delete_all( os.begin(), os.end() );
+  if ( undone )
+  {
+    deleteObjectsAndDeadParents( os, *document );
+  };
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& inOs)
@@ -78,17 +106,10 @@ RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& in
     os( inOs )
 {
   Objects children;
-  Objects parents;
   // we delete the children too
   for (Objects::iterator i = os.begin(); i != os.end(); ++i )
-  {
     children |= (*i)->children();
-    parents |= (*i)->parents();
-  };
   os |= children;
-  for ( Objects::iterator i = parents.begin(); i != parents.end(); ++i )
-    if ( (*i)->inherits( Object::ID_DataObject ) )
-      os.upush( *i );
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
@@ -100,7 +121,10 @@ RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
 
 RemoveObjectsCommand::~RemoveObjectsCommand()
 {
-  if (!undone) delete_all(os.begin(), os.end() );
+  if (!undone)
+  {
+    deleteObjectsAndDeadParents( os, *document );
+  };
 }
 
 void RemoveObjectsCommand::execute()
@@ -117,7 +141,7 @@ void RemoveObjectsCommand::unexecute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
-    (*i)->calc();
+    (*i)->calc( *document );
     document->_addObject(*i);
   };
   undone = true;

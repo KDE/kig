@@ -74,7 +74,7 @@ void StandardConstructorBase::handleArgs(
 {
   Objects args = margsparser.parse( os );
   Objects bos = build( args, d, v );
-  bos.calc();
+  bos.calc( d );
   d.addObjects( bos );
 }
 
@@ -335,7 +335,7 @@ void MacroConstructor::handleArgs( const Objects& os, KigDocument& d,
 {
   Objects args = mparser.parse( os );
   Objects bos = mhier.buildObjects( args );
-  bos.calc();
+  bos.calc( d );
   d.addObjects( bos );
 }
 

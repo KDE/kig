@@ -286,7 +286,7 @@ bool KigDocument::openFile()
   mhistory->clear();
 
   Objects tmp = calcPath( mObjs );
-  tmp.calc();
+  tmp.calc( *this );
   emit recenterScreen();
 
   mainWidget()->realWidget()->redrawScreen();
@@ -413,7 +413,7 @@ Objects KigDocument::whatIsInHere( const Rect& p )
   return tmp;
 };
 
-Rect KigDocument::suggestedRect()
+Rect KigDocument::suggestedRect() const
 {
   if( mObjs.empty() ) return Rect( -7, -7, 7, 7 );
   bool rectInited = false;

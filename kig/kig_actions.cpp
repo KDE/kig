@@ -52,7 +52,7 @@ void AddFixedPointAction::slotActivated()
     };
   };
   Objects p = ObjectFactory::instance()->fixedPoint( c );
-  p.calc();
+  p.calc( *mdoc );
   mdoc->addObjects( p );
 };
 

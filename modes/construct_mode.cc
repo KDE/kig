@@ -46,7 +46,7 @@ void ConstructMode::leftClickedObject(
 {
   ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
                                             mdoc, w );
-  mpt.calc();
+  mpt.calc( mdoc );
   if ( o && !mparents.contains( o ) && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
   {
     selectObject( o, p, w );
@@ -97,7 +97,7 @@ void ConstructMode::mouseMoved( const Objects& os,
 
   ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
                                             mdoc, w );
-  mpt.calc();
+  mpt.calc( mdoc );
   if ( !os.empty() && !mparents.contains( os.front() ) &&
        mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
   {
@@ -189,7 +189,7 @@ void PointConstructMode::mouseMoved(
   KigPainter pter( w.screenInfo(), &w.curPix );
   ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
                                             mdoc, w );
-  mpt.calc();
+  mpt.calc( mdoc );
   mpt[2]->draw( pter, true );
   w.setCursor( KCursor::blankCursor() );
 

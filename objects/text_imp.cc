@@ -71,7 +71,7 @@ const QCStringList TextImp::properties() const
   return Parent::properties();
 }
 
-ObjectImp* TextImp::property( uint which, const KigWidget& w ) const
+ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
 {
   return Parent::property( which, w );
 }

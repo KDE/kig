@@ -49,7 +49,7 @@ class CoordinateSystem
 public:
   CoordinateSystem();
   virtual ~CoordinateSystem();
-  virtual QString fromScreen ( const Coordinate& pt, const KigWidget& w ) const = 0;
+  virtual QString fromScreen ( const Coordinate& pt, const KigDocument& w ) const = 0;
   /**
    * This returns a notice to say in which format coordinates should
    * be entered.  This should be something like:
@@ -69,7 +69,7 @@ class EuclideanCoords
 public:
   EuclideanCoords();
   ~EuclideanCoords();
-  QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
+  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
   QString coordinateFormatNotice() const;
   Coordinate toScreen (const QString& pt, bool& ok) const;
   void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
@@ -83,7 +83,7 @@ class PolarCoords
 public:
   PolarCoords();
   ~PolarCoords();
-  QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
+  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
   QString coordinateFormatNotice() const;
   Coordinate toScreen (const QString& pt, bool& ok) const;
   void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;

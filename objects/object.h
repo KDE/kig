@@ -50,6 +50,7 @@ public:
   };
 
   virtual bool inherits( int type ) const;
+  virtual bool isInternal() const = 0;
 
   virtual const ObjectImp* imp() const = 0;
   virtual Objects parents() const = 0;
@@ -61,7 +62,7 @@ public:
   virtual bool canMove() const = 0;
   virtual void move( const Coordinate& from, const Coordinate& dist ) = 0;
 
-  virtual void calc() = 0;
+  virtual void calc( const KigDocument& ) = 0;
 
   virtual bool shown() const = 0;
 
@@ -79,7 +80,7 @@ public:
   bool valid() const;
 
   const uint numberOfProperties() const;
-  const ObjectImp* property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigDocument& w ) const;
   const QCStringList properties() const;
 
   // every kind of object can have children, and there is no easier
@@ -110,8 +111,8 @@ public:
   void setParents( const Objects& parents );
   Objects parents() const;
 
-  void calc();
-  virtual void calc( const Args& a ) = 0;
+  void calc( const KigDocument& );
+  virtual void calc( const Args& a, const KigDocument& ) = 0;
 };
 
 /**
@@ -134,13 +135,14 @@ class RealObject
 
   RealObject( const RealObject& o );
 
-  void calc( const Args& a );
+  void calc( const Args& a, const KigDocument& );
 
 public:
   RealObject( const ObjectType* type, const Objects& parents );
   ~RealObject();
 
   bool inherits( int type ) const;
+  bool isInternal() const;
 
   const ObjectImp* imp() const;
 
@@ -151,7 +153,7 @@ public:
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist );
 
-  void calc();
+  void calc( const KigDocument& d );
 
 
   const ObjectType* type() const;
@@ -185,6 +187,7 @@ public:
   ~DataObject();
 
   bool inherits( int type ) const;
+  bool isInternal() const;
   void setImp( ObjectImp* imp );
 
   const ObjectImp* imp() const;
@@ -197,7 +200,35 @@ public:
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist );
 
-  void calc();
+  void calc( const KigDocument& );
+
+  bool shown() const;
+};
+
+class PropertyObject
+  : public Object
+{
+  ObjectImp* mimp;
+  Object* mparent;
+  int mpropid;
+public:
+  PropertyObject( Object* parent, int id );
+  ~PropertyObject();
+
+  bool inherits( int type ) const;
+  bool isInternal() const;
+
+  const ObjectImp* imp() const;
+  Objects parents() const;
+
+  void draw( KigPainter& p, bool showSelection ) const;
+  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
+  bool inRect( const Rect& r ) const;
+
+  bool canMove() const;
+  void move( const Coordinate& from, const Coordinate& dist );
+
+  void calc( const KigDocument& );
 
   bool shown() const;
 };

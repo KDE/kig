@@ -35,11 +35,11 @@ Objects Objects::with( Object* o ) const
   return os;
 }
 
-void Objects::calc() const
+void Objects::calc( const KigDocument& d ) const
 {
   for ( const_iterator i = begin(); i != end(); ++i )
   {
-    (*i)->calc();
+    (*i)->calc( d );
   };
 }
 

@@ -65,14 +65,14 @@ void RealObject::move( const Coordinate& from, const Coordinate& dist )
   mtype->move( this, from, dist );
 }
 
-void ObjectWithParents::calc()
+void ObjectWithParents::calc( const KigDocument& d )
 {
   using namespace std;
   Args a;
   a.reserve( mparents.size() );
   transform( mparents.begin(), mparents.end(),
              back_inserter( a ), mem_fun( &Object::imp ) );
-  calc( a );
+  calc( a, d );
 }
 
 void RealObject::reset( const ObjectType* t, const Objects& parents )
@@ -111,7 +111,7 @@ const uint Object::numberOfProperties() const
   return imp()->numberOfProperties();
 }
 
-const ObjectImp* Object::property( uint which, const KigWidget& w ) const
+ObjectImp* Object::property( uint which, const KigDocument& w ) const
 {
   return imp()->property( which, w );
 }
@@ -199,7 +199,7 @@ const ObjectType* RealObject::type() const
   return mtype;
 }
 
-void RealObject::calc( const Args& a )
+void RealObject::calc( const Args& a, const KigDocument& )
 {
   delete mimp;
   mimp = mtype->calc( a );
@@ -260,7 +260,7 @@ void DataObject::move( const Coordinate&, const Coordinate& )
 //    assert( false );
 }
 
-void DataObject::calc()
+void DataObject::calc( const KigDocument& )
 {
 }
 
@@ -289,10 +289,10 @@ bool RealObject::inherits( int type ) const
   return type == ID_RealObject;
 }
 
-void RealObject::calc()
+void RealObject::calc( const KigDocument& d )
 {
   // no idea why this is necessary
-  ObjectWithParents::calc();
+  ObjectWithParents::calc( d );
 }
 
 void DataObject::setImp( ObjectImp* imp )
@@ -342,4 +342,77 @@ void Object::setShown( bool )
 void RealObject::setShown( bool shown )
 {
   mshown = shown;
+}
+
+bool RealObject::isInternal() const
+{
+  return false;
+}
+
+bool DataObject::isInternal() const
+{
+  return true;
+}
+
+PropertyObject::PropertyObject( Object* parent, int id )
+  : Object(), mimp( 0 ), mparent( parent ), mpropid( id )
+{
+}
+
+PropertyObject::~PropertyObject()
+{
+}
+
+bool PropertyObject::inherits( int ) const
+{
+  return false;
+}
+
+bool PropertyObject::isInternal() const
+{
+  return true;
+}
+
+const ObjectImp* PropertyObject::imp() const
+{
+  return mimp;
+}
+
+Objects PropertyObject::parents() const
+{
+  return Objects( mparent );
+}
+
+void PropertyObject::draw( KigPainter&, bool ) const
+{
+}
+
+bool PropertyObject::contains( const Coordinate&, const ScreenInfo& ) const
+{
+  return false;
+}
+
+bool PropertyObject::inRect( const Rect& ) const
+{
+  return false;
+}
+
+bool PropertyObject::canMove() const
+{
+  return false;
+}
+
+void PropertyObject::move( const Coordinate&, const Coordinate& )
+{
+}
+
+void PropertyObject::calc( const KigDocument& d )
+{
+  delete mimp;
+  mimp = mparent->property( mpropid, d );
+}
+
+bool PropertyObject::shown() const
+{
+  return false;
 }

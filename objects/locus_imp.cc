@@ -101,7 +101,7 @@ const QCStringList LocusImp::properties() const
   return Parent::properties();
 }
 
-ObjectImp* LocusImp::property( uint which, const KigWidget& w ) const
+ObjectImp* LocusImp::property( uint which, const KigDocument& w ) const
 {
   return Parent::property( which, w );
 }

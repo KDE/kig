@@ -43,7 +43,7 @@ public:
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
-  ObjectImp* property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigDocument& w ) const;
 
   double getParam( const Coordinate& point ) const;
   const Coordinate getPoint( double param ) const;
@@ -53,8 +53,8 @@ public:
   // versions..
   virtual int conicType() const;
   virtual QString conicTypeString() const;
-  virtual QString cartesianEquationString( const KigWidget& w ) const;
-  virtual QString polarEquationString( const KigWidget& w ) const;
+  virtual QString cartesianEquationString( const KigDocument& w ) const;
+  virtual QString polarEquationString( const KigDocument& w ) const;
   virtual const ConicCartesianData cartesianData() const;
   virtual const ConicPolarData polarData() const = 0;
   virtual Coordinate focus1() const;

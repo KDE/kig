@@ -84,7 +84,7 @@ const QCStringList AngleImp::properties() const
   return l;
 }
 
-ObjectImp* AngleImp::property( uint which, const KigWidget& w ) const
+ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
@@ -154,7 +154,7 @@ const QCStringList VectorImp::properties() const
   return Parent::properties();
 }
 
-ObjectImp* VectorImp::property( uint which, const KigWidget& w ) const
+ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
 {
   return Parent::property( which, w );
 }
