@@ -1,12 +1,12 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="kig_part" version="1">
 <MenuBar>
-  <Menu name="edit"><text>&amp;Edit</text>
+  <Menu name="edit">
     <Action name="edit_unhide_all" />
     <Action name="edit_undo"/>
     <Action name="edit_redo"/>
   </Menu>
-  <Menu name="view"><text>&amp;View</text>
+  <Menu name="view">
     <Action name="view_fullscreen"/>
     <Action name="view_zoom_in"/>
     <Action name="view_zoom_out"/>

@@ -100,7 +100,7 @@ KigFilter::Result KigFilterNative::save( const Objects& os, const QString to )
 
   QDomDocument doc("KigDocument");
   QDomElement elem = doc.createElement( "KigDocument" );
-  elem.setAttribute( "Version", "2.0.000" );
+  elem.setAttribute( "Version", "0.5" );
 
   // saving is done very easily:
   // we create an ObjectHierarchy with no "given" objects, and all
