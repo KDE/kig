@@ -43,6 +43,11 @@ Cubic::~Cubic()
 {
 };
 
+bool Cubic::isa( int type ) const
+{
+  return type == CubicT ? true : Parent::isa( type );
+}
+
 bool Cubic::contains (const Coordinate& o, const ScreenInfo& si ) const
 {
   double a000 = cequation.coeffs[0];
@@ -284,16 +289,6 @@ const QCString Cubic::sBaseTypeName()
 Cubic::Cubic( const Cubic& c )
   : Curve( c ), cequation( c.cequation )
 {
-}
-
-Cubic* Cubic::toCubic()
-{
-  return this;
-}
-
-const Cubic* Cubic::toCubic() const
-{
-  return this;
 }
 
 const CubicCartesianEquationData Cubic::cartesianEquationData() const

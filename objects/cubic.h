@@ -96,8 +96,7 @@ class Cubic
   Cubic( const Cubic& c );
   ~Cubic();
 
-  Cubic* toCubic();
-  const Cubic* toCubic() const;
+  virtual bool isa( int type ) const;
 
   // type identification
   virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
