@@ -78,7 +78,7 @@ public:
    * synonym for scale...
    */
   inline Rect& operator*=( const double r ) { scale(r); return *this; };
-
+  inline Rect& operator/=( const double r ) { scale(1/r); return *this; };
 
   inline QRect toQRect() const;
   inline Coordinate bottomLeft() const;
