@@ -64,6 +64,9 @@
 #endif
 
 #include <algorithm>
+#include <functional>
+
+using namespace std;
 
 // export this library...
 typedef KParts::GenericFactory<KigDocument> KigDocumentFactory;
@@ -505,9 +508,9 @@ void KigDocument::delObjects( const Objects& os )
 
 void KigDocument::enableConstructActions( bool enabled )
 {
-  std::for_each( aActions.begin(), aActions.end(),
-                 std::bind2nd( std::mem_fun( &KAction::setEnabled ),
-                               enabled ) );
+  for_each( aActions.begin(), aActions.end(),
+            bind2nd( mem_fun( &KAction::setEnabled ),
+                     enabled ) );
   aFixedPoint->setEnabled( enabled );
 }
 

@@ -346,7 +346,7 @@ bool MacroList::loadOld( const QDomElement& docelem, myvector<Macro*>& ret )
       assert( e.tagName() == "HierarchyElement" );
       if ( e.attribute( "given" ) != "true" )
         break;
-
+      // TODO
     };
   };
   return false;

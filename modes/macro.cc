@@ -32,6 +32,11 @@
 #include <klineedit.h>
 #include <kcursor.h>
 
+#include <functional>
+#include <algorithm>
+
+using namespace std;
+
 DefineMacroMode::DefineMacroMode( KigDocument& d )
   : BaseMode( d )
 {
@@ -70,9 +75,6 @@ void DefineMacroMode::enableActions()
 
 void DefineMacroMode::givenPageEntered()
 {
-  using std::for_each;
-  using std::bind2nd;
-  using std::mem_fun;
   for_each( mdoc.objects().begin(), mdoc.objects().end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
   for_each( mgiven.begin(), mgiven.end(),

@@ -34,6 +34,11 @@
 #include <kaction.h>
 #include <kcommand.h>
 
+#include <algorithm>
+#include <functional>
+
+using namespace std;
+
 void NormalMode::enableActions()
 {
   KigMode::enableActions();
@@ -61,10 +66,8 @@ void NormalMode::selectObject( Object* o )
 void NormalMode::selectObjects( Objects& os )
 {
   // hehe, don't you love this c++ stuff ;)
-  std::for_each( os.begin(), os.end(),
-                 std::bind1st(
-                   std::mem_fun( &NormalMode::selectObject ),
-                   this ) );
+  for_each( os.begin(), os.end(),
+            bind1st( mem_fun( &NormalMode::selectObject ), this ) );
 }
 
 void NormalMode::unselectObject( Object* o )

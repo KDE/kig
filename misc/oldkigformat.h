@@ -1,4 +1,4 @@
-// filter.h
+// oldkigformat.h
 // Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,33 +16,19 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef FILTERS_NEWNATIVE_FILTER_H
-#define FILTERS_NEWNATIVE_FILTER_H
+#ifndef KIG_MISC_OLDKIGFORMAT_H
+#define KIG_MISC_OLDKIGFORMAT_H
 
-#include "../filter.h"
-
-class QDomElement;
-class KigDocument;
-class QDomElement;
+class QString;
 class QCString;
+class QDomElement;
 class RealObject;
+class Objects;
+class KigDocument;
 
-// Kig's native format.  Between versions 0.3.1 and 0.4, there was a
-// change in the file format, and this filter is designed to support
-// both of them ( for reading, that is...)
-class KigFilterNative
-  : public KigFilter
-{
-  Result loadOld( const QDomElement& doc, KigDocument& to );
-  Result loadNew( const QDomElement& doc, KigDocument& to );
-public:
-  KigFilterNative();
-  ~KigFilterNative();
+QCString translateOldKigPropertyName( const QString& whichproperty );
 
-  bool supportMime( const QString& mime );
-  Result load( const QString& file, KigDocument& to );
-  Result save( const KigDocument& data, const QString& file );
-
-};
+bool oldElemToNewObject( const QCString& type, const QDomElement& e,
+                         RealObject& o, Objects&, KigDocument& );
 
 #endif

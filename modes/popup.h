@@ -23,11 +23,7 @@
 
 #include <kpopupmenu.h>
 
-#include <map>
-
 #include "../misc/objects.h"
-
-using std::map;
 
 class KigDocument;
 class KigWidget;

@@ -19,12 +19,8 @@
 #ifndef KIG_OBJECTS_OBJECT_H
 #define KIG_OBJECTS_OBJECT_H
 
-#include <map>
-#include <vector>
 #include <qcolor.h>
 #include "common.h"
-
-using std::vector;
 
 /**
  * The Object class is an ABC that represents a separate piece of the
