@@ -37,7 +37,6 @@
 #include "../objects/point_type.h"
 #include "../objects/other_imp.h"
 #include "../objects/line_imp.h"
-#include "../objects/text_type.h"
 
 void setupBuiltinStuff()
 {
