@@ -122,7 +122,7 @@
 
 - "export to *": add stuff like java applets, SVG documents, latex, etc...
 
-- koffice w/o OpenOffice.org support ?
+- koffice support ?
 
 - add another viewmode ( which would be completely orthogonal to the
   KigMode concept ), where you can more clearly see the dependencies
