@@ -51,20 +51,6 @@ public:
   ~KigFilterCabri();
   virtual bool supportMime ( const QString mime );
   virtual Result load ( const QString from, Objects& to );
-
-private:
-  QCString readLine( QFile& f, bool& eof );
-  struct ObjectData
-  {
-    Object* o;
-    std::vector<int> p;
-    int id;
-    bool valid;
-    operator bool() { return valid; };
-  };
-
-  ObjectData readObject( QFile& f );
-
 };
 
 #endif

@@ -11,7 +11,6 @@ noinst_HEADERS= \
 	kseg-defs.h \
 	kgeo-filter.h \
 	kgeo-resource.h \
-	cabri-filter.h \
 	native-filter.h
 libfilters_la_SOURCES= \
 	filter.cc \
@@ -19,6 +18,5 @@ libfilters_la_SOURCES= \
 	exporttoimagedialogbase.ui \
 	exporttoimagedialog.cc \
 	kseg-filter.cc \
-	cabri-filter.cc \
 	kgeo-filter.cc \
 	native-filter.cc

@@ -23,6 +23,7 @@
 #include <qcstring.h>
 #include <qfile.h>
 #include <qtextstream.h>
+#include <qregexp.h>
 
 #include <string>
 
@@ -38,36 +39,45 @@ KigFilterCabri::~KigFilterCabri()
 
 bool KigFilterCabri::supportMime( const QString mime )
 {
-  if (mime == QString::fromLatin1( "application/x-cabri" ) )
+  if (mime == "application/x-cabri" )
     return true;
   return false;
 }
 
 // this function reads a line, and converts all line delimiters
 // ("\r\n" or "\n" to unix-style "\n").
-QCString KigFilterCabri::readLine( QFile& f, bool& eof )
+static QCString readLine( QFile& f, bool& eof )
 {
   QCString s;
   char r;
   while( true )
+  {
+    r = f.getch();
+    if( r == 0 || r == -1 ) { eof = true; break; };
+    if( r == '\n' ) { eof = false; break; }
+    if( r == '\r' )
     {
       r = f.getch();
-      if( r == 0 || r == -1 ) { eof = true; break; };
       if( r == '\n' ) { eof = false; break; }
-      if( r == '\r' )
-	{
-	  r = f.getch();
-	  if( r == '\n' ) { eof = false; break; }
-	  f.ungetch( r );
-	  r = '\r';
-	};
-      s += r;
+      f.ungetch( r );
+      r = '\r';
     };
+    s += r;
+  };
   s += '\n';
   return s;
 }
 
-KigFilterCabri::ObjectData KigFilterCabri::readObject( QFile& f )
+struct ObjectData
+{
+  Object* o;
+  std::vector<int> p;
+  int id;
+  bool valid;
+  operator bool() { return valid; };
+};
+
+static ObjectData readObject( QFile& f )
 {
   ObjectData n;
   n.valid = false;
@@ -76,20 +86,22 @@ KigFilterCabri::ObjectData KigFilterCabri::readObject( QFile& f )
   // n.valid == false, so this is cool...
   if( eof ) return n;
 
-  // first a number and a colon to indicate the id:
-  int colonPos = l.find(':');
-  QCString idS = l.left( colonPos );
+  QRegExp re( "^(\\d+): *([^,]+), \\d+, CN:(\\d+), VN:(\\d+)$" );
+
+//  if ( ! re.match( l ) ) return n;
+
+  // the first number is the id
+  QString idS = re.cap( 1 );
   bool ok = true;
   int id = idS.toInt( &ok );
   if( ! ok ) return n;
   n.id = id;
 
-  // we skip the colon, and the space after it...
-  l = l.mid( colonPos + 2 );
+  QString type = re.cap( 2 );
 
-  // next the object Type..
-  int commaPos = l.find(',');
-  QCString idT = l.left( commaPos );
+  QString nparentss = re.cap( 3 );
+  int nparents = nparentss.toInt( & ok );
+  if ( ! ok ) return n;
 
   // TODO...
   n.valid = true;
@@ -98,9 +110,6 @@ KigFilterCabri::ObjectData KigFilterCabri::readObject( QFile& f )
 
 KigFilter::Result KigFilterCabri::load( const QString /*from*/, Objects& /*os*/ )
 {
-//   // NOT READY...
-//   return NotSupported;
-
 //   std::vector<ObjectData> objs;
 //   QFile f( from );
 //   f.open( IO_ReadOnly );
