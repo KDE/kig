@@ -1,5 +1,8 @@
 2003-07-02  Dominique Devriese  <devriese@kde.org>
 
+	* fix a memory leak in KigDocument, which did not delete its
+	KCommandHistory..
+
 	* fix some use of uninitialised value in dragrectmode, which
 	caused the dragrect to not work at random times
 

@@ -303,6 +303,7 @@ KigDocument::~KigDocument()
   // cleanup
   delete mcoordsystem;
   delete mMode;
+  delete mhistory;
 }
 
 bool KigDocument::openFile()
