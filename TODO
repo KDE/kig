@@ -20,10 +20,6 @@
   Smaller parts of the document cause bigger problems. pino: this is
   due to the polar grid: try to make zoom if there is no grid.
 
-- Try to construct a line by constructing on-the-fly the two points on
-  the same place ( using the snap-to-grid function ) to have a line
-  drawn on the left.
-
 * more or less urgently necessary
 
 - document mathematical i18n strings, so that the translators have a
@@ -60,6 +56,11 @@
 
 - Add the possibility to attach text label also to angles.
 
+- add the possibility to transform more than one object at one time,
+  using the popup menu. For example, I select two circles, I choose
+  Transform->Translate form the RMB menu and then Kig should ask me for
+  a vector to use to translate all the selected objects.
+
 - Add the possibility to select, via new dialog, one or more types of
   object.
 
@@ -68,7 +69,7 @@
 
 - add a magnifying glass to magnify "on-the-fly" a part of the document.
 
-- Python scripting: export cubics, improve existing API.
+- Python scripting: improve existing API.
 
 - add support for work with other measure units (cm, inches, etc...)
   than just pixels...
@@ -77,18 +78,19 @@
   (pino: partially done)
 
 - add an option to the objects popup to start a script object with the
-  current object as first argument...
+  selected object as arguments...
 
 - implement cut, copy and paste for objects...
 
 - extend ObjectFactory::sensiblePointCalcer to also construct
-   intersection points of stuff...
+   intersection points of stuff... (pino: done for lines)
 
-- add the possibiity to construct the tangent to a generic curve
-  ( circle, arc, conic, cubic ). For the first three it's possible to
-  use the "polar line" ( limit it to constrained points ).
+- add the possibiity to construct the tangent to a cubic.
 
 * harder:
+
+- make DoubleImp a "visible" object with uses like Dr. Geo numeric
+  values.
 
 - Provide some nice stuff for differential geometry: velocity vector
    of a curve, curvature vector, osculating parabole, osculating
@@ -137,6 +139,9 @@
   to compass-ruler constructions..
 
 - "export to *": add stuff like java applets, SVG documents, latex, etc...
+
+- add support for saving/opening native compressed files like
+  'myfile.kig.gz' or 'myfile.kig.bz2'.
 
 - koffice support ?
 
