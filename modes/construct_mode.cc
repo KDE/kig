@@ -430,3 +430,13 @@ QString TestConstructMode::selectStatement( const std::vector<ObjectCalcer*>& se
   if ( ret.empty() ) return QString::null;
   return i18n( ret.c_str() );
 }
+
+void PointConstructMode::redrawScreen( KigWidget* w )
+{
+  w->redrawScreen( std::vector<ObjectHolder*>() );
+}
+
+void BaseConstructMode::redrawScreen( KigWidget* w )
+{
+  w->redrawScreen( std::vector<ObjectHolder*>() );
+}

@@ -1,3 +1,8 @@
+2004-12-27  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Fix bug #95637: Scrolling does not work during construction of
+	a new object
+
 2004-12-24  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Kig can now save and open compressed files with extension

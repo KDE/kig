@@ -44,6 +44,8 @@ protected:
 
   void enableActions();
   void cancelConstruction();
+
+  void redrawScreen( KigWidget* );
 };
 
 class BaseConstructMode
@@ -77,6 +79,8 @@ protected:
   virtual QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w ) = 0;
   virtual int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w ) = 0;
   virtual void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w ) = 0;
+
+  void redrawScreen( KigWidget* );
 };
 
 class ConstructMode
