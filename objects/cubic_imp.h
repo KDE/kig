@@ -44,7 +44,7 @@ public:
   const Property property( uint which, const KigWidget& w ) const;
 
   bool inherits( int type ) const;
-  ObjectImp* copy() const;
+  CubicImp* copy() const;
   const char* baseName() const;
 
   double getParam( const Coordinate& point ) const;

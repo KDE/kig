@@ -38,6 +38,7 @@ public:
   // the curve.
   virtual const Coordinate getPoint( double param ) const = 0;
   bool inherits( int typeID ) const;
+  virtual CurveImp* copy() const = 0;
 };
 
 #endif

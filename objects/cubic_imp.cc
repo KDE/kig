@@ -89,7 +89,7 @@ bool CubicImp::inherits( int type ) const
   return type == ID_CubicImp ? true : Parent::inherits( type );
 }
 
-ObjectImp* CubicImp::copy() const
+CubicImp* CubicImp::copy() const
 {
   return new CubicImp( mdata );
 }
