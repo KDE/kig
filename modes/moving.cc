@@ -98,7 +98,6 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
   Objects objs( emo );
   for ( Objects::const_iterator i = emo.begin(); i != emo.end(); ++i )
   {
-    objs.upush( *i );
     objs |= (*i)->parents();
   };
   Objects tmp = objs;
