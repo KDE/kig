@@ -92,10 +92,6 @@ protected:
    */
   virtual bool saveFile();
 
-signals:
-  // we control the app's statusbar...
-  void setStatusBarText ( const QString & text );
-
 public:
   void emitStatusBarText( const QString& text );
 
