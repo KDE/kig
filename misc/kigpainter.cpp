@@ -35,7 +35,8 @@
 KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device, bool no )
   : mP ( device ),
     msi( si ),
-    mNeedOverlay( no )
+    mNeedOverlay( no ),
+    overlayenlarge( 0 )
 {
 }
 
@@ -134,6 +135,7 @@ void KigPainter::setStyle( const PenStyle c )
 void KigPainter::setWidth( const uint c )
 {
   width = c;
+  if (c > 0) overlayenlarge = c - 1;
   mP.setPen( QPen( color, width, style ) );
 }
 
@@ -295,7 +297,7 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
       //kdDebug()<< "stopped after "<< counter << " passes." << endl;
       break;
     }
-    if (tR.intersects(border)) mOverlay.push_back( toScreen( tR ) );
+    if (tR.intersects(border)) mOverlay.push_back( toScreenEnlarge( tR ) );
     if (++counter > 100)
     {
       kdError()<< k_funcinfo << "counter got too big :( " << endl;
@@ -378,6 +380,19 @@ void KigPainter::drawTextStd( const QPoint& p, const QString& s )
 QRect KigPainter::toScreen( const Rect r ) const
 {
   return msi.toScreen( r );
+}
+
+QRect KigPainter::toScreenEnlarge( const Rect r ) const
+{
+  if ( overlayenlarge == 0 ) return msi.toScreen( r );
+
+  QRect qr = msi.toScreen( r );
+  qr.moveBy ( -overlayenlarge, -overlayenlarge ); 
+  int w = qr.width();
+  int h = qr.height();
+  qr.setWidth (w + 2*overlayenlarge);
+  qr.setHeight (h + 2*overlayenlarge);
+  return qr;
 }
 
 void KigPainter::drawSimpleText( const Coordinate& c, const QString s )
@@ -603,7 +618,7 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
       Rect overlay = overlaystack.top();
       overlaystack.pop();
       if (overlay.intersects( border ))
-        mOverlay.push_back( toScreen( overlay ) );
+        mOverlay.push_back( toScreenEnlarge( overlay ) );
     }
   }
   mNeedOverlay = tNeedOverlay;

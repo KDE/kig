@@ -52,6 +52,7 @@ bool Segment::contains(const Coordinate& o, const ScreenInfo& si ) const
 void Segment::draw(KigPainter& p, bool ss) const
 {
   p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
+  p.setWidth ( mWidth );
   p.drawSegment( mpa, mpb );
 }
 

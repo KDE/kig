@@ -60,6 +60,7 @@ bool Ray::contains(const Coordinate& o, const ScreenInfo& si ) const
 void Ray::draw(KigPainter& p, bool ss) const
 {
   p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
+  p.setWidth ( mWidth );
   p.drawRay( mpa, mpb );
 }
 

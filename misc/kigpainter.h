@@ -64,6 +64,7 @@ protected:
   ScreenInfo msi;
 
   bool mNeedOverlay;
+  int overlayenlarge;
 public:
   /**
    * construct a new KigPainter:
@@ -80,6 +81,7 @@ public:
 
   QPoint toScreen( const Coordinate p ) const;
   QRect toScreen( const Rect r ) const;
+  QRect toScreenEnlarge( const Rect r ) const;
   Coordinate fromScreen( const QPoint& p ) const;
   Rect fromScreen( const QRect& r ) const;
 
