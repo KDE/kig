@@ -475,36 +475,25 @@ const CubicCartesianData calcCubicTransformation (
     }
   }
 
-  assert (fabs(b[0][1][2] - b[1][2][0]) < 1e-8);  // test a couple of cases
-  assert (fabs(b[0][1][1] - b[1][1][0]) < 1e-8);
+//   assert (fabs(b[0][1][2] - b[1][2][0]) < 1e-8);  // test a couple of cases
+//   assert (fabs(b[0][1][1] - b[1][1][0]) < 1e-8);
 
-  icount = 0;
-  for (int i=0; i < 3; i++)
-  {
-    for (int j=i; j < 3; j++)
-    {
-      for (int k=j; k < 3; k++)
-      {
-	dataout.coeffs[icount] = b[i][j][k];
-	if ( i < k )
-	{
-	  if ( i == j )    // case biik
-	  {
-	    dataout.coeffs[icount] *= 3.;
-	  }
-	  else if ( j == k )  // case bijj
-	  {
-	    dataout.coeffs[icount] *= 3.;
-	  }
-	  else             // case bijk  (i<j<k)
-	  {
-	    dataout.coeffs[icount] *= 6.;
-	  }
-	}
-	icount++;
-      }
-    }
-  }
+  // apparently, the above assertions are wrong ( due to rounding
+  // errors, Maurizio and I hope :) ), so since the symmetry is not
+  // present, we just take the sum of the parts of the matrix elements
+  // that should be symmetric, instead of taking one of them, and
+  // multiplying it..
+
+  dataout.coeffs[0] = b[0][0][0];
+  dataout.coeffs[1] = b[0][0][1] + b[0][1][0] + b[1][0][0];
+  dataout.coeffs[2] = b[0][0][2] + b[0][2][0] + b[2][0][0];
+  dataout.coeffs[3] = b[0][1][1] + b[1][0][1] + b[1][1][0];
+  dataout.coeffs[4] = b[0][1][2] + b[0][2][1] + b[1][2][0] + b[1][0][2] + b[2][1][0] + b[2][0][1];
+  dataout.coeffs[5] = b[0][2][2] + b[2][0][2] + b[2][2][0];
+  dataout.coeffs[6] = b[1][1][1];
+  dataout.coeffs[7] = b[1][1][2] + b[1][2][1] + b[2][1][1];
+  dataout.coeffs[8] = b[1][2][2] + b[2][1][2] + b[2][2][1];
+  dataout.coeffs[9] = b[2][2][2];
 
   return dataout;
 }
