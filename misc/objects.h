@@ -22,8 +22,8 @@
 #include "config.h"
 #endif
 
-#ifndef OBJECTS_CPP
-#define OBJECTS_CPP
+#ifndef KIG_MISC_OBJECTS_CPP
+#define KIG_MISC_OBJECTS_CPP
 
 #include <vector>
 #include <algorithm>
