@@ -23,8 +23,6 @@
 #include "../objects/object_imp.h"
 #include "../objects/bogus_imp.h"
 
-#include "../objects/bogus_imp.h"
-
 class PythonCompiledScriptImp
   : public BogusImp
 {

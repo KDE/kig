@@ -34,6 +34,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
   : NewScriptWizardBase( parent, "New Script Wizard" ),
     mmode( mode )
 {
+  connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelpClicked() ) );
 }
 
 void NewScriptWizard::back()
@@ -70,7 +71,6 @@ void NewScriptWizard::accept()
 
 void NewScriptWizard::slotHelpClicked()
 {
-  // TODO
-  kapp->invokeHelp( QString::fromLatin1( "defining-script-objects"),
+  kapp->invokeHelp( QString::fromLatin1( "scripting" ),
                     QString::fromLatin1( "kig" ) );
 }

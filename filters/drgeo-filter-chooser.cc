@@ -35,8 +35,9 @@ KigFilterDrgeoChooser::KigFilterDrgeoChooser( QStringList& l )
 
   FigureListBox->insertStringList( l );
 
-  connect( OKButton, SIGNAL( clicked() ), this, SLOT( slotOKPressed() ) );
-  connect( CancelButton, SIGNAL( clicked() ), this, SLOT( slotCancelPressed() ) );
+  connect( OKButton, SIGNAL( clicked() ), SLOT( slotOKPressed() ) );
+  connect( CancelButton, SIGNAL( clicked() ), SLOT( slotCancelPressed() ) );
+  connect( FigureListBox, SIGNAL( executed( QListBoxItem* ) ), SLOT( slotExecuted( QListBoxItem* ) ) );
 }
 
 void KigFilterDrgeoChooser::slotOKPressed()
