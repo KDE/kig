@@ -243,7 +243,7 @@ void BuiltinActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu
     popup.addAction( menu, i18n( "&Hide" ), nextfree++ );
     QPixmap p = l->loadIcon( "move", KIcon::User );
     popup.addAction( menu, p, i18n( "&Move" ), nextfree++ );
-    p = l->loadIcon( "delete", KIcon::User );
+    p = l->loadIcon( "editdelete", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "&Delete" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetColorMenu )

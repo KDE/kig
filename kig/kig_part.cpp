@@ -127,7 +127,7 @@ void KigDocument::setupActions()
   KIconLoader* l = KGlobal::iconLoader();
   QPixmap tmp;
 
-  tmp = l->loadIcon( "delete", KIcon::User);
+  tmp = l->loadIcon( "editdelete", KIcon::Toolbar);
   aDeleteObjects = new KAction(
       i18n("&Delete Objects"), "editdelete", Key_Delete, this,
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
