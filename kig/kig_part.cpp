@@ -207,10 +207,10 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
 //     Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
 //     Object::addBuiltinType( new TStdType<IntersectionPoint> );
-
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
 //     Object::addBuiltinType( new TStdType<LineRadical> );
 //     Object::addBuiltinType( new TMultiType<LineConicRadical> );
+
 //     Object::addBuiltinType( new TStdType<Locus> );
 //     Object::addBuiltinType( new TType<TextLabel> );
 //     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
