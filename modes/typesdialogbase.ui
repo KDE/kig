@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>456</width>
-            <height>232</height>
+            <height>244</height>
         </rect>
     </property>
     <property name="caption">
@@ -37,12 +37,48 @@
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="KListBox">
+                <widget class="KListView">
+                    <column>
+                        <property name="text">
+                            <string>Icon</string>
+                        </property>
+                        <property name="clickable">
+                            <bool>false</bool>
+                        </property>
+                        <property name="resizable">
+                            <bool>true</bool>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>Name</string>
+                        </property>
+                        <property name="clickable">
+                            <bool>false</bool>
+                        </property>
+                        <property name="resizable">
+                            <bool>true</bool>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>Description</string>
+                        </property>
+                        <property name="clickable">
+                            <bool>false</bool>
+                        </property>
+                        <property name="resizable">
+                            <bool>true</bool>
+                        </property>
+                    </column>
                     <property name="name">
                         <cstring>typeList</cstring>
                     </property>
-                    <property name="selectionMode">
-                        <enum>Multi</enum>
+                    <property name="selectionMode" stdset="0">
+                        <enum>Extended</enum>
+                    </property>
+                    <property name="allColumnsShowFocus">
+                        <bool>true</bool>
                     </property>
                     <property name="toolTip" stdset="0">
                         <string>Select types here...</string>
@@ -50,41 +86,6 @@
                     <property name="whatsThis" stdset="0">
                         <string>This is a list of the current macro types... You can select, delete, export and import them...</string>
                     </property>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout2</cstring>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="KIconButton">
-                            <property name="name">
-                                <cstring>typeIcon</cstring>
-                            </property>
-                            <property name="text">
-                                <string></string>
-                            </property>
-                        </widget>
-                        <spacer>
-                            <property name="name">
-                                <cstring>spacer</cstring>
-                            </property>
-                            <property name="orientation">
-                                <enum>Vertical</enum>
-                            </property>
-                            <property name="sizeType">
-                                <enum>Expanding</enum>
-                            </property>
-                            <property name="sizeHint">
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                    </vbox>
                 </widget>
             </hbox>
         </widget>
@@ -221,10 +222,22 @@
 </widget>
 <connections>
     <connection>
+        <sender>buttonExport</sender>
+        <signal>clicked()</signal>
+        <receiver>TypesDialogBase</receiver>
+        <slot>exportType()</slot>
+    </connection>
+    <connection>
         <sender>buttonHelp</sender>
         <signal>clicked()</signal>
         <receiver>TypesDialogBase</receiver>
         <slot>helpSlot()</slot>
+    </connection>
+    <connection>
+        <sender>buttonImport</sender>
+        <signal>clicked()</signal>
+        <receiver>TypesDialogBase</receiver>
+        <slot>importTypes()</slot>
     </connection>
     <connection>
         <sender>buttonOk</sender>
@@ -239,28 +252,16 @@
         <slot>deleteType()</slot>
     </connection>
     <connection>
-        <sender>buttonExport</sender>
-        <signal>clicked()</signal>
-        <receiver>TypesDialogBase</receiver>
-        <slot>exportType()</slot>
-    </connection>
-    <connection>
-        <sender>buttonImport</sender>
-        <signal>clicked()</signal>
-        <receiver>TypesDialogBase</receiver>
-        <slot>importTypes()</slot>
-    </connection>
-    <connection>
         <sender>typeList</sender>
         <signal>selectionChanged()</signal>
         <receiver>TypesDialogBase</receiver>
         <slot>selectionChangedSlot()</slot>
     </connection>
     <connection>
-        <sender>typeIcon</sender>
-        <signal>iconChanged()</signal>
+        <sender>typeList</sender>
+        <signal>executed(QListViewItem*)</signal>
         <receiver>TypesDialogBase</receiver>
-        <slot>iconChangedSlot()</slot>
+        <slot>executed(QListViewItem*)</slot>
     </connection>
 </connections>
 <slots>
@@ -270,11 +271,12 @@
     <slot access="protected">importTypes()</slot>
     <slot>okSlot()</slot>
     <slot access="protected">selectionChangedSlot()</slot>
-    <slot access="protected">iconChangedSlot()</slot>
+    <slot access="protected">executed(QListViewItem*)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>klistbox.h</includehint>
-    <includehint>kicondialog.h</includehint>
+    <includehint>klistview.h</includehint>
+    <includehint>kpushbutton.h</includehint>
+    <includehint>kpushbutton.h</includehint>
 </includehints>
 </UI>

@@ -23,16 +23,17 @@
 
 #include "typesdialogbase.h"
 
-#include <klistbox.h>
+#include <klistview.h>
+#include <kiconloader.h>
 
 class Macro;
 
 class MacroListElement
-  : public QListBoxText
+  : public QListViewItem
 {
   Macro* macro;
 public:
-  MacroListElement( Macro* m );
+  MacroListElement( KListView* lv, Macro* m );
   Macro* getMacro() const { return macro; };
 };
 
@@ -44,6 +45,7 @@ class TypesDialog : public TypesDialogBase
 
   // necessary because some MacroList functions need it..
   const KigDocument& mdoc;
+  const KIconLoader* il;
 public:
   TypesDialog( QWidget* parent, const KigDocument& );
   ~TypesDialog();
@@ -57,7 +59,10 @@ protected slots:
   void exportType();
   void importTypes();
   void selectionChangedSlot();
-  void iconChangedSlot();
+  void executed( QListViewItem* i );
+
+private:
+  QListViewItem* newListItem( Macro* m );
 };
 
 #endif

@@ -17,8 +17,8 @@
 - add support for working with angles in degrees in the set size
   dialog of an angle..
 
-- add support for giving sizes in cm, inches in the export to image
-  dialog..
+- add support for work with other measure units (cm, inches, etc...)
+  than just pixels...
 
 - add an option to change the name and description of a type in the
   "manage types" dialog..

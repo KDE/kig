@@ -40,7 +40,7 @@ Angles            label with measure
 Locuses           may work
 Polygons          also in Kig :-)
 Transformations   scaling
-Intersections     curve-line
+Intersections     arc-line (also in Kig)
 
 Styles            Points( Cross )
 

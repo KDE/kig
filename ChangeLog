@@ -1,3 +1,8 @@
+2004-04-05  Pino Toscano <toscano.pino@tiscali.it>
+
+	* A new look for type list in the type dialog: a listview
+	instead of a listbox that should make easier editing a type.
+
 2004-04-04  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Now Kig can save icon information of every macro.
