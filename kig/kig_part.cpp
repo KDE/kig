@@ -961,7 +961,7 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
   delete doc;
 
   return 0;
-};
+}
 
 void KigPart::toggleGrid()
 {
