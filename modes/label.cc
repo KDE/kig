@@ -223,7 +223,6 @@ void TextLabelConstructionMode::updateWiz()
 {
   QString s = mwiz->labelTextInput->text();
   uint percentcount = percentCount( s );
-  if ( percentcount != mlpc ) updateLinksLabel();
   if ( percentcount == 0 && ! s.isEmpty() )
   {
     mwiz->setNextEnabled( mwiz->enter_text_page, false );
