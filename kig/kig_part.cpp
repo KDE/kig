@@ -30,6 +30,7 @@
 #include "../modes/normal.h"
 #include "../objects/circle.h"
 #include "../objects/conic.h"
+#include "../objects/coniclines.h"
 #include "../objects/segment.h"
 #include "../objects/normalpoint.h"
 #include "../objects/midpoint.h"
