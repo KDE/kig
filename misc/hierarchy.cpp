@@ -102,15 +102,6 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
     };
     tmp = tmp2;
   };
-
-  // next, we calculate the independent elems.  These are the ones
-  // that have no parent arguments, and the ones we start
-  // calc()-ulating from.  They also include the given arguments.
-  indElems = gegElems;
-  for ( ElemList::iterator i = allElems.begin(); i != allElems.end(); ++i )
-  {
-    if ( (*i)->getParents().empty() ) indElems.push_back( *i );
-  };
 };
 
 Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
@@ -190,7 +181,6 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
   // clear everything...
   gegElems.clear();
   finElems.clear();
-  indElems.clear();
   allElems.deleteAll();
   allElems.clear();
 
@@ -204,95 +194,86 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
   // first we construct all the HierarchyElement, an then we pass each
   // object its parents...
   for (QDomNode n = ourElement.firstChild(); !n.isNull(); n = n.nextSibling())
-    {
-      QDomElement e = n.toElement();
-      assert (!e.isNull());
-      assert (e.tagName() == "HierarchyElement");
+  {
+    QDomElement e = n.toElement();
+    assert (!e.isNull());
+    assert (e.tagName() == "HierarchyElement");
 
-      // fetch the id
-      QString tmpId = e.attribute("id");
-      bool ok;
-      int id = tmpId.toInt(&ok);
-      assert(ok);
+    // fetch the id
+    QString tmpId = e.attribute("id");
+    bool ok;
+    int id = tmpId.toInt(&ok);
+    assert(ok);
 
-      // fetch the typeName
-      QString tmpTN = e.attribute("typeName");
-      assert(tmpTN);
-      QCString typeName = tmpTN.utf8();
+    // fetch the typeName
+    QString tmpTN = e.attribute("typeName");
+    assert(tmpTN);
+    QCString typeName = tmpTN.utf8();
 
-      HierarchyElement* tmpE = new HierarchyElement(typeName, id);
-      // static cast, to prevent warnings about "comparison between
-      // signed and unsigned..."
-      if( id > static_cast<int>(tmphash.size()) ) tmphash.resize( id );
-      tmphash[id - 1] = tmpE;
+    HierarchyElement* tmpE = new HierarchyElement(typeName, id);
+    // static cast, to prevent warnings about "comparison between
+    // signed and unsigned..."
+    if( id > static_cast<int>(tmphash.size()) ) tmphash.resize( id );
+    tmphash[id - 1] = tmpE;
 
-      allElems.push_back(tmpE);
-    };
+    allElems.push_back(tmpE);
+  };
 
   // now take care of the parents and the params:
   for (QDomNode n = ourElement.firstChild(); !n.isNull(); n = n.nextSibling())
-    {
-      QDomElement e = n.toElement();
-      assert (!e.isNull());
-      assert (e.tagName() == "HierarchyElement");
-
-      // fetch the id
-      QString tmpId = e.attribute("id");
-      bool ok;
-      int id = tmpId.toInt(&ok);
-      assert(ok);
-
-      // static cast, to prevent warnings about "comparison between
-      // signed and unsigned..."
-      assert( id <= static_cast<int>(tmphash.size()) );
-      HierarchyElement* tmpE = tmphash[id -1];
-
-      // two params we handle:
-      QString tmpGiven = e.attribute("given");
-      assert(tmpGiven);
-      QCString tmpS = tmpGiven.utf8();
-      if (tmpS == "true" || tmpS == "yes") gegElems.push_back(tmpE);
-
-      QString tmpFinal = e.attribute("final");
-      assert(tmpFinal);
-      tmpS = tmpFinal.utf8();
-      if (tmpS == "true" || tmpS == "yes") finElems.push_back(tmpE);
-
-      // the children of this tag:
-      for (QDomNode node = n.firstChild(); !node.isNull(); node = node.nextSibling())
-	{
-	  // fetch the element of the child tag
-	  QDomElement e = node.toElement();
-	  assert (!e.isNull());
-	  if (e.tagName() == "parent")
-	    {
-	      // fetch the id
-	      QString tmpId = e.attribute("id");
-	      bool ok;
-	      int id = tmpId.toInt(&ok);
-	      assert(ok);
-
-	      HierarchyElement* i = tmphash[id -1];
-	      tmpE->addParent(i);
-	    } // e.tagName() == "parent"
-	  else
-	    { // it's not a parent, so it's a param..
-	      assert (e.tagName() == "param");
-	      QString name = e.attribute("name");
-	      QDomText t = e.firstChild().toText();
-	      Q_ASSERT (!t.isNull());
-	      tmpE->setParam(name.latin1(), t.data());
-	    }; // we just handled the param child tag
-	}; // end of loop over the child tags of the HierarchyElement
-    };
-
-  // next, we calculate the independent elems.  These are the ones
-  // that have no parent arguments, and the ones we start
-  // calc()-ulating from.  They also include the given arguments.
-  indElems = gegElems;
-  for ( ElemList::iterator i = allElems.begin(); i != allElems.end(); ++i )
   {
-    if ( (*i)->getParents().empty() ) indElems.push_back( *i );
+    QDomElement e = n.toElement();
+    assert (!e.isNull());
+    assert (e.tagName() == "HierarchyElement");
+
+    // fetch the id
+    QString tmpId = e.attribute("id");
+    bool ok;
+    int id = tmpId.toInt(&ok);
+    assert(ok);
+
+    // static cast, to prevent warnings about "comparison between
+    // signed and unsigned..."
+    assert( id <= static_cast<int>(tmphash.size()) );
+    HierarchyElement* tmpE = tmphash[id -1];
+
+    // two params we handle:
+    QString tmpGiven = e.attribute("given");
+    assert(tmpGiven);
+    QCString tmpS = tmpGiven.utf8();
+    if (tmpS == "true" || tmpS == "yes") gegElems.push_back(tmpE);
+
+    QString tmpFinal = e.attribute("final");
+    assert(tmpFinal);
+    tmpS = tmpFinal.utf8();
+    if (tmpS == "true" || tmpS == "yes") finElems.push_back(tmpE);
+
+    // the children of this tag:
+    for (QDomNode node = n.firstChild(); !node.isNull(); node = node.nextSibling())
+    {
+      // fetch the element of the child tag
+      QDomElement e = node.toElement();
+      assert (!e.isNull());
+      if (e.tagName() == "parent")
+      {
+        // fetch the id
+        QString tmpId = e.attribute("id");
+        bool ok;
+        int id = tmpId.toInt(&ok);
+        assert(ok);
+
+        HierarchyElement* i = tmphash[id -1];
+        tmpE->addParent(i);
+      } // e.tagName() == "parent"
+      else
+      { // it's not a parent, so it's a param..
+        assert (e.tagName() == "param");
+        QString name = e.attribute("name");
+        QDomText t = e.firstChild().toText();
+        Q_ASSERT (!t.isNull());
+        tmpE->setParam(name.latin1(), t.data());
+      }; // we just handled the param child tag
+    }; // end of loop over the child tags of the HierarchyElement
   };
 };
 
@@ -344,27 +325,6 @@ void ObjectHierarchy::saveXML( QDomDocument& doc, QDomElement& p ) const
   p.appendChild(m);
 }
 
-void ObjectHierarchy::calc( const ScreenInfo& r ) const
-{
-  ElemList tmp = indElems, tmp2;
-  for ( ElemList::const_iterator i = indElems.begin(); i != indElems.end(); ++i )
-    (*i)->actual->calc( r );
-  while (!tmp.empty())
-  {
-    for (ElemList::const_iterator i = tmp.begin(); i != tmp.end(); ++i)
-    {
-      for (ElemList::const_iterator j = (*i)->getChildren().begin();
-           j != (*i)->getChildren().end();
-           ++j)
-      {
-        (*j)->actual->calc( r );
-        tmp2.push_back(*j);
-      };
-    };
-    tmp = tmp2;
-    tmp2.clear();
-  };
-}
 HierarchyElement::HierarchyElement(QCString inTN, int inId )
   : mtype( Object::types().findType( inTN ) ), id(inId), actual(0)
 {

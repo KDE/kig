@@ -48,8 +48,6 @@ public:
 //   QCString vFullTypeName() const = 0;
 //   Objects getParents() const = 0;
 protected:
-  virtual void handleNewObjects( const Objects&, const ScreenInfo& ) = 0;
-protected:
   ObjectHierarchy* hier;
   Objects arguments;
 };
@@ -84,7 +82,6 @@ public:
   const QCString vIconFileName() const { return 0; };
   Objects getParents() const { return arguments; };
 protected:
-  void handleNewObjects (const Objects& o, const ScreenInfo& r );
   // have we constructed stuff yet?
   bool constructed;
 };

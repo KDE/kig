@@ -94,15 +94,11 @@ class ObjectHierarchy
 {
   ElemList allElems;
   ElemList gegElems;
-  ElemList indElems;
   ElemList finElems;
 public:
   // this constructs the hierarchy, so that its internal structure
   // represents the structure of its arguments, so that fillUp will be
   // able to do something intelligent.
-  // the HierarchyElement::actual's will contain pointers to the
-  // objects in the structure of the arguments, so calc() can do
-  // something intelligent too...
   ObjectHierarchy( const Objects& inGegObjs, const Objects& inFinalObjs );
   ObjectHierarchy ( QDomElement& ourElement ) { loadXML(ourElement); };
   const ElemList& getGegElems() { return gegElems; };
@@ -112,15 +108,9 @@ public:
   // fillUp() constructs from the inGegObjs other objects, according
   // to the hierarchy it keeps.  All newly created objects are
   // returned.
-  // the HierarchyElement::actual's will contain pointers to the
-  // relevant newly created objects, so calc() will be able to do
-  // something useful...
-  // NOTE: you _must_ still call calc() after you call this function...
+  // NOTE: you _must_ still call calc() on all of the objects after
+  // you call this function...
   Objects fillUp( const Objects& inGegObjs ) const;
-
-  // calls Object::calc() on all contained objects in an intelligent
-  // order (given objs first, since the others depend on their values...)
-  void calc( const ScreenInfo& ) const;
 
   void saveXML( QDomDocument& doc, QDomElement& parent ) const;
   void loadXML( QDomElement& ourElement);

@@ -92,7 +92,7 @@ void MovingMode::leftMouseMoved( QMouseEvent* e, KigView* v )
 void MovingMode::leftReleased( QMouseEvent*, KigView* v )
 {
   // clean up after ourselves:
-  calc( amo, v->screenInfo() );
+  amo.calc( v->screenInfo() );
   std::for_each( emo.begin(), emo.end(), std::mem_fun( &Object::stopMove ) );
   mDoc->setModified( true );
   // refresh the screen:
@@ -116,7 +116,8 @@ void MovingMode::mouseMoved( QMouseEvent* e, KigView* v )
   Coordinate c = v->fromScreen( e->pos() );
   for( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
     (*i)->moveTo( c );
-  calc( amo, v->screenInfo() );
+  amo.calc( v->screenInfo() );
+  amo.calc( v->screenInfo() );
   KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );

@@ -21,6 +21,7 @@
 #include "macro.h"
 
 #include "../misc/hierarchy.h"
+#include "../misc/calcpaths.h"
 
 QString i18n( const char* );
 
@@ -94,16 +95,24 @@ void MacroObjectOne::stopMove()
 void MacroObjectOne::calc( const ScreenInfo& r )
 {
   if (!constructed) {
-    handleNewObjects( hier->fillUp(arguments), r );
+    hier->fillUp(arguments);
+    final = hier->getFinElems()[0]->actual;
+    cos = calcPath( arguments, final );
+
+    cos.calc( r );
+    final->calc( r );
+
+    for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
+      for( Objects::iterator j = cos.begin(); j != cos.end(); ++j )
+        ( *i )->delChild( *j );
+
+    for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
+      (*i)->setShown(false);
+
     constructed = true;
   };
-  for ( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
-    (*i)->calc( r );
-  // two times, cause the order in which we calc sometimes sucks
-  // TODO: use ObjectHierarchy::calc() here instead.  Problem is that
-  // our hier Hierarchy isn't only ours, but shared among all other
-  // macro-objects of the same 'type'.  We need to fill it up with our
-  // cos first somehow..
+  // this should have the right order, since we used calcPath to find
+  // cos...
   for ( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
     (*i)->calc( r );
   final->calc( r );
@@ -120,25 +129,8 @@ const QCString MacroObjectOne::vBaseTypeName() const
 
 const QCString MacroObjectOne::vFullTypeName() const
 {
-  if (!final)
-  {
-    return hier->getFinElems()[0]->fullTypeName();
-  }
-  else return final->vFullTypeName();
+  return "If you see this, you've found a bug ( MacroObjectOne::vFullTypeName() )";
 };
-
-void MacroObjectOne::handleNewObjects(const Objects& o, const ScreenInfo& r )
-{
-  hier->calc( r );
-  final = hier->getFinElems()[0]->actual;
-  cos = o;
-  cos.remove(final);
-  for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
-    for( Objects::iterator j = cos.begin(); j != cos.end(); ++j )
-      ( *i )->delChild( *j );
-  for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
-    (*i)->setShown(false);
-}
 
 MacroObjectOne::MacroObjectOne(const MacroObjectOne& m)
   : MacroObject( m ), final( 0 ), constructed(false)

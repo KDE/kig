@@ -23,7 +23,7 @@
 
 #include "normalpoint.h"
 
-#include "../misc/hierarchy.h"
+#include "../misc/calcpaths.h"
 #include "../misc/kigpainter.h"
 
 #include <kdebug.h>
@@ -116,18 +116,17 @@ bool Locus::selectArg(Object* o)
   if (cp && obj)
   {
     complete = true;
-    // construct our hierarchy...
-    Objects given;
-    given.push_back(cp);
-    Objects final;
-    final.push_back(obj);
-    hierarchy = new ObjectHierarchy( given, final );
   }
   return complete;
 }
 
 void Locus::calc( const ScreenInfo& r )
 {
+  if ( calcpath.empty() )
+  {
+    calcpath = calcPath( Objects( cp ), obj );
+    calcpath.push_back( obj );
+  };
   if( isPointLocus() ) calcPointLocus( r );
   else calcObjectLocus( r );
 }
@@ -141,11 +140,11 @@ Coordinate Locus::getPoint( double param ) const
     double tmp = cp->constrainedImp()->getP();
     cp->constrainedImp()->setP(param);
     // hack... hope no-one tries recursive Locuses...
-    hierarchy->calc( ScreenInfo( Rect(), QRect() ) );
+    calcpath.calc( ScreenInfo( Rect(), QRect() ) );
     t= obj->toPoint()->getCoord();
     cp->constrainedImp()->setP(tmp);
     // hack... hope no-one tries recursive Locuses...
-    hierarchy->calc( ScreenInfo( Rect(), QRect() ) );
+    calcpath.calc( ScreenInfo( Rect(), QRect() ) );
   }
   else t = Coordinate();
   return t;
@@ -164,22 +163,22 @@ void Locus::calcObjectLocus( const ScreenInfo& r )
   double oldP = cp->constrainedImp()->getP();
   double period = double(1)/numberOfSamples;
   for (double i = 0; i <= 1; i += period)
-    {
-      cp->constrainedImp()->setP(i);
-      cp->calc( r );
-      hierarchy->calc( r );
-      objs.push_back(obj->copy());
-    };
+  {
+    cp->constrainedImp()->setP(i);
+    cp->calc( r );
+    calcpath.calc( r );
+    objs.push_back(obj->copy());
+  };
   cp->constrainedImp()->setP(oldP);
   cp->calc( r );
-  hierarchy->calc( r );
+  calcpath.calc( r );
 }
 
 inline Locus::CPts::iterator Locus::addPoint( double param, const ScreenInfo& r )
 {
   cp->constrainedImp()->setP(param);
   cp->calc( r );
-  hierarchy->calc( r );
+  calcpath.calc( r );
   Point* p = obj->toPoint();
   pts.push_front(CPt(p->getCoord(), param));
   return pts.begin();
@@ -224,16 +223,19 @@ void Locus::calcPointLocus( const ScreenInfo& r )
   // reset cp and its children to their former state...
   cp->constrainedImp()->setP(oldP);
   cp->calc( r );
-  hierarchy->calc( r );
+  calcpath.calc( r );
   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << "  - count: " << pts.size()<< endl;
 }
 
 Locus::Locus(const Locus& loc)
-  : Curve(), cp(loc.cp), obj(loc.obj), hierarchy(loc.hierarchy)
+  : Curve(), cp(loc.cp), obj(loc.obj)
 {
   cp->addChild(this);
   obj->addChild(this);
   complete = loc.complete;
+  calcpath = calcPath( Objects( cp ), obj );
+  // we always want to calc obj after its arguments...
+  calcpath.push_back( obj );
 }
 
 Objects Locus::getParents() const
@@ -245,7 +247,7 @@ Objects Locus::getParents() const
 }
 
 Locus::Locus()
- : cp(0), obj(0), hierarchy(0)
+ : cp(0), obj(0)
 {
 };
 
@@ -276,7 +278,7 @@ const QCString Locus::vFullTypeName() const
 
 const QCString Locus::sFullTypeName()
 {
-  return "Curve";
+  return "Locus";
 }
 
 const QString Locus::vDescriptiveName() const

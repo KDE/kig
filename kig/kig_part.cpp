@@ -37,7 +37,7 @@
 #include "../objects/locus.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
-#include "../misc/hierarchy.h"
+#include "../misc/calcpaths.h"
 #include "../misc/objects.h"
 #include "../filters/filter.h"
 
@@ -285,14 +285,17 @@ bool KigDocument::openFile()
   mObjs = os;
   setModified(false);
   mhistory->clear();
+
+  Objects tmp = calcPath( os );
   // terrible hackery, i know..
-  Objects noObjs;
-  ObjectHierarchy hier( noObjs, mObjs );
-  hier.calc( ScreenInfo( Rect(), QRect() ) );
+  tmp.calc( ScreenInfo( Rect(), QRect() ) );
   emit recenterScreen();
   // we do it again to avoid problems with points on locuses and such...
-  hier.calc( m_widget->screenInfo() );
+  tmp.calc( m_widget->screenInfo() );
   emit recenterScreen();
+  // i think ( hope ;) three times should be enough to avoid all
+  // possible problems...
+  tmp.calc( m_widget->screenInfo() );
 
   return true;
 }

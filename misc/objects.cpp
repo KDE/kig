@@ -27,3 +27,11 @@
 #include <qrect.h>
 
 // this used to be a bit more filled up :)
+
+void Objects::calc( const ScreenInfo& r ) const
+{
+  for ( const_iterator i = begin(); i != end(); ++i )
+  {
+    (*i)->calc( r );
+  };
+}

@@ -126,15 +126,14 @@ void delete_all( iter current, iter end )
   };
 };
 
-typedef myvector<Object*> Objects;
-
-template<class T>
-void calc( const myvector<T>& o, const ScreenInfo& r )
+class Objects
+  : public myvector<Object*>
 {
-  for ( typename myvector<T>::const_iterator i = o.begin(); i != o.end(); ++i )
-  {
-    (*i)->calc( r );
-  };
-}
+public:
+  Objects() {};
+  Objects( const Objects& os ) : myvector<Object*>( os ) {};
+  explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
+  void calc( const ScreenInfo& r ) const;
+};
 
 #endif

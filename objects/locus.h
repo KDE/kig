@@ -96,9 +96,7 @@ protected:
   bool isPointLocus() const;
   bool _pointLocus;
 
-  // don't use this for fillUp or saving, since it has 0 for
-  // KigDocument pointer...
-  ObjectHierarchy* hierarchy;
+  Objects calcpath;
 
   // objs is just a list of pointers to objects
   Objects objs;
