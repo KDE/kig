@@ -393,7 +393,7 @@ QString GenericIntersectionConstructor::useText(
   else if ( o.imp()->inherits( AbstractLineImp::stype() ) )
     return i18n( "Intersect with This Line" );
   else if ( o.imp()->inherits( CubicImp::stype() ) )
-    return i18n( "Intersect with This Cubic" );
+    return i18n( "Intersect with This Cubic Curve" );
   else assert( false );
   return QString::null;
 }

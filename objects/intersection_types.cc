@@ -170,7 +170,7 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocumen
 
 static const ArgsParser::spec argsspecLineCubicIntersection[] =
 {
-  { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic" ), true },
+  { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic curve" ), true },
   { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
   { IntImp::stype(), "param", false }
 };

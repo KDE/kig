@@ -326,14 +326,14 @@ const ObjectImpType* CubicImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "cubic",
-    I18N_NOOP( "cubic" ),
-    I18N_NOOP( "Select this cubic" ),
-    I18N_NOOP( "Remove a Cubic" ),
-    I18N_NOOP( "Add a Cubic" ),
-    I18N_NOOP( "Move a Cubic" ),
-    I18N_NOOP( "Attach to this cubic" ),
-    I18N_NOOP( "Show a Cubic" ),
-    I18N_NOOP( "Hide a Cubic" )
+    I18N_NOOP( "cubic curve" ),
+    I18N_NOOP( "Select this cubic curve" ),
+    I18N_NOOP( "Remove a Cubic Curve" ),
+    I18N_NOOP( "Add a Cubic Curve" ),
+    I18N_NOOP( "Move a Cubic Curve" ),
+    I18N_NOOP( "Attach to this cubic curve" ),
+    I18N_NOOP( "Show a Cubic Curve" ),
+    I18N_NOOP( "Hide a Cubic Curve" )
     );
   return &t;
 }

@@ -167,8 +167,8 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       CubicB9PType::instance(),
-      I18N_NOOP( "Cubic by Nine Points" ),
-      I18N_NOOP( "A cubic constructed through nine points" ),
+      I18N_NOOP( "Cubic Curve by Nine Points" ),
+      I18N_NOOP( "A cubic curve constructed through nine points" ),
       "cubicb9p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_cubicb9p" ) );
@@ -191,16 +191,16 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       CubicNodeB6PType::instance(),
-      I18N_NOOP( "Cubic with Node by Six Points" ),
-      I18N_NOOP( "A cubic with a nodal point at the origin through six points" ),
+      I18N_NOOP( "Cubic Curve with Node by Six Points" ),
+      I18N_NOOP( "A cubic curve with a nodal point at the origin through six points" ),
       "cubicnodeb6p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_cubicnodeb6p" ) );
 
     c = new SimpleObjectTypeConstructor(
       CubicCuspB4PType::instance(),
-      I18N_NOOP( "Cubic with Cusp by Four Points" ),
-      I18N_NOOP( "A cubic with a horizontal cusp at the origin through four points" ),
+      I18N_NOOP( "Cubic Curve with Cusp by Four Points" ),
+      I18N_NOOP( "A cubic curve with a horizontal cusp at the origin through four points" ),
       "cubiccuspb4p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_cubiccuspb4p" ) );

@@ -24,7 +24,7 @@
 
 #include <klocale.h>
 
-static const char cubictpstatement[] = I18N_NOOP( "Construct a cubic through this point" );
+static const char cubictpstatement[] = I18N_NOOP( "Construct a cubic curve through this point" );
 
 static const struct ArgsParser::spec argsspecCubicB9P[] =
 {
