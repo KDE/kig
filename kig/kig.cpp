@@ -143,17 +143,28 @@ void Kig::fileNew()
   // the New shortcut is pressed (usually CTRL+N) or the New toolbar
   // button is clicked
 
-  // create a new window
-  (new Kig)->show();
+  // create a new window if we aren't in the "initial state" ( see
+  // the KDE style guide on the file menu stuff...)
+  if ( ! m_part->url().isEmpty() || m_part->isModified() )
+    (new Kig)->show();
 }
 
 void Kig::openURL(const KURL& url)
 {
-  // called for opening a file, the style guide says we need a new
-  // window for this...
-  Kig* widget = new Kig;
-  widget->show();
-  widget->load(url);
+  // Called for opening a file by either the KRecentFilesAction or our
+  // own fileOpen() method.
+  // if we are in the "initial state", we open the url in this window:
+  if ( m_part->url().isEmpty() && ! m_part->isModified() )
+  {
+    load( url );
+  }
+  else
+  {
+    // otherwise we open it in a new window...
+    Kig* widget = new Kig;
+    widget->load(url);
+    widget->show();
+  };
 }
 
 void Kig::optionsShowToolbar()
