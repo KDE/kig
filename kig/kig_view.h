@@ -223,6 +223,5 @@ public slots:
 private slots:
   void slotRightScrollValueChanged( int );
   void slotBottomScrollValueChanged( int );
-  void slotExportToImage();
 };
 #endif
