@@ -47,6 +47,7 @@
 #include <kiconloader.h>
 #include <algorithm>
 #include <functional>
+#include <kcolordialog.h>
 
 using namespace std;
 
@@ -294,6 +295,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       p.fill( **c );
       popup.addAction( menu, p, nextfree++ );
     }
+    popup.addAction( menu, i18n( "&Custom Color" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetSizeMenu )
   {
@@ -372,16 +374,23 @@ bool BuiltinObjectActionsProvider::executeAction(
   }
   else if ( menu == NormalModePopupObjects::SetColorMenu )
   {
-    if ( id >= numberofcolors )
+    if ( id >= numberofcolors + 1 )
     {
-      id -= numberofcolors;
+      id -= numberofcolors + 1;
       return false;
     };
-    const QColor* color = colors[id];
+    QColor color;
+    if ( id < numberofcolors )
+      color = *colors[id];
+    else
+    {
+      int result = KColorDialog::getColor( color );
+      if ( result != KColorDialog::Accepted ) return true;
+    }
     KigCommand* kc = new KigCommand( doc, i18n( "Change Object Color" ) );
-    assert( color );
+    assert( color.isValid() );
     for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
-      kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyColor( *color ) ) );
+      kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyColor( color ) ) );
     doc.history()->addCommand( kc );
     mode.clearSelection();
     return true;
