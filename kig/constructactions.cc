@@ -17,6 +17,7 @@
 // 02111-1307, USA.
 
 #include "constructactions.h"
+#include "constructactions.moc"
 
 #include "kig_part.h"
 #include "../misc/types.h"

@@ -17,6 +17,7 @@
 // 02111-1307, USA.
 
 #include "kig_actions.h"
+#include "kig_actions.moc"
 
 #include "kig_part.h"
 #include "../objects/normalpoint.h"
@@ -26,7 +27,7 @@
 #include <klineeditdlg.h>
 #include <kmessagebox.h>
 
-void AddFixedPointAction::activate()
+void AddFixedPointAction::slotActivated()
 {
   bool ok;
   bool done = false;

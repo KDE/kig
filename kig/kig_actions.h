@@ -28,11 +28,13 @@ class QIconSet;
 class AddFixedPointAction
   : public KAction
 {
+  Q_OBJECT
   KigDocument* mdoc;
 public:
   AddFixedPointAction( KigDocument* doc, const QIconSet& icon,
                        KActionCollection* parent );
-  void activate();
+protected slots:
+  void slotActivated();
 };
 
 #endif
