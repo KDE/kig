@@ -25,14 +25,12 @@
 #include <qregexp.h>
 
 #include <klocale.h>
+#include <kdebug.h>
 
 #include <cmath>
 
-// this is in math.h, but include cmath doesn't work nicely for me..
-// #include <cmath>
-// extern "C" {
-// double fabs(double);
-// };
+using std::floor;
+using std::pow;
 
 EuclideanCoords::EuclideanCoords()
 {
@@ -45,8 +43,9 @@ QString EuclideanCoords::fromScreen(const Coordinate& p) const
 
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp r("\\(([^,]+),([^\\)]+)\\)");
-  ok = r.match(s);
+  QRegExp r("^\\(([^,]+),([^\\)]+)\\)$");
+  ok = ( r.search(s) == 0 );
+  kdDebug() << "hoereu!!" << endl;
   if (ok)
   {
     return Coordinate(r.cap(1).toDouble(&ok), r.cap(2).toDouble(&ok));
@@ -99,26 +98,26 @@ void EuclideanCoords::drawGrid( KigPainter& p ) const
 
   // x axis
   for( int i = iMinX; i <= iMaxX; i += hStep )
-    {
-      // we skip 0 since that would look stupid... (the axes going
-      // through the 0 etc. )
-      if( i == 0 ) continue;
+  {
+    // we skip 0 since that would look stupid... (the axes going
+    // through the 0 etc. )
+    if( i == 0 ) continue;
 
-      p.drawText(
-		 Rect( Coordinate( i * hInterval, 0 ), hStep*hInterval, -vInterval ).normalized(),
-		 QString().setNum( i * hInterval ),
-		 AlignLeft | AlignTop
-		 );
-    };
+    p.drawText(
+      Rect( Coordinate( i * hInterval, 0 ), hStep*hInterval, -vInterval ).normalized(),
+      QString().setNum( i * hInterval ),
+      AlignLeft | AlignTop
+      );
+  };
   // y axis...
   for ( int i = iMinY; i <= iMaxY; i += vStep )
-    {
-      if( i == 0 ) continue;
-      p.drawText ( Rect( Coordinate( 0, i * vInterval ), vStep*hInterval, vInterval ).normalized(),
-		   QString().setNum( i * vInterval ),
-		   AlignBottom | AlignLeft
-		   );
-    };
+  {
+    if( i == 0 ) continue;
+    p.drawText ( Rect( Coordinate( 0, i * vInterval ), vStep*hInterval, vInterval ).normalized(),
+                 QString().setNum( i * vInterval ),
+                 AlignBottom | AlignLeft
+      );
+  };
   // arrows on the ends of the axes...
   p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
   p.setBrush( QBrush( Qt::gray ) );

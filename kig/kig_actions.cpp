@@ -20,6 +20,7 @@
 #include "kig_actions.moc"
 
 #include "kig_part.h"
+#include "kig_view.h"
 #include "../objects/normalpoint.h"
 #include "../misc/i18n.h"
 #include "../misc/coordinate_system.h"
@@ -52,6 +53,7 @@ void AddFixedPointAction::slotActivated()
     };
   };
   NormalPoint* p = NormalPoint::fixedPoint( c );
+  p->calc( static_cast<KigView*>( mdoc->widget() )->screenInfo() );
   mdoc->addObject( p );
 };
 
