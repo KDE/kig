@@ -20,7 +20,6 @@
 
 #include "vector.h"
 
-#include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 
 #include <kdebug.h>
@@ -142,8 +141,7 @@ void TranslatedPoint::sDrawPrelim( KigPainter& p, const Objects& os )
   };
   assert( q && v );
   Coordinate c = q->getCoord() + v->getDir();
-  p.setPen( QPen( Qt::red, 1 ) );
-  p.drawFatPoint( c );
+  sDrawPrelimPoint( p, c );
 }
 
 Object::WantArgsResult TranslatedPoint::sWantArgs( const Objects& os )

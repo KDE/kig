@@ -20,8 +20,6 @@
 
 #include "segment.h"
 
-#include "../misc/kigpainter.h"
-
 #include <klocale.h>
 
 MidPoint::MidPoint(const MidPoint& m)
@@ -169,5 +167,5 @@ void MidPoint::sDrawPrelim( KigPainter& p, const Objects& args )
     Coordinate a = p->getCoord(), b = q->getCoord();
     m = ( a + b ) / 2;
   };
-  p.drawFatPoint( m );
+  sDrawPrelimPoint( p, m );
 }

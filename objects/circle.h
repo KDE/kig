@@ -116,7 +116,7 @@ public:
   const QString vDescription() const { return sDescription(); };
   static const QString sDescription();
   const QCString vIconFileName() const { return sIconFileName(); };
-  static const QCString sIconFileName() { return "circle"; };
+  static const QCString sIconFileName() { return "circlebtp"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return 0; };
   static const char* sActionName();

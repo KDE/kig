@@ -176,3 +176,10 @@ const QCStringList Point::properties() const
   assert( l.size() == Point::numberOfProperties() );
   return l;
 }
+
+void Point::sDrawPrelimPoint( KigPainter& pt, const Coordinate& p )
+{
+  pt.setPen( QPen (Qt::red,1) );
+  pt.setBrushColor( Qt::red );
+  pt.drawFatPoint( p );
+}

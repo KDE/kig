@@ -21,7 +21,6 @@
 #include "segment.h"
 #include "line.h"
 
-#include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 
 #include <kdebug.h>
@@ -172,8 +171,7 @@ void MirrorPoint::sDrawPrelim( KigPainter& p, const Objects& os )
   {
     d = 2* c->getCoord() - q->getCoord();
   };
-  p.setPen( QPen( Qt::red, 1 ) );
-  p.drawFatPoint( d );
+  sDrawPrelimPoint( p, d );
 }
 
 Object::WantArgsResult MirrorPoint::sWantArgs( const Objects& os )

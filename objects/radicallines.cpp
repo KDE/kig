@@ -20,7 +20,9 @@
 
 #include "conic.h"
 #include "radicallines.h"
+#include "../kig/kig_view.h"
 #include "../modes/constructing.h"
+#include "../modes/popup.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 #include "../misc/common.h"
@@ -486,10 +488,8 @@ void ConicLineIntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
 
   if ( valid )
   {
-    p.setPen( QPen (Qt::red,1) );
-    p.setBrushColor( Qt::red );
-    p.drawFatPoint( cc );
-    p.drawFatPoint( cd );
+    sDrawPrelimPoint( p, cc );
+    sDrawPrelimPoint( p, cd );
   };
 
   return;
@@ -585,4 +585,20 @@ ConicLineIntersectionPoint::sConstructMode( MultiConstructibleType* ourtype,
 const QString ConicLineIntersectionPoint::sDescription()
 {
   return i18n("Construct the intersection of a line and a conic...");
+}
+
+void LineConicRadical::addActions( NormalModePopupObjects& p )
+{
+  p.addNormalAction( 58731, i18n( "Switch" ) );
+}
+
+void LineConicRadical::doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& cp )
+{
+  if ( which != 58731 ) Line::doNormalAction( which, d, v, m, cp );
+  else
+  {
+    mzeroindex = mzeroindex % 3 + 1;
+    calcForWidget( *v );
+    v->redrawScreen();
+  };
 }

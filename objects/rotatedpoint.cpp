@@ -20,7 +20,6 @@
 
 #include "arc.h"
 
-#include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 #include "../misc/common.h"
 
@@ -147,8 +146,7 @@ void RotatedPoint::sDrawPrelim( KigPainter& p, const Objects& os )
 
   Coordinate c = calcRotatedPoint( cp, cc, ma->size() );
 
-  p.setPen( QPen( Qt::red, 1 ) );
-  p.drawFatPoint( c );
+  sDrawPrelimPoint( p, c );
 }
 
 Object::WantArgsResult RotatedPoint::sWantArgs( const Objects& os )

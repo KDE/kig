@@ -25,7 +25,6 @@
 #include "circle.h"
 
 #include "../modes/constructing.h"
-#include "../misc/kigpainter.h"
 #include "../misc/common.h"
 #include "../misc/i18n.h"
 
@@ -161,8 +160,7 @@ void IntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
       pb = l->p2();
     };
   };
-  p.setPen( QPen( Qt::red, 1 ) );
-  p.drawFatPoint( calcIntersectionPoint( pa, pb, pc, pd ) );
+  sDrawPrelimPoint( p, calcIntersectionPoint( pa, pb, pc, pd ) );
 }
 
 Object::WantArgsResult IntersectionPoint::sWantArgs( const Objects& os )
@@ -285,8 +283,8 @@ void CircleLineIntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os 
                                                 false, valid );
   if ( valid )
   {
-    p.drawFatPoint( d );
-    p.drawFatPoint( e );
+    sDrawPrelimPoint( p, d );
+    sDrawPrelimPoint( p, e );
   };
 }
 

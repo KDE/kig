@@ -71,6 +71,10 @@ public:
   static KigMode* sConstructMode( MultiConstructibleType* ourtype,
                                   KigDocument* theDoc,
                                   NormalMode* previousMode );
+
+  virtual void addActions( NormalModePopupObjects& );
+  virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& cp );
+
 protected:
   Conic* c1;
   Conic* c2;

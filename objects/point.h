@@ -66,6 +66,8 @@ public:
   void setY (const double inY);
 
 protected:
+  static void sDrawPrelimPoint( KigPainter& painter, const Coordinate& p );
+
   Coordinate mC;
   int msize;
 };
