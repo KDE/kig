@@ -27,8 +27,11 @@ class ObjectImpFactory
   ~ObjectImpFactory();
 public:
   static const ObjectImpFactory* instance();
-  ObjectImp* deserialize( const QString& type, const QString& data ) const;
-  std::pair<QString,QString> serialize( const ObjectImp& d ) const;
+  // loads data from parent, and returns a new ObjectImp from the type
+  // string type.
+  ObjectImp* deserialize( const QString& type, const QDomElement& parent ) const;
+  // adds data to parent, and returns a type string..
+  QString serialize( const ObjectImp& d, QDomElement& parent, QDomDocument& doc ) const;
 };
 
 #endif

@@ -391,11 +391,9 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
       QDomElement e = doc.createElement( "Data" );
       idmap[*i] = id;
       e.setAttribute( "id", id++ );
-      std::pair<QString, QString> ser =
-        ObjectImpFactory::instance()->serialize( *(*i)->imp() );
-      e.setAttribute( "type", ser.first );
-      e.appendChild(
-        doc.createTextNode( ser.second ) );
+      QString ser =
+        ObjectImpFactory::instance()->serialize( *(*i)->imp(), e, doc );
+      e.setAttribute( "type", ser );
       objectselem.appendChild( e );
     }
     else if ( (*i)->inherits( Object::ID_RealObject ) )
