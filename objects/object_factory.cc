@@ -201,6 +201,9 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
  * the new method works similarly to the curve case, but we generate a new
  * RelativePointType instead of a ConstrainedPointType; this will in turn make use
  * of the new attachPoint() method for objects.
+ *
+ * NOTE: changes in the tests performed should be matched also in
+ * modes/popup.cc (addNameLabel)
  */
 
   if ( p && p->imp()->inherits( PointImp::stype() ) )
