@@ -94,6 +94,7 @@ const char* TextImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() )
     return "text"; // text
   else assert( false );
+  return "";
 }
 
 ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
@@ -103,6 +104,7 @@ ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
   else if ( which == Parent::numberOfProperties() )
     return new StringImp( text() );
   else assert( false );
+  return new InvalidImp;
 }
 
 bool TextImp::inherits( int id ) const

@@ -206,6 +206,8 @@ void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidg
                                    NormalMode& ) const
 {
   assert( i == 0 );
+  // pretend to use this var..
+  (void) i;
 
   Objects parents = o->parents();
   assert( parents.size() == 2 );

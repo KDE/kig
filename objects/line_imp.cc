@@ -66,6 +66,7 @@ const char* AbstractLineImp::iconForProperty( uint which ) const
   if ( which == Parent::numberOfProperties() + 1 )
     return "text"; // equation
   else assert( false );
+  return "";
 }
 
 ObjectImp* AbstractLineImp::property( uint which, const KigDocument& w ) const
@@ -77,6 +78,7 @@ ObjectImp* AbstractLineImp::property( uint which, const KigDocument& w ) const
   if ( which == Parent::numberOfProperties() + 1 )
     return new StringImp( equationString() );
   else assert( false );
+  return new InvalidImp;
 }
 
 const QCStringList AbstractLineImp::propertiesInternalNames() const
@@ -151,6 +153,7 @@ const char* SegmentImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + 1 )
     return "bisection"; // mid point
   else assert( false );
+  return "";
 }
 
 ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
@@ -162,6 +165,7 @@ ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
   else if ( which == Parent::numberOfProperties() + 1 )
     return new PointImp( ( mdata.a + mdata.b ) / 2 );
   else assert( false );
+  return new InvalidImp;
 }
 
 double AbstractLineImp::slope() const

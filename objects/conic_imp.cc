@@ -126,6 +126,7 @@ const char* ConicImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return "text"; // polar equation string
   else assert( false );
+  return "";
 }
 
 ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
@@ -145,6 +146,7 @@ ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return new StringImp( polarEquationString( w ) );
   else assert( false );
+  return new InvalidImp;
 }
 
 double ConicImp::getParam( const Coordinate& p, const KigDocument& ) const
@@ -205,6 +207,7 @@ QString ConicImp::conicTypeString() const
     return I18N_NOOP("Parabola");
   default:
     assert( false );
+    return "";
   }
 }
 

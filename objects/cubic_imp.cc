@@ -279,7 +279,7 @@ const Coordinate CubicImp::internalGetPoint( double p, bool& valid ) const
 //  }
 
   int numroots;
-  double y = calcCubicYvalue ( x, -HUGE_VAL, HUGE_VAL, root, mdata, valid,
+  double y = calcCubicYvalue ( x, -double_inf, double_inf, root, mdata, valid,
                                numroots );
   return Coordinate(x,y);
 //  if ( valid ) return Coordinate(x,y);

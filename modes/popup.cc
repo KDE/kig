@@ -466,6 +466,8 @@ void NormalModePopupObjects::addAction( int menu, const QPixmap& pix, int id )
   else m = mmenus[menu];
   int ret = m->insertItem( pix, id );
   assert( ret == id );
+  // pretend to use this var..
+  (void) ret;
 }
 
 void NormalModePopupObjects::setColorMenuSlot( int i )
@@ -490,6 +492,8 @@ void NormalModePopupObjects::addAction( int menu, const QPixmap& icon, const QSt
   else m = mmenus[menu];
   int ret = m->insertItem( QIconSet( icon ), name, id );
   assert( ret == id );
+  // pretend to use this var..
+  (void)ret;
 }
 
 void NormalModePopupObjects::addAction( int menu, const QString& name, int id )
@@ -499,6 +503,8 @@ void NormalModePopupObjects::addAction( int menu, const QString& name, int id )
   else m = mmenus[menu];
   int ret = m->insertItem( name, id );
   assert( ret == id );
+  // pretend to use this var..
+  (void)ret;
 }
 
 PopupActionProvider::~PopupActionProvider()

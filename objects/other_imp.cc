@@ -118,6 +118,7 @@ const char* AngleImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + 2 )
     return "angle-bisector"; // angle bisector..
   else assert( false );
+  return "";
 }
 
 ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
@@ -135,6 +136,7 @@ ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
     return new RayImp( mpoint, p2 );
   }
   else assert( false );
+  return new InvalidImp;
 }
 
 const double AngleImp::size() const
@@ -383,6 +385,7 @@ const char* ArcImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + 5 )
     return "";
   else assert( false );
+  return "";
 }
 
 ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
@@ -402,6 +405,7 @@ ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
   else if ( which == Parent::numberOfProperties() + 5 )
     return new DoubleImp( mradius * ma );
   else assert( false );
+  return new InvalidImp;
 }
 
 int ArcImp::impRequirementForProperty( uint which ) const

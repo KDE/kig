@@ -147,6 +147,8 @@ bool KigFilterNative::save( const KigDocument& kdoc, const QString& to )
   uint osize = objs.size();
   objs = getAllParents( objs );
   assert( objs.size() == osize );
+  // pretend to use this var..
+  (void)osize;
 
   // save the objects..
   QDomElement objectselem = doc.createElement( "Objects" );

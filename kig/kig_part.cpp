@@ -568,6 +568,8 @@ void KigDocument::runMode( KigMode* m )
 void KigDocument::doneMode( KigMode* d )
 {
   assert( d == mMode );
+  // pretend to use this var..
+  (void)d;
 #if QT_VERSION >= 0x030100
   kapp->eventLoop()->exitLoop();
 #else

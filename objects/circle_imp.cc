@@ -168,6 +168,7 @@ const char* CircleImp::iconForProperty( uint which ) const
   else if ( which == CurveImp::numberOfProperties() + 5 )
     return "text"; // polar equation
   else assert( false );
+  return "";
 };
 
 ObjectImp* CircleImp::property( uint which, const KigDocument& w ) const
@@ -188,6 +189,7 @@ ObjectImp* CircleImp::property( uint which, const KigDocument& w ) const
   else if ( which == CurveImp::numberOfProperties() + 5 )
     return new StringImp( polarEquationString( w ) );
   else assert( false );
+  return new InvalidImp;
 }
 
 const Coordinate CircleImp::center() const

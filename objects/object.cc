@@ -446,6 +446,7 @@ void Object::move( const Coordinate&, const Coordinate&,
 QColor Object::color() const
 {
   assert( false );
+  return Qt::black;
 }
 
 QColor RealObject::color() const
@@ -471,6 +472,7 @@ int RealObject::impRequirement( Object* o, const Objects& os ) const
 int Object::impRequirement( Object*, const Objects& ) const
 {
   assert( false );
+  return ObjectImp::ID_AnyImp;
 }
 
 int PropertyObject::impRequirement( Object*, const Objects& ) const

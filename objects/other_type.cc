@@ -324,6 +324,8 @@ void AngleType::executeAction(
   int i, RealObject* o, KigDocument& d, KigWidget& w,
   NormalMode& ) const
 {
+  // pretend to use this var..
+  (void) i;
   assert( i == 0 );
 
   Objects parents = o->parents();

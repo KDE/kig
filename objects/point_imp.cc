@@ -83,6 +83,7 @@ const char* PointImp::iconForProperty( uint which ) const
   if ( which == Parent::numberOfProperties() )
     return "pointxy"; // coordinate
   else assert( false );
+  return "";
 }
 
 ObjectImp* PointImp::property( uint which, const KigDocument& d ) const
@@ -92,6 +93,7 @@ ObjectImp* PointImp::property( uint which, const KigDocument& d ) const
   if ( which == Parent::numberOfProperties() )
     return new PointImp( mc );
   else assert( false );
+  return new InvalidImp;
 }
 
 PointImp::~PointImp()

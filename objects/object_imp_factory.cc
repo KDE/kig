@@ -225,6 +225,7 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     return QString::fromLatin1( "cubic" );
   }
   assert( false );
+  return QString::null;
 }
 
 static Coordinate readXYElements( const QDomElement& e, bool& ok )
@@ -475,5 +476,6 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
                                              a222 ) );
   }
   assert( false );
+  return new InvalidImp;
 }
 

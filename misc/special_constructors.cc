@@ -369,8 +369,8 @@ QString GenericIntersectionConstructor::useText(
     return i18n( "Intersect with This Line" );
   else if ( o.hasimp( ObjectImp::ID_CubicImp ) )
     return i18n( "Intersect with This Cubic" );
-  else assert(
-    false );
+  else assert( false );
+  return QString::null;
 }
 
 static const ArgParser::spec argsspecMidPointOfTwoPoints[] =
