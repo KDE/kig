@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_NW_OBJECTS_CIRCLE_IMP_H
-#define KIG_NW_OBJECTS_CIRCLE_IMP_H
+#ifndef KIG_OBJECTS_CIRCLE_IMP_H
+#define KIG_OBJECTS_CIRCLE_IMP_H
 
 #include "conic_imp.h"
 
