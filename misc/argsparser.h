@@ -19,7 +19,7 @@
 #ifndef KIG_MISC_ARGSPARSER_H
 #define KIG_MISC_ARGSPARSER_H
 
-#include <map>
+#include <vector>
 
 #include "../objects/common.h"
 
@@ -45,14 +45,16 @@ class ArgParser
 public:
   struct spec { int type; int number; };
 private:
-  // the number of different types we are looking for..
-  int mndt;
   // the total number of objects we're looking for..
   int mwantedobjscount;
   // the args spec..
-  const struct spec* margs;
+  const std::vector<spec> margs;
 public:
   ArgParser( const struct spec* args, int n );
+  ArgParser( const std::vector<spec>& args );
+  // returns a new ArgParser that wants the same args, except for the
+  // ones of the given type..
+  ArgParser without( int type );
   int check( const Objects& os ) const;
   Args parse( const Args& os ) const;
   Objects parse( const Objects& os ) const;

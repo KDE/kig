@@ -24,7 +24,7 @@
 #include <algorithm>
 
 ArgParser::ArgParser( const spec* args, int n )
-  : mndt( n ), mwantedobjscount( 0 ), margs( args )
+  : mwantedobjscount( 0 ), margs( args, args + n )
 {
   for ( int i = 0; i < n; ++i )
     mwantedobjscount += margs[i].number;
@@ -32,13 +32,13 @@ ArgParser::ArgParser( const spec* args, int n )
 
 int ArgParser::check( const Objects& os ) const
 {
-  std::vector<int> numbers( mndt );
-  for ( int i = 0; i < mndt; ++i )
+  std::vector<int> numbers( margs.size() );
+  for ( uint i = 0; i < margs.size(); ++i )
     numbers[i] = margs[i].number;
 
   for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
   {
-    for ( int i = 0; i < mndt; ++i )
+    for ( uint i = 0; i < margs.size(); ++i )
     {
       if ( (*o)->has( margs[i].type ) && numbers[i] > 0 )
       {
@@ -55,7 +55,7 @@ int ArgParser::check( const Objects& os ) const
   matched:
     ;
   };
-  for ( int i = 0; i < mndt; ++i )
+  for( uint i = 0; i < margs.size(); ++i )
     if ( numbers[i] > 0 ) return Valid;
   return Complete;
 }
@@ -65,17 +65,17 @@ Args ArgParser::parse( const Args& os ) const
 //  assert( check( os ) != Invalid );
   Args ret( mwantedobjscount );
 
-  std::vector<int> numbers( mndt );
-  for ( int i = 0; i < mndt; ++i )
+  std::vector<int> numbers( margs.size() );
+  for( uint i = 0; i < margs.size(); ++i )
     numbers[i] = margs[i].number;
 
-  std::vector<int> counters( mndt );
+  std::vector<int> counters( margs.size() );
   counters[0] = 0;
-  for ( int i = 1; i < mndt; ++i )
+  for( uint i = 1; i < margs.size(); ++i )
     counters[i] = counters[i-1] + margs[i-1].number;
 
   for ( Args::const_iterator o = os.begin(); o != os.end(); ++o )
-    for ( int i = 0; i < mndt; ++i )
+    for( uint i = 0; i < margs.size(); ++i )
       if ( (*o)->inherits( margs[i].type ) && numbers[i] > 0 )
       {
         // object o is of a type that we're looking for
@@ -100,17 +100,17 @@ Objects ArgParser::parse( const Objects& os ) const
   assert( check( os ) != Invalid );
   Objects ret( mwantedobjscount );
 
-  std::vector<int> numbers( mndt );
-  for ( int i = 0; i < mndt; ++i )
+  std::vector<int> numbers( margs.size() );
+  for( uint i = 0; i < margs.size(); ++i )
     numbers[i] = margs[i].number;
 
-  std::vector<int> counters( mndt );
+  std::vector<int> counters( margs.size() );
   counters[0] = 0;
-  for ( int i = 1; i < mndt; ++i )
+  for( uint i = 1; i < margs.size(); ++i )
     counters[i] = counters[i-1] + margs[i-1].number;
 
   for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
-    for ( int i = 0; i < mndt; ++i )
+    for( uint i = 0; i < margs.size(); ++i )
       if ( (*o)->has( margs[i].type ) && numbers[i] > 0 )
       {
         // object o is of a type that we're looking for
@@ -119,4 +119,21 @@ Objects ArgParser::parse( const Objects& os ) const
         break;
       }
   return ret;
+}
+
+ArgParser::ArgParser( const std::vector<spec>& args )
+  : mwantedobjscount( 0 ), margs( args )
+{
+  for ( uint i = 0; i < margs.size(); ++i )
+    mwantedobjscount += margs[i].number;
+}
+
+ArgParser ArgParser::without( int type )
+{
+  std::vector<spec> ret;
+  ret.reserve( margs.size() - 1 );
+  for ( uint i = 0; i < margs.size(); ++i )
+    if ( margs[i].type != type )
+      ret.push_back( margs[i] );
+  return ArgParser( ret );
 }

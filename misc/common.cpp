@@ -295,7 +295,7 @@ const Coordinate calcMirrorPoint( const LineData& l,
 const Coordinate calcCircleLineIntersect( const Coordinate& c,
                                           const double sqr,
                                           const LineData& l,
-                                          bool side, bool& valid )
+                                          int side, bool& valid )
 {
   Coordinate proj = calcPointProjection( c, l );
   Coordinate hvec = proj - c;
@@ -313,7 +313,7 @@ const Coordinate calcCircleLineIntersect( const Coordinate& c,
     valid = true;
     double l = sqrt( sql );
     lvec = lvec.normalize( l );
-    lvec *= side ? 1 : -1;
+    lvec *= side;
 
     return proj + lvec;
   };
