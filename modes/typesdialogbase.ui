@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>TypesDialogBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>456</width>
-            <height>247</height>
+            <height>249</height>
         </rect>
     </property>
     <property name="caption">
@@ -241,6 +241,8 @@
         </widget>
     </vbox>
 </widget>
+<customwidgets>
+</customwidgets>
 <connections>
     <connection>
         <sender>buttonExport</sender>
@@ -278,6 +280,12 @@
         <receiver>TypesDialogBase</receiver>
         <slot>editType()</slot>
     </connection>
+    <connection>
+        <sender>typeList</sender>
+        <signal>contextMenuRequested(QListViewItem*,const QPoint&amp;,int)</signal>
+        <receiver>TypesDialogBase</receiver>
+        <slot>contextMenuRequested(QListViewItem*,const QPoint&amp;,int)</slot>
+    </connection>
 </connections>
 <slots>
     <slot access="protected">deleteType()</slot>
@@ -286,6 +294,7 @@
     <slot access="protected">importTypes()</slot>
     <slot>okSlot()</slot>
     <slot access="protected">editType()</slot>
+    <slot access="protected">contextMenuRequested( QListViewItem* i, const QPoint&amp; p, int c )</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>

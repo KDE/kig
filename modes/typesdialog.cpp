@@ -75,6 +75,15 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 
   // loading macros...
   loadAllMacros();
+
+  popup = new QPopupMenu( this );
+  popup->insertItem( QIconSet( il->loadIcon( "edit", KIcon::Small ) ),
+                     i18n( "&Edit..." ), this, SLOT( editType() ) );
+  popup->insertItem( QIconSet( il->loadIcon( "editdelete", KIcon::Small ) ),
+                     i18n( "&Delete" ), this, SLOT( deleteType() ) );
+  popup->insertSeparator();
+  popup->insertItem( QIconSet( il->loadIcon( "fileexport", KIcon::Small ) ),
+                     i18n( "E&xport..." ), this, SLOT( exportType() ) );
 }
 
 QListViewItem* TypesDialog::newListItem( Macro* m )
@@ -244,6 +253,11 @@ void TypesDialog::editType()
     loadAllMacros();
   }
   delete d;
+}
+
+void TypesDialog::contextMenuRequested( QListViewItem*, const QPoint& p, int )
+{
+  popup->exec( p );
 }
 
 void TypesDialog::loadAllMacros()
