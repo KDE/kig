@@ -1,0 +1,27 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.9.0" >
+ <Macro>
+  <Name>Osculating Circle</Name>
+  <Description>Osculating circle of a curve at a point</Description>
+  <ActionName>objects_new_osculatingcircle</ActionName>
+  <IconFileName>osculatingcircle</IconFileName>
+  <Construction>
+   <input requirement="curve" id="1">
+    <UseText>Osculating circle of this curve</UseText>
+    <SelectStatement>Select the curve</SelectStatement>
+   </input>
+   <input requirement="point" id="2">
+    <UseText>Osculating circle at this point</UseText>
+    <SelectStatement>Select the point</SelectStatement>
+   </input>
+   <intermediate action="calc" type="CocCurve" id="3" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <result action="calc" type="CircleBCP" id="4" >
+    <arg>3</arg>
+    <arg>2</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

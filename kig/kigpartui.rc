@@ -63,6 +63,7 @@
 	<Action name="objects_new_circlebps" />
 	<Action name="objects_new_circlebpd" />
 	<Action name="objects_new_circlebcl" />
+	<Action name="objects_new_osculatingcircle" />
 	<Action name="objects_new_arcbtp" />
 	<Action name="objects_new_arcbcpa" />
 	<ActionList name="user_circle_types" />
