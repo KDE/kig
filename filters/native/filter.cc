@@ -439,8 +439,8 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
     if ( e.isNull() ) continue;
     if ( e.tagName() == "CoordinateSystem" )
     {
-      const QCString str = e.text().latin1();
-      CoordinateSystem* s = 0; //CoordinateSystemFactory::build( type );
+      const QCString type = e.text().latin1();
+      CoordinateSystem* s = CoordinateSystemFactory::build( type );
       if ( ! s ) return NotSupported;
       else kdoc.setCoordinateSystem( s );
     }
