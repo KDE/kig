@@ -307,7 +307,7 @@ bool MacroList::loadNew( const QDomElement& docelem, myvector<Macro*>& ret, cons
         ! macroelem.isNull(); macroelem = macroelem.nextSibling().toElement() )
   {
     QString name, description;
-    ObjectHierarchy* hierarchy;
+    ObjectHierarchy* hierarchy = 0;
     QCString actionname, iconfile;
     if ( macroelem.tagName() != "Macro" ) continue; // forward compat ?
     for ( QDomElement dataelem = macroelem.firstChild().toElement();
