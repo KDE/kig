@@ -110,12 +110,14 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
       c->setGroup(group);
       int objID = c->readNumEntry( "Geo" );
       kdDebug() << k_funcinfo << "objID: " << objID << endl;
+      Object* no = 0;
       switch (objID)
 	{
 	case ID_point:
 	  {
 	    Point* p = new Point;
-	    objs.push_back(p);
+
+	    // fetch the coordinates...
 	    bool ok;
 	    QString strX = c->readEntry("QPointX");
 	    QString strY = c->readEntry("QPointY");
@@ -125,36 +127,38 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
 	    if (!ok) return ParseError;
 	    p->setX(x);
 	    p->setY(y);
+
+	    no = p;
 	    break;
 	  }
 	case ID_segment:
 	  {
-	    objs.push_back(new Segment);
+	    no = new Segment;
 	    break;
 	  };
 	case ID_circle:
 	  {
-	    objs.push_back( new CircleBCP );
+	    no = new CircleBCP;
 	    break;
 	  };
 	case ID_line:
 	  {
-	    objs.push_back( new LineTTP );
+	    no = new LineTTP;
 	    break;
 	  }
  	case ID_bisection:
  	  {
- 	    objs.push_back( new MidPoint() );
+ 	    no = new MidPoint();
  	    break;
  	  };
  	case ID_perpendicular:
 	  {
-	    objs.push_back( new LinePerpend() );
+	    no = new LinePerpend();
 	    break;
 	  }
  	case ID_parallel:
 	  {
-	    objs.push_back( new LineParallel() );
+	    no = new LineParallel();
 	    break;
 	  }
 //  	case ID_pointOfConc:
@@ -204,6 +208,13 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
 	default:
 	  return ParseError;
 	}; // switch of objID
+
+      // color...
+      QColor co = c->readColorEntry( "Color" );
+      if( !co.isValid() ) return ParseError;
+      no->setColor( co );
+      objs.push_back( no );
+
     }; // for loop (creating objects...
 
   // now we iterate again to set the parents correct...
