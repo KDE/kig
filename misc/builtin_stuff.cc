@@ -27,6 +27,7 @@
 #include "../objects/line_type.h"
 #include "../objects/circle_type.h"
 #include "../objects/conic_types.h"
+#include "../objects/cubic_type.h"
 
 void setupBuiltinStuff()
 {
@@ -137,6 +138,14 @@ void setupBuiltinStuff()
       "parabolabtp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_parabolabtp" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      CubicB9PType::instance(),
+      I18N_NOOP( "Cubic by Nine Points" ),
+      I18N_NOOP( "A cubic constructed through nine points" ),
+      "cubicb9p" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_cubicb9p" ) );
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };

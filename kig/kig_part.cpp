@@ -195,12 +195,12 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
 //     Object::addBuiltinType( new TStdType<ConicBDFP> );
 //     Object::addBuiltinType( new TStdType<ParabolaBTP> );
+//     Object::addBuiltinType( new TStdType<CubicB9P> );
 
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
 //     Object::addBuiltinType( new TStdType<RotatedPoint> );
 //     Object::addBuiltinType( new TStdType<LineRadical> );
 //     Object::addBuiltinType( new TMultiType<LineConicRadical> );
-//     Object::addBuiltinType( new TStdType<CubicB9P> );
 //     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
 //     Object::addBuiltinType( new TStdType<MidPoint> );
 //     Object::addBuiltinType( new TStdType<IntersectionPoint> );

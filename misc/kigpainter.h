@@ -186,18 +186,18 @@ public:
    */
   void drawConic( const ConicPolarData& data );
 
-//   /**
-//    * draw a cubic..
-//    */
-//   void drawCubic( const CubicCartesianData& data );
-//   void drawCubicRecurse(
-//                    double& xleft, double& yleft, bool& validleft,
-//                    int& numrootsleft,
-//                    double& xright, double& yright, bool& validright,
-//                    int& numrootsright,
-//                    const CubicCartesianData& data, int& root,
-//                    double& ymin, double& ymax, double& tol,
-//                    bool& tNeedOverlay, Rect& overlay);
+  /**
+   * draw a cubic..
+   */
+  void drawCubic( const CubicCartesianData& data );
+  void drawCubicRecurse(
+                   double& xleft, double& yleft, bool& validleft,
+                   int& numrootsleft,
+                   double& xright, double& yright, bool& validright,
+                   int& numrootsright,
+                   const CubicCartesianData& data, int& root,
+                   double& ymin, double& ymax, double& tol,
+                   bool& tNeedOverlay, Rect& overlay);
 
   /*
    * draw text...
