@@ -612,6 +612,8 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
     popup.addAction( menu, i18n( "Unhide &All" ), nextfree++ );
+    popup.addAction( menu, i18n( "Zoom &In" ), nextfree++ );
+    popup.addAction( menu, i18n( "Zoom &Out" ), nextfree++ );
     if ( popup.widget().isFullScreen() )
       popup.addAction( menu, i18n( "E&xit Full Screen Mode" ), nextfree++ );
   }
@@ -638,9 +640,19 @@ bool BuiltinDocumentActionsProvider::executeAction(
       w.redrawScreen();
       return true;
     }
-    if ( popup.widget().isFullScreen() )
+    else if ( id == 1 )
     {
-      if ( id == 1 )
+      w.zoomIn();
+      return true;
+    }
+    else if ( id == 2 )
+    {
+      w.zoomOut();
+      return true;
+    }
+    else if ( popup.widget().isFullScreen() )
+    {
+      if ( id == 3 )
       {
         assert( w.parent()->inherits( "QDialog" ) );
         static_cast<QDialog*>( w.parent() )->close();
@@ -649,7 +661,7 @@ bool BuiltinDocumentActionsProvider::executeAction(
       else
         id -= 1;
     };
-    id -= 1;
+    id -= 3;
     return false;
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
