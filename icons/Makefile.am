@@ -9,6 +9,7 @@ kigicondata_DATA = \
 	attacher.png \
 	baseCircle.png \
 	bisection.png \
+	centerofcurvature.png \
 	centralsymmetry.png \
 	circlebcl.png \
 	circlebcp.png \
