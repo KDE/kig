@@ -2,9 +2,11 @@
 
 #include "../kig/kig_part.h"
 
-#include <hash_map>
+#include <map>
 
 #include <kdebug.h>
+
+#include "../objects/point.h"
 
 ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs, 
 				  const Objects& inFinalObjs, 
@@ -13,26 +15,30 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
 {
   // here we construct the hierarchy
   // the hash map contains all HierarchyElement's we already constructed
-  typedef hash_map<Object*, HierarchyElement*,myHash> ElemHash;
+  typedef map<Object*, HierarchyElement*> ElemHash;
   ElemHash elemHash;
   // a temporary
   HierarchyElement* elem;
   // first we add the given (dutch: gegeven, if you're wondering what
   // the geg in gegObjs stands for) objects
-  for (Objects::const_iterator i = inGegObjs.begin(); i != inGegObjs.end(); ++i)
+  Object* o;
+  for (Objects::iterator i(inGegObjs); (o = i.current()); ++i)
     {
-      elem = new HierarchyElement((*i)->vBaseTypeName(), allElems.size() + 1);
+      double param = 0;
+      ConstrainedPoint* cp;
+      if ((cp = Object::toConstrainedPoint(o))) param = cp->getP();
+      elem = new HierarchyElement(o->vBaseTypeName(), allElems.size() + 1, param);
       gegElems.push_back(elem);
       allElems.push_back(elem);
-      elemHash[*i] = elem;
+      elemHash[o] = elem;
     };
   // next: we do the final objects
-  for (Objects::const_iterator i = inFinalObjs.begin(); i != inFinalObjs.end(); ++i)
+  for (Objects::iterator i(inFinalObjs); (o = i.current()); ++i)
     {
-      elem = new HierarchyElement((*i)->vFullTypeName(), allElems.size() + 1);
+      elem = new HierarchyElement(o->vFullTypeName(), allElems.size() + 1);
       finElems.push_back(elem);
       allElems.push_back(elem);
-      elemHash[*i] = elem;
+      elemHash[o] = elem;
     };
 
   // some temporary stuff i use
@@ -41,7 +47,7 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
   ElemHash::iterator elem2;
   HierarchyElement* elem3;
   // tmp contains objects whose parents need to be handled
-  while ( !(tmp.empty()) )
+  while ( !(tmp.isEmpty()) )
   {
     // tmp2 is a temporary, used to contain objects which will form
     // tmp in the next round, if we encounter an object whose parents
@@ -49,23 +55,24 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
     // handled in the next round
     tmp2.clear();
     // we make a pass over all objects in tmp
-    for (Objects::iterator i = tmp.begin(); i != tmp.end(); ++i)
+    for (Objects::iterator i(tmp); (o = i.current()); ++i)
       {
 	// *i should already be in the hash
-	elem = elemHash.find(*i)->second;
+	elem = elemHash.find(i)->second;
 	// tmp3 are the parents of the object we're handling
-	tmp3 = (*i)->getParents();
-	for (Objects::iterator j = tmp3.begin(); j != tmp3.end(); ++j)
+	tmp3 = o->getParents();
+	Object* j;
+	for (Objects::iterator it(tmp3); (j = it.current()); ++it)
 	  {
-	    // elem2 is a hash_map::iterator, we use it to find elem3,
+	    // elem2 is a map::iterator, we use it to find elem3,
 	    // which is a HierarchyElement*
-	    elem2 = elemHash.find(*j);
+	    elem2 = elemHash.find(j);
 	    if (elem2 == elemHash.end())
 	      {
-		elem3 = new HierarchyElement((*j)->vFullTypeName(), allElems.size() + 1);
-		tmp2.add(*j);
+		elem3 = new HierarchyElement(j->vFullTypeName(), allElems.size() + 1);
+		tmp2.add(j);
 		allElems.add(elem3);
-		elemHash[*j] = elem3;
+		elemHash[j] = elem3;
 	      }
 	    else elem3 = elem2->second;
 	    elem->addParent(elem3);
@@ -75,20 +82,29 @@ ObjectHierarchy::ObjectHierarchy (const Objects& inGegObjs,
   };
 };
 
-Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const return cos;
+Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
 {
-  assert (gegElems.size() == inGegObjs.size());
+  Objects cos;
+  assert (gegElems.size() == inGegObjs.count());
   allElems.cleanActuals();
   ElemList::const_iterator elem = gegElems.begin();
-  Objects::const_iterator obj = inGegObjs.begin();
-  while ( obj != inGegObjs.end() )
+  Objects::iterator it (inGegObjs);
+  Object* obj;
+  while (( obj = it.current()))
     {
-      (*elem)->actual = *obj;
-      ++elem; ++obj;
+      (*elem)->actual = obj;
+      ++elem; ++it;
     };
   for (ElemList::const_iterator i = finElems.begin(); i != finElems.end(); ++i)
     {
-      (*i)->actual = doc->newObject((*i)->getTypeName());
+      if ((*i)->getTypeName() == "ConstrainedPoint")
+	{
+	  (*i)->actual = new ConstrainedPoint((*i)->getParam());
+	}
+      else
+	{
+	  (*i)->actual = doc->newObject((*i)->getTypeName());
+	};
       cos.add((*i)->actual);
     };
   // temporary's
@@ -129,6 +145,7 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const return cos;
       };
     tmp = tmp2;
   };
+  return cos;
 }
 
 void ElemList::deleteAll()
@@ -150,7 +167,7 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
   allElems.clear();
 
   // a hash to know which elements we already constructed...
-  typedef hash_map<int, HierarchyElement*> Hash;
+  typedef map<int, HierarchyElement*> Hash;
   Hash tmphash;
 
   // load data: we work like this.
@@ -191,7 +208,17 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
 	QString tmpTN = e.attribute("typeName");
 	assert(tmpTN);
 	QCString typeName = tmpTN.utf8();
-	tmpE = new HierarchyElement(typeName,id);
+	
+	// fetch the param if it is a ConstrainedPoint
+	if (tmpTN == "ConstrainedPoint")
+	  {
+	    QString tmpP = e.attribute("param");
+	    assert (tmpP);
+	    double param = tmpP.toDouble(&ok);
+	    assert(ok);
+	    tmpE = new HierarchyElement(typeName, id, param);
+	  }
+	else tmpE = new HierarchyElement(typeName,id);
 	tmphash[id] = tmpE;
       };
 
@@ -255,7 +282,7 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
     // whether we are given/final:
     e.setAttribute("given", given?"true":"false");
     e.setAttribute("final", final?"true":"false");
-
+    if (typeName == "ConstrainedPoint") e.setAttribute ("param", param);
     // references to our parents
     for (ElemList::const_iterator i = parents.begin(); i != parents.end(); ++i)
       (*i)->saveXML(doc,e,true);

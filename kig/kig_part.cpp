@@ -169,9 +169,10 @@ KigDocument::~KigDocument()
   typesFile += "/types.kigt";
   kdDebug() << k_funcinfo << " : saving types to: " << typesFile << endl;
   Types mtypes;
-  for (Types::iterator i = types.begin(); i != types.end(); ++i) {
-    if ((*i)->toMTypeOne()) mtypes.add(*i);
-  };
+  for (Types::iterator i = types.begin(); i != types.end(); ++i)
+    {
+      if ((*i)->toMTypeOne()) mtypes.add(*i);
+    };
   mtypes.saveToFile(typesFile);
   objects.deleteAll();
   delMacro();
@@ -270,14 +271,14 @@ bool KigDocument::saveFile()
   // then we create a ObjectHierarchy of all other objects, which we
   // save to the xml-file, and next we close up.
   Objects gegObjs, finObjs;
-  for (Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for (Object* i = objects.first(); i; i = objects.next())
     {
-      if ((*i)->getParents().empty())
+      if (i->getParents().isEmpty())
 	{
-	  (*i)->saveXML( doc, elem );
-	  gegObjs.push(*i);
+	  i->saveXML( doc, elem );
+	  gegObjs.append(i);
 	}
-      else finObjs.push(*i);
+      else finObjs.append(i);
     };
   ObjectHierarchy hier(gegObjs, finObjs, this);
   hier.saveXML( doc, elem );
@@ -324,16 +325,15 @@ void KigDocument::addObject(Object* o)
 
 void KigDocument::_addObject(Object* o)
 {
-  objects.add( o );
+  objects.append( o );
   emit objectAdded( o );
   emit changed();
 };
 
 void KigDocument::delObject(Object* o)
 {
-  Objects all;
-  all.push(o);
-  all |= o->getChildren();
+  Objects all = o->getChildren();
+  all.add(o);
   KigCommand* tmp = new RemoveObjectsCommand(this, all);
   connect( tmp, SIGNAL( executed() ), this, SIGNAL( allChanged() ) );
   connect( tmp, SIGNAL( unexecuted() ), this, SIGNAL( allChanged() ) );
@@ -376,7 +376,7 @@ void KigDocument::unselect(Object* o)
 
 void KigDocument::deleteSelected()
 {
-  if (sos.size())
+  if (!sos.isEmpty())
     {
       KigCommand* tmp = new RemoveObjectsCommand(this, sos);
       // TODO: check if it is necessary to redraw everything...
@@ -386,17 +386,24 @@ void KigDocument::deleteSelected()
     };
 };
 
-Objects KigDocument::whatAmIOn(const QPoint& p) return tmp;
+Objects KigDocument::whatAmIOn(const QPoint& p)
 {
-  for (Objects::iterator i = objects.begin(); i != objects.end(); i++)
-    if((*i)->contains(p, false)) tmp.push(*i);
+  Objects tmp;
+  for ( Object* i = objects.first(); i; i = objects.next())
+    {
+      if(!i->contains(p, false)) continue;
+      // points go in front of the list
+      if (Object::toPoint(i)) tmp.prepend(i);
+      else tmp.append(i);
+    };
+  return tmp;
 }
 
 void KigDocument::selectObject(Object* o)
 {
   if (!o->getSelected())
     {
-      sos.push(o);
+      sos.append(o);
       o->setSelected(true);
     };
   emit selectionChanged( o );
@@ -405,17 +412,17 @@ void KigDocument::selectObject(Object* o)
 
 void KigDocument::selectObjects(const QRect & r)
 {
-  for (Objects::iterator i = objects.begin(); i != objects.end(); i++)
-    if((*i)->getShown() && (*i)->inRect(r))
-      selectObject(*i);
+  for (Object* i = objects.first(); i; i = objects.next())
+    if(i->getShown() && i->inRect(r))
+      selectObject(i);
 }
 
 void KigDocument::clearSelection()
 {
-  for (Objects::iterator i = objects.begin(); i != objects.end(); i++)
+  for (Object* i = objects.first(); i; i = objects.next())
     {
-      (*i)->setSelected(false);
-      emit selectionChanged(*i);
+      i->setSelected(false);
+      emit selectionChanged(i);
     }
   sos.clear();
   updateActions();
@@ -423,32 +430,35 @@ void KigDocument::clearSelection()
 
 void KigDocument::startMovingSos(const QPoint& p)
 {
-  for (Objects::iterator i = sos.begin(); i != sos.end(); ++i)
-    (*i)->startMove(p);
+//   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
+  for (Object* i = sos.first(); i; i = sos.next())
+    i->startMove(p);
   cos.clear();
   stos.clear();
   Objects tmp = sos;
   Objects tmp2;
-  while (!tmp.empty())
+  while (!tmp.isEmpty())
     {
       tmp2.clear();
-      // sos and their children/parents and their children's children...: these will be changing
-      for (Objects::iterator i = tmp.begin(); i != tmp.end(); i++)
+      // sos and their children/parents and their children's
+      // children...: these will be changing
+      for (Object* i = tmp.first(); i; i = tmp.next())
 	{
-	  if (!cos.contains(*i))
+	  if (!cos.contains(i))
 	    {
-	      cos.push(*i);
-	      tmp2 |= (*i)->getChildren();
-	      tmp2 |= (*i)->getParents();
+	      cos.append(i);
+	      tmp2 = i->getChildren();
+	      Objects ___tmp = i->getParents();
+	      tmp2 |= ___tmp;
 	    };
 	};
       tmp = tmp2;
     };
   // all the rest is still
-  for ( Objects::iterator i = objects.begin(); i != objects.end(); i++ )
+  for ( Object* i = objects.first(); i; i = objects.next() )
     {
-      if (!cos.contains( *i ) )
-	stos += *i;
+      if (!cos.contains( i ) )
+	stos.add(i);
     };
   // inform others that we started moving
   emit startedMoving();
@@ -459,8 +469,8 @@ void KigDocument::startMovingSos(const QPoint& p)
 
 void KigDocument::moveSosTo(const QPoint& p)
 {
-  for (Objects::iterator i = sos.begin(); i != sos.end(); i++)
-    (*i)->moveTo(p);
+  for (Object* i = sos.first(); i; i = sos.next())
+    i->moveTo(p);
   cos.calc();
   // recalc, since some stuff should be calc'd after other stuff, and i haven't got the order right yet
   cos.calc();
@@ -471,8 +481,8 @@ void KigDocument::moveSosTo(const QPoint& p)
 void KigDocument::stopMovingSos()
 {
   cos.calc();
-  for (Objects::iterator i = sos.begin(); i != sos.end(); i++)
-    (*i)->stopMove();
+  for (Object* i = sos.first(); i; i = sos.next())
+    i->stopMove();
   cos.clear();
   stos.clear();
   emit stoppedMoving();
@@ -483,15 +493,15 @@ void KigDocument::stopMovingSos()
 
 // void KigDocument::cancelMovingSos()
 // {
-//   for (Objects::iterator i = sos.begin(); i != sos.end(); i++)
-//     (*i)->cancelMove();
+//   for (Object* i = sos.first(); i; i++)
+//     (i)->cancelMove();
 //   emit weChanged();
 // };
 
 void KigDocument::editShowHidden()
 {
-  for (Objects::iterator i = objects.begin(); i != objects.end(); i++)
-    (*i)->setShown(true);
+  for (Object* i = objects.first(); i; i = objects.next())
+    i->setShown(true);
 };
 
 void KigDocument::newObc(Object* o)
@@ -525,7 +535,7 @@ void KigDocument::updateActions()
     }
   else
     {
-      if (!sos.empty())
+      if (!sos.isEmpty())
 	{
 	  KADeleteObjects->setEnabled(true && !readOnly);
 	}
@@ -628,16 +638,16 @@ void KigDocument::stepMacro()
     };
   // update the selected state of all objects...
   if (oldObjs)
-    for (Objects::iterator i = oldObjs->begin(); i != oldObjs->end(); ++i)
+    for (Object* i = oldObjs->first(); i; i = oldObjs->next())
       {
-	(*i)->setSelected(false);
-	emit selectionChanged(*i);
+	i->setSelected(false);
+	emit selectionChanged(i);
       };
   if (curObjs)
-    for (Objects::iterator i = curObjs->begin(); i != curObjs->end(); ++i)
+    for (Object* i = curObjs->first(); i; i = curObjs->next())
       {
-	(*i)->setSelected(true);
-	emit selectionChanged(*i);
+	i->setSelected(true);
+	emit selectionChanged(i);
       };
 }
 
@@ -650,7 +660,6 @@ void KigDocument::delMacro()
 
 void KigDocument::macroSelect(Object* o)
 {
-  kdDebug() << k_funcinfo << macroWAW << endl;
   assert(macroWAW == macroSGO || macroWAW == macroSFO);
   Objects* a = (macroWAW == macroSFO ? &macroFinObjs : &macroGegObjs);
   assert(o);
@@ -662,24 +671,24 @@ void KigDocument::macroSelect(Object* o)
     }
   else
     {
-      a->push(o);
+      a->append(o);
       o->setSelected(true);
       emit selectionChanged(o);
     };
-  m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pGivenObjsPage, !macroGegObjs.empty());
-  m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pFinalObjsPage, !macroFinObjs.empty());
+  m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pGivenObjsPage, !macroGegObjs.isEmpty());
+  m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pFinalObjsPage, !macroFinObjs.isEmpty());
 }
 
-void KigDocument::macroSelect(const Objects& os)
+void KigDocument::macroSelect( Objects& os)
 {
-  for (Objects::const_iterator i = os.begin(); i != os.end(); ++i)
-    macroSelect(*i);
+  for (Object* i = os.first(); i; i = os.next())
+    macroSelect(i);
 }
 void KigDocument::macroSelect(const QRect& r)
 {
-  for (Objects::iterator i = objects.begin(); i != objects.end(); i++)
-    if((*i)->getShown() && (*i)->inRect(r))
-      macroSelect(*i);
+  for (Object* i = objects.first(); i; i = objects.next())
+    if(i->getShown() && i->inRect(r))
+      macroSelect(i);
 }
 
 void KigDocument::editTypes()
@@ -697,7 +706,6 @@ void KigDocument::removeType(Type* t)
   else if (t->baseTypeName() == Segment::sBaseTypeName()) KANewSegment->remove(t->getAction());
   else kdError() << "type being deleted is not a point, line, circle or segment..." << endl;
   types.remove(t);
-  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
 }
 
 void KigDocument::addTypes(const Types& ts)
@@ -730,15 +738,15 @@ void KigDocument::stepBackMacro()
     };
   // update the selected state of all objects...
   if (oldObjs)
-    for (Objects::iterator i = oldObjs->begin(); i != oldObjs->end(); ++i)
+    for (Object* i = oldObjs->first(); i; i = oldObjs->next())
       {
-	(*i)->setSelected(false);
-	emit selectionChanged(*i);
+	i->setSelected(false);
+	emit selectionChanged(i);
       };
   if (curObjs)
-    for (Objects::iterator i = curObjs->begin(); i != curObjs->end(); ++i)
+    for (Object* i = curObjs->first(); i; i = curObjs->next())
       {
-	(*i)->setSelected(true);
-	emit selectionChanged(*i);
+	i->setSelected(true);
+	emit selectionChanged(i);
       };
 }

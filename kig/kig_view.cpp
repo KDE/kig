@@ -17,14 +17,14 @@
 
 KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool inIsKiosk)
   : QWidget(parent, name),
-    stillPix(size()),
-    curPix(size()),
     document(inDoc),
     plc(0,0),
     pmt(0,0),
     mode (NMode),
     nmode (nmMoving),
     cmode (cmMoving),
+    stillPix(size()),
+    curPix(size()),
     kiosk(0),
     kiosKontext(0),
     isKiosk(inIsKiosk)
@@ -76,11 +76,11 @@ void KigView::mousePressEvent (QMouseEvent* e)
     {
     case SMode:
       // we use nmode for SMode too... (lazyness...)
-      if (oco.empty()) nmode = nmClickedNowhere;
+      if (oco.isEmpty()) nmode = nmClickedNowhere;
       else nmode = nmClickedForSelecting;
       break;
     case NMode:
-      if (oco.empty())
+      if (oco.isEmpty())
 	{
 	  if (e->button() & MidButton) nmode = nmClickedForNewPoint;
 	  else if (e->button() & LeftButton) nmode = nmClickedNowhere;
@@ -95,7 +95,7 @@ void KigView::mousePressEvent (QMouseEvent* e)
 	};
       break;
     case CMode:
-      if (!oco.empty() && (e->button() == LeftButton))
+      if (!oco.isEmpty() && (e->button() == LeftButton))
 	cmode = cmClicked;
       else if (e->button() & MidButton)
 	cmode = cmClickedForNewPoint;
@@ -122,11 +122,22 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
 	  paintOnWidget(false);
 	  break;
 	case nmMoving:
-	  oco = document->whatAmIOn(e->pos());
-	  if (!oco.empty()) { setCursor (KCursor::handCursor()); displayText(oco.front()->vTBaseTypeName()); }
-	  else { setCursor(KCursor::arrowCursor()); displayText(0); }
-	  paintOnWidget(false);
-	  break;
+	  {
+	    oco = document->whatAmIOn(e->pos());
+	    const Objects& ocor = oco;
+	    if (!(ocor.isEmpty()))
+	      {
+		setCursor (KCursor::handCursor());
+		displayText(oco.getFirst()->vTBaseTypeName());
+	      }
+	    else
+	      {
+		setCursor(KCursor::arrowCursor());
+		displayText(0);
+	      }
+	    paintOnWidget(false);
+	    break;
+	  }
 	case nmClickedForSelecting:
 	  if ((plc-pmt).manhattanLength() > 3)
 	    {
@@ -145,17 +156,23 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
 	  break;
 	case nmMoving:
 	  oco = document->whatAmIOn(e->pos());
-	  if (!oco.empty()) { setCursor (KCursor::handCursor()); displayText(oco.front()->vTBaseTypeName()); }
+	  if (!oco.isEmpty())
+	    {
+	      setCursor (KCursor::handCursor());
+// 	      kdDebug() << k_funcinfo << static_cast<Object*>(oco.begin()) << " " << static_cast<Object*>(oco.end())<< endl;
+	      displayText(oco.getFirst()->vTBaseTypeName());
+	    }
 	  else { setCursor(KCursor::arrowCursor()); displayText(0); }
 	  paintOnWidget(false);
 	  break;
 	case nmClickedForSelecting:
 	  if ((plc-pmt).manhattanLength() > 3)
 	    {
-	      if ((oco & document->getSos()).empty()) 
+	      Objects tmp = oco & document->getSos();
+	      if (tmp.isEmpty()) 
 		{
 		  if (!(e->state() & ShiftButton)) document->clearSelection();
-		  document->selectObject(oco.front());
+		  document->selectObject(oco.getFirst());
 		}
 	      else
 		{
@@ -181,7 +198,7 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
 	{
 	case cmMoving:
 	  oco = document->whatAmIOn(e->pos());
-	  if (!oco.empty() && (s = document->getObc()->wantArg(oco.front())))
+	  if (!oco.isEmpty() && (s = document->getObc()->wantArg(oco.getFirst())))
 	    {
 	      setCursor (KCursor::handCursor());
 	      displayText(s);
@@ -225,7 +242,7 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 	  document->macroSelect(QRect(plc,pmt));
 	  break;
 	case nmClickedForSelecting:
-	  document->macroSelect(oco.front());
+	  document->macroSelect(oco.getFirst());
 	  break;
 	default:
 	  break;
@@ -239,9 +256,9 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 	  document->selectObjects (QRect(plc, pmt));
 	  break;
 	case nmClickedForNewPoint:
-	  if (oco.size() > 0 && oco.front()->toCurve() && oco.front()->contains(plc))
+	  if (oco.count() > 0 && Object::toCurve(oco.getFirst()) && oco.getFirst()->contains(plc))
 	    {
-	      p = new ConstrainedPoint(oco.front()->toCurve(),plc);
+	      p = new ConstrainedPoint(Object::toCurve(oco.getFirst()),plc);
 	    }
 	  else
 	    {
@@ -251,17 +268,17 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 	  document->addObject(p);
 	  break;
 	case nmClickedForSelecting:
-          if ( oco.front()->getSelected() )
+          if ( oco.getFirst()->getSelected() )
           {
               if ( e->state() & ShiftButton )
               {
-                  document->unselect( oco.front() );
+                  document->unselect( oco.getFirst() );
                   break;
               }
               else document->clearSelection();
           };
           if (!(e->state() & ShiftButton)) document->clearSelection();
-          document->selectObject(oco.front());
+          document->selectObject(oco.getFirst());
           break;
 	default:
 	  break;
@@ -271,9 +288,9 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
       switch(cmode)
 	{
 	case cmClicked:
-	  if (document->getObc()->wantArg(oco.front()))
-	    document->obcSelectArg(oco.front());
-	  else {document->delObc(); document->selectObject(oco.front());}
+	  if (document->getObc()->wantArg(oco.getFirst()))
+	    document->obcSelectArg(oco.getFirst());
+	  else {document->delObc(); document->selectObject(oco.getFirst());}
 	  break;
 	case cmClickedForNewPoint:
 	  p = new Point (e->pos());
@@ -304,7 +321,7 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 void KigView::setMode()
 {
   if (document->getObc()) mode = CMode;
-  else if (!document->getCos().empty()) mode = MMode;
+  else if (!document->getCos().isEmpty()) mode = MMode;
   else if (document->isConstructingMacro()) mode = SMode;
   else mode = NMode;
 }
@@ -383,11 +400,10 @@ void KigView::redrawStillPix()
 
   p.restore();
   const Objects* obj = &( document->getStos() );
-  if ( obj->empty() && document->getCos().empty()) obj = &( document->getObjects() );
+  if ( obj->isEmpty() && document->getCos().isEmpty()) obj = &( document->getObjects() );
   obj->draw( p,true );
   bitBlt(&curPix, 0,0,&stillPix);
   objectOverlayList.clear();
-  objectOverlayList.append(new QRect(0,0,size().width(), size().height()));
   paintOnWidget( true );
 };
 

@@ -124,13 +124,14 @@ class ConstrainedPoint
 {
 public:
   ConstrainedPoint(Curve* inC, const QPoint& inPt);
+  ConstrainedPoint(const double inP) : p(inP), c(0) {};
   ~ConstrainedPoint() {};
 
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "ConstrainedPoint"; };
 
-  QString wantArg(const Object*) const { return 0; };
-  bool selectArg( Object* ) { return true;};
+  QString wantArg(const Object*) const;
+  bool selectArg( Object* );
   void unselectArg (Object*) {};
   Objects getParents() const;
 

@@ -1,29 +1,22 @@
 #ifndef HIERARCHY_H
 #define HIERARCHY_H
 
-#include "../objects/object.h"
-
 #include <list>
 #include <vector>
 #include <algorithm>
 
+using namespace std;
+
 #include <qcstring.h>
+
+#include "../objects/object.h"
 
 class KigDocument;
 class HierarchyElement;
 class ObjectHierarchy;
 
-// the stl hash function is solely composed of template
-// specializations, and wasn't so foreseeing to include one that works
-// on Object pointers, this one does.
-// see also the stl documentation (e.g. the sgi stl docs, which are great)
-struct myHash
-{
-  size_t operator()(const Object* o) const { return size_t(o); };
-};
-
 class ElemList
-  : public vector<HierarchyElement*>
+  : public std::vector<HierarchyElement*>
 {
 public:
   void add (HierarchyElement* e)
@@ -47,18 +40,21 @@ protected:
   ElemList parents;
   ElemList children;
   int id;
+  double param;
 //   QString description;
 public:
   HierarchyElement(QCString inTN, 
 // 		   QString description,
-		   int inId
-		   ) : typeName(inTN), id(inId), actual(0) {};
+		   int inId,
+		   double inParam = 0
+		   ) : typeName(inTN), id(inId), param(inParam), actual(0) {};
   void addParent ( HierarchyElement* e ) { parents.push_back(e); e->addChild(this);};
   void addChild (HierarchyElement* e ) { children.push_back(e); };
   void saveXML ( QDomDocument& d, QDomElement& parentElem,
 		 bool reference, bool given=false,
 		 bool final=false) const;
   int getId() { return id; };
+  double getParam() { return param; };
   QCString getTypeName() { return typeName;};
   const ElemList& getParents() { return parents; };
   const ElemList& getChildren() { return children; };

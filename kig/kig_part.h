@@ -167,7 +167,7 @@ public:
   //   void cancelMovingSos();
 
   // slots from the edit menu
-  void editHide() { for (Objects::iterator i = sos.begin(); i != sos.end(); i++) (*i)->setShown(false);};
+  void editHide() { for (Object* i = sos.first(); i; i = sos.next()) i->setShown(false);};
   void editShowHidden();
 
   signals:
@@ -192,7 +192,7 @@ protected:
   friend class AddObjectsCommand;
   friend class RemoveObjectsCommand;
   void _addObject(Object* inObject);
-  void _addObjects(const Objects& o) { for (Objects::const_iterator i = o.begin(); i != o.end(); ++i) _addObject(*i); };
+  void _addObjects( Objects& o) { for (Object* i = o.first(); i; i = o.next()) _addObject(i); };
   void _delObject(Object* inObject);
 
   // have we changed since the last save ?
@@ -241,7 +241,7 @@ public slots:
   // objects if you were selecting given objects, or finish the macro
   // if you were selecting final objects
   void macroSelect(Object* o);
-  void macroSelect(const Objects& os);
+  void macroSelect( Objects& os);
   void macroSelect(const QRect& r);
   void stepMacro();
   void stepBackMacro();

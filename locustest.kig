@@ -23,7 +23,7 @@
    <parent typeName="point" id="4" />
    <parent typeName="point" id="5" />
   </HierarchyElement>
-  <HierarchyElement given="false" typeName="ConstrainedPoint" id="9" final="true" >
+  <HierarchyElement given="false" typeName="ConstrainedPoint" id="9" final="true" param="0.5" >
    <parent typeName="LineTTP" id="8" />
   </HierarchyElement>
   <HierarchyElement given="false" typeName="LineTTP" id="10" final="true" >

@@ -183,3 +183,14 @@ void ConstrainedPoint::moveTo(const QPoint& pt)
   p = c->getParam(pt);
   calc();
 }
+
+bool ConstrainedPoint::selectArg( Object* o)
+{
+  if (!c) c = Object::toCurve(o);
+  return c;
+}
+QString ConstrainedPoint::wantArg(const Object* o) const
+{
+  if (!c && Object::toCurve(o)) return i18n("On Curve");
+  return 0;
+}

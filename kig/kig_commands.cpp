@@ -5,9 +5,9 @@
 
 AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand( inDoc,
-                 inOs.size() == 1 ?
-                   i18n("Add a %1").arg(inOs.front()->vTBaseTypeName()) :
-                   i18n( "Add %1 objects" ).arg( os.size() ) ),
+		inOs.count() == 1 ?
+		  i18n("Add a %1").arg(inOs.getFirst()->vTBaseTypeName()) :
+		  i18n( "Add %1 objects" ).arg( os.count() ) ),
     undone(true),
     os (inOs)
 {
@@ -17,24 +17,24 @@ AddObjectsCommand::AddObjectsCommand( KigDocument* inDoc, Object* o )
     : KigCommand ( inDoc, i18n( "Add a %1" ).arg( o->vTBaseTypeName() ) ),
       undone( true )
 {
-  os.push( o );
+  os.append( o );
 };
 
 void AddObjectsCommand::execute()
 {
-    for ( Objects::iterator i = os.begin(); i != os.end(); i++ )
+  for ( Object* i = os.first(); i; i = os.next() )
     {
-        document->_addObject(*i);
+      document->_addObject(i);
     };
-    undone = false;
-    emit executed();
+  undone = false;
+  emit executed();
 };
 
 void AddObjectsCommand::unexecute()
 {
-  for ( Objects::iterator i = os.begin(); i != os.end(); i++ )
+  for ( Object* i = os.first(); i; i = os.next() )
   {
-    document->_delObject(*i);
+    document->_delObject(i);
   };
   undone=true;
   emit unexecuted();
@@ -46,15 +46,17 @@ AddObjectsCommand::~AddObjectsCommand()
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& inOs)
-  : KigCommand(inDoc, inOs.size() == 1 ?
-             i18n("Remove a %1").arg(inOs.front()->vTBaseTypeName()) :
-             i18n( "Remove %1 objects" ).arg( inOs.size()) ),
+  : KigCommand(inDoc,
+	       inOs.count() == 1 ?
+   	         i18n("Remove a %1").arg(inOs.getFirst()->vTBaseTypeName()) :
+	         i18n( "Remove %1 objects" ).arg( inOs.count()) ),
     undone( false ),
     os( inOs )
 {
   // we delete the children too
-  for (Objects::iterator i = os.begin(); i != os.end(); ++i) {
-    os |= (*i)->getChildren();
+  for (Object* i = os.first(); i; i = os.next()) {
+    Objects tmp = i->getChildren();
+    os |= tmp;
   };
 }
 
@@ -62,7 +64,7 @@ RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
   : KigCommand( inDoc, i18n("Remove a %1").arg(o->vTBaseTypeName()) ),
     undone( false )
 {
-    os.push( o );
+    os.append( o );
 }
 
 RemoveObjectsCommand::~RemoveObjectsCommand()
@@ -72,13 +74,13 @@ RemoveObjectsCommand::~RemoveObjectsCommand()
 
 void RemoveObjectsCommand::execute()
 {
-  for ( Objects::iterator i = os.begin(); i != os.end(); i++ )
+  for ( Object* i = os.first(); i; i = os.next() )
     {
-      document->_delObject(*i);
+      document->_delObject(i);
       // the parents should let go of their children (quite a dramatic scene we have here :)
-      Objects appel = (*i)->getParents();
-      for (Objects::iterator j = appel.begin(); j != appel.end(); ++j) {
-	(*j)->delChild(*i);
+      Objects appel = i->getParents();
+      for (Object* j = appel.first(); j; j = appel.next()) {
+	j->delChild(i);
       };
     };
   undone=false;
@@ -87,13 +89,13 @@ void RemoveObjectsCommand::execute()
 
 void RemoveObjectsCommand::unexecute()
 {
-  for ( Objects::iterator i = os.begin(); i != os.end(); i++ )
+  for ( Object* i = os.first(); i; i = os.next() )
     {
-      document->_addObject(*i);
-      // and here, the parents are united once again with their beloved offspring...
-      Objects appel = (*i)->getParents();
-      for (Objects::iterator j = appel.begin(); j != appel.end(); ++j) {
-	(*j)->addChild(*i);
+      document->_addObject(i);
+      // drama again: parents finding their lost children...
+      Objects appel = i->getParents();
+      for (Object* j = appel.first(); j; j = appel.next()) {
+	j->addChild(i);
       };
     };
     undone = true;
