@@ -123,7 +123,7 @@ void TypesDialog::exportType()
 void TypesDialog::importTypes()
 {
   QStringList file_names =
-    KFileDialog::getOpenFileNames(":importTypes", i18n("*.kigt|Kig Types Files\n*|All Files"), this, "Import Types");
+    KFileDialog::getOpenFileNames(":importTypes", i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Import Types" ));
 
   myvector<Macro*> macros;
 
