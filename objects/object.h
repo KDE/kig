@@ -68,8 +68,6 @@ public:
   // is something which you cannot calculate from your parents,
   // e.g. an independent point's params are its coordinates, a
   // ConstrainedPoint's also got a param..
-  // The object should do e->addParam() for every one of its
-  // parameters
   // Objects that reimplement this should call Object::getParams() and
   // setParams() after you've handled your params.. --> to set params
   // common to all objects like the color...
