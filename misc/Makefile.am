@@ -1,7 +1,7 @@
 INCLUDES=$(all_includes)
 noinst_LTLIBRARIES=libmisc.la
 noinst_HEADERS = common.h coordinate.h coordinate_system.h \
-	kigpainter.h objects.h rect.h 
+	kigpainter.h objects.h rect.h \
 	screeninfo.h calcpaths.h conic-common.h \
 	kignumerics.h argsparser.h kigtransform.h \
 	guiaction.h object_constructor.h lists.h \
