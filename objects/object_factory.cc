@@ -136,13 +136,16 @@ RealObject* ObjectFactory::locus( const Objects& parents )
   return new RealObject( t, locusparents );
 }
 
-Objects ObjectFactory::label( const QString& s, const Coordinate& loc )
+Objects ObjectFactory::label( const QString& s, const Coordinate& loc, const Objects& nparents )
 {
+  Objects parents( nparents.begin(), nparents.end() );
   Objects os;
   os.push_back( new DataObject( new StringImp( s ) ) );
   os.push_back( new DataObject( new PointImp( loc ) ) );
+  parents.push_back( os[0] );
+  parents.push_back( os[1] );
 
-  RealObject* r = new RealObject( TextType::instance(), os );
+  RealObject* r = new RealObject( TextType::instance(), parents );
   os.push_back( r );
   return os;
 }

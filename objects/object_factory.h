@@ -57,7 +57,7 @@ public:
   // returns the objects necessary to show a label with text s at
   // point c: first a string DataObject, then a point DataObject, and
   // next a label RealObject..
-  Objects label( const QString& s, const Coordinate& loc );
+  Objects label( const QString& s, const Coordinate& loc, const Objects& parents = Objects() );
 };
 
 #endif
