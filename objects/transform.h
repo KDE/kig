@@ -129,6 +129,14 @@ public:
   static const int sShortCut() { return 0; };
   static const char* sActionName();
 
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
+  void draw ( KigPainter& p, bool showSelection ) const;
+
+  bool inRect (const Rect&) const;
+
+  Coordinate getPoint (double param) const;
+  double getParam (const Coordinate&) const;
+
   // passing arguments
   static Object::WantArgsResult sWantArgs( const Objects& os );
   static QString sUseText( const Objects& os, const Object* );
