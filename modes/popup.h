@@ -65,7 +65,7 @@ public:
   // set the checked state of the n'th item in menu to checked..
   void setChecked( int menu, int n, bool checked );
 
-  Objects objects() { return mobjs; };
+  Objects objects() const { return mobjs; };
   KigDocument& document() { return mdoc; };
   KigWidget& widget() { return mview; };
 

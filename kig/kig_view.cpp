@@ -423,7 +423,7 @@ KigView::~KigView()
 {
 }
 
-KigWidget* KigView::realWidget()
+KigWidget* KigView::realWidget() const
 {
   return mrealwidget;
 }

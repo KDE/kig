@@ -141,7 +141,7 @@ public:
    * sets the coordinate system to s, and deletes the old one..
    */
   void setCoordinateSystem( CoordinateSystem* s );
-  KigMode* mode() { return mMode; };
+  KigMode* mode() const { return mMode; };
   void setMode( KigMode* );
   void runMode( KigMode* );
   void doneMode( KigMode* );
