@@ -157,6 +157,7 @@ KigDocument::~KigDocument()
   for ( s::iterator i = mobjects.begin(); i != mobjects.end(); ++i ) {
     delete *i;
   }
+  delete mcoordsystem;
 }
 
 

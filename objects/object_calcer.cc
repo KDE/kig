@@ -146,6 +146,7 @@ ObjectPropertyCalcer::~ObjectPropertyCalcer()
   // of ObjectCalcer on mparent.. This is an ugly workaround..
   ( mparent->*&ObjectCalcer::delChild )( this );
   //mparent->delChild( this );
+  delete mimp;
 }
 
 const ObjectImp* ObjectPropertyCalcer::imp() const

@@ -31,7 +31,7 @@
 
 - write *-filter-status.txt's for the kseg and cabri filters.
 
-- Three new transformations: projection on a line, orthogonally and
+- Two new transformations: projection on a line, orthogonally and
   according to a given direction.  As a mathematician, I'm supposed to
   have a grudge against these, as they don't fit the definition for
   affine transformations ( the matrix has to be regular ) ;), but I

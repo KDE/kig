@@ -283,6 +283,8 @@ KigPart::~KigPart()
   // cleanup
   delete mMode;
   delete mhistory;
+
+  delete mdocument;
 }
 
 bool KigPart::openFile()

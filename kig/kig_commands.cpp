@@ -390,3 +390,8 @@ MonitorDataObjects::MonitorDataObjects( ObjectCalcer* c )
   };
 }
 
+ChangeObjectConstCalcerTask::~ChangeObjectConstCalcerTask()
+{
+  delete mnewimp;
+}
+

@@ -106,6 +106,7 @@ class ChangeObjectConstCalcerTask
 {
 public:
   ChangeObjectConstCalcerTask( ObjectConstCalcer* calcer, ObjectImp* newimp );
+  ~ChangeObjectConstCalcerTask();
 
   void execute( KigPart& );
   void unexecute( KigPart& );
