@@ -38,8 +38,8 @@ class Object
   // ConstrainedPoint's also got a param..
   // The object should do e->addParam() for every one of its
   // parameters
-  virtual map<QCString,double> getParams () {return map<QCString, double>();};
-  virtual void setParams ( const map<QCString,double>& ) {};
+  virtual std::map<QCString,double> getParams () {return std::map<QCString, double>();};
+  virtual void setParams ( const std::map<QCString,double>& ) {};
 
   // getting types from this object: easier to type and supports
   // MacroObjectOne

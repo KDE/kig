@@ -88,7 +88,7 @@ protected:
     double pm;
   };
 
-  typedef list<CPt> CPts;
+  typedef std::list<CPt> CPts;
 
   // for calcPointLocus we need some special magic, so it is a special
   // type...
