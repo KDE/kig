@@ -22,7 +22,6 @@
 #include "kig_part.moc"
 
 #include "aboutdata.h"
-#include "kig_actions.h"
 #include "kig_commands.h"
 #include "kig_view.h"
 
@@ -163,12 +162,6 @@ void KigDocument::setupActions()
     i18n("Manage &Types"), 0, this, SLOT(editTypes()),
     actionCollection(), "types_edit");
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
-
-  tmp = l->loadIcon( "pointxy", KIcon::User );
-  aFixedPoint = new AddFixedPointAction( this, tmp, actionCollection() );
-
-  tmp = l->loadIcon( "new", KIcon::User );
-  new TestAction( this, tmp, actionCollection() );
 
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );

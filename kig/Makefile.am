@@ -6,8 +6,7 @@
 INCLUDES = $(all_includes)
 
 # these are the headers for your project
-noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h \
-		kig_actions.h
+noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h
 
 # let automoc handle all of the meta source files (moc)
 METASOURCES = AUTO
@@ -41,8 +40,11 @@ shellrc_DATA = kigui.rc
 noinst_LTLIBRARIES = libkigparttemp.la
 
 # the Part's source, library search path, and link libraries
-libkigparttemp_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp \
-	kig_actions.cpp
+libkigparttemp_la_SOURCES = \
+	kig_part.cpp \
+	kig_view.cpp \
+	kig_commands.cpp
+
 libkigparttemp_la_LIBADD = $(LIB_KDEPRINT)
 
 # this is where the desktop file will go 

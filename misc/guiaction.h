@@ -55,7 +55,7 @@ public:
   virtual int shortcut() const;
   virtual void act( KigDocument& ) = 0;
 
-  virtual void plug( KigDocument* doc, KigGUIAction* kact ) = 0;
+  virtual void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 class ObjectConstructor;
@@ -90,7 +90,6 @@ public:
   const char* actionName() const;
   int shortcut() const;
   void act( KigDocument& );
-  void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
 class ConstructTextLabelAction
@@ -105,8 +104,34 @@ public:
   QString descriptiveName() const;
   const char* actionName() const;
   void act( KigDocument& );
+};
 
-  void plug( KigDocument* doc, KigGUIAction* kact );
+class AddFixedPointAction
+  : public GUIAction
+{
+  const char* mactionname;
+public:
+  AddFixedPointAction( const char* actionname );
+  ~AddFixedPointAction();
+  QString description() const;
+  QCString iconFileName() const;
+  QString descriptiveName() const;
+  const char* actionName() const;
+  void act( KigDocument& );
+};
+
+class TestAction
+  : public GUIAction
+{
+  const char* mactionname;
+public:
+  TestAction( const char* actionname );
+  ~TestAction();
+  QString description() const;
+  QCString iconFileName() const;
+  QString descriptiveName() const;
+  const char* actionName() const;
+  void act( KigDocument& );
 };
 
 #endif

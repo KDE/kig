@@ -19,12 +19,14 @@
 #include "guiaction.h"
 #include "guiaction.moc"
 
+#include "coordinate_system.h"
+#include "i18n.h"
+#include "object_constructor.h"
+
 #include "../kig/kig_part.h"
 #include "../modes/construct_mode.h"
 #include "../modes/label.h"
-
-#include "i18n.h"
-#include "object_constructor.h"
+#include "../objects/object_factory.h"
 
 #include <kiconloader.h>
 
@@ -153,10 +155,6 @@ void ConstructibleAction::plug( KigDocument* doc, KigGUIAction* kact )
   mctor->plug( doc, kact );
 }
 
-void ConstructPointAction::plug( KigDocument*, KigGUIAction* )
-{
-}
-
 QString ConstructTextLabelAction::description() const
 {
   return i18n( "Construct a text label." );
@@ -188,7 +186,84 @@ ConstructTextLabelAction::ConstructTextLabelAction( const char* actionname )
 {
 }
 
-void ConstructTextLabelAction::plug( KigDocument*, KigGUIAction* )
+QString AddFixedPointAction::description() const
+{
+  return i18n( "Construct a Point by its Coordinates" );
+}
+
+QCString AddFixedPointAction::iconFileName() const
+{
+  return "pointxy";
+}
+
+QString AddFixedPointAction::descriptiveName() const
+{
+  return i18n( "Point by Coordinates" );
+}
+
+const char* AddFixedPointAction::actionName() const
+{
+  return mactionname;
+}
+
+void AddFixedPointAction::act( KigDocument& doc )
+{
+  bool ok;
+  Coordinate c = doc.coordinateSystem().getCoordFromUser(
+    i18n( "Fixed Point" ),
+    i18n( "Enter the coordinates for the new point." ) +
+    QString::fromLatin1("\n") +
+    doc.coordinateSystem().coordinateFormatNotice(),
+    doc, doc.widget(), &ok );
+  if ( ! ok ) return;
+  Objects p = ObjectFactory::instance()->fixedPoint( c );
+  p.calc( doc );
+  doc.addObjects( p );
+}
+
+AddFixedPointAction::AddFixedPointAction( const char* actionname )
+  : mactionname( actionname )
+{
+}
+
+AddFixedPointAction::~AddFixedPointAction()
+{
+}
+
+TestAction::TestAction( const char* actionname )
+  : mactionname( actionname )
+{
+}
+
+TestAction::~TestAction()
+{
+}
+
+QString TestAction::description() const
+{
+  return QString::fromLatin1( "Test stuff !!!" );
+}
+
+QCString TestAction::iconFileName() const
+{
+  return "new";
+}
+
+QString TestAction::descriptiveName() const
+{
+  return QString::fromLatin1( "Test stuff !!!" );
+}
+
+const char* TestAction::actionName() const
+{
+  return mactionname;
+}
+
+void TestAction::act( KigDocument& )
+{
+}
+
+void GUIAction::plug( KigDocument*, KigGUIAction* )
 {
 }
 

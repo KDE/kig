@@ -350,6 +350,11 @@ void setupBuiltinStuff()
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );
+    actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );
+
+#if 0
+    actions->add( new TestAction( "test_stuff" ) );
+#endif
   };
 
   done = true;
