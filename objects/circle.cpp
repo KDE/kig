@@ -18,13 +18,17 @@
  USA
 **/
 
-
 #include "circle.h"
+
+#include "point.h"
+
+#include "../misc/common.h"
+#include "../misc/kigpainter.h"
 
 #include <klocale.h>
 #include <kdebug.h>
-
-#include "../misc/common.h"
+#include <qpen.h>
+#include <math.h>
 
 Circle::Circle()
 {
@@ -322,3 +326,46 @@ CircleBTP::CircleBTP(const CircleBTP& c)
   complete = c.complete;
   if(complete) calc();
 }
+
+double Circle::calcRadius( const Point* c, const Point* p ) const
+{
+  return (c->getCoord() - p->getCoord()).length();
+}
+
+double Circle::calcRadius( const Coordinate& c, const Coordinate& p ) const
+{
+  return ( c-p).length();
+}
+
+double Circle::calcRadius( const Point* c, const Coordinate& p ) const
+{
+  return (c->getCoord() - p).length();
+}
+
+const QCString Circle::sBaseTypeName()
+{
+  return I18N_NOOP("circle");
+}
+
+const QString CircleBCP::sDescriptiveName()
+{
+  return i18n("Circle by center and point");
+}
+
+const QString CircleBCP::sDescription()
+{
+  return i18n(
+    "A circle constructed by its center and a point on its border"
+    );
+}
+
+const QString CircleBTP::sDescriptiveName()
+{
+  return i18n("Circle by three points");
+}
+
+const QString CircleBTP::sDescription()
+{
+  return i18n( "A circle constructed through three points" );
+}
+

@@ -22,10 +22,11 @@
 #include "../kig/kig_part.h"
 #include "../misc/kigpainter.h"
 #include "../objects/object.h"
-#include "../objects/point.h"
+#include "../objects/normalpoint.h"
 #include "normal.h"
 
 #include <kcursor.h>
+#include <klocale.h>
 #include <kaction.h>
 
 #include <functional> // for std::mem_fun and std::bind2nd

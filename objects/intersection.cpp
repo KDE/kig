@@ -18,7 +18,6 @@
  USA
 **/
 
-
 #include "intersection.h"
 
 #include "segment.h"
@@ -26,6 +25,7 @@
 #include "line.h"
 
 #include <kdebug.h>
+#include <klocale.h>
 
 QString IntersectionPoint::wantArg(const Object* o) const
 {
@@ -176,4 +176,14 @@ void IntersectionPoint::calc()
 	};
     };
   mC = calcIntersectionPoint( t1, t2, t3, t4 );
+}
+
+const QString IntersectionPoint::sDescriptiveName()
+{
+  return i18n("Intersection Point");
+}
+
+const QString IntersectionPoint::sDescription()
+{
+  return i18n( "The point where two lines or segments intersect" );
 }

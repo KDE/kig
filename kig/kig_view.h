@@ -23,14 +23,14 @@
 #define KIG_VIEW_H
 
 #include <qwidget.h>
+#include <qpixmap.h>
 
-#include <kdebug.h>
-#include <kpopupmenu.h>
 #include <kparts/part.h>
 
 #include <vector>
 
 #include "../objects/object.h"
+#include "../misc/rect.h"
 //#include "../misc/coordinates.h"
 
 class KigDocument;

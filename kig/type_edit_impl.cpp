@@ -29,6 +29,7 @@
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
+#include <klocale.h>
 
 #include <qtextstream.h>
 #include <qstringlist.h>

@@ -21,17 +21,14 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include <algorithm>
 #include <map>
 
 #include <qcstring.h>
-#include <qdom.h>
-
-#include <klocale.h>
+#include <qstring.h>
+#include <qnamespace.h>
+#include <qcolor.h>
 
 #include "../misc/objects.h"
-#include "../misc/common.h"
-#include "../misc/kigpainter.h"
 
 class Point;
 class Segment;
@@ -43,6 +40,9 @@ class KAction;
 class KigDocument;
 class Type;
 class NormalPoint;
+class KigPainter;
+class Coordinate;
+class Rect;
 
 // base class representing all objects (e.g. points, lines etc.)
 class Object
@@ -51,7 +51,7 @@ class Object
 public:
   static Types& types();
   static Object* newObject( const QCString& type );
- public:
+public:
   Object();
   virtual ~Object() {};
 
@@ -106,7 +106,7 @@ public:
 
   // this one is also used, it has no static counterpart, and you
   // shouldn't worry about this one
-  const QString vTBaseTypeName() const { return i18n(vBaseTypeName()); };
+  const QString vTBaseTypeName() const;
 
   // this typename should be unique, e.g. for loading and saving. your
   // class also needs both of these, here's where you return something
@@ -185,8 +185,6 @@ public:
   // of its variables
   virtual void calc() = 0;
 protected:
-  // the color --> note that the selected color can't be changed ( i'm
-  // thinking about whether this is necessary...
   QColor mColor;
 public:
   QColor color() const { return mColor; };
@@ -228,8 +226,8 @@ public:
   // our children + our children's children + ...
   Objects getAllChildren() const;
 
-  void addChild(Object* o) { children.push_back(o); };
-  void delChild(Object* o) { children.remove( o ); };
+  void addChild(Object* o);
+  void delChild(Object* o);
   // returns all objects the object depends upon ( the args it selected )
   virtual Objects getParents() const = 0;
 };

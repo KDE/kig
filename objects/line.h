@@ -35,7 +35,7 @@ public:
 
   // type identification
   virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
-  static const QCString sBaseTypeName() { return I18N_NOOP("line"); };
+  static const QCString sBaseTypeName();
 
   virtual Line* toLine();
   virtual const Line* toLine() const;
@@ -81,9 +81,9 @@ public:
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineTTP"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Line by two points"); };
+  static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "A line constructed through two points" ); };
+  static const QString sDescription();
   const QCString vIconFileName() const { return sIconFileName(); };
   static const QCString sIconFileName() { return "line"; };
   const int vShortCut() const { return sShortCut(); };
@@ -124,9 +124,9 @@ public:
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return ("LinePerpend"); };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Perpendicular"); };
+  static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
-  static QString sDescription() { return i18n( "A line constructed through a point, perpendicular on another line or segment." ); };
+  static QString sDescription();
   const QCString vIconFileName() const { return sIconFileName(); };
   static const QCString sIconFileName() { return "perpendicular"; };
   const int vShortCut() const { return sShortCut(); };
@@ -167,9 +167,9 @@ public:
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineParallel"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Parallel"); };
+  static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "A line constructed through a point, and parallel to another line or segment" ); };
+  static const QString sDescription();
   const QCString vIconFileName() const { return sIconFileName(); };
   static const QCString sIconFileName() { return "parallel"; };
   const int vShortCut() const { return sShortCut(); };
@@ -216,9 +216,9 @@ public:
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineRadical"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Radical Line"); };
+  static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "A line constructed through the intersections of two circles.  This is also defined for non-intersecting circles..." ); };
+  static const QString sDescription();
   const QCString vIconFileName() const { return sIconFileName(); };
   static const QCString sIconFileName() { return "radicalline"; };
   const int vShortCut() const { return sShortCut(); };

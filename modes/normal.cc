@@ -19,13 +19,15 @@
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
-#include "../objects/point.h"
+#include "../objects/normalpoint.h"
+#include "../misc/kigpainter.h"
 #include "popup.h"
 #include "moving.h"
 #include "macro.h"
 
 #include <qevent.h>
 #include <kcursor.h>
+#include <klocale.h>
 #include <kaction.h>
 #include <kcommand.h>
 

@@ -20,7 +20,8 @@
 
 #include "../../misc/hierarchy.h"
 #include "../../misc/objects.h"
-#include "../../objects/point.h"
+#include "../../misc/coordinate.h"
+#include "../../objects/normalpoint.h"
 
 #include <qfile.h>
 #include <qdom.h>

@@ -21,8 +21,9 @@
 #include "object.h"
 
 #include "../misc/types.h"
-
 #include "../kig/constructactions.h"
+
+#include <klocale.h>
 
 Object::Object()
   : mColor( Qt::blue ), selected(false), shown (true), complete (false), valid(true)
@@ -94,4 +95,19 @@ Object* Object::newObject( const QCString& type )
 KAction* Object::sConstructAction( KigDocument* d, Type* t, int cut )
 {
   return new ConstructAction( d, t, cut );
+}
+
+const QString Object::vTBaseTypeName() const
+{
+  return i18n(vBaseTypeName());
+}
+
+void Object::addChild(Object* o)
+{
+  children.push_back(o);
+}
+
+void Object::delChild(Object* o)
+{
+  children.remove( o );
 }

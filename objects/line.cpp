@@ -20,10 +20,13 @@
 
 #include "line.h"
 #include "segment.h"
+#include "point.h"
 #include "circle.h"
+#include "../misc/kigpainter.h"
 
 #include <klocale.h>
 #include <kdebug.h>
+#include <qpen.h>
 
 #include <cmath>
 
@@ -139,15 +142,15 @@ bool LineTTP::selectArg(Object* o)
 void LineTTP::unselectArg(Object* which)
 {
   if ( which == pt1 )
-    {
-      pt1 = pt2; pt2 = 0;
-      which->delChild(this);
-    }
+  {
+    pt1 = pt2; pt2 = 0;
+    which->delChild(this);
+  }
   if ( which == pt2 )
-    {
-      pt2 = 0;
-      which->delChild(this);
-    };
+  {
+    pt2 = 0;
+    which->delChild(this);
+  };
   complete = false;
 }
 
@@ -589,3 +592,49 @@ const Line* Line::toLine() const
 {
   return this;
 }
+
+const QCString Line::sBaseTypeName()
+{
+  return I18N_NOOP("line");
+}
+
+const QString LineTTP::sDescriptiveName()
+{
+  return i18n("Line by two points");
+}
+
+const QString LineTTP::sDescription()
+{
+  return i18n( "A line constructed through two points" );
+}
+
+const QString LinePerpend::sDescriptiveName()
+{
+  return i18n("Perpendicular");
+}
+
+QString LinePerpend::sDescription()
+{
+  return i18n( "A line constructed through a point, perpendicular on another line or segment." );
+}
+
+const QString LineParallel::sDescriptiveName()
+{
+  return i18n("Parallel");
+}
+
+const QString LineParallel::sDescription()
+{
+  return i18n( "A line constructed through a point, and parallel to another line or segment" );
+}
+
+const QString LineRadical::sDescriptiveName()
+{
+  return i18n("Radical Line");
+}
+
+const QString LineRadical::sDescription()
+{
+  return i18n( "A line constructed through the intersections of two circles.  This is also defined for non-intersecting circles..." );
+}
+

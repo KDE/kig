@@ -23,6 +23,7 @@
 #define OBJECTS_CPP
 
 #include <vector>
+#include <algorithm>
 
 // this used to be a class with convenience functions, but i've
 // replaced them all with stl stuff...

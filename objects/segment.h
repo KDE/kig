@@ -18,11 +18,12 @@
  USA
 **/
 
-
 #ifndef segment_h
 #define segment_h
 
 #include "curve.h"
+
+#include "../misc/coordinate.h"
 
 class Segment
   : public Curve
@@ -30,27 +31,27 @@ class Segment
 public:
   Segment();
   Segment(const Segment& s);
-  Segment* copy() { return new Segment(*this); };
+  Segment* copy();
   ~Segment();
 
   // type identification
-  Segment* toSegment() { return this; };
-  const Segment* toSegment() const { return this; };
+  Segment* toSegment();
+  const Segment* toSegment() const;
   // some type information
-  const QCString vBaseTypeName() const { return sBaseTypeName();};
-  static QCString sBaseTypeName() { return I18N_NOOP("segment"); };
-  const QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return I18N_NOOP("Segment"); };
-  const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n( "Segment" ); };
-  const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "A segment constructed from its start and end point" ); };
-  const QCString vIconFileName() const { return sIconFileName(); };
-  static const QCString sIconFileName() { return "segment"; };
-  const int vShortCut() const { return sShortCut(); };
-  static const int sShortCut() { return CTRL+Key_S; };
+  const QCString vBaseTypeName() const;
+  static QCString sBaseTypeName();
+  const QCString vFullTypeName() const;
+  static QCString sFullTypeName();
+  const QString vDescriptiveName() const;
+  static const QString sDescriptiveName();
+  const QString vDescription() const;
+  static const QString sDescription();
+  const QCString vIconFileName() const;
+  static const QCString sIconFileName();
+  const int vShortCut() const;
+  static const int sShortCut();
 
-  QCString iType() const { return I18N_NOOP("segment"); };
+  QCString iType() const;
   bool contains (const Coordinate& o, const double fault ) const;
   void draw ( KigPainter& p, bool showSelection ) const;
   void drawPrelim ( KigPainter&, const Object* o ) const;
@@ -76,10 +77,10 @@ public:
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  const Coordinate& getP1() const { return p1->getCoord();};
-  const Coordinate& getP2() const { return p2->getCoord();};
-  Point* getPoint1() { return p1; };
-  Point* getPoint2() { return p2; };
+  const Coordinate& getP1() const;
+  const Coordinate& getP2() const;
+  Point* getPoint1();
+  Point* getPoint2();
 protected:
   Point* p1, *p2;
   Coordinate pwwsm; // point where we started moving

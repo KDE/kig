@@ -23,6 +23,7 @@
 #include "../objects/object.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+#include "../misc/kigpainter.h"
 
 #include <functional>
 #include <algorithm>

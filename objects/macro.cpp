@@ -23,6 +23,8 @@
 #include "point.h"
 #include "../misc/hierarchy.h"
 
+#include <klocale.h>
+
 QString MacroObject::wantArg( const Object* o) const
 {
   if( complete ) return 0;

@@ -34,7 +34,7 @@ class Circle
 
   // type identification
   virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
-  static const QCString sBaseTypeName() { return I18N_NOOP("circle"); };
+  static const QCString sBaseTypeName();
 
   bool contains (const Coordinate& o, const double miss ) const;
   void draw (KigPainter& p, bool showSelection) const;
@@ -49,18 +49,9 @@ protected:
   Coordinate qpc;
   double radius;
 
-  inline double calcRadius( const Point* c, const Point* p ) const
-  {
-    return (c->getCoord() - p->getCoord()).length();
-  };
-  inline double calcRadius( const Coordinate& c, const Coordinate& p ) const
-  {
-    return ( c-p).length();
-  };
-  inline double calcRadius( const Point* c, const Coordinate& p ) const
-  {
-    return (c->getCoord() - p).length();
-  };
+  double calcRadius( const Point* c, const Point* p ) const;
+  double calcRadius( const Coordinate& c, const Coordinate& p ) const;
+  double calcRadius( const Point* c, const Coordinate& p ) const;
 };
 
 // a circle composed by a centre and a point on the circle
@@ -76,9 +67,9 @@ public:
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "CircleBCP"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Circle by center and point"); };
+  static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "A circle constructed by its center and a point on its border" ); };
+  static const QString sDescription();
   const QCString vIconFileName() const { return sIconFileName(); };
   static const QCString sIconFileName() { return "circle"; };
   const int vShortCut() const { return sShortCut(); };
@@ -118,9 +109,9 @@ public:
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "CircleBTP"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Circle by three points"); };
+  static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "A circle constructed through three points" ); };
+  static const QString sDescription();
   const QCString vIconFileName() const { return sIconFileName(); };
   static const QCString sIconFileName() { return "circle"; };
   const int vShortCut() const { return sShortCut(); };

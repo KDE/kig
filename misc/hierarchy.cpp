@@ -27,6 +27,7 @@
 #include <map>
 
 #include <kdebug.h>
+#include <qdom.h>
 
 #include "../objects/point.h"
 

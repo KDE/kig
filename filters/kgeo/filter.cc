@@ -25,7 +25,8 @@
 
 #include "../../misc/objects.h"
 #include "../../objects/object.h"
-#include "../../objects/point.h"
+#include "../../objects/normalpoint.h"
+#include "../../objects/midpoint.h"
 #include "../../objects/segment.h"
 #include "../../objects/circle.h"
 #include "../../objects/line.h"

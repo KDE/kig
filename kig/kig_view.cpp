@@ -33,6 +33,7 @@
 
 #include <kdebug.h>
 #include <kcursor.h>
+#include <klocale.h>
 #include <kapplication.h>
 #include <kstdaction.h>
 #include <kaction.h>

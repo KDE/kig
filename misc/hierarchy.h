@@ -36,6 +36,8 @@ class KigDocument;
 class HierarchyElement;
 class ObjectHierarchy;
 class Type;
+class QDomElement;
+class QDomDocument;
 
 class ElemList
   : public std::vector<HierarchyElement*>

@@ -22,7 +22,6 @@
 #ifndef CURVE_H
 #define CURVE_H
 
-#include "point.h"
 #include "object.h"
 
 // abc (abstract base class) representing a curve: something which is composed

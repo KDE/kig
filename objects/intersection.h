@@ -60,9 +60,9 @@ public:
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "IntersectionPoint"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Intersection Point"); };
+  static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "The point where two lines or segments intersect" ); };
+  static const QString sDescription();
   const QCString vIconFileName() const { return sIconFileName(); };
   static const QCString sIconFileName() { return "intersection"; };
   const int vShortCut() const { return sShortCut(); };

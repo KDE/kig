@@ -24,6 +24,8 @@
 
 #include "curve.h"
 
+#include "../misc/rect.h"
+
 #include <list>
 
 class ObjectHierarchy;
@@ -36,35 +38,32 @@ class ObjectHierarchy;
 // objects the object moves over as the point moves over all of
 // its possible positions...
 // this is implemented by having a Locus simply contain some 150
-// objects (hmm...)
+// objects (hmm...:)
 // drawing is done by simply drawing the points...
 class Locus
-    : public Curve
+  : public Curve
 {
 public:
   // number of points to include, i think this is a nice default...
-  static const int numberOfSamples = 500;
+  static const int numberOfSamples = 300;
 public:
-  Locus() : cp(0), obj(0), hierarchy(0) { };
-  ~Locus() { delete_all( objs.begin(), objs.end() ); };
+  Locus();
+  ~Locus();
   Locus(const Locus& loc);
-  Locus* copy() { return new Locus(*this); };
+  Locus* copy();
 
-  virtual const QCString vBaseTypeName() const { return sBaseTypeName(); };
-  static const QCString sBaseTypeName() { return I18N_NOOP("curve"); };
-  virtual const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName() { return "Curve"; };
-  const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Locus"); };
-  const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() {
-    return i18n( "Construct a locus: let one point move around, and record "
-                 "the places another object passes through. These combined "
-                 "form a new object: the locus..." ); };
-  const QCString vIconFileName() const { return sIconFileName(); };
-  static const QCString sIconFileName() { return "locus"; };
-  const int vShortCut() const { return sShortCut(); };
-  static const int sShortCut() { return 0; };
+  virtual const QCString vBaseTypeName() const;
+  static const QCString sBaseTypeName();
+  virtual const QCString vFullTypeName() const;
+  static const QCString sFullTypeName();
+  const QString vDescriptiveName() const;
+  static const QString sDescriptiveName();
+  const QString vDescription() const;
+  static const QString sDescription();
+  const QCString vIconFileName() const;
+  static const QCString sIconFileName();
+  const int vShortCut() const;
+  static const int sShortCut();
 
   void draw (KigPainter& p, bool showSelection) const;
   bool contains (const Coordinate& o, const double fault ) const;
@@ -75,12 +74,12 @@ public:
   QString wantPoint() const;
   bool selectArg (Object* which);
 //   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Object* ) const {};
+  void drawPrelim ( KigPainter&, const Object* ) const;
 
   // moving
-  void startMove(const Coordinate&) {};
-  void moveTo(const Coordinate&) {};
-  void stopMove() {};
+  void startMove(const Coordinate&);
+  void moveTo(const Coordinate&);
+  void stopMove();
 
   void calc();
 
@@ -88,19 +87,13 @@ public:
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  Objects getParents() const
-  {
-    Objects tmp;
-    tmp.push_back(cp);
-    tmp.push_back(obj);
-    return tmp;
-  };
+  Objects getParents() const;
 
 protected:
   NormalPoint* cp;
   Object* obj;
 
-  bool isPointLocus() const { return _pointLocus; }
+  bool isPointLocus() const;
   bool _pointLocus;
 
   // don't use this for fillUp or saving, since it has 0 for
@@ -139,6 +132,5 @@ protected:
   // this is used when the obj is not a point; it just takes the first
   // numberOfSamples objects it can find...
   void calcObjectLocus();
-
 };
 #endif

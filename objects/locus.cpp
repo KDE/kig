@@ -21,9 +21,13 @@
 
 #include "locus.h"
 
+#include "normalpoint.h"
+
 #include "../misc/hierarchy.h"
+#include "../misc/kigpainter.h"
 
 #include <kdebug.h>
+#include <klocale.h>
 
 /**
  * Locus: the calc routines of this class are a bit unusual:
@@ -241,4 +245,110 @@ Locus::Locus(const Locus& loc)
   cp->addChild(this);
   obj->addChild(this);
   complete = loc.complete;
+}
+
+Objects Locus::getParents() const
+{
+  Objects tmp;
+  tmp.push_back(cp);
+  tmp.push_back(obj);
+  return tmp;
+}
+
+Locus::Locus()
+ : cp(0), obj(0), hierarchy(0)
+{
+};
+
+Locus::~Locus()
+{
+  delete_all( objs.begin(), objs.end() );
+}
+
+Locus* Locus::copy()
+{
+  return new Locus(*this);
+}
+
+const QCString Locus::vBaseTypeName() const
+{
+  return sBaseTypeName();
+}
+
+const QCString Locus::sBaseTypeName()
+{
+  return I18N_NOOP("curve");
+}
+
+const QCString Locus::vFullTypeName() const
+{
+  return sFullTypeName();
+}
+
+const QCString Locus::sFullTypeName()
+{
+  return "Curve";
+}
+
+const QString Locus::vDescriptiveName() const
+{
+  return sDescriptiveName();
+}
+
+const QString Locus::sDescriptiveName()
+{
+  return i18n("Locus");
+}
+
+const QString Locus::vDescription() const
+{
+  return sDescription();
+}
+
+const QString Locus::sDescription()
+{
+  return i18n( "Construct a locus: let one point move around, and record "
+               "the places another object passes through. These combined "
+               "form a new object: the locus..." );
+}
+
+const QCString Locus::vIconFileName() const
+{
+  return sIconFileName();
+}
+
+const QCString Locus::sIconFileName()
+{
+  return "locus";
+}
+
+const int Locus::vShortCut() const
+{
+  return sShortCut();
+}
+
+const int Locus::sShortCut()
+{
+  return 0;
+}
+
+void Locus::drawPrelim( KigPainter&, const Object* ) const
+{
+}
+
+void Locus::startMove(const Coordinate&)
+{
+}
+
+void Locus::moveTo(const Coordinate&)
+{
+}
+
+void Locus::stopMove()
+{
+}
+
+bool Locus::isPointLocus() const
+{
+  return _pointLocus;
 }

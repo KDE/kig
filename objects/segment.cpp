@@ -18,16 +18,17 @@
  USA
 **/
 
-
 #include "segment.h"
 
-#include "segment.h"
+#include "point.h"
+#include "../misc/common.h"
+#include "../misc/kigpainter.h"
 
 #include <klocale.h>
 #include <kglobal.h>
 #include <kdebug.h>
-
-#include "../misc/common.h"
+#include <qpen.h>
+#include "math.h"
 
 Segment::Segment()
  : p1( 0 ), p2( 0 )
@@ -71,10 +72,10 @@ void Segment::draw(KigPainter& p, bool ss) const
 
 bool Segment::inRect(const Rect& p) const
 {
-    if ( !p1 || !p2 ) return false;
-    // TODO: implement for real...
-    if ( p1->inRect( p ) || p2->inRect( p ) ) return true;
-    return false;
+  if ( !p1 || !p2 ) return false;
+  // TODO: implement for real...
+  if ( p1->inRect( p ) || p2->inRect( p ) ) return true;
+  return false;
 }
 
 QString Segment::wantArg( const Object* o) const
@@ -104,30 +105,30 @@ bool Segment::selectArg(Object* o)
 
 void Segment::unselectArg(Object* which)
 {
-    if ( which == p1 )
-      {
-	p1 = p2; p2 = 0;
-	which->delChild(this);
-      }
-    if ( which == p2 )
-      {
-	p2 = 0;
-	which->delChild(this);
-      };
+  if ( which == p1 )
+  {
+    p1 = p2; p2 = 0;
+    which->delChild(this);
+  }
+  if ( which == p2 )
+  {
+    p2 = 0;
+    which->delChild(this);
+  };
 }
 
 void Segment::startMove(const Coordinate& p)
 {
-    pwwsm = p;
-    assert ( p1 && p2 );
-    p1->startMove( p );
-    p2->startMove( p );
+  pwwsm = p;
+  assert( p1 && p2 );
+  p1->startMove( p );
+  p2->startMove( p );
 }
 
 void Segment::moveTo(const Coordinate& p)
 {
-    p1->moveTo( p );
-    p2->moveTo( p );
+  p1->moveTo( p );
+  p2->moveTo( p );
 }
 
 void Segment::stopMove()
@@ -175,7 +176,7 @@ Objects Segment::getParents() const
 
 void Segment::drawPrelim( KigPainter& p, const Object* o ) const
 {
-  if ( !(shown && p1 ) ) return;
+  if( !(shown && p1 ) ) return;
   assert( o->toPoint() );
   Coordinate c = o->toPoint()->getCoord();
   p.setPen( QPen( Qt::red, 1));
@@ -190,5 +191,105 @@ Segment::Segment(const Segment& s)
   p2 = s.p2;
   p2->addChild(this);
   complete = s.complete;
-  if (complete) calc();
+  calc();
+}
+
+Segment* Segment::copy()
+{
+  return new Segment(*this);
+}
+
+Segment* Segment::toSegment()
+{
+  return this;
+}
+
+const Segment* Segment::toSegment() const
+{
+  return this;
+}
+
+const QCString Segment::vBaseTypeName() const
+{
+  return sBaseTypeName();
+}
+
+QCString Segment::sBaseTypeName()
+{
+  return I18N_NOOP("segment");
+}
+
+const QCString Segment::vFullTypeName() const
+{
+  return sFullTypeName();
+}
+
+QCString Segment::sFullTypeName()
+{
+  return I18N_NOOP("Segment");
+}
+
+const QString Segment::vDescriptiveName() const
+{
+  return sDescriptiveName();
+}
+
+const QString Segment::sDescriptiveName()
+{
+  return i18n( "Segment" );
+}
+
+const QString Segment::vDescription() const
+{
+  return sDescription();
+}
+
+const QString Segment::sDescription()
+{
+  return i18n( "A segment constructed from its start and end point" );
+}
+
+const QCString Segment::vIconFileName() const
+{
+  return sIconFileName();
+}
+
+const QCString Segment::sIconFileName()
+{
+  return "segment";
+}
+
+const int Segment::vShortCut() const
+{
+  return sShortCut();
+}
+
+const int Segment::sShortCut()
+{
+  return CTRL+Key_S;
+}
+
+QCString Segment::iType() const
+{
+  return I18N_NOOP("segment");
+}
+
+const Coordinate& Segment::getP1() const
+{
+  return p1->getCoord();
+}
+
+const Coordinate& Segment::getP2() const
+{
+  return p2->getCoord();
+}
+
+Point* Segment::getPoint2()
+{
+  return p2;
+}
+
+Point* Segment::getPoint1()
+{
+  return p1;
 }

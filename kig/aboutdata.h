@@ -17,6 +17,7 @@
 // 02111-1307, USA.
 
 #include <kaboutdata.h>
+#include <klocale.h>
 
 inline KAboutData* kigAboutData( const char* name, const char* iname )
 {
