@@ -95,7 +95,7 @@ void ScriptMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint&
     // and set statusbar text
 
     w.setCursor( KCursor::handCursor() );
-    QString selectstat = i18n( os.front()->imp()->type()->selectStatement() );
+    QString selectstat = os.front()->selectStatement();
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );
@@ -152,29 +152,27 @@ void ScriptMode::codePageEntered()
   if ( mwizard->codeeditor->text().isEmpty() )
   {
     // insert template code..
-    QString tempcode = QString::fromLatin1( "def calc(" );
+    QString tempcode = QString::fromLatin1( "def calc( " );
     bool firstarg = true;
+    QString temparg = i18n( "Note to translators: this should be a default "
+                            "name for an argument in a Python function. The "
+                            "default is \"arg%1\" which would become arg1, "
+                            "arg2, etc. Give something which seems "
+                            "appropriate for your language.", "arg%1" );
 
     for ( uint i = 0; i < margs.size(); ++i )
     {
-      if ( !firstarg ) tempcode += ',';
+      if ( !firstarg ) tempcode += ", ";
       firstarg = false;
-      tempcode += ' ';
-      tempcode += i18n( "Note to translators: this should be a default "
-                        "name for an argument in a python "
-                        "function.  The default is \"arg%1\" which would "
-                        "become arg1, arg2 etc.  Give something which "
-                        "seems appropriate for your language.", "arg%1" )
-                  .arg( i + 1 );
+      tempcode += temparg.arg( i + 1 );
     };
-    if ( !firstarg ) tempcode += ' ';
     tempcode +=
-      "):\n"
-      "\t# calculate whatever you want to show here, and return it..\n"
-      "\t# for example, to implement a mid point, you would put this \n"
+      " ):\n"
+      "\t# Calculate whatever you want to show here, and return it.\n"
+      "\t# For example, to implement a mid point, you would put this \n"
       "\t# code here:\n"
       "\t#\treturn Point( ( arg1.coordinate() + arg2.coordinate() ) / 2 )\n"
-      "\t# Please refer to the manual for more information..\n"
+      "\t# Please refer to the manual for more information.\n"
       "\t\n";
     mwizard->codeeditor->setText( tempcode );
   };
