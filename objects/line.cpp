@@ -51,18 +51,16 @@ bool Line::inRect(const Rect& p) const
 Coordinate Line::getPoint(double p) const
 {
   // inspired upon KSeg
-  p = (p - 0.5) * 2;
 
-  Coordinate m = (mpa+mpb)/2;
-  Coordinate dir = (mpa - mpb);
   // we need to spread the points over the line, it should also come near
   // the (infinite) end of the line, but most points should be near
   // the two points we contain...
-  p *= 1.5;
-  if (p>0) p = pow(p, 8);
-  else p = -pow(p,8);
-
-  return m+dir*p;
+  if (p > 0) p = p/(1 - p);
+    else p = p/(1 + p);
+//  p *= 1024;    // such multiplying factor could be useful in order to
+                  // have more points near infinity, at the expense of
+                  // points near mpa and mpb
+  return mpa + p*(mpb - mpa); 
 };
 
 double Line::getParam(const Coordinate& point) const
@@ -70,21 +68,16 @@ double Line::getParam(const Coordinate& point) const
   // somewhat the reverse of getPoint, although it also supports
   // points not on the line...
 
-  // first we project the point onto the line...
-  Coordinate pt = calcPointOnPerpend( lineData(), point );
-  pt = calcIntersectionPoint( lineData(), LineData( point, pt ) );
+  Coordinate pa = point - mpa;
+  Coordinate ba = mpb - mpa;
+  double balsq = ba.x*ba.x + ba.y*ba.y;
+  assert (balsq > 0);
 
-  // next we fetch the parameter
-  Coordinate m = Coordinate(mpa+mpb)/2;
-  Coordinate dir = mpa - mpb;
-  Coordinate d = pt-m;
+  double p = (pa.x*ba.x + pa.y*ba.y)/balsq;
+//  p /= 1024;
+  if (p > 0) p = p/(1+p);
+    else p = p/(1-p);
 
-  double p = dir.x != 0 ? d.x/dir.x : d.y / dir.y;
-  assert( dir.x != 0 || dir.y != 0 );
-  if (p>=0) p = sqrt(sqrt(sqrt(p)));
-  else p = -sqrt(sqrt(sqrt(-p)));
-  p/=1.5;
-  p = p/2 + 0.5;
   return p;
 }
 
