@@ -1,5 +1,7 @@
 2004-04-30  Dominique Devriese  <devriese@kde.org>
 
+	* properly generate python error output for compile errors.
+
 	* make touch screens work by placing a mouseMoved call aboove
 	every mouseClicked call.
 
