@@ -153,7 +153,7 @@ void ObjectHolder::setNameCalcer( ObjectConstCalcer* namecalcer )
 QString ObjectHolder::selectStatement() const
 {
   const QString n = name();
-  if ( n.isNull() )
+  if ( n.isEmpty() )
     return i18n( imp()->type()->selectStatement() );
   else
     return i18n( imp()->type()->selectNameStatement() ).arg( n );
