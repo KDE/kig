@@ -49,8 +49,8 @@ public:
 
   const Coordinate& getCoord() const;
 
-  virtual std::map<QCString,QString> getParams ();
-  virtual void setParams ( const std::map<QCString,QString>& );
+  virtual prop_map getParams ();
+  virtual void setParams ( const prop_map& );
 
   virtual void addActions( NormalModePopupObjects& );
   virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m );

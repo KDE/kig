@@ -145,20 +145,20 @@ void FixedPointImp::stopMove( NormalPoint* )
 {
 }
 
-std::map<QCString, QString> NormalPoint::getParams()
+Object::prop_map NormalPoint::getParams()
 {
-  std::map<QCString, QString> m = Point::getParams();
+  prop_map m = Point::getParams();
   m["implementation-type"] = mimp->type();
   mimp->writeParams( m, this );
   return m;
 }
 
-void NormalPoint::setParams( const std::map<QCString, QString>& m )
+void NormalPoint::setParams( const prop_map& m )
 {
   Point::setParams( m );
   if ( mimp ) mimp->unselectArgs( this );
   delete mimp;
-  std::map<QCString,QString>::const_iterator p = m.find("implementation-type");
+  prop_map::const_iterator p = m.find("implementation-type");
   if( p == m.end() )
   {
     kdError() << k_funcinfo << "error in file !" << endl;
@@ -177,14 +177,14 @@ void NormalPoint::setParams( const std::map<QCString, QString>& m )
   mimp->readParams( m, this );
 };
 
-void FixedPointImp::writeParams( std::map<QCString, QString>& m,
+void FixedPointImp::writeParams( Object::prop_map& m,
                                  NormalPoint* )
 {
   m["x"] = QString::number( pwwca.x );
   m["y"] = QString::number( pwwca.y );
 }
 
-void FixedPointImp::readParams( const std::map<QCString, QString>& m,
+void FixedPointImp::readParams( const Object::prop_map& m,
                                 NormalPoint* p )
 {
   bool ok = true;
@@ -223,13 +223,13 @@ void ConstrainedPointImp::stopMove( NormalPoint* )
 {
 }
 
-void ConstrainedPointImp::writeParams( std::map<QCString, QString>& m,
+void ConstrainedPointImp::writeParams( Object::prop_map& m,
                                        NormalPoint* )
 {
   m["param"] = QString::number( mparam );
 }
 
-void ConstrainedPointImp::readParams( const std::map<QCString, QString>& m,
+void ConstrainedPointImp::readParams( const Object::prop_map& m,
                                       NormalPoint* )
 {
   bool ok;

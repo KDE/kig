@@ -39,8 +39,8 @@ public:
 
   TextLabel* copy();
 
-  std::map<QCString,QString> getParams ();
-  void setParams ( const std::map<QCString,QString>& );
+  prop_map getParams ();
+  void setParams ( const prop_map& );
 
   const TextLabel* toTextLabel() const;
   TextLabel* toTextLabel();
@@ -65,13 +65,9 @@ public:
   void draw (KigPainter& p, bool showSelection) const;
   bool contains ( const Coordinate& o, const ScreenInfo& si ) const;
   bool inRect (const Rect& r) const;
-  QString wantArg ( const Object* ) const;
-  bool selectArg (Object* which);
-  void drawPrelim (KigPainter& p, const Object* prelimArg ) const;
 
   void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
-  void stopMove();
 
   void calc();
   void calcForWidget( const KigWidget& w );

@@ -64,24 +64,24 @@ Objects Object::getAllChildren() const
   return tmp;
 }
 
-std::map<QCString,QString> Object::getParams()
+Object::prop_map Object::getParams()
 {
-  std::map<QCString, QString> m;
+  prop_map m;
   m["color"] = mColor.name();
-  m["shown"] = QString::fromUtf8( mshown ? "true" : "false" );
+  m["shown"] = QString::fromLatin1( mshown ? "true" : "false" );
   return m;
 }
 
-void Object::setParams( const std::map<QCString,QString>& m )
+void Object::setParams( const prop_map& m )
 {
   {
-    std::map<QCString,QString>::const_iterator p = m.find("color");
+    prop_map::const_iterator p = m.find("color");
     if( p == m.end() ) mColor = Qt::blue;
     else mColor = QColor( p->second );
     assert( mColor.isValid() );
   };
   {
-    std::map<QCString,QString>::const_iterator p = m.find("shown");
+    prop_map::const_iterator p = m.find("shown");
     if( p != m.end() && p->second == QString::fromUtf8( "false" ) )
       mshown = false;
     else mshown = true;
@@ -104,7 +104,7 @@ const myvector<Type*>& Object::userTypes()
 }
 
 Object* Object::newObject( const QCString& type, const Objects& parents,
-                           const std::map<QCString, QString>& params )
+                           const prop_map& params )
 {
   return types().buildObject( type, parents, params );
 }

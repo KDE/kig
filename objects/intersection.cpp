@@ -332,18 +332,18 @@ void CircleLineIntersectionPoint::calc()
   if ( mvalid ) mC = t;
 }
 
-std::map<QCString,QString> CircleLineIntersectionPoint::getParams()
+Object::prop_map CircleLineIntersectionPoint::getParams()
 {
-  std::map<QCString,QString> map = Point::getParams();
+  prop_map map = Point::getParams();
   map["circlelineintersect-side"] = mside ? QString::fromUtf8( "first" )
                                           : QString::fromUtf8( "second" );
   return map;
 }
 
-void CircleLineIntersectionPoint::setParams( const std::map<QCString,QString>& map )
+void CircleLineIntersectionPoint::setParams( const prop_map& map )
 {
   Point::setParams( map );
-  std::map<QCString,QString>::const_iterator p = map.find("circlelineintersect-side");
+  prop_map::const_iterator p = map.find("circlelineintersect-side");
   if( p == map.end() ) mside = true;  // fixme: i'd like to throw an
                                     // error here..
   else

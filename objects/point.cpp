@@ -108,17 +108,17 @@ Point::Point( const Point& p )
 {
 }
 
-std::map<QCString,QString> Point::getParams()
+Object::prop_map Point::getParams()
 {
-  std::map<QCString, QString> ret = Object::getParams();
+  prop_map ret = Object::getParams();
   ret["point-size"] = QString::number( msize );
   return ret;
 }
 
-void Point::setParams( const std::map<QCString,QString>& m )
+void Point::setParams( const prop_map& m )
 {
   Object::setParams( m );
-  std::map<QCString, QString>::const_iterator p = m.find( "point-size" );
+  prop_map::const_iterator p = m.find( "point-size" );
   if ( p == m.end() ) msize = 5;
   else
   {

@@ -114,8 +114,8 @@ public:
                             const prop_map& params );
 public:
   // if you want to use StdConstructionMode, you need a constructor
-  // like Object( const Objects& args ); See the functions wantArgs(),
-  // drawPrelim() and useText() for more information...
+  // like Object( const Objects& args ); See the functions sWantArgs(),
+  // sDrawPrelim() and sUseText() for more information...
   Object();
   Object( const Object& o );
   virtual ~Object() {};
@@ -147,7 +147,7 @@ public:
   // setParams() after you've handled your params.. --> to set params
   // common to all objects like the color...
   virtual prop_map getParams ();
-  virtual void setParams ( const std::map<QCString,QString>& );
+  virtual void setParams ( const prop_map& );
 
   // getting types from this object: easier to type and supports
   // MacroObjectOne

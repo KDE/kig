@@ -69,9 +69,9 @@ TextLabel::~TextLabel()
 {
 }
 
-std::map<QCString,QString> TextLabel::getParams()
+Object::prop_map TextLabel::getParams()
 {
-  std::map<QCString, QString> ret;
+  prop_map ret;
   ret["text"] = mtext;
   ret["coordinate-x"] = QString::number( mcoord.x );
   ret["coordinate-y"] = QString::number( mcoord.y );
@@ -136,11 +136,6 @@ void TextLabel::moveTo( const Coordinate& c )
   mpwwmt = c;
 }
 
-void TextLabel::stopMove()
-{
-  // noop
-}
-
 TextLabel* TextLabel::copy()
 {
   return new TextLabel( *this );
@@ -150,62 +145,60 @@ const TextLabel* TextLabel::toTextLabel() const
 {
   return this;
 }
+
 TextLabel* TextLabel::toTextLabel()
 {
   return this;
 }
+
 const QCString TextLabel::vBaseTypeName() const
 {
   return sBaseTypeName();
 }
+
 QCString TextLabel::sBaseTypeName()
 {
   return I18N_NOOP("label");
 }
+
 const QCString TextLabel::vFullTypeName() const
 {
   return sFullTypeName();
 }
+
 const QCString TextLabel::sFullTypeName()
 {
   return "TextLabel";
 }
+
 const QString TextLabel::vDescriptiveName() const
 {
   return sDescriptiveName();
 }
+
 const QString TextLabel::sDescriptiveName()
 {
   return i18n( "A text label" );
 }
+
 const QCString TextLabel::vIconFileName() const
 {
   return sIconFileName();
 }
+
 const QCString TextLabel::sIconFileName()
 {
   return 0;
 }
+
 const char* TextLabel::sActionName()
 {
   return "objects_new_textlabel";
 }
+
 bool TextLabel::inRect(const Rect& ) const
 {
   return false;
-}
-QString TextLabel::wantArg( const Object* ) const
-{
-  return 0;
-}
-bool TextLabel::selectArg(Object*)
-{
-  // noop
-  return true;
-}
-void TextLabel::drawPrelim(KigPainter&, const Object* ) const
-{
-  // noop
 }
 
 void TextLabel::calcForWidget( const KigWidget& w )

@@ -81,8 +81,8 @@ public:
   // you should still call calc() after this !
   void redefine( const Coordinate& c, const KigDocument&, const KigWidget& );
 
-  std::map<QCString, QString> getParams();
-  void setParams( const std::map<QCString, QString>& m );
+  prop_map getParams();
+  void setParams( const prop_map& m );
 
   virtual const QCString vFullTypeName() const;
   static const QCString sFullTypeName();
@@ -133,8 +133,8 @@ class NormalPointImp
   virtual void calc( NormalPoint* p ) = 0;
 
   virtual QString type() = 0;
-  virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p ) = 0;
-  virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p ) = 0;
+  virtual void writeParams( Object::prop_map& m, NormalPoint* p ) = 0;
+  virtual void readParams( const Object::prop_map& m, NormalPoint* p ) = 0;
 
   virtual void setParents( const Objects& os, NormalPoint* p ) = 0;
   virtual void unselectArgs( NormalPoint* ) = 0;
@@ -171,8 +171,8 @@ public:
 
   virtual QString type();
   static QString sType();
-  virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p );
-  virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p );
+  virtual void writeParams( Object::prop_map& m, NormalPoint* p );
+  virtual void readParams( const Object::prop_map& m, NormalPoint* p );
 
   virtual Objects getParents();
 
@@ -214,8 +214,8 @@ public:
 
   virtual QString type();
   static QString sType();
-  virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p );
-  virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p );
+  virtual void writeParams( Object::prop_map& m, NormalPoint* p );
+  virtual void readParams( const Object::prop_map& m, NormalPoint* p );
 
   virtual void setParents( const Objects& os, NormalPoint* p );
   virtual void unselectArgs( NormalPoint* );

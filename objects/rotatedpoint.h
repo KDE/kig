@@ -55,8 +55,6 @@ public:
   static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
 
-  void drawPrelim( KigPainter&, const Object* ) const;
-
   void calc();
 };
 

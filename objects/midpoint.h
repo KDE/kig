@@ -56,7 +56,6 @@ public:
   void stopMove();
 
   void calc();
-  void drawPrelim( KigPainter&, const Object* ) const {};
 protected:
   enum { howmMoving, howmFollowing } howm; // how are we moving
   Point* p1;

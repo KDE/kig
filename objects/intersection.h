@@ -91,8 +91,8 @@ public:
 
   void calc();
 
-  virtual std::map<QCString,QString> getParams ();
-  virtual void setParams ( const std::map<QCString,QString>& );
+  virtual prop_map getParams ();
+  virtual void setParams ( const Object::prop_map& );
 
   static Objects sMultiBuild( const Objects& args );
 
