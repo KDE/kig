@@ -27,8 +27,8 @@
    to have this already ( albeit in Guile ;) ), so Kig can't lag
    behind ;) 
 - check "property's", like "is point x on line y"
-- "export to *".  We already have images, i'd like to add stuff like
-  vector drawing formats, java applets ... :)
+- "export to *".  We already have images and XFig files, i'd like to
+  add stuff like vector drawing formats, java applets ... :)
 - figure out some cool way to "attach" a textlabel to an object.. 
 - koffice support ? 
 
