@@ -15,7 +15,7 @@ class KSimpleConfig;
 // supposed to be its successor, and this import filter is part of my
 // attempt to achieve that :)
 
-// THIS IS PRE-ALPHA CODE
+// NOT ALL OF KGEO'S FORMAT IS SUPPORTED YET...
 
 class KigFilterKGeo
   : public KigFilter

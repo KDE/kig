@@ -61,6 +61,7 @@ KigFilter::Result KigFilterKGeo::convert( const QString sFrom, KTempFile& to )
   kdDebug() << k_funcinfo << endl << doc.toCString() << endl;
   fTo->close();
   delete fTo;
+  return OK;
 }
 
 KigFilter::Result KigFilterKGeo::loadMetrics(KSimpleConfig* c )
@@ -135,11 +136,16 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
 	    objs.push_back( new LineParallel() );
 	    break;
 	  }
+//  	case ID_pointOfConc:
+// 	  {
+// 	    objs.push_back( new PointOfConc() );
+// 	    break;
+// 	  };
+// 	case ID_text:
+// 	  objs.push_back( new Text() );
+// 	  break;
 // 	case ID_fixedCircle:
 // 	  objs.push_back( new FixedCircle() );
-// 	  break;
-// 	case ID_pointOfConc:
-// 	  objs.push_back( new PointOfConc() );
 // 	  break;
 // 	case ID_angle:
 // 	  objs.push_back( new Angle() );
@@ -173,9 +179,6 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
 // 	  break;
 // 	case ID_rotation:
 // 	  objs.push_back( new Rotation() );
-// 	  break;
-// 	case ID_text:
-// 	  objs.push_back( new Text() );
 // 	  break;
 	default:
 	  return ParseError;

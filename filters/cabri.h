@@ -28,6 +28,11 @@ public:
   ~KigFilterCabri();
   virtual bool supportMime ( const QString mime );
   virtual Result convert ( const QString from, KTempFile& to);
+
+protected:
+  // this function reads a line, and converts all line delimiters
+  // ("\r\n" or "\n" to unix-style "\n").
+  std::string readLine( QFile&, bool& eof );
 };
 
 #endif
