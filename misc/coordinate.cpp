@@ -132,11 +132,6 @@ double Coordinate::length() const
   return sqrt(x*x+y*y);
 };
 
-double Coordinate::squareLength() const
-{
-  return x*x+y*y;
-};
-
 const Coordinate Coordinate::orthogonal() const
 {
   return Coordinate( -y, x );

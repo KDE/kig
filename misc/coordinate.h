@@ -44,7 +44,7 @@ public:
 
   double distance ( const Coordinate& p ) const;
   double length () const;
-  double squareLength() const;
+  inline double squareLength() const;
   const Coordinate operator- () const;
   // returns a vector which is orthogonal on this vector
   // this relation always holds:
@@ -83,6 +83,10 @@ const Coordinate operator- ( const Coordinate& a, const Coordinate& b );
 const Coordinate operator* ( const Coordinate& a, const double r );
 const Coordinate operator* ( const double r, const Coordinate& a );
 
+double Coordinate::squareLength() const
+{
+  return x*x+y*y;
+};
 
 #endif
 

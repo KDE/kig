@@ -25,10 +25,11 @@
 
 #include "../misc/calcpaths.h"
 #include "../misc/kigpainter.h"
+#include "../misc/i18n.h"
+
+#include <stack>
 
 #include <kdebug.h>
-
-#include "../misc/i18n.h"
 
 /**
  * Locus: the calc routines of this class are a bit unusual:
@@ -63,19 +64,61 @@ bool Locus::inRect(const Rect& r) const
 
 void Locus::calc( const ScreenInfo& r )
 {
+  // sometimes calc() is called with an empty rect, cause the
+  // shownRect is not known yet.. we ignore those calcs...
+  if ( r.shownRect() == Rect() ) return;
+
   mvalid = cp->valid() && mp->valid();
   if ( mvalid )
   {
-    // sometimes calc() is called with an empty rect, cause the
-    // shownRect is not known yet.. we ignore those calcs...
-    if ( r.shownRect() == Rect() ) return;
+    // i exchanged the previous recursing algorithm for a stack-based
+    // one that should be faster...  Here is the stack we use...
+    typedef std::pair<CPts::iterator, CPts::iterator> iterpair;
+    std::stack<iterpair> stack;
+
+    // some initial work...
+    // clear the previous state
     pts.clear();
     pts.reserve( numberOfSamples );
+    // save cp's old parameter, as we'll be changing it...
     double oldP = cp->constrainedImp()->getP();
-    CPts::iterator b = addPoint( 0, r );
-    CPts::iterator e = addPoint( 1, r );
-    int i = 2;
-    recurse(b,e,i,r);
+
+    // add 17 initial points...
+    for ( double i = 0; i <= 1; i += 1./16 )
+    {
+      Coordinate c = internalGetCoord( i, r );
+      pts.push_back( CPt( c, i ) );
+      if ( i != 0 ) stack.push( iterpair( pts.end() - 2, pts.end() - 1 ) );
+    };
+
+    int i = 17;
+    // minlength is the square of the maximum size that we allow
+    // between two points..
+    double maxlength = 1.5 * r.pixelWidth();
+    maxlength *= maxlength;
+
+    while ( ! stack.empty() && i < numberOfSamples )
+    {
+      iterpair current = stack.top();
+      stack.pop();
+      for( ; i < numberOfSamples; ++i )
+      {
+        double p = ( current.first->pm + current.second->pm ) / 2;
+        Coordinate n = internalGetCoord( p, r );
+        bool addn = r.shownRect().contains( n );
+        bool followfirst = addn &&
+                           ( n - current.first->pt ).squareLength() > maxlength &&
+                           r.shownRect().contains( current.first->pt );
+        bool followlast = addn &&
+                          ( n - current.second->pt ).squareLength() > maxlength &&
+                          r.shownRect().contains( current.second->pt );
+        if ( addn ) pts.push_back( CPt( n, p ) );
+        if ( followfirst ) stack.push( iterpair( current.first, pts.end() - 1 ) );
+        if ( followlast ) current.first = pts.end() - 1;
+        else break;
+      };
+    };
+
     // reset cp and its children to their former state...
     cp->constrainedImp()->setP(oldP);
     cp->calc( r );
@@ -123,28 +166,12 @@ double Locus::getParam( const Coordinate& p ) const
   return optimalparam;
 }
 
-inline Locus::CPts::iterator Locus::addPoint( double param, const ScreenInfo& r )
+Coordinate Locus::internalGetCoord( double param, const ScreenInfo& r )
 {
   cp->constrainedImp()->setP(param);
   cp->calc( r );
   calcpath.calc( r );
-  pts.push_back(CPt(mp->getCoord(), param));
-  return pts.end() - 1;
-}
-
-void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i, const ScreenInfo& si )
-{
-  const Rect& r = si.shownRect();
-  if ( i++ > numberOfSamples ) return;
-  if( !( r.contains( first->pt ) || r.contains( last->pt ) ) && i > 20 ) return;
-  double p = (first->pm+last->pm)/2;
-  CPts::iterator n = addPoint( p, si );
-  if( i <= 20 || ( n->pt - first->pt ).length() > (1.5*si.pixelWidth()) )
-    recurse( n, first, i, si );
-  if (i > numberOfSamples) return;
-  if( i <= 20 || ( n->pt - last->pt ).length() > (1.5*si.pixelWidth()) )
-    recurse( n, last, i, si );
-  if (i > numberOfSamples) return;
+  return mp->getCoord();
 }
 
 Locus::Locus(const Locus& loc)

@@ -87,7 +87,7 @@ public:
 
   Objects getParents() const;
 
-protected:
+private:
   NormalPoint* cp;
   Point* mp;
 
@@ -110,7 +110,6 @@ protected:
   CPts pts;
 
   // some functions used by calcPointLocus...
-  CPts::iterator addPoint( double param, const ScreenInfo& );
-  void recurse( CPts::iterator, CPts::iterator, int&, const ScreenInfo& );
+  inline Coordinate internalGetCoord( double, const ScreenInfo& si );
 };
 #endif
