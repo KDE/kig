@@ -123,6 +123,10 @@ void KigDocument::setupActions()
   cancelConstructionAction->setWhatsThis(i18n("Cancel the construction of the object being constructed"));
   cancelConstructionAction->setEnabled(false);
 
+  showHiddenAction = new KAction( i18n("Unhide all"), 0, this, SLOT( editShowHidden() ), actionCollection(), "edit_unhide_all");
+  showHiddenAction->setWhatsThis(i18n("Show all hidden objects"));
+  showHiddenAction->setEnabled( true );
+
   tmp = l.loadIcon("macro", KIcon::User);
   newMacroAction = new KAction (i18n("New macro"), tmp, 0, this, SLOT(newMacro()), actionCollection(), "macro_action");
   newMacroAction->setWhatsThis(i18n("Define a new macro"));
@@ -148,7 +152,6 @@ void KigDocument::setupActions()
 
   newOtherAction = new KActionMenu(i18n("New Other"), 0, actionCollection(), "new_other");
   newOtherAction->setWhatsThis(i18n("Construct a new object of a special type"));
-
 };
 
 void KigDocument::setupTypes()
@@ -834,4 +837,14 @@ void KigDocument::setColor( const Objects& os, const QColor& c )
       o->setColor( c );
     };
   emit repaintObjects( os );
+}
+
+void KigDocument::hideObjects( const Objects& os )
+{
+  Object* o;
+  for( Objects::iterator i( os ); (o = i.current()); ++i )
+    {
+      o->setShown( false );
+    };
+  emit allChanged();
 }

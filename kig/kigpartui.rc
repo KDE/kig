@@ -1,6 +1,9 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="kig_part" version="1">
 <MenuBar>
+  <Menu name="edit"><text>&amp;Edit</text>
+    <Action name="edit_unhide_all" />
+  </Menu>
   <Menu name="view"><text>&amp;View</text>
     <Action name="view_fullscreen"/>
     <Action name="view_zoom_in"/>

@@ -117,6 +117,7 @@ public:
   bool canSelectRect() { if (obc) return false; else return true;};
   bool canSelectObjects(const Objects& ) { if (obc) return false; else return true; };
   bool canUnselect() { if (obc) return false; else return true; };
+  bool canHideObjects() { if( obc ) return false; else return true; };
   bool canAddObjects() { return !m_pMacroWizard && isReadWrite(); };
 
   bool canInvertSelection() { if( obc ) return false; return true; };
@@ -170,6 +171,9 @@ public:
   // unselect o
   void unselect (Object* o);
   void unselect( const Objects& o );
+
+  // hide objs..
+  void hideObjects( const Objects& o );
 
   // Movement:
   void startMovingSos(const Coordinate&, Objects& still);
