@@ -22,7 +22,6 @@
 #include "base_mode.h"
 
 #include <qobject.h>
-#include <set>
 
 class MacroWizard;
 
@@ -58,8 +57,9 @@ protected:
   QPoint plc;
   MacroWizard* mwizard;
 
-  std::set<ObjectHolder*> mgiven;
-  std::set<ObjectHolder*> mfinal;
+  // we can't use a set for this because the order is important
+  std::vector<ObjectHolder*> mgiven;
+  std::vector<ObjectHolder*> mfinal;
 };
 
 #endif

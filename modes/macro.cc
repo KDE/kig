@@ -165,7 +165,7 @@ void DefineMacroMode::macroNameChanged()
 void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
-  std::set<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
+  std::vector<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
   DragRectMode dm( p, mdoc, w );
   mdoc.runMode( &dm );
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
@@ -178,7 +178,7 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
       objs->clear();
     }
 
-    objs->insert( ret.begin(), ret.end() );
+    std::copy( ret.begin(), ret.end(), std::back_inserter( *objs ) );
     pter.drawObjects( objs->begin(), objs->end(), true );
   };
   w.updateCurPix( pter.overlay() );
@@ -191,10 +191,11 @@ void DefineMacroMode::leftClickedObject( ObjectHolder* o, const QPoint&,
                                          KigWidget& w, bool )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
-  std::set<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
-  bool isselected = objs->find( o ) != objs->end();
-  if ( isselected ) objs->erase( o );
-  else objs->insert( o );
+  std::vector<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
+  std::vector<ObjectHolder*>::iterator iter = std::find( objs->begin(), objs->end(), o );
+  bool isselected = ( iter != objs->end() );
+  if ( isselected ) objs->erase( iter );
+  else objs->push_back( o );
 
   KigPainter p( w.screenInfo(), &w.stillPix, mdoc );
   p.drawObject( o, !isselected );
