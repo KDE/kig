@@ -19,8 +19,8 @@
 **/
 
 
-#ifndef COORDINATE_H
-#define COORDINATE_H
+#ifndef KIG_MISC_COORDINATE_H
+#define KIG_MISC_COORDINATE_H
 
 #include <qpoint.h>
 #include <kdebug.h>
