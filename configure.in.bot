@@ -1,25 +1,26 @@
 if test x$kig_warn_about_disabling_python = xyes; then
-  echo ""
-  echo "Kig Python scripting support has been disabled, because you "
-  echo "are missing the necessary headers and/or libraries."
-  echo "In order to use Kig Python scripting, you need to have "
-  echo "Python installed, along with its development package ( e.g. "
-  echo "libpython-dev ), and also the Boost.Python library, along with "
-  echo "its development package ( e.g. libboost-python-dev )."
-  echo ""
-  echo "Kig will continue to function without Python scripting support, "
-  echo "but you will not be able to created Python scripted objects, or "
-  echo "load Kig files that use them."
-  echo
-  echo "Installing the libraries:"
-  echo "The python development libraries themselves are almost certainly "
-  echo "packaged by your favourite distribution.  Look for a package name "
-  echo "like libpython-dev, with possibly a version number inserted "
-  echo "somewhere in the name..  For the Boost.Python libs, check this "
-  echo "documentation: \"http://boost.org/more/download.html\" and "
-  echo "\"http://boost.org/more/download.html#Installation\"  or look for "
-  echo "a package like libboost-python-dev or libboost-dev.. "
-  echo ""
+  cat << EOF
+
+Kig Python scripting support has been disabled, because you 
+are missing the necessary headers and/or libraries.
+In order to use Kig Python scripting, you need to have 
+Python installed, along with its development package ( e.g. 
+libpython-dev ), and also the Boost.Python library, along with 
+its development package ( e.g. libboost-python-dev ).
+
+Kig will continue to function without Python scripting support, 
+but you will not be able to created Python scripted objects, or 
+load Kig files that use them.
+
+Installing the libraries:
+The python development libraries themselves are almost certainly 
+packaged by your favourite distribution.  Look for a package name 
+like libpython-dev, with possibly a version number inserted 
+somewhere in the name..  For the Boost.Python libs, check this 
+documentation: \"http://boost.org/more/download.html\" and 
+\"http://boost.org/more/download.html#Installation\"  or look for 
+a package like libboost-python-dev or libboost-dev.. 
+EOF
 fi
 
 if test "x$kig_enable_python_scripting" = "xyes"; then
