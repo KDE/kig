@@ -43,8 +43,14 @@ PolygonImp::~PolygonImp()
 
 ObjectImp* PolygonImp::transform( const Transformation& t ) const
 {
-  if ( ! t.isHomothetic() )
-    return new InvalidImp();
+/*mp:
+ * any projective transformation makes sense for a polygon,
+ * since segments transform into segments.
+ * of course regular polygons will no longer be
+ * regular if t is not homothetic.
+ */
+//  if ( ! t.isHomothetic() )
+//    return new InvalidImp();
 
   std::vector<Coordinate> np;
   for ( uint i = 0; i < mpoints.size(); ++i )
