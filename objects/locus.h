@@ -67,7 +67,7 @@ public:
   static const char* sActionName();
 
   void draw (KigPainter& p, bool showSelection) const;
-  bool contains (const Coordinate& o, const double fault ) const;
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
   bool inRect (const Rect&) const;
 
   // arguments
@@ -76,7 +76,7 @@ public:
   static void sDrawPrelim( KigPainter& p, const Objects& args );
 
   // moving
-  void startMove(const Coordinate&);
+  void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
   void stopMove();
 

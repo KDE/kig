@@ -44,9 +44,9 @@ Segment::~Segment()
 {
 }
 
-bool Segment::contains(const Coordinate& o, const double fault ) const
+bool Segment::contains(const Coordinate& o, const ScreenInfo& si ) const
 {
-  return isOnSegment( o, mpa->getCoord(), mpb->getCoord(), fault );
+  return isOnSegment( o, mpa->getCoord(), mpb->getCoord(), si.normalMiss() );
 }
 
 void Segment::draw(KigPainter& p, bool ss) const
@@ -77,12 +77,12 @@ QString Segment::sUseText( const Objects& os, const Object* o )
   return i18n( "Start point" );
 }
 
-void Segment::startMove(const Coordinate& p)
+void Segment::startMove(const Coordinate& p, const ScreenInfo& si )
 {
   pwwsm = p;
   assert( mpa && mpb );
-  mpa->startMove( p );
-  mpb->startMove( p );
+  mpa->startMove( p, si );
+  mpb->startMove( p, si );
 }
 
 void Segment::moveTo(const Coordinate& p)

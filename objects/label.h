@@ -59,13 +59,13 @@ public:
   static const char* sActionName();
 
   void draw (KigPainter& p, bool showSelection) const;
-  bool contains ( const Coordinate& o, const double allowed_miss ) const;
+  bool contains ( const Coordinate& o, const ScreenInfo& si ) const;
   bool inRect (const Rect& r) const;
   QString wantArg ( const Object* ) const;
   bool selectArg (Object* which);
   void drawPrelim (KigPainter& p, const Object* prelimArg ) const;
 
-  void startMove(const Coordinate&);
+  void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
   void stopMove();
 

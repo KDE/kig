@@ -52,9 +52,9 @@ Ray::~Ray()
 {
 }
 
-bool Ray::contains(const Coordinate& o, const double fault ) const
+bool Ray::contains(const Coordinate& o, const ScreenInfo& si ) const
 {
-  return isOnRay( o, mpa->getCoord(), mpb->getCoord(), fault );
+  return isOnRay( o, mpa->getCoord(), mpb->getCoord(), si.normalMiss() );
 }
 
 void Ray::draw(KigPainter& p, bool ss) const
@@ -85,12 +85,12 @@ QString Ray::sUseText( const Objects& os, const Object* o )
   return i18n( "Ray starting at this point" );
 }
 
-void Ray::startMove(const Coordinate& p)
+void Ray::startMove(const Coordinate& p, const ScreenInfo& si )
 {
   pwwsm = p;
   assert( mpa && mpb );
-  mpa->startMove( p );
-  mpb->startMove( p );
+  mpa->startMove( p, si );
+  mpb->startMove( p, si );
 }
 
 void Ray::moveTo(const Coordinate& p)

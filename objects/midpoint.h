@@ -21,7 +21,7 @@
 
 #include "point.h"
 
-/** 
+/**
  * midpoint of two other points
  */
 class MidPoint
@@ -51,7 +51,7 @@ public:
   static void sDrawPrelim( KigPainter& p, const Objects& args );
   Objects getParents() const;
 
-  void startMove(const Coordinate&);
+  void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
   void stopMove();
   void cancelMove();

@@ -58,7 +58,7 @@ void TextLabel::draw(KigPainter& p, bool ) const
   p.drawSimpleText( mcoord, mtext );
   mrwdoi = p.simpleBoundingRect( mcoord, mtext );
 }
-bool TextLabel::contains( const Coordinate& o, const double ) const
+bool TextLabel::contains( const Coordinate& o, const ScreenInfo& ) const
 {
   return mrwdoi.contains( o );
 }
@@ -69,7 +69,7 @@ KigMode* TextLabel::sConstructMode( Type*, KigDocument* d,
   return new TextLabelConstructionMode( p, d );
 }
 
-void TextLabel::startMove( const Coordinate& c )
+void TextLabel::startMove( const Coordinate& c, const ScreenInfo& )
 {
   mpwwmt = c;
 }

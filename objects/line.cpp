@@ -30,9 +30,9 @@
 
 #include <cmath>
 
-bool Line::contains(const Coordinate& o, const double fault ) const
+bool Line::contains(const Coordinate& o, const ScreenInfo& si ) const
 {
-  return isOnLine( o, mpa, mpb, fault );
+  return isOnLine( o, mpa, mpb, si.normalMiss() );
 }
 
 void Line::draw(KigPainter& p, bool ss) const
@@ -92,12 +92,12 @@ LineTTP::~LineTTP()
 {
 }
 
-void LineTTP::startMove(const Coordinate& p)
+void LineTTP::startMove(const Coordinate& p, const ScreenInfo& si)
 {
   pwwsm = p;
   assert ( pt1 && pt2 );
-  pt1->startMove( p );
-  pt2->startMove( p );
+  pt1->startMove( p, si );
+  pt2->startMove( p, si );
 }
 
 void LineTTP::moveTo(const Coordinate& p)
@@ -128,7 +128,7 @@ LinePerpend::~LinePerpend()
 {
 }
 
-void LinePerpend::startMove(const Coordinate&)
+void LinePerpend::startMove(const Coordinate&, const ScreenInfo&)
 {
 }
 

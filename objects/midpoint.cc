@@ -36,13 +36,13 @@ MidPoint::~MidPoint()
 {
 }
 
-void MidPoint::startMove(const Coordinate& p)
+void MidPoint::startMove(const Coordinate& p, const ScreenInfo& si)
 {
-  if (contains(p,false) && p1 )
+  if (contains(p, si) && p1 )
   {
     assert( p1 && p2 );
     howm = howmMoving;
-    p2->startMove(p2->getCoord());
+    p2->startMove(p2->getCoord(), si);
   }
   else howm = howmFollowing;
 }

@@ -54,7 +54,7 @@ public:
   static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
 
-  void startMove(const Coordinate& );
+  void startMove(const Coordinate&, const ScreenInfo& );
   void moveTo(const Coordinate& );
   void stopMove();
   void cancelMove();

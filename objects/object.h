@@ -232,7 +232,7 @@ public:
    * allowed_miss contains the maximum distance there may be between
    * o and your object...
    */
-  virtual bool contains ( const Coordinate& o, const double allowed_miss ) const = 0;
+  virtual bool contains ( const Coordinate& o, const ScreenInfo& si ) const = 0;
 
   /**
    * Is this object in rect r ?
@@ -263,7 +263,7 @@ public:
   // sos contains the objects that are being moved.
   // the point is where the cursor is,  check the point implementation for an
   // example
-  virtual void startMove(const Coordinate&) = 0;
+  virtual void startMove( const Coordinate&, const ScreenInfo& ) = 0;
   virtual void moveTo(const Coordinate&) = 0;
   virtual void stopMove() = 0;
 

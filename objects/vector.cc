@@ -129,9 +129,9 @@ const char* Vector::sActionName()
   return "objects_new_vector";
 }
 
-bool Vector::contains(const Coordinate& o, const double fault ) const
+bool Vector::contains(const Coordinate& o, const ScreenInfo& si ) const
 {
-  return isOnSegment( o, p1->getCoord(), p2->getCoord(), fault );
+  return isOnSegment( o, p1->getCoord(), p2->getCoord(), si.normalMiss() );
 }
 
 void Vector::draw( KigPainter& p, bool ss ) const
@@ -204,7 +204,7 @@ Objects Vector::getParents() const
   return ret;
 }
 
-void Vector::startMove(const Coordinate&)
+void Vector::startMove(const Coordinate&, const ScreenInfo&)
 {
 }
 

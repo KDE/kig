@@ -111,7 +111,7 @@ const int TranslatedPoint::sShortCut()
   return 0;
 }
 
-void TranslatedPoint::startMove(const Coordinate& )
+void TranslatedPoint::startMove(const Coordinate&, const ScreenInfo& )
 {
 }
 

@@ -119,7 +119,7 @@ const int IntersectionPoint::sShortCut()
   return CTRL+Key_I;
 }
 
-void IntersectionPoint::startMove(const Coordinate& )
+void IntersectionPoint::startMove(const Coordinate&, const ScreenInfo& )
 {
 }
 
@@ -335,7 +335,7 @@ Objects CircleLineIntersectionPoint::getParents() const
   return o;
 }
 
-void CircleLineIntersectionPoint::startMove(const Coordinate& )
+void CircleLineIntersectionPoint::startMove(const Coordinate&, const ScreenInfo& )
 {
 }
 

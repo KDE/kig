@@ -52,9 +52,9 @@ NormalPoint::~NormalPoint()
 
 void NormalPoint::redefine( const Coordinate& c,
                             const KigDocument& d,
-                            double fault )
+                            const ScreenInfo& si )
 {
-  Objects o = d.whatAmIOn( c, fault );
+  Objects o = d.whatAmIOn( c, si );
   Curve* v = 0;
   // we don't want one of our children as a parent...
   Objects children = getAllChildren();
@@ -128,7 +128,7 @@ void FixedPointImp::calc( NormalPoint* p, const ScreenInfo& )
   p->setCoord( pwwca );
 }
 
-void FixedPointImp::startMove( const Coordinate& c, NormalPoint* p )
+void FixedPointImp::startMove( const Coordinate& c, NormalPoint* p, const ScreenInfo& )
 {
   pwwca = p->getCoord();
   pwwlmt = c;
@@ -209,7 +209,7 @@ void ConstrainedPointImp::calc( NormalPoint* p, const ScreenInfo& )
   p->setCoord( mcurve->getPoint( mparam ) );
 }
 
-void ConstrainedPointImp::startMove( const Coordinate&, NormalPoint* )
+void ConstrainedPointImp::startMove( const Coordinate&, NormalPoint*, const ScreenInfo& )
 {
 }
 
@@ -335,9 +335,9 @@ void NormalPoint::stopMove()
   mimp->stopMove( this );
 }
 
-void NormalPoint::startMove( const Coordinate& c )
+void NormalPoint::startMove( const Coordinate& c, const ScreenInfo& si )
 {
-  mimp->startMove( c, this );
+  mimp->startMove( c, this, si );
 }
 
 void NormalPoint::moveTo( const Coordinate& c )
@@ -521,10 +521,10 @@ void NormalPoint::setImp( NormalPointImp* i )
 
 NormalPoint* NormalPoint::sensiblePoint( const Coordinate& c,
                                          const KigDocument& d,
-                                         double fault )
+                                         const ScreenInfo& si )
 {
   NormalPoint* p = fixedPoint( c );
-  p->redefine( c, d, fault );
+  p->redefine( c, d, si );
   return p;
 }
 
@@ -540,6 +540,7 @@ const char* NormalPoint::sActionName()
 
 void NormalPoint::addActions( NormalModePopupObjects& popup )
 {
+  Point::addActions( popup );
   popup.addNormalAction( NormalModePopupObjects::virtualActionsOffset + 10, i18n( "Redefine this point..." ) );
 }
 

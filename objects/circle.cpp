@@ -38,9 +38,9 @@ Circle::~Circle()
 {
 };
 
-bool Circle::contains (const Coordinate& o, const double miss) const
+bool Circle::contains (const Coordinate& o, const ScreenInfo& si ) const
 {
-  return fabs((qpc - Coordinate(o)).length() - mradius) <= miss;
+  return fabs((qpc - Coordinate(o)).length() - mradius) <= si.normalMiss();
 };
 
 void Circle::draw (KigPainter& p, bool ss) const
@@ -363,7 +363,7 @@ const Circle* Circle::toCircle() const
   return this;
 }
 
-void CircleBCP::startMove(const Coordinate&)
+void CircleBCP::startMove(const Coordinate&, const ScreenInfo&)
 {
   // moving is disabled..
 }

@@ -159,7 +159,7 @@ Objects Arc::getParents() const
   return ret;
 }
 
-void Arc::startMove(const Coordinate&)
+void Arc::startMove(const Coordinate&, const ScreenInfo&)
 {
 }
 
@@ -229,7 +229,7 @@ void Arc::calc( const ScreenInfo& si )
   };
 }
 
-bool Arc::contains(const Coordinate& a, const double fault ) const
+bool Arc::contains(const Coordinate& a, const ScreenInfo& si ) const
 {
   // we check if the point is at the right distance from the center,
   Coordinate cds[3];
@@ -239,7 +239,7 @@ bool Arc::contains(const Coordinate& a, const double fault ) const
   Coordinate rvect = cds[2] - cds[1];
 
   double radius = kigMin( lvect.length(), rvect.length() ) / 2.;
-  if ( std::fabs( (a-cds[1]).length() - radius ) > fault ) return false;
+  if ( std::fabs( (a-cds[1]).length() - radius ) > si.normalMiss() ) return false;
 
   // and next we check if the arc is appropriate...
   Coordinate vect = a - cds[1];

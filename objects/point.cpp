@@ -20,20 +20,22 @@
 
 #include "point.h"
 
+#include "../modes/popup.h"
 #include "../misc/kigpainter.h"
+#include "../misc/i18n.h"
+#include "../kig/kig_view.h"
 
 #include <qpen.h>
-
-#include "../misc/i18n.h"
+#include <qpopupmenu.h>
 
 Point::Point( const Coordinate& p )
   : mC( p ), msize( 5 )
 {
 };
 
-bool Point::contains( const Coordinate& o, const double error ) const
+bool Point::contains( const Coordinate& o, const ScreenInfo& si ) const
 {
-  return (o - mC).length() <= error;
+  return (o - mC).length() - msize*si.pixelWidth() < 0;
 };
 
 void Point::draw (KigPainter& p, bool ss) const
@@ -42,7 +44,7 @@ void Point::draw (KigPainter& p, bool ss) const
   p.setBrushStyle( Qt::SolidPattern );
   p.setBrushColor( s ? Qt::red : mColor );
   p.setPen( QPen ( s ? Qt::red : mColor, 1 ) );
-  p.drawFatPoint( mC, msize );
+  p.drawFatPoint( mC, msize * p.pixelWidth() );
   p.setBrush (Qt::NoBrush);
 };
 
@@ -123,5 +125,32 @@ void Point::setParams( const std::map<QCString,QString>& m )
     bool ok = true;
     msize = p->second.toInt( &ok );
     if ( ! ok ) msize = 5;
+  };
+}
+
+void Point::addActions( NormalModePopupObjects& p )
+{
+  QPopupMenu* pop = new QPopupMenu( &p, "point virtual popup" );
+  QPixmap pix( 20, 20 );
+  for ( int i = 1; i < 8; ++i )
+  {
+    int size = 1 + 2*i;
+    pix.fill( pop->eraseColor() );
+    QPainter ptr( &pix );
+    ptr.setPen( QPen( mColor, 1 ) );
+    ptr.setBrush( QBrush( mColor, Qt::SolidPattern ) );
+    QRect r( ( 20 - size ) / 2,  ( 20 - size ) / 2, size, size );
+    ptr.drawEllipse( r );
+    pop->insertItem( pix, i );
+  };
+  p.addPopupAction( 10, i18n( "Set size..." ), pop );
+}
+
+void Point::doPopupAction( int popupid, int actionid, KigDocument*, KigWidget* w, NormalMode* )
+{
+  if ( popupid == 10 )
+  {
+    msize = 1+ 2*actionid;
+    w->redrawScreen();
   };
 }

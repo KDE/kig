@@ -124,7 +124,7 @@ const int MirrorPoint::sShortCut()
   return 0;
 }
 
-void MirrorPoint::startMove(const Coordinate& )
+void MirrorPoint::startMove(const Coordinate&, const ScreenInfo& )
 {
 }
 

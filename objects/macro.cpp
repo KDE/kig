@@ -54,9 +54,9 @@ void MacroObjectOne::draw(KigPainter& p, bool ss) const
   final->drawWrap(p, ss);
 }
 
-bool MacroObjectOne::contains(const Coordinate& p, const double fault ) const
+bool MacroObjectOne::contains(const Coordinate& p, const ScreenInfo& si ) const
 {
-  return final->contains( p, fault );
+  return final->contains( p, si );
 }
 
 bool MacroObjectOne::inRect(const Rect& r) const
@@ -64,9 +64,9 @@ bool MacroObjectOne::inRect(const Rect& r) const
   return final->inRect(r);
 }
 
-void MacroObjectOne::startMove(const Coordinate& p)
+void MacroObjectOne::startMove(const Coordinate& p, const ScreenInfo& si)
 {
-  final->startMove(p);
+  final->startMove(p, si);
 };
 
 void MacroObjectOne::moveTo(const Coordinate& p)

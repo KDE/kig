@@ -56,11 +56,11 @@ public:
   MacroObjectOne* copy() { return new MacroObjectOne(*this); };
   ~MacroObjectOne();
   void draw (KigPainter& p, bool ss) const;
-  bool contains (const Coordinate& p, const double fault ) const;
+  bool contains (const Coordinate& p, const ScreenInfo& si ) const;
   bool inRect(const Rect& r) const;
   Rect getSpan() const;
 
-  void startMove(const Coordinate& p);
+  void startMove(const Coordinate& p, const ScreenInfo&);
   void moveTo (const Coordinate& p);
   void stopMove();
   void calc( const ScreenInfo& );

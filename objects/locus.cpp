@@ -48,10 +48,10 @@ void Locus::draw(KigPainter& p, bool ss) const
     p.drawPoint( i->pt );
 }
 
-bool Locus::contains(const Coordinate& o, const double fault ) const
+bool Locus::contains(const Coordinate& o, const ScreenInfo& si ) const
 {
   for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
-    if( ( i->pt - o ).length() < fault ) return true;
+    if( ( i->pt - o ).length() < si.normalMiss() ) return true;
   return false;
 }
 
@@ -264,7 +264,7 @@ const int Locus::sShortCut()
   return 0;
 }
 
-void Locus::startMove(const Coordinate&)
+void Locus::startMove(const Coordinate&, const ScreenInfo&)
 {
 }
 

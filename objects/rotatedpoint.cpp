@@ -108,7 +108,7 @@ const int RotatedPoint::sShortCut()
   return 0;
 }
 
-void RotatedPoint::startMove(const Coordinate& )
+void RotatedPoint::startMove(const Coordinate&, const ScreenInfo& )
 {
 }
 

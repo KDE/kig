@@ -39,12 +39,12 @@ public:
   virtual Line* toLine();
   virtual const Line* toLine() const;
 
-  bool contains (const Coordinate& o, const double fault ) const;
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
   void draw (KigPainter& p, bool showSelection) const;
   bool inRect (const Rect&) const;
 
   // moving
-  void startMove(const Coordinate&) = 0;
+  void startMove(const Coordinate&, const ScreenInfo&) = 0;
   void moveTo(const Coordinate&) = 0;
   void stopMove() = 0;
 
@@ -89,7 +89,7 @@ public:
   Objects getParents() const;
 
   // moving
-  void startMove(const Coordinate&);
+  void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
   void stopMove();
 
@@ -131,7 +131,7 @@ public:
   Objects getParents() const;
 
   // moving
-  void startMove(const Coordinate&);
+  void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
   void stopMove();
 
@@ -171,7 +171,7 @@ public:
   Objects getParents() const;
 
   // moving
-  void startMove(const Coordinate&) {};
+  void startMove(const Coordinate&, const ScreenInfo&) {};
   void moveTo(const Coordinate&) {};
   void stopMove() {};
 
@@ -217,7 +217,7 @@ public:
 
   // moving
   // we don't move unless our parents do...
-  void startMove(const Coordinate&) {};
+  void startMove(const Coordinate&, const ScreenInfo&) {};
   void moveTo(const Coordinate&) {};
   void stopMove() {};
 

@@ -43,7 +43,7 @@ public:
   static const QCString sBaseTypeName();
 
   // general members
-  virtual bool contains (const Coordinate& o, const double fault ) const;
+  virtual bool contains (const Coordinate& o, const ScreenInfo& si ) const;
   virtual void draw (KigPainter& p,bool showSelection = true) const;
   virtual bool inRect(const Rect& r) const;
 
@@ -51,6 +51,9 @@ public:
 
   virtual std::map<QCString,QString> getParams ();
   virtual void setParams ( const std::map<QCString,QString>& );
+
+  virtual void addActions( NormalModePopupObjects& );
+  virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m );
 
 public:
   double getX() const;

@@ -40,7 +40,7 @@ class Circle
   virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
   static const QCString sBaseTypeName();
 
-  bool contains (const Coordinate& o, const double miss ) const;
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
   void draw (KigPainter& p, bool showSelection) const;
   bool inRect (const Rect&) const;
   Coordinate getPoint (double param) const;
@@ -90,7 +90,7 @@ public:
   Objects getParents() const;
 
   //moving is disabled..
-  void startMove(const Coordinate&);
+  void startMove(const Coordinate&, const ScreenInfo& );
   void moveTo(const Coordinate&);
   void stopMove();
 protected:
@@ -129,7 +129,7 @@ public:
   Objects getParents() const;
 
   //moving
-  void startMove(const Coordinate&) {};
+  void startMove(const Coordinate&, const ScreenInfo& ) {};
   void moveTo(const Coordinate&) {};
   void stopMove() {};
   void cancelMove() {};

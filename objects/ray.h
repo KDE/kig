@@ -50,7 +50,7 @@ public:
   static const int sShortCut();
   static const char* sActionName();
 
-  bool contains (const Coordinate& o, const double fault ) const;
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
   void draw ( KigPainter& p, bool showSelection ) const;
 
   bool inRect (const Rect&) const;
@@ -63,7 +63,7 @@ public:
   Objects getParents() const;
 
   // moving
-  void startMove(const Coordinate&);
+  void startMove(const Coordinate&, const ScreenInfo& si );
   void moveTo(const Coordinate&);
   void stopMove();
 
