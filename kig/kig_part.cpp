@@ -154,7 +154,7 @@ void KigDocument::setupActions()
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction(
-    i18n("&Types Manager"), 0, this, SLOT(editTypes()),
+    i18n("Manage &Types"), 0, this, SLOT(editTypes()),
     actionCollection(), "types_edit");
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
