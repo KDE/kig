@@ -359,7 +359,14 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
   ObjectConstructor* conicconic =
     new ConicConicIntersectionConstructor();
 
+  MultiObjectTypeConstructor* circlecircle =
+    new MultiObjectTypeConstructor(
+      CircleCircleIntersectionType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "circlecircleintersection", -1, 1 );
+
   merge( lineline );
+  merge( circlecircle );
   merge( lineconic );
   merge( linecubic );
   merge( conicconic );

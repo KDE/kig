@@ -163,3 +163,52 @@ const ObjectImpType* LineCubicIntersectionType::resultId() const
 {
   return PointImp::stype();
 }
+
+static const ArgsParser::spec argsspecCircleCircleIntersection[] =
+{
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ) },
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ) },
+  { IntImp::stype(), "param" }
+};
+
+CircleCircleIntersectionType::CircleCircleIntersectionType()
+  : ArgsParserObjectType( "CircleCircleIntersection",
+                         argsspecCircleCircleIntersection, 3 )
+{
+}
+
+CircleCircleIntersectionType::~CircleCircleIntersectionType()
+{
+}
+
+const CircleCircleIntersectionType* CircleCircleIntersectionType::instance()
+{
+  static const CircleCircleIntersectionType t;
+  return &t;
+}
+
+ObjectImp* CircleCircleIntersectionType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  int side = static_cast<const IntImp*>( parents[2] )->data();
+  assert( side == 1 || side == -1 );
+  const CircleImp* c1 = static_cast<const CircleImp*>( parents[0] );
+  const CircleImp* c2 = static_cast<const CircleImp*>( parents[1] );
+  const Coordinate o1 = c1->center();
+  const Coordinate o2 = c2->center();
+  const double r1sq = c1->squareRadius();
+  const Coordinate a = calcCircleRadicalStartPoint(
+    o1, o2, r1sq, c2->squareRadius()
+    );
+  const LineData line = LineData (a, Coordinate ( a.x -o2.y + o1.y, a.y + o2.x - o1.x ));
+  bool valid = true;
+  Coordinate ret = calcCircleLineIntersect( o1, r1sq, line, side, valid );
+  if ( valid ) return new PointImp( ret );
+  else return new InvalidImp;
+}
+
+const ObjectImpType* CircleCircleIntersectionType::resultId() const
+{
+  return PointImp::stype();
+}

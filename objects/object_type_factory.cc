@@ -102,6 +102,7 @@ void ObjectTypeFactory::setupBuiltinTypes()
   add( ConicLineIntersectionType::instance() );
   add( LineLineIntersectionType::instance() );
   add( LineCubicIntersectionType::instance() );
+  add( CircleCircleIntersectionType::instance() );
 
   // line_type.h
   add( SegmentABType::instance() );

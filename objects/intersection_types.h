@@ -63,4 +63,15 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class CircleCircleIntersectionType
+  : public ArgsParserObjectType
+{
+  CircleCircleIntersectionType();
+  ~CircleCircleIntersectionType();
+public:
+  static const CircleCircleIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif
