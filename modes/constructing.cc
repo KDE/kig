@@ -184,6 +184,10 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
   Objects ouc = mDoc->whatAmIOn( c, 3*v->pixelWidth() );
   updatePoint( c, v->screenInfo() );
 
+  // set the text next to the arrow cursor like in modes/normal.cc
+  QPoint point = e->pos(); 
+  point.setX(point.x()+15);
+
   v->updateCurPix();
   KigPainter p( v->screenInfo(), &v->curPix );
   if ( ! ouc.empty() && mobc->wantArg( ouc.front() ) )
@@ -195,7 +199,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
     QString o = mobc->wantArg( ouc.front() );
 
     mDoc->emitStatusBarText( o );
-    p.drawSimpleText( v->fromScreen( e->pos() ), o );
+    p.drawTextStd( point , o );
     v->setCursor (KCursor::handCursor());
   }
   // see if mobc wants the point we're dragging around...
@@ -215,7 +219,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 
     double i = v->pixelWidth();
     Coordinate d( i, i );
-    p.drawSimpleText( c + d*2, s );
+    p.drawTextStd( point, s );
     v->setCursor( KCursor::blankCursor() );
   }
   else
@@ -224,7 +228,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
     // we just tell the user what he's constructing...
     QString o = i18n( "Constructing a %1" ).arg( mobc->vTBaseTypeName() );
     mDoc->emitStatusBarText( o );
-    p.drawSimpleText( v->fromScreen( e->pos() ), o );
+    p.drawTextStd( point , o );
     v->setCursor( KCursor::arrowCursor() );
   };
   v->updateWidget( p.overlay() );
