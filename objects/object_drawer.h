@@ -50,13 +50,15 @@ class ObjectDrawer
   bool mshown;
   int mwidth;
   Qt::PenStyle mstyle;
+  int mpointstyle;
 public:
   /**
    * Construct a new ObjectDrawer with a default color ( Qt::blue ),
-   * width ( -1 ), shown state ( true ) and PenStyle ( SolidLine ).
+   * width ( -1 ), shown state ( true ), PenStyle ( Qt::SolidLine ),
+   * and pointstyle ( 0 )
    */
   ObjectDrawer();
-  ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine );
+  ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0 );
   // Draw the object imp on kigpainter p.  If selected is true, it is
   // drawn in red, otherwise in its normal color.
   void draw( const ObjectImp& imp, KigPainter& p, bool selected ) const;
@@ -75,6 +77,10 @@ public:
   QColor color() const;
   // return the width of the object
   int width() const;
+  // return PenStyle for all objects except points
+  Qt::PenStyle style() const;
+  // return pointStyle for points
+  int pointStyle() const;
 
   // returns a new ObjectDrawer that is identical to this one.. except
   // that the shown state is set to s..
@@ -88,6 +94,9 @@ public:
   // returns a new ObjectDrawer that is identical to this one.. except
   // that the PenStyle state is set to s..
   ObjectDrawer* getCopyStyle( Qt::PenStyle s ) const;
+  // returns a new ObjectDrawer that is identical to this one.. except
+  // that the pointStyle state is set to p..
+  ObjectDrawer* getCopyPointStyle( int p ) const;
 };
 
 #endif

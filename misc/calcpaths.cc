@@ -233,3 +233,9 @@ std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> objs )
   return ret;
 }
 
+bool isPointOnCurve( const ObjectCalcer* point, const ObjectCalcer* curve )
+{
+  // TODO
+
+  return false;
+}

@@ -353,22 +353,42 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     bool point = ( npoints > nothers );
     if ( ! samecolor ) color = Qt::blue;
     if ( point )
-      for ( int i = 1; i < 2; ++i )
+      for ( int i = 1; i < 5; ++i )
       {
         QPixmap p( 20, 20 );
         QPainter ptr( &p );
         p.fill( popup.eraseColor() );
-//        switch ( i )
-//        {
-//          case 1:
-//          {
+        QRect r( 6, 6, 8, 8 );
+        switch ( i )
+        {
+          case 1:
+          {
             ptr.setPen( QPen( color, 1 ) );
             ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
-            QRect r( 6, 6, 8, 8 );
             ptr.drawEllipse( r );
-//            break;
-//          }
-//        }
+            break;
+          }
+          case 2:
+          {
+            ptr.setPen( QPen( color, 1 ) );
+            ptr.setBrush( Qt::NoBrush );
+            ptr.drawEllipse( r );
+            break;
+          }
+          case 3:
+          {
+            ptr.setPen( QPen( color, 1 ) );
+            ptr.drawRect( r );
+            ptr.fillRect( r, QBrush( color, Qt::SolidPattern ) );
+            break;
+          }
+          case 4:
+          {
+            ptr.setPen( QPen( color, 1 ) );
+            ptr.drawRect( r );
+            break;
+          }
+        }
         ptr.end();
         popup.addAction( menu, p, nextfree++ );
       }
@@ -489,7 +509,7 @@ bool BuiltinObjectActionsProvider::executeAction(
         nothers++;
     };
     bool point = ( npoints > nothers );
-    int max = point ? 1 : 3;
+    int max = point ? 4 : 3;
     if ( id >= max )
     {
       id -= max;
@@ -498,6 +518,12 @@ bool BuiltinObjectActionsProvider::executeAction(
 
     if ( point )
     {
+      KigCommand* kc = new KigCommand( doc, i18n( "Change Point Style" ) );
+      for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
+        if ( (*i)->imp()->inherits( PointImp::stype() ) )
+          kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyPointStyle( id ) ) );
+      doc.history()->addCommand( kc );
+      mode.clearSelection();
       return true;
     }
     else

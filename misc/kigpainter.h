@@ -58,6 +58,7 @@ protected:
 
   QColor color;
   PenStyle style;
+  int pointstyle;
   int width;
   BrushStyle brushStyle;
   QColor brushColor;
@@ -95,6 +96,7 @@ public:
                                  // the default width for the object
                                  // being drawn..  a point -> 5, other
                                  // objects -> 1
+  void setPointStyle( const int p );
   void setPen( const QPen& p );
   void setBrushStyle( const BrushStyle c );
   void setBrush( const QBrush& b );

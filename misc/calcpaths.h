@@ -76,4 +76,12 @@ std::set<ObjectCalcer*> getAllChildren( ObjectCalcer* obj );
  */
 bool isChild( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& os );
 
+/**
+ * Return true if the given point is ( by construction ) on the given
+ * curve.  This means that it is either a constrained point on the
+ * curve, or the curve is constructed through the point, or the point
+ * is an intersection point of the curve with another curve.
+ */
+bool isPointOnCurve( const ObjectCalcer* point, const ObjectCalcer* curve );
+
 #endif

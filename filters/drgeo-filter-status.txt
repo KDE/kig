@@ -42,7 +42,7 @@ Polygons          also in Kig :-)
 Transformations   scaling
 Intersections     curve-line
 
-Styles            Points
+Styles            Points( Cross )
 
 Known problems
 --------------

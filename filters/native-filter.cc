@@ -519,7 +519,7 @@ bool KigFilterNative::load07( const QString& file, const QDomElement& docelem, K
           if ( ! type )
           {
             notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support.\n "
+                                      "which this Kig version does not support.\n"
                                       "Perhaps you have compiled Kig without support "
                                       "for this object type, \n"
                                       "or perhaps you are using an older Kig version." ) );

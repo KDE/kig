@@ -34,6 +34,7 @@ void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
     p.setPen( QPen ( sel ? Qt::red : mcolor,  1) );
     p.setWidth( mwidth );
     p.setStyle( mstyle );
+    p.setPointStyle( mpointstyle );
     imp.draw( p );
   }
 }
@@ -60,6 +61,7 @@ ObjectDrawer* ObjectDrawer::getCopyShown( bool s ) const
   ret->mshown = s;
   ret->mwidth = mwidth;
   ret->mstyle = mstyle;
+  ret->mpointstyle = mpointstyle;
   return ret;
 }
 
@@ -70,6 +72,7 @@ ObjectDrawer* ObjectDrawer::getCopyColor( const QColor& c ) const
   ret->mshown = mshown;
   ret->mwidth = mwidth;
   ret->mstyle = mstyle;
+  ret->mpointstyle = mpointstyle;
   return ret;
 }
 
@@ -80,6 +83,7 @@ ObjectDrawer* ObjectDrawer::getCopyWidth( int w ) const
   ret->mshown = mshown;
   ret->mwidth = w;
   ret->mstyle = mstyle;
+  ret->mpointstyle = mpointstyle;
   return ret;
 }
 
@@ -90,6 +94,18 @@ ObjectDrawer* ObjectDrawer::getCopyStyle( Qt::PenStyle s ) const
   ret->mshown = mshown;
   ret->mwidth = mwidth;
   ret->mstyle = s;
+  ret->mpointstyle = mpointstyle;
+  return ret;
+}
+
+ObjectDrawer* ObjectDrawer::getCopyPointStyle( int p ) const
+{
+  ObjectDrawer* ret = new ObjectDrawer;
+  ret->mcolor = mcolor;
+  ret->mshown = mshown;
+  ret->mwidth = mwidth;
+  ret->mstyle = mstyle;
+  ret->mpointstyle = p;
   return ret;
 }
 
@@ -98,13 +114,23 @@ int ObjectDrawer::width() const
   return mwidth;
 }
 
-ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown, Qt::PenStyle style )
-  : mcolor( color ), mshown( shown ), mwidth( width ), mstyle( style )
+Qt::PenStyle ObjectDrawer::style() const
+{
+  return mstyle;
+}
+
+int ObjectDrawer::pointStyle() const
+{
+  return mpointstyle;
+}
+
+ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown, Qt::PenStyle style, int pointStyle )
+  : mcolor( color ), mshown( shown ), mwidth( width ), mstyle( style ), mpointstyle( pointStyle )
 {
 }
 
 ObjectDrawer::ObjectDrawer()
-  : mcolor( Qt::blue ), mshown( true ), mwidth( -1 ), mstyle( Qt::SolidLine )
+  : mcolor( Qt::blue ), mshown( true ), mwidth( -1 ), mstyle( Qt::SolidLine ), mpointstyle( 0 )
 {
 }
 

@@ -751,12 +751,19 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 // Thick  -> the biggest one
     int w = -1;
     Qt::PenStyle s = Qt::SolidLine;
+    int pointstyle = 0;
     if ( domelem.tagName() == "point" )
     {
       if ( domelem.attribute( "thickness" ) == "Normal" )
         w = 7;
       else if ( domelem.attribute( "thickness" ) == "Thick" )
         w = 9;
+      if ( domelem.attribute( "style" ) == "RoundEmpty" )
+        pointstyle = 1;
+      else if ( domelem.attribute( "style" ) == "Rectangular" )
+        pointstyle = 2;
+      else if ( domelem.attribute( "style" ) == "RectangularEmpty" )
+        pointstyle = 3;
     }
     else if ( ( domelem.tagName() == "line" ) ||
               ( domelem.tagName() == "halfLine" ) ||
@@ -773,9 +780,8 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     }
 // show this object?
     bool show = ( domelem.attribute( "masked" ) != "True" );
-//    kdDebug() << "+++++++++ masked:" << domelem.attribute( "masked" ) << endl;
 // costructing the ObjectDrawer*
-    ObjectDrawer* d = new ObjectDrawer( co, w, show, s );
+    ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
     assert( d );
 
     kdDebug() << ">>>>>>>>> Creating ObjectHolder*" << endl;
