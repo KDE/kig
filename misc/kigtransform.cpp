@@ -347,7 +347,7 @@ const Coordinate Transformation::apply( const Coordinate& p, bool& valid ) const
 {
   valid = true;
   double phom[3] = {1., p.x, p.y};
-  double rhom[3];
+  double rhom[3] = {0., 0., 0.};
 
 
   for (int i = 0; i < 3; i++)
