@@ -457,41 +457,45 @@ ObjectImp* PythonScripter::calc( CompiledPythonScript& script, const Args& args 
 void PythonScripter::saveErrors()
 {
   erroroccurred = true;
+  try {
+    PyObject* poexctype;
+    PyObject* poexcvalue;
+    PyObject* poexctraceback;
+    PyErr_Fetch( &poexctype, &poexcvalue, &poexctraceback );
+    handle<> exctypeh( poexctype );
+    handle<> excvalueh( poexcvalue );
+    handle<> exctracebackh( poexctraceback );
 
-  PyObject* poexctype;
-  PyObject* poexcvalue;
-  PyObject* poexctraceback;
-  PyErr_Fetch( &poexctype, &poexcvalue, &poexctraceback );
-  handle<> exctypeh( poexctype );
-  handle<> excvalueh( poexcvalue );
-  handle<> exctracebackh( poexctraceback );
+    object exctype( exctypeh );
+    object excvalue( excvalueh );
+    object exctraceback( exctracebackh );
 
-  object exctype( exctypeh );
-  object excvalue( excvalueh );
-  object exctraceback( exctracebackh );
+    lastexceptiontype = extract<std::string>( str( exctype ) )();
+    lastexceptionvalue = extract<std::string>( str( excvalue ) )();
 
-  lastexceptiontype = extract<std::string>( str( exctype ) )();
-  lastexceptionvalue = extract<std::string>( str( excvalue ) )();
+    object printexcfunc = d->mainnamespace[ "traceback" ].attr( "format_exception" );
 
-  object printexcfunc = d->mainnamespace[ "traceback" ].attr( "format_exception" );
-
-  list tracebacklist = extract<list>( printexcfunc( exctype, excvalue, exctraceback ) )();
-  str tracebackstr( "" );
-  while ( true )
-  {
-    try {
-      str s = extract<str>( tracebacklist.pop() );
-      tracebackstr += s;
-    }
-    catch( ... )
+    list tracebacklist = extract<list>( printexcfunc( exctype, excvalue, exctraceback ) )();
+    str tracebackstr( "" );
+    while ( true )
     {
-      break;
+      try {
+        str s = extract<str>( tracebacklist.pop() );
+        tracebackstr += s;
+      }
+      catch( ... )
+      {
+        break;
+      }
     }
+
+    lastexceptiontraceback = extract<std::string>( tracebackstr )();
+
+    PyErr_Clear();
+  } catch( ... ) {
+    // something strange happened...
+    lastexceptiontraceback = std::string( "No traceback could be generated." );
   }
-
-  lastexceptiontraceback = extract<std::string>( tracebackstr )();
-
-  PyErr_Clear();
 }
 
 void PythonScripter::clearErrors()
