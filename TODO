@@ -4,6 +4,8 @@ simple:
 - change resizeEvent to not recenter the screen..
 
 harder:
+- fix the KDE style issues, there are quite some problems, i guess i
+  should try out kdenonbeta/scheck ...
 - filters: more input filters ( get cabri to work somewhat, kseg
   support... )  and output filters...
 - implement Circle by center and radius
