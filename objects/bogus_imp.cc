@@ -216,19 +216,19 @@ const ObjectImpType* StringImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "string",
-    "string", "", 0, 0, 0 );
+    "string", "", 0, 0, 0, 0 );
   return &t;
 }
 const ObjectImpType* HierarchyImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "hierarchy", "", 0, 0, 0, 0 );
+    Parent::stype(), "hierarchy", "", 0, 0, 0, 0, 0 );
   return &t;
 }
 const ObjectImpType* TransformationImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "transformation", "", 0, 0, 0, 0 );
+    Parent::stype(), "transformation", "", 0, 0, 0, 0, 0 );
   return &t;
 }
 
