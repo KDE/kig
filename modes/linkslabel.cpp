@@ -54,6 +54,7 @@ LinksLabel::LinksLabel( QWidget* parent, const char* name )
   p->labels.push_back( l );
   p->layout->addWidget(l );
 
+  p->layout->activate();
 }
 
 LinksLabel::~LinksLabel()

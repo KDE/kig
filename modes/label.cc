@@ -125,8 +125,14 @@ void TextLabelConstructionMode::enableActions()
   mDoc->aCancelConstruction->setEnabled( true );
 }
 
-void TextLabelConstructionMode::mouseMoved( QMouseEvent*, KigWidget* )
+void TextLabelConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
+  if ( mwawd == ReallySelectingArgs )
+  {
+    Objects os = mDoc->whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
+    if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
+    else w->setCursor( KCursor::arrowCursor() );
+  };
 }
 
 void TextLabelConstructionMode::enterTextPageEntered()

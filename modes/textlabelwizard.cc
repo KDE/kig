@@ -78,8 +78,6 @@ void TextLabelWizard::linkClicked( int which )
 void TextLabelWizard::relayoutArgsPage()
 {
   select_arguments_pageLayout->activate();
-  select_arguments_page->repaint();
-  select_arguments_page->resize( select_arguments_page->size() );
-  select_arguments_page->repaint();
+  repaint();
 }
 
