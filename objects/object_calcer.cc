@@ -37,8 +37,9 @@ void ObjectTypeCalcer::calc( const KigDocument& doc )
   mimp = n;
 }
 
-ObjectTypeCalcer::ObjectTypeCalcer( const ObjectType* type, const std::vector<ObjectCalcer*>& parents )
-  : mparents( type->sortArgs( parents ) ), mtype( type ), mimp( 0 )
+ObjectTypeCalcer::ObjectTypeCalcer( const ObjectType* type, 
+      const std::vector<ObjectCalcer*>& parents, bool sort )
+  : mparents( ( sort )?type->sortArgs( parents ):parents ), mtype( type ), mimp( 0 )
 {
   std::for_each( mparents.begin(), mparents.end(),
                  std::bind2nd( std::mem_fun( &ObjectCalcer::addChild ), this ) );

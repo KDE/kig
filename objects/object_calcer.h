@@ -186,7 +186,12 @@ public:
   /**
    * Construct a new ObjectTypeCalcer with a given type and parents.
    */
-  ObjectTypeCalcer( const ObjectType* type, const std::vector<ObjectCalcer*>& parents );
+//  ObjectTypeCalcer( const ObjectType* type, const std::vector<ObjectCalcer*>& parents );
+  /*
+   * the sort boolean tells whether the sortArgs method should be invoked or not;
+   * if not present
+   */
+  ObjectTypeCalcer( const ObjectType* type, const std::vector<ObjectCalcer*>& parents, bool sort=true );
   ~ObjectTypeCalcer();
 
   const ObjectImp* imp() const;

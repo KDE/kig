@@ -491,7 +491,18 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
             return false;
           }
 
-          o = new ObjectTypeCalcer( type, parents );
+	  // mp: (I take the responsibility for this!) explanation: the usual ObjectTypeCalcer
+	  // constructor also "sortArgs" the parents.  I believe that this *must not* be done
+	  // when loading from a saved kig file for the following reasons:
+	  // 1. the arguments should already be in their intended order, since the file was
+	  // saved from a working hierarchy; furthermore we actually want to restore the original
+	  // hierarchy, not really to also fix possible problems with the original hierarchy;
+	  // 2. calling sortArgs could have undesirable side effects in particular situations, 
+	  // since kig actually allow an ObjectType to produce different type of ObjectImp's
+	  // it may happen that the parents of an object do not satisfy the requirements
+	  // enforced by sortArgs (while moving around the free objects) but still be
+	  // perfectly valid
+          o = new ObjectTypeCalcer( type, parents, false );
         }
         else KIG_FILTER_PARSE_ERROR;
 
