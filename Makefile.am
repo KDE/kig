@@ -40,6 +40,8 @@ messages: rc.cpp
 	done
 	$(XGETTEXT) tips.cpp rc.cpp */*.h */*.cc */*.cpp -o $(podir)/kig.pot
 
+CLEANFILES = dummy.cpp
+
 dummy.cpp: 
 	touch dummy.cpp
 
