@@ -29,6 +29,7 @@
       <Action name="view_zoom_out" />
       <Action name="view_fit_to_page" />
       <Action name="view_select_shown_rect" />
+      <Action name="view_zoom_area" />
     </Menu>
     <Menu name="objects">
       <text>&amp;Objects</text>
@@ -143,6 +144,8 @@
     <Menu name="settings">
       <Action name="fullscreen" />
       <Action name="settings_set_coordinate_system" />
+      <Action name="settings_show_grid" />
+      <Action name="settings_show_axes" />
     </Menu>
   </MenuBar>
   <ToolBar name="mainToolBar">
@@ -246,5 +249,6 @@
     <Action name="fullscreen" />
     <Action name="view_fit_to_page" />
     <Action name="view_select_shown_rect" />
+    <Action name="view_zoom_area" />
   </ToolBar>
 </kpartgui>

@@ -22,8 +22,9 @@
 #ifndef KIGPART_H
 #define KIGPART_H
 
-#include <kparts/part.h>
 #include <qptrlist.h>
+
+#include <kparts/part.h>
 
 #include "../objects/common.h"
 
@@ -32,6 +33,7 @@ class KActionMenu;
 class KCommandHistory;
 class KPrinter;
 class KToolBar;
+class KToggleAction;
 class KURL;
 class QWidget;
 
@@ -110,6 +112,10 @@ public slots:
   void showHidden();
   void newMacro();
   void editTypes();
+
+  void toggleGrid();
+  void toggleAxes();
+
   // equivalent to setModified( false ); ( did i mention i don't like
   // signals/slots for being this inflexible...
   // this is connected to mhistory->documentRestored();
@@ -192,6 +198,8 @@ public:
   KAction* aNewMacro;
   KAction* aShowHidden;
   KAction* aConfigureTypes;
+  KToggleAction* aToggleGrid;
+  KToggleAction* aToggleAxes;
   std::vector<KigGUIAction*> aActions;
 
   /**

@@ -226,12 +226,13 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "circumference", &CircleImp::circumference )
     ;
 
-  class_<VectorImp, bases<ObjectImp> >( "Vector", init<Coordinate, Coordinate>() )
+  class_<VectorImp, bases<CurveImp> >( "Vector", init<Coordinate, Coordinate>() )
     .def( "stype", &VectorImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )
     .def( "length", &VectorImp::length )
     .def( "dir", &VectorImp::dir )
+    .def( "data", &VectorImp::data )
     ;
 
   class_<AngleImp, bases<ObjectImp> >( "Angle", init<Coordinate, double, double>() )

@@ -26,8 +26,10 @@
 
 #include <assert.h>
 
-KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem )
-  : mobjects( objects ), mcoordsystem( coordsystem )
+KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
+                          bool showgrid, bool showaxes )
+  : mobjects( objects ), mcoordsystem( coordsystem ), mshowgrid( showgrid ),
+    mshowaxes( showaxes )
 {
 }
 
@@ -149,6 +151,8 @@ void KigDocument::delObjects( const std::vector<ObjectHolder*>& os )
 KigDocument::KigDocument()
   : mcoordsystem( new EuclideanCoords )
 {
+  mshowgrid = true;
+  mshowaxes = true;
 }
 
 KigDocument::~KigDocument()
@@ -160,4 +164,22 @@ KigDocument::~KigDocument()
   delete mcoordsystem;
 }
 
+void KigDocument::setGrid( bool showgrid )
+{
+  mshowgrid = showgrid;
+}
 
+const bool KigDocument::grid() const
+{
+  return mshowgrid;
+}
+
+void KigDocument::setAxes( bool showaxes )
+{
+  mshowaxes = showaxes;
+}
+
+const bool KigDocument::axes() const
+{
+  return mshowaxes;
+}

@@ -152,7 +152,7 @@ ObjectImp* AngleImp::copy() const
 }
 
 VectorImp::VectorImp( const Coordinate& a, const Coordinate& b )
-  : ma( a ), mb( b )
+  : mdata( a, b )
 {
 }
 
@@ -162,25 +162,25 @@ VectorImp::~VectorImp()
 
 ObjectImp* VectorImp::transform( const Transformation& t ) const
 {
-  Coordinate ta = t.apply( ma );
-  Coordinate tb = t.apply( mb );
+  Coordinate ta = t.apply( mdata.a );
+  Coordinate tb = t.apply( mdata.b );
   if ( ta.valid() && tb.valid() ) return new VectorImp( ta, tb );
   else return new InvalidImp;
 }
 
 void VectorImp::draw( KigPainter& p ) const
 {
-  p.drawVector( ma, mb );
+  p.drawVector( mdata.a, mdata.b );
 }
 
 bool VectorImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
 {
-  return isOnSegment( o, ma, mb, w.screenInfo().normalMiss( width ) );
+  return internalContainsPoint( o, w.screenInfo().normalMiss( width ) );
 }
 
 bool VectorImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
-  return lineInRect( r, ma, mb, width, this, w );
+  return lineInRect( r, mdata.a, mdata.b, width, this, w );
 }
 
 const uint VectorImp::numberOfProperties() const
@@ -244,25 +244,25 @@ ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
   else if ( which == Parent::numberOfProperties() )
     return new DoubleImp( length() );
   else if ( which == Parent::numberOfProperties() + 1 )
-    return new PointImp( ( ma + mb ) / 2 );
+    return new PointImp( ( mdata.a + mdata.b ) / 2 );
   else if ( which == Parent::numberOfProperties() + 2 )
-    return new DoubleImp( fabs( ma.x - mb.x ) );
+    return new DoubleImp( fabs( mdata.a.x - mdata.b.x ) );
   else if ( which == Parent::numberOfProperties() + 3 )
-    return new DoubleImp( fabs( ma.y - mb.y ) );
+    return new DoubleImp( fabs( mdata.a.y - mdata.b.y ) );
   else if ( which == Parent::numberOfProperties() + 4 ) // opposite
-    return new VectorImp( ma, 2*ma-mb );
+    return new VectorImp( mdata.a, 2*mdata.a-mdata.b );
   else assert( false );
   return new InvalidImp;
 }
 
-ObjectImp* VectorImp::copy() const
+VectorImp* VectorImp::copy() const
 {
-  return new VectorImp( ma, mb );
+  return new VectorImp( mdata.a, mdata.b );
 }
 
 const Coordinate VectorImp::dir() const
 {
-  return mb - ma;
+  return mdata.dir();
 }
 
 void AngleImp::visit( ObjectImpVisitor* vtor ) const
@@ -277,7 +277,7 @@ void VectorImp::visit( ObjectImpVisitor* vtor ) const
 
 const double VectorImp::length() const
 {
-  return ( ma - mb ).length();
+  return ( mdata.a - mdata.b ).length();
 }
 
 ArcImp::ArcImp( const Coordinate& center, const double radius,
@@ -505,12 +505,12 @@ Coordinate ArcImp::secondEndPoint() const
 
 const Coordinate VectorImp::a() const
 {
-  return ma;
+  return mdata.a;
 }
 
 const Coordinate VectorImp::b() const
 {
-  return mb;
+  return mdata.b;
 }
 
 bool ArcImp::equals( const ObjectImp& rhs ) const
@@ -645,7 +645,7 @@ Rect AngleImp::surroundingRect() const
 
 Rect VectorImp::surroundingRect() const
 {
-  return Rect( ma, mb );
+  return Rect( mdata.a, mdata.b );
 }
 
 Rect ArcImp::surroundingRect() const
@@ -664,4 +664,38 @@ Rect ArcImp::surroundingRect() const
       ret.setContains( d );
   }
   return ret;
+}
+
+const Coordinate VectorImp::getPoint( double param, const KigDocument& ) const
+{
+  return mdata.a + mdata.dir() * param;
+}
+
+double VectorImp::getParam( const Coordinate& p, const KigDocument& ) const
+{
+  Coordinate pt = calcPointOnPerpend( mdata, p );
+  pt = calcIntersectionPoint( mdata, LineData( p, pt ) );
+  // if pt is over the end of the vector we set it to one of the end
+  // points of the vector...
+  if ( ( pt - mdata.a ).length() > dir().length() )
+    pt = mdata.b;
+  else if ( ( pt - mdata.b ).length() > dir().length() )
+    pt = mdata.a;
+  if ( mdata.b == mdata.a ) return 0;
+  return ( ( pt - mdata.a ).length() ) / ( dir().length() );
+}
+
+bool VectorImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+{
+  return internalContainsPoint( p, test_threshold );
+}
+
+bool VectorImp::internalContainsPoint( const Coordinate& p, double threshold ) const
+{
+  return isOnSegment( p, mdata.a, mdata.b, threshold );
+}
+
+LineData VectorImp::data() const
+{
+  return mdata;
 }

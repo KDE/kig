@@ -193,6 +193,7 @@ public:
   void slotZoomOut();
 
   void zoomRect();
+  void zoomArea();
 
   void redrawScreen( const std::vector<ObjectHolder*>& selection, bool paintOnWidget = true );
 };
@@ -240,6 +241,7 @@ public slots:
   void slotZoomIn();
   void slotZoomOut();
   void zoomRect();
+  void zoomArea();
   void slotInternalRecenterScreen();
   void slotRecenterScreen();
   void toggleFullScreen();

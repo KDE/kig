@@ -48,9 +48,18 @@ class KigDocument {
    * to translate user coordinates from and to internal coordinates.
    */
   CoordinateSystem* mcoordsystem;
+  /**
+   * Whether to show the grid.
+   */
+  bool mshowgrid;
+  /**
+   * Whether to show the axes.
+   */
+  bool mshowaxes;
 public:
   KigDocument();
-  KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem );
+  KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
+               bool showgrid = true, bool showaxes = true );
   ~KigDocument();
 
   /**
@@ -58,6 +67,8 @@ public:
    * KigDocument.
    */
   const CoordinateSystem& coordinateSystem() const;
+  const bool grid() const;
+  const bool axes() const;
   const std::vector<ObjectHolder*> objects() const;
   const std::set<ObjectHolder*>& objectsSet() const;
 
@@ -70,6 +81,16 @@ public:
    * sets the coordinate system to s, and deletes the old one..
    */
   void setCoordinateSystem( CoordinateSystem* s );
+
+  /**
+   * set to show/hide the grid.
+   */
+  void setGrid( bool showgrid );
+
+  /**
+   * set to show/hide the grid.
+   */
+  void setAxes( bool showaxes );
 
   /**
    * Return a vector of objects that contain the given point.

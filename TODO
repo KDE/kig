@@ -1,7 +1,4 @@
-* more or less urgently necessary
-
-- document mathematical i18n strings, so that the translators have a
-   clue about how to translate them !
+* bugs
 
 - There is a pretty strange bug in kig when you use the accel keys.
    Open Kig, type p to start constructing a point.  Click somewhere to
@@ -13,14 +10,26 @@
    work, along with a strange way in kaccel of working.  I have a
    patch against kdecore/kaccel.cpp that should fix it, but the real
    fix is to get rid of the entire event loop stuff and think of a
-   better way to manage all this.
+   better way to manage all this. pino: seems pressing the stop button
+   n times, where n are the times you pressed escape, cancel all the
+   constructions, so the problem is the behaviour of escape.
+
+- The polar coordinate system blocks Kig when zooming. Select the
+  polar coordinate system, use the Select shown area tool ( or your
+  favorite zooming tool ) and select a specific part of the document.
+  Smaller parts of the document cause bigger problems.
+
+- the coordinate system toggleaction needs updating when the coord sys
+   is changed in another way.
+
+* more or less urgently necessary
+
+- document mathematical i18n strings, so that the translators have a
+   clue about how to translate them !
 
 * not too hard:
 
-- add support for work via command line without GUI. Possible options
-  and uses:<br />
-  -c, --convert-to-native filename.ext => Kig will convert the file in its own
-  format and output the file filename.kig<br /> ( domi: done )
+- add other command line options, like:<br />
   -e, --export-to FORMAT file.kig => Kig will export file.kig ( or any
   other supported format ) into file.ext ( even more than one file ).
   The output format depends on the FORMAT string. domi: this is more
@@ -57,16 +66,15 @@
 
 - add intersection type between arcs and the other objects.
 
-- make it possible to zoom to a very specific part of the screen,
-   i.e. from (x0,y0) to (x1,y1)
+- add a magnifying glass to magnify "on-the-fly" a part of the document.
 
 - Python scripting: export cubics, improve existing API.
 
 - add support for work with other measure units (cm, inches, etc...)
   than just pixels...
 
-- add an option to change the name and description of a type in the
-  "manage types" dialog..
+- add the possibility to modify a type in the "manage types" dialog.
+  (pino: partially done)
 
 - add an option to the objects popup to start a script object with the
   current object as first argument...
@@ -87,8 +95,6 @@
    possible, but I have to look at it.
 
 - allow editing of python scripts
-
-- give objects names
 
 - allow for using kformula w/o OOFormula w/o MathML formulas in the
   document.

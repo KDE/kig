@@ -336,12 +336,27 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
   std::vector<ObjectCalcer::shared_ptr> calcers;
   std::vector<ObjectHolder*> holders;
 
+  QString t = docelem.attribute( "grid" );
+  bool tmphide = ( t == "false" ) || ( t == "no" ) || ( t == "0" );
+  ret->setGrid( !tmphide );
+  t = docelem.attribute( "axes" );
+  tmphide = ( t == "false" ) || ( t == "no" ) || ( t == "0" );
+  ret->setAxes( !tmphide );
+
   for ( QDomElement subsectionelement = docelem.firstChild().toElement(); ! subsectionelement.isNull();
         subsectionelement = subsectionelement.nextSibling().toElement() )
   {
     if ( subsectionelement.tagName() == "CoordinateSystem" )
     {
-      const QCString type = subsectionelement.text().latin1();
+      QString tmptype = subsectionelement.text();
+      // compatibility code - to support Invisible coord system...
+      if ( tmptype == "Invisible" )
+      {
+        tmptype = "Euclidean";
+        ret->setGrid( false );
+        ret->setAxes( false );
+      }
+      const QCString type = tmptype.latin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type );
       if ( ! s )
       {
@@ -462,7 +477,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
 
         ObjectConstCalcer* namecalcer = 0;
         tmp = e.attribute( "namecalcer" );
-        if ( tmp != "none" && !tmp.isNull() )
+        if ( tmp != "none" && !tmp.isEmpty() )
         {
           int ncid = tmp.toInt( &ok );
           if ( !ok ) KIG_FILTER_PARSE_ERROR;
@@ -489,6 +504,8 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
 
   QDomElement docelem = doc.createElement( "KigDocument" );
   docelem.setAttribute( "Version", KIGVERSION );
+  docelem.setAttribute( "grid", kdoc.grid() );
+  docelem.setAttribute( "axes", kdoc.axes() );
 
   QDomElement cselem = doc.createElement( "CoordinateSystem" );
   cselem.appendChild( doc.createTextNode( kdoc.coordinateSystem().type() ) );

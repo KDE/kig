@@ -23,7 +23,6 @@
 #include "typesdialog.moc"
 
 #include "../kig/kig_part.h"
-#include "../misc/lists.h"
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
 #include "edittype.h"
@@ -44,7 +43,7 @@
 #include <vector>
 #include <algorithm>
 
-TypesDialog::TypesDialog( QWidget* parent, const KigPart& part )
+TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   : TypesDialogBase( parent, "types_dialog", true ), mpart( part )
 {
   // improving GUI look'n'feel...
@@ -58,12 +57,7 @@ TypesDialog::TypesDialog( QWidget* parent, const KigPart& part )
   typeList->setColumnWidth( 2, 240 );
 
   // loading macros...
-  typedef MacroList::vectype vec;
-  const vec& macros = MacroList::instance()->macros();
-  for ( vec::const_reverse_iterator i = macros.rbegin(); i != macros.rend(); ++i )
-  {
-    typeList->insertItem( newListItem( *i ) );
-  };
+  loadAllMacros();
 }
 
 QListViewItem* TypesDialog::newListItem( Macro* m )
@@ -210,28 +204,21 @@ void TypesDialog::executed( QListViewItem* i )
   EditType* d = new EditType( this, i->text( 1 ), i->text( 2 ), fetchIconFromListItem( i ) );
   if ( d->exec() )
   {
-/*
     QString newname = d->name();
     QString newdesc = d->description();
     QString newicon = d->icon();
 
-    index = typeList->itemIndex( i );
-    typedef MacroList::vectype vec;
-    const vec& macros = MacroList::instance()->macros();
-    ObjectHierarchy* hierarchy = macros[index]->ctor->hierarchy();
-    char* name = macros[index]->action->actionName();
-    MacroConstructor* ctor =
-        new MacroConstructor( *hierarchy, name.latin1(), newdesc.latin1(), newicon );
-    GUIAction* act = new ConstructibleAction( ctor, newname );
-    Macro* macro = new Macro( act, ctor );
+    Macro* oldmacro = static_cast<MacroListElement*>( i )->getMacro();
+//    mpart.unplugActionLists();
+    oldmacro->ctor->setName( newname );
+    oldmacro->ctor->setDescription( newdesc );
+    QCString ncicon( newicon.utf8() );
+    oldmacro->ctor->setIcon( ncicon );
+//    mpart.plugActionLists();
 
-    // TODO: implement insert for MacroList and, of course, for ObjectConstructorList
-    // and GUIActionList...
-    MacroList::instance()->insert( macros, index );
+    typeList->clear();
 
-    delete typeList->itemAtIndex( index );
-    typeList->insertItem( newListItem( macros[i] ), index );
-*/
+    loadAllMacros();
   }
   delete d;
 }
@@ -240,4 +227,13 @@ MacroListElement::MacroListElement( KListView* lv, Macro* m )
   : QListViewItem( lv, QString::null, m->action->descriptiveName(), m->action->description() ),
     macro( m )
 {
+}
+
+void TypesDialog::loadAllMacros()
+{
+  const vec& macros = MacroList::instance()->macros();
+  for ( vec::const_reverse_iterator i = macros.rbegin(); i != macros.rend(); ++i )
+  {
+    typeList->insertItem( newListItem( *i ) );
+  }
 }

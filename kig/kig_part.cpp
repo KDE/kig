@@ -239,10 +239,28 @@ void KigPart::setupActions()
   // TODO: an icon for this..
   tmp = l->loadIcon( "viewmagfit", KIcon::Toolbar );
   a = new KAction(
-    i18n( "Select Shown Area" ), tmp, 0, m_widget, SLOT( zoomRect() ),
+    i18n( "&Select Shown Area" ), tmp, 0, m_widget, SLOT( zoomRect() ),
     actionCollection(), "view_select_shown_rect" );
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+
+  a = new KAction(
+    i18n( "S&elect Zoom Area" ), 0, m_widget, SLOT( zoomArea() ),
+    actionCollection(), "view_zoom_area" );
+//  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
+//  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+
+  aToggleGrid = new KToggleAction(
+    i18n( "Show &Grid" ), 0, this, SLOT( toggleGrid() ),
+    actionCollection(), "settings_show_grid" );
+  aToggleGrid->setToolTip( i18n( "Show or hide the grid." ) );
+  aToggleGrid->setChecked( true );
+
+  aToggleAxes = new KToggleAction(
+    i18n( "Show &Axes" ), 0, this, SLOT( toggleAxes() ),
+    actionCollection(), "settings_show_axes" );
+  aToggleAxes->setToolTip( i18n( "Show or hide the axes." ) );
+  aToggleAxes->setChecked( true );
 
   // select coordinate system KActionMenu..
   a = new SetCoordinateSystemAction( *this, actionCollection() );
@@ -724,7 +742,7 @@ void KigPart::doPrint( KPrinter& printer )
   ScreenInfo si( rect, qrect );
   KigPainter painter( si, &printer, document() );
   painter.setWholeWinOverlay();
-  painter.drawGrid( document().coordinateSystem() );
+  painter.drawGrid( document().coordinateSystem(), document().grid(), document().axes() );
   painter.drawObjects( document().objects(), false );
 }
 
@@ -863,3 +881,21 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
 
   return 0;
 };
+
+void KigPart::toggleGrid()
+{
+  bool toshow = !mdocument->grid();
+  aToggleGrid->setChecked( toshow );
+  mdocument->setGrid( toshow );
+
+  redrawScreen();
+}
+
+void KigPart::toggleAxes()
+{
+  bool toshow = !mdocument->axes();
+  aToggleAxes->setChecked( toshow );
+  mdocument->setAxes( toshow );
+
+  redrawScreen();
+}

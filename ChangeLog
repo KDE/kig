@@ -1,3 +1,19 @@
+2004-06-13  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Add the possibility to attach a label ( and to a point, of
+	course :) ) to a vector. This because now VectorImp inherits
+	CurveImp.
+
+	* Make types modifiable through types dialog. The system is not
+	complete, because at the moment there is no way to update the UI.
+
+	* The user now can choose manually the zoom area.
+
+	* Get rid of the Invisible coordinate system; now there are two
+	actions ( Show Grid and Show Axes ) to show/hide grid and axes
+	separately. I think this is a better way: the Invisible coordinate
+	system did not allow to work with polar coordinates and no grid.
+
 2004-06-11  Dominique Devriese  <devriese@kde.org>
 
 	* Some improvements by me to Pino's object names code.  Mostly,

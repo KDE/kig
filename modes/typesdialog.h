@@ -23,6 +23,8 @@
 
 #include "typesdialogbase.h"
 
+#include "../misc/lists.h"
+
 #include <klistview.h>
 #include <kiconloader.h>
 
@@ -45,10 +47,10 @@ class TypesDialog : public TypesDialogBase
   Q_OBJECT
 
   // necessary because some MacroList functions need it..
-  const KigPart& mpart;
+  KigPart& mpart;
   const KIconLoader* il;
 public:
-  TypesDialog( QWidget* parent, const KigPart& );
+  TypesDialog( QWidget* parent, KigPart& );
   ~TypesDialog();
 
 public slots:
@@ -64,6 +66,8 @@ protected slots:
 private:
   QListViewItem* newListItem( Macro* m );
   QString fetchIconFromListItem( QListViewItem* i );
+  void loadAllMacros();
+  typedef MacroList::vectype vec;
 };
 
 #endif

@@ -545,22 +545,14 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
 /*
     else if ( domelem.tagName() == "angle" )
     {
-      PointImp* p = static_cast<const PointImp*>( parents[1]->imp() );
       if ( domelem.attribute( "type" ) == "3pts" )
       {
-        if ( parents.size() == 3 )
-        {
-          ObjectTypeCalcer* ao = new ObjectTypeCalcer( AngleType::instance(), parents );
-          ao->calc( *ret );
-          parents.clear();
-          parents.push_back( ao );
-        };
-        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        ObjectCalcer* angle = parents[0];
-//        parents.clear();
-//        const Coordinate c = static_cast<const PointImp*>( angle->parents()[1]->imp() )->coordinate();
-        const Coordinate c = p->coordinate();
-        oc = filtersConstructTextObject( c, angle, "angle-degrees", *ret, false );
+        if ( parents.size() != 3 ) KIG_FILTER_PARSE_ERROR;
+        ObjectTypeCalcer* ao = new ObjectTypeCalcer( AngleType::instance(), parents );
+        ao->calc( *ret );
+        const PointImp* pt = static_cast<const PointImp*>( parents[1]->imp() );
+        const Coordinate c = pt->coordinate();
+        oc = filtersConstructTextObject( c, ao, "angle-degrees", *ret, false );
       }
       kdDebug() << "+++++++++ oc:" << oc << endl;
     }
@@ -601,12 +593,12 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       double y = ys.toDouble( &ok2 );
       if ( ! ( ok && ok2 ) )
         KIG_FILTER_PARSE_ERROR;
-      // since kig doesn't support Scheme scripts, it will write script's text
+      // since Kig doesn't support Guile scripts, it will write script's text
       // in a label, so the user can freely see the code and make whatever
       // he/she wants
-      // possible idea: construct a new script object with the parents of scheme
-      // one and the scheme code inserted commented... depends on a better
-      // managing of arguments in scripts?
+      // possible idea: construct a new script object with the parents of Guile
+      // one and the Guile code inserted commented... depends on a better
+      // handling of arguments in scripts?
       if ( domelem.attribute( "type" ) == "nitems" )
         oc = fact->labelCalcer( text, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), *ret );
       else
@@ -690,7 +682,6 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
                   ( domelem.attribute( "masked" ) != "Alway" ) );
 // costructing the ObjectDrawer*
     ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
-//    assert( d );
 // reading object name
     QString strname = domelem.attribute( "name" );
     ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( strname ) );
@@ -705,8 +696,8 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
   }
 
   ret->addObjects( holders );
-  CoordinateSystem* s = CoordinateSystemFactory::build( grid ? "Euclidean" : "Invisible" );
-  if ( s ) ret->setCoordinateSystem( s );
+  ret->setGrid( grid );
+  ret->setAxes( grid );
   return ret;
 }
 

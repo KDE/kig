@@ -20,6 +20,7 @@
 #define KIG_OBJECTS_OTHER_IMP_H
 
 #include "curve_imp.h"
+#include "../misc/common.h"
 #include "../misc/coordinate.h"
 
 /**
@@ -90,12 +91,11 @@ public:
  * An ObjectImp representing a vector.
  */
 class VectorImp
-  : public ObjectImp
+  : public CurveImp
 {
-  const Coordinate ma;
-  const Coordinate mb;
+  LineData mdata;
 public:
-  typedef ObjectImp Parent;
+  typedef CurveImp Parent;
   /**
    * Returns the ObjectImpType representing the VectorImp type..
    */
@@ -108,6 +108,9 @@ public:
   ~VectorImp();
 
   ObjectImp* transform( const Transformation& ) const;
+
+  const Coordinate getPoint( double param, const KigDocument& ) const;
+  double getParam( const Coordinate&, const KigDocument& ) const;
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
@@ -122,7 +125,7 @@ public:
   const ObjectImpType* impRequirementForProperty( uint which ) const;
   bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
 
-  ObjectImp* copy() const;
+  VectorImp* copy() const;
 
   /**
    * Return the direction of this vector.
@@ -140,11 +143,18 @@ public:
    * Return the length of this vector.
    */
   const double length() const;
+  /**
+   * Get the LineData for this vector.
+   */
+  LineData data() const;
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool equals( const ObjectImp& rhs ) const;
+
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
 /**

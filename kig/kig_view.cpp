@@ -26,6 +26,7 @@
 #include "kig_commands.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/kigpainter.h"
+#include "../misc/zoomarea.h"
 #include "../modes/mode.h"
 #include "../modes/dragrectmode.h"
 
@@ -244,7 +245,8 @@ void KigWidget::redrawScreen( const std::vector<ObjectHolder*>& selection, bool 
   // update the screen...
   clearStillPix();
   KigPainter p( msi, &stillPix, mpart->document() );
-  p.drawGrid( mpart->document().coordinateSystem() );
+  p.drawGrid( mpart->document().coordinateSystem(), mpart->document().grid(),
+              mpart->document().axes() );
   p.drawObjects( selection, true );
   p.drawObjects( nonselection, false );
   updateCurPix( p.overlay() );
@@ -554,3 +556,36 @@ void KigView::slotInternalRecenterScreen()
 {
   mrealwidget->recenterScreen();
 }
+
+void KigWidget::zoomArea()
+{
+//  mpart->emitStatusBarText( i18n( "Select the area that should be shown." ) );
+  ZoomArea* za = new ZoomArea( this, mpart->document() );
+  Rect oldrect = showingRect();
+  Coordinate tc = oldrect.topLeft();
+  za->setCoord0( tc );
+  tc = oldrect.bottomRight();
+  za->setCoord1( tc );
+  if ( za->exec() )
+  {
+    Coordinate c1 = za->coord0();
+    Coordinate c2 = za->coord1();
+    Coordinate nc1( c2.y, c1.x );
+    Coordinate nc2( c1.y, c2.x );
+    Rect nr( nc1, nc2 );
+    KigCommand* cd = new KigCommand( *mpart, i18n( "Change Shown Part of Screen" ) );
+
+    cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
+    mpart->history()->addCommand( cd );
+  }
+  delete za;
+
+  mpart->redrawScreen( this );
+  updateScrollBars();
+}
+
+void KigView::zoomArea()
+{
+  mrealwidget->zoomArea();
+}
+

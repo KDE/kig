@@ -55,7 +55,8 @@ void MovingModeBase::initScreen( const std::vector<ObjectCalcer*>& in )
 
   mview.clearStillPix();
   KigPainter p( mview.screenInfo(), &mview.stillPix, mdoc.document() );
-  p.drawGrid( mdoc.document().coordinateSystem() );
+  p.drawGrid( mdoc.document().coordinateSystem(), mdoc.document().grid(),
+              mdoc.document().axes() );
   p.drawObjects( notmovingobjs.begin(), notmovingobjs.end(), false );
   mview.updateCurPix();
 

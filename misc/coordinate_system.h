@@ -120,19 +120,4 @@ public:
   int id() const;
 };
 
-class InvisibleCoords
-  : public EuclideanCoords
-{
-public:
-  InvisibleCoords();
-  ~InvisibleCoords();
-  void drawGrid ( KigPainter& p, bool showgrid = true,
-                  bool showaxes = true ) const;
-  Coordinate snapToGrid( const Coordinate& c,
-                         const KigWidget& w ) const;
-
-  const char* type() const;
-  int id() const;
-};
-
 #endif
