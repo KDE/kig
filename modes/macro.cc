@@ -157,19 +157,21 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
   Objects cos;
   DragRectMode dm( p, mdoc, w );
   mdoc.runMode( &dm );
-  Objects ret = dm.ret();
-  if ( dm.needClear() )
-  {
-    cos = *objs;
-    objs->setSelected( false );
-    objs->clear();
-  };
-  cos |= ret;
-  ret.setSelected( true );
-  objs->upush( ret );
-
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
-  pter.drawObjects( cos );
+  if ( ! dm.cancelled() )
+  {
+    Objects ret = dm.ret();
+    if ( dm.needClear() )
+    {
+      cos = *objs;
+      objs->setSelected( false );
+      objs->clear();
+    };
+    cos |= ret;
+    ret.setSelected( true );
+    objs->upush( ret );
+    pter.drawObjects( cos );
+  };
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
 

@@ -44,6 +44,7 @@ class DragRectMode
   Rect mrect;
   bool mnc;
   bool mstartselected;
+  bool mcancelled;
 private:
   void clicked( const QPoint& p, KigWidget& w );
   void clicked( const QMouseEvent* e, KigWidget& w );
@@ -62,6 +63,8 @@ private:
   void rightMouseMoved( QMouseEvent*, KigWidget* );
   void rightReleased( QMouseEvent*, KigWidget* );
   void mouseMoved( QMouseEvent*, KigWidget* );
+
+  void cancelConstruction();
 
   void enableActions();
 
@@ -82,6 +85,11 @@ public:
   // adding the newly selected objects if (s)he pressed control or
   // shift..
   bool needClear() const;
+
+  // whether the user cancelled the rect mode..  If this returns true,
+  // all the other return data above will be in undefined state, so
+  // first check this function's result..
+  bool cancelled() const;
 };
 
 #endif

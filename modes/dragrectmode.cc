@@ -24,6 +24,7 @@
 
 #include <qevent.h>
 #include <qglobal.h>
+#include <kaction.h>
 
 DragRectMode::DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w )
   : KigMode( d ), mstart( start ), mnc( false ), mstartselected( true )
@@ -32,7 +33,8 @@ DragRectMode::DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w )
 }
 
 DragRectMode::DragRectMode( KigDocument& d, KigWidget& w )
-  : KigMode( d ), mnc( false ), mstartselected( false )
+  : KigMode( d ), mnc( false ), mstartselected( false ),
+    mcancelled( false )
 {
   w.updateCurPix();
   w.updateWidget();
@@ -67,6 +69,8 @@ void DragRectMode::released( const QPoint& p, KigWidget& w, bool nc )
 void DragRectMode::enableActions()
 {
   KigMode::enableActions();
+
+  mdoc.aCancelConstruction->setEnabled( true );
 }
 
 Objects DragRectMode::ret() const
@@ -160,5 +164,16 @@ void DragRectMode::clicked( const QPoint& p, KigWidget& )
     mstartselected = true;
     mstart = p;
   };
+}
+
+bool DragRectMode::cancelled() const
+{
+  return mcancelled;
+}
+
+void DragRectMode::cancelConstruction()
+{
+  mcancelled = true;
+  mdoc.doneMode( this );
 }
 

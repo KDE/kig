@@ -139,20 +139,25 @@ void NormalMode::dragRect( const QPoint& p, KigWidget& w )
 {
   DragRectMode d( p, mdoc, w );
   mdoc.runMode( &d );
-
-  Objects sel = d.ret();
-  Objects cos = sel;
-
-  if ( d.needClear() )
-  {
-    cos |= sos;
-    clearSelection();
-  };
-
-  selectObjects( sel );
+  bool cancelled = d.cancelled();
 
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
-  pter.drawObjects( cos );
+
+  if ( ! cancelled )
+  {
+    Objects sel = d.ret();
+    Objects cos = sel;
+
+    if ( d.needClear() )
+    {
+      cos |= sos;
+      clearSelection();
+    };
+
+    selectObjects( sel );
+    pter.drawObjects( cos );
+  };
+
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
 }

@@ -481,10 +481,13 @@ void KigWidget::zoomRect()
   mdocument->emitStatusBarText( i18n( "Select the rectangle that should be shown." ) );
   DragRectMode d( *mdocument, *this );
   mdocument->runMode( &d );
-  Rect nr = d.rect();
+  if ( ! d.cancelled() )
+  {
+    Rect nr = d.rect();
+    nr = nr.matchShape( Rect::fromQRect( rect() ) );
+    msi.setShownRect( nr );
+  };
 
-  nr = nr.matchShape( Rect::fromQRect( rect() ) );
-  msi.setShownRect( nr );
   redrawScreen();
   updateScrollBars();
 }

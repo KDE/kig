@@ -1,5 +1,8 @@
 2003-06-20  Dominique Devriese  <devriese@kde.org>
 
+	* fix this bug:"17) Add the possiblity, by pressing Esc, to stop
+	the selection, even of the area to be shown."
+
 	* add an icon for Arc's center property, this fixes: "12) Why
 	don't you use baseCircle.png as icon to show/construct the center
 	of a circle and (why not?) an arc?"
