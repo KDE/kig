@@ -34,7 +34,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 		  "devriese@kde.org" );
 
   tmp->addAuthor("Maurizio Paolini",
-		 I18N_NOOP( "Did a lot of important work all around kig,"
+		 I18N_NOOP( "Did a lot of important work all around Kig, "
                             "including, but not limited to conics, cubics, "
                             "transformations and property tests support." ),
 		 "paolini@dmf.bs.unicatt.it");

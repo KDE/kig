@@ -24,8 +24,8 @@
 
 static const ArgsParser::spec argsspecAreParallel[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Is this line parallel ?" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Parallel to this line ?" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Is this line parallel?" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Parallel to this line?" ) }
 };
 
 AreParallelType::AreParallelType()
@@ -64,8 +64,8 @@ const ObjectImpType* AreParallelType::resultId() const
 
 static const ArgsParser::spec argsspecAreOrthogonal[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Is this line orthogonal ?" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Orthogonal to this line ?" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Is this line orthogonal?" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Orthogonal to this line?" ) }
 };
 
 AreOrthogonalType::AreOrthogonalType()
