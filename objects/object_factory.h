@@ -28,19 +28,36 @@ public:
 
   static ObjectFactory* instance();
 
-  RealObject* fixedPoint( const Coordinate& c );
+  // this returns the necessary objects to show a fixed point.  That
+  // is: two DataObject's for the coordinates followed by one
+  // RealObject for the point..
+  Objects fixedPoint( const Coordinate& c );
 
-  RealObject* sensiblePoint( const Coordinate& c,
+  // this returns the necessary objects to show a sensible point.
+  // By a "sensible point", I mean a point that would be about what
+  // the user expects when he asks for a point at point c.  This is a
+  // constrained point if c is on a curve, and otherwise a fixed
+  // point.  I might add the possibility for an intersection point
+  // sometime..
+  Objects sensiblePoint( const Coordinate& c,
                          const KigDocument& d,
                          const KigWidget& w
     );
 
-  void redefinePoint( RealObject* point, const Coordinate& c,
+  // set point to what sensiblePoint would have returned..
+  void redefinePoint( Object* point, const Coordinate& c,
                       const KigDocument& d, const KigWidget& w );
 
+  // return a locus, defined by the two points ( one constrained, and
+  // one following ) in parents.  The semantics of LocusType are a bit
+  // weird ( but I believe correct :) ), so this function takes care
+  // of the complication there..
   RealObject* locus( const Objects& parents );
 
-  RealObject* label( const QString& s, const Coordinate& loc );
+  // returns the objects necessary to show a label with text s at
+  // point c: first a string DataObject, then a point DataObject, and
+  // next a label RealObject..
+  Objects label( const QString& s, const Coordinate& loc );
 };
 
 #endif

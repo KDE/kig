@@ -40,8 +40,6 @@ class Object
 {
   Objects mchildren;
   Object( const Object& o );
-  virtual void childRemoved();
-  virtual void childAdded();
 public:
   Object();
   virtual ~Object();
@@ -81,7 +79,7 @@ public:
   bool valid() const;
 
   const uint numberOfProperties() const;
-  ObjectImp* property( uint which, const KigWidget& w ) const;
+  const ObjectImp* property( uint which, const KigWidget& w ) const;
   const QCStringList properties() const;
 
   // every kind of object can have children, and there is no easier
@@ -177,17 +175,11 @@ public:
 /**
  * DataObject is an Object class that is _not_ user visible, and only
  * serves to hold data from which RealObjects can calc() themselves.
- * DataObject is reference counted.  The only objects that should keep
- * pointers to them are ObjectWithParents's.
  */
 class DataObject
   : public Object
 {
   ObjectImp* mimp;
-  int mrefs;
-
-  void childAdded();
-  void childRemoved();
 public:
   DataObject( ObjectImp* imp );
   ~DataObject();

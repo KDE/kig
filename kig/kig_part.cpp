@@ -366,7 +366,6 @@ void KigDocument::addObjects( const Objects& os )
 
 void KigDocument::_addObject( Object* o )
 {
-  Q_ASSERT (o != 0);
   mObjs.push_back( o );
   setModified(true);
 };
@@ -382,8 +381,7 @@ void KigDocument::delObject(Object* o)
 void KigDocument::_delObject(Object* o)
 {
   mObjs.remove( o );
-  assert( o->inherits( Object::ID_RealObject ) );
-  static_cast<RealObject*>( o )->setSelected( false );
+  o->setSelected( false );
   setModified(true);
 };
 

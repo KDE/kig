@@ -51,9 +51,9 @@ void AddFixedPointAction::slotActivated()
       done = false;
     };
   };
-  Object* p = ObjectFactory::instance()->fixedPoint( c );
-  p->calc();
-  mdoc->addObject( p );
+  Objects p = ObjectFactory::instance()->fixedPoint( c );
+  p.calc();
+  mdoc->addObjects( p );
 };
 
 AddFixedPointAction::AddFixedPointAction( KigDocument* doc,

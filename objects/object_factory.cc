@@ -38,7 +38,7 @@
 
 ObjectFactory* ObjectFactory::s = 0;
 
-RealObject* ObjectFactory::fixedPoint( const Coordinate& c )
+Objects ObjectFactory::fixedPoint( const Coordinate& c )
 {
   DataObject* x = new DataObject( new DoubleImp( c.x ) );
   DataObject* y = new DataObject( new DoubleImp( c.y ) );
@@ -46,8 +46,8 @@ RealObject* ObjectFactory::fixedPoint( const Coordinate& c )
   args.push_back( x );
   args.push_back( y );
   RealObject* o = new RealObject( FixedPointType::instance(), args );
-  o->setWidth( -1 );
-  return o;
+  args.push_back( o );
+  return args;
 }
 
 ObjectFactory* ObjectFactory::instance()
@@ -56,16 +56,18 @@ ObjectFactory* ObjectFactory::instance()
   return s;
 }
 
-RealObject* ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d, const KigWidget& w )
+Objects ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d, const KigWidget& w )
 {
-  RealObject* o = fixedPoint( c );
-  redefinePoint( o, c, d, w );
-  return o;
+  Objects os = fixedPoint( c );
+  redefinePoint( static_cast<RealObject*>( os[2] ), c, d, w );
+  return os;
 }
 
-void ObjectFactory::redefinePoint( RealObject* point, const Coordinate& c,
+void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
                                    const KigDocument& d, const KigWidget& w )
 {
+  assert( tpoint->inherits( Object::ID_RealObject ) );
+  RealObject* point = static_cast<RealObject*>( tpoint );
   Objects o = d.whatAmIOn( c, w.screenInfo() );
   Object* v = 0;
   // we don't want one of our children as a parent...
@@ -134,12 +136,13 @@ RealObject* ObjectFactory::locus( const Objects& parents )
   return new RealObject( t, locusparents );
 }
 
-RealObject* ObjectFactory::label( const QString& s, const Coordinate& loc )
+Objects ObjectFactory::label( const QString& s, const Coordinate& loc )
 {
   Objects os;
   os.push_back( new DataObject( new StringImp( s ) ) );
   os.push_back( new DataObject( new PointImp( loc ) ) );
 
   RealObject* r = new RealObject( TextType::instance(), os );
-  return r;
+  os.push_back( r );
+  return os;
 }

@@ -77,11 +77,18 @@ RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& in
     undone( false ),
     os( inOs )
 {
-  Objects tmp;
+  Objects children;
+  Objects parents;
   // we delete the children too
   for (Objects::iterator i = os.begin(); i != os.end(); ++i )
-    tmp |= (*i)->children();
-  os |= tmp;
+  {
+    children |= (*i)->children();
+    parents |= (*i)->parents();
+  };
+  os |= children;
+  for ( Objects::iterator i = parents.begin(); i != parents.end(); ++i )
+    if ( (*i)->inherits( Object::ID_DataObject ) )
+      os.upush( *i );
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)

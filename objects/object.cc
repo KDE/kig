@@ -111,7 +111,7 @@ const uint Object::numberOfProperties() const
   return imp()->numberOfProperties();
 }
 
-ObjectImp* Object::property( uint which, const KigWidget& w ) const
+const ObjectImp* Object::property( uint which, const KigWidget& w ) const
 {
   return imp()->property( which, w );
 }
@@ -149,20 +149,12 @@ const Objects Object::getAllChildren() const
 
 void Object::addChild( Object* o )
 {
-  if ( ! mchildren.contains( o ) )
-  {
-    mchildren.push_back( o );
-    childAdded();
-  };
+  mchildren.upush( o );
 }
 
 void Object::delChild( Object* o )
 {
-  if ( mchildren.contains( o ) )
-  {
-    mchildren.remove( o );
-    childRemoved();
-  };
+  mchildren.remove( o );
 }
 
 void ObjectWithParents::addParent( Object* o )
@@ -225,7 +217,7 @@ ObjectWithParents::ObjectWithParents( const Objects& parents )
 }
 
 DataObject::DataObject( ObjectImp* imp )
-  : mimp( imp ), mrefs( 0 )
+  : mimp( imp )
 {
 }
 
@@ -269,24 +261,6 @@ void DataObject::move( const Coordinate&, const Coordinate& )
 }
 
 void DataObject::calc()
-{
-}
-
-void DataObject::childAdded()
-{
-  ++mrefs;
-}
-
-void DataObject::childRemoved()
-{
-  if ( --mrefs <= 0 ) delete this;
-}
-
-void Object::childRemoved()
-{
-}
-
-void Object::childAdded()
 {
 }
 

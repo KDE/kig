@@ -37,29 +37,28 @@ ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
 
 ConstructMode::~ConstructMode()
 {
-  delete mpt;
+  delete_all( mpt.begin(), mpt.end() );
+  mpt.clear();
 }
 
 void ConstructMode::leftClickedObject(
   Object* o, const QPoint& p, KigWidget& w, bool )
 {
-  ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
+  ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
                                             mdoc, w );
-  mpt->calc();
+  mpt.calc();
   if ( o && !mparents.contains( o ) && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
   {
     selectObject( o, p, w );
   }
-  else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
+  else if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
   {
     // add mpt to the document..
-    Object* pt = mpt;
-    mdoc.addObject( pt );
+    mdoc.addObjects( mpt );
+    selectObject( mpt[2], p, w );
     // get a new mpt for our further use..
     mpt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ),
                                                     mdoc, w );
-
-    selectObject( pt, p, w );
   }
   else
   {
@@ -68,13 +67,13 @@ void ConstructMode::leftClickedObject(
 
 void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
+  ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
                                             mdoc, w );
-  if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
+  if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
   {
-    mdoc.addObject( mpt );
+    mdoc.addObjects( mpt );
 
-    selectObject( mpt, p, w );
+    selectObject( mpt[2], p, w );
 
     mpt = ObjectFactory::instance()->fixedPoint( w.fromScreen( p ) );
   }
@@ -96,9 +95,9 @@ void ConstructMode::mouseMoved( const Objects& os,
   QPoint textloc = p;
   textloc.setX( textloc.x() + 15 );
 
-  ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
+  ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
                                             mdoc, w );
-  mpt->calc();
+  mpt.calc();
   if ( !os.empty() && !mparents.contains( os.front() ) &&
        mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
   {
@@ -110,12 +109,12 @@ void ConstructMode::mouseMoved( const Objects& os,
 
     w.setCursor( KCursor::handCursor() );
   }
-  else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
+  else if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
   {
-    mpt->draw( pter, true );
-    mctor->handlePrelim( pter, mparents.with( mpt ), mdoc, w );
+    mpt[2]->draw( pter, true );
+    mctor->handlePrelim( pter, mparents.with( mpt[2] ), mdoc, w );
 
-    QString o = mctor->useText( *mpt, mparents, mdoc, w );
+    QString o = mctor->useText( *mpt[2], mparents, mdoc, w );
     mdoc.emitStatusBarText( o );
     pter.drawTextStd( textloc, o );
 
@@ -157,14 +156,15 @@ PointConstructMode::PointConstructMode( KigDocument& d )
 
 PointConstructMode::~PointConstructMode()
 {
-  delete mpt;
+  delete_all( mpt.begin(), mpt.end() );
+  mpt.clear();
 }
 
 void PointConstructMode::leftClickedObject(
   Object*, const QPoint&, KigWidget& w, bool )
 {
-  mdoc.addObject( mpt );
-  mpt = 0;
+  mdoc.addObjects( mpt );
+  mpt.clear();
   w.redrawScreen();
   mdoc.doneMode( this );
 }
@@ -187,10 +187,10 @@ void PointConstructMode::mouseMoved(
 {
   w.updateCurPix();
   KigPainter pter( w.screenInfo(), &w.curPix );
-  ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
+  ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
                                             mdoc, w );
-  mpt->calc();
-  mpt->draw( pter, true );
+  mpt.calc();
+  mpt[2]->draw( pter, true );
   w.setCursor( KCursor::blankCursor() );
 
   w.updateWidget( pter.overlay() );

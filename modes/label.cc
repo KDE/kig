@@ -176,9 +176,9 @@ void TextLabelConstructionMode::finishPressed()
     // no arguments...
     assert( percentCount( s ) == 0 );
 
-    RealObject* label = ObjectFactory::instance()->label( s, mcoord );
-    label->calc();
-    mdoc.addObject( label );
+    Objects labelos = ObjectFactory::instance()->label( s, mcoord );
+    labelos.calc();
+    mdoc.addObjects( labelos );
     widget->redrawScreen();
     killMode();
   }
