@@ -1,5 +1,10 @@
 kig_version=0.9.0
 
+kde_save_LIBS=$LIBS
+LIBS="$LIBS -lm"
+AC_CHECK_FUNCS(trunc)
+LIBS="$kde_save_LIBS"
+
 KDE_LANG_CPLUSPLUS
 
 # this variable is set to true if we need to warn the user that Python

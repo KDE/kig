@@ -16,6 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
+#include <config.h>
+
 #include "latexexporter.h"
 
 #include "exporttolatexdialog.h"
@@ -47,6 +49,12 @@
 #include <kfiledialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+
+#ifdef HAVE_TRUNC
+#define KDE_TRUNC(a)	trunc(a)
+#else
+#define KDE_TRUNC(a)	rint(a)
+#endif
 
 struct ColorMap {
   QColor color;
@@ -487,7 +495,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
   if ( showgrid )
   {
     // vertical lines...
-    double startingpoint = - left - 1 + static_cast<int>( trunc( left ) );
+    double startingpoint = - left - 1 + static_cast<int>( KDE_TRUNC( left ) );
     for ( double i = startingpoint; i < width; ++i )
     {
       stream << "\\psline[linecolor=c0c0c0,linewidth=0.01,linestyle=dashed]"
@@ -497,7 +505,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     }
 
     // horizontal lines...
-    startingpoint = - bottom - 1 + static_cast<int>( trunc( bottom ) );
+    startingpoint = - bottom - 1 + static_cast<int>( KDE_TRUNC( bottom ) );
     for ( double i = startingpoint; i < height; ++i )
     {
       stream << "\\psline[linecolor=c0c0c0,linewidth=0.01,linestyle=dashed]"
