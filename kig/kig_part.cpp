@@ -42,6 +42,7 @@
 #include "../objects/translatedpoint.h"
 #include "../objects/mirrorpoint.h"
 #include "../objects/ray.h"
+#include "../objects/coordproppoint.h"
 #include "../objects/rotatedpoint.h"
 #include "../objects/arc.h"
 #include "../misc/type.h"
@@ -196,6 +197,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<Arc> );
     Object::addBuiltinType( new TType<TextLabel> );
     Object::addBuiltinType( new TType<NormalPoint> );
+    Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
 
     // our saved macro types:
     QStringList relFiles;

@@ -92,9 +92,9 @@ public:
 
   /**
    * saves type information to a file.  As this is only meaningful for
-   * MType's, TType has an empty implementation...
+   * MType's, other types have the default empty implementation...
    */
-  virtual void saveXML( QDomDocument& doc, QDomNode& parent ) const = 0;
+  virtual void saveXML( QDomDocument&, QDomNode& ) const {};
 
   typedef std::map<QCString, QString> ParamMap;
 
@@ -133,6 +133,45 @@ public:
   void deleteActions();
 };
 
+/**
+ * This template is a Type for objects that can't be constructed by
+ * the user, but that can be loaded from a file or such..  It has stub
+ * implementations for inappropriate functions..
+ */
+template<class T>
+class TUnconstructibleType
+  : public Type
+{
+public:
+  virtual const QCString fullName() const
+    {
+      return T::sFullTypeName();
+    };
+  virtual const QCString baseTypeName() const
+    {
+      return T::sBaseTypeName();
+    };
+  virtual const QString descriptiveName() const
+    {
+      return QString::fromLatin1( "TUnconstructibleType::descriptiveName(): If you see this, it's a bug, please report.." );
+    };
+  virtual const QString description() const
+    {
+      return QString::fromLatin1( "TUnconstructibleType::description(): If you see this, it's a bug, please report.." );
+    };
+  virtual const QCString iconFileName() const { return "";};
+  virtual Object* build( const Objects& parents,
+                         const ParamMap& params = ParamMap() ) const
+    {
+      T* t = new T( parents );
+      t->setParams( params );
+      return t;
+    };
+  virtual KigMode* constructMode( NormalMode*, KigDocument* )
+    { return 0; };
+  const char* actionName() const { return ""; };
+};
+
 template<class T>
 class TType
   : public Type
@@ -145,7 +184,6 @@ class TType
   const QString description() const;
   const QCString iconFileName() const;
   const char* actionName() const;
-  void saveXML( QDomDocument&, QDomNode& ) const;
   KigMode* constructMode( NormalMode* prev, KigDocument* doc );
 };
 
@@ -202,10 +240,6 @@ public:
   const char* actionName() const
     {
       return T::sActionName();
-    };
-  void saveXML( QDomDocument&, QDomNode& ) const
-    {
-      return;
     };
   KigMode* constructMode( NormalMode* prev, KigDocument* doc )
     {
@@ -288,10 +322,6 @@ class TMultiType
     {
       return T::sActionName();
     };
-  void saveXML( QDomDocument&, QDomNode& ) const
-    {
-      return;
-    };
   int wantArgs( const Objects& os )
     {
       return T::sWantArgs( os );
@@ -360,12 +390,6 @@ Object* TType<T>::build( const Objects& parents,
   t->setParams( params );
   return t;
 };
-
-template <class T>
-void TType<T>::saveXML( QDomDocument&, QDomNode& ) const
-{
-  // noop
-}
 
 template <class T>
 const QCString TType<T>::fullName() const

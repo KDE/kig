@@ -689,3 +689,35 @@ const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
   return ret;
 }
 
+int Conic::conicType() const
+{
+  /* Maurizio: please fill up :)
+   * This function returns -1 for hyperbola, 1 for ellipses and 0 for
+   * parabola's...
+   */
+  return 0;
+}
+
+const ConicCartesianEquationData calcCartesianEquationFromPolar( const ConicPolarEquationData& polardata )
+{
+  /* Maurizio: please fill up :)
+   * This function returns the cartesian equation for a conic given
+   * the polar one..
+   */
+  return ConicCartesianEquationData( 0, 0, 0, 0, 0, 0 );
+};
+ConicCartesianEquationData Conic::cartesianEquationData() const
+{
+  return calcCartesianEquationFromPolar( mequation );
+}
+
+ConicPolarEquationData Conic::polarEquationData() const
+{
+  return mequation;
+}
+
+Coordinate Conic::focus1() const
+{
+  return mequation.focus1;
+}
+

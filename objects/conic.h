@@ -88,7 +88,15 @@ class Conic
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  Coordinate getFocus1() const { return mequation.focus1; };
+  /**
+   * This function returns -1 for hyperbola, 1 for ellipses and 0 for
+   * parabola's...
+   */
+  int conicType() const;
+
+  ConicCartesianEquationData cartesianEquationData() const;
+  ConicPolarEquationData polarEquationData() const;
+  Coordinate focus1() const;
 
 protected:
   ConicPolarEquationData mequation;
@@ -107,6 +115,8 @@ const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& 
  * cartdata..
  */
 const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartdata );
+
+const ConicCartesianEquationData calcCartesianEquationFromPolar( const ConicPolarEquationData& polardata );
 
 /**
  * This function is used by ConicBFFP.  It calcs the polar equation
