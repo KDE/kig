@@ -54,8 +54,9 @@ KigFilterDrgeo::~KigFilterDrgeo()
 
 bool KigFilterDrgeo::supportMime( const QString& mime )
 {
-// TODO: is this right? it's necessary to check...
-  return mime == "text/xml";
+  // TODO: we need to define a drgeo mimetype, and add some way to
+  // detect it ( ideally a KMimeMagic file )
+  return mime == "text/plain";
 }
 
 namespace {
@@ -261,6 +262,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 //        oc = fact->constrainedPointCalcer( parents[0], value );
 //      }
       else if ( domelem.attribute( "type" ) == "Intersection" )
+      {
         if ( ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
              ( parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) )
           oc = new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents );
@@ -272,18 +274,26 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 //          parents[0] = t;
 //          oc = new ObjectTypeCalcer( ConicLineIntersectionType::instance(), parents );
 //        }
-//        else if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) &&
-//                  ( parents[1]->imp()->inherits( CircleImp::stype() ) ) )
-//        {
-//          if ( domelem.attribute( "extra" ) == "0" )
-//            oc = new ObjectTypeCalcer( CircleCircleIntersectionType::instance(), parents );
-//        }
+        else if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) &&
+                  ( parents[1]->imp()->inherits( CircleImp::stype() ) ) )
+        {
+          bool ok;
+          int which = domelem.attribute( "extra" ).toInt( &ok );
+          if ( !ok ) KIG_FILTER_PARSE_ERROR;
+          if ( which == 0 ) which = -1;
+          else if ( which == 1 ) which = 1;
+          else KIG_FILTER_PARSE_ERROR;
+          std::vector<ObjectCalcer*> args = parents;
+          args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+          oc = new ObjectTypeCalcer( CircleCircleIntersectionType::instance(), args );
+        }
         else
         {
           notSupported( file, i18n( "This Dr. Geo file contains an intersection type, "
                                     "which Kig does not currently support." ) );
           return false;
         }
+      }
       else if ( domelem.attribute( "type" ) == "Reflexion" )
         oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
       else if ( domelem.attribute( "type" ) == "Symmetry" )
