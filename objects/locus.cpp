@@ -41,9 +41,8 @@
 
 void Locus::draw(KigPainter& p, bool ss) const
 {
-  // we don't let the points draw themselves, since that would get us
-  // the big points (5x5) like we normally see them...
-  // all objs are of the same type, so we only check the first
+  // here, we simply draw the set of points we calced in the
+  // calcForWidget() function...
   p.setPen( QPen( selected && ss ? Qt::red : mColor ) );
   for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
     p.drawPoint( i->pt );
