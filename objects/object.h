@@ -177,8 +177,7 @@ public:
   // drawing etc.
   // @p showSelect: whether selection should be shown (we don't want to
   // print selected stuff as selected...
-  void drawWrap(KigPainter& p, bool ss) const
-    { if (!shown) return; draw(p,ss); };
+  void drawWrap(KigPainter& p, bool ss) const;
 
   virtual void draw (KigPainter& p, bool showSelection) const = 0;
 

@@ -122,3 +122,9 @@ Object::Object( const Object& o )
 {
 
 }
+
+void Object::drawWrap(KigPainter& p, bool ss) const
+{
+  if (!shown) return;
+  draw(p,ss);
+}
