@@ -21,6 +21,7 @@ kigicondata_DATA = \
 	conicb5p.png \
 	coniclineintersection.png \
 	conicsradicalline.png \
+	convexhull.png \
 	curvelineintersection.png \
 	directrix.png \
 	distance.png \

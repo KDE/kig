@@ -638,3 +638,46 @@ const ObjectImpType* PolygonSideType::resultId() const
 {
   return SegmentImp::stype();
 }
+
+/* convex hull of a polygon  */
+
+static const ArgsParser::spec argsspecConvexHull[] =
+{
+  { PolygonImp::stype(), I18N_NOOP( "Construct the convex hull of this polygon" ),
+    I18N_NOOP( "Select the polygon of which you want to construct the convex hull..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConvexHullType )
+
+ConvexHullType::ConvexHullType()
+  : ArgsParserObjectType( "ConvexHull", argsspecConvexHull, 1 )
+{
+}
+
+ConvexHullType::~ConvexHullType()
+{
+}
+
+const ConvexHullType* ConvexHullType::instance()
+{
+  static const ConvexHullType t;
+  return &t;
+}
+
+ObjectImp* ConvexHullType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  const std::vector<Coordinate> ppoints = static_cast<const PolygonImp*>( parents[0] )->points();
+
+  if ( ppoints.size() < 3 ) return new InvalidImp;
+
+  std::vector<Coordinate> hull = computeConvexHull( ppoints );
+  if ( hull.size() < 3 ) return new InvalidImp;
+  return new PolygonImp( hull );
+}
+
+const ObjectImpType* ConvexHullType::resultId() const
+{
+  return PolygonImp::stype();
+}

@@ -126,4 +126,14 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class ConvexHullType
+  : public ArgsParserObjectType
+{
+  ConvexHullType();
+  ~ConvexHullType();
+public:
+  static const ConvexHullType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
 #endif

@@ -2,14 +2,14 @@
 
 	* added many constructions related to polygons:
 	sides, center of mass, winding number, convexity
-	test.
+	test, convex hull.
 
 	* changes in construct_mode (and in a few other
 	places) to allow the construction with a "cursor"
 	point that gives information on the constructed
 	object, but should not be inserted as argument.
 	This is used for a better interactive construction
-	of regular polygons.
+	of regular polygons
 	
 2005-01-20  Maurizio Paolini <paolini@dmf.unicatt.it>
 

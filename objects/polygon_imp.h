@@ -89,4 +89,6 @@ public:
   bool isConvex() const;
 };
 
+std::vector<Coordinate> computeConvexHull( const std::vector<Coordinate>& points );
+
 #endif

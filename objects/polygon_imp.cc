@@ -31,7 +31,7 @@
 
 #include <klocale.h>
 
-#include <math.h>
+#include <cmath>
 
 PolygonImp::PolygonImp( uint npoints, const std::vector<Coordinate>& points,
                         const Coordinate& centerofmass )
@@ -486,4 +486,65 @@ bool PolygonImp::isConvex() const
   if ( winding < 0 ) winding = -winding;
   assert ( winding > 0 );
   return winding == 1;
+}
+
+std::vector<Coordinate> computeConvexHull( const std::vector<Coordinate>& points )
+{
+  /*
+   * compute the convex hull of the set of points, the resulting list
+   * is the vertices of the resulting polygon listed in a counter clockwise
+   * order.  This algorithm is on order n^2, probably suboptimal, but
+   * we don't expect to have large values for n.
+   */
+
+  if ( points.size() < 3 ) return points;
+  std::vector<Coordinate> worklist = points;
+  std::vector<Coordinate> result;
+
+  double ymin = worklist[0].y;
+  uint imin = 0;
+  for ( uint i = 1; i < worklist.size(); ++i )
+  {
+    if ( worklist[i].y < ymin )
+    {
+      ymin = worklist[i].y;
+      imin = i;
+    }
+  }
+
+  // worklist[imin] is definitely on the convex hull, let's start from there
+  result.push_back( worklist[imin] );
+  Coordinate startpoint = worklist[imin];
+  Coordinate apoint = worklist[imin];
+  double aangle = 0.0;
+
+  while ( ! worklist.empty() )
+  {
+    int besti = -1;
+    double anglemin = 10000.0;
+    for ( uint i = 0; i < worklist.size(); ++i )
+    {
+      if ( worklist[i] == apoint ) continue;
+      Coordinate v = worklist[i] - apoint;
+      double angle = std::atan2( v.y, v.x );
+      while ( angle < aangle ) angle += 2*M_PI;
+      if ( angle < anglemin )
+      {   // found a better point
+        besti = i;
+        anglemin = angle;
+      }
+    }
+
+    if ( besti < 0 ) return result;   // this happens, e.g. if all points coincide
+    apoint = worklist[besti];
+    aangle = anglemin;
+    if ( apoint == startpoint )
+    {
+      return result;
+    }
+    result.push_back( apoint );
+    worklist.erase( worklist.begin() + besti, worklist.begin() + besti + 1 );
+  }
+  assert( false );
+  return result;
 }

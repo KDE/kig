@@ -72,6 +72,7 @@
 	<Action name="objects_new_polygonbcv" />
 	<Action name="objects_new_polygonvertices" />
 	<Action name="objects_new_polygonsides" />
+	<Action name="objects_new_convexhull" />
       </Menu>
       <Menu name="new_vector" icon="vector">
 	<text>&amp;Vectors &amp;&amp; Segments</text>

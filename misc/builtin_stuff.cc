@@ -462,6 +462,13 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_polygonsides" ));
 
+    c = new SimpleObjectTypeConstructor(
+      ConvexHullType::instance(), I18N_NOOP( "Convex Hull" ),
+      I18N_NOOP( "A polygon that corresponds to the convex hull of another polygon" ),
+      "convexhull" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_convexhull" ) );
+
     /* ----------- end polygons --------- */
 
     c = new LocusConstructor();
