@@ -71,4 +71,14 @@ public:
   ObjectImp* calc( const Args& args ) const;
 };
 
+class ScalingOverLineType
+  : public ObjectType
+{
+  ScalingOverLineType();
+  ~ScalingOverLineType();
+public:
+  static const ScalingOverLineType* instance();
+  ObjectImp* calc( const Args& args ) const;
+};
+
 #endif

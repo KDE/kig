@@ -185,3 +185,37 @@ ObjectImp* ScalingOverCenterType::calc( const Args& targs ) const
 
   return args[2]->transform( Transformation::scaling( ratio, center ) );
 }
+
+static const ArgParser::spec argsspecls[] =
+{
+  { ObjectImp::ID_LineImp, 1 },
+  { ObjectImp::ID_SegmentImp, 1 }
+};
+
+ScalingOverLineType::ScalingOverLineType()
+  : ObjectType( "ScalingOverLine", argsspecls, 2, 1 )
+{
+}
+
+ScalingOverLineType::~ScalingOverLineType()
+{
+}
+
+const ScalingOverLineType* ScalingOverLineType::instance()
+{
+  static const ScalingOverLineType t;
+  return &t;
+}
+
+ObjectImp* ScalingOverLineType::calc( const Args& targs ) const
+{
+  if ( targs.size() != 3 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  assert( args[0]->inherits( ObjectImp::ID_LineImp ) );
+  assert( args[1]->inherits( ObjectImp::ID_SegmentImp ) );
+
+  LineData line = static_cast<const AbstractLineImp*>( args[0] )->data();
+  double ratio = static_cast<const SegmentImp*>( args[1] )->length();
+
+  return args[2]->transform( Transformation::scaling( ratio, line ) );
+}

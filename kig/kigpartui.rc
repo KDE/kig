@@ -75,6 +75,7 @@
 	<Action name="objects_new_linereflection" />
 	<Action name="objects_new_rotation" />
 	<Action name="objects_new_scalingovercenter" />
+	<Action name="objects_new_scalingoverline" />
     </Menu>
     <Menu name="new_other">
 	<text>Other</text>
@@ -147,6 +148,7 @@
   <Action name="objects_new_linereflection" />
   <Action name="objects_new_rotation" />
   <Action name="objects_new_scalingovercenter" />
+  <Action name="objects_new_scalingoverline" />
 </Toolbar>
 <Toolbar name="rest_toolbar"><text>Rest</text>
   <Action name="objects_new_angle" />
