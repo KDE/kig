@@ -603,9 +603,11 @@ const Transformation Transformation::projectiveRotation(
   return translation( t )*ret*translation( -t );
 }
 
-const Coordinate Transformation::apply( const Coordinate& p ) const
+const Coordinate Transformation::apply( const double x0,
+					const double x1,
+					const double x2) const
 {
-  double phom[3] = {1., p.x, p.y};
+  double phom[3] = {x0, x1, x2};
   double rhom[3] = {0., 0., 0.};
 
 
@@ -621,6 +623,31 @@ const Coordinate Transformation::apply( const Coordinate& p ) const
     return Coordinate::invalidCoord();
 
   return Coordinate (rhom[1]/rhom[0], rhom[2]/rhom[0]);
+}
+
+const Coordinate Transformation::apply( const Coordinate& p ) const
+{
+  return apply( 1., p.x, p.y );
+//  double phom[3] = {1., p.x, p.y};
+//  double rhom[3] = {0., 0., 0.};
+//
+//  for (int i = 0; i < 3; i++)
+//  {
+//    for (int j = 0; j < 3; j++)
+//    {
+//      rhom[i] += mdata[i][j]*phom[j];
+//    }
+//  }
+//
+//  if (rhom[0] == 0.)
+//    return Coordinate::invalidCoord();
+//
+//  return Coordinate (rhom[1]/rhom[0], rhom[2]/rhom[0]);
+}
+
+const Coordinate Transformation::apply0( const Coordinate& p ) const
+{
+  return apply( 0., p.x, p.y );
 }
 
 const Transformation Transformation::rotation( double alpha, const Coordinate& center )

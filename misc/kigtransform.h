@@ -47,8 +47,12 @@ public:
   /**
    * Apply this Tranformation.  Apply this transformation to the
    * Coordinate c.  Can return an invalid Coordinate.
+   * apply0 assumes that c indicates a point at infinity, having
+   * [0, c.x, c.y] as homogeneous coordinates
    */
+  const Coordinate apply( const double x0, const double x1, const double x2 ) const;
   const Coordinate apply( const Coordinate& c ) const;
+  const Coordinate apply0( const Coordinate& c ) const;
 
   /**
    * Returns whether this is a homothetic (affine) transformation.

@@ -376,6 +376,10 @@ ObjectImp* RayImp::transform( const Transformation& t ) const
     double pb = t.getProjectiveIndicator( mdata.b );
     if ( pa < 0 ) pb = -pb;
     if ( pb < fabs (pa) ) return new InvalidImp();
+    Coordinate na = t.apply( mdata.a );
+    Coordinate nb = t.apply0( mdata.b - mdata.a );
+    if ( na.valid() && nb.valid() ) return new SegmentImp( na, nb );
+    else return new InvalidImp();
   }
   Coordinate na = t.apply( mdata.a );
   Coordinate nb = t.apply( mdata.b );
