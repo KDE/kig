@@ -837,9 +837,6 @@ const ConicCartesianData calcConicTransformation (
     }
   }
 
-  assert (fabs(b[0][1] - b[1][0]) < 1e-7);  // test a couple of cases
-  assert (fabs(b[0][2] - b[2][0]) < 1e-7);
-
-  return ConicCartesianData ( b[1][1],   b[2][2], 2*b[1][2],
-                              2*b[0][1], 2*b[0][2],   b[0][0] );
+  return ConicCartesianData ( b[1][1], b[2][2], b[1][2] + b[2][1],
+                              b[0][1] + b[1][0], b[0][2] + b[2][0], b[0][0] );
 }
