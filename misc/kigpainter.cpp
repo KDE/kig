@@ -985,3 +985,18 @@ void KigPainter::drawTextFrame( const Rect& frame,
   setBrush( oldbrush );
   drawText( frame, s, Qt::AlignVCenter | Qt::AlignHCenter );
 }
+
+void KigPainter::drawArc( const Coordinate& center, const double radius,
+                          const double dstartangle, const double dangle )
+{
+  // convert to 16th of degrees...
+  const int startangle = static_cast<int>( 16*180*dstartangle / M_PI );
+  const int angle = static_cast<int>( 16*180*dangle / M_PI );
+
+  Rect krect( 0, 0, 2*radius, 2*radius );
+  krect.setCenter( center );
+  QRect rect = toScreen( krect );
+
+  mP.drawArc( rect, startangle, angle );
+  setWholeWinOverlay();
+}

@@ -188,15 +188,19 @@ public:
   void drawPolygon( const std::vector<Coordinate>& pts, bool winding = false, int index = 0, int npoints = -1 );
 
   /**
-   * draw the angle bounded by surroundingRect, of angle angle, starting
-   * at the angle startAngle..  Note that both the angles should be
-   * given in 1/16th of a degree.  An entire circle equals 5760
-   * here...
-   * @see QPainter::drawArc
+   * draw the angle with center point, with size angle, starting
+   * at the angle startAngle..  Angles should be in radians.
    */
-  void drawAngle( const Rect& surroundingRect, int startAngle, int angle );
   void drawAngle( const Coordinate& point, const double startangle,
                   const double angle );
+
+  /**
+   * draw the arc ( a part of a circle ), of the circle with center
+   * center, radius radius, with size angle, starting at the angle
+   * startAngle..  Angles should be in radians..
+   */
+  void drawArc( const Coordinate& center, const double radius,
+                const double startangle, const double angle );
 
   /**
    * draw a vector ( with an arrow etc. )
