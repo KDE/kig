@@ -36,7 +36,7 @@ class QWidget;
 class CoordinateSystemFactory
 {
 public:
-  enum { Euclidean = 0, Polar = 1, Invisible = 2 };
+  enum { Euclidean = 0, Polar = 1 };
 
   static QStringList names();
   static QString setCoordinateSystemStatement( int id );

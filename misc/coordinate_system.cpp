@@ -209,6 +209,11 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
 {
   p.setWholeWinOverlay();
 
+  // this instruction in not necessary, but there is a little
+  // optimization when there are no grid and no axes.
+  if ( !( showgrid || showaxes ) )
+    return;
+
   // this function is inspired upon ( public domain ) code from the
   // first Graphics Gems book.  Credits to Paul S. Heckbert, who wrote
   // the "Nice number for graph labels" gem.
@@ -380,15 +385,19 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
 {
   p.setWholeWinOverlay();
 
+  // this instruction in not necessary, but there is a little
+  // optimization when there are no grid and no axes.
+  if ( !( showgrid || showaxes ) )
+    return;
+
   // we multiply by sqrt( 2 ) cause we don't want to miss circles in
   // the corners, that intersect with the axes outside of the
   // screen..
-  const double sqrt2 = 1.4142135623;
-
-  const double hmax = sqrt2*p.window().right();
-  const double hmin = sqrt2*p.window().left();
-  const double vmax = sqrt2*p.window().top();
-  const double vmin = sqrt2*p.window().bottom();
+  
+  const double hmax = M_SQRT2*p.window().right();
+  const double hmin = M_SQRT2*p.window().left();
+  const double vmax = M_SQRT2*p.window().top();
+  const double vmin = M_SQRT2*p.window().bottom();
 
   // the intervals:
   // we try to have one of them per 40 pixels or so..
@@ -626,14 +635,13 @@ Coordinate PolarCoords::snapToGrid( const Coordinate& c,
   // we multiply by sqrt( 2 ) cause we don't want to miss circles in
   // the corners, that intersect with the axes outside of the
   // screen..
-  const double sqrt2 = 1.4142135623;
 
   Rect r = w.showingRect();
 
-  const double hmax = sqrt2 * r.right();
-  const double hmin = sqrt2 * r.left();
-  const double vmax = sqrt2 * r.top();
-  const double vmin = sqrt2 * r.bottom();
+  const double hmax = M_SQRT2 * r.right();
+  const double hmin = M_SQRT2 * r.left();
+  const double vmax = M_SQRT2 * r.top();
+  const double vmin = M_SQRT2 * r.bottom();
 
   // the intervals:
   // we try to have one of them per 40 pixels or so..
