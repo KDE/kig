@@ -73,6 +73,12 @@
 
 * harder:
 
+- when moving an object that wants to move its parents, try to check if
+   it is itself not an indirect child of one of the parents it is
+   trying to move, and forbid the move in that case, as it will lead
+   to chaotic behaviour.  I am not sure if this is really well
+   possible, but I have to look at it.
+
 - allow editing of python scripts
 
 - give objects names
