@@ -130,24 +130,6 @@ void myvector<T>::remove( const T& o )
     erase( i );
 }
 
-template<class T>
-myvector<T> operator&( const myvector<T>& o, const myvector<T>& s )
-{
-  myvector<T> result;
-  std::set_intersection( o.begin(), o.end(), s.begin(), s.end(),
-                         std::back_inserter( result ) );
-  return result;
-}
-
-template<class T>
-myvector<T> operator|( const myvector<T>& o, const myvector<T>& s )
-{
-  myvector<T> result;
-  std::set_union( o.begin(), o.end(), s.begin(), s.end(),
-                       std::back_inserter( result ) );
-  return result;
-}
-
 template<class iter>
 void delete_all( iter current, iter end )
 {

@@ -1,3 +1,8 @@
+2003-09-01  Dominique Devriese  <devriese@kde.org>
+
+	* remove the defective operator| and operator& implementations for
+	the Objects class
+	
 2003-08-31  Dominique Devriese  <devriese@kde.org>
 
 	* make the Kig Python Scripting API docs only available online.

@@ -167,7 +167,7 @@ void NormalMode::dragObject( const Objects& oco, const QPoint& pco,
                              KigWidget& w, bool ctrlOrShiftDown )
 {
   // first determine what to move...
-  if( ( oco & sos ).empty() )
+  if( !sos.contains( oco.front() ) )
   {
     // the user clicked on something that is currently not
     // selected... --> we select it, taking the Ctrl- and
