@@ -20,6 +20,7 @@
 
 #include <qglobal.h>
 #include <cmath>
+#include <kdebug.h>
 
 #include "common.h"
 

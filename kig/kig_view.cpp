@@ -25,6 +25,7 @@
 #include "kig_commands.h"
 #include "../objects/object.h"
 #include "../misc/coordinate_system.h"
+#include "../misc/kigpainter.h"
 #include "../modes/mode.h"
 #include "../modes/dragrectmode.h"
 

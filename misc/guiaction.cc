@@ -20,6 +20,7 @@
 #include "guiaction.moc"
 
 #include "coordinate_system.h"
+#include "coordinate.h"
 #include "i18n.h"
 #include "object_constructor.h"
 

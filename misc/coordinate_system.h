@@ -18,17 +18,20 @@
  USA
 **/
 
+#ifndef KIG_MISC_COORDINATE_SYSTEM_H
+#define KIG_MISC_COORDINATE_SYSTEM_H
 
-#ifndef COORDINATES_H
-#define COORDINATES_H
+#include <qnamespace.h>
 
-#include "kigpainter.h"
-#include "coordinate.h"
-
-#include <qobject.h>
-
+class KigPainter;
+class KigDocument;
+class KigWidget;
 class CoordinateSystem;
 class QValidator;
+class Coordinate;
+class QString;
+class QStringList;
+class QWidget;
 
 class CoordinateSystemFactory
 {

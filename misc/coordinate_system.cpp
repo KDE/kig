@@ -19,13 +19,14 @@
 **/
 
 #include "coordinate_system.h"
-#include "coordinate.h"
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
 #include "i18n.h"
 #include "common.h"
+#include "coordinate.h"
+#include "kigpainter.h"
 
 #include <qpainter.h>
 #include <qregexp.h>
@@ -35,9 +36,8 @@
 #include <knumvalidator.h>
 #include <kmessagebox.h>
 #include <klineeditdlg.h>
-
-#include <math.h>
 #include <string>
+#include <math.h>
 
 class CoordinateValidator
   : public QValidator
@@ -603,9 +603,8 @@ Coordinate EuclideanCoords::snapToGrid( const Coordinate& c,
   const double hgraphmin = ceil( hmin / hd) * hd;
   const double vgraphmin = ceil( vmin / vd ) * vd;
 
-
-  double nx = round( ( c.x - hgraphmin ) / hd ) * hd + hgraphmin;
-  double ny = round( ( c.y - vgraphmin ) / vd ) * vd + vgraphmin;
+  const double nx = qRound( ( c.x - hgraphmin ) / hd ) * hd + hgraphmin;
+  const double ny = qRound( ( c.y - vgraphmin ) / vd ) * vd + vgraphmin;
   return Coordinate( nx, ny );
 }
 
@@ -640,6 +639,6 @@ Coordinate PolarCoords::snapToGrid( const Coordinate& c,
   double d = kigMin( hd, vd );
 
   double dist = c.length();
-  double ndist = round( dist / d ) * d;
+  double ndist = qRound( dist / d ) * d;
   return c.normalize( ndist );
 }
