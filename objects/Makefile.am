@@ -26,6 +26,7 @@ noinst_HEADERS=\
 	other_imp.h \
 	other_type.h \
 	point_imp.h \
+	tests_type.h \
 	text_imp.h \
 	text_type.h \
 	transform_types.h
@@ -56,6 +57,7 @@ libobjects_la_SOURCES=\
 	other_type.cc \
 	point_imp.cc \
 	point_type.cc \
+	tests_type.cc \
 	text_imp.cc \
 	text_type.cc \
 	transform_types.cc

@@ -70,6 +70,7 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( init<Coordinate, Coordinate>() )
     .def( "dir", &LineData::dir )
     .def( "length", &LineData::length )
+    .def( "isParallelTo", &LineData::isParallelTo )
     .def_readwrite( "a", &LineData::a )
     .def_readwrite( "b", &LineData::b )
     ;
@@ -254,6 +255,13 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .staticmethod( "stype" )
 //     .def( "data", &StringImp::data )
 //     .def( "setData", &StringImp::setData )
+    ;
+
+  class_<TestResultImp, bases<BogusImp> >( "TestResultObject", no_init )
+    .def( "stype", &TestResultImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+//     .def( "data", &TestResultImp::data )
     ;
 
 //   class_<CubicCartesianData>

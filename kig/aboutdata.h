@@ -34,15 +34,15 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 		  "devriese@kde.org" );
 
   tmp->addAuthor("Maurizio Paolini",
-		 I18N_NOOP( "Did the more math intensive work all around kig, "
-                            "including, but not limited to conics, cubics and "
-                            "transformations support." ),
+		 I18N_NOOP( "Did a lot of important work all around kig,"
+                            "including, but not limited to conics, cubics, "
+                            "transformations and property tests support." ),
 		 "paolini@dmf.bs.unicatt.it");
 
   tmp->addAuthor( "Franco Pasquarelli",
-                  I18N_NOOP( "Helped with the implementation of the Locus object, "
-                             "there's some math involved in doing it right, and "
-                             "Franco basically wrote the difficult parts." ),
+                  I18N_NOOP( "Helped a lot with the implementation of the Locus object, "
+                             "there's quite some math involved in doing it right, and"
+                             "Franco wrote the most difficult parts." ),
                   "pasqui@dmf.bs.unicatt.it" );
 
   tmp->addCredit( "Pino Toscano",
@@ -86,10 +86,10 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                            "requests, cleanups and style fixes, and someone "
                            "to chat with on irc :)" ),
                  "robertgogolok@gmx.de");
-		 
+
   tmp->addCredit("David Vignoni",
                  I18N_NOOP("svg icon" ),
-                 "david80v@tin.it");	  
+                 "david80v@tin.it");
 
   tmp->setTranslator( I18N_NOOP( "_: NAME OF TRANSLATORS\\nYour names" ),
                       I18N_NOOP( "_: EMAIL OF TRANSLATORS\\nYour emails" ) );

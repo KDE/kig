@@ -70,8 +70,9 @@ QString ConstructibleAction::descriptiveName() const
 
 void ConstructibleAction::act( KigDocument& d )
 {
-  ConstructMode m( d, mctor );
-  d.runMode( &m );
+  BaseConstructMode* m = mctor->constructMode( d );
+  d.runMode( m );
+  delete m;
 }
 
 KigGUIAction::KigGUIAction( GUIAction* act,

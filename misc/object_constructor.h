@@ -28,6 +28,7 @@ class KigGUIAction;
 class KigWidget;
 class ArgsParserObjectType;
 class ObjectType;
+class BaseConstructMode;
 
 class QString;
 class QCString;
@@ -85,7 +86,22 @@ public:
   virtual void plug( KigDocument* doc, KigGUIAction* kact ) = 0;
 
   virtual bool isTransform() const = 0;
+  virtual bool isTest() const;
   virtual bool isIntersection() const;
+
+  /**
+   * Which construct mode should be used for this ObjectConstructor.
+   * In fact, this is not a pretty design.  The Kig
+   * GUIAction-ObjectConstructor stuff should be reworked into a
+   * general GUIAction, which just models something which can be
+   * executed given a certain number of arguments.  The code for
+   * drawPrelim and such should all be in the ConstructMode, and the
+   * new GUIAction should just start the correct KigMode with the
+   * correct arguments.
+   *
+   * This function is only overridden in TestConstructor.
+   */
+  virtual BaseConstructMode* constructMode( KigDocument& doc );
 };
 
 /**

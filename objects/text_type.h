@@ -25,9 +25,9 @@ class TextType
   : public ObjectType
 {
   const ArgsParser mparser;
-public:
   TextType();
   ~TextType();
+public:
   static const TextType* instance();
 
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;

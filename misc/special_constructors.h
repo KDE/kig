@@ -115,4 +115,25 @@ public:
   bool isTransform() const;
 };
 
+class TestConstructor
+  : public StandardConstructorBase
+{
+  const ArgsParserObjectType* mtype;
+public:
+  TestConstructor( const ArgsParserObjectType* type, const char* descname,
+    const char* desc, const char* iconfile );
+  ~TestConstructor();
+  void drawprelim( KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+                   const KigDocument& ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d,
+                 KigWidget& w ) const;
+  const int wantArgs( const std::vector<ObjectCalcer*>& os,
+                      const KigDocument& d, const KigWidget& v ) const;
+  void plug( KigDocument* doc, KigGUIAction* kact );
+  bool isTransform() const;
+  bool isTest() const;
+
+  BaseConstructMode* constructMode( KigDocument& doc );
+};
+
 #endif

@@ -1,3 +1,13 @@
+2004-02-15  Dominique Devriese  <devriese@kde.org>
+
+	* Add code by Maurizio Paolini, and some adaptations of his code
+	by me for supporting property tests like "are these two lines
+	parallel ?"
+	
+	* update the aboutdata: Maurizio Paolini did not only help with
+	math intensive code, and Franco Pasquarelli did some very
+	important work in the locus code.
+
 2004-02-14  Dominique Devriese  <devriese@kde.org>
 
 	* Fix a bug waiting to pop up in construct_mode.cc, where you

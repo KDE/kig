@@ -99,6 +99,13 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
         static_cast<const StringImp&>( d ).data() ) );
     return QString::fromLatin1( "string" );
   }
+  else if ( d.inherits( TestResultImp::stype() ) )
+  {
+    parent.appendChild(
+      doc.createTextNode(
+        static_cast<const TestResultImp&>( d ).data() ) );
+    return QString::fromLatin1( "testresult" );
+  }
   else if( d.inherits( HierarchyImp::stype() ) )
   {
     static_cast<const HierarchyImp&>( d ).data().serialize( parent, doc );
@@ -295,6 +302,10 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   else if ( type == "string" )
   {
     return new StringImp( parent.text() );
+  }
+  else if ( type == "testresult" )
+  {
+    return new TestResultImp( parent.text() );
   }
   else if ( type == "hierarchy" )
   {

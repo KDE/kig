@@ -23,35 +23,9 @@
 
 #include "../objects/object_calcer.h"
 
+class ArgsParserObjectType;
 class ObjectConstructor;
 class ObjectCalcer;
-
-class ConstructMode
-  : public BaseMode
-{
-  const ObjectConstructor* mctor;
-  // this is the point that we move around, in case the user wants to
-  // add a point somewhere..
-  ObjectTypeCalcer::shared_ptr mpt;
-
-  std::vector<ObjectHolder*> mparents;
-
-public:
-  void selectObject( ObjectHolder* o, KigWidget& w );
-  void selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w );
-  ConstructMode( KigDocument& d, const ObjectConstructor* ctor );
-  ~ConstructMode();
-protected:
-  void leftClickedObject( ObjectHolder* o, const QPoint& p,
-                          KigWidget& w, bool ctrlOrShiftDown );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
-
-  void enableActions();
-  void cancelConstruction();
-  void finish();
-};
 
 class PointConstructMode
   : public BaseMode
@@ -71,6 +45,83 @@ protected:
 
   void enableActions();
   void cancelConstruction();
+};
+
+class BaseConstructMode
+  : public BaseMode
+{
+  // this is the point that we move around, in case the user wants to
+  // add a point somewhere..
+  ObjectTypeCalcer::shared_ptr mpt;
+
+  std::vector<ObjectHolder*> mparents;
+
+public:
+  void selectObject( ObjectHolder* o, KigWidget& w );
+  void selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w );
+  virtual ~BaseConstructMode();
+protected:
+  BaseConstructMode( KigDocument& d );
+protected:
+  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+                          KigWidget& w, bool ctrlOrShiftDown );
+  void midClicked( const QPoint& p, KigWidget& w );
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+
+  void enableActions();
+  void cancelConstruction();
+  void finish();
+
+protected:
+  virtual void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w ) = 0;
+  virtual int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w ) = 0;
+  virtual void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w ) = 0;
+};
+
+class ConstructMode
+  : public BaseConstructMode
+{
+  const ObjectConstructor* mctor;
+public:
+  ConstructMode( KigDocument& d, const ObjectConstructor* ctor );
+  ~ConstructMode();
+
+  void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
+  int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w );
+  void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w );
+};
+
+/**
+ * This class constructs a test object.  It has special needs over
+ * ConstructMode because first the arguments need to be chosen, and
+ * then the location for the resulting TextImp needs to be chosen.  It
+ * also needs special code for the drawPrelim and wantArgs code.
+ *
+ * Therefore, we inherit from BaseConstructMode, and override the
+ * event callbacks, so that this mode behaves like a
+ * BaseConstructMode, until handleArgs is called.  After that, mresult
+ * is no longer 0, and then the mode behaves in its own way, allowing
+ * the user to choose a location for the new label object.
+ */
+class TestConstructMode
+  : public BaseConstructMode
+{
+  const ArgsParserObjectType* mtype;
+  ObjectCalcer::shared_ptr mresult;
+public:
+  TestConstructMode( KigDocument& d, const ArgsParserObjectType* type );
+  ~TestConstructMode();
+
+  void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
+  int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w );
+  void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w );
+
+  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+                          KigWidget& w, bool ctrlOrShiftDown );
+  void midClicked( const QPoint& p, KigWidget& w );
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
 };
 
 #endif

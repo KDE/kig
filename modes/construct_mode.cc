@@ -20,6 +20,11 @@
 
 #include "../objects/object_factory.h"
 #include "../objects/object_drawer.h"
+#include "../objects/text_type.h"
+#include "../objects/text_imp.h"
+#include "../objects/bogus_imp.h"
+#include "../objects/point_imp.h"
+#include "../misc/argsparser.h"
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
@@ -32,6 +37,7 @@
 #include <kaction.h>
 
 #include <algorithm>
+#include <functional>
 
 static void redefinePoint( ObjectTypeCalcer* mpt, const Coordinate& c, KigDocument& doc, const KigWidget& w )
 {
@@ -39,18 +45,18 @@ static void redefinePoint( ObjectTypeCalcer* mpt, const Coordinate& c, KigDocume
   mpt->calc( doc );
 }
 
-ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
-  : BaseMode( d ), mctor( ctor )
+BaseConstructMode::BaseConstructMode( KigDocument& d )
+  : BaseMode( d )
 {
   mpt = ObjectFactory::instance()->fixedPointCalcer( Coordinate( 0, 0 ) );
   mpt->calc( d );
 }
 
-ConstructMode::~ConstructMode()
+BaseConstructMode::~BaseConstructMode()
 {
 }
 
-void ConstructMode::leftClickedObject(
+void BaseConstructMode::leftClickedObject(
   ObjectHolder* o, const QPoint& p, KigWidget& w, bool )
 {
   bool alreadyselected = std::find( mparents.begin(), mparents.end(), o ) != mparents.end();
@@ -58,7 +64,7 @@ void ConstructMode::leftClickedObject(
   if ( o && !alreadyselected )
   {
     nargs.push_back( o->calcer() );
-    if ( mctor->wantArgs( nargs, mdoc, w ) )
+    if ( wantArgs( nargs, mdoc, w ) )
     {
       selectObject( o, w );
       return;
@@ -67,7 +73,7 @@ void ConstructMode::leftClickedObject(
 
   nargs = getCalcers( mparents );
   nargs.push_back( mpt.get() );
-  if ( mctor->wantArgs( nargs, mdoc, w ) )
+  if ( wantArgs( nargs, mdoc, w ) )
   {
     // add mpt to the document..
     ObjectHolder* n = new ObjectHolder( mpt.get() );
@@ -79,11 +85,11 @@ void ConstructMode::leftClickedObject(
   }
 }
 
-void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
+void BaseConstructMode::midClicked( const QPoint& p, KigWidget& w )
 {
   std::vector<ObjectCalcer*> args = getCalcers( mparents );
   args.push_back( mpt.get() );
-  if ( mctor->wantArgs( args, mdoc, w ) )
+  if ( wantArgs( args, mdoc, w ) )
   {
     ObjectHolder* n = new ObjectHolder( mpt.get() );
     mdoc.addObject( n );
@@ -95,20 +101,16 @@ void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
   }
 }
 
-void ConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
+void BaseConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
 {
   // TODO ?
 }
 
-void ConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
+void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
                                 KigWidget& w, bool shiftpressed )
 {
   w.updateCurPix();
   KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
-
-  // set the text next to the arrow cursor like in modes/normal.cc
-  QPoint textloc = p;
-  textloc.setX( textloc.x() + 15 );
 
   Coordinate ncoord = w.fromScreen( p );
   if ( shiftpressed )
@@ -123,13 +125,9 @@ void ConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoi
     alreadyselected = std::find( mparents.begin(), mparents.end(), os.front() ) != mparents.end();
     if ( ! alreadyselected ) args.push_back( os.front()->calcer() );
   }
-  if ( !os.empty() && ! alreadyselected && mctor->wantArgs( args, mdoc, w ) )
+  if ( !os.empty() && ! alreadyselected && wantArgs( args, mdoc, w ) )
   {
-    mctor->handlePrelim( pter, args, mdoc, w );
-
-    QString o = mctor->useText( *os.front()->calcer(), args, mdoc, w );
-    mdoc.emitStatusBarText( o );
-    pter.drawTextStd( textloc, o );
+    handlePrelim( args, p, pter, w );
 
     w.setCursor( KCursor::handCursor() );
   }
@@ -137,15 +135,12 @@ void ConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoi
   {
     std::vector<ObjectCalcer*> args = getCalcers( mparents );
     args.push_back( mpt.get() );
-    if ( mctor->wantArgs( args, mdoc, w ) )
+    if ( wantArgs( args, mdoc, w ) )
     {
       ObjectDrawer d;
       d.draw( *mpt->imp(), pter, true );
-      mctor->handlePrelim( pter, args, mdoc, w );
 
-      QString o = mctor->useText( *mpt, args, mdoc, w );
-      mdoc.emitStatusBarText( o );
-      pter.drawTextStd( textloc, o );
+      handlePrelim( args, p, pter, w );
 
       w.setCursor( KCursor::handCursor() );
     }
@@ -157,16 +152,14 @@ void ConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoi
   w.updateWidget( pter.overlay() );
 }
 
-void ConstructMode::selectObject( ObjectHolder* o, KigWidget& w )
+void BaseConstructMode::selectObject( ObjectHolder* o, KigWidget& w )
 {
   mparents.push_back( o );
   std::vector<ObjectCalcer*> args = getCalcers( mparents );
 
-  if ( mctor->wantArgs( args, mdoc, w ) == ArgsParser::Complete )
+  if ( wantArgs( args, mdoc, w ) == ArgsParser::Complete )
   {
-    mctor->handleArgs( args, mdoc, w );
-    // finish off..
-    finish();
+    handleArgs( args, w );
   };
 
   w.redrawScreen( mparents );
@@ -228,14 +221,14 @@ void PointConstructMode::mouseMoved(
   w.updateWidget( pter.overlay() );
 }
 
-void ConstructMode::enableActions()
+void BaseConstructMode::enableActions()
 {
   BaseMode::enableActions();
 
   mdoc.aCancelConstruction->setEnabled( true );
 }
 
-void ConstructMode::cancelConstruction()
+void BaseConstructMode::cancelConstruction()
 {
   finish();
 }
@@ -252,17 +245,163 @@ void PointConstructMode::cancelConstruction()
   mdoc.doneMode( this );
 }
 
-void ConstructMode::selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w )
+void BaseConstructMode::selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w )
 {
   for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     std::vector<ObjectCalcer*> args = getCalcers( mparents );
-    assert( mctor->wantArgs( args, mdoc, w ) != ArgsParser::Complete );
+    assert( wantArgs( args, mdoc, w ) != ArgsParser::Complete );
     selectObject( *i, w );
   };
 }
 
-void ConstructMode::finish()
+void ConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& args, const QPoint& p, KigPainter& pter, KigWidget& w )
+{
+  // set the text next to the arrow cursor like in modes/normal.cc
+  QPoint textloc = p;
+  textloc.setX( textloc.x() + 15 );
+
+  mctor->handlePrelim( pter, args, mdoc, w );
+
+  QString o = mctor->useText( *args.front(), args, mdoc, w );
+  mdoc.emitStatusBarText( o );
+  pter.drawTextStd( textloc, o );
+}
+
+int ConstructMode::wantArgs( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w )
+{
+  return mctor->wantArgs( os, d, w );
+}
+
+void BaseConstructMode::finish()
 {
   mdoc.doneMode( this );
+}
+
+ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
+  : BaseConstructMode( d ), mctor( ctor )
+{
+}
+
+ConstructMode::~ConstructMode()
+{
+}
+
+// does a test result have a frame by default ?
+static const bool test_has_frame_dflt = true;
+
+void TestConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter& pter, KigWidget& w )
+{
+  Args args;
+  std::transform( os.begin(), os.end(), std::back_inserter( args ),
+                  std::mem_fun( &ObjectCalcer::imp ) );
+
+  QString usetext = i18n( mtype->argsParser().usetext( args.front(), args ) );
+  ObjectImp* data = mtype->calc( args, mdoc );
+  if ( ! data->valid() ) return;
+  assert( data->inherits( TestResultImp::stype() ) );
+  QString outputtext = static_cast<TestResultImp*>( data )->data();
+
+  // usetext
+  QPoint textloc = p;
+  textloc.setX( textloc.x() + 15 );
+  mdoc.emitStatusBarText( usetext );
+  pter.drawTextStd( textloc, usetext );
+
+  // test result
+  TextImp ti( outputtext, w.fromScreen( p + QPoint( - 40, 30 ) ), test_has_frame_dflt );
+  ti.draw( pter );
+
+  delete data;
+}
+
+TestConstructMode::TestConstructMode( KigDocument& d, const ArgsParserObjectType* type )
+  : BaseConstructMode( d ), mtype( type )
+{
+}
+
+TestConstructMode::~TestConstructMode()
+{
+}
+
+void ConstructMode::handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w )
+{
+  mctor->handleArgs( args, mdoc, w );
+  finish();
+}
+
+int TestConstructMode::wantArgs( const std::vector<ObjectCalcer*>& os, KigDocument&, KigWidget& )
+{
+  return mtype->argsParser().check( os );
+}
+
+void TestConstructMode::handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& )
+{
+  mresult = new ObjectTypeCalcer( mtype, args );
+  mresult->calc( mdoc );
+}
+
+void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
+                                           KigWidget& w, bool ctrlOrShiftDown )
+{
+  if ( mresult ) {
+    QPoint qloc = p + QPoint( -40, 0 );
+    Coordinate loc = w.fromScreen( qloc );
+
+    std::vector<ObjectCalcer*> parents;
+    parents.push_back( new ObjectConstCalcer( new IntImp( test_has_frame_dflt ) ) );
+    parents.push_back( new ObjectConstCalcer( new PointImp( loc ) ) );
+    parents.push_back( new ObjectConstCalcer( new StringImp( QString::fromLatin1( "%1" ) ) ) );
+    parents.push_back( mresult.get() );
+
+    ObjectCalcer* ret = new ObjectTypeCalcer( TextType::instance(), parents );
+    ret->calc( mdoc );
+    mdoc.addObject( new ObjectHolder( ret ) );
+
+    w.unsetCursor();
+
+    finish();
+  }
+  else
+    BaseConstructMode::leftClickedObject( o, p, w, ctrlOrShiftDown );
+}
+
+void TestConstructMode::midClicked( const QPoint& p, KigWidget& w )
+{
+  if ( mresult ) {
+    // nothing to be done here, really
+  }
+  else
+    BaseConstructMode::midClicked( p, w );
+}
+
+void TestConstructMode::rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w )
+{
+  if ( mresult ) {
+    // nothing to be done here, really
+  }
+  else
+    BaseConstructMode::rightClicked( oco, p, w );
+}
+
+void TestConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftPressed )
+{
+  if ( mresult ) {
+    w.setCursor( KCursor::blankCursor() );
+
+    w.updateCurPix();
+    KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
+
+    QPoint qloc = p + QPoint( -40, 0 );
+    Coordinate loc = w.fromScreen( qloc );
+    assert( dynamic_cast<const TestResultImp*>( mresult->imp() ) );
+    TextImp ti( static_cast<const TestResultImp*>( mresult->imp() )->data(), loc, test_has_frame_dflt );
+    ObjectDrawer d;
+    d.draw( ti, pter, false );
+
+
+    w.updateWidget( pter.overlay() );
+  }
+  else
+    BaseConstructMode::mouseMoved( os, p, w, shiftPressed );
 }

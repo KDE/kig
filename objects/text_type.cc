@@ -21,6 +21,7 @@
 #include "text_imp.h"
 #include "bogus_imp.h"
 #include "point_imp.h"
+#include "line_imp.h"
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
@@ -31,6 +32,8 @@
 #include <algorithm>
 
 #include <qstringlist.h>
+
+#include <cmath>
 
 static const ArgsParser::spec arggspeccs[] =
 {
@@ -186,3 +189,4 @@ std::vector<ObjectCalcer*> TextType::movableParents( const ObjectTypeCalcer& our
   ret.push_back( parents[1] );
   return ret;
 }
+

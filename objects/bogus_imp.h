@@ -249,4 +249,27 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+class TestResultImp
+  : public BogusImp
+{
+  const QString mdata;
+public:
+  static const ObjectImpType* stype();
+  typedef BogusImp Parent;
+
+  TestResultImp( const QString& s );
+
+  TestResultImp* copy() const;
+
+  const QString& data() const { return mdata; };
+
+  const ObjectImpType* type() const;
+  void visit( ObjectImpVisitor* vtor ) const;
+
+  bool canFillInNextEscape() const;
+  void fillInNextEscape( QString& s, const KigDocument& ) const;
+
+  bool equals( const ObjectImp& rhs ) const;
+};
+
 #endif

@@ -30,6 +30,7 @@
 #include "other_type.h"
 #include "transform_types.h"
 #include "point_type.h"
+#include "tests_type.h"
 
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
 #include "../scripting/python_type.h"
@@ -123,6 +124,9 @@ void ObjectTypeFactory::setupBuiltinTypes()
 
   // text_type.h
   add( TextType::instance() );
+
+  // tests_type.h
+  add( AreParallelType::instance() );
 
   // transform_types.h
   add( TranslatedType::instance() );

@@ -36,6 +36,8 @@
 #include "../objects/circle_imp.h"
 #include "../objects/point_imp.h"
 
+#include "../modes/construct_mode.h"
+
 #include <qpen.h>
 
 #include <algorithm>
@@ -522,5 +524,15 @@ void PropertyObjectConstructor::plug( KigDocument*, KigGUIAction* )
 bool PropertyObjectConstructor::isTransform() const
 {
   return false;
+}
+
+bool ObjectConstructor::isTest() const
+{
+  return false;
+}
+
+BaseConstructMode* ObjectConstructor::constructMode( KigDocument& doc )
+{
+  return new ConstructMode( doc, this );
 }
 

@@ -417,5 +417,37 @@ bool operator==( const LineData& l, const LineData& r )
   return l.a == r.a && l.b == r.b;
 }
 
-const double double_inf = HUGE_VAL;
+bool LineData::isParallelTo( const LineData& l ) const
+{
+  const Coordinate& p1 = a;
+  const Coordinate& p2 = b;
+  const Coordinate& p3 = l.a;
+  const Coordinate& p4 = l.b;
 
+  double dx1 = p2.x - p1.x;
+  double dy1 = p2.y - p1.y;
+  double dx2 = p4.x - p3.x;
+  double dy2 = p4.y - p3.y;
+
+  double det = dx1*dy2 - dx2*dy1;
+
+  if ( std::fabs(det) < test_threshold )
+    return true;
+  else
+    return false;
+}
+
+bool areCollinear( const Coordinate& p1,
+                   const Coordinate& p2, const Coordinate& p3 )
+{
+  double det = p1.x*p2.y + p2.x*p3.y + p3.x*p1.y
+             - p1.y*p2.x - p2.y*p3.x - p3.y*p1.x;
+
+  if ( std::fabs(det) < test_threshold )
+    return true;
+  else
+    return false;
+}
+
+const double double_inf = HUGE_VAL;
+const double test_threshold = 1e-6;

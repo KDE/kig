@@ -45,6 +45,8 @@
 
 #include "../kig/kig_part.h"
 
+#include "../modes/construct_mode.h"
+
 #include <qpen.h>
 
 #include <algorithm>
@@ -441,3 +443,58 @@ bool MidPointOfTwoPointsConstructor::isTransform() const
 {
   return false;
 }
+
+TestConstructor::TestConstructor( const ArgsParserObjectType* type, const char* descname,
+                                  const char* desc, const char* iconfile )
+  : StandardConstructorBase( descname, desc, iconfile, type->argsParser() ),
+    mtype( type )
+{
+}
+
+TestConstructor::~TestConstructor()
+{
+}
+
+void TestConstructor::drawprelim( KigPainter&, const std::vector<ObjectCalcer*>&,
+                                  const KigDocument& ) const
+{
+  // not used, only here because of the wrong
+  // ObjectConstructor-GUIAction design.  See the TODO
+}
+
+std::vector<ObjectHolder*> TestConstructor::build( const std::vector<ObjectCalcer*>&, KigDocument&,
+                                                   KigWidget& ) const
+{
+  // not used, only here because of the wrong
+  // ObjectConstructor-GUIAction design.  See the TODO
+  std::vector<ObjectHolder*> ret;
+  return ret;
+}
+
+void TestConstructor::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+bool TestConstructor::isTransform() const
+{
+  return false;
+}
+
+bool TestConstructor::isTest() const
+{
+  return true;
+}
+
+BaseConstructMode* TestConstructor::constructMode( KigDocument& doc )
+{
+  return new TestConstructMode( doc, mtype );
+}
+
+const int TestConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+                                     const KigDocument& d, const KigWidget& v ) const
+{
+  int ret = StandardConstructorBase::wantArgs( os, d, v );
+  if ( ret == ArgsParser::Complete ) ret = ArgsParser::Valid;
+  return ret;
+}
+

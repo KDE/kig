@@ -86,6 +86,11 @@ public:
    * The length from a to b.
    */
   double length() const { return ( b - a ).length(); };
+
+  /**
+   * Return true if this line is parallel to l.
+   */
+  bool isParallelTo( const LineData& l ) const;
 };
 
 /**
@@ -202,6 +207,9 @@ const Coordinate calcMirrorPoint( const LineData& l,
 bool isOnLine( const Coordinate& o, const Coordinate& a,
                const Coordinate& b, const double fault );
 
+bool areCollinear( const Coordinate& p1, const Coordinate& p2,
+               const Coordinate& p3 );
+
 /**
  * is o on the segment defined by point a and point b ?
  * this calls isOnLine(), but also checks if o is "between" a and b...
@@ -236,5 +244,7 @@ T kigMax( const T& a, const T& b )
 {
   return a > b ? a : b;
 }
+
+extern const double test_threshold;
 
 #endif

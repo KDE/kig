@@ -27,6 +27,7 @@ class StringImp;
 class InvalidImp;
 class HierarchyImp;
 class TransformationImp;
+class TestResultImp;
 class CurveImp;
 class LineImp;
 class PointImp;
@@ -60,6 +61,7 @@ public:
   virtual void visit( const InvalidImp* imp );
   virtual void visit( const HierarchyImp* imp );
   virtual void visit( const TransformationImp* imp );
+  virtual void visit( const TestResultImp* imp );
   virtual void visit( const LineImp* imp );
   virtual void visit( const PointImp* imp );
   virtual void visit( const TextImp* imp );

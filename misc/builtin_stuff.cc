@@ -33,6 +33,7 @@
 #include "../objects/conic_types.h"
 #include "../objects/cubic_type.h"
 #include "../objects/other_type.h"
+#include "../objects/tests_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/point_type.h"
 #include "../objects/other_imp.h"
@@ -381,6 +382,17 @@ void setupBuiltinStuff()
     c = new LocusConstructor();
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_locus" ) );
+
+    // tests
+    c = new TestConstructor( AreParallelType::instance(), "Parallel Test",
+                             "Test whether two given lines are parallel", "" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_areparallel" ) );
+
+    c = new TestConstructor( AreCollinearType::instance(), "Collinear Test",
+                             "Test whether three given points are collinear", "" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_arecollinear" ) );
 
     // the generic intersection constructor..
     c = new GenericIntersectionConstructor();

@@ -16,6 +16,10 @@
 
 * harder:
 
+- rework the ObjectConstructor and GUIAction stuff into something more
+   general, and more clean.  See the comment for
+   ObjectConstructor::constructMode().
+
 - make the dialogs not pop up over the main window..
 
 - make the python scripting work more like the macro system.  Make it
@@ -34,8 +38,6 @@
 - figure out a way to allow the user to enable and disable certain
   features.  E.g. I have been asked to allow the user to limit himself
   to compass-ruler constructions..
-
-- check "property's", like "is point x on line y"
 
 - "export to *".  We already have images and XFig files, i'd like to
   add stuff like java applets etc ... :)

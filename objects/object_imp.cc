@@ -161,6 +161,10 @@ void ObjectImpVisitor::visit( const TransformationImp* )
 {
 }
 
+void ObjectImpVisitor::visit( const TestResultImp* )
+{
+}
+
 const char* ObjectImp::iconForProperty( uint ) const
 {
   return "text";
@@ -285,3 +289,4 @@ QString ObjectImpType::hideAStatement() const
 {
   return i18n( mhideastatement );
 }
+

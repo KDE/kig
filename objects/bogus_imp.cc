@@ -286,3 +286,47 @@ const ObjectImpType* BogusImp::stype()
   return &t;
 }
 
+const ObjectImpType* TestResultImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "testresult", "", "", "", "", "", "", "", "" );
+  return &t;
+
+}
+
+TestResultImp::TestResultImp( const QString& s )
+  : mdata( s )
+{
+}
+
+TestResultImp* TestResultImp::copy() const
+{
+  return new TestResultImp( mdata );
+}
+
+const ObjectImpType* TestResultImp::type() const
+{
+  return stype();
+}
+
+void TestResultImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+bool TestResultImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( TestResultImp::stype() ) &&
+    static_cast<const TestResultImp&>( rhs ).mdata == mdata;
+
+}
+
+bool TestResultImp::canFillInNextEscape() const
+{
+  return true;
+}
+
+void TestResultImp::fillInNextEscape( QString& s, const KigDocument& ) const
+{
+  s = s.arg( mdata );
+}

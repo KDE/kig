@@ -45,7 +45,6 @@
 #include <qdialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
-
 #include <algorithm>
 #include <functional>
 
@@ -116,7 +115,9 @@ public:
 class PropertiesActionsProvider
   : public PopupActionProvider
 {
-  std::vector<int> mprops[3];
+  // we don't really need NumberOfMenus vectors, but this is the
+  // easiest way to do it, and I'm too lazy to do it properly ;)
+  std::vector<int> mprops[NormalModePopupObjects::NumberOfMenus];
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
   bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
@@ -148,7 +149,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
 
   insertTitle( empty ? i18n( "Kig Document" )
                : single ? objs[0]->imp()->type()->translatedName()
-               : i18n( "%1 std::vector<ObjectHolder*>" ).arg( objs.size() ), 1 );
+               : i18n( "%1 Objects" ).arg( objs.size() ), 1 );
 
   if ( empty )
   {
@@ -175,6 +176,8 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
 
   connect( mmenus[TransformMenu], SIGNAL( activated( int ) ),
            this, SLOT( transformMenuSlot( int ) ) );
+  connect( mmenus[TestMenu], SIGNAL( activated( int ) ),
+           this, SLOT( testMenuSlot( int ) ) );
   connect( mmenus[ConstructMenu], SIGNAL( activated( int ) ),
            this, SLOT( constructMenuSlot( int ) ) );
   connect( mmenus[StartMenu], SIGNAL( activated( int ) ),
@@ -197,6 +200,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
   static const QString menunames[NumberOfMenus] =
     {
       i18n( "&Transform" ),
+      i18n( "T&est" ),
       i18n( "Const&ruct" ),
       i18n( "&Start" ),
       i18n( "Add Te&xt Label" ),
@@ -211,6 +215,11 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
     if ( mmenus[i]->count() == 0 ) continue;
     insertItem( menunames[i], mmenus[i], i, index++ );
   };
+}
+
+void NormalModePopupObjects::testMenuSlot( int i )
+{
+  activateAction( TestMenu, i );
 }
 
 void NormalModePopupObjects::transformMenuSlot( int i )
@@ -407,13 +416,14 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     bool add = false;
     if ( popup.objects().empty() )
     {
-      add = menu == NormalModePopupObjects::StartMenu && ! (*i)->isTransform();
+      add = menu == NormalModePopupObjects::StartMenu && ! (*i)->isTransform() && ! (*i)->isTest();
     }
     else
     {
       int ret = (*i)->wantArgs( getCalcers( popup.objects() ), d, v );
       if ( ret == ArgsParser::Invalid ) continue;
       if ( (*i)->isTransform() && popup.objects().size() == 1 ) add = menu == NormalModePopupObjects::TransformMenu;
+      else if ( (*i)->isTest() ) add = menu == NormalModePopupObjects::TestMenu;
       else if ( ( *i )->isIntersection() ) add = menu == NormalModePopupObjects::ToplevelMenu;
       else if ( ret == ArgsParser::Complete ) add = menu == NormalModePopupObjects::ConstructMenu;
       else add = menu == NormalModePopupObjects::StartMenu;
@@ -453,9 +463,10 @@ bool ObjectConstructorActionsProvider::executeAction(
   }
   else
   {
-    ConstructMode m( doc, ctor );
-    m.selectObjects( os, w );
-    doc.runMode( &m );
+    BaseConstructMode* mode = ctor->constructMode( doc );
+    mode->selectObjects( os, w );
+    doc.runMode( mode );
+    delete mode;
   };
   return true;
 }

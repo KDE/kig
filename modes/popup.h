@@ -54,7 +54,7 @@ public:
 
   // the different "menu's", the toplevel is considered as just
   // another menu..
-  enum { TransformMenu = 0, ConstructMenu, StartMenu, ShowMenu,
+  enum { TransformMenu = 0, TestMenu, ConstructMenu, StartMenu, ShowMenu,
          SetColorMenu, SetSizeMenu, ToplevelMenu,
          SetCoordinateSystemMenu, NumberOfMenus };
 
@@ -75,6 +75,7 @@ protected:
 
 private slots:
   void transformMenuSlot( int );
+  void testMenuSlot( int );
   void constructMenuSlot( int );
   void startMenuSlot( int );
   void showMenuSlot( int );
