@@ -106,6 +106,6 @@ private:
   CPts pts;
 
   // some functions used by calcPointLocus...
-  inline Coordinate internalGetCoord( double, bool& valid );
+  inline Coordinate internalGetCoord( double );
 };
 #endif
