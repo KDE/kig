@@ -32,7 +32,7 @@
 
 ConstructAction::ConstructAction( KigDocument* d, Type* t,
                                   const int cut )
-  : KAction( i18n( t->descriptiveName() ), cut, d->actionCollection(), t->actionName() ),
+  : KAction( t->descriptiveName(), cut, d->actionCollection(), t->actionName() ),
     mdoc( d ),
     mtype( t )
 {

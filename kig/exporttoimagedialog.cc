@@ -79,8 +79,8 @@ void ExportToImageDialog::slotOKPressed()
     return;
   };
 
-  QString type =  KImageIO::type( filename );
-  if ( ! type )
+  QString type = KImageIO::type( filename );
+  if ( type.isNull() )
   {
     KMessageBox::sorry( mv,
                         i18n( "Sorry, this file format is not supported." ) );
@@ -94,7 +94,7 @@ void ExportToImageDialog::slotOKPressed()
   KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img );
   p.drawGrid( md->coordinateSystem() );
   p.drawObjects( md->objects() );
-  if ( ! img.save( filename, type ) )
+  if ( ! img.save( filename, type.latin1() ) )
   {
     KMessageBox::error( md->widget(), i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );
     return;
