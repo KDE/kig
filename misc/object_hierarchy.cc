@@ -464,7 +464,7 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
       ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e );
       newnode = new PushStackNode( imp );
     };
-    mnodes.resize( kMax( id - mnumberofargs, mnodes.size() ) );
+    mnodes.resize( kMax( size_t(id - mnumberofargs), mnodes.size() ) );
     mnodes[id - mnumberofargs - 1] = newnode;
   };
 }
