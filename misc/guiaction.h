@@ -93,18 +93,6 @@ public:
   void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
-class CircleByCenterAndRadiusAction
-  : public GUIAction
-{
-public:
-  QString description() const;
-  QCString iconFileName() const;
-  QString descriptiveName() const;
-  const char* actionName() const;
-  void act( KigDocument& );
-  void plug( KigDocument* doc, KigGUIAction* kact );
-};
-
 class ConstructTextLabelAction
   : public GUIAction
 {

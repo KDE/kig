@@ -28,50 +28,9 @@
 
 #include <kiconloader.h>
 
-QString CircleByCenterAndRadiusAction::description() const
-{
-  return i18n( "Circle by center and radius" );
-}
-
-QCString CircleByCenterAndRadiusAction::iconFileName() const
-{
-  return "baseCircle";
-}
-
-void CircleByCenterAndRadiusAction::act( KigDocument& )
-{
-//   const struct ArgParser::spec myspec[] = { { Object::PointT, 1 } };
-//   ArgParser parser( myspec, 1 );
-//   StandAloneSelectionMode mode( parser, &d );
-//   if ( mode.run( d.mode() ) )
-//   {
-//     Objects os = mode.selection();
-//     assert( os.size() == 1 );
-//     Object* o = os.front();
-//     assert( o->isa( PointT ) );
-//     Point* p = static_cast<Point*>( o );
-//     bool ok = true;
-//     QString ret = QInputDialog::getDouble( i18n( "Circle with fixed radius" ), i18n( "Please enter the radius" ),
-//                                            5, 0, 2147483647, 5, &ok );
-//     double radius;
-//     if ( ok ) radius = ret.toDouble( &ok );
-//     if ( ok )
-//     {
-//       Circle* c = new CircleBPR( p, radius );
-//       d.addObject( c );
-//       d.mainWidget()->realWidget()->redrawScreen();
-//     };
-//   };
-}
-
 int GUIAction::shortcut() const
 {
   return 0;
-}
-
-QString CircleByCenterAndRadiusAction::descriptiveName() const
-{
-  return i18n( "Circle defined by its center and a fixed radius" );
 }
 
 GUIAction::~GUIAction()
@@ -129,11 +88,6 @@ KigGUIAction::KigGUIAction( GUIAction* act,
 void KigGUIAction::slotActivated()
 {
   mact->act( mdoc );
-}
-
-const char* CircleByCenterAndRadiusAction::actionName() const
-{
-  return "objects_new_circlebcr";
 }
 
 const char* ConstructibleAction::actionName() const
@@ -200,10 +154,6 @@ void ConstructibleAction::plug( KigDocument* doc, KigGUIAction* kact )
 }
 
 void ConstructPointAction::plug( KigDocument*, KigGUIAction* )
-{
-}
-
-void CircleByCenterAndRadiusAction::plug( KigDocument*, KigGUIAction* )
 {
 }
 
