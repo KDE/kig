@@ -42,7 +42,7 @@ noinst_LTLIBRARIES = libkigparttemp.la
 
 # the Part's source, library search path, and link libraries
 libkigparttemp_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp \
-	constructactions.cc kig_actions.cpp \
+	kig_actions.cpp \
 	exporttoimagedialogbase.ui exporttoimagedialog.cc
 
 # this is where the desktop file will go 
