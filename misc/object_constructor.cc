@@ -73,18 +73,17 @@ void StandardConstructorBase::handleArgs(
 {
   Objects args = margsparser.parse( os );
   Objects bos = build( args, d, v );
-  bos.calc( v );
+  bos.calc();
   d.addObjects( bos );
 }
 
 void StandardConstructorBase::handlePrelim(
   KigPainter& p, const Objects& os,
-  const KigDocument&, const KigWidget& v
+  const KigDocument&, const KigWidget&
   ) const
 {
   assert ( margsparser.check( os ) != ArgParser::Invalid );
-
-  drawprelim( p, os, v );
+  drawprelim( p, os );
 }
 
 SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
@@ -101,13 +100,13 @@ SimpleObjectTypeConstructor::~SimpleObjectTypeConstructor()
   delete mtype;
 }
 
-void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& parents, const KigWidget& w ) const
+void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
 {
   Args args;
   using namespace std;
   transform( parents.begin(), parents.end(),
              back_inserter( args ), mem_fun( &Object::imp ) );
-  ObjectImp* data = mtype->calc( args, w );
+  ObjectImp* data = mtype->calc( args );
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
   p.setPen( QPen ( Qt::red,  1) );
@@ -157,8 +156,7 @@ MultiObjectTypeConstructor::~MultiObjectTypeConstructor()
 }
 
 void MultiObjectTypeConstructor::drawprelim( KigPainter& p,
-                                             const Objects& parents,
-                                             const KigWidget& w ) const
+                                             const Objects& parents ) const
 {
   Args args;
   using namespace std;
@@ -174,7 +172,7 @@ void MultiObjectTypeConstructor::drawprelim( KigPainter& p,
   {
     IntImp param( *i );
     args.push_back( &param );
-    ObjectImp* data = mtype->calc( args, w );
+    ObjectImp* data = mtype->calc( args );
     data->draw( p );
     delete data; data = 0;
     args.pop_back();

@@ -101,13 +101,13 @@ void Object::move( const Coordinate& from, const Coordinate& dist )
   mtype->move( this, from, dist );
 }
 
-void Object::calc( const KigWidget& w )
+void Object::calc()
 {
   using namespace std;
   Args a = mfixedargs;
   transform( mparents.begin(), mparents.end(),
              back_inserter( a ), mem_fun( &Object::imp ) );
-  mimp.reset( mtype->calc( a, w ) );
+  mimp.reset( mtype->calc( a ) );
 }
 
 // void Object::addActions( NormalModePopupObjects& m )

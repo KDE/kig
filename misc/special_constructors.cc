@@ -49,8 +49,7 @@ ConicRadicalConstructor::~ConicRadicalConstructor()
 }
 
 void ConicRadicalConstructor::drawprelim(
-  KigPainter& p, const Objects& parents,
-  const KigWidget& w ) const
+  KigPainter& p, const Objects& parents ) const
 {
   if ( parents.size() == 2 && parents[0]->has( ObjectImp::ID_ConicImp ) &&
        parents[1]->has( ObjectImp::ID_ConicImp ) )
@@ -69,7 +68,7 @@ void ConicRadicalConstructor::drawprelim(
       IntImp zeroindex( 1 );
       args.push_back( &root );
       args.push_back( &zeroindex );
-      ObjectImp* data = mtype->calc( args, w );
+      ObjectImp* data = mtype->calc( args );
       data->draw( p );
       delete data; data = 0;
       args.pop_back();

@@ -29,8 +29,7 @@ class ConicRadicalConstructor
 public:
   ConicRadicalConstructor();
   ~ConicRadicalConstructor();
-  void drawprelim( KigPainter& p, const Objects& parents,
-                   const KigWidget& w ) const;
+  void drawprelim( KigPainter& p, const Objects& parents ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
 };
 

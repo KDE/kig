@@ -37,7 +37,7 @@ public:
   ConicLineIntersectionType();
   ~ConicLineIntersectionType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class LineLineIntersectionType
@@ -47,7 +47,7 @@ public:
   LineLineIntersectionType();
   ~LineLineIntersectionType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class LineCubicIntersectionType
@@ -57,7 +57,7 @@ public:
   LineCubicIntersectionType();
   ~LineCubicIntersectionType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 #endif

@@ -120,8 +120,7 @@ public:
     ) const;
 
   virtual void drawprelim( KigPainter& p,
-                           const Objects& parents,
-                           const KigWidget& w ) const = 0;
+                           const Objects& parents ) const;
 
   virtual Objects build(
     const Objects& os,
@@ -146,8 +145,7 @@ public:
   ~SimpleObjectTypeConstructor();
 
   void drawprelim( KigPainter& p,
-                   const Objects& parents,
-                   const KigWidget& w ) const;
+                   const Objects& parents ) const;
 
   Objects build( const Objects& os,
                  KigDocument& d,
@@ -184,8 +182,7 @@ public:
   ~MultiObjectTypeConstructor();
 
   void drawprelim( KigPainter& p,
-                   const Objects& parents,
-                   const KigWidget& w ) const;
+                   const Objects& parents ) const;
 
   Objects build( const Objects& os,
                  KigDocument& d,

@@ -28,7 +28,7 @@ public:
   ConicB5PType();
   ~ConicB5PType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicBAAPType
@@ -38,7 +38,7 @@ public:
   ConicBAAPType();
   ~ConicBAAPType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicBFFPType
@@ -48,7 +48,7 @@ protected:
   ConicBFFPType( const char* fullname );
   ~ConicBFFPType();
 public:
-  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& parents ) const;
 
   // -1 for hyperbola, 1 for ellipse..
   virtual int type() const = 0;
@@ -81,7 +81,7 @@ public:
   ConicBDFPType();
   ~ConicBDFPType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class ParabolaBTPType
@@ -91,7 +91,7 @@ public:
   ParabolaBTPType();
   ~ParabolaBTPType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class EquilateralHyperbolaB4PType
@@ -101,7 +101,7 @@ public:
   EquilateralHyperbolaB4PType();
   ~EquilateralHyperbolaB4PType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicPolarPointType
@@ -111,7 +111,7 @@ public:
   ConicPolarPointType();
   ~ConicPolarPointType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicPolarLineType
@@ -121,7 +121,7 @@ public:
   ConicPolarLineType();
   ~ConicPolarLineType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicDirectrixType
@@ -131,7 +131,7 @@ public:
   ConicDirectrixType();
   ~ConicDirectrixType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class ParabolaBDPType
@@ -151,7 +151,7 @@ public:
   ConicAsymptoteType();
   ~ConicAsymptoteType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class ConicRadicalType
@@ -161,7 +161,7 @@ public:
   ConicRadicalType();
   ~ConicRadicalType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 #endif

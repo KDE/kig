@@ -39,7 +39,7 @@ ObjectABType::~ObjectABType()
 {
 }
 
-ObjectImp* ObjectABType::calc( const Args& parents, const KigWidget& ) const
+ObjectImp* ObjectABType::calc( const Args& parents ) const
 {
   if( parents.size() != 2 ) return new InvalidImp;
   Coordinate a = static_cast<const PointImp*>( parents[0] )->coordinate();
@@ -94,7 +94,7 @@ ObjectLPType::~ObjectLPType()
 {
 }
 
-ObjectImp* ObjectLPType::calc( const Args& args, const KigWidget& ) const
+ObjectImp* ObjectLPType::calc( const Args& args ) const
 {
   if( args.size() != 2 ) return new InvalidImp;
   LineData l = static_cast<const AbstractLineImp*>( args[0] )->data();

@@ -28,7 +28,7 @@ public:
   AngleType();
   ~AngleType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class VectorType

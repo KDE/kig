@@ -28,7 +28,7 @@ public:
   CubicB9PType();
   ~CubicB9PType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 class CubicNodeB6PType
@@ -38,7 +38,7 @@ public:
   CubicNodeB6PType();
   ~CubicNodeB6PType();
   ObjectType* copy() const;
-  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& parents ) const;
 };
 
 #endif

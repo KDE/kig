@@ -327,13 +327,8 @@ bool KigDocument::openFile()
   mhistory->clear();
 
   Objects tmp = calcPath( os );
-  tmp.calc( *m_widget->realWidget() );
+  tmp.calc();
   emit recenterScreen();
-  // we do it again to avoid problems with points on locuses and such,
-  // for which the size of the current screen matters..
-  tmp.calc( *m_widget->realWidget() );
-  emit recenterScreen();
-  tmp.calc( *m_widget->realWidget() );
 
   return true;
 }

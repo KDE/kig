@@ -45,7 +45,7 @@ public:
   virtual ~ObjectType();
   virtual ObjectType* copy() const = 0;
 
-  virtual ObjectImp* calc( const Args& parents, const KigWidget& w ) const = 0;
+  virtual ObjectImp* calc( const Args& parents ) const = 0;
 
   virtual bool canMove() const;
   virtual void move( Object* ourobj, const Coordinate& from,

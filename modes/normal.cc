@@ -205,7 +205,7 @@ void NormalMode::leftClickedObject( Object* o, const QPoint&,
 void NormalMode::midClicked( const QPoint& p, KigWidget& w )
 {
   Object* pt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
-  pt->calc( w );
+  pt->calc();
   mdoc.addObject( pt );
 
   // refresh the screen...

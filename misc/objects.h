@@ -157,7 +157,7 @@ public:
   template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {};
   Objects( const Objects& os ) : myvector<Object*>( os ) {};
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
-  void calc( const KigWidget& w ) const;
+  void calc() const;
   Objects with( Object* ) const;
 };
 

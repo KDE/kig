@@ -36,7 +36,7 @@ CubicB9PType::~CubicB9PType()
 {
 }
 
-ObjectImp* CubicB9PType::calc( const Args& os, const KigWidget& ) const
+ObjectImp* CubicB9PType::calc( const Args& os ) const
 {
   std::vector<Coordinate> points;
 
@@ -63,7 +63,7 @@ CubicNodeB6PType::~CubicNodeB6PType()
 {
 }
 
-ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigWidget& ) const
+ObjectImp* CubicNodeB6PType::calc( const Args& parents ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   std::vector<Coordinate> points;

@@ -97,7 +97,7 @@ public:
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist );
 
-  void calc( const KigWidget& w );
+  void calc();
 
 //   void addActions( NormalModePopupObjects& p );
 //   void doNormalAction( int which, KigDocument& d, KigWidget& w, NormalMode& m, const Coordinate& cp );

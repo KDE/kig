@@ -26,8 +26,7 @@ class ObjectHierarchy::Node
 {
 public:
   virtual ~Node();
-  virtual void apply( std::vector<const ObjectImp*>& stack, const KigWidget&,
-                      int loc ) const = 0;
+  virtual void apply( std::vector<const ObjectImp*>& stack, int loc ) const = 0;
 };
 
 ObjectHierarchy::Node::~Node()
@@ -42,7 +41,7 @@ public:
   PushStackNode( ObjectImp* imp ) : mimp( imp ) {};
   ~PushStackNode();
   void apply( std::vector<const ObjectImp*>& stack,
-              const KigWidget&, int loc ) const;
+              int loc ) const;
 };
 
 PushStackNode::~PushStackNode()
@@ -51,7 +50,7 @@ PushStackNode::~PushStackNode()
 };
 
 void PushStackNode::apply( std::vector<const ObjectImp*>& stack,
-                           const KigWidget&, int loc ) const
+                           int loc ) const
 {
   stack[loc] = mimp->copy();
 };
@@ -65,7 +64,7 @@ public:
   ApplyTypeNode( ObjectType* type, std::vector<int>& parents )
     : mtype( type ), mparents( parents ) {};
   ~ApplyTypeNode();
-  void apply( std::vector<const ObjectImp*>& stack, const KigWidget&,
+  void apply( std::vector<const ObjectImp*>& stack,
               int loc ) const;
 };
 
@@ -75,24 +74,24 @@ ApplyTypeNode::~ApplyTypeNode()
 }
 
 void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
-                           const KigWidget& w,int loc ) const
+                           int loc ) const
 {
   Args args;
   for ( uint i = 0; i < mparents.size(); ++i )
   {
     args.push_back( stack[mparents[i]] );
   };
-  stack[loc] = mtype->calc( args, w );
+  stack[loc] = mtype->calc( args );
 };
 
-ObjectImp* ObjectHierarchy::calc( const Args& a, const KigWidget& w ) const
+ObjectImp* ObjectHierarchy::calc( const Args& a ) const
 {
   std::vector<const ObjectImp*> stack;
   stack.resize( mnodes.size() + mnumberofargs, 0 );
   std::copy( a.begin(), a.end(), stack.begin() );
   for( uint i = 0; i < mnodes.size(); ++i )
   {
-    mnodes[i]->apply( stack, w, mnumberofargs + i );
+    mnodes[i]->apply( stack, mnumberofargs + i );
   };
   for ( uint i = 0; i < stack.size() - 1; ++i )
     delete stack[i];

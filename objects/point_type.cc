@@ -43,7 +43,7 @@ FixedPointType::~FixedPointType()
 {
 }
 
-ObjectImp* FixedPointType::calc( const Args& parents, const KigWidget& ) const
+ObjectImp* FixedPointType::calc( const Args& parents ) const
 {
   assert( parents.size() == 2 );
   assert( parents[0]->inherits( ObjectImp::ID_DoubleImp ) );
@@ -54,7 +54,7 @@ ObjectImp* FixedPointType::calc( const Args& parents, const KigWidget& ) const
   return d;
 }
 
-ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigWidget& ) const
+ObjectImp* ConstrainedPointType::calc( const Args& parents ) const
 {
   assert( parents.size() == 2 );
   assert( parents[0]->inherits( ObjectImp::ID_DoubleImp ) );

@@ -42,7 +42,7 @@ public:
   ~CircleBTPType();
   ObjectType* copy() const;
 
-  ObjectImp* calc( const Args& args, const KigWidget& ) const;
+  ObjectImp* calc( const Args& args ) const;
 };
 
 #endif

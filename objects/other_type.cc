@@ -33,7 +33,7 @@ AngleType::~AngleType()
 {
 }
 
-ObjectImp* AngleType::calc( const Args& parents, const KigWidget& ) const
+ObjectImp* AngleType::calc( const Args& parents ) const
 {
   if ( parents.size() < 3 ) return new InvalidImp;
   std::vector<Coordinate> points;

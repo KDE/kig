@@ -35,10 +35,10 @@ Objects Objects::with( Object* o ) const
   return os;
 }
 
-void Objects::calc( const KigWidget& w ) const
+void Objects::calc() const
 {
   for ( const_iterator i = begin(); i != end(); ++i )
   {
-    (*i)->calc( w );
+    (*i)->calc();
   };
 }

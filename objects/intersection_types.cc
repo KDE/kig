@@ -42,8 +42,7 @@ ConicLineIntersectionType::~ConicLineIntersectionType()
 {
 }
 
-ObjectImp* ConicLineIntersectionType::calc( const Args& parents,
-                                            const KigWidget& ) const
+ObjectImp* ConicLineIntersectionType::calc( const Args& parents ) const
 {
   if ( parents.size() < 3 ) return new InvalidImp;
   Args p = margsparser.parse( parents );
@@ -92,8 +91,7 @@ LineLineIntersectionType::~LineLineIntersectionType()
 {
 }
 
-ObjectImp* LineLineIntersectionType::calc( const Args& parents,
-                                           const KigWidget& ) const
+ObjectImp* LineLineIntersectionType::calc( const Args& parents ) const
 {
   if ( parents.size() < 2 ||
        !parents[0]->inherits( ObjectImp::ID_LineImp ) ||
@@ -122,8 +120,7 @@ LineCubicIntersectionType::~LineCubicIntersectionType()
 {
 }
 
-ObjectImp* LineCubicIntersectionType::calc( const Args& parents,
-                                            const KigWidget& ) const
+ObjectImp* LineCubicIntersectionType::calc( const Args& parents ) const
 {
   if ( parents.size() < 3 ) return new InvalidImp;
   Args p = margsparser.parse( parents );

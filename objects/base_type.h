@@ -30,7 +30,7 @@ class ObjectABType
 protected:
   ObjectABType( const char* basetypename, const char* fulltypename );
   ~ObjectABType();
-  ObjectImp* calc( const Args& args, const KigWidget& ) const;
+  ObjectImp* calc( const Args& args ) const;
   bool canMove() const;
   void move( Object* o, const Coordinate& from, const Coordinate& dist ) const;
 
@@ -54,7 +54,7 @@ protected:
   ObjectLPType( const char* basename, const char* fullname );
   ~ObjectLPType();
 public:
-  ObjectImp* calc( const Args& args, const KigWidget& ) const;
+  ObjectImp* calc( const Args& args ) const;
 
   virtual ObjectImp* calc( const LineData& a, const Coordinate& b ) const = 0;
 };

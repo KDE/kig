@@ -30,7 +30,7 @@ class ObjectHierarchy
 public:
   ObjectHierarchy( const Objects& from, const Object* to );
   ~ObjectHierarchy();
-  ObjectImp* calc( const Args& a, const KigWidget& w ) const;
+  ObjectImp* calc( const Args& a ) const;
 };
 
 #endif

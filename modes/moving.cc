@@ -63,7 +63,7 @@ void MovingModeBase::initScreen( const Objects& in )
 void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
 {
   // clean up after ourselves:
-  amo.calc( *v );
+  amo.calc();
   stopMove();
   mdoc.setModified( true );
 
@@ -79,7 +79,7 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
   moveTo( c );
-  amo.calc( *v );
+  amo.calc();
   KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
