@@ -1,6 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2004  Dominique Devriese <devriese@kde.org>
+ Copyright (C) 2004  Pino Toscano <toscano.pino@tiscali.it>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

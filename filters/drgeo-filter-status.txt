@@ -41,6 +41,7 @@ Locuses           may work
 Polygons          also in Kig :-)
 Transformations   scaling
 Intersections     arc-line (also in Kig)
+boundingBox       temporarily ignored
 
 Known problems
 --------------

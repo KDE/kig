@@ -47,7 +47,7 @@ KigFilters::KigFilters()
   mFilters.push_back( KigFilterCabri::instance() );
   mFilters.push_back( KigFilterNative::instance() );
   // domi:disabled for now, reenable when it's ready.
-  // mFilters.push_back( KigFilterDrgeo::instance() );
+   mFilters.push_back( KigFilterDrgeo::instance() );
 }
 
 KigFilters* KigFilters::instance()

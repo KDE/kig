@@ -19,31 +19,36 @@
  USA
 **/
 
-#ifndef KIG_MISC_GONIOMETRY_H
-#define KIG_MISC_GONIOMETRY_H
+#ifndef KIG_OBJECTS_EDITANGLESIZE_H
+#define KIG_OBJECTS_EDITANGLESIZE_H
 
-#include <qstringlist.h>
+#include "editanglesizebase.h"
 
-class Goniometry
+#include "../misc/goniometry.h"
+
+#include <kiconloader.h>
+
+class EditAngleSize : public EditAngleSizeBase
 {
-public:
-  enum System { Deg, Rad, Grad };
-  Goniometry();
-  Goniometry( double value, Goniometry::System system );
-  ~Goniometry();
-  void setValue( double value );
-  const double value() const;
-  void setSystem( Goniometry::System system );
-  void convertTo( Goniometry::System system );
-  const Goniometry::System system() const;
-  static double convert( const double angle, const Goniometry::System from, const Goniometry::System to );
-  static QStringList systemList();
-  static Goniometry::System intToSystem( const int index );
+  Q_OBJECT
 
-private:
-  double mvalue;
-  typedef Goniometry::System goniosys;
-  goniosys msys;
+  Goniometry mang;
+  Goniometry mang_orig;
+  bool isnum;
+  const KIconLoader* il;
+public:
+  EditAngleSize( QWidget* parent, double angle = 0, Goniometry::System system = Goniometry::Rad );
+  ~EditAngleSize();
+  const double angle() const;
+  const Goniometry::System system() const;
+
+public slots:
+  void okSlot();
+  void cancelSlot();
+
+protected slots:
+  void activatedSlot( int index );
+  void textChangedSlot( const QString& txt );
 };
 
 #endif

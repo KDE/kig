@@ -154,6 +154,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
   using namespace std;
   std::vector<HierarchyElement> elems;
 //  int nelems = 0;
+  int withoutid = 0;
 
   // 1st: fetch relationships and build an appropriate structure
   for (QDomNode a = f; ! a.isNull(); a = a.nextSibling() )
@@ -173,7 +174,8 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
           elem.parents.push_back( ce.attribute( "ref" ) );
         }
       }
-      elem.id = domelem.attribute( "id" );
+      QString curid = domelem.attribute( "id" );
+      elem.id = !curid.isNull() ? curid : QString::number( withoutid++ ) ;
       elems.push_back( elem );
 //      nelems += 1;
     }
@@ -198,6 +200,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
   const ObjectFactory* fact = ObjectFactory::instance();
   std::vector<ObjectHolder*> holders;
   ObjectCalcer* oc = 0;
+  int nignored = 0;
 
   // there's no need to sort the objects because it seems that DrGeo objects
   // appear in the right order... so let's go!
@@ -211,7 +214,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       int parentid = convertDrgeoIndex( elems, el.parents[j] );
       if ( parentid == -1 )
         KIG_FILTER_PARSE_ERROR;
-      parents.push_back( holders[parentid]->calcer() );
+      parents.push_back( holders[parentid-nignored]->calcer() );
     };
     if ( parents.size() > 1 )
       kdDebug() << "+++++++++ parents: " << parents[0] << " " << parents[1] << " " << parents[2] << endl;
@@ -644,6 +647,8 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       kdDebug() << "+++++++++ angle - " << domelem.attribute( "type" ) << endl;
       if ( domelem.attribute( "type" ) == "3pts" )
         oc = new ObjectTypeCalcer( AngleType::instance(), parents );
+// pino: commented out, because Dr. Geo seems have no trasformation for angles
+/*
       else if ( domelem.attribute( "type" ) == "Reflexion" )
         oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
       else if ( domelem.attribute( "type" ) == "Symmetry" )
@@ -652,6 +657,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
       else if ( domelem.attribute( "type" ) == "Rotation" )
         oc = new ObjectTypeCalcer( RotationType::instance(), parents );
+*/
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
@@ -726,6 +732,12 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 //        oc = new ObjectTypeCalcer( ??? ::instance(), parents );
       kdDebug() << "+++++++++ oc:" << oc << endl;
     }
+    else if ( domelem.tagName() == "boundingBox" )
+    {
+      kdDebug() << "+++++++++ boundingBox" << endl;
+      nignored++;
+// ignoring this element, since it isn't useful to us...
+    }
     else
     {
       kdDebug() << "+++++++++ UNKNOWN: " << domelem.tagName() << " - " << domelem.attribute( "type" ) << endl;
@@ -789,7 +801,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     ObjectHolder* o = new ObjectHolder( oc, d );
     holders.push_back( o );
     kdDebug() << ">>>>>>>>> calc" << endl;
-    holders[curid-1]->calc( doc );
+    holders[curid-1-nignored]->calc( doc );
     oc = 0;
   }
 

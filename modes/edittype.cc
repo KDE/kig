@@ -1,6 +1,7 @@
 /**
    This file is part of Kig, a KDE program for Interactive Geometry...
    Copyright (C) 2004  Dominique Devriese <devriese@kde.org>
+   Copyright (C) 2004  Pino Toscano <toscano.pino@tiscali.it>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,6 +25,7 @@
 
 #include <kpushbutton.h>
 #include <kicondialog.h>
+#include <kiconloader.h>
 #include <klineedit.h>
 #include <klocale.h>
 
@@ -80,7 +82,7 @@ void EditType::okSlot()
 
 void EditType::cancelSlot()
 {
-  done ( 0 );
+  done( 0 );
 }
 
 const QString EditType::name() const

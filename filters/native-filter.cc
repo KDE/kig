@@ -238,11 +238,12 @@ bool KigFilterNative::save04( const KigDocument& kdoc, const QString& to )
 
     if ( !internal )
     {
-      // here we save the objectdrawer data as properties of the objectelem.
-      // it would be better to make a new file format where the
-      // objectcalcer hierarchy is completely separate from the holders
-      // holding references to them, but I'm too lazy for that atm, so I'm doing it
-      // this way..
+      // here we save the objectdrawer data as properties of the
+      // objectelem.  it would be better to make a new file format
+      // where the objectcalcer hierarchy is completely separate from
+      // the holders holding references to them, but I'm too lazy for
+      // that atm, so I'm doing it this way.. ( update: in the new
+      // save function save07, this is fixed. )
       assert( holdermap.find( *i ) != holdermap.end() );
       const ObjectHolder* h = holdermap[*i];
       const ObjectDrawer* d = h->drawer();
@@ -655,6 +656,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, const QString& to )
     drawelem.setAttribute( "color", d->color().name() );
     drawelem.setAttribute( "shown", QString::fromLatin1( d->shown() ? "true" : "false" ) );
     drawelem.setAttribute( "width", QString::number( d->width() ) );
+//    drawelem.setAttribute( "point-style" )
 
     windowelem.appendChild( drawelem );
   };

@@ -1,5 +1,6 @@
 /**
    This file is part of Kig, a KDE program for Interactive Geometry...
+   Copyright (C) 2004  Dominique Devriese <devriese@kde.org>
    Copyright (C) 2004  Pino Toscano <toscano.pino@tiscali.it>
 
    This program is free software; you can redistribute it and/or modify
@@ -21,14 +22,53 @@
 
 #include "goniometry.h"
 
+#include <qstringlist.h>
+
+#include <klocale.h>
+
 #include <cmath>
+#include <cassert>
 
 Goniometry::Goniometry()
 {
+  mvalue = 0.0;
+  msys = Rad;
+}
+
+Goniometry::Goniometry( double value, Goniometry::System system )
+{
+  mvalue = value;
+  msys = system;
 }
 
 Goniometry::~Goniometry()
 {
+}
+
+void Goniometry::setValue( double value )
+{
+  mvalue = value;
+}
+
+const double Goniometry::value() const
+{
+  return mvalue;
+}
+
+void Goniometry::setSystem( Goniometry::System system )
+{
+  msys = system;
+}
+
+void Goniometry::convertTo( Goniometry::System system )
+{
+  mvalue = convert( mvalue, msys, system );
+  msys = system;
+}
+
+const Goniometry::System Goniometry::system() const
+{
+  return msys;
 }
 
 double Goniometry::convert( const double angle, const Goniometry::System from, const Goniometry::System to )
@@ -39,14 +79,47 @@ double Goniometry::convert( const double angle, const Goniometry::System from, c
     {
       if ( to == Rad )
         return angle * M_PI / 180;
+      if ( to == Grad )
+        return angle * 10 / 9;
       break;
     }
     case Rad:
     {
       if ( to == Deg )
         return angle * 180 / M_PI;
+      if ( to == Grad )
+        return angle * 200 / M_PI;
+      break;
+    }
+    case Grad:
+    {
+      if ( to == Deg )
+        return angle * 9 / 10;
+      if ( to == Rad )
+        return angle * M_PI / 200;
       break;
     }
   }
   return angle;
+}
+
+QStringList Goniometry::systemList()
+{
+  QStringList sl;
+  sl << i18n( "Translators: Degrees", "Deg" );
+  sl << i18n( "Translators: Radians", "Rad" );
+  sl << i18n( "Translators: Gradians", "Grad" );
+  return sl;
+}
+
+Goniometry::System Goniometry::intToSystem( const int index )
+{
+  if( index == 0 )
+    return Deg;
+  else if( index == 1 )
+    return Rad;
+  else if( index == 2 )
+    return Grad;
+  assert( false );
+  return Rad;
 }

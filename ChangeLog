@@ -1,3 +1,16 @@
+2004-04-10  Dominique Devriese  <devriese@kde.org>
+
+	* Enable the DrGeo input filter.
+
+2004-04-10  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Improved angle size editing, making possible choosing
+	between degrees, radians and gradians.
+
+	* More work in Dr. Geo filter.
+
+	* Some improvements in Goniometry class
+
 2004-04-08  Pino Toscano <toscano.pino@tiscali.it>
 
 	* More work on types dialog: a new dialog will allow to edit

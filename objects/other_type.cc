@@ -23,6 +23,8 @@
 #include "point_imp.h"
 #include "locus_imp.h"
 
+#include "editanglesize.h"
+
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
 #include "../misc/goniometry.h"
@@ -361,14 +363,11 @@ void AngleType::executeAction(
 
   int anglelengthdeg = static_cast<int>( Goniometry::convert( anglelength, Goniometry::Rad, Goniometry::Deg ) );
 
-  bool ok = true;
-  double newsize = getDoubleFromUser(
-    i18n( "Set Angle Size" ), i18n( "Choose the new size: " ),
-    anglelengthdeg, &w, &ok, -2147483647, 2147483647, 0 );
-  if ( ! ok ) return;
-
-  newsize *= M_PI;
-  newsize /= 180;
+  double newsize = 0;
+  EditAngleSize* e = new EditAngleSize( &w, anglelengthdeg, Goniometry::Deg );
+  if( !e->exec() )
+    return;
+  newsize = Goniometry::convert( e->angle(), e->system(), Goniometry::Rad );
 
   double newcangle = startangle + newsize;
   Coordinate cdir( cos( newcangle ), sin( newcangle ) );

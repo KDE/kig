@@ -240,10 +240,10 @@ void Kig::fileOpen()
   QString file_name = KFileDialog::getOpenFileName(":document", i18n("*.kig *.kgeo *.seg|All Supported Files (*.kig *.kgeo *.seg)\n"
                                                                      "*.kig|Kig Documents (*.kig)\n"
                                                                      "*.kgeo|KGeo Documents (*.kgeo)\n"
-                                                                     "*.seg|KSeg Documents (*.seg)" ) );
+                                                                     "*.seg|KSeg Documents (*.seg)\n"
 
   // domi: disabled for now, reenable when ready
-  //                                                                   "*.fgeo|Dr. Geo Documents (*.fgeo)" ) );
+                                                                     "*.fgeo|Dr. Geo Documents (*.fgeo)" ) );
 
   if (!file_name.isEmpty()) openURL(file_name);
 }

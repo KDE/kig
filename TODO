@@ -16,9 +16,6 @@
 
 - export vectors and cubics to the python scripting stuff...
 
-- add support for working with angles in degrees in the set size
-  dialog of an angle..
-
 - add support for work with other measure units (cm, inches, etc...)
   than just pixels...
 
@@ -48,6 +45,7 @@
 
 - filters: more input filters ( get cabri to work somewhat ), improve
   and activate Dr. Geo filter ( see filters/drgeo-filter-status.txt )
+  and Cabri filter, add the possibility to ignore errors on loading
 
 * hard :
 
