@@ -83,7 +83,7 @@ ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
   const Coordinate a = static_cast<const PointImp*>( args[0] )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( args[1] )->coordinate();
   Coordinate c;
-  if ( args[2] )
+  if ( args.size() == 3 )
     c = static_cast<const PointImp*>( args[2] )->coordinate();
   else
   {
