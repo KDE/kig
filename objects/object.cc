@@ -169,17 +169,9 @@ void Object::delChild( Object* o )
   childRemoved();
 }
 
-void ObjectWithParents::addParent( Object* o, bool atfront )
+void ObjectWithParents::addParent( Object* o )
 {
-  if ( ! atfront )
-    mparents.push_back( o );
-  else
-  {
-    Objects nparents( mparents.size() + 1, 0 );
-    nparents[0] = o;
-    std::copy( mparents.begin(), mparents.end(), nparents.begin() + 1 );
-    mparents = nparents;
-  };
+  mparents.push_back( o );
   o->addChild( this );
 }
 
@@ -313,7 +305,7 @@ void Object::childAdded()
 {
 }
 
-void Object::addParent( Object*, bool )
+void Object::addParent( Object* )
 {
   assert( false );
 }

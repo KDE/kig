@@ -48,9 +48,10 @@ ObjectImp* FixedPointType::calc( const Args& parents ) const
   return d;
 }
 
-ObjectImp* ConstrainedPointType::calc( const Args& parents ) const
+ObjectImp* ConstrainedPointType::calc( const Args& tparents ) const
 {
-  assert( parents.size() == 2 );
+  assert( tparents.size() == 2 );
+  Args parents = margsparser.parse( tparents );
   assert( parents[0]->inherits( ObjectImp::ID_DoubleImp ) );
   assert( parents[1]->inherits( ObjectImp::ID_CurveImp ) );
   double param = static_cast<const DoubleImp*>( parents[0] )->data();

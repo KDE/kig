@@ -119,6 +119,8 @@ RealObject* ObjectFactory::locus( const Objects& parents )
   ObjectHierarchy hier( locusparents, moving );
 
   Object* curve = const_cast<Object*>( constrained->parents().back() );
+  if ( ! curve->hasimp( ObjectImp::ID_CurveImp ) )
+    curve = const_cast<Object*>( constrained->parents().front() );
   assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
   // a locus object does not depend on the constrained point, but on
   // the curve it is on..

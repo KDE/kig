@@ -270,7 +270,7 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     {
       assert( o.parents().size() == 1 );
       o.setType( ConstrainedPointType::instance() );
-      o.addParent( new DataObject( new DoubleImp( param ) ), true );
+      o.addParent( new DataObject( new DoubleImp( param ) ) );
       assert( o.parents().size() == 2 );
     };
     return true;
