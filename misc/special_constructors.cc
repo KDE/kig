@@ -324,3 +324,12 @@ QString ConicLineIntersectionConstructor::useText(
     return i18n( "Intersect with this line" );
   else assert( false );
 }
+
+QString ConicRadicalConstructor::useText( const Object& o, const Objects&,
+                                          const KigDocument&, const KigWidget& ) const
+{
+  if ( o.hasimp( ObjectImp::ID_CircleImp ) )
+    return i18n( "Construct the radical lines of this circle" );
+  else
+    return i18n( "Construct the radical lines of this conic" );
+}

@@ -29,6 +29,8 @@ class ConicRadicalConstructor
 public:
   ConicRadicalConstructor();
   ~ConicRadicalConstructor();
+  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+                   const KigWidget& v ) const;
   void drawprelim( KigPainter& p, const Objects& parents, const KigDocument& ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
