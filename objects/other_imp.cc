@@ -185,7 +185,7 @@ bool VectorImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 
 const uint VectorImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 4;
+  return Parent::numberOfProperties() + 5;
 }
 
 const QCStringList VectorImp::propertiesInternalNames() const
@@ -195,6 +195,7 @@ const QCStringList VectorImp::propertiesInternalNames() const
   ret << "vect-mid-point";
   ret << "length-x";
   ret << "length-y";
+  ret << "vector-opposite";
   assert( ret.size() == VectorImp::numberOfProperties() );
   return ret;
 }
@@ -206,6 +207,7 @@ const QCStringList VectorImp::properties() const
   ret << I18N_NOOP( "Midpoint" );
   ret << I18N_NOOP( "X length" );
   ret << I18N_NOOP( "Y length" );
+  ret << I18N_NOOP( "Opposite Vector" );
   assert( ret.size() == VectorImp::numberOfProperties() );
   return ret;
 }
@@ -229,6 +231,8 @@ const char* VectorImp::iconForProperty( uint which ) const
     return "distance"; // length-x
   else if ( which == Parent::numberOfProperties() + 3 )
     return "distance"; // length-y
+  else if ( which == Parent::numberOfProperties() + 4 )
+    return "opposite-vector"; // opposite vector
   else assert( false );
   return "";
 }
@@ -245,6 +249,8 @@ ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
     return new DoubleImp( fabs( ma.x - mb.x ) );
   else if ( which == Parent::numberOfProperties() + 3 )
     return new DoubleImp( fabs( ma.y - mb.y ) );
+  else if ( which == Parent::numberOfProperties() + 4 ) // opposite
+    return new VectorImp( ma, 2*ma-mb );
   else assert( false );
   return new InvalidImp;
 }

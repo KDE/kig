@@ -1,3 +1,7 @@
+2004-04-22  Dominique Devriese  <devriese@kde.org>
+
+	* Add a "opposite vector" property to VectorImp.
+
 2004-04-21  Dominique Devriese  <devriese@kde.org>
 
 	* Fix tooltips to not contain "&&" instead of "&" ( closes: 78411 ).
