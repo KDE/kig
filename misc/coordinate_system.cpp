@@ -217,7 +217,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   const double vmin = p.window().bottom();
 
   // the number of intervals we would like to have:
-  // we try to have one of them per 25 pixels or so..
+  // we try to have one of them per 40 pixels or so..
   const int ntick = static_cast<int>(
     kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 40. ) + 1;
 
@@ -389,9 +389,9 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   const double vmin = sqrt2*p.window().bottom();
 
   // the intervals:
-  // we try to have one of them per 25 pixels or so..
+  // we try to have one of them per 40 pixels or so..
   const int ntick = static_cast<int>(
-    kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 25 ) + 1;
+    kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 40 ) + 1;
 
   const double hrange = nicenum( hmax - hmin, false );
   const double vrange = nicenum( vmax - vmin, false );
