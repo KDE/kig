@@ -30,6 +30,8 @@
 
 #include "../objects/point.h"
 
+#include <assert.h>
+
 Objects ElemList::actuals()
 {
   Objects tmp;

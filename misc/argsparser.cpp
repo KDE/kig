@@ -21,6 +21,7 @@
 #include "../objects/object.h"
 
 #include <algorithm>
+#include <assert.h>
 
 ArgParser::ArgParser( const spec* args, int n )
   : mndt( n ), mwantedobjscount( 0 ), margs( args )

@@ -30,6 +30,8 @@
 #include <functional>
 #include <algorithm>
 
+#include <assert.h>
+
 TextLabel::TextLabel( const Objects& os )
   : Object(), mprops( os.begin(), os.end() )
 {

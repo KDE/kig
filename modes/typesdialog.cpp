@@ -35,6 +35,7 @@
 #include <qstringlist.h>
 
 #include <vector>
+#include <assert.h>
 
 /*
  * constructor

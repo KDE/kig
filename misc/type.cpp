@@ -37,6 +37,8 @@
 
 #include <kmessagebox.h>
 
+#include <assert.h>
+
 MType::~MType()
 {
   delete mhier;

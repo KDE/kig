@@ -32,6 +32,7 @@
 #include <klineeditdlg.h>
 
 #include <functional> // for std::mem_fun and std::bind2nd
+#include <assert.h>
 
 void PointConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
 {

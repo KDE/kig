@@ -30,6 +30,7 @@
 #include "moving.h"
 
 #include <qcursor.h>
+#include <assert.h>
 
 NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
                                                 KigWidget* view,

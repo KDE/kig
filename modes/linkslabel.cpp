@@ -27,6 +27,8 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+
+#include <assert.h>
 using namespace std;
 
 class LinksLabel::Private

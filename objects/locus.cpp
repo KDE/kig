@@ -31,6 +31,7 @@
 #include <stack>
 
 #include <kdebug.h>
+#include <assert.h>
 
 void Locus::draw(KigPainter& p, bool ss) const
 {

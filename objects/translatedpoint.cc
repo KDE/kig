@@ -23,6 +23,7 @@
 #include "../misc/i18n.h"
 
 #include <kdebug.h>
+#include <assert.h>
 
 Objects TranslatedPoint::getParents() const
 {

@@ -29,6 +29,7 @@
 #include "../../objects/normalpoint.h"
 
 #include <ksimpleconfig.h>
+#include <assert.h>
 
 bool KigFilterKGeo::supportMime( const QString mime )
 {

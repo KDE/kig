@@ -26,6 +26,8 @@
 
 #include <qstring.h>
 
+#include <assert.h>
+
 const int Property::type() const
 {
   return mtype;

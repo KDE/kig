@@ -22,12 +22,13 @@
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+#include "../misc/i18n.h"
 
 #include "../modes/constructing.h"
 #include "../modes/moving.h"
 #include "../modes/popup.h"
 
-QString i18n( const char* );
+#include <assert.h>
 
 NormalPoint::NormalPoint( const Objects& os )
   : mimp( 0 ), tparents( os )

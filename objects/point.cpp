@@ -28,6 +28,8 @@
 #include <qpen.h>
 #include <qpopupmenu.h>
 
+#include <assert.h>
+
 Point::Point( const Coordinate& p )
   : mC( p ), msize( 5 )
 {

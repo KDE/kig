@@ -17,7 +17,7 @@
 // 02111-1307, USA.
 
 #include "coordproppoint.h"
-
+#include "../misc/common.h"
 #include "../misc/i18n.h"
 
 CoordinatePropertyPoint::CoordinatePropertyPoint( const Objects& os )

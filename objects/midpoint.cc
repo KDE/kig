@@ -17,10 +17,11 @@
 // 02111-1307, USA.
 
 #include "midpoint.h"
-
 #include "segment.h"
 
 #include <klocale.h>
+
+#include <assert.h>
 
 MidPoint::MidPoint(const MidPoint& m)
   : Point( m ), p1( m.p1 ), p2( m.p2 ), s( m.s )

@@ -33,6 +33,7 @@
 #include <kapplication.h>
 #include <qglobal.h>
 #include <kaction.h>
+#include <assert.h>
 
 SelectionModeBase::SelectionModeBase( KigDocument& d )
   : KigMode( d ), mcswc( true )

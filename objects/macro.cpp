@@ -26,6 +26,8 @@
 #include "../misc/type.h"
 #include "../misc/i18n.h"
 
+#include <assert.h>
+
 MacroObject::MacroObject( ObjectHierarchy* inHier, const Objects& args )
   : hier(inHier), arguments( args )
 {

@@ -26,6 +26,7 @@
 #include <qfile.h>
 #include <qdom.h>
 #include <qtextstream.h>
+#include <assert.h>
 
 KigFilterNative::KigFilterNative()
 {

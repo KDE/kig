@@ -29,6 +29,7 @@
 #include <qrect.h>
 
 #include <vector>
+#include <assert.h>
 
 /**
  * Here, we define some algorithms which we need in
