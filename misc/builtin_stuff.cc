@@ -468,7 +468,7 @@ void setupBuiltinStuff()
 	"poligonbcv",
 	7 );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_eptagonbcv" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_heptagonbcv" ) );
 
     c = new PoligonBCVConstructor(
 	I18N_NOOP( "Octagon with given center" ),
@@ -484,7 +484,7 @@ void setupBuiltinStuff()
 	"poligonbcv",
 	9 );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_ennagonbcv" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_nonagonbcv" ) );
 
     c = new PoligonBCVConstructor(
 	I18N_NOOP( "Decagon with given center" ),
