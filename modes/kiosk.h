@@ -26,7 +26,7 @@ class KioskMode
   : public KigMode
 {
 public:
-  KioskMode( KigDocument* );
+  KioskMode( KigDocument& );
   ~KioskMode();
   void leftClicked( QMouseEvent*, KigWidget* );
   void midClicked( QMouseEvent*, KigWidget* );

@@ -1,6 +1,6 @@
 #include "kiosk.h"
 
-KioskMode::KioskMode( KigDocument* d )
+KioskMode::KioskMode( KigDocument& d )
   : KigMode( d )
 {
 
