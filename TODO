@@ -1,6 +1,9 @@
 * harder:
 - add a redefine action to text labels..
-- multiline text labels..
+- multiline text labels..  UPDATE: done, but i still need to adapt the
+  change text action accordingly.  I'll prolly combine this TODO with
+  the previous by allowing the user to re-edit the label using the
+  same dialog he got for constructing the label..
 - decouple the link between how an object is calc'ed and whether or
   not it is internal or drawn.  ( all combinations are possible,
   except that internal objects are never drawn ).  Internal objects
