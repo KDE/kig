@@ -362,6 +362,7 @@ bool DataObject::isInternal() const
 PropertyObject::PropertyObject( Object* parent, int id )
   : Object(), mimp( 0 ), mparent( parent ), mpropid( id )
 {
+  mparent->addChild( this );
 }
 
 PropertyObject::~PropertyObject()
