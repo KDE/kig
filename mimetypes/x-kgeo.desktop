@@ -3,6 +3,17 @@
 Encoding=UTF-8
 MimeType=application/x-kgeo
 Comment=KGeo Figure
+Comment[bs]=KGeo slika
+Comment[da]=KGeo-figur
+Comment[de]=KGeo-Zeichnung
+Comment[el]=Σχήμα KGeo
+Comment[es]=Figura KGeo
+Comment[fi]=KGeo-kuva
+Comment[nl]=KGeo-figuur
+Comment[pt]=Figura do KGeo
+Comment[pt_BR]=Imagem KGeo
+Comment[sv]=Kgeo-bild
+Comment[uk]=Фігура KGeo
 Type=MimeType
 Patterns=*.kgeo;
 X-KDE-AutoEmbed=false

@@ -3,6 +3,17 @@
 Encoding=UTF-8
 MimeType=application/x-cabri
 Comment=Cabri Figure
+Comment[bs]=Cabri slika
+Comment[da]=Cabri-figur
+Comment[de]=Cabri-Zeichnung
+Comment[el]=Σχήμα Cabri
+Comment[es]=Figura Cabri
+Comment[fi]=Cabri-kuva
+Comment[nl]=Cabri-figuur
+Comment[pt]=Figura do Cabri
+Comment[pt_BR]=Imagem Cabri
+Comment[sv]=Cabri-bild
+Comment[uk]=Фігура Cabri
 Type=MimeType
 Patterns=*.fig;*.FIG
 X-KDE-AutoEmbed=false
