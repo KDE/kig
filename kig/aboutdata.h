@@ -62,11 +62,6 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 			    "some source, and most of the artwork from"),
 		  "marc.bartsch@web.de");
 
-  tmp->addCredit("Ilya Baran",
-		  I18N_NOOP("Author of KSeg, another program that has been a "
-			    "source of inspiration for Kig"),
-		  "ibaran@mit.edu");
-
   tmp->addCredit("Christophe Devriese",
                  I18N_NOOP( "Domi's brother, who he got to write the algorithm for "
                             "calculating the center of the circle with three "
@@ -76,11 +71,6 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
   tmp->addCredit("Christophe Prud'homme",
                  I18N_NOOP( "Sent me a patch for some bugs." ),
                  "prudhomm@mit.edu" );
-
-  tmp->addCredit("Cabri coders",
-		  I18N_NOOP("Cabri is a commercial program like Kig, and "
-			    "gave me something to compete against :)"),
-                  0, "http://www-cabri.imag.fr" );
 
   tmp->addCredit("Robert Gogolok",
                  I18N_NOOP("Gave me some good feedback on Kig, some feature "
