@@ -264,7 +264,7 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
   if ( length < 10e-20 )
   {
     // hopefully prevent SIGZERO's
-    mOverlay.push_back( Rect( p1, p2 ) );
+    mOverlay.push_back( toScreen( Rect( p1, p2 ) ) );
     return;
   };
   p3 *= overlayRectSize();
@@ -478,7 +478,6 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
   {
     Coordinate c = conicGetCoord( i, ecostheta0, esintheta0,
                                   pdimen, focus1 );
-    drawPoint( c );
     workstack.push( workitem( coordparampair( i, c ), prev ) );
     prev = coordparampair( i, c );
   };
@@ -487,8 +486,11 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
   // between two points..
   double maxlength = 1.5 * pixelWidth();
   maxlength *= maxlength;
+  // error squared is required to be less that sigma (half pixel)
+  double sigma = maxlength/4;
+  // distance between two parameter values cannot be too small
+  double hmin = 1e-4;
 
-  // sanity check...
   int count = 20;              // the number of points we've already
                                // visited...
   static const int maxnumberofpoints = 1000;
@@ -501,31 +503,46 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
   {
     workitem curitem = workstack.top();
     workstack.pop();
-    for ( ; count < maxnumberofpoints; ++count )
+    bool curitemok = true;
+    while ( curitemok && count++ < maxnumberofpoints )
     {
       // we take the middle parameter of the two previous points...
-      double p = ( curitem.first.first + curitem.second.first ) / 2;
-      Coordinate n = conicGetCoord( p, ecostheta0, esintheta0,
+      Coordinate p0 = curitem.first.second;
+      Coordinate p1 = curitem.second.second;
+      double t2 = ( curitem.first.first + curitem.second.first ) / 2;
+      double h = fabs( curitem.second.first - curitem.first.first ) /2;
+      Coordinate p2 = conicGetCoord( t2, ecostheta0, esintheta0,
                                     pdimen, focus1 );
-      bool addn = sr.contains( n );
-      bool followfirst = addn &&
-                         (n-curitem.first.second).squareLength() > maxlength;
-      bool followlast = addn &&
-                        (n-curitem.second.second).squareLength() > maxlength;
-      if ( addn )
+      bool addn = sr.contains( p2 );
+      // estimated error between the curve and the segments
+      double errsq = (0.5*p0 + 0.5*p1 - p2).squareLength();
+      errsq /= 4;
+      curitemok = false;
+      if ( errsq < sigma || h < hmin )
       {
-        drawPoint( n );
-        overlay.setContains( n );
-      };
-      if ( followfirst ) workstack.push( workitem( curitem.first,
-                                                   coordparampair( p, n ) ) );
-      // we don't push here, but simply set curitem to a new item, and
-      // restart the inner for loop, to save some stack pushes...
-      if ( followlast ) curitem = workitem( coordparampair( p, n ),
-                                            curitem.second );
-      else break;
-    };
-  };
+        // draw the two segments
+        overlay.setContains( p0 );
+        overlay.setContains( p1 );
+        overlay.setContains( p2 );
+        QPoint tp0 = toScreen(p0);
+        QPoint tp1 = toScreen(p1);
+        QPoint tp2 = toScreen(p2);
+        mP.drawLine( tp0, tp2 );
+        mP.drawLine( tp2, tp1 );
+      }
+      else
+      {
+        // push into stack in order to process both subintervals
+        if (addn || sr.contains( p0 ) )
+          workstack.push( workitem( curitem.first, coordparampair( t2, p2 ) ) );
+        if (addn || sr.contains( p1 ) )
+        {
+          curitem = workitem( coordparampair( t2, p2 ), curitem.second );
+          curitemok = true;
+        }
+      }
+    }
+  }
 
   mOverlay.push_back( toScreen( overlay ) );
   mNeedOverlay = tNeedOverlay;
