@@ -1,3 +1,7 @@
+2005-02-21  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Again, bump the version number to 0.10.
+
 2005-02-10  Dominique Devriese  <devriese@kde.org>
 
 	* The rest of a fix for bug #98517.  The problem was that
