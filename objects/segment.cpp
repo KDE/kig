@@ -25,7 +25,6 @@
 #include "../misc/kigpainter.h"
 
 #include <klocale.h>
-#include <kglobal.h>
 #include <kdebug.h>
 #include <qpen.h>
 #include "math.h"
@@ -58,10 +57,10 @@ bool Segment::contains(const Coordinate& o, const double fault ) const
     //       |---|---|---|
     // equals 0, then p(x,y,z) is on the line containing points p1(x1,y1,z1) and p2
     // here, we're working with normal coords, no homogeneous ones, so all z's equal 1
-    && (o.x - kMax(p1->getX(),p2->getX()) < fault ) // not too far to the right
-    && ( kMin (p1->getX(), p2->getX()) - o.x < fault ) // not too far to the left
-    && ( kMin (p1->getY(), p2->getY()) - o.y < fault ) // not too high
-    && ( o.y - kMax (p1->getY(), p2->getY()) < fault ); // not too low
+    && (o.x - kigMax(p1->getX(),p2->getX()) < fault ) // not too far to the right
+    && ( kigMin (p1->getX(), p2->getX()) - o.x < fault ) // not too far to the left
+    && ( kigMin (p1->getY(), p2->getY()) - o.y < fault ) // not too high
+    && ( o.y - kigMax (p1->getY(), p2->getY()) < fault ); // not too low
 }
 
 void Segment::draw(KigPainter& p, bool ss) const

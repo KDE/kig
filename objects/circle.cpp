@@ -205,6 +205,10 @@ inline double determinant (double a, double b, double c, double d)
 
 Coordinate CircleBTP::calcCenter(double ax, double ay, double bx, double by, double cx, double cy) const
 {
+  // prevent crashes...
+  if ( ( ax == bx ) && ( ay == by ) ) return Coordinate( (ax + bx) / 2, (ay + by) / 2 );
+  if ( ( ax == cx ) && ( ay == cy ) ) return Coordinate( (ax + bx) / 2, (ay + by) / 2 );
+  if ( ( bx == cx ) && ( by == cy ) ) return Coordinate( (ax + bx) / 2, (ay + by) / 2 );
   double xdo = bx-ax;
   double ydo = by-ay;
 
@@ -270,19 +274,27 @@ void CircleBTP::drawPrelim( KigPainter& p, const Object* o ) const
     double xm  = (xa + xb)/2;
     double ym = (ya+yb)/2;
     // direction of the perpend:
-    double m = -(xb-xa)/(yb-ya);
+    if ( yb != ya )
+    {
+      double m = -(xb-xa)/(yb-ya);
 
-    // length:
-    // sqrt( 3 ) == tan( 60° )
-    // hypot( ... ) == half the length of the segment |ab|
-    double l = sqrt(3) * hypot( xa - xb, ya - yb ) / 2;
+      // length:
+      // sqrt( 3 ) == tan( 60° )
+      // hypot( ... ) == half the length of the segment |ab|
+      double l = sqrt(3) * hypot( xa - xb, ya - yb ) / 2;
 
-    double dx = sqrt( l / ( pow( m, 2 ) + 1 ) );
-    double dy = sqrt( l / ( pow( m, -2 ) + 1 ) );
-    if( m < 0 ) dy = -dy;
+      double dx = sqrt( l / ( pow( m, 2 ) + 1 ) );
+      double dy = sqrt( l / ( pow( m, -2 ) + 1 ) );
+      if( m < 0 ) dy = -dy;
 
-    xc = xm + dx;
-    yc = ym + dy;
+      xc = xm + dx;
+      yc = ym + dy;
+    }
+    else
+    {
+      xc = xm;
+      yc = ym + ( xa - xb );
+    };
   };
   p.setPen(QPen (Qt::red, 1));
   Coordinate nC = calcCenter(xa, ya, xb, yb, xc, yc);
