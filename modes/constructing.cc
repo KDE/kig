@@ -81,7 +81,7 @@ void PointConstructionMode::updatePoint( const Coordinate& c, const KigWidget& w
 void PointConstructionMode::finish( KigWidget* v )
 {
   mDoc->addObject( mp );
-  mp = mp->copy();
+  mp = new NormalPoint( *mp );
   mp->calcForWidget( *v );
 
   mprev->clearSelection();
@@ -184,11 +184,6 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
     QString s = mtype->useText( osa, mp );
     mDoc->emitStatusBarText( s );
 
-    // we draw the text a bit to the bottom so it doesn't end up on
-    // top of the point...
-
-    double i = v->pixelWidth();
-    Coordinate d( i, i );
     p.drawTextStd( point, s );
     v->setCursor( KCursor::blankCursor() );
   }
@@ -225,7 +220,7 @@ void StdConstructionMode::selectArg( Object* o, KigWidget* v )
 {
   if ( o == mp )
     // if we're selecting our mp, we need a new one...
-    mp = mp->copy();
+    mp = new NormalPoint( *mp );
 //   calcing is not necessary here, since
 //  all of the data is copied along
 //  mp->calc( v->screenInfo() );

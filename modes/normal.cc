@@ -170,9 +170,8 @@ void NormalMode::midReleased( QMouseEvent* e, KigWidget* v )
 {
   // moved too far
   if( (e->pos() - plc).manhattanLength() > 4 ) return;
-  // clicked on some other object -> ConstrainedPoint ?
-  Point* pt;
-  pt = NormalPoint::sensiblePoint( v->fromScreen( plc ), *mDoc, *v );
+
+  Point* pt = NormalPoint::sensiblePoint( v->fromScreen( plc ), *mDoc, *v );
   pt->calcForWidget( *v );
   mDoc->addObject( pt );
 
@@ -277,17 +276,11 @@ void NormalMode::selectObject( Object* o )
 
 void NormalMode::selectObjects( Objects& os )
 {
-  // grr.. just noticed that Objects is a QPtrList :(
   // hehe, don't you love this c++ stuff ;)
   std::for_each( os.begin(), os.end(),
                  std::bind1st(
                    std::mem_fun( &NormalMode::selectObject ),
                    this ) );
-//   for( Objects::iterator i = os.begin(); i != os.end(); ++i )
-//   {
-//     if( ! sos.contains( *i ) ) sos.push_back( *i );
-//     (*i)->setSelected( true );
-//   };
 }
 
 void NormalMode::unselectObject( Object* o )
