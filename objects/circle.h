@@ -89,11 +89,10 @@ public:
 
   Objects getParents() const;
 
-  //moving
-  void startMove(const Coordinate&);
-  void moveTo(const Coordinate&);
-  void stopMove();
-  void cancelMove();
+  //moving is disabled..
+//   void startMove(const Coordinate&);
+//   void moveTo(const Coordinate&);
+//   void stopMove();
 protected:
   Point* poc; // point on circle
   Point* centre;

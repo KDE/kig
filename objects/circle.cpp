@@ -81,48 +81,6 @@ CircleBCP::CircleBCP( const Objects& os )
   centre->addChild( this );
 };
 
-void CircleBCP::startMove(const Coordinate& p)
-{
-  if (centre->contains(p, false))
-    {
-      wawm = notMoving;
-    }
-  else if (poc->contains(p, false)) // we let poc do the work, which will be faster too
-    {
-      wawm = lettingPocMove;
-      poc->startMove(p);
-    }
-  else
-    {
-      wawm=movingPoc;
-      pwpsm = Coordinate(poc->getX(), poc->getY());
-      poc->startMove(pwpsm);
-    };
-};
-
-void CircleBCP::moveTo(const Coordinate& p)
-{
-  if (wawm == lettingPocMove)
-  {
-    poc->moveTo(p);
-  }
-  else if (wawm == movingPoc)
-  {
-    double nRadius = calcRadius(centre->getCoord(),p);
-    Coordinate nPoc= centre->getCoord() + (poc->getCoord()-centre->getCoord())*(nRadius/mradius);
-    poc->moveTo(nPoc);
-  };
-};
-
-void CircleBCP::stopMove()
-{
-  wawm = notMoving;
-};
-
-void CircleBCP::cancelMove()
-{
-};
-
 void CircleBCP::calc( const ScreenInfo& )
 {
   if (poc && centre)
