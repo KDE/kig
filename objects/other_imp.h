@@ -82,6 +82,8 @@ public:
   const char* baseName() const;
 
   const Coordinate dir() const;
+  const Coordinate a() const;
+  const Coordinate b() const;
 
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
@@ -104,7 +106,7 @@ public:
   ObjectImp* transform( const Transformation& t ) const;
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& w ) const;
   bool inRect( const Rect& r, int width, const KigWidget& si ) const;
   bool valid() const;
 

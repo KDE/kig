@@ -28,6 +28,7 @@
 #include "../kig/kig_view.h"
 
 #include <cmath>
+#include <utility>
 using namespace std;
 
 AngleImp::~AngleImp()
@@ -237,6 +238,12 @@ ArcImp::ArcImp( const Coordinate& center, const double radius,
   : CurveImp(), mcenter( center ), mradius( radius ),
     msa( startangle ), ma( angle )
 {
+  if ( ma < 0 )
+  {
+    // we want a positive angle..
+    msa = msa + ma;
+    ma = -ma;
+  };
 }
 
 ArcImp::~ArcImp()
@@ -259,10 +266,15 @@ void ArcImp::draw( KigPainter& p ) const
   p.drawArc( mcenter, mradius, msa, ma );
 }
 
-bool ArcImp::contains( const Coordinate& p, int width, const KigWidget& si ) const
+bool ArcImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  // TODO
-  return false;
+  if( fabs( (mcenter - p).length() - mradius ) > w.screenInfo().normalMiss( width ) )
+    return false;
+  Coordinate d = p - mcenter;
+  double angle = atan2( d.y, d.x );
+
+  if ( angle < msa ) angle += 2 * M_PI;
+  return angle - msa - ma < 1e-4;
 }
 
 bool ArcImp::inRect( const Rect& r, int width, const KigWidget& si ) const
@@ -351,4 +363,14 @@ double ArcImp::startAngle() const
 double ArcImp::angle() const
 {
   return ma;
+}
+
+const Coordinate VectorImp::a() const
+{
+  return ma;
+}
+
+const Coordinate VectorImp::b() const
+{
+  return mb;
 }
