@@ -223,7 +223,6 @@ void NormalMode::rightClicked( const Objects& os,
                                const QPoint&,
                                KigWidget& w )
 {
-  // TODO
   if( !os.empty() )
   {
     if( !sos.contains( os.front() ) )
