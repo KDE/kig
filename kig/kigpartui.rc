@@ -34,6 +34,7 @@
 	  <Action name="objects_new_point_xy" />
 	  <Action name="objects_new_translatedpoint" />
 	  <Action name="objects_new_mirrorpoint" />
+	  <Action name="objects_new_circlelineintersect" />
 	  <ActionList name="user_point_types" />
     </Menu>
     <Menu name="new_circle">
@@ -59,7 +60,7 @@
     <Action name="types_edit" />
   </Menu>
 </MenuBar>
-<ToolBar name="mainToolBar"><text>Main</text>
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
   <Action name="edit_undo"/>
   <Action name="edit_redo"/>
   <Separator />
@@ -74,6 +75,8 @@
   <Action name="objects_new_point_xy" />
   <Action name="objects_new_translatedpoint" />
   <Action name="objects_new_mirrorpoint" />
+  <Action name="objects_new_circlelineintersect" />
+  <ActionList name="user_point_types" />
 </ToolBar>
 <ToolBar name="line_toolbar"><text>Lines</text>
   <Action name="objects_new_linettp" />
@@ -81,6 +84,8 @@
   <Action name="objects_new_lineparallel" />
   <Action name="objects_new_lineradical" />
   <Action name="objects_new_segment" />
+  <ActionList name="user_line_types" />
+  <ActionList name="user_segment_types" />
 </ToolBar>
 <ToolBar name="rest_toolbar"><text>Rest</text>
   <Action name="objects_new_circlebcp" />

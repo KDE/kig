@@ -101,7 +101,7 @@ public:
 public slots:
   void unplugActionLists();
   void plugActionLists();
-  
+
   void deleteObjects();
   void cancelConstruction();
   void showHidden();
@@ -143,6 +143,7 @@ public:
   // actually, they only add a command object to the history, the real
   // work is done in _addObject() and _delObject()
   void addObject(Object* inObject);
+  void addObjects( const Objects& os );
   void delObject(Object* inObject);
   void delObjects( const Objects& os );
 

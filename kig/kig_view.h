@@ -136,7 +136,7 @@ public:
   // the part of the document we're currently showing
   // i.e. a rectangle of the document (which has its own coordinate
   // system) which is mapped onto the widget.
-  const ScreenInfo& screenInfo();
+  const ScreenInfo& screenInfo() const;
 
 protected:
   // this is called to match a rect's dimensions to the dimensions of

@@ -258,7 +258,7 @@ void KigView::redrawScreen()
   updateEntireWidget();
 }
 
-const ScreenInfo& KigView::screenInfo()
+const ScreenInfo& KigView::screenInfo() const
 {
   return msi;
 }

@@ -175,6 +175,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<CircleBTP> );
     Object::addBuiltinType( new TStdType<MidPoint> );
     Object::addBuiltinType( new TStdType<IntersectionPoint> );
+    Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
     Object::addBuiltinType( new TStdType<TranslatedPoint> );
     Object::addBuiltinType( new TStdType<MirrorPoint> );
     Object::addBuiltinType( new TStdType<Locus> );
@@ -357,6 +358,11 @@ void KigDocument::addObject(Object* o)
 {
   mhistory->addCommand( new AddObjectsCommand(this, o) );
 };
+
+void KigDocument::addObjects( const Objects& os )
+{
+  mhistory->addCommand( new AddObjectsCommand(this, os) );
+}
 
 void KigDocument::_addObject( Object* o )
 {
