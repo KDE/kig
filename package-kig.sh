@@ -5,7 +5,7 @@
 
 OLDPWD=$(pwd)
 
-VERSION="0.5.0"
+VERSION="0.4.1"
 NAME="kig"
 
 TEMPDIR="/tmp/$NAME-package-temp"
