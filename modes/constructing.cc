@@ -330,6 +330,7 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
   mDoc->addObject( new TextLabel( text, c ) );
   v->redrawScreen();
   killMode();
+  v->setCursor( KCursor::crossCursor() );
 }
 
 void TextLabelConstructionMode::killMode()
@@ -350,4 +351,9 @@ void TextLabelConstructionMode::enableActions()
   KigMode::enableActions();
 
   mDoc->aCancelConstruction->setEnabled( true );
+}
+
+void TextLabelConstructionMode::mouseMoved( QMouseEvent*, KigView* v )
+{
+  v->setCursor( KCursor::crossCursor() );
 }

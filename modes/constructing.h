@@ -121,6 +121,8 @@ public:
   void leftClicked( QMouseEvent*, KigView* );
   void leftReleased( QMouseEvent*, KigView* );
 
+  void mouseMoved( QMouseEvent*, KigView* );
+
   void enableActions();
 
   void cancelConstruction();
