@@ -25,10 +25,10 @@
 
 #include <qcursor.h>
 
-KigObjectsPopup::KigObjectsPopup( KigDocument* d, const Objects& os )
+KigObjectsPopup::KigObjectsPopup( KigDocument* d, KigView* v, const Objects& os )
   : QPopupMenu( d->widget(), "Object Popup Menu" ),
     mDoc( d ),
-    mView( static_cast<KigView*>( d->widget() ) ),
+    mView( v ),
     mObjs( os )
 {
   if( os.count() == 0 )

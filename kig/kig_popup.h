@@ -39,7 +39,7 @@ public slots:
   void startMoving();
   
 public:
-  KigObjectsPopup( KigDocument*, const Objects& os );
+  KigObjectsPopup( KigDocument*, KigView*, const Objects& os );
   ~KigObjectsPopup() {};
   bool isValid() const { return mValid; };
   int exec( const QPoint& p );

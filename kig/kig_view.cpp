@@ -280,11 +280,11 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 	{
 	  Objects a;
 	  a.append( oco.first() );
-	  m = document->getPopup(a);
+	  m = document->getPopup( a, this );
 	}
       else
 	{
-	  m = document->getPopup( document->getSos() );
+	  m = document->getPopup( document->getSos(), this );
 	};
       if( m ) m->exec( mapToGlobal( plc ) );
     }

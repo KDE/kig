@@ -143,7 +143,7 @@ signals: // these signals are for telling KigView it should do something...
 /************** working with our internal document **********/
 public:
   // get a popup menu for the specified objects:
-  KigObjectsPopup* getPopup( const Objects& o );
+  KigObjectsPopup* getPopup( const Objects& o, KigView* );
 
   // guess what these do...
   // actually, they only add a command object to the history, the real work is

@@ -813,9 +813,9 @@ const CoordinateSystem* KigDocument::getCoordinateSystem()
   return s;
 }
 
-KigObjectsPopup* KigDocument::getPopup( const Objects& os )
+KigObjectsPopup* KigDocument::getPopup( const Objects& os, KigView* v )
 {
-  KigObjectsPopup* m = new KigObjectsPopup( this, os );
+  KigObjectsPopup* m = new KigObjectsPopup( this, v, os );
   if( m->isValid() ) return m; else return 0;
 }
 
