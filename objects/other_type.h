@@ -31,6 +31,10 @@ public:
   static const AngleType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  QStringList specialActions() const;
+  void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
+                      NormalMode& m ) const;
 };
 
 class VectorType

@@ -25,10 +25,16 @@
 #include "object.h"
 
 #include "../misc/common.h"
+#include "../misc/calcpaths.h"
+#include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
+#include "../kig/kig_commands.h"
 
 #include <functional>
 #include <algorithm>
 #include <cmath>
+
+#include <qstringlist.h>
 
 static const char* constructanglethroughpoint =
   I18N_NOOP( "Construct an angle through this point" );
@@ -68,8 +74,6 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 
   Coordinate lvect = points[0] - points[1];
   Coordinate rvect = points[2] - points[1];
-  lvect = lvect.normalize();
-  rvect = rvect.normalize();
 
   double startangle = atan2( lvect.y, lvect.x );
   double endangle = atan2( rvect.y, rvect.x );
@@ -308,5 +312,56 @@ int ArcBTPType::resultId() const
   return ObjectImp::ID_ArcImp;
 }
 
+QStringList AngleType::specialActions() const
+{
+  QStringList ret;
+  ret << i18n( "Set Si&ze" );
+  return ret;
+}
 
+void AngleType::executeAction(
+  int i, RealObject* o, KigDocument& d, KigWidget& w,
+  NormalMode& ) const
+{
+  assert( i == 0 );
 
+  Objects parents = o->parents();
+  assert( parents.size() == 3 );
+
+  if ( ! parents[0]->hasimp( ObjectImp::ID_PointImp ) ||
+       ! parents[1]->hasimp( ObjectImp::ID_PointImp ) ||
+       ! parents[2]->hasimp( ObjectImp::ID_PointImp ) )
+    return;
+
+  Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
+  Coordinate c = static_cast<const PointImp*>( parents[2]->imp() )->coordinate();
+
+  Coordinate lvect = a - b;
+  Coordinate rvect = c - b;
+
+  double startangle = atan2( lvect.y, lvect.x );
+  double endangle = atan2( rvect.y, rvect.x );
+  double anglelength = endangle - startangle;
+  if ( anglelength < 0 ) anglelength += 2* M_PI;
+  if ( startangle < 0 ) startangle += 2*M_PI;
+
+  int anglelengthdeg = static_cast<int>( anglelength * 180 / M_PI );
+
+  bool ok = true;
+  double newsize = getDoubleFromUser(
+    i18n( "Set Angle Size" ), i18n( "Choose the new size: " ),
+    anglelengthdeg, &w, &ok, -2147483647, 2147483647, 0 );
+  if ( ! ok ) return;
+
+  newsize *= M_PI;
+  newsize /= 180;
+
+  double newcangle = startangle + newsize;
+  Coordinate cdir( cos( newcangle ), sin( newcangle ) );
+  Coordinate nc = b + cdir.normalize( rvect.length() );
+
+  MonitorDataObjects mon( getAllParents( parents ) );
+  parents[2]->move( c, nc - c, d );
+  d.history()->addCommand( mon.finish( d, i18n( "Resize an &Angle" ) ) );
+}

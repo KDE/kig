@@ -1,7 +1,6 @@
 * harder:
 - add a redefine action to text labels..
 - multiline text labels..
-- set the size of an angle, like set length for segments..
 - decouple the link between how an object is calc'ed and whether or
   not it is internal or drawn.  ( all combinations are possible,
   except that internal objects are never drawn ).  Internal objects

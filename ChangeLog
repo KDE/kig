@@ -1,10 +1,12 @@
+2003-05-03  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* add a set size action to the angle type
+
+	* change the angle size icon..
+
 2003-05-03  Maurizio Paolini  <paolini@dmf.unicatt.it>
 
 	* add transformation support for arcs..
-
-2003-05-03  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
-
-	* change the angle size icon..
 
 2003-05-02  Dominique Devriese  <devriese@kde.org>
 
