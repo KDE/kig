@@ -58,8 +58,6 @@ protected:
 protected:
   BaseMode( KigDocument& );
   ~BaseMode();
-
-  void finish();
 };
 
 #endif
