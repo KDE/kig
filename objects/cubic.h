@@ -91,6 +91,7 @@ void calcCubicLineRestriction ( CubicCartesianEquationData data,
 class Cubic
   : public Curve
 {
+  typedef Curve Parent;
  public:
   Cubic();
   Cubic( const Cubic& c );
