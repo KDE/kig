@@ -36,7 +36,7 @@ Rect ScreenInfo::fromScreen( const QRect& r ) const
 Coordinate ScreenInfo::fromScreen( const QPoint& p ) const
 {
   // invert the y-axis: 0 is at the bottom !
-  Coordinate t( p.x(), mkrect.height() - p.y() );
+  Coordinate t( p.x(), mqrect.height() - p.y() );
   t *= mkrect.width();
   t /= mqrect.width();
   return t + mkrect.bottomLeft();
