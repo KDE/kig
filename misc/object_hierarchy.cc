@@ -380,6 +380,7 @@ void ObjectHierarchy::init( const std::vector<ObjectCalcer*>& from, const std::v
   mnumberofargs = from.size();
   mnumberofresults = to.size();
   margrequirements.resize( from.size(), ObjectImp::stype() );
+  musetexts.resize( margrequirements.size(), "" );
   std::map<const ObjectCalcer*, int> seenmap;
   for ( uint i = 0; i < from.size(); ++i )
     seenmap[from[i]] = i;
@@ -393,7 +394,6 @@ void ObjectHierarchy::init( const std::vector<ObjectCalcer*>& from, const std::v
   for ( std::vector<ObjectCalcer*>::const_iterator i = to.begin(); i != to.end(); ++i )
     visit( *i, seenmap, true, true );
 
-  musetexts.resize( margrequirements.size(), "" );
   mselectstatements.resize( margrequirements.size(), "" );
 }
 
