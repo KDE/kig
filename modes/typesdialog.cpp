@@ -106,7 +106,7 @@ void TypesDialog::deleteType()
     if (KMessageBox::warningContinueCancel
 	(this,
 	 i18n("Are you sure you want to delete the type named \"%1\"?").arg(selectedTypes.front()->action->descriptiveName()),
-	 i18n("Are you sure?"),
+	 i18n("Are You Sure?"),
 	 KStdGuiItem::cont(),
 	 "deleteTypeWarning") ==KMessageBox::Cancel ) return;
   }
@@ -120,7 +120,7 @@ void TypesDialog::deleteType()
 	(this,
 	 i18n("Are you sure you want to delete these %1 types?").arg(selectedTypes.size()),
 	 types,
-	 i18n("Are you sure?"),
+	 i18n("Are You Sure?"),
 	 KStdGuiItem::cont(),
 	 "deleteTypeWarning") == KMessageBox::Cancel ) return;
   }
@@ -154,7 +154,7 @@ void TypesDialog::exportType()
   if ( fi.exists() )
     if ( KMessageBox::questionYesNo( 0, i18n( "The file \"%1\" already exists. "
                                        "Do you wish to overwrite it?" ).arg( fi.name() ),
-                                       i18n( "Overwrite file?" ) ) == KMessageBox::No )
+                                       i18n( "Overwrite File?" ) ) == KMessageBox::No )
        return;
   MacroList::instance()->save( types, file_name );
 }

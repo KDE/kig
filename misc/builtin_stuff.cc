@@ -114,7 +114,7 @@ void setupBuiltinStuff()
     // we only register the guiaction, cause it makes sense to have a
     // toolbar icon for this..
     static PropertyObjectConstructor anglebisectionctor(
-      AngleImp::stype(), I18N_NOOP( "Construct the bisector of this angle" ),
+      AngleImp::stype(), I18N_NOOP( "Construct Bisector of This Angle" ),
       I18N_NOOP( "Angle Bisector" ), I18N_NOOP( "The bisector of an angle" ),
       "angle-bisector", "angle-bisector" );
     actions->add( new ConstructibleAction( &anglebisectionctor, "objects_new_angle_bisector" ) );
@@ -283,7 +283,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       HalflineByVectorType::instance(),
-      I18N_NOOP( "Half-line By Vector" ),
+      I18N_NOOP( "Half-line by Vector" ),
       I18N_NOOP( "Construct the half-line by a given vector starting at given point." ),
       "halflinebyvector" );
     ctors->add( c );
@@ -365,7 +365,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       SimilitudeType::instance(),
-      I18N_NOOP( "Apply a similitude" ),
+      I18N_NOOP( "Apply Similitude" ),
       I18N_NOOP( "Apply a similitude to an object ( the sequence of a scaling and rotation around a center )" ),
       "similitude" );
     ctors->add( c );
@@ -381,7 +381,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       AffinityGI3PType::instance(),
-      I18N_NOOP( "Generic affinity" ),
+      I18N_NOOP( "Generic Affinity" ),
       I18N_NOOP( "The unique affinity that maps 3 given points onto 3 other given points" ),
       "genericaffinity" );
     ctors->add( c );
@@ -389,7 +389,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ProjectivityGI4PType::instance(),
-      I18N_NOOP( "Generic projective transformation" ),
+      I18N_NOOP( "Generic Projective Transformation" ),
       I18N_NOOP( "The unique projective transformation that maps 4 given points onto 4 other given points" ),
       "genericprojectivity" );
     ctors->add( c );
@@ -481,7 +481,7 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       MeasureTransportType::instance(),
-      I18N_NOOP( "Measure transport" ),
+      I18N_NOOP( "Measure Transport" ),
       I18N_NOOP( "Transport the measure of a segment over a circle." ),
       "measuretransport" );
     ctors->add( c );
