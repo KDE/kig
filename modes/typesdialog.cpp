@@ -212,16 +212,8 @@ void TypesDialog::editType()
       items.push_back( it.current() );
     ++it;
   }
-/*
   if ( items.size() == 0 )
-  {
-    KMessageBox::sorry( this,
-                        i18n( "There is no type selected. Please select a type "
-                              "to edit and try again." ),
-                        i18n( "No Type Selected" ) );
     return;
-  }
-*/
   if ( items.size() > 1 )
   {
     KMessageBox::sorry( this,

@@ -1,3 +1,7 @@
+2004-07-20  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Fixed a crash in the Types dialog.
+
 2004-07-18  Dominique Devriese  <devriese@kde.org>
 
 	* Introduce the concept of a CompatibilityVersion.  Kig now saves
