@@ -72,7 +72,7 @@
 
 int CheckOneArgs::check( const Objects& os ) const
 {
-  return os.size() == 1 ? Valid | Complete : 0;
+  return os.size() <= 1 ? Valid | Complete : 0;
 }
 
 ArgsChecker::~ArgsChecker()
