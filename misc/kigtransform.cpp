@@ -183,7 +183,7 @@
 //      " can obtain different transformations by clicking on lines (mirror),"
 //      " vectors (translation), angles (rotation), segments (scaling) and rays"
 //      " (projective transformation)");
-//     if (o->toLine()) return i18n("mirror through this line");
+//     if (o->toLine()) return i18n("reflect in this line");
 //     if (o->toAngle()) return i18n("rotate by this angle");
 //     if (o->toSegment()) return i18n("scale using the length of this vector");
 //     if (o->toRay()) return i18n("a projective transformation in the direction"
@@ -306,7 +306,7 @@ const Transformation operator*( const Transformation& a, const Transformation& b
 const Transformation Transformation::lineReflection( const LineData& l )
 {
   Transformation ret = scaling( -1, l );
-  // a mirroring is a homothety...
+  // a reflection is a homothety...
   ret.mIsHomothety = true;
   return ret;
 }

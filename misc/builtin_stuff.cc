@@ -292,16 +292,16 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       PointReflectionType::instance(),
-      I18N_NOOP( "Mirror through Point" ),
-      I18N_NOOP( "An object mirrored through a point" ),
+      I18N_NOOP( "Reflect in Point" ),
+      I18N_NOOP( "An object reflected in a point" ),
       "centralsymmetry" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_pointreflection" ) );
 
     c = new SimpleObjectTypeConstructor(
       LineReflectionType::instance(),
-      I18N_NOOP( "Mirror" ),
-      I18N_NOOP( "An object mirrored through a line" ),
+      I18N_NOOP( "Reflect in Line" ),
+      I18N_NOOP( "An object reflected in a line" ),
       "mirrorpoint" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linereflection" ) );
