@@ -7,6 +7,7 @@
 #include <kpopupmenu.h>
 
 #include "../objects/object.h"
+//#include "../misc/coordinates.h"
 
 class KigDocument;
 
@@ -114,7 +115,7 @@ protected:
   QPtrList<QRect> overlay, oldOverlay;
 
   // this maps the coordinates of the objects to the widget...
-  EuclideanCoords mCoords;
+  //  EuclideanCoords mCoords;
 
 protected:
   QDialog* kiosk;
