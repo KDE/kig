@@ -117,7 +117,6 @@ void MovingMode::mouseMoved( QMouseEvent* e, KigView* v )
   for( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
     (*i)->moveTo( c );
   amo.calc( v->screenInfo() );
-  amo.calc( v->screenInfo() );
   KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );

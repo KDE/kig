@@ -180,8 +180,8 @@ inline Locus::CPts::iterator Locus::addPoint( double param, const ScreenInfo& r 
   cp->calc( r );
   calcpath.calc( r );
   Point* p = obj->toPoint();
-  pts.push_front(CPt(p->getCoord(), param));
-  return pts.begin();
+  pts.push_back(CPt(p->getCoord(), param));
+  return pts.end() - 1;
 }
 
 void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i, const ScreenInfo& si )
@@ -206,6 +206,7 @@ void Locus::calcPointLocus( const ScreenInfo& r )
   if ( r.shownRect() == Rect() ) return;
   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   pts.clear();
+  pts.reserve( numberOfSamples );
   double oldP = cp->constrainedImp()->getP();
   // TODO: improve (cf. KSeg: choose which samples we want...)
 //   double period = double(1)/numberOfSamples;

@@ -45,7 +45,7 @@ class Locus
 {
 public:
   // number of points to include, i think this is a nice default...
-  static const int numberOfSamples = 600;
+  static const int numberOfSamples = 1000;
 public:
   Locus();
   ~Locus();
@@ -108,7 +108,7 @@ protected:
     double pm;
   };
 
-  typedef std::list<CPt> CPts;
+  typedef std::vector<CPt> CPts;
 
   // for calcPointLocus we need some special magic, so it is a special
   // type...
