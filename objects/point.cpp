@@ -181,7 +181,7 @@ NormalPointImp::NormalPointImp()
 
 FixedPointImp::FixedPointImp( const Coordinate& c )
 {
-  pwwlmt = c;
+  pwwca = c;
 }
 
 void NormalPoint::setCoord( const Coordinate& c )
@@ -191,17 +191,19 @@ void NormalPoint::setCoord( const Coordinate& c )
 
 void FixedPointImp::calc( NormalPoint* p )
 {
-  p->setCoord( pwwlmt );
+  p->setCoord( pwwca );
 }
 
-void FixedPointImp::startMove( const Coordinate& c, NormalPoint* )
+void FixedPointImp::startMove( const Coordinate& c, NormalPoint* p )
 {
+  pwwca = p->getCoord();
   pwwlmt = c;
 }
 
 void FixedPointImp::moveTo( const Coordinate& c, NormalPoint* p )
 {
-  p->setCoord( p->getCoord() + c -pwwlmt );
+  pwwca += c - pwwlmt;
+  calc( p );
   pwwlmt = c;
 }
 
@@ -240,10 +242,10 @@ void NormalPoint::setParams( const std::map<QCString, QString>& m )
 
 void FixedPointImp::writeParams( std::map<QCString, QString>& m, NormalPoint* p )
 {
-  pwwlmt = p->getCoord(); // should really not be necessary, but you
-                          // never know ... :)
-  m["x"] = QString::number( pwwlmt.x );
-  m["y"] = QString::number( pwwlmt.y );
+  pwwca = p->getCoord(); // should really not be necessary, but you
+                         // never know ... :)
+  m["x"] = QString::number( pwwca.x );
+  m["y"] = QString::number( pwwca.y );
 }
 
 void FixedPointImp::readParams( const std::map<QCString, QString>& m, NormalPoint* p )
@@ -251,7 +253,7 @@ void FixedPointImp::readParams( const std::map<QCString, QString>& m, NormalPoin
   bool ok;
   p->setCoord( Coordinate(
                  m.find("x")->second.toDouble(&ok),
-                 pwwlmt.y = m.find("y")->second.toDouble(&ok) ) );
+                 pwwca.y = m.find("y")->second.toDouble(&ok) ) );
   Q_ASSERT( ok );
 }
 
@@ -303,7 +305,7 @@ NormalPointImp* FixedPointImp::copy( NormalPoint* p )
 }
 
 FixedPointImp::FixedPointImp( const FixedPointImp& p, NormalPoint* )
-  : NormalPointImp(), pwwlmt( p.pwwlmt )
+  : NormalPointImp(), pwwca( p.pwwca )
 {
 }
 

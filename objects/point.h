@@ -180,6 +180,8 @@ class FixedPointImp
 {
   // point where we last moved to...
   Coordinate pwwlmt;
+  // point where we currently are...
+  Coordinate pwwca;
 public:
   FixedPointImp( const Coordinate& c = Coordinate( 0, 0 ) );
   FixedPointImp( const FixedPointImp& p, NormalPoint* p );
