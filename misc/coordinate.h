@@ -40,25 +40,19 @@ public:
   inline Coordinate();
   ~Coordinate() {};
   
-  inline Coordinate operator+ ( const Coordinate& c ) const;
-  inline Coordinate operator- ( const Coordinate& c ) const;
-  inline Coordinate operator* ( const double r ) const;
-  inline Coordinate operator/ ( const double r ) const;
-  inline Coordinate operator- () const;
   inline double distance ( const Coordinate& p ) const;
   inline double length () const;
   inline double squareLength() const;
+  inline const Coordinate operator- () const;
   // returns a vector which is orthogonal on this vector
   // this relation always holds:
   // <pre>
   // Coordinate a = ...;
   // assert( a*a.orthogonal() ) == -1;
   // </pre>
-  inline Coordinate orthogonal() const;
-  inline bool operator== ( const Coordinate& p ) const;
-  inline bool operator!=( const Coordinate& p ) const;
-  inline Coordinate round() const;
-  inline Coordinate normalize() const;
+  inline const Coordinate orthogonal() const;
+  inline const Coordinate round() const;
+  inline const Coordinate normalize() const;
   inline QPoint toQPoint() const;
 
   inline Coordinate& operator= ( const Coordinate& c );
@@ -70,6 +64,12 @@ public:
   double x;
   double y;
   friend kdbgstream& operator<<( kdbgstream& s, const Coordinate& t );
+  friend inline const Coordinate operator+ ( const Coordinate& a, const Coordinate& b );
+  friend inline const Coordinate operator- ( const Coordinate& a, const Coordinate& b );
+  friend inline const Coordinate operator* ( const Coordinate& a, const double r );
+  friend inline const Coordinate operator/ ( const Coordinate& a, const double r );
+  friend inline bool operator==( const Coordinate&, const Coordinate& );
+  friend inline bool operator!=( const Coordinate&, const Coordinate& );
 };
 
 inline kdbgstream& operator<<( kdbgstream& s, const Coordinate& t )
@@ -78,6 +78,35 @@ inline kdbgstream& operator<<( kdbgstream& s, const Coordinate& t )
   return s;
 };
 
+inline const Coordinate operator+ ( const Coordinate& a, const Coordinate& b )
+{
+  return Coordinate ( a.x + b.x, a.y + b.y );
+};
+
+inline const Coordinate operator- ( const Coordinate& a, const Coordinate& b )
+{
+  return Coordinate ( a.x - b.x, a.y - b.y );
+};
+
+inline const Coordinate operator* ( const Coordinate& a, const double r )
+{
+  return Coordinate ( r*a.x, r*a.y );
+};
+
+inline const Coordinate operator/ ( const Coordinate& a, const double r )
+{
+  return Coordinate ( a.x/r, a.y/r );
+};
+
+bool operator==( const Coordinate& a, const Coordinate& b )
+{
+  return a.x == b.x && a.y == b.y;
+};
+
+bool operator!=( const Coordinate& a, const Coordinate& b )
+{
+  return !operator==( a, b );
+};
 
 Coordinate::Coordinate()
   : x(0),
@@ -97,27 +126,7 @@ Coordinate::Coordinate( const Coordinate& p )
 {
 };
 
-Coordinate Coordinate::operator+( const Coordinate& p ) const
-{
-  return Coordinate ( x + p.x, y + p.y );
-};
-
-Coordinate Coordinate::operator-( const Coordinate& p ) const
-{
-  return Coordinate ( x - p.x, y - p.y );
-};
-
-Coordinate Coordinate::operator*( const double r ) const
-{
-  return Coordinate ( r*x, r*y );
-};
-
-Coordinate Coordinate::operator/( const double r ) const
-{
-  return Coordinate ( x/r, y/r );
-};
-
-Coordinate Coordinate::operator-() const
+const Coordinate Coordinate::operator-() const
 {
   return Coordinate ( -x, -y );
 };
@@ -172,27 +181,17 @@ double Coordinate::squareLength() const
   return x*x+y*y;
 };
 
-Coordinate Coordinate::orthogonal() const
+const Coordinate Coordinate::orthogonal() const
 {
   return Coordinate( -y, x );
 };
 
-bool Coordinate::operator==( const Coordinate& p ) const
+const Coordinate Coordinate::normalize() const
 {
-  return p.x == x && p.y == y;
+  return operator/(*this, length());
 };
 
-bool Coordinate::operator!=( const Coordinate& p ) const
-{
-  return !operator==(p);
-};
-
-Coordinate Coordinate::normalize() const
-{
-  return operator/(length());
-};
-
-Coordinate Coordinate::round() const
+const Coordinate Coordinate::round() const
 {
   return Coordinate( ::round( x ), ::round( y ) );
 };
