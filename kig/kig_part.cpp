@@ -192,7 +192,7 @@ void KigDocument::setupTypes()
 	   "locus",
 	   i18n("Locus"),
 	   i18n("Construct a locus: let one point move around, and record "
-		"the places another object goes through.  Those combined "
+		"the places another object passes through. These combined "
 		"form a new object: the locus..."),
 	   0));
 

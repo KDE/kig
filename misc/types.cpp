@@ -42,8 +42,8 @@ void Types::saveToDir(const QString& dir_name)
       {
 	KMessageBox::sorry
 	  (0,
-	   i18n("Can not open file %1 for writing...").arg(filename),
-	   i18n("Can not open file"));
+	   i18n("Unable to open file %1 for writing...").arg(filename),
+	   i18n("Unable to Open File"));
 	return;
       }
       // get a stream
@@ -67,8 +67,8 @@ Types::Types( KigDocument* doc, const QString& file_name)
   if (!file.open(IO_ReadOnly)) {
     KMessageBox::sorry
       (0,
-       i18n("Can not open file %1 for reading...").arg(file_name),
-       i18n("Can not open file"));
+       i18n("Unable to open file %1 for reading...").arg(file_name),
+       i18n("Unable to Open File"));
     return;
   };
   QDomDocument qdoc;
@@ -93,8 +93,8 @@ void Types::saveToFile(const QString& filename)
     {
       KMessageBox::sorry
 	(0,
-	 i18n("Can not open file %1 for writing...").arg(filename),
-	 i18n("Can not open file"));
+	 i18n("Unable to open file %1 for writing...").arg(filename),
+	 i18n("Unable to Open File"));
       return;
     }
   // get a stream
