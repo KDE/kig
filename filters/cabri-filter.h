@@ -37,6 +37,10 @@
 //  which is being pushed by Texas Instruments, but only exists for
 //  the Winblows(tm) platform and some TI scientific calculator...
 
+struct CabriObject;
+
+class QFile;
+
 class KigFilterCabri
   : public KigFilter
 {
@@ -47,6 +51,9 @@ public:
 
   bool supportMime ( const QString& mime );
   KigDocument* load ( const QString& fromfile );
+private:
+  bool readObject( QFile& f, CabriObject& myobj );
+
 };
 
 #endif
