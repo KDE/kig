@@ -52,87 +52,27 @@ Coordinate calcPointOnParallel( const Coordinate& dir, const Coordinate& t )
 
 Coordinate calcIntersectionPoint( const LineData& l1, const LineData& l2 )
 {
-  const Coordinate& p1 = l1.a;
-  const Coordinate& p2 = l1.b;
-  const Coordinate& p3 = l2.a;
-  const Coordinate& p4 = l2.b;
+  const Coordinate& pa = l1.a;
+  const Coordinate& pb = l1.b;
+  const Coordinate& pc = l2.a;
+  const Coordinate& pd = l2.b;
 
   double
-    dxa = p1.x,
-    dxb = p2.x,
-    dxc = p3.x,
-    dxd = p4.x;
-  double
-    dya = p1.y,
-    dyb = p2.y,
-    dyc = p3.y,
-    dyd = p4.y;
+    xab = pb.x - pa.x,
+    xdc = pd.x - pc.x,
+    xac = pc.x - pa.x,
+    yab = pb.y - pa.y,
+    ydc = pd.y - pc.y,
+    yac = pc.y - pa.y;
 
-  long double xa=dxa;
-  long double xb=dxb;
-  long double xc=dxc;
-  long double xd=dxd;
+  double det = xab*ydc - xdc*yab;
+  double detn = xac*ydc - xdc*yac;
 
-  long double ya=dya;
-  long double yb=dyb;
-  long double yc=dyc;
-  long double yd=dyd;
+  // test for parallelism
+  if ( fabs (det) < 1e-6 ) return Coordinate::invalidCoord();
+  double t = detn/det;
 
-  long double nx, ny;
-  if ((fabs(xb - xa)> 0.00001) && (fabs(xd - xc) > 0.00001))
-  {
-    // we calc these separately to avoid rounding problems..
-//       long double a = (yb-ya)/(xb-xa);
-//       long double b = (yd-yc)/(xd-xc);
-//      nx = (yc - ya + xa*a - xc*b)/(a-b);
-//      ny = (nx-xa)*a + ya;
-    // now doesn't this look nice ? :)
-    nx = (yc - ya +
-          xa * ( yb - ya ) / ( xb - xa ) -
-          xc * ( yd - yc ) / ( xd-xc) )
-         * ( xb * xd -
-             xb * xc -
-             xa * xd +
-             xa * xc )
-         / ( yb * xd -
-             yb * xc -
-             ya * xd +
-             ya * xc
-             - ( yd * xb -
-                 yd * xa -
-                 yc * xb +
-                 yc * xa ) );
-    ny = (nx-xa)*(yb-ya)/(xb-xa)+ya;
-  }
-  else // we would have had a divide by zero
-    if ( fabs( yb-ya ) > 0.00001 && fabs( yd-yc ) > 0.00001 )
-    {
-      // so now, we first calc the y values, and then the x's...
-      long double a = (xb-xa)/(yb-ya);
-      long double b = (xd-xc)/(yd-yc);
-      ny = ( xc - xa + ya*a - yc*b ) / (a-b);
-      nx = ( ny - ya)*a + xa;
-    }
-    else if ( fabs(yb-ya) > 0.00001 && fabs( xd - xc ) > 0.00001 )
-    {
-      nx = xb; ny = yd;
-    }
-    else if ( fabs( yd - yc ) > 0.00001 && fabs( xb - xa ) > 0.00001 )
-    {
-      nx = xd; ny = yb;
-    }
-    else if ( fabs( yd - yc ) <= 0.00001 && fabs( xd - xc ) <= 0.00001 )
-    {
-      // this is a bogus value, but better that than a SIGNULL,
-      // right ?
-      nx = xd; ny = yd;
-    }
-    else
-    {
-      // same here
-      nx = xb; ny = yb;
-    };
-  return Coordinate( nx, ny );
+  return pa + t*(pb - pa);
 }
 
 void calcBorderPoints( Coordinate& p1, Coordinate& p2, const Rect& r )
