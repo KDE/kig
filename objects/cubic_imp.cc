@@ -368,3 +368,8 @@ bool CubicImp::internalContainsPoint( const Coordinate& p, double threshold ) co
 
   return dist <= threshold;
 }
+
+bool CubicImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+}

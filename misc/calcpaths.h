@@ -81,6 +81,8 @@ bool isChild( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& os );
  * curve.  This means that it is either a constrained point on the
  * curve, or the curve is constructed through the point, or the point
  * is an intersection point of the curve with another curve.
+ * Note that it is assumed that the given point is in fact a point and the
+ * given curve is in fact a curve.
  */
 bool isPointOnCurve( const ObjectCalcer* point, const ObjectCalcer* curve );
 

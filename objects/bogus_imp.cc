@@ -368,3 +368,10 @@ const ObjectImpType* TestResultImp::impRequirementForProperty( uint which ) cons
     return Parent::impRequirementForProperty( which );
   else return TestResultImp::stype();
 }
+
+bool TestResultImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return false;
+}

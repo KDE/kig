@@ -80,6 +80,7 @@ public:
   bool inherits( int type ) const;
   ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
   std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const;
   Args sortArgs( const Args& args ) const;

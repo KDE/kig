@@ -24,8 +24,8 @@
 
 static const ArgsParser::spec argsspecAreParallel[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Is this line parallel?" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Parallel to this line?" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Is this line parallel?" ), false },
+  { AbstractLineImp::stype(), I18N_NOOP( "Parallel to this line?" ), false }
 };
 
 AreParallelType::AreParallelType()
@@ -64,8 +64,8 @@ const ObjectImpType* AreParallelType::resultId() const
 
 static const ArgsParser::spec argsspecAreOrthogonal[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Is this line orthogonal?" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Orthogonal to this line?" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Is this line orthogonal?" ), false },
+  { AbstractLineImp::stype(), I18N_NOOP( "Orthogonal to this line?" ), false }
 };
 
 AreOrthogonalType::AreOrthogonalType()
@@ -104,9 +104,9 @@ const ObjectImpType* AreOrthogonalType::resultId() const
 
 static const ArgsParser::spec argsspecAreCollinear[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Check collinearity of this point" ) },
-  { PointImp::stype(), I18N_NOOP( "and this second point" ) },
-  { PointImp::stype(), I18N_NOOP( "with this third point" ) }
+  { PointImp::stype(), I18N_NOOP( "Check collinearity of this point" ), false },
+  { PointImp::stype(), I18N_NOOP( "and this second point" ), false },
+  { PointImp::stype(), I18N_NOOP( "with this third point" ), false }
 };
 
 AreCollinearType::AreCollinearType()
@@ -145,8 +145,8 @@ const ObjectImpType* AreCollinearType::resultId() const
 
 static const ArgsParser::spec containsTestArgsSpec[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Check whether this point is on a curve" ) },
-  { CurveImp::stype(), I18N_NOOP( "Check whether the point is on this curve" ) }
+  { PointImp::stype(), I18N_NOOP( "Check whether this point is on a curve" ), false },
+  { CurveImp::stype(), I18N_NOOP( "Check whether the point is on this curve" ), false }
 };
 
 ContainsTestType::ContainsTestType()

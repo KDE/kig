@@ -30,6 +30,7 @@
 #include "../kig/kig_view.h"
 
 #include <cmath>
+//#include <.h>
 #include <utility>
 using namespace std;
 
@@ -569,4 +570,26 @@ bool ArcImp::internalContainsPoint( const Coordinate& p, double threshold ) cons
 
   if ( angle < msa ) angle += 2 * M_PI;
   return angle - msa - ma < 1e-4;
+}
+
+bool AngleImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  return false;
+}
+
+bool VectorImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+}
+
+bool ArcImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  else if ( which == Parent::numberOfProperties() )
+    return true;
+  else
+    return false;
 }

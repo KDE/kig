@@ -37,9 +37,9 @@
 
 static const ArgsParser::spec arggspeccs[] =
 {
-  { IntImp::stype(), "UNUSED" },
-  { PointImp::stype(), "UNUSED" },
-  { StringImp::stype(), "UNUSED" }
+  { IntImp::stype(), "UNUSED", false },
+  { PointImp::stype(), "UNUSED", false },
+  { StringImp::stype(), "UNUSED", false }
 };
 
 TextType::TextType()
@@ -188,5 +188,10 @@ std::vector<ObjectCalcer*> TextType::movableParents( const ObjectTypeCalcer& our
   std::vector<ObjectCalcer*> ret = parents[1]->movableParents();
   ret.push_back( parents[1] );
   return ret;
+}
+
+bool TextType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  return false;
 }
 

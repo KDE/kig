@@ -272,6 +272,7 @@ public:
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
 
   bool equals( const ObjectImp& rhs ) const;
 };

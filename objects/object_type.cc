@@ -111,3 +111,8 @@ std::vector<ObjectCalcer*> ObjectType::movableParents( const ObjectTypeCalcer& )
   return std::vector<ObjectCalcer*>();
 }
 
+bool ArgsParserObjectType::isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const
+{
+  return margsparser.isDefinedOnOrThrough( o, parents );
+}
+

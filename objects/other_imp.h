@@ -48,6 +48,7 @@ public:
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
 
   ObjectImp* copy() const;
 
@@ -86,6 +87,7 @@ public:
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
 
   ObjectImp* copy() const;
 
@@ -128,6 +130,7 @@ public:
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;

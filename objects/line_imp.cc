@@ -516,3 +516,21 @@ bool LineImp::internalContainsPoint( const Coordinate& p, double threshold ) con
 {
   return isOnLine( p, mdata.a, mdata.b, threshold );
 }
+
+bool AbstractLineImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  int pnum = 0;
+
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;
+  else assert( false );
+  return false;
+}

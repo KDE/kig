@@ -285,3 +285,26 @@ std::vector<ObjectCalcer*> ObjectTypeCalcer::movableParents() const
   return mtype->movableParents( *this );
 }
 
+bool ObjectConstCalcer::isDefinedOnOrThrough( const ObjectCalcer* ) const
+{
+  return false;
+}
+
+bool ObjectPropertyCalcer::isDefinedOnOrThrough( const ObjectCalcer* o ) const
+{
+  return o == mparent &&
+    mparent->imp()->isPropertyDefinedOnOrThroughThisImp( propId() );
+}
+
+bool ObjectTypeCalcer::isDefinedOnOrThrough( const ObjectCalcer* o ) const
+{
+  Args args;
+  args.reserve( mparents.size() );
+  std::transform(
+    mparents.begin(), mparents.end(),
+    std::back_inserter( args ),
+    std::mem_fun( &ObjectCalcer::imp ) );
+  assert( std::find( args.begin(), args.end(), o->imp() ) != args.end() );
+  return mtype->isDefinedOnOrThrough( o->imp(), args );
+}
+

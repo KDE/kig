@@ -32,6 +32,7 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
 
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
 
   std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
@@ -49,6 +50,7 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
 
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
 
   std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;

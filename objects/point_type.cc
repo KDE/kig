@@ -35,8 +35,8 @@
 
 static const ArgsParser::spec argsspecFixedPoint[] =
 {
-  { DoubleImp::stype(), "x" },
-  { DoubleImp::stype(), "y" }
+  { DoubleImp::stype(), "x", false },
+  { DoubleImp::stype(), "y", false }
 };
 
 FixedPointType::FixedPointType()
@@ -70,8 +70,8 @@ ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigDocument& d
 
 const ArgsParser::spec argsspecConstrainedPoint[] =
 {
-  { DoubleImp::stype(), "parameter" },
-  { CurveImp::stype(), "Constrain the point to this curve" }
+  { DoubleImp::stype(), "parameter", false },
+  { CurveImp::stype(), "Constrain the point to this curve", true }
 };
 
 ConstrainedPointType::ConstrainedPointType()
@@ -128,8 +128,8 @@ bool FixedPointType::canMove() const
 
 static const ArgsParser::spec argsspecMidPoint[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ), false }
 };
 
 MidPointType::MidPointType()
@@ -319,9 +319,9 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
 
 static const ArgsParser::spec argsspecMeasureTransport[] =
 {
-  { CircleImp::stype(), "transport measure on this circle" },
-  { PointImp::stype(), "project this point onto the circle" },
-  { SegmentImp::stype(), "Segment to transport" }
+  { CircleImp::stype(), "transport measure on this circle", true },
+  { PointImp::stype(), "project this point onto the circle", false },
+  { SegmentImp::stype(), "Segment to transport", false }
 };
 
 MeasureTransportType::MeasureTransportType()

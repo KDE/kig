@@ -1,3 +1,8 @@
+2004-04-02  Dominique Devriese  <devriese@kde.org>
+
+	* Implement the point-on-curve checking.  The code should work,
+	but the objects using it cannot be built yet.
+
 2004-03-28  Dominique Devriese  <devriese@kde.org>
 
 	* Add some non-functional code for point-on-curve checking.

@@ -235,7 +235,5 @@ std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> objs )
 
 bool isPointOnCurve( const ObjectCalcer* point, const ObjectCalcer* curve )
 {
-  // TODO
-
-  return false;
+  return point->isDefinedOnOrThrough( curve ) || curve->isDefinedOnOrThrough( point );
 }

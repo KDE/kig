@@ -42,9 +42,9 @@ static const char* constructanglethroughpoint =
 
 static const ArgsParser::spec argsspecAngle[] =
 {
-  { PointImp::stype(), constructanglethroughpoint },
-  { PointImp::stype(), I18N_NOOP( "Construct an angle at this point" ) },
-  { PointImp::stype(), constructanglethroughpoint }
+  { PointImp::stype(), constructanglethroughpoint, true },
+  { PointImp::stype(), I18N_NOOP( "Construct an angle at this point" ), true },
+  { PointImp::stype(), constructanglethroughpoint, true }
 };
 
 AngleType::AngleType()
@@ -85,8 +85,8 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 
 static const ArgsParser::spec argsspecVector[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a vector from this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct a vector to this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a vector from this point" ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct a vector to this point" ), true }
 };
 
 VectorType::VectorType()
@@ -111,8 +111,8 @@ ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const struct ArgsParser::spec argsspecLocus[] =
 {
-  { HierarchyImp::stype(), "hierarchy" },
-  { CurveImp::stype(), "curve" }
+  { HierarchyImp::stype(), "hierarchy", false },
+  { CurveImp::stype(), "curve", false }
 };
 
 LocusType::LocusType()
@@ -233,9 +233,9 @@ const LocusType* LocusType::instance()
 
 static const ArgsParser::spec argsspecArcBTP[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct an arc starting at this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct an arc through this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct an arc ending at this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct an arc starting at this point" ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct an arc through this point" ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct an arc ending at this point" ), true }
 };
 
 ArcBTPType::ArcBTPType()
@@ -408,5 +408,11 @@ Args CopyObjectType::sortArgs( const Args& args ) const
 {
   assert( args.size() == 1 );
   return args;
+}
+
+bool CopyObjectType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  // TODO: vragen aan parent ?
+  return false;
 }
 

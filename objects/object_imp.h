@@ -250,6 +250,10 @@ public:
   // in order to have the imp with number which.  Macro's need it
   // foremost.  This function answers that question..
   virtual const ObjectImpType* impRequirementForProperty( uint which ) const;
+  // Return whether the property with number which is by construction
+  // always a point on this curve ( if this is a curve ), or always a
+  // curve through this point ( if this is a curve ).
+  virtual bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
   // What icon should be shown when talking about this property ?
   virtual const char* iconForProperty( uint which ) const;
 

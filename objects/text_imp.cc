@@ -156,3 +156,8 @@ const ObjectImpType* TextImp::type() const
 {
   return TextImp::stype();
 }
+
+bool TextImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+}

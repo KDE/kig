@@ -290,3 +290,8 @@ QString ObjectImpType::hideAStatement() const
   return i18n( mhideastatement );
 }
 
+bool ObjectImp::isPropertyDefinedOnOrThroughThisImp( uint ) const
+{
+  return false;
+}
+

@@ -367,3 +367,10 @@ bool ConicImp::internalContainsPoint( const Coordinate& p, double threshold ) co
   fact = (1.0 + ecosthetamtheta0)/sqrt(oneplus + 2*ecosthetamtheta0);
   return fabs(( len - rho )*fact) <= threshold;
 }
+
+bool ConicImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  return false;
+}

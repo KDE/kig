@@ -34,8 +34,8 @@
 
 static const ArgsParser::spec argsspecSegmentAB[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a segment ending at this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct a segment starting at this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a segment ending at this point" ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct a segment starting at this point" ), true }
 };
 
 SegmentABType::SegmentABType()
@@ -62,8 +62,8 @@ static const char constructlineabstat[] = I18N_NOOP( "Construct a line through t
 
 static const ArgsParser::spec argsspecLineAB[] =
 {
-  { PointImp::stype(), constructlineabstat },
-  { PointImp::stype(), constructlineabstat }
+  { PointImp::stype(), constructlineabstat, true },
+  { PointImp::stype(), constructlineabstat, true }
 };
 
 LineABType::LineABType()
@@ -88,8 +88,8 @@ ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const ArgsParser::spec argsspecRayAB[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a ray through this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct a ray starting at this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct a ray starting at this point" ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct a ray through this point" ), true }
 };
 
 RayABType::RayABType()
@@ -128,8 +128,8 @@ ObjectImp* LinePerpendLPType::calc(
 
 static const ArgsParser::spec argsspecLineParallel[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Construct a parallel of this line" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct a parallel through this point" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct a parallel of this line" ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct a parallel through this point" ), true }
 };
 
 LineParallelLPType::LineParallelLPType()
@@ -157,8 +157,8 @@ ObjectImp* LineParallelLPType::calc(
 
 static const ArgsParser::spec argsspecLinePerpend[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Construct a perpendicular of this line" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct a perpendicular through this point" ) }
+  { AbstractLineImp::stype(), I18N_NOOP( "Construct a perpendicular of this line" ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct a perpendicular through this point" ), true }
 };
 
 LinePerpendLPType::LinePerpendLPType()

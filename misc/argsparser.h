@@ -30,22 +30,27 @@ class ObjectImpType;
  * of the arguments it wants.  This specification is given as an array
  * of ArgsParser::spec structs.  This struct contains a pointer to an
  * ObjectImpType ( which is the type you want the argument to have ),
- * and a string ( which is an I18N_NOOP'd string describing what you
- * will be using the argument for ).
+ * a string ( which is an I18N_NOOP'd string describing what you will
+ * be using the argument for ) and a boolean ( which says whether the
+ * constructed object is by construction on the curve argument ( if
+ * the constructed object is a point ), or whether the constructed
+ * object is by construction through the point argument ( if the
+ * constructed object is a curve ) ).
  *
  * An ObjectType using an ArgsParser to take care of the various
- * things that it can handle ( impRequirement and the sortArgs
- * functions ), should inherit from ArgsParserObjectType, which takes
- * care of calling the ArgsParser for these things...  It also allows
- * you to use a certain ObjectConstructor for your type.
+ * things that it can handle ( impRequirement, the sortArgs functions
+ * and the isDefinedOnOrThrough stuff ), should inherit from
+ * ArgsParserObjectType, which takes care of calling the ArgsParser
+ * for these things...  It also allows you to use a convenient
+ * ObjectConstructor for your type.
  *
  * E.g., let's see what CircleBCPType has for its arguments spec:
  * here's some code:
  * <code>
  * static const ArgsParser::spec argsspecTranslation[] =
  * {
- *   { ObjectImp::stype(), I18N_NOOP("Translate this object") },
- *   { VectorImp::stype(), I18N_NOOP("Translate by this vector") }
+ *   { ObjectImp::stype(), I18N_NOOP("Translate this object"), false },
+ *   { VectorImp::stype(), I18N_NOOP("Translate by this vector"), false }
  * };
  *
  * TranslatedType::TranslatedType()
@@ -66,7 +71,9 @@ class ObjectImpType;
  *
  * As you can see above, the argsspec can be declared right in the
  * cpp-file.  The usetexts explain to the user what the argument in
- * question will be used for.  In the constructor, you simply call the
+ * question will be used for.  The boolean says that in this case, the
+ * constructed object is not by construction on or through one of its
+ * arguments. In the constructor, you simply call the
  * ArgsParserObjectType with the argsspec struct you defined, and the
  * number of arguments in the argsspec ( in this case 2 ).
  *
@@ -100,7 +107,7 @@ class ArgsParser
 public:
   // this are some enum values that we return from some functions.
   enum { Invalid = 0, Valid = 1, Complete = 2 };
-  struct spec { const ObjectImpType* type; const char* usetext; };
+  struct spec { const ObjectImpType* type; const char* usetext; bool onOrThrough;};
 private:
   // the args spec..
   std::vector<spec> margs;
@@ -134,6 +141,11 @@ public:
   // returns the minimal ObjectImp ID that o needs to inherit in order
   // to be useful..  o should be part of parents.
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+
+  // Supposing that parents would be given as parents, this function
+  // returns whether the returned ObjectImp will be, by construction,
+  // on o ( if o is a curve ), or through o ( if o is a point ).
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
 
   // Checks the args according to this args specification.  If the
   // objects should never have occurred, then an assertion failure

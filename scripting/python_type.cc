@@ -182,3 +182,13 @@ Args PythonExecuteType::sortArgs( const Args& args ) const
   return args;
 }
 
+bool PythonCompileType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  return false;
+}
+
+bool PythonExecuteType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  return false;
+}
+

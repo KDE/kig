@@ -58,6 +58,7 @@ public:
 
   const uint numberOfProperties() const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
   const char* iconForProperty( uint which ) const;

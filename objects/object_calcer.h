@@ -154,6 +154,14 @@ public:
    * done in the calc() method, not here.
    */
   virtual void move( const Coordinate& to, const KigDocument& doc );
+
+  /**
+   * If this ObjectCalcer represents a curve, return true if the given
+   * point is by construction on this curve.  If this ObjectCalcer
+   * represents a point, return true if this point is by construction
+   * on the given curve.
+   */
+  virtual bool isDefinedOnOrThrough( const ObjectCalcer* o ) const = 0;
 };
 
 /**
@@ -191,6 +199,7 @@ public:
 
   const ObjectImpType* impRequirement(
     ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const;
+  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const;
   bool canMove() const;
   std::vector<ObjectCalcer*> movableParents() const;
   Coordinate moveReferencePoint() const;
@@ -238,6 +247,7 @@ public:
 
   const ObjectImpType* impRequirement(
     ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const;
+  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const;
 };
 
 /**
@@ -269,6 +279,7 @@ public:
 
   const ObjectImpType* impRequirement(
     ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const;
+  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const;
 };
 
 #endif

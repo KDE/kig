@@ -55,6 +55,7 @@ public:
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
 
   /**
    * Get the slope of this AbstractLineImp..  For a line through

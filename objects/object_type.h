@@ -60,6 +60,12 @@ public:
   // that o should at least have..  ( o should be part of parents )
   virtual const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const = 0;
 
+  // Supposing that parents would be given as parents to this type's
+  // calc function, this function returns whether the returned
+  // ObjectImp will be, by construction, on o ( if o is a curve ), or
+  // through o ( if o is a point ).
+  virtual bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const = 0;
+
   // returns the ObjectImp id of the ObjectImp's produced by this
   // ObjectType..  if the ObjectType can return different sorts of
   // ObjectImp's, it should return the biggest common id, or
@@ -101,6 +107,7 @@ protected:
                         int n );
 public:
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
   const ArgsParser& argsParser() const;
 
   std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;

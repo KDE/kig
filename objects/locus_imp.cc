@@ -350,3 +350,8 @@ bool LocusImp::internalContainsPoint( const Coordinate& p, double threshold, con
   double dist = getDist( param, p, doc );
   return fabs( dist ) <= threshold;
 }
+
+bool LocusImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+}

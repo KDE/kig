@@ -29,8 +29,8 @@
 
 static const ArgsParser::spec argsspecTranslation[] =
 {
-  { ObjectImp::stype(), I18N_NOOP("Translate this object") },
-  { VectorImp::stype(), I18N_NOOP("Translate by this vector") }
+  { ObjectImp::stype(), I18N_NOOP("Translate this object"), false },
+  { VectorImp::stype(), I18N_NOOP("Translate by this vector"), false }
 };
 
 TranslatedType::TranslatedType()
@@ -60,8 +60,8 @@ ObjectImp* TranslatedType::calc( const Args& args, const KigDocument& ) const
 
 static const ArgsParser::spec argsspecPointReflection[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ) },
-  { PointImp::stype(), I18N_NOOP( "Reflect around this point" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "Reflect around this point" ), false }
 };
 
 PointReflectionType::PointReflectionType()
@@ -91,8 +91,8 @@ ObjectImp* PointReflectionType::calc( const Args& args, const KigDocument& ) con
 
 static const ArgsParser::spec argsspecLineReflection[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Reflect over this line" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ), false },
+  { AbstractLineImp::stype(), I18N_NOOP( "Reflect over this line" ), false }
 };
 
 LineReflectionType::LineReflectionType()
@@ -122,9 +122,9 @@ ObjectImp* LineReflectionType::calc( const Args& args, const KigDocument& ) cons
 
 static const ArgsParser::spec argsspecRotation[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Rotate this object" ) },
-  { PointImp::stype(), I18N_NOOP( "Rotate around this point" ) },
-  { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Rotate this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "Rotate around this point" ), false },
+  { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ), false }
 };
 
 RotationType::RotationType()
@@ -154,9 +154,9 @@ ObjectImp* RotationType::calc( const Args& args, const KigDocument& ) const
 
 static const ArgsParser::spec argsspecScalingOverCenter[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ) },
-  { PointImp::stype(), I18N_NOOP( "Scale with this center" ) },
-  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "Scale with this center" ), false },
+  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ), false }
 };
 
 ScalingOverCenterType::ScalingOverCenterType()
@@ -186,9 +186,9 @@ ObjectImp* ScalingOverCenterType::calc( const Args& args, const KigDocument& ) c
 
 static const ArgsParser::spec argsspecScalingOverLine[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ) },
-  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Scale this object" ), false },
+  { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ), false },
+  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ), false }
 };
 
 ScalingOverLineType::ScalingOverLineType()
@@ -218,9 +218,9 @@ ObjectImp* ScalingOverLineType::calc( const Args& args, const KigDocument& ) con
 
 static const ArgsParser::spec argsspecProjectiveRotation[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Projectively rotate this object" ) },
-  { RayImp::stype(), I18N_NOOP( "Projectively rotate with this ray" ) },
-  { AngleImp::stype(), I18N_NOOP( "Projectively rotate by this angle" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Projectively rotate this object" ), false },
+  { RayImp::stype(), I18N_NOOP( "Projectively rotate with this ray" ), false },
+  { AngleImp::stype(), I18N_NOOP( "Projectively rotate by this angle" ), false }
 };
 
 ProjectiveRotationType::ProjectiveRotationType()
@@ -253,10 +253,10 @@ ObjectImp* ProjectiveRotationType::calc( const Args& args, const KigDocument& ) 
 
 static const ArgsParser::spec argsspecHarmonicHomology[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Harmonic Homology of this object" ) },
-  { PointImp::stype(), I18N_NOOP( "Harmonic Homology with this center" ) },
+  { ObjectImp::stype(), I18N_NOOP( "Harmonic Homology of this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "Harmonic Homology with this center" ), false },
   { AbstractLineImp::stype(),
-    I18N_NOOP( "Harmonic Homology with this axis" ) }
+    I18N_NOOP( "Harmonic Homology with this axis" ), false }
 };
 
 HarmonicHomologyType::HarmonicHomologyType()
@@ -286,13 +286,13 @@ ObjectImp* HarmonicHomologyType::calc( const Args& args, const KigDocument& ) co
 
 static const ArgsParser::spec argsspecAffinityGI3P[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Generic affinity of this object" ) },
-  { PointImp::stype(), I18N_NOOP( "First of 3 starting points" ) },
-  { PointImp::stype(), I18N_NOOP( "Second of 3 starting points" ) },
-  { PointImp::stype(), I18N_NOOP( "Third of 3 starting points" ) },
-  { PointImp::stype(), I18N_NOOP( "Transformed position of first point" ) },
-  { PointImp::stype(), I18N_NOOP( "Transformed position of second point" ) },
-  { PointImp::stype(), I18N_NOOP( "Transformed position of third point" ) },
+  { ObjectImp::stype(), I18N_NOOP( "Generic affinity of this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "First of 3 starting points" ), false },
+  { PointImp::stype(), I18N_NOOP( "Second of 3 starting points" ), false },
+  { PointImp::stype(), I18N_NOOP( "Third of 3 starting points" ), false },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of first point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of second point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of third point" ), false },
 };
 
 AffinityGI3PType::AffinityGI3PType()
@@ -318,9 +318,9 @@ ObjectImp* AffinityGI3PType::calc( const Args& args, const KigDocument& ) const
   std::vector<Coordinate> topoints;
   for ( uint i = 0; i < 3; ++i )
   {
-    frompoints.push_back( 
+    frompoints.push_back(
            static_cast<const PointImp*>( args[i+1] )->coordinate() );
-    topoints.push_back( 
+    topoints.push_back(
            static_cast<const PointImp*>( args[i+4] )->coordinate() );
   }
 
@@ -334,15 +334,15 @@ ObjectImp* AffinityGI3PType::calc( const Args& args, const KigDocument& ) const
 
 static const ArgsParser::spec argsspecProjectivityGI4P[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Generic projectivity of this object" ) },
-  { PointImp::stype(), I18N_NOOP( "First of 4 starting points" ) },
-  { PointImp::stype(), I18N_NOOP( "Second of 4 starting points" ) },
-  { PointImp::stype(), I18N_NOOP( "Third of 4 starting points" ) },
-  { PointImp::stype(), I18N_NOOP( "Fourth of 4 starting points" ) },
-  { PointImp::stype(), I18N_NOOP( "Transformed position of first point" ) },
-  { PointImp::stype(), I18N_NOOP( "Transformed position of second point" ) },
-  { PointImp::stype(), I18N_NOOP( "Transformed position of third point" ) },
-  { PointImp::stype(), I18N_NOOP( "Transformed position of fourth point" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Generic projectivity of this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "First of 4 starting points" ), false },
+  { PointImp::stype(), I18N_NOOP( "Second of 4 starting points" ), false },
+  { PointImp::stype(), I18N_NOOP( "Third of 4 starting points" ), false },
+  { PointImp::stype(), I18N_NOOP( "Fourth of 4 starting points" ), false },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of first point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of second point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of third point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of fourth point" ), false }
 };
 
 ProjectivityGI4PType::ProjectivityGI4PType()
@@ -368,9 +368,9 @@ ObjectImp* ProjectivityGI4PType::calc( const Args& args, const KigDocument& ) co
   std::vector<Coordinate> topoints;
   for ( uint i = 0; i < 4; ++i )
   {
-    frompoints.push_back( 
+    frompoints.push_back(
            static_cast<const PointImp*>( args[i+1] )->coordinate() );
-    topoints.push_back( 
+    topoints.push_back(
            static_cast<const PointImp*>( args[i+5] )->coordinate() );
   }
 
@@ -384,10 +384,10 @@ ObjectImp* ProjectivityGI4PType::calc( const Args& args, const KigDocument& ) co
 
 static const ArgsParser::spec argsspecCastShadow[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Cast the shadow of this object" ) },
-  { PointImp::stype(), I18N_NOOP( "Cast a shadow from this light source" ) },
+  { ObjectImp::stype(), I18N_NOOP( "Cast the shadow of this object" ), false },
+  { PointImp::stype(), I18N_NOOP( "Cast a shadow from this light source" ), false },
   { AbstractLineImp::stype(),
-    I18N_NOOP( "Cast a shadow on the plane defined by this line" ) }
+    I18N_NOOP( "Cast a shadow on the plane defined by this line" ), false }
 };
 
 CastShadowType::CastShadowType()
@@ -527,8 +527,8 @@ bool CastShadowType::isTransform() const
 
 static const ArgsParser::spec argsspecApplyTransformation[] =
 {
-  { ObjectImp::stype(), I18N_NOOP( "Transform this object" ) },
-  { TransformationImp::stype(), I18N_NOOP( "Transform using this transformation" ) }
+  { ObjectImp::stype(), I18N_NOOP( "Transform this object" ), false },
+  { TransformationImp::stype(), I18N_NOOP( "Transform using this transformation" ), false }
 };
 
 ApplyTransformationObjectType::ApplyTransformationObjectType()

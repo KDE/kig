@@ -112,8 +112,8 @@ std::vector<ObjectHolder*> ConicRadicalConstructor::build( const std::vector<Obj
 
 static const struct ArgsParser::spec argsspecpp[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Moving Point" ) },
-  { PointImp::stype(), I18N_NOOP( "following" ) }
+  { PointImp::stype(), I18N_NOOP( "Moving Point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Following Point" ), true }
 };
 
 LocusConstructor::LocusConstructor()
@@ -229,8 +229,8 @@ bool LocusConstructor::isTransform() const
 }
 
 static const ArgsParser::spec argsspectc[] = {
-  { ConicImp::stype(), "" },
-  { ConicImp::stype(), "" }
+  { ConicImp::stype(), "", true },
+  { ConicImp::stype(), "", true }
 };
 
 ConicConicIntersectionConstructor::ConicConicIntersectionConstructor()
@@ -399,8 +399,8 @@ QString GenericIntersectionConstructor::useText(
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) },
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) }
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ), false }
 };
 
 MidPointOfTwoPointsConstructor::MidPointOfTwoPointsConstructor()

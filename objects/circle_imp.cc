@@ -317,3 +317,11 @@ const ObjectImpType* CircleImp::type() const
 {
   return CircleImp::stype();
 }
+
+bool CircleImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  assert( which < CircleImp::numberOfProperties() );
+  if ( which < CurveImp::numberOfProperties() )
+    return CurveImp::isPropertyDefinedOnOrThroughThisImp( which );
+  return false;
+}

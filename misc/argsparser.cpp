@@ -235,3 +235,9 @@ ArgsParser::~ArgsParser()
 {
 }
 
+bool ArgsParser::isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const
+{
+  spec s = findSpec( o, parents );
+  return s.onOrThrough;
+}
+

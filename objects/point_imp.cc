@@ -170,3 +170,8 @@ const ObjectImpType* PointImp::type() const
 {
   return PointImp::stype();
 }
+
+bool PointImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+}

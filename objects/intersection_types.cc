@@ -29,9 +29,9 @@
 
 static const ArgsParser::spec argsspecConicLineIntersection[] =
 {
-  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ) },
-  { IntImp::stype(), "param" }
+  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ), true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
+  { IntImp::stype(), "param", false }
 };
 
 ConicLineIntersectionType::ConicLineIntersectionType()
@@ -82,8 +82,8 @@ static const char constructlinestat[] = I18N_NOOP( "Intersect with this line" );
 
 static const ArgsParser::spec argsspecLineLineIntersection[] =
 {
-  { AbstractLineImp::stype(), constructlinestat },
-  { AbstractLineImp::stype(), constructlinestat }
+  { AbstractLineImp::stype(), constructlinestat, true },
+  { AbstractLineImp::stype(), constructlinestat, true }
 };
 
 LineLineIntersectionType::LineLineIntersectionType()
@@ -114,9 +114,9 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocumen
 
 static const ArgsParser::spec argsspecLineCubicIntersection[] =
 {
-  { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ) },
-  { IntImp::stype(), "param" }
+  { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic" ), true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
+  { IntImp::stype(), "param", false }
 };
 
 LineCubicIntersectionType::LineCubicIntersectionType()
@@ -166,9 +166,9 @@ const ObjectImpType* LineCubicIntersectionType::resultId() const
 
 static const ArgsParser::spec argsspecCircleCircleIntersection[] =
 {
-  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ) },
-  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ) },
-  { IntImp::stype(), "param" }
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ), true },
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ), true },
+  { IntImp::stype(), "param", false }
 };
 
 CircleCircleIntersectionType::CircleCircleIntersectionType()

@@ -30,8 +30,8 @@ static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a ci
 
 static const ArgsParser::spec argsspecCircleBCP[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ) },
-  { PointImp::stype(), constructcirclethroughpointstat }
+  { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ), false },
+  { PointImp::stype(), constructcirclethroughpointstat, true }
 };
 
 CircleBCPType::CircleBCPType()
@@ -62,9 +62,9 @@ const CircleBTPType* CircleBTPType::instance()
 
 static const ArgsParser::spec argsspecCircleBTP[] =
 {
-  { PointImp::stype(), constructcirclethroughpointstat },
-  { PointImp::stype(), constructcirclethroughpointstat },
-  { PointImp::stype(), constructcirclethroughpointstat }
+  { PointImp::stype(), constructcirclethroughpointstat, true },
+  { PointImp::stype(), constructcirclethroughpointstat, true },
+  { PointImp::stype(), constructcirclethroughpointstat, true }
 };
 
 CircleBTPType::CircleBTPType()
@@ -135,8 +135,8 @@ const ObjectImpType* CircleBTPType::resultId() const
 
 static const ArgsParser::spec argsspecCircleBPR[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ) },
-  { DoubleImp::stype(), "UNUSED" }
+  { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ), false },
+  { DoubleImp::stype(), "UNUSED", false }
 };
 
 CircleBPRType::CircleBPRType()
