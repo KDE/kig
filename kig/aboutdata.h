@@ -46,6 +46,12 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                             "on the object system too.." ),
 		 "paolini@dmf.bs.unicatt.it");
 
+  tmp->addCredit("Christophe Devriese",
+                 I18N_NOOP( "My brother, I got him to write the algorithm for "
+                            "calculating the center of the circle with three "
+                            "points given..." ),
+                 "oelewapperke@ulyssis.org" );
+
   tmp->addCredit("Cabri coders",
 		  I18N_NOOP("Cabri is a commercial program like Kig, and "
 			    "gave me something to compete against :)"),
