@@ -190,7 +190,7 @@ ObjectImp* CircleBPRType::calc( const Args& args, const KigDocument& ) const
   if ( ! a[0] || ! a[1] ) return new InvalidImp;
   assert( a[0]->inherits( ObjectImp::ID_PointImp ) );
   const Coordinate c = static_cast<const PointImp*>( a[0] )->coordinate();
-  assert( a[0]->inherits( ObjectImp::ID_DoubleImp ) );
+  assert( a[1]->inherits( ObjectImp::ID_DoubleImp ) );
   double r = static_cast<const DoubleImp*>( a[1] )->data();
   return new CircleImp( c, r );
 }
