@@ -3,11 +3,6 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-// doing this because #include <cmath> or <math.h> don't seem to work :(
-extern "C" {
-  double round(double a);
-};
-
 Circle::Circle()
 {
 };
@@ -31,7 +26,10 @@ void Circle::draw (QPainter& p, bool ss) const
 
 bool Circle::inRect (const QRect& r) const
 {
-  return r.contains(qpc.toQPoint());
+  // not implemented yet, i'm thinking: take the diagonals of the
+  // rect, their intersections with the circle, and check their
+  // positions...
+  return false;
 };
 
 Point Circle::getPoint (double p) const

@@ -47,16 +47,21 @@ Point Line::getPoint(double p) const
 {
   // this code is copied from the KSeg source (with some
   // modifications), thanks to the author Ilya Baran
-  /* still needs fixing
-  double c = (p - 0.5) * 2;
+  /* still needs fixing */
+  // set p's range to [-1;1] (was [0;1])
+  p = (p - 0.5) * 2;
 
-  if(c >= 0) c = pow(c, 1./81.) / 2.;
-  else c = -pow(-c, 1./81.) / 2.;
+  Point m = (qp1+qp2)/2;
+  Point dir = (qp1 - qp2);
+  if (dir.getX() < 0) dir = -dir;
+  // we need to spread the points over the line, it should also come near
+  // the (infinite) end of the line, but most points should be near
+  // the two points we contain...
+  p = p*2;
+  if (p>0) p = pow(p, 10);
+  else p = -pow(p,10);
 
-  c = c * M_PI;
-
-  return qp1 + Point(qp1-qp2).normalize() * tan(c);
-  */
+  return m+dir*p;
 };
 
 double Line::getParam(const Point& p) const

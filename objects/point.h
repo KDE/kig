@@ -67,8 +67,10 @@ public:
   Point operator* (double factor) const { return Point(factor*x, factor*y); };
   Point& operator*= (double factor) { x*=factor; y*=factor; return *this; };
   Point& operator/= (double factor) { x/=factor; y/=factor; return *this; };
+  Point operator/(double factor) const { return Point(x/factor, y/factor); };
   Point operator+ (const Point& b) const { return Point(x+b.getX(), y+b.getY()); };
   Point operator- (const Point& b) const { return Point(x-b.getX(), y-b.getY()); };
+  Point operator- () const { return Point (-x, -y); };
   bool operator!=(const Point& p) const { return !operator==(p); };
   bool operator==(const Point& p) const { return x==p.getX() && y==p.getY(); };
   Point& operator= (const Point& p) { x = p.getX(); y = p.getY(); return *this;};
