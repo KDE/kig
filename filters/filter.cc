@@ -40,7 +40,7 @@ KigFilters::KigFilters()
 {
 //   mFilters.push_back( new KigFilterKGeo );
 //   mFilters.push_back( new KigFilterCabri );
-//   mFilters.push_back( new KigFilterNative );
+  mFilters.push_back( new KigFilterNative );
 }
 
 KigFilters* KigFilters::instance()
