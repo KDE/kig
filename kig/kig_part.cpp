@@ -40,6 +40,7 @@
 #include "../misc/builtin_stuff.h"
 
 #include "../filters/filter.h"
+#include "../filters/exporter.h"
 
 #include <kparts/genericfactory.h>
 #include <kinstance.h>
@@ -169,6 +170,9 @@ void KigDocument::setupActions()
 
   tmp = l->loadIcon( "new", KIcon::User );
   new TestAction( this, tmp, actionCollection() );
+
+  KigExportManager::instance()->addMenuAction( this, mainWidget()->realWidget(),
+                                               actionCollection() );
 };
 
 void KigDocument::setupTypes()

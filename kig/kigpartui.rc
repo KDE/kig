@@ -6,7 +6,7 @@
       <Action name="file_save" />
       <Action name="file_save_as" />
       <Separator />
-      <Action name="file_export_to_image" />
+      <Action name="file_export" />
       <Separator />
     </Menu>
     <Menu name="edit">

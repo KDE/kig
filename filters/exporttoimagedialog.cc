@@ -19,10 +19,9 @@
 #include "exporttoimagedialog.h"
 #include "exporttoimagedialog.moc"
 
-#include "kig_view.h"
-#include "kig_part.h"
+#include "../kig/kig_view.h"
+#include "../kig/kig_part.h"
 
-#include "../misc/i18n.h"
 #include "../misc/kigpainter.h"
 
 #include <qcheckbox.h>
@@ -31,6 +30,7 @@
 #include <kurlrequester.h>
 #include <kimageio.h>
 #include <kmessagebox.h>
+#include <klocale.h>
 
 ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigDocument* d )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),

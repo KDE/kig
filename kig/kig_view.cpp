@@ -22,7 +22,6 @@
 #include "kig_view.moc"
 
 #include "kig_part.h"
-#include "exporttoimagedialog.h"
 #include "../objects/object.h"
 #include "../misc/coordinate_system.h"
 
@@ -84,12 +83,6 @@ void KigView::setupActions()
   aCenterScreen = KStdAction::fitToPage( mrealwidget, SLOT( recenterScreen() ),
                                          mdoc->actionCollection() );
   aCenterScreen->setWhatsThis( i18n( "Recenter the screen on the document" ) );
-
-  aExportToImage = new KAction( i18n( "&Export to Image..." ), 0,
-                                this, SLOT( slotExportToImage() ),
-                                mdoc->actionCollection(), "file_export_to_image" );
-  aExportToImage->setWhatsThis( i18n( "This function allows you to export the currently "
-                                      "showing screen to an image file." ) );
 }
 
 KigWidget::~KigWidget()
@@ -455,12 +448,6 @@ KigView::~KigView()
 KigWidget* KigView::realWidget()
 {
   return mrealwidget;
-}
-
-void KigView::slotExportToImage()
-{
-  ExportToImageDialog* d = new ExportToImageDialog( realWidget(), mdoc );
-  d->exec();
 }
 
 const KigDocument& KigWidget::document() const
