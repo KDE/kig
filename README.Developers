@@ -38,13 +38,13 @@ Here is some information to developers who want to check out my code:
 
 - if you want to contribute, your work is more than welcome, no matter where
   you want to help: translation, coding, art, just send me a mail at
-  dominiquedevriese@pandora.be (preferably before you start, so you won't be
+  fritmebufstek@pandora.be (preferably before you start, so you won't be
   doing unnecessary work or something like that), if you have cvs access,
   you can of course always commit to cvs
 
 HISTORY
 
-I started the new Kig because we were using "Cabri" in school, a proprietary
+I started Kig because we were using "Cabri" in school, a proprietary
 windows-only app.  When I started looking for free alternatives that ran on
 linux, i found two: KGeo and KSeg. Both had features and limitations, KSeg
 had most features, but was ugly.  Furthermore, it was qt-only, which did
@@ -59,9 +59,12 @@ up recoding everything since in many cases it was faster than porting stuff,
 and i wanted to change rather much in the code.
 
 I did get much inspiration from the source of both programs, and i used some
-source and many pictures from Kig, I would therefore want to thank both
+source and many pictures from KGeo, I would therefore want to thank both
 developers for their work.
 
-I also want to thank everyone who contributed something to Kig.
+I also want to thank everyone who contributed something to Kig or to
+free software in general.
+
+Cheers,
 
 Dominique Devriese
