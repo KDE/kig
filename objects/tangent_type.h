@@ -51,4 +51,19 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * the line tangent to a cubic
+ */
+class TangentCubicType
+  : public ArgsParserObjectType
+{
+  typedef ArgsParserObjectType Parent;
+  TangentCubicType();
+  ~TangentCubicType();
+public:
+  static const TangentCubicType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

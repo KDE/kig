@@ -592,15 +592,15 @@ TangentConstructor::TangentConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "tangentarc" );
 
-//  SimpleObjectTypeConstructor* cubic =
-//    new SimpleObjectTypeConstructor(
-//      TangentCubicType::instance(),
-//      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-//      "tangentcubic" );
+  SimpleObjectTypeConstructor* cubic =
+    new SimpleObjectTypeConstructor(
+      TangentCubicType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "tangentcubic" );
 
   merge( conic );
   merge( arc );
-//  merge( cubic );
+  merge( cubic );
 }
 
 TangentConstructor::~TangentConstructor()
@@ -617,8 +617,8 @@ QString TangentConstructor::useText(
     return i18n( "Tangent to This Conic" );
   else if ( o.imp()->inherits( ArcImp::stype() ) )
     return i18n( "Tangent to This Arc" );
-//  else if ( o.imp()->inherits( CubicImp::stype() ) )
-//    return i18n( "Tangent to This Cubic Curve" );
+  else if ( o.imp()->inherits( CubicImp::stype() ) )
+    return i18n( "Tangent to This Cubic Curve" );
 //  else assert( false );
   return QString::null;
 }

@@ -20,6 +20,7 @@
 
 #include "bogus_imp.h"
 #include "conic_imp.h"
+#include "cubic_imp.h"
 #include "other_imp.h"
 #include "point_imp.h"
 #include "line_imp.h"
@@ -83,6 +84,8 @@ const ObjectImpType* TangentConicType::resultId() const
   return LineImp::stype();
 }
 
+/*** Arc starts here ***/
+
 static const ArgsParser::spec argsspecTangentArc[] =
 {
   { ArcImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this arc" ),
@@ -134,6 +137,79 @@ ObjectImp* TangentArcType::calc( const Args& args, const KigDocument& doc ) cons
 }
 
 const ObjectImpType* TangentArcType::resultId() const
+{
+  return LineImp::stype();
+}
+
+/**** Cubic starts here ****/
+
+static const ArgsParser::spec argsspecTangentCubic[] =
+{
+  { CubicImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this cubic" ),
+    I18N_NOOP( "Select the cubic..." ), true },
+  { PointImp::stype(), constructlinetangentpoint,
+    I18N_NOOP( "Select the point for the tangent to go through..." ), true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TangentCubicType )
+
+TangentCubicType::TangentCubicType()
+  : ArgsParserObjectType( "TangentCubic", argsspecTangentCubic, 2 )
+{
+}
+
+TangentCubicType::~TangentCubicType()
+{
+}
+
+const TangentCubicType* TangentCubicType::instance()
+{
+  static const TangentCubicType t;
+  return &t;
+}
+
+ObjectImp* TangentCubicType::calc( const Args& args, const KigDocument& doc ) const
+{
+  if ( !margsparser.checkArgs( args ) )
+    return new InvalidImp;
+
+  const CubicImp* cubic = static_cast<const CubicImp*>( args[0] );
+  const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
+
+  if ( !cubic->containsPoint( p, doc ) )
+    return new InvalidImp;
+
+  double x = p.x;
+  double y = p.y;
+  CubicCartesianData data = cubic->data();
+//  double aconst = data.coeffs[0];
+  double ax = data.coeffs[1];
+  double ay = data.coeffs[2];
+  double axx = data.coeffs[3];
+  double axy = data.coeffs[4];
+  double ayy = data.coeffs[5];
+  double axxx = data.coeffs[6];
+  double axxy = data.coeffs[7];
+  double axyy = data.coeffs[8];
+  double ayyy = data.coeffs[9];
+
+  /* mp: the tangent vector (-gy,gx) is orthogonal to the gradient (gx,gy)
+   * which is easy to compute from the CartesianData
+   *
+   * note: same thing could be done for conics, which would be
+   * much more efficient...
+   */
+     
+  Coordinate tangvec = Coordinate (
+      - axxy*x*x - 2*axyy*x*y - 3*ayyy*y*y - axy*x - 2*ayy*y - ay,
+      3*axxx*x*x + 2*axxy*x*y + axyy*y*y + 2*axx*x + axy*y + ax
+                                   );
+  const LineData tangent = LineData( p, p + tangvec );
+ 
+  return new LineImp( tangent );
+}
+
+const ObjectImpType* TangentCubicType::resultId() const
 {
   return LineImp::stype();
 }
