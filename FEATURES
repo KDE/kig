@@ -6,8 +6,9 @@ here are some nice Kig features i'd like to show off :)
   circle, click the button again, type in a name.  Then check out the
   new type with the other circle types.  You can't really see the
   difference between built-in types and macro's
-- you see stuff as you're constructing it: to try: construct a new
-  LineTTP 
+- userfriendly manner of constructing things... You see things you're
+  constructing, and clicking gives you points etc.  Try constructing a
+  segment, and you'll see what i mean ( i hope :)
 - is a KPart: try opening macrotest.kig from konqueror, if it doesn't 
   work yet, open your kcontrol, then go to "File Browsing"->"File
   Associations", click add, group:"application", name:"x-kig", open
@@ -15,17 +16,17 @@ here are some nice Kig features i'd like to show off :)
   "KigPart" (if you installed Kig correctly (did you get the
   "--prefix" on your configure right?) , it should be there), and add
   it. then try opening macrotest.kig again
-- saves in a clean xml format
 - recently, i added support for Locuses, this is another thing from
   KSeg which i also implemented in my program.  It's a very cool idea,
   and it supports rather advanded stuff like conic's in an easy (for
   the developer :) way...
   To see it work, check out the conic5pt.kigt and locustest.kig files
   (the first is based on the latter...
-- Kig also supports various file formats... Currently i have only
-  implemented read support for simple KGeo files yet, but i am
-  planning on extending this to read/write support for KGeo, KSeg and
-  Cabri files (maybe others too ?).
+- Kig also supports various file formats...  See the filters
+  directory.  Currently i have implemented read-write support for
+  native kig files ( which is a imho clean xml format ), and read
+  support for kgeo files, but this is an area where i plan working
+  on... ( KGeo and KSeg read-write, Cabri at least read support )..
 
 PLANNED FEATURES
 For a list of planned features, check out the TODO file.
