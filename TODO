@@ -1,27 +1,12 @@
-
 * reimplement
 - CoordinatePropertyPoint -> just give PropertyObject a bool shown ?
   this results in a problem with isInternal(), I think..  maybe a
   CopyImpObjectType is better..
-- macro management:
-	1 get rid of CustomTypes by putting their data in DataObjects
-	2 start a plugin system.  A Plugin class keeps pointers to the
-	  ObjectConstructor's, GUIAction's, ObjectType's etc. that it
-	  is responsible for.  An ObjectType keeps a reference count, 
-	  there should prolly be an OrphanedObjectTypes thing for 
-	  plugins that are unloaded when their ObjectType was still in 
-	  use.  There will be at least one type of plugin: macro's, 
-	  maybe someday i'll add dll's and script plugins.  maybe i should 
-	  put the builtin types in a plugin ( either a dll or a pseudo-plugin
-	  or sth like that ).  There will be a list of all plugins somewhere, 
-	  and something like the old TypesDialog will allow the user to
-	  manage them.  Macro's have special possibilities, they can be 
-	  saved etc., so i need to figure out how to deal with this..
-	  plugins can be loaded, unloaded etc.
 - rmb menu's
 
 * simple:
 - implement the helpSlot()'s in the wizards..
+- get rid of CustomTypes by putting their data in DataObjects
 
 * harder:
 - filters: more input filters ( get cabri to work somewhat, kseg
@@ -39,6 +24,9 @@
 - add full undo support for everything the user might do
 
 * hard :
+- figure out a way to allow the user to enable and disable certain
+  features.  E.g. I have been asked to allow the user to limit himself
+  to compass-ruler constructions..
 - scripting !  The GNOME Interactive Geometry program Dr. Genius seems
    to have this already ( albeit in Guile ;) ), so Kig can't lag
    behind ;) 
