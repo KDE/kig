@@ -458,3 +458,59 @@ bool Circle::isa( int type ) const
 {
   return type == CircleT ? true : Parent::isa( type );
 }
+
+Objects CircleBPR::getParents() const
+{
+  return Objects( mcenter );
+}
+
+void CircleBPR::calc()
+{
+  mvalid = true;
+  qpc = mcenter->getCoord();
+}
+
+CircleBPR::~CircleBPR()
+{
+
+}
+
+CircleBPR::CircleBPR( const Objects& os )
+{
+  assert( os.size() == 1 );
+  assert( os[0]->isa( PointT ) );
+  mcenter = static_cast<Point*>( os[0] );
+  mradius = -1;
+}
+
+CircleBPR::CircleBPR(const CircleBPR& c)
+  : Parent( c ), mcenter( c.mcenter )
+{
+}
+
+Object::prop_map CircleBPR::getParams()
+{
+  prop_map map = Parent::getParams();
+  map["circlebpr-radius"] = QString::number( mradius );
+  return map;
+}
+
+void CircleBPR::setParams( const prop_map& m )
+{
+  Parent::setParams( m );
+  prop_map::const_iterator i = m.find( "circlebpr-radius" );
+  if ( i == m.end() )
+    mradius = 5; // error in file..
+  else
+  {
+    bool ok = true;
+    mradius = i->second.toDouble( &ok );
+    assert( ok );
+  };
+}
+
+CircleBPR::CircleBPR( Point* center, double radius )
+  : Circle(), mcenter( center )
+{
+  mradius = radius;
+}

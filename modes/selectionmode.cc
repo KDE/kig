@@ -32,6 +32,7 @@
 #include <kcursor.h>
 #include <kapplication.h>
 #include <qglobal.h>
+#include <kaction.h>
 
 SelectionModeBase::SelectionModeBase( KigDocument* d )
   : KigMode( d ), mcswc( true )
@@ -181,6 +182,8 @@ void SelectionModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
 void SelectionModeBase::enableActions()
 {
   KigMode::enableActions();
+
+  mDoc->aCancelConstruction->setEnabled( true );
 }
 
 void SelectionModeBase::dragRect( const QPoint&, KigWidget& )
@@ -216,8 +219,9 @@ void SelectionModeBase::selectObject( Object* o, KigWidget& w )
   selectionChanged( w );
 }
 
-void SelectionModeBase::finish()
+void SelectionModeBase::finish( bool ret )
 {
+  mret = ret;
 #if QT_VERSION >= 0x030100
   kapp->eventLoop()->exitLoop();
 #else
@@ -230,7 +234,7 @@ const Objects& SelectionModeBase::selection() const
   return mselection;
 }
 
-void SelectionModeBase::run( KigMode* prev )
+bool SelectionModeBase::run( KigMode* prev )
 {
   mDoc->setMode( this );
 #if QT_VERSION >= 0x030100
@@ -239,6 +243,7 @@ void SelectionModeBase::run( KigMode* prev )
   (void) kapp->enter_loop();
 #endif
   mDoc->setMode( prev );
+  return mret;
 }
 
 void StandAloneSelectionMode::selectionChanged( KigWidget& )
@@ -246,7 +251,7 @@ void StandAloneSelectionMode::selectionChanged( KigWidget& )
   int res = mchecker.check( selection() );
   assert( res != ArgsChecker::Invalid );
   if ( res == ArgsChecker::Complete )
-    finish();
+    finish( true );
 }
 
 bool StandAloneSelectionMode::wantObject( const Object& o, KigWidget& )
@@ -271,4 +276,9 @@ void SelectionModeBase::unselectObject( Object* o, KigWidget& w )
 void SelectionModeBase::setClearSelectWithoutControl( bool b )
 {
   mcswc = b;
+}
+
+void SelectionModeBase::cancelConstruction()
+{
+  finish( false );
 }

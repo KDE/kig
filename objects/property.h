@@ -53,6 +53,10 @@ public:
 
   // what type of property is this ?
   const int type() const;
+  const bool isDouble() const { return type() == Double; };
+  const bool isCoordinate() const { return type() == Coord; };
+  const bool isString() const { return type() == String; };
+
   const double doubleData() const;
   const QString qstringData() const;
   const Coordinate coordData() const;

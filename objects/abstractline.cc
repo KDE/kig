@@ -43,11 +43,11 @@ const uint AbstractLine::numberOfProperties() const
 
 const Property AbstractLine::property( uint which, const KigWidget& w ) const
 {
-  assert( which < AbstractLine::numberOfProperties() );
-  if ( which < Curve::numberOfProperties() ) return Curve::property( which, w );
+  if ( which < Curve::numberOfProperties() )
+    return Curve::property( which, w );
   if ( which == Curve::numberOfProperties() )
     return Property( slope() );
-  else if ( which == Curve::numberOfProperties() + 1 )
+  if ( which == Curve::numberOfProperties() + 1 )
     return Property( equationString( w ) );
   else assert( false );
 }

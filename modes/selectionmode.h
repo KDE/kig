@@ -37,6 +37,7 @@ class SelectionModeBase
   QPoint mplc;
   Objects moco;
   bool mcswc;
+  bool mret;
 
   void leftClicked( QMouseEvent* e, KigWidget* v );
   void leftMouseMoved( QMouseEvent*, KigWidget* );
@@ -45,6 +46,8 @@ class SelectionModeBase
   void midReleased( QMouseEvent* e, KigWidget* v );
   void rightClicked( QMouseEvent*, KigWidget* );
   void mouseMoved( QMouseEvent* e, KigWidget* v );
+
+  void cancelConstruction();
 
   void enableActions();
 
@@ -62,14 +65,14 @@ public:
 
   void setClearSelectWithoutControl( bool b );
 
-  void run( KigMode* prev );
+  bool run( KigMode* prev );
 
   const Objects& selection() const;
 
   void clearSelection( KigWidget& w );
   void selectObject( Object* o, KigWidget& w );
   void unselectObject( Object* o, KigWidget& w );
-  void finish();
+  void finish( bool ret );
 };
 
 class StandAloneSelectionMode

@@ -142,4 +142,32 @@ protected:
   static Coordinate calcCenter( Coordinate, Coordinate, Coordinate );
 };
 
+/**
+ * Circle with a given center and fixed radius..
+ */
+class CircleBPR
+  : public Circle
+{
+  typedef Circle Parent;
+public:
+
+  CircleBPR( Point* center, double radius );
+  CircleBPR( const Objects& os );
+  ~CircleBPR();
+  CircleBPR(const CircleBPR& c);
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "CircleBPR"; };
+
+  virtual prop_map getParams ();
+  virtual void setParams ( const prop_map& );
+
+  Objects getParents() const;
+
+protected:
+  Point* mcenter;
+
+  void calc();
+};
+
 #endif

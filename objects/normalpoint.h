@@ -35,6 +35,8 @@ class ConstrainedPointImp;
 class NormalPoint
   : public Point
 {
+  typedef Point Parent;
+
   NormalPointImp* mimp;
   void setImp( NormalPointImp* i );
 
@@ -49,6 +51,8 @@ public:
   // set it to something useful...
   NormalPoint( const Objects& os );
   NormalPoint( const NormalPoint& );
+
+  bool isa ( int type ) const;
 
   ~NormalPoint();
 

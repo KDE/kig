@@ -535,3 +535,8 @@ void NormalPoint::doNormalAction( int which, KigDocument* d, KigWidget* v, Norma
   assert( which == NormalModePopupObjects::virtualActionsOffset + 10 );
   d->setMode( new NormalPointRedefineMode( this, d, v, m ) );
 }
+
+bool NormalPoint::isa( int type ) const
+{
+  return type == ConstrainedPointT ? constrainedImp() : Parent::isa( type );
+}

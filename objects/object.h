@@ -386,6 +386,7 @@ public:
     RayT,
     TextLabelT,
     VectorT,
+    ConstrainedPointT,
     NumberOfObjectTypes
   };
 };
