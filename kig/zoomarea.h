@@ -23,8 +23,8 @@
 #define KIG_MISC_ZOOMAREA_H
 
 #include "zoomareabase.h"
-#include "coordinate.h"
-#include "../kig/kig_document.h"
+#include "../misc/coordinate.h"
+#include "kig_document.h"
 
 #include <qvalidator.h>
 

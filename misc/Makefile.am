@@ -19,8 +19,7 @@ noinst_HEADERS = \
 	object_hierarchy.h \
 	rect.h \
 	screeninfo.h \
-	special_constructors.h \
-	zoomarea.h
+	special_constructors.h
 
 libmisc_la_SOURCES = \
 	argsparser.cpp \
@@ -41,9 +40,7 @@ libmisc_la_SOURCES = \
 	object_hierarchy.cc \
 	rect.cc \
 	screeninfo.cc \
-	special_constructors.cc \
-	zoomareabase.ui \
-	zoomarea.cc
+	special_constructors.cc
 
 libmisc_la_LIBADD=-lm
 METASOURCES=AUTO

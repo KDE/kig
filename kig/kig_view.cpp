@@ -26,7 +26,7 @@
 #include "kig_commands.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/kigpainter.h"
-#include "../misc/zoomarea.h"
+#include "zoomarea.h"
 #include "../modes/mode.h"
 #include "../modes/dragrectmode.h"
 

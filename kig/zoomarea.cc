@@ -23,7 +23,7 @@
 #include "zoomarea.h"
 #include "zoomarea.moc"
 
-#include "coordinate_system.h"
+#include "../misc/coordinate_system.h"
 
 #include <qlabel.h>
 
