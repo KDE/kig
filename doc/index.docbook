@@ -610,21 +610,15 @@ You do not have to manually save or load
 	</listitem>
 	<listitem>
 	  <para>
-	    &kig; has an option "Export to image"..  This is rather
-	    useful, since not all programs support the &kig; file
+	    &kig; allows you to export a kig file to some interesting
+	    formats, like images, and XFig files.  This is rather
+	    useful, because not all programs support the &kig; file
 	    format yet ;).
 	  </para>
 	</listitem>
 	<listitem>
 	  <para>
 	    &kig; has a very flexible transformation system.
-	  </para>
-	</listitem>
-	<listitem>
-	  <para>
-	    &kig; allows you to export a kig file to some interesting
-	    formats, like images, and XFig files, which are useful for
-	    inclusion in LaTeX and other documents.
 	  </para>
 	</listitem>
 	<listitem>
