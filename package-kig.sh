@@ -5,7 +5,7 @@
 
 OLDPWD=$(pwd)
 
-VERSION="0.3"
+VERSION="0.3.1"
 NAME="kig"
 
 TEMPDIR="/tmp/$NAME-package-temp"
@@ -18,7 +18,7 @@ cd $TEMPDIR
 	--name "$NAME" \
 	--version "$VERSION" \
 	--log="$TEMPDIR/log" \
-	~/src/kdeedu kig
+	~/src/test/kdeedu kig
 
 cd $OLDPWD
 
