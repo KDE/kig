@@ -26,10 +26,10 @@ class LocusImp
   : public CurveImp
 {
   typedef CurveImp Parent;
-  const CurveImp* mcurve;
+  CurveImp* mcurve;
   const ObjectHierarchy mhier;
 public:
-  LocusImp( const CurveImp*, const ObjectHierarchy& );
+  LocusImp( CurveImp*, const ObjectHierarchy& );
   ~LocusImp();
   LocusImp* copy() const;
   const char* baseName() const;

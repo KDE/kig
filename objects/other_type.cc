@@ -116,6 +116,6 @@ ObjectImp* LocusType::calc( const Args& args ) const
 
   Args fixedargs( args.begin() + 1, args.end() );
 
-  return new LocusImp( curveimp, mhier.withFixedArgs( fixedargs ) );
+  return new LocusImp( curveimp->copy(), mhier.withFixedArgs( fixedargs ) );
 }
 

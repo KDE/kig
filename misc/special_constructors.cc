@@ -136,7 +136,7 @@ void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
   ObjectHierarchy hier( Objects( const_cast<RealObject*>( constrained ) ),
                         moving );
 
-  LocusImp limp( cimp, hier );
+  LocusImp limp( cimp->copy(), hier );
   limp.draw( p );
 }
 

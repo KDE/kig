@@ -30,6 +30,7 @@
 
 LocusImp::~LocusImp()
 {
+  delete mcurve;
 }
 
 bool LocusImp::inherits( int type ) const
@@ -84,7 +85,7 @@ const Coordinate LocusImp::getPoint( double param ) const
   return ret;
 }
 
-LocusImp::LocusImp( const CurveImp* curve, const ObjectHierarchy& hier )
+LocusImp::LocusImp( CurveImp* curve, const ObjectHierarchy& hier )
   : mcurve( curve ), mhier( hier )
 {
 }
@@ -106,7 +107,7 @@ const Property LocusImp::property( uint which, const KigWidget& w ) const
 
 LocusImp* LocusImp::copy() const
 {
-  return new LocusImp( mcurve, mhier );
+  return new LocusImp( mcurve->copy(), mhier );
 }
 
 const char* LocusImp::baseName() const
