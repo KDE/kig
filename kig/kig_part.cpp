@@ -201,14 +201,12 @@ KigDocument::~KigDocument()
         file != dataFiles.end(); ++file )
   {
     QFile f( *file );
-    kdDebug() << "removing: " << *file << endl;
     f.remove();
   };
 
   // save our types...
   QString typesDir = KGlobal::dirs()->saveLocation("appdata", "kig-types");
   if (typesDir[typesDir.length() - 1] != '/') typesDir += '/';
-  kdDebug() << k_funcinfo << " : saving types to: " << typesDir << endl;
   MacroList* macrolist = MacroList::instance();
   macrolist->save( macrolist->macros(), typesDir + "macros.kigt" );
 
@@ -234,8 +232,6 @@ KigDocument::~KigDocument()
 
 bool KigDocument::openFile()
 {
-  kdDebug() << k_funcinfo << m_file << endl;
-
   // m_file is always local, so we can use findByPath instead of
   // findByURL...
   KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
@@ -660,7 +656,6 @@ void KigDocument::setupMacroTypes()
           file != dataFiles.end(); ++file )
     {
       myvector<Macro*> nmacros;
-      kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
       bool ok = MacroList::instance()->load( *file, nmacros, *this );
       if ( ! ok ) continue;
       copy( nmacros.begin(), nmacros.end(), back_inserter( macros ) );

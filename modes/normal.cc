@@ -107,7 +107,6 @@ void NormalMode::newMacro()
 void NormalMode::objectsAdded()
 {
   const std::vector<KigWidget*>& widgets = mdoc.widgets();
-  kdDebug() << k_funcinfo << widgets.size() << endl;
   for ( uint i = 0; i < widgets.size(); ++i )
   {
     KigWidget* w = widgets[i];
