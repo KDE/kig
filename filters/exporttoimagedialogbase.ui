@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
 <class>ExportToImageDialogBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>545</width>
-            <height>340</height>
+            <height>342</height>
         </rect>
     </property>
     <property name="caption">
@@ -103,7 +103,7 @@
                                 <cstring>WidthInput</cstring>
                             </property>
                             <property name="minValue">
-                                <number>0</number>
+                                <number>1</number>
                             </property>
                             <property name="suffix">
                                 <string> pixels</string>
@@ -138,7 +138,7 @@
                                 <cstring>HeightInput</cstring>
                             </property>
                             <property name="minValue">
-                                <number>0</number>
+                                <number>1</number>
                             </property>
                             <property name="suffix">
                                 <string> pixels</string>
@@ -240,6 +240,7 @@
 </customwidgets>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
+    <includehint>kurlrequester.h</includehint>
     <includehint>klineedit.h</includehint>
     <includehint>kpushbutton.h</includehint>
     <includehint>knuminput.h</includehint>
