@@ -79,6 +79,7 @@ public:
 private:
   QString mtext;
   Coordinate mcoord;
+  Coordinate mpwwmt;
   // rect we drew ourselves in...
   // mutable hack, cause i can only find this Rect during the draw
   // function

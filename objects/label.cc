@@ -68,18 +68,22 @@ KigMode* TextLabel::sConstructMode( Type*, KigDocument* d,
   return new TextLabelConstructionMode( p, d );
 }
 
-void TextLabel::startMove(const Coordinate&)
+void TextLabel::startMove( const Coordinate& c )
 {
-  // noop
+  mpwwmt = c;
 }
-void TextLabel::moveTo(const Coordinate&)
+
+void TextLabel::moveTo( const Coordinate& c )
 {
-  // noop
+  mcoord += ( c - mpwwmt );
+  mpwwmt = c;
 }
+
 void TextLabel::stopMove()
 {
   // noop
 }
+
 TextLabel* TextLabel::copy()
 {
   return new TextLabel( *this );
