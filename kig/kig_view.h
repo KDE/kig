@@ -44,6 +44,8 @@ public:
 
   void drawScreen( QPaintDevice* d );
 
+  void startMovingSos( const QPoint& );
+
 public slots:
   void startKioskMode();
   void endKioskMode();

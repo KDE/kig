@@ -23,6 +23,7 @@
 #include "kig_view.moc"
 
 #include "kig_part.h"
+#include "kig_popup.h"
 #include "../objects/object.h"
 #include "../objects/point.h"
 #include "../misc/coordinate_system.h"
@@ -64,6 +65,7 @@ KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name, bool in
   connect( document, SIGNAL( repaintOneObject(const Object*)), this, SLOT(updateObject(const Object*)) );
   connect( document, SIGNAL( allChanged() ), this, SLOT( updateAll() ) );
   connect( document, SIGNAL( recenterScreen() ), this, SLOT( recenterScreen() ) );
+  connect( document, SIGNAL( repaintObjects( const Objects& ) ), this, SLOT( updateObjects( const Objects& ) ) );
 
   setFocusPolicy(QWidget::ClickFocus);
   setBackgroundMode( Qt::NoBackground );
@@ -90,6 +92,7 @@ void KigView::paintEvent(QPaintEvent*)
 
 void KigView::mousePressEvent (QMouseEvent* e)
 {
+  if( isMovingObjects ) { return; };
   pmt = plc = e->pos();
   oco = document->whatAmIOn(fromScreen(plc), 2*pixelWidth());
   if (oco.isEmpty())
@@ -177,13 +180,7 @@ void KigView::mouseMoveEvent (QMouseEvent* e)
 	      // document->selectObject... 
 	    };
 	  // we start moving the sos...
-	  isMovingObjects = true;
-	  Objects stillObjs;
-	  document->startMovingSos(fromScreen(plc),stillObjs);
-	  redrawStillPix();
-	  KigPainter p( this, &stillPix );
-	  drawObjects(stillObjs, p);
-	  updateCurPix();
+	  startMovingSos( plc );
 	  // we immediately show our changes by calling ourselves
 	  // again... 
 	  this->mouseMoveEvent(e);
@@ -272,6 +269,24 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 	  // does this for us...
 	  updateWidget();
 	};
+    }
+  else if( !oco.isEmpty() && ( e->button() & RightButton ) && (pmt-plc).manhattanLength() < 4 )
+    {
+      displayText(0);
+      updateWidget();
+      Objects o = oco & document->getSos();
+      KigObjectsPopup* m;
+      if( o.isEmpty() )
+	{
+	  Objects a;
+	  a.append( oco.first() );
+	  m = document->getPopup(a);
+	}
+      else
+	{
+	  m = document->getPopup( document->getSos() );
+	};
+      if( m ) m->exec( mapToGlobal( plc ) );
     }
   else if (document->canAddObjects() && (e->button() == MidButton) && (pmt-plc).manhattanLength() < 4)
     {
@@ -506,4 +521,14 @@ void KigView::drawScreen( QPaintDevice* d )
   KigPainter p( this, d );
   drawGrid( p );
   drawObjects( document->getObjects(), p );
+}
+void KigView::startMovingSos( const QPoint& p )
+{
+  isMovingObjects = true;
+  Objects stillObjs;
+  document->startMovingSos(fromScreen(p),stillObjs);
+  redrawStillPix();
+  KigPainter pt( this, &stillPix );
+  drawObjects(stillObjs, pt);
+  updateCurPix();
 }

@@ -24,6 +24,7 @@
 
 #include "kig_view.h"
 #include "kig_commands.h"
+#include "kig_popup.h"
 #include "type_edit_impl.h"
 #include "macrowizard_impl.h"
 
@@ -584,6 +585,17 @@ void KigDocument::unselect(Object* o)
   emit selectionChanged();
 };
 
+void KigDocument::unselect( const Objects& o )
+{
+  for (Object* i = objects.first(); i; i = objects.next())
+    {
+      sos.remove( i );
+      i->setSelected( false );
+    };
+  emit repaintObjects( o );
+  emit selectionChanged();
+}
+
 void KigDocument::deleteSelected()
 {
   if (!sos.isEmpty())
@@ -753,11 +765,15 @@ KAboutData* KigDocument::createAboutData()
 			    "source of inspiration for Kig"),
 		  "ibaran@mit.edu");
 
+  tmp->addCredit("Maurizio Paolini",
+		 I18N_NOOP("Wrote the radical line as a patch for kgeo, which "
+			   "i ported to kig."),
+		 "paolini@dmf.bs.unicatt.it");
+
   tmp->addCredit("Cabri coders",
 		  I18N_NOOP("Cabri is a commercial program like Kig, and "
 			    "gave me something to compete against :)"),
 		  "www-cabri.imag.fr");
-
 
   return tmp;
 }
@@ -795,4 +811,19 @@ Rect KigDocument::suggestedRect()
 const CoordinateSystem* KigDocument::getCoordinateSystem()
 {
   return s;
+}
+
+KigObjectsPopup* KigDocument::getPopup( const Objects& os )
+{
+  KigObjectsPopup* m = new KigObjectsPopup( this, os );
+  if( m->isValid() ) return m; else return 0;
+}
+
+void KigDocument::invertSelection( const Objects& os )
+{
+  for ( Object* i = objects.first(); i; i = objects.next())
+    {
+      i->setSelected( !i->getSelected() );
+    };
+  emit repaintObjects( os );
 }

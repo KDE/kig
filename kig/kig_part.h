@@ -33,7 +33,7 @@
 
 class QWidget;
 class KURL;
-class KPopupMenu;
+class KigObjectsPopup;
 class KActionMenu;
 
 class CoordinateSystem;
@@ -112,12 +112,14 @@ public:
   // stuff around.  We decide based on whether we're constructing a
   // macro (-> not allowed), or whether we are readonly (-> not
   // allowed) etc.
-  bool canMoveObjects() { if ( obc || m_pMacroWizard ) return false; else return true;};
+  bool canMoveObjects() { if ( obc || m_pMacroWizard ) return false; return true;};
   bool canSelectObject(Object* o) { if (obc) return obc->wantArg(o); else return true;};
   bool canSelectRect() { if (obc) return false; else return true;};
   bool canSelectObjects(const Objects& ) { if (obc) return false; else return true; };
   bool canUnselect() { if (obc) return false; else return true; };
   bool canAddObjects() { return !m_pMacroWizard && isReadWrite(); };
+
+  bool canInvertSelection() { if( obc ) return false; return true; };
 
   Rect suggestedRect();
 
@@ -128,6 +130,9 @@ signals: // these signals are for telling KigView it should do something...
   // repaint a single object (it was either added to the document, or
   // its selection flag changed...
   void repaintOneObject(const Object* o);
+  // repaint some objects
+  // @see repaintOneObject();
+  void repaintObjects( const Objects& );
   // emitted only for the macrowizard to update its next buttons...
   void selectionChanged();
 
@@ -137,6 +142,9 @@ signals: // these signals are for telling KigView it should do something...
   
 /************** working with our internal document **********/
 public:
+  // get a popup menu for the specified objects:
+  KigObjectsPopup* getPopup( const Objects& o );
+
   // guess what these do...
   // actually, they only add a command object to the history, the real work is
   // done in _addObject() and _delObject()
@@ -148,15 +156,17 @@ public:
   // sets the obc to obc, deletes an old obc if required
   void newObc(Object* obc);
 
+  // invert selection...
+  void invertSelection( const Objects& os );
+
   // SOS: Selected ObjectS: stuff which is selected...
   // add stuff to the sos (selected objects)
-  // TODO: selectObject also unselects if necessary, and wraps
-  // macroSelect and obcSelectArg...
   void selectObject (Object* o);
   void selectObjects (const Rect&);
   void selectObjects (const Objects& o);
   // unselect o
   void unselect (Object* o);
+  void unselect( const Objects& o );
 
   // Movement:
   void startMovingSos(const Coordinate&, Objects& still);
