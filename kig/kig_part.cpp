@@ -32,7 +32,7 @@
 #include "../objects/point_imp.h"
 
 #include "../misc/guiaction.h"
-#include "../misc/guiaction_list.h"
+#include "../misc/lists.h"
 #include "../misc/object_constructor.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/calcpaths.h"

@@ -24,9 +24,8 @@
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
 #include "../misc/object_constructor.h"
-#include "../misc/object_constructor_list.h"
+#include "../misc/lists.h"
 #include "../misc/i18n.h"
-#include "../misc/guiaction_list.h"
 #include "../misc/guiaction.h"
 #include "../objects/object_imp.h"
 
