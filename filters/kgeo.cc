@@ -120,58 +120,62 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
 	    objs.push_back( new LineTTP );
 	    break;
 	  }
-// 	case ID_bisection:
-// 	  {
-// 	    objs.append( new Bisection() );
-// 	    break;
-// 	  };
+ 	case ID_bisection:
+ 	  {
+ 	    objs.push_back( new MidPoint() );
+ 	    break;
+ 	  };
+ 	case ID_perpendicular:
+	  {
+	    objs.push_back( new LinePerpend() );
+	    break;
+	  }
+ 	case ID_parallel:
+	  {
+	    objs.push_back( new LineParallel() );
+	    break;
+	  }
 // 	case ID_fixedCircle:
-// 	  objs.append( new FixedCircle() );
+// 	  objs.push_back( new FixedCircle() );
 // 	  break;
 // 	case ID_pointOfConc:
-// 	  objs.append( new PointOfConc() );
+// 	  objs.push_back( new PointOfConc() );
 // 	  break;
 // 	case ID_angle:
-// 	  objs.append( new Angle() );
+// 	  objs.push_back( new Angle() );
 // 	  break;
 // 	case ID_mirrorPoint:
-// 	  objs.append( new MirrorPoint() );
+// 	  objs.push_back( new MirrorPoint() );
 // 	  break;
 // 	case ID_distance:
-// 	  objs.append( new Distance() );
+// 	  objs.push_back( new Distance() );
 // 	  break;
 // 	case ID_arc:
-// 	  objs.append( new Arc() );
+// 	  objs.push_back( new Arc() );
 // 	  break;
 // 	case ID_area:
-// 	  objs.append( new Area() );
+// 	  objs.push_back( new Area() );
 // 	  break;
 // 	case ID_slope:
-// 	  objs.append( new Slope() );
+// 	  objs.push_back( new Slope() );
 // 	  break;
 // 	case ID_circumference:
-// 	  objs.append( new Circumference() );
+// 	  objs.push_back( new Circumference() );
 // 	  break;
 // 	case ID_vector:
-// 	  objs.append( new Vector() );
+// 	  objs.push_back( new Vector() );
 // 	  break;
 // 	case ID_ray:
-// 	  objs.append( new Ray() );
-// 	  break;
-// 	case ID_perpendicular:
-// 	  objs.append( new Perpendicular() );
-// 	  break;
-// 	case ID_parallel:
-// 	  objs.append( new Parallel() );
+// 	  objs.push_back( new Ray() );
 // 	  break;
 // 	case ID_move:
-// 	  objs.append( new Move() );
+// 	  objs.push_back( new Move() );
 // 	  break;
 // 	case ID_rotation:
-// 	  objs.append( new Rotation() );
+// 	  objs.push_back( new Rotation() );
 // 	  break;
 // 	case ID_text:
-// 	  objs.append( new Text() );
+// 	  objs.push_back( new Text() );
 // 	  break;
 	default:
 	  return ParseError;
