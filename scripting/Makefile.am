@@ -15,7 +15,7 @@ libscripting_la_SOURCES = \
 	newscriptwizardbase.ui \
 	newscriptwizard.cc
 libscripting_la_LIBADD = $(BOOST_PYTHON_LIBS) $(PYTHON_LIBS) -lkatepartinterfaces
-libscripting_la_LDFLAGS = $(PYTHON_LDFLAGS)
+libscripting_la_LDFLAGS = $(all_libraries) $(PYTHON_LDFLAGS)
 METASOURCES=AUTO
 
 xml_DATA = python-kig.xml
