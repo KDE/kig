@@ -38,8 +38,8 @@ void MovingModeBase::initScreen( const Objects& tin )
   Objects in;
   Objects docobjs = mdoc.objects();
   for ( uint i = 0; i < tin.size(); ++i )
-    if ( tin[i]->inherits( Object::ID_RealObject ) && docobjs.contains( tin[i] ) )
-         // don't try to move DataObjects, or objects that have been
+    if ( docobjs.contains( tin[i] ) )
+         // don't try to move objects that have been
          // deleted from the document..
       in.push_back( tin[i] );
 
