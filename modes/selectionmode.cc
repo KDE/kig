@@ -244,15 +244,15 @@ void SelectionModeBase::run( KigMode* prev )
 void StandAloneSelectionMode::selectionChanged( KigWidget& )
 {
   int res = mchecker.check( selection() );
-  assert( res & ArgsChecker::Valid );
-  if ( res & ArgsChecker::Complete )
+  assert( res != ArgsChecker::Invalid );
+  if ( res == ArgsChecker::Complete )
     finish();
 }
 
 bool StandAloneSelectionMode::wantObject( const Object& o, KigWidget& )
 {
   int res = mchecker.check( selection().with( const_cast<Object*>( &o ) ) );
-  return res & ArgsChecker::Valid;
+  return res != ArgsChecker::Invalid;
 }
 
 StandAloneSelectionMode::StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d )
