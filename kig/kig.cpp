@@ -74,7 +74,7 @@ Kig::Kig()
   {
       // if we couldn't find our Part, we exit since the Shell by
       // itself can't do anything useful
-      KMessageBox::error(this, "Could not find the necessary kig library, check your installation.");
+      KMessageBox::error(this, i18n( "Could not find the necessary kig library, check your installation." ) );
       KApplication::exit();
       return;
   }
@@ -241,8 +241,6 @@ void Kig::fileOpen()
                                                                      "*.kig|Kig Documents (*.kig)\n"
                                                                      "*.kgeo|KGeo Documents (*.kgeo)\n"
                                                                      "*.seg|KSeg Documents (*.seg)\n"
-
-  // domi: disabled for now, reenable when ready
                                                                      "*.fgeo|Dr. Geo Documents (*.fgeo)" ) );
 
   if (!file_name.isEmpty()) openURL(file_name);
