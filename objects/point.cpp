@@ -45,18 +45,18 @@ void Point::draw (KigPainter& p, bool ss) const
   p.setBrush (Qt::NoBrush);
 };
 
-void Point::startMove(const Coordinate& p)
+void FixedPoint::startMove( const Coordinate& p )
 {
   pwwlmt = p;
 };
 
-void Point::moveTo(const Coordinate& p)
+
+void FixedPoint::moveTo( const Coordinate& p )
 {
   mC+=p-pwwlmt;
-  pwwlmt = p;
 };
 
-void Point::stopMove()
+void FixedPoint::stopMove()
 {
 };
 
@@ -113,7 +113,6 @@ void MidPoint::unselectArg(Object* o)
 
 void MidPoint::startMove(const Coordinate& p)
 {
-  pwwlmt = p;
   if (contains(p,false))
     {
       howm = howmMoving;
@@ -156,7 +155,7 @@ ConstrainedPoint::ConstrainedPoint(Curve* inC, const Coordinate& inPt)
 void ConstrainedPoint::calc()
 {
   if (!c) return;
-  Point::operator=(c->getPoint(p));
+  mC = c->getPoint( p );
 }
 
 Objects ConstrainedPoint::getParents() const
@@ -203,7 +202,7 @@ ConstrainedPoint::ConstrainedPoint( const ConstrainedPoint& cp)
   if (complete) calc();
 }
 
-std::map<QCString,QString> Point::getParams()
+std::map<QCString,QString> FixedPoint::getParams()
 {
   std::map<QCString,QString> tmp = Object::getParams();
   tmp["x"] = QString::number(mC.x);
@@ -211,7 +210,7 @@ std::map<QCString,QString> Point::getParams()
   return tmp;
 }
 
-void Point::setParams(const std::map<QCString,QString>& m)
+void FixedPoint::setParams(const std::map<QCString,QString>& m)
 {
   Object::setParams( m );
   bool ok;
@@ -219,12 +218,14 @@ void Point::setParams(const std::map<QCString,QString>& m)
   mC.y = m.find("y")->second.toDouble(&ok);
   Q_ASSERT( ok );
 };
+
 std::map<QCString,QString> ConstrainedPoint::getParams()
 {
   std::map<QCString,QString> tmp = Object::getParams();
   tmp["param"] = QString::number(p);
   return tmp;
 }
+
 void ConstrainedPoint::setParams(const std::map<QCString,QString>& m)
 {
   Object::setParams( m );
@@ -243,4 +244,8 @@ ConstrainedPoint::ConstrainedPoint()
 {
     
 }
-
+FixedPoint::FixedPoint( const FixedPoint& p )
+  : Point( p )
+{
+  complete = true;
+}

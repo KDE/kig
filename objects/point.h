@@ -36,51 +36,70 @@ class Point
 {
  public:
   Point() {};
-  Point(double inX, double inY) : mC( inX, inY ) { complete = true;};
-  Point(const Coordinate& p) : mC( p ) { complete = true; };
-  Point(const Point& p) : Object(p), mC( p.getCoord() ) {};
-  Point* copy() { return new Point (*this); };
-
-  std::map<QCString,QString> getParams();
-  void setParams( const std::map<QCString,QString>& m);
+protected:
+  Point( const Coordinate& p ) : mC( p ) {};
+public:
 
   // type identification
   virtual QCString vBaseTypeName() const { return sBaseTypeName();};
   static QCString sBaseTypeName() { return I18N_NOOP("point"); };
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "Point"; };
 
   // general members
   virtual bool contains (const Coordinate& o, const double fault ) const;
   virtual void draw (KigPainter& p,bool showSelection = true) const;
-  virtual void drawPrelim( KigPainter &, const Coordinate& ) const {};
   virtual bool inRect(const Rect& r) const { return r.contains( mC ); };
-  // passing arguments
-  virtual QString wantArg(const Object*) const { return 0; };
-  virtual bool selectArg( Object *) { return true; }; // no args
-  virtual void unselectArg( Object *) {}; // no args
-  // no args => no parents
-  virtual Objects getParents() const { return Objects();};
   // looks
   QColor getColor() { return Qt::black; };
   void setColor(const QColor&) {};
-  //moving
-  virtual void startMove(const Coordinate&);
-  virtual void moveTo(const Coordinate&);
-  virtual void stopMove();
-//   void cancelMove();
-  virtual void calc(){};
 
   const Coordinate& getCoord() const { return mC; };
-protected:
-  Coordinate mC;
-  Coordinate pwwlmt; // point where we last moved to
 public:
   double getX() const { return mC.x;};
   double getY() const { return mC.y;};
   void setX (const double inX) { mC.x = inX; };
   void setY (const double inY) { mC.y = inY; };
 
+protected:
+  Coordinate mC;
+};
+
+class FixedPoint
+  : public Point
+{
+public:
+  FixedPoint() {};
+  FixedPoint( const FixedPoint& p );
+  FixedPoint( const double x, const double y ) : Point( Coordinate( x, y ) ) {};
+  FixedPoint( const Coordinate& p ) : Point( p ) {};
+
+  FixedPoint* copy() { return new FixedPoint( *this ); };
+
+  std::map<QCString,QString> getParams();
+  void setParams( const std::map<QCString,QString>& m);
+  virtual QCString vFullTypeName() const { return sFullTypeName(); };
+  static QCString sFullTypeName() { return "FixedPoint"; };
+
+  // no drawPrelim...
+  virtual void drawPrelim( KigPainter &, const Coordinate& ) const {};
+
+  // passing arguments
+  virtual QString wantArg(const Object*) const { return 0; };
+  virtual bool selectArg( Object *) { return true; }; // no args
+  virtual void unselectArg( Object *) {}; // no args
+
+  // no args => no parents
+  virtual Objects getParents() const { return Objects();};
+
+  //moving
+  virtual void startMove(const Coordinate&);
+  virtual void moveTo(const Coordinate&);
+  virtual void stopMove();
+
+  virtual void calc(){};
+
+protected:
+  // point where we last moved to...
+  Coordinate pwwlmt;
 };
 
 // midpoint of two other points
@@ -107,6 +126,7 @@ public:
   void stopMove();
   void cancelMove();
   void calc();
+  void drawPrelim( KigPainter&, const Coordinate& ) const {};
 protected:
   enum { howmMoving, howmFollowing } howm; // how are we moving
   Point* p1;
@@ -145,6 +165,8 @@ public:
   void stopMove() {};
   void cancelMove() {};
   void calc();
+
+  void drawPrelim( KigPainter&, const Coordinate& ) const {};
 
   double getP() { return p; };
   void setP(double inP) { p = inP; };

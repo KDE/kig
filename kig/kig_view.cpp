@@ -330,7 +330,7 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
       else
 	{
 	  // add a normal Point...
-	  p = new Point(fromScreen(plc));
+	  p = new FixedPoint(fromScreen(plc));
 	};
       document->addObject(p);
       // we don't call drawObject, since the document

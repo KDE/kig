@@ -333,7 +333,7 @@ bool KigDocument::openFile()
       // misc/hierarchy.cpp.  It is kept here for the holy Backward
       // Compatibility... 
       if (e.tagName() == "Point")
-	_addObject( new Point(e.attribute("x").toInt(), e.attribute("y").toInt()));
+	_addObject( new FixedPoint(e.attribute("x").toInt(), e.attribute("y").toInt()));
     };
 
   // next the hierarchy...
@@ -734,7 +734,7 @@ Object* KigDocument::newObject(const QCString& type)
   // friends..  It is kept here for Backwards Compatibility, and
   // because i'm not entirely sure that it's not used any more ;)
   else if (type == "ConstrainedPoint") return new ConstrainedPoint;
-  else if (type == "Point") return new Point;
+  else if (type == "Point") return new FixedPoint;
   return 0;
 };
 

@@ -115,7 +115,7 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
 	{
 	case ID_point:
 	  {
-	    Point* p = new Point;
+	    FixedPoint* p = new FixedPoint;
 
 	    // fetch the coordinates...
 	    bool ok;
