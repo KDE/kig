@@ -364,8 +364,8 @@ public:
   // menu..
   bool isTransform() const;
 
-  void setName( QString& name );
-  void setDescription( QString& desc );
+  void setName( const QString& name );
+  void setDescription( const QString& desc );
   void setIcon( QCString& icon );
 };
 

@@ -579,12 +579,12 @@ BaseConstructMode* ObjectConstructor::constructMode( KigPart& doc )
   return new ConstructMode( doc, this );
 }
 
-void MacroConstructor::setName( QString& name )
+void MacroConstructor::setName( const QString& name )
 {
   mname = name;
 }
 
-void MacroConstructor::setDescription( QString& desc )
+void MacroConstructor::setDescription( const QString& desc )
 {
   mdesc = desc;
 }

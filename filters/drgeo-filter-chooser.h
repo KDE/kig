@@ -31,7 +31,7 @@ class KigFilterDrgeoChooser
   Q_OBJECT
 
 public:
-  KigFilterDrgeoChooser( QStringList& l );
+  KigFilterDrgeoChooser( const QStringList& l );
   ~KigFilterDrgeoChooser();
 public slots:
   void slotOKPressed();

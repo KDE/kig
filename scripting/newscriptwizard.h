@@ -45,7 +45,7 @@ public:
   void next();
   void reject();
 
-  void setText( QString& text );
+  void setText( const QString& text );
   QString text();
 
   void setType( ScriptType::Type type );

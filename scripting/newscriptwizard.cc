@@ -164,7 +164,7 @@ void NewScriptWizard::slotHelpClicked()
                     QString::fromLatin1( "kig" ) );
 }
 
-void NewScriptWizard::setText( QString& text )
+void NewScriptWizard::setText( const QString& text )
 {
   if ( !document )
   {

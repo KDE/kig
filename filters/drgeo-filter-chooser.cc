@@ -26,7 +26,7 @@
 #include <kmessagebox.h>
 #include <kpushbutton.h>
 
-KigFilterDrgeoChooser::KigFilterDrgeoChooser( QStringList& l )
+KigFilterDrgeoChooser::KigFilterDrgeoChooser( const QStringList& l )
   : KigFilterDrgeoChooserBase( 0, "drgeo_filter", true )
 {
   KIconLoader* li = KGlobal::iconLoader();

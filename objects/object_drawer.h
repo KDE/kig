@@ -103,11 +103,11 @@ public:
   // Note that this returns a valid point style in every case, even if
   // the given style string is unknown.  In that case it returns a
   // default value.
-  static int pointStyleFromString( QString& style );
+  static int pointStyleFromString( const QString& style );
   // Note that this returns a valid style in every case, even if the
   // given style string is unknown.  In that case it returns a default
   // value.
-  static Qt::PenStyle styleFromString( QString& style );
+  static Qt::PenStyle styleFromString( const QString& style );
 };
 
 #endif

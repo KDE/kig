@@ -141,7 +141,7 @@ bool ObjectDrawer::inRect( const ObjectImp& imp, const Rect& r, const KigWidget&
   return mshown && imp.inRect( r, mwidth, w );
 }
 
-int ObjectDrawer::pointStyleFromString( QString& style )
+int ObjectDrawer::pointStyleFromString( const QString& style )
 {
   if ( style == "Round" )
     return 0;
@@ -172,7 +172,7 @@ QString ObjectDrawer::pointStyleToString() const
   return QString::null;
 }
 
-Qt::PenStyle ObjectDrawer::styleFromString( QString& style )
+Qt::PenStyle ObjectDrawer::styleFromString( const QString& style )
 {
   if ( style == "SolidLine" )
     return Qt::SolidLine;
