@@ -153,13 +153,29 @@ AC_DEFUN([REGINA_LIB_BOOST_PYTHON], [
 		    Py_Initialize(); Py_Finalize();
 		  ], [
 		    AC_MSG_RESULT([yes])
-
-		    # And we're done!
-		    BOOST_PYTHON_INCLUDES="-I$incdir"
-		    BOOST_PYTHON_LIBS="-lboost_python"
-		    PYTHON_LIBS="-l$pylib $extralibs"
-		    PYTHON_LDFLAGS="-L$pylibdir"
-		    __regina_py_ok=1
+		    for bplib in "-lboost_python-gcc-mt-1_32" "-lboost_python-gcc-mt-1_31" "-lboost_python"; do
+		      AC_MSG_CHECKING([compilation of a boost.python program with $bplib])
+		      LDFLAGS="$__regina_py_save_ldflags -L$pylibdir"
+		      LIBS="-l$pylib $bplib $extralibs"
+		      AC_TRY_LINK([
+			#include <boost/python.hpp>
+			const char* greet() { return "Hello world!"; }
+			BOOST_PYTHON_MODULE(hello) { boost::python::def("greet", greet); }
+		      ], [
+		        /* No main body. */
+		      ], [
+			AC_MSG_RESULT([yes])
+			# And we're done!
+			BOOST_PYTHON_INCLUDES="-I$incdir"
+			BOOST_PYTHON_LIBS="$bplib"
+			PYTHON_LIBS="-l$pylib $extralibs"
+			PYTHON_LDFLAGS="-L$pylibdir"
+			__regina_py_ok=1
+		      ], [
+			AC_MSG_RESULT([no])
+		      ])
+		      if test "$__regina_py_ok" = "1"; then break; fi
+		    done
 		  ], [
 		    AC_MSG_RESULT([no])
 		  ])
