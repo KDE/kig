@@ -75,6 +75,15 @@ public:
   Object* buildObject( const QCString& type,
                        const Objects& parents,
                        const Type::ParamMap& params = Type::ParamMap() ) const;
+
+  /**
+   * returns a set of types that return something appropriate when
+   * called with sWantArgs().  If completeOnly, only types that return
+   * Complete are added, otherwise also types that return NotComplete
+   * are returned.
+   */
+  std::vector<Type*> whoWantsArgs( const Objects& args, bool completeOnly = false ) const;
+
   /**
    * t should be constructed via new, and not touched anymore
    * afterwards...  this also adds a new action to every

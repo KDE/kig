@@ -22,6 +22,7 @@
 #include "types.h"
 
 #include "type.h"
+#include "../objects/object.h"
 #include "objects.h"
 #include "../kig/kig_part.h"
 
@@ -163,4 +164,28 @@ void Types::removeType( Type* t )
       erase( i );
       break;
     };
+}
+
+std::vector<Type*> Types::whoWantsArgs( const Objects& args, bool completeOnly ) const
+{
+  std::vector<Type*> ret;
+  for ( const_iterator i = begin(); i != end(); ++i )
+  {
+    StdConstructibleType* t = i->second->toStdConstructible();
+    if ( t )
+    {
+      switch ( t->wantArgs( args ) )
+      {
+      case Object::Complete:
+        ret.push_back( t );
+        break;
+      case Object::NotComplete:
+        if ( ! completeOnly ) ret.push_back( t );
+        break;
+      default:
+        break;
+      };
+    };
+  };
+  return ret;
 }
