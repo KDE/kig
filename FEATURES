@@ -6,7 +6,8 @@ here are some nice Kig features i'd like to show off :)
   circle, click the button again, type in a name.  Then check out the
   new type with the other circle types.  You can't really see the
   difference between built-in types and macro's
-- you see stuff as you're drawing it: to try: construct a new LineTTP
+- you see stuff as you're constructing it: to try: construct a new
+  LineTTP 
 - is a KPart: try opening macrotest.kig from konqueror, if it doesn't 
   work yet, open your kcontrol, then go to "File Browsing"->"File
   Associations", click add, group:"application", name:"x-kig", open
@@ -21,6 +22,10 @@ here are some nice Kig features i'd like to show off :)
   the developer :) way...
   To see it work, check out the conic5pt.kigt and locustest.kig files
   (the first is based on the latter...
+- Kig also supports various file formats... Currently i have only
+  implemented read support for simple KGeo files yet, but i am
+  planning on extending this to read/write support for KGeo, KSeg and
+  Cabri files (maybe others too ?).
 
 PLANNED FEATURES
 For a list of planned features, check out the TODO file.

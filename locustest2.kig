@@ -14,8 +14,8 @@
    <param name="y" >279</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="Point" id="4" final="true" >
-   <param name="x" >406</param>
-   <param name="y" >192</param>
+   <param name="x" >397</param>
+   <param name="y" >196</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="Point" id="5" final="true" >
    <param name="x" >346</param>
