@@ -84,10 +84,10 @@ bool KigFilterNative::load( const QString& file, KigDocument& to )
   //   int minorminor = versionre.cap( 4 ).toInt( &ok );
 
   // we only support 0.* ( for now ? :)
-  if ( major != 0 || minor > 5 )
+  if ( major != 0 || minor > 6 )
   {
     notSupported( file, i18n( "This file was created by Kig version \"%1\", "
-                              "which this version cannot open." ) );
+                              "which this version cannot open." ).arg( version ) );
     return false;
   }
   if ( minor > 3 )
