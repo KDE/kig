@@ -99,8 +99,11 @@ const QString MType::description() const
 
 const QCString MType::iconFileName() const
 {
-  // TODO ?
-  return "";
+  // we have the same icon as our final object...
+  QCString ftn = mhier->getFinElems().front()->fullTypeName();
+  const Types& ts = Object::types();
+  Type* t = ts.findType( ftn );
+  return t->iconFileName();
 }
 
 KAction* Type::constructAction( KigDocument* d )
