@@ -41,7 +41,7 @@ Circle::~Circle()
 
 bool Circle::contains (const Coordinate& o, const ScreenInfo& si ) const
 {
-  return fabs((qpc - Coordinate(o)).length() - mradius) <= si.normalMiss();
+  return fabs((qpc - o).length() - mradius) <= si.normalMiss();
 };
 
 void Circle::draw (KigPainter& p, bool ss) const
