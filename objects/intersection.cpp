@@ -6,12 +6,6 @@
 
 #include <kdebug.h>
 
-// doing this because #include <cmath> or <math.h> don't seem to work :(
-extern "C" {
-  double round(double a);
-  long double roundl(long double a);
-};
-
 QString IntersectionPoint::wantArg(const Object* o) const
 {
   if (o->vBaseTypeName() == Point::sBaseTypeName()) return 0;
@@ -126,8 +120,8 @@ void IntersectionPoint::calc()
     // plain bogus value...
     result = Point(50,50);
   }
-  x = qRound(result.getX());
-  y = qRound(result.getY());
+  setX( result.getX());
+  setY(result.getY());
 }
 
 Point IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3, const Point& p4)
@@ -144,33 +138,24 @@ Point IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3,
   long double a = (yb-ya)/(xb-xa);
   long double b = (yd-yc)/(xd-xc);
   
-  if ((fabsl(xb - xa)> 1) && (fabsl(xd - xc) > 1))
+  long double nx, ny;
+  if ((fabsl(xb - xa)> 2) && (fabsl(xd - xc) > 2))
   {
-    long double nx = (yc - ya + xa*a - xc*b)/(a-b);
-    long double ny = (nx-xa)*a+ya;
-    return Point( nx, ny );
+    nx = (yc - ya + xa*a - xc*b)/(a-b);
+    ny = (nx-xa)*a+ya;
   }
   else {
     // we would have had a divide by zero
-    if (fabsl(xb - xa) < 1) {
-      // xa == xb --> the first line is almost horizontal
-      long double nx = xb;
-      long double ny = (nx-xc)*b+yc;
-      return Point( nx, ny);
-    };
-    if ( fabs(xd - xc) < 1 ) {
-      // the other line is almost horizontal
-      long double nx = xd;
-      long double ny = (nx - xa)*a+ya;
-      return Point (nx, ny);
+    if (fabsl(xb - xa) <= 2) {
+      // xa == xb --> the first line is almost vertical
+      nx = (xb+xa)/2;
+      ny = (nx-xc)*b+yc;
     }
-    else
-      {
-	// only one horizontal line
-	// we know x = xb = xa
-	// and finding y is simple...
-	long double ny = (xb-xd)*(yd-yc)/(xd-xc);
-	return Point(xb, ny);
-      };
+    else if ( fabs(xd - xc) <= 2 ) {
+      // the other line is almost vertical
+      nx = (xd+xc)/2;
+      ny = (nx-xa)*a+ya;
+    }
   }
+  return Point( nx, ny );
 };
