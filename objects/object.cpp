@@ -22,6 +22,8 @@
 
 #include "../misc/types.h"
 
+#include "../kig/constructactions.h"
+
 Object::Object()
   : mColor( Qt::blue ), selected(false), shown (true), complete (false), valid(true)
 {
@@ -87,4 +89,9 @@ Types& Object::types()
 Object* Object::newObject( const QCString& type )
 {
   return types().buildObject( type );
+}
+
+KAction* Object::sConstructAction( KigDocument* d, Type* t, int cut )
+{
+  return new ConstructAction( d, t, cut );
 }

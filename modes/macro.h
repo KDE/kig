@@ -26,24 +26,22 @@
 class MacroWizard;
 
 class DefineMacroMode
-  : public KigMode
+  : public QObject, public KigMode
 {
+  Q_OBJECT
 public:
   DefineMacroMode( KigDocument*, KigMode* previousMode );
   ~DefineMacroMode();
-//   void leftClicked( QMouseEvent*, KigView* );
-//   void leftMouseMoved( QMouseEvent*, KigView* );
-//   void leftReleased( QMouseEvent*, KigView* );
-//   void rightClicked( QMouseEvent*, KigView* );
-//   void rightReleased( QMouseEvent*, KigView* );
-//   void midReleased( QMouseEvent*, KigView* );
-//   void mouseMoved( QMouseEvent*, KigView* );
+  void leftClicked( QMouseEvent*, KigView* );
+  void leftMouseMoved( QMouseEvent*, KigView* );
+  void leftReleased( QMouseEvent*, KigView* );
+  void rightClicked( QMouseEvent*, KigView* );
+  void rightReleased( QMouseEvent*, KigView* );
+  void midReleased( QMouseEvent*, KigView* );
+  void mouseMoved( QMouseEvent*, KigView* );
 
-  // these are called from MacroWizardImpl...
-  void rejected();
-  void enteredGosPage();
-  void enteredFosPage();
-  void enteredOtherPage();
+public slots:
+  void selected( const QString& );
 
 protected:
   void updateNexts();

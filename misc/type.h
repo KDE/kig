@@ -28,6 +28,8 @@ class QCString;
 class QDomDocument;
 class QDomElement;
 class QDomNode;
+class KAction;
+class KigDocument;
 
 #include <qstring.h>
 
@@ -79,6 +81,12 @@ public:
    * build a new object of this type...
    */
   virtual Object* build() = 0;
+
+  /**
+   * build an action which, when clicked, calls d->setMode(
+   * new some_constructing_mode );
+   */
+  virtual KAction* constructAction( KigDocument* d ) = 0;
 };
 
 /**
@@ -96,7 +104,15 @@ public:
   const QString description() const;
   const QCString iconFileName() const;
   void saveXML( QDomDocument&, QDomNode& ) const;
+  virtual KAction* constructAction( KigDocument* d );
 };
+
+template <class T>
+KAction* TType<T>::constructAction( KigDocument* d )
+{
+  // TODO: get the shortcuts right...
+  return T::sConstructAction( d, this, 0 );
+}
 
 template <class T>
 Object* TType<T>::build()
@@ -163,6 +179,7 @@ public:
   const QString descriptiveName() const;
   const QString description() const;
   const QCString iconFileName() const;
+  KAction* constructAction( KigDocument* );
   void saveXML( QDomDocument&, QDomNode& ) const;
 };
 

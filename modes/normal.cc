@@ -250,9 +250,9 @@ void NormalMode::mouseMoved( QMouseEvent* e, KigView* v )
     v->setCursor( KCursor::handCursor() );
     QString typeName = tmp.front()->vTBaseTypeName();
     QString shownText = i18n( "Select this %1" ).arg( typeName );
-    mDoc->emitStatusBarText( typeName );
+    mDoc->emitStatusBarText( shownText );
     KigPainter p( v->showingRect(), &v->curPix );
-    p.drawTextStd( e->pos(), shownText );
+    p.drawTextStd( e->pos(), typeName );
     v->updateWidget( p.overlay() );
   };
 }

@@ -254,3 +254,16 @@ FixedPoint::FixedPoint( const FixedPoint& p )
 {
   complete = true;
 }
+
+KAction* FixedPoint::sConstructAction( KigDocument*, Type*, int )
+{
+  // FIXME: implement a constructionmode for types...
+  return 0;
+}
+
+KAction* ConstrainedPoint::sConstructAction( KigDocument*, Type*, int )
+{
+  // this is correct, ConstrainedPoints are constructed in the same
+  // mode as FixedPoints...
+  return 0;
+}

@@ -82,8 +82,6 @@ void KigPainter::drawPoint( const Coordinate& p, bool s )
   else
   {
     setBrushStyle( Qt::SolidPattern );
-// rounding probs: this leads to a non-consistent size of the points...
-//    drawCircle( p, 2*pixelWidth() );
     QRect r( 0, 0, 5, 5 );
     r.moveCenter( toScreen( p ) );
     mP.drawEllipse( r );

@@ -218,7 +218,8 @@ void KigDocument::setupTypes()
   {
     Type* t = i->second;
     // FIXME: memory leak: ConstructAction's aren't delete'd...
-    ConstructAction* a = new ConstructAction( this, t );
+    KAction* a = t->constructAction( this );
+    if ( ! a ) continue;
     if (t->baseTypeName()==Point::sBaseTypeName())
       aMNewPoint->insert( a );
     else if (t->baseTypeName() == Line::sBaseTypeName())

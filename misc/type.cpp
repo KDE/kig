@@ -23,6 +23,8 @@
 
 #include "hierarchy.h"
 
+#include "../kig/constructactions.h"
+
 #include "../objects/macro.h"
 
 #include <qregexp.h>
@@ -94,4 +96,9 @@ const QCString MType::iconFileName() const
 {
   // TODO ?
   return "";
+}
+
+KAction* MType::constructAction( KigDocument* d )
+{
+  return new ConstructAction( d, this );
 }

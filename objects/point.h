@@ -110,6 +110,8 @@ public:
 
   virtual void calc(){};
 
+  static KAction* sConstructAction( KigDocument*, Type*, int );
+
 protected:
   // point where we last moved to...
   Coordinate pwwlmt;
@@ -204,6 +206,8 @@ public:
 
   std::map<QCString,QString> getParams();
   void setParams( const std::map<QCString,QString>& m);
+
+  static KAction* sConstructAction( KigDocument*, Type*, int );
 protected:
   double p;
   Curve* c;
