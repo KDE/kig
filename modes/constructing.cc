@@ -87,7 +87,7 @@ void PointConstructionMode::midReleased( QMouseEvent* e, KigView* v )
 PointConstructionMode::PointConstructionMode( NormalMode* b,
                                               KigDocument* d )
   : KigMode( d ),
-    mp( new NormalPoint( new FixedPointImp( Coordinate( 0, 0 ) ) ) ),
+    mp( NormalPoint::fixedPoint( Coordinate( 0, 0 ) ) ),
     mprev( b )
 {
 }
@@ -103,7 +103,7 @@ void PointConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 
 void PointConstructionMode::updatePoint( const Coordinate& c, double fault )
 {
-  mp->setImp( NormalPoint::NPImpForCoord( c, mDoc, fault, mp->imp() ) );
+  mp->redefine( c, *mDoc, fault );
 }
 
 void PointConstructionMode::finish( KigView* v )

@@ -70,11 +70,10 @@ KigFilter::Result KigFilterNative::load( const QString from, Objects& os )
     bool ok;
     if (e.tagName() == "Point")
       os.push_back(
-        new NormalPoint(
-          new FixedPointImp(
-            Coordinate(
-              e.attribute("x").toInt(&ok),
-              e.attribute("y").toInt(&ok) ) ) ) );
+        NormalPoint::fixedPoint(
+          Coordinate(
+            e.attribute("x").toInt(&ok),
+            e.attribute("y").toInt(&ok) ) ) );
     if ( ! ok ) return ParseError;
   };
 

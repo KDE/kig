@@ -89,7 +89,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 	    if (!ok) return ParseError;
 	    double y = strY.toDouble(&ok);
 	    if (!ok) return ParseError;
-            NormalPoint* p = new NormalPoint( new FixedPointImp( Coordinate( x, y ) ) );
+            NormalPoint* p = NormalPoint::fixedPoint( Coordinate( x, y ) );
 	    no = p;
 	    break;
 	  }

@@ -21,7 +21,6 @@
 
 #include "point.h"
 
-
 /**
  * NormalPoint is a point that is either Independent ( you move it
  * wherever you want ), or Constrained ( it can move anywhere on a
@@ -37,6 +36,8 @@ class NormalPoint
   : public Point
 {
   NormalPointImp* mimp;
+  void setImp( NormalPointImp* i );
+
 public:
   NormalPoint( NormalPointImp* );
   // this is for allowing us to be constructed by the native file
@@ -44,12 +45,20 @@ public:
   // set it to something useful...
   NormalPoint();
   NormalPoint( const NormalPoint& );
+
   ~NormalPoint();
+
   NormalPoint* copy();
 
-  NormalPointImp* imp();
-  const NormalPointImp* imp() const;
-  void setImp( NormalPointImp* imp );
+  // we provide these functions so clients don't have to mess with
+  // constructing Imp's...  (which is made impossible btw, by making
+  // imp constructors private...)
+  static NormalPoint* fixedPoint( const Coordinate& c );
+  static NormalPoint* constrainedPoint( Curve* c, const Coordinate& c );
+  // sensiblePoint() returns a new NormalPoint with an imp selected
+  // with the same method as in redefine()...
+  static NormalPoint* sensiblePoint( const Coordinate& c, const KigDocument&, double fault );
+
   virtual NormalPoint* toNormalPoint();
 
   FixedPointImp* fixedImp();
@@ -60,13 +69,11 @@ public:
   // NormalPointImp needs an interface to us..
   void setCoord( const Coordinate& c );
 
-  // this returns a suitable mimp for Coordinate c... for now it only
-  // checks if c is on a Curve, so it returns a ConstrainedImp.., and
-  // else returns a FixedImp...
-  // fault is passed to KigDocument::whatAmIOn()...
-  static NormalPointImp* NPImpForCoord( const Coordinate& c,
-                                        const KigDocument*, double fault,
-                                        NormalPointImp* previous = 0 );
+  // this finds a suitable mimp for Coordinate c... for now it only
+  // checks if c is on a Curve, in which case it returns a
+  // ConstrainedImp.., and otherwise returns a FixedImp...
+  // fault is the argument we pass to KigDocument::whatAmIOn()...
+  void redefine( const Coordinate& c, const KigDocument&, double fault );
 
   std::map<QCString, QString> getParams();
   void setParams( const std::map<QCString, QString>& m );
@@ -85,12 +92,12 @@ public:
   static KAction* sConstructAction( KigDocument*, Type*, int );
 
   // no drawPrelim...
-  virtual void drawPrelim( KigPainter &, const Object* ) const;
+  virtual void drawPrelim( KigPainter&, const Object* ) const;
 
   // passing arguments
-  virtual QString wantArg(const Object*) const;
+  virtual QString wantArg( const Object* ) const;
   virtual QString wantPoint() const;
-  virtual bool selectArg( Object *);
+  virtual bool selectArg( Object * );
 
   // no args => no parents
   virtual Objects getParents() const;
@@ -130,6 +137,7 @@ class NormalPointImp
 
   virtual QString wantArg( const Object* ) const = 0;
   virtual bool selectArg( Object *, NormalPoint* ) = 0;
+  virtual void unselectArgs( NormalPoint* ) = 0;
 
   virtual Objects getParents() = 0;
 };
@@ -141,9 +149,12 @@ class FixedPointImp
   Coordinate pwwlmt;
   // point where we currently are...
   Coordinate pwwca;
-public:
+
   FixedPointImp( const Coordinate& c = Coordinate( 0, 0 ) );
   FixedPointImp( const FixedPointImp& p, NormalPoint* p );
+
+public:
+  friend class NormalPoint;
 
   virtual NormalPointImp* copy( NormalPoint* parent );
 
@@ -168,6 +179,7 @@ public:
   virtual Objects getParents();
 
   virtual bool selectArg( Object *, NormalPoint* );
+  virtual void unselectArgs( NormalPoint* np );
 };
 
 // this is the imp for a point which is constrained to a Curve, which
@@ -179,15 +191,20 @@ class ConstrainedPointImp
 {
   double mparam;
   Curve* mcurve;
-public:
-  ConstrainedPointImp( const Coordinate& d, Curve* c );
+
+  ConstrainedPointImp( const Coordinate& d, Curve* c, NormalPoint* );
   ConstrainedPointImp();
-  ConstrainedPointImp( const ConstrainedPointImp& p );
+  ConstrainedPointImp( const ConstrainedPointImp& p, NormalPoint* np );
+
+public:
+  friend class NormalPoint;
 
   virtual NormalPointImp* copy( NormalPoint* p );
 
   virtual ConstrainedPointImp* toConstrained();
   virtual const ConstrainedPointImp* toConstrained() const;
+
+  void redefine( Curve*, const Coordinate& c, NormalPoint* );
 
   void setP( const double p );
   double getP();
@@ -204,6 +221,7 @@ public:
 
   virtual QString wantArg(const Object*) const;
   virtual bool selectArg( Object *, NormalPoint* );
+  virtual void unselectArgs( NormalPoint* );
 
   virtual Objects getParents();
 };

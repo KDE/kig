@@ -29,12 +29,6 @@ NormalPoint* NormalPoint::copy()
   return new NormalPoint( *this );
 }
 
-NormalPoint::NormalPoint( NormalPointImp* i )
-  : mimp( 0 )
-{
-  setImp( i );
-}
-
 NormalPoint::NormalPoint()
   : mimp( 0 )
 {
@@ -48,18 +42,15 @@ NormalPoint::NormalPoint( const NormalPoint& p )
 
 NormalPoint::~NormalPoint()
 {
+  mimp->unselectArgs( this );
   delete mimp;
 }
 
-NormalPointImp* NormalPoint::NPImpForCoord( const Coordinate& c,
-                                            const KigDocument* d,
-                                            double fault,
-                                            NormalPointImp* prev )
+void NormalPoint::redefine( const Coordinate& c,
+                            const KigDocument& d,
+                            double fault )
 {
-  // prev is a NormalPointImp that has already been
-  // constructed... here we try to avoid constructing new Imp's
-  // unless it's necessary...
-  Objects o = d->whatAmIOn( c, fault );
+  Objects o = d.whatAmIOn( c, fault );
   Curve* v = 0;
   for ( Objects::iterator i = o.begin(); i != o.end(); ++i )
     if ( ( v = (*i)->toCurve() ) )
@@ -67,43 +58,44 @@ NormalPointImp* NormalPoint::NPImpForCoord( const Coordinate& c,
   if ( v )
   {
     // we need a ConstrainedPointImp...
-    if ( prev )
+    if ( mimp->toConstrained() )
     {
-      // we already have something...
-      if ( prev->toConstrained() )
-      {
-        // we already have a ConstrainedPointImp...
-        // so we use it...
-        // UPDATE: or we don't cause this leads to trouble... :(
-//         prev->toConstrained()->redefine( v, c );
-//         return prev;
-      }
-      // we have a FixedPointImp...
-      // we don't need this, but we don't delete it, cause this is
-      // done in setImp();
-    };
+      // we already have a ConstrainedPointImp...
+      // so we use it...
+      mimp->toConstrained()->redefine( v, c, this );
+      return;
+    }
+    // we already have a FixedImp...
+    // so we delete it...
+    mimp->unselectArgs( this );
+    delete mimp;
+    mimp = 0;
     // we build a new ConstrainedPointImp...
-    return new ConstrainedPointImp( c, v );
-  }
-  // else ( we returned before, so i can leave out the else...
+    mimp = new ConstrainedPointImp( c, v, this );
+    mimp->calc( this );
+    return;
+  };
+
+  // else ( we returned before, so we leave out the else...
 
   // we need a FixedPointImp...
-  if ( prev )
+  // we already have something...
+  if ( mimp->toFixed() )
   {
-    // we already have something...
-    if ( prev->toFixed() )
-    {
-      // we already have a FixedPointImp..
-      // so we use it...
-      prev->toFixed()->setCoord( c );
-      return prev;
-    };
-    // we have a ConstrainedPointImp..
-    // we don't need this, but we don't delete it, cause this is
-    // done in setImp();
+    // we already have a FixedPointImp..
+    // so we use it...
+    mimp->toFixed()->setCoord( c );
+    mimp->calc( this );
+    return;
   };
+  // we have a ConstrainedPointImp..
+  // we don't need this, so we delete it
+  mimp->unselectArgs( this );
+  delete mimp;
+  mimp = 0;
   // we build a new FixedPointImp...
-  return new FixedPointImp( c );
+  mimp = new FixedPointImp( c );
+  mimp->calc( this );
 }
 
 NormalPointImp::~NormalPointImp()
@@ -149,7 +141,7 @@ void FixedPointImp::stopMove( NormalPoint* )
 std::map<QCString, QString> NormalPoint::getParams()
 {
   std::map<QCString, QString> m = Point::getParams();
-  m["impType"] = mimp->type();
+  m["implementation-type"] = mimp->type();
   mimp->writeParams( m, this );
   return m;
 }
@@ -157,8 +149,9 @@ std::map<QCString, QString> NormalPoint::getParams()
 void NormalPoint::setParams( const std::map<QCString, QString>& m )
 {
   Point::setParams( m );
+  mimp->unselectArgs( this );
   delete mimp;
-  std::map<QCString,QString>::const_iterator p = m.find("impType");
+  std::map<QCString,QString>::const_iterator p = m.find("implementation-type");
   if( p == m.end() )
   {
     kdError() << k_funcinfo << "error in file !" << endl;
@@ -175,26 +168,28 @@ void NormalPoint::setParams( const std::map<QCString, QString>& m )
   mimp->readParams( m, this );
 };
 
-void FixedPointImp::writeParams( std::map<QCString, QString>& m, NormalPoint* p )
+void FixedPointImp::writeParams( std::map<QCString, QString>& m,
+                                 NormalPoint* )
 {
-  pwwca = p->getCoord(); // should really not be necessary, but you
-                         // never know ... :)
   m["x"] = QString::number( pwwca.x );
   m["y"] = QString::number( pwwca.y );
 }
 
-void FixedPointImp::readParams( const std::map<QCString, QString>& m, NormalPoint* p )
+void FixedPointImp::readParams( const std::map<QCString, QString>& m,
+                                NormalPoint* p )
 {
-  bool ok;
+  bool ok = true;
   p->setCoord( Coordinate(
                  m.find("x")->second.toDouble(&ok),
                  pwwca.y = m.find("y")->second.toDouble(&ok) ) );
   Q_ASSERT( ok );
 }
 
-ConstrainedPointImp::ConstrainedPointImp( const Coordinate& d, Curve* c )
+ConstrainedPointImp::ConstrainedPointImp( const Coordinate& d, Curve* c,
+                                          NormalPoint* np )
   : NormalPointImp(), mparam( c->getParam( d ) ), mcurve( c )
 {
+  mcurve->addChild( np );
 }
 
 ConstrainedPointImp::ConstrainedPointImp()
@@ -221,17 +216,18 @@ void ConstrainedPointImp::stopMove( NormalPoint* )
 {
 }
 
-void ConstrainedPointImp::writeParams( std::map<QCString, QString>& m, NormalPoint* )
+void ConstrainedPointImp::writeParams( std::map<QCString, QString>& m,
+                                       NormalPoint* )
 {
   m["param"] = QString::number( mparam );
 }
 
-void ConstrainedPointImp::readParams( const std::map<QCString, QString>& m, NormalPoint* p )
+void ConstrainedPointImp::readParams( const std::map<QCString, QString>& m,
+                                      NormalPoint* )
 {
   bool ok;
   mparam = m.find("param")->second.toDouble(&ok);
   Q_ASSERT(ok);
-  calc( p );
 }
 
 NormalPointImp* FixedPointImp::copy( NormalPoint* p )
@@ -244,11 +240,13 @@ FixedPointImp::FixedPointImp( const FixedPointImp& p, NormalPoint* )
 {
 }
 
-ConstrainedPointImp::ConstrainedPointImp( const ConstrainedPointImp& p )
+ConstrainedPointImp::ConstrainedPointImp( const ConstrainedPointImp& p,
+                                          NormalPoint* np )
   : NormalPointImp( p )
 {
   mparam = p.mparam;
   mcurve = p.mcurve;
+  mcurve->addChild( np );
 }
 
 void NormalPoint::calc()
@@ -298,9 +296,9 @@ QString ConstrainedPointImp::sType()
   return QString::fromUtf8( "Constrained" );
 }
 
-NormalPointImp* ConstrainedPointImp::copy( NormalPoint* )
+NormalPointImp* ConstrainedPointImp::copy( NormalPoint* p )
 {
-  return new ConstrainedPointImp( *this );
+  return new ConstrainedPointImp( *this, p );
 }
 
 KAction* NormalPoint::sConstructAction( KigDocument*, Type*, int )
@@ -324,14 +322,14 @@ QString ConstrainedPointImp::wantArg( const Object* o ) const
 {
   // not used...
   const Curve* c = o->toCurve();
-  if ( ! c ) return 0;
+  if ( !c ) return 0;
   return QString::fromUtf8( "The curve" );
 }
 
-bool ConstrainedPointImp::selectArg( Object * o, NormalPoint* p )
+bool ConstrainedPointImp::selectArg( Object* o, NormalPoint* p )
 {
   Curve* c = o->toCurve();
-  if ( ! c ) return false;
+  assert( c );
   mcurve = c;
   c->addChild( p );
   calc( p );
@@ -363,16 +361,6 @@ void NormalPoint::moveTo( const Coordinate& c )
   mimp->moveTo( c, this );
 }
 
-void NormalPoint::setImp( NormalPointImp* imp )
-{
-  if ( mimp != imp )
-  {
-    delete mimp;
-  };
-  mimp = imp;
-  mimp->calc( this );
-}
-
 void FixedPointImp::setCoord( const Coordinate& c )
 {
   pwwca = c;
@@ -391,8 +379,8 @@ const QString NormalPoint::sDescriptiveName()
 const QString NormalPoint::sDescription()
 {
   return i18n(
-    "A normal point, that is either independent or attached to a line, "
-    "circle, segment..."
+    "A normal point, i.e. one that is either independent or attached "
+    "to a line, circle, segment..."
     );
 }
 
@@ -465,16 +453,6 @@ const ConstrainedPointImp* NormalPointImp::toConstrained() const
   return 0;
 }
 
-NormalPointImp* NormalPoint::imp()
-{
-  return mimp;
-}
-
-const NormalPointImp* NormalPoint::imp() const
-{
-  return mimp;
-}
-
 NormalPoint* NormalPoint::toNormalPoint()
 {
   return this;
@@ -525,3 +503,52 @@ QString ConstrainedPointImp::type()
   return sType();
 }
 
+NormalPoint* NormalPoint::fixedPoint( const Coordinate& c )
+{
+  NormalPoint* p = new NormalPoint();
+  p->setImp( new FixedPointImp( c ) );
+  return p;
+}
+
+NormalPoint* NormalPoint::constrainedPoint( Curve* c, const Coordinate& d )
+{
+  NormalPoint* p = new NormalPoint();
+  p->setImp( new ConstrainedPointImp( d, c, p ) );
+  return p;
+}
+
+void ConstrainedPointImp::redefine( Curve* c, const Coordinate& p,
+                                    NormalPoint* np )
+{
+  if ( c != mcurve )
+    unselectArgs( np );
+  mcurve = c;
+  mparam = c->getParam( p );
+  calc( np );
+}
+
+void ConstrainedPointImp::unselectArgs( NormalPoint* np )
+{
+  mcurve->delChild( np );
+  mcurve = 0;
+}
+
+void FixedPointImp::unselectArgs( NormalPoint* )
+{
+  // noop
+}
+
+void NormalPoint::setImp( NormalPointImp* i )
+{
+  mimp = i;
+  i->calc( this );
+}
+
+NormalPoint* NormalPoint::sensiblePoint( const Coordinate& c,
+                                         const KigDocument& d,
+                                         double fault )
+{
+  NormalPoint* p = fixedPoint( c );
+  p->redefine( c, d, fault );
+  return p;
+}
