@@ -320,8 +320,7 @@ void NormalMode::newMacro()
 
 void NormalMode::objectsAdded()
 {
-  // i know this is ugly :(
-  KigWidget* w = static_cast<KigView*>(mdoc.widget())->realWidget();
+  KigWidget* w = mdoc.mainWidget()->realWidget();
   w->redrawScreen();
   w->updateScrollBars();
 }
