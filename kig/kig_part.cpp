@@ -83,7 +83,6 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
 			  const QStringList& )
   : KParts::ReadWritePart( parent, name ),
     mMode( 0 ),
-    numViews(0),
     mcoordsystem( new EuclideanCoords )
 {
   // we need an instance
@@ -159,19 +158,13 @@ void KigDocument::setupActions()
     actionCollection(), "types_edit");
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
-//   tmp = l->loadIcon( "window_fullscreen", KIcon::User );
-//   aFullScreen = new KAction(
-//     i18n( "Full Screen" ), tmp, 0, this, SLOT( startKiosk() ),
-//     actionCollection(), "view_fullscreen" );
-//   aFullScreen->setToolTip( i18n( "View this document full-screen." ) );
-
   tmp = l->loadIcon( "pointxy", KIcon::User );
   aFixedPoint = new AddFixedPointAction( this, tmp, actionCollection() );
 
   tmp = l->loadIcon( "new", KIcon::User );
   new TestAction( this, tmp, actionCollection() );
 
-  KigExportManager::instance()->addMenuAction( this, mainWidget()->realWidget(),
+  KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
 };
 
@@ -286,7 +279,7 @@ bool KigDocument::openFile()
   tmp.calc( *this );
   emit recenterScreen();
 
-  mainWidget()->realWidget()->redrawScreen();
+  mode()->objectsRemoved();
 
   return true;
 }
@@ -481,11 +474,6 @@ void KigDocument::editTypes()
   mode()->editTypes();
 }
 
-void KigDocument::startKiosk()
-{
-  mode()->startKiosk();
-}
-
 void KigDocument::setUnmodified()
 {
   setModified( false );
@@ -578,11 +566,6 @@ bool KigDocument::internalSaveAs()
   }
   saveAs(file_name);
   return true;
-}
-
-KigView* KigDocument::mainWidget()
-{
-  return m_widget;
 }
 
 void KigDocument::runMode( KigMode* m )
@@ -719,4 +702,19 @@ void KigDocument::setupBuiltinMacros()
       };
     };
   };
+}
+
+void KigDocument::addWidget( KigWidget* v )
+{
+  mwidgets.push_back( v );
+}
+
+void KigDocument::delWidget( KigWidget* v )
+{
+  std::remove( mwidgets.begin(), mwidgets.end(), v );
+}
+
+const std::vector<KigWidget*>& KigDocument::widgets()
+{
+  return mwidgets;
 }

@@ -74,7 +74,7 @@ public:
    */
   virtual ~KigDocument();
 
-  KigView* mainWidget();
+  const std::vector<KigWidget*>& widgets();
 
 /*********************** KPart interface *************************/
 
@@ -111,7 +111,6 @@ public slots:
   void showHidden();
   void newMacro();
   void editTypes();
-  void startKiosk();
   // equivalent to setModified( false ); ( did i mention i don't like
   // signals/slots for being this inflexible...
   // this is connected to mhistory->documentRestored();
@@ -119,8 +118,8 @@ public slots:
 
   /****************** cooperation with stuff ******************/
 public:
-  void addView(KigView*) { numViews++; };
-  void delView(KigView*) { numViews--; };
+  void addWidget( KigWidget* );
+  void delWidget( KigWidget* );
 
   const Objects& objects() const { return mObjs;};
   void setObjects( const Objects& os );
@@ -223,7 +222,7 @@ public:
   void enableConstructActions( bool enabled );
 
 protected:
-  int numViews;
+  std::vector<KigWidget*> mwidgets;
 
   KigView* m_widget;
 

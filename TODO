@@ -9,7 +9,6 @@
   TransformationImp, and the real transforming is done by the
   ApplyTransformationType..  This is dependent on the previous TODO.
 - fillable polygons..
-- full screen mode
 - filters: more input filters ( get cabri to work somewhat, Dr.Genius
   perhaps ) and output filters...   
 - implement Circle by center and radius

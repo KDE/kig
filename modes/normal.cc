@@ -106,9 +106,14 @@ void NormalMode::newMacro()
 
 void NormalMode::objectsAdded()
 {
-  KigWidget* w = mdoc.mainWidget()->realWidget();
-  w->redrawScreen();
-  w->updateScrollBars();
+  const std::vector<KigWidget*>& widgets = mdoc.widgets();
+  kdDebug() << k_funcinfo << widgets.size() << endl;
+  for ( uint i = 0; i < widgets.size(); ++i )
+  {
+    KigWidget* w = widgets[i];
+    w->redrawScreen();
+    w->updateScrollBars();
+  };
 }
 
 void NormalMode::objectsRemoved()

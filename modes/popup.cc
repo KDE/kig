@@ -39,6 +39,7 @@
 #include <qcursor.h>
 #include <qpainter.h>
 #include <qpen.h>
+#include <qdialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
 
@@ -90,6 +91,7 @@ class BuiltinDocumentActionsProvider
   : public PopupActionProvider
 {
   int mnumberofcoordsystems;
+  bool misfullscreen;
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
   bool executeAction( int menu, int& id, const Objects& os,
@@ -610,6 +612,8 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
     popup.addAction( menu, i18n( "Unhide &All" ), nextfree++ );
+    if ( popup.widget().isFullScreen() )
+      popup.addAction( menu, i18n( "E&xit Full Screen Mode" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
   {
@@ -622,21 +626,30 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
 
 bool BuiltinDocumentActionsProvider::executeAction(
   int menu, int& id, const Objects&,
-  NormalModePopupObjects&,
+  NormalModePopupObjects& popup,
   KigDocument& doc, KigWidget& w, NormalMode& m )
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    if ( id >= 1 )
-    {
-      id -= 1;
-      return false;
-    };
     if ( id == 0 )
     {
       doc.showHidden();
+      m.clearSelection();
+      w.redrawScreen();
+      return true;
     }
-    m.clearSelection();
+    if ( popup.widget().isFullScreen() )
+    {
+      if ( id == 1 )
+      {
+        assert( w.parent()->inherits( "QDialog" ) );
+        static_cast<QDialog*>( w.parent() )->close();
+        return true;
+      }
+      else
+        id -= 1;
+    };
+    id -= 1;
     return false;
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )

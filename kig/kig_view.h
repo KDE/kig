@@ -94,13 +94,25 @@ class KigWidget : public QWidget
    */
   ScreenInfo msi;
 
+  /**
+   * is this a full-screen widget ?
+   */
+  bool misfullscreen;
+
 public:
+  /**
+   * standard qwidget constructor.  if fullscreen is true, we're a
+   * fullscreen widget.
+   */
   KigWidget( KigDocument* doc,
              KigView* view,
              QWidget* parent = 0,
-             const char* name = 0
+             const char* name = 0,
+             bool fullscreen = false
 	   );
   ~KigWidget();
+
+  bool isFullScreen() const;
 
   /**
    * The following are functions used by KigMode's to tell us to draw
@@ -174,6 +186,8 @@ public slots:
   void zoomOut();
 
   void redrawScreen( bool paintOnWidget = true );
+
+  void slotFullScreen();
 };
 
 /**
@@ -191,6 +205,7 @@ class KigView
   KAction* aZoomOut;
   KAction* aCenterScreen;
   KAction* aExportToImage;
+  KAction* aFullScreen;
 
   QGridLayout* mlayout;
   QScrollBar* mrightscroll;

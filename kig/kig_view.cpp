@@ -51,14 +51,18 @@ kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
 KigWidget::KigWidget( KigDocument* doc,
                       KigView* view,
                       QWidget* parent,
-                      const char* name )
-  : QWidget(parent, name),
+                      const char* name,
+                      bool fullscreen )
+  : QWidget(parent, name, fullscreen ? WStyle_Customize | WStyle_NoBorder : 0 ),
     mdocument( doc ),
     mview( view ),
     stillPix(size()),
     curPix(size()),
-    msi( Rect(), rect() )
+    msi( Rect(), rect() ),
+    misfullscreen( fullscreen )
 {
+  doc->addWidget(this);
+
   connect( mdocument, SIGNAL( recenterScreen() ), this, SLOT( recenterScreen() ) );
 
   setFocusPolicy(QWidget::ClickFocus);
@@ -71,22 +75,33 @@ KigWidget::KigWidget( KigDocument* doc,
 
 void KigView::setupActions()
 {
-  KIconLoader l;
+  KIconLoader* l = KGlobal::iconLoader();
 
   aZoomIn = KStdAction::zoomIn( mrealwidget, SLOT( zoomIn() ), mdoc->actionCollection() );
+  aZoomIn->setToolTip( i18n( "Zoom in on the document" ) );
   aZoomIn->setWhatsThis( i18n( "Zoom in on the document" ) );
 
   aZoomOut = KStdAction::zoomOut( mrealwidget, SLOT( zoomOut() ),
                                   mdoc->actionCollection() );
+  aZoomOut->setToolTip( i18n( "Zoom out of the document" ) );
   aZoomOut->setWhatsThis( i18n( "Zoom out of the document" ) );
 
   aCenterScreen = KStdAction::fitToPage( mrealwidget, SLOT( recenterScreen() ),
                                          mdoc->actionCollection() );
+  aCenterScreen->setToolTip( i18n( "Recenter the screen on the document" ) );
   aCenterScreen->setWhatsThis( i18n( "Recenter the screen on the document" ) );
+
+  QPixmap tmp = l->loadIcon( "window_fullscreen", KIcon::User );
+  aFullScreen = new KAction(
+    i18n( "Full Screen" ), tmp, 0, mrealwidget, SLOT( slotFullScreen() ),
+    mdoc->actionCollection(), "view_fullscreen" );
+  aFullScreen->setToolTip( i18n( "View this document full-screen." ) );
+  aFullScreen->setWhatsThis( i18n( "View this document full-screen." ) );
 }
 
 KigWidget::~KigWidget()
 {
+  mdocument->delWidget( this );
 };
 
 void KigWidget::paintEvent(QPaintEvent*)
@@ -294,7 +309,7 @@ const Rect KigWidget::fromScreen( const QRect& r )
 
 void KigWidget::updateScrollBars()
 {
-  mview->updateScrollBars();
+  if ( mview ) mview->updateScrollBars();
 }
 
 KigView::KigView( KigDocument* doc,
@@ -306,7 +321,6 @@ KigView::KigView( KigDocument* doc,
     mupdatingscrollbars( false ),
     mrealwidget( 0 ), mdoc( doc )
 {
-  doc->addView(this);
   mlayout = new QGridLayout( this, 2, 2 );
   mrightscroll = new QScrollBar( Vertical, this, "Right Scrollbar" );
   // TODO: make this configurable...
@@ -442,7 +456,6 @@ const ScreenInfo& KigView::screenInfo() const
 
 KigView::~KigView()
 {
-  mdoc->delView(this);
 }
 
 KigWidget* KigView::realWidget()
@@ -463,7 +476,7 @@ QSize KigWidget::sizeHint() const
 void KigWidget::wheelEvent( QWheelEvent* e )
 {
   int delta = e->delta();
-  mview->scrollVertical( delta );
+  if ( mview ) mview->scrollVertical( delta );
 }
 
 void KigView::scrollVertical( int delta )
@@ -474,4 +487,24 @@ void KigView::scrollVertical( int delta )
   else
     for ( int i = 0; i >= delta; i -= 120 )
       mrightscroll->addLine();
+}
+
+void KigWidget::slotFullScreen()
+{
+  QDesktopWidget* desktop = kapp->desktop();
+  int screen = desktop->screenNumber( this );
+  QRect r = desktop->screenGeometry( screen );
+
+  QDialog* kiosk = new QDialog( 0, 0, false, WStyle_Customize | WStyle_NoBorder );
+  kiosk->setGeometry( r );
+  KigWidget* w = new KigWidget( mdocument, 0, kiosk, 0, true );
+  w->setGeometry( QRect( QPoint( 0, 0 ), r.size() ) );
+  w->redrawScreen();
+  kiosk->raise();
+  kiosk->show();
+}
+
+bool KigWidget::isFullScreen() const
+{
+  return misfullscreen;
 }

@@ -47,7 +47,12 @@ TextLabelConstructionMode::~TextLabelConstructionMode()
 TextLabelConstructionMode::TextLabelConstructionMode( KigDocument& d )
   : KigMode( d ), mlpc( 0 ), mwiz( 0 ), mwawd( SelectingLocation )
 {
-  d.mainWidget()->realWidget()->setCursor( KCursor::crossCursor() );
+  const std::vector<KigWidget*>& widgets = mdoc.widgets();
+  for ( uint i = 0; i < widgets.size(); ++i )
+  {
+    KigWidget* w = widgets[i];
+    w->setCursor( KCursor::crossCursor() );
+  };
 }
 
 void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
@@ -185,7 +190,6 @@ void TextLabelConstructionMode::finishPressed()
 {
   bool needframe = mwiz->needFrameCheckBox->isChecked();
   QString s = mwiz->labelTextInput->text();
-  KigWidget* widget = mdoc.mainWidget()->realWidget();
   if ( mwiz->currentPage() == mwiz->enter_text_page )
   {
     // no arguments...
@@ -193,9 +197,8 @@ void TextLabelConstructionMode::finishPressed()
 
     Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe );
     labelos.calc( mdoc );
-    mdoc.addObjects( labelos );
-    widget->redrawScreen();
     killMode();
+    mdoc.addObjects( labelos );
   }
   else
   {
@@ -215,10 +218,9 @@ void TextLabelConstructionMode::finishPressed()
       Objects args( margs.begin(), margs.end() );
       Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe, args );
       labelos.calc( mdoc );
+      killMode();
       mdoc.addObjects( labelos );
       mdoc.addObjects( args );
-      widget->redrawScreen();
-      killMode();
     };
   };
 }
