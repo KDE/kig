@@ -117,4 +117,40 @@ protected:
   Line* line;
   Point* point;
 };
+
+// a line parallel to a line or segment, through a point...
+class LineParallel
+  : public Line
+{
+public:
+  LineParallel() : segment(0), line(0), point(0) {};
+  ~LineParallel() {};
+
+  virtual QCString vFullTypeName() const { return sFullTypeName(); };
+  static QCString sFullTypeName() { return "LineParallel"; };
+
+  // arguments
+  QString wantArg ( const Object* ) const;
+  bool selectArg (Object* which);
+  Objects getParents() const;
+//   void unselectArg (Object* which);
+  void drawPrelim ( QPainter&, const QPoint& ) const;
+  void getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, const QPoint& pt) const;
+
+  // moving
+  void startMove(const QPoint&) {};
+  void moveTo(const QPoint&) {};
+  void stopMove() {};
+  void cancelMove() {};
+
+  void calc();
+
+  // p1 and p2 define a line, find a point on the perpend through q..;
+  static Point calcPointOnParallel (const Point& p1, const Point& p2, const Point& q);
+protected:
+  Segment* segment;
+  Line* line;
+  Point* point;
+
+};
 #endif

@@ -200,33 +200,19 @@ void LinePerpend::calc()
 {
   assert (point && (segment || line));
   qp1 = point->toQPoint();
-  Point qpt1, qpt2;
+  const Point* qpt1;
+  const Point* qpt2;
   if (segment)
     {
-      qpt1 = segment->getP1();
-      qpt2 = segment->getP2();
+      qpt1 = &segment->getP1();
+      qpt2 = &segment->getP2();
     }
   else
     {
-      qpt1 = line->getP1();
-      qpt2 = line->getP2();
+      qpt1 = &line->getP1();
+      qpt2 = &line->getP2();
     };
-  double x2,y2; // coords of another point on the perpend line
-  double xa = qpt1.getX();
-  double xb = qpt2.getX();
-  double ya = qpt1.getY();
-  double yb = qpt2.getY();
-  if (yb != ya)
-    {
-      x2 = 0;
-      y2 = (xb-xa)*(qp1.getX())/(yb-ya) + qp1.getY();
-    }
-  else // the line/segment = horizontal, so the perpend is vertical
-    {
-      x2 = qp1.getX();
-      y2 = 0;
-    };
-  qp2 = Point(x2,y2);
+  qp2 = calcPointOnPerpend(*qpt1, *qpt2, *point);
   calcVars();
 }
 
@@ -375,3 +361,116 @@ void Line::drawLineTTP (QPainter& p, const Point& q, const Point& r)
   calcEndPoints(xa, xb, ya, yb, p.window());
   p.drawLine(xa,ya,xb,yb);
 };
+
+QString LineParallel::wantArg( const Object* o) const
+{
+  if (o->toSegment() && !segment && !line ) return i18n("On segment");
+  if (o->toLine() && !segment && !line ) return i18n("On line");
+  if (o->toPoint() && !point) return i18n("Through point");
+  return 0;
+}
+
+bool LineParallel::selectArg(Object* o)
+{
+  // we shouldn't be finished yet...
+  assert (!(point && (line || segment)));
+  // is this a segment ?
+  Segment* s;
+  if ((s= o->toSegment()))
+    {
+      assert (!segment);
+      segment = s;
+    };
+  // perhaps a line...
+  Line* l;
+  if ((l = o->toLine()))
+    {
+      assert (!line);
+      line = l;
+    };
+  Point* p;
+  if ((p = o->toPoint()))
+    {
+      assert (!point);
+      point = p;
+    };
+  o->addChild(this);
+  if (point && (line || segment)) { complete = true; };
+  return complete;
+}
+
+Objects LineParallel::getParents() const
+{
+  Objects objs;
+  if ( segment ) objs.push( segment );
+  else objs.push( line );
+  objs.push( point );
+  return objs;
+}
+
+void LineParallel::drawPrelim( QPainter& p , const QPoint& pt) const
+{
+  if (!(segment || line) || !shown) return;
+  p.setPen (QPen (Qt::red,1));
+  Point qpt1, qpt2;
+  if (segment)
+    {
+      qpt1 = segment->getP1();
+      qpt2 = segment->getP2();
+    }
+  else
+    {
+      qpt1 = line->getP1();
+      qpt2 = line->getP2();
+    };
+  drawLineTTP(p, Point(pt), calcPointOnParallel(qpt1, qpt2, Point(pt)));
+}
+
+void LineParallel::getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, const QPoint& pt) const
+{
+  if (!(segment || line) || !shown) return;
+  Point qpt1, qpt2;
+  if (segment)
+    {
+      qpt1 = segment->getP1();
+      qpt2 = segment->getP2();
+    }
+  else
+    {
+      qpt1 = line->getP1();
+      qpt2 = line->getP2();
+    };
+  
+  Point p1(pt);
+  Point p2 = calcPointOnParallel(qpt1, qpt2, p1);
+  double xa = p1.getX(), xb = p2.getX(), ya = p1.getY(), yb = p2.getY();
+  calcEndPoints (xa, xb, ya, yb, border);
+  Segment::segmentOverlay(Point(xa,ya), Point(xb,yb), list, border);
+}
+
+void LineParallel::calc()
+{
+  assert (point && (segment || line));
+  qp1 = point->toQPoint();
+  Point qpt1, qpt2;
+  if (segment)
+    {
+      qpt1 = segment->getP1();
+      qpt2 = segment->getP2();
+    }
+  else
+    {
+      qpt1 = line->getP1();
+      qpt2 = line->getP2();
+    };
+  qp2 = calcPointOnParallel(qpt1, qpt2, *point);
+  calcVars();
+}
+
+Point LineParallel::calcPointOnParallel(const Point& p1, const Point& p2, const Point& q)
+{
+  Point dir = p1-p2;
+  // too close, we'll get SIGNULL here
+  if (dir.length() < 1) return q;
+  return q + dir;
+}
