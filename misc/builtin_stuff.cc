@@ -385,22 +385,26 @@ void setupBuiltinStuff()
 
     // tests
     c = new TestConstructor( AreParallelType::instance(), "Parallel Test",
-                             "Test whether two given lines are parallel", "" );
+                             "Test whether two given lines are parallel", 
+			     "testparallel" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_areparallel" ) );
 
     c = new TestConstructor( AreOrthogonalType::instance(), "Orthogonal Test",
-                             "Test whether two given lines are orthogonal", "" );
+                             "Test whether two given lines are orthogonal", 
+		             "testorthogonal" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_areorthogonal" ) );
 
     c = new TestConstructor( AreCollinearType::instance(), "Collinear Test",
-                             "Test whether three given points are collinear", "" );
+                             "Test whether three given points are collinear", 
+			     "testcollinear" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_arecollinear" ) );
 
     c = new TestConstructor( ContainsTestType::instance(), "Contains Test",
-                             "Test whether a given curve contains a given point", "" );
+                             "Test whether a given curve contains a given point", 
+                             "testcontains" );
 
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_containstest" ) );

@@ -61,6 +61,10 @@ kigicondata_DATA = \
 	sizer.png \
 	slope.png \
 	stretch.png \
+	testcollinear.png \
+	testcontains.png \
+	testorthogonal.png \
+	testparallel.png \
 	text.png \
 	translation.png \
 	triangle.png \
