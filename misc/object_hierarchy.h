@@ -23,6 +23,9 @@
 
 class ObjectHierarchy
 {
+  // making this private to prevent me from forgetting to implement
+  // it, or prevent it from causing trouble..
+  ObjectHierarchy( const ObjectHierarchy& h );
   class Node;
   std::vector<Node*> mnodes;
   int mnumberofargs;
