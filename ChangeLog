@@ -1,5 +1,8 @@
 2003-07-27  Dominique Devriese  <devriese@kde.org>
 
+	* add a warning to configure.in.bot about how Boost.Python 1.30
+	together with GCC 3.2+ is a bad combination, along with a patch.
+
 	* add documentation about attaching text labels and locuses to the
 	index.docbook file
 
