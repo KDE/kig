@@ -26,6 +26,8 @@
 #include "../misc/i18n.h"
 #include "../objects/object_imp.h"
 #include "../objects/object.h"
+#include "../objects/other_type.h"
+#include "../objects/object_factory.h"
 #include "../misc/lists.h"
 #include "../misc/argsparser.h"
 #include "../misc/object_constructor.h"
@@ -92,6 +94,17 @@ public:
                       KigDocument& doc, KigWidget& w, NormalMode& m );
 };
 
+class PropertiesActionsProvider
+  : public PopupActionProvider
+{
+  std::vector<int> mprops[3];
+public:
+  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
+  bool executeAction( int menu, int& id, const Objects& os,
+                      NormalModePopupObjects& popup,
+                      KigDocument& doc, KigWidget& w, NormalMode& m );
+};
+
 NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
                                                 KigWidget& view,
                                                 NormalMode& mode,
@@ -106,11 +119,14 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
   insertTitle( single ? ObjectImp::translatedName( objs[0]->imp()->id() )
                : i18n( "%1 Objects" ).arg( objs.size() ), 1 );
 
+  // stuff like hide, show, delete, set size, set color..
   mproviders.push_back( new BuiltinActionsProvider() );
+  // construct an object using these objects and start constructing an
+  // object using these objects
   mproviders.push_back( new ObjectConstructorActionsProvider() );
   // show property as text label -> show menu
   // and construct property's as objects -> construct menu
-//   mproviders.push_back( new PropertiesActionsProvider() );
+  mproviders.push_back( new PropertiesActionsProvider() );
   // stuff like "redefine point" for a fixed or constrained point..
 //   mproviders.push_back( new ObjectTypeActionsProvider() );
 
@@ -359,6 +375,7 @@ bool ObjectConstructorActionsProvider::executeAction(
   NormalModePopupObjects&,
   KigDocument& doc, KigWidget& w, NormalMode& m )
 {
+  if ( menu > NormalModePopupObjects::StartMenu ) return false;
   if ( (uint) id >= mctors[menu].size() )
   {
     id -= mctors[menu].size();
@@ -410,4 +427,63 @@ void NormalModePopupObjects::addAction( int menu, const QString& name, int id )
 
 PopupActionProvider::~PopupActionProvider()
 {
+}
+
+void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
+                                            int menu, int& nextfree )
+{
+  if ( popup.objects().size() != 1 ) return;
+  Object* o = popup.objects()[0];
+  uint np = o->numberOfProperties();
+  if ( menu != NormalModePopupObjects::ConstructMenu &&
+       menu != NormalModePopupObjects::ShowMenu ) return;
+  for ( uint i = 0; i < np; ++i )
+  {
+    ObjectImp* prop = o->property( i, popup.document() );
+    if ( ( menu == NormalModePopupObjects::ConstructMenu &&
+           prop->inherits( ObjectImp::ID_PointImp ) ) ||
+         ( menu == NormalModePopupObjects::ShowMenu ) )
+    {
+      popup.addAction( menu, i18n( o->properties()[i] ), nextfree++ );
+      mprops[menu -1].push_back( i );
+    };
+    delete prop;
+  };
+}
+
+bool PropertiesActionsProvider::executeAction(
+  int menu, int& id, const Objects& os,
+  NormalModePopupObjects&,
+  KigDocument& doc, KigWidget& w, NormalMode& )
+{
+  if ( menu != NormalModePopupObjects::ConstructMenu &&
+       menu != NormalModePopupObjects::ShowMenu )
+    return false;
+  if ( (uint) id >= mprops[menu - 1].size() )
+  {
+    id -= mprops[menu - 1].size();
+    return false;
+  }
+  int propid = mprops[menu-1][id];
+  assert( os.size() == 1 );
+  Object* parent = os[0];
+  if ( menu == NormalModePopupObjects::ShowMenu )
+  {
+    Objects ret;
+    ret.push_back( new PropertyObject( parent, propid ) );
+    Objects labelos = ObjectFactory::instance()->label(
+      QString::fromLatin1( "%1" ), w.fromScreen( w.mapFromGlobal( QCursor::pos() ) ),
+      false, ret );
+    copy( labelos.begin(), labelos.end(), back_inserter( ret ) );
+    ret.calc( doc );
+    doc.addObjects( ret );
+  }
+  else
+  {
+    Objects ret;
+    ret.push_back( new PropertyObject( parent, propid ) );
+    ret.push_back( new RealObject( CopyObjectType::instance(), ret ) );
+    doc.addObjects( ret );
+  };
+  return true;
 }
