@@ -41,6 +41,8 @@ KigPlugin::KigPlugin( QObject *parent, const char *name, const QStringList &args
   group = addGroupInfo( info, "KigInfo", i18n( "Summary" ) );
   item = addItemInfo( group, "Version", i18n( "Version" ), QVariant::String );
   item = addItemInfo( group, "CoordSystem", i18n( "Coordinate System" ), QVariant::String );
+  item = addItemInfo( group, "Grid", i18n( "Grid" ), QVariant::String );
+  item = addItemInfo( group, "Axes", i18n( "Axes" ), QVariant::String );
 }
 
 bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
@@ -70,6 +72,22 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
       coordsystem = e.text().latin1();
   }
   appendItem( metagroup, "CoordSystem", coordsystem );
+
+  // has Kig document the grid?
+  bool btmp = true;
+  QString stmp = main.attribute( "grid" );
+  if ( !( stmp.isEmpty() || ( stmp != "0" ) ) )
+    btmp = ( stmp != "0" );
+  QString stmp2 = btmp ? "Yes" : "No";
+  appendItem( metagroup, "Grid", stmp2 );
+
+  // has Kig document the axes?
+  stmp = true;
+  stmp = main.attribute( "axes" );
+  if ( !( stmp.isEmpty() || ( stmp != "0" ) ) )
+    btmp = ( stmp != "0" );
+  stmp2 = btmp ? "Yes" : "No";
+  appendItem( metagroup, "Axes", stmp2 );
 
   return true;
 }

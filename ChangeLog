@@ -1,5 +1,8 @@
 2004-06-15  Pino Toscano <toscano.pino@tiscali.it>
 
+	* Add info about whether grid and axes are shown to the kig kfile
+	thing.
+	
 	* Now the coordinate system toggleaction is correctly updated
 	when the coordinate system is changed in another way.
 
