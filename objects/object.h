@@ -63,8 +63,8 @@ class Object
   // Objects that reimplement this should call Object::getParams() and
   // setParams() after you've handled your params.. --> to set params
   // common to all objects like the color...
-  virtual std::map<QCString,double> getParams ();
-  virtual void setParams ( const std::map<QCString,double>& );
+  virtual std::map<QCString,QString> getParams ();
+  virtual void setParams ( const std::map<QCString,QString>& );
 
   // getting types from this object: easier to type and supports
   // MacroObjectOne

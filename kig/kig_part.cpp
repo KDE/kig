@@ -189,7 +189,7 @@ void KigDocument::setupTypes()
 	   0));
   addType(new TType<LineRadical>
 	  (this,
-	   "radical",
+	   "radicalline",
 	   i18n("Radical Line"),
 	   i18n("Construct a \"Radical Line\": a line through the "
 		"intersections of two circles.  This is also defined for "

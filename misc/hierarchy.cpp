@@ -215,7 +215,9 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
       QCString typeName = tmpTN.utf8();
       
       HierarchyElement* tmpE = new HierarchyElement(typeName, id);
-      if( id > tmphash.size() ) tmphash.resize( id );
+      // static cast, to prevent warnings about "comparison between
+      // signed and unsigned..."
+      if( id > static_cast<int>(tmphash.size()) ) tmphash.resize( id );
       tmphash[id - 1] = tmpE;
 
       allElems.push_back(tmpE);
@@ -234,7 +236,9 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
       int id = tmpId.toInt(&ok);
       assert(ok);
 
-      assert( id <= tmphash.size() );
+      // static cast, to prevent warnings about "comparison between
+      // signed and unsigned..."
+      assert( id <= static_cast<int>(tmphash.size()) );
       HierarchyElement* tmpE = tmphash[id -1];
 
       // two params we handle:
@@ -271,10 +275,7 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
 	      QString name = e.attribute("name");
 	      QDomText t = e.firstChild().toText();
 	      Q_ASSERT (!t.isNull());
-	      bool ok;
-	      double value = t.data().toDouble(&ok);
-	      Q_ASSERT(ok);
-	      tmpE->setParam(name.latin1(), value);
+	      tmpE->setParam(name.latin1(), t.data());
 	    }; // we just handled the param child tag
 	}; // end of loop over the child tags of the HierarchyElement
     };
@@ -303,7 +304,7 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
       {
 	QDomElement p = doc.createElement("param");
 	p.setAttribute("name", i->first);
-	QDomText t = doc.createTextNode(QString::number(i->second));
+	QDomText t = doc.createTextNode(i->second);
 	p.appendChild(t);
 	e.appendChild(p);
       };

@@ -41,8 +41,8 @@ class Point
   Point(const Point& p) : Object(p), mC( p.getCoord() ) {};
   Point* copy() { return new Point (*this); };
 
-  std::map<QCString,double> getParams();
-  void setParams( const std::map<QCString,double>& m);
+  std::map<QCString,QString> getParams();
+  void setParams( const std::map<QCString,QString>& m);
 
   // type identification
   virtual QCString vBaseTypeName() const { return sBaseTypeName();};
@@ -102,9 +102,6 @@ public:
   void unselectArg (Object*);
   Objects getParents() const { Objects tmp; tmp.append(p1); tmp.append(p2); return tmp; };
 
-  std::map<QCString,double> getParams();
-  void setParams( const std:: map<QCString,double>& /*m*/);
-
   void startMove(const Coordinate&);
   void moveTo(const Coordinate&);
   void stopMove();
@@ -152,8 +149,8 @@ public:
   double getP() { return p; };
   void setP(double inP) { p = inP; };
 
-  std::map<QCString,double> getParams();
-  void setParams( const std::map<QCString,double>& m);
+  std::map<QCString,QString> getParams();
+  void setParams( const std::map<QCString,QString>& m);
 protected:
   double p;
   Curve* c;

@@ -207,28 +207,32 @@ ConstrainedPoint::ConstrainedPoint( const ConstrainedPoint& cp)
   if (complete) calc();
 }
 
-std::map<QCString,double> Point::getParams()
+std::map<QCString,QString> Point::getParams()
 {
-  std::map<QCString,double> tmp;
-  tmp["x"] = mC.x;
-  tmp["y"] = mC.y;
+  std::map<QCString,QString> tmp;
+  tmp["x"] = QString::number(mC.x);
+  tmp["y"] = QString::number(mC.y);
   return tmp;
 }
 
-void Point::setParams(const std::map<QCString,double>& m)
+void Point::setParams(const std::map<QCString,QString>& m)
 {
-  mC.x = m.find("x")->second;
-  mC.y = m.find("y")->second;
+  bool ok;
+  mC.x = m.find("x")->second.toDouble(&ok);
+  mC.y = m.find("y")->second.toDouble(&ok);
+  Q_ASSERT( ok );
 };
-std::map<QCString,double> ConstrainedPoint::getParams()
+std::map<QCString,QString> ConstrainedPoint::getParams()
 {
-  std::map<QCString,double> tmp;
-  tmp["param"] = p;
+  std::map<QCString,QString> tmp;
+  tmp["param"] = QString::number(p);
   return tmp;
 }
-void ConstrainedPoint::setParams(const std::map<QCString,double>& m)
+void ConstrainedPoint::setParams(const std::map<QCString,QString>& m)
 {
-  p = m.find("param")->second;
+  bool ok;
+  p = m.find("param")->second.toDouble(&ok);
+  Q_ASSERT(ok);
 }
 
 ConstrainedPoint::ConstrainedPoint(const double inP)
@@ -241,11 +245,4 @@ ConstrainedPoint::ConstrainedPoint()
 {
     
 }
-std::map<QCString,double> MidPoint::getParams()
-{
-  return std::map<QCString, double>();
-}
 
-void MidPoint::setParams( const std::map<QCString,double>& /*m*/)
-{
-}

@@ -56,17 +56,17 @@ public:
 
 class HierarchyElement
 {
-  typedef map<QCString,double> pMap;
+  typedef map<QCString,QString> pMap;
 protected:
   QCString typeName;
   ElemList parents;
   ElemList children;
-  map<QCString,double> params;
+  pMap params;
   int id;
 public:
-  void setParam(QCString name, double value) { params[name] = value; };
-  void setParams(const map<QCString, double>& p) { params = p; };
-  const map<QCString,double> getParams() { return params; };
+  void setParam( const QCString name, const QString value ) { params[name] = value; };
+  void setParams(const pMap& p ) { params = p; };
+  const pMap getParams() { return params; };
   HierarchyElement(QCString inTN, 
 		   int inId
 		   )

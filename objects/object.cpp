@@ -155,12 +155,12 @@ Objects Object::getAllChildren() const
   return tmp;
 }
 
-std::map<QCString,double> Object::getParams()
+std::map<QCString,QString> Object::getParams()
 {
-  return std::map<QCString, double>();
+  return std::map<QCString, QString>();
 }
 
-void Object::setParams( const std::map<QCString,double>& )
+void Object::setParams( const std::map<QCString,QString>& )
 {
     
 }
