@@ -88,5 +88,6 @@ void ScreenInfo::setViewRect( const QRect& r )
 
 double ScreenInfo::normalMiss( double width ) const
 {
-  return (width+2)*pixelWidth();
+  double twidth = width == -1 ? 1 : width;
+  return (twidth+2)*pixelWidth();
 }

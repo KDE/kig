@@ -37,7 +37,8 @@ void PointImp::draw( KigPainter& p ) const
 
 bool PointImp::contains( const Coordinate& p, int width, const ScreenInfo& si ) const
 {
-  return (p - mc).length() - width*si.pixelWidth() < 0;
+  int twidth = width == -1 ? 5 : width;
+  return (p - mc).length() - twidth*si.pixelWidth() < 0;
 }
 
 bool PointImp::inRect( const Rect& r ) const
