@@ -803,7 +803,9 @@ inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHi
   PointImp pimp( pt );
   Args args;
   args.push_back( &pimp );
-  ObjectImp* o = h.calc( args );
+  std::vector<ObjectImp*> calced = h.calc( args );
+  assert( calced.size() == 1 );
+  ObjectImp* o = calced.front();
   Coordinate ret;
   if ( o->inherits( ObjectImp::ID_PointImp ) )
   {

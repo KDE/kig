@@ -97,7 +97,7 @@ void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
   stack[loc] = mtype->calc( args );
 };
 
-ObjectImp* ObjectHierarchy::calc( const Args& a ) const
+std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a ) const
 {
   std::vector<const ObjectImp*> stack;
   stack.resize( mnodes.size() + mnumberofargs, 0 );
@@ -106,14 +106,25 @@ ObjectImp* ObjectHierarchy::calc( const Args& a ) const
   {
     mnodes[i]->apply( stack, mnumberofargs + i );
   };
-  for ( uint i = mnumberofargs; i < stack.size() - 1; ++i )
+  for ( uint i = mnumberofargs; i < stack.size() - mnumberofresults; ++i )
     delete stack[i];
-  if ( stack.size() <= mnumberofargs ) return new InvalidImp;
-  else return const_cast<ObjectImp*>( stack.back() );
+  if ( stack.size() < mnumberofargs + mnumberofresults )
+  {
+    std::vector<ObjectImp*> ret;
+    ret.push_back( new InvalidImp );
+    return ret;
+  }
+  else
+  {
+    std::vector<ObjectImp*> ret;
+    for ( uint i = stack.size() - mnumberofresults; i < stack.size(); ++i )
+      ret.push_back( const_cast<ObjectImp*>( stack[i] ) );
+    return ret;
+  };
 }
 
 ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
-  : mnumberofargs( from.size() )
+  : mnumberofargs( from.size() ), mnumberofresults( 1 )
 {
   visit( to, from );
 }
@@ -156,7 +167,7 @@ ObjectHierarchy::~ObjectHierarchy()
 }
 
 ObjectHierarchy::ObjectHierarchy( const ObjectHierarchy& h )
-  : mnumberofargs( h.mnumberofargs )
+  : mnumberofargs( h.mnumberofargs ), mnumberofresults( h.mnumberofresults )
 {
   mnodes.reserve( h.mnodes.size() );
   for ( uint i = 0; i < h.mnodes.size(); ++i )
@@ -175,4 +186,11 @@ ObjectHierarchy ObjectHierarchy::withFixedArgs( const Args& a ) const
   std::copy( ret.mnodes.begin(), ret.mnodes.end(), newnodesiter );
   ret.mnodes = newnodes;
   return ret;
+}
+
+ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
+  : mnumberofargs( from.size() ), mnumberofresults( to.size() )
+{
+  for ( Objects::const_iterator i = to.begin(); i != to.end(); ++i )
+    visit( *i, from );
 }

@@ -77,7 +77,9 @@ const Coordinate LocusImp::getPoint( double param ) const
    PointImp argimp( arg );
   Args args;
   args.push_back( &argimp );
-  ObjectImp* imp = mhier.calc( args );
+  std::vector<ObjectImp*> calcret = mhier.calc( args );
+  assert( calcret.size() == 1 );
+  ObjectImp* imp = calcret.front();
   Coordinate ret;
   if ( imp->inherits( ObjectImp::ID_PointImp ) )
     ret = static_cast<PointImp*>( imp )->coordinate();
