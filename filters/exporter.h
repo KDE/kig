@@ -74,4 +74,18 @@ public:
   void run( const KigDocument& doc, KigWidget& w );
 };
 
+/**
+ * Guess what this one does ;)
+ * It exports to the XFig file format, as documented in the file
+ * FORMAT3.2 in the XFig source distribution.
+ */
+class XFigExporter
+  : public KigExporter
+{
+public:
+  ~XFigExporter();
+  QString exportToStatement() const;
+  QString menuEntryName() const;
+  void run( const KigDocument& doc, KigWidget& w );
+};
 #endif
