@@ -3,7 +3,6 @@
 
 #include "kig_part.h"
 
-#include "kig_factory.h"
 #include "kig_view.h"
 #include "kig_commands.h"
 #include "type_edit_impl.h"
@@ -16,7 +15,9 @@
 #include "../objects/intersection.h"
 #include "../objects/locus.h"
 #include "../misc/hierarchy.h"
+#include "../filters/filter.h"
 
+#include <kparts/genericfactory.h>
 #include <kinstance.h>
 #include <kaction.h>
 #include <kstdaction.h>
@@ -30,23 +31,30 @@
 #include <klineeditdlg.h>
 #include <kglobal.h>
 #include <klineedit.h>
+#include <kmimetype.h>
 
 #include <qfile.h>
 #include <qtextstream.h>
 #include <qpen.h>
 
+// export this library...
+typedef KParts::GenericFactory<KigDocument> KigDocumentFactory;
+K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigDocumentFactory );
+
 // types are global to the application...
 Types KigDocument::types;
 
 KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
-			    QObject *parent, const char *name )
+			  QObject *parent, const char *name,
+			  const QStringList& )
   : KParts::ReadWritePart(parent, name),
     m_pMacroWizard(0),
     numViews(0),
     obc(0)
+  //    ,coords ( new EuclideanCoords( -5, -5, 10, 10 ) )
 {
   // we need an instance
-  setInstance( KigPartFactory::instance() );
+  setInstance( KigDocumentFactory::instance() );
 
   // we need a widget, to actually show the document
   m_widget = new KigView(this, parentWidget, widgetName);
@@ -61,11 +69,11 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   // our types...
   setupTypes();
 
-  // set our XML-UI resource file
-  setXMLFile("kigpartui.rc");
-
   // construct our command history
   history = new KCommandHistory(actionCollection());
+
+  // set our XML-UI resource file
+  setXMLFile("kigpartui.rc");
 
   // we are read-write by default
   setReadWrite(true);
@@ -230,8 +238,40 @@ KigDocument::~KigDocument()
 
 bool KigDocument::openFile()
 {
-  // m_file is always local so we can use QFile on it
-  QFile file(m_file);
+  kdDebug() << k_funcinfo << m_file << endl;
+
+  // m_file is always local, so we can use findByPath instead of
+  // findByURL... 
+  KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
+  QFile file;
+  if ( mimeType->name() != QString::fromLatin1("application/x-kig") )
+    {
+      kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
+      KigFilter* filter = KigFilters::find( mimeType->name() );
+      if ( filter == 0 )
+      {
+	// we don't support this mime type...
+	KMessageBox::sorry 
+	  (
+	   widget(),
+	   i18n
+	   ( "You tried to open a document of type \"%1\".  Unfortunately, Kig doesn't support this format. Perhaps you can try a next release as i'm currently working on format support...").arg(mimeType->name()),
+	   i18n
+	   ("Format not supported")
+	  );
+	return false;
+      };
+      KTempFile tempFile;
+      filter->convert (m_file, tempFile);
+      KMessageBox::sorry(widget(), QString::fromLatin1("this is for debugging, read the file") + tempFile.name() );
+      file.setName (tempFile.name());
+    }
+  else
+    {
+      // m_file is always local so we can use QFile on it
+      file.setName(m_file);
+    };
+  
   if (!file.open(IO_ReadOnly)) return false;
 
   objects.deleteAll();
@@ -613,4 +653,34 @@ void KigDocument::selectObjects(const Objects& os)
 void KigDocument::delMacro()
 {
   delete m_pMacroWizard; m_pMacroWizard = 0;
+}
+
+KAboutData* KigDocument::createAboutData()
+{
+  const char* version = "v2.0";
+  const char* description = "KDE Interactive Geometry";
+
+  KAboutData* tmp = new KAboutData("KigPart", I18N_NOOP("Kig"), version,
+				   description, KAboutData::License_GPL,
+				   "(C) 2002, Dominique Devriese");
+  tmp->addAuthor("Dominique Devriese", I18N_NOOP("Coding"),
+		  "fritmebufstek@pandora.be" );
+
+  tmp->addCredit("Marc Bartsch",
+		  I18N_NOOP("Author of KGeo, where i got inspiration, "
+			    "some source, and most of the artwork from"),
+		  "marc.bartsch@web.de");
+
+  tmp->addCredit("Ilya Baran",
+		  I18N_NOOP("Author of KSeg, another program that has been a "
+			    "source of inspiration for Kig"),
+		  "ibaran@mit.edu");
+
+  tmp->addCredit("Cabri coders",
+		  I18N_NOOP("Cabri is a commercial program like Kig, and "
+			    "gave me something to compete against :)"),
+		  "www-cabri.imag.fr");
+
+
+  return tmp;
 }

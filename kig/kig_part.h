@@ -17,6 +17,8 @@ class KPopupMenu;
 class KigView;
 class KActionMenu;
 
+class CoordinateSystem;
+
 /**
  * This is a "Part".  It that does all the real work in a KPart
  * application.
@@ -37,7 +39,8 @@ public:
    * Default constructor
    */
   KigDocument(QWidget *parentWidget, const char *widgetName,
-	      QObject *parent = 0, const char *name = 0);
+	      QObject *parent = 0, const char *name = 0,
+	      const QStringList& = QStringList() );
 
 
   /**
@@ -47,6 +50,9 @@ public:
 
 
 /*********************** KPart interface *************************/
+
+public:
+  static KAboutData* createAboutData();
 
 protected:
   /**
@@ -74,11 +80,12 @@ public:
   const Objects& getMovingObjects() { return movingObjects; };
   const Objects& getObjects() { return objects;};
 
+//   const CoordinateSystem* getCoords() { return coords; };
+
   Object* getObc() const { return obc; };
 
   // what objects are under point p
   Objects whatAmIOn(const QPoint& p);
-  Objects whatAmIOn(int x, int y) { return whatAmIOn(QPoint(x,y));};
 
   // KigView calls this to see if it's allowed to let the user move
   // stuff around.  We decide based on whether we're constructing a
@@ -171,6 +178,7 @@ public:
   void removeType(Type*);
 
   Object* newObject(const QCString& type);
+
 protected slots:
   void editTypes(); 
 
@@ -226,6 +234,9 @@ protected:
   Objects sos;
   // these objects are moving...
   Objects movingObjects;
+
+//   // the coordinatesystem...
+//   CoordinateSystem* coords;
 };
 
 #endif // KIGPART_H

@@ -6,7 +6,7 @@
 INCLUDES = $(all_includes)
 
 # these are the headers for your project
-noinst_HEADERS = kig.h kig_part.h kig_view.h kig_factory.h kig_commands.h type_edit_impl.h macrowizard_impl.h kig_iface.h
+noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h type_edit_impl.h macrowizard_impl.h kig_iface.h
 
 # let automoc handle all of the meta source files (moc)
 METASOURCES = AUTO
@@ -40,7 +40,7 @@ shellrc_DATA = kigui.rc
 kde_module_LTLIBRARIES = libkigpart.la
 
 # the Part's source, library search path, and link libraries
-libkigpart_la_SOURCES = kig_factory.cpp kig_part.cpp kig_view.cpp kig_commands.cpp type_edit.ui type_edit_impl.cpp macrowizard.ui macrowizard_impl.cpp
+libkigpart_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp type_edit.ui type_edit_impl.cpp macrowizard.ui macrowizard_impl.cpp
 libkigpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkigpart_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) ../misc/libmisc.la ../objects/libobjects.la ../filters/libfilters.la -lstdc++
 
