@@ -87,7 +87,7 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
   }
   else if ( d.inherits( ObjectImp::ID_DoubleImp ) )
   {
-     parent.appendChild(
+    parent.appendChild(
       doc.createTextNode(
         QString::number( static_cast<const DoubleImp&>( d ).data() ) ) );
     return QString::fromLatin1( "double" );
@@ -99,27 +99,34 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
         static_cast<const StringImp&>( d ).data() ) );
     return QString::fromLatin1( "string" );
   }
-  else if( d.inherits( ObjectImp::ID_PointImp ) )
+  else if( d.inherits( ObjectImp::ID_HierarchyImp ) )
   {
-    addXYElements( static_cast<const PointImp&>( d ).coordinate(),
-                   parent, doc );
-    return QString::fromLatin1( "point" );
+    static_cast<const HierarchyImp&>( d ).data().serialize( parent, doc );
+    return QString::fromLatin1( "hierarchy" );
   }
   else if( d.inherits( ObjectImp::ID_LineImp ) )
   {
     LineData l = static_cast<const AbstractLineImp&>( d ).data();
     addCoordinateElement( "a", l.a, parent, doc );
     addCoordinateElement( "b", l.b, parent, doc );
-    if( d.inherits( ObjectImp::ID_SegmentImp ) )
+    if( d.inherits( ObjectImp:I:D_SegmentImp ) )
       return QString::fromLatin1( "segment" );
     else if( d.inherits( ObjectImp::ID_RayImp ) )
       return QString::fromLatin1( "ray" );
     else return QString::fromLatin1( "line" );
   }
+  else if( d.inherits( ObjectImp::ID_PointImp ) )
+  {
+    addXYElements( static_cast<const PointImp&>( d ).coordinate(),
+                   parent, doc );
+    return QString::fromLatin1( "point" );
+  }
   else if( d.inherits( ObjectImp::ID_TextImp ) )
   {
-    // TODO
-    assert( false );
+    QString text = static_cast<const TextImp&>( d ).text();
+    parent.appendChild(
+      doc.createTextNode( text ) );
+    return QString::fromLatin1( "text" );
   }
   else if( d.inherits( ObjectImp::ID_AngleImp ) )
   {
@@ -134,16 +141,21 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
   }
   else if( d.inherits( ObjectImp::ID_LocusImp ) )
   {
+    const LocusImp& locus = static_cast<const LocusImp&>( d );
+
+    // serialize the curve..
     QDomElement curve = doc.createElement( "curve" );
-    const CurveImp* curveimp = static_cast<const LocusImp&>( d ).curve();
-    QString type = serialize( *curveimp, curve, doc );
+    const CurveImp& curveimp = locus.curve();
+    QString type = serialize( curveimp, curve, doc );
     curve.setAttribute( "type", type );
     parent.appendChild( curve );
+
+    // serialize the hierarchy..
     QDomElement hier = doc.createElement( "calculation" );
-    // TODO
-    assert( false );
+    locus.hierarchy().serialize( hier, doc );
     parent.appendChild( hier );
-    assert( false );
+
+    return QString::fromLatin1( "locus" );
   }
   else if( d.inherits( ObjectImp::ID_CircleImp ) )
   {

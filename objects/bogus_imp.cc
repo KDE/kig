@@ -190,3 +190,29 @@ void StringImp::fillInNextEscape( QString& s, const KigDocument& ) const
 {
   s = s.arg( mdata );
 }
+
+HierarchyImp::HierarchyImp( const ObjectHierarchy& h )
+  : BogusImp(), mdata( h )
+{
+}
+
+bool HierarchyImp::inherits( int type ) const
+{
+  return type == ID_HierarchyImp ? true : Parent::inherits( type );
+}
+
+HierarchyImp* HierarchyImp::copy() const
+{
+  return new HierarchyImp( mdata );
+}
+
+const char* HierarchyImp::baseName() const
+{
+  return I18N_NOOP( "Hierarchy" );
+}
+
+int HierarchyImp::id() const
+{
+  return ID_HierarchyImp;
+}
+

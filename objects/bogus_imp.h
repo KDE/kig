@@ -20,6 +20,7 @@
 #define BOGUS_IMP_H
 
 #include "object_imp.h"
+#include "../misc/object_hierarchy.h"
 
 #include <qstring.h>
 
@@ -124,6 +125,24 @@ public:
   int id() const;
 
   void fillInNextEscape( QString& s, const KigDocument& ) const;
+};
+
+class HierarchyImp
+  : public BogusImp
+{
+  typedef BogusImp Parent;
+  ObjectHierarchy mdata;
+public:
+  HierarchyImp( const ObjectHierarchy& h );
+
+  const ObjectHierarchy& data() const { return mdata; };
+  void setData( const ObjectHierarchy& h ) { mdata = h; };
+
+  bool inherits( int type ) const;
+  HierarchyImp* copy() const;
+  const char* baseName() const;
+
+  int id() const;
 };
 
 #endif

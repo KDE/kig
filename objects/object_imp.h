@@ -63,10 +63,11 @@ public:
 
     // Pseudo-object imp types, these are only used as fixed args for
     // various object types..
-    ID_DoubleImp,
     ID_IntImp,
+    ID_DoubleImp,
     ID_StringImp,
     ID_InvalidImp,
+    ID_HierarchyImp,
 
     // two id's that match multiple types of imp's..
     ID_CurveImp,
