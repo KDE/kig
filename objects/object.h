@@ -123,6 +123,7 @@ public:
 
   void addChild( Object* o );
   void delChild( Object* o );
+  void delParent( Object* o );
 };
 
 #endif

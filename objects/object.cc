@@ -38,6 +38,13 @@ Object::Object( const ObjectType* type, const Objects& parents, const Args& fixe
 
 Object::~Object()
 {
+  // tell our parents that we're dead...
+  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
+    (*i)->delChild( this );
+  // tell our children that we're dead, so they don't try to tell us
+  // that they're dying too, which would cause segfaults...
+  for ( Objects::iterator i = mchildren.begin(); i != mchildren.end(); ++i )
+    (*i)->delParent( this );
 }
 
 const uint Object::numberOfProperties() const
@@ -213,4 +220,9 @@ void Object::setImp( ObjectImp* i )
 bool Object::canMove() const
 {
   return mtype->canMove();
+}
+
+void Object::delParent( Object* o )
+{
+  mparents.remove( o );
 }
