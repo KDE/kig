@@ -347,11 +347,12 @@ void ObjectHierarchy::saveXML( QDomDocument& doc, QDomElement& p ) const
 void ObjectHierarchy::calc( const ScreenInfo& r ) const
 {
   ElemList tmp = indElems, tmp2;
+  for ( ElemList::const_iterator i = indElems.begin(); i != indElems.end(); ++i )
+    (*i)->actual->calc( r );
   while (!tmp.empty())
   {
     for (ElemList::const_iterator i = tmp.begin(); i != tmp.end(); ++i)
     {
-      (*i)->actual->calc( r );
       for (ElemList::const_iterator j = (*i)->getChildren().begin();
            j != (*i)->getChildren().end();
            ++j)
