@@ -124,3 +124,8 @@ void Type::deleteActions()
 {
   for_each( mactions.begin(), mactions.end(), &deleteAction );
 }
+
+const char* MType::actionName() const
+{
+  return "";
+}

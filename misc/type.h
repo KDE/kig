@@ -103,6 +103,13 @@ public:
   KAction* constructAction( KigDocument* d );
 
   /**
+   * this returns an internal name for the construct action... return
+   * something like "objects_new_normalpoint".. MTypes return "" cause
+   * they don't need this ...
+   */
+  virtual const char* actionName() const = 0;
+
+  /**
    * This is used when the user "deletes" a type.. We delete all
    * actions so it seems to the user the type has been deleted...
    */
@@ -123,9 +130,16 @@ public:
   const QString descriptiveName() const;
   const QString description() const;
   const QCString iconFileName() const;
+  const char* actionName() const;
   void saveXML( QDomDocument&, QDomNode& ) const;
   KigMode* constructMode( NormalMode* prev, KigDocument* doc );
 };
+
+template<class T>
+const char* TType<T>::actionName() const
+{
+  return T::sActionName();
+}
 
 template<class T>
 KigMode* TType<T>::constructMode( NormalMode* prev, KigDocument* doc )
@@ -198,6 +212,7 @@ public:
   const QString descriptiveName() const;
   const QString description() const;
   const QCString iconFileName() const;
+  const char* actionName() const;
   void saveXML( QDomDocument&, QDomNode& ) const;
   KigMode* constructMode( NormalMode* mode, KigDocument* doc );
 };

@@ -89,6 +89,7 @@ public:
   static const QCString sIconFileName();
   const int vShortCut() const;
   static const int sShortCut();
+  static const char* sActionName();
 
   static KigMode* sConstructMode( Type*, KigDocument*, NormalMode* );
 

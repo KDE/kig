@@ -74,6 +74,7 @@ public:
   static const QCString sIconFileName() { return "circle"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return CTRL+Key_C; };
+  static const char* sActionName();
 
   void calc ();
   void drawPrelim ( KigPainter&, const Object* prelimArg ) const;
@@ -115,6 +116,7 @@ public:
   static const QCString sIconFileName() { return "circle"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return 0; };
+  static const char* sActionName();
 
   void drawPrelim ( KigPainter&, const Object* ) const;
 

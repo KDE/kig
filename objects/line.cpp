@@ -612,3 +612,22 @@ const QString LineRadical::sDescription()
   return i18n( "A line constructed through the intersections of two circles.  This is also defined for non-intersecting circles..." );
 }
 
+const char* LineTTP::sActionName()
+{
+  return "objects_new_linettp";
+}
+
+const char* LinePerpend::sActionName()
+{
+  return "objects_new_lineperpend";
+}
+
+const char* LineParallel::sActionName()
+{
+  return "objects_new_lineparallel";
+}
+
+const char* LineRadical::sActionName()
+{
+  return "objects_new_radicalline";
+}

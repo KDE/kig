@@ -267,3 +267,7 @@ void IntersectionPoint::drawPrelim( KigPainter&, const Object* ) const
 {
 }
 
+const char* IntersectionPoint::sActionName()
+{
+  return "objects_new_intersectionpoint";
+}

@@ -50,6 +50,7 @@ public:
   static const QCString sIconFileName();
   const int vShortCut() const;
   static const int sShortCut();
+  static const char* sActionName();
 
   QCString iType() const;
   bool contains (const Coordinate& o, const double fault ) const;

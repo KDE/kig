@@ -554,3 +554,8 @@ const NormalPoint* NormalPoint::toNormalPoint() const
 {
   return this;
 }
+
+const char* NormalPoint::sActionName()
+{
+  return "objects_new_normalpoint";
+}

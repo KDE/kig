@@ -369,3 +369,12 @@ const QString CircleBTP::sDescription()
   return i18n( "A circle constructed through three points" );
 }
 
+const char* CircleBCP::sActionName()
+{
+  return "objects_new_circlebcp";
+}
+
+const char* CircleBTP::sActionName()
+{
+  return "objects_new_circlebtp";
+}

@@ -288,3 +288,8 @@ Point* Segment::getPoint1()
 {
   return p1;
 }
+
+const char* Segment::sActionName()
+{
+  return "objects_new_segment";
+}

@@ -139,6 +139,11 @@ public:
   static KigMode* sConstructMode( Type* ourtype, KigDocument* theDoc,
                                   NormalMode* previousMode );
 
+  // objects also need this static method:
+  // static const char* sActionName();
+  // this returns an internal name for the object.  This should be
+  // something like objects_new_normalpoint...
+
   // drawing etc.
   // @p showSelect: whether selection should be shown (we don't want to
   // print selected stuff as selected...

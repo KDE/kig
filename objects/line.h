@@ -88,6 +88,7 @@ public:
   static const QCString sIconFileName() { return "line"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return CTRL+Key_L; };
+  static const char* sActionName();
 
   // arguments
   QString wantArg ( const Object* ) const;
@@ -130,6 +131,7 @@ public:
   static const QCString sIconFileName() { return "perpendicular"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return 0; };
+  static const char* sActionName();
 
   // arguments
   QString wantArg ( const Object* ) const;
@@ -172,6 +174,7 @@ public:
   static const QCString sIconFileName() { return "parallel"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return 0; };
+  static const char* sActionName();
 
   // arguments
   QString wantArg ( const Object* ) const;
@@ -220,6 +223,7 @@ public:
   static const QCString sIconFileName() { return "radicalline"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return 0; };
+  static const char* sActionName();
 
   // arguments
   QString wantArg ( const Object* ) const;

@@ -52,4 +52,21 @@
   <Action name="new_line"/>
   <Action name="new_other"/>
 </ToolBar>
+<ToolBar name="points_toolbar">
+  <Action name="objects_new_normalpoint" />
+  <Action name="objects_new_midpoint" />
+  <Action name="objects_new_intersectionpoint" />
+</ToolBar>
+<ToolBar name="line_toolbar">
+  <Action name="objects_new_linettp" />
+  <Action name="objects_new_lineperpend" />
+  <Action name="objects_new_lineparallel" />
+  <Action name="objects_new_lineradical" />
+  <Action name="objects_new_segment" />
+</ToolBar>
+<ToolBar name="rest_toolbar">
+  <Action name="objects_new_circlebcp" />
+  <Action name="objects_new_circlebtp" />
+  <Action name="objects_new_locus" />
+</ToolBar>
 </kpartgui>

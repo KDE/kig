@@ -64,6 +64,7 @@ public:
   static const QCString sIconFileName();
   const int vShortCut() const;
   static const int sShortCut();
+  static const char* sActionName();
 
   void draw (KigPainter& p, bool showSelection) const;
   bool contains (const Coordinate& o, const double fault ) const;

@@ -42,6 +42,7 @@ public:
   static const QCString sIconFileName()  { return "bisection"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return 0; };
+  static const char* sActionName();
 
   QString wantArg(const Object* o) const;
   bool selectArg( Object* );

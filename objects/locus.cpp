@@ -344,3 +344,8 @@ bool Locus::isPointLocus() const
 {
   return _pointLocus;
 }
+
+const char* Locus::sActionName()
+{
+  return "objects_new_locus";
+}

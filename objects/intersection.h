@@ -54,6 +54,7 @@ public:
   static const QCString sIconFileName();
   const int vShortCut() const;
   static const int sShortCut();
+  static const char* sActionName();
 
   QString wantArg(const Object* o) const;
   bool selectArg(Object* o);

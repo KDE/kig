@@ -121,3 +121,7 @@ const QString MidPoint::sDescription()
   return i18n( "The midpoint of a segment or of two other points" );
 }
 
+const char* MidPoint::sActionName()
+{
+  return "objects_new_midpoint";
+}
