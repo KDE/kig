@@ -468,3 +468,13 @@ const Angle* Object::toAngle() const
   return isa( AngleT ) ? static_cast<const Angle*>( this ) : 0;
 };
 
+NormalPoint* Object::toConstrainedPoint()
+{
+  return isa( ConstrainedPointT ) ? static_cast<NormalPoint*>( this ) : 0;
+}
+
+const NormalPoint* Object::toConstrainedPoint() const
+{
+  return isa( ConstrainedPointT ) ? static_cast<const NormalPoint*>( this ) : 0;
+}
+

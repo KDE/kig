@@ -156,6 +156,7 @@ public:
   Cubic* toCubic();
   Curve* toCurve();
   NormalPoint* toNormalPoint();
+  NormalPoint* toConstrainedPoint();
   TextLabel* toTextLabel();
   AbstractLine* toAbstractLine();
   Angle* toAngle();
@@ -170,6 +171,7 @@ public:
   const Cubic* toCubic() const;
   const Curve* toCurve() const;
   const NormalPoint* toNormalPoint() const;
+  const NormalPoint* toConstrainedPoint() const;
   const TextLabel* toTextLabel() const;
   const AbstractLine* toAbstractLine() const;
   const Angle* toAngle() const;

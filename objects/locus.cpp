@@ -288,8 +288,8 @@ Locus::Locus( const Objects& os )
   assert( os.size() == 2 );
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    if ( !cp && (*i)->toNormalPoint() && (*i)->toNormalPoint()->constrainedImp() )
-      cp = (*i)->toNormalPoint();
+    if ( !cp && (*i)->toConstrainedPoint() )
+      cp = (*i)->toConstrainedPoint();
     else
     {
       mp = (*i)->toPoint();
@@ -312,8 +312,7 @@ Object::WantArgsResult Locus::sWantArgs( const Objects& os )
   bool gotmp = false;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    if ( !gotcp && (*i)->toNormalPoint()
-         && (*i)->toNormalPoint()->constrainedImp() )
+    if ( !gotcp && (*i)->toConstrainedPoint() )
       gotcp = true;
     else if ( (*i)->toPoint() ) gotmp = true;
   };
@@ -324,7 +323,7 @@ Object::WantArgsResult Locus::sWantArgs( const Objects& os )
 
 QString Locus::sUseText( const Objects&, const Object* o )
 {
-  if (o->toNormalPoint() && o->toNormalPoint()->constrainedImp() )
+  if (o->toConstrainedPoint() )
     return i18n("Moving point");
   return i18n("Dependent object");
 }
