@@ -264,6 +264,10 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
           }
         }
       };
+
+      for ( uint i = 0; i < elems.size(); ++i )
+        if ( elems[i].el.isNull() )
+          return ParseError;
       elems = sortElems( elems );
 
       uint oldsize = ret.size();
