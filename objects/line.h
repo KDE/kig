@@ -104,7 +104,7 @@ public:
   ~LinePerpend();
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName() { return ("LinePerpend"); };
+  static const QCString sFullTypeName() { return "LinePerpend"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
   static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
