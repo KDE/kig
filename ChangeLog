@@ -1,3 +1,29 @@
+2004-10-23  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Added construction of the center of curvature of a curve
+	at a point.  It works for conics, cubics and locuses.
+	However a special hack was necessary to make it possible to
+	construct the locus of the center of curvatures starting from
+	a locus.  Indeed there are problems associated to the getParam
+	function of a locus, which now returns a result with a too large 
+	error.  Simply reducing the "epsilon" in "LocusImp::getParamofmin"
+	is not feasible since it would degrade the overall response time.
+	However it is quite frequent that the LocusImp::getParam is called
+	right after a LocusImp::getPoint, although at a quite different
+	level, and on curves that are physically the same, but internally
+	different.  Since the two functions are inverse one of the other
+	we simply cache the value of "param" in getPoint and try to use
+	the cached value when doing the getParam: if the resulting point
+	is equal to the argument of getParam we win, otherwise we proceed
+	along the lengthy minimization process.
+	A nice example of the involute (locus of centers of curvature)
+	of a curve can be retrieved from 
+	   "www.dmf.unicatt.it/~paolini/kig/cicloide.kig"
+	The getParam function however requires adjustment: right now the
+	internal test whether a point lies on a locus miserably fails
+	even if we test it on the moving point used to construct the
+	locus :-(
+
 2004-10-13  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Added construction of the tangent to a locus

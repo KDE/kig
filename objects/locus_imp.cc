@@ -33,6 +33,8 @@
 
 using namespace std;
 
+static double cachedparam = 0.0;
+
 LocusImp::~LocusImp()
 {
   delete mcurve;
@@ -71,7 +73,10 @@ const Coordinate LocusImp::getPoint( double param, const KigDocument& doc ) cons
   ObjectImp* imp = calcret.front();
   Coordinate ret;
   if ( imp->inherits( PointImp::stype() ) )
+  {
+    cachedparam = param;
     ret = static_cast<PointImp*>( imp )->coordinate();
+  }
   else
     ret = Coordinate::invalidCoord();
 
@@ -181,6 +186,9 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
   // written by Franco Pasquarelli <pasqui@dmf.bs.unicatt.it>.
   // I ( domi ) have adapted and documented it a bit.
 
+  if ( cachedparam >= 0. && cachedparam <= 1. &&
+       getPoint ( cachedparam, doc ) == p ) return cachedparam;
+
   // consider the function that returns the distance for a point at
   // parameter x to the locus for a given parameter x.  What we do
   // here is look for the global minimum of this function.  We do that
@@ -241,6 +249,7 @@ double LocusImp::getParamofmin( double a, double b,
                                 const KigDocument& doc ) const
 {
   double epsilon = 1.e-4;
+//  double epsilon = 1.e-8;
   // I compute the it number of iteration of the Fibonacci method
   // to obtain a error between the computed and the exact minimum
   // less than epsilon
