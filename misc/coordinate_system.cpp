@@ -24,6 +24,8 @@
 #include <qpainter.h>
 #include <qregexp.h>
 
+#include <klocale.h>
+
 #include <cmath>
 
 // this is in math.h, but include cmath doesn't work nicely for me..
