@@ -35,6 +35,11 @@ class PopupActionProvider;
  * objects in NormalMode..  It's quite complex, since it has to fetch
  * a lot of information from various places, and dispatch it again
  * when the user selects something.
+ * Update: I'm also using it for when you clicked on an empty space in
+ * the document, because the difference between the two cases is not
+ * that important, and this class is generic enough to handle both
+ * cases..  When this is the case, mobjs is empty, some
+ * PopupActionProviders are disabled, and some others enabled..
  */
 class NormalModePopupObjects
   : public KPopupMenu
@@ -49,7 +54,8 @@ public:
   // the different "menu's", the toplevel is considered as just
   // another menu..
   enum { TransformMenu = 0, ConstructMenu, StartMenu, ShowMenu,
-         SetColorMenu, SetSizeMenu, ToplevelMenu };
+         SetColorMenu, SetSizeMenu, ToplevelMenu,
+         SetCoordinateSystemMenu, NumberOfMenus };
 
   // used by the PopupActionProvider's to add actions to us..
   void addAction( int menu, const QString& name, int id );
@@ -71,6 +77,7 @@ private slots:
   void setColorMenuSlot( int );
   void setSizeMenuSlot( int );
   void toplevelMenuSlot( int );
+  void setCoordinateSystemMenuSlot( int );
 
 protected:
   QPoint mplc;
@@ -81,7 +88,7 @@ protected:
 
   std::vector<PopupActionProvider*> mproviders;
 
-  QPopupMenu* mmenus[6];
+  QPopupMenu* mmenus[NumberOfMenus];
 };
 
 #endif

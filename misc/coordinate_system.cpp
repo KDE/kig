@@ -49,6 +49,7 @@ using std::log10;
 class CoordinateValidator
   : public QValidator
 {
+  bool mpolar;
 #ifdef KIG_USE_KDOUBLEVALIDATOR
   KDoubleValidator mdv;
 #else
@@ -56,7 +57,7 @@ class CoordinateValidator
 #endif
   mutable QRegExp mre;
 public:
-  CoordinateValidator();
+  CoordinateValidator( bool polar );
   ~CoordinateValidator();
   State validate ( QString & input,  int & pos ) const;
   void fixup ( QString & input ) const;
@@ -64,7 +65,7 @@ public:
 
 
 CoordinateValidator::CoordinateValidator()
-  : QValidator( 0, 0 ), mdv( 0, 0 ), mre( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
+  : QValidator( 0, 0 ), mpolar( polar ), mdv( 0, 0 ), mre( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
 {
 }
 
@@ -328,12 +329,12 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
   int l = max( 0, (int) ( 3 - log10( m ) ) );
 
   double r = pt.length();
-  double theta = atan2( pt.y, pt.x );
+  double theta = atan2( pt.y, pt.x ) * 180 / M_PI;
 
   QString rs = KGlobal::locale()->formatNumber( r, l );
-  QString ts = KGlobal::locale()->formatNumber( theta, 2 );
+  QString ts = KGlobal::locale()->formatNumber( theta, 0 );
 
-  return QString::fromLatin1("( %1; %2 )").arg( rs ).arg( ts );
+  return QString::fromLatin1("( %1; %2° )").arg( rs ).arg( ts );
 }
 
 QString PolarCoords::coordinateFormatNotice() const
@@ -345,7 +346,8 @@ QString PolarCoords::coordinateFormatNotice() const
 
 Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp regexp("^([^;]+);(.+)$");
+  QRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?"
+                 "^([^;]+);(.+)$");
   ok = ( regexp.search( s ) == 0 );
   if (ok)
   {
@@ -357,6 +359,8 @@ Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
     double theta = KGlobal::locale()->readNumber( ts, &ok );
     if ( ! ok ) theta = ts.toDouble( &ok );
     if ( ! ok ) return Coordinate();
+    theta *= M_PI;
+    theta /= 180;
     return Coordinate( cos( theta ) * r, sin( theta ) * r );
   }
   else return Coordinate();
@@ -468,28 +472,6 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   }; // if( showaxes )
 }
 
-static const char* euclideanTypeString = "Euclidean";
-static const char* polarTypeString = "Polar";
-
-CoordinateSystem* CoordinateSystemFactory::build( const char* type )
-{
-  if ( std::string( euclideanTypeString ) == type )
-    return new EuclideanCoords;
-  if ( std::string( polarTypeString ) == type )
-    return new PolarCoords;
-  else return 0;
-}
-
-const char* EuclideanCoords::type() const
-{
-  return euclideanTypeString;
-}
-
-const char* PolarCoords::type() const
-{
-  return polarTypeString;
-}
-
 QValidator* EuclideanCoords::coordinateValidator() const
 {
   return new CoordinateValidator();
@@ -525,3 +507,43 @@ const Coordinate CoordinateSystem::getCoordFromUser( const QString& caption,
   };
   return ret;
 }
+
+QStringList CoordinateSystemFactory::names()
+{
+  QStringList ret;
+  ret << i18n( "&Euclidean" )
+      << i18n( "&Polar" );
+  return ret;
+}
+
+CoordinateSystem* CoordinateSystemFactory::build( int which )
+{
+  if ( which == 0 )
+    return new EuclideanCoords;
+  else if ( which == 1 )
+    return new PolarCoords;
+  else return 0;
+}
+
+static const char* euclideanTypeString = "Euclidean";
+static const char* polarTypeString = "Polar";
+
+CoordinateSystem* CoordinateSystemFactory::build( const char* type )
+{
+  if ( std::string( euclideanTypeString ) == type )
+    return new EuclideanCoords;
+  if ( std::string( polarTypeString ) == type )
+    return new PolarCoords;
+  else return 0;
+}
+
+const char* EuclideanCoords::type() const
+{
+  return euclideanTypeString;
+}
+
+const char* PolarCoords::type() const
+{
+  return polarTypeString;
+}
+

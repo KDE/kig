@@ -1,3 +1,8 @@
+2003-04-27  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* show a popup menu when the user clicks on the object, and allow
+		  him to change the coordinate system..
+
 2003-04-26  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* added property icons

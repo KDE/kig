@@ -30,6 +30,7 @@
 #include "../objects/object_factory.h"
 #include "../misc/lists.h"
 #include "../misc/argsparser.h"
+#include "../misc/coordinate_system.h"
 #include "../misc/object_constructor.h"
 #include "construct_mode.h"
 #include "normal.h"
@@ -75,9 +76,20 @@ public:
                               KigDocument& doc, KigWidget& w, NormalMode& m ) = 0;
 };
 
-class BuiltinActionsProvider
+class BuiltinObjectActionsProvider
   : public PopupActionProvider
 {
+public:
+  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
+  bool executeAction( int menu, int& id, const Objects& os,
+                      NormalModePopupObjects& popup,
+                      KigDocument& doc, KigWidget& w, NormalMode& m );
+};
+
+class BuiltinDocumentActionsProvider
+  : public PopupActionProvider
+{
+  int mnumberofcoordsystems;
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
   bool executeAction( int menu, int& id, const Objects& os,
@@ -88,7 +100,7 @@ public:
 class ObjectConstructorActionsProvider
   : public PopupActionProvider
 {
-  std::vector<ObjectConstructor*> mctors[7];
+  std::vector<ObjectConstructor*> mctors[NormalModePopupObjects::NumberOfMenus];
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
   bool executeAction( int menu, int& id, const Objects& os,
@@ -125,25 +137,35 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
   : KPopupMenu( &view ), mplc( QCursor::pos() ), mdoc( doc ), mview( view ), mobjs( objs ),
     mmode( mode )
 {
-  assert ( ! objs.empty() );
+  bool empty = objs.empty();
   bool single = objs.size() == 1;
   connect( this, SIGNAL( activated( int ) ), this, SLOT( toplevelMenuSlot( int ) ) );
 
-  insertTitle( single ? ObjectImp::translatedName( objs[0]->imp()->id() )
+  insertTitle( empty ? i18n( "Kig Document" )
+               : single ? ObjectImp::translatedName( objs[0]->imp()->id() )
                : i18n( "%1 Objects" ).arg( objs.size() ), 1 );
 
+  if ( empty )
+  {
+    // provides some diverse stuff like "unhide all", set coordinate
+    // system etc.
+    mproviders.push_back( new BuiltinDocumentActionsProvider() );
+  };
   // construct an object using these objects and start constructing an
   // object using these objects
   mproviders.push_back( new ObjectConstructorActionsProvider() );
-  // stuff like hide, show, delete, set size, set color..
-  mproviders.push_back( new BuiltinActionsProvider() );
-  // show property as text label -> show menu
-  // and construct property's as objects -> construct menu
-  mproviders.push_back( new PropertiesActionsProvider() );
-  // stuff like "redefine point" for a fixed or constrained point..
-  mproviders.push_back( new ObjectTypeActionsProvider() );
+  if ( ! empty )
+  {
+    // stuff like hide, show, delete, set size, set color..
+    mproviders.push_back( new BuiltinObjectActionsProvider() );
+    // show property as text label -> show menu
+    // and construct property's as objects -> construct menu
+    mproviders.push_back( new PropertiesActionsProvider() );
+    // stuff like "redefine point" for a fixed or constrained point..
+    mproviders.push_back( new ObjectTypeActionsProvider() );
+  }
 
-  for ( int i = 0; i < 6; ++i )
+  for ( int i = 0; i < (int) NumberOfMenus; ++i )
     mmenus[i] = new QPopupMenu( this );
 
   connect( mmenus[TransformMenu], SIGNAL( activated( int ) ),
@@ -158,24 +180,28 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
            this, SLOT( setColorMenuSlot( int ) ) );
   connect( mmenus[SetSizeMenu], SIGNAL( activated( int ) ),
            this, SLOT( setSizeMenuSlot( int ) ) );
+  connect( mmenus[SetCoordinateSystemMenu], SIGNAL( activated( int ) ),
+           this, SLOT( setCoordinateSystemMenuSlot( int ) ) );
 
-  for ( int i = TransformMenu; i <= ToplevelMenu; ++i )
+  for ( int i = 0; i <= NumberOfMenus; ++i )
   {
     int nextfree = 10;
     for ( uint j = 0; j < mproviders.size(); ++j )
       mproviders[j]->fillUpMenu( *this, i, nextfree );
   };
-  static const QString menunames[6] =
+  static const QString menunames[NumberOfMenus] =
     {
-      i18n( "Transform" ),
-      i18n( "Construct" ),
-      i18n( "Start" ),
-      i18n( "Show" ),
-      i18n( "Set Color" ),
-      i18n( "Set Size" )
+      i18n( "&Transform" ),
+      i18n( "Const&ruct" ),
+      i18n( "&Start" ),
+      i18n( "Sho&w" ),
+      i18n( "Set Co&lor" ),
+      i18n( "Set Si&ze" ),
+      QString::null,
+      i18n( "Set Coordinate S&ystem" )
     };
   int index = 1;
-  for ( int i = 0; i < 6; ++i )
+  for ( int i = 0; i < NumberOfMenus; ++i )
   {
     if ( mmenus[i]->count() == 0 ) continue;
     insertItem( menunames[i], mmenus[i], i, index++ );
@@ -235,7 +261,7 @@ static const QColor* colors[numberofcolors] =
   &Qt::darkRed
 };
 
-void BuiltinActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
+void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
@@ -292,7 +318,7 @@ void BuiltinActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu
   }
 }
 
-bool BuiltinActionsProvider::executeAction(
+bool BuiltinObjectActionsProvider::executeAction(
   int menu, int& id, const Objects& os, NormalModePopupObjects& popup,
   KigDocument& doc, KigWidget& w, NormalMode& mode )
 {
@@ -374,17 +400,30 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
 
   for ( vectype::iterator i = vec.begin(); i != vec.end(); ++i )
   {
-    int ret = (*i)->wantArgs( popup.objects(), d, v );
-    if ( ret == ArgsChecker::Invalid ) continue;
     bool add = false;
-    if ( (*i)->isTransform() && popup.objects().size() == 1 ) add = menu == NormalModePopupObjects::TransformMenu;
-    else if ( ( *i )->isIntersection() ) add = menu == NormalModePopupObjects::ToplevelMenu;
-    else if ( ret == ArgsChecker::Complete ) add = menu == NormalModePopupObjects::ConstructMenu;
-    else add = menu == NormalModePopupObjects::StartMenu;
+    if ( popup.objects().empty() )
+    {
+      add = menu == NormalModePopupObjects::StartMenu && ! (*i)->isTransform();
+    }
+    else
+    {
+      int ret = (*i)->wantArgs( popup.objects(), d, v );
+      if ( ret == ArgsChecker::Invalid ) continue;
+      if ( (*i)->isTransform() && popup.objects().size() == 1 ) add = menu == NormalModePopupObjects::TransformMenu;
+      else if ( ( *i )->isIntersection() ) add = menu == NormalModePopupObjects::ToplevelMenu;
+      else if ( ret == ArgsChecker::Complete ) add = menu == NormalModePopupObjects::ConstructMenu;
+      else add = menu == NormalModePopupObjects::StartMenu;
+    };
     if ( add )
     {
-      QPixmap icon = KGlobal::iconLoader()->loadIcon( (*i)->iconFileName(), KIcon::User );
-      popup.addAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
+      QCString iconfile = (*i)->iconFileName();
+      if ( !iconfile.isEmpty() && !iconfile.isNull() )
+      {
+        QPixmap icon = KGlobal::iconLoader()->loadIcon( iconfile, KIcon::User );
+        popup.addAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
+      }
+      else
+        popup.addAction( menu, (*i)->descriptiveName(), nextfree++ );
       mctors[menu].push_back( *i );
     }
   };
@@ -402,7 +441,7 @@ bool ObjectConstructorActionsProvider::executeAction(
   }
 
   ObjectConstructor* ctor = mctors[menu][id];
-  if ( ctor->wantArgs( os, doc, w ) == ArgsChecker::Complete )
+  if ( ! os.empty() && ctor->wantArgs( os, doc, w ) == ArgsChecker::Complete )
   {
     ctor->handleArgs( os, doc, w );
     m.clearSelection();
@@ -434,6 +473,11 @@ void NormalModePopupObjects::setColorMenuSlot( int i )
 void NormalModePopupObjects::setSizeMenuSlot( int i )
 {
   activateAction( SetSizeMenu, i );
+}
+
+void NormalModePopupObjects::setCoordinateSystemMenuSlot( int i )
+{
+  activateAction( SetCoordinateSystemMenu, i );
 }
 
 void NormalModePopupObjects::addAction( int menu, const QPixmap& icon, const QString& name, int id )
@@ -559,5 +603,57 @@ bool ObjectTypeActionsProvider::executeAction(
   RealObject* o = static_cast<RealObject*>( os[0] );
   o->type()->executeAction( id, o, doc, w, m );
   return true;
+}
+
+void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
+{
+  if ( menu == NormalModePopupObjects::ToplevelMenu )
+  {
+    popup.addAction( menu, i18n( "Unhide &All" ), nextfree++ );
+  }
+  else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
+  {
+    QStringList l = CoordinateSystemFactory::names();
+    mnumberofcoordsystems = l.count();
+    for ( uint i = 0; i < l.count(); ++i )
+      popup.addAction( menu, l[i], nextfree++ );
+  }
+}
+
+bool BuiltinDocumentActionsProvider::executeAction(
+  int menu, int& id, const Objects&,
+  NormalModePopupObjects&,
+  KigDocument& doc, KigWidget& w, NormalMode& m )
+{
+  if ( menu == NormalModePopupObjects::ToplevelMenu )
+  {
+    if ( id >= 1 )
+    {
+      id -= 1;
+      return false;
+    };
+    if ( id == 0 )
+    {
+      doc.showHidden();
+    }
+    m.clearSelection();
+    return false;
+  }
+  else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
+  {
+    if ( id >= mnumberofcoordsystems )
+    {
+      id -= mnumberofcoordsystems;
+      return false;
+    };
+    CoordinateSystem* sys = CoordinateSystemFactory::build( id );
+    assert( sys );
+    doc.setCoordinateSystem( sys );
+    doc.objects().calc( doc );
+    w.redrawScreen();
+    m.clearSelection();
+    return true;
+  }
+  else return false;
 }
 

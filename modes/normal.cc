@@ -233,9 +233,8 @@ void NormalMode::rightClicked( const Objects& os,
   }
   else
   {
-//     KigDocumentPopup* m = popup( mdoc );
-//     if( m ) m->exec( w.mapToGlobal( plc ) );
-//     delete m;
+    NormalModePopupObjects p( mdoc, w, *this, Objects() );
+    p.exec( QCursor::pos() );
   };
 }
 

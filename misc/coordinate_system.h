@@ -33,6 +33,8 @@ class QValidator;
 class CoordinateSystemFactory
 {
 public:
+  static QStringList names();
+  static CoordinateSystem* build( int which );
   static CoordinateSystem* build( const char* type );
 };
 
