@@ -41,9 +41,11 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 		  "ibaran@mit.edu");
 
   tmp->addCredit("Maurizio Paolini",
-		 I18N_NOOP( "Wrote the radical line and the circle-line intersection "
-                            "as a patch for kgeo, which i ported to kig. Gave me some "
-                            "cool ideas on the object system too.." ),
+		 I18N_NOOP( "Wrote the radical line and the circle-line "
+                            "intersection as a patch for kgeo, which i "
+                            "ported to kig. Gave me some cool ideas on the "
+                            "object system, and did some really _great_ work "
+                            "on Kig's Conic support." ),
 		 "paolini@dmf.bs.unicatt.it");
 
   tmp->addCredit("Christophe Devriese",
