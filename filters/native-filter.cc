@@ -123,13 +123,15 @@ KigDocument* KigFilterNative::load( const QString& file )
   int major = versionre.cap( 1 ).toInt( &ok );
   bool ok2 = true;
   int minor = versionre.cap( 2 ).toInt( &ok );
+  if ( minor < 0 )
+    KIG_FILTER_PARSE_ERROR;
   if ( ! ok || ! ok2 )
     KIG_FILTER_PARSE_ERROR;
 
   //   int minorminor = versionre.cap( 4 ).toInt( &ok );
 
-  // we only support 0.* ( for now ? :)
-  if ( major != 0 || minor > 7 )
+  // we only support 0.* and 1.0 for now.
+  if ( major != 0 && !( major == 1 && minor < 1 ) )
   {
     notSupported( file, i18n( "This file was created by Kig version \"%1\", "
                               "which this version cannot open." ).arg( version ) );
