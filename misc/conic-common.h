@@ -38,10 +38,10 @@ class ConicCartesianData
 {
 public:
   double coeffs[6];
-  explicit ConicCartesianData();
+  ConicCartesianData();
   explicit ConicCartesianData( const ConicPolarData& d );
   ConicCartesianData( double a, double b, double c,
-                              double d, double e, double f )
+                      double d, double e, double f )
     {
       coeffs[0] = a;
       coeffs[1] = b;
