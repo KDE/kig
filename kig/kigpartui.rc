@@ -80,15 +80,18 @@
 	<Action name="objects_new_castshadow" />
 	<Action name="objects_new_projectiverotation" />
       </Menu>
+      <Menu name="new_cubic">
+	<text>Cu&amp;bics</text>
+	<Action name="objects_new_cubicb9p" />
+	<Action name="objects_new_cubicnodeb6p" />
+	<Action name="objects_new_cubiccuspb4p" />
+      </Menu>
       <Menu name="new_other">
 	<text>&amp;Other</text>
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_angle" />
-	<Action name="objects_new_cubicb9p" />
-	<Action name="objects_new_cubicnodeb6p" />
-	<Action name="objects_new_cubiccuspb4p" />
 	<ActionList name="user_other_types" />
       </Menu>
       <Separator />
