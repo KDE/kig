@@ -21,6 +21,7 @@
 #include "conic-common.h"
 
 #include "common.h"
+#include "kigtransform.h"
 
 #include <cmath>
 #include <algorithm>
@@ -803,4 +804,42 @@ const LineData calcConicRadical( const ConicCartesianData& cequation1,
   valid = true;
 
   return ret;
+}
+
+const ConicCartesianData calcConicTransformation (
+  const ConicCartesianData data, const Transformation& t, bool& valid )
+{
+  double a[3][3];
+  double b[3][3];
+
+  a[1][1] = data.coeffs[0];
+  a[2][2] = data.coeffs[1];
+  a[1][2] = a[2][1] = data.coeffs[2]/2;
+  a[0][1] = a[1][0] = data.coeffs[3]/2;
+  a[0][2] = a[2][0] = data.coeffs[4]/2;
+  a[0][0] = data.coeffs[5];
+
+  Transformation ti = t.inverse( valid );
+  if ( ! valid ) return ConicCartesianData();
+
+  for (int i = 0; i < 3; i++)
+  {
+    for (int j = 0; j < 3; j++)
+    {
+      b[i][j] = 0.;
+      for (int ii = 0; ii < 3; ii++)
+      {
+        for (int jj = 0; jj < 3; jj++)
+        {
+	  b[i][j] += a[ii][jj]*ti.data( ii, i )*ti.data( jj, j );
+	}
+      }
+    }
+  }
+
+  assert (fabs(b[0][1] - b[1][0]) < 1e-8);  // test a couple of cases
+  assert (fabs(b[0][2] - b[2][0]) < 1e-8);
+
+  return ConicCartesianData ( b[1][1],   b[2][2], 2*b[1][2],
+                              2*b[0][1], 2*b[0][2],   b[0][0] );
 }

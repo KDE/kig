@@ -23,6 +23,7 @@
 
 #include "../misc/screeninfo.h"
 #include "../misc/common.h"
+#include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 
@@ -119,10 +120,13 @@ VectorImp::~VectorImp()
 {
 }
 
-ObjectImp* VectorImp::transform( const Transformation& ) const
+ObjectImp* VectorImp::transform( const Transformation& t ) const
 {
-  // TODO ?
-  return new InvalidImp;
+  bool valid = true;
+  Coordinate ta = t.apply( ma, valid );
+  Coordinate tb = t.apply( mb, valid );
+  if ( !valid ) return new InvalidImp;
+  else return new VectorImp( ta, tb );
 }
 
 void VectorImp::draw( KigPainter& p ) const

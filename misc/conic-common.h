@@ -26,6 +26,7 @@
 #include "kignumerics.h"
 
 class ConicPolarData;
+class Transformation;
 class LineData;
 
 /**
@@ -142,5 +143,9 @@ const LineData calcConicAsymptote(
 const LineData calcConicRadical( const ConicCartesianData& cequation1,
                                  const ConicCartesianData& cequation2,
                                  int which, int zeroindex, bool& valid );
+
+const ConicCartesianData calcConicTransformation (
+  const ConicCartesianData data,
+  const Transformation& t, bool& valid );
 
 #endif // KIG_MISC_CONIC_COMMON_H

@@ -28,10 +28,12 @@
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
 
-ObjectImp* ConicImp::transform( const Transformation& ) const
+ObjectImp* ConicImp::transform( const Transformation& t ) const
 {
-  // no idea what to return here :((  maurizio, please help :)
-  return new InvalidImp;
+  bool valid = true;
+  ConicCartesianData d = calcConicTransformation( cartesianData(), t, valid );
+  if ( ! valid ) return new InvalidImp;
+  else return new ConicImpCart( d );
 }
 
 void ConicImp::draw( KigPainter& p ) const
