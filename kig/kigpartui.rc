@@ -266,6 +266,8 @@
     <Action name="objects_new_containstest" />
     <Action name="objects_new_distancetest" />
     <Action name="objects_new_vectorequalitytest" />
+    <Action name="objects_new_inpolygontest" />
+    <Action name="objects_new_convexpolygontest" />
   </ToolBar>
   <ToolBar name="rest_toolbar" position="left">
     <text>Other Objects</text>
