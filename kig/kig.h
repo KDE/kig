@@ -111,8 +111,6 @@ class Kig : public KParts::MainWindow, virtual public KigIface
  private slots:
   void fileNew();
   void fileOpen();
-  void fileSaveAs();
-  void fileSave();
   void optionsShowToolbar();
   void optionsShowStatusbar();
   void optionsConfigureKeys();

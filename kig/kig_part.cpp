@@ -49,6 +49,7 @@
 
 #include <kparts/genericfactory.h>
 #include <kinstance.h>
+#include <kfiledialog.h>
 #include <kaction.h>
 #include <ktoolbar.h>
 #include <kmainwindow.h>
@@ -117,6 +118,10 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
 
 void KigDocument::setupActions()
 {
+  // save actions..
+  KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
+  KStdAction::save(this, SLOT(fileSave()), actionCollection());
+
   // we need icons...
   KIconLoader* l = KGlobal::iconLoader();
   QPixmap tmp;
@@ -307,6 +312,7 @@ bool KigDocument::openFile()
 
 bool KigDocument::saveFile()
 {
+  if ( m_file.isEmpty() ) return internalSaveAs();
   // mimetype:
   KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
   kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
@@ -595,4 +601,32 @@ void KigDocument::plugActionLists()
 void KigDocument::emitStatusBarText( const QString& text )
 {
   emit setStatusBarText( text );
+}
+
+void KigDocument::fileSaveAs()
+{
+  internalSaveAs();
+}
+
+void KigDocument::fileSave()
+{
+  save();
+}
+
+bool KigDocument::internalSaveAs()
+{
+  // this slot is connected to the KStdAction::saveAs action...
+  QString formats;
+  formats = QString::fromUtf8("*.kig|Kig Documents (*.kig)");
+
+  //  formats += "\n";
+  //  formats += KImageIO::pattern( KImageIO::Writing );
+
+  QString file_name = KFileDialog::getSaveFileName(":document", formats );
+  if (file_name.isEmpty()) return false;
+  else
+  {
+    saveAs(file_name);
+    return true;
+  }
 }

@@ -99,6 +99,9 @@ public:
 
   /***************** some slots *************************/
 public slots:
+  void fileSaveAs();
+  void fileSave();
+
   void unplugActionLists();
   void plugActionLists();
 
@@ -149,6 +152,8 @@ public:
 
 /************* internal stuff *************/
 protected:
+  bool internalSaveAs();
+
   void _addObject( Object* inObject );
   void _addObjects( Objects& o);
   void _delObject(Object* inObject);

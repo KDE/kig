@@ -97,8 +97,6 @@ void Kig::setupActions()
 {
   KStdAction::openNew(this, SLOT(fileNew()), actionCollection());
   KStdAction::open(this, SLOT(fileOpen()), actionCollection());
-  KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
-  KStdAction::save(this, SLOT(fileSave()), actionCollection());
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
   m_toolbarAction = KStdAction::showToolbar(this, SLOT(optionsShowToolbar()), actionCollection());
@@ -251,25 +249,6 @@ void Kig::fileOpen()
   QString file_name = KFileDialog::getOpenFileName(":document", i18n("*.kig|Kig Documents (*.kig)\n*.kgeo|KGeo Documents (*.kgeo)"));
 
   if (!file_name.isEmpty()) openURL(file_name);
-}
-
-void Kig::fileSaveAs()
-{
-  // this slot is connected to the KStdAction::saveAs action...
-  QString formats;
-  formats = QString::fromUtf8("*.kig|Kig Documents (*.kig)");
-
-  //  formats += "\n";
-  //  formats += KImageIO::pattern( KImageIO::Writing );
-
-  QString file_name = KFileDialog::getSaveFileName(":document", formats );
-  if (!file_name.isEmpty()) m_part->saveAs(file_name);
-}
-
-void Kig::fileSave()
-{
-  // this slot is connected to the KStdAction::save action...
-  m_part->save();
 }
 
 #include "kig.moc"
