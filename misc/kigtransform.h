@@ -22,6 +22,8 @@
 #ifndef KIG_MISC_KIGTRANSFORM_H
 #define KIG_MISC_KIGTRANSFORM_H
 
+class Coordinate;
+
 class Transformation
 {
   double mdata[3][3];
@@ -51,7 +53,7 @@ public:
   // reflect over a line.. this equals scaling( -1, l );
   static const Transformation lineReflection( const LineData& l );
   // this is a test example of a projective non-affine transformation
-  static const Transformation projectiveRotation( double alpha, 
+  static const Transformation projectiveRotation( double alpha,
                                               const Coordinate& d );
 
   friend const Transformation operator*( const Transformation&, const Transformation& );
