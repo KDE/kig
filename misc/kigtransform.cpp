@@ -333,15 +333,17 @@ const Transformation Transformation::projectiveRotation(
   double alpha, const Coordinate& d, const Coordinate& t )
 {
   Transformation ret;
-  ret.mdata[0][0] =  cos(alpha);
-  ret.mdata[1][1] =  cos(alpha)*d.x*d.x + d.y*d.y;
-  ret.mdata[0][1] = -sin(alpha)*d.x;
-  ret.mdata[1][0] =  sin(alpha)*d.x;
-  ret.mdata[0][2] = -sin(alpha)*d.y;
-  ret.mdata[2][0] =  sin(alpha)*d.y;
-  ret.mdata[1][2] =  cos(alpha)*d.x*d.y - d.x*d.y;
-  ret.mdata[2][1] =  cos(alpha)*d.x*d.y - d.x*d.y;
-  ret.mdata[2][2] =  cos(alpha)*d.y*d.y + d.x*d.x;
+  double cosalpha = cos( alpha );
+  double sinalpha = sin( alpha );
+  ret.mdata[0][0] =  cosalpha;
+  ret.mdata[1][1] =  cosalpha*d.x*d.x + d.y*d.y;
+  ret.mdata[0][1] = -sinalpha*d.x;
+  ret.mdata[1][0] =  sinalpha*d.x;
+  ret.mdata[0][2] = -sinalpha*d.y;
+  ret.mdata[2][0] =  sinalpha*d.y;
+  ret.mdata[1][2] =  cosalpha*d.x*d.y - d.x*d.y;
+  ret.mdata[2][1] =  cosalpha*d.x*d.y - d.x*d.y;
+  ret.mdata[2][2] =  cosalpha*d.y*d.y + d.x*d.x;
 
   ret.mIsHomothety = false;
   return translation( t )*ret*translation( -t );
@@ -378,9 +380,12 @@ const Transformation Transformation::rotation( double alpha, const Coordinate& c
   double x = center.x;
   double y = center.y;
 
-  ret.mdata[1][1] = ret.mdata[2][2] = cos(alpha);
-  ret.mdata[1][2] = -sin(alpha);
-  ret.mdata[2][1] = sin(alpha);
+  double cosalpha = cos( alpha );
+  double sinalpha = sin( alpha );
+
+  ret.mdata[1][1] = ret.mdata[2][2] = cosalpha;
+  ret.mdata[1][2] = -sinalpha;
+  ret.mdata[2][1] = sinalpha;
   ret.mdata[1][0] = x - ret.mdata[1][1]*x - ret.mdata[1][2]*y;
   ret.mdata[2][0] = y - ret.mdata[2][1]*x - ret.mdata[2][2]*y;
 
