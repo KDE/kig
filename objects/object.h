@@ -236,6 +236,8 @@ public:
   void calc( const KigDocument& );
 
   bool shown() const;
+
+  void delParent( Object* o );
 };
 
 #endif

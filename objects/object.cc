@@ -367,6 +367,8 @@ PropertyObject::PropertyObject( Object* parent, int id )
 
 PropertyObject::~PropertyObject()
 {
+  if ( mparent ) mparent->delChild( this );
+  delete mimp;
 }
 
 bool PropertyObject::inherits( int type ) const
@@ -431,5 +433,13 @@ const Object* PropertyObject::parent() const
 int PropertyObject::propId() const
 {
   return mpropid;
+}
+
+void PropertyObject::delParent( Object* o )
+{
+  // if a parent gets deleted before us, we set mparent to zero, and
+  // wait to be deleted ourselves ( which will be immediately after
+  // this )
+  if ( mparent == o ) mparent = 0;
 }
 
