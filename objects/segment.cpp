@@ -168,11 +168,13 @@ Objects Segment::getParents() const
   return objs;
 }
 
-void Segment::drawPrelim( KigPainter& p, const Coordinate& pt) const
+void Segment::drawPrelim( KigPainter& p, const Object* o ) const
 {
   if ( !(shown && p1 ) ) return;
+  assert( o->toPoint() );
+  Coordinate c = o->toPoint()->getCoord();
   p.setPen( QPen( Qt::red, 1));
-  p.drawSegment( p1->getCoord(), pt );
+  p.drawSegment( p1->getCoord(), c );
 }
 
 Segment::Segment(const Segment& s)

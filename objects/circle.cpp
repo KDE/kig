@@ -236,19 +236,25 @@ Objects CircleBCP::getParents() const
   return objs;
 }
 
-void CircleBCP::drawPrelim( KigPainter& p, const Coordinate& pt) const
+void CircleBCP::drawPrelim( KigPainter& p, const Object* arg ) const
 {
   if (!centre || !shown) return;
+  assert( arg->toPoint() );
+  Coordinate c = arg->toPoint()->getCoord();
   p.setPen(QPen (Qt::red, 1));
-  p.drawCircle(centre->getCoord(), calcRadius(centre,pt));
+  p.drawCircle( centre->getCoord(), calcRadius( centre,c ));
 };
 
-void CircleBTP::drawPrelim( KigPainter& p, const Coordinate& t) const
+void CircleBTP::drawPrelim( KigPainter& p, const Object* o ) const
 {
   if (!p1 || !shown) return;
-  double xa = p1->getX(), ya = p1->getY();
-  double xb = t.x, yb = t.y;
-  double xc,yc;
+  assert( o->toPoint() );
+  Coordinate c = o->toPoint()->getCoord();
+  double xa = p1->getX();
+  double ya = p1->getY();
+  double xb = c.x;
+  double yb = c.y;
+  double xc, yc;
   if (p2) { xc=p2->getX(); yc = p2->getY(); }
   else {
     // we pick the third point so that the three points form a
@@ -277,7 +283,7 @@ void CircleBTP::drawPrelim( KigPainter& p, const Coordinate& t) const
   p.setPen(QPen (Qt::red, 1));
   Coordinate nC = calcCenter(xa, ya, xb, yb, xc, yc);
   p.drawCircle(nC,
-	       calcRadius(nC, t)
+	       calcRadius( nC, c )
 	       );
 }
 

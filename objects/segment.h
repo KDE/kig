@@ -53,7 +53,7 @@ public:
   QCString iType() const { return I18N_NOOP("segment"); };
   bool contains (const Coordinate& o, const double fault ) const;
   void draw ( KigPainter& p, bool showSelection ) const;
-  void drawPrelim ( KigPainter&, const Coordinate& ) const;
+  void drawPrelim ( KigPainter&, const Object* o ) const;
 
   bool inRect (const Rect&) const;
 
@@ -76,8 +76,8 @@ public:
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  const Coordinate& getP1() { return p1->getCoord();};
-  const Coordinate& getP2() { return p2->getCoord();};
+  const Coordinate& getP1() const { return p1->getCoord();};
+  const Coordinate& getP2() const { return p2->getCoord();};
   Point* getPoint1() { return p1; };
   Point* getPoint2() { return p2; };
 protected:

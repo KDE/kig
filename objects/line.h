@@ -18,9 +18,8 @@
  USA
 **/
 
-
-#ifndef LINE_H
-#define LINE_H
+#ifndef KIG_OBJECTS_LINE_H
+#define KIG_OBJECTS_LINE_H
 
 #include "curve.h"
 #include "../misc/common.h"
@@ -61,8 +60,8 @@ public:
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
 
-  const Coordinate& getP1() { return p1;};
-  const Coordinate& getP2() { return p2;};
+  const Coordinate& getP1() const { return p1;};
+  const Coordinate& getP2() const { return p2;};
 
 protected:
   Coordinate p1, p2;
@@ -95,7 +94,7 @@ public:
   QString wantPoint() const;
   bool selectArg (Object* which);
   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter& , const Coordinate& ) const;
+  void drawPrelim ( KigPainter&, const Object* ) const;
   Objects getParents() const;
 
   // moving
@@ -139,7 +138,7 @@ public:
   bool selectArg (Object* which);
     Objects getParents() const;
 //   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Coordinate& ) const;
+  void drawPrelim ( KigPainter&, const Object* ) const;
 
   // moving
   void startMove(const Coordinate&);
@@ -182,7 +181,7 @@ public:
   bool selectArg (Object* which);
   Objects getParents() const;
 //   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Coordinate& ) const;
+  void drawPrelim ( KigPainter&, const Object* ) const;
 
   // moving
   void startMove(const Coordinate&) {};
@@ -231,7 +230,7 @@ public:
   bool selectArg (Object* which);
   Objects getParents() const;
 //   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Coordinate& ) const;
+  void drawPrelim ( KigPainter&, const Object* arg ) const;
 
   // moving
   // we don't move unless our parents do...

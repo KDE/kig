@@ -93,6 +93,9 @@ public:
   ~NormalPoint();
   NormalPoint* copy();
 
+  NormalPointImp* imp() { return mimp; };
+  const NormalPointImp* imp() const { return mimp; };
+  void setImp( NormalPointImp* imp );
   virtual NormalPoint* toNormalPoint() { return this; };
 
   FixedPointImp* fixedImp();
@@ -107,7 +110,9 @@ public:
   // checks if c is on a Curve, so it returns a ConstrainedImp.., and
   // else returns a FixedImp...
   // fault is passed to KigDocument::whatAmIOn()...
-  static NormalPointImp* NPImpForCoord( const Coordinate& c, const KigDocument* d, double fault );
+  static NormalPointImp* NPImpForCoord( const Coordinate& c,
+                                        const KigDocument*, double fault,
+                                        NormalPointImp* previous = 0 );
 
   std::map<QCString, QString> getParams();
   void setParams( const std::map<QCString, QString>& m );
@@ -126,7 +131,7 @@ public:
   static KAction* sConstructAction( KigDocument*, Type*, int );
 
   // no drawPrelim...
-  virtual void drawPrelim( KigPainter &, const Coordinate& ) const {};
+  virtual void drawPrelim( KigPainter &, const Object* ) const {};
 
   // passing arguments
   virtual QString wantArg(const Object*) const;
@@ -191,6 +196,9 @@ public:
   FixedPointImp* toFixed() { return this; };
   const FixedPointImp* toFixed() const { return this; };
 
+  void setCoord( const Coordinate& c );
+  const Coordinate getCoord();
+
   virtual void calc( NormalPoint* p );
   virtual void startMove( const Coordinate& c, NormalPoint* p );
   virtual void moveTo( const Coordinate& c, NormalPoint* p );
@@ -223,6 +231,8 @@ public:
   ConstrainedPointImp( const ConstrainedPointImp& p, NormalPoint* d );
 
   virtual NormalPointImp* copy( NormalPoint* p );
+
+  void redefine( Curve* c, const Coordinate c );
 
   virtual ConstrainedPointImp* toConstrained() { return this; };
   virtual const ConstrainedPointImp* toConstrained() const { return this; };
@@ -279,7 +289,7 @@ public:
   void stopMove();
   void cancelMove();
   void calc();
-  void drawPrelim( KigPainter&, const Coordinate& ) const {};
+  void drawPrelim( KigPainter&, const Object* ) const {};
 protected:
   enum { howmMoving, howmFollowing } howm; // how are we moving
   Point* p1;

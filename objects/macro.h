@@ -71,7 +71,7 @@ public:
   bool contains (const Coordinate& p, const double fault ) const;
   bool inRect(const Rect& r) const;
   Rect getSpan() const;
-  void drawPrelim (KigPainter&, const Coordinate& ) const;
+  void drawPrelim (KigPainter&, const Object* ) const;
 
   void startMove(const Coordinate& p);
   void moveTo (const Coordinate& p);

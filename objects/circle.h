@@ -85,7 +85,7 @@ public:
   static const int sShortCut() { return CTRL+Key_C; };
 
   void calc ();
-  void drawPrelim ( KigPainter&, const Coordinate& ) const;
+  void drawPrelim ( KigPainter&, const Object* prelimArg ) const;
 
   // passing arguments
   QString wantArg (const Object*) const;
@@ -126,7 +126,7 @@ public:
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return 0; };
 
-  void drawPrelim ( KigPainter&, const Coordinate& ) const;
+  void drawPrelim ( KigPainter&, const Object* ) const;
 
   // passing arguments
   QString wantArg (const Object*) const;

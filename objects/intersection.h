@@ -80,7 +80,7 @@ public:
   void stopMove() {};
   void cancelMove() {};
 
-  void drawPrelim( KigPainter&, const Coordinate& ) const {};
+  void drawPrelim( KigPainter&, const Object* ) const {};
 
   void calc();
 };

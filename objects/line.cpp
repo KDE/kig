@@ -281,30 +281,57 @@ Objects LinePerpend::getParents() const
   return objs;
 }
 
-void LineTTP::drawPrelim( KigPainter& p, const Coordinate& pt) const
+void LineTTP::drawPrelim( KigPainter& p, const Object* arg ) const
 {
   if (!pt1 || !shown) return;
+  assert( arg->toPoint() );
+  Coordinate pt = arg->toPoint()->getCoord();
   p.setPen (QPen (Qt::red,1));
   p.drawLine( pt1->getCoord(), pt );
 }
 
-void LinePerpend::drawPrelim( KigPainter& p, const Coordinate& pt) const
+void LinePerpend::drawPrelim( KigPainter& p, const Object* arg ) const
 {
-  if (!(segment || line) || !shown) return;
-  p.setPen (QPen (Qt::red,1));
-  Coordinate t1, t2;
-  if (segment)
-    {
-      t1 = segment->getP1();
-      t2 = segment->getP2();
-    }
+  // we need a point, and a line or segment, and we can get it from
+  // args we selected already + our own argument arg...
+  // first a point:
+  Coordinate tpoint;
+  if ( point ) tpoint = point->toPoint()->getCoord();
   else
-    {
-      t1 = line->getP1();
-      t2 = line->getP2();
-    };
+  {
+    // arg should be a point...
+    if ( !arg->toPoint() ) return;
+    tpoint = arg->toPoint()->getCoord();
+  };
+  // next a line or segment... --> these both just give us two
+  // coords...
+  Coordinate t1, t2;
+  // do we have a line or segment selected already ?
+  if ( line )
+  {
+    t1 = line->getP1();
+    t2 = line->getP2();
+  }
+  else if ( segment )
+  {
+    t1 = line->getP1();
+    t2 = line->getP2();
+  }
+  else if ( arg->toLine() )
+  {
+    t1 = arg->toLine()->getP1();
+    t2 = arg->toLine()->getP2();
+  }
+  else if ( arg->toSegment() )
+  {
+    t1 = arg->toSegment()->getP1();
+    t2 = arg->toSegment()->getP2();
+  }
+  else return; // not enough args...
 
-  p.drawLine( pt, calcPointOnPerpend( t1, t2, pt ) );
+  // now we have what we need, so we draw things...
+  p.setPen (QPen (Qt::red,1));
+  p.drawLine( tpoint, calcPointOnPerpend( t1, t2, tpoint ) );
 }
 
 QString LineParallel::wantArg( const Object* o) const
@@ -360,22 +387,48 @@ Objects LineParallel::getParents() const
   return objs;
 }
 
-void LineParallel::drawPrelim( KigPainter& p , const Coordinate& pt) const
+void LineParallel::drawPrelim( KigPainter& p , const Object* arg ) const
 {
-  if (!(segment || line) || !shown) return;
-  p.setPen (QPen (Qt::red,1));
-  Coordinate t1, t2;
-  if (segment)
-    {
-      t1 = segment->getP1();
-      t2 = segment->getP2();
-    }
+  // we need a point, and a line or segment, and we can get it from
+  // args we selected already + our own argument arg...
+  // first a point:
+  Coordinate tpoint;
+  if ( point ) tpoint = point->toPoint()->getCoord();
   else
-    {
-      t1 = line->getP1();
-      t2 = line->getP2();
-    };
-  p.drawLine( pt, calcPointOnParallel(t1, t2,pt));
+  {
+    // arg should be a point...
+    if ( !arg->toPoint() ) return;
+    tpoint = arg->toPoint()->getCoord();
+  };
+  // next a line or segment... --> these both just give us two
+  // coords...
+  Coordinate t1, t2;
+  // do we have a line or segment selected already ?
+  if ( line )
+  {
+    t1 = line->getP1();
+    t2 = line->getP2();
+  }
+  else if ( segment )
+  {
+    t1 = line->getP1();
+    t2 = line->getP2();
+  }
+  else if ( arg->toLine() )
+  {
+    t1 = arg->toLine()->getP1();
+    t2 = arg->toLine()->getP2();
+  }
+  else if ( arg->toSegment() )
+  {
+    t1 = arg->toSegment()->getP1();
+    t2 = arg->toSegment()->getP2();
+  }
+  else return; // not enough args...
+
+  // now we have what we need, so we draw things...
+  p.setPen (QPen (Qt::red,1));
+  p.drawLine( tpoint, calcPointOnParallel( t1, t2, tpoint ) );
 }
 
 void LineParallel::calc()
@@ -473,7 +526,7 @@ bool LineRadical::selectArg( Object* o )
   return complete;
 }
 
-void LineRadical::drawPrelim( KigPainter&, const Coordinate& ) const
+void LineRadical::drawPrelim( KigPainter&, const Object* ) const
 {
   return;
 }

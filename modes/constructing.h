@@ -30,14 +30,53 @@ class NormalMode;
 class KigView;
 class Coordinate;
 
+
+class NormalPoint;
+class NormalMode;
+
+class PointConstructionMode
+  : public KigMode
+{
+protected:
+  QPoint plc;
+  NormalPoint* mp;
+  NormalMode* mprev;
+
+  void updatePoint( const Coordinate& c, double fault );
+  void finish( KigView* v );
+  void updateScreen( KigView* v );
+
+public:
+  PointConstructionMode( NormalMode* prev,  KigDocument* d );
+  ~PointConstructionMode();
+
+  void leftClicked( QMouseEvent* e, KigView* v );
+  void leftReleased( QMouseEvent* e, KigView* v );
+  void midClicked( QMouseEvent* e, KigView* v );
+  void midReleased( QMouseEvent* e, KigView* v );
+  void rightClicked( QMouseEvent*, KigView* ) {};
+  void rightMouseMoved( QMouseEvent*, KigView* ) {};
+  void rightReleased( QMouseEvent*, KigView* ) {};
+  void mouseMoved( QMouseEvent* e, KigView* v );
+
+  void enableActions();
+
+  void cancelConstruction();
+};
+
 /**
  * this is a general ConstructionMode for objects that have no special
  * needs... It gets necessary information from static functions on the
  * objects.  Check out object.h or compiler errors to find out which
- * ones...
+ * ones... :)
+ *
+ * the inheritance from PointConstructionMode is an implentation
+ * inheritance, but i'm not using private inheritance since we also
+ * need to inherit from KigMode and don't want to start messing with
+ * virtual inheritance...
  */
 class StdConstructionMode
-  : public KigMode
+  : public PointConstructionMode
 {
   // object being constructed
   Object* mobc;
@@ -45,13 +84,9 @@ class StdConstructionMode
   QPoint plc;
   // Objects clicked on...
   Objects oco;
-  // previous mode
-  NormalMode* mprev;
 
 protected:
   void selectArg( Object* o, KigView* v );
-
-  void updateScreen( KigView* );
 
   // called by either midReleased or leftReleased...
   void addPointRequest( const Coordinate& c, KigView* v );
@@ -71,13 +106,6 @@ public:
   void enableActions();
 
   void cancelConstruction();
-};
-
-class PointConstructionMode
-  : public KigMode
-{
-public:
-
 };
 
 #endif

@@ -139,7 +139,7 @@ NormalPoint* NormalPoint::copy()
 NormalPoint::NormalPoint( NormalPointImp* i )
   : mimp( i )
 {
-  i->calc( this );
+  setImp( i );
 }
 
 NormalPoint::NormalPoint()
@@ -160,15 +160,57 @@ NormalPoint::~NormalPoint()
 
 NormalPointImp* NormalPoint::NPImpForCoord( const Coordinate& c,
                                             const KigDocument* d,
-                                            double fault )
+                                            double fault,
+                                            NormalPointImp* prev )
 {
+  // prev is a NormalPointImp that has already been
+  // constructed... here we try to avoid constructing new Imp's
+  // unless it's necessary...
   Objects o = d->whatAmIOn( c, fault );
   Curve* v = 0;
   for ( Objects::iterator i = o.begin(); i != o.end(); ++i )
     if ( ( v = (*i)->toCurve() ) )
       break;
-  if ( v ) return new ConstrainedPointImp( c, v );
-  else return new FixedPointImp( c );
+  if ( v )
+  {
+    // we need a ConstrainedPointImp...
+    if ( prev )
+    {
+      // we already have something...
+      if ( prev->toConstrained() )
+      {
+        // we already have a ConstrainedPointImp...
+        // so we use it...
+        prev->toConstrained()->redefine( v, c );
+        return prev;
+      }
+      // we have a FixedPointImp...
+      // so we delete it...
+      delete prev;
+    };
+    // we build a new ConstrainedPointImp...
+    return new ConstrainedPointImp( c, v );
+  }
+  else
+  {
+    // we need a FixedPointImp...
+    if ( prev )
+    {
+      // we already have something...
+      if ( prev->toFixed() )
+      {
+        // we already have a FixedPointImp..
+        // so we use it...
+        prev->toFixed()->setCoord( c );
+        return prev;
+      };
+      // we have a ConstrainedPointImp..
+      // so we delete it...
+      delete prev;
+    };
+    // we build a new FixedPointImp...
+    return new FixedPointImp( c );
+  };
 }
 
 NormalPointImp::~NormalPointImp()
@@ -424,4 +466,28 @@ void NormalPoint::startMove( const Coordinate& c )
 void NormalPoint::moveTo( const Coordinate& c )
 {
   mimp->moveTo( c, this );
+}
+
+void NormalPoint::setImp( NormalPointImp* imp )
+{
+  if ( mimp != imp && mimp )
+  delete mimp;
+  mimp = imp;
+  mimp->calc( this );
+}
+
+void ConstrainedPointImp::redefine( Curve* c, const Coordinate d )
+{
+  mcurve = c;
+  mparam = c->getParam( d );
+};
+
+void FixedPointImp::setCoord( const Coordinate& c )
+{
+  pwwca = c;
+}
+
+const Coordinate FixedPointImp::getCoord()
+{
+  return pwwca;
 }

@@ -75,7 +75,7 @@ public:
   QString wantPoint() const;
   bool selectArg (Object* which);
 //   void unselectArg (Object* which);
-  void drawPrelim ( KigPainter&, const Coordinate& ) const {};
+  void drawPrelim ( KigPainter&, const Object* ) const {};
 
   // moving
   void startMove(const Coordinate&) {};

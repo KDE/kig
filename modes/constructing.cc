@@ -30,11 +30,98 @@
 
 #include <functional> // for std::mem_fun and std::bind2nd
 
+/*
+void ConstructingMode::rightReleased( QMouseEvent* e, KigView* v )
+{
+  if( (plc - e->pos()).manhattanLength() > 3 ) return;
+  if( !oco.empty() )
+    {
+      // show a popup menu...
+      // first clear the text..
+      v->updateCurPix();
+      mDoc->emitStatusBarText( 0 );
+      v->updateWidget();
+      Object* o = oco.front();
+//       KigObjectsPopup* m = 0;
+      Objects os;
+      os.append( o );
+//       if( osa.contains( o ) ) m = popup( os, v );
+    };
+}
+
+*/
+
+void PointConstructionMode::updateScreen( KigView* v )
+{
+  v->clearStillPix();
+  KigPainter p( v->showingRect(), &v->stillPix );
+  p.drawGrid( mDoc->coordinateSystem() );
+  p.drawObjects( mDoc->objects() );
+  v->updateCurPix( p.overlay() );
+  v->updateWidget();
+}
+
+void PointConstructionMode::leftClicked( QMouseEvent* e, KigView* )
+{
+  plc = e->pos();
+}
+
+void PointConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
+{
+  if( ( plc - e->pos() ).manhattanLength() > 4 ) return;
+  updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
+  finish( v );
+}
+
+void PointConstructionMode::midClicked( QMouseEvent* e, KigView* v )
+{
+  leftClicked( e, v );
+}
+
+void PointConstructionMode::midReleased( QMouseEvent* e, KigView* v )
+{
+  leftReleased( e, v );
+}
+
+PointConstructionMode::PointConstructionMode( NormalMode* b,
+                                              KigDocument* d )
+  : KigMode( d ),
+    mp( new NormalPoint( new FixedPointImp( Coordinate( 0, 0 ) ) ) ),
+    mprev( b )
+{
+}
+
+void PointConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
+{
+  updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
+  v->updateCurPix();
+  KigPainter p( v->showingRect(), &v->curPix );
+  p.drawObject( mp, true );
+  v->updateWidget( p.overlay() );
+}
+
+void PointConstructionMode::updatePoint( const Coordinate& c, double fault )
+{
+  mp->setImp( NormalPoint::NPImpForCoord( c, mDoc, fault, mp->imp() ) );
+}
+
+void PointConstructionMode::finish( KigView* v )
+{
+  mDoc->addObject( mp );
+
+  updateScreen( v );
+
+  mprev->clearSelection();
+  NormalMode* s = mprev;
+  KigDocument* d = mDoc;
+  delete this;
+  d->setMode( s );
+}
+
 StdConstructionMode::StdConstructionMode( Object* obc, NormalMode* b,
                                           KigDocument* d )
-  : KigMode( d ),
-    mobc( obc ),
-    mprev( b )
+  : PointConstructionMode( b, d ),
+    mobc( obc )
 {
 }
 
@@ -45,8 +132,9 @@ StdConstructionMode::~StdConstructionMode()
 void StdConstructionMode::leftClicked( QMouseEvent* e, KigView* v )
 {
   plc = e->pos();
-  v->updateCurPix();
   oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 3*v->pixelWidth() );
+  v->updateCurPix();
+  updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
   if( !oco.empty() )
   {
     KigPainter p( v->showingRect(), &v->curPix );
@@ -72,46 +160,64 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
   else
   {
     // oco is empty or the obc doesn't like it...
-    // so we try if it wants a point..
-    addPointRequest( v->fromScreen( e->pos() ), v );
+    // so we try if it wants our point..
+    if ( mobc->wantArg( mp ) )
+    {
+      mDoc->addObject( mp );
+      selectArg( mp, v );
+    };
   };
 }
 
 void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 {
   // objects under cursor
-  Objects ouc = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 3*v->pixelWidth() );
+  Coordinate c = v->fromScreen( e->pos() );
+  Objects ouc = mDoc->whatAmIOn( c, 3*v->pixelWidth() );
+  updatePoint( c, v->pixelWidth() );
+
   v->updateCurPix();
   KigPainter p( v->showingRect(), &v->curPix );
-  mobc->drawPrelim( p, v->fromScreen( e->pos() ) );
   if ( ! ouc.empty() && mobc->wantArg( ouc.front() ) )
   {
-    // TODO...
-    // add a Object::drawPrelim( KigPainter&, Object* o ) where
-    // it draws itself as if o had been selectArg'd...
+    // the object wants the arg currently under the cursor...
+    // draw mobc...
+    p.drawPrelim( mobc, ouc.front() );
+
     QString o = mobc->wantArg( ouc.front() );
 
     mDoc->emitStatusBarText( o );
     p.drawSimpleText( v->fromScreen( e->pos() ), o );
     v->setCursor (KCursor::handCursor());
   }
-  else if( mobc->wantPoint() )
+  // see if mobc wants the point we're dragging around...
+  else if ( mobc->wantArg( mp ) )
   {
-    Coordinate c = v->fromScreen( e->pos() );
-    QString s = mobc->wantPoint();
+    // it does...
+    // so we first draw the point, then mobc, and then the text that
+    // wantArg returns...
+    p.drawObject( mp, true );
+    p.drawPrelim( mobc, mp );
+
+    QString s = mobc->wantArg( mp );
     mDoc->emitStatusBarText( s );
+
+    // we draw the text a bit to the bottom so it doesn't end up on
+    // top of the point...
+
     double i = v->pixelWidth();
     Coordinate d( i, i );
     p.drawSimpleText( c + d*2, s );
-    p.drawPoint( c, false );
     v->setCursor( KCursor::blankCursor() );
   }
   else
   {
+    // mobc doesn't want either...
+    // we just tell the user what he's constructing...
     QString o = i18n( "Constructing a %1" ).arg( mobc->vTBaseTypeName() );
     mDoc->emitStatusBarText( o );
     p.drawSimpleText( v->fromScreen( e->pos() ), o );
-    v->setCursor(KCursor::arrowCursor());
+    v->setCursor( KCursor::arrowCursor() );
   };
   v->updateWidget( p.overlay() );
 }
@@ -124,11 +230,16 @@ void StdConstructionMode::midClicked( QMouseEvent* e, KigView* )
 void StdConstructionMode::midReleased( QMouseEvent* e, KigView* v )
 {
   if ( (e->pos() - plc).manhattanLength() > 4 ) return;
-  addPointRequest( v->fromScreen( e->pos() ), v );
+  updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
+  mDoc->addObject( mp );
+  selectArg( mp, v );
 }
 
 void StdConstructionMode::selectArg( Object* o, KigView* v )
 {
+  if ( o == mp )
+    // if we're selecting our mp, we need a new one...
+    mp = mp->copy();
   bool finished = mobc->selectArg( o );
   if( finished )
   {
@@ -151,9 +262,7 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
 
 void StdConstructionMode::enableActions()
 {
-  KigMode::enableActions();
-
-  mDoc->aCancelConstruction->setEnabled( true );
+  PointConstructionMode::enableActions();
 }
 
 void StdConstructionMode::cancelConstruction()
@@ -165,67 +274,22 @@ void StdConstructionMode::cancelConstruction()
   d->setMode( p );
 }
 
-
-/*
-void ConstructingMode::midReleased( QMouseEvent* e, KigView* v )
+PointConstructionMode::~PointConstructionMode()
 {
-  if( ( e->pos() - plc ).manhattanLength() > 3 ) return;
-  Point* p;
-  if( !oco.empty() && Object::toCurve( oco.front() ) )
-    p = new ConstrainedPoint( Object::toCurve( oco.front() ), v->fromScreen( plc ) );
-  else
-    p = new FixedPoint( v->fromScreen( plc ) );
-  mDoc->addObject( p );
-  // we select the new point as an argument to the object we're
-  // constructing...
-  oco.clear();
-  oco.append( p );
-  this->leftReleased( e, v );
+  delete mp;
 }
 
-void ConstructingMode::rightClicked( QMouseEvent*, KigView* )
+void PointConstructionMode::enableActions()
 {
+  KigMode::enableActions();
 
+  mDoc->aCancelConstruction->setEnabled( true );
 }
 
-void ConstructingMode::rightReleased( QMouseEvent* e, KigView* v )
+void PointConstructionMode::cancelConstruction()
 {
-  if( (plc - e->pos()).manhattanLength() > 3 ) return;
-  if( !oco.empty() )
-    {
-      // show a popup menu...
-      // first clear the text..
-      v->updateCurPix();
-      mDoc->emitStatusBarText( 0 );
-      v->updateWidget();
-      Object* o = oco.front();
-//       KigObjectsPopup* m = 0;
-      Objects os;
-      os.append( o );
-//       if( osa.contains( o ) ) m = popup( os, v );
-    };
-}
-
-void ConstructingMode::mouseMoved( QMouseEvent*, KigView* )
-{
-};
-*/
-void StdConstructionMode::updateScreen( KigView* v )
-{
-  v->clearStillPix();
-  KigPainter p( v->showingRect(), &v->stillPix );
-  p.drawGrid( mDoc->coordinateSystem() );
-  p.drawObjects( mDoc->objects() );
-  v->updateCurPix( p.overlay() );
-  v->updateWidget();
-}
-
-void StdConstructionMode::addPointRequest( const Coordinate& c, KigView* v )
-{
-  if ( mobc->wantPoint() )
-  {
-    Point* p = new NormalPoint( NormalPoint::NPImpForCoord( c, mDoc, 3*v->pixelWidth() ) );
-    mDoc->addObject( p );
-    selectArg( p, v );
-  };
+  NormalMode* p = mprev;
+  KigDocument* d = mDoc;
+  delete this;
+  d->setMode( p );
 }

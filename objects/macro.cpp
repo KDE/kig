@@ -79,7 +79,7 @@ bool MacroObjectOne::inRect(const Rect& r) const
   return final->inRect(r);
 }
 
-void MacroObjectOne::drawPrelim(KigPainter&, const Coordinate& ) const
+void MacroObjectOne::drawPrelim(KigPainter&, const Object* ) const
 {
 };
 

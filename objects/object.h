@@ -168,9 +168,9 @@ public:
   // here, you should only store the pointer, not do any calculations,
   // those are to be done in calc()
   virtual bool selectArg (Object* which) = 0;
-  // draw a preliminary version of yourself, even though you haven't got all
-  // your args yet,  the cursor is currently at pt
-  virtual void drawPrelim (KigPainter& p, const Coordinate& pt ) const = 0;
+  // draw a preliminary version of yourself, as if prelimArg had been
+  // selected...
+  virtual void drawPrelim (KigPainter& p, const Object* prelimArg ) const = 0;
 
   // for moving
   // sos contains the objects that are being moved.

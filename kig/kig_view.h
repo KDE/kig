@@ -166,6 +166,7 @@ protected:
   friend class NormalMode;
   friend class MovingMode;
   friend class StdConstructionMode;
+  friend class PointConstructionMode;
 
   // what do the still objects look like
   // wondering if this is appropriate, maybe it should be part of

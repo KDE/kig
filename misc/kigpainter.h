@@ -130,7 +130,7 @@ public:
   /**
    * @see Object::drawPrelim
    */
-  void drawPrelim( const Object* o, const Coordinate& pt );
+  void drawPrelim( const Object* o, const Object* prelimArg );
 
   /**
    * overload, mainly for drawing the selection rectangle by
