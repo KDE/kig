@@ -109,7 +109,8 @@ void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& pare
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
   p.setPen( QPen ( Qt::red,  1) );
-  p.setWidth( 1 );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
   data->draw( p );
   delete data;
 }
@@ -164,7 +165,7 @@ void MultiObjectTypeConstructor::drawprelim( KigPainter& p,
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
   p.setPen( QPen ( Qt::red,  1) );
-  p.setWidth( 1 );
+  p.setWidth( -1 );
 
   for ( vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
   {
@@ -270,3 +271,23 @@ void MergeObjectConstructor::handlePrelim(
     };
   };
 }
+
+QString StandardConstructorBase::useText( const Object& o, const Objects& sel,
+                                          const KigDocument&, const KigWidget& ) const
+{
+  const char* ret = margsparser.usetext( o, sel );
+  if ( ! ret ) return QString::null;
+  return i18n( ret );
+}
+
+QString MergeObjectConstructor::useText( const Object& o, const Objects& sel,
+                                         const KigDocument& d, const KigWidget& v ) const
+{
+  for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
+  {
+    int w = (*i)->wantArgs( sel.with( const_cast<Object*>( &o ) ), d, v );
+    if ( w != ArgsChecker::Invalid ) return (*i)->useText( o, sel, d, v );
+  };
+  return QString::null;
+}
+

@@ -25,13 +25,8 @@
 
 #include "../misc/common.h"
 
-const struct ArgParser::spec ObjectABType::argsspec[] =
-{
-  { ObjectImp::ID_PointImp, 2 }
-};
-
-ObjectABType::ObjectABType( const char* fulltypename )
-  : BuiltinType( fulltypename, argsspec, 1 )
+ObjectABType::ObjectABType( const char* fulltypename, const ArgParser::spec* spec, int n )
+  : BuiltinType( fulltypename, spec, n )
 {
 }
 
@@ -65,28 +60,8 @@ void ObjectABType::move( Object* o,
   parents[1]->move( from, dist );
 }
 
-const struct ArgParser::spec ObjectABCType::argsspec[] =
-{
-  { ObjectImp::ID_PointImp, 3 }
-};
-
-ObjectABCType::ObjectABCType( const char* fulltypename )
-  : BuiltinType( fulltypename, argsspec, 1 )
-{
-}
-
-ObjectABCType::~ObjectABCType()
-{
-}
-
-const struct ArgParser::spec ObjectLPType::argsspec[] =
-{
-  { ObjectImp::ID_LineImp, 1 },
-  { ObjectImp::ID_PointImp, 1 }
-};
-
-ObjectLPType::ObjectLPType( const char* fullname )
-  : BuiltinType( fullname, argsspec, 2 )
+ObjectLPType::ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n )
+  : BuiltinType( fullname, spec, n )
 {
 }
 

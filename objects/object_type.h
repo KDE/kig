@@ -35,7 +35,7 @@ protected:
   const ArgParser margsparser;
   ObjectType( const char fulltypename[],
               const struct ArgParser::spec margsspec[],
-              int n, int any = 0 );
+              int n );
 public:
   virtual ~ObjectType();
 
@@ -71,7 +71,7 @@ class BuiltinType
 public:
   BuiltinType( const char fulltypename[],
                const struct ArgParser::spec margsspec[],
-               int n, int any = 0 );
+               int n );
   ~BuiltinType();
 
   bool inherits( int type ) const;
@@ -97,7 +97,7 @@ class CustomType
 public:
   CustomType( const char fulltypename[],
               const struct ArgParser::spec margsspec[],
-              int n, int any = 0 );
+              int n );
 
   ~CustomType();
 

@@ -23,30 +23,28 @@
 
 #include <algorithm>
 
-ArgParser::ArgParser( const spec* args, int n, int numberofanyobjects )
-  : mwantedobjscount( 0 ), margs( args, args + n ),
-    manyobjectscount( numberofanyobjects )
+ArgParser::ArgParser( const spec* args, int n )
 {
   for ( int i = 0; i < n; ++i )
-    mwantedobjscount += margs[i].number;
+    if ( (args + i)->type != ObjectImp::ID_AnyImp )
+      margs.push_back( *(args + i) );
+    else manyobjsspec.push_back( (args + i)->usetext );
 }
 
 int ArgParser::check( const Objects& os ) const
 {
-  int numberofanyobjects = manyobjectscount;
+  int numberofanyobjects = manyobjsspec.size();
 
-  std::vector<int> numbers( margs.size() );
-  for ( uint i = 0; i < margs.size(); ++i )
-    numbers[i] = margs[i].number;
+  std::vector<bool> found( margs.size() );
 
   for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
   {
     for ( uint i = 0; i < margs.size(); ++i )
     {
-      if ( (*o)->hasimp( margs[i].type ) && numbers[i] > 0 )
+      if ( (*o)->hasimp( margs[i].type ) && !found[i] )
       {
         // object o is of a type that we're looking for
-        --numbers[i];
+        found[i] = true;
         // i know that "goto's are evil", but they're very useful and
         // completely harmless if you use them as better "break;"
         // statements.. trust me ;)
@@ -60,108 +58,125 @@ int ArgParser::check( const Objects& os ) const
   };
   if ( numberofanyobjects > 0 ) return Valid;
   for( uint i = 0; i < margs.size(); ++i )
-    if ( numbers[i] > 0 ) return Valid;
+    if ( !found[i] ) return Valid;
   return Complete;
 }
+
+static bool hasimp( const Object& o, int imptype )
+{
+  return o.hasimp( imptype );
+};
+
+static bool hasimp( const ObjectImp& o, int imptype )
+{
+  return o.inherits( imptype );
+};
 
 Args ArgParser::parse( const Args& os ) const
 {
 //  assert( check( os ) != Invalid );
-  Args ret( mwantedobjscount + manyobjectscount );
+  Args ret( margs.size() + manyobjsspec.size(), 0 );
 
-  int anyobjscounter = 0;
-
-  std::vector<int> numbers( margs.size() );
-  for( uint i = 0; i < margs.size(); ++i )
-    numbers[i] = margs[i].number;
-
-  std::vector<int> counters( margs.size() );
-  counters[0] = 0;
-  for( uint i = 1; i < margs.size(); ++i )
-    counters[i] = counters[i-1] + margs[i-1].number;
+  uint anyobjscounter = 0;
 
   for ( Args::const_iterator o = os.begin(); o != os.end(); ++o )
   {
-    bool added = false;
     for( uint i = 0; i < margs.size(); ++i )
-      if ( (*o)->inherits( margs[i].type ) && numbers[i] > 0 )
+      if ( hasimp( **o, margs[i].type ) && ret[i] == 0 )
       {
         // object o is of a type that we're looking for
-        ret[counters[i]++] = *o;
-        added = true;
-        --numbers[i];
-        break;
+        ret[i] = *o;
+        goto added;
       }
-    if ( ! added )
-    {
-      assert( anyobjscounter < manyobjectscount );
-      ret[mwantedobjscount + anyobjscounter++]= *o;
-    };
+    assert( anyobjscounter < manyobjsspec.size() );
+    ret[margs.size() + anyobjscounter++]= *o;
+  added:
+    ;
+  };
+  return ret;
+}
+
+Objects ArgParser::parse( const Objects& os ) const
+{
+//  assert( check( os ) != Invalid );
+  Objects ret( margs.size() + manyobjsspec.size(), 0 );
+
+  uint anyobjscounter = 0;
+
+  for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
+  {
+    for( uint i = 0; i < margs.size(); ++i )
+      if ( hasimp( **o, margs[i].type ) && ret[i] == 0 )
+      {
+        // object o is of a type that we're looking for
+        ret[i] = *o;
+        goto added;
+      }
+    assert( anyobjscounter < manyobjsspec.size() );
+    ret[margs.size() + anyobjscounter++]= *o;
+  added:
+    ;
   };
   return ret;
 }
 
 int CheckOneArgs::check( const Objects& os ) const
 {
-  return os.size() <= 1 ? Complete : 0;
+  if ( os.empty() ) return Valid;
+  if ( os.size() == 1 ) return Complete;
+  return Invalid;
 }
 
 ArgsChecker::~ArgsChecker()
 {
 }
 
-Objects ArgParser::parse( const Objects& os ) const
+ArgParser::ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec )
+  : margs( args ), manyobjsspec( anyobjsspec )
 {
-  assert( check( os ) != Invalid );
-  Objects ret( mwantedobjscount + manyobjectscount );
-
-  int anyobjscounter = 0;
-
-  std::vector<int> numbers( margs.size() );
-  for( uint i = 0; i < margs.size(); ++i )
-    numbers[i] = margs[i].number;
-
-  std::vector<int> counters( margs.size() );
-  counters[0] = 0;
-  for( uint i = 1; i < margs.size(); ++i )
-    counters[i] = counters[i-1] + margs[i-1].number;
-
-  for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
-  {
-    bool added = false;
-    for( uint i = 0; i < margs.size(); ++i )
-      if ( (*o)->hasimp( margs[i].type ) && numbers[i] > 0 )
-      {
-        // object o is of a type that we're looking for
-        ret[counters[i]++] = *o;
-        added = true;
-        --numbers[i];
-        break;
-      }
-    if ( ! added )
-    {
-      assert( anyobjscounter < manyobjectscount );
-      ret[mwantedobjscount + anyobjscounter++] = *o;
-    };
-  };
-  return ret;
-}
-
-ArgParser::ArgParser( const std::vector<spec>& args, int anyobjscount )
-  : mwantedobjscount( 0 ), margs( args ), manyobjectscount( anyobjscount )
-{
-  for ( uint i = 0; i < margs.size(); ++i )
-    mwantedobjscount += margs[i].number;
 }
 
 ArgParser ArgParser::without( int type ) const
 {
   if ( type == ObjectImp::ID_AnyImp )
-    return ArgParser( margs, 0 );
+    return ArgParser( margs, std::vector<const char*>() );
   std::vector<spec> ret;
   ret.reserve( margs.size() - 1 );
   for ( uint i = 0; i < margs.size(); ++i )
     if ( margs[i].type != type )
       ret.push_back( margs[i] );
-  return ArgParser( ret, manyobjectscount );
+  return ArgParser( ret, manyobjsspec );
+}
+
+const char* ArgParser::usetext( const Object& obj, const Objects& sel ) const
+{
+  int numberofanyobjects = manyobjsspec.size();
+
+  std::vector<bool> found( margs.size() );
+
+  for ( Objects::const_iterator o = sel.begin(); o != sel.end(); ++o )
+  {
+    for ( uint i = 0; i < margs.size(); ++i )
+    {
+      if ( (*o)->hasimp( margs[i].type ) && !found[i] )
+      {
+        // object o is of a type that we're looking for
+        found[i] = true;
+        // i know that "goto's are evil", but they're very useful and
+        // completely harmless if you use them as better "break;"
+        // statements.. trust me ;)
+        goto matched;
+      };
+    };
+    // object o is not of a type in margs..
+    if ( --numberofanyobjects < 0 ) return 0;
+  matched:
+    ;
+  };
+
+  for ( uint i = 0; i < margs.size(); ++i )
+    if ( obj.hasimp( margs[i].type ) && ! found[i] )
+      return margs[i].usetext;
+  assert( numberofanyobjects > 0 );
+  return manyobjsspec[manyobjsspec.size() - numberofanyobjects];
 }

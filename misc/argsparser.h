@@ -43,23 +43,23 @@ class ArgParser
   : public ArgsChecker
 {
 public:
-  struct spec { int type; int number; };
+  struct spec { int type; const char* usetext; };
 private:
-  // the total number of objects we're looking for..
-  int mwantedobjscount;
   // the args spec..
-  const std::vector<spec> margs;
-  // the number of objects that we want other than thos in margs and
-  // mwantedobjscount..
-  int manyobjectscount;
+  std::vector<spec> margs;
+  // sometimes a random object is requested: any type goes.  Those
+  // requests require some special treatment.  This vector holds the
+  // usetexts for those requests..
+  std::vector<const char*> manyobjsspec;
 public:
-  ArgParser( const struct spec* args, int n, int numberofanyobjects = 0 );
-  ArgParser( const std::vector<spec>& args, int numberofanyobjects );
+  ArgParser( const struct spec* args, int n );
+  ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec );
   // returns a new ArgParser that wants the same args, except for the
   // ones of the given type..
   ArgParser without( int type ) const;
   int check( const Objects& os ) const;
   Args parse( const Args& os ) const;
+  const char* usetext( const Object& o, const Objects& sel ) const;
   Objects parse( const Objects& os ) const;
 };
 

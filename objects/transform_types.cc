@@ -29,11 +29,12 @@
 
 static const ArgParser::spec argsspecav[] =
 {
-  { ObjectImp::ID_VectorImp, 1 }
+  { ObjectImp::ID_VectorImp, "Translate by this vector" },
+  { ObjectImp::ID_AnyImp, "Translate this object" }
 };
 
 TranslatedType::TranslatedType()
-  : BuiltinType( "Translation", argsspecav, 1, 1 )
+  : BuiltinType( "Translation", argsspecav, 2 )
 {
 }
 
@@ -60,11 +61,12 @@ ObjectImp* TranslatedType::calc( const Args& targs ) const
 
 static const ArgParser::spec argsspecap[] =
 {
-  { ObjectImp::ID_PointImp, 1 }
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Reflect around this point" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Reflect this object" ) }
 };
 
 PointReflectionType::PointReflectionType()
-  : BuiltinType( "PointReflection", argsspecap, 1, 1 )
+  : BuiltinType( "PointReflection", argsspecap, 2 )
 {
 }
 
@@ -91,11 +93,12 @@ ObjectImp* PointReflectionType::calc( const Args& targs ) const
 
 static const ArgParser::spec argsspecal[] =
 {
-  { ObjectImp::ID_LineImp, 1 }
+  { ObjectImp::ID_LineImp, I18N_NOOP( "Reflect over this line" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Reflect this object" ) }
 };
 
 LineReflectionType::LineReflectionType()
-  : BuiltinType( "LineReflection", argsspecal, 1, 1 )
+  : BuiltinType( "LineReflection", argsspecal, 2 )
 {
 }
 
@@ -122,12 +125,13 @@ ObjectImp* LineReflectionType::calc( const Args& targs ) const
 
 static const ArgParser::spec argsspecpa[] =
 {
-  { ObjectImp::ID_PointImp, 1 },
-  { ObjectImp::ID_AngleImp, 1 }
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Rotate around this point" ) },
+  { ObjectImp::ID_AngleImp, I18N_NOOP( "Rotate by this angle" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Rotate this object" ) }
 };
 
 RotationType::RotationType()
-  : BuiltinType( "Rotation", argsspecpa, 2, 1 )
+  : BuiltinType( "Rotation", argsspecpa, 3 )
 {
 }
 
@@ -156,12 +160,13 @@ ObjectImp* RotationType::calc( const Args& targs ) const
 
 static const ArgParser::spec argsspecps[] =
 {
-  { ObjectImp::ID_PointImp, 1 },
-  { ObjectImp::ID_SegmentImp, 1 }
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Scale with this center" ) },
+  { ObjectImp::ID_SegmentImp, I18N_NOOP( "Scale by the length of this segment" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Scale this object" ) }
 };
 
 ScalingOverCenterType::ScalingOverCenterType()
-  : BuiltinType( "ScalingOverCenter", argsspecps, 2, 1 )
+  : BuiltinType( "ScalingOverCenter", argsspecps, 3 )
 {
 }
 
@@ -190,12 +195,13 @@ ObjectImp* ScalingOverCenterType::calc( const Args& targs ) const
 
 static const ArgParser::spec argsspecls[] =
 {
-  { ObjectImp::ID_LineImp, 1 },
-  { ObjectImp::ID_SegmentImp, 1 }
+  { ObjectImp::ID_LineImp, I18N_NOOP( "Scale over this line" ) },
+  { ObjectImp::ID_SegmentImp, I18N_NOOP( "Scale by the length of this segment" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Scale this object" ) }
 };
 
 ScalingOverLineType::ScalingOverLineType()
-  : BuiltinType( "ScalingOverLine", argsspecls, 2, 1 )
+  : BuiltinType( "ScalingOverLine", argsspecls, 3 )
 {
 }
 
@@ -224,12 +230,13 @@ ObjectImp* ScalingOverLineType::calc( const Args& targs ) const
 
 static const ArgParser::spec argsspecra[] =
 {
-  { ObjectImp::ID_RayImp, 1 },
-  { ObjectImp::ID_AngleImp, 1 }
+  { ObjectImp::ID_RayImp, I18N_NOOP( "Projectively rotate with this ray" ) },
+  { ObjectImp::ID_AngleImp, I18N_NOOP( "Projectively rotate by this angle" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Projectively rotate this object" ) }
 };
 
 ProjectiveRotationType::ProjectiveRotationType()
-  : BuiltinType( "ProjectiveRotation", argsspecra, 2, 1 )
+  : BuiltinType( "ProjectiveRotation", argsspecra, 3 )
 {
 }
 
@@ -264,12 +271,13 @@ ObjectImp* ProjectiveRotationType::calc( const Args& targs ) const
 
 static const ArgParser::spec argsspecpl[] =
 {
-  { ObjectImp::ID_PointImp, 1 },
-  { ObjectImp::ID_LineImp, 1 }
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Cast a shadow from this light source" ) },
+  { ObjectImp::ID_LineImp, I18N_NOOP( "Cast a shadow on the plane defined by this line" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Cast the shadow of this object" ) }
 };
 
 CastShadowType::CastShadowType()
-  : BuiltinType( "CastShadow", argsspecpl, 2, 1 )
+  : BuiltinType( "CastShadow", argsspecpl, 3 )
 {
 }
 

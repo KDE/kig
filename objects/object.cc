@@ -31,7 +31,7 @@
 RealObject::RealObject( const ObjectType* type, const Objects& parents )
   : ObjectWithParents( parents ),
     mcolor( Qt::blue ), mselected( false ), mshown( true ),
-    mwidth( 1 ), mtype( type ), mimp( 0 )
+    mwidth( -1 ), mtype( type ), mimp( 0 )
 {
 }
 
@@ -47,6 +47,7 @@ void RealObject::draw( KigPainter& p, bool ss ) const
   p.setBrushColor( mselected && ss ? Qt::red : mcolor );
   p.setPen( QPen ( mselected && ss ? Qt::red : mcolor,  1) );
   p.setWidth( mwidth );
+  assert( mimp );
   mimp->draw( p );
 }
 

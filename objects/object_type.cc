@@ -31,9 +31,9 @@ ObjectType::~ObjectType()
 
 ObjectType::ObjectType( const char fulltypename[],
                         const struct ArgParser::spec argsspec[],
-                        int n, int any )
+                        int n )
   : mfulltypename( fulltypename ),
-    margsparser( argsspec, n, any )
+    margsparser( argsspec, n )
 {
 }
 
@@ -60,8 +60,8 @@ bool ObjectType::inherits( int ) const
 BuiltinType::BuiltinType(
   const char fulltypename[],
   const struct ArgParser::spec margsspec[],
-  int n, int any )
-  : ObjectType( fulltypename, margsspec, n, any )
+  int n )
+  : ObjectType( fulltypename, margsspec, n )
 {
 }
 
@@ -85,8 +85,8 @@ CustomType::~CustomType()
 
 CustomType::CustomType( const char fulltypename[],
                         const struct ArgParser::spec argsspec[],
-                        int n, int any )
-  : ObjectType( fulltypename, argsspec, n, any )
+                        int n )
+  : ObjectType( fulltypename, argsspec, n )
 {
 }
 

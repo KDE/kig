@@ -320,18 +320,19 @@ void setupBuiltinStuff()
       // There is one "toplevel" object_constructor, that is composed
       // of multiple subconstructors..  First we build the
       // subconstructors:
-      ObjectConstructor* lineline =
+      SimpleObjectTypeConstructor* lineline =
         new SimpleObjectTypeConstructor(
           LineLineIntersectionType::instance(),
-          "SHOULDNOTBESEEN", "SHOULDNOTBESEEN", // you shouldn't see
-                                                // these
+          "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
           "intersection" );
-      ObjectConstructor* lineconic =
+
+      MultiObjectTypeConstructor* lineconic =
         new MultiObjectTypeConstructor(
           ConicLineIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
           "intersection", -1, 1 );
-      ObjectConstructor* linecubic =
+
+      MultiObjectTypeConstructor* linecubic =
         new MultiObjectTypeConstructor(
           LineCubicIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",

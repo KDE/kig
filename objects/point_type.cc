@@ -25,7 +25,8 @@
 
 static const ArgParser::spec argsspecdd[] =
 {
-  { ObjectImp::ID_DoubleImp, 2 }
+  { ObjectImp::ID_DoubleImp, "x" },
+  { ObjectImp::ID_DoubleImp, "y" }
 };
 
 FixedPointType::FixedPointType()
@@ -60,8 +61,8 @@ ObjectImp* ConstrainedPointType::calc( const Args& tparents ) const
 
 const ArgParser::spec argsspecdc[] =
 {
-  { ObjectImp::ID_DoubleImp, 1 },
-  { ObjectImp::ID_CurveImp, 1 }
+  { ObjectImp::ID_DoubleImp, "parameter" },
+  { ObjectImp::ID_CurveImp, "Constrain the point to this curve" }
 };
 
 ConstrainedPointType::ConstrainedPointType()
@@ -129,8 +130,14 @@ bool FixedPointType::canMove() const
   return true;
 }
 
+static const ArgParser::spec argsspecMidPoint[] =
+{
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the midpoint of this point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct the midpoint of this point" ) }
+};
+
 MidPointType::MidPointType()
-  : ObjectABType( "MidPoint" )
+  : ObjectABType( "MidPoint", argsspecMidPoint, 2 )
 {
 }
 

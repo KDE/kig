@@ -74,11 +74,11 @@ TestAction::TestAction( KigDocument* doc, const QIconSet& icon,
 {
 }
 
-const struct ArgParser::spec testspec[] =
-{
-  { ObjectImp::ID_LineImp, 2 },
-  { ObjectImp::ID_PointImp, 1 }
-};
+// const struct ArgParser::spec testspec[] =
+// {
+//   { ObjectImp::ID_LineImp, 2 },
+//   { ObjectImp::ID_PointImp, 1 }
+// };
 
 void TestAction::slotActivated()
 {

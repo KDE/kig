@@ -28,8 +28,18 @@
 #include <algorithm>
 #include <math.h>
 
+static const char* constructanglethroughpoint =
+  I18N_NOOP( "Construct an angle through this point" );
+
+static const ArgParser::spec argsspecAngle[] =
+{
+  { ObjectImp::ID_PointImp, constructanglethroughpoint },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an angle at this point" ) },
+  { ObjectImp::ID_PointImp, constructanglethroughpoint }
+};
+
 AngleType::AngleType()
-  : ObjectABCType( "Angle" )
+  : ObjectType( "Angle", argsspecAngle, 3 )
 {
 }
 
@@ -67,8 +77,14 @@ ObjectImp* AngleType::calc( const Args& parents ) const
   return new AngleImp( points[1], startangle, anglelength );
 }
 
+static const ArgParser::spec argsspecVector[] =
+{
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a vector from this point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a vector to this point" ) }
+};
+
 VectorType::VectorType()
-  : ObjectABType( "Vector" )
+  : ObjectABType( "Vector", argsspecVector, 2 )
 {
 }
 
@@ -89,7 +105,7 @@ ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const struct ArgParser::spec argsspec1c[] =
 {
-  { ObjectImp::ID_CurveImp, 1 }
+  { ObjectImp::ID_CurveImp, "curve" }
 };
 
 LocusType::LocusType( const ObjectHierarchy& hier )

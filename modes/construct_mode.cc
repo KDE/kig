@@ -92,6 +92,10 @@ void ConstructMode::mouseMoved( const Objects& os,
   w.updateCurPix();
   KigPainter pter( w.screenInfo(), &w.curPix );
 
+  // set the text next to the arrow cursor like in modes/normal.cc
+  QPoint textloc = p;
+  textloc.setX( textloc.x() + 15 );
+
   ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
                                             mdoc, w );
   mpt->calc();
@@ -99,12 +103,22 @@ void ConstructMode::mouseMoved( const Objects& os,
        mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
   {
     mctor->handlePrelim( pter, mparents.with( os.front() ), mdoc, w );
+
+    QString o = mctor->useText( *os.front(), mparents, mdoc, w );
+    mdoc.emitStatusBarText( o );
+    pter.drawTextStd( textloc, o );
+
     w.setCursor( KCursor::handCursor() );
   }
   else if ( mctor->wantArgs( mparents.with( mpt ), mdoc, w ) )
   {
     mpt->draw( pter, true );
     mctor->handlePrelim( pter, mparents.with( mpt ), mdoc, w );
+
+    QString o = mctor->useText( *mpt, mparents, mdoc, w );
+    mdoc.emitStatusBarText( o );
+    pter.drawTextStd( textloc, o );
+
     w.setCursor( KCursor::handCursor() );
   }
   else

@@ -23,7 +23,7 @@
 #include "../misc/object_hierarchy.h"
 
 class AngleType
-  : public ObjectABCType
+  : public ObjectType
 {
   AngleType();
   ~AngleType();

@@ -47,6 +47,7 @@ public:
     const Objects& os, const KigDocument& d,
     const KigWidget& v
     ) const;
+  QString useText( const Object& o, const Objects& sel ) const;
   void drawprelim( KigPainter& p, const Objects& parents ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
 };

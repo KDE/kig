@@ -33,7 +33,7 @@ public:
 };
 
 class CircleBTPType
-  : public ObjectABCType
+  : public ObjectType
 {
   CircleBTPType();
   ~CircleBTPType();

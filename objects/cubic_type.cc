@@ -24,9 +24,19 @@
 
 #include <vector>
 
+static const char* cubictpstatement = I18N_NOOP( "Construct a cubic through this point" );
+
 static const struct ArgParser::spec argsspec9p[] =
 {
-  { ObjectImp::ID_PointImp, 9 }
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement }
 };
 
 CubicB9PType::CubicB9PType()
@@ -59,7 +69,12 @@ ObjectImp* CubicB9PType::calc( const Args& os ) const
 
 static const ArgParser::spec argsspec6p[] =
 {
-  { ObjectImp::ID_PointImp, 6 }
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement }
 };
 
 CubicNodeB6PType::CubicNodeB6PType()
@@ -90,7 +105,10 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents ) const
 
 static const ArgParser::spec argsspec4p[] =
 {
-  { ObjectImp::ID_PointImp, 4 }
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement },
+  { ObjectImp::ID_PointImp, cubictpstatement }
 };
 
 CubicCuspB4PType::CubicCuspB4PType()

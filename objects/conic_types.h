@@ -42,10 +42,10 @@ public:
 };
 
 class ConicBFFPType
-  : public ObjectABCType
+  : public ObjectType
 {
 protected:
-  ConicBFFPType( const char* fullname );
+  ConicBFFPType( const char* fullname, const ArgParser::spec*, int n );
   ~ConicBFFPType();
 public:
   ObjectImp* calc( const Args& parents ) const;
@@ -85,7 +85,7 @@ public:
 };
 
 class ParabolaBTPType
-  : public ObjectABCType
+  : public ObjectType
 {
   ParabolaBTPType();
   ~ParabolaBTPType();

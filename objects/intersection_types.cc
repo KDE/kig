@@ -27,9 +27,9 @@
 
 static const ArgParser::spec argsspeccl[] =
 {
-  { ObjectImp::ID_ConicImp, 1 },
-  { ObjectImp::ID_LineImp, 1 },
-  { ObjectImp::ID_IntImp, 1 }
+  { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with this conic" ) },
+  { ObjectImp::ID_LineImp, I18N_NOOP( "Intersect with this line" ) },
+  { ObjectImp::ID_IntImp, "param" }
 };
 
 ConicLineIntersectionType::ConicLineIntersectionType()
@@ -82,14 +82,17 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents ) const
   else return new InvalidImp;
 }
 
+static const char* constructlinestat = I18N_NOOP( "Intersect with this line" );
+
 static const ArgParser::spec argsspecll[] =
 {
-  { ObjectImp::ID_LineImp, 2 }
+  { ObjectImp::ID_LineImp, constructlinestat },
+  { ObjectImp::ID_LineImp, constructlinestat }
 };
 
 LineLineIntersectionType::LineLineIntersectionType()
   : BuiltinType( "LineLineIntersection",
-                 argsspecll, 1 )
+                 argsspecll, 2 )
 {
 }
 
@@ -117,9 +120,9 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents ) const
 
 static const ArgParser::spec argsspeclcu[] =
 {
-  { ObjectImp::ID_CubicImp, 1 },
-  { ObjectImp::ID_LineImp, 1 },
-  { ObjectImp::ID_IntImp, 1 }
+  { ObjectImp::ID_CubicImp, I18N_NOOP( "Intersect with this cubic" ) },
+  { ObjectImp::ID_LineImp, I18N_NOOP( "Intersect with this line" ) },
+  { ObjectImp::ID_IntImp, "param" }
 };
 
 LineCubicIntersectionType::LineCubicIntersectionType()

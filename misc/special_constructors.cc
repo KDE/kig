@@ -98,7 +98,8 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
 
 static const struct ArgParser::spec argsspecpp[] =
 {
-  { ObjectImp::ID_PointImp, 2 }
+  { ObjectImp::ID_PointImp, "moving" },
+  { ObjectImp::ID_PointImp, "following" }
 };
 
 LocusConstructor::LocusConstructor()
@@ -161,4 +162,12 @@ Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget
   RealObject* ret = ObjectFactory::instance()->locus( parents );
   assert( ret );
   return Objects( ret );
+}
+
+QString LocusConstructor::useText( const Object& o, const Objects& ) const
+{
+  if ( o.inherits( Object::ID_RealObject ) &&
+       static_cast<const RealObject&>( o ).type()->inherits( ObjectType::ID_ConstrainedPointType )
+    ) return i18n( "Moving point" );
+  else return i18n( "Dependent point" );
 }

@@ -65,11 +65,11 @@ public:
                            KigWidget& v
     ) const = 0;
 
-  // TODO
-//   // return a
-//   virtual QString useText( const Object& o,
-//                            const Objects& sel
-//     ) const = 0;
+  // return a string describing what you would use o for if it were
+  // selected...
+  virtual QString useText( const Object& o, const Objects& sel,
+                           const KigDocument& d, const KigWidget& v
+    ) const = 0;
 
   // show a preliminary version of what you would do when handleArgs
   // would be called..  E.g. if this constructor normally constructs a
@@ -121,6 +121,9 @@ public:
 
   virtual void drawprelim( KigPainter& p,
                            const Objects& parents ) const = 0;
+
+  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+                   const KigWidget& v ) const;
 
   virtual Objects build(
     const Objects& os,
@@ -217,6 +220,9 @@ public:
                       const KigDocument& d,
                       const KigWidget& v
     ) const;
+
+  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+                   const KigWidget& v ) const;
 
   void handleArgs( const Objects& os, KigDocument& d, KigWidget& v ) const;
 

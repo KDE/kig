@@ -24,9 +24,16 @@
 #include "object.h"
 
 #include "../misc/common.h"
+#include "../misc/i18n.h"
+
+static const ArgParser::spec argsspecSegmentAB[] =
+{
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a segment from this point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a segment to this point" ) }
+};
 
 SegmentABType::SegmentABType()
-  : ObjectABType( "SegmentAB" )
+  : ObjectABType( "SegmentAB", argsspecSegmentAB, 2 )
 {
 }
 
@@ -45,8 +52,16 @@ ObjectImp* SegmentABType::calc( const Coordinate& a, const Coordinate& b ) const
   return new SegmentImp( a, b );
 }
 
+static const char* constructlineabstat = I18N_NOOP( "Construct a line through this point" );
+
+static const ArgParser::spec argsspecLineAB[] =
+{
+  { ObjectImp::ID_PointImp, constructlineabstat },
+  { ObjectImp::ID_PointImp, constructlineabstat }
+};
+
 LineABType::LineABType()
-  : ObjectABType( "LineAB" )
+  : ObjectABType( "LineAB", argsspecLineAB, 2 )
 {
 }
 
@@ -65,9 +80,14 @@ ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
   return new LineImp( a, b );
 }
 
+static const ArgParser::spec argsspecRayAB[] =
+{
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a ray from this point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a ray through this point" ) }
+};
 
 RayABType::RayABType()
-  : ObjectABType( "RayAB" )
+  : ObjectABType( "RayAB", argsspecRayAB, 2 )
 {
 }
 
@@ -100,8 +120,14 @@ ObjectImp* LinePerpendLPType::calc(
   return new LineImp( b, p );
 }
 
+static const ArgParser::spec argsspecLineParallel[] =
+{
+  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct a parallel of this line" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a parallel through this point" ) }
+};
+
 LineParallelLPType::LineParallelLPType()
-  : ObjectLPType( "LineParallel" )
+  : ObjectLPType( "LineParallel", argsspecLineParallel, 2 )
 {
 }
 
@@ -123,8 +149,14 @@ ObjectImp* LineParallelLPType::calc(
   return new LineImp( r, b );
 }
 
+static const ArgParser::spec argsspecLinePerpend[] =
+{
+  { ObjectImp::ID_LineImp, I18N_NOOP( "Construct a perpendicular of this line" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a perpendicular through this point" ) }
+};
+
 LinePerpendLPType::LinePerpendLPType()
-  : ObjectLPType( "LinePerpend" )
+  : ObjectLPType( "LinePerpend", argsspecLinePerpend, 2 )
 {
 }
 

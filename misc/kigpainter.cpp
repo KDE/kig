@@ -84,8 +84,9 @@ void KigPainter::drawSegment( const Coordinate& from, const Coordinate& to )
 
 void KigPainter::drawFatPoint( const Coordinate& p )
 {
+  int twidth = width == -1 ? 5 : width;
   mP.setPen( QPen( color, 1, style ) );
-  double radius = width * pixelWidth();
+  double radius = twidth * pixelWidth();
   setBrushStyle( Qt::SolidPattern );
   Coordinate rad( radius, radius );
   rad /= 2;
@@ -95,7 +96,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
   QRect qr = toScreen( r );
   mP.drawEllipse( qr );
   if( mNeedOverlay ) mOverlay.push_back( qr );
-  mP.setPen( QPen( color, width, style ) );
+  mP.setPen( QPen( color, twidth, style ) );
 }
 
 void KigPainter::drawPoint( const Coordinate& p )
@@ -132,20 +133,20 @@ const Rect KigPainter::boundingRect( const Rect& r, const QString s,
 void KigPainter::setColor( const QColor& c )
 {
   color = c;
-  mP.setPen( QPen( color, width, style ) );
+  mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
 void KigPainter::setStyle( const PenStyle c )
 {
   style = c;
-  mP.setPen( QPen( color, width, style ) );
+  mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
-void KigPainter::setWidth( const uint c )
+void KigPainter::setWidth( const int c )
 {
   width = c;
   if (c > 0) overlayenlarge = c - 1;
-  mP.setPen( QPen( color, width, style ) );
+  mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
 void KigPainter::setPen( const QPen& p )

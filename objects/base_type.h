@@ -21,15 +21,17 @@
 
 #include "object_type.h"
 
+#include "../misc/argsparser.h"
+
 class LineData;
 
 class ObjectABType
   : public BuiltinType
 {
-  static const struct ArgParser::spec argsspec[];
 protected:
-  ObjectABType( const char* fulltypename );
+  ObjectABType( const char* fulltypename, const ArgParser::spec* argsspec, int n );
   ~ObjectABType();
+public:
   ObjectImp* calc( const Args& args ) const;
   bool canMove() const;
   void move( Object* o, const Coordinate& from, const Coordinate& dist ) const;
@@ -37,21 +39,11 @@ protected:
   virtual ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const = 0;
 };
 
-class ObjectABCType
-  : public BuiltinType
-{
-  static const struct ArgParser::spec argsspec[];
-protected:
-  ObjectABCType( const char* fulltypename );
-  ~ObjectABCType();
-};
-
 class ObjectLPType
   : public BuiltinType
 {
-  static const struct ArgParser::spec argsspec[];
 protected:
-  ObjectLPType( const char* fullname );
+  ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n );
   ~ObjectLPType();
 public:
   ObjectImp* calc( const Args& args ) const;

@@ -22,8 +22,16 @@
 #include "bogus_imp.h"
 #include "point_imp.h"
 
+static const char* constructcirclethroughpointstat = I18N_NOOP( "Construct a circle through this point" );
+
+static const ArgParser::spec argsspecCircleBCP[] =
+{
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a circle with this center" ) },
+  { ObjectImp::ID_PointImp, constructcirclethroughpointstat }
+};
+
 CircleBCPType::CircleBCPType()
-  : ObjectABType( "CircleBCP" )
+  : ObjectABType( "CircleBCP", argsspecCircleBCP, 2 )
 {
 }
 
@@ -48,8 +56,15 @@ const CircleBTPType* CircleBTPType::instance()
   return &t;
 }
 
+static const ArgParser::spec argsspecCircleBTP[] =
+{
+  { ObjectImp::ID_PointImp, constructcirclethroughpointstat },
+  { ObjectImp::ID_PointImp, constructcirclethroughpointstat },
+  { ObjectImp::ID_PointImp, constructcirclethroughpointstat }
+};
+
 CircleBTPType::CircleBTPType()
-  : ObjectABCType( "CircleBTP" )
+  : ObjectType( "CircleBTP", argsspecCircleBTP, 3 )
 {
 }
 

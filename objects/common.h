@@ -24,6 +24,7 @@
 #include <qcstring.h>
 #include <qvaluelist.h>
 #include "../misc/objects.h"
+#include "../misc/i18n.h"
 
 class Object;
 class RealObject;
