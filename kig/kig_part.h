@@ -235,6 +235,16 @@ protected:
   // these objects are moving...
   Objects movingObjects;
 
+  // Coordinates: there are two systems:
+  // 1 the basic system, only provides a euclidean geometry with a
+  // center, and a horizontal and vertical distance
+  struct {
+    int xm;
+    int ym;
+    int dx;
+    int dy;
+  } internalCoords;
+
 //   // the coordinatesystem...
 //   CoordinateSystem* coords;
 };
