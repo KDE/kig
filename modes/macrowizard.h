@@ -33,6 +33,9 @@ public:
   void back();
   void next();
   void reject();
+  void accept();
+private slots:
+  void nameTextChanged( const QString& );
 private:
   DefineMacroMode* mmode;
 };

@@ -63,8 +63,9 @@ void DefineMacroMode::updateNexts()
                            !mgiven.empty() );
   mwizard->setNextEnabled( mwizard->mpfinal,
                            mfinal );
-  mwizard->setFinishEnabled( mwizard->mpname,
-                             !mwizard->KLineEdit1->text().isEmpty()
+  mwizard->setFinishEnabled(
+    mwizard->mpname,
+    !mwizard->KLineEdit2->text().isEmpty()
     );
 }
 
@@ -81,15 +82,16 @@ void DefineMacroMode::leftReleased( QMouseEvent* e, KigView* v )
   if ( os.empty() ) return;
   if( mwizard->currentPage() == mwizard->mpgiven )
   {
-    if ( ! (e->state() & (Qt::ControlButton | Qt::ShiftButton ) ) )
+    if ( mgiven.contains( os.front() ) )
     {
-      std::for_each ( mgiven.begin(), mgiven.end(),
-                      std::bind2nd( std::mem_fun( &Object::setSelected ),
-                                    false ) );
-      mgiven.clear();
+      mgiven.remove( os.front() );
+      os.front()->setSelected( false );
+    }
+    else
+    {
+      mgiven.push_back( os.front() );
+      os.front()->setSelected( true );
     };
-    mgiven.push_back( os.front() );
-    os.front()->setSelected( true );
   }
   else if ( mwizard->currentPage() == mwizard->mpfinal )
   {
@@ -157,7 +159,7 @@ void DefineMacroMode::finalPageEntered()
   using std::mem_fun;
   for_each( mDoc->objects().begin(), mDoc->objects().end(),
             bind2nd( mem_fun( &Object::setSelected ), false ) );
-  mfinal->setSelected( true );
+  if ( mfinal ) mfinal->setSelected( true );
   static_cast<KigView*>( mDoc->widget() )->redrawScreen();
 
   updateNexts();
@@ -181,10 +183,16 @@ void DefineMacroMode::finishPressed()
   MType* type = new MType( hier, mwizard->KLineEdit2->text(),
                            mwizard->KLineEdit1->text() );
   Object::types().addType( type );
+  mDoc->addType( type );
   abandonMacro();
 }
 
 void DefineMacroMode::cancelPressed()
 {
   abandonMacro();
+}
+
+void DefineMacroMode::macroNameChanged()
+{
+  updateNexts();
 }

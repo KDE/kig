@@ -188,6 +188,8 @@ public:
 
   KCommandHistory* history();
 
+  void addType( Type* );
+
 protected:
   int numViews;
 

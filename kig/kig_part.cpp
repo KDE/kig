@@ -205,20 +205,7 @@ void KigDocument::setupTypes()
   };
   for ( Types::iterator i = types.begin(); i != types.end(); ++i )
   {
-    Type* t = i->second;
-    // FIXME: memory leak: ConstructAction's aren't delete'd...
-    KAction* a = t->constructAction( this );
-    if ( ! a ) continue;
-    if (t->baseTypeName()==Point::sBaseTypeName())
-      aMNewPoint->insert( a );
-    else if (t->baseTypeName() == Line::sBaseTypeName())
-      aMNewLine->insert( a );
-    else if (t->baseTypeName() == Circle::sBaseTypeName())
-      aMNewCircle->insert( a );
-    else if (t->baseTypeName() == Segment::sBaseTypeName())
-      aMNewSegment->insert( a );
-    else
-      aMNewOther->insert( a );
+    addType( i->second );
   };
 };
 
@@ -463,4 +450,20 @@ void KigDocument::delObjects( const Objects& os )
     dos.upush( (*i)->getAllChildren() );
   if ( dos.empty() ) return;
   mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
+}
+void KigDocument::addType( Type* t )
+{
+  // FIXME: memory leak: ConstructAction's aren't delete'd... ?
+  KAction* a = t->constructAction( this );
+  if ( ! a ) return;
+  if (t->baseTypeName()==Point::sBaseTypeName())
+    aMNewPoint->insert( a );
+  else if (t->baseTypeName() == Line::sBaseTypeName())
+    aMNewLine->insert( a );
+  else if (t->baseTypeName() == Circle::sBaseTypeName())
+    aMNewCircle->insert( a );
+  else if (t->baseTypeName() == Segment::sBaseTypeName())
+    aMNewSegment->insert( a );
+  else
+    aMNewOther->insert( a );
 }

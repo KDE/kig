@@ -47,6 +47,7 @@ public:
   void namePageEntered();
   void finishPressed();
   void cancelPressed();
+  void macroNameChanged();
 
 protected:
   // update the enabled state of the next buttons on the wizard...
