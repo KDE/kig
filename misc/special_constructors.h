@@ -135,6 +135,22 @@ public:
   bool isTransform() const;
 };
 
+class GenericAffinityConstructor
+  : public MergeObjectConstructor
+{
+public:
+  GenericAffinityConstructor();
+  ~GenericAffinityConstructor();
+};
+
+class GenericProjectivityConstructor
+  : public MergeObjectConstructor
+{
+public:
+  GenericProjectivityConstructor();
+  ~GenericProjectivityConstructor();
+};
+
 class GenericIntersectionConstructor
   : public MergeObjectConstructor
 {

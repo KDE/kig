@@ -150,6 +150,19 @@ public:
   bool isTransform() const;
 };
 
+class AffinityB2TrType
+  : public ArgsParserObjectType
+{
+  AffinityB2TrType();
+  ~AffinityB2TrType();
+public:
+  static const AffinityB2TrType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+  bool isTransform() const;
+};
+
 class AffinityGI3PType
   : public ArgsParserObjectType
 {
@@ -157,6 +170,19 @@ class AffinityGI3PType
   ~AffinityGI3PType();
 public:
   static const AffinityGI3PType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+  bool isTransform() const;
+};
+
+class ProjectivityB2QuType
+  : public ArgsParserObjectType
+{
+  ProjectivityB2QuType();
+  ~ProjectivityB2QuType();
+public:
+  static const ProjectivityB2QuType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 

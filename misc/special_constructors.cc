@@ -47,6 +47,7 @@
 #include "../objects/tangent_type.h"
 #include "../objects/centerofcurvature_type.h"
 #include "../objects/polygon_type.h"
+#include "../objects/transform_types.h"
 
 #include <qpen.h>
 
@@ -683,6 +684,78 @@ QString ConicRadicalConstructor::useText( const ObjectCalcer& o, const std::vect
   else
     return i18n( "Construct the Radical Lines of This Conic" );
 }
+
+/*
+ * generic affinity and generic projectivity.  A unique affinity can be
+ * obtained by specifying the image of three points (four for projectivity)
+ * in the end we need, besides the object to be transformed, a total of
+ * six point or (alternatively) two triangles; our affinity will map the
+ * first triangle onto the second with corresponding ordering of their
+ * vertices.  Since we allow for two different ways of specifying the six
+ * points we shall use a Generic constructor, like that for intersections.
+ */
+
+/*
+    c = new SimpleObjectTypeConstructor(
+      ProjectivityB2QuType::instance(),
+      I18N_NOOP( "Generic Projective Transformation" ),
+      I18N_NOOP( "The unique projective transformation that maps 4 given points onto 4 other given points" ),
+      "genericprojectivity" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_projectivityb2qu" ) );
+ */
+
+GenericAffinityConstructor::GenericAffinityConstructor()
+  : MergeObjectConstructor(
+    I18N_NOOP( "Generic Affinity" ),
+    I18N_NOOP( "The unique affinity that maps three points (or a triangle) onto three other points (or a triangle)" ),
+    "genericaffinity" )
+{
+  SimpleObjectTypeConstructor* b2tr = 
+     new SimpleObjectTypeConstructor(
+      AffinityB2TrType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "genericaffinity" );
+
+  SimpleObjectTypeConstructor* gi3p =
+     new SimpleObjectTypeConstructor(
+      AffinityGI3PType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "genericaffinity" );
+
+  merge( b2tr );
+  merge( gi3p );
+}
+
+GenericAffinityConstructor::~GenericAffinityConstructor() {}
+
+GenericProjectivityConstructor::GenericProjectivityConstructor()
+  : MergeObjectConstructor(
+    I18N_NOOP( "Generic Projective Transformation" ),
+    I18N_NOOP( "The unique projective transformation that maps four points (or a quadrilateral) onto four other points (or a quadrilateral)" ),
+    "genericprojectivity" )
+{
+  SimpleObjectTypeConstructor* b2qu =
+     new SimpleObjectTypeConstructor(
+      ProjectivityB2QuType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "genericprojectivity" );
+
+  SimpleObjectTypeConstructor* gi4p =
+     new SimpleObjectTypeConstructor(
+      ProjectivityGI4PType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "genericprojectivity" );
+
+  merge( b2qu );
+  merge( gi4p );
+}
+
+GenericProjectivityConstructor::~GenericProjectivityConstructor() {}
+
+/*
+ * Generic intersection
+ */
 
 GenericIntersectionConstructor::GenericIntersectionConstructor()
   : MergeObjectConstructor(

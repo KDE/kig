@@ -134,8 +134,8 @@
 	<Action name="objects_new_scalingoverline2" />
 	<Action name="objects_new_similitude" />
 	<Action name="objects_new_harmonichomology" />
-	<Action name="objects_new_affinitygi3p" />
-	<Action name="objects_new_projectivitygi4p" />
+	<Action name="objects_new_genericaffinity" />
+	<Action name="objects_new_genericprojectivity" />
 	<Action name="objects_new_castshadow" />
 	<Action name="objects_new_projectiverotation" />
       </Menu>
@@ -250,8 +250,8 @@
     <Action name="objects_new_scalingoverline" />
     <Action name="objects_new_similitude" />
     <Action name="objects_new_harmonichomology" />
-    <Action name="objects_new_affinitygi3p" />
-    <Action name="objects_new_projectivitygi4p" />
+    <Action name="objects_new_genericaffinity" />
+    <Action name="objects_new_genericprojectivity" />
   </ToolBar>
   <ToolBar name="tests_toolbar" position="right">
     <text>Tests</text>

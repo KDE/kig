@@ -400,21 +400,13 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_harmonichomology" ) );
 
-    c = new SimpleObjectTypeConstructor(
-      AffinityGI3PType::instance(),
-      I18N_NOOP( "Generic Affinity" ),
-      I18N_NOOP( "The unique affinity that maps 3 given points onto 3 other given points" ),
-      "genericaffinity" );
+    c = new GenericAffinityConstructor();
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_affinitygi3p" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_genericaffinity" ) );
 
-    c = new SimpleObjectTypeConstructor(
-      ProjectivityGI4PType::instance(),
-      I18N_NOOP( "Generic Projective Transformation" ),
-      I18N_NOOP( "The unique projective transformation that maps 4 given points onto 4 other given points" ),
-      "genericprojectivity" );
+    c = new GenericProjectivityConstructor();
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_projectivitygi4p" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_genericprojectivity" ) );
 
     c = new SimpleObjectTypeConstructor(
       CastShadowType::instance(),

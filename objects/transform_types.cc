@@ -21,6 +21,7 @@
 #include "point_imp.h"
 #include "line_imp.h"
 #include "other_imp.h"
+#include "polygon_imp.h"
 #include "../misc/coordinate.h"
 #include "../misc/kigtransform.h"
 
@@ -389,6 +390,48 @@ ObjectImp* HarmonicHomologyType::calc( const Args& args, const KigDocument& ) co
     Transformation::harmonicHomology( center, axis ) );
 }
 
+static const ArgsParser::spec argsspecAffinityB2Tr[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Generic affinity of this object" ),
+    I18N_NOOP( "Select the object to transform..." ), false },
+  { PolygonImp::stype3(), I18N_NOOP( "Map this triangle" ),
+    I18N_NOOP( "Select the triangle that has to be transformed onto a given triangle..." ), false },
+  { PolygonImp::stype3(), I18N_NOOP( "onto this other triangle" ),
+    I18N_NOOP( "Select the triangle that is the image by the affinity of the first triangle..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AffinityB2TrType )
+
+AffinityB2TrType::AffinityB2TrType()
+  : ArgsParserObjectType( "AffinityB2Tr", argsspecAffinityB2Tr, 3 )
+{
+}
+
+AffinityB2TrType::~AffinityB2TrType()
+{
+}
+
+const AffinityB2TrType* AffinityB2TrType::instance()
+{
+  static const AffinityB2TrType t;
+  return &t;
+}
+
+ObjectImp* AffinityB2TrType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  std::vector<Coordinate> frompoints = static_cast<const PolygonImp*>( args[1] )->points();
+  std::vector<Coordinate> topoints = static_cast<const PolygonImp*>( args[2] )->points();
+
+  bool valid = true;
+  Transformation t = Transformation::affinityGI3P( frompoints, topoints,
+        valid );
+
+  if (valid == false) return new InvalidImp;
+  return args[0]->transform( t );
+}
+
 static const ArgsParser::spec argsspecAffinityGI3P[] =
 {
   { ObjectImp::stype(), I18N_NOOP( "Generic affinity of this object" ),
@@ -440,6 +483,48 @@ ObjectImp* AffinityGI3PType::calc( const Args& args, const KigDocument& ) const
 
   bool valid = true;
   Transformation t = Transformation::affinityGI3P( frompoints, topoints,
+        valid );
+
+  if (valid == false) return new InvalidImp;
+  return args[0]->transform( t );
+}
+
+static const ArgsParser::spec argsspecProjectivityB2Qu[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Generic projective transformation of this object" ),
+    I18N_NOOP( "Select the object to transform..." ), false },
+  { PolygonImp::stype4(), I18N_NOOP( "Map this quadrilateral" ),
+    I18N_NOOP( "Select the quadrilateral that has to be transformed onto a given quadrilateral..." ), false },
+  { PolygonImp::stype4(), I18N_NOOP( "onto this other quadrilateral" ),
+    I18N_NOOP( "Select the quadrilateral that is the image by the projective transformation of the first quadrilateral..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ProjectivityB2QuType )
+
+ProjectivityB2QuType::ProjectivityB2QuType()
+  : ArgsParserObjectType( "ProjectivityB2Qu", argsspecProjectivityB2Qu, 3 )
+{
+}
+
+ProjectivityB2QuType::~ProjectivityB2QuType()
+{
+}
+
+const ProjectivityB2QuType* ProjectivityB2QuType::instance()
+{
+  static const ProjectivityB2QuType t;
+  return &t;
+}
+
+ObjectImp* ProjectivityB2QuType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  std::vector<Coordinate> frompoints = static_cast<const PolygonImp*>( args[1] )->points();
+  std::vector<Coordinate> topoints = static_cast<const PolygonImp*>( args[2] )->points();
+
+  bool valid = true;
+  Transformation t = Transformation::projectivityGI4P( frompoints, topoints,
         valid );
 
   if (valid == false) return new InvalidImp;
@@ -595,7 +680,17 @@ const ObjectImpType* HarmonicHomologyType::resultId() const
   return ObjectImp::stype();
 }
 
+const ObjectImpType* AffinityB2TrType::resultId() const
+{
+  return ObjectImp::stype();
+}
+
 const ObjectImpType* AffinityGI3PType::resultId() const
+{
+  return ObjectImp::stype();
+}
+
+const ObjectImpType* ProjectivityB2QuType::resultId() const
 {
   return ObjectImp::stype();
 }
@@ -660,7 +755,17 @@ bool HarmonicHomologyType::isTransform() const
   return true;
 }
 
+bool AffinityB2TrType::isTransform() const
+{
+  return true;
+}
+
 bool AffinityGI3PType::isTransform() const
+{
+  return true;
+}
+
+bool ProjectivityB2QuType::isTransform() const
 {
   return true;
 }
