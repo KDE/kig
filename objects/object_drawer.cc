@@ -153,8 +153,7 @@ int ObjectDrawer::pointStyleFromString( QString& style )
     return 3;
   else if ( style == "Cross" )
     return 4;
-  assert( false );
-  return -1;
+  return 0;
 }
 
 QString ObjectDrawer::pointStyleToString() const

@@ -23,8 +23,11 @@
 #include "point_imp.h"
 #include "circle_imp.h"
 #include "line_imp.h"
+#include "object_calcer.h"
 #include "../misc/conic-common.h"
 #include "../misc/common.h"
+#include "../kig/kig_commands.h"
+#include "../kig/kig_part.h"
 
 #include <klocale.h>
 
@@ -626,5 +629,29 @@ const ObjectImpType* ConicAsymptoteType::resultId() const
 const ObjectImpType* ConicRadicalType::resultId() const
 {
   return LineImp::stype();
+}
+
+QStringList ConicRadicalType::specialActions() const
+{
+  QStringList ret;
+  ret << i18n( "Switch Radical Lines" );
+  return ret;
+}
+
+void ConicRadicalType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& t,
+                                      KigDocument& d, KigWidget&, NormalMode& ) const
+{
+  assert( i == 0 );
+  std::vector<ObjectCalcer*> parents = t.parents();
+  assert( dynamic_cast<ObjectConstCalcer*>( parents[3] ) );
+  ObjectConstCalcer* zeroindexo = static_cast<ObjectConstCalcer*>( parents[3] );
+  MonitorDataObjects mon( zeroindexo );
+  assert( zeroindexo->imp()->inherits( IntImp::stype() ) );
+  int oldzeroindex = static_cast<const IntImp*>( zeroindexo->imp() )->data();
+  int newzeroindex = oldzeroindex % 3 + 1;
+  zeroindexo->setImp( new IntImp( newzeroindex ) );
+  KigCommand* kc = new KigCommand( d, "Switch Conic Radical Lines" );
+  mon.finish( kc );
+  d.history()->addCommand( kc );
 }
 

@@ -1,3 +1,11 @@
+2004-04-27  Dominique Devriese  <devriese@kde.org>
+
+	* Fix a stupid bug in the last commit which caused Kig to crash on
+	older Kig files.
+
+	* Make it possible to switch the radical lines of a conic that are
+	shown.
+
 2004-04-24  Dominique Devriese  <devriese@kde.org>
 
 	* Add a vector sum object.

@@ -97,14 +97,15 @@ std::vector<ObjectHolder*> ConicRadicalConstructor::build( const std::vector<Obj
 {
   using namespace std;
   std::vector<ObjectHolder*> ret;
+  ObjectCalcer* zeroindexcalcer = new ObjectConstCalcer( new IntImp( 1 ) );
   for ( int i = -1; i < 2; i += 2 )
   {
     std::vector<ObjectCalcer*> args;
     std::copy( os.begin(), os.end(), back_inserter( args ) );
     args.push_back( new ObjectConstCalcer( new IntImp( i ) ) );
-    // TODO ? use only one zeroindex dataobject, so that if you switch
-    // one radical line around, then the other switches along..
-    args.push_back( new ObjectConstCalcer( new IntImp( 1 ) ) );
+    // we use only one zeroindex dataobject, so that if you switch one
+    // radical line around, then the other switches along..
+    args.push_back( zeroindexcalcer );
     ret.push_back(
       new ObjectHolder( new ObjectTypeCalcer( mtype, args ) ) );
   };
