@@ -250,7 +250,7 @@ double calcCubicRootwithNewton ( double xmin, double xmax, double a,
       {
         // Newton scheme did not converge..
         // we should end up with an invalid Coordinate
-        return HUGE_VAL;
+        return double_inf;
       };
       return x;
     }
