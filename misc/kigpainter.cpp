@@ -300,7 +300,7 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
     if (tR.intersects(border)) mOverlay.push_back( toScreenEnlarge( tR ) );
     if (++counter > 100)
     {
-      kdError()<< k_funcinfo << "counter got too big :( " << endl;
+      kdDebug()<< k_funcinfo << "counter got too big :( " << endl;
       break;
     }
   }
@@ -387,7 +387,7 @@ QRect KigPainter::toScreenEnlarge( const Rect r ) const
   if ( overlayenlarge == 0 ) return msi.toScreen( r );
 
   QRect qr = msi.toScreen( r );
-  qr.moveBy ( -overlayenlarge, -overlayenlarge ); 
+  qr.moveBy ( -overlayenlarge, -overlayenlarge );
   int w = qr.width();
   int h = qr.height();
   qr.setWidth (w + 2*overlayenlarge);
