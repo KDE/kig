@@ -21,6 +21,15 @@
 
 #include "object_type.h"
 
+/**
+ * conic line intersection.  This also serves as circle-line
+ * intersection, in which case it uses the easier way to calc
+ * ...  There is no separate CircleLineIntersectionPoint, since the
+ * difference between both types is quite small ( same number of
+ * intersections with a line, for example.. ), and since with
+ * transformations, Circles might dynamically change types to
+ * Conics..
+ */
 class ConicLineIntersectionType
   : public ObjectType
 {
