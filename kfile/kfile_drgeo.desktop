@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Type=Service
 Name=Dr. Geo Info
+Name[ar]=Dr. Geo نظام معلومات لـ
 Name[ca]=Informació Dr. Geo
 Name[da]=Dr. Geo info
 Name[es]=Información de Dr. Geo
