@@ -303,11 +303,8 @@ bool KigDocument::openFile()
         );
     return false;
   };
-  Objects os;
-  if ( filter->load (m_file, os) != KigFilter::OK )
+  if ( filter->load (m_file, *this) != KigFilter::OK )
   {
-    delete_all( os.begin(), os.end() );
-    os.clear();
     KMessageBox::sorry( widget(), i18n(
         "The file you tried to open contains some elements that Kig currently "
         "doesn't understand.  It is possible that the file somehow got "
@@ -320,13 +317,10 @@ bool KigDocument::openFile()
     return false;
   };
 
-  delete_all( mObjs.begin(), mObjs.end() );
-  mObjs.clear();
-  mObjs = os;
   setModified(false);
   mhistory->clear();
 
-  Objects tmp = calcPath( os );
+  Objects tmp = calcPath( mObjs );
   tmp.calc();
   emit recenterScreen();
 
@@ -358,7 +352,7 @@ bool KigDocument::saveFile()
     return false;
   };
 
-  KigFilter::Result result = filter->save( mObjs, m_file );
+  KigFilter::Result result = filter->save( *this, m_file );
   if ( result == KigFilter::OK )
   {
     setModified ( false );
