@@ -19,6 +19,8 @@
 #include "property.h"
 
 #include "../objects/object.h"
+#include "../misc/coordinate.h"
+#include "../misc/coordinate_system.h"
 
 #include <qstring.h>
 
@@ -53,10 +55,20 @@ Property::Property( const double d )
 
 Property::~Property()
 {
-  if ( mtype == String ) delete mdata.qs;
+  switch( mtype )
+  {
+  case String:
+    delete mdata.qs;
+    break;
+  case Coord:
+    delete mdata.coord;
+    break;
+  default:
+    break;
+  };
 }
 
-QString Property::toString()
+QString Property::toString( const CoordinateSystem& cs )
 {
   switch( mtype )
   {
@@ -64,6 +76,8 @@ QString Property::toString()
     return *mdata.qs;
   case Double:
     return QString::number( mdata.d );
+  case Coord:
+    return cs.fromScreen( *mdata.coord );
   default:
     assert( false );
   };
@@ -79,6 +93,18 @@ Property TextLabelProperty::value()
 bool TextLabelProperty::valid()
 {
   return obj && index != static_cast<unsigned int>( -1 );
+}
+
+Property::Property( const Coordinate& c )
+{
+  mtype = Coord;
+  mdata.coord = new Coordinate( c );
+}
+
+const Coordinate Property::coordData()
+{
+  assert( mtype == Coord );
+  return *mdata.coord;
 }
 
 

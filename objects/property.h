@@ -22,6 +22,8 @@
 
 class QString;
 class Object;
+class Coordinate;
+class CoordinateSystem;
 
 class Property
 {
@@ -29,6 +31,7 @@ class Property
   {
     QString* qs;
     double d;
+    Coordinate* coord;
   } data_t;
 
   int mtype;
@@ -37,17 +40,20 @@ class Property
 public:
   Property( const QString& s );
   Property( const double d );
+  Property( const Coordinate& c );
   ~Property();
 
   static const int Double = 0;
   static const int String = 1;
+  static const int Coord = 2;
 
-  QString toString();
+  QString toString( const CoordinateSystem& cs );
 
   // what type of property is this ?
   const int type();
   const double doubleData();
   const QString qstringData();
+  const Coordinate coordData();
 };
 
 // this struct holds information about how to reach a given

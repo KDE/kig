@@ -1,6 +1,5 @@
 - implement Circle by center and radius
 - rearrange some of the icons to match KGeo's appearance..
-- more flexible textlabels ( with variable parts, cf. QString::arg() )
 - figure out some cool way to "attach" a textlabel to an object..
 - move stillPix into movingMode, so the other modes won't suffer from
   its overhead...  

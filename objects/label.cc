@@ -28,15 +28,6 @@
 #include <functional>
 #include <algorithm>
 
-namespace {
-  class getObj
-    : public std::unary_function<TextLabelProperty, Object*>
-  {
-  public:
-    inline Object* operator()( const TextLabelProperty& p ) const { return p.obj; };
-  };
-};
-
 TextLabel::TextLabel( const Objects& os )
   : Object(), mprops( os.begin(), os.end() )
 {
@@ -216,7 +207,7 @@ void TextLabel::drawPrelim(KigPainter&, const Object* ) const
   // noop
 }
 
-void TextLabel::calc( const ScreenInfo& )
+void TextLabel::calc( const ScreenInfo& si )
 {
   mcurtext = mtext;
   for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
@@ -230,6 +221,8 @@ void TextLabel::calc( const ScreenInfo& )
       break;
     case Property::String:
       mcurtext = mcurtext.arg( prop.qstringData() );
+      break;
+    case Property::Coord:
       break;
     default:
       assert( false );

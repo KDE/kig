@@ -54,6 +54,16 @@ TextLabelConstructionMode::TextLabelConstructionMode( NormalMode* b,
 void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
 {
   mplc = e->pos();
+  switch( mwawd )
+  {
+  case RequestingText:
+  case SelectingArgs:
+    mwiz->raise();
+    mwiz->setActiveWindow();
+    break;
+  default:
+    break;
+  };
 }
 
 void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
@@ -230,6 +240,8 @@ void TextLabelConstructionMode::updateWiz()
 {
   QString s = mwiz->labelTextInput->text();
   uint percentcount = percentCount( s );
+  if ( mlpc != percentcount ) margs.clear();
+
   if ( percentcount == 0 && ! s.isEmpty() )
   {
     mwiz->setNextEnabled( mwiz->enter_text_page, false );
@@ -288,7 +300,7 @@ void TextLabelConstructionMode::updateLinksLabel()
     {
       // if the user has already selected a property, then we show its
       // value...
-      linktext = ( margs[count].value() ).toString();
+      linktext = ( margs[count].value() ).toString( *mDoc->coordinateSystem() );
     }
     else
       // otherwise, we show a stub...

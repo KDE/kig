@@ -238,21 +238,34 @@ const Coordinate Segment::p2() const
 
 const uint Segment::numberOfProperties()
 {
-  return AbstractLine::numberOfProperties() + 1;
+  return AbstractLine::numberOfProperties() + 3;
 }
 
 const Property Segment::property( uint which )
 {
   if ( which < AbstractLine::numberOfProperties() )
     return AbstractLine::property( which );
-  assert( which == AbstractLine::numberOfProperties() );
-  return Property( ( p2() - p1() ).length() );
+  if ( which == AbstractLine::numberOfProperties() )
+  {
+    return Property( ( p2() - p1() ).length() );
+  }
+  else if ( which == AbstractLine::numberOfProperties() + 1 )
+  {
+    return Property( p1() );
+  }
+  else if ( which == AbstractLine::numberOfProperties() + 2 )
+  {
+    return Property( p2() );
+  }
+  else assert( false );
 }
 
 const QStringList Segment::properties()
 {
   QStringList s = AbstractLine::properties();
   s << "Length";
+  s << "Start point";
+  s << "End point";
   assert( s.size() == Segment::numberOfProperties() );
   return s;
 }

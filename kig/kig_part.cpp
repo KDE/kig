@@ -655,3 +655,8 @@ bool KigDocument::internalSaveAs()
   saveAs(file_name);
   return true;
 }
+
+KigView* KigDocument::mainWidget()
+{
+  return m_widget;
+}

@@ -74,6 +74,8 @@ public:
 
   static myvector<KigDocument*>& documents();
 
+  KigView* mainWidget();
+
 /*********************** KPart interface *************************/
 
 public:
