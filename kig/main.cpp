@@ -43,6 +43,14 @@ public:
 
 int KigApplication::newInstance()
 {
+  static bool first = true;
+  if (isRestored() && first) 
+  {
+    first = false;
+    return 0;
+  }
+  first = false;
+  
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
   handleArgs(args);
   args->clear();
