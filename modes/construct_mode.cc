@@ -53,13 +53,13 @@ void ConstructMode::leftClickedObject(
 {
   if ( o && !mparents.contains( o ) && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
   {
-    selectObject( o, p, w );
+    selectObject( o, w );
   }
   else if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
   {
     // add mpt to the document..
     mdoc.addObjects( mpt );
-    selectObject( mpt[2], p, w );
+    selectObject( mpt[2], w );
     // get a new mpt for our further use..
     mpt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ),
                                                     mdoc, w );
@@ -76,7 +76,7 @@ void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
   {
     mdoc.addObjects( mpt );
 
-    selectObject( mpt[2], p, w );
+    selectObject( mpt[2], w );
 
     mpt = ObjectFactory::instance()->fixedPoint( w.fromScreen( p ) );
   }
@@ -129,7 +129,7 @@ void ConstructMode::mouseMoved( const Objects& os,
   w.updateWidget( pter.overlay() );
 }
 
-void ConstructMode::selectObject( Object* o, const QPoint&, KigWidget& w )
+void ConstructMode::selectObject( Object* o, KigWidget& w )
 {
   mparents.push_back( o );
   o->setSelected( true );
@@ -220,4 +220,13 @@ void PointConstructMode::enableActions()
 void PointConstructMode::cancelConstruction()
 {
   mdoc.doneMode( this );
+}
+
+void ConstructMode::selectObjects( const Objects& os, KigWidget& w )
+{
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    assert( mctor->wantArgs( mparents, mdoc, w ) != ArgsChecker::Complete );
+    selectObject( *i, w );
+  };
 }

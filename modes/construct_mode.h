@@ -37,8 +37,9 @@ class ConstructMode
 
   Objects mparents;
 
-  void selectObject( Object* o, const QPoint& p, KigWidget& w );
 public:
+  void selectObject( Object* o, KigWidget& w );
+  void selectObjects( const Objects& os, KigWidget& w );
   ConstructMode( KigDocument& d, const ObjectConstructor* ctor );
   ~ConstructMode();
 protected:
