@@ -171,8 +171,8 @@ bool Kig::queryClose()
   switch( KMessageBox::warningYesNoCancel 
 	  (
 	   widget(),
-	   i18n("Save changes to document %1 ?").arg(m_part->url().path()),
-	   i18n("Save changes ?")
+	   i18n("Save changes to document %1?").arg(m_part->url().path()),
+	   i18n("Save changes?")
 	   ))
     {
     case KMessageBox::Yes:

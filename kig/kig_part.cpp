@@ -122,14 +122,14 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
 	  (this,
 	   "perpendicular",
 	   i18n("Perpendicular"),
-	   i18n("Construct a line through a point, and perpendicular on "
+	   i18n("Construct a line through a point, and perpendicular to "
 		"another line or segment"),
 	   0));
   addType(new TType<LineParallel>
 	  (this,
 	   "parallel",
 	   i18n("Parallel"),
-	   i18n("Construct a line through a point, and parallel on "
+	   i18n("Construct a line through a point, and parallel to "
 		"another line or segment"),
 	   0));
   // circles
@@ -137,7 +137,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
 	  (this,
 	   "circle",
 	   i18n("Circle by center and point"),
-	   i18n("Construct a circle by its centre and a point "
+	   i18n("Construct a circle by its center and a point "
 		"on its border"),
 	   CTRL+Key_C));
   addType(new TType<CircleBTP>
@@ -167,8 +167,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
 	   "locus",
 	   i18n("Locus"),
 	   i18n("Construct a locus: let one point move around, and record "
-		"the places an other object goes through.  Those together "
-		"form a new object, which is the one where constructing "
+		"the places another object goes through. These together "
+		"form a new object, which is the one being constructed "
 		"here"),
 	   0));
 
