@@ -395,3 +395,133 @@ const QString NormalPoint::sDescription()
     "circle, segment..."
     );
 }
+
+const QCString NormalPoint::vFullTypeName() const
+{
+  return sFullTypeName();
+}
+
+const QCString NormalPoint::sFullTypeName()
+{
+  return "NormalPoint";
+}
+
+const QString NormalPoint::vDescriptiveName() const
+{
+  return sDescriptiveName();
+}
+
+const QString NormalPoint::vDescription() const
+{
+  return sDescription();
+}
+
+const QCString NormalPoint::vIconFileName() const
+{
+  return sIconFileName();
+}
+
+const QCString NormalPoint::sIconFileName()
+{
+  return "point4";
+}
+
+const int NormalPoint::vShortCut() const
+{
+  return sShortCut();
+}
+
+const int NormalPoint::sShortCut()
+{
+  return 0;
+}
+
+void NormalPoint::drawPrelim( KigPainter &, const Object* ) const
+{
+}
+
+QString NormalPoint::wantPoint() const
+{
+  return 0;
+}
+
+FixedPointImp* NormalPointImp::toFixed()
+{
+  return 0;
+}
+
+ConstrainedPointImp* NormalPointImp::toConstrained()
+{
+  return 0;
+}
+
+const FixedPointImp* NormalPointImp::toFixed() const
+{
+  return 0;
+}
+
+const ConstrainedPointImp* NormalPointImp::toConstrained() const
+{
+  return 0;
+}
+
+NormalPointImp* NormalPoint::imp()
+{
+  return mimp;
+}
+
+const NormalPointImp* NormalPoint::imp() const
+{
+  return mimp;
+}
+
+NormalPoint* NormalPoint::toNormalPoint()
+{
+  return this;
+}
+
+FixedPointImp* FixedPointImp::toFixed()
+{
+  return this;
+}
+
+const FixedPointImp* FixedPointImp::toFixed() const
+{
+  return this;
+}
+
+QString FixedPointImp::type()
+{
+  return sType();
+}
+
+QString FixedPointImp::sType()
+{
+  return QString::fromUtf8( "Fixed" );
+}
+
+ConstrainedPointImp* ConstrainedPointImp::toConstrained()
+{
+  return this;
+}
+
+const ConstrainedPointImp* ConstrainedPointImp::toConstrained() const
+{
+  return this;
+}
+
+void ConstrainedPointImp::setP( const double p )
+{
+  mparam = p;
+}
+
+double ConstrainedPointImp::getP()
+{
+  return mparam;
+}
+
+QString ConstrainedPointImp::type()
+{
+  return sType();
+}
+

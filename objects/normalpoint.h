@@ -47,10 +47,10 @@ public:
   ~NormalPoint();
   NormalPoint* copy();
 
-  NormalPointImp* imp() { return mimp; };
-  const NormalPointImp* imp() const { return mimp; };
+  NormalPointImp* imp();
+  const NormalPointImp* imp() const;
   void setImp( NormalPointImp* imp );
-  virtual NormalPoint* toNormalPoint() { return this; };
+  virtual NormalPoint* toNormalPoint();
 
   FixedPointImp* fixedImp();
   const FixedPointImp* fixedImp() const;
@@ -71,25 +71,25 @@ public:
   std::map<QCString, QString> getParams();
   void setParams( const std::map<QCString, QString>& m );
 
-  virtual const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName() { return "NormalPoint"; };
-  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  virtual const QCString vFullTypeName() const;
+  static const QCString sFullTypeName();
+  const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
-  const QString vDescription() const { return sDescription(); };
+  const QString vDescription() const;
   static const QString sDescription();
-  const QCString vIconFileName() const { return sIconFileName(); };
-  static const QCString sIconFileName() { return "point4"; };
-  const int vShortCut() const { return sShortCut(); };
-  static const int sShortCut() { return 0; };
+  const QCString vIconFileName() const;
+  static const QCString sIconFileName();
+  const int vShortCut() const;
+  static const int sShortCut();
 
   static KAction* sConstructAction( KigDocument*, Type*, int );
 
   // no drawPrelim...
-  virtual void drawPrelim( KigPainter &, const Object* ) const {};
+  virtual void drawPrelim( KigPainter &, const Object* ) const;
 
   // passing arguments
   virtual QString wantArg(const Object*) const;
-  virtual QString wantPoint() const { return 0; };
+  virtual QString wantPoint() const;
   virtual bool selectArg( Object *);
 
   // no args => no parents
@@ -114,10 +114,10 @@ class NormalPointImp
 
   virtual NormalPointImp* copy( NormalPoint* newParent ) = 0;
 
-  virtual FixedPointImp* toFixed() { return 0; };
-  virtual ConstrainedPointImp* toConstrained() { return 0; };
-  virtual const FixedPointImp* toFixed() const { return 0; };
-  virtual const ConstrainedPointImp* toConstrained() const { return 0; };
+  virtual FixedPointImp* toFixed();
+  virtual ConstrainedPointImp* toConstrained();
+  virtual const FixedPointImp* toFixed() const;
+  virtual const ConstrainedPointImp* toConstrained() const;
 
   virtual void startMove( const Coordinate& c, NormalPoint* p ) = 0;
   virtual void moveTo( const Coordinate& c, NormalPoint* p ) = 0;
@@ -147,8 +147,8 @@ public:
 
   virtual NormalPointImp* copy( NormalPoint* parent );
 
-  FixedPointImp* toFixed() { return this; };
-  const FixedPointImp* toFixed() const { return this; };
+  FixedPointImp* toFixed();
+  const FixedPointImp* toFixed() const;
 
   void setCoord( const Coordinate& c );
   const Coordinate getCoord();
@@ -158,8 +158,8 @@ public:
   virtual void moveTo( const Coordinate& c, NormalPoint* p );
   virtual void stopMove( NormalPoint* p);
 
-  virtual QString type() { return sType(); };
-  static QString sType() { return QString::fromUtf8( "Fixed" ); };
+  virtual QString type();
+  static QString sType();
   virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p );
   virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p );
 
@@ -186,18 +186,18 @@ public:
 
   virtual NormalPointImp* copy( NormalPoint* p );
 
-  virtual ConstrainedPointImp* toConstrained() { return this; };
-  virtual const ConstrainedPointImp* toConstrained() const { return this; };
+  virtual ConstrainedPointImp* toConstrained();
+  virtual const ConstrainedPointImp* toConstrained() const;
 
-  void setP( const double p ) { mparam = p; };
-  double getP() { return mparam; };
+  void setP( const double p );
+  double getP();
 
   virtual void calc( NormalPoint* p );
   virtual void startMove( const Coordinate& c, NormalPoint* );
   virtual void moveTo( const Coordinate& c, NormalPoint* );
   virtual void stopMove( NormalPoint* );
 
-  virtual QString type() { return sType(); };
+  virtual QString type();
   static QString sType();
   virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p );
   virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p );
