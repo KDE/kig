@@ -57,7 +57,7 @@ void EuclideanCoords::drawGrid( KigPainter& p ) const
 {
   // the intervals:
   const double hInterval =
-    static_cast<int>( pow( 10, floor( log10( p.window().width() / 2.5 ) ) ) );
+    pow( 10, floor( log10( p.window().width() / 2.5 ) ) );
   const double vInterval = hInterval;
 
 
@@ -90,24 +90,29 @@ void EuclideanCoords::drawGrid( KigPainter& p ) const
   p.drawSegment( Coordinate( 0, dMinY ), Coordinate( 0, dMaxY ) );
 
   /****** the numbers ******/
+
+  // we don't draw all numbers...
+  const int hStep = (iMaxX - iMinX) >= 10 ? 2 : 1;
+  const int vStep = (iMaxY - iMinY) >= 10 ? 2 : 1;
+
   // x axis
-  for( int i = iMinX; i <= iMaxX; ++i )
+  for( int i = iMinX; i <= iMaxX; i += hStep )
     {
       // we skip 0 since that would look stupid... (the axes going
       // through the 0 etc. )
       if( i == 0 ) continue;
       
       p.drawText(
-		 Rect( Coordinate( i * hInterval, 0 ), hInterval, -vInterval ).normalized(),
+		 Rect( Coordinate( i * hInterval, 0 ), hStep*hInterval, -vInterval ).normalized(),
 		 QString().setNum( i * hInterval ),
 		 AlignLeft | AlignTop
 		 );
     };
   // y axis...
-  for ( int i = iMinY; i <= iMaxY; ++i )
+  for ( int i = iMinY; i <= iMaxY; i += vStep )
     {
       if( i == 0 ) continue;
-      p.drawText ( Rect( Coordinate( 0, i * vInterval ), hInterval, vInterval ).normalized(),
+      p.drawText ( Rect( Coordinate( 0, i * vInterval ), vStep*hInterval, vInterval ).normalized(),
 		   QString().setNum( i * vInterval ),
 		   AlignBottom | AlignLeft
 		   );
