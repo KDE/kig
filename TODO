@@ -5,6 +5,8 @@
 
 * not too hard:
 
+- make stuff from RMB menu's accessible from other places as well.
+
 - write *-filter-status.txt's for the kseg and cabri filters.
 
 - line and half-line by vector.
@@ -47,6 +49,8 @@
 
 * harder:
 
+- allow for using kformula formulas in the document.
+
 - rework the ObjectConstructor and GUIAction stuff into something more
    general, and more clean.  See the comment for
    ObjectConstructor::constructMode().
@@ -66,6 +70,9 @@
   errors on loading
 
 * hard :
+
+- save a "sesssion", i.e.: record how a document is moved, and save it
+   to e.g. a flash file or something like that.
 
 - figure out a way to allow the user to enable and disable certain
   features.  E.g. I have been asked to allow the user to limit himself
