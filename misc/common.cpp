@@ -475,3 +475,6 @@ bool operator==( const LineData& l, const LineData& r )
 {
   return l.a == r.a && l.b == r.b;
 };
+
+const double double_inf = HUGE_VAL;
+

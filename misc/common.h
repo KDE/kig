@@ -45,6 +45,8 @@
 class ObjectImp;
 class KigWidget;
 
+extern const double double_inf;
+
 /**
  * Here, we define some algorithms which we need in
  * various places...

@@ -29,8 +29,6 @@
 #include <math.h>
 #include <klocale.h>
 
-static const double double_inf = HUGE_VAL;
-
 CubicImp::CubicImp( const CubicCartesianData& data )
   : CurveImp(), mdata( data )
 {

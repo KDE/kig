@@ -24,6 +24,7 @@
 #include "../misc/object_hierarchy.h"
 #include "../misc/kigpainter.h"
 #include "../misc/coordinate.h"
+#include "../misc/common.h"
 
 #include "../kig/kig_view.h"
 
@@ -32,8 +33,6 @@
 #include <cmath>
 
 using namespace std;
-
-static const double double_inf = HUGE_VAL;
 
 LocusImp::~LocusImp()
 {
