@@ -21,11 +21,11 @@
 
 #include "kig_part.h"
 #include "kig_view.h"
-#include "../objects/normalpoint.h"
+#include "../objects/object_factory.h"
+#include "../objects/object_imp.h"
 #include "../misc/i18n.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/argsparser.h"
-#include "../modes/selectionmode.h"
 
 #include <klineeditdlg.h>
 #include <kmessagebox.h>
@@ -51,8 +51,8 @@ void AddFixedPointAction::slotActivated()
       done = false;
     };
   };
-  NormalPoint* p = NormalPoint::fixedPoint( c );
-  p->calcForWidget( *mdoc->mainWidget()->realWidget() );
+  Object* p = ObjectFactory::instance()->fixedPoint( c );
+  p->calc( *mdoc->mainWidget()->realWidget() );
   mdoc->addObject( p );
 };
 
@@ -76,22 +76,22 @@ TestAction::TestAction( KigDocument* doc, const QIconSet& icon,
 
 const struct ArgParser::spec testspec[] =
 {
-  { Object::AbstractLineT, 2 },
-  { Object::PointT, 1 }
+  { ObjectImp::ID_LineImp, 2 },
+  { ObjectImp::ID_PointImp, 1 }
 };
 
 void TestAction::slotActivated()
 {
-  ArgParser checker( testspec, 2 );
-  StandAloneSelectionMode mode( checker, *mdoc );
-  mode.run( mdoc->mode() );
-  Objects sel = mode.selection();
-  sel = checker.parse( sel );
-  kdDebug() << k_funcinfo << endl
-            << sel.size() << endl;
-  for ( uint i = 0; i < sel.size(); ++i )
-  {
-    kdDebug() << sel[i]->vBaseTypeName() << endl;
-  }
+//   ArgParser checker( testspec, 2 );
+//   StandAloneSelectionMode mode( checker, *mdoc );
+//   mode.run( mdoc->mode() );
+//   Objects sel = mode.selection();
+//   sel = checker.parse( sel );
+//   kdDebug() << k_funcinfo << endl
+//             << sel.size() << endl;
+//   for ( uint i = 0; i < sel.size(); ++i )
+//   {
+//     kdDebug() << sel[i]->vBaseTypeName() << endl;
+//   }
 }
 

@@ -150,6 +150,6 @@
   <Action name="view_fullscreen" />
   <Action name="view_fit_to_page"/>
 </ToolBar>
-<!--<ToolBar name="test"><text>Test</text>
+<ToolBar name="test"><text>Test</text>
   <Action name="test_stuff" />
-</ToolBar>-->
+</ToolBar>

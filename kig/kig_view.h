@@ -72,6 +72,7 @@ class KigWidget : public QWidget
   friend class KigMode;
   friend class NormalMode;
   friend class MovingModeBase;
+  friend class ConstructMode;
   friend class StdConstructionMode;
   friend class PointConstructionMode;
   friend class DefineMacroMode;

@@ -22,8 +22,8 @@
 
 #include "../kig/kig_view.h"
 #include "../objects/object.h"
-#include "../objects/conic.h"
-#include "../objects/cubic.h"
+// #include "../objects/conic.h"
+// #include "../objects/cubic.h"
 #include "common.h"
 #include "coordinate_system.h"
 
@@ -344,7 +344,7 @@ void KigPainter::drawGrid( const CoordinateSystem& c )
 
 void KigPainter::drawObject( const Object* o, bool ss )
 {
-  o->drawWrap( *this, ss );
+  o->draw( *this, ss );
 }
 
 void KigPainter::drawObjects( const Objects& os )
@@ -387,7 +387,7 @@ QRect KigPainter::toScreenEnlarge( const Rect r ) const
   if ( overlayenlarge == 0 ) return msi.toScreen( r );
 
   QRect qr = msi.toScreen( r );
-  qr.moveBy ( -overlayenlarge, -overlayenlarge ); 
+  qr.moveBy ( -overlayenlarge, -overlayenlarge );
   int w = qr.width();
   int h = qr.height();
   qr.setWidth (w + 2*overlayenlarge);
@@ -474,249 +474,243 @@ struct workitem
   coordparampair second;
   Rect		 *overlay;
 };
-//typedef std::pair<coordparampair, coordparampair> workitem;
 
-void KigPainter::drawConic( const ConicPolarEquationData& data )
-{
-  // @author Maurizio Paolini wrote an original version of this, ( the
-  // math in conicGetCoord() is still his ), I ( Dominique ) adapted
-  // it afterwards to use a distribution mechanism as explained
-  // below. )
+// void KigPainter::drawConic( const ConicPolarEquationData& data )
+// {
+//   // @author Maurizio Paolini wrote an original version of this, ( the
+//   // math in conicGetCoord() is still his ), I ( Dominique ) adapted
+//   // it afterwards to use a distribution mechanism as explained
+//   // below. )
 
-  // this function works more or less like Locus::calcForWidget():
-  // we calc some initial points, draw them, and then keep checking if
-  // the point with the param in between two other points.  If the
-  // point with that param is not too close to one of them, and if it
-  // is in the current window(), then we draw it, and put it on the
-  // stack for further processing...
+//   // this function works more or less like Locus::calcForWidget():
+//   // we calc some initial points, draw them, and then keep checking if
+//   // the point with the param in between two other points.  If the
+//   // point with that param is not too close to one of them, and if it
+//   // is in the current window(), then we draw it, and put it on the
+//   // stack for further processing...
 
-  Coordinate focus1 = data.focus1;
-  double pdimen = data.pdimen;
-  double ecostheta0 = data.ecostheta0;
-  double esintheta0 = data.esintheta0;
+//   Coordinate focus1 = data.focus1;
+//   double pdimen = data.pdimen;
+//   double ecostheta0 = data.ecostheta0;
+//   double esintheta0 = data.esintheta0;
 
-  // we manage our own overlay
-  bool tNeedOverlay = mNeedOverlay;
-  mNeedOverlay = false;
-  QPen pen = mP.pen();
-  pen.setCapStyle( Qt::RoundCap );
-  mP.setPen( pen );
+//   // we manage our own overlay
+//   bool tNeedOverlay = mNeedOverlay;
+//   mNeedOverlay = false;
+//   QPen pen = mP.pen();
+//   pen.setCapStyle( Qt::RoundCap );
+//   mP.setPen( pen );
 
-  // this stack contains pairs of Coordinates that we still need to
-  // process:
-  std::stack<workitem> workstack;
-  // mp: this stack contains all the generated overlays:
-  // the strategy for generating the overlay structure is the same
-  // recursive-like used to draw the segments: a new rectangle is
-  // generated whenever the length of a segment becomes lower than
-  // overlayRectSize(), or if the segment would be draw anyway
-  // to avoid strange things happening we impose that the distance
-  // in parameter space be less than a threshold before generating
-  // any overlay.
-  //
-  // The third parameter in workitem is a pointer into a stack of
-  // all generated rectangles (in real coordinate space); if 0
-  // there is no rectangles associated to that segment yet.
-  //
-  // Using the final mOverlay stack would be much more efficient, but
-  // 1. needs transformations into window space
-  // 2. would be more difficult to drop rectangles not intersecting
-  //    the window.
-  std::stack<Rect> overlaystack;
+//   // this stack contains pairs of Coordinates that we still need to
+//   // process:
+//   std::stack<workitem> workstack;
+//   // mp: this stack contains all the generated overlays:
+//   // the strategy for generating the overlay structure is the same
+//   // recursive-like used to draw the segments: a new rectangle is
+//   // generated whenever the length of a segment becomes lower than
+//   // overlayRectSize(), or if the segment would be draw anyway
+//   // to avoid strange things happening we impose that the distance
+//   // in parameter space be less than a threshold before generating
+//   // any overlay.
+//   //
+//   // The third parameter in workitem is a pointer into a stack of
+//   // all generated rectangles (in real coordinate space); if 0
+//   // there is no rectangles associated to that segment yet.
+//   //
+//   // Using the final mOverlay stack would be much more efficient, but
+//   // 1. needs transformations into window space
+//   // 2. would be more difficult to drop rectangles not intersecting
+//   //    the window.
+//   std::stack<Rect> overlaystack;
 
-  // mp: the original version in which an initial set of 20 intervals
-  // were pushed onto the stack is replaced by a single interval and
-  // by forcing subdivision till h < hmax (with more or less the same
-  // final result).
-  // First push the [0,2*pi] interval into the stack:
-  workstack.push( workitem(
-                    coordparampair( 0, conicGetCoord( 0, ecostheta0, esintheta0,
-                                                      pdimen, focus1 ) ),
-                    coordparampair( 2*M_PI, conicGetCoord( 2*M_PI, ecostheta0, esintheta0,
-                                                           pdimen, focus1 ) ),
-                    0 ) );
+//   // mp: the original version in which an initial set of 20 intervals
+//   // were pushed onto the stack is replaced by a single interval and
+//   // by forcing subdivision till h < hmax (with more or less the same
+//   // final result).
+//   // First push the [0,2*pi] interval into the stack:
+//   workstack.push( workitem(
+//                     coordparampair( 0, conicGetCoord( 0, ecostheta0, esintheta0,
+//                                                       pdimen, focus1 ) ),
+//                     coordparampair( 2*M_PI, conicGetCoord( 2*M_PI, ecostheta0, esintheta0,
+//                                                            pdimen, focus1 ) ),
+//                     0 ) );
 
-  // maxlength is the square of the maximum size that we allow
-  // between two points..
-  double maxlength = 1.5 * pixelWidth();
-  maxlength *= maxlength;
-  // error squared is required to be less that sigma (half pixel)
-  double sigma = maxlength/4;
-  // distance between two parameter values cannot be too small
-  double hmin = 1e-4;
-  // distance between two parameter values cannot be too large
-  double hmax = M_PI/20;
-  double hmaxoverlay = M_PI/4;
+//   // maxlength is the square of the maximum size that we allow
+//   // between two points..
+//   double maxlength = 1.5 * pixelWidth();
+//   maxlength *= maxlength;
+//   // error squared is required to be less that sigma (half pixel)
+//   double sigma = maxlength/4;
+//   // distance between two parameter values cannot be too small
+//   double hmin = 1e-4;
+//   // distance between two parameter values cannot be too large
+//   double hmax = M_PI/20;
+//   double hmaxoverlay = M_PI/4;
 
-  int count = 1;               // the number of segments we've already
-                               // visited...
-  static const int maxnumberofpoints = 1000;
+//   int count = 1;               // the number of segments we've already
+//                                // visited...
+//   static const int maxnumberofpoints = 1000;
 
-  const Rect& sr = window();
+//   const Rect& sr = window();
 
-  // we don't use recursion, but a stack based approach for efficiency
-  // concerns...
-  while ( ! workstack.empty() && count < maxnumberofpoints )
-  {
-    workitem curitem = workstack.top();
-    workstack.pop();
-    bool curitemok = true;
-    while ( curitemok && count++ < maxnumberofpoints )
-    {
-      // we take the middle parameter of the two previous points...
-      Coordinate p0 = curitem.first.second;
-      Coordinate p1 = curitem.second.second;
-      double t2 = ( curitem.first.first + curitem.second.first ) / 2;
-      double h = fabs( curitem.second.first - curitem.first.first ) /2;
-      Rect *overlaypt = curitem.overlay;
-      Coordinate p2 = conicGetCoord( t2, ecostheta0, esintheta0,
-                                     pdimen, focus1 );
-      bool dooverlay = ! overlaypt && h < hmaxoverlay
- && fabs( p0.x - p1.x ) <= overlayRectSize()
- && fabs( p0.y - p1.y ) <= overlayRectSize();
-      bool addn = sr.contains( p2 );
-      // estimated error between the curve and the segments
-      double errsq = (0.5*p0 + 0.5*p1 - p2).squareLength();
-      errsq /= 4;
-      curitemok = false;
-      bool dodraw = h < hmax && ( errsq < sigma || h < hmin );
-      if ( tNeedOverlay && ( dooverlay || dodraw ) )
-      {
-        Rect newoverlay( p0, p1 );
-        overlaystack.push( newoverlay );
-        overlaypt = &overlaystack.top();
-      }
-      if ( overlaypt ) overlaypt->setContains( p2 );
-      if ( dodraw )
-      {
-        // draw the two segments
-        QPoint tp0 = toScreen(p0);
-        QPoint tp1 = toScreen(p1);
-        QPoint tp2 = toScreen(p2);
-        mP.drawLine( tp0, tp2 );
-        mP.drawLine( tp2, tp1 );
-      }
-      else
-      {
-        // push into stack in order to process both subintervals
-        if (addn || sr.contains( p0 ) || h >= hmax)
-          workstack.push( workitem( curitem.first, coordparampair( t2, p2 ),
-                                    overlaypt ) );
-        if (addn || sr.contains( p1 ) || h >= hmax)
-        {
-          curitem = workitem( coordparampair( t2, p2 ), curitem.second ,
-                              overlaypt );
-          curitemok = true;
-        }
-      }
-    }
-  }
+//   // we don't use recursion, but a stack based approach for efficiency
+//   // concerns...
+//   while ( ! workstack.empty() && count < maxnumberofpoints )
+//   {
+//     workitem curitem = workstack.top();
+//     workstack.pop();
+//     bool curitemok = true;
+//     while ( curitemok && count++ < maxnumberofpoints )
+//     {
+//       // we take the middle parameter of the two previous points...
+//       Coordinate p0 = curitem.first.second;
+//       Coordinate p1 = curitem.second.second;
+//       double t2 = ( curitem.first.first + curitem.second.first ) / 2;
+//       double h = fabs( curitem.second.first - curitem.first.first ) /2;
+//       Rect *overlaypt = curitem.overlay;
+//       Coordinate p2 = conicGetCoord( t2, ecostheta0, esintheta0,
+//                                      pdimen, focus1 );
+//       bool dooverlay = ! overlaypt && h < hmaxoverlay
+//  && fabs( p0.x - p1.x ) <= overlayRectSize()
+//  && fabs( p0.y - p1.y ) <= overlayRectSize();
+//       bool addn = sr.contains( p2 );
+//       // estimated error between the curve and the segments
+//       double errsq = (0.5*p0 + 0.5*p1 - p2).squareLength();
+//       errsq /= 4;
+//       curitemok = false;
+//       bool dodraw = h < hmax && ( errsq < sigma || h < hmin );
+//       if ( tNeedOverlay && ( dooverlay || dodraw ) )
+//       {
+//         Rect newoverlay( p0, p1 );
+//         overlaystack.push( newoverlay );
+//         overlaypt = &overlaystack.top();
+//       }
+//       if ( overlaypt ) overlaypt->setContains( p2 );
+//       if ( dodraw )
+//       {
+//         // draw the two segments
+//         QPoint tp0 = toScreen(p0);
+//         QPoint tp1 = toScreen(p1);
+//         QPoint tp2 = toScreen(p2);
+//         mP.drawLine( tp0, tp2 );
+//         mP.drawLine( tp2, tp1 );
+//       }
+//       else
+//       {
+//         // push into stack in order to process both subintervals
+//         if (addn || sr.contains( p0 ) || h >= hmax)
+//           workstack.push( workitem( curitem.first, coordparampair( t2, p2 ),
+//                                     overlaypt ) );
+//         if (addn || sr.contains( p1 ) || h >= hmax)
+//         {
+//           curitem = workitem( coordparampair( t2, p2 ), curitem.second ,
+//                               overlaypt );
+//           curitemok = true;
+//         }
+//       }
+//     }
+//   }
 
-  assert ( tNeedOverlay || overlaystack.empty() );
-  if ( tNeedOverlay )
-  {
-    Rect border = window();
-    while ( ! overlaystack.empty() )
-    {
-      Rect overlay = overlaystack.top();
-      overlaystack.pop();
-      if (overlay.intersects( border ))
-        mOverlay.push_back( toScreenEnlarge( overlay ) );
-    }
-  }
-  mNeedOverlay = tNeedOverlay;
-  pen.setCapStyle( Qt::FlatCap );
-  mP.setPen( pen );
-}
+//   assert ( tNeedOverlay || overlaystack.empty() );
+//   if ( tNeedOverlay )
+//   {
+//     Rect border = window();
+//     while ( ! overlaystack.empty() )
+//     {
+//       Rect overlay = overlaystack.top();
+//       overlaystack.pop();
+//       if (overlay.intersects( border ))
+//         mOverlay.push_back( toScreenEnlarge( overlay ) );
+//     }
+//   }
+//   mNeedOverlay = tNeedOverlay;
+//   pen.setCapStyle( Qt::FlatCap );
+//   mP.setPen( pen );
+// }
 
-void KigPainter::drawCubicRecurse (
-                   double& xleft, double& yleft, bool& validleft,
-                   int& numrootsleft,
-                   double &xright, double &yright, bool &validright,
-                   int &numrootsright,
-                   const CubicCartesianEquationData &data, int &root,
-                   double &ymin, double &ymax, double &tol,
-                   bool& tNeedOverlay, Rect& overlay)
-{
-  double ltol = tol;
-  if ( ! ( validleft && validright && numrootsleft == numrootsright ) )
-    // in questo caso la tolleranza e' molto minore
-    ltol /= 100;
-  if ( xright - xleft < ltol )
-  {
-    if ( validleft && validright && numrootsleft == numrootsright )
-    {
-      /* draw the segment */
-      Coordinate pleft = Coordinate( xleft, yleft );
-      Coordinate pright = Coordinate( xright, yright );
-      QPoint tpleft = toScreen(pleft);
-      QPoint tpright = toScreen(pright);
-      mP.drawLine( tpleft, tpright );
-    }
-  } else {
-    double xmiddle = (xright + xleft)/2;
-    bool validmiddle;
-    int numrootsmiddle;
-    double ymiddle = calcCubicYvalue ( xmiddle, ymin, ymax, root, data,
-                   validmiddle, numrootsmiddle );
-    Coordinate pmiddle = Coordinate( xmiddle, ymiddle );
-    if ( validmiddle && tNeedOverlay ) overlay.setContains( pmiddle );
-    drawCubicRecurse ( xleft, yleft, validleft, numrootsleft,
-                   xmiddle, ymiddle, validmiddle, numrootsmiddle,
-                   data, root, ymin, ymax, tol, tNeedOverlay, overlay );
-    drawCubicRecurse ( xmiddle, ymiddle, validmiddle, numrootsmiddle,
-                   xright, yright, validright, numrootsright,
-                   data, root, ymin, ymax, tol, tNeedOverlay, overlay );
-  }
-}
+// void KigPainter::drawCubicRecurse (
+//                    double& xleft, double& yleft, bool& validleft,
+//                    int& numrootsleft,
+//                    double &xright, double &yright, bool &validright,
+//                    int &numrootsright,
+//                    const CubicCartesianEquationData &data, int &root,
+//                    double &ymin, double &ymax, double &tol,
+//                    bool& tNeedOverlay, Rect& overlay)
+// {
+//   double ltol = tol;
+//   if ( ! ( validleft && validright && numrootsleft == numrootsright ) )
+//     // in questo caso la tolleranza e' molto minore
+//     ltol /= 100;
+//   if ( xright - xleft < ltol )
+//   {
+//     if ( validleft && validright && numrootsleft == numrootsright )
+//     {
+//       /* draw the segment */
+//       Coordinate pleft = Coordinate( xleft, yleft );
+//       Coordinate pright = Coordinate( xright, yright );
+//       QPoint tpleft = toScreen(pleft);
+//       QPoint tpright = toScreen(pright);
+//       mP.drawLine( tpleft, tpright );
+//     }
+//   } else {
+//     double xmiddle = (xright + xleft)/2;
+//     bool validmiddle;
+//     int numrootsmiddle;
+//     double ymiddle = calcCubicYvalue ( xmiddle, ymin, ymax, root, data,
+//                    validmiddle, numrootsmiddle );
+//     Coordinate pmiddle = Coordinate( xmiddle, ymiddle );
+//     if ( validmiddle && tNeedOverlay ) overlay.setContains( pmiddle );
+//     drawCubicRecurse ( xleft, yleft, validleft, numrootsleft,
+//                    xmiddle, ymiddle, validmiddle, numrootsmiddle,
+//                    data, root, ymin, ymax, tol, tNeedOverlay, overlay );
+//     drawCubicRecurse ( xmiddle, ymiddle, validmiddle, numrootsmiddle,
+//                    xright, yright, validright, numrootsright,
+//                    data, root, ymin, ymax, tol, tNeedOverlay, overlay );
+//   }
+// }
 
-void KigPainter::drawCubic( const CubicCartesianEquationData& data )
-{
-  // we manage our own overlay
-  bool tNeedOverlay = mNeedOverlay;
-  mNeedOverlay = false;
-  QPen pen = mP.pen();
-  pen.setCapStyle( Qt::RoundCap );
-  mP.setPen( pen );
-  Rect border = window();
-  Rect overlay;
+// void KigPainter::drawCubic( const CubicCartesianEquationData& data )
+// {
+//   // we manage our own overlay
+//   bool tNeedOverlay = mNeedOverlay;
+//   mNeedOverlay = false;
+//   QPen pen = mP.pen();
+//   pen.setCapStyle( Qt::RoundCap );
+//   mP.setPen( pen );
+//   Rect border = window();
+//   Rect overlay;
 
-  double ymin = border.bottom();
-  double ymax = border.top();
-  bool validleft, validright;
-  int numrootsleft, numrootsright;
+//   double ymin = border.bottom();
+//   double ymax = border.top();
+//   bool validleft, validright;
+//   int numrootsleft, numrootsright;
 
-  double xleft = border.left();
-  double xright = border.right();
-  double tol = (xright - xleft)/100;
-  for ( int root = 1; root <= 3; root++ )
-  {
-    double yleft = calcCubicYvalue ( xleft, ymin, ymax, root, data,
-                   validleft, numrootsleft );
-    double yright = calcCubicYvalue ( xright, ymin, ymax, root, data,
-                   validright, numrootsright );
-    Coordinate p = Coordinate( xleft, yleft );
-    if ( validleft && tNeedOverlay ) overlay.setContains( p );
-    p = Coordinate( xright, yright );
-    if ( validright && tNeedOverlay ) overlay.setContains( p );
-    drawCubicRecurse ( xleft, yleft, validleft, numrootsleft,
-                   xright, yright, validright, numrootsright,
-                   data, root, ymin, ymax, tol,
-                   tNeedOverlay, overlay);
-  }
-  if ( tNeedOverlay ) mOverlay.push_back( toScreen( overlay ) );
-  mNeedOverlay = tNeedOverlay;
-  pen.setCapStyle( Qt::FlatCap );
-  mP.setPen( pen );
-}
+//   double xleft = border.left();
+//   double xright = border.right();
+//   double tol = (xright - xleft)/100;
+//   for ( int root = 1; root <= 3; root++ )
+//   {
+//     double yleft = calcCubicYvalue ( xleft, ymin, ymax, root, data,
+//                    validleft, numrootsleft );
+//     double yright = calcCubicYvalue ( xright, ymin, ymax, root, data,
+//                    validright, numrootsright );
+//     Coordinate p = Coordinate( xleft, yleft );
+//     if ( validleft && tNeedOverlay ) overlay.setContains( p );
+//     p = Coordinate( xright, yright );
+//     if ( validright && tNeedOverlay ) overlay.setContains( p );
+//     drawCubicRecurse ( xleft, yleft, validleft, numrootsleft,
+//                    xright, yright, validright, numrootsright,
+//                    data, root, ymin, ymax, tol,
+//                    tNeedOverlay, overlay);
+//   }
+//   if ( tNeedOverlay ) mOverlay.push_back( toScreen( overlay ) );
+//   mNeedOverlay = tNeedOverlay;
+//   pen.setCapStyle( Qt::FlatCap );
+//   mP.setPen( pen );
+// }
 
 void KigPainter::drawLine( const LineData& d )
 {
   LineData l = calcBorderPoints( d, window() );
-  drawSegment( l );
-}
-
-void KigPainter::drawSegment( const LineData& d )
-{
-  drawSegment( d.a, d.b );
+  drawSegment( l.a, l.b );
 }

@@ -1,17 +1,14 @@
 INCLUDES=$(all_includes)
 noinst_LTLIBRARIES=libobjects.la
-noinst_HEADERS=object.h point.h curve.h circle.h conic.h segment.h line.h \
-		macro.h intersection.h locus.h normalpoint.h midpoint.h \
-		label.h vector.h translatedpoint.h ray.h mirrorpoint.h \
-		angle.h rotatedpoint.h property.h coordproppoint.h \
-		radicallines.h coniclines.h conicsextra.h cubic.h \
-		transform.h
-libobjects_la_SOURCES=point.cpp object.cpp circle.cpp conic.cpp segment.cpp \
-		line.cpp macro.cpp intersection.cpp locus.cpp \
-		normalpoint.cc midpoint.cc label.cc vector.cc \
-		translatedpoint.cc ray.cc mirrorpoint.cc abstractline.cc \
-		angle.cc rotatedpoint.cpp property.cc coordproppoint.cc \
-		radicallines.cpp coniclines.cpp conicsextra.cpp cubic.cpp \
-		curve.cc transform.cpp
+noinst_HEADERS=bogus_imp.h common.h line_imp.h \
+	object_imp_factory.h object_imp.h object_factory.h \
+	object.h point_imp.h line_type.h \
+	object_type.h property.h curve_imp.h circle_imp.h \
+	conic_imp.h base_type.h
+libobjects_la_SOURCES=bogus_imp.cc line_imp.cc object.cc \
+	object_imp_factory.cc object_factory.cc point_imp.cc \
+	line_type.cc object_type.cc property.cc object_imp.cc \
+	point_type.cc curve_imp.cc circle_imp.cc conic_imp.cc \
+	base_type.cc
 libobjects_la_LIBADD=-lm
 METASOURCES=AUTO

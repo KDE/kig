@@ -1,46 +1,46 @@
-// textlabelwizard.h
-// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
+// // textlabelwizard.h
+// // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License
-// as published by the Free Software Foundation; either version 2
-// of the License, or (at your option) any later version.
+// // This program is free software; you can redistribute it and/or
+// // modify it under the terms of the GNU General Public License
+// // as published by the Free Software Foundation; either version 2
+// // of the License, or (at your option) any later version.
 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
+// // This program is distributed in the hope that it will be useful,
+// // but WITHOUT ANY WARRANTY; without even the implied warranty of
+// // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// // GNU General Public License for more details.
 
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-// 02111-1307, USA.
+// // You should have received a copy of the GNU General Public License
+// // along with this program; if not, write to the Free Software
+// // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+// // 02111-1307, USA.
 
-#ifndef TEXTLABELWIZARD_H
-#define TEXTLABELWIZARD_H
+// #ifndef TEXTLABELWIZARD_H
+// #define TEXTLABELWIZARD_H
 
-#include "textlabelwizardbase.h"
+// #include "textlabelwizardbase.h"
 
-class TextLabelConstructionMode;
+// class TextLabelConstructionMode;
 
-class TextLabelWizard : public TextLabelWizardBase
-{
-  Q_OBJECT
-public:
-  TextLabelWizard( QWidget* parent, TextLabelConstructionMode* mode );
-  ~TextLabelWizard();
+// class TextLabelWizard : public TextLabelWizardBase
+// {
+//   Q_OBJECT
+// public:
+//   TextLabelWizard( QWidget* parent, TextLabelConstructionMode* mode );
+//   ~TextLabelWizard();
 
-  void back();
-  void next();
-  void reject();
-  void accept();
+//   void back();
+//   void next();
+//   void reject();
+//   void accept();
 
-  void relayoutArgsPage();
-private slots:
-  void textChanged( const QString& );
-  void linkClicked( int which );
-private:
-  TextLabelConstructionMode* mmode;
-};
+//   void relayoutArgsPage();
+// private slots:
+//   void textChanged( const QString& );
+//   void linkClicked( int which );
+// private:
+//   TextLabelConstructionMode* mmode;
+// };
 
-#endif // TEXTLABELWIZARD_H
+// #endif // TEXTLABELWIZARD_H

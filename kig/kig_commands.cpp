@@ -29,7 +29,7 @@
 AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand( inDoc,
 		inOs.size() == 1 ?
-		  i18n("Add a %1").arg(inOs.front()->vTBaseTypeName()) :
+		  i18n("Add a %1").arg(inOs.front()->translatedBaseTypeName()) :
 		  i18n( "Add %1 objects" ).arg( os.size() ) ),
     undone(true),
     os (inOs)
@@ -37,7 +37,7 @@ AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
 }
 
 AddObjectsCommand::AddObjectsCommand( KigDocument* inDoc, Object* o )
-    : KigCommand ( inDoc, i18n( "Add a %1" ).arg( o->vTBaseTypeName() ) ),
+    : KigCommand ( inDoc, i18n( "Add a %1" ).arg( o->translatedBaseTypeName() ) ),
       undone( true )
 {
   os.push_back( o );
@@ -67,7 +67,7 @@ AddObjectsCommand::~AddObjectsCommand()
 RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand(inDoc,
 	       inOs.size() == 1 ?
-   	         i18n("Remove a %1").arg(inOs.front()->vTBaseTypeName()) :
+   	         i18n("Remove a %1").arg(inOs.front()->translatedBaseTypeName()) :
 	         i18n( "Remove %1 objects" ).arg( inOs.size()) ),
     undone( false ),
     os( inOs )
@@ -75,12 +75,12 @@ RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& in
   Objects tmp;
   // we delete the children too
   for (Objects::iterator i = os.begin(); i != os.end(); ++i )
-    tmp |= (*i)->getChildren();
+    tmp |= (*i)->children();
   os |= tmp;
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
-  : KigCommand( inDoc, i18n("Remove a %1").arg(o->vTBaseTypeName()) ),
+  : KigCommand( inDoc, i18n("Remove a %1").arg(o->translatedBaseTypeName()) ),
     undone( false )
 {
   os.push_back( o );
@@ -97,7 +97,7 @@ void RemoveObjectsCommand::execute()
   {
     document->_delObject(*i);
     // the parents should let go of their children (quite a dramatic scene we have here :)
-    Objects appel = (*i)->getParents();
+    Objects appel = (*i)->parents();
     for (Objects::iterator j = appel.begin(); j != appel.end(); ++j )
       (*j)->delChild(*i);
   };
@@ -111,7 +111,7 @@ void RemoveObjectsCommand::unexecute()
   {
     document->_addObject(*i);
     // drama again: parents finding their lost children...
-    Objects appel = (*i)->getParents();
+    Objects appel = (*i)->parents();
     for (Objects::iterator j = appel.begin(); j != appel.end(); ++j )
       (*j)->addChild(*i);
   };

@@ -25,8 +25,8 @@
 #include <cmath>
 #include <algorithm>
 
-ConicCartesianEquationData::ConicCartesianEquationData(
-  const ConicPolarEquationData& polardata
+ConicCartesianData::ConicCartesianData(
+  const ConicPolarData& polardata
   )
 {
   double ec = polardata.ecostheta0;
@@ -54,7 +54,7 @@ ConicCartesianEquationData::ConicCartesianEquationData(
   coeffs[5] = f;
 };
 
-ConicPolarEquationData::ConicPolarEquationData( const ConicCartesianEquationData& cartdata )
+ConicPolarData::ConicPolarData( const ConicCartesianData& cartdata )
 {
   double a = cartdata.coeffs[0];
   double b = cartdata.coeffs[1];
@@ -157,7 +157,7 @@ ConicPolarEquationData::ConicPolarEquationData( const ConicCartesianEquationData
   }
 };
 
-const ConicCartesianEquationData calcConicThroughPoints (
+const ConicCartesianData calcConicThroughPoints (
   const std::vector<Coordinate>& points,
   const LinearConstraints c1,
   const LinearConstraints c2,
@@ -234,17 +234,17 @@ const ConicCartesianEquationData calcConicThroughPoints (
   BackwardSubstitution( matrix, numpoints, 6, scambio, solution );
 
   // now solution should contain the correct coefficients..
-  return ConicCartesianEquationData( solution );
+  return ConicCartesianData( solution );
 }
 
-const ConicPolarEquationData calcConicBFFP(
+const ConicPolarData calcConicBFFP(
   const std::vector<Coordinate>& args,
   int type )
 {
   assert( args.size() > 1 && args.size() < 4 );
   assert( type == 1 || type == -1 );
 
-  ConicPolarEquationData ret;
+  ConicPolarData ret;
 
   Coordinate f1 = args[0];
   Coordinate f2 = args[1];
@@ -280,7 +280,7 @@ const ConicPolarEquationData calcConicBFFP(
 }
 
 const LineData calcConicPolarLine (
-  const ConicCartesianEquationData& data,
+  const ConicCartesianData& data,
   const Coordinate& cpole,
   bool& valid )
 {
@@ -312,7 +312,7 @@ const LineData calcConicPolarLine (
 }
 
 const Coordinate calcConicPolarPoint (
-  const ConicCartesianEquationData& data,
+  const ConicCartesianData& data,
   const LineData& polar,
   bool& valid )
 {
@@ -356,7 +356,7 @@ const Coordinate calcConicPolarPoint (
   return Coordinate (x, y);
 }
 
-const Coordinate calcConicLineIntersect( const ConicCartesianEquationData& c,
+const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
                                          const LineData& l,
                                          int which, bool& valid )
 {
@@ -401,24 +401,24 @@ const Coordinate calcConicLineIntersect( const ConicCartesianEquationData& c,
   }
 }
 
-ConicPolarEquationData::ConicPolarEquationData(
+ConicPolarData::ConicPolarData(
   const Coordinate& f, double d,
   double ec, double es )
   : focus1( f ), pdimen( d ), ecostheta0( ec ), esintheta0( es )
 {
 };
 
-ConicPolarEquationData::ConicPolarEquationData()
+ConicPolarData::ConicPolarData()
   : focus1(), pdimen( 0 ), ecostheta0( 0 ), esintheta0( 0 )
 {
 };
 
-const ConicPolarEquationData calcConicBDFP(
+const ConicPolarData calcConicBDFP(
   const LineData& directrix,
   const Coordinate& cfocus,
   const Coordinate& cpoint )
 {
-  ConicPolarEquationData ret;
+  ConicPolarData ret;
 
   Coordinate ba = directrix.dir();
   double bal = ba.length();
@@ -442,13 +442,13 @@ const ConicPolarEquationData calcConicBDFP(
   return ret;
 };
 
-ConicCartesianEquationData::ConicCartesianEquationData( const double incoeffs[6] )
+ConicCartesianData::ConicCartesianData( const double incoeffs[6] )
 {
   std::copy( incoeffs, incoeffs + 6, coeffs );
 }
 
 const LineData calcConicAsymptote(
-  const ConicCartesianEquationData data,
+  const ConicCartesianData data,
   int which, bool &valid )
 {
   assert( which == -1 || which == 1 );
@@ -490,7 +490,7 @@ const LineData calcConicAsymptote(
   return ret;
 };
 
-const ConicCartesianEquationData calcConicByAsymptotes(
+const ConicCartesianData calcConicByAsymptotes(
   const LineData& line1,
   const LineData& line2,
   const Coordinate& p )
@@ -520,11 +520,11 @@ const ConicCartesianEquationData calcConicByAsymptotes(
   double f = a*x*x + b*y*y + c*x*y + d*x + e*y;
   f = -f;
 
-  return ConicCartesianEquationData( a, b, c, d, e, f );
+  return ConicCartesianData( a, b, c, d, e, f );
 }
 
-const LineData calcConicRadical( const ConicCartesianEquationData& cequation1,
-                                 const ConicCartesianEquationData& cequation2,
+const LineData calcConicRadical( const ConicCartesianData& cequation1,
+                                 const ConicCartesianData& cequation2,
                                  int which, int zeroindex, bool& valid )
 {
   assert( which == 1 || which == -1 );

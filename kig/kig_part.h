@@ -27,7 +27,6 @@
 
 #include "../misc/objects.h"
 #include "../misc/rect.h"
-#include "../misc/types.h"
 
 class QWidget;
 class KURL;
@@ -199,17 +198,6 @@ public:
   myvector<KAction*> aActions;
 
   KCommandHistory* history();
-
-  /**
-   * These two are called by Object::addUserType(..., true ).. This is
-   * how the part is notified of new user Types being added..
-   * we also call it in our constructor with user == false for
-   * builtin types...
-   */
-  void addType( Type*, bool user = true );
-  void removeType( Type* );
-
-  void removeAction( KAction* a );
 
   void enableConstructActions( bool enabled );
 

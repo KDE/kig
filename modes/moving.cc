@@ -21,7 +21,7 @@
 #include "normal.h"
 
 #include "../objects/object.h"
-#include "../objects/normalpoint.h"
+#include "../objects/object_factory.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
@@ -63,7 +63,7 @@ void MovingModeBase::initScreen( const Objects& in )
 void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
 {
   // clean up after ourselves:
-  amo.calcForWidget( *v );
+  amo.calc( *v );
   stopMove();
   mdoc.setModified( true );
 
@@ -79,7 +79,7 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
   moveTo( c );
-  amo.calcForWidget( *v );
+  amo.calc( *v );
   KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
@@ -88,21 +88,19 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
 
 MovingMode::MovingMode( const Objects& os, const Coordinate& c,
                         KigWidget& v, KigDocument& d )
-  : MovingModeBase( d, v ), emo( os )
+  : MovingModeBase( d, v ), pwwlmt( c ), emo( os )
 {
   // FIXME: fix this algorithm..., have objects tell us what other
   // objects they are going to move... e.g. only a segment moves its
   // parents, but right now, we have to take into account that every
   // object could move its parents...
-  for ( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
-    (*i)->startMove( c, v.screenInfo() );
 
   Objects objs( emo );
   Objects tmp( emo );
   for ( Objects::const_iterator i = emo.begin(); i != emo.end(); ++i )
   {
     objs.upush( *i );
-    tmp |= (*i)->getParents();
+    tmp |= (*i)->parents();
   };
   for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
     objs |= (*i)->getAllChildren();
@@ -112,17 +110,16 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
 
 void MovingMode::stopMove()
 {
-  using namespace std;
-  for_each( emo.begin(), emo.end(), mem_fun( &Object::stopMove ) );
 }
 
 void MovingMode::moveTo( const Coordinate& o )
 {
   for( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
-    (*i)->moveTo( o );
+    (*i)->move( pwwlmt, o - pwwlmt );
+  pwwlmt = o;
 }
 
-PointRedefineMode::PointRedefineMode( NormalPoint* p, KigDocument& d, KigWidget& v )
+PointRedefineMode::PointRedefineMode( Object* p, KigDocument& d, KigWidget& v )
   : MovingModeBase( d, v ), mp( p )
 {
   using namespace std;
@@ -134,7 +131,7 @@ PointRedefineMode::PointRedefineMode( NormalPoint* p, KigDocument& d, KigWidget&
 
 void PointRedefineMode::moveTo( const Coordinate& o )
 {
-  mp->redefine( o, mdoc, mview );
+  ObjectFactory::instance()->redefinePoint( mp, o, mdoc, mview );
 }
 
 PointRedefineMode::~PointRedefineMode()

@@ -25,7 +25,7 @@
 #include <vector>
 #include "kignumerics.h"
 
-class ConicPolarEquationData;
+class ConicPolarData;
 class LineData;
 
 /**
@@ -33,13 +33,13 @@ class LineData;
  * "ax^2 + by^2 + cxy + dx + ey + f = 0".  The coefficients are stored
  * in the order a - f.
  */
-class ConicCartesianEquationData
+class ConicCartesianData
 {
 public:
   double coeffs[6];
-  explicit ConicCartesianEquationData();
-  explicit ConicCartesianEquationData( const ConicPolarEquationData& d );
-  ConicCartesianEquationData( double a, double b, double c,
+  explicit ConicCartesianData();
+  explicit ConicCartesianData( const ConicPolarData& d );
+  ConicCartesianData( double a, double b, double c,
                               double d, double e, double f )
     {
       coeffs[0] = a;
@@ -49,7 +49,7 @@ public:
       coeffs[4] = e;
       coeffs[5] = f;
     };
-  ConicCartesianEquationData( const double incoeffs[6] );
+  ConicCartesianData( const double incoeffs[6] );
 };
 
 /**
@@ -59,12 +59,12 @@ public:
  * represent the coordinate system in which the equation yields the
  * good result..
  */
-class ConicPolarEquationData
+class ConicPolarData
 {
 public:
-  explicit ConicPolarEquationData( const ConicCartesianEquationData& data );
-  explicit ConicPolarEquationData();
-  ConicPolarEquationData( const Coordinate& focus1, double dimen,
+  explicit ConicPolarData( const ConicCartesianData& data );
+  explicit ConicPolarData();
+  ConicPolarData( const Coordinate& focus1, double dimen,
                           double ecostheta0, double esintheta0 );
 
   Coordinate focus1;
@@ -85,7 +85,7 @@ enum LinearConstraints {
   equilateral, ysymmetry, xsymmetry
 };
 
-const ConicCartesianEquationData calcConicThroughPoints (
+const ConicCartesianData calcConicThroughPoints (
     const std::vector<Coordinate>& points,
     const LinearConstraints c1 = noconstraint,
     const LinearConstraints c2 = noconstraint,
@@ -101,7 +101,7 @@ const ConicCartesianEquationData calcConicThroughPoints (
  * points are taken to be the focuses, and a third point is chosen in
  * a sensible way..
  */
-const ConicPolarEquationData calcConicBFFP(
+const ConicPolarData calcConicBFFP(
   const std::vector<Coordinate>& args,
   int type );
 
@@ -109,38 +109,38 @@ const ConicPolarEquationData calcConicBFFP(
  * function used by ConicBDFP.  It calcs the conic with directrix d,
  * focus f, and point p on the conic..
  */
-const ConicPolarEquationData calcConicBDFP(
+const ConicPolarData calcConicBDFP(
   const LineData& d, const Coordinate& f, const Coordinate& p );
 
 /**
  * This calcs the hyperbola defined by its two asymptotes line1 and
  * line2, and a point p on the edge.
  */
-const ConicCartesianEquationData calcConicByAsymptotes(
+const ConicCartesianData calcConicByAsymptotes(
   const LineData& line1,
   const LineData& line2,
   const Coordinate& p );
 
 const LineData calcConicPolarLine (
-  const ConicCartesianEquationData& data,
+  const ConicCartesianData& data,
   const Coordinate& cpole,
   bool& valid );
 
 const Coordinate calcConicPolarPoint (
-  const ConicCartesianEquationData& data,
+  const ConicCartesianData& data,
   const LineData& polar,
   bool& valid );
 
-const Coordinate calcConicLineIntersect( const ConicCartesianEquationData& c,
+const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
                                          const LineData& l,
                                          int which, bool& valid );
 
 const LineData calcConicAsymptote(
-  const ConicCartesianEquationData data,
+  const ConicCartesianData data,
   int which, bool &valid );
 
-const LineData calcConicRadical( const ConicCartesianEquationData& cequation1,
-                                 const ConicCartesianEquationData& cequation2,
+const LineData calcConicRadical( const ConicCartesianData& cequation1,
+                                 const ConicCartesianData& cequation2,
                                  int which, int zeroindex, bool& valid );
 
 #endif // KIG_MISC_CONIC_COMMON_H

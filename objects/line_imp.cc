@@ -1,0 +1,314 @@
+// line_imp.cc
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
+
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+// 02111-1307, USA.
+
+#include "line_imp.h"
+
+#include "bogus_imp.h"
+
+#include "../misc/rect.h"
+#include "../misc/common.h"
+#include "../misc/kigtransform.h"
+#include "../misc/kigpainter.h"
+#include "../misc/i18n.h"
+#include "property.h"
+
+AbstractLineImp::AbstractLineImp( const Coordinate& a, const Coordinate& b )
+  : ma( a ), mb( b )
+{
+}
+
+AbstractLineImp::~AbstractLineImp()
+{
+}
+
+bool AbstractLineImp::inRect( const Rect& r ) const
+{
+  // TODO: implement for real...
+  return r.contains( ma ) || r.contains( mb );
+}
+
+const uint AbstractLineImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties() + 2;
+}
+
+const Property AbstractLineImp::property( uint which, const KigWidget& w ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  if ( which == Parent::numberOfProperties() )
+    return Property( slope() );
+  if ( which == Parent::numberOfProperties() + 1 )
+    return Property( equationString( w ) );
+  else assert( false );
+}
+
+const QCStringList AbstractLineImp::properties() const
+{
+  QCStringList l = Parent::properties();
+  l << I18N_NOOP( "Slope" );
+  l << I18N_NOOP( "Equation" );
+  assert( l.size() == AbstractLineImp::numberOfProperties() );
+  return l;
+}
+
+int SegmentImp::type() const
+{
+  return 0;
+}
+
+int RayImp::type() const
+{
+  return 1;
+}
+
+int LineImp::type() const
+{
+  return 2;
+}
+
+const uint SegmentImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties() + 1;
+}
+
+const QCStringList SegmentImp::properties() const
+{
+  QCStringList s = Parent::properties();
+  s << I18N_NOOP( "Length" );
+  assert( s.size() == SegmentImp::numberOfProperties() );
+  return s;
+}
+
+const Property SegmentImp::property( uint which, const KigWidget& w ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  if ( which == Parent::numberOfProperties() )
+    return Property( ( mb - ma ).length() );
+  else assert( false );
+}
+
+double AbstractLineImp::slope() const
+{
+  Coordinate diff = mb - ma;
+  return diff.y / diff.x;
+}
+
+const QString AbstractLineImp::equationString( const KigWidget& ) const
+{
+  QString ret = QString::fromUtf8( "y = %1x + %2" );
+  Coordinate p = ma;
+  Coordinate q = mb;
+
+  double m = ( q.y - p.y ) / ( q.x - p.x );
+  double r = ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;
+
+  ret = ret.arg( m, 0, 'g', 3 );
+  ret = ret.arg( r, 0, 'g', 3 );
+
+  return ret;
+}
+
+void SegmentImp::draw( KigPainter& p ) const
+{
+  p.drawSegment( ma, mb );
+}
+
+bool SegmentImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+{
+  return isOnSegment( p, ma, mb, si.normalMiss() );
+}
+
+void RayImp::draw( KigPainter& p ) const
+{
+  p.drawRay( ma, mb );
+}
+
+bool RayImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+{
+  return isOnRay( p, ma, mb, si.normalMiss() );
+}
+
+void LineImp::draw( KigPainter& p ) const
+{
+  p.drawLine( ma, mb );
+}
+
+bool LineImp::contains( const Coordinate& p, const ScreenInfo& si ) const
+{
+  return isOnLine( p, ma, mb, si.normalMiss() );
+}
+
+SegmentImp::SegmentImp( const Coordinate& a, const Coordinate& b )
+  : AbstractLineImp( a, b )
+{
+}
+
+RayImp::RayImp( const Coordinate& a, const Coordinate& b )
+  : AbstractLineImp( a, b )
+{
+}
+
+LineImp::LineImp( const Coordinate& a, const Coordinate& b )
+  : AbstractLineImp( a, b )
+{
+}
+
+SegmentImp* SegmentImp::copy() const
+{
+  return new SegmentImp( ma, mb );
+}
+
+RayImp* RayImp::copy() const
+{
+  return new RayImp( ma, mb );
+}
+
+LineImp* LineImp::copy() const
+{
+  return new LineImp( ma, mb );
+}
+
+bool AbstractLineImp::inherits( int typeID ) const
+{
+  return typeID == ID_LineImp ? true : Parent::inherits( typeID );
+}
+
+const Coordinate SegmentImp::getPoint(double param) const
+{
+  Coordinate dir = mb - ma;
+  return ma + dir*param;
+}
+
+double SegmentImp::getParam( const Coordinate& p ) const
+{
+  Coordinate pt = calcPointOnPerpend( data(), p );
+  pt = calcIntersectionPoint( data(), LineData( p, pt ) );
+  // if pt is over the end of the segment ( i.e. it's on the line
+  // which the segment is a part of, but not of the segment itself..;
+  // ) we set it to one of the end points of the segment...
+  if ((pt - ma).length() > (mb - ma).length() )
+    pt = mb;
+  else if ( (pt- mb).length() > (mb - ma).length() )
+    pt = ma;
+  if (mb == ma) return 0;
+  return ((pt - ma).length())/((mb-ma).length());
+}
+
+LineData AbstractLineImp::data() const
+{
+  return LineData( ma, mb );
+}
+
+const Coordinate RayImp::getPoint(double param) const
+{
+  Coordinate dir = mb - ma;
+  param = 1.0/param - 1.0;
+  return ma + dir*param;
+}
+
+double RayImp::getParam( const Coordinate& p ) const
+{
+  const LineData ld = data();
+  Coordinate pt = calcPointOnPerpend( ld, p );
+  pt = calcIntersectionPoint( ld, LineData( p, pt ));
+  // if pt is over the end of the ray ( i.e. it's on the line
+  // which the ray is a part of, but not of the ray itself..;
+  // ) we set it to the start point of the ray...
+  Coordinate dir = ld.dir();
+  pt -= ld.a;
+  double param;
+  if ( dir.x != 0 ) param = pt.x / dir.x;
+  else if ( dir.y != 0 ) param = pt.y / dir.y;
+  else param = 0.;
+  if ( param < 0. ) param = 0.;
+
+  // mp:  let's try with 1/(x+1),  this reverses the mapping, but
+  // should allow to take advantage of the tightness of floating point
+  // numbers near zero, in order to get more possible positions near
+  // infinity
+
+  param = 1./( param + 1. );
+
+  assert( param >= 0. && param <= 1. );
+  return param;
+}
+
+const Coordinate LineImp::getPoint( double p ) const
+{
+  // inspired upon KSeg
+
+  // we need to spread the points over the line, it should also come near
+  // the (infinite) end of the line, but most points should be near
+  // the two points we contain...
+  if ( p <= 0. ) p = 1e-6;
+  if ( p >= 1. ) p = 1 - 1e-6;
+  p = 2*p - 1;
+  if (p > 0) p = p/(1 - p);
+    else p = p/(1 + p);
+//  p *= 1024;    // such multiplying factor could be useful in order to
+                  // have more points near infinity, at the expense of
+                  // points near ma and mb
+  return ma + p*(mb - ma);
+}
+
+double LineImp::getParam( const Coordinate& point ) const
+{
+  // somewhat the reverse of getPoint, although it also supports
+  // points not on the line...
+
+  Coordinate pa = point - ma;
+  Coordinate ba = mb - ma;
+  double balsq = ba.x*ba.x + ba.y*ba.y;
+  assert (balsq > 0);
+
+  double p = (pa.x*ba.x + pa.y*ba.y)/balsq;
+//  p /= 1024;
+  if (p > 0) p = p/(1+p);
+    else p = p/(1-p);
+
+  return 0.5*(p + 1);
+}
+
+ObjectImp* SegmentImp::transform( const Transformation& t ) const
+{
+  bool valid = true;
+  Coordinate na = t.apply( ma, valid );
+  Coordinate nb = t.apply( mb, valid );
+  if( valid ) return new SegmentImp( na, nb );
+  else return new InvalidImp();
+}
+
+ObjectImp* LineImp::transform( const Transformation& t ) const
+{
+  bool valid = true;
+  Coordinate na = t.apply( ma, valid );
+  Coordinate nb = t.apply( mb, valid );
+  if ( valid ) return new LineImp( na, nb );
+  else return new InvalidImp();
+}
+
+ObjectImp* RayImp::transform( const Transformation& t ) const
+{
+  bool valid = true;
+  Coordinate na = t.apply( ma, valid );
+  Coordinate nb = t.apply( mb, valid );
+  if ( valid ) return new RayImp( na, nb );
+  else return new InvalidImp();
+}

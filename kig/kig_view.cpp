@@ -24,7 +24,6 @@
 #include "kig_part.h"
 #include "exporttoimagedialog.h"
 #include "../objects/object.h"
-#include "../objects/point.h"
 #include "../misc/coordinate_system.h"
 
 #include "../modes/mode.h"

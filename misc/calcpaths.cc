@@ -45,7 +45,7 @@ Objects calcPath( const Objects& os )
   {
     for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
     {
-      const Objects& o = (*i)->getChildren();
+      const Objects& o = (*i)->children();
       std::copy( o.begin(), o.end(), std::back_inserter( all ) );
       std::copy( o.begin(), o.end(), std::back_inserter( tmp2 ) );
     };
@@ -77,7 +77,7 @@ bool addBranch( const Objects& o, const Object* to, Objects& ret )
     }
     else
     {
-      if ( addBranch( (*i)->getChildren(), to, ret ) )
+      if ( addBranch( (*i)->children(), to, ret ) )
       {
         rb = true;
         ret.push_back( *i );
@@ -93,7 +93,7 @@ Objects calcPath( const Objects& from, const Object* to )
 
   for ( Objects::const_iterator i = from.begin(); i != from.end(); ++i )
   {
-    (void) addBranch( (*i)->getChildren(), to, all );
+    (void) addBranch( (*i)->children(), to, all );
   };
 
   Objects ret;

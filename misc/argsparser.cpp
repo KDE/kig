@@ -39,7 +39,7 @@ int ArgParser::check( const Objects& os ) const
   {
     for ( int i = 0; i < mndt; ++i )
     {
-      if ( (*o)->isa( margs[i].type ) && numbers[i] > 0 )
+      if ( (*o)->has( margs[i].type ) && numbers[i] > 0 )
       {
         // object o is of a type that we're looking for
         --numbers[i];
@@ -75,7 +75,7 @@ Objects ArgParser::parse( const Objects& os ) const
 
   for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
     for ( int i = 0; i < mndt; ++i )
-      if ( (*o)->isa( margs[i].type ) && numbers[i] > 0 )
+      if ( (*o)->has( margs[i].type ) && numbers[i] > 0 )
       {
         // object o is of a type that we're looking for
         ret[--counters[i]] = *o;

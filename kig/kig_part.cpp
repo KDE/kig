@@ -18,7 +18,6 @@
  USA
 **/
 
-
 #include "kig_part.h"
 #include "kig_part.moc"
 
@@ -28,32 +27,17 @@
 #include "kig_actions.h"
 
 #include "../modes/normal.h"
-#include "../objects/circle.h"
-#include "../objects/conic.h"
-#include "../objects/coniclines.h"
-#include "../objects/conicsextra.h"
-#include "../objects/cubic.h"
-#include "../objects/transform.h"
-#include "../objects/segment.h"
-#include "../objects/normalpoint.h"
-#include "../objects/midpoint.h"
-#include "../objects/line.h"
-#include "../objects/radicallines.h"
-#include "../objects/macro.h"
-#include "../objects/label.h"
-#include "../objects/intersection.h"
-#include "../objects/locus.h"
-#include "../objects/vector.h"
-#include "../objects/translatedpoint.h"
-#include "../objects/mirrorpoint.h"
-#include "../objects/ray.h"
-#include "../objects/coordproppoint.h"
-#include "../objects/rotatedpoint.h"
-#include "../objects/angle.h"
-#include "../misc/type.h"
+
+#include "../objects/object.h"
+#include "../objects/point_imp.h"
+#include "../objects/line_type.h"
+
+#include "../misc/guiaction.h"
+#include "../misc/object_constructor.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/calcpaths.h"
 #include "../misc/objects.h"
+
 #include "../filters/filter.h"
 
 #include <kparts/genericfactory.h>
@@ -185,78 +169,69 @@ void KigDocument::setupActions()
 
 void KigDocument::setupTypes()
 {
-  if ( Object::types().empty() )
-  {
-    Object::addBuiltinType( new TStdType<SegmentAB> );
-    Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
-    Object::addBuiltinType( new TStdType<ConicBAAP> );
-    Object::addBuiltinType( new TStdType<ConicBDFP> );
-    Object::addBuiltinType( new TStdType<RotatedPoint> );
-    Object::addBuiltinType( new TStdType<LineTTP> );
-    Object::addBuiltinType( new TStdType<LinePerpend> );
-    Object::addBuiltinType( new TStdType<LineParallel> );
-    Object::addBuiltinType( new TStdType<LineRadical> );
-    Object::addBuiltinType( new TMultiType<LineConicRadical> );
-    Object::addBuiltinType( new TStdType<PointTransform> );
-    Object::addBuiltinType( new TStdType<LineTransform> );
-    Object::addBuiltinType( new TStdType<SegmentTransform> );
-    Object::addBuiltinType( new TStdType<RayTransform> );
-    Object::addBuiltinType( new TStdType<CircleTransform> );
-    Object::addBuiltinType( new TStdType<ConicTransform> );
-    Object::addBuiltinType( new TStdType<CircleBCP> );
-    Object::addBuiltinType( new TStdType<CircleBTP> );
-    Object::addBuiltinType( new TStdType<EllipseBFFP> );
-    Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
-    Object::addBuiltinType( new TStdType<ConicB5P> );
-    Object::addBuiltinType( new TStdType<CubicB9P> );
-    Object::addBuiltinType( new TStdType<CubicNodeB6P> );
-    Object::addBuiltinType( new TStdType<CubicCuspB4P> );
-    Object::addBuiltinType( new TStdType<CubicTransform> );
-    Object::addBuiltinType( new TStdType<ParabolaBTP> );
-    Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
-    Object::addBuiltinType( new TStdType<MidPoint> );
-    Object::addBuiltinType( new TStdType<IntersectionPoint> );
-    Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
-    Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
-    Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
-    Object::addBuiltinType( new TStdType<TranslatedPoint> );
-    Object::addBuiltinType( new TStdType<MirrorPoint> );
-    Object::addBuiltinType( new TStdType<Locus> );
-    Object::addBuiltinType( new TStdType<Vector> );
-    Object::addBuiltinType( new TStdType<RayAB> );
-    Object::addBuiltinType( new TStdType<Angle> );
-    Object::addBuiltinType( new TStdType<LineDirectrix> );
-    Object::addBuiltinType( new TStdType<LinePolar> );
-    Object::addBuiltinType( new TStdType<PointPolar> );
-    Object::addBuiltinType( new TType<TextLabel> );
-    Object::addBuiltinType( new TType<NormalPoint> );
-    Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
+//   if ( Object::types().empty() )
+//   {
+//     Object::addBuiltinType( new TStdType<Segment> );
+//     Object::addBuiltinType( new TStdType<LineTTP> );
+//     Object::addBuiltinType( new TStdType<LinePerpend> );
+//     Object::addBuiltinType( new TStdType<LineParallel> );
+//     Object::addBuiltinType( new TStdType<CircleBCP> );
+//     Object::addBuiltinType( new TStdType<CircleBTP> );
+//     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
+//     Object::addBuiltinType( new TStdType<ConicBAAP> );
+//     Object::addBuiltinType( new TStdType<ConicBDFP> );
+//     Object::addBuiltinType( new TStdType<RotatedPoint> );
+//     Object::addBuiltinType( new TStdType<LineRadical> );
+//     Object::addBuiltinType( new TMultiType<LineConicRadical> );
+//     Object::addBuiltinType( new TStdType<EllipseBFFP> );
+//     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
+//     Object::addBuiltinType( new TStdType<ConicB5P> );
+//     Object::addBuiltinType( new TStdType<CubicB9P> );
+//     Object::addBuiltinType( new TStdType<ParabolaBTP> );
+//     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
+//     Object::addBuiltinType( new TStdType<MidPoint> );
+//     Object::addBuiltinType( new TStdType<IntersectionPoint> );
+//     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
+//     Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
+//     Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
+//     Object::addBuiltinType( new TStdType<TranslatedPoint> );
+//     Object::addBuiltinType( new TStdType<MirrorPoint> );
+//     Object::addBuiltinType( new TStdType<Locus> );
+//     Object::addBuiltinType( new TStdType<Vector> );
+//     Object::addBuiltinType( new TStdType<Ray> );
+//     Object::addBuiltinType( new TStdType<Angle> );
+//     Object::addBuiltinType( new TStdType<LineDirectrix> );
+//     Object::addBuiltinType( new TStdType<LinePolar> );
+//     Object::addBuiltinType( new TStdType<PointPolar> );
+//     Object::addBuiltinType( new TType<TextLabel> );
+//     Object::addBuiltinType( new TType<NormalPoint> );
+//     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
 
-    // our saved macro types:
-    QStringList relFiles;
-    QStringList dataFiles =
-      KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
-                                        true, false, relFiles);
-    for ( QStringList::iterator file = dataFiles.begin();
-          file != dataFiles.end();
-          ++file )
-    {
-      kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
-      Types t ( *file);
-      Object::addUserTypes( t, false );
-    }
-  };
-  typedef myvector<Type*> vect;
-  const vect& v = Object::builtinTypes();
-  for ( vect::const_iterator i = v.begin(); i != v.end(); ++i )
-    addType( *i, false );
-  const vect& w = Object::userTypes();
-  for ( vect::const_iterator i = w.begin(); i != w.end(); ++i )
-    addType( *i, true );
+//     // our saved macro types:
+//     QStringList relFiles;
+//     QStringList dataFiles =
+//       KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
+//                                         true, false, relFiles);
+//     for ( QStringList::iterator file = dataFiles.begin();
+//           file != dataFiles.end();
+//           ++file )
+//     {
+//       kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
+//       Types t ( *file);
+//       Object::addUserTypes( t, false );
+//     }
+//   };
+//   typedef myvector<Type*> vect;
+//   const vect& v = Object::builtinTypes();
+//   for ( vect::const_iterator i = v.begin(); i != v.end(); ++i )
+//     addType( *i, false );
+//   const vect& w = Object::userTypes();
+//   for ( vect::const_iterator i = w.begin(); i != w.end(); ++i )
+//     addType( *i, true );
 
-  // hack: we need to plug the action lists _after_ the gui is
-  // built.. i can't find a better solution than this...
-  QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
+//   // hack: we need to plug the action lists _after_ the gui is
+//   // built.. i can't find a better solution than this...
+//   QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
 };
 
 KigDocument::~KigDocument()
@@ -281,7 +256,7 @@ KigDocument::~KigDocument()
   QString typesDir = KGlobal::dirs()->saveLocation("appdata", "kig-types");
   if (typesDir[typesDir.length() - 1] != '/') typesDir += '/';
   kdDebug() << k_funcinfo << " : saving types to: " << typesDir << endl;
-  Object::types().saveToDir(typesDir);
+//   Object::types().saveToDir(typesDir);
   delete_all( mObjs.begin(), mObjs.end() );
   mObjs.clear();
 
@@ -340,13 +315,13 @@ bool KigDocument::openFile()
   mhistory->clear();
 
   Objects tmp = calcPath( os );
-  tmp.calc();
+  tmp.calc( *m_widget->realWidget() );
   emit recenterScreen();
   // we do it again to avoid problems with points on locuses and such,
   // for which the size of the current screen matters..
-  tmp.calcForWidget( *m_widget->realWidget() );
+  tmp.calc( *m_widget->realWidget() );
   emit recenterScreen();
-  tmp.calcForWidget( *m_widget->realWidget() );
+  tmp.calc( *m_widget->realWidget() );
 
   return true;
 }
@@ -450,7 +425,7 @@ Objects KigDocument::whatAmIOn(const Coordinate& p, const ScreenInfo& si ) const
   for ( Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
     if(!(*i)->contains(p, si) || !(*i)->shown() || !(*i)->valid()) continue;
-    if ( (*i)->toPoint()) tmp.push_back(*i);
+    if ( (*i)->has( ObjectImp::ID_PointImp ) ) tmp.push_back(*i);
     else nonpoints.push_back( *i );
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
@@ -464,7 +439,7 @@ Objects KigDocument::whatIsInHere( const Rect& p )
   for ( Objects::iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
     if(! (*i)->inRect( p ) || !(*i)->shown() || ! (*i)->valid() ) continue;
-    if ((*i)->toPoint()) tmp.push_back(*i);
+    if ((*i)->has( ObjectImp::ID_PointImp ) ) tmp.push_back(*i);
     else nonpoints.push_back(*i);
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
@@ -476,18 +451,17 @@ Rect KigDocument::suggestedRect()
   if( mObjs.empty() ) return Rect( -7, -7, 7, 7 );
   bool rectInited = false;
   Rect r(0,0,0,0);
-  Point* p;
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if ((p = (*i)->toPoint()) && p->shown() && p->valid())
+    if (( (*i)->has( ObjectImp::ID_PointImp ) ) && (*i)->shown() && (*i)->valid())
     {
       if( !rectInited )
       {
-        r.setCenter( p->getCoord() );
+        r.setCenter( static_cast<const PointImp*>( (*i)->imp() )->coordinate() );
         rectInited = true;
       }
       else
-        r.setContains(p->getCoord());
+        r.setContains( static_cast<const PointImp*>( (*i)->imp() )->coordinate() );
     };
   };
   r.setContains( Coordinate( 0, 0 ) );
@@ -567,29 +541,29 @@ void KigDocument::delObjects( const Objects& os )
   mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
 }
 
-void KigDocument::addType( Type* t, bool user )
-{
-  KAction* a = t->constructAction( this );
-  if ( ! a ) return;
-  if ( user )
-  {
-    aMNewAll.append( a );
-    if (t->baseTypeName() == Point::sBaseTypeName())
-      aMNewPoint.append( a );
-    else if (t->baseTypeName() == Line::sBaseTypeName())
-      aMNewLine.append( a );
-    else if (t->baseTypeName() == Circle::sBaseTypeName())
-      aMNewCircle.append( a );
-    else if (t->baseTypeName() == Conic::sBaseTypeName())
-      aMNewConic.append( a );
-    else if (t->baseTypeName() == Segment::sBaseTypeName())
-      aMNewSegment.append( a );
-    else
-      aMNewOther.append( a );
-  };
+// void KigDocument::addType( Type* t, bool user )
+// {
+//   KAction* a = t->constructAction( this );
+//   if ( ! a ) return;
+//   if ( user )
+//   {
+//     aMNewAll.append( a );
+//     if (t->baseTypeName() == Point::sBaseTypeName())
+//       aMNewPoint.append( a );
+//     else if (t->baseTypeName() == Line::sBaseTypeName())
+//       aMNewLine.append( a );
+//     else if (t->baseTypeName() == Circle::sBaseTypeName())
+//       aMNewCircle.append( a );
+//     else if (t->baseTypeName() == Conic::sBaseTypeName())
+//       aMNewConic.append( a );
+//     else if (t->baseTypeName() == Segment::sBaseTypeName())
+//       aMNewSegment.append( a );
+//     else
+//       aMNewOther.append( a );
+//   };
 
-  aActions.push_back( a );
-}
+//   aActions.push_back( a );
+// }
 
 // grr.. stupid QPtrList.. yay for the STL..
 void setEnabled( QPtrList<KAction>& l, bool e )
@@ -622,17 +596,17 @@ myvector<KigDocument*>& KigDocument::documents()
   return vect;
 }
 
-void KigDocument::removeAction( KAction* a )
-{
-  aMNewSegment.remove( a );
-  aMNewConic.remove( a );
-  aMNewPoint.remove( a );
-  aMNewCircle.remove( a );
-  aMNewLine.remove( a );
-  aMNewOther.remove( a );
-  aMNewAll.remove( a );
-  aActions.remove( a );
-}
+// void KigDocument::removeAction( KAction* a )
+// {
+//   aMNewSegment.remove( a );
+//   aMNewConic.remove( a );
+//   aMNewPoint.remove( a );
+//   aMNewCircle.remove( a );
+//   aMNewLine.remove( a );
+//   aMNewOther.remove( a );
+//   aMNewAll.remove( a );
+//   aActions.remove( a );
+// }
 
 void KigDocument::unplugActionLists()
 {
