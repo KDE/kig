@@ -184,7 +184,7 @@ void KigDocument::setupActions()
   tmp = l->loadIcon( "pointxy", KIcon::User );
   KAction* a = new AddFixedPointAction( this, tmp, actionCollection() );
 
-  a->plug( aMNewPoint );
+  aMNewPoint->insert( a );
 };
 
 void KigDocument::setupTypes()
