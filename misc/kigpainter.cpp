@@ -29,6 +29,7 @@
 #include <qpen.h>
 
 #include <cmath>
+#include <stack>
 
 KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device, bool no )
   : mP ( device ),
@@ -425,6 +426,18 @@ void KigPainter::drawFatPoint( const Coordinate& p )
     drawFatPoint( p, 5 * pixelWidth() );
 }
 
+inline Coordinate conicGetCoord( double theta, double ecostheta0,
+                                 double esintheta0, double pdimen,
+                                 const Coordinate& focus1 )
+{
+  // TODO: eliminate some cos() and sin() calls with a table...
+  double costheta = cos( theta );
+  double sintheta = sin( theta );
+  double ecosthetamtheta = costheta*ecostheta0 + sintheta*esintheta0;
+  double rho = pdimen / (1.0 - ecosthetamtheta);
+  return focus1 + rho * Coordinate( costheta, sintheta );
+};
+
 void KigPainter::drawConic( const ConicPolarEquationData& data )
 {
   Coordinate focus1 = data.focus1;
@@ -435,32 +448,72 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
   // this code is by Maurizio Paolini, I ( Dominique ) adapted it a
   // bit afterwards..
 
-  // we manage our own overlay, because the one from drawSegment is
-  // way too slow here and generates too much rects..
+  // we manage our own overlay
   bool tNeedOverlay = mNeedOverlay;
   mNeedOverlay = false;
   Rect overlay;
 
-  // the number of points we visit..
-  static const int sDrawPrecision = 200;
+  typedef std::pair<double,Coordinate> coordparampair;
+  typedef std::pair<coordparampair, coordparampair> workitem;
+  std::stack<workitem> workstack;
 
-  // oldpos contains the point that we should draw a line towards from
-  // the next point...
-  Coordinate oldpos = focus1 + Coordinate( pdimen / ( 1.0 - ecostheta0 ), 0 );
-  const double stepDist = 2*M_PI / sDrawPrecision;
-
-  for ( int step = 1; step <= sDrawPrecision; ++step )
+  // first work on some 20 initial points:
+  coordparampair prev =
+    coordparampair( 0, conicGetCoord( 0, ecostheta0, esintheta0,
+                                      pdimen, focus1 ) );
+  for ( double i = 1./20; i <= 2*M_PI; i += 1./20 )
   {
-    double theta = step * stepDist;
-    double costheta = cos( theta );
-    double sintheta = sin( theta );
-    double ecosthetamtheta = costheta*ecostheta0 + sintheta*esintheta0;
-    double rho = pdimen / (1.0 - ecosthetamtheta);
-    Coordinate pos = focus1 + rho * Coordinate( costheta, sintheta );
-    overlay.setContains( pos );
-    drawSegment (oldpos, pos);
-    oldpos = pos;
-  }
+    Coordinate c = conicGetCoord( i, ecostheta0, esintheta0,
+                                  pdimen, focus1 );
+    drawPoint( c );
+    workstack.push( workitem( coordparampair( i, c ), prev ) );
+    prev = coordparampair( i, c );
+  };
+
+  int count = 20;              // the number of points we've already
+                               // visited...
+
+  // maxlength is the square of the maximum size that we allow
+  // between two points..
+  double maxlength = 1.5 * pixelWidth();
+  maxlength *= maxlength;
+
+  // sanity check...
+  static const int maxnumberofpoints = 1000;
+
+  const Rect& sr = window();
+
+  // we don't use recursion, but a stack based approach for efficiency
+  // concerns...
+  while ( ! workstack.empty() && count < maxnumberofpoints )
+  {
+    workitem curitem = workstack.top();
+    workstack.pop();
+    for ( ; count < maxnumberofpoints; ++count )
+    {
+      // we take the middle parameter of the two previous points...
+      double p = ( curitem.first.first + curitem.second.first ) / 2;
+      Coordinate n = conicGetCoord( p, ecostheta0, esintheta0,
+                                    pdimen, focus1 );
+      bool addn = sr.contains( n );
+      bool followfirst = addn &&
+                         (n-curitem.first.second).squareLength() > maxlength;
+      bool followlast = addn &&
+                        (n-curitem.second.second).squareLength() > maxlength;
+      if ( addn )
+      {
+        drawPoint( n );
+        overlay.setContains( n );
+      };
+      if ( followfirst ) workstack.push( workitem( curitem.first,
+                                                   coordparampair( p, n ) ) );
+      // we don't push here, but simply set curitem to a new item, and
+      // restart the inner for loop, to save some stack pushes...
+      if ( followlast ) curitem = workitem( coordparampair( p, n ),
+                                            curitem.second );
+      else break;
+    };
+  };
 
   mOverlay.push_back( toScreen( overlay ) );
   mNeedOverlay = tNeedOverlay;
