@@ -26,4 +26,4 @@ libfilters_la_SOURCES= \
 	native-filter.cc \
 	drgeo-filter.cc \
 	drgeo-filter-chooser.cc \
-	drgeo.filter-chooserbase.ui
+	drgeo-filter-chooserbase.ui
