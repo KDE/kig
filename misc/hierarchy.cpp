@@ -155,8 +155,7 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
         };
 
         // select its parent as an arg...
-        bool complete = (*i)->actual->selectArg((*j)->actual);
-        if ( complete ) (*i)->actual->calc();
+        (void) (*i)->actual->selectArg((*j)->actual);
 
         // we don't do addChild since that should be done by the
         // child's selectArg() function
@@ -164,6 +163,7 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
     };
     tmp = tmp2;
   };
+  calc();
   return cos;
 }
 
@@ -326,12 +326,12 @@ void ObjectHierarchy::saveXML( QDomDocument& doc, QDomElement& p ) const
   p.appendChild(m);
 }
 
-void ObjectHierarchy::calc()
+void ObjectHierarchy::calc() const
 {
   ElemList tmp = gegElems, tmp2;
   while (!tmp.empty())
   {
-    for (ElemList::iterator i = tmp.begin(); i != tmp.end(); ++i)
+    for (ElemList::const_iterator i = tmp.begin(); i != tmp.end(); ++i)
     {
       for (ElemList::const_iterator j = (*i)->getChildren().begin();
            j != (*i)->getChildren().end();

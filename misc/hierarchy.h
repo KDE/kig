@@ -117,7 +117,7 @@ public:
 
   // calls Object::calc() on all contained objects in an intelligent
   // order (given objs first, since the others depend on their values...)
-  void calc();
+  void calc() const;
 
   void saveXML( QDomDocument& doc, QDomElement& parent ) const;
   void loadXML( QDomElement& ourElement);
