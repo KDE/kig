@@ -54,7 +54,7 @@ Point Line::getPoint(double p) const
   // we need to spread the points over the line, it should also come near
   // the (infinite) end of the line, but most points should be near
   // the two points we contain...
-  p = p*3;
+  p = p*1.5;
   if (p>0) p = pow(p, 8);
   else p = -pow(p,8);
 
@@ -79,7 +79,7 @@ double Line::getParam(const Point& point) const
   double p = d.getX()/dir.getX();
   if (p>=0) p = sqrt(sqrt(sqrt(p)));
   else p = -sqrt(sqrt(sqrt(-p)));
-  p/=3;
+  p/=1.5;
   p = p/2 + 0.5;
   return p;
 }
@@ -497,6 +497,7 @@ Point LineParallel::calcPointOnParallel(const Point& p1, const Point& p2, const 
 }
 
 LineTTP::LineTTP(const LineTTP& l)
+  : Line()
 {
   p1 = l.p1;
   p1->addChild(this);
@@ -506,6 +507,7 @@ LineTTP::LineTTP(const LineTTP& l)
   if(complete) calc();
 }
 LineParallel::LineParallel(const LineParallel& l)
+  : Line()
 {
   segment = l.segment;
   if(segment) segment->addChild(this);
@@ -517,6 +519,7 @@ LineParallel::LineParallel(const LineParallel& l)
   if (complete) calc();
 }
 LinePerpend::LinePerpend(const LinePerpend& l)
+  : Line()
 {
   segment = l.segment;
   if(segment) segment->addChild(this);
