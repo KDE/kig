@@ -73,8 +73,7 @@ void StandardConstructorBase::handleArgs(
   const Objects& os, KigDocument& d,
   KigWidget& v ) const
 {
-  Objects args = margsparser.parse( os );
-  Objects bos = build( args, d, v );
+  Objects bos = build( os, d, v );
   bos.calc( d );
   d.addObjects( bos );
 }

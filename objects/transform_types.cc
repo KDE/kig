@@ -62,8 +62,8 @@ ObjectImp* TranslatedType::calc( const Args& targs, const KigDocument& ) const
 
 static const ArgParser::spec argsspecap[] =
 {
-  { ObjectImp::ID_AnyImp, I18N_NOOP( "Reflect this object" ) },
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Reflect around this point" ) }
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Reflect around this point" ) },
+  { ObjectImp::ID_AnyImp, I18N_NOOP( "Reflect this object" ) }
 };
 
 PointReflectionType::PointReflectionType()
@@ -85,11 +85,12 @@ ObjectImp* PointReflectionType::calc( const Args& targs, const KigDocument& ) co
 {
   if ( targs.size() != 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
-  if( !args[1] ) return new InvalidImp;
+  if( !args[0] ) return new InvalidImp;
 
-  Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
+  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
+  Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
   Transformation t = Transformation::pointReflection( center );
-  return args[0]->transform( t );
+  return args[1]->transform( t );
 }
 
 static const ArgParser::spec argsspecal[] =

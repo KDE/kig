@@ -120,7 +120,7 @@ Collection parse( const Collection& os, uint numberofanyobjects,
 
   uint anyobjscounter = 0;
 
-  for ( typename Collection::const_iterator o = os.begin(); o != os.end(); ++o )
+  for ( typename Collection::const_reverse_iterator o = os.rbegin(); o != os.rend(); ++o )
   {
     for( uint i = 0; i < margs.size(); ++i )
       if ( hasimp( **o, margs[i].type ) && ret[i] == 0 )
