@@ -18,8 +18,8 @@
  USA
 **/
 
-#ifndef KIG_POPUP_H
-#define KIG_POPUP_H
+#ifndef KIG_MODES_POPUP_H
+#define KIG_MODES_POPUP_H
 
 #include <kpopupmenu.h>
 

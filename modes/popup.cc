@@ -105,11 +105,22 @@ public:
                       KigDocument& doc, KigWidget& w, NormalMode& m );
 };
 
+class ObjectTypeActionsProvider
+  : public PopupActionProvider
+{
+  int mnoa;
+public:
+  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
+  bool executeAction( int menu, int& id, const Objects& os,
+                      NormalModePopupObjects& popup,
+                      KigDocument& doc, KigWidget& w, NormalMode& m );
+};
+
 NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
                                                 KigWidget& view,
                                                 NormalMode& mode,
                                                 const Objects& objs )
-  : mplc( QCursor::pos() ), mdoc( doc ), mview( view ), mobjs( objs ),
+  : KPopupMenu( &view ), mplc( QCursor::pos() ), mdoc( doc ), mview( view ), mobjs( objs ),
     mmode( mode )
 {
   assert ( ! objs.empty() );
@@ -128,7 +139,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
   // and construct property's as objects -> construct menu
   mproviders.push_back( new PropertiesActionsProvider() );
   // stuff like "redefine point" for a fixed or constrained point..
-//   mproviders.push_back( new ObjectTypeActionsProvider() );
+  mproviders.push_back( new ObjectTypeActionsProvider() );
 
   for ( int i = 0; i < 6; ++i )
     mmenus[i] = new QPopupMenu( this );
@@ -260,13 +271,13 @@ void BuiltinActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu
       ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
       if ( point )
       {
-        int size = 1 + 2*i;
+        int size = 2*i;
         QRect r( ( 20 - size ) / 2,  ( 20 - size ) / 2, size, size );
         ptr.drawEllipse( r );
       }
       else
       {
-        ptr.setPen( QPen( color, i ) );
+        ptr.setPen( QPen( color, -1 + 2*i ) );
         ptr.drawLine( QPoint( 0, 10 ), QPoint( 50, 10 ) );
       };
       ptr.end();
@@ -340,7 +351,7 @@ bool BuiltinActionsProvider::executeAction(
 
     for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
       if ( (*i)->inherits( Object::ID_RealObject ) )
-        static_cast<RealObject*>(*i)->setWidth( 3 + 2*id );
+        static_cast<RealObject*>(*i)->setWidth( 1 + 2*id );
     mode.clearSelection();
     w.redrawScreen();
     return true;
@@ -441,7 +452,8 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
   {
     ObjectImp* prop = o->property( i, popup.document() );
     if ( ( menu == NormalModePopupObjects::ConstructMenu &&
-           prop->inherits( ObjectImp::ID_PointImp ) ) ||
+           prop->inherits( ObjectImp::ID_PointImp ) &&
+           ! o->hasimp( ObjectImp::ID_PointImp ) ) ||
          ( menu == NormalModePopupObjects::ShowMenu ) )
     {
       popup.addAction( menu, i18n( o->properties()[i] ), nextfree++ );
@@ -453,7 +465,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
 
 bool PropertiesActionsProvider::executeAction(
   int menu, int& id, const Objects& os,
-  NormalModePopupObjects&,
+  NormalModePopupObjects& popup,
   KigDocument& doc, KigWidget& w, NormalMode& )
 {
   if ( menu != NormalModePopupObjects::ConstructMenu &&
@@ -471,8 +483,9 @@ bool PropertiesActionsProvider::executeAction(
   {
     Objects ret;
     ret.push_back( new PropertyObject( parent, propid ) );
+    Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
     Objects labelos = ObjectFactory::instance()->label(
-      QString::fromLatin1( "%1" ), w.fromScreen( w.mapFromGlobal( QCursor::pos() ) ),
+      QString::fromLatin1( "%1" ), c,
       false, ret );
     copy( labelos.begin(), labelos.end(), back_inserter( ret ) );
     ret.calc( doc );
@@ -486,4 +499,21 @@ bool PropertiesActionsProvider::executeAction(
     doc.addObjects( ret );
   };
   return true;
+}
+
+void ObjectTypeActionsProvider::fillUpMenu(
+  NormalModePopupObjects& popup, int menu, int& nextfree )
+{
+  if ( popup.objects().size() != 1 ) return;
+  if ( menu != NormalModePopupObjects::ToplevelMenu ) return;
+
+}
+
+bool ObjectTypeActionsProvider::executeAction(
+  int menu, int& id, const Objects& os,
+  NormalModePopupObjects& popup,
+  KigDocument& doc, KigWidget& w, NormalMode& m )
+{
+  if ( menu != NormalModePopupObjects::ToplevelMenu ) return false;
+  return false;
 }
