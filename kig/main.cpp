@@ -37,30 +37,34 @@ class KigApplication
   : public KUniqueApplication
 {
 public:
-  int newInstance()
+  int newInstance();
+  void handleArgs( KCmdLineArgs* args );
+};
+
+int KigApplication::newInstance()
+{
+  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+  handleArgs(args);
+  args->clear();
+  return 0;
+};
+
+void KigApplication::handleArgs( KCmdLineArgs* args )
+{
+  if ( args->count() == 0 )
   {
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-    handleArgs(args);
-    args->clear();
-    return 0;
-  };
-  void handleArgs(KCmdLineArgs* args)
+    Kig *widget = new Kig;
+    widget->show();
+  }
+  else
   {
-    if ( args->count() == 0 )
-      {
-	Kig *widget = new Kig;
-	widget->show();
-      }
-    else
-      {
-	for (int i = 0; i < args->count(); i++ )
-	  {
-	    Kig *widget = new Kig;
-	    widget->show();
-	    widget->load( args->url( i ) );
-	  }
-      }
-  };
+    for (int i = 0; i < args->count(); i++ )
+    {
+      Kig *widget = new Kig;
+      widget->show();
+      widget->load( args->url( i ) );
+    }
+  }
 };
 
 int main(int argc, char **argv)
