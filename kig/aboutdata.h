@@ -21,7 +21,7 @@
 
 inline KAboutData* kigAboutData( const char* name, const char* iname )
 {
-  const char* version = "v0.1";
+  const char* version = "v0.3";
   const char* description = I18N_NOOP( "KDE Interactive Geometry" );
 
   KAboutData* tmp = new KAboutData( name, iname, version,
