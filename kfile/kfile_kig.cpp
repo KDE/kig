@@ -18,14 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <config.h>
-
 #include "kfile_kig.h"
 
 #include <qdom.h>
 #include <qfile.h>
 
 #include <kgenericfactory.h>
+#include <klocale.h>
 
 typedef KGenericFactory<KigPlugin> kigFactory;
 
@@ -58,8 +57,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   // reading the version...
   QString version = main.attribute( "Version" );
   if ( ! version ) version = main.attribute( "version" );
-  if ( ! version )
-    return false;
+  if ( ! version ) version = i18n( "Translators: Not Available", "n/a" );
   appendItem( metagroup, "Version", version );
 
   // reading the Coordinate System...
@@ -78,7 +76,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   QString stmp = main.attribute( "grid" );
   if ( !( stmp.isEmpty() || ( stmp != "0" ) ) )
     btmp = ( stmp != "0" );
-  QString stmp2 = btmp ? "Yes" : "No";
+  QString stmp2 = btmp ? i18n( "Yes" ) : i18n( "No" );
   appendItem( metagroup, "Grid", stmp2 );
 
   // has Kig document the axes?
@@ -86,7 +84,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   stmp = main.attribute( "axes" );
   if ( !( stmp.isEmpty() || ( stmp != "0" ) ) )
     btmp = ( stmp != "0" );
-  stmp2 = btmp ? "Yes" : "No";
+  stmp2 = btmp ? i18n( "Yes" ) : i18n( "No" );
   appendItem( metagroup, "Axes", stmp2 );
 
   return true;
