@@ -30,7 +30,7 @@ class ExportToImageDialog
   Q_OBJECT
 
   KigView* mv;
-  KigDocument* md;
+  const KigDocument* md;
 
   QSize msize;
 
@@ -39,7 +39,7 @@ class ExportToImageDialog
   // value like to user changes...
   bool minternallysettingstuff;
 public:
-  ExportToImageDialog( KigView* v, KigDocument* d );
+  ExportToImageDialog( KigView* v, const KigDocument* d );
   ~ExportToImageDialog();
 public slots:
   void slotOKPressed();

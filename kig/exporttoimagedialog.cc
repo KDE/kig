@@ -32,7 +32,7 @@
 #include <kimageio.h>
 #include <kmessagebox.h>
 
-ExportToImageDialog::ExportToImageDialog( KigView* v, KigDocument* d )
+ExportToImageDialog::ExportToImageDialog( KigView* v, const KigDocument* d )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),
     mv( v ), md( d ), msize( v->realWidget()->size() ), minternallysettingstuff( false )
 {
@@ -98,7 +98,7 @@ void ExportToImageDialog::slotOKPressed()
   p.drawObjects( md->objects() );
   if ( ! img.save( filename, type.latin1() ) )
   {
-    KMessageBox::error( md->widget(), i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );
+    KMessageBox::error( mv, i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );
     return;
   }
   else accept();
