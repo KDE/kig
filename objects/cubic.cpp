@@ -249,8 +249,8 @@ double Cubic::getParam (const Coordinate& p) const
     int variations = calcCubicVariations ( 0, a, b, c, d, p1a, p1b, p0a );
     bool valid;
     int numroots;
-    double lambda = calcCubicRoot ( -1e10, 1e10, a, b, c, d, variations, valid,
-                               numroots );
+    double lambda = calcCubicRoot ( -1e10, 1e10, a, b, c, d, variations,
+                                    valid, numroots );
     if ( valid )
     {
       Coordinate pnew = p + lambda*v;
