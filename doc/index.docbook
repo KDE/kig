@@ -664,6 +664,17 @@
       Object</guimenuitem> </menuchoice> from the menu bar.  You are
       then presented with a wizard that allows you to proceed.
     </para>
+    <screenshot>
+      <screeninfo>The Script Object Wizard</screeninfo>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="script_wizard.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>The Script Object Wizard</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
     <para>
       The first thing you have to do is select the arguments for the
       script object.  In our example, this means the two points of
@@ -673,7 +684,7 @@
     <para>
       Now you are presented with a text edit box where you can enter
       the code for you script object.  Template code and some comments
-      are already in place.  It is important to make sure that you're
+      are already in place.  It is important to make sure that your
       code is valid Python code.  People familiar with Python will
       note that we are actually defining a Python function called
       calc.  It is therefore necessary to adhere to the Python rules
@@ -682,12 +693,12 @@
       ends the definition of the function.  
     </para>
     <para>
-      The python function that should be defined is called "calc", and
-      in our case accepts two arguments.  These are the objects you
-      have selected as arguments in the previous screen.  There will
-      be as much arguments as you have selected there.  They are
-      called arg1 and arg2, but you can change their names to
-      something more meaningful if you want.
+      The python function that should be defined is called
+      &quot;calc&quot;, and in our case accepts two arguments.  These
+      are the objects you have selected as arguments in the previous
+      screen.  There will be as much arguments as you have selected
+      there.  They are called arg1 and arg2, but you can change their
+      names to something more meaningful if you want.
     </para>
     <para>
       In the function, you can do all sorts of calculations that you
@@ -709,6 +720,39 @@
 
       </programlisting>
     </para>
+    <screenshot>
+      <screeninfo>Entering the code</screeninfo>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>Entering the code for the midpoint in the Script Object wizard...</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+    <para>
+      If you now click the <guibutton>Finish</guibutton> button, then
+      the new object will appear in the Kig document.  If you move one
+      of the points, then the newly created point will move along with
+      them..  A lot more powerful objects can be built in this way,
+      you are encouraged to try it out..
+    </para>
+    <screenshot>
+      <screeninfo>Constructed a Script Object</screeninfo>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="constructed_script_object.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    The newly constructed Script Object.  It is visually
+	    identical to the normal mid point object, so this is
+	    actually a rather non-interesting screenshot ;)
+	  </phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
     <para>
       All objects in Kig can be used in the Python code.  As we have
       seen above, points are of the Point class, and you can use
