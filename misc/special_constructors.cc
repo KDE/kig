@@ -307,6 +307,11 @@ const int PolygonBNPTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>&
                                              const KigDocument&,
                                              const KigWidget& ) const
 {
+// mp: I am not completely sure, but I think that invoking 'wantArgs' with an empty
+// arguments vector should never happen, so I placed an assert to help debugging
+// this happens when selecting "polygon" from the "start" submenu of the popup menu
+// associated to a point :-(
+  assert( ! os.empty() )
   uint count=os.size() - 1;
 
   for ( uint i = 0; i <= count; i++ )
