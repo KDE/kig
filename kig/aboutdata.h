@@ -88,7 +88,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                  "robertgogolok@gmx.de");
 		 
   tmp->addCredit("David Vignoni",
-                 I18N_NOOP("svg icon" ),
+                 I18N_NOOP("SVG icon" ),
                  "david80v@tin.it");
 
   tmp->setTranslator( I18N_NOOP( "_: NAME OF TRANSLATORS\\nYour names" ),
