@@ -73,13 +73,12 @@
       <email>devriese@kde.org</email>.
     </para>
     <para>
-      Since &kig; supports macro's and locuses, it allows for some
-      rather advanced macro's to be defined.  If you have created an
-      interesting macro, which you think might be useful for other
-      people, you can mail it to <ulink
-      url="mailto:devriese@kde.org">me</ulink>, so I can include it in
+      Since &kig; supports macros and locuses, it allows for some
+      rather advanced macros to be defined.  If you have created an
+      interesting macro, that you think might be useful for other
+      people, you can mail it to me at <email>devriese@kde.org</email>, so I can include it in
       the distribution ( if you do this, it will be licensed under the
-      terms of &kig;'s license, the GPL, so that other people can
+      terms of &kig;'s license, the <ulink url="http://www.gnu.org/licenses/licenses.html#GPL">GPL</ulink>, so that other people can
       freely use and adapt it ).
     </para>
   </chapter>
@@ -577,8 +576,7 @@
 	    Free software programs are developed in a very open
 	    spirit, and its developers are mostly very responsive to
 	    user feedback.  Therefore, if you have any questions,
-	    complaints, or whatever about kig, please let <ulink
-	      url="mailto:devriese@kde.org">me</ulink> know.
+	    complaints, or whatever about kig, please let me know at <email>devriese@kde.org</email>.
 	  </para>
 	</listitem>
 	<listitem>
@@ -660,7 +658,7 @@
 	Free Software</ulink>.  This means that its source code is
 	freely available on the internet, and everyone can use it,
 	read it, modify it, and distribute it.  I work on it as a
-	hobby project, and i already learned a lot about programming,
+	hobby project, and I have already learned a lot about programming,
 	C++, KDE/Qt, math, software colaboration and open source
 	projects in the process.
       </para>
@@ -673,8 +671,8 @@
 	software, you are allowed ( and encouraged :) to fix problems
 	you encounter while using it, to add features you miss, to
 	distribute your modified program, and to send these
-	modifications to <ulink
-	url="mailto:devriese@kde.org">me</ulink> so i can include them
+	modifications to me at 
+<email>devriese@kde.org</email>, so that I can include them
 	in the next version for others to enjoy.  I personally have no
 	financial interest in this project whatsoever, so this isn't
 	just marketing speak here ;).
