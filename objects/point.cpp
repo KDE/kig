@@ -37,14 +37,10 @@ void Point::draw (KigPainter& p, bool ss) const
 {
   kdDebug() << k_funcinfo << mC.x << " " << mC.y << endl;
   if (!shown) return;
+  bool s = selected && ss;
   p.setBrushStyle( Qt::SolidPattern );
-  p.setBrushColor (Qt::blue);
-  p.setPen( QPen ( Qt::blue, 1 ) );
-  if (selected && ss)
-    {
-      p.setPen( QPen (Qt::red, 1) );
-      p.setBrushColor(Qt::red);
-    };
+  p.setBrushColor( s ? Qt::red : mColor );
+  p.setPen( QPen ( s ? Qt::red : mColor, 1 ) );
   p.drawPoint( mC, false );
   p.setBrush (Qt::NoBrush);
 };
@@ -209,7 +205,7 @@ ConstrainedPoint::ConstrainedPoint( const ConstrainedPoint& cp)
 
 std::map<QCString,QString> Point::getParams()
 {
-  std::map<QCString,QString> tmp;
+  std::map<QCString,QString> tmp = Object::getParams();
   tmp["x"] = QString::number(mC.x);
   tmp["y"] = QString::number(mC.y);
   return tmp;
@@ -217,6 +213,7 @@ std::map<QCString,QString> Point::getParams()
 
 void Point::setParams(const std::map<QCString,QString>& m)
 {
+  Object::setParams( m );
   bool ok;
   mC.x = m.find("x")->second.toDouble(&ok);
   mC.y = m.find("y")->second.toDouble(&ok);
@@ -224,12 +221,13 @@ void Point::setParams(const std::map<QCString,QString>& m)
 };
 std::map<QCString,QString> ConstrainedPoint::getParams()
 {
-  std::map<QCString,QString> tmp;
+  std::map<QCString,QString> tmp = Object::getParams();
   tmp["param"] = QString::number(p);
   return tmp;
 }
 void ConstrainedPoint::setParams(const std::map<QCString,QString>& m)
 {
+  Object::setParams( m );
   bool ok;
   p = m.find("param")->second.toDouble(&ok);
   Q_ASSERT(ok);

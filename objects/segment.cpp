@@ -67,11 +67,9 @@ bool Segment::contains(const Coordinate& o, const double fault ) const
     && ( o.y - max (p1->getY(), p2->getY()) < fault ); // not too low
 }
 
-void Segment::draw(KigPainter& p, bool showSelection) const
+void Segment::draw(KigPainter& p, bool ss) const
 {
-  p.setPen( QPen( Qt::blue, 1 ));
-  if (showSelection && selected)
-    p.setPen( QPen( Qt::red, 1));
+  p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
   p.drawSegment( p1->getCoord(), p2->getCoord() );
 }
 

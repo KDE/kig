@@ -52,7 +52,7 @@ bool Line::contains(const Coordinate& o, const double fault ) const
 
 void Line::draw(KigPainter& p, bool ss) const
 {
-  p.setPen( ss && selected ? QPen(Qt::red,1) : QPen( Qt::blue, 1 ));
+  p.setPen( ss && selected ? QPen(Qt::red,1) : QPen( mColor, 1 ));
   p.drawLine( p1, p2 );
 }
 

@@ -41,9 +41,7 @@ bool Circle::contains (const Coordinate& o, const double miss) const
 
 void Circle::draw (KigPainter& p, bool ss) const
 {
-  p.setPen(QPen (Qt::blue, 1));
-  if (selected && ss)
-    p.setPen(QPen (Qt::red, 1));
+  p.setPen(QPen ( selected && ss ? Qt::red : mColor, 1));
   p.drawCircle( qpc, radius);
 };
 

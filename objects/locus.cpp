@@ -43,8 +43,7 @@ void Locus::draw(KigPainter& p, bool ss) const
     {
       kdDebug() << k_funcinfo << " at line no. " << __LINE__ << " - count: " << pts.size()<< endl;
 
-      QPen pen (selected && ss ? Qt::red : Qt::blue);
-      p.setPen(pen);
+      p.setPen( QPen( selected && ss ? Qt::red : mColor ) );
       for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
 	{
 	  p.drawPoint( i->pt );

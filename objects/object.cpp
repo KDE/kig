@@ -157,10 +157,15 @@ Objects Object::getAllChildren() const
 
 std::map<QCString,QString> Object::getParams()
 {
-  return std::map<QCString, QString>();
+  std::map<QCString, QString> m;
+  m["color"] = mColor.name();
+  return m;
 }
 
-void Object::setParams( const std::map<QCString,QString>& )
+void Object::setParams( const std::map<QCString,QString>& m )
 {
-    
+  std::map<QCString,QString>::const_iterator p = m.find("color");
+  if( p == m.end() ) mColor = Qt::blue;
+  else mColor = QColor( p->second );
+  assert( mColor.isValid() );
 }
