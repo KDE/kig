@@ -822,10 +822,6 @@ inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHi
   return ret;
 };
 
-// mp: this is a terrible hack, one could instead add a bool field in
-// ...
-#define INVALID_POINT_HACK	(-1e21)
-
 void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
 {
   /// this function is based on drawConic, and its code comes mostly
@@ -871,9 +867,9 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   // First push the [0,1] interval into the stack:
 
   Coordinate coo1 = locusGetCoord( 0, curve, hier, valid, mdoc );
-  if ( ! valid ) coo1.x = INVALID_POINT_HACK;
+  if ( ! valid ) coo1 = coo1.invalidCoord();
   Coordinate coo2 = locusGetCoord( 1, curve, hier, valid, mdoc );
-  if ( ! valid ) coo2.x = INVALID_POINT_HACK;
+  if ( ! valid ) coo2 = coo2.invalidCoord();
   workstack.push( workitem(
                     coordparampair( 0, coo1 ), 
                     coordparampair( 1, coo2 ),
@@ -910,10 +906,10 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
       double t1 = curitem.second.first;
       Coordinate p0 = curitem.first.second;
       bool valid0 = true;
-      if ( p0.x == INVALID_POINT_HACK ) valid0 = false;
+      if ( ! p0.valid() ) valid0 = false;
       Coordinate p1 = curitem.second.second;
       bool valid1 = true;
-      if ( p1.x == INVALID_POINT_HACK ) valid1 = false;
+      if ( ! p1.valid() ) valid1 = false;
 
       // we take the middle parameter of the two previous points...
       double t2 = ( t0 + t1 ) / 2;
@@ -933,7 +929,7 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
 
       Rect *overlaypt = curitem.overlay;
       Coordinate p2 = locusGetCoord( t2, curve, hier, valid, mdoc );
-      if ( ! valid ) p2.x = INVALID_POINT_HACK;
+      if ( ! valid ) p2 = p2.invalidCoord();
       bool allvalid = valid && valid0 && valid1;
       bool dooverlay = ! overlaypt && h < hmaxoverlay && valid0 && valid1
  && fabs( p0.x - p1.x ) <= overlayRectSize()

@@ -30,6 +30,14 @@ class Coordinate
 public:
   static Coordinate fromQPoint( const QPoint& p );
 
+  // we represent an invalid coordinate by setting x or y to positive
+  // or negative infinity.  This is handy, since it doesn't require us
+  // to adapt most of the functions, it doesn't need extra space, and
+  // most of the times that we should get an invalid coord, we get one
+  // automatically..
+  static Coordinate invalidCoord();
+  bool valid() const;
+
   Coordinate( const double x, const double y );
   Coordinate( const Coordinate& p );
   Coordinate();

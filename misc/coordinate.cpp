@@ -23,6 +23,8 @@
 
 using namespace std;
 
+static const double double_inf = HUGE_VAL;
+
 Coordinate Coordinate::fromQPoint( const QPoint& p )
 {
   return Coordinate( p.x(), p.y() );
@@ -164,3 +166,13 @@ QPoint Coordinate::toQPoint() const
   Coordinate t = round();
   return QPoint( (int) t.x, (int) t.y );
 };
+
+Coordinate Coordinate::invalidCoord()
+{
+  return Coordinate( double_inf, double_inf );
+}
+
+bool Coordinate::valid() const
+{
+  return abs( x ) != double_inf && abs( y ) != double_inf;
+}

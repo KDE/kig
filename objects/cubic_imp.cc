@@ -279,16 +279,17 @@ const Coordinate CubicImp::internalGetPoint( double p, bool& valid ) const
   int numroots;
   double y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
                                numroots );
-  if ( valid ) return Coordinate(x,y);
-  root--; if ( root <= 0) root += 3;
-  y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
-                        numroots );
-  if ( valid ) return Coordinate(x,y);
-  root--; if ( root <= 0) root += 3;
-  y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
-                        numroots );
-  assert ( valid );
   return Coordinate(x,y);
+//  if ( valid ) return Coordinate(x,y);
+//  root--; if ( root <= 0) root += 3;
+//  y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
+//                        numroots );
+//  if ( valid ) return Coordinate(x,y);
+//  root--; if ( root <= 0) root += 3;
+//  y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
+//                        numroots );
+//  assert ( valid );
+//  return Coordinate(x,y);
 }
 
 const uint CubicImp::numberOfProperties() const
