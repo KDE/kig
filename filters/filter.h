@@ -28,7 +28,6 @@
 
 #include "../misc/objects.h"
 
-class Object;
 class KigFilter;
 class ScreenInfo;
 class KigDocument;

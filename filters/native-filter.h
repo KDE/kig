@@ -25,7 +25,6 @@ class QDomElement;
 class KigDocument;
 class QDomElement;
 class QCString;
-class RealObject;
 
 // Kig's native format.  Between versions 0.3.1 and 0.4, there was a
 // change in the file format, and this filter is designed to support

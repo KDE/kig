@@ -25,7 +25,6 @@
 
 #include <qpoint.h>
 
-class Object;
 class KigWidget;
 class KigDocument;
 

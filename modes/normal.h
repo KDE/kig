@@ -25,8 +25,6 @@
 
 #include <qpoint.h>
 
-class Object;
-
 class NormalMode
   : public BaseMode
 {

@@ -25,13 +25,15 @@
 #include "../misc/coordinate.h"
 
 class ObjectType;
-class RealObject;
-class ReferenceObject;
 class Coordinate;
 class NormalPoint;
 class KigWidget;
 class KigDocument;
 class MonitorDataObjects;
+class PropertyObject;
+class ReferenceObject;
+class RealObject;
+class Object;
 
 /**
  * "Template method" pattern ( see the Design patterns book ):

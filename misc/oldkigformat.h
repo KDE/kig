@@ -31,7 +31,6 @@
 class QString;
 class QCString;
 class QDomElement;
-class RealObject;
 class ReferenceObject;
 class Objects;
 class KigDocument;

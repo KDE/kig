@@ -22,7 +22,6 @@
 #include "base_mode.h"
 
 class ObjectConstructor;
-class RealObject;
 
 class ConstructMode
   : public BaseMode
