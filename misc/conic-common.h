@@ -51,6 +51,9 @@ public:
       coeffs[5] = f;
     };
   ConicCartesianData( const double incoeffs[6] );
+
+  static ConicCartesianData invalidData();
+  bool valid() const;
 };
 
 /**

@@ -266,8 +266,8 @@ double calcCubicRootwithNewton ( double xmin, double xmax, double a,
  * m typically less then n.  This is done with complete pivoting; the
  * exchanges in columns are recorded in the integer vector "exchange"
  */
-void GaussianElimination( double *matrix[], int numrows, int numcols,
-        int exchange[] )
+bool GaussianElimination( double *matrix[], int numrows,
+                          int numcols, int exchange[] )
 {
   // start gaussian elimination
   for ( int k = 0; k < numrows; ++k )
@@ -288,22 +288,30 @@ void GaussianElimination( double *matrix[], int numrows, int numcols,
         }
       }
     }
+
     // row exchange
-    for( int j = k; j < numcols; ++j )
-    {
-      double t = matrix[k][j];
-      matrix[k][j] = matrix[imax][j];
-      matrix[imax][j] = t;
-    }
+    if ( imax != k )
+      for( int j = k; j < numcols; ++j )
+      {
+        double t = matrix[k][j];
+        matrix[k][j] = matrix[imax][j];
+        matrix[imax][j] = t;
+      }
+
     // column exchange
-    for( int i = 0; i < numrows; ++i )
-    {
-      double t = matrix[i][k];
-      matrix[i][k] = matrix[i][jmax];
-      matrix[i][jmax] = t;
-    }
+    if ( jmax != k )
+      for( int i = 0; i < numrows; ++i )
+      {
+        double t = matrix[i][k];
+        matrix[i][k] = matrix[i][jmax];
+        matrix[i][jmax] = t;
+      }
+
     // remember this column exchange at step k
     exchange[k] = jmax;
+
+    // we can't usefully eliminate a singular matrix..
+    if ( maxval == 0. ) return false;
 
     // ciclo sulle righe
     for( int i = k+1; i < numrows; ++i)
@@ -317,6 +325,7 @@ void GaussianElimination( double *matrix[], int numrows, int numcols,
       }
     }
   }
+  return true;
 }
 
 /*

@@ -121,7 +121,8 @@ const CubicCartesianData calcCubicThroughPoints (
     if (addedconstraint) ++numpoints;
   }
 
-  GaussianElimination( matrix, numpoints, 10, scambio );
+  if ( ! GaussianElimination( matrix, numpoints, 10, scambio ) )
+    return CubicCartesianData::invalidData();
   // fine della fase di eliminazione
   BackwardSubstitution( matrix, numpoints, 10, scambio, solution );
 
@@ -214,7 +215,8 @@ const CubicCartesianData calcCubicCuspThroughPoints (
     if (addedconstraint) ++numpoints;
   }
 
-  GaussianElimination( matrix, numpoints, 10, scambio );
+  if ( ! GaussianElimination( matrix, numpoints, 10, scambio ) )
+    return CubicCartesianData::invalidData();
   // fine della fase di eliminazione
   BackwardSubstitution( matrix, numpoints, 10, scambio, solution );
 
@@ -307,7 +309,8 @@ const CubicCartesianData calcCubicNodeThroughPoints (
     if (addedconstraint) ++numpoints;
   }
 
-  GaussianElimination( matrix, numpoints, 10, scambio );
+  if ( ! GaussianElimination( matrix, numpoints, 10, scambio ) )
+    return CubicCartesianData::invalidData();
   // fine della fase di eliminazione
   BackwardSubstitution( matrix, numpoints, 10, scambio, solution );
 
@@ -505,3 +508,15 @@ bool operator==( const CubicCartesianData& lhs, const CubicCartesianData& rhs )
       return false;
   return true;
 };
+
+CubicCartesianData CubicCartesianData::invalidData()
+{
+  CubicCartesianData ret;
+  ret.coeffs[0] = double_inf;
+  return ret;
+}
+
+bool CubicCartesianData::valid() const
+{
+  return finite( coeffs[0] );
+}

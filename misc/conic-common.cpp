@@ -230,7 +230,8 @@ const ConicCartesianData calcConicThroughPoints (
     if (constraints[i] != noconstraint) ++numpoints;
   }
 
-  GaussianElimination( matrix, numpoints, 6, scambio );
+  if ( ! GaussianElimination( matrix, numpoints, 6, scambio ) )
+    return ConicCartesianData::invalidData();
   // fine della fase di eliminazione
   BackwardSubstitution( matrix, numpoints, 6, scambio, solution );
 
@@ -852,4 +853,16 @@ bool operator==( const ConicPolarData& lhs, const ConicPolarData& rhs )
      lhs.ecostheta0 == rhs.ecostheta0 &&
      lhs.esintheta0 == rhs.esintheta0;
 };
+
+ConicCartesianData ConicCartesianData::invalidData()
+{
+  ConicCartesianData ret;
+  ret.coeffs[0] = double_inf;
+  return ret;
+}
+
+bool ConicCartesianData::valid() const
+{
+  return finite( coeffs[0] );
+}
 

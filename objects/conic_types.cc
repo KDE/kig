@@ -56,8 +56,14 @@ ObjectImp* ConicB5PType::calc( const Args& parents, const KigDocument& ) const
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
 
   if ( points.size() != parents.size() ) return new InvalidImp;
-  else return new ConicImpCart(
-    calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry ) );
+  else
+  {
+    ConicCartesianData d =
+      calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry );
+    if ( d.valid() )
+      return new ConicImpCart( d );
+    else return new InvalidImp;
+  };
 }
 
 const ConicB5PType* ConicB5PType::instance()
@@ -276,8 +282,11 @@ ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigDocument& ) cons
     if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
   if ( points.size() != parents.size() ) return new InvalidImp;
-  return new ConicImpCart(
-    calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry ) );
+  ConicCartesianData d =
+    calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry );
+  if ( d.valid() )
+    return new ConicImpCart( d );
+  else return new InvalidImp;
 }
 
 static const ArgParser::spec argsspecConicPolarPoint[] =
@@ -420,7 +429,9 @@ ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents, const KigDocu
       pts.push_back( static_cast<const PointImp*>( *i )->coordinate() );
 
   if ( parents.size() != pts.size() ) return new InvalidImp;
-  return new ConicImpCart( calcConicThroughPoints( pts, equilateral ) );
+  ConicCartesianData d = calcConicThroughPoints( pts, equilateral );
+  if ( d.valid() ) return new ConicImpCart( d );
+  else return new InvalidImp;
 }
 
 static const ArgParser::spec argsspecParabolaBDP[] =

@@ -62,7 +62,9 @@ ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
     if( os[i]->inherits( ObjectImp::ID_PointImp ) )
       points.push_back( static_cast<const PointImp*>( os[i] )->coordinate() );
   if ( points.size() != os.size() ) return new InvalidImp;
-  return new CubicImp( calcCubicThroughPoints( points ) );
+  CubicCartesianData d = calcCubicThroughPoints( points );
+  if ( d.valid() ) return new CubicImp( d );
+  else return new InvalidImp;
 }
 
 static const ArgParser::spec argsspecCubicNodeB6P[] =
@@ -98,7 +100,9 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) con
     if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
       points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
   if ( points.size() != parents.size() ) return new InvalidImp;
-  return new CubicImp( calcCubicNodeThroughPoints( points ) );
+  CubicCartesianData d = calcCubicNodeThroughPoints( points );
+  if ( d.valid() ) return new CubicImp( d );
+  else return new InvalidImp;
 }
 
 static const ArgParser::spec argsspecCubicCuspB4P[] =
@@ -138,7 +142,9 @@ ObjectImp* CubicCuspB4PType::calc( const Args& parents, const KigDocument& ) con
   };
   if ( points.size() != parents.size() )
     return new InvalidImp;
-  return new CubicImp( calcCubicCuspThroughPoints( points ) );
+  CubicCartesianData d = calcCubicCuspThroughPoints( points );
+  if ( d.valid() ) return new CubicImp( d );
+  else return new InvalidImp;
 }
 
 int CubicB9PType::resultId() const

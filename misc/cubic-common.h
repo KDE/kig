@@ -51,6 +51,9 @@ public:
       coeffs[9] = a222;
     };
   CubicCartesianData( const double incoeffs[10] );
+
+  static CubicCartesianData invalidData();
+  bool valid() const;
 };
 
 bool operator==( const CubicCartesianData& lhs, const CubicCartesianData& rhs );
