@@ -976,7 +976,7 @@ CLASS_GRAPH            = YES
 COLLABORATION_GRAPH    = YES
 
 # If the UML_LOOK tag is set to YES doxygen will generate inheritance and 
-# colloborations diagrams in a style similiar to the OMG's Unified Modeling 
+# colloborations diagrams in a style similar to the OMG's Unified Modeling 
 # Language.
 
 UML_LOOK               = NO
