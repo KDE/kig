@@ -39,8 +39,8 @@ class CoordinateSystem
   : public Qt
 {
 public:
-  CoordinateSystem() {};
-  virtual ~CoordinateSystem() {};
+  CoordinateSystem();
+  virtual ~CoordinateSystem();
   virtual QString fromScreen ( const Coordinate& pt, const KigWidget& w ) const = 0;
   /**
    * This returns a notice to say in which format coordinates should
@@ -58,7 +58,7 @@ class EuclideanCoords
 {
 public:
   EuclideanCoords();
-  ~EuclideanCoords() {};
+  ~EuclideanCoords();
   virtual QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
   virtual QString coordinateFormatNotice() const;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const;

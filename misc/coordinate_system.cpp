@@ -171,3 +171,15 @@ QString EuclideanCoords::coordinateFormatNotice() const
   return i18n( "Enter coordinates in the following form: \"x,y\", where "
                "x is the x coordinate, and y is the y coordinate." );
 }
+
+EuclideanCoords::~EuclideanCoords()
+{
+}
+
+CoordinateSystem::~CoordinateSystem()
+{
+}
+
+CoordinateSystem::CoordinateSystem()
+{
+}
