@@ -68,6 +68,7 @@ public:
   DoubleImp( const double d );
 
   double data() const { return mdata; };
+  void setData( double d ) { mdata = d; };
 
   bool inherits( int typeID ) const;
 
@@ -83,6 +84,7 @@ public:
   IntImp( const int d );
 
   int data() const { return mdata; };
+  void setData( int d )  { mdata = d; }
 
   bool inherits( int typeID ) const;
   IntImp* copy() const;
@@ -97,6 +99,7 @@ public:
   StringImp( const QString& d );
 
   const QString& data() const { return mdata; };
+  void setData( const QString& s ) { mdata = s; }
 
   bool inherits( int typeID ) const;
   StringImp* copy() const;

@@ -19,16 +19,14 @@
 #ifndef KIG_OBJECTS_COMMON_H
 #define KIG_OBJECTS_COMMON_H
 
-#include <boost/scoped_ptr.hpp>
 #include <vector>
 #include <qcstring.h>
 #include <qvaluelist.h>
 #include "../misc/objects.h"
 
-// #include "my-auto-ptr.h"
-#include <memory>
-
 class Object;
+class RealObject;
+class DataObject;
 class ObjectImp;
 class ObjectType;
 class Property;
@@ -41,7 +39,6 @@ class KigDocument;
 class Transformation;
 
 typedef std::vector<const ObjectImp*> Args;
-typedef std::auto_ptr<ObjectImp> ODP;
 typedef QValueList<QCString> QCStringList;
 
 #endif

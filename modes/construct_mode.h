@@ -22,12 +22,13 @@
 #include "base_mode.h"
 
 class ObjectConstructor;
+class RealObject;
 
 class ConstructMode
   : public BaseMode
 {
   const ObjectConstructor* mctor;
-  Object* mpt;
+  RealObject* mpt;
 
   Objects mparents;
 
@@ -49,7 +50,7 @@ protected:
 class PointConstructMode
   : public BaseMode
 {
-  Object* mpt;
+  RealObject* mpt;
 public:
   PointConstructMode( KigDocument& d );
   ~PointConstructMode();

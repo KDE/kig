@@ -58,8 +58,8 @@ void ObjectABType::move( Object* o,
 {
   Objects parents = o->parents();
   assert( parents.size() == 2 );
-  assert( parents[0]->has( ObjectImp::ID_PointImp ) );
-  assert( parents[1]->has( ObjectImp::ID_PointImp ) );
+  assert( parents[0]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( parents[1]->hasimp( ObjectImp::ID_PointImp ) );
 
   parents[0]->move( from, dist );
   parents[1]->move( from, dist );

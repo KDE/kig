@@ -54,8 +54,8 @@ ConicRadicalConstructor::~ConicRadicalConstructor()
 void ConicRadicalConstructor::drawprelim(
   KigPainter& p, const Objects& parents ) const
 {
-  if ( parents.size() == 2 && parents[0]->has( ObjectImp::ID_ConicImp ) &&
-       parents[1]->has( ObjectImp::ID_ConicImp ) )
+  if ( parents.size() == 2 && parents[0]->hasimp( ObjectImp::ID_ConicImp ) &&
+       parents[1]->hasimp( ObjectImp::ID_ConicImp ) )
   {
     Args args;
     p.setBrushStyle( Qt::NoBrush );
@@ -82,13 +82,15 @@ void ConicRadicalConstructor::drawprelim(
 
 Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidget& ) const
 {
+  using namespace std;
   Objects ret;
   for ( int i = -1; i < 2; i += 2 )
   {
-    Args args;
-    args.push_back( new IntImp( i ) );
-    args.push_back( new IntImp( 1 ) );
-    ret.push_back( new Object( mtype, os, args ) );
+    Objects args;
+    args.push_back( new DataObject( new IntImp( i ) ) );
+    args.push_back( new DataObject( new IntImp( 1 ) ) );
+    copy( os.begin(), os.end(), back_inserter( args ) );
+    ret.push_back( new RealObject( mtype, args ) );
   };
   return ret;
 }
@@ -114,13 +116,15 @@ void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
   // way in order to play nice with Kig's design..
 
   if ( parents.size() != 2 ) return;
-  const Object* constrained = parents.front();
+  assert( parents.front()->inherits( Object::ID_RealObject ) );
+  const RealObject* constrained = static_cast<RealObject*>( parents.front() );
   const Object* moving = parents.back();
   if ( ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
   {
     // moving is in fact the constrained point.. swap them..
     moving = constrained;
-    constrained = parents.back();
+    assert( parents.back()->inherits( Object::ID_RealObject ) );
+    constrained = static_cast<RealObject*>( parents.back() );
   };
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
@@ -128,7 +132,7 @@ void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
   assert( oimp->inherits( ObjectImp::ID_CurveImp ) );
   const CurveImp* cimp = static_cast<const CurveImp*>( oimp );
 
-  ObjectHierarchy hier( Objects( const_cast<Object*>( constrained ) ),
+  ObjectHierarchy hier( Objects( const_cast<RealObject*>( constrained ) ),
                         moving );
 
   LocusImp limp( cimp, hier );
@@ -142,9 +146,13 @@ const int LocusConstructor::wantArgs(
   int ret = margsparser.check( os );
   if ( ret == ArgsChecker::Invalid ) return ret;
   else if ( os.size() != 2 ) return ret;
-  return ( os.front()->type()->inherits( ObjectType::ID_ConstrainedPointType ) ||
-           os.back()->type()->inherits( ObjectType::ID_ConstrainedPointType ) ) ?
-    ret : ArgsChecker::Invalid;
+  if ( os.front()->inherits( Object::ID_RealObject ) &&
+       static_cast<RealObject*>( os.front() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+    return ret;
+  if ( os.back()->inherits( Object::ID_RealObject ) &&
+       static_cast<RealObject*>( os.back() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+    return ret;
+  return ArgsChecker::Invalid;
 }
 
 Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget& ) const
@@ -152,24 +160,26 @@ Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget
   using namespace std;
 
   assert ( parents.size() == 2 );
-  const Object* constrained = parents.front();
+  assert( parents.front()->inherits( Object::ID_RealObject ) );
+  const RealObject* constrained = static_cast<RealObject*>( parents.front() );
   const Object* moving = parents.back();
-  if ( !constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+  if ( ! constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
   {
     // moving is in fact the constrained point.. swap them..
     moving = constrained;
-    constrained = parents.back();
+    assert( parents.back()->inherits( Object::ID_RealObject ) );
+    constrained = static_cast<RealObject*>( parents.back() );
   };
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
-  Objects locusparents( const_cast<Object*>( constrained ) );
-  Objects sideOfTree = sideOfTreePath( Objects( const_cast<Object*>( constrained ) ), moving );
+  Objects locusparents( const_cast<RealObject*>( constrained ) );
+  Objects sideOfTree = sideOfTreePath( Objects( const_cast<RealObject*>( constrained ) ), moving );
   copy( sideOfTree.begin(), sideOfTree.end(), back_inserter( locusparents ) );
 
   ObjectHierarchy hier( locusparents, moving );
 
   Object* curve = const_cast<Object*>( constrained->parents().front() );
-  assert( curve->has( ObjectImp::ID_CurveImp ) );
+  assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
   // a locus object does not depend on the constrained point, but on
   // the curve it is on..
   locusparents[0] = curve;
@@ -177,6 +187,6 @@ Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget
   LocusType* t = new LocusType( hier );
   CustomTypes::instance().add( t );
 
-  Object* ret = new Object( t, locusparents, Args() );
+  RealObject* ret = new RealObject( t, locusparents );
   return Objects( ret );
 }

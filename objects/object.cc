@@ -28,55 +28,21 @@
 #include <functional>
 #include <algorithm>
 
-Object::Object( const ObjectType* type, const Objects& parents, const Args& fixedArgs )
-  : mcolor( Qt::blue ), mselected( false ), mshown( true ), mwidth( 1 ), mtype( type ),
-    mimp( 0 ), mparents( parents ), mfixedargs( fixedArgs )
+RealObject::RealObject( const ObjectType* type, const Objects& parents )
+  : ObjectWithParents( parents ),
+    mcolor( Qt::blue ), mselected( false ), mshown( true ), mwidth( 1 ), mtype( type ),
+    mimp( 0 )
 {
-  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
-    (*i)->addChild( this );
 }
 
-Object::~Object()
+RealObject::~RealObject()
 {
-  // tell our parents that we're dead...
-  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
-    (*i)->delChild( this );
-  // tell our children that we're dead, so they don't try to tell us
-  // that they're dying too, which would cause segfaults...
-  for ( Objects::iterator i = mchildren.begin(); i != mchildren.end(); ++i )
-    (*i)->delParent( this );
+  delete mimp;
 }
 
-const uint Object::numberOfProperties() const
+void RealObject::draw( KigPainter& p, bool ss ) const
 {
-  return mimp->numberOfProperties();
-}
-
-const Property Object::property( uint which, const KigWidget& w ) const
-{
-  return mimp->property( which, w );
-}
-
-const QCStringList Object::properties() const
-{
-  return mimp->properties();
-}
-
-// prop_map Object::saveImp()
-// {
-//   prop_map ret;
-//   ret["object-color"] = mColor.name();
-//   ret["object-shown"] = QString::fromLatin1( mshown ? "true" : "false" );
-//   return ret;
-// }
-
-// void Object::loadImp( const prop_map& m )
-// {
-//   mtype->loadImp( m, *mimp );
-// }
-
-void Object::draw( KigPainter& p, bool ss ) const
-{
+  if ( ! mshown ) return;
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( mselected && ss ? Qt::red : mcolor );
   p.setPen( QPen ( mselected && ss ? Qt::red : mcolor,  1) );
@@ -84,51 +50,94 @@ void Object::draw( KigPainter& p, bool ss ) const
   mimp->draw( p );
 }
 
-bool Object::contains( const Coordinate& p, const ScreenInfo& si ) const
+bool RealObject::contains( const Coordinate& p, const ScreenInfo& si ) const
 {
   return mimp->contains( p, si );
 }
 
-bool Object::inRect( const Rect& r ) const
+bool RealObject::inRect( const Rect& r ) const
 {
   return mimp->inRect( r );
 }
 
-void Object::move( const Coordinate& from, const Coordinate& dist )
+void RealObject::move( const Coordinate& from, const Coordinate& dist )
 {
   mtype->move( this, from, dist );
 }
 
-void Object::calc()
+void ObjectWithParents::calc()
 {
   using namespace std;
-  Args a = mfixedargs;
+  Args a;
+  a.reserve( mparents.size() );
   transform( mparents.begin(), mparents.end(),
              back_inserter( a ), mem_fun( &Object::imp ) );
-  mimp.reset( mtype->calc( a ) );
+  calc( a );
 }
 
-// void Object::addActions( NormalModePopupObjects& m )
-// {
-// }
-
-// void Object::doNormalAction( int which, KigDocument& d, KigWidget& w, NormalMode& m, const Coordinate& cp )
-// {
-// }
-
-// void Object::doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m, const Coordinate& cp )
-// {
-// }
-
-bool Object::valid() const
+void RealObject::reset( const ObjectType* t, const Objects& parents )
 {
-  return mimp->valid();
+  mtype = t;
+  setParents( parents );
 }
 
-Objects Object::getAllChildren() const
+QCString RealObject::baseTypeName() const
 {
-  // what we are going to return...
-  Objects tmp;
+  return mtype->baseName();
+}
+
+QString RealObject::translatedBaseTypeName() const
+{
+  return mtype->translatedBaseName();
+}
+
+void RealObject::setImp( ObjectImp* i )
+{
+  delete mimp;
+  mimp = i;
+}
+
+bool RealObject::canMove() const
+{
+  return mtype->canMove();
+}
+
+Object::~Object()
+{
+  // tell our children that we're dead, so they don't try to tell us
+  // that they're dying too, which would cause segfaults...
+  for ( uint i = 0; i < mchildren.size(); ++i )
+    mchildren[i]->delParent( this );
+}
+
+bool Object::hasimp( int type ) const
+{
+  return imp()->inherits( type );
+}
+
+const uint Object::numberOfProperties() const
+{
+  return imp()->numberOfProperties();
+}
+
+const Property Object::property( uint which, const KigWidget& w ) const
+{
+  return imp()->property( which, w );
+}
+
+const QCStringList Object::properties() const
+{
+  return imp()->properties();
+}
+
+const Objects& Object::children() const
+{
+  return mchildren;
+}
+
+const Objects Object::getAllChildren() const
+{
+  Objects ret;
   // objects to iterate over...
   Objects objs = mchildren;
   // contains the objects to iterate over the next time around...
@@ -138,91 +147,214 @@ Objects Object::getAllChildren() const
     for( Objects::iterator i = objs.begin();
          i != objs.end(); ++i )
     {
-      tmp.upush( *i );
+      ret.upush( *i );
       objs2 |= (*i)->children();
     };
     objs = objs2;
     objs2.clear();
   };
-  return tmp;
-}
-
-const Objects& Object::parents() const
-{
-  return mparents;
+  return ret;
 }
 
 void Object::addChild( Object* o )
 {
   mchildren.upush( o );
+  childAdded();
 }
 
 void Object::delChild( Object* o )
 {
   mchildren.remove( o );
+  childRemoved();
 }
 
-bool Object::has( int typeID ) const
+void ObjectWithParents::addParent( Object* o )
 {
-  return mimp->inherits( typeID );
+  mparents.upush( o );
 }
 
-void Object::reset( const ObjectType* t, const Args& fixedArgs, const Objects& parents )
-{
-  mtype = t;
-  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
-    (*i)->delChild( this );
-  for ( Args::const_iterator i = mfixedargs.begin(); i != mfixedargs.end(); ++i )
-    delete *i;
-  mfixedargs = fixedArgs;
-  mparents = parents;
-  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
-    (*i)->addChild( this );
-}
-
-double Object::getParam( const Coordinate& c ) const
-{
-  assert( mimp->inherits( ObjectImp::ID_CurveImp ) );
-  return static_cast<const CurveImp*>( mimp.get() )->getParam( c );
-}
-
-const Coordinate Object::getPoint( double param ) const
-{
-  assert( mimp->inherits( ObjectImp::ID_CurveImp ) );
-  return static_cast<const CurveImp*>( mimp.get() )->getPoint( param );
-}
-
-QCString Object::baseTypeName() const
-{
-  return mtype->baseName();
-}
-
-QString Object::translatedBaseTypeName() const
-{
-  return mtype->translatedBaseName();
-}
-
-Object::Object( const Object& o )
-  : mcolor( o.mcolor ), mselected( o.mselected ), mshown( o.mshown ),
-    mwidth( 1 ), mtype( o.mtype ), mimp( o.mimp->copy() ), mparents( o.mparents )
-{
-  for ( Objects::const_iterator i = mparents.begin(); i != mparents.end(); ++i )
-    (*i)->addChild( this );
-  for ( Args::const_iterator i = o.mfixedargs.begin(); i != o.mfixedargs.end(); ++i )
-    mfixedargs.push_back( (*i)->copy() );
-}
-
-void Object::setImp( ObjectImp* i )
-{
-  mimp.reset( i );
-}
-
-bool Object::canMove() const
-{
-  return mtype->canMove();
-}
-
-void Object::delParent( Object* o )
+void ObjectWithParents::delParent( Object* o )
 {
   mparents.remove( o );
+}
+
+void ObjectWithParents::setParents( const Objects& parents )
+{
+  for ( uint i = 0; i < mparents.size(); ++i )
+    mparents[i]->delChild( this );
+  mparents = parents;
+  for ( uint i = 0; i < mparents.size(); ++i )
+    mparents[i]->addChild( this );
+}
+
+Objects ObjectWithParents::parents() const
+{
+  return mparents;
+}
+
+ObjectWithParents::~ObjectWithParents()
+{
+  // tell our parents that we're dead...
+  for ( uint i = 0; i < mparents.size(); ++i )
+    mparents[i]->delChild( this );
+}
+
+const ObjectImp* RealObject::imp() const
+{
+  return mimp;
+}
+
+const ObjectType* RealObject::type() const
+{
+  return mtype;
+}
+
+void RealObject::calc( const Args& a )
+{
+  delete mimp;
+  mimp = mtype->calc( a );
+}
+
+Object::Object()
+{
+}
+
+ObjectWithParents::ObjectWithParents( const Objects& parents )
+  : mparents( parents )
+{
+  for ( uint i = 0; i < mparents.size(); ++i )
+    mparents[i]->addChild( this );
+}
+
+DataObject::DataObject( ObjectImp* imp )
+  : mimp( imp ), mrefs( 0 )
+{
+}
+
+DataObject::~DataObject()
+{
+  delete mimp;
+}
+
+const ObjectImp* DataObject::imp() const
+{
+  return mimp;
+}
+
+Objects DataObject::parents() const
+{
+  return Objects();
+}
+
+void DataObject::draw( KigPainter&, bool ) const
+{
+}
+
+bool DataObject::contains( const Coordinate&, const ScreenInfo& ) const
+{
+  return false;
+}
+
+bool DataObject::inRect( const Rect& ) const
+{
+  return false;
+}
+
+bool DataObject::canMove() const
+{
+  return false;
+}
+
+void DataObject::move( const Coordinate&, const Coordinate& )
+{
+//    assert( false );
+}
+
+void DataObject::calc()
+{
+}
+
+QCString DataObject::baseTypeName() const
+{
+  return "SHOULDNOTBESEEN";
+}
+
+QString DataObject::translatedBaseTypeName() const
+{
+  return QString::fromUtf8( "SHOULDNOTBESEEN" );
+}
+
+void DataObject::childAdded()
+{
+  ++mrefs;
+}
+
+void DataObject::childRemoved()
+{
+  if ( --mrefs <= 0 ) delete this;
+}
+
+void Object::childRemoved()
+{
+}
+
+void Object::childAdded()
+{
+}
+
+void Object::addParent( Object* )
+{
+  assert( false );
+}
+
+void Object::delParent( Object* )
+{
+  assert( false );
+}
+
+void Object::setParents( const Objects& )
+{
+  assert( false );
+}
+
+bool Object::inherits( int ) const
+{
+  return false;
+}
+
+bool RealObject::inherits( int type ) const
+{
+  return type == ID_RealObject;
+}
+
+void RealObject::calc()
+{
+  // no idea why this is necessary
+  ObjectWithParents::calc();
+}
+
+void DataObject::setImp( ObjectImp* imp )
+{
+  delete mimp;
+  mimp = imp;
+}
+
+bool DataObject::inherits( int type ) const
+{
+  return type == ID_DataObject;
+}
+
+bool Object::valid() const
+{
+  return imp()->valid();
+}
+
+bool RealObject::shown() const
+{
+  return mshown;
+}
+
+bool DataObject::shown() const
+{
+  return false;
 }

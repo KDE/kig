@@ -53,7 +53,7 @@ bool ObjectType::canMove() const
   return false;
 }
 
-void ObjectType::move( Object*, const Coordinate&,
+void ObjectType::move( RealObject*, const Coordinate&,
                        const Coordinate& ) const
 {
 }

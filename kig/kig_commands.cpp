@@ -46,7 +46,12 @@ AddObjectsCommand::AddObjectsCommand( KigDocument* inDoc, Object* o )
 void AddObjectsCommand::execute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+  {
+    (*i)->calc();
     document->_addObject(*i);
+    if ( (*i)->inherits( Object::ID_RealObject ) )
+      static_cast<RealObject*>(*i)->setShown( true );
+  }
   undone = false;
   document->mode()->objectsAdded();
 };
@@ -54,7 +59,11 @@ void AddObjectsCommand::execute()
 void AddObjectsCommand::unexecute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+  {
     document->_delObject(*i);
+    if ( (*i)->inherits( Object::ID_RealObject ) )
+      static_cast<RealObject*>(*i)->setShown( false );
+  };
   undone=true;
   document->mode()->objectsRemoved();
 };
@@ -96,10 +105,8 @@ void RemoveObjectsCommand::execute()
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
     document->_delObject(*i);
-    // the parents should let go of their children (quite a dramatic scene we have here :)
-    Objects appel = (*i)->parents();
-    for (Objects::iterator j = appel.begin(); j != appel.end(); ++j )
-      (*j)->delChild(*i);
+    if ( (*i)->inherits( Object::ID_RealObject ) )
+      static_cast<RealObject*>(*i)->setShown( false );
   };
   undone=false;
   document->mode()->objectsRemoved();
@@ -109,11 +116,10 @@ void RemoveObjectsCommand::unexecute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
+    (*i)->calc();
     document->_addObject(*i);
-    // drama again: parents finding their lost children...
-    Objects appel = (*i)->parents();
-    for (Objects::iterator j = appel.begin(); j != appel.end(); ++j )
-      (*j)->addChild(*i);
+    if ( (*i)->inherits( Object::ID_RealObject ) )
+      static_cast<RealObject*>(*i)->setShown( true );
   };
   undone = true;
   document->mode()->objectsAdded();
@@ -121,10 +127,8 @@ void RemoveObjectsCommand::unexecute()
 
 void MoveCommand::execute()
 {
-
 }
 
 void MoveCommand::unexecute()
 {
-
 }

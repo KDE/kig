@@ -34,7 +34,7 @@ public:
 
   ObjectImp* calc( const Args& parents ) const;
   bool canMove() const;
-  void move( Object* ourobj, const Coordinate& from,
+  void move( RealObject* ourobj, const Coordinate& from,
              const Coordinate& dist ) const;
 };
 
@@ -50,7 +50,7 @@ public:
 
   ObjectImp* calc( const Args& parents ) const;
   bool canMove() const;
-  void move( Object* ourobj, const Coordinate& from,
+  void move( RealObject* ourobj, const Coordinate& from,
              const Coordinate& dist ) const;
 };
 

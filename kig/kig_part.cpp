@@ -421,7 +421,8 @@ void KigDocument::delObject(Object* o)
 void KigDocument::_delObject(Object* o)
 {
   mObjs.remove( o );
-  o->setSelected(false);
+  assert( o->inherits( Object::ID_RealObject ) );
+  static_cast<RealObject*>( o )->setSelected( false );
   setModified(true);
 };
 
@@ -432,7 +433,7 @@ Objects KigDocument::whatAmIOn(const Coordinate& p, const ScreenInfo& si ) const
   for ( Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
     if(!(*i)->contains(p, si) || !(*i)->shown() || !(*i)->valid()) continue;
-    if ( (*i)->has( ObjectImp::ID_PointImp ) ) tmp.push_back(*i);
+    if ( (*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
     else nonpoints.push_back( *i );
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
@@ -445,9 +446,9 @@ Objects KigDocument::whatIsInHere( const Rect& p )
   Objects nonpoints;
   for ( Objects::iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if(! (*i)->inRect( p ) || !(*i)->shown() || ! (*i)->valid() ) continue;
-    if ((*i)->has( ObjectImp::ID_PointImp ) ) tmp.push_back(*i);
-    else nonpoints.push_back(*i);
+   if(! (*i)->inRect( p ) || !(*i)->shown() || ! (*i)->valid() ) continue;
+    if ((*i)->hasimp( ObjectImp::ID_PointImp ) ) tmp.push_back( *i );
+    else nonpoints.push_back( *i );
   };
   std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( tmp ) );
   return tmp;
@@ -460,7 +461,7 @@ Rect KigDocument::suggestedRect()
   Rect r(0,0,0,0);
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if (( (*i)->has( ObjectImp::ID_PointImp ) ) && (*i)->shown() && (*i)->valid())
+    if ( (*i)->hasimp( ObjectImp::ID_PointImp ) && (*i)->shown() )
     {
       if( !rectInited )
       {

@@ -19,6 +19,7 @@
 #include "object_factory.h"
 
 #include "bogus_imp.h"
+#include "curve_imp.h"
 #include "point_type.h"
 #include "object.h"
 
@@ -28,15 +29,14 @@
 
 ObjectFactory* ObjectFactory::s = 0;
 
-Object* ObjectFactory::fixedPoint( const Coordinate& c )
+RealObject* ObjectFactory::fixedPoint( const Coordinate& c )
 {
-  DoubleImp* x = new DoubleImp( c.x );
-  DoubleImp* y = new DoubleImp( c.y );
-  Args fixedargs;
-  fixedargs.push_back( x );
-  fixedargs.push_back( y );
-  Object* o = new Object( FixedPointType::instance(),
-                          Objects(), fixedargs );
+  DataObject* x = new DataObject( new DoubleImp( c.x ) );
+  DataObject* y = new DataObject( new DoubleImp( c.y ) );
+  Objects args;
+  args.push_back( x );
+  args.push_back( y );
+  RealObject* o = new RealObject( FixedPointType::instance(), args );
   return o;
 }
 
@@ -46,14 +46,14 @@ ObjectFactory* ObjectFactory::instance()
   return s;
 }
 
-Object* ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d, const KigWidget& w )
+RealObject* ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d, const KigWidget& w )
 {
-  Object* o = fixedPoint( c );
+  RealObject* o = fixedPoint( c );
   redefinePoint( o, c, d, w );
   return o;
 }
 
-void ObjectFactory::redefinePoint( Object* point, const Coordinate& c,
+void ObjectFactory::redefinePoint( RealObject* point, const Coordinate& c,
                                    const KigDocument& d, const KigWidget& w )
 {
   Objects o = d.whatAmIOn( c, w.screenInfo() );
@@ -62,7 +62,7 @@ void ObjectFactory::redefinePoint( Object* point, const Coordinate& c,
   Objects children = point->getAllChildren();
   for ( Objects::iterator i = o.begin(); i != o.end(); ++i )
   {
-    if ( (*i)->has( ObjectImp::ID_CurveImp ) && ! children.contains( *i ) )
+    if ( (*i)->hasimp( ObjectImp::ID_CurveImp ) && ! children.contains( *i ) )
     {
       v = *i;
       break;
@@ -71,17 +71,15 @@ void ObjectFactory::redefinePoint( Object* point, const Coordinate& c,
   if ( v )
   {
     // a constrained point...
-    Args a;
-    a.push_back( new DoubleImp( v->getParam( c ) ) );
-    point->reset( ConstrainedPointType::instance(),
-                  a, Objects( v ) );
+    DataObject* d = new DataObject( new DoubleImp( static_cast<const CurveImp*>( v->imp() )->getParam( c ) ) );
+    point->reset( ConstrainedPointType::instance(), Objects( d ) );
   }
   else
   {
     // a fixed point...
-    Args a;
-    a.push_back( new DoubleImp( c.x ) );
-    a.push_back( new DoubleImp( c.y ) );
-    point->reset( FixedPointType::instance(), a, Objects() );
+    Objects a;
+    a.push_back( new DataObject( new DoubleImp( c.x ) ) );
+    a.push_back( new DataObject( new DoubleImp( c.y ) ) );
+    point->reset( FixedPointType::instance(), a );
   }
 }

@@ -123,32 +123,30 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
   for ( uint i = 0; i < from.size(); ++i )
     if ( from[i] == o ) return i;
   Objects p( o->parents() );
-  Args args = o->fixedArgs();
+  if ( p.empty() ) return -1;
+
+  assert( o->inherits( Object::ID_RealObject ) );
+
   bool neednode = false;
   std::vector<int> parents;
-  parents.resize( p.size() + args.size(), -1 );
+  parents.resize( p.size(), -1 );
   for ( uint i = 0; i < p.size(); ++i )
   {
     int v = visit( p[i], from );
-    parents[args.size() + i] = v;
+    parents[i] = v;
     neednode |= (v != -1);
   };
   if ( ! neednode ) return -1;
 
-  for ( uint i = 0; i < args.size(); ++i )
-  {
-    mnodes.push_back( new PushStackNode( args[i]->copy() ) );
-    parents[i] = mnumberofargs + mnodes.size() - 1;
-  };
   for ( uint i = 0; i < p.size(); ++i )
   {
-    if ( parents[args.size() + i] == -1 )
+    if ( parents[i] == -1 )
     {
       mnodes.push_back( new PushStackNode( p[i]->imp()->copy() ) );
-      parents[args.size() + i] = mnumberofargs + mnodes.size() - 1;
+      parents[i] = mnumberofargs + mnodes.size() - 1;
     };
   };
-  mnodes.push_back( new ApplyTypeNode( o->type(), parents ) );
+  mnodes.push_back( new ApplyTypeNode( static_cast<const RealObject*>( o )->type(), parents ) );
   return mnumberofargs + mnodes.size() - 1;
 }
 

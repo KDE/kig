@@ -28,14 +28,14 @@ public:
 
   static ObjectFactory* instance();
 
-  Object* fixedPoint( const Coordinate& c );
+  RealObject* fixedPoint( const Coordinate& c );
 
-  Object* sensiblePoint( const Coordinate& c,
+  RealObject* sensiblePoint( const Coordinate& c,
                          const KigDocument& d,
                          const KigWidget& w
     );
 
-  void redefinePoint( Object* point, const Coordinate& c,
+  void redefinePoint( RealObject* point, const Coordinate& c,
                       const KigDocument& d, const KigWidget& w );
 };
 

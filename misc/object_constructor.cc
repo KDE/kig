@@ -117,7 +117,7 @@ void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& pare
 Objects SimpleObjectTypeConstructor::build(
   const Objects& os, KigDocument&, KigWidget& ) const
 {
-  Object* n = new Object( mtype, os, Args() );
+  RealObject* n = new RealObject( mtype, os );
   return Objects( n );
 }
 
@@ -184,9 +184,10 @@ Objects MultiObjectTypeConstructor::build(
   using namespace std;
   for ( vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
   {
-    Args args;
-    args.push_back( new IntImp( *i ) );
-    Object* n = new Object( mtype, os, args );
+    Objects args;
+    args.push_back( new DataObject( new IntImp( *i ) ) );
+    copy( os.begin(), os.end(), back_inserter( args ) );
+    RealObject* n = new RealObject( mtype, args );
     ret.push_back( n );
   };
   return ret;

@@ -34,8 +34,7 @@
 
 class KigWidget;
 
-// this used to be a class with convenience functions, but i've
-// replaced them all with stl stuff...
+// collection class with some convenience funcs..
 class Object;
 
 template<class T>

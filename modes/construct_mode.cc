@@ -18,6 +18,7 @@
 
 #include "construct_mode.h"
 
+#include "../objects/object.h"
 #include "../objects/object_factory.h"
 
 #include "../kig/kig_part.h"
@@ -116,14 +117,18 @@ void ConstructMode::mouseMoved( const Objects& os,
 void ConstructMode::selectObject( Object* o, const QPoint&, KigWidget& w )
 {
   mparents.push_back( o );
-  o->setSelected( true );
+  assert( o->inherits( Object::ID_RealObject ) );
+  static_cast<RealObject*>( o )->setSelected( true );
 
   if ( mctor->wantArgs( mparents, mdoc, w ) == ArgsChecker::Complete )
   {
     mctor->handleArgs( mparents, mdoc, w );
     // finish off..
     for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
-      (*i)->setSelected( false );
+    {
+      assert( (*i)->inherits( Object::ID_RealObject ) );
+      static_cast<RealObject*>( *i )->setSelected( false );
+    }
     mdoc.doneMode( this );
   };
 

@@ -49,7 +49,7 @@ public:
   virtual ObjectImp* calc( const Args& parents ) const = 0;
 
   virtual bool canMove() const;
-  virtual void move( Object* ourobj, const Coordinate& from,
+  virtual void move( RealObject* ourobj, const Coordinate& from,
                      const Coordinate& dist ) const;
 
   const QCString baseName() const;

@@ -31,8 +31,15 @@
 #include <functional>
 #include <algorithm>
 
-void MovingModeBase::initScreen( const Objects& in )
+void MovingModeBase::initScreen( const Objects& tin )
 {
+  // temporary fix before i finally fix the moving objects selection
+  // algorithm: don't try to move DataObjects..
+  Objects in;
+  for ( uint i = 0; i < tin.size(); ++i )
+    if ( tin[i]->inherits( Object::ID_RealObject ) )
+      in.push_back( tin[i] );
+
   // here we calc what objects will be moving, and we draw the others
   // on KigWidget::stillPix..  nmo are the Not Moving Objects
   Objects nmo;
@@ -118,7 +125,7 @@ void MovingMode::moveTo( const Coordinate& o )
   pwwlmt = o;
 }
 
-PointRedefineMode::PointRedefineMode( Object* p, KigDocument& d, KigWidget& v )
+PointRedefineMode::PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& v )
   : MovingModeBase( d, v ), mp( p )
 {
   using namespace std;

@@ -72,50 +72,50 @@ ConstrainedPointType::~ConstrainedPointType()
 {
 }
 
-void FixedPointType::move( Object* ourobj, const Coordinate&,
+void FixedPointType::move( RealObject* ourobj, const Coordinate&,
                            const Coordinate& dist ) const
 {
   // fetch the old coord..;
-  const Args fa = ourobj->fixedArgs();
-  assert( fa.size() == 2 );
-  assert( fa.front()->inherits( ObjectImp::ID_DoubleImp ) );
-  assert( fa.back()->inherits( ObjectImp::ID_DoubleImp ) );
-  const DoubleImp* ox = static_cast<const DoubleImp*>( fa.front() );
-  const DoubleImp* oy = static_cast<const DoubleImp*>( fa.back() );
+  Objects pa = ourobj->parents();
+  assert( pa.size() == 2 );
+  assert( pa.front()->inherits( Object::ID_DataObject ) );
+  assert( pa.back()->inherits( Object::ID_DataObject ) );
 
-  // the new fixedargs..
-  Args na;
-  na.push_back( new DoubleImp( ox->data() + dist.x ) );
-  na.push_back( new DoubleImp( oy->data() + dist.y ) );
+  DataObject* ox = static_cast<DataObject*>( pa.front() );
+  DataObject* oy = static_cast<DataObject*>( pa.back() );
 
-  // commit..
-  ourobj->reset( this, na, ourobj->parents() );
+  assert( ox->hasimp( ObjectImp::ID_DoubleImp ) );
+  assert( oy->hasimp( ObjectImp::ID_DoubleImp ) );
+
+  const DoubleImp* dx = static_cast<const DoubleImp*>( pa.front()->imp() );
+  const DoubleImp* dy = static_cast<const DoubleImp*>( pa.back()->imp() );
+
+  ox->setImp( new DoubleImp( dx->data() + dist.x ) );
+  oy->setImp( new DoubleImp( dy->data() + dist.y ) );
 }
 
-void ConstrainedPointType::move( Object* ourobj, const Coordinate&,
+void ConstrainedPointType::move( RealObject* ourobj, const Coordinate&,
                                  const Coordinate& dist ) const
 {
   // fetch the new coord the user wants..
-  assert( ourobj->has( ObjectImp::ID_PointImp ) );
+  assert( ourobj->hasimp( ObjectImp::ID_PointImp ) );
   const PointImp* oi = static_cast<const PointImp*>( ourobj->imp() );
   const Coordinate oc = oi->coordinate();
   const Coordinate nc = oc + dist;
 
   // fetch the CurveImp..
-  const Objects parents = ourobj->parents();
-  assert( parents.size() == 1 );
-  assert( parents.front()->has( ObjectImp::ID_CurveImp ) );
-  const CurveImp* ci = static_cast<const CurveImp*>( parents.front()->imp() );
+  Objects parents = ourobj->parents();
+  assert( parents.size() == 2 );
+  assert( parents.back()->hasimp( ObjectImp::ID_CurveImp ) );
+  const CurveImp* ci = static_cast<const CurveImp*>( parents.back()->imp() );
 
   // fetch the new param..
   const double np = ci->getParam( nc );
 
-  // new fixedArgs..
-  Args na;
-  na.push_back( new DoubleImp( np ) );
+  assert( parents[0]->inherits( Object::ID_DataObject ) );
+  assert( parents[0]->hasimp( ObjectImp::ID_DoubleImp ) );
 
-  // commit..
-  ourobj->reset( this, na, ourobj->parents() );
+  static_cast<DataObject*>( parents[0] )->setImp( new DoubleImp( np ) );
 }
 
 bool ConstrainedPointType::canMove() const

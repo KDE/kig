@@ -52,8 +52,9 @@ void NormalMode::deleteObjects()
 
 void NormalMode::selectObject( Object* o )
 {
+  assert( o->inherits( Object::ID_RealObject ) );
   sos.push_back( o );
-  o->setSelected( true );
+  static_cast<RealObject*>( o )->setSelected( true );
 }
 
 void NormalMode::selectObjects( Objects& os )
@@ -67,14 +68,18 @@ void NormalMode::selectObjects( Objects& os )
 
 void NormalMode::unselectObject( Object* o )
 {
-  o->setSelected( false );
+  assert( o->inherits( Object::ID_RealObject ) );
+  static_cast<RealObject*>( o )->setSelected( false );
   sos.remove( o );
 }
 
 void NormalMode::clearSelection()
 {
   for ( Objects::iterator i = sos.begin(); i != sos.end(); ++i )
-    (*i)->setSelected( false );
+  {
+    assert( (*i)->inherits( Object::ID_RealObject ) );
+    static_cast<RealObject*>(*i)->setSelected( false );
+  };
   sos.clear();
 }
 
@@ -92,7 +97,10 @@ void NormalMode::showHidden()
 {
   const Objects& os = mdoc.objects();
   for (Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-    (*i)->setShown(true);
+  {
+    assert( (*i)->inherits( Object::ID_RealObject ) );
+    static_cast<RealObject*>(*i)->setShown( true );
+  };
   objectsAdded();
 }
 

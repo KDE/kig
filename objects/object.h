@@ -20,20 +20,110 @@
 #define KIG_OBJECTS_OBJECT_H
 
 #include <map>
+#include <vector>
 #include <qcolor.h>
 #include "common.h"
 
-class NormalModePopupObjects;
-class NormalMode;
+using std::vector;
+
+/**
+ * The Object class is an ABC that represents a separate piece of the
+ * Kig document.  This includes the user-perceived RealObjects, but
+ * also the DataObjects.  The first are the objects that the user
+ * sees as objects (lines, circles, points), they do _not_ contain any
+ * data, they calc their data from their parents..  The latter are
+ * simpler Objects, their only job is to serve as data holders, and
+ * some sort of sentinels in the dependency graph.  They are the only
+ * ones to really store data.
+ */
+class Object
+{
+  Objects mchildren;
+  Object( const Object& o );
+  virtual void childRemoved();
+  virtual void childAdded();
+public:
+  Object();
+  virtual ~Object();
+
+  enum {
+    ID_RealObject,
+    ID_DataObject
+  };
+
+  virtual bool inherits( int type ) const;
+
+  virtual const ObjectImp* imp() const = 0;
+  virtual Objects parents() const = 0;
+
+  virtual void draw( KigPainter& p, bool showSelection ) const = 0;
+  virtual bool contains( const Coordinate& p, const ScreenInfo& si ) const = 0;
+  virtual bool inRect( const Rect& r ) const = 0;
+
+  virtual bool canMove() const = 0;
+  virtual void move( const Coordinate& from, const Coordinate& dist ) = 0;
+
+  virtual void calc() = 0;
+
+  virtual QCString baseTypeName() const = 0;
+  virtual QString translatedBaseTypeName() const = 0;
+
+  virtual bool shown() const = 0;
+
+  // these are simply forwarded to the ObjectImp...
+  // check the documentation of that class to see what these are
+  // for..
+
+  // -> ObjectImp::inherits()
+  bool hasimp( int type ) const;
+
+  bool valid() const;
+
+  const uint numberOfProperties() const;
+  const Property property( uint which, const KigWidget& w ) const;
+  const QCStringList properties() const;
+
+  // every kind of object can have children, and there is no easier
+  // way of knowing which they are than to store their pointers.
+  // Thus, it is the Object class's job to keep track of them..
+  const Objects& children() const;
+  const Objects getAllChildren() const;
+
+  void addChild( Object* o );
+  void delChild( Object* o );
+
+  virtual void addParent( Object* o );
+  virtual void delParent( Object* o );
+  virtual void setParents( const Objects& parents );
+};
+
+class ObjectWithParents
+  : public Object
+{
+  ObjectWithParents( const ObjectWithParents& o );
+protected:
+  Objects mparents;
+  ObjectWithParents( const Objects& parents );
+  ~ObjectWithParents();
+public:
+  void addParent( Object* o );
+  void delParent( Object* o );
+  void setParents( const Objects& parents );
+  Objects parents() const;
+
+  void calc();
+  virtual void calc( const Args& a ) = 0;
+};
 
 /**
  * The Object class represents a geometric object.  This class
  * contains some information about the object, like its parents,
- * children, color, selected state etc., and pointers to an @ref
- * ObjectType and @ref ObjectImp.  Please check their respective
- * documentation to see what they're about..
+ * color, selected state etc., and pointers to an @ref ObjectType and
+ * @ref ObjectImp.  Please check their respective documentation to see
+ * what they're about..
  */
-class Object
+class RealObject
+  : public ObjectWithParents
 {
   QColor mcolor;
   bool mselected;
@@ -41,54 +131,70 @@ class Object
   int mwidth;
 
   const ObjectType* mtype;
-  ODP mimp;
+  ObjectImp* mimp;
 
-  Objects mparents;
-  Args mfixedargs;
+  RealObject( const Object& o );
 
-  Objects mchildren;
+  void calc( const Args& a );
+
 public:
-  Object( const ObjectType* type, const Objects& parents, const Args& fixedargs );
-  Object( const Object& o );
-  ~Object();
+  RealObject( const ObjectType* type, const Objects& parents );
+  ~RealObject();
 
-  const ObjectImp* imp() const { return mimp.get(); };
-  const ObjectType* type() const { return mtype; };
-  const Args& fixedArgs() const { return mfixedargs; };
+  bool inherits( int type ) const;
 
-  void setImp( ObjectImp* i );
+  const ObjectImp* imp() const;
 
-  void reset( const ObjectType* t, const Args& fixedArgs, const Objects& parents );
+  void draw( KigPainter& p, bool showSelection ) const;
+  bool contains( const Coordinate& p, const ScreenInfo& si ) const;
+  bool inRect( const Rect& r ) const;
 
-  double getParam( const Coordinate& c ) const;
-  const Coordinate getPoint( double param ) const;
+  bool canMove() const;
+  void move( const Coordinate& from, const Coordinate& dist );
 
   QCString baseTypeName() const;
   QString translatedBaseTypeName() const;
 
-  // Properties are a generic way to retrieve object information.
-  // They are mainly used for showing textlabels with information
-  // about an object ( e.g. This segment is %1 units long ).
-  // every object has a number of properties.
-  // the Object class itself defines some properties too..
-  const uint numberOfProperties() const;
-  const Property property( uint which, const KigWidget& w ) const;
-  // this gives a list of brief descriptions of the properties.  The
-  // names should be between I18N_NOOP(), and they should be ordered
-  // such that if one takes property( a ) gives you the property
-  // described by "properties()[a]".
-  const QCStringList properties() const;
+  void calc();
 
 
-  // only object types that have "parameters" need this, a parameter
-  // is something which you cannot calculate from your parents,
-  // e.g. an independent point's params are its coordinates, a
-  // ConstrainedPoint's also got a param..
-  // Objects that reimplement this should call Object::getParams() and
-  // setParams() after you've handled your params.. --> to set params
-  // common to all objects like the color...
-//   prop_map saveData ();
-//   void loadData ( const prop_map& );
+  const ObjectType* type() const;
+  void setImp( ObjectImp* i );
+  void reset( const ObjectType* t, const Objects& parents );
+
+  QColor color() const { return mcolor; };
+  void setColor( const QColor c ) { mcolor = c; };
+
+  bool selected() const { return mselected; };
+  void setSelected( bool s ) { mselected = s; };
+
+  bool shown() const;
+  void setShown( bool shown ) { mshown = shown; };
+};
+
+/**
+ * DataObject is an Object class that is _not_ user visible, and only
+ * serves to hold data from which RealObjects can calc() themselves.
+ * DataObject is reference counted.  The only objects that should keep
+ * pointers to them are ObjectWithParents's.
+ */
+class DataObject
+  : public Object
+{
+  ObjectImp* mimp;
+  int mrefs;
+
+  void childAdded();
+  void childRemoved();
+public:
+  DataObject( ObjectImp* imp );
+  ~DataObject();
+
+  bool inherits( int type ) const;
+  void setImp( ObjectImp* imp );
+
+  const ObjectImp* imp() const;
+  Objects parents() const;
 
   void draw( KigPainter& p, bool showSelection ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
@@ -99,31 +205,10 @@ public:
 
   void calc();
 
-//   void addActions( NormalModePopupObjects& p );
-//   void doNormalAction( int which, KigDocument& d, KigWidget& w, NormalMode& m, const Coordinate& cp );
-//   void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m, const Coordinate& cp );
+  QCString baseTypeName() const;
+  QString translatedBaseTypeName() const;
 
-  QColor color() const { return mcolor; };
-  void setColor( const QColor c ) { mcolor = c; };
-
-  bool selected() const { return mselected; };
-  void setSelected( bool s ) { mselected = s; };
-
-  bool shown() const { return mshown; };
-  void setShown( bool shown ) { mshown = shown; };
-
-  bool valid() const;
-
-  const Objects& children() const { return mchildren; };
-  Objects getAllChildren() const;
-
-  const Objects& parents() const;
-
-  bool has( int typeID ) const;
-
-  void addChild( Object* o );
-  void delChild( Object* o );
-  void delParent( Object* o );
+  bool shown() const;
 };
 
 #endif

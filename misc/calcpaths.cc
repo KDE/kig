@@ -123,7 +123,6 @@ bool sideOfTreePathVisit( const Object* o, const Objects& from, Objects& ret )
   for ( uint i = 0; i < o->parents().size(); ++i )
   {
     bool v = sideOfTreePathVisit( o->parents()[i], from, ret );
-    v &= o->fixedArgs().size() == 0;
     somedepend |= v;
     alldepend &= v;
     deps[i] = v;
