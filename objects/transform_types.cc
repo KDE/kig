@@ -404,9 +404,6 @@ const ApplyTransformationObjectType* ApplyTransformationObjectType::instance()
 ObjectImp* ApplyTransformationObjectType::calc( const Args& targs, const KigDocument& ) const
 {
   assert( targs.size() == 2 );
-  kdDebug() << k_funcinfo
-            << targs[0]->baseName() << " "
-            << targs[1]->baseName() << endl;
   const Args& args = margsparser.parse( targs );
   assert( args[0] && args[1] );
   assert( args[0]->inherits( ObjectImp::ID_TransformationImp ) );
