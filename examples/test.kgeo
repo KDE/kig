@@ -5,7 +5,7 @@ Draw=0,0,0
 [Main]
 Axes=true
 Grid=true
-Number=10
+Number=12
 Numbers=true
 Scaling=false
 Version=KGeo 1.0.2
@@ -17,14 +17,26 @@ Color=0,0,0
 Geo=1
 Parents=
 Position=1
-QPointX=-2
-QPointY=1
+QPointX=-3.4
+QPointY=1.3
 Size=3
 
 [Object 10]
 Color=0,0,0
 Geo=31
 Parents=8,9
+Size=1
+
+[Object 11]
+Color=0,0,0
+Geo=27
+Parents=5,7
+Size=1
+
+[Object 12]
+Color=0,0,0
+Geo=29
+Parents=9,5
 Size=1
 
 [Object 2]

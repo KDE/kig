@@ -134,6 +134,16 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       e = new HierarchyElement( "LineParallel", i );
       break;
     }
+    case ID_vector:
+    {
+      e = new HierarchyElement( "Vector", i );
+      break;
+    }
+    case ID_ray:
+    {
+      e = new HierarchyElement( "Ray", i );
+      break;
+    }
 //  	case ID_pointOfConc:
 // 	  {
 // 	    objs.push_back( new PointOfConc() );
@@ -165,12 +175,6 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 // 	  break;
 // 	case ID_circumference:
 // 	  objs.push_back( new Circumference() );
-// 	  break;
-// 	case ID_vector:
-// 	  objs.push_back( new Vector() );
-// 	  break;
-// 	case ID_ray:
-// 	  objs.push_back( new Ray() );
 // 	  break;
 // 	case ID_move:
 // 	  objs.push_back( new Move() );
