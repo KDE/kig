@@ -133,7 +133,7 @@ class RealObject
   const ObjectType* mtype;
   ObjectImp* mimp;
 
-  RealObject( const Object& o );
+  RealObject( const RealObject& o );
 
   void calc( const Args& a );
 
