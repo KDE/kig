@@ -24,6 +24,8 @@
 #include "locus_imp.h"
 #include "object.h"
 
+#include "../misc/common.h"
+
 #include <functional>
 #include <algorithm>
 #include <cmath>
@@ -209,5 +211,102 @@ const LocusType* LocusType::instance()
   static const LocusType t;
   return &t;
 }
+
+static const ArgParser::spec argsspec3p[] =
+{
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an arc starting at this point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an arc through this point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an arc ending at this point" ) }
+};
+
+ArcBTPType::ArcBTPType()
+  : ArgparserObjectType( "ArcBTP", argsspec3p, 3 )
+{
+}
+
+ArcBTPType::~ArcBTPType()
+{
+}
+
+const ArcBTPType* ArcBTPType::instance()
+{
+  static const ArcBTPType t;
+  return &t;
+}
+
+ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( args.size() < 2 ) return new InvalidImp;
+  if ( args.size() > 3 ) return new InvalidImp;
+  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
+  assert( args[1]->inherits( ObjectImp::ID_PointImp ) );
+  const Coordinate a =
+    static_cast<const PointImp*>( args[0] )->coordinate();
+  const Coordinate b =
+    static_cast<const PointImp*>( args[1] )->coordinate();
+  Coordinate center;
+  double angle = 0.;
+  double startangle = 0.;
+  if ( args.size() == 3 )
+  {
+    assert( args[2]->inherits( ObjectImp::ID_PointImp ) );
+    Coordinate c = static_cast<const PointImp*>( args[2] )->coordinate();
+    center = calcCenter( a, b, c );
+    Coordinate ad = a - center;
+    Coordinate bd = b - center;
+    Coordinate cd = c - center;
+    double anglea = atan2( ad.y, ad.x );
+    double angleb = atan2( bd.y, bd.x );
+    double anglec = atan2( cd.y, cd.x );
+
+    // anglea should be smaller than anglec
+    if ( anglea > anglec )
+    {
+      double t = anglea;
+      anglea = anglec;
+      anglec = t;
+    };
+    if ( angleb > anglec || angleb < anglea )
+    {
+      startangle = anglec;
+      angle = 2 * M_PI + anglea - startangle;
+    }
+    else
+    {
+      startangle = anglea;
+      angle = anglec - anglea;
+    };
+  }
+  else
+  {
+    // find a center and angles that look natural..
+    center = (b+a)/2 + 2 * (b-a).orthogonal();
+    Coordinate bd = b - center;
+    Coordinate ad = a - center;
+    startangle = atan2( ad.y, ad.x );
+    double halfangle = atan2( bd.y, bd.x ) - startangle;
+    if ( halfangle < - M_PI ) halfangle += 2*M_PI;
+    angle = 2 * halfangle;
+  };
+
+  double radius = ( a - center ).length();
+  return new ArcImp( center, radius, startangle, angle );
+}
+
+int ArcBTPType::impRequirement( const ObjectImp*, const Args& ) const
+{
+  return ObjectImp::ID_PointImp;
+}
+
+bool ArcBTPType::inherits( int type ) const
+{
+  return Parent::inherits( type );
+}
+
+int ArcBTPType::resultId() const
+{
+  return ObjectImp::ID_ArcImp;
+}
+
 
 

@@ -133,6 +133,15 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     addDoubleElement( "size", static_cast<const AngleImp&>( d ).size(), parent, doc );
     return QString::fromLatin1( "angle" );
   }
+  else if ( d.inherits( ObjectImp::ID_ArcImp ) )
+  {
+    const ArcImp& a = static_cast<const ArcImp&>( d );
+    addCoordinateElement( "center", a.center(), parent, doc );
+    addDoubleElement( "radius", a.radius(), parent, doc );
+    addDoubleElement( "startangle", a.startAngle(), parent, doc );
+    addDoubleElement( "angle", a.angle(), parent, doc );
+    return QString::fromLatin1( "arc" );
+  }
   else if( d.inherits( ObjectImp::ID_VectorImp ) )
   {
     Coordinate dir = static_cast<const VectorImp&>( d ).dir();
@@ -288,6 +297,22 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
     double size = readDoubleElement( parent.firstChild(), ok, "size" );
     if ( ! ok ) return 0;
     return new AngleImp( Coordinate(), 0, size );
+  }
+  else if ( type == "arc" )
+  {
+    QDomNode n = parent.firstChild();
+    Coordinate center = readCoordinateElement( n, ok, "center" );
+    if ( ! ok ) return 0;
+    n = n.nextSibling();
+    double radius = readDoubleElement( n, ok, "radius" );
+    if ( ! ok ) return 0;
+    n = n.nextSibling();
+    double startangle = readDoubleElement( n, ok, "startangle" );
+    if ( ! ok ) return 0;
+    n = n.nextSibling();
+    double angle = readDoubleElement( n, ok, "angle" );
+    if ( ! ok ) return 0;
+    return new ArcImp( center, radius, startangle, angle );
   }
   else if( type == "vector" )
   {

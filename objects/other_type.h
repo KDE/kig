@@ -76,25 +76,24 @@ public:
   int resultId() const;
 };
 
-// /**
-//  * an arc by center and a start and end point
-//  */
-// class ArcBCTPType
-//   : public ArgparserObjectType
-// {
-//   typedef ArgparserObjectType Parent;
-//   ArcBCTPType();
-//   ~ArcBCTPType();
-// public:
-//   static const ArcType* instance();
+/**
+ * an arc by a start point, an intermediate point and an end point
+ */
+class ArcBTPType
+  : public ArgparserObjectType
+{
+  typedef ArgparserObjectType Parent;
+  ArcBTPType();
+  ~ArcBTPType();
+public:
+  static const ArcBTPType* instance();
 
-//   ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
 
-//   const ObjectHierarchy& hierarchy() const;
-//   int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  int impRequirement( const ObjectImp* o, const Args& parents ) const;
 
-//   bool inherits( int type ) const;
-//   int resultId() const;
-// };
+  bool inherits( int type ) const;
+  int resultId() const;
+};
 
 #endif

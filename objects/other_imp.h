@@ -87,38 +87,47 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 };
 
-// class ArcImp
-//   : public CurveImp
-// {
-//   typedef CurveImp Parent;
-//   Coordinate mcenter;
-//   double mradius;
-//   double msa;
-//   double ma;
-// public:
-//   ArcImp( const Coordinate& center, const double radius,
-//           const double startangle, const double angle );
-//   ~ArcImp();
-//   ArcImp* copy() const;
+class ArcImp
+  : public CurveImp
+{
+  typedef CurveImp Parent;
+  Coordinate mcenter;
+  double mradius;
+  double msa;
+  double ma;
+public:
+  ArcImp( const Coordinate& center, const double radius,
+          const double startangle, const double angle );
+  ~ArcImp();
+  ArcImp* copy() const;
 
-//   ObjectImp* transform( const Transformation& t ) const;
+  ObjectImp* transform( const Transformation& t ) const;
 
-//   void draw( KigPainter& p ) const;
-//   bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
-//   bool inRect( const Rect& r, int width, const KigWidget& si ) const;
-//   bool valid() const;
+  void draw( KigPainter& p ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+  bool inRect( const Rect& r, int width, const KigWidget& si ) const;
+  bool valid() const;
 
-//   const uint numberOfProperties() const;
-//   const QCStringList properties() const;
-//   const QCStringList propertiesInternalNames() const;
-//   ObjectImp* property( uint which, const KigDocument& d ) const;
-//   int impRequirementForProperty( uint which ) const;
+  const uint numberOfProperties() const;
+  const QCStringList properties() const;
+  const QCStringList propertiesInternalNames() const;
+  ObjectImp* property( uint which, const KigDocument& d ) const;
+  int impRequirementForProperty( uint which ) const;
 
-//   bool inherits( int typeID ) const;
+  bool inherits( int type ) const;
 
-//   int id() const;
+  int id() const;
+  void visit( ObjectImpVisitor* vtor ) const;
 
-//   const char* baseName() const;
-// };
+  const char* baseName() const;
+
+  double getParam( const Coordinate& c, const KigDocument& d ) const;
+  const Coordinate getPoint( double p, const KigDocument& d ) const;
+
+  const Coordinate center() const;
+  double radius() const;
+  double startAngle() const;
+  double angle() const;
+};
 
 #endif

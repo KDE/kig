@@ -224,6 +224,14 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_vector" ) );
 
     c = new SimpleObjectTypeConstructor(
+      ArcBTPType::instance(),
+      I18N_NOOP( "Arc" ),
+      I18N_NOOP( "Construct an arc through three points." ),
+      "arc" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_arcbtp" ) );
+
+    c = new SimpleObjectTypeConstructor(
       ParabolaBDPType::instance(),
       I18N_NOOP( "Parabola by directrix and focus" ),
       I18N_NOOP( "A parabola defined by its directrix and focus" ),

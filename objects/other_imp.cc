@@ -231,83 +231,124 @@ void VectorImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
-// ArcImp::ArcImp( const Coordinate& center, const double radius,
-//                 const double startangle, const double angle )
-//   : CurveImp(), mcenter( center ), mradius( radius ),
-//     msa( startangle ), ma( angle )
-// {
-// }
 
-// ArcImp::~ArcImp()
-// {
-// }
+ArcImp::ArcImp( const Coordinate& center, const double radius,
+                const double startangle, const double angle )
+  : CurveImp(), mcenter( center ), mradius( radius ),
+    msa( startangle ), ma( angle )
+{
+}
 
-// ArcImp* ArcImp::copy() const
-// {
-//   return new ArcImp( mcenter, mradius, msa, ma );
-// }
+ArcImp::~ArcImp()
+{
+}
 
-// ObjectImp* ArcImp::transform( const Transformation& t ) const
-// {
-//   return new InvalidImp();
-// }
+ArcImp* ArcImp::copy() const
+{
+  return new ArcImp( mcenter, mradius, msa, ma );
+}
 
-// void ArcImp::draw( KigPainter& p ) const
-// {
-//   p.drawArc( mcenter, mradius, msa, ma );
-// }
+ObjectImp* ArcImp::transform( const Transformation& t ) const
+{
+  // TODO
+  return new InvalidImp();
+}
 
-// bool ArcImp::contains( const Coordinate& p, int width, const KigWidget& si ) const
-// {
-//   return false;
-// }
+void ArcImp::draw( KigPainter& p ) const
+{
+  p.drawArc( mcenter, mradius, msa, ma );
+}
 
-// bool ArcImp::inRect( const Rect& r, int width, const KigWidget& si ) const
-// {
-//   return false;
-// }
+bool ArcImp::contains( const Coordinate& p, int width, const KigWidget& si ) const
+{
+  // TODO
+  return false;
+}
 
-// bool ArcImp::valid() const
-// {
-//   return true;
-// }
+bool ArcImp::inRect( const Rect& r, int width, const KigWidget& si ) const
+{
+  // TODO
+  return false;
+}
 
-// const uint ArcImp::numberOfProperties() const
-// {
-//   return 0;
-// }
+bool ArcImp::valid() const
+{
+  return true;
+}
 
-// const QCStringList ArcImp::properties() const
-// {
-//   return Parent::properties();
-// }
+const uint ArcImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties();
+}
 
-// const QCStringList ArcImp::propertiesInternalNames() const
-// {
-//   return Parent::propertiesInternalNames();
-// }
+const QCStringList ArcImp::properties() const
+{
+  return Parent::properties();
+}
 
-// ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
-// {
-//   return Parent::property( which, d );
-// }
+const QCStringList ArcImp::propertiesInternalNames() const
+{
+  return Parent::propertiesInternalNames();
+}
 
-// int ArcImp::impRequirementForProperty( uint which ) const
-// {
-//   return Parent::impRequirementForProperty( which );
-// }
+ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
+{
+  return Parent::property( which, d );
+}
 
-// bool ArcImp::inherits( int type ) const
-// {
-//   return type == ID_ArcImp ? true : Parent::inherits( type );
-// }
+int ArcImp::impRequirementForProperty( uint which ) const
+{
+  return Parent::impRequirementForProperty( which );
+}
 
-// int ArcImp::id() const
-// {
-//   return ID_ArcImp;
-// }
+bool ArcImp::inherits( int type ) const
+{
+  return type == ID_ArcImp ? true : Parent::inherits( type );
+}
 
-// const char* ArcImp::baseName() const
-// {
-//   return I18N_NOOP( "arc" );
-// }
+int ArcImp::id() const
+{
+  return ID_ArcImp;
+}
+
+const char* ArcImp::baseName() const
+{
+  return I18N_NOOP( "arc" );
+}
+
+void ArcImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+double ArcImp::getParam( const Coordinate& c, const KigDocument& d ) const
+{
+  // TODO
+  return 0.;
+}
+
+const Coordinate ArcImp::getPoint( double p, const KigDocument& d ) const
+{
+  // TODO
+  return Coordinate();
+}
+
+const Coordinate ArcImp::center() const
+{
+  return mcenter;
+}
+
+double ArcImp::radius() const
+{
+  return mradius;
+}
+
+double ArcImp::startAngle() const
+{
+  return msa;
+}
+
+double ArcImp::angle() const
+{
+  return ma;
+}

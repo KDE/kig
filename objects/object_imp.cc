@@ -62,7 +62,8 @@ QString ObjectImp::translatedName( int id )
   case ID_CubicImp: return i18n( "cubic" );
   case ID_SegmentImp: return i18n( "segment" );
   case ID_RayImp: return i18n( "ray" );
-//  case ID_AnyImp: return "any";
+  case ID_ArcImp: return i18n( "arc" );
+  case ID_AnyImp: return "any";
   default: return QString::null;
   }
 }
@@ -87,6 +88,7 @@ const char* ObjectImp::idToString( int id )
   case ID_CubicImp: return "cubic";
   case ID_SegmentImp: return "segment";
   case ID_RayImp: return "ray";
+  case ID_ArcImp: return "arc";
   case ID_AnyImp: return "any";
   default: return 0;
   }
@@ -112,6 +114,7 @@ const char* ObjectImp::selectStatement( int id )
   case ID_CubicImp: return I18N_NOOP( "Select this cubic" );
   case ID_SegmentImp: return I18N_NOOP( "Select this segment" );
   case ID_RayImp: return I18N_NOOP( "Select this ray" );
+  case ID_ArcImp: return I18N_NOOP( "Select this arc" );
   case ID_AnyImp: return I18N_NOOP( "Select this object" );
   default: return 0;
   };
@@ -135,6 +138,7 @@ int ObjectImp::stringToID( const QCString& string )
   if( string == "cubic" ) return ID_CubicImp;
   if( string == "segment" ) return ID_SegmentImp;
   if( string == "ray" ) return ID_RayImp;
+  if( string == "arc" ) return ID_ArcImp;
   if( string == "any" ) return ID_AnyImp;
   return -1;
 }
@@ -159,6 +163,7 @@ QString ObjectImp::removeAStatement( int id )
   case ID_CubicImp: return i18n( "Remove a cubic" );
   case ID_SegmentImp: return i18n( "Remove a segment" );
   case ID_RayImp: return i18n( "Remove a ray" );
+  case ID_ArcImp: return i18n( "Remove an arc" );
   case ID_AnyImp: return i18n( "Remove an object" );
   default: return 0;
   };
@@ -184,6 +189,7 @@ QString ObjectImp::addAStatement( int id )
   case ID_CubicImp: return i18n( "Add a cubic" );
   case ID_SegmentImp: return i18n( "Add a segment" );
   case ID_RayImp: return i18n( "Add a ray" );
+  case ID_ArcImp: return i18n( "Add an arc" );
   case ID_AnyImp: return i18n( "Add an object" );
   default: return 0;
   };
