@@ -136,8 +136,6 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
     if ( !isChild( *i, d->emo ) )
       d->emo.push_back( *i );
 
-  kdDebug() << k_funcinfo << d->emo.size() << endl;
-
   d->mon = new MonitorDataObjects( objs );
 
   Objects tmp = objs;
