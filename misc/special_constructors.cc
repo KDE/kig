@@ -746,8 +746,8 @@ QString TangentConstructor::selectStatement(
 CocConstructor::CocConstructor()
   : MergeObjectConstructor(
     I18N_NOOP( "Center Of Curvature" ),
-    I18N_NOOP( "The line tangent to a curve" ),
-    "tangent" )
+    I18N_NOOP( "The center of the osculating circle to a curve" ),
+    "centerofcurvature" )
 {
   SimpleObjectTypeConstructor* conic =
     new SimpleObjectTypeConstructor(
