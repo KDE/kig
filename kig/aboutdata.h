@@ -46,7 +46,8 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                   "pasqui@dmf.bs.unicatt.it" );
 
   tmp->addAuthor( "Pino Toscano",
-                  I18N_NOOP( "Worked on the Dr. Geo import filter and the Italian translations, "
+                  I18N_NOOP( "Worked on the Dr. Geo import filter, point and "
+                             "line styles and the Italian translations, "
                              "also gave me lots of useful feedback, "
                              "like feature requests and bug reports." ),
                   "toscano.pino@tiscali.it" );
@@ -88,7 +89,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                  "robertgogolok@gmx.de");
 
   tmp->addCredit("David Vignoni",
-                 I18N_NOOP("svg icon" ),
+                 I18N_NOOP("Responsible for the nice SVG Icon" ),
                  "david80v@tin.it");
 
   tmp->setTranslator( I18N_NOOP( "_: NAME OF TRANSLATORS\\nYour names" ),
