@@ -20,6 +20,7 @@
 #define KIG_OBJECTS_COMMON_H
 
 #include <vector>
+#include <utility>
 #include <qcstring.h>
 #include <qvaluelist.h>
 #include "../misc/objects.h"
