@@ -33,3 +33,9 @@ cd $TEMPDIR
 	~/src/test/kdenonbeta kig
 
 cd $OLDPWD
+
+echo " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "
+echo "Niet vergeten om #MIN_CONFIG in "
+echo "configure.in.in te veranderen in "
+echo "#MIN_CONFIG( 3.0 ) zodat kig niet afhangt "
+echo "van Qt 3.1 maar Qt 3.0..."
