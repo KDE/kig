@@ -32,7 +32,7 @@ Coordinate calcPointOnPerpend( const Coordinate& p1, const Coordinate& p2, const
   double xb = p2.x;
   double ya = p1.y;
   double yb = p2.y;
-  if ( fabs(yb - ya) > 0.001 )
+  if ( fabs(yb - ya) > 0.00001 )
   {
     x2 = 0;
     y2 = (xb-xa)*(t.x)/(yb-ya) + t.y;

@@ -21,10 +21,10 @@
 
 #include "coordinate_system.h"
 
+#include "i18n.h"
+
 #include <qpainter.h>
 #include <qregexp.h>
-
-#include <klocale.h>
 #include <kdebug.h>
 
 #include <cmath>

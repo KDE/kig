@@ -60,8 +60,9 @@ void AddFixedPointAction::slotActivated()
 AddFixedPointAction::AddFixedPointAction( KigDocument* doc,
                                           const QIconSet& icon,
                                           KActionCollection* coll )
-  : KAction( i18n( "Fixed point" ), icon, 0, 0, 0, coll,
+  : KAction( i18n( "Point by coordinates" ), icon, 0, 0, 0, coll,
              "objects_new_point_xy" ),
     mdoc( doc )
 {
+    setToolTip( i18n( "Construct a point by entering its coordinates..." ) );
 }

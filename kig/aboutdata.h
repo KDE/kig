@@ -61,5 +61,11 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 			    "gave me something to compete against :)"),
 		  "www-cabri.imag.fr");
 
+  tmp->addCredit("Robert Gogolok",
+                 I18N_NOOP("Gave me some good feedback on Kig, some feature "
+                           "requests, cleanups and style fixes, and someone "
+                           "to chat with on irc :)" ),
+                 "gogolok@gmx.de");
+
   return tmp;
 };
