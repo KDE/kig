@@ -25,7 +25,7 @@ libkigpart_la_SOURCES = dummy.cpp
 libkigpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkigpart_la_LIBADD  = $(LIB_KPARTS) \
 	misc/libmisc.la objects/libobjects.la filters/libfilters.la \
-	modes/libmodes.la $(scriptinglib) kig/libkigparttemp.la
+	modes/libmodes.la kig/libkigparttemp.la $(scriptinglib)
 
 messages: rc.cpp
 	rm -f tips.cpp
