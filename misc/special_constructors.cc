@@ -855,7 +855,7 @@ QString GenericIntersectionConstructor::useText(
       break;
   }
 
-  return QString:null;
+  return QString::null;
 }
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =
