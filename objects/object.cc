@@ -164,7 +164,7 @@ void ObjectWithParents::delParent( Object* o )
   mparents.remove( o );
 }
 
-void ObjectWithParents::setParents( const Objects& parents, KigDocument& doc )
+void ObjectWithParents::setParents( const Objects& parents, KigDocument* doc )
 {
   for ( uint i = 0; i < mparents.size(); ++i )
   {
@@ -174,7 +174,7 @@ void ObjectWithParents::setParents( const Objects& parents, KigDocument& doc )
     {
       // mparents[i] is an internal object that is no longer used..
       // so we remove it from the document, and delete it..
-      doc._delObject( mparents[i] );
+      if ( doc ) doc->_delObject( mparents[i] );
       delete mparents[i];
     };
   };
@@ -273,7 +273,7 @@ void Object::delParent( Object* )
   assert( false );
 }
 
-void Object::setParents( const Objects&, KigDocument& )
+void Object::setParents( const Objects&, KigDocument* )
 {
   assert( false );
 }
@@ -462,5 +462,3 @@ void RealObject::setWidth( int width )
 {
   mwidth = width;
 }
-
-

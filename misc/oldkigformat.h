@@ -34,6 +34,7 @@ class QDomElement;
 class RealObject;
 class Objects;
 class KigDocument;
+class Object;
 
 #include <vector>
 #include <qdom.h>
@@ -53,9 +54,22 @@ QCString translateOldKigPropertyName( const QString& whichproperty );
  * ret with the objects you want to use for the elements you skip.
  * This is necessary e.g. in the Macro importer, cause it needs to
  * handle the given objects itself..
+ * final contains all objects in os that are marked final in the
+ * hierarchy..
  */
 bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& ret,
-                                      KigDocument& );
+                                      Objects& final, const KigDocument& );
+
+/**
+ * This returns a random object for an old-style @param type.  It
+ * makes sure that when oldElemToObject uses the generated object as a
+ * parent for another object, it won't know the difference between the
+ * object it's looking for, and the one we return here..
+ * This is necessary for MacroList::loadOld(), which uses pseudo
+ * objects for given objects of a old hierarchy, and then builds a
+ * new hierarchy from the generated objects.
+ */
+Object* randomObjectForType( const QCString& type, Objects& data );
 
 struct HierElem
 {

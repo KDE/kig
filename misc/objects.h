@@ -143,9 +143,7 @@ template<class iter>
 void delete_all( iter current, iter end )
 {
   for ( ; current != end; ++current )
-  {
     delete *current;
-  };
 };
 
 class Objects

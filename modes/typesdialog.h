@@ -42,8 +42,10 @@ class TypesDialog : public TypesDialogBase
 {
   Q_OBJECT
 
+  // necessary because some MacroList functions need it..
+  const KigDocument& mdoc;
 public:
-  TypesDialog( QWidget* parent );
+  TypesDialog( QWidget* parent, const KigDocument& );
   ~TypesDialog();
 
 public slots:

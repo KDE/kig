@@ -674,7 +674,7 @@ void KigDocument::setupMacroTypes()
     {
       myvector<Macro*> nmacros;
       kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
-      bool ok = MacroList::instance()->load( *file, nmacros );
+      bool ok = MacroList::instance()->load( *file, nmacros, *this );
       if ( ! ok ) continue;
       copy( nmacros.begin(), nmacros.end(), back_inserter( macros ) );
     }

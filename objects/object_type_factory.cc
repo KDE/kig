@@ -42,8 +42,6 @@ ObjectTypeFactory::ObjectTypeFactory()
 
 ObjectTypeFactory::~ObjectTypeFactory()
 {
-  for ( maptype::iterator i = mmap.begin(); i != mmap.end(); ++i )
-    delete i->second;
 }
 
 ObjectTypeFactory* ObjectTypeFactory::instance()

@@ -19,14 +19,22 @@
 #include "oldkigformat.h"
 
 #include "../objects/bogus_imp.h"
+#include "../objects/circle_imp.h"
+#include "../objects/conic_imp.h"
 #include "../objects/conic_types.h"
+#include "../objects/cubic_imp.h"
 #include "../objects/intersection_types.h"
+#include "../objects/line_imp.h"
 #include "../objects/line_type.h"
+#include "../objects/locus_imp.h"
 #include "../objects/object.h"
 #include "../objects/object_factory.h"
 #include "../objects/object_type_factory.h"
 #include "../objects/other_type.h"
+#include "../objects/other_imp.h"
+#include "../objects/point_imp.h"
 #include "../objects/point_type.h"
+#include "../objects/text_imp.h"
 #include "../objects/transform_types.h"
 #include "coordinate.h"
 #include "objects.h"
@@ -40,7 +48,7 @@ static bool oldElemToNewObject( const QCString type,
                                 const QDomElement& e,
                                 RealObject& o,
                                 Objects& dataos,
-                                KigDocument& kdoc )
+                                const KigDocument& kdoc )
 {
   if ( type == "NormalPoint" )
   {
@@ -105,7 +113,7 @@ static bool oldElemToNewObject( const QCString type,
     dataos.push_back( locusos[0] );
     RealObject* locus = static_cast<RealObject*>( locusos[1] );
     o.setType( locus->type() );
-    o.setParents( locus->parents(), kdoc );
+    o.setParents( locus->parents(), 0 );
     delete locus;
     return true;
   }
@@ -130,7 +138,7 @@ static bool oldElemToNewObject( const QCString type,
     if ( wp == -1 ) return false;
     dataos.push_back( new PropertyObject( o.parents()[0], wp ) );
     dataos.back()->calc( kdoc );
-    o.setParents( Objects( dataos.back() ), kdoc );
+    o.setParents( Objects( dataos.back() ), 0 );
     o.setType( CopyObjectType::instance() );
     return true;
   }
@@ -209,7 +217,7 @@ static bool oldElemToNewObject( const QCString type,
     copy( labelos.begin(), labelos.end() - 1, back_inserter( dataos ) );
     RealObject* label = static_cast<RealObject*>( labelos.back() );
     o.setType( label->type() );
-    o.setParents( label->parents(), kdoc );
+    o.setParents( label->parents(), 0 );
     delete label;
     return true;
   }
@@ -304,9 +312,11 @@ std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
 };
 
 bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& ret,
-                                      KigDocument& doc )
+                                      Objects& finalos, const KigDocument& doc )
 {
   bool ok = true;
+
+  int oretsize = ret.size();
 
   std::vector<HierElem> elems;
 
@@ -337,7 +347,7 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
     };
   };
 
-  ret.resize( ret.size() + elems.size(), 0 );
+  ret.resize( oretsize + elems.size(), 0 );
 
   // now we do a topological sort of the elems..
   std::vector<HierElem> sortedElems = sortElems( elems );
@@ -347,11 +357,15 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
   Objects dataos;
 
   // and now we go over them again, this time filling up ret..
-  for ( uint i = 0; i < sortedElems.size(); ++i )
+  for ( uint i = oretsize; i < sortedElems.size(); ++i )
   {
     HierElem& elem = sortedElems[i];
     QDomElement e = elem.el;
     QString tmp;
+
+    tmp = e.attribute( "final" );
+    if ( tmp.isNull() ) return false;
+    bool final = tmp == "true" || tmp == "yes";
 
     tmp = e.attribute("typeName");
     if(tmp.isNull()) return false;
@@ -393,10 +407,73 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& 
     };
     o->calc( doc );
     ret[elem.id-1] = o;
+
+    if ( final ) finalos.push_back( o );
   };
 
   ret.reserve( ret.size() + dataos.size() );
   copy( dataos.begin(), dataos.end(), back_inserter( ret ) );
 
   return true;
+};
+
+Object* randomObjectForType( const QCString& type, Objects& data )
+{
+  // our job here isn't too hard.  We can simply provide DataObjects
+  // for almost all object types, and the oldElemToNewObject()
+  // function won't know the difference.  The only exception is
+  // constrained points.  If a old-style locus has a constrained point
+  // as a parent, the import stuff will translate it to a new style
+  // locus by looking at the constrained point's parents.  Therefore,
+  // we have to make sure the constrained point *has* parents.
+
+  // some random values
+  Coordinate a( 0, 0 );
+  Coordinate b( 10, 10 );
+
+  // note that we provide constrained points too in the case of fixed
+  // points.  This is not necessary, I'm just being lazy ;)
+  if ( type == "NormalPoint" )
+  {
+    DataObject* line =
+      new DataObject( new LineImp( a, b ) );
+    Objects constrainedpointos = ObjectFactory::instance()->constrainedPoint( line, .5 );
+    data.push_back( line );
+    data.push_back( constrainedpointos[0] );
+    return constrainedpointos[1];
+  }
+  else
+  {
+    if ( type.left( 7 ) == "Segment" )
+      return new DataObject( new SegmentImp( a, b ) );
+    else if ( type.contains( "Point" ) )
+      return new DataObject( new PointImp( a ) );
+    else if ( type.left( 5 ) == "Cubic" )
+      return new DataObject( new CubicImp( CubicCartesianData( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ) ) );
+    else if ( type.left( 6 ) == "Circle" )
+      return new DataObject( new CircleImp( a, 5 ) );
+    else if ( type.left( 4 ) == "Line" )
+      return new DataObject( new LineImp( a, b ) );
+    else if ( type.left( 3 ) == "Ray" )
+      return new DataObject( new RayImp( a, b ) );
+    else if ( type == "Locus" )
+    {
+      // a trivial locus..
+      DataObject* pdo = new DataObject( new PointImp( a ) );
+      Objects pdos( pdo );
+      RealObject* cro = new RealObject( CopyObjectType::instance(), pdos );
+      ObjectHierarchy hier( pdos, cro );
+      delete pdo;
+      delete cro;
+      return new DataObject( new LocusImp( new LineImp( a, b ), hier ) );
+    }
+    else if ( type == "TextLabel" )
+      return new DataObject( new TextImp( QString::fromLatin1( "a" ), a ) );
+    else if ( type == "Angle" )
+      return new DataObject( new AngleImp( a, 1., 2. ) );
+    else if ( type == "Vector" )
+      return new DataObject( new VectorImp( a, b ) );
+    else
+      return new DataObject( new ConicImpCart( ConicCartesianData( 1, 2, 3, 4, 5, 6 ) ) );
+  };
 };

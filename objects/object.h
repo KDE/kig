@@ -43,7 +43,8 @@ public:
   enum {
     ID_RealObject,
     ID_DataObject,
-    ID_PropertyObject
+    ID_PropertyObject,
+    ID_ObjectWithParents
   };
 
   virtual bool inherits( int type ) const;
@@ -98,8 +99,11 @@ public:
   virtual void delParent( Object* o );
   // This function detects if our old parents contained internal
   // objects that have no more children, removes them from the
-  // doc, and deletes them..
-  virtual void setParents( const Objects& parents, KigDocument& doc );
+  // doc, and deletes them..  If you're (completely) sure that no old
+  // parents will have to be deleted, you can pass 0 as the document,
+  // e.g. if you know that no parents are know by the doc yet, or
+  // there are no parents at all yet..
+  virtual void setParents( const Objects& parents, KigDocument* doc );
 };
 
 class ObjectWithParents
@@ -113,8 +117,7 @@ protected:
 public:
   void addParent( Object* o );
   void delParent( Object* o );
-  // @see Object::setParents()
-  void setParents( const Objects& parents, KigDocument& doc );
+  void setParents( const Objects& parents, KigDocument* doc );
   Objects parents() const;
 
   void calc( const KigDocument& );

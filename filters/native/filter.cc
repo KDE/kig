@@ -88,8 +88,11 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
   if ( hier.tagName() != "ObjectHierarchy" ) return NotSupported;
 
   Objects os;
-  if ( ! parseOldObjectHierarchyElements( hier.firstChild().toElement(), os, to ) )
+  Objects final;
+  if ( ! parseOldObjectHierarchyElements( hier.firstChild().toElement(), os, final, to ) )
     return ParseError;
+  // stop gcc from complaining about our not using this..
+  final.clear();
 
   to.setObjects( os );
   return OK;

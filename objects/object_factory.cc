@@ -102,7 +102,7 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       parents.clear();
       parents.push_back( dataobj );
       parents.push_back( v );
-      point->setParents( parents, doc );
+      point->setParents( parents, &doc );
 
       assert( dataobj->inherits( Object::ID_DataObject ) );
       static_cast<DataObject*>( dataobj )->setImp( new DoubleImp( newparam ) );
@@ -123,7 +123,7 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       args.push_back( d );
       args.push_back( v );
       point->setType( ConstrainedPointType::instance() );
-      point->setParents( args, doc );
+      point->setParents( args, &doc );
       args[1] = point;
       return args;
     }
@@ -139,7 +139,7 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       a.push_back( new DataObject( new DoubleImp( c.y ) ) );
       doc._addObjects( a );
       point->setType( FixedPointType::instance() );
-      point->setParents( a, doc );
+      point->setParents( a, &doc );
       a.push_back( point );
       return a;
     }

@@ -175,6 +175,7 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
 
 int ObjectHierarchy::visit( const Object* o, const Objects& from )
 {
+  // TODO: update for PropertyObject's
   using namespace std;
 
   for ( uint i = 0; i < from.size(); ++i )

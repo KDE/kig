@@ -137,8 +137,11 @@ public:
    * note that this just returns the loaded macro's, and doesn't add
    * them to the various lists.  Use add() if you want
    * that behaviour..
+   * The fact that this functions requires a KigDocument argument is
+   * semantically incorrect, but i haven't been able to work around
+   * it..
    */
-  bool load( const QString& f, vectype& ret );
+  bool load( const QString& f, vectype& ret, const KigDocument& );
 
   /**
    * get access to the list of macro's..
@@ -146,8 +149,8 @@ public:
   const vectype& macros() const;
 
 private:
-  bool loadNew( const QDomElement& docelem, myvector<Macro*>& ret );
-  bool loadOld( const QDomElement& docelem, myvector<Macro*>& ret );
+  bool loadNew( const QDomElement& docelem, myvector<Macro*>& ret, const KigDocument& );
+  bool loadOld( const QDomElement& docelem, myvector<Macro*>& ret, const KigDocument& );
 };
 
 #endif

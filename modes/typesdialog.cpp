@@ -39,8 +39,8 @@
 #include <algorithm>
 using namespace std;
 
-TypesDialog::TypesDialog( QWidget* parent )
-  : TypesDialogBase( parent, "types_dialog", true )
+TypesDialog::TypesDialog( QWidget* parent, const KigDocument& doc )
+  : TypesDialogBase( parent, "types_dialog", true ), mdoc( doc )
 {
   typedef MacroList::vectype vec;
   const vec& macros = MacroList::instance()->macros();
@@ -129,7 +129,7 @@ void TypesDialog::importTypes()
         i != file_names.end(); ++i)
   {
     myvector<Macro*> nmacros;
-    bool ok = MacroList::instance()->load( *i, nmacros );
+    bool ok = MacroList::instance()->load( *i, nmacros, mdoc );
     if ( ! ok )
     {
       KMessageBox::sorry( this, i18n( "Could not open macro file '%1'" ).arg( *i ) );

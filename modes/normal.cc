@@ -118,7 +118,7 @@ void NormalMode::objectsRemoved()
 
 void NormalMode::editTypes()
 {
-  TypesDialog d( mdoc.widget() );
+  TypesDialog d( mdoc.widget(), mdoc );
   d.exec();
 }
 
