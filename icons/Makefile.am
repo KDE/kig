@@ -23,6 +23,7 @@ kigicondata_DATA = \
 	distance.png \
 	ellipsebffp.png \
 	genericaffinity.png \
+	genericprojectivity.png \
 	hyperbolabffp.png \
 	intersection.png \
 	line1.png \
