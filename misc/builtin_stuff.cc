@@ -31,6 +31,7 @@
 #include "../objects/conic_types.h"
 #include "../objects/cubic_type.h"
 #include "../objects/other_type.h"
+#include "../objects/transform_types.h"
 #include "../objects/point_type.h"
 
 void setupBuiltinStuff()
@@ -224,6 +225,15 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_parabolabdp" ) );
 
+    // Transformation stuff..
+    c = new SimpleObjectTypeConstructor(
+      TranslatedType::instance(),
+      I18N_NOOP( "Translation of an object" ),
+      I18N_NOOP( "The translation of an object by a vector" ),
+      "translation" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_translation" ) );
+
     c = new MultiObjectTypeConstructor(
       ConicAsymptoteType::instance(),
       I18N_NOOP( "Asymptotes of a Hyperbola" ),
@@ -276,5 +286,6 @@ void setupBuiltinStuff()
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
+
   done = true;
 };

@@ -63,7 +63,10 @@ public:
     ID_LocusImp,
     ID_CircleImp,
     ID_ConicImp,
-    ID_CubicImp
+    ID_CubicImp,
+
+    // matches any object type..
+    ID_AnyImp
   };
 
   // we declare this abstract, but we provide an implementation

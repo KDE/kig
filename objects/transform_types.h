@@ -1,5 +1,5 @@
-// object_imp.cc
-// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
+// transform_types.h
+// Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -16,31 +16,19 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#include "object_imp.h"
+#ifndef KIG_OBJECTS_TRANSFORM_TYPES_H
+#define KIG_OBJECTS_TRANSFORM_TYPES_H
 
-#include "../misc/coordinate.h"
+#include "object_type.h"
 
-#include <klocale.h>
-
-ObjectImp::ObjectImp()
+class TranslatedType
+  : public ObjectType
 {
-}
+  TranslatedType();
+  ~TranslatedType();
+public:
+  static const TranslatedType* instance();
+  ObjectImp* calc( const Args& args ) const;
+};
 
-ObjectImp::~ObjectImp()
-{
-}
-
-bool ObjectImp::valid() const
-{
-  return true;
-}
-
-bool ObjectImp::inherits( int type ) const
-{
-  return type == ID_AnyImp;
-}
-
-QString ObjectImp::translatedBaseName() const
-{
-  return i18n( baseName() );
-}
+#endif

@@ -68,6 +68,10 @@
 	<Action name="objects_new_linedirectrix" />
 	<Action name="objects_new_lineconicradical" />
     </Menu>
+    <Menu name="new_transformation">
+	<text>Transformation</text>
+	<Action name="objects_new_translation" />
+    </Menu>
     <Menu name="new_other">
 	<text>Other</text>
 	<Action name="objects_new_locus" />
@@ -133,6 +137,9 @@
   <Action name="user_conic_types" />
   <Action name="objects_new_lineconicradical" />
 </Toolbar>    
+<ToolBar name="transformation_toolbar"><text>Transformation</text>
+    <Action name="objects_new_translation" />
+</Toolbar>
 <ToolBar name="rest_toolbar"><text>Rest</text>
   <Action name="objects_new_angle" />
   <Action name="objects_new_locus" />
