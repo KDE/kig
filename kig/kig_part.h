@@ -185,6 +185,7 @@ public:
   QPtrList<KAction> aMNewLine;
   QPtrList<KAction> aMNewOther;
   QPtrList<KAction> aMNewAll;
+  QPtrList<KAction> aMNewConic;
 
   KAction* aCancelConstruction;
   KAction* aDeleteObjects;

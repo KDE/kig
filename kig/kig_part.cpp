@@ -545,7 +545,7 @@ void KigDocument::addType( Type* t, bool user )
     else if (t->baseTypeName() == Circle::sBaseTypeName())
       aMNewCircle.append( a );
     else if (t->baseTypeName() == Conic::sBaseTypeName())
-      aMNewOther.append( a );
+      aMNewConic.append( a );
     else if (t->baseTypeName() == Segment::sBaseTypeName())
       aMNewSegment.append( a );
     else
@@ -571,6 +571,7 @@ void KigDocument::enableConstructActions( bool enabled )
                                enabled ) );
   aFixedPoint->setEnabled( enabled );
 
+  setEnabled( aMNewConic, enabled );
   setEnabled( aMNewSegment, enabled );
   setEnabled( aMNewPoint, enabled );
   setEnabled( aMNewCircle, enabled );
@@ -588,6 +589,7 @@ myvector<KigDocument*>& KigDocument::documents()
 void KigDocument::removeAction( KAction* a )
 {
   aMNewSegment.remove( a );
+  aMNewConic.remove( a );
   aMNewPoint.remove( a );
   aMNewCircle.remove( a );
   aMNewLine.remove( a );
@@ -598,6 +600,7 @@ void KigDocument::removeAction( KAction* a )
 
 void KigDocument::unplugActionLists()
 {
+  unplugActionList( "user_conic_types" );
   unplugActionList( "user_segment_types" );
   unplugActionList( "user_point_types" );
   unplugActionList( "user_circle_types" );
@@ -608,6 +611,7 @@ void KigDocument::unplugActionLists()
 
 void KigDocument::plugActionLists()
 {
+  plugActionList( "user_conic_types", aMNewConic );
   plugActionList( "user_segment_types", aMNewSegment );
   plugActionList( "user_point_types", aMNewPoint );
   plugActionList( "user_circle_types", aMNewCircle );

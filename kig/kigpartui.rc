@@ -52,14 +52,17 @@
 	<Action name="objects_new_circlebtp" />
 	<ActionList name="user_circle_types" />
     </Menu>
+    <Menu name="new_conic">
+	<Action name="objects_new_ellipsebffp" />
+	<Action name="objects_new_conicb5p" />
+	<ActionList name="user_conic_types" />
+    </Menu>
     <Menu name="new_other">
 	<text>Other</text>
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_arc" />
-	<Action name="objects_new_ellipsebffp" />
-	<Action name="objects_new_conicb5p" />
 	<ActionList name="user_other_types" />
     </Menu>
     <Separator />
@@ -105,14 +108,17 @@
   <ActionList name="user_line_types" />
   <ActionList name="user_segment_types" />
 </ToolBar>
+<Toolbar name="conic_toolbar"><text>Conics</text>
+  <Action name="objects_new_ellipsebffp" />
+  <Action name="objects_new_conicb5p" />
+  <Action name="user_conic_types" />
+</Toolbar>    
 <ToolBar name="rest_toolbar"><text>Rest</text>
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
   <Action name="objects_new_arc" />
   <Action name="objects_new_locus" />
   <Action name="objects_new_textlabel" />
-  <Action name="objects_new_ellipsebffp" />
-  <Action name="objects_new_conicb5p" />
   <ActionList name="user_other_types" />
   <ActionList name="user_circle_types" />
 </ToolBar>
