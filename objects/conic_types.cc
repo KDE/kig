@@ -21,6 +21,7 @@
 #include "bogus_imp.h"
 #include "conic_imp.h"
 #include "point_imp.h"
+#include "circle_imp.h"
 #include "line_imp.h"
 #include "../misc/conic-common.h"
 #include "../misc/common.h"
@@ -434,4 +435,59 @@ ObjectImp* ConicAsymptoteType::calc( const Args& parents, const KigWidget& ) con
     valid );
   if ( valid ) return new LineImp( ret );
   else return new InvalidImp;
+}
+
+static const ArgParser::spec argsspecccl[] =
+{
+  { ObjectImp::ID_ConicImp, 2 },
+  { ObjectImp::ID_IntImp, 2 }
+};
+
+ConicRadicalType::ConicRadicalType()
+  : ObjectType( "line", "ConicRadical", argsspecccl, 2 )
+{
+}
+
+const ConicRadicalType* ConicRadicalType::instance()
+{
+  static const ConicRadicalType t;
+  return &t;
+}
+
+ObjectImp* ConicRadicalType::calc( const Args& parents, const KigWidget& ) const
+{
+  if ( parents.size() != 4 ) return new InvalidImp;
+  Args p = margsparser.parse( parents );
+  if ( !p[0] || ! p[1] || ! p[2] || !p[3] ) return new InvalidImp;
+  if ( p[0]->inherits( ObjectImp::ID_CircleImp ) &&
+       p[1]->inherits( ObjectImp::ID_CircleImp ) )
+  {
+    if( static_cast<const IntImp*>( p[2] )->data() != 1 )
+      return new InvalidImp;
+    else
+    {
+      const CircleImp* c1 = static_cast<const CircleImp*>( p[0] );
+      const CircleImp* c2 = static_cast<const CircleImp*>( p[1] );
+      const Coordinate a = calcCircleRadicalStartPoint(
+        c1->center(), c2->center(), c1->squareRadius(), c2->squareRadius()
+        );
+      return new LineImp( a, calcPointOnPerpend(
+          LineData( c1->center(), c2->center() ), a ) );
+    };
+  }
+  else
+  {
+    bool valid = true;
+    const LineData l = calcConicRadical(
+      static_cast<const ConicImp*>( p[0] )->cartesianData(),
+      static_cast<const ConicImp*>( p[1] )->cartesianData(),
+      static_cast<const IntImp*>( p[2] )->data(),
+      static_cast<const IntImp*>( p[3] )->data(), valid );
+    if ( valid ) return new LineImp( l );
+    else return new InvalidImp;
+  };
+}
+
+ConicRadicalType::~ConicRadicalType()
+{
 }

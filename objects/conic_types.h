@@ -154,5 +154,15 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& ) const;
 };
 
+class ConicRadicalType
+  : public ObjectType
+{
+  ConicRadicalType();
+  ~ConicRadicalType();
+public:
+  static const ConicRadicalType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+};
+
 #endif
 

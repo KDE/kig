@@ -20,6 +20,7 @@
 
 #include "object_constructor.h"
 #include "object_constructor_list.h"
+#include "special_constructors.h"
 #include "guiaction.h"
 #include "guiaction_list.h"
 #include "i18n.h"
@@ -231,10 +232,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_lineconicasymptotes" ) );
 
+    c = new ConicRadicalConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_lineconicradical") );
+
     {
-      // intersection stuff..
-      // There is one "toplevel" constructor, that is composed of
-      // multiple subconstructors..  First we build the
+      // intersection type..
+      // There is one "toplevel" object_constructor, that is composed
+      // of multiple subconstructors..  First we build the
       // subconstructors:
       ObjectConstructor* lineline =
         new SimpleObjectTypeConstructor(
