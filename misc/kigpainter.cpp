@@ -822,6 +822,10 @@ inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHi
   return ret;
 };
 
+// mp: this is a terrible hack, one could instead add a bool field in
+// ...
+#define INVALID_POINT_HACK	(-1e21)
+
 void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
 {
   /// this function is based on drawConic, and its code comes mostly
@@ -865,9 +869,14 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   // by forcing subdivision till h < hmax (with more or less the same
   // final result).
   // First push the [0,1] interval into the stack:
+
+  Coordinate coo1 = locusGetCoord( 0, curve, hier, valid, mdoc );
+  if ( ! valid ) coo1.x = INVALID_POINT_HACK;
+  Coordinate coo2 = locusGetCoord( 1, curve, hier, valid, mdoc );
+  if ( ! valid ) coo2.x = INVALID_POINT_HACK;
   workstack.push( workitem(
-                    coordparampair( 0, locusGetCoord( 0, curve, hier, valid, mdoc ) ), ///
-                    coordparampair( 1, locusGetCoord( 1, curve, hier, valid, mdoc ) ), ///
+                    coordparampair( 0, coo1 ), 
+                    coordparampair( 1, coo2 ),
                     0 ) );
 
   // maxlength is the square of the maximum size that we allow
@@ -897,23 +906,46 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
     bool curitemok = true;
     while ( curitemok && count++ < maxnumberofpoints )
     {
-      // we take the middle parameter of the two previous points...
+      double t0 = curitem.first.first;
+      double t1 = curitem.second.first;
       Coordinate p0 = curitem.first.second;
+      bool valid0 = true;
+      if ( p0.x == INVALID_POINT_HACK ) valid0 = false;
       Coordinate p1 = curitem.second.second;
-      double t2 = ( curitem.first.first + curitem.second.first ) / 2;
-      double h = fabs( curitem.second.first - curitem.first.first ) /2;
-      Rect *overlaypt = curitem.overlay;
-      Coordinate p2 = locusGetCoord( t2, curve, hier, valid, mdoc ); ///
+      bool valid1 = true;
+      if ( p1.x == INVALID_POINT_HACK ) valid1 = false;
 
-      bool dooverlay = ! overlaypt && h < hmaxoverlay
+      // we take the middle parameter of the two previous points...
+      double t2 = ( t0 + t1 ) / 2;
+      double h = fabs( t1 - t0 ) /2;
+
+      // if exactly one of the two endpoints is invalid, then
+      // we prefer to find an internal value of the parameter
+      // separating valid points from invalid points.  We use
+      // a bisection strategy (this is not implemented yet!)
+//      if ( ( valid0 && ! valid1 ) || ( valid1 && ! valid0 ) )
+//      {
+//	while ( h >= hmin )
+//	{
+//	  .......................................
+//	}
+//      }
+
+      Rect *overlaypt = curitem.overlay;
+      Coordinate p2 = locusGetCoord( t2, curve, hier, valid, mdoc );
+      if ( ! valid ) p2.x = INVALID_POINT_HACK;
+      bool allvalid = valid && valid0 && valid1;
+      bool dooverlay = ! overlaypt && h < hmaxoverlay && valid0 && valid1
  && fabs( p0.x - p1.x ) <= overlayRectSize()
  && fabs( p0.y - p1.y ) <= overlayRectSize();
-      bool addn = valid && sr.contains( p2 ); ///
+      bool addn = valid && sr.contains( p2 );
       // estimated error between the curve and the segments
-      double errsq = (0.5*p0 + 0.5*p1 - p2).squareLength();
+      double errsq = 1e21;
+      if ( allvalid ) errsq = (0.5*p0 + 0.5*p1 - p2).squareLength();
       errsq /= 4;
       curitemok = false;
-      bool dodraw = valid && h < hmax && ( errsq < sigma || h < hmin ); ///
+//      bool dodraw = allvalid && h < hmax && ( errsq < sigma || h < hmin );
+      bool dodraw = allvalid && h < hmax && errsq < sigma;
       if ( tNeedOverlay && ( dooverlay || dodraw ) )
       {
         Rect newoverlay( p0, p1 );
@@ -930,13 +962,13 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
         mP.drawLine( tp0, tp2 );
         mP.drawLine( tp2, tp1 );
       }
-      else if ( valid && h >= hmin)
+      else if ( h >= hmin )   // we do not continue to subdivide indefinitely!
       {
         // push into stack in order to process both subintervals
-        if (addn || sr.contains( p0 ) || h >= hmax)
+        if ( addn || ( valid0 && sr.contains( p0 ) ) || h >= hmax )
           workstack.push( workitem( curitem.first, coordparampair( t2, p2 ),
                                     overlaypt ) );
-        if (addn || sr.contains( p1 ) || h >= hmax)
+        if ( addn || ( valid1 && sr.contains( p1 ) ) || h >= hmax )
         {
           curitem = workitem( coordparampair( t2, p2 ), curitem.second ,
                               overlaypt );
