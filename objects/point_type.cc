@@ -26,6 +26,7 @@
 #include "../modes/moving.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/common.h"
+#include "../misc/calcpaths.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
@@ -241,7 +242,9 @@ void FixedPointType::executeAction(
       d, &w, &ok, &oldc );
     if ( ! ok ) break;
     o->move( oldc, c - oldc, d );
-    o->calc( d );
+    Objects children = o->parents().getAllChildren();
+    children = calcPath( children );
+    children.calc( d );
     w.redrawScreen();
     break;
   };

@@ -25,6 +25,7 @@
 
 #include "../kig/kig_view.h"
 #include "../misc/common.h"
+#include "../misc/calcpaths.h"
 #include "../misc/i18n.h"
 
 #include <qstringlist.h>
@@ -224,7 +225,9 @@ void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidg
 
   parents[1]->move( b, nb - b, d );
   parents[1]->calc( d );
-  o->calc( d );
+  Objects children = parents[1]->getAllChildren();
+  children = calcPath( children );
+  children.calc( d );
 
   w.redrawScreen();
 }
