@@ -15,7 +15,7 @@ public:
   KigFilters() { sThis = this; populate(); };
   static KigFilters* sThis;
 protected:
-  typedef vector<KigFilter*> vect;
+  typedef std::vector<KigFilter*> vect;
   static vect m_filters;
 public:
   static void add (KigFilter* f) {m_filters.push_back(f); };

@@ -230,7 +230,7 @@ KigFilter::Result KigFilterKGeo::convert( const QString sFrom, KTempFile& to )
 
   Objects go;
   Objects fo;
-  for (vector<Object*>::iterator i = objs.begin(); i != objs.end(); ++i)
+  for (std::vector<Object*>::iterator i = objs.begin(); i != objs.end(); ++i)
     {
       fo.add(*i);
     };

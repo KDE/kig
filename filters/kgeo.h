@@ -29,7 +29,7 @@ protected:
   Result loadMetrics (KSimpleConfig* );
   Result loadObjects (KSimpleConfig* );
   ObjectHierarchy* hier;
-  vector<Object*> objs;
+  std::vector<Object*> objs;
 
   int xMax;
   int yMax;
