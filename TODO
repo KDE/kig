@@ -18,12 +18,9 @@
 - undo support for changing the size and color of an object ( depends
   on the previous item )..
 
-- split up the transformation types as follows: they only generate a
-  TransformationImp, and the real transforming is done by the
-  ApplyTransformationType..  This is dependent on the item "decouple
-  the link..", I think..  I'm not really sure whether this is a good
-  idea actually, as I don't know how I would go about constructing a
-  transformed object then..
+- make the python scripting work more like the macro system.  Make it
+  a way to define new object types that can be reused more than once,
+  instead of making it just a way to add *one* object..
 
 - fillable polygons..
 - filters: more input filters ( get cabri to work somewhat, Dr.Genius
@@ -35,9 +32,6 @@
 - figure out a way to allow the user to enable and disable certain
   features.  E.g. I have been asked to allow the user to limit himself
   to compass-ruler constructions..
-- scripting !  The GNOME Interactive Geometry program Dr. Genius seems
-   to have this already ( albeit in Guile ;) ), so Kig can't lag
-   behind ;) 
 - check "property's", like "is point x on line y"
 - "export to *".  We already have images and XFig files, i'd like to
   add stuff like java applets etc ... :)
