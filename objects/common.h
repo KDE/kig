@@ -32,7 +32,6 @@ class RealObject;
 class DataObject;
 class ObjectImp;
 class ObjectType;
-class CustomType;
 class KigPainter;
 class Coordinate;
 class ScreenInfo;

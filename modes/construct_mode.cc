@@ -67,7 +67,7 @@ void ConstructMode::leftClickedObject(
 
 void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
+  ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
                                             mdoc, w );
   if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
   {

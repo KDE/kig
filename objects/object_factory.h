@@ -45,14 +45,16 @@ public:
     );
 
   // set point to what sensiblePoint would have returned..
-  void redefinePoint( Object* point, const Coordinate& c,
+  void redefinePoint( Objects& point, const Coordinate& c,
                       const KigDocument& d, const KigWidget& w );
 
   // return a locus, defined by the two points ( one constrained, and
   // one following ) in parents.  The semantics of LocusType are a bit
   // weird ( but I believe correct :) ), so this function takes care
   // of the complication there..
-  RealObject* locus( const Objects& parents );
+  // The function returns the objects necessary to define the locus:
+  // first the hierarchy DataObject, next the locus RealObject..
+  Objects locus( const Objects& parents );
 
   // returns the objects necessary to show a label with text s at
   // point c: first a int dataobject ( indicates whether we want a

@@ -20,14 +20,14 @@
 
 #include "object_imp.h"
 #include "bogus_imp.h"
-
-#include "point_imp.h"
-#include "line_imp.h"
-#include "locus_imp.h"
+#include "circle_imp.h"
 #include "conic_imp.h"
 #include "cubic_imp.h"
+#include "line_imp.h"
+#include "locus_imp.h"
 #include "other_imp.h"
-#include "circle_imp.h"
+#include "point_imp.h"
+#include "text_imp.h"
 
 #include "../misc/coordinate.h"
 
@@ -109,7 +109,7 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     LineData l = static_cast<const AbstractLineImp&>( d ).data();
     addCoordinateElement( "a", l.a, parent, doc );
     addCoordinateElement( "b", l.b, parent, doc );
-    if( d.inherits( ObjectImp:I:D_SegmentImp ) )
+    if( d.inherits( ObjectImp::ID_SegmentImp ) )
       return QString::fromLatin1( "segment" );
     else if( d.inherits( ObjectImp::ID_RayImp ) )
       return QString::fromLatin1( "ray" );
@@ -145,7 +145,7 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
 
     // serialize the curve..
     QDomElement curve = doc.createElement( "curve" );
-    const CurveImp& curveimp = locus.curve();
+    const CurveImp& curveimp = *locus.curve();
     QString type = serialize( curveimp, curve, doc );
     curve.setAttribute( "type", type );
     parent.appendChild( curve );

@@ -157,7 +157,7 @@ Objects getAllParents( const Objects& objs )
       tmp.upush( (*i)->parents() );
 
     uint oldsize = ret.size();
-    copy( tmp.begin(), tmp.end(), back_inserter( ret ) );
+    ret |= tmp;
     begin = ret.begin() + oldsize;
     end = ret.end();
   };

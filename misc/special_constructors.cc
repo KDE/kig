@@ -26,7 +26,6 @@
 
 #include "../objects/object.h"
 #include "../objects/object_factory.h"
-#include "../objects/custom_types.h"
 #include "../objects/object_type.h"
 #include "../objects/conic_types.h"
 #include "../objects/object_imp.h"
@@ -163,9 +162,9 @@ const int LocusConstructor::wantArgs(
 
 Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget& ) const
 {
-  RealObject* ret = ObjectFactory::instance()->locus( parents );
-  assert( ret );
-  return Objects( ret );
+  Objects ret = ObjectFactory::instance()->locus( parents );
+  assert( ret.size() == 2 );
+  return ret;
 }
 
 QString LocusConstructor::useText( const Object& o, const Objects& ) const

@@ -49,22 +49,6 @@ bool ObjectType::inherits( int ) const
   return false;
 }
 
-bool CustomType::inherits( int type ) const
-{
-  return type == ID_CustomType ? true : Parent::inherits( type );
-}
-
-CustomType::~CustomType()
-{
-}
-
-CustomType::CustomType( const char fulltypename[],
-                        const struct ArgParser::spec argsspec[],
-                        int n )
-  : ArgparserObjectType( fulltypename, argsspec, n )
-{
-}
-
 ArgparserObjectType::ArgparserObjectType( const char fulltypename[],
                                           const struct ArgParser::spec argsspec[],
                                           int n )

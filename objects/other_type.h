@@ -45,16 +45,18 @@ public:
 };
 
 class LocusType
-  : public CustomType
+  : public ArgparserObjectType
 {
-  typedef CustomType Parent;
-  ObjectHierarchy mhier;
+  typedef ArgparserObjectType Parent;
 public:
-  LocusType( const ObjectHierarchy& mhier );
+  LocusType();
   ~LocusType();
+  static const LocusType* instance();
+
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
 
   const ObjectHierarchy& hierarchy() const;
+  int impRequirement( const ObjectImp* o, const Args& parents ) const;
 
   bool inherits( int type ) const;
   int resultId() const;

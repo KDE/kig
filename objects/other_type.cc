@@ -105,11 +105,12 @@ ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const struct ArgParser::spec argsspec1c[] =
 {
+  { ObjectImp::ID_HierarchyImp, "hierarchy" },
   { ObjectImp::ID_CurveImp, "curve" }
 };
 
-LocusType::LocusType( const ObjectHierarchy& hier )
-  : CustomType( "Locus", argsspec1c, 1 ), mhier( hier )
+LocusType::LocusType()
+  : ArgparserObjectType( "Locus", argsspec1c, 2 )
 {
 }
 
@@ -117,27 +118,25 @@ LocusType::~LocusType()
 {
 }
 
-ObjectImp* LocusType::calc( const Args& args, const KigDocument& ) const
+ObjectImp* LocusType::calc( const Args& targs, const KigDocument& ) const
 {
   using namespace std;
 
-  if ( args.size() < 1 ) return new InvalidImp;
-  assert( args[0]->inherits( ObjectImp::ID_CurveImp ) );
-  const CurveImp* curveimp = static_cast<const CurveImp*>( args.front() );
+  if ( targs.size() < 2 ) return new InvalidImp;
+  const Args firsttwo( targs.begin(), targs.begin() + 2 );
+  const Args args = margsparser.parse( firsttwo );
+  const ObjectHierarchy& hier =
+    static_cast<const HierarchyImp*>( args[0] )->data();
+  const CurveImp* curveimp = static_cast<const CurveImp*>( args[1] );
 
-  Args fixedargs( args.begin() + 1, args.end() );
+  Args fixedargs( targs.begin() + 2, targs.end() );
 
-  return new LocusImp( curveimp->copy(), mhier.withFixedArgs( fixedargs ) );
+  return new LocusImp( curveimp->copy(), hier.withFixedArgs( fixedargs ) );
 }
 
 bool LocusType::inherits( int type ) const
 {
   return type == ID_LocusType ? true : Parent::inherits( type );
-}
-
-const ObjectHierarchy& LocusType::hierarchy() const
-{
-  return mhier;
 }
 
 int AngleType::resultId() const
@@ -190,5 +189,22 @@ int CopyObjectType::resultId() const
 {
   // we don't know what we return..
   return ObjectImp::ID_AnyImp;
+}
+
+int LocusType::impRequirement( const ObjectImp* o, const Args& parents ) const
+{
+  Args firsttwo( parents.begin(), parents.begin() + 2 );
+  if ( margsparser.check( firsttwo ) == ArgsChecker::Invalid )
+  {
+    return o->inherits( ObjectImp::ID_HierarchyImp ) ? ObjectImp::ID_HierarchyImp
+      : ObjectImp::ID_CurveImp;
+  }
+  else return ObjectImp::ID_AnyImp;
+}
+
+const LocusType* LocusType::instance()
+{
+  static const LocusType t;
+  return &t;
 }
 

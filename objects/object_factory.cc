@@ -23,7 +23,6 @@
 #include "point_imp.h"
 #include "point_type.h"
 #include "other_type.h"
-#include "custom_types.h"
 #include "text_type.h"
 #include "object.h"
 
@@ -99,8 +98,9 @@ void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
   }
 }
 
-RealObject* ObjectFactory::locus( const Objects& parents )
+Objects ObjectFactory::locus( const Objects& parents )
 {
+  Objects ret;
   using namespace std;
 
   assert( parents.size() == 2 );
@@ -116,24 +116,27 @@ RealObject* ObjectFactory::locus( const Objects& parents )
   };
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
-  Objects locusparents( const_cast<RealObject*>( constrained ) );
+  Objects hierparents( const_cast<RealObject*>( constrained ) );
   Objects sideOfTree = sideOfTreePath( Objects( const_cast<RealObject*>( constrained ) ), moving );
-  copy( sideOfTree.begin(), sideOfTree.end(), back_inserter( locusparents ) );
+  copy( sideOfTree.begin(), sideOfTree.end(), back_inserter( hierparents ) );
 
-  ObjectHierarchy hier( locusparents, moving );
+  ObjectHierarchy hier( hierparents, moving );
 
   Object* curve = const_cast<Object*>( constrained->parents().back() );
   if ( ! curve->hasimp( ObjectImp::ID_CurveImp ) )
     curve = const_cast<Object*>( constrained->parents().front() );
   assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
-  // a locus object does not depend on the constrained point, but on
-  // the curve it is on..
-  locusparents[0] = curve;
 
-  LocusType* t = new LocusType( hier );
-  CustomTypes::instance()->add( t );
+  Objects realparents( 2 + sideOfTree.size(), 0 );
+  realparents[0] = curve;
+  Object* hierobj = new DataObject( new HierarchyImp( hier ) );
+  realparents[1] = hierobj;
+  copy( sideOfTree.begin(), sideOfTree.end(), realparents.begin() + 2 );
 
-  return new RealObject( t, locusparents );
+  ret.push_back( hierobj );
+  ret.push_back( new RealObject( LocusType::instance(), realparents ) );
+
+  return ret;
 }
 
 Objects ObjectFactory::label( const QString& s, const Coordinate& loc,

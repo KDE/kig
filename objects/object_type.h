@@ -37,8 +37,6 @@ public:
   virtual ~ObjectType();
 
   enum {
-    ID_CustomType,
-
     ID_ConstrainedPointType,
     ID_LocusType
   };
@@ -80,33 +78,6 @@ protected:
 public:
   int impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ArgParser& argParser() const;
-};
-
-/**
- * Custom types are types that are not builtin.  Some of their data
- * needs to be saved along with documents.  They are not necessarily
- * user defined types ( well, the user didn't explicitly define them
- * ).
- * E.g.: LocusType can not depend on the parent relationships of its
- * arguments, so it saves an ObjectHierarchy.  This has the added
- * benefit that the hierarchy doesn't need to be recalculated, and
- * that its parent relationships are correct wrt. moving.  This means
- * however that LocusType is a CustomType, since a different instance
- * of it is created for every locus constructed..  MacroType is a
- * CustomType too..
- */
-class CustomType
-  : public ArgparserObjectType
-{
-  typedef ObjectType Parent;
-public:
-  CustomType( const char fulltypename[],
-              const struct ArgParser::spec margsspec[],
-              int n );
-
-  ~CustomType();
-
-  bool inherits( int type ) const;
 };
 
 #endif
