@@ -30,6 +30,9 @@
 #include <kglobal.h>
 #include <klocale.h>
 #include <kdebug.h>
+#include <knumvalidator.h>
+#include <klocale.h>
+#include <kglobal.h>
 
 #include <cmath>
 #include <string>
@@ -38,7 +41,84 @@ using std::ceil;
 using std::floor;
 using std::pow;
 using std::max;
+using std::min;
 using std::log10;
+
+class EuclideanCoordinateValidator
+  : public QValidator
+{
+  KDoubleValidator mdv;
+  mutable QRegExp mre;
+public:
+  EuclideanCoordinateValidator();
+  ~EuclideanCoordinateValidator();
+  State validate ( QString & input,  int & pos ) const;
+  void fixup ( QString & input ) const;
+};
+
+
+EuclideanCoordinateValidator::EuclideanCoordinateValidator()
+  : QValidator( 0, 0 ), mdv( 0, 0 ), mre( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
+{
+}
+
+EuclideanCoordinateValidator::~EuclideanCoordinateValidator()
+{
+}
+
+QValidator::State EuclideanCoordinateValidator::validate( QString & input, int & pos ) const
+{
+  QString tinput = input;
+  if ( tinput[tinput.length() - 1 ] == ')' ) tinput.truncate( tinput.length() - 1 );
+  while ( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
+  if ( tinput[0] == '(' ) tinput = tinput.mid( 1 );
+  while ( tinput[0] == ' ' ) tinput = tinput.mid( 1 );
+  int scp = tinput.find( ';' );
+  if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Valid;
+  else
+  {
+    QString p1 = tinput.left( scp );
+    QString p2 = tinput.mid( scp + 1 );
+
+    State ret = Acceptable;
+
+    int boguspos = 0;
+    ret = min( ret, mdv.validate( p1, boguspos ) );
+
+    boguspos = 0;
+    ret = min( ret, mdv.validate( p2, boguspos ) );
+
+    return ret;
+  };
+}
+
+void EuclideanCoordinateValidator::fixup( QString & input ) const
+{
+  int nsc = input.contains( ';' );
+  if ( nsc > 1 )
+  {
+    // where is the second ';'
+    int i = input.find( ';' );
+    i = input.find( ';', i );
+    input = input.left( i );
+  };
+  // now the string has at most one semicolon left..
+  int sc = input.find( ';' );
+  if ( sc == -1 )
+  {
+    sc = input.length();
+    KLocale* l = KGlobal::locale();
+    input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
+                  QString::fromLatin1( "0" ) + l->decimalSymbol() +
+                  QString::fromLatin1( "0" ) );
+  };
+  mre.exactMatch( input );
+  QString ds1 = mre.cap( 1 );
+  mdv.fixup( ds1 );
+  QString ds2 = mre.cap( 2 );
+  mdv.fixup( ds2 );
+  input = ds1 + QString::fromLatin1( "; " ) + ds2;
+}
 
 EuclideanCoords::EuclideanCoords()
 {
@@ -60,7 +140,8 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
 
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp r("^([^;]+);(.+)$");
+  QRegExp r( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" );
+  kdDebug() << r.pattern() << endl;
   ok = ( r.search(s) == 0 );
   if (ok)
   {
@@ -398,4 +479,14 @@ const char* EuclideanCoords::type() const
 const char* PolarCoords::type() const
 {
   return polarTypeString;
+}
+
+QValidator* EuclideanCoords::coordinateValidator() const
+{
+  return new EuclideanCoordinateValidator();
+}
+
+QValidator* PolarCoords::coordinateValidator() const
+{
+  return 0;
 }

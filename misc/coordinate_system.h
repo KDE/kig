@@ -28,6 +28,7 @@
 #include <qobject.h>
 
 class CoordinateSystem;
+class QValidator;
 
 class CoordinateSystemFactory
 {
@@ -61,6 +62,8 @@ public:
   virtual void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const = 0;
 
   virtual const char* type() const = 0;
+
+  virtual QValidator* coordinateValidator() const = 0;
 };
 
 class EuclideanCoords
@@ -75,6 +78,8 @@ public:
   void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
 
   const char* type() const;
+
+  QValidator* coordinateValidator() const;
 };
 
 class PolarCoords
@@ -89,6 +94,7 @@ public:
   void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
 
   const char* type() const;
+  QValidator* coordinateValidator() const;
 };
 
 #endif
