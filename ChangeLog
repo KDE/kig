@@ -1,3 +1,8 @@
+2004-02-24  Dominique Devriese  <devriese@kde.org>
+
+	* Fix some problems with the useText, that were introduced with 
+	the new tests stuff.
+
 2004-02-23  Dominique Devriese  <devriese@kde.org>
 
 	* Add a ContainsTestType, testing whether a given point is on a

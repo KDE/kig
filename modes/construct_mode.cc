@@ -263,7 +263,7 @@ void ConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& args, const 
 
   mctor->handlePrelim( pter, args, mdoc, w );
 
-  QString o = mctor->useText( *args.front(), args, mdoc, w );
+  QString o = mctor->useText( *args.back(), args, mdoc, w );
   mdoc.emitStatusBarText( o );
   pter.drawTextStd( textloc, o );
 }
@@ -297,7 +297,7 @@ void TestConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& os, cons
                   std::mem_fun( &ObjectCalcer::imp ) );
 
   // usetext
-  QString usetext = i18n( mtype->argsParser().usetext( args.front(), args ) );
+  QString usetext = i18n( mtype->argsParser().usetext( args.back(), args ) );
   QPoint textloc = p;
   textloc.setX( textloc.x() + 15 );
   mdoc.emitStatusBarText( usetext );

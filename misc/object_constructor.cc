@@ -290,7 +290,6 @@ QString StandardConstructorBase::useText( const ObjectCalcer& o, const std::vect
   using namespace std;
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
-  args.push_back( o.imp() );
 
   const char* ret = margsparser.usetext( o.imp(), args );
   if ( ! ret ) return QString::null;
@@ -303,7 +302,6 @@ QString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vecto
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
     std::vector<ObjectCalcer*> args( sel );
-    args.push_back( const_cast<ObjectCalcer*>( &o ) );
     int w = (*i)->wantArgs( args, d, v );
     if ( w != ArgsParser::Invalid ) return (*i)->useText( o, sel, d, v );
   };
@@ -378,7 +376,6 @@ QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<Obje
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &ObjectCalcer::imp ) );
-  args.push_back( o.imp() );
   return mparser.usetext( o.imp(), args );
 }
 

@@ -68,7 +68,7 @@ public:
     ) const = 0;
 
   // return a string describing what you would use o for if it were
-  // selected...
+  // selected...  o should be part of sel.
   virtual QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const = 0;
