@@ -321,12 +321,50 @@ bool TestResultImp::equals( const ObjectImp& rhs ) const
 
 }
 
-bool TestResultImp::canFillInNextEscape() const
+const uint TestResultImp::numberOfProperties() const
 {
-  return true;
+  return Parent::numberOfProperties() + 1;
 }
 
-void TestResultImp::fillInNextEscape( QString& s, const KigDocument& ) const
+const QCStringList TestResultImp::properties() const
 {
-  s = s.arg( mdata );
+  QCStringList l = Parent::properties();
+  l << I18N_NOOP( "Test Result" );
+  assert( l.size() == TestResultImp::numberOfProperties() );
+  return l;
+}
+
+const QCStringList TestResultImp::propertiesInternalNames() const
+{
+  QCStringList s = Parent::propertiesInternalNames();
+  s << I18N_NOOP( "test-result" );
+  assert( s.size() == TestResultImp::numberOfProperties() );
+  return s;
+}
+
+ObjectImp* TestResultImp::property( uint which, const KigDocument& d ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, d );
+  if ( which == Parent::numberOfProperties() )
+    return new StringImp( data() );
+  else assert( false );
+  return new InvalidImp;
+}
+
+const char* TestResultImp::iconForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  if ( which == Parent::numberOfProperties() )
+    return ""; // test-result
+  else assert( false );
+  return "";
+}
+
+const ObjectImpType* TestResultImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return TestResultImp::stype();
 }

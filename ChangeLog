@@ -1,5 +1,8 @@
 2004-02-24  Dominique Devriese  <devriese@kde.org>
 
+	* Make the tests stuff generate a proper text label with 
+	property calcers instead of a normal calcer as rest arguments.
+
 	* Make the configure.in.in stuff properly detect python on RH
 	-> many thanks to Maurizio for helping me with this.
 

@@ -351,7 +351,11 @@ void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
     parents.push_back( new ObjectConstCalcer( new IntImp( test_has_frame_dflt ) ) );
     parents.push_back( new ObjectConstCalcer( new PointImp( loc ) ) );
     parents.push_back( new ObjectConstCalcer( new StringImp( QString::fromLatin1( "%1" ) ) ) );
-    parents.push_back( mresult.get() );
+    assert( mresult->imp()->inherits( TestResultImp::stype() ) );
+    parents.push_back(
+      new ObjectPropertyCalcer(
+        mresult.get(), mresult->imp()->propertiesInternalNames().findIndex( "test-result" ) ) );
+    parents.back()->calc( mdoc );
 
     ObjectCalcer* ret = new ObjectTypeCalcer( TextType::instance(), parents );
     ret->calc( mdoc );

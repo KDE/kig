@@ -266,8 +266,12 @@ public:
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
-  bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  const uint numberOfProperties() const;
+  const QCStringList properties() const;
+  const QCStringList propertiesInternalNames() const;
+  ObjectImp* property( uint which, const KigDocument& d ) const;
+  const char* iconForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
 
   bool equals( const ObjectImp& rhs ) const;
 };
