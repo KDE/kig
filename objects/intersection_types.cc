@@ -72,10 +72,66 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
     // harder case..
     ret = calcConicLineIntersect(
       static_cast<const ConicImp*>( parents[0] )->cartesianData(),
-      line, side, valid );
+      line, 0.0, side, valid );
   }
   if ( valid ) return new PointImp( ret );
   else return new InvalidImp;
+}
+
+static const ArgsParser::spec argsspecConicLineOtherIntersection[] =
+{
+  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ), true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
+  { PointImp::stype(), I18N_NOOP( "Already computed intersection point"), true }
+};
+
+ConicLineOtherIntersectionType::ConicLineOtherIntersectionType()
+  : ArgsParserObjectType( "ConicLineOtherIntersection",
+                         argsspecConicLineOtherIntersection, 3 )
+{
+}
+
+ConicLineOtherIntersectionType::~ConicLineOtherIntersectionType()
+{
+}
+
+const ConicLineOtherIntersectionType* ConicLineOtherIntersectionType::instance()
+{
+  static const ConicLineOtherIntersectionType t;
+  return &t;
+}
+
+ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  Coordinate p = static_cast<const PointImp*>( parents[2] )->coordinate();
+  const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
+
+  bool valid = true;
+  Coordinate ret;
+//  if ( parents[0]->inherits( CircleImp::stype() ) )
+//  {
+//    // easy case..
+//    const CircleImp* c = static_cast<const CircleImp*>( parents[0] );
+//    ret = calcCircleLineIntersect(
+//      c->center(), c->squareRadius(), line, side, valid );
+//  }
+//  else
+//  {
+    // harder case..
+    double pax = p.x - line.a.x;
+    double pay = p.y - line.a.y;
+    double bax = line.b.x - line.a.x;
+    double bay = line.b.y - line.a.y;
+    double knownparam = (pax*bax + pay*bay)/(bax*bax + bay*bay);
+    ret = calcConicLineIntersect(
+      static_cast<const ConicImp*>( parents[0] )->cartesianData(),
+      line, knownparam, 0, valid );
+//  }
+//  if ( valid ) return new PointImp( ret );
+  return new PointImp( ret );
+//  else return new InvalidImp;
 }
 
 static const char constructlinestat[] = I18N_NOOP( "Intersect with this line" );
@@ -150,6 +206,11 @@ ObjectImp* LineCubicIntersectionType::calc( const Args& parents, const KigDocume
 }
 
 const ObjectImpType* ConicLineIntersectionType::resultId() const
+{
+  return PointImp::stype();
+}
+
+const ObjectImpType* ConicLineOtherIntersectionType::resultId() const
 {
   return PointImp::stype();
 }

@@ -41,6 +41,21 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * conic line 'other' intersection.  In case we already know one of the
+ * two intersections
+ */
+class ConicLineOtherIntersectionType
+  : public ArgsParserObjectType
+{
+  ConicLineOtherIntersectionType();
+  ~ConicLineOtherIntersectionType();
+public:
+  static const ConicLineOtherIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class LineLineIntersectionType
   : public ArgsParserObjectType
 {

@@ -100,6 +100,7 @@ void ObjectTypeFactory::setupBuiltinTypes()
 
   // intersection_types.h
   add( ConicLineIntersectionType::instance() );
+  add( ConicLineOtherIntersectionType::instance() );
   add( LineLineIntersectionType::instance() );
   add( LineCubicIntersectionType::instance() );
   add( CircleCircleIntersectionType::instance() );
