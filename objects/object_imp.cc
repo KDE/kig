@@ -243,7 +243,14 @@ bool ObjectImp::inherits( const ObjectImpType* t ) const
 
 const ObjectImpType* ObjectImp::stype()
 {
-  static const ObjectImpType t( 0, "any" , 0, 0, 0, 0, 0, 0 );
+  static const ObjectImpType t(
+    0, "any",
+    I18N_NOOP( "Object" ),
+    I18N_NOOP( "Select this object" ),
+    I18N_NOOP( "Remove an object" ),
+    I18N_NOOP( "Add an object" ),
+    I18N_NOOP( "Move an object" ),
+    I18N_NOOP( "Attach to this object" ) );
   return &t;
 }
 
