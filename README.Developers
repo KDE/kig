@@ -1,16 +1,69 @@
 Hi,
 I'm Dominique Devriese, I've spent the last few months writing this program.
+
 Here is some information to developers who want to check out my code:
-- i subdivided my source dir into three dirs: kig, objects and misc.  This is to provide some more organisation in the source.  Automake + KDE build stuff provides for the necessary compilation magic, so that's no problem at all.  If, however, you are doing a make in the kig dir, and make tells you it doesn't know how to build the library's from the two other dirs, just do a "cd ..; make", and you should be fine.
-- for testing code, i don't really know how you're supposed to do this with kparts, so i just do a "make install" every time, and then simply run the program, you prolly want to do "./configure --enable-debug=full --prefix=/usr" (/usr is for Debian, maybe you need another prefix (/opt/kde ?)) (meanwhile, i do know, the solution is in a developer faq on developer.kde.org (http://developer.kde.org/documentation/other/developer-faq.html#q67.1)
-- debugging doesn't work for me.  Gdb seems to get line numbers in shared libs wrong, so that looks incredibly ugly.  Luckily, there is kcrash, which at least shows where the application crashed (check the tab "Backtrace")  And of course, you can always put the debugging info you need on stdout / stderr... (kdDebug() << "..." << endl;)
-- i have been working on a trick to speed up moving, which involves only redrawing certain parts of the screen (which is what Object::getOverlay) is for.  All of this is copied from KGeo, so all credit goes to Marc Bartsch. For debugging this, there's some code between #ifdef's in kig/kig_view.cpp, which enables/disables showing in yellow rects which parts of the screen are being drawn.  For general use, you want to disable this.
-- i have some assert() calls here and there, so if you see Kig crashing, first check for assert output on stderr before hunting SIGSEGV's and such...
-- if you want to contribute, your work is more than welcome, no matter where you want to help: translation, coding, art, just send me a mail at dominiquedevriese@pandora.be (preferably before you start, so you won't be doing unnecessary work or something like that), if you have cvs access, you can of course always commit to cvs
+
+- i subdivided my source dir into three dirs: kig, objects and misc.  This
+  is to provide some more organisation in the source.  Automake + KDE build
+  stuff provides for the necessary compilation magic, so that's no problem
+  at all.  If, however, you are doing a make in the kig dir, and make tells
+  you it doesn't know how to build the library's from the two other dirs,
+  just do a "cd ..; make", and you should be fine.
+
+- for testing code, i don't really know how you're supposed to do this with
+  kparts, so i just do a "make install" every time, and then simply run the
+  program, you prolly want to do "./configure --enable-debug=full
+  --prefix=/usr" (/usr is for Debian, maybe you need another prefix
+  (/opt/kde ?)) (meanwhile, i do know, the solution is in a developer faq on
+  developer.kde.org
+  (http://developer.kde.org/documentation/other/developer-faq.html#q67.1)
+
+- debugging doesn't work for me.  Gdb seems to get line numbers in shared
+  libs wrong, so that looks incredibly ugly.  Luckily, there is kcrash,
+  which at least shows where the application crashed (check the tab
+  "Backtrace") And of course, you can always put the debugging info you need
+  on stdout / stderr... (kdDebug() << "..." << endl;)
+
+- i have been working on a trick to speed up moving, which involves only
+  redrawing certain parts of the screen (which is what Object::getOverlay)
+  is for.  All of this is copied from KGeo, so all credit goes to Marc
+  Bartsch. For debugging this, there's some code between #ifdef's in
+  kig/kig_view.cpp, which enables/disables showing in yellow rects which
+  parts of the screen are being drawn.  For general use, you want to disable
+  this.
+
+- i have some assert() calls here and there, so if you see Kig crashing,
+  first check for assert output on stderr before hunting SIGSEGV's and
+  such...
+
+- if you want to contribute, your work is more than welcome, no matter where
+  you want to help: translation, coding, art, just send me a mail at
+  dominiquedevriese@pandora.be (preferably before you start, so you won't be
+  doing unnecessary work or something like that), if you have cvs access,
+  you can of course always commit to cvs
 
 HISTORY
-I started the new Kig because we were using "Cabri" in school, a proprietary windows-only app.  When I started looking for free alternatives that ran on linux, i found two: KGeo and KSeg. Both had features and limitations, KSeg had most features, but was ugly.  Furthermore, it was qt-only, which did allow it to run on windows too, but made it not fit into kde.  KGeo was fully KDE, but didn't have all the features that KSeg had.
-I first wanted to merge both together, but the code was rather incompatible, so I wanted to simply extend KGeo.  Since I was planning to make it a kpart app, i started with "kapptemplate --kpart-app", and then started coding.  I was first planning to use lots of code from both kgeo and kseg, but i ended up recoding everything since in many cases it was faster than porting stuff, and i wanted to change rather much in the code.
-I did get much inspiration from the source of both programs, and i used some source and many pictures from Kig, I would therefore want to thank both developers for their work.
-I would, by the way, also want to thank every other free software hacker for their great work, and for the great fundaments they have given other developers to build upon.
+
+I started the new Kig because we were using "Cabri" in school, a proprietary
+windows-only app.  When I started looking for free alternatives that ran on
+linux, i found two: KGeo and KSeg. Both had features and limitations, KSeg
+had most features, but was ugly.  Furthermore, it was qt-only, which did
+allow it to run on windows too, but made it not fit into kde.  KGeo was
+fully KDE, but didn't have all the features that KSeg had.
+
+I first wanted to merge both together, but the code was rather incompatible,
+so I wanted to simply extend KGeo.  Since I was planning to make it a kpart
+app, i started with "kapptemplate --kpart-app", and then started coding.  I
+was first planning to use lots of code from both kgeo and kseg, but i ended
+up recoding everything since in many cases it was faster than porting stuff,
+and i wanted to change rather much in the code.
+
+I did get much inspiration from the source of both programs, and i used some
+source and many pictures from Kig, I would therefore want to thank both
+developers for their work.
+
+I would, by the way, also want to thank every other free software hacker for
+their great work, and for the great fundaments they have given other
+developers to build upon.
+
 Dominique Devriese
