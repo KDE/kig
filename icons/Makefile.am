@@ -45,6 +45,9 @@ kigicondata_DATA = \
 	pointOnLine.png	\
 	point.png \
 	pointxy.png \
+	polygon.png \
+	polygonsides.png \
+	polygonvertices.png \
 	radicalline.png \
 	ray.png \
 	rotation.png \
