@@ -526,9 +526,9 @@ QStringList CoordinateSystemFactory::names()
 
 CoordinateSystem* CoordinateSystemFactory::build( int which )
 {
-  if ( which == 0 )
+  if ( which == Euclidean )
     return new EuclideanCoords;
-  else if ( which == 1 )
+  else if ( which == Polar )
     return new PolarCoords;
   else return 0;
 }
@@ -553,5 +553,28 @@ const char* EuclideanCoords::type() const
 const char* PolarCoords::type() const
 {
   return polarTypeString;
+}
+
+int EuclideanCoords::id() const
+{
+  return CoordinateSystemFactory::Euclidean;
+}
+
+int PolarCoords::id() const
+{
+  return CoordinateSystemFactory::Polar;
+}
+
+QString CoordinateSystemFactory::setCoordinateSystemStatement( int id )
+{
+  switch( id )
+  {
+  case Euclidean:
+    return i18n( "Set Euclidean Coordinate System" );
+  case Polar:
+    return i18n( "Set Polar Coordinate System" );
+  default:
+    assert( false );
+  }
 }
 

@@ -29,6 +29,7 @@
 #include "../objects/object.h"
 
 class KigDocument;
+class CoordinateSystem;
 
 class KigCommand
   : public QObject, public KNamedCommand
@@ -133,6 +134,21 @@ public:
    * after this is called..
    */
   ChangeObjectImpsCommand* finish( KigDocument&, const QString& text );
+};
+
+class ChangeCoordSystemCommand
+  : public KigCommand
+{
+  CoordinateSystem* mcs;
+public:
+  /**
+   * a command that changes the coordinate-system to s..
+   */
+  ChangeCoordSystemCommand( KigDocument& d, CoordinateSystem* s );
+  ~ChangeCoordSystemCommand();
+
+  void execute();
+  void unexecute();
 };
 
 #endif

@@ -23,6 +23,7 @@
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+#include "../kig/kig_commands.h"
 #include "../misc/i18n.h"
 #include "../objects/object_imp.h"
 #include "../objects/object.h"
@@ -673,9 +674,7 @@ bool BuiltinDocumentActionsProvider::executeAction(
     };
     CoordinateSystem* sys = CoordinateSystemFactory::build( id );
     assert( sys );
-    doc.setCoordinateSystem( sys );
-    doc.objects().calc( doc );
-    w.redrawScreen();
+    doc.history()->addCommand( new ChangeCoordSystemCommand( doc, sys ) );
     m.clearSelection();
     return true;
   }

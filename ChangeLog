@@ -1,5 +1,7 @@
 2003-05-02  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
+	* add undo support for changing the coordinate system
+
 	* generalize the undo support from the moving mode, and add undo
 		  support for many of the object specific actions.. 
 

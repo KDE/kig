@@ -714,3 +714,10 @@ const std::vector<KigWidget*>& KigDocument::widgets()
 {
   return mwidgets;
 }
+
+CoordinateSystem* KigDocument::switchCoordinateSystem( CoordinateSystem* s )
+{
+  CoordinateSystem* ret = mcoordsystem;
+  mcoordsystem = s;
+  return ret;
+}

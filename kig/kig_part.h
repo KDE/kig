@@ -120,6 +120,15 @@ public:
   const Objects& objects() const { return mObjs;};
   void setObjects( const Objects& os );
   const CoordinateSystem& coordinateSystem() const;
+
+  /**
+   * sets the coordinate system to s, and returns the old one..
+   */
+  CoordinateSystem* switchCoordinateSystem( CoordinateSystem* s );
+
+  /**
+   * sets the coordinate system to s, and deletes the old one..
+   */
   void setCoordinateSystem( CoordinateSystem* s );
   KigMode* mode() { return mMode; };
   void setMode( KigMode* );

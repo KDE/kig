@@ -26,6 +26,7 @@
 #include "../modes/mode.h"
 #include "../objects/object_imp.h"
 #include "../misc/calcpaths.h"
+#include "../misc/coordinate_system.h"
 
 #include <vector>
 
@@ -265,5 +266,28 @@ ChangeObjectImpsCommand* MonitorDataObjects::finish( KigDocument& doc, const QSt
 MonitorDataObjects::~MonitorDataObjects()
 {
   delete d;
+}
+
+ChangeCoordSystemCommand::ChangeCoordSystemCommand( KigDocument& d, CoordinateSystem* s )
+  : KigCommand( d, CoordinateSystemFactory::setCoordinateSystemStatement( s->id() ) ),
+    mcs( s )
+{
+}
+
+void ChangeCoordSystemCommand::execute()
+{
+  mcs = document.switchCoordinateSystem( mcs );
+  calcPath( document.objects() ).calc( document );
+  document.mode()->objectsRemoved();
+}
+
+void ChangeCoordSystemCommand::unexecute()
+{
+  execute();
+}
+
+ChangeCoordSystemCommand::~ChangeCoordSystemCommand()
+{
+  delete mcs;
 }
 

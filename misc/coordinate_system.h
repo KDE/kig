@@ -33,7 +33,10 @@ class QValidator;
 class CoordinateSystemFactory
 {
 public:
+  enum { Euclidean = 0, Polar = 1 };
+
   static QStringList names();
+  static QString setCoordinateSystemStatement( int id );
   static CoordinateSystem* build( int which );
   static CoordinateSystem* build( const char* type );
 };
@@ -69,6 +72,7 @@ public:
   virtual void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const = 0;
 
   virtual const char* type() const = 0;
+  virtual int id() const = 0;
 
   virtual QValidator* coordinateValidator() const = 0;
 };
@@ -85,6 +89,7 @@ public:
   void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
 
   const char* type() const;
+  int id() const;
 
   QValidator* coordinateValidator() const;
 };
@@ -101,6 +106,8 @@ public:
   void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
 
   const char* type() const;
+  int id() const;
+
   QValidator* coordinateValidator() const;
 };
 
