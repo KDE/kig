@@ -47,6 +47,11 @@
 
 - koffice support ? 
 
+- add another viewmode ( which would be completely orthogonal to the
+  KigMode concept ), where you can more clearly see the dependencies
+  in a figure.  Something with colours, numberings, and/or a tree-like
+  text representation of the dependencies..
+
 * future ?
 - there should be a way to link a figure to a (html?) file containing
    exercises.  Teachers would be able to create exercises for Kig.
