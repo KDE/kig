@@ -67,7 +67,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 		  "ibaran@mit.edu");
 
   tmp->addCredit("Christophe Devriese",
-                 I18N_NOOP( "domi's brother, who he got to write the algorithm for "
+                 I18N_NOOP( "Domi's brother, who he got to write the algorithm for "
                             "calculating the center of the circle with three "
                             "points given." ),
                  "oelewapperke@ulyssis.org" );
