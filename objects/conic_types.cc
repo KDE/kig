@@ -89,8 +89,8 @@ ObjectImp* ConicBAAPType::calc( const Args& parents, const KigWidget& ) const
   assert( parsed[0]->inherits( ObjectImp::ID_LineImp ) );
   assert( parsed[1]->inherits( ObjectImp::ID_LineImp ) );
   assert( parsed[2]->inherits( ObjectImp::ID_PointImp ) );
-  const LineData la = static_cast<const LineImp*>( parsed[0] )->data();
-  const LineData lb = static_cast<const LineImp*>( parsed[1] )->data();
+  const LineData la = static_cast<const AbstractLineImp*>( parsed[0] )->data();
+  const LineData lb = static_cast<const AbstractLineImp*>( parsed[1] )->data();
   const Coordinate c = static_cast<const PointImp*>( parsed[2] )->coordinate();
 
   return new ConicImpCart( calcConicByAsymptotes( la, lb, c ) );
@@ -190,7 +190,7 @@ ObjectImp* ConicBDFPType::calc( const Args& parents, const KigWidget& ) const
     return new InvalidImp;
   if ( parsed[1] && !parsed[1]->inherits( ObjectImp::ID_PointImp ) )
     return new InvalidImp;
-  const LineData line = static_cast<const LineImp*>( parsed[2] )->data();
+  const LineData line = static_cast<const AbstractLineImp*>( parsed[2] )->data();
   const Coordinate focus =
     static_cast<const PointImp*>( parsed[0] )->coordinate();
   Coordinate point;
@@ -262,7 +262,7 @@ ObjectImp* ConicPolarPointType::calc( const Args& parents, const KigWidget& ) co
   Args parsed = margsparser.parse( parents );
   if ( parsed.size() < 2 || ! parsed[0] || ! parsed[1] ) return new InvalidImp;
   const ConicCartesianData c = static_cast<const ConicImp*>( parsed[0] )->cartesianData();
-  const LineData l = static_cast<const LineImp*>( parsed[1] )->data();
+  const LineData l = static_cast<const AbstractLineImp*>( parsed[1] )->data();
   bool valid = true;
   const Coordinate p = calcConicPolarPoint( c, l, valid );
   if ( valid ) return new PointImp( p );
