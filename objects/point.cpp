@@ -155,12 +155,12 @@ void Point::doPopupAction( int popupid, int actionid, KigDocument*, KigWidget* w
   };
 }
 
-const uint Point::numberOfProperties()
+const uint Point::numberOfProperties() const
 {
   return Object::numberOfProperties() + 1;
 }
 
-const Property Point::property( uint which )
+const Property Point::property( uint which ) const
 {
   if ( which < Object::numberOfProperties() ) return Object::property( which );
   assert( which <= numberOfProperties() );
@@ -169,10 +169,10 @@ const Property Point::property( uint which )
   else assert( false );
 }
 
-const QStringList Point::properties()
+const QCStringList Point::properties() const
 {
-  QStringList l = Object::properties();
-  l << i18n( "Coordinate" );
+  QCStringList l = Object::properties();
+  l << I18N_NOOP( "Coordinate" );
   assert( l.size() == Point::numberOfProperties() );
   return l;
 }

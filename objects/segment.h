@@ -77,9 +77,9 @@ public:
   const Coordinate p1() const;
   const Coordinate p2() const;
 
-  const uint numberOfProperties();
-  const Property property( uint which );
-  const QStringList properties();
+  const uint numberOfProperties() const;
+  const Property property( uint which ) const;
+  const QCStringList properties() const;
 
 protected:
   Point* mpa, *mpb;

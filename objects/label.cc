@@ -79,8 +79,8 @@ std::map<QCString,QString> TextLabel::getParams()
   for ( propvect::const_iterator i = mprops.begin(); i != mprops.end(); ++i, ++count )
   {
     std::ostringstream os;
-    os << "property-index-for-object-" << count;
-    ret[os.str().c_str()] = i->index;
+    os << "property-for-object-" << count;
+    ret[os.str().c_str()] = i->obj->properties()[i->index];
   };
   return ret;
 }
@@ -98,12 +98,11 @@ void TextLabel::setParams( const prop_map& m )
   for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i, ++count )
   {
     std::ostringstream os;
-    os << "property-index-for-object-" << count;
+    os << "property-for-object-" << count;
     prop_map::const_iterator pi = m.find( os.str().c_str() );
     assert( pi != m.end() );
-    bool ok = true;
-    int index = pi->second.toInt( &ok );
-    assert( ok );
+    int index = i->obj->properties().findIndex( pi->second.latin1() );
+    assert( index != -1 );
     i->index = index;
   };
 }
@@ -264,12 +263,12 @@ void TextLabel::calc()
 {
 }
 
-const uint TextLabel::numberOfProperties()
+const uint TextLabel::numberOfProperties() const
 {
   return Object::numberOfProperties() + 1;
 }
 
-const Property TextLabel::property( uint which )
+const Property TextLabel::property( uint which ) const
 {
   assert( which < TextLabel::numberOfProperties() );
   if ( which < Object::numberOfProperties() ) return Object::property( which );
@@ -278,10 +277,10 @@ const Property TextLabel::property( uint which )
   else assert( false );
 }
 
-const QStringList TextLabel::properties()
+const QCStringList TextLabel::properties() const
 {
-  QStringList l = Object::properties();
-  l << i18n( "Text" );
+  QCStringList l = Object::properties();
+  l << I18N_NOOP( "Text" );
   assert( l.size() == TextLabel::numberOfProperties() );
   return l;
 }

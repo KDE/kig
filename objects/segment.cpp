@@ -236,12 +236,12 @@ const Coordinate Segment::p2() const
   return mpb->getCoord();
 }
 
-const uint Segment::numberOfProperties()
+const uint Segment::numberOfProperties() const
 {
   return AbstractLine::numberOfProperties() + 1;
 }
 
-const Property Segment::property( uint which )
+const Property Segment::property( uint which ) const
 {
   if ( which < AbstractLine::numberOfProperties() )
     return AbstractLine::property( which );
@@ -252,10 +252,10 @@ const Property Segment::property( uint which )
   else assert( false );
 }
 
-const QStringList Segment::properties()
+const QCStringList Segment::properties() const
 {
-  QStringList s = AbstractLine::properties();
-  s << i18n( "Length" );
+  QCStringList s = AbstractLine::properties();
+  s << I18N_NOOP( "Length" );
   assert( s.size() == Segment::numberOfProperties() );
   return s;
 }

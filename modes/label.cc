@@ -95,11 +95,11 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
     if ( os.size() < 1 ) break;
     Object* o = os[0];
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
-    QStringList l = o->properties();
+    QCStringList l = o->properties();
     assert( l.size() == o->numberOfProperties() );
     for ( int i = 0; static_cast<uint>( i ) < l.size(); ++i )
     {
-      QString s = l[i];
+      QString s = i18n( l[i] );
       assert( p->insertItem( s, i ) == i );
     };
     int result = p->exec( v->mapToGlobal( mplc ) );

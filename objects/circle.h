@@ -33,9 +33,9 @@ class Circle
   Circle( const Circle& c );
   ~Circle();
 
-  const uint numberOfProperties();
-  const Property property( uint which );
-  const QStringList properties();
+  const uint numberOfProperties() const;
+  const Property property( uint which ) const;
+  const QCStringList properties() const;
 
   Circle* toCircle();
   const Circle* toCircle() const;

@@ -81,9 +81,9 @@ public:
 
   Objects getParents() const;
 
-  const uint numberOfProperties();
-  const Property property( uint which );
-  const QStringList properties();
+  const uint numberOfProperties() const;
+  const Property property( uint which ) const;
+  const QCStringList properties() const;
 
 private:
   propvect mprops;

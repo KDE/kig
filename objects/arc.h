@@ -78,11 +78,11 @@ public:
 
   // this returns the size of this arc ( in radians, in the range 0 <
   // x < 2*M_PI... )
-  double size();
+  double size() const;
 
-  const uint numberOfProperties();
-  const Property property( uint which );
-  const QStringList properties();
+  const uint numberOfProperties() const;
+  const Property property( uint which ) const;
+  const QCStringList properties() const;
 
 protected:
   Point* mpts[3];

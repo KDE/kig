@@ -378,12 +378,12 @@ void CircleBCP::stopMove()
   // moving is disabled..
 };
 
-const uint Circle::numberOfProperties()
+const uint Circle::numberOfProperties() const
 {
-  return Curve::numberOfProperties() + 2;
+  return Curve::numberOfProperties() + 3;
 }
 
-const Property Circle::property( uint which )
+const Property Circle::property( uint which ) const
 {
   assert( which < Circle::numberOfProperties() );
   if ( which < Curve::numberOfProperties() ) return Curve::property( which );
@@ -391,14 +391,17 @@ const Property Circle::property( uint which )
     return Property( surface() );
   else if ( which == Curve::numberOfProperties() + 1 )
     return Property( circumference() );
+  else if ( which == Curve::numberOfProperties() + 2 )
+    return Property( radius() );
   else assert( false );
 }
 
-const QStringList Circle::properties()
+const QCStringList Circle::properties() const
 {
-  QStringList l = Curve::properties();
-  l << i18n( "Surface" );
-  l << i18n( "Circumference" );
+  QCStringList l = Curve::properties();
+  l << I18N_NOOP( "Surface" );
+  l << I18N_NOOP( "Circumference" );
+  l << I18N_NOOP( "Radius" );
   assert( l.size() == Circle::numberOfProperties() );
   return l;
 }

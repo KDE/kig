@@ -55,9 +55,9 @@ public:
   virtual void addActions( NormalModePopupObjects& );
   virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m );
 
-  virtual const uint numberOfProperties();
-  virtual const Property property( uint which );
-  virtual const QStringList properties();
+  virtual const uint numberOfProperties() const;
+  virtual const Property property( uint which ) const;
+  virtual const QCStringList properties() const;
 
 public:
   double getX() const;

@@ -59,6 +59,8 @@ class ScreenInfo;
 class StdConstructibleType;
 class NormalModePopupObjects;
 
+typedef QValueList<QCString> QCStringList;
+
 /**
  * Object is a base class representing all objects (e.g. points, lines etc.).
  *
@@ -129,9 +131,13 @@ public:
   // about an object ( e.g. This segment is %1 units long ).
   // every object has a number of properties.
   // the Object class itself defines some properties too..
-  virtual const uint numberOfProperties();
-  virtual const Property property( uint which );
-  virtual const QStringList properties();
+  virtual const uint numberOfProperties() const;
+  virtual const Property property( uint which ) const;
+  // this gives a list of brief descriptions of the properties.  The
+  // names should be between I18N_NOOP(), and they should be ordered
+  // such that if one takes property( a ) gives you the property
+  // described by "properties()[a]".
+  virtual const QCStringList properties() const;
 
   // only object types that have "parameters" need this, a parameter
   // is something which you cannot calculate from your parents,

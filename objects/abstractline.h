@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef DIRECTION_H
-#define DIRECTION_H
+#ifndef ABSTRACTLINE_H
+#define ABSTRACTLINE_H
 
 #include "curve.h"
 
@@ -34,15 +34,15 @@ public:
   AbstractLine( const AbstractLine& l );
   virtual const Coordinate p1() const = 0;
   virtual const Coordinate p2() const = 0;
-  const Coordinate direction();
+  const Coordinate direction() const;
   const AbstractLine* toAbstractLine() const { return this; };
   AbstractLine* toAbstractLine() { return this; };
 
   double slope() const;
 
-  const uint numberOfProperties();
-  const Property property( uint which );
-  const QStringList properties();
+  const uint numberOfProperties() const;
+  const Property property( uint which ) const;
+  const QCStringList properties() const;
   const QString equationString() const;
 };
 

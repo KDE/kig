@@ -30,17 +30,17 @@ AbstractLine::AbstractLine( const AbstractLine& l )
 {
 }
 
-const Coordinate AbstractLine::direction()
+const Coordinate AbstractLine::direction() const
 {
   return p2() - p1();
 }
 
-const uint AbstractLine::numberOfProperties()
+const uint AbstractLine::numberOfProperties() const
 {
   return Curve::numberOfProperties() + 2;
 }
 
-const Property AbstractLine::property( uint which )
+const Property AbstractLine::property( uint which ) const
 {
   assert( which < AbstractLine::numberOfProperties() );
   if ( which < Curve::numberOfProperties() ) return Curve::property( which );
@@ -51,11 +51,11 @@ const Property AbstractLine::property( uint which )
   else assert( false );
 }
 
-const QStringList AbstractLine::properties()
+const QCStringList AbstractLine::properties() const
 {
-  QStringList l = Curve::properties();
-  l << i18n( "Slope" );
-  l << i18n( "Equation" );
+  QCStringList l = Curve::properties();
+  l << I18N_NOOP( "Slope" );
+  l << I18N_NOOP( "Equation" );
   assert( l.size() == AbstractLine::numberOfProperties() );
   return l;
 }

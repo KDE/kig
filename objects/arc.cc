@@ -343,17 +343,17 @@ void Arc::sDrawPrelim( KigPainter& p, const Objects& os )
   p.drawArc( surr, is, ia );
 }
 
-double Arc::size()
+double Arc::size() const
 {
   return manglelength;
 }
 
-const uint Arc::numberOfProperties()
+const uint Arc::numberOfProperties() const
 {
   return Object::numberOfProperties() + 2;
 }
 
-const Property Arc::property( uint which )
+const Property Arc::property( uint which ) const
 {
   assert( which < numberOfProperties() );
   if ( which < Object::numberOfProperties() ) return Object::property( which );
@@ -364,11 +364,11 @@ const Property Arc::property( uint which )
   else assert( false );
 }
 
-const QStringList Arc::properties()
+const QCStringList Arc::properties() const
 {
-  QStringList l = Object::properties();
-  l << i18n( "Angle in radians" );
-  l << i18n( "Angle in degrees" );
+  QCStringList l = Object::properties();
+  l << I18N_NOOP( "Angle in radians" );
+  l << I18N_NOOP( "Angle in degrees" );
   assert( l.size() == Arc::numberOfProperties() );
   return l;
 }

@@ -230,21 +230,21 @@ void Object::doPopupAction( int, int, KigDocument*, KigWidget*, NormalMode* )
   return;
 }
 
-const QStringList Object::properties()
+const QCStringList Object::properties() const
 {
-  QStringList s;
-  s << i18n( "Base Object Type" );
+  QCStringList s;
+  s << I18N_NOOP( "Base Object Type" );
   assert( s.size() == Object::numberOfProperties() );
   return s;
 }
 
-const Property Object::property( uint which )
+const Property Object::property( uint which ) const
 {
   assert( which == 0 );
   return Property( vTBaseTypeName() );
 }
 
-const uint Object::numberOfProperties()
+const uint Object::numberOfProperties() const
 {
   return 1;
 }
