@@ -98,18 +98,16 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
 
 MovingMode::MovingMode( const Objects& os, const Coordinate& c,
                         KigWidget& v, KigDocument& d )
-  : MovingModeBase( d, v ), pwwlmt( c ), emo( os )
+  : MovingModeBase( d, v ), pwwlmt( c )
 {
-  // FIXME: fix this algorithm..., have objects tell us what other
-  // objects they are going to move... e.g. only a segment moves its
-  // parents, but right now, we have to take into account that every
-  // object could move its parents...
-
-  Objects objs( emo );
-  for ( Objects::const_iterator i = emo.begin(); i != emo.end(); ++i )
-  {
-    objs |= (*i)->parents();
-  };
+  Objects objs;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( (*i)->canMove() )
+    {
+      emo.upush( *i );
+      objs.upush( *i );
+      objs |= (*i)->parents();
+    };
   Objects tmp = objs;
   for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
     objs |= (*i)->getAllChildren();
