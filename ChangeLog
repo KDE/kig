@@ -1,5 +1,11 @@
 2003-05-01  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
+	* fix useless error output on startup
+
+	* add scroll bars to the full screen mode
+
+	* add zoom actions to the document popup
+
 	* add a change text action to text labels
 
 2003-04-28  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
