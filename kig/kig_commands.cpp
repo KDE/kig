@@ -143,6 +143,7 @@ void AddObjectsTask::execute( KigDocument& doc )
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
+    addChildToParents( *i );
     (*i)->calc( doc );
     doc._addObject(*i);
   }
@@ -152,6 +153,10 @@ void AddObjectsTask::execute( KigDocument& doc )
 void AddObjectsTask::unexecute( KigDocument& doc )
 {
   doc._delObjects( os );
+  for ( uint i = 0; i < os.size(); ++i )
+  {
+    delChildFromParents( os[i] );
+  };
   undone = true;
 };
 
