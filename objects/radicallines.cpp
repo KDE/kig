@@ -340,12 +340,12 @@ std::pair<Coordinate, Coordinate> calcConicRadical( const ConicCartesianEquation
     r[0] = 2*b*d - c*e;
     r[1] = 2*a*e - c*d;
     r[2] = dis3;
-    
+
     double p[3];   // vector orthogonal to one of the two planes
 
-// there is still a stability problem here in the case of two parabolas:
-// in such case we get p[0] = p[1] = p[2] = 0
-// I must consider three cases
+    // there is still a stability problem here in the case of two
+    // parabolas: in such case we get p[0] = p[1] = p[2] = 0
+    //I must consider three cases
     if (fabs(a) >= fabs(b) && fabs(a) >= fabs(f))
     {
       p[0] = 2*a;
