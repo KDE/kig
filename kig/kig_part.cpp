@@ -235,7 +235,7 @@ void KigDocument::setupActions()
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  tmp = l->loadIcon( "new", KIcon::User );
+  tmp = l->loadIcon( "viewmagfit", KIcon::User );
   a = new KAction(
     i18n( "Select Shown Area" ), tmp, 0, m_widget, SLOT( zoomRect() ),
     actionCollection(), "view_select_shown_rect" );
