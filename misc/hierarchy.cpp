@@ -168,20 +168,14 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
   allElems.clear();
 
   // a hash to know which elements we already constructed...
-  typedef map<int, HierarchyElement*> Hash;
+  // an int-hash is a vector :)
+  typedef vector<HierarchyElement*> Hash;
   Hash tmphash;
 
-  // load data: we work like this.
-  // for every "HierarchyElement" xml element, we look if the
-  // corresponding HierarchyElement has already been constructed, and
-  // if it hasn't, we construct it.  Then, we pass over all "parent"
-  // child nodes of the node we're handling.  We check if they have
-  // already been constructed, and if not, we construct them here.
-  // Then, we call addParent.  So, an HierarchyElement gets its
-  // parents when we find the main tag, but we can already have
-  // constructed it before, as the parent of another.  Adding the
-  // elements to allElems, gegElems and finElems is done when they get
-  // their parents.
+  // load data:
+  // we pass over the dom hierarchy twice:
+  // first we construct all the HierarchyElement, an then we pass each
+  // object its parents...
   for (QDomNode n = ourElement.firstChild(); !n.isNull(); n = n.nextSibling())
     {
       QDomElement e = n.toElement();
@@ -194,80 +188,33 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
       int id = tmpId.toInt(&ok);
       assert(ok);
 
-      HierarchyElement* tmpE;
-      // here, we look if we have constructed this one already, and if
-      // not, we construct it.  tmpE should contain the correct
-      // element after this.
-      Hash::iterator i = tmphash.find(id);
-      if ( i != tmphash.end() )
-	{
-	  // already constructed:
-	  tmpE = i->second;
-	}
-      else
-	{
-	  // not constructed yet, so we construct it here...
-	  
-	  // fetch the typeName
-	  QString tmpTN = e.attribute("typeName");
-	  assert(tmpTN);
-	  QCString typeName = tmpTN.utf8();
-	  
-	  tmpE = new HierarchyElement(typeName, id);
-	  tmphash[id] = tmpE;
-	};
+      // fetch the typeName
+      QString tmpTN = e.attribute("typeName");
+      assert(tmpTN);
+      QCString typeName = tmpTN.utf8();
+      
+      HierarchyElement* tmpE = new HierarchyElement(typeName, id);
+      tmphash[id] = tmpE;
 
-      // now take care of the parents and the params:
-      for (QDomNode node = n.firstChild(); !node.isNull(); node = node.nextSibling())
-	{
-	  // fetch the elemento
-	  QDomElement e = node.toElement();
-	  assert (!e.isNull());
-	  if (e.tagName() == "parent")
-	    {	  
-	      // fetch the id
-	      QString tmpId = e.attribute("id");
-	      bool ok;
-	      int id = tmpId.toInt(&ok);
-	      assert(ok);
-	      
-	      // we look if we have already constructed this element, and
-	      // if not, we construct it.
-	      Hash::iterator i = tmphash.find(id);
-	      if ( i != tmphash.end() )
-		{
-		  // already constructed:
-		  tmpE->addParent(i->second);
-		}
-	      else
-		{
-		  // not constructed yet, so we construct it here...
-		  // fetch the typeName
-		  QString tmpTN = e.attribute("typeName");
-		  assert(tmpTN);
-		  QCString typeName = tmpTN.utf8();
-		  HierarchyElement* tmp = new HierarchyElement(typeName,id);
-		  tmpE->addParent(tmp);
-		  tmphash[id] = tmp;
-		}
-	    } // e.tagName() == "parent"
-	  else
-	    { // it's not a parent, it's a param..
-	      Q_ASSERT (e.tagName() == "param");
-	      QString name = e.attribute("name");
-	      QDomText t = e.firstChild().toText();
-	      Q_ASSERT (!t.isNull());
-	      bool ok;
-	      double value = t.data().toDouble(&ok);
-	      Q_ASSERT(ok);
-	      tmpE->setParam(name.latin1(), value);
-	    }; // we just handled the param child tag
-	}; // end of loop over all child tags
-      // we just constructed tmpE, and gave it all of its params and
-      // parents... 
-      // next, we add tmpE to the relevant places:
       allElems.push_back(tmpE);
+    };
+  
+  // now take care of the parents and the params:
+  for (QDomNode n = ourElement.firstChild(); !n.isNull(); n = n.nextSibling())
+    {
+      QDomElement e = n.toElement();
+      assert (!e.isNull());
+      assert (e.tagName() == "HierarchyElement");
 
+      // fetch the id
+      QString tmpId = e.attribute("id");
+      bool ok;
+      int id = tmpId.toInt(&ok);
+      assert(ok);
+
+      HierarchyElement* tmpE = tmphash[id];
+
+      // two params we handle:
       QString tmpGiven = e.attribute("given");
       assert(tmpGiven);
       QCString tmpS = tmpGiven.utf8();
@@ -277,6 +224,36 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
       assert(tmpFinal);
       tmpS = tmpFinal.utf8();
       if (tmpS == "true" || tmpS == "yes") finElems.push_back(tmpE);
+
+      // the children of this tag:
+      for (QDomNode node = n.firstChild(); !node.isNull(); node = node.nextSibling())
+	{
+	  // fetch the element of the child tag
+	  QDomElement e = node.toElement();
+	  assert (!e.isNull());
+	  if (e.tagName() == "parent")
+	    {
+	      // fetch the id
+	      QString tmpId = e.attribute("id");
+	      bool ok;
+	      int id = tmpId.toInt(&ok);
+	      assert(ok);
+	      
+	      HierarchyElement* i = tmphash[id];
+	      tmpE->addParent(i);
+	    } // e.tagName() == "parent"
+	  else
+	    { // it's not a parent, so it's a param..
+	      assert (e.tagName() == "param");
+	      QString name = e.attribute("name");
+	      QDomText t = e.firstChild().toText();
+	      Q_ASSERT (!t.isNull());
+	      bool ok;
+	      double value = t.data().toDouble(&ok);
+	      Q_ASSERT(ok);
+	      tmpE->setParam(name.latin1(), value);
+	    }; // we just handled the param child tag
+	}; // end of loop over the child tags of the HierarchyElement
     };
 };
 
@@ -284,12 +261,14 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
 			       ref, bool given, bool final) const
 {
   QDomElement e = doc.createElement(ref?"parent":"HierarchyElement");
-  e.setAttribute("typeName", typeName);
   e.setAttribute("id", id);
 
   // if we're only writing a reference to ourselves, we don't need all
   // this information..
   if (!ref) {
+    // our typename
+    e.setAttribute("typeName", typeName);
+
     // whether we are given/final:
     e.setAttribute("given", given?"true":"false");
     e.setAttribute("final", final?"true":"false");

@@ -17,8 +17,7 @@ bool KigFilterCabri::supportMime( const QString mime )
   return false;
 }
 
-Result KigFilterCabri::convert( const QString from, KTempFile& to)
+KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
 {
-
   return NotSupported;
 }

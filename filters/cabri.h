@@ -11,6 +11,8 @@ lawfully owned product...
 #ifndef CABRI_H
 #define CABRI_H
 
+#include "filter.h"
+
 //  This is an import filter for the output of the commercial program
 //  Cabri ("CAhier de BRouillon Interactif" or something like that),
 //  which is being pushed by Texas Instruments, but only exists for

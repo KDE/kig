@@ -11,6 +11,9 @@ class KigFilter;
 
 class KigFilters
 {
+public:
+  KigFilters() { sThis = this; populate(); };
+  static KigFilters* sThis;
 protected:
   typedef vector<KigFilter*> vect;
   static vect m_filters;
@@ -23,7 +26,7 @@ public:
 class KigFilter
 {
 public:
-  KigFilter() {};
+  KigFilter() { KigFilters::sThis->add(this); };
   virtual ~KigFilter() {};
 
   typedef enum { OK, FileNotFound, ParseError, NotSupported } Result;

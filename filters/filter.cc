@@ -1,12 +1,13 @@
 #include "filter.h"
 
 #include "kgeo.h"
+#include "cabri.h"
 
 KigFilters::vect KigFilters::m_filters;
+KigFilters* KigFilters::sThis;
 
 KigFilter* KigFilters::find(const QString& mime)
 {
-  if (m_filters.empty()) populate();
   for (vect::iterator i = m_filters.begin(); i != m_filters.end(); ++i)
     {
       if ((*i)->supportMime(mime)) return *i;
@@ -14,8 +15,8 @@ KigFilter* KigFilters::find(const QString& mime)
   return 0;
 }
 
-// populate our internal list of filters...
 void KigFilters::populate()
 {
-  m_filters.push_back(new KigFilterKGeo);
+  new KigFilterKGeo;
+  new KigFilterCabri;
 }
