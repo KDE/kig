@@ -1,17 +1,8 @@
 Dr. Geo filter status
 =====================
 
-Global status
-=============
-
-Import:  yes (partially)
-Export:  no
-
-Import
-======
-
-Objects implemented
--------------------
+Objects imported
+----------------
 
 Points            most, On_curve (most)
 Rays              ok
@@ -32,7 +23,7 @@ Visibility        ok
 Styles            ok
 Grid              ok
 
-Objects to implement
+Objects not imported
 --------------------
 
 Points            Coordinate(*)
@@ -40,11 +31,12 @@ Lines             pt_slope(*)
 Circle            radius(*)
 Numberics         distance_pt_circle
 Angles            vectors
-Polygons          also in Kig
+Polygons          (**)
 Transformations   scaling(*)
-Intersections     arc-circle, locus-other object (both also in Kig)
+Intersections     arc-circle(**), locus-other object(**)
 
 (*) objects which depend on numerics
+(**) objects which currently are not implemented in Kig
 
 Objects ignored
 ---------------
@@ -56,8 +48,3 @@ Known problems
 --------------
 
 * Point(On_curve): does not work with locuses
-
-Export
-======
-
-Not implemented yet

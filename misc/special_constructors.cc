@@ -44,6 +44,7 @@
 #include "../objects/other_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/point_imp.h"
+#include "../objects/polygon_imp.h"
 #include "../objects/tangent_type.h"
 #include "../objects/centerofcurvature_type.h"
 #include "../objects/poligon_type.h"
@@ -298,27 +299,16 @@ void PoligonBCVConstructor::drawprelim( const ObjectDrawer& drawer,
   if ( parents.size() != 2 ) return;
   assert ( parents[0]->imp()->inherits( PointImp::stype() ) &&
            parents[1]->imp()->inherits( PointImp::stype() ) );
-//  const Coordinate center =
-//    static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
-//  const Coordinate vertex =
-//    static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
 
   Args args;
   std::transform( parents.begin(), parents.end(),
                std::back_inserter( args ), std::mem_fun( &ObjectCalcer::imp ) );
 
-  IntImp sides( msides );
-  for ( int i = 1; i <= msides; i++ )
-  {
-    IntImp side( i );
-    args.push_back( &sides );
-    args.push_back( &side );
-    ObjectImp* data = mtype->calc( args, doc );
-    drawer.draw( *data, p, true );
-    delete data; data = 0;
-    args.pop_back();
-    args.pop_back();
-  };
+  args.push_back( new IntImp( msides ) );
+  ObjectImp* data = mtype->calc( args, doc );
+  drawer.draw( *data, p, true );
+  delete data;
+  data = 0;
 }
 
 std::vector<ObjectHolder*> PoligonBCVConstructor::build(
@@ -326,19 +316,15 @@ std::vector<ObjectHolder*> PoligonBCVConstructor::build(
 {
   assert( os.size() == 2 );
   std::vector<ObjectHolder*> ret;
-  // ObjectCalcer* center = os[0];
   ObjectConstCalcer* sidesint = new ObjectConstCalcer( new IntImp( msides ) );
 
-  for ( int side = 1; side <= msides; side++ )
-  {
-    std::vector<ObjectCalcer*> args = os;
-    args.push_back( sidesint );
-    args.push_back( new ObjectConstCalcer( new IntImp( side ) ) );
-    ret.push_back(
-      new ObjectHolder(
-        new ObjectTypeCalcer(
-          PoligonBCVType::instance(), args ) ) );
-  };
+  std::vector<ObjectCalcer*> args = os;
+  args.push_back( sidesint );
+  ret.push_back(
+    new ObjectHolder(
+      new ObjectTypeCalcer(
+        PoligonBCVType::instance(), args ) ) );
+
   return ret;
 }
 

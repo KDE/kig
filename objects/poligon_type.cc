@@ -21,11 +21,13 @@
 #include "bogus_imp.h"
 #include "line_imp.h"
 #include "point_imp.h"
+#include "polygon_imp.h"
 
 #include "../misc/common.h"
 
 #include <klocale.h>
 #include <cmath>
+#include <vector>
 
 static const char constructpoligonthroughpointstat[] = I18N_NOOP( "Construct a polygon with this vertex" );
 
@@ -37,14 +39,13 @@ static const ArgsParser::spec argsspecPoligonBCV[] =
     I18N_NOOP( "Select the center of the new polygon..." ), false },
   { PointImp::stype(), constructpoligonthroughpointstat,
     I18N_NOOP( "Select a vertex for the new polygon..." ), true },
-  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PoligonBCVType )
 
 PoligonBCVType::PoligonBCVType()
-  : ArgsParserObjectType( "PoligonBCV", argsspecPoligonBCV, 4 )
+  : ArgsParserObjectType( "PoligonBCV", argsspecPoligonBCV, 3 )
 {
 }
 
@@ -68,25 +69,24 @@ ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
         static_cast<const PointImp*>( parents[1] )->coordinate();
   const int sides =
         static_cast<const IntImp*>( parents[2] )->data();
-  const int side =
-        static_cast<const IntImp*>( parents[3] )->data();
 
-  double alfa = 2*M_PI/sides;
-  double theta2 = alfa*side;
-  double ctheta2 = cos(theta2);
-  double stheta2 = sin(theta2);
-  double theta1 = theta2 - alfa;
-  double ctheta1 = cos(theta1);
-  double stheta1 = sin(theta1);
+  std::vector<Coordinate> vertexes;
 
   double dx = vertex.x - center.x;
   double dy = vertex.y - center.y;
 
-  Coordinate v1 = center + Coordinate( ctheta1*dx - stheta1*dy,
-                                       stheta1*dx + ctheta1*dy );
-  Coordinate v2 = center + Coordinate( ctheta2*dx - stheta2*dy,
-                                       stheta2*dx + ctheta2*dy );
-  return new SegmentImp( v1, v2 );
+  for ( int i = 1; i <= sides; i++ )
+  {
+    double alfa = 2*M_PI/sides;
+    double theta1 = alfa*i - alfa;
+    double ctheta1 = cos(theta1);
+    double stheta1 = sin(theta1);
+
+    Coordinate v1 = center + Coordinate( ctheta1*dx - stheta1*dy,
+                                         stheta1*dx + ctheta1*dy );
+    vertexes.push_back( v1 );
+  }
+  return new PolygonImp( vertexes );
 }
 
 const ObjectImpType* PoligonBCVType::resultId() const

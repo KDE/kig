@@ -269,31 +269,31 @@ QColor KigPainter::getColor() const
   return color;
 }
 
+/*
 static void setContains( QRect& r, const QPoint& p )
 {
   if ( r.left() > p.x() ) r.setLeft( p.x() );
   if ( r.right() < p.x() ) r.setRight( p.x() );
   // this is correct, i think.  In qt the bottom has the highest y
   // coord...
-  if ( r.bottom() < p.y() ) r.setBottom( p.x() );
-  if ( r.top() < p.y() ) r.setTop( p.x() );
+  if ( r.bottom() > p.y() ) r.setBottom( p.y() );
+  if ( r.top() < p.y() ) r.setTop( p.y() );
 }
+*/
 
 void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
                               bool winding, int index, int npoints )
 {
-  QRect sr;
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
   QPointArray t( pts.size() );
   int c = 0;
   for( std::vector<QPoint>::const_iterator i = pts.begin(); i != pts.end(); ++i )
   {
-    setContains( sr, *i );
     t.putPoints( c++, 1, i->x(), i->y() );
   };
   mP.drawPolygon( t, winding, index, npoints );
-  mOverlay.push_back( sr );
+  mOverlay.push_back( t.boundingRect() );
 }
 
 Rect KigPainter::window()

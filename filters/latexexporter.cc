@@ -38,9 +38,11 @@
 #include "../objects/object_imp.h"
 #include "../objects/other_imp.h"
 #include "../objects/point_imp.h"
+#include "../objects/polygon_imp.h"
 #include "../objects/text_imp.h"
 
 #include <math.h>
+#include <algorithm>
 
 #include <qcolor.h>
 #include <qfile.h>
@@ -110,6 +112,7 @@ public:
   void visit( const SegmentImp* imp );
   void visit( const RayImp* imp );
   void visit( const ArcImp* imp );
+  void visit( const PolygonImp* imp );
 
   double unit;
 
@@ -417,6 +420,22 @@ void LatexExportImpVisitor::visit( const ArcImp* imp )
   newLine();
 }
 
+void LatexExportImpVisitor::visit( const PolygonImp* imp )
+{
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
+
+  mstream << "\\pspolygon[linecolor=" << mcurcolorid << ",linewidth=" << width / 100.0
+          << "," << writeStyle( mcurobj->drawer()->style() ) << "]";
+
+  std::vector<Coordinate> pts = imp->points();
+  for ( uint i = 0; i < pts.size(); i++ )
+  {
+    emitCoord( pts[i] );
+  }
+  newLine();
+}
+
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {
   ExportToLatexDialog* d = new ExportToLatexDialog( &w, &doc );
@@ -444,7 +463,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
 //  stream << "\\usepackage[latin1]{inputenc}\n";
   stream << "\\usepackage{pstricks}\n";
   stream << "\\usepackage{pst-plot}\n";
-  stream << "\\author{Kig}\n";
+  stream << "\\author{Kig " << KIGVERSION << "}\n";
   stream << "\\begin{document}\n";
 
   const double bottom = w.showingRect().bottom();

@@ -8,11 +8,11 @@
   <Construction>
    <input requirement="curve" id="1">
     <UseText>Osculating circle of this curve</UseText>
-    <SelectStatement>Select the curve</SelectStatement>
+    <SelectStatement>Select the curve...</SelectStatement>
    </input>
    <input requirement="point" id="2">
     <UseText>Osculating circle at this point</UseText>
-    <SelectStatement>Select the point</SelectStatement>
+    <SelectStatement>Select the point...</SelectStatement>
    </input>
    <intermediate action="calc" type="CocCurve" id="3" >
     <arg>1</arg>

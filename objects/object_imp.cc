@@ -152,6 +152,10 @@ void ObjectImpVisitor::visit( const ArcImp* )
 {
 }
 
+void ObjectImpVisitor::visit( const PolygonImp* )
+{
+}
+
 ObjectImpVisitor::~ObjectImpVisitor()
 {
 

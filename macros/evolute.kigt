@@ -8,7 +8,7 @@
   <Construction>
    <input requirement="curve" id="1">
     <UseText>Evolute of this curve</UseText>
-    <SelectStatement>Select the curve</SelectStatement>
+    <SelectStatement>Select the curve...</SelectStatement>
    </input>
    <intermediate action="push" type="hierarchy" id="2" >
     <input requirement="point" id="1" />

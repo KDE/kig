@@ -1,8 +1,27 @@
+2004-11-09  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Made kig.dektop and kig_part.desktop more compliant to
+	freedesktop.org's desktop entry specifications.
+
+	* Introduced PolygonImp, a new ObjectImp to handle all the types
+	of polygons (both generic and regular ones). Modified PoligonType
+	and PoligonBCVConstructor to use the new PolygonImp. Adapted also
+	the ObjectImpVisitor to visit PolygonImp.
+
+	* Improved the LatexExporter to export PolygonImp's.
+
+	* Fixed a crash that occurs when selecting (during a text label
+	construction) the property "Name" for an object with no
+	name(calcer) set.
+
+	* Other misc changes.
+
 2004-11-08  Maurizio Paolini <paolini@dmf.unicatt.it>
 
-	* Scaling and stretching can be defined using two segments to obtain the
-        scaling ratio (as the ratio of their length).  Added in the Transformations menu,
-	not in the Transformations toolban, which is crowded enough already :-)
+	* Scaling and stretching can be defined using two segments to
+	obtain the scaling ratio (as the ratio of their length). Added in
+	the Transformations menu, not in the Transformations toolbar,
+	which is crowded enough already :-)
 
 2004-11-06  Maurizio Paolini <paolini@dmf.unicatt.it>
 

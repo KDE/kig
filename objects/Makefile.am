@@ -30,6 +30,7 @@ noinst_HEADERS=\
 	other_imp.h \
 	other_type.h \
 	point_imp.h \
+	polygon_imp.h \
 	tangent_type.h \
 	centerofcurvature_type.h \
 	tests_type.h \
@@ -69,6 +70,7 @@ libobjects_la_SOURCES=\
 	other_type.cc \
 	point_imp.cc \
 	point_type.cc \
+	polygon_imp.cc \
 	tangent_type.cc \
 	centerofcurvature_type.cc \
 	tests_type.cc \

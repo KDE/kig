@@ -157,7 +157,15 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     ObjectCalcer::shared_ptr argcalcer;
     if ( result == -1 ) break;
     else if ( result == 0 )
+    {
       argcalcer = o->nameCalcer();
+      if ( !argcalcer )
+      {
+        ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "unnamed object" ) ) );
+        o->setNameCalcer( c );
+        argcalcer = c;
+      }
+    }
     else
     {
       assert( static_cast<uint>( result ) < l.size() + 1 );
