@@ -178,7 +178,6 @@ void ObjectWithParents::addParent( Object* o )
 void ObjectWithParents::delParent( Object* o )
 {
   mparents.remove( o );
-  o->delChild( this );
 }
 
 void ObjectWithParents::setParents( const Objects& parents )
