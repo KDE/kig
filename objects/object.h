@@ -32,6 +32,7 @@
 #include "../misc/objects.h"
 
 class AbstractLine;
+class Arc;
 class Point;
 class Segment;
 class Vector;
@@ -139,6 +140,7 @@ public:
   virtual NormalPoint* toNormalPoint() { return 0; };
   virtual TextLabel* toTextLabel() { return 0; };
   virtual AbstractLine* toAbstractLine() { return 0; };
+  virtual Arc* toArc() { return 0; };
 
   virtual const Point* toPoint() const { return 0; };
   virtual const Segment* toSegment() const { return 0; };
@@ -150,6 +152,7 @@ public:
   virtual const NormalPoint* toNormalPoint() const { return 0; };
   virtual const TextLabel* toTextLabel() const { return 0; };
   virtual const AbstractLine* toAbstractLine() const { return 0; };
+  virtual const Arc* toArc() const { return 0; };
 
   // type identification:
   // there are several functions: you don't need all of them in your

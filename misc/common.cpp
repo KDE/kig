@@ -331,3 +331,23 @@ double calcDistancePointLine( const Coordinate& p, const Coordinate& a,
   double norm = dir.length();
   return ( yb * x - ya * x - xb * y + xa * y + xb * ya - yb * xa ) / norm;
 };
+
+Coordinate calcRotatedPoint( const Coordinate& a, const Coordinate& c, const double arc )
+{
+  // we take a point p on a line through c and parallel with the
+  // X-axis..
+  Coordinate p( c.x + 5, c.y );
+  // we then calc the arc that ac forms with cp...
+  Coordinate d = a - c;
+  d = d.normalize();
+  double aarc = std::acos( d.x );
+  if ( d.y < 0 ) aarc = 2*M_PI - aarc;
+
+  // we now take the sum of the two arcs to find the arc between
+  // pc and ca
+  double asum = aarc + arc;
+
+  Coordinate ret( std::cos( asum ), std::sin( asum ) );
+  ret = ret.normalize( ( a -c ).length() );
+  return ret + c;
+};

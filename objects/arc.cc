@@ -31,6 +31,8 @@
 #include <algorithm>
 #include <cmath>
 
+#include <assert.h>
+
 Arc::Arc( const Objects& os )
   : Object()
 {
@@ -201,18 +203,22 @@ void Arc::calc( const ScreenInfo& si )
   // the angles:
   {
     lvect = lvect.normalize();
-    double dstartangle = std::acos( lvect.x ) * 2880 / M_PI;
-    if ( lvect.y < 0 ) dstartangle = 5760 - dstartangle;
-    kdDebug() << k_funcinfo << dstartangle << endl;
     rvect = rvect.normalize();
-    double dendangle = std::acos( -rvect.x ) * 2880 / M_PI;
-    if ( rvect.y < 0 ) dendangle = -dendangle;
-    double danglelength = 2880 - dendangle - dstartangle;
-    kdDebug() << k_funcinfo << danglelength << endl;
-    startangle = static_cast<int>( dstartangle );
-    if ( startangle < 0 ) startangle += 5760;
-    anglelength = static_cast<int>( danglelength );
-    if ( anglelength < 0 ) anglelength += 5760;
+    // we calc lots of angles... i don't really know how to explain
+    // this in text but i'll try...  take point a( 0,0 ), b( 1,1 ), c(
+    // -1, 1 ), d( 1,0 ), e( -1,0 )   and bac is the arc we want, then
+    // dab is the startangle, and eac is the end angle..  we calc bac
+    // by taking pi - startangle - endangle...
+    mstartangle = std::acos( lvect.x );
+    if ( lvect.y < 0 ) mstartangle = 2*M_PI - mstartangle;
+
+    double endangle = std::acos( -rvect.x );
+    if ( rvect.y < 0 ) endangle = -endangle;
+
+    manglelength = M_PI - endangle - mstartangle;
+
+    if ( manglelength < 0 ) manglelength += 2*M_PI;
+    if ( mstartangle < 0 ) mstartangle += 2*M_PI;
   }
 
   // the bounding rect:
@@ -231,12 +237,14 @@ bool Arc::contains(const Coordinate&, const double ) const
 
 void Arc::draw( KigPainter& p, bool ss ) const
 {
-  kdDebug() << k_funcinfo << mr << "; " << startangle << "; " << anglelength << endl;
   Coordinate cds[3];
   std::transform( mpts, mpts+3, cds, std::mem_fun( &Point::getCoord ) );
 
-  p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ) );
-  p.setBrush( QBrush( Qt::black, Qt::SolidPattern ) );
+  QColor color = selected && ss ? Qt::red : mColor;
+  p.setPen( QPen( color, 1 ) );
+  p.setBrush( QBrush( color, Qt::SolidPattern ) );
+  int startangle = static_cast<int>( mstartangle * 2880. / M_PI );
+  int anglelength = static_cast<int>( manglelength * 2880 / M_PI );
   p.drawArc( mr, startangle, anglelength );
   p.drawPolygon( marrow );
   p.drawRay( cds[1], cds[0] );
@@ -249,8 +257,65 @@ bool Arc::inRect( const Rect& ) const
   // TODO
 }
 
-void Arc::sDrawPrelim( KigPainter&, const Objects& )
+void Arc::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  // TODO
+  // some initialization...
+  if ( os.size() != 3 ) return;
+  const Point* pts[3];
+  std::transform( os.begin(), os.end(), pts, std::mem_fun( &Object::toPoint ) );
+//  std::for_each( pts, pts + 3, assert );
+  assert( pts[0] && pts[1] && pts[2] );
+  Coordinate cds[3];
+  std::transform( pts, pts + 3, cds, std::mem_fun( &Point::getCoord ) );
+  Coordinate lvect = cds[0] - cds[1];
+  Coordinate rvect = cds[2] - cds[1];
+  double radius = kigMin( lvect.length(), rvect.length() ) / 2.;
+
+  // the arrow...
+  std::vector<Coordinate> arrow;
+  {
+    lvect = lvect.normalize( radius );
+    rvect = rvect.normalize( radius );
+    Coordinate sega = -rvect;
+    sega = sega.normalize( 6 * p.pixelWidth() );
+    Coordinate segb = sega.orthogonal();
+    arrow.push_back( rvect + cds[1] );
+    arrow.push_back( arrow[0] + segb + sega );
+    arrow.push_back( arrow[0] + segb - sega );
+  }
+
+  // the angles
+  int ia;
+  int is;
+  {
+    lvect = lvect.normalize();
+    rvect = rvect.normalize();
+    double startangle = std::acos( lvect.x );
+    if ( lvect.y < 0 ) startangle = 2*M_PI-startangle;
+    double endangle = std::acos( -rvect.x );
+    if ( rvect.y < 0 ) endangle = -endangle;
+    double anglelength = M_PI - endangle - startangle;
+    if ( anglelength < 0 ) anglelength += 2* M_PI;
+    if ( startangle < 0 ) startangle += 2*M_PI;
+    ia = static_cast<int>( anglelength * 2880 / M_PI );
+    is = static_cast<int>( startangle * 2880 / M_PI );
+  };
+
+  // the surrounding rect...
+  Rect surr;
+  surr.setWidth( radius * 2 );
+  surr.setHeight( radius * 2 );
+  surr.setCenter( cds[1] );
+
+  p.setPen( QPen( Qt::red, 1 ) );
+  p.setBrush( QBrush( Qt::red, Qt::SolidPattern ) );
+  p.drawRay( cds[1], cds[0] );
+  p.drawRay( cds[1], cds[2] );
+  p.drawPolygon( arrow );
+  p.drawArc( surr, is, ia );
 }
 
+double Arc::size()
+{
+  return manglelength;
+}

@@ -41,6 +41,7 @@
 #include "../objects/translatedpoint.h"
 #include "../objects/mirrorpoint.h"
 #include "../objects/ray.h"
+#include "../objects/rotatedpoint.h"
 #include "../objects/arc.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
@@ -173,6 +174,7 @@ void KigDocument::setupTypes()
   if ( Object::types().empty() )
   {
     Object::addBuiltinType( new TStdType<Segment> );
+    Object::addBuiltinType( new TStdType<RotatedPoint> );
     Object::addBuiltinType( new TStdType<LineTTP> );
     Object::addBuiltinType( new TStdType<LinePerpend> );
     Object::addBuiltinType( new TStdType<LineParallel> );

@@ -75,12 +75,18 @@ public:
 
   void calc( const ScreenInfo& );
 
+  // this returns the size of this arc ( in radians, in the range 0 <
+  // x < 2*M_PI... )
+  double size();
+
 protected:
   Point* mpts[3];
   std::vector<Coordinate> marrow;
   Rect mr;
-  int startangle;
-  int anglelength;
+  // both of these arcs are kept in radians, and converted when
+  // necessary...
+  double mstartangle;
+  double manglelength;
 };
 
 #endif

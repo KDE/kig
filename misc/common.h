@@ -36,6 +36,12 @@
  */
 
 /**
+ * This calcs the rotation of point a around point c by arc arc.  Arc
+ * is in radians, in the range 0 < arc < 2*pi ...
+ */
+Coordinate calcRotatedPoint( const Coordinate& a, const Coordinate& c, const double arc );
+
+/**
  * this returns a point, so that the line through point t
  * and the point returned is perpendicular on the line p1p2.
  */
