@@ -96,14 +96,11 @@ void FixedPointType::move( RealObject* ourobj, const Coordinate&,
   oy->setImp( new DoubleImp( dy->data() + dist.y ) );
 }
 
-void ConstrainedPointType::move( RealObject* ourobj, const Coordinate&,
+void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& from,
                                  const Coordinate& dist ) const
 {
   // fetch the new coord the user wants..
-  assert( ourobj->hasimp( ObjectImp::ID_PointImp ) );
-  const PointImp* oi = static_cast<const PointImp*>( ourobj->imp() );
-  const Coordinate oc = oi->coordinate();
-  const Coordinate nc = oc + dist;
+  const Coordinate nc = from + dist;
 
   // fetch the CurveImp..
   Objects parents = ourobj->parents();
