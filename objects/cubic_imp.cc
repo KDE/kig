@@ -212,73 +212,76 @@ const Coordinate CubicImp::internalGetPoint( double p, bool& valid ) const
 
   // calc the third degree polynomial:
   // compute the third degree polinomial:
-  double a000 = mdata.coeffs[0];
-  double a001 = mdata.coeffs[1];
-  double a002 = mdata.coeffs[2];
-  double a011 = mdata.coeffs[3];
-  double a012 = mdata.coeffs[4];
-  double a022 = mdata.coeffs[5];
-  double a111 = mdata.coeffs[6];
-  double a112 = mdata.coeffs[7];
-  double a122 = mdata.coeffs[8];
-  double a222 = mdata.coeffs[9];
+//  double a000 = mdata.coeffs[0];
+//  double a001 = mdata.coeffs[1];
+//  double a002 = mdata.coeffs[2];
+//  double a011 = mdata.coeffs[3];
+//  double a012 = mdata.coeffs[4];
+//  double a022 = mdata.coeffs[5];
+//  double a111 = mdata.coeffs[6];
+//  double a112 = mdata.coeffs[7];
+//  double a122 = mdata.coeffs[8];
+//  double a222 = mdata.coeffs[9];
+//
+//  // first the y^3 coefficient, it coming only from a222:
+//  double a = a222;
+//  // next the y^2 coefficient (from a122 and a022):
+//  double b = a122*x + a022;
+//  // next the y coefficient (from a112, a012 and a002):
+//  double c = a112*x*x + a012*x + a002;
+//  // finally the constant coefficient (from a111, a011, a001 and a000):
+//  double d = a111*x*x*x + a011*x*x + a001*x + a000;
 
-  // first the y^3 coefficient, it coming only from a222:
-  double a = a222;
-  // next the y^2 coefficient (from a122 and a022):
-  double b = a122*x + a022;
-  // next the y coefficient (from a112, a012 and a002):
-  double c = a112*x*x + a012*x + a002;
-  // finally the constant coefficient (from a111, a011, a001 and a000):
-  double d = a111*x*x*x + a011*x*x + a001*x + a000;
+// commented out, since the bound is already computed when passing a huge
+// interval; the normalization is not needed also
 
   // renormalize: positive a
-  if ( a < 0 )
-  {
-    a *= -1;
-    b *= -1;
-    c *= -1;
-    d *= -1;
-  }
-
-  const double small = 1e-7;
-  int degree = 3;
-  if ( fabs(a) < small*fabs(b) ||
-       fabs(a) < small*fabs(c) ||
-       fabs(a) < small*fabs(d) )
-  {
-    degree = 2;
-    if ( fabs(b) < small*fabs(c) ||
-         fabs(b) < small*fabs(d) )
-    {
-      degree = 1;
-    }
-  }
+//  if ( a < 0 )
+//  {
+//    a *= -1;
+//    b *= -1;
+//    c *= -1;
+//    d *= -1;
+//  }
+//
+//  const double small = 1e-7;
+//  int degree = 3;
+//  if ( fabs(a) < small*fabs(b) ||
+//       fabs(a) < small*fabs(c) ||
+//       fabs(a) < small*fabs(d) )
+//  {
+//    degree = 2;
+//    if ( fabs(b) < small*fabs(c) ||
+//         fabs(b) < small*fabs(d) )
+//    {
+//      degree = 1;
+//    }
+//  }
 
 // and a bound for all the real roots:
 
-  double bound;
-  switch (degree)
-  {
-    case 3:
-    bound = fabs(d/a);
-    if ( fabs(c/a) + 1 > bound ) bound = fabs(c/a) + 1;
-    if ( fabs(b/a) + 1 > bound ) bound = fabs(b/a) + 1;
-    break;
-
-    case 2:
-    bound = fabs(d/b);
-    if ( fabs(c/b) + 1 > bound ) bound = fabs(c/b) + 1;
-    break;
-
-    case 1:
-    default:
-    bound = fabs(d/c) + 1;
-    break;
-  }
+//  double bound;
+//  switch (degree)
+//  {
+//    case 3:
+//    bound = fabs(d/a);
+//    if ( fabs(c/a) + 1 > bound ) bound = fabs(c/a) + 1;
+//    if ( fabs(b/a) + 1 > bound ) bound = fabs(b/a) + 1;
+//    break;
+//
+//    case 2:
+//    bound = fabs(d/b);
+//    if ( fabs(c/b) + 1 > bound ) bound = fabs(c/b) + 1;
+//    break;
+//
+//    case 1:
+//    default:
+//    bound = fabs(d/c) + 1;
+//    break;
+//  }
 
   int numroots;
-  double y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
+  double y = calcCubicYvalue ( x, -HUGE_VAL, HUGE_VAL, root, mdata, valid,
                                numroots );
   return Coordinate(x,y);
 //  if ( valid ) return Coordinate(x,y);
