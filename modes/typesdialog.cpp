@@ -199,8 +199,27 @@ QString TypesDialog::fetchIconFromListItem( QListViewItem* i )
   return "gear";
 }
 
-void TypesDialog::executed( QListViewItem* i )
+void TypesDialog::editType()
 {
+  std::vector<QListViewItem*> items;
+  QListViewItemIterator it( typeList );
+  while ( it.current() ) {
+    if ( ( it.current() )->isSelected() )
+      items.push_back( it.current() );
+    ++it;
+  }
+  if ( items.size() == 0 )
+  {
+    KMessageBox::sorry( this, i18n( "There is no type selected. Please select a type to edit and try again." ),
+                        i18n( "No Type Selected" ) );
+    return;
+  }
+  else if ( items.size() != 1 )
+  {
+    KMessageBox::sorry( this, i18n( "There is more than one type selected.  You can only edit one type at a time. Please select only the type you want to edit and try again." ), i18n( "More Than One Type Selected" ) );
+    return;
+  }
+  QListViewItem* i = items[0];
   EditType* d = new EditType( this, i->text( 1 ), i->text( 2 ), fetchIconFromListItem( i ) );
   if ( d->exec() )
   {

@@ -61,7 +61,7 @@ protected slots:
   void deleteType();
   void exportType();
   void importTypes();
-  void executed( QListViewItem* i );
+  void editType();
 
 private:
   QListViewItem* newListItem( Macro* m );

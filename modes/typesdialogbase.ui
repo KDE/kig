@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>456</width>
-            <height>244</height>
+            <height>247</height>
         </rect>
     </property>
     <property name="caption">
@@ -91,17 +91,11 @@
         </widget>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>Layout2</cstring>
+                <cstring>layout4</cstring>
             </property>
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
                 </property>
                 <widget class="QPushButton">
                     <property name="name">
@@ -113,7 +107,7 @@
                 </widget>
                 <spacer>
                     <property name="name">
-                        <cstring>Spacer3</cstring>
+                        <cstring>spacer3</cstring>
                     </property>
                     <property name="orientation">
                         <enum>Horizontal</enum>
@@ -123,11 +117,19 @@
                     </property>
                     <property name="sizeHint">
                         <size>
-                            <width>20</width>
+                            <width>71</width>
                             <height>20</height>
                         </size>
                     </property>
                 </spacer>
+                <widget class="KPushButton">
+                    <property name="name">
+                        <cstring>buttonEdit</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Edit...</string>
+                    </property>
+                </widget>
                 <widget class="QPushButton">
                     <property name="name">
                         <cstring>buttonExport</cstring>
@@ -252,10 +254,10 @@
         <slot>deleteType()</slot>
     </connection>
     <connection>
-        <sender>typeList</sender>
-        <signal>executed(QListViewItem*)</signal>
+        <sender>buttonEdit</sender>
+        <signal>clicked()</signal>
         <receiver>TypesDialogBase</receiver>
-        <slot>executed(QListViewItem*)</slot>
+        <slot>editType()</slot>
     </connection>
 </connections>
 <slots>
@@ -264,11 +266,12 @@
     <slot>helpSlot()</slot>
     <slot access="protected">importTypes()</slot>
     <slot>okSlot()</slot>
-    <slot access="protected">executed(QListViewItem*)</slot>
+    <slot access="protected">editType()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klistview.h</includehint>
+    <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>
 </includehints>
