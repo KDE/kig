@@ -77,6 +77,8 @@ public:
   const Coordinate p1() const;
   const Coordinate p2() const;
 
+  const QString equationString() const;
+
   const uint numberOfProperties();
   const Property property( uint which );
   const QStringList properties();
