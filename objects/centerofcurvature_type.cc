@@ -37,9 +37,9 @@ static const char constructcenterofcurvaturepoint[] =
 static const ArgsParser::spec argsspecCocConic[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Construct the center of curvature wrt. this conic" ),
-    I18N_NOOP( "Select the conic..." ), true },
+    I18N_NOOP( "Select the conic..." ), false },
   { PointImp::stype(), constructcenterofcurvaturepoint,
-    I18N_NOOP( "Select a point on the conic..." ), true }
+    I18N_NOOP( "Select a point on the conic..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CocConicType )
@@ -125,9 +125,9 @@ const ObjectImpType* CocConicType::resultId() const
 static const ArgsParser::spec argsspecCocCubic[] =
 {
   { CubicImp::stype(), I18N_NOOP( "Construct the center of curvature wrt. this cubic" ),
-    I18N_NOOP( "Select the cubic..." ), true },
+    I18N_NOOP( "Select the cubic..." ), false },
   { PointImp::stype(), constructcenterofcurvaturepoint,
-    I18N_NOOP( "Select a point on the cubic..." ), true }
+    I18N_NOOP( "Select a point on the cubic..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CocCubicType )

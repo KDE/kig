@@ -37,7 +37,7 @@ static const char constructlinetangentpoint[] =
 static const ArgsParser::spec argsspecTangentConic[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this conic" ),
-    I18N_NOOP( "Select the conic..." ), true },
+    I18N_NOOP( "Select the conic..." ), false },
   { PointImp::stype(), constructlinetangentpoint,
     I18N_NOOP( "Select the point for the tangent to go through..." ), true }
 };
@@ -89,7 +89,7 @@ const ObjectImpType* TangentConicType::resultId() const
 static const ArgsParser::spec argsspecTangentArc[] =
 {
   { ArcImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this arc" ),
-    I18N_NOOP( "Select the arc..." ), true },
+    I18N_NOOP( "Select the arc..." ), false },
   { PointImp::stype(), constructlinetangentpoint,
     I18N_NOOP( "Select the point for the tangent to go through..." ), true }
 };
@@ -146,7 +146,7 @@ const ObjectImpType* TangentArcType::resultId() const
 static const ArgsParser::spec argsspecTangentCubic[] =
 {
   { CubicImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this cubic" ),
-    I18N_NOOP( "Select the cubic..." ), true },
+    I18N_NOOP( "Select the cubic..." ), false },
   { PointImp::stype(), constructlinetangentpoint,
     I18N_NOOP( "Select the point for the tangent to go through..." ), true }
 };
