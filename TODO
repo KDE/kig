@@ -12,9 +12,8 @@
 * harder:
 
 - decouple the link between how an object is calc'ed and whether or
-  not it is internal or drawn.  ( all combinations are possible,
-  except that internal objects are never drawn ).  This will require
-  another file format change, I think..
+  not it is drawn.  This will require another file format change, I
+  think..
 
 - undo support for changing the size and color of an object ( depends
   on the previous item )..
