@@ -28,6 +28,8 @@
 #include "segment.h"
 #include "curve.h"
 
+#include "../kig/kig_part.h"
+
 bool Point::contains( const Coordinate& o, const double error ) const
 {
   return (o - mC).length() <= error;
@@ -42,22 +44,6 @@ void Point::draw (KigPainter& p, bool ss) const
   p.setPen( QPen ( s ? Qt::red : mColor, 1 ) );
   p.drawPoint( mC, false );
   p.setBrush (Qt::NoBrush);
-};
-
-void FixedPoint::startMove( const Coordinate& p )
-{
-  pwwlmt = p;
-};
-
-
-void FixedPoint::moveTo( const Coordinate& p )
-{
-  mC+=p-pwwlmt;
-  pwwlmt = p;
-};
-
-void FixedPoint::stopMove()
-{
 };
 
 QString MidPoint::wantArg(const Object* o) const
@@ -77,7 +63,6 @@ QString MidPoint::wantPoint() const
   else if (!p2) return i18n("Second point");
   return 0;
 }
-
 
 bool MidPoint::selectArg(Object* o)
 {
@@ -101,20 +86,6 @@ bool MidPoint::selectArg(Object* o)
   else { kdError() << k_funcinfo << " selectArg on a complete midpoint... " << endl; return true; };
   o->addChild(this);
   return complete;
-};
-
-void MidPoint::unselectArg(Object* o)
-{
-  if (o == p1)
-    {
-      p1=p2;
-      p2=0;
-    }
-  else if (o == p2)
-    {
-      p2 = 0;
-    }
-  o->delChild(this);
 };
 
 void MidPoint::startMove(const Coordinate& p)
@@ -149,44 +120,6 @@ void MidPoint::calc()
   setY(((p1->getY() + p2->getY())/2));
 }
 
-ConstrainedPoint::ConstrainedPoint(Curve* inC, const Coordinate& inPt)
-  : c(inC)
-{
-  c->addChild(this);
-  p = c->getParam(inPt);
-  calc();
-}
-
-void ConstrainedPoint::calc()
-{
-  if (!c) return;
-  mC = c->getPoint( p );
-}
-
-Objects ConstrainedPoint::getParents() const
-{
-  Objects tmp;
-  tmp.push_back(c);
-  return tmp;
-}
-
-void ConstrainedPoint::moveTo(const Coordinate& pt)
-{
-  p = c->getParam(pt);
-  calc();
-}
-
-bool ConstrainedPoint::selectArg( Object* o)
-{
-  if (!c) c = o->toCurve();
-  c->addChild( this );
-  return c;
-}
-QString ConstrainedPoint::wantArg(const Object* o) const
-{
-  if (!c && o->toCurve()) return i18n("On Curve");
-  return 0;
-}
 MidPoint::MidPoint(const MidPoint& m)
   : Point()
 {
@@ -197,73 +130,296 @@ MidPoint::MidPoint(const MidPoint& m)
   complete = m.complete;
   if (complete) calc();
 }
-ConstrainedPoint::ConstrainedPoint( const ConstrainedPoint& cp)
-  : Point()
+
+NormalPoint* NormalPoint::copy()
 {
-  p = cp.p;
-  c = cp.c;
-  c->addChild(this);
-  complete = cp.complete;
-  if (complete) calc();
+  return new NormalPoint( *this );
 }
 
-std::map<QCString,QString> FixedPoint::getParams()
+NormalPoint::NormalPoint( NormalPointImp* i )
+  : mimp( i )
 {
-  std::map<QCString,QString> tmp = Object::getParams();
-  tmp["x"] = QString::number(mC.x);
-  tmp["y"] = QString::number(mC.y);
-  return tmp;
+  i->calc( this );
 }
 
-void FixedPoint::setParams(const std::map<QCString,QString>& m)
+NormalPoint::NormalPoint()
+  : mimp( 0 )
 {
-  Object::setParams( m );
+}
+
+NormalPoint::NormalPoint( const NormalPoint& p )
+  : Point( p ), mimp( p.mimp->copy( this ) )
+{
+  mimp->calc( this );
+}
+
+NormalPoint::~NormalPoint()
+{
+  delete mimp;
+}
+
+NormalPointImp* NormalPoint::NPImpForCoord( const Coordinate& c,
+                                            const KigDocument* d,
+                                            double fault )
+{
+  Objects o = d->whatAmIOn( c, fault );
+  Curve* v = 0;
+  for ( Objects::iterator i = o.begin(); i != o.end(); ++i )
+    if ( ( v = (*i)->toCurve() ) )
+      break;
+  if ( v ) return new ConstrainedPointImp( c, v );
+  else return new FixedPointImp( c );
+}
+
+NormalPointImp::~NormalPointImp()
+{
+}
+
+NormalPointImp::NormalPointImp()
+{
+}
+
+FixedPointImp::FixedPointImp( const Coordinate& c )
+{
+  pwwlmt = c;
+}
+
+void NormalPoint::setCoord( const Coordinate& c )
+{
+  mC = c;
+}
+
+void FixedPointImp::calc( NormalPoint* p )
+{
+  p->setCoord( pwwlmt );
+}
+
+void FixedPointImp::startMove( const Coordinate& c, NormalPoint* )
+{
+  pwwlmt = c;
+}
+
+void FixedPointImp::moveTo( const Coordinate& c, NormalPoint* p )
+{
+  p->setCoord( p->getCoord() + c -pwwlmt );
+  pwwlmt = c;
+}
+
+void FixedPointImp::stopMove( NormalPoint* )
+{
+}
+
+std::map<QCString, QString> NormalPoint::getParams()
+{
+  std::map<QCString, QString> m = Point::getParams();
+  m["impType"] = mimp->type();
+  mimp->writeParams( m, this );
+  return m;
+}
+
+void NormalPoint::setParams( const std::map<QCString, QString>& m )
+{
+  Point::setParams( m );
+  delete mimp;
+  std::map<QCString,QString>::const_iterator p = m.find("impType");
+  if( p == m.end() )
+  {
+    kdError() << k_funcinfo << "error in file !" << endl;
+    return;
+  }
+  if ( p->second == FixedPointImp::sType() ) mimp = new FixedPointImp();
+  else if ( p->second == ConstrainedPointImp::sType() )
+    mimp = new ConstrainedPointImp();
+  else
+  {
+    kdError() << k_funcinfo << "error in file !" << endl;
+    mimp = new FixedPointImp();
+  }
+  mimp->readParams( m, this );
+};
+
+void FixedPointImp::writeParams( std::map<QCString, QString>& m, NormalPoint* p )
+{
+  pwwlmt = p->getCoord(); // should really not be necessary, but you
+                          // never know ... :)
+  m["x"] = QString::number( pwwlmt.x );
+  m["y"] = QString::number( pwwlmt.y );
+}
+
+void FixedPointImp::readParams( const std::map<QCString, QString>& m, NormalPoint* p )
+{
   bool ok;
-  mC.x = m.find("x")->second.toDouble(&ok);
-  mC.y = m.find("y")->second.toDouble(&ok);
+  p->setCoord( Coordinate(
+                 m.find("x")->second.toDouble(&ok),
+                 pwwlmt.y = m.find("y")->second.toDouble(&ok) ) );
   Q_ASSERT( ok );
-};
+}
 
-std::map<QCString,QString> ConstrainedPoint::getParams()
+ConstrainedPointImp::ConstrainedPointImp( const Coordinate& d, Curve* c )
+  : NormalPointImp(), mparam( c->getParam( d ) ), mcurve( c )
 {
-  std::map<QCString,QString> tmp = Object::getParams();
-  tmp["param"] = QString::number(p);
+}
+
+ConstrainedPointImp::ConstrainedPointImp()
+  : NormalPointImp(), mparam( 0.5 ), mcurve( 0 )
+{
+}
+
+void ConstrainedPointImp::calc( NormalPoint* p)
+{
+  p->setCoord( mcurve->getPoint( mparam ) );
+}
+
+void ConstrainedPointImp::startMove( const Coordinate&, NormalPoint* )
+{
+}
+
+void ConstrainedPointImp::moveTo( const Coordinate& c, NormalPoint* p )
+{
+  mparam = mcurve->getParam( c );
+  calc( p );
+}
+
+void ConstrainedPointImp::stopMove( NormalPoint* )
+{
+}
+
+void ConstrainedPointImp::writeParams( std::map<QCString, QString>& m, NormalPoint* )
+{
+  m["param"] = QString::number( mparam );
+}
+
+void ConstrainedPointImp::readParams( const std::map<QCString, QString>& m, NormalPoint* p )
+{
+  bool ok;
+  mparam = m.find("param")->second.toDouble(&ok);
+  Q_ASSERT(ok);
+  calc( p );
+}
+
+NormalPointImp* FixedPointImp::copy( NormalPoint* p )
+{
+  return new FixedPointImp( *this, p );
+}
+
+FixedPointImp::FixedPointImp( const FixedPointImp& p, NormalPoint* )
+  : NormalPointImp(), pwwlmt( p.pwwlmt )
+{
+}
+
+ConstrainedPointImp::ConstrainedPointImp( const ConstrainedPointImp& p, NormalPoint* d )
+{
+  mparam = p.mparam;
+  mcurve = p.mcurve;
+  mcurve->addChild( d );
+}
+
+void NormalPoint::calc()
+{
+  mimp->calc( this );
+}
+
+Objects NormalPoint::getParents() const
+{
+  return mimp->getParents();
+}
+
+Objects FixedPointImp::getParents()
+{
+  return Objects();
+}
+
+Objects ConstrainedPointImp::getParents()
+{
+  Objects tmp;
+  tmp.push_back( mcurve );
   return tmp;
 }
 
-void ConstrainedPoint::setParams(const std::map<QCString,QString>& m)
+FixedPointImp* NormalPoint::fixedImp()
 {
-  Object::setParams( m );
-  bool ok;
-  p = m.find("param")->second.toDouble(&ok);
-  Q_ASSERT(ok);
+  return mimp->toFixed();
 }
 
-ConstrainedPoint::ConstrainedPoint(const double inP)
-  : p(inP), c(0)
+const FixedPointImp* NormalPoint::fixedImp() const
 {
-};
-
-ConstrainedPoint::ConstrainedPoint()
-  : p(0.5), c(0)
-{
-
-}
-FixedPoint::FixedPoint( const FixedPoint& p )
-  : Point( p )
-{
-  complete = true;
+  return mimp->toFixed();
 }
 
-KAction* FixedPoint::sConstructAction( KigDocument*, Type*, int )
+ConstrainedPointImp* NormalPoint::constrainedImp()
 {
-  // FIXME: implement a constructionmode for types...
+  return mimp->toConstrained();
+}
+
+const ConstrainedPointImp* NormalPoint::constrainedImp() const
+{
+  return mimp->toConstrained();
+}
+QString ConstrainedPointImp::sType()
+{
+  return QString::fromUtf8( "Constrained" );
+}
+
+NormalPointImp* ConstrainedPointImp::copy( NormalPoint* p )
+{
+  return new ConstrainedPointImp( *this, p );
+}
+
+KAction* NormalPoint::sConstructAction( KigDocument*, Type*, int )
+{
+  // TODO
   return 0;
 }
 
-KAction* ConstrainedPoint::sConstructAction( KigDocument*, Type*, int )
+QString FixedPointImp::wantArg(const Object*) const
 {
-  // this is correct, ConstrainedPoints are constructed in the same
-  // mode as FixedPoints...
   return 0;
+}
+
+bool FixedPointImp::selectArg( Object *, NormalPoint* )
+{
+  // not used...
+  return false;
+}
+
+QString ConstrainedPointImp::wantArg( const Object* o ) const
+{
+  // not used...
+  const Curve* c = o->toCurve();
+  if ( ! c ) return 0;
+  return QString::fromUtf8( "The curve" );
+}
+
+bool ConstrainedPointImp::selectArg( Object * o, NormalPoint* p )
+{
+  Curve* c = o->toCurve();
+  if ( ! c ) return false;
+  mcurve = c;
+  calc( p );
+  return true;
+}
+
+void NormalPoint::stopMove()
+{
+  mimp->stopMove( this );
+}
+
+QString NormalPoint::wantArg( const Object* o ) const
+{
+  return mimp->wantArg( o );
+}
+
+bool NormalPoint::selectArg( Object * o )
+{
+  return mimp->selectArg( o, this );
+}
+
+void NormalPoint::startMove( const Coordinate& c )
+{
+  mimp->startMove( c, this );
+}
+
+void NormalPoint::moveTo( const Coordinate& c )
+{
+  mimp->moveTo( c, this );
 }

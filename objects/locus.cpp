@@ -91,10 +91,8 @@ bool Locus::inRect(const Rect& r) const
 
 QString Locus::wantArg( const Object* o ) const
 {
-  if (o->toConstrainedPoint() && !cp)
-    {
-      return i18n("Moving point");
-    };
+  if (o->toNormalPoint() && o->toNormalPoint()->constrainedImp() && !cp)
+    return i18n("Moving point");
   // hack, here wantPoint() also handles non-Point objects, but it
   // doesn't matter...
   return wantPoint();
@@ -111,32 +109,30 @@ QString Locus::wantPoint() const
 
 bool Locus::selectArg(Object* o)
 {
-  if (!cp && (cp = o->toConstrainedPoint()))
-    {
-      cp->addChild(this);
-    }
+  if (!cp && (cp = o->toNormalPoint() ) && o->toNormalPoint()->constrainedImp() )
+    cp->addChild(this);
   else
-    {
-      assert (!obj);
-      obj = o;
-      obj->addChild(this);
-      // if obj is a point, we are a pointLocus
-      _pointLocus = (bool) obj->toPoint();
-      kdDebug() << k_funcinfo << " at line no. " << __LINE__
-		<< " - _pointLocus: " << _pointLocus << endl;
-    };
+  {
+    assert (!obj);
+    obj = o;
+    obj->addChild(this);
+    // if obj is a point, we are a pointLocus
+    _pointLocus = (bool) obj->toPoint();
+    kdDebug() << k_funcinfo << " at line no. " << __LINE__
+              << " - _pointLocus: " << _pointLocus << endl;
+  };
   if (cp && obj)
-    {
-      complete = true;
-      // construct our hierarchy...
-      Objects given;
-      given.push_back(cp);
-      Objects final;
-      final.push_back(obj);
-      hierarchy = new ObjectHierarchy( given, final );
-      // calc...
-      calc();
-    }
+  {
+    complete = true;
+    // construct our hierarchy...
+    Objects given;
+    given.push_back(cp);
+    Objects final;
+    final.push_back(obj);
+    hierarchy = new ObjectHierarchy( given, final );
+    // calc...
+    calc();
+  }
   return complete;
 }
 
@@ -154,15 +150,16 @@ void Locus::calc()
 Coordinate Locus::getPoint(double param) const
 {
   Coordinate t;
+  if ( ! valid ) return Coordinate();
   if (obj->toPoint())
-    {
-      double tmp = cp->getP();
-      cp->setP(param);
-      hierarchy->calc();
-      t= obj->toPoint()->getCoord();
-      cp->setP(tmp);
-      hierarchy->calc();
-    }
+  {
+    double tmp = cp->constrainedImp()->getP();
+    cp->constrainedImp()->setP(param);
+    hierarchy->calc();
+    t= obj->toPoint()->getCoord();
+    cp->constrainedImp()->setP(tmp);
+    hierarchy->calc();
+  }
   else t = Coordinate();
   return t;
 }
@@ -174,25 +171,26 @@ double Locus::getParam(const Coordinate&) const
 
 void Locus::calcObjectLocus()
 {
+  if ( ! valid ) return;
   delete_all( objs.begin(), objs.end() );
   objs.clear();
-  double oldP = cp->getP();
+  double oldP = cp->constrainedImp()->getP();
   double period = double(1)/numberOfSamples;
   for (double i = 0; i <= 1; i += period)
     {
-      cp->setP(i);
+      cp->constrainedImp()->setP(i);
       cp->calc();
       hierarchy->calc();
       objs.push_back(obj->copy());
     };
-  cp->setP(oldP);
+  cp->constrainedImp()->setP(oldP);
   cp->calc();
   hierarchy->calc();
 }
 
 inline Locus::CPts::iterator Locus::addPoint(double param)
 {
-  cp->setP(param);
+  cp->constrainedImp()->setP(param);
   cp->calc();
   hierarchy->calc();
   Point* p = obj->toPoint();
@@ -216,7 +214,7 @@ void Locus::calcPointLocus( const Rect& r )
 {
   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   pts.clear();
-  double oldP = cp->getP();
+  double oldP = cp->constrainedImp()->getP();
   // TODO: improve (cf. KSeg: choose which samples we want...)
 //   double period = double(1)/numberOfSamples;
 //   for (double i = 0; i <= 1; i += period)
@@ -231,7 +229,7 @@ void Locus::calcPointLocus( const Rect& r )
   int i = 2;
   recurse(b,e,i,r);
   // reset cp and its children to their former state...
-  cp->setP(oldP);
+  cp->constrainedImp()->setP(oldP);
   cp->calc();
   hierarchy->calc();
   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << "  - count: " << pts.size()<< endl;

@@ -34,7 +34,7 @@
 class Point
 : public Object
 {
- public:
+public:
   Point() {};
 protected:
   Point( const Coordinate& p ) : mC( p ) {};
@@ -67,54 +67,181 @@ protected:
   Coordinate mC;
 };
 
-class FixedPoint
+/**
+ * NormalPoint is a point that is either Independent ( you move it
+ * wherever you want ), or Constrained ( it can move anywhere on a
+ * Curve ).  To allow for dynamic changing of its behaviour, we have a
+ * Bridge pattern here... ( read the Design Patterns book on
+ * object-oriented design patterns ( especially if you're a Qt
+ * programmer :P ) !! )
+ */
+class NormalPointImp;
+class FixedPointImp;
+class ConstrainedPointImp;
+
+class NormalPoint
   : public Point
 {
+  NormalPointImp* mimp;
 public:
-  FixedPoint() {};
-  FixedPoint( const FixedPoint& p );
-  FixedPoint( const double x, const double y ) : Point( Coordinate( x, y ) ) {};
-  FixedPoint( const Coordinate& p ) : Point( p ) {};
+  NormalPoint( NormalPointImp* );
+  // this is for allowing us to be constructed by the native file
+  // format filter... it sets mimp to 0 and waits for setParams() to
+  // set it to something useful...
+  NormalPoint();
+  NormalPoint( const NormalPoint& );
+  ~NormalPoint();
+  NormalPoint* copy();
 
-  FixedPoint* copy() { return new FixedPoint( *this ); };
+  virtual NormalPoint* toNormalPoint() { return this; };
 
-  std::map<QCString,QString> getParams();
-  void setParams( const std::map<QCString,QString>& m);
+  FixedPointImp* fixedImp();
+  const FixedPointImp* fixedImp() const;
+  ConstrainedPointImp* constrainedImp();
+  const ConstrainedPointImp* constrainedImp() const;
+
+  // NormalPointImp needs an interface to us..
+  void setCoord( const Coordinate& c );
+
+  // this returns a suitable mimp for Coordinate c... for now it only
+  // checks if c is on a Curve, so it returns a ConstrainedImp.., and
+  // else returns a FixedImp...
+  // fault is passed to KigDocument::whatAmIOn()...
+  static NormalPointImp* NPImpForCoord( const Coordinate& c, const KigDocument* d, double fault );
+
+  std::map<QCString, QString> getParams();
+  void setParams( const std::map<QCString, QString>& m );
+
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName() { return "FixedPoint"; };
+  static const QCString sFullTypeName() { return "NormalPoint"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Fixed Point"); };
+  static const QString sDescriptiveName() { return i18n("Normal Point"); };
   const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "" ); };
+  static const QString sDescription() { return i18n( "A normal point, that is either independent or attached to a line, circle, segment..." ); };
   const QCString vIconFileName() const { return sIconFileName(); };
   static const QCString sIconFileName() { return "point4"; };
   const int vShortCut() const { return sShortCut(); };
   static const int sShortCut() { return 0; };
 
+  static KAction* sConstructAction( KigDocument*, Type*, int );
+
   // no drawPrelim...
   virtual void drawPrelim( KigPainter &, const Coordinate& ) const {};
 
   // passing arguments
-  virtual QString wantArg(const Object*) const { return 0; };
+  virtual QString wantArg(const Object*) const;
   virtual QString wantPoint() const { return 0; };
-  virtual bool selectArg( Object *) { return true; }; // no args
-  virtual void unselectArg( Object *) {}; // no args
+  virtual bool selectArg( Object *);
 
   // no args => no parents
-  virtual Objects getParents() const { return Objects();};
+  virtual Objects getParents() const;
+  virtual void calc();
 
   //moving
-  virtual void startMove(const Coordinate&);
-  virtual void moveTo(const Coordinate&);
+  virtual void startMove( const Coordinate& c );
+  virtual void moveTo( const Coordinate& c );
   virtual void stopMove();
+};
 
-  virtual void calc(){};
+class FixedPointImp;
+class ConstrainedPointImp;
 
-  static KAction* sConstructAction( KigDocument*, Type*, int );
+class NormalPointImp
+{
+ protected:
+  NormalPointImp();
+ public:
+  virtual ~NormalPointImp();
 
-protected:
+  virtual NormalPointImp* copy( NormalPoint* newParent ) = 0;
+
+  virtual FixedPointImp* toFixed() { return 0; };
+  virtual ConstrainedPointImp* toConstrained() { return 0; };
+  virtual const FixedPointImp* toFixed() const { return 0; };
+  virtual const ConstrainedPointImp* toConstrained() const { return 0; };
+
+  virtual void startMove( const Coordinate& c, NormalPoint* p ) = 0;
+  virtual void moveTo( const Coordinate& c, NormalPoint* p ) = 0;
+  virtual void stopMove( NormalPoint* p ) = 0;
+  virtual void calc( NormalPoint* p ) = 0;
+
+  virtual QString type() = 0;
+  virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p ) = 0;
+  virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p ) = 0;
+
+  virtual QString wantArg( const Object* ) const = 0;
+  virtual bool selectArg( Object *, NormalPoint* ) = 0;
+
+  virtual Objects getParents() = 0;
+};
+
+class FixedPointImp
+  : public NormalPointImp
+{
   // point where we last moved to...
   Coordinate pwwlmt;
+public:
+  FixedPointImp( const Coordinate& c = Coordinate( 0, 0 ) );
+  FixedPointImp( const FixedPointImp& p, NormalPoint* p );
+
+  virtual NormalPointImp* copy( NormalPoint* parent );
+
+  FixedPointImp* toFixed() { return this; };
+  const FixedPointImp* toFixed() const { return this; };
+
+  virtual void calc( NormalPoint* p );
+  virtual void startMove( const Coordinate& c, NormalPoint* p );
+  virtual void moveTo( const Coordinate& c, NormalPoint* p );
+  virtual void stopMove( NormalPoint* p);
+
+  virtual QString type() { return sType(); };
+  static QString sType() { return QString::fromUtf8( "Fixed" ); };
+  virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p );
+  virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p );
+
+  virtual QString wantArg(const Object*) const;
+
+  virtual Objects getParents();
+
+  virtual bool selectArg( Object *, NormalPoint* );
+};
+
+// this is the imp for a point which is constrained to a Curve, which
+// means it's always on the curve, moving it doesn't cause it to move
+// off it. ( this is very related to locuses, check locus.h and
+// locus.cpp for more info...)
+class ConstrainedPointImp
+  : public NormalPointImp
+{
+  double mparam;
+  Curve* mcurve;
+public:
+  ConstrainedPointImp( const Coordinate& d, Curve* c );
+  ConstrainedPointImp();
+  ConstrainedPointImp( const ConstrainedPointImp& p, NormalPoint* d );
+
+  virtual NormalPointImp* copy( NormalPoint* p );
+
+  virtual ConstrainedPointImp* toConstrained() { return this; };
+  virtual const ConstrainedPointImp* toConstrained() const { return this; };
+
+  void setP( const double p ) { mparam = p; };
+  double getP() { return mparam; };
+
+  virtual void calc( NormalPoint* p );
+  virtual void startMove( const Coordinate& c, NormalPoint* );
+  virtual void moveTo( const Coordinate& c, NormalPoint* );
+  virtual void stopMove( NormalPoint* );
+
+  virtual QString type() { return sType(); };
+  static QString sType();
+  virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p );
+  virtual void readParams( const std::map<QCString, QString>& m, NormalPoint* p );
+
+  virtual QString wantArg(const Object*) const;
+  virtual bool selectArg( Object *, NormalPoint* );
+
+  virtual Objects getParents();
 };
 
 // midpoint of two other points
@@ -155,62 +282,6 @@ protected:
   enum { howmMoving, howmFollowing } howm; // how are we moving
   Point* p1;
   Point* p2;
-};
-
-class Curve;
-
-// this is a point which is constrained to a Curve, which means it's
-// always on the curve, moving it doesn't cause it to move off it.
-// ( this is very related to locuses, check locus.h and locus.cpp for
-// more info...)
-// it still needs lots of work...
-class ConstrainedPoint
-  : public Point
-{
-public:
-  ConstrainedPoint(Curve* inC, const Coordinate& inPt);
-  ConstrainedPoint(const double inP);
-  ConstrainedPoint();
-  ~ConstrainedPoint() {};
-  ConstrainedPoint( const ConstrainedPoint& c);
-
-  ConstrainedPoint* copy() { return new ConstrainedPoint(*this); };
-
-  const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName() { return "ConstrainedPoint"; };
-  const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName() { return i18n("Constrained Point"); };
-  const QString vDescription() const { return sDescription(); };
-  static const QString sDescription() { return i18n( "" ); };
-  const QCString vIconFileName() const { return sIconFileName(); };
-  static const QCString sIconFileName() { return "point4"; };
-  const int vShortCut() const { return sShortCut(); };
-  static const int sShortCut() { return 0; };
-
-  QString wantArg(const Object*) const;
-  QString wantPoint() const { return 0; };
-  bool selectArg( Object* );
-  void unselectArg (Object*) {};
-  Objects getParents() const;
-
-  void startMove(const Coordinate&) {};
-  void moveTo(const Coordinate& pt);
-  void stopMove() {};
-  void cancelMove() {};
-  void calc();
-
-  void drawPrelim( KigPainter&, const Coordinate& ) const {};
-
-  double getP() { return p; };
-  void setP(double inP) { p = inP; };
-
-  std::map<QCString,QString> getParams();
-  void setParams( const std::map<QCString,QString>& m);
-
-  static KAction* sConstructAction( KigDocument*, Type*, int );
-protected:
-  double p;
-  Curve* c;
 };
 
 #endif // POINT_H

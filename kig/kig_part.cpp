@@ -194,8 +194,7 @@ void KigDocument::setupTypes()
     types.addType( new TType<LineRadical> );
     types.addType( new TType<CircleBCP> );
     types.addType( new TType<CircleBTP> );
-    types.addType( new TType<FixedPoint> );
-    types.addType( new TType<ConstrainedPoint> );
+    types.addType( new TType<NormalPoint> );
     types.addType( new TType<MidPoint> );
     types.addType( new TType<IntersectionPoint> );
     types.addType( new TType<Locus> );
@@ -353,11 +352,11 @@ void KigDocument::_delObject(Object* o)
   setModified(true);
 };
 
-Objects KigDocument::whatAmIOn(const Coordinate& p, const double miss )
+Objects KigDocument::whatAmIOn(const Coordinate& p, const double miss ) const
 {
   Objects tmp;
   Objects nonpoints;
-  for ( Objects::iterator i = mObjs.begin(); i != mObjs.end(); ++i )
+  for ( Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
     if(!(*i)->contains(p, miss)) continue;
     if ( (*i)->toPoint()) tmp.push_back(*i);

@@ -26,7 +26,6 @@
 
 #include <list>
 
-class ConstrainedPoint;
 class ObjectHierarchy;
 
 // this object is inspired on KSeg source, credits for all of the
@@ -98,7 +97,7 @@ public:
   };
 
 protected:
-  ConstrainedPoint* cp;
+  NormalPoint* cp;
   Object* obj;
 
   bool isPointLocus() const { return _pointLocus; }

@@ -224,7 +224,7 @@ void StdConstructionMode::addPointRequest( const Coordinate& c, KigView* v )
 {
   if ( mobc->wantPoint() )
   {
-    Point* p = new FixedPoint( c );
+    Point* p = new NormalPoint( NormalPoint::NPImpForCoord( c, mDoc, 3*v->pixelWidth() ) );
     mDoc->addObject( p );
     selectArg( p, v );
   };

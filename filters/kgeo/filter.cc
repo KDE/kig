@@ -80,8 +80,6 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 	{
 	case ID_point:
 	  {
-	    FixedPoint* p = new FixedPoint;
-
 	    // fetch the coordinates...
 	    bool ok;
 	    QString strX = c->readEntry("QPointX");
@@ -90,9 +88,7 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 	    if (!ok) return ParseError;
 	    double y = strY.toDouble(&ok);
 	    if (!ok) return ParseError;
-	    p->setX(x);
-	    p->setY(y);
-
+            NormalPoint* p = new NormalPoint( new FixedPointImp( Coordinate( x, y ) ) );
 	    no = p;
 	    break;
 	  }

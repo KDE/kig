@@ -120,7 +120,7 @@ public:
   void setMode( KigMode* );
 
   // what objects are under point p
-  Objects whatAmIOn( const Coordinate& p, const double fault );
+  Objects whatAmIOn( const Coordinate& p, const double fault ) const;
 
   Objects whatIsInHere( const Rect& p );
 

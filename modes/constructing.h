@@ -73,4 +73,11 @@ public:
   void cancelConstruction();
 };
 
+class PointConstructionMode
+  : public KigMode
+{
+public:
+
+};
+
 #endif

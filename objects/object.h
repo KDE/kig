@@ -38,11 +38,11 @@ class Segment;
 class Line;
 class Circle;
 class Curve;
-class ConstrainedPoint;
 class Types;
 class KAction;
 class KigDocument;
 class Type;
+class NormalPoint;
 
 // base class representing all objects (e.g. points, lines etc.)
 class Object
@@ -78,14 +78,14 @@ public:
   virtual Line* toLine() { return 0; };
   virtual Circle* toCircle() { return 0; };
   virtual Curve* toCurve() { return 0; };
-  virtual ConstrainedPoint* toConstrainedPoint() { return 0; };
+  virtual NormalPoint* toNormalPoint() { return 0; };
 
   virtual const Point* toPoint() const { return 0; };
   virtual const Segment* toSegment() const { return 0; };
   virtual const Line* toLine() const { return 0; };
   virtual const Circle* toCircle() const { return 0; };
   virtual const Curve* toCurve() const { return 0; };
-  virtual const ConstrainedPoint* toConstrainedPoint() const { return 0; };
+  virtual const NormalPoint* toNormalPoint() const { return 0; };
 
   // type identification:
   // there are several functions: you don't need all of them in your

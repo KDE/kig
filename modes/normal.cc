@@ -169,15 +169,9 @@ void NormalMode::midReleased( QMouseEvent* e, KigView* v )
   if( (e->pos() - plc).manhattanLength() > 4 ) return;
   // clicked on some other object -> ConstrainedPoint ?
   Point* pt;
-  if( !oco.empty() && oco.front()->toCurve() )
-  {
-    pt = new ConstrainedPoint( oco.front()->toCurve(),
-                              v->fromScreen( plc ) );
-  }
-  else
-  {
-    pt = new FixedPoint( v->fromScreen(plc) );
-  };
+  pt = new NormalPoint(
+      NormalPoint::NPImpForCoord( v->fromScreen( plc ), mDoc, 3*v->pixelWidth() )
+      );
   mDoc->addObject( pt );
 
   // refresh the screen...
