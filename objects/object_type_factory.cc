@@ -116,6 +116,7 @@ void ObjectTypeFactory::setupBuiltinTypes()
   add( FixedPointType::instance() );
   add( ConstrainedPointType::instance() );
   add( MidPointType::instance() );
+  add( MidPointSegmentType::instance() );
 
   // text_type.h
   add( TextType::instance() );

@@ -26,6 +26,7 @@
 #include "../objects/line_type.h"
 #include "../objects/circle_type.h"
 #include "../objects/other_type.h"
+#include "../objects/point_type.h"
 #include "../misc/coordinate.h"
 
 #include <qfont.h>
@@ -175,6 +176,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       switch( descendtype )
       {
       case G_FREE_POINT:
+      {
         // fixed point
         if ( nparents != 0 ) return ParseError;
         Coordinate c = readKSegCoordinate( stream );
@@ -182,7 +184,9 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         point = static_cast<RealObject*>( os[2] );
         copy( os.begin(), os.begin() + 2, back_inserter( ret ) );
         break;
+      }
       case G_CONSTRAINED_POINT:
+      {
         // constrained point
         double p;
         stream >> p;
@@ -193,18 +197,21 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         point = static_cast<RealObject*>( os[1] );
         ret.push_back( os[0] );
         break;
+      }
       case G_INTERSECTION_POINT:
         break;
       case G_INTERSECTION2_POINT:
         break;
       case G_MID_POINT:
         // midpoint of a segment..
+        if ( parents.size() != 1 ) return ParseError;
+        point = new RealObject( MidPointSegmentType::instance(), parents );
         break;
       default:
         return ParseError;
       };
-      point->calc( todoc );
       assert( point );
+      point->calc( todoc );
       point->setWidth( style.pointstyle == SMALL_CIRCLE ? 2 :
                        style.pointstyle == MEDIUM_CIRCLE ? 3 : 5 );
       point->setColor( style.brush.color() );
@@ -217,11 +224,13 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       switch( descendtype )
       {
       case G_ENDPOINTS_SEGMENT:
+      {
         RealObject* o = new RealObject( SegmentABType::instance(), parents );
         o->setWidth( style.pen.width() );
         o->setColor( style.pen.color() );
         object = o;
         break;
+      }
       default:
         return ParseError;
       };

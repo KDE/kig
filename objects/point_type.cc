@@ -21,6 +21,7 @@
 #include "object.h"
 #include "point_imp.h"
 #include "curve_imp.h"
+#include "line_imp.h"
 #include "bogus_imp.h"
 
 #include "../modes/moving.h"
@@ -295,4 +296,41 @@ void ConstrainedPointType::executeAction(
   default:
     assert( false );
   };
+}
+
+static const ArgParser::spec argsspecmps[] =
+{
+  { ObjectImp::ID_SegmentImp, I18N_NOOP( "Midpoint of this segment" ) }
+};
+
+MidPointSegmentType::MidPointSegmentType()
+  : ArgparserObjectType( "MidPointSegment", argsspecmps, 1 )
+{
+}
+
+MidPointSegmentType::~MidPointSegmentType()
+{
+}
+
+const MidPointSegmentType* MidPointSegmentType::instance()
+{
+  static const MidPointSegmentType t;
+  return &t;
+}
+
+ObjectImp* MidPointSegmentType::calc( const Args& a, const KigDocument& ) const
+{
+  assert( a.size() == 1 );
+  const ObjectImp* oi = a[0];
+  if ( oi->inherits( ObjectImp::ID_SegmentImp ) )
+  {
+    LineData linedata = static_cast<const SegmentImp*>( oi )->data();
+    return new PointImp( ( linedata.a + linedata.b ) / 2 );
+  }
+  else return new InvalidImp;
+}
+
+int MidPointSegmentType::resultId() const
+{
+  return ObjectImp::ID_PointImp;
 }
