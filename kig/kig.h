@@ -133,6 +133,9 @@ class Kig : public KParts::MainWindow
 
   void applyNewToolbarConfig();
 
+  void tipOfDay();
+  void startupTipOfDay();
+
  private:
   void setupActions();
 

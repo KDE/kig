@@ -1,0 +1,31 @@
+<tip category="Kig">
+<html>
+<p>One of the most powerful tools in Kig are the menu's that you can
+enter by right-clicking on an object, or on some empty space in the
+document.  You can use it to give objects names, change their colors,
+and line styles and lots of other interesting things.</p>
+</html>
+</tip>
+
+<tip category="Kig">
+<html>
+<p>You can construct new points without using the menu or the toolbar, simply
+clicking somewhere on the Kig document with the <em>middle mouse
+button</em>.</p>
+</html>
+</tip>
+
+<tip category="Kig">
+<html>
+<p>Kig can open several file format: its files (<code>.kig</code> files),
+<em>KGeo</em> files, <em>KSeg</em> files and, partially, <em>Dr. Geo</em>
+files.</p>
+</html>
+</tip>
+
+<tip category="Kig">
+<html>
+<p>Kig has more than 40 objects and 10 trasformations you can construct and use
+in your documents! Open the <em>Objects</em> menu to know them all.</p>
+</html>
+</tip>

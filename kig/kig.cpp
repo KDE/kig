@@ -21,20 +21,24 @@
 #include "kig.h"
 #include "kig.moc"
 
-#include <kkeydialog.h>
+#include <qtimer.h>
+
+#include <kaction.h>
+#include <kapplication.h>
 #include <kconfig.h>
+#include <kdebug.h>
+#include <kedittoolbar.h>
+#include <kfiledialog.h>
+#include <kkeydialog.h>
+#include <klibloader.h>
+#include <klocale.h>
+#include <kmessagebox.h>
+#include <kstatusbar.h>
+#include <kstdaction.h>
+#include <ktip.h>
 #include <kurl.h>
 #include <kurldrag.h>
-#include <kedittoolbar.h>
-#include <kaction.h>
-#include <kfiledialog.h>
-#include <kstdaction.h>
-#include <kstatusbar.h>
-#include <klibloader.h>
-#include <kmessagebox.h>
-#include <kdebug.h>
-#include <kapplication.h>
-#include <klocale.h>
+
 #include <assert.h>
 
 Kig::Kig()
@@ -72,13 +76,15 @@ Kig::Kig()
 
 	  // and integrate the part's GUI with the shell's
 	  createGUI(m_part);
+	  // finally show tip-of-day ( if the user wants it :) )
+	  QTimer::singleShot( 0, this, SLOT( startupTipOfDay() ) );
       }
   }
   else
   {
       // if we couldn't find our Part, we exit since the Shell by
       // itself can't do anything useful
-      KMessageBox::error(this, i18n( "Could not find the necessary kig library, check your installation." ) );
+      KMessageBox::error(this, i18n( "Could not find the necessary Kig library, check your installation." ) );
       KApplication::exit();
       return;
   }
@@ -120,6 +126,8 @@ void Kig::setupActions()
   KStdAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
 #endif
   KStdAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
+
+  KStdAction::tipOfDay( this, SLOT( tipOfDay() ), actionCollection(), "help_tipofday" );
 }
 
 void Kig::saveProperties(KConfig* config)
@@ -284,3 +292,11 @@ void Kig::optionsShowStatusbar()
 #endif
 }
 // #endif
+
+void Kig::tipOfDay() {
+  KTipDialog::showTip( "kig/tips", true );
+}
+
+void Kig::startupTipOfDay() {
+  KTipDialog::showTip( "kig/tips" );
+}
