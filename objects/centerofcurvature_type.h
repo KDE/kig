@@ -15,7 +15,7 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_OBJECTS_CENTEROFCURVETURE_TYPE_H
+#ifndef KIG_OBJECTS_CENTEROFCURVATURE_TYPE_H
 #define KIG_OBJECTS_CENTEROFCURVATURE_TYPE_H
 
 #include "base_type.h"
