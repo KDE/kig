@@ -122,7 +122,7 @@ const ObjectImpType* DummyObjectType::impRequirement( const ObjectImp*, const Ar
 
 const ObjectImpType* DummyObjectType::resultId() const
 {
-  return ObjectImp::stype();
+  return InvalidImp::stype();
 }
 
 Objects DummyObjectType::sortArgs( const Objects& args ) const
