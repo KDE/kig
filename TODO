@@ -1,5 +1,8 @@
 
 * reimplement
+- CoordinatePropertyPoint -> just give PropertyObject a bool shown ?
+  this results in a problem with isInternal(), I think..  maybe a
+  CopyImpObjectType is better..
 - macro management:
 	1 get rid of CustomTypes by putting their data in DataObjects
 	2 start a plugin system.  A Plugin class keeps pointers to the
