@@ -38,6 +38,8 @@ class Rect;
 class KigWidget;
 class KigDocument;
 class Transformation;
+class QDomElement;
+class QDomDocument;
 
 typedef std::vector<const ObjectImp*> Args;
 typedef QValueList<QCString> QCStringList;
