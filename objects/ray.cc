@@ -111,8 +111,7 @@ void Ray::calc()
 Coordinate Ray::getPoint(double param) const
 {
   Coordinate dir = mpb->getCoord() - mpa->getCoord();
-  param += 1;
-  param = pow( param, 12 ) - 1;
+  param = 1.0/param - 1.0;
   return mpa->getCoord() + dir*param;
 }
 
@@ -125,17 +124,22 @@ double Ray::getParam(const Coordinate& p) const
   // if pt is over the end of the ray ( i.e. it's on the line
   // which the ray is a part of, but not of the ray itself..;
   // ) we set it to the start point of the ray...
-  if ( ( a.x - b.x ) == ( a.x - pt.x ) ) pt = a;
   Coordinate dir = b - a;
   pt -= a;
   double param;
   if ( dir.x != 0 ) param = pt.x / dir.x;
   else if ( dir.y != 0 ) param = pt.y / dir.y;
-  else param = 0;
-  param += 1;
-  param = pow( param, 1./12  );
-  param -= 1;
-  assert( param >= 0 && param <= 1 );
+  else param = 0.;
+  if ( param < 0. ) param = 0.;
+
+  // mp:  let's try with 1/(x+1),  this reverses the mapping, but
+  // should allow to take advantage of the tightness of floating point
+  // numbers near zero, in order to get more possible positions near
+  // infinity
+
+  param = 1./( param + 1. );
+
+  assert( param >= 0. && param <= 1. );
   return param;
 }
 
