@@ -24,7 +24,9 @@
 #include "bogus_imp.h"
 
 #include "../modes/moving.h"
+#include "../misc/coordinate_system.h"
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 
 #include <qstringlist.h>
 
@@ -199,6 +201,7 @@ int MidPointType::resultId() const
 QStringList FixedPointType::specialActions() const
 {
   QStringList ret;
+  ret << i18n( "Set &Coordinate" );
   ret << i18n( "Redefine" );
   return ret;
 }
@@ -221,8 +224,28 @@ void FixedPointType::executeAction(
   int i, RealObject* o, KigDocument& d, KigWidget& w,
   NormalMode& m ) const
 {
-  assert( i == 0 );
-  redefinePoint( o, d, w, m );
+  switch( i )
+  {
+  case 0:
+  {
+    bool ok = true;
+    Coordinate oldc;
+    if ( o->hasimp( ObjectImp::ID_PointImp ) )
+      oldc = static_cast<const PointImp*>( o->imp() )->coordinate();
+    Coordinate c = d.coordinateSystem().getCoordFromUser(
+      i18n( "Set Coordinate" ), i18n( "Enter the new coordinate: " ),
+      d, &w, &ok, &oldc );
+    if ( ! ok ) break;
+    o->move( oldc, c - oldc, d );
+    o->calc( d );
+    w.redrawScreen();
+    break;
+  };
+  case 1:
+    redefinePoint( o, d, w, m );
+    break;
+  default: assert( false );
+  };
 }
 
 void ConstrainedPointType::executeAction(

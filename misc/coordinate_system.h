@@ -50,6 +50,11 @@ class CoordinateSystem
 public:
   CoordinateSystem();
   virtual ~CoordinateSystem();
+
+  const Coordinate getCoordFromUser( const QString& caption, const QString& label,
+                                     const KigDocument& doc, QWidget* parent, bool* ok = 0,
+                                     const Coordinate* value = 0 ) const;
+
   virtual QString fromScreen ( const Coordinate& pt, const KigDocument& w ) const = 0;
   /**
    * This returns a notice to say in which format coordinates should

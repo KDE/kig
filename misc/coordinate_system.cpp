@@ -31,6 +31,8 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <knumvalidator.h>
+#include <kmessagebox.h>
+#include <klineeditdlg.h>
 #include <klocale.h>
 #include <kglobal.h>
 
@@ -44,29 +46,29 @@ using std::max;
 using std::min;
 using std::log10;
 
-class EuclideanCoordinateValidator
+class CoordinateValidator
   : public QValidator
 {
   KDoubleValidator mdv;
   mutable QRegExp mre;
 public:
-  EuclideanCoordinateValidator();
-  ~EuclideanCoordinateValidator();
+  CoordinateValidator();
+  ~CoordinateValidator();
   State validate ( QString & input,  int & pos ) const;
   void fixup ( QString & input ) const;
 };
 
 
-EuclideanCoordinateValidator::EuclideanCoordinateValidator()
+CoordinateValidator::CoordinateValidator()
   : QValidator( 0, 0 ), mdv( 0, 0 ), mre( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
 {
 }
 
-EuclideanCoordinateValidator::~EuclideanCoordinateValidator()
+CoordinateValidator::~CoordinateValidator()
 {
 }
 
-QValidator::State EuclideanCoordinateValidator::validate( QString & input, int & pos ) const
+QValidator::State CoordinateValidator::validate( QString & input, int & pos ) const
 {
   QString tinput = input;
   if ( tinput[tinput.length() - 1 ] == ')' ) tinput.truncate( tinput.length() - 1 );
@@ -92,7 +94,7 @@ QValidator::State EuclideanCoordinateValidator::validate( QString & input, int &
   };
 }
 
-void EuclideanCoordinateValidator::fixup( QString & input ) const
+void CoordinateValidator::fixup( QString & input ) const
 {
   int nsc = input.contains( ';' );
   if ( nsc > 1 )
@@ -134,7 +136,7 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   double m = max( sr.width(), sr.height() );
   int l = max( 0, (int) ( 3 - log10( m ) ) );
   QString xs = KGlobal::locale()->formatNumber( p.x, l );
-  QString ys = KGlobal::locale()->formatNumber( p.x, l );
+  QString ys = KGlobal::locale()->formatNumber( p.y, l );
   return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
 };
 
@@ -483,10 +485,36 @@ const char* PolarCoords::type() const
 
 QValidator* EuclideanCoords::coordinateValidator() const
 {
-  return new EuclideanCoordinateValidator();
+  return new CoordinateValidator();
 }
 
 QValidator* PolarCoords::coordinateValidator() const
 {
-  return 0;
+  return new CoordinateValidator()
+}
+
+const Coordinate CoordinateSystem::getCoordFromUser( const QString& caption,
+                                                     const QString& label,
+                                                     const KigDocument& doc,
+                                                     QWidget* parent, bool* ok,
+                                                     const Coordinate* cvalue ) const
+{
+  bool done = false;
+  Coordinate ret;
+  QString value = cvalue ? fromScreen( *cvalue, doc ) : QString::null;
+  while ( ! done )
+  {
+    QValidator* vtor = coordinateValidator();
+    value = KLineEditDlg::getText(
+      caption, label, value, ok, parent, vtor );
+    delete vtor;
+
+    if ( ! *ok ) return Coordinate();
+
+    ret = toScreen( value, *ok );
+    if ( *ok ) done = true;
+    else
+      KMessageBox::sorry( parent, i18n( "The coordinate you entered was not valid.  Please try again.") );
+  };
+  return ret;
 }
