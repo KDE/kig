@@ -38,8 +38,25 @@ class IntersectionPoint
   Circle* circle1;
   Circle* circle2;
 public:
-  IntersectionPoint() : segment1(0), segment2(0), line1(0), line2(0), circle1(0), circle2(0) {};
+  IntersectionPoint()
+    : segment1(0), segment2(0),
+      line1(0), line2(0),
+      circle1(0), circle2(0)
+  {
+  };
+
+  IntersectionPoint( const IntersectionPoint& p )
+    : Point( p ),
+      segment1( p.segment1 ), segment2( p.segment2 ),
+      line1( p.line1 ), line2( p.line2 ),
+      circle1( p.circle1 ), circle2( p.circle2 )
+  {
+  };
+
   ~IntersectionPoint() {};
+
+  virtual IntersectionPoint* copy() { return new IntersectionPoint( *this ); };
+
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "IntersectionPoint"; };
 
@@ -53,6 +70,8 @@ public:
   void moveTo(const Coordinate& ) {};
   void stopMove() {};
   void cancelMove() {};
+
+  void drawPrelim( KigPainter&, const Coordinate& ) const {};
   
   void calc();
 };
