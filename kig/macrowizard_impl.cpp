@@ -1,4 +1,5 @@
 #include "macrowizard_impl.h"
+#include "macrowizard_impl.moc"
 
 #include "kig_part.h"
 

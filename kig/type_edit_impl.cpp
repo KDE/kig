@@ -1,4 +1,5 @@
 #include "type_edit_impl.h"
+#include "type_edit_impl.moc"
 
 #include "../misc/type.h"
 #include "kig_part.h"
