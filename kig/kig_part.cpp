@@ -324,6 +324,8 @@ bool KigDocument::openFile()
   tmp.calc();
   emit recenterScreen();
 
+  mainWidget()->realWidget()->redrawScreen();
+
   return true;
 }
 
