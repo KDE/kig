@@ -46,7 +46,7 @@
 	<text>Other</text>
 	  <Action name="objects_new_locus" />
 	  <Action name="objects_new_vector" />
-	  <Action name="objects_new_label" />
+	  <Action name="objects_new_textlabel" />
 	  <ActionList name="user_other_types" />
     </Menu>
     <Separator />
