@@ -1,5 +1,9 @@
 2003-08-31  Dominique Devriese  <devriese@kde.org>
 
+	* make the Kig Python Scripting API docs only available online.
+	It's too much trouble to generate them during the build process,
+	and I can't add a hard build-time dependency on doxygen anyway...
+
 	* keep the Kig version number in a central place, so that it can
 	easily be changed.  Use some autoconf magic to fill it in in the
 	other places..
