@@ -149,6 +149,7 @@ public:
 
   static QString removeAStatement( int id );
   static QString addAStatement( int id );
+  static QString moveAStatement( int id );
 
   // this translates a string ( e.g. "any" ) to its name (
   // e.g. ID_AnyImp )

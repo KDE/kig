@@ -174,6 +174,33 @@ QString ObjectImp::removeAStatement( int id )
   };
 }
 
+QString ObjectImp::moveAStatement( int id )
+{
+  switch( id )
+  {
+  case ID_DoubleImp: return i18n( "Move a Number" );
+  case ID_IntImp: return i18n( "Move a Number" );
+  case ID_StringImp: return i18n( "Move a String" );
+  case ID_HierarchyImp: return i18n( "Move a Hierarchy" );
+  case ID_TransformationImp: return i18n( "Move a Transformation" );
+  case ID_PointImp: return i18n( "Move a Point" );
+  case ID_CurveImp: return i18n( "Move a Curve" );
+  case ID_LineImp: return i18n( "Move a Line" );
+  case ID_TextImp: return i18n( "Move a Label" );
+  case ID_AngleImp: return i18n( "Move an Angle" );
+  case ID_VectorImp: return i18n( "Move a Vector" );
+  case ID_LocusImp: return i18n( "Move a Locus" );
+  case ID_CircleImp: return i18n( "Move a Circle" );
+  case ID_ConicImp: return i18n( "Move a Conic" );
+  case ID_CubicImp: return i18n( "Move a Cubic" );
+  case ID_SegmentImp: return i18n( "Move a Segment" );
+  case ID_RayImp: return i18n( "Move a Ray" );
+  case ID_ArcImp: return i18n( "Move an Arc" );
+  case ID_AnyImp: return i18n( "Move an Object" );
+  default: return 0;
+  };
+}
+
 QString ObjectImp::addAStatement( int id )
 {
   switch( id )
