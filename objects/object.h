@@ -34,7 +34,7 @@
 #include "../misc/objects.h"
 
 class AbstractLine;
-class Arc;
+class Angle;
 class Point;
 class Segment;
 class Vector;
@@ -158,7 +158,7 @@ public:
   NormalPoint* toNormalPoint();
   TextLabel* toTextLabel();
   AbstractLine* toAbstractLine();
-  Arc* toArc();
+  Angle* toAngle();
 
   const Point* toPoint() const;
   const Segment* toSegment() const;
@@ -172,7 +172,7 @@ public:
   const NormalPoint* toNormalPoint() const;
   const TextLabel* toTextLabel() const;
   const AbstractLine* toAbstractLine() const;
-  const Arc* toArc() const;
+  const Angle* toAngle() const;
 
   // type identification:
   // there are several functions: you don't need all of them in your
@@ -378,7 +378,7 @@ public:
     SegmentT,
     LineT,
     CubicT,
-    ArcT,
+    AngleT,
     CircleT,
     ConicT,
     CurveT,

@@ -24,9 +24,12 @@
 #include "../objects/normalpoint.h"
 #include "../misc/i18n.h"
 #include "../misc/coordinate_system.h"
+#include "../misc/argsparser.h"
+#include "../modes/selectionmode.h"
 
 #include <klineeditdlg.h>
 #include <kmessagebox.h>
+#include <kdebug.h>
 
 void AddFixedPointAction::slotActivated()
 {
@@ -62,3 +65,23 @@ AddFixedPointAction::AddFixedPointAction( KigDocument* doc,
 {
     setToolTip( i18n( "Construct a point by entering its coordinates..." ) );
 }
+
+TestAction::TestAction( KigDocument* doc, const QIconSet& icon,
+                        KActionCollection* parent )
+  : KAction( i18n( "Test stuff !!!" ), icon, 0, 0, 0, parent,
+             "test_stuff" ),
+    mdoc( doc )
+{
+}
+
+void TestAction::slotActivated()
+{
+  CheckOneArgs checker;
+  StandAloneSelectionMode mode( checker, mdoc );
+  mode.run( mdoc->mode() );
+  Objects sel = mode.selection();
+  kdDebug() << k_funcinfo << endl
+            << sel.size() << endl
+            << sel[0]->vBaseTypeName() << endl;
+}
+

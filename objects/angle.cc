@@ -1,4 +1,4 @@
-// arc.cc
+// angle.cc
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -17,7 +17,7 @@
 // 02111-1307, USA.
 
 
-#include "arc.h"
+#include "angle.h"
 #include "point.h"
 
 #include "../misc/coordinate.h"
@@ -33,7 +33,7 @@
 
 #include <assert.h>
 
-Arc::Arc( const Objects& os )
+Angle::Angle( const Objects& os )
   : Object()
 {
   assert( os.size() == 3 );
@@ -43,83 +43,83 @@ Arc::Arc( const Objects& os )
   std::for_each( mpts, mpts+3, std::bind2nd( std::mem_fun( &Object::addChild ), this ) );
 }
 
-Arc::Arc( const Arc& a )
+Angle::Angle( const Angle& a )
   : Object( a )
 {
   std::copy( a.mpts, a.mpts+3, mpts );
   std::for_each( mpts, mpts+3, std::bind2nd( std::mem_fun( &Object::addChild ), this ) );
 }
 
-Arc::~Arc()
+Angle::~Angle()
 {
 }
 
-const QCString Arc::vBaseTypeName() const
+const QCString Angle::vBaseTypeName() const
 {
   return sBaseTypeName();
 }
 
-QCString Arc::sBaseTypeName()
+QCString Angle::sBaseTypeName()
 {
-  return I18N_NOOP("arc");
+  return I18N_NOOP("angle");
 }
 
-const QCString Arc::vFullTypeName() const
+const QCString Angle::vFullTypeName() const
 {
   return sFullTypeName();
 }
 
-QCString Arc::sFullTypeName()
+QCString Angle::sFullTypeName()
 {
-  return "Arc";
+  return "Angle";
 }
 
-const QString Arc::vDescriptiveName() const
+const QString Angle::vDescriptiveName() const
 {
   return sDescriptiveName();
 }
 
-const QString Arc::sDescriptiveName()
+const QString Angle::sDescriptiveName()
 {
-  return i18n( "Arc by three points" );
+  return i18n( "Angle by three points" );
 }
 
-const QString Arc::vDescription() const
+const QString Angle::vDescription() const
 {
   return sDescription();
 }
 
-const QString Arc::sDescription()
+const QString Angle::sDescription()
 {
-  return i18n( "An arc defined by three points" );
+  return i18n( "An angle defined by three points" );
 }
 
-const QCString Arc::vIconFileName() const
+const QCString Angle::vIconFileName() const
 {
   return sIconFileName();
 }
 
-const QCString Arc::sIconFileName()
+const QCString Angle::sIconFileName()
 {
-  return "arc";
+  return "angle";
 }
 
-const int Arc::vShortCut() const
+const int Angle::vShortCut() const
 {
   return sShortCut();
 }
 
-const int Arc::sShortCut()
+const int Angle::sShortCut()
 {
   return 0;
 }
 
-const char* Arc::sActionName()
+const char* Angle::sActionName()
 {
-  return "objects_new_arc";
+  return "objects_new_angle";
 }
 
-Object::WantArgsResult Arc::sWantArgs( const Objects& os )
+Object::WantArgsResult Angle::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   if ( size > 3 ) return NotGood;
@@ -131,20 +131,20 @@ Object::WantArgsResult Arc::sWantArgs( const Objects& os )
   return size == 3 ? Complete : NotComplete;
 }
 
-QString Arc::sUseText( const Objects& os, const Object* )
+QString Angle::sUseText( const Objects& os, const Object* )
 {
   return os.size() == 1 ? i18n( "Center point" )
-                    : i18n( "Point on arc" );
+                    : i18n( "Point on angle" );
 }
 
-Objects Arc::getParents() const
+Objects Angle::getParents() const
 {
   Objects ret;
   std::copy( mpts, mpts+3, std::back_inserter( ret ) );
   return ret;
 }
 
-void Arc::calcForWidget( const KigWidget& w )
+void Angle::calcForWidget( const KigWidget& w )
 {
   calc();
 
@@ -171,7 +171,7 @@ void Arc::calcForWidget( const KigWidget& w )
   marrow.push_back( marrow[0] + segb - sega );
 }
 
-void Arc::calc()
+void Angle::calc()
 {
   mvalid = true;
   for ( Point** i = mpts; i < mpts + 3; ++i )
@@ -190,7 +190,7 @@ void Arc::calc()
     rvect = rvect.normalize();
     // we calc lots of angles... i don't really know how to explain
     // this in text but i'll try...  take point a( 0,0 ), b( 1,1 ), c(
-    // -1, 1 ), d( 1,0 ), e( -1,0 )   and bac is the arc we want, then
+    // -1, 1 ), d( 1,0 ), e( -1,0 )   and bac is the angle we want, then
     // dab is the startangle, and eac is the end angle..  we calc bac
     // by taking pi - startangle - endangle...
     mstartangle = std::acos( lvect.x );
@@ -213,7 +213,7 @@ void Arc::calc()
   };
 }
 
-bool Arc::contains(const Coordinate& a, const ScreenInfo& si ) const
+bool Angle::contains(const Coordinate& a, const ScreenInfo& si ) const
 {
   // we check if the point is at the right distance from the center,
   Coordinate cds[3];
@@ -225,18 +225,18 @@ bool Arc::contains(const Coordinate& a, const ScreenInfo& si ) const
   double radius = kigMin( lvect.length(), rvect.length() ) / 2.;
   if ( std::fabs( (a-cds[1]).length() - radius ) > si.normalMiss() ) return false;
 
-  // and next we check if the arc is appropriate...
+  // and next we check if the angle is appropriate...
   Coordinate vect = a - cds[1];
   vect = vect.normalize();
-  double arc = std::acos( vect.x );
-  if ( vect.y < 0 ) arc = 2*M_PI-arc;
-  if ( arc < 0 ) arc += 2* M_PI;
-  if ( arc < mstartangle ) return false;
-  if ( arc > mstartangle + manglelength ) return false;
+  double angle = std::acos( vect.x );
+  if ( vect.y < 0 ) angle = 2*M_PI-angle;
+  if ( angle < 0 ) angle += 2* M_PI;
+  if ( angle < mstartangle ) return false;
+  if ( angle > mstartangle + manglelength ) return false;
   return true;
 }
 
-void Arc::draw( KigPainter& p, bool ss ) const
+void Angle::draw( KigPainter& p, bool ss ) const
 {
   Coordinate cds[3];
   std::transform( mpts, mpts+3, cds, std::mem_fun( &Point::getCoord ) );
@@ -246,19 +246,19 @@ void Arc::draw( KigPainter& p, bool ss ) const
   p.setBrush( QBrush( color, Qt::SolidPattern ) );
   int startangle = static_cast<int>( mstartangle * 2880. / M_PI );
   int anglelength = static_cast<int>( manglelength * 2880 / M_PI );
-  p.drawArc( mr, startangle, anglelength );
+  p.drawAngle( mr, startangle, anglelength );
   p.drawPolygon( marrow );
 //   p.drawRay( cds[1], cds[0] );
 //   p.drawRay( cds[1], cds[2] );
 }
 
-bool Arc::inRect( const Rect& ) const
+bool Angle::inRect( const Rect& ) const
 {
   return false;
   // TODO
 }
 
-void Arc::sDrawPrelim( KigPainter& p, const Objects& os )
+void Angle::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   // some initialization...
   if ( os.size() != 3 ) return;
@@ -313,20 +313,20 @@ void Arc::sDrawPrelim( KigPainter& p, const Objects& os )
 //   p.drawRay( cds[1], cds[0] );
 //   p.drawRay( cds[1], cds[2] );
   p.drawPolygon( arrow );
-  p.drawArc( surr, is, ia );
+  p.drawAngle( surr, is, ia );
 }
 
-double Arc::size() const
+double Angle::size() const
 {
   return manglelength;
 }
 
-const uint Arc::numberOfProperties() const
+const uint Angle::numberOfProperties() const
 {
   return Object::numberOfProperties() + 2;
 }
 
-const Property Arc::property( uint which, const KigWidget& w ) const
+const Property Angle::property( uint which, const KigWidget& w ) const
 {
   assert( which < numberOfProperties() );
   if ( which < Object::numberOfProperties() ) return Object::property( which, w );
@@ -337,16 +337,16 @@ const Property Arc::property( uint which, const KigWidget& w ) const
   else assert( false );
 }
 
-const QCStringList Arc::properties() const
+const QCStringList Angle::properties() const
 {
   QCStringList l = Object::properties();
   l << I18N_NOOP( "Angle in radians" );
   l << I18N_NOOP( "Angle in degrees" );
-  assert( l.size() == Arc::numberOfProperties() );
+  assert( l.size() == Angle::numberOfProperties() );
   return l;
 }
 
-bool Arc::isa( int type ) const
+bool Angle::isa( int type ) const
 {
-  return type == ArcT ? true : Parent::isa( type );
+  return type == AngleT ? true : Parent::isa( type );
 }

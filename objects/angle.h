@@ -1,4 +1,4 @@
-// arc.h
+// angle.h
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef ARC_H
-#define ARC_H
+#ifndef KIG_OBJECTS_ANGLE_H
+#define KIG_OBJECTS_ANGLE_H
 
 #include "object.h"
 
@@ -29,14 +29,14 @@
  * This class is inspired upon one in KGeo.  Some code comes from
  * there too..  Thanks to Marc Bartsch <marc.bartsch@web.de>.
  */
-class Arc
+class Angle
   : public Object
 {
   typedef Object Parent;
 public:
-  Arc( const Objects& os );
-  Arc( const Arc& a );
-  ~Arc();
+  Angle( const Objects& os );
+  Angle( const Angle& a );
+  ~Angle();
 
   virtual bool isa( int type ) const;
 
@@ -70,7 +70,7 @@ public:
   void calc();
   void calcForWidget( const KigWidget& w );
 
-  // this returns the size of this arc ( in radians, in the range 0 <
+  // this returns the size of this angle ( in radians, in the range 0 <
   // x < 2*M_PI... )
   double size() const;
 
@@ -82,7 +82,7 @@ protected:
   Point* mpts[3];
   std::vector<Coordinate> marrow;
   Rect mr;
-  // both of these arcs are kept in radians, and converted when
+  // both of these angles are kept in radians, and converted when
   // necessary...
   double mstartangle;
   double manglelength;

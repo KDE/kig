@@ -18,7 +18,7 @@
 
 #include "rotatedpoint.h"
 
-#include "arc.h"
+#include "angle.h"
 
 #include "../misc/i18n.h"
 #include "../misc/common.h"
@@ -115,7 +115,7 @@ RotatedPoint::RotatedPoint( const Objects& os )
   {
     if ( ! mp ) mp = (*i)->toPoint();
     else if ( ! mc ) mc = (*i)->toPoint();
-    if ( ! ma ) ma = (*i)->toArc();
+    if ( ! ma ) ma = (*i)->toAngle();
   };
   assert( mp && mc && ma );
   mp->addChild( this );
@@ -127,12 +127,12 @@ void RotatedPoint::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 3 ) return;
   Point* mp = 0, *mc = 0;
-  Arc* ma = 0;
+  Angle* ma = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! mp ) mp = (*i)->toPoint();
     else if ( ! mc ) mc = (*i)->toPoint();
-    if ( ! ma ) ma = (*i)->toArc();
+    if ( ! ma ) ma = (*i)->toAngle();
   };
   assert( mp && mc && ma );
 
@@ -153,7 +153,7 @@ Object::WantArgsResult RotatedPoint::sWantArgs( const Objects& os )
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( (*i)->toPoint() ) ++p;
-    else if ( (*i)->toArc() ) ++a;
+    else if ( (*i)->toAngle() ) ++a;
     else return NotGood;
   };
   if ( p > 2 || a > 1 ) return NotGood;
@@ -167,6 +167,6 @@ QString RotatedPoint::sUseText( const Objects& os, const Object* o )
   if ( os.size() >= 2 && os[1]->toPoint() ) gotpoint = true;
   if ( o->toPoint() && ! gotpoint ) return i18n( "Rotate this point" );
   if ( o->toPoint() ) return i18n( "Rotate point around this point" );
-  if ( o->toArc() ) return i18n( "Rotate point by this arc" );
+  if ( o->toAngle() ) return i18n( "Rotate point by this angle" );
   assert( false );
 }

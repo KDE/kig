@@ -25,7 +25,7 @@
 #include "segment.h"
 #include "vector.h"
 #include "ray.h"
-#include "arc.h"
+#include "angle.h"
 #include "line.h"
 #include "circle.h"
 #include "conic.h"
@@ -398,9 +398,9 @@ AbstractLine* Object::toAbstractLine()
   return isa( AbstractLineT ) ? static_cast<AbstractLine*>( this ) : 0;
 };
 
-Arc* Object::toArc()
+Angle* Object::toAngle()
 {
-  return isa( ArcT ) ? static_cast<Arc*>( this ) : 0;
+  return isa( AngleT ) ? static_cast<Angle*>( this ) : 0;
 };
 
 const Point* Object::toPoint() const
@@ -463,8 +463,8 @@ const AbstractLine* Object::toAbstractLine() const
   return isa( AbstractLineT ) ? static_cast<const AbstractLine*>( this ) : 0;
 };
 
-const Arc* Object::toArc() const
+const Angle* Object::toAngle() const
 {
-  return isa( ArcT ) ? static_cast<const Arc*>( this ) : 0;
+  return isa( AngleT ) ? static_cast<const Angle*>( this ) : 0;
 };
 

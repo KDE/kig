@@ -48,7 +48,7 @@
 #include "../objects/ray.h"
 #include "../objects/coordproppoint.h"
 #include "../objects/rotatedpoint.h"
-#include "../objects/arc.h"
+#include "../objects/angle.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/calcpaths.h"
@@ -173,6 +173,9 @@ void KigDocument::setupActions()
 
   tmp = l->loadIcon( "pointxy", KIcon::User );
   aFixedPoint = new AddFixedPointAction( this, tmp, actionCollection() );
+
+  tmp = l->loadIcon( "new", KIcon::User );
+  (void) new TestAction( this, tmp, actionCollection() );
 };
 
 void KigDocument::setupTypes()
@@ -207,7 +210,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<Locus> );
     Object::addBuiltinType( new TStdType<Vector> );
     Object::addBuiltinType( new TStdType<Ray> );
-    Object::addBuiltinType( new TStdType<Arc> );
+    Object::addBuiltinType( new TStdType<Angle> );
     Object::addBuiltinType( new TStdType<LineDirectrix> );
     Object::addBuiltinType( new TStdType<LinePolar> );
     Object::addBuiltinType( new TStdType<PointPolar> );

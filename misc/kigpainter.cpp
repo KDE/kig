@@ -422,7 +422,7 @@ void KigPainter::drawRay( const Coordinate& a, const Coordinate& b )
   drawSegment( a, tb );
 }
 
-void KigPainter::drawArc( const Rect& surroundingRect, int startAngle, int angle )
+void KigPainter::drawAngle( const Rect& surroundingRect, int startAngle, int angle )
 {
   mP.drawArc( toScreen( surroundingRect ), startAngle, angle );
   Rect r = surroundingRect;
@@ -609,12 +609,12 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
   mNeedOverlay = tNeedOverlay;
 }
 
-void KigPainter::drawCubicRecurse ( 
-                   double& xleft, double& yleft, bool& validleft, 
-                   int& numrootsleft, 
-                   double &xright, double &yright, bool &validright, 
+void KigPainter::drawCubicRecurse (
+                   double& xleft, double& yleft, bool& validleft,
+                   int& numrootsleft,
+                   double &xright, double &yright, bool &validright,
                    int &numrootsright,
-                   const CubicCartesianEquationData &data, int &root, 
+                   const CubicCartesianEquationData &data, int &root,
                    double &ymin, double &ymax, double &tol,
                    bool& tNeedOverlay, Rect& overlay)
 {
@@ -637,14 +637,14 @@ void KigPainter::drawCubicRecurse (
     double xmiddle = (xright + xleft)/2;
     bool validmiddle;
     int numrootsmiddle;
-    double ymiddle = calcCubicYvalue ( xmiddle, ymin, ymax, root, data, 
+    double ymiddle = calcCubicYvalue ( xmiddle, ymin, ymax, root, data,
                    validmiddle, numrootsmiddle );
     Coordinate pmiddle = Coordinate( xmiddle, ymiddle );
     if ( validmiddle && tNeedOverlay ) overlay.setContains( pmiddle );
-    drawCubicRecurse ( xleft, yleft, validleft, numrootsleft, 
+    drawCubicRecurse ( xleft, yleft, validleft, numrootsleft,
                    xmiddle, ymiddle, validmiddle, numrootsmiddle,
                    data, root, ymin, ymax, tol, tNeedOverlay, overlay );
-    drawCubicRecurse ( xmiddle, ymiddle, validmiddle, numrootsmiddle, 
+    drawCubicRecurse ( xmiddle, ymiddle, validmiddle, numrootsmiddle,
                    xright, yright, validright, numrootsright,
                    data, root, ymin, ymax, tol, tNeedOverlay, overlay );
   }
@@ -668,15 +668,15 @@ void KigPainter::drawCubic( const CubicCartesianEquationData& data )
   double tol = (xright - xleft)/100;
   for ( int root = 1; root <= 3; root++ )
   {
-    double yleft = calcCubicYvalue ( xleft, ymin, ymax, root, data, 
+    double yleft = calcCubicYvalue ( xleft, ymin, ymax, root, data,
                    validleft, numrootsleft );
-    double yright = calcCubicYvalue ( xright, ymin, ymax, root, data, 
+    double yright = calcCubicYvalue ( xright, ymin, ymax, root, data,
                    validright, numrootsright );
     Coordinate p = Coordinate( xleft, yleft );
     if ( validleft && tNeedOverlay ) overlay.setContains( p );
     p = Coordinate( xright, yright );
     if ( validright && tNeedOverlay ) overlay.setContains( p );
-    drawCubicRecurse ( xleft, yleft, validleft, numrootsleft, 
+    drawCubicRecurse ( xleft, yleft, validleft, numrootsleft,
                    xright, yright, validright, numrootsright,
                    data, root, ymin, ymax, tol,
                    tNeedOverlay, overlay);

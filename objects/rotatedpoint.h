@@ -23,14 +23,12 @@
 
 #include "point.h"
 
-class Arc;
-
 class RotatedPoint
   : public Point
 {
   Point* mp;
   Point* mc;
-  Arc* ma;
+  Angle* ma;
 public:
   RotatedPoint( const Objects& os );
   RotatedPoint( const RotatedPoint& p );

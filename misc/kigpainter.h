@@ -172,13 +172,13 @@ public:
   void drawPolygon( const std::vector<Coordinate>& pts, bool winding = false, int index = 0, int npoints = -1 );
 
   /**
-   * draw the arc bounded by surroundingRect, of arc angle, starting
+   * draw the angle bounded by surroundingRect, of angle angle, starting
    * at the angle startAngle..  Note that both the angles should be
    * given in 1/16th of a degree.  An entire circle equals 5760
    * here...
    * @see QPainter::drawArc
    */
-  void drawArc( const Rect& surroundingRect, int startAngle, int angle );
+  void drawAngle( const Rect& surroundingRect, int startAngle, int angle );
 
   /**
    * draw a conic..

@@ -25,6 +25,18 @@ class KigDocument;
 class KActionCollection;
 class QIconSet;
 
+class TestAction
+  : public KAction
+{
+  Q_OBJECT
+  KigDocument* mdoc;
+public:
+  TestAction( KigDocument* doc, const QIconSet& icon,
+              KActionCollection* parent );
+protected slots:
+  void slotActivated();
+};
+
 class AddFixedPointAction
   : public KAction
 {

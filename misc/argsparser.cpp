@@ -22,57 +22,66 @@
 
 #include <algorithm>
 
-// ArgParser::ArgParser( const spec args[] )
-// {
-//   for ( const spec* s = args; s != 0; ++s )
-//     mmap[s->type] = s->number;
-//   mwantedobjscount = 0;
-//   for ( const spec* s = args; s != 0; ++s )
-//     mwantedobjscount += s->number;
-// }
+ArgParser::ArgParser( const spec args[], int n )
+  : mndt( n ), mwantedobjscount( 0 ), margs( args )
+{
+  for ( int i = 0; i < n; ++i )
+    mwantedobjscount += margs[i].number;
+}
 
-// int ArgParser::check( const Objects& os ) const
-// {
-//   // we take a copy, so we can change its contents..
-//   maptype map = mmap;
-//   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-//   {
-//     maptype::iterator r = map.find( (*i)->type() );
-//     if ( r == map.end() )       // an obj of a type we don't want
-//       return 0;
-//     else if ( r->second <= 0 )  // too much objs of a type that we do
-//                                 // want..
-//       return 0;
-//     else r->second--;           // a good obj
-//   };
-//   for ( maptype::const_iterator i = map.begin(); i != map.end(); ++i )
-//     if ( i->second > 0 ) return Valid; // we need more objs
-//   return Valid | Complete;      // and we're done..
-// }
+int ArgParser::check( const Objects& os ) const
+{
+  std::vector<int> numbers( mndt );
+  for ( int i = 0; i < mndt; ++i )
+    numbers[i] = margs[i].number;
 
-// Objects ArgParser::parse( const Objects& os ) const
-// {
-//   assert( check( os ) & Valid );
+  for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
+  {
+    for ( int i = 0; i < mndt; ++i )
+    {
+      if ( (*o)->isa( margs[i].type ) && numbers[i] > 0 )
+      {
+        // object o is of a type that we're looking for
+        --numbers[i];
+        // i know that "goto's are evil", but they're very useful and
+        // completely harmless if you use them as better "break;"
+        // statements.. trust me ;)
+        goto matched;
+      };
+    };
+    // object o is not of a type in margs..
+    return Invalid;
+  matched:
+    ;
+  };
+  for ( int i = 0; i < mndt; ++i )
+    if ( numbers[i] > 0 ) return Valid;
+  return Complete;
+}
 
-//   Objects ret( mwantedobjscount, static_cast<Object*>( 0 ) );
+Objects ArgParser::parse( const Objects& os ) const
+{
+  assert( check( os ) != Invalid );
+  Objects ret( mwantedobjscount );
 
-//   int count = 0;
-//   maptype map = mmap;
-//   for ( maptype::iterator i = map.begin(); i != map.end(); ++i )
-//   {
-//     count += i->second;
-//     i->second = count;
-//   };
+  std::vector<int> numbers( mndt );
+  for ( int i = 0; i < mndt; ++i )
+    numbers[i] = margs[i].number;
 
-//   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-//     ret[--map[(*i)->type()]] = *i;
-
-//   return ret;
-// }
+  for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
+    for ( int i = 0; i < mndt; ++i )
+      if ( (*o)->isa( margs[i].type ) && numbers[i] > 0 )
+      {
+        // object o is of a type that we're looking for
+        ret[--numbers[i]] = *o;
+        break;
+      }
+  return ret;
+}
 
 int CheckOneArgs::check( const Objects& os ) const
 {
-  return os.size() <= 1 ? Valid | Complete : 0;
+  return os.size() <= 1 ? Complete : 0;
 }
 
 ArgsChecker::~ArgsChecker()
