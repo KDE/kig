@@ -189,11 +189,11 @@ QString ConicImp::conicTypeString() const
   switch (conicType())
   {
   case 1:
-    return I18N_NOOP("Ellipse");
+    return i18n("Ellipse");
   case -1:
-    return I18N_NOOP("Hyperbola");
+    return i18n("Hyperbola");
   case 0:
-    return I18N_NOOP("Parabola");
+    return i18n("Parabola");
   default:
     assert( false );
     return "";
