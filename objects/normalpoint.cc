@@ -498,7 +498,6 @@ void ConstrainedPointImp::redefine( Curve* c, const Coordinate& p,
     unselectArgs( np );
   mcurve = c;
   mparam = c->getParam( p );
-  kdDebug() << k_funcinfo << " param: " << mparam << endl;
 }
 
 void ConstrainedPointImp::unselectArgs( NormalPoint* np )
