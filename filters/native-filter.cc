@@ -462,14 +462,15 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
 
         ObjectConstCalcer* namecalcer = 0;
         tmp = e.attribute( "namecalcer" );
-        if ( tmp != "none" )
+        if ( tmp != "none" && !tmp.isNull() )
         {
           int ncid = tmp.toInt( &ok );
           if ( !ok ) KIG_FILTER_PARSE_ERROR;
           if ( ncid <= 0 || id > calcers.size() )
             KIG_FILTER_PARSE_ERROR;
           if ( ! dynamic_cast<ObjectConstCalcer*>( calcers[ncid-1].get() ) )
-            namecalcer = static_cast<ObjectConstCalcer*>( calcers[ncid-1].get() );
+            KIG_FILTER_PARSE_ERROR;
+          namecalcer = static_cast<ObjectConstCalcer*>( calcers[ncid-1].get() );
         }
 
         ObjectDrawer* drawer = new ObjectDrawer( color, width, shown, style, pointstyle );

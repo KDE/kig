@@ -33,7 +33,7 @@ ObjectHolder::ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer,
                             ObjectConstCalcer* namecalcer )
   : mcalcer( calcer ), mdrawer( drawer ), mnamecalcer( namecalcer )
 {
-  assert( namecalcer->imp()->inherits( StringImp::stype() ) );
+  assert( !namecalcer || namecalcer->imp()->inherits( StringImp::stype() ) );
 }
 
 ObjectHolder::ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer )

@@ -1,0 +1,62 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="0.7.1" >
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Hierarchy>
+  <Data type="int" id="1" >0</Data>
+  <Data type="double" id="2" >1.3131</Data>
+  <Data type="string" id="3" >%1</Data>
+  <Data type="double" id="4" >-4.04756</Data>
+  <Data type="double" id="5" >4.22311</Data>
+  <Data type="double" id="6" >0.661366</Data>
+  <Data type="int" id="7" >0</Data>
+  <Data type="double" id="8" >0.55381</Data>
+  <Data type="string" id="9" >%1</Data>
+  <Data type="string" id="10" >ab</Data>
+  <Data type="int" id="11" >0</Data>
+  <Data type="string" id="12" >%1</Data>
+  <Data type="string" id="13" >a</Data>
+  <Data type="string" id="14" >b</Data>
+  <Object type="FixedPoint" id="15" >
+   <Parent id="4" />
+   <Parent id="2" />
+  </Object>
+  <Object type="FixedPoint" id="16" >
+   <Parent id="6" />
+   <Parent id="5" />
+  </Object>
+  <Object type="Label" id="17" >
+   <Parent id="11" />
+   <Parent id="15" />
+   <Parent id="12" />
+   <Parent id="14" />
+  </Object>
+  <Object type="SegmentAB" id="18" >
+   <Parent id="15" />
+   <Parent id="16" />
+  </Object>
+  <Object type="Label" id="19" >
+   <Parent id="1" />
+   <Parent id="16" />
+   <Parent id="3" />
+   <Parent id="13" />
+  </Object>
+  <Object type="ConstrainedPoint" id="20" >
+   <Parent id="8" />
+   <Parent id="18" />
+  </Object>
+  <Object type="Label" id="21" >
+   <Parent id="7" />
+   <Parent id="20" />
+   <Parent id="9" />
+   <Parent id="10" />
+  </Object>
+ </Hierarchy>
+ <View>
+  <Draw width="-1" point-style="Round" namecalcer="none" style="SolidLine" shown="true" color="#0000ff" object="19" />
+  <Draw width="-1" point-style="Round" namecalcer="none" style="SolidLine" shown="true" color="#0000ff" object="21" />
+  <Draw width="-1" point-style="Round" namecalcer="10" style="SolidLine" shown="true" color="#0000ff" object="18" />
+  <Draw width="-1" point-style="Round" namecalcer="13" style="SolidLine" shown="true" color="#0000ff" object="16" />
+  <Draw width="-1" point-style="Round" namecalcer="14" style="SolidLine" shown="true" color="#0000ff" object="15" />
+  <Draw width="-1" point-style="Round" namecalcer="none" style="SolidLine" shown="true" color="#0000ff" object="17" />
+ </View>
+</KigDocument>
