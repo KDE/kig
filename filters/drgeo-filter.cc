@@ -26,6 +26,7 @@
 #include "../kig/kig_part.h"
 #include "../misc/common.h"
 #include "../misc/coordinate.h"
+#include "../objects/angle_type.h"
 #include "../objects/arc_type.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/circle_imp.h"

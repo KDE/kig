@@ -25,6 +25,7 @@
 #include "special_constructors.h"
 #include "guiaction.h"
 
+#include "../objects/angle_type.h"
 #include "../objects/arc_type.h"
 #include "../objects/circle_type.h"
 #include "../objects/conic_types.h"

@@ -25,6 +25,7 @@
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
+#include "../objects/angle_type.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/circle_imp.h"
 #include "../objects/circle_type.h"
