@@ -29,6 +29,7 @@
 #include "../objects/conic_types.h"
 #include "../objects/cubic_type.h"
 #include "../objects/other_type.h"
+#include "../objects/point_type.h"
 
 void setupBuiltinStuff()
 {
@@ -196,6 +197,14 @@ void setupBuiltinStuff()
       "equilateralhyperbolab4p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_equilateralhyperbolab4p" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      MidPointType::instance(),
+      I18N_NOOP( "Midpoint" ),
+      I18N_NOOP( "The midpoint of a segment or two other points" ),
+      "bisection" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_midpoint" ) );
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };

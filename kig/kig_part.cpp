@@ -201,11 +201,11 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TStdType<LineDirectrix> );
 //     Object::addBuiltinType( new TStdType<Angle> );
 //     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
+//     Object::addBuiltinType( new TStdType<MidPoint> );
 
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
 //     Object::addBuiltinType( new TStdType<LineRadical> );
 //     Object::addBuiltinType( new TMultiType<LineConicRadical> );
-//     Object::addBuiltinType( new TStdType<MidPoint> );
 //     Object::addBuiltinType( new TStdType<IntersectionPoint> );
 //     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
 //     Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );

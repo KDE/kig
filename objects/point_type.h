@@ -19,7 +19,7 @@
 #ifndef POINT_TYPE_H
 #define POINT_TYPE_H
 
-#include "object_type.h"
+#include "base_type.h"
 #include "common.h"
 
 class FixedPointType
@@ -56,6 +56,16 @@ public:
   bool canMove() const;
   void move( Object* ourobj, const Coordinate& from,
              const Coordinate& dist ) const;
+};
+
+class MidPointType
+  : public ObjectABType
+{
+  MidPointType();
+  ~MidPointType();
+public:
+  static const MidPointType* instance();
+  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
 
 #endif

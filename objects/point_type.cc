@@ -140,3 +140,23 @@ bool FixedPointType::canMove() const
 {
   return true;
 }
+
+MidPointType::MidPointType()
+  : ObjectABType( "point", "MidPoint" )
+{
+}
+
+MidPointType::~MidPointType()
+{
+}
+
+const MidPointType* MidPointType::instance()
+{
+  static const MidPointType t;
+  return &t;
+}
+
+ObjectImp* MidPointType::calc( const Coordinate& a, const Coordinate& b ) const
+{
+  return new PointImp( ( a + b ) / 2 );
+}
