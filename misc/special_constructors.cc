@@ -49,6 +49,7 @@
 #include "../objects/centerofcurvature_type.h"
 #include "../objects/polygon_type.h"
 #include "../objects/transform_types.h"
+#include "../objects/text_imp.h"
 
 #include <qpen.h>
 
@@ -635,12 +636,14 @@ void PolygonBCVConstructor::handlePrelim(
   Coordinate v = static_cast<const PointImp*>( os[1]->imp() )->coordinate();
 
   int nsides = 6;
+  bool moreinfo = false;
   int winding = 0;    // 0 means allow winding > 1
   if ( os.size() == 3 )
   {
     assert ( os[2]->imp()->inherits( BogusPointImp::stype() ) );
     Coordinate cntrl = static_cast<const PointImp*>( os[2]->imp() )->coordinate();
     nsides = computeNsides( c, v, cntrl, winding );
+    moreinfo = true;
   }
 
   std::vector<ObjectCalcer*> args;
@@ -662,6 +665,37 @@ void PolygonBCVConstructor::handlePrelim(
 
   ObjectDrawer drawer( Qt::red );
   drawprelim( drawer, p, args, d );
+  if ( moreinfo )
+  {
+    p.setPointStyle( 1 );
+    p.setWidth( 6 );
+    double ro = 1.0/(2.5);
+    Coordinate where = getRotatedCoord( c, (1-ro)*c+ro*v, 4*M_PI/5.0 );
+    PointImp ptn = PointImp( where );
+    TextImp text = TextImp( "(5,2)", where, false );
+    ptn.draw( p );
+    text.draw( p );
+    for ( int i = 3; i < 9; ++i )
+    {
+      where = getRotatedCoord( c, v, 2.0*M_PI/i );
+      ptn = PointImp( where );
+      ptn.draw( p );
+      if ( i > 5 ) continue;
+      text = TextImp( QString( "(%1)" ).arg(i), where, false );
+      text.draw( p );
+    }
+    p.setStyle( Qt::DotLine );
+    p.setWidth( 1 );
+    double radius = ( v - c ).length();
+    CircleImp circle = CircleImp( c, radius );
+    circle.draw( p );
+    for ( int i = 2; i < 5; i++ )
+    {
+      ro = 1.0/(i+0.5);
+      CircleImp circle = CircleImp( c, ro*radius );
+      circle.draw( p );
+    }
+  }
 }
 
 std::vector<ObjectHolder*> PolygonBCVConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
@@ -784,6 +818,16 @@ bool PolygonBCVConstructor::isTransform() const
   return false;
 }
 
+Coordinate PolygonBCVConstructor::getRotatedCoord( const Coordinate& c, 
+               const Coordinate& v, double alpha ) const
+{
+  double cosalpha = cos(alpha);
+  double sinalpha = sin(alpha);
+  double dx = v.x - c.x;
+  double dy = v.y - c.y;
+  return c + Coordinate( cosalpha*dx - sinalpha*dy, sinalpha*dx + cosalpha*dy );
+}
+
 int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
         const Coordinate& v, const Coordinate& cntrl, int& winding ) const
 {
@@ -803,11 +847,12 @@ int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
     double ratio = lvect.length()/rvect.length();
     winding = int ( ratio );
     if ( winding < 1 ) winding = 1;
+    if ( winding > 50 ) winding = 50;
   }
   int nsides = int( winding*realsides + 0.5 );  // nsides/winding should be reduced!
-  while ( !relativePrimes ( nsides, winding ) ) ++nsides;
-  if ( nsides < 3 ) nsides = 3;
   if ( nsides > 100 ) nsides = 100;     // well, 100 seems large enough!
+  if ( nsides < 3 ) nsides = 3;
+  while ( !relativePrimes ( nsides, winding ) ) ++nsides;
   return nsides;
 }
 

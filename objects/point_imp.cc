@@ -110,7 +110,7 @@ ObjectImp* PointImp::property( uint which, const KigDocument& d ) const
     return new DoubleImp( mc.x );
   if ( which == Parent::numberOfProperties() + 2 )
     return new DoubleImp( mc.y );
-  else assert( false );
+//  else assert( false );
   return new InvalidImp;
 }
 
