@@ -58,6 +58,10 @@ public:
   const char* fullName() const;
 
   const ArgParser& argsParser() const;
+
+  // convenience function, equivalent to argsParser().impRequirement(
+  // o, parents );
+  int impRequirement( const ObjectImp* o, const Args& parents ) const;
 };
 
 /**

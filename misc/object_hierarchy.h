@@ -21,6 +21,8 @@
 
 #include "../objects/common.h"
 
+class ArgParser;
+
 class ObjectHierarchy
 {
 public:
@@ -29,6 +31,8 @@ private:
   std::vector<Node*> mnodes;
   uint mnumberofargs;
   uint mnumberofresults;
+  std::vector<int> margrequirements;
+
   int visit( const Object* o, const Objects& from );
 public:
   ObjectHierarchy( const Objects& from, const Object* to );
@@ -41,9 +45,19 @@ public:
   ObjectHierarchy withFixedArgs( const Args& a ) const;
   std::vector<ObjectImp*> calc( const Args& a ) const;
 
+  // saves the ObjectHierarchy data in children xml tags of parent..
   void serialize( QDomElement& parent, QDomDocument& doc ) const;
-  // deserialize..
+  // deserialize the ObjectHierarchy data from the xml element
+  // parent..
   ObjectHierarchy( QDomElement& parent );
+
+  // build a set of objects that interdepend according to this
+  // ObjectHierarchy..
+  Objects buildObjects( const Objects& os ) const;
+
+  ArgParser argParser() const;
+
+  uint numberOfArgs() const { return mnumberofargs; };
 };
 
 #endif

@@ -51,16 +51,28 @@ private:
   // requests require some special treatment.  This vector holds the
   // usetexts for those requests..
   std::vector<const char*> manyobjsspec;
+
+  spec findSpec( const ObjectImp* o, const Args& parents ) const;
 public:
   ArgParser( const struct spec* args, int n );
+  ArgParser( const std::vector<spec>& args );
   ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec );
   // returns a new ArgParser that wants the same args, except for the
   // ones of the given type..
   ArgParser without( int type ) const;
+  // checks if os matches the argument list this parser should parse..
   int check( const Objects& os ) const;
-  Args parse( const Args& os ) const;
-  const char* usetext( const Object& o, const Objects& sel ) const;
+  // returns the usetext for the argument that o would be used for,
+  // if sel.with( o ) were used as parents..
+  // o is not in sel.
+  const char* usetext( const ObjectImp* o, const Args& sel ) const;
+
+  // this reorders the objects or args so that they are in the same
+  // order as the requested arguments..
   Objects parse( const Objects& os ) const;
+  Args parse( const Args& os ) const;
+
+  int impRequirement( const ObjectImp* o, const Args& parents ) const;
 };
 
 #endif

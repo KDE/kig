@@ -90,3 +90,8 @@ CustomType::CustomType( const char fulltypename[],
 {
 }
 
+int ObjectType::impRequirement( const ObjectImp* o, const Args& parents ) const
+{
+  return margsparser.impRequirement( o, parents );
+}
+

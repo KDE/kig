@@ -275,7 +275,11 @@ void MergeObjectConstructor::handlePrelim(
 QString StandardConstructorBase::useText( const Object& o, const Objects& sel,
                                           const KigDocument&, const KigWidget& ) const
 {
-  const char* ret = margsparser.usetext( o, sel );
+  using namespace std;
+  Args args;
+  transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &Object::imp ) );
+
+  const char* ret = margsparser.usetext( o.imp(), args );
   if ( ! ret ) return QString::null;
   return i18n( ret );
 }
@@ -289,5 +293,77 @@ QString MergeObjectConstructor::useText( const Object& o, const Objects& sel,
     if ( w != ArgsChecker::Invalid ) return (*i)->useText( o, sel, d, v );
   };
   return QString::null;
+}
+
+MacroConstructor::MacroConstructor(
+  const Objects& input, const Objects& output,
+  const QString name, const QString description )
+  : ObjectConstructor(), mhier( input, output ),
+    mname( name ), mdesc( description ),
+    mparser( mhier.argParser() )
+{
+}
+
+MacroConstructor::~MacroConstructor()
+{
+}
+
+const QString MacroConstructor::descriptiveName() const
+{
+  return mname;
+}
+
+const QString MacroConstructor::description() const
+{
+  return mdesc;
+}
+
+const QCString MacroConstructor::iconFileName() const
+{
+  return "gear";
+}
+
+const int MacroConstructor::wantArgs( const Objects& os, const KigDocument&,
+                                      const KigWidget& ) const
+{
+  return mparser.check( os );
+}
+
+void MacroConstructor::handleArgs( const Objects& os, KigDocument& d,
+                                   KigWidget& ) const
+{
+  Objects args = mparser.parse( os );
+  Objects bos = mhier.buildObjects( args );
+  bos.calc();
+  d.addObjects( bos );
+}
+
+QString MacroConstructor::useText( const Object& o, const Objects& sel,
+                                   const KigDocument&, const KigWidget&
+  ) const
+{
+  using namespace std;
+  Args args;
+  transform( sel.begin(), sel.end(), back_inserter( args ),
+             mem_fun( &Object::imp ) );
+  return mparser.usetext( o.imp(), args );
+}
+
+void MacroConstructor::handlePrelim( KigPainter& p, const Objects& sel,
+                                     const KigDocument&, const KigWidget&
+  ) const
+{
+  if ( sel.size() != mhier.numberOfArgs() ) return;
+
+  using namespace std;
+  Args args;
+  transform( sel.begin(), sel.end(), back_inserter( args ),
+             mem_fun( &Object::imp ) );
+  std::vector<ObjectImp*> ret = mhier.calc( args );
+  for ( uint i = 0; i < args.size(); ++i )
+  {
+    ret[i]->draw( p );
+    delete ret[i];
+  };
 }
 

@@ -47,16 +47,26 @@ public:
   virtual const Property property( uint which, const KigWidget& w ) const = 0;
 
   enum {
+    // we guarantee that "more specialized" types are lower in the list
+    // than "less specialized".  E.g. ID_LineImp means: a ray, a line
+    // or a segment.  Therefore, ID_SegmentImp has a higher value than
+    // ID_LineImp..
+
+    // matches any object type..
+    ID_AnyImp = 0,
+
     // Pseudo-object imp types, these are only used as fixed args for
     // various object types..
-    ID_DoubleImp = 0,
+    ID_DoubleImp,
     ID_IntImp,
     ID_StringImp,
 
-    // Real object types..
-    ID_PointImp,
+    // two id's that match multiple types of imp's..
     ID_CurveImp,
     ID_LineImp,
+
+    // Real object types..
+    ID_PointImp,
     ID_LabelImp,
     ID_AngleImp,
     ID_VectorImp,
@@ -65,11 +75,18 @@ public:
     ID_ConicImp,
     ID_CubicImp,
     ID_SegmentImp,
-    ID_RayImp,
-
-    // matches any object type..
-    ID_AnyImp
+    ID_RayImp
   };
+
+  // this translates an id ( e.g. ID_AnyImp ) to its name ( e.g. "any" )
+  static const char* idToString( int id );
+  // this translates an id ( e.g. ID_SegmentImp ) to a translated
+  // string of the form "Select this %1" ( e.g. "Select this segment"
+  // ).
+  static const char* selectStatement( int id );
+  // this translates a string ( e.g. "any" ) to its name (
+  // e.g. ID_AnyImp )
+  static int stringToID( const QCString& string );
 
   // we declare this abstract, but we provide an implementation
   // anyway.. This simply means we demand every subclass to implement

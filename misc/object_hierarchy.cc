@@ -37,6 +37,8 @@ public:
   virtual ~Node();
   virtual Node* copy() const = 0;
   virtual void apply( std::vector<const ObjectImp*>& stack, int loc ) const = 0;
+
+  virtual void apply( Objects& stack, int loc ) const = 0;
 };
 
 ObjectHierarchy::Node::~Node()
@@ -57,6 +59,12 @@ public:
   Node* copy() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc ) const;
+  void apply( Objects& stack, int loc ) const;
+};
+
+void PushStackNode::apply( Objects& stack, int loc ) const
+{
+  stack[loc] = new DataObject( mimp->copy() );
 };
 
 int PushStackNode::id() const { return ID_PushStack; };
@@ -94,6 +102,7 @@ public:
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc ) const;
+  void apply( Objects& stack, int loc ) const;
 };
 
 int ApplyTypeNode::id() const { return ID_ApplyType; };
@@ -105,6 +114,14 @@ ApplyTypeNode::~ApplyTypeNode()
 ObjectHierarchy::Node* ApplyTypeNode::copy() const
 {
   return new ApplyTypeNode( mtype, mparents );
+};
+
+void ApplyTypeNode::apply( Objects& stack, int loc ) const
+{
+  Objects parents;
+  for ( uint i = 0; i < mparents.size(); ++i )
+    parents.push_back( stack[ mparents[i] ] );
+  stack[loc] = new RealObject( mtype, parents );
 };
 
 void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
@@ -120,6 +137,10 @@ void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
 
 std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a ) const
 {
+  assert( a.size() == mnumberofargs );
+  for ( uint i = 0; i < a.size(); ++i )
+    assert( a[i]->inherits( margrequirements[i] ) );
+
   std::vector<const ObjectImp*> stack;
   stack.resize( mnodes.size() + mnumberofargs, 0 );
   std::copy( a.begin(), a.end(), stack.begin() );
@@ -147,17 +168,21 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a ) const
 ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
   : mnumberofargs( from.size() ), mnumberofresults( 1 )
 {
+  margrequirements.resize( from.size(), -1 );
   visit( to, from );
 }
 
 int ObjectHierarchy::visit( const Object* o, const Objects& from )
 {
+  using namespace std;
+
   for ( uint i = 0; i < from.size(); ++i )
     if ( from[i] == o ) return i;
   Objects p( o->parents() );
   if ( p.empty() ) return -1;
 
   assert( o->inherits( Object::ID_RealObject ) );
+  const RealObject* ro = static_cast<const RealObject*>( o );
 
   bool neednode = false;
   std::vector<int> parents;
@@ -176,9 +201,23 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
     {
       mnodes.push_back( new PushStackNode( p[i]->imp()->copy() ) );
       parents[i] = mnumberofargs + mnodes.size() - 1;
+    }
+    else if ( (uint) parents[i] < mnumberofargs )
+    {
+      const ObjectImp* parentimp = o->parents()[i]->imp();
+      Args oargs;
+      Objects oparents = o->parents();
+      oparents.remove( o->parents()[i] );
+      transform( oparents.begin(), oparents.end(), back_inserter( oargs ),
+                 mem_fun( &Object::imp ) );
+
+      margrequirements[i] = kMax( margrequirements[i],
+                                  ro->type()->impRequirement(
+                                    parentimp, oargs ) );
+
     };
   };
-  mnodes.push_back( new ApplyTypeNode( static_cast<const RealObject*>( o )->type(), parents ) );
+  mnodes.push_back( new ApplyTypeNode( ro->type(), parents ) );
   return mnumberofargs + mnodes.size() - 1;
 }
 
@@ -188,7 +227,8 @@ ObjectHierarchy::~ObjectHierarchy()
 }
 
 ObjectHierarchy::ObjectHierarchy( const ObjectHierarchy& h )
-  : mnumberofargs( h.mnumberofargs ), mnumberofresults( h.mnumberofresults )
+  : mnumberofargs( h.mnumberofargs ), mnumberofresults( h.mnumberofresults ),
+    margrequirements( h.margrequirements )
 {
   mnodes.reserve( h.mnodes.size() );
   for ( uint i = 0; i < h.mnodes.size(); ++i )
@@ -199,19 +239,24 @@ ObjectHierarchy ObjectHierarchy::withFixedArgs( const Args& a ) const
 {
   assert( a.size() <= mnumberofargs );
   ObjectHierarchy ret( *this );
+
   ret.mnumberofargs -= a.size();
+  ret.margrequirements.resize( ret.mnumberofargs );
+
   std::vector<Node*> newnodes( mnodes.size() + a.size() );
   std::vector<Node*>::iterator newnodesiter = newnodes.begin();
   for ( uint i = 0; i < a.size(); ++i )
     *newnodesiter++ = new PushStackNode( a[i]->copy() );
   std::copy( ret.mnodes.begin(), ret.mnodes.end(), newnodesiter );
   ret.mnodes = newnodes;
+
   return ret;
 }
 
 ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
   : mnumberofargs( from.size() ), mnumberofresults( to.size() )
 {
+  margrequirements.resize( from.size(), -1 );
   for ( Objects::const_iterator i = to.begin(); i != to.end(); ++i )
     visit( *i, from );
 }
@@ -223,6 +268,7 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
   {
     QDomElement e = doc.createElement( "input" );
     e.setAttribute( "id", id++ );
+    e.setAttribute( "requirement", ObjectImp::idToString( margrequirements[i] ) );
     parent.appendChild( e );
   }
   for ( uint i = 0; i < mnodes.size(); ++i )
@@ -261,18 +307,30 @@ ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
   : mnumberofargs( 0 ), mnumberofresults( 0 )
 {
   bool ok = true;
+  QString tmp;
   QDomElement e = parent.firstChild().toElement();
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
     if ( e.tagName() != "input" ) break;
-    else ++mnumberofargs;
+
+    tmp = e.attribute( "id" );
+    uint id = tmp.toInt( &ok );
+    if ( ! ok ) continue;
+
+    mnumberofargs = kMax( id + 1, mnumberofargs );
+
+    tmp = e.attribute( "requirement" );
+    int req = ObjectImp::stringToID( tmp.latin1() );
+    if ( req == -1 ) req = ObjectImp::ID_AnyImp; // sucks, i know..
+    margrequirements.resize( mnumberofargs, -1 );
+    margrequirements[id - 1] = req;
   }
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
     bool result = e.tagName() == "result";
     if ( result ) ++mnumberofresults;
 
-    QString tmp = e.attribute( "id" );
+    tmp = e.attribute( "id" );
     int id = tmp.toInt( &ok );
     if ( ! ok ) continue;       // could be better :(
 
@@ -284,7 +342,7 @@ ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
       QCString typen = e.attribute( "type" ).latin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
       if ( ! type ) continue;   // anyone got a better idea on
-                                // reportin errors here ?
+                                // reporting errors here ?
       std::vector<int> parents;
       for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
       {
@@ -309,4 +367,40 @@ ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
     mnodes.resize( kMax( id - mnumberofargs, mnodes.size() ) );
     mnodes[id - mnumberofargs - 1] = newnode;
   };
+}
+
+ArgParser ObjectHierarchy::argParser() const
+{
+  std::vector<ArgParser::spec> specs;
+  for ( uint i = 0; i < margrequirements.size(); ++i )
+  {
+    int req = margrequirements[i];
+    assert( req != -1 );
+    ArgParser::spec spec;
+    spec.type = req;
+    spec.usetext = ObjectImp::selectStatement( req );
+    assert( spec.usetext );
+    specs.push_back( spec );
+  };
+  return ArgParser( specs );
+}
+
+Objects ObjectHierarchy::buildObjects( const Objects& os ) const
+{
+  assert( os.size() == mnumberofargs );
+  for ( uint i = 0; i < os.size(); ++i )
+    assert( os[i]->hasimp( margrequirements[i] ) );
+
+  Objects stack;
+  stack.resize( mnodes.size() + mnumberofargs, 0 );
+  std::copy( os.begin(), os.end(), stack.begin() );
+
+  for( uint i = 0; i < mnodes.size(); ++i )
+    mnodes[i]->apply( stack, mnumberofargs + i );
+
+  for ( uint i = mnumberofargs; i < stack.size() - mnumberofresults; ++i )
+    if ( stack[i]->inherits( Object::ID_RealObject ) )
+      static_cast<RealObject*>( stack[i] )->setShown( false );
+
+  return stack;
 }

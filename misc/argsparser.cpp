@@ -23,12 +23,26 @@
 
 #include <algorithm>
 
+
+ArgParser::ArgParser( const std::vector<spec>& args )
+{
+  for ( uint i = 0; i < args.size(); ++i )
+    if ( args[i].type != ObjectImp::ID_AnyImp )
+      margs.push_back( args[i] );
+    else manyobjsspec.push_back( args[i].usetext );
+}
+
 ArgParser::ArgParser( const spec* args, int n )
 {
   for ( int i = 0; i < n; ++i )
-    if ( (args + i)->type != ObjectImp::ID_AnyImp )
-      margs.push_back( *(args + i) );
-    else manyobjsspec.push_back( (args + i)->usetext );
+    if ( args[i].type != ObjectImp::ID_AnyImp )
+      margs.push_back( args[i] );
+    else manyobjsspec.push_back( args[i].usetext );
+}
+
+ArgParser::ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec )
+  : margs( args ), manyobjsspec( anyobjsspec )
+{
 }
 
 int ArgParser::check( const Objects& os ) const
@@ -131,11 +145,6 @@ ArgsChecker::~ArgsChecker()
 {
 }
 
-ArgParser::ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec )
-  : margs( args ), manyobjsspec( anyobjsspec )
-{
-}
-
 ArgParser ArgParser::without( int type ) const
 {
   if ( type == ObjectImp::ID_AnyImp )
@@ -148,17 +157,21 @@ ArgParser ArgParser::without( int type ) const
   return ArgParser( ret, manyobjsspec );
 }
 
-const char* ArgParser::usetext( const Object& obj, const Objects& sel ) const
+ArgParser::spec ArgParser::findSpec( const ObjectImp* obj, const Args& parents ) const
 {
+  spec ret;
+  ret.type = -1;
+  ret.usetext = 0;
+
   int numberofanyobjects = manyobjsspec.size();
 
   std::vector<bool> found( margs.size() );
 
-  for ( Objects::const_iterator o = sel.begin(); o != sel.end(); ++o )
+  for ( Args::const_iterator o = parents.begin(); o != parents.end(); ++o )
   {
     for ( uint i = 0; i < margs.size(); ++i )
     {
-      if ( (*o)->hasimp( margs[i].type ) && !found[i] )
+      if ( (*o)->inherits( margs[i].type ) && !found[i] )
       {
         // object o is of a type that we're looking for
         found[i] = true;
@@ -168,15 +181,33 @@ const char* ArgParser::usetext( const Object& obj, const Objects& sel ) const
         goto matched;
       };
     };
-    // object o is not of a type in margs..
-    if ( --numberofanyobjects < 0 ) return 0;
+    if ( --numberofanyobjects < 0 )
+      return ret;
   matched:
     ;
   };
 
   for ( uint i = 0; i < margs.size(); ++i )
-    if ( obj.hasimp( margs[i].type ) && ! found[i] )
-      return margs[i].usetext;
-  assert( numberofanyobjects > 0 );
-  return manyobjsspec[manyobjsspec.size() - numberofanyobjects];
+    if ( obj->inherits( margs[i].type ) && ! found[i] )
+      return margs[i];
+
+  assert( numberofanyobjects >= 0 );
+  if ( numberofanyobjects == 0 ) return ret;
+
+  ret.type = ObjectImp::ID_AnyImp;
+  ret.usetext = manyobjsspec[manyobjsspec.size() - numberofanyobjects];
+  return ret;
 }
+
+int ArgParser::impRequirement( const ObjectImp* o, const Args& parents ) const
+{
+  spec s = findSpec( o, parents );
+  return s.type;
+}
+
+const char* ArgParser::usetext( const ObjectImp* obj, const Args& sel ) const
+{
+  spec s = findSpec( obj, sel );
+  return s.usetext;
+}
+

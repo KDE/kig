@@ -20,6 +20,7 @@
 #define KIG_MISC_OBJECT_CONSTRUCTOR_H
 
 #include "argsparser.h"
+#include "object_hierarchy.h"
 
 class KigPainter;
 class KigDocument;
@@ -228,6 +229,49 @@ public:
 
   void handlePrelim( KigPainter& p, const Objects& sel,
                      const KigDocument& d, const KigWidget& v ) const;
+};
+
+class MacroConstructor
+  : public ObjectConstructor
+{
+  ObjectHierarchy mhier;
+  const QString mname;
+  const QString mdesc;
+  ArgParser mparser;
+public:
+  MacroConstructor( const Objects& input, const Objects& output,
+                    const QString name, const QString description );
+  ~MacroConstructor();
+
+  const QString descriptiveName() const;
+  const QString description() const;
+  const QCString iconFileName() const;
+
+  // can this constructor do something useful with os ?  return
+  // ArgsChecker::Complete, Valid or NotGood
+  const int wantArgs( const Objects& os, const KigDocument& d,
+                      const KigWidget& v ) const;
+
+  // do something fun with os..  this func is only called if wantArgs
+  // returned Complete.. handleArgs should _not_ do any
+  // drawing.. after somebody calls this function, he should
+  // redrawScreen() himself..
+  void handleArgs( const Objects& os, KigDocument& d,
+                   KigWidget& v ) const;
+
+  // return a string describing what you would use o for if it were
+  // selected...
+  QString useText( const Object& o, const Objects& sel,
+                   const KigDocument& d, const KigWidget& v
+    ) const;
+
+  // show a preliminary version of what you would do when handleArgs
+  // would be called..  E.g. if this constructor normally constructs a
+  // locus through some 5 points, then it will try to draw a locus
+  // through whatever number of points it gets..
+  void handlePrelim( KigPainter& p, const Objects& sel,
+                     const KigDocument& d, const KigWidget& v
+    ) const;
 };
 
 #endif
