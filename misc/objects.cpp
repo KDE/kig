@@ -42,3 +42,9 @@ void Objects::calc() const
     (*i)->calc();
   };
 }
+
+void Objects::setSelected( bool sel )
+{
+  for ( iterator i = begin(); i != end(); ++i )
+    (*i)->setSelected( sel );
+}

@@ -158,6 +158,7 @@ public:
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
   void calc() const;
   Objects with( Object* ) const;
+  void setSelected( bool sel );
 };
 
 #endif
