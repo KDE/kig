@@ -42,7 +42,7 @@ const std::vector<ObjectHolder*> KigDocument::objects() const
   return std::vector<ObjectHolder*>( mobjects.begin(), mobjects.end() );
 }
 
-const std::set<ObjectHolder*> KigDocument::objectsSet() const
+const std::set<ObjectHolder*>& KigDocument::objectsSet() const
 {
   return mobjects;
 }
