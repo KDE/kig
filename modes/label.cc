@@ -92,6 +92,7 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
       assert( p->insertItem( s, i ) == i );
     };
     int result = p->exec( v->mapToGlobal( mplc ) );
+    if ( result == -1 ) break;
     assert( static_cast<uint>( result ) < l.size() );
     margs[mwaaws]=TextLabelProperty( o, result );
     updateLinksLabel();
