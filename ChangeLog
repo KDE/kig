@@ -1,8 +1,10 @@
 2004-07-20  Pino Toscano <toscano.pino@tiscali.it>
 
+	* Implement arc-line intersection in KSeg filter.
+
 	* Add support in KGeo filter for constrained points and info
 	about the presence of grid and axes.
- 
+
 	* Little fix in Cabri filter.
 
 	* Fixed a crash in the Types dialog.

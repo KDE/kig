@@ -36,6 +36,7 @@
 #include "../objects/object_drawer.h"
 #include "../objects/object_factory.h"
 #include "../objects/object_holder.h"
+#include "../objects/other_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/point_imp.h"
 #include "../objects/point_type.h"
@@ -95,10 +96,12 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
   if ( parents.size() != 2 ) return 0;
   int nlines = 0;
   int nconics = 0;
+  int narcs = 0;
   for ( int i = 0; i < 2; ++i )
   {
     if ( parents[i]->imp()->inherits( AbstractLineImp::stype() ) ) ++nlines;
     else if ( parents[i]->imp()->inherits( ConicImp::stype() ) ) ++nconics;
+    else if ( parents[i]->imp()->inherits( ArcImp::stype() ) ) ++narcs;
     else return 0;
   };
   if ( nlines == 2 )
@@ -120,6 +123,12 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
     iparents.push_back( rparents.back() );
     iparents.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
     return new ObjectTypeCalcer( ConicLineIntersectionType::instance(), iparents );
+  }
+  else if ( nlines == 1 && narcs == 1 )
+  {
+    std::vector<ObjectCalcer*> intparents( parents );
+    intparents.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+    return new ObjectTypeCalcer( ArcLineIntersectionType::instance(), intparents );
   }
   else return 0;
 }
@@ -543,6 +552,8 @@ KigDocument* KigFilterKSeg::load( const QString& file )
 
   // no more data in the file..
   retdoc->addObjects( ret );
+  retdoc->setAxes( false );
+  retdoc->setGrid( false );
   return retdoc;
 }
 
