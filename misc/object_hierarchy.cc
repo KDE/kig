@@ -43,6 +43,8 @@ public:
                       const KigDocument& ) const = 0;
 
   virtual void apply( std::vector<ObjectCalcer*>& stack, int loc ) const = 0;
+
+  virtual bool dependsOnGiven( int highestGiven ) const = 0;
 };
 
 ObjectHierarchy::Node::~Node()
@@ -64,11 +66,17 @@ public:
   void apply( std::vector<const ObjectImp*>& stack,
               int loc, const KigDocument& ) const;
   void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
+
+  bool dependsOnGiven( int highestGiven ) const;
 };
 
 void PushStackNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
 {
   stack[loc] = new ObjectConstCalcer( mimp->copy() );
+}
+
+bool PushStackNode::dependsOnGiven( int ) const {
+  return false;
 }
 
 int PushStackNode::id() const { return ID_PushStack; }
@@ -107,9 +115,18 @@ public:
   void apply( std::vector<const ObjectImp*>& stack,
               int loc, const KigDocument& ) const;
   void apply( std::vector<ObjectCalcer*>& stack, int loc ) const;
+
+  bool dependsOnGiven( int highestGiven ) const;
 };
 
 int ApplyTypeNode::id() const { return ID_ApplyType; }
+
+bool ApplyTypeNode::dependsOnGiven( int h ) const
+{
+  for ( uint i = 0; i < mparents.size(); ++i )
+    if ( mparents[i] <= h ) return true;
+  return false;
+}
 
 ApplyTypeNode::~ApplyTypeNode()
 {
@@ -156,6 +173,7 @@ public:
   ~FetchPropertyNode();
   Node* copy() const;
 
+  bool dependsOnGiven( int highestGiven ) const;
   int parent() const { return mparent; };
   const QCString& propinternalname() const { return mname; };
 
@@ -167,6 +185,11 @@ public:
 
 FetchPropertyNode::~FetchPropertyNode()
 {
+}
+
+bool FetchPropertyNode::dependsOnGiven( int h ) const
+{
+  return mparent <= h;
 }
 
 ObjectHierarchy::Node* FetchPropertyNode::copy() const
@@ -227,16 +250,16 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument&
 }
 
 int ObjectHierarchy::visit( const ObjectCalcer* o, std::map<const ObjectCalcer*, int>& seenmap,
-                            bool isresult )
+                            bool needed, bool neededatend )
 {
   using namespace std;
 
   std::map<const ObjectCalcer*, int>::iterator smi = seenmap.find( o );
   if ( smi != seenmap.end() )
   {
-    if ( isresult )
+    if ( neededatend )
     {
-      // isresult means that this object is one of the resultant
+      // neededatend means that this object is one of the resultant
       // objects.  Therefore, its node has to appear at the end,
       // because that's where we expect it..  We therefore copy it
       // there using CopyObjectType..
@@ -256,20 +279,24 @@ int ObjectHierarchy::visit( const ObjectCalcer* o, std::map<const ObjectCalcer*,
   parents.resize( p.size(), -1 );
   for ( uint i = 0; i < p.size(); ++i )
   {
-    int v = visit( p[i], seenmap );
+    int v = visit( p[i], seenmap, false );
     parents[i] = v;
     descendsfromgiven |= (v != -1);
   };
 
-  if ( ! descendsfromgiven )
+  if ( ! descendsfromgiven && ! ( needed && o->imp()->isCache() ) )
   {
-    if ( isresult )
+    if ( needed )
     {
       assert( ! o->imp()->isCache() );
-      // o is a result object that does not descend from the given
-      // objects..  We have to just save its value here, I guess..
-      mnodes.push_back( new PushStackNode( o->imp()->copy() ) );
-      return mnodes.size() + mnumberofargs - 1;
+      // o is an object that does not depend on the given objects, but
+      // is needed by other objects, so we just have to just save its
+      // current value here.
+      Node* node = new PushStackNode( o->imp()->copy() );
+      mnodes.push_back( node );
+      int ret = mnodes.size() + mnumberofargs - 1;
+      seenmap[o] = ret;
+      return ret;
     }
     else
       return -1;
@@ -326,10 +353,10 @@ void ObjectHierarchy::init( const std::vector<ObjectCalcer*>& from, const std::v
     std::vector<ObjectCalcer*> parents = (*i)->parents();
     for ( std::vector<ObjectCalcer*>::const_iterator j = parents.begin();
           j != parents.end(); ++j )
-      visit( *j, seenmap );
+      visit( *j, seenmap, true );
   }
   for ( std::vector<ObjectCalcer*>::const_iterator i = to.begin(); i != to.end(); ++i )
-    visit( *i, seenmap, true );
+    visit( *i, seenmap, true, true );
 }
 
 ObjectHierarchy::ObjectHierarchy( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to )
@@ -561,12 +588,13 @@ bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs )
 
 bool ObjectHierarchy::resultDoesNotDependOnGiven() const
 {
-  for ( uint i = mnodes.size() - mnumberofresults; i < mnodes.size(); ++i )
+  bool result = true;
+  for ( uint i = 0; i < mnodes.size(); ++i )
   {
-    if ( mnodes[i]->id() == Node::ID_PushStack )
-      return true;
+    if ( mnodes[i]->dependsOnGiven( mnumberofargs - 1 ) )
+      result = false;
   };
-  return false;
+  return result;
 }
 
 // returns the "minimum" of a and b ( in the partially ordered set of
@@ -599,14 +627,15 @@ int ObjectHierarchy::storeObject( const ObjectCalcer* o, const std::vector<Objec
       // we can't store cache ObjectImp's..
       if ( po[i]->imp()->isCache() )
       {
-        std::vector<ObjectCalcer*> parentos = po[i]->parents();
-        std::vector<int> parentlocs( parentos.size(), -1 );
-        pl[i] = storeObject( po[i], parentos, parentlocs, seenmap );
+        pl[i] = visit( po[i], seenmap, true, false );
       }
       else
       {
-        mnodes.push_back( new PushStackNode( po[i]->imp()->copy() ) );
-        pl[i] = mnumberofargs + mnodes.size() - 1;
+        Node* argnode = new PushStackNode( po[i]->imp()->copy() );
+        mnodes.push_back( argnode );
+        int argloc = mnumberofargs + mnodes.size() - 1;
+        seenmap[po[i]] = argloc;
+        pl[i] = argloc;
       };
     }
     else if ( (uint) pl[i] < mnumberofargs )

@@ -1,3 +1,19 @@
+2004-03-06  Dominique Devriese  <devriese@kde.org>
+
+	* Incorporate a patch by Pino Toscano adding some unfinished work
+	on a Dr.Geo import filter.  It's not finished yet, and also not
+	visible in the UI yet.
+
+	* Fix the ObjectHierarchy::resultDoesNotDependOnGiven() function
+	to do something much less stupid than before.  It still only
+	checks if one of the result objects does not depend on the given
+	objects, it needs to be changed to properly check whether all the
+	result objects depend on the given objects.
+
+	* Fix the ObjectHierarchy class to generate a correct hierarchy 
+	when a result object depends on another object that does not 
+	depend on the given objects.
+
 2004-02-24  Dominique Devriese  <devriese@kde.org>
 
 	* Make the tests stuff generate a proper text label with 

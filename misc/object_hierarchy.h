@@ -39,7 +39,7 @@ private:
 
   // these two are really part of the constructor...
   int visit( const ObjectCalcer* o, std::map<const ObjectCalcer*, int>&,
-             bool isresult = false);
+             bool needed, bool neededatend = false);
   int storeObject( const ObjectCalcer*, const std::vector<ObjectCalcer*>& po, std::vector<int>& pl,
                    std::map<const ObjectCalcer*, int>& seenmap );
 
