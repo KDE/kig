@@ -32,7 +32,7 @@
 #include <kcursor.h>
 #include <kmessagebox.h>
 #include <kaction.h>
-#include <ktextedit.h>
+#include <qtextedit.h>
 #include <kdebug.h>
 #include <kiconloader.h>
 #include <qregexp.h>

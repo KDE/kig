@@ -22,7 +22,7 @@
 #include "label.h"
 #include "linkslabel.h"
 
-#include <ktextedit.h>
+#include <qtextedit.h>
 #include <kapplication.h>
 
 #include <qlayout.h>

@@ -38,7 +38,7 @@ If you want to show variable parts, then put %1, %2, ... at the appropriate plac
                     <set>WordBreak|AlignVCenter</set>
                 </property>
             </widget>
-            <widget class="KTextEdit">
+            <widget class="QTextEdit">
                 <property name="name">
                     <cstring>labelTextInput</cstring>
                 </property>
@@ -108,7 +108,7 @@ If you want to show variable parts, then put %1, %2, ... at the appropriate plac
 </images>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>ktextedit.h</includehint>
+    <includehint>qtextedit.h</includehint>
     <includehint>linkslabel.h</includehint>
 </includehints>
 </UI>
