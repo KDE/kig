@@ -109,6 +109,10 @@ public:
   // point where we started moving..
   Coordinate pwwsm;
   MonitorDataObjects* mon;
+  // we keep a map from the emo objects to their reference location.
+  // This is the location that they claim to be at before moving
+  // starts, and we use it as a reference point to determine where
+  // they should move next..
   std::map<const Object*, Coordinate> refmap;
 };
 
