@@ -23,6 +23,19 @@
 
 #include "../misc/conic-common.h"
 
+/**
+ * An ObjectImp representing a conic.
+ *
+ * A conic is a general second degree curve, and some beautiful theory
+ * has been developed about it..  See a math book for more
+ * information.  This class is in fact an abstract base class hiding
+ * the fact that a ConicImp can be constructed in two ways.  If only
+ * its Cartesian equation is known, then you should use ConicImpCart,
+ * otherwise, you should use ConicImpPolar.  If the other
+ * representation is needed, it will be calculated, but a cartesian
+ * representation is rarely needed, and not calculating saves some CPU
+ * cycles.
+ */
 class ConicImp
   : public CurveImp
 {
@@ -31,6 +44,9 @@ protected:
   ~ConicImp();
 public:
   typedef CurveImp Parent;
+  /**
+   * Returns the ObjectImpType representing the ConicImp type.
+   */
   static const ObjectImpType* stype();
 
   ObjectImp* transform( const Transformation& ) const;
@@ -53,13 +69,45 @@ public:
   // information about ourselves..  These are all virtual, because a
   // trivial subclass like CircleImp can override these with trivial
   // versions..
+
+  /**
+   * Type of conic.
+   * Return what type of conic this is:
+   * -1 for a hyperbola
+   * 0 for a parabola
+   * 1 for an ellipse
+   */
   virtual int conicType() const;
+  /**
+   * A string containing "Hyperbola", "Parabola" or "Ellipse".
+   */
   virtual QString conicTypeString() const;
+  /**
+   * A string containing the cartesian equation of the conic.  This
+   * will be of the form "a x^2 + b y^2 + c xy + d x + e y + f = 0".
+   */
   virtual QString cartesianEquationString( const KigDocument& w ) const;
+  /**
+   * A string containing the polar equation of the conic.  This will
+   * be of the form "rho = pdimen/(1 + ect cos( theta ) + est sin(
+   * theta ) )\n    [centered at p]"
+   */
   virtual QString polarEquationString( const KigDocument& w ) const;
+  /**
+   * Return the cartesian representation of this conic.
+   */
   virtual const ConicCartesianData cartesianData() const;
+  /**
+   * Return the polar representation of this conic.
+   */
   virtual const ConicPolarData polarData() const = 0;
+  /**
+   * Return the first focus of this conic.
+   */
   virtual Coordinate focus1() const;
+  /**
+   * Return the second focus of this conic.
+   */
   virtual Coordinate focus2() const;
 
   const ObjectImpType* type() const;
@@ -68,6 +116,10 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+/**
+ * An implementation of ConicImp to be used when only the cartesian
+ * equation of the conic is known.
+ */
 class ConicImpCart
   : public ConicImp
 {
@@ -82,6 +134,10 @@ public:
   const ConicPolarData polarData() const;
 };
 
+/**
+ * An implementation of ConicImp to be used when only the cartesian
+ * equation of the conic is known.
+ */
 class ConicImpPolar
   : public ConicImp
 {

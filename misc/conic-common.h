@@ -39,7 +39,17 @@ class ConicCartesianData
 public:
   double coeffs[6];
   ConicCartesianData();
+  /**
+   * Construct a ConicCartesianData from a ConicPolarData.
+   * Construct a ConicCartesianData that is the cartesian
+   * representation of the conic represented by d.
+   */
   explicit ConicCartesianData( const ConicPolarData& d );
+  /**
+   * Construct a ConicCartesianData from its coefficients
+   * Construct a ConicCartesianData using the coefficients a through f
+   * from the equation "ax^2 + by^2 + cxy + dx + ey + f = 0"
+   */
   ConicCartesianData( double a, double b, double c,
                       double d, double e, double f )
     {
@@ -52,7 +62,17 @@ public:
     };
   ConicCartesianData( const double incoeffs[6] );
 
+  /**
+   * Invalid conic.
+   * Return a ConicCartesianData representing an invalid conic.
+   * \see valid()
+   */
   static ConicCartesianData invalidData();
+  /**
+   * Test validity.
+   * Return whether this is a valid conic.
+   * \see invalidData()
+   */
   bool valid() const;
 };
 
@@ -66,14 +86,36 @@ public:
 class ConicPolarData
 {
 public:
+  /**
+   * Construct a ConicPolarData from a ConicCartesianData.
+   *
+   * Construct a ConicPolarData that is the polar
+   * representation of the conic represented by d.
+   */
   explicit ConicPolarData( const ConicCartesianData& data );
   explicit ConicPolarData();
+  /**
+   * Construct a ConicPolarData using the parameters from the equation
+   * "\rho(\theta) = \frac{p}{1 - e \cos\theta}"
+   */
   ConicPolarData( const Coordinate& focus1, double dimen,
                   double ecostheta0, double esintheta0 );
 
+  /**
+   * The first focus of this conic.
+   */
   Coordinate focus1;
+  /**
+   * The pdimen value from the polar equation.
+   */
   double pdimen;
+  /**
+   * The ecostheta0 value from the polar equation.
+   */
   double ecostheta0;
+  /**
+   * The esintheta0 value from the polar equation.
+   */
   double esintheta0;
 };
 

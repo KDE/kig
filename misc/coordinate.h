@@ -38,7 +38,7 @@ public:
   /** Constructor.  Construct a new Coordinate, with a given x and y
    * value.
    */
-  Coordinate( const double x, const double y );
+  Coordinate( double x, double y );
   /** Copy Constructor.  Construct a new Coordinate, and give it the
    *  same value as p.
    */
@@ -65,7 +65,7 @@ public:
    * we get one automatically..
    */
   static Coordinate invalidCoord();
-  /** Is this a valid Coordinate.
+  /** Return whether this is a valid Coordinate.
    * \see Coordinate::invalidCoord
    */
   bool valid() const;
@@ -113,13 +113,13 @@ public:
   Coordinate& operator-= ( const Coordinate& c );
   /** Scale.  Scales this Coordinate by a factor r
    */
-  Coordinate& operator*= ( const double r );
+  Coordinate& operator*= ( double r );
   /** Scale.  Scales this Coordinate by a factor r
    */
-  Coordinate& operator*= ( const int r );
+  Coordinate& operator*= ( int r );
   /** Scale.  Scales this Coordinate by a factor 1/r
    */
-  Coordinate& operator/= ( const double r );
+  Coordinate& operator/= ( double r );
 public:
   /** X Component.  The X Component of this Coordinate.
    */
@@ -137,10 +137,10 @@ public:
   friend const Coordinate operator- ( const Coordinate& a, const Coordinate& b );
   /** Scale.  Returns this a, scaled by a factor of r.
    */
-  friend const Coordinate operator* ( const Coordinate& a, const double r );
+  friend const Coordinate operator* ( const Coordinate& a, double r );
   /** Scale.  Returns a, scaled by a factor of 1/r.
    */
-  friend const Coordinate operator/ ( const Coordinate& a, const double r );
+  friend const Coordinate operator/ ( const Coordinate& a, double r );
   /** Scalar Product.  Returns the scalar product of a and b.
    */
   friend double operator*( const Coordinate& a, const Coordinate& b );
@@ -152,12 +152,12 @@ public:
   friend bool operator!=( const Coordinate&, const Coordinate& );
 };
 
-const Coordinate operator/ ( const Coordinate& a, const double r );
+const Coordinate operator/ ( const Coordinate& a, double r );
 kdbgstream& operator<<( kdbgstream& s, const Coordinate& t );
 const Coordinate operator+ ( const Coordinate& a, const Coordinate& b );
 const Coordinate operator- ( const Coordinate& a, const Coordinate& b );
-const Coordinate operator* ( const Coordinate& a, const double r );
-const Coordinate operator* ( const double r, const Coordinate& a );
+const Coordinate operator* ( const Coordinate& a, double r );
+const Coordinate operator* ( double r, const Coordinate& a );
 double operator*( const Coordinate& a, const Coordinate& b );
 
 double Coordinate::squareLength() const

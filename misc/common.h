@@ -56,7 +56,7 @@ double getDoubleFromUser( const QString& caption, const QString& label, double v
                           QWidget* parent, bool* ok, double min, double max, int decimals );
 
 /**
- * Class representing a line.  Used by various functions in Kig.
+ * Simple class representing a line.  Used by various functions in Kig.
  */
 class LineData {
 public:
@@ -83,7 +83,7 @@ public:
    */
   const Coordinate dir() const { return b - a; };
   /**
-   * The lenght from a to b.
+   * The length from a to b.
    */
   double length() const { return ( b - a ).length(); };
 };

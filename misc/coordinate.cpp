@@ -1,4 +1,4 @@
-// coordinate.cpp
+// Coordinate.cpp
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -47,17 +47,17 @@ const Coordinate operator- ( const Coordinate& a, const Coordinate& b )
   return Coordinate ( a.x - b.x, a.y - b.y );
 }
 
-const Coordinate operator* ( const Coordinate& a, const double r )
+const Coordinate operator* ( const Coordinate& a, double r )
 {
   return Coordinate ( r*a.x, r*a.y );
 }
 
-const Coordinate operator* ( const double r, const Coordinate& a )
+const Coordinate operator* ( double r, const Coordinate& a )
 {
   return Coordinate ( r*a.x, r*a.y );
 }
 
-const Coordinate operator/ ( const Coordinate& a, const double r )
+const Coordinate operator/ ( const Coordinate& a, double r )
 {
   return Coordinate ( a.x/r, a.y/r );
 }
@@ -78,7 +78,7 @@ Coordinate::Coordinate()
 {
 }
 
-Coordinate::Coordinate( const double nx, const double ny )
+Coordinate::Coordinate( double nx, double ny )
   : x( nx ),
     y( ny )
 {
@@ -116,21 +116,21 @@ Coordinate& Coordinate::operator-=( const Coordinate& p )
   return *this;
 }
 
-Coordinate& Coordinate::operator*=( const double r )
+Coordinate& Coordinate::operator*=( double r )
 {
   x *= r;
   y *= r;
   return *this;
 }
 
-Coordinate& Coordinate::operator*=( const int r )
+Coordinate& Coordinate::operator*=( int r )
 {
   x *= r;
   y *= r;
   return *this;
 }
 
-Coordinate& Coordinate::operator/=( const double r )
+Coordinate& Coordinate::operator/=( double r )
 {
   x /= r;
   y /= r;

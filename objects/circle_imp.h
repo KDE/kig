@@ -21,6 +21,10 @@
 
 #include "conic_imp.h"
 
+/**
+ * An ObjectImp representing a circle.  This class is a subclass of
+ * ConicImp, ensuring that a circle can be used as a conic.
+ */
 class CircleImp
   : public ConicImp
 {
@@ -28,8 +32,14 @@ class CircleImp
   double mradius;
 public:
   typedef ConicImp Parent;
+  /**
+   * Returns the ObjectImpType representing the CircleImp type..
+   */
   static const ObjectImpType* stype();
 
+  /**
+   * Construct a Circle with a given center and radius.
+   */
   CircleImp( const Coordinate& center, double radius );
   ~CircleImp();
   CircleImp* copy() const;
@@ -54,25 +64,53 @@ public:
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
-  // various information about us:
+  /**
+   * Return the center of this circle.
+   */
   const Coordinate center() const;
+  /**
+   * Return the radius of this circle.
+   */
   double radius() const;
-  // not currently used, but i might some day switch to storing the
-  // square radius internally to avoid losing precision when doing
-  // sqr( sqrt( ... ) )... so if you need the square radius, use this
-  // func instead..
+  /**
+   * Return the square radius of this circle.  Use this in preference
+   * to sqr( radius() ).
+   */
   double squareRadius() const;
+  /**
+   * Return the surface of this circle.
+   */
   double surface() const;
+  /**
+   * Return the circumference of this circle.
+   */
   double circumference() const;
 
   // trivial versions of the conic information functions..
+  /**
+   * Always returns 1, since a circle always is an ellipse.
+   */
   int conicType() const;
   const ConicCartesianData cartesianData() const;
   const ConicPolarData polarData() const;
+  /**
+   * The first focus of a circle is simply its center.
+   */
   Coordinate focus1() const;
+  /**
+   * The second focus of a circle is simply its center.
+   */
   Coordinate focus2() const;
 
+  /**
+   * Return a string containing the cartesian equation of this circle.
+   * This will be of the form "x^2 + y^2 + a x + b y + c = 0"
+   */
   QString cartesianEquationString( const KigDocument& w ) const;
+  /**
+   * Return a string containing the polar equation of this circle.
+   * This will be of the form "rho = r  [centered at p]"
+   */
   QString polarEquationString( const KigDocument& w ) const;
 
   bool equals( const ObjectImp& rhs ) const;
