@@ -20,18 +20,20 @@
 
 #include "bogus_imp.h"
 #include "curve_imp.h"
+#include "intersection_types.h"
+#include "line_imp.h"
+#include "object_drawer.h"
+#include "object_holder.h"
+#include "other_type.h"
 #include "point_imp.h"
 #include "point_type.h"
-#include "other_type.h"
 #include "text_type.h"
-#include "object_holder.h"
-#include "object_drawer.h"
 
-#include "../misc/coordinate.h"
-#include "../misc/calcpaths.h"
-#include "../misc/object_hierarchy.h"
-#include "../kig/kig_view.h"
 #include "../kig/kig_document.h"
+#include "../kig/kig_view.h"
+#include "../misc/calcpaths.h"
+#include "../misc/coordinate.h"
+#include "../misc/object_hierarchy.h"
 
 #include <algorithm>
 #include <functional>
@@ -61,6 +63,18 @@ ObjectTypeCalcer* ObjectFactory::sensiblePointCalcer(
   const Coordinate& c, const KigDocument& d, const KigWidget& w ) const
 {
   std::vector<ObjectHolder*> os = d.whatAmIOn( c, w );
+  if ( os.size() == 2 )
+  {
+    // we can calc intersection point *olny* between two objects...
+    std::vector<ObjectCalcer*> args;
+    args.push_back( os[0]->calcer() );
+    args.push_back( os[1]->calcer() );
+    // the simpliest case: two lines...
+    if ( ( os[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
+         ( os[1]->imp()->inherits( AbstractLineImp::stype() ) ) )
+      return new ObjectTypeCalcer( LineLineIntersectionType::instance(), args );
+    // other cases will follow...
+  }
   for ( std::vector<ObjectHolder*>::iterator i = os.begin(); i != os.end(); ++i )
     if ( (*i)->imp()->inherits( CurveImp::stype() ) )
       return constrainedPointCalcer( (*i)->calcer(), c, d );
