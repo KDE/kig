@@ -27,6 +27,9 @@
 
 #include <vector>
 
+enum LinearConstraints {noconstraint, zerotilt, parabolaifzt, circleifzt, 
+      equilateral, ysymmetry, xsymmetry};
+
 /**
  * This class represents an equation of a conic in the form
  * "ax^2 + by^2 + cxy + dx + ey + f = 0".  The coefficients are stored
@@ -119,7 +122,13 @@ class Conic
  * least 1 point.  If there are less than 5, than the coefficients
  * will be chosen to 1.0 if possible
  */
-const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& points );
+const ConicCartesianEquationData calcCartesian ( 
+    const std::vector<Coordinate>& points, 
+    const LinearConstraints c1 = noconstraint,
+    const LinearConstraints c2 = noconstraint,
+    const LinearConstraints c3 = noconstraint,
+    const LinearConstraints c4 = noconstraint,
+    const LinearConstraints c5 = noconstraint);
 
 /**
  * This function calcs a polar equation for the conic defined by

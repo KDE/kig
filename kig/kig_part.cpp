@@ -31,6 +31,7 @@
 #include "../objects/circle.h"
 #include "../objects/conic.h"
 #include "../objects/coniclines.h"
+#include "../objects/conicsextra.h"
 #include "../objects/segment.h"
 #include "../objects/normalpoint.h"
 #include "../objects/midpoint.h"
@@ -188,8 +189,10 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<CircleBTP> );
     Object::addBuiltinType( new TStdType<EllipseBFFP> );
     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
+//     Object::addBuiltinType( new TStdType<ConicBDF> );
     Object::addBuiltinType( new TStdType<ConicB5P> );
     Object::addBuiltinType( new TStdType<ParabolaBTP> );
+    Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
     Object::addBuiltinType( new TStdType<MidPoint> );
     Object::addBuiltinType( new TStdType<IntersectionPoint> );
     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
@@ -201,6 +204,8 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<Ray> );
     Object::addBuiltinType( new TStdType<Arc> );
     Object::addBuiltinType( new TStdType<LineDirectrix> );
+    Object::addBuiltinType( new TStdType<LinePolar> );
+    Object::addBuiltinType( new TStdType<PointPolar> );
     Object::addBuiltinType( new TType<TextLabel> );
     Object::addBuiltinType( new TType<NormalPoint> );
     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );

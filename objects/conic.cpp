@@ -217,7 +217,13 @@ const Conic* Conic::toConic() const
   return this;
 }
 
-const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& points )
+const ConicCartesianEquationData calcCartesian ( 
+  const std::vector<Coordinate>& points,
+  LinearConstraints c1,
+  LinearConstraints c2,
+  LinearConstraints c3,
+  LinearConstraints c4,
+  LinearConstraints c5)
 {
   // points is a vector of exactly 5 points through which the conic is
   // constrained.
@@ -232,8 +238,10 @@ const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& 
   double matrix[5][6];
   double solution[6];
   int scambio[5];
+  LinearConstraints constraints[] = {c1, c2, c3, c4, c5};
 
   int numpoints = points.size();
+  int numconstraints = 5;
 
   // fill in the matrix elements
   for ( int i = 0; i < numpoints; ++i )
@@ -248,47 +256,30 @@ const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& 
     matrix[i][5] = 1.0;
   }
 
-  // if less than 5 points, force the symmetry axes to be
-  // parallel to the coordinate system (zero tilt): c = 0
-  if (numpoints < 5)
+  for ( int i = 0; i < numconstraints; i++ )
   {
+    if (numpoints >= 5) break;    // don't add constraints if we have enough
     for (int j = 0; j < 6; ++j) matrix[numpoints][j] = 0.0;
-    matrix[numpoints][2] = 1.0;
-    ++numpoints;
+    // force the symmetry axes to be
+    // parallel to the coordinate system (zero tilt): c = 0
+    if (constraints[i] == zerotilt) matrix[numpoints][2] = 1.0;
+    // force a parabula (if zerotilt): b = 0
+    if (constraints[i] == parabolaifzt) matrix[numpoints][1] = 1.0;
+    // force a circle (if zerotilt): a = b
+    if (constraints[i] == circleifzt) {
+      matrix[numpoints][0] = 1.0;
+      matrix[numpoints][1] = -1.0; }
+    // force an equilateral hyperbola: a + b = 0
+    if (constraints[i] == equilateral) {
+      matrix[numpoints][0] = 1.0;
+      matrix[numpoints][1] = 1.0; }
+    // force symmetry about y-axis: d = 0
+    if (constraints[i] == ysymmetry) matrix[numpoints][3] = 1.0;
+    // force symmetry about x-axis: e = 0
+    if (constraints[i] == xsymmetry) matrix[numpoints][4] = 1.0;
+
+    if (constraints[i] != noconstraint) ++numpoints;
   }
-
-  // if not enough constraints, force a parabula: b = c = 0
-  if (numpoints < 5)
-  {
-    for (int j = 0; j < 6; j++) matrix[numpoints][j] = 0.0;
-    matrix[numpoints][1] = 1.0;
-    numpoints++;
-  }
-
-//   // if not enough constraints force a circle: c = 0, a = b
-//   if (numpoints < 5)
-//   {
-//     for (int j = 0; j < 6; j++) matrix[numpoints][j] = 0.0;
-//     matrix[numpoints][0] = 1.0;
-//     matrix[numpoints][1] = -1.0;
-//     numpoints++;
-//   }
-
-  // if not enough constraints force symmetry about y-axis: d = 0
-  if (numpoints < 5)
-  {
-    for (int j = 0; j < 6; j++) matrix[numpoints][j] = 0.0;
-    matrix[numpoints][3] = 1.0;
-    numpoints++;
-  }
-
-//  // if not enough constraints force symmetry about x-axis: e = 0
-//  if (numpoints < 5)
-//  {
-//    for (int j = 0; j < 6; j++) matrix[numpoints][j] = 0.0;
-//    matrix[numpoints][4] = 1.0;
-//    numpoints++;
-//  }
 
   // start gaussian elimination
   for ( int k = 0; k < numpoints; ++k )
@@ -489,7 +480,7 @@ void ConicB5P::calc()
   {
     std::transform( pts, pts + 5, std::back_inserter( points ),
                     std::mem_fun( &Point::getCoord ) );
-    cequation = calcCartesian( points );
+    cequation = calcCartesian( points, zerotilt, parabolaifzt, ysymmetry );
     pequation = calcPolar( cequation );
   }
 }
@@ -553,7 +544,8 @@ void ConicB5P::sDrawPrelim( KigPainter& p, const Objects& os )
   };
 
   p.setPen(QPen (Qt::red, 1));
-  p.drawConic( calcPolar( calcCartesian( points ) ) );
+  p.drawConic( calcPolar( calcCartesian( points, 
+      zerotilt, parabolaifzt, ysymmetry ) ) );
   return;
 }
 
@@ -580,7 +572,7 @@ void ParabolaBTP::calc()
   {
     std::transform( pts, pts + 3, std::back_inserter( points ),
                     std::mem_fun( &Point::getCoord ) );
-    cequation = calcCartesian( points );
+    cequation = calcCartesian( points, zerotilt, parabolaifzt, ysymmetry );
     pequation = calcPolar( cequation );
   }
 }
@@ -644,12 +636,8 @@ void ParabolaBTP::sDrawPrelim( KigPainter& p, const Objects& os )
   };
 
   p.setPen(QPen (Qt::red, 1));
-  //
-  // please note: right now this relies on the calcCartesian placing
-  // the right constraints to get a vertical parabola.  It would be
-  // better to pass some flag to tell calcCartesian to do just that!
-  //
-  p.drawConic( calcPolar( calcCartesian( points ) ) );
+  p.drawConic( calcPolar( calcCartesian( points,
+      zerotilt, parabolaifzt, ysymmetry ) ) );
   return;
 }
 

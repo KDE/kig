@@ -58,6 +58,9 @@
 	<Action name="objects_new_hyperbolabffp" />
 	<Action name="objects_new_conicb5p" />
 	<Action name="objects_new_parabolabtp" />
+	<Action name="objects_new_equilateralhyperbolab4p" />
+	<Action name="objects_new_linepolar" />
+	<Action name="objects_new_pointpolar" />
 	<ActionList name="user_conic_types" />
 	<Action name="objects_new_linedirectrix" />
 	<Action name="objects_new_lineconicradical" />
