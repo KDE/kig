@@ -223,7 +223,7 @@ void KigDocument::setupActions()
 #endif
 #endif
 #ifdef KIG_PART_CPP_STD_FULLSCREEN_ACTION
-  a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection() );
+  a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), 0 );
 #else
   tmp = l->loadIcon( "window_fullscreen", KIcon::User );
   a = new KAction(
