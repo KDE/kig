@@ -261,7 +261,8 @@ void Kig::fileOpen()
                                                                      "*.kig|Kig Documents (*.kig)\n"
                                                                      "*.kgeo|KGeo Documents (*.kgeo)\n"
                                                                      "*.seg|KSeg Documents (*.seg)\n"
-                                                                     "*.fgeo|Dr. Geo Documents (*.fgeo)" ) );
+                                                                     "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+                                                                     "*.fig *.FIG|Cabri Documents (*.fig *.FIG)" ) );
 
   if (!file_name.isEmpty()) openURL(file_name);
 }
