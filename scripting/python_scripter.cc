@@ -24,15 +24,17 @@
 #include <boost/python.hpp>
 #include <boost/mpl/bool.hpp>
 
-#include "../misc/coordinate.h"
-#include "../misc/kigtransform.h"
 #include "../misc/common.h"
-#include "../objects/common.h"
+#include "../misc/coordinate.h"
+#include "../misc/cubic-common.h"
+#include "../misc/kigtransform.h"
 #include "../objects/bogus_imp.h"
-#include "../objects/point_imp.h"
-#include "../objects/line_imp.h"
+#include "../objects/common.h"
 #include "../objects/circle_imp.h"
+#include "../objects/cubic_imp.h"
+#include "../objects/line_imp.h"
 #include "../objects/other_imp.h"
+#include "../objects/point_imp.h"
 
 using namespace boost::python;
 
@@ -310,14 +312,20 @@ BOOST_PYTHON_MODULE_INIT( kig )
 //    .def( "hasFrame", &TextImp::hasFrame )
 //    ;
 
-//   class_<CubicCartesianData>
+  class_<CubicCartesianData>( "CubicCartesianData", init<double,double,double,double,double,double,double,double,double,double>() )
+    .def( "invalidData", &CubicCartesianData::invalidData )
+    .staticmethod( "invalidData" )
+    .def( "valid", &CubicCartesianData::valid )
+//    .def( init<double[10]>() )
+//    .def_readwrite( "coeffs", &CubicCartesianData::coeffs )
+    ;
 
-//   class_<CubicImp, bases<CurveImp> >( "Cubic", init<CubicCartesianData>() )
-//     .def( "stype", &CubicImp::stype,
-//           return_value_policy<reference_existing_object>() )
-//     .staticmethod( "stype" )
-//     .def( "data", &CubicImp::data )
-//     ;
+   class_<CubicImp, bases<CurveImp> >( "Cubic", init<CubicCartesianData>() )
+     .def( "stype", &CubicImp::stype,
+           return_value_policy<reference_existing_object>() )
+     .staticmethod( "stype" )
+     .def( "data", &CubicImp::data )
+     ;
 
 };
 
