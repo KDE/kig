@@ -23,6 +23,7 @@
 #include "../misc/kigpainter.h"
 
 #include <qevent.h>
+#include <qglobal.h>
 #include <qeventloop.h>
 #include <kapplication.h>
 
@@ -79,7 +80,11 @@ void DragRectMode::released( const QPoint& p, KigWidget& w, bool nc )
   const Rect r =  w.fromScreen( QRect( mstart, p ) );
   mret = mDoc->whatIsInHere( r );
   mnc = nc;
+#if QT_VERSION >= 0x030100
   kapp->eventLoop()->exitLoop();
+#else
+  kapp->exit_loop();
+#endif
 }
 
 void DragRectMode::run( const QPoint& start, KigWidget& w, KigMode* prev )
@@ -90,7 +95,11 @@ void DragRectMode::run( const QPoint& start, KigWidget& w, KigMode* prev )
   mDoc->setMode( this );
 
   moved( start, w );
+#if QT_VERSION >= 0x030100
   (void) kapp->eventLoop()->enterLoop();
+#else
+  (void) kapp->enter_loop();
+#endif
   mDoc->setMode( prev );
 }
 

@@ -21,7 +21,14 @@
 
 #include "mode.h"
 
+#include "../misc/objects.h"
+
 #include <qpoint.h>
+
+class Object;
+class KigWidget;
+class KigDocument;
+class ArgsChecker;
 
 class SelectionModeBase
   : public KigMode
@@ -49,14 +56,27 @@ protected:
   virtual void dragObject( const Objects& objectsClickedOn, const QPoint& pointClickedOn, KigWidget& w );
 
 public:
-  SelectingModeBase( KigDocument* );
+  SelectionModeBase( KigDocument* );
   ~SelectionModeBase();
+
+  void run( KigMode* prev );
 
   const Objects& selection() const;
 
   void clearSelection( KigWidget& w );
   void selectObject( Object* o, KigWidget& w );
+  void unselectObject( Object* o, KigWidget& w );
   void finish();
+};
+
+class StandAloneSelectionMode
+  : public SelectionModeBase
+{
+  const ArgsChecker& mchecker;
+public:
+  StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d );
+  void selectionChanged( KigWidget& w );
+  virtual bool wantObject( const Object& o, KigWidget& );
 };
 
 #endif

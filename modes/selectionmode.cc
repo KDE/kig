@@ -18,6 +18,17 @@
 
 #include "selectionmode.h"
 
+#include "../kig/kig_view.h"
+#include "../kig/kig_part.h"
+#include "../misc/kigpainter.h"
+#include "../misc/i18n.h"
+#include "../misc/argsparser.h"
+#include "../objects/normalpoint.h"
+
+#include <qevent.h>
+#include <kcursor.h>
+#include <kapplication.h>
+
 SelectionModeBase::SelectionModeBase( KigDocument* d )
   : KigMode( d )
 {
@@ -30,9 +41,9 @@ SelectionModeBase::~SelectionModeBase()
 void SelectionModeBase::leftClicked( QMouseEvent* e, KigWidget* v )
 {
   mplc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
+  moco = mDoc->whatAmIOn( v->fromScreen( mplc ), v->screenInfo() );
 
-  if( oco.empty() )
+  if( moco.empty() )
   {
     // clicked on an empty spot --> we show the rectangle for
     // selecting stuff...
@@ -51,7 +62,7 @@ void SelectionModeBase::leftClicked( QMouseEvent* e, KigWidget* v )
 void SelectionModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* w )
 {
   // clicked on an object, move it ?
-  if( ( plc - e->pos() ).manhattanLength() > 3 )
+  if( ( mplc - e->pos() ).manhattanLength() > 3 )
   {
     dragObject( moco, mplc, *w );
   };
@@ -62,30 +73,27 @@ void SelectionModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
   if( (mplc - e->pos()).manhattanLength() > 4 ) return;
 
   Objects cos; // objects whose selection we change..
-  if( !mselection.contains( oco.front() ) )
+  if( !mselection.contains( moco.front() ) )
   {
     // clicked on an object that wasn't selected....
-    // we only use oco.front(), since that's what the user
+    // we only use moco.front(), since that's what the user
     // expects.  E.g. if he clicks on a point which is on a line,
-    // then oco will contain first the point, then the line.
+    // then moco will contain first the point, then the line.
     // Obviously, we only want the point...
     if (!(e->state() & (ControlButton | ShiftButton)))
     {
       cos = mselection;
-        clearSelection();
+      clearSelection( *v );
     };
-    selectObject( oco.front() );
-    cos.upush( oco.front() );
+    selectObject( moco.front(), *v );
+    cos.upush( moco.front() );
   }
   else
   {
     // clicked on selected objects...
-    // we only use oco.front(), since that's what the user
-    // expects.  E.g. if he clicks on a point which is on a line,
-    // then oco will contain first the point, then the line.
-    // Obviously, we only want the point...
-    unselectObject( oco.front() );
-    cos.push_back( oco.front() );
+    // as before, we only use moco.front()
+    unselectObject( moco.front() );
+    cos.push_back( moco.front() );
   };
 
   KigPainter p( v->screenInfo(), &v->stillPix );
@@ -105,13 +113,13 @@ void SelectionModeBase::midClicked( QMouseEvent* e, KigWidget* v )
 
 void SelectionModeBase::midReleased( QMouseEvent* e, KigWidget* v )
 {
-  if( (e->pos() - plc).manhattanLength() > 4 ) return;
+  if( (e->pos() - mplc).manhattanLength() > 4 ) return;
 
   // construct a new point..
-  Point* pt = NormalPoint::sensiblePoint( v->fromScreen( plc ), *mDoc, *v );
+  Point* pt = NormalPoint::sensiblePoint( v->fromScreen( mplc ), *mDoc, *v );
   pt->calcForWidget( *v );
 
-  if ( wantObject( pt, *mDoc, *v ) )
+  if ( wantObject( *pt, *v ) )
   {
     mDoc->addObject( pt );
 
@@ -139,24 +147,24 @@ void SelectionModeBase::rightClicked( QMouseEvent* e, KigWidget* w )
 void SelectionModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   Objects os = mDoc->whatAmIOn( w->fromScreen( e->pos() ), w->screenInfo() );
-  v->updateCurPix();
+  w->updateCurPix();
 
   if ( ! os.empty() && wantObject( *(os.front() ), *w ))
   {
     // the cursor is over an object, show object type next to cursor
     // and set statusbar text
 
-    v->setCursor( KCursor::handCursor() );
+    w->setCursor( KCursor::handCursor() );
 
-    QString typeName = tmp.front()->vTBaseTypeName();
+    QString typeName = os.front()->vTBaseTypeName();
     mDoc->emitStatusBarText( i18n( "Select this %1" ).arg( typeName ) );
 
-    KigPainter p( v->screenInfo(), &v->curPix );
+    KigPainter p( w->screenInfo(), &w->curPix );
     QPoint point = e->pos();
     point.setX(point.x()+15);
 
     p.drawTextStd( point, typeName );
-    v->updateWidget( p.overlay() );
+    w->updateWidget( p.overlay() );
   }
   else
   {
@@ -171,7 +179,7 @@ void SelectionModeBase::enableActions()
   KigMode::enableActions();
 }
 
-void SelectionModeBase::dragRect( const QPoint& p, KigWidget& w )
+void SelectionModeBase::dragRect( const QPoint&, KigWidget& )
 {
 }
 
@@ -180,11 +188,11 @@ bool SelectionModeBase::wantObject( const Object&, KigWidget& )
   return true;
 }
 
-void SelectionModeBase::rightClicked( const Objects& os, KigWidget& w )
+void SelectionModeBase::rightClicked( const Objects&, KigWidget& )
 {
 }
 
-void SelectionModeBase::dragObject( const Objects& objectsClickedOn, const QPoint& pointClickedOn, KigWidget& w )
+void SelectionModeBase::dragObject( const Objects&, const QPoint&, KigWidget& )
 {
 }
 
@@ -200,7 +208,7 @@ void SelectionModeBase::clearSelection( KigWidget& w )
 void SelectionModeBase::selectObject( Object* o, KigWidget& w )
 {
   o->setSelected( true );
-  mselection |= o;
+  mselection.upush( o );
   selectionChanged( w );
 }
 
@@ -212,4 +220,38 @@ void SelectionModeBase::finish()
 const Objects& SelectionModeBase::selection() const
 {
   return mselection;
+}
+
+void SelectionModeBase::run( KigMode* prev )
+{
+  mDoc->setMode( this );
+  kapp->eventLoop()->enterLoop();
+  mDoc->setMode( prev );
+}
+
+void StandAloneSelectionMode::selectionChanged( KigWidget& )
+{
+  int res = mchecker.check( selection() );
+  assert( res & ArgsChecker::Valid );
+  if ( res & ArgsChecker::Complete )
+    finish();
+}
+
+bool StandAloneSelectionMode::wantObject( const Object& o, KigWidget& )
+{
+  int res = mchecker.check( selection().with( &o ) );
+  return res & ArgsChecker::Valid;
+}
+
+StandAloneSelectionMode::StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d )
+  : SelectionModeBase( d ), mchecker( c )
+{
+
+}
+
+void SelectionModeBase::unselectObject( Object* o, KigWidget& w )
+{
+  o->setSelected( false );
+  mselection.remove( o );
+  selectionChanged( w );
 }
