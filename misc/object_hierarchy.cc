@@ -21,9 +21,11 @@
 #include "../objects/object.h"
 #include "../objects/object_imp.h"
 #include "../objects/object_imp_factory.h"
+#include "../objects/object_type_factory.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/object_type.h"
 
+#include <kglobal.h>
 #include <qdom.h>
 
 class ObjectHierarchy::Node
@@ -241,7 +243,7 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc )
         arge.appendChild( doc.createTextNode( QString::number( parent ) ) );
         e.appendChild( arge );
       };
-   }
+    }
     else
     {
       assert( mnodes[i]->id() == ObjectHierarchy::Node::ID_PushStack );
@@ -258,10 +260,53 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc )
 ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
   : mnumberofargs( 0 ), mnumberofresults( 0 )
 {
+  bool ok = true;
   QDomElement e = parent.firstChild().toElement();
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
     if ( e.tagName() != "input" ) break;
     else ++mnumberofargs;
   }
+  for (; !e.isNull(); e = e.nextSibling().toElement() )
+  {
+    bool result = e.tagName() == "result";
+    if ( result ) ++mnumberofargs;
+
+    QString tmp = e.attribute( "id" );
+    int id = tmp.toInt( &ok );
+    if ( ! ok ) continue;       // could be better :(
+
+    tmp = e.attribute( "action" );
+    Node* newnode = 0;
+    if ( tmp == "calc" )
+    {
+      // ApplyTypeNode
+      QCString typen = e.attribute( "type" ).latin1();
+      const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
+      if ( ! type ) continue;   // anyone got a better idea on
+                                // reportin errors here ?
+      std::vector<int> parents;
+      for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
+      {
+        QDomElement q = p.toElement();
+        if ( q.isNull() ) continue; // see above
+        if ( q.tagName() != "arg" ) continue;
+        int pid = q.text().toInt(&ok );
+        if ( ! ok ) continue;
+        parents.push_back( pid - 1 );
+      };
+      newnode = new ApplyTypeNode( type, parents );
+    }
+    else
+    {
+      // PushStackNode
+      if ( e.attribute( "action" ) != "push" ) continue;
+      QString typen = e.attribute( "type" );
+      if ( typen.isNull() ) continue;
+      ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e );
+      newnode = new PushStackNode( imp );
+    };
+    mnodes.resize( kMax( id, (int) mnodes.size() ) );
+    mnodes[id - 1] = newnode;
+  };
 }
