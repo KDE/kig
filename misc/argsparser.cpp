@@ -157,7 +157,6 @@ ArgsParser::spec ArgsParser::findSpec( const ObjectImp* obj, const Args& parents
 {
   spec ret;
   ret.type = 0;
-  ret.usetext = 0;
 
   std::vector<bool> found( margs.size(), false );
 
@@ -191,7 +190,7 @@ const ObjectImpType* ArgsParser::impRequirement(
   return s.type;
 }
 
-const char* ArgsParser::usetext( const ObjectImp* obj, const Args& sel ) const
+std::string ArgsParser::usetext( const ObjectImp* obj, const Args& sel ) const
 {
   spec s = findSpec( obj, sel );
   return s.usetext;
@@ -241,7 +240,7 @@ bool ArgsParser::isDefinedOnOrThrough( const ObjectImp* o, const Args& parents )
   return s.onOrThrough;
 }
 
-const char* ArgsParser::selectStatement( const Args& selection ) const
+std::string ArgsParser::selectStatement( const Args& selection ) const
 {
   std::vector<bool> found( margs.size(), false );
 

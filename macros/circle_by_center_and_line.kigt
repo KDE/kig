@@ -5,8 +5,14 @@
   <Description>A circle constructed by its center and tangent to a given line</Description>
   <ActionName>objects_new_circlebcl</ActionName>
   <Construction>
-   <input requirement="line" id="1" />
-   <input requirement="point" id="2" />
+   <input requirement="line" id="1">
+    <UseText>Construct a circle tangent to this line</UseText>
+    <SelectStatement>Select the line that the new circle should be tangent to...</SelectStatement>
+   </input>
+   <input requirement="point" id="2">
+    <UseText>Construct a circle with this center</UseText>
+    <SelectStatement>Select the center of the new circle...</SelectStatement>
+   </input>
    <intermediate action="calc" type="LinePerpend" id="3" >
     <arg>1</arg>
     <arg>2</arg>

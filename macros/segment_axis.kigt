@@ -6,7 +6,10 @@
   <ActionName>objects_new_segment_axis</ActionName>
   <IconFileName>segmentaxis</IconFileName>
   <Construction>
-   <input requirement="segment" id="1" />
+   <input requirement="segment" id="1">
+    <UseText>Construct the axis of this segment</UseText>
+    <SelectStatement>Select the segment of which you want to draw the axis...</SelectStatement>
+   </input>
    <intermediate action="fetch-property" property="mid-point" id="2" >
     <arg>1</arg>
    </intermediate>

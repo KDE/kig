@@ -346,7 +346,8 @@ ObjectHierarchy::~ObjectHierarchy()
 
 ObjectHierarchy::ObjectHierarchy( const ObjectHierarchy& h )
   : mnumberofargs( h.mnumberofargs ), mnumberofresults( h.mnumberofresults ),
-    margrequirements( h.margrequirements )
+    margrequirements( h.margrequirements ), musetexts( h.musetexts ),
+    mselectstatements( h.mselectstatements )
 {
   mnodes.reserve( h.mnodes.size() );
   for ( uint i = 0; i < h.mnodes.size(); ++i )
@@ -391,6 +392,9 @@ void ObjectHierarchy::init( const std::vector<ObjectCalcer*>& from, const std::v
   }
   for ( std::vector<ObjectCalcer*>::const_iterator i = to.begin(); i != to.end(); ++i )
     visit( *i, seenmap, true, true );
+
+  musetexts.resize( margrequirements.size(), "" );
+  mselectstatements.resize( margrequirements.size(), "" );
 }
 
 ObjectHierarchy::ObjectHierarchy( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to )
@@ -413,6 +417,14 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
     QDomElement e = doc.createElement( "input" );
     e.setAttribute( "id", id++ );
     e.setAttribute( "requirement", margrequirements[i]->internalName() );
+    // we don't save these atm, since the user can't define them.
+    // we only load them from builtin macro's.
+//     QDomElement ut = doc.createElement( "UseText" );
+//     ut.appendChild( doc.createTextNode( QString::fromLatin1(musetexts[i].c_str() ) ) );
+//     e.appendChild( ut );
+//     QDomElement ss = doc.createElement( "SelectStatement" );
+//     ss.appendChild( doc.createTextNode( QString::fromLatin1(mselectstatements[i].c_str() ) ) );
+//     e.appendChild( ss );
     parent.appendChild( e );
   }
 
@@ -477,7 +489,26 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
     const ObjectImpType* req = ObjectImpType::typeFromInternalName( tmp.latin1() );
     if ( req == 0 ) req = ObjectImp::stype(); // sucks, i know..
     margrequirements.resize( mnumberofargs, ObjectImp::stype() );
+    musetexts.resize( mnumberofargs, "" );
+    mselectstatements.resize( mnumberofargs, "" );
     margrequirements[id - 1] = req;
+    musetexts[id - 1] = req->selectStatement();
+    QDomElement esub = e.firstChild().toElement();
+    for ( ; !esub.isNull(); esub = esub.nextSibling().toElement() )
+    {
+      if ( esub.tagName() == "UseText" )
+      {
+        musetexts[id - 1] = esub.text().latin1();
+      }
+      else if ( esub.tagName() == "SelectStatement" )
+      {
+        mselectstatements[id - 1] = esub.text().latin1();
+      }
+      else
+      {
+        // broken file ? ignore...
+      }
+    }
   }
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
@@ -549,9 +580,8 @@ ArgsParser ObjectHierarchy::argParser() const
     const ObjectImpType* req = margrequirements[i];
     ArgsParser::spec spec;
     spec.type = req;
-    spec.usetext = req->selectStatement();
-    spec.selectstat = "";
-    assert( spec.usetext );
+    spec.usetext = musetexts[i];
+    spec.selectstat = mselectstatements[i];
     specs.push_back( spec );
   };
   return ArgsParser( specs );
@@ -684,6 +714,7 @@ int ObjectHierarchy::storeObject( const ObjectCalcer* o, const std::vector<Objec
       margrequirements[pl[i]] =
         lowermost( margrequirements[pl[i]],
                    o->impRequirement( parent, opl ) );
+      musetexts[pl[i]] = margrequirements[pl[i]]->selectStatement();
     };
   };
   if ( dynamic_cast<const ObjectTypeCalcer*>( o ) )

@@ -23,6 +23,7 @@
 
 #include <map>
 #include <vector>
+#include <string>
 
 class ObjectImpType;
 class ArgsParser;
@@ -36,6 +37,8 @@ private:
   uint mnumberofargs;
   uint mnumberofresults;
   std::vector<const ObjectImpType*> margrequirements;
+  std::vector<std::string> musetexts;
+  std::vector<std::string> mselectstatements;
 
   // these two are really part of the constructor...
   int visit( const ObjectCalcer* o, std::map<const ObjectCalcer*, int>&,

@@ -6,8 +6,14 @@
   <ActionName>objects_new_circlebps</ActionName>
   <IconFileName>circlebps</IconFileName>
   <Construction>
-   <input requirement="point" id="1" />
-   <input requirement="segment" id="2" />
+   <input requirement="point" id="1">
+    <UseText>Construct a circle with this center</UseText>
+    <SelectStatement>Select the center of the new circle...</SelectStatement>
+   </input>
+   <input requirement="segment" id="2">
+    <UseText>Construct a circle with the radius given by the length of this segment</UseText>
+    <SelectStatement>Select the segment of which the length gives the radius of the new circle...</SelectStatement>
+   </input>
    <intermediate action="fetch-property" property="length" id="3" >
     <arg>2</arg>
    </intermediate>

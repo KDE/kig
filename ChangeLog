@@ -1,5 +1,7 @@
 2004-05-30  Dominique Devriese  <devriese@kde.org>
 
+	* implement usetexts and select statements for builtin macro's
+
 	* Show a text in the statusbar describing what we want the user to
 	select, in ConstructMode.
 

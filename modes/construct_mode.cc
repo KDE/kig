@@ -303,7 +303,7 @@ void TestConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& os, cons
                   std::mem_fun( &ObjectCalcer::imp ) );
 
   // usetext
-  QString usetext = i18n( mtype->argsParser().usetext( args.back(), args ) );
+  QString usetext = i18n( mtype->argsParser().usetext( args.back(), args ).c_str() );
   QPoint textloc = p;
   textloc.setX( textloc.x() + 15 );
   pter.drawTextStd( textloc, usetext );
@@ -427,7 +427,7 @@ QString TestConstructMode::selectStatement( const std::vector<ObjectCalcer*>& se
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
-  const char* ret = mtype->argsParser().selectStatement( args );
-  if ( ! ret ) return QString::null;
-  return i18n( ret );
+  std::string ret = mtype->argsParser().selectStatement( args );
+  if ( ret.empty() ) return QString::null;
+  return i18n( ret.c_str() );
 }

@@ -295,9 +295,9 @@ QString StandardConstructorBase::useText( const ObjectCalcer& o, const std::vect
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
-  const char* ret = margsparser.usetext( o.imp(), args );
-  if ( ! ret ) return QString::null;
-  return i18n( ret );
+  std::string ret = margsparser.usetext( o.imp(), args );
+  if ( ret.empty() ) return QString::null;
+  return i18n( ret.c_str() );
 }
 
 QString StandardConstructorBase::selectStatement(
@@ -308,9 +308,9 @@ QString StandardConstructorBase::selectStatement(
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
-  const char* ret = margsparser.selectStatement( args );
-  if ( ! ret ) return QString::null;
-  return i18n( ret );
+  std::string ret = margsparser.selectStatement( args );
+  if ( ret.empty() ) return QString::null;
+  return i18n( ret.c_str() );
 }
 
 QString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
@@ -406,9 +406,9 @@ QString MacroConstructor::selectStatement(
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &ObjectCalcer::imp ) );
-  const char* ret = mparser.selectStatement( args );
-  if ( !ret ) return QString::null;
-  else return i18n( ret );
+  std::string ret = mparser.selectStatement( args );
+  if ( ret.empty() ) return QString::null;
+  else return i18n( ret.c_str() );
 }
 
 QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
@@ -419,9 +419,9 @@ QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<Obje
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &ObjectCalcer::imp ) );
-  const char* ret = mparser.usetext( o.imp(), args );
-  if ( !ret ) return QString::null;
-  else return i18n( ret );
+  std::string ret = mparser.usetext( o.imp(), args );
+  if ( ret.empty() ) return QString::null;
+  else return i18n( ret.c_str() );
 }
 
 void MacroConstructor::handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
