@@ -134,6 +134,7 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
 
   if ( i == 0 )
   {
+    // toggle label frame
     Objects monos( os[0] );
     MonitorDataObjects mon( monos );
     int n = (static_cast<const IntImp*>( os[0]->imp() )->data() + 1) % 2;
@@ -144,6 +145,7 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
   }
   else if ( i == 1 )
   {
+    // redefine..
     TextLabelRedefineMode m( doc, o );
     doc.runMode( &m );
     w.redrawScreen();

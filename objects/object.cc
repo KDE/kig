@@ -175,6 +175,13 @@ void ObjectWithParents::delParent( Object* o )
   o->delChild( this );
 }
 
+void ReferenceObject::clearParents()
+{
+  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
+    (*i)->delChild( this );
+  mparents.clear();
+}
+
 void ObjectWithParents::setParents( const Objects& parents )
 {
   for ( uint i = 0; i < parents.size(); ++i )
@@ -523,4 +530,3 @@ ReferenceObject::ReferenceObject()
   : ObjectWithParents( Objects() )
 {
 }
-

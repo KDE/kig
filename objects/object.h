@@ -265,6 +265,8 @@ public:
   ReferenceObject( const Objects& os );
   ~ReferenceObject();
 
+  void clearParents();
+
 private:
   const ObjectImp* imp() const;
   void draw( KigPainter&, bool ) const;
