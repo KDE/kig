@@ -321,7 +321,7 @@ NewScriptAction::NewScriptAction( const char* descname, const char* description,
   : GUIAction(), mactionname( actionname ), mdescname( descname ),
     mdescription( description ), micon( icon ), mtype( type )
 {
-  if ( micon == "" )
+  if ( micon.isEmpty() )
   {
     micon = ScriptType::icon( type );
   }
