@@ -208,7 +208,7 @@ bool StringImp::canFillInNextEscape() const
 const ObjectImpType* InvalidImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "invalid", "", "", "", "", "", "" );
+    Parent::stype(), "invalid", "", "", "", "", "", "", "", "" );
   return &t;
 }
 
@@ -216,19 +216,19 @@ const ObjectImpType* StringImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "string",
-    "string", "", "", "", "", "" );
+    "string", "", "", "", "", "", "", "" );
   return &t;
 }
 const ObjectImpType* HierarchyImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "hierarchy", "", "", "", "", "", "" );
+    Parent::stype(), "hierarchy", "", "", "", "", "", "", "", "" );
   return &t;
 }
 const ObjectImpType* TransformationImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "transformation", "", "", "", "", "", "" );
+    Parent::stype(), "transformation", "", "", "", "", "", "", "", "" );
   return &t;
 }
 
@@ -266,7 +266,7 @@ const ObjectImpType* DoubleImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "double",
-    "double", "", "", "", "", "" );
+    "double", "", "", "", "", "", "", "" );
   return &t;
 }
 
@@ -274,7 +274,7 @@ const ObjectImpType* IntImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "int",
-    "int", "", "", "", "", "" );
+    "int", "", "", "", "", "", "", "" );
   return &t;
 }
 
@@ -282,7 +282,7 @@ const ObjectImpType* BogusImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "bogus",
-    "", "", "", "", "", "" );
+    "", "", "", "", "", "", "", "" );
   return &t;
 }
 

@@ -231,7 +231,6 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         transparents.push_back( parents[0] );
         transparents.push_back( vector );
         o = new ObjectTypeCalcer( TranslatedType::instance(), transparents );
-        o = new RealObject( TranslatedType::instance(), transparents );
         break;
       }
       case G_ROTATED:

@@ -106,7 +106,7 @@ Args ArgsParserObjectType::sortArgs( const Args& args ) const
   return margsparser.parse( args );
 }
 
-std::vector<ObjectCalcer*> ObjectType::movableParents( const ObjectTypeCalcer& ourobj ) const
+std::vector<ObjectCalcer*> ObjectType::movableParents( const ObjectTypeCalcer& ) const
 {
   return std::vector<ObjectCalcer*>();
 }

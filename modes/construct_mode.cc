@@ -264,10 +264,5 @@ void ConstructMode::selectObjects( const std::vector<ObjectHolder*>& os, KigWidg
 
 void ConstructMode::finish()
 {
-  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
-  {
-    assert( (*i)->inherits( Object::ID_RealObject ) );
-    static_cast<RealObject*>( *i )->setSelected( false );
-  }
   mdoc.doneMode( this );
 }
