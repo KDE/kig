@@ -2,6 +2,7 @@ simple:
 - get rid of segmentOverlay warnings on startup..
 - implement the helpSlot()'s in the wizards..
 - change resizeEvent to not recenter the screen..
+- implement a polar CoordinateSystem..
 
 harder:
 - fix the KDE style issues, there are quite some problems, i guess i
