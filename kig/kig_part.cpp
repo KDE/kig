@@ -286,7 +286,7 @@ void KigPart::setupActions()
 #endif
 #endif
 #ifdef KIG_PART_CPP_STD_FULLSCREEN_ACTION
-  a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), 0 );
+  a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), (QWidget*)(widget()->parent()),"fullscreen" );
 #else
   tmp = l->loadIcon( "window_fullscreen", KIcon::Toolbar );
   a = new KAction(
