@@ -17,7 +17,6 @@
 // 02111-1307, USA.
 
 #include "macro.h"
-#include "macro.moc"
 
 #include "macrowizard.h"
 #include "../kig/kig_part.h"

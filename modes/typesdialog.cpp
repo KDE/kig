@@ -34,6 +34,8 @@
 #include <qtextstream.h>
 #include <qstringlist.h>
 
+#include <vector>
+
 /*
  * constructor
  */
@@ -64,14 +66,14 @@ void TypesDialog::okSlot()
 
 void TypesDialog::deleteType()
 {
-  std::list<QListBoxItem*> items;
-  std::list<Type*> selectedTypes;
+  std::vector<QListBoxItem*> items;
+  std::vector<Type*> selectedTypes;
   for (QListBoxItem* i = typeList->firstItem(); i; i = i->next())
   {
     if (i->isSelected())
     {
-      selectedTypes.push_front(static_cast<TypeListElement*>(i)->getType());
-      items.push_front(i);
+      selectedTypes.push_back(static_cast<TypeListElement*>(i)->getType());
+      items.push_back(i);
     };
   };
   if (selectedTypes.empty()) return;
@@ -91,13 +93,13 @@ void TypesDialog::deleteType()
 	 i18n("Are you sure?"),
 	 i18n("Continue"),
 	 "deleteTypeWarning") == KMessageBox::Cancel ) return;
-  for (list<QListBoxItem*>::iterator i = items.begin(); i != items.end(); ++i)
+  for ( std::vector<QListBoxItem*>::iterator i = items.begin(); i != items.end(); ++i)
   {
     int appel = typeList->index(*i);
     assert (appel != -1);
     typeList->removeItem(appel);
   };
-  for ( std::list<Type*>::iterator i = selectedTypes.begin();
+  for ( std::vector<Type*>::iterator i = selectedTypes.begin();
         i != selectedTypes.end(); ++i)
   {
     Object::types().removeType(*i);
@@ -121,7 +123,8 @@ void TypesDialog::exportType()
   Types types;
   for (QListBoxItem* i = typeList->firstItem(); i; i = i->next())
   {
-    if (i->isSelected()) types.addType(static_cast<TypeListElement*>(i)->getType());
+    if (i->isSelected())
+      types.addType(static_cast<TypeListElement*>(i)->getType());
   };
   if (types.empty()) return;
   QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types files\n*"));
