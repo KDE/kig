@@ -240,6 +240,14 @@ public:
   void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
+/**
+ * MacroConstructor is a class that represents Kig macro's: these are
+ * constructed by the user, and defined by a set of input and a set of
+ * output objects.  The macro-constructor saves the way in which the
+ * output objects have been built from the input objects, and when
+ * given similar input objects, it will produce objects in the given
+ * way.  The data is saved in a @ref ObjectHierarchy.
+ */
 class MacroConstructor
   : public ObjectConstructor
 {
