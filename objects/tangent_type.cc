@@ -269,8 +269,8 @@ ObjectImp* TangentCurveType::calc( const Args& args, const KigDocument& doc ) co
   {
     tau = tau/2;
     tplus = t + tau;
-    if ( tplus > 1 ) {tplus = 1; tminus = 1 - 2*tau;}
     tminus = t - tau;
+    if ( tplus > 1 ) {tplus = 1; tminus = 1 - 2*tau;}
     if ( tminus < 0 ) {tminus = 0; tplus = 2*tau;}
     tang = (curve->getPoint( tplus, doc ) - curve->getPoint( tminus, doc ))/(2*tau);
     err = (tangold - tang)/3;
