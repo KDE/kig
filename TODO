@@ -6,8 +6,6 @@
 
 * simple:
 - implement the helpSlot()'s in the wizards..
-- allow for a frame around TextImp's, this can be used by kgeo import
-   stuff too..
 
 * harder:
 - filters: more input filters ( get cabri to work somewhat, kseg
