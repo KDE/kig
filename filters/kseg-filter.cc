@@ -241,6 +241,8 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       assert( os.size() == 2 );
       ret.push_back( os[0] );
       object = os.back();
+      object->setWidth( style.pen.width() );
+      object->setColor( style.pen.color() );
       break;
     };
     case G_MEASURE:
