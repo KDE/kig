@@ -92,4 +92,14 @@ public:
                    const KigWidget& v ) const;
 };
 
+class GenericIntersectionConstructor
+  : public MergeObjectConstructor
+{
+public:
+  GenericIntersectionConstructor();
+  ~GenericIntersectionConstructor();
+
+  bool isIntersection() const;
+};
+
 #endif

@@ -335,3 +335,46 @@ QString ConicRadicalConstructor::useText( const Object& o, const Objects&,
   else
     return i18n( "Construct the radical lines of this conic" );
 }
+
+GenericIntersectionConstructor::GenericIntersectionConstructor()
+  : MergeObjectConstructor(
+    I18N_NOOP( "Intersect" ),
+    I18N_NOOP( "The intersection of two objects" ),
+    "curvelineintersection" )
+{
+  // intersection type..
+  // There is one "toplevel" object_constructor, that is composed
+  // of multiple subconstructors..  First we build the
+  // subconstructors:
+  SimpleObjectTypeConstructor* lineline =
+    new SimpleObjectTypeConstructor(
+      LineLineIntersectionType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "curvelineintersection" );
+
+  ObjectConstructor* lineconic =
+    new ConicLineIntersectionConstructor();
+
+  MultiObjectTypeConstructor* linecubic =
+    new MultiObjectTypeConstructor(
+      LineCubicIntersectionType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "curvelineintersection", 1, 2, 3 );
+
+  ObjectConstructor* conicconic =
+    new ConicConicIntersectionConstructor();
+
+  merge( lineline );
+  merge( lineconic );
+  merge( linecubic );
+  merge( conicconic );
+}
+
+GenericIntersectionConstructor::~GenericIntersectionConstructor()
+{
+}
+
+bool GenericIntersectionConstructor::isIntersection() const
+{
+  return true;
+}

@@ -320,41 +320,10 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_locus" ) );
 
-    {
-      // intersection type..
-      // There is one "toplevel" object_constructor, that is composed
-      // of multiple subconstructors..  First we build the
-      // subconstructors:
-      SimpleObjectTypeConstructor* lineline =
-        new SimpleObjectTypeConstructor(
-          LineLineIntersectionType::instance(),
-          "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-          "curvelineintersection" );
-
-      ObjectConstructor* lineconic =
-        new ConicLineIntersectionConstructor();
-
-      MultiObjectTypeConstructor* linecubic =
-        new MultiObjectTypeConstructor(
-          LineCubicIntersectionType::instance(),
-          "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-          "curvelineintersection", 1, 2, 3 );
-
-      ObjectConstructor* conicconic =
-        new ConicConicIntersectionConstructor();
-
-      // now for the toplevel constructor:
-      MergeObjectConstructor* m = new MergeObjectConstructor(
-        I18N_NOOP( "Intersection" ),
-        I18N_NOOP( "The intersection of two objects" ),
-        "curvelineintersection" );
-      m->merge( lineline );
-      m->merge( lineconic );
-      m->merge( linecubic );
-      m->merge( conicconic );
-      ctors->add( m );
-      actions->add( new ConstructibleAction( m, "objects_new_intersection" ) );
-    };
+    // the generic intersection constructor..
+    c = new GenericIntersectionConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_intersection" ) );
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );
