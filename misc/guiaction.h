@@ -64,9 +64,9 @@ class ConstructibleAction
   : public GUIAction
 {
   ObjectConstructor* mctor;
-  const char* mactionname;
+  QCString mactionname;
 public:
-  ConstructibleAction( ObjectConstructor* ctor, const char* actionname );
+  ConstructibleAction( ObjectConstructor* ctor, const QCString& actionname );
   ~ConstructibleAction();
   QString description() const;
   QCString iconFileName() const;

@@ -84,7 +84,7 @@ ConstructibleAction::~ConstructibleAction()
 
 ConstructibleAction::ConstructibleAction(
   ObjectConstructor* ctor,
-  const char* actionname )
+  const QCString& actionname )
   : GUIAction(), mctor( ctor ), mactionname( actionname )
 {
 }
