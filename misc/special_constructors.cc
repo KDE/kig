@@ -184,8 +184,8 @@ QString LocusConstructor::useText( const Object& o, const Objects& os,
        static_cast<const RealObject&>( o ).type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
        ( os.empty() || !os[0]->inherits( Object::ID_RealObject ) ||
          !static_cast<const RealObject*>( os[0] )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
-    ) return i18n( "Moving point" );
-  else return i18n( "Dependent point" );
+    ) return i18n( "Moving Point" );
+  else return i18n( "Dependent Point" );
 }
 
 void ConicRadicalConstructor::plug( KigDocument*, KigGUIAction* )
