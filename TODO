@@ -53,8 +53,6 @@
 
 - add intersection type between arcs and the other objects.
 
-- add ObjectType's to the ObjectTypeFactory automatically.
-
 - make it possible to zoom to a very specific part of the screen,
    i.e. from (x0,y0) to (x1,y1)
 
