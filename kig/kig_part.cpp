@@ -142,11 +142,11 @@ void KigDocument::setupActions()
     actionCollection(), "types_edit");
   aConfigureTypes->setToolTip(i18n("Manage macro types.."));
 
-  tmp = l->loadIcon( "window_fullscreen", KIcon::User );
-  aFullScreen = new KAction(
-    i18n( "Full screen" ), tmp, 0, this, SLOT( startKiosk() ),
-    actionCollection(), "view_fullscreen" );
-  aFullScreen->setToolTip( i18n( "View this document full-screen." ) );
+//   tmp = l->loadIcon( "window_fullscreen", KIcon::User );
+//   aFullScreen = new KAction(
+//     i18n( "Full screen" ), tmp, 0, this, SLOT( startKiosk() ),
+//     actionCollection(), "view_fullscreen" );
+//   aFullScreen->setToolTip( i18n( "View this document full-screen." ) );
 
   tmp = l->loadIcon( "line", KIcon::User);
   aMNewLine = new KActionMenu (i18n("New Line"), tmp, actionCollection(),
