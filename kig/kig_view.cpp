@@ -90,9 +90,8 @@ void KigView::setupActions()
                                   actionCollection() );
   aZoomOut->setWhatsThis( i18n( "Zoom out of the document" ) );
 
-  aCenterScreen = new KAction( i18n( "Center screen" ), 0, this,
-                               SLOT( recenterScreen() ),
-		   actionCollection(), "view_recenter" );
+  aCenterScreen = KStdAction::fitToPage( this, SLOT( recenterScreen() ),
+                                         actionCollection() );
   aCenterScreen->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 }
 

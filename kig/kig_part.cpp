@@ -127,7 +127,7 @@ void KigDocument::setupActions()
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  tmp = l->loadIcon( "cancel", KIcon::User);
+  tmp = l->loadIcon( "stop", KIcon::Toolbar);
   aCancelConstruction = new KAction(
       i18n("Cancel construction"), tmp, Key_Escape, this,
       SLOT(cancelConstruction()), actionCollection(), "cancel_construction");
@@ -141,7 +141,7 @@ void KigDocument::setupActions()
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  tmp = l->loadIcon("macro", KIcon::User);
+  tmp = l->loadIcon("gear", KIcon::Toolbar);
   aNewMacro = new KAction(
     i18n("New macro"), tmp, 0, this, SLOT(newMacro()),
     actionCollection(), "macro_action");
