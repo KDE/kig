@@ -71,7 +71,7 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "dir", &LineData::dir )
     .def( "length", &LineData::length )
     .def_readwrite( "a", &LineData::a )
-    .def_readwrite( "b", &LineData::a )
+    .def_readwrite( "b", &LineData::b )
     ;
 
   // we need this cause Transformation::apply is overloaded and
