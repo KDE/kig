@@ -24,8 +24,8 @@
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
+#include "../misc/common.h"
 #include "../misc/coordinate.h"
-#include "../misc/coordinate_system.h"
 #include "../objects/arc_type.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/circle_imp.h"
@@ -43,9 +43,12 @@
 #include "../objects/object_type.h"
 #include "../objects/other_imp.h"
 #include "../objects/other_type.h"
+#include "../objects/point_imp.h"
 #include "../objects/point_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
+
+#include <math.h>
 
 #include <qfile.h>
 #include <qnamespace.h>
@@ -142,6 +145,22 @@ int convertDrgeoIndex( const std::vector<DrGeoHierarchyElement> es, const QStrin
     if ( es[i].id == myid )
       return i;
   return -1;
+}
+
+const Coordinate convertDrgeoLineParam( const double param, const LineData& line )
+{
+  const double n = ( param - 0.5 ) * M_PI;
+  const Coordinate c = line.dir() / line.dir().length();
+  const Coordinate p = line.a + tan( n ) * c;
+  return p;
+}
+
+const Coordinate convertDrgeoHalflineParam( const double param, const LineData& line )
+{
+  const double n = param * M_PI * 0.5;
+  const Coordinate c = line.dir() / line.dir().length();
+  const Coordinate p = line.a + tan( n ) * c;
+  return p;
 }
 
 KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, const bool grid )
@@ -271,8 +290,18 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) ||
              ( parents[0]->imp()->inherits( SegmentImp::stype() ) ) )
           oc = fact->constrainedPointCalcer( parents[0], value );
-//        else if ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) )
-//          oc = fact->constrainedPointCalcer( parents[0], Coordinate( value, 0 ), *ret );
+        else if ( parents[0]->imp()->inherits( LineImp::stype() ) )
+        {
+          const LineData l = static_cast<const LineImp*>( parents[0]->imp() )->data();
+          const Coordinate p = convertDrgeoLineParam( value, l );
+          oc = fact->constrainedPointCalcer( parents[0], p, *ret );
+        }
+        else if ( parents[0]->imp()->inherits( RayImp::stype() ) )
+        {
+          const LineData l = static_cast<const RayImp*>( parents[0]->imp() )->data();
+          const Coordinate p = convertDrgeoHalflineParam( value, l );
+          oc = fact->constrainedPointCalcer( parents[0], p, *ret );
+        }
         else if ( parents[0]->imp()->inherits( ArcImp::stype() ) )
           oc = fact->constrainedPointCalcer( parents[0], 1 - value );
         else
@@ -289,14 +318,6 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         if ( ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
              ( parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) )
           oc = new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents );
-//        else if ( ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
-//                  ( parents[1]->imp()->inherits( ConicImp::stype() ) ) )
-//        {
-//          ObjectCalcer* t = parents[1];
-//          parents[1] = parents[0];
-//          parents[0] = t;
-//          oc = new ObjectTypeCalcer( ConicLineIntersectionType::instance(), parents );
-//        }
         else if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) &&
                   ( parents[1]->imp()->inherits( CircleImp::stype() ) ) )
         {
@@ -324,6 +345,21 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
           std::vector<ObjectCalcer*> args = parents;
           args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
           oc = new ObjectTypeCalcer( ConicLineIntersectionType::instance(), args );
+        }
+        else if ( ( parents[0]->imp()->inherits( ArcImp::stype() ) &&
+                    parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) ||
+                  ( parents[1]->imp()->inherits( ArcImp::stype() ) &&
+                    parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) )
+        {
+          bool ok;
+          int which = domelem.attribute( "extra" ).toInt( &ok );
+          if ( !ok ) KIG_FILTER_PARSE_ERROR;
+          if ( which == 0 ) which = -1;
+          else if ( which == 1 ) which = 1;
+          else KIG_FILTER_PARSE_ERROR;
+          std::vector<ObjectCalcer*> args = parents;
+          args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+          oc = new ObjectTypeCalcer( ArcLineIntersectionType::instance(), args );
         }
         else
         {
@@ -540,9 +576,6 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       }
       kdDebug() << "+++++++++ oc:" << oc << endl;
     }
-// FIXME: this is the real angle meant by drgeo (angle + label with value)...
-// pino: I'll use a simple one, to avoid compiling problem... :-(
-/*
     else if ( domelem.tagName() == "angle" )
     {
       if ( domelem.attribute( "type" ) == "3pts" )
@@ -550,18 +583,9 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         if ( parents.size() != 3 ) KIG_FILTER_PARSE_ERROR;
         ObjectTypeCalcer* ao = new ObjectTypeCalcer( AngleType::instance(), parents );
         ao->calc( *ret );
-        const PointImp* pt = static_cast<const PointImp*>( parents[1]->imp() );
-        const Coordinate c = pt->coordinate();
+        const Coordinate c = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
         oc = filtersConstructTextObject( c, ao, "angle-degrees", *ret, false );
       }
-      kdDebug() << "+++++++++ oc:" << oc << endl;
-    }
-*/
-// simple angle object...
-    else if ( domelem.tagName() == "angle" )
-    {
-      if ( domelem.attribute( "type" ) == "3pts" )
-        oc = new ObjectTypeCalcer( AngleType::instance(), parents );
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
@@ -668,7 +692,8 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
               ( domelem.tagName() == "vector" ) ||
               ( domelem.tagName() == "circle" ) ||
               ( domelem.tagName() == "arcCircle" ) ||
-              ( domelem.tagName() == "angle" ) )
+              ( domelem.tagName() == "angle" ) ||
+              ( domelem.tagName() == "locus" ) )
     {
       if ( domelem.attribute( "thickness" ) == "Dashed" )
         s = Qt::DotLine;

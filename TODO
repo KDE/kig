@@ -17,12 +17,12 @@
 - The polar coordinate system blocks Kig when zooming. Select the
   polar coordinate system, use the Select shown area tool ( or your
   favorite zooming tool ) and select a specific part of the document.
-  Smaller parts of the document cause bigger problems.
+  Smaller parts of the document cause bigger problems. pino: this is
+  due to the polar grid: try to make zoom if there is no grid.
 
-- the coordinate system toggleaction needs updating when the coord sys
-   is changed in another way.
-
-- the print dialog should not be asking for page numbers...
+- Try to construct a line by constructing on-the-fly the two points on
+  the same place ( using the snap-to-grid function ) to have a line
+  drawn on the left.
 
 * more or less urgently necessary
 
@@ -66,8 +66,6 @@
 - add "Tools": easy tools designed for geometry, like Angle converter and
   so on...
 
-- add intersection type between arcs and conics/cubics.
-
 - add a magnifying glass to magnify "on-the-fly" a part of the document.
 
 - Python scripting: export cubics, improve existing API.
@@ -100,6 +98,9 @@
    possible, but I have to look at it.
 
 - allow editing of python scripts
+
+- add intersection types: arc-conic; arc-cubic; conic-cubic;
+  cubic-cubic; locus-other object.
 
 - allow for using kformula w/o OOFormula w/o MathML formulas in the
   document.

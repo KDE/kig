@@ -13,7 +13,7 @@ Import
 Objects implemented
 -------------------
 
-Points            most, On_curve (partially)
+Points            most, On_curve (most)
 Rays              ok
 Vectors           ok
 Lines             most
@@ -22,11 +22,11 @@ Numberics         value (with a label), segment_length, circle_perimeter,
                   arc_length, distance_2pts, vector_norm, pt_abscissa,
                   pt_ordinate, vector_abscissa, vector_ordinate, slope,
                   distance_pt_line
-Angles            3pts (partially)
+Angles            3pts
 Arcs              ok
 Locuses           ok
 Transformations   translation, central & line reflection, rotation
-Intersections     line-line, circle-circle, circle-line
+Intersections     line-line, circle-circle, circle-line, arc-line
 Scripts           as a label
 Equations         line, circle
 
@@ -45,7 +45,7 @@ Numberics         distance_pt_circle
 Angles            vectors
 Polygons          also in Kig
 Transformations   scaling(*)
-Intersections     arc-line (also in Kig)
+Intersections     arc-circle, locus-other object (both also in Kig)
 boundingBox       temporarily ignored
 
 (*) objects which depend on numerics
@@ -53,9 +53,7 @@ boundingBox       temporarily ignored
 Known problems
 --------------
 
-* Angle(3pts): no label with measure
-* Point(On_curve): works only with segments, circles and arcs (I hope)
-* Locus(None): style attribute not taken into account
+* Point(On_curve): does not work with locuses
 
 Export
 ======
