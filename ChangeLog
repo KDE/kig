@@ -1,3 +1,8 @@
+2003-05-25  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* fix a bug that caused the "circle by center and point" type to
+		not be visible..
+
 2003-05-24  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* when the user tries to construct a macro that constructs an
