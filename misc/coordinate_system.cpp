@@ -53,9 +53,9 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigWidget& w ) c
 
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp r("^\\(([^,]+),([^\\)]+)\\)$");
+  QRegExp r("^\([^,]+),([^\\)]+)\$");
   ok = ( r.search(s) == 0 );
-  kdDebug() << "hoereu!!" << endl;
+  kdDebug() << "Coordinate EuclideanCoords::toScreen !!" << endl;
   if (ok)
   {
     return Coordinate(r.cap(1).toDouble(&ok), r.cap(2).toDouble(&ok));
@@ -162,6 +162,6 @@ void EuclideanCoords::drawGrid( KigPainter& p ) const
 
 QString EuclideanCoords::coordinateFormatNotice() const
 {
-  return i18n( "Enter coordinates in the following form: \"(x,y)\", where "
+  return i18n( "Enter coordinates in the following form: \"x,y\", where "
                "x is the x coordinate, and y is the y coordinate." );
 }
