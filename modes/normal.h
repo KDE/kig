@@ -41,7 +41,8 @@ protected:
                                   KigWidget& w, bool ctrlOrShiftDown );
   void midClicked( const QPoint& p, KigWidget& w );
   void rightClicked( const Objects& os, const QPoint& p, KigWidget& w );
-  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
+  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w,
+                   bool shiftpressed );
   void selectAll();
   void deselectAll();
   void invertSelection();

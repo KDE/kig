@@ -202,7 +202,7 @@ void DefineMacroMode::leftClickedObject( Object* o, const QPoint&,
   updateNexts();
 }
 
-void DefineMacroMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget& w )
+void DefineMacroMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget& w, bool )
 {
   w.updateCurPix();
 

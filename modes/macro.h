@@ -39,7 +39,7 @@ public:
                           KigWidget& w, bool ctrlOrShiftDown );
   void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
   void midClicked( const QPoint& p, KigWidget& w );
-  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
+  void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w, bool shiftpressed );
 
   // called by MacroWizard class
   void givenPageEntered();

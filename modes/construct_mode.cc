@@ -24,6 +24,7 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/object_constructor.h"
+#include "../misc/coordinate_system.h"
 #include "../misc/kigpainter.h"
 #include "../misc/calcpaths.h"
 
@@ -91,7 +92,8 @@ void ConstructMode::rightClicked( const Objects&, const QPoint&, KigWidget& )
 
 void ConstructMode::mouseMoved( const Objects& os,
                                 const QPoint& p,
-                                KigWidget& w )
+                                KigWidget& w,
+                                bool shiftpressed )
 {
   w.updateCurPix();
   KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
@@ -100,7 +102,11 @@ void ConstructMode::mouseMoved( const Objects& os,
   QPoint textloc = p;
   textloc.setX( textloc.x() + 15 );
 
-  redefinePoint( mpt, w.fromScreen( p ), mdoc, w );
+  Coordinate ncoord = w.fromScreen( p );
+  if ( shiftpressed )
+    ncoord = mdoc.coordinateSystem().snapToGrid( ncoord, w );
+
+  redefinePoint( mpt, ncoord, mdoc, w );
 
   if ( !os.empty() && !mparents.contains( os.front() ) &&
        mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
@@ -192,12 +198,17 @@ void PointConstructMode::rightClicked( const Objects&, const QPoint&,
 void PointConstructMode::mouseMoved(
   const Objects&,
   const QPoint& p,
-  KigWidget& w )
+  KigWidget& w,
+  bool shiftpressed )
 {
   w.updateCurPix();
   KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
 
-  redefinePoint( mpt, w.fromScreen( p ), mdoc, w );
+  Coordinate ncoord = w.fromScreen( p );
+  if ( shiftpressed )
+    ncoord = mdoc.coordinateSystem().snapToGrid( ncoord, w );
+
+  redefinePoint( mpt, ncoord, mdoc, w );
 
   mpt->draw( pter, true );
   w.setCursor( KCursor::blankCursor() );

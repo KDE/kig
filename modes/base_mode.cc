@@ -111,7 +111,7 @@ void BaseMode::rightClicked( QMouseEvent* e, KigWidget* w )
 void BaseMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   Objects os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
-  mouseMoved( os, e->pos(), *w );
+  mouseMoved( os, e->pos(), *w, e->state() & Qt::ShiftButton );
 }
 
 void BaseMode::dragRect( const QPoint&, KigWidget& )

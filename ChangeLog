@@ -1,5 +1,8 @@
 2003-07-03  Dominique Devriese  <devriese@kde.org>
 
+	* make shift -> snap to grid work in PointConstructionMode and
+	normal Construction Mode too..
+
 	* add the concept of cache objects, which cannot be stored, in
 	order to support a python compiled script ObjectImp..
 

@@ -250,7 +250,8 @@ void NormalMode::rightClicked( const Objects& os,
 
 void NormalMode::mouseMoved( const Objects& os,
                              const QPoint& plc,
-                             KigWidget& w )
+                             KigWidget& w,
+                             bool )
 {
   w.updateCurPix();
   if( os.empty() )

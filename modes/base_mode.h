@@ -53,7 +53,7 @@ protected:
                                   KigWidget& w, bool ctrlOrShiftDown ) = 0;
   virtual void midClicked( const QPoint& p, KigWidget& w ) = 0;
   virtual void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w ) = 0;
-  virtual void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w ) = 0;
+  virtual void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w, bool shiftpressed ) = 0;
 
 protected:
   BaseMode( KigDocument& );
