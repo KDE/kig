@@ -1,6 +1,7 @@
 INCLUDES=$(all_includes)
 noinst_LTLIBRARIES=libobjects.la
 noinst_HEADERS=\
+	angle_type.h \
 	arc_type.h \
 	base_type.h \
 	bogus_imp.h \
@@ -34,6 +35,7 @@ noinst_HEADERS=\
 	transform_types.h \
 	vector_type.h
 libobjects_la_SOURCES=\
+	angle_type.cc \
 	arc_type.cc \
 	base_type.cc \
 	bogus_imp.cc \
