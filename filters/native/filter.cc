@@ -222,10 +222,8 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
 
     if ( ! oldElemToNewObject( type, e, *o, dataos, to ) )
     {
-      for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-        delete *i;
-      for ( Objects::iterator i = dataos.begin(); i != dataos.end(); ++i )
-        delete *i;
+      delete_all( os.begin(), os.end() );
+      delete_all( dataos.begin(), dataos.end() );
       return ParseError;
     };
     o->calc( to );
