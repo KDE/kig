@@ -25,6 +25,7 @@
 #include "../objects/object_imp.h"
 #include "../objects/object.h"
 #include "../objects/line_imp.h"
+#include "../objects/circle_imp.h"
 #include "../misc/common.h"
 
 #include <kaction.h>
@@ -134,7 +135,7 @@ class XFigExportImpVisitor
 
   QPoint convertCoord( const Coordinate& c )
     {
-      Coordinate ret = c*9450;
+      Coordinate ret = ( c - msr.bottomLeft() )*9450;
       ret /= msr.width();
       ret.y = 9450 - ret.y;
       return ret.toQPoint();
@@ -232,12 +233,35 @@ void XFigExportImpVisitor::visit( const LocusImp* imp )
 
 void XFigExportImpVisitor::visit( const CircleImp* imp )
 {
+  const QPoint center = convertCoord( imp->center() );
+  const int radius =
+    ( convertCoord( imp->center() + Coordinate( imp->radius(), 0 ) ) - center ).x();
 
+  mstream << "1 "  // Ellipse type
+          << "3 "  // circle defined by radius subtype
+          << "0 "; // line_style: Solid
+  int width = mcurobj->width();
+  if ( width == -1 ) width = 1;
+  mstream << width << " " // thickness: *1/80 inch
+          << "0 " // TODO pen_color: default
+          << "7 " // TODO fill_color: default
+          << "50 " // depth: 50
+          << "-1 " // pen_style: unused by XFig
+          << "-1 " // area_fill: no fill
+          << "0.000 " // style_val: the distance between dots and
+                      // dashes in case of dotted or dashed lines..
+          << "1 "  // direction: always 1
+          << "0.0000 "  // angle: the radius of the x-axis: 0
+          << center.x() << " " << center.y() << " " // the center..
+          << radius << " " << radius << " " // radius_x and radius_y
+          << center.x() << " " // start_x and start_y, appear
+          << center.y() << " " // unused..
+          << center.x() + radius << " " // end_x and end_y,
+          << center.y() << "\n";        // appear unused too...
 }
 
 void XFigExportImpVisitor::visit( const ConicImp* imp )
 {
-
 }
 
 void XFigExportImpVisitor::visit( const CubicImp* imp )
