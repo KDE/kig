@@ -38,6 +38,8 @@
 #include <qdom.h>
 #include <kglobal.h>
 
+#include <algorithm>
+
 KigFilterNative::KigFilterNative()
 {
 }
@@ -124,6 +126,8 @@ static std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
 
 KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument& to )
 {
+  using namespace std;
+
   bool ok = true;
 
   std::vector<HierElem> elems;
@@ -169,6 +173,10 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
   // now we do a topological sort of the elems..
   std::vector<HierElem> sortedElems = sortElems( elems );
 
+  // data objects that certain objects need..  we add them with the
+  // rest at the end..
+  Objects dataos;
+
   // and now we go over them again, this time filling up os..
   for ( uint i = 0; i < sortedElems.size(); ++i )
   {
@@ -212,7 +220,7 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
     o->setShown( shown );
     o->setColor( color );
 
-    if ( ! oldElemToNewObject( type, e, *o ) )
+    if ( ! oldElemToNewObject( type, e, *o, dataos ) )
     {
       Objects all = getAllParents( os );
       for ( Objects::iterator i = all.begin(); i != all.end(); ++i )
@@ -223,13 +231,17 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
     os[elem.id-1] = o;
   };
 
+  os.reserve( os.size() + dataos.size() );
+  copy( dataos.begin(), dataos.end(), back_inserter( os ) );
+
   to.setObjects( os );
   return OK;
 }
 
 bool KigFilterNative::oldElemToNewObject( const QCString type,
                                           const QDomElement& e,
-                                          RealObject& o )
+                                          RealObject& o,
+                                          Objects& dataos)
 {
   if ( type == "NormalPoint" )
   {
@@ -270,15 +282,21 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     };
     if ( !constrained )
     {
+      DataObject* xo = new DataObject( new DoubleImp( x ) );
+      DataObject* yo = new DataObject( new DoubleImp( y ) );
+      o.addParent( xo );
+      o.addParent( yo );
+      dataos.push_back( xo );
+      dataos.push_back( yo );
       o.setType( FixedPointType::instance() );
-      o.addParent( new DataObject( new DoubleImp( x ) ) );
-      o.addParent( new DataObject( new DoubleImp( y ) ) );
     }
     else
     {
       assert( o.parents().size() == 1 );
       o.setType( ConstrainedPointType::instance() );
-      o.addParent( new DataObject( new DoubleImp( param ) ) );
+      DataObject* po = new DataObject( new DoubleImp( param ) );
+      o.addParent( po );
+      dataos.push_back( po );
     };
     return true;
   }
@@ -383,7 +401,9 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
   docelem.appendChild( cselem );
 
   Objects objs = kdoc.objects();
+  uint osize = objs.size();
   objs = getAllParents( objs );
+  assert( objs.size() == osize );
 
   // save the custom types..
   std::vector<const CustomType*> customtypes;
@@ -414,7 +434,7 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
   QDomElement objectselem = doc.createElement( "Objects" );
   objs = calcPath( objs );
 
-  std::map<Object*, int> idmap;
+  std::map<const Object*, int> idmap;
   int id = 1;
 
   for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
@@ -428,6 +448,25 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
         ObjectImpFactory::instance()->serialize( *(*i)->imp(), e, doc );
       e.setAttribute( "type", ser );
       objectselem.appendChild( e );
+    }
+    else if ( (*i)->inherits( Object::ID_PropertyObject ) )
+    {
+      const PropertyObject* o = static_cast<const PropertyObject*>( *i );
+      QDomElement e = doc.createElement( "Property" );
+      idmap[*i] = id;
+      e.setAttribute( "id", id++ );
+
+      std::map<const Object*,int>::const_iterator idp = idmap.find( o->parent() );
+      assert( idp != idmap.end() );
+      int pid = idp->second;
+      QDomElement pel = doc.createElement( "Parent" );
+      pel.setAttribute( "id", pid );
+      e.appendChild( pel );
+
+      QCString propname = o->parent()->propertiesInternalNames()[o->propId()];
+      pel = doc.createElement( "Property" );
+      pel.appendChild( doc.createTextNode( propname ) );
+      e.appendChild( pel );
     }
     else if ( (*i)->inherits( Object::ID_RealObject ) )
     {
@@ -452,7 +491,7 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
       const Objects& parents = o->parents();
       for ( Objects::const_iterator i = parents.begin(); i != parents.end(); ++i )
       {
-        std::map<Object*,int>::const_iterator idp = idmap.find( *i );
+        std::map<const Object*,int>::const_iterator idp = idmap.find( *i );
         assert( idp != idmap.end() );
         int pid = idp->second;
         QDomElement pel = doc.createElement( "Parent" );
@@ -519,12 +558,13 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
       {
         e = o.toElement();
         if ( e.isNull() ) continue;
-        if ( e.tagName() == "Data" )
+        uint id;
+        if ( e.tagName() == "Data" || e.tagName() == "Property" )
         {
           // fetch the id
           QString tmp = e.attribute("id");
-          if(tmp.isNull()) return ParseError;
-          uint id = tmp.toInt(&ok);
+          if( tmp.isNull() ) return ParseError;
+          id = tmp.toInt(&ok);
           if ( !ok ) return ParseError;
 
           extendVect( elems, id );
@@ -534,29 +574,28 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         {
           QString tmp = e.attribute( "id" );
           if ( tmp.isNull() ) return ParseError;
-          uint id = tmp.toInt( &ok );
+          id = tmp.toInt( &ok );
           if ( ! ok ) return ParseError;
-
-          for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
-          {
-            QDomElement f = p.toElement();
-            if ( f.isNull() ) continue;
-            if ( f.tagName() == "Parent" )
-            {
-              tmp = f.attribute( "id" );
-              if ( tmp.isNull() ) return ParseError;
-              uint pid = tmp.toInt( &ok );
-              if ( ! ok ) return ParseError;
-
-              extendVect( elems, id );
-              elems[id-1].parents.push_back( pid );
-            }
-          }
 
           extendVect( elems, id );
           elems[id-1].el = e;
         }
         else continue;
+        for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
+        {
+          QDomElement f = p.toElement();
+          if ( f.isNull() ) continue;
+          if ( f.tagName() == "Parent" )
+          {
+            QString tmp = f.attribute( "id" );
+            if ( tmp.isNull() ) return ParseError;
+            uint pid = tmp.toInt( &ok );
+            if ( ! ok ) return ParseError;
+
+            extendVect( elems, id );
+            elems[id-1].parents.push_back( pid );
+          }
+        }
       };
       elems = sortElems( elems );
 
@@ -573,6 +612,29 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
           if ( tmp.isNull() ) return ParseError;
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e );
           ret[oldsize + i->id - 1] = new DataObject( imp );
+        }
+        else if ( e.tagName() == "Property" )
+        {
+          QCString propname;
+          for ( QDomElement ec = e.firstChild().toElement(); !n.isNull();
+                n = n.nextSibling().toElement() )
+          {
+            if ( ec.tagName() == "Property" )
+            {
+              propname = ec.text().latin1();
+            }
+            else continue;
+          };
+
+          if ( i->parents.size() != 1 ) return ParseError;
+          Object* parent = ret[oldsize + i->parents[0] -1];
+          parent->calc( kdoc ); // needs to be calced before we can
+                                // get its properties()
+          QCStringList propnames = parent->propertiesInternalNames();
+          int propid = propnames.findIndex( propname );
+          if ( propid == -1 ) return ParseError;
+
+          ret[oldsize + i->id - 1] = new PropertyObject( parent, propid );
         }
         else if ( e.tagName() == "Object" )
         {
