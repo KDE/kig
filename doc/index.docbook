@@ -715,9 +715,8 @@
       e.g. the Point.coordinate() method.  You can also return all
       kinds of objects, not just Points.  Many more classes and
       methods are available from the Kig Python code, and a more
-      complete reference on them is provided
-      TODO !!!
-      here.
+      complete reference on them is provided <ulink
+      url="scripting-api/index.html">here</ulink>.
     </para>
   </chapter>
 
@@ -874,7 +873,7 @@
     </para>
 
     <para>
-      Documentation copyright 2002 Dominique
+      Documentation copyright 2002-2003 Dominique
       Devriese. <email>devriese@kde.org</email>
     </para>
     <!-- TRANS:CREDIT_FOR_TRANSLATORS --> &underFDL; &underGPL;
