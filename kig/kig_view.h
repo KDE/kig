@@ -145,7 +145,7 @@ public:
    * related to this system.
    * These are mapped by the KigView using the ScreenInfo class.
    */
-  const Rect showingRect();
+  const Rect showingRect() const;
 
   const Coordinate fromScreen( const QPoint& p );
   const Rect fromScreen( const QRect& r );

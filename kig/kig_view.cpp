@@ -271,7 +271,7 @@ const ScreenInfo& KigWidget::screenInfo() const
   return msi;
 }
 
-const Rect KigWidget::showingRect()
+const Rect KigWidget::showingRect() const
 {
   return msi.shownRect();
 }
