@@ -54,5 +54,14 @@ Objects sideOfTreePath( const Objects& from, const Object* to );
  * themselves..
  */
 Objects getAllParents( const Objects& objs );
+/**
+ * @overload
+ */
+Objects getAllParents( Object* obj );
+
+/**
+ * Returns true if o is a descendant of any of the objects in os..
+ */
+bool isChild( const Object* o, const Objects& os );
 
 #endif

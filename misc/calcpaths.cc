@@ -179,3 +179,25 @@ Objects getAllParents( const Objects& objs )
   };
   return ret;
 }
+
+Objects getAllParents( Object* obj )
+{
+  return getAllParents( Objects( obj ) );
+}
+
+bool isChild( const Object* o, const Objects& os )
+{
+  using namespace std;
+  Objects cur( o->parents() );
+  while ( ! cur.empty() )
+  {
+    Objects next;
+    for ( Objects::const_iterator i = cur.begin(); i != cur.end(); ++i )
+    {
+      if ( os.contains( *i ) ) return true;
+      next.upush( (*i)->parents() );
+    };
+    cur = next;
+  };
+  return false;
+}
