@@ -4,6 +4,7 @@
   <!ENTITY cabri "<application>Cabri</application>">
   <!ENTITY drgeo "<application>Dr.Geo</application>">
   <!ENTITY package "kdeedu">
+  <!ENTITY kappname "&kig;">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
   <!-- change language only here -->
@@ -32,7 +33,7 @@
 
     <legalnotice>&FDLNotice;</legalnotice>
 
-    <date>2004-04-29</date> <releaseinfo>0.6.0</releaseinfo>
+    <date>2004-06-29</date> <releaseinfo>0.9.0</releaseinfo>
     
     <abstract>
       <para>
@@ -44,6 +45,7 @@
       <keyword>KDE</keyword> <keyword>KDE-Edu</keyword>
       <keyword>Kig</keyword> <keyword>Interactive Geometry</keyword>
       <keyword>KGeo</keyword> <keyword>Cabri</keyword>
+      <keyword>Dr.Geo</keyword> <keyword>KSeg</keyword>
     </keywordset>
   </bookinfo>
 
@@ -69,7 +71,7 @@
       You can report problems in &kig; using the internal bug
       reporting tool
       (<menuchoice><guimenu>Help</guimenu><guimenuitem>Report
-      Bug</guimenuitem></menuchoice>), or just contact me at
+      Bug...</guimenuitem></menuchoice>), or just contact me at
       <email>devriese@kde.org</email>.
     </para>
     <para>
@@ -121,7 +123,7 @@
 		You can construct points while you are building other
 		objects in the background, optionally selecting them
 		for the object you are building.  For more on this,
-		see the section <xref linkend="constructing-other-objects" />.
+		see <xref linkend="constructing-other-objects" />.
 	      </para>
 	    </listitem>
 	  </itemizedlist>
@@ -456,11 +458,11 @@
 	created an object, it is saved on exit and loaded on startup.
 	You do not have to manually save or load macro definitions.
 	However, &kig; does allow you to do more with the macros.  If
-	you select <guimenuitem>Manage Types...</guimenuitem> from the
-	<guimenu>Types</guimenu> menu, you will see a dialog where you
-	can edit your types.  It allows you to delete types that are
-	no longer used, export them to a file, or even load them from
-	another file.
+	you select <menuchoice><guimenu>Types</guimenu><guimenuitem>Manage
+	Types...</guimenuitem></menuchoice> from the menu, you will see
+	a dialog where you can edit your types. It allows you to modify
+	the existant types, delete types that are no longer used, export
+	them to a file, or even load them from another file.
       </para>
       <screenshot>
 	<screeninfo>Edit Types Dialog</screeninfo>
@@ -483,9 +485,9 @@
 	about objects (also known as <quote>properties</quote>).
       </para>
       <para>
-        To start constructing a text label, simply press the Text
-        Label button in the &kig; toolbar or select
-        <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
+        To start constructing a text label, simply press the
+	<guibutton>Text Label</guibutton> button in the &kig; toolbar or
+	select <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
 </guisubmenu><guimenuitem>Text label</guimenuitem>
         </menuchoice> in the menubar.
       </para>
@@ -701,11 +703,11 @@ Let's look at an example of how to use locuses in &kig;:
       The calculation necessary in our example is very simple, we
       simply add the two sets of coordinates, and divide the new set
       by two.  We then construct a new point using the result.
-      The python code needed is:</para>
+      The Python code needed is:</para>
 
 <programlisting>
-   def calc( a, b ):
-        m = ( a.coordinate() + b.coordinate() ) / 2;
+def calc( a, b ):
+	m = ( a.coordinate() + b.coordinate() ) / 2;
 	return Point( m )
 </programlisting>
 
@@ -744,11 +746,11 @@ Let's look at an example of how to use locuses in &kig;:
       All objects in &kig; can be used in the Python code. As we have
       seen above, points are of the <classname>Point</classname> class, and you can use &eg;
       the <function>Point.coordinate()</function> method.  You can
-      also return all kinds of objects, not just <classname>Point</classname>s.  Many more
-      classes and methods are available in the &kig; Python code,
+      also return all kinds of objects, not just a <classname>Point</classname>.
+      Many more classes and methods are available in the &kig; Python code,
       and a more complete reference is provided <ulink
       url="http://edu.kde.org/kig/manual/scripting-api/index.html">on
-      the Kig website</ulink>.
+      the &kig; website</ulink>.
     </para>
   </chapter>
 
@@ -795,10 +797,10 @@ Let's look at an example of how to use locuses in &kig;:
 	    &kig; supports macros to be defined in a straightforward
 	    manner.  These objects are presented to the user like
 	    normal objects.  They are saved on exit and loaded on
-	    startup, so that they aren't lost on exit.  In the <xref
-	    linkend="working-with-types" />, you can
-	    manage these objects.  You can export them to files,
-	    import them from files, and delete them.
+	    startup, so that they aren't lost on exit. You can
+	    manage these objects in the <guilabel>Manage Types</guilabel>
+	    dialog (see <xref linkend="working-with-types" />). You can export them
+	    to files, import them from files, edit and delete them.
 	  </para>
 	</listitem>
 	<listitem>
@@ -814,7 +816,8 @@ Let's look at an example of how to use locuses in &kig;:
 	<listitem>
 	  <para>
 	    &kig; allows you to export a &kig; file to some interesting
-	    formats, like images and <application>XFig</application> files.  This is rather
+	    formats, like images, <application>XFig</application> and
+	    <application>LaTeX</application> files. This is rather
 	    useful, because not all programs support the &kig; file
 	    format yet.
 	  </para>
@@ -828,7 +831,7 @@ Let's look at an example of how to use locuses in &kig;:
 	  <para>
 	    &kig; aims to be compatible with its competitors. This is
 	    why it supports the &kgeo; file format, the &kseg; file
-	    format and partially the &drgeo; format; morover, support
+	    format and partially the &drgeo; and &cabri; formats; morover, support
 	    for other formats is planned.
 	  </para>
 	</listitem>
