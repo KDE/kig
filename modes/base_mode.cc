@@ -35,6 +35,8 @@ BaseMode::~BaseMode()
 
 void BaseMode::leftClicked( QMouseEvent* e, KigWidget* v )
 {
+  mouseMoved( e, v );
+
   // get rid of text still showing...
   v->updateCurPix();
   v->updateWidget();
