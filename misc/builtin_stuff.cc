@@ -85,7 +85,7 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       CircleBCPType::instance(), I18N_NOOP( "Circle by center and point" ),
       I18N_NOOP( "A circle constructed by its center and a point on its border" ),
-      "circle" );
+      "circlebcp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebcp" ) );
 
@@ -244,7 +244,7 @@ void setupBuiltinStuff()
       PointReflectionType::instance(),
       I18N_NOOP( "Reflect over point" ),
       I18N_NOOP( "The reflection of an object over a point" ),
-      "pointreflection" );
+      "centralsymmetry" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_pointreflection" ) );
 
@@ -268,7 +268,7 @@ void setupBuiltinStuff()
       ScalingOverCenterType::instance(),
       I18N_NOOP( "Scale" ),
       I18N_NOOP( "Scale an object over a point, by the ratio given by the length of a segment" ),
-      "scalingovercenter" );
+      "scale" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_scalingovercenter" ) );
 
@@ -276,7 +276,7 @@ void setupBuiltinStuff()
       ScalingOverLineType::instance(),
       I18N_NOOP( "Scale over line" ),
       I18N_NOOP( "An object scaled over a point, by the ratio given by the length of a segment" ),
-      "scalingoverline" );
+      "stretch" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline" ) );
 
@@ -321,25 +321,25 @@ void setupBuiltinStuff()
         new SimpleObjectTypeConstructor(
           LineLineIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-          "intersection" );
+          "curvelineintersection" );
 
       MultiObjectTypeConstructor* lineconic =
         new MultiObjectTypeConstructor(
           ConicLineIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-          "intersection", -1, 1 );
+          "curvelineintersection", -1, 1 );
 
       MultiObjectTypeConstructor* linecubic =
         new MultiObjectTypeConstructor(
           LineCubicIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-          "intersection", 1, 2, 3 );
+          "curvelineintersection", 1, 2, 3 );
 
       // now for the toplevel constructor:
       MergeObjectConstructor* m = new MergeObjectConstructor(
         I18N_NOOP( "Intersection" ),
         I18N_NOOP( "The intersection of two objects" ),
-        "intersection" );
+        "curvelineintersection" );
       m->merge( lineline );
       m->merge( lineconic );
       m->merge( linecubic );
