@@ -284,6 +284,10 @@ static void setContains( QRect& r, const QPoint& p )
 void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
                               bool winding, int index, int npoints )
 {
+  QPen oldpen = mP.pen();
+  QBrush oldbrush = mP.brush();
+  setBrush( QBrush( color, Dense4Pattern ) );
+  setPen(Qt::NoPen);
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
   QPointArray t( pts.size() );
@@ -293,6 +297,8 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
     t.putPoints( c++, 1, i->x(), i->y() );
   };
   mP.drawPolygon( t, winding, index, npoints );
+  setPen( oldpen );
+  setBrush( oldbrush );
   mOverlay.push_back( t.boundingRect() );
 }
 
