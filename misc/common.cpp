@@ -429,12 +429,7 @@ bool LineData::isParallelTo( const LineData& l ) const
   double dx2 = p4.x - p3.x;
   double dy2 = p4.y - p3.y;
 
-  double det = dx1*dy2 - dx2*dy1;
-
-  if ( std::fabs(det) < test_threshold )
-    return true;
-  else
-    return false;
+  return isSingular( dx1, dy1, dx2, dy2 );
 }
 
 bool LineData::isOrthogonalTo( const LineData& l ) const
@@ -449,24 +444,27 @@ bool LineData::isOrthogonalTo( const LineData& l ) const
   double dx2 = p4.x - p3.x;
   double dy2 = p4.y - p3.y;
 
-  double det = dx1*dx2 + dy1*dy2;
-
-  if ( std::fabs(det) < test_threshold )
-    return true;
-  else
-    return false;
+  return isSingular( dx1, dy1, -dy2, dx2 );
 }
 
 bool areCollinear( const Coordinate& p1,
                    const Coordinate& p2, const Coordinate& p3 )
 {
-  double det = p1.x*p2.y + p2.x*p3.y + p3.x*p1.y
-             - p1.y*p2.x - p2.y*p3.x - p3.y*p1.x;
+  return isSingular( p2.x - p1.x, p2.y - p1.y, p3.x - p1.x, p3.y - p1.y );
+}
 
-  if ( std::fabs(det) < test_threshold )
-    return true;
-  else
-    return false;
+bool isSingular( const double& a, const double& b,
+                 const double& c, const double& d )
+{
+  double det = a*d - b*c;
+  double norm1 = std::fabs(a) + std::fabs(b);
+  double norm2 = std::fabs(c) + std::fabs(d);
+
+/*
+ * test must be done relative to the magnitude of the two
+ * row (or column) vectors!
+ */
+  return ( std::fabs(det) < test_threshold*norm1*norm2 );
 }
 
 const double double_inf = HUGE_VAL;

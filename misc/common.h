@@ -206,14 +206,24 @@ const Coordinate calcMirrorPoint( const LineData& l,
                                   const Coordinate& p );
 
 /**
+ * test collinearity of three points
+ */
+bool areCollinear( const Coordinate& p1, const Coordinate& p2,
+               const Coordinate& p3 );
+
+/**
+ * test if a 2x2 matrix is singular (relatively to the
+ * norm of the two row vectors)
+ */
+bool isSingular( const double& a, const double& b,
+                 const double& c, const double& d );
+
+/**
  * is o on the line defined by point a and point b ?
  * fault is the allowed difference...
  */
 bool isOnLine( const Coordinate& o, const Coordinate& a,
                const Coordinate& b, const double fault );
-
-bool areCollinear( const Coordinate& p1, const Coordinate& p2,
-               const Coordinate& p3 );
 
 /**
  * is o on the segment defined by point a and point b ?
