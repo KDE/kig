@@ -28,7 +28,7 @@ kig_LDFLAGS = $(KDE_RPATH) $(all_libraries)
 kig_LDADD   = $(LIB_KPARTS)
 
 # this is where the desktop file will go 
-shelldesktopdir   = $(kde_appsdir)/Edutainment
+shelldesktopdir   = $(kde_appsdir)/Edutainment/Mathematics
 shelldesktop_DATA = kig.desktop
 
 # this is where the shell's XML-GUI resource file goes
