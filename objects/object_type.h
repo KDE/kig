@@ -52,9 +52,9 @@ public:
 
   const char* fullName() const;
 
-  // Supposing that parents.with( o ) would be given as parents to
+  // Supposing that parents would be given as parents to
   // this type's calc function, this function returns the ObjectImp id
-  // that o should at least have..
+  // that o should at least have..  ( o should be part of parents )
   virtual const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const = 0;
 
   // returns the ObjectImp id of the ObjectImp's produced by this
