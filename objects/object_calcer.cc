@@ -234,6 +234,11 @@ bool ObjectCalcer::canMove() const
   return false;
 }
 
+bool ObjectCalcer::isFreelyTranslatable() const
+{
+  return false;
+}
+
 Coordinate ObjectCalcer::moveReferencePoint() const
 {
   assert( false );
@@ -247,7 +252,12 @@ void ObjectCalcer::move( const Coordinate&, const KigDocument& )
 
 bool ObjectTypeCalcer::canMove() const
 {
-  return mtype->canMove();
+  return mtype->canMove( *this );
+}
+
+bool ObjectTypeCalcer::isFreelyTranslatable() const
+{
+  return mtype->isFreelyTranslatable( *this );
 }
 
 Coordinate ObjectTypeCalcer::moveReferencePoint() const
@@ -261,7 +271,7 @@ void ObjectTypeCalcer::move( const Coordinate& to, const KigDocument& doc )
   // not done for us in all circumstances ( e.g. LineABType::move uses
   // move on its parents to move them ), and the ObjectType's depend
   // on move only being called if canMove() returns true..
-  if ( mtype->canMove() )
+  if ( mtype->canMove( *this ) )
     mtype->move( *this, to, doc );
 }
 

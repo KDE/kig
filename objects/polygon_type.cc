@@ -80,9 +80,17 @@ const ObjectImpType* TriangleB3PType::resultId() const
   return PolygonImp::stype();
 }
 
-bool TriangleB3PType::canMove() const
+bool TriangleB3PType::canMove( const ObjectTypeCalcer& o ) const
 {
-  return true;
+  return isFreelyTranslatable( o );
+}
+
+bool TriangleB3PType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  return parents[0]->isFreelyTranslatable() && 
+         parents[1]->isFreelyTranslatable() &&
+         parents[2]->isFreelyTranslatable();
 }
 
 void TriangleB3PType::move( ObjectTypeCalcer& o, const Coordinate& to,

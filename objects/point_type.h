@@ -33,7 +33,8 @@ public:
   static const FixedPointType* instance();
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  bool canMove() const;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
   std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
   const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
@@ -56,7 +57,8 @@ public:
   static const RelativePointType* instance();
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  bool canMove() const;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
   std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
   const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
@@ -80,7 +82,8 @@ public:
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
 
-  bool canMove() const;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
   std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
   const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,

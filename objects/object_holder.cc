@@ -120,6 +120,11 @@ bool ObjectHolder::canMove() const
   return mcalcer->canMove();
 }
 
+bool ObjectHolder::isFreelyTranslatable() const
+{
+  return mcalcer->isFreelyTranslatable();
+}
+
 ObjectDrawer* ObjectHolder::switchDrawer( ObjectDrawer* d )
 {
   ObjectDrawer* tmp = mdrawer;

@@ -95,7 +95,12 @@ ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
   return new TextImp( s, t, needframe );
 }
 
-bool TextType::canMove() const
+bool TextType::canMove( const ObjectTypeCalcer& ) const
+{
+  return true;
+}
+
+bool TextType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
 {
   return true;
 }

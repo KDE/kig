@@ -41,7 +41,12 @@ ObjectType::ObjectType( const char fulltypename[] )
   ObjectTypeFactory::instance()->add( this );
 }
 
-bool ObjectType::canMove() const
+bool ObjectType::canMove( const ObjectTypeCalcer& ) const
+{
+  return false;
+}
+
+bool ObjectType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
 {
   return false;
 }

@@ -81,8 +81,6 @@ RelativePointType::~RelativePointType()
 
 ObjectImp* RelativePointType::calc( const Args& parents, const KigDocument& ) const
 {
-assert ( margsparser.checkArgs( parents ) );
-assert ( parents[2]->attachPoint().valid() );
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
   if ( ! parents[2]->attachPoint().valid() ) return new InvalidImp;
 
@@ -173,17 +171,32 @@ void ConstrainedPointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
   paramo->setImp( new DoubleImp( np ) );
 }
 
-bool ConstrainedPointType::canMove() const
+bool ConstrainedPointType::canMove( const ObjectTypeCalcer& ) const
 {
   return true;
 }
 
-bool FixedPointType::canMove() const
+bool ConstrainedPointType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
+{
+  return false;
+}
+
+bool FixedPointType::canMove( const ObjectTypeCalcer& ) const
 {
   return true;
 }
 
-bool RelativePointType::canMove() const
+bool FixedPointType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
+{
+  return true;
+}
+
+bool RelativePointType::canMove( const ObjectTypeCalcer& ) const
+{
+  return true;
+}
+
+bool RelativePointType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
 {
   return true;
 }

@@ -133,6 +133,12 @@ public:
    */
   virtual bool canMove() const;
   /**
+   * Returns whether this ObjectCalcer can be translated at any position
+   * in the coordinate plane.  Note that a ConstrainedPointType can be
+   * moved, but cannot be moved everywhere.
+   */
+  virtual bool isFreelyTranslatable() const;
+  /**
    * Moving an object most of the time signifies invoking changes in
    * some of its parents.  This method returns the set of parents that
    * will be changed in the move() method.  The object itself should
@@ -201,6 +207,7 @@ public:
     ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const;
   bool isDefinedOnOrThrough( const ObjectCalcer* o ) const;
   bool canMove() const;
+  bool isFreelyTranslatable() const;
   std::vector<ObjectCalcer*> movableParents() const;
   Coordinate moveReferencePoint() const;
   void move( const Coordinate& to, const KigDocument& doc );

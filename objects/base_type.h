@@ -32,7 +32,8 @@ protected:
   ~ObjectABType();
 public:
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  bool canMove() const;
+  bool canMove( const ObjectTypeCalcer& o ) const;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const;
   std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
              const KigDocument& d ) const;

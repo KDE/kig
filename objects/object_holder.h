@@ -124,6 +124,11 @@ public:
    * documentation of ObjectCalcer::canMove() for more info.
    */
   bool canMove() const;
+  /**
+   * This call is simply forwarded to the ObjectCalcer.  Check the
+   * documentation of ObjectCalcer::isFreelyTranslatable() for more info.
+   */
+  bool isFreelyTranslatable() const;
 
   /**
    * Return a statement saying something like "select this segment" or

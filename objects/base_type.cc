@@ -44,9 +44,21 @@ ObjectImp* ObjectABType::calc( const Args& parents, const KigDocument& ) const
   return calc( a, b );
 }
 
-bool ObjectABType::canMove() const
+bool ObjectABType::canMove( const ObjectTypeCalcer& o ) const
 {
-  return true;
+  return isFreelyTranslatable( o );
+/*
+ * as observed by domi: this object is actually movable also
+ * if one point is FreelyTranslatable and the other is
+ * only movable, but then the "move" itself requires some
+ * trickery.
+ */
+}
+
+bool ObjectABType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  return parents[0]->isFreelyTranslatable() && parents[1]->isFreelyTranslatable();
 }
 
 void ObjectABType::move( ObjectTypeCalcer& o, const Coordinate& to,

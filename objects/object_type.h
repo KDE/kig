@@ -46,7 +46,8 @@ public:
 
   virtual ObjectImp* calc( const Args& parents, const KigDocument& d ) const = 0;
 
-  virtual bool canMove() const;
+  virtual bool canMove( const ObjectTypeCalcer& ourobj ) const;
+  virtual bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
   virtual std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
   virtual const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
   virtual void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
