@@ -41,6 +41,13 @@ class SegmentImp;
 class RayImp;
 class ArcImp;
 
+/**
+ * This is some OO magic commonly referred to as "double dispatch".
+ * If you need to do some action on an ObjectImp, and you need to do
+ * something different dependent on the type of o, then make a Visitor
+ * class that inherits this interface, and implements the appropriate
+ * functions properly, and call "o->visit( my_visitor );".
+ */
 class ObjectImpVisitor
 {
 public:
@@ -176,7 +183,7 @@ public:
   // args into strings..
   // if you implement this, then you should return true in
   // canFillInEscape() ( standard implementation returns false ), and
-  // do override fillInNextEscape() ( standard implementation does an
+  // override fillInNextEscape() ( standard implementation does an
   // assert( false ) )..
   virtual bool canFillInNextEscape() const;
   virtual void fillInNextEscape( QString& s, const KigDocument& ) const;
