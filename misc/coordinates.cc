@@ -1,5 +1,7 @@
 #include "coordinates.h"
 
+#include <qpainter.h>
+
 EuclideanCoords::EuclideanCoords( int minX, int minY, int width, int height )
   : mMinX ( minX ),
     mMinY ( minY ),
@@ -34,9 +36,11 @@ void EuclideanCoords::drawGrid( QPainter& p )
   p.setWindow(-size.width() / 2, -size.height() / 2, size.width(), size.height());
   //gridLines:
   const int unitInPixel = size.width() / mWidth;
+  const int mMaxX = mMinX + mWidth;
+  const int mMaxY = mMinY + mHeight;
   p.setPen( QPen( lightGray, 0.5, DotLine ) );
   // vertical lines...
-  for ( int i = mMinX; i <= mMinX + mWidth; ++i )
+  for ( int i = mMinX; i <= mMaxX; ++i )
     p.drawLine
       (
        i * unitInPixel,
@@ -45,7 +49,7 @@ void EuclideanCoords::drawGrid( QPainter& p )
        mMaxY * unitInPixel
       );
   // horizontal lines...
-  for ( int i = mMinY; i <= mMinY + mHeight; ++i )
+  for ( int i = mMinY; i <= mMaxY; ++i )
     p.drawLine
       (
        mMinX * unitInPixel,
@@ -61,7 +65,7 @@ void EuclideanCoords::drawGrid( QPainter& p )
 
   // the numbers:
   // x axis
-  for ( int i = mMinX; i <= mMinX + mWidth; ++i )
+  for ( int i = mMinX; i <= mMaxX; ++i )
     if ( i != 0 )
       p.drawText
 	(
@@ -70,11 +74,10 @@ void EuclideanCoords::drawGrid( QPainter& p )
 	 2 * unitInPixel,
 	 unitInPixel,
 	 AlignHCenter | AlignTop,
-	 QString().setNum( k )
+	 QString().setNum( i )
 	);
-    }
   // y axis...
-  for ( int i = mMinY; i <= mMinY + mHeight; ++i )
+  for ( int i = mMinY; i <= mMaxY; ++i )
     if ( i != 0 )
       p.drawText
         (
@@ -84,10 +87,8 @@ void EuclideanCoords::drawGrid( QPainter& p )
 	 24,
 	 AlignCenter,
 	 QString().setNum( -i ) );
-	}
-    }
-  int right = (mMinX + mWidth) * unitInPixel;
-  int top = (mMinY + mHeight) * unitInPixel;
+  int right = mMaxX * unitInPixel;
+  int top = mMaxY * unitInPixel;
   p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
   p.setBrush( Qt::gray );
   QPointArray a;

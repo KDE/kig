@@ -3,7 +3,10 @@
 
 #include "../objects/point.h"
 
+#include <qobject.h>
+
 class CoordinateSystem
+  : public Qt
 {
 public:
   CoordinateSystem() {};
