@@ -32,7 +32,7 @@
 
     <legalnotice>&FDLNotice;</legalnotice>
 
-    <date>2003-07-27</date> <releaseinfo>0.6.0</releaseinfo>
+    <date>2004-04-29</date> <releaseinfo>0.6.0</releaseinfo>
     
     <abstract>
       <para>
@@ -97,14 +97,14 @@
 	    <listitem>
 	      <para>
 		Select <menuchoice><guimenu>Objects</guimenu>
-		<guisubmenu>Points</guisubmenu><guimenuitem> Normal
+		<guisubmenu>Points</guisubmenu><guimenuitem>Normal
 		Point</guimenuitem></menuchoice> from the menubar or
 		press the appropriate button in the toolbar.  You can
 		then construct a point by clicking at the desired
 		position in the window.</para>  <note><para>Actually, this
 		works the same way for constructing other objects as
 		well: click on the desired menubar entry or toolbar
-		button and select the necessary objects to construct
+		button and select the necessary items to construct
 		the object.</para></note>
 	    </listitem>
 	    <listitem>
@@ -176,7 +176,7 @@
 	  the object, so you 'll know what it will look like.  For objects that require
 	  points as arguments, you can place a new point at the
 	  current cursor position and select it by clicking the
-	  <mousebutton>left</mousebutton> mousebutton.
+	  <mousebutton>left</mousebutton> mouse button.
 	</para>
 	<para>
 	  You can always cancel the construction of the new object by
@@ -208,8 +208,8 @@
 	<listitem>
 	  <para>
 	    Simply clicking on an object causes that object to be
-	    selected, clearing the current selection.  If you don't
-	    want that behaviour, hold down the &Ctrl; key while
+	    selected, clearing the current selection.  If you
+	    want to select multiple objects simultaneously, hold down the &Ctrl; key while
 	    clicking on an object.
 	  </para>
 	</listitem>
@@ -218,8 +218,8 @@
 	    By clicking and dragging on an empty spot on the screen,
 	    you can select all objects within the rectangle that is
 	    created. This action will clear the current selection.  As
-	    in the previous case, holding down the &Ctrl; key prevents
-	    this behavior.
+	    in the previous case, holding down the &Ctrl; key allows you
+	    to keep the current selection.
 	  </para>
 	</listitem>
       </itemizedlist>
@@ -246,7 +246,7 @@
       <para>
 	When the objects you want to move are selected, you can start
 	moving them by &LMB; clicking and
-	dragging on any one of them.  When you are done, simply release
+	dragging any one of them.  When you are done, simply release
 	the &LMB;.
       </para>
       <note><para>For some types of objects (especially when defined by complicated
@@ -280,7 +280,7 @@
 	  </listitem>
 	  <listitem>
 	    <para>
-	      &RMB; click on one of the
+	      <mousebutton>Right</mousebutton>-click on one of the
 	      objects, and select
 	      <guimenuitem>Delete</guimenuitem>
 	      in the <link linkend="objects-context-menus">context
@@ -299,10 +299,10 @@
 	them, and selecting
 	<guimenuitem>Hide</guimenuitem> in
 	the <link linkend="objects-context-menus">context menu</link>
-	that appears..
+	that appears.
       </para>
       <para>
-	For unhiding the objects, use the
+	To unhide the objects, use the
 	<menuchoice><guimenu>Edit</guimenu><guimenuitem>Unhide
 	all...</guimenuitem></menuchoice>.  This will unhide all
 	currently hidden objects.
@@ -340,12 +340,12 @@
     <para>
       &kig; supports a rather large number of object types.  Please
       note that not all of the available object types are shown in the
-      toolbars, but that there are also some objects that you can only
+      toolbars: there are some objects that you can only
       construct via the <guimenu>Objects</guimenu> menu in the menu
       bar.  Of course, as 
-      with all &kde; applications, what appears in the toolbars is
+      with all &kde; applications, the contents of the toolbars are
       configurable.  Try out the
-      <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure
+      <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure
       Toolbars...</guimenuitem></menuchoice> option if you want to do
       this.
     </para>
@@ -369,7 +369,7 @@
     <section id="document-context-menus">
       <title>Document context menus</title>
       <para>
-	&RMB; clicking on the document (&ie; not on an object) will
+	<mousebutton>Right</mousebutton>-clicking on the document (&ie; not on an object) will
 	present a popup that you can use to start constructing a new
 	object, change the coordinate system used, show hidden
 	objects, and even zoom in and zoom out of the document.
@@ -384,11 +384,12 @@
       </para>
       <para>
 	For example: Suppose you want to make a macro for constructing
-	a circle from three points on it, then you would just
-	construct three points, some perpendiculars and midpoints
-	until you find the center, and construct the circle by the
-	center you constructed and one of the three given points.  The
-	following image should make this a bit more clear.
+	a circle from three points on it. You would input three points,
+	then construct some perpendiculars and midpoints
+	until you find the center. Now you can use the existing
+	<quote>Construct a circle by center and point</quote> command
+	(using one of the three points as the point for this command).  The
+	following image should make this a bit more clear:
       </para>
       <screenshot>
 	<screeninfo>Test running macros</screeninfo>
@@ -408,8 +409,8 @@
 	click on the button on the toolbar.  A wizard will appear and
 	ask you to select the given objects.  In our example, these
 	are the three points.  Select the three points (click on them
-	for selecting, click again for unselecting) and click the
-	<guibutton>next</guibutton> button to continue. Finally,
+	to select, click again to unselect) and click the
+	<guibutton>Next</guibutton> button to continue. Finally,
 	select the last objects (only the circle in our example).
       </para>
 
@@ -426,7 +427,7 @@
       </screenshot>
 
       <para> After the previous steps are completed, click the
-      <guibutton>next</guibutton> button to continue.  Enter a name
+      <guibutton>Next</guibutton> button to continue.  Enter a name
       and optionally a description for your new type, and click the
       <guibutton>Finish</guibutton> button.  Your macro type is now
       finished.
@@ -487,7 +488,7 @@
         To start constructing a text label, simply press the Text
         Label button in the &kig; toolbar or select
         <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
-        </guisubmenu><guimenuitem>Text label</guimenuitem>
+</guisubmenu><guimenuitem>Text label</guimenuitem>
         </menuchoice> in the menubar.
       </para>
       <para>
@@ -574,9 +575,9 @@
       <para>
 	&kig; supports the use of locuses.  A locus is mathematically defined as
 	the set of all points or lines that satisfy or are
-        determined by specific conditions; as in "the locus of points
-        equidistant from a given point is a circle".
-	Next I will show an example of how in the program a locus is used.
+        determined by specific conditions; as in <quote>the locus of points
+        equidistant from a given point is a circle</quote>.
+Let's look at an example of how to use locuses in &kig;:
       </para>
       <para>
 	Consider the following geometrical construction: We draw a
@@ -602,11 +603,11 @@
       </screenshot>
       <para>
 	Now if you move the point that is constrained to the circle,
-	you 'll see that the second point moves along with it.  If you
-	would hold a pen at the second point, and move the
+	you'll see that the second point moves along with it.  If you
+	were to hold a pen at the second point, and move the
 	first point around the entire circle, a new circle, half the
 	size of the other would be drawn. The path that the second point
-	travels while the first one moves around the circle is it's locus.
+	travels while the first one moves around the circle is its locus.
       </para>
       <para>
 	Actually constructing the locus of a point is very easy.  Click the locus
@@ -617,7 +618,7 @@
 	</menuchoice>
 	from the menubar.  Then select the constrained point as the
 	moving point (the text <guilabel>Moving Point</guilabel> will
-	appear as you move the mouse over it ), and the other as the
+	appear as you move the mouse over it), and the other as the
 	dependent point.  The locus of the dependent point will then be drawn.
       </para>
     </section>
@@ -626,17 +627,17 @@
   <chapter id="scripting">
     <title>Scripting</title>
     <para>
-      &kig; allows the user to create custom types in the Python
+      &kig; allows you to create custom types in the Python
       scripting language.  This is a very advanced feature, and I know
       of only one other Interactive Geometry program that has a similar
-      functionality (the GNOME program &drgenius;). 
+      functionality (the <acronym>GNOME</acronym> program &drgenius;). 
     </para>
     <para>
       Python Scripting in &kig; basically allows you to create your
       own objects from certain parent objects.  For
       example, if you are a math teacher, and you have some fancy way
       of calculating an interesting point on a conic, then instead of
-      messing with complex constructions and macro's, you could just
+      messing with complex constructions and macros, you could just
       write down in Python code how the point is to be calculated and
       then &kig; will show it for you.
     </para>
@@ -692,7 +693,7 @@
       In the function, you can do all sorts of calculations that you
       deem necessary, using the two arguments if needed.  You should
       return the object you want to define.  In our case, this is a
-      Point object.  The two arguments are also Point objects, and we
+      Point object.  The two arguments are also <classname>Point</classname> objects, and we
       can use the <function>Point.coordinate()</function> function to
       define the coordinates of the two given points.
     </para>
@@ -723,7 +724,7 @@
       If you now click the <guibutton>Finish</guibutton> button,
       the new object will appear in the &kig; document. If you move
       one of the points, the newly created point will move along
-      with it. A lot more powerful objects can be built in this way,
+      with it. Much more powerful objects can be built in this way:
       you are encouraged to try it out.
     </para>
     <screenshot>
@@ -741,12 +742,13 @@
     </screenshot>
     <para>
       All objects in &kig; can be used in the Python code. As we have
-      seen above, points are of the Point class, and you can use &eg;
+      seen above, points are of the <classname>Point</classname> class, and you can use &eg;
       the <function>Point.coordinate()</function> method.  You can
-      also return all kinds of objects, not just Points.  Many more
+      also return all kinds of objects, not just <classname>Point</classname>s.  Many more
       classes and methods are available in the &kig; Python code,
       and a more complete reference is provided <ulink
-      url="http://edu.kde.org/kig/manual/scripting-api/index.html">here</ulink>.
+      url="http://edu.kde.org/kig/manual/scripting-api/index.html">on
+      the Kig website</ulink>.
     </para>
   </chapter>
 
@@ -793,8 +795,8 @@
 	    &kig; supports macros to be defined in a straightforward
 	    manner.  These objects are presented to the user like
 	    normal objects.  They are saved on exit and loaded on
-	    startup, so that they aren't lost on exit.  In the <link
-	    linkend="working-with-types">Types Manager</link> you can
+	    startup, so that they aren't lost on exit.  In the <xref
+	    linkend="working-with-types" />, you can
 	    manage these objects.  You can export them to files,
 	    import them from files, and delete them.
 	  </para>
@@ -812,7 +814,7 @@
 	<listitem>
 	  <para>
 	    &kig; allows you to export a &kig; file to some interesting
-	    formats, like images, and XFig files.  This is rather
+	    formats, like images and <application>XFig</application> files.  This is rather
 	    useful, because not all programs support the &kig; file
 	    format yet.
 	  </para>
@@ -826,7 +828,7 @@
 	  <para>
 	    &kig; aims to be compatible with its competitors. This is
 	    why it supports the &kgeo; file format, the &kseg; file
-	    format, and support for other formats is planned also.
+	    format, with support for other formats planned.
 	  </para>
 	</listitem>
       </itemizedlist>
@@ -847,13 +849,16 @@
     </para>
     <para>
       &kig; copyright 2002 Dominique Devriese
-      <email>devriese@kde.org</email>
+      <email>devriese@kde.org</email>.
     </para>
 
     <para>
       Documentation copyright 2002-2003 Dominique
-      Devriese. <email>devriese@kde.org</email>
+      Devriese <email>devriese@kde.org</email>.
     </para>
+
+    <para>
+Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.</para>
     <!-- TRANS:CREDIT_FOR_TRANSLATORS --> &underFDL; &underGPL;
   </chapter>
 
@@ -904,10 +909,10 @@
       </para>
       <para>
 	If you are uncertain of your rights to use this software, or
-	other peoples right to use any modifications you make to this
+	other people's right to use any modifications you make to this
 	program &etc;, please read the license.  You can find it in the
 	<filename>COPYING</filename> file in the &kig; source tree or
-	the license tab in the <guilabel>About Kig</guilabel> dialog.
+	the <guilabel>license</guilabel> tab in the <guilabel>About Kig</guilabel> dialog.
       </para>
     </section>
     <section id="howto-contribute">
@@ -916,9 +921,9 @@
 	Any contributions are welcome.  If you don't like the icons,
 	or think that the manual needs updating, or if you have this really
 	cool macro that you want to share with the world, do not
-	hesitate and send it to me.  Please note that your
+	hesitate to send it to me.  Please note that your
 	contributions will be distributed under the terms of the &GNU;
-	GPL; you can find the terms of this license in the
+	<acronym>GPL</acronym>; you can find the terms of this license in the
 	<filename>COPYING</filename> file in the &kig; source tree,
 	and in the <link linkend="credits">Credits and
 	Licenses</link> chapter in this manual.
