@@ -1,0 +1,82 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="0.4.0" >
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Objects>
+  <Data type="double" id="1" >-4.86</Data>
+  <Data type="double" id="2" >0</Data>
+  <Data type="double" id="3" >-6.93</Data>
+  <Data type="double" id="4" >0.42</Data>
+  <Data type="double" id="5" >0.346818</Data>
+  <Data type="double" id="6" >0.12</Data>
+  <Data type="double" id="7" >4.14</Data>
+  <Data type="double" id="8" >0.698969</Data>
+  <Data type="hierarchy" id="9" >
+   <input requirement="point" id="1" />
+   <input requirement="point" id="2" />
+   <input requirement="double" id="3" />
+   <intermediate action="calc" type="LineAB" id="4" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <result action="calc" type="ConstrainedPoint" id="5" >
+    <arg>3</arg>
+    <arg>4</arg>
+   </result>
+  </Data>
+  <Data type="double" id="10" >0.15</Data>
+  <Data type="double" id="11" >0</Data>
+  <Data type="double" id="12" >3.63</Data>
+  <Data type="double" id="13" >-0.12</Data>
+  <Object width="-1" shown="true" type="FixedPoint" id="14" color="#0000ff" >
+   <Parent id="1" />
+   <Parent id="2" />
+  </Object>
+  <Object width="-1" shown="true" type="FixedPoint" id="15" color="#0000ff" >
+   <Parent id="3" />
+   <Parent id="4" />
+  </Object>
+  <Object width="-1" shown="true" type="FixedPoint" id="16" color="#0000ff" >
+   <Parent id="6" />
+   <Parent id="7" />
+  </Object>
+  <Object width="-1" shown="true" type="FixedPoint" id="17" color="#0000ff" >
+   <Parent id="10" />
+   <Parent id="11" />
+  </Object>
+  <Object width="-1" shown="true" type="FixedPoint" id="18" color="#0000ff" >
+   <Parent id="12" />
+   <Parent id="13" />
+  </Object>
+  <Object width="-1" shown="true" type="CircleBCP" id="19" color="#0000ff" >
+   <Parent id="14" />
+   <Parent id="15" />
+  </Object>
+  <Object width="-1" shown="true" type="SegmentAB" id="20" color="#0000ff" >
+   <Parent id="17" />
+   <Parent id="18" />
+  </Object>
+  <Object width="-1" shown="true" type="ConstrainedPoint" id="21" color="#0000ff" >
+   <Parent id="5" />
+   <Parent id="19" />
+  </Object>
+  <Object width="-1" shown="true" type="Locus" id="22" color="#0000ff" >
+   <Parent id="19" />
+   <Parent id="9" />
+   <Parent id="16" />
+   <Parent id="8" />
+  </Object>
+  <Object width="-1" shown="true" type="LineAB" id="23" color="#0000ff" >
+   <Parent id="21" />
+   <Parent id="16" />
+  </Object>
+  <Object width="-1" shown="true" type="ConstrainedPoint" id="24" color="#0000ff" >
+   <Parent id="8" />
+   <Parent id="23" />
+  </Object>
+  <Object width="-1" shown="true" type="ScalingOverLine" id="25" color="#0000ff" >
+   <Parent id="23" />
+   <Parent id="20" />
+   <Parent id="22" />
+  </Object>
+ </Objects>
+</KigDocument>
