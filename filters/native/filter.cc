@@ -79,155 +79,17 @@ KigFilter::Result KigFilterNative::load( const QString& from, KigDocument& to )
     loadNew( main, to ) : loadOld( main, to );
 }
 
-struct HierElem
-{
-  int id;
-  std::vector<int> parents;
-  QDomElement el;
-};
-
-static void extendVect( std::vector<HierElem>& vect, uint size )
-{
-  if ( size > vect.size() )
-  {
-    int osize = vect.size();
-    vect.resize( size );
-    for ( uint i = osize; i < size; ++i )
-      vect[i].id = i+1;
-  };
-};
-
-static void visitElem( std::vector<HierElem>& ret,
-                       const std::vector<HierElem>& elems,
-                       std::vector<bool>& seen,
-                       int i )
-{
-  if ( !seen[i] )
-  {
-    for ( uint j = 0; j < elems[i].parents.size(); ++j )
-      visitElem( ret, elems, seen, elems[i].parents[j] - 1);
-    ret.push_back( elems[i] );
-    seen[i] = true;
-  };
-};
-
-static std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
-{
-  std::vector<HierElem> ret;
-  std::vector<bool> seenElems( elems.size(), false );
-  for ( uint i = 0; i < elems.size(); ++i )
-    visitElem( ret, elems, seenElems, i );
-  return ret;
-};
-
 KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument& to )
 {
   using namespace std;
 
-  bool ok = true;
-
-  std::vector<HierElem> elems;
-  Objects os;
-
   QDomElement hier = main.firstChild().toElement();
   if ( hier.isNull() ) return ParseError;
   if ( hier.tagName() != "ObjectHierarchy" ) return NotSupported;
-  for (QDomNode n = hier.firstChild(); !n.isNull(); n = n.nextSibling())
-  {
-    QString tmp;
-    QDomElement e = n.toElement();
-    if ( e.isNull() ) return ParseError;
-    if ( e.tagName() != "HierarchyElement" ) return ParseError;
 
-    // fetch the id
-    tmp = e.attribute("id");
-    if(tmp.isNull()) return ParseError;
-    uint id = tmp.toInt(&ok);
-    if ( !ok ) return ParseError;
-
-    extendVect( elems, id );
-    elems[id-1].el = e;
-
-    for ( QDomNode n = e.firstChild(); !n.isNull(); n = n.nextSibling() )
-    {
-      QDomElement el = n.toElement();
-      if ( el.isNull() ) return ParseError;
-      if ( el.tagName() == "parent" )
-      {
-        QString tmp = el.attribute( "id" );
-        if ( tmp.isNull() ) return ParseError;
-        int pid = tmp.toInt( &ok );
-        if ( ! ok ) return ParseError;
-        extendVect( elems, id );
-        elems[id-1].parents.push_back( pid );
-      }
-    };
-  };
-
-  os.resize( elems.size(), 0 );
-
-  // now we do a topological sort of the elems..
-  std::vector<HierElem> sortedElems = sortElems( elems );
-
-  // data objects that certain objects need..  we add them with the
-  // rest at the end..
-  Objects dataos;
-
-  // and now we go over them again, this time filling up os..
-  for ( uint i = 0; i < sortedElems.size(); ++i )
-  {
-    HierElem& elem = sortedElems[i];
-    QDomElement e = elem.el;
-    QString tmp;
-
-    tmp = e.attribute("typeName");
-    if(tmp.isNull()) return ParseError;
-    QCString type = tmp.utf8();
-
-    QColor color = Qt::blue;
-    bool shown = true;
-    for ( QDomNode n = e.firstChild(); !n.isNull(); n = n.nextSibling() )
-    {
-      QDomElement el = n.toElement();
-      if ( el.isNull() ) return ParseError;
-      if ( el.tagName() == "param" )
-      {
-        QString name = el.attribute( "name" );
-        if ( name.isNull() ) return ParseError;
-        if ( name == "color" )
-        {
-          color = QColor( el.text() );
-          if ( !color.isValid() ) return ParseError;
-        }
-        else if ( name == "shown" )
-        {
-          shown = el.text() == "true" || el.text() == "yes";
-        };
-      };
-    };
-    Objects parents;
-    for ( uint i = 0; i < elem.parents.size(); ++i )
-    {
-      assert( os[elem.parents[i] - 1] );
-      parents.push_back( os[elem.parents[i] - 1] );
-    };
-
-    RealObject* o = new RealObject( 0, parents );
-    o->setShown( shown );
-    o->setColor( color );
-
-    if ( ! oldElemToNewObject( type, e, *o, dataos, to ) )
-    {
-      delete_all( os.begin(), os.end() );
-      delete_all( dataos.begin(), dataos.end() );
-      return ParseError;
-    };
-    o->calc( to );
-    os[elem.id-1] = o;
-  };
-
-  os.reserve( os.size() + dataos.size() );
-  copy( dataos.begin(), dataos.end(), back_inserter( os ) );
+  Objects os;
+  if ( ! parseOldObjectHierarchyElements( hier.firstChild().toElement(), os, to ) )
+    return ParseError;
 
   to.setObjects( os );
   return OK;

@@ -19,6 +19,15 @@
 #ifndef KIG_MISC_OLDKIGFORMAT_H
 #define KIG_MISC_OLDKIGFORMAT_H
 
+/**
+ * This file contains some functions related to the parsing of
+ * old-style ( kig 0.1 up to 0.3.1 ) kig files.  They are used by both
+ * the import filter ( KigFilterNative::loadOld() in
+ * filters/native/filter.cc ) and the macro import stuff (
+ * MacroList::loadOld() in misc/lists.cc )..  The HierElem stuff is
+ * used by the new native filter too..
+ */
+
 class QString;
 class QCString;
 class QDomElement;
@@ -26,9 +35,37 @@ class RealObject;
 class Objects;
 class KigDocument;
 
+#include <vector>
+#include <qdom.h>
+
+/**
+ * Lots of property names changed in the new kig format, especially
+ * because we split up the translated property names and the internal
+ * ones.  This function translates old names to new ones.
+ */
 QCString translateOldKigPropertyName( const QString& whichproperty );
 
-bool oldElemToNewObject( const QCString& type, const QDomElement& e,
-                         RealObject& o, Objects&, KigDocument& );
+/**
+ * This function parses old ObjectHierarchy xml elements, and returns
+ * a set of objects according to it.  firstelement is the first
+ * element that needs parsing, you can handle some objects yourself
+ * and then let this function handle the rest, by already filling up
+ * ret with the objects you want to use for the elements you skip.
+ * This is necessary e.g. in the Macro importer, cause it needs to
+ * handle the given objects itself..
+ */
+bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& ret,
+                                      KigDocument& );
+
+struct HierElem
+{
+  int id;
+  std::vector<int> parents;
+  QDomElement el;
+};
+
+void extendVect( std::vector<HierElem>& vect, uint size );
+
+std::vector<HierElem> sortElems( const std::vector<HierElem> elems );
 
 #endif

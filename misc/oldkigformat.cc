@@ -36,26 +36,11 @@
 #include <qregexp.h>
 #include <qdom.h>
 
-QCString translateOldKigPropertyName( const QString& whichproperty )
-{
-  // we need to translate the property names from old kig to new
-  // kig..
-  // a lot of them are simply the lower case of the other ones..
-  QCString ret = whichproperty.lower().latin1();
-  // this deals with lots of names too..
-  ret.replace( QRegExp( QString::fromLatin1( " " ) ), "-" );
-  if ( ret == "angle-in-radians" )
-    ret = "angle-radian";
-  else if ( ret == "angle-in-degrees" )
-    ret = "angle-degrees";
-  return ret;
-};
-
-bool oldElemToNewObject( const QCString type,
-                         const QDomElement& e,
-                                          RealObject& o,
-                                          Objects& dataos,
-                                          KigDocument& kdoc )
+static bool oldElemToNewObject( const QCString type,
+                                const QDomElement& e,
+                                RealObject& o,
+                                Objects& dataos,
+                                KigDocument& kdoc )
 {
   if ( type == "NormalPoint" )
   {
@@ -269,3 +254,149 @@ bool oldElemToNewObject( const QCString type,
   }
 }
 
+QCString translateOldKigPropertyName( const QString& whichproperty )
+{
+  // we need to translate the property names from old kig to new
+  // kig..
+  // a lot of them are simply the lower case of the other ones..
+  QCString ret = whichproperty.lower().latin1();
+  // this deals with lots of names too..
+  ret.replace( QRegExp( QString::fromLatin1( " " ) ), "-" );
+  if ( ret == "angle-in-radians" )
+    ret = "angle-radian";
+  else if ( ret == "angle-in-degrees" )
+    ret = "angle-degrees";
+  return ret;
+};
+
+void extendVect( std::vector<HierElem>& vect, uint size )
+{
+  if ( size > vect.size() )
+  {
+    int osize = vect.size();
+    vect.resize( size );
+    for ( uint i = osize; i < size; ++i )
+      vect[i].id = i+1;
+  };
+};
+
+static void visitElem( std::vector<HierElem>& ret,
+                       const std::vector<HierElem>& elems,
+                       std::vector<bool>& seen,
+                       int i )
+{
+  if ( !seen[i] )
+  {
+    for ( uint j = 0; j < elems[i].parents.size(); ++j )
+      visitElem( ret, elems, seen, elems[i].parents[j] - 1);
+    ret.push_back( elems[i] );
+    seen[i] = true;
+  };
+};
+
+std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
+{
+  std::vector<HierElem> ret;
+  std::vector<bool> seenElems( elems.size(), false );
+  for ( uint i = 0; i < elems.size(); ++i )
+    visitElem( ret, elems, seenElems, i );
+  return ret;
+};
+
+bool parseOldObjectHierarchyElements( const QDomElement& firstelement, Objects& ret,
+                                      KigDocument& doc )
+{
+  bool ok = true;
+
+  std::vector<HierElem> elems;
+
+  for (QDomElement e = firstelement; !e.isNull(); e = e.nextSibling().toElement() )
+  {
+    QString tmp;
+    if ( e.tagName() != "HierarchyElement" ) return false;
+
+    // fetch the id
+    tmp = e.attribute("id");
+    uint id = tmp.toInt(&ok);
+    if ( !ok ) return false;
+
+    extendVect( elems, id );
+    elems[id-1].el = e;
+
+    for ( QDomElement el = e.firstChild().toElement(); !el.isNull();
+          el = el.nextSibling().toElement() )
+    {
+      if ( el.tagName() == "parent" )
+      {
+        QString tmp = el.attribute( "id" );
+        int pid = tmp.toInt( &ok );
+        if ( ! ok ) return false;
+        extendVect( elems, id );
+        elems[id-1].parents.push_back( pid );
+      }
+    };
+  };
+
+  ret.resize( ret.size() + elems.size(), 0 );
+
+  // now we do a topological sort of the elems..
+  std::vector<HierElem> sortedElems = sortElems( elems );
+
+  // data objects that certain objects need..  we add them with the
+  // rest at the end..
+  Objects dataos;
+
+  // and now we go over them again, this time filling up ret..
+  for ( uint i = 0; i < sortedElems.size(); ++i )
+  {
+    HierElem& elem = sortedElems[i];
+    QDomElement e = elem.el;
+    QString tmp;
+
+    tmp = e.attribute("typeName");
+    if(tmp.isNull()) return false;
+    QCString type = tmp.utf8();
+
+    QColor color = Qt::blue;
+    bool shown = true;
+    for ( QDomElement el = e.firstChild().toElement(); !el.isNull();
+          el = el.nextSibling().toElement() )
+    {
+      if ( el.tagName() == "param" )
+      {
+        QString name = el.attribute( "name" );
+        if ( name == "color" )
+        {
+          color = QColor( el.text() );
+          if ( !color.isValid() ) return false;
+        }
+        else if ( name == "shown" )
+          shown = el.text() == "true" || el.text() == "yes";
+      };
+    };
+    Objects parents;
+    for ( uint i = 0; i < elem.parents.size(); ++i )
+    {
+      assert( ret[elem.parents[i] - 1] );
+      parents.push_back( ret[elem.parents[i] - 1] );
+    };
+
+    RealObject* o = new RealObject( 0, parents );
+    o->setShown( shown );
+    o->setColor( color );
+
+    if ( ! oldElemToNewObject( type, e, *o, dataos, doc ) )
+    {
+      delete_all( ret.begin(), ret.end() );
+      delete_all( dataos.begin(), dataos.end() );
+      return false;
+    };
+    o->calc( doc );
+    ret[elem.id-1] = o;
+  };
+
+  ret.reserve( ret.size() + dataos.size() );
+  copy( dataos.begin(), dataos.end(), back_inserter( ret ) );
+
+  return true;
+};
