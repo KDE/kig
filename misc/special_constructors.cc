@@ -360,7 +360,7 @@ void PolygonBNPTypeConstructor::handlePrelim(
 QString PolygonBNPTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
                                           const KigDocument&, const KigWidget& ) const
 {
-  if ( os.size() > 3 ) 
+  if ( os.size() > 3 )
     return i18n("... with this vertex (click on the first vertex to terminate construction)");
   else return i18n("Construct a polygon with this vertex");
 }
@@ -429,7 +429,7 @@ static const struct ArgsParser::spec argsspecpv[] =
 };
 
 PolygonVertexTypeConstructor::PolygonVertexTypeConstructor()
-  : StandardConstructorBase( I18N_NOOP( "Vertices of a Polygon" ), 
+  : StandardConstructorBase( I18N_NOOP( "Vertices of a Polygon" ),
        I18N_NOOP( "The vertices of a polygon." ),
        "polygonvertices", margsparser ),
     mtype( PolygonVertexType::instance() ),
@@ -496,7 +496,7 @@ static const struct ArgsParser::spec argsspecps[] =
 };
 
 PolygonSideTypeConstructor::PolygonSideTypeConstructor()
-  : StandardConstructorBase( I18N_NOOP( "Sides of a Polygon" ), 
+  : StandardConstructorBase( I18N_NOOP( "Sides of a Polygon" ),
        I18N_NOOP( "The sides of a polygon." ),
        "polygonsides", margsparser ),
     mtype( PolygonSideType::instance() ),
@@ -599,7 +599,7 @@ const int PolygonBCVConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
 
   if ( os.size() < 3 ) return ArgsParser::Valid;
 
-  if ( ! ( os[2]->imp()->inherits( BogusPointImp::stype() ) ) ) 
+  if ( ! ( os[2]->imp()->inherits( BogusPointImp::stype() ) ) )
     return ArgsParser::Invalid;
 
   return ArgsParser::Complete;
@@ -642,7 +642,7 @@ void PolygonBCVConstructor::handlePrelim(
     Coordinate cntrl = static_cast<const PointImp*>( os[2]->imp() )->coordinate();
     nsides = computeNsides( c, v, cntrl, winding );
   }
-    
+
   std::vector<ObjectCalcer*> args;
   args.push_back( os[0] );
   args.push_back( os[1] );
@@ -714,13 +714,13 @@ QString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<O
 
     if ( winding > 1 )
     {
-      QString result = QString( 
+      QString result = QString(
         i18n( "Adjust the number of sides (%1/%2)" )
         ).arg( nsides ).arg( winding );
       return result;
     } else
     {
-      QString result = QString( 
+      QString result = QString(
         i18n( "Adjust the number of sides (%1)" )
         ).arg( nsides );
       return result;
@@ -795,7 +795,8 @@ int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
   while ( angle > 1 ) angle -= 1;
   if ( angle > 0.5 ) angle = 1 - angle;
 
-  double realsides = 1.0/angle;    // this is bigger that 2 
+  double realsides = 1.0/angle;    // this is bigger that 2
+  if ( angle == 0. ) realsides = 3;
   if ( winding <= 0 )              // free to compute winding
   {
     winding = 1;
@@ -947,7 +948,7 @@ GenericAffinityConstructor::GenericAffinityConstructor()
     I18N_NOOP( "The unique affinity that maps three points (or a triangle) onto three other points (or a triangle)" ),
     "genericaffinity" )
 {
-  SimpleObjectTypeConstructor* b2tr = 
+  SimpleObjectTypeConstructor* b2tr =
      new SimpleObjectTypeConstructor(
       AffinityB2TrType::instance(),
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
@@ -990,7 +991,7 @@ GenericProjectivityConstructor::GenericProjectivityConstructor()
 GenericProjectivityConstructor::~GenericProjectivityConstructor() {}
 
 /*
- * Transport of Measure 
+ * Transport of Measure
  */
 
 MeasureTransportConstructor::MeasureTransportConstructor()
@@ -1029,7 +1030,7 @@ const bool MeasureTransportConstructor::isAlreadySelectedOK(
  * to the user
  */
 
-const int MeasureTransportConstructor::wantArgs( 
+const int MeasureTransportConstructor::wantArgs(
                                 const std::vector<ObjectCalcer*>& os,
                                 const KigDocument&,
                                 const KigWidget& ) const
@@ -1091,8 +1092,8 @@ void MeasureTransportConstructor::handlePrelim(
   drawprelim( drawer, p, os, d );
 }
 
-void MeasureTransportConstructor::drawprelim( const ObjectDrawer& drawer, 
-                         KigPainter& p, 
+void MeasureTransportConstructor::drawprelim( const ObjectDrawer& drawer,
+                         KigPainter& p,
                          const std::vector<ObjectCalcer*>& parents,
                          const KigDocument& doc ) const
 {
@@ -1105,7 +1106,7 @@ void MeasureTransportConstructor::drawprelim( const ObjectDrawer& drawer,
   delete data;
 }
 
-QString MeasureTransportConstructor::useText( const ObjectCalcer& o, 
+QString MeasureTransportConstructor::useText( const ObjectCalcer& o,
                         const std::vector<ObjectCalcer*>& os,
                         const KigDocument&, const KigWidget& ) const
 {
@@ -1123,7 +1124,7 @@ QString MeasureTransportConstructor::useText( const ObjectCalcer& o,
       return i18n("Start transport from this point of the circle");
     if ( os[1]->imp()->inherits( LineImp::stype() ) )
       return i18n("Start transport from this point of the line");
-    else 
+    else
       return i18n("Start transport from this point of the curve");
       // well, this isn't impemented yet, should never get here
   }
@@ -1138,8 +1139,8 @@ QString MeasureTransportConstructor::selectStatement(
   return i18n("Select a point to be a vertex of the new polygon...");
 }
 
-std::vector<ObjectHolder*> MeasureTransportConstructor::build( 
-    const std::vector<ObjectCalcer*>& parents, 
+std::vector<ObjectHolder*> MeasureTransportConstructor::build(
+    const std::vector<ObjectCalcer*>& parents,
     KigDocument&, KigWidget& ) const
 {
   assert ( parents.size() == 3 );
@@ -1516,7 +1517,7 @@ bool relativePrimes( int n, int p )
   assert ( p >= 0 );
   if ( p == 0 ) return false;
   if ( p == 1 ) return true;
-  int d = int( n/p ); 
+  int d = int( n/p );
   return relativePrimes( p, n-d*p );
 }
 
