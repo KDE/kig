@@ -54,6 +54,7 @@ kigicondata_DATA = \
 	scale.png \
 	script.png \
 	segment.png \
+	segmentaxis.png \
 	sizer.png \
 	slope.png \
 	stretch.png \

@@ -39,6 +39,7 @@
 	<Action name="objects_new_lineparallel" />
 	<Action name="objects_new_ray" />
 	<Action name="objects_new_segment" />
+	<Action name="objects_new_segment_axis" />
 	<ActionList name="user_line_types" />
 	<ActionList name="user_segment_types" />
       </Menu>
@@ -148,6 +149,7 @@
   <ToolBar name="line_toolbar" position="left">
     <text>Lines</text>
     <Action name="objects_new_segment" />
+    <Action name="objects_new_segment_axis" />
     <Action name="objects_new_linettp" />
     <Action name="objects_new_vector" />
     <Action name="objects_new_ray" />

@@ -1,0 +1,22 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.6.1" >
+ <Macro>
+  <Name>Segment Axis</Name>
+  <Description>The perpendicular line through a given segment's mid point.</Description>
+  <ActionName>objects_new_segment_axis</ActionName>
+  <IconFileName>segmentaxis</IconFileName>
+  <Construction>
+   <input requirement="segment" id="1" />
+   <intermediate action="fetch-property" property="mid-point" id="2" >
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="calc" type="Copy" id="3" >
+    <arg>2</arg>
+   </intermediate>
+   <result action="calc" type="LinePerpend" id="4" >
+    <arg>1</arg>
+    <arg>3</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>
