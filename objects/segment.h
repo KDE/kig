@@ -78,7 +78,7 @@ public:
   const Coordinate p2() const;
 
   const uint numberOfProperties() const;
-  const Property property( uint which ) const;
+  const Property property( uint which, const KigWidget& w ) const;
   const QCStringList properties() const;
 
 protected:

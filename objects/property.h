@@ -71,7 +71,8 @@ struct TextLabelProperty
   TextLabelProperty()
     : obj( 0 ), index( static_cast<unsigned int>( -1 ) ) {};
 
-  Property value();
+  Property value( const KigWidget& ) const;
+  QString getString( const KigDocument&, const KigWidget& ) const;
 
   bool valid();
 

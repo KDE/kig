@@ -40,14 +40,14 @@ const uint AbstractLine::numberOfProperties() const
   return Curve::numberOfProperties() + 2;
 }
 
-const Property AbstractLine::property( uint which ) const
+const Property AbstractLine::property( uint which, const KigWidget& w ) const
 {
   assert( which < AbstractLine::numberOfProperties() );
-  if ( which < Curve::numberOfProperties() ) return Curve::property( which );
+  if ( which < Curve::numberOfProperties() ) return Curve::property( which, w );
   if ( which == Curve::numberOfProperties() )
     return Property( slope() );
   else if ( which == Curve::numberOfProperties() + 1 )
-    return Property( equationString() );
+    return Property( equationString( w ) );
   else assert( false );
 }
 
@@ -66,7 +66,7 @@ double AbstractLine::slope() const
   return diff.y / diff.x;
 }
 
-const QString AbstractLine::equationString() const
+const QString AbstractLine::equationString( const KigWidget& ) const
 {
   QString ret = QString::fromUtf8( "y = %1x + %2" );
   Coordinate p = p1();

@@ -269,3 +269,8 @@ void NormalModePopupObjects::doPopup( int id )
   Object* o = mobjs[0];
   o->doPopupAction( popupid, id, mdoc, mview, mmode, mview->fromScreen( mview->mapFromGlobal( mplc ) ) );
 }
+
+const KigWidget& NormalModePopupObjects::widget() const
+{
+  return *mview;
+}

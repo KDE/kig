@@ -105,10 +105,10 @@ Objects CoordinatePropertyPoint::getParents() const
   return Objects( mparent );
 }
 
-void CoordinatePropertyPoint::calc()
+void CoordinatePropertyPoint::calcForWidget( const KigWidget& w )
 {
   assert( mpropindex != 10000 );
-  Property p = mparent->property( mpropindex );
+  Property p = mparent->property( mpropindex, w );
   assert( p.type() == Property::Coord );
   mC = p.coordData();
 }
@@ -125,5 +125,9 @@ CoordinatePropertyPoint::CoordinatePropertyPoint( Object* o, const QCString& pro
   int index = o->properties().findIndex( propstring );
   assert( index != -1 );
   mpropindex = static_cast<uint>( index );
+}
+
+void CoordinatePropertyPoint::calc()
+{
 }
 

@@ -82,15 +82,9 @@ void MacroObjectOne::stopMove()
 
 void MacroObjectOne::calcForWidget( const KigWidget& w )
 {
-  setValidFromChildren();
+  setValidFromParents();
   cos.calcForWidget( w );
   final->calcForWidget( w );
-}
-
-void MacroObjectOne::calc()
-{
-  cos.calc();
-  final->calc();
 }
 
 const QCString MacroObjectOne::vBaseTypeName() const
@@ -143,7 +137,7 @@ const Curve* MacroObjectOne::toCurve() const
   return final->toCurve() ? this : 0;
 }
 
-void MacroObjectOne::setValidFromChildren()
+void MacroObjectOne::setValidFromParents()
 {
   mvalid = true;
   for ( Objects::const_iterator i = arguments.begin(); i != arguments.end(); ++i )
@@ -158,8 +152,8 @@ void MacroObjectOne::construct()
   final = hier->getFinElems()[0]->actual();
   cos = calcPath( arguments, final );
 
-  cos.calc();
-  final->calc();
+//   cos.calc();
+//   final->calc();
 
   for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
     for( Objects::iterator j = cos.begin(); j != cos.end(); ++j )
@@ -168,4 +162,8 @@ void MacroObjectOne::construct()
   for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
     if ( !arguments.contains( *i ) )
       (*i)->setShown(false);
+}
+
+void MacroObjectOne::calc()
+{
 }

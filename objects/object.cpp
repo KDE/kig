@@ -232,7 +232,7 @@ void Object::addActions( NormalModePopupObjects& m )
   QCStringList s = properties();
   for ( uint i = 0; i < numberOfProperties(); ++i )
   {
-    Property p = property( i );
+    Property p = property( i, m.widget() );
     if ( p.type() == Property::Coord )
     {
       content = true;
@@ -247,7 +247,6 @@ void Object::addActions( NormalModePopupObjects& m )
   pm = new QPopupMenu( &m, "construct_textlabels_menu" );
   for ( uint i = 0; i < numberOfProperties(); ++i )
   {
-    Property p = property( i );
     QString str = i18n( s[i] );
     uint id = pm->insertItem( str, i );
     assert( i == id );
@@ -267,7 +266,7 @@ void Object::doPopupAction( int popupid, int actionid, KigDocument* doc, KigWidg
   if( popupid == 3849 )
   {
     uint pid = static_cast<uint>( actionid );
-    assert( property( pid ).type() == Property::Coord );
+    assert( property( pid, *w ).type() == Property::Coord );
     Object* o = new CoordinatePropertyPoint( this, pid );
     o->calc();
     doc->addObject( o );
@@ -294,7 +293,7 @@ const QCStringList Object::properties() const
   return s;
 }
 
-const Property Object::property( uint which ) const
+const Property Object::property( uint which, const KigWidget& ) const
 {
   assert( which == 0 );
   return Property( vTBaseTypeName() );

@@ -35,7 +35,7 @@ class Circle
   ~Circle();
 
   const uint numberOfProperties() const;
-  const Property property( uint which ) const;
+  const Property property( uint which, const KigWidget& w ) const;
   const QCStringList properties() const;
 
   Circle* toCircle();
@@ -56,8 +56,8 @@ class Circle
   double squareRadius() const;
   double surface() const;
   double circumference() const;
-  QString cartesianEquationString() const;
-  QString polarEquationString() const;
+  QString cartesianEquationString( const KigWidget& w ) const;
+  QString polarEquationString( const KigWidget& ) const;
   const ConicCartesianEquationData cartesianEquationData() const;
   const ConicPolarEquationData polarEquationData() const;
   virtual int conicType() const;

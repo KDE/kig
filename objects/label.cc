@@ -208,7 +208,7 @@ void TextLabel::calcForWidget( const KigWidget& w )
   for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
   {
     assert( i->index != static_cast<uint>( -1 ) );
-    Property prop = i->obj->property( i->index );
+    Property prop = i->obj->property( i->index, w );
     switch( prop.type() )
     {
     case Property::Double:
@@ -262,10 +262,10 @@ const uint TextLabel::numberOfProperties() const
   return Object::numberOfProperties() + 1;
 }
 
-const Property TextLabel::property( uint which ) const
+const Property TextLabel::property( uint which, const KigWidget& w ) const
 {
   assert( which < TextLabel::numberOfProperties() );
-  if ( which < Object::numberOfProperties() ) return Object::property( which );
+  if ( which < Object::numberOfProperties() ) return Object::property( which, w );
   if ( which == Object::numberOfProperties() )
     return Property( mcurtext );
   else assert( false );

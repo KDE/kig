@@ -132,7 +132,7 @@ public:
   // every object has a number of properties.
   // the Object class itself defines some properties too..
   virtual const uint numberOfProperties() const;
-  virtual const Property property( uint which ) const;
+  virtual const Property property( uint which, const KigWidget& w ) const;
   // this gives a list of brief descriptions of the properties.  The
   // names should be between I18N_NOOP(), and they should be ordered
   // such that if one takes property( a ) gives you the property
@@ -304,7 +304,11 @@ public:
    * The default calcForWidget() implementation just calls calc()..
    */
   virtual void calcForWidget( const KigWidget& widg );
+private:
   virtual void calc() = 0;
+  // Objects needs to be able to call this function...
+  friend class Objects;
+public:
 
   /**
    * This is a list of object-specific actions that appears when a

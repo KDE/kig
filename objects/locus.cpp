@@ -111,8 +111,8 @@ void Locus::calcForWidget( const KigWidget& w )
 
     // reset cp and its children to their former state...
     cp->constrainedImp()->setP(oldP);
-    cp->calc();
-    calcpath.calc();
+    cp->calcForWidget( w );
+    calcpath.calcForWidget( w );
   };
 }
 

@@ -24,10 +24,11 @@
 
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
+#include "../misc/i18n.h"
+#include "../misc/coordinate_system.h"
+#include "../kig/kig_view.h"
+#include "../kig/kig_part.h"
 
-#include <klocale.h>
-#include <kdebug.h>
-#include <qpen.h>
 #include <math.h>
 
 Circle::Circle()
@@ -381,7 +382,7 @@ const ConicPolarEquationData Circle::polarEquationData() const
   return mdata;
 }
 
-QString Circle::cartesianEquationString() const
+QString Circle::cartesianEquationString( const KigWidget& ) const
 {
   QString ret = i18n( "x^2 + y^2 + %1 x + %2 y + %3 = 0" );
   ConicCartesianEquationData data = cartesianEquationData();
@@ -391,13 +392,12 @@ QString Circle::cartesianEquationString() const
   return ret;
 }
 
-QString Circle::polarEquationString() const
+QString Circle::polarEquationString( const KigWidget& w ) const
 {
   QString ret = i18n( "rho = %1   [centered at %2]" );
   ConicPolarEquationData data = polarEquationData();
   ret = ret.arg( data.pdimen, 0, 'g', 3 );
-// for domi:  please fix this with "focus1" here
-  ret = ret.arg( data.pdimen, 0, 'g', 3 );
+  ret = ret.arg( w.document().coordinateSystem().fromScreen( data.focus1, w ) );
   return ret;
 }
 
@@ -406,10 +406,10 @@ const uint Circle::numberOfProperties() const
   return Curve::numberOfProperties() + 6;
 }
 
-const Property Circle::property( uint which ) const
+const Property Circle::property( uint which, const KigWidget& w ) const
 {
   assert( which < Circle::numberOfProperties() );
-  if ( which < Curve::numberOfProperties() ) return Curve::property( which );
+  if ( which < Curve::numberOfProperties() ) return Curve::property( which, w );
   if ( which == Curve::numberOfProperties() )
     return Property( surface() );
   else if ( which == Curve::numberOfProperties() + 1 )
@@ -419,9 +419,9 @@ const Property Circle::property( uint which ) const
   else if ( which == Curve::numberOfProperties() + 3 )
     return Property( center() );
   else if ( which == Curve::numberOfProperties() + 4 )
-    return Property( cartesianEquationString() );
+    return Property( cartesianEquationString( w ) );
   else if ( which == Curve::numberOfProperties() + 5 )
-    return Property( polarEquationString() );
+    return Property( polarEquationString( w ) );
   else assert( false );
 }
 

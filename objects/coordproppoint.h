@@ -55,6 +55,7 @@ public:
   const int vShortCut() const;
 
   virtual Objects getParents() const;
+  virtual void calcForWidget( const KigWidget& w );
   virtual void calc();
 
 protected:

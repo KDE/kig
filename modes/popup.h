@@ -75,6 +75,8 @@ public:
 
   static const uint virtualActionsOffset = 6;
 
+  const KigWidget& widget() const;
+
   // these two are the functions that objects can add objects to us
   // with, in their addActions() method...
   // here, id should be unique for all popup menu's defined by a type

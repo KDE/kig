@@ -85,11 +85,11 @@ QString Property::toString( const KigDocument& d, const KigWidget& w )
   };
 }
 
-Property TextLabelProperty::value()
+Property TextLabelProperty::value( const KigWidget& w ) const
 {
   assert( obj );
   assert( index != static_cast<unsigned int>( -1 ) );
-  return obj->property( index );
+  return obj->property( index, w );
 }
 
 bool TextLabelProperty::valid()
@@ -107,6 +107,11 @@ const Coordinate Property::coordData() const
 {
   assert( mtype == Coord );
   return *mdata.coord;
+}
+
+QString TextLabelProperty::getString( const KigDocument& d, const KigWidget& w ) const
+{
+  return value( w ).toString( d, w );
 }
 
 

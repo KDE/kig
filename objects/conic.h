@@ -102,15 +102,15 @@ class Conic
    */
   virtual int conicType() const;
   virtual QString type() const;
-  virtual QString cartesianEquationString() const;
-  virtual QString polarEquationString() const;
+  virtual QString cartesianEquationString( const KigWidget& w ) const;
+  virtual QString polarEquationString( const KigWidget& w ) const;
   virtual const ConicCartesianEquationData cartesianEquationData() const;
   virtual const ConicPolarEquationData polarEquationData() const = 0;
   virtual Coordinate focus1() const;
   virtual Coordinate focus2() const;
 
   virtual const uint numberOfProperties() const;
-  virtual const Property property( uint which ) const;
+  virtual const Property property( uint which, const KigWidget& w ) const;
   virtual const QCStringList properties() const;
 };
 

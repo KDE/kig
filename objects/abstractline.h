@@ -41,9 +41,9 @@ public:
   double slope() const;
 
   const uint numberOfProperties() const;
-  const Property property( uint which ) const;
+  const Property property( uint which, const KigWidget& w ) const;
   const QCStringList properties() const;
-  const QString equationString() const;
+  const QString equationString( const KigWidget& w ) const;
 };
 
 #endif

@@ -24,8 +24,11 @@
 
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
+#include "../misc/coordinate_system.h"
+#include "../misc/i18n.h"
+#include "../kig/kig_view.h"
+#include "../kig/kig_part.h"
 
-#include <klocale.h>
 #include <kdebug.h>
 #include <qpen.h>
 #include <math.h>
@@ -910,11 +913,11 @@ const uint Conic::numberOfProperties() const
   return Curve::numberOfProperties() + 5;
 }
 
-const Property Conic::property( uint which ) const
+const Property Conic::property( uint which, const KigWidget& w ) const
 {
   int pnum = 0;
 
-  if ( which < Curve::numberOfProperties() ) return Curve::property( which );
+  if ( which < Curve::numberOfProperties() ) return Curve::property( which, w );
   if ( which == Curve::numberOfProperties() + pnum++ )
     return Property( type() );
   else if ( which == Curve::numberOfProperties() + pnum++ )
@@ -922,9 +925,9 @@ const Property Conic::property( uint which ) const
   else if ( which == Curve::numberOfProperties() + pnum++ )
     return Property( focus2() );
   else if ( which == Curve::numberOfProperties() + pnum++ )
-    return Property( cartesianEquationString() );
+    return Property( cartesianEquationString( w ) );
   else if ( which == Curve::numberOfProperties() + pnum++ )
-    return Property( polarEquationString() );
+    return Property( polarEquationString( w ) );
   else assert( false );
 }
 
@@ -940,7 +943,7 @@ const QCStringList Conic::properties() const
   return l;
 }
 
-QString Conic::cartesianEquationString() const
+QString Conic::cartesianEquationString( const KigWidget& ) const
 {
   QString ret = i18n( "%1 x^2 + %2 y^2 + %3 xy + %4 x + %5 y + %6 = 0" );
   ConicCartesianEquationData data = cartesianEquationData();
@@ -983,16 +986,16 @@ ConicCartesianEquationData::ConicCartesianEquationData()
   std::fill( coeffs, coeffs + 6, 0 );
 };
 
-QString Conic::polarEquationString() const
+QString Conic::polarEquationString( const KigWidget& w ) const
 {
-  QString ret = i18n( "rho = %1/(1 + %2 cos theta + %3 sin theta)\n    [centered at (%4;%5)]" );
+  QString ret = i18n( "rho = %1/(1 + %2 cos theta + %3 sin theta)\n    [centered at %4]" );
   const ConicPolarEquationData data = polarEquationData();
 
   ret = ret.arg( data.pdimen, 0, 'g', 3 );
   ret = ret.arg( -data.ecostheta0, 0, 'g', 3 );
   ret = ret.arg( -data.esintheta0, 0, 'g', 3 );
-  ret = ret.arg( data.focus1.x, 0, 'g', 3 );
-  ret = ret.arg( data.focus1.y, 0, 'g', 3 );
+
+  ret = ret.arg( w.document().coordinateSystem().fromScreen( data.focus1, w ) );
   return ret;
 }
 

@@ -76,7 +76,7 @@ public:
   double size() const;
 
   const uint numberOfProperties() const;
-  const Property property( uint which ) const;
+  const Property property( uint which, const KigWidget& ) const;
   const QCStringList properties() const;
 
 protected:

@@ -56,7 +56,7 @@ public:
   virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m, const Coordinate& );
 
   virtual const uint numberOfProperties() const;
-  virtual const Property property( uint which ) const;
+  virtual const Property property( uint which, const KigWidget& w ) const;
   virtual const QCStringList properties() const;
 
 public:

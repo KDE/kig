@@ -241,10 +241,10 @@ const uint Segment::numberOfProperties() const
   return AbstractLine::numberOfProperties() + 1;
 }
 
-const Property Segment::property( uint which ) const
+const Property Segment::property( uint which, const KigWidget& w ) const
 {
   if ( which < AbstractLine::numberOfProperties() )
-    return AbstractLine::property( which );
+    return AbstractLine::property( which, w );
   if ( which == AbstractLine::numberOfProperties() )
   {
     return Property( ( p2() - p1() ).length() );

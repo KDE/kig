@@ -301,7 +301,7 @@ void TextLabelConstructionMode::updateLinksLabel()
     {
       // if the user has already selected a property, then we show its
       // value...
-      linktext = ( margs[count].value() ).toString( *mDoc, *mDoc->mainWidget()->realWidget() );
+      linktext = ( margs[count].getString( *mDoc, *mDoc->mainWidget()->realWidget() ) );
     }
     else
       // otherwise, we show a stub...

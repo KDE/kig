@@ -160,9 +160,9 @@ const uint Point::numberOfProperties() const
   return Object::numberOfProperties() + 1;
 }
 
-const Property Point::property( uint which ) const
+const Property Point::property( uint which, const KigWidget& w ) const
 {
-  if ( which < Object::numberOfProperties() ) return Object::property( which );
+  if ( which < Object::numberOfProperties() ) return Object::property( which, w );
   assert( which <= numberOfProperties() );
   if ( which == Object::numberOfProperties() )
     return Property( mC );

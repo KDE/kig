@@ -63,6 +63,7 @@ public:
   void stopMove();
   void calcForWidget( const KigWidget& w );
   void calc();
+
   const QCString vBaseTypeName() const;
   const QCString vFullTypeName() const;
   const QString vDescriptiveName() const { return 0; };
@@ -76,16 +77,8 @@ public:
   Coordinate getPoint( double param ) const;
 
 private:
-  void setValidFromChildren();
+  void setValidFromParents();
   void construct();
 };
-
-// class MacroObjectMulti
-//   : public MacroObject, public CollectionObject
-// {
-// public:
-//   MacroObjectMulti(ObjectHierarchy* inHier) : MacroObject (inHier) {};
-//   virtual void handleNewObjects (const Objects& o);
-// };
 
 #endif

@@ -341,10 +341,10 @@ const uint Arc::numberOfProperties() const
   return Object::numberOfProperties() + 2;
 }
 
-const Property Arc::property( uint which ) const
+const Property Arc::property( uint which, const KigWidget& w ) const
 {
   assert( which < numberOfProperties() );
-  if ( which < Object::numberOfProperties() ) return Object::property( which );
+  if ( which < Object::numberOfProperties() ) return Object::property( which, w );
   if ( which == Object::numberOfProperties() )
     return Property( size() );
   else if ( which == Object::numberOfProperties() + 1 )
