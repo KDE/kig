@@ -31,7 +31,7 @@ ArgParser::ArgParser( const spec args[] )
     mwantedobjscount += s->number;
 }
 
-int ArgParser::check( const Objects& os )
+int ArgParser::check( const Objects& os ) const
 {
   // we take a copy, so we can change its contents..
   maptype map = mmap;
@@ -50,7 +50,7 @@ int ArgParser::check( const Objects& os )
   return Valid | Complete;      // and we're done..
 }
 
-Objects ArgParser::parse( const Objects& os )
+Objects ArgParser::parse( const Objects& os ) const
 {
   assert( check( os ) & Valid );
 
@@ -68,4 +68,9 @@ Objects ArgParser::parse( const Objects& os )
     ret[--map[(*i)->type()]] = *i;
 
   return ret;
+}
+
+int CheckOneArgs::check( const Objects& os ) const
+{
+  return os.size() == 1 ? Valid | Complete : 0;
 }
