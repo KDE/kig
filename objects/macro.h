@@ -25,6 +25,7 @@
 
 class ObjectHierarchy;
 class ScreenInfo;
+class MType;
 
 class MacroObject
   : public Object
@@ -44,10 +45,13 @@ class MacroObjectOne
   // the objects we contain, these are not shown...
   Objects cos;
   Object* final;
+  // have we constructed stuff yet?
+  bool constructed;
+  const MType* mtype;
 public:
   const Object* getFinal() const { return final; };
   Object* getFinal() { return final; };
-  MacroObjectOne( ObjectHierarchy* inHier, const Objects& args );
+  MacroObjectOne( const MType* type, ObjectHierarchy* inHier, const Objects& args );
   MacroObjectOne(const MacroObjectOne& m);
   MacroObjectOne* copy() { return new MacroObjectOne(*this); };
   ~MacroObjectOne();
@@ -66,9 +70,6 @@ public:
   const QString vDescription() const { return 0; };
   const QCString vIconFileName() const { return 0; };
   Objects getParents() const { return arguments; };
-protected:
-  // have we constructed stuff yet?
-  bool constructed;
 };
 
 // class MacroObjectMulti

@@ -22,6 +22,7 @@
 
 #include "../misc/hierarchy.h"
 #include "../misc/calcpaths.h"
+#include "../misc/type.h"
 #include "../misc/i18n.h"
 
 MacroObject::MacroObject( ObjectHierarchy* inHier, const Objects& args )
@@ -33,8 +34,8 @@ MacroObject::MacroObject( ObjectHierarchy* inHier, const Objects& args )
                      std::mem_fun( &Object::addChild ), this ) );
 }
 
-MacroObjectOne::MacroObjectOne( ObjectHierarchy* inHier, const Objects& args )
-  : MacroObject( inHier, args ), final( 0 ), constructed( false )
+MacroObjectOne::MacroObjectOne( const MType* type, ObjectHierarchy* inHier, const Objects& args )
+  : MacroObject( inHier, args ), final( 0 ), constructed( false ), mtype( type )
 {
   assert (inHier->getFinElems().size() == 1);
 }
@@ -121,11 +122,11 @@ const QCString MacroObjectOne::vBaseTypeName() const
 
 const QCString MacroObjectOne::vFullTypeName() const
 {
-  return "If you see this, you've found a bug ( MacroObjectOne::vFullTypeName() )";
+  return mtype->fullName();
 };
 
 MacroObjectOne::MacroObjectOne(const MacroObjectOne& m)
-  : MacroObject( m ), final( 0 ), constructed(false)
+  : MacroObject( m ), final( 0 ), constructed(false), mtype( m.mtype )
 {
 }
 
