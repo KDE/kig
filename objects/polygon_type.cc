@@ -186,6 +186,83 @@ const ObjectImpType* PoligonBCVType::resultId() const
   return SegmentImp::stype();
 }
 
+/* polygon-line intersection */
+
+static const ArgsParser::spec argsspecPolygonLineIntersection[] =
+{
+  { PolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
+    I18N_NOOP( "Select the polygon of which you want the intersection with a line..." ), false },
+  { LineImp::stype(), "Intersect this line with a polygon", "Select the line of which you want the intersection with a polygon...", false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PolygonLineIntersectionType )
+
+PolygonLineIntersectionType::PolygonLineIntersectionType()
+  : ArgsParserObjectType( "PolygonLineIntersection", argsspecPolygonLineIntersection, 2 )
+{
+}
+
+PolygonLineIntersectionType::~PolygonLineIntersectionType()
+{
+}
+
+const PolygonLineIntersectionType* PolygonLineIntersectionType::instance()
+{
+  static const PolygonLineIntersectionType t;
+  return &t;
+}
+
+ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  const std::vector<Coordinate> ppoints = static_cast<const PolygonImp*>( parents[0] )->points();
+  const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
+  Coordinate a = line.a;
+  double abx = line.b.x - a.x;
+  double aby = line.b.y - a.y;
+
+  Coordinate intersections[2];
+  uint whichintersection = 0;
+
+  Coordinate prevpoint = ppoints.back() - a;
+  bool prevpointbelow = ( abx*prevpoint.y <= aby*prevpoint.x );
+  for ( uint i = 0; i < ppoints.size(); ++i )
+  {
+    Coordinate point = ppoints[i] - a;
+    bool pointbelow = ( abx*point.y <= aby*point.x );
+    if ( pointbelow != prevpointbelow )    /* found an intersection */
+    {
+      if ( whichintersection >= 2 ) return new InvalidImp;
+      LineData side = LineData( prevpoint + a, point + a );
+      intersections[whichintersection++] = calcIntersectionPoint( line, side );
+    }
+    prevpoint = point;
+    prevpointbelow = pointbelow;
+  }
+
+  switch (whichintersection)
+  {
+    case 1:   /* just for completeness: this should never happen */
+      return new PointImp( intersections[0] );
+      break;
+    case 2:
+      return new SegmentImp( intersections[0], intersections[1] );
+      break;
+    case 0:
+    default:
+      return new InvalidImp;
+      break;
+  }
+}
+
+const ObjectImpType* PolygonLineIntersectionType::resultId() const
+{
+  return SegmentImp::stype();
+}
+
+/* polygon vertices  */
+
 static const ArgsParser::spec argsspecPolygonVertex[] =
 {
   { PolygonImp::stype(), I18N_NOOP( "Construct the vertices of this polygon" ),

@@ -55,6 +55,17 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class PolygonLineIntersectionType
+  : public ArgsParserObjectType
+{
+  PolygonLineIntersectionType();
+  ~PolygonLineIntersectionType();
+public:
+  static const PolygonLineIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class PolygonVertexType
   : public ArgsParserObjectType
 {
