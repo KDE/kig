@@ -59,6 +59,9 @@ public:
   static const Transformation pointReflection( const Coordinate& c );
   // reflect over a line.. this equals scaling( -1, l );
   static const Transformation lineReflection( const LineData& l );
+  // cast a shadow, given a light source and a line indicating a plane
+  static const Transformation castShadow( const Coordinate& ls,
+                                              const LineData& d );
   // this is a test example of a projective non-affine transformation
   static const Transformation projectiveRotation( double alpha,
                                               const Coordinate& d,

@@ -329,6 +329,42 @@ const Transformation Transformation::scaling( double factor, const LineData& l )
   return ret;
 }
 
+const Transformation Transformation::castShadow(
+  const Coordinate& lightsrc, const LineData& l )
+{
+  // first deal with the line l, I need to find an appropriate reflection
+  // that transforms l onto the x-axis
+
+  Coordinate d = l.dir();
+  Coordinate a = l.a;
+  double k = d.length();
+  if ( d.x < 0 ) k *= -1;         // for numerical stability
+  Coordinate w = d + Coordinate( k, 0 );
+  // w /= w.length();
+  // w defines a Householder transformation, but we don't need to normalize
+  // it here.
+  // warning: this w is the orthogonal of the w of the textbooks!
+  // this is fine for us since in this way it indicates the line direction
+  Coordinate ra = Coordinate ( a.x + w.y*a.y/(2*w.x), a.y/2 );
+  Transformation sym = lineReflection ( LineData( ra, ra + w ) );
+
+  // in the new coordinates the line is the x-axis
+  // I must transform the point
+
+  bool isvalid = true;
+  Coordinate modlightsrc = sym.apply ( lightsrc, isvalid ); 
+  Transformation ret = identity();
+  ret.mdata[0][0] =  2*modlightsrc.y;
+  ret.mdata[0][2] = -1;
+  ret.mdata[1][1] =  2*modlightsrc.y;
+  ret.mdata[1][2] = -modlightsrc.x;
+  ret.mdata[2][2] =  modlightsrc.y;
+
+  ret.mIsHomothety = false;
+  return sym*ret*sym;
+//  return translation( t )*ret*translation( -t );
+}
+
 const Transformation Transformation::projectiveRotation(
   double alpha, const Coordinate& d, const Coordinate& t )
 {

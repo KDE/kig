@@ -284,6 +284,14 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline" ) );
 
     c = new SimpleObjectTypeConstructor(
+      CastShadowType::instance(),
+      I18N_NOOP( "Shadow of an object" ),
+      I18N_NOOP( "The shadow of an object with a given light source and projection plane (indicated by a line)" ),
+      "castshadow" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_castshadow" ) );
+
+    c = new SimpleObjectTypeConstructor(
       ProjectiveRotationType::instance(),
       I18N_NOOP( "Projectively rotated object" ),
       I18N_NOOP( "An object projectively rotated by an angle and a ray" ),

@@ -261,3 +261,36 @@ ObjectImp* ProjectiveRotationType::calc( const Args& targs ) const
   return args[2]->transform(
     Transformation::projectiveRotation( alpha, dir, c1 ) );
 }
+
+static const ArgParser::spec argsspecpl[] =
+{
+  { ObjectImp::ID_PointImp, 1 },
+  { ObjectImp::ID_LineImp, 1 }
+};
+
+CastShadowType::CastShadowType()
+  : ObjectType( "CastShadow", argsspecpl, 2, 1 )
+{
+}
+
+CastShadowType::~CastShadowType()
+{
+}
+
+const CastShadowType* CastShadowType::instance()
+{
+  static const CastShadowType t;
+  return &t;
+}
+
+ObjectImp* CastShadowType::calc( const Args& targs ) const
+{
+  if ( targs.size() != 3 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
+  assert( args[1]->inherits( ObjectImp::ID_LineImp ) );
+  Coordinate lightsrc = static_cast<const PointImp*>( args[0] )->coordinate();
+  LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
+  return args[2]->transform(
+    Transformation::castShadow( lightsrc, d ) );
+}

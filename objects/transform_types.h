@@ -91,4 +91,14 @@ public:
   ObjectImp* calc( const Args& args ) const;
 };
 
+class CastShadowType
+  : public ObjectType
+{
+  CastShadowType();
+  ~CastShadowType();
+public:
+  static const CastShadowType* instance();
+  ObjectImp* calc( const Args& args ) const;
+};
+
 #endif
