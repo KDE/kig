@@ -186,6 +186,9 @@ void KigPainter::drawText( const Rect p, const QString s, int textFlags, int len
 {
   QRect t = toScreen(p);
   int tf = textFlags;
+  t.moveBy( 2, 2 );
+  t.setWidth( t.width() - 4 );
+  t.setHeight( t.height() - 4 );
   mP.drawText( t, tf, s, len );
   if( mNeedOverlay ) textOverlay( t, s, tf, len );
 }
@@ -193,13 +196,21 @@ void KigPainter::drawText( const Rect p, const QString s, int textFlags, int len
 void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags, int len )
 {
   //  kdDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) ) << endl;
-  mOverlay.push_back( mP.boundingRect( r, textFlags, s, len ) );
+  QRect newr( mP.boundingRect( r, textFlags, s, len ) );
+  newr.moveBy( -2, -2 );
+  newr.setWidth( newr.width() + 4 );
+  newr.setHeight( newr.height() + 4 );
+  mOverlay.push_back( newr );
 }
 
 const Rect KigPainter::boundingRect( const Rect& r, const QString s,
                                      int f, int l ) const
 {
-  return fromScreen( mP.boundingRect( toScreen( r ), f, s, l ) );
+  QRect qr = mP.boundingRect( toScreen( r ), f, s, l );
+  qr.moveBy( -2, -2 );
+  qr.setWidth( qr.width() + 4 );
+  qr.setHeight( qr.height() + 4 );
+  return fromScreen( qr );
 }
 
 void KigPainter::setColor( const QColor& c )

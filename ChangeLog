@@ -1,5 +1,8 @@
 2004-07-21  Pino Toscano <toscano.pino@tiscali.it>
 
+	* Make a text label not "pasted" to its point by adding a
+	"padding" ( 2 pixels every side ).
+
 	* Now the code editor in the Script Wizard uses KDE global fixed
 	font.
 
