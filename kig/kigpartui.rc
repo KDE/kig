@@ -50,6 +50,7 @@
   <Action name="objects_new_normalpoint" />
   <Action name="objects_new_midpoint" />
   <Action name="objects_new_intersectionpoint" />
+  <Action name="objects_new_point_xy" />
 </ToolBar>
 <ToolBar name="line_toolbar">
   <Action name="objects_new_linettp" />

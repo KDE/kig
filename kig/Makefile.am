@@ -6,7 +6,8 @@
 INCLUDES = $(all_includes)
 
 # these are the headers for your project
-noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h kig_iface.h
+noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h kig_iface.h \
+		kig_actions.h
 
 # let automoc handle all of the meta source files (moc)
 METASOURCES = AUTO
@@ -40,9 +41,12 @@ shellrc_DATA = kigui.rc
 kde_module_LTLIBRARIES = libkigpart.la
 
 # the Part's source, library search path, and link libraries
-libkigpart_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp constructactions.cc
+libkigpart_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp \
+			constructactions.cc kig_actions.cpp
 libkigpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
-libkigpart_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) ../misc/libmisc.la ../objects/libobjects.la ../filters/libfilters.la ../modes/libmodes.la -lstdc++
+libkigpart_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) ../misc/libmisc.la \
+			../objects/libobjects.la ../filters/libfilters.la \
+			../modes/libmodes.la -lstdc++
 
 # this is where the desktop file will go 
 partdesktopdir   = $(kde_servicesdir)

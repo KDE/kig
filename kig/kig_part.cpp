@@ -25,6 +25,7 @@
 #include "aboutdata.h"
 #include "kig_view.h"
 #include "kig_commands.h"
+#include "kig_actions.h"
 
 #include "../modes/normal.h"
 #include "../objects/circle.h"
@@ -179,6 +180,9 @@ void KigDocument::setupActions()
 
   aMNewOther = new KActionMenu(i18n("New Other"), 0, actionCollection(), "new_other");
   aMNewOther->setToolTip(i18n("Construct a new object of a special type"));
+
+  tmp = l->loadIcon( "pointxy", KIcon::User );
+  (void) new AddFixedPointAction( this, tmp, actionCollection() );
 };
 
 void KigDocument::setupTypes()
