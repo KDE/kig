@@ -67,7 +67,7 @@ void Types::saveToDir(const QString dir_name) const
     {
       KMessageBox::sorry
         (0,
-         i18n("Unable to open file %1 for writing...").arg(filename),
+         i18n("Unable to open file %1 for writing.").arg(filename),
          i18n("Unable to Open File"));
       return;
     }
@@ -92,7 +92,7 @@ Types::Types( const QString& file_name)
   if (!file.open(IO_ReadOnly)) {
     KMessageBox::sorry
       (0,
-       i18n("Unable to open file %1 for reading...").arg(file_name),
+       i18n("Unable to open file %1 for reading.").arg(file_name),
        i18n("Unable to Open File"));
     return;
   };
@@ -105,7 +105,7 @@ Types::Types( const QString& file_name)
     if (e.isNull()) continue;
     if (e.tagName() != "MType")
     {
-      kdWarning() << "weird tag in file: " << e.tagName() << "skipping..." << endl;
+      kdWarning() << "weird tag in file: " << e.tagName() << "skipping." << endl;
       continue;
     };
     addType( new MType ( e ) );
@@ -120,7 +120,7 @@ void Types::saveToFile( const QString filename ) const
   {
     KMessageBox::sorry
       (0,
-       i18n("Unable to open file %1 for writing...").arg(filename),
+       i18n("Unable to open file %1 for writing.").arg(filename),
        i18n("Unable to Open File"));
     return;
   }

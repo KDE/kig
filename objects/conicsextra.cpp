@@ -70,7 +70,7 @@ LinePolar::LinePolar(const LinePolar& l)
 
 const QString LinePolar::sDescriptiveName()
 {
-  return i18n("Polar line of a point");
+  return i18n("Polar Line of a Point");
 }
 
 QString LinePolar::sDescription()
@@ -180,7 +180,7 @@ PointPolar::PointPolar(const PointPolar& p)
 
 const QString PointPolar::sDescriptiveName()
 {
-  return i18n("Polar point of a line");
+  return i18n("Polar Point of a Line");
 }
 
 QString PointPolar::sDescription()
@@ -273,12 +273,12 @@ LineConicAsymptotes::LineConicAsymptotes(const LineConicAsymptotes& l)
 
 const QString LineConicAsymptotes::sDescriptiveName()
 {
-  return i18n("Asymptotes of a hyperbola");
+  return i18n("Asymptotes of a Hyperbola");
 }
 
 const QString LineConicAsymptotes::sDescription()
 {
-  return i18n( "The two asymptotes of a hyperbola..." );
+  return i18n( "The two asymptotes of a hyperbola." );
 }
 
 const char* LineConicAsymptotes::sActionName()
@@ -378,5 +378,5 @@ Object::WantArgsResult LineConicAsymptotes::sWantArgs( const Objects& os )
 
 QString LineConicAsymptotes::sUseText( const Objects&, const Object* )
 {
-  return i18n("Asymptotes of this hyperbola");
+  return i18n("Asymptotes of This Hyperbola");
 }

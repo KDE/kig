@@ -141,7 +141,7 @@ void NormalModePopupObjects::addColorPopup()
 {
   QPopupMenu* colorpopup = colorMenu( this );
   connect( colorpopup, SIGNAL( activated( int ) ), this, SLOT( doSetColor( int ) ) );
-  uint id = insertItem( i18n( "Set Color..." ), colorpopup, colorId );
+  uint id = insertItem( i18n( "Set Color" ), colorpopup, colorId );
   assert( id == colorId );
 }
 
@@ -163,8 +163,8 @@ void NormalModePopupObjects::addUsePopup()
       uint id = usepopup->insertItem( t[i]->descriptiveName(), i );
       assert( id == i );
     };
-    uint id = insertItem( mobjs.size() != 1 ? i18n( "Use these objects to construct a ...")
-                          : i18n( "Use this %1 to construct a ...").arg(
+    uint id = insertItem( mobjs.size() != 1 ? i18n( "Use These Objects to Construct A")
+                          : i18n( "Use This %1 to Construct A").arg(
                               mobjs[0]->vTBaseTypeName() ),
                           usepopup, useId );
     assert( id == useId );
@@ -173,19 +173,19 @@ void NormalModePopupObjects::addUsePopup()
 
 void NormalModePopupObjects::addHideItem()
 {
-  uint id = insertItem( i18n( "Hide..." ), hideId );
+  uint id = insertItem( i18n( "Hide" ), hideId );
   assert( id == hideId );
 }
 
 void NormalModePopupObjects::addMoveItem()
 {
-  uint id = insertItem( i18n( "Move..." ), moveId );
+  uint id = insertItem( i18n( "Move" ), moveId );
   assert( id == moveId );
 }
 
 void NormalModePopupObjects::addDeleteItem()
 {
-  uint id = insertItem( i18n( "Delete..." ), deleteId );
+  uint id = insertItem( i18n( "Delete" ), deleteId );
   assert( id == deleteId );
 }
 

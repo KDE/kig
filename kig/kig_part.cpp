@@ -137,38 +137,38 @@ void KigDocument::setupActions()
 
   tmp = l->loadIcon( "delete", KIcon::User);
   aDeleteObjects = new KAction(
-      i18n("Delete objects"), "editdelete", Key_Delete, this,
+      i18n("Delete Objects"), "editdelete", Key_Delete, this,
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
   tmp = l->loadIcon( "stop", KIcon::Toolbar);
   aCancelConstruction = new KAction(
-      i18n("Cancel construction"), tmp, Key_Escape, this,
+      i18n("Cancel Construction"), tmp, Key_Escape, this,
       SLOT(cancelConstruction()), actionCollection(), "cancel_construction");
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
   aShowHidden = new KAction(
-    i18n("Unhide all"), 0, this, SLOT( showHidden() ),
+    i18n("Unhide All"), 0, this, SLOT( showHidden() ),
     actionCollection(), "edit_unhide_all");
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
   tmp = l->loadIcon("gear", KIcon::Toolbar);
   aNewMacro = new KAction(
-    i18n("New macro"), tmp, 0, this, SLOT(newMacro()),
+    i18n("New Macro..."), tmp, 0, this, SLOT(newMacro()),
     actionCollection(), "macro_action");
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction(
     i18n("Types Manager"), 0, this, SLOT(editTypes()),
     actionCollection(), "types_edit");
-  aConfigureTypes->setToolTip(i18n("Manage macro types.."));
+  aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
 //   tmp = l->loadIcon( "window_fullscreen", KIcon::User );
 //   aFullScreen = new KAction(
-//     i18n( "Full screen" ), tmp, 0, this, SLOT( startKiosk() ),
+//     i18n( "Full Screen" ), tmp, 0, this, SLOT( startKiosk() ),
 //     actionCollection(), "view_fullscreen" );
 //   aFullScreen->setToolTip( i18n( "View this document full-screen." ) );
 
@@ -308,7 +308,7 @@ bool KigDocument::openFile()
               "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
-        i18n( "Format not supported" )
+        i18n( "Format not Supported" )
         );
     return false;
   };
@@ -324,7 +324,7 @@ bool KigDocument::openFile()
         "valid, and you think Kig should be able to open it, you can try to "
         "send me a copy of the file and ask me nicely to check it out.  If "
         "you want more certain results, you can always do the work yourself "
-        "( since Kig is Free Software ), and send me a patch..."
+        "( since Kig is Free Software ), and send me a patch."
                             ) );
     return false;
   };
@@ -367,7 +367,7 @@ bool KigDocument::saveFile()
               "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
-        i18n( "Format not supported" )
+        i18n( "Format not Supported" )
         );
     return false;
   };
@@ -384,7 +384,7 @@ bool KigDocument::saveFile()
     // i know i need to change the enum value name, but this means
     // that the file could not be opened...
     KMessageBox::sorry( m_widget,
-                        i18n( "The file \"%1\" could not be opened.  Please check if the file permissions are set correctly..." )
+                        i18n( "The file \"%1\" could not be opened.  Please check if the file permissions are set correctly." )
                         .arg( m_file ) );
     return false;
 
@@ -401,7 +401,7 @@ bool KigDocument::saveFile()
               "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
-        i18n( "Format not supported" )
+        i18n( "Format not Supported" )
         );
   };
   return false;
@@ -681,7 +681,7 @@ bool KigDocument::internalSaveAs()
   else if ( QFileInfo( file_name ).exists() )
   {
     int ret = KMessageBox::warningYesNo( m_widget,
-                                         i18n( "The file \"%1\" already exists.  Do you wish to overwrite it ?" )
+                                         i18n( "The file \"%1\" already exists.  Do you wish to overwrite it?" )
                                          .arg( file_name ) );
     if ( ret != KMessageBox::Yes )
     {

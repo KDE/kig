@@ -196,12 +196,12 @@ double Circle::calcRadius( const Coordinate& c, const Coordinate& p )
 
 const QCString Circle::sBaseTypeName()
 {
-  return I18N_NOOP("circle");
+  return I18N_NOOP("Circle");
 }
 
 const QString CircleBCP::sDescriptiveName()
 {
-  return i18n("Circle by center and point");
+  return i18n("Circle by Center && Point");
 }
 
 const QString CircleBCP::sDescription()
@@ -213,7 +213,7 @@ const QString CircleBCP::sDescription()
 
 const QString CircleBTP::sDescriptiveName()
 {
-  return i18n("Circle by three points");
+  return i18n("Circle by Three Points");
 }
 
 const QString CircleBTP::sDescription()
@@ -418,8 +418,8 @@ const QCStringList Circle::properties() const
   l << I18N_NOOP( "Circumference" );
   l << I18N_NOOP( "Radius" );
   l << I18N_NOOP( "Center" );
-  l << I18N_NOOP( "Cartesian equation" );
-  l << I18N_NOOP( "Polar equation" );
+  l << I18N_NOOP( "Cartesian Equation" );
+  l << I18N_NOOP( "Polar Equation" );
   assert( l.size() == Circle::numberOfProperties() );
   return l;
 }

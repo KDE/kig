@@ -284,7 +284,7 @@ double Cubic::getParam (const Coordinate& p) const
 
 const QCString Cubic::sBaseTypeName()
 {
-  return I18N_NOOP("cubic");
+  return I18N_NOOP("Cubic");
 }
 
 Cubic::Cubic( const Cubic& c )
@@ -339,7 +339,7 @@ CubicB9P::CubicB9P(const CubicB9P& c)
 
 const QString CubicB9P::sDescriptiveName()
 {
-  return i18n("Cubic by nine points");
+  return i18n("Cubic by Nine Points");
 }
 
 const QString CubicB9P::sDescription()
@@ -447,7 +447,7 @@ CubicCuspB4P::CubicCuspB4P(const CubicCuspB4P& c)
 
 const QString CubicCuspB4P::sDescriptiveName()
 {
-  return i18n("Cubic with cusp by four points");
+  return i18n("Cubic With Cusp by Four Points");
 }
 
 const QString CubicCuspB4P::sDescription()
@@ -544,7 +544,7 @@ CubicNodeB6P::CubicNodeB6P(const CubicNodeB6P& c)
 
 const QString CubicNodeB6P::sDescriptiveName()
 {
-  return i18n("Cubic with node by six points");
+  return i18n("Cubic With Node by Six Points");
 }
 
 const QString CubicNodeB6P::sDescription()
@@ -977,7 +977,7 @@ const QString CubicLineIntersectionPoint::vDescriptiveName() const
 
 const QString CubicLineIntersectionPoint::sDescriptiveName()
 {
-  return i18n("The intersections of a line and a cubic");
+  return i18n("Intersections of a Line and a Cubic");
 }
 
 const QString CubicLineIntersectionPoint::vDescription() const
@@ -1131,7 +1131,7 @@ CubicLineIntersectionPoint::sConstructMode( MultiConstructibleType* ourtype,
 
 const QString CubicLineIntersectionPoint::sDescription()
 {
-  return i18n("Construct the intersections of a line and a cubic...");
+  return i18n("Construct the intersections of a line and a cubic.");
 }
 
 const Coordinate calcCubicLineIntersect( const CubicCartesianEquationData& cu,

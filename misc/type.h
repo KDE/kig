@@ -153,11 +153,11 @@ public:
     };
   virtual const QString descriptiveName() const
     {
-      return QString::fromLatin1( "TUnconstructibleType::descriptiveName(): If you see this, it's a bug, please report.." );
+      return QString::fromLatin1( "TUnconstructibleType::descriptiveName(): If you see this, it's a bug, please report." );
     };
   virtual const QString description() const
     {
-      return QString::fromLatin1( "TUnconstructibleType::description(): If you see this, it's a bug, please report.." );
+      return QString::fromLatin1( "TUnconstructibleType::description(): If you see this, it's a bug, please report." );
     };
   virtual const QCString iconFileName() const { return "";};
   virtual Object* build( const Objects& parents,

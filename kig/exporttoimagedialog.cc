@@ -66,7 +66,7 @@ void ExportToImageDialog::slotOKPressed()
   if ( file.exists() )
   {
     int ret = KMessageBox::warningYesNo( mv,
-                                         i18n( "The file \"%1\" already exists.  Do you wish to overwrite it ?" )
+                                         i18n( "The file \"%1\" already exists.  Do you wish to overwrite it?" )
                                          .arg( filename ) );
     if ( ret != KMessageBox::Yes ) return;
   };
@@ -74,7 +74,7 @@ void ExportToImageDialog::slotOKPressed()
   if ( ! file.open( IO_WriteOnly ) )
   {
     KMessageBox::sorry( mv,
-                        i18n( "The file \"%1\" could not be opened.  Please check if the file permissions are set correctly..." )
+                        i18n( "The file \"%1\" could not be opened.  Please check if the file permissions are set correctly." )
                         .arg( filename ) );
     return;
   };

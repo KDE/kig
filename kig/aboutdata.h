@@ -51,11 +51,11 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
   tmp->addCredit("Christophe Devriese",
                  I18N_NOOP( "My brother, I got him to write the algorithm for "
                             "calculating the center of the circle with three "
-                            "points given..." ),
+                            "points given." ),
                  "oelewapperke@ulyssis.org" );
 
   tmp->addCredit("Christophe Prud'homme",
-                 I18N_NOOP( "Sent me a patch for some bugs..." ),
+                 I18N_NOOP( "Sent me a patch for some bugs." ),
                  "prudhomm@mit.edu" );
 
   tmp->addCredit("Cabri coders",

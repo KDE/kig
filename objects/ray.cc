@@ -167,7 +167,7 @@ const QCString Ray::vBaseTypeName() const
 
 QCString Ray::sBaseTypeName()
 {
-  return I18N_NOOP("ray");
+  return I18N_NOOP("Ray");
 }
 
 const QCString Ray::vFullTypeName() const
@@ -197,8 +197,7 @@ const QString Ray::vDescription() const
 
 const QString Ray::sDescription()
 {
-  return i18n( "A ray by its start point, and another point somewhere on "
-               "it..." );
+  return i18n( "A ray by its start point, and another point somewhere on it." );               
 }
 
 const QCString Ray::vIconFileName() const

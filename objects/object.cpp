@@ -251,7 +251,7 @@ void Object::addActions( NormalModePopupObjects& m )
     };
   };
 
-  m.addPopupAction( 3849, i18n( "Construct the ..." ), pm );
+  m.addPopupAction( 3849, i18n( "Construct The" ), pm );
 
   pm = new QPopupMenu( &m, "construct_textlabels_menu" );
   for ( uint i = 0; i < numberOfProperties(); ++i )
@@ -260,7 +260,7 @@ void Object::addActions( NormalModePopupObjects& m )
     uint id = pm->insertItem( str, i );
     assert( i == id );
   };
-  m.addPopupAction( 3850, i18n( "Show the ..." ), pm );
+  m.addPopupAction( 3850, i18n( "Show The" ), pm );
 
   return;
 }

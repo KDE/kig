@@ -56,7 +56,7 @@ const QCString Vector::vBaseTypeName() const
 
 QCString Vector::sBaseTypeName()
 {
-  return I18N_NOOP( "vector" );
+  return I18N_NOOP( "Vector" );
 }
 
 const QCString Vector::vFullTypeName() const
@@ -86,7 +86,7 @@ const QString Vector::vDescription() const
 
 const QString Vector::sDescription()
 {
-  return i18n( "Construct a vector from two given points.." );
+  return i18n( "Construct a vector from two given points." );
 }
 
 const QCString Vector::vIconFileName() const

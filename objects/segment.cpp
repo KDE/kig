@@ -153,7 +153,7 @@ const QCString Segment::vBaseTypeName() const
 
 QCString Segment::sBaseTypeName()
 {
-  return I18N_NOOP("segment");
+  return I18N_NOOP("Segment");
 }
 
 const QCString Segment::vFullTypeName() const

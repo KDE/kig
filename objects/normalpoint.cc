@@ -360,7 +360,7 @@ const QString NormalPoint::sDescription()
 {
   return i18n(
     "A normal point, i.e. one that is either independent or attached "
-    "to a line, circle, segment..."
+    "to a line, circle, segment."
     );
 }
 
@@ -527,7 +527,7 @@ const char* NormalPoint::sActionName()
 void NormalPoint::addActions( NormalModePopupObjects& popup )
 {
   Point::addActions( popup );
-  popup.addNormalAction( NormalModePopupObjects::virtualActionsOffset + 10, i18n( "Redefine this point..." ) );
+  popup.addNormalAction( NormalModePopupObjects::virtualActionsOffset + 10, i18n( "Redefine This Point" ) );
 }
 
 void NormalPoint::doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& )

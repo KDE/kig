@@ -224,7 +224,7 @@ const QCString Locus::vBaseTypeName() const
 
 const QCString Locus::sBaseTypeName()
 {
-  return I18N_NOOP("curve");
+  return I18N_NOOP("Curve");
 }
 
 const QCString Locus::vFullTypeName() const
@@ -256,7 +256,7 @@ const QString Locus::sDescription()
 {
   return i18n( "Construct a locus: let one point move around, and record "
                "the places another object passes through. These combined "
-               "form a new object: the locus..." );
+               "form a new object: the locus." );
 }
 
 const QCString Locus::vIconFileName() const

@@ -61,7 +61,7 @@ const QCString Angle::vBaseTypeName() const
 
 QCString Angle::sBaseTypeName()
 {
-  return I18N_NOOP("angle");
+  return I18N_NOOP("Angle");
 }
 
 const QCString Angle::vFullTypeName() const
@@ -81,7 +81,7 @@ const QString Angle::vDescriptiveName() const
 
 const QString Angle::sDescriptiveName()
 {
-  return i18n( "Angle by three points" );
+  return i18n( "Angle by Three Points" );
 }
 
 const QString Angle::vDescription() const
@@ -344,8 +344,8 @@ const Property Angle::property( uint which, const KigWidget& w ) const
 const QCStringList Angle::properties() const
 {
   QCStringList l = Object::properties();
-  l << I18N_NOOP( "Angle in radians" );
-  l << I18N_NOOP( "Angle in degrees" );
+  l << I18N_NOOP( "Angle in Radians" );
+  l << I18N_NOOP( "Angle in Degrees" );
   assert( l.size() == Angle::numberOfProperties() );
   return l;
 }

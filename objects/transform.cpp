@@ -84,7 +84,7 @@ LineTransform::LineTransform(const LineTransform& c)
 
 const QString LineTransform::sDescriptiveName()
 {
-  return i18n("Transform a line");
+  return i18n("Transform a Line");
 }
 
 const QString LineTransform::sDescription()
@@ -216,7 +216,7 @@ PointTransform::PointTransform(const PointTransform& c)
 
 const QString PointTransform::sDescriptiveName()
 {
-  return i18n("Transform a point");
+  return i18n("Transform a Point");
 }
 
 const QString PointTransform::sDescription()
@@ -392,7 +392,7 @@ SegmentTransform::SegmentTransform(const SegmentTransform& c)
 
 const QString SegmentTransform::sDescriptiveName()
 {
-  return i18n("Transform a segment");
+  return i18n("Transform a Segment");
 }
 
 const QString SegmentTransform::sDescription()
@@ -525,7 +525,7 @@ RayTransform::RayTransform(const RayTransform& c)
 
 const QString RayTransform::sDescriptiveName()
 {
-  return i18n("Transform a ray");
+  return i18n("Transform a Ray");
 }
 
 const QString RayTransform::sDescription()
@@ -665,7 +665,7 @@ CircleTransform::CircleTransform(const CircleTransform& c)
 
 const QString CircleTransform::sDescriptiveName()
 {
-  return i18n("Transform a circle");
+  return i18n("Transform a Circle");
 }
 
 const QString CircleTransform::sDescription()
@@ -810,7 +810,7 @@ ConicTransform::ConicTransform(const ConicTransform& c)
 
 const QString ConicTransform::sDescriptiveName()
 {
-  return i18n("Transform a conic");
+  return i18n("Transform a Conic");
 }
 
 const QString ConicTransform::sDescription()
@@ -943,7 +943,7 @@ CubicTransform::CubicTransform(const CubicTransform& c)
 
 const QString CubicTransform::sDescriptiveName()
 {
-  return i18n("Transform a cubic");
+  return i18n("Transform a Cubic");
 }
 
 const QString CubicTransform::sDescription()

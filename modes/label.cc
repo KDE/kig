@@ -225,7 +225,7 @@ void TextLabelConstructionMode::finishPressed()
     if ( ! finished )
       KMessageBox::sorry( mDoc->widget(),
                           i18n( "There are '%n' parts in the text that you have not selected a "
-                                "value for...  Please remove them or select enough arguments..." ) );
+                                "value for. Please remove them or select enough arguments." ) );
     else
     {
       TextLabel* label = new TextLabel( s, mcoord, margs );

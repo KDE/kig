@@ -208,7 +208,7 @@ const QString CircleLineIntersectionPoint::vDescriptiveName() const
 
 const QString CircleLineIntersectionPoint::sDescriptiveName()
 {
-  return i18n("The intersection of a line and a circle");
+  return i18n("Intersection of a Line and a Circle");
 }
 
 const QString CircleLineIntersectionPoint::vDescription() const
@@ -352,5 +352,5 @@ CircleLineIntersectionPoint::sConstructMode( MultiConstructibleType* ourtype,
 
 const QString CircleLineIntersectionPoint::sDescription()
 {
-  return i18n("Construct the intersection of a line and a circle...");
+  return i18n("Construct the intersection of a line and a circle.");
 }

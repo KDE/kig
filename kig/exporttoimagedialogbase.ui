@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
 <class>ExportToImageDialogBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>437</width>
-            <height>199</height>
+            <height>202</height>
         </rect>
     </property>
     <property name="caption">
@@ -30,7 +30,7 @@
                 <cstring>ExplanationTextLabel</cstring>
             </property>
             <property name="text">
-                <string>Select a file name and resolution for the image file to save the screen to..</string>
+                <string>Select a file name and resolution for the image file to save the screen to.</string>
             </property>
             <property name="alignment">
                 <set>WordBreak|AlignVCenter</set>
@@ -201,7 +201,7 @@
             <property name="name">
                 <cstring>Line1</cstring>
             </property>
-            <property name="frameShape" stdset="0">
+            <property name="frameShape">
                 <enum>HLine</enum>
             </property>
             <property name="frameShadow">
@@ -238,7 +238,7 @@
                         </sizepolicy>
                     </property>
                     <property name="text">
-                        <string>Cancel</string>
+                        <string>&amp;Cancel</string>
                     </property>
                 </widget>
                 <widget class="KPushButton">
@@ -246,7 +246,7 @@
                         <cstring>OKButton</cstring>
                     </property>
                     <property name="text">
-                        <string>OK</string>
+                        <string>&amp;OK</string>
                     </property>
                 </widget>
             </hbox>
@@ -254,4 +254,15 @@
     </vbox>
 </widget>
 <layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>kurlrequester.h</includehint>
+    <includehint>klineedit.h</includehint>
+    <includehint>kpushbutton.h</includehint>
+    <includehint>knuminput.h</includehint>
+    <includehint>knuminput.h</includehint>
+    <includehint>knuminput.h</includehint>
+    <includehint>knuminput.h</includehint>
+    <includehint>kpushbutton.h</includehint>
+    <includehint>kpushbutton.h</includehint>
+</includehints>
 </UI>

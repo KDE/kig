@@ -59,7 +59,7 @@ LineDirectrix::LineDirectrix(const LineDirectrix& l)
 
 const QString LineDirectrix::sDescriptiveName()
 {
-  return i18n("Directrix of a conic");
+  return i18n("Directrix of a Conic");
 }
 
 QString LineDirectrix::sDescription()

@@ -52,12 +52,12 @@ LineConicRadical::LineConicRadical(const LineConicRadical& l)
 
 const QString LineConicRadical::sDescriptiveName()
 {
-  return i18n("Radical Line for conics");
+  return i18n("Radical Line for Conics");
 }
 
 const QString LineConicRadical::sDescription()
 {
-  return i18n( "The lines constructed through the intersections of two conics.  This is also defined for non-intersecting conics..." );
+  return i18n( "The lines constructed through the intersections of two conics.  This is also defined for non-intersecting conics." );
 }
 
 const char* LineConicRadical::sActionName()
@@ -224,7 +224,7 @@ const QString ConicLineIntersectionPoint::vDescriptiveName() const
 
 const QString ConicLineIntersectionPoint::sDescriptiveName()
 {
-  return i18n("The intersection of a line and a conic");
+  return i18n("Intersection of a Line and a Conic");
 }
 
 const QString ConicLineIntersectionPoint::vDescription() const
@@ -377,7 +377,7 @@ ConicLineIntersectionPoint::sConstructMode( MultiConstructibleType* ourtype,
 
 const QString ConicLineIntersectionPoint::sDescription()
 {
-  return i18n("Construct the intersection of a line and a conic...");
+  return i18n("Construct the intersection of a line and a conic.");
 }
 
 void LineConicRadical::addActions( NormalModePopupObjects& p )

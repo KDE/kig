@@ -55,7 +55,7 @@ const QCString Point::vBaseTypeName() const
 
 const QCString Point::sBaseTypeName()
 {
-  return I18N_NOOP("point");
+  return I18N_NOOP("Point");
 }
 
 bool Point::inRect(const Rect& r) const
@@ -133,7 +133,7 @@ void Point::addActions( NormalModePopupObjects& p )
     ptr.drawEllipse( r );
     pop->insertItem( pix, i );
   };
-  p.addPopupAction( 10, i18n( "Set size..." ), pop );
+  p.addPopupAction( 10, i18n( "Set Size" ), pop );
 }
 
 void Point::doPopupAction( int popupid, int actionid, KigDocument*, KigWidget* w, NormalMode*, const Coordinate& )

@@ -144,7 +144,7 @@ const QCString TextLabel::vBaseTypeName() const
 
 QCString TextLabel::sBaseTypeName()
 {
-  return I18N_NOOP("label");
+  return I18N_NOOP("Label");
 }
 
 const QCString TextLabel::vFullTypeName() const
@@ -164,7 +164,7 @@ const QString TextLabel::vDescriptiveName() const
 
 const QString TextLabel::sDescriptiveName()
 {
-  return i18n( "A text label" );
+  return i18n( "Text Label" );
 }
 
 const QCString TextLabel::vIconFileName() const
@@ -228,7 +228,7 @@ const QString TextLabel::vDescription() const
 }
 const QString TextLabel::sDescription()
 {
-  return i18n("A piece of text you can add to the document..");
+  return i18n("A piece of text you can add to the document.");
 }
 
 TextLabel::TextLabel( const QString text, const Coordinate c, const propvect& props )

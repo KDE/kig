@@ -90,7 +90,7 @@ void KigView::setupActions()
                                 this, SLOT( slotExportToImage() ),
                                 mdoc->actionCollection(), "file_export_to_image" );
   aExportToImage->setWhatsThis( i18n( "This function allows you to export the currently "
-                                      "showing screen to an image file..." ) );
+                                      "showing screen to an image file." ) );
 }
 
 KigWidget::~KigWidget()

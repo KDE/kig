@@ -137,12 +137,12 @@ EllipseBFFP::EllipseBFFP(const EllipseBFFP& c)
 
 const QCString Conic::sBaseTypeName()
 {
-  return I18N_NOOP("conic");
+  return I18N_NOOP("Conic");
 }
 
 const QString EllipseBFFP::sDescriptiveName()
 {
-  return i18n("Ellipse by focuses and point");
+  return i18n("Ellipse by Focuses && Point");
 }
 
 const QString EllipseBFFP::sDescription()
@@ -247,7 +247,7 @@ ConicB5P::ConicB5P(const ConicB5P& c)
 
 const QString ConicB5P::sDescriptiveName()
 {
-  return i18n("Conic by five points");
+  return i18n("Conic by Five Points");
 }
 
 const QString ConicB5P::sDescription()
@@ -342,7 +342,7 @@ ParabolaBTP::ParabolaBTP(const ParabolaBTP& c)
 
 const QString ParabolaBTP::sDescriptiveName()
 {
-  return i18n( "Vertical parabola by three points" );
+  return i18n( "Vertical Parabola by Three Points" );
 }
 
 const QString ParabolaBTP::sDescription()
@@ -480,7 +480,7 @@ HyperbolaBFFP::HyperbolaBFFP( const HyperbolaBFFP& c )
 
 const QString HyperbolaBFFP::sDescriptiveName()
 {
-  return i18n("Hyperbola by focuses and point");
+  return i18n("Hyperbola by Focuses && Point");
 }
 
 const QString HyperbolaBFFP::sDescription()
@@ -539,11 +539,11 @@ QString Conic::conicTypeString() const
   switch (conicType())
   {
   case 1:
-    return I18N_NOOP("ellipse");
+    return I18N_NOOP("Ellipse");
   case -1:
-    return I18N_NOOP("hyperbola");
+    return I18N_NOOP("Hyperbola");
   case 0:
-    return I18N_NOOP("parabola");
+    return I18N_NOOP("Parabola");
   default:
     assert( false );
   }
@@ -597,10 +597,10 @@ const QCStringList Conic::properties() const
 {
   QCStringList l = Curve::properties();
   l << I18N_NOOP( "Type" );
-  l << I18N_NOOP( "First focus" );
-  l << I18N_NOOP( "Second focus" );
-  l << I18N_NOOP( "Cartesian equation" );
-  l << I18N_NOOP( "Polar equation" );
+  l << I18N_NOOP( "First Focus" );
+  l << I18N_NOOP( "Second Focus" );
+  l << I18N_NOOP( "Cartesian Equation" );
+  l << I18N_NOOP( "Polar Equation" );
   assert( l.size() == Conic::numberOfProperties() );
   return l;
 }
@@ -705,7 +705,7 @@ EquilateralHyperbolaB4P::EquilateralHyperbolaB4P(const EquilateralHyperbolaB4P& 
 
 const QString EquilateralHyperbolaB4P::sDescriptiveName()
 {
-  return i18n( "Equilateral hyperbola by four points" );
+  return i18n( "Equilateral Hyperbola by Four Points" );
 }
 
 const QString EquilateralHyperbolaB4P::sDescription()
@@ -808,7 +808,7 @@ ConicBAAP::ConicBAAP(const ConicBAAP& c)
 
 const QString ConicBAAP::sDescriptiveName()
 {
-  return i18n( "Hyperbola by asymptotes and point" );
+  return i18n( "Hyperbola by Asymptotes && Point" );
 }
 
 const QString ConicBAAP::sDescription()
@@ -939,7 +939,7 @@ ConicBDFP::ConicBDFP(const ConicBDFP& c)
 
 const QString ConicBDFP::sDescriptiveName()
 {
-  return i18n("Conic by directrix, focus and point");
+  return i18n("Conic by Directrix, Focus && Point");
 }
 
 const QString ConicBDFP::sDescription()

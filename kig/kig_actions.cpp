@@ -39,7 +39,7 @@ void AddFixedPointAction::slotActivated()
   while ( ! done )
   {
     QString s = KLineEditDlg::getText(
-      i18n( "Fixed point" ), i18n( "Enter the coordinates for the new point.." ) +
+      i18n( "Fixed Point" ), i18n( "Enter the coordinates for the new point." ) +
       QString::fromUtf8("\n") + mdoc->coordinateSystem().coordinateFormatNotice(),
       QString::null, &ok, mdoc->widget() );
     if ( ! ok ) return;
@@ -59,16 +59,16 @@ void AddFixedPointAction::slotActivated()
 AddFixedPointAction::AddFixedPointAction( KigDocument* doc,
                                           const QIconSet& icon,
                                           KActionCollection* coll )
-  : KAction( i18n( "Point by coordinates" ), icon, 0, 0, 0, coll,
+  : KAction( i18n( "Point by Coordinates" ), icon, 0, 0, 0, coll,
              "objects_new_point_xy" ),
     mdoc( doc )
 {
-    setToolTip( i18n( "Construct a point by entering its coordinates..." ) );
+    setToolTip( i18n( "Construct a point by entering its coordinates." ) );
 }
 
 TestAction::TestAction( KigDocument* doc, const QIconSet& icon,
                         KActionCollection* parent )
-  : KAction( i18n( "Test stuff !!!" ), icon, 0, 0, 0, parent,
+  : KAction( i18n( "Test Stuff!" ), icon, 0, 0, 0, parent,
              "test_stuff" ),
     mdoc( doc )
 {

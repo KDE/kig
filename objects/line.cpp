@@ -212,12 +212,12 @@ LineRadical::LineRadical(const LineRadical& l)
 
 const QCString Line::sBaseTypeName()
 {
-  return I18N_NOOP("line");
+  return I18N_NOOP("Line");
 }
 
 const QString LineTTP::sDescriptiveName()
 {
-  return i18n("Line by two points");
+  return i18n("Line by Two Points");
 }
 
 const QString LineTTP::sDescription()
@@ -252,7 +252,7 @@ const QString LineRadical::sDescriptiveName()
 
 const QString LineRadical::sDescription()
 {
-  return i18n( "A line constructed through the intersections of two circles.  This is also defined for non-intersecting circles..." );
+  return i18n( "A line constructed through the intersections of two circles.  This is also defined for non-intersecting circles." );
 }
 
 const char* LineTTP::sActionName()
