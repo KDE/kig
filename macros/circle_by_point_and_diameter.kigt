@@ -1,0 +1,36 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.9.0" >
+ <Macro>
+  <Name>Circle by Point &amp;&amp; Segment (as the Diameter)</Name>
+  <Description>A circle defined by its center and the length of a segment as the diameter</Description>
+  <ActionName>objects_new_circlebpd</ActionName>
+  <IconFileName>circlebpd</IconFileName>
+  <Construction>
+   <input requirement="point" id="1">
+    <UseText>Construct a circle with this center</UseText>
+    <SelectStatement>Select the center of the new circle...</SelectStatement>
+   </input>
+   <input requirement="segment" id="2">
+    <UseText>Construct a circle with the diameter given by the length of this segment</UseText>
+    <SelectStatement>Select the segment whose length gives the diameter of the new circle...</SelectStatement>
+   </input>
+   <intermediate action="fetch-property" property="end-point-A" id="3" >
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="fetch-property" property="mid-point" id="4" >
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="calc" type="SegmentAB" id="5" >
+    <arg>3</arg>
+    <arg>4</arg>
+   </intermediate>
+   <intermediate action="fetch-property" property="length" id="6" >
+    <arg>5</arg>
+   </intermediate>
+   <result action="calc" type="CircleBPR" id="7" >
+    <arg>1</arg>
+    <arg>6</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

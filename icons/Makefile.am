@@ -11,6 +11,7 @@ kigicondata_DATA = \
 	bisection.png \
 	centralsymmetry.png \
 	circlebcp.png \
+	circlebpd.png \
 	circlebps.png \
 	circlebtp.png \
 	circlelineintersection.png \

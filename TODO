@@ -134,7 +134,7 @@
   features.  E.g. I have been asked to allow the user to limit himself
   to compass-ruler constructions..
 
-- "export to *": add stuff like java applets, SVG documents, etc...
+- "export to *": add stuff like java applets, etc...
 
 - add support for saving/opening native compressed files like
   'myfile.kig.gz' or 'myfile.kig.bz2'.

@@ -20,6 +20,7 @@
 
 #include "exporttoimagedialog.h"
 #include "latexexporter.h"
+#include "svgexporter.h"
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
@@ -122,6 +123,7 @@ KigExportManager::KigExportManager()
   // working on this one ;)
   mexporters.push_back( new XFigExporter );
   mexporters.push_back( new LatexExporter );
+  mexporters.push_back( new SVGExporter );
 }
 
 KigExportManager::~KigExportManager()

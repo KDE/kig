@@ -1,3 +1,11 @@
+2004-10-09  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Add a CircleByCenterAndDiameter object, to construct a circle
+	using a point as center and the length of a segment as diameter.
+
+	* A new SVG exporter to make SVG documents starting form Kig
+	documents.
+
 2004-10-08  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Added the construction of the center of curvature for
