@@ -268,8 +268,10 @@ int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenm
   {
     assert( parents.size() == 1 );
     int parent = parents.front();
-    Object* op = p[parent];
+    Object* op = p.front();
+    assert( op );
     uint propid = static_cast<const PropertyObject*>( o )->propId();
+    assert( propid < op->propertiesInternalNames().size() );
     mnodes.push_back( new FetchPropertyNode( parent, op->propertiesInternalNames()[propid], propid ) );
   } else assert( false );
   seenmap[o] = mnumberofargs + mnodes.size() - 1;
