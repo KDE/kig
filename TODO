@@ -73,6 +73,8 @@
 
 * harder:
 
+- allow editing of python scripts
+
 - give objects names
 
 - allow for using kformula w/o OOFormula w/o MathML formulas in the
