@@ -120,7 +120,7 @@ public:
     ) const;
 
   virtual void drawprelim( KigPainter& p,
-                           const Objects& parents ) const;
+                           const Objects& parents ) const = 0;
 
   virtual Objects build(
     const Objects& os,
