@@ -40,6 +40,7 @@
 	<Action name="objects_new_ray" />
 	<Action name="objects_new_segment" />
 	<Action name="objects_new_segment_axis" />
+	<Action name="objects_new_vector" />
 	<ActionList name="user_line_types" />
 	<ActionList name="user_segment_types" />
       </Menu>
@@ -93,7 +94,6 @@
       <Menu name="new_other">
 	<text>&amp;Other</text>
 	<Action name="objects_new_locus" />
-	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_script_python" />
 	<Action name="objects_new_measuretransport" />
