@@ -114,8 +114,10 @@ std::vector<ObjectHolder*> ConicRadicalConstructor::build( const std::vector<Obj
 
 static const struct ArgsParser::spec argsspecpp[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Moving Point" ), false },
-  { PointImp::stype(), I18N_NOOP( "Following Point" ), true }
+  { PointImp::stype(), I18N_NOOP( "Moving Point" ),
+    I18N_NOOP( "Select the moving point, that will be moved around while drawing the locus..." ), false },
+  { PointImp::stype(), I18N_NOOP( "Following Point" ),
+    I18N_NOOP( "Select the following point, whose locations the locus will be drawn through..." ), true }
 };
 
 LocusConstructor::LocusConstructor()
@@ -231,8 +233,8 @@ bool LocusConstructor::isTransform() const
 }
 
 static const ArgsParser::spec argsspectc[] = {
-  { ConicImp::stype(), "", true },
-  { ConicImp::stype(), "", true }
+  { ConicImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true },
+  { ConicImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true }
 };
 
 ConicConicIntersectionConstructor::ConicConicIntersectionConstructor()
@@ -404,8 +406,10 @@ QString GenericIntersectionConstructor::useText(
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ), false },
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ), false }
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ),
+    I18N_NOOP( "Select the first of the points of which you want to construct the midpoint..." ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ),
+    I18N_NOOP( "Select the other of the points of which to construct the midpoint..." ), false }
 };
 
 MidPointOfTwoPointsConstructor::MidPointOfTwoPointsConstructor()
@@ -510,3 +514,12 @@ const int TestConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
   return ret;
 }
 
+QString GenericIntersectionConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
+  const KigWidget& ) const
+{
+  if ( sel.size() == 0 )
+    return i18n( "Select the first object to intersect..." );
+  else
+    return i18n( "Select the second object to intersect..." );
+}

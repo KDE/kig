@@ -29,9 +29,11 @@
 
 static const ArgsParser::spec argsspecConicLineIntersection[] =
 {
-  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ), true },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
-  { IntImp::stype(), "param", false }
+  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
+    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
+    "SHOULD NOT BE SEEN", true },
+  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicLineIntersectionType )
@@ -82,9 +84,12 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
 
 static const ArgsParser::spec argsspecConicLineOtherIntersection[] =
 {
-  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ), true },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
-  { PointImp::stype(), I18N_NOOP( "Already computed intersection point"), true }
+  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
+    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
+    "SHOULD NOT BE SEEN", true },
+  { PointImp::stype(), I18N_NOOP( "Already computed intersection point"),
+    "SHOULD NOT BE SEEN", true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicLineOtherIntersectionType )
@@ -142,8 +147,10 @@ static const char constructlinestat[] = I18N_NOOP( "Intersect with this line" );
 
 static const ArgsParser::spec argsspecLineLineIntersection[] =
 {
-  { AbstractLineImp::stype(), constructlinestat, true },
-  { AbstractLineImp::stype(), constructlinestat, true }
+  { AbstractLineImp::stype(), constructlinestat,
+    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), constructlinestat,
+    "SHOULD NOT BE SEEN", true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineLineIntersectionType )
@@ -180,9 +187,11 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocumen
 
 static const ArgsParser::spec argsspecLineCubicIntersection[] =
 {
-  { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic curve" ), true },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ), true },
-  { IntImp::stype(), "param", false }
+  { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic curve" ),
+    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
+    "SHOULD NOT BE SEEN", true },
+  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineCubicIntersectionType )
@@ -239,9 +248,11 @@ const ObjectImpType* LineCubicIntersectionType::resultId() const
 
 static const ArgsParser::spec argsspecCircleCircleIntersection[] =
 {
-  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ), true },
-  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ), true },
-  { IntImp::stype(), "param", false }
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ),
+    "SHOULD NOT BE SEEN", true },
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ),
+    "SHOULD NOT BE SEEN", true },
+  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleCircleIntersectionType )

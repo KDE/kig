@@ -107,7 +107,7 @@ class ArgsParser
 public:
   // this are some enum values that we return from some functions.
   enum { Invalid = 0, Valid = 1, Complete = 2 };
-  struct spec { const ObjectImpType* type; const char* usetext; bool onOrThrough;};
+  struct spec { const ObjectImpType* type; const char* usetext; const char* selectstat; bool onOrThrough;};
 private:
   // the args spec..
   std::vector<spec> margs;
@@ -132,6 +132,10 @@ public:
   // if sel were used as parents..
   // o should be in sel...
   const char* usetext( const ObjectImp* o, const Args& sel ) const;
+
+  // returns the select statement for the next selectable argument
+  // when the given args are selected.
+  const char* selectStatement( const Args& sel ) const;
 
   // this reorders the objects or args so that they are in the same
   // order as the requested arguments..

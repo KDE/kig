@@ -75,6 +75,7 @@ protected:
 
 protected:
   virtual void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w ) = 0;
+  virtual QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w ) = 0;
   virtual int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w ) = 0;
   virtual void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w ) = 0;
 };
@@ -88,6 +89,7 @@ public:
   ~ConstructMode();
 
   void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
+  QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );
   int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w );
   void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w );
 };
@@ -114,6 +116,7 @@ public:
   ~TestConstructMode();
 
   void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
+  QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );
   int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w );
   void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w );
 

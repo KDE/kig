@@ -36,8 +36,8 @@
 
 static const ArgsParser::spec argsspecFixedPoint[] =
 {
-  { DoubleImp::stype(), "x", false },
-  { DoubleImp::stype(), "y", false }
+  { DoubleImp::stype(), "x", "SHOULD NOT BE SEEN", false },
+  { DoubleImp::stype(), "y", "SHOULD NOT BE SEEN", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( FixedPointType )
@@ -73,8 +73,8 @@ ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigDocument& d
 
 const ArgsParser::spec argsspecConstrainedPoint[] =
 {
-  { DoubleImp::stype(), "parameter", false },
-  { CurveImp::stype(), "Constrain the point to this curve", true }
+  { DoubleImp::stype(), "parameter", "SHOULD NOT BE SEEN", false },
+  { CurveImp::stype(), "Constrain the point to this curve", "SHOULD NOT BE SEEN", true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConstrainedPointType )
@@ -133,8 +133,10 @@ bool FixedPointType::canMove() const
 
 static const ArgsParser::spec argsspecMidPoint[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another point" ), false },
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another point" ), false }
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another point" ),
+    I18N_NOOP( "Select the first of the two points of which you want to construct the midpoint..." ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another point" ),
+    I18N_NOOP( "Select the other of the two points of which you want to construct the midpoint..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MidPointType )
@@ -326,9 +328,12 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
 
 static const ArgsParser::spec argsspecMeasureTransport[] =
 {
-  { CircleImp::stype(), "transport measure on this circle", true },
-  { PointImp::stype(), "project this point onto the circle", false },
-  { SegmentImp::stype(), "Segment to transport", false }
+  { CircleImp::stype(), "transport measure on this circle",
+    I18N_NOOP( "Select the circle on which to transport a measure..." ), true },
+  { PointImp::stype(), "project this point onto the circle",
+    I18N_NOOP( "Select the point to project onto the circle..." ), false },
+  { SegmentImp::stype(), "Segment to transport",
+    I18N_NOOP( "Select the segment to transport on the circle..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MeasureTransportType )

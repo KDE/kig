@@ -241,3 +241,29 @@ bool ArgsParser::isDefinedOnOrThrough( const ObjectImp* o, const Args& parents )
   return s.onOrThrough;
 }
 
+const char* ArgsParser::selectStatement( const Args& selection ) const
+{
+  std::vector<bool> found( margs.size(), false );
+
+  for ( Args::const_iterator o = selection.begin();
+        o != selection.end(); ++o )
+  {
+    for ( uint i = 0; i < margs.size(); ++i )
+    {
+      if ( (*o)->inherits( margs[i].type ) && !found[i] )
+      {
+        // object o is of a type that we're looking for
+        found[i] = true;
+        break;
+      }
+    }
+  }
+  for ( uint i = 0; i < margs.size(); ++i )
+  {
+    if ( !found[i] )
+      return margs[i].selectstat;
+  }
+  kdDebug() << k_funcinfo << "no proper select statement found :(" << endl;
+  return 0;
+}
+

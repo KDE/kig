@@ -45,9 +45,12 @@ static const char* constructanglethroughpoint =
 
 static const ArgsParser::spec argsspecAngle[] =
 {
-  { PointImp::stype(), constructanglethroughpoint, true },
-  { PointImp::stype(), I18N_NOOP( "Construct an angle at this point" ), true },
-  { PointImp::stype(), constructanglethroughpoint, true }
+  { PointImp::stype(), constructanglethroughpoint,
+    I18N_NOOP( "Select a point that the first half-line of the angle should go through..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct an angle at this point" ),
+    I18N_NOOP( "Select the point to construct the angle in..." ), true },
+  { PointImp::stype(), constructanglethroughpoint,
+    I18N_NOOP( "Select a point that the second half-line of the angle should go through..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AngleType )
@@ -69,7 +72,7 @@ const AngleType* AngleType::instance()
 
 ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( parents, 2 ) ) return new InvalidImp;
 
   std::vector<Coordinate> points;
   for ( uint i = 0; i < parents.size(); ++i )
@@ -77,7 +80,13 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
       static_cast<const PointImp*>( parents[i] )->coordinate() );
 
   Coordinate lvect = points[0] - points[1];
-  Coordinate rvect = points[2] - points[1];
+  Coordinate rvect;
+  if ( points.size() == 3 )
+    rvect = points[2] - points[1];
+  else
+  {
+    rvect = lvect.orthogonal();
+  }
 
   double startangle = atan2( lvect.y, lvect.x );
   double endangle = atan2( rvect.y, rvect.x );
@@ -90,8 +99,8 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 
 static const struct ArgsParser::spec argsspecLocus[] =
 {
-  { HierarchyImp::stype(), "hierarchy", false },
-  { CurveImp::stype(), "curve", false }
+  { HierarchyImp::stype(), "hierarchy", "SHOULD NOT BE SEEN", false },
+  { CurveImp::stype(), "curve", "SHOULD NOT BE SEEN", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LocusType )

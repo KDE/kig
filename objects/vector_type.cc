@@ -24,8 +24,10 @@
 
 static const ArgsParser::spec argsspecVector[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a vector from this point" ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct a vector to this point" ), true }
+  { PointImp::stype(), I18N_NOOP( "Construct a vector from this point" ),
+    I18N_NOOP( "Select the start point of the new vector..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct a vector to this point" ),
+    I18N_NOOP( "Select the end point of the new vector..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VectorType )
@@ -57,9 +59,12 @@ const ObjectImpType* VectorType::resultId() const
 
 static const ArgsParser::spec argsspecVectorSum[] =
 {
-  { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and another one." ), false },
-  { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and the other one." ), false },
-  { PointImp::stype(), I18N_NOOP( "Construct the Vector Sum starting at this point." ), false }
+  { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and another one." ),
+    I18N_NOOP( "Select the first of the two vectors of which you want to construct the sum..." ), false },
+  { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and the other one." ),
+    I18N_NOOP( "Select the other of the two vectors of which you want to construct the sum..." ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the Vector Sum starting at this point." ),
+    I18N_NOOP( "Select the point to construct the sum vector in..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VectorSumType )

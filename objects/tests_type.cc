@@ -27,8 +27,10 @@
 
 static const ArgsParser::spec argsspecAreParallel[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Is this line parallel?" ), false },
-  { AbstractLineImp::stype(), I18N_NOOP( "Parallel to this line?" ), false }
+  { AbstractLineImp::stype(), I18N_NOOP( "Is this line parallel?" ),
+    I18N_NOOP( "Select the first of the two possibly parallel lines..." ), false },
+  { AbstractLineImp::stype(), I18N_NOOP( "Parallel to this line?" ),
+    I18N_NOOP( "Select the other of the two possibly parallel lines..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AreParallelType )
@@ -69,8 +71,10 @@ const ObjectImpType* AreParallelType::resultId() const
 
 static const ArgsParser::spec argsspecAreOrthogonal[] =
 {
-  { AbstractLineImp::stype(), I18N_NOOP( "Is this line orthogonal?" ), false },
-  { AbstractLineImp::stype(), I18N_NOOP( "Orthogonal to this line?" ), false }
+  { AbstractLineImp::stype(), I18N_NOOP( "Is this line orthogonal?" ),
+    I18N_NOOP( "Select the first of the two possibly orthogonal lines..." ), false },
+  { AbstractLineImp::stype(), I18N_NOOP( "Orthogonal to this line?" ),
+    I18N_NOOP( "Select the other of the two possibly orthogonal lines..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AreOrthogonalType )
@@ -111,9 +115,12 @@ const ObjectImpType* AreOrthogonalType::resultId() const
 
 static const ArgsParser::spec argsspecAreCollinear[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Check collinearity of this point" ), false },
-  { PointImp::stype(), I18N_NOOP( "and this second point" ), false },
-  { PointImp::stype(), I18N_NOOP( "with this third point" ), false }
+  { PointImp::stype(), I18N_NOOP( "Check collinearity of this point" ),
+    I18N_NOOP( "Select the first of the three possibly collinear points..." ), false },
+  { PointImp::stype(), I18N_NOOP( "and this second point" ),
+    I18N_NOOP( "Select the second of the three possibly collinear points..." ), false },
+  { PointImp::stype(), I18N_NOOP( "with this third point" ),
+    I18N_NOOP( "Select the last of the three possibly collinear points..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( AreCollinearType )
@@ -154,8 +161,10 @@ const ObjectImpType* AreCollinearType::resultId() const
 
 static const ArgsParser::spec containsTestArgsSpec[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Check whether this point is on a curve" ), false },
-  { CurveImp::stype(), I18N_NOOP( "Check whether the point is on this curve" ), false }
+  { PointImp::stype(), I18N_NOOP( "Check whether this point is on a curve" ),
+    I18N_NOOP( "Select the point you want to test..." ), false },
+  { CurveImp::stype(), I18N_NOOP( "Check whether the point is on this curve" ),
+    I18N_NOOP( "Select the curve that the point might be on..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ContainsTestType )
@@ -194,9 +203,12 @@ const ObjectImpType* ContainsTestType::resultId() const
 
 static const ArgsParser::spec argsspecSameDistanceType[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Check if this point have the same distance" ), false },
-  { PointImp::stype(), I18N_NOOP( "from this point" ), false },
-  { PointImp::stype(), I18N_NOOP( "and from this second point" ), false }
+  { PointImp::stype(), I18N_NOOP( "Check if this point has the same distance" ),
+    I18N_NOOP( "Select the point which might have the same distance from two other points..." ), false },
+  { PointImp::stype(), I18N_NOOP( "from this point" ),
+    I18N_NOOP( "Select the first of the two other points..." ), false },
+  { PointImp::stype(), I18N_NOOP( "and from this second point" ),
+    I18N_NOOP( "Select the other of the two other points..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( SameDistanceType )
@@ -236,8 +248,10 @@ const ObjectImpType* SameDistanceType::resultId() const
 
 static const ArgsParser::spec vectorEqualityArgsSpec[] =
 {
-  { VectorImp::stype(), I18N_NOOP( "Check whether this vector is equal to another vector" ), false },
-  { VectorImp::stype(), I18N_NOOP( "Check whether this vector is equal to the other vector" ), false }
+  { VectorImp::stype(), I18N_NOOP( "Check whether this vector is equal to another vector" ),
+    I18N_NOOP( "Select the first of the two possibly equal vectors..." ), false },
+  { VectorImp::stype(), I18N_NOOP( "Check whether this vector is equal to the other vector" ),
+    I18N_NOOP( "Select the other of the two possibly equal vectors..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VectorEqualityTestType )

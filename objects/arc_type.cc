@@ -43,9 +43,12 @@ static const char constructarcstartingstat[] = I18N_NOOP( "Construct an arc star
 
 static const ArgsParser::spec argsspecArcBTP[] =
 {
-  { PointImp::stype(), constructarcstartingstat, true },
-  { PointImp::stype(), I18N_NOOP( "Construct an arc through this point" ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct an arc ending at this point" ), true }
+  { PointImp::stype(), constructarcstartingstat,
+    I18N_NOOP( "Select the start point of the new arc..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct an arc through this point" ),
+    I18N_NOOP( "Select a point for the new arc to go through..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct an arc ending at this point" ),
+    I18N_NOOP( "Select the end point of the new arc..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ArcBTPType )
@@ -140,9 +143,12 @@ const ObjectImpType* ArcBTPType::resultId() const
 
 static const ArgsParser::spec argsspecArcBCPA[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct an arc with this center" ), true },
-  { PointImp::stype(), constructarcstartingstat, true },
-  { AngleImp::stype(), I18N_NOOP( "Construct an arc with this angle" ), true }
+  { PointImp::stype(), I18N_NOOP( "Construct an arc with this center" ),
+    I18N_NOOP( "Select the center of the new arc..." ), true },
+  { PointImp::stype(), constructarcstartingstat,
+    I18N_NOOP( "Select the start point of the new arc..." ), true },
+  { AngleImp::stype(), I18N_NOOP( "Construct an arc with this angle" ),
+    I18N_NOOP( "Select the angle of the new arc..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ArcBCPAType )

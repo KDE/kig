@@ -98,6 +98,9 @@ public:
 
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
+  QString selectStatement(
+    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+    const KigWidget& w ) const;
 };
 
 class MidPointOfTwoPointsConstructor

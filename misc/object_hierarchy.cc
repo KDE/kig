@@ -550,6 +550,7 @@ ArgsParser ObjectHierarchy::argParser() const
     ArgsParser::spec spec;
     spec.type = req;
     spec.usetext = req->selectStatement();
+    spec.selectstat = "";
     assert( spec.usetext );
     specs.push_back( spec );
   };

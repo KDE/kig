@@ -28,15 +28,24 @@ static const char cubictpstatement[] = I18N_NOOP( "Construct a cubic curve throu
 
 static const struct ArgsParser::spec argsspecCubicB9P[] =
 {
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true }
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicB9PType )
@@ -73,12 +82,18 @@ ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
 
 static const ArgsParser::spec argsspecCubicNodeB6P[] =
 {
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true }
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicNodeB6PType )
@@ -115,10 +130,14 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) con
 
 static const ArgsParser::spec argsspecCubicCuspB4P[] =
 {
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true },
-  { PointImp::stype(), cubictpstatement, true }
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
+  { PointImp::stype(), cubictpstatement,
+    I18N_NOOP( "Select a point for the new cubic to go through..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicCuspB4PType )

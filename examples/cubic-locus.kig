@@ -1,0 +1,91 @@
+<!DOCTYPE KigDocument>
+<KigDocument Version="0.7.1" >
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Hierarchy>
+  <Data type="double" id="1" >-2.27219</Data>
+  <Data type="int" id="2" >1</Data>
+  <Data type="double" id="3" >1.98431</Data>
+  <Data type="double" id="4" >1.90809</Data>
+  <Data type="double" id="5" >2.0933</Data>
+  <Data type="double" id="6" >-2.09014</Data>
+  <Data type="double" id="7" >-1.85202</Data>
+  <Data type="double" id="8" >1.53769</Data>
+  <Data type="hierarchy" id="9" >
+   <input requirement="point" id="1" />
+   <input requirement="point" id="2" />
+   <input requirement="point" id="3" />
+   <input requirement="int" id="4" />
+   <intermediate action="calc" type="CircleBCP" id="5" >
+    <arg>2</arg>
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="calc" type="RayAB" id="6" >
+    <arg>3</arg>
+    <arg>1</arg>
+   </intermediate>
+   <result action="calc" type="ConicLineIntersection" id="7" >
+    <arg>5</arg>
+    <arg>6</arg>
+    <arg>4</arg>
+   </result>
+  </Data>
+  <Data type="double" id="10" >3.70405</Data>
+  <Data type="double" id="11" >0.738799</Data>
+  <Object type="FixedPoint" id="12" >
+   <Parent id="3" />
+   <Parent id="5" />
+  </Object>
+  <Object type="FixedPoint" id="13" >
+   <Parent id="6" />
+   <Parent id="1" />
+  </Object>
+  <Object type="FixedPoint" id="14" >
+   <Parent id="7" />
+   <Parent id="8" />
+  </Object>
+  <Object type="FixedPoint" id="15" >
+   <Parent id="10" />
+   <Parent id="4" />
+  </Object>
+  <Object type="LineAB" id="16" >
+   <Parent id="15" />
+   <Parent id="12" />
+  </Object>
+  <Object type="ConstrainedPoint" id="17" >
+   <Parent id="11" />
+   <Parent id="16" />
+  </Object>
+  <Object type="Locus" id="18" >
+   <Parent id="9" />
+   <Parent id="16" />
+   <Parent id="14" />
+   <Parent id="13" />
+   <Parent id="2" />
+  </Object>
+  <Object type="CircleBCP" id="19" >
+   <Parent id="14" />
+   <Parent id="17" />
+  </Object>
+  <Object type="RayAB" id="20" >
+   <Parent id="13" />
+   <Parent id="17" />
+  </Object>
+  <Object type="ConicLineIntersection" id="21" >
+   <Parent id="19" />
+   <Parent id="20" />
+   <Parent id="2" />
+  </Object>
+ </Hierarchy>
+ <View>
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="15" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="21" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="12" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="18" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="14" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="16" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="20" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="13" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="19" />
+  <Draw width="-1" point-style="Round" style="SolidLine" shown="true" color="#0000ff" object="17" />
+ </View>
+</KigDocument>

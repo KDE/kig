@@ -73,6 +73,12 @@ public:
                            const KigDocument& d, const KigWidget& v
     ) const = 0;
 
+  // return a string describing what argument you want next, if the
+  // given selection of objects were selected.
+  virtual QString selectStatement(
+    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+    const KigWidget& w ) const = 0;
+
   // show a preliminary version of what you would do when handleArgs
   // would be called..  E.g. if this constructor normally constructs a
   // locus through some 5 points, then it will try to draw a locus
@@ -146,6 +152,10 @@ public:
 
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v ) const;
+
+  QString selectStatement(
+    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+    const KigWidget& w ) const;
 
   virtual std::vector<ObjectHolder*> build(
     const std::vector<ObjectCalcer*>& os,
@@ -281,6 +291,10 @@ public:
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v ) const;
 
+  QString selectStatement(
+    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+    const KigWidget& w ) const;
+
   void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d, KigWidget& v ) const;
 
   void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
@@ -332,6 +346,10 @@ public:
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v
     ) const;
+
+  QString selectStatement(
+    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+    const KigWidget& w ) const;
 
   void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
                      const KigDocument& d, const KigWidget& v

@@ -33,8 +33,10 @@ static const char constructcirclewithcenterstat[] = I18N_NOOP( "Construct a circ
 
 static const ArgsParser::spec argsspecCircleBCP[] =
 {
-  { PointImp::stype(), constructcirclewithcenterstat, false },
-  { PointImp::stype(), constructcirclethroughpointstat, true }
+  { PointImp::stype(), constructcirclewithcenterstat,
+    I18N_NOOP( "Select the center of the new circle..." ), false },
+  { PointImp::stype(), constructcirclethroughpointstat,
+    I18N_NOOP( "Select a point for the new circle to go through..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleBCPType )
@@ -67,9 +69,12 @@ const CircleBTPType* CircleBTPType::instance()
 
 static const ArgsParser::spec argsspecCircleBTP[] =
 {
-  { PointImp::stype(), constructcirclethroughpointstat, true },
-  { PointImp::stype(), constructcirclethroughpointstat, true },
-  { PointImp::stype(), constructcirclethroughpointstat, true }
+  { PointImp::stype(), constructcirclethroughpointstat,
+    I18N_NOOP( "Select a point for the new circle to go through..." ), true },
+  { PointImp::stype(), constructcirclethroughpointstat,
+    I18N_NOOP( "Select a point for the new circle to go through..." ), true },
+  { PointImp::stype(), constructcirclethroughpointstat,
+    I18N_NOOP( "Select a point for the new circle to go through..." ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleBTPType )
@@ -142,8 +147,8 @@ const ObjectImpType* CircleBTPType::resultId() const
 
 static const ArgsParser::spec argsspecCircleBPR[] =
 {
-  { PointImp::stype(), constructcirclewithcenterstat, false },
-  { DoubleImp::stype(), "UNUSED", false }
+  { PointImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", false },
+  { DoubleImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleBPRType )

@@ -300,6 +300,19 @@ QString StandardConstructorBase::useText( const ObjectCalcer& o, const std::vect
   return i18n( ret );
 }
 
+QString StandardConstructorBase::selectStatement(
+  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
+  const KigWidget& ) const
+{
+  using namespace std;
+  Args args;
+  transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
+
+  const char* ret = margsparser.selectStatement( args );
+  if ( ! ret ) return QString::null;
+  return i18n( ret );
+}
+
 QString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                                          const KigDocument& d, const KigWidget& v ) const
 {
@@ -308,6 +321,19 @@ QString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vecto
     std::vector<ObjectCalcer*> args( sel );
     int w = (*i)->wantArgs( args, d, v );
     if ( w != ArgsParser::Invalid ) return (*i)->useText( o, sel, d, v );
+  };
+  return QString::null;
+}
+
+QString MergeObjectConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+  const KigWidget& w ) const
+{
+  for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
+  {
+    std::vector<ObjectCalcer*> args( sel );
+    int wa = (*i)->wantArgs( args, d, w );
+    if ( wa != ArgsParser::Invalid ) return (*i)->selectStatement( sel, d, w );
   };
   return QString::null;
 }
@@ -372,6 +398,19 @@ void MacroConstructor::handleArgs( const std::vector<ObjectCalcer*>& os, KigPart
   d.addObjects( hos );
 }
 
+QString MacroConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
+  const KigWidget& ) const
+{
+  using namespace std;
+  Args args;
+  transform( sel.begin(), sel.end(), back_inserter( args ),
+             mem_fun( &ObjectCalcer::imp ) );
+  const char* ret = mparser.selectStatement( args );
+  if ( !ret ) return QString::null;
+  else return i18n( ret );
+}
+
 QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                                    const KigDocument&, const KigWidget&
   ) const
@@ -380,7 +419,9 @@ QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<Obje
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &ObjectCalcer::imp ) );
-  return mparser.usetext( o.imp(), args );
+  const char* ret = mparser.usetext( o.imp(), args );
+  if ( !ret ) return QString::null;
+  else return i18n( ret );
 }
 
 void MacroConstructor::handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,

@@ -110,6 +110,8 @@ void BaseConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const Q
 void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
                                 KigWidget& w, bool shiftpressed )
 {
+  mdoc.emitStatusBarText( selectStatement( getCalcers( mparents ), w ) );
+
   w.updateCurPix();
   KigPainter pter( w.screenInfo(), &w.curPix, mdoc.document() );
 
@@ -147,8 +149,6 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
     }
     else
     {
-      mdoc.emitStatusBarText( QString::null );
-
       w.setCursor( KCursor::arrowCursor() );
     }
   }
@@ -177,6 +177,8 @@ PointConstructMode::PointConstructMode( KigPart& d )
   // mpt..
   mpt = ObjectFactory::instance()->fixedPointCalcer( Coordinate() );
   mpt->calc( d.document() );
+
+  mdoc.emitStatusBarText( i18n( "Click the location where you want to place the new point, or the curve that you want to attach it to..." ) );
 }
 
 PointConstructMode::~PointConstructMode()
@@ -188,6 +190,8 @@ void PointConstructMode::leftClickedObject(
 {
   mdoc.addObject( new ObjectHolder( mpt.get() ) );
   w.redrawScreen( std::vector<ObjectHolder*>() );
+
+  mdoc.emitStatusBarText( QString::null );
   mdoc.doneMode( this );
 }
 
@@ -267,7 +271,6 @@ void ConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& args, const 
   mctor->handlePrelim( pter, args, mdoc.document(), w );
 
   QString o = mctor->useText( *args.back(), args, mdoc.document(), w );
-  mdoc.emitStatusBarText( o );
   pter.drawTextStd( textloc, o );
 }
 
@@ -303,7 +306,6 @@ void TestConstructMode::handlePrelim( const std::vector<ObjectCalcer*>& os, cons
   QString usetext = i18n( mtype->argsParser().usetext( args.back(), args ) );
   QPoint textloc = p;
   textloc.setX( textloc.x() + 15 );
-  mdoc.emitStatusBarText( usetext );
   pter.drawTextStd( textloc, usetext );
 
   // test result
@@ -341,7 +343,7 @@ void TestConstructMode::handleArgs( const std::vector<ObjectCalcer*>& args, KigW
 {
   mresult = new ObjectTypeCalcer( mtype, args );
   mresult->calc( mdoc.document() );
-  mdoc.emitStatusBarText( QString::null );
+  mdoc.emitStatusBarText( i18n( "Now select the location for the result label." ) );
 }
 
 void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
@@ -366,6 +368,7 @@ void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
     mdoc.addObject( new ObjectHolder( ret ) );
 
     w.unsetCursor();
+    mdoc.emitStatusBarText( QString::null );
 
     finish();
   }
@@ -411,4 +414,20 @@ void TestConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
   }
   else
     BaseConstructMode::mouseMoved( os, p, w, shiftPressed );
+}
+
+QString ConstructMode::selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w )
+{
+  return mctor->selectStatement( args, mdoc.document(), w );
+}
+
+QString TestConstructMode::selectStatement( const std::vector<ObjectCalcer*>& sel, const KigWidget& )
+{
+  using namespace std;
+  Args args;
+  transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
+
+  const char* ret = mtype->argsParser().selectStatement( args );
+  if ( ! ret ) return QString::null;
+  return i18n( ret );
 }

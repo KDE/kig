@@ -40,9 +40,9 @@
 
 static const ArgsParser::spec arggspeccs[] =
 {
-  { IntImp::stype(), "UNUSED", false },
-  { PointImp::stype(), "UNUSED", false },
-  { StringImp::stype(), "UNUSED", false }
+  { IntImp::stype(), "UNUSED", "SHOULD NOT BE SEEN", false },
+  { PointImp::stype(), "UNUSED", "SHOULD NOT BE SEEN", false },
+  { StringImp::stype(), "UNUSED", "SHOULD NOT BE SEEN", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TextType )
