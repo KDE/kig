@@ -317,7 +317,7 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
   else return new InvalidImp;
 }
 
-const ArgsParser::spec argsspecMeasureTransport[] =
+static const ArgsParser::spec argsspecMeasureTransport[] =
 {
   { CircleImp::stype(), "transport measure on this circle" },
   { PointImp::stype(), "project this point onto the circle" },
