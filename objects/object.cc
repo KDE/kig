@@ -1,4 +1,4 @@
-// nobject.cc
+// object.cc
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -459,6 +459,11 @@ QColor Object::color() const
 QColor RealObject::color() const
 {
   return mcolor;
+}
+
+void RealObject::setWidth( int width )
+{
+  mwidth = width;
 }
 
 

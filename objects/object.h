@@ -180,7 +180,7 @@ public:
   void setShown( bool shown );
 
   int width() const { return mwidth; };
-  void setWidth( int width ) { mwidth = width; };
+  void setWidth( int width );
 };
 
 /**
