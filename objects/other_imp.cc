@@ -19,6 +19,7 @@
 #include "other_imp.h"
 
 #include "bogus_imp.h"
+#include "point_imp.h"
 
 #include "../misc/screeninfo.h"
 #include "../misc/common.h"
@@ -326,32 +327,78 @@ bool ArcImp::valid() const
 
 const uint ArcImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties();
+  return Parent::numberOfProperties() + 6;
 }
 
 const QCStringList ArcImp::properties() const
 {
-  return Parent::properties();
+  QCStringList ret = Parent::properties();
+  ret << I18N_NOOP( "Center" );
+  ret << I18N_NOOP( "Radius" );
+  ret << I18N_NOOP( "Angle in Degrees" );
+  ret << I18N_NOOP( "Angle in Radians" );
+  ret << I18N_NOOP( "Sector Surface" );
+  ret << I18N_NOOP( "Arc Length" );
+  assert( ret.size() == ArcImp::numberOfProperties() );
+  return ret;
 }
 
 const QCStringList ArcImp::propertiesInternalNames() const
 {
-  return Parent::propertiesInternalNames();
+  QCStringList ret = Parent::propertiesInternalNames();
+  ret << "center";
+  ret << "radius";
+  ret << "angle-degrees";
+  ret << "angle-radians";
+  ret << "sector-surface";
+  ret << "arc-length";
+  return ret;
 }
 
 const char* ArcImp::iconForProperty( uint which ) const
 {
-  return Parent::iconForProperty( which );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() )
+    return "";
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return "";
+  else if ( which == Parent::numberOfProperties() + 2 )
+    return "angle";
+  else if ( which == Parent::numberOfProperties() + 3 )
+    return "angle";
+  else if ( which == Parent::numberOfProperties() + 4 )
+    return "";
+  else if ( which == Parent::numberOfProperties() + 5 )
+    return "";
+  else assert( false );
 }
 
 ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
 {
-  return Parent::property( which, d );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, d );
+  else if ( which == Parent::numberOfProperties() )
+    return new PointImp( mcenter );
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return new DoubleImp( mradius );
+  else if ( which == Parent::numberOfProperties() + 2 )
+    return new IntImp( static_cast<int>( ma * 180 / M_PI ) );
+  else if ( which == Parent::numberOfProperties() + 3 )
+    return new DoubleImp( ma );
+  else if ( which == Parent::numberOfProperties() + 4 )
+    return new DoubleImp( mradius * mradius * ma / 2 );
+  else if ( which == Parent::numberOfProperties() + 5 )
+    return new DoubleImp( mradius * ma );
+  else assert( false );
 }
 
 int ArcImp::impRequirementForProperty( uint which ) const
 {
-  return Parent::impRequirementForProperty( which );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else
+    return ID_ArcImp;
 }
 
 bool ArcImp::inherits( int type ) const
