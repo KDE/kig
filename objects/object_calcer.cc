@@ -277,7 +277,6 @@ ObjectCalcer::ObjectCalcer()
 
 std::vector<ObjectCalcer*> ObjectCalcer::movableParents() const
 {
-  assert( false );
   return std::vector<ObjectCalcer*>();
 }
 

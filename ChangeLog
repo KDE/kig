@@ -1,3 +1,8 @@
+2004-02-10  Dominique Devriese  <devriese@kde.org>
+
+	* Fix a bug which caused Kig to crash on moving a text label by
+	removing a wrong assertion in objects/object_calcer.cc
+
 2004-02-09  Dominique Devriese  <devriese@kde.org>
 
 	* Replace the line-line-intersection algorithm with a much simpler
