@@ -207,8 +207,8 @@ bool LocusConstructor::isTransform() const
 }
 
 static const ArgParser::spec argsspectc[] = {
-  { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with This Circle" ) },
-  { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with this circle" ) }
+  { ObjectImp::ID_ConicImp, "" },
+  { ObjectImp::ID_ConicImp, "" }
 };
 
 ConicConicIntersectionConstructor::ConicConicIntersectionConstructor()
@@ -291,17 +291,6 @@ bool ConicConicIntersectionConstructor::isTransform() const
   return false;
 }
 
-QString ConicConicIntersectionConstructor::useText(
-  const Object& o, const Objects&,
-  const KigDocument&, const KigWidget& ) const
-{
-  if ( o.hasimp( ObjectImp::ID_CircleImp ) )
-    return i18n( "Intersect with this circle" );
-  else if ( o.hasimp( ObjectImp::ID_ConicImp ) )
-    return i18n( "Intersect with this conic" );
-  else assert( false );
-}
-
 ConicLineIntersectionConstructor::ConicLineIntersectionConstructor()
   : MultiObjectTypeConstructor(
     ConicLineIntersectionType::instance(),
@@ -314,26 +303,13 @@ ConicLineIntersectionConstructor::~ConicLineIntersectionConstructor()
 {
 }
 
-QString ConicLineIntersectionConstructor::useText(
-  const Object& o, const Objects&,
-  const KigDocument&, const KigWidget& ) const
-{
-  if ( o.hasimp( ObjectImp::ID_CircleImp ) )
-    return i18n( "Intersect with this circle" );
-  else if ( o.hasimp( ObjectImp::ID_ConicImp ) )
-    return i18n( "Intersect with this conic" );
-  else if ( o.hasimp( ObjectImp::ID_LineImp ) )
-    return i18n( "Intersect with this line" );
-  else assert( false );
-}
-
 QString ConicRadicalConstructor::useText( const Object& o, const Objects&,
                                           const KigDocument&, const KigWidget& ) const
 {
   if ( o.hasimp( ObjectImp::ID_CircleImp ) )
-    return i18n( "Construct the radical lines of this circle" );
+    return i18n( "Construct the Radical Lines of This Circle" );
   else
-    return i18n( "Construct the radical lines of this conic" );
+    return i18n( "Construct the Radical Lines of This Conic" );
 }
 
 GenericIntersectionConstructor::GenericIntersectionConstructor()
@@ -377,4 +353,18 @@ GenericIntersectionConstructor::~GenericIntersectionConstructor()
 bool GenericIntersectionConstructor::isIntersection() const
 {
   return true;
+}
+
+QString GenericIntersectionConstructor::useText(
+  const Object& o, const Objects&,
+  const KigDocument&, const KigWidget& ) const
+{
+  if ( o.hasimp( ObjectImp::ID_CircleImp ) )
+    return i18n( "Intersect with This Circle" );
+  else if ( o.hasimp( ObjectImp::ID_ConicImp ) )
+    return i18n( "Intersect with This Conic" );
+  else if ( o.hasimp( ObjectImp::ID_LineImp ) )
+    return i18n( "Intersect with This Line" );
+  else assert(
+    false );
 }

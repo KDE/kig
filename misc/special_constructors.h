@@ -71,9 +71,6 @@ public:
   ConicConicIntersectionConstructor();
   ~ConicConicIntersectionConstructor();
 
-  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
-                   const KigWidget& v ) const;
-
   void drawprelim( KigPainter& p, const Objects& parents,
                    const KigDocument& ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
@@ -88,8 +85,6 @@ class ConicLineIntersectionConstructor
 public:
   ConicLineIntersectionConstructor();
   ~ConicLineIntersectionConstructor();
-  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
-                   const KigWidget& v ) const;
 };
 
 class GenericIntersectionConstructor
@@ -100,6 +95,9 @@ public:
   ~GenericIntersectionConstructor();
 
   bool isIntersection() const;
+
+  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+                   const KigWidget& v ) const;
 };
 
 #endif
