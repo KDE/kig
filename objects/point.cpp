@@ -9,10 +9,6 @@
 #include "segment.h"
 #include "curve.h"
 
-extern "C" {
-  double round (double i);
-};
-
 bool Point::contains(const QPoint& o, bool strict) const
 {
   if (strict) return o == QPoint(x,y);
@@ -29,7 +25,7 @@ void Point::draw (QPainter& p, bool ss) const
       p.setPen( QPen (Qt::red, 1) );
       p.setBrush (QBrush(Qt::red));
     };
-  p.drawEllipse(round(x-2), round(y-2),5,5);
+  p.drawEllipse(qRound(x-2), qRound(y-2),5,5);
   p.setBrush (Qt::NoBrush);
 };
 
@@ -144,8 +140,8 @@ void MidPoint::stopMove()
 void MidPoint::calc()
 {
   assert (p1 && p2);
-  setX(round((p1->getX() + p2->getX())/2));
-  setY(round((p1->getY() + p2->getY())/2));
+  setX(((p1->getX() + p2->getX())/2));
+  setY(((p1->getY() + p2->getY())/2));
 }
 
 void Point::saveXML(QDomDocument& doc, QDomElement& parentElem)

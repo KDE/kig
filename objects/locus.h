@@ -23,7 +23,7 @@ class Locus
 {
 public:
   // number of points to include, i think this is a nice default...
-  static const int numberOfPoints = 100;
+  static const int numberOfPoints = 200;
 public:
   Locus() : cp(0), point(0), hierarchy(0) { };
   ~Locus() {};

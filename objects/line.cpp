@@ -54,7 +54,7 @@ Point Line::getPoint(double p) const
   // we need to spread the points over the line, it should also come near
   // the (infinite) end of the line, but most points should be near
   // the two points we contain...
-  p = p*2;
+  p = p*3;
   if (p>0) p = pow(p, 8);
   else p = -pow(p,8);
 
@@ -79,7 +79,7 @@ double Line::getParam(const Point& point) const
   double p = d.getX()/dir.getX();
   if (p>=0) p = sqrt(sqrt(sqrt(p)));
   else p = -sqrt(sqrt(sqrt(-p)));
-  p/=2;
+  p/=3;
   p = p/2 + 0.5;
   return p;
 }
