@@ -20,6 +20,7 @@
 #define KIG_OBJECTS_OBJECT_DRAWER_H
 
 #include <qcolor.h>
+#include <qnamespace.h>
 
 class ObjectImp;
 class KigPainter;
@@ -48,13 +49,14 @@ class ObjectDrawer
   QColor mcolor;
   bool mshown;
   int mwidth;
+  Qt::PenStyle mstyle;
 public:
   /**
    * Construct a new ObjectDrawer with a default color ( Qt::blue ),
    * width ( -1 ), and shown state ( true ).
    */
   ObjectDrawer();
-  ObjectDrawer( const QColor& color, int width = -1, bool shown = true );
+  ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine );
   // Draw the object imp on kigpainter p.  If selected is true, it is
   // drawn in red, otherwise in its normal color.
   void draw( const ObjectImp& imp, KigPainter& p, bool selected ) const;

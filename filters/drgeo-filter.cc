@@ -41,6 +41,7 @@
 #include "../kig/kig_part.h"
 
 #include <qfile.h>
+#include <qnamespace.h>
 #include <klocale.h>
 
 KigFilterDrgeo::KigFilterDrgeo()
@@ -117,13 +118,6 @@ bool KigFilterDrgeo::load( const QString& file, KigDocument& to )
       if ( curfig == myfig )
         return importFigure( e.firstChild(), to, file );
     }
-/*
-    else if ( e.tagName() == "text" )
-    {
-      s = "- Text: '" + e.attribute("name") + "'\n";
-      s += "  <<" + e.text() + ">>\n";
-    }
-*/
   }
 
   return false;
@@ -216,7 +210,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       parents.push_back( holders[parentid]->calcer() );
     };
     if ( parents.size() > 1 )
-      kdDebug() << "+++++++++ parents: " << parents[1] << " " << parents[2] << " " << parents[3] << endl;
+      kdDebug() << "+++++++++ parents: " << parents[0] << " " << parents[1] << " " << parents[2] << endl;
     else
       kdDebug() << "+++++++++ parents: NO" << endl;
 
@@ -252,8 +246,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       double x = xs.toDouble( &ok );
       double y = ys.toDouble( &ok2 );
 //      double value = valueStr.toDouble( &ok3 );
-//      kdDebug() << "+++++++++ ok: " << ok << endl;
-//      kdDebug() << "+++++++++ ok2: " << ok2 << endl;
       if ( domelem.attribute( "type" ) == "Free" )
       {
         if ( ! ( ok && ok2 ) )
@@ -288,7 +280,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 //        }
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file contains an intersection type "
+          notSupported( file, i18n( "This Dr. Geo file contains an intersection type, "
                                     "which Kig does not currently support." ) );
           return false;
         }
@@ -462,6 +454,38 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "coordinate", doc );
       }
+      else if ( domelem.attribute( "type" ) == "segment_length" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "length", doc );
+      }
+      else if ( domelem.attribute( "type" ) == "circle_perimeter" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "circumference", doc );
+      }
+      else if ( domelem.attribute( "type" ) == "arc_length" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "arc-length", doc );
+      }
+      else if ( domelem.attribute( "type" ) == "distance_2pts" )
+      {
+        if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
+        ObjectTypeCalcer* so = new ObjectTypeCalcer( SegmentABType::instance(), parents );
+        so->calc( doc );
+        Coordinate m( x, y );
+        oc = constructTextObject( m, so, "length", doc );
+      }
+      else if ( domelem.attribute( "type" ) == "vector_norm" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "length", doc );
+      }
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
@@ -499,6 +523,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     else if ( domelem.tagName() == "angle" )
     {
       kdDebug() << "+++++++++ angle" << endl;
+      PointImp* p = static_cast<const PointImp*>( parents[0]->imp() );
       if ( domelem.attribute( "type" ) == "3pts" )
       {
         if ( parents.size() == 3 )
@@ -511,7 +536,8 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         ObjectCalcer* angle = parents[0];
 //        parents.clear();
-        const Coordinate c = static_cast<const PointImp*>( angle->parents()[1]->imp() )->coordinate();
+//        const Coordinate c = static_cast<const PointImp*>( angle->parents()[1]->imp() )->coordinate();
+        const Coordinate c = p->coordinate();
         oc = constructTextObject( c, angle, "angle-degrees", doc );
       }
       kdDebug() << "+++++++++ oc:" << oc << endl;
@@ -539,6 +565,48 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         return false;
       }
       kdDebug() << "+++++++++ oc:" << oc << endl;
+    }
+    else if ( domelem.tagName() == "script" )
+    {
+      QString xs;
+      QString ys;
+      QString text;
+      for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
+      {
+        QDomElement ce = c.toElement();
+        if ( ce.isNull() ) continue;
+        else if ( ce.tagName() == "x" )
+        {
+          xs = ce.text();
+        }
+        else if ( ce.tagName() == "y" )
+        {
+          ys = ce.text();
+        }
+        else if ( ce.tagName() == "code" )
+        {
+          text = ce.text();
+        }
+      }
+      kdDebug() << "+++++++++ script - " << domelem.attribute( "type" ) << endl;
+      bool ok;
+      bool ok2;
+      double x = xs.toDouble( &ok );
+      double y = ys.toDouble( &ok2 );
+      if ( ! ( ok && ok2 ) )
+        KIG_FILTER_PARSE_ERROR;
+      // ugly hack to show scripts... since kig doesn't support Scheme scripts,
+      // kig will write script's text into a label, so the user can freely see
+      // the code and make whatever he/she wants.
+      if ( domelem.attribute( "type" ) == "nitems" )
+        oc = fact->labelCalcer( text, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), doc );
+      else
+      {
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  domelem.attribute( "type" ) ) );
+        return false;
+      }
     }
     else if ( domelem.tagName() == "locus" )
     {
@@ -581,11 +649,12 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     QColor co = domelem.attribute( "color" );
     if ( ! co.isValid() )
       co = Qt::blue;
-// reading object width
+// reading width and style
 // Dashed -> the little one
 // Normal -> the medium
 // Thick  -> the biggest one
     int w = -1;
+    Qt::PenStyle s = Qt::SolidLine;
     if ( domelem.tagName() == "point" )
     {
       if ( domelem.attribute( "thickness" ) == "Normal" )
@@ -601,8 +670,8 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
               ( domelem.tagName() == "arcCircle" ) ||
               ( domelem.tagName() == "angle" ) )
     {
-//      if ( domelem.attribute( "thickness" ) == "Dashed" )
-//        w = 3;
+      if ( domelem.attribute( "thickness" ) == "Dashed" )
+        s = Qt::DotLine;
       if ( domelem.attribute( "thickness" ) == "Thick" )
         w = 2;
     }
@@ -610,7 +679,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     bool show = ( domelem.attribute( "masked" ) != "True" );
 //    kdDebug() << "+++++++++ masked:" << domelem.attribute( "masked" ) << endl;
 // costructing the ObjectDrawer*
-    ObjectDrawer* d = new ObjectDrawer( co, w, show );
+    ObjectDrawer* d = new ObjectDrawer( co, w, show, s );
     assert( d );
 
     kdDebug() << ">>>>>>>>> Creating ObjectHolder*" << endl;

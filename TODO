@@ -1,5 +1,8 @@
 * not too hard:
 
+- support line styles in Kig.  The code in ObjectDrawer is already
+   there, it just needs the UI support...
+
 - make it possible to not show the coordinate grid, and to customize
    it in various ways.
 
@@ -19,6 +22,8 @@
 
 - add an option to the objects popup to start a script object with the
   current object as first argument...
+
+- implement cut, copy and paste for objects...
 
 * harder:
 

@@ -21,6 +21,8 @@
 #include "object_imp.h"
 #include "../misc/kigpainter.h"
 
+#include <qpen.h>
+#include <qnamespace.h>
 #include <cassert>
 
 void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
@@ -31,6 +33,7 @@ void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
     p.setBrushColor( sel ? Qt::red : mcolor );
     p.setPen( QPen ( sel ? Qt::red : mcolor,  1) );
     p.setWidth( mwidth );
+    p.setStyle( mstyle );
     imp.draw( p );
   }
 }
@@ -56,6 +59,7 @@ ObjectDrawer* ObjectDrawer::getCopyShown( bool s ) const
   ret->mcolor = mcolor;
   ret->mshown = s;
   ret->mwidth = mwidth;
+  ret->mstyle = mstyle;
   return ret;
 }
 
@@ -65,6 +69,7 @@ ObjectDrawer* ObjectDrawer::getCopyColor( const QColor& c ) const
   ret->mcolor = c;
   ret->mshown = mshown;
   ret->mwidth = mwidth;
+  ret->mstyle = mstyle;
   return ret;
 }
 
@@ -74,6 +79,7 @@ ObjectDrawer* ObjectDrawer::getCopyWidth( int w ) const
   ret->mcolor = mcolor;
   ret->mshown = mshown;
   ret->mwidth = w;
+  ret->mstyle = mstyle;
   return ret;
 }
 
@@ -82,13 +88,13 @@ int ObjectDrawer::width() const
   return mwidth;
 }
 
-ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown )
-  : mcolor( color ), mshown( shown ), mwidth( width )
+ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown, Qt::PenStyle style )
+  : mcolor( color ), mshown( shown ), mwidth( width ), mstyle( style )
 {
 }
 
 ObjectDrawer::ObjectDrawer()
-  : mcolor( Qt::blue ), mshown( true ), mwidth( -1 )
+  : mcolor( Qt::blue ), mshown( true ), mwidth( -1 ), mstyle( Qt::SolidLine )
 {
 }
 

@@ -183,13 +183,14 @@ bool VectorImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 
 const uint VectorImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 1;
+  return Parent::numberOfProperties() + 2;
 }
 
 const QCStringList VectorImp::propertiesInternalNames() const
 {
   QCStringList ret = Parent::propertiesInternalNames();
-  ret << I18N_NOOP( "vect-mid-point" );
+  ret << "length";
+  ret << "vect-mid-point";
   assert( ret.size() == VectorImp::numberOfProperties() );
   return ret;
 }
@@ -197,6 +198,7 @@ const QCStringList VectorImp::propertiesInternalNames() const
 const QCStringList VectorImp::properties() const
 {
   QCStringList ret = Parent::properties();
+  ret << I18N_NOOP( "Length" );
   ret << I18N_NOOP( "Midpoint" );
   assert( ret.size() == VectorImp::numberOfProperties() );
   return ret;
@@ -214,6 +216,8 @@ const char* VectorImp::iconForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   else if ( which == Parent::numberOfProperties() )
+    return "distance"; // length
+  else if ( which == Parent::numberOfProperties() + 1 )
     return "bisection"; // mid point
   else assert( false );
   return "";
@@ -224,6 +228,8 @@ ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   else if ( which == Parent::numberOfProperties() )
+    return new DoubleImp( ( ma - mb ).length() );
+  else if ( which == Parent::numberOfProperties() + 1 )
     return new PointImp( ( ma + mb ) / 2 );
   else assert( false );
   return new InvalidImp;
