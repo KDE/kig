@@ -347,7 +347,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
     };
     assert( hierarchy );
     MacroConstructor* ctor =
-      new MacroConstructor( *hierarchy, name, description, iconfile );
+      new MacroConstructor( *hierarchy, i18n( name.latin1() ), i18n( description.latin1() ), iconfile );
     delete hierarchy;
     GUIAction* act = new ConstructibleAction( ctor, actionname );
     Macro* macro = new Macro( act, ctor );
