@@ -72,7 +72,10 @@ void ObjectFactory::redefinePoint( RealObject* point, const Coordinate& c,
   {
     // a constrained point...
     DataObject* d = new DataObject( new DoubleImp( static_cast<const CurveImp*>( v->imp() )->getParam( c ) ) );
-    point->reset( ConstrainedPointType::instance(), Objects( d ) );
+    Objects args;
+    args.push_back( d );
+    args.push_back( v );
+    point->reset( ConstrainedPointType::instance(), args );
   }
   else
   {
