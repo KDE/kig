@@ -141,12 +141,23 @@ double ConicImp::getParam( const Coordinate& p, const KigDocument& ) const
   double theta = atan2(tmp.y, tmp.x);
   double costheta = cos(theta);
   double sintheta = sin(theta);
-  double rho1 = d.pdimen / (1 - costheta * d.ecostheta0 - sintheta * d.esintheta0);
-  double rho2 = - d.pdimen / (1 + costheta * d.ecostheta0 + sintheta * d.esintheta0);
+  double ecosthetamtheta0 = costheta*d.ecostheta0 + sintheta*d.esintheta0;
+  double esinthetamtheta0 = sintheta*d.ecostheta0 - costheta*d.esintheta0;
+  double oneplus = 1.0 + d.ecostheta0*d.ecostheta0 + d.esintheta0*d.esintheta0;
+  double fact = esinthetamtheta0*(1.0 - ecosthetamtheta0)/(oneplus - 2*ecosthetamtheta0);
+// fact is sin(a)*cos(a) where a is the angle between the ray from the first
+// focus and the normal to the conic.  We need it in order to adjust the
+// angle according to the projection onto the conic of our point
+  double rho1 = d.pdimen / (1 - ecosthetamtheta0);
+  double rho2 = - d.pdimen / (1 + ecosthetamtheta0);
   if (fabs(rho1 - l) < fabs(rho2 - l))
+  {
+    theta += (rho1 - l)*fact/rho1;
     return fmod(theta / ( 2 * M_PI ) + 1, 1);
-  else
+  } else {
+    theta += (rho2 - l)*fact/rho2;
     return fmod(theta / ( 2 * M_PI ) + 0.5, 1);
+  }
 }
 
 const Coordinate ConicImp::getPoint( double p, const KigDocument& ) const
@@ -322,7 +333,10 @@ const ObjectImpType* ConicImp::type() const
 
 bool ConicImp::containsPoint( const Coordinate& p, const KigDocument& ) const
 {
-  return internalContainsPoint( p, test_threshold );
+  const ConicPolarData d = polarData();
+
+// the threshold is relative to the size of the conic (mp)
+  return internalContainsPoint( p, test_threshold*d.pdimen );
 }
 
 bool ConicImp::internalContainsPoint( const Coordinate& p, double threshold ) const
@@ -342,7 +356,14 @@ bool ConicImp::internalContainsPoint( const Coordinate& p, double threshold ) co
   double ecosthetamtheta0 = costheta*ecostheta0 + sintheta*esintheta0;
   double rho = pdimen / (1.0 - ecosthetamtheta0);
 
-  if ( fabs(len - rho) <= threshold ) return true;
+  double oneplus = 1.0 + ecostheta0*ecostheta0 + esintheta0*esintheta0;
+
+// fact is the cosine of the angle between the ray from the first focus
+// and the normal to the conic, so that we compute the real distance
+
+  double fact = (1.0 - ecosthetamtheta0)/sqrt(oneplus - 2*ecosthetamtheta0);
+  if ( fabs((len - rho)*fact) <= threshold ) return true;
   rho = - pdimen / ( 1.0 + ecosthetamtheta0 );
-  return fabs( len - rho ) <= threshold;
+  fact = (1.0 + ecosthetamtheta0)/sqrt(oneplus + 2*ecosthetamtheta0);
+  return fabs(( len - rho )*fact) <= threshold;
 }
