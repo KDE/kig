@@ -1,5 +1,3 @@
-#include <
-- transformations.h>
 - move stillPix into movingMode, so the other modes won't suffer from
   its overhead...  
 - Finally fix the move dependencies... i am thinking of making
@@ -8,13 +6,6 @@
   and they add themselves and other things they will be moving to the
   Objects variable.  This should finally fix the move dependencies, i
   think... 
-- change Object construction semantics: instead of first making a
-  non-"complete" object first, and then selecting args till it says
-  it's done, change this into having static functions that take lists
-  of Objects and not constructing the real object till we have all the
-  args collected..  this would allow e.g. to select three points,
-  right click on one of them, select "construct a CircleBCP with
-  these points.." and be happy :)
 - printing... (cf. the kdeprint tutorial on printing.kde.org ...
 - exporting to image formats ( preferably not via printing, cause
   printing doesn't allow you to specify the image size, the file
