@@ -4,6 +4,8 @@
 
 * not too hard:
 
+- add ObjectType's to the ObjectTypeFactory automatically.
+
 - create a ObjectImp::surroundingRect function, and use it in
    calculating the preferred screen size
 
