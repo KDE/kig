@@ -109,12 +109,12 @@ DragRectMode::~DragRectMode()
 {
 }
 
-Objects DragRectMode::ret()
+Objects DragRectMode::ret() const
 {
   return mret;
 }
 
-bool DragRectMode::needClear()
+bool DragRectMode::needClear() const
 {
   return mnc;
 }
