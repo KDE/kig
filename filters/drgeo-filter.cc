@@ -156,7 +156,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 {
   using namespace std;
   std::vector<HierarchyElement> elems;
-//  int nelems = 0;
   int withoutid = 0;
 
   // 1st: fetch relationships and build an appropriate structure
@@ -173,17 +172,13 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         QDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
         else if ( ce.tagName() == "parent" )
-        {
           elem.parents.push_back( ce.attribute( "ref" ) );
-        }
       }
       QString curid = domelem.attribute( "id" );
       elem.id = !curid.isNull() ? curid : QString::number( withoutid++ ) ;
       elems.push_back( elem );
-//      nelems += 1;
     }
   }
-//  nelems = elems.size();
 
   QString x;
   kdDebug() << "+++ elems" << endl;
@@ -427,17 +422,11 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         QDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
         else if ( ce.tagName() == "x" )
-        {
           xs = ce.text();
-        }
         else if ( ce.tagName() == "y" )
-        {
           ys = ce.text();
-        }
         else if ( ce.tagName() == "value" )
-        {
           value = ce.text();
-        }
       }
       bool ok;
       bool ok2;
@@ -445,38 +434,34 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       double y = ys.toDouble( &ok2 );
       if ( ! ( ok && ok2 ) )
         KIG_FILTER_PARSE_ERROR;
+      Coordinate m( x, y );
       // types of 'numeric'
       // ugly hack to show value numerics...
       if ( domelem.attribute( "type" ) == "value" )
-        oc = fact->labelCalcer( value, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), doc );
+        oc = fact->labelCalcer( value, m, false, std::vector<ObjectCalcer*>(), doc );
       else if ( domelem.attribute( "type" ) == "pt_abscissa" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "coordinate-x", doc );
       }
       else if ( domelem.attribute( "type" ) == "pt_ordinate" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "coordinate-y", doc );
       }
       else if ( domelem.attribute( "type" ) == "segment_length" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "length", doc );
       }
       else if ( domelem.attribute( "type" ) == "circle_perimeter" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "circumference", doc );
       }
       else if ( domelem.attribute( "type" ) == "arc_length" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "arc-length", doc );
       }
       else if ( domelem.attribute( "type" ) == "distance_2pts" )
@@ -484,31 +469,26 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
         ObjectTypeCalcer* so = new ObjectTypeCalcer( SegmentABType::instance(), parents );
         so->calc( doc );
-        Coordinate m( x, y );
         oc = constructTextObject( m, so, "length", doc );
       }
       else if ( domelem.attribute( "type" ) == "vector_norm" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "length", doc );
       }
       else if ( domelem.attribute( "type" ) == "vector_abscissa" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "length-x", doc );
       }
       else if ( domelem.attribute( "type" ) == "vector_ordinate" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "length-y", doc );
       }
       else if ( domelem.attribute( "type" ) == "slope" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "slope", doc );
       }
 /*
@@ -534,7 +514,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         ObjectTypeCalcer* so = new ObjectTypeCalcer( SegmentABType::instance(), args );
         so->calc( doc );
         kdDebug() << ">>>>>>>>> " << so->imp()->inherits( SegmentImp::stype() ) << endl;
-        Coordinate m( x, y );
         kdDebug() << ">>>>>>>>> Creating oc" << endl;
         oc = constructTextObject( m, so, "length", doc );
       }
@@ -543,13 +522,11 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       else if ( domelem.attribute( "type" ) == "line" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "equation", doc );
       }
       else if ( domelem.attribute( "type" ) == "circle" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "cartesian-equation", doc );
       }
       else
@@ -640,17 +617,15 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     }
     else if ( domelem.tagName() == "locus" )
     {
-//      if ( domelem.attribute( "type" ) == "None" )
-//      {
-//        oc = new ObjectTypeCalcer( LocusType::instance(), parents );
-//      }
-//      else
-//      {
+      if ( domelem.attribute( "type" ) == "None" )
+        oc = fact->locusCalcer( parents[0], parents[1] );
+      else
+      {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                   domelem.attribute( "type" ) ) );
         return false;
-//      }
+      }
       kdDebug() << "+++++++++ oc:" << oc << endl;
     }
     else if ( domelem.tagName() == "polygon" )
@@ -676,7 +651,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 //    kdDebug() << "+++++++++ holders.size(): " << holders.size() << endl;
     if ( oc == 0 )
       continue;
-    kdDebug() << ">>>>>>>>> Creating ObjectDrawer*" << endl;
 
 // reading color
     QColor co = domelem.attribute( "color" );
@@ -711,7 +685,8 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
     QString ps = domelem.attribute( "style" );
     int pointstyle = ObjectDrawer::pointStyleFromString( ps );
 // show this object?
-    bool show = ( domelem.attribute( "masked" ) != "True" );
+    bool show = ( ( domelem.attribute( "masked" ) != "True" ) &&
+                  ( domelem.attribute( "masked" ) != "Alway" ) );
 // costructing the ObjectDrawer*
     ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
     assert( d );
@@ -719,6 +694,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
 // creating the ObjectHolder*
     ObjectHolder* o = new ObjectHolder( oc, d );
     holders.push_back( o );
+// calc()
     kdDebug() << ">>>>>>>>> calc" << endl;
     holders[curid-1-nignored]->calc( doc );
     oc = 0;

@@ -19,6 +19,8 @@
    step of the construction and a KToggleAction like "Settings->Show Side
    List" to show/hide it ).
 
+- Add the possibility to attach text label also to angles.
+
 - Add the possibility to select, via new dialog, one or more types of
   object.
 
@@ -87,7 +89,7 @@
   text representation of the dependencies..
 
 - add support for work via command line without GUI. Possible options
-  and uses:<br>
+  and uses:<br />
   -c, --convert filename.ext => Kig will convert the file in its own
   format and output the file filename.kig
 
