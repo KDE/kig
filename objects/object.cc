@@ -22,6 +22,7 @@
 #include "object_imp.h"
 #include "curve_imp.h"
 #include "../misc/kigpainter.h"
+#include "../kig/kig_part.h"
 
 #include <qpen.h>
 #include <assert.h>
@@ -75,12 +76,6 @@ void ObjectWithParents::calc( const KigDocument& d )
   transform( mparents.begin(), mparents.end(),
              back_inserter( a ), mem_fun( &Object::imp ) );
   calc( a, d );
-}
-
-void RealObject::reset( const ObjectType* t, const Objects& parents )
-{
-  setType( t );
-  setParents( parents );
 }
 
 void RealObject::setImp( ObjectImp* i )
@@ -175,10 +170,20 @@ void ObjectWithParents::delParent( Object* o )
   mparents.remove( o );
 }
 
-void ObjectWithParents::setParents( const Objects& parents )
+void ObjectWithParents::setParents( const Objects& parents, KigDocument& doc )
 {
   for ( uint i = 0; i < mparents.size(); ++i )
+  {
     mparents[i]->delChild( this );
+    if ( mparents[i]->isInternal() && mparents[i]->children().empty() &&
+         ! parents.contains( mparents[i] ) )
+    {
+      // mparents[i] is an internal object that is no longer used..
+      // so we remove it from the document, and delete it..
+      doc._delObject( mparents[i] );
+      delete mparents[i];
+    };
+  };
   mparents = parents;
   for ( uint i = 0; i < mparents.size(); ++i )
     mparents[i]->addChild( this );
@@ -271,7 +276,7 @@ void Object::delParent( Object* )
   assert( false );
 }
 
-void Object::setParents( const Objects& )
+void Object::setParents( const Objects&, KigDocument& )
 {
   assert( false );
 }

@@ -258,7 +258,7 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
                                           const QDomElement& e,
                                           RealObject& o,
                                           Objects& dataos,
-                                          const KigDocument& kdoc )
+                                          KigDocument& kdoc )
 {
   if ( type == "NormalPoint" )
   {
@@ -323,7 +323,7 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     dataos.push_back( locusos[0] );
     RealObject* locus = static_cast<RealObject*>( locusos[1] );
     o.setType( locus->type() );
-    o.setParents( locus->parents() );
+    o.setParents( locus->parents(), kdoc );
     delete locus;
     return true;
   }
@@ -348,7 +348,7 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
     if ( wp == -1 ) return false;
     dataos.push_back( new PropertyObject( o.parents()[0], wp ) );
     dataos.back()->calc( kdoc );
-    o.setParents( Objects( dataos.back() ) );
+    o.setParents( Objects( dataos.back() ), kdoc );
     o.setType( CopyObjectType::instance() );
     return true;
   }
@@ -646,9 +646,9 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
 
           tmp = e.attribute( "width" );
           int width;
-          if ( tmp.isNull() ) width = 5;
+          if ( tmp.isNull() ) width = -1;
           else width = tmp.toInt( &ok );
-          if ( ! ok ) width = 5;
+          if ( ! ok ) width = -1;
 
           Objects parents;
           for ( std::vector<int>::iterator j = i->parents.begin(); j != i->parents.end(); ++j )

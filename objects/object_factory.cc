@@ -57,44 +57,98 @@ ObjectFactory* ObjectFactory::instance()
 
 Objects ObjectFactory::sensiblePoint( const Coordinate& c, const KigDocument& d, const KigWidget& w )
 {
-  Objects os = fixedPoint( c );
-  redefinePoint( static_cast<RealObject*>( os[2] ), c, d, w );
-  return os;
+  Objects os = d.whatAmIOn( c, w );
+  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    if ( (*i)->hasimp( ObjectImp::ID_CurveImp ) )
+      return constrainedPoint( *i, c, d );
+  return fixedPoint( c );
 }
 
-void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
-                                   const KigDocument& doc, const KigWidget& w )
+Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
+                                      KigDocument& doc, const KigWidget& w )
 {
   assert( tpoint->inherits( Object::ID_RealObject ) );
   RealObject* point = static_cast<RealObject*>( tpoint );
-  Objects o = doc.whatAmIOn( c, w );
+
+  Objects os = doc.whatAmIOn( c, w );
   Object* v = 0;
+
   // we don't want one of our children as a parent...
   Objects children = point->getAllChildren();
-  for ( Objects::iterator i = o.begin(); i != o.end(); ++i )
-  {
+  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
     if ( (*i)->hasimp( ObjectImp::ID_CurveImp ) && ! children.contains( *i ) )
     {
       v = *i;
       break;
     };
-  };
+
   if ( v )
   {
-    // a constrained point...
-    DataObject* d = new DataObject( new DoubleImp( static_cast<const CurveImp*>( v->imp() )->getParam( c, doc ) ) );
-    Objects args;
-    args.push_back( d );
-    args.push_back( v );
-    point->reset( ConstrainedPointType::instance(), args );
+    const CurveImp* curveimp = static_cast<const CurveImp*>( v->imp() );
+    double newparam = curveimp->getParam( c, doc );
+
+    // we want a constrained point...
+    if ( point->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+    {
+      // point already was constrained -> simply update the param
+      // DataObject and make sure point is on the right curve...
+      Object* dataobj = 0;
+      Objects parents = point->parents();
+      assert( parents.size() == 2 );
+      if ( parents[0]->hasimp( ObjectImp::ID_DoubleImp ) )
+        dataobj = parents[0];
+      else dataobj = parents[1];
+
+      parents.clear();
+      parents.push_back( dataobj );
+      parents.push_back( v );
+      point->setParents( parents, doc );
+
+      assert( dataobj->inherits( Object::ID_DataObject ) );
+      static_cast<DataObject*>( dataobj )->setImp( new DoubleImp( newparam ) );
+//       const Coordinate oldcoord = static_cast<const PointImp*>( point->imp() )->coordinate();
+//       point->move( oldcoord, c - oldcoord, doc );
+
+      Objects ret;
+      ret.push_back( dataobj );
+      ret.push_back( point );
+      return ret;
+    }
+    else
+    {
+      // point used to be fixed -> add a new DataObject etc.
+      DataObject* d = new DataObject( new DoubleImp( newparam ) );
+      Objects args;
+      args.push_back( d );
+      args.push_back( v );
+      point->setType( ConstrainedPointType::instance() );
+      point->setParents( args, doc );
+      args[1] = point;
+      return args;
+    }
   }
   else
   {
     // a fixed point...
-    Objects a;
-    a.push_back( new DataObject( new DoubleImp( c.x ) ) );
-    a.push_back( new DataObject( new DoubleImp( c.y ) ) );
-    point->reset( FixedPointType::instance(), a );
+    if ( point->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+    {
+      // point used to be constrained..
+      Objects a;
+      a.push_back( new DataObject( new DoubleImp( c.x ) ) );
+      a.push_back( new DataObject( new DoubleImp( c.y ) ) );
+      point->setType( FixedPointType::instance() );
+      point->setParents( a, doc );
+      a.push_back( point );
+      return a;
+    }
+    else
+    {
+      // point used to be fixed -> simply update the DataObject's
+      // we can use the point's move function for that..
+      const Coordinate oldcoord = static_cast<const PointImp*>( point->imp() )->coordinate();
+      point->move( oldcoord, c - oldcoord, doc );
+      return point->parents().with( point );
+    };
   }
 }
 
@@ -157,4 +211,23 @@ Objects ObjectFactory::label( const QString& s, const Coordinate& loc,
   RealObject* r = new RealObject( TextType::instance(), parents );
   ret.push_back( r );
   return ret;
+}
+
+Objects ObjectFactory::constrainedPoint( Object* curve, double param )
+{
+  assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
+  Objects ret;
+  Objects parents;
+  parents.push_back( curve );
+  ret.push_back( new DataObject( new DoubleImp( param ) ) );
+  parents.push_back( ret.back() );
+  ret.push_back( new RealObject( ConstrainedPointType::instance(), parents ) );
+  return ret;
+}
+
+Objects ObjectFactory::constrainedPoint( Object* curve, const Coordinate& c, const KigDocument& d )
+{
+  assert( curve->hasimp( ObjectImp::ID_CurveImp ) );
+  double param = static_cast<const CurveImp*>( curve->imp() )->getParam( c, d );
+  return constrainedPoint( curve, param );
 }

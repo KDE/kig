@@ -304,7 +304,7 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
   };
 }
 
-ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
+ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
   : mnumberofargs( 0 ), mnumberofresults( 0 )
 {
   bool ok = true;

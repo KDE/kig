@@ -50,7 +50,7 @@ public:
   void serialize( QDomElement& parent, QDomDocument& doc ) const;
   // deserialize the ObjectHierarchy data from the xml element
   // parent..
-  ObjectHierarchy( QDomElement& parent );
+  ObjectHierarchy( const QDomElement& parent );
 
   // build a set of objects that interdepend according to this
   // ObjectHierarchy..

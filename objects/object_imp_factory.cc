@@ -254,6 +254,10 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   {
     return new StringImp( parent.text() );
   }
+  else if ( type == "hierarchy" )
+  {
+    return new HierarchyImp( ObjectHierarchy( parent ) );
+  }
   else if ( type == "point" )
   {
     Coordinate ret = readXYElements( parent, ok );

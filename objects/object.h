@@ -94,11 +94,15 @@ public:
   const Objects getAllChildren() const;
 
   void addChild( Object* o );
+
   void delChild( Object* o );
 
   virtual void addParent( Object* o );
   virtual void delParent( Object* o );
-  virtual void setParents( const Objects& parents );
+  // This function detects if our old parents contained internal
+  // objects that have no more children, removes them from the
+  // doc, and deletes them..
+  virtual void setParents( const Objects& parents, KigDocument& doc );
 };
 
 class ObjectWithParents
@@ -112,7 +116,8 @@ protected:
 public:
   void addParent( Object* o );
   void delParent( Object* o );
-  void setParents( const Objects& parents );
+  // @see Object::setParents()
+  void setParents( const Objects& parents, KigDocument& doc );
   Objects parents() const;
 
   void calc( const KigDocument& );
@@ -162,7 +167,6 @@ public:
 
   const ObjectType* type() const;
   void setImp( ObjectImp* i );
-  void reset( const ObjectType* t, const Objects& parents );
   void setType( const ObjectType* t );
 
   QColor color() const { return mcolor; };

@@ -29,10 +29,17 @@
 #include <kcursor.h>
 #include <kaction.h>
 
+static void redefinePoint( Objects& mpt, const Coordinate& c, KigDocument& doc, const KigWidget& w )
+{
+  mpt = ObjectFactory::instance()->redefinePoint( mpt.back(), c, doc, w );
+  mpt.calc( doc );
+};
+
 ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
   : BaseMode( d ), mctor( ctor ),
     mpt( ObjectFactory::instance()->fixedPoint( Coordinate( 0, 0 ) ) )
 {
+  mpt.calc( d );
 }
 
 ConstructMode::~ConstructMode()
@@ -44,9 +51,6 @@ ConstructMode::~ConstructMode()
 void ConstructMode::leftClickedObject(
   Object* o, const QPoint& p, KigWidget& w, bool )
 {
-  ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
-                                            mdoc, w );
-  mpt.calc( mdoc );
   if ( o && !mparents.contains( o ) && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
   {
     selectObject( o, p, w );
@@ -59,6 +63,7 @@ void ConstructMode::leftClickedObject(
     // get a new mpt for our further use..
     mpt = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ),
                                                     mdoc, w );
+    mpt.calc( mdoc );
   }
   else
   {
@@ -67,8 +72,6 @@ void ConstructMode::leftClickedObject(
 
 void ConstructMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
-                                            mdoc, w );
   if ( mctor->wantArgs( mparents.with( mpt[2] ), mdoc, w ) )
   {
     mdoc.addObjects( mpt );
@@ -95,9 +98,8 @@ void ConstructMode::mouseMoved( const Objects& os,
   QPoint textloc = p;
   textloc.setX( textloc.x() + 15 );
 
-  ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
-                                            mdoc, w );
-  mpt.calc( mdoc );
+  redefinePoint( mpt, w.fromScreen( p ), mdoc, w );
+
   if ( !os.empty() && !mparents.contains( os.front() ) &&
        mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
   {
@@ -186,9 +188,10 @@ void PointConstructMode::mouseMoved(
 {
   w.updateCurPix();
   KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
-  ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
-                                            mdoc, w );
+
+  redefinePoint( mpt, w.fromScreen( p ), mdoc, w );
   mpt.calc( mdoc );
+
   mpt[2]->draw( pter, true );
   w.setCursor( KCursor::blankCursor() );
 

@@ -33,6 +33,13 @@ public:
   // RealObject for the point..
   Objects fixedPoint( const Coordinate& c );
 
+  // this returns the necessary objects to show a constrained point.
+  // That is: one DataObject for the parameter, and one RealObject for
+  // the point..
+  Objects constrainedPoint( Object* curve, double param );
+  // @overload
+  Objects constrainedPoint( Object* curve, const Coordinate& c, const KigDocument& );
+
   // this returns the necessary objects to show a sensible point.
   // By a "sensible point", I mean a point that would be about what
   // the user expects when he asks for a point at point c.  This is a
@@ -44,9 +51,13 @@ public:
                          const KigWidget& w
     );
 
-  // set point to what sensiblePoint would have returned..
-  void redefinePoint( Objects& point, const Coordinate& c,
-                      const KigDocument& d, const KigWidget& w );
+  // set point to what sensiblePoint would have returned..  This
+  // function returns what fixedPoint() or constrainedPoint() would
+  // have returned.  The old DataObjects, that have no more children
+  // are removed automatically by RealObject::setParents(), so you
+  // don't have to worry about that..
+  Objects redefinePoint( Object* point, const Coordinate& c,
+                         KigDocument& d, const KigWidget& w );
 
   // return a locus, defined by the two points ( one constrained, and
   // one following ) in parents.  The semantics of LocusType are a bit
