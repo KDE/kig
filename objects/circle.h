@@ -33,6 +33,9 @@ class Circle
   Circle( const Circle& c );
   ~Circle();
 
+  Circle* toCircle();
+  const Circle* toCircle() const;
+
   // type identification
   virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
   static const QCString sBaseTypeName();
@@ -44,11 +47,12 @@ class Circle
   double getParam (const Coordinate&) const;
 
   Coordinate getCenter() const { return qpc; };
-  double getRadius() const { return radius; };
+  double radius() const;
+  double squareRadius() const;
 
 protected:
   Coordinate qpc;
-  double radius;
+  double mradius;
 
   static double calcRadius( const Point* c, const Point* p );
   static double calcRadius( const Coordinate& c, const Coordinate& p );

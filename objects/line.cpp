@@ -255,9 +255,9 @@ void LineRadical::calc( const ScreenInfo& )
   }
   else valid = true; // else always defined...
 
-  r1sq = c1->getRadius();
+  r1sq = c1->radius();
   r1sq = r1sq * r1sq;
-  r2sq = c2->getRadius();
+  r2sq = c2->radius();
   r2sq = r2sq * r2sq;
 
   direc = ce2 - ce1;

@@ -102,7 +102,7 @@ public:
    * build a new object of this type...
    */
   virtual Object* build( const Objects& parents,
-                         const ParamMap& params = ParamMap() ) = 0;
+                         const ParamMap& params = ParamMap() ) const = 0;
 
   /**
    * returns a ConstructMode, which allows the user to construct a new
@@ -138,7 +138,7 @@ class TType
   : public Type
 {
   Object* build( const Objects& parents,
-                 const ParamMap& params = ParamMap() );
+                 const ParamMap& params = ParamMap() ) const;
   const QCString fullName() const;
   const QCString baseTypeName() const;
   const QString descriptiveName() const;
@@ -147,6 +147,197 @@ class TType
   const char* actionName() const;
   void saveXML( QDomDocument&, QDomNode& ) const;
   KigMode* constructMode( NormalMode* prev, KigDocument* doc );
+};
+
+/**
+ * A refinement of Type for types of objects that want to use
+ * StdConstructingMode...
+ */
+class StdConstructibleType
+  : public Type
+{
+public:
+  virtual StdConstructibleType* toStdConstructible() { return this; };
+  virtual const StdConstructibleType* toStdConstructible() const { return this; };
+  virtual int wantArgs( const Objects& ) = 0;
+  virtual QString useText( const Objects&, const Object* ) = 0;
+  virtual void drawPrelim( KigPainter&, const Objects& ) = 0;
+};
+
+/**
+ * template Type for builtin Types...
+ */
+template <class T>
+class TStdType
+  : public StdConstructibleType
+{
+public:
+  Object* build( const Objects& parents,
+                 const ParamMap& params = ParamMap() ) const
+    {
+      T* o = new T( parents );
+      o->setParams( params );
+      return o;
+    };
+  const QCString fullName() const
+    {
+      return T::sFullTypeName();
+    };
+  const QCString baseTypeName() const
+    {
+      return T::sBaseTypeName();
+    };
+  const QString descriptiveName() const
+    {
+      return T::sDescriptiveName();
+    };
+  const QString description() const
+    {
+      return T::sDescription();
+    };
+  const QCString iconFileName() const
+    {
+      return T::sIconFileName();
+    };
+  const char* actionName() const
+    {
+      return T::sActionName();
+    };
+  void saveXML( QDomDocument&, QDomNode& ) const
+    {
+      return;
+    };
+  KigMode* constructMode( NormalMode* prev, KigDocument* doc )
+    {
+      return T::sConstructMode( this, doc, prev );
+    };
+  int wantArgs( const Objects& os )
+    {
+      return T::sWantArgs( os );
+    };
+  QString useText( const Objects& os, const Object* o )
+    {
+      return T::sUseText( os, o );
+    };
+  void drawPrelim( KigPainter& p, const Objects& os )
+    {
+      return T::sDrawPrelim( p, os );
+    };
+};
+
+/**
+ * A refinement of StdConstructibleType for some special types.  The
+ * best ( only ? ) example here is CircleLineIntersectionPoint.  This
+ * is a normal Point type in every way, except that when you construct
+ * it by selecting a line and a circle, two of them are constructed,
+ * each with a different bool telling them on which "side" they
+ * are...
+ */
+class MultiConstructibleType
+   : public StdConstructibleType
+{
+public:
+  virtual Objects multiBuild( const Objects& args ) const = 0;
+};
+
+/**
+ * Template implementation of MultiConstructibleType..  TMultiType is
+ * to MultiConstructibleType what TStdType is to
+ * StdConstructibleType..
+ */
+template<class T>
+class TMultiType
+  : public MultiConstructibleType
+{
+  Objects multiBuild( const Objects& args ) const
+    {
+      return T::sMultiBuild( args );
+    };
+  KigMode* constructMode( NormalMode* prev, KigDocument* doc )
+    {
+      return T::sConstructMode( this, doc, prev );
+    };
+  Object* build( const Objects& parents,
+                 const ParamMap& params = ParamMap() ) const
+    {
+      T* o = new T( parents );
+      o->setParams( params );
+      return o;
+    };
+  const QCString fullName() const
+    {
+      return T::sFullTypeName();
+    };
+  const QCString baseTypeName() const
+    {
+      return T::sBaseTypeName();
+    };
+  const QString descriptiveName() const
+    {
+      return T::sDescriptiveName();
+    };
+  const QString description() const
+    {
+      return T::sDescription();
+    };
+  const QCString iconFileName() const
+    {
+      return T::sIconFileName();
+    };
+  const char* actionName() const
+    {
+      return T::sActionName();
+    };
+  void saveXML( QDomDocument&, QDomNode& ) const
+    {
+      return;
+    };
+  int wantArgs( const Objects& os )
+    {
+      return T::sWantArgs( os );
+    };
+  QString useText( const Objects& os, const Object* o )
+    {
+      return T::sUseText( os, o );
+    };
+  void drawPrelim( KigPainter& p, const Objects& os )
+    {
+      return T::sDrawPrelim( p, os );
+    };
+};
+
+/**
+ * Type for macro types
+ */
+class MType
+  : public StdConstructibleType
+{
+protected:
+  ObjectHierarchy* mhier;
+  QString mname;
+  QString mdesc;
+public:
+  MType( ObjectHierarchy* inHier, const QString name, const QString desc );
+  ~MType();
+  /**
+   * load info from XML...
+   */
+  MType( const QDomElement& e );
+  Object* build( const Objects& parents,
+                 const ParamMap& params = ParamMap() ) const;
+  MType* toMType() { return this; };
+  const MType* toMType() const { return this; };
+  const QCString fullName() const;
+  const QCString baseTypeName() const;
+  const QString descriptiveName() const;
+  const QString description() const;
+  const QCString iconFileName() const;
+  const char* actionName() const;
+  void saveXML( QDomDocument&, QDomNode& ) const;
+  KigMode* constructMode( NormalMode* mode, KigDocument* doc );
+  int wantArgs( const Objects& os );
+  QString useText( const Objects& os, const Object* o );
+  void drawPrelim( KigPainter&, const Objects& os );
 };
 
 template<class T>
@@ -163,7 +354,7 @@ KigMode* TType<T>::constructMode( NormalMode* prev, KigDocument* doc )
 
 template <class T>
 Object* TType<T>::build( const Objects& parents,
-                         const Type::ParamMap& params )
+                         const Type::ParamMap& params ) const
 {
   T* t = new T( parents );
   t->setParams( params );
@@ -204,125 +395,6 @@ template <class T>
 const QCString TType<T>::iconFileName() const
 {
   return T::sIconFileName();
-};
-
-/**
- * A refinement of Type for types of objects that want to use
- * StdConstructingMode...
- */
-class StdConstructibleType
-  : public Type
-{
-public:
-  virtual StdConstructibleType* toStdConstructible() { return this; };
-  virtual const StdConstructibleType* toStdConstructible() const { return this; };
-  virtual int wantArgs( const Objects& ) = 0;
-  virtual QString useText( const Objects&, const Object* ) = 0;
-  virtual void drawPrelim( KigPainter&, const Objects& ) = 0;
-};
-
-/**
- * template Type for builtin Types...
- */
-template <class T>
-class TStdType
-  : public StdConstructibleType
-{
-public:
-  Object* build( const Objects& parents,
-                 const ParamMap& params = ParamMap() )
-    {
-      T* o = new T( parents );
-      o->setParams( params );
-      return o;
-    };
-  const QCString fullName() const
-    {
-      return T::sFullTypeName();
-    };
-  const QCString baseTypeName() const
-    {
-      return T::sBaseTypeName();
-    };
-  const QString descriptiveName() const
-    {
-      return T::sDescriptiveName();
-    };
-  const QString description() const
-    {
-      return T::sDescription();
-    };
-  const QCString iconFileName() const
-    {
-      return T::sIconFileName();
-    };
-  const char* actionName() const
-    {
-      return T::sActionName();
-    };
-  void saveXML( QDomDocument&, QDomNode& ) const
-    {
-      return;
-    };
-  KigMode* constructMode( NormalMode* prev, KigDocument* doc )
-    {
-      return T::sConstructMode( this, doc, prev );
-    };
-  int wantArgs( const Objects& );
-  QString useText( const Objects&, const Object* );
-  void drawPrelim( KigPainter&, const Objects& );
-};
-
-template<class T>
-int TStdType<T>::wantArgs( const Objects& os )
-{
-  return T::sWantArgs( os );
-};
-
-template<class T>
-QString TStdType<T>::useText( const Objects& os, const Object* o )
-{
-  return T::sUseText( os, o );
-};
-
-template<class T>
-void TStdType<T>::drawPrelim( KigPainter& p, const Objects& o )
-{
-  T::sDrawPrelim( p, o );
-};
-
-/**
- * Type for macro types
- */
-class MType
-  : public StdConstructibleType
-{
-protected:
-  ObjectHierarchy* mhier;
-  QString mname;
-  QString mdesc;
-public:
-  MType( ObjectHierarchy* inHier, const QString name, const QString desc );
-  ~MType();
-  /**
-   * load info from XML...
-   */
-  MType( const QDomElement& e );
-  Object* build( const Objects& parents,
-                 const ParamMap& params = ParamMap() );
-  MType* toMType() { return this; };
-  const MType* toMType() const { return this; };
-  const QCString fullName() const;
-  const QCString baseTypeName() const;
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QCString iconFileName() const;
-  const char* actionName() const;
-  void saveXML( QDomDocument&, QDomNode& ) const;
-  KigMode* constructMode( NormalMode* mode, KigDocument* doc );
-  int wantArgs( const Objects& os );
-  QString useText( const Objects& os, const Object* o );
-  void drawPrelim( KigPainter&, const Objects& os );
 };
 
 #endif

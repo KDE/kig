@@ -40,14 +40,14 @@ Circle::~Circle()
 
 bool Circle::contains (const Coordinate& o, const double miss) const
 {
-  return fabs((qpc - Coordinate(o)).length() - radius) <= miss;
+  return fabs((qpc - Coordinate(o)).length() - mradius) <= miss;
 };
 
 void Circle::draw (KigPainter& p, bool ss) const
 {
   p.setPen(QPen ( selected && ss ? Qt::red : mColor, 1));
   p.setBrush( Qt::NoBrush );
-  p.drawCircle( qpc, radius);
+  p.drawCircle( qpc, mradius);
 };
 
 bool Circle::inRect (const Rect& /*r*/) const
@@ -60,7 +60,7 @@ bool Circle::inRect (const Rect& /*r*/) const
 
 Coordinate Circle::getPoint (double p) const
 {
-  return qpc + Coordinate (cos(p * 2 * M_PI), sin(p * 2 * M_PI)) * radius;
+  return qpc + Coordinate (cos(p * 2 * M_PI), sin(p * 2 * M_PI)) * mradius;
 };
 
 double Circle::getParam (const Coordinate& p) const
@@ -109,7 +109,7 @@ void CircleBCP::moveTo(const Coordinate& p)
   else if (wawm == movingPoc)
   {
     double nRadius = calcRadius(centre->getCoord(),p);
-    Coordinate nPoc= centre->getCoord() + (poc->getCoord()-centre->getCoord())*(nRadius/radius);
+    Coordinate nPoc= centre->getCoord() + (poc->getCoord()-centre->getCoord())*(nRadius/mradius);
     poc->moveTo(nPoc);
   };
 };
@@ -127,7 +127,7 @@ void CircleBCP::calc( const ScreenInfo& )
 {
   if (poc && centre)
   {
-    radius = calcRadius(centre,poc);
+    mradius = calcRadius(centre,poc);
     qpc = centre->getCoord();
   };
 };
@@ -196,7 +196,7 @@ void CircleBTP::calc( const ScreenInfo& )
   Coordinate c = pts[2]->getCoord();
   // the center coords:
   qpc = calcCenter( a, b, c );
-  radius = calcRadius( qpc, c );
+  mradius = calcRadius( qpc, c );
 };
 
 CircleBCP::CircleBCP(const CircleBCP& c)
@@ -264,7 +264,7 @@ const char* CircleBTP::sActionName()
 }
 
 Circle::Circle( const Circle& c )
-  : Curve( c ), qpc( c.qpc ), radius( c.radius )
+  : Curve( c ), qpc( c.qpc ), mradius( c.mradius )
 {
 }
 
@@ -374,4 +374,24 @@ CircleBTP::CircleBTP( const Objects& os )
     (*i)->addChild( this );
     pts[i-os.begin()] = static_cast<Point*>( *i );
   };
+}
+
+double Circle::squareRadius() const
+{
+  return sqr( mradius );
+}
+
+double Circle::radius() const
+{
+  return mradius;
+}
+
+Circle* Circle::toCircle()
+{
+  return this;
+}
+
+const Circle* Circle::toCircle() const
+{
+  return this;
 }

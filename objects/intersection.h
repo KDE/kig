@@ -26,6 +26,8 @@
 class Segment;
 class Line;
 
+class MultiConstructibleType;
+
 class IntersectionPoint
   : public Point
 {
@@ -60,11 +62,56 @@ public:
   void startMove(const Coordinate& );
   void moveTo(const Coordinate& );
   void stopMove();
-  void cancelMove();
-
-  void drawPrelim( KigPainter&, const Object* ) const;
 
   void calc( const ScreenInfo& );
+};
+
+class CircleLineIntersectionPoint
+  : public Point
+{
+  Circle* mcircle;
+  Line* mline;
+  // there are two points, this variable remembers which of them we
+  // are...
+  bool mside;
+public:
+  CircleLineIntersectionPoint( const Objects& os );
+  CircleLineIntersectionPoint( const CircleLineIntersectionPoint& p );
+  ~CircleLineIntersectionPoint();
+
+  virtual CircleLineIntersectionPoint* copy();
+
+  const QCString vFullTypeName() const;
+  static const QCString sFullTypeName();
+  const QString vDescriptiveName() const;
+  static const QString sDescriptiveName();
+  const QString vDescription() const;
+  static const QString sDescription();
+  const QCString vIconFileName() const;
+  static const QCString sIconFileName();
+  const int vShortCut() const;
+  static const int sShortCut();
+  static const char* sActionName();
+
+  static void sDrawPrelim ( KigPainter& p, const Objects& os );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
+  Objects getParents() const;
+
+  void startMove(const Coordinate& );
+  void moveTo(const Coordinate& );
+  void stopMove();
+
+  void calc( const ScreenInfo& );
+
+  virtual std::map<QCString,QString> getParams ();
+  virtual void setParams ( const std::map<QCString,QString>& );
+
+  static Objects sMultiBuild( const Objects& args );
+
+  static KigMode* sConstructMode( MultiConstructibleType* ourtype,
+                                  KigDocument* theDoc,
+                                  NormalMode* previousMode );
 };
 
 #endif

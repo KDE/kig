@@ -331,13 +331,16 @@ Object::WantArgsResult Locus::sWantArgs( const Objects& os )
   uint size = os.size();
   if ( size != 1 && size != 2 ) return NotGood;
   bool gotcp = false;
+  bool gotmp = false;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    if ( (*i)->toNormalPoint() && (*i)->toNormalPoint()->constrainedImp() )
+    if ( !gotcp && (*i)->toNormalPoint()
+         && (*i)->toNormalPoint()->constrainedImp() )
       gotcp = true;
+    else if ( (*i)->toPoint() ) gotmp = true;
   };
-  if ( ! gotcp && size == 2 ) return NotGood;
-  return size == 2 ? Complete : NotComplete;
+  if ( size == 1 ) return ( gotmp || gotcp ) ? NotComplete : NotGood;
+  if ( size == 2 ) return ( gotmp && gotcp ) ? Complete : NotGood;
 }
 
 QString Locus::sUseText( const Objects&, const Object* o )

@@ -30,10 +30,12 @@ class NormalMode;
 class KigView;
 class Coordinate;
 
-
 class NormalPoint;
 class NormalMode;
+
+class Type;
 class StdConstructibleType;
+class MultiConstructibleType;
 
 class PointConstructionMode
   : public KigMode
@@ -75,6 +77,13 @@ public:
  * inheritance, but i'm not using private inheritance since we also
  * need to inherit from KigMode and don't want to start messing with
  * virtual inheritance...
+ *
+ * There is a small Template Method pattern here, in the
+ * buildCalcAndAdd() function.  This is because of a special type of
+ * objects: where two objects belonging together are constructed at
+ * the same time ( e.g. the intersection of a line and a circle... ).
+ * This function is reimplemented in MultiConstructionMode, but
+ * there's nothing special about this class other than that...
  */
 class StdConstructionMode
   : public PointConstructionMode
@@ -90,6 +99,13 @@ class StdConstructionMode
 
 protected:
   void selectArg( Object* o, KigView* v );
+
+  // see the class description above, and the implementations of this
+  // function in both this class and the MultiConstructionMode
+  // below for explanation...
+  virtual void buildCalcAndAdd( const Type* t,
+		  		const Objects& arguments,
+				KigView* view );
 
   // called by either midReleased or leftReleased...
   void addPointRequest( const Coordinate& c, KigView* v );
@@ -110,6 +126,17 @@ public:
   void enableActions();
 
   void cancelConstruction();
+};
+
+class MultiConstructionMode
+  : public StdConstructionMode
+{
+public:
+  MultiConstructionMode( MultiConstructibleType* t, NormalMode* b,
+                         KigDocument* d );
+  ~MultiConstructionMode();
+  void buildCalcAndAdd( const Type* t, const Objects& arguments,
+			KigView* view );
 };
 
 class TextLabelConstructionMode

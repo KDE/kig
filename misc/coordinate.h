@@ -52,7 +52,9 @@ public:
   // </pre>
   inline const Coordinate orthogonal() const;
   inline const Coordinate round() const;
-  inline const Coordinate normalize() const;
+  // this sets our length to length, while keeping the x/y ratio
+  // untouched...
+  inline const Coordinate normalize( double length = 1 ) const;
   inline QPoint toQPoint() const;
 
   inline Coordinate& operator= ( const Coordinate& c );
@@ -191,9 +193,9 @@ const Coordinate Coordinate::orthogonal() const
   return Coordinate( -y, x );
 };
 
-const Coordinate Coordinate::normalize() const
+const Coordinate Coordinate::normalize( double l ) const
 {
-  return operator/(*this, length());
+  return ( *this * l ) / length();
 };
 
 const Coordinate Coordinate::round() const

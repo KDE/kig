@@ -289,3 +289,53 @@ const Coordinate calcMirrorPoint( const Coordinate& a, const Coordinate& b,
                            calcPointOnPerpend( a, b, p ) );
   return 2*m - p;
 }
+
+const Coordinate calcCircleLineIntersect( const Coordinate& c,
+                                          const double sqr,
+                                          const Coordinate& a,
+                                          const Coordinate& b,
+                                          bool side, bool& valid )
+{
+  Coordinate proj = calcPointProjection( c, a, b );
+  Coordinate hvec = proj - c;
+  Coordinate lvec = a - b;
+
+  double sqdist = hvec.squareLength();
+  double sql = sqr - sqdist;
+  if ( sql < 0.0 )
+  {
+    valid = false;
+    return Coordinate();
+  }
+  else
+  {
+    valid = true;
+    double l = sqrt( sql );
+    lvec = lvec.normalize( l );
+    lvec *= side ? 1 : -1;
+
+    return proj + lvec;
+  };
+};
+
+const Coordinate calcPointProjection( const Coordinate& p, const Coordinate& a,
+                                      const Coordinate& b )
+{
+  Coordinate vect = b - a;
+  Coordinate orth = vect.orthogonal();
+  return p + orth.normalize( calcDistancePointLine( p, a, b ) );
+};
+
+double calcDistancePointLine( const Coordinate& p, const Coordinate& a,
+                              const Coordinate& b )
+{
+  double xa = a.x;
+  double ya = a.y;
+  double xb = b.x;
+  double yb = b.y;
+  double x = p.x;
+  double y = p.y;
+  Coordinate dir = b - a;
+  double norm = dir.length();
+  return ( yb * x - ya * x - xb * y + xa * y + xb * ya - yb * xa ) / norm;
+};

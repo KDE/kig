@@ -243,9 +243,7 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
   bool finished = ( a == Object::Complete );
   if( finished )
   {
-    Object* o = mtype->build( osa, Type::ParamMap() );
-    o->calc( v->screenInfo() );
-    mDoc->addObject( o );
+    buildCalcAndAdd( mtype, osa, v );
   };
 
   updateScreen( v );
@@ -260,6 +258,15 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
     d->setMode( s );
   }
 }
+
+void StdConstructionMode::buildCalcAndAdd( const Type* type,
+					   const Objects& args,
+					   KigView* v )
+{
+  Object* o = type->build( args, Type::ParamMap() );
+  o->calc( v->screenInfo() );
+  mDoc->addObject( o );
+};
 
 void StdConstructionMode::enableActions()
 {
@@ -346,3 +353,25 @@ void TextLabelConstructionMode::mouseMoved( QMouseEvent*, KigView* v )
 {
   v->setCursor( KCursor::crossCursor() );
 }
+
+MultiConstructionMode::~MultiConstructionMode()
+{
+}
+
+MultiConstructionMode::MultiConstructionMode( MultiConstructibleType* t,
+                                              NormalMode* b,
+                                              KigDocument* d )
+  : StdConstructionMode( t, b, d )
+{
+}
+
+void MultiConstructionMode::buildCalcAndAdd( const Type* type,
+                                             const Objects& args,
+                                             KigView* v )
+{
+  const MultiConstructibleType* t =
+    static_cast<const MultiConstructibleType*>( type );
+  Objects os = t->multiBuild( args );
+  os.calc( v->screenInfo() );
+  mDoc->addObjects( os );
+};

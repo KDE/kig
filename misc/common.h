@@ -53,6 +53,37 @@ Coordinate calcPointOnParallel( const Coordinate& p1, const Coordinate& p2, cons
 Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, const Coordinate& p3, const Coordinate& p4 );
 
 /**
+ * this calcs the intersection points of the circle with center c and
+ * radius sqrt( r ), and the line through a and b.  As a circle and a
+ * line have two intersection points, side tells us which one we
+ * need...  If the line and the circle have no intersection, valid is
+ * set to false, otherwise to true...
+ * Note that sqr is the _square_ of the radius.  We do this to avoid
+ * rounding errors...
+ */
+const Coordinate calcCircleLineIntersect( const Coordinate& c,
+                                          const double sqr,
+                                          const Coordinate& a,
+                                          const Coordinate& b,
+                                          bool side,
+                                          bool& valid );
+
+/**
+ * this calculates the perpendicular projection of point p on line
+ * ab...
+ */
+const Coordinate calcPointProjection( const Coordinate& p,
+                                      const Coordinate& a,
+                                      const Coordinate& b );
+
+/**
+ * calc the distance of point p to the line through a and b...
+ */
+double calcDistancePointLine( const Coordinate& p, const Coordinate& a,
+                              const Coordinate& b );
+
+
+/**
  * this sets p1 and p2 to p1' and p2' so that p1'p2' is the same line
  * as p1p2, and so that p1' and p2' are on the border of the Rect...
  */

@@ -140,8 +140,7 @@ Object::Object( const Object& o )
 
 void Object::drawWrap(KigPainter& p, bool ss) const
 {
-  if (!shown) return;
-  draw(p,ss);
+  if ( shown && valid ) draw(p,ss);
 }
 
 const QStringList Object::objectActions() const

@@ -50,7 +50,7 @@ MType::MType( ObjectHierarchy* hier, const QString name, const QString desc )
 }
 
 Object* MType::build( const Objects& parents,
-                      const std::map<QCString, QString>& )
+                      const std::map<QCString, QString>& ) const
 {
   return new MacroObjectOne( mhier, parents );
 }
