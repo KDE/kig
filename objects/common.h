@@ -26,6 +26,7 @@
 #include <qstringlist.h>
 #include <cassert>
 #include <klocale.h>
+#include <algorithm>
 
 class Coordinate;
 class KigDocument;
@@ -59,7 +60,7 @@ void vect_remove( std::vector<T>& v, const T& t )
 template<typename T>
 void delete_all( T begin, T end )
 {
-  for( ;begin != end; ++begin )
+  for( ; begin != end; ++begin )
   {
     delete *begin;
   }

@@ -81,6 +81,10 @@ protected:
   // we keep track of our children, so algorithms can easily walk over
   // the dependency graph..
 
+  std::vector<ObjectCalcer*> mchildren;
+
+  ObjectCalcer();
+public:
   // a calcer should call this to register itself as a child of this
   // calcer.  This automatically takes a reference.
   void addChild( ObjectCalcer* c );
@@ -88,10 +92,7 @@ protected:
   // that it is no longer a child of this calcer.  This will release
   // the reference taken in addChild..
   void delChild( ObjectCalcer* c );
-  std::vector<ObjectCalcer*> mchildren;
 
-  ObjectCalcer();
-public:
   // use this pointer type to keep a reference to an ObjectCalcer...
   typedef myboost::intrusive_ptr<ObjectCalcer> shared_ptr;
 
