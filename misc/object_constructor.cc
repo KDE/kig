@@ -327,7 +327,7 @@ const QString MacroConstructor::description() const
 
 const QCString MacroConstructor::iconFileName() const
 {
-  return miconfile.isNull() ? "gear" : miconfile;
+  return miconfile.isNull() ? QCString( "gear" ) : miconfile;
 }
 
 const int MacroConstructor::wantArgs( const Objects& os, const KigDocument&,
