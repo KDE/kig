@@ -82,15 +82,15 @@ void RealObject::reset( const ObjectType* t, const Objects& parents )
   setParents( parents );
 }
 
-QCString RealObject::baseTypeName() const
-{
-  return mimp->baseName();
-}
+// QCString RealObject::baseTypeName() const
+// {
+//   return mimp->baseName();
+// }
 
-QString RealObject::translatedBaseTypeName() const
-{
-  return mimp->translatedBaseName();
-}
+// QString RealObject::translatedBaseTypeName() const
+// {
+//   return mimp->translatedBaseName();
+// }
 
 void RealObject::setImp( ObjectImp* i )
 {
@@ -277,15 +277,15 @@ void DataObject::calc()
 {
 }
 
-QCString DataObject::baseTypeName() const
-{
-  return "SHOULDNOTBESEEN";
-}
+// QCString DataObject::baseTypeName() const
+// {
+//   return "SHOULDNOTBESEEN";
+// }
 
-QString DataObject::translatedBaseTypeName() const
-{
-  return QString::fromUtf8( "SHOULDNOTBESEEN" );
-}
+// QString DataObject::translatedBaseTypeName() const
+// {
+//   return QString::fromUtf8( "SHOULDNOTBESEEN" );
+// }
 
 void DataObject::childAdded()
 {
@@ -365,4 +365,13 @@ bool DataObject::shown() const
 void RealObject::setType( const ObjectType* t )
 {
   mtype = t;
+}
+
+void RealObject::setSelected( bool s )
+{
+  mselected = s;
+}
+
+void Object::setSelected( bool )
+{
 }

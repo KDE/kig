@@ -101,6 +101,8 @@ public:
   // this gives the bottom-most "id" of this imp.
   virtual int id() const = 0;
 
+  virtual const char* baseName() const = 0;
+
   virtual ObjectImp* copy() const = 0;
 };
 

@@ -65,10 +65,12 @@ public:
 
   virtual void calc() = 0;
 
-  virtual QCString baseTypeName() const = 0;
-  virtual QString translatedBaseTypeName() const = 0;
+//   virtual QCString baseTypeName() const = 0;
+//   virtual QString translatedBaseTypeName() const = 0;
 
   virtual bool shown() const = 0;
+
+  virtual void setSelected( bool s );
 
   // these are simply forwarded to the ObjectImp...
   // check the documentation of that class to see what these are
@@ -152,8 +154,8 @@ public:
   bool canMove() const;
   void move( const Coordinate& from, const Coordinate& dist );
 
-  QCString baseTypeName() const;
-  QString translatedBaseTypeName() const;
+//   QCString baseTypeName() const;
+//   QString translatedBaseTypeName() const;
 
   void calc();
 
@@ -167,7 +169,7 @@ public:
   void setColor( const QColor c ) { mcolor = c; };
 
   bool selected() const { return mselected; };
-  void setSelected( bool s ) { mselected = s; };
+  void setSelected( bool s );
 
   bool shown() const;
   void setShown( bool shown ) { mshown = shown; };
@@ -209,8 +211,8 @@ public:
 
   void calc();
 
-  QCString baseTypeName() const;
-  QString translatedBaseTypeName() const;
+//   QCString baseTypeName() const;
+//   QString translatedBaseTypeName() const;
 
   bool shown() const;
 };
