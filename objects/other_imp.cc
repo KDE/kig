@@ -270,10 +270,31 @@ ArcImp* ArcImp::copy() const
   return new ArcImp( mcenter, mradius, msa, ma );
 }
 
-ObjectImp* ArcImp::transform( const Transformation& ) const
+ObjectImp* ArcImp::transform( const Transformation& t ) const
 {
-  // TODO
-  return new InvalidImp();
+  //
+  // we don't have conic arcs! So it is invalid to transform an arc
+  // with a nonhomothetic transformation
+  //
+  if ( ! t.isHomothetic() ) return new InvalidImp();
+
+  bool valid = true;
+  Coordinate nc = t.apply( mcenter, valid );
+  double nr = t.apply( mradius );
+  // transform msa...
+  double nmsa = msa;
+  if ( t.getAffineDeterminant() > 0 )
+  {
+    nmsa = msa - t.getRotationAngle();
+  } else
+  {
+    Coordinate ar = t.apply2by2only( Coordinate( cos(msa), sin(msa) ) );
+    nmsa = atan2( ar.y, ar.x );
+    nmsa -= ma;
+  }
+  while ( nmsa < -M_PI ) nmsa += 2*M_PI;
+  while ( nmsa > M_PI ) nmsa -= 2*M_PI;
+  return new ArcImp( nc, nr, nmsa, ma );
 }
 
 void ArcImp::draw( KigPainter& p ) const

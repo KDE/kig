@@ -38,6 +38,9 @@ public:
   const Coordinate apply( const Coordinate& c, bool& valid ) const;
 
   bool isHomothetic() const;
+  double getAffineDeterminant() const;
+  double getRotationAngle() const;
+  const Coordinate apply2by2only( const Coordinate& c ) const;
   // a homothetic transformation maintains the ratio's of lengths.
   // This means that every length is multiplied by a fixed number when
   // it is projected...  This function does that calculation for

@@ -437,6 +437,30 @@ bool Transformation::isHomothetic() const
   return mIsHomothety;
 }
 
+// assuming that this is an affine transformation, return its
+// determinant.  What is really important here is just the sign
+// of the determinant.
+double Transformation::getAffineDeterminant() const
+{
+  return mdata[1][1]*mdata[2][2] - mdata[1][2]*mdata[2][1];
+}
+
+// this assumes that the 2x2 affine part of the matrix is of the
+// form [ cos a, sin a; -sin a, cos a] or a multiple
+double Transformation::getRotationAngle() const
+{
+  return atan2( mdata[1][2], mdata[1][1] );
+}
+
+const Coordinate Transformation::apply2by2only( const Coordinate& p ) const
+{
+  double x = p.x;
+  double y = p.y;
+  double nx = mdata[1][1]*x + mdata[1][2]*y;
+  double ny = mdata[2][1]*x + mdata[2][2]*y;
+  return Coordinate( nx, ny );
+}
+
 double Transformation::data( int r, int c ) const
 {
   return mdata[r][c];
