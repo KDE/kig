@@ -1,3 +1,10 @@
+2003-07-23  Dominique Devriese  <devriese@kde.org>
+
+	* add support for using the python math package in Kig python
+	scripts, by importing it from PythonScripter's ctor, and by making
+	Kig load its part library with RTLD_GLOBAL, to eliminate a problem
+	which caused python to not be able to load its math dll..
+
 2003-07-20  Dominique Devriese  <devriese@kde.org>
 
 	* add support for attached text labels.

@@ -48,7 +48,13 @@ Kig::Kig()
   // this routine will find and load our Part.  it finds the Part by
   // name which is a bad idea usually.. but it's alright in this
   // case since our Part is made for this Shell
-  KLibFactory *factory = KLibLoader::self()->factory("libkigpart");
+
+  // we use globalLibrary() because if we use python scripting, then
+  // we need the python symbols to be exported, in order for python to
+  // be able to load its dll modules..
+  KLibrary* library = KLibLoader::self()->globalLibrary("libkigpart");
+  KLibFactory* factory = 0;
+  if ( library ) factory = library->factory();
   if (factory)
   {
       // now that the Part is loaded, we cast it to a Part to get

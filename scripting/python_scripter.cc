@@ -205,11 +205,10 @@ PythonScripter::PythonScripter()
 
   Py_Initialize();
 
-  s = newstring( "import kig;" );
+  s = newstring( "import math; from math import *;" );
   PyRun_SimpleString( s );
   delete [] s;
-
-  s = newstring( "from kig import *;" );
+  s = newstring( "import kig; from kig import *;" );
   PyRun_SimpleString( s );
   delete [] s;
 
