@@ -197,8 +197,8 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
 /*
  * mp: (changes to add relative-attachment).  Now an object is tested
  * as follows:
- * - if it is a point: 'old-style' treatment (we can change this shortly)
  * - if attachPoint() returns a valid coordinate, then we use the new method
+ * - if it is a point: 'old-style' treatment (we can change this shortly)
  * - if it is a curve: 'old-style' treatment (we could use the new approach,
  *   which can be better/worse depending on personal taste, I think)
  *
@@ -207,17 +207,21 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
  * RelativePointType instead of a ConstrainedPointType; this will in turn make use
  * of the new attachPoint() method for objects.
  *
+ * changed the preference order 2005/01/21 (now attachPoint has preference over points)
+ *
  * NOTE: changes in the tests performed should be matched also in
  * modes/popup.cc (addNameLabel)
  */
 
-  if ( p && p->imp()->inherits( PointImp::stype() ) )
-    parents.push_back( p );
-  else if ( p && p->imp()->attachPoint().valid() )
+  if ( p && p->imp()->attachPoint().valid() )
   {
     ObjectCalcer* o = relativePointCalcer( p, loc );
     o->calc( doc );
     parents.push_back( o );
+  }
+  else if ( p && p->imp()->inherits( PointImp::stype() ) )
+  {
+    parents.push_back( p );
   }
   else if ( p && p->imp()->inherits( CurveImp::stype() ) )
   {
