@@ -208,7 +208,7 @@
       <Action name="objects_new_areorthogonal" />
       <Action name="objects_new_arecollinear" />
       <Action name="objects_new_containstest" />
-  </toolbar>
+  </ToolBar>
   <ToolBar name="rest_toolbar" position="left">
     <text>Rest</text>
     <Action name="objects_new_locus" />
