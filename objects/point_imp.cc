@@ -33,7 +33,8 @@ PointImp::PointImp( const Coordinate& c )
 
 Coordinate PointImp::attachPoint() const
 {
-  return Coordinate::invalidCoord();
+  return mc;
+//  return Coordinate::invalidCoord();
 }
 
 void PointImp::draw( KigPainter& p ) const

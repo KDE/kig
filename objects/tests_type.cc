@@ -230,7 +230,7 @@ const InPolygonTestType* InPolygonTestType::instance()
   return &t;
 }
 
-ObjectImp* InPolygonTestType::calc( const Args& parents, const KigDocument& doc ) const
+ObjectImp* InPolygonTestType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
   const Coordinate& p = static_cast<const PointImp*>( parents[0] )->coordinate();
