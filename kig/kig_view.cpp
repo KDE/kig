@@ -365,9 +365,9 @@ void KigView::updateScrollBars()
   double pw = mrealwidget->screenInfo().pixelWidth();
 
   // what the scrollbars reflect is the bottom resp. the left side of
-  // the shown rect.  This is why the maximum value is not ertop
+  // the shown rect.  This is why the maximum value is not er.top()
   // (which would be the maximum value of the top of the shownRect),
-  // but ertop - sr.height(), which is the maximum value the bottom of
+  // but er.top() - sr.height(), which is the maximum value the bottom of
   // the shownRect can reach...
 
   int rightmin = static_cast<int>( er.bottom() / pw );
@@ -471,4 +471,20 @@ const KigDocument& KigWidget::document() const
 QSize KigWidget::sizeHint() const
 {
   return QSize( 600, 400 );
+}
+
+void KigWidget::wheelEvent( QWheelEvent* e )
+{
+  int delta = e->delta();
+  mview->scrollVertical( delta );
+}
+
+void KigView::scrollVertical( int delta )
+{
+  if ( delta >= 0 )
+    for ( int i = 0; i < delta; i += 120 )
+      mrightscroll->subtractLine();
+  else
+    for ( int i = 0; i >= delta; i -= 120 )
+      mrightscroll->addLine();
 }

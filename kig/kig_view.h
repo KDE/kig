@@ -55,11 +55,12 @@ class KigWidget : public QWidget
   KigView* mview;
 
   // we reimplement these from QWidget to suit our needs
-  void mousePressEvent (QMouseEvent* e);
-  void mouseMoveEvent (QMouseEvent* e);
-  void mouseReleaseEvent (QMouseEvent* e);
-  void paintEvent (QPaintEvent* e);
-  void resizeEvent(QResizeEvent*);
+  void mousePressEvent( QMouseEvent* e );
+  void mouseMoveEvent( QMouseEvent* e );
+  void mouseReleaseEvent( QMouseEvent* e );
+  void paintEvent( QPaintEvent* e );
+  void wheelEvent( QWheelEvent* e );
+  void resizeEvent( QResizeEvent* );
   QSize sizeHint() const;
 
   // this is called to match a rect's dimensions to the dimensions of
@@ -214,6 +215,7 @@ public:
   const ScreenInfo& screenInfo() const;
 
   KigWidget* realWidget();
+  void scrollVertical( int delta );
 
 public slots:
   void updateScrollBars();
