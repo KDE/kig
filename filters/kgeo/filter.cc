@@ -144,6 +144,11 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       e = new HierarchyElement( "Ray", i );
       break;
     }
+    case ID_move:
+    {
+      e = new HierarchyElement( "TranslatedPoint", i );
+      break;
+    }
 //  	case ID_pointOfConc:
 // 	  {
 // 	    objs.push_back( new PointOfConc() );
@@ -175,9 +180,6 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 // 	  break;
 // 	case ID_circumference:
 // 	  objs.push_back( new Circumference() );
-// 	  break;
-// 	case ID_move:
-// 	  objs.push_back( new Move() );
 // 	  break;
 // 	case ID_rotation:
 // 	  objs.push_back( new Rotation() );
