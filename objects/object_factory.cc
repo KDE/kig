@@ -108,8 +108,8 @@ void ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       Objects args;
       args.push_back( new DataObject( new DoubleImp( newparam ) ) );
       args.push_back( v );
-      point->setParents( args );
       point->setType( ConstrainedPointType::instance() );
+      point->setParents( args );
     }
   }
   else
@@ -163,8 +163,8 @@ Object* ObjectFactory::locus( const Objects& parents )
   assert( curve->hasimp( CurveImp::stype() ) );
 
   Objects realparents( 2 + sideOfTree.size(), 0 );
-  realparents[0] = curve;
-  realparents[1] = new DataObject( new HierarchyImp( hier ) );
+  realparents[0] = new DataObject( new HierarchyImp( hier ) );
+  realparents[1] = curve;
   copy( sideOfTree.begin(), sideOfTree.end(), realparents.begin() + 2 );
 
   return new RealObject( LocusType::instance(), realparents );
@@ -188,7 +188,6 @@ Object* ObjectFactory::attachedLabel( const QString& s,
   Objects parents;
   parents.reserve( nparents.size() + 3 );
   parents.push_back( new DataObject( new IntImp( needframe ? 1 : 0 ) ) );
-  parents.push_back( new DataObject( new StringImp( s ) ) );
 
   if ( p && p->hasimp( PointImp::stype() ) )
     parents.push_back( p );
@@ -202,6 +201,7 @@ Object* ObjectFactory::attachedLabel( const QString& s,
   else
     parents.push_back( new DataObject( new PointImp( loc ) ) );
 
+  parents.push_back( new DataObject( new StringImp( s ) ) );
   copy( nparents.begin(), nparents.end(), back_inserter( parents ) );
   RealObject* ret = new RealObject( TextType::instance(), parents );
   ret->calc( doc );
@@ -212,8 +212,8 @@ Object* ObjectFactory::constrainedPoint( Object* curve, double param )
 {
   assert( curve->hasimp( CurveImp::stype() ) );
   Objects parents;
-  parents.push_back( curve );
   parents.push_back( new DataObject( new DoubleImp( param ) ) );
+  parents.push_back( curve );
   return new RealObject( ConstrainedPointType::instance(), parents );
 }
 

@@ -33,6 +33,8 @@ public:
 
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
+
+  Objects sortArgs( const Objects& args ) const;
 };
 
 class PythonExecuteType
@@ -47,6 +49,8 @@ public:
 
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
+
+  Objects sortArgs( const Objects& args ) const;
 
 //   virtual QStringList specialActions() const;
 //   virtual void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,

@@ -24,6 +24,8 @@
 
 #include "../misc/common.h"
 
+#include <klocale.h>
+
 static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a circle through this point" );
 
 static const ArgsParser::spec argsspecCircleBCP[] =
@@ -74,12 +76,10 @@ CircleBTPType::~CircleBTPType()
 {
 }
 
-ObjectImp* CircleBTPType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() < 2 || targs.size() > 3 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if ( ! args[0] || ! args[1] || ( targs.size() == 3 && !args[2] ) )
-    return new InvalidImp;
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
   const Coordinate a = static_cast<const PointImp*>( args[0] )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( args[1] )->coordinate();
   Coordinate c;
@@ -156,12 +156,9 @@ const CircleBPRType* CircleBPRType::instance()
 
 ObjectImp* CircleBPRType::calc( const Args& args, const KigDocument& ) const
 {
-  const Args a = margsparser.parse( args );
-  if ( ! a[0] || ! a[1] ) return new InvalidImp;
-  assert( a[0]->inherits( PointImp::stype() ) );
-  const Coordinate c = static_cast<const PointImp*>( a[0] )->coordinate();
-  assert( a[1]->inherits( DoubleImp::stype() ) );
-  double r = static_cast<const DoubleImp*>( a[1] )->data();
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+  const Coordinate c = static_cast<const PointImp*>( args[0] )->coordinate();
+  double r = static_cast<const DoubleImp*>( args[1] )->data();
   return new CircleImp( c, r );
 }
 

@@ -29,6 +29,8 @@
 #include "../modes/label.h"
 #include "../misc/coordinate_system.h"
 
+#include <algorithm>
+
 #include <qstringlist.h>
 
 static const ArgsParser::spec arggspeccs[] =
@@ -58,11 +60,12 @@ const ObjectImpType* TextType::resultId() const
   return TextImp::stype();
 }
 
-const ObjectImpType* TextType::impRequirement( const ObjectImp* oi, const Args& args ) const
+const ObjectImpType* TextType::impRequirement( const ObjectImp* o, const Args& args ) const
 {
+  assert( args.size() >= 3 );
   Args firstthree( args.begin(), args.begin() + 3 );
-  if ( find( firstthree.begin(), firstthree.end(), oi ) != firstthree.end() )
-    return mparser.impRequirement( oi, firstthree );
+  if ( o == args[0] || o == args[1] || o == args[2] )
+    return mparser.impRequirement( o, firstthree );
   else
     return ObjectImp::stype();
 }
@@ -72,20 +75,16 @@ ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
   if( parents.size() < 3 ) return new InvalidImp;
   Args firstthree( parents.begin(), parents.begin() + 3 );
   Args varargs( parents.begin() + 3,  parents.end() );
-  Args os = mparser.parse( firstthree );
-  if ( ! os[0] || ! os[1] || ! os[2] ) return new InvalidImp;
-  assert( os[0]->inherits( IntImp::stype() ) );
-  assert( os[1]->inherits( PointImp::stype() ) );
-  assert( os[2]->inherits( StringImp::stype() ) );
-  int frame = static_cast<const IntImp*>( os[0] )->data();
+
+  if ( ! mparser.checkArgs( firstthree ) ) return new InvalidImp;
+
+  int frame = static_cast<const IntImp*>( firstthree[0] )->data();
   bool needframe = frame != 0;
-  const Coordinate t = static_cast<const PointImp*>( os[1] )->coordinate();
-  QString s = static_cast<const StringImp*>( os[2] )->data();
+  const Coordinate t = static_cast<const PointImp*>( firstthree[1] )->coordinate();
+  QString s = static_cast<const StringImp*>( firstthree[2] )->data();
 
   for ( Args::iterator i = varargs.begin(); i != varargs.end(); ++i )
-  {
     (*i)->fillInNextEscape( s, doc );
-  };
 
   return new TextImp( s, t, needframe );
 }
@@ -101,14 +100,13 @@ void TextType::move( RealObject* ourobj, const Coordinate& to,
   const Objects parents = ourobj->parents();
   assert( parents.size() >= 3 );
   const Objects firstthree( parents.begin(), parents.begin() + 3 );
-  const Objects ps = mparser.parse( firstthree );
-  if( ps[1]->inherits( Object::ID_DataObject ) )
+  if( firstthree[1]->inherits( Object::ID_DataObject ) )
   {
-    DataObject* c = static_cast<DataObject*>( ps[1] );
+    DataObject* c = static_cast<DataObject*>( firstthree[1] );
     c->setImp( new PointImp( to ) );
   }
   else
-    ps[1]->move( to, d );
+    firstthree[1]->move( to, d );
 }
 
 QStringList TextType::specialActions() const
@@ -126,21 +124,18 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
   assert( parents.size() >= 3 );
 
   Objects firstthree( parents.begin(), parents.begin() + 3 );
-  Objects os = mparser.parse( firstthree );
 
-  assert( os[0]->hasimp( IntImp::stype() ) );
-  assert( os[0]->inherits( Object::ID_DataObject ) );
-  assert( os[1]->hasimp( PointImp::stype() ) );
-  assert( os[2]->inherits( Object::ID_DataObject ) );
-  assert( os[2]->hasimp( StringImp::stype() ) );
+  assert( mparser.checkArgs( firstthree ) );
+  assert( firstthree[0]->inherits( Object::ID_DataObject ) );
+  assert( firstthree[2]->inherits( Object::ID_DataObject ) );
 
   if ( i == 0 )
   {
     // toggle label frame
-    Objects monos( os[0] );
+    Objects monos( firstthree[0] );
     MonitorDataObjects mon( monos );
-    int n = (static_cast<const IntImp*>( os[0]->imp() )->data() + 1) % 2;
-    static_cast<DataObject*>( os[0] )->setImp( new IntImp( n ) );
+    int n = (static_cast<const IntImp*>( firstthree[0]->imp() )->data() + 1) % 2;
+    static_cast<DataObject*>( firstthree[0] )->setImp( new IntImp( n ) );
     KigCommand* kc = new KigCommand( doc, i18n( "Toggle Label Frame" ) );
     kc->addTask( mon.finish() );
     doc.history()->addCommand( kc );
@@ -165,4 +160,13 @@ const Coordinate TextType::moveReferencePoint( const RealObject* ourobj ) const
   if ( ourobj->hasimp( TextImp::stype() ) )
     return static_cast<const TextImp*>( ourobj->imp() )->coordinate();
   else return Coordinate::invalidCoord();
+}
+
+Objects TextType::sortArgs( const Objects& os ) const
+{
+  assert( os.size() >= 3 );
+  Objects ret( os.begin(), os.begin() + 3 );
+  ret = mparser.parse( ret );
+  std::copy( os.begin() + 3,  os.end(), std::back_inserter( ret ) );
+  return ret;
 }

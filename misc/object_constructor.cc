@@ -87,19 +87,20 @@ void StandardConstructorBase::handlePrelim(
   ) const
 {
   assert ( margsparser.check( os ) != ArgsParser::Invalid );
+  Objects args = margsparser.parse( os );
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
   p.setPen( QPen ( Qt::red,  1) );
   p.setWidth( -1 ); // -1 means the default width for the object being
                     // drawn..
-  drawprelim( p, os, d );
+  drawprelim( p, args, d );
 }
 
 SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
   const ArgsParserObjectType* t, const char* descname,
   const char* desc, const char* iconfile )
   : StandardConstructorBase( descname, desc, iconfile,
-                             t->argParser() ),
+                             t->argsParser() ),
     mtype( t )
 {
 }
@@ -137,7 +138,7 @@ MultiObjectTypeConstructor::MultiObjectTypeConstructor(
   const std::vector<int>& params )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mtype( t ), mparams( params ),
-    mparser( t->argParser().without( IntImp::stype() ) )
+    mparser( t->argsParser().without( IntImp::stype() ) )
 {
 }
 
@@ -147,7 +148,7 @@ MultiObjectTypeConstructor::MultiObjectTypeConstructor(
   int a, int b, int c, int d )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mtype( t ), mparams(),
-    mparser( t->argParser().without( IntImp::stype() ) )
+    mparser( t->argsParser().without( IntImp::stype() ) )
 {
   mparams.push_back( a );
   mparams.push_back( b );
@@ -185,11 +186,14 @@ Objects MultiObjectTypeConstructor::build(
   using namespace std;
   for ( vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
   {
+    DataObject* d = new DataObject( new IntImp( *i ) );
+
     Objects args;
-    args.push_back( new DataObject( new IntImp( *i ) ) );
-    ret.push_back( args.back() );
     copy( os.begin(), os.end(), back_inserter( args ) );
+    args.push_back( d );
     RealObject* n = new RealObject( mtype, args );
+
+    ret.push_back( d );
     ret.push_back( n );
   };
   return ret;

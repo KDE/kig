@@ -65,14 +65,12 @@ const AngleType* AngleType::instance()
 
 ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() != 3 ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
   std::vector<Coordinate> points;
   for ( uint i = 0; i < parents.size(); ++i )
-    if ( parents[i]->inherits( PointImp::stype() ) )
-      points.push_back(
-        static_cast<const PointImp*>( parents[i] )->coordinate() );
-  if ( points.size() != parents.size() )
-    return new InvalidImp;
+    points.push_back(
+      static_cast<const PointImp*>( parents[i] )->coordinate() );
 
   Coordinate lvect = points[0] - points[1];
   Coordinate rvect = points[2] - points[1];
@@ -127,19 +125,22 @@ LocusType::~LocusType()
 {
 }
 
-ObjectImp* LocusType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* LocusType::calc( const Args& args, const KigDocument& ) const
 {
   using namespace std;
 
-  if ( targs.size() < 2 ) return new InvalidImp;
-  const Args firsttwo( targs.begin(), targs.begin() + 2 );
-  const Args args = margsparser.parse( firsttwo );
-  if ( ! args[0] || !args[1] ) return new InvalidImp;
+  assert( args.size() >= 2 );
+  const Args firsttwo( args.begin(), args.begin() + 2 );
+  Args fixedargs( args.begin() + 2, args.end() );
+
+  if ( ! margsparser.checkArgs( firsttwo ) ) return new InvalidImp;
+  for ( Args::iterator i = fixedargs.begin(); i != fixedargs.end(); ++i )
+    if ( ! (*i)->valid() )
+      return new InvalidImp;
+
   const ObjectHierarchy& hier =
     static_cast<const HierarchyImp*>( args[0] )->data();
   const CurveImp* curveimp = static_cast<const CurveImp*>( args[1] );
-
-  Args fixedargs( targs.begin() + 2, targs.end() );
 
   return new LocusImp( curveimp->copy(), hier.withFixedArgs( fixedargs ) );
 }
@@ -203,8 +204,9 @@ const ObjectImpType* CopyObjectType::resultId() const
 
 const ObjectImpType* LocusType::impRequirement( const ObjectImp* o, const Args& parents ) const
 {
+  assert( parents.size() >= 2 );
   Args firsttwo( parents.begin(), parents.begin() + 2 );
-  if ( find( firsttwo.begin(), firsttwo.end(), o ) != firsttwo.end() )
+  if ( o == parents[0] || o == parents[1] )
     return margsparser.impRequirement( o, firsttwo );
   else
     return ObjectImp::stype();
@@ -240,10 +242,9 @@ const ArcBTPType* ArcBTPType::instance()
 
 ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( args.size() < 2 ) return new InvalidImp;
-  if ( args.size() > 3 ) return new InvalidImp;
-  assert( args[0]->inherits( PointImp::stype() ) );
-  assert( args[1]->inherits( PointImp::stype() ) );
+  if ( ! margsparser.checkArgs( args ) )
+    return new InvalidImp;
+
   const Coordinate a =
     static_cast<const PointImp*>( args[0] )->coordinate();
   const Coordinate b =
@@ -253,7 +254,6 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
   double startangle = 0.;
   if ( args.size() == 3 )
   {
-    assert( args[2]->inherits( PointImp::stype() ) );
     Coordinate c = static_cast<const PointImp*>( args[2] )->coordinate();
     center = calcCenter( a, b, c );
     if ( ! center.valid() ) return new InvalidImp;
@@ -369,4 +369,19 @@ void AngleType::executeAction(
   KigCommand* kc = new KigCommand( d, i18n( "Resize &Angle" ) );
   kc->addTask( mon.finish() );
   d.history()->addCommand( kc );
+}
+
+Objects CopyObjectType::sortArgs( const Objects& os ) const
+{
+  assert( os.size() == 1 );
+  return os;
+}
+
+Objects LocusType::sortArgs( const Objects& args ) const
+{
+  assert( args.size() >= 2 );
+  Objects firsttwo( args.begin(), args.begin() + 2 );
+  firsttwo = margsparser.parse( firsttwo );
+  std::copy( args.begin() + 2, args.end(), std::back_inserter( firsttwo ) );
+  return firsttwo;
 }

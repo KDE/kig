@@ -67,6 +67,23 @@ public:
   // returns the minimal ObjectImp ID that o needs to inherit in order
   // to be useful..  o should be part of parents.
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+
+  // Checks the args according to this args specification.  If the
+  // objects should never have occurred, then an assertion failure
+  // will happen, if one of the args is invalid, then false will be
+  // returned, if all is fine, then true is returned..
+  // assert that the objects are of the right types, and in the right
+  // order as what would be returned by parse( os )..  If minobjects
+  // is provided, then not all objects are needed, and it is enough if
+  // at least minobjects are available..  Use this for object types
+  // that can calc a temporary example object using less than the
+  // required args.  These args need to be at the end of argsspec +
+  // anyobjsspec.  If minobjects is not provided, then it is assumed
+  // that all args are necessary.
+  bool checkArgs( const Objects& os ) const;
+  bool checkArgs( const Objects& os, uint minobjects ) const;
+  bool checkArgs( const Args& os ) const;
+  bool checkArgs( const Args& os, uint minobjects ) const;
 };
 
 #endif

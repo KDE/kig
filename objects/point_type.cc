@@ -32,7 +32,7 @@
 #include "../kig/kig_view.h"
 #include "../kig/kig_commands.h"
 
-#include <qstringlist.h>
+#include <klocale.h>
 
 static const ArgsParser::spec argsspecFixedPoint[] =
 {
@@ -41,7 +41,7 @@ static const ArgsParser::spec argsspecFixedPoint[] =
 };
 
 FixedPointType::FixedPointType()
-  : ArgsParserObjectType( "FixedPoint", argsspecFixedPoint, 1 )
+  : ArgsParserObjectType( "FixedPoint", argsspecFixedPoint, 2 )
 {
 }
 
@@ -51,20 +51,18 @@ FixedPointType::~FixedPointType()
 
 ObjectImp* FixedPointType::calc( const Args& parents, const KigDocument& ) const
 {
-  assert( parents.size() == 2 );
-  assert( parents[0]->inherits( DoubleImp::stype() ) );
-  assert( parents[1]->inherits( DoubleImp::stype() ) );
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
   double a = static_cast<const DoubleImp*>( parents[0] )->data();
   double b = static_cast<const DoubleImp*>( parents[1] )->data();
-  PointImp* d = new PointImp( Coordinate( a, b ) );
-  return d;
+
+  return new PointImp( Coordinate( a, b ) );
 }
 
-ObjectImp* ConstrainedPointType::calc( const Args& tparents, const KigDocument& doc ) const
+ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigDocument& doc ) const
 {
-  Args parents = margsparser.parse( tparents );
-  if( ! parents[0] || ! parents[1] )
-    return new InvalidImp;
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
   double param = static_cast<const DoubleImp*>( parents[0] )->data();
   bool valid = true;
   const Coordinate nc = static_cast<const CurveImp*>( parents[1] )->getPoint( param, valid, doc );
@@ -92,7 +90,7 @@ void FixedPointType::move( RealObject* ourobj, const Coordinate& to,
 {
   // fetch the old coord..;
   Objects pa = ourobj->parents();
-  assert( pa.size() == 2 );
+  assert( margsparser.checkArgs( pa ) );
   assert( pa.front()->inherits( Object::ID_DataObject ) );
   assert( pa.back()->inherits( Object::ID_DataObject ) );
 
@@ -108,23 +106,16 @@ void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& to,
 {
   // fetch the CurveImp..
   Objects parents = ourobj->parents();
-  assert( parents.size() == 2 );
-  const CurveImp* ci = 0;
-  if( parents.back()->hasimp( CurveImp::stype() ) )
-    ci = static_cast<const CurveImp*>( parents.back()->imp() );
-  else ci = static_cast<const CurveImp*>( parents.front()->imp() );
+  assert( margsparser.checkArgs( parents ) );
+
+  assert( parents[0]->inherits( Object::ID_DataObject ) );
+  DataObject* paramo = static_cast<DataObject*>( parents[0] );
+  const CurveImp* ci = static_cast<const CurveImp*>( parents[1]->imp() );
 
   // fetch the new param..
   const double np = ci->getParam( to, d );
 
-  Object* paramo = 0;
-  if ( parents[0]->hasimp( DoubleImp::stype() ) )
-    paramo = parents[0];
-  else paramo = parents[1];
-  assert( paramo->inherits( Object::ID_DataObject ) );
-  assert( paramo->hasimp( DoubleImp::stype() ) );
-
-  static_cast<DataObject*>( paramo )->setImp( new DoubleImp( np ) );
+  paramo->setImp( new DoubleImp( np ) );
 }
 
 bool ConstrainedPointType::canMove() const
@@ -262,7 +253,7 @@ void ConstrainedPointType::executeAction(
     break;
   case 0:
   {
-    Objects parents = margsparser.parse( o->parents() );
+    Objects parents = o->parents();
     if ( parents[0]->inherits( Object::ID_DataObject ) &&
          parents[0]->hasimp( DoubleImp::stype() ) )
     {
@@ -291,9 +282,7 @@ void ConstrainedPointType::executeAction(
 
 const Coordinate FixedPointType::moveReferencePoint( const RealObject* ourobj ) const
 {
-  if ( ourobj->hasimp( PointImp::stype() ) )
-    return static_cast<const PointImp*>( ourobj->imp() )->coordinate();
-  else return Coordinate::invalidCoord();
+  return static_cast<const PointImp*>( ourobj->imp() )->coordinate();
 }
 
 const Coordinate ConstrainedPointType::moveReferencePoint( const RealObject* ourobj ) const

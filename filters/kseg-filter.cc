@@ -235,8 +235,8 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
         vector->calc( todoc );
 
         Objects transparents;
-        transparents.push_back( parents[0] );
         transparents.push_back( vector );
+        transparents.push_back( parents[0] );
         o = new RealObject( TranslatedType::instance(), transparents );
         break;
       }
@@ -250,8 +250,8 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
 
         Objects rotparents;
         rotparents.push_back( parents[1] );
-        rotparents.push_back( parents[0] );
         rotparents.push_back( angle );
+        rotparents.push_back( parents[0] );
         o = new RealObject( RotationType::instance(), rotparents );
         break;
       }
@@ -267,7 +267,8 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       }
       case G_REFLECTED:
       {
-        o = new RealObject( LineReflectionType::instance(), parents );
+        Objects mirparents( parents.rbegin(), parents.rend() );
+        o = new RealObject( LineReflectionType::instance(), mirparents );
         break;
       }
       };
@@ -337,7 +338,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           int index = parents[0]->propertiesInternalNames().findIndex( "mid-point" );
           assert( index != -1 );
           ret.push_back( new PropertyObject( parents[0], index ) );
-          Objects nparents( ret.end() - 1, ret.end() );
+          Objects nparents( ret.back() );
           ret.back()->calc( todoc );
           point = new RealObject( CopyObjectType::instance(), nparents );
           break;
@@ -456,8 +457,8 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
           Object* length = new PropertyObject( segment, index );
           ret.push_back( length );
           Objects cparents;
-          cparents.push_back( length );
           cparents.push_back( point );
+          cparents.push_back( length );
           RealObject* o = new RealObject( CircleBPRType::instance(), cparents );
           o->setWidth( style.pen.width() );
           o->setColor( style.pen.color() );

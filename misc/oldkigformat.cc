@@ -74,8 +74,10 @@ static bool oldElemToNewObject( const QCString type,
       if ( ! ok ) return false;
       assert( o.parents().size() == 1 );
       o.setType( ConstrainedPointType::instance() );
-      DataObject* po = new DataObject( new DoubleImp( param ) );
-      o.addParent( po );
+      Objects args;
+      args.push_back( new DataObject( new DoubleImp( param ) ) );
+      args.push_back( o.parents()[0] );
+      o.setParents( args );
     }
     else
     {
@@ -108,8 +110,8 @@ static bool oldElemToNewObject( const QCString type,
     Object* po = ObjectFactory::instance()->propertyObject(
       o.parents()[0], which );
     po->calc( kdoc );
-    o.setParents( Objects( po ) );
     o.setType( CopyObjectType::instance() );
+    o.setParents( Objects( po ) );
   }
   else if ( type == "CircleTransform" ||
             type == "ConicTransform" || type == "CubicTransform" ||
@@ -141,6 +143,7 @@ static bool oldElemToNewObject( const QCString type,
     else if ( transform->hasimp( LineImp::stype() ) )
       t = LineReflectionType::instance();
     o.setType( t );
+    o.setParents( t->sortArgs( o.parents() ) );
   }
   else if ( type == "TextLabel" )
   {
@@ -176,33 +179,47 @@ static bool oldElemToNewObject( const QCString type,
   {
     QString sside = params["circlelineintersect-side"];
     int side = sside == "first" ? -1 : 1;
-    DataObject* ndo = new DataObject( new IntImp( side ) );
-    o.addParent( ndo );
+
     o.setType( ConicLineIntersectionType::instance() );
+    DataObject* ndo = new DataObject( new IntImp( side ) );
+    Objects args = o.parents();
+    args.push_back( ndo );
+    o.setParents( args );
   }
   else if ( type == "ConicLineIntersectionPoint" )
   {
     int side = params["coniclineintersect-side"].toInt( & ok );
     if ( ! ok ) return false;
+
+    Objects args = o.parents();
     DataObject* ndo = new DataObject( new IntImp( side ) );
-    o.addParent( ndo );
+    args.push_back( ndo );
+    args = ConicLineIntersectionType::instance()->argsParser().parse( args );
     o.setType( ConicLineIntersectionType::instance() );
+    o.setParents( args );
   }
   else if ( type == "CubicLineIntersectionPoint" )
   {
     int root = params["cubiclineintersect-root"].toInt( &ok );
     if ( ! ok ) return false;
+    Objects args = o.parents();
     DataObject* ndo = new DataObject( new IntImp( root ) );
-    o.addParent( ndo );
+    args.push_back( ndo );
+    args = LineCubicIntersectionType::instance()->argsParser().parse( args );
     o.setType( LineCubicIntersectionType::instance() );
+    o.setParents( args );
   }
   else if ( type == "LineConicAsymptotes" )
   {
     int branch = params["lineconicasymptotes-branch"].toInt( &ok );
     if ( ! ok ) return false;
+
     DataObject* ndo = new DataObject( new IntImp( branch ) );
-    o.addParent( ndo );
+    Objects args = o.parents();
+    args.push_back( ndo );
+    args = ConicAsymptoteType::instance()->argsParser().parse( args );
     o.setType( ConicAsymptoteType::instance() );
+    o.setParents( args );
   }
   else if ( type == "LineConicRadical" || type == "LineRadical" )
   {
@@ -222,10 +239,12 @@ static bool oldElemToNewObject( const QCString type,
       if ( ! ok ) return false;
     };
     DataObject* ndo = new DataObject( new IntImp( which ) );
-    o.addParent( ndo );
-    ndo = new DataObject( new IntImp( zeroindex ) );
-    o.addParent( ndo );
+    Objects args = o.parents();
+    args.push_back( ndo );
+    args.push_back( new DataObject( new IntImp( zeroindex ) ) );
+    args = ConicRadicalType::instance()->argsParser().parse( args );
     o.setType( ConicRadicalType::instance() );
+    o.setParents( args );
   }
   else
   {
@@ -256,6 +275,7 @@ static bool oldElemToNewObject( const QCString type,
       if ( ! t ) return false;
     };
     o.setType( t );
+    o.setParents( t->sortArgs( o.parents() ) );
   }
   return true;
 }
@@ -393,7 +413,7 @@ bool parseOldObjectHierarchyElements( const QDomElement& firstelement,
       parents.push_back( ret[elem.parents[i] - 1] );
     };
 
-    RealObject* o = new RealObject( 0, parents );
+    RealObject* o = new RealObject( DummyObjectType::instance(), parents );
     o->setShown( shown );
     o->setColor( color );
 

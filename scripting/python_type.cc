@@ -154,3 +154,13 @@ const ObjectImpType* PythonExecuteType::resultId() const
 {
   return ObjectImp::stype();
 }
+
+Objects PythonCompileType::sortArgs( const Objects& args ) const
+{
+  return args;
+}
+
+Objects PythonExecuteType::sortArgs( const Objects& args ) const
+{
+  return args;
+}

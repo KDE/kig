@@ -319,13 +319,13 @@ void ChangeParentsAndTypeTask::execute( KigDocument& doc )
 {
   Objects tmp( d->o );
 
-  ReferenceObject newparentsref( d->newparentsref.parents() );
-  d->newparentsref.setParents( d->o->parents() );
-  d->o->setParents( newparentsref.parents() );
-
   const ObjectType* oldtype = d->o->type();
   d->o->setType( d->newtype );
   d->newtype = oldtype;
+
+  ReferenceObject newparentsref( d->newparentsref.parents() );
+  d->newparentsref.setParents( d->o->parents() );
+  d->o->setParents( newparentsref.parents() );
 
   d->o->parents().calc( doc );
   d->o->calc( doc );

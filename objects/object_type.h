@@ -63,6 +63,8 @@ public:
   // ID_AnyImp..
   virtual const ObjectImpType* resultId() const = 0;
 
+  virtual Objects sortArgs( const Objects& args ) const = 0;
+
   // is this object type a transformation type.  We want to know this
   // cause transform types are shown separately in an object's RMB
   // menu..
@@ -94,7 +96,26 @@ protected:
                        int n );
 public:
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
-  const ArgsParser& argParser() const;
+  const ArgsParser& argsParser() const;
+
+  Objects sortArgs( const Objects& args ) const;
+};
+
+/**
+ * A dummy ObjectType, ignores its args, always returns an
+ * InvalidImp.  This is useful in some situations..
+ */
+class DummyObjectType
+  : public ObjectType
+{
+  DummyObjectType();
+  ~DummyObjectType();
+public:
+  static DummyObjectType* instance();
+  ObjectImp* calc( const Args&, const KigDocument& ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* resultId() const;
+  Objects sortArgs( const Objects& args ) const;
 };
 
 #endif

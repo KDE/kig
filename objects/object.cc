@@ -34,7 +34,7 @@
 using namespace std;
 
 RealObject::RealObject( const ObjectType* type, const Objects& parents )
-  : ObjectWithParents( parents ),
+  : ObjectWithParents( type->sortArgs( parents ) ),
     mcolor( Qt::blue ), mselected( false ), mshown( true ),
     mwidth( -1 ), mtype( type ), mimp( new InvalidImp )
 {
@@ -537,4 +537,10 @@ const Coordinate Object::moveReferencePoint() const
 const Coordinate RealObject::moveReferencePoint() const
 {
   return mtype->moveReferencePoint( this );
+}
+
+void RealObject::setParents( const Objects& parents )
+{
+  Objects sorted = mtype->sortArgs( parents );
+  ObjectWithParents::setParents( sorted );
 }

@@ -48,15 +48,13 @@ const TranslatedType* TranslatedType::instance()
   return &t;
 }
 
-ObjectImp* TranslatedType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* TranslatedType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() != 2 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if ( !args[0] || ! args[1] ) return new InvalidImp;
-  assert( args[0]->inherits( VectorImp::stype() ) );
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   Coordinate dir = static_cast<const VectorImp*>( args[0] )->dir();
   Transformation t = Transformation::translation( dir );
+
   return args[1]->transform( t );
 }
 
@@ -81,15 +79,13 @@ const PointReflectionType* PointReflectionType::instance()
   return &t;
 }
 
-ObjectImp* PointReflectionType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* PointReflectionType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() != 2 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if( !args[0] ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  assert( args[0]->inherits( PointImp::stype() ) );
   Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
   Transformation t = Transformation::pointReflection( center );
+
   return args[1]->transform( t );
 }
 
@@ -114,14 +110,13 @@ const LineReflectionType* LineReflectionType::instance()
   return &t;
 }
 
-ObjectImp* LineReflectionType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* LineReflectionType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() != 2 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if( !args[0] ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   LineData d = static_cast<const AbstractLineImp*>( args[0] )->data();
   Transformation t = Transformation::lineReflection( d );
+
   return args[1]->transform( t );
 }
 
@@ -147,11 +142,9 @@ const RotationType* RotationType::instance()
   return &t;
 }
 
-ObjectImp* RotationType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* RotationType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() != 3 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if( !args[0] || ! args[1] ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
   double angle = static_cast<const AngleImp*>( args[1] )->size();
@@ -181,11 +174,9 @@ const ScalingOverCenterType* ScalingOverCenterType::instance()
   return &t;
 }
 
-ObjectImp* ScalingOverCenterType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* ScalingOverCenterType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() != 3 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if( !args[0] || ! args[1] ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
   double ratio = static_cast<const SegmentImp*>( args[1] )->length();
@@ -215,11 +206,9 @@ const ScalingOverLineType* ScalingOverLineType::instance()
   return &t;
 }
 
-ObjectImp* ScalingOverLineType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* ScalingOverLineType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() != 3 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if( !args[0] || ! args[1] ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   double ratio = static_cast<const SegmentImp*>( args[0] )->length();
   LineData line = static_cast<const AbstractLineImp*>( args[1] )->data();
@@ -249,21 +238,15 @@ const ProjectiveRotationType* ProjectiveRotationType::instance()
   return &t;
 }
 
-ObjectImp* ProjectiveRotationType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* ProjectiveRotationType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() < 2 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if ( !args[2] || !args[0] ) return new InvalidImp;
-  assert( args[0]->inherits( RayImp::stype() ) );
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
   const RayImp* ray = static_cast<const RayImp*>( args[0] );
   Coordinate c1 = ray->data().a;
   Coordinate dir = ray->data().dir().normalize();
-  double alpha = 0.1*M_PI/2;
-  if ( args[1] )
-  {
-    assert( args[1]->inherits( AngleImp::stype() ) );
-    alpha = static_cast<const AngleImp*>( args[1] )->size();
-  };
+  double alpha = static_cast<const AngleImp*>( args[1] )->size();
+
   return args[2]->transform(
     Transformation::projectiveRotation( alpha, dir, c1 ) );
 }
@@ -271,7 +254,8 @@ ObjectImp* ProjectiveRotationType::calc( const Args& targs, const KigDocument& )
 static const ArgsParser::spec argsspecCastShadow[] =
 {
   { PointImp::stype(), I18N_NOOP( "Cast a shadow from this light source" ) },
-  { AbstractLineImp::stype(), I18N_NOOP( "Cast a shadow on the plane defined by this line" ) },
+  { AbstractLineImp::stype(),
+    I18N_NOOP( "Cast a shadow on the plane defined by this line" ) },
   { ObjectImp::stype(), I18N_NOOP( "Cast the shadow of this object" ) }
 };
 
@@ -290,11 +274,10 @@ const CastShadowType* CastShadowType::instance()
   return &t;
 }
 
-ObjectImp* CastShadowType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* CastShadowType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( targs.size() != 3 ) return new InvalidImp;
-  Args args = margsparser.parse( targs );
-  if( !args[0] || ! args[1] || ! args[2] ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
   Coordinate lightsrc = static_cast<const PointImp*>( args[0] )->coordinate();
   LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
   return args[2]->transform(
@@ -402,12 +385,9 @@ const ApplyTransformationObjectType* ApplyTransformationObjectType::instance()
   return &t;
 }
 
-ObjectImp* ApplyTransformationObjectType::calc( const Args& targs, const KigDocument& ) const
+ObjectImp* ApplyTransformationObjectType::calc( const Args& args, const KigDocument& ) const
 {
-  assert( targs.size() == 2 );
-  const Args& args = margsparser.parse( targs );
-  assert( args[0] && args[1] );
-  assert( args[0]->inherits( TransformationImp::stype() ) );
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
   return args[1]->transform( static_cast<const TransformationImp*>( args[0] )->data() );
 }
 

@@ -57,7 +57,7 @@ ConicRadicalConstructor::ConicRadicalConstructor()
                "non-intersecting conics." ),
     "conicsradicalline", mparser ),
     mtype( ConicRadicalType::instance() ),
-    mparser( mtype->argParser().without( IntImp::stype() ) )
+    mparser( mtype->argsParser().without( IntImp::stype() ) )
 {
 }
 
@@ -97,12 +97,12 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
   for ( int i = -1; i < 2; i += 2 )
   {
     Objects args;
+    copy( os.begin(), os.end(), back_inserter( args ) );
     args.push_back( new DataObject( new IntImp( i ) ) );
     // TODO ? use only one zeroindex dataobject, so that if you switch
     // one radical line around, then the other switches along..
     args.push_back( new DataObject( new IntImp( 1 ) ) );
-    copy( args.begin(), args.end(), back_inserter( ret ) );
-    copy( os.begin(), os.end(), back_inserter( args ) );
+    copy( args.begin() + 2, args.end(), back_inserter( ret ) );
     ret.push_back( new RealObject( mtype, args ) );
   };
   return ret;

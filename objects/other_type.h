@@ -64,6 +64,8 @@ public:
 
   bool inherits( int type ) const;
   const ObjectImpType* resultId() const;
+
+  Objects sortArgs( const Objects& args ) const;
 };
 
 class CopyObjectType
@@ -78,6 +80,7 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
+  Objects sortArgs( const Objects& os ) const;
 };
 
 /**

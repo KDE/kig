@@ -18,6 +18,8 @@
 
 #include "object_type.h"
 
+#include "bogus_imp.h"
+
 #include "../misc/i18n.h"
 #include "../misc/coordinate.h"
 
@@ -42,9 +44,9 @@ bool ObjectType::canMove() const
   return false;
 }
 
-void ObjectType::move( RealObject*, const Coordinate&,
-                       const KigDocument& ) const
+void ObjectType::move( RealObject*, const Coordinate&, const KigDocument& ) const
 {
+  assert( false );
 }
 
 bool ObjectType::inherits( int ) const
@@ -53,8 +55,8 @@ bool ObjectType::inherits( int ) const
 }
 
 ArgsParserObjectType::ArgsParserObjectType( const char fulltypename[],
-                                          const struct ArgsParser::spec argsspec[],
-                                          int n )
+                                            const struct ArgsParser::spec argsspec[],
+                                            int n )
   : ObjectType( fulltypename ), margsparser( argsspec, n )
 {
 }
@@ -64,7 +66,7 @@ const ObjectImpType* ArgsParserObjectType::impRequirement( const ObjectImp* o, c
   return margsparser.impRequirement( o, parents );
 }
 
-const ArgsParser& ArgsParserObjectType::argParser() const
+const ArgsParser& ArgsParserObjectType::argsParser() const
 {
   return margsparser;
 }
@@ -87,7 +89,49 @@ void ObjectType::executeAction( int, RealObject*, KigDocument&, KigWidget&,
 
 const Coordinate ObjectType::moveReferencePoint( const RealObject* ) const
 {
+  assert( false );
   return Coordinate::invalidCoord();
+}
+
+Objects ArgsParserObjectType::sortArgs( const Objects& args ) const
+{
+  return margsparser.parse( args );
+}
+
+DummyObjectType* DummyObjectType::instance()
+{
+  static DummyObjectType ret;
+  return &ret;
+}
+
+ObjectImp* DummyObjectType::calc( const Args&, const KigDocument& ) const
+{
+  return new InvalidImp;
+}
+
+DummyObjectType::DummyObjectType()
+  : ObjectType( "DummyObjectType" )
+{
+
+}
+
+const ObjectImpType* DummyObjectType::impRequirement( const ObjectImp*, const Args& ) const
+{
+  return ObjectImp::stype();
+}
+
+const ObjectImpType* DummyObjectType::resultId() const
+{
+  return ObjectImp::stype();
+}
+
+Objects DummyObjectType::sortArgs( const Objects& args ) const
+{
+  return args;
+}
+
+DummyObjectType::~DummyObjectType()
+{
 }
 
 

@@ -25,6 +25,8 @@
 #include "circle_imp.h"
 #include "line_imp.h"
 
+#include <klocale.h>
+
 static const ArgsParser::spec argsspecConicLineIntersection[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ) },
@@ -50,33 +52,26 @@ const ConicLineIntersectionType* ConicLineIntersectionType::instance()
 
 ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() != 3 ) return new InvalidImp;
-  Args p = margsparser.parse( parents );
-  if ( ! p[0] || !p[1] || !p[2] )
-    return new InvalidImp;
-  assert ( p[0]->inherits( ConicImp::stype() ) &&
-           p[1]->inherits( AbstractLineImp::stype() ) &&
-           p[2]->inherits( IntImp::stype() ) );
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  int side = static_cast<const IntImp*>( p[2] )->data();
+  int side = static_cast<const IntImp*>( parents[2] )->data();
   assert( side == 1 || side == -1 );
-  const LineData line = static_cast<const AbstractLineImp*>( p[1] )->data();
+  const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
 
   bool valid = true;
   Coordinate ret;
-  if ( p[0]->inherits( CircleImp::stype() ) )
+  if ( parents[0]->inherits( CircleImp::stype() ) )
   {
     // easy case..
-    const CircleImp* c = static_cast<const CircleImp*>( p[0] );
+    const CircleImp* c = static_cast<const CircleImp*>( parents[0] );
     ret = calcCircleLineIntersect(
-      c->center(), c->squareRadius(),
-      line, side, valid );
+      c->center(), c->squareRadius(), line, side, valid );
   }
   else
   {
     // harder case..
     ret = calcConicLineIntersect(
-      static_cast<const ConicImp*>( p[0] )->cartesianData(),
+      static_cast<const ConicImp*>( parents[0] )->cartesianData(),
       line, side, valid );
   }
   if ( valid ) return new PointImp( ret );
@@ -109,10 +104,8 @@ const LineLineIntersectionType* LineLineIntersectionType::instance()
 
 ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() != 2 ||
-       !parents[0]->inherits( AbstractLineImp::stype() ) ||
-       !parents[1]->inherits( AbstractLineImp::stype() ) )
-    return new InvalidImp;
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
   return new PointImp(
     calcIntersectionPoint(
       static_cast<const AbstractLineImp*>( parents[0] )->data(),
@@ -144,14 +137,13 @@ const LineCubicIntersectionType* LineCubicIntersectionType::instance()
 
 ObjectImp* LineCubicIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() != 3 ) return new InvalidImp;
-  Args p = margsparser.parse( parents );
-  if ( ! p[0] || ! p[1] || ! p[2] ) return new InvalidImp;
-  int which = static_cast<const IntImp*>( p[2] )->data();
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  int which = static_cast<const IntImp*>( parents[2] )->data();
   bool valid = true;
   const Coordinate c = calcCubicLineIntersect(
-    static_cast<const CubicImp*>( p[0] )->data(),
-    static_cast<const AbstractLineImp*>( p[1] )->data(),
+    static_cast<const CubicImp*>( parents[0] )->data(),
+    static_cast<const AbstractLineImp*>( parents[1] )->data(),
     which, valid );
   if ( valid ) return new PointImp( c );
   else return new InvalidImp;

@@ -22,7 +22,7 @@
 #include "point_imp.h"
 #include "bogus_imp.h"
 
-#include <vector>
+#include <klocale.h>
 
 static const char cubictpstatement[] = I18N_NOOP( "Construct a cubic through this point" );
 
@@ -56,15 +56,17 @@ const CubicB9PType* CubicB9PType::instance()
 
 ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
 {
+  if ( ! margsparser.checkArgs( os, 2 ) ) return new InvalidImp;
+
   std::vector<Coordinate> points;
-  if ( os.size() < 2 ) return new InvalidImp;
   for ( uint i = 0; i < os.size(); ++i )
-    if( os[i]->inherits( PointImp::stype() ) )
-      points.push_back( static_cast<const PointImp*>( os[i] )->coordinate() );
-  if ( points.size() != os.size() ) return new InvalidImp;
+    points.push_back( static_cast<const PointImp*>( os[i] )->coordinate() );
+
   CubicCartesianData d = calcCubicThroughPoints( points );
-  if ( d.valid() ) return new CubicImp( d );
-  else return new InvalidImp;
+  if ( d.valid() )
+    return new CubicImp( d );
+  else
+    return new InvalidImp;
 }
 
 static const ArgsParser::spec argsspecCubicNodeB6P[] =
@@ -94,15 +96,17 @@ const CubicNodeB6PType* CubicNodeB6PType::instance()
 
 ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 2 ) return new InvalidImp;
+  if ( ! margsparser.checkArgs( parents, 2 ) ) return new InvalidImp;
+
   std::vector<Coordinate> points;
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
-    if ( (*i)->inherits( PointImp::stype() ) )
-      points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
-  if ( points.size() != parents.size() ) return new InvalidImp;
+    points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+
   CubicCartesianData d = calcCubicNodeThroughPoints( points );
-  if ( d.valid() ) return new CubicImp( d );
-  else return new InvalidImp;
+  if ( d.valid() )
+    return new CubicImp( d );
+  else
+    return new InvalidImp;
 }
 
 static const ArgsParser::spec argsspecCubicCuspB4P[] =
@@ -130,18 +134,12 @@ const CubicCuspB4PType* CubicCuspB4PType::instance()
 
 ObjectImp* CubicCuspB4PType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( parents.size() < 2 ) return new InvalidImp;
-  if ( parents.size() > 4 ) return new InvalidImp;
-  std::vector<Coordinate> points;
+  if ( ! margsparser.checkArgs( parents, 2 ) ) return new InvalidImp;
 
-  for ( uint i = 0; i < parents.size(); ++i )
-  {
-    if( parents[i]->inherits( PointImp::stype() ) )
-      points.push_back(
-        static_cast<const PointImp*>( parents[i] )->coordinate() );
-  };
-  if ( points.size() != parents.size() )
-    return new InvalidImp;
+  std::vector<Coordinate> points;
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+    points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+
   CubicCartesianData d = calcCubicCuspThroughPoints( points );
   if ( d.valid() ) return new CubicImp( d );
   else return new InvalidImp;

@@ -1,3 +1,16 @@
+2003-09-08  Dominique Devriese  <devriese@kde.org>
+
+	* Fix a bug that prevented Kig from opening its own files,
+	rejecting them because they were of the 0.6.0 version, which Kig
+	could not open..  I'm backporting this into Kig 0.6.0 and
+	informing the packager..
+
+	* clean up: Objects now store their parents in order, so that no
+	parsing has to be done in the calc() function..  Also some more
+	modifications making that function a bit simpler are included.
+	Specifically, ArgsParser now does the checking of the arguments,
+	instead of every single calc function doing it itself..
+
 2003-09-02  Dominique Devriese  <devriese@kde.org>
 
 	* rename ArgparserObjectType to ArgsParserObjectType

@@ -155,13 +155,14 @@ class RealObject
   const ObjectType* mtype;
   ObjectImp* mimp;
 
-  RealObject( const RealObject& o );
-
   void calc( const Args& a, const KigDocument& );
+  RealObject( const RealObject& o );
 
 public:
   RealObject( const ObjectType* type, const Objects& parents );
   ~RealObject();
+
+  void setParents( const Objects& parents );
 
   // c++ doesn't consider our parent's calc function when looking for
   // a calc function with this signature, because we have another calc
