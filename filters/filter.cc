@@ -24,6 +24,7 @@
 #include "kgeo/filter.h"
 #include "cabri/filter.h"
 #include "native/filter.h"
+#include "kseg-filter.h"
 
 KigFilters* KigFilters::sThis;
 
@@ -39,6 +40,7 @@ KigFilter* KigFilters::find(const QString& mime)
 KigFilters::KigFilters()
 {
   mFilters.push_back( new KigFilterKGeo );
+  mFilters.push_back( new KigFilterKSeg );
 //   mFilters.push_back( new KigFilterCabri );
   mFilters.push_back( new KigFilterNative );
 }

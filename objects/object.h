@@ -133,8 +133,8 @@ public:
 };
 
 /**
- * The Object class represents a geometric object.  This class
- * contains some information about the object, like its parents,
+ * The RealObject class represents an object that is shown on screen.
+ * This class contains some information about the object, like its
  * color, selected state etc., and pointers to an @ref ObjectType and
  * @ref ObjectImp.  Please check their respective documentation to see
  * what they're about..

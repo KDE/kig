@@ -1,3 +1,3 @@
 # mime types...
-kdemime_DATA = x-kig.desktop x-kgeo.desktop x-cabri.desktop
+kdemime_DATA = x-kig.desktop x-kgeo.desktop x-kseg.desktop
 kdemimedir=$(kde_mimedir)/application
