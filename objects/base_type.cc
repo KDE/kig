@@ -69,9 +69,10 @@ ObjectLPType::~ObjectLPType()
 {
 }
 
-ObjectImp* ObjectLPType::calc( const Args& args ) const
+ObjectImp* ObjectLPType::calc( const Args& targs ) const
 {
-  if( args.size() != 2 ) return new InvalidImp;
+  if( targs.size() != 2 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
   LineData l = static_cast<const AbstractLineImp*>( args[0] )->data();
   Coordinate c = static_cast<const PointImp*>( args[1] )->coordinate();
   return calc( l, c );
