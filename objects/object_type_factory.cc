@@ -60,16 +60,6 @@ void ObjectTypeFactory::setupBuiltinTypes()
 {
   assert( ! malreadysetup );
   malreadysetup = true;
-  // line_type.h
-  add( SegmentABType::instance() );
-  add( LineABType::instance() );
-  add( RayABType::instance() );
-  add( LinePerpendLPType::instance() );
-  add( LineParallelLPType::instance() );
-
-  // point_type.h
-  add( FixedPointType::instance() );
-  add( ConstrainedPointType::instance() );
 
   // circle_type.h
   add( CircleBCPType::instance() );
@@ -82,10 +72,47 @@ void ObjectTypeFactory::setupBuiltinTypes()
   add( HyperbolaBFFPType::instance() );
   add( ConicBDFPType::instance() );
   add( ParabolaBTPType::instance() );
+  add( EquilateralHyperbolaB4PType::instance() );
   add( ConicPolarPointType::instance() );
   add( ConicPolarLineType::instance() );
+  add( ConicDirectrixType::instance() );
+  add( ParabolaBDPType::instance() );
+  add( ConicAsymptoteType::instance() );
+  add( ConicRadicalType::instance() );
 
   // cubic_type.h
   add( CubicB9PType::instance() );
   add( CubicNodeB6PType::instance() );
+  add( CubicCuspB4PType::instance() );
+
+  // intersection_types.h
+  add( ConicLineIntersectionType::instance() );
+  add( LineLineIntersectionType::instance() );
+  add( LineCubicIntersectionType::instance() );
+
+  // line_type.h
+  add( SegmentABType::instance() );
+  add( LineABType::instance() );
+  add( RayABType::instance() );
+  add( LinePerpendLPType::instance() );
+  add( LineParallelLPType::instance() );
+
+  // other_type.h
+  add( AngleType::instance() );
+  add( VectorType::instance() );
+  add( LocusType::instance() );
+
+  // point_type.h
+  add( FixedPointType::instance() );
+  add( ConstrainedPointType::instance() );
+  add( MidPointType::instance() );
+
+  // transform_types.h
+  add( TranslatedType::instance() );
+  add( PointReflectionType::instance() );
+  add( LineReflectionType::instance() );
+  add( RotationType::instance() );
+  add( ScalingOverCenterType::instance() );
+  add( ScalingOverLineType::instance() );
+  add( ProjectiveRotationType::instance() );
 }
