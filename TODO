@@ -2,7 +2,6 @@
 * reimplement
 - macro management
 - rmb menu's
-- kgeo file format support
 
 * simple:
 - implement the helpSlot()'s in the wizards..
