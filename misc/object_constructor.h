@@ -317,10 +317,10 @@ class MacroConstructor
   : public ObjectConstructor
 {
   ObjectHierarchy mhier;
-  const QString mname;
-  const QString mdesc;
+  QString mname;
+  QString mdesc;
   bool mbuiltin;
-  const QCString miconfile;
+  QCString miconfile;
   ArgsParser mparser;
 public:
   MacroConstructor( const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
@@ -363,6 +363,10 @@ public:
   // cause transform types are shown separately in an object's RMB
   // menu..
   bool isTransform() const;
+
+  void setName( QString& name );
+  void setDescription( QString& desc );
+  void setIcon( QCString& icon );
 };
 
 #endif

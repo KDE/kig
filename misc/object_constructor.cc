@@ -578,3 +578,17 @@ BaseConstructMode* ObjectConstructor::constructMode( KigPart& doc )
   return new ConstructMode( doc, this );
 }
 
+void MacroConstructor::setName( QString& name )
+{
+  mname = name;
+}
+
+void MacroConstructor::setDescription( QString& desc )
+{
+  mdesc = desc;
+}
+
+void MacroConstructor::setIcon( QCString& icon )
+{
+  miconfile = icon;
+}
