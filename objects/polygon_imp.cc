@@ -174,15 +174,16 @@ bool PolygonImp::valid() const
 
 const uint PolygonImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 3;
+  return Parent::numberOfProperties() + 4;
 }
 
 const QCStringList PolygonImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
+  l += "polygon-number-of-sides";
   l += "polygon-perimeter";
   l += "polygon-surface";
-  l += "center-of-mass";
+  l += "polygon-center-of-mass";
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -190,6 +191,7 @@ const QCStringList PolygonImp::propertiesInternalNames() const
 const QCStringList PolygonImp::properties() const
 {
   QCStringList l = Parent::properties();
+  l += I18N_NOOP( "Number of sides" );
   l += I18N_NOOP( "Perimeter" );
   l += I18N_NOOP( "Surface" );
   l += I18N_NOOP( "Center of Mass" );
@@ -210,10 +212,12 @@ const char* PolygonImp::iconForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   else if ( which == Parent::numberOfProperties() )
-    return "circumference"; // perimeter
+    return "en"; // number of sides
   else if ( which == Parent::numberOfProperties() + 1 )
-    return "areaCircle"; // surface
+    return "circumference"; // perimeter
   else if ( which == Parent::numberOfProperties() + 2 )
+    return "areaCircle"; // surface
+  else if ( which == Parent::numberOfProperties() + 3 )
     return "point"; // center of mass
   else assert( false );
   return "";
@@ -226,6 +230,12 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
     return Parent::property( which, w );
   else if ( which == Parent::numberOfProperties() )
   {
+    uint nsides = mpoints.size();
+    // number of sides
+    return new IntImp( nsides );
+  }
+  else if ( which == Parent::numberOfProperties() + 1)
+  {
     double circumference = 0.;
     // circumference
     for ( uint i = 0; i < mpoints.size(); ++i )
@@ -235,7 +245,7 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
     }
     return new DoubleImp( circumference );
   }
-  else if ( which == Parent::numberOfProperties() + 1)
+  else if ( which == Parent::numberOfProperties() + 2)
   {
     double surface2 = 0.0;
     Coordinate prevpoint = mpoints.back();
@@ -247,7 +257,7 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
     }
     return new DoubleImp( fabs( surface2 / 2 ) );
   }
-  else if ( which == Parent::numberOfProperties() + 2)
+  else if ( which == Parent::numberOfProperties() + 3)
   {
     Coordinate sum = Coordinate( 0, 0);
     Coordinate prevpoint = mpoints.back();

@@ -25,10 +25,11 @@ kigicondata_DATA = \
 	directrix.png \
 	distance.png \
 	ellipsebffp.png \
-	harmonichomology.png \
+	en.png \
 	genericaffinity.png \
 	genericprojectivity.png \
 	halflinebyvector.png \
+	harmonichomology.png \
 	hexagonbcv.png \
 	hyperbolabffp.png \
 	intersection.png \
