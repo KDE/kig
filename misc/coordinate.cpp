@@ -21,9 +21,9 @@
 #include <qglobal.h>
 #include <cmath>
 
-using namespace std;
+#include "common.h"
 
-static const double double_inf = HUGE_VAL;
+using namespace std;
 
 Coordinate Coordinate::fromQPoint( const QPoint& p )
 {
