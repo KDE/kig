@@ -36,6 +36,7 @@ struct ConicCartesianEquationData
 {
   double coeffs[6];
 public:
+  ConicCartesianEquationData();
   ConicCartesianEquationData( double a, double b, double c,
                               double d, double e, double f )
     {
@@ -67,6 +68,12 @@ struct ConicPolarEquationData
   double esintheta0;
 };
 
+/**
+ * This is the abstract base class for all types of conics.  There are
+ * a lot of them, ranging from CircleBCP to ConicB5P ( in order of
+ * complexity :).  Some of them have easy ways to calculate some of
+ * the properties ( e.g. focus1() is very easy for a circle.. )
+ */
 class Conic
   : public Curve
 {
@@ -82,30 +89,28 @@ class Conic
   virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
   static const QCString sBaseTypeName();
 
-  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
-  void draw (KigPainter& p, bool showSelection) const;
-  bool inRect (const Rect&) const;
-  Coordinate getPoint (double param) const;
-  double getParam (const Coordinate&) const;
+  virtual bool contains (const Coordinate& o, const ScreenInfo& si ) const;
+  virtual void draw (KigPainter& p, bool showSelection) const;
+  virtual bool inRect (const Rect&) const;
+  virtual Coordinate getPoint (double param) const;
+  virtual double getParam (const Coordinate&) const;
 
   /**
    * This function returns -1 for hyperbola, 1 for ellipses and 0 for
    * parabola's...
    */
-  int conicType() const;
-  QString type() const;
-  QString cartesianEquationString() const;
-  QString polarEquationString() const;
-  ConicCartesianEquationData cartesianEquationData() const;
-  ConicPolarEquationData polarEquationData() const;
-  Coordinate focus1() const;
-  Coordinate focus2() const;
+  virtual int conicType() const;
+  virtual QString type() const;
+  virtual QString cartesianEquationString() const;
+  virtual QString polarEquationString() const;
+  virtual const ConicCartesianEquationData cartesianEquationData() const;
+  virtual const ConicPolarEquationData polarEquationData() const = 0;
+  virtual Coordinate focus1() const;
+  virtual Coordinate focus2() const;
 
   virtual const uint numberOfProperties() const;
   virtual const Property property( uint which ) const;
   virtual const QCStringList properties() const;
-protected:
-  ConicPolarEquationData mequation;
 };
 
 /**
@@ -157,6 +162,8 @@ protected:
   static void sDrawPrelimCommon( KigPainter& p,
                                  const Objects& args,
                                  int type );
+
+  virtual const ConicPolarEquationData polarEquationData() const;
 public:
   static Object::WantArgsResult sWantArgs( const Objects& os );
 
@@ -164,6 +171,8 @@ protected:
   Point* poc; // point on conic
   Point* focus1;
   Point* focus2;
+
+  ConicPolarEquationData mequation;
 };
 
 // an ellipse by focuses and a point
@@ -235,6 +244,9 @@ public:
   ConicB5P(const ConicB5P& c);
   ConicB5P* copy() { return new ConicB5P(*this); };
 
+  virtual const ConicPolarEquationData polarEquationData() const;
+  virtual const ConicCartesianEquationData cartesianEquationData() const;
+
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "ConicB5P"; };
   const QString vDescriptiveName() const { return sDescriptiveName(); };
@@ -256,6 +268,9 @@ public:
 
 protected:
   Point* pts[5];
+
+  ConicPolarEquationData pequation;
+  ConicCartesianEquationData cequation;
 
   void calc();
 };
@@ -288,8 +303,14 @@ public:
 
   Objects getParents() const;
 
+  const ConicCartesianEquationData cartesianEquationData() const;
+  const ConicPolarEquationData polarEquationData() const;
+
 protected:
   Point* pts[3];
+
+  ConicCartesianEquationData cequation;
+  ConicPolarEquationData pequation;
 
   void calc();
 };

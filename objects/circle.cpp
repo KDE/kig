@@ -231,7 +231,7 @@ const char* CircleBTP::sActionName()
 }
 
 Circle::Circle( const Circle& c )
-  : Curve( c ), qpc( c.qpc ), mradius( c.mradius )
+  : Conic( c ), qpc( c.qpc ), mradius( c.mradius )
 {
 }
 
@@ -363,7 +363,7 @@ const Circle* Circle::toCircle() const
   return this;
 }
 
-ConicCartesianEquationData Circle::cartesianEquationData() const
+const ConicCartesianEquationData Circle::cartesianEquationData() const
 {
   Coordinate c = center();
   double sqr = squareRadius();
@@ -372,7 +372,7 @@ ConicCartesianEquationData Circle::cartesianEquationData() const
   return data;
 }
 
-ConicPolarEquationData Circle::polarEquationData() const
+const ConicPolarEquationData Circle::polarEquationData() const
 {
   ConicPolarEquationData mdata;
   mdata.focus1 = center();
@@ -451,4 +451,19 @@ double Circle::circumference() const
 Coordinate Circle::center() const
 {
   return qpc;
+}
+
+int Circle::conicType() const
+{
+  return 1;
+}
+
+Coordinate Circle::focus1() const
+{
+  return center();
+}
+
+Coordinate Circle::focus2() const
+{
+  return focus1();
 }

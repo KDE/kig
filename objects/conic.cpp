@@ -43,10 +43,12 @@ bool Conic::contains (const Coordinate& o, const ScreenInfo& si ) const
   Coordinate pos;
   double costheta, sintheta, len, ecosthetamtheta0, rho;
 
-  Coordinate focus1 = mequation.focus1;
-  double ecostheta0 = mequation.ecostheta0;
-  double esintheta0 = mequation.esintheta0;
-  double pdimen = mequation.pdimen;
+  const ConicPolarEquationData d = polarEquationData();
+
+  Coordinate focus1 = d.focus1;
+  double ecostheta0 = d.ecostheta0;
+  double esintheta0 = d.esintheta0;
+  double pdimen = d.pdimen;
 
   pos = Coordinate(o) - focus1;
   len = pos.length();
@@ -66,7 +68,7 @@ void Conic::draw (KigPainter& p, bool ss) const
   p.setPen(QPen ( selected && ss ? Qt::red : mColor, 1));
   p.setBrush( Qt::NoBrush );
 
-  p.drawConic( mequation );
+  p.drawConic( polarEquationData() );
 };
 
 bool Conic::inRect ( const Rect& ) const
@@ -81,30 +83,24 @@ Coordinate Conic::getPoint (double p) const
 {
   double rho, costheta, sintheta;
 
-  Coordinate focus1 = mequation.focus1;
-  double ecostheta0 = mequation.ecostheta0;
-  double esintheta0 = mequation.esintheta0;
-  double pdimen = mequation.pdimen;
+  const ConicPolarEquationData d = polarEquationData();
 
   costheta = cos(p * 2 * M_PI);
   sintheta = sin(p * 2 * M_PI);
-  rho = pdimen / (1 - costheta*ecostheta0 - sintheta*esintheta0);
-  return focus1 + Coordinate (costheta, sintheta) * rho;
+  rho = d.pdimen / (1 - costheta* d.ecostheta0 - sintheta* d.esintheta0);
+  return d.focus1 + Coordinate (costheta, sintheta) * rho;
 };
 
 double Conic::getParam (const Coordinate& p) const
 {
-  Coordinate focus1 = mequation.focus1;
-  Coordinate tmp = p - focus1;
+  const ConicPolarEquationData d = polarEquationData();
+  Coordinate tmp = p - d.focus1;
   double l = tmp.length();
   double theta = atan2(tmp.y, tmp.x);
   double costheta = cos(theta);
   double sintheta = sin(theta);
-  double ecostheta0 = mequation.ecostheta0;
-  double esintheta0 = mequation.esintheta0;
-  double pdimen = mequation.pdimen;
-  double rho1 = pdimen / (1 - costheta*ecostheta0 - sintheta*esintheta0);
-  double rho2 = - pdimen / (1 + costheta*ecostheta0 + sintheta*esintheta0);
+  double rho1 = d.pdimen / (1 - costheta * d.ecostheta0 - sintheta * d.esintheta0);
+  double rho2 = - d.pdimen / (1 + costheta * d.ecostheta0 + sintheta * d.esintheta0);
   if (fabs(rho1 - l) < fabs(rho2 - l))
     return fmod(theta / ( 2 * M_PI ) + 1, 1);
   else
@@ -158,7 +154,7 @@ const char* EllipseBFFP::sActionName()
 }
 
 Conic::Conic( const Conic& c )
-  : Curve( c ), mequation( c.mequation )
+  : Curve( c )
 {
 }
 
@@ -188,9 +184,7 @@ QString EllipseBFFP::sUseText( const Objects& os, const Object* )
   };
 }
 
-void ConicBFFP::sDrawPrelimCommon( KigPainter& p,
-                                   const Objects& args,
-                                   int type)
+void ConicBFFP::sDrawPrelimCommon( KigPainter& p, const Objects& args, int type)
 {
   if ( args.size() < 2 ) return;
 
@@ -483,20 +477,17 @@ const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartd
 
 void ConicB5P::calc()
 {
-  Coordinate points[5];
-  int i;
+  std::vector<Coordinate> points;
 
   mvalid = true;
   for ( Point** ipt = pts; ipt < pts + 5; ++ipt )
     mvalid &= (*ipt)->valid();
   if ( mvalid )
   {
-
-    for (i = 0; i < 5; i++)
-    {
-      points[i] = pts[i]->getCoord();
-    }
-    mequation = calcPolar( calcCartesian ( std::vector<Coordinate>( points, points + 5 ) ) );
+    std::transform( pts, pts + 5, std::back_inserter( points ),
+                    std::mem_fun( &Point::getCoord ) );
+    cequation = calcCartesian( points );
+    pequation = calcPolar( cequation );
   }
 }
 
@@ -512,7 +503,7 @@ Objects ConicB5P::getParents() const
 }
 
 ConicB5P::ConicB5P(const ConicB5P& c)
-  : Conic( c )
+  : Conic( c ), pequation( c.pequation ), cequation( c.cequation )
 {
   for ( int i = 0; i != 5; ++i )
   {
@@ -577,20 +568,17 @@ ConicB5P::ConicB5P( const Objects& os )
 
 void ParabolaBTP::calc()
 {
-  Coordinate points[3];
-  int i;
+  std::vector<Coordinate> points;
 
   mvalid = true;
   for ( Point** ipt = pts; ipt < pts + 3; ++ipt )
     mvalid &= (*ipt)->valid();
   if ( mvalid )
   {
-
-    for (i = 0; i < 3; i++)
-    {
-      points[i] = pts[i]->getCoord();
-    }
-    mequation = calcPolar( calcCartesian ( std::vector<Coordinate>( points, points + 3 ) ) );
+    std::transform( pts, pts + 3, std::back_inserter( points ),
+                    std::mem_fun( &Point::getCoord ) );
+    cequation = calcCartesian( points );
+    pequation = calcPolar( cequation );
   }
 }
 
@@ -606,7 +594,7 @@ Objects ParabolaBTP::getParents() const
 }
 
 ParabolaBTP::ParabolaBTP(const ParabolaBTP& c)
-  : Conic( c )
+  : Conic( c ), cequation( c.cequation ), pequation( c.pequation )
 {
   for ( int i = 0; i != 3; ++i )
   {
@@ -617,7 +605,7 @@ ParabolaBTP::ParabolaBTP(const ParabolaBTP& c)
 
 const QString ParabolaBTP::sDescriptiveName()
 {
-  return i18n("Vertical parabola by three points");
+  return i18n( "Vertical parabola by three points" );
 }
 
 const QString ParabolaBTP::sDescription()
@@ -636,7 +624,7 @@ Object::WantArgsResult ParabolaBTP::sWantArgs( const Objects& os )
 
 QString ParabolaBTP::sUseText( const Objects&, const Object* )
 {
-  return i18n("Through point");
+  return i18n( "Through point" );
 }
 
 void ParabolaBTP::sDrawPrelim( KigPainter& p, const Objects& os )
@@ -702,7 +690,7 @@ ConicBFFP::~ConicBFFP()
 }
 
 ConicBFFP::ConicBFFP( const Objects& os )
-  : Conic()
+  : Conic(), mequation()
 {
   assert( os.size() == 3 );
   focus1 = os[0]->toPoint();
@@ -739,7 +727,8 @@ Objects ConicBFFP::getParents() const
 }
 
 ConicBFFP::ConicBFFP( const ConicBFFP& c )
-  : Conic( c ), poc( c.poc ), focus1( c.focus1 ), focus2 ( c.focus2 )
+  : Conic( c ), poc( c.poc ), focus1( c.focus1 ),
+    focus2 ( c.focus2 ), mequation( c.mequation )
 {
   poc->addChild(this);
   focus1->addChild(this);
@@ -846,8 +835,9 @@ const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
 
 int Conic::conicType() const
 {
-  double ec = mequation.ecostheta0;
-  double es = mequation.esintheta0;
+  const ConicPolarEquationData d = polarEquationData();
+  double ec = d.ecostheta0;
+  double es = d.esintheta0;
   double esquare = ec*ec + es*es;
   const double parabolamiss = 1e-3;  // don't know what a good value could be
 
@@ -863,13 +853,10 @@ QString Conic::type() const
   {
   case 1:
     return I18N_NOOP("ellipse");
-
   case -1:
     return I18N_NOOP("hyperbola");
-
   case 0:
     return I18N_NOOP("parabola");
-
   default:
     assert( false );
   }
@@ -897,29 +884,25 @@ const ConicCartesianEquationData calcCartesianEquationFromPolar( const ConicPola
   return ConicCartesianEquationData( a, b, c, d, e, f );
 };
 
-ConicCartesianEquationData Conic::cartesianEquationData() const
+const ConicCartesianEquationData Conic::cartesianEquationData() const
 {
-  return calcCartesianEquationFromPolar( mequation );
-}
-
-ConicPolarEquationData Conic::polarEquationData() const
-{
-  return mequation;
+  return calcCartesianEquationFromPolar( polarEquationData() );
 }
 
 Coordinate Conic::focus1() const
 {
-  return mequation.focus1;
+  return polarEquationData().focus1;
 }
 
 Coordinate Conic::focus2() const
 {
-  double ec = mequation.ecostheta0;
-  double es = mequation.esintheta0;
+  const ConicPolarEquationData d = polarEquationData();
+  double ec = d.ecostheta0;
+  double es = d.esintheta0;
 
-  double fact = 2*mequation.pdimen/(1 - ec*ec - es*es);
+  double fact = 2*d.pdimen/(1 - ec*ec - es*es);
 
-  return mequation.focus1 + fact*Coordinate(ec, es);
+  return d.focus1 + fact*Coordinate(ec, es);
 }
 
 const uint Conic::numberOfProperties() const
@@ -965,5 +948,42 @@ QString Conic::cartesianEquationString() const
   ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
   ret = ret.arg( data.coeffs[5], 0, 'g', 3 );
   return ret;
+}
+
+const ConicPolarEquationData ConicBFFP::polarEquationData() const
+{
+  return mequation;
+}
+
+const ConicPolarEquationData ConicB5P::polarEquationData() const
+{
+  return pequation;
+}
+
+const ConicCartesianEquationData ConicB5P::cartesianEquationData() const
+{
+  return cequation;
+}
+
+const ConicCartesianEquationData ParabolaBTP::cartesianEquationData() const
+{
+  return cequation;
+}
+
+const ConicPolarEquationData ParabolaBTP::polarEquationData() const
+{
+  return pequation;
+}
+
+ConicCartesianEquationData::ConicCartesianEquationData()
+{
+  std::fill( coeffs, coeffs + 6, 0 );
+};
+
+QString Conic::polarEquationString() const
+{
+  //FIXME
+
+  return QString::null;
 }
 

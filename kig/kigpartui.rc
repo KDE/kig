@@ -48,14 +48,11 @@
 	  <Action name="objects_new_coniclineintersect" />
 	  <ActionList name="user_point_types" />
     </Menu>
-    <Menu name="new_circle">
-	<text>Circle</text>
+    <Menu name="new_conic">
+	<text>Conics</text>
 	<Action name="objects_new_circlebcp" />
 	<Action name="objects_new_circlebtp" />
 	<ActionList name="user_circle_types" />
-    </Menu>
-    <Menu name="new_conic">
-	<text>Conic</text>
 	<Action name="objects_new_ellipsebffp" />
 	<Action name="objects_new_hyperbolabffp" />
 	<Action name="objects_new_conicb5p" />
@@ -116,6 +113,8 @@
   <ActionList name="user_segment_types" />
 </ToolBar>
 <Toolbar name="conic_toolbar"><text>Conics</text>
+  <Action name="objects_new_circlebcp" />
+  <Action name="objects_new_circlebtp" />
   <Action name="objects_new_ellipsebffp" />
   <Action name="objects_new_hyperbolabffp" />
   <Action name="objects_new_parabolabtp" />
@@ -123,8 +122,6 @@
   <Action name="user_conic_types" />
 </Toolbar>    
 <ToolBar name="rest_toolbar"><text>Rest</text>
-  <Action name="objects_new_circlebcp" />
-  <Action name="objects_new_circlebtp" />
   <Action name="objects_new_arc" />
   <Action name="objects_new_locus" />
   <Action name="objects_new_textlabel" />

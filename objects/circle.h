@@ -27,7 +27,7 @@
 #include "../misc/common.h"
 
 class Circle
-: public Curve
+  : public Conic
 {
  public:
   Circle();
@@ -58,8 +58,12 @@ class Circle
   double circumference() const;
   QString cartesianEquationString() const;
   QString polarEquationString() const;
-  ConicCartesianEquationData cartesianEquationData() const;
-  ConicPolarEquationData polarEquationData() const;
+  const ConicCartesianEquationData cartesianEquationData() const;
+  const ConicPolarEquationData polarEquationData() const;
+  virtual int conicType() const;
+  virtual Coordinate focus1() const;
+  virtual Coordinate focus2() const;
+
 
 protected:
   Coordinate qpc;
