@@ -133,8 +133,7 @@ void Kig::readProperties(KConfig* config)
 
 void Kig::load(const KURL& url)
 {
-  m_recentFilesAction->addURL( url );
-  m_part->openURL( url );
+  if ( m_part->openURL( url ) ) m_recentFilesAction->addURL( url );
 }
 
 void Kig::fileNew()
