@@ -6,6 +6,7 @@
 
 * harder:
 - fillable polygons..
+- full screen mode
 - filters: more input filters ( get cabri to work somewhat, kseg
    support... )  and output filters...  
 - implement Circle by center and radius
@@ -28,6 +29,8 @@
    to have this already ( albeit in Guile ;) ), so Kig can't lag
    behind ;) 
 - check "property's", like "is point x on line y"
+- "export to *".  We already have images, i'd like to add stuff like
+  vector drawing formats, java applets ... :)
 - figure out some cool way to "attach" a textlabel to an object.. 
 - koffice support ? 
 
