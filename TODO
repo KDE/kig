@@ -1,6 +1,5 @@
 simple:
 - implement the helpSlot()'s in the wizards..
-- change resizeEvent to not recenter the screen..
 - rearrange some of the icons to match KGeo's appearance..
 
 harder:
