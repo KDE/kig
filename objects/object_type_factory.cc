@@ -72,6 +72,7 @@ void ObjectTypeFactory::setupBuiltinTypes()
 
   // circle_type.h
   add( CircleBCPType::instance() );
+  add( CircleBPRType::instance() );
   add( CircleBTPType::instance() );
 
   // conic_types.h
@@ -109,11 +110,15 @@ void ObjectTypeFactory::setupBuiltinTypes()
   // other_type.h
   add( AngleType::instance() );
   add( VectorType::instance() );
+  add( LocusType::instance() );
 
   // point_type.h
   add( FixedPointType::instance() );
   add( ConstrainedPointType::instance() );
   add( MidPointType::instance() );
+
+  // text_type.h
+  add( TextType::instance() );
 
   // transform_types.h
   add( TranslatedType::instance() );
@@ -123,6 +128,7 @@ void ObjectTypeFactory::setupBuiltinTypes()
   add( ScalingOverCenterType::instance() );
   add( ScalingOverLineType::instance() );
   add( ProjectiveRotationType::instance() );
+  add( CastShadowType::instance() );
 }
 
 QString ObjectTypeFactory::serialize( const CustomType& t,
