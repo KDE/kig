@@ -52,6 +52,7 @@
 	<Action name="objects_new_ray" />
 	<Action name="objects_new_linebyvector" />
 	<Action name="objects_new_halflinebyvector" />
+	<Action name="objects_new_tangent" />
 	<ActionList name="user_line_types" />
       </Menu>
       <Menu name="new_circle" icon="circlebps">
@@ -70,6 +71,7 @@
 	<Action name="objects_new_segment_axis" />
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_vectorsum" />
+	<Action name="objects_new_vectordifference" />
 	<ActionList name="user_segment_types" />
       </Menu>
       <Menu name="new_conic" icon="conicb5p">
