@@ -832,6 +832,7 @@ const ConicCartesianData calcConicTransformation (
   Transformation ti = t.inverse( valid );
   if ( ! valid ) return ConicCartesianData();
 
+  double supnorm = 0.0;
   for (int i = 0; i < 3; i++)
   {
     for (int j = 0; j < 3; j++)
@@ -844,6 +845,15 @@ const ConicCartesianData calcConicTransformation (
 	  b[i][j] += a[ii][jj]*ti.data( ii, i )*ti.data( jj, j );
 	}
       }
+      if ( std::fabs( b[i][j] ) > supnorm ) supnorm = std::fabs( b[i][j] );
+    }
+  }
+
+  for (int i = 0; i < 3; i++)
+  {
+    for (int j = 0; j < 3; j++)
+    {
+      b[i][j] /= supnorm;
     }
   }
 
