@@ -21,6 +21,7 @@
 #include "newscriptwizard.h"
 
 #include "python_type.h"
+#include "python_scripter.h"
 
 #include "../modes/dragrectmode.h"
 #include "../objects/object_imp.h"
@@ -199,11 +200,8 @@ void ScriptMode::redrawScreen()
 
 bool ScriptMode::queryFinish()
 {
-  Objects ret;
-
   QString script = mwizard->codeeditor->text();
   Object* scripto = new DataObject( new StringImp( script ) );
-  ret.push_back( scripto );
 
   Object* compiledscript =
     new RealObject( PythonCompileType::instance(), Objects( scripto ) );
@@ -219,12 +217,23 @@ bool ScriptMode::queryFinish()
 
   if ( reto->imp()->inherits( InvalidImp::stype() ) )
   {
-    // TODO: show the error from the python interpreter to the user (
-    // how ?? :) )
-    KMessageBox::sorry(
-      mwizard, i18n( "There seems to be an error in your script; it will not generate "
-                     "a valid object.  Please fix the script, and press the Finish button "
-                     "again." ) );
+    PythonScripter* inst = PythonScripter::instance();
+    QCString errtrace = inst->lastErrorExceptionTraceback().c_str();
+    if ( inst->errorOccurred() )
+    {
+      KMessageBox::detailedSorry(
+        mwizard, i18n( "The Python interpreter caught an error during the execution of your "
+                       "script.  Please fix the script and press the Finish button again." ),
+        i18n( "The Python Interpreter generated the following error output: \n%1").arg( errtrace ) );
+    }
+    else
+    {
+      KMessageBox::sorry(
+        mwizard, i18n( "There seems to be an error in your script.  The Python interpreter "
+                       "reported no errors, but the script does not generate "
+                       "a valid object.  Please fix the script, and press the Finish button "
+                       "again." ) );
+    }
     return false;
   }
   else

@@ -111,13 +111,18 @@ const ObjectImpType* PythonCompileType::resultId() const
 
 ObjectImp* PythonCompileType::calc( const Args& parents, const KigDocument& ) const
 {
-  assert( parents.size() == 1 && parents[0]->inherits( StringImp::stype() ) );
+  assert( parents.size() == 1 );
+  if ( !parents[0]->inherits( StringImp::stype() ) ) return new InvalidImp;
+
   const StringImp* si = static_cast<const StringImp*>( parents[0] );
   QString s = si->data();
 
   CompiledPythonScript cs = PythonScripter::instance()->compile( s.latin1() );
 
-  return new PythonCompiledScriptImp( cs );
+  if ( cs.valid() )
+    return new PythonCompiledScriptImp( cs );
+  else
+    return new InvalidImp();
 }
 
 PythonExecuteType::PythonExecuteType()
@@ -137,7 +142,9 @@ const PythonExecuteType* PythonExecuteType::instance()
 
 ObjectImp* PythonExecuteType::calc( const Args& parents, const KigDocument& d ) const
 {
-  assert( parents[0]->inherits( PythonCompiledScriptImp::stype() ) );
+  assert( parents.size() >= 1 );
+  if( !parents[0]->inherits( PythonCompiledScriptImp::stype() ) ) return new InvalidImp;
+
   CompiledPythonScript& script = static_cast<const PythonCompiledScriptImp*>( parents[0] )->data();
 
   Args args( parents.begin() + 1, parents.end() );

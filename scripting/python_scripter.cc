@@ -312,6 +312,9 @@ PythonScripter::PythonScripter()
   s = newstring( "import kig; from kig import *;" );
   PyRun_SimpleString( s );
   delete [] s;
+  s = newstring( "import traceback;" );
+  PyRun_SimpleString( s );
+  delete [] s;
 
   // find the main namespace..
 
@@ -333,7 +336,6 @@ class CompiledPythonScript::Private
 {
 public:
   int ref;
-  dict mainnamespace;
   object calcfunc;
   // TODO
 //  object movefunc;
@@ -341,6 +343,70 @@ public:
 
 ObjectImp* CompiledPythonScript::calc( const Args& args, const KigDocument& )
 {
+  return PythonScripter::instance()->calc( *this, args );
+}
+
+CompiledPythonScript::~CompiledPythonScript()
+{
+  --d->ref;
+  if ( d->ref == 0 )
+    delete d;
+}
+
+CompiledPythonScript::CompiledPythonScript( Private* ind )
+  : d( ind )
+{
+  ++d->ref;
+}
+
+CompiledPythonScript PythonScripter::compile( const char* code )
+{
+  clearErrors();
+  dict retdict;
+  try
+  {
+    (void) PyRun_String( const_cast<char*>( code ), Py_file_input,
+                         d->mainnamespace.ptr(), retdict.ptr() );
+  }
+  catch( ... )
+  {
+    saveErrors();
+
+    retdict.clear();
+  };
+//  std::string dictstring = extract<std::string>( str( retdict ) );
+
+  CompiledPythonScript::Private* ret = new CompiledPythonScript::Private;
+  ret->ref = 0;
+  ret->calcfunc = retdict.get( "calc" );
+  return CompiledPythonScript( ret );
+}
+
+CompiledPythonScript::CompiledPythonScript( const CompiledPythonScript& s )
+  : d( s.d )
+{
+  ++d->ref;
+}
+
+std::string PythonScripter::lastErrorExceptionType() const
+{
+  return lastexceptiontype;
+}
+
+std::string PythonScripter::lastErrorExceptionValue() const
+{
+  return lastexceptionvalue;
+}
+
+std::string PythonScripter::lastErrorExceptionTraceback() const
+{
+  return lastexceptiontraceback;
+}
+
+ObjectImp* PythonScripter::calc( CompiledPythonScript& script, const Args& args )
+{
+  clearErrors();
+  object calcfunc = script.d->calcfunc;
   try
   {
     std::vector<object> objectvect;
@@ -359,11 +425,11 @@ ObjectImp* CompiledPythonScript::calc( const Args& args, const KigDocument& )
     };
     tuple argstup( argstuph );
 
-    handle<> reth( PyEval_CallObject( d->calcfunc.ptr(), argstup.ptr() ) );
-//    object resulto = d->calcfunc( args );
+    handle<> reth( PyEval_CallObject( calcfunc.ptr(), argstup.ptr() ) );
+//    object resulto = calcfunc( argstup );
+//    handle<> reth( PyEval_CallObject( calcfunc.ptr(), args ) );
     object resulto( reth );
 
-//    handle<> reth( PyEval_CallObject( d->calcfunc.ptr(), args ) );
     extract<ObjectImp&> result( resulto );
     if( ! result.check() ) return new InvalidImp;
     else
@@ -372,67 +438,69 @@ ObjectImp* CompiledPythonScript::calc( const Args& args, const KigDocument& )
       return ret.copy();
     };
   }
-  catch( error_already_set e )
-  {
-    kdDebug() << k_funcinfo << "error_already_set" << endl;
-
-    PyObject* poexctype;
-    PyObject* poexcvalue;
-    PyObject* poexctraceback;
-    PyErr_Fetch( &poexctype, &poexcvalue, &poexctraceback );
-    kdDebug() << poexctype << poexcvalue << poexctraceback << endl;
-    handle<> exctype( poexctype );
-    handle<> excvalue( poexcvalue );
-//    handle<> exctraceback( poexctraceback );
-    kdDebug() << k_funcinfo
-              << "exctype: " << extract<std::string>( str( exctype ) )().c_str() << endl
-              << "excvalue: " << extract<std::string>( str( excvalue ) )().c_str() << endl;
-    return new InvalidImp;
-  }
   catch( ... )
   {
-    kdDebug() << k_funcinfo << "other error" << endl;
-//    throw;
+    saveErrors();
+
     return new InvalidImp;
   };
 }
 
-CompiledPythonScript::~CompiledPythonScript()
+void PythonScripter::saveErrors()
 {
-  --d->ref;
-  if ( d->ref == 0 )
-    delete d;
-}
+  erroroccurred = true;
 
-CompiledPythonScript::CompiledPythonScript( Private* ind )
-{
-  d = ind;
-  ++d->ref;
-}
+  PyObject* poexctype;
+  PyObject* poexcvalue;
+  PyObject* poexctraceback;
+  PyErr_Fetch( &poexctype, &poexcvalue, &poexctraceback );
+  handle<> exctypeh( poexctype );
+  handle<> excvalueh( poexcvalue );
+  handle<> exctracebackh( poexctraceback );
 
-CompiledPythonScript PythonScripter::compile( const char* code )
-{
-  dict retdict;
-  try
+  object exctype( exctypeh );
+  object excvalue( excvalueh );
+  object exctraceback( exctracebackh );
+
+  lastexceptiontype = extract<std::string>( str( exctype ) )();
+  lastexceptionvalue = extract<std::string>( str( excvalue ) )();
+
+  object printexcfunc = d->mainnamespace[ "traceback" ].attr( "format_exception" );
+
+  list tracebacklist = extract<list>( printexcfunc( exctype, excvalue, exctraceback ) )();
+  str tracebackstr( "" );
+  while ( true )
   {
-    (void) PyRun_String( const_cast<char*>( code ), Py_file_input,
-                         d->mainnamespace.ptr(), retdict.ptr() );
+    try {
+      str s = extract<str>( tracebacklist.pop() );
+      tracebackstr += s;
+    }
+    catch( ... )
+    {
+      break;
+    }
   }
-  catch( ... )
-  {
-    retdict.clear();
-  };
-  std::string dictstring = extract<std::string>( str( retdict ) );
 
-  CompiledPythonScript::Private* ret = new CompiledPythonScript::Private;
-  ret->ref = 0;
-  ret->calcfunc = retdict.get( "calc" );
-  ret->mainnamespace = d->mainnamespace;
-  return CompiledPythonScript( ret );
+  lastexceptiontraceback = extract<std::string>( tracebackstr )();
+
+  PyErr_Clear();
 }
 
-CompiledPythonScript::CompiledPythonScript( const CompiledPythonScript& s )
-  : d( s.d )
+void PythonScripter::clearErrors()
 {
-  ++d->ref;
+  lastexceptiontype.clear();
+  lastexceptionvalue.clear();
+  lastexceptiontraceback.clear();
+  erroroccurred = false;
 }
+
+bool CompiledPythonScript::valid()
+{
+  return !!d->calcfunc;
+}
+
+bool PythonScripter::errorOccurred() const
+{
+  return erroroccurred;
+}
+

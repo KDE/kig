@@ -1,3 +1,8 @@
+2003-12-16  Dominique Devriese  <devriese@kde.org>
+
+	* Fix the scrolling for horizontal scrolling using the alt button
+	or a horizontal scroll wheel.
+
 2003-12-15  Dominique Devriese  <devriese@kde.org>
 
 	* Another try at fixing the ArgsParser parsing order.  I think
@@ -21,6 +26,9 @@
 
 2003-10-22  Dominique Devriese  <devriese@kde.org>
 
+	* Improve the errors given by the "New Script Wizard", by making
+	it get a proper error description from the python interpreter.
+	
 	* fix the ArgsParser parsing order, properly this time..
 
 2003-10-09  Dominique Devriese  <devriese@kde.org>
