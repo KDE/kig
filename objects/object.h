@@ -54,7 +54,7 @@ public:
 
   const ObjectImp* imp() const { return mimp.get(); };
   const ObjectType* type() const { return mtype; };
-  const Args fixedArgs() const { return mfixedargs; };
+  const Args& fixedArgs() const { return mfixedargs; };
 
   void setImp( ObjectImp* i );
 
