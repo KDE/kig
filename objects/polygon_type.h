@@ -68,22 +68,23 @@ public:
 };
 
 /**
- * Poligon by center and vertex
+ * Polygon by center and vertex
  */
-class PoligonBCVType
-  : public ArgsParserObjectType
+class PolygonBCVType
+  : public ObjectType
 {
-  PoligonBCVType();
-  ~PoligonBCVType();
+  PolygonBCVType();
+  ~PolygonBCVType();
 public:
-  static const PoligonBCVType* instance();
+  static const PolygonBCVType* instance();
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
   std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
   Args sortArgs( const Args& args ) const;
-
   bool canMove( const ObjectTypeCalcer& o ) const;
   bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const;
   std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;

@@ -259,37 +259,40 @@ std::vector<ObjectCalcer*> PolygonBNPType::movableParents( const ObjectTypeCalce
  * regular polygon by center and vertex
  */
 
-static const char constructpoligonthroughpointstat[] = I18N_NOOP( "Construct a polygon with this vertex" );
+//static const char constructpoligonthroughpointstat[] = I18N_NOOP( "Construct a polygon with this vertex" );
+//
+//static const char constructpoligonwithcenterstat[] = I18N_NOOP( "Construct a polygon with this center" );
+//
+//static const ArgsParser::spec argsspecPoligonBCV[] =
+//{
+//  { PointImp::stype(), constructpoligonwithcenterstat,
+//    I18N_NOOP( "Select the center of the new polygon..." ), false },
+//  { PointImp::stype(), constructpoligonthroughpointstat,
+//    I18N_NOOP( "Select a vertex for the new polygon..." ), true },
+//  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
+//};
 
-static const char constructpoligonwithcenterstat[] = I18N_NOOP( "Construct a polygon with this center" );
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PolygonBCVType )
 
-static const ArgsParser::spec argsspecPoligonBCV[] =
-{
-  { PointImp::stype(), constructpoligonwithcenterstat,
-    I18N_NOOP( "Select the center of the new polygon..." ), false },
-  { PointImp::stype(), constructpoligonthroughpointstat,
-    I18N_NOOP( "Select a vertex for the new polygon..." ), true },
-  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
-};
-
-KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PoligonBCVType )
-
-PoligonBCVType::PoligonBCVType()
-  : ArgsParserObjectType( "PoligonBCV", argsspecPoligonBCV, 3 )
+PolygonBCVType::PolygonBCVType()
+  : ObjectType( "PoligonBCV" )
+// we keep the name "PoligonBCV" although syntactically incorrect for
+// compatibility reasons with old kig files
+//  : ArgsParserObjectType( "PoligonBCV", argsspecPoligonBCV, 3 )
 {
 }
 
-PoligonBCVType::~PoligonBCVType()
+PolygonBCVType::~PolygonBCVType()
 {
 }
 
-const PoligonBCVType* PoligonBCVType::instance()
+const PolygonBCVType* PolygonBCVType::instance()
 {
-  static const PoligonBCVType s;
+  static const PolygonBCVType s;
   return &s;
 }
 
-ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
+ObjectImp* PolygonBCVType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 3 || parents.size() > 4 ) return new InvalidImp;
   for ( uint i = 0; i < 2; ++i )
@@ -330,52 +333,75 @@ ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
   return new PolygonImp( uint (sides), vertexes, center );
 }
 
-const ObjectImpType* PoligonBCVType::resultId() const
+const ObjectImpType* PolygonBCVType::resultId() const
 {
   return SegmentImp::stype();
 }
 
-std::vector<ObjectCalcer*> PoligonBCVType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+const ObjectImpType* PolygonBCVType::impRequirement( const ObjectImp* obj, const Args& parents ) const
+{
+  if ( parents.size() < 3 )
+  {
+    if ( obj->inherits( PointImp::stype() ) )
+      return PointImp::stype();
+  }
+  else if ( obj->inherits( BogusPointImp::stype() ) )
+    return BogusPointImp::stype();
+
+  return 0;
+}
+
+bool PolygonBCVType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  return false;  /* should be true? */
+}
+
+std::vector<ObjectCalcer*> PolygonBCVType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
 {
   return args;  /* should already be in correct order */
 }
 
-Args PoligonBCVType::sortArgs( const Args& args ) const
+Args PolygonBCVType::sortArgs( const Args& args ) const
 {
   return args;
 }
 
-bool PoligonBCVType::canMove( const ObjectTypeCalcer& o ) const
+bool PolygonBCVType::canMove( const ObjectTypeCalcer& o ) const
 {
   return isFreelyTranslatable( o );
 }
 
-bool PoligonBCVType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+bool PolygonBCVType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
 {
   std::vector<ObjectCalcer*> parents = o.parents();
   return parents[0]->isFreelyTranslatable() &&
          parents[1]->isFreelyTranslatable();
 }
 
-void PoligonBCVType::move( ObjectTypeCalcer& o, const Coordinate& to,
+void PolygonBCVType::move( ObjectTypeCalcer& o, const Coordinate& to,
                          const KigDocument& d ) const
 {
   std::vector<ObjectCalcer*> parents = o.parents();
-  assert( margsparser.checkArgs( parents ) );
+  // assert( margsparser.checkArgs( parents ) );
+  if ( ! parents[0]->imp()->inherits( PointImp::stype() ) ||
+       ! parents[1]->imp()->inherits( PointImp::stype() ) ) return;
+
   const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
   parents[0]->move( to, d );
   parents[1]->move( to + b - a, d );
 }
 
-const Coordinate PoligonBCVType::moveReferencePoint( const ObjectTypeCalcer& o) const
+const Coordinate PolygonBCVType::moveReferencePoint( const ObjectTypeCalcer& o) const
 {
   std::vector<ObjectCalcer*> parents = o.parents();
-  assert( margsparser.checkArgs( parents ) );
+  // assert( margsparser.checkArgs( parents ) );
+  if ( ! parents[0]->imp()->inherits( PointImp::stype() ) ) return Coordinate::invalidCoord();
+
   return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
 }
 
-std::vector<ObjectCalcer*> PoligonBCVType::movableParents( const ObjectTypeCalcer& ourobj ) const
+std::vector<ObjectCalcer*> PolygonBCVType::movableParents( const ObjectTypeCalcer& ourobj ) const
 {
   std::vector<ObjectCalcer*> parents = ourobj.parents();
   std::set<ObjectCalcer*> ret;

@@ -554,11 +554,11 @@ bool PolygonSideTypeConstructor::isTransform() const
 }
 
 /*
- * polygon by center and vertex (experimental)
+ * polygon by center and vertex
  */
 
 PolygonBCVConstructor::PolygonBCVConstructor()
-  : mtype( PoligonBCVType::instance() )
+  : mtype( PolygonBCVType::instance() )
 {
 }
 
@@ -568,12 +568,12 @@ PolygonBCVConstructor::~PolygonBCVConstructor()
 
 const QString PolygonBCVConstructor::descriptiveName() const
 {
-  return i18n("Regular polygon with given center (experimental)");
+  return i18n("Regular polygon with given center");
 }
 
 const QString PolygonBCVConstructor::description() const
 {
-  return i18n("Construct a regular polygon with a given center and vertex (experimental)");
+  return i18n("Construct a regular polygon with a given center and vertex");
 }
 
 const QCString PolygonBCVConstructor::iconFileName( const bool ) const
@@ -774,79 +774,6 @@ int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
   if ( nsides < 3 ) nsides = 3;
   if ( nsides > 100 ) nsides = 100;     // well, 100 seems large enough!
   return nsides;
-}
-
-/*
- * poligon by center and vertex
- */
-
-PoligonBCVConstructor::PoligonBCVConstructor(
-  const char* descname, const char* desc, const char* iconfile,
-  int sides )
-  : StandardConstructorBase( descname, desc,
-                             iconfile, mparser ),
-    mtype( PoligonBCVType::instance() ), 
-    mparser( mtype->argsParser().without( IntImp::stype() ) ),
-    msides( sides )
-{
-}
-
-PoligonBCVConstructor::~PoligonBCVConstructor()
-{
-}
-
-void PoligonBCVConstructor::drawprelim( const ObjectDrawer& drawer, 
-                      KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                      const KigDocument& doc) const
-{
-  if ( parents.size() != 2 ) return;
-  assert ( parents[0]->imp()->inherits( PointImp::stype() ) &&
-           parents[1]->imp()->inherits( PointImp::stype() ) );
-
-  Args args;
-  std::transform( parents.begin(), parents.end(),
-               std::back_inserter( args ), std::mem_fun( &ObjectCalcer::imp ) );
-
-  args.push_back( new IntImp( msides ) );
-  ObjectImp* data = mtype->calc( args, doc );
-  drawer.draw( *data, p, true );
-  delete data;
-  data = 0;
-}
-
-std::vector<ObjectHolder*> PoligonBCVConstructor::build(
-  const std::vector<ObjectCalcer*>& os, KigDocument&, KigWidget& ) const
-{
-  assert( os.size() == 2 );
-  std::vector<ObjectHolder*> ret;
-  ObjectConstCalcer* sidesint = new ObjectConstCalcer( new IntImp( msides ) );
-
-  std::vector<ObjectCalcer*> args = os;
-  args.push_back( sidesint );
-  ret.push_back(
-    new ObjectHolder(
-      new ObjectTypeCalcer(
-        PoligonBCVType::instance(), args ) ) );
-
-  return ret;
-}
-
-QString PoligonBCVConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>&,
-                                          const KigDocument&, const KigWidget& ) const
-{
-  if ( msides == 5 )
-    return i18n( "Construct the pentagon with this center" );
-
-  return i18n( "Construct the polygon with this center" );
-}
-
-void PoligonBCVConstructor::plug( KigPart*, KigGUIAction* )
-{
-}
-
-bool PoligonBCVConstructor::isTransform() const
-{
-  return false;
 }
 
 /*

@@ -92,7 +92,7 @@ public:
 class PolygonBCVConstructor
   : public ObjectConstructor
 {
-  const ArgsParserObjectType* mtype;
+  const ObjectType* mtype;
 public:
   PolygonBCVConstructor();
   ~PolygonBCVConstructor();
@@ -126,26 +126,6 @@ public:
   void plug( KigPart* doc, KigGUIAction* kact );
   bool isTransform() const;
   int computeNsides( const Coordinate& c, const Coordinate& v, const Coordinate& cntrl ) const;
-};
-
-class PoligonBCVConstructor
-  : public StandardConstructorBase
-{
-  const ArgsParserObjectType* mtype;
-  const ArgsParser mparser;
-  const int msides;
-public:
-  PoligonBCVConstructor(
-    const char* descname, const char* desc, const char* iconfile,
-    int sides );
-  ~PoligonBCVConstructor();
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-                   const KigWidget& v ) const;
-  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
-  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
-  void plug( KigPart* doc, KigGUIAction* kact );
-
-  bool isTransform() const;
 };
 
 class MeasureTransportConstructor
