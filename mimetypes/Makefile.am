@@ -4,3 +4,5 @@ kdemimedir=$(kde_mimedir)/application
 
 magicdir = $(kde_confdir)/magic
 magic_DATA = cabri.magic drgeo.magic
+
+KDE_ICON = AUTO
