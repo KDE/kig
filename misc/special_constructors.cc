@@ -593,19 +593,16 @@ const int PolygonBCVConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
 {
   if ( os.size() > 3 ) return ArgsParser::Invalid;
 
-  for ( uint i = 0; i < os.size(); ++i )
+  uint imax = ( os.size() <= 2) ? os.size() : 2;
+  for ( uint i = 0; i < imax; ++i )
     if ( ! ( os[i]->imp()->inherits( PointImp::stype() ) ) ) return ArgsParser::Invalid;
 
-  if ( os.size() == 3 )
-  {
-    assert( dynamic_cast<const ObjectTypeCalcer*>( os[2] ) );
-    ObjectTypeCalcer* cntrl = static_cast<ObjectTypeCalcer*>( os[2] );
-    if ( cntrl->type()->inherits( ObjectType::ID_FixedPointType ) )
-      return ArgsParser::Complete;
-    return ArgsParser::Invalid;
-  }
+  if ( os.size() < 3 ) return ArgsParser::Valid;
 
-  return ArgsParser::Valid;
+  if ( ! ( os[2]->imp()->inherits( BogusPointImp::stype() ) ) ) 
+    return ArgsParser::Invalid;
+
+  return ArgsParser::Complete;
 }
 
 void PolygonBCVConstructor::handleArgs(
@@ -640,7 +637,7 @@ void PolygonBCVConstructor::handlePrelim(
   int nsides = 6;
   if ( os.size() == 3 )
   {
-    assert ( os[2]->imp()->inherits( PointImp::stype() ) );
+    assert ( os[2]->imp()->inherits( BogusPointImp::stype() ) );
     Coordinate cntrl = static_cast<const PointImp*>( os[2]->imp() )->coordinate();
     nsides = computeNsides( c, v, cntrl );
   }

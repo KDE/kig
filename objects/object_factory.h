@@ -31,6 +31,12 @@ public:
   ObjectHolder* fixedPoint( const Coordinate& c ) const;
   ObjectTypeCalcer* fixedPointCalcer( const Coordinate& c ) const;
 
+  // this returns a CursorPointType; this is used during special
+  // constructions (e.g. regular polygons) where the constructor
+  // wants to use the cursor position without actually generating
+  // an object depending on a new point there.
+  ObjectTypeCalcer* cursorPointCalcer( const Coordinate& c ) const;
+
   // this returns a relative point (to an object). Note that the returned object
   // is not added to the document..
   ObjectTypeCalcer* relativePointCalcer( ObjectCalcer* o, const Coordinate& loc ) const;

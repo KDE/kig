@@ -78,4 +78,14 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+class BogusPointImp
+  : public PointImp
+{
+public:
+  BogusPointImp( const Coordinate& c );
+  ~BogusPointImp();
+  static const ObjectImpType* stype();
+  const ObjectImpType* type() const;
+};
+
 #endif

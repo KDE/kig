@@ -72,6 +72,26 @@ public:
 //                      KigPart& d, KigWidget& w, NormalMode& m ) const;
 };
 
+class CursorPointType
+  : public ObjectType
+{
+  CursorPointType();
+  ~CursorPointType();
+
+public:
+  static const CursorPointType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
+  Args sortArgs( const Args& args ) const;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
+             const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class ConstrainedPointType
   : public ArgsParserObjectType
 {

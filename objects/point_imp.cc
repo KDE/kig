@@ -187,3 +187,37 @@ Rect PointImp::surroundingRect() const
 {
   return Rect( mc, 0., 0. );
 }
+
+/*
+ */
+
+BogusPointImp::BogusPointImp( const Coordinate& c )
+  : PointImp( c )
+{
+}
+
+BogusPointImp::~BogusPointImp()
+{
+}
+
+const ObjectImpType* BogusPointImp::stype()
+{
+  static const ObjectImpType t(
+    0, "boguspoint",
+    "SHOULDNOTBESEEN",
+    "SHOULDNOTBESEEN",
+    "SHOULDNOTBESEEN",
+    "SHOULDNOTBESEEN",
+    "SHOULDNOTBESEEN",
+    "SHOULDNOTBESEEN",
+    "SHOULDNOTBESEEN",
+    "SHOULDNOTBESEEN",
+    "SHOULDNOTBESEEN"
+    );
+  return &t;
+}
+
+const ObjectImpType* BogusPointImp::type() const
+{
+  return BogusPointImp::stype();
+}

@@ -52,6 +52,15 @@ ObjectTypeCalcer* ObjectFactory::fixedPointCalcer( const Coordinate& c ) const
   return oc;
 }
 
+ObjectTypeCalcer* ObjectFactory::cursorPointCalcer( const Coordinate& c ) const
+{
+  std::vector<ObjectCalcer*> args;
+  args.push_back( new ObjectConstCalcer( new DoubleImp( c.x ) ) );
+  args.push_back( new ObjectConstCalcer( new DoubleImp( c.y ) ) );
+  ObjectTypeCalcer* oc = new ObjectTypeCalcer( CursorPointType::instance(), args );
+  return oc;
+}
+
 const ObjectFactory* ObjectFactory::instance()
 {
   static ObjectFactory f;

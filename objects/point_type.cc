@@ -91,6 +91,38 @@ ObjectImp* RelativePointType::calc( const Args& parents, const KigDocument& ) co
   return new PointImp( reference + Coordinate( a, b ) );
 }
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CursorPointType )
+
+CursorPointType::CursorPointType()
+  : ObjectType( "CursorPoint" )
+{
+}
+
+CursorPointType::~CursorPointType()
+{
+}
+
+const CursorPointType* CursorPointType::instance()
+{
+  static const CursorPointType t;
+  return &t;
+}
+
+ObjectImp* CursorPointType::calc( const Args& parents, const KigDocument& ) const
+{
+  assert ( parents[0]->inherits( DoubleImp::stype() ) );
+  assert ( parents[1]->inherits( DoubleImp::stype() ) );
+  double a = static_cast<const DoubleImp*>( parents[0] )->data();
+  double b = static_cast<const DoubleImp*>( parents[1] )->data();
+
+  return new BogusPointImp( Coordinate( a, b ) );
+}
+
+const ObjectImpType* CursorPointType::resultId() const
+{
+  return BogusPointImp::stype();
+}
+
 ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigDocument& doc ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
@@ -154,6 +186,23 @@ void RelativePointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
   oy->setImp( new DoubleImp( to.y - attach.y ) );
 }
 
+void CursorPointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
+                           const KigDocument& ) const
+{
+  // fetch the old coord..;
+
+  std::vector<ObjectCalcer*> pa = ourobj.parents();
+  assert( pa.size() == 2 );
+  assert( dynamic_cast<ObjectConstCalcer*>( pa.front() ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( pa.back() ) );
+
+  ObjectConstCalcer* ox = static_cast<ObjectConstCalcer*>( pa.front() );
+  ObjectConstCalcer* oy = static_cast<ObjectConstCalcer*>( pa.back() );
+
+  ox->setImp( new DoubleImp( to.x ) );
+  oy->setImp( new DoubleImp( to.y ) );
+}
+
 void ConstrainedPointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
                                  const KigDocument& d ) const
 {
@@ -197,6 +246,11 @@ bool RelativePointType::canMove( const ObjectTypeCalcer& ) const
 }
 
 bool RelativePointType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
+{
+  return true;
+}
+
+bool CursorPointType::canMove( const ObjectTypeCalcer& ) const
 {
   return true;
 }
@@ -272,6 +326,27 @@ const ObjectImpType* RelativePointType::resultId() const
 const ObjectImpType* ConstrainedPointType::resultId() const
 {
   return PointImp::stype();
+}
+
+const ObjectImpType* CursorPointType::impRequirement( const ObjectImp*, const Args& parents ) const
+{
+  if ( parents.size() >= 2 ) return 0;
+  return DoubleImp::stype();
+}
+
+bool CursorPointType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  return false;
+}
+
+std::vector<ObjectCalcer*> CursorPointType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+{
+  return args;
+}
+
+Args CursorPointType::sortArgs( const Args& args ) const
+{
+  return args;
 }
 
 const ObjectImpType* MidPointType::resultId() const

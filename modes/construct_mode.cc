@@ -50,10 +50,14 @@ BaseConstructMode::BaseConstructMode( KigPart& d )
 {
   mpt = ObjectFactory::instance()->fixedPointCalcer( Coordinate( 0, 0 ) );
   mpt->calc( d.document() );
+  mcursor = ObjectFactory::instance()->cursorPointCalcer( Coordinate( 0, 0 ) );
+  mcursor->calc( d.document() );
+  mcursorholder = new ObjectHolder( mcursor );
 }
 
 BaseConstructMode::~BaseConstructMode()
 {
+  delete mcursorholder;
 }
 
 void BaseConstructMode::leftClickedObject(
@@ -90,6 +94,19 @@ void BaseConstructMode::leftClickedObject(
     // get a new mpt for our further use..
     mpt = ObjectFactory::instance()->sensiblePointCalcer( w.fromScreen( p ), mdoc.document(), w );
     mpt->calc( mdoc.document() );
+    return;
+  }
+
+  nargs = getCalcers( mparents );
+  nargs.push_back( mcursor );
+
+  if ( wantArgs( nargs, mdoc.document(), w ) )
+  {
+    // DON'T add mpt to the document..
+    // the objectholder has been constructed once and for all
+    // when entering construction mode, and delete in the
+    // destructor.
+    selectObject( mcursorholder, w );
   }
 }
 
@@ -127,6 +144,8 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
     ncoord = mdoc.document().coordinateSystem().snapToGrid( ncoord, w );
 
   redefinePoint( mpt.get(), ncoord, mdoc.document(), w );
+  mcursor->move( ncoord, mdoc.document() );
+  mcursor->calc( mdoc.document() );
 
   std::vector<ObjectCalcer*> args = getCalcers( mparents );
   bool duplicationchecked = false;
@@ -149,6 +168,8 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
   {
     std::vector<ObjectCalcer*> args = getCalcers( mparents );
     args.push_back( mpt.get() );
+    std::vector<ObjectCalcer*> argscursor = getCalcers( mparents );
+    argscursor.push_back( mcursor );
     if ( wantArgs( args, mdoc.document(), w ) )
     {
       ObjectDrawer d;
@@ -157,6 +178,15 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
       handlePrelim( args, p, pter, w );
 
       w.setCursor( KCursor::handCursor() );
+    }
+    else if ( wantArgs( argscursor, mdoc.document(), w ) )
+    {
+      ObjectDrawer d;
+//      d.draw( *mcursor->imp(), pter, true );
+
+      handlePrelim( argscursor, p, pter, w );
+
+      w.setCursor( KCursor::crossCursor() );
     }
     else
     {
