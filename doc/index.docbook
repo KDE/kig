@@ -97,8 +97,9 @@
 	    <listitem>
 	      <para>
 		Select <menuchoice><guimenu>Objects</guimenu>
-		<guisubmenu>Points</guisubmenu><guimenuitem>Normal
-		Point</guimenuitem></menuchoice> from the menubar or
+		<guisubmenu>Points</guisubmenu>
+		<guimenuitem>Point</guimenuitem></menuchoice> from the
+		menubar or
 		press the appropriate button in the toolbar.  You can
 		then construct a point by clicking at the desired
 		position in the window.</para>  <note><para>Actually, this
@@ -120,9 +121,7 @@
 		You can construct points while you are building other
 		objects in the background, optionally selecting them
 		for the object you are building.  For more on this,
-		see the <link
-		linkend="constructing-other-objects">section
-		below</link>.
+		see the section <xref linkend="constructing-other-objects" />.
 	      </para>
 	    </listitem>
 	  </itemizedlist>
@@ -175,7 +174,7 @@
 	  the object, so you 'll know what it will look like.  For objects that require
 	  points as arguments, you can place a new point at the
 	  current cursor position and select it by clicking the
-	  <mousebutton>left</mousebutton> mouse button.
+	  &LMB;.
 	</para>
 	<para>
 	  You can always cancel the construction of the new object by
@@ -303,7 +302,7 @@
       <para>
 	To unhide the objects, use the
 	<menuchoice><guimenu>Edit</guimenu><guimenuitem>Unhide
-	all...</guimenuitem></menuchoice>.  This will unhide all
+	all</guimenuitem></menuchoice>. This will unhide all
 	currently hidden objects.
       </para>
     </section>
@@ -321,14 +320,14 @@
       <para>
 	&kig; also has a Full Screen mode.  To use it, click the
 	appropriate button on the toolbar, or select
-	<menuchoice><guimenu>View</guimenu><guimenuitem>Full
-	Screen</guimenuitem></menuchoice>.
+	<menuchoice><guimenu>Settings</guimenu><guimenuitem>Full
+	Screen Mode</guimenuitem></menuchoice>.
       </para>
       <para>
 	To leave Full Screen mode,
 	&RMB; click the screen at a place
 	where there is no object present, and select
-	<guimenuitem>Exit Full Screen Mode</guimenuitem>, or press the
+	<guimenuitem>Toggle Full Screen Mode</guimenuitem>, or press the
 	&Esc; key. 
       </para>
     </section>
@@ -457,7 +456,7 @@
 	created an object, it is saved on exit and loaded on startup.
 	You do not have to manually save or load macro definitions.
 	However, &kig; does allow you to do more with the macros.  If
-	you select <guimenuitem>Manage Types</guimenuitem> from the
+	you select <guimenuitem>Manage Types...</guimenuitem> from the
 	<guimenu>Types</guimenu> menu, you will see a dialog where you
 	can edit your types.  It allows you to delete types that are
 	no longer used, export them to a file, or even load them from
@@ -609,8 +608,8 @@ Let's look at an example of how to use locuses in &kig;:
 	travels while the first one moves around the circle is its locus.
       </para>
       <para>
-	Actually constructing the locus of a point is very easy.  Click the locus
-	button in the toolbar, or select
+	Actually constructing the locus of a point is very easy.  Click
+	the <guiicon>locus</guiicon> button in the toolbar, or select
 	<menuchoice><guimenu>Objects</guimenu>
 	  <guisubmenu>Other</guisubmenu>
 	  <guimenuitem>Locus</guimenuitem>
@@ -641,12 +640,13 @@ Let's look at an example of how to use locuses in &kig;:
       then &kig; will show it for you.
     </para>
     <para>
-      Suppose you were not aware of the &kig; builtin MidPoint type,
+      Suppose you were not aware of the &kig; builtin type
+      <quote>Mid Point</quote>,
       and you wanted to show the midpoint of two given points.  You
       would then click on the <guibutton>Python Script</guibutton>
       button in the toolbar, or select <menuchoice>
       <guimenu>Objects</guimenu> <guisubmenu>Other</guisubmenu>
-      <guimenuitem>Script Object</guimenuitem> </menuchoice> from the
+      <guimenuitem>Python Script</guimenuitem> </menuchoice> from the
       menubar.  You are then presented with a wizard that allows you
       to proceed.
     </para>
@@ -680,8 +680,8 @@ Let's look at an example of how to use locuses in &kig;:
       definition of the function.
     </para>
     <para>
-      The python function that we want to define is called
-      <quote>calc</quote>, and in our case it accepts two arguments.
+      The Python function that we want to define is called
+      <function>calc</function>, and in our case it accepts two arguments.
       These are the objects you have selected as arguments in the
       previous screen.  You need as many arguments as you have
       selected there.  They are called <parameter>arg1</parameter> and
@@ -692,7 +692,8 @@ Let's look at an example of how to use locuses in &kig;:
       In the function, you can do all sorts of calculations that you
       deem necessary, using the two arguments if needed.  You should
       return the object you want to define.  In our case, this is a
-      Point object.  The two arguments are also <classname>Point</classname> objects, and we
+      <classname>Point</classname> object.  The two arguments are also
+      <classname>Point</classname> objects, and we
       can use the <function>Point.coordinate()</function> function to
       define the coordinates of the two given points.
     </para>
