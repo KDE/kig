@@ -1,0 +1,37 @@
+[Colors]
+Background=255,255,255
+Draw=0,0,0
+
+[Main]
+Axes=true
+Grid=true
+Number=3
+Numbers=true
+Scaling=false
+Version=KGeo 1.0.2
+XMax=11
+YMax=7
+
+[Object 1]
+Color=0,0,0
+Geo=1
+Parents=
+Position=1
+QPointX=8.3
+QPointY=1.4
+Size=3
+
+[Object 2]
+Color=0,0,0
+Geo=1
+Parents=
+Position=1
+QPointX=4.8
+QPointY=4.2
+Size=3
+
+[Object 3]
+Color=0,0,0
+Geo=2
+Parents=1,2
+Size=1

@@ -1,1 +1,1 @@
-SUBDIRS = objects misc icons filters kig
+SUBDIRS = objects misc icons filters examples kig
