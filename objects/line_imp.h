@@ -25,18 +25,26 @@
 
 class LineData;
 
+/**
+ * An ObjectImp class that is the base of the line-like ObjectImp's:
+ * SegmentImp, LineImp and RayImp..
+ */
 class AbstractLineImp
   : public CurveImp
 {
 protected:
   LineData mdata;
+  AbstractLineImp( const LineData& d );
+  AbstractLineImp( const Coordinate& a, const Coordinate& b );
 
 public:
   typedef CurveImp Parent;
+  /**
+   * Returns the ObjectImpType representing the AbstractLineImp
+   * type..
+   */
   static const ObjectImpType* stype();
 
-  AbstractLineImp( const LineData& d );
-  AbstractLineImp( const Coordinate& a, const Coordinate& b );
   ~AbstractLineImp();
 
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
@@ -48,21 +56,46 @@ public:
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
 
+  /**
+   * Get the slope of this AbstractLineImp..  For a line through
+   * points a( xa, ya ) and b ( xb, yb ), this means the value ( yb -
+   * ya ) / ( xb - xa ).
+   */
   double slope() const;
+  /**
+   * Get a string containing the equation of this line in the form "y
+   * = a * x + b ".
+   */
   const QString equationString() const;
+  /**
+   * Get the LineData for this AbstractLineImp.
+   */
   LineData data() const;
 
   bool equals( const ObjectImp& rhs ) const;
 };
 
+/**
+ * An ObjectImp representing a segment
+ */
 class SegmentImp
   : public AbstractLineImp
 {
 public:
   typedef AbstractLineImp Parent;
+  /**
+   * Returns the ObjectImpType representing the SegmentImp
+   * type..
+   */
   static const ObjectImpType* stype();
 
+  /**
+   * Construct a new segment from point a to point b.
+   */
   SegmentImp( const Coordinate& a, const Coordinate& b );
+  /**
+   * Construct a new segment from a LineData.
+   */
   SegmentImp( const LineData& d );
 
   void draw( KigPainter& p ) const;
@@ -82,20 +115,39 @@ public:
 
   SegmentImp* copy() const;
 
+  /**
+   * Get the length of this segment.
+   */
   double length() const;
+
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 };
 
+/**
+ * An ObjectImp representing a ray. This means half of a line, it is
+ * infinite in one direction, but ends at a certain point in the other
+ * direction..
+ */
 class RayImp
   : public AbstractLineImp
 {
 public:
   typedef AbstractLineImp Parent;
+  /**
+   * Returns the ObjectImpType representing the RayImp
+   * type..
+   */
   static const ObjectImpType* stype();
 
+  /**
+   * Construct a ray, starting at a, and going through b.
+   */
   RayImp( const Coordinate& a, const Coordinate& b );
+  /**
+   * Construct a ray from a LineData.
+   */
   RayImp( const LineData& d );
 
   void draw( KigPainter& p ) const;
@@ -112,14 +164,28 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 };
 
+/**
+ * An ObjectImp representing a line.
+ */
 class LineImp
   : public AbstractLineImp
 {
 public:
   typedef AbstractLineImp Parent;
+
+  /**
+   * Returns the ObjectImpType representing the LineImp
+   * type..
+   */
   static const ObjectImpType* stype();
 
+  /**
+   * Construct a LineImp going through points a and b.
+   */
   LineImp( const Coordinate& a, const Coordinate& b );
+  /**
+   * Construct a LineImp from a LineData.
+   */
   LineImp( const LineData& d );
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const;

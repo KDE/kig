@@ -21,13 +21,19 @@
 
 #include "object_imp.h"
 
-//  abc (abstract base class) representing a curve: something which is
-//  composed of points, like a line, a circle, a locus...
+/**
+ * This class represents a curve: something which is composed of
+ * points, like a line, a circle, a locus...
+ */
 class CurveImp
   : public ObjectImp
 {
 public:
   typedef ObjectImp Parent;
+
+  /**
+   * Returns the ObjectImpType representing the CurveImp type.
+   */
   static const ObjectImpType* stype();
 
   // param is between 0 and 1.  Note that 0 and 1 should be the
@@ -39,7 +45,7 @@ public:
   // Note that it should also do something reasonable when p is not on
   // the curve.
   virtual const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const = 0;
-  bool inherits( int type ) const;
+
   virtual CurveImp* copy() const = 0;
 };
 

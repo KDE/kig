@@ -297,7 +297,7 @@ OPTIMIZE_OUTPUT_JAVA   = NO
 # at the bottom of the documentation of classes and structs. If set to YES the 
 # list will mention the files that were used to generate the documentation.
 
-SHOW_USED_FILES        = YES
+SHOW_USED_FILES        = NO
 
 #---------------------------------------------------------------------------
 # configuration options related to warning and progress messages
@@ -360,6 +360,7 @@ INPUT                  = \
 	objects/point_imp.h \
 	objects/line_imp.h \
 	objects/conic_imp.h \
+	objects/bogus_imp.h \ 
 	objects/circle_imp.h
 
 # If the value of the INPUT tag contains directories, you can use the 

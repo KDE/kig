@@ -42,11 +42,12 @@ class RayImp;
 class ArcImp;
 
 /**
- * This is some OO magic commonly referred to as "double dispatch".
- * If you need to do some action on an ObjectImp, and you need to do
- * something different dependent on the type of o, then make a Visitor
- * class that inherits this interface, and implements the appropriate
- * functions properly, and call "o->visit( my_visitor );".
+ * \internal This is some OO magic commonly referred to as "double
+ * dispatch". If you need to do some action on an ObjectImp, and you
+ * need to do something different dependent on the type of o, then
+ * make a Visitor class that inherits this interface, and implements
+ * the appropriate functions properly, and call "o->visit( my_visitor
+ * );".
  */
 class ObjectImpVisitor
 {
@@ -139,30 +140,30 @@ public:
    */
   QString translatedName() const;
   /**
-   * returns a translated string of the form "Select this %1" (
-   * e.g. "Select this segment" ).
+   * Returns a translated string of the form "Select this %1".
+   * E.g. "Select this segment".
    */
   const char* selectStatement() const;
 
   /**
-   * Returns a translated string of the form "Remove a xxx" (
-   * e.g. "Remove a segment" ).
+   * Returns a translated string of the form "Remove a xxx".
+   * E.g. "Remove a segment".
    */
   QString removeAStatement() const;
   /**
-   * returns a translated string of the form "Add a xxx" (
-   * e.g. "Add a segment" ).
+   * Returns a translated string of the form "Add a xxx".
+   * E.g. "Add a segment".
    */
   QString addAStatement() const;
   /**
-   * returns a translated string of the form "Move a xxx" (
-   * e.g. "Move a segment" ).
+   * Returns a translated string of the form "Move a xxx".
+   * E.g. "Move a segment".
    */
   QString moveAStatement() const;
   /**
-   * returns a translated string of the form "Attach to this xxx" (
-   * e.g. "Attach to this segment" ). ( used by the text label
-   * construction mode )
+   * Returns a translated string of the form "Attach to this xxx".
+   * E.g. "Attach to this segment".
+   * \internal This is used by the text label construction mode
    */
   QString attachToThisStatement() const;
 };
@@ -187,7 +188,18 @@ public:
   virtual ~ObjectImp();
 
   /**
-   * Does this ObjectImp inherit the ObjectImp type represented by t ?
+   * Returns true if this ObjectImp inherits the ObjectImp type
+   * represented by t.
+   * E.g. you can check whether an ObjectImp is a LineImp by doing:
+   * \if creating-python-scripting-doc
+   * \code
+   * if object.inherits( LineImp.stype() ):
+   * \endcode
+   * \else
+   * \code
+   * if( object.inherits( LineImp::stype() )
+   * \endcode
+   * \endif
    */
   bool inherits( const ObjectImpType* t ) const;
 
@@ -202,7 +214,9 @@ public:
   virtual bool inRect( const Rect& r, int width,
                        const KigWidget& si ) const = 0;
   /**
-   * Is this a valid ObjectImp ?
+   * Returns true if this is a valid ObjectImp.
+   * If you want to return an invalid ObjectImp, you should return an
+   * InvalidImp instance.
    */
   bool valid() const;
 
@@ -223,14 +237,27 @@ public:
   virtual const char* iconForProperty( uint which ) const;
 
   /**
-   * Returns the lowermost ObjectImp type that this object is an
+   * Returns the lowermost ObjectImpType that this object is an
    * instantiation of.
+   * E.g. if you want to get a string containing the internal name of
+   * the type of an object, you can do:
+   * \if creating-python-scripting-doc
+   * \code
+   * tn = object.type().internalName()
+   * \endcode
+   * \else
+   * \code
+   * std::string typename = object.type()->internalName();
+   * \endcode
+   * \endif
    */
   virtual const ObjectImpType* type() const = 0;
   virtual void visit( ObjectImpVisitor* vtor ) const = 0;
 
   /**
    * Returns a copy of this ObjectImp.
+   * The copy is an exact copy.  Changes to the copy don't affect the
+   * original.
    */
   virtual ObjectImp* copy() const = 0;
 
@@ -247,9 +274,11 @@ public:
   virtual void fillInNextEscape( QString& s, const KigDocument& ) const;
 
   /**
-   * this function checks whether rhs is of the same imp type, and
-   * whether it contains the same data.  It is used by the KigCommand
-   * stuff to see what the user has changed during a move..
+   * Returns true if this ObjectImp is equal to rhs.
+   * This function checks whether rhs is of the same ObjectImp type,
+   * and whether it contains the same data as this ObjectImp.
+   * \internal It is used e.g. by the KigCommand stuff to see what the
+   * user has changed during a move..
    */
   virtual bool equals( const ObjectImp& rhs ) const = 0;
 

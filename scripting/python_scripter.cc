@@ -126,31 +126,49 @@ BOOST_PYTHON_MODULE_INIT( kig )
     ;
 
   class_<CurveImp, bases<ObjectImp>, boost::noncopyable>( "Curve", no_init )
+    .def( "stype", &CurveImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
 //    .def( "getParam", &CurveImp::getParam )
 //    .def( "getPoint", &CurveImp::getPoint );
     ;
   class_<PointImp, bases<ObjectImp> >( "Point", init<Coordinate>() )
+    .def( "stype", &PointImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
     .def( "coordinate", &PointImp::coordinate,
           return_internal_reference<1>() )
     .def( "setCoordinate", &PointImp::setCoordinate )
     ;
 
   class_<AbstractLineImp, bases<CurveImp>, boost::noncopyable >( "AbstractLine", no_init )
+    .def( "stype", &AbstractLineImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
     .def( "slope", &AbstractLineImp::slope )
     .def( "equationString", &AbstractLineImp::equationString )
     .def( "data", &AbstractLineImp::data )
     ;
 
   class_<SegmentImp, bases<AbstractLineImp> >( "Segment", init<Coordinate, Coordinate>() )
+    .def( "stype", &SegmentImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
     .def( init<LineData>() )
     .def( "length", &SegmentImp::length )
     ;
 
   class_<RayImp, bases<AbstractLineImp> >( "Ray", init<Coordinate, Coordinate>() )
+    .def( "stype", &RayImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
     .def( init<LineData>() )
     ;
 
   class_<LineImp, bases<AbstractLineImp> >( "Line", init<Coordinate, Coordinate>() )
+    .def( "stype", &LineImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
     .def( init<LineData>() )
     ;
 
@@ -169,6 +187,9 @@ BOOST_PYTHON_MODULE_INIT( kig )
     ;
 
   class_<ConicImp, bases<CurveImp>, boost::noncopyable >( "Conic", no_init )
+    .def( "stype", &ConicImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
     .def( "conicType", &ConicImp::conicType )
 //    .def( "conicTypeString", &ConicImp::conicTypeString )
 //    .def( "cartesianEquationString", &ConicImp::cartesianEquationString )
@@ -185,11 +206,50 @@ BOOST_PYTHON_MODULE_INIT( kig )
     ;
 
   class_<CircleImp, bases<ConicImp> >( "Circle", init<Coordinate, double>() )
+    .def( "stype", &CircleImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
     .def( "center", &CircleImp::center )
     .def( "radius", &CircleImp::radius )
     .def( "squareRadius", &CircleImp::squareRadius )
     .def( "surface", &CircleImp::surface )
     .def( "circumference", &CircleImp::circumference )
+    ;
+
+  class_<BogusImp, bases<ObjectImp>, boost::noncopyable >( "Bogus", no_init )
+    .def( "stype", &BogusImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    ;
+
+  class_<InvalidImp, bases<BogusImp> >( "Invalid", init<>() )
+    .def( "stype", &InvalidImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    ;
+
+  class_<DoubleImp, bases<BogusImp> >( "Double", init<double>() )
+    .def( "stype", &DoubleImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "data", &DoubleImp::data )
+    .def( "setData", &DoubleImp::setData )
+    ;
+
+  class_<IntImp, bases<BogusImp> >( "Int", init<int>() )
+    .def( "stype", &IntImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "data", &IntImp::data )
+    .def( "setData", &IntImp::setData )
+    ;
+
+  class_<StringImp, bases<BogusImp> >( "String", no_init )
+    .def( "stype", &StringImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+//     .def( "data", &StringImp::data )
+//     .def( "setData", &StringImp::setData )
     ;
 };
 

@@ -310,3 +310,11 @@ const ObjectImpType* IntImp::stype()
   return &t;
 }
 
+const ObjectImpType* BogusImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "bogus",
+    0, 0, 0, 0, 0, 0 );
+  return &t;
+}
+

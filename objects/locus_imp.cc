@@ -182,7 +182,7 @@ void LocusImp::getInterval( double& x1, double& x2,
 
 double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
 {
-  // thiis function ( and related functions like getInterval etc. ) is
+  // this function ( and related functions like getInterval etc. ) is
   // written by Franco Pasquarelli <pasqui@dmf.bs.unicatt.it>.
   // I ( domi ) have adapted and documented it a bit.
 

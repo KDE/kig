@@ -22,18 +22,33 @@
 #include "object_imp.h"
 #include "../misc/coordinate.h"
 
+/**
+ * An ObjectImp representing a point..
+ */
 class PointImp
   : public ObjectImp
 {
   Coordinate mc;
 public:
   typedef ObjectImp Parent;
+  /**
+   * Returns the ObjectImpType representing PointImp's.
+   */
   static const ObjectImpType* stype();
 
+  /**
+   * Construct a PointImp with coordinate c.
+   */
   PointImp( const Coordinate& c );
   ~PointImp();
 
+  /**
+   * Get the coordinate of this PointImp.
+   */
   const Coordinate& coordinate() const { return mc; };
+  /**
+   * Set the coordinate of this PointImp.
+   */
   void setCoordinate( const Coordinate& c );
 
   void draw( KigPainter& p ) const;

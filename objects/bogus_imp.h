@@ -26,18 +26,25 @@
 #include <qstring.h>
 
 /**
- * These ObjectImp's are not really in that they don't represent
- * objects.  They exist because ObjectImp's also serve another
- * purpose, namely containing data.  They can be loaded and saved, and
- * the Object class contains some fixedArgs, that are fixed for the
- * object at hand ( e.g. the Coordinates of a fixed point ).  These
- * ObjectImp's are pure data, and serve only to be loaded and saved..
+ * This is the base class for the so-called BogusImp's.  These
+ * ObjectImp's are not really ObjectImp's, in that they don't
+ * represent objects.  They exist because ObjectImp's also serve
+ * another purpose, namely containing data.  They can all be loaded
+ * and saved, and the only difference between these objects and normal
+ * objects are that these serve *only* to be loaded and saved.  This
+ * approach adds a lot of flexibility to the Kig system, and has
+ * certainly proven itself very valuable.
  */
 class BogusImp
   : public ObjectImp
 {
   typedef ObjectImp Parent;
 public:
+  /**
+   * Returns the ObjectImpType representing the BogusImp type.
+   */
+  static const ObjectImpType* stype();
+
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& w ) const;
   bool inRect( const Rect& r, int width, const KigWidget& w ) const;
@@ -45,13 +52,24 @@ public:
   ObjectImp* transform( const Transformation& ) const;
 };
 
+/**
+ * This ObjectImp represents an invalid object.  If a calculation
+ * fails, then often an InvalidImp is returned, indicating that the
+ * generated object is invalid.
+ */
 class InvalidImp
   : public BogusImp
 {
 public:
+  /**
+   * Returns the ObjectImpType representing the InvalidImp type.
+   */
   static const ObjectImpType* stype();
   typedef BogusImp Parent;
 
+  /**
+   * Construct a new InvalidImp.
+   */
   InvalidImp();
   InvalidImp* copy() const;
 
@@ -64,17 +82,32 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+/**
+ * This ObjectImp is a BogusImp containing only a double value.
+ */
 class DoubleImp
   : public BogusImp
 {
   double mdata;
 public:
+  /**
+   * Returns the ObjectImpType representing the DoubleImp type.
+   */
   static const ObjectImpType* stype();
   typedef BogusImp Parent;
 
+  /**
+   * Construct a new DoubleImp containing the value d.
+   */
   DoubleImp( const double d );
 
+  /**
+   * Get hold of the contained data.
+   */
   double data() const { return mdata; };
+  /**
+   * Set the contained data to d.
+   */
   void setData( double d ) { mdata = d; };
 
   DoubleImp* copy() const;
@@ -88,17 +121,32 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+/**
+ * This ObjectImp is a BogusImp containing only an int value.
+ */
 class IntImp
   : public BogusImp
 {
   int mdata;
 public:
+  /**
+   * Returns the ObjectImpType representing the IntImp type..
+   */
   static const ObjectImpType* stype();
   typedef BogusImp Parent;
 
+  /**
+   * Construct a new IntImp containing the value d.
+   */
   IntImp( const int d );
 
+  /**
+   * Get hold of the contained data.
+   */
   int data() const { return mdata; };
+  /**
+   * Set the contained data to d.
+   */
   void setData( int d )  { mdata = d; }
 
   IntImp* copy() const;
@@ -112,17 +160,32 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+/**
+ * This ObjectImp is a BogusImp containing only a string value.
+ */
 class StringImp
   : public BogusImp
 {
   QString mdata;
 public:
+  /**
+   * Returns the ObjectImpType representing the StringImp type..
+   */
   static const ObjectImpType* stype();
   typedef BogusImp Parent;
 
+  /**
+   * Construct a new StringImp containing the string d.
+   */
   StringImp( const QString& d );
 
+  /**
+   * Get hold of the contained data.
+   */
   const QString& data() const { return mdata; };
+  /**
+   * Set the contained data.
+   */
   void setData( const QString& s ) { mdata = s; }
 
   StringImp* copy() const;
@@ -159,11 +222,11 @@ public:
 };
 
 /**
- * Don't mistake this imp for something that draws a transformed
- * object.  It does something completely different.  It's a pure data
- * Imp, like DoubleImp and friends that serves only to store the data
- * of a transformation ( see the Transformation class in
- * ../misc/kigtransform.h
+ * \internal Don't mistake this imp for something that draws a
+ * transformed object.  It does something completely different.  It's
+ * a pure data Imp, like DoubleImp and friends that serves only to
+ * store the data of a transformation ( see the Transformation class
+ * in ../misc/kigtransform.h
  */
 class TransformationImp
   : public BogusImp
