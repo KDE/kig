@@ -424,8 +424,10 @@ void LatexExportImpVisitor::visit( const PolygonImp* imp )
   int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
 
-  mstream << "\\pspolygon[linecolor=" << mcurcolorid << ",linewidth=" << width / 100.0
-          << "," << writeStyle( mcurobj->drawer()->style() ) << "]";
+  mstream << "\\pspolygon[linecolor=" << mcurcolorid << ",linewidth=0"
+          << "," << writeStyle( mcurobj->drawer()->style() )
+          << ",hatchcolor=" << mcurcolorid << ",hatchwidth=0.5pt,hatchsep=0.5pt"
+          << ",fillcolor=" << mcurcolorid << ",fillstyle=crosshatch]";
 
   std::vector<Coordinate> pts = imp->points();
   for ( uint i = 0; i < pts.size(); i++ )
