@@ -39,6 +39,7 @@
 #include "../objects/tests_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
+#include "../objects/poligon_type.h"
 
 #include <klocale.h>
 
@@ -445,6 +446,14 @@ void setupBuiltinStuff()
 
     /* ----------- start polygons --------- */
 
+    c = new SimpleObjectTypeConstructor(
+      TriangleB3PType::instance(),
+      I18N_NOOP( "Triangle by its vertices" ),
+      I18N_NOOP( "Construct a triangle given its three vertices." ),
+      "triangle" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_trianglebtp" ) );
+
     c = new PoligonBCVConstructor(
 	I18N_NOOP( "Equilateral triangle with given center" ),
 	I18N_NOOP( "Construct an equilateral triangle with a given center and vertex." ),
@@ -509,6 +518,9 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_decagonbcv" ) );
 
+    c = new PolygonVertexTypeConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_polygonvertices" ));
     /* ----------- end polygons --------- */
 
     c = new LocusConstructor();

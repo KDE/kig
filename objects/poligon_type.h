@@ -21,6 +21,21 @@
 #include "base_type.h"
 
 /**
+ * Triangle by its vertices
+ */
+class TriangleB3PType
+  : public ArgsParserObjectType
+{
+  TriangleB3PType();
+  ~TriangleB3PType();
+public:
+  static const TriangleB3PType* instance();
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+/**
  * Poligon by center and vertex
  */
 class PoligonBCVType
@@ -31,6 +46,17 @@ class PoligonBCVType
 public:
   static const PoligonBCVType* instance();
 
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+class PolygonVertexType
+  : public ArgsParserObjectType
+{
+  PolygonVertexType();
+  ~PolygonVertexType();
+public:
+  static const PolygonVertexType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };

@@ -20,6 +20,20 @@
 
 #include "object_constructor.h"
 
+class PolygonVertexTypeConstructor
+  : public StandardConstructorBase
+{
+  ArgsParser margsparser;
+public:
+  PolygonVertexTypeConstructor();
+  ~PolygonVertexTypeConstructor();
+
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
+  void plug( KigPart* doc, KigGUIAction* kact );
+  bool isTransform() const;
+};
+
 class PoligonBCVConstructor
   : public StandardConstructorBase
 {

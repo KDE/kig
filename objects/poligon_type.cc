@@ -28,6 +28,56 @@
 #include <cmath>
 #include <vector>
 
+/*
+ * triangle by its vertices
+ */
+
+static const char constructstatement[] = I18N_NOOP( "Construct a triangle with this vertex" );
+static const char constructstatement2[] = I18N_NOOP( "Select a point to be a vertex of the new triangle..." );
+
+static const struct ArgsParser::spec argsspecTriangleB3P[] =
+{
+  { PointImp::stype(), constructstatement, constructstatement2, true },
+  { PointImp::stype(), constructstatement, constructstatement2, true },
+  { PointImp::stype(), constructstatement, constructstatement2, true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TriangleB3PType )
+
+TriangleB3PType::TriangleB3PType()
+  : ArgsParserObjectType( "TriangleB3P", argsspecTriangleB3P, 3 )
+{
+}
+
+TriangleB3PType::~TriangleB3PType()
+{
+}
+
+const TriangleB3PType* TriangleB3PType::instance()
+{
+  static const TriangleB3PType s;
+  return &s;
+}
+
+ObjectImp* TriangleB3PType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents, 1 ) ) return new InvalidImp;
+  std::vector<Coordinate> points;
+
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+    points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+  return new PolygonImp( points );
+}
+
+const ObjectImpType* TriangleB3PType::resultId() const
+{
+  return PolygonImp::stype();
+}
+
+/*
+ * regular polygon by center and vertex
+ */
+
 static const char constructpoligonthroughpointstat[] = I18N_NOOP( "Construct a polygon with this vertex" );
 
 static const char constructpoligonwithcenterstat[] = I18N_NOOP( "Construct a polygon with this center" );
@@ -91,4 +141,45 @@ ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
 const ObjectImpType* PoligonBCVType::resultId() const
 {
   return SegmentImp::stype();
+}
+
+static const ArgsParser::spec argsspecPolygonVertex[] =
+{
+  { PolygonImp::stype(), I18N_NOOP( "Construct the vertices of this polygon" ),
+    I18N_NOOP( "Select the polygon of which you want to construct the vertices..." ), true },
+  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PolygonVertexType )
+
+PolygonVertexType::PolygonVertexType()
+  : ArgsParserObjectType( "PolygonVertex", argsspecPolygonVertex, 2 )
+{
+}
+
+PolygonVertexType::~PolygonVertexType()
+{
+}
+
+const PolygonVertexType* PolygonVertexType::instance()
+{
+  static const PolygonVertexType t;
+  return &t;
+}
+
+ObjectImp* PolygonVertexType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  const std::vector<Coordinate> ppoints = static_cast<const PolygonImp*>( parents[0] )->points();
+  const uint i = static_cast<const IntImp*>( parents[1] )->data();
+
+  if ( i >= ppoints.size() ) return new InvalidImp;
+
+  return new PointImp( ppoints[i] );
+}
+
+const ObjectImpType* PolygonVertexType::resultId() const
+{
+  return PointImp::stype();
 }

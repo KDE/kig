@@ -1,3 +1,10 @@
+2005-01-09  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* new action to construct the vertices of a polygon
+
+	* new action to construct a generic triangle (as a polygon) given
+	its vertices
+
 2004-12-28  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* polygons are filled; no boundary drawn

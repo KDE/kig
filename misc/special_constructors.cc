@@ -268,6 +268,72 @@ bool LocusConstructor::isTransform() const
 }
 
 /*
+ * construction of polygon vertices
+ */
+
+static const struct ArgsParser::spec argsspecpv[] =
+{
+  { PolygonImp::stype(), I18N_NOOP( "Polygon" ),
+    I18N_NOOP( "Construct the vertices of this polygon..." ), true }
+};
+
+PolygonVertexTypeConstructor::PolygonVertexTypeConstructor()
+  : StandardConstructorBase( I18N_NOOP( "Vertices of a Polygon" ), 
+       I18N_NOOP( "The vertices of a polygon." ),
+       "polygonvertices", margsparser ),
+    margsparser( argsspecpv, 1 )
+{
+}
+
+PolygonVertexTypeConstructor::~PolygonVertexTypeConstructor()
+{
+}
+
+void PolygonVertexTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+                                   const KigDocument& ) const
+{
+  if ( parents.size() != 1 ) return;
+
+  const PolygonImp* polygon = dynamic_cast<const PolygonImp*>( parents.front()->imp() );
+  const std::vector<Coordinate> points = polygon->points();
+
+  int sides = points.size();
+  for ( int i = 0; i < sides; ++i )
+  {
+    PointImp point = PointImp( points[i] );
+    drawer.draw( point, p, true );
+  }
+}
+
+std::vector<ObjectHolder*> PolygonVertexTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
+{
+  std::vector<ObjectHolder*> ret;
+  assert( parents.size() == 1 );
+  const PolygonImp* polygon = dynamic_cast<const PolygonImp*>( parents.front()->imp() );
+  const std::vector<Coordinate> points = polygon->points();
+
+  int sides = points.size();
+
+  for ( int i = 0; i < sides; ++i )
+  {
+    ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( i ) );
+    std::vector<ObjectCalcer*> args( parents );
+    args.push_back( d );
+    ret.push_back( new ObjectHolder( new ObjectTypeCalcer( PolygonVertexType::instance(), args ) ) );
+  }
+  return ret;
+}
+
+void PolygonVertexTypeConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool PolygonVertexTypeConstructor::isTransform() const
+{
+  return false;
+}
+
+/*
  * poligon by center and vertex
  */
 
