@@ -44,7 +44,7 @@ RealObject* ObjectFactory::fixedPoint( const Coordinate& c )
   args.push_back( x );
   args.push_back( y );
   RealObject* o = new RealObject( FixedPointType::instance(), args );
-  o->setWidth( 5 );
+  o->setWidth( -1 );
   return o;
 }
 
