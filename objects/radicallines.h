@@ -25,10 +25,6 @@
 #include "point.h"
 #include "../misc/common.h"
 
-std::pair<Coordinate, Coordinate> calcConicRadical( const ConicCartesianEquationData& cequation1,
-                                                    const ConicCartesianEquationData& cequation2,
-                                                    int which, int zeroindex, bool& valid );
-
 class MultiConstructibleType;
 
 /**

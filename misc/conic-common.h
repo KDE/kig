@@ -138,4 +138,8 @@ const LineData calcConicAsymptote(
   const ConicCartesianEquationData data,
   int which, bool &valid );
 
+const LineData calcConicRadical( const ConicCartesianEquationData& cequation1,
+                                 const ConicCartesianEquationData& cequation2,
+                                 int which, int zeroindex, bool& valid );
+
 #endif // KIG_MISC_CONIC_COMMON_H
