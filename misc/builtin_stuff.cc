@@ -334,13 +334,13 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_castshadow" ) );
 
-    c = new SimpleObjectTypeConstructor(
-      ProjectiveRotationType::instance(),
-      I18N_NOOP( "Rotate Projectively" ),
-      I18N_NOOP( "An object projectively rotated by an angle and a ray" ),
-      "projectiverotation" );
-    ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_projectiverotation" ) );
+//     c = new SimpleObjectTypeConstructor(
+//       ProjectiveRotationType::instance(),
+//       I18N_NOOP( "Rotate Projectively" ),
+//       I18N_NOOP( "An object projectively rotated by an angle and a ray" ),
+//       "projectiverotation" );
+//     ctors->add( c );
+//     actions->add( new ConstructibleAction( c, "objects_new_projectiverotation" ) );
 
     c = new MultiObjectTypeConstructor(
       ConicAsymptoteType::instance(),

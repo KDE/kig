@@ -353,11 +353,17 @@ const Transformation Transformation::castShadow(
 
   Coordinate modlightsrc = sym.apply ( lightsrc );
   Transformation ret = identity();
-  ret.mdata[0][0] =  2*modlightsrc.y;
+  // parameter t indicates the distance of the light source from
+  // the plane of the drawing. A negative value means that the light
+  // source is behind the plane.
+  double t = -1.0;
+  //  double t = -modlightsrc.y;    <-- this gives the old transformation!
+  double e = modlightsrc.y - t;
+  ret.mdata[0][0] =  e;
   ret.mdata[0][2] = -1;
-  ret.mdata[1][1] =  2*modlightsrc.y;
+  ret.mdata[1][1] =  e;
   ret.mdata[1][2] = -modlightsrc.x;
-  ret.mdata[2][2] =  modlightsrc.y;
+  ret.mdata[2][2] =  -t;
 
   ret.mIsHomothety = false;
   return sym*ret*sym;
