@@ -14,7 +14,7 @@
 
 2004-06-13  Pino Toscano <toscano.pino@tiscali.it>
 
-	* Add the possibility to attach a label ( and to a point, of
+	* Add the possibility to attach a label ( and a point, of
 	course :) ) to a vector. This because now VectorImp inherits
 	CurveImp.
 
