@@ -280,4 +280,22 @@ void Rect::eat( const Rect& r )
   setTop( kigMax( top(), r.top() ) );
 }
 
+Rect Rect::matchShape( const Rect& rhs, bool shrink ) const
+{
+  Rect ret = *this;
+  Coordinate c = center();
+  double v = width()/height(); // current ratio
+  double w = rhs.width()/rhs.height(); // wanted ratio
+
+  // we don't show less than r, if the dimensions don't match, we
+  // extend r into some dimension...
+  if( ( v > w ) ^ shrink )
+    ret.setHeight( ret.width() / w );
+  else
+    ret.setWidth( ret.height() * w );
+
+  ret.setCenter(c);
+  return ret.normalized();
+}
+
 

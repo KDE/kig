@@ -81,13 +81,19 @@ public:
   Rect& operator/=( const double r ) { scale(1/r); return *this; };
 
   /**
-   * This expands the rect so that it contains r.  It has synonyms
+   * This expands the rect so that it contains r.  It has friends
    * '|=' and '|' below...
    */
   void eat( const Rect& r );
 
   // synonym for eat..
   Rect& operator|=( const Rect& rhs ) { eat( rhs ); return *this; };
+
+  // return a rect which is a copy of this rect, but has an aspect
+  // ratio equal to rhs's one..  if shrink is true, the rect will be
+  // shrunk, otherwise extended..  The center of the new rect is the
+  // same as this rect's center..
+  Rect matchShape( const Rect& rhs, bool shrink = false ) const;
 
   QRect toQRect() const;
   Coordinate bottomLeft() const;
