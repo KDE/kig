@@ -62,6 +62,7 @@ public:
   ArgParser without( int type ) const;
   // checks if os matches the argument list this parser should parse..
   int check( const Objects& os ) const;
+  int check( const Args& os ) const;
   // returns the usetext for the argument that o would be used for,
   // if sel.with( o ) were used as parents..
   // o is not in sel.

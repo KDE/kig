@@ -45,36 +45,6 @@ ArgParser::ArgParser( const std::vector<spec>& args, const std::vector<const cha
 {
 }
 
-int ArgParser::check( const Objects& os ) const
-{
-  int numberofanyobjects = manyobjsspec.size();
-
-  std::vector<bool> found( margs.size() );
-
-  for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
-  {
-    for ( uint i = 0; i < margs.size(); ++i )
-    {
-      if ( (*o)->hasimp( margs[i].type ) && !found[i] )
-      {
-        // object o is of a type that we're looking for
-        found[i] = true;
-        // i know that "goto's are evil", but they're very useful and
-        // completely harmless if you use them as better "break;"
-        // statements.. trust me ;)
-        goto matched;
-      };
-    };
-    // object o is not of a type in margs..
-    if ( --numberofanyobjects < 0 ) return Invalid;
-  matched:
-    ;
-  };
-  if ( numberofanyobjects > 0 ) return Valid;
-  for( uint i = 0; i < margs.size(); ++i )
-    if ( !found[i] ) return Valid;
-  return Complete;
-}
 
 static bool hasimp( const Object& o, int imptype )
 {
@@ -86,14 +56,59 @@ static bool hasimp( const ObjectImp& o, int imptype )
   return o.inherits( imptype );
 };
 
-Args ArgParser::parse( const Args& os ) const
+// we use a template method that is used for both Objects and Args to
+// not have to write the same thing twice..
+template <class Collection>
+static int check( const Collection& c, int numberofanyobjects,
+                  const std::vector<ArgParser::spec>& margs )
+{
+  std::vector<bool> found( margs.size() );
+
+  for ( typename Collection::const_iterator o = c.begin(); o != c.end(); ++o )
+  {
+    for ( uint i = 0; i < margs.size(); ++i )
+    {
+      if ( hasimp( **o, margs[i].type ) && !found[i] )
+      {
+        // object o is of a type that we're looking for
+        found[i] = true;
+        // i know that "goto's are evil", but they're very useful and
+        // completely harmless if you use them as better "break;"
+        // statements.. trust me ;)
+        goto matched;
+      };
+    };
+    // object o is not of a type in margs..
+    if ( --numberofanyobjects < 0 ) return ArgsChecker::Invalid;
+  matched:
+    ;
+  };
+  if ( numberofanyobjects > 0 ) return ArgsChecker::Valid;
+  for( uint i = 0; i < margs.size(); ++i )
+    if ( !found[i] ) return ArgsChecker::Valid;
+  return ArgsChecker::Complete;
+};
+
+int ArgParser::check( const Args& os ) const
+{
+  return ::check( os, manyobjsspec.size(), margs );
+}
+
+int ArgParser::check( const Objects& os ) const
+{
+  return ::check( os, manyobjsspec.size(), margs );
+}
+
+template <class Collection>
+Collection parse( const Collection& os, uint numberofanyobjects,
+                  const std::vector<ArgParser::spec> margs )
 {
 //  assert( check( os ) != Invalid );
-  Args ret( margs.size() + manyobjsspec.size(), 0 );
+  Collection ret( margs.size() + numberofanyobjects, 0 );
 
   uint anyobjscounter = 0;
 
-  for ( Args::const_iterator o = os.begin(); o != os.end(); ++o )
+  for ( typename Collection::const_iterator o = os.begin(); o != os.end(); ++o )
   {
     for( uint i = 0; i < margs.size(); ++i )
       if ( hasimp( **o, margs[i].type ) && ret[i] == 0 )
@@ -102,36 +117,22 @@ Args ArgParser::parse( const Args& os ) const
         ret[i] = *o;
         goto added;
       }
-    assert( anyobjscounter < manyobjsspec.size() );
+    assert( anyobjscounter < numberofanyobjects );
     ret[margs.size() + anyobjscounter++]= *o;
   added:
     ;
   };
   return ret;
+};
+
+Args ArgParser::parse( const Args& os ) const
+{
+  return ::parse( os, manyobjsspec.size(), margs );
 }
 
 Objects ArgParser::parse( const Objects& os ) const
 {
-//  assert( check( os ) != Invalid );
-  Objects ret( margs.size() + manyobjsspec.size(), 0 );
-
-  uint anyobjscounter = 0;
-
-  for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
-  {
-    for( uint i = 0; i < margs.size(); ++i )
-      if ( hasimp( **o, margs[i].type ) && ret[i] == 0 )
-      {
-        // object o is of a type that we're looking for
-        ret[i] = *o;
-        goto added;
-      }
-    assert( anyobjscounter < manyobjsspec.size() );
-    ret[margs.size() + anyobjscounter++]= *o;
-  added:
-    ;
-  };
-  return ret;
+  return ::parse( os, manyobjsspec.size(), margs );
 }
 
 int CheckOneArgs::check( const Objects& os ) const
