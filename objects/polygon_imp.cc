@@ -107,12 +107,13 @@ bool PolygonImp::valid() const
 
 const uint PolygonImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties();
+  return Parent::numberOfProperties() + 1;
 }
 
 const QCStringList PolygonImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
+  l += "polygon-circumference";
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -120,6 +121,7 @@ const QCStringList PolygonImp::propertiesInternalNames() const
 const QCStringList PolygonImp::properties() const
 {
   QCStringList l = Parent::properties();
+  l += I18N_NOOP( "Circumference" );
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -136,6 +138,8 @@ const char* PolygonImp::iconForProperty( uint which ) const
   assert( which < PolygonImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() )
+    return "circumference"; // circumference
   else assert( false );
   return "";
 }
@@ -145,6 +149,17 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
   assert( which < PolygonImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
+  else if ( which == Parent::numberOfProperties() )
+  {
+    double circumference = 0.;
+    // circumference
+    for ( uint i = 0; i < mpoints.size(); ++i )
+    {
+      uint prev = ( i + mpoints.size() - 1 ) % mpoints.size();
+      circumference += ( mpoints[i] - mpoints[prev] ).length();
+    }
+    return new DoubleImp( circumference );
+  }
   else assert( false );
   return new InvalidImp;
 }
