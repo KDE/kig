@@ -393,7 +393,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   // we multiply by sqrt( 2 ) cause we don't want to miss circles in
   // the corners, that intersect with the axes outside of the
   // screen..
-  
+
   const double hmax = M_SQRT2*p.window().right();
   const double hmin = M_SQRT2*p.window().left();
   const double vmax = M_SQRT2*p.window().top();
@@ -422,16 +422,18 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   /****** the grid lines ******/
   if ( showgrid )
   {
-    double begin = kigMin( hgraphmin, vgraphmin );
-    double end = kigMax( hgraphmax, vgraphmax );
     double d = kigMin( hd, vd );
+    double begin = kigMin( kigAbs( hgraphmin ), kigAbs( vgraphmin ) );
+    if ( kigSgn( hgraphmin ) != kigSgn( hgraphmax ) && kigSgn( vgraphmin ) != kigSgn( vgraphmax ) )
+      begin = d;
+    double end = kigMax( hgraphmax, vgraphmax );
 
     // we also want the circles that don't fit entirely in the
     // screen..
     Coordinate c( 0, 0 );
     p.setPen( QPen( lightGray, 0, DotLine ) );
     for ( double i = begin; i <= end + d / 2; i += d )
-      p.drawCircle( c, fabs( i ) );
+      drawGridLine( p, c, fabs( i ) );
   }
 
   /****** the axes ******/
@@ -659,4 +661,76 @@ Coordinate PolarCoords::snapToGrid( const Coordinate& c,
   double dist = c.length();
   double ndist = qRound( dist / d ) * d;
   return c.normalize( ndist );
+}
+
+void PolarCoords::drawGridLine( KigPainter& p, const Coordinate& c,
+                                double r ) const
+{
+  Rect rect = p.window();
+
+  struct iterdata_t
+  {
+    int xd;
+    int yd;
+    Coordinate ( Rect::*point )() const;
+    Coordinate ( Rect::*oppositepoint )() const;
+    double horizAngle;
+    double vertAngle;
+  };
+
+  iterdata_t iterdata[] =
+    {
+      { +1, +1, &Rect::topRight, &Rect::bottomLeft, 0, M_PI/2 },
+      { -1, +1, &Rect::topLeft, &Rect::bottomRight, M_PI, M_PI / 2 },
+      { -1, -1, &Rect::bottomLeft, &Rect::topRight, M_PI, 3*M_PI/2 },
+      { +1, -1, &Rect::bottomRight, &Rect::topLeft, 2*M_PI, 3*M_PI/2 }
+    };
+  for ( int i = 0; i < 4; ++i )
+  {
+    int xd = iterdata[i].xd;
+    int yd = iterdata[i].yd;
+    Coordinate point = ( rect.*iterdata[i].point )();
+    Coordinate opppoint = ( rect.*iterdata[i].oppositepoint )();
+    double horizangle = iterdata[i].horizAngle;
+    double vertangle = iterdata[i].vertAngle;
+
+    if ( ( c.x - point.x )*xd > 0 || ( c.y - point.y )*yd > 0 )
+      continue;
+    if ( ( c.x - opppoint.x )*-xd > r || ( c.y - opppoint.y )*-yd > r )
+      continue;
+
+    int posdir = xd*yd;
+    double hd = ( point.x - c.x )*xd;
+    assert( hd >= 0 );
+    if ( hd < r )
+    {
+      double anglediff = acos( hd/r );
+      horizangle += posdir * anglediff;
+    }
+
+    hd = ( c.x - opppoint.x )*-xd;
+    if ( hd >= 0 )
+    {
+      double anglediff = asin( hd/r );
+      vertangle -= posdir * anglediff;
+    }
+
+    double vd = ( point.y - c.y )*yd;
+    assert( vd >= 0 );
+    if ( vd < r )
+    {
+      double anglediff = acos( vd/r );
+      vertangle -= posdir * anglediff;
+    }
+
+    vd = ( c.y - opppoint.y ) * -xd;
+    if ( vd >= 0 )
+    {
+      double anglediff = asin( hd/r );
+      horizangle += posdir * anglediff;
+    }
+
+    p.drawArc( c, r, kigMin( horizangle, vertangle ), kigMax( horizangle, vertangle ) );
+  }
+//  p.drawCircle( c, r );
 }

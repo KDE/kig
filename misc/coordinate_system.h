@@ -104,6 +104,8 @@ public:
 class PolarCoords
   : public CoordinateSystem
 {
+  void drawGridLine( KigPainter& p, const Coordinate& center,
+                     double radius ) const;
 public:
   PolarCoords();
   ~PolarCoords();

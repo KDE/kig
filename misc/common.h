@@ -275,6 +275,18 @@ T kigMax( const T& a, const T& b )
   return a > b ? a : b;
 }
 
+template <typename T>
+T kigAbs( const T& a )
+{
+  return a >= 0 ? a : -a;
+}
+
+template <typename T>
+int kigSgn( const T& a )
+{
+  return a == 0 ? 0 : a > 0 ? +1 : -1;
+}
+
 extern const double test_threshold;
 
 #endif
