@@ -86,29 +86,6 @@ ObjectImp* RayABType::calc( const Coordinate& a, const Coordinate& b ) const
   return new RayImp( a, b );
 }
 
-const struct ArgParser::spec ObjectLPType::argsspec[] =
-{
-  { ObjectImp::ID_LineImp, 1 },
-  { ObjectImp::ID_PointImp, 1 }
-};
-
-ObjectLPType::ObjectLPType( const char* basename, const char* fullname )
-  : ObjectType( basename, fullname, argsspec, 2 )
-{
-}
-
-ObjectLPType::~ObjectLPType()
-{
-}
-
-ObjectImp* ObjectLPType::calc( const Args& args, const KigWidget& ) const
-{
-  if( args.size() != 2 ) return new InvalidImp;
-  LineData l = static_cast<const LineImp*>( args[0] )->data();
-  Coordinate c = static_cast<const PointImp*>( args[1] )->coordinate();
-  return calc( l, c );
-}
-
 LinePerpendLPType* LinePerpendLPType::instance()
 {
   static LinePerpendLPType l;

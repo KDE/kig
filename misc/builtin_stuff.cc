@@ -214,6 +214,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_vector" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      ParabolaBDPType::instance(),
+      I18N_NOOP( "Parabola by directrix and focus" ),
+      I18N_NOOP( "A parabola defined by its directrix and focus" ),
+      "parabolabdp" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_parabolabdp" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;

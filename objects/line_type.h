@@ -54,19 +54,6 @@ public:
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
 };
 
-class ObjectLPType
-  : public ObjectType
-{
-  static const struct ArgParser::spec argsspec[];
-protected:
-  ObjectLPType( const char* basename, const char* fullname );
-  ~ObjectLPType();
-public:
-  ObjectImp* calc( const Args& args, const KigWidget& ) const;
-
-  virtual ObjectImp* calc( const LineData& a, const Coordinate& b ) const = 0;
-};
-
 class LinePerpendLPType
   : public ObjectLPType
 {

@@ -134,5 +134,15 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& ) const;
 };
 
+class ParabolaBDPType
+  : public ObjectLPType
+{
+  ParabolaBDPType();
+  ~ParabolaBDPType();
+public:
+  static const ParabolaBDPType* instance();
+  ObjectImp* calc( const LineData& l, const Coordinate& c ) const;
+};
+
 #endif
 

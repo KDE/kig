@@ -369,3 +369,34 @@ ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents,
       pts.push_back( static_cast<const PointImp*>( *i )->coordinate() );
   return new ConicImpCart( calcConicThroughPoints( pts, equilateral ) );
 }
+
+ParabolaBDPType::ParabolaBDPType()
+  : ObjectLPType( "conic", "ParabolaBDP" )
+{
+}
+
+ParabolaBDPType::~ParabolaBDPType()
+{
+}
+
+const ParabolaBDPType* ParabolaBDPType::instance()
+{
+  static const ParabolaBDPType t;
+  return &t;
+}
+
+ObjectImp* ParabolaBDPType::calc( const LineData& l,
+                                  const Coordinate& c ) const
+{
+  ConicPolarData ret;
+  Coordinate ldir = l.dir();
+  ldir = ldir.normalize();
+  ret.focus1 = c;
+  ret.ecostheta0 = - ldir.y;
+  ret.esintheta0 = ldir.x;
+  Coordinate fa = c - l.a;
+  ret.pdimen = fa.y*ldir.x - fa.x*ldir.y;
+  ConicImpPolar* r = new ConicImpPolar( ret );
+  kdDebug() << k_funcinfo << r->conicTypeString() << endl;
+  return r;
+}

@@ -21,6 +21,8 @@
 
 #include "object_type.h"
 
+class LineData;
+
 class ObjectABType
   : public ObjectType
 {
@@ -42,6 +44,19 @@ class ObjectABCType
 protected:
   ObjectABCType( const char* basetypename, const char* fulltypename );
   ~ObjectABCType();
+};
+
+class ObjectLPType
+  : public ObjectType
+{
+  static const struct ArgParser::spec argsspec[];
+protected:
+  ObjectLPType( const char* basename, const char* fullname );
+  ~ObjectLPType();
+public:
+  ObjectImp* calc( const Args& args, const KigWidget& ) const;
+
+  virtual ObjectImp* calc( const LineData& a, const Coordinate& b ) const = 0;
 };
 
 #endif

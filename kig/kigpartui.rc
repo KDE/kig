@@ -58,6 +58,7 @@
 	<Action name="objects_new_hyperbolabffp" />
 	<Action name="objects_new_conicb5p" />
 	<Action name="objects_new_parabolabtp" />
+	<Action name="objects_new_parabolabdp" />
 	<Action name="objects_new_equilateralhyperbolab4p" />
 	<Action name="objects_new_conicbdfp" />
 	<Action name="objects_new_conicbaap" />
