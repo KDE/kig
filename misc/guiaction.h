@@ -48,6 +48,7 @@ public:
   virtual QString description() const = 0;
   virtual QCString iconFileName() const = 0;
   virtual QString descriptiveName() const = 0;
+  virtual QCString actionName() const = 0;
   virtual int shortcut() const;
   virtual void act( KigDocument& ) = 0;
 };
@@ -64,6 +65,7 @@ public:
   QString description() const;
   QCString iconFileName() const;
   QString descriptiveName() const;
+  QCString actionName() const;
   void act( KigDocument& );
 };
 
@@ -74,6 +76,7 @@ public:
   QString description() const;
   QCString iconFileName() const;
   QString descriptiveName() const;
+  QCString actionName() const;
   void act( KigDocument& );
 };
 

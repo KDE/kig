@@ -23,12 +23,15 @@ class GUIAction;
 
 class GUIActionList
 {
+public:
   typedef std::vector<GUIAction*> vectype;
+private:
   vectype mactions;
   GUIActionList();
   ~GUIActionList();
 public:
   static GUIActionList* instance();
+  const vectype& actions() const { return mactions; };
   void add( GUIAction* a );
 };
 
