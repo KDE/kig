@@ -125,9 +125,8 @@ void NormalMode::objectsRemoved()
 
 void NormalMode::editTypes()
 {
-//   TypesDialog* d = new TypesDialog( mdoc.widget() );
-//   d->exec();
-//   delete d;
+  TypesDialog d( mdoc.widget() );
+  d.exec();
 }
 
 NormalMode::NormalMode( KigDocument& d )

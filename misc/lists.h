@@ -119,6 +119,11 @@ public:
    * unregistering the action and ctor from the relevant places..
    */
   void remove( Macro* m );
+
+  /**
+   * get access to the list of macro's..
+   */
+  const vectype& macros() const;
 };
 
 #endif

@@ -180,3 +180,12 @@ void MacroList::remove( Macro* m )
   ObjectConstructorList::instance()->remove( c );
 }
 
+const MacroList::vectype& MacroList::macros() const
+{
+  return mdata;
+}
+
+Macro::~Macro()
+{
+}
+
