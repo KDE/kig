@@ -85,7 +85,6 @@ public:
   // moving
   void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
-  void stopMove();
 
   void calc();
 

@@ -102,10 +102,6 @@ void LineTTP::moveTo(const Coordinate& p)
   pt2->moveTo( p );
 }
 
-void LineTTP::stopMove()
-{
-}
-
 void LineTTP::calc()
 {
   if( !pt1->valid() || !pt2->valid() )

@@ -97,16 +97,16 @@ public:
 
   static KigMode* sConstructMode( Type*, KigDocument*, NormalMode* );
 
-  virtual void addActions( NormalModePopupObjects& );
-  virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& cp );
+  void addActions( NormalModePopupObjects& );
+  void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m, const Coordinate& cp );
 
-  virtual Objects getParents() const;
-  virtual void calc();
+  Objects getParents() const;
+  void calc();
 
   //moving
-  virtual void startMove( const Coordinate& c, const ScreenInfo& );
-  virtual void moveTo( const Coordinate& c );
-  virtual void stopMove();
+  void startMove( const Coordinate& c, const ScreenInfo& );
+  void moveTo( const Coordinate& c );
+  void stopMove();
 };
 
 class FixedPointImp;
