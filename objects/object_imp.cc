@@ -350,3 +350,8 @@ const char* ObjectImp::iconForProperty( uint ) const
   return "text";
 }
 
+bool ObjectImp::canFillInNextEscape() const
+{
+  return false;
+}
+

@@ -517,10 +517,21 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
   {
     ObjectImp* prop = o->property( i, popup.document() );
     const char* iconfile = o->iconForProperty( i );
-    if ( ( menu == NormalModePopupObjects::ConstructMenu &&
-           prop->inherits( ObjectImp::ID_PointImp ) &&
-           ! o->hasimp( ObjectImp::ID_PointImp ) ) ||
-         ( menu == NormalModePopupObjects::ShowMenu ) )
+    bool add = true;
+    if ( menu == NormalModePopupObjects::ConstructMenu )
+    {
+      // we don't want imp's like DoubleImp, since we can't show them
+      // anyway..
+      add &= ! prop->inherits( ObjectImp::ID_BogusImp );
+      // we don't want to construct PointImp's coordinate property,
+      // since it would construct a point at the same place as its
+      // parent..
+      add &= ! ( o->hasimp( ObjectImp::ID_PointImp ) &&
+                 prop->inherits( ObjectImp::ID_PointImp ) );
+    }
+    else if ( menu == NormalModePopupObjects::ShowMenu )
+      add &= prop->canFillInNextEscape();
+    if ( add )
     {
       if ( iconfile && *iconfile )
       {
@@ -531,7 +542,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
       {
         popup.addAction( menu, i18n( o->properties()[i] ), nextfree++ );
       };
-      mprops[menu -1].push_back( i );
+      mprops[menu-1].push_back( i );
     };
     delete prop;
   };

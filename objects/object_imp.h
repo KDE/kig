@@ -114,6 +114,7 @@ public:
 
     // Pseudo-object imp types, these are only used as fixed args for
     // various object types..
+    ID_BogusImp,
     ID_IntImp,
     ID_DoubleImp,
     ID_StringImp,
@@ -170,11 +171,14 @@ public:
 
   // QString is a string with at least one escape ( "%N" where N is a
   // number ) somewhere.  This function replaces the first escape it
-  // sees with the "value" of this imp.  This is e.g. used by TextType
-  // to turn its variable args into strings..
-  // it's ok not to implement this if it's not going to be used for
-  // the imp in question, standard implementation does an assert(
-  // false );
+  // sees with the "value" of this imp ( using the QString::arg
+  // functions ).  This is e.g. used by TextType to turn its variable
+  // args into strings..
+  // if you implement this, then you should return true in
+  // canFillInEscape() ( standard implementation returns false ), and
+  // do override fillInNextEscape() ( standard implementation does an
+  // assert( false ) )..
+  virtual bool canFillInNextEscape() const;
   virtual void fillInNextEscape( QString& s, const KigDocument& ) const;
 
   /**

@@ -316,3 +316,28 @@ bool TransformationImp::equals( const ObjectImp& rhs ) const
     static_cast<const TransformationImp&>( rhs ).data() == mdata;
 }
 
+bool InvalidImp::canFillInNextEscape() const
+{
+  return true;
+}
+
+bool DoubleImp::canFillInNextEscape() const
+{
+  return true;
+}
+
+bool IntImp::canFillInNextEscape() const
+{
+  return true;
+}
+
+bool StringImp::canFillInNextEscape() const
+{
+  return true;
+}
+
+bool BogusImp::inherits( int type ) const
+{
+  return type == ID_BogusImp ? true : Parent::inherits( type );
+}
+

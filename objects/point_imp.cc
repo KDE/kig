@@ -146,3 +146,8 @@ bool PointImp::equals( const ObjectImp& rhs ) const
   return rhs.inherits( ID_PointImp ) &&
     static_cast<const PointImp&>( rhs ).coordinate() == coordinate();
 }
+
+bool PointImp::canFillInNextEscape() const
+{
+  return true;
+}

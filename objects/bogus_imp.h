@@ -45,6 +45,7 @@ public:
 
   ObjectImp* transform( const Transformation& ) const;
 
+  bool inherits( int type ) const;
   const uint numberOfProperties() const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
@@ -67,6 +68,7 @@ public:
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
+  bool canFillInNextEscape() const;
   void fillInNextEscape( QString& s, const KigDocument& ) const;
 
   bool equals( const ObjectImp& rhs ) const;
@@ -91,6 +93,7 @@ public:
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
+  bool canFillInNextEscape() const;
   void fillInNextEscape( QString& s, const KigDocument& ) const;
 
   bool equals( const ObjectImp& rhs ) const;
@@ -114,6 +117,7 @@ public:
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
+  bool canFillInNextEscape() const;
   void fillInNextEscape( QString& s, const KigDocument& ) const;
 
   bool equals( const ObjectImp& rhs ) const;
@@ -137,6 +141,7 @@ public:
   int id() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
+  bool canFillInNextEscape() const;
   void fillInNextEscape( QString& s, const KigDocument& ) const;
 
   bool equals( const ObjectImp& rhs ) const;
