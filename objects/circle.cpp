@@ -363,9 +363,47 @@ const Circle* Circle::toCircle() const
   return this;
 }
 
+ConicCartesianEquationData Circle::cartesianEquationData() const
+{
+  Coordinate c = center();
+  double sqr = squareRadius();
+  ConicCartesianEquationData data(1.0, 1.0, 0.0, -2*c.x, -2*c.y,
+    c.x*c.x + c.y*c.y - sqr);
+  return data;
+}
+
+ConicPolarEquationData Circle::polarEquationData() const
+{
+  ConicPolarEquationData mdata;
+  mdata.focus1 = center();
+  mdata.pdimen = radius();
+  mdata.ecostheta0 = mdata.esintheta0 = 0;
+  return mdata;
+}
+
+QString Circle::cartesianEquationString() const
+{
+  QString ret = i18n( "x^2 + y^2 + %1 x + %2 y + %3 = 0" );
+  ConicCartesianEquationData data = cartesianEquationData();
+  ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
+  ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
+  ret = ret.arg( data.coeffs[5], 0, 'g', 3 );
+  return ret;
+}
+
+QString Circle::polarEquationString() const
+{
+  QString ret = i18n( "rho = %1   [centered at %2]" );
+  ConicPolarEquationData data = polarEquationData();
+  ret = ret.arg( data.pdimen, 0, 'g', 3 );
+// for domi:  please fix this with "focus1" here
+  ret = ret.arg( data.pdimen, 0, 'g', 3 );
+  return ret;
+}
+
 const uint Circle::numberOfProperties() const
 {
-  return Curve::numberOfProperties() + 4;
+  return Curve::numberOfProperties() + 6;
 }
 
 const Property Circle::property( uint which ) const
@@ -380,6 +418,10 @@ const Property Circle::property( uint which ) const
     return Property( radius() );
   else if ( which == Curve::numberOfProperties() + 3 )
     return Property( center() );
+  else if ( which == Curve::numberOfProperties() + 4 )
+    return Property( cartesianEquationString() );
+  else if ( which == Curve::numberOfProperties() + 5 )
+    return Property( polarEquationString() );
   else assert( false );
 }
 
@@ -390,6 +432,8 @@ const QCStringList Circle::properties() const
   l << I18N_NOOP( "Circumference" );
   l << I18N_NOOP( "Radius" );
   l << I18N_NOOP( "Center" );
+  l << I18N_NOOP( "Cartesian equation" );
+  l << I18N_NOOP( "Polar equation" );
   assert( l.size() == Circle::numberOfProperties() );
   return l;
 }

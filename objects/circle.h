@@ -23,6 +23,7 @@
 #define CIRCLE_H
 
 #include "curve.h"
+#include "conic.h"
 #include "../misc/common.h"
 
 class Circle
@@ -55,6 +56,10 @@ class Circle
   double squareRadius() const;
   double surface() const;
   double circumference() const;
+  QString cartesianEquationString() const;
+  QString polarEquationString() const;
+  ConicCartesianEquationData cartesianEquationData() const;
+  ConicPolarEquationData polarEquationData() const;
 
 protected:
   Coordinate qpc;

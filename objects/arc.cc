@@ -76,7 +76,7 @@ const QCString Arc::vBaseTypeName() const
 
 QCString Arc::sBaseTypeName()
 {
-  return "arc";
+  return I18N_NOOP("arc");
 }
 
 const QCString Arc::vFullTypeName() const

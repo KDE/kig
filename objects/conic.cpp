@@ -956,7 +956,7 @@ const QCStringList Conic::properties() const
 
 QString Conic::cartesianEquationString() const
 {
-  QString ret = i18n( "%1 x^2 + %2 y^2 + %3 xy + %4 x + %5 y + %6" );
+  QString ret = i18n( "%1 x^2 + %2 y^2 + %3 xy + %4 x + %5 y + %6 = 0" );
   ConicCartesianEquationData data = cartesianEquationData();
   ret = ret.arg( data.coeffs[0], 0, 'g', 3 );
   ret = ret.arg( data.coeffs[1], 0, 'g', 3 );

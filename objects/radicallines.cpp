@@ -117,31 +117,15 @@ LineConicRadical::sConstructMode( MultiConstructibleType* ourtype,
 
 Objects LineConicRadical::sMultiBuild( const Objects& args )
 {
-  static int mzeroindexglobal = 1;
-  static Conic* lastc1pt = 0;
-  static Conic* lastc2pt = 0;
-
   LineConicRadical* a;
   LineConicRadical* b;
   a = new LineConicRadical( args );
   b = new LineConicRadical( args );
 
-  // fixme
-  if ( (lastc1pt == a->c1 && lastc2pt == a->c2) ||
-       (lastc1pt == a->c2 && lastc2pt == a->c1) )
-  {
-    mzeroindexglobal++;
-    if (mzeroindexglobal > 3) mzeroindexglobal = 1;
-  }
-  else
-    mzeroindexglobal = 1;
-  lastc1pt = a->c1;
-  lastc2pt = a->c2;
-
   a->mwhich = 1;
-  a->mzeroindex = mzeroindexglobal;
+  a->mzeroindex = 1;
   b->mwhich = -1;
-  b->mzeroindex = mzeroindexglobal;
+  b->mzeroindex = 1;
 
   Objects o;
   o.push_back( a );
@@ -241,7 +225,7 @@ std::pair<Coordinate, Coordinate> calcConicRadical( const ConicCartesianEquation
   {
     // we have three roots..
     // we select the one we want ( defined by mzeroindex.. )
-    lambda += ( 3 - zeroindex )* displace;
+    lambda += ( 2 - zeroindex )* displace;
   }
   else
   {
