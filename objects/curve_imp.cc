@@ -16,6 +16,7 @@
 // 02111-1307, USA.
 
 #include "curve_imp.h"
+#include "../misc/coordinate.h"
 
 const ObjectImpType* CurveImp::stype()
 {
@@ -32,4 +33,9 @@ const ObjectImpType* CurveImp::stype()
     I18N_NOOP( "Hide a Curve" )
     );
   return &t;
+}
+
+Coordinate CurveImp::attachPoint() const
+{
+  return Coordinate::invalidCoord();
 }

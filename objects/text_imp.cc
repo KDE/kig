@@ -34,6 +34,11 @@ TextImp::~TextImp()
 {
 }
 
+Coordinate TextImp::attachPoint() const
+{
+  return Coordinate::invalidCoord();
+}
+
 ObjectImp* TextImp::transform( const Transformation& t ) const
 {
   Coordinate nloc = t.apply( mloc );

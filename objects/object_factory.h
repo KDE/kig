@@ -31,6 +31,10 @@ public:
   ObjectHolder* fixedPoint( const Coordinate& c ) const;
   ObjectTypeCalcer* fixedPointCalcer( const Coordinate& c ) const;
 
+  // this returns a relative point (to an object). Note that the returned object
+  // is not added to the document..
+  ObjectTypeCalcer* relativePointCalcer( ObjectCalcer* o, const Coordinate& loc ) const;
+
   // this returns a constrained point. Note that the returned object
   // is not added to the document..
   ObjectHolder* constrainedPoint( ObjectCalcer* curve, double param ) const;

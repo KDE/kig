@@ -45,6 +45,29 @@ public:
                       KigPart& d, KigWidget& w, NormalMode& m ) const;
 };
 
+class RelativePointType
+  : public ArgsParserObjectType
+{
+  RelativePointType();
+  ~RelativePointType();
+
+  static const ArgsParser::spec argsspec[1];
+public:
+  static const RelativePointType* instance();
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  bool canMove() const;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
+             const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+//  QStringList specialActions() const;
+//  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
+//                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+};
+
 class ConstrainedPointType
   : public ArgsParserObjectType
 {

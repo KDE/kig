@@ -31,6 +31,11 @@ PointImp::PointImp( const Coordinate& c )
 {
 }
 
+Coordinate PointImp::attachPoint() const
+{
+  return Coordinate::invalidCoord();
+}
+
 void PointImp::draw( KigPainter& p ) const
 {
   p.drawFatPoint( mc );

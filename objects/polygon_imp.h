@@ -45,6 +45,7 @@ public:
   ~PolygonImp();
   PolygonImp* copy() const;
 
+  Coordinate attachPoint() const;
   ObjectImp* transform( const Transformation& ) const;
 
   void draw( KigPainter& p ) const;

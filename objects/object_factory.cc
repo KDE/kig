@@ -86,6 +86,22 @@ ObjectHolder* ObjectFactory::sensiblePoint(
   return new ObjectHolder( sensiblePointCalcer( c, d, w ) );
 }
 
+ObjectTypeCalcer* ObjectFactory::relativePointCalcer(
+  ObjectCalcer* o, const Coordinate& loc ) const
+{
+  Coordinate reference = 
+      static_cast<const ObjectImp*>( o->imp() )->attachPoint();
+  assert( reference.valid() );
+
+  double x = loc.x - reference.x;
+  double y = loc.y - reference.y;
+  std::vector<ObjectCalcer*> parents;
+  parents.push_back( new ObjectConstCalcer( new DoubleImp( x ) ) );
+  parents.push_back( new ObjectConstCalcer( new DoubleImp( y ) ) );
+  parents.push_back( o );
+  return new ObjectTypeCalcer( RelativePointType::instance(), parents );
+}
+
 ObjectTypeCalcer* ObjectFactory::constrainedPointCalcer(
   ObjectCalcer* curve, double param ) const
 {
@@ -173,8 +189,28 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
   parents.reserve( nparents.size() + 3 );
   parents.push_back( new ObjectConstCalcer( new IntImp( needframe ? 1 : 0 ) ) );
 
+/*
+ * mp: (changes to add relative-attachment).  Now an object is tested
+ * as follows:
+ * - if it is a point: 'old-style' treatment (we can change this shortly)
+ * - if attachPoint() returns a valid coordinate, then we use the new method
+ * - if it is a curve: 'old-style' treatment (we could use the new approach,
+ *   which can be better/worse depending on personal taste, I think)
+ *
+ * the first condition that matches determines the behaviour.
+ * the new method works similarly to the curve case, but we generate a new
+ * RelativePointType instead of a ConstrainedPointType; this will in turn make use
+ * of the new attachPoint() method for objects.
+ */
+
   if ( p && p->imp()->inherits( PointImp::stype() ) )
     parents.push_back( p );
+  else if ( p && p->imp()->attachPoint().valid() )
+  {
+    ObjectCalcer* o = relativePointCalcer( p, loc );
+    o->calc( doc );
+    parents.push_back( o );
+  }
   else if ( p && p->imp()->inherits( CurveImp::stype() ) )
   {
     ObjectCalcer* o = constrainedPointCalcer( p, static_cast<const CurveImp*>( p->imp() )->getParam( loc, doc ) );

@@ -35,6 +35,8 @@ public:
    */
   static const ObjectImpType* stype();
 
+  Coordinate attachPoint() const;
+
   // param is between 0 and 1.  Note that 0 and 1 should be the
   // end-points.  E.g. for a Line, getPoint(0) returns a more or less
   // infinite point.  getPoint(0.5) should return the point in the

@@ -36,6 +36,7 @@ public:
   typedef ObjectImp Parent;
   static const ObjectImpType* stype();
 
+  Coordinate attachPoint() const;
   TextImp( const QString& text, const Coordinate& loc, bool frame = false );
   TextImp* copy() const;
   ~TextImp();

@@ -23,6 +23,11 @@
 
 #include "../misc/rect.h"
 
+Coordinate BogusImp::attachPoint( ) const
+{
+  return Coordinate::invalidCoord();
+}
+
 void BogusImp::draw( KigPainter& ) const
 {
 }

@@ -53,6 +53,7 @@ public:
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
 
+  Coordinate attachPoint() const;
   const uint numberOfProperties() const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;

@@ -42,6 +42,11 @@ PolygonImp::~PolygonImp()
 {
 }
 
+Coordinate PolygonImp::attachPoint() const
+{
+  return mpoints[0];
+}
+
 ObjectImp* PolygonImp::transform( const Transformation& t ) const
 {
 /*mp:

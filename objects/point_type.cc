@@ -61,6 +61,38 @@ ObjectImp* FixedPointType::calc( const Args& parents, const KigDocument& ) const
   return new PointImp( Coordinate( a, b ) );
 }
 
+static const ArgsParser::spec argsspecRelativePoint[] =
+{
+  { DoubleImp::stype(), "relative-x", "SHOULD NOT BE SEEN", false },
+  { DoubleImp::stype(), "relative-y", "SHOULD NOT BE SEEN", false },
+  { ObjectImp::stype(), "object", "SHOULD NOT BE SEEN", false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( RelativePointType )
+
+RelativePointType::RelativePointType()
+  : ArgsParserObjectType( "RelativePoint", argsspecRelativePoint, 3 )
+{
+}
+
+RelativePointType::~RelativePointType()
+{
+}
+
+ObjectImp* RelativePointType::calc( const Args& parents, const KigDocument& ) const
+{
+assert ( margsparser.checkArgs( parents ) );
+assert ( parents[2]->attachPoint().valid() );
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  if ( ! parents[2]->attachPoint().valid() ) return new InvalidImp;
+
+  Coordinate reference = static_cast<const ObjectImp*>( parents[2] )->attachPoint();
+  double a = static_cast<const DoubleImp*>( parents[0] )->data();
+  double b = static_cast<const DoubleImp*>( parents[1] )->data();
+
+  return new PointImp( reference + Coordinate( a, b ) );
+}
+
 ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigDocument& doc ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
@@ -104,6 +136,26 @@ void FixedPointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
   oy->setImp( new DoubleImp( to.y ) );
 }
 
+void RelativePointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
+                           const KigDocument& ) const
+{
+  // fetch the attach point..;
+  // this routine is tightly paired with what moveReferencePoint returns!
+  // right now moveReferencePoint always returns the origin
+  std::vector<ObjectCalcer*> pa = ourobj.parents();
+  assert( margsparser.checkArgs( pa ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( pa[0] ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( pa[1] ) );
+
+  ObjectConstCalcer* ox = static_cast<ObjectConstCalcer*>( pa[0] );
+  ObjectConstCalcer* oy = static_cast<ObjectConstCalcer*>( pa[1] );
+  ObjectCalcer* ob = static_cast<ObjectCalcer*>( pa[2] );
+
+  Coordinate attach = ob->imp()->attachPoint();
+  ox->setImp( new DoubleImp( to.x - attach.x ) );
+  oy->setImp( new DoubleImp( to.y - attach.y ) );
+}
+
 void ConstrainedPointType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
                                  const KigDocument& d ) const
 {
@@ -127,6 +179,11 @@ bool ConstrainedPointType::canMove() const
 }
 
 bool FixedPointType::canMove() const
+{
+  return true;
+}
+
+bool RelativePointType::canMove() const
 {
   return true;
 }
@@ -179,6 +236,17 @@ const FixedPointType* FixedPointType::instance()
 }
 
 const ObjectImpType* FixedPointType::resultId() const
+{
+  return PointImp::stype();
+}
+
+const RelativePointType* RelativePointType::instance()
+{
+  static const RelativePointType t;
+  return &t;
+}
+
+const ObjectImpType* RelativePointType::resultId() const
 {
   return PointImp::stype();
 }
@@ -289,6 +357,13 @@ const Coordinate FixedPointType::moveReferencePoint( const ObjectTypeCalcer& our
   return static_cast<const PointImp*>( ourobj.imp() )->coordinate();
 }
 
+const Coordinate RelativePointType::moveReferencePoint( const ObjectTypeCalcer& ourobj ) const
+{
+  assert( ourobj.imp()->inherits( PointImp::stype() ) );
+//  return static_cast<const PointImp*>( ourobj.imp() )->coordinate();
+  return Coordinate( 0., 0. );
+}
+
 const Coordinate ConstrainedPointType::moveReferencePoint( const ObjectTypeCalcer& ourobj ) const
 {
   assert( ourobj.imp()->inherits( PointImp::stype() ) );
@@ -298,6 +373,14 @@ const Coordinate ConstrainedPointType::moveReferencePoint( const ObjectTypeCalce
 std::vector<ObjectCalcer*> FixedPointType::movableParents( const ObjectTypeCalcer& ourobj ) const
 {
   return ourobj.parents();
+}
+
+std::vector<ObjectCalcer*> RelativePointType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> ret;
+  ret.push_back( ourobj.parents()[0] );
+  ret.push_back( ourobj.parents()[1] );
+  return ret;
 }
 
 std::vector<ObjectCalcer*> ConstrainedPointType::movableParents( const ObjectTypeCalcer& ourobj ) const

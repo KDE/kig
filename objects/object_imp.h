@@ -245,6 +245,24 @@ public:
   bool inherits( const ObjectImpType* t ) const;
 
   /**
+   * Returns a reference point where to attach labels; when this
+   * returns an invalidCoord then the attachment is either not
+   * done at all, or done in a specific way (like for curves,
+   * or for points) The treatment of points could also take
+   * advantage of this attachment mechanism.
+   *
+   * If this method returns a valid Coordinate, then this is
+   * interpreted as a pivot point for the label, which can still
+   * be moved relative to that point, but follows the object when
+   * the object changes.
+   * In practice a new RelativePointType is created (position of
+   * the string), this type in turn depends on the object (to get
+   * its attachPoint) and two DoubleImp that are interpreted as
+   * relative displacement (x and y)
+   */
+  virtual Coordinate attachPoint( ) const = 0;
+
+  /**
    * Return this ObjectImp, transformed by the transformation t.
    */
   virtual ObjectImp* transform( const Transformation& t ) const = 0;

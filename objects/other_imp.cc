@@ -76,6 +76,11 @@ bool AngleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
   return r.contains( mpoint, w.screenInfo().normalMiss( width ) );
 }
 
+Coordinate AngleImp::attachPoint() const
+{
+  return mpoint;
+}
+
 const uint AngleImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 3;
