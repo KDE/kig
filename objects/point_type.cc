@@ -333,16 +333,6 @@ MeasureTransportType::~MeasureTransportType()
 {
 }
 
-bool MeasureTransportType::canMove() const
-{
-  return false;
-}
-
-bool MeasureTransportType::inherits( int type ) const
-{
-  return type == ID_ConstrainedPointType;
-}
-
 const MeasureTransportType* MeasureTransportType::instance()
 {
   static const MeasureTransportType t;

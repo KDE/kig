@@ -89,10 +89,7 @@ class MeasureTransportType
 public:
   static const MeasureTransportType* instance();
 
-  bool inherits( int type ) const;
-
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  bool canMove() const;
   const ObjectImpType* resultId() const;
 };
 
