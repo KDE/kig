@@ -13,14 +13,16 @@ NAME="kig"
 I18NDIR="/home/domi/src/kde-i18n"
 ADMINDIR="/home/domi/src/kde-common/admin"
 
-cd ~domi
 TEMPDIR="/tmp/$NAME-$VERSION-package-temp"
 rm -rf $TEMPDIR
 mkdir $TEMPDIR
 cd $TEMPDIR
 
-I18NLANGS=""
+cd $I18NDIR
+I18NLANGS=$(find -name 'kig.po' | grep -v docs | sed -e 's#\./\([^/]*\)/.*#\1#')
+echo $I18NLANGS
 
+cd $TEMPDIR
 ~domi/downloads/cvs2dist \
 	--name "$NAME" \
 	--version "$VERSION" \

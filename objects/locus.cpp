@@ -55,14 +55,26 @@ bool Locus::inRect(const Rect& r) const
   return false;
 }
 
+struct Ptparam 
+{
+  Ptparam(Coordinate inc, double inp, bool inv) :
+    c(inc), p(inp), valid(inv) {};
+  Coordinate c; 
+  double p; 
+  bool valid;
+};
+
 void Locus::calcForWidget( const KigWidget& w )
 {
-  mvalid = cp->valid() && mp->valid();
+//  mvalid = cp->valid() && mp->valid();
+  mvalid = cp->valid();
   if ( mvalid )
   {
     // i exchanged the previous recursing algorithm for a stack-based
     // one that should be faster...  Here is the stack we use...
-    typedef std::pair<CPts::iterator, CPts::iterator> iterpair;
+//    typedef struct {Coordinate c; double p; bool valid;} ptparam;
+//    typedef std::pair<Coordinate, double> ptparam;
+    typedef std::pair<Ptparam, Ptparam> iterpair;
     std::stack<iterpair> stack;
 
     // some initial work...
@@ -72,15 +84,34 @@ void Locus::calcForWidget( const KigWidget& w )
     // save cp's old parameter, as we'll be changing it...
     double oldP = cp->constrainedImp()->getP();
 
-    // add 17 initial points...
-    for ( double i = 0; i <= 1; i += 1./16 )
+    bool valid = true;
+    bool prevvalid = false;
+    bool firstpoint = true;
+    double prevp = -1.0;
+    // this is a hack, just to avoid recomputing a value just to see if it is valid or not,
+    // see below.  This should be rethinked, however.
+    Coordinate prevc;
+    // add 64 initial points...
+    int i = 0;
+    double hmin = 1e-4;
+
+    for ( double p = 1e-6; p < 1; p += 1./64 )
     {
-      Coordinate c = internalGetCoord( i );
-      pts.push_back( CPt( c, i ) );
-      if ( i != 0 ) stack.push( iterpair( pts.end() - 2, pts.end() - 1 ) );
+      Coordinate c = internalGetCoord( p, valid );
+      if ( valid )
+      {
+        pts.push_back( CPt( c, p ) );
+	i++;
+      }
+      if ( ( ! firstpoint ) && ( prevvalid || valid ) ) 
+        stack.push( iterpair( Ptparam( prevc, prevp, prevvalid ), 
+                              Ptparam( c, p, valid ) ) );
+      prevc = c;
+      prevp = p;
+      prevvalid = valid;
+      firstpoint = false;
     };
 
-    int i = 17;
     // maxlength is the square of the maximum size that we allow
     // between two points..
     double maxlength = 1.5 * w.pixelWidth();
@@ -93,18 +124,18 @@ void Locus::calcForWidget( const KigWidget& w )
       const Rect& sr = w.screenInfo().shownRect();
       for( ; i < numberOfSamples; ++i )
       {
-        double p = ( current.first->pm + current.second->pm ) / 2;
-        Coordinate n = internalGetCoord( p );
-        bool addn = sr.contains( n );
-        bool followfirst = addn &&
-                           ( n - current.first->pt ).squareLength() > maxlength &&
-                           sr.contains( current.first->pt );
-        bool followlast = addn &&
-                          ( n - current.second->pt ).squareLength() > maxlength &&
-                          sr.contains( current.second->pt );
+        double p = ( current.first.p + current.second.p ) / 2;
+        double h = ( current.second.p - current.first.p );
+        Coordinate n = internalGetCoord( p, valid );
+        bool addn = sr.contains( n ) && valid;
+        bool followfirst = ( addn || current.first.valid) && (h > hmin) &&
+                           ( n - current.first.c ).squareLength() > maxlength ;
+        bool followlast = ( addn || current.second.valid) && (h > hmin) &&
+                          ( n - current.second.c ).squareLength() > maxlength ;
         if ( addn ) pts.push_back( CPt( n, p ) );
-        if ( followfirst ) stack.push( iterpair( current.first, pts.end() - 1 ) );
-        if ( followlast ) current.first = pts.end() - 1;
+        if ( followfirst ) stack.push( iterpair( current.first, 
+                Ptparam( n, p, addn ) ) );
+        if ( followlast ) current.first = Ptparam( n, p, addn );
         else break;
       };
     };
@@ -152,12 +183,14 @@ double Locus::getParam( const Coordinate& p ) const
   return optimalparam;
 }
 
-Coordinate Locus::internalGetCoord( double param )
+Coordinate Locus::internalGetCoord( double param, bool& valid )
 {
   cp->constrainedImp()->setP(param);
   cp->calc();
   calcpath.calc();
-  return mp->getCoord();
+  valid = mp->valid();
+  if ( valid ) return mp->getCoord();
+  else return Coordinate( );
 }
 
 Locus::Locus(const Locus& loc)
