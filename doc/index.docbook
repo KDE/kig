@@ -1,12 +1,10 @@
-<?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd" [
-  <!ENTITY kig "<application>Kig</application>">
-  <!ENTITY kseg "<application>KSeg</application>">
-  <!ENTITY cabri "<application>Cabri</application>">
-  <!ENTITY package "kdeedu">
-  <!ENTITY % addindex "IGNORE">
-  <!ENTITY % English "INCLUDE"><!-- change language only here -->
-]>
+<?xml version="1.0" ?> <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML
+V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd" [ <!ENTITY kig
+"<application>Kig</application>"> <!ENTITY kseg
+"<application>KSeg</application>"> <!ENTITY cabri
+"<application>Cabri</application>"> <!ENTITY package "kdeedu">
+<!ENTITY % addindex "IGNORE"> <!ENTITY % English "INCLUDE"><!-- change
+language only here --> ]>
 
 <book lang="&language;">
 
@@ -15,8 +13,7 @@
 
     <authorgroup>
       <author>
-	<firstname>Dominique</firstname>
-	<surname>Devriese</surname>
+	<firstname>Dominique</firstname> <surname>Devriese</surname>
 	<affiliation>
 	  <address><email>devriese@kde.org</email></address>
 	</affiliation>
@@ -26,32 +23,25 @@
     <!-- TRANS:ROLES_OF_TRANSLATORS -->
 
     <copyright>
-      <year>2002</year>
-      <holder>Dominique Devriese</holder>
+      <year>2002-2003</year> <holder>Dominique Devriese</holder>
     </copyright>
 
     <legalnotice>&FDLNotice;</legalnotice>
 
-    <date>2002-10-14</date>
-    <releaseinfo>0.9.00</releaseinfo>
+    <date>2003-04-5</date> <releaseinfo>0.4.0</releaseinfo>
     
     <abstract>
       <para>
-	  &kig; is a &kde; application for Interactive
-	Geometry.  It is meant as a replacement for
-	the free programs &kgeo; and
-	  &kseg;, and for commercial applications like
-	  &cabri;
+	&kig; is a &kde; application for Interactive Geometry.  It is
+	meant as a replacement for the free programs &kgeo; and
+	&kseg;, and for commercial applications like &cabri;
       </para>
     </abstract>
 
     <keywordset>
-      <keyword>KDE</keyword>
-      <keyword>KDE-Edu</keyword>
-      <keyword>Kig</keyword>
-      <keyword>Interactive Geometry</keyword>
-      <keyword>KGeo</keyword>
-      <keyword>Cabri</keyword>
+      <keyword>KDE</keyword> <keyword>KDE-Edu</keyword>
+      <keyword>Kig</keyword> <keyword>Interactive Geometry</keyword>
+      <keyword>KGeo</keyword> <keyword>Cabri</keyword>
     </keywordset>
   </bookinfo>
 
@@ -59,39 +49,36 @@
     <title>Introduction</title>
 
     <para>
-	&kig; is an application for Interactive Geometry. It's
-      intended to serve two purposes:</para>
+      &kig; is an application for Interactive Geometry. It's intended
+      to serve two purposes:
+    </para>
 
     <itemizedlist>
-      <listitem><para>
-	  Allowing students to explore
-	  mathematical figures and concepts
-	  using the computer.
-	</para></listitem> 
-      <listitem><para>
-	  Serve as a <acronym>WYSIWYG</acronym>
-	  tool for drawing 
-	  mathematical figures and including
-	  them in other documents.
-	</para></listitem>
+      <listitem><para> Allow students to interactively explore
+      mathematical figures and concepts using the computer.
+      </para></listitem>
+
+      <listitem><para> Serve as a <acronym>WYSIWYG</acronym> tool for
+      drawing mathematical figures and including them in other
+      documents.</para></listitem>
     </itemizedlist>
 
     <para>
-      You can report problems in &kig; using the internal
-      bug reporting tool 
+      You can report problems in &kig; using the internal bug
+      reporting tool
       (<menuchoice><guimenu>Help</guimenu><guimenuitem>Report
-	  Bug</guimenuitem></menuchoice>), or just contact me at
+      Bug</guimenuitem></menuchoice>), or just contact me at
       <email>devriese@kde.org</email>.
     </para>
     <para>
-      Since &kig; supports macro's and locuses, it allows for 
-      some rather advanced macro's to be defined.
-      If you have created an interesting macro, which you
-      think might be useful for other people, you can mail
-      it to <ulink url="mailto:devriese@kde.org">me</ulink>,
-      so I can include it in the distribution (if you do this, it will
-      be licensed under the terms of &kig;'s license, the GPL,
-      so that other people can freely use and adapt it.
+      Since &kig; supports macro's and locuses, it allows for some
+      rather advanced macro's to be defined.  If you have created an
+      interesting macro, which you think might be useful for other
+      people, you can mail it to <ulink
+      url="mailto:devriese@kde.org">me</ulink>, so I can include it in
+      the distribution ( if you do this, it will be licensed under the
+      terms of &kig;'s license, the GPL, so that other people can
+      freely use and adapt it ).
     </para>
   </chapter>
   
@@ -107,18 +94,15 @@
 	    <listitem>
 	      <para>
 		Select <menuchoice><guimenu>Objects</guimenu>
-		  <guisubmenu>Points</guisubmenu><guimenuitem>
-		    Normal Point</guimenuitem></menuchoice>
-		from the menu bar or press the appropriate 
-		button in the toolbar.  You can then construct 
-		a point by clicking on the desired position in the
-		window.
-		<note><para>Actually, this works the same way for
-		    constructing other objects as well:  click on the
-		    desired menu bar entry or toolbar button and
-		    select the necessary objects to construct the
-		    object.
-		  </para></note>
+		<guisubmenu>Points</guisubmenu><guimenuitem> Normal
+		Point</guimenuitem></menuchoice> from the menu bar or
+		press the appropriate button in the toolbar.  You can
+		then construct a point by clicking on the desired
+		position in the window.  <note><para>Actually, this
+		works the same way for constructing other objects as
+		well: click on the desired menu bar entry or toolbar
+		button and select the necessary objects to construct
+		the object.</para></note>
 	      </para>
 	    </listitem>
 	    <listitem>
@@ -126,22 +110,7 @@
 		Since you often need to construct points, there is
 		also a shortcut for doing it faster.  Simply click
 		somewhere in the screen with the
-		<mousebutton>middle</mousebutton> mouse button. 
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		If you have already selected the objects that you need
-		for constructing another object, you can use them for
-		it by <mousebutton>right-</mousebutton>clicking one of
-		them, selecting <menuchoice><guisubmenu>Use these
-		    objects to construct
-		    a...</guisubmenu></menuchoice> in the
-		<link linkend="objects-context-menus">context
-		  menu</link> that appears and then select the object
-		type you want to construct.  This also works when you
-		have only selected a part of the objects you want to
-		use...
+		<mousebutton>middle</mousebutton> mouse button.
 	      </para>
 	    </listitem>
 	    <listitem>
@@ -149,8 +118,8 @@
 		Finally, you can also construct points while you are
 		constructing other objects, optionnally selecting them
 		for the object you are constructing...  This is
-		explained further
-		<link linkend="constructing-other-objects">here</link>.
+		explained further <link
+		linkend="constructing-other-objects">here</link>.
 	      </para>
 	    </listitem>
 	  </itemizedlist>
@@ -159,7 +128,8 @@
 	  <screeninfo>A point has been constructed</screeninfo>
 	  <mediaobject>
 	    <imageobject>
-	      <imagedata fileref="constructed_a_point.png" format="PNG"/>
+	      <imagedata fileref="constructed_a_point.png"
+	      format="PNG"/>
 	    </imageobject>
 	    <textobject>
 	      <phrase>A point has been constructed</phrase>
@@ -171,15 +141,17 @@
       <section id="constructing-other-objects">
 	<title>Constructing Other Objects</title>
 	<para>
-	  Constructing objects other than points is done by selecting
-	  the appropriate entry in the <guimenu>Objects</guimenu>
-	  menu, or clicking on one of the the toolbar buttons...
+	  Constructing objects other than points is normally done by
+	  selecting the appropriate entry in the
+	  <guimenu>Objects</guimenu> menu, or clicking on one of the
+	  the toolbar buttons...
 	</para>
 	<screenshot>
 	  <screeninfo>Constructing a circle</screeninfo>
 	  <mediaobject>
 	    <imageobject>
-	      <imagedata fileref="constructing_a_circle.png" format="PNG"/>
+	      <imagedata fileref="constructing_a_circle.png"
+	      format="PNG"/>
 	    </imageobject>
 	    <textobject>
 	      <phrase>Constructing a circle</phrase>
@@ -210,7 +182,8 @@
 	  <screeninfo>Constructing a circle.</screeninfo>
 	  <mediaobject>
 	    <imageobject>
-	      <imagedata fileref="constructing_a_circle_2.png" format="PNG"/>
+	      <imagedata fileref="constructing_a_circle_2.png"
+	      format="PNG"/>
 	    </imageobject>
 	    <textobject>
 	      <phrase>Constructing a circle</phrase>
@@ -223,16 +196,15 @@
     <section id="selecting-objects">
       <title>Selecting Objects</title>
       <para>
-	Selecting objects is rather straightforward:
-	There are two ways to select objects:
+	Selecting objects is done in two ways:
       </para>
       <itemizedlist>
 	<listitem>
 	  <para>
-	    Simply clicking an object causes the object you clicked 
-	    on to be selected, clearing the current selection.  If you
+	    Simply clicking an object causes the object you clicked on
+	    to be selected, clearing the current selection.  If you
 	    don't want that, hold the &Ctrl; key while clicking on an
-	    object. 
+	    object.
 	  </para>
 	</listitem>
 	<listitem>
@@ -262,8 +234,8 @@
     <section id="moving-objects">
       <title>Moving Objects</title>
       <para>
-	To move objects, you must first
-	<link linkend="selecting-objects">select</link> them.  You can
+	To move objects, you must first <link
+	linkend="selecting-objects">select</link> them.  You can
 	select any number of objects, but you should be careful to not
 	select a lot of objects that depend on each other, as this
 	will lead to weird results.
@@ -275,40 +247,38 @@
 	button.  When you're done, simply release the button again.
       </para>
       <note><para>For some types of objects ( mostly complicated
-	  Locuses ), moving objects can be slow on older hardware.
-	  This is unfortunate, but inevitable, given the calculations
-	  involved...
-	</para></note>
+      Locuses ), moving objects can be slow on older hardware.  This
+      is unfortunate, but inevitable, given the calculations
+      involved...  </para></note> 
       <note><para>If you <mousebutton>right-</mousebutton>click one of
-	  the selected objects, and choose
-	  <menuchoice><guimenuitem>move...</guimenuitem></menuchoice>,
-	  you also start to move the objects...
-	</para></note>
+      the selected objects, and choose
+      <menuchoice><guimenuitem>move...</guimenuitem></menuchoice>, you
+      also start to move the objects...  </para></note>
     </section>
     <section id="deleting-objects">
       <title>Deleting objects</title>
       <para>
-	Deleting objects is done by first
-	<link linkend="selecting-objects">selecting</link> them, and
-	next doing either of these:
+	Deleting objects is done by first <link
+	linkend="selecting-objects">selecting</link> them, and next
+	doing either of these:
 	<itemizedlist>
 	  <listitem>
 	    <para>
-	      Pressing the <keycap>Delete</keycap> key...
+	      Press the <keycap>Delete</keycap> key...
 	    </para>
 	  </listitem>
 	  <listitem>
 	    <para>
-	      Pressing the delete button in the toolbar..
+	      Press the delete button in the toolbar...
 	    </para>
 	  </listitem>
 	  <listitem>
 	    <para>
-	      <mousebutton>Right-</mousebutton>clicking on one of the
+	      <mousebutton>Right-</mousebutton>click on one of the
 	      objects, and selecting
-	      <menuchoice><guimenuitem>Delete...</guimenuitem></menuchoice>
+	      <menuchoice><guimenuitem>Delete</guimenuitem></menuchoice>
 	      in the <link linkend="objects-context-menus">context
-		menu</link> that appears...
+	      menu</link> that appears...
 	    </para>
 	  </listitem>
 	</itemizedlist>
@@ -320,14 +290,14 @@
 	In &kig;, objects can be hidden.  This is done by selecting
 	the objects, <mousebutton>right-</mousebutton>clicking one of
 	them, and selecting
-	<menuchoice><guimenuitem>Hide...</guimenuitem></menuchoice> in
+	<menuchoice><guimenuitem>Hide</guimenuitem></menuchoice> in
 	the <link linkend="objects-context-menus">context menu</link>
 	that appears..
       </para>
       <para>
 	For unhiding the objects, use the
 	<menuchoice><guimenu>Edit</guimenu><guimenuitem>Unhide
-	    all...</guimenuitem></menuchoice>.  This will unhide all
+	all...</guimenuitem></menuchoice>.  This will unhide all
 	currently hidden objects.
       </para>
     </section>
@@ -338,35 +308,33 @@
     <section id="objects-context-menus">
       <title>Context Menu's</title>
       <para>
-	  &kig; has context menus for its objects.  Try
-	<mousebutton>right-</mousebutton>clicking on an object to see 
+	&kig; has context menus for its objects.  Try
+	<mousebutton>right-</mousebutton>clicking on an object to see
 	it appear...  The menu has many options, for constructing
-	objects, for setting colors, hiding, moving, deleting objects,
-	and some objects have some options of their own ( e.g. you can
-	redefine certain points to be constrained to a line where they
-	previously weren't etc.  The user is encouraged to try the
-	options out for him- or herself...
+	other objects, for setting colors, hiding, moving, deleting
+	objects, and some objects have some options of their own (
+	e.g. you can redefine certain points to be constrained to a
+	line where they previously weren't etc ).  You are encouraged to
+	try the options out for yourself :).  They should be
+	straightforward to understand.
       </para>
     </section>
     <section id="defining-macros">
       <title>Defining Macro's</title>
-      
       <para>
-	One of the more advanced features is its support for macro's.
-	This allows you to define a new type based on other types.
-	For this, you first construct the figure like you would
-	normally construct a figure, without worrying about macro's
-	yet.
+	One of the more advanced features in &kig; is its support for
+	macro's.  This allows you to define a new type of objects by
+	combining other ones.
       </para>
       <para>
-	I will try to explain it with an example.  Suppose you want to
-	make a macro for constructing a circle from three points on it
-	( suppose you missed the fact that &kig; provides a native
-	type for this purpose ;), then you would just construct three
-	points, some perpendiculars and midpoints until you find the
-	center, and construct the circle by the center you constructed
-	and one of the previous points.  The following image should
-	make this a bit more clear...
+	I will try to explain this with an example.  Suppose you want
+	to make a macro for constructing a circle from three points on
+	it ( suppose you missed the fact that &kig; provides a native
+	type for this purpose ;) ), then you would just construct
+	three points, some perpendiculars and midpoints until you find
+	the center, and construct the circle by the center you
+	constructed and one of the previous points.  The following
+	image should make this a bit more clear...
       </para>
       <screenshot>
 	<screeninfo>Test running macro's</screeninfo>
@@ -379,20 +347,18 @@
 	  </textobject>
 	</mediaobject>
       </screenshot>
+
       <para>
 	Next, you want to define the macro.  Select <guimenuitem>New
-	  macro</guimenuitem> from the <guimenu>Type</guimenu> menu,
-	or click on the button in the toolbar.  A wizard will appear,
-	telling you to select the given objects.  In our example,
-	these are the three points. So you select the three points
-	(click on them for selecting, click again for unselecting).
-	Click the <guibutton>next</guibutton> button to continue. Then
-	select the final object (the circle in our example).
+	macro</guimenuitem> from the <guimenu>Type</guimenu> menu, or
+	click on the button in the toolbar.  A wizard appears, telling
+	you to select the given objects.  In our example, these are
+	the three points. So you select the three points (click on
+	them for selecting, click again for unselecting).  Click the
+	<guibutton>next</guibutton> button to continue. Then select
+	the final objects ( only the circle in our example ).
       </para>
-      <note><para>
-	    &kig; does not yet support multiple final types so don't
-	  select more than one. 
-	</para></note>
+
       <screenshot>
 	<screeninfo>The macro wizard</screeninfo>
 	<mediaobject>
@@ -406,16 +372,17 @@
       </screenshot>
 
       <para> After you have done this, click the
-	<guibutton>next</guibutton> button again.  Enter a name and
-	optionally a description for your new type, and click the 
-	<guibutton>Finish</guibutton> button.  Your macro type is now
-	finished...
+      <guibutton>next</guibutton> button again.  Enter a name and
+      optionally a description for your new type, and click the
+      <guibutton>Finish</guibutton> button.  Your macro type is now
+      finished...
       </para>
+
       <para>
 	To use the new macro type, click its button in the toolbar or
-	the <menuchoice><guimenu>Objects</guimenu></menuchoice>
-	menu... It will have the same icon as its final object.. You
-	can construct a macro object just like any other object.
+	the <menuchoice><guimenu>Objects</guimenu></menuchoice> menu
+	or its button in the toolbar. You can construct a macro object
+	just like any other object.
       </para>
       <screenshot>
 	<screeninfo>Using your new type</screeninfo>
@@ -432,17 +399,16 @@
     <section id="working-with-types">
       <title>Working with types</title>
       <para>
-	As you saw in the previous chapter,  &kig; allows you to create
+	As you saw in the previous chapter, &kig; allows you to create
 	your own objects.  &kig; also makes sure that once you have
 	created an object, it is saved on exit and loaded on startup
-	of the program.  You do not have to specifically save or load
+	of the program.  You do not have to manually save or load
 	macro definitions.  However, &kig; does allow you to do more
-	with the macro's.  If you select <guimenuitem>Types
-	  Manager</guimenuitem> from the
-	<guimenu>Types</guimenu>-menu, you will see a dialog where you
-	can edit your types.  It allows you to delete types you no
-	longer have use for, export them to a file, and load them from
-	a file.
+	with the macro's.  If you select <guimenuitem>Manage
+	Types</guimenuitem> from the <guimenu>Types</guimenu>-menu,
+	you will see a dialog where you can edit your types.  It
+	allows you to delete types you no longer have a use for,
+	export them to a file, and load them from a file.
       </para>
       <screenshot>
 	<screeninfo>Edit Types Dialog</screeninfo>
@@ -459,17 +425,17 @@
     <section id="text-labels">
       <title>Text labels</title>
       <para>
-	  &kig; allows you to add text labels to a construction.  This is
-        very useful for showing names, explanations etc. in
-        constructions..  Recently, &kig; also gained support for
-        displaying variable information about objects (
-        a.k.a. properties ).
+	&kig; allows you to add text labels to a construction.  This
+	is very useful for showing names, explanations etc. in
+	constructions..  Recently, &kig; also gained support for
+	displaying variable information about objects (
+	a.k.a. properties ).
       </para>
       <para>
-        Working with text labels should be very easy in &kig;.  Simply
-        press the Text Label button in the Kig toolbar or select
+        To construct a text label, simply press the Text Label button
+        in the Kig toolbar or select
         <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
-          </guisubmenu><guimenuitem>A text label</guimenuitem>
+        </guisubmenu><guimenuitem>A text label</guimenuitem>
         </menuchoice> in the menu bar.  Then click the screen on the
         place where you want to place the label.
       </para>
@@ -494,10 +460,10 @@
         If all you want to show is a simple text, then all you have to
         do is enter it, and click the <guibutton>Finish</guibutton>
         button.  However, there is also support for showing variable
-        information about objects in a label.  E.g. you can
-        construct a label showing the text "This segment is %1 units
-        long.." where "%1" would be replaced with the length of a
-        specific segment.
+        information about objects in a label.  E.g. you can construct
+        a label showing the text "This segment is %1 units long.." 
+        where "%1" would be replaced with the length of a specific
+        segment.
       </para>
       <para>
         To do this, enter a text with a number of placeholders ( "%1",
@@ -525,10 +491,13 @@
         to complete the construction of the text label.
       </para>
       <screenshot>
-	<screeninfo>Selecting a property for a variable part</screeninfo>
+	<screeninfo>Selecting a property for a variable
+	part</screeninfo>
 	<mediaobject>
 	  <imageobject>
-	    <imagedata fileref="text_label_wizard__select_property.png" format="PNG"/>
+	    <imagedata
+	    fileref="text_label_wizard__select_property.png"
+	    format="PNG"/>
 	  </imageobject>
 	  <textobject>
 	    <phrase>Selecting a property for a variable part</phrase>
@@ -541,18 +510,18 @@
   <chapter id="kig-object-types">
     <title>&kig; Object Types</title>
     <para>
-	&kig; supports a rather large number of object types.  You are
+      &kig; supports a rather large number of object types.  You are
       encouraged to try out the various objects, as I think this is a
       better way to find out about them than reading about them in
       some borying manual ;).  Please note that not all the available
       object types are shown in the toolbars, but that there are also
       some objects that you can only construct via the
-      <guimenu>Objects</guimenu> menu in the menu bar.  Of course,
-      as with all &kde; applications, what appears in the toolbars is
+      <guimenu>Objects</guimenu> menu in the menu bar.  Of course, as
+      with all &kde; applications, what appears in the toolbars is
       configurable.  Try out the
-      <menuchoice><guimenu>Settings</guimenu>
-        <guimenuitem>Configure Toolbars...</guimenuitem></menuchoice>
-      option if you want to do this.
+      <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure
+      Toolbars...</guimenuitem></menuchoice> option if you want to do
+      this.
     </para>
   </chapter>
 
@@ -562,53 +531,68 @@
       <itemizedlist>
 	<listitem>
 	  <para>
-	      &kig; is a KPart application, which means that you can
-	    embed it in other &kde; software.  If you open a
-	    <literal role="extension">.kig</literal> file in
-	      &konqueror;, it can be opened directly in the &konqueror;
-	    screen without the need to start an external application. 
+	    &kig; is an open source application.  This means that you
+	    are free to use and modify it any way you like it.
+	    Distributing &kig; is subject to some restrictions,
+	    basically that everyone should have the same rights to use
+	    &kig;, including your modifications, as you and me.
 	  </para>
-	</listitem>
-	
-	<listitem>
 	  <para>
-	    Most objects allow you to see the object you're
-	    constructing before it is entirely
-	    finished.
-	  </para>
-	</listitem> 
-	<listitem>
-	  <para>
-	      &kig; supports macro's to be defined in a
-	    straightforward manner.  These objects are presented to
-	    the user like normal objects.  They are saved on exit and
-	    loaded on startup, so that they aren't lost on exit.  In
-	    the <link linkend="working-with-types">Types
-	      Manager</link> you can manage these types.  You can
-	    export them to files, import them from files, and delete
-	    them. 
+	    Free software programs are developed in a very open
+	    spirit, and its developers are mostly very responsive to
+	    user feedback.  Therefore, if you have any questions,
+	    complaints, or whatever about kig, please let <ulink
+	      url="mailto:devriese@kde.org">me</ulink> know.
 	  </para>
 	</listitem>
 	<listitem>
 	  <para>
-	      &kig; saves its data in a clear &XML; format.
+	    &kig; is a KPart application, which means that you can
+	    embed it in other &kde; software.  If you open a <literal
+	    role="extension">.kig</literal> file in &konqueror;, it
+	    can be opened directly in the &konqueror; screen without
+	    the need to start an external application.
 	  </para>
 	</listitem>
 	<listitem>
 	  <para>
-	      &kig; supports the construction of locuses..
+	    Working with &kig; should be very straightforward,
+	    constructing objects is easy, and interactive, preliminary
+	    results are shown etc.  Moving, selecting, building all
+	    work as one would expect them to.
 	  </para>
 	</listitem>
 	<listitem>
 	  <para>
-	      &kig; has an option "Export to image"..  This is rather 
-	    useful, since not all programs support the &kig; file format
-	    yet.. ;)
+	    &kig; supports macro's to be defined in a straightforward
+	    manner.  These objects are presented to the user like
+	    normal objects.  They are saved on exit and loaded on
+	    startup, so that they aren't lost on exit.  In the <link
+	    linkend="working-with-types">Types Manager</link> you can
+	    manage these types.  You can export them to files, import
+	    them from files, and delete them.
 	  </para>
 	</listitem>
 	<listitem>
 	  <para>
-	      &kig; aims to be compatible with its competitors.. This is
+	    &kig; saves its data in a clear &XML; format.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &kig; supports the construction of locuses..
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &kig; has an option "Export to image"..  This is rather
+	    useful, since not all programs support the &kig; file
+	    format yet ;).
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &kig; aims to be compatible with its competitors.. This is
 	    why it supports the &kgeo; file format, and i'm working on
 	    other formats as well...
 	  </para>
@@ -618,39 +602,40 @@
   </chapter>
 
   <chapter id="contributing">
-    <title>Contributing to &kig;</title>
+    <title>Contribute</title>
     <section id="kig-is-free">
       <title>Free Software</title>
       <para>
-	  &kig; is
-	<ulink url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware">
-	  Free Software</ulink>.  This means that its source code is
-	freely available on the internet, and everyone can use it, read
-	it, modify it, and distribute it for his own use.  I write it as
-	a hobby project, and i already learned a lot about programming,
-	C++, KDE/Qt, software colaboration and open source projects in the
-	process.
+	&kig; is <ulink
+	url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware">
+	Free Software</ulink>.  This means that its source code is
+	freely available on the internet, and everyone can use it,
+	read it, modify it, and distribute it.  I work on it as a
+	hobby project, and i already learned a lot about programming,
+	C++, KDE/Qt, math, software colaboration and open source
+	projects in the process.
       </para>
     </section>
     <section id="contribute-to-kig">
       <title>Contribute</title>
       <para>
 	The point of this chapter is to point you ( the user ) to the
-	rights that &kig;'s license gives you.  As with all
-	free software, you are allowed ( and encouraged :) to fix
-	problems you encounter while using it, to add features you
-	miss, or whatever, to distribute your modified program, and to
-	send these modifications to 
-	<ulink url="mailto:devriese@kde.org">me</ulink> so i can
-	include them in the next version for others to enjoy.  I
-	personally have no financial interest in this project
-	whatsoever, so this isn't just marketing speak here ;).
+	rights that &kig;'s license gives you.  As with all free
+	software, you are allowed ( and encouraged :) to fix problems
+	you encounter while using it, to add features you miss, to
+	distribute your modified program, and to send these
+	modifications to <ulink
+	url="mailto:devriese@kde.org">me</ulink> so i can include them
+	in the next version for others to enjoy.  I personally have no
+	financial interest in this project whatsoever, so this isn't
+	just marketing speak here ;).
       </para>
       <para>
 	If you are uncertain of your rights to use this software, or
 	other people's right to use any modifications you make to this
 	program etc., please read the license.  You can find it in the
-	COPYING file in the &kig; source tree...
+	COPYING file in the &kig; source tree or the license tab in
+	the About Kig dialog.
       </para>
     </section>
     <section id="howto-contribute">
@@ -663,7 +648,7 @@
 	contributions will be distributed under the terms of the GNU
 	GPL; you can find the terms of this license in the COPYING
 	file in the &kig; source tree, and further along in this
-	manual... 
+	manual...
       </para>
     </section>
   </chapter>
@@ -671,28 +656,25 @@
   <chapter id="faq">
     <title>Questions and Answers</title>
 
-    &reporting.bugs;
-    &updating.documentation;
-    <para></para>
+    &reporting.bugs; &updating.documentation; <para></para>
   </chapter>
 
   <chapter id="credits">
     <title>Credits and License</title>
 
     <para>
-	&kig;
+      &kig;
     </para>
     <para>
-	&kig; copyright 2002 Dominique Devriese <email>devriese@kde.org</email>
+      &kig; copyright 2002 Dominique Devriese
+      <email>devriese@kde.org</email>
     </para>
 
     <para>
-      Documentation copyright 2002 Dominique Devriese. 
-      <email>devriese@kde.org</email>
+      Documentation copyright 2002 Dominique
+      Devriese. <email>devriese@kde.org</email>
     </para>
-    <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-    &underFDL;
-    &underGPL;
+    <!-- TRANS:CREDIT_FOR_TRANSLATORS --> &underFDL; &underGPL;
   </chapter>
 
   <appendix id="installation">
@@ -714,12 +696,4 @@
 
   &documentation.index;
 </book>
-<!--
-Local Variables:
-mode: sgml
-sgml-minimize-attributes:nil
-sgml-general-insert-case:lower
-sgml-indent-step:0
-sgml-indent-data:nil
-End:
--->
+<!-- Local Variables: mode: xml End: -->
