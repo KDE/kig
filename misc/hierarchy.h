@@ -87,10 +87,11 @@ public:
   const ElemList& children();
 };
 
-// an ObjectHierarchy keeps a structure of objects, and their
-// interrelationships
-// it is used in loading and saving, and for MacroObjects
-// the Locus class uses this class too...
+/** an ObjectHierarchy keeps a structure of objects, and their
+ * interrelationships
+ * it is used in loading and saving, and for MacroObjects
+ * the Locus class uses this class too...
+ */
 class ObjectHierarchy
 {
   ElemList allElems;
@@ -110,11 +111,13 @@ public:
   const ElemList& getFinElems() { return finElems; };
   const ElemList& getAllElems() { return allElems; };
 
-  // fillUp() constructs from the inGegObjs other objects, according
-  // to the hierarchy it keeps.  All newly created objects are
-  // returned.
-  // NOTE: you _must_ still call calc() on all of the objects after
-  // you call this function...
+  /**
+   * Constructs from the inGegObjs other objects, according
+   * to the hierarchy it keeps.  All newly created objects are
+   * returned.
+   * NOTE: you _must_ still call calc() on all of the objects after
+   * you call this function...
+   */
   Objects fillUp( const Objects& inGegObjs ) const;
 
   void saveXML( QDomDocument& doc, QDomElement& parent ) const;
