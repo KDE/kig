@@ -157,10 +157,9 @@ bool VectorImp::contains( const Coordinate& o, int width, const KigWidget& w ) c
   return isOnSegment( o, ma, mb, w.screenInfo().normalMiss( width ) );
 }
 
-bool VectorImp::inRect( const Rect&, int, const KigWidget& ) const
+bool VectorImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
-  // TODO ?
-  return false;
+  return lineInRect( r, ma, mb, width, this, w );
 }
 
 const uint VectorImp::numberOfProperties() const

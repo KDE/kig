@@ -42,6 +42,9 @@
 #undef KIG_USE_KDOUBLEVALIDATOR
 #endif
 
+class ObjectImp;
+class KigWidget;
+
 /**
  * Here, we define some algorithms which we need in
  * various places...
@@ -184,6 +187,14 @@ bool isOnRay( const Coordinate& o, const Coordinate& a,
 Coordinate calcCircleRadicalStartPoint( const Coordinate& ca,
                                         const Coordinate& cb,
                                         double sqra, double sqrb );
+
+/**
+ * Is the line, segment, ray or vector inside r ?  We need the imp to
+ * distinguish between rays, lines, segments or whatever.. ( we use
+ * their contains functions actually.. )
+ */
+bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
+                 const int width, const ObjectImp* imp, const KigWidget& w );
 
 template <typename T>
 T kigMin( const T& a, const T& b )

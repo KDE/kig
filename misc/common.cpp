@@ -18,8 +18,10 @@
  USA
 **/
 
-
 #include "common.h"
+
+#include "../kig/kig_view.h"
+#include "../objects/object_imp.h"
 
 #include <cmath>
 
@@ -433,3 +435,38 @@ const Coordinate calcCenter(
 
   return Coordinate(centerx, centery);
 }
+
+bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
+                 const int width, const ObjectImp* imp, const KigWidget& w )
+{
+  double miss = w.screenInfo().normalMiss( width );
+  if ( fabs( a.x - b.x ) <= 1e-7 )
+  {
+    // too small to be useful..
+    return r.contains( Coordinate( a.x, r.center().y ), miss );
+  }
+  Coordinate dir = b - a;
+  double m = dir.y / dir.x;
+  double lefty = a.y + m * ( r.left() - a.x );
+  double righty = a.y + m * ( r.right() - a.x );
+  double minv = dir.x / dir.y;
+  double bottomx = a.x + minv * ( r.bottom() - a.y );
+  double topx = a.x + minv * ( r.top() - a.y );
+
+  // these are the intersections between the line, and the lines
+  // defined by the sides of the rectangle.
+  Coordinate leftint( r.left(), lefty );
+  Coordinate rightint( r.right(), righty );
+  Coordinate bottomint( bottomx, r.bottom() );
+  Coordinate topint( topx, r.top() );
+
+  // For each intersection, we now check if we contain the
+  // intersection ( this might not be the case for a segment, when the
+  // intersection is not between the begin and end point.. ) and if
+  // the rect contains the intersection..  If it does, we have a winner..
+  return
+    ( imp->contains( leftint, width, w ) && r.contains( leftint, miss ) ) ||
+    ( imp->contains( rightint, width, w ) && r.contains( rightint, miss ) ) ||
+    ( imp->contains( bottomint, width, w ) && r.contains( bottomint, miss ) ) ||
+    ( imp->contains( topint, width, w ) && r.contains( topint, miss ) );
+};

@@ -41,36 +41,7 @@ AbstractLineImp::~AbstractLineImp()
 
 bool AbstractLineImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
-  double miss = w.screenInfo().normalMiss( width );
-  if ( fabs( mdata.a.x - mdata.b.x ) <= 1e-7 )
-  {
-    // too small to be useful..
-    return r.contains( Coordinate( mdata.a.x, r.center().y ), miss );
-  }
-  Coordinate dir = mdata.dir();
-  double m = dir.y / dir.x;
-  double lefty = mdata.a.y + m * ( r.left() - mdata.a.x );
-  double righty = mdata.a.y + m * ( r.right() - mdata.a.x );
-  double minv = dir.x / dir.y;
-  double bottomx = mdata.a.x + minv * ( r.bottom() - mdata.a.y );
-  double topx = mdata.a.x + minv * ( r.top() - mdata.a.y );
-
-  // these are the intersections between the line, and the lines
-  // defined by the sides of the rectangle.
-  Coordinate leftint( r.left(), lefty );
-  Coordinate rightint( r.right(), righty );
-  Coordinate bottomint( bottomx, r.bottom() );
-  Coordinate topint( topx, r.top() );
-
-  // For each intersection, we now check if we contain the
-  // intersection ( this might not be the case for a segment, when the
-  // intersection is not between the begin and end point.. ) and if
-  // the rect contains the intersection..  If it does, we have a winner..
-  return
-    ( contains( leftint, width, w ) && r.contains( leftint, miss ) ) ||
-    ( contains( rightint, width, w ) && r.contains( rightint, miss ) ) ||
-    ( contains( bottomint, width, w ) && r.contains( bottomint, miss ) ) ||
-    ( contains( topint, width, w ) && r.contains( topint, miss ) );
+  return lineInRect( r, mdata.a, mdata.b, width, this, w );
 }
 
 const uint AbstractLineImp::numberOfProperties() const
