@@ -97,7 +97,7 @@ ObjectLPType::~ObjectLPType()
 ObjectImp* ObjectLPType::calc( const Args& args, const KigWidget& ) const
 {
   if( args.size() != 2 ) return new InvalidImp;
-  LineData l = static_cast<const LineImp*>( args[0] )->data();
+  LineData l = static_cast<const AbstractLineImp*>( args[0] )->data();
   Coordinate c = static_cast<const PointImp*>( args[1] )->coordinate();
   return calc( l, c );
 }
