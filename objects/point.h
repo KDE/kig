@@ -5,14 +5,9 @@
 #include <qrect.h>
 #include <qcolor.h>
 
-#include <math.h>
+#include <cmath>
 
 #include "object.h"
-
-// neither math.h or cmath seem to work... this does:
-extern "C" {
-  double round(double i);
-};
 
 class Point
 : public Object
@@ -25,7 +20,7 @@ class Point
 
   void saveXML(QDomDocument& doc, QDomElement& parentElem);
 
-  QPoint toQPoint() const { return QPoint(round(x),round(y));};
+  QPoint toQPoint() const { return QPoint(qRound(x),qRound(y));};
 
   // type identification
   virtual QCString vBaseTypeName() const { return sBaseTypeName();};
@@ -78,6 +73,9 @@ public:
   bool operator!=(const Point& p) const { return !operator==(p); };
   bool operator==(const Point& p) const { return x==p.getX() && y==p.getY(); };
 
+  // sets length to one, while keeping x/y constant
+  Point& normalize() { x = x/length(); y = y/length(); return *this;};
+
   void getOverlay(QPtrList<QRect>& list, const QRect& border) const
   { 
     QRect* tmp = new QRect(x-5, y-5,10,10); if (tmp->intersects(border)) list.append(tmp); else delete tmp;
@@ -112,4 +110,38 @@ protected:
   Point* p2;
 };
 
+class Curve;
+
+// this is a point which is constrained to a Curve, which means it's
+// always on the curve, moving it doesn't cause it to move off it.
+// ( this is very related to locuses, check locus.h and locus.cpp for
+// more info...)
+// it still needs lots of work...
+/*
+class ConstrainedPoint
+  : public Point
+{
+public:
+  ConstrainedPoint() : p(0.5), c(0) {};
+  ~ConstrainedPoint();
+
+  virtual QCString vFullTypeName() const { return sFullTypeName(); };
+  static QCString sFullTypeName() { return "ConstrainedPoint"; };
+
+  QString wantArg(const Object* o) const;
+  bool selectArg( Object* );
+  void unselectArg (Object*);
+  Objects getParents() const { Objects tmp; tmp.push(p1); tmp.push(p2); return tmp; };
+
+  void startMove(const QPoint&);
+  void moveTo(const QPoint&);
+  void stopMove();
+  void cancelMove();
+  void calc();
+protected:
+  double p;
+  Curve* c;
+};
+
+*/
 #endif // POINT_H

@@ -62,10 +62,9 @@ double Line::getParam(const Point& p) const
   // this code is copied from the KSeg source (with some
   // modifications), thanks to the author Ilya Baran
   Point dir = p-Point(qp1);
-  double c = atan((p - p1).length()) * SIGN((p - qp1).getX()/(qp1 - qp2).getX());
+  double c = atan(dir.length()) * SIGN(dir.getX()/(qp1 - qp2).getX());
   c/=M_PI;
   c = pow (2*c,81);
-  //  return c / M_PI * (1 + SMALL) + 0.5;
   return c / 2 +0.5;
 }
 

@@ -22,7 +22,7 @@ class Circle
   
   static inline void drawCircle (QPainter& p, const Point& pt, const double radius)
   {
-    QRect rect (round(pt.getX()-radius), round(pt.getY()-radius), round(2*radius), round(2*radius));
+    QRect rect (qRound(pt.getX()-radius), qRound(pt.getY()-radius), qRound(2*radius), qRound(2*radius));
     p.drawEllipse(rect);
   };
 
@@ -34,7 +34,7 @@ class Circle
   };
   static void circleGetOverlay(const Point& centre, double radius, QPtrList<QRect>& list, const QRect& border, const QRect& currentRect);
   static inline double calcRadius(const Point& centre, const Point& point)
-  { return round((centre-point).length()); };
+  { return qRound((centre-point).length()); };
 
 protected:
   Point qpc;
