@@ -23,10 +23,8 @@
 #include "kig_part.moc"
 
 #include "aboutdata.h"
-#include "constructactions.h"
 #include "kig_view.h"
 #include "kig_commands.h"
-#include "type_edit_impl.h"
 
 #include "../modes/normal.h"
 #include "../objects/circle.h"
@@ -37,7 +35,6 @@
 #include "../objects/macro.h"
 #include "../objects/intersection.h"
 #include "../objects/locus.h"
-#include "../misc/hierarchy.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
 #include "../filters/filter.h"
@@ -46,25 +43,17 @@
 #include <kinstance.h>
 #include <kaction.h>
 #include <kstdaction.h>
-#include <kcommand.h>
-#include <kpopupmenu.h>
+#include <kstandarddirs.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
 #include <kiconloader.h>
-#include <kstandarddirs.h>
-#include <klineeditdlg.h>
 #include <kglobal.h>
-#include <klineedit.h>
 #include <kmimetype.h>
-#include <kimageio.h>
 
 #include <qfile.h>
-#include <qtextstream.h>
-#include <qpen.h>
 
 #include <algorithm>
-#include <functional>
 
 // export this library...
 typedef KParts::GenericFactory<KigDocument> KigDocumentFactory;
@@ -464,4 +453,14 @@ void KigDocument::setUnmodified()
 KCommandHistory* KigDocument::history()
 {
   return mhistory;
+}
+
+void KigDocument::delObjects( const Objects& os )
+{
+  Objects dos;
+  dos = os;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    dos.upush( (*i)->getAllChildren() );
+  if ( dos.empty() ) return;
+  mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
 }

@@ -140,7 +140,7 @@ public:
   // work is done in _addObject() and _delObject()
   void addObject(Object* inObject);
   void delObject(Object* inObject);
-  void delObjects( Object* inObject );
+  void delObjects( const Objects& os );
 
   // change the specified objects' color...
   void setColor( const Objects& o, const QColor& c );
