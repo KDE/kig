@@ -515,7 +515,7 @@ void XFigExporter::run( const KigPart& doc, KigWidget& w )
 {
   QString formats = i18n( "*.fig|XFig Documents (*.fig)" );
   QString file_name = KFileDialog::getSaveFileName(":document", formats, &w,
-                        i18n( "Export as XFig file" ) );
+                        i18n( "Export as XFig File" ) );
   if ( file_name.isEmpty() ) return;
   else if ( QFileInfo( file_name ).exists() )
   {
