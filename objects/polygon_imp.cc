@@ -210,7 +210,7 @@ const char* PolygonImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + 1 )
     return "areaCircle"; // surface
   else if ( which == Parent::numberOfProperties() + 2 )
-    return "baseCircle"; // center of mass
+    return "point"; // center of mass
   else assert( false );
   return "";
 }
