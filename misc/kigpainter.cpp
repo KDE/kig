@@ -319,9 +319,9 @@ QPoint KigPainter::toScreen( const Coordinate p ) const
   return msi.toScreen( p );
 }
 
-void KigPainter::drawGrid( const CoordinateSystem* c )
+void KigPainter::drawGrid( const CoordinateSystem& c )
 {
-  c->drawGrid( *this );
+  c.drawGrid( *this );
   setWholeWinOverlay();
 }
 

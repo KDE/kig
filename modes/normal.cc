@@ -172,9 +172,8 @@ void NormalMode::midReleased( QMouseEvent* e, KigWidget* v )
   if( (e->pos() - plc).manhattanLength() > 4 ) return;
   // clicked on some other object -> ConstrainedPoint ?
   Point* pt;
-  pt = NormalPoint::sensiblePoint( v->fromScreen( plc ),
-                                   *mDoc, v->screenInfo() );
-  pt->calc( v->screenInfo() );
+  pt = NormalPoint::sensiblePoint( v->fromScreen( plc ), *mDoc, *v );
+  pt->calcForWidget( *v );
   mDoc->addObject( pt );
 
   // refresh the screen...

@@ -23,8 +23,8 @@
 #include "../misc/coordinate.h"
 #include "../misc/common.h"
 #include "../misc/i18n.h"
-#include "../misc/screeninfo.h"
 #include "../misc/kigpainter.h"
+#include "../kig/kig_view.h"
 
 #include <qpen.h>
 
@@ -171,7 +171,34 @@ void Arc::stopMove()
 {
 }
 
-void Arc::calc( const ScreenInfo& si )
+void Arc::calcForWidget( const KigWidget& w )
+{
+  calc();
+
+  Coordinate cds[3];
+  std::transform( mpts, mpts+3, cds, std::mem_fun( &Point::getCoord ) );
+
+  Coordinate lvect = cds[0] - cds[1];
+  Coordinate rvect = cds[2] - cds[1];
+
+  double radius = kigMin( lvect.length(), rvect.length() ) / 2.;
+
+  // calc what the arrow looks like..
+  marrow.clear();
+
+  lvect = lvect.normalize( radius );
+  rvect = rvect.normalize( radius );
+
+  Coordinate sega = -rvect;
+  sega = sega.normalize( 6*w.pixelWidth() );
+  Coordinate segb = sega.orthogonal();
+
+  marrow.push_back( rvect + cds[1] );
+  marrow.push_back( marrow[0] + segb + sega );
+  marrow.push_back( marrow[0] + segb - sega );
+}
+
+void Arc::calc()
 {
   mvalid = true;
   for ( Point** i = mpts; i < mpts + 3; ++i )
@@ -183,22 +210,6 @@ void Arc::calc( const ScreenInfo& si )
   Coordinate rvect = cds[2] - cds[1];
 
   double radius = kigMin( lvect.length(), rvect.length() ) / 2.;
-
-  // the arrow:
-  {
-    marrow.clear();
-
-    lvect = lvect.normalize( radius );
-    rvect = rvect.normalize( radius );
-
-    Coordinate sega = -rvect;
-    sega = sega.normalize( 6*si.pixelWidth() );
-    Coordinate segb = sega.orthogonal();
-
-    marrow.push_back( rvect + cds[1] );
-    marrow.push_back( marrow[0] + segb + sega );
-    marrow.push_back( marrow[0] + segb - sega );
-  };
 
   // the angles:
   {
@@ -335,4 +346,29 @@ void Arc::sDrawPrelim( KigPainter& p, const Objects& os )
 double Arc::size()
 {
   return manglelength;
+}
+
+const uint Arc::numberOfProperties()
+{
+  return Object::numberOfProperties() + 2;
+}
+
+const Property Arc::property( uint which )
+{
+  assert( which < numberOfProperties() );
+  if ( which < Object::numberOfProperties() ) return Object::property( which );
+  if ( which == Object::numberOfProperties() )
+    return Property( size() );
+  else if ( which == Object::numberOfProperties() + 1 )
+    return Property( size() * 180 / M_PI );
+  else assert( false );
+}
+
+const QStringList Arc::properties()
+{
+  QStringList l = Object::properties();
+  l << i18n( "Angle in radians" );
+  l << i18n( "Angle in degrees" );
+  assert( l.size() == Arc::numberOfProperties() );
+  return l;
 }

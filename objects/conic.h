@@ -83,7 +83,7 @@ public:
   static const int sShortCut() { return 0; };
   static const char* sActionName();
 
-  void calc( const ScreenInfo& showingRect );
+  void calc();
 
   // passing arguments
   static Object::WantArgsResult sWantArgs( const Objects& os );
@@ -96,6 +96,7 @@ public:
   void startMove(const Coordinate&, const ScreenInfo& );
   void moveTo(const Coordinate&);
   void stopMove();
+
 protected:
   Point* poc; // point on ellipse
   Point* focus1;

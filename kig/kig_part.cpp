@@ -303,15 +303,13 @@ bool KigDocument::openFile()
   mhistory->clear();
 
   Objects tmp = calcPath( os );
-  // terrible hackery, i know..
-  tmp.calc( ScreenInfo( Rect(), QRect() ) );
+  tmp.calc();
   emit recenterScreen();
-  // we do it again to avoid problems with points on locuses and such...
-  tmp.calc( m_widget->screenInfo() );
+  // we do it again to avoid problems with points on locuses and such,
+  // for which the size of the current screen matters..
+  tmp.calcForWidget( *m_widget->realWidget() );
   emit recenterScreen();
-  // i think ( hope ;) three times should be enough to avoid all
-  // possible problems...
-  tmp.calc( m_widget->screenInfo() );
+  tmp.calcForWidget( *m_widget->realWidget() );
 
   return true;
 }
@@ -465,9 +463,10 @@ Rect KigDocument::suggestedRect()
   return r;
 }
 
-const CoordinateSystem* KigDocument::coordinateSystem()
+const CoordinateSystem& KigDocument::coordinateSystem() const
 {
-  return s;
+  assert( s );
+  return *s;
 }
 
 void KigDocument::setMode( KigMode* m )

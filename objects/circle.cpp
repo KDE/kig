@@ -81,7 +81,7 @@ CircleBCP::CircleBCP( const Objects& os )
   centre->addChild( this );
 };
 
-void CircleBCP::calc( const ScreenInfo& )
+void CircleBCP::calc()
 {
   if (poc->valid() && centre->valid())
   {
@@ -150,7 +150,7 @@ Objects CircleBCP::getParents() const
   return objs;
 }
 
-void CircleBTP::calc( const ScreenInfo& )
+void CircleBTP::calc()
 {
   mvalid = true;
   for ( Point** i = pts; i < pts + 3; ++i )
@@ -377,3 +377,38 @@ void CircleBCP::stopMove()
 {
   // moving is disabled..
 };
+
+const uint Circle::numberOfProperties()
+{
+  return Curve::numberOfProperties() + 2;
+}
+
+const Property Circle::property( uint which )
+{
+  assert( which < Circle::numberOfProperties() );
+  if ( which < Curve::numberOfProperties() ) return Curve::property( which );
+  if ( which == Curve::numberOfProperties() )
+    return Property( surface() );
+  else if ( which == Curve::numberOfProperties() + 1 )
+    return Property( circumference() );
+  else assert( false );
+}
+
+const QStringList Circle::properties()
+{
+  QStringList l = Curve::properties();
+  l << i18n( "Surface" );
+  l << i18n( "Circumference" );
+  assert( l.size() == Circle::numberOfProperties() );
+  return l;
+}
+
+double Circle::surface() const
+{
+  return M_PI * squareRadius();
+}
+
+double Circle::circumference() const
+{
+  return 2 * M_PI * radius();
+}

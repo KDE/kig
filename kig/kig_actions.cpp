@@ -36,15 +36,11 @@ void AddFixedPointAction::slotActivated()
   while ( ! done )
   {
     QString s = KLineEditDlg::getText(
-      i18n( "Fixed point" ),
-      i18n( "Enter the coordinates for the new point.." ) +
-      QString::fromUtf8("\n") +
-      mdoc->coordinateSystem()->coordinateFormatNotice(),
-      QString::null,
-      &ok,
-      mdoc->widget() );
+      i18n( "Fixed point" ), i18n( "Enter the coordinates for the new point.." ) +
+      QString::fromUtf8("\n") + mdoc->coordinateSystem().coordinateFormatNotice(),
+      QString::null, &ok, mdoc->widget() );
     if ( ! ok ) return;
-    c = mdoc->coordinateSystem()->toScreen( s, ok );
+    c = mdoc->coordinateSystem().toScreen( s, ok );
     if ( ok ) done = true;
     else
     {
@@ -53,7 +49,7 @@ void AddFixedPointAction::slotActivated()
     };
   };
   NormalPoint* p = NormalPoint::fixedPoint( c );
-  p->calc( static_cast<KigView*>( mdoc->widget() )->screenInfo() );
+  p->calcForWidget( *mdoc->mainWidget()->realWidget() );
   mdoc->addObject( p );
 };
 

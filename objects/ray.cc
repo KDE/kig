@@ -103,7 +103,7 @@ void Ray::stopMove()
 {
 }
 
-void Ray::calc( const ScreenInfo& )
+void Ray::calc()
 {
   mvalid = mpa->valid() && mpb->valid();
 }

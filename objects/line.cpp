@@ -110,7 +110,7 @@ void LineTTP::stopMove()
 {
 }
 
-void LineTTP::calc( const ScreenInfo& )
+void LineTTP::calc()
 {
   if( !pt1->valid() || !pt2->valid() )
   {
@@ -140,7 +140,7 @@ void LinePerpend::stopMove()
 {
 }
 
-void LinePerpend::calc( const ScreenInfo& )
+void LinePerpend::calc()
 {
   assert (point && mdir );
   mvalid = true;
@@ -179,7 +179,7 @@ Objects LineParallel::getParents() const
   return objs;
 }
 
-void LineParallel::calc( const ScreenInfo& )
+void LineParallel::calc()
 {
   assert (point && mdir );
   mvalid = true;
@@ -484,7 +484,7 @@ Coordinate calcRadicalStartPoint( const Coordinate& ca, const Coordinate& cb,
   return m + direc;
 };
 
-void LineRadical::calc( const ScreenInfo& )
+void LineRadical::calc()
 {
   Coordinate ce1 = c1->getCenter();
   Coordinate ce2 = c2->getCenter();

@@ -93,7 +93,7 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
 
 protected:
   Point* pt1;
@@ -135,7 +135,7 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
 
 protected:
   AbstractLine* mdir;
@@ -175,7 +175,7 @@ public:
   void moveTo(const Coordinate&) {};
   void stopMove() {};
 
-  void calc( const ScreenInfo& );
+  void calc();
 
 protected:
   AbstractLine* mdir;
@@ -221,7 +221,7 @@ public:
   void moveTo(const Coordinate&) {};
   void stopMove() {};
 
-  void calc( const ScreenInfo& );
+  void calc();
 
 protected:
   Circle* c1;

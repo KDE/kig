@@ -37,6 +37,12 @@ public:
   const Coordinate direction();
   const AbstractLine* toAbstractLine() const { return this; };
   AbstractLine* toAbstractLine() { return this; };
+
+  double slope() const;
+
+  const uint numberOfProperties();
+  const Property property( uint which );
+  const QStringList properties();
 };
 
 #endif

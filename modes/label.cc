@@ -26,6 +26,7 @@
 #include "../kig/kig_view.h"
 #include "../misc/i18n.h"
 #include "../misc/common.h"
+#include "../misc/coordinate_system.h"
 #include "../objects/label.h"
 #include "../objects/normalpoint.h"
 #include "../objects/segment.h"
@@ -48,7 +49,7 @@ TextLabelConstructionMode::TextLabelConstructionMode( NormalMode* b,
                                                       KigDocument* d )
   : KigMode( d ), mprev( b ), mlpc( 0 ), mwiz( 0 ), mwawd( SelectingLocation )
 {
-  static_cast<KigView*>( d->widget() )->realWidget()->setCursor( KCursor::crossCursor() );
+  d->mainWidget()->realWidget()->setCursor( KCursor::crossCursor() );
 }
 
 void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
@@ -178,7 +179,7 @@ namespace {
 void TextLabelConstructionMode::finishPressed()
 {
   QString s = mwiz->labelTextInput->text();
-  KigWidget* widget = static_cast<KigView*>( mDoc->widget() )->realWidget();
+  KigWidget* widget = mDoc->mainWidget()->realWidget();
   if ( mwiz->currentPage() == mwiz->enter_text_page )
   {
     // no arguments...
@@ -207,7 +208,7 @@ void TextLabelConstructionMode::finishPressed()
 //       return;
 //     }
     TextLabel* label = new TextLabel( s, mcoord, TextLabel::propvect() );
-    label->calc( widget->screenInfo() );
+    label->calcForWidget( *widget );
     mDoc->addObject( label );
     widget->redrawScreen();
     killMode();
@@ -228,7 +229,7 @@ void TextLabelConstructionMode::finishPressed()
     else
     {
       TextLabel* label = new TextLabel( s, mcoord, margs );
-      label->calc( widget->screenInfo() );
+      label->calcForWidget( *widget );
       mDoc->addObject( label );
       widget->redrawScreen();
       killMode();
@@ -300,7 +301,7 @@ void TextLabelConstructionMode::updateLinksLabel()
     {
       // if the user has already selected a property, then we show its
       // value...
-      linktext = ( margs[count].value() ).toString( *mDoc->coordinateSystem() );
+      linktext = ( margs[count].value() ).toString( *mDoc, *mDoc->mainWidget()->realWidget() );
     }
     else
       // otherwise, we show a stub...

@@ -69,7 +69,7 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
 
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;
@@ -77,9 +77,9 @@ public:
   const Coordinate p1() const;
   const Coordinate p2() const;
 
-  virtual const uint numberOfProperties();
-  virtual const Property property( uint which );
-  virtual const QStringList properties();
+  const uint numberOfProperties();
+  const Property property( uint which );
+  const QStringList properties();
 
 protected:
   Point* mpa, *mpb;

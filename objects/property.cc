@@ -22,6 +22,8 @@
 #include "../misc/coordinate.h"
 #include "../misc/coordinate_system.h"
 
+#include "../kig/kig_part.h"
+
 #include <qstring.h>
 
 const int Property::type()
@@ -68,7 +70,7 @@ Property::~Property()
   };
 }
 
-QString Property::toString( const CoordinateSystem& cs )
+QString Property::toString( const KigDocument& d, const KigWidget& w )
 {
   switch( mtype )
   {
@@ -77,7 +79,7 @@ QString Property::toString( const CoordinateSystem& cs )
   case Double:
     return QString::number( mdata.d );
   case Coord:
-    return cs.fromScreen( *mdata.coord );
+    return d.coordinateSystem().fromScreen( *mdata.coord, w );
   default:
     assert( false );
   };

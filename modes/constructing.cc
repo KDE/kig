@@ -41,7 +41,7 @@ void PointConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
 void PointConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if( ( plc - e->pos() ).manhattanLength() > 4 ) return;
-  updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
+  updatePoint( v->fromScreen( e->pos() ), *v );
   finish( v );
 }
 
@@ -65,24 +65,24 @@ PointConstructionMode::PointConstructionMode( NormalMode* b, KigDocument* d )
 void PointConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   v->setCursor( KCursor::blankCursor() );
-  updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
+  updatePoint( v->fromScreen( e->pos() ), *v );
   v->updateCurPix();
   KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObject( mp, true );
   v->updateWidget( p.overlay() );
 }
 
-void PointConstructionMode::updatePoint( const Coordinate& c, const ScreenInfo& si )
+void PointConstructionMode::updatePoint( const Coordinate& c, const KigWidget& w )
 {
-  mp->redefine( c, *mDoc, si );
-  mp->calc( si );
+  mp->redefine( c, *mDoc, w );
+  mp->calcForWidget( w );
 }
 
 void PointConstructionMode::finish( KigWidget* v )
 {
   mDoc->addObject( mp );
   mp = mp->copy();
-  mp->calc( v->screenInfo() );
+  mp->calcForWidget( *v );
 
   mprev->clearSelection();
   v->redrawScreen();
@@ -110,7 +110,7 @@ void StdConstructionMode::leftClicked( QMouseEvent* e, KigWidget* v )
   plc = e->pos();
   oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   v->updateCurPix();
-  updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
+  updatePoint( v->fromScreen( e->pos() ), *v );
   if( !oco.empty() )
   {
     KigPainter p( v->screenInfo(), &v->curPix );
@@ -140,7 +140,7 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
     // so we try if it wants our point..
     if ( wantArgs( osa.with( mp ) ) != Object::NotGood )
     {
-      updatePoint( v->fromScreen( plc ), v->screenInfo() );
+      updatePoint( v->fromScreen( plc ), *v );
       mDoc->addObject( mp );
       selectArg( mp, v );
     };
@@ -152,7 +152,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
   Coordinate c = v->fromScreen( e->pos() );
   // objects under cursor
   Objects ouc = mDoc->whatAmIOn( c, v->screenInfo() );
-  updatePoint( c, v->screenInfo() );
+  updatePoint( c, *v );
 
   // set the text next to the arrow cursor like in modes/normal.cc
   QPoint point = e->pos();
@@ -215,7 +215,7 @@ void StdConstructionMode::midReleased( QMouseEvent* e, KigWidget* v )
 
   if ( wantArgs( osa.with( mp ) ) != Object::NotGood )
   {
-    updatePoint( v->fromScreen( plc ), v->screenInfo() );
+    updatePoint( v->fromScreen( plc ), *v );
     mDoc->addObject( mp );
     selectArg( mp, v );
   };
@@ -256,7 +256,7 @@ void StdConstructionMode::buildCalcAndAdd( const Type* type,
 					   KigWidget* v )
 {
   Object* o = type->build( args, Type::ParamMap() );
-  o->calc( v->screenInfo() );
+  o->calcForWidget( *v );
   mDoc->addObject( o );
 };
 
@@ -311,7 +311,7 @@ void MultiConstructionMode::buildCalcAndAdd( const Type* type,
   const MultiConstructibleType* t =
     static_cast<const MultiConstructibleType*>( type );
   Objects os = t->multiBuild( args );
-  os.calc( v->screenInfo() );
+  os.calcForWidget( *v );
   mDoc->addObjects( os );
 };
 

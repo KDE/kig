@@ -36,9 +36,10 @@ MacroObject::MacroObject( ObjectHierarchy* inHier, const Objects& args )
 }
 
 MacroObjectOne::MacroObjectOne( const MType* type, ObjectHierarchy* inHier, const Objects& args )
-  : MacroObject( inHier, args ), final( 0 ), constructed( false ), mtype( type )
+  : MacroObject( inHier, args ), final( 0 ), mtype( type )
 {
   assert (inHier->getFinElems().size() == 1);
+  construct();
 }
 
 MacroObjectOne::~MacroObjectOne()
@@ -78,38 +79,17 @@ void MacroObjectOne::stopMove()
   final->stopMove();
 }
 
-void MacroObjectOne::calc( const ScreenInfo& r )
+void MacroObjectOne::calcForWidget( const KigWidget& w )
 {
-  mvalid = true;
-  for ( Objects::const_iterator i = arguments.begin(); i != arguments.end(); ++i )
-  {
-    mvalid &= (*i)->valid();
-  };
-  if ( mvalid )
-  {
-    if (!constructed) {
-      hier->fillUp(arguments);
-      final = hier->getFinElems()[0]->actual();
-      cos = calcPath( arguments, final );
+  setValidFromChildren();
+  cos.calcForWidget( w );
+  final->calcForWidget( w );
+}
 
-      cos.calc( r );
-      final->calc( r );
-
-      for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
-        for( Objects::iterator j = cos.begin(); j != cos.end(); ++j )
-          ( *i )->delChild( *j );
-
-      for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
-        if ( ! arguments.contains( *i ) )
-          (*i)->setShown(false);
-
-      constructed = true;
-    };
-    // this should have the right order, since we used calcPath to find
-    // cos...
-    cos.calc( r );
-    final->calc( r );
-  };
+void MacroObjectOne::calc()
+{
+  cos.calc();
+  final->calc();
 }
 
 const QCString MacroObjectOne::vBaseTypeName() const
@@ -127,8 +107,9 @@ const QCString MacroObjectOne::vFullTypeName() const
 };
 
 MacroObjectOne::MacroObjectOne(const MacroObjectOne& m)
-  : MacroObject( m ), final( 0 ), constructed(false), mtype( m.mtype )
+  : MacroObject( m ), final( 0 ), mtype( m.mtype )
 {
+  construct();
 }
 
 MacroObject::MacroObject( const MacroObject& m )
@@ -159,4 +140,31 @@ Coordinate MacroObjectOne::getPoint( double param ) const
 const Curve* MacroObjectOne::toCurve() const
 {
   return final->toCurve() ? this : 0;
+}
+
+void MacroObjectOne::setValidFromChildren()
+{
+  mvalid = true;
+  for ( Objects::const_iterator i = arguments.begin(); i != arguments.end(); ++i )
+  {
+    mvalid &= (*i)->valid();
+  };
+}
+
+void MacroObjectOne::construct()
+{
+  hier->fillUp(arguments);
+  final = hier->getFinElems()[0]->actual();
+  cos = calcPath( arguments, final );
+
+  cos.calc();
+  final->calc();
+
+  for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
+    for( Objects::iterator j = cos.begin(); j != cos.end(); ++j )
+      ( *i )->delChild( *j );
+
+  for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
+    if ( !arguments.contains( *i ) )
+      (*i)->setShown(false);
 }

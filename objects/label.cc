@@ -18,10 +18,12 @@
 
 #include "label.h"
 
+#include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
+#include "../misc/coordinate_system.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 #include "property.h"
-
 #include "../modes/label.h"
 
 #include <sstream>
@@ -207,7 +209,7 @@ void TextLabel::drawPrelim(KigPainter&, const Object* ) const
   // noop
 }
 
-void TextLabel::calc( const ScreenInfo& si )
+void TextLabel::calcForWidget( const KigWidget& w )
 {
   mcurtext = mtext;
   for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
@@ -223,6 +225,7 @@ void TextLabel::calc( const ScreenInfo& si )
       mcurtext = mcurtext.arg( prop.qstringData() );
       break;
     case Property::Coord:
+      mcurtext = mcurtext.arg( w.document().coordinateSystem().fromScreen( prop.coordData(), w ) );
       break;
     default:
       assert( false );
@@ -255,4 +258,30 @@ TextLabel::TextLabel( const QString text, const Coordinate c, const propvect& pr
 {
   for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
     i->obj->addChild( this );
+}
+
+void TextLabel::calc()
+{
+}
+
+const uint TextLabel::numberOfProperties()
+{
+  return Object::numberOfProperties() + 1;
+}
+
+const Property TextLabel::property( uint which )
+{
+  assert( which < TextLabel::numberOfProperties() );
+  if ( which < Object::numberOfProperties() ) return Object::property( which );
+  if ( which == Object::numberOfProperties() )
+    return Property( mcurtext );
+  else assert( false );
+}
+
+const QStringList TextLabel::properties()
+{
+  QStringList l = Object::properties();
+  l << i18n( "Text" );
+  assert( l.size() == TextLabel::numberOfProperties() );
+  return l;
 }

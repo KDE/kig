@@ -23,6 +23,7 @@
 
 #include "normalpoint.h"
 
+#include "../kig/kig_view.h"
 #include "../misc/calcpaths.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
@@ -62,12 +63,8 @@ bool Locus::inRect(const Rect& r) const
   return false;
 }
 
-void Locus::calc( const ScreenInfo& r )
+void Locus::calcForWidget( const KigWidget& w )
 {
-  // sometimes calc() is called with an empty rect, cause the
-  // shownRect is not known yet.. we ignore those calcs...
-  if ( r.shownRect() == Rect() ) return;
-
   mvalid = cp->valid() && mp->valid();
   if ( mvalid )
   {
@@ -86,7 +83,7 @@ void Locus::calc( const ScreenInfo& r )
     // add 17 initial points...
     for ( double i = 0; i <= 1; i += 1./16 )
     {
-      Coordinate c = internalGetCoord( i, r );
+      Coordinate c = internalGetCoord( i );
       pts.push_back( CPt( c, i ) );
       if ( i != 0 ) stack.push( iterpair( pts.end() - 2, pts.end() - 1 ) );
     };
@@ -94,24 +91,25 @@ void Locus::calc( const ScreenInfo& r )
     int i = 17;
     // minlength is the square of the maximum size that we allow
     // between two points..
-    double maxlength = 1.5 * r.pixelWidth();
+    double maxlength = 1.5 * w.pixelWidth();
     maxlength *= maxlength;
 
     while ( ! stack.empty() && i < numberOfSamples )
     {
       iterpair current = stack.top();
       stack.pop();
+      const Rect& sr = w.screenInfo().shownRect();
       for( ; i < numberOfSamples; ++i )
       {
         double p = ( current.first->pm + current.second->pm ) / 2;
-        Coordinate n = internalGetCoord( p, r );
-        bool addn = r.shownRect().contains( n );
+        Coordinate n = internalGetCoord( p );
+        bool addn = sr.contains( n );
         bool followfirst = addn &&
                            ( n - current.first->pt ).squareLength() > maxlength &&
-                           r.shownRect().contains( current.first->pt );
+                           sr.contains( current.first->pt );
         bool followlast = addn &&
                           ( n - current.second->pt ).squareLength() > maxlength &&
-                          r.shownRect().contains( current.second->pt );
+                          sr.contains( current.second->pt );
         if ( addn ) pts.push_back( CPt( n, p ) );
         if ( followfirst ) stack.push( iterpair( current.first, pts.end() - 1 ) );
         if ( followlast ) current.first = pts.end() - 1;
@@ -121,8 +119,8 @@ void Locus::calc( const ScreenInfo& r )
 
     // reset cp and its children to their former state...
     cp->constrainedImp()->setP(oldP);
-    cp->calc( r );
-    calcpath.calc( r );
+    cp->calc();
+    calcpath.calc();
   };
 }
 
@@ -132,21 +130,17 @@ Coordinate Locus::getPoint( double param ) const
 
   // save the old param..
   double tmp = cp->constrainedImp()->getP();
-  cp->constrainedImp()->setP(param);
-  Rect __tr;
-  ScreenInfo si ( __tr, QRect() );
-  cp->calc( si );
 
   // calc the new coord..
-  // hack... hope no-one tries recursive Locuses...
-  calcpath.calc( si );
+  cp->constrainedImp()->setP(param);
+  cp->calc();
+  calcpath.calc();
   Coordinate t = mp->getCoord();
 
   // restore the old param...
   cp->constrainedImp()->setP(tmp);
-  cp->calc( si );
-  // hack... hope no-one tries recursive Locuses...
-  calcpath.calc( si );
+  cp->calc();
+  calcpath.calc();
   return t;
 }
 
@@ -166,11 +160,11 @@ double Locus::getParam( const Coordinate& p ) const
   return optimalparam;
 }
 
-Coordinate Locus::internalGetCoord( double param, const ScreenInfo& r )
+Coordinate Locus::internalGetCoord( double param )
 {
   cp->constrainedImp()->setP(param);
-  cp->calc( r );
-  calcpath.calc( r );
+  cp->calc();
+  calcpath.calc();
   return mp->getCoord();
 }
 
@@ -329,5 +323,9 @@ QString Locus::sUseText( const Objects&, const Object* o )
 }
 
 void Locus::sDrawPrelim( KigPainter&, const Objects& )
+{
+}
+
+void Locus::calc()
 {
 }

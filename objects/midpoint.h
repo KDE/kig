@@ -55,7 +55,7 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
   void cancelMove();
-  void calc( const ScreenInfo& r );
+  void calc();
   void drawPrelim( KigPainter&, const Object* ) const {};
 protected:
   enum { howmMoving, howmFollowing } howm; // how are we moving

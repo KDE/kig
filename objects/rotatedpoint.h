@@ -62,7 +62,7 @@ public:
 
   void drawPrelim( KigPainter&, const Object* ) const;
 
-  void calc( const ScreenInfo& );
+  void calc();
 };
 
 #endif

@@ -18,8 +18,9 @@
  USA
 **/
 
-
 #include "coordinate_system.h"
+
+#include "../kig/kig_view.h"
 
 #include "i18n.h"
 #include "common.h"
@@ -33,14 +34,21 @@
 using std::ceil;
 using std::floor;
 using std::pow;
+using std::max;
+using std::log10;
 
 EuclideanCoords::EuclideanCoords()
 {
 }
 
-QString EuclideanCoords::fromScreen(const Coordinate& p) const
+QString EuclideanCoords::fromScreen( const Coordinate& p, const KigWidget& w ) const
 {
-  return QString("(")+p.x+','+p.y+')';
+  Rect sr = w.screenInfo().shownRect();
+  double m = max( sr.width(), sr.height() );
+  double l;
+  if ( m < 1 ) l = 3 - log10( m );
+  else l = log10( m ) + 2;
+  return QString::fromLocal8Bit("( %1; %2 )").arg(p.x, 0, 'g', l ).arg(p.y, 0, 'g', l );
 };
 
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const

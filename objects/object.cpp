@@ -248,3 +248,8 @@ const uint Object::numberOfProperties()
 {
   return 1;
 }
+
+void Object::calcForWidget( const KigWidget& )
+{
+  calc();
+}

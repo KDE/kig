@@ -286,11 +286,19 @@ public:
   /**
    * Informs the object that it ( or one of its parents ) has been
    * moved (or other situations), and that it should recalculate any
-   * of its variables.  showingRect is the rect that is currently
-   * showing.  Some objects need this ( e.g. Locus only wants points
-   * that are in the rect, and throws away the rest... )
+   * of its variables.  Some objects need extra information from
+   * KigDocument and KigWidget ( e.g. Locus keeps only the points that
+   * are visible on calcing, TextLabel needs the CoordinateSystem for
+   * showing Coordinate properties... ), but they only need this when
+   * they're being drawn, so they should ignore normal calc() calls,
+   * and only respond on calcForWidget() calls.  Note that they have
+   * to make sure that stuff like getPoint() and calls like
+   * AbstractLine::p1() return useful stuff after calc() is called.
+   * Normal calc() calls are used e.g. in the locus calc() function..
+   * The default calcForWidget() implementation just calls calc()..
    */
-  virtual void calc( const ScreenInfo& showingRect ) = 0;
+  virtual void calcForWidget( const KigWidget& widg );
+  virtual void calc() = 0;
 
   /**
    * This is a list of object-specific actions that appears when a

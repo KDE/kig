@@ -154,3 +154,25 @@ void Point::doPopupAction( int popupid, int actionid, KigDocument*, KigWidget* w
     w->redrawScreen();
   };
 }
+
+const uint Point::numberOfProperties()
+{
+  return Object::numberOfProperties() + 1;
+}
+
+const Property Point::property( uint which )
+{
+  if ( which < Object::numberOfProperties() ) return Object::property( which );
+  assert( which <= numberOfProperties() );
+  if ( which == Object::numberOfProperties() )
+    return Property( mC );
+  else assert( false );
+}
+
+const QStringList Point::properties()
+{
+  QStringList l = Object::properties();
+  l << i18n( "Coordinate" );
+  assert( l.size() == Point::numberOfProperties() );
+  return l;
+}

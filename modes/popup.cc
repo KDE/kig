@@ -221,7 +221,7 @@ void NormalModePopupObjects::doUse( int id )
   {
     Object* o = type->build( mobjs );
     assert( o );
-    o->calc( mview->screenInfo() );
+    o->calcForWidget( *mview );
     mdoc->addObject( o );
     mmode->clearSelection();
     break;

@@ -216,7 +216,7 @@ void Vector::stopMove()
 {
 }
 
-void Vector::calc( const ScreenInfo& )
+void Vector::calc()
 {
   mvalid = p1->valid() && p2->valid();
 }

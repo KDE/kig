@@ -33,7 +33,7 @@ Objects TranslatedPoint::getParents() const
   return tmp;
 };
 
-void TranslatedPoint::calc( const ScreenInfo& )
+void TranslatedPoint::calc()
 {
   mvalid = mp->valid() && mv->valid();
   if ( mvalid )

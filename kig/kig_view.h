@@ -146,7 +146,7 @@ public:
 
   const Coordinate fromScreen( const QPoint& p );
   const Rect fromScreen( const QRect& r );
-  double pixelWidth();
+  double pixelWidth() const;
 
   // the part of the document we're currently showing
   // i.e. a rectangle of the document (which has its own coordinate
@@ -159,6 +159,8 @@ public:
 
   void scrollSetBottom( double rhs );
   void scrollSetLeft( double rhs );
+
+  const KigDocument& document() const;
 
 public slots:
   // this is connected to KigDocument::recenterScreen, check that signal

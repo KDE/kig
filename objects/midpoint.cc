@@ -59,7 +59,7 @@ void MidPoint::stopMove()
 {
 };
 
-void MidPoint::calc( const ScreenInfo& )
+void MidPoint::calc()
 {
   if ( p1 || p2 )
   {

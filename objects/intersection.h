@@ -58,7 +58,7 @@ public:
   void moveTo(const Coordinate& );
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
 };
 
 class CircleLineIntersectionPoint
@@ -97,7 +97,7 @@ public:
   void moveTo(const Coordinate& );
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
 
   virtual std::map<QCString,QString> getParams ();
   virtual void setParams ( const std::map<QCString,QString>& );

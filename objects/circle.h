@@ -33,6 +33,10 @@ class Circle
   Circle( const Circle& c );
   ~Circle();
 
+  const uint numberOfProperties();
+  const Property property( uint which );
+  const QStringList properties();
+
   Circle* toCircle();
   const Circle* toCircle() const;
 
@@ -49,6 +53,8 @@ class Circle
   Coordinate getCenter() const { return qpc; };
   double radius() const;
   double squareRadius() const;
+  double surface() const;
+  double circumference() const;
 
 protected:
   Coordinate qpc;
@@ -80,7 +86,7 @@ public:
   static const int sShortCut() { return CTRL+Key_C; };
   static const char* sActionName();
 
-  void calc( const ScreenInfo& showingRect );
+  void calc();
 
   // passing arguments
   static Object::WantArgsResult sWantArgs( const Objects& os );
@@ -135,7 +141,7 @@ public:
 protected:
   Point* pts[3];
 
-  void calc( const ScreenInfo& showingRect );
+  void calc();
   static Coordinate calcCenter( Coordinate, Coordinate, Coordinate );
 };
 

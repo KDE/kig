@@ -80,7 +80,8 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
+  void calcForWidget( const KigWidget& );
 
   Coordinate getPoint( double param ) const;
   double getParam (const Coordinate&) const;
@@ -110,6 +111,6 @@ private:
   CPts pts;
 
   // some functions used by calcPointLocus...
-  inline Coordinate internalGetCoord( double, const ScreenInfo& si );
+  inline Coordinate internalGetCoord( double );
 };
 #endif

@@ -26,6 +26,7 @@
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
 #include "../misc/calcpaths.h"
+#include "../misc/coordinate_system.h"
 
 #include <functional>
 #include <algorithm>
@@ -73,7 +74,7 @@ void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
 void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
 {
   // clean up after ourselves:
-  amo.calc( v->screenInfo() );
+  amo.calcForWidget( *v );
   stopMove();
   mDoc->setModified( true );
 
@@ -93,7 +94,7 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
   moveTo( c );
-  amo.calc( v->screenInfo() );
+  amo.calcForWidget( *v );
   KigPainter p( v->screenInfo(), &v->curPix );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
@@ -167,7 +168,7 @@ void NormalPointRedefineMode::stopMove()
 
 void NormalPointRedefineMode::moveTo( const Coordinate& o )
 {
-  mp->redefine( o, *mDoc, mview->screenInfo() );
+  mp->redefine( o, *mDoc, *mview );
 }
 
 NormalPointRedefineMode::~NormalPointRedefineMode()

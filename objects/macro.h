@@ -45,8 +45,6 @@ class MacroObjectOne
   // the objects we contain, these are not shown...
   Objects cos;
   Object* final;
-  // have we constructed stuff yet?
-  bool constructed;
   const MType* mtype;
 public:
   const Object* getFinal() const { return final; };
@@ -63,7 +61,8 @@ public:
   void startMove(const Coordinate& p, const ScreenInfo&);
   void moveTo (const Coordinate& p);
   void stopMove();
-  void calc( const ScreenInfo& );
+  void calcForWidget( const KigWidget& w );
+  void calc();
   const QCString vBaseTypeName() const;
   const QCString vFullTypeName() const;
   const QString vDescriptiveName() const { return 0; };
@@ -75,6 +74,10 @@ public:
   const Curve* toCurve() const;
   double getParam( const Coordinate& c ) const;
   Coordinate getPoint( double param ) const;
+
+private:
+  void setValidFromChildren();
+  void construct();
 };
 
 // class MacroObjectMulti

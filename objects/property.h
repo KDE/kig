@@ -20,6 +20,8 @@
 #ifndef PROPERTY_H
 #define PROPERTY_H
 
+class KigDocument;
+class KigWidget;
 class QString;
 class Object;
 class Coordinate;
@@ -47,7 +49,7 @@ public:
   static const int String = 1;
   static const int Coord = 2;
 
-  QString toString( const CoordinateSystem& cs );
+  QString toString( const KigDocument& d, const KigWidget& w );
 
   // what type of property is this ?
   const int type();

@@ -277,7 +277,7 @@ const Coordinate KigWidget::fromScreen( const QPoint& p )
   return msi.fromScreen( p );
 }
 
-double KigWidget::pixelWidth()
+double KigWidget::pixelWidth() const
 {
   return msi.pixelWidth();
 }
@@ -450,4 +450,9 @@ void KigView::slotExportToImage()
 {
   ExportToImageDialog* d = new ExportToImageDialog( this, mdoc );
   d->exec();
+}
+
+const KigDocument& KigWidget::document() const
+{
+  return *mdocument;
 }

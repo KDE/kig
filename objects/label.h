@@ -73,12 +73,17 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc( const ScreenInfo& showingRect );
+  void calc();
+  void calcForWidget( const KigWidget& w );
 
   static KigMode* sConstructMode( Type* t, KigDocument* d,
                                   NormalMode* p );
 
   Objects getParents() const;
+
+  const uint numberOfProperties();
+  const Property property( uint which );
+  const QStringList properties();
 
 private:
   propvect mprops;

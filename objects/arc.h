@@ -73,11 +73,16 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
+  void calcForWidget( const KigWidget& w );
 
   // this returns the size of this arc ( in radians, in the range 0 <
   // x < 2*M_PI... )
   double size();
+
+  const uint numberOfProperties();
+  const Property property( uint which );
+  const QStringList properties();
 
 protected:
   Point* mpts[3];

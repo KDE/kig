@@ -25,7 +25,7 @@
 #include <vector>
 #include <algorithm>
 
-class ScreenInfo;
+class KigWidget;
 
 // this used to be a class with convenience functions, but i've
 // replaced them all with stl stuff...
@@ -146,7 +146,8 @@ public:
   template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {};
   Objects( const Objects& os ) : myvector<Object*>( os ) {};
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
-  void calc( const ScreenInfo& r ) const;
+  void calc() const;
+  void calcForWidget( const KigWidget& w ) const;
   Objects with( Object* );
 };
 

@@ -21,6 +21,7 @@
 #include "curve.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 
 #include "../modes/constructing.h"
 #include "../modes/moving.h"
@@ -52,9 +53,9 @@ NormalPoint::~NormalPoint()
 
 void NormalPoint::redefine( const Coordinate& c,
                             const KigDocument& d,
-                            const ScreenInfo& si )
+                            const KigWidget& w )
 {
-  Objects o = d.whatAmIOn( c, si );
+  Objects o = d.whatAmIOn( c, w.screenInfo() );
   Curve* v = 0;
   // we don't want one of our children as a parent...
   Objects children = getAllChildren();
@@ -123,7 +124,7 @@ void NormalPoint::setCoord( const Coordinate& c )
   mC = c;
 }
 
-void FixedPointImp::calc( NormalPoint* p, const ScreenInfo& )
+void FixedPointImp::calc( NormalPoint* p )
 {
   p->setCoord( pwwca );
 }
@@ -204,7 +205,7 @@ ConstrainedPointImp::ConstrainedPointImp()
 {
 }
 
-void ConstrainedPointImp::calc( NormalPoint* p, const ScreenInfo& )
+void ConstrainedPointImp::calc( NormalPoint* p )
 {
   p->setCoord( mcurve->getPoint( mparam ) );
 }
@@ -255,13 +256,13 @@ ConstrainedPointImp::ConstrainedPointImp( const ConstrainedPointImp& p,
   mcurve->addChild( np );
 }
 
-void NormalPoint::calc( const ScreenInfo& r )
+void NormalPoint::calc()
 {
   mvalid = true;
   Objects p = getParents();
   for ( Objects::iterator i = p.begin(); i != p.end(); ++i )
     mvalid &= (*i)->valid();
-  if ( mvalid ) mimp->calc( this, r );
+  if ( mvalid ) mimp->calc( this );
 }
 
 Objects NormalPoint::getParents() const
@@ -521,10 +522,10 @@ void NormalPoint::setImp( NormalPointImp* i )
 
 NormalPoint* NormalPoint::sensiblePoint( const Coordinate& c,
                                          const KigDocument& d,
-                                         const ScreenInfo& si )
+                                         const KigWidget& w )
 {
   NormalPoint* p = fixedPoint( c );
-  p->redefine( c, d, si );
+  p->redefine( c, d, w );
   return p;
 }
 

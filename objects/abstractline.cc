@@ -19,6 +19,7 @@
 #include "abstractline.h"
 
 #include "../misc/coordinate.h"
+#include "../misc/i18n.h"
 
 AbstractLine::AbstractLine()
 {
@@ -32,4 +33,32 @@ AbstractLine::AbstractLine( const AbstractLine& l )
 const Coordinate AbstractLine::direction()
 {
   return p2() - p1();
+}
+
+const uint AbstractLine::numberOfProperties()
+{
+  return Curve::numberOfProperties() + 1;
+}
+
+const Property AbstractLine::property( uint which )
+{
+  assert( which < AbstractLine::numberOfProperties() );
+  if ( which < Curve::numberOfProperties() ) return Curve::property( which );
+  if ( which == Curve::numberOfProperties() )
+    return Property( slope() );
+  else assert( false );
+}
+
+const QStringList AbstractLine::properties()
+{
+  QStringList l = Curve::properties();
+  l << i18n( "Slope" );
+  assert( l.size() == AbstractLine::numberOfProperties() );
+  return l;
+}
+
+double AbstractLine::slope() const
+{
+  Coordinate diff = p2() - p1();
+  return diff.y / diff.x;
 }

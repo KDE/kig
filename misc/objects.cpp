@@ -28,11 +28,11 @@
 
 // this used to be a bit more filled up :)
 
-void Objects::calc( const ScreenInfo& r ) const
+void Objects::calc() const
 {
   for ( const_iterator i = begin(); i != end(); ++i )
   {
-    (*i)->calc( r );
+    (*i)->calc();
   };
 }
 
@@ -41,4 +41,12 @@ Objects Objects::with( Object* o )
   Objects os( *this );
   os.push_back( o );
   return os;
+}
+
+void Objects::calcForWidget( const KigWidget& w ) const
+{
+  for ( const_iterator i = begin(); i != end(); ++i )
+  {
+    (*i)->calcForWidget( w );
+  };
 }

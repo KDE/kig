@@ -45,7 +45,7 @@ protected:
   NormalPoint* mp;
   NormalMode* mprev;
 
-  void updatePoint( const Coordinate& c, const ScreenInfo& );
+  void updatePoint( const Coordinate& c, const KigWidget& );
   void finish( KigWidget* v );
 
 public:

@@ -42,6 +42,7 @@ class CoordinateSystem;
 class MacroWizardImpl;
 class KigView;
 class Object;
+class ScreenInfo;
 
 /**
  * This is a "Part".  It that does all the real work in a KPart
@@ -123,7 +124,7 @@ public:
   void delView(KigView*) { numViews--; };
 
   const Objects& objects() { return mObjs;};
-  const CoordinateSystem* coordinateSystem();
+  const CoordinateSystem& coordinateSystem() const;
   KigMode* mode() { return mMode; };
   void setMode( KigMode* );
 

@@ -35,7 +35,7 @@ Objects MirrorPoint::getParents() const
   return tmp;
 };
 
-void MirrorPoint::calc( const ScreenInfo& )
+void MirrorPoint::calc()
 {
   mvalid = mp->valid();
   Coordinate a = mp->getCoord();

@@ -72,7 +72,7 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
 
   const Coordinate getP1() const;
   const Coordinate getP2() const;

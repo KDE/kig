@@ -61,7 +61,7 @@ public:
   static NormalPoint* constrainedPoint( Curve* c, const Coordinate& c );
   // sensiblePoint() returns a new NormalPoint with an imp selected
   // with the same method as in redefine()...
-  static NormalPoint* sensiblePoint( const Coordinate& c, const KigDocument&, const ScreenInfo& si );
+  static NormalPoint* sensiblePoint( const Coordinate& c, const KigDocument&, const KigWidget& w );
 
   virtual NormalPoint* toNormalPoint();
   virtual const NormalPoint* toNormalPoint() const;
@@ -79,7 +79,7 @@ public:
   // ConstrainedImp.., and otherwise returns a FixedImp...
   // fault is the argument we pass to KigDocument::whatAmIOn()...
   // you should still call calc() after this !
-  void redefine( const Coordinate& c, const KigDocument&, const ScreenInfo& );
+  void redefine( const Coordinate& c, const KigDocument&, const KigWidget& );
 
   std::map<QCString, QString> getParams();
   void setParams( const std::map<QCString, QString>& m );
@@ -102,7 +102,7 @@ public:
   virtual void doNormalAction( int which, KigDocument* d, KigWidget* v, NormalMode* m );
 
   virtual Objects getParents() const;
-  virtual void calc( const ScreenInfo& s );
+  virtual void calc();
 
   //moving
   virtual void startMove( const Coordinate& c, const ScreenInfo& );
@@ -130,7 +130,7 @@ class NormalPointImp
   virtual void startMove( const Coordinate& c, NormalPoint* p, const ScreenInfo& ) = 0;
   virtual void moveTo( const Coordinate& c, NormalPoint* p ) = 0;
   virtual void stopMove( NormalPoint* p ) = 0;
-  virtual void calc( NormalPoint* p, const ScreenInfo& s ) = 0;
+  virtual void calc( NormalPoint* p ) = 0;
 
   virtual QString type() = 0;
   virtual void writeParams( std::map<QCString, QString>& m, NormalPoint* p ) = 0;
@@ -164,7 +164,7 @@ public:
   void setCoord( const Coordinate& c );
   const Coordinate getCoord();
 
-  virtual void calc( NormalPoint* p, const ScreenInfo& r );
+  virtual void calc( NormalPoint* p );
   virtual void startMove( const Coordinate& c, NormalPoint* p, const ScreenInfo& );
   virtual void moveTo( const Coordinate& c, NormalPoint* p );
   virtual void stopMove( NormalPoint* p);
@@ -207,7 +207,7 @@ public:
   void setP( const double p );
   double getP();
 
-  virtual void calc( NormalPoint* p, const ScreenInfo& s );
+  virtual void calc( NormalPoint* p );
   virtual void startMove( const Coordinate& c, NormalPoint*, const ScreenInfo& );
   virtual void moveTo( const Coordinate& c, NormalPoint* );
   virtual void stopMove( NormalPoint* );

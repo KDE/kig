@@ -35,7 +35,7 @@ Objects RotatedPoint::getParents() const
   return tmp;
 };
 
-void RotatedPoint::calc( const ScreenInfo& )
+void RotatedPoint::calc()
 {
   mvalid = mp->valid() && mc->valid() && ma->valid();
   mC = calcRotatedPoint( mp->getCoord(), mc->getCoord(), ma->size() );

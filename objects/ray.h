@@ -67,7 +67,7 @@ public:
   void moveTo(const Coordinate&);
   void stopMove();
 
-  void calc( const ScreenInfo& );
+  void calc();
 
   Coordinate getPoint (double param) const;
   double getParam (const Coordinate&) const;

@@ -102,7 +102,7 @@ EllipseBFFP::EllipseBFFP( const Objects& os )
   focus2->addChild( this );
 };
 
-void EllipseBFFP::calc( const ScreenInfo& )
+void EllipseBFFP::calc()
 {
   Coordinate f2f1;
   double f2f1l, rhomin, rhomax, d1, d2, eccentricity;

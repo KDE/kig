@@ -39,7 +39,7 @@ Objects IntersectionPoint::getParents() const
   return tmp;
 };
 
-void IntersectionPoint::calc( const ScreenInfo& )
+void IntersectionPoint::calc()
 {
   mvalid = true;
   Coordinate t1, t2, t3, t4;
@@ -347,7 +347,7 @@ void CircleLineIntersectionPoint::stopMove()
 {
 }
 
-void CircleLineIntersectionPoint::calc( const ScreenInfo& )
+void CircleLineIntersectionPoint::calc()
 {
   assert( mcircle && mline );
   Coordinate t;
