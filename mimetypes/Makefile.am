@@ -3,4 +3,4 @@ kdemime_DATA = x-kig.desktop x-kgeo.desktop x-kseg.desktop x-cabri.desktop x-drg
 kdemimedir=$(kde_mimedir)/application
 
 magicdir = $(kde_confdir)/magic
-magic_DATA = drgeo.magic
+magic_DATA = cabri.magic drgeo.magic
