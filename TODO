@@ -83,6 +83,9 @@
 
 - implement cut, copy and paste for objects...
 
+- extend ObjectFactory::sensiblePointCalcer to also construct
+   intersection points of stuff...
+
 * harder:
 
 - Provide some nice stuff for differential geometry: velocity vector
