@@ -1,7 +1,7 @@
 <!DOCTYPE KigMacroFile>
 <KigMacroFile Number="1" Version="0.4.0" >
  <Macro>
-  <Name>Circle by Point && Segment</Name>
+  <Name>Circle by Point &amp; Segment</Name>
   <Description>A circle defined by its center and the length of a segment as the radius</Description>
   <ActionName>objects_new_circlebps</ActionName>
   <IconFileName>circlebps</IconFileName>
