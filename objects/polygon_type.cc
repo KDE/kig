@@ -291,7 +291,13 @@ const PoligonBCVType* PoligonBCVType::instance()
 
 ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
 {
-  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  if ( parents.size() < 3 || parents.size() > 4 ) return new InvalidImp;
+  for ( uint i = 0; i < 2; ++i )
+  {
+    if ( ! parents[0]->inherits( PointImp::stype() ) ) return new InvalidImp;
+  }
+
+  if ( ! parents[2]->inherits( IntImp::stype() ) ) return new InvalidImp;
 
   const Coordinate center = 
         static_cast<const PointImp*>( parents[0] )->coordinate();
@@ -299,7 +305,12 @@ ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
         static_cast<const PointImp*>( parents[1] )->coordinate();
   const int sides =
         static_cast<const IntImp*>( parents[2] )->data();
-
+  int twist = 1;
+  if ( parents.size() == 4 )
+  {
+    if ( ! parents[3]->inherits( IntImp::stype() ) ) return new InvalidImp;
+    twist = static_cast<const IntImp*>( parents[3] )->data();
+  }
   std::vector<Coordinate> vertexes;
 
   double dx = vertex.x - center.x;
@@ -307,7 +318,7 @@ ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
 
   for ( int i = 1; i <= sides; i++ )
   {
-    double alfa = 2*M_PI/sides;
+    double alfa = 2*twist*M_PI/sides;
     double theta1 = alfa*i - alfa;
     double ctheta1 = cos(theta1);
     double stheta1 = sin(theta1);
@@ -322,6 +333,16 @@ ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
 const ObjectImpType* PoligonBCVType::resultId() const
 {
   return SegmentImp::stype();
+}
+
+std::vector<ObjectCalcer*> PoligonBCVType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+{
+  return args;  /* should already be in correct order */
+}
+
+Args PoligonBCVType::sortArgs( const Args& args ) const
+{
+  return args;
 }
 
 bool PoligonBCVType::canMove( const ObjectTypeCalcer& o ) const

@@ -81,6 +81,9 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
+  Args sortArgs( const Args& args ) const;
+
   bool canMove( const ObjectTypeCalcer& o ) const;
   bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const;
   std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
