@@ -787,7 +787,7 @@ void KigDocument::filePrintPreview()
 void KigDocument::filePrint()
 {
   KPrinter printer;
-  if ( printer.setup( m_widget ) )
+  if ( printer.setup( m_widget, i18n("Print geometry") ) )
   {
     doPrint( printer );
   };
