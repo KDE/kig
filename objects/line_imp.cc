@@ -410,12 +410,7 @@ bool AbstractLineImp::equals( const ObjectImp& rhs ) const
 const ObjectImpType* AbstractLineImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "line",
-    I18N_NOOP( "line" ),
-    I18N_NOOP( "Select this line" ),
-    I18N_NOOP( "Remove a Line" ),
-    I18N_NOOP( "Add a Line" ),
-    I18N_NOOP( "Move a Line" ) );
+    Parent::stype(), "line", 0, 0, 0, 0, 0 );
   return &t;
 };
 
