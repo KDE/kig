@@ -1,6 +1,6 @@
 #MIN_CONFIG
 
-AM_INIT_AUTOMAKE(kig, 0.9)
+AM_INIT_AUTOMAKE(kig, 0.1.0)
 
 dnl Checks for header files.
 AC_HEADER_STDC
