@@ -55,28 +55,28 @@ Kig::Kig()
   // case since our Part is made for this Shell
   KLibFactory *factory = KLibLoader::self()->factory("libkigpart");
   if (factory)
-    {
+  {
       // now that the Part is loaded, we cast it to a Part to get
       // our hands on it
       m_part = static_cast<KParts::ReadWritePart*>
-	(factory->create(this, "kig_part", "KParts::ReadWritePart" ));
+               (factory->create(this, "kig_part", "KParts::ReadWritePart" ));
       if (m_part)
-        {
+      {
 	  // tell the KParts::MainWindow that this is indeed the main widget
 	  setCentralWidget(m_part->widget());
 
 	  // and integrate the part's GUI with the shell's
 	  createGUI(m_part);
-        }
-    }
+      }
+  }
   else
-    {
+  {
       // if we couldn't find our Part, we exit since the Shell by
       // itself can't do anything useful
       KMessageBox::error(this, "Could not find the necessary kig library, check your installation.");
       KApplication::exit();
       return;
-    }
+  }
   resize (640,480);
 
   // we have dcop

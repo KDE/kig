@@ -204,12 +204,34 @@ void KigDocument::setupTypes()
       Types t ( *file);
       types.addTypes( t );
     };
+  }
+  else
+  {
+    for ( Types::iterator i = types.begin();
+          i != types.end(); ++i )
+    {
+      addType( i->second );
+    };
   };
 };
 
 KigDocument::~KigDocument()
 {
   documents().remove( this );
+
+  // remove old types:
+  QStringList relFiles;
+  QStringList dataFiles =
+    KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
+                                        true, false, relFiles);
+  for ( QStringList::iterator file = dataFiles.begin();
+        file != dataFiles.end();
+        ++file )
+  {
+    QFile f( *file );
+    kdDebug() << "removing: " << *file << endl;
+    f.remove();
+  };
 
   // save our types...
   QString typesDir = KGlobal::dirs()->saveLocation("appdata", "kig-types");
@@ -218,6 +240,8 @@ KigDocument::~KigDocument()
   Object::types().saveToDir(typesDir);
   delete_all( mObjs.begin(), mObjs.end() );
   mObjs.clear();
+
+  // cleanup
   delete s;
   delete mMode;
 }

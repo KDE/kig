@@ -346,6 +346,7 @@ void ObjectHierarchy::calc()
 HierarchyElement::HierarchyElement(QCString inTN, int inId )
   : mtype( Object::types().findType( inTN ) ), id(inId), actual(0)
 {
+  assert( mtype );
 };
 
 QCString HierarchyElement::fullTypeName() const

@@ -1,6 +1,6 @@
 <!DOCTYPE KigMacroFile>
 <Types>
- <MTypeOne actionName="Kegelsnede" >
+ <MType name="Kegelsnede" >
   <ObjectHierarchy>
    <HierarchyElement given="true" typeName="point" id="1" final="false" />
    <HierarchyElement given="true" typeName="point" id="2" final="false" />

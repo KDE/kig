@@ -134,19 +134,15 @@ void TypesDialog::exportType()
  */
 void TypesDialog::importTypes()
 {
-  QStringList file_names = KFileDialog::getOpenFileNames(":importTypes", "*.kigt", this, "Import Types");
-  for ( QStringList::Iterator i = file_names.begin(); i != file_names.end(); ++i)
+  QStringList file_names =
+    KFileDialog::getOpenFileNames(":importTypes", "*.kigt", this, "Import Types");
+  for ( QStringList::Iterator i = file_names.begin();
+        i != file_names.end(); ++i)
   {
     Types t( *i );
-    Object::types().addTypes(t);
-    myvector<KigDocument*>& vect = KigDocument::documents();
-    typedef myvector<KigDocument*>::iterator myiter;
     for (Types::iterator i = t.begin(); i != t.end(); ++i)
-    {
-      for ( myiter j = vect.begin(); j != vect.end(); ++j )
-        (*j)->addType( i->second );
       typeList->insertItem(new TypeListElement(i->second));
-    };
+    Object::types().addTypes(t);
   };
 }
 

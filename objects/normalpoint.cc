@@ -151,7 +151,7 @@ std::map<QCString, QString> NormalPoint::getParams()
 void NormalPoint::setParams( const std::map<QCString, QString>& m )
 {
   Point::setParams( m );
-  mimp->unselectArgs( this );
+  if ( mimp ) mimp->unselectArgs( this );
   delete mimp;
   std::map<QCString,QString>::const_iterator p = m.find("implementation-type");
   if( p == m.end() )
@@ -547,4 +547,9 @@ NormalPoint* NormalPoint::sensiblePoint( const Coordinate& c,
   NormalPoint* p = fixedPoint( c );
   p->redefine( c, d, fault );
   return p;
+}
+
+const NormalPoint* NormalPoint::toNormalPoint() const
+{
+  return this;
 }

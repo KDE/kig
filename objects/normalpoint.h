@@ -60,6 +60,7 @@ public:
   static NormalPoint* sensiblePoint( const Coordinate& c, const KigDocument&, double fault );
 
   virtual NormalPoint* toNormalPoint();
+  virtual const NormalPoint* toNormalPoint() const;
 
   FixedPointImp* fixedImp();
   const FixedPointImp* fixedImp() const;
