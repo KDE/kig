@@ -202,6 +202,7 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TStdType<Angle> );
 //     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
 //     Object::addBuiltinType( new TStdType<MidPoint> );
+//     Object::addBuiltinType( new TStdType<Vector> );
 
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
 //     Object::addBuiltinType( new TStdType<LineRadical> );
@@ -211,9 +212,9 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
 //     Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
 //     Object::addBuiltinType( new TStdType<Locus> );
-//     Object::addBuiltinType( new TStdType<Vector> );
 //     Object::addBuiltinType( new TType<TextLabel> );
 //     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
+
 //     Object::addBuiltinType( new TStdType<TranslatedPoint> );
 //     Object::addBuiltinType( new TStdType<MirrorPoint> );
 //     Object::addBuiltinType( new TStdType<RotatedPoint> );
