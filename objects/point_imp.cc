@@ -76,6 +76,15 @@ int PointImp::impRequirementForProperty( uint which ) const
   else return ID_PointImp;
 }
 
+const char* PointImp::iconForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  if ( which == Parent::numberOfProperties() )
+    return "pointxy"; // coordinate
+  else assert( false );
+}
+
 ObjectImp* PointImp::property( uint which, const KigDocument& d ) const
 {
   if ( which < Parent::numberOfProperties() )
@@ -131,5 +140,3 @@ void PointImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
-
-

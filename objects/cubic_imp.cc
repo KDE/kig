@@ -313,6 +313,11 @@ int CubicImp::impRequirementForProperty( uint which ) const
   return Parent::impRequirementForProperty( which );
 }
 
+const char* CubicImp::iconForProperty( uint which ) const
+{
+  return Parent::iconForProperty( which );
+}
+
 ObjectImp* CubicImp::property( uint which, const KigDocument& w ) const
 {
   // TODO ?
@@ -338,5 +343,4 @@ void CubicImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
-
 

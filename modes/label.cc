@@ -34,6 +34,7 @@
 #include <kaction.h>
 #include <klineedit.h>
 #include <kdebug.h>
+#include <kiconloader.h>
 #include <qregexp.h>
 #include <qpopupmenu.h>
 #include <qcheckbox.h>
@@ -97,7 +98,17 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
     for ( int i = 0; static_cast<uint>( i ) < l.size(); ++i )
     {
       QString s = i18n( l[i] );
-      int t = p->insertItem( s, i );
+      const char* iconfile = o->iconForProperty( i );
+      int t;
+      if ( iconfile && *iconfile )
+      {
+        QPixmap pix = KGlobal::iconLoader()->loadIcon( iconfile, KIcon::User );
+        t = p->insertItem( QIconSet( pix ), s, i );
+      }
+      else
+      {
+        t = p->insertItem( s, i );
+      };
       assert( t == i );
     };
     int result = p->exec( v->mapToGlobal( mplc ) );

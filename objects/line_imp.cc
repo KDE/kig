@@ -56,6 +56,17 @@ int AbstractLineImp::impRequirementForProperty( uint which ) const
   else return ID_LineImp;
 }
 
+const char* AbstractLineImp::iconForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  if ( which == Parent::numberOfProperties() )
+    return "slope"; // slope
+  if ( which == Parent::numberOfProperties() + 1 )
+    return "text"; // equation
+  else assert( false );
+}
+
 ObjectImp* AbstractLineImp::property( uint which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
@@ -126,6 +137,15 @@ int SegmentImp::impRequirementForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return ID_SegmentImp;
+}
+
+const char* SegmentImp::iconForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  if ( which == Parent::numberOfProperties() )
+    return "distance"; // length
+  else assert( false );
 }
 
 ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
@@ -426,5 +446,3 @@ void LineImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
-
-

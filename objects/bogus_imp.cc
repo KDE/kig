@@ -61,6 +61,12 @@ ObjectImp* BogusImp::property( uint, const KigDocument& ) const
   return new InvalidImp;
 }
 
+const char* BogusImp::iconForProperty( uint ) const
+{
+  assert( false );
+  return "";
+}
+
 DoubleImp::DoubleImp( const double d )
   : mdata( d )
 {
@@ -274,6 +280,4 @@ void TransformationImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
-
-
 

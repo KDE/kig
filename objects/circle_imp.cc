@@ -150,6 +150,26 @@ int CircleImp::impRequirementForProperty( uint which ) const
   else return ID_CircleImp;
 }
 
+const char* CircleImp::iconForProperty( uint which ) const
+{
+  assert( which < CircleImp::numberOfProperties() );
+  if ( which < CurveImp::numberOfProperties() )
+    return CurveImp::iconForProperty( which );
+  else if ( which == CurveImp::numberOfProperties() )
+    return "areaCircle"; // surface
+  else if ( which == CurveImp::numberOfProperties() + 1 )
+    return "circumference"; // circumference
+  else if ( which == CurveImp::numberOfProperties() + 2 )
+    return "";  //radius
+  else if ( which == CurveImp::numberOfProperties() + 3 )
+    return "baseCircle"; // circle center
+  else if ( which == CurveImp::numberOfProperties() + 4 )
+    return "text"; // cartesian equation
+  else if ( which == CurveImp::numberOfProperties() + 5 )
+    return "text"; // polar equation
+  else assert( false );
+};
+
 ObjectImp* CircleImp::property( uint which, const KigDocument& w ) const
 {
   assert( which < CircleImp::numberOfProperties() );

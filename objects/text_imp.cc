@@ -87,9 +87,17 @@ int TextImp::impRequirementForProperty( uint which ) const
   return ID_TextImp;
 }
 
+const char* TextImp::iconForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() )
+    return "text"; // text
+  else assert( false );
+}
+
 ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
 {
-  assert( which < TextImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   else if ( which == Parent::numberOfProperties() )
@@ -126,5 +134,4 @@ const Coordinate TextImp::coordinate() const
 {
   return mloc;
 }
-
 

@@ -469,12 +469,21 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
   for ( uint i = 0; i < np; ++i )
   {
     ObjectImp* prop = o->property( i, popup.document() );
+    const char* iconfile = o->iconForProperty( i );
     if ( ( menu == NormalModePopupObjects::ConstructMenu &&
            prop->inherits( ObjectImp::ID_PointImp ) &&
            ! o->hasimp( ObjectImp::ID_PointImp ) ) ||
          ( menu == NormalModePopupObjects::ShowMenu ) )
     {
-      popup.addAction( menu, i18n( o->properties()[i] ), nextfree++ );
+      if ( iconfile && *iconfile )
+      {
+        QPixmap pix = KGlobal::iconLoader()->loadIcon( iconfile, KIcon::User );
+        popup.addAction( menu, pix, i18n( o->properties()[i] ), nextfree++ );
+      }
+      else
+      {
+        popup.addAction( menu, i18n( o->properties()[i] ), nextfree++ );
+      };
       mprops[menu -1].push_back( i );
     };
     delete prop;

@@ -110,6 +110,24 @@ int ConicImp::impRequirementForProperty( uint which ) const
   else return ID_ConicImp;
 }
 
+const char* ConicImp::iconForProperty( uint which ) const
+{
+  int pnum = 0;
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  if ( which == Parent::numberOfProperties() + pnum++ )
+    return "text"; // conic type string
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return ""; // focus1
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return ""; // focus2
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return "text"; // cartesian equation string
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return "text"; // polar equation string
+  else assert( false );
+}
+
 ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
 {
   int pnum = 0;
@@ -302,5 +320,3 @@ void ConicImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
-
-

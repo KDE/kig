@@ -100,6 +100,8 @@ public:
   // in order to have the imp with number which.  Macro's need it
   // foremost.  This function answers that question
   virtual int impRequirementForProperty( uint which ) const = 0;
+  // what icon should be shown when talking about this property ?
+  virtual const char* iconForProperty( uint which ) const = 0;
 
   enum {
     // we guarantee that "more specialized" types are lower in the list

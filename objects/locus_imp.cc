@@ -121,6 +121,11 @@ int LocusImp::impRequirementForProperty( uint which ) const
   return Parent::impRequirementForProperty( which );
 }
 
+const char* LocusImp::iconForProperty( uint which ) const
+{
+  return Parent::iconForProperty( which );
+}
+
 ObjectImp* LocusImp::property( uint which, const KigDocument& w ) const
 {
   return Parent::property( which, w );
@@ -331,3 +336,4 @@ void LocusImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
+

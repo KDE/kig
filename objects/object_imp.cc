@@ -317,3 +317,9 @@ ObjectImpVisitor::~ObjectImpVisitor()
 void ObjectImpVisitor::visit( const TransformationImp* )
 {
 }
+
+const char* ObjectImp::iconForProperty( uint ) const
+{
+  return "text";
+}
+

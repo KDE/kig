@@ -90,6 +90,7 @@ public:
   const uint numberOfProperties() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   int impRequirementForProperty( uint which ) const;
+  const char* iconForProperty( uint which ) const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
 

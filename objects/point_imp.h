@@ -42,6 +42,7 @@ public:
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
+  const char* iconForProperty( uint which ) const;
   int impRequirementForProperty( uint which ) const;
 
   bool inherits( int typeID ) const;

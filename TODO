@@ -1,7 +1,3 @@
-* simple:
-- property icons that we can show in the popup menu's that use
-  properties..
-
 * harder:
 - decouple the link between how an object is calc'ed and whether or
   not it is internal or drawn.  ( all combinations are possible,

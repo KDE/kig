@@ -45,6 +45,7 @@ public:
   int impRequirementForProperty( uint which ) const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;
+  const char* iconForProperty( uint which ) const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
 
   double getParam( const Coordinate& point, const KigDocument& ) const;

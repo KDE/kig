@@ -103,6 +103,17 @@ int AngleImp::impRequirementForProperty( uint which ) const
   else return ID_AngleImp;
 }
 
+const char* AngleImp::iconForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  if ( which == Parent::numberOfProperties() )
+    return "angle"; // size in radians
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return "angle"; // size in degrees
+  else assert( false );
+}
+
 ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
@@ -180,6 +191,11 @@ const QCStringList VectorImp::properties() const
 int VectorImp::impRequirementForProperty( uint which ) const
 {
   return Parent::impRequirementForProperty( which );
+}
+
+const char* VectorImp::iconForProperty( uint which ) const
+{
+  return Parent::iconForProperty( which );
 }
 
 ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
@@ -300,6 +316,11 @@ const QCStringList ArcImp::properties() const
 const QCStringList ArcImp::propertiesInternalNames() const
 {
   return Parent::propertiesInternalNames();
+}
+
+const char* ArcImp::iconForProperty( uint which ) const
+{
+  return Parent::iconForProperty( which );
 }
 
 ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const

@@ -488,3 +488,8 @@ void RealObject::calc( const KigDocument& d )
 {
   ObjectWithParents::calc( d );
 }
+
+const char* Object::iconForProperty( uint which ) const
+{
+  return imp()->iconForProperty( which );
+}
