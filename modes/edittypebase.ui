@@ -21,7 +21,7 @@
         </sizepolicy>
     </property>
     <property name="caption">
-        <string>Edit type</string>
+        <string>Edit Type</string>
     </property>
     <vbox>
         <property name="name">
