@@ -47,6 +47,7 @@ protected:
 
   void enableActions();
   void cancelConstruction();
+  void finish();
 };
 
 class PointConstructMode

@@ -146,12 +146,7 @@ void ConstructMode::selectObject( Object* o, KigWidget& w )
   {
     mctor->handleArgs( mparents, mdoc, w );
     // finish off..
-    for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
-    {
-      assert( (*i)->inherits( Object::ID_RealObject ) );
-      static_cast<RealObject*>( *i )->setSelected( false );
-    }
-    mdoc.doneMode( this );
+    finish();
   };
 
   w.redrawScreen();
@@ -225,7 +220,7 @@ void ConstructMode::enableActions()
 
 void ConstructMode::cancelConstruction()
 {
-  mdoc.doneMode( this );
+  finish();
 }
 
 void PointConstructMode::enableActions()
@@ -247,4 +242,14 @@ void ConstructMode::selectObjects( const Objects& os, KigWidget& w )
     assert( mctor->wantArgs( mparents, mdoc, w ) != ArgsParser::Complete );
     selectObject( *i, w );
   };
+}
+
+void ConstructMode::finish()
+{
+  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
+  {
+    assert( (*i)->inherits( Object::ID_RealObject ) );
+    static_cast<RealObject*>( *i )->setSelected( false );
+  }
+  mdoc.doneMode( this );
 }

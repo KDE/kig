@@ -632,6 +632,7 @@ void KigDocument::runMode( KigMode* m )
 #endif
 
   setMode( prev );
+  prev->redrawScreen();
 }
 
 void KigDocument::doneMode( KigMode* d )

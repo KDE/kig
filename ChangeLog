@@ -1,3 +1,7 @@
+2003-11-10  Dominique Devriese  <devriese@kde.org>
+
+	* Fix bugs #67671 and #67694
+
 2003-10-22  Dominique Devriese  <devriese@kde.org>
 
 	* fix the ArgsParser parsing order, properly this time..
