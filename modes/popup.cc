@@ -581,6 +581,7 @@ bool PropertiesActionsProvider::executeAction(
     Objects ret;
     ret.push_back( new PropertyObject( parent, propid ) );
     ret.push_back( new RealObject( CopyObjectType::instance(), ret ) );
+    ret.calc( doc );
     doc.addObjects( ret );
   };
   return true;
