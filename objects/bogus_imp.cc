@@ -216,39 +216,19 @@ const ObjectImpType* StringImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "string",
-    I18N_NOOP( "string" ),
-    I18N_NOOP( "Select this string" ),
-    I18N_NOOP( "Remove a String" ),
-    I18N_NOOP( "Add a String" ),
-    I18N_NOOP( "Move a String" ),
-    I18N_NOOP( "Attach to this string" )
-    );
+    "string", 0, 0, 0, 0 );
   return &t;
 }
 const ObjectImpType* HierarchyImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "hierarchy",
-    I18N_NOOP( "hierarchy" ),
-    I18N_NOOP( "Select this hierarchy" ),
-    I18N_NOOP( "Remove a Hierarchy" ),
-    I18N_NOOP( "Add a Hierarchy" ),
-    I18N_NOOP( "Move a Hierarchy" ),
-    I18N_NOOP( "Attach to this hierarchy" )
-    );
+    Parent::stype(), "hierarchy", 0, 0, 0, 0, 0 );
   return &t;
 }
 const ObjectImpType* TransformationImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "transformation",
-    I18N_NOOP( "transformation" ),
-    I18N_NOOP( "Select this transformation" ),
-    I18N_NOOP( "Remove a Transformation" ),
-    I18N_NOOP( "Add a Transformation" ),
-    I18N_NOOP( "Move a Transformation" ),
-    I18N_NOOP( "Attach to this transformation" )
-    );
+    Parent::stype(), "transformation", 0, 0, 0, 0, 0 );
   return &t;
 }
 
@@ -286,13 +266,7 @@ const ObjectImpType* DoubleImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "double",
-    I18N_NOOP( "double" ),
-    I18N_NOOP( "Select this number" ),
-    I18N_NOOP( "Remove a Number" ),
-    I18N_NOOP( "Add a Number" ),
-    I18N_NOOP( "Move a Number" ),
-    I18N_NOOP( "Attach to this number" )
-    );
+    "double", 0, 0, 0, 0, 0 );
   return &t;
 }
 
@@ -300,13 +274,7 @@ const ObjectImpType* IntImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "int",
-    I18N_NOOP( "int" ),
-    I18N_NOOP( "Select this number" ),
-    I18N_NOOP( "Remove a Number" ),
-    I18N_NOOP( "Add a Number" ),
-    I18N_NOOP( "Move a Number" ),
-    I18N_NOOP( "Attach to this number" )
-    );
+    "int", 0, 0, 0, 0, 0 );
   return &t;
 }
 
