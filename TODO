@@ -27,3 +27,8 @@ a widget for scripting which would be usable throughout kde...
 - Finally fix the move dependencies...
 
 - think about what to do with coincident points..
+
+- clean up misc/objects.h: replace with an implementation that is more
+stl-like, so we can use stl algo's and such.  Replace most of the
+members with some algo's of my own, which is cleaner
+(e.g. deleteAll()...)
