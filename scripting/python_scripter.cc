@@ -17,9 +17,9 @@
 
 #include "python_scripter.h"
 
-#include <Python.h>
 #include <iostream>
 #include <string>
+#include <Python.h>
 #include <boost/python.hpp>
 #include <boost/mpl/bool.hpp>
 
