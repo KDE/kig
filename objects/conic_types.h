@@ -114,4 +114,15 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& ) const;
 };
 
+class ConicDirectrixType
+  : public ObjectType
+{
+  ConicDirectrixType();
+  ~ConicDirectrixType();
+public:
+  static const ConicDirectrixType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+};
+
 #endif
+

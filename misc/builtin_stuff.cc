@@ -172,6 +172,14 @@ void setupBuiltinStuff()
     // ctors->add( c );
     // actions->add( new ConstructibleAction( c, "objects_new_cubicnodeb6p" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      ConicDirectrixType::instance(),
+      I18N_NOOP( "Directrix of a Conic" ),
+      I18N_NOOP( "The directrix line of a conic." ),
+      "directrix" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_linedirectrix" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;

@@ -302,3 +302,40 @@ ObjectImp* ConicPolarLineType::calc( const Args& parents, const KigWidget& ) con
   if ( valid ) return new LineImp( l );
   else return new InvalidImp;
 }
+
+static const ArgParser::spec argsspecc[] =
+{
+  { ObjectImp::ID_ConicImp, 1 }
+};
+
+ConicDirectrixType::ConicDirectrixType()
+  : ObjectType( "line", "ConicDirectrix", argsspecc, 1 )
+{
+}
+
+ConicDirectrixType::~ConicDirectrixType()
+{
+}
+
+const ConicDirectrixType* ConicDirectrixType::instance()
+{
+  static const ConicDirectrixType t;
+  return &t;
+}
+
+ObjectImp* ConicDirectrixType::calc( const Args& parents,
+                                     const KigWidget& ) const
+{
+  if ( parents.size() != 1 ) return new InvalidImp;
+
+  const ConicPolarData data =
+    static_cast<const ConicImp*>( parents[0] )->polarData();
+
+  double ec = data.ecostheta0;
+  double es = data.esintheta0;
+  double eccsq = ec*ec + es*es;
+
+  Coordinate a = data.focus1 - data.pdimen/eccsq*Coordinate(ec,es);
+  Coordinate b = a + Coordinate(-es,ec);
+  return new LineImp( a, b );
+}
