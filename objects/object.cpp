@@ -3,6 +3,7 @@
 #include "point.h"
 #include "segment.h"
 #include "circle.h"
+#include "curve.h"
 #include "line.h"
 #include "macro.h"
 
@@ -81,4 +82,13 @@ const Circle* Object::toCircle() const
 
 void Object::saveXML( QDomDocument&, QDomElement& )
 {
+}
+
+const Curve* Object::toCurve() const
+{
+  return dynamic_cast<const Curve*>(this);
+}
+Curve* Object::toCurve()
+{
+  return dynamic_cast<Curve*>(this);
 }

@@ -47,6 +47,7 @@ Point Line::getPoint(double p) const
 {
   // this code is copied from the KSeg source (with some
   // modifications), thanks to the author Ilya Baran
+  /* still needs fixing
   double c = (p - 0.5) * 2;
 
   if(c >= 0) c = pow(c, 1./81.) / 2.;
@@ -55,17 +56,21 @@ Point Line::getPoint(double p) const
   c = c * M_PI;
 
   return qp1 + Point(qp1-qp2).normalize() * tan(c);
+  */
 };
 
 double Line::getParam(const Point& p) const
 {
   // this code is copied from the KSeg source (with some
   // modifications), thanks to the author Ilya Baran
+  /* still needs fixing :)
   Point dir = p-Point(qp1);
   double c = atan(dir.length()) * SIGN(dir.getX()/(qp1 - qp2).getX());
   c/=M_PI;
   c = pow (2*c,81);
   return c / 2 +0.5;
+  */
+  return 0;
 }
 
 void Line::calcVars()

@@ -18,6 +18,7 @@ class Point;
 class Segment;
 class Line;
 class Circle;
+class Curve;
 
 // base class representing all objects (e.g. points, lines ..., and some day also user defined macro's)
 class Object
@@ -40,11 +41,13 @@ class Object
   Segment* toSegment();
   Line* toLine();
   Circle* toCircle();
+  Curve* toCurve();
 
   const Point* toPoint() const;
   const Segment* toSegment() const;
   const Line* toLine() const;
   const Circle* toCircle() const;
+  const Curve* toCurve() const;
 
   // type identification:
   // there are 3x2 functions: you don't need all of them in your

@@ -32,7 +32,6 @@ class Point
   bool contains (const QPoint& o, bool strict) const;
   void draw (QPainter& p,bool showSelection = true) const;
   void drawPrelim( QPainter &, const QPoint& ) const {};
-  void moved(Object*) {};
   bool inRect(const QRect& r) const { return r.contains(toQPoint()); };
   // passing arguments
   QString wantArg(const Object*) const { return 0; };
@@ -72,6 +71,7 @@ public:
   Point operator- (const Point& b) const { return Point(x-b.getX(), y-b.getY()); };
   bool operator!=(const Point& p) const { return !operator==(p); };
   bool operator==(const Point& p) const { return x==p.getX() && y==p.getY(); };
+  Point& operator= (const Point& p) { x = p.getX(); y = p.getY(); return *this;};
 
   // sets length to one, while keeping x/y constant
   Point& normalize() { x = x/length(); y = y/length(); return *this;};
@@ -117,31 +117,30 @@ class Curve;
 // ( this is very related to locuses, check locus.h and locus.cpp for
 // more info...)
 // it still needs lots of work...
-/*
 class ConstrainedPoint
   : public Point
 {
 public:
-  ConstrainedPoint() : p(0.5), c(0) {};
-  ~ConstrainedPoint();
+  ConstrainedPoint(Curve* inC, const QPoint& inPt);
+  ~ConstrainedPoint() {};
 
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "ConstrainedPoint"; };
 
-  QString wantArg(const Object* o) const;
-  bool selectArg( Object* );
-  void unselectArg (Object*);
-  Objects getParents() const { Objects tmp; tmp.push(p1); tmp.push(p2); return tmp; };
+  QString wantArg(const Object*) const { return 0; };
+  bool selectArg( Object* ) { return true;};
+  void unselectArg (Object*) {};
+  Objects getParents() const;
 
-  void startMove(const QPoint&);
-  void moveTo(const QPoint&);
-  void stopMove();
-  void cancelMove();
+  // TODO:
+  void startMove(const QPoint&) {};
+  void moveTo(const QPoint& pt);
+  void stopMove() {};
+  void cancelMove() {};
   void calc();
 protected:
   double p;
   Curve* c;
 };
 
-*/
 #endif // POINT_H

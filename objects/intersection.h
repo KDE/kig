@@ -33,9 +33,8 @@ public:
   void stopMove() {};
   void cancelMove() {};
   
-protected:
   void calc();
-  static QPoint calc(const Point& p1, const Point& p2, const Point& p3, const Point& p4);
+  static Point calc(const Point& p1, const Point& p2, const Point& p3, const Point& p4);
 };
 
 #endif

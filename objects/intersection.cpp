@@ -124,11 +124,11 @@ void IntersectionPoint::calc()
     // plain bogus value...
     result = Point(50,50);
   }
-  x = result.getX();
-  y = result.getY();
+  x = qRound(result.getX());
+  y = qRound(result.getY());
 }
 
-QPoint IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3, const Point& p4)
+Point IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3, const Point& p4)
 {
   long double xa = p1.getX(),
     xb = p2.getX(),
@@ -146,7 +146,7 @@ QPoint IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3
   {
     long double nx = (yc - ya + xa*a - xc*b)/(a-b);
     long double ny = (nx-xa)*a+ya;
-    return QPoint( roundl (nx), roundl(ny));
+    return Point( nx, ny );
   }
   else {
     // we would have had a divide by zero
@@ -154,13 +154,13 @@ QPoint IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3
       // xa == xb --> the first line is almost horizontal
       long double nx = xb;
       long double ny = (nx-xc)*b+yc;
-      return QPoint( roundl (nx), roundl(ny));
+      return Point( nx, ny);
     };
     if ( fabs(xd - xc) < 1 ) {
       // the other line is almost horizontal
       long double nx = xd;
       long double ny = (nx - xa)*a+ya;
-      return QPoint (roundl(nx), roundl(ny));
+      return Point (nx, ny);
     }
     else
       {
@@ -168,7 +168,7 @@ QPoint IntersectionPoint::calc(const Point& p1, const Point& p2, const Point& p3
 	// we know x = xb = xa
 	// and finding y is simple...
 	long double ny = (xb-xd)*(yd-yc)/(xd-xc);
-	return QPoint(roundl(xb), roundl(ny));
+	return Point(xb, ny);
       };
   }
 };

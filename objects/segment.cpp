@@ -6,6 +6,10 @@
 #include <kdebug.h>
 
 #include <math.h>
+
+#include "line.h"
+#include "intersection.h"
+
 #define max(a,b) ((a>b)?a:b)
 #define min(a,b) ((a>b)?b:a)
 
@@ -117,14 +121,20 @@ void Segment::calc()
   calcVars();
 }
 
-Point Segment::getPoint(double /*param*/) const
+Point Segment::getPoint(double param) const
 {
-    return Point( 0,0 );
+  Point dir = *p2 - *p1;
+  return *p1 + dir*param;
 }
 
-double Segment::getParam(const Point&) const
+double Segment::getParam(const Point& p) const
 {
-    return 0;
+  Point pt = LinePerpend::calcPointOnPerpend(*p1, *p2, p);
+  pt = IntersectionPoint::calc(*p1, *p2, p, pt);
+  if ((pt - *p1).length() > (*p2 - *p1).length() || (pt- *p2).length() > (*p2 - *p1).length()) pt = *p2;
+  if(!contains(pt.toQPoint(), false)) kdError() << k_funcinfo << endl;
+  if (*p2 == *p1) return 0;
+  return ((pt - *p1).length())/((*p2-*p1).length());
 }
 
 void Segment::calcVars()

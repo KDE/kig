@@ -7,6 +7,7 @@
 #include <typeinfo>
 
 #include "segment.h"
+#include "curve.h"
 
 extern "C" {
   double round (double i);
@@ -158,4 +159,31 @@ void Point::saveXML(QDomDocument& doc, QDomElement& parentElem)
   elem.setAttribute("x", x);
   elem.setAttribute("y", y);
   parentElem.appendChild(elem);
+}
+
+ConstrainedPoint::ConstrainedPoint(Curve* inC, const QPoint& inPt)
+  : c(inC)
+{
+  c->addChild(this);
+  p = c->getParam(inPt);
+  kdDebug() << k_funcinfo << "param: "<< p << endl;
+  calc();
+}
+
+void ConstrainedPoint::calc()
+{
+  assert(c);
+  Point::operator=(c->getPoint(p));
+}
+
+Objects ConstrainedPoint::getParents() const
+{
+  Objects tmp;
+  tmp.push(c);
+  return tmp;
+}
+void ConstrainedPoint::moveTo(const QPoint& pt)
+{
+  p = c->getParam(pt);
+  calc();
 }
