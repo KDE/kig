@@ -32,9 +32,8 @@ class ObjectType
 {
   const char* mbasetypename;
   const char* mfulltypename;
-  const struct ArgParser::spec* margsspec;
-  const int margscount;
 protected:
+  const ArgParser margsparser;
   ObjectType( const char basetypename[],
               const char fulltypename[],
               const struct ArgParser::spec margsspec[],
@@ -52,8 +51,7 @@ public:
   const QString translatedBaseName() const;
   const QCString fullName() const;
 
-  const struct ArgParser::spec* argsSpec() const;
-  int argsCount() const;
+  const ArgParser& argsParser() const;
 };
 
 #endif

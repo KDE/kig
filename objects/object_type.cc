@@ -44,7 +44,7 @@ ObjectType::ObjectType( const char basetypename[],
                         const struct ArgParser::spec argsspec[],
                         int n )
   : mbasetypename( basetypename ), mfulltypename( fulltypename ),
-    margsspec( argsspec ), margscount( n )
+    margsparser( argsspec, n )
 {
 }
 
@@ -53,17 +53,12 @@ bool ObjectType::canMove() const
   return false;
 }
 
-const struct ArgParser::spec* ObjectType::argsSpec() const
-{
-  return margsspec;
-}
-
-int ObjectType::argsCount() const
-{
-  return margscount;
-}
-
 void ObjectType::move( Object*, const Coordinate&,
                        const Coordinate& ) const
 {
+}
+
+const ArgParser& ObjectType::argsParser() const
+{
+  return margsparser;
 }

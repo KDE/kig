@@ -41,6 +41,9 @@ protected:
   void midClicked( const QPoint& p, KigWidget& w );
   void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
   void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
+
+  void enableActions();
+  void cancelConstruction();
 };
 
 class PointConstructMode
@@ -56,6 +59,9 @@ protected:
   void midClicked( const QPoint& p, KigWidget& w );
   void rightClicked( const Objects& oco, const QPoint& p, KigWidget& w );
   void mouseMoved( const Objects& os, const QPoint& p, KigWidget& w );
+
+  void enableActions();
+  void cancelConstruction();
 };
 
 #endif

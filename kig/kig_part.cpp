@@ -189,16 +189,16 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TStdType<CircleBTP> );
 //     Object::addBuiltinType( new TStdType<Ray> );
 //     Object::addBuiltinType( new TType<NormalPoint> );
+//     Object::addBuiltinType( new TStdType<ConicB5P> );
+//     Object::addBuiltinType( new TStdType<ConicBAAP> );
+//     Object::addBuiltinType( new TStdType<EllipseBFFP> );
+//     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
 
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
-//     Object::addBuiltinType( new TStdType<ConicBAAP> );
 //     Object::addBuiltinType( new TStdType<ConicBDFP> );
 //     Object::addBuiltinType( new TStdType<RotatedPoint> );
 //     Object::addBuiltinType( new TStdType<LineRadical> );
 //     Object::addBuiltinType( new TMultiType<LineConicRadical> );
-//     Object::addBuiltinType( new TStdType<EllipseBFFP> );
-//     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
-//     Object::addBuiltinType( new TStdType<ConicB5P> );
 //     Object::addBuiltinType( new TStdType<CubicB9P> );
 //     Object::addBuiltinType( new TStdType<ParabolaBTP> );
 //     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );

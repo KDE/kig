@@ -19,6 +19,7 @@
 #include "argsparser.h"
 
 #include "../objects/object.h"
+#include "../objects/object_imp.h"
 
 #include <algorithm>
 
@@ -59,26 +60,26 @@ int ArgParser::check( const Objects& os ) const
   return Complete;
 }
 
-Objects ArgParser::parse( const Objects& os ) const
+Args ArgParser::parse( const Args& os ) const
 {
-  assert( check( os ) != Invalid );
-  Objects ret( mwantedobjscount );
+//  assert( check( os ) != Invalid );
+  Args ret( mwantedobjscount );
 
   std::vector<int> numbers( mndt );
   for ( int i = 0; i < mndt; ++i )
     numbers[i] = margs[i].number;
 
   std::vector<int> counters( mndt );
-  counters[0] = margs[0].number;
+  counters[0] = 0;
   for ( int i = 1; i < mndt; ++i )
-    counters[i] = counters[i-1] + margs[i].number;
+    counters[i] = counters[i-1] + margs[i-1].number;
 
-  for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
+  for ( Args::const_iterator o = os.begin(); o != os.end(); ++o )
     for ( int i = 0; i < mndt; ++i )
-      if ( (*o)->has( margs[i].type ) && numbers[i] > 0 )
+      if ( (*o)->inherits( margs[i].type ) && numbers[i] > 0 )
       {
         // object o is of a type that we're looking for
-        ret[--counters[i]] = *o;
+        ret[counters[i]++] = *o;
         --numbers[i];
         break;
       }
@@ -92,4 +93,30 @@ int CheckOneArgs::check( const Objects& os ) const
 
 ArgsChecker::~ArgsChecker()
 {
+}
+
+Objects ArgParser::parse( const Objects& os ) const
+{
+  assert( check( os ) != Invalid );
+  Objects ret( mwantedobjscount );
+
+  std::vector<int> numbers( mndt );
+  for ( int i = 0; i < mndt; ++i )
+    numbers[i] = margs[i].number;
+
+  std::vector<int> counters( mndt );
+  counters[0] = 0;
+  for ( int i = 1; i < mndt; ++i )
+    counters[i] = counters[i-1] + margs[i-1].number;
+
+  for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
+    for ( int i = 0; i < mndt; ++i )
+      if ( (*o)->has( margs[i].type ) && numbers[i] > 0 )
+      {
+        // object o is of a type that we're looking for
+        ret[counters[i]++] = *o;
+        --numbers[i];
+        break;
+      }
+  return ret;
 }

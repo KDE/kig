@@ -98,6 +98,38 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicb5p" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      ConicBAAPType::instance(),
+      I18N_NOOP( "Hyperbola by Asymptotes and Point" ),
+      I18N_NOOP( "A hyperbola with given asymptotes through a point" ),
+      "conicbaap" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_conicbaap" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      EllipseBFFPType::instance(),
+      I18N_NOOP( "Ellipse by Focuses and Point" ),
+      I18N_NOOP( "An ellipse constructed by its focuses and a point on its border" ),
+      "ellipsebffp" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_ellipsebffp" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      HyperbolaBFFPType::instance(),
+      I18N_NOOP( "Hyperbola by Focuses and Point" ),
+      I18N_NOOP( "A hyperbola constructed by its focuses and a point on its border" ),
+      "hyperbolabffp" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_hyperbolabffp" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      ConicBDFPType::instance(),
+      I18N_NOOP( "Conic by Directrix, Focus and Point" ),
+      I18N_NOOP( "A conic with given directrix and focus, through a point" ),
+      "conicbdfp" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_conicbdfp" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;

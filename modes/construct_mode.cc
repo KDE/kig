@@ -26,6 +26,7 @@
 #include "../misc/kigpainter.h"
 
 #include <kcursor.h>
+#include <kaction.h>
 
 ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
   : BaseMode( d ), mctor( ctor ),
@@ -35,6 +36,7 @@ ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
 
 ConstructMode::~ConstructMode()
 {
+  delete mpt;
 }
 
 void ConstructMode::leftClickedObject(
@@ -172,4 +174,28 @@ void PointConstructMode::mouseMoved(
   w.setCursor( KCursor::blankCursor() );
 
   w.updateWidget( pter.overlay() );
+}
+
+void ConstructMode::enableActions()
+{
+  BaseMode::enableActions();
+
+  mdoc.aCancelConstruction->setEnabled( true );
+}
+
+void ConstructMode::cancelConstruction()
+{
+  mdoc.doneMode( this );
+}
+
+void PointConstructMode::enableActions()
+{
+  BaseMode::enableActions();
+
+  mdoc.aCancelConstruction->setEnabled( true );
+}
+
+void PointConstructMode::cancelConstruction()
+{
+  mdoc.doneMode( this );
 }

@@ -21,7 +21,9 @@
 #include "bogus_imp.h"
 #include "conic_imp.h"
 #include "point_imp.h"
+#include "line_imp.h"
 #include "../misc/conic-common.h"
+#include "../misc/common.h"
 
 static const struct ArgParser::spec argsspec5p[] =
 {
@@ -57,4 +59,151 @@ const ConicB5PType* ConicB5PType::instance()
 {
   static const ConicB5PType t;
   return &t;
+}
+
+static const ArgParser::spec argsspecllp[] =
+{
+  { ObjectImp::ID_LineImp, 2 },
+  { ObjectImp::ID_PointImp, 1 }
+};
+
+ConicBAAPType::ConicBAAPType()
+  : ObjectType( "conic", "ConicBAAP", argsspecllp, 2 )
+{
+}
+
+ConicBAAPType::~ConicBAAPType()
+{
+}
+
+const ConicBAAPType* ConicBAAPType::instance()
+{
+  static const ConicBAAPType t;
+  return &t;
+}
+
+ObjectImp* ConicBAAPType::calc( const Args& parents, const KigWidget& ) const
+{
+  if ( parents.size() < 3 ) return new InvalidImp;
+  Args parsed = margsparser.parse( parents );
+  assert( parsed[0]->inherits( ObjectImp::ID_LineImp ) );
+  assert( parsed[1]->inherits( ObjectImp::ID_LineImp ) );
+  assert( parsed[2]->inherits( ObjectImp::ID_PointImp ) );
+  const LineData la = static_cast<const LineImp*>( parsed[0] )->data();
+  const LineData lb = static_cast<const LineImp*>( parsed[1] )->data();
+  const Coordinate c = static_cast<const PointImp*>( parsed[2] )->coordinate();
+
+  return new ConicImpCart( calcConicByAsymptotes( la, lb, c ) );
+}
+
+ObjectImp* ConicBFFPType::calc(
+  const Args& parents, const KigWidget& ) const
+{
+  std::vector<Coordinate> cs;
+
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+      cs.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+
+  if ( cs.size() < 2 ) return new InvalidImp;
+  else return new ConicImpPolar( calcConicBFFP( cs, type() ) );
+}
+
+ConicBFFPType::ConicBFFPType( const char* fullname )
+  : ObjectABCType( "conic", fullname )
+{
+}
+
+ConicBFFPType::~ConicBFFPType()
+{
+}
+
+EllipseBFFPType::EllipseBFFPType()
+  : ConicBFFPType( "EllipseBFFP" )
+{
+}
+
+EllipseBFFPType::~EllipseBFFPType()
+{
+}
+
+int EllipseBFFPType::type() const
+{
+  return 1;
+}
+
+const EllipseBFFPType* EllipseBFFPType::instance()
+{
+  static const EllipseBFFPType t;
+  return &t;
+}
+
+HyperbolaBFFPType::HyperbolaBFFPType()
+  : ConicBFFPType( "HyperbolaBFFP" )
+{
+}
+
+HyperbolaBFFPType::~HyperbolaBFFPType()
+{
+}
+
+const HyperbolaBFFPType* HyperbolaBFFPType::instance()
+{
+  static const HyperbolaBFFPType t;
+  return &t;
+}
+
+int HyperbolaBFFPType::type() const
+{
+  return -1;
+}
+
+const ConicBDFPType* ConicBDFPType::instance()
+{
+  static const ConicBDFPType t;
+  return &t;
+}
+
+static const struct ArgParser::spec argsspeclpp[] =
+{
+  { ObjectImp::ID_PointImp, 2 },
+  { ObjectImp::ID_LineImp, 1 }
+};
+
+ConicBDFPType::ConicBDFPType()
+  : ObjectType( "conic", "ConicBDFP", argsspeclpp, 2 )
+{
+}
+
+ConicBDFPType::~ConicBDFPType()
+{
+}
+
+ObjectImp* ConicBDFPType::calc( const Args& parents, const KigWidget& ) const
+{
+  if ( parents.size() < 2 ) return new InvalidImp;
+  Args parsed = margsparser.parse( parents );
+
+  if ( ! parsed[2] || ! parsed[2]->inherits( ObjectImp::ID_LineImp ) )
+    return new InvalidImp;
+  if ( ! parsed[0] || ! parsed[0]->inherits( ObjectImp::ID_PointImp ) )
+    return new InvalidImp;
+  if ( parsed[1] && !parsed[1]->inherits( ObjectImp::ID_PointImp ) )
+    return new InvalidImp;
+  const LineData line = static_cast<const LineImp*>( parsed[2] )->data();
+  const Coordinate focus =
+    static_cast<const PointImp*>( parsed[0] )->coordinate();
+  Coordinate point;
+  if ( parsed[1] )
+    point = static_cast<const PointImp*>( parsed[1] )->coordinate();
+  else
+  {
+    /* !!!! costruisci point come punto medio dell'altezza tra fuoco e d. */
+    Coordinate ba = line.dir();
+    Coordinate fa = focus - line.b;
+    double balsq = ba.x*ba.x + ba.y*ba.y;
+    double scal = (fa.x*ba.x + fa.y*ba.y)/balsq;
+    point = 0.5*(line.a + focus + scal*ba);
+  };
+  return new ConicImpPolar( calcConicBDFP( line, focus, point ) );
 }

@@ -19,7 +19,7 @@
 #ifndef KIG_OBJECTS_CONIC_TYPES_H
 #define KIG_OBJECTS_CONIC_TYPES_H
 
-#include "object_type.h"
+#include "base_type.h"
 
 class ConicB5PType
   : public ObjectType
@@ -28,6 +28,59 @@ class ConicB5PType
   ~ConicB5PType();
 public:
   static const ConicB5PType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+};
+
+class ConicBAAPType
+  : public ObjectType
+{
+  ConicBAAPType();
+  ~ConicBAAPType();
+public:
+  static const ConicBAAPType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+};
+
+class ConicBFFPType
+  : public ObjectABCType
+{
+protected:
+  ConicBFFPType( const char* fullname );
+  ~ConicBFFPType();
+public:
+  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+
+  // -1 for hyperbola, 1 for ellipse..
+  virtual int type() const = 0;
+};
+
+class EllipseBFFPType
+  : public ConicBFFPType
+{
+  EllipseBFFPType();
+  ~EllipseBFFPType();
+public:
+  static const EllipseBFFPType* instance();
+  int type() const;
+};
+
+class HyperbolaBFFPType
+  : public ConicBFFPType
+{
+  HyperbolaBFFPType();
+  ~HyperbolaBFFPType();
+public:
+  static const HyperbolaBFFPType* instance();
+  int type() const;
+};
+
+class ConicBDFPType
+  : public ObjectType
+{
+  ConicBDFPType();
+  ~ConicBDFPType();
+public:
+  static const ConicBDFPType* instance();
   ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
 };
 

@@ -51,11 +51,11 @@ const QCString StandardConstructorBase::iconFileName() const
 
 StandardConstructorBase::StandardConstructorBase(
   const char* descname, const char* desc,
-  const char* iconfile, const ArgParser::spec* specs, int n )
+  const char* iconfile, const ArgParser& parser )
   : mdescname( descname ),
     mdesc( desc ),
     miconfile( iconfile ),
-    margsparser( specs, n )
+    margsparser( parser )
 {
 }
 
@@ -90,7 +90,7 @@ SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
   const ObjectType* t, const char* descname,
   const char* desc, const char* iconfile )
   : StandardConstructorBase( descname, desc, iconfile,
-                             t->argsSpec(), t->argsCount() ),
+                             t->argsParser() ),
     mtype( t )
 {
 }

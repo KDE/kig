@@ -86,13 +86,12 @@ class StandardConstructorBase
   const char* mdescname;
   const char* mdesc;
   const char* miconfile;
-  const ArgParser margsparser;
+  const ArgParser& margsparser;
 public:
   StandardConstructorBase( const char* descname,
                            const char* desc,
                            const char* iconfile,
-                           const ArgParser::spec* specs,
-                           int n );
+                           const ArgParser& parser );
 
   virtual ~StandardConstructorBase();
 

@@ -21,7 +21,7 @@
 
 #include <map>
 
-class Objects;
+#include "../objects/common.h"
 
 class ArgsChecker
 {
@@ -54,6 +54,7 @@ private:
 public:
   ArgParser( const struct spec* args, int n );
   int check( const Objects& os ) const;
+  Args parse( const Args& os ) const;
   Objects parse( const Objects& os ) const;
 };
 

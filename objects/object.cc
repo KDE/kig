@@ -96,7 +96,7 @@ void Object::calc( const KigWidget& w )
 {
   using namespace std;
   Args a = mfixedargs;
-  transform( mparents.rbegin(), mparents.rend(),
+  transform( mparents.begin(), mparents.end(),
              back_inserter( a ), mem_fun( &Object::imp ) );
   mimp.reset( mtype->calc( a, w ) );
 }
