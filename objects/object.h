@@ -48,7 +48,11 @@ class Rect;
 class NormalMode;
 class ScreenInfo;
 
-// base class representing all objects (e.g. points, lines etc.)
+/**
+ * Object is a base class representing all objects (e.g. points, lines etc.).
+ *
+ * @author Dominique Devriese
+ */
 class Object
   : protected Qt
 {
@@ -60,8 +64,10 @@ public:
   Object( const Object& o );
   virtual ~Object() {};
 
-  // returns a copy of the object.  This should prolly simply do
-  // "return new <Type>(*this);" (if you have a good copy constructor...)
+  /**
+   * returns a copy of the object.  This should prolly simply do
+   * "return new <Type>(*this);" (if you have a good copy constructor...)
+   */
   virtual Object* copy() = 0;
 
   // only object types that have "parameters" need this, a parameter
@@ -125,20 +131,25 @@ public:
   virtual const QString vDescriptiveName() const = 0;
   // static const QString sDescriptiveName() const = 0;
 
-  // gives an explanation like i18n( "A circle which is defined by
-  // its center and a point on its edge." ). Do _NOT_ forget the
-  // i18n() call !!!
+  /** 
+   * gives an explanation like i18n( "A circle which is defined by
+   * its center and a point on its edge." ). Do _NOT_ forget the
+   * i18n() call !!!
+   */
   virtual const QString vDescription() const = 0;
   // static const QString sDescription() const = 0;
 
-  // gives the filename of a icon file.  e.g. "segment" for Segment,
-  // "point4" for FixedPoint etc.  return 0 or "" if you don't have an
-  // icon.
+  /** gives the filename of a icon file.  e.g. "segment" for Segment,
+   * "point4" for FixedPoint etc.  return 0 or "" if you don't have an
+   * icon.
+   */
   virtual const QCString vIconFileName() const = 0;
   // static const QCString vIconFileName() = 0;
 
-  // this is used by TType, this implementation is good for almost
-  // all, only NormalPoint needs something else...
+  /** 
+   * this is used by TType, this implementation is good for almost
+   * all, only NormalPoint needs something else...
+   */
   static KigMode* sConstructMode( Type* ourtype, KigDocument* theDoc,
                                   NormalMode* previousMode );
 
@@ -155,12 +166,16 @@ public:
 
   virtual void draw (KigPainter& p, bool showSelection) const = 0;
 
-  // whether the object contains o
-  // allowed_miss contains the maximum distance there may be between
-  // o and your object...
+  /** 
+   * whether the object contains o
+   * allowed_miss contains the maximum distance there may be between
+   * o and your object...
+   */
   virtual bool contains ( const Coordinate& o, const double allowed_miss ) const = 0;
 
-  // is this object in rect r ?
+  /**
+   * is this object in rect r ?
+   */
   virtual bool inRect (const Rect& r) const = 0;
 
   // for passing args to objects
@@ -176,8 +191,11 @@ public:
   // here, you should only store the pointer, not do any calculations,
   // those are to be done in calc()
   virtual bool selectArg (Object* which) = 0;
-  // draw a preliminary version of yourself, as if prelimArg had been
-  // selected...
+  
+  /**
+   * draw a preliminary version of yourself, as if prelimArg had been
+   * selected...
+   */
   virtual void drawPrelim (KigPainter& p, const Object* prelimArg ) const = 0;
 
   // for moving
@@ -188,12 +206,15 @@ public:
   virtual void moveTo(const Coordinate&) = 0;
   virtual void stopMove() = 0;
 
-  // informs the object that it ( or one of its parents ) has been
-  // moved (or other situations), and that it should recalculate any
-  // of its variables.  showingRect is the rect that is currently
-  // showing.  Some objects need this ( e.g. Locus only wants points
-  // that are in the rect, and throws away the rest... )
+  /**
+   * informs the object that it ( or one of its parents ) has been
+   * moved (or other situations), and that it should recalculate any
+   * of its variables.  showingRect is the rect that is currently
+   * showing.  Some objects need this ( e.g. Locus only wants points
+   * that are in the rect, and throws away the rest... )
+   */
   virtual void calc( const ScreenInfo& showingRect ) = 0;
+  
 protected:
   QColor mColor;
 public:
@@ -229,16 +250,23 @@ public:
  public:
   bool getValid() const { return valid; };
  protected:
-  // objects we know, and that know us: if they move, we move too, and vice versa
+  /**
+   * objects we know, and that know us: if they move, we move too, and vice versa
+   */
   Objects children;
+  
  public:
   const Objects& getChildren() const { return children;};
-  // our children + our children's children + ...
+  /** 
+   * our children + our children's children + ...
+   */
   Objects getAllChildren() const;
 
   void addChild(Object* o);
   void delChild(Object* o);
-  // returns all objects the object depends upon ( the args it selected )
+  /**
+   * returns all objects the object depends upon ( the args it selected )
+   */
   virtual Objects getParents() const = 0;
 };
 

@@ -21,7 +21,9 @@
 
 #include "point.h"
 
-// midpoint of two other points
+/** 
+ * midpoint of two other points
+ */
 class MidPoint
   : public Point
 {
