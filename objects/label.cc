@@ -54,21 +54,22 @@ TextLabel::TextLabel( const Objects& os )
 TextLabel::TextLabel( const TextLabel& l )
   : Object( l ), mprops( l.mprops ), mtext( l.mtext ), mcoord( l.mcoord )
 {
-  // this one rocks even more :)
-  using std::for_each;
-  using std::bind2nd;
-  using std::mem_fun;
-  using std::compose1;
-  for_each( mprops.begin(), mprops.end(),
-            compose1(
-              bind2nd(
-                mem_fun( &Object::addChild ),
-                this ),
-              getObj() )
-    );
-// // now isn't this way cooler than the following.. ;)
-//   for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
-//     i->obj->addChild( this );
+  // damn, this seems unportable...
+//   // this one rocks even more :)
+//   using std::for_each;
+//   using std::bind2nd;
+//   using std::mem_fun;
+//   using std::compose1;
+//   for_each( mprops.begin(), mprops.end(),
+//             compose1(
+//               bind2nd(
+//                 mem_fun( &Object::addChild ),
+//                 this ),
+//               getObj() )
+//     );
+  // now wasn't that way cooler than the following.. ;)
+  for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
+    i->obj->addChild( this );
 }
 
 TextLabel::~TextLabel()
@@ -79,8 +80,8 @@ std::map<QCString,QString> TextLabel::getParams()
 {
   std::map<QCString, QString> ret;
   ret["text"] = mtext;
-  ret["coordinate-x"] = mcoord.x;
-  ret["coordinate-y"] = mcoord.y;
+  ret["coordinate-x"] = QString::number( mcoord.x );
+  ret["coordinate-y"] = QString::number( mcoord.y );
   int count = 0;
   for ( propvect::const_iterator i = mprops.begin(); i != mprops.end(); ++i, ++count )
   {
