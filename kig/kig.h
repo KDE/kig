@@ -49,9 +49,26 @@ class Kig : public KParts::MainWindow, virtual public KigIface
   void openURL (const QString& s) { openURL(KURL(s)); };
   void openURL (const KURL& url);
  protected:
-  // this is called by the framework before closing the window, to
-  // allow the user to save his changes... returning false cancels the
-  // close request...
+  
+  /** 
+   * The user started dragging something onto us...
+   * 
+   * @param e 
+   */
+  void dragEnterEvent(QDragEnterEvent* e);
+
+  /** 
+   * The user dropped something onto us...
+   * 
+   * @param e 
+   */
+  void dropEvent (QDropEvent* e);
+
+  /**
+   * this is called by the framework before closing the window, to
+   * allow the user to save his changes... returning false cancels the
+   * close request...
+   */
   bool queryClose();
   
   /**

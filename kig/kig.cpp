@@ -7,9 +7,8 @@
 #include <kkeydialog.h>
 #include <kconfig.h>
 #include <kurl.h>
-
+#include <kurldrag.h>
 #include <kedittoolbar.h>
-
 #include <kaction.h>
 #include <kstdaction.h>
 #include <kstatusbar.h>
@@ -64,6 +63,7 @@ Kig::Kig()
       kapp->dcopClient()->registerAs("kigiface");
       kapp->dcopClient()->setDefaultObject( objId() );
     };
+  setAcceptDrops(true);
 }
 
 Kig::~Kig()
@@ -185,6 +185,25 @@ bool Kig::queryClose()
     default: // cancel
       return false;
       break;
+    };
+}
+
+void Kig::dragEnterEvent(QDragEnterEvent* e)
+{
+  e->accept(KURLDrag::canDecode(e));
+}
+
+void Kig::dropEvent(QDropEvent* e)
+{
+  KURL::List urls;
+  if ( KURLDrag::decode (e, urls) )
+    {
+      for (KURL::List::iterator u = urls.begin(); u != urls.end(); ++u)
+	{
+	   Kig* k = new Kig;
+	   k->show();
+	   k->load(*u);
+	};
     };
 }
 
