@@ -17,8 +17,8 @@ The python development libraries themselves are almost certainly
 packaged by your favourite distribution.  Look for a package name 
 like libpython-dev, with possibly a version number inserted 
 somewhere in the name..  For the Boost.Python libs, check this 
-documentation: \"http://boost.org/more/download.html\" and 
-\"http://boost.org/more/download.html#Installation\"  or look for 
+documentation: "http://boost.org/more/download.html" and 
+"http://boost.org/more/download.html#Installation"  or look for 
 a package like libboost-python-dev or libboost-dev.. 
 EOF
 fi
