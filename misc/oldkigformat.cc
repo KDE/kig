@@ -111,8 +111,10 @@ static bool oldElemToNewObject( const QCString type,
     o.setParents( Objects( po ) );
     o.setType( CopyObjectType::instance() );
   }
-  else if ( type == "CircleTransform" || type == "ConicTransform" || type == "CubicTransform" ||
-            type == "LineTransform" || type == "RayTransform" || type == "SegmentTransform" ||
+  else if ( type == "CircleTransform" ||
+            type == "ConicTransform" || type == "CubicTransform" ||
+            type == "LineTransform" ||
+            type == "RayTransform" || type == "SegmentTransform" ||
             type == "PointTransform" )
   {
     uint size = o.parents().size();
