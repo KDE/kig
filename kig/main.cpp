@@ -35,7 +35,7 @@ static KCmdLineOptions options[] =
     { "convert-to-native", I18N_NOOP( "Do not show a GUI.  Convert the specified file to the native Kig format.  Output goes to stdout unless --outfile is specified." ), 0 },
     { "o", 0, 0 },
     { "outfile <file>", I18N_NOOP( "File to output the created native file to.  '-' means output to stdout.  Default is stdout as well." ), 0 },
-    { "+[URL]", I18N_NOOP( "Document to open." ), 0 },
+    { "+[URL]", I18N_NOOP( "Document to open" ), 0 },
     KCmdLineLastOption
   };
 
