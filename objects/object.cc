@@ -163,10 +163,14 @@ bool Object::has( int typeID ) const
 void Object::reset( const ObjectType* t, const Args& fixedArgs, const Objects& parents )
 {
   mtype = t;
+  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
+    (*i)->delChild( this );
   for ( Args::const_iterator i = mfixedargs.begin(); i != mfixedargs.end(); ++i )
     delete *i;
   mfixedargs = fixedArgs;
   mparents = parents;
+  for ( Objects::iterator i = mparents.begin(); i != mparents.end(); ++i )
+    (*i)->addChild( this );
 }
 
 double Object::getParam( const Coordinate& c ) const
