@@ -1,14 +1,15 @@
 <!DOCTYPE KigMacroFile>
 <KigMacroFile Number="1" Version="0.9.0" >
  <Macro>
-  <Name>Involute</Name>
-  <Description>Involute of a curve</Description>
+  <Name>Evolute</Name>
+  <Description>Evolute of a curve</Description>
   <ActionName>objects_new_evolute</ActionName>
   <IconFileName>evolute</IconFileName>
   <Construction>
-   <input requirement="curve" id="1" />
-    <UseText>Involute of this curve</UseText>
+   <input requirement="curve" id="1">
+    <UseText>Evolute of this curve</UseText>
     <SelectStatement>Select the curve</SelectStatement>
+   </input>
    <intermediate action="push" type="hierarchy" id="2" >
     <input requirement="point" id="1" />
     <input requirement="curve" id="2" />
