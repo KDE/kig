@@ -254,6 +254,7 @@ Rect Rect::fromQRect( const QRect& r )
 void Rect::setTopLeft( const Coordinate p )
 {
   Coordinate bl = Coordinate( p.x, p.y - mheight );
+  setBottomLeft( bl );
 }
 
 Rect operator|( const Rect& lhs, const Rect& rhs )
