@@ -325,7 +325,7 @@ QString NewScriptAction::description() const
 
 QCString NewScriptAction::iconFileName() const
 {
-  return "";
+  return "script";
 }
 
 QString NewScriptAction::descriptiveName() const
