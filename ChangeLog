@@ -1,3 +1,8 @@
+2003-07-12  Dominique Devriese  <devriese@kde.org>
+
+	* prevent a crash when kig cannot find its library.  It now just
+	complains and exits properly.
+
 2003-07-03  Dominique Devriese  <devriese@kde.org>
 
 	* make snapToGrid work for PolarCoordinateSystem

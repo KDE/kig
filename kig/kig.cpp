@@ -38,7 +38,7 @@
 #include <assert.h>
 
 Kig::Kig()
-  : KParts::MainWindow( 0L, "Kig" )
+  : KParts::MainWindow( 0L, "Kig" ), m_part( 0 )
 {
   // set the shell's ui resource file
   setXMLFile("kigui.rc");
@@ -127,7 +127,9 @@ void Kig::readProperties(KConfig* config)
 
 void Kig::load(const KURL& url)
 {
-  if ( m_part->openURL( url ) ) m_recentFilesAction->addURL( url );
+  // we check for m_part not being 0, because in the case of us not
+  // finding our library, we would otherwise get a crash...
+  if ( m_part && m_part->openURL( url ) ) m_recentFilesAction->addURL( url );
 }
 
 void Kig::fileNew()
