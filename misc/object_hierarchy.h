@@ -33,6 +33,10 @@ public:
   ObjectHierarchy( const Objects& from, const Object* to );
   ObjectHierarchy( const ObjectHierarchy& h );
   ~ObjectHierarchy();
+
+  // this creates a new ObjectHierarchy, that takes a.size() less
+  // arguments, but uses copies of the ObjectImp's in a instead..
+  ObjectHierarchy withFixedArgs( const Args& a ) const;
   ObjectImp* calc( const Args& a ) const;
 };
 

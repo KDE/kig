@@ -165,3 +165,17 @@ ObjectHierarchy::ObjectHierarchy( const ObjectHierarchy& h )
   for ( uint i = 0; i < h.mnodes.size(); ++i )
     mnodes.push_back( h.mnodes[i]->copy() );
 }
+
+ObjectHierarchy ObjectHierarchy::withFixedArgs( const Args& a ) const
+{
+  assert( a.size() <= mnumberofargs );
+  ObjectHierarchy ret( *this );
+  ret.mnumberofargs -= a.size();
+  std::vector<Node*> newnodes( mnodes.size() + a.size() );
+  std::vector<Node*>::iterator newnodesiter = newnodes.begin();
+  for ( uint i = 0; i < a.size(); ++i )
+    *newnodesiter++ = new PushStackNode( a[i]->copy() );
+  std::copy( ret.mnodes.begin(), ret.mnodes.end(), newnodesiter );
+  ret.mnodes = newnodes;
+  return ret;
+}
