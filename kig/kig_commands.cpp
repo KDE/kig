@@ -18,26 +18,26 @@
  USA
 **/
 
-
 #include "kig_commands.h"
 #include "kig_commands.moc"
 
 #include "kig_part.h"
 
 #include "../modes/mode.h"
+#include "../objects/object_imp.h"
 
 AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand( inDoc,
 		inOs.size() == 1 ?
-		  i18n("Add a %1").arg(inOs.front()->translatedBaseTypeName()) :
-		  i18n( "Add %1 objects" ).arg( os.size() ) ),
+                ObjectImp::addAStatement( inOs.front()->imp()->id() ) :
+                i18n( "Add %1 objects" ).arg( os.size() ) ),
     undone(true),
     os (inOs)
 {
 }
 
 AddObjectsCommand::AddObjectsCommand( KigDocument* inDoc, Object* o )
-    : KigCommand ( inDoc, i18n( "Add a %1" ).arg( o->translatedBaseTypeName() ) ),
+    : KigCommand ( inDoc, ObjectImp::addAStatement( o->imp()->id() ) ),
       undone( true )
 {
   os.push_back( o );
@@ -76,8 +76,8 @@ AddObjectsCommand::~AddObjectsCommand()
 RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand(inDoc,
 	       inOs.size() == 1 ?
-   	         i18n("Remove a %1").arg(inOs.front()->translatedBaseTypeName()) :
-	         i18n( "Remove %1 objects" ).arg( inOs.size()) ),
+               ObjectImp::removeAStatement( inOs.front()->imp()->id() ) :
+               i18n( "Remove %1 objects" ).arg( inOs.size()) ),
     undone( false ),
     os( inOs )
 {
@@ -89,7 +89,7 @@ RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& in
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
-  : KigCommand( inDoc, i18n("Remove a %1").arg(o->translatedBaseTypeName()) ),
+  : KigCommand( inDoc, ObjectImp::removeAStatement( o->imp()->id() ) ),
     undone( false )
 {
   os.push_back( o );
