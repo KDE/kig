@@ -234,3 +234,37 @@ ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigWidget& ) const
   return new ConicImpCart(
     calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry ) );
 }
+
+static const ArgParser::spec argsspec1c[] =
+{
+  { ObjectImp::ID_ConicImp, 1 },
+  { ObjectImp::ID_LineImp, 1 }
+};
+
+ConicPolarPointType::ConicPolarPointType()
+  : ObjectType( "point", "ConicPolarPoint", argsspec1c, 2 )
+{
+}
+
+ConicPolarPointType::~ConicPolarPointType()
+{
+}
+
+const ConicPolarPointType* ConicPolarPointType::instance()
+{
+  static const ConicPolarPointType t;
+  return &t;
+}
+
+ObjectImp* ConicPolarPointType::calc( const Args& parents, const KigWidget& ) const
+{
+  if ( parents.size() < 2 ) return new InvalidImp;
+  Args parsed = margsparser.parse( parents );
+  if ( parsed.size() < 2 || ! parsed[0] || ! parsed[1] ) return new InvalidImp;
+  const ConicCartesianData c = static_cast<const ConicImp*>( parsed[0] )->cartesianData();
+  const LineData l = static_cast<const LineImp*>( parsed[1] )->data();
+  bool valid = true;
+  const Coordinate p = calcConicPolarPoint( c, l, valid );
+  if ( valid ) return new PointImp( p );
+  else return new InvalidImp;
+}

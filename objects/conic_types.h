@@ -94,4 +94,14 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
 };
 
+class ConicPolarPointType
+  : public ObjectType
+{
+  ConicPolarPointType();
+  ~ConicPolarPointType();
+public:
+  static const ConicPolarPointType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+};
+
 #endif
