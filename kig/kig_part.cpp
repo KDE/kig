@@ -532,7 +532,6 @@ void KigDocument::plugActionLists()
   plugActionList( "user_point_types", aMNewPoint );
   plugActionList( "user_circle_types", aMNewCircle );
   plugActionList( "user_line_types", aMNewLine );
-  plugActionList( "user_conic_types", aMNewConic );
   plugActionList( "user_other_types", aMNewOther );
   plugActionList( "user_types", aMNewAll );
 };
