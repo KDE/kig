@@ -42,6 +42,13 @@ public:
   CoordinateSystem() {};
   virtual ~CoordinateSystem() {};
   virtual QString fromScreen (const Coordinate& pt) const = 0;
+  /**
+   * This returns a notice to say in which format coordinates should
+   * be entered.  This should be something like:
+   * i18n( "Enter coordinates in the following form: \"(x,y)\", where
+   * x is the x coordinate, and y is the y coordinate." );
+   */
+  virtual QString coordinateFormatNotice() const = 0;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const = 0;
   virtual void drawGrid ( KigPainter& p ) const = 0;
 };
@@ -53,6 +60,7 @@ public:
   EuclideanCoords();
   ~EuclideanCoords() {};
   virtual QString fromScreen (const Coordinate& pt) const;
+  virtual QString coordinateFormatNotice() const;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const;
   virtual void drawGrid ( KigPainter& p ) const;
 };
