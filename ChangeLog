@@ -1,5 +1,10 @@
 2003-10-09  Dominique Devriese  <devriese@kde.org>
 
+	* fix some issues with the escaping of an & in a translatable
+	string in an xml file
+
+	* fix the generation of the pot translation template file
+
 	* fix a problem with the order of arguments in ScalingOverLineType
 	causing a test file to not be loaded correctly..
 
