@@ -28,10 +28,12 @@
 #include "../objects/object_drawer.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/point_imp.h"
+#include "../objects/line_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/object_factory.h"
 #include "../misc/lists.h"
 #include "../misc/argsparser.h"
+#include "../misc/kigpainter.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/object_constructor.h"
 #include "construct_mode.h"
@@ -39,7 +41,6 @@
 #include "moving.h"
 
 #include <qcursor.h>
-#include <qpainter.h>
 #include <qpen.h>
 #include <qdialog.h>
 #include <kglobal.h>
@@ -353,76 +354,29 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     bool point = ( npoints > nothers );
     if ( ! samecolor ) color = Qt::blue;
     if ( point )
-      for ( int i = 1; i <= 5; ++i )
+      for ( int i = 0; i < 5; ++i )
       {
         QPixmap p( 20, 20 );
-        QPainter ptr( &p );
         p.fill( popup.eraseColor() );
-        QRect r( 6, 6, 8, 8 );
-        switch ( i )
-        {
-          case 1:
-          {
-            ptr.setPen( QPen( color, 1 ) );
-            ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
-            ptr.drawEllipse( r );
-            break;
-          }
-          case 2:
-          {
-            ptr.setPen( QPen( color, 1 ) );
-            ptr.setBrush( Qt::NoBrush );
-            ptr.drawEllipse( r );
-            break;
-          }
-          case 3:
-          {
-            ptr.setPen( QPen( color, 1 ) );
-            ptr.drawRect( r );
-            ptr.fillRect( r, QBrush( color, Qt::SolidPattern ) );
-            break;
-          }
-          case 4:
-          {
-            ptr.setPen( QPen( color, 1 ) );
-            ptr.drawRect( r );
-            break;
-          }
-          case 5:
-          {
-            ptr.setPen( QPen( color, 2 ) );
-            ptr.drawLine( r.topLeft(), r.bottomRight() );
-            ptr.drawLine( r.topRight(), r.bottomLeft() );
-            break;
-          }
-        }
-        ptr.end();
+        ScreenInfo si( Rect( -1, -1, 2, 2 ), p.rect() );
+        KigPainter ptr( si, &p, popup.document(), false );
+        PointImp pt( Coordinate( 0, 0 ) );
+        ObjectDrawer d( color, -1, true, Qt::SolidLine, i );
+        d.draw( pt, ptr, false );
         popup.addAction( menu, p, nextfree++ );
       }
     else
-      for ( int i = 1; i < 4; ++i )
+      for ( int i = 0; i < 3; ++i )
       {
         QPixmap p( 50, 20 );
-        QPainter ptr( &p );
         p.fill( popup.eraseColor() );
-        ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
-        Qt::PenStyle ps = Qt::SolidLine;
-        switch ( i )
-        {
-          case 2:
-          {
-            ps = Qt::DashLine;
-            break;
-          }
-          case 3:
-          {
-            ps = Qt::DotLine;
-            break;
-          }
-        }
-        ptr.setPen( QPen( color, 1, ps ) );
-        ptr.drawLine( QPoint( 0, 10 ), QPoint( 50, 10 ) );
-        ptr.end();
+        ScreenInfo si( Rect( -2.5, -1, 5, 2 ), p.rect() );
+        KigPainter ptr( si, &p, popup.document(), false );
+        LineImp line( Coordinate( -1, 0 ), Coordinate( 1, 0 ) );
+        const Qt::PenStyle penstyles[] = {Qt::SolidLine, Qt::DashLine, Qt::DotLine};
+        Qt::PenStyle ps = penstyles[i];
+        ObjectDrawer d( color, -1, true, ps, 1 );
+        d.draw( line, ptr, false );
         popup.addAction( menu, p, nextfree++ );
       };
   }
