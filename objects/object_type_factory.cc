@@ -109,6 +109,7 @@ void ObjectTypeFactory::setupBuiltinTypes()
   add( AngleType::instance() );
   add( VectorType::instance() );
   add( LocusType::instance() );
+  add( CopyObjectType::instance() );
 
   // point_type.h
   add( FixedPointType::instance() );
