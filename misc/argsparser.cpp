@@ -68,12 +68,18 @@ Objects ArgParser::parse( const Objects& os ) const
   for ( int i = 0; i < mndt; ++i )
     numbers[i] = margs[i].number;
 
+  std::vector<int> counters( mndt );
+  counters[0] = margs[0].number;
+  for ( int i = 1; i < mndt; ++i )
+    counters[i] = counters[i-1] + margs[i].number;
+
   for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
     for ( int i = 0; i < mndt; ++i )
       if ( (*o)->isa( margs[i].type ) && numbers[i] > 0 )
       {
         // object o is of a type that we're looking for
-        ret[--numbers[i]] = *o;
+        ret[--counters[i]] = *o;
+        --numbers[i];
         break;
       }
   return ret;
