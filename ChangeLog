@@ -1,3 +1,21 @@
+2004-07-18  Dominique Devriese  <devriese@kde.org>
+
+	* Introduce the concept of a CompatibilityVersion.  Kig now saves
+	its files with a compatibility version of 0.7.0, indicating that
+	the file format has stayed more or less the same since 0.7, and
+	that an app able to open documents created by Kig 0.7 should
+	normally not have much problems with this version's files ( apart
+	from some new document types, but those are handled separately
+	anyway ).  On loading, Kig now first checks the compatibility
+	version, and falls back to the real version only if the previous
+	is not available.  The CompatibilityVersion will change only on
+	major file format changes, unlike the normal Version.
+
+	* Move the version back to 0.9, because Kig really isn't in a 1.0
+	state yet.  Some problems need addressing first.  It took me some
+	time to realise, but calling this release 1.0 would not do credit
+	to the program's long-term potential.
+
 2004-07-13  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Move AngleType from other_type.* into angle_type.*.

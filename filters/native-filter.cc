@@ -110,7 +110,8 @@ KigDocument* KigFilterNative::load( const QString& file )
   ffile.close();
   QDomElement main = doc.documentElement();
 
-  QString version = main.attribute( "Version" );
+  QString version = main.attribute( "CompatibilityVersion" );
+  if ( ! version ) version = main.attribute( "Version" );
   if ( ! version ) version = main.attribute( "version" );
   if ( ! version )
     KIG_FILTER_PARSE_ERROR;
@@ -129,7 +130,7 @@ KigDocument* KigFilterNative::load( const QString& file )
   //   int minorminor = versionre.cap( 4 ).toInt( &ok );
 
   // we only support 0.[0-7] and 1.0.*
-  if ( ( major == 0 && minor > 7 ) || ( major == 1 && minor > 0 ) )
+  if ( major > 0 || minor > 9 )
   {
     notSupported( file, i18n( "This file was created by Kig version \"%1\", "
                               "which this version cannot open." ).arg( version ) );
@@ -504,6 +505,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
 
   QDomElement docelem = doc.createElement( "KigDocument" );
   docelem.setAttribute( "Version", KIGVERSION );
+  docelem.setAttribute( "CompatibilityVersion", "0.7.0" );
   docelem.setAttribute( "grid", kdoc.grid() );
   docelem.setAttribute( "axes", kdoc.axes() );
 
