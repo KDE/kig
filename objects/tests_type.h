@@ -75,6 +75,17 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class ConvexPolygonTestType
+  : public ArgsParserObjectType
+{
+  ConvexPolygonTestType();
+  ~ConvexPolygonTestType();
+public:
+  static const ConvexPolygonTestType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class SameDistanceType
   : public ArgsParserObjectType
 {

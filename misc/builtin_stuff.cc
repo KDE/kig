@@ -570,9 +570,16 @@ void setupBuiltinStuff()
       I18N_NOOP( "In Polygon Test" ),
       I18N_NOOP( "Test whether a given polygon contains a given point" ),
       "test" );
-//      "testinpolygon" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_inpolygontest" ) );
+
+    c = new TestConstructor(
+      ConvexPolygonTestType::instance(),
+      I18N_NOOP( "Convex Polygon Test" ),
+      I18N_NOOP( "Test whether a given polygon is convex" ),
+      "test" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_convexpolygontest" ) );
 
     c = new TestConstructor(
       SameDistanceType::instance(),

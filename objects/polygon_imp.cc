@@ -204,7 +204,7 @@ bool PolygonImp::valid() const
 
 const uint PolygonImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 4;
+  return Parent::numberOfProperties() + 5;
 }
 
 const QCStringList PolygonImp::propertiesInternalNames() const
@@ -214,6 +214,7 @@ const QCStringList PolygonImp::propertiesInternalNames() const
   l += "polygon-perimeter";
   l += "polygon-surface";
   l += "polygon-center-of-mass";
+  l += "polygon-winding-number";
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -225,6 +226,7 @@ const QCStringList PolygonImp::properties() const
   l += I18N_NOOP( "Perimeter" );
   l += I18N_NOOP( "Surface" );
   l += I18N_NOOP( "Center of Mass" );
+  l += I18N_NOOP( "Winding Number" );
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -249,6 +251,8 @@ const char* PolygonImp::iconForProperty( uint which ) const
     return "areaCircle"; // surface
   else if ( which == Parent::numberOfProperties() + 3 )
     return "point"; // center of mass
+  else if ( which == Parent::numberOfProperties() + 4 )
+    return "w"; // winding number
   else assert( false );
   return "";
 }
@@ -276,6 +280,9 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
   }
   else if ( which == Parent::numberOfProperties() + 2)
   {
+    int wn = windingNumber ();  // not able to compute area for such polygons...
+    if ( wn < 0 ) wn = -wn;
+    if ( wn != 1 ) return new InvalidImp;
     double surface2 = 0.0;
     Coordinate prevpoint = mpoints.back();
     for ( uint i = 0; i < mpoints.size(); ++i )
@@ -286,9 +293,14 @@ ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
     }
     return new DoubleImp( fabs( surface2 / 2 ) );
   }
-  else if ( which == Parent::numberOfProperties() + 3)
+  else if ( which == Parent::numberOfProperties() + 3 )
   {
     return new PointImp( mcenterofmass );
+  }
+  else if ( which == Parent::numberOfProperties() + 4 )
+  {
+    // winding number
+    return new IntImp( windingNumber() );
   }
   else assert( false );
   return new InvalidImp;

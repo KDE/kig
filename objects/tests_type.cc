@@ -248,6 +248,49 @@ const ObjectImpType* InPolygonTestType::resultId() const
 }
 
 /*
+ * test if a polygon is convex
+ */
+
+static const ArgsParser::spec ConvexPolygonTestArgsSpec[] =
+{
+  { PolygonImp::stype(), I18N_NOOP( "Check whether this polygon is convex" ),
+    I18N_NOOP( "Select the polygon you want to test for convexity..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConvexPolygonTestType )
+
+ConvexPolygonTestType::ConvexPolygonTestType()
+  : ArgsParserObjectType( "ConvexPolygonTest", ConvexPolygonTestArgsSpec, 1 )
+{
+}
+
+ConvexPolygonTestType::~ConvexPolygonTestType()
+{
+}
+
+const ConvexPolygonTestType* ConvexPolygonTestType::instance()
+{
+  static const ConvexPolygonTestType t;
+  return &t;
+}
+
+ObjectImp* ConvexPolygonTestType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  const PolygonImp* pol = static_cast<const PolygonImp*>( parents[0] );
+
+  if ( pol->isConvex() )
+    return new TestResultImp( i18n( "This polygon is convex." ) );
+  else
+    return new TestResultImp( i18n( "This polygon is not convex." ) );
+}
+
+const ObjectImpType* ConvexPolygonTestType::resultId() const
+{
+  return TestResultImp::stype();
+}
+
+/*
  * same distance test
  */
 
