@@ -1,3 +1,11 @@
+2004-05-30  Dominique Devriese  <devriese@kde.org>
+
+	* Make SetCoordinateSystemAction into a KSelectAction, so the user
+	can see what kind of coordinate system he's currently using.
+
+	* Some tuning of the UI: move Transformations and Tests menu into
+	the Objects menu because the menubar was getting too crowded.
+
 2004-05-29  Dominique Devriese  <devriese@kde.org>
 
 	* Fix a crash related to a locus containing some invalid points,

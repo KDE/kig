@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kig_part" version="9">
+<kpartgui name="kig_part" version="10">
   <MenuBar>
     <Menu name="file">
       <text>&amp;File</text>
@@ -32,25 +32,7 @@
     </Menu>
     <Menu name="objects">
       <text>&amp;Objects</text>
-      <Menu name="new_line">
-	<text>&amp;Lines</text>
-	<Action name="objects_new_linettp" />
-	<Action name="objects_new_lineperpend" />
-	<Action name="objects_new_lineparallel" />
-	<Action name="objects_new_ray" />
-	<Action name="objects_new_linebyvector" />
-	<Action name="objects_new_halflinebyvector" />
-	<ActionList name="user_line_types" />
-      </Menu>
-      <Menu name="new_vector">
-	<text>&amp;Vectors and Segments</text>
-	<Action name="objects_new_segment" />
-	<Action name="objects_new_segment_axis" />
-	<Action name="objects_new_vector" />
-	<Action name="objects_new_vectorsum" />
-	<ActionList name="user_segment_types" />
-      </Menu>
-      <Menu name="new_point">
+      <Menu name="new_point" icon="point">
 	<text>&amp;Points</text>
 	<Action name="objects_new_normalpoint" />
 	<Action name="objects_new_midpoint" />
@@ -61,7 +43,17 @@
 	<Action name="objects_new_mirrorpoint" />
 	<ActionList name="user_point_types" />
       </Menu>
-      <Menu name="new_circle">
+      <Menu name="new_line" icon="line">
+	<text>&amp;Lines</text>
+	<Action name="objects_new_linettp" />
+	<Action name="objects_new_lineperpend" />
+	<Action name="objects_new_lineparallel" />
+	<Action name="objects_new_ray" />
+	<Action name="objects_new_linebyvector" />
+	<Action name="objects_new_halflinebyvector" />
+	<ActionList name="user_line_types" />
+      </Menu>
+      <Menu name="new_circle" icon="circlebps">
 	<text>&amp;Circles and Arcs</text>
 	<Action name="objects_new_circlebcp" />
 	<Action name="objects_new_circlebtp" />
@@ -71,7 +63,15 @@
 	<Action name="objects_new_arcbcpa" />
 	<ActionList name="user_circle_types" />
       </Menu>	
-      <Menu name="new_conic">
+      <Menu name="new_vector" icon="vector">
+	<text>&amp;Vectors and Segments</text>
+	<Action name="objects_new_segment" />
+	<Action name="objects_new_segment_axis" />
+	<Action name="objects_new_vector" />
+	<Action name="objects_new_vectorsum" />
+	<ActionList name="user_segment_types" />
+      </Menu>
+      <Menu name="new_conic" icon="conicb5p">
 	<text>Co&amp;nics</text>
 	<Action name="objects_new_ellipsebffp" />
 	<Action name="objects_new_hyperbolabffp" />
@@ -94,46 +94,46 @@
 	<Action name="objects_new_cubicnodeb6p" />
 	<Action name="objects_new_cubiccuspb4p" />
       </Menu>
-      <Menu name="new_angle">
+      <Menu name="new_angle" icon="angle">
 	<text>&amp;Angles</text>
 	<Action name="objects_new_angle" />
 	<Action name="objects_new_angle_bisector" />
+      </Menu>
+      <Menu name="new_transformation" icon="centralsymmetry">
+	<text>&amp;Transformations</text>
+	<Action name="objects_new_translation" />
+	<Action name="objects_new_pointreflection" />
+	<Action name="objects_new_linereflection" />
+	<Action name="objects_new_rotation" />
+	<Action name="objects_new_scalingovercenter" />
+	<Action name="objects_new_scalingoverline" />
+	<Action name="objects_new_similitude" />
+	<Action name="objects_new_harmonichomology" />
+	<Action name="objects_new_affinitygi3p" />
+	<Action name="objects_new_projectivitygi4p" />
+	<Action name="objects_new_castshadow" />
+	<Action name="objects_new_projectiverotation" />
+      </Menu>
+      <Menu name="new_test" icon="test">
+	<text>T&amp;ests</text>
+	<Action name="objects_new_areparallel" />
+	<Action name="objects_new_areorthogonal" />
+	<Action name="objects_new_arecollinear" />
+	<Action name="objects_new_containstest" />
+	<Action name="objects_new_distancetest" />
+	<Action name="objects_new_vectorequalitytest" />
       </Menu>
       <Menu name="new_other">
 	<text>&amp;Other</text>
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_textlabel" />
-	<Action name="objects_new_script_python" />
 	<Action name="objects_new_measuretransport" />
+	<Action name="objects_new_script_python" />
 	<ActionList name="user_other_types" />
       </Menu>
       <Separator />
       <Action name="delete_objects" />
       <Action name="cancel_construction" />
-    </Menu>
-    <Menu name="new_transformation">
-      <text>&amp;Transformations</text>
-      <Action name="objects_new_translation" />
-      <Action name="objects_new_pointreflection" />
-      <Action name="objects_new_linereflection" />
-      <Action name="objects_new_rotation" />
-      <Action name="objects_new_scalingovercenter" />
-      <Action name="objects_new_scalingoverline" />
-      <Action name="objects_new_similitude" />
-      <Action name="objects_new_harmonichomology" />
-      <Action name="objects_new_affinitygi3p" />
-      <Action name="objects_new_projectivitygi4p" />
-      <Action name="objects_new_castshadow" />
-      <Action name="objects_new_projectiverotation" />
-    </Menu>
-    <Menu name="new_test">
-      <text>T&amp;ests</text>
-      <Action name="objects_new_areparallel" />
-      <Action name="objects_new_areorthogonal" />
-      <Action name="objects_new_arecollinear" />
-      <Action name="objects_new_containstest" />
-      <Action name="objects_new_distancetest" />
-      <Action name="objects_new_vectorequalitytest" />
     </Menu>
     <Menu name="types">
       <text>&amp;Types</text>

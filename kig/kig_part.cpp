@@ -46,6 +46,7 @@
 #include <functional>
 
 #include <kaction.h>
+#include <kactionclasses.h>
 #include <kapplication.h>
 #include <kdebug.h>
 #include <kfiledialog.h>
@@ -81,29 +82,29 @@ KAboutData* KigPart::createAboutData()
 }
 
 class SetCoordinateSystemAction
-  : public KAction
+  : public KSelectAction
 {
   KigPart& md;
-  uint mn;
 public:
-  SetCoordinateSystemAction( const QString text, KigPart& d,
-                             uint i, KActionCollection* parent );
-  void slotActivated();
+  SetCoordinateSystemAction( KigPart& d, KActionCollection* parent );
+  void slotActivated( int index );
 };
 
 SetCoordinateSystemAction::SetCoordinateSystemAction(
-  const QString text, KigPart& d,
-  uint i, KActionCollection* parent )
-  : KAction( text, 0, 0, 0, parent, 0 ),
-    md( d ), mn( i )
+  KigPart& d, KActionCollection* parent )
+  : KSelectAction( i18n( "&Set Coordinate System" ), 0, parent, "settings_set_coordinate_system" ),
+    md( d )
 {
+  setItems( CoordinateSystemFactory::names() );
+  setCurrentItem( md.document().coordinateSystem().id() );
 }
 
-void SetCoordinateSystemAction::slotActivated()
+void SetCoordinateSystemAction::slotActivated( int index )
 {
-  CoordinateSystem* sys = CoordinateSystemFactory::build( mn );
+  CoordinateSystem* sys = CoordinateSystemFactory::build( index );
   assert( sys );
   md.history()->addCommand( KigCommand::changeCoordSystemCommand( md, sys ) );
+  setCurrentItem( index );
 }
 
 KigPart::KigPart( QWidget *parentWidget, const char *,
@@ -245,13 +246,7 @@ void KigPart::setupActions()
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
   // select coordinate system KActionMenu..
-  KActionMenu* am =
-    new KActionMenu( i18n( "&Set Coordinate System" ), actionCollection(),
-                     "settings_set_coordinate_system" );
-  QStringList csnames = CoordinateSystemFactory::names();
-  for ( uint i = 0; i < csnames.size(); ++i )
-    am->insert( new SetCoordinateSystemAction( csnames[i], *this, i,
-                                               actionCollection() ) );
+  a = new SetCoordinateSystemAction( *this, actionCollection() );
 }
 
 void KigPart::setupTypes()

@@ -32,7 +32,14 @@
 - write *-filter-status.txt's for the kseg and cabri filters.
 
 - Three new transformations: projection on a line, orthogonally and
-  according to a given direction.
+  according to a given direction.  As a mathematician, I'm supposed to
+  have a grudge against these, as they don't fit the definition for
+  affine transformations ( the matrix has to be regular ) ;), but I
+  suppose high-school students may find them useful.  However,they
+  would give rather useless results for e.g. lines ( all curves are
+  almost always projected on a line, segment or ray that you wouldn't
+  see because it's equal to the line we project upon ).  It would be
+  useful for points though.
 
 - When selecting an argument of a certain type, show something like
    "Select a vector", so that the user is not confused, looking for an
