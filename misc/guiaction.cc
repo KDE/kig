@@ -311,8 +311,8 @@ void TestAction::act( KigDocument& doc )
 
 NewScriptAction::NewScriptAction( const char* descname, const char* description,
                                   const char* icon, const char* actionname )
-  : GUIAction(), mdescname( descname ), mdescription( description ),
-    micon( icon ), mactionname( actionname )
+  : GUIAction(), mactionname( actionname ), mdescname( descname ),
+    mdescription( description ), micon( icon )
 {
 }
 
