@@ -50,6 +50,8 @@ public:
   const QCStringList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
 
+  int id() const;
+
   // various information about us:
   const Coordinate center() const;
   double radius() const;

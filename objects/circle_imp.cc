@@ -264,3 +264,8 @@ const Coordinate CircleImp::getPoint( double p, const KigDocument& ) const
 {
   return mcenter + Coordinate (cos(p * 2 * M_PI), sin(p * 2 * M_PI)) * mradius;
 }
+
+int CircleImp::id() const
+{
+  return ID_CircleImp;
+}
