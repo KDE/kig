@@ -6,8 +6,8 @@
 - support line styles in Kig.  The code in ObjectDrawer is already
    there, it just needs the UI support...
 
-- make it possible to not show the coordinate grid, and to customize
-   it in various ways.
+- make it possible to zoom to a very specific part of the screen (
+   i.e. from (x0,y0) to (x1,y1)
 
 - fix ObjectHierarchy::resultDoesNotDependOnGiven to check whether
    *all* the result objects depend on the given objects.
