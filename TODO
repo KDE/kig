@@ -16,8 +16,6 @@
 
 * harder:
 
-- show error messages if the user enters a python script with bugs..
-
 - make the dialogs not pop up over the main window..
 
 - decouple the link between how an object is calc'ed and whether or
