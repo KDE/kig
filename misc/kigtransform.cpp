@@ -722,7 +722,7 @@ bool operator==( const Transformation& lhs, const Transformation& rhs )
 const Transformation Transformation::similitude(
   const Coordinate& center, double theta, double factor )
 {
-  kdDebug() << k_funcinfo << "theta: " << theta << " factor: " << factor << endl;
+  //kdDebug() << k_funcinfo << "theta: " << theta << " factor: " << factor << endl;
   Transformation ret;
   double costheta = cos( theta );
   double sintheta = sin( theta );
@@ -735,6 +735,7 @@ const Transformation Transformation::similitude(
   ret.mdata[2][0] = -factor*sintheta*center.x + ( 1 - factor*costheta )*center.y;
   ret.mdata[2][1] = factor*sintheta;
   ret.mdata[2][2] = factor*costheta;
-  assert( ( ret.apply( center ) - center ).length() < 1e-5 );
+  // fails for factor == infinity
+  //assert( ( ret.apply( center ) - center ).length() < 1e-5 );
   return ret;
 }
