@@ -21,33 +21,6 @@
 #include "objects.h"
 #include "../objects/object.h"
 
-// this is a Predicate class we use, it returns false the first time
-// it sees an object, and true every next time...
-class HasAlreadyAppeared
-{
-  Objects mseen;
-public:
-  HasAlreadyAppeared() {};
-  HasAlreadyAppeared( const HasAlreadyAppeared& h );
-  bool operator()( Object* );
-};
-
-HasAlreadyAppeared::HasAlreadyAppeared( const HasAlreadyAppeared& h )
-  : mseen( h.mseen )
-{
-
-};
-
-bool HasAlreadyAppeared::operator()( Object* o )
-{
-  if ( mseen.contains( o ) ) return true;
-  else
-  {
-    mseen.push_back( o );
-    return false;
-  };
-};
-
 Objects calcPath( const Objects& os )
 {
   // this is a little experiment of mine, i don't know if it is the
@@ -84,9 +57,12 @@ Objects calcPath( const Objects& os )
   // their parents.  So, we take all, and of every object, we remove
   // every reference except the last one...
   Objects ret;
-  ret.resize( os.size() );
-  std::remove_copy_if ( all.rbegin(), all.rend(), ret.rbegin(),
-                        HasAlreadyAppeared() );
+  ret.reserve( os.size() );
+  for ( Objects::reverse_iterator i = all.rbegin(); i != all.rend(); ++i )
+  {
+    if ( ! ret.contains( *i ) ) ret.push_back( *i );
+  };
+  std::reverse( ret.begin(), ret.end() );
   return ret;
 };
 
@@ -121,7 +97,9 @@ Objects calcPath( const Objects& from, const Object* to )
   };
 
   Objects ret;
-  std::remove_copy_if ( all.rbegin(), all.rend(),
-                        std::back_inserter( ret ), HasAlreadyAppeared() );
+  for ( Objects::reverse_iterator i = all.rbegin(); i != all.rend(); ++i )
+  {
+    if ( ! ret.contains( *i ) ) ret.push_back( *i );
+  };
   return ret;
 };
