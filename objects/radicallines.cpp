@@ -249,7 +249,7 @@ const QCString ConicLineIntersectionPoint::vIconFileName() const
 
 const QCString ConicLineIntersectionPoint::sIconFileName()
 {
-  return 0;
+  return "coniclineintersection";
 }
 
 const int ConicLineIntersectionPoint::vShortCut() const
