@@ -95,6 +95,10 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
   std::for_each( p->labels.begin(), p->labels.end(), deleteObj );
   p->urllabels.clear();
   p->labels.clear();
+
+  delete p->layout;
+  p->layout = new QHBoxLayout( this );
+
   for ( LinksLabelEditBuf::vec::iterator i = buf.data.begin(); i != buf.data.end(); ++i )
   {
     if ( i->first )
@@ -117,13 +121,11 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
   };
 
   QSpacerItem* spacer = new QSpacerItem( 40,  20,  QSizePolicy::Expanding,  QSizePolicy::Minimum );
+
   p->layout->addItem( spacer );
 
   p->layout->activate();
-  layout()->activate();
-  repaint( true );
-  QWidget* parent = static_cast<QWidget*>( this->parent() );
-  parent->layout()->activate();
-  parent->repaint( true );
-  repaint( true );
+
+  std::for_each( p->urllabels.begin(), p->urllabels.end(), std::mem_fun( &QWidget::show ) );
+  std::for_each( p->labels.begin(), p->labels.end(), std::mem_fun( &QWidget::show ) );
 }
