@@ -1,3 +1,7 @@
+2003-05-13  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* fix compilation with --enable-final
+
 2003-05-12  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* fix a crash bug for macro's involving PropertyImp
