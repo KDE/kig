@@ -214,8 +214,6 @@ ObjectImp* CompiledPythonScript::calc( const Args& args, const KigDocument& )
 {
   try
   {
-    kdDebug() << k_funcinfo << endl;
-
     std::vector<object> objectvect;
     objectvect.reserve( args.size() );
 
@@ -225,10 +223,6 @@ ObjectImp* CompiledPythonScript::calc( const Args& args, const KigDocument& )
       objectvect.push_back( o );
     }
 
-    kdDebug() << k_funcinfo
-              << "can build tuple now"
-              << endl;
-
     handle<> argstuph( PyTuple_New( args.size() ) );
     for ( int i = 0; i < (int) objectvect.size(); ++i )
     {
@@ -236,19 +230,10 @@ ObjectImp* CompiledPythonScript::calc( const Args& args, const KigDocument& )
     };
     tuple argstup( argstuph );
 
-    kdDebug() << k_funcinfo
-              << "tuple built"
-              << endl;
-
-    kdDebug() << k_funcinfo
-              << extract<std::string>( str( argstup ) )().c_str()
-              << endl;
-
     handle<> reth( PyEval_CallObject( d->calcfunc.ptr(), argstup.ptr() ) );
 //    object resulto = d->calcfunc( args );
     object resulto( reth );
 
-    kdDebug() << k_funcinfo << endl;
 //    handle<> reth( PyEval_CallObject( d->calcfunc.ptr(), args ) );
     extract<ObjectImp&> result( resulto );
     if( ! result.check() ) return new InvalidImp;
@@ -309,7 +294,6 @@ CompiledPythonScript PythonScripter::compile( const char* code )
     retdict.clear();
   };
   std::string dictstring = extract<std::string>( str( retdict ) );
-  kdDebug() << k_funcinfo << dictstring.c_str() << endl;
 
   CompiledPythonScript::Private* ret = new CompiledPythonScript::Private;
   ret->ref = 0;
