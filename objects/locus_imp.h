@@ -19,12 +19,15 @@
 #ifndef KIG_OBJECTS_LOCUS_IMP_H
 #define KIG_OBJECTS_LOCUS_IMP_H
 
-#include "object_imp.h"
+#include "curve_imp.h"
+
+class ObjectHierarchy;
 
 class LocusImp
   : public CurveImp
 {
   typedef CurveImp Parent;
+  const CurveImp* mcurve;
   ObjectHierarchy* mhier;
 protected:
   ~LocusImp();
@@ -40,9 +43,10 @@ public:
   bool inRect( const Rect& r ) const;
   bool valid() const;
 
-  const uint numberOfProperties() const;
-  const QCStringList properties() const;
-  const Property property( uint which, const KigWidget& w ) const;
+  // TODO ?
+//   const uint numberOfProperties() const;
+//   const QCStringList properties() const;
+//   const Property property( uint which, const KigWidget& w ) const;
 
   double getParam( const Coordinate& point ) const;
   const Coordinate getPoint( double param ) const;

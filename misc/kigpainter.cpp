@@ -22,6 +22,9 @@
 
 #include "../kig/kig_view.h"
 #include "../objects/object.h"
+#include "../objects/curve_imp.h"
+#include "../objects/point_imp.h"
+#include "object_hierarchy.h"
 #include "common.h"
 #include "conic-common.h"
 #include "cubic-common.h"
@@ -510,10 +513,10 @@ void KigPainter::drawConic( const ConicPolarData& data )
   // the strategy for generating the overlay structure is the same
   // recursive-like used to draw the segments: a new rectangle is
   // generated whenever the length of a segment becomes lower than
-  // overlayRectSize(), or if the segment would be draw anyway
-  // to avoid strange things happening we impose that the distance
-  // in parameter space be less than a threshold before generating
-  // any overlay.
+  // overlayRectSize(), or if the segment would be drawn anyway
+  // to avoid strange things from happening we impose that the
+  // distance in parameter space be less than a threshold before
+  // generating any overlay.
   //
   // The third parameter in workitem is a pointer into a stack of
   // all generated rectangles (in real coordinate space); if 0
@@ -792,4 +795,164 @@ void KigPainter::drawVector( const Coordinate& a, const Coordinate& b )
   Coordinate d = b - dir - perp;
   drawSegment( b, c );
   drawSegment( b, d );
+}
+
+inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHierarchy& h,
+                                 bool& valid )
+{
+  Coordinate pt = curve->getPoint( p );
+  PointImp pimp( pt );
+  Args args;
+  args.push_back( &pimp );
+  ObjectImp* o = h.calc( args );
+  Coordinate ret;
+  if ( o->inherits( ObjectImp::ID_PointImp ) )
+  {
+    valid = true;
+    ret = static_cast<PointImp*>( o )->coordinate();
+  }
+  else
+    valid = false;
+  return ret;
+};
+
+void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
+{
+  /// this function is based on drawConic, and its code comes mostly
+  /// from there too..  ( drawConic was based on an old version of
+  /// drawLocus, actually, but that's ancient history by now :) )
+
+  // we manage our own overlay
+  bool tNeedOverlay = mNeedOverlay;
+  mNeedOverlay = false;
+
+  QPen pen = mP.pen();
+  pen.setCapStyle( Qt::RoundCap );
+  mP.setPen( pen );
+
+  // this stack contains pairs of Coordinates that we still need to
+  // process:
+  std::stack<workitem> workstack;
+  // mp: this stack contains all the generated overlays:
+  // the strategy for generating the overlay structure is the same
+  // recursive-like used to draw the segments: a new rectangle is
+  // generated whenever the length of a segment becomes lower than
+  // overlayRectSize(), or if the segment would be drawn anyway
+  // to avoid strange things from happening we impose that the distance
+  // in parameter space be less than a threshold before generating
+  // any overlay.
+  //
+  // The third parameter in workitem is a pointer into a stack of
+  // all generated rectangles (in real coordinate space); if 0
+  // there is no rectangles associated to that segment yet.
+  //
+  // Using the final mOverlay stack would be much more efficient, but
+  // 1. needs transformations into window space
+  // 2. would be more difficult to drop rectangles not intersecting
+  //    the window.
+  std::stack<Rect> overlaystack;
+
+  bool valid = true; ///
+
+  // mp: the original version in which an initial set of 20 intervals
+  // were pushed onto the stack is replaced by a single interval and
+  // by forcing subdivision till h < hmax (with more or less the same
+  // final result).
+  // First push the [0,1] interval into the stack:
+  workstack.push( workitem(
+                    coordparampair( 0, locusGetCoord( 0, curve, hier, valid ) ), ///
+                    coordparampair( 1, locusGetCoord( 0, curve, hier, valid ) ), ///
+                    0 ) );
+
+  // maxlength is the square of the maximum size that we allow
+  // between two points..
+  double maxlength = 1.5 * pixelWidth();
+  maxlength *= maxlength;
+  // error squared is required to be less that sigma (half pixel)
+  double sigma = maxlength/4;
+  // distance between two parameter values cannot be too small
+  double hmin = 1e-4;
+  // distance between two parameter values cannot be too large
+  double hmax = 1/40; ///
+  double hmaxoverlay = 1/8; ///
+
+  int count = 1;               // the number of segments we've already
+                               // visited...
+  static const int maxnumberofpoints = 1000;
+
+  const Rect& sr = window();
+
+  // we don't use recursion, but a stack based approach for efficiency
+  // concerns...
+  while ( ! workstack.empty() && count < maxnumberofpoints )
+  {
+    workitem curitem = workstack.top();
+    workstack.pop();
+    bool curitemok = true;
+    while ( curitemok && count++ < maxnumberofpoints )
+    {
+      // we take the middle parameter of the two previous points...
+      Coordinate p0 = curitem.first.second;
+      Coordinate p1 = curitem.second.second;
+      double t2 = ( curitem.first.first + curitem.second.first ) / 2;
+      double h = fabs( curitem.second.first - curitem.first.first ) /2;
+      Rect *overlaypt = curitem.overlay;
+      Coordinate p2 = locusGetCoord( t2, curve, hier, valid ); ///
+
+      bool dooverlay = ! overlaypt && h < hmaxoverlay
+ && fabs( p0.x - p1.x ) <= overlayRectSize()
+ && fabs( p0.y - p1.y ) <= overlayRectSize();
+      bool addn = valid && sr.contains( p2 ); ///
+      // estimated error between the curve and the segments
+      double errsq = (0.5*p0 + 0.5*p1 - p2).squareLength();
+      errsq /= 4;
+      curitemok = false;
+      bool dodraw = valid && h < hmax && ( errsq < sigma || h < hmin ); ///
+      if ( tNeedOverlay && ( dooverlay || dodraw ) )
+      {
+        Rect newoverlay( p0, p1 );
+        overlaystack.push( newoverlay );
+        overlaypt = &overlaystack.top();
+      }
+      if ( overlaypt ) overlaypt->setContains( p2 );
+      if ( dodraw )
+      {
+        // draw the two segments
+        QPoint tp0 = toScreen(p0);
+        QPoint tp1 = toScreen(p1);
+        QPoint tp2 = toScreen(p2);
+        mP.drawLine( tp0, tp2 );
+        mP.drawLine( tp2, tp1 );
+      }
+      else if ( valid ) ///
+      {
+        // push into stack in order to process both subintervals
+        if (addn || sr.contains( p0 ) || h >= hmax)
+          workstack.push( workitem( curitem.first, coordparampair( t2, p2 ),
+                                    overlaypt ) );
+        if (addn || sr.contains( p1 ) || h >= hmax)
+        {
+          curitem = workitem( coordparampair( t2, p2 ), curitem.second ,
+                              overlaypt );
+          curitemok = true;
+        }
+      }
+    }
+  }
+
+  assert ( tNeedOverlay || overlaystack.empty() );
+  if ( tNeedOverlay )
+  {
+    Rect border = window();
+    while ( ! overlaystack.empty() )
+    {
+      Rect overlay = overlaystack.top();
+      overlaystack.pop();
+      if (overlay.intersects( border ))
+        mOverlay.push_back( toScreenEnlarge( overlay ) );
+    }
+  }
+  mNeedOverlay = tNeedOverlay;
+  pen.setCapStyle( Qt::FlatCap );
+  mP.setPen( pen );
 }

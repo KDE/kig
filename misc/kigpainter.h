@@ -36,9 +36,11 @@ class KigWidget;
 class QPaintDevice;
 class CoordinateSystem;
 class Object;
+class ObjectHierarchy;
 class ConicPolarData;
 class CubicCartesianData;
 class LineData;
+class CurveImp;
 
 /**
  * KigPainter is an extended qpainter...
@@ -106,10 +108,17 @@ public:
   void setWholeWinOverlay();
 
   /**
-   * draw an object
+   * draw an object ( by calling its draw function.. )
    */
   void drawObject( const Object* o, bool ss = true );
   void drawObjects( const Objects& os );
+
+  /**
+   * draw a locus...  h is an objectHierarchy that takes one argument,
+   * a PointImp, and returns a PointImp... curve is the curve over
+   * which a point should be iterated..
+   */
+  void drawLocus( const CurveImp* curve, const ObjectHierarchy& h );
 
   /**
    * draws text in a standard manner, convenience function...

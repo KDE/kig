@@ -19,6 +19,10 @@
 #include "locus_imp.h"
 
 #include "bogus_imp.h"
+#include "point_imp.h"
+#include "../misc/object_hierarchy.h"
+#include "../misc/kigpainter.h"
+#include "../misc/coordinate.h"
 
 LocusImp::~LocusImp()
 {
@@ -37,5 +41,43 @@ ObjectImp* LocusImp::transform( const Transformation& ) const
 
 void LocusImp::draw( KigPainter& p ) const
 {
-
+  p.drawLocus( mcurve, *mhier );
 }
+
+bool LocusImp::contains( const Coordinate&, const ScreenInfo& ) const
+{
+  // TODO
+  return false;
+}
+
+bool LocusImp::inRect( const Rect& ) const
+{
+  // TODO ?
+  return false;
+}
+
+bool LocusImp::valid() const
+{
+  return true;
+}
+
+double LocusImp::getParam( const Coordinate& ) const
+{
+  // TODO
+  return 0.5;
+}
+
+const Coordinate LocusImp::getPoint( double param ) const
+{
+  Coordinate arg = mcurve->getPoint( param );
+   PointImp argimp( arg );
+  Args args;
+  args.push_back( &argimp );
+  ObjectImp* imp = mhier->calc( args );
+  Coordinate ret;
+  if ( imp->inherits( ObjectImp::ID_PointImp ) )
+    ret = static_cast<PointImp*>( imp )->coordinate();
+  delete imp;
+  return ret;
+}
+
