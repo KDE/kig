@@ -85,6 +85,11 @@ int main(int argc, char **argv)
 			    "source of inspiration for Kig"),
 		  "ibaran@mit.edu");
 
+  about.addCredit("Maurizio Paolini",
+		 I18N_NOOP("Wrote the radical line as a patch for kgeo, which "
+			   "i ported to kig."),
+		 "paolini@dmf.bs.unicatt.it");
+
   about.addCredit("Cabri coders",
 		  I18N_NOOP("Cabri is a commercial program like Kig, and "
 			    "gave me something to compete against :)"),
