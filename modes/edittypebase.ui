@@ -189,9 +189,6 @@
                     <property name="text">
                         <string>&amp;Help</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+H</string>
-                    </property>
                     <property name="autoDefault">
                         <bool>true</bool>
                     </property>
