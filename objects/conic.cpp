@@ -881,7 +881,7 @@ const ConicCartesianEquationData calcCartesianEquationFromPolar( const ConicPola
   double es = polardata.esintheta0;
   double p = polardata.pdimen;
   double fx = polardata.focus1.x;
-  double fy = polardata.focus1.x;
+  double fy = polardata.focus1.y;
 
   double a = 1 - ec*ec;
   double b = 1 - es*es;
