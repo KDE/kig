@@ -215,7 +215,8 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
     d->locationparent = 0;
     for ( std::vector<ObjectHolder*>::iterator i = os.begin(); i != os.end(); ++i )
     {
-      if( (*i)->imp()->inherits( PointImp::stype() ) ||
+      if( (*i)->imp()->attachPoint().valid() ||
+          (*i)->imp()->inherits( PointImp::stype() ) ||
           (*i)->imp()->inherits( CurveImp::stype() ) )
       {
         attachable = true;

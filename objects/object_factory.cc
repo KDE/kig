@@ -210,7 +210,7 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
  * changed the preference order 2005/01/21 (now attachPoint has preference over points)
  *
  * NOTE: changes in the tests performed should be matched also in
- * modes/popup.cc (addNameLabel)
+ * modes/popup.cc (addNameLabel) and in label.cc (TextLabelModeBase::mouseMoved)
  */
 
   if ( p && p->imp()->attachPoint().valid() )
