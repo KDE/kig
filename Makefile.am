@@ -1,4 +1,4 @@
-SUBDIRS = objects misc pics icons po kig
+SUBDIRS = objects misc pics icons kig
 
 $(top_srcdir)/configure.in: configure.in.in $(top_srcdir)/subdirs
 	cd $(top_srcdir) && $(MAKE) -f admin/Makefile.common configure.in ;
