@@ -122,7 +122,7 @@
       <Action name="settings_set_coordinate_system" />
     </Menu>
   </MenuBar>
-  <Toolbar name="mainToolBar">
+  <ToolBar name="mainToolBar">
     <text>Main Toolbar</text>
     <Action name="file_save" />
     <Action name="file_save_as" />
@@ -133,8 +133,8 @@
     <Action name="delete_objects"/>
     <Action name="cancel_construction"/>
     <Action name="macro_action"/>
-  </Toolbar>
-  <Toolbar name="points_toolbar" position="left">
+  </ToolBar>
+  <ToolBar name="points_toolbar" position="left">
     <text>Points</text>
     <Action name="objects_new_normalpoint" />
     <Action name="objects_new_point_xy" />
@@ -144,8 +144,8 @@
     <Action name="objects_new_rotatedpoint" />
     <Action name="objects_new_translatedpoint" />
     <ActionList name="user_point_types" />
-  </Toolbar>
-  <Toolbar name="line_toolbar" position="left">
+  </ToolBar>
+  <ToolBar name="line_toolbar" position="left">
     <text>Lines</text>
     <Action name="objects_new_segment" />
     <Action name="objects_new_linettp" />
@@ -155,16 +155,16 @@
     <Action name="objects_new_lineparallel" />
     <ActionList name="user_line_types" />
     <ActionList name="user_segment_types" />
-  </Toolbar>
-  <Toolbar name="circle_toolbar" position="left">
+  </ToolBar>
+  <ToolBar name="circle_toolbar" position="left">
     <text>Circles</text>
     <Action name="objects_new_circlebcp" />
     <Action name="objects_new_circlebtp" />
     <Action name="objects_new_circlebps" />
     <Action name="objects_new_arcbtp" />
     <ActionList name="user_circle_types" />
-  </Toolbar>  
-  <Toolbar name="conic_toolbar" position="left">
+  </ToolBar>  
+  <ToolBar name="conic_toolbar" position="left">
     <text>Conics</text>
     <Action name="objects_new_ellipsebffp" />
     <Action name="objects_new_hyperbolabffp" />
@@ -172,13 +172,13 @@
     <Action name="objects_new_conicb5p" />
     <ActionList name="user_conic_types" />
     <Action name="objects_new_lineconicradical" />
-  </Toolbar>    
-  <Toolbar name="angles_toolbar" position="left">
+  </ToolBar>    
+  <ToolBar name="angles_toolbar" position="left">
     <text>Angles</text>
     <Action name="objects_new_angle" />
     <Action name="objects_new_angle_bisector" />
-  </Toolbar>
-  <Toolbar name="transformation_toolbar" position="right">
+  </ToolBar>
+  <ToolBar name="transformation_toolbar" position="right">
     <text>Transformation</text>
     <Action name="objects_new_translation" />
     <Action name="objects_new_pointreflection" />
@@ -186,20 +186,20 @@
     <Action name="objects_new_rotation" />
     <Action name="objects_new_scalingovercenter" />
     <Action name="objects_new_scalingoverline" />
-  </Toolbar>
-  <Toolbar name="rest_toolbar" position="left">
+  </ToolBar>
+  <ToolBar name="rest_toolbar" position="left">
     <text>Rest</text>
     <Action name="objects_new_locus" />
     <Action name="objects_new_textlabel" />
     <Action name="objects_new_script_object" />
     <ActionList name="user_other_types" />
-  </Toolbar>
-  <Toolbar name="view_toolbar">
+  </ToolBar>
+  <ToolBar name="view_toolbar">
     <text>View</text>
     <Action name="view_zoom_in" />
     <Action name="view_zoom_out" />
     <Action name="fullscreen" />
     <Action name="view_fit_to_page" />
     <Action name="view_select_shown_rect" />
-  </Toolbar>
+  </ToolBar>
 </kpartgui>
