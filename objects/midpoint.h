@@ -44,7 +44,6 @@ public:
   static const int sShortCut() { return 0; };
 
   QString wantArg(const Object* o) const;
-  QString wantPoint() const;
   bool selectArg( Object* );
   void unselectArg (Object*);
   Objects getParents() const { Objects tmp; tmp.push_back(p1); tmp.push_back(p2); return tmp; };

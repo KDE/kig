@@ -82,11 +82,6 @@ QString Segment::wantArg( const Object* o) const
 {
   if (complete) return 0;
   if ( !o->toPoint() ) return 0;
-  return wantPoint();
-}
-
-QString Segment::wantPoint() const
-{
   if ( !p1 ) return i18n( "Start point" );
   if ( !p2 ) return i18n( "End point" );
   return 0;

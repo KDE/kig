@@ -50,15 +50,10 @@ QString MidPoint::wantArg(const Object* o) const
       else return 0;
     };
   if ( ! o->toPoint() ) return 0;
-  return wantPoint();
-};
-
-QString MidPoint::wantPoint() const
-{
   if (!p1) return i18n("First point");
   else if (!p2) return i18n("Second point");
   return 0;
-}
+};
 
 bool MidPoint::selectArg(Object* o)
 {

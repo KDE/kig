@@ -41,11 +41,6 @@ QString IntersectionPoint::wantArg(const Object* o) const
   else return 0;
 }
 
-QString IntersectionPoint::wantPoint() const
-{
-  return 0;
-}
-
 bool IntersectionPoint::selectArg(Object* o)
 {
   Segment* s;

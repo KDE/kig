@@ -31,7 +31,6 @@ class MacroObject
 {
 public:
   QString wantArg( const Object* o) const;
-  QString wantPoint() const;
   MacroObject(ObjectHierarchy* inHier);
   virtual ~MacroObject() {};
   bool selectArg(Object* o);

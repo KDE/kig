@@ -44,7 +44,7 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
   // the geg in gegObjs stands for) objects
   for( Objects::const_iterator i = inGegObjs.begin(); i != inGegObjs.end(); ++i )
   {
-    elem = new HierarchyElement( (*i)->vBaseTypeName(), allElems.size() + 1 );
+    elem = new HierarchyElement( (*i)->vFullTypeName(), allElems.size() + 1 );
     elem->actual = *i;
     elem->setParams( (*i)->getParams());
     gegElems.push_back(elem);
@@ -118,7 +118,7 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
   };
   for (ElemList::const_iterator i = finElems.begin(); i != finElems.end(); ++i)
   {
-    (*i)->actual = Object::newObject((*i)->getTypeName());
+    (*i)->actual = Object::newObject((*i)->fullTypeName());
     (*i)->actual->setParams((*i)->getParams());
     cos.upush((*i)->actual);
   };
@@ -134,32 +134,32 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
     tmp2.clear();
     // we pass over all objects we're constructing the children of
     for ( ElemList::const_iterator i = tmp.begin(); i != tmp.end(); ++i)
+    {
+      // pass over all of the current object's children
+      for ( ElemList::const_iterator j = (*i)->getParents().begin();
+            j != (*i)->getParents().end();
+            ++j)
       {
-	// pass over all of the current object's children
-	for ( ElemList::const_iterator j = (*i)->getParents().begin();
-	      j != (*i)->getParents().end();
-	      ++j)
-	  {
-	    // if we haven't constructed the object yet...
-	    if (!(*j)->actual)
-	      {
-		// we construct it, and add it to the necessary places
-		Object* appel;
-		appel = Object::newObject((*j)->getTypeName());
-		assert(appel);
-		appel->setParams((*j)->getParams());
-		(*j)->actual = appel;
-		cos.upush(appel);
-		// we should also construct its parents
-		tmp2.add(*j);
-	      };
+        // if we haven't constructed the object yet...
+        if (!(*j)->actual)
+        {
+          // we construct it, and add it to the necessary places
+          Object* appel;
+          appel = Object::newObject((*j)->fullTypeName());
+          assert(appel);
+          appel->setParams((*j)->getParams());
+          (*j)->actual = appel;
+          cos.upush(appel);
+          // we should also construct its parents
+          tmp2.add(*j);
+        };
 
-	    // select its parent as an arg...
-	    (*i)->actual->selectArg((*j)->actual);
-	    // we don't do addChild since that should be done by the
-	    // child's selectArg() function
-	  };
+        // select its parent as an arg...
+        (*i)->actual->selectArg((*j)->actual);
+        // we don't do addChild since that should be done by the
+        // child's selectArg() function
       };
+    };
     tmp = tmp2;
   };
   return cos;
@@ -286,7 +286,7 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
   // this information..
   if (!ref) {
     // our typename
-    e.setAttribute("typeName", getTypeName() );
+    e.setAttribute("typeName", fullTypeName() );
 
     // whether we are given/final:
     e.setAttribute("given", given?"true":"false");
@@ -328,27 +328,32 @@ void ObjectHierarchy::calc()
 {
   ElemList tmp = gegElems, tmp2;
   while (!tmp.empty())
+  {
+    for (ElemList::iterator i = tmp.begin(); i != tmp.end(); ++i)
     {
-      for (ElemList::iterator i = tmp.begin(); i != tmp.end(); ++i)
-	{
-	  for (ElemList::const_iterator j = (*i)->getChildren().begin();
-	       j != (*i)->getChildren().end();
-	       ++j)
-	    {
-	      (*j)->actual->calc();
-	      tmp2.push_back(*j);
-	    };
-	};
-      tmp = tmp2;
-      tmp2.clear();
+      for (ElemList::const_iterator j = (*i)->getChildren().begin();
+           j != (*i)->getChildren().end();
+           ++j)
+      {
+        (*j)->actual->calc();
+        tmp2.push_back(*j);
+      };
     };
+    tmp = tmp2;
+    tmp2.clear();
+  };
 }
 HierarchyElement::HierarchyElement(QCString inTN, int inId )
   : mtype( Object::types().findType( inTN ) ), id(inId), actual(0)
 {
 };
 
-QCString HierarchyElement::getTypeName() const
+QCString HierarchyElement::fullTypeName() const
 {
   return mtype->fullName();
+}
+
+QCString HierarchyElement::baseTypeName() const
+{
+  return mtype->baseTypeName();
 }

@@ -66,6 +66,7 @@ protected:
   ElemList children;
   pMap params;
   int id;
+  void addChild (HierarchyElement* e ) { children.push_back(e); };
 public:
   const Type* type() { return mtype; };
   void setParam( const QCString name, const QString value ) { params[name] = value; };
@@ -73,12 +74,12 @@ public:
   const pMap getParams() { return params; };
   HierarchyElement(QCString inTN, int inId );
   void addParent ( HierarchyElement* e ) { parents.push_back(e); e->addChild(this);};
-  void addChild (HierarchyElement* e ) { children.push_back(e); };
   void saveXML ( QDomDocument& d, QDomElement& parentElem,
 		 bool reference, bool given=false,
 		 bool final=false) const;
   int getId() { return id; };
-  QCString getTypeName() const;
+  QCString fullTypeName() const;
+  QCString baseTypeName() const;
   const ElemList& getParents() { return parents; };
   const ElemList& getChildren() { return children; };
   Object* actual;

@@ -163,9 +163,6 @@ public:
   // would use the object for,  if it were selected. return 0 if you
   // don't want it...
   virtual QString wantArg ( const Object* ) const = 0;
-  // we have a separate function for whether the object wants a point,
-  // check ConstructionMode for details...
-  virtual QString wantPoint() const = 0;
   // return true if you're finished
   // if which was already selected,  unselect it
   // here, you should only store the pointer, not do any calculations,

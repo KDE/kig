@@ -96,7 +96,6 @@ public:
 
   // passing arguments
   virtual QString wantArg( const Object* ) const;
-  virtual QString wantPoint() const;
   virtual bool selectArg( Object * );
 
   // no args => no parents

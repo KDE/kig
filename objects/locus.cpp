@@ -98,17 +98,8 @@ QString Locus::wantArg( const Object* o ) const
 {
   if (o->toNormalPoint() && o->toNormalPoint()->constrainedImp() && !cp)
     return i18n("Moving point");
-  // hack, here wantPoint() also handles non-Point objects, but it
-  // doesn't matter...
-  return wantPoint();
-}
-
-QString Locus::wantPoint() const
-{
   if (!obj)
-    {
-      return i18n("Dependent object");
-    };
+    return i18n("Dependent object");
   return 0;
 }
 

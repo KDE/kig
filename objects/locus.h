@@ -71,7 +71,6 @@ public:
 
   // arguments
   QString wantArg ( const Object* ) const;
-  QString wantPoint() const;
   bool selectArg (Object* which);
 //   void unselectArg (Object* which);
   void drawPrelim ( KigPainter&, const Object* ) const;

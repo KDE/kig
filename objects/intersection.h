@@ -70,7 +70,6 @@ public:
 
   void moved( ) { calc(); };
   QString wantArg(const Object* o) const;
-  QString wantPoint() const;
   bool selectArg(Object* o);
   void unselectArg(Object* o);
   Objects getParents() const;

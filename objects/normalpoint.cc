@@ -429,11 +429,6 @@ void NormalPoint::drawPrelim( KigPainter &, const Object* ) const
 {
 }
 
-QString NormalPoint::wantPoint() const
-{
-  return 0;
-}
-
 FixedPointImp* NormalPointImp::toFixed()
 {
   return 0;

@@ -80,7 +80,6 @@ public:
 
   // passing arguments
   QString wantArg (const Object*) const;
-  QString wantPoint() const;
   bool selectArg (Object*);
   void unselectArg (Object*);
     Objects getParents() const;
@@ -121,7 +120,6 @@ public:
 
   // passing arguments
   QString wantArg (const Object*) const;
-  QString wantPoint() const;
   bool selectArg (Object*);
   void unselectArg (Object*);
     Objects getParents() const;

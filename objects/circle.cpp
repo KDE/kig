@@ -77,15 +77,10 @@ QString CircleBCP::wantArg (const Object* o) const
 {
   if (complete) return 0;
   if (! o->toPoint()) return 0;
-  return wantPoint();
-};
-
-QString CircleBCP::wantPoint() const
-{
   if (!centre) return i18n("Center point");
   assert (!poc); // we're not completed, and do have a center...
   return i18n("Through point");
-}
+};
 
 bool CircleBCP::selectArg (Object* o)
 {
@@ -161,11 +156,6 @@ void CircleBCP::calc()
 QString CircleBTP::wantArg(const Object* o) const
 {
   if ( ! o->toPoint() ) return 0;
-  return wantPoint();
-}
-
-QString CircleBTP::wantPoint() const
-{
   if ( !p1 || !p2 || !p3 ) return i18n("Through point");
   else return 0;
 }

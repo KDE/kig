@@ -91,7 +91,6 @@ public:
 
   // arguments
   QString wantArg ( const Object* ) const;
-  QString wantPoint() const;
   bool selectArg (Object* which);
   void unselectArg (Object* which);
   void drawPrelim ( KigPainter&, const Object* ) const;
@@ -134,7 +133,6 @@ public:
 
   // arguments
   QString wantArg ( const Object* ) const;
-  QString wantPoint() const;
   bool selectArg (Object* which);
     Objects getParents() const;
 //   void unselectArg (Object* which);
@@ -177,7 +175,6 @@ public:
 
   // arguments
   QString wantArg ( const Object* ) const;
-  QString wantPoint() const;
   bool selectArg (Object* which);
   Objects getParents() const;
 //   void unselectArg (Object* which);
@@ -226,7 +223,6 @@ public:
 
   // arguments
   QString wantArg ( const Object* ) const;
-  QString wantPoint() const;
   bool selectArg (Object* which);
   Objects getParents() const;
 //   void unselectArg (Object* which);

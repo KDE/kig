@@ -113,12 +113,6 @@ QString LineTTP::wantArg( const Object* o) const
 {
   if (complete) return 0;
   if ( ! o->toPoint()) return 0;
-  return wantPoint();
-}
-
-
-QString LineTTP::wantPoint() const
-{
   if ( !pt1 ) return i18n( "Point 1" );
   if ( !pt2 ) return i18n( "Point 2" );
   return 0;
@@ -195,13 +189,7 @@ QString LinePerpend::wantArg( const Object* o) const
 {
   if (o->toSegment() && !segment && !line ) return i18n("On segment");
   if (o->toLine() && !segment && !line ) return i18n("On line");
-  if (o->toPoint()) return wantPoint();
-  return 0;
-}
-
-QString LinePerpend::wantPoint() const
-{
-  if ( !point ) return i18n("Through point");
+  if (o->toPoint() && !point ) return i18n("Through point");
   return 0;
 }
 
@@ -338,13 +326,7 @@ QString LineParallel::wantArg( const Object* o) const
 {
   if (o->toSegment() && !segment && !line ) return i18n("On segment");
   if (o->toLine() && !segment && !line ) return i18n("On line");
-  if (o->toPoint() ) return wantPoint();
-  return 0;
-}
-
-QString LineParallel::wantPoint() const
-{
-  if ( !point) return i18n("Through point");
+  if (o->toPoint() && !point ) return i18n("Through point");
   return 0;
 }
 
@@ -505,13 +487,8 @@ LineRadical::LineRadical(const LineRadical& l)
 
 QString LineRadical::wantArg( const Object* o ) const
 {
-  if( o->toCircle() && !c1 || !c2 ) return i18n("Radical Line of this circle");
+  if( o->toCircle() && ( !c1 || !c2 ) ) return i18n("Radical Line of this circle");
   return QString::null;
-}
-
-QString LineRadical::wantPoint() const
-{
-  return 0;
 }
 
 bool LineRadical::selectArg( Object* o )

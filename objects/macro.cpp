@@ -28,19 +28,13 @@ QString i18n( const char* );
 QString MacroObject::wantArg( const Object* o) const
 {
   if( complete ) return 0;
-  if( o->vBaseTypeName() != hier->getGegElems()[arguments.size()]->getTypeName()) return 0;
+  if( o->vBaseTypeName() != hier->getGegElems()[arguments.size()]->baseTypeName()) return 0;
   else return i18n("Select this %1").arg(o->vTBaseTypeName());
 };
 
-QString MacroObject::wantPoint() const
-{
-  if ( hier->getGegElems()[arguments.size()]->getTypeName() == Point::sBaseTypeName() ) return i18n( "Select this point" );
-  return 0;
-}
-
 bool MacroObject::selectArg(Object* o)
 {
-  assert(o->vBaseTypeName() == hier->getGegElems()[arguments.size()]->getTypeName());
+  assert(o->vBaseTypeName() == hier->getGegElems()[arguments.size()]->baseTypeName());
   arguments.push_back( o );
   o->addChild(this);
   if (arguments.size() != hier->getGegElems().size()) return false;
@@ -113,20 +107,18 @@ void MacroObjectOne::calc()
 const QCString MacroObjectOne::vBaseTypeName() const
 {
   if (!final)
-    {
-      // actually this returns a FullTypeName(), but i'm hoping this
-      // part of the function won't get used too often
-      return hier->getFinElems()[0]->getTypeName();
-    }
+  {
+    return hier->getFinElems()[0]->baseTypeName();
+  }
   else return final->vBaseTypeName();
 };
 
 const QCString MacroObjectOne::vFullTypeName() const
 {
   if (!final)
-    {
-      return hier->getFinElems()[0]->getTypeName();
-    }
+  {
+    return hier->getFinElems()[0]->fullTypeName();
+  }
   else return final->vFullTypeName();
 };
 
