@@ -5,6 +5,10 @@
 
 * not too hard:
 
+- Provide some nice stuff for differential geometry: velocity vector
+   of a curve, curvature vector, osculating parabole, osculating
+   circle.  This is fairly trivial to implement, but very cool :)
+
 - a test for checking if two vectors are equal ( this is trivial ).
 
 - let the user select where the vector sum starts, instead of drawing
