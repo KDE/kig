@@ -5,6 +5,10 @@
 
 * not too hard:
 
+- Three new transformations: projection on a line, orthogonally and
+  according to a given direction, and a similitude ( homothecy +
+  rotation ).
+
 - When selecting an argument of a certain type, show something like
    "Select a vector", so that the user is not confused, looking for an
    object he can't find.
