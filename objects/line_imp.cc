@@ -28,7 +28,7 @@
 #include "property.h"
 
 AbstractLineImp::AbstractLineImp( const Coordinate& a, const Coordinate& b )
-  : ma( a ), mb( b )
+  : mdata( a, b )
 {
 }
 
@@ -39,7 +39,7 @@ AbstractLineImp::~AbstractLineImp()
 bool AbstractLineImp::inRect( const Rect& r ) const
 {
   // TODO: implement for real...
-  return r.contains( ma ) || r.contains( mb );
+  return r.contains( mdata.a ) || r.contains( mdata.b );
 }
 
 const uint AbstractLineImp::numberOfProperties() const
@@ -100,21 +100,21 @@ const Property SegmentImp::property( uint which, const KigWidget& w ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   if ( which == Parent::numberOfProperties() )
-    return Property( ( mb - ma ).length() );
+    return Property( mdata.dir().length() );
   else assert( false );
 }
 
 double AbstractLineImp::slope() const
 {
-  Coordinate diff = mb - ma;
+  Coordinate diff = mdata.dir();
   return diff.y / diff.x;
 }
 
 const QString AbstractLineImp::equationString( const KigWidget& ) const
 {
   QString ret = QString::fromUtf8( "y = %1x + %2" );
-  Coordinate p = ma;
-  Coordinate q = mb;
+  Coordinate p = mdata.a;
+  Coordinate q = mdata.b;
 
   double m = ( q.y - p.y ) / ( q.x - p.x );
   double r = ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;
@@ -127,32 +127,32 @@ const QString AbstractLineImp::equationString( const KigWidget& ) const
 
 void SegmentImp::draw( KigPainter& p ) const
 {
-  p.drawSegment( ma, mb );
+  p.drawSegment( mdata );
 }
 
 bool SegmentImp::contains( const Coordinate& p, const ScreenInfo& si ) const
 {
-  return isOnSegment( p, ma, mb, si.normalMiss() );
+  return isOnSegment( p, mdata.a, mdata.b, si.normalMiss() );
 }
 
 void RayImp::draw( KigPainter& p ) const
 {
-  p.drawRay( ma, mb );
+  p.drawRay( mdata );
 }
 
 bool RayImp::contains( const Coordinate& p, const ScreenInfo& si ) const
 {
-  return isOnRay( p, ma, mb, si.normalMiss() );
+  return isOnRay( p, mdata.a, mdata.b, si.normalMiss() );
 }
 
 void LineImp::draw( KigPainter& p ) const
 {
-  p.drawLine( ma, mb );
+  p.drawLine( mdata );
 }
 
 bool LineImp::contains( const Coordinate& p, const ScreenInfo& si ) const
 {
-  return isOnLine( p, ma, mb, si.normalMiss() );
+  return isOnLine( p, mdata.a, mdata.b, si.normalMiss() );
 }
 
 SegmentImp::SegmentImp( const Coordinate& a, const Coordinate& b )
@@ -172,17 +172,17 @@ LineImp::LineImp( const Coordinate& a, const Coordinate& b )
 
 SegmentImp* SegmentImp::copy() const
 {
-  return new SegmentImp( ma, mb );
+  return new SegmentImp( mdata );
 }
 
 RayImp* RayImp::copy() const
 {
-  return new RayImp( ma, mb );
+  return new RayImp( mdata );
 }
 
 LineImp* LineImp::copy() const
 {
-  return new LineImp( ma, mb );
+  return new LineImp( mdata );
 }
 
 bool AbstractLineImp::inherits( int typeID ) const
@@ -192,8 +192,7 @@ bool AbstractLineImp::inherits( int typeID ) const
 
 const Coordinate SegmentImp::getPoint(double param) const
 {
-  Coordinate dir = mb - ma;
-  return ma + dir*param;
+  return mdata.a + mdata.dir()*param;
 }
 
 double SegmentImp::getParam( const Coordinate& p ) const
@@ -203,24 +202,23 @@ double SegmentImp::getParam( const Coordinate& p ) const
   // if pt is over the end of the segment ( i.e. it's on the line
   // which the segment is a part of, but not of the segment itself..;
   // ) we set it to one of the end points of the segment...
-  if ((pt - ma).length() > (mb - ma).length() )
-    pt = mb;
-  else if ( (pt- mb).length() > (mb - ma).length() )
-    pt = ma;
-  if (mb == ma) return 0;
-  return ((pt - ma).length())/((mb-ma).length());
+  if ((pt - mdata.a).length() > mdata.dir().length() )
+    pt = mdata.b;
+  else if ( (pt- mdata.b).length() > mdata.dir().length() )
+    pt = mdata.a;
+  if (mdata.b == mdata.a) return 0;
+  return ((pt - mdata.a).length())/(mdata.dir().length());
 }
 
 LineData AbstractLineImp::data() const
 {
-  return LineData( ma, mb );
+  return mdata;
 }
 
 const Coordinate RayImp::getPoint(double param) const
 {
-  Coordinate dir = mb - ma;
   param = 1.0/param - 1.0;
-  return ma + dir*param;
+  return mdata.a + mdata.dir()*param;
 }
 
 double RayImp::getParam( const Coordinate& p ) const
@@ -265,7 +263,7 @@ const Coordinate LineImp::getPoint( double p ) const
 //  p *= 1024;    // such multiplying factor could be useful in order to
                   // have more points near infinity, at the expense of
                   // points near ma and mb
-  return ma + p*(mb - ma);
+  return mdata.a + p*mdata.dir();
 }
 
 double LineImp::getParam( const Coordinate& point ) const
@@ -273,8 +271,8 @@ double LineImp::getParam( const Coordinate& point ) const
   // somewhat the reverse of getPoint, although it also supports
   // points not on the line...
 
-  Coordinate pa = point - ma;
-  Coordinate ba = mb - ma;
+  Coordinate pa = point - mdata.a;
+  Coordinate ba = mdata.dir();
   double balsq = ba.x*ba.x + ba.y*ba.y;
   assert (balsq > 0);
 
@@ -289,8 +287,8 @@ double LineImp::getParam( const Coordinate& point ) const
 ObjectImp* SegmentImp::transform( const Transformation& t ) const
 {
   bool valid = true;
-  Coordinate na = t.apply( ma, valid );
-  Coordinate nb = t.apply( mb, valid );
+  Coordinate na = t.apply( mdata.a, valid );
+  Coordinate nb = t.apply( mdata.b, valid );
   if( valid ) return new SegmentImp( na, nb );
   else return new InvalidImp();
 }
@@ -298,8 +296,8 @@ ObjectImp* SegmentImp::transform( const Transformation& t ) const
 ObjectImp* LineImp::transform( const Transformation& t ) const
 {
   bool valid = true;
-  Coordinate na = t.apply( ma, valid );
-  Coordinate nb = t.apply( mb, valid );
+  Coordinate na = t.apply( mdata.a, valid );
+  Coordinate nb = t.apply( mdata.b, valid );
   if ( valid ) return new LineImp( na, nb );
   else return new InvalidImp();
 }
@@ -307,8 +305,28 @@ ObjectImp* LineImp::transform( const Transformation& t ) const
 ObjectImp* RayImp::transform( const Transformation& t ) const
 {
   bool valid = true;
-  Coordinate na = t.apply( ma, valid );
-  Coordinate nb = t.apply( mb, valid );
+  Coordinate na = t.apply( mdata.a, valid );
+  Coordinate nb = t.apply( mdata.b, valid );
   if ( valid ) return new RayImp( na, nb );
   else return new InvalidImp();
+}
+
+AbstractLineImp::AbstractLineImp( const LineData& d )
+  : mdata( d )
+{
+}
+
+SegmentImp::SegmentImp( const LineData& d )
+  : AbstractLineImp( d )
+{
+}
+
+RayImp::RayImp( const LineData& d )
+  : AbstractLineImp( d )
+{
+}
+
+LineImp::LineImp( const LineData& d )
+  : AbstractLineImp( d )
+{
 }

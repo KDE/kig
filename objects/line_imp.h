@@ -21,7 +21,7 @@
 
 #include "curve_imp.h"
 
-#include "../misc/coordinate.h"
+#include "../misc/common.h"
 
 class LineData;
 
@@ -31,10 +31,10 @@ class AbstractLineImp
   typedef CurveImp Parent;
 
 protected:
-  Coordinate ma;
-  Coordinate mb;
+  LineData mdata;
 
 public:
+  AbstractLineImp( const LineData& d );
   AbstractLineImp( const Coordinate& a, const Coordinate& b );
   ~AbstractLineImp();
 
@@ -61,6 +61,7 @@ class SegmentImp
 
 public:
   SegmentImp( const Coordinate& a, const Coordinate& b );
+  SegmentImp( const LineData& d );
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
@@ -86,6 +87,7 @@ class RayImp
 
 public:
   RayImp( const Coordinate& a, const Coordinate& b );
+  RayImp( const LineData& d );
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
 
@@ -105,6 +107,7 @@ class LineImp
 
 public:
   LineImp( const Coordinate& a, const Coordinate& b );
+  LineImp( const LineData& d );
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, const ScreenInfo& si ) const;
 
