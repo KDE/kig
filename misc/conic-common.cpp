@@ -770,7 +770,6 @@ const LineData calcConicRadical( const ConicCartesianEquationData& cequation1,
     break;
   }
 
-
   // domi:
   // this is the negative of the determinant of the top left of the
   // matrix.  If it is 0, then the conic is a parabola, if it is < 0,
@@ -781,76 +780,95 @@ const LineData calcConicRadical( const ConicCartesianEquationData& cequation1,
   // found ( e.g. not enough intersections.. )
   //  double discrim = c*c - 4*a*b;
 
-  if (dis3 >= 0)
-  {
-    double r[3];   // direction of the null space
-    r[0] = 2*b*d - c*e;
-    r[1] = 2*a*e - c*d;
-    r[2] = dis3;
-
-    double p[3];   // vector orthogonal to one of the two planes
-
-    // there is still a stability problem here in the case of two
-    // parabolas: in such case we get p[0] = p[1] = p[2] = 0
-    //I must consider three cases
-    if (fabs(a) >= fabs(b) && fabs(a) >= fabs(f))
-    {
-      p[0] = 2*a;
-      p[1] = c + which*sqrt(dis3);
-      p[2] = (-p[0]*r[0] - p[1]*r[1])/r[2];
-    }
-    else if (fabs(b) >= fabs(a) && fabs(b) >= fabs(f))
-    {
-      p[0] = c + which*sqrt(dis3);
-      p[1] = 2*b;
-      p[2] = (-p[0]*r[0] - p[1]*r[1])/r[2];
-    }
-    else
-    {
-      p[2] = 2*f;
-      p[1] = d + which*sqrt(dis2);
-      p[0] = (-p[1]*r[1] - p[2]*r[2])/r[0];
-    }
-    // now remember the switch and we are almost done;
-    switch (maxind)
-    {
-      case 1:  // exchange 1 <-> 3
-      temp = r[0]; r[0] = r[2]; r[2] = temp;
-      temp = p[0]; p[0] = p[2]; p[2] = temp;
-      break;
-
-      case 2:  // exchange 2 <-> 3
-      temp = r[1]; r[1] = r[2]; r[2] = temp;
-      temp = p[1]; p[1] = p[2]; p[2] = temp;
-      break;
-
-    }
-
-    // "r" is the solution of the equation A*(x,y,z) = (0,0,0) where
-    // A is the matrix of the degenerate conic.  This is what we
-    // called in the conic theory we saw in high school a "double
-    // point".  It has the unique property that any line going through
-    // it is a "polar line" of the conic at hand.  It only exists for
-    // degenerate conics.  It has another unique property that if you
-    // take any other point on the conic, then the line between it and
-    // the double point is part of the conic.
-    // this is what we use here: we find the double point ( ret.a
-    // ), and then find another points on the conic.
-
-    //    ret.a = (1/discrim)*Coordinate (2*b*d - c*e, 2*a*e - c*d);
-    //    ret.a = ret.first - Coordinate (-2*b, c + which*sqrt(discrim));
-    ret.a = -p[2]/(p[0]*p[0] + p[1]*p[1]) * Coordinate (p[0],p[1]);
-    ret.b = ret.a + Coordinate (-p[1],p[0]);
-    valid = true;
-  }
-  else
+  if (dis3 < 0)
   {
     // domi:
     // i would put an assertion here, but well, i guess it doesn't
     // really matter, and this prevents crashes if the math i still
     // recall from high school happens to be wrong :)
     valid = false;
+    return ret;
   };
+
+  double r[3];   // direction of the null space
+  r[0] = 2*b*d - c*e;
+  r[1] = 2*a*e - c*d;
+  r[2] = dis3;
+
+  // now remember the switch:
+  switch (maxind)
+  {
+    case 1:  // exchange 1 <-> 3
+    temp = a; a = f; f = temp;
+    temp = c; c = e; e = temp;
+    temp = dis1; dis1 = dis3; dis3 = temp;
+    temp = r[0]; r[0] = r[2]; r[2] = temp;
+    break;
+
+    case 2:  // exchange 2 <-> 3
+    temp = b; b = f; f = temp;
+    temp = c; c = d; d = temp;
+    temp = dis2; dis2 = dis3; dis3 = temp;
+    temp = r[1]; r[1] = r[2]; r[2] = temp;
+    break;
+  }
+
+  // Computing a Householder reflection transformation that
+  // maps r onto [0, 0, k]
+
+  double w[3];
+  double rnormsq = r[0]*r[0] + r[1]*r[1] + r[2]*r[2];
+  double k = sqrt( rnormsq );
+  if ( k*r[2] < 0) k = -k;
+  double wnorm = sqrt( 2*rnormsq + 2*k*r[2] );
+  w[0] = r[0]/wnorm;
+  w[1] = r[1]/wnorm;
+  w[2] = (r[2] + k)/wnorm;
+
+  // matrix transformation using Householder matrix, the resulting
+  // matrix is zero on third row and column
+  // [q0,q1,q2]^t = A w
+  // alpha = w^t A w
+  double q0 = a*w[0] + c*w[1]/2 + d*w[2]/2;
+  double q1 = b*w[1] + c*w[0]/2 + e*w[2]/2;
+  double alpha = a*w[0]*w[0] + b*w[1]*w[1] + c*w[0]*w[1] +
+                 d*w[0]*w[2] + e*w[1]*w[2] + f*w[2]*w[2];
+  double a00 = a - 4*w[0]*q0 + 4*w[0]*w[0]*alpha;
+  double a11 = b - 4*w[1]*q1 + 4*w[1]*w[1]*alpha;
+  double a01 = c/2 - 2*w[1]*q0 - 2*w[0]*q1 + 4*w[0]*w[1]*alpha;
+
+  double dis = a01*a01 - a00*a11;
+  assert ( dis >= 0 );
+  double sqrtdis = sqrt( dis );
+  double px, py;
+  if ( which*a01 > 0 )
+  {
+    px = a01 + which*sqrtdis;
+    py = a11;
+  } else {
+    px = a00;
+    py = a01 - which*sqrtdis;
+  }
+  double p[3];   // vector orthogonal to one of the two planes
+  double pscalw = w[0]*px + w[1]*py;
+  p[0] = px - 2*pscalw*w[0];
+  p[1] = py - 2*pscalw*w[1];
+  p[2] =    - 2*pscalw*w[2];
+
+  // "r" is the solution of the equation A*(x,y,z) = (0,0,0) where
+  // A is the matrix of the degenerate conic.  This is what we
+  // called in the conic theory we saw in high school a "double
+  // point".  It has the unique property that any line going through
+  // it is a "polar line" of the conic at hand.  It only exists for
+  // degenerate conics.  It has another unique property that if you
+  // take any other point on the conic, then the line between it and
+  // the double point is part of the conic.
+  // this is what we use here: we find the double point ( ret.a
+  // ), and then find another points on the conic.
+
+  ret.a = -p[2]/(p[0]*p[0] + p[1]*p[1]) * Coordinate (p[0],p[1]);
+  ret.b = ret.a + Coordinate (-p[1],p[0]);
+  valid = true;
 
   return ret;
 }
