@@ -21,6 +21,7 @@
 #include "object_type.h"
 #include "object_imp.h"
 #include "curve_imp.h"
+#include "bogus_imp.h"
 #include "../misc/kigpainter.h"
 #include "../kig/kig_part.h"
 
@@ -32,7 +33,7 @@
 RealObject::RealObject( const ObjectType* type, const Objects& parents )
   : ObjectWithParents( parents ),
     mcolor( Qt::blue ), mselected( false ), mshown( true ),
-    mwidth( -1 ), mtype( type ), mimp( 0 )
+    mwidth( -1 ), mtype( type ), mimp( new InvalidImp )
 {
 }
 
@@ -48,7 +49,6 @@ void RealObject::draw( KigPainter& p, bool ss ) const
   p.setBrushColor( mselected && ss ? Qt::red : mcolor );
   p.setPen( QPen ( mselected && ss ? Qt::red : mcolor,  1) );
   p.setWidth( mwidth );
-  assert( mimp );
   mimp->draw( p );
 }
 
@@ -76,12 +76,6 @@ void ObjectWithParents::calc( const KigDocument& d )
   transform( mparents.begin(), mparents.end(),
              back_inserter( a ), mem_fun( &Object::imp ) );
   calc( a, d );
-}
-
-void RealObject::setImp( ObjectImp* i )
-{
-  delete mimp;
-  mimp = i;
 }
 
 bool RealObject::canMove() const
@@ -213,8 +207,11 @@ const ObjectType* RealObject::type() const
 
 void RealObject::calc( const Args& a, const KigDocument& d )
 {
+  // don't delete the imp until we have a new one to replace it
+  // with..
+  ObjectImp* imp = mtype->calc( a, d );
   delete mimp;
-  mimp = mtype->calc( a, d );
+  mimp = imp;
 }
 
 Object::Object()
@@ -357,7 +354,7 @@ bool DataObject::isInternal() const
 }
 
 PropertyObject::PropertyObject( Object* parent, int id )
-  : Object(), mimp( 0 ), mparent( parent ), mpropid( id )
+  : Object(), mimp( new InvalidImp ), mparent( parent ), mpropid( id )
 {
   mparent->addChild( this );
 }

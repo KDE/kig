@@ -167,7 +167,6 @@ public:
 
 
   const ObjectType* type() const;
-  void setImp( ObjectImp* i );
   void setType( const ObjectType* t );
 
   QColor color() const;
