@@ -68,6 +68,8 @@ ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
   Args varargs( parents.begin() + 2,  parents.end() );
   Args os = mparser.parse( firsttwo );
 
+  assert( os[0]->inherits( ObjectImp::ID_PointImp ) );
+  assert( os[1]->inherits( ObjectImp::ID_StringImp ) );
   const Coordinate t = static_cast<const PointImp*>( os[0] )->coordinate();
   QString s = static_cast<const StringImp*>( os[1] )->data();
 
@@ -87,16 +89,13 @@ bool TextType::canMove() const
 void TextType::move( RealObject* ourobj, const Coordinate&,
                      const Coordinate& dist ) const
 {
-  const Objects parents = mparser.parse( ourobj->parents() );
-  assert( parents.front()->inherits( Object::ID_DataObject ) );
-  DataObject* c = static_cast<DataObject*>( parents.front() );
+  const Objects parents = ourobj->parents();
+  assert( parents.size() >= 2 );
+  const Objects firsttwo( parents.begin(), parents.begin() + 2 );
+  const Objects ps = mparser.parse( firsttwo );
+  assert( ps.front()->inherits( Object::ID_DataObject ) );
+  DataObject* c = static_cast<DataObject*>( ps.front() );
   const PointImp* p = static_cast<const PointImp*>( c->imp() );
   const Coordinate n = p->coordinate() + dist;
   c->setImp( new PointImp( n ) );
 }
-
-ObjectImp* TextType::calc( const Args& ) const
-{
-  assert( false );
-}
-
