@@ -37,9 +37,9 @@
 // reorder them.  Now it *should* work, however we postpone 
 // activating this to a more proper moment
 
-// to activate the new algorithm change "undef" into "define"
+// to deactivate the new algorithm change "define" into "undef"
 
-#undef NEWCALCPATH
+#define NEWCALCPATH
 #ifdef NEWCALCPATH
 void localdfs( ObjectCalcer* obj,
                std::vector<ObjectCalcer*>& visited,

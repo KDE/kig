@@ -175,7 +175,7 @@
       <Action name="settings_set_coordinate_system" />
       <Action name="settings_show_grid" />
       <Action name="settings_show_axes" />
-      <Action name="DISABLEDsettings_toggle_nightvision" />
+      <Action name="settings_toggle_nightvision" />
     </Menu>
   </MenuBar>
   <ToolBar name="mainToolBar">
