@@ -372,7 +372,7 @@ static const ArgsParser::spec argsspecPolygonLineIntersection[] =
 {
   { PolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
     I18N_NOOP( "Select the polygon of which you want the intersection with a line..." ), false },
-  { LineImp::stype(), "Intersect this line with a polygon", "Select the line of which you want the intersection with a polygon...", false }
+  { AbstractLineImp::stype(), "Intersect this line with a polygon", "Select the line of which you want the intersection with a polygon...", false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PolygonLineIntersectionType )
@@ -396,14 +396,32 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  const std::vector<Coordinate> ppoints = static_cast<const PolygonImp*>( parents[0] )->points();
+  const PolygonImp* polygon = static_cast<const PolygonImp*>( parents[0] );
+  const std::vector<Coordinate> ppoints = polygon->points();
   const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
+  Coordinate intersections[2];
+  uint whichintersection = 0;
+
+  bool isline = true;
+  bool isray = false;
+  if ( parents[1]->inherits( SegmentImp::stype() ) )
+  {
+    isline = false;
+    if ( polygon->isInPolygon( line.a ) )
+      intersections[whichintersection++] = line.a;
+    if ( polygon->isInPolygon( line.b ) )
+      intersections[whichintersection++] = line.b;
+  } 
+  if ( parents[1]->inherits( RayImp::stype() ) )
+  {
+    isray = true;
+    isline = false;
+    if ( polygon->isInPolygon( line.a ) )
+      intersections[whichintersection++] = line.a;
+  } 
   Coordinate a = line.a;
   double abx = line.b.x - a.x;
   double aby = line.b.y - a.y;
-
-  Coordinate intersections[2];
-  uint whichintersection = 0;
 
   Coordinate prevpoint = ppoints.back() - a;
   bool prevpointbelow = ( abx*prevpoint.y <= aby*prevpoint.x );
@@ -411,11 +429,27 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
   {
     Coordinate point = ppoints[i] - a;
     bool pointbelow = ( abx*point.y <= aby*point.x );
-    if ( pointbelow != prevpointbelow )    /* found an intersection */
+    if ( pointbelow != prevpointbelow ) 
     {
-      if ( whichintersection >= 2 ) return new InvalidImp;
+      /* found an intersection with the support line
+       * compute the value of the parameter...
+       *
+       * there is still a problem with this approach when
+       * the segment/ray has an end-point coinciding with a
+       * vertex of the polygon
+       */
       LineData side = LineData( prevpoint + a, point + a );
-      intersections[whichintersection++] = calcIntersectionPoint( line, side );
+      double dcx = point.x - prevpoint.x;
+      double dcy = point.y - prevpoint.y;
+      double num = point.x*dcy - point.y*dcx;
+      double den = abx*dcy - aby*dcx;
+      if ( std::fabs( den ) < 1.e-6*std::fabs( num ) ) continue;
+      double t = num/den;
+      if ( isline || ( isray && t >= 0 ) || ( t >= 0 && t <= 1 ) )
+      {
+        if ( whichintersection >= 2 ) return new InvalidImp;
+        intersections[whichintersection++] = a + t*Coordinate( abx, aby );
+      }
     }
     prevpoint = point;
     prevpointbelow = pointbelow;
