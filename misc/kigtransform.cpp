@@ -251,7 +251,7 @@ const Transformation Transformation::identity()
   return ret;
 }
 
-const Transformation Transformation::scaling( double factor, const Coordinate& center )
+const Transformation Transformation::scalingOverPoint( double factor, const Coordinate& center )
 {
   Transformation ret;
   for ( int i = 0; i < 3; ++i )
@@ -278,7 +278,7 @@ const Transformation Transformation::translation( const Coordinate& c )
 
 const Transformation Transformation::pointReflection( const Coordinate& c )
 {
-  Transformation ret = scaling( -1, c );
+  Transformation ret = scalingOverPoint( -1, c );
   ret.mIsHomothety = true;
   return ret;
 }
@@ -305,13 +305,13 @@ const Transformation operator*( const Transformation& a, const Transformation& b
 
 const Transformation Transformation::lineReflection( const LineData& l )
 {
-  Transformation ret = scaling( -1, l );
+  Transformation ret = scalingOverLine( -1, l );
   // a reflection is a homothety...
   ret.mIsHomothety = true;
   return ret;
 }
 
-const Transformation Transformation::scaling( double factor, const LineData& l )
+const Transformation Transformation::scalingOverLine( double factor, const LineData& l )
 {
   Transformation ret = identity();
 

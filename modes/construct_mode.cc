@@ -181,7 +181,7 @@ PointConstructMode::~PointConstructMode()
 }
 
 void PointConstructMode::leftClickedObject(
-  ObjectHolder*, const QPoint& p, KigWidget& w, bool shiftPressed)
+  ObjectHolder*, const QPoint&, KigWidget& w, bool )
 {
   mdoc.addObject( new ObjectHolder( mpt.get() ) );
   w.redrawScreen( std::vector<ObjectHolder*>() );

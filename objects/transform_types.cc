@@ -191,7 +191,7 @@ ObjectImp* ScalingOverCenterType::calc( const Args& args, const KigDocument& ) c
   Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
   double ratio = static_cast<const SegmentImp*>( args[2] )->length();
 
-  return args[0]->transform( Transformation::scaling( ratio, center ) );
+  return args[0]->transform( Transformation::scalingOverPoint( ratio, center ) );
 }
 
 static const ArgsParser::spec argsspecScalingOverLine[] =
@@ -225,7 +225,7 @@ ObjectImp* ScalingOverLineType::calc( const Args& args, const KigDocument& ) con
   LineData line = static_cast<const AbstractLineImp*>( args[1] )->data();
   double ratio = static_cast<const SegmentImp*>( args[2] )->length();
 
-  return args[0]->transform( Transformation::scaling( ratio, line ) );
+  return args[0]->transform( Transformation::scalingOverLine( ratio, line ) );
 }
 
 static const ArgsParser::spec argsspecProjectiveRotation[] =

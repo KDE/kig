@@ -78,16 +78,16 @@ public:
    */
   static const Transformation identity();
   /**
-   * Scaling.  Returns a Transformation that scales points by a
-   * certain factor with relation to a center point.
+   * Scaling over Point.  Returns a Transformation that scales points
+   * by a certain factor with relation to a center point.
    */
-  static const Transformation scaling( double factor, const Coordinate& center = Coordinate() );
+  static const Transformation scalingOverPoint( double factor, const Coordinate& center = Coordinate() );
   /**
-   * Scaling.  Returns a Transformation that scales points by a
-   * certain factor with relation to a line.  Note: This is not a
+   * Scaling over Line.  Returns a Transformation that scales points
+   * by a certain factor with relation to a line.  Note: This is not a
    * homothetic transformation.
    */
-  static const Transformation scaling( double factor, const LineData& l );
+  static const Transformation scalingOverLine( double factor, const LineData& l );
   /**
    * Translation.  Returns a Translation by a vector c.
    */
