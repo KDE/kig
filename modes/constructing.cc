@@ -23,11 +23,13 @@
 #include "../misc/kigpainter.h"
 #include "../objects/object.h"
 #include "../objects/normalpoint.h"
+#include "../objects/label.h"
 #include "normal.h"
 
 #include <kcursor.h>
 #include <klocale.h>
 #include <kaction.h>
+#include <klineeditdlg.h>
 
 #include <functional> // for std::mem_fun and std::bind2nd
 
@@ -301,4 +303,51 @@ void PointConstructionMode::cancelConstruction()
   KigDocument* d = mDoc;
   delete this;
   d->setMode( p );
+}
+
+TextLabelConstructionMode::~TextLabelConstructionMode()
+{
+}
+
+TextLabelConstructionMode::TextLabelConstructionMode( NormalMode* b,
+                                                      KigDocument* d )
+  : KigMode( d ), mprev( b )
+{
+}
+void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigView* )
+{
+  mplc = e->pos();
+}
+
+void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
+{
+  if ( ( mplc - e->pos() ).manhattanLength() > 4 ) return;
+  Coordinate c = v->fromScreen( mplc );
+  bool ok;
+  QString text = KLineEditDlg::getText(
+    i18n( "Choose Text" ), QString::fromUtf8(""), 0, &ok, v );
+  if ( ! ok ) { killMode(); return; };
+  mDoc->addObject( new TextLabel( text, c ) );
+  v->redrawScreen();
+  killMode();
+}
+
+void TextLabelConstructionMode::killMode()
+{
+  NormalMode* p = mprev;
+  KigDocument* d = mDoc;
+  delete this;
+  d->setMode( p );
+}
+
+void TextLabelConstructionMode::cancelConstruction()
+{
+  killMode();
+}
+
+void TextLabelConstructionMode::enableActions()
+{
+  KigMode::enableActions();
+
+  mDoc->aCancelConstruction->setEnabled( true );
 }

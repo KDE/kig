@@ -35,12 +35,13 @@ class Segment;
 class Line;
 class Circle;
 class Curve;
+class NormalPoint;
+class TextLabel;
 class Types;
 class KAction;
 class KigDocument;
 class KigMode;
 class Type;
-class NormalPoint;
 class KigPainter;
 class Coordinate;
 class Rect;
@@ -83,6 +84,7 @@ public:
   virtual Circle* toCircle() { return 0; };
   virtual Curve* toCurve() { return 0; };
   virtual NormalPoint* toNormalPoint() { return 0; };
+  virtual TextLabel* toTextLabel() { return 0; };
 
   virtual const Point* toPoint() const { return 0; };
   virtual const Segment* toSegment() const { return 0; };
@@ -90,6 +92,7 @@ public:
   virtual const Circle* toCircle() const { return 0; };
   virtual const Curve* toCurve() const { return 0; };
   virtual const NormalPoint* toNormalPoint() const { return 0; };
+  virtual const TextLabel* toTextLabel() const { return 0; };
 
   // type identification:
   // there are several functions: you don't need all of them in your
@@ -134,7 +137,7 @@ public:
   // "point4" for FixedPoint etc.  return 0 or "" if you don't have an
   // icon.
   virtual const QCString vIconFileName() const = 0;
-  // static const QCString vIconFileName() const = 0;
+  // static const QCString vIconFileName() = 0;
 
   // this is used by TType, this implementation is good for almost
   // all, only NormalPoint needs something else...

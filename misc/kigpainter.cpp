@@ -110,6 +110,12 @@ void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags, in
   mOverlay.push_back( mP.boundingRect( r, textFlags, s, len ) );
 }
 
+const Rect KigPainter::boundingRect( const Rect& r, const QString s,
+                                      int f, int l ) const
+{
+  return fromScreen( mP.boundingRect( toScreen( r ), f, s, l ) );
+};
+
 void KigPainter::setColor( const QColor& c )
 {
   color = c;
@@ -306,7 +312,7 @@ void KigPainter::setWholeWinOverlay()
   mNeedOverlay = false;
 }
 
-QPoint KigPainter::toScreen( const Coordinate p )
+QPoint KigPainter::toScreen( const Coordinate p ) const
 {
   return msi.toScreen( p );
 }
@@ -357,7 +363,44 @@ void KigPainter::drawTextStd( const QPoint& p, const QString& s )
 
 }
 
-QRect KigPainter::toScreen( const Rect r )
+QRect KigPainter::toScreen( const Rect r ) const
 {
   return msi.toScreen( r );
+}
+
+void KigPainter::drawSimpleText( const Coordinate& c, const QString s )
+{
+  int tf = AlignLeft | AlignTop | DontClip | WordBreak;
+  setPen(QPen(Qt::blue, 1, SolidLine));
+  setBrush(Qt::NoBrush);
+  drawText( c, s, tf);
+}
+
+void KigPainter::drawText( const Coordinate p, const QString s,
+                           int textFlags, int len )
+{
+  drawText( Rect( p, mP.window().right(), mP.window().top() ),
+            s, textFlags, len );
+}
+const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const QString s )
+{
+  int tf = AlignLeft | AlignTop | DontClip | WordBreak;
+  return boundingRect( c, s, tf );
+}
+
+const Rect KigPainter::boundingRect( const Coordinate& c, const QString s,
+                                      int f, int l ) const
+{
+  return boundingRect( Rect( c, mP.window().right(), mP.window().top() ),
+                       s, f, l );
+}
+
+Coordinate KigPainter::fromScreen( const QPoint& p ) const
+{
+  return msi.fromScreen( p );
+}
+
+Rect KigPainter::fromScreen( const QRect& r ) const
+{
+  return msi.fromScreen( r );
 }

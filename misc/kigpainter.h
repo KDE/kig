@@ -48,7 +48,9 @@ class KigPainter
   : public Qt
 {
 protected:
-  QPainter mP;
+  // don't blaim me for this mutable hack.  It's TT that hasn't got
+  // its consts correctly...
+  mutable QPainter mP;
 
   QColor color;
   PenStyle style;
@@ -73,8 +75,10 @@ public:
   // what rect are we drawing on ?
   Rect window();
 
-  QPoint toScreen( const Coordinate p );
-  QRect toScreen( const Rect r );
+  QPoint toScreen( const Coordinate p ) const;
+  QRect toScreen( const Rect r ) const;
+  Coordinate fromScreen( const QPoint& p ) const;
+  Rect fromScreen( const QRect& r ) const;
 
   // colors and stuff...
   void setStyle( const PenStyle c );
@@ -159,19 +163,20 @@ public:
    * draw text...
    * @see QPainter::drawText()
    */
-  void drawText( const Rect r, const QString s, int textFlags = 0, int len = -1);
-  inline void drawText( const Coordinate p, const QString s,  int textFlags = 0, int len = -1)
-  {
-    drawText( Rect( p, mP.window().right(), mP.window().top() ), s, textFlags, len );
-  };
+  void drawText( const Rect r, const QString s, int textFlags = 0,
+                 int len = -1);
+  void drawText( const Coordinate p, const QString s,
+                 int textFlags = 0, int len = -1);
 
-  inline void drawSimpleText( const Coordinate& c, const QString s )
-  {
-    int tf = AlignLeft | AlignTop | DontClip | WordBreak;
-    setPen(QPen(Qt::blue, 1, SolidLine));
-    setBrush(Qt::NoBrush);
-    drawText( c, s, tf);
-  }
+  void drawSimpleText( const Coordinate& c, const QString s );
+
+  const Rect boundingRect( const Rect& r, const QString s,
+                            int f = 0, int l = -1 ) const;
+
+  const Rect boundingRect( const Coordinate& c, const QString s,
+                            int f = 0, int l = -1 ) const;
+
+  const Rect simpleBoundingRect( const Coordinate& c, const QString s );
 
   void drawGrid( const CoordinateSystem* c );
 

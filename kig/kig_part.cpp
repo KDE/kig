@@ -33,6 +33,7 @@
 #include "../objects/midpoint.h"
 #include "../objects/line.h"
 #include "../objects/macro.h"
+#include "../objects/label.h"
 #include "../objects/intersection.h"
 #include "../objects/locus.h"
 #include "../misc/type.h"
@@ -190,6 +191,7 @@ void KigDocument::setupTypes()
     types.addType( new TType<MidPoint> );
     types.addType( new TType<IntersectionPoint> );
     types.addType( new TType<Locus> );
+    types.addType( new TType<TextLabel> );
 
     // our saved macro types:
     QStringList relFiles;

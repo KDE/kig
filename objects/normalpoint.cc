@@ -178,7 +178,7 @@ void FixedPointImp::readParams( const std::map<QCString, QString>& m,
   bool ok = true;
   pwwca = Coordinate(
       m.find("x")->second.toDouble(&ok),
-      pwwca.y = m.find("y")->second.toDouble(&ok) );
+      m.find("y")->second.toDouble(&ok) );
   Q_ASSERT( ok );
   p->setCoord( pwwca );
 }
