@@ -7,7 +7,7 @@
 	cases the result is invalid (no longer a segment)
 
 	* fixed a bug in similitude transformation as suggested by 
-	Pino Toscano
+	Pino Toscano (#85171)
 
 2004-12-27  Pino Toscano <toscano.pino@tiscali.it>
 

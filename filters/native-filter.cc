@@ -112,10 +112,12 @@ KigDocument* KigFilterNative::load( const QString& file )
   };
 
   QFile kigdoc( file );
+  bool iscompressed = false;
   if ( !file.endsWith( ".kig", false ) )
   {
     // the file is compressed, so we have to decompress it and fetch the
     // kig file inside it...
+    iscompressed = true;
 
     QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
     if ( tempdir.isEmpty() )
@@ -128,6 +130,7 @@ KigDocument* KigFilterNative::load( const QString& file )
     }
     else
       KIG_FILTER_PARSE_ERROR;
+    // reading compressed file
     KTar* ark = new KTar( file, "application/x-gzip" );
     ark->open( IO_ReadOnly );
     const KArchiveDirectory* dir = ark->directory();
@@ -145,7 +148,7 @@ KigDocument* KigFilterNative::load( const QString& file )
     dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
     kdDebug() << "extracted file: " << tempdir + kigz->name() << endl
               << "exists: " << QFile::exists( tempdir + kigz->name() ) << endl;
-    
+
     kigdoc.setName( tempdir + kigz->name() );
   }
 
@@ -156,6 +159,11 @@ KigDocument* KigFilterNative::load( const QString& file )
   if ( !doc.setContent( &kigdoc ) )
     KIG_FILTER_PARSE_ERROR;
   kigdoc.close();
+
+  // removing temp file
+  if ( iscompressed )
+    kigdoc.remove();
+
   QDomElement main = doc.documentElement();
 
   QString version = main.attribute( "CompatibilityVersion" );
@@ -691,10 +699,14 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
 
     kdDebug() << "tmp saved file: " << tmpfile << endl;
 
+    // creating the archive and adding our file
     KTar* ark = new KTar( outfile,  "application/x-gzip" );
     ark->open( IO_WriteOnly );
     ark->addLocalFile( tmpfile, tempname + ".kig" );
     ark->close();
+    
+    // finally, removing temp file
+    QFile::remove( tmpfile );
 
     return true;
   }
