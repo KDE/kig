@@ -85,6 +85,50 @@ void PolygonImp::draw( KigPainter& p ) const
   p.drawPolygon( mpoints );
 }
 
+#define selectpolygonwithinside 1
+#ifdef selectpolygonwithinside
+bool PolygonImp::contains( const Coordinate& p, int, const KigWidget& ) const
+{
+  // (algorithm sent to me by domi)
+  // We intersect with the horizontal ray from point to the right and
+  // count the number of intersections.  That, along with some
+  // minor optimalisations of the intersection test..
+  bool inside_flag = false;
+  double cx = p.x;
+  double cy = p.y;
+
+  Coordinate prevpoint = mpoints.back();
+  bool prevpointbelow = mpoints.back().y >= cy;
+  for ( uint i = 0; i < mpoints.size(); ++i )
+  {
+    Coordinate point = mpoints[i];
+    bool pointbelow = point.y >= cy;
+    if ( prevpointbelow != pointbelow )
+    {
+      // possibility of intersection: points on different side from
+      // the X axis
+      bool rightofpt = point.x >= cx;
+      if ( rightofpt == ( prevpoint.x >= cx ) )
+      {
+        // points on same side of Y axis -> easy to test intersection
+        // intersection iff one point to the right of c
+        if ( rightofpt )
+          inside_flag = !inside_flag;
+      }
+      else
+      {
+        // points on different sides of Y axis -> we need to calculate
+        // the intersection.
+        if ( ( point.x - ( point.y - cy )*( prevpoint.x-point.x )/( prevpoint.y - point.y ) ) >= cx )
+          inside_flag = !inside_flag;
+      }
+    }
+    prevpoint = point;
+    prevpointbelow = pointbelow;
+  }
+  return inside_flag;
+}
+#else
 bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   bool ret = false;
@@ -97,6 +141,7 @@ bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) 
 
   return ret;
 }
+#endif
 
 bool PolygonImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {

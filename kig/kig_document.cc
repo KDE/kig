@@ -20,6 +20,7 @@
 #include "../objects/object_calcer.h"
 #include "../objects/object_holder.h"
 #include "../objects/point_imp.h"
+#include "../objects/polygon_imp.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/rect.h"
 
@@ -63,15 +64,19 @@ CoordinateSystem* KigDocument::switchCoordinateSystem( CoordinateSystem* s )
 std::vector<ObjectHolder*> KigDocument::whatAmIOn( const Coordinate& p, const KigWidget& w ) const
 {
   std::vector<ObjectHolder*> ret;
-  std::vector<ObjectHolder*> nonpoints;
+  std::vector<ObjectHolder*> curves;
+  std::vector<ObjectHolder*> fatobjects;
   for ( std::set<ObjectHolder*>::const_iterator i = mobjects.begin();
         i != mobjects.end(); ++i )
   {
     if(!(*i)->contains(p, w)) continue;
     if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
-    else nonpoints.push_back( *i );
+    else 
+      if ( !(*i)->imp()->inherits( PolygonImp::stype() ) ) curves.push_back( *i );
+      else fatobjects.push_back( *i );
   };
-  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( ret ) );
+  std::copy( curves.begin(), curves.end(), std::back_inserter( ret ) );
+  std::copy( fatobjects.begin(), fatobjects.end(), std::back_inserter( ret ) );
   return ret;
 }
 
