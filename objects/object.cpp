@@ -323,3 +323,8 @@ void Object::stopMove()
 {
   // default is that we don't move..
 }
+
+bool Object::isa( int type ) const
+{
+  return false;
+}

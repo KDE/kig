@@ -303,7 +303,7 @@ public:
   virtual void calcForWidget( const KigWidget& widg );
 private:
   virtual void calc() = 0;
-  // Objects needs to be able to call this function...
+  // the Objects class needs to be able to call this function...
   friend class Objects;
 public:
 
@@ -323,19 +323,19 @@ public:
   QColor color() const { return mColor; };
   void setColor( const QColor c ) { mColor = c; };
 
- protected:
+protected:
   // are we selected?
   bool selected;
- public:
+public:
   bool getSelected() const { return selected; };
   virtual void setSelected(bool in);
- private:
+private:
   // are we shown?
   bool mshown;
- public:
+public:
   bool shown() const;
   void setShown(bool s);
- protected:
+protected:
   /**
    * An object is valid if it's in a state where its position and such
    * is defined: example: the intersection of a line and a circle:
@@ -347,15 +347,15 @@ public:
    * you should check for these cases in your calc() routine...
    */
   bool mvalid;
- public:
+public:
   bool valid() const;
- protected:
+protected:
   /**
    * objects we know, and that know us: if they move, we move too, and vice versa
    */
   Objects children;
 
- public:
+public:
   const Objects& getChildren() const { return children;};
   /**
    * our children + our children's children + ...
@@ -365,9 +365,26 @@ public:
   void addChild(Object* o);
   void delChild(Object* o);
   /**
-   * returns all objects the object depends upon ( the args it selected )
+   * returns all objects the object depends upon ( the args it was
+   * constructed with.. )
    */
   virtual Objects getParents() const = 0;
+
+public:
+  virtual bool isa( int type ) const;
+  enum ObjectType {
+    PointT,
+    AbstractLineT,
+    ArcT,
+    CircleT,
+    ConicT,
+    CurveT,
+    NormalPointT,
+    RayT,
+    TextLabelT,
+    VectorT,
+    NumberOfObjectTypes
+  };
 };
 
 #endif // OBJECT_H
