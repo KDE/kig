@@ -158,7 +158,7 @@ KigFilter::Result KigFilterNative::loadOld( const QDomElement& main, KigDocument
         if ( tmp.isNull() ) return ParseError;
         int pid = tmp.toInt( &ok );
         if ( ! ok ) return ParseError;
-        extendVect( elems, pid );
+        extendVect( elems, id );
         elems[id-1].parents.push_back( pid );
       }
     };
@@ -484,7 +484,7 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
               uint pid = tmp.toInt( &ok );
               if ( ! ok ) return ParseError;
 
-              extendVect( elems, pid );
+              extendVect( elems, id );
               elems[id-1].parents.push_back( pid );
             }
           }
@@ -499,7 +499,8 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
       uint oldsize = ret.size();
       ret.resize( oldsize + elems.size(), 0 );
 
-      for ( std::vector<HierElem>::iterator i = elems.begin(); i != elems.end(); ++i )
+      for ( std::vector<HierElem>::iterator i = elems.begin();
+            i != elems.end(); ++i )
       {
         QDomElement e = i->el;
         if ( e.tagName() == "Data" )
@@ -547,5 +548,5 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
     else continue; // be forward-compatible..
   };
 
-  return NotSupported;
+  return OK;
 }
