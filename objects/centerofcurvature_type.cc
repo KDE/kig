@@ -203,3 +203,107 @@ const ObjectImpType* CocCubicType::resultId() const
 {
   return PointImp::stype();
 }
+
+/**** Curve starts here ****/
+
+static const ArgsParser::spec argsspecCocCurve[] =
+{
+  { CurveImp::stype(), I18N_NOOP( "Construct the center of curvature wrt. this curve" ),
+    I18N_NOOP( "Select the curve..." ), false },
+  { PointImp::stype(), constructcenterofcurvaturepoint,
+    I18N_NOOP( "Select a point on the curve..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CocCurveType )
+
+CocCurveType::CocCurveType()
+  : ArgsParserObjectType( "CocCurve", argsspecCocCurve, 2 )
+{
+}
+
+CocCurveType::~CocCurveType()
+{
+}
+
+const CocCurveType* CocCurveType::instance()
+{
+  static const CocCurveType t;
+  return &t;
+}
+
+ObjectImp* CocCurveType::calc( const Args& args, const KigDocument& doc ) const
+{
+  if ( !margsparser.checkArgs( args ) )
+    return new InvalidImp;
+
+  const CurveImp* curve = static_cast<const CurveImp*>( args[0] );
+  const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
+
+  if ( !curve->containsPoint( p, doc ) )
+    return new InvalidImp;
+
+
+  const double t = curve->getParam( p, doc );
+  const double tau0 = 5e-4;
+  const double sigmasq = 1e-12;
+  const int maxiter = 20;
+
+  double tau = tau0;
+  Coordinate gminus, g, gplus, tang, acc, curv, err;
+  double velsq, curvsq;
+  double tplus = t + tau;
+  double tminus = t - tau;
+  double t0 = t;
+  if ( tplus > 1 ) {tplus = 1; t0 = 1 - tau; tminus = 1 - 2*tau;}
+  if ( tminus < 0 ) {tminus = 0; t0 = tau; tplus = 2*tau;}
+  gminus = curve->getPoint( tminus, doc );
+  g = curve->getPoint( t0, doc );
+  gplus = curve->getPoint( tplus, doc );
+  tang = (gplus - gminus)/(2*tau);
+  acc = (gminus + gplus - 2*g)/(tau*tau);
+  velsq = tang.x*tang.x + tang.y*tang.y;
+  tang = tang/velsq;
+  Coordinate curvold = acc/velsq - (acc.x*tang.x + acc.y*tang.y)*tang;
+  curvsq = curvold.x*curvold.x + curvold.y*curvold.y;
+  curvold = curvold/curvsq;
+
+  for (int i = 0; i < maxiter; i++)
+  {
+    tau = tau/2;
+    tplus = t + tau;
+    tminus = t - tau;
+    t0 = t;
+    if ( tplus > 1 ) {tplus = 1; t0 = 1 - tau; tminus = 1 - 2*tau;}
+    if ( tminus < 0 ) {tminus = 0; t0 = tau; tplus = 2*tau;}
+
+    gminus = curve->getPoint( tminus, doc );
+    g = curve->getPoint( t0, doc );
+    gplus = curve->getPoint( tplus, doc );
+    tang = (gplus - gminus)/(2*tau);
+    acc = (gminus + gplus - 2*g)/(tau*tau);
+    velsq = tang.x*tang.x + tang.y*tang.y;
+    tang = tang/velsq;
+    curv = acc/velsq - (acc.x*tang.x + acc.y*tang.y)*tang;
+    curvsq = curv.x*curv.x + curv.y*curv.y;
+    curv = curv/curvsq;
+
+    err = (curvold - curv)/3;
+    /*
+     * curvsq is the inverse squared of the norm of curvsq
+     * so this is actually a relative test
+     * in the end we return an extrapolated value
+     */
+    if (err.squareLength() < sigmasq/curvsq)
+    {
+      curv = (4*curv - curvold)/3;
+      return new PointImp( p + curv );
+    }
+    curvold = curv;
+  }
+  return new InvalidImp;
+}
+
+const ObjectImpType* CocCurveType::resultId() const
+{
+  return PointImp::stype();
+}

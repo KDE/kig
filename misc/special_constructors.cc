@@ -761,8 +761,15 @@ CocConstructor::CocConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "coccubic" );
 
+  SimpleObjectTypeConstructor* curve =
+    new SimpleObjectTypeConstructor(
+      CocCurveType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "coccurve" );
+
   merge( conic );
   merge( cubic );
+  merge( curve );
 }
 
 CocConstructor::~CocConstructor()

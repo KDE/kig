@@ -51,4 +51,19 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * the center of curvature of a curve at a point
+ */
+class CocCurveType
+  : public ArgsParserObjectType
+{
+  typedef ArgsParserObjectType Parent;
+  CocCurveType();
+  ~CocCurveType();
+public:
+  static const CocCurveType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif
