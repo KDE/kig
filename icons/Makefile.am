@@ -1,5 +1,5 @@
-datadir = $(kde_datadir)/kig/toolbar
-data_DATA = angle.png areaCircle.png attacher.png baseCircle.png \
+kigicondatadir = $(kde_datadir)/kig/toolbar
+kigicondata_DATA = angle.png areaCircle.png attacher.png baseCircle.png \
 	bisection.png centralsymmetry.png circlebcp.png circlebps.png \
 	circlebtp.png circlelineintersection.png circumference.png \
 	conicb5p.png coniclineintersection.png conicsradicalline.png \
