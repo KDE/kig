@@ -53,7 +53,7 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigWidget& w ) c
 
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp r("^\([^,]+),([^\\)]+)\$");
+  QRegExp r("^([^,]+),([^\\)]+)$");
   ok = ( r.search(s) == 0 );
   kdDebug() << "Coordinate EuclideanCoords::toScreen !!" << endl;
   if (ok)
