@@ -1,5 +1,10 @@
 * not too hard:
 
+- update the moving stuff to make sure that child objects don't get
+  moved actively if their parents are already moving.  They should
+  then simply update themselves to the new locations of their parents
+  passively.  
+
 - export cubics to the python scripting stuff..
 
 - add support for working with angles in degrees in the set size
