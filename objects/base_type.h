@@ -42,11 +42,6 @@ class ObjectABCType
 protected:
   ObjectABCType( const char* basetypename, const char* fulltypename );
   ~ObjectABCType();
-  ObjectImp* calc( const Args& args, const KigWidget& ) const;
-  bool canMove() const;
-  void move( Object* o, const Coordinate& from, const Coordinate& dist ) const;
-
-  virtual ObjectImp* calc( const Coordinate& a, const Coordinate& b, const Coordinate& c ) const = 0;
 };
 
 #endif

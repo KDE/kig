@@ -21,12 +21,15 @@
 #include "i18n.h"
 #include "objects.h"
 #include "argsparser.h"
+#include "kigpainter.h"
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
 #include "../objects/object_type.h"
 #include "../objects/object_imp.h"
+
+#include <qpen.h>
 
 #include <algorithm>
 #include <functional>
@@ -103,6 +106,10 @@ void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& pare
   transform( parents.begin(), parents.end(),
              back_inserter( args ), mem_fun( &Object::imp ) );
   ObjectImp* data = mtype->calc( args, w );
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( 1 );
   data->draw( p );
   delete data;
 }

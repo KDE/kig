@@ -40,12 +40,13 @@ class CircleBTPType
 {
   CircleBTPType();
   ~CircleBTPType();
-public:
-  static const CircleBCPType* instance();
 
-  ObjectImp* calc( const Coordinate& a,
-                   const Coordinate& b,
-                   const Coordinate& c ) const;
+  const Coordinate calcCenter( const Coordinate& a, const Coordinate& b,
+                               const Coordinate& b ) const;
+public:
+  static const CircleBTPType* instance();
+
+  ObjectImp* calc( const Args& args, const KigWidget& ) const;
 };
 
 #endif

@@ -30,13 +30,14 @@
 
 #include "../objects/object.h"
 #include "../objects/point_imp.h"
-#include "../objects/line_type.h"
 
 #include "../misc/guiaction.h"
+#include "../misc/guiaction_list.h"
 #include "../misc/object_constructor.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/calcpaths.h"
 #include "../misc/objects.h"
+#include "../misc/builtin_stuff.h"
 
 #include "../filters/filter.h"
 
@@ -169,14 +170,25 @@ void KigDocument::setupActions()
 
 void KigDocument::setupTypes()
 {
+  setupBuiltinStuff();
+  GUIActionList& l = *GUIActionList::instance();
+  kdDebug() << k_funcinfo << l.actions().size() << endl;
+  for ( uint i = 0; i < l.actions().size(); ++i )
+  {
+    new KigGUIAction( l.actions()[i], *this, actionCollection() );
+  };
 //   if ( Object::types().empty() )
 //   {
+
 //     Object::addBuiltinType( new TStdType<Segment> );
 //     Object::addBuiltinType( new TStdType<LineTTP> );
 //     Object::addBuiltinType( new TStdType<LinePerpend> );
 //     Object::addBuiltinType( new TStdType<LineParallel> );
 //     Object::addBuiltinType( new TStdType<CircleBCP> );
 //     Object::addBuiltinType( new TStdType<CircleBTP> );
+//     Object::addBuiltinType( new TStdType<Ray> );
+
+//     Object::addBuiltinType( new TType<NormalPoint> );
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
 //     Object::addBuiltinType( new TStdType<ConicBAAP> );
 //     Object::addBuiltinType( new TStdType<ConicBDFP> );
@@ -198,13 +210,11 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TStdType<MirrorPoint> );
 //     Object::addBuiltinType( new TStdType<Locus> );
 //     Object::addBuiltinType( new TStdType<Vector> );
-//     Object::addBuiltinType( new TStdType<Ray> );
 //     Object::addBuiltinType( new TStdType<Angle> );
 //     Object::addBuiltinType( new TStdType<LineDirectrix> );
 //     Object::addBuiltinType( new TStdType<LinePolar> );
 //     Object::addBuiltinType( new TStdType<PointPolar> );
 //     Object::addBuiltinType( new TType<TextLabel> );
-//     Object::addBuiltinType( new TType<NormalPoint> );
 //     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
 
 //     // our saved macro types:

@@ -19,6 +19,8 @@
 #ifndef KIG_NW_MISC_GUIACTION_LIST_H
 #define KIG_NW_MISC_GUIACTION_LIST_H
 
+#include <vector>
+
 class GUIAction;
 
 class GUIActionList

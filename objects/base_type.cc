@@ -61,3 +61,17 @@ void ObjectABType::move( Object* o,
   parents[0]->move( from, dist );
   parents[1]->move( from, dist );
 }
+
+const struct ArgParser::spec ObjectABCType::argsspec[] =
+{
+  { ObjectImp::ID_PointImp, 3 }
+};
+
+ObjectABCType::ObjectABCType( const char* basetypename, const char* fulltypename )
+  : ObjectType( basetypename, fulltypename, argsspec, 1 )
+{
+}
+
+ObjectABCType::~ObjectABCType()
+{
+}

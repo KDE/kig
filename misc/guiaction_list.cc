@@ -18,9 +18,11 @@
 
 #include "guiaction_list.h"
 
+#include "guiaction.h"
+
 GUIActionList* GUIActionList::instance()
 {
-  GUIActionList l;
+  static GUIActionList l;
   return &l;
 };
 
