@@ -1,3 +1,8 @@
+2003-05-17  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* add a toolbar icon ( i.e. GUIAction ) for constructing an angle
+		bisector..
+
 2003-05-15  Maurizio Paolini  <paolini@dmf.unicatt.it>
 
 	* take advantage of the new invalid coordinate when creating circles

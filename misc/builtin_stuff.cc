@@ -97,6 +97,21 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebtp" ) );
 
+    // declare this object static to this function, so it gets deleted
+    // at the end of the program, without us having to wonder about
+    // deleting it..  We don't want to register this
+    // object-constructor, because that way, "construct the bisector"
+    // would appear twice in the angle popup menu: once as the generic
+    // construct a property stuff, and once because of this ctor..
+    // we only register the guiaction, cause it makes sense to have a
+    // toolbar icon for this..
+    static PropertyObjectConstructor anglebisectionctor(
+      ObjectImp::ID_AngleImp, I18N_NOOP( "Construct the bisector of this angle" ),
+      I18N_NOOP( "Angle Bisector" ), I18N_NOOP( "The bisector of an angle" ),
+      "angle-bisector", "angle-bisector" );
+    actions->add( new ConstructibleAction( &anglebisectionctor, "objects_new_angle_bisector" ) );
+
+    // conic stuff
     c = new SimpleObjectTypeConstructor(
       ConicB5PType::instance(), I18N_NOOP( "Conic by Five Points" ),
       I18N_NOOP( "A conic constructed through five points" ),

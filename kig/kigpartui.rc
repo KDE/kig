@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kig_part" version="3">
+<kpartgui name="kig_part" version="4">
   <MenuBar>
     <Menu name="file">
       <text>&amp;File</text>
@@ -93,6 +93,7 @@
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_angle" />
+	<Action name="objects_new_angle_bisector" />
 	<ActionList name="user_other_types" />
       </Menu>
       <Separator />
@@ -168,6 +169,7 @@
   <Toolbar name="rest_toolbar" position="left">
 <text>Rest</text>
     <Action name="objects_new_angle" />
+    <Action name="objects_new_angle_bisector" />
     <Action name="objects_new_locus" />
     <Action name="objects_new_textlabel" />
     <ActionList name="user_other_types" />
