@@ -1,5 +1,8 @@
 2004-06-15  Pino Toscano <toscano.pino@tiscali.it>
-	
+
+	* Now the coordinate system toggleaction is correctly updated
+	when the coordinate system is changed in another way.
+
 	* Disable the page selection in the print dialog.
 
 2004-06-14  Dominique Devriese  <devriese@kde.org>

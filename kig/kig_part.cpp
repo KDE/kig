@@ -324,7 +324,7 @@ void KigPart::setupActions()
   aToggleAxes->setChecked( true );
 
   // select coordinate system KActionMenu..
-  a = new SetCoordinateSystemAction( *this, actionCollection() );
+  aCoordSystem = new SetCoordinateSystemAction( *this, actionCollection() );
 }
 
 void KigPart::setupTypes()
@@ -403,6 +403,9 @@ bool KigPart::openFile()
   if ( !newdoc ) return false;
   delete mdocument;
   mdocument = newdoc;
+  coordSystemChanged( mdocument->coordinateSystem().id() );
+  aToggleGrid->setChecked( mdocument->grid() );
+  aToggleAxes->setChecked( mdocument->axes() );
 
   setModified(false);
   mhistory->clear();
@@ -977,4 +980,9 @@ void KigPart::toggleAxes()
   mdocument->setAxes( toshow );
 
   redrawScreen();
+}
+
+void KigPart::coordSystemChanged( int id )
+{
+  aCoordSystem->setCurrentItem( id );
 }

@@ -32,6 +32,7 @@ class KAboutData;
 class KActionMenu;
 class KCommandHistory;
 class KPrinter;
+class KSelectAction;
 class KToolBar;
 class KToggleAction;
 class KURL;
@@ -131,6 +132,8 @@ public:
   void runMode( KigMode* );
   void doneMode( KigMode* );
 
+  void coordSystemChanged( int );
+
 signals: // these signals are for telling KigView it should do something...
   // emitted when we want to suggest a new size for the view (
   // basically after loading a file, and on startup... )
@@ -167,6 +170,7 @@ protected:
 
 protected:
   KigMode* mMode;
+  KSelectAction* aCoordSystem;
 
   // the command history
   KCommandHistory* mhistory;
