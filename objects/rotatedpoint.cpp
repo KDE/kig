@@ -132,7 +132,7 @@ RotatedPoint::RotatedPoint( const Objects& os )
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! mp ) mp = (*i)->toPoint();
-    if ( ! mc ) mc = (*i)->toPoint();
+    else if ( ! mc ) mc = (*i)->toPoint();
     if ( ! ma ) ma = (*i)->toArc();
   };
   assert( mp && mc && ma );
@@ -143,18 +143,21 @@ RotatedPoint::RotatedPoint( const Objects& os )
 
 void RotatedPoint::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  if ( os.size() != 2 ) return;
-  Point* mp, *mc;
-  Arc* ma;
+  if ( os.size() != 3 ) return;
+  Point* mp = 0, *mc = 0;
+  Arc* ma = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     if ( ! mp ) mp = (*i)->toPoint();
-    if ( ! mc ) mc = (*i)->toPoint();
+    else if ( ! mc ) mc = (*i)->toPoint();
     if ( ! ma ) ma = (*i)->toArc();
   };
   assert( mp && mc && ma );
 
-  Coordinate c = calcRotatedPoint( mp->getCoord(), mc->getCoord(), ma->size() );
+  Coordinate cp = mp->getCoord();
+  Coordinate cc = mc->getCoord();
+
+  Coordinate c = calcRotatedPoint( cp, cc, ma->size() );
 
   p.setPen( QPen( Qt::red, 1 ) );
   p.drawPoint( c, false );

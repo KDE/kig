@@ -229,10 +229,27 @@ void Arc::calc( const ScreenInfo& si )
   };
 }
 
-bool Arc::contains(const Coordinate&, const double ) const
+bool Arc::contains(const Coordinate& a, const double fault ) const
 {
-  return false;
-  // TODO
+  // we check if the point is at the right distance from the center,
+  Coordinate cds[3];
+  std::transform( mpts, mpts+3, cds, std::mem_fun( &Point::getCoord ) );
+
+  Coordinate lvect = cds[0] - cds[1];
+  Coordinate rvect = cds[2] - cds[1];
+
+  double radius = kigMin( lvect.length(), rvect.length() ) / 2.;
+  if ( std::fabs( (a-cds[1]).length() - radius ) > fault ) return false;
+
+  // and next we check if the arc is appropriate...
+  Coordinate vect = a - cds[1];
+  vect = vect.normalize();
+  double arc = std::acos( vect.x );
+  if ( vect.y < 0 ) arc = 2*M_PI-arc;
+  if ( arc < 0 ) arc += 2* M_PI;
+  if ( arc < mstartangle ) return false;
+  if ( arc > mstartangle + manglelength ) return false;
+  return true;
 }
 
 void Arc::draw( KigPainter& p, bool ss ) const
@@ -247,8 +264,8 @@ void Arc::draw( KigPainter& p, bool ss ) const
   int anglelength = static_cast<int>( manglelength * 2880 / M_PI );
   p.drawArc( mr, startangle, anglelength );
   p.drawPolygon( marrow );
-  p.drawRay( cds[1], cds[0] );
-  p.drawRay( cds[1], cds[2] );
+//   p.drawRay( cds[1], cds[0] );
+//   p.drawRay( cds[1], cds[2] );
 }
 
 bool Arc::inRect( const Rect& ) const
@@ -309,8 +326,8 @@ void Arc::sDrawPrelim( KigPainter& p, const Objects& os )
 
   p.setPen( QPen( Qt::red, 1 ) );
   p.setBrush( QBrush( Qt::red, Qt::SolidPattern ) );
-  p.drawRay( cds[1], cds[0] );
-  p.drawRay( cds[1], cds[2] );
+//   p.drawRay( cds[1], cds[0] );
+//   p.drawRay( cds[1], cds[2] );
   p.drawPolygon( arrow );
   p.drawArc( surr, is, ia );
 }
