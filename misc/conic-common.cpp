@@ -322,8 +322,7 @@ const LineData calcConicPolarLine (
 
 const Coordinate calcConicPolarPoint (
   const ConicCartesianData& data,
-  const LineData& polar,
-  bool& valid )
+  const LineData& polar )
 {
   Coordinate p1 = polar.a;
   Coordinate p2 = polar.b;
@@ -355,10 +354,8 @@ const Coordinate calcConicPolarPoint (
 
   if (fabs(z) < 1e-10)          // point at infinity
   {
-    valid = false;
-    return Coordinate (0,0);
+    return Coordinate::invalidCoord();
   }
-  valid = true;
 
   x /= z;
   y /= z;
@@ -368,7 +365,7 @@ const Coordinate calcConicPolarPoint (
 const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
                                          const LineData& l,
 					 double knownparam,
-                                         int which, bool& valid )
+                                         int which )
 {
   assert( which == 1 || which == -1 || which == 0 );
 
@@ -398,12 +395,10 @@ const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
   double discrim = bbb*bbb - 4*aaa*ccc;
   if (discrim < 0.0)
   {
-    valid = false;
-    return Coordinate();
+    return Coordinate::invalidCoord();
   }
   else
   {
-    valid = true;
     if ( which*bbb > 0 )
     {
       t = bbb + which*sqrt(discrim);

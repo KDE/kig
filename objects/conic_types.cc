@@ -334,9 +334,8 @@ ObjectImp* ConicPolarPointType::calc( const Args& parents, const KigDocument& ) 
 
   const ConicCartesianData c = static_cast<const ConicImp*>( parents[0] )->cartesianData();
   const LineData l = static_cast<const AbstractLineImp*>( parents[1] )->data();
-  bool valid = true;
-  const Coordinate p = calcConicPolarPoint( c, l, valid );
-  if ( valid ) return new PointImp( p );
+  const Coordinate p = calcConicPolarPoint( c, l );
+  if ( p.valid() ) return new PointImp( p );
   else return new InvalidImp;
 }
 

@@ -63,23 +63,22 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
   assert( side == 1 || side == -1 );
   const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
 
-  bool valid = true;
   Coordinate ret;
   if ( parents[0]->inherits( CircleImp::stype() ) )
   {
     // easy case..
     const CircleImp* c = static_cast<const CircleImp*>( parents[0] );
     ret = calcCircleLineIntersect(
-      c->center(), c->squareRadius(), line, side, valid );
+      c->center(), c->squareRadius(), line, side );
   }
   else
   {
     // harder case..
     ret = calcConicLineIntersect(
       static_cast<const ConicImp*>( parents[0] )->cartesianData(),
-      line, 0.0, side, valid );
+      line, 0.0, side );
   }
-  if ( valid ) return new PointImp( ret );
+  if ( ret.valid() ) return new PointImp( ret );
   else return new InvalidImp;
 }
 
@@ -118,7 +117,6 @@ ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigD
   Coordinate p = static_cast<const PointImp*>( parents[2] )->coordinate();
   const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
 
-  bool valid = true;
   Coordinate ret;
 //  if ( parents[0]->inherits( CircleImp::stype() ) )
 //  {
@@ -137,11 +135,10 @@ ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigD
     double knownparam = (pax*bax + pay*bay)/(bax*bax + bay*bay);
     ret = calcConicLineIntersect(
       static_cast<const ConicImp*>( parents[0] )->cartesianData(),
-      line, knownparam, 0, valid );
+      line, knownparam, 0 );
 //  }
-//  if ( valid ) return new PointImp( ret );
-  return new PointImp( ret );
-//  else return new InvalidImp;
+  if ( ret.valid() ) return new PointImp( ret );
+  else return new InvalidImp;
 }
 
 static const char constructlinestat[] = I18N_NOOP( "Intersect with this line" );
@@ -289,9 +286,8 @@ ObjectImp* CircleCircleIntersectionType::calc( const Args& parents, const KigDoc
     o1, o2, r1sq, c2->squareRadius()
     );
   const LineData line = LineData (a, Coordinate ( a.x -o2.y + o1.y, a.y + o2.x - o1.x ));
-  bool valid = true;
-  Coordinate ret = calcCircleLineIntersect( o1, r1sq, line, side, valid );
-  if ( valid ) return new PointImp( ret );
+  Coordinate ret = calcCircleLineIntersect( o1, r1sq, line, side );
+  if ( ret.valid() ) return new PointImp( ret );
   else return new InvalidImp;
 }
 
@@ -335,13 +331,11 @@ ObjectImp* ArcLineIntersectionType::calc( const Args& parents, const KigDocument
   assert( side == 1 || side == -1 );
   const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
 
-  bool valid = true;
-
   const ArcImp* c = static_cast<const ArcImp*>( parents[0] );
   const double r = c->radius();
   Coordinate ret = calcArcLineIntersect( c->center(), r*r, c->startAngle(),
-                                         c->angle(), line, side, valid );
-  if ( valid ) return new PointImp( ret );
+                                         c->angle(), line, side );
+  if ( ret.valid() ) return new PointImp( ret );
   else return new InvalidImp;
 }
 

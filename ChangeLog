@@ -1,3 +1,8 @@
+2004-06-14  Dominique Devriese  <devriese@kde.org>
+
+	* Change some more functions that still pass "bool valid&"s around
+	to using Coordinate::valid().
+
 2004-06-14  Pino Toscano <toscano.pino@tiscali.it>
 
        * Add arc-line intersection type.

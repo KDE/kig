@@ -210,8 +210,7 @@ const LineData calcConicPolarLine (
  */
 const Coordinate calcConicPolarPoint (
   const ConicCartesianData& data,
-  const LineData& polar,
-  bool& valid );
+  const LineData& polar );
 
 /**
  * This function calculates the intersection of a given line ( l ) and
@@ -232,7 +231,7 @@ const Coordinate calcConicPolarPoint (
 const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
                                          const LineData& l,
 					 double knownparam,
-                                         int which, bool& valid );
+                                         int which );
 
 /**
  * This function calculates the asymptote of the given conic ( data ).
