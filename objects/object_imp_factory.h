@@ -23,14 +23,12 @@
 
 class ObjectImpFactory
 {
-  static const int numstrings = 11;
-  static const char* string_names[numstrings];
+  ObjectImpFactory();
+  ~ObjectImpFactory();
 public:
-  const QCString nameforid( int id ) const;
-  int idforname( const QCString& n ) const;
-
-  ObjectImp* deserialize( int id, QString deserializableImp ) const;
-  QString serialize( const ObjectImp& d ) const;
+  static const ObjectImpFactory* instance();
+  ObjectImp* deserialize( const QString& type, const QString& data ) const;
+  std::pair<QString,QString> serialize( const ObjectImp& d ) const;
 };
 
 #endif

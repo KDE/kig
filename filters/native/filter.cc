@@ -28,7 +28,9 @@
 #include "../../objects/conic_types.h"
 #include "../../objects/intersection_types.h"
 #include "../../objects/transform_types.h"
+#include "../../objects/object_imp_factory.h"
 #include "../../misc/calcpaths.h"
+#include "../../misc/coordinate_system.h"
 
 #include <qfile.h>
 #include <qregexp.h>
@@ -354,9 +356,74 @@ bool KigFilterNative::oldElemToNewObject( const QCString type,
   };
 }
 
-KigFilter::Result KigFilterNative::save( const KigDocument&, const QString& )
+KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString& to )
 {
-  return NotSupported;
+  QFile file( to );
+  if ( ! file.open( IO_WriteOnly ) )
+    return FileNotFound;
+  QTextStream stream( &file );
+  QDomDocument doc( "KigDocument" );
+
+  // TODO ?
+//  doc.appendChild( QDomImplementation().createDocumentType( ... ) );
+
+  QDomElement docelem = doc.createElement( "KigDocument" );
+  docelem.setAttribute( "Version", "0.4.0" );
+
+  // save the coordinate system type..
+  QDomElement cselem = doc.createElement( "CoordinateSystem" );
+  cselem.appendChild( doc.createTextNode( kdoc.coordinateSystem().type() ) );
+  docelem.appendChild( cselem );
+
+  QDomElement objectselem = doc.createElement( "Objects" );
+
+  Objects objs = kdoc.objects();
+  objs = getAllParents( objs );
+  objs = calcPath( objs );
+
+  std::map<Object*, int> idmap;
+  int id = 1;
+
+  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+  {
+    if ( (*i)->inherits( Object::ID_DataObject ) )
+    {
+      QDomElement e = doc.createElement( "Data" );
+      idmap[*i] = id;
+      e.setAttribute( "id", id++ );
+      std::pair<QString, QString> ser =
+        ObjectImpFactory::instance()->serialize( *(*i)->imp() );
+      e.setAttribute( "type", ser.first );
+      e.appendChild(
+        doc.createTextNode( ser.second ) );
+      objectselem.appendChild( e );
+    }
+    else if ( (*i)->inherits( Object::ID_RealObject ) )
+    {
+      QDomElement e = doc.createElement( "Object" );
+      idmap[*i] = id;
+      e.setAttribute( "id", id++ );
+
+      const Objects& parents = (*i)->parents();
+      for ( Objects::const_iterator i = parents.begin(); i != parents.end(); ++i )
+      {
+        std::map<Object*,int>::const_iterator idp = idmap.find( *i );
+        assert( idp != idmap.end() );
+        int pid = idp->second;
+        QDomElement pel = doc.createElement( "Parent" );
+        pel.setAttribute( "id", pid );
+        e.appendChild( pel );
+      };
+      objectselem.appendChild( e );
+    }
+    else assert( false );
+  };
+//  return NotSupported;
+
+  doc.appendChild( docelem );
+  stream << doc.toCString();
+  file.close();
+  return OK;
 }
 
 KigFilter::Result KigFilterNative::loadNew( const QDomElement&, KigDocument& )

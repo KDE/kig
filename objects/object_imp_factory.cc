@@ -21,65 +21,17 @@
 #include "object_imp.h"
 #include "bogus_imp.h"
 
-const char* ObjectImpFactory::string_names[numstrings] =
+const ObjectImpFactory* ObjectImpFactory::instance()
 {
-  "Double",
-  "Integer",
-
-  "Point",
-  "Line",
-  "Label",
-  "Angle",
-  "Vector",
-  "Locus",
-  "Circle",
-  "Conic",
-  "Cubic"
-};
-
-const QCString ObjectImpFactory::nameforid( int id ) const
-{
-  return string_names[id];
+  static const ObjectImpFactory t;
+  return &t;
 }
 
-int ObjectImpFactory::idforname( const QCString& n ) const
+ObjectImpFactory::ObjectImpFactory()
 {
-  for ( const char** i = string_names; i < string_names + numstrings; ++i )
-    if ( n == *i ) return i - string_names;
-  assert( false );
-  return -1;
 }
 
-ObjectImp* ObjectImpFactory::deserialize( int id, const QString dd ) const
+ObjectImpFactory::~ObjectImpFactory()
 {
-  bool ok = true;
-  switch( id )
-  {
-  case ObjectImp::ID_DoubleImp:
-  {
-    double d = dd.toDouble( &ok );
-    return ok ? new DoubleImp( d ) : 0;
-  };
-  case ObjectImp::ID_IntImp:
-  {
-    int i = dd.toInt( &ok );
-    return ok ? new IntImp( i ) : 0;
-  };
-  case ObjectImp::ID_StringImp:
-    return new StringImp( dd );
-  default:
-    return 0;
-  };
 }
 
-QString ObjectImpFactory::serialize( const ObjectImp& d ) const
-{
-  if ( d.inherits( ObjectImp::ID_DoubleImp ) )
-    return QString::number( static_cast<const DoubleImp&>( d ).data() );
-  else if ( d.inherits( ObjectImp::ID_IntImp ) )
-    return QString::number( static_cast<const IntImp&>( d ).data() );
-  else if ( d.inherits( ObjectImp::ID_StringImp ) )
-    return static_cast<const StringImp&>( d ).data();
-  else
-    return 0;
-}
