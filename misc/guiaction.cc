@@ -21,6 +21,7 @@
 
 #include "../kig/kig_part.h"
 #include "../modes/construct_mode.h"
+#include "../modes/label.h"
 
 #include "i18n.h"
 #include "object_constructor.h"
@@ -205,3 +206,39 @@ void ConstructPointAction::plug( KigDocument*, KigGUIAction* )
 void CircleByCenterAndRadiusAction::plug( KigDocument*, KigGUIAction* )
 {
 }
+
+QString ConstructTextLabelAction::description() const
+{
+  return i18n( "Construct a text label." );
+}
+
+QCString ConstructTextLabelAction::iconFileName() const
+{
+  return "text";
+}
+
+QString ConstructTextLabelAction::descriptiveName() const
+{
+  return i18n( "Text Label" );
+}
+
+const char* ConstructTextLabelAction::actionName() const
+{
+  return mactionname;
+}
+
+void ConstructTextLabelAction::act( KigDocument& d )
+{
+  TextLabelConstructionMode m( d );
+  d.runMode( &m );
+}
+
+ConstructTextLabelAction::ConstructTextLabelAction( const char* actionname )
+  : mactionname( actionname )
+{
+}
+
+void ConstructTextLabelAction::plug( KigDocument*, KigGUIAction* )
+{
+}
+

@@ -349,6 +349,7 @@ void setupBuiltinStuff()
     };
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
+    actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );
   };
 
   done = true;

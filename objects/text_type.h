@@ -1,5 +1,5 @@
-// object_factory.h
-// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
+// text_type.h
+// Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -16,31 +16,28 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_OBJECTS_OBJECT_FACTORY_H
-#define KIG_OBJECTS_OBJECT_FACTORY_H
+#ifndef KIG_OBJECTS_TEXT_TYPE_H
+#define KIG_OBJECTS_TEXT_TYPE_H
 
-#include "common.h"
+#include "object_type.h"
 
-class ObjectFactory
+class TextType
+  : public ObjectType
 {
-  static ObjectFactory* s;
+  const ArgParser mparser;
 public:
+  TextType();
+  ~TextType();
+  static const TextType* instance();
 
-  static ObjectFactory* instance();
+  int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  int resultId() const;
 
-  RealObject* fixedPoint( const Coordinate& c );
+  ObjectImp* calc( const Args& parents ) const;
 
-  RealObject* sensiblePoint( const Coordinate& c,
-                         const KigDocument& d,
-                         const KigWidget& w
-    );
-
-  void redefinePoint( RealObject* point, const Coordinate& c,
-                      const KigDocument& d, const KigWidget& w );
-
-  RealObject* locus( const Objects& parents );
-
-  RealObject* label( const QString& s, const Coordinate& loc );
+  bool canMove() const;
+  void move( RealObject* ourobj, const Coordinate& from,
+             const Coordinate& dist ) const;
 };
 
 #endif

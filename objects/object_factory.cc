@@ -20,9 +20,11 @@
 
 #include "bogus_imp.h"
 #include "curve_imp.h"
+#include "point_imp.h"
 #include "point_type.h"
 #include "other_type.h"
 #include "custom_types.h"
+#include "text_type.h"
 #include "object.h"
 
 #include "../misc/coordinate.h"
@@ -130,4 +132,14 @@ RealObject* ObjectFactory::locus( const Objects& parents )
   CustomTypes::instance()->add( t );
 
   return new RealObject( t, locusparents );
+}
+
+RealObject* ObjectFactory::label( const QString& s, const Coordinate& loc )
+{
+  Objects os;
+  os.push_back( new DataObject( new StringImp( s ) ) );
+  os.push_back( new DataObject( new PointImp( loc ) ) );
+
+  RealObject* r = new RealObject( TextType::instance(), os );
+  return r;
 }

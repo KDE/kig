@@ -105,4 +105,20 @@ public:
   void plug( KigDocument* doc, KigGUIAction* kact );
 };
 
+class ConstructTextLabelAction
+  : public GUIAction
+{
+  const char* mactionname;
+public:
+  ConstructTextLabelAction( const char* actionname );
+
+  QString description() const;
+  QCString iconFileName() const;
+  QString descriptiveName() const;
+  const char* actionName() const;
+  void act( KigDocument& );
+
+  void plug( KigDocument* doc, KigGUIAction* kact );
+};
+
 #endif
