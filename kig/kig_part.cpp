@@ -409,7 +409,7 @@ bool KigPart::openFile()
   coordSystemChanged( mdocument->coordinateSystem().id() );
   aToggleGrid->setChecked( mdocument->grid() );
   aToggleAxes->setChecked( mdocument->axes() );
-  aToggleNightVision->setChecked( mdocument->axes() );
+  aToggleNightVision->setChecked( mdocument->getNightVision() );
 
   setModified(false);
   mhistory->clear();
