@@ -206,9 +206,10 @@ void NormalMode::rightClicked( QMouseEvent* e, KigView* v )
       clearSelection();
       selectObject( oco.front() );
     };
-//     // show a popup menu...
-//     KigObjectsPopup* m = popup( sos );
-//     if( m ) m->exec( v->mapToGlobal( plc ) );
+    // show a popup menu...
+    NormalModePopupObjects* p = new NormalModePopupObjects( mDoc, v, this, sos );
+    p->exec( plc );
+    delete p;
   }
   else
   {
@@ -324,7 +325,7 @@ void NormalMode::showHidden()
   const Objects& os = mDoc->objects();
   for (Objects::const_iterator i = os.begin(); i != os.end(); ++i )
     (*i)->setShown(true);
-  // TODO: update the (which ?) screen...
+  objectsAdded();
 }
 
 void NormalMode::newMacro()

@@ -48,44 +48,11 @@ public:
   NormalModePopupObjects( KigDocument* doc, KigView* view,
                           NormalMode* mode, const Objects& objs );
   ~NormalModePopupObjects() {};
+
 protected slots:
-  void activated( int );
+  void doAction( int );
   void setColor( int );
 };
 
-// class KigObjectsPopup
-//   : public QPopupMenu
-// {
-//   Q_OBJECT
-// public slots:
-//   void selectObjects();
-//   void unselectObjects();
-//   void hideObjects();
-//   void startMoving();
-//   void setColor( int );
-
-// public:
-//   KigObjectsPopup( KigDocument*, KigView*, const Objects& os );
-//   ~KigObjectsPopup();
-//   bool isValid() const { return mValid; };
-//   int exec( const QPoint& p );
-// protected:
-//   KigDocument* mDoc;
-//   KigView* mView;
-//   Objects mObjs;
-//   QPoint mStart;
-//   bool mValid;
-//   QPopupMenu* mColorPopup;
-//   static const QColor* color( int i );
-//   static QPopupMenu* colorMenu( QWidget* );
-// };
-
-// class KigDocumentPopup
-//   : public QPopupMenu
-// {
-//   KigDocument* mDoc;
-// public:
-//   KigDocumentPopup( KigDocument* );
-// };
 
 #endif
