@@ -199,13 +199,20 @@ static Coordinate readXYElements( const QDomElement& e, bool& ok )
   ok = true;
   QDomElement xe = e.firstChild().toElement();
   if ( xe.isNull() || xe.tagName() != "x" )
+  {
     ok = false;
+    return Coordinate();
+  }
   else x = xe.text().toDouble( &ok );
-  if ( ! ok ) return Coordinate();
+
   QDomElement ye = xe.nextSibling().toElement();
-  if ( ye.isNull() || ye.tagName() != "y" ) ok = false;
+  if ( ye.isNull() || ye.tagName() != "y" )
+  {
+    ok = false;
+    return Coordinate();
+  }
   else y = ye.text().toDouble( &ok );
-  if ( ! ok ) return Coordinate();
+
   return Coordinate( x, y );
 };
 
