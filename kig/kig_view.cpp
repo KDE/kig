@@ -205,6 +205,7 @@ void KigWidget::recenterScreen()
 {
   msi.setShownRect( matchScreenShape( mdocument->suggestedRect() ) );
   updateScrollBars();
+  redrawScreen();
 }
 
 Rect KigWidget::matchScreenShape( const Rect& r ) const
