@@ -29,6 +29,10 @@
 // The new version is directly taken from a book of Alan Bertossi
 // "Algoritmi e strutture dati"
 
+// Argh, temporarily disabling this alg... it has nasty side effects
+// in native-filter.cc when saving...
+#ifdef UNDEF
+
 void localdfs( ObjectCalcer* obj,
                std::vector<ObjectCalcer*>& visited,
                std::vector<ObjectCalcer*>& all);
@@ -67,7 +71,8 @@ void localdfs( ObjectCalcer* obj,
 
 // old calcPath commented out...
 
-#ifdef UNDEF
+#endif
+//#ifdef UNDEF
 // these first two functions were written before i read stuff about
 // graph theory and algorithms, so i'm sure they're far from optimal.
 // However, they seem to work fine, and i don't think there's a real
@@ -119,7 +124,7 @@ std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& os )
   std::reverse( ret.begin(), ret.end() );
   return ret;
 }
-#endif
+//#endif
 
 bool addBranch( const std::vector<ObjectCalcer*>& o, const ObjectCalcer* to, std::vector<ObjectCalcer*>& ret )
 {
