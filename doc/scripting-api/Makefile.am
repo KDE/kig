@@ -7,11 +7,11 @@ ksapi_DATA = \
 	headerbg.png
 
 # generate the Kig Python Scriptin APIdocs from the Kig source code
-all-local:
-	cat Doxyfile.scripting-api.in | sed -e 's#KIGVERSION#@KIGVERSION@#g' | sed -e 's#TOPSRCDIR#$(top_srcdir)#g' | sed -e 's#SRCDIR#$(srcdir)#g' > Doxyfile.scripting-api
-	doxygen $(srcdir)/Doxyfile.scripting-api
+# all-local:
+	cat $(srcdir)/Doxyfile.scripting-api.in | sed -e 's#KIGVERSION#@KIGVERSION@#g' | sed -e 's#TOPSRCDIR#$(top_srcdir)#g' | sed -e 's#SRCDIR#$(srcdir)#g' > Doxyfile.scripting-api
+	doxygen Doxyfile.scripting-api
 
-install-data-local: install-kig-python-scripting-apidocs
+# install-data-local: install-kig-python-scripting-apidocs
 
 install-kig-python-scripting-apidocs:
 	kpsapidir="$(DESTDIR)$(kde_htmldir)/en/kig/scripting-api"; \
