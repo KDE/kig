@@ -29,9 +29,6 @@
 - filters: more input filters ( get cabri to work somewhat, Dr.Genius
   perhaps )
 
-- add full undo support for everything the user might do: moving is
-  done, along with some other things, some less important issues remain
-
 * hard :
 
 - figure out a way to allow the user to enable and disable certain
