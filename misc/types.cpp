@@ -49,10 +49,10 @@ Type* Types::findType(const QCString& type) const
   else return i->second;
 }
 
-void Types::saveToDir(const QString dir_name)
+void Types::saveToDir(const QString dir_name) const
 {
   // one file per type
-  for (iterator i = begin(); i != end(); ++i)
+  for ( const_iterator i = begin(); i != end(); ++i )
   {
     MType* appel = dynamic_cast<MType*>( i->second );
     // we only save user defined types...
@@ -111,7 +111,7 @@ Types::Types( const QString& file_name)
   };
 }
 
-void Types::saveToFile( const QString filename )
+void Types::saveToFile( const QString filename ) const
 {
   QFile file (filename);
   // open the file
@@ -129,7 +129,7 @@ void Types::saveToFile( const QString filename )
   QDomDocument doc ("KigMacroFile");
   // all types in one file...
   QDomElement e = doc.createElement("Types");
-  for ( iterator i = begin(); i != end(); ++i )
+  for ( const_iterator i = begin(); i != end(); ++i )
     i->second->saveXML(doc, e);
   // throw the xml file in the stream
   doc.appendChild(e);
@@ -141,10 +141,6 @@ void Types::saveToFile( const QString filename )
 void Types::addType( Type* t )
 {
   insert( value_type( t->fullName(), t ) );
-  typedef myvector<KigDocument*>::iterator myiter;
-  myvector<KigDocument*>& vect = KigDocument::documents();
-  for ( myiter i = vect.begin(); i != vect.end(); ++i )
-    (*i)->addType( t );
 }
 
 Types::~Types()

@@ -62,6 +62,7 @@
 #include <kmimetype.h>
 
 #include <qfile.h>
+#include <qtimer.h>
 
 #include <algorithm>
 
@@ -91,10 +92,12 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   m_widget = new KigView(this, parentWidget, "kig_view");
   // notify the part that this is our internal widget
   setWidget( m_widget );
-//   insertChildClient( m_widget );
 
   // create our actions...
   setupActions();
+
+  // set our XML-UI resource file
+  setXMLFile("kigpartui.rc");
 
   // our types...
   setupTypes();
@@ -104,15 +107,14 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   mhistory->documentSaved();
   connect( mhistory, SIGNAL( documentRestored() ), this, SLOT( setUnmodified() ) );
 
-  // set our XML-UI resource file
-  setXMLFile("kigpartui.rc");
-
   // we are read-write by default
   setReadWrite(true);
 
   setModified (false);
 
   mMode = new NormalMode( this );
+
+  connect( parent, SIGNAL( replugActionLists() ), this, SLOT( rebuildGui() ) );
 }
 
 void KigDocument::setupActions()
@@ -158,59 +160,30 @@ void KigDocument::setupActions()
 //     actionCollection(), "view_fullscreen" );
 //   aFullScreen->setToolTip( i18n( "View this document full-screen." ) );
 
-  tmp = l->loadIcon( "line", KIcon::User);
-  aMNewLine = new KActionMenu (i18n("New Line"), tmp, actionCollection(),
-                               "new_line");
-  aMNewLine->setToolTip(i18n("Construct a new line"));
-
-  tmp = l->loadIcon( "circle", KIcon::User );
-  aMNewCircle = new KActionMenu(i18n("New Circle"), tmp,
-                                actionCollection(), "new_circle");
-  aMNewCircle->setToolTip(i18n("Construct a new circle"));
-
-  tmp = l->loadIcon( "point4", KIcon::User );
-  aMNewPoint = new KActionMenu(i18n("New Point"), tmp, actionCollection(),
-                               "new_point");
-  aMNewPoint->setToolTip(i18n("Construct a new point"));
-
-  tmp = l->loadIcon( "segment", KIcon::User );
-  aMNewSegment = new KActionMenu(i18n("New Segment"), tmp,
-                                 actionCollection(), "new_segment");
-  aMNewSegment->setToolTip(i18n("Construct a new segment"));
-
-  aMNewMacro = new KActionMenu( i18n( "New Macro" ), 0, actionCollection(),
-                                "new_macro" );
-  aMNewMacro->setToolTip( i18n( "Construct a new object of a macro type" ) );
-
-  aMNewOther = new KActionMenu(i18n("New Other"), 0, actionCollection(), "new_other");
-  aMNewOther->setToolTip(i18n("Construct a new object of a special type"));
-
   tmp = l->loadIcon( "pointxy", KIcon::User );
   aFixedPoint = new AddFixedPointAction( this, tmp, actionCollection() );
-  aMNewPoint->insert( aFixedPoint );
 };
 
 void KigDocument::setupTypes()
 {
-  Types& types = Object::types();
-  if ( types.empty() )
+  if ( Object::types().empty() )
   {
-    types.addType( new TStdType<Segment> );
-    types.addType( new TStdType<LineTTP> );
-    types.addType( new TStdType<LinePerpend> );
-    types.addType( new TStdType<LineParallel> );
-    types.addType( new TStdType<LineRadical> );
-    types.addType( new TStdType<CircleBCP> );
-    types.addType( new TStdType<CircleBTP> );
-    types.addType( new TStdType<MidPoint> );
-    types.addType( new TStdType<IntersectionPoint> );
-    types.addType( new TStdType<TranslatedPoint> );
-    types.addType( new TStdType<MirrorPoint> );
-    types.addType( new TStdType<Locus> );
-    types.addType( new TStdType<Vector> );
-    types.addType( new TStdType<Ray> );
-    types.addType( new TType<TextLabel> );
-    types.addType( new TType<NormalPoint> );
+    Object::addBuiltinType( new TStdType<Segment> );
+    Object::addBuiltinType( new TStdType<LineTTP> );
+    Object::addBuiltinType( new TStdType<LinePerpend> );
+    Object::addBuiltinType( new TStdType<LineParallel> );
+    Object::addBuiltinType( new TStdType<LineRadical> );
+    Object::addBuiltinType( new TStdType<CircleBCP> );
+    Object::addBuiltinType( new TStdType<CircleBTP> );
+    Object::addBuiltinType( new TStdType<MidPoint> );
+    Object::addBuiltinType( new TStdType<IntersectionPoint> );
+    Object::addBuiltinType( new TStdType<TranslatedPoint> );
+    Object::addBuiltinType( new TStdType<MirrorPoint> );
+    Object::addBuiltinType( new TStdType<Locus> );
+    Object::addBuiltinType( new TStdType<Vector> );
+    Object::addBuiltinType( new TStdType<Ray> );
+    Object::addBuiltinType( new TType<TextLabel> );
+    Object::addBuiltinType( new TType<NormalPoint> );
 
     // our saved macro types:
     QStringList relFiles;
@@ -223,17 +196,20 @@ void KigDocument::setupTypes()
     {
       kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
       Types t ( *file);
-      types.addTypes( t );
-    };
-  }
-  else
-  {
-    for ( Types::iterator i = types.begin();
-          i != types.end(); ++i )
-    {
-      addType( i->second );
-    };
+      Object::addUserTypes( t, false );
+    }
   };
+  typedef myvector<Type*> vect;
+  const vect& v = Object::builtinTypes();
+  for ( vect::const_iterator i = v.begin(); i != v.end(); ++i )
+    addType( *i, false );
+  const vect& w = Object::userTypes();
+  for ( vect::const_iterator i = w.begin(); i != w.end(); ++i )
+    addType( *i, true );
+
+  // hack: we need to plug the action lists _after_ the gui is
+  // built.. i can't find a better solution than this...
+  QTimer::singleShot( 0, this, SLOT( rebuildGui() ) );
 };
 
 KigDocument::~KigDocument()
@@ -529,25 +505,36 @@ void KigDocument::delObjects( const Objects& os )
   mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
 }
 
-void KigDocument::addType( Type* t )
+void KigDocument::addType( Type* t, bool user )
 {
   KAction* a = t->constructAction( this );
   if ( ! a ) return;
-  if ( t->toMType() )
-    aMNewMacro->insert( a );
-  else if (t->baseTypeName()==Point::sBaseTypeName())
-    aMNewPoint->insert( a );
-  else if (t->baseTypeName() == Line::sBaseTypeName())
-    aMNewLine->insert( a );
-  else if (t->baseTypeName() == Circle::sBaseTypeName())
-    aMNewCircle->insert( a );
-  else if (t->baseTypeName() == Segment::sBaseTypeName())
-    aMNewSegment->insert( a );
-  else
-    aMNewOther->insert( a );
+  if ( user )
+  {
+    aMNewAll.append( a );
+    if (t->baseTypeName() == Point::sBaseTypeName())
+      aMNewPoint.append( a );
+    else if (t->baseTypeName() == Line::sBaseTypeName())
+      aMNewLine.append( a );
+    else if (t->baseTypeName() == Circle::sBaseTypeName())
+      aMNewCircle.append( a );
+    else if (t->baseTypeName() == Segment::sBaseTypeName())
+      aMNewSegment.append( a );
+    else
+      aMNewOther.append( a );
+  };
 
   aActions.push_back( a );
 }
+
+// grr.. stupid QPtrList.. yay for the STL..
+void setEnabled( QPtrList<KAction>& l, bool e )
+{
+  for ( KAction* a = l.first(); a; a = l.next() )
+  {
+    a->setEnabled( e );
+  };
+};
 
 void KigDocument::enableConstructActions( bool enabled )
 {
@@ -555,12 +542,13 @@ void KigDocument::enableConstructActions( bool enabled )
                  std::bind2nd( std::mem_fun( &KAction::setEnabled ),
                                enabled ) );
   aFixedPoint->setEnabled( enabled );
-  aMNewSegment->setEnabled( enabled );
-  aMNewPoint->setEnabled( enabled );
-  aMNewCircle->setEnabled( enabled );
-  aMNewLine->setEnabled( enabled );
-  aMNewOther->setEnabled( enabled );
-  aMNewMacro->setEnabled( enabled );
+
+  setEnabled( aMNewSegment, enabled );
+  setEnabled( aMNewPoint, enabled );
+  setEnabled( aMNewCircle, enabled );
+  setEnabled( aMNewLine, enabled );
+  setEnabled( aMNewOther, enabled );
+  setEnabled( aMNewAll, enabled );
 }
 
 myvector<KigDocument*>& KigDocument::documents()
@@ -571,11 +559,31 @@ myvector<KigDocument*>& KigDocument::documents()
 
 void KigDocument::removeAction( KAction* a )
 {
-  aMNewSegment->remove( a );
-  aMNewPoint->remove( a );
-  aMNewCircle->remove( a );
-  aMNewLine->remove( a );
-  aMNewOther->remove( a );
-  aMNewMacro->remove( a );
+  aMNewSegment.remove( a );
+  aMNewPoint.remove( a );
+  aMNewCircle.remove( a );
+  aMNewLine.remove( a );
+  aMNewOther.remove( a );
+  aMNewAll.remove( a );
   aActions.remove( a );
+}
+
+void KigDocument::rebuildGui()
+{
+  unplugActionList( "user_segment_types" );
+  unplugActionList( "user_point_types" );
+  unplugActionList( "user_circle_types" );
+  unplugActionList( "user_line_types" );
+  unplugActionList( "user_other_types" );
+  unplugActionList( "user_types" );
+  plugActionList( "user_segment_types", aMNewSegment );
+  plugActionList( "user_point_types", aMNewPoint );
+  plugActionList( "user_circle_types", aMNewCircle );
+  plugActionList( "user_line_types", aMNewLine );
+  plugActionList( "user_other_types", aMNewOther );
+  plugActionList( "user_types", aMNewAll );
+}
+void KigDocument::emitStatusBarText( const QString& text )
+{
+  emit setStatusBarText( text );
 }

@@ -49,15 +49,11 @@ kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
 
 KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name )
   : QWidget(parent, name),
-    KXMLGUIClient( inDoc ),
     document(inDoc),
     stillPix(size()),
     curPix(size()),
     msi( Rect(), rect() )
 {
-  setInstance( document->instance() );
-  setXMLFile("kigviewui.rc");
-
   document->addView(this);
   connect( document, SIGNAL( recenterScreen() ), this, SLOT( recenterScreen() ) );
 
@@ -83,15 +79,15 @@ void KigView::setupActions()
 {
   KIconLoader l;
 
-  aZoomIn = KStdAction::zoomIn( this, SLOT( zoomIn() ), actionCollection() );
+  aZoomIn = KStdAction::zoomIn( this, SLOT( zoomIn() ), document->actionCollection() );
   aZoomIn->setWhatsThis( i18n( "Zoom in on the document" ) );
 
   aZoomOut = KStdAction::zoomOut( this, SLOT( zoomOut() ),
-                                  actionCollection() );
+                                  document->actionCollection() );
   aZoomOut->setWhatsThis( i18n( "Zoom out of the document" ) );
 
   aCenterScreen = KStdAction::fitToPage( this, SLOT( recenterScreen() ),
-                                         actionCollection() );
+                                         document->actionCollection() );
   aCenterScreen->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 }
 

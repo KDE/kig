@@ -24,7 +24,13 @@
 #include "../misc/type.h"
 #include "../modes/constructing.h"
 
+#include "../kig/kig_part.h"
+
 #include <klocale.h>
+
+myvector<Type*> Object::sbuiltintypes;
+myvector<Type*> Object::susertypes;
+Types Object::stypes;
 
 Object::Object()
   : mColor( Qt::blue ), selected(false), shown (true), valid(true)
@@ -82,10 +88,19 @@ void Object::setParams( const std::map<QCString,QString>& m )
   };
 }
 
-Types& Object::types()
+const Types& Object::types()
 {
-  static Types t;
-  return t;
+  return stypes;
+}
+
+const myvector<Type*>& Object::builtinTypes()
+{
+  return sbuiltintypes;
+}
+
+const myvector<Type*>& Object::userTypes()
+{
+  return susertypes;
 }
 
 Object* Object::newObject( const QCString& type, const Objects& parents,
@@ -138,3 +153,57 @@ void Object::doAction( int, KigDocument*, KigView*, NormalMode* )
 {
   return;
 }
+
+void Object::addBuiltinType( Type* t )
+{
+  stypes.addType( t );
+  sbuiltintypes.push_back( t );
+}
+
+void Object::addUserType( Type* t, bool notify )
+{
+  Types ts;
+  ts.addType( t );
+  addUserTypes( ts, notify );
+}
+
+void Object::addUserTypes( Types& t, bool notify )
+{
+  for ( Types::const_iterator i = t.begin(); i != t.end(); ++i )
+  {
+    stypes.addType( i->second );
+    susertypes.push_back( i->second );
+  };
+  if ( notify )
+  {
+    typedef myvector<KigDocument*> mv;
+    mv& v = KigDocument::documents();
+    for ( mv::const_iterator i = v.begin(); i != v.end(); ++i )
+    {
+      for ( Types::const_iterator j = t.begin(); j != t.end(); ++j )
+      {
+        (*i)->addType( j->second );
+      };
+      (*i)->rebuildGui();
+    };
+  };
+  t.clear();
+}
+
+void Object::removeUserType( Type* t )
+{
+  stypes.removeType( t );
+  susertypes.remove( t );
+  t->deleteActions();
+  typedef myvector<KigDocument*> mv;
+  mv& v = KigDocument::documents();
+  for ( mv::const_iterator i = v.begin(); i != v.end(); ++i )
+  {
+    (*i)->rebuildGui();
+  };
+}
+
+// void Object::removeUserTypes( Types& t, bool notifyParts )
+// {
+
+// }

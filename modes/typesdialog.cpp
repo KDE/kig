@@ -42,12 +42,12 @@
 TypesDialog::TypesDialog( QWidget* parent )
   : TypesDialogBase( parent, "Manage Types Dialog", true )
 {
-  Types& types = Object::types();
-  for ( Types::const_iterator i = types.begin(); i != types.end(); ++i )
+  typedef myvector<Type*> vec;
+  const vec& types = Object::userTypes();
+  for ( vec::const_iterator i = types.begin(); i != types.end(); ++i )
   {
-    if (dynamic_cast<MType*>(i->second)) typeList->insertItem( new TypeListElement(i->second));
+    typeList->insertItem( new TypeListElement( *i ) );
   };
-
 }
 
 TypesDialog::~TypesDialog()
@@ -102,7 +102,7 @@ void TypesDialog::deleteType()
   for ( std::vector<Type*>::iterator i = selectedTypes.begin();
         i != selectedTypes.end(); ++i)
   {
-    Object::types().removeType(*i);
+    Object::removeUserType(*i);
     // we don't delete the type, because there might be objects around
     // depending on the ObjectHierarchy of the type..
     // what we do is to tell it to delete all actions it has defined,
@@ -145,7 +145,7 @@ void TypesDialog::importTypes()
     Types t( *i );
     for (Types::iterator i = t.begin(); i != t.end(); ++i)
       typeList->insertItem(new TypeListElement(i->second));
-    Object::types().addTypes(t);
+    Object::addUserTypes(t);
   };
 }
 

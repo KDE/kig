@@ -84,15 +84,11 @@ public:
 
   void addTypes( Types& i );
 
-  /**
-   * remove a type, this also removes the appropriate actions from all
-   * KigDocuments
-   */
   void removeType( Type* t );
 
-  void saveToDir( const QString dir );
+  void saveToDir( const QString dir ) const;
 
-  void saveToFile( const QString file );
+  void saveToFile( const QString file ) const;
 };
 
 #endif

@@ -95,10 +95,7 @@ signals:
   void setStatusBarText ( const QString & text );
 
 public:
-  void emitStatusBarText( const QString& text )
-    {
-      emit setStatusBarText( text );
-    };
+  void emitStatusBarText( const QString& text );
 
   /***************** some slots *************************/
 public slots:
@@ -108,6 +105,7 @@ public slots:
   void newMacro();
   void editTypes();
   void startKiosk();
+  void rebuildGui();
   // equivalent to setModified( false ); ( did i mention i don't like
   // signals/slots for being this inflexible...
   // this is connected to mhistory->documentRestored();
@@ -171,12 +169,12 @@ public:
   // the previous mode.  Enabling/disabling is done at the same time,
   // of course..
   // some MenuActions..
-  KActionMenu* aMNewSegment;
-  KActionMenu* aMNewPoint;
-  KActionMenu* aMNewCircle;
-  KActionMenu* aMNewLine;
-  KActionMenu* aMNewOther;
-  KActionMenu* aMNewMacro;
+  QPtrList<KAction> aMNewSegment;
+  QPtrList<KAction> aMNewPoint;
+  QPtrList<KAction> aMNewCircle;
+  QPtrList<KAction> aMNewLine;
+  QPtrList<KAction> aMNewOther;
+  QPtrList<KAction> aMNewAll;
 
   KAction* aCancelConstruction;
   KAction* aDeleteObjects;
@@ -189,7 +187,14 @@ public:
 
   KCommandHistory* history();
 
-  void addType( Type* );
+  /**
+   * These two are called by Object::addUserType(..., true ).. This is
+   * how the part is notified of new user Types being added..
+   * we also call it in our constructor with user == false for
+   * builtin types...
+   */
+  void addType( Type*, bool user = true );
+  void removeType( Type* );
 
   void removeAction( KAction* a );
 

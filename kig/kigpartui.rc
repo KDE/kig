@@ -9,16 +9,46 @@
   </Menu>
   <Menu name="view">
     <text>&amp;View</text>
-    <Merge />
+    <Action name="view_fullscreen" />
+    <Action name="view_zoom_in" />
+    <Action name="view_zoom_out" />
+    <Action name="view_fit_to_page" />
   </Menu>
   <Menu name="objects">
     <text>Objects</text>
-    <Action name="new_line" />
-    <Action name="new_segment" />
-    <Action name="new_point" />
-    <Action name="new_circle" />
-    <Action name="new_other" />
-    <Action name="new_macro" />
+    <Menu name="new_line">
+	<text>Lines</text>
+	<Action name="objects_new_linettp" />
+	<Action name="objects_new_lineperpend" />
+	<Action name="objects_new_lineparallel" />
+	<Action name="objects_new_lineradical" />
+	<Action name="objects_new_segment" />
+	<ActionList name="user_line_types" />
+	<ActionList name="user_segment_types" />
+    </Menu>
+    <Menu name="new_point">
+	<text>Points</text>
+	  <Action name="objects_new_normalpoint" />
+	  <Action name="objects_new_midpoint" />
+	  <Action name="objects_new_intersectionpoint" />
+	  <Action name="objects_new_point_xy" />
+	  <Action name="objects_new_translatedpoint" />
+	  <Action name="objects_new_mirrorpoint" />
+	  <ActionList name="user_point_types" />
+    </Menu>
+    <Menu name="new_circle">
+	<text>Circle</text>
+	  <Action name="objects_new_circlebcp" />
+	  <Action name="objects_new_circlebtp" />
+	  <ActionList name="user_circle_types" />
+    </Menu>
+    <Menu name="new_other">
+	<text>Other</text>
+	  <Action name="objects_new_locus" />
+	  <Action name="objects_new_vector" />
+	  <Action name="new_macro" />
+	  <ActionList name="user_other_types" />
+    </Menu>
     <Separator />
     <Action name="delete_objects" />
     <Action name="cancel_construction" />
@@ -55,7 +85,13 @@
 <ToolBar name="rest_toolbar"><text>Rest</text>
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
+  <ActionList name="user_circle_types" />
   <Action name="objects_new_locus" />
   <Action name="objects_new_vector" />
-  <Action name="new_macro" />
+</ToolBar>
+<ToolBar name="view_toolbar"><text>View</text>
+  <Action name="view_zoom_in" />
+  <Action name="view_zoom_out" />
+  <Action name="view_fullscreen" />
+  <Action name="view_fit_to_page"/>
 </ToolBar>

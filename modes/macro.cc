@@ -181,7 +181,7 @@ void DefineMacroMode::finishPressed()
   ObjectHierarchy* hier = new ObjectHierarchy( mgiven, Objects( mfinal ) );
   MType* type = new MType( hier, mwizard->KLineEdit2->text(),
                            mwizard->KLineEdit1->text() );
-  Object::types().addType( type );
+  Object::addUserType( type );
   abandonMacro();
 }
 

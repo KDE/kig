@@ -39,11 +39,10 @@ class KigDocument;
  * This is the widget as represented on-screen.  It is basically a
  * dumb class, which is manipulated by KigMode's.  All events are
  * forwarded to them.  It has some actions which are widget specific
- * (basically the view-menu and printing (once i implement it ;)), in
- * case you're wondering why it inherits KXMLGUIClient...
+ * (basically the view-menu and printing (once i implement it ;))
  */
 class KigView
-  : public QWidget, public KXMLGUIClient
+  : public QWidget
 {
   Q_OBJECT
 

@@ -61,8 +61,45 @@ class StdConstructibleType;
 class Object
   : protected Qt
 {
+private:
+  static myvector<Type*> sbuiltintypes;
+  static myvector<Type*> susertypes;
+  static Types stypes;
 public:
-  static Types& types();
+  // we have two types of types :)
+  // 1 Builtin types: these are the C++ object types + perhaps in the
+  //   future some macro types that we distribute along with Kig.
+  // 2 User defined types: these are the macro's that the user
+  //   defines, imports from a file, or those that are loaded on
+  //   startup from a previous session ( if you define or load a new
+  //   macro type, it is saved on exit, and loaded on startup ).
+
+  // this contains _all_ types that are available.
+  static const Types& types();
+
+  // add a builtin type.  This is done only by the first part to be
+  // started.  It does not notify the parts that a type has been
+  // added, the part should take care of that itself.
+  static void addBuiltinType( Type* );
+  // add a user type:
+  // This happens in two situations:
+  // 1 on startup, the first part that is constructed loads user
+  //   defined types from our config directory.  In this case,
+  //   notifyParts is set to false, and the different parts aren't
+  //   notified of the new type.
+  // 2 some other time: either the user defines a new macro, or he
+  //   loads one from disk, or ( maybe later :) he loads a plugin.  In
+  //   this case, the different parts need to be notified of the
+  //   change, and notifyParts == true...
+  static void addUserType( Type*, bool notifyParts = true );
+  static void addUserTypes( Types& t, bool notifyParts = true );
+
+  static void removeUserType( Type* t );
+//   static void removeUserTypes( Types& t, bool notifyParts = true );
+
+  // these are static methods that should be considered constant..
+  static const myvector<Type*>& builtinTypes();
+  static const myvector<Type*>& userTypes();
   static Object* newObject( const QCString& type, const Objects& parents,
                             const std::map<QCString, QString>& params );
 public:
