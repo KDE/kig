@@ -36,6 +36,7 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
            SLOT( linkClicked( int ) ) );
   connect( this, SIGNAL( helpClicked() ),
            this, SLOT( slotHelpClicked() ) );
+  labelTextInput->setFocus();
 }
 
 TextLabelWizard::~TextLabelWizard()

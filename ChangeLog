@@ -1,10 +1,14 @@
 2004-03-27  Dominique Devriese  <devriese@kde.org>
 
+	* Apply a patch by Albert Astals Cid <tsdgeos@terra.es> that gives
+	focus to the text input on first opening the text dialog.
+	Closes:78409.
+
 	* Fix a translation issue with internal macro's.
 
 	* Make a TextImp transformable by simply transforming its
-	location, and showing the text label in that location again (
-	fixes: 78407 ).
+	location, and showing the text label in that location again
+	(Closes: 78407 ).
 
 2004-03-26  Pino Toscano <toscano.pino@tiscali.it>
 
