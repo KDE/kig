@@ -239,7 +239,7 @@ void Object::addActions( NormalModePopupObjects& m )
     };
   };
 
-  m.addPopupAction( 3849, i18n( "Construct a ..." ), pm );
+  m.addPopupAction( 3849, i18n( "Construct the ..." ), pm );
   return;
 }
 
