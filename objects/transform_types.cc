@@ -137,7 +137,7 @@ static const ArgsParser::spec argsspecRotation[] =
   { ObjectImp::stype(), I18N_NOOP( "Rotate this object" ),
     I18N_NOOP( "Select the object to rotate..." ), false },
   { PointImp::stype(), I18N_NOOP( "Rotate around this point" ),
-    I18N_NOOP( "Select the centre point of the rotation..." ), false },
+    I18N_NOOP( "Select the center point of the rotation..." ), false },
   { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ),
     I18N_NOOP( "Select the angle of the rotation..." ), false }
 };
