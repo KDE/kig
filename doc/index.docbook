@@ -303,6 +303,30 @@
 	currently hidden objects.
       </para>
     </section>
+    <section>
+      <title>Undo/Redo</title>
+      <para>
+	In &kig;, you can undo almost any change you do to the
+	document.  Just use the undo/redo buttons in the toolbar, or
+	the appropriate shortcuts..
+      </para>
+    </section>
+    <section>
+      <title>Full Screen Mode</title>
+      <para>
+	&kig; also has a Full Screen mode.  To use it, all you have
+	to do is click the appropriate button in the toolbar, or
+	select <menuchoice><guimenu>View</guimenu><guimenuitem>Full
+	Screen</guimenuitem></menuchoice>.  
+      </para>
+      <para>
+	To leave the Full Screen mode,
+	<mousebutton>Right</mousebutton>-click the screen on a place
+	where there is no object present, and select
+	<menuchoice><guimenuitem>Exit Full Screen Mode</guimenuitem>
+	</menuchoice>, or press the <keycap>Escape</keycap> key.
+      </para>
+    </section>
   </chapter>
 
   <chapter id="using-advanced">
@@ -319,6 +343,16 @@
 	line where they previously weren't etc ).  You are encouraged to
 	try the options out for yourself :).  They should be
 	straightforward to understand.
+      </para>
+    </section>
+    <section id="document-context-menus">
+      <title>Document context menu's</title>
+      <para>
+	You can also <mousebutton>right-</mousebutton>click on the
+	document.  &kig; will then show a popup, that you can use to
+	start constructing a new object, change the coordinate system
+	used, show hidden objects, zoom in and zoom out on the
+	document.
       </para>
     </section>
     <section id="defining-macros">
@@ -561,7 +595,8 @@
 	    Working with &kig; should be very straightforward,
 	    constructing objects is easy, and interactive, preliminary
 	    results are shown etc.  Moving, selecting, building all
-	    work as one would expect them to.
+	    work as one would expect them to.  Undo support should
+	    also be very intuitive..
 	  </para>
 	</listitem>
 	<listitem>
@@ -594,9 +629,21 @@
 	</listitem>
 	<listitem>
 	  <para>
+	    &kig; has a very flexible transformation system.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &kig; allows you to export a kig file to some interesting
+	    formats, like images, and XFig files, which are useful for
+	    inclusion in LaTeX and other documents..
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
 	    &kig; aims to be compatible with its competitors.. This is
-	    why it supports the &kgeo; file format, and i'm working on
-	    other formats as well...
+	    why it supports the &kgeo; file format, the &kseg; file
+	    format, and i'm working on other formats as well...
 	  </para>
 	</listitem>
       </itemizedlist>
