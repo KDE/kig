@@ -1,4 +1,3 @@
-// filters-common.h
 // Copyright (C)  2004  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or

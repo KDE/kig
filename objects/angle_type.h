@@ -1,4 +1,3 @@
-// angle_type.h
 // Copyright (C) 2003-2004  Dominique Devriese <devriese@kde.org>
 // Copyright (C) 2004       Pino Toscano <toscano.pino@tiscali.it>
 

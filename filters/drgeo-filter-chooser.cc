@@ -1,4 +1,3 @@
-// drgeo-filter-chooser.cc
 // Copyright (C)  2004  Pino Toscano <toscano.pino@tiscali.it>
 // Copyright (C)  2004  Dominique Devriese <devriese@kde.org>
 

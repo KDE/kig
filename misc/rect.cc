@@ -1,4 +1,3 @@
-// rect.cc
 // Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or

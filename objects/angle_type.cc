@@ -1,4 +1,3 @@
-// angle_type.cc
 // Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 // Copyright (C)  2004  Pino Toscano <toscano.pino@tiscali.it>
 
