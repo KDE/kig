@@ -262,8 +262,7 @@ NormalModePopupObjects::~NormalModePopupObjects()
   delete_all ( mproviders.begin(), mproviders.end() );
 }
 
-static const int numberofcolors = 8;
-static const QColor* colors[numberofcolors] =
+static const QColor* colors[] =
 {
   &Qt::blue,
   &Qt::black,
@@ -274,6 +273,7 @@ static const QColor* colors[numberofcolors] =
   &Qt::yellow,
   &Qt::darkRed
 };
+static const int numberofcolors = sizeof( colors ) / sizeof( QColor* );
 
 void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
