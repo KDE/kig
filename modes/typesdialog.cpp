@@ -31,6 +31,7 @@
 #include <kmessagebox.h>
 #include <kdebug.h>
 #include <klocale.h>
+#include <kapplication.h>
 
 #include <qtextstream.h>
 #include <qstringlist.h>
@@ -56,7 +57,8 @@ TypesDialog::~TypesDialog()
 
 void TypesDialog::helpSlot()
 {
-  qWarning( "TypesDialog::helpSlot() not yet implemented!" );
+  kapp->invokeHelp( QString::fromLatin1( "working-with-types" ),
+                    QString::fromLatin1( "kig" ) );
 }
 
 void TypesDialog::okSlot()

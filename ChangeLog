@@ -1,5 +1,7 @@
 2003-06-27  Dominique Devriese  <devriese@kde.org>
 
+	* implement helpSlot() in ManageTypesDialog..
+
 	* add a "Set Coordinate System" menu to the Settings menu..
 
 	* make shift snap to grid in moving mode, and rework the moving
