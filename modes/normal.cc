@@ -21,6 +21,7 @@
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
 #include "../objects/object_factory.h"
+#include "../objects/object_imp.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 #include "popup.h"
@@ -262,17 +263,18 @@ void NormalMode::mouseMoved( const Objects& os,
     // and set statusbar text
 
     w.setCursor( KCursor::handCursor() );
-    QString typeName = os.front()->translatedBaseTypeName();
+
+    QString stat = i18n( ObjectImp::selectStatement( os.front()->imp()->id() ) );
 
     // statusbar text
-    mdoc.emitStatusBarText( i18n( "Select this %1" ).arg( typeName ) );
+    mdoc.emitStatusBarText( stat );
     KigPainter p( w.screenInfo(), &w.curPix );
 
     // set the text next to the arrow cursor
     QPoint point = plc;
     point.setX(point.x()+15);
 
-    p.drawTextStd( point, typeName );
+    p.drawTextStd( point, stat );
     w.updateWidget( p.overlay() );
   };
 }
