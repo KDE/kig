@@ -74,7 +74,7 @@
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
-	<Action name="objects_new_arc" />
+	<Action name="objects_new_angle" />
 	<Action name="objects_new_cubicb9p" />
 	<Action name="objects_new_cubiclineintersect" />
 	<ActionList name="user_other_types" />
@@ -136,7 +136,7 @@
   <Action name="objects_new_coniclineintersect" />
 </Toolbar>    
 <ToolBar name="rest_toolbar"><text>Rest</text>
-  <Action name="objects_new_arc" />
+  <Action name="objects_new_angle" />
   <Action name="objects_new_locus" />
   <Action name="objects_new_textlabel" />
   <ActionList name="user_other_types" />

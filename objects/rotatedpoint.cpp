@@ -79,7 +79,7 @@ const QString RotatedPoint::vDescription() const
 
 const QString RotatedPoint::sDescription()
 {
-  return i18n( "A point rotated around another point by a certain arc" );
+  return i18n( "A point rotated around another point by a certain angle" );
 }
 
 const QCString RotatedPoint::vIconFileName() const

@@ -1,5 +1,5 @@
 datadir = $(kde_datadir)/kig/toolbar
-data_DATA = angle.png arc.png areaCircle.png attacher.png baseCircle.png \
+data_DATA = angle.png areaCircle.png attacher.png baseCircle.png \
 	    bisection.png circle.png circumference.png distance.png \
 	    intersection.png line1.png line2.png line3.png \
 	    line4.png line5.png line.png mirrorpoint.png paint.png \
