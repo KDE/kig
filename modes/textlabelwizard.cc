@@ -22,14 +22,19 @@
 #include "linkslabel.h"
 
 #include <klineedit.h>
+#include <kapplication.h>
 
 #include <qlayout.h>
 
 TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelConstructionMode* mode )
   : TextLabelWizardBase( parent, "TextLabelWizard", false ), mmode( mode )
 {
-  connect( labelTextInput, SIGNAL( textChanged( const QString& ) ), SLOT( textChanged( const QString& ) ) );
-  connect( myCustomWidget1, SIGNAL( linkClicked( int ) ), SLOT( linkClicked( int ) ) );
+  connect( labelTextInput, SIGNAL( textChanged( const QString& ) ),
+           SLOT( textChanged( const QString& ) ) );
+  connect( myCustomWidget1, SIGNAL( linkClicked( int ) ),
+           SLOT( linkClicked( int ) ) );
+  connect( this, SIGNAL( helpClicked() ),
+           this, SLOT( slotHelpClicked() ) );
 }
 
 TextLabelWizard::~TextLabelWizard()
@@ -79,5 +84,11 @@ void TextLabelWizard::relayoutArgsPage()
 {
   select_arguments_pageLayout->activate();
   repaint();
+}
+
+void TextLabelWizard::slotHelpClicked()
+{
+  kapp->invokeHelp( QString::fromLatin1( "text-labels" ),
+                    QString::fromLatin1( "kig" ) );
 }
 

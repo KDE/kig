@@ -39,6 +39,7 @@ public:
 private slots:
   void textChanged( const QString& );
   void linkClicked( int which );
+  void slotHelpClicked();
 private:
   TextLabelConstructionMode* mmode;
 };
