@@ -20,12 +20,11 @@
   Smaller parts of the document cause bigger problems. pino: this is
   due to the polar grid: try to make zoom if there is no grid.
 
-* more or less urgently necessary
+- Improve the selection of circles, which now is done correctly if the
+  selected rectangle intersects a circle in a ( more or less ) small
+  part of it.
 
-- document mathematical i18n strings, so that the translators have a
-   clue about how to translate them !
-
-* not too hard:
+* I/O: filters, exporters, ...
 
 - add other command line options, like:<br />
   -e, --export-to FORMAT file.kig => Kig will export file.kig ( or any
@@ -34,9 +33,16 @@
   difficult, because the export plugins require extra parameters.
   E.g. the ImageExporter needs an image size etc.
 
-- make stuff from RMB menu's accessible from other places as well.
+- filters: more input filters, improve Cabri filter and Dr. Geo filter
+  ( see filters/drgeo-filter-status.txt ), add the possibility to ignore
+  errors on loading
 
-- write *-filter-status.txt's for the kseg and cabri filters.
+- "export to *": add stuff like java applets, etc...
+
+- add support for saving/opening native compressed files like
+  'myfile.kig.tar.gz', 'myfile.kig.tbz' or 'myfile.kig.tar.bz2'.
+
+* objects
 
 - Two new transformations: projection on a line, orthogonally and
   according to a given direction.  As a mathematician, I'm supposed to
@@ -47,6 +53,43 @@
   almost always projected on a line, segment or ray that you wouldn't
   see because it's equal to the line we project upon ).  It would be
   useful for points though.
+
+- make DoubleImp a "visible" object with uses like Dr. Geo numeric
+  values.
+
+- Provide some nice stuff for differential geometry: velocity vector
+  of a curve, curvature vector, osculating parabole. Most of this is
+  not too difficult to implement, but very cool :)
+
+- create a formula label to display math formulas in the document, and
+  allow for importing from/exporting to other formula formats such as
+  KFormula, OOFormula and MathML.
+
+- fillable polygons/shapes..
+
+- defined integrals, as a particular case of filled shapes.
+
+- improve *a lot* the transformation support for cubics.
+
+* GUI
+
+- make stuff from RMB menu's accessible from other places as well.
+
+- Add the possibility to select, via new dialog, one or more types of
+  object.
+
+- add a magnifying glass to magnify "on-the-fly" a part of the document.
+
+- improve the KTextEditor interface in the script code wizard.
+
+- make the dialogs not pop up over the main window.
+
+- add QTooltip and QWhatsThis to the widgets in the various dialogs
+  (export dialogs, types dialog, ...)
+
+- use KStdGuiItem's wherever is possible.
+
+* core
 
 - When selecting an argument of a certain type, maybe we should check
    whether the required arguments are really there, before telling the
@@ -61,36 +104,11 @@
   Transform->Translate form the RMB menu and then Kig should ask me for
   a vector to use to translate all the selected objects.
 
-- Add the possibility to select, via new dialog, one or more types of
-  object.
-
-- add "Tools": easy tools designed for geometry, like Angle converter and
-  so on...
-
-- add a magnifying glass to magnify "on-the-fly" a part of the document.
-
-- Python scripting: export cubics for real, improve existing API.
-
 - add support for work with other measure units (cm, inches, etc...)
   than just pixels...
 
-- implement cut, copy and paste for objects...
-
 - extend ObjectFactory::sensiblePointCalcer to also construct
    intersection points of stuff... (pino: done for lines)
-
-* harder:
-
-- improve the KTextEditor interface in the script code wizard.
-
-- make DoubleImp a "visible" object with uses like Dr. Geo numeric
-  values.
-
-- Provide some nice stuff for differential geometry: velocity vector
-   of a curve, curvature vector, osculating parabole, osculating
-   circle, evolute [the latter two can now be constructed using the
-   center of curvature (conics and cubics)].  Most of this is not too 
-   difficult to implement, but very cool :)
 
 - when moving an object that wants to move its parents, try to check if
    it is itself not an indirect child of one of the parents it is
@@ -98,57 +116,51 @@
    to chaotic behaviour.  I am not sure if this is really well
    possible, but I have to look at it.
 
-- allow editing of python scripts
-
 - add intersection types: arc-arc; arc-conic; arc-cubic; conic-cubic;
   cubic-cubic; locus-other object.
-
-- create a formula label to display math formulas in the document, and
-  allow for importing from/export to other formula formats such as
-  KFormula, OOFormula and MathML.
 
 - rework the ObjectConstructor and GUIAction stuff into something more
    general, and more clean.  See the comment for
    ObjectConstructor::constructMode().
 
-- make the dialogs not pop up over the main window..
-
-- make the scripting system work more like the macro system. Make it
-  a way to define new object types that can be reused more than once,
-  instead of making it just a way to add *one* object..
-
-- support for more scripting languages than just python..
-
-- fillable polygons/shapes..
-
-- filters: more input filters, improve Cabri filter and Dr. Geo filter
-  ( see filters/drgeo-filter-status.txt ), add the possibility to ignore
-  errors on loading
-
-* hard :
-
-- save a "session", i.e.: record how a document is moved, and save it to
-  e.g. a flash file or something like that.
-
 - figure out a way to allow the user to enable and disable certain
   features.  E.g. I have been asked to allow the user to limit himself
   to compass-ruler constructions..
-
-- "export to *": add stuff like java applets, etc...
-
-- add support for saving/opening native compressed files like
-  'myfile.kig.gz' or 'myfile.kig.bz2'.
-
-- koffice support ?
 
 - add another viewmode ( which would be completely orthogonal to the
   KigMode concept ), where you can more clearly see the dependencies
   in a figure.  Something with colours, numberings, and/or a tree-like
   text representation of the dependencies..
 
-- defined integrals, as a particular case of filled shapes...
+* scripting
+
+- Python scripting: export cubics for real, improve existing API.
+
+- allow editing of Python scripts.
+
+- make the scripting system work more like the macro system. Make it
+  a way to define new object types that can be reused more than once,
+  instead of making it just a way to add *one* object.
+
+- support for more scripting languages than just Python.
+
+* other
+
+- document mathematical i18n strings, so that the translators have a
+   clue about how to translate them !
+
+- write *-filter-status.txt's for the kseg and cabri filters.
+
+- add "Tools": easy tools designed for geometry, like Angle converter and
+  so on...
+
+- save a "session", i.e.: record how a document is moved, and save it to
+  e.g. a flash file or something like that.
+
+- koffice support ?
 
 * future ?
+
 - there should be a way to link a figure to a (html?) file containing
    exercises.  Teachers would be able to create exercises for Kig.
    I'm thinking of doing this with HTML (& KHTML) + scripting ( but
