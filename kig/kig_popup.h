@@ -36,7 +36,7 @@ class KigObjectsPopup
 public slots:
   void select();
   void unselect();
-  void hide();
+  void hideObjects();
   void startMoving();
   void setColor( int );
   

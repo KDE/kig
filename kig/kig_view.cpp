@@ -18,7 +18,6 @@
  USA
 **/
 
-
 #include "kig_view.h"
 #include "kig_view.moc"
 

@@ -54,7 +54,7 @@ KigObjectsPopup::KigObjectsPopup( KigDocument* d, KigView* v, const Objects& os 
 		    this, SLOT( startMoving() ) );
       if( mDoc->canHideObjects() )
 	insertItem( i18n( "Hide this %1" ).arg( o->vTBaseTypeName() ),
-		    this, SLOT( hide() ) );
+		    this, SLOT( hideObjects() ) );
     }
   else
     {
@@ -71,7 +71,7 @@ KigObjectsPopup::KigObjectsPopup( KigDocument* d, KigView* v, const Objects& os 
 		    this, SLOT( unselect() ) );
       if( mDoc->canHideObjects() )
 	insertItem( i18n( "Hide %1 objects" ).arg( mObjs.count() ),
-		    this, SLOT( hide() ) );
+		    this, SLOT( hideObjects() ) );
     };
   mColorPopup = colorMenu( this );
   connect( mColorPopup, SIGNAL( activated( int ) ), this, SLOT( setColor( int ) ) );
@@ -100,7 +100,7 @@ void KigObjectsPopup::startMoving()
   mView->startMovingSos( mView->mapFromGlobal( mStart ) );
 }
 
-void KigObjectsPopup::hide()
+void KigObjectsPopup::hideObjects()
 {
   mDoc->hideObjects( mObjs );
 }
