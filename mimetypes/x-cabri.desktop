@@ -1,0 +1,11 @@
+# KDE Config File
+[Desktop Entry]
+Encoding=UTF-8
+MimeType=application/x-cabri
+Comment=Cabri Figure
+Type=MimeType
+Patterns=*.fig;*.FIG
+X-KDE-AutoEmbed=false
+[Property::X-KDE-NativeExtension]
+Type=QString
+Value=.fig

@@ -51,7 +51,3 @@ partdesktop_DATA = kig_part.desktop
 # this is where the part's XML-GUI resource file goes
 partrcdir   = $(kde_datadir)/kigpart
 partrc_DATA = kigpartui.rc
-
-# our mime types...
-kdemime_DATA = x-kig.desktop x-kgeo.desktop
-kdemimedir = $(kde_mimedir)/application
