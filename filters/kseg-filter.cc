@@ -193,14 +193,30 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         break;
       }
       case G_ROTATED:
-        o = new RealObject( RotationType::instance(), parents );
+      {
+        Objects angleparents( parents.begin() + 2, parents.end() );
+        RealObject* angle = new RealObject( AngleType::instance(), angleparents );
+        angle->setShown( false );
+        ret.push_back( angle );
+        angle->calc( todoc );
+
+        Objects rotparents;
+        rotparents.push_back( parents[1] );
+        rotparents.push_back( parents[0] );
+        rotparents.push_back( angle );
+        o = new RealObject( RotationType::instance(), rotparents );
         break;
+      }
       case G_SCALED:
+      {
         o = new RealObject( ScalingOverCenterType::instance(), parents );
         break;
+      }
       case G_REFLECTED:
+      {
         o = new RealObject( LineReflectionType::instance(), parents );
         break;
+      }
       };
       assert( o );
       if ( type == G_POINT )
