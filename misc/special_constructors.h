@@ -50,12 +50,44 @@ public:
     const Objects& os, const KigDocument& d,
     const KigWidget& v
     ) const;
-  QString useText( const Object& o, const Objects& sel ) const;
+  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+                   const KigWidget& v ) const;
+
   void drawprelim( KigPainter& p, const Objects& parents, const KigDocument& ) const;
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigDocument* doc, KigGUIAction* kact );
 
   bool isTransform() const;
+};
+
+class ConicConicIntersectionConstructor
+  : public StandardConstructorBase
+{
+protected:
+  ArgParser mparser;
+public:
+  ConicConicIntersectionConstructor();
+  ~ConicConicIntersectionConstructor();
+
+  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+                   const KigWidget& v ) const;
+
+  void drawprelim( KigPainter& p, const Objects& parents,
+                   const KigDocument& ) const;
+  Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
+  void plug( KigDocument* doc, KigGUIAction* kact );
+
+  bool isTransform() const;
+};
+
+class ConicLineIntersectionConstructor
+  : public MultiObjectTypeConstructor
+{
+public:
+  ConicLineIntersectionConstructor();
+  ~ConicLineIntersectionConstructor();
+  QString useText( const Object& o, const Objects& sel, const KigDocument& d,
+                   const KigWidget& v ) const;
 };
 
 #endif

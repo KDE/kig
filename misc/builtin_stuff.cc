@@ -323,17 +323,17 @@ void setupBuiltinStuff()
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
           "curvelineintersection" );
 
-      MultiObjectTypeConstructor* lineconic =
-        new MultiObjectTypeConstructor(
-          ConicLineIntersectionType::instance(),
-          "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-          "curvelineintersection", -1, 1 );
+      ObjectConstructor* lineconic =
+        new ConicLineIntersectionConstructor();
 
       MultiObjectTypeConstructor* linecubic =
         new MultiObjectTypeConstructor(
           LineCubicIntersectionType::instance(),
           "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
           "curvelineintersection", 1, 2, 3 );
+
+      ObjectConstructor* conicconic =
+        new ConicConicIntersectionConstructor();
 
       // now for the toplevel constructor:
       MergeObjectConstructor* m = new MergeObjectConstructor(
@@ -343,6 +343,7 @@ void setupBuiltinStuff()
       m->merge( lineline );
       m->merge( lineconic );
       m->merge( linecubic );
+      m->merge( conicconic );
       ctors->add( m );
       actions->add( new ConstructibleAction( m, "objects_new_intersection" ) );
     };

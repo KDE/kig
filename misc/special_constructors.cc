@@ -23,13 +23,17 @@
 #include "kigpainter.h"
 #include "calcpaths.h"
 #include "guiaction.h"
+#include "conic-common.h"
+#include "common.h"
 
 #include "../objects/object.h"
 #include "../objects/object_factory.h"
 #include "../objects/object_type.h"
 #include "../objects/conic_types.h"
+#include "../objects/intersection_types.h"
 #include "../objects/object_imp.h"
 #include "../objects/bogus_imp.h"
+#include "../objects/conic_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/locus_imp.h"
 
@@ -87,6 +91,8 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
   {
     Objects args;
     args.push_back( new DataObject( new IntImp( i ) ) );
+    // TODO ? use only one zeroindex dataobject, so that if you switch
+    // one radical line around, then the other switches along..
     args.push_back( new DataObject( new IntImp( 1 ) ) );
     copy( args.begin(), args.end(), back_inserter( ret ) );
     copy( os.begin(), os.end(), back_inserter( args ) );
@@ -169,10 +175,13 @@ Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget
   return ret;
 }
 
-QString LocusConstructor::useText( const Object& o, const Objects& ) const
+QString LocusConstructor::useText( const Object& o, const Objects& os,
+                                   const KigDocument&, const KigWidget& ) const
 {
   if ( o.inherits( Object::ID_RealObject ) &&
-       static_cast<const RealObject&>( o ).type()->inherits( ObjectType::ID_ConstrainedPointType )
+       static_cast<const RealObject&>( o ).type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
+       ( os.empty() || !os[0]->inherits( Object::ID_RealObject ) ||
+         !static_cast<const RealObject*>( os[0] )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
     ) return i18n( "Moving point" );
   else return i18n( "Dependent point" );
 }
@@ -193,4 +202,125 @@ bool ConicRadicalConstructor::isTransform() const
 bool LocusConstructor::isTransform() const
 {
   return false;
+}
+
+static const ArgParser::spec argsspectc[] = {
+  { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with this circle" ) },
+  { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with this circle" ) }
+};
+
+ConicConicIntersectionConstructor::ConicConicIntersectionConstructor()
+  : StandardConstructorBase( "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+                             "curvelineintersection", mparser ),
+    mparser( argsspectc, 2 )
+{
+}
+
+ConicConicIntersectionConstructor::~ConicConicIntersectionConstructor()
+{
+}
+
+void ConicConicIntersectionConstructor::drawprelim( KigPainter& p, const Objects& parents,
+                                                    const KigDocument& ) const
+{
+  if ( parents.size() != 2 ) return;
+  assert ( parents[0]->hasimp( ObjectImp::ID_ConicImp ) &&
+           parents[1]->hasimp( ObjectImp::ID_ConicImp ) );
+  const ConicCartesianData conica =
+    static_cast<const ConicImp*>( parents[0]->imp() )->cartesianData();
+  const ConicCartesianData conicb =
+    static_cast<const ConicImp*>( parents[1]->imp() )->cartesianData();
+  bool ok = true;
+  for ( int wr = -1; wr < 2; wr += 2 )
+  {
+    LineData radical = calcConicRadical( conica, conicb, wr, 1, ok );
+    if ( ok )
+    {
+      for ( int wi = -1; wi < 2; wi += 2 )
+      {
+        bool ok2 = true;
+        Coordinate c = calcConicLineIntersect( conica, radical, wi, ok2 );
+        if ( ok2 ) p.drawFatPoint( c );
+      };
+    };
+  };
+}
+
+Objects ConicConicIntersectionConstructor::build( const Objects& os, KigDocument&,
+                                                  KigWidget& ) const
+{
+  assert( os.size() == 2 );
+  Objects ret;
+  Object* conica = os[0];
+  DataObject* zeroindexdo = new DataObject( new IntImp( 1 ) );
+  ret.push_back( zeroindexdo );
+
+  for ( int wr = -1; wr < 2; wr += 2 )
+  {
+    ret.push_back( new DataObject( new IntImp( wr ) ) );
+    Objects parents = os;
+    parents.push_back( ret.back() );
+    parents.push_back( zeroindexdo );
+    RealObject* radical =
+      new RealObject( ConicRadicalType::instance(), parents );
+    radical->setShown( false );
+    ret.push_back( radical );
+    for ( int wi = -1; wi < 2; wi += 2 )
+    {
+      Objects args;
+      args.push_back( conica );
+      args.push_back( radical );
+      ret.push_back( new DataObject( new IntImp( wi ) ) );
+      args.push_back( ret.back() );
+      ret.push_back(
+        new RealObject(
+          ConicLineIntersectionType::instance(), args ) );
+    };
+  };
+  return ret;
+}
+
+void ConicConicIntersectionConstructor::plug( KigDocument*, KigGUIAction* )
+{
+}
+
+bool ConicConicIntersectionConstructor::isTransform() const
+{
+  return false;
+}
+
+QString ConicConicIntersectionConstructor::useText(
+  const Object& o, const Objects&,
+  const KigDocument&, const KigWidget& ) const
+{
+  if ( o.hasimp( ObjectImp::ID_CircleImp ) )
+    return i18n( "Intersect with this circle" );
+  else if ( o.hasimp( ObjectImp::ID_ConicImp ) )
+    return i18n( "Intersect with this conic" );
+  else assert( false );
+}
+
+ConicLineIntersectionConstructor::ConicLineIntersectionConstructor()
+  : MultiObjectTypeConstructor(
+    ConicLineIntersectionType::instance(),
+    "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+    "curvelineintersection", -1, 1 )
+{
+}
+
+ConicLineIntersectionConstructor::~ConicLineIntersectionConstructor()
+{
+}
+
+QString ConicLineIntersectionConstructor::useText(
+  const Object& o, const Objects&,
+  const KigDocument&, const KigWidget& ) const
+{
+  if ( o.hasimp( ObjectImp::ID_CircleImp ) )
+    return i18n( "Intersect with this circle" );
+  else if ( o.hasimp( ObjectImp::ID_ConicImp ) )
+    return i18n( "Intersect with this conic" );
+  else if ( o.hasimp( ObjectImp::ID_LineImp ) )
+    return i18n( "Intersect with this line" );
+  else assert( false );
 }
