@@ -467,6 +467,7 @@ void KigDocument::editShowHidden()
 {
   for (Object* i = objects.first(); i; i = objects.next())
     i->setShown(true);
+  emit allChanged();
 };
 
 void KigDocument::updateActions()

@@ -3,6 +3,8 @@
 <MenuBar>
   <Menu name="edit"><text>&amp;Edit</text>
     <Action name="edit_unhide_all" />
+    <Action name="edit_undo"/>
+    <Action name="edit_redo"/>
   </Menu>
   <Menu name="view"><text>&amp;View</text>
     <Action name="view_fullscreen"/>
@@ -17,6 +19,9 @@
     <Action name="new_point"/>
     <Action name="new_circle"/>
     <Action name="new_other"/>
+    <Separator />
+    <Action name="delete_objects"/>
+    <Action name="cancel_construction"/>
   </Menu>
   <Menu name="types">
     <text>Types</text>
