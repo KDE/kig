@@ -17,18 +17,15 @@ Points            most, On_curve (most)
 Rays              ok
 Vectors           ok
 Lines             most
-Circles           2pts, segment
-Numberics         value (with a label), segment_length, circle_perimeter,
-                  arc_length, distance_2pts, vector_norm, pt_abscissa,
-                  pt_ordinate, vector_abscissa, vector_ordinate, slope,
-                  distance_pt_line
+Circles           most
+Numberics         most (as a label)
 Angles            3pts
 Arcs              ok
 Locuses           ok
-Transformations   translation, central & line reflection, rotation
-Intersections     line-line, circle-circle, circle-line, arc-line
+Transformations   most
+Intersections     most
 Scripts           as a label
-Equations         line, circle
+Equations         ok
 
 Colors            ok
 Visibility        ok

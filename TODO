@@ -84,6 +84,10 @@
 - extend ObjectFactory::sensiblePointCalcer to also construct
    intersection points of stuff...
 
+- add the possibiity to construct the tangent to a generic curve
+  ( circle, arc, conic, cubic ). For the first three it's possible to
+  use the "polar line" ( limit it to constrained points ).
+
 * harder:
 
 - Provide some nice stuff for differential geometry: velocity vector
