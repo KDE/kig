@@ -5,7 +5,10 @@
 
 * not too hard:
 
-- give objects names
+- add support for work via command line without GUI. Possible options
+  and uses:<br />
+  -c, --convert filename.ext => Kig will convert the file in its own
+  format and output the file filename.kig
 
 - make stuff from RMB menu's accessible from other places as well.
 
@@ -51,6 +54,8 @@
 
 * harder:
 
+- give objects names
+
 - allow for using kformula w/o OOFormula w/o MathML formulas in the
   document.
 
@@ -89,11 +94,6 @@
   KigMode concept ), where you can more clearly see the dependencies
   in a figure.  Something with colours, numberings, and/or a tree-like
   text representation of the dependencies..
-
-- add support for work via command line without GUI. Possible options
-  and uses:<br />
-  -c, --convert filename.ext => Kig will convert the file in its own
-  format and output the file filename.kig
 
 - defined integrals, as a particular case of filled shapes...
 
