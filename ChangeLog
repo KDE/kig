@@ -1,3 +1,8 @@
+2004-11-06  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Added osculating circle and evolute of a curve as a
+	builtin macros (based upon the center of curvature).
+
 2004-10-27  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Add all the constructible regular polygons actions to

@@ -145,6 +145,7 @@
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_measuretransport" />
+	<Action name="objects_new_evolute" />
 	<Action name="objects_new_script_python" />
 	<ActionList name="user_other_types" />
       </Menu>

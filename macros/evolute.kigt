@@ -1,0 +1,27 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.9.0" >
+ <Macro>
+  <Name>Involute</Name>
+  <Description>Involute of a curve</Description>
+  <ActionName>objects_new_evolute</ActionName>
+  <IconFileName>evolute</IconFileName>
+  <Construction>
+   <input requirement="curve" id="1" />
+    <UseText>Involute of this curve</UseText>
+    <SelectStatement>Select the curve</SelectStatement>
+   <intermediate action="push" type="hierarchy" id="2" >
+    <input requirement="point" id="1" />
+    <input requirement="curve" id="2" />
+    <result action="calc" type="CocCurve" id="3" >
+     <arg>2</arg>
+     <arg>1</arg>
+    </result>
+   </intermediate>
+   <result action="calc" type="Locus" id="3" >
+    <arg>2</arg>
+    <arg>1</arg>
+    <arg>1</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>
