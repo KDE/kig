@@ -62,3 +62,8 @@ const ArgParser& ObjectType::argsParser() const
 {
   return margsparser;
 }
+
+bool ObjectType::inherits( int ) const
+{
+  return false;
+}

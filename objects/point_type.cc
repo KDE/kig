@@ -156,3 +156,8 @@ ObjectType* ConstrainedPointType::copy() const
 {
   return new ConstrainedPointType;
 }
+
+bool ConstrainedPointType::inherits( int type ) const
+{
+  return type == ID_ConstrainedPointType;
+}

@@ -45,6 +45,11 @@ public:
   virtual ~ObjectType();
   virtual ObjectType* copy() const = 0;
 
+  enum {
+    ID_ConstrainedPointType
+  };
+  virtual bool inherits( int type ) const;
+
   virtual ObjectImp* calc( const Args& parents ) const = 0;
 
   virtual bool canMove() const;

@@ -42,6 +42,9 @@ class ConstrainedPointType
 public:
   ConstrainedPointType();
   ~ConstrainedPointType();
+
+  bool inherits( int type ) const;
+
   ObjectType* copy() const;
 
   ObjectImp* calc( const Args& parents ) const;
