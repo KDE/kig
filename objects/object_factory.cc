@@ -206,6 +206,7 @@ Objects ObjectFactory::label( const QString& s, const Coordinate& loc,
   parents.push_back( new DataObject( new PointImp( loc ) ) );
   ret.push_back( parents[0] );
   ret.push_back( parents[1] );
+  ret.push_back( parents[2] );
   copy( nparents.begin(), nparents.end(), back_inserter( parents ) );
 
   RealObject* r = new RealObject( TextType::instance(), parents );
