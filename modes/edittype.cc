@@ -23,11 +23,12 @@
 #include "edittype.h"
 #include "edittype.moc"
 
-#include <kpushbutton.h>
+#include <kapplication.h>
 #include <kicondialog.h>
 #include <kiconloader.h>
 #include <klineedit.h>
 #include <klocale.h>
+#include <kpushbutton.h>
 
 EditType::EditType( QWidget* parent, QString name, QString desc, QString icon )
   : EditTypeBase( parent, "edittype", true ), mname( name ), mdesc( desc ), micon( icon )
@@ -49,9 +50,8 @@ EditType::~EditType()
 
 void EditType::helpSlot()
 {
-// TODO
-//  kapp->invokeHelp( QString::fromLatin1( "working-with-types" ),
-//                    QString::fromLatin1( "kig" ) );
+  kapp->invokeHelp( QString::fromLatin1( "working-with-types" ),
+                    QString::fromLatin1( "kig" ) );
 }
 
 void EditType::okSlot()
