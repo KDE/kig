@@ -55,6 +55,9 @@ Coordinate Line::getPoint(double p) const
   // we need to spread the points over the line, it should also come near
   // the (infinite) end of the line, but most points should be near
   // the two points we contain...
+  if ( p <= 0. ) p = 1e-6;
+  if ( p >= 1. ) p = 1 - 1e-6;
+  p = 2*p - 1;
   if (p > 0) p = p/(1 - p);
     else p = p/(1 + p);
 //  p *= 1024;    // such multiplying factor could be useful in order to
@@ -78,7 +81,7 @@ double Line::getParam(const Coordinate& point) const
   if (p > 0) p = p/(1+p);
     else p = p/(1-p);
 
-  return p;
+  return 0.5*(p + 1);
 }
 
 LineTTP::~LineTTP()
