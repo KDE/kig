@@ -45,13 +45,6 @@
   <Action name="view_fullscreen" />
   <Action name="view_recenter"/>
 </ToolBar>
-<ToolBar name="new_stuff_toolbar">
-  <Action name="new_circle" />
-  <Action name="new_segment" />
-  <Action name="new_point"/>
-  <Action name="new_line"/>
-  <Action name="new_other"/>
-</ToolBar>
 <ToolBar name="points_toolbar">
   <Action name="objects_new_normalpoint" />
   <Action name="objects_new_midpoint" />
