@@ -74,7 +74,7 @@ Coordinate calcIntersectionPoint( const LineData& l1, const LineData& l2 )
   long double yd=dyd;
 
   long double nx, ny;
-  if ((fabsl(xb - xa)> 0.00001) && (fabsl(xd - xc) > 0.00001))
+  if ((fabs(xb - xa)> 0.00001) && (fabs(xd - xc) > 0.00001))
   {
     // we calc these separately to avoid rounding problems..
 //       long double a = (yb-ya)/(xb-xa);
@@ -100,7 +100,7 @@ Coordinate calcIntersectionPoint( const LineData& l1, const LineData& l2 )
     ny = (nx-xa)*(yb-ya)/(xb-xa)+ya;
   }
   else // we would have had a divide by zero
-    if ( fabsl( yb-ya ) > 0.00001 && fabsl( yd-yc ) > 0.00001 )
+    if ( fabs( yb-ya ) > 0.00001 && fabs( yd-yc ) > 0.00001 )
     {
       // so now, we first calc the y values, and then the x's...
       long double a = (xb-xa)/(yb-ya);
@@ -108,15 +108,15 @@ Coordinate calcIntersectionPoint( const LineData& l1, const LineData& l2 )
       ny = ( xc - xa + ya*a - yc*b ) / (a-b);
       nx = ( ny - ya)*a + xa;
     }
-    else if ( fabsl(yb-ya) > 0.00001 && fabsl( xd - xc ) > 0.00001 )
+    else if ( fabs(yb-ya) > 0.00001 && fabs( xd - xc ) > 0.00001 )
     {
       nx = xb; ny = yd;
     }
-    else if ( fabsl( yd - yc ) > 0.00001 && fabsl( xb - xa ) > 0.00001 )
+    else if ( fabs( yd - yc ) > 0.00001 && fabs( xb - xa ) > 0.00001 )
     {
       nx = xd; ny = yb;
     }
-    else if ( fabsl( yd - yc ) <= 0.00001 && fabsl( xd - xc ) <= 0.00001 )
+    else if ( fabs( yd - yc ) <= 0.00001 && fabs( xd - xc ) <= 0.00001 )
     {
       // this is a bogus value, but better that than a SIGNULL,
       // right ?
