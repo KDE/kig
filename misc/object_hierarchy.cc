@@ -383,7 +383,7 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
 
     tmp = e.attribute( "id" );
     uint id = tmp.toInt( &ok );
-    if ( ! ok ) continue;
+    assert( ok );
 
     mnumberofargs = kMax( id, mnumberofargs );
 
@@ -400,7 +400,7 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
 
     tmp = e.attribute( "id" );
     int id = tmp.toInt( &ok );
-    if ( ! ok ) continue;       // could be better :(
+    assert( ok );
 
     tmp = e.attribute( "action" );
     Node* newnode = 0;
@@ -409,16 +409,15 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
       // ApplyTypeNode
       QCString typen = e.attribute( "type" ).latin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
-      if ( ! type ) continue;   // anyone got a better idea on
-                                // reporting errors here ?
+      assert( type );
       std::vector<int> parents;
       for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
       {
         QDomElement q = p.toElement();
-        if ( q.isNull() ) continue; // see above
-        if ( q.tagName() != "arg" ) continue;
+        assert( !q.isNull() ); // see above
+        assert ( q.tagName() == "arg" );
         int pid = q.text().toInt(&ok );
-        if ( ! ok ) continue;
+        assert( ok );
         parents.push_back( pid - 1 );
       };
       newnode = new ApplyTypeNode( type, parents );
@@ -429,15 +428,15 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
       QCString propname = e.attribute( "property" ).latin1();
       QDomElement arge = e.firstChild().toElement();
       int parent = arge.text().toInt( &ok );
-      if ( ! ok ) continue;
+      assert( ok );
       newnode = new FetchPropertyNode( parent - 1, propname );
     }
     else
     {
       // PushStackNode
-      if ( e.attribute( "action" ) != "push" ) continue;
+      assert( e.attribute( "action" ) == "push" );
       QString typen = e.attribute( "type" );
-      if ( typen.isNull() ) continue;
+      assert ( !typen.isNull() );
       ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e );
       newnode = new PushStackNode( imp );
     };
