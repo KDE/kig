@@ -1,3 +1,8 @@
+2003-12-10  Dominique Devriese  <devriese@kde.org>
+
+	* Fix a crash when using a macro having the moving point of a
+	locus as its argument, reported by Marco Zoso.
+
 2003-11-14  Dominique Devriese  <devriese@kde.org>
 
 	* Fix two crashes in TextLabelRedefineMode.

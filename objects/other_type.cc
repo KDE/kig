@@ -209,7 +209,21 @@ const ObjectImpType* LocusType::impRequirement( const ObjectImp* o, const Args& 
   if ( o == parents[0] || o == parents[1] )
     return margsparser.impRequirement( o, firsttwo );
   else
-    return ObjectImp::stype();
+  {
+    const HierarchyImp* h = dynamic_cast<const HierarchyImp*>( parents[0] );
+    if (  h )
+    {
+      PointImp* p = new PointImp( Coordinate() );
+      Args hargs( parents.begin()+ 2, parents.end() );
+      hargs.push_back( p );
+      ArgsParser hparser = h->data().argParser();
+      const ObjectImpType* ret = hparser.impRequirement( o, hargs );
+      delete p;
+      return ret;
+    }
+    else
+      return ObjectImp::stype();
+  };
 }
 
 const LocusType* LocusType::instance()
