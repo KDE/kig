@@ -463,8 +463,8 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_hexagonbcv" ) );
 
     c = new PoligonBCVConstructor(
-	I18N_NOOP( "Eptagon with given center" ),
-	I18N_NOOP( "Construct an eptagon with a given center and vertex." ),
+	I18N_NOOP( "Heptagon with given center" ),
+	I18N_NOOP( "Construct a heptagon with a given center and vertex." ),
 	"poligonbcv",
 	7 );
     ctors->add( c );
@@ -472,15 +472,15 @@ void setupBuiltinStuff()
 
     c = new PoligonBCVConstructor(
 	I18N_NOOP( "Octagon with given center" ),
-	I18N_NOOP( "Construct an ogtagon with a given center and vertex." ),
+	I18N_NOOP( "Construct an octagon with a given center and vertex." ),
 	"poligonbcv",
 	8 );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_octagonbcv" ) );
 
     c = new PoligonBCVConstructor(
-	I18N_NOOP( "Ennagon with given center" ),
-	I18N_NOOP( "Construct a ennagon with a given center and vertex." ),
+	I18N_NOOP( "Nonagon with given center" ),
+	I18N_NOOP( "Construct a nonagon with a given center and vertex." ),
 	"poligonbcv",
 	9 );
     ctors->add( c );

@@ -68,7 +68,7 @@
 	<ActionList name="user_circle_types" />
       </Menu>
       <Menu name="new_poligon" icon="pentagonbcv">
-	<text>&amp;Poligons</text>
+	<text>&amp;Polygons</text>
 	<Action name="objects_new_pentagonbcv" />
 	<Action name="objects_new_eptagonbcv" />
 	<Action name="objects_new_ennagonbcv" />

@@ -27,16 +27,16 @@
 #include <klocale.h>
 #include <cmath>
 
-static const char constructpoligonthroughpointstat[] = I18N_NOOP( "Construct a poligon with this vertex" );
+static const char constructpoligonthroughpointstat[] = I18N_NOOP( "Construct a polygon with this vertex" );
 
-static const char constructpoligonwithcenterstat[] = I18N_NOOP( "Construct a poligon with this center" );
+static const char constructpoligonwithcenterstat[] = I18N_NOOP( "Construct a polygon with this center" );
 
 static const ArgsParser::spec argsspecPoligonBCV[] =
 {
   { PointImp::stype(), constructpoligonwithcenterstat,
-    I18N_NOOP( "Select the center of the new poligon..." ), false },
+    I18N_NOOP( "Select the center of the new polygon..." ), false },
   { PointImp::stype(), constructpoligonthroughpointstat,
-    I18N_NOOP( "Select a vertex for the new poligon..." ), true },
+    I18N_NOOP( "Select a vertex for the new polygon..." ), true },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };

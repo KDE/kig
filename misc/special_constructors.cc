@@ -348,7 +348,7 @@ QString PoligonBCVConstructor::useText( const ObjectCalcer&, const std::vector<O
   if ( msides == 5 )
     return i18n( "Construct the pentagon with this center" );
 
-  return i18n( "Construct the poligon with this center" );
+  return i18n( "Construct the polygon with this center" );
 }
 
 void PoligonBCVConstructor::plug( KigPart*, KigGUIAction* )
