@@ -1,7 +1,6 @@
 * simple:
 - property icons that we can show in the popup menu's that use
   properties..
-- make the scroll wheel work in the kig window..
 - an arc ( nl: cirkelboog ) by the center, start and end point.  arc
   by begin, end and in-between point can be done with a macro..
 
