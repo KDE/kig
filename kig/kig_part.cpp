@@ -72,7 +72,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   tmp = l.loadIcon("window_fullscreen", KIcon::User);
   KAStartKioskMode = new KAction (i18n("Full screen"), tmp, 0, m_widget, SLOT(startKioskMode()), actionCollection(), "full_screen");
 
-  KANewMacro = new KAction (i18n("New macro"), 0, this, SLOT(newMacro()), actionCollection(), "macro_action");
+  tmp = l.loadIcon("macro", KIcon::User);
+  KANewMacro = new KAction (i18n("New macro"), tmp, 0, this, SLOT(newMacro()), actionCollection(), "macro_action");
 
   KAConfigureTypes = new KAction (i18n("Edit Types"), 0, this, SLOT(editTypes()), actionCollection(), "types_edit");
 
@@ -103,6 +104,11 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
 	  (this,
 	   "perpendicular",
 	   i18n("Perpendicular"),
+	   0));
+  addType(new TType<LineParallel>
+	  (this,
+	   "parallel",
+	   i18n("Parallel"),
 	   0));
   // circles
   addType(new TType<CircleBCP>
