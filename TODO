@@ -1,4 +1,6 @@
 * simple:
+- property icons that we can show in the popup menu's that use
+  properties..
 - implement the helpSlot()'s in the wizards..
 - make the scroll wheel work in the kig window..
 - an arc ( nl: cirkelboog ) by the center, start and end point.  arc
