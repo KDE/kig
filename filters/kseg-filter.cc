@@ -22,9 +22,11 @@
 
 #include "../kig/kig_part.h"
 #include "../objects/object.h"
+#include "../objects/bogus_imp.h"
 #include "../objects/object_factory.h"
 #include "../objects/line_type.h"
 #include "../objects/circle_type.h"
+#include "../objects/conic_types.h"
 #include "../objects/other_type.h"
 #include "../objects/point_type.h"
 #include "../objects/transform_types.h"
@@ -77,6 +79,45 @@ static Coordinate readKSegCoordinate( QDataStream& stream )
   t *= 14;
   t /= 600;
   return t + Coordinate( -7, -7 );
+};
+
+static RealObject* intersectionPoint( const Objects& parents, Objects& ret, int which )
+{
+  if ( parents.size() != 2 ) return 0;
+  int nlines = 0;
+  int nconics = 0;
+  for ( int i = 0; i < 2; ++i )
+  {
+    if ( parents[i]->hasimp( ObjectImp::ID_LineImp ) ) ++nlines;
+    else if ( parents[i]->hasimp( ObjectImp::ID_ConicImp ) ) ++nconics;
+    else return 0;
+  };
+  if ( nlines == 2 )
+    return which == 1 ? new RealObject( LineLineIntersectionType::instance(), parents ) : 0;
+  else if ( nlines == 1 && nconics == 1 )
+  {
+    Objects intparents( parents );
+    ret.push_back( new DataObject( new IntImp( which ) ) );
+    intparents.push_back( ret.back() );
+    return new RealObject( ConicLineIntersectionType::instance(), intparents );
+  }
+  else if ( nlines == 0 && nconics == 2 )
+  {
+    Objects rparents( parents );
+    ret.push_back( new DataObject( new IntImp( 1 ) ) );
+    rparents.push_back( ret.back() );
+    ret.push_back( new DataObject( new IntImp( 1 ) ) );
+    rparents.push_back( ret.back() );
+    ret.push_back( new RealObject( ConicRadicalType::instance(), rparents ) );
+    ret.back()->setShown( false );
+    Objects iparents;
+    iparents.push_back( parents[0] );
+    iparents.push_back( ret.back() );
+    ret.push_back( new DataObject( new IntImp( which ) ) );
+    iparents.push_back( ret.back() );
+    return new RealObject( ConicLineIntersectionType::instance(), iparents );
+  }
+  else return 0;
 };
 
 KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& todoc )
@@ -267,12 +308,17 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
         }
         case G_INTERSECTION_POINT:
         {
-          // the intersection of two abstract lines..
-          if ( parents.size() != 2 ) return ParseError;
-          point = new RealObject( LineLineIntersectionType::instance(), parents );
+          // KSeg has somewhat weird intersection objects..
+          // for all objects G_INTERSECTION_POINT gets the
+          // first intersection of its parents, G_INTERSECTION2_POINT
+          // represents the second, if present.
+          point = intersectionPoint( parents, ret, 1 );
+          if ( ! point ) return ParseError;
           break;
         }
         case G_INTERSECTION2_POINT:
+          point = intersectionPoint( parents, ret, -1 );
+          if ( ! point ) return ParseError;
           break;
         case G_MID_POINT:
           // midpoint of a segment..
