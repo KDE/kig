@@ -816,7 +816,9 @@ const CoordinateSystem* KigDocument::getCoordinateSystem()
 KigObjectsPopup* KigDocument::getPopup( const Objects& os, KigView* v )
 {
   KigObjectsPopup* m = new KigObjectsPopup( this, v, os );
-  if( m->isValid() ) return m; else return 0;
+  if( m->isValid() ) return m;
+  delete m;
+  return 0;
 }
 
 void KigDocument::invertSelection( const Objects& os )
@@ -824,6 +826,16 @@ void KigDocument::invertSelection( const Objects& os )
   for ( Object* i = objects.first(); i; i = objects.next())
     {
       i->setSelected( !i->getSelected() );
+    };
+  emit repaintObjects( os );
+}
+
+void KigDocument::setColor( const Objects& os, const QColor& c )
+{
+  Object* o;
+  for( Objects::iterator i( os ); (o = i.current()); ++i )
+    {
+      o->setColor( c );
     };
   emit repaintObjects( os );
 }

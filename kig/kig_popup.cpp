@@ -29,7 +29,9 @@ KigObjectsPopup::KigObjectsPopup( KigDocument* d, KigView* v, const Objects& os 
   : QPopupMenu( d->widget(), "Object Popup Menu" ),
     mDoc( d ),
     mView( v ),
-    mObjs( os )
+    mObjs( os ),
+    mValid(true),
+    mColorPopup( 0 )
 {
   if( os.count() == 0 )
     {
@@ -65,6 +67,14 @@ KigObjectsPopup::KigObjectsPopup( KigDocument* d, KigView* v, const Objects& os 
 	insertItem( i18n( "Unselect %1 objects" ).arg( mObjs.count() ),
 		    this, SLOT( unselect() ) );
     };
+  mColorPopup = colorMenu( this );
+  connect( mColorPopup, SIGNAL( activated( int ) ), this, SLOT( setColor( int ) ) );
+  insertItem( i18n( "Set Color..." ), mColorPopup );
+}
+
+KigObjectsPopup::~KigObjectsPopup()
+{
+    
 }
 
 void KigObjectsPopup::select()
@@ -79,7 +89,7 @@ void KigObjectsPopup::startMoving()
   if( !o->getSelected() )
     {
       mDoc->clearSelection();
-      mDoc->selectObjects( mObjs );
+      mDoc->selectObject( o );
     };
   mView->startMovingSos( mView->mapFromGlobal( mStart ) );
 }
@@ -94,4 +104,45 @@ int KigObjectsPopup::exec( const QPoint& p )
   kdDebug() << k_funcinfo << endl;
   mStart = p;
   return QPopupMenu::exec( p );
+}
+
+QPopupMenu* KigObjectsPopup::colorMenu( QWidget* parent )
+{
+  static QPopupMenu* m = 0;
+  if( !m )
+    {
+      m = new QPopupMenu( parent, "color popup menu" );
+      const QColor* c = 0;
+      QPixmap p( 50, 20 );
+      for( int i = 0; ( c = color( i ) ); ++i )
+	{
+	  p.fill( *c );
+	  m->insertItem( p );
+	};
+    };
+  return m;
+}
+
+void KigObjectsPopup::setColor( int c )
+{
+  const QColor* d = color( mColorPopup->indexOf(c) );
+  assert( d );
+  mDoc->setColor( mObjs, *d );
+}
+
+const QColor* KigObjectsPopup::color( int i )
+{
+  static const QColor* colors[] =
+    { &Qt::blue,
+      &Qt::black,
+      &Qt::gray,
+      &Qt::lightGray,
+      &Qt::green,
+      &Qt::cyan,
+      &Qt::yellow,
+      &Qt::darkRed,
+      0
+    };
+  if( i < 0 || i > 8 ) return 0;
+  return colors[i];
 }

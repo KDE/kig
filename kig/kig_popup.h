@@ -37,10 +37,11 @@ public slots:
   void select();
   void unselect();
   void startMoving();
+  void setColor( int );
   
 public:
   KigObjectsPopup( KigDocument*, KigView*, const Objects& os );
-  ~KigObjectsPopup() {};
+  ~KigObjectsPopup();
   bool isValid() const { return mValid; };
   int exec( const QPoint& p );
 protected:
@@ -49,6 +50,9 @@ protected:
   Objects mObjs;
   QPoint mStart;
   bool mValid;
+  QPopupMenu* mColorPopup;
+  static const QColor* color( int i );
+  static QPopupMenu* colorMenu( QWidget* );
 };
 
 #endif

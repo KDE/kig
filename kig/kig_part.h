@@ -156,6 +156,9 @@ public:
   // sets the obc to obc, deletes an old obc if required
   void newObc(Object* obc);
 
+  // change the specified objects' color...
+  void setColor( const Objects& o, const QColor& c );
+
   // invert selection...
   void invertSelection( const Objects& os );
 

@@ -287,6 +287,7 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 	  m = document->getPopup( document->getSos(), this );
 	};
       if( m ) m->exec( mapToGlobal( plc ) );
+      delete m;
     }
   else if (document->canAddObjects() && (e->button() == MidButton) && (pmt-plc).manhattanLength() < 4)
     {
