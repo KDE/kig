@@ -46,7 +46,7 @@
 #include "../objects/polygon_imp.h"
 #include "../objects/tangent_type.h"
 #include "../objects/centerofcurvature_type.h"
-#include "../objects/poligon_type.h"
+#include "../objects/polygon_type.h"
 
 #include <qpen.h>
 

@@ -15,7 +15,7 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#include "poligon_type.h"
+#include "polygon_type.h"
 
 #include "bogus_imp.h"
 #include "line_imp.h"

@@ -7,7 +7,7 @@ noinst_HEADERS=\
 	bogus_imp.h \
 	circle_imp.h \
 	circle_type.h \
-	poligon_type.h \
+	polygon_type.h \
 	common.h \
 	conic_imp.h \
 	conic_types.h \
@@ -45,7 +45,7 @@ libobjects_la_SOURCES=\
 	bogus_imp.cc \
 	circle_imp.cc \
 	circle_type.cc \
-	poligon_type.cc \
+	polygon_type.cc \
 	common.cc \
 	conic_imp.cc \
 	conic_types.cc \

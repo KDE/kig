@@ -39,7 +39,7 @@
 #include "../objects/tests_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
-#include "../objects/poligon_type.h"
+#include "../objects/polygon_type.h"
 
 #include <klocale.h>
 
