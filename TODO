@@ -41,11 +41,7 @@
   see because it's equal to the line we project upon ).  It would be
   useful for points though.
 
-- When selecting an argument of a certain type, show something like
-   "Select a vector", so that the user is not confused, looking for an
-   object he can't find ( maybe using a side list with an arrow for every
-   step of the construction and a KToggleAction like "Settings->Show Side
-   List" to show/hide it ).  In addition, maybe we should check
+- When selecting an argument of a certain type, maybe we should check
    whether the required arguments are really there, before telling the
    user to select them.  Then we could give an error telling the user
    to first construct the other objects.  An exception should be made
