@@ -67,7 +67,7 @@ public:
   myvector<T>& operator|=( const myvector<T>& os )
     { upush( os ); return *this; };
 
-  // remove all occurences of o..
+  // remove all occurrences of o..
   void remove( const T& o );
   void remove_first( const T& o );
 

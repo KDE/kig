@@ -87,13 +87,13 @@ Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t );
 Coordinate calcPointOnPerpend( const Coordinate& dir, const Coordinate& t );
 
 /**
- * this returns a point, so that the line throught point t
+ * this returns a point, so that the line through point t
  * and the point returned is parallel with the line l
  */
 Coordinate calcPointOnParallel( const LineData& l, const Coordinate& t );
 
 /**
- * this returns a point, so that the line throught point t
+ * this returns a point, so that the line through point t
  * and the point returned is parallel with the direction given in dir...
  */
 Coordinate calcPointOnParallel( const Coordinate& dir, const Coordinate& t );
