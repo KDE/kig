@@ -26,7 +26,7 @@
 class LineData;
 
 class ObjectABType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
 protected:
   ObjectABType( const char* fulltypename, const ArgParser::spec* argsspec, int n );
@@ -40,7 +40,7 @@ public:
 };
 
 class ObjectLPType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
 protected:
   ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n );

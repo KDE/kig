@@ -24,7 +24,7 @@
 class ConicRadicalConstructor
   : public StandardConstructorBase
 {
-  const ObjectType* mtype;
+  const ArgparserObjectType* mtype;
   const ArgParser mparser;
 public:
   ConicRadicalConstructor();

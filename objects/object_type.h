@@ -32,21 +32,17 @@ class ObjectType
 {
   const char* mfulltypename;
 protected:
-  const ArgParser margsparser;
-  ObjectType( const char fulltypename[],
-              const struct ArgParser::spec margsspec[],
-              int n );
+  ObjectType( const char fulltypename[] );
 public:
   virtual ~ObjectType();
 
   enum {
-    ID_BuiltinType,
     ID_CustomType,
-    ID_UserDefinedType,
 
     ID_ConstrainedPointType,
     ID_LocusType
   };
+
   virtual bool inherits( int type ) const;
 
   virtual ObjectImp* calc( const Args& parents ) const = 0;
@@ -57,11 +53,10 @@ public:
 
   const char* fullName() const;
 
-  const ArgParser& argsParser() const;
-
-  // convenience function, equivalent to argsParser().impRequirement(
-  // o, parents );
-  int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  // Supposing that parents.with( o ) would be given as parents to
+  // this type's calc function, this function returns the ObjectImp id
+  // that o should at least have..
+  virtual int impRequirement( const ObjectImp* o, const Args& parents ) const = 0;
 
   // returns the ObjectImp id of the ObjectImp's produced by this
   // ObjectType..  if the ObjectType can return different sorts of
@@ -71,20 +66,20 @@ public:
 };
 
 /**
- * This is a base class for builting types.  Their being builtin has
- * the advantage that we don't need to save them..
+ * This is a convenience subclass of ObjectType that a type should
+ * inherit from if its parents can be specified in an argparser..
  */
-class BuiltinType
+class ArgparserObjectType
   : public ObjectType
 {
-  typedef ObjectType Parent;
+protected:
+  const ArgParser margsparser;
+  ArgparserObjectType( const char fulltypename[],
+                       const struct ArgParser::spec argsspec[],
+                       int n );
 public:
-  BuiltinType( const char fulltypename[],
-               const struct ArgParser::spec margsspec[],
-               int n );
-  ~BuiltinType();
-
-  bool inherits( int type ) const;
+  int impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ArgParser& argParser() const;
 };
 
 /**
@@ -101,7 +96,7 @@ public:
  * CustomType too..
  */
 class CustomType
-  : public ObjectType
+  : public ArgparserObjectType
 {
   typedef ObjectType Parent;
 public:

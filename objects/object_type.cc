@@ -29,11 +29,8 @@ ObjectType::~ObjectType()
 {
 }
 
-ObjectType::ObjectType( const char fulltypename[],
-                        const struct ArgParser::spec argsspec[],
-                        int n )
-  : mfulltypename( fulltypename ),
-    margsparser( argsspec, n )
+ObjectType::ObjectType( const char fulltypename[] )
+  : mfulltypename( fulltypename )
 {
 }
 
@@ -47,31 +44,9 @@ void ObjectType::move( RealObject*, const Coordinate&,
 {
 }
 
-const ArgParser& ObjectType::argsParser() const
-{
-  return margsparser;
-}
-
 bool ObjectType::inherits( int ) const
 {
   return false;
-}
-
-BuiltinType::BuiltinType(
-  const char fulltypename[],
-  const struct ArgParser::spec margsspec[],
-  int n )
-  : ObjectType( fulltypename, margsspec, n )
-{
-}
-
-BuiltinType::~BuiltinType()
-{
-}
-
-bool BuiltinType::inherits( int type ) const
-{
-  return type == ID_BuiltinType ? true : Parent::inherits( type );
 }
 
 bool CustomType::inherits( int type ) const
@@ -86,12 +61,26 @@ CustomType::~CustomType()
 CustomType::CustomType( const char fulltypename[],
                         const struct ArgParser::spec argsspec[],
                         int n )
-  : ObjectType( fulltypename, argsspec, n )
+  : ArgparserObjectType( fulltypename, argsspec, n )
 {
 }
 
-int ObjectType::impRequirement( const ObjectImp* o, const Args& parents ) const
+ArgparserObjectType::ArgparserObjectType( const char fulltypename[],
+                                          const struct ArgParser::spec argsspec[],
+                                          int n )
+  : ObjectType( fulltypename ), margsparser( argsspec, n )
+{
+
+}
+
+int ArgparserObjectType::impRequirement( const ObjectImp* o, const Args& parents ) const
 {
   return margsparser.impRequirement( o, parents );
 }
+
+const ArgParser& ArgparserObjectType::argParser() const
+{
+  return margsparser;
+}
+
 

@@ -32,7 +32,6 @@ class RealObject;
 class DataObject;
 class ObjectImp;
 class ObjectType;
-class BuiltinType;
 class CustomType;
 class Property;
 class KigPainter;

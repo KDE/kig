@@ -38,7 +38,7 @@ static const struct ArgParser::spec argsspec5p[] =
 };
 
 ConicB5PType::ConicB5PType()
-  : BuiltinType( "ConicB5P", argsspec5p, 5 )
+  : ArgparserObjectType( "ConicB5P", argsspec5p, 5 )
 {
 }
 
@@ -74,7 +74,7 @@ static const ArgParser::spec argsspecllp[] =
 };
 
 ConicBAAPType::ConicBAAPType()
-  : BuiltinType( "ConicBAAP", argsspecllp, 3 )
+  : ArgparserObjectType( "ConicBAAP", argsspecllp, 3 )
 {
 }
 
@@ -115,7 +115,7 @@ ObjectImp* ConicBFFPType::calc( const Args& parents ) const
 }
 
 ConicBFFPType::ConicBFFPType( const char* fullname, const ArgParser::spec* spec, int n )
-  : ObjectType( fullname, spec, n )
+  : ArgparserObjectType( fullname, spec, n )
 {
 
 }
@@ -198,7 +198,7 @@ static const struct ArgParser::spec argsspeclpp[] =
 };
 
 ConicBDFPType::ConicBDFPType()
-  : BuiltinType( "ConicBDFP", argsspeclpp, 3 )
+  : ArgparserObjectType( "ConicBDFP", argsspeclpp, 3 )
 {
 }
 
@@ -246,7 +246,7 @@ static const ArgParser::spec argsspecParabolaBTP[] =
 };
 
 ParabolaBTPType::ParabolaBTPType()
-  : ObjectType( "ParabolaBTP", argsspecParabolaBTP, 3 )
+  : ArgparserObjectType( "ParabolaBTP", argsspecParabolaBTP, 3 )
 {
 }
 
@@ -279,7 +279,7 @@ static const ArgParser::spec argsspeccl[] =
 };
 
 ConicPolarPointType::ConicPolarPointType()
-  : BuiltinType( "ConicPolarPoint", argsspeccl, 2 )
+  : ArgparserObjectType( "ConicPolarPoint", argsspeccl, 2 )
 {
 }
 
@@ -313,7 +313,7 @@ static const ArgParser::spec argsspeccp[] =
 };
 
 ConicPolarLineType::ConicPolarLineType()
-  : BuiltinType( "ConicPolarLine", argsspeccp, 2 )
+  : ArgparserObjectType( "ConicPolarLine", argsspeccp, 2 )
 {
 }
 
@@ -346,7 +346,7 @@ static const ArgParser::spec argsspecc[] =
 };
 
 ConicDirectrixType::ConicDirectrixType()
-  : BuiltinType( "ConicDirectrix", argsspecc, 1 )
+  : ArgparserObjectType( "ConicDirectrix", argsspecc, 1 )
 {
 }
 
@@ -387,7 +387,7 @@ static const ArgParser::spec argsspec4p[] =
 };
 
 EquilateralHyperbolaB4PType::EquilateralHyperbolaB4PType()
-  : BuiltinType( "EquilateralHyperbolaB4P", argsspec4p, 4 )
+  : ArgparserObjectType( "EquilateralHyperbolaB4P", argsspec4p, 4 )
 {
 }
 
@@ -454,7 +454,7 @@ static const ArgParser::spec argsspecci[] =
 };
 
 ConicAsymptoteType::ConicAsymptoteType()
-  : BuiltinType( "ConicAsymptote", argsspecci, 2 )
+  : ArgparserObjectType( "ConicAsymptote", argsspecci, 2 )
 {
 }
 
@@ -493,7 +493,7 @@ static const ArgParser::spec argsspecccl[] =
 };
 
 ConicRadicalType::ConicRadicalType()
-  : BuiltinType( "ConicRadical", argsspecccl, 4 )
+  : ArgparserObjectType( "ConicRadical", argsspecccl, 4 )
 {
 }
 

@@ -31,7 +31,7 @@
  * Conics..
  */
 class ConicLineIntersectionType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicLineIntersectionType();
   ~ConicLineIntersectionType();
@@ -42,7 +42,7 @@ public:
 };
 
 class LineLineIntersectionType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   LineLineIntersectionType();
   ~LineLineIntersectionType();
@@ -53,7 +53,7 @@ public:
 };
 
 class LineCubicIntersectionType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   LineCubicIntersectionType();
   ~LineCubicIntersectionType();

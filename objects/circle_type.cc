@@ -64,7 +64,7 @@ static const ArgParser::spec argsspecCircleBTP[] =
 };
 
 CircleBTPType::CircleBTPType()
-  : ObjectType( "CircleBTP", argsspecCircleBTP, 3 )
+  : ArgparserObjectType( "CircleBTP", argsspecCircleBTP, 3 )
 {
 }
 

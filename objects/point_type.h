@@ -16,14 +16,14 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef POINT_TYPE_H
-#define POINT_TYPE_H
+#ifndef KIG_OBJECTS_POINT_TYPE_H
+#define KIG_OBJECTS_POINT_TYPE_H
 
 #include "base_type.h"
 #include "common.h"
 
 class FixedPointType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   FixedPointType();
   ~FixedPointType();
@@ -40,7 +40,7 @@ public:
 };
 
 class ConstrainedPointType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConstrainedPointType();
   ~ConstrainedPointType();

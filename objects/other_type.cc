@@ -39,7 +39,7 @@ static const ArgParser::spec argsspecAngle[] =
 };
 
 AngleType::AngleType()
-  : ObjectType( "Angle", argsspecAngle, 3 )
+  : ArgparserObjectType( "Angle", argsspecAngle, 3 )
 {
 }
 

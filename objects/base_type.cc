@@ -26,7 +26,7 @@
 #include "../misc/common.h"
 
 ObjectABType::ObjectABType( const char* fulltypename, const ArgParser::spec* spec, int n )
-  : BuiltinType( fulltypename, spec, n )
+  : ArgparserObjectType( fulltypename, spec, n )
 {
 }
 
@@ -61,7 +61,7 @@ void ObjectABType::move( Object* o,
 }
 
 ObjectLPType::ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n )
-  : BuiltinType( fullname, spec, n )
+  : ArgparserObjectType( fullname, spec, n )
 {
 }
 

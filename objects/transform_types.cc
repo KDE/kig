@@ -34,7 +34,7 @@ static const ArgParser::spec argsspecav[] =
 };
 
 TranslatedType::TranslatedType()
-  : BuiltinType( "Translation", argsspecav, 2 )
+  : ArgparserObjectType( "Translation", argsspecav, 2 )
 {
 }
 
@@ -66,7 +66,7 @@ static const ArgParser::spec argsspecap[] =
 };
 
 PointReflectionType::PointReflectionType()
-  : BuiltinType( "PointReflection", argsspecap, 2 )
+  : ArgparserObjectType( "PointReflection", argsspecap, 2 )
 {
 }
 
@@ -98,7 +98,7 @@ static const ArgParser::spec argsspecal[] =
 };
 
 LineReflectionType::LineReflectionType()
-  : BuiltinType( "LineReflection", argsspecal, 2 )
+  : ArgparserObjectType( "LineReflection", argsspecal, 2 )
 {
 }
 
@@ -131,7 +131,7 @@ static const ArgParser::spec argsspecpa[] =
 };
 
 RotationType::RotationType()
-  : BuiltinType( "Rotation", argsspecpa, 3 )
+  : ArgparserObjectType( "Rotation", argsspecpa, 3 )
 {
 }
 
@@ -166,7 +166,7 @@ static const ArgParser::spec argsspecps[] =
 };
 
 ScalingOverCenterType::ScalingOverCenterType()
-  : BuiltinType( "ScalingOverCenter", argsspecps, 3 )
+  : ArgparserObjectType( "ScalingOverCenter", argsspecps, 3 )
 {
 }
 
@@ -201,7 +201,7 @@ static const ArgParser::spec argsspecls[] =
 };
 
 ScalingOverLineType::ScalingOverLineType()
-  : BuiltinType( "ScalingOverLine", argsspecls, 3 )
+  : ArgparserObjectType( "ScalingOverLine", argsspecls, 3 )
 {
 }
 
@@ -236,7 +236,7 @@ static const ArgParser::spec argsspecra[] =
 };
 
 ProjectiveRotationType::ProjectiveRotationType()
-  : BuiltinType( "ProjectiveRotation", argsspecra, 3 )
+  : ArgparserObjectType( "ProjectiveRotation", argsspecra, 3 )
 {
 }
 
@@ -277,7 +277,7 @@ static const ArgParser::spec argsspecpl[] =
 };
 
 CastShadowType::CastShadowType()
-  : BuiltinType( "CastShadow", argsspecpl, 3 )
+  : ArgparserObjectType( "CastShadow", argsspecpl, 3 )
 {
 }
 

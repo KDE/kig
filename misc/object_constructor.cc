@@ -88,10 +88,10 @@ void StandardConstructorBase::handlePrelim(
 }
 
 SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
-  const ObjectType* t, const char* descname,
+  const ArgparserObjectType* t, const char* descname,
   const char* desc, const char* iconfile )
   : StandardConstructorBase( descname, desc, iconfile,
-                             t->argsParser() ),
+                             t->argParser() ),
     mtype( t )
 {
 }
@@ -128,22 +128,22 @@ StandardConstructorBase::~StandardConstructorBase()
 }
 
 MultiObjectTypeConstructor::MultiObjectTypeConstructor(
-  const ObjectType* t, const char* descname,
+  const ArgparserObjectType* t, const char* descname,
   const char* desc, const char* iconfile,
   const std::vector<int>& params )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mtype( t ), mparams( params ),
-    mparser( t->argsParser().without( ObjectImp::ID_IntImp ) )
+    mparser( t->argParser().without( ObjectImp::ID_IntImp ) )
 {
 }
 
 MultiObjectTypeConstructor::MultiObjectTypeConstructor(
-  const ObjectType* t, const char* descname,
+  const ArgparserObjectType* t, const char* descname,
   const char* desc, const char* iconfile,
   int a, int b, int c, int d )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mtype( t ), mparams(),
-    mparser( t->argsParser().without( ObjectImp::ID_IntImp ) )
+    mparser( t->argParser().without( ObjectImp::ID_IntImp ) )
 {
   mparams.push_back( a );
   mparams.push_back( b );

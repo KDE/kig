@@ -34,7 +34,7 @@ public:
 };
 
 class CircleBTPType
-  : public ObjectType
+  : public ArgparserObjectType
 {
   CircleBTPType();
   ~CircleBTPType();

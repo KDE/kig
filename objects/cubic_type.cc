@@ -40,7 +40,7 @@ static const struct ArgParser::spec argsspec9p[] =
 };
 
 CubicB9PType::CubicB9PType()
-  : BuiltinType( "CubicB9P", argsspec9p, 9 )
+  : ArgparserObjectType( "CubicB9P", argsspec9p, 9 )
 {
 }
 
@@ -78,7 +78,7 @@ static const ArgParser::spec argsspec6p[] =
 };
 
 CubicNodeB6PType::CubicNodeB6PType()
-  : BuiltinType( "CubicNodeB6P", argsspec6p, 6 )
+  : ArgparserObjectType( "CubicNodeB6P", argsspec6p, 6 )
 {
 }
 
@@ -112,7 +112,7 @@ static const ArgParser::spec argsspec4p[] =
 };
 
 CubicCuspB4PType::CubicCuspB4PType()
-  : BuiltinType( "CubicCuspB4P", argsspec4p, 4 )
+  : ArgparserObjectType( "CubicCuspB4P", argsspec4p, 4 )
 {
 }
 

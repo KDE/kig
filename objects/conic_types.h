@@ -22,7 +22,7 @@
 #include "base_type.h"
 
 class ConicB5PType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicB5PType();
   ~ConicB5PType();
@@ -33,7 +33,7 @@ public:
 };
 
 class ConicBAAPType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicBAAPType();
   ~ConicBAAPType();
@@ -44,7 +44,7 @@ public:
 };
 
 class ConicBFFPType
-  : public ObjectType
+  : public ArgparserObjectType
 {
 protected:
   ConicBFFPType( const char* fullname, const ArgParser::spec*, int n );
@@ -78,7 +78,7 @@ public:
 };
 
 class ConicBDFPType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicBDFPType();
   ~ConicBDFPType();
@@ -89,7 +89,7 @@ public:
 };
 
 class ParabolaBTPType
-  : public ObjectType
+  : public ArgparserObjectType
 {
   ParabolaBTPType();
   ~ParabolaBTPType();
@@ -100,7 +100,7 @@ public:
 };
 
 class EquilateralHyperbolaB4PType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   EquilateralHyperbolaB4PType();
   ~EquilateralHyperbolaB4PType();
@@ -111,7 +111,7 @@ public:
 };
 
 class ConicPolarPointType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicPolarPointType();
   ~ConicPolarPointType();
@@ -122,7 +122,7 @@ public:
 };
 
 class ConicPolarLineType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicPolarLineType();
   ~ConicPolarLineType();
@@ -133,7 +133,7 @@ public:
 };
 
 class ConicDirectrixType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicDirectrixType();
   ~ConicDirectrixType();
@@ -155,7 +155,7 @@ public:
 };
 
 class ConicAsymptoteType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicAsymptoteType();
   ~ConicAsymptoteType();
@@ -166,7 +166,7 @@ public:
 };
 
 class ConicRadicalType
-  : public BuiltinType
+  : public ArgparserObjectType
 {
   ConicRadicalType();
   ~ConicRadicalType();

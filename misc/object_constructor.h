@@ -26,6 +26,7 @@ class KigPainter;
 class KigDocument;
 class KigGUIAction;
 class KigWidget;
+class ArgparserObjectType;
 class ObjectType;
 class Objects;
 class Object;
@@ -143,10 +144,10 @@ public:
 class SimpleObjectTypeConstructor
   : public StandardConstructorBase
 {
-  const ObjectType* mtype;
+  const ArgparserObjectType* mtype;
 public:
   SimpleObjectTypeConstructor(
-    const ObjectType* t, const char* descname,
+    const ArgparserObjectType* t, const char* descname,
     const char* desc, const char* iconfile );
 
   ~SimpleObjectTypeConstructor();
@@ -176,16 +177,16 @@ public:
 class MultiObjectTypeConstructor
   : public StandardConstructorBase
 {
-  const ObjectType* mtype;
+  const ArgparserObjectType* mtype;
   std::vector<int> mparams;
   ArgParser mparser;
 public:
   MultiObjectTypeConstructor(
-    const ObjectType* t, const char* descname,
+    const ArgparserObjectType* t, const char* descname,
     const char* desc, const char* iconfile,
     const std::vector<int>& params );
   MultiObjectTypeConstructor(
-    const ObjectType* t, const char* descname,
+    const ArgparserObjectType* t, const char* descname,
     const char* desc, const char* iconfile,
     int a, int b, int c = -999, int d = -999 );
   ~MultiObjectTypeConstructor();
