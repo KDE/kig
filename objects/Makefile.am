@@ -10,6 +10,7 @@ libobjects_la_SOURCES=point.cpp object.cpp circle.cpp conic.cpp segment.cpp \
 		normalpoint.cc midpoint.cc label.cc vector.cc \
 		translatedpoint.cc ray.cc mirrorpoint.cc abstractline.cc \
 		arc.cc rotatedpoint.cpp property.cc coordproppoint.cc \
-		radicallines.cpp coniclines.cpp conicsextra.cpp cubic.cpp
+		radicallines.cpp coniclines.cpp conicsextra.cpp cubic.cpp \
+		curve.cc
 libobjects_la_LIBADD=-lm
 METASOURCES=AUTO
