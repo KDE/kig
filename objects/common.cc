@@ -18,6 +18,19 @@
 #include "common.h"
 #include "object_holder.h"
 
+std::vector<ObjectCalcer*> getAllCalcers( const std::vector<ObjectHolder*>& os )
+{
+  std::set<ObjectCalcer*> ret;
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
+        i != os.end(); ++i )
+  {
+    if (  ( *i )->nameCalcer() )
+      ret.insert( ( *i )->nameCalcer() );
+    ret.insert( ( *i )->calcer() );
+  }
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
+}
+
 std::vector<ObjectCalcer*> getCalcers( const std::vector<ObjectHolder*>& os )
 {
   std::vector<ObjectCalcer*> ret;
