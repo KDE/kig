@@ -12,8 +12,6 @@
    circle, evolute.  Most of this is fairly trivial to implement, but
    very cool :)
 
-- a test for checking if two vectors are equal ( this is trivial ).
-
 - let the user select where the vector sum starts, instead of drawing
    it in the start point of the first vector.
 
