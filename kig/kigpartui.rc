@@ -42,7 +42,6 @@
 	<Action name="objects_new_translatedpoint" />
 	<Action name="objects_new_rotatedpoint" />
 	<Action name="objects_new_mirrorpoint" />
-	<Action name="objects_new_centerofcurvature" />
 	<ActionList name="user_point_types" />
       </Menu>
       <Menu name="new_line" icon="line">
@@ -53,7 +52,6 @@
 	<Action name="objects_new_ray" />
 	<Action name="objects_new_linebyvector" />
 	<Action name="objects_new_halflinebyvector" />
-	<Action name="objects_new_tangent" />
 	<ActionList name="user_line_types" />
       </Menu>
       <Menu name="new_circle" icon="circlebps">
@@ -63,7 +61,6 @@
 	<Action name="objects_new_circlebps" />
 	<Action name="objects_new_circlebpd" />
 	<Action name="objects_new_circlebcl" />
-	<Action name="objects_new_osculatingcircle" />
 	<Action name="objects_new_arcbtp" />
 	<Action name="objects_new_arcbcpa" />
 	<ActionList name="user_circle_types" />
@@ -73,7 +70,7 @@
 	<Action name="objects_new_trianglebtp" />
 	<Action name="objects_new_polygonbnp" />
         <Menu name="new_regularpolygon" icon="hexagonbcv">
-	  <text>Regular Poly&amp;gons</text>
+	  <text>Regular Polygons</text>
 	  <Action name="objects_new_equitrianglebcv" />
 	  <Action name="objects_new_squarebcv" />
 	  <Action name="objects_new_pentagonbcv" />
@@ -96,27 +93,31 @@
 	<ActionList name="user_segment_types" />
       </Menu>
       <Menu name="new_conic" icon="conicb5p">
-	<text>Co&amp;nics</text>
+	<text>Co&amp;nics &amp;&amp; Cubics</text>
 	<Action name="objects_new_ellipsebffp" />
 	<Action name="objects_new_hyperbolabffp" />
 	<Action name="objects_new_conicb5p" />
 	<Action name="objects_new_parabolabtp" />
-	<Action name="objects_new_parabolabdp" />
-	<Action name="objects_new_equilateralhyperbolab4p" />
-	<Action name="objects_new_conicbdfp" />
-	<Action name="objects_new_conicbaap" />
-	<Action name="objects_new_linepolar" />
-	<Action name="objects_new_lineconicasymptotes" />
-	<Action name="objects_new_pointpolar" />
 	<ActionList name="user_conic_types" />
-	<Action name="objects_new_linedirectrix" />
-	<Action name="objects_new_lineconicradical" />
-      </Menu>
-      <Menu name="new_cubic">
-	<text>Cu&amp;bics</text>
-	<Action name="objects_new_cubicb9p" />
-	<Action name="objects_new_cubicnodeb6p" />
-	<Action name="objects_new_cubiccuspb4p" />
+	<Menu name="new_moreconics" icon="conicsradicalline">
+	  <text>More conics</text>
+	  <Action name="objects_new_parabolabdp" />
+	  <Action name="objects_new_equilateralhyperbolab4p" />
+	  <Action name="objects_new_conicbdfp" />
+	  <Action name="objects_new_conicbaap" />
+	  <Action name="objects_new_linepolar" />
+	  <Action name="objects_new_lineconicasymptotes" />
+	  <Action name="objects_new_pointpolar" />
+	  <Action name="objects_new_linedirectrix" />
+	  <Action name="objects_new_lineconicradical" />
+        </Menu>
+        <Separator />
+        <Menu name="new_cubic">
+	  <text>Cu&amp;bics</text>
+	  <Action name="objects_new_cubicb9p" />
+	  <Action name="objects_new_cubicnodeb6p" />
+	  <Action name="objects_new_cubiccuspb4p" />
+        </Menu>
       </Menu>
       <Menu name="new_angle" icon="angle">
 	<text>&amp;Angles</text>
@@ -140,6 +141,13 @@
 	<Action name="objects_new_castshadow" />
 	<Action name="objects_new_projectiverotation" />
       </Menu>
+      <Menu name="new_differentialgeometry" icon="tangent">
+	<text>&amp;Differential geometry</text>
+	<Action name="objects_new_tangent" />
+	<Action name="objects_new_centerofcurvature" />
+	<Action name="objects_new_osculatingcircle" />
+	<Action name="objects_new_evolute" />
+      </Menu>
       <Menu name="new_test" icon="test">
 	<text>T&amp;ests</text>
 	<Action name="objects_new_areparallel" />
@@ -155,7 +163,6 @@
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_measuretransport" />
-	<Action name="objects_new_evolute" />
 	<Action name="objects_new_script_python" />
 	<ActionList name="user_other_types" />
       </Menu>
