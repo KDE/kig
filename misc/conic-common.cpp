@@ -807,7 +807,7 @@ const LineData calcConicRadical( const ConicCartesianData& cequation1,
 }
 
 const ConicCartesianData calcConicTransformation (
-  const ConicCartesianData data, const Transformation& t, bool& valid )
+  const ConicCartesianData& data, const Transformation& t, bool& valid )
 {
   double a[3][3];
   double b[3][3];

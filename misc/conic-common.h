@@ -145,7 +145,7 @@ const LineData calcConicRadical( const ConicCartesianData& cequation1,
                                  int which, int zeroindex, bool& valid );
 
 const ConicCartesianData calcConicTransformation (
-  const ConicCartesianData data,
+  const ConicCartesianData& data,
   const Transformation& t, bool& valid );
 
 #endif // KIG_MISC_CONIC_COMMON_H
