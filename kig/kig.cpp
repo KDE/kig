@@ -81,6 +81,9 @@ Kig::Kig()
 
   // we have drag'n'drop
   setAcceptDrops(true);
+
+  // save the window settings on exit.
+  setAutoSaveSettings();
 }
 
 Kig::~Kig()
