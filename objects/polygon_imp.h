@@ -73,6 +73,7 @@ public:
   const uint npoints() const;
 
   bool equals( const ObjectImp& rhs ) const;
+  bool isInPolygon( const Coordinate& p ) const;
 };
 
 #endif

@@ -86,9 +86,7 @@ void PolygonImp::draw( KigPainter& p ) const
   p.drawPolygon( mpoints );
 }
 
-#define selectpolygonwithinside 1
-#ifdef selectpolygonwithinside
-bool PolygonImp::contains( const Coordinate& p, int, const KigWidget& ) const
+bool PolygonImp::isInPolygon( const Coordinate& p ) const
 {
   // (algorithm sent to me by domi)
   // We intersect with the horizontal ray from point to the right and
@@ -128,6 +126,12 @@ bool PolygonImp::contains( const Coordinate& p, int, const KigWidget& ) const
     prevpointbelow = pointbelow;
   }
   return inside_flag;
+}
+#define selectpolygonwithinside 1
+#ifdef selectpolygonwithinside
+bool PolygonImp::contains( const Coordinate& p, int, const KigWidget& ) const
+{
+  return isInPolygon( p );
 }
 #else
 bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const

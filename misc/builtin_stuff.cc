@@ -561,6 +561,14 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_containstest" ) );
 
     c = new TestConstructor(
+      InPolygonTestType::instance(),
+      I18N_NOOP( "In Polygon Test" ),
+      I18N_NOOP( "Test whether a given polygon contains a given point" ),
+      "testinpolygon" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_inpolygontest" ) );
+
+    c = new TestConstructor(
       SameDistanceType::instance(),
       I18N_NOOP( "Distance Test" ),
       I18N_NOOP( "Test whether a given point have the same distance from a given point "

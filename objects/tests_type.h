@@ -64,6 +64,17 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class InPolygonTestType
+  : public ArgsParserObjectType
+{
+  InPolygonTestType();
+  ~InPolygonTestType();
+public:
+  static const InPolygonTestType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class SameDistanceType
   : public ArgsParserObjectType
 {

@@ -18,6 +18,7 @@
 #include "tests_type.h"
 
 #include "line_imp.h"
+#include "polygon_imp.h"
 #include "point_imp.h"
 #include "bogus_imp.h"
 #include "other_imp.h"
@@ -199,6 +200,56 @@ const ObjectImpType* ContainsTestType::resultId() const
 {
   return TestResultImp::stype();
 }
+
+/*
+ * containment test of a point in a polygon
+ */
+
+static const ArgsParser::spec InPolygonTestArgsSpec[] =
+{
+  { PointImp::stype(), I18N_NOOP( "Check whether this point is in a polygon" ),
+    I18N_NOOP( "Select the point you want to test..." ), false },
+  { PolygonImp::stype(), I18N_NOOP( "Check whether the point is in this polygon" ),
+    I18N_NOOP( "Select the polygon that the point might be in..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( InPolygonTestType )
+
+InPolygonTestType::InPolygonTestType()
+  : ArgsParserObjectType( "InPolygonTest", InPolygonTestArgsSpec, 2 )
+{
+}
+
+InPolygonTestType::~InPolygonTestType()
+{
+}
+
+const InPolygonTestType* InPolygonTestType::instance()
+{
+  static const InPolygonTestType t;
+  return &t;
+}
+
+ObjectImp* InPolygonTestType::calc( const Args& parents, const KigDocument& doc ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  const Coordinate& p = static_cast<const PointImp*>( parents[0] )->coordinate();
+  const PolygonImp* pol = static_cast<const PolygonImp*>( parents[1] );
+
+  if ( pol->isInPolygon( p ) )
+    return new TestResultImp( i18n( "This polygon contains the point." ) );
+  else
+    return new TestResultImp( i18n( "This polygon does not contain the point." ) );
+}
+
+const ObjectImpType* InPolygonTestType::resultId() const
+{
+  return TestResultImp::stype();
+}
+
+/*
+ * same distance test
+ */
 
 static const ArgsParser::spec argsspecSameDistanceType[] =
 {
