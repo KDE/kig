@@ -549,8 +549,11 @@ struct workitem
 
 void KigPainter::drawLine( const LineData& d )
 {
-  LineData l = calcBorderPoints( d, window() );
-  drawSegment( l.a, l.b );
+  if ( d.a != d.b )
+  {
+    LineData l = calcBorderPoints( d, window() );
+    drawSegment( l.a, l.b );
+  }
 }
 
 void KigPainter::drawSegment( const LineData& d )
