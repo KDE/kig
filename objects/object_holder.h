@@ -21,6 +21,8 @@
 
 #include "object_calcer.h"
 
+#include <qstring.h>
+
 /**
  * An ObjectHolder represents an object as it is known to the
  * document.  It keeps a pointer to an ObjectCalcer, where it gets its
@@ -40,8 +42,14 @@ class ObjectHolder
 {
   ObjectCalcer::shared_ptr mcalcer;
   ObjectDrawer* mdrawer;
+  ObjectConstCalcer::shared_ptr mnamecalcer;
 
 public:
+  /**
+   * Construct a new ObjectHolder with a given ObjectCalcer and
+   * ObjectDrawer, with a given name calcer.
+   */
+  ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer, ObjectConstCalcer* namecalcer );
   /**
    * Construct a new ObjectHolder with a given ObjectCalcer and
    * ObjectDrawer.
@@ -49,7 +57,7 @@ public:
   ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer );
   /**
    * equivalent to the previous constructor, but with a default
-   * ObjectDrawer.
+   * ObjectDrawer and no name.
    */
   ObjectHolder( ObjectCalcer* calcer );
   ~ObjectHolder();
@@ -59,6 +67,16 @@ public:
   ObjectCalcer* calcer();
   const ObjectDrawer* drawer() const;
   ObjectDrawer* drawer();
+  // the following two return zero if no name is set.
+  const ObjectConstCalcer* nameCalcer() const;
+  ObjectConstCalcer* nameCalcer();
+  // Setting the namecalcer is only allowed if previously none was
+  // set.  This way, we avoid keeping a useless namecalcer around if
+  // no name is set.
+  void setNameCalcer( ObjectConstCalcer* namecalcer );
+
+  // returns QString::null if no name is set.
+  const QString name() const;
   /**
    * Set the ObjectDrawer of this ObjectHolder to d, the old
    * ObjectDrawer is deleted.
@@ -69,7 +87,6 @@ public:
    * ObjectDrawer is not deleted, but returned.
    */
   ObjectDrawer* switchDrawer( ObjectDrawer* d );
-  void setCalcer( ObjectCalcer* c );
 
   /**
    * Make our ObjectCalcer recalculate its ObjectImp.
@@ -108,6 +125,13 @@ public:
    * documentation of ObjectCalcer::canMove() for more info.
    */
   bool canMove() const;
+
+  /**
+   * Return a statement saying something like "select this segment" or
+   * "select segment ab" depending on whether this ObjectHolder has a
+   * name.
+   */
+  QString selectStatement() const;
 };
 
 #endif

@@ -421,7 +421,7 @@ const ObjectImpType* AbstractLineImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "line", I18N_NOOP( "line" ),
-    I18N_NOOP( "Select a Line" ), 0, 0, 0, 0, 0, 0 );
+    I18N_NOOP( "Select a Line" ), 0, 0, 0, 0, 0, 0, 0 );
   return &t;
 }
 
@@ -431,6 +431,7 @@ const ObjectImpType* LineImp::stype()
     Parent::stype(), "line",
     I18N_NOOP( "line" ),
     I18N_NOOP( "Select this line" ),
+    I18N_NOOP( "Select line %1" ),
     I18N_NOOP( "Remove a Line" ),
     I18N_NOOP( "Add a Line" ),
     I18N_NOOP( "Move a Line" ),
@@ -447,6 +448,7 @@ const ObjectImpType* SegmentImp::stype()
     Parent::stype(), "segment",
     I18N_NOOP( "segment" ),
     I18N_NOOP( "Select this segment" ),
+    I18N_NOOP( "Select segment %1" ),
     I18N_NOOP( "Remove a Segment" ),
     I18N_NOOP( "Add a Segment" ),
     I18N_NOOP( "Move a Segment" ),
@@ -462,7 +464,8 @@ const ObjectImpType* RayImp::stype()
   static const ObjectImpType t(
     Parent::stype(), "ray",
     I18N_NOOP( "half-line" ),
-    I18N_NOOP( "Select this Half-Line" ),
+    I18N_NOOP( "Select this half-line" ),
+    I18N_NOOP( "Select half-line %1" ),
     I18N_NOOP( "Remove a Half-Line" ),
     I18N_NOOP( "Add a Half-Line" ),
     I18N_NOOP( "Move a Half-Line" ),

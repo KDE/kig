@@ -157,6 +157,7 @@ const ObjectImpType* PointImp::stype()
     Parent::stype(), "point",
     I18N_NOOP( "point" ),
     I18N_NOOP( "Select this point" ),
+    I18N_NOOP( "Select point %1" ),
     I18N_NOOP( "Remove a Point" ),
     I18N_NOOP( "Add a Point" ),
     I18N_NOOP( "Move a Point" ),

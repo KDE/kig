@@ -47,7 +47,7 @@
    to first construct the other objects.  An exception should be made
    for points of course.
 
-- Add the possibility to attach text label also to angles and vectors.
+- Add the possibility to attach text label also to angles.
 
 - Add the possibility to select, via new dialog, one or more types of
   object.

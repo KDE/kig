@@ -27,8 +27,12 @@
 
 #include <kdebug.h>
 #include <knumvalidator.h>
-#include <klineeditdlg.h>
 #include <klocale.h>
+#if KDE_IS_VERSION( 3, 1, 90 )
+#include <kinputdialog.h>
+#else
+#include <klineeditdlg.h>
+#endif
 
 Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t )
 {
@@ -330,10 +334,17 @@ double getDoubleFromUser( const QString& caption, const QString& label, double v
 #else
   KFloatValidator vtor( min, max, (QWidget*) 0, 0 );
 #endif
+#if KDE_IS_VERSION( 3, 1, 90 )
+  QString input = KInputDialog::getText(
+    caption, label, KGlobal::locale()->formatNumber( value, decimals ),
+    ok, parent, "getDoubleFromUserDialog", &vtor );
+#else
   QString input =
     KLineEditDlg::getText( caption, label,
                            KGlobal::locale()->formatNumber( value, decimals ),
                            ok, parent, &vtor );
+#endif
+
   bool myok = true;
   double ret = KGlobal::locale()->readNumber( input, &myok );
   if ( ! myok )
@@ -382,7 +393,7 @@ bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
 {
   double miss = w.screenInfo().normalMiss( width );
 
-//mp: the following test didn't work for vertical segments; 
+//mp: the following test didn't work for vertical segments;
 // fortunately the ieee floating point standard allows us to avoid
 // the test altogether, since it would produce an infinity value that
 // makes the final r.contains to fail

@@ -18,18 +18,26 @@
 
 #include "object_holder.h"
 
+#include "bogus_imp.h"
 #include "object_calcer.h"
 #include "object_drawer.h"
 
 #include "../misc/coordinate.h"
 
 ObjectHolder::ObjectHolder( ObjectCalcer* calcer )
-  : mcalcer( calcer ), mdrawer( new ObjectDrawer )
+  : mcalcer( calcer ), mdrawer( new ObjectDrawer ), mnamecalcer( 0 )
 {
 }
 
+ObjectHolder::ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer,
+                            ObjectConstCalcer* namecalcer )
+  : mcalcer( calcer ), mdrawer( drawer ), mnamecalcer( namecalcer )
+{
+  assert( namecalcer->imp()->inherits( StringImp::stype() ) );
+}
+
 ObjectHolder::ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer )
-  : mcalcer( calcer ), mdrawer( drawer )
+  : mcalcer( calcer ), mdrawer( drawer ), mnamecalcer( 0 )
 {
 }
 
@@ -53,14 +61,14 @@ const ObjectDrawer* ObjectHolder::drawer() const
   return mdrawer;
 }
 
+const ObjectConstCalcer* ObjectHolder::nameCalcer() const
+{
+  return mnamecalcer.get();
+}
+
 void ObjectHolder::setDrawer( ObjectDrawer* d )
 {
   delete switchDrawer( d );
-}
-
-void ObjectHolder::setCalcer( ObjectCalcer* c )
-{
-  mcalcer = c;
 }
 
 void ObjectHolder::calc( const KigDocument& d )
@@ -93,6 +101,11 @@ ObjectDrawer* ObjectHolder::drawer()
   return mdrawer;
 }
 
+ObjectConstCalcer* ObjectHolder::nameCalcer()
+{
+  return mnamecalcer.get();
+}
+
 const Coordinate ObjectHolder::moveReferencePoint() const
 {
   return mcalcer->moveReferencePoint();
@@ -120,3 +133,28 @@ bool ObjectHolder::shown() const
   return mdrawer->shown();
 }
 
+const QString ObjectHolder::name() const
+{
+  if ( mnamecalcer )
+  {
+    assert( mnamecalcer->imp()->inherits( StringImp::stype() ) );
+    return static_cast<const StringImp*>( mnamecalcer->imp() )->data();
+  }
+  else
+    return QString::null;
+}
+
+void ObjectHolder::setNameCalcer( ObjectConstCalcer* namecalcer )
+{
+  assert( !mnamecalcer );
+  mnamecalcer = namecalcer;
+}
+
+QString ObjectHolder::selectStatement() const
+{
+  const QString n = name();
+  if ( n.isNull() )
+    return i18n( imp()->type()->selectStatement() );
+  else
+    return i18n( imp()->type()->selectNameStatement() ).arg( n );
+}

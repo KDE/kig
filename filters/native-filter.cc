@@ -20,6 +20,7 @@
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
+#include "../objects/bogus_imp.h"
 #include "../objects/object_type.h"
 #include "../objects/object_imp.h"
 #include "../objects/object_calcer.h"
@@ -149,120 +150,6 @@ KigDocument* KigFilterNative::load( const QString& file )
     return load04( file, main );
   else
     return load07( file, main );
-}
-
-bool KigFilterNative::save04( const KigDocument& kdoc, const QString& to )
-{
-  using namespace std;
-
-  QFile file( to );
-  if ( ! file.open( IO_WriteOnly ) )
-  {
-    fileNotFound( to );
-    return false;
-  }
-  QTextStream stream( &file );
-  QDomDocument doc( "KigDocument" );
-
-  // TODO ?
-//  doc.appendChild( QDomImplementation().createDocumentType( ... ) );
-
-  QDomElement docelem = doc.createElement( "KigDocument" );
-  docelem.setAttribute( "Version", "0.6.0" );
-
-  // save the coordinate system type..
-  QDomElement cselem = doc.createElement( "CoordinateSystem" );
-  cselem.appendChild( doc.createTextNode( kdoc.coordinateSystem().type() ) );
-  docelem.appendChild( cselem );
-
-  std::vector<ObjectHolder*> holders = kdoc.objects();
-  std::vector<ObjectCalcer*> objs = getAllParents( getCalcers( kdoc.objects() ) );
-  std::map<ObjectCalcer*, ObjectHolder*> holdermap;
-  for ( std::vector<ObjectHolder*>::iterator i = holders.begin();
-        i != holders.end(); ++i )
-    holdermap[( *i )->calcer()] = *i;
-
-  // save the objects..
-  QDomElement objectselem = doc.createElement( "Objects" );
-  objs = calcPath( objs );
-
-  std::map<const ObjectCalcer*, int> idmap;
-  int id = 1;
-
-  for ( std::vector<ObjectCalcer*>::const_iterator i = objs.begin(); i != objs.end(); ++i )
-  {
-    bool internal = holdermap.find( *i ) == holdermap.end();
-    QDomElement objectelem = doc.createElement( "tempname" );
-    idmap[*i] = id;
-    objectelem.setAttribute( "id", id++ );
-    objectelem.setAttribute( "internal", QString::fromLatin1( internal ? "true" : "false" ) );
-    if ( dynamic_cast<ObjectConstCalcer*>( *i ) )
-    {
-      objectelem.setTagName( "Data" );
-      QString ser =
-        ObjectImpFactory::instance()->serialize( *(*i)->imp(), objectelem, doc );
-      objectelem.setAttribute( "type", ser );
-    }
-    else if ( dynamic_cast<const ObjectPropertyCalcer*>( *i ) )
-    {
-      const ObjectPropertyCalcer* o = static_cast<const ObjectPropertyCalcer*>( *i );
-      QDomElement e = doc.createElement( "Property" );
-
-      std::map<const ObjectCalcer*,int>::const_iterator idp = idmap.find( o->parent() );
-      assert( idp != idmap.end() );
-      int pid = idp->second;
-      QDomElement pel = doc.createElement( "Parent" );
-      pel.setAttribute( "id", pid );
-      objectelem.appendChild( pel );
-
-      QCString propname = o->parent()->imp()->propertiesInternalNames()[o->propId()];
-      pel = doc.createElement( "Property" );
-      pel.appendChild( doc.createTextNode( propname ) );
-      objectelem.appendChild( pel );
-    }
-    else if ( dynamic_cast<const ObjectTypeCalcer*>( *i ) )
-    {
-      const ObjectTypeCalcer* o = static_cast<const ObjectTypeCalcer*>( *i );
-      objectelem.setTagName( "Object" );
-      objectelem.setAttribute( "type", o->type()->fullName() );
-
-      const std::vector<ObjectCalcer*> parents = o->parents();
-      for ( std::vector<ObjectCalcer*>::const_iterator i = parents.begin(); i != parents.end(); ++i )
-      {
-        std::map<const ObjectCalcer*,int>::const_iterator idp = idmap.find( *i );
-        assert( idp != idmap.end() );
-        int pid = idp->second;
-        QDomElement pel = doc.createElement( "Parent" );
-        pel.setAttribute( "id", pid );
-        objectelem.appendChild( pel );
-      }
-    }
-    else assert( false );
-
-    if ( !internal )
-    {
-      // here we save the objectdrawer data as properties of the
-      // objectelem.  it would be better to make a new file format
-      // where the objectcalcer hierarchy is completely separate from
-      // the holders holding references to them, but I'm too lazy for
-      // that atm, so I'm doing it this way.. ( update: in the new
-      // save function save07, this is fixed. )
-      assert( holdermap.find( *i ) != holdermap.end() );
-      const ObjectHolder* h = holdermap[*i];
-      const ObjectDrawer* d = h->drawer();
-      objectelem.setAttribute( "color", d->color().name() );
-      objectelem.setAttribute( "shown", QString::fromLatin1( d->shown() ? "true" : "false" ) );
-      objectelem.setAttribute( "width", QString::number( d->width() ) );
-    };
-
-    objectselem.appendChild( objectelem );
-  };
-  docelem.appendChild( objectselem );
-
-  doc.appendChild( docelem );
-  stream << doc.toCString();
-  file.close();
-  return true;
 }
 
 KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& docelem )
@@ -573,8 +460,20 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         tmp = e.attribute( "point-style" );
         int pointstyle = ObjectDrawer::pointStyleFromString( tmp );
 
+        ObjectConstCalcer* namecalcer = 0;
+        tmp = e.attribute( "namecalcer" );
+        if ( tmp != "none" )
+        {
+          int ncid = tmp.toInt( &ok );
+          if ( !ok ) KIG_FILTER_PARSE_ERROR;
+          if ( ncid <= 0 || id > calcers.size() )
+            KIG_FILTER_PARSE_ERROR;
+          if ( ! dynamic_cast<ObjectConstCalcer*>( calcers[ncid-1].get() ) )
+            namecalcer = static_cast<ObjectConstCalcer*>( calcers[ncid-1].get() );
+        }
+
         ObjectDrawer* drawer = new ObjectDrawer( color, width, shown, style, pointstyle );
-        holders.push_back( new ObjectHolder( calcer, drawer ) );
+        holders.push_back( new ObjectHolder( calcer, drawer, namecalcer ) );
       }
     }
   }
@@ -662,6 +561,19 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
     drawelem.setAttribute( "width", QString::number( d->width() ) );
     drawelem.setAttribute( "style", d->styleToString() );
     drawelem.setAttribute( "point-style", d->pointStyleToString() );
+
+    ObjectCalcer* namecalcer = ( *i )->nameCalcer();
+    if ( namecalcer )
+    {
+      std::map<const ObjectCalcer*,int>::const_iterator ncp = idmap.find( namecalcer );
+      assert( ncp != idmap.end() );
+      int ncid = ncp->second;
+      drawelem.setAttribute( "namecalcer", ncid );
+    }
+    else
+    {
+      drawelem.setAttribute( "namecalcer", "none" );
+    }
 
     windowelem.appendChild( drawelem );
   };

@@ -56,7 +56,7 @@ public:
   void redrawScreen( KigWidget* w );
 
 protected:
-  typedef std::vector<ObjectPropertyCalcer::shared_ptr> argvect;
+  typedef std::vector<ObjectCalcer::shared_ptr> argvect;
   // the protected interface for subclasses
   TextLabelModeBase( KigPart& d );
   ~TextLabelModeBase();

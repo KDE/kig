@@ -1,3 +1,9 @@
+2004-06-11  Dominique Devriese  <devriese@kde.org>
+
+	* Some improvements by me to Pino's object names code.  Mostly,
+	this includes cleaning the design a bit, and adding support for
+	the names in some places.
+
 2004-05-31  Dominique Devriese  <devriese@kde.org>
 
 	* Fix some memory leaks found by valgrind.
@@ -38,6 +44,19 @@
 2004-05-27  Dominique Devriese  <devriese@kde.org>
 
 	* Fix so that Kig saves its window settings on exit.
+
+2004-05-24  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Add the possibility to give a name to every object. The name is
+	displayed when moving mouse over the object, like "Select this
+	line (AB)" or choosing the object which attach another object to.
+	For now there is no label with title displayed with the object.
+
+	* Now it's possible to attach points ( and then labels ) to
+	vectors.
+
+	* Make the Vector Sum of two vectors starting at an arbitrary
+	point.
 
 2004-05-23  Dominique Devriese  <devriese@kde.org>
 

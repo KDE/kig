@@ -40,9 +40,6 @@ class KigFilterNative
   // starting at Kig 0.7
   KigDocument* load07( const QString& file, const QDomElement& doc );
 
-  // save in the pre-0.7 Kig format..
-  bool save04( const KigDocument& data, const QString& file );
-
   // save in the Kig format that is used starting at Kig 0.7
   bool save07( const KigDocument& data, const QString& outfile );
   bool save07( const KigDocument& data, QTextStream& file );

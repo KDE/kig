@@ -24,6 +24,7 @@ const ObjectImpType* CurveImp::stype()
     Parent::stype(), "curve",
     I18N_NOOP( "curve" ),
     I18N_NOOP( "Select this curve" ),
+    I18N_NOOP( "Select curve %1" ),
     I18N_NOOP( "Remove a Curve" ),
     I18N_NOOP( "Add a Curve" ),
     I18N_NOOP( "Move a Curve" ),

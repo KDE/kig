@@ -134,6 +134,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     if ( os.empty() ) break;
     ObjectHolder* o = os[0];
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
+    p->insertItem( i18n( "Name" ), 0 );
     QCStringList l = o->imp()->properties();
     assert( l.size() == o->imp()->numberOfProperties() );
     for ( int i = 0; static_cast<uint>( i ) < l.size(); ++i )
@@ -144,21 +145,27 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
       if ( iconfile && *iconfile )
       {
         QPixmap pix = mdoc.instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
-        t = p->insertItem( QIconSet( pix ), s, i );
+        t = p->insertItem( QIconSet( pix ), s, i + 1 );
       }
       else
       {
-        t = p->insertItem( s, i );
+        t = p->insertItem( s, i + 1 );
       };
-      assert( t == i );
+      assert( t == i + 1 );
     };
     int result = p->exec( v->mapToGlobal( d->plc ) );
+    ObjectCalcer::shared_ptr argcalcer;
     if ( result == -1 ) break;
-    assert( static_cast<uint>( result ) < l.size() );
-    ObjectPropertyCalcer* n = new ObjectPropertyCalcer( o->calcer(), result );
-    d->args[d->mwaaws] = n;
+    else if ( result == 0 )
+      argcalcer = o->nameCalcer();
+    else
+    {
+      assert( static_cast<uint>( result ) < l.size() + 1 );
+      argcalcer = new ObjectPropertyCalcer( o->calcer(), result - 1 );
+    }
+    d->args[d->mwaaws] = argcalcer.get();
+    argcalcer->calc( mdoc.document() );
 
-    n->calc( mdoc.document() );
     updateLinksLabel();
     updateWiz();
     break;
@@ -478,10 +485,7 @@ TextLabelRedefineMode::TextLabelRedefineMode( KigPart& d, ObjectTypeCalcer* labe
   argvect v;
   for ( uint i = 0; i < rest.size(); ++i )
   {
-    assert( dynamic_cast<ObjectPropertyCalcer*>( rest[i] ) );
-    ObjectPropertyCalcer* o = static_cast<ObjectPropertyCalcer*>( rest[i] );
-    ObjectPropertyCalcer* n = new ObjectPropertyCalcer( o->parent(), o->propId() );
-    v.push_back( n );
+    v.push_back( rest[i] );
   };
   assert( v.size() == rest.size() );
 

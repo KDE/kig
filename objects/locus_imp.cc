@@ -324,6 +324,7 @@ const ObjectImpType* LocusImp::stype()
     Parent::stype(), "locus",
     I18N_NOOP( "locus" ),
     I18N_NOOP( "Select this locus" ),
+    I18N_NOOP( "Select locus %1" ),
     I18N_NOOP( "Remove a Locus" ),
     I18N_NOOP( "Add a Locus" ),
     I18N_NOOP( "Move a Locus" ),

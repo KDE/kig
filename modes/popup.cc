@@ -41,15 +41,24 @@
 #include "normal.h"
 #include "moving.h"
 
+#include <algorithm>
+#include <functional>
+
 #include <qcursor.h>
-#include <qpen.h>
 #include <qdialog.h>
+#include <qpen.h>
+#include <qregexp.h>
+#include <qvalidator.h>
+
+#include <kcolordialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <klocale.h>
-#include <algorithm>
-#include <functional>
-#include <kcolordialog.h>
+#if KDE_IS_VERSION( 3, 1, 90 )
+#include <kinputdialog.h>
+#else
+#include <klineeditdlg.h>
+#endif
 
 using namespace std;
 
@@ -83,6 +92,16 @@ public:
 };
 
 class BuiltinObjectActionsProvider
+  : public PopupActionProvider
+{
+public:
+  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
+  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
+                      NormalModePopupObjects& popup,
+                      KigPart& doc, KigWidget& w, NormalMode& m );
+};
+
+class NameObjectActionsProvider
   : public PopupActionProvider
 {
 public:
@@ -150,9 +169,19 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   bool single = objs.size() == 1;
   connect( this, SIGNAL( activated( int ) ), this, SLOT( toplevelMenuSlot( int ) ) );
 
-  insertTitle( empty ? i18n( "Kig Document" )
-               : single ? objs[0]->imp()->type()->translatedName()
-               : i18n( "%1 Objects" ).arg( objs.size() ), 1 );
+  QString title;
+  if ( empty )
+    title = i18n( "Kig Document" );
+  else if ( single )
+  {
+    if ( !objs[0]->name().isNull() )
+      title = QString::fromLatin1( "%1 %2" ).arg( objs[0]->imp()->type()->translatedName() ).arg( objs[0]->name() );
+    else
+      title = objs[0]->imp()->type()->translatedName();
+  }
+  else
+    title = i18n( "%1 Objects" ).arg( objs.size() );
+  insertTitle( title, 1 );
 
   if ( empty )
   {
@@ -163,6 +192,8 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   // construct an object using these objects and start constructing an
   // object using these objects
   mproviders.push_back( new ObjectConstructorActionsProvider() );
+  if ( single )
+    mproviders.push_back( new NameObjectActionsProvider() );
   if ( ! empty )
   {
     // stuff like hide, show, delete, set size, set color..
@@ -217,10 +248,10 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     };
   static const QString menuicons[NumberOfMenus] =
     {
-      QString::null,
+      "centralsymmetry",
       "test",
       QString::null,
-      QString::null,
+      "launch",
       "text",
       "color_fill",
 //      "colorize",
@@ -405,6 +436,107 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
         popup.addAction( menu, p, nextfree++ );
       };
     }
+  }
+}
+
+void NameObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
+{
+  if ( menu == NormalModePopupObjects::ToplevelMenu )
+  {
+    popup.addAction( menu, i18n( "Set &Name..." ), nextfree++ );
+  }
+  else if ( menu == NormalModePopupObjects::ShowMenu )
+  {
+    popup.addAction( menu, i18n( "&Name" ), nextfree++ );
+  }
+}
+
+static void addNameLabel( ObjectCalcer* object, ObjectCalcer* namecalcer, const Coordinate& loc, KigPart& doc )
+{
+  std::vector<ObjectCalcer*> args;
+  args.push_back( namecalcer );
+  const bool namelabelneedsframe = false;
+  ObjectCalcer* attachto = 0;
+  if ( object->imp()->inherits( PointImp::stype() ) || object->imp()->inherits( CurveImp::stype() ) )
+    attachto = object;
+  ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
+      QString::fromLatin1( "%1" ), attachto, loc, namelabelneedsframe, args, doc.document() );
+  doc.addObject( label );
+}
+
+bool NameObjectActionsProvider::executeAction(
+  int menu, int& id, const std::vector<ObjectHolder*>& os, NormalModePopupObjects& popup,
+  KigPart& doc, KigWidget& w, NormalMode& )
+{
+  if ( menu == NormalModePopupObjects::ToplevelMenu )
+  {
+    if ( id >= 1 )
+    {
+      id -= 1;
+      return false;
+    }
+    assert( os.size() == 1 );
+    QString name = os[0]->name();
+    bool ok;
+    QRegExp re(  ".*" );
+    QRegExpValidator* rev = new QRegExpValidator(  re,  &doc );
+    QString caption = i18n( "Set Object Name" );
+    QString label = i18n( "Set Name of this Object:" );
+#if KDE_IS_VERSION( 3, 1, 90 )
+    name = KInputDialog::getText( caption, label, name, &ok, &w, 0, rev );
+#else
+    name = KLineEditDlg::getText( caption, label, name, &ok, &w, rev );
+#endif
+    if ( ok )
+    {
+      bool justadded = false;
+      ObjectCalcer* namecalcer = os[0]->nameCalcer();
+      if ( !namecalcer )
+      {
+        justadded = true;
+        ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "unnamed object" ) ) );
+        os[0]->setNameCalcer( c );
+        namecalcer = c;
+      }
+      assert( dynamic_cast<ObjectConstCalcer*>( namecalcer ) );
+      ObjectConstCalcer* cnamecalcer = static_cast<ObjectConstCalcer*>( os[0]->nameCalcer() );
+      MonitorDataObjects mon( cnamecalcer );
+      cnamecalcer->setImp( new StringImp( name ) );
+      KigCommand* kc = new KigCommand( doc, i18n( "Set Object Name" ) );
+      mon.finish( kc );
+      doc.history()->addCommand( kc );
+
+      // if we just added the name, we add a label to show it to the user.
+      if ( justadded )
+        addNameLabel( os[0]->calcer(), namecalcer,
+                      w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) ),
+                      doc );
+    }
+    return true;
+  }
+  else if ( menu == NormalModePopupObjects::ShowMenu )
+  {
+    if ( id >= 1 )
+    {
+      id -= 1;
+      return false;
+    }
+    assert( os.size() == 1 );
+    ObjectCalcer* namecalcer = os[0]->nameCalcer();
+    if ( !namecalcer )
+    {
+      ObjectConstCalcer* c = new ObjectConstCalcer( new StringImp( i18n( "unnamed object" ) ) );
+      os[0]->setNameCalcer( c );
+      namecalcer = c;
+    }
+    addNameLabel( os[0]->calcer(), namecalcer,
+                  w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) ), doc );
+    return true;
+  }
+  else
+  {
+    assert( false );
+    return false;
   }
 }
 
@@ -845,4 +977,3 @@ void NormalModePopupObjects::setChecked( int menu, int n, bool checked )
 {
   mmenus[menu]->setItemChecked( n, checked );
 }
-

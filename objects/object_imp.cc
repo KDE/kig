@@ -179,6 +179,7 @@ ObjectImpType::ObjectImpType( const ObjectImpType* parent,
                               const char* internalname,
                               const char* translatedname,
                               const char* selectstatement,
+                              const char* selectnamestatement,
                               const char* removeastatement,
                               const char* addastatement,
                               const char* moveastatement,
@@ -187,6 +188,7 @@ ObjectImpType::ObjectImpType( const ObjectImpType* parent,
                               const char* hideastatement )
   : mparent( parent ), minternalname( internalname ),
     mtranslatedname( translatedname ), mselectstatement( selectstatement ),
+    mselectnamestatement( selectnamestatement ),
     mremoveastatement( removeastatement ), maddastatement( addastatement ),
     mmoveastatement( moveastatement ),
     mattachtothisstatement( attachtothisstatement ),
@@ -218,6 +220,11 @@ QString ObjectImpType::translatedName() const
 const char* ObjectImpType::selectStatement() const
 {
   return mselectstatement;
+}
+
+const char* ObjectImpType::selectNameStatement() const
+{
+  return mselectnamestatement;
 }
 
 QString ObjectImpType::removeAStatement() const
@@ -255,6 +262,7 @@ const ObjectImpType* ObjectImp::stype()
     0, "any",
     I18N_NOOP( "Object" ),
     I18N_NOOP( "Select this object" ),
+    I18N_NOOP( "Select object %1" ),
     I18N_NOOP( "Remove an object" ),
     I18N_NOOP( "Add an object" ),
     I18N_NOOP( "Move an object" ),

@@ -690,10 +690,13 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
                   ( domelem.attribute( "masked" ) != "Alway" ) );
 // costructing the ObjectDrawer*
     ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
-    assert( d );
+//    assert( d );
+// reading object name
+    QString strname = domelem.attribute( "name" );
+    ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( strname ) );
 
 // creating the ObjectHolder*
-    ObjectHolder* o = new ObjectHolder( oc, d );
+    ObjectHolder* o = new ObjectHolder( oc, d, name );
     holders.push_back( o );
 // calc()
     kdDebug() << ">>>>>>>>> calc" << endl;

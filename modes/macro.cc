@@ -221,8 +221,7 @@ void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QP
     // and set statusbar text
 
     w.setCursor( KCursor::handCursor() );
-    QString selectstat =
-      i18n( os.front()->imp()->type()->selectStatement() );
+    QString selectstat = os.front()->selectStatement();
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );

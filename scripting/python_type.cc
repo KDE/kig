@@ -54,7 +54,7 @@ PythonCompiledScriptImp::PythonCompiledScriptImp( const CompiledPythonScript& s 
 const ObjectImpType* PythonCompiledScriptImp::stype()
 {
   static const ObjectImpType t( BogusImp::stype(), "python-compiled-script-imp",
-                                0, 0, 0, 0, 0, 0, 0, 0 );
+                                0, 0, 0, 0, 0, 0, 0, 0, 0 );
   return &t;
 }
 

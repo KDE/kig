@@ -317,6 +317,7 @@ const ObjectImpType* ConicImp::stype()
     Parent::stype(), "conic",
     I18N_NOOP( "conic" ),
     I18N_NOOP( "Select this conic" ),
+    I18N_NOOP( "Select conic %1" ),
     I18N_NOOP( "Remove a Conic" ),
     I18N_NOOP( "Add a Conic" ),
     I18N_NOOP( "Move a Conic" ),

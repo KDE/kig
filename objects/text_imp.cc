@@ -142,6 +142,7 @@ const ObjectImpType* TextImp::stype()
     Parent::stype(), "label",
     I18N_NOOP( "label" ),
     I18N_NOOP( "Select this label" ),
+    I18N_NOOP( "Select label %1" ),
     I18N_NOOP( "Remove a Label" ),
     I18N_NOOP( "Add a Label" ),
     I18N_NOOP( "Move a Label" ),

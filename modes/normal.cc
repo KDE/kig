@@ -257,7 +257,7 @@ void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
 
     w.setCursor( KCursor::handCursor() );
 
-    QString stat = i18n( os.front()->imp()->type()->selectStatement() );
+    QString stat = os.front()->selectStatement();
 
     // statusbar text
     mdoc.emitStatusBarText( stat );

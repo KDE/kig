@@ -327,6 +327,7 @@ const ObjectImpType* CubicImp::stype()
     Parent::stype(), "cubic",
     I18N_NOOP( "cubic curve" ),
     I18N_NOOP( "Select this cubic curve" ),
+    I18N_NOOP( "Select cubic curve %1" ),
     I18N_NOOP( "Remove a Cubic Curve" ),
     I18N_NOOP( "Add a Cubic Curve" ),
     I18N_NOOP( "Move a Cubic Curve" ),
