@@ -40,11 +40,6 @@ bool ObjectImp::inherits( int type ) const
   return type == ID_AnyImp;
 }
 
-QString ObjectImp::translatedBaseName() const
-{
-  return i18n( baseName() );
-}
-
 const char* ObjectImp::idToString( int id )
 {
   switch( id )
@@ -73,22 +68,22 @@ const char* ObjectImp::selectStatement( int id )
 {
   switch( id )
   {
-  case ID_DoubleImp: return "Select this number";
-  case ID_IntImp: return "Select this number";
-  case ID_StringImp: return "Select this string";
-  case ID_PointImp: return "Select this point";
-  case ID_CurveImp: return "Select this curve";
-  case ID_LineImp: return "Select this line";
-  case ID_LabelImp: return "Select this label";
-  case ID_AngleImp: return "Select this angle";
-  case ID_VectorImp: return "Select this vector";
-  case ID_LocusImp: return "Select this locus";
-  case ID_CircleImp: return "Select this circle";
-  case ID_ConicImp: return "Select this conic";
-  case ID_CubicImp: return "Select this cubic";
-  case ID_SegmentImp: return "Select this segment";
-  case ID_RayImp: return "Select this ray";
-  case ID_AnyImp: return "Select this object";
+  case ID_DoubleImp: return I18N_NOOP( "Select this number" );
+  case ID_IntImp: return I18N_NOOP( "Select this number" );
+  case ID_StringImp: return I18N_NOOP( "Select this string" );
+  case ID_PointImp: return I18N_NOOP( "Select this point" );
+  case ID_CurveImp: return I18N_NOOP( "Select this curve" );
+  case ID_LineImp: return I18N_NOOP( "Select this line" );
+  case ID_LabelImp: return I18N_NOOP( "Select this label" );
+  case ID_AngleImp: return I18N_NOOP( "Select this angle" );
+  case ID_VectorImp: return I18N_NOOP( "Select this vector" );
+  case ID_LocusImp: return I18N_NOOP( "Select this locus" );
+  case ID_CircleImp: return I18N_NOOP( "Select this circle" );
+  case ID_ConicImp: return I18N_NOOP( "Select this conic" );
+  case ID_CubicImp: return I18N_NOOP( "Select this cubic" );
+  case ID_SegmentImp: return I18N_NOOP( "Select this segment" );
+  case ID_RayImp: return I18N_NOOP( "Select this ray" );
+  case ID_AnyImp: return I18N_NOOP( "Select this object" );
   default: return 0;
   };
 }
@@ -112,4 +107,52 @@ int ObjectImp::stringToID( const QCString& string )
   if( string == "ray" ) return ID_RayImp;
   if( string == "any" ) return ID_AnyImp;
   return -1;
+}
+
+QString ObjectImp::removeAStatement( int id )
+{
+  switch( id )
+  {
+  case ID_DoubleImp: return i18n( "Remove a number" );
+  case ID_IntImp: return i18n( "Remove a number" );
+  case ID_StringImp: return i18n( "Remove a string" );
+  case ID_PointImp: return i18n( "Remove a point" );
+  case ID_CurveImp: return i18n( "Remove a curve" );
+  case ID_LineImp: return i18n( "Remove a line" );
+  case ID_LabelImp: return i18n( "Remove a label" );
+  case ID_AngleImp: return i18n( "Remove an angle" );
+  case ID_VectorImp: return i18n( "Remove a vector" );
+  case ID_LocusImp: return i18n( "Remove a locus" );
+  case ID_CircleImp: return i18n( "Remove a circle" );
+  case ID_ConicImp: return i18n( "Remove a conic" );
+  case ID_CubicImp: return i18n( "Remove a cubic" );
+  case ID_SegmentImp: return i18n( "Remove a segment" );
+  case ID_RayImp: return i18n( "Remove a ray" );
+  case ID_AnyImp: return i18n( "Remove an object" );
+  default: return 0;
+  };
+}
+
+QString ObjectImp::addAStatement( int id )
+{
+  switch( id )
+  {
+  case ID_DoubleImp: return i18n( "Add a number" );
+  case ID_IntImp: return i18n( "Add a number" );
+  case ID_StringImp: return i18n( "Add a string" );
+  case ID_PointImp: return i18n( "Add a point" );
+  case ID_CurveImp: return i18n( "Add a curve" );
+  case ID_LineImp: return i18n( "Add a line" );
+  case ID_LabelImp: return i18n( "Add a label" );
+  case ID_AngleImp: return i18n( "Add an angle" );
+  case ID_VectorImp: return i18n( "Add a vector" );
+  case ID_LocusImp: return i18n( "Add a locus" );
+  case ID_CircleImp: return i18n( "Add a circle" );
+  case ID_ConicImp: return i18n( "Add a conic" );
+  case ID_CubicImp: return i18n( "Add a cubic" );
+  case ID_SegmentImp: return i18n( "Add a segment" );
+  case ID_RayImp: return i18n( "Add a ray" );
+  case ID_AnyImp: return i18n( "Add an object" );
+  default: return 0;
+  };
 }

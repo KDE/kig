@@ -60,6 +60,7 @@ public:
     ID_DoubleImp,
     ID_IntImp,
     ID_StringImp,
+    ID_InvalidImp,
 
     // two id's that match multiple types of imp's..
     ID_CurveImp,
@@ -84,6 +85,10 @@ public:
   // string of the form "Select this %1" ( e.g. "Select this segment"
   // ).
   static const char* selectStatement( int id );
+
+  static QString removeAStatement( int id );
+  static QString addAStatement( int id );
+
   // this translates a string ( e.g. "any" ) to its name (
   // e.g. ID_AnyImp )
   static int stringToID( const QCString& string );
@@ -93,10 +98,10 @@ public:
   // it, but it can call our implementation if it wants to..
   virtual bool inherits( int typeID ) const = 0;
 
-  virtual ObjectImp* copy() const = 0;
+  // this gives the bottom-most "id" of this imp.
+  virtual int id() const = 0;
 
-  virtual const char* baseName() const = 0;
-  QString translatedBaseName() const;
+  virtual ObjectImp* copy() const = 0;
 };
 
 #endif
