@@ -44,8 +44,8 @@ libkigparttemp_la_SOURCES = \
 	kig_part.cpp \
 	kig_view.cpp \
 	kig_commands.cpp
-
-libkigparttemp_la_LIBADD = $(LIB_KDEPRINT)
+libkigparttemp_la_LDFLAGS = $(all_libraries)
+libkigparttemp_la_LIBADD = $(LIB_KDEPRINT) $(LIB_KIO)
 
 # this is where the desktop file will go 
 partdesktopdir   = $(kde_servicesdir)
