@@ -106,13 +106,11 @@ public:
 
   virtual void addParent( Object* o );
   virtual void delParent( Object* o );
-  // This function detects if our old parents contained internal
-  // objects that have no more children, removes them from the
-  // doc, and deletes them..  If you're (completely) sure that no old
-  // parents will have to be deleted, you can pass 0 as the document,
-  // e.g. if you know that no parents are know by the doc yet, or
-  // there are no parents at all yet..
-  virtual void setParents( const Objects& parents, KigDocument* doc );
+  // this function sets the parents of this object to parents.  It
+  // doesn't do anything for deleting obsolete parents etc. you should
+  // do this yourself ( hint: check out the deadParents() function in
+  // ../misc/calcpaths.h )
+  virtual void setParents( const Objects& parents );
 };
 
 class ObjectWithParents
@@ -126,7 +124,7 @@ protected:
 public:
   void addParent( Object* o );
   void delParent( Object* o );
-  void setParents( const Objects& parents, KigDocument* doc );
+  void setParents( const Objects& parents );
   Objects parents() const;
 
   void calc( const KigDocument& );
@@ -209,6 +207,11 @@ public:
   bool inherits( int type ) const;
   bool isInternal() const;
   void setImp( ObjectImp* imp );
+  /**
+   * sets imp as the old imp, and returns the old one.. This exchanges
+   * ownership in order to prevent some useless copies and deletions..
+   */
+  ObjectImp* switchImp( ObjectImp* imp );
 
   const ObjectImp* imp() const;
   Objects parents() const;
@@ -253,6 +256,26 @@ public:
   void delParent( Object* o );
 
   int impRequirement( Object* o, const Objects& os ) const;
+};
+
+/**
+ * This class is not an object.  It only serves to hold a reference to
+ * a couple of objects, so they don't get deleted..
+ */
+class ReferenceObject
+  : public ObjectWithParents
+{
+public:
+  ReferenceObject( const Objects& os );
+  ~ReferenceObject();
+
+  bool isInternal() const;
+  const ObjectImp* imp() const;
+  void draw( KigPainter&, bool ) const;
+  bool inRect( const Rect&, const KigWidget& ) const;
+  bool shown() const;
+  void calc( const Args&, const KigDocument& );
+  bool contains( const Coordinate&, const KigWidget& ) const;
 };
 
 #endif

@@ -24,6 +24,7 @@
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+#include "../kig/kig_commands.h"
 #include "../misc/i18n.h"
 #include "../misc/common.h"
 #include "../objects/object_factory.h"
@@ -322,7 +323,7 @@ void TextLabelModeBase::linkClicked( int i )
   mdoc.emitStatusBarText( i18n( "Selecting argument %1" ).arg( i + 1 ) );
 }
 
-void TextLabelModeBase::objectsAdded()
+void TextLabelModeBase::redrawScreen()
 {
   const std::vector<KigWidget*>& widgets = mdoc.widgets();
   for ( uint i = 0; i < widgets.size(); ++i )
@@ -428,6 +429,9 @@ void TextLabelRedefineMode::finish(
   Objects rest( parents.begin() + 3, parents.end() );
   firstthree = TextType::instance()->argParser().parse( firstthree );
 
+  KigCommand* kc = new KigCommand( mdoc, i18n( "Change a Label" ) );
+  MonitorDataObjects mon( firstthree );
+
   assert( firstthree[0]->hasimp( ObjectImp::ID_IntImp ) );
   assert( firstthree[1]->hasimp( ObjectImp::ID_PointImp ) );
   assert( firstthree[2]->hasimp( ObjectImp::ID_StringImp ) );
@@ -438,17 +442,21 @@ void TextLabelRedefineMode::finish(
   static_cast<DataObject*>( firstthree[0] )->setImp( new IntImp( needframe ? 1 : 0 ) );
   static_cast<DataObject*>( firstthree[1] )->setImp( new PointImp( coord ) );
   static_cast<DataObject*>( firstthree[2] )->setImp( new StringImp( s ) );
+  kc->addTask( mon.finish() );
 
   Objects oldparents = mlabel->parents();
   Objects p( props.begin(), props.end() );
+  p.calc( mdoc );
   mdoc._addObjects( p );
 
   Objects np = firstthree;
   copy( p.begin(), p.end(), back_inserter( np ) );
-  mlabel->setParents( np, &mdoc );
 
-  p.calc( mdoc );
-  mlabel->calc( mdoc );
+  kc->addTask(
+    new ChangeParentsAndTypeTask(
+      mlabel, np, TextType::instance() ) );
+
+  mdoc.history()->addCommand( kc );
 }
 
 void TextLabelModeBase::setFrame( bool f )

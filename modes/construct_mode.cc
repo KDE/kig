@@ -25,6 +25,7 @@
 #include "../kig/kig_view.h"
 #include "../misc/object_constructor.h"
 #include "../misc/kigpainter.h"
+#include "../misc/calcpaths.h"
 
 #include <kcursor.h>
 #include <kaction.h>
@@ -47,10 +48,12 @@ ConstructMode::ConstructMode( KigDocument& d, const ObjectConstructor* ctor )
 
 ConstructMode::~ConstructMode()
 {
-  // allow the mpt to remove its obsolete parents from the
-  // document...
-  mpt->setParents( Objects(), &mdoc );
+  // delete mpt and its obsolete parents..
+  Objects tmp( mpt );
+  Objects dp = deadParents( tmp );
+  mdoc._delObjects( dp );
   delete mpt;
+  delete_all( dp.begin(), dp.end() );
 }
 
 void ConstructMode::leftClickedObject(
@@ -175,10 +178,15 @@ PointConstructMode::PointConstructMode( KigDocument& d )
 
 PointConstructMode::~PointConstructMode()
 {
-  // allow the mpt to remove its obsolete parents from the
-  // document...
-  if ( mpt ) mpt->setParents( Objects(), &mdoc );
-  delete mpt;
+  // delete mpt and its obsolete parents..
+  if ( mpt )
+  {
+    Objects tmp( mpt );
+    Objects dp = deadParents( tmp );
+    mdoc._delObjects( dp );
+    delete mpt;
+    delete_all( dp.begin(), dp.end() );
+  };
 }
 
 void PointConstructMode::leftClickedObject(

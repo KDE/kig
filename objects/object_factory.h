@@ -30,14 +30,17 @@ public:
 
   // this returns the necessary objects to show a fixed point.  That
   // is: two DataObject's for the coordinates followed by one
-  // RealObject for the point..
+  // RealObject for the point..  Note that the returned objects are
+  // not yet added to the document..
   Objects fixedPoint( const Coordinate& c );
 
   // this returns the necessary objects to show a constrained point.
   // That is: one DataObject for the parameter, and one RealObject for
-  // the point..
+  // the point..  Note that the returned objects are not yet added to
+  // the document..
   Objects constrainedPoint( Object* curve, double param );
-  // @overload
+  // @overload, changes nothing to the semantics, only calcs the param
+  // value for you..
   Objects constrainedPoint( Object* curve, const Coordinate& c, const KigDocument& );
 
   // this returns the necessary objects to show a sensible point.
@@ -45,7 +48,8 @@ public:
   // the user expects when he asks for a point at point c.  This is a
   // constrained point if c is on a curve, and otherwise a fixed
   // point.  I might add the possibility for an intersection point
-  // sometime..
+  // sometime.. Note that the returned objects are not yet added to
+  // the document..
   Objects sensiblePoint( const Coordinate& c,
                          const KigDocument& d,
                          const KigWidget& w
@@ -53,11 +57,10 @@ public:
 
   // set point to what sensiblePoint would have returned..  This
   // function returns what fixedPoint() or constrainedPoint() would
-  // have returned.  The old DataObjects, that have no more children
-  // are removed automatically by RealObject::setParents(), so you
-  // don't have to worry about that..
-  // newly created DataObjects are added to the document, so don't
-  // worry about that either :)
+  // have returned.  This function takes care of removing old
+  // DataObjects, that have no more children, so you don't have to
+  // worry about that..  newly created DataObjects are added to the
+  // document, so don't worry about that either :)
   Objects redefinePoint( Object* point, const Coordinate& c,
                          KigDocument& d, const KigWidget& w );
 

@@ -78,8 +78,7 @@ public:
   // to refresh the screen...
   // Note: a mode doesn't need these functions unless it calls
   // mDoc->history->updateActions() in enableActions()...
-  virtual void objectsAdded();
-  virtual void objectsRemoved();
+  virtual void redrawScreen();
 protected:
   KigDocument& mdoc;
 

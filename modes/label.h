@@ -77,7 +77,7 @@ public:
   void selectArgumentsPageEntered();
   void labelTextChanged();
   void linkClicked( int );
-  void objectsAdded();
+  void redrawScreen();
 private:
   // private stuff..
 

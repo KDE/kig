@@ -95,7 +95,7 @@ void NormalMode::showHidden()
   for (Objects::const_iterator i = os.begin(); i != os.end(); ++i )
     if( !(*i)->isInternal() )
       (*i)->setShown( true );
-  objectsAdded();
+  redrawScreen();
 }
 
 void NormalMode::newMacro()
@@ -104,8 +104,14 @@ void NormalMode::newMacro()
   mdoc.runMode( &m );
 }
 
-void NormalMode::objectsAdded()
+void NormalMode::redrawScreen()
 {
+  // unselect removed objects..
+  Objects nsos;
+  for ( uint i = 0; i < sos.size(); ++i )
+    if ( mdoc.objects().contains( sos[i] ) )
+      nsos.push_back( sos[i] );
+  sos = nsos;
   const std::vector<KigWidget*>& widgets = mdoc.widgets();
   for ( uint i = 0; i < widgets.size(); ++i )
   {
@@ -113,11 +119,6 @@ void NormalMode::objectsAdded()
     w->redrawScreen();
     w->updateScrollBars();
   };
-}
-
-void NormalMode::objectsRemoved()
-{
-  objectsAdded();
 }
 
 void NormalMode::editTypes()
@@ -214,7 +215,7 @@ void NormalMode::midClicked( const QPoint& p, KigWidget& w )
   mdoc.addObjects( ptos );
 
   // refresh the screen...
-  // not necessary, done by addObjects, which calls NormalMode::objectsAdded..
+  // not necessary, done by addObjects, which calls NormalMode::redrawScreen..
 //  w.redrawScreen();
   w.updateScrollBars();
 }

@@ -141,7 +141,9 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
     MonitorDataObjects mon( monos );
     int n = (static_cast<const IntImp*>( os[0]->imp() )->data() + 1) % 2;
     static_cast<DataObject*>( os[0] )->setImp( new IntImp( n ) );
-    doc.history()->addCommand( mon.finish( doc, i18n( "Toggle a label's frame" ) ) );
+    KigCommand* kc = new KigCommand( doc, i18n( "Toggle a label's frame" ) );
+    kc->addTask( mon.finish() );
+    doc.history()->addCommand( kc );
   }
   else if ( i == 1 )
   {

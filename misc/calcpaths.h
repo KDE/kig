@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef CALCPATHS_H
-#define CALCPATHS_H
+#ifndef KIG_MISC_CALCPATHS_H
+#define KIG_MISC_CALCPATHS_H
 
 #include "objects.h"
 
@@ -58,16 +58,13 @@ Objects sideOfTreePath( const Objects& from, const Object* to );
 Objects getAllParents( const Objects& objs );
 
 /**
- * this function is used by the AddObjectsCommand and
- * RemoveObjectsCommand destructors and some more places...  They have
- * to delete the objects they contain, but what this function adds is
- * that they also delete their parents if those are internal and have
- * no more children.  Same goes for their deleted parents' parents
- * etc.  This to avoid KigDocument keeping useless DataObjects around
- * after all their children have been deleted..
- * if you're sure that no parents of os will be known by the document,
- * you can pass 0 for argument d..
+ * this function returns all the objects that are parents of an
+ * object in os, that are dead.  This means that they are internal (
+ * see Object::isInternal() ), and that they have no other children
+ * than objects that are in os, or other dead parents..
+ * It is used by functions that need to delete certain objects, to
+ * find out what objects can be deleted along..
  */
-void deleteObjectsAndDeadParents( Objects& os, KigDocument* d );
+Objects deadParents( Objects& os );
 
 #endif

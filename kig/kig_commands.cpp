@@ -30,6 +30,10 @@
 
 #include <vector>
 
+using std::vector;
+using std::max;
+using std::min;
+
 static int countRealObjects( const Objects& os )
 {
   int ret = 0;
@@ -38,156 +42,192 @@ static int countRealObjects( const Objects& os )
   return ret;
 };
 
-AddObjectsCommand::AddObjectsCommand(KigDocument& inDoc, const Objects& inOs)
-  : KigCommand( inDoc,
-		countRealObjects( inOs ) == 1 ?
-                ObjectImp::addAStatement( inOs.back()->imp()->id() ) :
-                i18n( "Add %1 Objects" ).arg( countRealObjects( inOs ) ) ),
-    undone(true),
-    os (inOs)
+class KigCommand::Private
+{
+public:
+  Private( KigDocument& d ) : doc( d ) {};
+  KigDocument& doc;
+  vector<KigCommandTask*> tasks;
+};
+
+KigCommand::KigCommand( KigDocument& doc, const QString& name )
+  : KNamedCommand(name), d( new Private( doc ) )
 {
 }
 
-AddObjectsCommand::AddObjectsCommand( KigDocument& inDoc, Object* o )
-    : KigCommand ( inDoc, ObjectImp::addAStatement( o->imp()->id() ) ),
-      undone( true )
+KigCommand::~KigCommand()
 {
-  os.push_back( o );
-};
+  for ( uint i = 0; i < d->tasks.size(); ++i )
+    delete d->tasks[i];
+}
 
-void AddObjectsCommand::execute()
+void KigCommand::execute()
+{
+  for ( uint i = 0; i < d->tasks.size(); ++i )
+    d->tasks[i]->execute( d->doc );
+  d->doc.mode()->redrawScreen();
+}
+
+void KigCommand::unexecute()
+{
+  for ( uint i = 0; i < d->tasks.size(); ++i )
+    d->tasks[i]->unexecute( d->doc );
+  d->doc.mode()->redrawScreen();
+}
+
+void KigCommand::addTask( KigCommandTask* t )
+{
+  d->tasks.push_back( t );
+}
+
+KigCommand* KigCommand::removeCommand( KigDocument& doc, Object* o )
+{
+  Objects os( o );
+  return addCommand( doc, os );
+}
+
+KigCommand* KigCommand::addCommand( KigDocument& doc, Object* o )
+{
+  Objects os( o );
+  return addCommand( doc, os );
+}
+
+KigCommand* KigCommand::removeCommand( KigDocument& doc, const Objects& os )
+{
+  QString text;
+  if ( countRealObjects( os ) == 1 )
+    text = ObjectImp::removeAStatement( os.back()->imp()->id() );
+  else
+    text = i18n( "Remove %1 Objects" ).arg( countRealObjects( os ) );
+  KigCommand* ret = new KigCommand( doc, text );
+  ret->addTask( new RemoveObjectsTask( os ) );
+  return ret;
+}
+
+KigCommand* KigCommand::addCommand( KigDocument& doc, const Objects& os )
+{
+  QString text;
+  if ( countRealObjects( os ) == 1 )
+    text = ObjectImp::addAStatement( os.back()->imp()->id() );
+  else
+    text = i18n( "Add %1 Objects" ).arg( countRealObjects( os ) );
+  KigCommand* ret = new KigCommand( doc, text );
+  ret->addTask( new AddObjectsTask( os ) );
+  return ret;
+}
+
+KigCommand* KigCommand::changeCoordSystemCommand( KigDocument& doc, CoordinateSystem* s )
+{
+  QString text = CoordinateSystemFactory::setCoordinateSystemStatement( s->id() );
+  KigCommand* ret = new KigCommand( doc, text );
+  ret->addTask( new ChangeCoordSystemTask( s ) );
+  return ret;
+}
+
+KigCommandTask::KigCommandTask()
+{
+}
+
+KigCommandTask::~KigCommandTask()
+{
+}
+
+AddObjectsTask::AddObjectsTask( const Objects& inOs)
+  : KigCommandTask(), undone( true ), os( inOs )
+{
+  os |= deadParents( os );
+  os = calcPath( os );
+}
+
+void AddObjectsTask::execute( KigDocument& doc )
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
-    (*i)->calc( document );
-    document._addObject(*i);
+    (*i)->calc( doc );
+    doc._addObject(*i);
   }
   undone = false;
-  document.mode()->objectsAdded();
 };
 
-void AddObjectsCommand::unexecute()
+void AddObjectsTask::unexecute( KigDocument& doc )
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-    document._delObject(*i);
-  undone=true;
-  document.mode()->objectsRemoved();
+    doc._delObject(*i);
+  undone = true;
 };
 
-AddObjectsCommand::~AddObjectsCommand()
+AddObjectsTask::~AddObjectsTask()
 {
   if ( undone )
-  {
-    deleteObjectsAndDeadParents( os, &document );
-  };
+    delete_all( os.begin(), os.end() );
 }
 
-RemoveObjectsCommand::RemoveObjectsCommand(KigDocument& inDoc, const Objects& inOs)
-  : KigCommand(inDoc,
-	       countRealObjects( inOs ) == 1 ?
-               ObjectImp::removeAStatement( inOs.back()->imp()->id() ) :
-               i18n( "Remove %1 Objects" ).arg( countRealObjects( inOs ) ) ),
-    undone( false ),
-    os( inOs )
+RemoveObjectsTask::RemoveObjectsTask( const Objects& os )
+  : AddObjectsTask( os )
 {
+  undone = false;
 }
 
-RemoveObjectsCommand::RemoveObjectsCommand( KigDocument& inDoc, Object* o)
-  : KigCommand( inDoc, ObjectImp::removeAStatement( o->imp()->id() ) ),
-    undone( false )
+void RemoveObjectsTask::execute( KigDocument& doc )
 {
-  os.push_back( o );
+  AddObjectsTask::unexecute( doc );
 }
 
-RemoveObjectsCommand::~RemoveObjectsCommand()
+void RemoveObjectsTask::unexecute( KigDocument& doc )
 {
-  if (!undone)
-    deleteObjectsAndDeadParents( os, &document );
-}
-
-void RemoveObjectsCommand::execute()
-{
-  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-    document._delObject(*i);
-  undone=false;
-  document.mode()->objectsRemoved();
-}
-
-void RemoveObjectsCommand::unexecute()
-{
-  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-  {
-    (*i)->calc( document );
-    document._addObject(*i);
-  };
-  undone = true;
-  document.mode()->objectsAdded();
+  AddObjectsTask::execute( doc );
 }
 
 struct MoveObjectData
 {
   DataObject* o;
-  ObjectImp* oldimp;
   ObjectImp* newimp;
 };
 
-class ChangeObjectImpsCommand::Private
+class ChangeObjectImpsTask::Private
 {
 public:
-  typedef std::vector<MoveObjectData> datavect;
+  typedef vector<MoveObjectData> datavect;
   datavect data;
-  bool undone;
 };
 
-ChangeObjectImpsCommand::ChangeObjectImpsCommand( KigDocument& doc, const QString& text )
-  : KigCommand( doc, text ),
-    d( new Private )
+ChangeObjectImpsTask::ChangeObjectImpsTask()
+  : KigCommandTask(), d( new Private )
 {
 }
 
-ChangeObjectImpsCommand::~ChangeObjectImpsCommand()
+ChangeObjectImpsTask::~ChangeObjectImpsTask()
 {
-  for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
+  for ( Private::datavect::iterator i = d->data.begin();
+        i != d->data.end(); ++i )
   {
     delete i->newimp;
-    delete i->oldimp;
   };
   delete d;
 }
 
-void ChangeObjectImpsCommand::execute()
+void ChangeObjectImpsTask::execute( KigDocument& doc )
 {
   Objects children;
-  for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
+  for ( Private::datavect::iterator i = d->data.begin();
+        i != d->data.end(); ++i )
   {
-    i->o->setImp( i->newimp->copy() );
+    i->newimp = i->o->switchImp( i->newimp );
     children.upush( i->o->getAllChildren() );
   };
   children = calcPath( children );
-  children.calc( document );
-  document.mode()->objectsRemoved();
-  d->undone = false;
+  children.calc( doc );
 }
 
-void ChangeObjectImpsCommand::unexecute()
+void ChangeObjectImpsTask::unexecute( KigDocument& doc )
 {
-  Objects children;
-  for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
-  {
-    i->o->setImp( i->oldimp->copy() );
-    children.upush( i->o->getAllChildren() );
-  };
-  children = calcPath( children );
-  children.calc( document );
-  document.mode()->objectsRemoved();
-  d->undone = true;
+  execute( doc );
 }
 
-void ChangeObjectImpsCommand::addObject( DataObject* o, ObjectImp* oldimp, ObjectImp* newimp )
+void ChangeObjectImpsTask::addObject( DataObject* o, ObjectImp* newimp )
 {
   MoveObjectData n;
   n.o = o;
-  n.oldimp = oldimp;
   n.newimp = newimp;
   d->data.push_back( n );
 }
@@ -198,13 +238,12 @@ struct MoveDataStruct
   ObjectImp* oldimp;
   MoveDataStruct( DataObject* io, ObjectImp* oi )
     : o( io ), oldimp( oi ) { }
-
 };
 
 class MonitorDataObjects::Private
 {
 public:
-  std::vector<MoveDataStruct> movedata;
+  vector<MoveDataStruct> movedata;
 };
 
 MonitorDataObjects::MonitorDataObjects( const Objects& objs )
@@ -223,14 +262,17 @@ void MonitorDataObjects::monitor( const Objects& objs )
     };
 }
 
-ChangeObjectImpsCommand* MonitorDataObjects::finish( KigDocument& doc, const QString& text )
+ChangeObjectImpsTask* MonitorDataObjects::finish()
 {
-  ChangeObjectImpsCommand* ret = new ChangeObjectImpsCommand( doc, text );
+  ChangeObjectImpsTask* ret = new ChangeObjectImpsTask();
   for ( uint i = 0; i < d->movedata.size(); ++i )
   {
     DataObject* o = d->movedata[i].o;
     if ( ! d->movedata[i].oldimp->equals( *o->imp() ) )
-      ret->addObject( o, d->movedata[i].oldimp, o->imp()->copy() );
+    {
+      ObjectImp* newimp = o->switchImp( d->movedata[i].oldimp );
+      ret->addObject( o, newimp );
+    }
     else
       delete d->movedata[i].oldimp;
   };
@@ -240,29 +282,85 @@ ChangeObjectImpsCommand* MonitorDataObjects::finish( KigDocument& doc, const QSt
 
 MonitorDataObjects::~MonitorDataObjects()
 {
+  assert( d->movedata.empty() );
   delete d;
 }
 
-ChangeCoordSystemCommand::ChangeCoordSystemCommand( KigDocument& d, CoordinateSystem* s )
-  : KigCommand( d, CoordinateSystemFactory::setCoordinateSystemStatement( s->id() ) ),
-    mcs( s )
+ChangeCoordSystemTask::ChangeCoordSystemTask( CoordinateSystem* s )
+  : KigCommandTask(), mcs( s )
 {
 }
 
-void ChangeCoordSystemCommand::execute()
+void ChangeCoordSystemTask::execute( KigDocument& doc )
 {
-  mcs = document.switchCoordinateSystem( mcs );
-  calcPath( document.objects() ).calc( document );
-  document.mode()->objectsRemoved();
+  mcs = doc.switchCoordinateSystem( mcs );
+  calcPath( doc.objects() ).calc( doc );
 }
 
-void ChangeCoordSystemCommand::unexecute()
+void ChangeCoordSystemTask::unexecute( KigDocument& doc )
 {
-  execute();
+  execute( doc );
 }
 
-ChangeCoordSystemCommand::~ChangeCoordSystemCommand()
+ChangeCoordSystemTask::~ChangeCoordSystemTask()
 {
   delete mcs;
+}
+
+class ChangeParentsAndTypeTask::Private
+{
+public:
+  RealObject* o;
+  Objects newparents;
+  const ObjectType* newtype;
+  Objects tobeadded;
+};
+
+ChangeParentsAndTypeTask::~ChangeParentsAndTypeTask()
+{
+  delete_all( d->tobeadded.begin(), d->tobeadded.end() );
+  delete d;
+}
+
+ChangeParentsAndTypeTask::ChangeParentsAndTypeTask(
+  RealObject* o, const Objects& newparents,
+  const ObjectType* newtype )
+  : KigCommandTask(), d( new Private )
+{
+  d->o = o;
+  d->newparents = newparents;
+  d->tobeadded = newparents;
+  d->newtype = newtype;
+}
+
+void ChangeParentsAndTypeTask::execute( KigDocument& doc )
+{
+  Objects tmp( d->o );
+
+  Objects toberemoved = deadParents( tmp );
+  for ( Objects::iterator i = d->newparents.begin();
+        i != d->newparents.end(); ++i )
+    toberemoved.remove( *i );
+
+  doc._delObjects( toberemoved );
+  doc._addObjects( d->tobeadded );
+  d->tobeadded = toberemoved;
+
+  Objects oldparents = d->o->parents();
+  d->o->setParents( d->newparents );
+  d->newparents = oldparents;
+
+  const ObjectType* oldtype = d->o->type();
+  d->o->setType( d->newtype );
+  d->newtype = oldtype;
+
+  d->o->parents().calc( doc );
+  d->o->calc( doc );
+  d->o->getAllChildren().calc( doc );
+}
+
+void ChangeParentsAndTypeTask::unexecute( KigDocument& doc )
+{
+  execute( doc );
 }
 

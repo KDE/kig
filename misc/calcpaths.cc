@@ -165,20 +165,59 @@ Objects getAllParents( const Objects& objs )
   return ret;
 };
 
-void deleteObjectsAndDeadParents( Objects& os, KigDocument* d )
+// this calls delChild() on all of o's parents..
+static void delChildFromParents( Object* o )
 {
-  while ( !os.empty() )
+  Objects parents = o->parents();
+  for ( Objects::iterator i = parents.begin(); i != parents.end(); ++i )
+    (*i)->delChild( o );
+};
+
+static void addChildToParents( Object* o )
+{
+  Objects parents = o->parents();
+  for ( Objects::iterator i = parents.begin(); i != parents.end(); ++i )
+    (*i)->addChild( o );
+};
+
+Objects deadParents( Objects& os )
+{
+  // what we do here is simulate deleting the children ( by calling
+  // delChild on their parents ), and then see if the parents have
+  // children left.. if they don't, we simulate deleting them too and
+  // continue with their parents..
+
+  Objects todo;
+  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
-    Objects tmp;
-    for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-    {
-      if ( d ) d->_delObject( *i );
-      Objects parents = (*i)->parents();
-      delete *i;
-      for ( Objects::iterator j = parents.begin(); j != parents.end(); ++j )
-        if ( (*j)->isInternal() && (*j)->children().empty() && ! os.contains( *j ) )
-          tmp.upush( *j );
-    };
-    os = tmp;
+    todo |= (*i)->parents();
+    delChildFromParents( *i );
   };
+
+  // these are the objects that we delChild'ed from their parents, and
+  // which we need to readd later..
+  Objects readd = os;
+
+  Objects ret;
+
+  while ( ! todo.empty() )
+  {
+    Objects newtodo;
+    for ( Objects::iterator i = todo.begin(); i != todo.end(); ++i )
+    {
+      if ( (*i)->isInternal() && (*i)->children().empty() )
+      {
+        ret.push_back( *i );
+        delChildFromParents( *i );
+        readd.push_back( *i );
+        newtodo |= (*i)->parents();
+      };
+    };
+    todo = newtodo;
+  };
+
+  for ( Objects::iterator i = readd.begin(); i != readd.end(); ++i )
+    addChildToParents( *i );
+
+  return ret;
 };

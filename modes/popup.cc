@@ -338,7 +338,7 @@ bool BuiltinObjectActionsProvider::executeAction(
       // hide the objects..
       for_each( os.begin(), os.end(),
                 bind2nd( mem_fun( &Object::setShown ), false ) );
-      doc.mode()->objectsRemoved();
+      doc.mode()->redrawScreen();
       break;
     case 1:
     {
@@ -677,7 +677,7 @@ bool BuiltinDocumentActionsProvider::executeAction(
     };
     CoordinateSystem* sys = CoordinateSystemFactory::build( id );
     assert( sys );
-    doc.history()->addCommand( new ChangeCoordSystemCommand( doc, sys ) );
+    doc.history()->addCommand( KigCommand::changeCoordSystemCommand( doc, sys ) );
     m.clearSelection();
     return true;
   }

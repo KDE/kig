@@ -31,72 +31,86 @@
 class KigDocument;
 class CoordinateSystem;
 
+class KigCommandTask;
+
 class KigCommand
   : public QObject, public KNamedCommand
 {
   Q_OBJECT
+  class Private;
+  Private* d;
 public:
-  KigCommand (KigDocument& inDoc, const QString& name) : KNamedCommand(name), document( inDoc ) {};
-public:
-  KigDocument& document;
-};
+  KigCommand( KigDocument& inDoc, const QString& name );
+  ~KigCommand();
 
-class AddObjectsCommand
-  : public KigCommand
-{
-  Q_OBJECT
-public:
-  AddObjectsCommand (KigDocument& inDoc, const Objects& os);
-  AddObjectsCommand( KigDocument& inDoc, Object* o );
-  ~AddObjectsCommand ();
-  void execute();
-  void unexecute();
-protected:
-  bool undone;
-  Objects os;
-};
-
-class RemoveObjectsCommand
-  : public KigCommand
-{
-  Q_OBJECT
-public:
+  static KigCommand* addCommand( KigDocument& doc, const Objects& os );
+  static KigCommand* addCommand( KigDocument& doc, Object* os );
   /**
    * make sure that when you delete something, you are also deleting
    * its parents.  This class assumes you've done that.
    * KigDocument::delObjects takes care of this for you.
    */
-  RemoveObjectsCommand(KigDocument& inDoc, const Objects& o);
-  RemoveObjectsCommand( KigDocument& inDoc, Object* o );
-  ~RemoveObjectsCommand ();
+  static KigCommand* removeCommand( KigDocument& doc, const Objects& os );
+  static KigCommand* removeCommand( KigDocument& doc, Object* o );
+
+  static KigCommand* changeCoordSystemCommand( KigDocument& doc, CoordinateSystem* s );
+
+  void addTask( KigCommandTask* );
+
   void execute();
   void unexecute();
+};
+
+class KigCommandTask
+{
+public:
+  KigCommandTask();
+  virtual ~KigCommandTask();
+
+  virtual void execute( KigDocument& doc ) = 0;
+  virtual void unexecute( KigDocument& doc ) = 0;
+};
+
+class AddObjectsTask
+  : public KigCommandTask
+{
+public:
+  AddObjectsTask( const Objects& os);
+  ~AddObjectsTask ();
+  void execute( KigDocument& doc );
+  void unexecute( KigDocument& doc );
 protected:
   bool undone;
   Objects os;
 };
 
-class ChangeObjectImpsCommand
-  : public KigCommand
+class RemoveObjectsTask
+  : public AddObjectsTask
 {
 public:
-  /**
-   * Construct a ChangeObjectImpsCommand and set the text explicitly ( you should
-   * use ObjectImp::moveAStatement() if you're moving a single
-   * object..
-   */
-  ChangeObjectImpsCommand( KigDocument& doc, const QString& text );
+  RemoveObjectsTask( const Objects& os );
+  void execute( KigDocument& );
+  void unexecute( KigDocument& );
+protected:
+  bool undone;
+  Objects os;
+};
 
-  ~ChangeObjectImpsCommand();
+class ChangeObjectImpsTask
+  : public KigCommandTask
+{
+public:
+  ChangeObjectImpsTask();
+  ~ChangeObjectImpsTask();
 
   /**
    * add a changed dataobject.  this class gains ownership of the
-   * imp's, you should pass copies.. ( @see ObjectImp::copy() )
+   * imp, you should pass a copy.. ( @see ObjectImp::copy() )
    */
-  void addObject( DataObject* o, ObjectImp* oldimp, ObjectImp* newimp );
+  void addObject( DataObject* o, ObjectImp* newimp );
 
-  void execute();
-  void unexecute();
+  void execute( KigDocument& );
+  void unexecute( KigDocument& );
 protected:
   class Private;
   Private* d;
@@ -133,22 +147,36 @@ public:
    * get the command..  text shown will be text..  monitoring stops
    * after this is called..
    */
-  ChangeObjectImpsCommand* finish( KigDocument&, const QString& text );
+  ChangeObjectImpsTask* finish();
 };
 
-class ChangeCoordSystemCommand
-  : public KigCommand
+class ChangeCoordSystemTask
+  : public KigCommandTask
 {
   CoordinateSystem* mcs;
 public:
   /**
    * a command that changes the coordinate-system to s..
    */
-  ChangeCoordSystemCommand( KigDocument& d, CoordinateSystem* s );
-  ~ChangeCoordSystemCommand();
+  ChangeCoordSystemTask( CoordinateSystem* s );
+  ~ChangeCoordSystemTask();
 
-  void execute();
-  void unexecute();
+  void execute( KigDocument& doc );
+  void unexecute( KigDocument& doc );
+};
+
+class ChangeParentsAndTypeTask
+  : public KigCommandTask
+{
+  class Private;
+  Private* d;
+public:
+  ChangeParentsAndTypeTask( RealObject* o, const Objects& newparents,
+                            const ObjectType* newtype );
+  ~ChangeParentsAndTypeTask();
+
+  void execute( KigDocument& doc );
+  void unexecute( KigDocument& doc );
 };
 
 #endif

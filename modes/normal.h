@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef NORMAL_H
-#define NORMAL_H
+#ifndef KIG_MODES_NORMAL_H
+#define KIG_MODES_NORMAL_H
 
 #include "base_mode.h"
 
@@ -45,14 +45,9 @@ protected:
 
 protected:
   /**
-   * Objcects were added by a command in mDoc->history.
+   * Objcects were added..
    */
-  void objectsAdded();
-
-   /**
-   * Objcects were removed by a command in mDoc->history.
-   */
-  void objectsRemoved();
+  void redrawScreen();
 
   void enableActions();
 

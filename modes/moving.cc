@@ -126,8 +126,8 @@ void MovingMode::stopMove()
   QString text = emo.size() == 1 ?
                  ObjectImp::moveAStatement( emo[0]->imp()->id() ) :
                  i18n( "Move %1 Objects" ).arg( emo.size() );
-  ChangeObjectImpsCommand* mc = mon->finish( mdoc, text );
-
+  KigCommand* mc = new KigCommand( mdoc, text );
+  mc->addTask( mon->finish() );
   mdoc.history()->addCommand( mc );
 }
 
@@ -139,11 +139,13 @@ void MovingMode::moveTo( const Coordinate& o )
 }
 
 PointRedefineMode::PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& v )
-  : MovingModeBase( d, v ), mp( p )
+  : MovingModeBase( d, v ), mp( p ), moldparents( p->parents() ), moldtype( p->type() ),
+    mref( new ReferenceObject( moldparents ) ), mmon( 0 )
 {
   using namespace std;
   Objects os( mp );
   Objects tmp = mp->getAllChildren();
+  mmon = new MonitorDataObjects( getAllParents( os ) );
   copy( tmp.begin(), tmp.end(), back_inserter( os ) );
   initScreen( os );
 }
@@ -178,4 +180,19 @@ MovingMode::~MovingMode()
 
 void PointRedefineMode::stopMove()
 {
+  Objects parents = mp->parents();
+  const ObjectType* type = mp->type();
+  mp->setType( moldtype );
+  mp->setParents( moldparents );
+  mp->calc( mdoc );
+
+  // mref was used to keep an artificial reference to the objects in
+  // moldparents.. we don't want it anymore after this..
+  delete mref;
+
+  KigCommand* command = new KigCommand( mdoc, i18n( "Redefine a Point" ) );
+  command->addTask(
+    new ChangeParentsAndTypeTask( mp, parents, type ) );
+  command->addTask( mmon->finish() );
+  mdoc.history()->addCommand( command );
 }

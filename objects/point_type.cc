@@ -245,7 +245,8 @@ void FixedPointType::executeAction(
 
     MonitorDataObjects mon( getAllParents( Objects( o ) ) );
     o->move( oldc, c - oldc, d );
-    KigCommand* kc = mon.finish( d, ObjectImp::moveAStatement( ObjectImp::ID_PointImp ) );
+    KigCommand* kc = new KigCommand( d, ObjectImp::moveAStatement( ObjectImp::ID_PointImp ) );
+    kc->addTask( mon.finish() );
 
     d.history()->addCommand( kc );
     break;
@@ -285,7 +286,9 @@ void ConstrainedPointType::executeAction(
       Objects monos( po );
       MonitorDataObjects mon( monos );
       po->setImp( new DoubleImp( newp ) );
-      d.history()->addCommand( mon.finish( d, i18n( "Change the parameter of a constrained point" ) ) );
+      KigCommand* kc = new KigCommand( d, i18n( "Change the parameter of a constrained point" ) );
+      kc->addTask( mon.finish() );
+      d.history()->addCommand( kc );
     };
     break;
   };

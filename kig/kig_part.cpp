@@ -275,7 +275,7 @@ bool KigDocument::openFile()
   tmp.calc( *this );
   emit recenterScreen();
 
-  mode()->objectsRemoved();
+  mode()->redrawScreen();
 
   return true;
 }
@@ -343,17 +343,17 @@ bool KigDocument::saveFile()
 
 void KigDocument::addObject(Object* o)
 {
-  mhistory->addCommand( new AddObjectsCommand( *this, o ) );
+  mhistory->addCommand( KigCommand::addCommand( *this, o ) );
 };
 
 void KigDocument::addObjects( const Objects& os )
 {
-  mhistory->addCommand( new AddObjectsCommand( *this, os ) );
+  mhistory->addCommand( KigCommand::addCommand( *this, os ) );
 }
 
 void KigDocument::_addObject( Object* o )
 {
-  mObjs.push_back( o );
+  mObjs.upush( o );
   setModified(true);
 };
 
@@ -362,8 +362,18 @@ void KigDocument::delObject(Object* o)
   // we delete all children and their children etc. too...
   Objects all = o->getAllChildren();
   all.upush(o);
-  mhistory->addCommand( new RemoveObjectsCommand( *this, all ) );
+  mhistory->addCommand( KigCommand::removeCommand( *this, all ) );
 };
+
+void KigDocument::_delObjects( const Objects& o )
+{
+  for ( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
+  {
+    mObjs.remove( *i );
+    (*i)->setSelected( false );
+  };
+  setModified( true );
+}
 
 void KigDocument::_delObject(Object* o)
 {
@@ -440,10 +450,11 @@ void KigDocument::setMode( KigMode* m )
   mMode = m;
   m->enableActions();
 }
-void KigDocument::_addObjects( const Objects& o)
+
+void KigDocument::_addObjects( const Objects& os )
 {
-  for( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
-    _addObject( *i );
+  mObjs |= os;
+  setModified( true );
 }
 
 void KigDocument::deleteObjects()
@@ -492,7 +503,7 @@ void KigDocument::delObjects( const Objects& os )
     if ( mObjs.contains( *i ) )
       dos.upush( *i );
   if ( dos.empty() ) return;
-  mhistory->addCommand( new RemoveObjectsCommand( *this, dos ) );
+  mhistory->addCommand( KigCommand::removeCommand( *this, dos ) );
 }
 
 void KigDocument::enableConstructActions( bool enabled )

@@ -109,11 +109,7 @@ void KigMode::startKiosk()
 {
 }
 
-void KigMode::objectsAdded()
-{
-}
-
-void KigMode::objectsRemoved()
+void KigMode::redrawScreen()
 {
 }
 

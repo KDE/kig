@@ -167,23 +167,10 @@ void ObjectWithParents::delParent( Object* o )
   mparents.remove( o );
 }
 
-void ObjectWithParents::setParents( const Objects& parents, KigDocument* doc )
+void ObjectWithParents::setParents( const Objects& parents )
 {
-  Objects killable;
   for ( uint i = 0; i < mparents.size(); ++i )
-  {
     mparents[i]->delChild( this );
-    if ( mparents[i]->isInternal() && mparents[i]->children().empty() &&
-         ! parents.contains( mparents[i] ) )
-    {
-      // mparents[i] is an internal object that is no longer used..
-      // so we remove it from the document, and delete it..
-      killable.push_back( mparents[i] );
-    };
-  };
-
-  deleteObjectsAndDeadParents( killable, doc );
-
   mparents = parents;
   for ( uint i = 0; i < mparents.size(); ++i )
     mparents[i]->addChild( this );
@@ -279,7 +266,7 @@ void Object::delParent( Object* )
   assert( false );
 }
 
-void Object::setParents( const Objects&, KigDocument* )
+void Object::setParents( const Objects& )
 {
   assert( false );
 }
@@ -292,6 +279,13 @@ bool Object::inherits( int ) const
 bool RealObject::inherits( int type ) const
 {
   return type == ID_RealObject;
+}
+
+ObjectImp* DataObject::switchImp( ObjectImp* imp )
+{
+  ObjectImp* ret = mimp;
+  mimp = imp;
+  return ret;
 }
 
 void DataObject::setImp( ObjectImp* imp )
@@ -502,3 +496,49 @@ Object* PropertyObject::parent()
 {
   return mparent;
 }
+
+ReferenceObject::ReferenceObject( const Objects& os )
+  : ObjectWithParents( os )
+{
+}
+
+ReferenceObject::~ReferenceObject()
+{
+}
+
+bool ReferenceObject::isInternal() const
+{
+  // pretend to not be internal, so we don't get deleted ourselves..
+  return false;
+}
+
+const ObjectImp* ReferenceObject::imp() const
+{
+  return new InvalidImp;
+}
+
+void ReferenceObject::draw( KigPainter&, bool ) const
+{
+  return;
+}
+
+bool ReferenceObject::inRect( const Rect&, const KigWidget& ) const
+{
+  return false;
+}
+
+bool ReferenceObject::shown() const
+{
+  return false;
+}
+
+void ReferenceObject::calc( const Args&, const KigDocument& )
+{
+  return;
+}
+
+bool ReferenceObject::contains( const Coordinate&, const KigWidget& ) const
+{
+  return false;
+}
+

@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef MACRO_H
-#define MACRO_H
+#ifndef KIG_MODES_MACRO_H
+#define KIG_MODES_MACRO_H
 
 #include "base_mode.h"
 

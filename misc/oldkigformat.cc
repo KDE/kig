@@ -100,7 +100,7 @@ static bool oldElemToNewObject( const QCString type,
     dataos.push_back( locusos[0] );
     RealObject* locus = static_cast<RealObject*>( locusos[1] );
     o.setType( locus->type() );
-    o.setParents( locus->parents(), 0 );
+    o.setParents( locus->parents() );
     delete locus;
   }
   else if ( type == "CoordinatePropertyPoint" )
@@ -114,7 +114,7 @@ static bool oldElemToNewObject( const QCString type,
     if ( wp == -1 ) return false;
     dataos.push_back( new PropertyObject( o.parents()[0], wp ) );
     dataos.back()->calc( kdoc );
-    o.setParents( Objects( dataos.back() ), 0 );
+    o.setParents( Objects( dataos.back() ) );
     o.setType( CopyObjectType::instance() );
   }
   else if ( type == "CircleTransform" || type == "ConicTransform" || type == "CubicTransform" ||
@@ -176,7 +176,7 @@ static bool oldElemToNewObject( const QCString type,
     copy( labelos.begin(), labelos.end() - 1, back_inserter( dataos ) );
     RealObject* label = static_cast<RealObject*>( labelos.back() );
     o.setType( label->type() );
-    o.setParents( label->parents(), 0 );
+    o.setParents( label->parents() );
     delete label;
   }
   else if ( type == "CircleLineIntersectionPoint" )

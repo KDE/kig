@@ -57,9 +57,6 @@ class ScreenInfo;
 class KigDocument : public KParts::ReadWritePart
 {
   Q_OBJECT
-
-  friend class AddObjectsCommand;
-  friend class RemoveObjectsCommand;
 public:
   /**
    * Default constructor
@@ -167,6 +164,7 @@ public:
   void _addObject( Object* inObject );
   void _addObjects( const Objects& o);
   void _delObject( Object* inObject );
+  void _delObjects( const Objects& o );
 
 protected:
   void setupActions();

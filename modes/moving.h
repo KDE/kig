@@ -24,7 +24,9 @@
 #include "../misc/objects.h"
 #include "../misc/coordinate.h"
 
+class ObjectType;
 class RealObject;
+class ReferenceObject;
 class Coordinate;
 class NormalPoint;
 class KigWidget;
@@ -90,6 +92,10 @@ class PointRedefineMode
   : public MovingModeBase
 {
   RealObject* mp;
+  Objects moldparents;
+  const ObjectType* moldtype;
+  ReferenceObject* mref;
+  MonitorDataObjects* mmon;
   void stopMove();
   void moveTo( const Coordinate& o );
 public:

@@ -102,7 +102,7 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       parents.clear();
       parents.push_back( dataobj );
       parents.push_back( v );
-      point->setParents( parents, &doc );
+      point->setParents( parents );
 
       assert( dataobj->inherits( Object::ID_DataObject ) );
       static_cast<DataObject*>( dataobj )->setImp( new DoubleImp( newparam ) );
@@ -117,11 +117,18 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       // point used to be fixed -> add a new DataObject etc.
       DataObject* d = new DataObject( new DoubleImp( newparam ) );
       doc._addObject( d );
+
+      // set the new parents, and remove old, dead ones..
       Objects args;
       args.push_back( d );
       args.push_back( v );
       point->setType( ConstrainedPointType::instance() );
-      point->setParents( args, &doc );
+      Objects tmp( point );
+      Objects dp = deadParents( tmp );
+      point->setParents( args );
+      doc._delObjects( dp );
+      delete_all( dp.begin(), dp.end() );
+
       args[1] = point;
       return args;
     }
@@ -136,8 +143,14 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       a.push_back( new DataObject( new DoubleImp( c.x ) ) );
       a.push_back( new DataObject( new DoubleImp( c.y ) ) );
       doc._addObjects( a );
+
       point->setType( FixedPointType::instance() );
-      point->setParents( a, &doc );
+      Objects tmp( point );
+      Objects dp = deadParents( tmp );
+      point->setParents( a );
+      doc._delObjects( dp );
+      delete_all( dp.begin(), dp.end() );
+
       a.push_back( point );
       return a;
     }
