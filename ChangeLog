@@ -1,5 +1,9 @@
 2004-04-27  Dominique Devriese  <devriese@kde.org>
 
+	* Make locuses work with the line styles, by drawing them with
+	drawPolyline instead of drawing the individual segments ourselves.
+	Thanks to Maurizio for the ideas and the help.
+
 	* Fix a stupid bug in the last commit which caused Kig to crash on
 	older Kig files.
 

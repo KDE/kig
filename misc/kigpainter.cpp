@@ -556,18 +556,6 @@ struct workitem
 
 void KigPainter::drawConic( const ConicPolarData& data )
 {
-  // @author Maurizio Paolini wrote an original version of this, ( the
-  // math in conicGetCoord() is still his ), I ( Dominique ) adapted
-  // it afterwards to use a distribution mechanism as explained
-  // below. )
-
-  // this function works more or less like Locus::calcForWidget():
-  // we calc some initial points, draw them, and then keep checking if
-  // the point with the param in between two other points.  If the
-  // point with that param is not too close to one of them, and if it
-  // is in the current window(), then we draw it, and put it on the
-  // stack for further processing...
-
   Coordinate focus1 = data.focus1;
   double pdimen = data.pdimen;
   double ecostheta0 = data.ecostheta0;
@@ -576,12 +564,13 @@ void KigPainter::drawConic( const ConicPolarData& data )
   // we manage our own overlay
   bool tNeedOverlay = mNeedOverlay;
   mNeedOverlay = false;
+
   QPen pen = mP.pen();
   pen.setCapStyle( Qt::RoundCap );
   mP.setPen( pen );
 
-  // this stack contains pairs of Coordinates that we still need to
-  // process:
+  // this stack contains pairs of Coordinates ( parameter intervals )
+  // that we still need to process:
   std::stack<workitem> workstack;
   // mp: this stack contains all the generated overlays:
   // the strategy for generating the overlay structure is the same
@@ -607,11 +596,12 @@ void KigPainter::drawConic( const ConicPolarData& data )
   // by forcing subdivision till h < hmax (with more or less the same
   // final result).
   // First push the [0,2*pi] interval into the stack:
+
+  Coordinate coo1 = conicGetCoord( 0, ecostheta0, esintheta0, pdimen, focus1 );
+  Coordinate coo2 = conicGetCoord( 2*M_PI, ecostheta0, esintheta0, pdimen, focus1 );
   workstack.push( workitem(
-                    coordparampair( 0, conicGetCoord( 0, ecostheta0, esintheta0,
-                                                      pdimen, focus1 ) ),
-                    coordparampair( 2*M_PI, conicGetCoord( 2*M_PI, ecostheta0, esintheta0,
-                                                           pdimen, focus1 ) ),
+                    coordparampair( 0, coo1 ),
+                    coordparampair( 2*M_PI, coo2 ),
                     0 ) );
 
   // maxlength is the square of the maximum size that we allow
@@ -623,8 +613,8 @@ void KigPainter::drawConic( const ConicPolarData& data )
   // distance between two parameter values cannot be too small
   double hmin = 1e-4;
   // distance between two parameter values cannot be too large
-  double hmax = M_PI/20;
-  double hmaxoverlay = M_PI/4;
+  double hmax = 2*M_PI/40;
+  double hmaxoverlay = 2*M_PI/8;
 
   int count = 1;               // the number of segments we've already
                                // visited...
@@ -906,8 +896,8 @@ void KigPainter::drawCurve( const CurveImp* curve )
   pen.setCapStyle( Qt::RoundCap );
   mP.setPen( pen );
 
-  // this stack contains pairs of Coordinates that we still need to
-  // process:
+  // this stack contains pairs of Coordinates ( parameter intervals )
+  // that we still need to process:
   std::stack<workitem> workstack;
   // mp: this stack contains all the generated overlays:
   // the strategy for generating the overlay structure is the same
@@ -960,6 +950,18 @@ void KigPainter::drawCurve( const CurveImp* curve )
   static const int maxnumberofpoints = 1000;
 
   const Rect& sr = window();
+
+  // what this algorithm does is approximating the curve with a set of
+  // segments.  we don't draw the individual segments, but use
+  // QPainter::drawPolyline() so that the line styles work properly.
+  // Possibly there are performance advantages as well ?  this array
+  // is a buffer of the polyline approximation of the part of the
+  // curve that we are currently processing.
+  QPointArray curpolyline( 1000 );
+  int curpolylinenextfree = 0;
+
+  // for debugging: to see in how many curve parts the curve is drawn.
+  int debug_nr_flushes = 0;
 
   // we don't use recursion, but a stack based approach for efficiency
   // concerns...
@@ -1020,8 +1022,16 @@ void KigPainter::drawCurve( const CurveImp* curve )
         QPoint tp0 = toScreen(p0);
         QPoint tp1 = toScreen(p1);
         QPoint tp2 = toScreen(p2);
-        mP.drawLine( tp0, tp2 );
-        mP.drawLine( tp2, tp1 );
+        if ( curpolylinenextfree > 0 && curpolyline[curpolylinenextfree - 1] != tp1 )
+        {
+          // flush the current part of the curve
+          mP.drawPolyline( curpolyline, 0, curpolylinenextfree );
+          curpolylinenextfree = 0;
+          debug_nr_flushes++;
+          curpolyline[curpolylinenextfree++] = tp1;
+        }
+        curpolyline[curpolylinenextfree++] = tp2;
+        curpolyline[curpolylinenextfree++] = tp0;
       }
       else if ( h >= hmin )   // we do not continue to subdivide indefinitely!
       {
@@ -1038,13 +1048,15 @@ void KigPainter::drawCurve( const CurveImp* curve )
       }
     }
   }
+  // flush the rest of the curve
+  mP.drawPolyline( curpolyline, 0, curpolylinenextfree - 1 );
+  curpolylinenextfree = 0;
+  debug_nr_flushes++;
+
+  kdDebug() << k_funcinfo << "nr of flushes: " << debug_nr_flushes << endl;
 
   if ( ! workstack.empty () )
-  {
-    kdDebug() << "Stack not empty in drawLocus!\n" << endl;
-    while ( ! workstack.empty () ) workstack.pop ();
-  }
-  assert ( workstack.empty() );
+    kdDebug() << "Stack not empty in KigPainter::drawCurve!\n" << endl;
   assert ( tNeedOverlay || overlaystack.empty() );
   if ( tNeedOverlay )
   {
