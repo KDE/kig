@@ -139,8 +139,7 @@ Transformation getProjectiveTransformation ( int argsnum,
       }
     }
 
-    // domi: is this reached ?  can i assert( false ) here ?
-    assert (argn == argsnum);
+    assert ( false );
     return Transformation::identity();
   }
 
@@ -237,6 +236,8 @@ QString getTransformMessage ( const Objects& os, const Object *o )
 
 /* domi: not necessary anymore, homotheticness is kept as a bool in
  *       the Transformation class..
+ * keeping it here, in case a need for it arises some time in the
+ * future...
  * decide if the given transformation is homotetic
  */
 // bool isHomoteticTransformation ( double transformation[3][3] )
@@ -281,12 +282,18 @@ const Transformation Transformation::translation( const Coordinate& c )
   Transformation ret = identity();
   ret.mdata[1][0] = c.x;
   ret.mdata[2][0] = c.y;
+
+  // this is already set in the identity() constructor, but just for
+  // clarity..
+  ret.mIsHomothety = true;
   return ret;
 }
 
 const Transformation Transformation::pointReflection( const Coordinate& c )
 {
-  return scaling( -1, c );
+  Transformation ret = scaling( -1, c );
+  ret.mIsHomothety = true;
+  return ret;
 }
 
 const Transformation operator*( const Transformation& a, const Transformation& b )
@@ -302,6 +309,8 @@ const Transformation operator*( const Transformation& a, const Transformation& b
         ret.mdata[i][j] += a.mdata[i][k] * b.mdata[k][j];
     };
 
+  // combination of two homotheties is a homothety..
+
   ret.mIsHomothety = a.mIsHomothety && b.mIsHomothety;
 
   return ret;
@@ -309,7 +318,10 @@ const Transformation operator*( const Transformation& a, const Transformation& b
 
 const Transformation Transformation::lineReflection( const LineData& l )
 {
-  return scaling( -1, l );
+  Transformation ret = scaling( -1, l );
+  // a reflection is a homothety...
+  ret.mIsHomothety = true;
+  return ret;
 }
 
 const Transformation Transformation::scaling( double factor, const LineData& l )
@@ -326,7 +338,8 @@ const Transformation Transformation::scaling( double factor, const LineData& l )
   ret.mdata[1][0] = a.x - ret.mdata[1][1]*a.x - ret.mdata[1][2]*a.y;
   ret.mdata[2][0] = a.y - ret.mdata[2][1]*a.x - ret.mdata[2][2]*a.y;
 
-  ret.mIsHomothety = true;
+  // domi: is 1e-8 a good value ?
+  ret.mIsHomothety = ( fabs( factor - 1 ) < 1e-8 || fabs ( factor + 1 ) < 1e-8 );
   return ret;
 }
 
@@ -367,6 +380,10 @@ const Transformation Transformation::rotation( double alpha, const Coordinate& c
   ret.mdata[1][0] = x - ret.mdata[1][1]*x - ret.mdata[1][2]*y;
   ret.mdata[2][0] = y - ret.mdata[2][1]*x - ret.mdata[2][2]*y;
 
+  // this is already set in the identity() constructor, but just for
+  // clarity..
+  ret.mIsHomothety = true;
+
   return ret;
 }
 
@@ -387,6 +404,7 @@ const Transformation Transformation::inverse( bool& valid ) const
   valid = Invert3by3matrix( mdata, ret.mdata );
 
   // domi: is the inverse of a homothetic matrix a homothety ?
-  ret.mIsHomothety = false;
+  ret.mIsHomothety = mIsHomothety;
 
+  return ret;
 }
