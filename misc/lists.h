@@ -1,4 +1,4 @@
-// object_constructor_list.h
+// lists.h
 // Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,15 +16,39 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_MISC_OBJECT_CONSTRUCTOR_LIST_H
-#define KIG_MISC_OBJECT_CONSTRUCTOR_LIST_H
+#ifndef KIG_MISC_LISTS_H
+#define KIG_MISC_LISTS_H
 
-#include <vector>
+#include "objects.h"
 
+class GUIAction;
 class ObjectConstructor;
 class Objects;
 class KigDocument;
 class KigWidget;
+
+class GUIActionList
+{
+public:
+  typedef myvector<GUIAction*> avectype;
+  typedef myvector<KigDocument*> dvectype;
+private:
+  avectype mactions;
+  dvectype mdocs;
+  GUIActionList();
+  ~GUIActionList();
+public:
+  static GUIActionList* instance();
+  const avectype& actions() const { return mactions; };
+
+  // register this document, so that it receives notifications for
+  // added and removed actions..
+  void regDoc( KigDocument* d );
+  void unregDoc( KigDocument* d );
+
+  void add( GUIAction* a );
+  void remove( GUIAction* a );
+};
 
 class ObjectConstructorList
 {

@@ -1,4 +1,4 @@
-// guiaction_list.cc
+// lists.cc
 // Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,8 +16,10 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#include "guiaction_list.h"
+#include "lists.h"
 
+#include "object_constructor.h"
+#include "i18n.h"
 #include "guiaction.h"
 #include "../kig/kig_part.h"
 
@@ -59,4 +61,39 @@ void GUIActionList::remove( GUIAction* a )
   mactions.remove( a );
   for ( uint i = 0; i < mdocs.size(); ++i )
     mdocs[i]->actionRemoved( a );
+}
+
+ObjectConstructorList::ObjectConstructorList()
+{
+}
+
+ObjectConstructorList::~ObjectConstructorList()
+{
+  for ( vectype::iterator i = mctors.begin(); i != mctors.end(); ++i )
+    delete *i;
+}
+
+ObjectConstructorList* ObjectConstructorList::instance()
+{
+  static ObjectConstructorList s;
+  return &s;
+}
+
+ObjectConstructorList::vectype ObjectConstructorList::ctorsThatWantArgs(
+  const Objects& os, const KigDocument& d,
+  const KigWidget& w, bool co ) const
+{
+  vectype ret;
+  for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
+  {
+    int r = (*i)->wantArgs( os, d, w );
+    if ( r == ArgsChecker::Complete || ( !co && r == ArgsChecker::Valid ) )
+      ret.push_back( *i );
+  };
+  return ret;
+}
+
+void ObjectConstructorList::add( ObjectConstructor* a )
+{
+  mctors.push_back( a );
 }

@@ -19,10 +19,9 @@
 #include "builtin_stuff.h"
 
 #include "object_constructor.h"
-#include "object_constructor_list.h"
+#include "lists.h"
 #include "special_constructors.h"
 #include "guiaction.h"
-#include "guiaction_list.h"
 #include "i18n.h"
 
 #include "../objects/line_type.h"
