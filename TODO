@@ -3,7 +3,6 @@
 
 * simple:
 - implement the helpSlot()'s in the wizards..
-- get rid of CustomTypes by putting their data in DataObjects
 
 * harder:
 - filters: more input filters ( get cabri to work somewhat, kseg
