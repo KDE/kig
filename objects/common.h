@@ -58,6 +58,10 @@ void delete_all( T begin, T end )
   }
 }
 
+// get the calcers that the holders represent and their namecalcers
+std::vector<ObjectCalcer*> getAllCalcers( const std::vector<ObjectHolder*>& os );
+
+// get the calcers that the holders represent ( not their namecalcers )
 std::vector<ObjectCalcer*> getCalcers( const std::vector<ObjectHolder*>& os );
 
 // The below is a trick.  ObjectType's implement the singleton

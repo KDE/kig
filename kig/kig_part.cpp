@@ -407,7 +407,7 @@ bool KigPart::openFile()
   setModified(false);
   mhistory->clear();
 
-  std::vector<ObjectCalcer*> tmp = calcPath( getAllParents( getCalcers( document().objects() ) ) );
+  std::vector<ObjectCalcer*> tmp = calcPath( getAllParents( getAllCalcers( document().objects() ) ) );
   for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
     ( *i )->calc( document() );
   emit recenterScreen();
@@ -531,7 +531,7 @@ void KigPart::delObjects( const std::vector<ObjectHolder*>& os )
   if ( os.size() < 1 ) return;
   std::set<ObjectHolder*> delobjs;
 
-  std::set<ObjectCalcer*> delcalcers = getAllChildren( getCalcers( os ) );
+  std::set<ObjectCalcer*> delcalcers = getAllChildren( getAllCalcers( os ) );
   std::map<ObjectCalcer*, ObjectHolder*> holdermap;
 
   std::set<ObjectHolder*> curobjs = document().objectsSet();
@@ -938,7 +938,7 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
     return -1;
   }
 
-  std::vector<ObjectCalcer*> tmp = calcPath( getAllParents( getCalcers( doc->objects() ) ) );
+  std::vector<ObjectCalcer*> tmp = calcPath( getAllParents( getAllCalcers( doc->objects() ) ) );
   for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
     ( *i )->calc( *doc );
   for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )

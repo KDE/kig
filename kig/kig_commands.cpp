@@ -254,7 +254,7 @@ ChangeCoordSystemTask::ChangeCoordSystemTask( CoordinateSystem* s )
 void ChangeCoordSystemTask::execute( KigPart& doc )
 {
   mcs = doc.document().switchCoordinateSystem( mcs );
-  std::vector<ObjectCalcer*> calcpath = calcPath( getCalcers( doc.document().objects() ) );
+  std::vector<ObjectCalcer*> calcpath = calcPath( getAllCalcers( doc.document().objects() ) );
   for ( std::vector<ObjectCalcer*>::iterator i = calcpath.begin(); i != calcpath.end(); ++i )
     ( *i )->calc( doc.document() );
   doc.coordSystemChanged( doc.document().coordinateSystem().id() );

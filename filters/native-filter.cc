@@ -570,7 +570,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   docelem.appendChild( cselem );
 
   std::vector<ObjectHolder*> holders = kdoc.objects();
-  std::vector<ObjectCalcer*> calcers = getAllParents( getCalcers( holders ) );
+  std::vector<ObjectCalcer*> calcers = getAllParents( getAllCalcers( holders ) );
   calcers = calcPath( calcers );
 
   QDomElement hierelem = doc.createElement( "Hierarchy" );
@@ -704,7 +704,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     ark->open( IO_WriteOnly );
     ark->addLocalFile( tmpfile, tempname + ".kig" );
     ark->close();
-    
+
     // finally, removing temp file
     QFile::remove( tmpfile );
 
