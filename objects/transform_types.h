@@ -28,7 +28,7 @@ class TranslatedType
   ~TranslatedType();
 public:
   static const TranslatedType* instance();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -39,7 +39,7 @@ class PointReflectionType
   ~PointReflectionType();
 public:
   static const PointReflectionType* instance();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -50,7 +50,7 @@ class LineReflectionType
   ~LineReflectionType();
 public:
   static const LineReflectionType* instance();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -61,7 +61,7 @@ class RotationType
   ~RotationType();
 public:
   static const RotationType* instance();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -72,7 +72,7 @@ class ScalingOverCenterType
   ~ScalingOverCenterType();
 public:
   static const ScalingOverCenterType* instance();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -83,7 +83,7 @@ class ScalingOverLineType
   ~ScalingOverLineType();
 public:
   static const ScalingOverLineType* instance();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -94,7 +94,7 @@ class ProjectiveRotationType
   ~ProjectiveRotationType();
 public:
   static const ProjectiveRotationType* instance();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -105,7 +105,7 @@ class CastShadowType
   ~CastShadowType();
 public:
   static const CastShadowType* instance();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 

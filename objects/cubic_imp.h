@@ -49,8 +49,11 @@ public:
   const char* baseName() const;
 
   double getParam( const Coordinate& point ) const;
-  const Coordinate getPoint( double param ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
+protected:
+  const Coordinate internalGetPoint( double param ) const;
 
+public:
   const CubicCartesianData data() const;
 
   int id() const;

@@ -156,3 +156,8 @@ QString ObjectImp::addAStatement( int id )
   default: return 0;
   };
 }
+
+void ObjectImp::fillInNextEscape( QString&, const KigDocument& ) const
+{
+  assert( false );
+}

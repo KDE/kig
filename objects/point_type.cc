@@ -38,7 +38,7 @@ FixedPointType::~FixedPointType()
 {
 }
 
-ObjectImp* FixedPointType::calc( const Args& parents ) const
+ObjectImp* FixedPointType::calc( const Args& parents, const KigDocument& ) const
 {
   assert( parents.size() == 2 );
   assert( parents[0]->inherits( ObjectImp::ID_DoubleImp ) );
@@ -49,14 +49,14 @@ ObjectImp* FixedPointType::calc( const Args& parents ) const
   return d;
 }
 
-ObjectImp* ConstrainedPointType::calc( const Args& tparents ) const
+ObjectImp* ConstrainedPointType::calc( const Args& tparents, const KigDocument& doc ) const
 {
   assert( tparents.size() == 2 );
   Args parents = margsparser.parse( tparents );
   assert( parents[0]->inherits( ObjectImp::ID_DoubleImp ) );
   assert( parents[1]->inherits( ObjectImp::ID_CurveImp ) );
   double param = static_cast<const DoubleImp*>( parents[0] )->data();
-  return new PointImp( static_cast<const CurveImp*>( parents[1] )->getPoint( param ) );
+  return new PointImp( static_cast<const CurveImp*>( parents[1] )->getPoint( param, doc ) );
 }
 
 const ArgParser::spec argsspecdc[] =

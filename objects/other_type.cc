@@ -53,7 +53,7 @@ const AngleType* AngleType::instance()
   return &t;
 }
 
-ObjectImp* AngleType::calc( const Args& parents ) const
+ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 3 ) return new InvalidImp;
   std::vector<Coordinate> points;
@@ -117,7 +117,7 @@ LocusType::~LocusType()
 {
 }
 
-ObjectImp* LocusType::calc( const Args& args ) const
+ObjectImp* LocusType::calc( const Args& args, const KigDocument& ) const
 {
   using namespace std;
 

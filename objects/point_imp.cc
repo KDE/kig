@@ -22,6 +22,8 @@
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
+#include "../misc/coordinate_system.h"
+#include "../kig/kig_part.h"
 
 PointImp::PointImp( const Coordinate& c )
   : mc( c )
@@ -109,5 +111,10 @@ const char* PointImp::baseName() const
 int PointImp::id() const
 {
   return ID_PointImp;
+}
+
+void PointImp::fillInNextEscape( QString& s, const KigDocument& doc ) const
+{
+  s = s.arg( doc.coordinateSystem().fromScreen( mc, doc ) );
 }
 

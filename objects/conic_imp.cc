@@ -137,7 +137,7 @@ double ConicImp::getParam( const Coordinate& p ) const
     return fmod(theta / ( 2 * M_PI ) + 0.5, 1);
 }
 
-const Coordinate ConicImp::getPoint( double p ) const
+const Coordinate ConicImp::getPoint( double p, const KigDocument& ) const
 {
   const ConicPolarData d = polarData();
 

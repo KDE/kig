@@ -72,7 +72,7 @@ CircleBTPType::~CircleBTPType()
 {
 }
 
-ObjectImp* CircleBTPType::calc( const Args& args ) const
+ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
 {
   if ( args.size() < 2 ) return new InvalidImp;
   for ( uint i = 0; i < args.size(); ++i )

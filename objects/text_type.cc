@@ -49,18 +49,32 @@ int TextType::resultId() const
   return ObjectImp::ID_TextImp;
 }
 
-int TextType::impRequirement( const ObjectImp*, const Args& ) const
+int TextType::impRequirement( const ObjectImp* oi, const Args& args ) const
 {
-  return ObjectImp::ID_AnyImp;
+  Args firsttwo( args.begin(), args.begin() + 2 );
+  if ( mparser.check( firsttwo ) == ArgsChecker::Complete )
+    return ObjectImp::ID_AnyImp;
+  else
+  {
+    return
+      oi->inherits( ObjectImp::ID_StringImp ) ? ObjectImp::ID_StringImp : ObjectImp::ID_PointImp;
+  };
 }
 
-ObjectImp* TextType::calc( const Args& parents ) const
+ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
 {
   assert( parents.size() >= 2 );
-  Args os = mparser.parse( parents );
+  Args firsttwo( parents.begin(), parents.begin() + 2 );
+  Args varargs( parents.begin() + 2,  parents.end() );
+  Args os = mparser.parse( firsttwo );
 
   const Coordinate t = static_cast<const PointImp*>( os[0] )->coordinate();
-  const QString s = static_cast<const StringImp*>( os[1] )->data();
+  QString s = static_cast<const StringImp*>( os[1] )->data();
+
+  for ( Args::iterator i = varargs.begin(); i != varargs.end(); ++i )
+  {
+    (*i)->fillInNextEscape( s, doc );
+  };
 
   return new TextImp( s, t );
 }
@@ -79,5 +93,10 @@ void TextType::move( RealObject* ourobj, const Coordinate&,
   const PointImp* p = static_cast<const PointImp*>( c->imp() );
   const Coordinate n = p->coordinate() + dist;
   c->setImp( new PointImp( n ) );
+}
+
+ObjectImp* TextType::calc( const Args& ) const
+{
+  assert( false );
 }
 

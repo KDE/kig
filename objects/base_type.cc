@@ -34,7 +34,7 @@ ObjectABType::~ObjectABType()
 {
 }
 
-ObjectImp* ObjectABType::calc( const Args& parents ) const
+ObjectImp* ObjectABType::calc( const Args& parents, const KigDocument& ) const
 {
   if( parents.size() != 2 ) return new InvalidImp;
   Coordinate a = static_cast<const PointImp*>( parents[0] )->coordinate();
@@ -69,7 +69,7 @@ ObjectLPType::~ObjectLPType()
 {
 }
 
-ObjectImp* ObjectLPType::calc( const Args& targs ) const
+ObjectImp* ObjectLPType::calc( const Args& targs, const KigDocument& ) const
 {
   if( targs.size() != 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );

@@ -61,7 +61,7 @@ void MovingModeBase::initScreen( const Objects& tin )
                   back_inserter( nmo ) );
 
   mview.clearStillPix();
-  KigPainter p( mview.screenInfo(), &mview.stillPix );
+  KigPainter p( mview.screenInfo(), &mview.stillPix, mdoc );
   p.drawGrid( mdoc.coordinateSystem() );
   p.drawObjects( nmo );
 // not necessary
@@ -90,7 +90,7 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   Coordinate c = v->fromScreen( e->pos() );
   moveTo( c );
   amo.calc( mdoc );
-  KigPainter p( v->screenInfo(), &v->curPix );
+  KigPainter p( v->screenInfo(), &v->curPix, mdoc );
   p.drawObjects( amo );
   v->updateWidget( p.overlay() );
   v->updateScrollBars();

@@ -70,13 +70,13 @@ double LocusImp::getParam( const Coordinate& ) const
   return 0.5;
 }
 
-const Coordinate LocusImp::getPoint( double param ) const
+const Coordinate LocusImp::getPoint( double param, const KigDocument& doc ) const
 {
-  Coordinate arg = mcurve->getPoint( param );
-   PointImp argimp( arg );
+  Coordinate arg = mcurve->getPoint( param, doc );
+  PointImp argimp( arg );
   Args args;
   args.push_back( &argimp );
-  std::vector<ObjectImp*> calcret = mhier.calc( args );
+  std::vector<ObjectImp*> calcret = mhier.calc( args, doc );
   assert( calcret.size() == 1 );
   ObjectImp* imp = calcret.front();
   Coordinate ret;

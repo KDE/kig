@@ -62,6 +62,7 @@ protected:
   BrushStyle brushStyle;
   QColor brushColor;
 
+  const KigDocument& mdoc;
   ScreenInfo msi;
 
   bool mNeedOverlay;
@@ -74,7 +75,8 @@ public:
    * needOverlay sets whether we try to remember the places we're
    * drawing on using the various overlay methods. @see overlay()
    */
-  KigPainter( const ScreenInfo& r, QPaintDevice* device, bool needOverlay = true );
+  KigPainter( const ScreenInfo& r, QPaintDevice* device, const KigDocument& doc,
+              bool needOverlay = true );
   ~KigPainter();
 
   // what rect are we drawing on ?

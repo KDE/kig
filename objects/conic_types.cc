@@ -46,7 +46,7 @@ ConicB5PType::~ConicB5PType()
 {
 }
 
-ObjectImp* ConicB5PType::calc( const Args& parents ) const
+ObjectImp* ConicB5PType::calc( const Args& parents, const KigDocument& ) const
 {
   assert( parents.size() <= 5 );
   std::vector<Coordinate> points;
@@ -88,7 +88,7 @@ const ConicBAAPType* ConicBAAPType::instance()
   return &t;
 }
 
-ObjectImp* ConicBAAPType::calc( const Args& parents ) const
+ObjectImp* ConicBAAPType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 3 ) return new InvalidImp;
   Args parsed = margsparser.parse( parents );
@@ -102,7 +102,7 @@ ObjectImp* ConicBAAPType::calc( const Args& parents ) const
   return new ConicImpCart( calcConicByAsymptotes( la, lb, c ) );
 }
 
-ObjectImp* ConicBFFPType::calc( const Args& parents ) const
+ObjectImp* ConicBFFPType::calc( const Args& parents, const KigDocument& ) const
 {
   std::vector<Coordinate> cs;
 
@@ -206,7 +206,7 @@ ConicBDFPType::~ConicBDFPType()
 {
 }
 
-ObjectImp* ConicBDFPType::calc( const Args& parents ) const
+ObjectImp* ConicBDFPType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   Args parsed = margsparser.parse( parents );
@@ -260,7 +260,7 @@ const ParabolaBTPType* ParabolaBTPType::instance()
   return &t;
 }
 
-ObjectImp* ParabolaBTPType::calc( const Args& parents ) const
+ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   std::vector<Coordinate> points;
@@ -293,7 +293,7 @@ const ConicPolarPointType* ConicPolarPointType::instance()
   return &t;
 }
 
-ObjectImp* ConicPolarPointType::calc( const Args& parents ) const
+ObjectImp* ConicPolarPointType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   Args parsed = margsparser.parse( parents );
@@ -327,7 +327,7 @@ const ConicPolarLineType* ConicPolarLineType::instance()
   return &t;
 }
 
-ObjectImp* ConicPolarLineType::calc( const Args& parents ) const
+ObjectImp* ConicPolarLineType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   Args parsed = margsparser.parse( parents );
@@ -360,7 +360,7 @@ const ConicDirectrixType* ConicDirectrixType::instance()
   return &t;
 }
 
-ObjectImp* ConicDirectrixType::calc( const Args& parents ) const
+ObjectImp* ConicDirectrixType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() != 1 ) return new InvalidImp;
 
@@ -401,7 +401,7 @@ const EquilateralHyperbolaB4PType* EquilateralHyperbolaB4PType::instance()
   return &t;
 }
 
-ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents ) const
+ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents, const KigDocument& ) const
 {
   std::vector<Coordinate> pts;
   for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
@@ -468,7 +468,7 @@ const ConicAsymptoteType* ConicAsymptoteType::instance()
   return &t;
 }
 
-ObjectImp* ConicAsymptoteType::calc( const Args& parents ) const
+ObjectImp* ConicAsymptoteType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   Args p = margsparser.parse( parents );
@@ -503,7 +503,7 @@ const ConicRadicalType* ConicRadicalType::instance()
   return &t;
 }
 
-ObjectImp* ConicRadicalType::calc( const Args& parents ) const
+ObjectImp* ConicRadicalType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() != 4 ) return new InvalidImp;
   Args p = margsparser.parse( parents );

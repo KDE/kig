@@ -37,7 +37,7 @@ class ConicLineIntersectionType
   ~ConicLineIntersectionType();
 public:
   static const ConicLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -48,7 +48,7 @@ class LineLineIntersectionType
   ~LineLineIntersectionType();
 public:
   static const LineLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -59,7 +59,7 @@ class LineCubicIntersectionType
   ~LineCubicIntersectionType();
 public:
   static const LineCubicIntersectionType* instance();
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   int resultId() const;
 };
 

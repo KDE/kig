@@ -48,7 +48,7 @@ const TranslatedType* TranslatedType::instance()
   return &t;
 }
 
-ObjectImp* TranslatedType::calc( const Args& targs ) const
+ObjectImp* TranslatedType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
@@ -80,7 +80,7 @@ const PointReflectionType* PointReflectionType::instance()
   return &t;
 }
 
-ObjectImp* PointReflectionType::calc( const Args& targs ) const
+ObjectImp* PointReflectionType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
@@ -112,7 +112,7 @@ const LineReflectionType* LineReflectionType::instance()
   return &t;
 }
 
-ObjectImp* LineReflectionType::calc( const Args& targs ) const
+ObjectImp* LineReflectionType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
@@ -145,7 +145,7 @@ const RotationType* RotationType::instance()
   return &t;
 }
 
-ObjectImp* RotationType::calc( const Args& targs ) const
+ObjectImp* RotationType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 3 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
@@ -180,7 +180,7 @@ const ScalingOverCenterType* ScalingOverCenterType::instance()
   return &t;
 }
 
-ObjectImp* ScalingOverCenterType::calc( const Args& targs ) const
+ObjectImp* ScalingOverCenterType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 3 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
@@ -215,7 +215,7 @@ const ScalingOverLineType* ScalingOverLineType::instance()
   return &t;
 }
 
-ObjectImp* ScalingOverLineType::calc( const Args& targs ) const
+ObjectImp* ScalingOverLineType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 3 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
@@ -250,7 +250,7 @@ const ProjectiveRotationType* ProjectiveRotationType::instance()
   return &t;
 }
 
-ObjectImp* ProjectiveRotationType::calc( const Args& targs ) const
+ObjectImp* ProjectiveRotationType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() < 2 ) return new InvalidImp;
   Args args = margsparser.parse( targs );
@@ -291,7 +291,7 @@ const CastShadowType* CastShadowType::instance()
   return &t;
 }
 
-ObjectImp* CastShadowType::calc( const Args& targs ) const
+ObjectImp* CastShadowType::calc( const Args& targs, const KigDocument& ) const
 {
   if ( targs.size() != 3 ) return new InvalidImp;
   Args args = margsparser.parse( targs );

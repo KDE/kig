@@ -170,3 +170,23 @@ const QCStringList BogusImp::propertiesInternalNames() const
 {
   return QCStringList();
 }
+
+void InvalidImp::fillInNextEscape( QString& s, const KigDocument& ) const
+{
+  s = s.arg( "[invalid]" );
+}
+
+void DoubleImp::fillInNextEscape( QString& s, const KigDocument& ) const
+{
+  s = s.arg( mdata );
+}
+
+void IntImp::fillInNextEscape( QString& s, const KigDocument& ) const
+{
+  s = s.arg( mdata );
+}
+
+void StringImp::fillInNextEscape( QString& s, const KigDocument& ) const
+{
+  s = s.arg( mdata );
+}

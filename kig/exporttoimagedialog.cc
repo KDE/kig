@@ -92,7 +92,7 @@ void ExportToImageDialog::slotOKPressed()
 
   QPixmap img( QSize( WidthInput->value(), HeightInput->value() ) );
   img.fill( Qt::white );
-  KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img );
+  KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img, *md);
   p.setWholeWinOverlay();
   p.drawGrid( md->coordinateSystem(), showgridCheckBox->isOn(), showAxesCheckBox->isOn() );
   p.drawObjects( md->objects() );

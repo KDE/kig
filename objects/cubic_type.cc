@@ -54,7 +54,7 @@ const CubicB9PType* CubicB9PType::instance()
   return &t;
 }
 
-ObjectImp* CubicB9PType::calc( const Args& os ) const
+ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
 {
   std::vector<Coordinate> points;
 
@@ -92,7 +92,7 @@ const CubicNodeB6PType* CubicNodeB6PType::instance()
   return &t;
 }
 
-ObjectImp* CubicNodeB6PType::calc( const Args& parents ) const
+ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   std::vector<Coordinate> points;
@@ -126,7 +126,7 @@ const CubicCuspB4PType* CubicCuspB4PType::instance()
   return &t;
 }
 
-ObjectImp* CubicCuspB4PType::calc( const Args& parents ) const
+ObjectImp* CubicCuspB4PType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 2 ) return new InvalidImp;
   if ( parents.size() > 4 ) return new InvalidImp;

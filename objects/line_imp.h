@@ -73,8 +73,8 @@ public:
 
   int type() const;
 
-  const Coordinate getPoint (double param) const;
-  double getParam (const Coordinate&) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
+  double getParam( const Coordinate& ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
@@ -105,7 +105,7 @@ public:
 
   ObjectImp* transform( const Transformation& ) const;
 
-  const Coordinate getPoint (double param) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
   double getParam (const Coordinate&) const;
 
   int type() const;
@@ -128,7 +128,7 @@ public:
 
   ObjectImp* transform( const Transformation& ) const;
 
-  const Coordinate getPoint (double param) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
   double getParam (const Coordinate&) const;
 
   int type() const;

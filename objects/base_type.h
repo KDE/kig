@@ -32,7 +32,7 @@ protected:
   ObjectABType( const char* fulltypename, const ArgParser::spec* argsspec, int n );
   ~ObjectABType();
 public:
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   bool canMove() const;
   void move( Object* o, const Coordinate& from, const Coordinate& dist ) const;
 
@@ -46,7 +46,7 @@ protected:
   ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n );
   ~ObjectLPType();
 public:
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
 
   virtual ObjectImp* calc( const LineData& a, const Coordinate& b ) const = 0;
 };

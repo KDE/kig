@@ -204,10 +204,10 @@ const ObjectType* RealObject::type() const
   return mtype;
 }
 
-void RealObject::calc( const Args& a, const KigDocument& )
+void RealObject::calc( const Args& a, const KigDocument& d )
 {
   delete mimp;
-  mimp = mtype->calc( a );
+  mimp = mtype->calc( a, d );
 }
 
 Object::Object()

@@ -28,7 +28,7 @@ class CubicB9PType
   ~CubicB9PType();
 public:
   static const CubicB9PType* instance();
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -39,7 +39,7 @@ class CubicNodeB6PType
   ~CubicNodeB6PType();
 public:
   static const CubicNodeB6PType* instance();
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -50,7 +50,7 @@ class CubicCuspB4PType
   ~CubicCuspB4PType();
 public:
   static const CubicCuspB4PType* instance();
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   int resultId() const;
 };
 

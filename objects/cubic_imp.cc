@@ -156,9 +156,9 @@ double CubicImp::getParam( const Coordinate& p ) const
   t = 0.5*(t + 1);
   t /= 3;
 
-  Coordinate p1 = getPoint ( t );
-  Coordinate p2 = getPoint ( t + 1.0/3.0 );
-  Coordinate p3 = getPoint ( t + 2.0/3.0 );
+  Coordinate p1 = internalGetPoint ( t );
+  Coordinate p2 = internalGetPoint ( t + 1.0/3.0 );
+  Coordinate p3 = internalGetPoint ( t + 2.0/3.0 );
 
   double mint = t;
   double mindist = fabs ( y - p1.y );
@@ -175,7 +175,12 @@ double CubicImp::getParam( const Coordinate& p ) const
   return mint;
 }
 
-const Coordinate CubicImp::getPoint( double p ) const
+const Coordinate CubicImp::getPoint( double p, const KigDocument& ) const
+{
+  return internalGetPoint( p );
+}
+
+const Coordinate CubicImp::internalGetPoint( double p ) const
 {
   /*
    * this isn't really elegant...

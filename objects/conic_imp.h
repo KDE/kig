@@ -47,7 +47,7 @@ public:
   ObjectImp* property( uint which, const KigDocument& w ) const;
 
   double getParam( const Coordinate& point ) const;
-  const Coordinate getPoint( double param ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
 
   // information about ourselves..  These are all virtual, because a
   // trivial subclass like CircleImp can override these with trivial

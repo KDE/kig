@@ -110,6 +110,15 @@ public:
   virtual const char* baseName() const = 0;
 
   virtual ObjectImp* copy() const = 0;
+
+  // QString is a string with at least one escape ( "%N" where N is a
+  // number ) somewhere.  This function replaces the first escape it
+  // sees with the "value" of this imp.  This is e.g. used by TextType
+  // to turn its variable args into strings..
+  // it's ok not to implement this if it's not going to be used for
+  // the imp in question, standard implementation does an assert(
+  // false );
+  virtual void fillInNextEscape( QString& s, const KigDocument& ) const;
 };
 
 #endif

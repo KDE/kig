@@ -265,7 +265,7 @@ void KigWidget::redrawScreen( bool dos )
 {
   // update the screen...
   clearStillPix();
-  KigPainter p( msi, &stillPix );
+  KigPainter p( msi, &stillPix, *mdocument );
   p.drawGrid( mdocument->coordinateSystem() );
   p.drawObjects( mdocument->objects() );
   updateCurPix( p.overlay() );

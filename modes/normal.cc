@@ -155,7 +155,7 @@ void NormalMode::dragRect( const QPoint& p, KigWidget& w )
 
   selectObjects( sel );
 
-  KigPainter pter( w.screenInfo(), &w.stillPix );
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
   pter.drawObjects( cos );
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
@@ -205,7 +205,7 @@ void NormalMode::leftClickedObject( Object* o, const QPoint&,
     unselectObject( o );
     cos.push_back( o );
   };
-  KigPainter pter( w.screenInfo(), &w.stillPix );
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
   pter.drawObjects( cos );
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
@@ -268,7 +268,7 @@ void NormalMode::mouseMoved( const Objects& os,
 
     // statusbar text
     mdoc.emitStatusBarText( stat );
-    KigPainter p( w.screenInfo(), &w.curPix );
+    KigPainter p( w.screenInfo(), &w.curPix, mdoc );
 
     // set the text next to the arrow cursor
     QPoint point = plc;

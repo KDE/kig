@@ -80,11 +80,16 @@ void StandardConstructorBase::handleArgs(
 
 void StandardConstructorBase::handlePrelim(
   KigPainter& p, const Objects& os,
-  const KigDocument&, const KigWidget&
+  const KigDocument& d, const KigWidget&
   ) const
 {
   assert ( margsparser.check( os ) != ArgParser::Invalid );
-  drawprelim( p, os );
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
+  drawprelim( p, os, d );
 }
 
 SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
@@ -100,18 +105,14 @@ SimpleObjectTypeConstructor::~SimpleObjectTypeConstructor()
 {
 }
 
-void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
+void SimpleObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& parents,
+                                              const KigDocument& doc ) const
 {
   Args args;
   using namespace std;
   transform( parents.begin(), parents.end(),
              back_inserter( args ), mem_fun( &Object::imp ) );
-  ObjectImp* data = mtype->calc( args );
-  p.setBrushStyle( Qt::NoBrush );
-  p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
-  p.setWidth( -1 ); // -1 means the default width for the object being
-                    // drawn..
+  ObjectImp* data = mtype->calc( args, doc );
   data->draw( p );
   delete data;
 }
@@ -155,24 +156,19 @@ MultiObjectTypeConstructor::~MultiObjectTypeConstructor()
 {
 }
 
-void MultiObjectTypeConstructor::drawprelim( KigPainter& p,
-                                             const Objects& parents ) const
+void MultiObjectTypeConstructor::drawprelim( KigPainter& p, const Objects& parents,
+                                             const KigDocument& doc ) const
 {
   Args args;
   using namespace std;
   transform( parents.begin(), parents.end(),
              back_inserter( args ), mem_fun( &Object::imp ) );
 
-  p.setBrushStyle( Qt::NoBrush );
-  p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
-  p.setWidth( -1 );
-
   for ( vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
   {
     IntImp param( *i );
     args.push_back( &param );
-    ObjectImp* data = mtype->calc( args );
+    ObjectImp* data = mtype->calc( args, doc );
     data->draw( p );
     delete data; data = 0;
     args.pop_back();
@@ -351,7 +347,7 @@ QString MacroConstructor::useText( const Object& o, const Objects& sel,
 }
 
 void MacroConstructor::handlePrelim( KigPainter& p, const Objects& sel,
-                                     const KigDocument&, const KigWidget&
+                                     const KigDocument& doc, const KigWidget&
   ) const
 {
   if ( sel.size() != mhier.numberOfArgs() ) return;
@@ -360,7 +356,7 @@ void MacroConstructor::handlePrelim( KigPainter& p, const Objects& sel,
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &Object::imp ) );
-  std::vector<ObjectImp*> ret = mhier.calc( args );
+  std::vector<ObjectImp*> ret = mhier.calc( args, doc );
   for ( uint i = 0; i < ret.size(); ++i )
   {
     p.setBrushStyle( Qt::NoBrush );

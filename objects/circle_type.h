@@ -44,7 +44,7 @@ class CircleBTPType
 public:
   static const CircleBTPType* instance();
 
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 

@@ -36,7 +36,7 @@ void DragRectMode::moved( const QPoint& p, KigWidget& w )
 {
   // update the rect...
   w.updateCurPix();
-  KigPainter pt( w.screenInfo(), &w.curPix );
+  KigPainter pt( w.screenInfo(), &w.curPix, mdoc );
   pt.drawFilledRect( QRect( p,  mstart ) );
   w.updateWidget( pt.overlay() );
 }

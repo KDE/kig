@@ -32,7 +32,7 @@ class FixedPointType
 public:
   static const FixedPointType* instance();
 
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   bool canMove() const;
   void move( RealObject* ourobj, const Coordinate& from,
              const Coordinate& dist ) const;
@@ -49,7 +49,8 @@ public:
 
   bool inherits( int type ) const;
 
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+
   bool canMove() const;
   void move( RealObject* ourobj, const Coordinate& from,
              const Coordinate& dist ) const;

@@ -29,7 +29,7 @@ class AngleType
   ~AngleType();
 public:
   static const AngleType* instance();
-  ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
 };
 
@@ -52,7 +52,7 @@ class LocusType
 public:
   LocusType( const ObjectHierarchy& mhier );
   ~LocusType();
-  ObjectImp* calc( const Args& args ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
 
   const ObjectHierarchy& hierarchy() const;
 

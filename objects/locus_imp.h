@@ -50,7 +50,7 @@ public:
   ObjectImp* property( uint which, const KigDocument& w ) const;
 
   double getParam( const Coordinate& point ) const;
-  const Coordinate getPoint( double param ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
 
   const CurveImp* curve() const;
   const ObjectHierarchy& hierarchy() const;

@@ -56,16 +56,12 @@ ConicRadicalConstructor::~ConicRadicalConstructor()
 }
 
 void ConicRadicalConstructor::drawprelim(
-  KigPainter& p, const Objects& parents ) const
+  KigPainter& p, const Objects& parents, const KigDocument& doc ) const
 {
   if ( parents.size() == 2 && parents[0]->hasimp( ObjectImp::ID_ConicImp ) &&
        parents[1]->hasimp( ObjectImp::ID_ConicImp ) )
   {
     Args args;
-    p.setBrushStyle( Qt::NoBrush );
-    p.setBrushColor( Qt::red );
-    p.setPen( QPen ( Qt::red,  1) );
-    p.setWidth( 1 );
     using namespace std;
     transform( parents.begin(), parents.end(),
                back_inserter( args ), mem_fun( &Object::imp ) );
@@ -75,7 +71,7 @@ void ConicRadicalConstructor::drawprelim(
       IntImp zeroindex( 1 );
       args.push_back( &root );
       args.push_back( &zeroindex );
-      ObjectImp* data = mtype->calc( args );
+      ObjectImp* data = mtype->calc( args, doc );
       data->draw( p );
       delete data; data = 0;
       args.pop_back();
@@ -101,13 +97,13 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
 
 static const struct ArgParser::spec argsspecpp[] =
 {
-  { ObjectImp::ID_PointImp, "moving" },
-  { ObjectImp::ID_PointImp, "following" }
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Moving point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "following" ) }
 };
 
 LocusConstructor::LocusConstructor()
   : StandardConstructorBase( "Locus", "A locus", "locus", margsparser ),
-    margsparser( argsspecpp, 1 )
+    margsparser( argsspecpp, 2 )
 {
 }
 
@@ -115,7 +111,8 @@ LocusConstructor::~LocusConstructor()
 {
 }
 
-void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
+void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents,
+                                   const KigDocument& ) const
 {
   // this function is rather ugly, but it is necessary to do it this
   // way in order to play nice with Kig's design..
@@ -134,6 +131,8 @@ void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
   assert( constrained->type()->inherits( ObjectType::ID_ConstrainedPointType ) );
 
   const ObjectImp* oimp = constrained->parents().back()->imp();
+  if( !oimp->inherits( ObjectImp::ID_CurveImp ) )
+    oimp = constrained->parents().front()->imp();
   assert( oimp->inherits( ObjectImp::ID_CurveImp ) );
   const CurveImp* cimp = static_cast<const CurveImp*>( oimp );
 
@@ -151,11 +150,13 @@ const int LocusConstructor::wantArgs(
   int ret = margsparser.check( os );
   if ( ret == ArgsChecker::Invalid ) return ret;
   else if ( os.size() != 2 ) return ret;
-  if ( os.front()->inherits( Object::ID_RealObject ) &&
-       static_cast<RealObject*>( os.front() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+  if ( os[0]->inherits( Object::ID_RealObject ) &&
+       static_cast<RealObject*>( os.front() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
+       os.front()->getAllChildren().contains( os.back() ) )
     return ret;
-  if ( os.back()->inherits( Object::ID_RealObject ) &&
-       static_cast<RealObject*>( os.back() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
+  if ( os[1]->inherits( Object::ID_RealObject ) &&
+       static_cast<RealObject*>( os.back() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
+       os.back()->getAllChildren().contains( os.front() ) )
     return ret;
   return ArgsChecker::Invalid;
 }

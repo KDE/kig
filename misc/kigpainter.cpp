@@ -37,8 +37,10 @@
 #include <functional>
 #include <algorithm>
 
-KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device, bool no )
+KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device,
+                        const KigDocument& doc, bool no )
   : mP ( device ),
+    mdoc( doc ),
     msi( si ),
     mNeedOverlay( no ),
     overlayenlarge( 0 )
@@ -798,13 +800,13 @@ void KigPainter::drawVector( const Coordinate& a, const Coordinate& b )
 }
 
 inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHierarchy& h,
-                                 bool& valid )
+                                 bool& valid, const KigDocument& doc )
 {
-  Coordinate pt = curve->getPoint( p );
+  Coordinate pt = curve->getPoint( p, doc );
   PointImp pimp( pt );
   Args args;
   args.push_back( &pimp );
-  std::vector<ObjectImp*> calced = h.calc( args );
+  std::vector<ObjectImp*> calced = h.calc( args, doc );
   assert( calced.size() == 1 );
   ObjectImp* o = calced.front();
   Coordinate ret;
@@ -863,8 +865,8 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   // final result).
   // First push the [0,1] interval into the stack:
   workstack.push( workitem(
-                    coordparampair( 0, locusGetCoord( 0, curve, hier, valid ) ), ///
-                    coordparampair( 1, locusGetCoord( 0, curve, hier, valid ) ), ///
+                    coordparampair( 0, locusGetCoord( 0, curve, hier, valid, mdoc ) ), ///
+                    coordparampair( 1, locusGetCoord( 0, curve, hier, valid, mdoc ) ), ///
                     0 ) );
 
   // maxlength is the square of the maximum size that we allow
@@ -900,7 +902,7 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
       double t2 = ( curitem.first.first + curitem.second.first ) / 2;
       double h = fabs( curitem.second.first - curitem.first.first ) /2;
       Rect *overlaypt = curitem.overlay;
-      Coordinate p2 = locusGetCoord( t2, curve, hier, valid ); ///
+      Coordinate p2 = locusGetCoord( t2, curve, hier, valid, mdoc ); ///
 
       bool dooverlay = ! overlaypt && h < hmaxoverlay
  && fabs( p0.x - p1.x ) <= overlayRectSize()

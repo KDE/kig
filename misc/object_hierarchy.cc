@@ -36,7 +36,8 @@ public:
 
   virtual ~Node();
   virtual Node* copy() const = 0;
-  virtual void apply( std::vector<const ObjectImp*>& stack, int loc ) const = 0;
+  virtual void apply( std::vector<const ObjectImp*>& stack, int loc,
+                      const KigDocument& ) const = 0;
 
   virtual void apply( Objects& stack, int loc ) const = 0;
 };
@@ -58,7 +59,7 @@ public:
   int id() const;
   Node* copy() const;
   void apply( std::vector<const ObjectImp*>& stack,
-              int loc ) const;
+              int loc, const KigDocument& ) const;
   void apply( Objects& stack, int loc ) const;
 };
 
@@ -80,7 +81,7 @@ ObjectHierarchy::Node* PushStackNode::copy() const
 };
 
 void PushStackNode::apply( std::vector<const ObjectImp*>& stack,
-                           int loc ) const
+                           int loc, const KigDocument& ) const
 {
   stack[loc] = mimp->copy();
 };
@@ -101,7 +102,7 @@ public:
 
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
-              int loc ) const;
+              int loc, const KigDocument& ) const;
   void apply( Objects& stack, int loc ) const;
 };
 
@@ -125,17 +126,17 @@ void ApplyTypeNode::apply( Objects& stack, int loc ) const
 };
 
 void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
-                           int loc ) const
+                           int loc, const KigDocument& doc ) const
 {
   Args args;
   for ( uint i = 0; i < mparents.size(); ++i )
   {
     args.push_back( stack[mparents[i]] );
   };
-  stack[loc] = mtype->calc( args );
+  stack[loc] = mtype->calc( args, doc );
 };
 
-std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a ) const
+std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument& doc ) const
 {
   assert( a.size() == mnumberofargs );
   for ( uint i = 0; i < a.size(); ++i )
@@ -146,7 +147,7 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a ) const
   std::copy( a.begin(), a.end(), stack.begin() );
   for( uint i = 0; i < mnodes.size(); ++i )
   {
-    mnodes[i]->apply( stack, mnumberofargs + i );
+    mnodes[i]->apply( stack, mnumberofargs + i, doc );
   };
   for ( uint i = mnumberofargs; i < stack.size() - mnumberofresults; ++i )
     delete stack[i];

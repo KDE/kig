@@ -61,6 +61,8 @@ public:
   const char* baseName() const;
 
   int id() const;
+
+  void fillInNextEscape( QString& s, const KigDocument& ) const;
 };
 
 class DoubleImp
@@ -80,6 +82,8 @@ public:
   const char* baseName() const;
 
   int id() const;
+
+  void fillInNextEscape( QString& s, const KigDocument& ) const;
 };
 
 class IntImp
@@ -98,6 +102,8 @@ public:
   const char* baseName() const;
 
   int id() const;
+
+  void fillInNextEscape( QString& s, const KigDocument& ) const;
 };
 
 class StringImp
@@ -116,6 +122,8 @@ public:
   const char* baseName() const;
 
   int id() const;
+
+  void fillInNextEscape( QString& s, const KigDocument& ) const;
 };
 
 #endif

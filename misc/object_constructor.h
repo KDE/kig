@@ -124,8 +124,8 @@ public:
                      const KigDocument& d, const KigWidget& v
     ) const;
 
-  virtual void drawprelim( KigPainter& p,
-                           const Objects& parents ) const = 0;
+  virtual void drawprelim( KigPainter& p, const Objects& parents,
+                           const KigDocument& ) const = 0;
 
   QString useText( const Object& o, const Objects& sel, const KigDocument& d,
                    const KigWidget& v ) const;
@@ -152,8 +152,8 @@ public:
 
   ~SimpleObjectTypeConstructor();
 
-  void drawprelim( KigPainter& p,
-                   const Objects& parents ) const;
+  void drawprelim( KigPainter& p, const Objects& parents,
+                   const KigDocument& ) const;
 
   Objects build( const Objects& os,
                  KigDocument& d,
@@ -191,8 +191,8 @@ public:
     int a, int b, int c = -999, int d = -999 );
   ~MultiObjectTypeConstructor();
 
-  void drawprelim( KigPainter& p,
-                   const Objects& parents ) const;
+  void drawprelim( KigPainter& p, const Objects& parents,
+                   const KigDocument& ) const;
 
   Objects build( const Objects& os,
                  KigDocument& d,

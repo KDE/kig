@@ -45,7 +45,7 @@ public:
 
   virtual bool inherits( int type ) const;
 
-  virtual ObjectImp* calc( const Args& parents ) const = 0;
+  virtual ObjectImp* calc( const Args& parents, const KigDocument& d ) const = 0;
 
   virtual bool canMove() const;
   virtual void move( RealObject* ourobj, const Coordinate& from,

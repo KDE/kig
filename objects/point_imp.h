@@ -51,6 +51,8 @@ public:
   const char* baseName() const;
 
   int id() const;
+
+  void fillInNextEscape( QString& s, const KigDocument& ) const;
 };
 
 #endif

@@ -89,7 +89,7 @@ void ConstructMode::mouseMoved( const Objects& os,
                                 KigWidget& w )
 {
   w.updateCurPix();
-  KigPainter pter( w.screenInfo(), &w.curPix );
+  KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
 
   // set the text next to the arrow cursor like in modes/normal.cc
   QPoint textloc = p;
@@ -130,8 +130,7 @@ void ConstructMode::mouseMoved( const Objects& os,
 void ConstructMode::selectObject( Object* o, const QPoint&, KigWidget& w )
 {
   mparents.push_back( o );
-  assert( o->inherits( Object::ID_RealObject ) );
-  static_cast<RealObject*>( o )->setSelected( true );
+  o->setSelected( true );
 
   if ( mctor->wantArgs( mparents, mdoc, w ) == ArgsChecker::Complete )
   {
@@ -186,7 +185,7 @@ void PointConstructMode::mouseMoved(
   KigWidget& w )
 {
   w.updateCurPix();
-  KigPainter pter( w.screenInfo(), &w.curPix );
+  KigPainter pter( w.screenInfo(), &w.curPix, mdoc );
   ObjectFactory::instance()->redefinePoint( mpt[2], w.fromScreen( p ),
                                             mdoc, w );
   mpt.calc( mdoc );

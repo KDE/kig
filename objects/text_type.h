@@ -33,7 +33,11 @@ public:
   int impRequirement( const ObjectImp* o, const Args& parents ) const;
   int resultId() const;
 
+  // we're one of those special types that need the KigDocument in our
+  // calc function, so the other calc is an assert( false ), and we do
+  // the real work in the other calc..
   ObjectImp* calc( const Args& parents ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
 
   bool canMove() const;
   void move( RealObject* ourobj, const Coordinate& from,

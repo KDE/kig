@@ -149,7 +149,7 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
   ret.setSelected( true );
   objs->upush( ret );
 
-  KigPainter pter( w.screenInfo(), &w.stillPix );
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
   pter.drawObjects( cos );
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
@@ -173,7 +173,7 @@ void DefineMacroMode::leftClickedObject( Object* o, const QPoint&,
     o->setSelected( true );
   };
 
-  KigPainter p( w.screenInfo(), &w.stillPix );
+  KigPainter p( w.screenInfo(), &w.stillPix, mdoc );
   p.drawObject( o );
   w.updateCurPix( p.overlay() );
   w.updateWidget();
@@ -201,7 +201,7 @@ void DefineMacroMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );
-    KigPainter p( w.screenInfo(), &w.curPix );
+    KigPainter p( w.screenInfo(), &w.curPix, mdoc );
 
     // set the text next to the arrow cursor
     QPoint point = pt;

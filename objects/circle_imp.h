@@ -42,6 +42,9 @@ public:
   bool inRect( const Rect& r ) const;
   bool valid() const;
 
+  double getParam( const Coordinate& point ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
+
   const uint numberOfProperties() const;
   const QCStringList properties() const;
   const QCStringList propertiesInternalNames() const;

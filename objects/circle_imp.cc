@@ -217,3 +217,14 @@ const char* CircleImp::baseName() const
 {
   return I18N_NOOP( "circle" );
 }
+
+double CircleImp::getParam( const Coordinate& point ) const
+{
+  Coordinate tmp = point - mcenter;
+  return fmod(atan2(tmp.y, tmp.x) / ( 2 * M_PI ) + 1, 1);
+}
+
+const Coordinate CircleImp::getPoint( double p, const KigDocument& ) const
+{
+  return mcenter + Coordinate (cos(p * 2 * M_PI), sin(p * 2 * M_PI)) * mradius;
+}
