@@ -2,7 +2,11 @@
 
 	* Commit David Vignoni's new kig_doc icon
 
-2004-07-21  Pino Toscano <toscano.pino@tiscali.it>
+2004-09-01  Pino Toscano <toscano.pino@tiscali.it>
+
+	* kfile_kig read also the compatibility version.
+
+04-07-21  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Make a text label not "pasted" to its point by adding a
 	"padding" ( 2 pixels every side ).

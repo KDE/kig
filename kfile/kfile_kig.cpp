@@ -39,6 +39,7 @@ KigPlugin::KigPlugin( QObject *parent, const char *name, const QStringList &args
 
   group = addGroupInfo( info, "KigInfo", i18n( "Summary" ) );
   item = addItemInfo( group, "Version", i18n( "Version" ), QVariant::String );
+  item = addItemInfo( group, "CompatVersion", i18n( "Compatibility Version" ), QVariant::String );
   item = addItemInfo( group, "CoordSystem", i18n( "Coordinate System" ), QVariant::String );
   item = addItemInfo( group, "Grid", i18n( "Grid" ), QVariant::String );
   item = addItemInfo( group, "Axes", i18n( "Axes" ), QVariant::String );
@@ -59,6 +60,13 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   if ( ! version ) version = main.attribute( "version" );
   if ( ! version ) version = i18n( "Translators: Not Available", "n/a" );
   appendItem( metagroup, "Version", version );
+
+  // reading the compatibility version...
+  QString compatversion = main.attribute( "CompatibilityVersion" );
+  if ( ! compatversion )
+    compatversion = i18n( "%1 represents Kig version",
+                          "%1 (as the version)" ).arg( version );
+  appendItem( metagroup, "CompatVersion", compatversion );
 
   // reading the Coordinate System...
   QCString coordsystem;
