@@ -185,7 +185,7 @@ public:
 
   void drawGrid( const CoordinateSystem* c );
 
-  const vector<QRect>& overlay() { return mOverlay; };
+  const std::vector<QRect>& overlay() { return mOverlay; };
 
 protected:
   /**
@@ -218,7 +218,7 @@ protected:
   // the size we want the overlay rects to be...
   double overlayRectSize();
 
-  vector<QRect> mOverlay;
+  std::vector<QRect> mOverlay;
 };
 
 #endif
