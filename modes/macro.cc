@@ -77,7 +77,7 @@ void DefineMacroMode::enableActions()
 void DefineMacroMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if ( (plc - e->pos()).manhattanLength() > 4 ) return;
-  Objects os = mDoc->whatAmIOn( v->fromScreen( plc ), 4*v->pixelWidth() );
+  Objects os = mDoc->whatAmIOn( v->fromScreen( plc ), v->screenInfo() );
   if ( os.empty() ) return;
   if( mwizard->currentPage() == mwizard->mpgiven )
   {
@@ -117,7 +117,7 @@ void DefineMacroMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
   Coordinate c = v->fromScreen( e->pos() );
-  Objects os = mDoc->whatAmIOn( c, v->pixelWidth() );
+  Objects os = mDoc->whatAmIOn( c, v->screenInfo() );
   v->updateCurPix();
   if ( os.empty() )
   {

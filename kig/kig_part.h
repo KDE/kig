@@ -127,7 +127,7 @@ public:
   void setMode( KigMode* );
 
   // what objects are under point p
-  Objects whatAmIOn( const Coordinate& p, const double fault ) const;
+  Objects whatAmIOn( const Coordinate& p, const ScreenInfo& si ) const;
 
   Objects whatIsInHere( const Rect& p );
 

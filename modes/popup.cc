@@ -243,17 +243,11 @@ void NormalModePopupObjects::doUse( int id )
   };
 }
 
-void NormalModePopupObjects::addPopupAction( uint id, const QStringList& actions )
+void NormalModePopupObjects::addPopupAction( uint id, const QString& name, QPopupMenu* pm )
 {
-  QPopupMenu* popup = new QPopupMenu( this, "Virtual popup" );
-  connect( popup, SIGNAL( activated( int ) ), SLOT( doPopup( int ) ) );
-  int tid = 0;
-  for ( QStringList::const_iterator i = actions.begin(); i != actions.end(); ++i, ++tid )
-  {
-    int rid = popup->insertItem( *i, tid );
-    assert( rid == tid );
-  };
-  mpopupmap[popup] = id;
+  connect( pm, SIGNAL( activated( int ) ), SLOT( doPopup( int ) ) );
+  mpopupmap[pm] = id;
+  insertItem( name, pm, id );
 }
 
 void NormalModePopupObjects::addNormalAction( uint id, const QString& name )
@@ -270,7 +264,8 @@ void NormalModePopupObjects::doPopup( int id )
   // TrollTech coders...
   // but we use it here anyway, since we need it...
   const QObject* qo = sender();
-  int popupid = mpopupmap[static_cast<const QPopupMenu*>( qo )];
+  const QPopupMenu* qp = static_cast<const QPopupMenu*>( qo );
+  int popupid = mpopupmap[qp];
   assert( mobjs.size() == 1 );
   Object* o = mobjs[0];
   o->doPopupAction( popupid, id, mdoc, mview, mmode );

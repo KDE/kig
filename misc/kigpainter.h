@@ -155,10 +155,11 @@ public:
 
   /**
    * draw a thick point..  This is what the user sees when he draws a
-   * point.  In fact it isn't a point, but a filled ellipse of a
-   * certain @param size...
+   * point.  In fact it isn't a point, but a filled circle of a
+   * certain @param radius...
    */
-  void drawFatPoint( const Coordinate& p, int size = 5 );
+  void drawFatPoint( const Coordinate& p, double radius );
+  void drawFatPoint( const Coordinate& p );   // default args don't seem to work properly..
 
   /**
    * draw a polygon defined by the points in pts...

@@ -52,7 +52,7 @@ class NormalModePopupObjects
   static const uint deleteId = 4;
   static const uint hideId = 5;
 
-  // see the addPopupMenu() function for this...
+  // see the addPopupAction() function for this...
   map<const QPopupMenu*, int> mpopupmap;
 
   QPopupMenu* colorMenu( QWidget* parent );
@@ -82,9 +82,8 @@ public:
   // parent may use.  If one of these actions is selected, then
   // Object::doPopupAction() will be called with the appropriate
   // arguments ( the first one being the id you give here, and the
-  // second one being the index of the action in @param actions (
-  // starting at 0 )... )
-  void addPopupAction( uint id, const QStringList& actions );
+  // second one being the index of the action in @param qp... )
+  void addPopupAction( uint id, const QString& name, QPopupMenu* qp );
 
   // with this function, objects may add a normal action to us.  id
   // should be unique for all actions that an object defines ( note

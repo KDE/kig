@@ -44,6 +44,8 @@ public:
 
   double pixelWidth() const;
 
+  double normalMiss() const;
+
   const Rect& shownRect() const;
 
   void setShownRect( const Rect& r );

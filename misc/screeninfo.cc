@@ -85,3 +85,8 @@ void ScreenInfo::setViewRect( const QRect& r )
 {
   mqrect = r;
 }
+
+double ScreenInfo::normalMiss() const
+{
+  return 3*pixelWidth();
+}

@@ -74,7 +74,7 @@ void PointConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 
 void PointConstructionMode::updatePoint( const Coordinate& c, const ScreenInfo& si )
 {
-  mp->redefine( c, *mDoc, 3*si.pixelWidth() );
+  mp->redefine( c, *mDoc, si );
   mp->calc( si );
 }
 
@@ -108,7 +108,7 @@ StdConstructionMode::~StdConstructionMode()
 void StdConstructionMode::leftClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 3*v->pixelWidth() );
+  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   v->updateCurPix();
   updatePoint( v->fromScreen( e->pos() ), v->screenInfo() );
   if( !oco.empty() )
@@ -151,7 +151,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   Coordinate c = v->fromScreen( e->pos() );
   // objects under cursor
-  Objects ouc = mDoc->whatAmIOn( c, 3*v->pixelWidth() );
+  Objects ouc = mDoc->whatAmIOn( c, v->screenInfo() );
   updatePoint( c, v->screenInfo() );
 
   // set the text next to the arrow cursor like in modes/normal.cc

@@ -406,13 +406,13 @@ void KigDocument::_delObject(Object* o)
   setModified(true);
 };
 
-Objects KigDocument::whatAmIOn(const Coordinate& p, const double miss ) const
+Objects KigDocument::whatAmIOn(const Coordinate& p, const ScreenInfo& si ) const
 {
   Objects tmp;
   Objects nonpoints;
   for ( Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if(!(*i)->contains(p, miss) || !(*i)->shown() || !(*i)->valid()) continue;
+    if(!(*i)->contains(p, si) || !(*i)->shown() || !(*i)->valid()) continue;
     if ( (*i)->toPoint()) tmp.push_back(*i);
     else nonpoints.push_back( *i );
   };

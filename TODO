@@ -1,3 +1,8 @@
+- implement Circle by center and radius
+- rearrange some of the icons to match KGeo's appearance..
+- more flexible textlabels ( with variable parts, cf. QString::arg() )
+- figure out some cool way to "attach" a textlabel to an object..
+- change EuclideanCoords to look like KGeo's grid..
 - move stillPix into movingMode, so the other modes won't suffer from
   its overhead...  
 - Finally fix the move dependencies... i am thinking of making
@@ -7,7 +12,6 @@
   Objects variable.  This should finally fix the move dependencies, i
   think... 
 - printing... (cf. the kdeprint tutorial on printing.kde.org ...
-- object labels !!! think about some generic way to do this...
 - locuses -> cf. KSeg
     --> this is implemented (objects/locus.cpp), but can still be
     	improved upon quite a lot...

@@ -44,7 +44,7 @@ NormalMode::~NormalMode()
 void NormalMode::leftClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 2*v->pixelWidth() );
+  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   if( oco.empty() )
   {
     // clicked on an empty spot --> we show the rectangle for
@@ -156,7 +156,7 @@ void NormalMode::leftReleased( QMouseEvent* e, KigWidget* v )
 void NormalMode::midClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 2*v->pixelWidth() );
+  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   // get rid of text still showing...
   v->updateCurPix();
   v->updateWidget();
@@ -173,7 +173,7 @@ void NormalMode::midReleased( QMouseEvent* e, KigWidget* v )
   // clicked on some other object -> ConstrainedPoint ?
   Point* pt;
   pt = NormalPoint::sensiblePoint( v->fromScreen( plc ),
-                                   *mDoc, 3*v->pixelWidth() );
+                                   *mDoc, v->screenInfo() );
   pt->calc( v->screenInfo() );
   mDoc->addObject( pt );
 
@@ -185,7 +185,7 @@ void NormalMode::midReleased( QMouseEvent* e, KigWidget* v )
 void NormalMode::rightClicked( QMouseEvent* e, KigWidget* v )
 {
   plc = e->pos();
-  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), 2*v->pixelWidth() );
+  oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
 
   // get rid of text still showing...
   v->updateCurPix();
@@ -225,8 +225,7 @@ void NormalMode::rightReleased( QMouseEvent*, KigWidget* )
 
 void NormalMode::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
-  const Objects tmp = mDoc->whatAmIOn( v->fromScreen( e->pos() ),
-                                       2 * v->pixelWidth() );
+  const Objects tmp = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   v->updateCurPix();
   if( tmp.empty() )
   {

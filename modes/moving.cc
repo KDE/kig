@@ -111,7 +111,7 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
   // parents, but right now, we have to take into account that every
   // object could move its parents...
   for ( Objects::iterator i = emo.begin(); i != emo.end(); ++i )
-    (*i)->startMove( c );
+    (*i)->startMove( c, v->screenInfo() );
 
   Objects objs;
   Objects tmp( emo ), tmp2;
@@ -167,7 +167,7 @@ void NormalPointRedefineMode::stopMove()
 
 void NormalPointRedefineMode::moveTo( const Coordinate& o )
 {
-  mp->redefine( o, *mDoc, 3*mview->pixelWidth() );
+  mp->redefine( o, *mDoc, mview->screenInfo() );
 }
 
 NormalPointRedefineMode::~NormalPointRedefineMode()
