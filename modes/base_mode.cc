@@ -35,6 +35,8 @@ BaseMode::~BaseMode()
 
 void BaseMode::leftClicked( QMouseEvent* e, KigWidget* v )
 {
+  // touch screens don't send a mouseMoved event before a click event,
+  // apparently, so we simulate it.
   mouseMoved( e, v );
 
   // get rid of text still showing...
