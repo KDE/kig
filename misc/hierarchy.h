@@ -50,7 +50,7 @@ public:
 class HierarchyElement
 {
 protected:
-  typedef map<QCString,QString> pMap;
+  typedef std::map<QCString,QString> pMap;
   Type* mtype;
   // TODO ? remove mid ?
   uint mid;

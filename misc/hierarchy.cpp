@@ -59,7 +59,7 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
 {
   // here we construct the hierarchy
   // the hash map contains all HierarchyElement's we already constructed
-  typedef map<Object*, HierarchyElement*> ElemHash;
+  typedef std::map<Object*, HierarchyElement*> ElemHash;
   ElemHash elemHash;
   // a temporary
   HierarchyElement* elem;
@@ -186,9 +186,9 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
   delete_all( allElems.begin(), allElems.end() );
   allElems.clear();
 
-  // vector containing the elements we already constructed.  ( the
+  // std::vector containing the elements we already constructed.  ( the
   // elements are in the order of their id()'s...
-  vector<HierarchyElement*> tac;
+  std::vector<HierarchyElement*> tac;
 
   // load data:
   // we pass over the dom hierarchy twice:
