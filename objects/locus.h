@@ -82,7 +82,6 @@ public:
 
   void calc( const ScreenInfo& );
 
-public:
   Coordinate getPoint( double param ) const;
   double getParam (const Coordinate&) const;
 
@@ -90,14 +89,11 @@ public:
 
 protected:
   NormalPoint* cp;
-  Object* obj;
-
-  bool isPointLocus() const;
-  bool _pointLocus;
+  Point* mp;
 
   Objects calcpath;
 
-  // objs is just a list of pointers to objects
+  // objs is a list of the objects we contain..
   Objects objs;
 
   struct CPt
@@ -113,15 +109,8 @@ protected:
   // type...
   CPts pts;
 
-  // this is used if the obj is a point; it selects the best points
-  // from the possible ones...
-  void calcPointLocus( const ScreenInfo& );
   // some functions used by calcPointLocus...
   CPts::iterator addPoint( double param, const ScreenInfo& );
   void recurse( CPts::iterator, CPts::iterator, int&, const ScreenInfo& );
-
-  // this is used when the obj is not a point; it just takes the first
-  // numberOfSamples objects it can find...
-  void calcObjectLocus( const ScreenInfo& );
 };
 #endif

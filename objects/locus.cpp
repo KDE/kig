@@ -42,85 +42,64 @@ void Locus::draw(KigPainter& p, bool ss) const
   // we don't let the points draw themselves, since that would get us
   // the big points (5x5) like we normally see them...
   // all objs are of the same type, so we only check the first
-  if (isPointLocus())
-    {
-      p.setPen( QPen( selected && ss ? Qt::red : mColor ) );
-      for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
-      {
-	  p.drawPoint( i->pt );
-      };
-    }
-  else
-  {
-    for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
-    {
-      (*i)->setSelected(selected);
-      (*i)->draw(p, ss);
-    }
-  };
+  p.setPen( QPen( selected && ss ? Qt::red : mColor ) );
+  for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
+    p.drawPoint( i->pt );
 }
 
 bool Locus::contains(const Coordinate& o, const double fault ) const
 {
-  if (!isPointLocus())
-  {
-    for( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
-      if( (*i)->contains(o, fault)) return true;
-  }
-  else
-  {
-    for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
-      if( ( i->pt - o ).length() < fault ) return true;
-  };
+  for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
+    if( ( i->pt - o ).length() < fault ) return true;
   return false;
 }
 
 bool Locus::inRect(const Rect& r) const
 {
-  if (!isPointLocus())
-  {
-    for( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
-      if( (*i)->inRect(r) ) return true;
-  }
-  else
-  {
-    for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
-      if( r.contains( i->pt ) ) return true;
-  };
+  for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
+    if( r.contains( i->pt ) ) return true;
   return false;
 }
 
 void Locus::calc( const ScreenInfo& r )
 {
-  mvalid = cp->valid() && obj->valid();
+  mvalid = cp->valid() && mp->valid();
   if ( mvalid )
   {
-    if ( calcpath.empty() )
-    {
-      calcpath = calcPath( Objects( cp ), obj );
-      calcpath.push_back( obj );
-    };
-    if( isPointLocus() ) calcPointLocus( r );
-    else calcObjectLocus( r );
+    // sometimes calc() is called with an empty rect, cause the
+    // shownRect is not known yet.. we ignore those calcs...
+    if ( r.shownRect() == Rect() ) return;
+    pts.clear();
+    pts.reserve( numberOfSamples );
+    double oldP = cp->constrainedImp()->getP();
+    CPts::iterator b = addPoint( 0, r );
+    CPts::iterator e = addPoint( 1, r );
+    int i = 2;
+    recurse(b,e,i,r);
+    // reset cp and its children to their former state...
+    cp->constrainedImp()->setP(oldP);
+    cp->calc( r );
+    calcpath.calc( r );
   };
 }
 
 Coordinate Locus::getPoint( double param ) const
 {
-  Coordinate t;
   if ( ! mvalid ) return Coordinate();
-  if (obj->toPoint())
-  {
-    double tmp = cp->constrainedImp()->getP();
-    cp->constrainedImp()->setP(param);
-    // hack... hope no-one tries recursive Locuses...
-    calcpath.calc( ScreenInfo( Rect(), QRect() ) );
-    t= obj->toPoint()->getCoord();
-    cp->constrainedImp()->setP(tmp);
-    // hack... hope no-one tries recursive Locuses...
-    calcpath.calc( ScreenInfo( Rect(), QRect() ) );
-  }
-  else t = Coordinate();
+
+  // save the old param..
+  double tmp = cp->constrainedImp()->getP();
+  cp->constrainedImp()->setP(param);
+
+  // calc the new coord..
+  // hack... hope no-one tries recursive Locuses...
+  calcpath.calc( ScreenInfo( Rect(), QRect() ) );
+  Coordinate t = mp->getCoord();
+
+  // restore the old param...
+  cp->constrainedImp()->setP(tmp);
+  // hack... hope no-one tries recursive Locuses...
+  calcpath.calc( ScreenInfo( Rect(), QRect() ) );
   return t;
 }
 
@@ -129,32 +108,12 @@ double Locus::getParam(const Coordinate&) const
   return 0.5;
 }
 
-void Locus::calcObjectLocus( const ScreenInfo& r )
-{
-  if ( ! mvalid ) return;
-  delete_all( objs.begin(), objs.end() );
-  objs.clear();
-  double oldP = cp->constrainedImp()->getP();
-  double period = double(1)/numberOfSamples;
-  for (double i = 0; i <= 1; i += period)
-  {
-    cp->constrainedImp()->setP(i);
-    cp->calc( r );
-    calcpath.calc( r );
-    objs.push_back(obj->copy());
-  };
-  cp->constrainedImp()->setP(oldP);
-  cp->calc( r );
-  calcpath.calc( r );
-}
-
 inline Locus::CPts::iterator Locus::addPoint( double param, const ScreenInfo& r )
 {
   cp->constrainedImp()->setP(param);
   cp->calc( r );
   calcpath.calc( r );
-  Point* p = obj->toPoint();
-  pts.push_back(CPt(p->getCoord(), param));
+  pts.push_back(CPt(mp->getCoord(), param));
   return pts.end() - 1;
 }
 
@@ -173,39 +132,21 @@ void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i, const Scr
   if (i > numberOfSamples) return;
 }
 
-void Locus::calcPointLocus( const ScreenInfo& r )
-{
-  // sometimes calc() is called with an empty rect, cause the
-  // shownRect is not known yet.. we ignore those calcs...
-  if ( r.shownRect() == Rect() ) return;
-  pts.clear();
-  pts.reserve( numberOfSamples );
-  double oldP = cp->constrainedImp()->getP();
-  CPts::iterator b = addPoint( 0, r );
-  CPts::iterator e = addPoint( 1, r );
-  int i = 2;
-  recurse(b,e,i,r);
-  // reset cp and its children to their former state...
-  cp->constrainedImp()->setP(oldP);
-  cp->calc( r );
-  calcpath.calc( r );
-}
-
 Locus::Locus(const Locus& loc)
-  : Curve(), cp(loc.cp), obj(loc.obj), _pointLocus( loc._pointLocus )
+  : Curve(), cp(loc.cp), mp(loc.mp)
 {
   cp->addChild(this);
-  obj->addChild(this);
-  calcpath = calcPath( Objects( cp ), obj );
+  mp->addChild(this);
+  calcpath = calcPath( Objects( cp ), mp );
   // we always want to calc obj after its arguments...
-  calcpath.push_back( obj );
+  calcpath.push_back( mp );
 }
 
 Objects Locus::getParents() const
 {
   Objects tmp;
   tmp.push_back(cp);
-  tmp.push_back(obj);
+  tmp.push_back(mp);
   return tmp;
 }
 
@@ -293,11 +234,6 @@ void Locus::stopMove()
 {
 }
 
-bool Locus::isPointLocus() const
-{
-  return _pointLocus;
-}
-
 const char* Locus::sActionName()
 {
   return "objects_new_locus";
@@ -312,13 +248,16 @@ Locus::Locus( const Objects& os )
       cp = (*i)->toNormalPoint();
     else
     {
-      obj = *i;
-      _pointLocus = (*i)->toPoint();
+      mp = (*i)->toPoint();
+      assert( mp );
     }
   };
-  assert ( cp && obj );
+  assert ( cp && mp );
   cp->addChild( this );
-  obj->addChild( this );
+  mp->addChild( this );
+
+  calcpath = calcPath( Objects( cp ), mp );
+  calcpath.push_back( mp );
 };
 
 Object::WantArgsResult Locus::sWantArgs( const Objects& os )
