@@ -400,15 +400,16 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
     }
     else if ( (*i)->inherits( Object::ID_RealObject ) )
     {
+      const RealObject* o = static_cast<const RealObject*>( *i );
       QDomElement e = doc.createElement( "Object" );
       idmap[*i] = id;
       e.setAttribute( "id", id++ );
-      e.setAttribute( "type", (*i)->type()->fullName() );
-      e.setAttribute( "color", (*i)->color().name() );
-      e.setAttribute( "shown", QString::fromLatin1( (*i)->shown() ? "true" : "false" ) );
-      e.setAttribute( "width", QString::number( (*i)->width() ) );
+      e.setAttribute( "type", o->type()->fullName() );
+      e.setAttribute( "color", o->color().name() );
+      e.setAttribute( "shown", QString::fromLatin1( o->shown() ? "true" : "false" ) );
+      e.setAttribute( "width", QString::number( o->width() ) );
 
-      const Objects& parents = (*i)->parents();
+      const Objects& parents = o->parents();
       for ( Objects::const_iterator i = parents.begin(); i != parents.end(); ++i )
       {
         std::map<Object*,int>::const_iterator idp = idmap.find( *i );
