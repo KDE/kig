@@ -408,13 +408,10 @@ void KigView::paintOnWidget( bool needRedraw )
       QPen pen(Qt::black, 1, Qt::DotLine);
       p.setPen(pen);
       p.setBrush(QBrush(Qt::cyan,Dense6Pattern));
-      QRect r(plc, pmt);
-      p.drawRect(r);
-      // TODO: get this right
-//       nList.append(new QRect(plc,r.width()+1, 1));
-//       nList.append(new QRect(plc,1, r.height()+1));
-//       nList.append(new QRect(pmt,1, r.height()+1));
-//       nList.append(new QRect(plc,1, r.height()+1));
+      QRect* r = new QRect(plc, pmt);
+      *r = r->normalize();
+      p.drawRect(*r);
+      nList.append(r);
     };
 
   if (mode==CMode && cmode == cmMoving)
