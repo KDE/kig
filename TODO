@@ -3,6 +3,7 @@
 
 * simple:
 - implement the helpSlot()'s in the wizards..
+- make the scroll wheel work in the kig window..
 
 * harder:
 - filters: more input filters ( get cabri to work somewhat, kseg
