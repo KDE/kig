@@ -115,9 +115,13 @@ void setupBuiltinStuff()
     // we only register the guiaction, cause it makes sense to have a
     // toolbar icon for this..
     static PropertyObjectConstructor anglebisectionctor(
-      AngleImp::stype(), I18N_NOOP( "Construct Bisector of This Angle" ),
-      I18N_NOOP( "Angle Bisector" ), I18N_NOOP( "The bisector of an angle" ),
-      "angle-bisector", "angle-bisector" );
+      AngleImp::stype(),
+      I18N_NOOP( "Construct Bisector of This Angle" ),
+      I18N_NOOP( "Select the angle you want to construct the bisector of..." ),
+      I18N_NOOP( "Angle Bisector" ),
+      I18N_NOOP( "The bisector of an angle" ),
+      "angle-bisector",
+      "angle-bisector" );
     actions->add( new ConstructibleAction( &anglebisectionctor, "objects_new_angle_bisector" ) );
 
     // conic stuff
@@ -245,7 +249,7 @@ void setupBuiltinStuff()
       ObjectConstructor* mpotp = new MidPointOfTwoPointsConstructor();
       ObjectConstructor* mpos = new PropertyObjectConstructor(
         SegmentImp::stype(), I18N_NOOP( "Construct the midpoint of this segment" ),
-        "", "", "", "mid-point" );
+        "", "", "", "", "mid-point" );
 
       // make this a static object, so it gets deleted at the end of
       // the program.
@@ -273,6 +277,14 @@ void setupBuiltinStuff()
       "vectorsum" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_vectorsum", 0 ) );
+
+    c = new SimpleObjectTypeConstructor(
+      VectorDifferenceType::instance(),
+      I18N_NOOP( "Vector Difference" ),
+      I18N_NOOP( "Construct the vector difference of two vectors." ),
+      "vectordifference" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_vectordifference", 0 ) );
 
     c = new SimpleObjectTypeConstructor(
       LineByVectorType::instance(),
@@ -492,6 +504,11 @@ void setupBuiltinStuff()
     c = new GenericIntersectionConstructor();
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_intersection", Qt::Key_I ) );
+
+    // the generic tangent constructor
+    c = new TangentConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_tangent", Qt::Key_T ) );
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );

@@ -114,4 +114,18 @@ public:
   BaseConstructMode* constructMode( KigPart& doc );
 };
 
+class TangentConstructor
+  : public MergeObjectConstructor
+{
+public:
+  TangentConstructor();
+  ~TangentConstructor();
+
+  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+                   const KigWidget& v ) const;
+  QString selectStatement(
+    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+    const KigWidget& w ) const;
+};
+
 #endif

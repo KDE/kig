@@ -1,5 +1,5 @@
-// vector_type.h
-// Copyright (C)  2004  Dominique Devriese <devriese@kde.org>
+// tangent_type.h
+// Copyright (C) 2004  Pino Toscano <toscano.pino@tiscali.it>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -16,40 +16,37 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_OBJECTS_VECTOR_TYPE_H
-#define KIG_OBJECTS_VECTOR_TYPE_H
+#ifndef KIG_OBJECTS_TANGENT_TYPE_H
+#define KIG_OBJECTS_TANGENT_TYPE_H
 
 #include "base_type.h"
 
-class VectorType
-  : public ObjectABType
-{
-  VectorType();
-  ~VectorType();
-public:
-  static const VectorType* instance();
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
-};
-
-class VectorSumType
+/**
+ * the line tangent to a generic conic
+ */
+class TangentConicType
   : public ArgsParserObjectType
 {
-  VectorSumType();
-  ~VectorSumType();
+  typedef ArgsParserObjectType Parent;
+  TangentConicType();
+  ~TangentConicType();
 public:
-  static const VectorSumType* instance();
+  static const TangentConicType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };
 
-class VectorDifferenceType
+/**
+ * the line tangent to an arc
+ */
+class TangentArcType
   : public ArgsParserObjectType
 {
-  VectorDifferenceType();
-  ~VectorDifferenceType();
+  typedef ArgsParserObjectType Parent;
+  TangentArcType();
+  ~TangentArcType();
 public:
-  static const VectorDifferenceType* instance();
+  static const TangentArcType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };

@@ -18,34 +18,33 @@
 
 #include "special_constructors.h"
 
-#include "kigpainter.h"
 #include "calcpaths.h"
-#include "guiaction.h"
-#include "conic-common.h"
 #include "common.h"
-
-#include "../objects/object_factory.h"
-#include "../objects/object_type.h"
-#include "../objects/object_holder.h"
-#include "../objects/object_drawer.h"
-#include "../objects/object_calcer.h"
-#include "../objects/conic_types.h"
-#include "../objects/line_type.h"
-#include "../objects/intersection_types.h"
-#include "../objects/object_imp.h"
-#include "../objects/point_imp.h"
-#include "../objects/bogus_imp.h"
-#include "../objects/conic_imp.h"
-#include "../objects/cubic_imp.h"
-#include "../objects/other_imp.h"
-#include "../objects/other_type.h"
-#include "../objects/locus_imp.h"
-#include "../objects/circle_imp.h"
-#include "../objects/line_imp.h"
+#include "conic-common.h"
+#include "guiaction.h"
+#include "kigpainter.h"
 
 #include "../kig/kig_part.h"
-
 #include "../modes/construct_mode.h"
+#include "../objects/bogus_imp.h"
+#include "../objects/circle_imp.h"
+#include "../objects/conic_imp.h"
+#include "../objects/conic_types.h"
+#include "../objects/cubic_imp.h"
+#include "../objects/intersection_types.h"
+#include "../objects/line_imp.h"
+#include "../objects/line_type.h"
+#include "../objects/locus_imp.h"
+#include "../objects/object_calcer.h"
+#include "../objects/object_drawer.h"
+#include "../objects/object_factory.h"
+#include "../objects/object_holder.h"
+#include "../objects/object_imp.h"
+#include "../objects/object_type.h"
+#include "../objects/other_imp.h"
+#include "../objects/other_type.h"
+#include "../objects/point_imp.h"
+#include "../objects/tangent_type.h"
 
 #include <qpen.h>
 
@@ -573,4 +572,63 @@ QString GenericIntersectionConstructor::selectStatement(
     return i18n( "Select the first object to intersect..." );
   else
     return i18n( "Select the second object to intersect..." );
+}
+
+TangentConstructor::TangentConstructor()
+  : MergeObjectConstructor(
+    I18N_NOOP( "Tangent" ),
+    I18N_NOOP( "The line tangent to a curve" ),
+    "tangent" )
+{
+  SimpleObjectTypeConstructor* conic =
+    new SimpleObjectTypeConstructor(
+      TangentConicType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "tangentconic" );
+
+  SimpleObjectTypeConstructor* arc =
+    new SimpleObjectTypeConstructor(
+      TangentArcType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "tangentarc" );
+
+//  SimpleObjectTypeConstructor* cubic =
+//    new SimpleObjectTypeConstructor(
+//      TangentCubicType::instance(),
+//      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+//      "tangentcubic" );
+
+  merge( conic );
+  merge( arc );
+//  merge( cubic );
+}
+
+TangentConstructor::~TangentConstructor()
+{
+}
+
+QString TangentConstructor::useText(
+  const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
+  const KigDocument&, const KigWidget& ) const
+{
+  if ( o.imp()->inherits( CircleImp::stype() ) )
+    return i18n( "Tangent to This Circle" );
+  else if ( o.imp()->inherits( ConicImp::stype() ) )
+    return i18n( "Tangent to This Conic" );
+  else if ( o.imp()->inherits( ArcImp::stype() ) )
+    return i18n( "Tangent to This Arc" );
+//  else if ( o.imp()->inherits( CubicImp::stype() ) )
+//    return i18n( "Tangent to This Cubic Curve" );
+//  else assert( false );
+  return QString::null;
+}
+
+QString TangentConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
+  const KigWidget& ) const
+{
+  if ( sel.size() == 0 )
+    return i18n( "Select the object..." );
+  else
+    return i18n( "Select point..." );
 }

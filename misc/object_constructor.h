@@ -202,7 +202,7 @@ class PropertyObjectConstructor
 public:
   PropertyObjectConstructor(
     const ObjectImpType* imprequirement, const char* usetext,
-    const char* descname, const char* desc,
+    const char* selectstat, const char* descname, const char* desc,
     const char* iconfile, const char* propertyinternalname );
 
   ~PropertyObjectConstructor();

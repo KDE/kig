@@ -519,15 +519,16 @@ bool ObjectConstructor::isIntersection() const
 }
 
 PropertyObjectConstructor::PropertyObjectConstructor(
-  const ObjectImpType* imprequirement, const char* usetext,
-  const char* descname, const char* desc,
-  const char* iconfile, const char* propertyinternalname )
+    const ObjectImpType* imprequirement, const char* usetext,
+    const char* selectstat, const char* descname, const char* desc,
+    const char* iconfile, const char* propertyinternalname )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mpropinternalname( propertyinternalname )
 {
   ArgsParser::spec argsspec[1];
   argsspec[0].type = imprequirement;
   argsspec[0].usetext = usetext;
+  argsspec[0].selectstat = selectstat;
   mparser.initialize( argsspec, 1 );
 }
 

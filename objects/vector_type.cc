@@ -100,3 +100,45 @@ const ObjectImpType* VectorSumType::resultId() const
   return VectorImp::stype();
 }
 
+static const ArgsParser::spec argsspecVectorDifference[] =
+{
+  { VectorImp::stype(), I18N_NOOP( "Construct the vector difference of this vector and another one." ),
+    I18N_NOOP( "Select the first of the two vectors of which you want to construct the sum..." ), false },
+  { VectorImp::stype(), I18N_NOOP( "Construct the vector difference of the other vector and this one." ),
+    I18N_NOOP( "Select the other of the two vectors of which you want to construct the sum..." ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the vector difference starting at this point." ),
+    I18N_NOOP( "Select the point to construct the difference vector in..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VectorDifferenceType )
+
+VectorDifferenceType::VectorDifferenceType()
+  : ArgsParserObjectType( "VectorDifference", argsspecVectorDifference, 3 )
+{
+}
+
+VectorDifferenceType::~VectorDifferenceType()
+{
+}
+
+const VectorDifferenceType* VectorDifferenceType::instance()
+{
+  static const VectorDifferenceType t;
+  return &t;
+}
+
+ObjectImp* VectorDifferenceType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  const VectorImp& a = *static_cast<const VectorImp*>( args[0] );
+  const VectorImp& b = *static_cast<const VectorImp*>( args[1] );
+  const PointImp& p = *static_cast<const PointImp*>( args[2] );
+
+  return new VectorImp( p.coordinate(), p.coordinate() + a.dir() - b.dir() );
+}
+
+const ObjectImpType* VectorDifferenceType::resultId() const
+{
+  return VectorImp::stype();
+}
