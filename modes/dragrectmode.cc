@@ -24,7 +24,11 @@
 
 #include <qevent.h>
 #include <qglobal.h>
+
+#if QT_VERSION >= 0x030100
 #include <qeventloop.h>
+#endif
+
 #include <kapplication.h>
 
 void DragRectMode::mouseMoved( QMouseEvent* e, KigWidget* w )

@@ -26,7 +26,9 @@
 #include "../objects/normalpoint.h"
 
 #include <qevent.h>
+#if QT_VERSION >= 0x030100
 #include <qeventloop.h>
+#endif
 #include <kcursor.h>
 #include <kapplication.h>
 #include <qglobal.h>
