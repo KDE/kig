@@ -1,12 +1,15 @@
-<?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd" [
-  <!ENTITY kig "<application>Kig</application>">
-  <!ENTITY kseg "<application>KSeg</application>">
-  <!ENTITY cabri "<application>Cabri</application>">
+<?xml version="1.0" ?> 
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd" 
+[ 
+  <!ENTITY kig "<application>Kig</application>"> 
+  <!ENTITY kseg "<application>KSeg</application>"> 
+  <!ENTITY cabri "<application>Cabri</application>"> 
   <!ENTITY package "kdeedu">
-  <!ENTITY % addindex "IGNORE">
-  <!ENTITY % English "INCLUDE"><!-- change language only here -->
-]>
+  <!ENTITY % addindex "IGNORE"> 
+  <!ENTITY % English "INCLUDE">
+  <!-- change language only here --> 
+]
+>
 
 <book lang="&language;">
 
@@ -30,7 +33,7 @@
 
     <legalnotice>&FDLNotice;</legalnotice>
 
-    <date>2003-05-22</date> <releaseinfo>0.5.0</releaseinfo>
+    <date>2003-05-22</date> <releaseinfo>0.5.1</releaseinfo>
     
     <abstract>
       <para>
@@ -76,10 +79,12 @@
       Since &kig; supports macros and locuses, it allows for some
       rather advanced macros to be defined.  If you have created an
       interesting macro, that you think might be useful for other
-      people, you can mail it to me at <email>devriese@kde.org</email>, so I can include it in
-      the distribution ( if you do this, it will be licensed under the
-      terms of &kig;'s license, the <ulink url="http://www.gnu.org/licenses/licenses.html#GPL">GPL</ulink>, so that other people can
-      freely use and adapt it ).
+      people, you can mail it to me at
+      <email>devriese@kde.org</email>, so I can include it in the
+      distribution ( if you do this, it will be licensed under the
+      terms of &kig;'s license, the <ulink
+      url="http://www.gnu.org/licenses/licenses.html#GPL">GPL</ulink>,
+      so that other people can freely use and adapt it ).
     </para>
   </chapter>
   
@@ -108,18 +113,21 @@
 	    </listitem>
 	    <listitem>
 	      <para>
-		Since you often need to construct points, simply clicking
-		somewhere on the screen with the
-    <mousebutton>middle</mousebutton> mouse button will construct a
-    point for you, without going to a menu or button.
+		Since you often need to construct points, simply
+		clicking somewhere on the screen with the
+		<mousebutton>middle</mousebutton> mouse button will
+		construct a point for you, without going to a menu or
+		button.
 	      </para>
 	    </listitem>
 	    <listitem>
 	      <para>
-		You can construct points while you are
-		building other objects in the background, optionally selecting them
+		You can construct points while you are building other
+		objects in the background, optionally selecting them
 		for the object you are building.  For more on this,
-    see the <link linkend="constructing-other-objects">section below</link>.
+		see the <link
+		linkend="constructing-other-objects">section
+		below</link>.
 	      </para>
 	    </listitem>
 	  </itemizedlist>
@@ -143,8 +151,8 @@
 	<para>
 	  Constructing objects other than points is normally done by
 	  selecting the appropriate entry in the
-	  <guimenu>Objects</guimenu> menu, or by clicking on one of the
-	   toolbar buttons.
+	  <guimenu>Objects</guimenu> menu, or by clicking on one of
+	  the toolbar buttons.
 	</para>
 	<screenshot>
 	  <screeninfo>Constructing a circle</screeninfo>
@@ -160,24 +168,25 @@
 	</screenshot>
 	<para>
 	  This will start the construction of the chosen object type.
-  All of these types require arguments.  For
-	  example, if you selected a circle by center and point, you
-	  will need to give it two points: one for the center, and one
-	  for the point on the circle.
+	  All of these types require arguments.  For example, if you
+	  selected a circle by center and point, you will need to give
+	  it two points: one for the center, and one for the point on
+	  the circle.
 	</para>
 	<para>
-	  To select these arguments, simply click on
-	  the object you want to use.  If you move over an object that
-	  can be used to construct the object, a preliminary image
-	  will be shown of what the object will look like.  For
-	  objects that require points as arguments, you can construct
-	  a new point at the current cursor position and select it by
-	  clicking the <mousebutton>left</mousebutton> mousebutton.
+	  To select these arguments, simply click on the object you
+	  want to use.  If you move over an object that can be used to
+	  construct the object, a preliminary image will be shown of
+	  what the object will look like.  For objects that require
+	  points as arguments, you can construct a new point at the
+	  current cursor position and select it by clicking the
+	  <mousebutton>left</mousebutton> mousebutton.
 	</para>
 	<para>
 	  You can always cancel the construction of the new object by
 	  pressing the <keycap>Escape</keycap> button or by clicking
-	on the "Stop" button (red octagon with an 'X') on the toolbar.
+	  on the "Stop" button (red octagon with an 'X') on the
+	  toolbar.
 	</para>
 	<screenshot>
 	  <screeninfo>Constructing a circle.</screeninfo>
@@ -203,17 +212,18 @@
 	<listitem>
 	  <para>
 	    Simply clicking on an object causes that object to be
-      selected, clearing the current selection.  If you
-	    don't want that behavior, hold down the &Ctrl; key while clicking on an
-	    object.
+	    selected, clearing the current selection.  If you don't
+	    want that behavior, hold down the &Ctrl; key while
+	    clicking on an object.
 	  </para>
 	</listitem>
 	<listitem>
 	  <para>
-	    By clicking and dragging on an empty spot on the screen, you can
-	    select all objects within the rectangle that is
-      created. This action will clear the current selection.  As in the previous case, holding
-	    down the &Ctrl; key prevents this behavior.
+	    By clicking and dragging on an empty spot on the screen,
+	    you can select all objects within the rectangle that is
+	    created. This action will clear the current selection.  As
+	    in the previous case, holding down the &Ctrl; key prevents
+	    this behavior.
 	  </para>
 	</listitem>
       </itemizedlist>
@@ -240,19 +250,20 @@
       <para>
 	When the objects you want to move are selected, you can start
 	moving them by <mousebutton>left</mousebutton> clicking and
-      dragging on any one of them.
-  When you're done, simply release the left mouse button.
+	dragging on any one of them.  When you're done, simply release
+	the left mouse button.
       </para>
       <note><para>For some types of objects ( mostly complicated
       Locuses ), moving objects can be slow on older hardware.  This
-      is unfortunate, but inevitable, given the calculations
-      involved.  </para></note> 
-      <note><para>If you <mousebutton>right-</mousebutton>click one of
-      the selected objects, and choose
+      is unfortunate, but inevitable, given the calculations involved.
+      </para></note> <note><para>If you
+      <mousebutton>right-</mousebutton>click one of the selected
+      objects, and choose
       <menuchoice><guimenuitem>"move"</guimenuitem></menuchoice>,
       movement of the mouse will move the object. When the object is
       moved to the desired position, another
-      <mousebutton>left</mousebutton> button click will stop the movement.  </para></note>
+      <mousebutton>left</mousebutton> button click will stop the
+      movement.  </para></note>
     </section>
     <section id="deleting-objects">
       <title>Deleting objects</title>
@@ -312,9 +323,10 @@
     <section id="full-screen-mode">
       <title>Full Screen Mode</title>
       <para>
-	&kig; also has a Full Screen mode.  To use it, click the appropriate button on the toolbar, or
-	select <menuchoice><guimenu>View</guimenu><guimenuitem>Full
-	Screen</guimenuitem></menuchoice>.  
+	&kig; also has a Full Screen mode.  To use it, click the
+	appropriate button on the toolbar, or select
+	<menuchoice><guimenu>View</guimenu><guimenuitem>Full
+	Screen</guimenuitem></menuchoice>.
       </para>
       <para>
 	To leave Full Screen mode,
@@ -333,22 +345,22 @@
       <para>
 	&kig; has context menus for its objects.  Try
 	<mousebutton>right-</mousebutton>clicking on an object to see
-a context menu appear.  There are many options: for constructing
-	other objects, setting colors, and even hiding, moving or deleting
-	objects.  Some objects have options of their own (
-	e.g. you can redefine certain points to be constrained to a
-	line where they previously weren't, etc ).  Try out these
-    options for yourself ;). They should be very straightforward to understand.
+	a context menu appear.  There are many options: for
+	constructing other objects, setting colors, and even hiding,
+	moving or deleting objects.  Some objects have options of
+	their own ( e.g. you can redefine certain points to be
+	constrained to a line where they previously weren't, etc ).
+	Try out these options for yourself ;). They should be very
+	straightforward to understand.
       </para>
     </section>
     <section id="document-context-menus">
       <title>Document context menus</title>
       <para>
-	 <mousebutton>Right-</mousebutton>clicking on the
-	document will present a popup that you can use to
-	start constructing a new object, change the coordinate system
-	used, show hidden objects, and even zoom in and zoom out of the
-	document.
+	<mousebutton>Right-</mousebutton>clicking on the document will
+	present a popup that you can use to start constructing a new
+	object, change the coordinate system used, show hidden
+	objects, and even zoom in and zoom out of the document.
       </para>
     </section>
     <section id="defining-macros">
@@ -359,14 +371,13 @@ a context menu appear.  There are many options: for constructing
 	combining other ones.
       </para>
       <para>
-	For example:  Suppose you want
-	to make a macro for constructing a circle from three points on
-	it ( suppose you missed the fact that &kig; provides a native
-	type for this purpose ;) ), then you would just construct
-	three points, some perpendiculars and midpoints until you find
-	the center, and construct the circle by the center you
-	constructed and one of the previous points.  The following
-	image should make this a bit more clear.
+	For example: Suppose you want to make a macro for constructing
+	a circle from three points on it ( suppose you missed the fact
+	that &kig; provides a native type for this purpose ;) ), then
+	you would just construct three points, some perpendiculars and
+	midpoints until you find the center, and construct the circle
+	by the center you constructed and one of the previous points.
+	The following image should make this a bit more clear.
       </para>
       <screenshot>
 	<screeninfo>Test running macros</screeninfo>
@@ -383,12 +394,12 @@ a context menu appear.  There are many options: for constructing
       <para>
 	Next comes defining the macro.  Select <guimenuitem>New
 	macro</guimenuitem> from the <guimenu>Type</guimenu> menu, or
-	click on the button on the toolbar.  A wizard will appear and ask
-	you to select the given objects.  In our example, these are
-	the three points.  Select the three points (click on
-	them for selecting, click again for unselecting) and click the
-	<guibutton>next</guibutton> button to continue. Finally, select
-	the last objects ( only the circle in our example ).
+	click on the button on the toolbar.  A wizard will appear and
+	ask you to select the given objects.  In our example, these
+	are the three points.  Select the three points (click on them
+	for selecting, click again for unselecting) and click the
+	<guibutton>next</guibutton> button to continue. Finally,
+	select the last objects ( only the circle in our example ).
       </para>
 
       <screenshot>
@@ -404,17 +415,17 @@ a context menu appear.  There are many options: for constructing
       </screenshot>
 
       <para> After the previous steps were completed, click the
-      <guibutton>next</guibutton> button to continue.  Enter a name and
-      optionally a description for your new type, and click the
+      <guibutton>next</guibutton> button to continue.  Enter a name
+      and optionally a description for your new type, and click the
       <guibutton>Finish</guibutton> button.  Your macro type is now
       finished.
       </para>
 
       <para>
 	To use the new macro type, click its button on the toolbar or
-	use the <menuchoice><guimenu>Objects</guimenu></menuchoice> menu
-	or even its button on the toolbar.  Building a macro object
-	is just like constructing any other object.
+	use the <menuchoice><guimenu>Objects</guimenu></menuchoice>
+	menu or even its button on the toolbar.  Building a macro
+	object is just like constructing any other object.
       </para>
       <screenshot>
 	<screeninfo>Using your new type</screeninfo>
@@ -433,14 +444,14 @@ a context menu appear.  There are many options: for constructing
       <para>
 	As you saw in the previous chapter, &kig; allows you to create
 	your own objects.  &kig; also makes sure that once you have
-	created an object, it is saved on exit and loaded on startup.  
-You do not have to manually save or load
-	macro definitions.  However, &kig; does allow you to do more
-	with the macros.  If you select <guimenuitem>Manage
-	Types</guimenuitem> from the <guimenu>Types</guimenu>-menu,
-	you will see a dialog where you can edit your types.  It
-	allows you to delete types that are no longer used,
-	export them to a file, or even load them from another file.
+	created an object, it is saved on exit and loaded on startup.
+	You do not have to manually save or load macro definitions.
+	However, &kig; does allow you to do more with the macros.  If
+	you select <guimenuitem>Manage Types</guimenuitem> from the
+	<guimenu>Types</guimenu>-menu, you will see a dialog where you
+	can edit your types.  It allows you to delete types that are
+	no longer used, export them to a file, or even load them from
+	another file.
       </para>
       <screenshot>
 	<screeninfo>Edit Types Dialog</screeninfo>
@@ -458,9 +469,9 @@ You do not have to manually save or load
       <title>Text labels</title>
       <para>
 	&kig; allows you to add text labels to a construction.  This
-	is very useful for showing names, explanations or other text in
-	constructions.  &kig; can also display variable information about objects (
-	a.k.a. properties ).
+	is very useful for showing names, explanations or other text
+	in constructions.  &kig; can also display variable information
+	about objects ( a.k.a. properties ).
       </para>
       <para>
         To construct a text label, simply press the Text Label button
@@ -472,7 +483,8 @@ You do not have to manually save or load
       </para>
       <para>
         Type in the text that you want to show in the new label, and
-	click "Finish". The label should be present on your document now.
+        click "Finish". The label should be present on your document
+        now.
       </para>
       <screenshot>
 	<screeninfo>The Text Label Dialog</screeninfo>
@@ -487,17 +499,16 @@ You do not have to manually save or load
       </screenshot>
       <para>
         The previous example was a simple one, and limited to just
-	text.  However, there is also support for showing variable
-        information about objects in a label  (e.g. you can construct
-        a label showing the text "This segment is %1 units long.." 
-        where "%1" would be replaced with the length of a specific
-        segment).
+        text.  However, there is also support for showing variable
+        information about objects in a label (e.g. you can construct a
+        label showing the text "This segment is %1 units long.." where
+        "%1" would be replaced with the length of a specific segment).
       </para>
       <para>
         To do this, enter text with a number of placeholders ( "%1",
-        "%2", "%3" etc. ) in it.  When you are
-        finished, press the <guibutton>Next</guibutton> button to
-        continue. If you want to change the text or variables later, you can go back using the
+        "%2", "%3" etc. ) in it.  When you are finished, press the
+        <guibutton>Next</guibutton> button to continue. If you want to
+        change the text or variables later, you can go back using the
         <guibutton>Back</guibutton> button.
       </para>
       <para>
@@ -510,10 +521,10 @@ You do not have to manually save or load
         appears.  E.g. in the example above, you would click "argument
         1", click on the correct segment in the main &kig; window, and
         select the property "Length".  Afterwards, you can fill in the
-        rest of the variable parts, or select another property for
-        one of the variable parts if you wish to change it.  When
-        you are ready, click the <guibutton>Finish</guibutton> button
-        to complete the construction of the text label.
+        rest of the variable parts, or select another property for one
+        of the variable parts if you wish to change it.  When you are
+        ready, click the <guibutton>Finish</guibutton> button to
+        complete the construction of the text label.
       </para>
       <screenshot>
 	<screeninfo>Selecting a property for a variable
@@ -538,9 +549,9 @@ You do not have to manually save or load
       &kig; supports a rather large number of object types.  You are
       encouraged to try out the various objects, as I think this is a
       better way to find out about them than reading about them in
-      some boring manual ;).  Please note that not all of the available
-      object types are shown in the toolbars, but that there are also
-      some objects that you can only construct via the
+      some boring manual ;).  Please note that not all of the
+      available object types are shown in the toolbars, but that there
+      are also some objects that you can only construct via the
       <guimenu>Objects</guimenu> menu in the menu bar.  Of course, as
       with all &kde; applications, what appears in the toolbars is
       configurable.  Try out the
@@ -566,7 +577,8 @@ You do not have to manually save or load
 	    Free software programs are developed in a very open
 	    spirit, and its developers are usually very responsive to
 	    user feedback.  Therefore, if you have any questions,
-	    complaints, or whatever about kig, please let me know at <email>devriese@kde.org</email>.
+	    complaints, or whatever about kig, please let me know at
+	    <email>devriese@kde.org</email>.
 	  </para>
 	</listitem>
 	<listitem>
@@ -581,10 +593,10 @@ You do not have to manually save or load
 	<listitem>
 	  <para>
 	    Working with &kig; should be very straightforward.
-    Constructing objects is easy and interactive, with preliminary
-	    results being shown, etc.  Moving, selecting and building all
-	    work as one would expect them to.  Undo support should
-	    also be very intuitive.
+	    Constructing objects is easy and interactive, with
+	    preliminary results being shown, etc.  Moving, selecting
+	    and building all work as one would expect them to.  Undo
+	    support should also be very intuitive.
 	  </para>
 	</listitem>
 	<listitem>
@@ -594,8 +606,8 @@ You do not have to manually save or load
 	    normal objects.  They are saved on exit and loaded on
 	    startup, so that they aren't lost on exit.  In the <link
 	    linkend="working-with-types">Types Manager</link> you can
-	    manage these objects.  You can export them to files, import
-	    them from files, and delete them.
+	    manage these objects.  You can export them to files,
+	    import them from files, and delete them.
 	  </para>
 	</listitem>
 	<listitem>
@@ -642,9 +654,9 @@ You do not have to manually save or load
 	Free Software</ulink>.  This means that its source code is
 	freely available on the internet, and everyone can use it,
 	read it, modify it, and distribute it.  I work on it as a
-	hobby project, and I have already learned a lot about programming,
-	C++, KDE/Qt, math, software colaboration and open source
-	projects in the process.
+	hobby project, and I have already learned a lot about
+	programming, C++, KDE/Qt, math, software colaboration and open
+	source projects in the process.
       </para>
     </section>
     <section id="contribute-to-kig">
@@ -655,11 +667,11 @@ You do not have to manually save or load
 	software, you are allowed ( and encouraged :) to fix problems
 	you encounter while using it, to add features you miss, to
 	distribute your modified program, and to send these
-	modifications to me at 
-<email>devriese@kde.org</email>, so that I can include them
-	in the next version for others to enjoy.  I personally have no
-	financial interest in this project whatsoever, so this isn't
-	just marketing-speak here ;).
+	modifications to me at <email>devriese@kde.org</email>, so
+	that I can include them in the next version for others to
+	enjoy.  I personally have no financial interest in this
+	project whatsoever, so this isn't just marketing-speak here
+	;).
       </para>
       <para>
 	If you are uncertain of your rights to use this software, or
@@ -732,4 +744,3 @@ Local Variables:
 mode: xml
 End:
 -->
-
