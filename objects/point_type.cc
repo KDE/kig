@@ -23,6 +23,11 @@
 #include "curve_imp.h"
 #include "bogus_imp.h"
 
+#include "../modes/moving.h"
+#include "../kig/kig_part.h"
+
+#include <qstringlist.h>
+
 static const ArgParser::spec argsspecdd[] =
 {
   { ObjectImp::ID_DoubleImp, "x" },
@@ -183,4 +188,41 @@ int ConstrainedPointType::resultId() const
 int MidPointType::resultId() const
 {
   return ObjectImp::ID_PointImp;
+}
+
+QStringList FixedPointType::specialActions() const
+{
+  QStringList ret;
+  ret << i18n( "Redefine" );
+  return ret;
+}
+
+QStringList ConstrainedPointType::specialActions() const
+{
+  QStringList ret;
+  ret << i18n( "Redefine" );
+  return ret;
+}
+
+static void redefinePoint( RealObject* o, KigDocument& d, KigWidget& w,
+                           NormalMode& )
+{
+  PointRedefineMode pm( o, d, w );
+  d.runMode( &pm );
+};
+
+void FixedPointType::executeAction(
+  int i, RealObject* o, KigDocument& d, KigWidget& w,
+  NormalMode& m ) const
+{
+  assert( i == 0 );
+  redefinePoint( o, d, w, m );
+}
+
+void ConstrainedPointType::executeAction(
+  int i, RealObject* o, KigDocument& d, KigWidget& w,
+  NormalMode& m ) const
+{
+  assert( i == 0 );
+  redefinePoint( o, d, w, m );
 }

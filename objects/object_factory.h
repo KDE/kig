@@ -56,6 +56,8 @@ public:
   // have returned.  The old DataObjects, that have no more children
   // are removed automatically by RealObject::setParents(), so you
   // don't have to worry about that..
+  // newly created DataObjects are added to the document, so don't
+  // worry about that either :)
   Objects redefinePoint( Object* point, const Coordinate& c,
                          KigDocument& d, const KigWidget& w );
 

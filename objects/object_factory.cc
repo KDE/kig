@@ -84,10 +84,10 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
 
   if ( v )
   {
+    // we want a constrained point...
     const CurveImp* curveimp = static_cast<const CurveImp*>( v->imp() );
     double newparam = curveimp->getParam( c, doc );
 
-    // we want a constrained point...
     if ( point->type()->inherits( ObjectType::ID_ConstrainedPointType ) )
     {
       // point already was constrained -> simply update the param
@@ -118,6 +118,7 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
     {
       // point used to be fixed -> add a new DataObject etc.
       DataObject* d = new DataObject( new DoubleImp( newparam ) );
+      doc._addObject( d );
       Objects args;
       args.push_back( d );
       args.push_back( v );
@@ -136,6 +137,7 @@ Objects ObjectFactory::redefinePoint( Object* tpoint, const Coordinate& c,
       Objects a;
       a.push_back( new DataObject( new DoubleImp( c.x ) ) );
       a.push_back( new DataObject( new DoubleImp( c.y ) ) );
+      doc._addObjects( a );
       point->setType( FixedPointType::instance() );
       point->setParents( a, doc );
       a.push_back( point );

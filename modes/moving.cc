@@ -140,7 +140,7 @@ PointRedefineMode::PointRedefineMode( RealObject* p, KigDocument& d, KigWidget& 
 
 void PointRedefineMode::moveTo( const Coordinate& o )
 {
-  ObjectFactory::instance()->redefinePoint( mp, o, mdoc, mview );
+  (void) ObjectFactory::instance()->redefinePoint( mp, o, mdoc, mview );
 }
 
 PointRedefineMode::~PointRedefineMode()
