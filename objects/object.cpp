@@ -159,13 +159,22 @@ std::map<QCString,QString> Object::getParams()
 {
   std::map<QCString, QString> m;
   m["color"] = mColor.name();
+  m["shown"] = QString::fromUtf8( shown ? "true" : "false" );
   return m;
 }
 
 void Object::setParams( const std::map<QCString,QString>& m )
 {
-  std::map<QCString,QString>::const_iterator p = m.find("color");
-  if( p == m.end() ) mColor = Qt::blue;
-  else mColor = QColor( p->second );
-  assert( mColor.isValid() );
+  {
+    std::map<QCString,QString>::const_iterator p = m.find("color");
+    if( p == m.end() ) mColor = Qt::blue;
+    else mColor = QColor( p->second );
+    assert( mColor.isValid() );
+  };
+  {
+    std::map<QCString,QString>::const_iterator p = m.find("shown");
+    if( p != m.end() && p->second == QString::fromUtf8( "false" ) )
+      shown = false;
+    else shown = true;
+  };
 }
