@@ -256,8 +256,8 @@ static bool checkArgs( const Collection& os, uint min, const std::vector<ArgsPar
   uint checknum = os.size() < argsspec.size() ? os.size() : argsspec.size();
   for ( uint i = 0; i < checknum; ++i )
   {
-    if ( ! isvalid( *os[i] ) ) return false;
-    assert( hasimp( *os[i], argsspec[i].type ) );
+    if( !isvalid( *os[i] ) ) return false;
+    if( !hasimp( *os[i], argsspec[i].type ) ) return false;
   }
   return true;
 }
