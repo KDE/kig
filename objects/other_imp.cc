@@ -254,7 +254,7 @@ ArcImp* ArcImp::copy() const
   return new ArcImp( mcenter, mradius, msa, ma );
 }
 
-ObjectImp* ArcImp::transform( const Transformation& t ) const
+ObjectImp* ArcImp::transform( const Transformation& ) const
 {
   // TODO
   return new InvalidImp();
@@ -276,7 +276,7 @@ bool ArcImp::contains( const Coordinate& p, int width, const KigWidget& w ) cons
   return angle - msa - ma < 1e-4;
 }
 
-bool ArcImp::inRect( const Rect& r, int width, const KigWidget& si ) const
+bool ArcImp::inRect( const Rect&, int, const KigWidget& ) const
 {
   // TODO
   return false;
