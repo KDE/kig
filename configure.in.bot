@@ -10,5 +10,14 @@ if test x$kig_warn_about_disabling_python = xyes; then
   echo "Kig will continue to function without Python scripting support, "
   echo "but you will not be able to created Python scripted objects, or "
   echo "load Kig files that use them."
+  echo
+  echo "Installing the libraries:"
+  echo "The python development libraries themselves are almost certainly "
+  echo "packaged by your favourite distribution.  Look for a package name "
+  echo "like libpython-dev, with possibly a version number inserted "
+  echo "somewhere in the name..  For the Boost.Python libs, check this "
+  echo "documentation: \"http://boost.org/more/download.html\" and "
+  echo "\"http://boost.org/more/download.html#Installation\"  or look for "
+  echo "a package like libboost-python-dev or libboost-dev.. "
   echo ""
 fi
