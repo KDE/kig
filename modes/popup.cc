@@ -535,7 +535,6 @@ bool NameObjectActionsProvider::executeAction(
   }
   else
   {
-    assert( false );
     return false;
   }
 }
