@@ -23,4 +23,4 @@ while( <TODO> )
       }
     else { print unless /^$/; }
   };
-print "</li></ul>\n";
+print "</li></ul></ul>\n";
