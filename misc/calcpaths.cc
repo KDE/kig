@@ -146,14 +146,19 @@ Objects sideOfTreePath( const Objects& from, const Object* to )
 
 Objects getAllParents( const Objects& objs )
 {
+  using namespace std;
   Objects ret( objs );
   Objects::const_iterator begin = ret.begin();
   Objects::const_iterator end = ret.end();
   while ( begin != end )
   {
+    Objects tmp;
     for ( Objects::const_iterator i = begin; i != end; ++i )
-      ret.upush( (*i)->parents() );
-    begin = end;
+      tmp.upush( (*i)->parents() );
+
+    uint oldsize = ret.size();
+    copy( tmp.begin(), tmp.end(), back_inserter( ret ) );
+    begin = ret.begin() + oldsize;
     end = ret.end();
   };
   return ret;
