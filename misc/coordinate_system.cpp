@@ -344,7 +344,7 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
 QString PolarCoords::coordinateFormatNotice() const
 {
   // \xCE\xB8 is utf8 for the greek theta sign..
-  return i18n( "Enter coordinates in the following form: \"r; \xCE\xB8°\", where "
+  return i18n( "Enter coordinates in the following form: \"r; \xCE\xB8Â°\", where "
                "r and \xCE\xB8 are the polar coordinates." );
 }
 
