@@ -43,6 +43,7 @@ noinst_LTLIBRARIES = libkigparttemp.la
 # the Part's source, library search path, and link libraries
 libkigparttemp_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp \
 	kig_actions.cpp
+libkigparttemp_la_LIBADD = $(LIB_KDEPRINT)
 
 # this is where the desktop file will go 
 partdesktopdir   = $(kde_servicesdir)

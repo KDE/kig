@@ -26,23 +26,25 @@
 #include <qptrlist.h>
 
 #include "../misc/objects.h"
-#include "../misc/rect.h"
 
-class QWidget;
-class KURL;
+class KAboutData;
 class KActionMenu;
 class KCommandHistory;
-class KAboutData;
+class KPrinter;
 class KToolBar;
+class KURL;
+class QWidget;
 
+class Coordinate;
+class CoordinateSystem;
+class GUIAction;
+class KigGUIAction;
 class KigMode;
 class KigObjectsPopup;
-class CoordinateSystem;
-class MacroWizardImpl;
 class KigView;
+class MacroWizardImpl;
 class Object;
-class KigGUIAction;
-class GUIAction;
+class Rect;
 class ScreenInfo;
 
 /**
@@ -95,6 +97,9 @@ public:
 public slots:
   void fileSaveAs();
   void fileSave();
+
+  void filePrint();
+  void filePrintPreview();
 
   void unplugActionLists();
   void plugActionLists();
@@ -231,6 +236,8 @@ public:
   void enableConstructActions( bool enabled );
 
 protected:
+  void doPrint( KPrinter& printer );
+
   std::vector<KigWidget*> mwidgets;
 
   KigView* m_widget;

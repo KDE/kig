@@ -22,43 +22,44 @@
 #include "kig_part.moc"
 
 #include "aboutdata.h"
-#include "kig_view.h"
-#include "kig_commands.h"
 #include "kig_actions.h"
+#include "kig_commands.h"
+#include "kig_view.h"
 
+#include "../filters/exporter.h"
+#include "../filters/filter.h"
+#include "../misc/builtin_stuff.h"
+#include "../misc/calcpaths.h"
+#include "../misc/coordinate_system.h"
+#include "../misc/guiaction.h"
+#include "../misc/kigpainter.h"
+#include "../misc/lists.h"
+#include "../misc/object_constructor.h"
+#include "../misc/objects.h"
+#include "../misc/screeninfo.h"
 #include "../modes/normal.h"
-
 #include "../objects/object.h"
 #include "../objects/point_imp.h"
 
-#include "../misc/guiaction.h"
-#include "../misc/lists.h"
-#include "../misc/object_constructor.h"
-#include "../misc/coordinate_system.h"
-#include "../misc/calcpaths.h"
-#include "../misc/objects.h"
-#include "../misc/builtin_stuff.h"
-
-#include "../filters/filter.h"
-#include "../filters/exporter.h"
-
-#include <kparts/genericfactory.h>
-#include <kinstance.h>
-#include <kfiledialog.h>
 #include <kaction.h>
 #include <kapplication.h>
-#include <ktoolbar.h>
-#include <kmainwindow.h>
-#include <kstdaction.h>
-#include <kstandarddirs.h>
-#include <klocale.h>
-#include <kmessagebox.h>
 #include <kdebug.h>
-#include <kiconloader.h>
+#include <kfiledialog.h>
 #include <kglobal.h>
+#include <kiconloader.h>
+#include <kinstance.h>
+#include <klocale.h>
+#include <kmainwindow.h>
+#include <kmessagebox.h>
 #include <kmimetype.h>
+#include <kparts/genericfactory.h>
+#include <kprinter.h>
+#include <kstandarddirs.h>
+#include <kstdaction.h>
+#include <ktoolbar.h>
 
 #include <qfile.h>
+#include <qpaintdevicemetrics.h>
 #include <qtimer.h>
 #if QT_VERSION >= 0x030100
 #include <qeventloop.h>
@@ -120,8 +121,13 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
 void KigDocument::setupActions()
 {
   // save actions..
-  KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
-  KStdAction::save(this, SLOT(fileSave()), actionCollection());
+  (void) KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
+  (void) KStdAction::save(this, SLOT(fileSave()), actionCollection());
+
+  // print actions
+  (void) KStdAction::print( this, SLOT( filePrint() ), actionCollection() );
+  (void) KStdAction::printPreview( this, SLOT( filePrintPreview() ), actionCollection() );
+
 
   // we need icons...
   KIconLoader* l = KGlobal::iconLoader();
@@ -708,4 +714,48 @@ CoordinateSystem* KigDocument::switchCoordinateSystem( CoordinateSystem* s )
   CoordinateSystem* ret = mcoordsystem;
   mcoordsystem = s;
   return ret;
+}
+
+void KigDocument::filePrintPreview()
+{
+  KPrinter printer;
+  printer.setPreviewOnly( true );
+  doPrint( printer );
+}
+
+void KigDocument::filePrint()
+{
+  KPrinter printer;
+  if ( printer.setup( m_widget ) )
+  {
+    doPrint( printer );
+  };
+}
+
+void KigDocument::doPrint( KPrinter& printer )
+{
+  QPaintDeviceMetrics metrics( &printer );
+  Rect rect = suggestedRect();
+  QRect qrect( 0, 0, metrics.width(), metrics.height() );
+  if ( rect.width() * qrect.height() > rect.height() * qrect.width() )
+  {
+    // qrect is too high..
+    int nh = static_cast<int>( qrect.width() * rect.height() / rect.width() );
+    int rest = qrect.height() - nh;
+    qrect.setTop( qrect.top() - rest / 2 );
+    qrect.setTop( rest / 2 );
+  }
+  else
+  {
+    // qrect is too wide..
+    int nw = static_cast<int>( qrect.height() * rect.width() / rect.height() );
+    int rest = qrect.width() - nw;
+    qrect.setLeft( rest / 2 );
+    qrect.setRight( qrect.right() - rest / 2 );
+  };
+  ScreenInfo si( rect, qrect );
+  KigPainter painter( si, &printer, *this );
+  painter.setWholeWinOverlay();
+  painter.drawGrid( coordinateSystem() );
+  painter.drawObjects( objects() );
 }
