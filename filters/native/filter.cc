@@ -161,6 +161,7 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
       pel = doc.createElement( "Property" );
       pel.appendChild( doc.createTextNode( propname ) );
       e.appendChild( pel );
+      objectselem.appendChild( e );
     }
     else if ( (*i)->inherits( Object::ID_RealObject ) )
     {
@@ -282,8 +283,8 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         else if ( e.tagName() == "Property" )
         {
           QCString propname;
-          for ( QDomElement ec = e.firstChild().toElement(); !n.isNull();
-                n = n.nextSibling().toElement() )
+          for ( QDomElement ec = e.firstChild().toElement(); !ec.isNull();
+                ec = ec.nextSibling().toElement() )
           {
             if ( ec.tagName() == "Property" )
             {
@@ -294,8 +295,6 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
 
           if ( i->parents.size() != 1 ) return ParseError;
           Object* parent = ret[oldsize + i->parents[0] -1];
-          parent->calc( kdoc ); // needs to be calced before we can
-                                // get its properties()
           QCStringList propnames = parent->propertiesInternalNames();
           int propid = propnames.findIndex( propname );
           if ( propid == -1 ) return ParseError;
@@ -336,6 +335,9 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
           ret[oldsize + i->id - 1] = newobj;
         }
         else continue;
+
+        // property objects require their parents to be calced..
+        ret[oldsize + i->id - 1]->calc( kdoc );
       }
       kdoc.setObjects( ret );
     }
