@@ -5,29 +5,29 @@
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >1.08235</param>
-   <param name="y" >-0.0894118</param>
+   <param name="x" >4.31803</param>
+   <param name="y" >2.90586</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="NormalPoint" id="2" final="true" >
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >-0.103529</param>
-   <param name="y" >-0.767059</param>
+   <param name="x" >3.15477</param>
+   <param name="y" >-0.191616</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="NormalPoint" id="3" final="true" >
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >-0.64</param>
-   <param name="y" >0.795294</param>
+   <param name="x" >1.07004</param>
+   <param name="y" >4.55739</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="NormalPoint" id="4" final="true" >
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >0.696471</param>
-   <param name="y" >1.05882</param>
+   <param name="x" >-1.76131</param>
+   <param name="y" >2.8929</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="LineTTP" id="5" final="true" >
    <parent id="4" />
@@ -39,8 +39,8 @@
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Fixed</param>
    <param name="shown" >true</param>
-   <param name="x" >-1.02588</param>
-   <param name="y" >-0.0611765</param>
+   <param name="x" >-1.36085</param>
+   <param name="y" >-0.373571</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="LineTTP" id="7" final="true" >
    <parent id="4" />
@@ -58,7 +58,7 @@
    <parent id="8" />
    <param name="color" >#0000ff</param>
    <param name="implementation-type" >Constrained</param>
-   <param name="param" >0.245233</param>
+   <param name="param" >0.725237</param>
    <param name="shown" >true</param>
   </HierarchyElement>
   <HierarchyElement given="false" typeName="LineTTP" id="10" final="true" >
@@ -100,6 +100,12 @@
   <HierarchyElement given="false" typeName="IntersectionPoint" id="16" final="true" >
    <parent id="15" />
    <parent id="10" />
+   <param name="color" >#0000ff</param>
+   <param name="shown" >true</param>
+  </HierarchyElement>
+  <HierarchyElement given="false" typeName="Curve" id="17" final="true" >
+   <parent id="9" />
+   <parent id="16" />
    <param name="color" >#0000ff</param>
    <param name="shown" >true</param>
   </HierarchyElement>

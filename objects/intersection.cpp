@@ -115,61 +115,61 @@ void IntersectionPoint::calc()
   Coordinate t1, t2, t3, t4;
   bool gotfirst = false;
   if ( segment1 )
+  {
+    if ( gotfirst )
     {
-      if ( gotfirst )
-	{
-	  t3 = segment1->getP1();
-	  t4 = segment1->getP2();
-	}
-      else
-	{
-	  t1 = segment1->getP1();
-	  t2 = segment1->getP2();
-	  gotfirst = true;
-	};
+      t3 = segment1->getP1();
+      t4 = segment1->getP2();
+    }
+    else
+    {
+      t1 = segment1->getP1();
+      t2 = segment1->getP2();
+      gotfirst = true;
     };
+  };
   if ( segment2 )
+  {
+    if ( gotfirst )
     {
-      if ( gotfirst )
-	{
-	  t3 = segment2->getP1();
-	  t4 = segment2->getP2();
-	}
-      else
-	{
-	  t1 = segment2->getP1();
-	  t2 = segment2->getP2();
-	  gotfirst = true;
-	};
+      t3 = segment2->getP1();
+      t4 = segment2->getP2();
+    }
+    else
+    {
+      t1 = segment2->getP1();
+      t2 = segment2->getP2();
+      gotfirst = true;
     };
+  };
   if ( line1 )
+  {
+    if ( gotfirst )
     {
-      if ( gotfirst )
-	{
-	  t3 = line1->getP1();
-	  t4 = line1->getP2();
-	}
-      else
-	{
-	  t1 = line1->getP1();
-	  t2 = line1->getP2();
-	  gotfirst = true;
-	};
+      t3 = line1->getP1();
+      t4 = line1->getP2();
+    }
+    else
+    {
+      t1 = line1->getP1();
+      t2 = line1->getP2();
+      gotfirst = true;
     };
+  };
   if ( line2 )
+  {
+    if ( gotfirst )
     {
-      if ( gotfirst )
-	{
-	  t3 = line2->getP1();
-	  t4 = line2->getP2();
-	}
-      else
-	{
-	  t1 = line2->getP1();
-	  t2 = line2->getP2();
-	  gotfirst = true;
-	};
+      t3 = line2->getP1();
+      t4 = line2->getP2();
+    }
+    else
+    {
+      t1 = line2->getP1();
+      t2 = line2->getP2();
+      gotfirst = true;
     };
+  };
   mC = calcIntersectionPoint( t1, t2, t3, t4 );
 }
 
@@ -182,3 +182,88 @@ const QString IntersectionPoint::sDescription()
 {
   return i18n( "The point where two lines or segments intersect" );
 }
+
+IntersectionPoint::IntersectionPoint( const IntersectionPoint& p )
+  : Point( p ),
+    segment1( p.segment1 ), segment2( p.segment2 ),
+    line1( p.line1 ), line2( p.line2 ),
+    circle1( p.circle1 ), circle2( p.circle2 )
+{
+};
+
+IntersectionPoint::IntersectionPoint()
+  : segment1(0), segment2(0),
+    line1(0), line2(0),
+    circle1(0), circle2(0)
+{
+};
+
+IntersectionPoint::~IntersectionPoint()
+{
+}
+
+IntersectionPoint* IntersectionPoint::copy()
+{
+  return new IntersectionPoint( *this );
+}
+
+const QCString IntersectionPoint::vFullTypeName() const
+{
+  return sFullTypeName();
+}
+
+const QCString IntersectionPoint::sFullTypeName()
+{
+  return "IntersectionPoint";
+}
+
+const QString IntersectionPoint::vDescriptiveName() const
+{
+  return sDescriptiveName();
+}
+
+const QString IntersectionPoint::vDescription() const
+{
+  return sDescription();
+}
+
+const QCString IntersectionPoint::vIconFileName() const
+{
+  return sIconFileName();
+}
+
+const QCString IntersectionPoint::sIconFileName()
+{
+  return "intersection";
+}
+
+const int IntersectionPoint::vShortCut() const
+{
+  return sShortCut();
+}
+
+const int IntersectionPoint::sShortCut()
+{
+  return CTRL+Key_I;
+}
+
+void IntersectionPoint::startMove(const Coordinate& )
+{
+}
+
+void IntersectionPoint::moveTo(const Coordinate& )
+{
+}
+
+void IntersectionPoint::stopMove()
+{
+}
+
+void IntersectionPoint::cancelMove()
+{
+}
+
+void IntersectionPoint::drawPrelim( KigPainter&, const Object* ) const
+{
+}
+

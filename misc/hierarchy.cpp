@@ -155,7 +155,9 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
         };
 
         // select its parent as an arg...
-        (*i)->actual->selectArg((*j)->actual);
+        bool complete = (*i)->actual->selectArg((*j)->actual);
+        if ( complete ) (*i)->actual->calc();
+
         // we don't do addChild since that should be done by the
         // child's selectArg() function
       };

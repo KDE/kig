@@ -38,48 +38,34 @@ class IntersectionPoint
   Circle* circle1;
   Circle* circle2;
 public:
-  IntersectionPoint()
-    : segment1(0), segment2(0),
-      line1(0), line2(0),
-      circle1(0), circle2(0)
-  {
-  };
+  IntersectionPoint();
+  IntersectionPoint( const IntersectionPoint& p );
+  ~IntersectionPoint();
 
-  IntersectionPoint( const IntersectionPoint& p )
-    : Point( p ),
-      segment1( p.segment1 ), segment2( p.segment2 ),
-      line1( p.line1 ), line2( p.line2 ),
-      circle1( p.circle1 ), circle2( p.circle2 )
-  {
-  };
+  virtual IntersectionPoint* copy();
 
-  ~IntersectionPoint() {};
-
-  virtual IntersectionPoint* copy() { return new IntersectionPoint( *this ); };
-
-  const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName() { return "IntersectionPoint"; };
-  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  const QCString vFullTypeName() const;
+  static const QCString sFullTypeName();
+  const QString vDescriptiveName() const;
   static const QString sDescriptiveName();
-  const QString vDescription() const { return sDescription(); };
+  const QString vDescription() const;
   static const QString sDescription();
-  const QCString vIconFileName() const { return sIconFileName(); };
-  static const QCString sIconFileName() { return "intersection"; };
-  const int vShortCut() const { return sShortCut(); };
-  static const int sShortCut() { return CTRL+Key_I; };
+  const QCString vIconFileName() const;
+  static const QCString sIconFileName();
+  const int vShortCut() const;
+  static const int sShortCut();
 
-  void moved( ) { calc(); };
   QString wantArg(const Object* o) const;
   bool selectArg(Object* o);
   void unselectArg(Object* o);
   Objects getParents() const;
 
-  void startMove(const Coordinate& ) {};
-  void moveTo(const Coordinate& ) {};
-  void stopMove() {};
-  void cancelMove() {};
+  void startMove(const Coordinate& );
+  void moveTo(const Coordinate& );
+  void stopMove();
+  void cancelMove();
 
-  void drawPrelim( KigPainter&, const Object* ) const {};
+  void drawPrelim( KigPainter&, const Object* ) const;
 
   void calc();
 };

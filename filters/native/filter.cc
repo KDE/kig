@@ -81,7 +81,6 @@ KigFilter::Result KigFilterNative::load( const QString from, Objects& os )
   ObjectHierarchy hier( e );
   Objects tmpOs = hier.fillUp( os );
   hier.calc();
-  hier.calc();
   os |= tmpOs;
   file.close();
 
@@ -114,4 +113,5 @@ KigFilter::Result KigFilterNative::save( const Objects& os, const QString to )
   stream << doc.toCString();
   file.close();
 
+  return OK;
 }
