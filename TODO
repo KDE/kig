@@ -22,20 +22,29 @@
   a way to define new object types that can be reused more than once,
   instead of making it just a way to add *one* object..
 
+- support for more scripting languages than just python..
+
 - fillable polygons..
+
 - filters: more input filters ( get cabri to work somewhat, Dr.Genius
-  perhaps ) and output filters...   
+  perhaps )
+
 - add full undo support for everything the user might do: moving is
   done, along with some other things, some less important issues remain
 
+- figure out some cool way to "attach" a textlabel to an object.. 
+
 * hard :
+
 - figure out a way to allow the user to enable and disable certain
   features.  E.g. I have been asked to allow the user to limit himself
   to compass-ruler constructions..
+
 - check "property's", like "is point x on line y"
+
 - "export to *".  We already have images and XFig files, i'd like to
   add stuff like java applets etc ... :)
-- figure out some cool way to "attach" a textlabel to an object.. 
+
 - koffice support ? 
 
 * future ?
