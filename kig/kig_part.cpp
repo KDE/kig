@@ -74,6 +74,8 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
     numViews(0),
     s( new EuclideanCoords )
 {
+  documents().push_back( this );
+
   // we need an instance
   setInstance( KigDocumentFactory::instance() );
 
@@ -138,9 +140,9 @@ void KigDocument::setupActions()
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction(
-    i18n("Edit Types"), 0, this, SLOT(editTypes()),
+    i18n("Types Manager"), 0, this, SLOT(editTypes()),
     actionCollection(), "types_edit");
-  aConfigureTypes->setToolTip(i18n("Edit your defined macro types"));
+  aConfigureTypes->setToolTip(i18n("Manage macro types.."));
 
   tmp = l->loadIcon( "window_fullscreen", KIcon::User );
   aFullScreen = new KAction(
@@ -203,14 +205,12 @@ void KigDocument::setupTypes()
       types.addTypes( t );
     };
   };
-  for ( Types::iterator i = types.begin(); i != types.end(); ++i )
-  {
-    addType( i->second );
-  };
 };
 
 KigDocument::~KigDocument()
 {
+  documents().remove( this );
+
   // save our types...
   QString typesDir = KGlobal::dirs()->saveLocation("appdata", "kig-types");
   if (typesDir[typesDir.length() - 1] != '/') typesDir += '/';
@@ -451,9 +451,9 @@ void KigDocument::delObjects( const Objects& os )
   if ( dos.empty() ) return;
   mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
 }
+
 void KigDocument::addType( Type* t )
 {
-  // FIXME: memory leak: ConstructAction's aren't delete'd... ?
   KAction* a = t->constructAction( this );
   if ( ! a ) return;
   if (t->baseTypeName()==Point::sBaseTypeName())
@@ -466,4 +466,19 @@ void KigDocument::addType( Type* t )
     aMNewSegment->insert( a );
   else
     aMNewOther->insert( a );
+}
+
+myvector<KigDocument*>& KigDocument::documents()
+{
+  static myvector<KigDocument*> vect;
+  return vect;
+}
+
+void KigDocument::removeAction( KAction* a )
+{
+  aMNewSegment->remove( a );
+  aMNewPoint->remove( a );
+  aMNewCircle->remove( a );
+  aMNewLine->remove( a );
+  aMNewOther->remove( a );
 }

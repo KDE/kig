@@ -21,6 +21,8 @@
 #ifndef KIG_MISC_TYPE_H
 #define KIG_MISC_TYPE_H
 
+#include "objects.h"
+
 class Object;
 class ObjectHierarchy;
 
@@ -44,6 +46,7 @@ class NormalMode;
  */
 class Type
 {
+  myvector<KAction*> mactions;
 public:
   virtual ~Type() {};
 
@@ -94,8 +97,16 @@ public:
   /**
    * build an action which, when clicked, calls d->setMode(
    * new some_constructing_mode );
+   * we keep pointers to all actions we build here, so we can delete
+   * them when asked ( deleteActions() )...
    */
   KAction* constructAction( KigDocument* d );
+
+  /**
+   * This is used when the user "deletes" a type.. We delete all
+   * actions so it seems to the user the type has been deleted...
+   */
+  void deleteActions();
 };
 
 /**

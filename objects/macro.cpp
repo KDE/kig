@@ -20,7 +20,6 @@
 
 #include "macro.h"
 
-#include "point.h"
 #include "../misc/hierarchy.h"
 
 QString i18n( const char* );

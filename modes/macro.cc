@@ -183,7 +183,6 @@ void DefineMacroMode::finishPressed()
   MType* type = new MType( hier, mwizard->KLineEdit2->text(),
                            mwizard->KLineEdit1->text() );
   Object::types().addType( type );
-  mDoc->addType( type );
   abandonMacro();
 }
 

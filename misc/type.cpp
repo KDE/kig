@@ -24,9 +24,8 @@
 #include "hierarchy.h"
 
 #include "../kig/constructactions.h"
-
+#include "../kig/kig_part.h"
 #include "../modes/constructing.h"
-
 #include "../objects/macro.h"
 
 #include <qregexp.h>
@@ -102,10 +101,26 @@ const QCString MType::iconFileName() const
 
 KAction* Type::constructAction( KigDocument* d )
 {
-  return new ConstructAction( d, this );
+  KAction* a = new ConstructAction( d, this );
+  mactions.push_back( a );
+  return a;
 }
 
 KigMode* MType::constructMode( NormalMode* mode, KigDocument* doc )
 {
   return new StdConstructionMode( build(), mode, doc );
+}
+
+void deleteAction( KAction* a )
+{
+  myvector<KigDocument*>& vect = KigDocument::documents();
+  typedef myvector<KigDocument*>::iterator myit;
+  for ( myit i = vect.begin(); i != vect.end(); ++i )
+    (*i)->removeAction( a );
+  delete a;
+};
+
+void Type::deleteActions()
+{
+  for_each( mactions.begin(), mactions.end(), &deleteAction );
 }

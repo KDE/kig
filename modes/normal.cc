@@ -24,6 +24,7 @@
 #include "popup.h"
 #include "moving.h"
 #include "macro.h"
+#include "typesdialog.h"
 
 #include <kcursor.h>
 #include <kaction.h>
@@ -263,6 +264,7 @@ void NormalMode::enableActions()
   mDoc->aDeleteObjects->setEnabled( true );
   mDoc->aShowHidden->setEnabled( true );
   mDoc->aNewMacro->setEnabled( true );
+  mDoc->aConfigureTypes->setEnabled( true );
   mDoc->history()->updateActions();
 }
 
@@ -343,5 +345,7 @@ void NormalMode::objectsRemoved()
 
 void NormalMode::editTypes()
 {
-
+  TypesDialog* d = new TypesDialog( mDoc->widget() );
+  d->exec();
+  delete d;
 }

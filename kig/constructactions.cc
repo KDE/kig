@@ -50,3 +50,8 @@ void ConstructAction::slotActivated()
   KigMode* m = mtype->constructMode( nm, mdoc );
   mdoc->setMode( m );
 }
+
+Type* ConstructAction::type()
+{
+  return mtype;
+}

@@ -21,7 +21,7 @@
 #ifndef KIGTYPEEDITIMPL_H
 #define KIGTYPEEDITIMPL_H
 
-#include "type_edit.h"
+#include "typesdialogbase.h"
 
 #include <klistbox.h>
 
@@ -38,13 +38,13 @@ public:
 
 class KigDocument;
 
-class KigTypeEditImpl : public TypeEditDialogUI
+class TypesDialog : public TypesDialogBase
 {
   Q_OBJECT
 
 public:
-  KigTypeEditImpl( QWidget* parent );
-  ~KigTypeEditImpl();
+  TypesDialog( QWidget* parent );
+  ~TypesDialog();
 
 public slots:
   void helpSlot();

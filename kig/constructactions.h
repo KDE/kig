@@ -34,6 +34,7 @@ public:
   ConstructAction( KigDocument* d, Type* t,
                    const int inShortCutKey = 0 );
   ~ConstructAction();
+  Type* type();
 protected slots:
   void slotActivated();
 };

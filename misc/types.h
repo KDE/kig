@@ -72,12 +72,17 @@ public:
   Object* buildObject( const QCString& type ) const;
   /**
    * t should be constructed via new, and not touched anymore
-   * afterwards...
+   * afterwards...  this also adds a new action to every
+   * KigDocument...
    */
   void addType( Type* t );
 
   void addTypes( Types& i );
 
+  /**
+   * remove a type, this also removes the appropriate actions from all
+   * KigDocuments
+   */
   void removeType( Type* t );
 
   void saveToDir( const QString dir );

@@ -69,6 +69,7 @@ public:
    */
   virtual ~KigDocument();
 
+  static myvector<KigDocument*>& documents();
 
 /*********************** KPart interface *************************/
 
@@ -189,6 +190,8 @@ public:
   KCommandHistory* history();
 
   void addType( Type* );
+
+  void removeAction( KAction* a );
 
 protected:
   int numViews;

@@ -1,15 +1,15 @@
 <!DOCTYPE UI><UI version="3.0" stdsetdef="1">
-<class>TypeManagerDialogBase</class>
+<class>TypesDialogBase</class>
 <widget class="QDialog">
     <property name="name">
-        <cstring>TypeManagerDialogBase</cstring>
+        <cstring>TypesDialogBase</cstring>
     </property>
     <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
             <width>401</width>
-            <height>248</height>
+            <height>232</height>
         </rect>
     </property>
     <property name="caption">
@@ -33,14 +33,14 @@
             <property name="name">
                 <cstring>typeList</cstring>
             </property>
-            <property name="frameShadow">
-                <enum>Sunken</enum>
-            </property>
             <property name="selectionMode">
                 <enum>Multi</enum>
             </property>
+            <property name="toolTip" stdset="0">
+                <string>Select types here...</string>
+            </property>
             <property name="whatsThis" stdset="0">
-                <string>Here, you can select types...</string>
+                <string>This is a list of the current macro types... You can select, delete, export and import them...</string>
             </property>
         </widget>
         <widget class="QLayoutWidget">
@@ -178,31 +178,31 @@
     <connection>
         <sender>buttonHelp</sender>
         <signal>clicked()</signal>
-        <receiver>TypeManagerDialogBase</receiver>
+        <receiver>TypesDialogBase</receiver>
         <slot>helpSlot()</slot>
     </connection>
     <connection>
         <sender>buttonOk</sender>
         <signal>clicked()</signal>
-        <receiver>TypeManagerDialogBase</receiver>
+        <receiver>TypesDialogBase</receiver>
         <slot>okSlot()</slot>
     </connection>
     <connection>
         <sender>buttonRemove</sender>
         <signal>clicked()</signal>
-        <receiver>TypeManagerDialogBase</receiver>
+        <receiver>TypesDialogBase</receiver>
         <slot>deleteType()</slot>
     </connection>
     <connection>
         <sender>buttonExport</sender>
         <signal>clicked()</signal>
-        <receiver>TypeManagerDialogBase</receiver>
+        <receiver>TypesDialogBase</receiver>
         <slot>exportType()</slot>
     </connection>
     <connection>
         <sender>buttonImport</sender>
         <signal>clicked()</signal>
-        <receiver>TypeManagerDialogBase</receiver>
+        <receiver>TypesDialogBase</receiver>
         <slot>importTypes()</slot>
     </connection>
 </connections>
@@ -212,6 +212,7 @@
     <slot>helpSlot()</slot>
     <slot access="protected">importTypes()</slot>
     <slot>okSlot()</slot>
+    <slot>typeList_doubleClicked( QListBoxItem *, const QPoint &amp; )</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

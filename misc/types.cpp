@@ -22,6 +22,8 @@
 #include "types.h"
 
 #include "type.h"
+#include "objects.h"
+#include "../kig/kig_part.h"
 
 #include <kdebug.h>
 #include <kmessagebox.h>
@@ -137,6 +139,10 @@ void Types::saveToFile( const QString filename )
 void Types::addType( Type* t )
 {
   insert( value_type( t->fullName(), t ) );
+  typedef myvector<KigDocument*>::iterator myiter;
+  myvector<KigDocument*>& vect = KigDocument::documents();
+  for ( myiter i = vect.begin(); i != vect.end(); ++i )
+    (*i)->addType( t );
 }
 
 Types::~Types()
