@@ -564,7 +564,8 @@ void setupBuiltinStuff()
       InPolygonTestType::instance(),
       I18N_NOOP( "In Polygon Test" ),
       I18N_NOOP( "Test whether a given polygon contains a given point" ),
-      "testinpolygon" );
+      "test" );
+//      "testinpolygon" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_inpolygontest" ) );
 

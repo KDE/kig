@@ -300,7 +300,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
     a.push_back( Coordinate( hmax - 6 * u, -3 * u) );
     a.push_back( Coordinate( hmax, 0 ) );
     a.push_back( Coordinate( hmax - 6 * u, 3 * u ) );
-    p.drawPolygon( a, true );
+    p.drawArea( a );
+//    p.drawPolygon( a, true );
 
     // the arrow on the top end of the Y axis...
     a.clear();
@@ -308,7 +309,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
     a.push_back( Coordinate( 3 * u, vmax - 6 * u ) );
     a.push_back( Coordinate( 0, vmax ) );
     a.push_back( Coordinate( -3 * u, vmax - 6 * u ) );
-    p.drawPolygon( a, true );
+    p.drawArea( a );
+//    p.drawPolygon( a, true );
   }; // if( showaxes )
 }
 
@@ -481,7 +483,8 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     a.push_back( Coordinate( hmax - 6 * u, -3 * u) );
     a.push_back( Coordinate( hmax, 0 ) );
     a.push_back( Coordinate( hmax - 6 * u, 3 * u ) );
-    p.drawPolygon( a, true );
+//    p.drawPolygon( a, true );
+    p.drawArea( a );
 
     // the arrow on the top end of the Y axis...
     a.clear();
@@ -489,7 +492,8 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     a.push_back( Coordinate( 3 * u, vmax - 6 * u ) );
     a.push_back( Coordinate( 0, vmax ) );
     a.push_back( Coordinate( -3 * u, vmax - 6 * u ) );
-    p.drawPolygon( a, true );
+//    p.drawPolygon( a, true );
+    p.drawArea( a );
   }; // if( showaxes )
 }
 

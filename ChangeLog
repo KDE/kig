@@ -1,3 +1,13 @@
+2005-01-12  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Created a new KigPainter::drawArea() to draw and fill closed
+	areas. This new functions differs from drawPolygon, because the
+	old one is used to draw only polygons, while the new one is used
+	to draw all the other closed and filled areases.
+
+	* Adapted our CoordinateSystem's to use the new drawArea to draw
+	the axis arrows.
+
 2005-01-09  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* new action to construct the vertices of a polygon

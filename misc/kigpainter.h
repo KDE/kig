@@ -196,6 +196,12 @@ public:
   void drawPolygon( const std::vector<Coordinate>& pts, bool winding = false, int index = 0, int npoints = -1 );
 
   /**
+   * draw an area defined by the points in pts filled with the set
+   * color...
+   */
+  void drawArea( const std::vector<Coordinate>& pts, bool border = true );
+
+  /**
    * draw the angle with center point, with size angle, starting
    * at the angle startAngle..  Angles should be in radians.
    */

@@ -287,7 +287,7 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
   QPen oldpen = mP.pen();
   QBrush oldbrush = mP.brush();
   setBrush( QBrush( color, Dense4Pattern ) );
-  setPen(Qt::NoPen);
+  setPen( Qt::NoPen );
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
   QPointArray t( pts.size() );
@@ -299,7 +299,29 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
   mP.drawPolygon( t, winding, index, npoints );
   setPen( oldpen );
   setBrush( oldbrush );
-  mOverlay.push_back( t.boundingRect() );
+  if( mNeedOverlay ) mOverlay.push_back( t.boundingRect() );
+}
+
+void KigPainter::drawArea( const std::vector<Coordinate>& pts, bool border )
+{
+  QPen oldpen = mP.pen();
+  QBrush oldbrush = mP.brush();
+  setBrush( QBrush( color, SolidPattern ) );
+  if ( border )
+    setPen( QPen( color, width == -1 ? 1 : width ) );
+  else
+    setPen( Qt::NoPen );
+  QPointArray t( pts.size() );
+  int c = 0;
+  for( std::vector<Coordinate>::const_iterator i = pts.begin(); i != pts.end(); ++i )
+  {
+    QPoint p = toScreen( *i );
+    t.putPoints( c++, 1, p.x(), p.y() );
+  }
+  mP.drawPolygon( t );
+  setPen( oldpen );
+  setBrush( oldbrush );
+  if( mNeedOverlay ) mOverlay.push_back( t.boundingRect() );
 }
 
 Rect KigPainter::window()
