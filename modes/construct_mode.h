@@ -16,8 +16,8 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_NW_MODES_CONSTRUCT_MODE_H
-#define KIG_NW_MODES_CONSTRUCT_MODE_H
+#ifndef KIG_MODES_CONSTRUCT_MODE_H
+#define KIG_MODES_CONSTRUCT_MODE_H
 
 #include "base_mode.h"
 
