@@ -67,7 +67,7 @@ MType::MType( const QDomElement& e )
 {
   assert(e.tagName() == "MType");
   QString tmpAN = e.attribute("name");
-  assert(tmpAN);
+  assert(!tmpAN.isNull());
   mname = tmpAN;
   QDomNode n = e.firstChild();
   QDomElement el = n.toElement();
