@@ -28,17 +28,18 @@
 class TextLabelWizard;
 class NormalMode;
 class Object;
+class PropertyObject;
 
 class TextLabelConstructionMode
   : public KigMode
 {
   // point last clicked..
   QPoint mplc;
-  NormalMode* mprev;
 
   Coordinate mcoord;
   QString mtext;
-//   TextLabel::propvect margs;
+  typedef std::vector<PropertyObject*> argvect;
+  argvect margs;
 
   // if we're ReallySelectingArgs, then this var points to the arg
   // we're currently selecting...
