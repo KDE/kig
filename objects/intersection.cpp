@@ -233,7 +233,7 @@ const QCString CircleLineIntersectionPoint::vIconFileName() const
 
 const QCString CircleLineIntersectionPoint::sIconFileName()
 {
-  return 0;
+  return "circlelineintersection";
 }
 
 const int CircleLineIntersectionPoint::vShortCut() const
