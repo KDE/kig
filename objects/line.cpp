@@ -58,7 +58,7 @@ Coordinate Line::getPoint(double p) const
   // we need to spread the points over the line, it should also come near
   // the (infinite) end of the line, but most points should be near
   // the two points we contain...
-  p = p*1.5;
+  p *= 1.5;
   if (p>0) p = pow(p, 8);
   else p = -pow(p,8);
 

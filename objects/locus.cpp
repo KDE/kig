@@ -282,11 +282,12 @@ const char* Locus::sActionName()
 }
 
 Locus::Locus( const Objects& os )
+  : Curve(), cp( 0 ), mp( 0 )
 {
   assert( os.size() == 2 );
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    if ( (*i)->toNormalPoint() && (*i)->toNormalPoint()->constrainedImp() )
+    if ( !cp && (*i)->toNormalPoint() && (*i)->toNormalPoint()->constrainedImp() )
       cp = (*i)->toNormalPoint();
     else
     {
