@@ -76,6 +76,8 @@ public:
 
   const Coordinate getP1() const;
   const Coordinate getP2() const;
+  const Coordinate getDir() const;
+
 protected:
   Point* p1, *p2;
 };

@@ -32,6 +32,7 @@
 
 class Point;
 class Segment;
+class Vector;
 class Line;
 class Circle;
 class Curve;
@@ -89,6 +90,7 @@ public:
   // MacroObjectOne
   virtual Point* toPoint() { return 0; };
   virtual Segment* toSegment() { return 0; };
+  virtual Vector* toVector() { return 0; };
   virtual Line* toLine() { return 0; };
   virtual Circle* toCircle() { return 0; };
   virtual Curve* toCurve() { return 0; };
@@ -97,6 +99,7 @@ public:
 
   virtual const Point* toPoint() const { return 0; };
   virtual const Segment* toSegment() const { return 0; };
+  virtual const Vector* toVector() const { return 0; };
   virtual const Line* toLine() const { return 0; };
   virtual const Circle* toCircle() const { return 0; };
   virtual const Curve* toCurve() const { return 0; };

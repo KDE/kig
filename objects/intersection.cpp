@@ -21,13 +21,12 @@
 #include "intersection.h"
 
 #include "segment.h"
-#include "circle.h"
 #include "line.h"
 
 #include "../misc/kigpainter.h"
+#include "../misc/i18n.h"
 
 #include <kdebug.h>
-#include <klocale.h>
 
 Objects IntersectionPoint::getParents() const
 {

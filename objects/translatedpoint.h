@@ -18,27 +18,24 @@
  USA
 **/
 
-#ifndef INTERSECTION_H
-#define INTERSECTION_H
+#ifndef KIG_OBJECTS_TRANSLATED_POINT_H
+#define KIG_OBJECTS_TRANSLATED_POINT_H
 
 #include "point.h"
 
-class Segment;
-class Line;
+class Vector;
 
-class IntersectionPoint
+class TranslatedPoint
   : public Point
 {
-  Segment* segment1;
-  Segment* segment2;
-  Line* line1;
-  Line* line2;
+  Point* mp;
+  Vector* mv;
 public:
-  IntersectionPoint( const Objects& os );
-  IntersectionPoint( const IntersectionPoint& p );
-  ~IntersectionPoint();
+  TranslatedPoint( const Objects& os );
+  TranslatedPoint( const TranslatedPoint& p );
+  ~TranslatedPoint();
 
-  virtual IntersectionPoint* copy();
+  virtual TranslatedPoint* copy();
 
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();

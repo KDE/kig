@@ -71,7 +71,7 @@ const QCString Vector::vBaseTypeName() const
 
 QCString Vector::sBaseTypeName()
 {
-  return "Vector";
+  return I18N_NOOP( "vector" );
 }
 
 const QCString Vector::vFullTypeName() const
@@ -228,4 +228,9 @@ const Coordinate Vector::getP1() const
 const Coordinate Vector::getP2() const
 {
   return p2->getCoord();
+}
+
+const Coordinate Vector::getDir() const
+{
+  return getP2() - getP1();
 }

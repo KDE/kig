@@ -51,6 +51,7 @@
   <Action name="objects_new_midpoint" />
   <Action name="objects_new_intersectionpoint" />
   <Action name="objects_new_point_xy" />
+  <Action name="objects_new_translatedpoint" />
 </ToolBar>
 <ToolBar name="line_toolbar">
   <Action name="objects_new_linettp" />
