@@ -21,6 +21,9 @@
 
 #include "base_type.h"
 
+/**
+ * Circle by center and point
+ */
 class CircleBCPType
   : public ObjectABType
 {
@@ -33,6 +36,9 @@ public:
   int resultId() const;
 };
 
+/**
+ * Circle by point and radius.
+ */
 class CircleBPRType
   : public ArgparserObjectType
 {
@@ -45,6 +51,9 @@ public:
   int resultId() const;
 };
 
+/**
+ * Circle by three points
+ */
 class CircleBTPType
   : public ArgparserObjectType
 {
