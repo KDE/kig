@@ -375,9 +375,9 @@ const char* ArcImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + 1 )
     return "";
   else if ( which == Parent::numberOfProperties() + 2 )
-    return "angle";
+    return "angle-size";
   else if ( which == Parent::numberOfProperties() + 3 )
-    return "angle";
+    return "angle-size";
   else if ( which == Parent::numberOfProperties() + 4 )
     return "";
   else if ( which == Parent::numberOfProperties() + 5 )
