@@ -91,7 +91,7 @@ KigExportManager::KigExportManager()
 {
   mexporters.push_back( new ImageExporter );
   // working on this one ;)
-//  mexporters.push_back( new XFigExporter );
+  mexporters.push_back( new XFigExporter );
 }
 
 KigExportManager::~KigExportManager()
@@ -326,8 +326,61 @@ void XFigExportImpVisitor::visit( const CircleImp* imp )
           << center.y() << "\n";        // appear unused too...
 }
 
-void XFigExportImpVisitor::visit( const ConicImp* )
+void XFigExportImpVisitor::visit( const ConicImp* imp )
 {
+  int width = mcurobj->width();
+  if ( width == -1 ) width = 1;
+  if ( imp->conicType() == 1 )
+  {
+    // an ellipse, this is good, cause this allows us to export to a
+    // real ellipse type..
+    const ConicPolarData data = imp->polarData();
+
+    // gather some necessary data..
+    // the angle of the x axis..
+    double anglex = atan2( data.esintheta0, data.ecostheta0 );
+    // the exentricity
+    double e = hypot( data.esintheta0, data.ecostheta0 );
+    // the x radius is easy to find..
+    double radiusx = data.pdimen / ( 1 - e * e );
+    // the y radius is a bit harder: we first find the distance from
+    // the focus point to the mid point of the two focuses, this is:
+    double d = -e * data.pdimen / ( 1 - e * e );
+    // the distance from the first focus to the intersection of the
+    // second axis with the conic equals radiusx:
+    double r = radiusx;
+    double radiusy = sqrt( r*r - d*d );
+
+    Coordinate center = data.focus1 - Coordinate( cos( anglex ), sin( anglex ) ).normalize( d );
+    const QPoint qcenter = convertCoord( center );
+    const int radius_x = ( convertCoord( center + Coordinate( radiusx, 0 ) ) -
+                           convertCoord( center ) ).x();
+    const int radius_y = ( convertCoord( center + Coordinate( radiusy, 0 ) ) -
+                           convertCoord( center ) ).x();
+    const QPoint qpoint2 = convertCoord( center + Coordinate( -sin( anglex ), cos( anglex ) ) * radiusy );
+
+    mstream << "1 "  // ellipse type
+            << "1 "  // subtype: ellipse defined by readii
+            << "0 "  // line_style: Solid
+            << width << " " // thickness
+            << "0 "  // pen_color: black
+            << "7 "  // fill_color: white
+            << "50 " // depth: 50
+            << "-1 " // pan_style: not used
+            << "-1 " // area_fill: no fill
+            << "0.000 " // style_val: not used
+            << "1 " // direction: always 1
+            << anglex << " " // angle of the main axis
+            << qcenter.x() << " " // center
+            << qcenter.y() << " "
+            << radius_x << " " // radiuses
+            << radius_y << " "
+            << qcenter.x() << " " // start point
+            << qcenter.y() << " "
+            << qpoint2.x() << " " // end point
+            << qpoint2.y() << " ";
+  }
+  else return;
 }
 
 void XFigExportImpVisitor::visit( const CubicImp* )
