@@ -389,6 +389,11 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_areparallel" ) );
 
+    c = new TestConstructor( AreOrthogonalType::instance(), "Orthogonal Test",
+                             "Test whether two given lines are orthogonal", "" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_areorthogonal" ) );
+
     c = new TestConstructor( AreCollinearType::instance(), "Collinear Test",
                              "Test whether three given points are collinear", "" );
     ctors->add( c );

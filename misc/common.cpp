@@ -437,6 +437,26 @@ bool LineData::isParallelTo( const LineData& l ) const
     return false;
 }
 
+bool LineData::isOrthogonalTo( const LineData& l ) const
+{
+  const Coordinate& p1 = a;
+  const Coordinate& p2 = b;
+  const Coordinate& p3 = l.a;
+  const Coordinate& p4 = l.b;
+
+  double dx1 = p2.x - p1.x;
+  double dy1 = p2.y - p1.y;
+  double dx2 = p4.x - p3.x;
+  double dy2 = p4.y - p3.y;
+
+  double det = dx1*dx2 + dy1*dy2;
+
+  if ( std::fabs(det) < test_threshold )
+    return true;
+  else
+    return false;
+}
+
 bool areCollinear( const Coordinate& p1,
                    const Coordinate& p2, const Coordinate& p3 )
 {

@@ -62,6 +62,46 @@ const ObjectImpType* AreParallelType::resultId() const
   return TestResultImp::stype();
 }
 
+static const ArgsParser::spec argsspecAreOrthogonal[] =
+{
+  { AbstractLineImp::stype(), I18N_NOOP( "Is this line orthogonal ?" ) },
+  { AbstractLineImp::stype(), I18N_NOOP( "Orthogonal to this line ?" ) }
+};
+
+AreOrthogonalType::AreOrthogonalType()
+  : ArgsParserObjectType( "AreOrthogonal",
+                         argsspecAreOrthogonal, 2 )
+{
+}
+
+AreOrthogonalType::~AreOrthogonalType()
+{
+}
+
+const AreOrthogonalType* AreOrthogonalType::instance()
+{
+  static const AreOrthogonalType t;
+  return &t;
+}
+
+ObjectImp* AreOrthogonalType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  const LineData& l1 = static_cast<const AbstractLineImp*>( parents[0] )->data();
+  const LineData& l2 = static_cast<const AbstractLineImp*>( parents[1] )->data();
+
+  if ( l1.isOrthogonalTo( l2 ) )
+    return new TestResultImp( i18n( "These lines are orthogonal." ) );
+  else
+    return new TestResultImp( i18n( "These lines are not orthogonal." ) );
+
+}
+
+const ObjectImpType* AreOrthogonalType::resultId() const
+{
+  return TestResultImp::stype();
+}
+
 static const ArgsParser::spec argsspecAreCollinear[] =
 {
   { PointImp::stype(), I18N_NOOP( "Check collinearity of this point" ) },

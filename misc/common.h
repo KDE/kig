@@ -91,6 +91,11 @@ public:
    * Return true if this line is parallel to l.
    */
   bool isParallelTo( const LineData& l ) const;
+
+  /**
+   * Return true if this line is orthogonal to l.
+   */
+  bool isOrthogonalTo( const LineData& l ) const;
 };
 
 /**

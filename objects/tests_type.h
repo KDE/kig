@@ -32,6 +32,17 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class AreOrthogonalType
+  : public ArgsParserObjectType
+{
+  AreOrthogonalType();
+  ~AreOrthogonalType();
+public:
+  static const AreOrthogonalType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class AreCollinearType
   : public ArgsParserObjectType
 {
