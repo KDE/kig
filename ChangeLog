@@ -1,3 +1,7 @@
+2003-04-22  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* fix the move dependencies..
+
 2003-04-19  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* Add KSeg file format support
