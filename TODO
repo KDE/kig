@@ -88,8 +88,9 @@
 
 - Provide some nice stuff for differential geometry: velocity vector
    of a curve, curvature vector, osculating parabole, osculating
-   circle, evolute.  Most of this is not too difficult to implement, but
-   very cool :)
+   circle, evolute [the latter two can now be constructed using the
+   center of curvature (conics and cubics)].  Most of this is not too 
+   difficult to implement, but very cool :)
 
 - when moving an object that wants to move its parents, try to check if
    it is itself not an indirect child of one of the parents it is

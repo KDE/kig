@@ -502,6 +502,11 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_tangent", Qt::Key_T ) );
 
+    // the generic center of curvature constructor
+    c = new CocConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_centerofcurvature" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );
     actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );

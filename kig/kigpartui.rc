@@ -42,6 +42,7 @@
 	<Action name="objects_new_translatedpoint" />
 	<Action name="objects_new_rotatedpoint" />
 	<Action name="objects_new_mirrorpoint" />
+	<Action name="objects_new_centerofcurvature" />
 	<ActionList name="user_point_types" />
       </Menu>
       <Menu name="new_line" icon="line">

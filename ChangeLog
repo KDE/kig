@@ -1,3 +1,12 @@
+2004-10-08  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Added the construction of the center of curvature for
+	conics and cubics.  It works similarly to the construction
+	of the tangent and the arguments are a curve (conic or cubic)
+	and a point on in.  Using the center of curvature it is 
+	straightforward to construct the osculating circle or the
+	evolute.
+
 2004-09-13  Pino Toscano <toscano.pino@tiscali.it>
 
 	* The script code editor now can use the Kate KTextEditor, and
@@ -8,9 +17,9 @@
 
 	* Some i18n fixes.
 
-2003-09-10  Maurizio Paolini  <paolini@dmf.unicatt.it>
+2004-09-10  Maurizio Paolini  <paolini@dmf.unicatt.it>
 
-	* Now it's possible to construct the tanget to a conic.
+	* Now it's possible to construct the tanget to a cubic.
 
 2004-09-05  Pino Toscano <toscano.pino@tiscali.it>
 
