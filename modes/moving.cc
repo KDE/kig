@@ -121,14 +121,22 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
 {
   d->pwwsm = c;
   Objects objs;
+  Objects emo;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
     if ( (*i)->canMove() )
     {
-      d->emo.upush( *i );
+      emo.upush( *i );
       d->refmap[*i] = (*i)->moveReferencePoint();
       objs.upush( *i );
       objs |= getAllParents( Objects( *i ) );
     };
+
+  emo = calcPath( emo );
+  for ( Objects::const_iterator i = emo.begin(); i != emo.end(); ++i )
+    if ( !isChild( *i, d->emo ) )
+      d->emo.push_back( *i );
+
+  kdDebug() << k_funcinfo << d->emo.size() << endl;
 
   d->mon = new MonitorDataObjects( objs );
 

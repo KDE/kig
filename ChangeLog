@@ -1,5 +1,8 @@
 2003-09-01  Dominique Devriese  <devriese@kde.org>
 
+	* only move an object if its parents are not yet moving..  This
+	fixes bug #63250.
+
 	* remove the defective operator| and operator& implementations for
 	the Objects class
 	
