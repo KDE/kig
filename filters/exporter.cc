@@ -214,6 +214,7 @@ void XFigExportImpVisitor::visit( const PointImp* imp )
   const QPoint center = convertCoord( imp->coordinate() );
   int width = mcurobj->width();
   if ( width == -1 ) width = 5;
+  width *= 10;
 
   mstream << "1 "  // Ellipse type
           << "3 "  // circle defined by radius subtype
