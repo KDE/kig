@@ -88,6 +88,7 @@ TextLabel* TextLabel::copy()
 {
   return new TextLabel( *this );
 }
+
 const TextLabel* TextLabel::toTextLabel() const
 {
   return this;

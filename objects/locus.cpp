@@ -188,7 +188,7 @@ void Locus::recurse(CPts::iterator first, CPts::iterator last, int& i, const Scr
 {
   const Rect& r = si.shownRect();
   if ( i++ > numberOfSamples ) return;
-  if( !( r.contains( first->pt ) || r.contains( last->pt ) ) ) return;
+  if( !( r.contains( first->pt ) || r.contains( last->pt ) ) && i > 20 ) return;
   double p = (first->pm+last->pm)/2;
   CPts::iterator n = addPoint( p, si );
   if( ( n->pt - first->pt ).length() > (1.5*si.pixelWidth()) )
@@ -204,7 +204,6 @@ void Locus::calcPointLocus( const ScreenInfo& r )
   // sometimes calc() is called with an empty rect, cause the
   // shownRect is not known yet.. we ignore those calcs...
   if ( r.shownRect() == Rect() ) return;
-  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   pts.clear();
   pts.reserve( numberOfSamples );
   double oldP = cp->constrainedImp()->getP();
@@ -225,7 +224,6 @@ void Locus::calcPointLocus( const ScreenInfo& r )
   cp->constrainedImp()->setP(oldP);
   cp->calc( r );
   calcpath.calc( r );
-  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << "  - count: " << pts.size()<< endl;
 }
 
 Locus::Locus(const Locus& loc)
