@@ -15,8 +15,8 @@
 - printing... (cf. the kdeprint tutorial on printing.kde.org ...
 - move stillPix into movingMode, so the other modes won't suffer from
    its overhead...
-- add full undo support for everything the user might do: most
-  importantly moving..
+- add full undo support for everything the user might do: moving is
+  done, the minor issues remain
 
 * hard :
 - figure out a way to allow the user to enable and disable certain
