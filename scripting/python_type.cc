@@ -84,6 +84,8 @@ bool PythonCompiledScriptImp::isCache() const
   return true;
 }
 
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PythonCompileType )
+
 PythonCompileType::PythonCompileType()
   : ObjectType( "PythonCompileType" )
 {
@@ -124,6 +126,8 @@ ObjectImp* PythonCompileType::calc( const Args& parents, const KigDocument& ) co
   else
     return new InvalidImp();
 }
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PythonExecuteType )
 
 PythonExecuteType::PythonExecuteType()
   : ObjectType( "PythonExecuteType" )
