@@ -139,8 +139,7 @@ Transformation getProjectiveTransformation ( int argsnum,
       }
     }
 
-    assert ( false );
-    return Transformation::identity();
+    return Transformation::scaling( s, Coordinate( 0., 0. ) );
   }
 
   valid = false;
