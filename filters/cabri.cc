@@ -29,8 +29,29 @@ struct ObjectData
 ObjectData readObject( QFile& f )
 {
   ObjectData n;
+  n.valid = false;
+  bool eof;
+  QCString l = readLine( f, eof );
+  // n.valid == false, so this is cool...
+  if( eof ) return n;
+
+  // first a number and a colon to indicate the id:
+  int colonPos = l.find(':') 
+  QCString idS = l.left( colonPos );
+  bool ok = true;
+  int id = idS.toInt( ok );
+  if( ! ok ) return n;
+  n.id = id;
+
+  // we skip the colon, and the space after it...
+  l = l.mid( colonPos + 2 );
+
+  // next the object Type..
+  int commaPos = l.find(',');
+  QCString idT = l.left( commaPos );
 
   // TODO...
+  n.valid = true;
   return n;  
 };
 
@@ -48,9 +69,9 @@ KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
 
   bool eof;
 
-  std::string s = readLine( f, eof );
-  std::string a(s, 0, 21);
-  std::string b(s, 22, npos);
+  QCString s = readLine( f, eof );
+  QCString a = s.left( 21 );
+  QCString b = s.mid( 22 );
   if( eof || ( a != "Figure CabriII vers. " ) || ( b != "DOS 1.0" && b != "MS-Windows 1.0" ) )
     return NotSupported;
   // next we have:
@@ -130,3 +151,4 @@ std::string KigFilterCabri::readLine( QFile& f, bool& eof )
   s += '\n';
   return s;
 }
+

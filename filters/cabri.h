@@ -32,7 +32,7 @@ public:
 protected:
   // this function reads a line, and converts all line delimiters
   // ("\r\n" or "\n" to unix-style "\n").
-  std::string readLine( QFile&, bool& eof );
+  QCString readLine( QFile&, bool& eof );
 };
 
 #endif
