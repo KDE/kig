@@ -26,6 +26,7 @@
 
 #include "../objects/line_type.h"
 #include "../objects/circle_type.h"
+#include "../objects/conic_types.h"
 
 void setupBuiltinStuff()
 {
@@ -89,6 +90,13 @@ void setupBuiltinStuff()
       "circlebtp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebtp" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      ConicB5PType::instance(), I18N_NOOP( "Conic by Five Points" ),
+      I18N_NOOP( "A conic constructed through five points" ),
+      "conicb5p" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_conicb5p" ) );
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };

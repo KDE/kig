@@ -27,9 +27,10 @@ class ConicImp
   : public CurveImp
 {
   typedef CurveImp Parent;
-public:
+protected:
   ConicImp();
   ~ConicImp();
+public:
   bool inherits( int typeID ) const;
 
   ObjectImp* transform( const Transformation& ) const;

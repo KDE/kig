@@ -188,8 +188,8 @@ void KigDocument::setupTypes()
 //     Object::addBuiltinType( new TStdType<CircleBCP> );
 //     Object::addBuiltinType( new TStdType<CircleBTP> );
 //     Object::addBuiltinType( new TStdType<Ray> );
-
 //     Object::addBuiltinType( new TType<NormalPoint> );
+
 //     Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
 //     Object::addBuiltinType( new TStdType<ConicBAAP> );
 //     Object::addBuiltinType( new TStdType<ConicBDFP> );
