@@ -112,6 +112,7 @@ KigDocument* KigFilterNative::load( const QString& file )
   };
 
   QFile kigdoc( file );
+#ifndef KIG_NO_COMPRESSED_FILES
   bool iscompressed = false;
   if ( !file.endsWith( ".kig", false ) )
   {
@@ -151,6 +152,7 @@ KigDocument* KigFilterNative::load( const QString& file )
 
     kigdoc.setName( tempdir + kigz->name() );
   }
+#endif
 
   if ( !kigdoc.open( IO_ReadOnly ) )
     KIG_FILTER_PARSE_ERROR;
@@ -160,9 +162,11 @@ KigDocument* KigFilterNative::load( const QString& file )
     KIG_FILTER_PARSE_ERROR;
   kigdoc.close();
 
+#ifndef KIG_NO_COMPRESSED_FILES
   // removing temp file
   if ( iscompressed )
     kigdoc.remove();
+#endif
 
   QDomElement main = doc.documentElement();
 
@@ -684,6 +688,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     QTextStream stdoutstream( stdout, IO_WriteOnly );
     return save07( data, stdoutstream );
   }
+#ifndef KIG_NO_COMPRESSED_FILES
   if ( !outfile.endsWith( ".kig", false ) )
   {
     // the user wants to save a compressed file, so we have to save our kig
@@ -723,6 +728,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
   }
   else
   {
+#endif
     QFile file( outfile );
     if ( ! file.open( IO_WriteOnly ) )
     {
@@ -731,10 +737,12 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     }
     QTextStream stream( &file );
     return save07( data, stream );
+#ifndef KIG_NO_COMPRESSED_FILES
   }
 
   // we should never reach this point...
   return false;
+#endif
 }
 
 /*
