@@ -110,16 +110,22 @@ void ConstrainedPointType::move( RealObject* ourobj, const Coordinate& from,
   // fetch the CurveImp..
   Objects parents = ourobj->parents();
   assert( parents.size() == 2 );
-  assert( parents.back()->hasimp( ObjectImp::ID_CurveImp ) );
-  const CurveImp* ci = static_cast<const CurveImp*>( parents.back()->imp() );
+  const CurveImp* ci = 0;
+  if( parents.back()->hasimp( ObjectImp::ID_CurveImp ) )
+    ci = static_cast<const CurveImp*>( parents.back()->imp() );
+  else ci = static_cast<const CurveImp*>( parents.front()->imp() );
 
   // fetch the new param..
   const double np = ci->getParam( nc, d );
 
-  assert( parents[0]->inherits( Object::ID_DataObject ) );
-  assert( parents[0]->hasimp( ObjectImp::ID_DoubleImp ) );
+  Object* paramo = 0;
+  if ( parents[0]->hasimp( ObjectImp::ID_DoubleImp ) )
+    paramo = parents[0];
+  else paramo = parents[1];
+  assert( paramo->inherits( Object::ID_DataObject ) );
+  assert( paramo->hasimp( ObjectImp::ID_DoubleImp ) );
 
-  static_cast<DataObject*>( parents[0] )->setImp( new DoubleImp( np ) );
+  static_cast<DataObject*>( paramo )->setImp( new DoubleImp( np ) );
 }
 
 bool ConstrainedPointType::canMove() const
