@@ -106,6 +106,9 @@ static Object* constructTextObject( const Coordinate& c, Object* o,
                                     const KigDocument& doc )
 {
   Objects parents;
+  // we bwant a frame..
+  dataos.push_back( new DataObject( new IntImp( 1 ) ) );
+  parents.push_back( dataos.back() );
   dataos.push_back( new DataObject( new StringImp( QString::fromLatin1( "%1" ) ) ) );
   parents.push_back( dataos.back() );
   dataos.push_back( new DataObject( new PointImp( c ) ) );
@@ -266,10 +269,10 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, KigDocument& doc
       // we don't want the center, but the top left..
       x -= width / 80;
       y -= height / 80;
-      Objects labelos = factory->label( text, Coordinate( x, y ) );
+      Objects labelos = factory->label( text, Coordinate( x, y ), frame );
       labelos.calc( doc );
-      os[id] = labelos[2];
-      copy( labelos.begin(), labelos.begin() + 2, back_inserter( dataos ) );
+      os[id] = labelos[3];
+      copy( labelos.begin(), labelos.begin() + 3, back_inserter( dataos ) );
       break;
     }
     case ID_fixedCircle:

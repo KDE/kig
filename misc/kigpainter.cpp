@@ -961,3 +961,27 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   pen.setCapStyle( Qt::FlatCap );
   mP.setPen( pen );
 }
+
+void KigPainter::drawTextFrame( const Rect& frame,
+                                const QString& s, bool needframe )
+{
+  QPen oldpen = mP.pen();
+  QBrush oldbrush = mP.brush();
+  if ( needframe )
+  {
+    // inspired upon kgeo, thanks to Marc Bartsch, i've taken some of
+    // his code too..
+    setPen( QPen( Qt::black, 1 ) );
+    setBrush( QBrush( QColor( 255, 255, 222 ) ) );
+    drawRect( frame );
+    setPen( QPen( QColor( 197, 194, 197 ), 1, Qt::SolidLine ) );
+
+    QRect qr = toScreen( frame );
+
+    mP.drawLine( qr.topLeft(), qr.topRight() );
+    mP.drawLine( qr.topLeft(), qr.bottomLeft() );
+  };
+  setPen( oldpen );
+  setBrush( oldbrush );
+  drawText( frame, s, Qt::AlignVCenter | Qt::AlignHCenter );
+}

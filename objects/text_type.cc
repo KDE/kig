@@ -25,12 +25,13 @@
 
 static const ArgParser::spec arggspeccs[] =
 {
+  { ObjectImp::ID_IntImp, "UNUSED" },
   { ObjectImp::ID_PointImp, "UNUSED" },
   { ObjectImp::ID_StringImp, "UNUSED" }
 };
 
 TextType::TextType()
-  : ObjectType( "Label" ), mparser( arggspeccs, 2 )
+  : ObjectType( "Label" ), mparser( arggspeccs, 3 )
 {
 }
 
@@ -51,34 +52,35 @@ int TextType::resultId() const
 
 int TextType::impRequirement( const ObjectImp* oi, const Args& args ) const
 {
-  Args firsttwo( args.begin(), args.begin() + 2 );
-  if ( mparser.check( firsttwo ) == ArgsChecker::Complete )
+  Args firstthree( args.begin(), args.begin() + 3 );
+  if ( mparser.check( firstthree ) == ArgsChecker::Complete )
     return ObjectImp::ID_AnyImp;
-  else
-  {
-    return
-      oi->inherits( ObjectImp::ID_StringImp ) ? ObjectImp::ID_StringImp : ObjectImp::ID_PointImp;
-  };
+  else if ( oi->inherits( ObjectImp::ID_StringImp ) ) return ObjectImp::ID_StringImp;
+  else if ( oi->inherits( ObjectImp::ID_PointImp ) ) return ObjectImp::ID_PointImp;
+  else return ObjectImp::ID_IntImp;
 }
 
 ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
 {
-  assert( parents.size() >= 2 );
-  Args firsttwo( parents.begin(), parents.begin() + 2 );
-  Args varargs( parents.begin() + 2,  parents.end() );
-  Args os = mparser.parse( firsttwo );
+  assert( parents.size() >= 3 );
+  Args firstthree( parents.begin(), parents.begin() + 3 );
+  Args varargs( parents.begin() + 3,  parents.end() );
+  Args os = mparser.parse( firstthree );
 
-  assert( os[0]->inherits( ObjectImp::ID_PointImp ) );
-  assert( os[1]->inherits( ObjectImp::ID_StringImp ) );
-  const Coordinate t = static_cast<const PointImp*>( os[0] )->coordinate();
-  QString s = static_cast<const StringImp*>( os[1] )->data();
+  assert( os[0]->inherits( ObjectImp::ID_IntImp ) );
+  assert( os[1]->inherits( ObjectImp::ID_PointImp ) );
+  assert( os[2]->inherits( ObjectImp::ID_StringImp ) );
+  int frame = static_cast<const IntImp*>( os[0] )->data();
+  bool needframe = frame != 0;
+  const Coordinate t = static_cast<const PointImp*>( os[1] )->coordinate();
+  QString s = static_cast<const StringImp*>( os[2] )->data();
 
   for ( Args::iterator i = varargs.begin(); i != varargs.end(); ++i )
   {
     (*i)->fillInNextEscape( s, doc );
   };
 
-  return new TextImp( s, t );
+  return new TextImp( s, t, needframe );
 }
 
 bool TextType::canMove() const
@@ -90,11 +92,11 @@ void TextType::move( RealObject* ourobj, const Coordinate&,
                      const Coordinate& dist ) const
 {
   const Objects parents = ourobj->parents();
-  assert( parents.size() >= 2 );
-  const Objects firsttwo( parents.begin(), parents.begin() + 2 );
-  const Objects ps = mparser.parse( firsttwo );
-  assert( ps.front()->inherits( Object::ID_DataObject ) );
-  DataObject* c = static_cast<DataObject*>( ps.front() );
+  assert( parents.size() >= 3 );
+  const Objects firstthree( parents.begin(), parents.begin() + 3 );
+  const Objects ps = mparser.parse( firstthree );
+  assert( ps[1]->inherits( Object::ID_DataObject ) );
+  DataObject* c = static_cast<DataObject*>( ps[1] );
   const PointImp* p = static_cast<const PointImp*>( c->imp() );
   const Coordinate n = p->coordinate() + dist;
   c->setImp( new PointImp( n ) );

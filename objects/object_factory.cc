@@ -136,13 +136,15 @@ RealObject* ObjectFactory::locus( const Objects& parents )
   return new RealObject( t, locusparents );
 }
 
-Objects ObjectFactory::label( const QString& s, const Coordinate& loc, const Objects& nparents )
+Objects ObjectFactory::label( const QString& s, const Coordinate& loc,
+                              bool needframe, const Objects& nparents )
 {
   using namespace std;
 
   Objects ret;
   Objects parents;
-  parents.reserve( nparents.size() + 2 );
+  parents.reserve( nparents.size() + 3 );
+  parents.push_back( new DataObject( new IntImp( needframe ? 1 : 0 ) ) );
   parents.push_back( new DataObject( new StringImp( s ) ) );
   parents.push_back( new DataObject( new PointImp( loc ) ) );
   ret.push_back( parents[0] );

@@ -55,9 +55,11 @@ public:
   RealObject* locus( const Objects& parents );
 
   // returns the objects necessary to show a label with text s at
-  // point c: first a string DataObject, then a point DataObject, and
-  // next a label RealObject..
-  Objects label( const QString& s, const Coordinate& loc, const Objects& parents = Objects() );
+  // point c: first a int dataobject ( indicates whether we want a
+  // frame or not ), next a string DataObject, then a point
+  // DataObject, and next a label RealObject..
+  Objects label( const QString& s, const Coordinate& loc, bool needframe = false,
+                 const Objects& parents = Objects() );
 };
 
 #endif

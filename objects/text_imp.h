@@ -30,11 +30,12 @@ class TextImp
   typedef ObjectImp Parent;
   QString mtext;
   Coordinate mloc;
+  bool mframe;
   // with this var, we keep track of the place we drew in, for use in
   // the contains() function..
   mutable Rect mboundrect;
 public:
-  TextImp( const QString& text, const Coordinate& loc );
+  TextImp( const QString& text, const Coordinate& loc, bool frame = false );
   TextImp* copy() const;
   ~TextImp();
 

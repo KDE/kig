@@ -21,8 +21,8 @@
 #include "bogus_imp.h"
 #include "../misc/kigpainter.h"
 
-TextImp::TextImp( const QString& text, const Coordinate& loc )
-  : mtext( text), mloc( loc )
+TextImp::TextImp( const QString& text, const Coordinate& loc, bool frame )
+  : mtext( text), mloc( loc ), mframe( frame )
 {
 }
 
@@ -42,8 +42,8 @@ ObjectImp* TextImp::transform( const Transformation& ) const
 
 void TextImp::draw( KigPainter& p ) const
 {
-  p.drawSimpleText( mloc, mtext );
   mboundrect = p.simpleBoundingRect( mloc, mtext );
+  p.drawTextFrame( mboundrect, mtext, mframe );
 }
 
 bool TextImp::contains( const Coordinate& p, int, const ScreenInfo& ) const

@@ -36,6 +36,7 @@
 #include <kdebug.h>
 #include <qregexp.h>
 #include <qpopupmenu.h>
+#include <qcheckbox.h>
 
 TextLabelConstructionMode::~TextLabelConstructionMode()
 {
@@ -171,6 +172,7 @@ static uint percentCount( const QString& s )
 
 void TextLabelConstructionMode::finishPressed()
 {
+  bool needframe = mwiz->needFrameCheckBox->isChecked();
   QString s = mwiz->labelTextInput->text();
   KigWidget* widget = mdoc.mainWidget()->realWidget();
   if ( mwiz->currentPage() == mwiz->enter_text_page )
@@ -178,7 +180,7 @@ void TextLabelConstructionMode::finishPressed()
     // no arguments...
     assert( percentCount( s ) == 0 );
 
-    Objects labelos = ObjectFactory::instance()->label( s, mcoord );
+    Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe );
     labelos.calc( mdoc );
     mdoc.addObjects( labelos );
     widget->redrawScreen();
@@ -200,7 +202,7 @@ void TextLabelConstructionMode::finishPressed()
     else
     {
       Objects args( margs.begin(), margs.end() );
-      Objects labelos = ObjectFactory::instance()->label( s, mcoord, args );
+      Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe, args );
       labelos.calc( mdoc );
       mdoc.addObjects( labelos );
       mdoc.addObjects( args );
