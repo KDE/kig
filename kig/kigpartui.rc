@@ -116,6 +116,11 @@
       <Action name="objects_new_castshadow" />
       <Action name="objects_new_projectiverotation" />
     </Menu>
+    <Menu name="new_test">
+      <text>T&amp;ests</text>
+      <Action name="objects_new_areparallel" />
+      <Action name="objects_new_arecollinear" />
+    </Menu>
     <Menu name="types">
       <text>&amp;Types</text>
       <Action name="macro_action" />
