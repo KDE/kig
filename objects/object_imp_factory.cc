@@ -85,6 +85,13 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
         QString::number( static_cast<const IntImp&>( d ).data() ) ) );
     return QString::fromLatin1( "int" );
   }
+  else if ( d.inherits( ObjectImp::ID_DoubleImp ) )
+  {
+     parent.appendChild(
+      doc.createTextNode(
+        QString::number( static_cast<const DoubleImp&>( d ).data() ) ) );
+    return QString::fromLatin1( "double" );
+  }
   else if( d.inherits( ObjectImp::ID_StringImp ) )
   {
     parent.appendChild(
