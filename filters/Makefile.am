@@ -8,6 +8,7 @@ noinst_HEADERS= \
 	exporter.h \
 	exporttoimagedialog.h \
 	filter.h \
+	filters-common.h \
 	kgeo-filter.h \
 	kgeo-resource.h \
 	kseg-defs.h \
@@ -21,6 +22,7 @@ libfilters_la_SOURCES= \
 	exporttoimagedialog.cc \
 	exporttoimagedialogbase.ui \
 	filter.cc \
+	filters-common.cc \
 	kgeo-filter.cc \
 	kseg-filter.cc \
 	native-filter.cc \
@@ -28,4 +30,3 @@ libfilters_la_SOURCES= \
 	drgeo-filter-chooser.cc \
 	drgeo-filter-chooserbase.ui
 
-KDE_OPTIONS = nofinal

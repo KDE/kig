@@ -1,3 +1,7 @@
+2004-05-29  Dominique Devriese  <devriese@kde.org>
+
+	* Fix some --enable-final problems in the filters/ directory.
+
 2004-05-28  Dominique Devriese  <devriese@kde.org>
 
 	* Add a test file "testalotofeverything.kig"

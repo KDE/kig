@@ -17,8 +17,6 @@
 
 * not too hard:
 
-- make the code in filters/ --enable-final compliant.
-
 - add support for work via command line without GUI. Possible options
   and uses:<br />
   -c, --convert-to-native filename.ext => Kig will convert the file in its own

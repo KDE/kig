@@ -20,6 +20,7 @@
 #include "drgeo-filter.h"
 
 #include "drgeo-filter-chooser.h"
+#include "filters-common.h"
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
@@ -51,6 +52,12 @@
 
 #include <klocale.h>
 
+struct DrGeoHierarchyElement
+{
+  QString id;
+  std::vector<QString> parents;
+};
+
 KigFilterDrgeo::KigFilterDrgeo()
 {
 }
@@ -62,14 +69,6 @@ KigFilterDrgeo::~KigFilterDrgeo()
 bool KigFilterDrgeo::supportMime( const QString& mime )
 {
   return mime == "application/x-drgeo";
-}
-
-namespace {
-struct HierarchyElement
-{
-  QString id;
-  std::vector<QString> parents;
-};
 }
 
 KigDocument* KigFilterDrgeo::load( const QString& file )
@@ -137,21 +136,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   return 0;
 }
 
-// constructs a text object with text "%1", location c, and variable
-// parts given by the argument arg of obj o.
-static ObjectTypeCalcer* constructTextObject(
-  const Coordinate& c, ObjectCalcer* o,
-  const QCString& arg, const KigDocument& doc )
-{
-  const ObjectFactory* fact = ObjectFactory::instance();
-  ObjectCalcer* propo = fact->propertyObjectCalcer( o, arg );
-  propo->calc( doc );
-  std::vector<ObjectCalcer*> args;
-  args.push_back( propo );
-  return fact->labelCalcer( QString::fromLatin1( "%1" ), c, false, args, doc );
-}
-
-int convertDrgeoIndex( const std::vector<HierarchyElement> es, const QString myid )
+int convertDrgeoIndex( const std::vector<DrGeoHierarchyElement> es, const QString myid )
 {
   for ( uint i = 0; i < es.size(); ++i )
     if ( es[i].id == myid )
@@ -164,7 +149,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
   KigDocument* ret = new KigDocument();
 
   using namespace std;
-  std::vector<HierarchyElement> elems;
+  std::vector<DrGeoHierarchyElement> elems;
   int withoutid = 0;
 
   // 1st: fetch relationships and build an appropriate structure
@@ -174,7 +159,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
     if ( domelem.isNull() ) continue;
     else
     {
-      HierarchyElement elem;
+      DrGeoHierarchyElement elem;
       kdDebug() << "  * " << domelem.tagName() << "(" << domelem.attribute("type") << ")" << endl;
       for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
       {
@@ -213,7 +198,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
   for (QDomNode a = f; ! a.isNull(); a = a.nextSibling() )
   {
     kdDebug() << "+++ id: " << curid << endl;
-    const HierarchyElement& el = elems[curid];
+    const DrGeoHierarchyElement& el = elems[curid];
     std::vector<ObjectCalcer*> parents;
     for ( uint j = 0; j < el.parents.size(); ++j )
     {
@@ -466,54 +451,54 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       else if ( domelem.attribute( "type" ) == "pt_abscissa" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "coordinate-x", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "coordinate-x", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "pt_ordinate" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "coordinate-y", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "coordinate-y", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "segment_length" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "length", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "length", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "circle_perimeter" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "circumference", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "circumference", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "arc_length" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "arc-length", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "arc-length", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "distance_2pts" )
       {
         if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
         ObjectTypeCalcer* so = new ObjectTypeCalcer( SegmentABType::instance(), parents );
         so->calc( *ret );
-        oc = constructTextObject( m, so, "length", *ret );
+        oc = filtersConstructTextObject( m, so, "length", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "vector_norm" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "length", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "length", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "vector_abscissa" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "length-x", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "length-x", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "vector_ordinate" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "length-y", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "length-y", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "slope" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "slope", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "slope", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "distance_pt_line" )
       {
@@ -533,18 +518,18 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         args.push_back( io );
         ObjectTypeCalcer* so = new ObjectTypeCalcer( SegmentABType::instance(), args );
         so->calc( *ret );
-        oc = constructTextObject( m, so, "length", *ret );
+        oc = filtersConstructTextObject( m, so, "length", *ret, false );
       }
       // types of 'equation'
       else if ( domelem.attribute( "type" ) == "line" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "equation", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "equation", *ret, false );
       }
       else if ( domelem.attribute( "type" ) == "circle" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "simply-cartesian-equation", *ret );
+        oc = filtersConstructTextObject( m, parents[0], "simply-cartesian-equation", *ret, false );
       }
       else
       {
@@ -575,7 +560,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
 //        parents.clear();
 //        const Coordinate c = static_cast<const PointImp*>( angle->parents()[1]->imp() )->coordinate();
         const Coordinate c = p->coordinate();
-        oc = constructTextObject( c, angle, "angle-degrees", *ret );
+        oc = filtersConstructTextObject( c, angle, "angle-degrees", *ret, false );
       }
       kdDebug() << "+++++++++ oc:" << oc << endl;
     }

@@ -78,7 +78,8 @@
 #define ID_EDIT_COPY 11010
 #define ID_EDIT_CUT 11020
 #define ID_EDIT_PASTE 11030
-#define ID_EDIT_PREFERENCES 11040
+// domi: disabled, breaks --enable-final, and is not used anyway.
+//#define ID_EDIT_PREFERENCES 11040
 #define ID_EDIT_FULLSCREEN 11050
 
 ///////////////////////////////////////////////////////////////////

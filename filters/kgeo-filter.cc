@@ -21,6 +21,7 @@
 #include "kgeo-filter.h"
 
 #include "kgeo-resource.h"
+#include "filters-common.h"
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
@@ -67,16 +68,14 @@ void KigFilterKGeo::loadMetrics(KSimpleConfig* c )
   // the rest is not relevant to us (yet ?)...
 }
 
-namespace {
-struct HierarchyElement
+struct KGeoHierarchyElement
 {
   int id;
   std::vector<int> parents;
 };
-}
 
-static void visitElem( std::vector<HierarchyElement>& ret,
-                       const std::vector<HierarchyElement>& elems,
+static void visitElem( std::vector<KGeoHierarchyElement>& ret,
+                       const std::vector<KGeoHierarchyElement>& elems,
                        std::vector<bool>& seen,
                        int i )
 {
@@ -89,28 +88,13 @@ static void visitElem( std::vector<HierarchyElement>& ret,
   };
 }
 
-static std::vector<HierarchyElement> sortElems( const std::vector<HierarchyElement> elems )
+static std::vector<KGeoHierarchyElement> sortElems( const std::vector<KGeoHierarchyElement> elems )
 {
-  std::vector<HierarchyElement> ret;
+  std::vector<KGeoHierarchyElement> ret;
   std::vector<bool> seenElems( elems.size(), false );
   for ( uint i = 0; i < elems.size(); ++i )
     visitElem( ret, elems, seenElems, i );
   return ret;
-}
-
-// constructs a text object with text "%1", location c, and variable
-// parts given by the argument arg of obj o.
-static ObjectTypeCalcer* constructTextObject(
-  const Coordinate& c, ObjectCalcer* o,
-  const QCString& arg, const KigDocument& doc )
-{
-  const ObjectFactory* fact = ObjectFactory::instance();
-  ObjectCalcer* propo = fact->propertyObjectCalcer( o, arg );
-  propo->calc( doc );
-  std::vector<ObjectCalcer*> args;
-  args.push_back( propo );
-  return fact->labelCalcer( QString::fromLatin1( "%1" ), c, true,
-                            args, doc );
 }
 
 KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
@@ -128,12 +112,12 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
   // elements in an order that we can be sure all of an object's
   // parents will have been handled before it is handled itself..
   // ( aka topological sort of the parent relations graph..
-  std::vector<HierarchyElement> elems;
+  std::vector<KGeoHierarchyElement> elems;
   elems.reserve( number );
 
   for ( int i = 0; i < number; ++i )
   {
-    HierarchyElement elem;
+    KGeoHierarchyElement elem;
     elem.id = i;
     group.setNum( i + 1 );
     group.prepend( "Object " );
@@ -150,7 +134,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     };
   };
 
-  std::vector<HierarchyElement> sortedElems = sortElems( elems );
+  std::vector<KGeoHierarchyElement> sortedElems = sortElems( elems );
   std::vector<ObjectHolder*> os;
   os.resize( number, 0 );
   const ObjectFactory* factory = ObjectFactory::instance();
@@ -159,7 +143,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
   // order..
   for ( uint i = 0; i < sortedElems.size(); ++i )
   {
-    const HierarchyElement& e = sortedElems[i];
+    const KGeoHierarchyElement& e = sortedElems[i];
     int id = e.id;
     group.setNum( id + 1 );
     group.prepend( "Object " );
@@ -290,7 +274,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
       parents.clear();
       const Coordinate c =
         static_cast<const PointImp*>( angle->parents()[1]->imp() )->coordinate();
-      o = constructTextObject( c, angle, "angle-degrees", *ret );
+      o = filtersConstructTextObject( c, angle, "angle-degrees", *ret, true );
       break;
     }
     case ID_distance:
@@ -300,7 +284,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
       segment->calc( *ret );
       Coordinate m = ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
                        static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
-      o = constructTextObject( m, segment, "length", *ret );
+      o = filtersConstructTextObject( m, segment, "length", *ret, true );
       break;
     }
     case ID_arc:
@@ -313,7 +297,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
       if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
       const CircleImp* circle = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate c = circle->center() + Coordinate( circle->radius(), 0 );
-      o = constructTextObject( c, parents[0], "surface", *ret );
+      o = filtersConstructTextObject( c, parents[0], "surface", *ret, true );
       break;
     }
     case ID_slope:
@@ -327,7 +311,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
         static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
       ObjectTypeCalcer* line = new ObjectTypeCalcer( LineABType::instance(), parents );
       line->calc( *ret );
-      o = constructTextObject( c, line, "slope", *ret );
+      o = filtersConstructTextObject( c, line, "slope", *ret, true );
       break;
     }
     case ID_circumference:
@@ -335,7 +319,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
       if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
       const CircleImp* c = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate m = c->center() + Coordinate( c->radius(), 0 );
-      o = constructTextObject( m, parents[0], "circumference", *ret );
+      o = filtersConstructTextObject( m, parents[0], "circumference", *ret, true );
       break;
     }
     case ID_rotation:
@@ -364,7 +348,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
 
     os[i] = new ObjectHolder( o, d );
     os[i]->calc( *ret );
-  }; // for loop (creating HierarchyElements..
+  }; // for loop (creating KGeoHierarchyElements..
 
   ret->addObjects( os );
   return ret;
