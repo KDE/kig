@@ -36,15 +36,8 @@
 #include <kmessagebox.h>
 #include <klineeditdlg.h>
 
-#include <cmath>
+#include <math.h>
 #include <string>
-
-using std::ceil;
-using std::floor;
-using std::pow;
-using std::max;
-using std::min;
-using std::log10;
 
 class CoordinateValidator
   : public QValidator
@@ -97,10 +90,10 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
     State ret = Acceptable;
 
     int boguspos = 0;
-    ret = min( ret, mdv.validate( p1, boguspos ) );
+    ret = kigMin( ret, mdv.validate( p1, boguspos ) );
 
     boguspos = 0;
-    ret = min( ret, mdv.validate( p2, boguspos ) );
+    ret = kigMin( ret, mdv.validate( p2, boguspos ) );
 
     return ret;
   };
@@ -149,8 +142,8 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   // changes..  might be a good idea to do that, but well, maybe some
   // other time :)
   Rect sr = d.suggestedRect();
-  double m = max( sr.width(), sr.height() );
-  int l = max( 0, (int) ( 3 - log10( m ) ) );
+  double m = kigMax( sr.width(), sr.height() );
+  int l = kigMax( 0, (int) ( 3 - log10( m ) ) );
   QString xs = KGlobal::locale()->formatNumber( p.x, l );
   QString ys = KGlobal::locale()->formatNumber( p.y, l );
   return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
@@ -234,8 +227,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   const double vgraphmin = ceil( vmin / vd ) * vd;
   const double vgraphmax = floor( vmax / vd ) * vd;
 
-  const int hnfrac = max( (int) - floor( log10( hd ) ), 0 );
-  const int vnfrac = max( (int) - floor( log10( vd ) ), 0 );
+  const int hnfrac = kigMax( (int) - floor( log10( hd ) ), 0 );
+  const int vnfrac = kigMax( (int) - floor( log10( vd ) ), 0 );
 
   /****** the grid lines ******/
   if ( showgrid )
@@ -336,8 +329,8 @@ PolarCoords::~PolarCoords()
 QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) const
 {
   Rect sr = d.suggestedRect();
-  double m = max( sr.width(), sr.height() );
-  int l = max( 0, (int) ( 3 - log10( m ) ) );
+  double m = kigMax( sr.width(), sr.height() );
+  int l = kigMax( 0, (int) ( 3 - log10( m ) ) );
 
   double r = pt.length();
   double theta = atan2( pt.y, pt.x ) * 180 / M_PI;
@@ -406,9 +399,9 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   const double vgraphmin = floor( vmin / vd ) * vd;
   const double vgraphmax = ceil( vmax / vd ) * vd;
 
-  const int hnfrac = max( (int) - floor( log10( hd ) ), 0 );
-  const int vnfrac = max( (int) - floor( log10( vd ) ), 0 );
-  const int nfrac = max( hnfrac, vnfrac );
+  const int hnfrac = kigMax( (int) - floor( log10( hd ) ), 0 );
+  const int vnfrac = kigMax( (int) - floor( log10( vd ) ), 0 );
+  const int nfrac = kigMax( hnfrac, vnfrac );
 
   /****** the grid lines ******/
   if ( showgrid )
