@@ -64,6 +64,7 @@ public:
     ID_CircleImp,
     ID_ConicImp,
     ID_CubicImp,
+    ID_SegmentImp,
 
     // matches any object type..
     ID_AnyImp

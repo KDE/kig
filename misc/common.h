@@ -41,6 +41,7 @@ public:
   Coordinate a;
   Coordinate b;
   const Coordinate dir() const { return b - a; };
+  double length() const { return ( b - a ).length(); };
   LineData() : a(), b() {};
   LineData( const Coordinate& na, const Coordinate& nb ) : a( na ), b( nb ) {};
 };

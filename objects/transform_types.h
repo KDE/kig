@@ -61,4 +61,14 @@ public:
   ObjectImp* calc( const Args& args ) const;
 };
 
+class ScalingOverCenterType
+  : public ObjectType
+{
+  ScalingOverCenterType();
+  ~ScalingOverCenterType();
+public:
+  static const ScalingOverCenterType* instance();
+  ObjectImp* calc( const Args& args ) const;
+};
+
 #endif

@@ -345,3 +345,13 @@ const char* LineImp::baseName() const
 {
   return I18N_NOOP( "line" );
 }
+
+bool SegmentImp::inherits( int type ) const
+{
+  return type == ID_SegmentImp ? true : Parent::inherits( type );
+}
+
+double SegmentImp::length() const
+{
+  return mdata.length();
+}

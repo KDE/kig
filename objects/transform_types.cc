@@ -151,3 +151,37 @@ ObjectImp* RotationType::calc( const Args& targs ) const
 
   return args[2]->transform( Transformation::rotation( angle, center ) );
 }
+
+static const ArgParser::spec argsspecps[] =
+{
+  { ObjectImp::ID_PointImp, 1 },
+  { ObjectImp::ID_SegmentImp, 1 }
+};
+
+ScalingOverCenterType::ScalingOverCenterType()
+  : ObjectType( "ScalingOverCenter", argsspecps, 2, 1 )
+{
+}
+
+ScalingOverCenterType::~ScalingOverCenterType()
+{
+}
+
+const ScalingOverCenterType* ScalingOverCenterType::instance()
+{
+  static const ScalingOverCenterType t;
+  return &t;
+}
+
+ObjectImp* ScalingOverCenterType::calc( const Args& targs ) const
+{
+  if ( targs.size() != 3 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
+  assert( args[1]->inherits( ObjectImp::ID_SegmentImp ) );
+
+  Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
+  double ratio = static_cast<const SegmentImp*>( args[1] )->length();
+
+  return args[2]->transform( Transformation::scaling( ratio, center ) );
+}

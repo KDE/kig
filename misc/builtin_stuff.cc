@@ -257,6 +257,13 @@ void setupBuiltinStuff()
       "rotation" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_rotation" ) );
+    c = new SimpleObjectTypeConstructor(
+      ScalingOverCenterType::instance(),
+      I18N_NOOP( "Scaled object" ),
+      I18N_NOOP( "Scale an object over a point, by the ratio given by the length of a segment" ),
+      "scalingovercenter" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_scalingovercenter" ) );
 
     c = new MultiObjectTypeConstructor(
       ConicAsymptoteType::instance(),
