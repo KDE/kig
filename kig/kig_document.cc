@@ -27,9 +27,9 @@
 #include <assert.h>
 
 KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
-                          bool showgrid, bool showaxes )
+                          bool showgrid, bool showaxes, bool nv )
   : mobjects( objects ), mcoordsystem( coordsystem ), mshowgrid( showgrid ),
-    mshowaxes( showaxes )
+    mshowaxes( showaxes ), mnightvision( nv )
 {
 }
 
@@ -69,7 +69,7 @@ std::vector<ObjectHolder*> KigDocument::whatAmIOn( const Coordinate& p, const Ki
   for ( std::set<ObjectHolder*>::const_iterator i = mobjects.begin();
         i != mobjects.end(); ++i )
   {
-    if(!(*i)->contains(p, w)) continue;
+    if(!(*i)->contains(p, w, mnightvision)) continue;
     if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
     else 
       if ( !(*i)->imp()->inherits( PolygonImp::stype() ) ) curves.push_back( *i );
@@ -157,6 +157,7 @@ KigDocument::KigDocument()
 {
   mshowgrid = true;
   mshowaxes = true;
+  mnightvision = false;
 }
 
 KigDocument::~KigDocument()
@@ -183,7 +184,17 @@ void KigDocument::setAxes( bool showaxes )
   mshowaxes = showaxes;
 }
 
+void KigDocument::setNightVision( bool nv )
+{
+  mnightvision = nv;
+}
+
 const bool KigDocument::axes() const
 {
   return mshowaxes;
+}
+
+const bool KigDocument::getNightVision() const
+{
+  return mnightvision;
 }

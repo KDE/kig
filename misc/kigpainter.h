@@ -103,6 +103,7 @@ public:
   void setBrushColor( const QColor& c );
   
   QColor getColor() const;
+  bool getNightVision( ) const;
 
   double pixelWidth();
 

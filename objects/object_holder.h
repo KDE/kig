@@ -99,7 +99,7 @@ public:
   /**
    * Returns whether this object contains the point p.
    */
-  bool contains( const Coordinate& p, const KigWidget& w ) const;
+  bool contains( const Coordinate& p, const KigWidget& w, bool nv = false ) const;
   /**
    * Returns whether this object is in the rectangle r.
    */
@@ -107,7 +107,7 @@ public:
   /**
    * Returns whether this object is shown.
    */
-  bool shown() const;
+  bool shown( ) const;
 
   /**
    * This call is simply forwarded to the ObjectCalcer.  Check the

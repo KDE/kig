@@ -363,7 +363,27 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
     KIconLoader* l = popup.part().instance()->iconLoader();
-    popup.addAction( menu, i18n( "&Hide" ), nextfree++ );
+    std::vector<ObjectHolder*> os = popup.objects();
+
+    /*
+     * mp: we want the "show" action to be visible only
+     * if we selected only one object (to be conservative)
+     * and if that object is currently hidden.
+     * conversely for one hidden object we don't want
+     * the "hide" action to be inserted.
+     * in any case we have a fixed 'id' associated
+     * with the two actions.
+     */
+
+    if ( os.size() > 1 || os.front()->shown() )
+    {
+      popup.addAction( menu, i18n( "&Hide" ), nextfree );
+    }
+    if ( os.size() == 1 && !os.front()->shown() )
+    {
+      popup.addAction( menu, i18n( "&Show" ), nextfree+1 );
+    }
+    nextfree += 2;
     QPixmap p = l->loadIcon( "move", KIcon::User );
     popup.addAction( menu, p, i18n( "&Move" ), nextfree++ );
     p = l->loadIcon( "editdelete", KIcon::Toolbar );
@@ -572,9 +592,9 @@ bool BuiltinObjectActionsProvider::executeAction(
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    if ( id > 2 )
+    if ( id > 3 )
     {
-      id -= 3;
+      id -= 4;
       return false;
     };
     switch( id )
@@ -584,6 +604,10 @@ bool BuiltinObjectActionsProvider::executeAction(
       doc.hideObjects( os );
       break;
     case 1:
+      // show the objects..
+      doc.showObjects( os );
+      break;
+    case 2:
     {
       // move
       QCursor::setPos( popup.mapToGlobal( QPoint( 0, 0 ) ) );
@@ -595,7 +619,7 @@ bool BuiltinObjectActionsProvider::executeAction(
       // unselected... ( or maybe we do ? )
       return true;
     }
-    case 2:
+    case 3:
       // delete
       doc.delObjects( os );
       break;

@@ -80,9 +80,9 @@ void ObjectHolder::draw( KigPainter& p, bool selected ) const
   mdrawer->draw( *imp(), p, selected );
 }
 
-bool ObjectHolder::contains( const Coordinate& p, const KigWidget& w ) const
+bool ObjectHolder::contains( const Coordinate& pt, const KigWidget& w, bool nv ) const
 {
-  return mdrawer->contains( *imp(), p, w );
+  return mdrawer->contains( *imp(), pt, w, nv );
 }
 
 bool ObjectHolder::inRect( const Rect& r, const KigWidget& w ) const
@@ -132,9 +132,9 @@ ObjectDrawer* ObjectHolder::switchDrawer( ObjectDrawer* d )
   return tmp;
 }
 
-bool ObjectHolder::shown() const
+bool ObjectHolder::shown( ) const
 {
-  return mdrawer->shown();
+  return mdrawer->shown( );
 }
 
 const QString ObjectHolder::name() const

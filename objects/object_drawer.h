@@ -64,14 +64,14 @@ public:
   // returns whether the object imp contains coordinate p.  This is
   // dependent on whether it is shown ( when it will never contain
   // anything ), and on its width..
-  bool contains( const ObjectImp& imp, const Coordinate& p, const KigWidget& w ) const;
+  bool contains( const ObjectImp& imp, const Coordinate& pt, const KigWidget& w, bool nv = false ) const;
   // returns whether the object imp is in the rectangle r.  This is
   // dependent on whether it is shown and on its width..
   bool inRect( const ObjectImp& imp, const Rect& r, const KigWidget& w ) const;
 
   // returns whether the object this ObjectDrawer is responsible for
   // will be drawn or not..
-  bool shown() const;
+  bool shown( ) const;
   // returns the color that the object will be drawn in
   QColor color() const;
   // return the width of the object

@@ -116,6 +116,7 @@ public slots:
 
   void toggleGrid();
   void toggleAxes();
+  void toggleNightVision();
 
   // equivalent to setModified( false ); ( did i mention i don't like
   // signals/slots for being this inflexible...
@@ -204,6 +205,7 @@ public:
   KAction* aConfigureTypes;
   KToggleAction* aToggleGrid;
   KToggleAction* aToggleAxes;
+  KToggleAction* aToggleNightVision;
   std::vector<KigGUIAction*> aActions;
 
   /**

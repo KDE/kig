@@ -55,10 +55,14 @@ class KigDocument {
    * Whether to show the axes.
    */
   bool mshowaxes;
+  /**
+   * Whether to enable visibility of hidden objects.
+   */
+  bool mnightvision;
 public:
   KigDocument();
   KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
-               bool showgrid = true, bool showaxes = true );
+               bool showgrid = true, bool showaxes = true, bool nv = false );
   ~KigDocument();
 
   /**
@@ -68,6 +72,7 @@ public:
   const CoordinateSystem& coordinateSystem() const;
   const bool grid() const;
   const bool axes() const;
+  const bool getNightVision() const;
   const std::vector<ObjectHolder*> objects() const;
   const std::set<ObjectHolder*>& objectsSet() const;
 
@@ -90,6 +95,11 @@ public:
    * set to show/hide the grid.
    */
   void setAxes( bool showaxes );
+
+  /**
+   * set to enable/disable night-vision (visibility of hidden objects)
+   */
+  void setNightVision( bool nv );
 
   /**
    * Return a vector of objects that contain the given point.

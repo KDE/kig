@@ -28,11 +28,12 @@
 
 void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
 {
-  if ( mshown )
+  bool nv = p.getNightVision( );
+  if ( mshown || nv )
   {
     p.setBrushStyle( Qt::NoBrush );
-    p.setBrushColor( sel ? Qt::red : mcolor );
-    p.setPen( QPen ( sel ? Qt::red : mcolor,  1) );
+    p.setBrushColor( sel ? Qt::red : ( mshown?mcolor:Qt::gray ) );
+    p.setPen( QPen ( sel ? Qt::red : ( mshown?mcolor:Qt::gray ),  1) );
     p.setWidth( mwidth );
     p.setStyle( mstyle );
     p.setPointStyle( mpointstyle );
@@ -40,12 +41,13 @@ void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
   }
 }
 
-bool ObjectDrawer::contains( const ObjectImp& imp, const Coordinate& p, const KigWidget& w ) const
+bool ObjectDrawer::contains( const ObjectImp& imp, const Coordinate& pt, const KigWidget& w, bool nv ) const
 {
-  return mshown && imp.contains( p, mwidth, w );
+  bool shownornv = mshown || nv;
+  return shownornv && imp.contains( pt, mwidth, w );
 }
 
-bool ObjectDrawer::shown() const
+bool ObjectDrawer::shown( ) const
 {
   return mshown;
 }

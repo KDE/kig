@@ -21,6 +21,7 @@
 #include "kigpainter.h"
 
 #include "../kig/kig_view.h"
+#include "../kig/kig_document.h"
 #include "../misc/goniometry.h"
 #include "../objects/object_holder.h"
 #include "../objects/curve_imp.h"
@@ -262,6 +263,11 @@ void KigPainter::setBrushColor( const QColor& c )
 {
   brushColor = c;
   mP.setBrush( QBrush( brushColor, brushStyle ) );
+}
+
+bool KigPainter::getNightVision( ) const
+{
+  return mdoc.getNightVision();
 }
 
 QColor KigPainter::getColor() const

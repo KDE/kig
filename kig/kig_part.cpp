@@ -323,6 +323,12 @@ void KigPart::setupActions()
   aToggleAxes->setToolTip( i18n( "Show or hide the axes." ) );
   aToggleAxes->setChecked( true );
 
+  aToggleNightVision = new KToggleAction(
+    i18n( "Wear infrared glasses" ), 0, this, SLOT( toggleNightVision() ),
+    actionCollection(), "settings_toggle_nightvision" );
+  aToggleNightVision->setToolTip( i18n( "Enable/Disable hidden objects visibility." ) );
+  aToggleAxes->setChecked( false );
+
   // select coordinate system KActionMenu..
   aCoordSystem = new SetCoordinateSystemAction( *this, actionCollection() );
 }
@@ -403,6 +409,7 @@ bool KigPart::openFile()
   coordSystemChanged( mdocument->coordinateSystem().id() );
   aToggleGrid->setChecked( mdocument->grid() );
   aToggleAxes->setChecked( mdocument->axes() );
+  aToggleNightVision->setChecked( mdocument->axes() );
 
   setModified(false);
   mhistory->clear();
@@ -971,6 +978,15 @@ void KigPart::toggleAxes()
   bool toshow = !mdocument->axes();
   aToggleAxes->setChecked( toshow );
   mdocument->setAxes( toshow );
+
+  redrawScreen();
+}
+
+void KigPart::toggleNightVision()
+{
+  bool nv = !mdocument->getNightVision();
+  aToggleNightVision->setChecked( nv );
+  mdocument->setNightVision( nv );
 
   redrawScreen();
 }
