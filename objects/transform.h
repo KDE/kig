@@ -37,7 +37,7 @@
 #include "../modes/constructing.h"
 #include "../misc/common.h"
 
-#define MAXTRANSFORMATIONS 5
+#define MAXTRANSFORMARGS 10
 
 class LineTransform
   : public Line
@@ -68,8 +68,8 @@ public:
 
 protected:
   AbstractLine* mline;
-  Object* mtransformations[MAXTRANSFORMATIONS];
-  int transformationsnum;
+  Object* mtransformargs[MAXTRANSFORMARGS];
+  int argsnum;
 
   void calc();
 };
@@ -103,8 +103,8 @@ public:
 
 protected:
   Point* mpoint;
-  Object* mtransformations[MAXTRANSFORMATIONS];
-  int transformationsnum;
+  Object* mtransformargs[MAXTRANSFORMARGS];
+  int argsnum;
 
   void calc();
 };
@@ -138,8 +138,8 @@ public:
 
 protected:
   Segment* msegment;
-  Object* mtransformations[MAXTRANSFORMATIONS];
-  int transformationsnum;
+  Object* mtransformargs[MAXTRANSFORMARGS];
+  int argsnum;
 
   void calc();
 };
@@ -173,8 +173,8 @@ public:
 
 protected:
   AbstractLine* mray;
-  Object* mtransformations[MAXTRANSFORMATIONS];
-  int transformationsnum;
+  Object* mtransformargs[MAXTRANSFORMARGS];
+  int argsnum;
 
   void calc();
 };
@@ -208,8 +208,8 @@ public:
 
 protected:
   Circle* mcircle;
-  Object* mtransformations[MAXTRANSFORMATIONS];
-  int transformationsnum;
+  Object* mtransformargs[MAXTRANSFORMARGS];
+  int argsnum;
 
   void calc();
 };
@@ -245,8 +245,8 @@ public:
 
 protected:
   Conic* mconic;
-  Object* mtransformations[MAXTRANSFORMATIONS];
-  int transformationsnum;
+  Object* mtransformargs[MAXTRANSFORMARGS];
+  int argsnum;
 
 //  ConicCartesianEquationData cequation;
   ConicPolarEquationData mequation;
@@ -291,8 +291,8 @@ public:
 
 protected:
   Cubic* mcubic;
-  Object* mtransformations[MAXTRANSFORMATIONS];
-  int transformationsnum;
+  Object* mtransformargs[MAXTRANSFORMARGS];
+  int argsnum;
 
   Point* pt1;
   Point* pt2;

@@ -28,48 +28,8 @@
 #include "kigtransform.h"
 #include "i18n.h"
 
-bool getProjectiveTransformation ( int transformationsnum,
-    Object *mtransformations[], double transformation[3][3] )
-{
-  double ltransformation[3][3];
-  double ttransformation[3][3];
-
-  assert ( transformationsnum >= 0 );
-
-  for (int i = 0; i < 3; i++)
-    for (int j = 0; j < 3; j++)
-      transformation[i][j] = 0.;
-  for (int i = 0; i < 3; i++) transformation[i][i] = 1.;
-
-  for (int i = 0; i < transformationsnum; )
-  {
-    bool valid = getProjectiveTransformFromSimple ( mtransformations, i,
-		    transformationsnum,
-                    ltransformation );
-    if ( ! valid ) return valid;
-    /*
-     * multiply ltransformation by transformation
-     */
-    for (int i = 0; i < 3; i++)
-      for (int j = 0; j < 3; j++) ttransformation[i][j]=transformation[i][j];
-    for (int i = 0; i < 3; i++)
-    {
-      for (int j = 0; j < 3; j++)
-      {
-        transformation[i][j] = 0.;
-        for (int k = 0; k < 3; k++)
-        {
-          transformation[i][j] += ltransformation[i][k]*ttransformation[k][j];
-        }
-      }
-    }
-  }
-  return true;
-}
-
-bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
-		    int transformsnum,
-                    double lt[3][3] )
+bool getProjectiveTransformation ( int argsnum,
+    Object *transforms[], double lt[3][3] )
 {
   for (int i = 0; i < 3; i++)
   {
@@ -80,15 +40,16 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
   }
   for (int i = 0; i < 3; i++) lt[i][i] = 1.;
 
-  assert (ipt < transformsnum);
-  Object* transform = transforms[ipt++];
-  // just translations and central symmetry, for now
+  assert ( argsnum > 0 );
+  int argn = 0;
+  Object* transform = transforms[argn++];
   if (transform->toVector())
   {
     Vector* v = transform->toVector();
     Coordinate dir = v->getDir();
     lt[1][0] = dir.x;
     lt[2][0] = dir.y;
+    assert (argn == argsnum);
     return true;
   }
 
@@ -98,6 +59,7 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
     lt[1][1] = lt[2][2] = -1;
     lt[1][0] = 2*p->getX();
     lt[2][0] = 2*p->getY();
+    assert (argn == argsnum);
     return true;
   }
 
@@ -113,6 +75,7 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
     lt[1][1] -= 2*d.y*d.y/dirnormsq;
     lt[2][2] -= 2*d.x*d.x/dirnormsq;
     lt[1][2]  = lt[2][1] = 2*d.x*d.y/dirnormsq;
+    assert (argn == argsnum);
     return true;
   }
 
@@ -121,9 +84,9 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
     Ray* line = transform->toRay();
     Coordinate d = line->direction().normalize();
     double alpha = 0.1*M_PI/2;  // a small angle for the DrawPrelim
-    if (ipt < transformsnum)
+    if (argn < argsnum)
     {
-      Angle* angle = transforms[ipt++]->toAngle();
+      Angle* angle = transforms[argn++]->toAngle();
       alpha = angle->size();
     }
     lt[0][0] =  cos(alpha);
@@ -135,6 +98,7 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
     lt[1][2] =  cos(alpha)*d.x*d.y - d.x*d.y;
     lt[2][1] =  cos(alpha)*d.x*d.y - d.x*d.y;
     lt[2][2] =  cos(alpha)*d.y*d.y + d.x*d.x;
+    assert (argn == argsnum);
     return true;
   }
 
@@ -142,9 +106,9 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
   {
     double x = 0.;
     double y = 0.;
-    if (ipt < transformsnum)
+    if (argn < argsnum)
     {
-      Object* arg = transforms[ipt++];
+      Object* arg = transforms[argn++];
       assert (arg->toPoint());
       Point* p = arg->toPoint();
       x = p->getX();
@@ -157,6 +121,7 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
     lt[2][1] = sin(alpha);
     lt[1][0] = x - lt[1][1]*x - lt[1][2]*y;
     lt[2][0] = y - lt[2][1]*x - lt[2][2]*y;
+    assert (argn == argsnum);
     return true;
   }
 
@@ -168,15 +133,15 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
     double x = 0;
     double y = 0;
     lt[1][1] = lt[2][2] = s;
-    if (ipt < transformsnum)
+    if (argn < argsnum)
     {
-      Object* arg = transforms[ipt++];
+      Object* arg = transforms[argn++];
       if (arg->toSegment())
       {
         Segment* segment = arg->toSegment();
         Coordinate p = segment->p2() - segment->p1();
         s /= p.length();
-        if (ipt < transformsnum) arg = transforms[ipt++];
+        if (argn < argsnum) arg = transforms[argn++];
       }
       if (arg->toPoint())   // scaling w.r. to a point
       {
@@ -186,6 +151,7 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
         lt[1][1] = lt[2][2] = s;
         lt[1][0] = x - s*x;
         lt[2][0] = y - s*y;
+        assert (argn == argsnum);
         return true;
       }
       if (arg->toLine())  // scaling w.r. to a line
@@ -202,6 +168,7 @@ bool getProjectiveTransformFromSimple ( Object *transforms[], int& ipt,
         lt[2][0] = a.y - lt[2][1]*a.x - lt[2][2]*a.y;
       }
     }
+    assert (argn == argsnum);
     return true;
   }
 

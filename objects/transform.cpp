@@ -46,7 +46,7 @@ void LineTransform::calc()
   double transformation[3][3];
 
   mvalid = getProjectiveTransformation (
-     transformationsnum, mtransformations, transformation );
+     argsnum, mtransformargs, transformation );
 
   if ( mvalid )
   {
@@ -64,20 +64,20 @@ Objects LineTransform::getParents() const
 {
   Objects objs;
   objs.push_back( mline );
-  for ( int i = 0; i < transformationsnum; i++ )
+  for ( int i = 0; i < argsnum; i++ )
   {
-    objs.push_back( mtransformations[i] );
+    objs.push_back( mtransformargs[i] );
   }
   return objs;
 }
 
 LineTransform::LineTransform(const LineTransform& c)
-  : Line( c ), mline( c.mline ), transformationsnum ( c.transformationsnum )
+  : Line( c ), mline( c.mline ), argsnum ( c.argsnum )
 {
-  for ( int i = 0; i < c.transformationsnum; i++ )
+  for ( int i = 0; i < c.argsnum; i++ )
   {
-    mtransformations[i] = c.mtransformations[i];
-    mtransformations[i]->addChild(this);
+    mtransformargs[i] = c.mtransformargs[i];
+    mtransformargs[i]->addChild(this);
   }
   mline->addChild(this);
 }
@@ -96,7 +96,7 @@ Object::WantArgsResult LineTransform::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   assert ( size > 0 );
-  if ( size > MAXTRANSFORMATIONS + 1 ) return NotGood;
+  if ( size > MAXTRANSFORMARGS + 1 ) return NotGood;
   Objects::const_iterator i = os.begin();
 
   if ( ! (*i++)->toLine() ) return NotGood;
@@ -118,24 +118,24 @@ QString LineTransform::sUseText( const Objects& os, const Object* o)
 
 void LineTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  Object *transformations[MAXTRANSFORMATIONS];
+  Object *transformations[MAXTRANSFORMARGS];
   bool valid;
   double transformation[3][3];
 
-  int transformationsnum = os.size() - 1;
-  assert( transformationsnum <= MAXTRANSFORMATIONS );
-  if ( transformationsnum < 1 ) return;  // don't drawprelim if too few points
+  int argsnum = os.size() - 1;
+  assert( argsnum <= MAXTRANSFORMARGS );
+  if ( argsnum < 1 ) return;  // don't drawprelim if too few points
   Objects::const_iterator i = os.begin();
 
   assert ((*i)->toLine());
   Line *line = (*i++)->toLine();
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( transformationsnum,
+  valid = getProjectiveTransformation ( argsnum,
       transformations, transformation );
 
   if ( ! valid ) return;
@@ -152,20 +152,20 @@ void LineTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 LineTransform::LineTransform( const Objects& os )
   : Line()
 {
-  assert( os.size() <= MAXTRANSFORMATIONS + 1 );
+  assert( os.size() <= MAXTRANSFORMARGS + 1 );
   Objects::const_iterator i = os.begin();
 
   assert( (*i)->toLine() );
   mline = (*i++)->toLine();
   mline->addChild( this );
 
-  transformationsnum = os.size() - 1;
-  if ( transformationsnum == 0 ) return;
+  argsnum = os.size() - 1;
+  if ( argsnum == 0 ) return;
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
-    mtransformations[j] = *i++;
-    mtransformations[j]->addChild( this );
+    mtransformargs[j] = *i++;
+    mtransformargs[j]->addChild( this );
   }
 }
 
@@ -179,7 +179,7 @@ void PointTransform::calc()
   double transformation[3][3];
 
   mvalid = getProjectiveTransformation (
-     transformationsnum, mtransformations, transformation );
+     argsnum, mtransformargs, transformation );
 
   if ( mvalid )
   {
@@ -196,20 +196,20 @@ Objects PointTransform::getParents() const
 {
   Objects objs;
   objs.push_back( mpoint );
-  for ( int i = 0; i < transformationsnum; i++ )
+  for ( int i = 0; i < argsnum; i++ )
   {
-    objs.push_back( mtransformations[i] );
+    objs.push_back( mtransformargs[i] );
   }
   return objs;
 }
 
 PointTransform::PointTransform(const PointTransform& c)
-  : Point( c ), mpoint( c.mpoint ), transformationsnum ( c.transformationsnum )
+  : Point( c ), mpoint( c.mpoint ), argsnum ( c.argsnum )
 {
-  for ( int i = 0; i < c.transformationsnum; i++ )
+  for ( int i = 0; i < c.argsnum; i++ )
   {
-    mtransformations[i] = c.mtransformations[i];
-    mtransformations[i]->addChild(this);
+    mtransformargs[i] = c.mtransformargs[i];
+    mtransformargs[i]->addChild(this);
   }
   mpoint->addChild(this);
 }
@@ -228,7 +228,7 @@ Object::WantArgsResult PointTransform::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   assert ( size > 0 );
-  if ( size > MAXTRANSFORMATIONS + 1 ) return NotGood;
+  if ( size > MAXTRANSFORMARGS + 1 ) return NotGood;
   Objects::const_iterator i = os.begin();
 
   if ( ! (*i++)->toPoint() ) return NotGood;
@@ -250,24 +250,24 @@ QString PointTransform::sUseText( const Objects& os, const Object* o)
 
 void PointTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  Object *transformations[MAXTRANSFORMATIONS];
+  Object *transformations[MAXTRANSFORMARGS];
   bool valid;
   double transformation[3][3];
 
-  int transformationsnum = os.size() - 1;
-  assert( transformationsnum <= MAXTRANSFORMATIONS );
-  if ( transformationsnum < 1 ) return;  // don't drawprelim if too few points
+  int argsnum = os.size() - 1;
+  assert( argsnum <= MAXTRANSFORMARGS );
+  if ( argsnum < 1 ) return;  // don't drawprelim if too few points
   Objects::const_iterator i = os.begin();
 
   assert ((*i)->toPoint());
   Point *point = (*i++)->toPoint();
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( transformationsnum,
+  valid = getProjectiveTransformation ( argsnum,
       transformations, transformation );
 
   if ( ! valid ) return;
@@ -282,20 +282,20 @@ void PointTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 PointTransform::PointTransform( const Objects& os )
   : Point()
 {
-  assert( os.size() <= MAXTRANSFORMATIONS + 1 );
+  assert( os.size() <= MAXTRANSFORMARGS + 1 );
   Objects::const_iterator i = os.begin();
 
   assert( (*i)->toPoint() );
   mpoint = (*i++)->toPoint();
   mpoint->addChild( this );
 
-  transformationsnum = os.size() - 1;
-  if ( transformationsnum == 0 ) return;
+  argsnum = os.size() - 1;
+  if ( argsnum == 0 ) return;
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
-    mtransformations[j] = *i++;
-    mtransformations[j]->addChild( this );
+    mtransformargs[j] = *i++;
+    mtransformargs[j]->addChild( this );
   }
 }
 
@@ -309,7 +309,7 @@ void SegmentTransform::calc()
   double transformation[3][3];
 
   mvalid = getProjectiveTransformation (
-     transformationsnum, mtransformations, transformation );
+     argsnum, mtransformargs, transformation );
 
   if ( mvalid )
   {
@@ -327,21 +327,21 @@ Objects SegmentTransform::getParents() const
 {
   Objects objs;
   objs.push_back( msegment );
-  for ( int i = 0; i < transformationsnum; i++ )
+  for ( int i = 0; i < argsnum; i++ )
   {
-    objs.push_back( mtransformations[i] );
+    objs.push_back( mtransformargs[i] );
   }
   return objs;
 }
 
 SegmentTransform::SegmentTransform(const SegmentTransform& c)
   : Segment ( c ), msegment( c.msegment ), 
-    transformationsnum ( c.transformationsnum )
+    argsnum ( c.argsnum )
 {
-  for ( int i = 0; i < c.transformationsnum; i++ )
+  for ( int i = 0; i < c.argsnum; i++ )
   {
-    mtransformations[i] = c.mtransformations[i];
-    mtransformations[i]->addChild(this);
+    mtransformargs[i] = c.mtransformargs[i];
+    mtransformargs[i]->addChild(this);
   }
   msegment->addChild(this);
 }
@@ -360,7 +360,7 @@ Object::WantArgsResult SegmentTransform::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   assert ( size > 0 );
-  if ( size > MAXTRANSFORMATIONS + 1 ) return NotGood;
+  if ( size > MAXTRANSFORMARGS + 1 ) return NotGood;
   Objects::const_iterator i = os.begin();
 
   if ( ! (*i++)->toSegment() ) return NotGood;
@@ -382,24 +382,24 @@ QString SegmentTransform::sUseText( const Objects& os, const Object* o)
 
 void SegmentTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  Object *transformations[MAXTRANSFORMATIONS];
+  Object *transformations[MAXTRANSFORMARGS];
   bool valid;
   double transformation[3][3];
 
-  int transformationsnum = os.size() - 1;
-  assert( transformationsnum <= MAXTRANSFORMATIONS );
-  if ( transformationsnum < 1 ) return;  // don't drawprelim if too few points
+  int argsnum = os.size() - 1;
+  assert( argsnum <= MAXTRANSFORMARGS );
+  if ( argsnum < 1 ) return;  // don't drawprelim if too few points
   Objects::const_iterator i = os.begin();
 
   assert ((*i)->toSegment());
   Segment *segment = (*i++)->toSegment();
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( transformationsnum,
+  valid = getProjectiveTransformation ( argsnum,
       transformations, transformation );
 
   if ( ! valid ) return;
@@ -416,20 +416,20 @@ void SegmentTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 SegmentTransform::SegmentTransform( const Objects& os )
   : Segment()
 {
-  assert( os.size() <= MAXTRANSFORMATIONS + 1 );
+  assert( os.size() <= MAXTRANSFORMARGS + 1 );
   Objects::const_iterator i = os.begin();
 
   assert( (*i)->toSegment() );
   msegment = (*i++)->toSegment();
   msegment->addChild( this );
 
-  transformationsnum = os.size() - 1;
-  if ( transformationsnum == 0 ) return;
+  argsnum = os.size() - 1;
+  if ( argsnum == 0 ) return;
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
-    mtransformations[j] = *i++;
-    mtransformations[j]->addChild( this );
+    mtransformargs[j] = *i++;
+    mtransformargs[j]->addChild( this );
   }
 }
 
@@ -443,7 +443,7 @@ void RayTransform::calc()
   double transformation[3][3];
 
   mvalid = getProjectiveTransformation (
-     transformationsnum, mtransformations, transformation );
+     argsnum, mtransformargs, transformation );
 
   if ( mvalid )
   {
@@ -461,20 +461,20 @@ Objects RayTransform::getParents() const
 {
   Objects objs;
   objs.push_back( mray );
-  for ( int i = 0; i < transformationsnum; i++ )
+  for ( int i = 0; i < argsnum; i++ )
   {
-    objs.push_back( mtransformations[i] );
+    objs.push_back( mtransformargs[i] );
   }
   return objs;
 }
 
 RayTransform::RayTransform(const RayTransform& c)
-  : Ray( c ), mray( c.mray ), transformationsnum ( c.transformationsnum )
+  : Ray( c ), mray( c.mray ), argsnum ( c.argsnum )
 {
-  for ( int i = 0; i < c.transformationsnum; i++ )
+  for ( int i = 0; i < c.argsnum; i++ )
   {
-    mtransformations[i] = c.mtransformations[i];
-    mtransformations[i]->addChild(this);
+    mtransformargs[i] = c.mtransformargs[i];
+    mtransformargs[i]->addChild(this);
   }
   mray->addChild(this);
 }
@@ -493,7 +493,7 @@ Object::WantArgsResult RayTransform::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   assert ( size > 0 );
-  if ( size > MAXTRANSFORMATIONS + 1 ) return NotGood;
+  if ( size > MAXTRANSFORMARGS + 1 ) return NotGood;
   Objects::const_iterator i = os.begin();
 
   if ( ! (*i++)->toRay() ) return NotGood;
@@ -515,24 +515,24 @@ QString RayTransform::sUseText( const Objects& os, const Object* o)
 
 void RayTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  Object *transformations[MAXTRANSFORMATIONS];
+  Object *transformations[MAXTRANSFORMARGS];
   bool valid;
   double transformation[3][3];
 
-  int transformationsnum = os.size() - 1;
-  assert( transformationsnum <= MAXTRANSFORMATIONS );
-  if ( transformationsnum < 1 ) return;  // don't drawprelim if too few points
+  int argsnum = os.size() - 1;
+  assert( argsnum <= MAXTRANSFORMARGS );
+  if ( argsnum < 1 ) return;  // don't drawprelim if too few points
   Objects::const_iterator i = os.begin();
 
   assert ((*i)->toRay());
   Ray *ray = (*i++)->toRay();
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( transformationsnum,
+  valid = getProjectiveTransformation ( argsnum,
       transformations, transformation );
 
   if ( ! valid ) return;
@@ -549,20 +549,20 @@ void RayTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 RayTransform::RayTransform( const Objects& os )
   : Ray()
 {
-  assert( os.size() <= MAXTRANSFORMATIONS + 1 );
+  assert( os.size() <= MAXTRANSFORMARGS + 1 );
   Objects::const_iterator i = os.begin();
 
   assert( (*i)->toRay() );
   mray = (*i++)->toRay();
   mray->addChild( this );
 
-  transformationsnum = os.size() - 1;
-  if ( transformationsnum == 0 ) return;
+  argsnum = os.size() - 1;
+  if ( argsnum == 0 ) return;
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
-    mtransformations[j] = *i++;
-    mtransformations[j]->addChild( this );
+    mtransformargs[j] = *i++;
+    mtransformargs[j]->addChild( this );
   }
 }
 
@@ -576,7 +576,7 @@ void CircleTransform::calc()
   double transformation[3][3];
 
   mvalid = getProjectiveTransformation (
-     transformationsnum, mtransformations, transformation );
+     argsnum, mtransformargs, transformation );
 
   if ( ! isHomoteticTransformation (transformation) )
   {
@@ -601,20 +601,20 @@ Objects CircleTransform::getParents() const
 {
   Objects objs;
   objs.push_back( mcircle );
-  for ( int i = 0; i < transformationsnum; i++ )
+  for ( int i = 0; i < argsnum; i++ )
   {
-    objs.push_back( mtransformations[i] );
+    objs.push_back( mtransformargs[i] );
   }
   return objs;
 }
 
 CircleTransform::CircleTransform(const CircleTransform& c)
-  : Circle( c ), mcircle( c.mcircle ), transformationsnum ( c.transformationsnum )
+  : Circle( c ), mcircle( c.mcircle ), argsnum ( c.argsnum )
 {
-  for ( int i = 0; i < c.transformationsnum; i++ )
+  for ( int i = 0; i < c.argsnum; i++ )
   {
-    mtransformations[i] = c.mtransformations[i];
-    mtransformations[i]->addChild(this);
+    mtransformargs[i] = c.mtransformargs[i];
+    mtransformargs[i]->addChild(this);
   }
   mcircle->addChild(this);
 }
@@ -633,7 +633,7 @@ Object::WantArgsResult CircleTransform::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   assert ( size > 0 );
-  if ( size > MAXTRANSFORMATIONS + 1 ) return NotGood;
+  if ( size > MAXTRANSFORMARGS + 1 ) return NotGood;
   Objects::const_iterator i = os.begin();
 
   if ( ! (*i++)->toCircle() ) return NotGood;
@@ -655,24 +655,24 @@ QString CircleTransform::sUseText( const Objects& os, const Object* o)
 
 void CircleTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  Object *transformations[MAXTRANSFORMATIONS];
+  Object *transformations[MAXTRANSFORMARGS];
   bool valid;
   double transformation[3][3];
 
-  int transformationsnum = os.size() - 1;
-  assert( transformationsnum <= MAXTRANSFORMATIONS );
-  if ( transformationsnum < 1 ) return;  // don't drawprelim if too few points
+  int argsnum = os.size() - 1;
+  assert( argsnum <= MAXTRANSFORMARGS );
+  if ( argsnum < 1 ) return;  // don't drawprelim if too few points
   Objects::const_iterator i = os.begin();
 
   assert ((*i)->toCircle());
   Circle *circle = (*i++)->toCircle();
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( transformationsnum,
+  valid = getProjectiveTransformation ( argsnum,
       transformations, transformation );
 
   if ( ! valid ) return;
@@ -694,20 +694,20 @@ void CircleTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 CircleTransform::CircleTransform( const Objects& os )
   : Circle()
 {
-  assert( os.size() <= MAXTRANSFORMATIONS + 1 );
+  assert( os.size() <= MAXTRANSFORMARGS + 1 );
   Objects::const_iterator i = os.begin();
 
   assert( (*i)->toCircle() );
   mcircle = (*i++)->toCircle();
   mcircle->addChild( this );
 
-  transformationsnum = os.size() - 1;
-  if ( transformationsnum == 0 ) return;
+  argsnum = os.size() - 1;
+  if ( argsnum == 0 ) return;
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
-    mtransformations[j] = *i++;
-    mtransformations[j]->addChild( this );
+    mtransformargs[j] = *i++;
+    mtransformargs[j]->addChild( this );
   }
 }
 
@@ -721,7 +721,7 @@ void ConicTransform::calc()
   double transformation[3][3];
 
   mvalid = getProjectiveTransformation (
-     transformationsnum, mtransformations, transformation );
+     argsnum, mtransformargs, transformation );
 
   if ( mvalid )
   {
@@ -746,20 +746,20 @@ Objects ConicTransform::getParents() const
 {
   Objects objs;
   objs.push_back( mconic );
-  for ( int i = 0; i < transformationsnum; i++ )
+  for ( int i = 0; i < argsnum; i++ )
   {
-    objs.push_back( mtransformations[i] );
+    objs.push_back( mtransformargs[i] );
   }
   return objs;
 }
 
 ConicTransform::ConicTransform(const ConicTransform& c)
-  : Conic( c ), mconic( c.mconic ), transformationsnum ( c.transformationsnum )
+  : Conic( c ), mconic( c.mconic ), argsnum ( c.argsnum )
 {
-  for ( int i = 0; i < c.transformationsnum; i++ )
+  for ( int i = 0; i < c.argsnum; i++ )
   {
-    mtransformations[i] = c.mtransformations[i];
-    mtransformations[i]->addChild(this);
+    mtransformargs[i] = c.mtransformargs[i];
+    mtransformargs[i]->addChild(this);
   }
   mconic->addChild(this);
 }
@@ -778,7 +778,7 @@ Object::WantArgsResult ConicTransform::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   assert ( size > 0 );
-  if ( size > MAXTRANSFORMATIONS + 1 ) return NotGood;
+  if ( size > MAXTRANSFORMARGS + 1 ) return NotGood;
   Objects::const_iterator i = os.begin();
 
   if ( ! (*i++)->toConic() ) return NotGood;
@@ -800,24 +800,24 @@ QString ConicTransform::sUseText( const Objects& os, const Object* o)
 
 void ConicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  Object *transformations[MAXTRANSFORMATIONS];
+  Object *transformations[MAXTRANSFORMARGS];
   bool valid;
   double transformation[3][3];
 
-  int transformationsnum = os.size() - 1;
-  assert( transformationsnum <= MAXTRANSFORMATIONS );
-  if ( transformationsnum < 1 ) return;  // don't drawprelim if too few points
+  int argsnum = os.size() - 1;
+  assert( argsnum <= MAXTRANSFORMARGS );
+  if ( argsnum < 1 ) return;  // don't drawprelim if too few points
   Objects::const_iterator i = os.begin();
 
   assert ((*i)->toConic());
   Conic *conic = (*i++)->toConic();
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( transformationsnum,
+  valid = getProjectiveTransformation ( argsnum,
       transformations, transformation );
 
   if ( ! valid ) return;
@@ -834,20 +834,20 @@ void ConicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 ConicTransform::ConicTransform( const Objects& os )
   : Conic()
 {
-  assert( os.size() <= MAXTRANSFORMATIONS + 1 );
+  assert( os.size() <= MAXTRANSFORMARGS + 1 );
   Objects::const_iterator i = os.begin();
 
   assert( (*i)->toConic() );
   mconic = (*i++)->toConic();
   mconic->addChild( this );
 
-  transformationsnum = os.size() - 1;
-  if ( transformationsnum == 0 ) return;
+  argsnum = os.size() - 1;
+  if ( argsnum == 0 ) return;
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
-    mtransformations[j] = *i++;
-    mtransformations[j]->addChild( this );
+    mtransformargs[j] = *i++;
+    mtransformargs[j]->addChild( this );
   }
 }
 
@@ -861,7 +861,7 @@ void CubicTransform::calc()
   double transformation[3][3];
 
   mvalid = getProjectiveTransformation ( 
-     transformationsnum, mtransformations, transformation );
+     argsnum, mtransformargs, transformation );
 
   if ( mvalid )
   {
@@ -879,20 +879,20 @@ Objects CubicTransform::getParents() const
 {
   Objects objs;
   objs.push_back( mcubic );
-  for ( int i = 0; i < transformationsnum; i++ )
+  for ( int i = 0; i < argsnum; i++ )
   {
-    objs.push_back( mtransformations[i] );
+    objs.push_back( mtransformargs[i] );
   }
   return objs;
 }
 
 CubicTransform::CubicTransform(const CubicTransform& c)
-  : Cubic( c ), mcubic( c.mcubic ), transformationsnum ( c.transformationsnum )
+  : Cubic( c ), mcubic( c.mcubic ), argsnum ( c.argsnum )
 {
-  for ( int i = 0; i < c.transformationsnum; i++ )
+  for ( int i = 0; i < c.argsnum; i++ )
   {
-    mtransformations[i] = c.mtransformations[i];
-    mtransformations[i]->addChild(this);
+    mtransformargs[i] = c.mtransformargs[i];
+    mtransformargs[i]->addChild(this);
   }
   mcubic->addChild(this);
 }
@@ -911,7 +911,7 @@ Object::WantArgsResult CubicTransform::sWantArgs( const Objects& os )
 {
   uint size = os.size();
   assert ( size > 0 );
-  if ( size > MAXTRANSFORMATIONS + 1 ) return NotGood;
+  if ( size > MAXTRANSFORMARGS + 1 ) return NotGood;
   Objects::const_iterator i = os.begin();
 
   if ( ! (*i++)->toCubic() ) return NotGood;
@@ -928,7 +928,7 @@ Object::WantArgsResult CubicTransform::sWantArgs( const Objects& os )
     default: return NotGood;
   }
 
-//  if ( size == MAXTRANSFORMATIONS + 1 ) return Complete;
+//  if ( size == MAXTRANSFORMARGS + 1 ) return Complete;
 //
 //  if ( size <= 2 ) return NotComplete;
 //  if ( *(os.end()-1) == *(os.end()-2) ) return Complete;
@@ -945,27 +945,27 @@ QString CubicTransform::sUseText( const Objects& os, const Object* o)
 
 void CubicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  Object *transformations[MAXTRANSFORMATIONS];
+  Object *transformations[MAXTRANSFORMARGS];
   bool valid;
   double transformation[3][3];
 
-  int transformationsnum = os.size() - 1;
-  assert( transformationsnum <= MAXTRANSFORMATIONS );
-  if ( transformationsnum < 1 ) return;  // don't drawprelim if too few points
+  int argsnum = os.size() - 1;
+  assert( argsnum <= MAXTRANSFORMARGS );
+  if ( argsnum < 1 ) return;  // don't drawprelim if too few points
   Objects::const_iterator i = os.begin();
 
   assert ((*i)->toCubic());
   Cubic *cubic = (*i++)->toCubic();
  
-  if ( transformationsnum > 1 && *(os.end()-1) == *(os.end()-2)) 
-        transformationsnum--;
-  for ( int j = 0; j < transformationsnum; j++ )
+  if ( argsnum > 1 && *(os.end()-1) == *(os.end()-2)) 
+        argsnum--;
+  for ( int j = 0; j < argsnum; j++ )
   {
 //    assert( isTransformation (*i) );
     transformations[j] = *i++;
   }
 
-  valid = getProjectiveTransformation ( transformationsnum, 
+  valid = getProjectiveTransformation ( argsnum, 
       transformations, transformation );
 
   if ( ! valid ) return;
@@ -982,24 +982,24 @@ void CubicTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 CubicTransform::CubicTransform( const Objects& os )
   : Cubic()
 {
-  assert( os.size() <= MAXTRANSFORMATIONS + 1 );
+  assert( os.size() <= MAXTRANSFORMARGS + 1 );
   Objects::const_iterator i = os.begin();
 
   assert( (*i)->toCubic() );
   mcubic = (*i++)->toCubic();
   mcubic->addChild( this );
 
-  transformationsnum = os.size() - 1;
-  if ( transformationsnum == 0 ) return;
+  argsnum = os.size() - 1;
+  if ( argsnum == 0 ) return;
 
-  if ( transformationsnum >= 2 && *(os.end()-1) == *(os.end()-2) )
-    transformationsnum--;
+  if ( argsnum >= 2 && *(os.end()-1) == *(os.end()-2) )
+    argsnum--;
 
-  for ( int j = 0; j < transformationsnum; j++ )
+  for ( int j = 0; j < argsnum; j++ )
   {
 //    assert ( isTransformation(*i) );
-    mtransformations[j] = *i++;
-    mtransformations[j]->addChild( this );
+    mtransformargs[j] = *i++;
+    mtransformargs[j]->addChild( this );
   }
 }
 

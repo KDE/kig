@@ -29,10 +29,6 @@ enum tWantArgsResult { tComplete, tNotComplete, tNotGood };
 bool getProjectiveTransformation ( int transformationsnum, 
    Object *mtransformations[], double transformation[3][3] );
 
-bool getProjectiveTransformFromSimple ( Object *transform[], int& ipt,
-		    int transformsnum,
-                    double ltransformation[3][3] );
-
 tWantArgsResult WantTransformation ( Objects::const_iterator& i,
          const Objects& os );
 
