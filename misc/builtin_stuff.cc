@@ -428,6 +428,74 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_lineconicradical") );
 
+    /* ----------- start poligons --------- */
+
+    c = new PoligonBCVConstructor(
+	I18N_NOOP( "Equilateral triangle with given center" ),
+	I18N_NOOP( "Construct an equilateral triangle with a given center and vertex." ),
+	"equitrianglebcv",
+	4 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_equitrianglebcv" ) );
+
+    c = new PoligonBCVConstructor(
+	I18N_NOOP( "Square with given center" ),
+	I18N_NOOP( "Construct a square with a given center and vertex." ),
+	"squarebcv",
+	4 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_squarebcv" ) );
+
+    c = new PoligonBCVConstructor(
+	I18N_NOOP( "Pentagon with given center" ),
+	I18N_NOOP( "Construct a pentagon with a given center and vertex." ),
+	"pentagonbcv",
+	5 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_pentagonbcv" ) );
+
+    c = new PoligonBCVConstructor(
+	I18N_NOOP( "Hexagon with given center" ),
+	I18N_NOOP( "Construct a hexagon with a given center and vertex." ),
+	"hexagonbcv",
+	6 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_hexagonbcv" ) );
+
+    c = new PoligonBCVConstructor(
+	I18N_NOOP( "Eptagon with given center" ),
+	I18N_NOOP( "Construct an eptagon with a given center and vertex." ),
+	"poligonbcv",
+	7 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_eptagonbcv" ) );
+
+    c = new PoligonBCVConstructor(
+	I18N_NOOP( "Octagon with given center" ),
+	I18N_NOOP( "Construct an ogtagon with a given center and vertex." ),
+	"poligonbcv",
+	8 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_octagonbcv" ) );
+
+    c = new PoligonBCVConstructor(
+	I18N_NOOP( "Ennagon with given center" ),
+	I18N_NOOP( "Construct a ennagon with a given center and vertex." ),
+	"poligonbcv",
+	9 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_ennagonbcv" ) );
+
+    c = new PoligonBCVConstructor(
+	I18N_NOOP( "Decagon with given center" ),
+	I18N_NOOP( "Construct a decagon with a given center and vertex." ),
+	"poligonbcv",
+	10 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_decagonbcv" ) );
+
+    /* ----------- end poligons --------- */
+
     c = new LocusConstructor();
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_locus" ) );

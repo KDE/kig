@@ -67,6 +67,12 @@
 	<Action name="objects_new_arcbcpa" />
 	<ActionList name="user_circle_types" />
       </Menu>
+      <Menu name="new_poligon" icon="pentagonbcv">
+	<text>&amp;Poligons</text>
+	<Action name="objects_new_pentagonbcv" />
+	<Action name="objects_new_eptagonbcv" />
+	<Action name="objects_new_ennagonbcv" />
+      </Menu>
       <Menu name="new_vector" icon="vector">
 	<text>&amp;Vectors &amp;&amp; Segments</text>
 	<Action name="objects_new_segment" />

@@ -46,6 +46,7 @@
 #include "../objects/point_imp.h"
 #include "../objects/tangent_type.h"
 #include "../objects/centerofcurvature_type.h"
+#include "../objects/poligon_type.h"
 
 #include <qpen.h>
 
@@ -265,6 +266,103 @@ bool LocusConstructor::isTransform() const
 {
   return false;
 }
+
+/*
+ * poligon by center and vertex
+ */
+
+//static const ArgsParser::spec argsspectc[] = {
+//  { PointImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true },
+//  { PointImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true }
+//};
+
+PoligonBCVConstructor::PoligonBCVConstructor(
+  const char* descname, const char* desc, const char* iconfile,
+  int sides )
+  : StandardConstructorBase( descname, desc,
+                             iconfile, mparser ),
+    mtype( PoligonBCVType::instance() ), 
+    mparser( mtype->argsParser().without( IntImp::stype() ) ),
+    msides( sides )
+{
+}
+
+PoligonBCVConstructor::~PoligonBCVConstructor()
+{
+}
+
+void PoligonBCVConstructor::drawprelim( const ObjectDrawer& drawer, 
+                      KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+                      const KigDocument& doc) const
+{
+  if ( parents.size() != 2 ) return;
+  assert ( parents[0]->imp()->inherits( PointImp::stype() ) &&
+           parents[1]->imp()->inherits( PointImp::stype() ) );
+//  const Coordinate center =
+//    static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+//  const Coordinate vertex =
+//    static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
+
+  Args args;
+  std::transform( parents.begin(), parents.end(),
+               std::back_inserter( args ), std::mem_fun( &ObjectCalcer::imp ) );
+
+  IntImp sides( msides );
+  for ( int i = 1; i <= msides; i++ )
+  {
+    IntImp side( i );
+    args.push_back( &sides );
+    args.push_back( &side );
+    ObjectImp* data = mtype->calc( args, doc );
+    drawer.draw( *data, p, true );
+    delete data; data = 0;
+    args.pop_back();
+    args.pop_back();
+  };
+}
+
+std::vector<ObjectHolder*> PoligonBCVConstructor::build(
+  const std::vector<ObjectCalcer*>& os, KigDocument&, KigWidget& ) const
+{
+  assert( os.size() == 2 );
+  std::vector<ObjectHolder*> ret;
+  // ObjectCalcer* center = os[0];
+  ObjectConstCalcer* sidesint = new ObjectConstCalcer( new IntImp( msides ) );
+
+  for ( int side = 1; side <= msides; side++ )
+  {
+    std::vector<ObjectCalcer*> args = os;
+    args.push_back( sidesint );
+    args.push_back( new ObjectConstCalcer( new IntImp( side ) ) );
+    ret.push_back(
+      new ObjectHolder(
+        new ObjectTypeCalcer(
+          PoligonBCVType::instance(), args ) ) );
+  };
+  return ret;
+}
+
+QString PoligonBCVConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>&,
+                                          const KigDocument&, const KigWidget& ) const
+{
+  if ( msides == 5 )
+    return i18n( "Construct the pentagon with this center" );
+
+  return i18n( "Construct the poligon with this center" );
+}
+
+void PoligonBCVConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool PoligonBCVConstructor::isTransform() const
+{
+  return false;
+}
+
+/*
+ * ConicConic intersection...
+ */
 
 static const ArgsParser::spec argsspectc[] = {
   { ConicImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true },
