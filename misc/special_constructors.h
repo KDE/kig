@@ -33,4 +33,22 @@ public:
   Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
 };
 
+class LocusConstructor
+  : public StandardConstructorBase
+{
+  ArgParser margsparser;
+public:
+  LocusConstructor();
+  ~LocusConstructor();
+  // we override the wantArgs() function, since we need to see
+  // something about the objects that an ArgParser can't know about,
+  // namely, whether the first point is a constrained point...
+  const int wantArgs(
+    const Objects& os, const KigDocument& d,
+    const KigWidget& v
+    ) const;
+  void drawprelim( KigPainter& p, const Objects& parents ) const;
+  Objects build( const Objects& os, KigDocument& d, KigWidget& w ) const;
+};
+
 #endif

@@ -236,6 +236,10 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_lineconicradical") );
 
+    c = new LocusConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_locus" ) );
+
     {
       // intersection type..
       // There is one "toplevel" object_constructor, that is composed

@@ -21,6 +21,7 @@
 #include "bogus_imp.h"
 #include "other_imp.h"
 #include "point_imp.h"
+#include "locus_imp.h"
 
 #include <math.h>
 
@@ -80,3 +81,31 @@ ObjectType* VectorType::copy() const
 {
   return new AngleType;
 }
+
+static const struct ArgParser::spec argsspec1c[] =
+{
+  { ObjectImp::ID_CurveImp, 1 }
+};
+
+LocusType::LocusType( const ObjectHierarchy& hier )
+  : ObjectType( "locus", "Locus", argsspec1c, 1 ), mhier( hier )
+{
+}
+
+LocusType::~LocusType()
+{
+}
+
+ObjectType* LocusType::copy() const
+{
+  return new LocusType( mhier );
+}
+
+ObjectImp* LocusType::calc( const Args& args ) const
+{
+  if ( args.size() != 1 ) return new InvalidImp;
+  assert( args[0]->inherits( ObjectImp::ID_CurveImp ) );
+  const CurveImp* curveimp = static_cast<const CurveImp*>( args.front() );
+  return new LocusImp( curveimp, mhier );
+}
+

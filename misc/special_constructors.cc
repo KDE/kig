@@ -27,6 +27,8 @@
 #include "../objects/conic_types.h"
 #include "../objects/object_imp.h"
 #include "../objects/bogus_imp.h"
+#include "../objects/other_type.h"
+#include "../objects/locus_imp.h"
 
 #include <qpen.h>
 
@@ -88,4 +90,84 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
     ret.push_back( new Object( mtype->copy(), os, args ) );
   };
   return ret;
+}
+
+static const struct ArgParser::spec argsspecpp[] =
+{
+  { ObjectImp::ID_PointImp, 2 }
+};
+
+LocusConstructor::LocusConstructor()
+  : StandardConstructorBase( "Locus", "A locus", "locus", margsparser ),
+    margsparser( argsspecpp, 1 )
+{
+}
+
+LocusConstructor::~LocusConstructor()
+{
+}
+
+void LocusConstructor::drawprelim( KigPainter& p, const Objects& parents ) const
+{
+  // this function is rather ugly, but it is necessary to do it this
+  // way in order to play nice with Kig's design..
+
+  if ( parents.size() != 2 ) return;
+  const Object* constrained = parents.front();
+  const Object* moving = parents.back();
+  if ( constrained->parents().size() < 1 )
+  {
+    // moving is in fact the constrained point.. swap them..
+    moving = constrained;
+    constrained = parents.back();
+  };
+  assert( constrained->parents().size() == 1 );
+
+  const ObjectImp* oimp = constrained->parents().front()->imp();
+  assert( oimp->inherits( ObjectImp::ID_CurveImp ) );
+  const CurveImp* cimp = static_cast<const CurveImp*>( oimp );
+
+  ObjectHierarchy hier( Objects( const_cast<Object*>( constrained ) ),
+                        moving );
+
+  LocusImp limp( cimp, hier );
+  limp.draw( p );
+}
+
+const int LocusConstructor::wantArgs(
+ const Objects& os, const KigDocument&, const KigWidget&
+ ) const
+{
+  int ret = margsparser.check( os );
+  if ( ret == ArgsChecker::Invalid ) return ret;
+  else if ( os.size() != 2 ) return ret;
+  return ( os.front()->parents().size() == 1 ||
+           os.back()->parents().size() == 1 ) ?
+                                         ret : ArgsChecker::Invalid;
+}
+
+Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget& ) const
+{
+  assert ( parents.size() == 2 );
+  const Object* constrained = parents.front();
+  const Object* moving = parents.back();
+  if ( constrained->parents().size() < 1 )
+  {
+    // moving is in fact the constrained point.. swap them..
+    moving = constrained;
+    constrained = parents.back();
+  };
+  assert( constrained->parents().size() == 1 );
+
+  ObjectHierarchy hier( Objects( const_cast<Object*>( constrained ) ),
+                        moving );
+
+  Object* curve = const_cast<Object*>( constrained->parents().front() );
+  assert( curve->has( ObjectImp::ID_CurveImp ) );
+
+  LocusType* t = new LocusType( hier );
+  Objects args( curve );
+
+  Object* ret = new Object( t, args, Args() );
+  return Objects( ret );
 }

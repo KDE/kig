@@ -20,6 +20,7 @@
 #define KIG_MISC_OTHER_TYPE_H
 
 #include "base_type.h"
+#include "../misc/object_hierarchy.h"
 
 class AngleType
   : public ObjectABCType
@@ -39,6 +40,18 @@ public:
   ~VectorType();
   ObjectType* copy() const;
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+};
+
+class LocusType
+  : public ObjectType
+{
+  typedef ObjectType Parent;
+  ObjectHierarchy mhier;
+public:
+  LocusType( const ObjectHierarchy& mhier );
+  ~LocusType();
+  ObjectType* copy() const;
+  ObjectImp* calc( const Args& args ) const;
 };
 
 #endif
