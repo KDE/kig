@@ -37,6 +37,8 @@ class NormalMode;
 
 #include <qstring.h>
 
+class MType;
+
 /**
  * this is a class which represents a type to kig, it is necessary
  * to support user defined types etc.  This is an abstract class, use
@@ -49,6 +51,9 @@ class Type
   myvector<KAction*> mactions;
 public:
   virtual ~Type() {};
+
+  virtual MType* toMType() { return 0; };
+  virtual const MType* toMType() const { return 0; };
 
   /**
    * return the name of this type.  This is the same name as
@@ -207,6 +212,8 @@ public:
    */
   MType( const QDomElement& e );
   Object* build();
+  MType* toMType() { return this; };
+  const MType* toMType() const { return this; };
   const QCString fullName() const;
   const QCString baseTypeName() const;
   const QString descriptiveName() const;

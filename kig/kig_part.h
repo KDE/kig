@@ -34,6 +34,7 @@ class KURL;
 class KActionMenu;
 class KCommandHistory;
 class KAboutData;
+class KToolBar;
 
 class KigMode;
 class KigObjectsPopup;
@@ -181,6 +182,7 @@ public:
   KActionMenu* aMNewCircle;
   KActionMenu* aMNewLine;
   KActionMenu* aMNewOther;
+  KActionMenu* aMNewMacro;
 
   KAction* aCancelConstruction;
   KAction* aDeleteObjects;

@@ -21,6 +21,7 @@
     <Action name="new_point" />
     <Action name="new_circle" />
     <Action name="new_other" />
+    <Action name="new_macro" />
     <Separator />
     <Action name="delete_objects" />
     <Action name="cancel_construction" />
@@ -61,5 +62,5 @@
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
   <Action name="objects_new_locus" />
+  <Action name="new_macro" />
 </ToolBar>
-</kpartgui>

@@ -45,6 +45,8 @@
 #include <kparts/genericfactory.h>
 #include <kinstance.h>
 #include <kaction.h>
+#include <ktoolbar.h>
+#include <kmainwindow.h>
 #include <kstdaction.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
@@ -170,6 +172,10 @@ void KigDocument::setupActions()
   aMNewSegment = new KActionMenu(i18n("New Segment"), tmp,
                                  actionCollection(), "new_segment");
   aMNewSegment->setToolTip(i18n("Construct a new segment"));
+
+  aMNewMacro = new KActionMenu( i18n( "New Macro" ), 0, actionCollection(),
+                                "new_macro" );
+  aMNewMacro->setToolTip( i18n( "Construct a new object of a macro type" ) );
 
   aMNewOther = new KActionMenu(i18n("New Other"), 0, actionCollection(), "new_other");
   aMNewOther->setToolTip(i18n("Construct a new object of a special type"));
@@ -505,7 +511,9 @@ void KigDocument::addType( Type* t )
 {
   KAction* a = t->constructAction( this );
   if ( ! a ) return;
-  if (t->baseTypeName()==Point::sBaseTypeName())
+  if ( t->toMType() )
+    aMNewMacro->insert( a );
+  else if (t->baseTypeName()==Point::sBaseTypeName())
     aMNewPoint->insert( a );
   else if (t->baseTypeName() == Line::sBaseTypeName())
     aMNewLine->insert( a );
@@ -515,6 +523,7 @@ void KigDocument::addType( Type* t )
     aMNewSegment->insert( a );
   else
     aMNewOther->insert( a );
+
   aActions.push_back( a );
 }
 
@@ -528,6 +537,7 @@ void KigDocument::enableConstructActions( bool enabled )
   aMNewCircle->setEnabled( enabled );
   aMNewLine->setEnabled( enabled );
   aMNewOther->setEnabled( enabled );
+  aMNewMacro->setEnabled( enabled );
 }
 
 myvector<KigDocument*>& KigDocument::documents()
@@ -543,5 +553,6 @@ void KigDocument::removeAction( KAction* a )
   aMNewCircle->remove( a );
   aMNewLine->remove( a );
   aMNewOther->remove( a );
+  aMNewMacro->remove( a );
   aActions.remove( a );
 }

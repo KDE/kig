@@ -77,53 +77,59 @@ Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, co
   long double yd=dyd;
 
   long double nx, ny;
-  if ((fabsl(xb - xa)> 0.001) && (fabsl(xd - xc) > 0.001))
-    {
-        // we calc these separately to avoid rounding problems..
+  if ((fabsl(xb - xa)> 0.00001) && (fabsl(xd - xc) > 0.00001))
+  {
+    // we calc these separately to avoid rounding problems..
 //       long double a = (yb-ya)/(xb-xa);
 //       long double b = (yd-yc)/(xd-xc);
 //      nx = (yc - ya + xa*a - xc*b)/(a-b);
 //      ny = (nx-xa)*a + ya;
-      // now doesn't this look nice ? :)
-      nx = (yc - ya +
-            xa * ( yb - ya ) / ( xb - xa ) -
-            xc * ( yd - yc ) / ( xd-xc) )
-           * ( xb * xd -
-               xb * xc -
-               xa * xd +
-               xa * xc )
-           / ( yb * xd -
-               yb * xc -
-               ya * xd +
-               ya * xc
-               - ( yd * xb -
-                   yd * xa -
-                   yc * xb +
-                   yc * xa ) );
-      ny = (nx-xa)*(yb-ya)/(xb-xa)+ya;
-    }
-  else
+    // now doesn't this look nice ? :)
+    nx = (yc - ya +
+          xa * ( yb - ya ) / ( xb - xa ) -
+          xc * ( yd - yc ) / ( xd-xc) )
+         * ( xb * xd -
+             xb * xc -
+             xa * xd +
+             xa * xc )
+         / ( yb * xd -
+             yb * xc -
+             ya * xd +
+             ya * xc
+             - ( yd * xb -
+                 yd * xa -
+                 yc * xb +
+                 yc * xa ) );
+    ny = (nx-xa)*(yb-ya)/(xb-xa)+ya;
+  }
+  else // we would have had a divide by zero
+    if ( fabsl( yb-ya ) > 0.00001 && fabsl( yd-yc ) > 0.00001 )
     {
-      // we would have had a divide by zero
-      if ( fabsl( yb-ya ) > 0.001 && fabsl( yd-yc ) > 0.001 )
-      {
-        // so now, we first calc the y values, and then the x's...
-        long double a = (xb-xa)/(yb-ya);
-        long double b = (xd-xc)/(yd-yc);
-        ny = ( xc - xa + ya*a - yc*b ) / (a-b);
-        nx = ( ny - ya)*a + xa;
-      }
-      else
-	{
-	  if ( fabsl(yb-ya) <= 0.001 )
-	    {
-//	    FIXME: what to do now ?
-	      kdError() << "damn" << endl;
-	    };
-//          FIXME too: what here...
-	  kdError() << "damn" << endl;
-	};
+      // so now, we first calc the y values, and then the x's...
+      long double a = (xb-xa)/(yb-ya);
+      long double b = (xd-xc)/(yd-yc);
+      ny = ( xc - xa + ya*a - yc*b ) / (a-b);
+      nx = ( ny - ya)*a + xa;
     }
+    else if ( fabsl(yb-ya) > 0.00001 && fabsl( xd - xc ) > 0.00001 )
+    {
+      nx = xb; ny = yd;
+    }
+    else if ( fabsl( yd - yc ) > 0.00001 && fabsl( xb - xa ) > 0.00001 )
+    {
+      nx = xd; ny = yb;
+    }
+    else if ( fabsl( yd - yc ) <= 0.00001 && fabsl( xd - xc ) <= 0.00001 )
+    {
+      // this is a bogus value, but better that than a SIGNULL,
+      // right ?
+      nx = xd; ny = yd;
+    }
+    else
+    {
+      // same here
+      nx = xb; ny = yb;
+    };
   return Coordinate( nx, ny );
 };
 
