@@ -195,8 +195,8 @@ ObjectImp* ScalingOverCenterType::calc( const Args& targs, const KigDocument& ) 
 
 static const ArgParser::spec argsspecScalingOverLine[] =
 {
-  { ObjectImp::ID_LineImp, I18N_NOOP( "Scale over this line" ) },
   { ObjectImp::ID_SegmentImp, I18N_NOOP( "Scale by the length of this segment" ) },
+  { ObjectImp::ID_LineImp, I18N_NOOP( "Scale over this line" ) },
   { ObjectImp::ID_AnyImp, I18N_NOOP( "Scale this object" ) }
 };
 
@@ -221,8 +221,8 @@ ObjectImp* ScalingOverLineType::calc( const Args& targs, const KigDocument& ) co
   Args args = margsparser.parse( targs );
   if( !args[0] || ! args[1] ) return new InvalidImp;
 
-  LineData line = static_cast<const AbstractLineImp*>( args[0] )->data();
-  double ratio = static_cast<const SegmentImp*>( args[1] )->length();
+  double ratio = static_cast<const SegmentImp*>( args[0] )->length();
+  LineData line = static_cast<const AbstractLineImp*>( args[1] )->data();
 
   return args[2]->transform( Transformation::scaling( ratio, line ) );
 }
