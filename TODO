@@ -5,6 +5,9 @@
 
 * not too hard:
 
+- let the user select where the vector sum starts, instead of drawing
+   it in the start point of the first vector.
+
 - add support for work via command line without GUI. Possible options
   and uses:<br />
   -c, --convert-to-native filename.ext => Kig will convert the file in its own
@@ -27,7 +30,11 @@
    "Select a vector", so that the user is not confused, looking for an
    object he can't find ( maybe using a side list with an arrow for every
    step of the construction and a KToggleAction like "Settings->Show Side
-   List" to show/hide it ).
+   List" to show/hide it ).  In addition, maybe we should check
+   whether the required arguments are really there, before telling the
+   user to select them.  Then we could give an error telling the user
+   to first construct the other objects.  An exception should be made
+   for points of course.
 
 - Add the possibility to attach text label also to angles and vectors.
 
