@@ -30,51 +30,66 @@
 double calcCubicRoot ( double xmin, double xmax, double a,
       double b, double c, double d, int root, bool& valid, int& numroots )
 {
-  // renormalize: positive a
-  if ( a < 0 )
+  // renormalize: positive a and infinity norm = 1
+
+  double infnorm = fabs(a);
+  if ( infnorm < fabs(b) ) infnorm = fabs(b);
+  if ( infnorm < fabs(c) ) infnorm = fabs(c);
+  if ( infnorm < fabs(d) ) infnorm = fabs(d);
+  if ( a < 0 ) infnorm = -infnorm;
+  a /= infnorm;
+  b /= infnorm;
+  c /= infnorm;
+  d /= infnorm;
+
+  const double small = 1e-7;
+  valid = false;
+  if ( fabs(a) < small )
   {
-    a *= -1;
-    b *= -1;
-    c *= -1;
-    d *= -1;
+    if ( fabs(b) < small )
+    {
+      if ( fabs(c) < small )
+      { // degree = 0;
+	numroots = 0;
+	return 0.0;
+      }
+      // degree = 1
+      double rootval = -d/c;
+      numroots = 1;
+      if ( rootval < xmin || xmax < rootval ) numroots--;
+      if ( root > numroots ) return 0.0;
+      valid = true;
+      return rootval;
+    }
+    // degree = 2
+    if ( b < 0 ) { b = -b; c = -c; d = -d; }
+    double discrim = c*c - 4*b*d;
+    numroots = 2;
+    if ( discrim < 0 )
+    {
+      numroots = 0;
+      return 0.0;
+    }
+    discrim = sqrt(discrim)/(2*fabs(b));
+    double rootmiddle = -c/(2*b);
+    if ( rootmiddle - discrim < xmin ) numroots--;
+    if ( rootmiddle + discrim > xmax ) numroots--;
+    if ( rootmiddle + discrim < xmin ) numroots--;
+    if ( rootmiddle - discrim > xmax ) numroots--;
+    if ( root > numroots ) return 0.0;
+    valid = true;
+    if ( root == 2 || rootmiddle - discrim < xmin ) return rootmiddle + discrim;
+    return rootmiddle - discrim;
   }
 
   if ( xmin < -1e8 || xmax > 1e8 )
   {
-    const double small = 1e-7;
-    int degree = 3;
-    if ( fabs(a) < small*fabs(b) ||
-         fabs(a) < small*fabs(c) ||
-         fabs(a) < small*fabs(d) )
-    {
-      degree = 2;
-      if ( fabs(b) < small*fabs(c) ||
-           fabs(b) < small*fabs(d) )
-      {
-        degree = 1;
-      }
-    }
 
-    // and a bound for all the real roots:
+    // compute a bound for all the real roots:
 
-    switch (degree)
-    {
-      case 3:
-      xmax = fabs(d/a);
-      if ( fabs(c/a) + 1 > xmax ) xmax = fabs(c/a) + 1;
-      if ( fabs(b/a) + 1 > xmax ) xmax = fabs(b/a) + 1;
-      break;
-
-      case 2:
-      xmax = fabs(d/b);
-      if ( fabs(c/b) + 1 > xmax ) xmax = fabs(c/b) + 1;
-      break;
-
-      case 1:
-      default:
-      xmax = fabs(d/c) + 1;
-      break;
-    }
+    xmax = fabs(d/a);
+    if ( fabs(c/a) + 1 > xmax ) xmax = fabs(c/a) + 1;
+    if ( fabs(b/a) + 1 > xmax ) xmax = fabs(b/a) + 1;
     xmin = -xmax;
   }
 
