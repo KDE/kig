@@ -242,6 +242,11 @@ const ConstrainedPointType* ConstrainedPointType::instance()
   return &t;
 }
 
+bool FixedPointType::inherits( int type ) const
+{
+  return type == ID_FixedPointType;
+}
+
 const FixedPointType* FixedPointType::instance()
 {
   static const FixedPointType t;

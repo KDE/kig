@@ -554,6 +554,232 @@ bool PolygonSideTypeConstructor::isTransform() const
 }
 
 /*
+ * polygon by center and vertex (experimental)
+ */
+
+PolygonBCVConstructor::PolygonBCVConstructor()
+  : mtype( PoligonBCVType::instance() )
+{
+}
+
+PolygonBCVConstructor::~PolygonBCVConstructor()
+{
+}
+
+const QString PolygonBCVConstructor::descriptiveName() const
+{
+  return i18n("Regular polygon with given center (experimental)");
+}
+
+const QString PolygonBCVConstructor::description() const
+{
+  return i18n("Construct a regular polygon with a given center and vertex (experimental)");
+}
+
+const QCString PolygonBCVConstructor::iconFileName( const bool ) const
+{
+  return "hexagonbcv";
+}
+
+const bool PolygonBCVConstructor::isAlreadySelectedOK(
+ const std::vector<ObjectCalcer*>&, const int& ) const
+{
+  return false;
+}
+
+const int PolygonBCVConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+                                           const KigDocument&,
+                                           const KigWidget& ) const
+{
+  if ( os.size() > 3 ) return ArgsParser::Invalid;
+
+  for ( uint i = 0; i < os.size(); ++i )
+    if ( ! ( os[i]->imp()->inherits( PointImp::stype() ) ) ) return ArgsParser::Invalid;
+
+  if ( os.size() == 3 )
+  {
+    assert( dynamic_cast<const ObjectTypeCalcer*>( os[2] ) );
+    ObjectTypeCalcer* cntrl = static_cast<ObjectTypeCalcer*>( os[2] );
+    if ( cntrl->type()->inherits( ObjectType::ID_FixedPointType ) )
+      return ArgsParser::Complete;
+    return ArgsParser::Invalid;
+  }
+
+  return ArgsParser::Valid;
+}
+
+void PolygonBCVConstructor::handleArgs(
+  const std::vector<ObjectCalcer*>& os, KigPart& d,
+  KigWidget& v ) const
+{
+  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
+  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    (*i)->calc( d.document() );
+  }
+
+  d.addObjects( bos );
+}
+
+void PolygonBCVConstructor::handlePrelim(
+  KigPainter& p, const std::vector<ObjectCalcer*>& os,
+  const KigDocument& d, const KigWidget&
+  ) const
+{
+  if ( os.size() < 2 ) return;
+
+  for ( uint i = 0; i < 2; i++ )
+  {
+    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
+  }
+
+  Coordinate c = static_cast<const PointImp*>( os[0]->imp() )->coordinate();
+  Coordinate v = static_cast<const PointImp*>( os[1]->imp() )->coordinate();
+
+  int nsides = 6;
+  if ( os.size() == 3 )
+  {
+    assert ( os[2]->imp()->inherits( PointImp::stype() ) );
+    Coordinate cntrl = static_cast<const PointImp*>( os[2]->imp() )->coordinate();
+    nsides = computeNsides( c, v, cntrl );
+  }
+    
+  std::vector<ObjectCalcer*> args;
+  args.push_back( os[0] );
+  args.push_back( os[1] );
+  ObjectConstCalcer* ns = new ObjectConstCalcer( new IntImp( nsides ) );
+  args.push_back( ns );
+
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
+
+  ObjectDrawer drawer( Qt::red );
+  drawprelim( drawer, p, args, d );
+}
+
+std::vector<ObjectHolder*> PolygonBCVConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
+{
+  assert ( parents.size() == 3 );
+  std::vector<ObjectCalcer*> args;
+
+  Coordinate c = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  Coordinate v = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
+  Coordinate cntrl = static_cast<const PointImp*>( parents[2]->imp() )->coordinate();
+
+  args.push_back( parents[0] );
+  args.push_back( parents[1] );
+  int nsides = computeNsides( c, v, cntrl );
+  ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( nsides ) );
+  args.push_back( d );
+
+  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
+  ObjectHolder* h = new ObjectHolder( calcer );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( h );
+  return ret;
+}
+
+QString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
+                                          const KigDocument&, const KigWidget& ) const
+{
+  switch ( os.size() )
+  {
+    case 1:
+    return i18n( "Construct a regular polygon with this center" );
+    break;
+
+    case 2:
+    return i18n( "Construct a regular polygon with this vertex" );
+    break;
+
+    case 3:
+    Coordinate c = static_cast<const PointImp*>( os[0]->imp() )->coordinate();
+    Coordinate v = static_cast<const PointImp*>( os[1]->imp() )->coordinate();
+    Coordinate cntrl = static_cast<const PointImp*>( os[2]->imp() )->coordinate();
+    int nsides = computeNsides( c, v, cntrl );
+
+    QString result = QString( 
+      i18n( "Adjust the number of sides (%1)" )
+      ).arg( nsides );
+    return result;
+    break;
+  }
+
+  return "";
+}
+
+QString PolygonBCVConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>& os, const KigDocument&,
+  const KigWidget& ) const
+{
+  switch ( os.size() )
+  {
+    case 1:
+    return i18n( "Select the center of the new polygon..." );
+    break;
+
+    case 2:
+    return i18n( "Select a vertex for the new polygon..." );
+    break;
+
+    case 3:
+    return i18n( "Move the cursor to get the desired number of sides..." );
+    break;
+  }
+
+  return "";
+}
+
+void PolygonBCVConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+                                   const KigDocument& doc ) const
+{
+  if ( parents.size() != 3 ) return;
+
+  assert ( parents[0]->imp()->inherits( PointImp::stype() ) &&
+           parents[1]->imp()->inherits( PointImp::stype() ) &&
+           parents[2]->imp()->inherits( IntImp::stype() ) );
+
+  Args args;
+  std::transform( parents.begin(), parents.end(),
+               std::back_inserter( args ), std::mem_fun( &ObjectCalcer::imp ) );
+
+  ObjectImp* data = mtype->calc( args, doc );
+  drawer.draw( *data, p, true );
+  delete data;
+  data = 0;
+}
+
+void PolygonBCVConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool PolygonBCVConstructor::isTransform() const
+{
+  return false;
+}
+
+int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
+        const Coordinate& v, const Coordinate& cntrl ) const
+{
+  Coordinate lvect = v - c;
+  Coordinate rvect = cntrl - c;
+
+  double angle = atan2( rvect.y, rvect.x ) - atan2( lvect.y, lvect.x );
+  angle = fabs( angle/(2*M_PI) );
+  while ( angle > 1 ) angle -= 1;
+  if ( angle > 0.5 ) angle = 1 - angle;
+ 
+  int nsides = int( 1.0/angle + 0.5 );
+  if ( nsides < 3 ) nsides = 3;
+  if ( nsides > 100 ) nsides = 100;     // well, 100 seems large enough!
+  return nsides;
+}
+
+/*
  * poligon by center and vertex
  */
 

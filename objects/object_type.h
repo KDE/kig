@@ -39,7 +39,8 @@ public:
 
   enum {
     ID_ConstrainedPointType,
-    ID_LocusType
+    ID_LocusType,
+    ID_FixedPointType
   };
 
   virtual bool inherits( int type ) const;

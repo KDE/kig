@@ -69,6 +69,7 @@
 	<text>Poly&amp;gons</text>
 	<Action name="objects_new_trianglebtp" />
 	<Action name="objects_new_polygonbnp" />
+	<Action name="objects_new_polygonbcv" />
         <Menu name="new_regularpolygon" icon="hexagonbcv">
 	  <text>Regular Polygons</text>
 	  <Action name="objects_new_equitrianglebcv" />

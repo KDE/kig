@@ -514,6 +514,10 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_decagonbcv" ) );
 
+    c = new PolygonBCVConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_polygonbcv" ) );
+
     c = new PolygonVertexTypeConstructor();
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_polygonvertices" ));

@@ -32,6 +32,8 @@ class FixedPointType
 public:
   static const FixedPointType* instance();
 
+  bool inherits( int type ) const;
+
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   bool canMove( const ObjectTypeCalcer& ourobj ) const;
   bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
