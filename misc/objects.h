@@ -18,6 +18,9 @@
  USA
 **/
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #ifndef OBJECTS_CPP
 #define OBJECTS_CPP
