@@ -176,7 +176,7 @@ const ObjectImpType* PolygonBNPType::resultId() const
   return PolygonImp::stype();
 }
 
-const ObjectImpType* PolygonBNPType::impRequirement( const ObjectImp* obj, const Args& parents ) const
+const ObjectImpType* PolygonBNPType::impRequirement( const ObjectImp*, const Args& ) const
 {
   return PointImp::stype();
 }
@@ -326,7 +326,7 @@ const ObjectImpType* PolygonBCVType::resultId() const
   return SegmentImp::stype();
 }
 
-const ObjectImpType* PolygonBCVType::impRequirement( const ObjectImp* obj, const Args& parents ) const
+const ObjectImpType* PolygonBCVType::impRequirement( const ObjectImp* obj, const Args& ) const
 {
   if ( obj->inherits( PointImp::stype() ) )
     return PointImp::stype();

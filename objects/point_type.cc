@@ -328,7 +328,7 @@ const ObjectImpType* ConstrainedPointType::resultId() const
   return PointImp::stype();
 }
 
-const ObjectImpType* CursorPointType::impRequirement( const ObjectImp* o, const Args& parents ) const
+const ObjectImpType* CursorPointType::impRequirement( const ObjectImp* o, const Args& ) const
 {
   if ( o->inherits( DoubleImp::stype() ) )
     return DoubleImp::stype();
@@ -565,7 +565,7 @@ const ObjectImpType* MeasureTransportType::resultId() const
   return PointImp::stype();
 }
 
-const ObjectImpType* MeasureTransportType::impRequirement( const ObjectImp* obj, const Args& parents ) const
+const ObjectImpType* MeasureTransportType::impRequirement( const ObjectImp* obj, const Args& ) const
 {
   if ( obj->inherits( PointImp::stype () )  )
     return PointImp::stype ();
