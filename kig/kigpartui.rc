@@ -102,7 +102,7 @@
       <Action name="cancel_construction" />
     </Menu>
     <Menu name="new_transformation">
-      <text>&amp;Transformation</text>
+      <text>&amp;Transformations</text>
       <Action name="objects_new_translation" />
       <Action name="objects_new_pointreflection" />
       <Action name="objects_new_linereflection" />
