@@ -45,13 +45,30 @@ ObjectImp* PolygonImp::transform( const Transformation& t ) const
 {
 /*mp:
  * any projective transformation makes sense for a polygon,
- * since segments transform into segments.
+ * since segments transform into segments (but see below...)
  * of course regular polygons will no longer be
  * regular if t is not homothetic.
+ * for projective transformations the polygon could transform to
+ * an unbounded nonconnected polygon; this happens if some side
+ * of the polygon crosses the critical line that maps to infinity
+ * this can be easily checked using the getProjectiveIndicator
+ * function
  */
 //  if ( ! t.isHomothetic() )
 //    return new InvalidImp();
 
+  if ( ! t.isAffine() )     /* in this case we need a more extensive test */
+  {
+    double maxp = -1.0;
+    double minp = 1.0;
+    for ( uint i = 0; i < mpoints.size(); ++i )
+    {
+      double p = t.getProjectiveIndicator( mpoints[i] );
+      if ( p > maxp ) maxp = p;
+      if ( p < minp ) minp = p;
+    }
+    if ( maxp > 0 && minp < 0 ) return new InvalidImp;
+  }
   std::vector<Coordinate> np;
   for ( uint i = 0; i < mpoints.size(); ++i )
   {

@@ -248,7 +248,7 @@ const Transformation Transformation::identity()
   for ( int i = 0; i < 3; ++i )
     for ( int j = 0; j < 3; ++j )
       ret.mdata[i][j] = ( i == j ? 1 : 0 );
-  ret.mIsHomothety = true;
+  ret.mIsHomothety = ret.mIsAffine = true;
   return ret;
 }
 
@@ -261,7 +261,7 @@ const Transformation Transformation::scalingOverPoint( double factor, const Coor
   ret.mdata[0][0] = 1;
   ret.mdata[1][0] = center.x - factor * center.x;
   ret.mdata[2][0] = center.y - factor * center.y;
-  ret.mIsHomothety = true;
+  ret.mIsHomothety = ret.mIsAffine = true;
   return ret;
 }
 
@@ -273,14 +273,14 @@ const Transformation Transformation::translation( const Coordinate& c )
 
   // this is already set in the identity() constructor, but just for
   // clarity..
-  ret.mIsHomothety = true;
+  ret.mIsHomothety = ret.mIsAffine = true;
   return ret;
 }
 
 const Transformation Transformation::pointReflection( const Coordinate& c )
 {
   Transformation ret = scalingOverPoint( -1, c );
-  ret.mIsHomothety = true;
+  ret.mIsHomothety = ret.mIsAffine = true;
   return ret;
 }
 
@@ -301,6 +301,10 @@ const Transformation operator*( const Transformation& a, const Transformation& b
 
   ret.mIsHomothety = a.mIsHomothety && b.mIsHomothety;
 
+  // combination of two affinities is affine..
+
+  ret.mIsAffine = a.mIsAffine && b.mIsAffine;
+
   return ret;
 }
 
@@ -308,7 +312,7 @@ const Transformation Transformation::lineReflection( const LineData& l )
 {
   Transformation ret = scalingOverLine( -1, l );
   // a reflection is a homothety...
-  ret.mIsHomothety = true;
+  ret.mIsHomothety = ret.mIsAffine = true;
   return ret;
 }
 
@@ -328,6 +332,7 @@ const Transformation Transformation::scalingOverLine( double factor, const LineD
 
   // domi: is 1e-8 a good value ?
   ret.mIsHomothety = ( fabs( factor - 1 ) < 1e-8 || fabs ( factor + 1 ) < 1e-8 );
+  ret.mIsAffine = true;
   return ret;
 }
 
@@ -374,7 +379,7 @@ const Transformation Transformation::harmonicHomology(
   ret.mdata[2][1]  = a*cy;
   ret.mdata[2][2]  = b*cy - scalprod;
 
-  ret.mIsHomothety = false;
+  ret.mIsHomothety = ret.mIsAffine = false;
   return ret;
 }
 
@@ -465,6 +470,7 @@ const Transformation Transformation::affinityGI3P(
   ret.mdata[2][2] = solution[6];
 
   ret.mIsHomothety = false;
+  ret.mIsAffine = true;
   return ret;
 }
 
@@ -532,7 +538,7 @@ const Transformation Transformation::projectivityGI4P(
     }
   }
 
-  ret.mIsHomothety = false;
+  ret.mIsHomothety = ret.mIsAffine = false;
   return ret;
 }
 
@@ -572,7 +578,7 @@ const Transformation Transformation::castShadow(
   ret.mdata[1][2] = -modlightsrc.x;
   ret.mdata[2][2] =  -t;
 
-  ret.mIsHomothety = false;
+  ret.mIsHomothety = ret.mIsAffine = false;
   return sym*ret*sym;
 //  return translation( t )*ret*translation( -t );
 }
@@ -593,7 +599,7 @@ const Transformation Transformation::projectiveRotation(
   ret.mdata[2][1] =  cosalpha*d.x*d.y - d.x*d.y;
   ret.mdata[2][2] =  cosalpha*d.y*d.y + d.x*d.x;
 
-  ret.mIsHomothety = false;
+  ret.mIsHomothety = ret.mIsAffine = false;
   return translation( t )*ret*translation( -t );
 }
 
@@ -635,7 +641,7 @@ const Transformation Transformation::rotation( double alpha, const Coordinate& c
 
   // this is already set in the identity() constructor, but just for
   // clarity..
-  ret.mIsHomothety = true;
+  ret.mIsHomothety = ret.mIsAffine = true;
 
   return ret;
 }
@@ -643,6 +649,28 @@ const Transformation Transformation::rotation( double alpha, const Coordinate& c
 bool Transformation::isHomothetic() const
 {
   return mIsHomothety;
+}
+
+bool Transformation::isAffine() const
+{
+  return mIsAffine;
+}
+
+/*
+ *mp:
+ * this function has the property that it changes sign if computed
+ * on two points that lie on either sides with respect to the critical
+ * line (this is the line that goes to the line at infinity).
+ * For affine transformations the result has always the same sign.
+ * NOTE: the result is *not* invariant under rescaling of all elements
+ * of the transformation matrix.
+ * The typical use is to determine whether a segment is transformed
+ * into a segment or a couple of half-lines.
+ */
+
+double Transformation::getProjectiveIndicator( const Coordinate& c ) const
+{
+  return mdata[0][0] + mdata[0][1]*c.x + mdata[0][2]*c.y;
 }
 
 // assuming that this is an affine transformation, return its
@@ -680,8 +708,9 @@ const Transformation Transformation::inverse( bool& valid ) const
 
   valid = Invert3by3matrix( mdata, ret.mdata );
 
-  // the inverse of a homothety is a homothety..
+  // the inverse of a homothety is a homothety, same for affinities..
   ret.mIsHomothety = mIsHomothety;
+  ret.mIsAffine = mIsAffine;
 
   return ret;
 }
@@ -708,6 +737,11 @@ Transformation::Transformation( double data[3][3], bool ishomothety )
   for ( int i = 0; i < 3; ++i )
     for ( int j = 0; j < 3; ++j )
       mdata[i][j] = data[i][j];
+
+  //mp: a test for affinity is used to initialize mIsAffine...
+  mIsAffine = false;
+  if ( fabs(mdata[0][1]) + fabs(mdata[0][2]) < 1e-8 * fabs(mdata[0][0]) )
+    mIsAffine = true;
 }
 
 bool operator==( const Transformation& lhs, const Transformation& rhs )
@@ -737,5 +771,6 @@ const Transformation Transformation::similitude(
   ret.mdata[2][2] = factor*costheta;
   // fails for factor == infinity
   //assert( ( ret.apply( center ) - center ).length() < 1e-5 );
+  ret.mIsHomothety = ret.mIsAffine = true;
   return ret;
 }

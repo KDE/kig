@@ -348,6 +348,12 @@ double LineImp::getParam( const Coordinate& point, const KigDocument& ) const
 
 ObjectImp* SegmentImp::transform( const Transformation& t ) const
 {
+  if ( ! t.isAffine() )    /* we need to check the position of the two points */
+  {
+    if ( t.getProjectiveIndicator( mdata.a ) *
+         t.getProjectiveIndicator( mdata.b ) < 0 )
+      return new InvalidImp();
+  }
   Coordinate na = t.apply( mdata.a );
   Coordinate nb = t.apply( mdata.b );
   if( na.valid() && nb.valid() ) return new SegmentImp( na, nb );
@@ -364,6 +370,13 @@ ObjectImp* LineImp::transform( const Transformation& t ) const
 
 ObjectImp* RayImp::transform( const Transformation& t ) const
 {
+  if ( ! t.isAffine() )    /* we need to check the position of the two points */
+  {
+    double pa = t.getProjectiveIndicator( mdata.a );
+    double pb = t.getProjectiveIndicator( mdata.b );
+    if ( pa < 0 ) pb = -pb;
+    if ( pb < fabs (pa) ) return new InvalidImp();
+  }
   Coordinate na = t.apply( mdata.a );
   Coordinate nb = t.apply( mdata.b );
   if ( na.valid() && nb.valid() ) return new RayImp( na, nb );

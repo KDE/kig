@@ -38,6 +38,7 @@ class Transformation
 {
   double mdata[3][3];
   bool mIsHomothety;
+  bool mIsAffine;
   Transformation();
 public:
   ~Transformation();
@@ -50,9 +51,11 @@ public:
   const Coordinate apply( const Coordinate& c ) const;
 
   /**
-   * Returns whether this is a homothetic transformation.
+   * Returns whether this is a homothetic (affine) transformation.
    */
   bool isHomothetic() const;
+  bool isAffine() const;
+  double getProjectiveIndicator( const Coordinate& c ) const;
   double getAffineDeterminant() const;
   double getRotationAngle() const;
   const Coordinate apply2by2only( const Coordinate& c ) const;

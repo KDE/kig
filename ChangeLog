@@ -1,3 +1,14 @@
+2004-12-28  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* polygons are filled; no boundary drawn
+
+	* fixed a problem when trasforming a segment with
+	a projective (nonaffine) transformation; in certain
+	cases the result is invalid (no longer a segment)
+
+	* fixed a bug in similitude transformation as suggested by 
+	Pino Toscano
+
 2004-12-27  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Fix bug #95637: Scrolling does not work during construction of
