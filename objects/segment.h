@@ -76,6 +76,11 @@ public:
 
   const Coordinate p1() const;
   const Coordinate p2() const;
+
+  virtual const uint numberOfProperties();
+  virtual const Property property( uint which );
+  virtual const QStringList properties();
+
 protected:
   Point* mpa, *mpb;
   Coordinate pwwsm; // point where we started moving

@@ -145,26 +145,4 @@ public:
 			KigWidget* view );
 };
 
-class TextLabelConstructionMode
-  : public KigMode
-{
-  // point last clicked..
-  QPoint mplc;
-
-  NormalMode* mprev;
-public:
-  TextLabelConstructionMode( NormalMode* b, KigDocument* d );
-  ~TextLabelConstructionMode();
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
-
-  void mouseMoved( QMouseEvent*, KigWidget* );
-
-  void enableActions();
-
-  void cancelConstruction();
-
-  void killMode();
-};
-
 #endif

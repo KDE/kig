@@ -29,6 +29,8 @@
 #include <qnamespace.h>
 #include <qcolor.h>
 
+#include "property.h"
+
 #include "../misc/objects.h"
 
 class AbstractLine;
@@ -69,6 +71,8 @@ private:
   static myvector<Type*> susertypes;
   static Types stypes;
 public:
+  typedef std::map<QCString, QString> prop_map;
+
   // we have two types of types :)
   // 1 Builtin types: these are the C++ object types + perhaps in the
   //   future some macro types that we distribute along with Kig.
@@ -104,7 +108,7 @@ public:
   static const myvector<Type*>& builtinTypes();
   static const myvector<Type*>& userTypes();
   static Object* newObject( const QCString& type, const Objects& parents,
-                            const std::map<QCString, QString>& params );
+                            const prop_map& params );
 public:
   // if you want to use StdConstructionMode, you need a constructor
   // like Object( const Objects& args ); See the functions wantArgs(),
@@ -119,6 +123,15 @@ public:
    */
   virtual Object* copy() = 0;
 
+  // Properties are a generic way to retrieve object information.
+  // They are mainly used for showing textlabels with information
+  // about an object ( e.g. This segment is %1 units long ).
+  // every object has a number of properties.
+  // the Object class itself defines some properties too..
+  virtual const uint numberOfProperties();
+  virtual const Property property( uint which );
+  virtual const QStringList properties();
+
   // only object types that have "parameters" need this, a parameter
   // is something which you cannot calculate from your parents,
   // e.g. an independent point's params are its coordinates, a
@@ -126,7 +139,7 @@ public:
   // Objects that reimplement this should call Object::getParams() and
   // setParams() after you've handled your params.. --> to set params
   // common to all objects like the color...
-  virtual std::map<QCString,QString> getParams ();
+  virtual prop_map getParams ();
   virtual void setParams ( const std::map<QCString,QString>& );
 
   // getting types from this object: easier to type and supports

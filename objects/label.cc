@@ -21,29 +21,75 @@
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 
-#include "../modes/constructing.h"
+#include "../modes/label.h"
+
+#include <sstream>
+#include <algorithm>
+
+namespace {
+  class getObj
+    : public unary_function<TextLabelProperty, Object*>
+  {
+  public:
+    inline Object* operator()( const TextLabelProperty& p ) const { return p.obj; };
+  };
+};
 
 TextLabel::TextLabel( const Objects& os )
-  : Object()
+  : Object(), mprops( os.begin(), os.end() )
 {
-  assert( os.empty() );
+  // STL rocks ! ;)
+  using std::for_each;
+  using std::bind2nd;
+  using std::mem_fun;
+  for_each( os.begin(), os.end(),
+            bind2nd(
+              mem_fun( &Object::addChild ),
+              this )
+    );
 }
+
 TextLabel::TextLabel( const TextLabel& l )
-  : Object( l ), mtext( l.mtext ), mcoord( l.mcoord )
+  : Object( l ), mprops( l.mprops ), mtext( l.mtext ), mcoord( l.mcoord )
 {
+  // this one rocks even more :)
+  using std::for_each;
+  using std::bind2nd;
+  using std::mem_fun;
+  using std::compose1;
+  for_each( mprops.begin(), mprops.end(),
+            compose1(
+              bind2nd(
+                mem_fun( &Object::addChild ),
+                this ),
+              getObj() )
+    );
+// // now isn't this way cooler than the following.. ;)
+//   for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
+//     i->obj->addChild( this );
 }
+
 TextLabel::~TextLabel()
 {
 }
+
 std::map<QCString,QString> TextLabel::getParams()
 {
   std::map<QCString, QString> ret;
   ret["text"] = mtext;
   ret["coordinate-x"] = mcoord.x;
   ret["coordinate-y"] = mcoord.y;
+  int count = 0;
+  for ( propvect::const_iterator i = mprops.begin(); i != mprops.end(); ++i, ++count )
+  {
+    std::ostringstream os;
+    os << "property-index-for-object-" << count;
+    ret[os.str().c_str()] = i->index;
+  };
   return ret;
 }
-void TextLabel::setParams( const std::map<QCString,QString>& m )
+
+void TextLabel::setParams( const prop_map& m )
 {
   mtext = m.find("text")->second;
   bool ok = true;
@@ -51,13 +97,29 @@ void TextLabel::setParams( const std::map<QCString,QString>& m )
     m.find("coordinate-x")->second.toDouble( &ok ),
     m.find("coordinate-y")->second.toDouble( &ok ) );
   Q_ASSERT( ok );
+
+  int count = 0;
+  for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i, ++count )
+  {
+    std::ostringstream os;
+    os << "property-index-for-object-" << count;
+    prop_map::const_iterator pi = m.find( os.str().c_str() );
+    assert( pi != m.end() );
+    bool ok = true;
+    int index = pi->second.toInt( &ok );
+    assert( ok );
+    i->index = index;
+  };
 }
+
 void TextLabel::draw(KigPainter& p, bool ) const
 {
   kdDebug() << k_funcinfo << endl;
-  p.drawSimpleText( mcoord, mtext );
+  p.setColor( mColor );
+  p.drawSimpleText( mcoord, mcurtext );
   mrwdoi = p.simpleBoundingRect( mcoord, mtext );
 }
+
 bool TextLabel::contains( const Coordinate& o, const ScreenInfo& ) const
 {
   return mrwdoi.contains( o );
@@ -151,14 +213,38 @@ void TextLabel::drawPrelim(KigPainter&, const Object* ) const
 {
   // noop
 }
+
 void TextLabel::calc( const ScreenInfo& )
 {
-  // noop
+  mcurtext = mtext;
+  for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
+  {
+    assert( i->index != static_cast<uint>( -1 ) );
+    Property prop = i->obj->property( i->index );
+    switch( prop.type() )
+    {
+    case Property::Double:
+      mcurtext = mcurtext.arg( prop.doubleData() );
+      break;
+    case Property::String:
+      mcurtext = mcurtext.arg( prop.qstringData() );
+      break;
+    default:
+      assert( false );
+    };
+  };
 }
+
+namespace {
+  Object* getObj( const TextLabelProperty& p ) { return p.obj; };
+};
 
 Objects TextLabel::getParents() const
 {
-  return Objects();
+  Objects ret;
+  std::transform( mprops.begin(), mprops.end(), std::back_inserter( ret ), getObj );
+  return ret;
+
 }
 const QString TextLabel::vDescription() const
 {
@@ -169,7 +255,9 @@ const QString TextLabel::sDescription()
   return i18n("A piece of text you can add to the document..");
 }
 
-TextLabel::TextLabel( const QString text, const Coordinate c )
-  : Object(), mtext( text ), mcoord( c )
+TextLabel::TextLabel( const QString text, const Coordinate c, const propvect& props )
+  : Object(), mprops( props ), mtext( text ), mcoord( c )
 {
+  for ( propvect::iterator i = mprops.begin(); i != mprops.end(); ++i )
+    i->obj->addChild( this );
 }

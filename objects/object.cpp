@@ -229,3 +229,22 @@ void Object::doPopupAction( int, int, KigDocument*, KigWidget*, NormalMode* )
 {
   return;
 }
+
+const QStringList Object::properties()
+{
+  QStringList s;
+  s << i18n( "Base Object Type" );
+  assert( s.size() == Object::numberOfProperties() );
+  return s;
+}
+
+const Property Object::property( uint which )
+{
+  assert( which == 0 );
+  return Property( vTBaseTypeName() );
+}
+
+const uint Object::numberOfProperties()
+{
+  return 1;
+}

@@ -24,13 +24,17 @@
 #include "../misc/coordinate.h"
 #include "../misc/rect.h"
 
+#include <vector>
+
 class TextLabel
   : public Object
 {
 public:
+  typedef std::vector<TextLabelProperty> propvect;
+
   TextLabel( const Objects& os );
   TextLabel( const TextLabel& l );
-  TextLabel( const QString text, const Coordinate c );
+  TextLabel( const QString text, const Coordinate c, const propvect& props );
   ~TextLabel();
 
   TextLabel* copy();
@@ -77,7 +81,9 @@ public:
   Objects getParents() const;
 
 private:
+  propvect mprops;
   QString mtext;
+  QString mcurtext;
   Coordinate mcoord;
   Coordinate mpwwmt;
   /**

@@ -293,59 +293,6 @@ void PointConstructionMode::cancelConstruction()
   d->setMode( p );
 }
 
-TextLabelConstructionMode::~TextLabelConstructionMode()
-{
-}
-
-TextLabelConstructionMode::TextLabelConstructionMode( NormalMode* b,
-                                                      KigDocument* d )
-  : KigMode( d ), mprev( b )
-{
-}
-void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
-{
-  mplc = e->pos();
-}
-
-void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
-{
-  if ( ( mplc - e->pos() ).manhattanLength() > 4 ) return;
-  Coordinate c = v->fromScreen( mplc );
-  bool ok;
-  QString text = KLineEditDlg::getText(
-    i18n( "Choose Text" ), QString::fromUtf8(""), 0, &ok, v );
-  if ( ! ok ) { killMode(); return; };
-  mDoc->addObject( new TextLabel( text, c ) );
-  v->redrawScreen();
-  killMode();
-  v->setCursor( KCursor::crossCursor() );
-}
-
-void TextLabelConstructionMode::killMode()
-{
-  NormalMode* p = mprev;
-  KigDocument* d = mDoc;
-  delete this;
-  d->setMode( p );
-}
-
-void TextLabelConstructionMode::cancelConstruction()
-{
-  killMode();
-}
-
-void TextLabelConstructionMode::enableActions()
-{
-  KigMode::enableActions();
-
-  mDoc->aCancelConstruction->setEnabled( true );
-}
-
-void TextLabelConstructionMode::mouseMoved( QMouseEvent*, KigWidget* v )
-{
-  v->setCursor( KCursor::crossCursor() );
-}
-
 MultiConstructionMode::~MultiConstructionMode()
 {
 }

@@ -97,7 +97,6 @@ signals:
 public:
   void emitStatusBarText( const QString& text );
 
-  /***************** some slots *************************/
 public slots:
   void fileSaveAs();
   void fileSave();

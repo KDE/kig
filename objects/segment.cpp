@@ -235,3 +235,24 @@ const Coordinate Segment::p2() const
 {
   return mpb->getCoord();
 }
+
+const uint Segment::numberOfProperties()
+{
+  return AbstractLine::numberOfProperties() + 1;
+}
+
+const Property Segment::property( uint which )
+{
+  if ( which < AbstractLine::numberOfProperties() )
+    return AbstractLine::property( which );
+  assert( which == AbstractLine::numberOfProperties() );
+  return Property( ( p2() - p1() ).length() );
+}
+
+const QStringList Segment::properties()
+{
+  QStringList s = AbstractLine::properties();
+  s << "Length";
+  assert( s.size() == Segment::numberOfProperties() );
+  return s;
+}
