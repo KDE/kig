@@ -238,7 +238,7 @@ const Coordinate Segment::p2() const
 
 const uint Segment::numberOfProperties()
 {
-  return AbstractLine::numberOfProperties() + 2;
+  return AbstractLine::numberOfProperties() + 1;
 }
 
 const Property Segment::property( uint which )
@@ -249,10 +249,6 @@ const Property Segment::property( uint which )
   {
     return Property( ( p2() - p1() ).length() );
   }
-  else if ( which == AbstractLine::numberOfProperties() + 1 )
-  {
-    return Property( equationString() );
-  }
   else assert( false );
 }
 
@@ -260,22 +256,6 @@ const QStringList Segment::properties()
 {
   QStringList s = AbstractLine::properties();
   s << i18n( "Length" );
-  s << i18n( "Equation" );
   assert( s.size() == Segment::numberOfProperties() );
   return s;
-}
-
-const QString Segment::equationString() const
-{
-  QString ret = QString::fromUtf8( "y = %1x + %2" );
-  Coordinate p = p1();
-  Coordinate q = p2();
-
-  double m = ( q.y - p.y ) / ( q.x - p.x );
-  double r = ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;
-
-  ret = ret.arg( m, 0, 'g', 3 );
-  ret = ret.arg( r, 0, 'g', 3 );
-
-  return ret;
 }

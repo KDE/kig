@@ -43,6 +43,7 @@ public:
   const uint numberOfProperties();
   const Property property( uint which );
   const QStringList properties();
+  const QString equationString() const;
 };
 
 #endif

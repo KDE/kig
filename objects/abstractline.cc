@@ -37,7 +37,7 @@ const Coordinate AbstractLine::direction()
 
 const uint AbstractLine::numberOfProperties()
 {
-  return Curve::numberOfProperties() + 1;
+  return Curve::numberOfProperties() + 2;
 }
 
 const Property AbstractLine::property( uint which )
@@ -46,6 +46,8 @@ const Property AbstractLine::property( uint which )
   if ( which < Curve::numberOfProperties() ) return Curve::property( which );
   if ( which == Curve::numberOfProperties() )
     return Property( slope() );
+  else if ( which == Curve::numberOfProperties() + 1 )
+    return Property( equationString() );
   else assert( false );
 }
 
@@ -53,6 +55,7 @@ const QStringList AbstractLine::properties()
 {
   QStringList l = Curve::properties();
   l << i18n( "Slope" );
+  l << i18n( "Equation" );
   assert( l.size() == AbstractLine::numberOfProperties() );
   return l;
 }
@@ -61,4 +64,19 @@ double AbstractLine::slope() const
 {
   Coordinate diff = p2() - p1();
   return diff.y / diff.x;
+}
+
+const QString AbstractLine::equationString() const
+{
+  QString ret = QString::fromUtf8( "y = %1x + %2" );
+  Coordinate p = p1();
+  Coordinate q = p2();
+
+  double m = ( q.y - p.y ) / ( q.x - p.x );
+  double r = ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;
+
+  ret = ret.arg( m, 0, 'g', 3 );
+  ret = ret.arg( r, 0, 'g', 3 );
+
+  return ret;
 }
