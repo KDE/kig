@@ -1,4 +1,4 @@
-EXTRA_DIST = exit.png filenew.png fileopen.png fileprint.png filesave.png help.png window_fullscreen.png angle.png arc.png areaCircle.png attacher.png baseCircle.png bisection.png circle.png circumference.png distance.png eraser.png line.png mirrorPoint.png move.png moveGrid.png parallel.png perpendicular.png point.png pointer.png pointOfConc.png pointOnLine.png pointxy.png ray.png rotation.png segment.png slope.png text.png tracer.png triangle.png vector.png paint.png line1.png line2.png line3.png line4.png line5.png point1.png point10.png point11.png point12.png point13.png point14.png point2.png point3.png point4.png point5.png point6.png point7.png point8.png point9.png sizer.png 
+EXTRA_DIST = exit.png filenew.png fileopen.png fileprint.png filesave.png help.png window_fullscreen.png angle.png arc.png areaCircle.png attacher.png baseCircle.png bisection.png circle.png circumference.png distance.png eraser.png line.png mirrorPoint.png move.png moveGrid.png parallel.png perpendicular.png point.png pointer.png intersection.png pointOnLine.png pointxy.png ray.png rotation.png segment.png slope.png text.png tracer.png triangle.png vector.png paint.png line1.png line2.png line3.png line4.png line5.png point1.png point10.png point11.png point12.png point13.png point14.png point2.png point3.png point4.png point5.png point6.png point7.png point8.png point9.png sizer.png 
 
 install-data-local:
 	$(mkinstalldirs) $(kde_datadir)/kig/toolbar/
@@ -52,7 +52,7 @@ install-data-local:
 	$(mkinstalldirs) $(kde_datadir)/kig/toolbar/
 	$(INSTALL_DATA) $(srcdir)/pointer.png $(kde_datadir)/kig/toolbar/pointer.png
 	$(mkinstalldirs) $(kde_datadir)/kig/toolbar/
-	$(INSTALL_DATA) $(srcdir)/pointOfConc.png $(kde_datadir)/kig/toolbar/pointOfConc.png
+	$(INSTALL_DATA) $(srcdir)/intersection.png $(kde_datadir)/kig/toolbar/intersection.png
 	$(mkinstalldirs) $(kde_datadir)/kig/toolbar/
 	$(INSTALL_DATA) $(srcdir)/pointOnLine.png $(kde_datadir)/kig/toolbar/pointOnLine.png
 	$(mkinstalldirs) $(kde_datadir)/kig/toolbar/
@@ -142,7 +142,7 @@ uninstall-local:
 	-rm -f $(kde_datadir)/kig/toolbar/perpendicular.png
 	-rm -f $(kde_datadir)/kig/toolbar/point.png
 	-rm -f $(kde_datadir)/kig/toolbar/pointer.png
-	-rm -f $(kde_datadir)/kig/toolbar/pointOfConc.png
+	-rm -f $(kde_datadir)/kig/toolbar/intersection.png
 	-rm -f $(kde_datadir)/kig/toolbar/pointOnLine.png
 	-rm -f $(kde_datadir)/kig/toolbar/pointxy.png
 	-rm -f $(kde_datadir)/kig/toolbar/ray.png
