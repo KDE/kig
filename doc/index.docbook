@@ -444,8 +444,8 @@
       <para>
 	To use the new macro type, click its button on the toolbar or
 	use the <menuchoice><guimenu>Objects</guimenu></menuchoice>
-	menu or even its button on the toolbar.  Building a macro
-	object is just like constructing any other object.
+	menu. Building a macro object is just like constructing any other 
+	object.
       </para>
       <screenshot>
 	<screeninfo>Using your new type</screeninfo>
@@ -495,7 +495,7 @@
       </para>
       <para>
         To start constructing a text label, simply press the Text
-        Label button in the Kig toolbar or select
+        Label button in the &kig; toolbar or select
         <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
         </guisubmenu><guimenuitem>Text label</guimenuitem>
         </menuchoice> in the menu bar.
@@ -656,7 +656,7 @@
     </para>
     <para>
       Again, I will try to explain this by example.  Suppose you were
-      not aware of the Kig builtin MidPoint type, and you wanted to
+      not aware of the &kig; builtin MidPoint type, and you wanted to
       show the midpoint of two given points.  You would then click on
       the <guibutton>Python Script</guibutton> button in the toolbar,
       or select <menuchoice> <guimenu>Objects</guimenu>
@@ -678,8 +678,8 @@
     <para>
       The first thing you have to do is select the arguments for the
       script object.  In our example, this means the two points of
-      which we want to show the midpoint.  Select them in the Kig main
-      window, and click <guibutton>Next</guibutton> to proceed.
+      which we want to show the midpoint.  Select them in the &kig; 
+      main window, and click <guibutton>Next</guibutton> to proceed.
     </para>
     <para>
       Now you are presented with a text edit box where you can enter
@@ -733,10 +733,10 @@
     </screenshot>
     <para>
       If you now click the <guibutton>Finish</guibutton> button, then
-      the new object will appear in the Kig document.  If you move one
-      of the points, then the newly created point will move along with
-      them..  A lot more powerful objects can be built in this way,
-      you are encouraged to try it out..
+      the new object will appear in the &kig; document. If you move 
+      one of the points, then the newly created point will move along 
+      with them. A lot more powerful objects can be built in this way,
+      you are encouraged to try it out.
     </para>
     <screenshot>
       <screeninfo>Constructed a Script Object</screeninfo>
@@ -754,11 +754,11 @@
       </mediaobject>
     </screenshot>
     <para>
-      All objects in Kig can be used in the Python code.  As we have
+      All objects in &kig; can be used in the Python code. As we have
       seen above, points are of the Point class, and you can use
       e.g. the Point.coordinate() method.  You can also return all
       kinds of objects, not just Points.  Many more classes and
-      methods are available from the Kig Python code, and a more
+      methods are available from the &kig; Python code, and a more
       complete reference on them is provided <ulink
       url="http://edu.kde.org/kig/manual/scripting-api/index.html">here</ulink>.
     </para>
