@@ -176,6 +176,8 @@ void KigDocument::setupActions()
 
   a = KStdAction::fitToPage( m_widget, SLOT( recenterScreen() ),
                                          actionCollection() );
+  // grr.. why isn't there an icon for this..
+  a->setIcon( "new" );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
@@ -187,8 +189,10 @@ void KigDocument::setupActions()
   a->setToolTip( i18n( "View this document full-screen." ) );
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
+  // TODO: an icon for this..
+  tmp = l->loadIcon( "new", KIcon::User );
   a = new KAction(
-    i18n( "Select Shown Area" ), 0, m_widget, SLOT( zoomRect() ),
+    i18n( "Select Shown Area" ), tmp, 0, m_widget, SLOT( zoomRect() ),
     actionCollection(), "view_select_shown_rect" );
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );

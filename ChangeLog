@@ -1,3 +1,10 @@
+2003-06-03  Dominique Devriese  <devriese@kde.org>
+
+	* bugfix: show default icons for actions that don't have any.. (
+		fixes bug #59283 )
+
+	* release Kig 0.5.1
+
 2003-05-30  Dominique Devriese  <devriese@kde.org>
 
 	* Add an option to select the part of the screen that should be
@@ -16,7 +23,6 @@
 	* implement another of Stephan Binner's suggestions: in the set
 		coordinate system popup, show a checked mark next to the 
 		current coordinate system..
-
 
 	* fix a bug that caused the "circle by center and point" type to
 		not be visible..
