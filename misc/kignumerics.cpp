@@ -231,7 +231,12 @@ double calcCubicRootwithNewton ( double xmin, double xmax, double a,
         p = fval/fpval;
         x -= p;
       }
-      assert (iterations < 100);
+      if( iterations >= 100 )
+      {
+        // Newton scheme did not converge..
+        // we should end up with an invalid Coordinate
+        return HUGE_VAL;
+      };
       return x;
     }
   }
