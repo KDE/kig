@@ -31,8 +31,6 @@
 
 #include <qstringlist.h>
 
-#include <klineeditdlg.h>
-
 static const ArgParser::spec arggspeccs[] =
 {
   { ObjectImp::ID_IntImp, "UNUSED" },
