@@ -311,9 +311,9 @@ const Coordinate calcCircleLineIntersect( const Coordinate& c,
 };
 
 const Coordinate calcConicLineIntersect( const double* coeffs,
-                                          const Coordinate& a,
-                                          const Coordinate& b,
-                                          int which, bool& valid )
+                                         const Coordinate& a,
+                                         const Coordinate& b,
+                                         int which, bool& valid )
 {
   double aa = coeffs[0];
   double bb = coeffs[1];
