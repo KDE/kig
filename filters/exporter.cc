@@ -37,6 +37,15 @@
 #include <kmessagebox.h>
 #include <qfile.h>
 #include <qtextstream.h>
+#include <qcolor.h>
+
+#include <map>
+
+// we need this for storing colors in a std::map..
+static bool operator<( const QColor& a, const QColor& b )
+{
+  return a.rgb() < b.rgb();
+};
 
 class ExporterAction
   : public KAction
@@ -136,6 +145,9 @@ class XFigExportImpVisitor
   RealObject* mcurobj;
   const KigWidget& mw;
   Rect msr;
+  std::map<const QColor, int> mcolormap;
+  int mnextcolorid;
+  int mcurcolorid;
 
   QPoint convertCoord( const Coordinate& c )
     {
@@ -152,10 +164,21 @@ class XFigExportImpVisitor
   void emitLine( const Coordinate& a, const Coordinate& b, int width, bool vector = false );
 public:
   void visit( Object* obj );
+  void mapColor( Object* obj );
 
   XFigExportImpVisitor( QTextStream& s, const KigWidget& w )
-    : mstream( s ), mw( w ), msr( mw.showingRect() )
+    : mstream( s ), mw( w ), msr( mw.showingRect() ),
+      mnextcolorid( 32 )
     {
+      // predefined colors in XFig..
+      mcolormap[Qt::black] = 0;
+      mcolormap[Qt::blue] = 1;
+      mcolormap[Qt::green] = 2;
+      mcolormap[Qt::cyan] = 3;
+      mcolormap[Qt::red] = 4;
+      mcolormap[Qt::magenta] = 5;
+      mcolormap[Qt::yellow] = 6;
+      mcolormap[Qt::white] = 7;
     };
   void visit( const LineImp* imp );
   void visit( const PointImp* imp );
@@ -171,10 +194,26 @@ public:
   void visit( const ArcImp* imp );
 };
 
+void XFigExportImpVisitor::mapColor( Object* obj )
+{
+  if ( ! obj->shown() ) return;
+  QColor color = obj->color();
+  if ( mcolormap.find( color ) == mcolormap.end() )
+  {
+    int newcolorid = mnextcolorid++;
+    mstream << "0 "
+            << newcolorid << " "
+            << color.name() << "\n";
+    mcolormap[color] = newcolorid;
+  }
+};
+
 void XFigExportImpVisitor::visit( Object* obj )
 {
   if ( ! obj->shown() ) return;
   assert( obj->inherits( Object::ID_RealObject ) );
+  assert( mcolormap.find( obj->color() ) != mcolormap.end() );
+  mcurcolorid = mcolormap[ obj->color() ];
   mcurobj = static_cast<RealObject*>( obj );
   obj->imp()->visit( this );
 };
@@ -196,8 +235,8 @@ void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, i
   mstream << "1 "; // polyline subtype;
   mstream << "0 "; // line_style: Solid
   mstream << width << " "; // thickness: *1/80 inch
-  mstream << "0 "; // TODO pen_color: default
-  mstream << "7 "; // TODO fill_color: white
+  mstream << mcurcolorid << " "; // pen_color: default
+  mstream << "7 "; // fill_color: white
   mstream << "50 "; // depth: 50
   mstream << "-1 "; // pen_style: unused by XFig
   mstream << "-1 "; // area_fill: no fill
@@ -243,8 +282,8 @@ void XFigExportImpVisitor::visit( const PointImp* imp )
           << "3 "  // circle defined by radius subtype
           << "0 "; // line_style: Solid
   mstream << "1 " << " " // thickness: *1/80 inch
-          << "0 " // TODO pen_color: default
-          << "0 " // TODO fill_color: black
+          << mcurcolorid << " " // pen_color: default
+          << mcurcolorid << " " // fill_color: black
           << "50 " // depth: 50
           << "-1 " // pen_style: unused by XFig
           << "20 " // area_fill: full saturation of the fill color
@@ -267,7 +306,7 @@ void XFigExportImpVisitor::visit( const TextImp* imp )
 
   mstream << "4 "    // text type
           << "0 "    // subtype: left justfied
-          << "0 "    // TODO: color: black
+          << mcurcolorid << " "    // color: black
           << "50 "   // depth: 50
           << "-1 "   // pen style: unused
           << "0 "    // font: default
@@ -309,8 +348,8 @@ void XFigExportImpVisitor::visit( const CircleImp* imp )
   int width = mcurobj->width();
   if ( width == -1 ) width = 1;
   mstream << width << " " // thickness: *1/80 inch
-          << "0 " // TODO pen_color: default
-          << "7 " // TODO fill_color: white
+          << mcurcolorid << " " // pen_color: default
+          << "7 " // fill_color: white
           << "50 " // depth: 50
           << "-1 " // pen_style: unused by XFig
           << "-1 " // area_fill: no fill
@@ -363,7 +402,7 @@ void XFigExportImpVisitor::visit( const ConicImp* imp )
             << "1 "  // subtype: ellipse defined by readii
             << "0 "  // line_style: Solid
             << width << " " // thickness
-            << "0 "  // pen_color: black
+            << mcurcolorid << " "  // pen_color: black
             << "7 "  // fill_color: white
             << "50 " // depth: 50
             << "-1 " // pan_style: not used
@@ -430,8 +469,8 @@ void XFigExportImpVisitor::visit( const ArcImp* imp )
   int width = mcurobj->width();
   if ( width == -1 ) width = 1;
   mstream << width << " " // thickness: *1/80 inch
-          << "0 " // TODO pen_color: default
-          << "7 " // TODO fill_color: white
+          << mcurcolorid << " " // pen_color: default
+          << "7 " // fill_color: white
           << "50 " // depth: 50
           << "-1 " // pen_style: unused by XFig
           << "-1 " // area_fill: no fill
@@ -484,6 +523,13 @@ void XFigExporter::run( const KigDocument& doc, KigWidget& w )
 
   Objects os = doc.objects();
   XFigExportImpVisitor visitor( stream, w );
+
+  for ( Objects::const_iterator i = os.begin();
+        i != os.end(); ++i )
+  {
+    visitor.mapColor( *i );
+  };
+
   for ( Objects::const_iterator i = os.begin();
         i != os.end(); ++i )
   {
