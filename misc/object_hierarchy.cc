@@ -20,12 +20,14 @@
 
 #include "../objects/object.h"
 #include "../objects/object_imp.h"
+#include "../objects/bogus_imp.h"
 #include "../objects/object_type.h"
 
 class ObjectHierarchy::Node
 {
 public:
   virtual ~Node();
+  virtual Node* copy() const = 0;
   virtual void apply( std::vector<const ObjectImp*>& stack, int loc ) const = 0;
 };
 
@@ -40,6 +42,7 @@ class PushStackNode
 public:
   PushStackNode( ObjectImp* imp ) : mimp( imp ) {};
   ~PushStackNode();
+  Node* copy() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc ) const;
 };
@@ -47,6 +50,11 @@ public:
 PushStackNode::~PushStackNode()
 {
   delete mimp;
+};
+
+ObjectHierarchy::Node* PushStackNode::copy() const
+{
+  return new PushStackNode( mimp->copy() );
 };
 
 void PushStackNode::apply( std::vector<const ObjectImp*>& stack,
@@ -61,9 +69,10 @@ class ApplyTypeNode
   ObjectType* mtype;
   std::vector<int> mparents;
 public:
-  ApplyTypeNode( ObjectType* type, std::vector<int>& parents )
+  ApplyTypeNode( ObjectType* type, const std::vector<int>& parents )
     : mtype( type ), mparents( parents ) {};
   ~ApplyTypeNode();
+  Node* copy() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc ) const;
 };
@@ -72,6 +81,11 @@ ApplyTypeNode::~ApplyTypeNode()
 {
   delete mtype;
 }
+
+ObjectHierarchy::Node* ApplyTypeNode::copy() const
+{
+  return new ApplyTypeNode( mtype->copy(), mparents );
+};
 
 void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
                            int loc ) const
@@ -93,9 +107,9 @@ ObjectImp* ObjectHierarchy::calc( const Args& a ) const
   {
     mnodes[i]->apply( stack, mnumberofargs + i );
   };
-  for ( uint i = 0; i < stack.size() - 1; ++i )
+  for ( uint i = mnumberofargs; i < stack.size() - 1; ++i )
     delete stack[i];
-  if ( stack.empty() ) return 0;
+  if ( stack.size() <= mnumberofargs ) return new InvalidImp;
   else return const_cast<ObjectImp*>( stack.back() );
 }
 
@@ -110,22 +124,29 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
   for ( uint i = 0; i < from.size(); ++i )
     if ( from[i] == o ) return i;
   Objects p( o->parents() );
+  Args args = o->fixedArgs();
   bool neednode = false;
   std::vector<int> parents;
-  parents.resize( p.size(), -1 );
+  parents.resize( p.size() + args.size(), -1 );
   for ( uint i = 0; i < p.size(); ++i )
   {
-    parents[i] = visit( p[i], from );
-    neednode |= parents[i] != -1;
+    int v = visit( p[i], from );
+    parents[args.size() + i] = v;
+    neednode |= (v != -1);
   };
   if ( ! neednode ) return -1;
 
-  for ( uint i = 0; i < parents.size(); ++i )
+  for ( uint i = 0; i < args.size(); ++i )
   {
-    if ( parents[i] == -1 )
+    mnodes.push_back( new PushStackNode( args[i]->copy() ) );
+    parents[i] = mnumberofargs + mnodes.size() - 1;
+  };
+  for ( uint i = 0; i < p.size(); ++i )
+  {
+    if ( parents[args.size() + i] == -1 )
     {
       mnodes.push_back( new PushStackNode( p[i]->imp()->copy() ) );
-      parents[i] = mnumberofargs + mnodes.size() - 1;
+      parents[args.size() + i] = mnumberofargs + mnodes.size() - 1;
     };
   };
   mnodes.push_back( new ApplyTypeNode( o->type()->copy(), parents ) );
@@ -135,4 +156,12 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
 ObjectHierarchy::~ObjectHierarchy()
 {
   for ( uint i = 0; i < mnodes.size(); ++i ) delete mnodes[i];
+}
+
+ObjectHierarchy::ObjectHierarchy( const ObjectHierarchy& h )
+  : mnumberofargs( h.mnumberofargs )
+{
+  mnodes.reserve( h.mnodes.size() );
+  for ( uint i = 0; i < h.mnodes.size(); ++i )
+    mnodes.push_back( h.mnodes[i]->copy() );
 }
