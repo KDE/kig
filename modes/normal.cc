@@ -330,9 +330,9 @@ void NormalMode::showHidden()
 
 void NormalMode::newMacro()
 {
-  DefineMacroMode* m = new DefineMacroMode( mDoc, this );
+//   DefineMacroMode* m = new DefineMacroMode( mDoc, this );
 
-  mDoc->setMode( m );
+//   mDoc->setMode( m );
 }
 
 void NormalMode::objectsAdded()
