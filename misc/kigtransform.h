@@ -24,6 +24,8 @@
 
 #include "coordinate.h"
 
+class LineData;
+
 class Transformation
 {
   double mdata[3][3];
