@@ -373,7 +373,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     if ( ret == ArgsChecker::Invalid ) continue;
     if ( ( menu == NormalModePopupObjects::TransformMenu && (*i)->isTransform() ) ||
          ( menu == NormalModePopupObjects::ConstructMenu && ret == ArgsChecker::Complete ) ||
-         ( menu == NormalModePopupObjects::StartMenu && ret == ArgsChecker::Valid )
+         ( menu == NormalModePopupObjects::StartMenu && ret == ArgsChecker::Valid && ! (*i)->isTransform() )
         )
     {
       popup.addAction( menu, (*i)->descriptiveName(), nextfree++ );
