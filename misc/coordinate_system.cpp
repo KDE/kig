@@ -515,7 +515,8 @@ QStringList CoordinateSystemFactory::names()
 {
   QStringList ret;
   ret << i18n( "&Euclidean" )
-      << i18n( "&Polar" );
+      << i18n( "&Polar" )
+      << i18n( "&Invisible" );
   return ret;
 }
 
@@ -525,11 +526,14 @@ CoordinateSystem* CoordinateSystemFactory::build( int which )
     return new EuclideanCoords;
   else if ( which == Polar )
     return new PolarCoords;
+  else if ( which == Invisible )
+    return new InvisibleCoords;
   else return 0;
 }
 
 static const char euclideanTypeString[] = "Euclidean";
 static const char polarTypeString[] = "Polar";
+static const char invisibleTypeString[] = "Invisible";
 
 CoordinateSystem* CoordinateSystemFactory::build( const char* type )
 {
@@ -537,6 +541,8 @@ CoordinateSystem* CoordinateSystemFactory::build( const char* type )
     return new EuclideanCoords;
   if ( std::string( polarTypeString ) == type )
     return new PolarCoords;
+  if ( std::string( invisibleTypeString ) == type )
+    return new InvisibleCoords;
   else return 0;
 }
 
@@ -568,6 +574,8 @@ QString CoordinateSystemFactory::setCoordinateSystemStatement( int id )
     return i18n( "Set Euclidean Coordinate System" );
   case Polar:
     return i18n( "Set Polar Coordinate System" );
+  case Invisible:
+    return i18n( "Set Invisible Coordinate System" );
   default:
     assert( false );
     return QString::null;
@@ -641,4 +649,34 @@ Coordinate PolarCoords::snapToGrid( const Coordinate& c,
   double dist = c.length();
   double ndist = qRound( dist / d ) * d;
   return c.normalize( ndist );
+}
+
+InvisibleCoords::InvisibleCoords()
+{
+}
+
+InvisibleCoords::~InvisibleCoords()
+{
+}
+
+void InvisibleCoords::drawGrid( KigPainter&, bool,
+                                bool ) const
+{
+  // no-op...
+}
+
+Coordinate InvisibleCoords::snapToGrid( const Coordinate& c,
+                                        const KigWidget& ) const
+{
+  return c;
+}
+
+const char* InvisibleCoords::type() const
+{
+  return invisibleTypeString;
+}
+
+int InvisibleCoords::id() const
+{
+  return CoordinateSystemFactory::Invisible;
 }

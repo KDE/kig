@@ -36,7 +36,7 @@ class QWidget;
 class CoordinateSystemFactory
 {
 public:
-  enum { Euclidean = 0, Polar = 1 };
+  enum { Euclidean = 0, Polar = 1, Invisible = 2 };
 
   static QStringList names();
   static QString setCoordinateSystemStatement( int id );
@@ -113,6 +113,21 @@ public:
   void drawGrid ( KigPainter& p, bool showgrid = true,
                   bool showaxes = true ) const;
   QValidator* coordinateValidator() const;
+  Coordinate snapToGrid( const Coordinate& c,
+                         const KigWidget& w ) const;
+
+  const char* type() const;
+  int id() const;
+};
+
+class InvisibleCoords
+  : public EuclideanCoords
+{
+public:
+  InvisibleCoords();
+  ~InvisibleCoords();
+  void drawGrid ( KigPainter& p, bool showgrid = true,
+                  bool showaxes = true ) const;
   Coordinate snapToGrid( const Coordinate& c,
                          const KigWidget& w ) const;
 
