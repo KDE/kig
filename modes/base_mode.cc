@@ -70,7 +70,9 @@ void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if( (mplc - e->pos()).manhattanLength() > 4 ) return;
 
-  leftClickedObject( moco.front(), e->pos(), *v,
+  Object* o = 0;
+  if ( ! moco.empty() ) o = moco.front();
+  leftClickedObject( o, e->pos(), *v,
                      ( e->state() & ( ControlButton | ShiftButton) ) != 0
     );
 }

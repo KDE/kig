@@ -46,8 +46,8 @@ class BaseMode
   void enableActions();
 protected:
 
-  virtual void dragRect( const QPoint& p, KigWidget& w ) = 0;
-  virtual void dragObject( const Objects& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown ) = 0;
+  virtual void dragRect( const QPoint& p, KigWidget& w );
+  virtual void dragObject( const Objects& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
   virtual void leftClickedObject( Object* o, const QPoint& p,
                                   KigWidget& w, bool ctrlOrShiftDown ) = 0;
   virtual void midClicked( const QPoint& p, KigWidget& w ) = 0;
