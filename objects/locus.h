@@ -53,7 +53,7 @@ public:
   Point getPoint (double param) const;
   double getParam (const Point&) const;
 
-  Objects getParents() const { Objects tmp; tmp.push(cp); tmp.push(point); return tmp;};
+  Objects getParents() const { Objects tmp; tmp.append(cp); tmp.append(point); return tmp;};
 
   void getOverlay(QPtrList<QRect>& list, const QRect& border) const;
 
@@ -64,7 +64,7 @@ protected:
   // don't use this for fillUp or saving, since it has 0 for
   // KigDocument pointer...
   ObjectHierarchy* hierarchy;
-  typedef list<Point> PointList;
+  typedef std::list<Point> PointList;
   PointList points;
   static void draw ( QPainter& p, const PointList& pts );
 };

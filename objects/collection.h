@@ -11,7 +11,7 @@ protected:
 public:
   CollectionObject () {};
   CollectionObject(const Objects& inCos) : cos(inCos) {};
-  ~CollectionObject() { for (Objects::iterator i = cos.begin(); i != cos.end(); ++i) delete *i; };
+  ~CollectionObject() { for (Object* i = cos.first(); i; i = cos.next()) delete i; };
   
   // todo: do something more intelligent with this (if it is
   // necessary, not sure about that yet...

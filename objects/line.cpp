@@ -95,7 +95,8 @@ LineTTP::~LineTTP()
 
 QString LineTTP::wantArg( const Object* o) const
 {
-  if ( !o->toPoint()) return 0;
+  if (complete) return 0;
+  if ( !toPoint(o)) return 0;
   if ( !p1 ) return i18n( "Point 1" );
   if ( !p2 ) return i18n( "Point 2" );
   return 0;
@@ -103,7 +104,7 @@ QString LineTTP::wantArg( const Object* o) const
 
 bool LineTTP::selectArg(Object* o)
 {
-  Point* p=o->toPoint();
+  Point* p=toPoint(o);
   assert(p);
   assert (!(p1 && p2));
   if ( !p1 ) p1 = p;
@@ -166,9 +167,9 @@ LinePerpend::~LinePerpend()
 
 QString LinePerpend::wantArg( const Object* o) const
 {
-  if (o->toSegment() && !segment && !line ) return i18n("On segment");
-  if (o->toLine() && !segment && !line ) return i18n("On line");
-  if (o->toPoint() && !point) return i18n("Through point");
+  if (toSegment(o) && !segment && !line ) return i18n("On segment");
+  if (toLine(o) && !segment && !line ) return i18n("On line");
+  if (toPoint(o) && !point) return i18n("Through point");
   return 0;
 }
 
@@ -176,13 +177,13 @@ bool LinePerpend::selectArg(Object* o)
 {
   Segment* s;
   assert (!(point && (line || segment)));
-  if ((s= o->toSegment()))
+  if ((s= toSegment(o)))
     segment = s;
   Line* l;
-  if ((l = o->toLine()))
+  if ((l = toLine(o)))
     line = l;
   Point* p;
-  if ((p = o->toPoint()))
+  if ((p = toPoint(o)))
     point = p;
   o->addChild(this);
   if (point && (line || segment)) { complete = true; };
@@ -232,17 +233,21 @@ void LinePerpend::calc()
   calcVars();
 }
 
-Objects LineTTP::getParents() const return objs;
+Objects LineTTP::getParents() const
 {
-  objs.push( p1 );
-  objs.push( p2 );
+  Objects objs;
+  objs.append( p1 );
+  objs.append( p2 );
+  return objs;
 }
 
-Objects LinePerpend::getParents() const return objs;
+Objects LinePerpend::getParents() const
 {
-    if ( segment ) objs.push( segment );
-    else objs.push( line );
-    objs.push( point );
+  Objects objs;
+  if ( segment ) objs.append( segment );
+  else objs.append( line );
+  objs.append( point );
+  return objs;
 }
 
 void LineTTP::drawPrelim( QPainter& p, const QPoint& pt) const
@@ -380,9 +385,9 @@ void Line::drawLineTTP (QPainter& p, const Point& q, const Point& r)
 
 QString LineParallel::wantArg( const Object* o) const
 {
-  if (o->toSegment() && !segment && !line ) return i18n("On segment");
-  if (o->toLine() && !segment && !line ) return i18n("On line");
-  if (o->toPoint() && !point) return i18n("Through point");
+  if (toSegment(o) && !segment && !line ) return i18n("On segment");
+  if (toLine(o) && !segment && !line ) return i18n("On line");
+  if (toPoint(o) && !point) return i18n("Through point");
   return 0;
 }
 
@@ -392,20 +397,20 @@ bool LineParallel::selectArg(Object* o)
   assert (!(point && (line || segment)));
   // is this a segment ?
   Segment* s;
-  if ((s= o->toSegment()))
+  if ((s= toSegment(o)))
     {
       assert (!segment);
       segment = s;
     };
   // perhaps a line...
   Line* l;
-  if ((l = o->toLine()))
+  if ((l = toLine(o)))
     {
       assert (!line);
       line = l;
     };
   Point* p;
-  if ((p = o->toPoint()))
+  if ((p = toPoint(o)))
     {
       assert (!point);
       point = p;
@@ -418,9 +423,9 @@ bool LineParallel::selectArg(Object* o)
 Objects LineParallel::getParents() const
 {
   Objects objs;
-  if ( segment ) objs.push( segment );
-  else objs.push( line );
-  objs.push( point );
+  if ( segment ) objs.append( segment );
+  else objs.append( line );
+  objs.append( point );
   return objs;
 }
 

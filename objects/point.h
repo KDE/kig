@@ -99,7 +99,7 @@ public:
   QString wantArg(const Object* o) const;
   bool selectArg( Object* );
   void unselectArg (Object*);
-  Objects getParents() const { Objects tmp; tmp.push(p1); tmp.push(p2); return tmp; };
+  Objects getParents() const { Objects tmp; tmp.append(p1); tmp.append(p2); return tmp; };
 
   void startMove(const QPoint&);
   void moveTo(const QPoint&);

@@ -2,33 +2,38 @@
 
 void CollectionObject::draw(QPainter& p, bool ss) const
 {
-  for (Objects::const_iterator i = cos.begin(); i != cos.end(); ++i)
-    (*i)->draw(p,ss);
+  Object* o;
+  for (Objects::iterator i(cos); (o = i.current()); ++i)
+    o->draw(p,ss);
 }
 
 bool CollectionObject::contains(const QPoint& o, bool strict ) const
 {
-  bool tmp = false;
-  for (Objects::const_iterator i = cos.begin(); i != cos.end(); ++i)
-    tmp |= (*i)->contains(o, strict);
-  return tmp;
+  Object* i;
+  for (Objects::iterator it(cos); (i = it.current()); ++it)
+    if(i->contains(o, strict)) return true;
+  return false;
 }
 
 bool CollectionObject::inRect(const QRect& r) const
 {
-  bool tmp = false;
-  for (Objects::const_iterator i = cos.begin(); i != cos.end(); ++i)
-    tmp |= (*i)->inRect(r);
-  return tmp;
+  Object* i;
+  for (Objects::iterator it( cos ); (i = it.current()); ++it)
+    if( i->inRect(r) ) return true;
+  return false;
 }
 
-Objects CollectionObject::getParents() const return tmp;
+Objects CollectionObject::getParents() const
 {
+  Objects tmp;
   Objects tmp2;
-  for (Objects::const_iterator i = cos.begin(); i != cos.end(); ++i)
+  Object* i;
+  for (Objects::iterator it( cos ); (i = it.current()); ++it)
     {
-      tmp2 = (*i)->getParents();
-      for (Objects::iterator j = tmp2.begin(); j != tmp2.end(); ++j)
-	if (!cos.contains(*j)) tmp.add(*j);
+      tmp2 = i->getParents();
+      Object* j;
+      for (Objects::iterator jt (tmp2); (j = jt.current()); ++jt)
+	if (!cos.contains(j)) tmp.add(j);
     };
+  return tmp;
 }

@@ -58,16 +58,12 @@ void Point::stopMove()
 
 QString MidPoint::wantArg(const Object* o) const
 {
-  if (! 
-      (
-       // either o is a point
-       o->toPoint() ||
-       // or o is a segment, and we still need two points
-       (!p1 && !p2 && o->toSegment())
-       )
-      )
-    return 0;
-  if (o->toSegment()) return i18n("On segment");
+  if (toSegment(o))
+    {
+      if(!p1 && !p2) return i18n("On segment");
+      else return 0;
+    };
+  if (!toPoint(o)) return 0;
   if (!p1) return i18n("First point");
   else if (!p2) return i18n("Second point");
   return 0;
@@ -76,14 +72,14 @@ QString MidPoint::wantArg(const Object* o) const
 bool MidPoint::selectArg(Object* o)
 {
   Segment* s;
-  if ((s = o->toSegment()))
+  if ((s = toSegment(o)))
     {
       assert (!(p1 ||p2));
       selectArg(s->getPoint1());
       return selectArg(s->getPoint2());
     };
   // if we get here, o should be a point
-  Point* p = o->toPoint();
+  Point* p = toPoint(o);
   assert (p);
 
   if (!p1) p1 = p;
@@ -154,7 +150,7 @@ void MidPoint::calc()
 
 void Point::saveXML(QDomDocument& doc, QDomElement& parentElem)
 {
-  assert (getParents().empty());
+  assert (getParents().isEmpty());
   QDomElement elem = doc.createElement("Point");
   elem.setAttribute("x", x);
   elem.setAttribute("y", y);
@@ -179,7 +175,7 @@ void ConstrainedPoint::calc()
 Objects ConstrainedPoint::getParents() const
 {
   Objects tmp;
-  tmp.push(c);
+  tmp.append(c);
   return tmp;
 }
 void ConstrainedPoint::moveTo(const QPoint& pt)

@@ -2,6 +2,8 @@
 
 #include "../misc/hierarchy.h"
 
+#include <kdebug.h>
+
 void Locus::draw(QPainter& p, bool ss) const
 {
   // todo: draw lines between the points instead of only the
@@ -33,11 +35,11 @@ bool Locus::inRect(const QRect& r) const
 
 QString Locus::wantArg( const Object* o ) const
 {
-  if (o->toConstrainedPoint() && !cp)
+  if (toConstrainedPoint(o) && !cp)
     {
       return i18n("Moving point");
     };
-  if (o->toPoint() && !point)
+  if (toPoint(o) && !point)
     {
       return i18n("Dependent point");
     };
@@ -48,14 +50,14 @@ bool Locus::selectArg(Object* o)
 {
   ConstrainedPoint* tmpCp;
   Point* tmpPt;
-  if (!cp && (tmpCp = o->toConstrainedPoint()))
+  if (!cp && (tmpCp = toConstrainedPoint(o)))
     {
       cp = tmpCp;
       cp->addChild(this);
     }
   else 
     {
-      tmpPt = o->toPoint();
+      tmpPt = toPoint(o);
       assert (!point && tmpPt);
       point = tmpPt;
       point->addChild(this);
@@ -63,7 +65,11 @@ bool Locus::selectArg(Object* o)
     };
   if (complete) 
     {
-      hierarchy = new ObjectHierarchy(cp, point, 0);
+      Objects given;
+      given.append(cp);
+      Objects final;
+      final.append(point);
+      hierarchy = new ObjectHierarchy(given, final, 0);
       double oldP = cp->getP();
       double period = double(1)/numberOfPoints;
       for (double i = 0; i < 1; i += period)
@@ -74,6 +80,7 @@ bool Locus::selectArg(Object* o)
 	};
       cp->setP(oldP);
       hierarchy->calc();
+      kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
     };
   return complete;
 }

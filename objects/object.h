@@ -37,20 +37,19 @@ class Object
 
   // getting types from this object: easier to type and supports
   // MacroObjectOne
+  static Point* toPoint(Object* o);
+  static Segment* toSegment(Object* o);
+  static Line* toLine(Object* o);
+  static Circle* toCircle(Object* o);
+  static Curve* toCurve(Object* o);
+  static ConstrainedPoint* toConstrainedPoint(Object* o);
 
-  Point* toPoint();
-  Segment* toSegment();
-  Line* toLine();
-  Circle* toCircle();
-  Curve* toCurve();
-  ConstrainedPoint* toConstrainedPoint();
-
-  const Point* toPoint() const;
-  const Segment* toSegment() const;
-  const Line* toLine() const;
-  const Circle* toCircle() const;
-  const Curve* toCurve() const;
-  const ConstrainedPoint* toConstrainedPoint() const;
+  static const Point* toPoint(const Object* o);
+  static  const Segment* toSegment(const Object* o);
+  static  const Line* toLine(const Object* o);
+  static  const Circle* toCircle(const Object* o);
+  static  const Curve* toCurve(const Object* o);
+  static  const ConstrainedPoint* toConstrainedPoint(const Object* o);
 
   // type identification:
   // there are 3x2 functions: you don't need all of them in your

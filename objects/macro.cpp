@@ -5,16 +5,16 @@
 QString MacroObject::wantArg( const Object* o) const
 {
   if (complete) return 0;
-  if (o->vBaseTypeName() != hier->getGegElems()[arguments.size()]->getTypeName())  return 0;
+  if (o->vBaseTypeName() != hier->getGegElems()[arguments.count()]->getTypeName())  return 0;
   else return i18n("Select this %1").arg(o->vTBaseTypeName());
 };
 
 bool MacroObject::selectArg(Object* o)
 {
-  assert(o->vBaseTypeName() == hier->getGegElems()[arguments.size()]->getTypeName());
-  arguments.push(o);
+  assert(o->vBaseTypeName() == hier->getGegElems()[arguments.count()]->getTypeName());
+  arguments.append(o);
   o->addChild(this);
-  if (arguments.size() != hier->getGegElems().size()) return false;
+  if (arguments.count() != hier->getGegElems().size()) return false;
   return complete = true;
 }
 
@@ -101,22 +101,19 @@ QCString MacroObjectOne::vFullTypeName() const
 
 void MacroObjectOne::handleNewObjects(const Objects& o)
 {
+  hier->calc();
   final = hier->getFinElems()[0]->actual;
   cos = o;
   cos.remove(final);
-  for (Objects::iterator i = arguments.begin(); i != arguments.end(); ++i)
+  for (Object* i = arguments.first(); i; i = arguments.next())
     {
-      for (Objects::iterator j = cos.begin(); j != cos.end(); ++j)
+      for (Object* j = cos.first(); j; j = cos.next())
 	{
-	  (*i)->delChild(*j);
+	  i->delChild(j);
 	};
     };
-  for (Objects::iterator i = cos.begin(); i != cos.end(); ++i)
-    (*i)->setShown(false);
-  // ugly fix, this shouldn't be necessary...
-  for (Objects::iterator i = cos.begin(); i != cos.end(); ++i)
-    (*i)->calc();
-  final->calc();
+  for (Object* i = cos.first(); i; i = cos.next())
+    i->setShown(false);
 }
 // void MacroObjectMulti::handleNewObjects(const Objects& o)
 // {

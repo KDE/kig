@@ -61,7 +61,8 @@ bool Segment::inRect(const QRect& p) const
 
 QString Segment::wantArg( const Object* o) const
 {
-  if ( !o->toPoint() ) return 0;
+  if (complete) return 0;
+  if ( !toPoint(o) ) return 0;
   if ( !p1 ) return i18n( "Start point" );
   if ( !p2 ) return i18n( "End point" );
   return 0;
@@ -69,7 +70,7 @@ QString Segment::wantArg( const Object* o) const
 
 bool Segment::selectArg(Object* o)
 {
-  Point* p = o->toPoint();
+  Point* p = toPoint(o);
   assert(p);
   assert (! (p1 && p2));
   if ( !p1 ) p1 = p;
@@ -144,10 +145,12 @@ void Segment::calcVars()
   x2_x1 = p2->getX() - p1->getX();
 }
 
-Objects Segment::getParents() const return objs;
+Objects Segment::getParents() const
 {
-  objs.push( p1 );
-  objs.push( p2 );
+  Objects objs;
+  objs.append( p1 );
+  objs.append( p2 );
+  return objs;
 }
 
 void Segment::drawPrelim( QPainter& p, const QPoint& pt) const

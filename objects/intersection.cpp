@@ -31,15 +31,15 @@ bool IntersectionPoint::selectArg(Object* o)
   Segment* s;
   Line* l;
   Circle* c;
-  if ((s = o->toSegment())) {
+  if ((s = toSegment(o))) {
     if (segment1) segment2 = s;
     else segment1 = s;
   }
-  else if ((l = o->toLine())) {
+  else if ((l = toLine(o))) {
     if (line1) line2 = l;
     else line1 = l;
   }
-  else if ((c = o->toCircle())) {
+  else if ((c = toCircle(o))) {
     if (circle1) circle2 = c;
     else circle1 = c;
   }
@@ -64,15 +64,15 @@ void IntersectionPoint::unselectArg(Object* o)
   Segment* s;
   Line* l;
   Circle* c;
-  if ((s = o->toSegment())) {
+  if ((s = toSegment(o))) {
     if (segment1 == s) segment1 = segment2;
     segment2 = 0;
   }
-  else if ((l = o->toLine())) {
+  else if ((l = toLine(o))) {
     if (line1 == l) line1 = line2;
     line2 = 0;
   }
-  else if ((c = o->toCircle())) {
+  else if ((c = toCircle(o))) {
     if (circle1 == c) circle1 = circle2;
     circle2 = 0;
   }
@@ -82,14 +82,16 @@ void IntersectionPoint::unselectArg(Object* o)
   };
   complete = false;
 }
-Objects IntersectionPoint::getParents() const return tmp;
+Objects IntersectionPoint::getParents() const
 {
-  if (segment1) tmp.push(segment1);
-  if (segment2) tmp.push(segment2);
-  if (line1) tmp.push(line1);
-  if (line2) tmp.push(line2);
-  if (circle1) tmp.push(circle1);
-  if (circle2) tmp.push(circle2);
+  Objects tmp;
+  if (segment1) tmp.append(segment1);
+  if (segment2) tmp.append(segment2);
+  if (line1) tmp.append(line1);
+  if (line2) tmp.append(line2);
+  if (circle1) tmp.append(circle1);
+  if (circle2) tmp.append(circle2);
+  return tmp;
 };
 
 void IntersectionPoint::calc()

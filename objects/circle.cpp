@@ -26,6 +26,7 @@ void Circle::draw (QPainter& p, bool ss) const
 
 bool Circle::inRect (const QRect& r) const
 {
+#warning TODO
   // not implemented yet, i'm thinking: take the diagonals of the
   // rect, their intersections with the circle, and check their
   // positions...
@@ -50,8 +51,8 @@ CircleBCP::CircleBCP()
 
 QString CircleBCP::wantArg (const Object* o) const
 {
-  if (!o->toPoint()) return 0;
   if (complete) return 0;
+  if (!toPoint(o)) return 0;
   if (!centre) return i18n("Center point");
   assert (!poc); // we're not completed, and do have a center...
   return i18n("Through point");
@@ -61,7 +62,7 @@ bool CircleBCP::selectArg (Object* o)
 {
   assert (!complete);
   Point* p;
-  assert ((p=o->toPoint()));
+  assert ((p=toPoint(o)));
   if(centre) poc = p;
   else centre = p;
   o->addChild(this);
@@ -72,6 +73,7 @@ bool CircleBCP::selectArg (Object* o)
 void CircleBCP::unselectArg(Object* o)
 {
   assert (centre == o);
+  o->delChild(this);
   centre = 0;
 };
 
@@ -135,7 +137,7 @@ QString CircleBTP::wantArg(const Object*) const
 
 bool CircleBTP::selectArg(Object* o)
 {
-  Point* p = o->toPoint();
+  Point* p = toPoint(o);
   assert(p);
   if (!p1) p1 = p;
   else if (!p2) p2 = p;
@@ -186,17 +188,21 @@ Point CircleBTP::calcCenter(double ax, double ay, double bx, double by, double c
   return Point(centerx, centery);
 }
 
-Objects CircleBTP::getParents() const return objs;
+Objects CircleBTP::getParents() const
 {
-  objs.push( p1 );
-  objs.push( p2 );
-  objs.push( p3 );
+  Objects objs;
+  objs.append( p1 );
+  objs.append( p2 );
+  objs.append( p3 );
+  return objs;
 }
 
-Objects CircleBCP::getParents() const return objs;
+Objects CircleBCP::getParents() const
 {
-    objs.push( centre );
-    objs.push( poc );
+  Objects objs;
+  objs.append( centre );
+  objs.append( poc );
+  return objs;
 }
 
 void CircleBCP::drawPrelim( QPainter& p, const QPoint& pt) const
