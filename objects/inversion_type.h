@@ -21,7 +21,7 @@
 #include "base_type.h"
 
 /**
- * Inversion of a point
+ * Inversion of a point, line
  */
 class InvertPointType
   : public ArgsParserObjectType
@@ -30,6 +30,30 @@ class InvertPointType
   ~InvertPointType();
 public:
   static const InvertPointType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+class InvertLineType
+  : public ArgsParserObjectType
+{
+  InvertLineType();
+  ~InvertLineType();
+public:
+  static const InvertLineType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+class InvertCircleType
+  : public ArgsParserObjectType
+{
+  InvertCircleType();
+  ~InvertCircleType();
+public:
+  static const InvertCircleType* instance();
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   const ObjectImpType* resultId() const;

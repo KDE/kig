@@ -128,7 +128,7 @@
 	<Action name="objects_new_scalingoverline" />
 	<Action name="objects_new_scalingoverline2" />
 	<Action name="objects_new_similitude" />
-	<Action name="objects_new_invertpoint" />
+	<Action name="objects_new_inversion" />
 	<Action name="objects_new_harmonichomology" />
 	<Action name="objects_new_genericaffinity" />
 	<Action name="objects_new_genericprojectivity" />
@@ -252,7 +252,7 @@
     <Action name="objects_new_scalingovercenter" />
     <Action name="objects_new_scalingoverline" />
     <Action name="objects_new_similitude" />
-    <Action name="objects_new_invertpoint" />
+    <Action name="objects_new_inversion" />
     <Action name="objects_new_harmonichomology" />
     <Action name="objects_new_genericaffinity" />
     <Action name="objects_new_genericprojectivity" />

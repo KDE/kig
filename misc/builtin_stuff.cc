@@ -321,13 +321,9 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_parabolabdp" ) );
 
     // Transformation stuff..
-    c = new SimpleObjectTypeConstructor(
-      InvertPointType::instance(),
-      I18N_NOOP( "Inversion of a point" ),
-      I18N_NOOP( "The inversion of a point with respect to a circle" ),
-      "inversion" );
+    c = new InversionConstructor();
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_invertpoint" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_inversion" ) );
 
     c = new SimpleObjectTypeConstructor(
       TranslatedType::instance(),

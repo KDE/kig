@@ -26,11 +26,13 @@
 #include "../kig/kig_part.h"
 #include "../modes/construct_mode.h"
 #include "../objects/bogus_imp.h"
+#include "../objects/centerofcurvature_type.h"
 #include "../objects/circle_imp.h"
 #include "../objects/conic_imp.h"
 #include "../objects/conic_types.h"
 #include "../objects/cubic_imp.h"
 #include "../objects/intersection_types.h"
+#include "../objects/inversion_type.h"
 #include "../objects/line_imp.h"
 #include "../objects/line_type.h"
 #include "../objects/locus_imp.h"
@@ -45,11 +47,10 @@
 #include "../objects/point_imp.h"
 #include "../objects/point_type.h"
 #include "../objects/polygon_imp.h"
-#include "../objects/tangent_type.h"
-#include "../objects/centerofcurvature_type.h"
 #include "../objects/polygon_type.h"
-#include "../objects/transform_types.h"
+#include "../objects/tangent_type.h"
 #include "../objects/text_imp.h"
+#include "../objects/transform_types.h"
 
 #include <qpen.h>
 
@@ -1034,6 +1035,41 @@ GenericProjectivityConstructor::GenericProjectivityConstructor()
 }
 
 GenericProjectivityConstructor::~GenericProjectivityConstructor() {}
+
+/*
+ * inversion of points, lines with respect to a circle
+ */
+
+InversionConstructor::InversionConstructor()
+  : MergeObjectConstructor(
+    I18N_NOOP( "Inversion of a point, line or circle" ),
+    I18N_NOOP( "The inversion of a point, line or circle with respect to a circle" ),
+    "inversion" )
+{
+  SimpleObjectTypeConstructor* pointobj =
+     new SimpleObjectTypeConstructor(
+      InvertPointType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "inversion" );
+
+  SimpleObjectTypeConstructor* lineobj =
+     new SimpleObjectTypeConstructor(
+      InvertLineType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "inversion" );
+
+  SimpleObjectTypeConstructor* circleobj =
+     new SimpleObjectTypeConstructor(
+      InvertCircleType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "inversion" );
+
+  merge( circleobj );
+  merge( pointobj );
+  merge( lineobj );
+}
+
+InversionConstructor::~InversionConstructor() {}
 
 /*
  * Transport of Measure

@@ -226,6 +226,14 @@ public:
   ~GenericProjectivityConstructor();
 };
 
+class InversionConstructor
+  : public MergeObjectConstructor
+{
+public:
+  InversionConstructor();
+  ~InversionConstructor();
+};
+
 class GenericIntersectionConstructor
   : public MergeObjectConstructor
 {
