@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -35,6 +35,7 @@ using namespace std;
 class KigDocument;
 class HierarchyElement;
 class ObjectHierarchy;
+class Type;
 
 class ElemList
   : public std::vector<HierarchyElement*>
@@ -58,28 +59,24 @@ class HierarchyElement
 {
   typedef map<QCString,QString> pMap;
 protected:
-  QCString typeName;
+  Type* mtype;
   ElemList parents;
   ElemList children;
   pMap params;
   int id;
 public:
+  const Type* type() { return mtype; };
   void setParam( const QCString name, const QString value ) { params[name] = value; };
   void setParams(const pMap& p ) { params = p; };
   const pMap getParams() { return params; };
-  HierarchyElement(QCString inTN, 
-		   int inId
-		   )
-    : typeName(inTN), id(inId), actual(0)
-  {
-  };
+  HierarchyElement(QCString inTN, int inId );
   void addParent ( HierarchyElement* e ) { parents.push_back(e); e->addChild(this);};
   void addChild (HierarchyElement* e ) { children.push_back(e); };
   void saveXML ( QDomDocument& d, QDomElement& parentElem,
 		 bool reference, bool given=false,
 		 bool final=false) const;
   int getId() { return id; };
-  QCString getTypeName() { return typeName;};
+  QCString getTypeName() const;
   const ElemList& getParents() { return parents; };
   const ElemList& getChildren() { return children; };
   Object* actual;
@@ -94,7 +91,6 @@ class ObjectHierarchy
   ElemList allElems;
   ElemList gegElems;
   ElemList finElems;
-  KigDocument* doc;
 public:
   // this constructs the hierarchy, so that its internal structure
   // represents the structure of its arguments, so that fillUp will be
@@ -102,11 +98,8 @@ public:
   // the HierarchyElement::actual's will contain pointers to the
   // objects in the structure of the arguments, so calc() can do
   // something intelligent too...
-  ObjectHierarchy 
-  (const Objects& inGegObjs, 
-   const Objects& inFinalObjs, 
-   KigDocument* inDoc);
-  ObjectHierarchy ( QDomElement& ourElement, KigDocument* inDoc ) : doc(inDoc) { loadXML(ourElement); };
+  ObjectHierarchy( const Objects& inGegObjs, const Objects& inFinalObjs );
+  ObjectHierarchy ( QDomElement& ourElement ) { loadXML(ourElement); };
   const ElemList& getGegElems() { return gegElems; };
   const ElemList& getFinElems() { return finElems; };
   const ElemList& getAllElems() { return allElems; };

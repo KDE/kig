@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,31 +11,37 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
  USA
 **/
 
-
 #include "macro.h"
 
+#include "point.h"
 #include "../misc/hierarchy.h"
 
 QString MacroObject::wantArg( const Object* o) const
 {
-  if (complete) return 0;
-  if (o->vBaseTypeName() != hier->getGegElems()[arguments.count()]->getTypeName())  return 0;
+  if( complete ) return 0;
+  if( o->vBaseTypeName() != hier->getGegElems()[arguments.size()]->getTypeName()) return 0;
   else return i18n("Select this %1").arg(o->vTBaseTypeName());
 };
 
+QString MacroObject::wantPoint() const
+{
+  if ( hier->getGegElems()[arguments.size()]->getTypeName() == Point::sBaseTypeName() ) return i18n( "Select this point" );
+  return 0;
+}
+
 bool MacroObject::selectArg(Object* o)
 {
-  assert(o->vBaseTypeName() == hier->getGegElems()[arguments.count()]->getTypeName());
-  arguments.append(o);
+  assert(o->vBaseTypeName() == hier->getGegElems()[arguments.size()]->getTypeName());
+  arguments.push_back( o );
   o->addChild(this);
-  if (arguments.count() != hier->getGegElems().size()) return false;
+  if (arguments.size() != hier->getGegElems().size()) return false;
   return complete = true;
 }
 
@@ -52,7 +58,7 @@ MacroObjectOne::MacroObjectOne( ObjectHierarchy* inHier )
 
 MacroObjectOne::~MacroObjectOne()
 {
-  cos.deleteAll();
+  delete_all( cos.begin(), cos.end() );
   delete final;
 }
 
@@ -70,7 +76,7 @@ bool MacroObjectOne::contains(const Coordinate& p, const double fault ) const
 
 bool MacroObjectOne::inRect(const Rect& r) const
 {
-  return final->inRect(r);    
+  return final->inRect(r);
 }
 
 void MacroObjectOne::drawPrelim(KigPainter&, const Coordinate& ) const
@@ -79,15 +85,15 @@ void MacroObjectOne::drawPrelim(KigPainter&, const Coordinate& ) const
 
 void MacroObjectOne::startMove(const Coordinate& p)
 {
-  final->startMove(p);    
+  final->startMove(p);
 };
 void MacroObjectOne::moveTo(const Coordinate& p)
 {
-  final->moveTo(p);    
+  final->moveTo(p);
 }
 void MacroObjectOne::stopMove()
 {
-  final->stopMove();    
+  final->stopMove();
 }
 
 void MacroObjectOne::calc()
@@ -96,13 +102,13 @@ void MacroObjectOne::calc()
     handleNewObjects( hier->fillUp(arguments) );
     constructed = true;
   };
-  cos.calc();
+  std::for_each( cos.begin(), cos.end(), std::mem_fun( &Object::calc ) );
   // two times, cause the order in which we calc sometimes sucks
-  cos.calc();
+  std::for_each( cos.begin(), cos.end(), std::mem_fun( &Object::calc ) );
   final->calc();
 }
 
-QCString MacroObjectOne::vBaseTypeName() const
+const QCString MacroObjectOne::vBaseTypeName() const
 {
   if (!final)
     {
@@ -113,7 +119,7 @@ QCString MacroObjectOne::vBaseTypeName() const
   else return final->vBaseTypeName();
 };
 
-QCString MacroObjectOne::vFullTypeName() const
+const QCString MacroObjectOne::vFullTypeName() const
 {
   if (!final)
     {
@@ -128,30 +134,19 @@ void MacroObjectOne::handleNewObjects(const Objects& o)
   final = hier->getFinElems()[0]->actual;
   cos = o;
   cos.remove(final);
-  for (Object* i = arguments.first(); i; i = arguments.next())
-    {
-      for (Object* j = cos.first(); j; j = cos.next())
-	{
-	  i->delChild(j);
-	};
-    };
-  for (Object* i = cos.first(); i; i = cos.next())
-    i->setShown(false);
+  for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
+    for( Objects::iterator j = cos.begin(); j != cos.end(); ++j )
+      ( *i )->delChild( *j );
+  for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
+    (*i)->setShown(false);
 }
-// void MacroObjectMulti::handleNewObjects(const Objects& o)
-// {
-//   cos = o;
-// }
 
 MacroObjectOne::MacroObjectOne(const MacroObjectOne& m)
   : MacroObject(m.hier), final(0), constructed(false)
 {
-  arguments=m.arguments; 
-  Object* i;
-  for (Objects::iterator it (arguments); (i = it.current()); ++it)
-  {
-    i->addChild(this);
-  };
+  arguments=m.arguments;
+  for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
+    (*i)->addChild(this);
   complete = m.complete;
   if (complete) calc();
 }

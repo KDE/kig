@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -35,7 +35,6 @@ bool Point::contains( const Coordinate& o, const double error ) const
 
 void Point::draw (KigPainter& p, bool ss) const
 {
-  kdDebug() << k_funcinfo << mC.x << " " << mC.y << endl;
   if (!shown) return;
   bool s = selected && ss;
   p.setBrushStyle( Qt::SolidPattern );
@@ -54,6 +53,7 @@ void FixedPoint::startMove( const Coordinate& p )
 void FixedPoint::moveTo( const Coordinate& p )
 {
   mC+=p-pwwlmt;
+  pwwlmt = p;
 };
 
 void FixedPoint::stopMove()
@@ -62,28 +62,34 @@ void FixedPoint::stopMove()
 
 QString MidPoint::wantArg(const Object* o) const
 {
-  if (toSegment(o))
+  if ( o->toSegment() )
     {
       if(!p1 && !p2) return i18n("On segment");
       else return 0;
     };
-  if (!toPoint(o)) return 0;
+  if ( ! o->toPoint() ) return 0;
+  return wantPoint();
+};
+
+QString MidPoint::wantPoint() const
+{
   if (!p1) return i18n("First point");
   else if (!p2) return i18n("Second point");
   return 0;
-};
+}
+
 
 bool MidPoint::selectArg(Object* o)
 {
   Segment* s;
-  if ((s = toSegment(o)))
+  if ((s = o->toSegment() ) )
     {
       assert (!(p1 ||p2));
       selectArg(s->getPoint1());
       return selectArg(s->getPoint2());
     };
   // if we get here, o should be a point
-  Point* p = toPoint(o);
+  Point* p = o->toPoint();
   assert (p);
 
   if (!p1) p1 = p;
@@ -148,7 +154,6 @@ ConstrainedPoint::ConstrainedPoint(Curve* inC, const Coordinate& inPt)
 {
   c->addChild(this);
   p = c->getParam(inPt);
-  kdDebug() << k_funcinfo << "param: "<< p << endl;
   calc();
 }
 
@@ -161,7 +166,7 @@ void ConstrainedPoint::calc()
 Objects ConstrainedPoint::getParents() const
 {
   Objects tmp;
-  tmp.append(c);
+  tmp.push_back(c);
   return tmp;
 }
 
@@ -173,13 +178,13 @@ void ConstrainedPoint::moveTo(const Coordinate& pt)
 
 bool ConstrainedPoint::selectArg( Object* o)
 {
-  if (!c) c = Object::toCurve(o);
+  if (!c) c = o->toCurve();
   c->addChild( this );
   return c;
 }
 QString ConstrainedPoint::wantArg(const Object* o) const
 {
-  if (!c && Object::toCurve(o)) return i18n("On Curve");
+  if (!c && o->toCurve()) return i18n("On Curve");
   return 0;
 }
 MidPoint::MidPoint(const MidPoint& m)
@@ -242,7 +247,7 @@ ConstrainedPoint::ConstrainedPoint(const double inP)
 ConstrainedPoint::ConstrainedPoint()
   : p(0.5), c(0)
 {
-    
+
 }
 FixedPoint::FixedPoint( const FixedPoint& p )
   : Point( p )

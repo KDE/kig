@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -19,7 +19,7 @@
 **/
 
 
-#include "cabri.h"
+#include "filter.h"
 
 #include <qcstring.h>
 #include <qfile.h>
@@ -27,17 +27,15 @@
 
 #include <string>
 
-#include "../objects/object.h"
-#include "../misc/hierarchy.h"
+#include "../../objects/object.h"
+#include "../../misc/hierarchy.h"
 
 KigFilterCabri::KigFilterCabri()
 {
-    
 }
 
 KigFilterCabri::~KigFilterCabri()
 {
-    
 }
 
 bool KigFilterCabri::supportMime( const QString mime )
@@ -47,18 +45,9 @@ bool KigFilterCabri::supportMime( const QString mime )
   return false;
 }
 
-struct ObjectData
-{
-  Object* o;
-  std::vector<int> p;
-  int id;
-  bool valid;
-  operator bool() { return valid; };
-};
-
 // this function reads a line, and converts all line delimiters
 // ("\r\n" or "\n" to unix-style "\n").
-QCString readLine( QFile& f, bool& eof )
+QCString KigFilterCabri::readLine( QFile& f, bool& eof )
 {
   QCString s;
   char r;
@@ -80,8 +69,7 @@ QCString readLine( QFile& f, bool& eof )
   return s;
 }
 
-
-ObjectData readObject( QFile& f )
+KigFilterCabri::ObjectData KigFilterCabri::readObject( QFile& f )
 {
   ObjectData n;
   n.valid = false;
@@ -107,17 +95,15 @@ ObjectData readObject( QFile& f )
 
   // TODO...
   n.valid = true;
-  return n;  
+  return n;
 };
 
-KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
+KigFilter::Result KigFilterCabri::load( const QString from, Objects& os)
 {
   // NOT READY...
   return NotSupported;
-  // we fill up objs with the objects from the file, and then save
-  // those objects...
+
   std::vector<ObjectData> objs;
-  
   QFile f( from );
   f.open( IO_ReadOnly );
 
@@ -147,40 +133,16 @@ KigFilter::Result KigFilterCabri::convert( const QString from, KTempFile& to)
   while( ( o = readObject( f ) ) ) objs.push_back(o);
   // get the dependencies right...
   for( std::vector<ObjectData>::iterator i = objs.begin(); i != objs.end(); ++i )
+  {
+    for( std::vector<int>::iterator j = i->p.begin(); j != i->p.end(); ++j )
     {
-      for( std::vector<int>::iterator j = i->p.begin(); j != i->p.end(); ++j )
-	{
-	  i->o->addChild( objs[*j].o );
-	};
+      i->o->addChild( objs[*j].o );
     };
+  };
 
-  // the output file...
-  QFile* fTo = new QFile (to.name());
-  fTo->open(IO_WriteOnly);
-
-  // start building our file...
-  QTextStream stream (fTo);
-
-  // cf. KigDocument::saveFile()...
-  QDomDocument doc ("KigDocument");
-  QDomElement elem = doc.createElement ("KigDocument");
-  elem.setAttribute( "Version", "2.0.000");
-
-  Objects go;
-  Objects fo;
+  // commit the data
   for (std::vector<ObjectData>::iterator i = objs.begin(); i != objs.end(); ++i)
-    {
-      fo.add(i->o);
-    };
-  ObjectHierarchy hier ( go, fo, 0);
-  hier.calc();
-  hier.saveXML ( doc, elem );
-  doc.appendChild(elem);
-
-  stream << doc.toCString() << endl;
-  kdDebug() << k_funcinfo << endl << doc.toCString() << endl;
-  fTo->close();
-  delete fTo;
+    os.upush(i->o);
   return OK;
 }
 

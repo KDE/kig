@@ -80,7 +80,12 @@ bool Segment::inRect(const Rect& p) const
 QString Segment::wantArg( const Object* o) const
 {
   if (complete) return 0;
-  if ( !toPoint(o) ) return 0;
+  if ( !o->toPoint() ) return 0;
+  return wantPoint();
+}
+
+QString Segment::wantPoint() const
+{
   if ( !p1 ) return i18n( "Start point" );
   if ( !p2 ) return i18n( "End point" );
   return 0;
@@ -88,7 +93,7 @@ QString Segment::wantArg( const Object* o) const
 
 bool Segment::selectArg(Object* o)
 {
-  Point* p = toPoint(o);
+  Point* p = o->toPoint();
   assert(p);
   assert (! (p1 && p2));
   if ( !p1 ) p1 = p;
@@ -158,8 +163,8 @@ double Segment::getParam(const Coordinate& p) const
 Objects Segment::getParents() const
 {
   Objects objs;
-  objs.append( p1 );
-  objs.append( p2 );
+  objs.push_back( p1 );
+  objs.push_back( p2 );
   return objs;
 }
 

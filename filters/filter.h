@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -22,18 +22,19 @@
 #ifndef FILTER_H
 #define FILTER_H
 
-#include <ktempfile.h>
-
 #include <qstring.h>
 
 #include <vector>
 
+#include "../misc/objects.h"
+
+class Object;
 class KigFilter;
 
 class KigFilters
 {
 public:
-  static KigFilters* instance() { return sThis ? sThis : sThis = new KigFilters(); };
+  static KigFilters* instance();
   KigFilter* find (const QString& mime);
 
 protected:
@@ -52,10 +53,12 @@ public:
   typedef enum { OK, FileNotFound, ParseError, NotSupported } Result;
 
   // can the filter handle this mimetype ?
-  // (a filter only handles _one_ mimetype
   virtual bool supportMime ( const QString /*mime*/ ) { return false; };
-  // convert file file to a temporary file (created with KTempFile) in
-  // the native Kig Format...
-  virtual Result convert ( const QString from, KTempFile& to) = 0;
+
+  // load file file, fill up os.
+  virtual Result load ( const QString from, Objects& os ) = 0;
+
+  // ...
+  virtual Result save ( const Objects& os, const QString file );
 };
 #endif

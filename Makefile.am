@@ -1,1 +1,1 @@
-SUBDIRS = objects misc icons filters examples kig mimetypes
+SUBDIRS = objects misc modes icons filters examples kig mimetypes

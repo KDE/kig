@@ -1,0 +1,184 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>MacroWizard</class>
+<widget class="QWizard">
+    <property name="name">
+        <cstring>MacroWizard</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>381</width>
+            <height>168</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>1</hsizetype>
+            <vsizetype>1</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="caption">
+        <string>Define a new Macro...</string>
+    </property>
+    <widget class="QWidget">
+        <property name="name">
+            <cstring>mpgiven</cstring>
+        </property>
+        <attribute name="title">
+            <string>Given Objects</string>
+        </attribute>
+        <vbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <property name="margin">
+                <number>11</number>
+            </property>
+            <property name="spacing">
+                <number>6</number>
+            </property>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>TextLabel1</cstring>
+                </property>
+                <property name="sizePolicy">
+                    <sizepolicy>
+                        <hsizetype>1</hsizetype>
+                        <vsizetype>1</vsizetype>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                    </sizepolicy>
+                </property>
+                <property name="text">
+                    <string>Select the "given" objects for your new macro and press next...</string>
+                </property>
+                <property name="alignment">
+                    <set>WordBreak|AlignVCenter</set>
+                </property>
+            </widget>
+        </vbox>
+    </widget>
+    <widget class="QWidget">
+        <property name="name">
+            <cstring>mpfinal</cstring>
+        </property>
+        <attribute name="title">
+            <string>Final Object</string>
+        </attribute>
+        <vbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <property name="margin">
+                <number>11</number>
+            </property>
+            <property name="spacing">
+                <number>6</number>
+            </property>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>TextLabel2</cstring>
+                </property>
+                <property name="text">
+                    <string>Select the final object for your new macro...</string>
+                </property>
+            </widget>
+        </vbox>
+    </widget>
+    <widget class="QWidget">
+        <property name="name">
+            <cstring>mpname</cstring>
+        </property>
+        <attribute name="title">
+            <string>Name</string>
+        </attribute>
+        <vbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <property name="margin">
+                <number>11</number>
+            </property>
+            <property name="spacing">
+                <number>6</number>
+            </property>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>TextLabel1_2</cstring>
+                </property>
+                <property name="text">
+                    <string>Enter a name and description for your new type...</string>
+                </property>
+            </widget>
+            <widget class="QLayoutWidget">
+                <property name="name">
+                    <cstring>Layout2</cstring>
+                </property>
+                <hbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <property name="margin">
+                        <number>0</number>
+                    </property>
+                    <property name="spacing">
+                        <number>6</number>
+                    </property>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>TextLabel2_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Name:</string>
+                        </property>
+                        <property name="buddy" stdset="0">
+                            <cstring>KLineEdit2</cstring>
+                        </property>
+                    </widget>
+                    <widget class="KLineEdit">
+                        <property name="name">
+                            <cstring>KLineEdit2</cstring>
+                        </property>
+                    </widget>
+                </hbox>
+            </widget>
+            <widget class="QLayoutWidget">
+                <property name="name">
+                    <cstring>Layout1</cstring>
+                </property>
+                <hbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <property name="margin">
+                        <number>0</number>
+                    </property>
+                    <property name="spacing">
+                        <number>6</number>
+                    </property>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>TextLabel2_2_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Description:</string>
+                        </property>
+                        <property name="buddy" stdset="0">
+                            <cstring>KLineEdit1</cstring>
+                        </property>
+                    </widget>
+                    <widget class="KLineEdit">
+                        <property name="name">
+                            <cstring>KLineEdit1</cstring>
+                        </property>
+                    </widget>
+                </hbox>
+            </widget>
+        </vbox>
+    </widget>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -57,22 +57,31 @@ public:
 
   virtual IntersectionPoint* copy() { return new IntersectionPoint( *this ); };
 
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "IntersectionPoint"; };
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "IntersectionPoint"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Intersection Point"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() { return i18n( "The point where two lines or segments intersect" ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "intersection"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return CTRL+Key_I; };
 
   void moved( ) { calc(); };
   QString wantArg(const Object* o) const;
+  QString wantPoint() const;
   bool selectArg(Object* o);
   void unselectArg(Object* o);
   Objects getParents() const;
-  
+
   void startMove(const Coordinate& ) {};
   void moveTo(const Coordinate& ) {};
   void stopMove() {};
   void cancelMove() {};
 
   void drawPrelim( KigPainter&, const Coordinate& ) const {};
-  
+
   void calc();
 };
 

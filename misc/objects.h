@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -22,67 +22,91 @@
 #ifndef OBJECTS_CPP
 #define OBJECTS_CPP
 
-#include <qrect.h>
-#include <qptrlist.h>
-#include <qpainter.h>
+#include <vector>
 
-#include <kdebug.h>
-
-#include <assert.h>
-
+// this used to be a class with convenience functions, but i've
+// replaced them all with stl stuff...
 class Object;
 
-// a list of pointers to objects, with some convenience functions...
-class Objects
-  : public QPtrList<Object>
+template<class T>
+class myvector
+  : public std::vector<T>
 {
 public:
-  typedef QPtrListIterator<Object> iterator;
-  // deletes all objects
-  void deleteAll();
+  typedef typename std::vector<T>::iterator iterator;
+  typedef typename std::vector<T>::const_iterator const_iterator;
 
-  bool empty() { return isEmpty(); };
+  // unique push back -> check if we already contain o and push it
+  // back otherwise...
+  void upush( const T& o );
 
-  Objects& operator|=( const Objects& os)
-  {
-    Object* tmp;
-    for (iterator i(os); (tmp = i.current()); ++i)
-      add(tmp);
-    return *this;
-  };
+  void upush( const myvector<T>& os );
 
-  // adds all objects in objs
-  Objects operator|( const Objects& os) const
-  {
-    Objects tmp;
-    Object* o;
-    for (iterator i(os); (o = i.current()) ; ++i) tmp.add(o);
-    return tmp;
-  };
+  bool contains( const T& o ) const;
 
-  // removes all objects not in objs
-  Objects operator& (const Objects& os) const
-  {
-    Objects tmp;
-    Object* o;
-    for (iterator i(os); (o = i.current()); ++i) if (os.contains(o)) tmp.append(o);
-    return tmp;
-  };
-  
-  // add o if we don't contain it already;  if you don't need this
-  // check, use append
-  void add (Object* o)
-  {
-    if (!contains(o)) append(o);
-  };
-  
-  // get the combined span of all our objects
-  QRect getSpan() const;
-  
-  // convenience: call calc() on all objects...
-  // TODO: replace Objects::calc() with ObjectHierarchy::calc() ?
-  void calc() const;
-  
+  myvector<T>& operator|=( const myvector<T>& os )
+    { upush( os ); return *this; };
+
+  // remove all occurences of o..
+  void remove( const T& o );
 };
+
+template<class T>
+bool myvector<T>::contains( const T& o ) const
+{
+  return std::find( begin(), end(), o ) != end();
+};
+
+template<class T>
+void myvector<T>::upush( const T& b )
+{
+  if ( std::find( begin(), end(), b ) == end() )
+    push_back( b );
+};
+
+template<class T>
+void myvector<T>::upush( const myvector<T>& os )
+{
+  for ( const_iterator i = os.begin();
+        i != os.end(); ++i )
+    upush( *i );
+};
+
+template<class T>
+void myvector<T>::remove( const T& o )
+{
+  iterator i;
+  while ( (i = std::find( begin(), end(), o ) ) != end() )
+    erase( i );
+};
+
+template<class T>
+myvector<T> operator&( const myvector<T>& o, const myvector<T>& s )
+{
+  myvector<T> result;
+  std::set_intersection( o.begin(), o.end(), s.begin(), s.end(),
+                       std::back_inserter( result ) );
+  return result;
+};
+
+template<class T>
+myvector<T> operator|( const myvector<T>& o, const myvector<T>& s )
+{
+  myvector<T> result;
+  std::set_union( o.begin(), o.end(), s.begin(), s.end(),
+                       std::back_inserter( result ) );
+  return result;
+};
+
+template<class iter>
+void delete_all( iter current, iter end )
+{
+  for ( ; current != end; ++current )
+  {
+    delete *current;
+  };
+};
+
+typedef myvector<Object*> Objects;
 
 #endif

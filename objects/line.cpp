@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -46,7 +46,7 @@ bool Line::contains(const Coordinate& o, const double fault ) const
   //       | x2| y2| z2|
   //       |---|---|---|
   // equals 0, then p(x,y,z) is on the line containing points
-  // p1(x1,y1,z1) and p2 
+  // p1(x1,y1,z1) and p2
   // here, we're working with normal coords, no homogeneous ones, so all z's equal 1
 }
 
@@ -86,7 +86,7 @@ double Line::getParam(const Coordinate& point) const
 {
   // somewhat the reverse of getPoint, although it also supports
   // points not on the line...
-  
+
   // first we project the point onto the line...
   Coordinate pt = calcPointOnPerpend(p1, p2, point);
   pt = calcIntersectionPoint(p1, p2, point, pt);
@@ -112,7 +112,13 @@ LineTTP::~LineTTP()
 QString LineTTP::wantArg( const Object* o) const
 {
   if (complete) return 0;
-  if ( !toPoint(o)) return 0;
+  if ( ! o->toPoint()) return 0;
+  return wantPoint();
+}
+
+
+QString LineTTP::wantPoint() const
+{
   if ( !pt1 ) return i18n( "Point 1" );
   if ( !pt2 ) return i18n( "Point 2" );
   return 0;
@@ -120,7 +126,7 @@ QString LineTTP::wantArg( const Object* o) const
 
 bool LineTTP::selectArg(Object* o)
 {
-  Point* p=toPoint(o);
+  Point* p= o->toPoint();
   assert(p);
   assert (!(pt1 && pt2));
   if ( !pt1 ) pt1 = p;
@@ -187,9 +193,15 @@ LinePerpend::~LinePerpend()
 
 QString LinePerpend::wantArg( const Object* o) const
 {
-  if (toSegment(o) && !segment && !line ) return i18n("On segment");
-  if (toLine(o) && !segment && !line ) return i18n("On line");
-  if (toPoint(o) && !point) return i18n("Through point");
+  if (o->toSegment() && !segment && !line ) return i18n("On segment");
+  if (o->toLine() && !segment && !line ) return i18n("On line");
+  if (o->toPoint()) return wantPoint();
+  return 0;
+}
+
+QString LinePerpend::wantPoint() const
+{
+  if ( !point ) return i18n("Through point");
   return 0;
 }
 
@@ -197,13 +209,13 @@ bool LinePerpend::selectArg(Object* o)
 {
   Segment* s;
   assert (!(point && (line || segment)));
-  if ((s= toSegment(o)))
+  if ((s= o->toSegment()))
     segment = s;
   Line* l;
-  if ((l = toLine(o)))
+  if ((l = o->toLine()))
     line = l;
   Point* p;
-  if ((p = toPoint(o)))
+  if ((p = o->toPoint()))
     point = p;
   o->addChild(this);
   if (point && (line || segment)) { complete = true; };
@@ -255,17 +267,17 @@ void LinePerpend::calc()
 Objects LineTTP::getParents() const
 {
   Objects objs;
-  objs.append( pt1 );
-  objs.append( pt2 );
+  objs.push_back( pt1 );
+  objs.push_back( pt2 );
   return objs;
 }
 
 Objects LinePerpend::getParents() const
 {
   Objects objs;
-  if ( segment ) objs.append( segment );
-  else objs.append( line );
-  objs.append( point );
+  if ( segment ) objs.push_back( segment );
+  else objs.push_back( line );
+  objs.push_back( point );
   return objs;
 }
 
@@ -291,15 +303,21 @@ void LinePerpend::drawPrelim( KigPainter& p, const Coordinate& pt) const
       t1 = line->getP1();
       t2 = line->getP2();
     };
-  
+
   p.drawLine( pt, calcPointOnPerpend( t1, t2, pt ) );
 }
 
 QString LineParallel::wantArg( const Object* o) const
 {
-  if (toSegment(o) && !segment && !line ) return i18n("On segment");
-  if (toLine(o) && !segment && !line ) return i18n("On line");
-  if (toPoint(o) && !point) return i18n("Through point");
+  if (o->toSegment() && !segment && !line ) return i18n("On segment");
+  if (o->toLine() && !segment && !line ) return i18n("On line");
+  if (o->toPoint() ) return wantPoint();
+  return 0;
+}
+
+QString LineParallel::wantPoint() const
+{
+  if ( !point) return i18n("Through point");
   return 0;
 }
 
@@ -309,21 +327,21 @@ bool LineParallel::selectArg(Object* o)
   assert (!(point && (line || segment)));
   // is this a segment ?
   Segment* s;
-  if ((s= toSegment(o)))
+  if ((s= o->toSegment()))
     {
       assert (!segment);
       segment = s;
     };
   // perhaps a line...
   Line* l;
-  if ((l = toLine(o)))
+  if ((l = o->toLine()))
     {
       assert (!line);
       line = l;
     };
   // or even a point...
   Point* p;
-  if ((p = toPoint(o)))
+  if ((p = o->toPoint()))
     {
       assert (!point);
       point = p;
@@ -336,9 +354,9 @@ bool LineParallel::selectArg(Object* o)
 Objects LineParallel::getParents() const
 {
   Objects objs;
-  if ( segment ) objs.append( segment );
-  else objs.append( line );
-  objs.append( point );
+  if ( segment ) objs.push_back( segment );
+  else objs.push_back( line );
+  objs.push_back( point );
   return objs;
 }
 
@@ -416,8 +434,8 @@ LinePerpend::LinePerpend(const LinePerpend& l)
 Objects LineRadical::getParents() const
 {
   Objects objs;
-  if( c1 ) objs.append( c1 );
-  if( c2 ) objs.append( c2 );
+  if( c1 ) objs.push_back( c1 );
+  if( c2 ) objs.push_back( c2 );
   return objs;
 }
 
@@ -434,14 +452,19 @@ LineRadical::LineRadical(const LineRadical& l)
 
 QString LineRadical::wantArg( const Object* o ) const
 {
-  if( toCircle( o ) && !c1 || !c2 ) return i18n("Radical Line of this circle");
+  if( o->toCircle() && !c1 || !c2 ) return i18n("Radical Line of this circle");
   return QString::null;
+}
+
+QString LineRadical::wantPoint() const
+{
+  return 0;
 }
 
 bool LineRadical::selectArg( Object* o )
 {
   assert( !c2 );
-  Circle* c = toCircle( o );
+  Circle* c = o->toCircle();
   assert( c );
   if( !c1 ) c1 = c; else c2 = c;
   o->addChild( this );
@@ -504,4 +527,12 @@ void LineRadical::calc()
 LineRadical::LineRadical()
   : c1( 0 ), c2( 0 )
 {
+}
+Line* Line::toLine()
+{
+  return this;
+}
+const Line* Line::toLine() const
+{
+  return this;
 }

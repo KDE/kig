@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -23,19 +23,19 @@
 #define KIGPART_H
 
 #include <kparts/part.h>
-#include <kparts/factory.h>
-#include <kcommand.h>
 
 #include "../objects/object.h"
-#include "../misc/types.h"
-#include "../misc/type.h"
 #include "../misc/rect.h"
+#include "../misc/types.h"
 
 class QWidget;
 class KURL;
-class KigObjectsPopup;
 class KActionMenu;
+class KCommandHistory;
+class KAboutData;
 
+class KigMode;
+class KigObjectsPopup;
 class CoordinateSystem;
 class MacroWizardImpl;
 class KigView;
@@ -43,7 +43,7 @@ class KigView;
 /**
  * This is a "Part".  It that does all the real work in a KPart
  * application.
- * actually, it only holds a view and a document, and acts as an
+ * Briefly, it holds the data of the document, and acts as an
  * interface to shells
  *
  * @short Main Part
@@ -59,10 +59,10 @@ public:
   /**
    * Default constructor
    */
-  KigDocument(QWidget *parentWidget, const char *widgetName,
-	      QObject *parent = 0, const char *name = 0,
-	      const QStringList& = QStringList() );
-
+  KigDocument( QWidget* parentWidget, const char* widgetName,
+	       QObject* parent = 0, const char* name = 0,
+	       const QStringList& = QStringList()
+	       );
 
   /**
    * Destructor
@@ -90,173 +90,105 @@ signals:
   // we control the app's statusbar...
   void setStatusBarText ( const QString & text );
 
-
-  /****************** communication with KigView **************/
 public:
-  // if a new view is added
+  void emitStatusBarText( const QString& text )
+    {
+      emit setStatusBarText( text );
+    };
+
+  /***************** some slots *************************/
+public slots:
+  void deleteObjects();
+  void cancelConstruction();
+  void showHidden();
+  void newMacro();
+  void editTypes();
+  void startKiosk();
+  // equivalent to setModified( false ); ( did i mention i don't like
+  // signals/slots for being this inflexible...
+  // this is connected to mhistory->documentRestored();
+  void setUnmodified();
+
+  /****************** cooperation with stuff ******************/
+public:
   void addView(KigView*) { numViews++; };
   void delView(KigView*) { numViews--; };
 
-  const Objects& getSos() { return sos;};
-  const Objects& getMovingObjects() { return movingObjects; };
-  const Objects& getObjects() { return objects;};
-
-  const CoordinateSystem* getCoordinateSystem();
-
-  Object* getObc() const { return obc; };
+  const Objects& objects() { return mObjs;};
+  const CoordinateSystem* coordinateSystem();
+  KigMode* mode() { return mMode; };
+  void setMode( KigMode* );
 
   // what objects are under point p
   Objects whatAmIOn( const Coordinate& p, const double fault );
 
-  // KigView calls this to see if it's allowed to let the user move
-  // stuff around.  We decide based on whether we're constructing a
-  // macro (-> not allowed), or whether we are readonly (-> not
-  // allowed) etc.
-  bool canMoveObjects() { if ( obc || m_pMacroWizard ) return false; return true;};
-  bool canSelectObject(Object* o) { if (obc) return obc->wantArg(o); else return true;};
-  bool canSelectRect() { if (obc) return false; else return true;};
-  bool canSelectObjects(const Objects& ) { if (obc) return false; else return true; };
-  bool canUnselect() { if (obc) return false; else return true; };
-  bool canHideObjects() { if( obc ) return false; else return true; };
-  bool canAddObjects() { return !m_pMacroWizard && isReadWrite(); };
+  Objects whatIsInHere( const Rect& p );
 
-  bool canInvertSelection() { if( obc ) return false; return true; };
-
+  // a rect containing most of the objects, which would be a fine
+  // suggestion to mapt to the widget...
   Rect suggestedRect();
 
 signals: // these signals are for telling KigView it should do something...
-  // emitted if the entire canvas has to be redrawn
-  // i try to avoid calling this...
-  void allChanged();
-  // repaint a single object (it was either added to the document, or
-  // its selection flag changed...
-  void repaintOneObject(const Object* o);
-  // repaint some objects
-  // @see repaintOneObject();
-  void repaintObjects( const Objects& );
-  // emitted only for the macrowizard to update its next buttons...
-  void selectionChanged();
-
   // emitted when we want to suggest a new size for the view (
   // basically after loading a file, and on startup... )
   void recenterScreen();
-  
+
 /************** working with our internal document **********/
 public:
-  // get a popup menu for the specified objects:
-  KigObjectsPopup* getPopup( const Objects& o, KigView* );
-
   // guess what these do...
-  // actually, they only add a command object to the history, the real work is
-  // done in _addObject() and _delObject()
+  // actually, they only add a command object to the history, the real
+  // work is done in _addObject() and _delObject()
   void addObject(Object* inObject);
   void delObject(Object* inObject);
-
-  // OBC: object being constructed (i.e. the user is selecting its
-  // arguments...
-  // sets the obc to obc, deletes an old obc if required
-  void newObc(Object* obc);
+  void delObjects( Object* inObject );
 
   // change the specified objects' color...
   void setColor( const Objects& o, const QColor& c );
 
-  // invert selection...
-  void invertSelection( const Objects& os );
-
-  // SOS: Selected ObjectS: stuff which is selected...
-  // add stuff to the sos (selected objects)
-  void selectObject (Object* o);
-  void selectObjects (const Rect&);
-  void selectObjects (const Objects& o);
-  // unselect o
-  void unselect (Object* o);
-  void unselect( const Objects& o );
-
   // hide objs..
   void hideObjects( const Objects& o );
 
-  // Movement:
-  void startMovingSos(const Coordinate&, Objects& still);
-  void moveSosTo(const Coordinate&);
-  void stopMovingSos();
-  //   void cancelMovingSos();
-
- public slots:
-  // Defining macros:
-  void newMacro();
-  // delete the macro currently being defined
-  void delMacro();
-
-public slots:
-  // delete the selected objects (sos) (actually only adds an action
-  // to the history the real work is done in _delObject
-  void deleteSelected();
-
-  // delete the obc
-  void delObc();
-
-  // unselect everything
-  void clearSelection ();
-
-  // hide the selected objects...
-  void editHide()
-  {
-    for (Object* i = sos.first(); i; i = sos.next()) i->setShown(false);
-    emit allChanged();
-  };
-
-  // unhide all objects...
-  void editShowHidden();
-
-/********************* Types ************************/
-
-  Types* getTypes() { return &types;};
-public:
-  void addType(Type*);
-  void addTypes(const Types& ts)
-  {
-    for (Types::const_iterator i = ts.begin(); i != ts.end(); ++i)
-      addType(*i);
-  };
-
-  void removeType(Type*);
-
-  Object* newObject(const QCString& type);
-
-protected slots:
-  void editTypes(); 
-
 /************* internal stuff *************/
 protected:
-  void _addObject(Object* inObject);
-  void _addObjects( Objects& o) { for (Object* i = o.first(); i; i = o.next()) _addObject(i); };
+  void _addObject( Object* inObject );
+  void _addObjects( Objects& o);
   void _delObject(Object* inObject);
 
   void setupActions();
   void setupTypes();
-protected slots:
-  void updateActions();
 
 protected:
-  // the macro wizard
-  QGuardedPtr<MacroWizardImpl> m_pMacroWizard;
+  KigMode* mMode;
 
   // the command history
-  KCommandHistory* history;
+  KCommandHistory* mhistory;
 
-  KActionMenu* newSegmentAction;
-  KActionMenu* newPointAction;
-  KActionMenu* newCircleAction;
-  KActionMenu* newLineAction;
-  KActionMenu* newOtherAction;
+public:
+  // actions: this is an annoying case, didn't really fit into my
+  // model with KigModes.. This is how it works now:
+  // the actions are owned by the Part, because we need them on
+  // constructing the GUI ( actions appearing when you switch modes
+  // would not be nice, imho ).  On setting the KigPart mode, we
+  // connect the actions to the current mode, and disconnect them from
+  // the previous mode.  Enabling/disabling is done at the same time,
+  // of course..
+  // some MenuActions..
+  KActionMenu* aMNewSegment;
+  KActionMenu* aMNewPoint;
+  KActionMenu* aMNewCircle;
+  KActionMenu* aMNewLine;
+  KActionMenu* aMNewOther;
 
-  KAction* cancelConstructionAction;
-  KAction* deleteObjectsAction;
-  KAction* newMacroAction;
-  KAction* showHiddenAction;
+  KAction* aCancelConstruction;
+  KAction* aDeleteObjects;
+  KAction* aNewMacro;
+  KAction* aShowHidden;
+  KAction* aConfigureTypes;
+  KAction* aFullScreen;
 
-  KAction* configureTypesAction;
+  KCommandHistory* history();
 
+protected:
   int numViews;
 
   KigView* m_widget;
@@ -270,14 +202,7 @@ protected:
   // this is the one that owns all objects, all other object
   // containers only contain pointers to the objects, and don't own
   // them
-  Objects objects;
-  // obc is the "object being constructed", if non-null, we're
-  // constructing something...
-  Object* obc;
-  // these are the "selected objects"
-  Objects sos;
-  // these objects are moving...
-  Objects movingObjects;
+  Objects mObjs;
 
   // the CoordinateSystem as the user sees it: this has little to do
   // with the internal coordinates of the objects... In fact, it's

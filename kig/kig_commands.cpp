@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -24,11 +24,13 @@
 
 #include "kig_part.h"
 
+#include "../modes/mode.h"
+
 AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand( inDoc,
-		inOs.count() == 1 ?
-		  i18n("Add a %1").arg(inOs.getFirst()->vTBaseTypeName()) :
-		  i18n( "Add %1 objects" ).arg( os.count() ) ),
+		inOs.size() == 1 ?
+		  i18n("Add a %1").arg(inOs.front()->vTBaseTypeName()) :
+		  i18n( "Add %1 objects" ).arg( os.size() ) ),
     undone(true),
     os (inOs)
 {
@@ -38,89 +40,83 @@ AddObjectsCommand::AddObjectsCommand( KigDocument* inDoc, Object* o )
     : KigCommand ( inDoc, i18n( "Add a %1" ).arg( o->vTBaseTypeName() ) ),
       undone( true )
 {
-  os.append( o );
+  os.push_back( o );
 };
 
 void AddObjectsCommand::execute()
 {
-  for ( Object* i = os.first(); i; i = os.next() )
-    {
-      document->_addObject(i);
-    };
+  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    document->_addObject(*i);
   undone = false;
-  emit executed();
+  document->mode()->objectsAdded();
 };
 
 void AddObjectsCommand::unexecute()
 {
-  for ( Object* i = os.first(); i; i = os.next() )
-  {
-    document->_delObject(i);
-  };
+  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    document->_delObject(*i);
   undone=true;
-  emit unexecuted();
+  document->mode()->objectsRemoved();
 };
 
 AddObjectsCommand::~AddObjectsCommand()
 {
-  if (undone) os.deleteAll();
+  if (undone) delete_all( os.begin(), os.end() );
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand(inDoc,
-	       inOs.count() == 1 ?
-   	         i18n("Remove a %1").arg(inOs.getFirst()->vTBaseTypeName()) :
-	         i18n( "Remove %1 objects" ).arg( inOs.count()) ),
+	       inOs.size() == 1 ?
+   	         i18n("Remove a %1").arg(inOs.front()->vTBaseTypeName()) :
+	         i18n( "Remove %1 objects" ).arg( inOs.size()) ),
     undone( false ),
     os( inOs )
 {
+  Objects tmp;
   // we delete the children too
-  for (Object* i = os.first(); i; i = os.next()) {
-    Objects tmp = i->getChildren();
-    os |= tmp;
-  };
+  for (Objects::iterator i = os.begin(); i != os.end(); ++i )
+    tmp |= (*i)->getChildren();
+  os |= tmp;
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
   : KigCommand( inDoc, i18n("Remove a %1").arg(o->vTBaseTypeName()) ),
     undone( false )
 {
-    os.append( o );
+  os.push_back( o );
 }
 
 RemoveObjectsCommand::~RemoveObjectsCommand()
 {
-  if (!undone) os.deleteAll();
+  if (!undone) delete_all(os.begin(), os.end() );
 }
 
 void RemoveObjectsCommand::execute()
 {
-  for ( Object* i = os.first(); i; i = os.next() )
-    {
-      document->_delObject(i);
-      // the parents should let go of their children (quite a dramatic scene we have here :)
-      Objects appel = i->getParents();
-      for (Object* j = appel.first(); j; j = appel.next()) {
-	j->delChild(i);
-      };
-    };
+  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+  {
+    document->_delObject(*i);
+    // the parents should let go of their children (quite a dramatic scene we have here :)
+    Objects appel = (*i)->getParents();
+    for (Objects::iterator j = appel.begin(); j != appel.end(); ++j )
+      (*j)->delChild(*i);
+  };
   undone=false;
-  emit executed();
+  document->mode()->objectsRemoved();
 }
 
 void RemoveObjectsCommand::unexecute()
 {
-  for ( Object* i = os.first(); i; i = os.next() )
-    {
-      document->_addObject(i);
-      // drama again: parents finding their lost children...
-      Objects appel = i->getParents();
-      for (Object* j = appel.first(); j; j = appel.next()) {
-	j->addChild(i);
-      };
-    };
-    undone = true;
-    emit unexecuted();
+  for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+  {
+    document->_addObject(*i);
+    // drama again: parents finding their lost children...
+    Objects appel = (*i)->getParents();
+    for (Objects::iterator j = appel.begin(); j != appel.end(); ++j )
+      (*j)->addChild(*i);
+  };
+  undone = true;
+  document->mode()->objectsAdded();
 }
 
 void MoveCommand::execute()

@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -35,8 +35,11 @@ public:
   ~Line() {};
 
   // type identification
-  virtual QCString vBaseTypeName() const { return sBaseTypeName();};
-  static QCString sBaseTypeName() { return I18N_NOOP("line"); };
+  virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
+  static const QCString sBaseTypeName() { return I18N_NOOP("line"); };
+
+  virtual Line* toLine();
+  virtual const Line* toLine() const;
 
   bool contains (const Coordinate& o, const double fault ) const;
   void draw (KigPainter& p, bool showSelection) const;
@@ -76,11 +79,20 @@ public:
   LineTTP(const LineTTP& l);
   LineTTP* copy() { return new LineTTP(*this); };
 
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "LineTTP"; };
+  virtual const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "LineTTP"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Line by two points"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() { return i18n( "A line constructed through two points" ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "line"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return CTRL+Key_L; };
 
   // arguments
   QString wantArg ( const Object* ) const;
+  QString wantPoint() const;
   bool selectArg (Object* which);
   void unselectArg (Object* which);
   void drawPrelim ( KigPainter& , const Coordinate& ) const;
@@ -110,11 +122,20 @@ public:
   LinePerpend(const LinePerpend& l);
   LinePerpend* copy() { return new LinePerpend (*this);};
 
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return ("LinePerpend"); };
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return ("LinePerpend"); };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Perpendicular"); };
+  const QString vDescription() const { return sDescription(); };
+  static QString sDescription() { return i18n( "A line constructed through a point, perpendicular on another line or segment." ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "perpendicular"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
 
   // arguments
   QString wantArg ( const Object* ) const;
+  QString wantPoint() const;
   bool selectArg (Object* which);
     Objects getParents() const;
 //   void unselectArg (Object* which);
@@ -144,11 +165,20 @@ public:
   LineParallel (const LineParallel& l);
   LineParallel* copy() { return new LineParallel (*this); };
 
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "LineParallel"; };
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "LineParallel"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Parallel"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() { return i18n( "A line constructed through a point, and parallel to another line or segment" ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "parallel"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
 
   // arguments
   QString wantArg ( const Object* ) const;
+  QString wantPoint() const;
   bool selectArg (Object* which);
   Objects getParents() const;
 //   void unselectArg (Object* which);
@@ -184,11 +214,20 @@ public:
   LineRadical (const LineRadical& l);
   LineRadical* copy() { return new LineRadical (*this); };
 
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "LineRadical"; };
+  virtual const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "LineRadical"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Radical Line"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() { return i18n( "A line constructed through the intersections of two circles.  This is also defined for non-intersecting circles..." ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "radicalline"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
 
   // arguments
   QString wantArg ( const Object* ) const;
+  QString wantPoint() const;
   bool selectArg (Object* which);
   Objects getParents() const;
 //   void unselectArg (Object* which);

@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -19,24 +19,18 @@
 **/
 
 
-#include "kgeo.h"
+#include "filter.h"
 
-#include "../objects/object.h"
-#include "../misc/objects.h"
-#include "../misc/hierarchy.h"
-#include "../objects/point.h"
-#include "../objects/segment.h"
-#include "../objects/circle.h"
-#include "../objects/line.h"
-// #include "../objects/
+#include "resource.h"
 
-#include "kgeo_resource.h"
+#include "../../misc/objects.h"
+#include "../../objects/object.h"
+#include "../../objects/point.h"
+#include "../../objects/segment.h"
+#include "../../objects/circle.h"
+#include "../../objects/line.h"
 
 #include <ksimpleconfig.h>
-
-#include <qtextstream.h>
-#include <qfile.h>
-#include <qdom.h>
 
 bool KigFilterKGeo::supportMime( const QString mime )
 {
@@ -44,45 +38,16 @@ bool KigFilterKGeo::supportMime( const QString mime )
   else return false;
 };
 
-KigFilter::Result KigFilterKGeo::convert( const QString sFrom, KTempFile& to )
+KigFilter::Result KigFilterKGeo::load( const QString sFrom, Objects& os )
 {
-  // the output file...
-  QFile* fTo = new QFile (to.name());
-  fTo->open(IO_WriteOnly);
-  
   // kgeo uses a KSimpleConfig to save its contents...
   KSimpleConfig config ( sFrom );
 
   Result r;
   r = loadMetrics ( &config );
   if ( r != OK ) return r;
-  r = loadObjects ( &config );
-  if (r != OK) return r;
-
-  // start building our file...
-  QTextStream stream (fTo);
-
-  // cf. KigDocument::saveFile()...
-  QDomDocument doc ("KigDocument");
-  QDomElement elem = doc.createElement ("KigDocument");
-  elem.setAttribute( "Version", "2.0.000");
-
-  Objects go;
-  Objects fo;
-  for (std::vector<Object*>::iterator i = objs.begin(); i != objs.end(); ++i)
-    {
-      fo.add(*i);
-    };
-  ObjectHierarchy hier ( go, fo, 0);
-  hier.calc();
-  hier.saveXML ( doc, elem );
-  doc.appendChild(elem);
-
-  stream << doc.toCString() << endl;
-  kdDebug() << k_funcinfo << endl << doc.toCString() << endl;
-  fTo->close();
-  delete fTo;
-  return OK;
+  r = loadObjects ( &config, os );
+  return r;
 }
 
 KigFilter::Result KigFilterKGeo::loadMetrics(KSimpleConfig* c )
@@ -94,7 +59,7 @@ KigFilter::Result KigFilterKGeo::loadMetrics(KSimpleConfig* c )
   return OK;
 }
 
-KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
+KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 {
   QString group;
   c->setGroup("Main");
@@ -213,15 +178,13 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
       QColor co = c->readColorEntry( "Color" );
       if( !co.isValid() ) return ParseError;
       no->setColor( co );
-      objs.push_back( no );
-
+      os.push_back( no );
     }; // for loop (creating objects...
 
   // now we iterate again to set the parents correct...
   for (int i = 0; i < number; ++i)
     {
       QStrList parents;
-      Q_ASSERT (parents.isEmpty());
       group = "";
       group.setNum(i+1);
       group.prepend ("Object ");
@@ -236,22 +199,16 @@ KigFilter::Result KigFilterKGeo::loadObjects(KSimpleConfig* c)
 	  if (!ok)
 	    return ParseError;
 	  if (parentIndex != 0 )
-	    objs[i]->selectArg(objs[parentIndex-1]);
+            os[i]->selectArg(os[parentIndex-1]);
 	};
     }; // for loop ( setting parents...
   return OK;
 }
 
 KigFilterKGeo::KigFilterKGeo()
-  : hier (0)
 {
 }
 
 KigFilterKGeo::~KigFilterKGeo()
 {
-  delete hier;
-  for (vector<Object*>::iterator i = objs.begin(); i != objs.end(); ++i)
-    {
-      delete *i;
-    };
 }

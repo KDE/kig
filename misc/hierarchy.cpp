@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -21,7 +21,8 @@
 
 #include "hierarchy.h"
 
-#include "../kig/kig_part.h"
+#include "types.h"
+#include "type.h"
 
 #include <map>
 
@@ -29,10 +30,8 @@
 
 #include "../objects/point.h"
 
-ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs, 
-				 const Objects& inFinalObjs, 
-				 KigDocument* inDoc)
-  : doc (inDoc)
+ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
+				 const Objects& inFinalObjs )
 {
   // here we construct the hierarchy
   // the hash map contains all HierarchyElement's we already constructed
@@ -42,26 +41,25 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
   HierarchyElement* elem;
   // first we add the given (dutch: gegeven, if you're wondering what
   // the geg in gegObjs stands for) objects
-  Object* o;
-  for (Objects::iterator i(inGegObjs); (o = i.current()); ++i)
-    {
-      elem = new HierarchyElement(o->vBaseTypeName(), allElems.size() + 1);
-      elem->actual = o;
-      elem->setParams(o->getParams());
-      gegElems.push_back(elem);
-      allElems.push_back(elem);
-      elemHash[o]=elem;
-    };
+  for( Objects::const_iterator i = inGegObjs.begin(); i != inGegObjs.end(); ++i )
+  {
+    elem = new HierarchyElement( (*i)->vBaseTypeName(), allElems.size() + 1 );
+    elem->actual = *i;
+    elem->setParams( (*i)->getParams());
+    gegElems.push_back(elem);
+    allElems.push_back(elem);
+    elemHash[*i]=elem;
+  };
   // next: we do the final objects
-  for (Objects::iterator i(inFinalObjs); (o = i.current()); ++i)
-    {
-      elem = new HierarchyElement(o->vFullTypeName(), allElems.size() + 1);
-      elem->actual = o;
-      elem->setParams(o->getParams());
-      finElems.push_back(elem);
-      allElems.push_back(elem);
-      elemHash[o] = elem;
-    };
+  for( Objects::const_iterator i = inFinalObjs.begin(); i != inFinalObjs.end(); ++i )
+  {
+    elem = new HierarchyElement( (*i)->vFullTypeName(), allElems.size() + 1 );
+    elem->actual = *i;
+    elem->setParams( (*i)->getParams() );
+    finElems.push_back(elem);
+    allElems.push_back(elem);
+    elemHash[*i] = elem;
+  };
 
   // some temporary stuff i use
   Objects tmp = inFinalObjs;
@@ -69,7 +67,7 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
   ElemHash::iterator elem2;
   HierarchyElement* elem3;
   // tmp contains objects whose parents need to be handled
-  while ( !(tmp.isEmpty()) )
+  while ( !(tmp.empty()) )
   {
     // tmp2 is a temporary, used to contain objects which will form
     // tmp in the next round, if we encounter an object whose parents
@@ -77,31 +75,30 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
     // handled in the next round
     tmp2.clear();
     // we make a pass over all objects in tmp
-    for (Objects::iterator i(tmp); (o = i.current()); ++i)
+    for( Objects::iterator i = tmp.begin(); i != tmp.end(); ++i )
+    {
+      // *i should already be in the hash
+      elem = elemHash.find(*i)->second;
+      // tmp3 are the parents of the object we're handling
+      tmp3 = (*i)->getParents();
+      for (Objects::iterator j = tmp3.begin(); j != tmp3.end(); ++j )
       {
-	// *i should already be in the hash
-	elem = elemHash.find(i)->second;
-	// tmp3 are the parents of the object we're handling
-	tmp3 = o->getParents();
-	Object* j;
-	for (Objects::iterator it(tmp3); (j = it.current()); ++it)
-	  {
-	    // elem2 is a map::iterator, we use it to find elem3,
-	    // which is a HierarchyElement*
-	    elem2 = elemHash.find(j);
-	    if (elem2 == elemHash.end())
-	      {
-		elem3 = new HierarchyElement(j->vFullTypeName(), allElems.size() + 1);
-		elem3->actual = j;
-		elem3->setParams(j->getParams());
-		tmp2.add(j);
-		allElems.add(elem3);
-		elemHash[j] = elem3;
-	      }
-	    else elem3 = elem2->second;
-	    elem->addParent(elem3);
-	  };
+        // elem2 is a map::iterator, we use it to find elem3,
+        // which is a HierarchyElement*
+        elem2 = elemHash.find( *j );
+        if (elem2 == elemHash.end())
+        {
+          elem3 = new HierarchyElement((*j)->vFullTypeName(), allElems.size() + 1);
+          elem3->actual = *j;
+          elem3->setParams((*j)->getParams());
+          tmp2.upush(*j);
+          allElems.add(elem3);
+          elemHash[*j] = elem3;
+        }
+        else elem3 = elem2->second;
+        elem->addParent(elem3);
       };
+    };
     tmp = tmp2;
   };
 };
@@ -109,24 +106,21 @@ ObjectHierarchy::ObjectHierarchy(const Objects& inGegObjs,
 Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
 {
   Objects cos;
-  assert (gegElems.size() == inGegObjs.count());
+  assert (gegElems.size() == inGegObjs.size());
   allElems.cleanActuals();
   ElemList::const_iterator elem = gegElems.begin();
-  Objects::iterator it (inGegObjs);
-  Object* obj;
-  while (( obj = it.current()))
-    {
-      (*elem)->actual = obj;
-      // doesn't seem necessary, but you never know...
-      (*elem)->setParams(obj->getParams());
-      ++elem; ++it;
-    };
+  for ( Objects::const_iterator i = inGegObjs.begin(); i != inGegObjs.end(); ++i, ++elem )
+  {
+    (*elem)->actual = *i;
+    // doesn't seem necessary, but you never know...
+    (*elem)->setParams((*i)->getParams());
+  };
   for (ElemList::const_iterator i = finElems.begin(); i != finElems.end(); ++i)
-    {
-      (*i)->actual = doc->newObject((*i)->getTypeName());
-      (*i)->actual->setParams((*i)->getParams());
-      cos.add((*i)->actual);
-    };
+  {
+    (*i)->actual = Object::newObject((*i)->getTypeName());
+    (*i)->actual->setParams((*i)->getParams());
+    cos.upush((*i)->actual);
+  };
   // temporary's
   ElemList tmp = finElems;
   ElemList tmp2, tmp3;
@@ -150,11 +144,11 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
 	      {
 		// we construct it, and add it to the necessary places
 		Object* appel;
-		appel = doc->newObject((*j)->getTypeName());
+		appel = Object::newObject((*j)->getTypeName());
 		assert(appel);
 		appel->setParams((*j)->getParams());
 		(*j)->actual = appel;
-		cos.add(appel);
+		cos.upush(appel);
 		// we should also construct its parents
 		tmp2.add(*j);
 	      };
@@ -213,7 +207,7 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
       QString tmpTN = e.attribute("typeName");
       assert(tmpTN);
       QCString typeName = tmpTN.utf8();
-      
+
       HierarchyElement* tmpE = new HierarchyElement(typeName, id);
       // static cast, to prevent warnings about "comparison between
       // signed and unsigned..."
@@ -222,7 +216,7 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
 
       allElems.push_back(tmpE);
     };
-  
+
   // now take care of the parents and the params:
   for (QDomNode n = ourElement.firstChild(); !n.isNull(); n = n.nextSibling())
     {
@@ -265,7 +259,7 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
 	      bool ok;
 	      int id = tmpId.toInt(&ok);
 	      assert(ok);
-	      
+
 	      HierarchyElement* i = tmphash[id -1];
 	      tmpE->addParent(i);
 	    } // e.tagName() == "parent"
@@ -291,7 +285,7 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
   // this information..
   if (!ref) {
     // our typename
-    e.setAttribute("typeName", typeName);
+    e.setAttribute("typeName", getTypeName() );
 
     // whether we are given/final:
     e.setAttribute("given", given?"true":"false");
@@ -347,4 +341,13 @@ void ObjectHierarchy::calc()
       tmp = tmp2;
       tmp2.clear();
     };
+}
+HierarchyElement::HierarchyElement(QCString inTN, int inId )
+  : mtype( Object::types().findType( inTN ) ), id(inId), actual(0)
+{
+};
+
+QCString HierarchyElement::getTypeName() const
+{
+  return mtype->fullName();
 }

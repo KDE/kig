@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -33,8 +33,8 @@ class Circle
   ~Circle();
 
   // type identification
-  virtual QCString vBaseTypeName() const { return sBaseTypeName();};
-  static QCString sBaseTypeName() { return I18N_NOOP("circle"); };
+  virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
+  static const QCString sBaseTypeName() { return I18N_NOOP("circle"); };
 
   bool contains (const Coordinate& o, const double miss ) const;
   void draw (KigPainter& p, bool showSelection) const;
@@ -44,11 +44,11 @@ class Circle
 
   Coordinate getCenter() const { return qpc; };
   double getRadius() const { return radius; };
-  
+
 protected:
   Coordinate qpc;
   double radius;
-  
+
   inline double calcRadius( const Point* c, const Point* p ) const
   {
     return (c->getCoord() - p->getCoord()).length();
@@ -73,14 +73,23 @@ public:
   CircleBCP(const CircleBCP& c);
   CircleBCP* copy() { return new CircleBCP(*this); };
 
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "CircleBCP"; };
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "CircleBCP"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Circle by center and point"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() { return i18n( "A circle constructed by its center and a point on its border" ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "circle"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return CTRL+Key_C; };
 
   void calc ();
   void drawPrelim ( KigPainter&, const Coordinate& ) const;
 
   // passing arguments
   QString wantArg (const Object*) const;
+  QString wantPoint() const;
   bool selectArg (Object*);
   void unselectArg (Object*);
     Objects getParents() const;
@@ -106,13 +115,22 @@ public:
   CircleBTP(const CircleBTP& c);
   CircleBTP* copy() { return new CircleBTP(*this); };
 
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "CircleBTP"; };
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "CircleBTP"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Circle by three points"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() { return i18n( "A circle constructed through three points" ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "circle"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
 
   void drawPrelim ( KigPainter&, const Coordinate& ) const;
 
   // passing arguments
   QString wantArg (const Object*) const;
+  QString wantPoint() const;
   bool selectArg (Object*);
   void unselectArg (Object*);
     Objects getParents() const;

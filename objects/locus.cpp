@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -50,62 +50,58 @@ void Locus::draw(KigPainter& p, bool ss) const
 	};
     }
   else
+  {
+    for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
     {
-      Object* i;
-      for ( Objects::iterator it(objs); (i = it.current()); ++it)
-	{
-	  i->setSelected(selected);
-	  i->draw(p, ss);
-	}
-    };
+      (*i)->setSelected(selected);
+      (*i)->draw(p, ss);
+    }
+  };
 }
 
 bool Locus::contains(const Coordinate& o, const double fault ) const
 {
   if (!isPointLocus())
-    {
-      Object* i;
-      for (Objects::iterator it(objs); (i = it.current()); ++it)
-	{
-	  if (i->contains(o, fault)) return true;
-	};
-    }
+  {
+    for( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+      if( (*i)->contains(o, fault)) return true;
+  }
   else
-    {
-      for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
-	{
-	  if( ( i->pt - o ).length() < fault ) return true;
-	};
-    };
+  {
+    for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
+      if( ( i->pt - o ).length() < fault ) return true;
+  };
   return false;
 }
 
 bool Locus::inRect(const Rect& r) const
 {
   if (!isPointLocus())
-    {
-      Object* i;
-      for (Objects::iterator it(objs); (i = it.current()); ++it)
-	{
-	  if (i->inRect(r)) return true;
-	};
-    }
-  else 
-    {
-      for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
-	{
-	  if( r.contains( i->pt ) ) return true;
-	};
-    };
+  {
+    for( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+      if( (*i)->inRect(r) ) return true;
+  }
+  else
+  {
+    for (CPts::const_iterator i = pts.begin(); i != pts.end(); ++i)
+      if( r.contains( i->pt ) ) return true;
+  };
   return false;
 }
 
 QString Locus::wantArg( const Object* o ) const
 {
-  if (toConstrainedPoint(o) && !cp)
+  if (o->toConstrainedPoint() && !cp)
     {
       return i18n("Moving point");
     };
+  // hack, here wantPoint() also handles non-Point objects, but it
+  // doesn't matter...
+  return wantPoint();
+}
+
+QString Locus::wantPoint() const
+{
   if (!obj)
     {
       return i18n("Dependent object");
@@ -115,17 +111,17 @@ QString Locus::wantArg( const Object* o ) const
 
 bool Locus::selectArg(Object* o)
 {
-  if (!cp && (cp = toConstrainedPoint(o)))
+  if (!cp && (cp = o->toConstrainedPoint()))
     {
       cp->addChild(this);
     }
-  else 
+  else
     {
       assert (!obj);
       obj = o;
       obj->addChild(this);
       // if obj is a point, we are a pointLocus
-      _pointLocus = (bool) toPoint(obj);
+      _pointLocus = (bool) obj->toPoint();
       kdDebug() << k_funcinfo << " at line no. " << __LINE__
 		<< " - _pointLocus: " << _pointLocus << endl;
     };
@@ -134,10 +130,10 @@ bool Locus::selectArg(Object* o)
       complete = true;
       // construct our hierarchy...
       Objects given;
-      given.append(cp);
+      given.push_back(cp);
       Objects final;
-      final.append(obj);
-      hierarchy = new ObjectHierarchy(given, final, 0);
+      final.push_back(obj);
+      hierarchy = new ObjectHierarchy( given, final );
       // calc...
       calc();
     }
@@ -158,12 +154,12 @@ void Locus::calc()
 Coordinate Locus::getPoint(double param) const
 {
   Coordinate t;
-  if (toPoint(obj))
+  if (obj->toPoint())
     {
       double tmp = cp->getP();
       cp->setP(param);
       hierarchy->calc();
-      t=toPoint(obj)->getCoord();
+      t= obj->toPoint()->getCoord();
       cp->setP(tmp);
       hierarchy->calc();
     }
@@ -178,7 +174,7 @@ double Locus::getParam(const Coordinate&) const
 
 void Locus::calcObjectLocus()
 {
-  objs.deleteAll();
+  delete_all( objs.begin(), objs.end() );
   objs.clear();
   double oldP = cp->getP();
   double period = double(1)/numberOfSamples;
@@ -187,7 +183,7 @@ void Locus::calcObjectLocus()
       cp->setP(i);
       cp->calc();
       hierarchy->calc();
-      objs.append(obj->copy());
+      objs.push_back(obj->copy());
     };
   cp->setP(oldP);
   cp->calc();
@@ -199,7 +195,7 @@ inline Locus::CPts::iterator Locus::addPoint(double param)
   cp->setP(param);
   cp->calc();
   hierarchy->calc();
-  Point* p = Object::toPoint(obj);
+  Point* p = obj->toPoint();
   pts.push_front(CPt(p->getCoord(), param));
   return pts.begin();
 }
@@ -228,7 +224,7 @@ void Locus::calcPointLocus( const Rect& r )
 //       cp->setP(i);
 //       cp->calc();
 //       hierarchy->calc();
-//       objs.append(obj->copy());
+//       objs.push_back(obj->copy());
 //     };
   CPts::iterator b = addPoint(0);
   CPts::iterator e = addPoint(1);

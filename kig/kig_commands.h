@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -37,7 +37,7 @@ class KigCommand
 public:
   KigCommand (KigDocument* inDoc, const QString& name) : KNamedCommand(name), document( inDoc ) {};
 public:
-    KigDocument* document;
+  KigDocument* document;
 };
 
 class AddObjectsCommand
@@ -50,9 +50,6 @@ public:
   ~AddObjectsCommand ();
   void execute();
   void unexecute();
-signals:
-  void executed();
-  void unexecuted();
 protected:
   bool undone;
   Objects os;
@@ -68,9 +65,6 @@ public:
   ~RemoveObjectsCommand ();
   void execute();
   void unexecute();
-signals:
-    void executed();
-    void unexecuted();
 protected:
   bool undone;
   Objects os;
@@ -84,7 +78,7 @@ public:
   // sbm: sos before moving: contains copies of the sos from before the move
   // sos: contains pointers to the objects as they are currently being used
   MoveCommand(KigDocument* inDoc, const Objects& inSbm, const Objects& inSos)
-    : KigCommand (inDoc, i18n("Move %1 objects").arg(sbm.count())),
+    : KigCommand (inDoc, i18n("Move %1 objects").arg(sbm.size())),
       sbm (inSbm), sos(inSos) {};
   ~MoveCommand();
   void execute();

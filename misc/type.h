@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,43 +11,25 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
  USA
 **/
 
+#ifndef KIG_MISC_TYPE_H
+#define KIG_MISC_TYPE_H
 
-#ifndef TYPEREPR_H
-#define TYPEREPR_H
-
-#include "hierarchy.h"
-
-#include <klocale.h>
-
-#include <qobject.h>
-
-class KigDocument;
-class TypeRepository;
 class Object;
-class MTypeOne;
-class Type;
-class KAction;
+class ObjectHierarchy;
 
-// @see Type
-class SlotWrapper
-  :public QObject
-{
-  Q_OBJECT
-public:
-  SlotWrapper( KigDocument* inDoc, Type* inT ) : doc( inDoc ), t( inT ) {};
-public slots:
-  void newObc();
-protected:
-  KigDocument* doc;
-  Type* t;
-};
+class QCString;
+class QDomDocument;
+class QDomElement;
+class QDomNode;
+
+#include <qstring.h>
 
 /**
  * this is a class which represents a type to kig, it is necessary
@@ -55,122 +37,133 @@ protected:
  * TType for predefined object types ( written in C++ ),  and
  * MType for user defined object types ( macros ),  which are
  * loaded from a file, or constructed by the user
- * i was going to have a slot here "void newObc()",  but that wasn't
- * possible since qt2 doesn't support template qobjects.  Instead, i
- * now have a class SlotWrapper, which has the slot, and forwards
- * requests to its parent.
  */
 class Type
 {
 public:
-  Type( KigDocument* inDoc ) : w( inDoc , this ), action(0)  {};
-  virtual ~Type(){};
-  // returns a new object of the type
-  virtual Object* newObject() = 0;
-  // naming: cf. object.h
-  virtual QCString fullTypeName() const = 0;
-  virtual QCString baseTypeName() const = 0;
-  // the name of the picture associated with this object
-  virtual QCString getPicName() const = 0;
-  // short cut key
-  virtual int getShortCutKey() const = 0;
-  // a description for this type, it is shown on the "What's this"
-  // help function
-  virtual QString getDescription() const = 0;
-  // (external) name we should give to the action
-  virtual QString getActionName() const = 0;
-  // internal name we should give to the action
-  virtual QCString getInternalActionName() const = 0;
-  QString tFullTypeName() const { return i18n( fullTypeName() );};
-  SlotWrapper* getSlotWrapper(){ return &w; };
+  virtual ~Type() {};
 
-  // handy, but simply equals a dynamic_cast...
-  MTypeOne* toMTypeOne();
+  /**
+   * return the name of this type.  This is the same name as
+   * Object::vFullTypeName()...
+   */
+  virtual const QCString fullName() const = 0;
 
-  void setAction(KAction* a) { action = a; };
-  KAction* getAction() { return action; };
+  /**
+   * @see Object::vBaseTypeName()
+   */
+  virtual const QCString baseTypeName() const = 0;
 
-protected:
-  SlotWrapper w;
-  KAction* action;
+  /**
+   * @see Object::vDescriptiveName
+   */
+  virtual const QString descriptiveName() const = 0;
+
+  /**
+   * @see Object::vTypeDescription()
+   */
+  virtual const QString description() const = 0;
+
+  /**
+   * @see Object::vIconName()
+   */
+  virtual const QCString iconFileName() const = 0;
+
+  /**
+   * saves type information to a file.  As this is only meaningful for
+   * MType's, TType has an empty implementation...
+   */
+  virtual void saveXML( QDomDocument& doc, QDomNode& parent ) const = 0;
+
+  /**
+   * build a new object of this type...
+   */
+  virtual Object* build() = 0;
 };
 
-template < class ObjectType >
+/**
+ * template Type for builtin Types...
+ */
+template <class T>
 class TType
   : public Type
 {
-protected:
-  QCString picName;
-  QString actionName;
-  QString description;
-  int shortCutKey;
 public:
-  TType( KigDocument* inDoc,
-	 const QCString& inPicName,
-	 const QString& inActionName,
-	 const QString& inDescription,
-	 const int inShortCutKey = 0
-	 )
-    : Type( inDoc ),
-      picName( inPicName ),
-      actionName (inActionName),
-      description (inDescription),
-      shortCutKey( inShortCutKey )
-  {};
-  Object* newObject() { return new ObjectType;};
-  QCString fullTypeName() const { return ObjectType::sFullTypeName(); };
-  QCString baseTypeName() const { return ObjectType::sBaseTypeName(); };
-  QCString getPicName() const { return picName;};
-  int getShortCutKey() const { return shortCutKey;};
-  QString getActionName() const { return actionName; };
-  QString getDescription() const { return description; };
-  QCString getInternalActionName() const { return QCString("new_")+fullTypeName();};
+  Object* build();
+  const QCString fullName() const;
+  const QCString baseTypeName() const;
+  const QString descriptiveName() const;
+  const QString description() const;
+  const QCString iconFileName() const;
+  void saveXML( QDomDocument&, QDomNode& ) const;
 };
 
+template <class T>
+Object* TType<T>::build()
+{
+  return new T;
+};
+
+template <class T>
+void TType<T>::saveXML( QDomDocument&, QDomNode& ) const
+{
+  // noop
+}
+
+template <class T>
+const QCString TType<T>::fullName() const
+{
+  return T::sFullTypeName();
+};
+
+template <class T>
+const QCString TType<T>::baseTypeName() const
+{
+  return T::sBaseTypeName();
+}
+
+template <class T>
+const QString TType<T>::descriptiveName() const
+{
+  return T::sDescriptiveName();
+};
+
+template <class T>
+const QString TType<T>::description() const
+{
+  return T::sDescription();
+};
+
+template <class T>
+const QCString TType<T>::iconFileName() const
+{
+  return T::sIconFileName();
+};
+
+/**
+ * Type for macro types
+ */
 class MType
-    :public Type
+  : public Type
 {
 protected:
-  ObjectHierarchy* hier;
+  ObjectHierarchy* mhier;
+  QString mname;
+  QString mdesc;
 public:
-  MType( ObjectHierarchy* inHier, KigDocument*);
-  ~MType() { delete hier; };
-};
-
-class MTypeOne
-  : public MType
-{
-  Type* finalType;
-  QString actionName;
-  QString description;
-public:
-  MTypeOne( ObjectHierarchy* inHier,
-	    const QString& actionName,
-	    const QString& description,
-	    KigDocument*);
-  MTypeOne( const QDomElement& e, KigDocument*);
-  ~MTypeOne() {};
-  // TODO: check this..;
-  QCString fullTypeName() const { return actionName.utf8(); };
-  // this is correct.
-  QCString baseTypeName() const { return finalType->baseTypeName(); };
-  // for now, this is correct, maybe support the user defining the
-  // picture someday...
-  QCString getPicName() const { return finalType->getPicName(); };
-  // this is correct, the user can always changed his keybindings with
-  // standard kaction/xmlgui stuff
-  int getShortCutKey() const { return 0; };
-  // yup, this is ok
-  QString getActionName() const { return actionName; };
-  // ...
-  QString getDescription() const { return description; };
-  // not ok, obviously, this way, the user can't put these actions in
-  // his toolbars and such...
-  QCString getInternalActionName() const { return 0; };
-  
-  void saveXML(QDomDocument& doc, QDomNode& parent) const;
-
-  Object* newObject();
+  MType( ObjectHierarchy* inHier, const QString name, const QString desc );
+  ~MType();
+  /**
+   * load info from XML...
+   */
+  MType( const QDomElement& e );
+  Object* build();
+  const QCString fullName() const;
+  const QCString baseTypeName() const;
+  const QString descriptiveName() const;
+  const QString description() const;
+  const QCString iconFileName() const;
+  void saveXML( QDomDocument&, QDomNode& ) const;
 };
 
 #endif

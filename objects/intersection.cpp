@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -41,20 +41,25 @@ QString IntersectionPoint::wantArg(const Object* o) const
   else return 0;
 }
 
+QString IntersectionPoint::wantPoint() const
+{
+  return 0;
+}
+
 bool IntersectionPoint::selectArg(Object* o)
 {
   Segment* s;
   Line* l;
   Circle* c;
-  if ((s = toSegment(o))) {
+  if ((s = o->toSegment())) {
     if (segment1) segment2 = s;
     else segment1 = s;
   }
-  else if ((l = toLine(o))) {
+  else if ((l = o->toLine())) {
     if (line1) line2 = l;
     else line1 = l;
   }
-  else if ((c = toCircle(o))) {
+  else if ((c = o->toCircle())) {
     if (circle1) circle2 = c;
     else circle1 = c;
   }
@@ -80,15 +85,15 @@ void IntersectionPoint::unselectArg(Object* o)
   Segment* s;
   Line* l;
   Circle* c;
-  if ((s = toSegment(o))) {
+  if ((s = o->toSegment())) {
     if (segment1 == s) segment1 = segment2;
     segment2 = 0;
   }
-  else if ((l = toLine(o))) {
+  else if ((l = o->toLine())) {
     if (line1 == l) line1 = line2;
     line2 = 0;
   }
-  else if ((c = toCircle(o))) {
+  else if ((c = o->toCircle())) {
     if (circle1 == c) circle1 = circle2;
     circle2 = 0;
   }
@@ -101,12 +106,12 @@ void IntersectionPoint::unselectArg(Object* o)
 Objects IntersectionPoint::getParents() const
 {
   Objects tmp;
-  if (segment1) tmp.append(segment1);
-  if (segment2) tmp.append(segment2);
-  if (line1) tmp.append(line1);
-  if (line2) tmp.append(line2);
-  if (circle1) tmp.append(circle1);
-  if (circle2) tmp.append(circle2);
+  if (segment1) tmp.push_back(segment1);
+  if (segment2) tmp.push_back(segment2);
+  if (line1) tmp.push_back(line1);
+  if (line2) tmp.push_back(line2);
+  if (circle1) tmp.push_back(circle1);
+  if (circle2) tmp.push_back(circle2);
   return tmp;
 };
 

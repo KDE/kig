@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -35,50 +35,80 @@
 
 class KigDocument;
 
+/**
+ * This is the widget as represented on-screen.  It is basically a
+ * dumb class, which is manipulated by KigMode's.  All events are
+ * forwarded to them.  It has some actions which are widget specific
+ * (basically the view-menu and printing (once i implement it ;)), in
+ * case you're wondering why it inherits KXMLGUIClient...
+ */
 class KigView
   : public QWidget, public KXMLGUIClient
 {
   Q_OBJECT
+
+  KAction* aZoomIn;
+  KAction* aZoomOut;
+  KAction* aCenterScreen;
+
 public:
-  KigView( KigDocument* inDoc, QWidget* parent = 0, const char* name = 0, bool inIsKiosk = false);
+  KigView( KigDocument* inDoc,
+	   QWidget* parent = 0,
+	   const char* name = 0
+	   );
   ~KigView();
 
-  void drawScreen( QPaintDevice* d );
-
-  void startMovingSos( const QPoint& );
+  void setupActions();
 
 public slots:
-  void startKioskMode();
-  void endKioskMode();
 
-  // this is connected to KigDocument::suggestRect, check that signal 
+  // this is connected to KigDocument::suggestRect, check that signal
   // out for an explanation...
   void recenterScreen();
   // ...
   void zoomIn();
   void zoomOut();
-  // ...
 
-signals:
-  void endKiosk();
-signals:
-  void setStatusBarText(const QString&);
+  void redrawScreen();
+
+public:
+  /**
+   * The following are functions used by KigMode's to tell us to draw
+   * stuff...
+   * i tried to optimise the drawing as much as possible, using
+   * much ideas from kgeo
+   * DOUBLE BUFFERING:
+   * we don't draw on the widget directly, we draw on a QPixmap (
+   * curPix ), and bitBlt that onto the widget to avoid flickering.
+   * TRIPLE BUFFERING:
+   * we also currently keep an extra pixmap of what the widget looks
+   * like without objects that are moving... i'm currently wondering
+   * whether this isn't a performance loss rather than a gain, but
+   * well, i haven't done any measurements (yet ?), so for now it
+   * stays in...
+   * OVERLAYS
+   * Another thing: it turns out that working on the pixmaps isn't
+   * that slow, but working on the widget is.  So we try to reduce the
+   * amount of work we spend on the widget. (i got this idea from
+   * kgeo, all credits for this go to marc.bartsch@web.de)
+   * on drawing, KigPainter tells us (appendOverlay) for everything it
+   * draws what rects it draws in, so we know on updating the widget (
+   * updateWidget() that the rest is still ok and doesn't need to be
+   * bitBlt'd again on the widget...
+   */
+
+  // clear stillPix...
+  void clearStillPix();
+  // update curPix (bitBlt stillPix onto curPix..)
+  void updateCurPix( const std::vector<QRect>& = std::vector<QRect>());
+
+  // this means bitBlting curPix on the actual widget...
+  void updateWidget( const std::vector<QRect>& = std::vector<QRect>() );
+  void updateEntireWidget();
 
 protected:
-  void displayText(QString s = QString::null) { tbd = s; emit setStatusBarText(s); if (tbd) drawTbd(); };
-
   KigDocument* document;
   // what the cursor currently looks like
-  QPoint plc; // point last clicked
-  QPoint pmt; // point moved to
-  Objects oco; // objects clicked on
-  QString tbd; // text being displayed
-  // if a user clicks on a selected point, this can either be for
-  // moving or for deselecting.  We first assume it's for deselecting,
-  // until he moves far enough away from the place he clicked.  Then
-  // we set this variable to true.
-  bool isMovingObjects;
-  bool isDraggingRect;
 
 protected:
   // we reimplement these from QWidget to suit our needs
@@ -88,123 +118,67 @@ protected:
   void paintEvent (QPaintEvent* e);
   void resizeEvent(QResizeEvent*);
 
-protected:
-  // drawing: i tried to optimise this as much as possible, using ideas
-  // from kgeo
-  // we keep a picture ( stillPix ) of what the still objects look like,
-  // and on moving,  we only draw the other on a copy of this pixmap.
-  // furthermore,  on drawing the other, we only draw what is in
-  // document->sos->getSpan()
-  // another thing: it turns out that working on the pixmaps isn't
-  // that slow, but working on the widget is.  So we try to reduce the
-  // amount of work we spend on the widget. (i got this idea from the
-  // kgeo, all credits for this should go to marc.bartsch@web.de) : objects
-  // have a getObjectOverlay function,
-  // in which they specify some rects which they occupy.  We only
-  // bitBlt those rects onto the widget. This is only done on moving,
-  // since that's where speed matters most... 
-
-  // redraw the stillPix (the grid and such...
-  void redrawStillPix();
-  // this means bitBlting "curPix" on "this"
-  void updateWidget( bool needRedraw = false);
-  // this means bitBlting "stillPix" on "curPix"
-  void updateCurPix();
-  // draw a single object (on p)
-  void drawObject(const Object* o, KigPainter& p);
-  // draw these objects (on p)
-  void drawObjects(const Objects& os, KigPainter& p);
-  // draw the Text Being Displayed (on curPix)
-  // @ref displayText()
-  void drawTbd();
-  // draw the rect being dragged for selecting objects... (on curPix)
-  // @ref isDraggingRect
-  void drawRect();
-  // draw the grid... (on stillPix)
-  void drawGrid( KigPainter& p );
-  // draw the obc preliminarily... (i.e. before it's entirely
-  // constructed) (on curPix)
-  void drawPrelim(); 
-
-public slots:
-  // redraw everything...
-  void updateAll()
-  {
-    redrawStillPix();
-    updateCurPix();
-    updateWidget();
-  };
-  // update one object on the screen...
-  void updateObject(const Object* o)
-  {
-    {
-      KigPainter p( this, &stillPix );
-      drawObject(o, p);
-    }
-    {
-      KigPainter p( this, &curPix );
-      drawObject(o, p);
-    };
-    updateWidget();
-  };
-  // update a few objects...
-  void updateObjects(const Objects& o)
-  {
-    {
-      KigPainter p( this, &stillPix );
-      drawObjects(o, p);
-    }
-    {
-      KigPainter p( this, &curPix );
-      drawObjects(o, p);
-    };
-    updateWidget();
-  };
-
+  /************** Mapping between Internal Coordinate Systems **********/
 public:
-  // the part of the document we're currently showing, this is
-  // calculated from KigDocument::suggestedRect, together with our
-  // showOffset and scale...
+  // there are two coordinate systems:
+  // 1 the widget's coordinates: these are simple int's from (0,0) in
+  // the topleft of the widget to size() in the bottomRight...
+  // 2 the document's coordinates: these are the coordinates used by
+  // the KigDocument.  Objects only know of their coordinates as
+  // related to this system.
+  // These are mapped by the KigView using mViewRect.  It represents
+  // the part of the document (in document coordinates) that is
+  // currently showing in the widget (mapped to the widget).
+  // This allows different KigViews to show different parts of the
+  // screen etc.
+
+  // the part of the document we're currently showing
+  // i.e. a rectangle of the document (which has its own coordinate
+  // system) which is mapped onto the widget.
   Rect showingRect();
-  Rect matchScreenShape( const Rect& r );
-  double pixelWidth();
 
-  QPoint toScreen( const Coordinate p );
-  inline QRect toScreen( const Rect r )
-  {
-    return QRect( toScreen( r.bottomLeft()), toScreen( r.topRight() ) ).normalize();
-  };
-
+  // TODO: remove code duplication with KigPainter
   Coordinate fromScreen( const QPoint& p );
   inline Rect fromScreen( const QRect& r )
   {
     return Rect( fromScreen(r.topLeft()), fromScreen(r.bottomRight() ) ).normalized();
   };
 
-protected:
-  QPixmap stillPix; // What Do the Still Objects Look Like
-  QPixmap curPix; // temporary, gets bitBlt'd (copied) onto the widget
-		  // (to avoid flickering)
-  std::vector<QRect> overlay, oldOverlay;
-
-  void appendOverlay( const QRect& r )
+  QPoint toScreen( const Coordinate p );
+  inline QRect toScreen( const Rect r )
   {
-    overlay.push_back(r);
-  }
+    return QRect( toScreen( r.bottomLeft()),
+                  toScreen( r.topRight() ) ).normalize();
+  };
 
-  friend class KigPainter;
+  double pixelWidth();
 
 protected:
-  QDialog* kiosk;
-  KPopupMenu* kiosKontext;
-  KigView* kioskView;
-  bool isKiosk;
+  // this is called to match a rect's dimensions to the dimensions of
+  // the window before we set mViewRect to it.  This is done cause we
+  // always want circles to look like circles etc...
+  Rect matchScreenShape( const Rect& r );
+
+  // to avoid stupid syntax.  Actually, the KigMode's implement
+  // functionality which is logically inherent to KigView.. So this
+  // isn't just an ugly hack ;)
+  friend class KigMode;
+  friend class NormalMode;
+  friend class MovingMode;
+  friend class StdConstructionMode;
+
+  // what do the still objects look like
+  // wondering if this is appropriate, maybe it should be part of
+  // MovingMode ?
+  QPixmap stillPix;
+  // temporary, gets bitBlt'd (copied) onto the widget
+  // (to avoid flickering)
+  QPixmap curPix;
+  std::vector<QRect> oldOverlay;
 
   /**
    * what part of the document are we showing...
    */
   Rect mViewRect;
-
-  void setupActions();
 };
 #endif

@@ -1,6 +1,6 @@
 INCLUDES=$(all_includes)
 noinst_LTLIBRARIES=libmisc.la
-noinst_HEADERS=type.h types.h objects.h hierarchy.h coordinate_system.h coordinate.h common.h kigpainter.h coordinate.h
-libmisc_la_SOURCES=type.cpp types.cpp objects.cpp hierarchy.cpp coordinate_system.cpp common.cpp kigpainter.cpp
+noinst_HEADERS=common.h coordinate.h coordinate_system.h hierarchy.h type.h types.h kigpainter.h objects.h rect.h
+libmisc_la_SOURCES=common.cpp coordinate_system.cpp hierarchy.cpp type.cpp types.cpp kigpainter.cpp objects.cpp
 libmisc_la_LIBADD=-lm
 METASOURCES=AUTO

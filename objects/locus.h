@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -47,14 +47,25 @@ public:
   static const int numberOfSamples = 500;
 public:
   Locus() : cp(0), obj(0), hierarchy(0) { };
-  ~Locus() { objs.deleteAll(); };
+  ~Locus() { delete_all( objs.begin(), objs.end() ); };
   Locus(const Locus& loc);
   Locus* copy() { return new Locus(*this); };
 
-  virtual QCString vBaseTypeName() const { return sBaseTypeName(); };
-  static QCString sBaseTypeName() { return I18N_NOOP("curve"); };
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "Curve"; };
+  virtual const QCString vBaseTypeName() const { return sBaseTypeName(); };
+  static const QCString sBaseTypeName() { return I18N_NOOP("curve"); };
+  virtual const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "Curve"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Locus"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() {
+    return i18n( "Construct a locus: let one point move around, and record "
+                 "the places another object passes through. These combined "
+                 "form a new object: the locus..." ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "locus"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
 
   void draw (KigPainter& p, bool showSelection) const;
   bool contains (const Coordinate& o, const double fault ) const;
@@ -62,6 +73,7 @@ public:
 
   // arguments
   QString wantArg ( const Object* ) const;
+  QString wantPoint() const;
   bool selectArg (Object* which);
 //   void unselectArg (Object* which);
   void drawPrelim ( KigPainter&, const Coordinate& ) const {};
@@ -80,8 +92,8 @@ public:
   Objects getParents() const
   {
     Objects tmp;
-    tmp.append(cp);
-    tmp.append(obj);
+    tmp.push_back(cp);
+    tmp.push_back(obj);
     return tmp;
   };
 

@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -21,64 +21,77 @@
 
 #include "type.h"
 
-#include "../kig/kig_part.h"
+#include "hierarchy.h"
+
 #include "../objects/macro.h"
 
-#include <kdebug.h>
-
+#include <qregexp.h>
 #include <qfile.h>
-#include <qtextstream.h>
+#include <qdom.h>
 
-void SlotWrapper::newObc()
+#include <kmessagebox.h>
+
+MType::~MType()
 {
-    doc->newObc( t->newObject() );
-};
-
-MTypeOne::MTypeOne( ObjectHierarchy* inHier, const QString& inActionName, const QString& inDesc, KigDocument* inDoc )
-  : MType(inHier, inDoc ), 
-    finalType(inDoc->getTypes()->findType(inHier->getFinElems()[0]->getTypeName())),
-    actionName(inActionName),
-    description(inDesc)
-{    
+  delete mhier;
 }
 
-MType::MType( ObjectHierarchy* inHier, KigDocument* inDoc)
-  : Type(inDoc), hier(inHier)
+MType::MType( ObjectHierarchy* hier, const QString name, const QString desc )
+  : mhier( hier ),
+    mname( name ),
+    mdesc( desc )
 {
 }
 
-Object* MTypeOne::newObject()
+Object* MType::build()
 {
-  Object* o = new MacroObjectOne(hier);
-  kdDebug() << k_funcinfo << o << endl;
-  return o;
+  return new MacroObjectOne( mhier );
 }
 
-void MTypeOne::saveXML( QDomDocument& doc, QDomNode& p) const
+void MType::saveXML( QDomDocument& doc, QDomNode& p ) const
 {
-  QDomElement e = doc.createElement("MTypeOne");
-  e.setAttribute("actionName", actionName);
-  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
-  hier->saveXML(doc,e);
-  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
+  QDomElement e = doc.createElement("MType");
+  e.setAttribute("name", mname);
+  mhier->saveXML( doc, e );
   p.appendChild(e);
-};
+}
 
-MTypeOne::MTypeOne(const QDomElement& e, KigDocument* kdoc)
-  : MType(0,kdoc )
+MType::MType( const QDomElement& e )
 {
-  assert(e.tagName() == "MTypeOne");
-  QString tmpAN = e.attribute("actionName");
+  assert(e.tagName() == "MType");
+  QString tmpAN = e.attribute("name");
   assert(tmpAN);
-  actionName=tmpAN;
+  mname = tmpAN;
   QDomNode n = e.firstChild();
   QDomElement el = n.toElement();
   assert(!el.isNull());
-  hier = new ObjectHierarchy(el, kdoc);
-  finalType = kdoc->getTypes()->findType(hier->getFinElems()[0]->getTypeName());
-};
+  mhier = new ObjectHierarchy( el );
+}
 
-MTypeOne* Type::toMTypeOne()
+const QCString MType::fullName() const
 {
-  return dynamic_cast<MTypeOne*>(this);
-};
+  QString s = mname;
+  s = s.replace( QRegExp( " " ), "_" );
+  return s.utf8();
+}
+
+const QCString MType::baseTypeName() const
+{
+  return mhier->getFinElems().front()->type()->baseTypeName();
+}
+
+const QString MType::descriptiveName() const
+{
+  return mname;
+}
+
+const QString MType::description() const
+{
+  return mname;
+}
+
+const QCString MType::iconFileName() const
+{
+  // TODO ?
+  return "";
+}

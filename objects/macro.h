@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -31,6 +31,7 @@ class MacroObject
 {
 public:
   QString wantArg( const Object* o) const;
+  QString wantPoint() const;
   MacroObject(ObjectHierarchy* inHier);
   virtual ~MacroObject() {};
   bool selectArg(Object* o);
@@ -76,8 +77,11 @@ public:
   void moveTo (const Coordinate& p);
   void stopMove();
   void calc();
-  QCString vBaseTypeName() const;
-  QCString vFullTypeName() const;
+  const QCString vBaseTypeName() const;
+  const QCString vFullTypeName() const;
+  const QString vDescriptiveName() const { return 0; };
+  const QString vDescription() const { return 0; };
+  const QCString vIconFileName() const { return 0; };
   Objects getParents() const { return arguments; };
 protected:
   void handleNewObjects (const Objects& o);

@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -40,9 +40,13 @@ protected:
   Point( const Coordinate& p ) : mC( p ) {};
 public:
 
+  // type info:
+  Point* toPoint() { return this; };
+  const Point* toPoint() const { return this; };
+
   // type identification
-  virtual QCString vBaseTypeName() const { return sBaseTypeName();};
-  static QCString sBaseTypeName() { return I18N_NOOP("point"); };
+  virtual const QCString vBaseTypeName() const { return sBaseTypeName();};
+  static const QCString sBaseTypeName() { return I18N_NOOP("point"); };
 
   // general members
   virtual bool contains (const Coordinate& o, const double fault ) const;
@@ -76,14 +80,23 @@ public:
 
   std::map<QCString,QString> getParams();
   void setParams( const std::map<QCString,QString>& m);
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "FixedPoint"; };
+  virtual const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "FixedPoint"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Fixed Point"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() { return i18n( "" ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "point4"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
 
   // no drawPrelim...
   virtual void drawPrelim( KigPainter &, const Coordinate& ) const {};
 
   // passing arguments
   virtual QString wantArg(const Object*) const { return 0; };
+  virtual QString wantPoint() const { return 0; };
   virtual bool selectArg( Object *) { return true; }; // no args
   virtual void unselectArg( Object *) {}; // no args
 
@@ -113,13 +126,22 @@ public:
 
   MidPoint* copy() { return new MidPoint(*this); };
 
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "MidPoint"; };
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "MidPoint"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Midpoint"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription()  { return i18n( "The midpoint of a segment or of two other points" ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName()  { return "bisection"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
 
   QString wantArg(const Object* o) const;
+  QString wantPoint() const;
   bool selectArg( Object* );
   void unselectArg (Object*);
-  Objects getParents() const { Objects tmp; tmp.append(p1); tmp.append(p2); return tmp; };
+  Objects getParents() const { Objects tmp; tmp.push_back(p1); tmp.push_back(p2); return tmp; };
 
   void startMove(const Coordinate&);
   void moveTo(const Coordinate&);
@@ -149,13 +171,22 @@ public:
   ConstrainedPoint();
   ~ConstrainedPoint() {};
   ConstrainedPoint( const ConstrainedPoint& c);
-  
+
   ConstrainedPoint* copy() { return new ConstrainedPoint(*this); };
-  
-  virtual QCString vFullTypeName() const { return sFullTypeName(); };
-  static QCString sFullTypeName() { return "ConstrainedPoint"; };
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "ConstrainedPoint"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName() { return i18n("Constrained Point"); };
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription() { return i18n( "" ); };
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "point4"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
 
   QString wantArg(const Object*) const;
+  QString wantPoint() const { return 0; };
   bool selectArg( Object* );
   void unselectArg (Object*) {};
   Objects getParents() const;

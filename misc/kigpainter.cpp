@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,29 +11,28 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
  USA
 **/
 
-
 #include "kigpainter.h"
 
 #include "../kig/kig_view.h"
+#include "../objects/object.h"
 #include "common.h"
+#include "coordinate_system.h"
 
 #include <qpen.h>
 
-inline double max( double a, double b )
-{
-  return ( a > b ? a : b );
-};
+#include <cmath>
 
-KigPainter::KigPainter( KigView* view, QPaintDevice* device )
+KigPainter::KigPainter( const Rect& r, QPaintDevice* device, bool no )
   : mP ( device ),
-    mView( view )
+    mViewRect( r.normalized() ),
+    mNeedOverlay( no )
 {
 }
 
@@ -44,16 +43,16 @@ KigPainter::~KigPainter()
 void KigPainter::drawRect( const Rect& r )
 {
   Rect rt = r.normalized();
-  QRect qr = mView->toScreen(rt);
+  QRect qr = toScreen(rt);
   qr.normalize();
   mP.drawRect(qr);
-  mView->appendOverlay( qr );
+  if( mNeedOverlay ) mOverlay.push_back( qr );
 }
 
 void KigPainter::drawRect( const QRect& r )
 {
   mP.drawRect(r);
-  mView->appendOverlay( r );
+  if( mNeedOverlay ) mOverlay.push_back( r );
 }
 
 void KigPainter::drawCircle( const Coordinate& center, const double radius )
@@ -61,27 +60,27 @@ void KigPainter::drawCircle( const Coordinate& center, const double radius )
   Coordinate bottomLeft = center - Coordinate(radius, radius);
   Coordinate topRight = center + Coordinate(radius, radius);
   Rect r( bottomLeft, topRight );
-  QRect qr = mView->toScreen( r );
+  QRect qr = toScreen( r );
   mP.drawEllipse ( qr );
-  circleOverlay( center, radius );
+  if( mNeedOverlay ) circleOverlay( center, radius );
 }
 
 void KigPainter::drawSegment( const Coordinate& from, const Coordinate& to )
 {
-  QPoint tF = mView->toScreen(from), tT = mView->toScreen(to);
+  QPoint tF = toScreen(from), tT = toScreen(to);
   mP.drawLine( tF, tT );
-  segmentOverlay( from, to );
+  if( mNeedOverlay ) segmentOverlay( from, to );
 }
 
 void KigPainter::drawPoint( const Coordinate& p, bool s )
 {
   if( s )
     {
-      mP.drawPoint( mView->toScreen(p) );
-      pointOverlay( p );
+      mP.drawPoint( toScreen(p) );
+      if( mNeedOverlay ) pointOverlay( p );
     }
-  else 
-    drawCircle( p, 2*mView->pixelWidth() );
+  else
+    drawCircle( p, 2*pixelWidth() );
 }
 
 void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )
@@ -93,16 +92,16 @@ void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )
 
 void KigPainter::drawText( const Rect p, const QString s, int textFlags, int len )
 {
-  QRect t = mView->toScreen(p);
+  QRect t = toScreen(p);
   int tf = textFlags;
   mP.drawText( t, tf, s, len );
-  textOverlay( t, s, tf, len );
+  if( mNeedOverlay ) textOverlay( t, s, tf, len );
 }
 
 void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags, int len )
 {
   //  kdDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) ) << endl;
-  mView->appendOverlay( mP.boundingRect( r, textFlags, s, len ) );
+  mOverlay.push_back( mP.boundingRect( r, textFlags, s, len ) );
 }
 
 void KigPainter::setColor( const QColor& c )
@@ -158,17 +157,17 @@ void KigPainter::drawPolygon( const std::vector<Coordinate>& pts, bool winding, 
   int c = 0;
   for( std::vector<Coordinate>::const_iterator i = pts.begin(); i != pts.end(); ++i )
     {
-      QPoint tt = mView->toScreen (*i);
+      QPoint tt = toScreen (*i);
       t.putPoints( c++, 1, tt.x(), tt.y() );
     };
   mP.drawPolygon( t, winding, index, npoints );
   // just repaint the entire window...
-  mView->appendOverlay( QRect( QPoint( 0, 0 ), mView->size() ) );
+  mOverlay.push_back( mP.viewport() );
 }
 
 Rect KigPainter::window()
 {
-  return mView->showingRect().normalized();
+    return mViewRect;
 }
 
 void KigPainter::circleOverlayRecurse( const Coordinate& centre, double radius,
@@ -186,7 +185,7 @@ void KigPainter::circleOverlayRecurse( const Coordinate& centre, double radius,
   Coordinate c = currentRect.center();
 
   // 1.415 should actually be 1.414...
-  double fault = currentRect.width()*1.415 + mView->pixelWidth();
+  double fault = currentRect.width()*1.415 + pixelWidth();
   double radiusBig = radius + fault ;
   double radiusSmall = radius - fault ;
 
@@ -208,7 +207,7 @@ void KigPainter::circleOverlayRecurse( const Coordinate& centre, double radius,
   // the rect contains some of the circle
   // -> if it's small enough, we keep it
   if( currentRect.width() < overlayRectSize() ) {
-    mView->appendOverlay( mView->toScreen( currentRect) );
+    mOverlay.push_back( toScreen( currentRect) );
   } else {
     // this func works recursive: we subdivide the current rect, and if
     // it is of a good size, we keep it, otherwise we handle it again
@@ -231,7 +230,7 @@ void KigPainter::circleOverlayRecurse( const Coordinate& centre, double radius,
 
 void KigPainter::circleOverlay( const Coordinate& centre, double radius )
 {
-  double t = radius + mView->pixelWidth();
+  double t = radius + pixelWidth();
   Coordinate r( t, t );
   Coordinate bottomLeft = centre - r;
   Coordinate topRight = centre + r;
@@ -248,7 +247,7 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
   double length = p3.length();
   Rect border = window();
   // if length is smaller than one, we risk getting a divide by zero
-  length = max(length, 1);
+  length = std::max( length, 1. );
   p3 *= overlayRectSize();
   p3 /= length;
 
@@ -267,8 +266,8 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
 	//kdDebug()<< "stopped after "<< counter << " passes." << endl;
 	break;
       }
-    if (tR.intersects(border)) mView->appendOverlay( mView->toScreen( tR ) );
-    if (++counter > 100) 
+    if (tR.intersects(border)) mOverlay.push_back( toScreen( tR ) );
+    if (++counter > 100)
       {
 	kdError()<< k_funcinfo << "counter got too big :( " << endl;
 	break;
@@ -278,16 +277,90 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
 
 double KigPainter::overlayRectSize()
 {
-  return 20 * mView->pixelWidth();
+  return 20 * pixelWidth();
 }
 
 void KigPainter::pointOverlay( const Coordinate& p1 )
 {
-  Rect r( p1, 3*mView->pixelWidth(), 3*mView->pixelWidth());
+  Rect r( p1, 3*pixelWidth(), 3*pixelWidth());
   r.setCenter( p1 );
-  mView->appendOverlay( mView->toScreen( r) );
+  mOverlay.push_back( toScreen( r) );
 }
+
 double KigPainter::pixelWidth()
 {
-  return mView->pixelWidth();
+  Coordinate a = fromScreen( QPoint( 0, 0 ) );
+  Coordinate b = fromScreen( QPoint( 0, 1000 ) );
+  return std::fabs( b.y - a.y ) / 1000;
+}
+
+void KigPainter::setWholeWinOverlay()
+{
+  mOverlay.clear();
+  mOverlay.push_back( mP.viewport() );
+  // don't accept any more overlay's...
+  mNeedOverlay = false;
+}
+
+QPoint KigPainter::toScreen( const Coordinate p )
+{
+  Coordinate t = p - mViewRect.bottomLeft();
+  t *= mP.viewport().width();
+  t /= mViewRect.width();
+  // invert the y-axis: 0 is at the bottom !
+  return QPoint( t.x, mP.viewport().height() - t.y );
+}
+
+Coordinate KigPainter::fromScreen( const QPoint& p )
+{
+  // invert the y-axis: 0 is at the bottom !
+  Coordinate t( p.x(), mP.viewport().height() - p.y() );
+  t *= mViewRect.width();
+  t /= mP.viewport().width();
+  return t + mViewRect.bottomLeft();
+}
+
+void KigPainter::drawGrid( const CoordinateSystem* c )
+{
+  c->drawGrid( *this );
+  setWholeWinOverlay();
+}
+
+void KigPainter::drawObject( const Object* o, bool ss )
+{
+  o->drawWrap( *this, ss );
+}
+
+void KigPainter::drawObjects( const Objects& os )
+{
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    drawObject( *i );
+  };
+}
+
+void KigPainter::drawFilledRect( const QRect& r )
+{
+  QPen pen( Qt::black, 1, Qt::DotLine );
+  setPen( pen );
+  setBrush( QBrush( Qt::cyan, Dense6Pattern ) );
+  drawRect( r.normalize() );
+}
+
+void KigPainter::drawPrelim( const Object* o, const Coordinate& pt )
+{
+  o->drawPrelim( *this, pt );
+}
+
+void KigPainter::drawTextStd( const QPoint& p, const QString& s )
+{
+  if ( ! s ) return;
+  // tf = text formatting flags
+  int tf = AlignLeft | AlignTop | DontClip | WordBreak;
+  // we need the rect where we're going to paint text
+  setPen(QPen(Qt::blue, 1, SolidLine));
+  setBrush(Qt::NoBrush);
+  drawText( Rect( fromScreen(p), window().bottomRight()
+              ).normalized(), s, tf );
+
 }

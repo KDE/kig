@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,56 +11,49 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
  USA
 **/
 
-
 #ifndef KIGTYPEEDITIMPL_H
 #define KIGTYPEEDITIMPL_H
 
 #include "type_edit.h"
 
-#include "../misc/type.h"
-
 #include <klistbox.h>
+
+class Type;
 
 class TypeListElement
   : public QListBoxText
 {
   Type* type;
 public:
-  TypeListElement(Type* inType) : QListBoxText(inType->getActionName()), type(inType) {};
+  TypeListElement(Type* inType);
   Type* getType() { return type; };
 };
 
 class KigDocument;
-class Types;
 
 class KigTypeEditImpl : public TypeEditDialogUI
-{ 
+{
   Q_OBJECT
 
-  KigDocument* doc;
-  
-  Types* types;
-
 public:
-  KigTypeEditImpl( KigDocument* inDoc );
+  KigTypeEditImpl( QWidget* parent );
   ~KigTypeEditImpl();
 
 public slots:
   void helpSlot();
   void okSlot();
-  
+
 protected slots:
   void deleteType();
   void exportType();
   void importTypes();
-
 };
 
 #endif // KIGTYPEEDITIMPL_H

@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -72,17 +72,22 @@ CircleBCP::CircleBCP()
 QString CircleBCP::wantArg (const Object* o) const
 {
   if (complete) return 0;
-  if (!toPoint(o)) return 0;
+  if (! o->toPoint()) return 0;
+  return wantPoint();
+};
+
+QString CircleBCP::wantPoint() const
+{
   if (!centre) return i18n("Center point");
   assert (!poc); // we're not completed, and do have a center...
   return i18n("Through point");
-};
+}
 
 bool CircleBCP::selectArg (Object* o)
 {
   assert (!complete);
   Point* p;
-  assert ((p=toPoint(o)));
+  assert ((p=o->toPoint()));
   if(centre) poc = p;
   else centre = p;
   o->addChild(this);
@@ -149,7 +154,13 @@ void CircleBCP::calc()
     };
 };
 
-QString CircleBTP::wantArg(const Object*) const
+QString CircleBTP::wantArg(const Object* o) const
+{
+  if ( ! o->toPoint() ) return 0;
+  return wantPoint();
+}
+
+QString CircleBTP::wantPoint() const
 {
   if ( !p1 || !p2 || !p3 ) return i18n("Through point");
   else return 0;
@@ -157,7 +168,7 @@ QString CircleBTP::wantArg(const Object*) const
 
 bool CircleBTP::selectArg(Object* o)
 {
-  Point* p = toPoint(o);
+  Point* p = o->toPoint();
   assert(p);
   if (!p1) p1 = p;
   else if (!p2) p2 = p;
@@ -211,17 +222,17 @@ Coordinate CircleBTP::calcCenter(double ax, double ay, double bx, double by, dou
 Objects CircleBTP::getParents() const
 {
   Objects objs;
-  objs.append( p1 );
-  objs.append( p2 );
-  objs.append( p3 );
+  objs.push_back( p1 );
+  objs.push_back( p2 );
+  objs.push_back( p3 );
   return objs;
 }
 
 Objects CircleBCP::getParents() const
 {
   Objects objs;
-  objs.append( centre );
-  objs.append( poc );
+  objs.push_back( centre );
+  objs.push_back( poc );
   return objs;
 }
 
