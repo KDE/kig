@@ -70,25 +70,16 @@ Transformation getProjectiveTransformation ( int argsnum,
     // domi: sorry, but what kind of transformation does this do ?
     //       i'm guessing it's some sort of rotation, but i'm not
     //       really sure..
-//     Ray* line = transform->toRay();
-//     Coordinate d = line->direction().normalize();
-//     double alpha = 0.1*M_PI/2;  // a small angle for the DrawPrelim
-//     if (argn < argsnum)
-//     {
-//       Angle* angle = transforms[argn++]->toAngle();
-//       alpha = angle->size();
-//     }
-//     lt[0][0] =  cos(alpha);
-//     lt[1][1] =  cos(alpha)*d.x*d.x + d.y*d.y;
-//     lt[0][1] = -sin(alpha)*d.x;
-//     lt[1][0] =  sin(alpha)*d.x;
-//     lt[0][2] = -sin(alpha)*d.y;
-//     lt[2][0] =  sin(alpha)*d.y;
-//     lt[1][2] =  cos(alpha)*d.x*d.y - d.x*d.y;
-//     lt[2][1] =  cos(alpha)*d.x*d.y - d.x*d.y;
-//     lt[2][2] =  cos(alpha)*d.y*d.y + d.x*d.x;
-//     assert (argn == argsnum);
-//     return true;
+     Ray* line = transform->toRay();
+     Coordinate d = line->direction().normalize();
+     double alpha = 0.1*M_PI/2;  // a small angle for the DrawPrelim
+     if (argn < argsnum)
+     {
+       Angle* angle = transforms[argn++]->toAngle();
+       alpha = angle->size();
+     }
+     assert (argn == argsnum);
+     return Transformation::projectiveRotation( alpha, d );
   }
 
   if (transform->toAngle())
@@ -339,6 +330,24 @@ const Transformation Transformation::scaling( double factor, const LineData& l )
 
   // domi: is 1e-8 a good value ?
   ret.mIsHomothety = ( fabs( factor - 1 ) < 1e-8 || fabs ( factor + 1 ) < 1e-8 );
+  return ret;
+}
+
+const Transformation Transformation::projectiveRotation( 
+  double alpha, const Coordinate& d )
+{
+  Transformation ret;
+  ret.mdata[0][0] =  cos(alpha);
+  ret.mdata[1][1] =  cos(alpha)*d.x*d.x + d.y*d.y;
+  ret.mdata[0][1] = -sin(alpha)*d.x;
+  ret.mdata[1][0] =  sin(alpha)*d.x;
+  ret.mdata[0][2] = -sin(alpha)*d.y;
+  ret.mdata[2][0] =  sin(alpha)*d.y;
+  ret.mdata[1][2] =  cos(alpha)*d.x*d.y - d.x*d.y;
+  ret.mdata[2][1] =  cos(alpha)*d.x*d.y - d.x*d.y;
+  ret.mdata[2][2] =  cos(alpha)*d.y*d.y + d.x*d.x;
+
+  ret.mIsHomothety = false;
   return ret;
 }
 

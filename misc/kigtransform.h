@@ -50,6 +50,9 @@ public:
   static const Transformation pointReflection( const Coordinate& c );
   // reflect over a line.. this equals scaling( -1, l );
   static const Transformation lineReflection( const LineData& l );
+  // this is a test example of a projective non-affine transformation
+  static const Transformation projectiveRotation( double alpha, 
+                                              const Coordinate& d );
 
   friend const Transformation operator*( const Transformation&, const Transformation& );
 };
