@@ -173,18 +173,16 @@ void setupBuiltinStuff()
       I18N_NOOP( "Cubic With Node by Six Points" ),
       I18N_NOOP( "A cubic with a nodal point at the origin through six points" ),
       "cubicnodeb6p" );
-    // disabled cause it's only cluttering up the ui..
-    // ctors->add( c );
-    // actions->add( new ConstructibleAction( c, "objects_new_cubicnodeb6p" ) );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_cubicnodeb6p" ) );
 
     c = new SimpleObjectTypeConstructor(
       CubicCuspB4PType::instance(),
       I18N_NOOP( "Cubic With Cusp by Four Points" ),
       I18N_NOOP( "A cubic with a horizontal cusp at the origin through four points" ),
       "cubiccuspb4p" );
-    // disabled cause it's only cluttering up the ui..
-//     ctors->add( c );
-//     actions->add( new ConstructibleAction( c, "objects_new_cubiccuspb4p" ) );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_cubiccuspb4p" ) );
 
     c = new SimpleObjectTypeConstructor(
       ConicDirectrixType::instance(),
