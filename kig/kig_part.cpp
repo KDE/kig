@@ -304,8 +304,9 @@ void KigPart::setupActions()
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
+  tmp = l->loadIcon( "viewmag", KIcon::Toolbar );
   a = new KAction(
-    i18n( "S&elect Zoom Area" ), 0, m_widget, SLOT( zoomArea() ),
+    i18n( "S&elect Zoom Area" ), tmp, 0, m_widget, SLOT( zoomArea() ),
     actionCollection(), "view_zoom_area" );
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
