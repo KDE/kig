@@ -50,6 +50,8 @@ protected:
 
   int xMax;
   int yMax;
+  bool grid;
+  bool axes;
 };
 
 #endif

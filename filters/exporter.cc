@@ -69,8 +69,11 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
   : KAction( exp->menuEntryName(), KShortcut(), 0, 0, parent ),
     mexp( exp ), mdoc( doc ), mw( w )
 {
+  QString iconstr = exp->menuIcon();
+  if ( iconstr.isEmpty() )
+    return;
   KIconLoader* l = doc->instance()->iconLoader();
-  QPixmap icon = l->loadIcon( exp->menuIcon(), KIcon::User, 0, KIcon::DefaultState, 0L, true );
+  QPixmap icon = l->loadIcon( iconstr, KIcon::User, 0, KIcon::DefaultState, 0L, true );
   if ( icon.isNull() )
     icon = l->loadIcon( exp->menuIcon(), KIcon::Small );
   if ( !icon.isNull() )
@@ -247,7 +250,8 @@ void XFigExportImpVisitor::visit( const LineImp* imp )
   int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
 
-  emitLine( a, b, width );
+  if ( a != b )
+    emitLine( a, b, width );
 }
 
 void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, int width, bool vector )
