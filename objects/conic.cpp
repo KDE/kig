@@ -684,7 +684,7 @@ const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
     // points..
     Coordinate diff = f2 - f1;
     diff /= 2;
-    d = f1 + diff + diff.orthogonal();
+    d = f1 + type*diff + diff.orthogonal();
   }
 
   Coordinate f2f1 = f2 - f1;
