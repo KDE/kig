@@ -156,7 +156,7 @@ void Rect::scale( const double r )
 
 QRect Rect::toQRect() const
 {
-  return QRect(mBottomLeft.toQPoint(), bottomRight().toQPoint());
+  return QRect(mBottomLeft.toQPoint(), topRight().toQPoint());
 }
 
 Coordinate Rect::bottomLeft() const
