@@ -62,6 +62,9 @@ public:
   void addAction( int menu, const QPixmap& icon, const QString& name, int id );
   void addAction( int menu, const QPixmap& pix, int id );
 
+  // set the checked state of the n'th item in menu to checked..
+  void setChecked( int menu, int n, bool checked );
+
   Objects objects() { return mobjs; };
   KigDocument& document() { return mdoc; };
   KigWidget& widget() { return mview; };

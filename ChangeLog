@@ -1,5 +1,10 @@
 2003-05-25  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
+	* implement another of Stephan Binner's suggestions: in the set
+		coordinate system popup, show a checked mark next to the 
+		current coordinate system..
+
+
 	* fix a bug that caused the "circle by center and point" type to
 		not be visible..
 

@@ -635,10 +635,13 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
   {
+    int idoffset = nextfree;
     QStringList l = CoordinateSystemFactory::names();
     mnumberofcoordsystems = l.count();
     for ( uint i = 0; i < l.count(); ++i )
       popup.addAction( menu, l[i], nextfree++ );
+    int current = popup.document().coordinateSystem().id();
+    popup.setChecked( menu, idoffset + current, true );
   }
 }
 
@@ -688,5 +691,10 @@ bool BuiltinDocumentActionsProvider::executeAction(
     return true;
   }
   else return false;
+}
+
+void NormalModePopupObjects::setChecked( int menu, int n, bool checked )
+{
+  mmenus[menu]->setItemChecked( n, checked );
 }
 
