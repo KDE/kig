@@ -93,7 +93,7 @@ void ScriptMode::mouseMoved( const Objects& os, const QPoint& pt, KigWidget& w, 
     // and set statusbar text
 
     w.setCursor( KCursor::handCursor() );
-    QString selectstat = os.front()->imp()->type()->selectStatement();
+    QString selectstat = i18n( os.front()->imp()->type()->selectStatement() );
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );
