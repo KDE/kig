@@ -278,17 +278,22 @@ bool KigDocument::openFile()
   QDomDocument doc ("KigDocument");
   doc.setContent(&file);
   QDomElement main = doc.documentElement();
+
+  // first the "independent" points, this is no longer necessary, but
+  // we keep it for backwards compatibility...
   QDomNode n;
+  QDomElement e;
   for ( n = main.firstChild(); !n.isNull(); n=n.nextSibling())
     { 
-      QDomElement e = n.toElement();
+      e = n.toElement();
       assert (!e.isNull());
       if (e.tagName() == "ObjectHierarchy") break;
       // TODO: make this more generic somehow, error detection
-      if (e.tagName() == "Point") _addObject(new Point(e.attribute("x").toInt(), e.attribute("y").toInt()));
+      if (e.tagName() == "Point")
+	_addObject( new Point(e.attribute("x").toInt(), e.attribute("y").toInt()));
     };
-  QDomElement e = n.toElement();
-  Q_ASSERT (!e.isNull());
+
+  // next the hierarchy...
   ObjectHierarchy hier(e, this);
   Objects tmpOs = hier.fillUp(objects);
   hier.calc();
