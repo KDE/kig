@@ -35,6 +35,8 @@ public:
    * Returns the ObjectImpType representing the PolygonImp type..
    */
   static const ObjectImpType* stype();
+  static const ObjectImpType* stype3();
+  static const ObjectImpType* stype4();
 
   /**
    * Constructs a polygon.

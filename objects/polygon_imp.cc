@@ -306,11 +306,52 @@ const ObjectImpType* PolygonImp::stype()
     I18N_NOOP( "Show a Polygon" ),
     I18N_NOOP( "Hide a Polygon" )
     );
+
   return &t;
+}
+
+const ObjectImpType* PolygonImp::stype3()
+{
+  static const ObjectImpType t3(
+    PolygonImp::stype(), "triangle",
+    I18N_NOOP( "triangle" ),
+    I18N_NOOP( "Select this triangle" ),
+    I18N_NOOP( "Select triangle %1" ),
+    I18N_NOOP( "Remove a Triangle" ),
+    I18N_NOOP( "Add a Triangle" ),
+    I18N_NOOP( "Move a Triangle" ),
+    I18N_NOOP( "Attach to this triangle" ),
+    I18N_NOOP( "Show a Triangle" ),
+    I18N_NOOP( "Hide a Triangle" )
+    );
+
+  return &t3;
+}
+
+const ObjectImpType* PolygonImp::stype4()
+{
+  static const ObjectImpType t4(
+    PolygonImp::stype(), "quadrilateral",
+    I18N_NOOP( "quadrilateral" ),
+    I18N_NOOP( "Select this quadrilateral" ),
+    I18N_NOOP( "Select quadrilateral %1" ),
+    I18N_NOOP( "Remove a Quadrilateral" ),
+    I18N_NOOP( "Add a Quadrilateral" ),
+    I18N_NOOP( "Move a Quadrilateral" ),
+    I18N_NOOP( "Attach to this quadrilateral" ),
+    I18N_NOOP( "Show a Quadrilateral" ),
+    I18N_NOOP( "Hide a Quadrilateral" )
+    );
+
+  return &t4;
 }
 
 const ObjectImpType* PolygonImp::type() const
 {
+  uint n = mpoints.size();
+
+  if ( n == 3 ) return PolygonImp::stype3();
+  if ( n == 4 ) return PolygonImp::stype4();
   return PolygonImp::stype();
 }
 

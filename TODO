@@ -72,6 +72,11 @@
 
 * GUI
 
+- give the user a way to select any object under the cursor.  One way to
+  do that is to present a list of objects under the cursor when the
+  user presses <ctrl>-left-click, for example.  Also add a "tip of the
+  day" to inform the user of such possibility.
+
 - make stuff from RMB menu's accessible from other places as well.
 
 - Add the possibility to select, via new dialog, one or more types of
