@@ -2,7 +2,7 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kseg "<application>KSeg</application>">
   <!ENTITY cabri "<application>Cabri</application>">
-  <!ENTITY drgenius "<application>Dr.Genius</application>">
+  <!ENTITY drgeo "<application>Dr.Geo</application>">
   <!ENTITY package "kdeedu">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
@@ -27,7 +27,7 @@
 
 
     <copyright>
-      <year>2002</year><year>2003</year> <holder>Dominique Devriese</holder>
+      <year>2002</year><year>2003</year><year>2004</year> <holder>Dominique Devriese</holder>
     </copyright>
 
     <legalnotice>&FDLNotice;</legalnotice>
@@ -110,8 +110,7 @@
 	    <listitem>
 	      <para>
 		Since you often need to construct points, simply
-		clicking somewhere in the screen with the
-		<mousebutton>middle</mousebutton> mouse button will
+		clicking somewhere in the screen with the &MMB; will
 		construct a point for you, without going to a menu or
 		button.
 	      </para>
@@ -630,7 +629,7 @@ Let's look at an example of how to use locuses in &kig;:
       &kig; allows you to create custom types in the Python
       scripting language.  This is a very advanced feature, and I know
       of only one other Interactive Geometry program that has a similar
-      functionality (the <acronym>GNOME</acronym> program &drgenius;). 
+      functionality (the <acronym>GNOME</acronym> program &drgeo;). 
     </para>
     <para>
       Python Scripting in &kig; basically allows you to create your
@@ -828,7 +827,8 @@ Let's look at an example of how to use locuses in &kig;:
 	  <para>
 	    &kig; aims to be compatible with its competitors. This is
 	    why it supports the &kgeo; file format, the &kseg; file
-	    format, with support for other formats planned.
+	    format and partially the &drgeo; format; morover, support
+	    for other formats is planned.
 	  </para>
 	</listitem>
       </itemizedlist>
@@ -848,13 +848,13 @@ Let's look at an example of how to use locuses in &kig;:
       &kig;
     </para>
     <para>
-      &kig; copyright 2002 Dominique Devriese
-      <email>devriese@kde.org</email>.
+      &kig; copyright 2002-2004 Dominique Devriese
+      <email>devriese@kde.org</email>
     </para>
 
     <para>
-      Documentation copyright 2002-2003 Dominique
-      Devriese <email>devriese@kde.org</email>.
+      Documentation copyright 2002-2004 Dominique
+      Devriese. <email>devriese@kde.org</email>
     </para>
 
     <para>
