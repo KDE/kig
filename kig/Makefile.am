@@ -3,7 +3,7 @@
 #SUBDIRS = pics icons
 
 # set the include path for X, qt and KDE
-INCLUDES = $(all_includes)
+INCLUDES = -I../misc $(all_includes)
 
 # these are the headers for your project
 noinst_HEADERS = kig.h kig_document.h kig_part.h kig_view.h kig_commands.h
