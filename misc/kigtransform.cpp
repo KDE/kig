@@ -748,7 +748,7 @@ Transformation::Transformation()
   // creation functions, so mIsHomothety is in general false
   mIsHomothety = false;
   for ( int i = 0; i < 3; ++i )
-    for ( int j = 0; i < 3; ++j )
+    for ( int j = 0; j < 3; ++j )
       mdata[i][j] = ( i == j ) ? 1 : 0;
 }
 
