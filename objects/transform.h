@@ -145,7 +145,7 @@ protected:
 };
 
 class RayTransform
-  : public Line
+  : public Ray
 {
 public:
   RayTransform( const Objects& os );

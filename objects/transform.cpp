@@ -469,7 +469,7 @@ Objects RayTransform::getParents() const
 }
 
 RayTransform::RayTransform(const RayTransform& c)
-  : Line( c ), mray( c.mray ), transformationsnum ( c.transformationsnum )
+  : Ray( c ), mray( c.mray ), transformationsnum ( c.transformationsnum )
 {
   for ( int i = 0; i < c.transformationsnum; i++ )
   {
@@ -547,7 +547,7 @@ void RayTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 }
 
 RayTransform::RayTransform( const Objects& os )
-  : Line()
+  : Ray()
 {
   assert( os.size() <= MAXTRANSFORMATIONS + 1 );
   Objects::const_iterator i = os.begin();
