@@ -25,6 +25,7 @@
 #include "cubic_type.h"
 #include "intersection_types.h"
 #include "line_type.h"
+#include "text_type.h"
 #include "other_type.h"
 #include "transform_types.h"
 #include "point_type.h"
@@ -110,7 +111,6 @@ void ObjectTypeFactory::setupBuiltinTypes()
   // other_type.h
   add( AngleType::instance() );
   add( VectorType::instance() );
-  add( LocusType::instance() );
 
   // point_type.h
   add( FixedPointType::instance() );

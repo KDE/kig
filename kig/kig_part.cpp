@@ -165,12 +165,13 @@ void KigDocument::setupActions()
   aFixedPoint = new AddFixedPointAction( this, tmp, actionCollection() );
 
   tmp = l->loadIcon( "new", KIcon::User );
-  (void) new TestAction( this, tmp, actionCollection() );
+  new TestAction( this, tmp, actionCollection() );
 };
 
 void KigDocument::setupTypes()
 {
   setupBuiltinStuff();
+  setupMacroTypes();
   GUIActionList& l = *GUIActionList::instance();
   for ( uint i = 0; i < l.actions().size(); ++i )
   {
@@ -178,48 +179,27 @@ void KigDocument::setupTypes()
     aActions.push_back( ret );
     ret->plug( this );
   };
-//     Object::addBuiltinType( new TType<TextLabel> );
+  // TODO
 //     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
-
-//     // our saved macro types:
-//     QStringList relFiles;
-//     QStringList dataFiles =
-//       KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
-//                                         true, false, relFiles);
-//     for ( QStringList::iterator file = dataFiles.begin();
-//           file != dataFiles.end();
-//           ++file )
-//     {
-//       kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
-//       Types t ( *file);
-//       Object::addUserTypes( t, false );
-//     }
-//   };
-//   typedef myvector<Type*> vect;
-//   const vect& v = Object::builtinTypes();
-//   for ( vect::const_iterator i = v.begin(); i != v.end(); ++i )
-//     addType( *i, false );
-//   const vect& w = Object::userTypes();
-//   for ( vect::const_iterator i = w.begin(); i != w.end(); ++i )
-//     addType( *i, true );
-
-//   // hack: we need to plug the action lists _after_ the gui is
-//   // built.. i can't find a better solution than this...
-//   QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
 };
 
 KigDocument::~KigDocument()
 {
   GUIActionList::instance()->unregDoc( this );
 
-  // emove old types:
+  // TODO: remove some time in the future..  doesn't really hurt, but
+  // well, it's not really necessary either..  However, I'm not going
+  // to remove this in the next release yet, since it would cause
+  // duplication of macro types combined with the changing to use
+  // macro.kigt instead of macro files named after the macro they
+  // contain..
+  // remove old types:
   QStringList relFiles;
   QStringList dataFiles =
     KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
                                         true, false, relFiles);
   for ( QStringList::iterator file = dataFiles.begin();
-        file != dataFiles.end();
-        ++file )
+        file != dataFiles.end(); ++file )
   {
     QFile f( *file );
     kdDebug() << "removing: " << *file << endl;
@@ -230,7 +210,9 @@ KigDocument::~KigDocument()
   QString typesDir = KGlobal::dirs()->saveLocation("appdata", "kig-types");
   if (typesDir[typesDir.length() - 1] != '/') typesDir += '/';
   kdDebug() << k_funcinfo << " : saving types to: " << typesDir << endl;
-//   Object::types().saveToDir(typesDir);
+  MacroList* macrolist = MacroList::instance();
+  macrolist->save( macrolist->macros(), typesDir + "macros.kigt" );
+
   delete_all( mObjs.begin(), mObjs.end() );
   mObjs.clear();
 
@@ -508,30 +490,6 @@ void KigDocument::delObjects( const Objects& os )
   mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
 }
 
-// void KigDocument::addType( Type* t, bool user )
-// {
-//   KAction* a = t->constructAction( this );
-//   if ( ! a ) return;
-//   if ( user )
-//   {
-//     aMNewAll.append( a );
-//     if (t->baseTypeName() == Point::sBaseTypeName())
-//       aMNewPoint.append( a );
-//     else if (t->baseTypeName() == Line::sBaseTypeName())
-//       aMNewLine.append( a );
-//     else if (t->baseTypeName() == Circle::sBaseTypeName())
-//       aMNewCircle.append( a );
-//     else if (t->baseTypeName() == Conic::sBaseTypeName())
-//       aMNewConic.append( a );
-//     else if (t->baseTypeName() == Segment::sBaseTypeName())
-//       aMNewSegment.append( a );
-//     else
-//       aMNewOther.append( a );
-//   };
-
-//   aActions.push_back( a );
-// }
-
 void KigDocument::enableConstructActions( bool enabled )
 {
   std::for_each( aActions.begin(), aActions.end(),
@@ -539,18 +497,6 @@ void KigDocument::enableConstructActions( bool enabled )
                                enabled ) );
   aFixedPoint->setEnabled( enabled );
 }
-
-// void KigDocument::removeAction( KAction* a )
-// {
-//   aMNewSegment.remove( a );
-//   aMNewConic.remove( a );
-//   aMNewPoint.remove( a );
-//   aMNewCircle.remove( a );
-//   aMNewLine.remove( a );
-//   aMNewOther.remove( a );
-//   aMNewAll.remove( a );
-//   aActions.remove( a );
-// }
 
 void KigDocument::unplugActionLists()
 {
@@ -694,4 +640,31 @@ void KigDocument::endGUIActionUpdate( GUIUpdateToken& t )
 KigDocument::GUIUpdateToken KigDocument::startGUIActionUpdate()
 {
   return GUIUpdateToken();
+}
+
+void KigDocument::setupMacroTypes()
+{
+  static bool alreadysetup = false;
+  if ( ! alreadysetup )
+  {
+    alreadysetup = true;
+    // our saved macro types:
+    QStringList dataFiles =
+      KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
+                                        true, false );
+    myvector<Macro*> macros;
+    for ( QStringList::iterator file = dataFiles.begin();
+          file != dataFiles.end(); ++file )
+    {
+      myvector<Macro*> nmacros;
+      kdDebug() << k_funcinfo << " loading types from: " << *file << endl;
+      bool ok = MacroList::instance()->load( *file, nmacros );
+      if ( ! ok ) continue;
+      copy( nmacros.begin(), nmacros.end(), back_inserter( macros ) );
+    }
+    MacroList::instance()->add( macros );
+  };
+  // hack: we need to plug the action lists _after_ the gui is
+  // built.. i can't find a better solution than this...
+  QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
 }

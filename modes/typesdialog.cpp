@@ -36,6 +36,8 @@
 #include <qstringlist.h>
 
 #include <vector>
+#include <algorithm>
+using namespace std;
 
 TypesDialog::TypesDialog( QWidget* parent )
   : TypesDialogBase( parent, "types_dialog", true )
@@ -70,7 +72,7 @@ void TypesDialog::deleteType()
   {
     if (i->isSelected())
     {
-      selectedTypes.push_back(static_cast<MacroListElement*>(i)->getType());
+      selectedTypes.push_back(static_cast<MacroListElement*>(i)->getMacro());
       items.push_back(i);
     };
   };
@@ -104,30 +106,41 @@ void TypesDialog::deleteType()
 
 void TypesDialog::exportType()
 {
-//   Types types;
-//   for (QListBoxItem* i = typeList->firstItem(); i; i = i->next())
-//   {
-//     if (i->isSelected())
-//       types.addType(static_cast<TypeListElement*>(i)->getType());
-//   };
-//   if (types.empty()) return;
-//   QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types files\n*"));
-//   if ( ! file_name.isNull() ) types.saveToFile(file_name);
-//   types.clear();
+  myvector<Macro*> types;
+  for (QListBoxItem* i = typeList->firstItem(); i; i = i->next())
+  {
+    if (i->isSelected())
+      types.push_back(static_cast<MacroListElement*>(i)->getMacro());
+  };
+  if (types.empty()) return;
+  QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types files\n*"));
+  if ( !file_name.isNull() )
+    MacroList::instance()->save( types, file_name );
 };
 
 void TypesDialog::importTypes()
 {
-//   QStringList file_names =
-//     KFileDialog::getOpenFileNames(":importTypes", "*.kigt", this, "Import Types");
-//   for ( QStringList::Iterator i = file_names.begin();
-//         i != file_names.end(); ++i)
-//   {
-//     Types t( *i );
-//     for (Types::iterator i = t.begin(); i != t.end(); ++i)
-//       typeList->insertItem(new TypeListElement(i->second));
-//     Object::addUserTypes(t);
-//   };
+  QStringList file_names =
+    KFileDialog::getOpenFileNames(":importTypes", i18n("*.kigt|Kig Types files\n*"), this, "Import Types");
+
+  myvector<Macro*> macros;
+
+  for ( QStringList::Iterator i = file_names.begin();
+        i != file_names.end(); ++i)
+  {
+    myvector<Macro*> nmacros;
+    bool ok = MacroList::instance()->load( *i, nmacros );
+    if ( ! ok )
+    {
+      KMessageBox::sorry( this, i18n( "Could not open macro file '%1'" ).arg( *i ) );
+      continue;
+    };
+    copy( nmacros.begin(), nmacros.end(), back_inserter( macros ) );
+  };
+  MacroList::instance()->add( macros );
+
+  for ( uint i = 0; i < macros.size(); ++i )
+    typeList->insertItem( new MacroListElement( macros[i] ) );
 }
 
 MacroListElement::MacroListElement( Macro* m )

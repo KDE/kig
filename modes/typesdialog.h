@@ -33,7 +33,7 @@ class MacroListElement
   Macro* macro;
 public:
   MacroListElement( Macro* m );
-  Macro* getType() { return macro; };
+  Macro* getMacro() { return macro; };
 };
 
 class KigDocument;

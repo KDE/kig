@@ -117,7 +117,7 @@ public:
    * ctor in the relevant places..
    */
   void add( Macro* m );
-  void add( const myvector<Macro*>& ms );
+  void add( const vectype& ms );
 
   /**
    * Remove macro m.  Macrolist takes care of deleting everything, and
@@ -129,7 +129,7 @@ public:
    * Save macro(s) m to file f..
    */
   bool save( Macro* m, const QString& f );
-  bool save( const myvector<Macro*>& ms, const QString& f );
+  bool save( const vectype& ms, const QString& f );
 
   /**
    * load macro's from file f..
@@ -137,7 +137,7 @@ public:
    * them to the various lists.  Use add() if you want
    * that behaviour..
    */
-  bool load( const QString& f, myvector<Macro*>& ret );
+  bool load( const QString& f, vectype& ret );
 
   /**
    * get access to the list of macro's..

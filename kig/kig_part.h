@@ -167,6 +167,7 @@ public:
 protected:
   void setupActions();
   void setupTypes();
+  void setupMacroTypes();
 
 protected:
   KigMode* mMode;
