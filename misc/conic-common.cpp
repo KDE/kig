@@ -455,8 +455,15 @@ const Coordinate calcConicLineIntersect( const ConicCartesianEquationData& c,
   else
   {
     valid = true;
-    double t = -bbb + which*sqrt(discrim);
-    t /= 2*aaa;
+    double t;
+    if ( which*bbb > 0 )
+    {
+      t = bbb + which*sqrt(discrim);
+      t = - 2*ccc/t;
+    } else {
+      t = -bbb + which*sqrt(discrim);
+      t /= 2*aaa;
+    }
 
     return l.a + t*(l.b - l.a);
   }

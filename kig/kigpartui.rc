@@ -130,7 +130,6 @@
   <Action name="objects_new_parabolabtp" />
   <Action name="objects_new_conicb5p" />
   <Action name="user_conic_types" />
-  <Action name="objects_new_linedirectrix" />
   <Action name="objects_new_lineconicradical" />
   <Action name="objects_new_coniclineintersect" />
 </Toolbar>    
