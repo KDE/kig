@@ -121,12 +121,12 @@ const uint CircleImp::numberOfProperties() const
 const QCStringList CircleImp::propertiesInternalNames() const
 {
   QCStringList l = CurveImp::propertiesInternalNames();
-  l << I18N_NOOP( "surface" );
-  l << I18N_NOOP( "circumference" );
-  l << I18N_NOOP( "radius" );
-  l << I18N_NOOP( "center" );
-  l << I18N_NOOP( "cartesian-equation" );
-  l << I18N_NOOP( "polar-equation" );
+  l << "surface";
+  l << "circumference";
+  l << "radius";
+  l << "center";
+  l << "cartesian-equation";
+  l << "polar-equation";
   assert( l.size() == CircleImp::numberOfProperties() );
   return l;
 }
