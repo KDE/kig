@@ -12,7 +12,9 @@ noinst_HEADERS= \
 	kgeo-resource.h \
 	kseg-defs.h \
 	kseg-filter.h \
-	native-filter.h
+	native-filter.h \
+	drgeo-filter.h \
+	drgeo-filter-chooser.h
 libfilters_la_SOURCES= \
 	cabri-filter.cc \
 	exporter.cc \
@@ -21,5 +23,7 @@ libfilters_la_SOURCES= \
 	filter.cc \
 	kgeo-filter.cc \
 	kseg-filter.cc \
-	native-filter.cc
-
+	native-filter.cc \
+	drgeo-filter.cc \
+	drgeo-filter-chooser.cc \
+	drgeo.filter-chooserbase.ui
