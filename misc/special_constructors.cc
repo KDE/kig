@@ -281,6 +281,7 @@ PolygonVertexTypeConstructor::PolygonVertexTypeConstructor()
   : StandardConstructorBase( I18N_NOOP( "Vertices of a Polygon" ), 
        I18N_NOOP( "The vertices of a polygon." ),
        "polygonvertices", margsparser ),
+    mtype( PolygonVertexType::instance() ),
     margsparser( argsspecpv, 1 )
 {
 }
@@ -319,7 +320,7 @@ std::vector<ObjectHolder*> PolygonVertexTypeConstructor::build( const std::vecto
     ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( i ) );
     std::vector<ObjectCalcer*> args( parents );
     args.push_back( d );
-    ret.push_back( new ObjectHolder( new ObjectTypeCalcer( PolygonVertexType::instance(), args ) ) );
+    ret.push_back( new ObjectHolder( new ObjectTypeCalcer( mtype, args ) ) );
   }
   return ret;
 }

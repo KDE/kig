@@ -529,6 +529,7 @@ void setupBuiltinStuff()
     c = new PolygonVertexTypeConstructor();
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_polygonvertices" ));
+
     /* ----------- end polygons --------- */
 
     c = new LocusConstructor();

@@ -23,6 +23,7 @@
 class PolygonVertexTypeConstructor
   : public StandardConstructorBase
 {
+  const ArgsParserObjectType* mtype;
   ArgsParser margsparser;
 public:
   PolygonVertexTypeConstructor();
