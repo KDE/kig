@@ -5,6 +5,8 @@
 
 * not too hard:
 
+- write *-filter-status.txt's for the kseg and cabri filters.
+
 - line and half-line by vector.
 
 - Three new transformations: projection on a line, orthogonally and
