@@ -27,3 +27,5 @@ libfilters_la_SOURCES= \
 	drgeo-filter.cc \
 	drgeo-filter-chooser.cc \
 	drgeo-filter-chooserbase.ui
+
+KDE_OPTIONS = nofinal
