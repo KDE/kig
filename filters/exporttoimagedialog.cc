@@ -22,17 +22,17 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
-
 #include "../misc/kigpainter.h"
 
 #include <qcheckbox.h>
+
+#include <kiconloader.h>
+#include <kimageio.h>
+#include <klocale.h>
+#include <kmessagebox.h>
 #include <knuminput.h>
 #include <kpushbutton.h>
 #include <kurlrequester.h>
-#include <kimageio.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-#include <klocale.h>
 
 ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigPart* part )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),
@@ -44,6 +44,9 @@ ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigPart* part )
 
   WidthInput->setValue( msize.width() );
   HeightInput->setValue( msize.height() );
+
+  showGridCheckBox->setChecked( part->document().grid() );
+  showAxesCheckBox->setChecked( part->document().axes() );
 
   static bool kimageioRegistered = false;
   if ( ! kimageioRegistered )
@@ -101,7 +104,7 @@ void ExportToImageDialog::slotOKPressed()
   img.fill( Qt::white );
   KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img, mpart->document());
   p.setWholeWinOverlay();
-  p.drawGrid( mpart->document().coordinateSystem(), showgridCheckBox->isOn(), showAxesCheckBox->isOn() );
+  p.drawGrid( mpart->document().coordinateSystem(), showGridCheckBox->isOn(), showAxesCheckBox->isOn() );
   // FIXME: show the selections ?
   p.drawObjects( mpart->document().objects(), false );
   if ( ! img.save( filename, type.latin1() ) )

@@ -148,37 +148,34 @@
                 </widget>
             </vbox>
         </widget>
-        <widget class="QLayoutWidget">
+        <widget class="QGroupBox">
             <property name="name">
-                <cstring>layout7</cstring>
+                <cstring>groupBox2</cstring>
             </property>
-            <hbox>
+            <property name="title">
+                <string>Options</string>
+            </property>
+            <grid>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QCheckBox">
+                <widget class="QCheckBox" row="0" column="0">
                     <property name="name">
-                        <cstring>showgridCheckBox</cstring>
+                        <cstring>showGridCheckBox</cstring>
                     </property>
                     <property name="text">
-                        <string>Show grid lines</string>
-                    </property>
-                    <property name="checked">
-                        <bool>true</bool>
+                        <string>Show grid</string>
                     </property>
                 </widget>
-                <widget class="QCheckBox">
+                <widget class="QCheckBox" row="0" column="1">
                     <property name="name">
                         <cstring>showAxesCheckBox</cstring>
                     </property>
                     <property name="text">
                         <string>Show axes</string>
                     </property>
-                    <property name="checked">
-                        <bool>true</bool>
-                    </property>
                 </widget>
-            </hbox>
+            </grid>
         </widget>
         <widget class="Line">
             <property name="name">
