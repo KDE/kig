@@ -1,14 +1,14 @@
-<?xml version="1.0" ?> 
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd" 
-[ 
-  <!ENTITY kig "<application>Kig</application>"> 
-  <!ENTITY kseg "<application>KSeg</application>"> 
-  <!ENTITY cabri "<application>Cabri</application>"> 
-  <!ENTITY drgenius "<application>Dr.Genius</application>"> 
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.0//EN" "dtd/kdex.dtd"
+[
+  <!ENTITY kig "<application>Kig</application>">
+  <!ENTITY kseg "<application>KSeg</application>">
+  <!ENTITY cabri "<application>Cabri</application>">
+  <!ENTITY drgenius "<application>Dr.Genius</application>">
   <!ENTITY package "kdeedu">
-  <!ENTITY % addindex "IGNORE"> 
+  <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
-  <!-- change language only here --> 
+  <!-- change language only here -->
 ]
 >
 
@@ -35,7 +35,7 @@
     <legalnotice>&FDLNotice;</legalnotice>
 
     <date>2003-05-22</date> <releaseinfo>0.5.1</releaseinfo>
-    
+
     <abstract>
       <para>
 	&kig; is a &kde; application for Interactive Geometry.  It is
@@ -88,7 +88,7 @@
       so that other people can freely use and adapt it ).
     </para>
   </chapter>
-  
+
   <chapter id="using-kig-basic">
     <title>Basic usage</title>
     <section id="constructing-objects">
@@ -578,6 +578,7 @@
       </screenshot>
     </section>
     <section id="locuses">
+    <title>Locuses</title>
       <para>
 	&kig; has support for geometrical locuses.  A locus is a
 	concept from high school math.  Briefly put, it is the figure
@@ -608,7 +609,7 @@
 	    <phrase>A simple locus construction</phrase>
 	  </textobject>
 	</mediaobject>
-      </screenshot>    
+      </screenshot>
       <para>
 	Now if you move the point that is constrained to the circle,
 	you can see that the second point moves along with it.  If you
@@ -624,7 +625,7 @@
 	button in the toolbar, or select
 	<menuchoice><guimenu>Objects</guimenu>
 	  <guisubmenu>Other</guisubmenu>
-	  <guimenuitem>Locus</guimenuitem> 
+	  <guimenuitem>Locus</guimenuitem>
 	</menuchoice>
 	from the menu bar.  Then select the constrained point as the
 	moving point ( the text "Moving Point" will appear as you move
@@ -636,7 +637,7 @@
 
 <!--  <chapter id="scripting">
     <title>Scripting</title>
-    <para> 
+    <para>
       &kig; allows the user to create custom types in the Python
       scripting language.  This is a very advanced feature, and I know
       of only one other Interactive Geometry program that has similar
@@ -833,7 +834,7 @@
 
   &documentation.index;
 </book>
-<!-- 
+<!--
 Local Variables:
 mode: xml
 End:
