@@ -45,6 +45,28 @@ Cubic::~Cubic()
 
 bool Cubic::contains (const Coordinate& o, const ScreenInfo& si ) const
 {
+  double a000 = cequation.coeffs[0];
+  double a001 = cequation.coeffs[1];
+  double a002 = cequation.coeffs[2];
+  double a011 = cequation.coeffs[3];
+  double a012 = cequation.coeffs[4];
+  double a022 = cequation.coeffs[5];
+  double a111 = cequation.coeffs[6];
+  double a112 = cequation.coeffs[7];
+  double a122 = cequation.coeffs[8];
+  double a222 = cequation.coeffs[9];
+
+  double x = o.x;
+  double y = o.y;
+
+  double f = a000 + a001*x + a002*y + a011*x*x + a012*x*y + a022*y*y +
+             a111*x*x*x + a112*x*x*y + a122*x*y*y + a222*y*y*y;
+  double fx = a001 + 2*a011*x + a012*y + 3*a111*x*x + 2*a112*x*y + a122*y*y;
+  double fy = a002 + a012*x + 2*a022*y + a112*x*x + 2*a122*x*y + 3*a222*y*y;
+
+  double dist = fabs(f)/(fabs(fx) + fabs(fy));
+
+  return dist <= si.normalMiss();
   return false;
 };
 
@@ -66,12 +88,111 @@ bool Cubic::inRect ( const Rect& ) const
 
 Coordinate Cubic::getPoint (double p) const
 {
-  return Coordinate(0,0);
+  /*
+   * this isn't really elegant...
+   * the magnitude of p tells which one of the maximum 3 intersections
+   * of the vertical line with the cubic to take.
+   */
+
+  p *= 3;
+  int root = (int) p;
+  assert ( root >= 0 );
+  assert ( root <= 3 );
+  if ( root == 3 ) root = 2;
+
+  p -= root;
+
+  assert ( 0 <= p && p <= 1 );
+  if ( p <= 0. ) p = 1e-6;
+  if ( p >= 1. ) p = 1 - 1e-6;
+  root++;
+  p = 2*p - 1;
+  double x;
+  if (p > 0) x = p/(1 - p);
+    else x = p/(1 + p);
+
+  // calc the third degree polynomial:
+  // compute the third degree polinomial:
+  double a000 = cequation.coeffs[0];
+  double a001 = cequation.coeffs[1];
+  double a002 = cequation.coeffs[2];
+  double a011 = cequation.coeffs[3];
+  double a012 = cequation.coeffs[4];
+  double a022 = cequation.coeffs[5];
+  double a111 = cequation.coeffs[6];
+  double a112 = cequation.coeffs[7];
+  double a122 = cequation.coeffs[8];
+  double a222 = cequation.coeffs[9];
+
+  // first the y^3 coefficient, it coming only from a222:
+  double a = a222;
+  // next the y^2 coefficient (from a122 and a022):
+  double b = a122*x + a022;
+  // next the y coefficient (from a112, a012 and a002):
+  double c = a112*x*x + a012*x + a002;
+  // finally the constant coefficient (from a111, a011, a001 and a000):
+  double d = a111*x*x*x + a011*x*x + a001*x + a000;
+
+  // renormalize: positive a
+  if ( a < 0 )
+  {
+    a *= -1;
+    b *= -1;
+    c *= -1;
+    d *= -1;
+  }
+
+// and a bound for all the real roots:
+  assert ( a != 0 );
+
+  double bound = fabs(d/a);
+  if ( fabs(c/a) + 1 > bound ) bound = fabs(c/a) + 1;
+  if ( fabs(b/a) + 1 > bound ) bound = fabs(b/a) + 1;
+
+  bool valid;
+  int numroots;
+  double y = calcCubicYvalue ( x, -bound, bound, root, cequation, valid,
+                               numroots );
+  if ( valid ) return Coordinate(x,y);
+  root--; if ( root <= 0) root += 3;
+  y = calcCubicYvalue ( x, -bound, bound, root, cequation, valid,
+                               numroots );
+  if ( valid ) return Coordinate(x,y);
+  root--; if ( root <= 0) root += 3;
+  y = calcCubicYvalue ( x, -bound, bound, root, cequation, valid,
+                               numroots );
+  assert ( valid );
+  return Coordinate(x,y);
 };
 
 double Cubic::getParam (const Coordinate& p) const
 {
-    return 0; 
+  double x = p.x;
+  double y = p.y;
+  double t;
+
+  if (x > 0) t = x/(1+x);
+    else t = x/(1-x); 
+  t = 0.5*(t + 1);
+  t /= 3;
+
+  Coordinate p1 = getPoint ( t );
+  Coordinate p2 = getPoint ( t + 1.0/3.0 );
+  Coordinate p3 = getPoint ( t + 2.0/3.0 );
+
+  double mint = t;
+  double mindist = fabs ( y - p1.y );
+  if ( fabs ( y - p2.y ) < mindist )
+  {
+    mint = t + 1.0/3.0;
+    mindist = fabs ( y - p2.y );
+  } 
+  if ( fabs ( y - p3.y ) < mindist )
+  {
+    mint = t + 2.0/3.0;
+  } 
+
+  return mint; 
 };
 
 const QCString Cubic::sBaseTypeName()
@@ -178,7 +299,6 @@ void CubicB9P::sDrawPrelim( KigPainter& p, const Objects& os )
     return;
   }
 
-  CubicCartesianEquationData equation = calcCubicThroughPoints( points );
   p.setPen(QPen (Qt::red, 1));
   p.drawCubic(
       calcCubicThroughPoints( points )
@@ -336,16 +456,19 @@ double calcCubicYvalue ( double x, double ymin, double ymax, int root,
   double d = a111*x*x*x + a011*x*x + a001*x + a000;
 
   // renormalize:
-  b /= a;
-  c /= a;
-  d /= a;
-  a = 1.0;
+  if ( a < 0 )
+  {
+    a *= -1;
+    b *= -1;
+    c *= -1;
+    d *= -1;
+  }
 
 // computing the coefficients of the Sturm sequence
-
-  double p1a = 2*b*b - 6*c;
-  double p1b = b*c - 9*d;
-  double p0a = c*p1a*p1a + p1b*(3*p1b - 2*b*p1a);
+  assert ( a != 0 );
+  double p1a = 2*b*b - 6*a*c;
+  double p1b = b*c - 9*a*d;
+  double p0a = c*p1a*p1a + p1b*(3*a*p1b - 2*b*p1a);
 
   int varbottom = calcCubicVariations (ymin, a, b, c, d, p1a, p1b, p0a);
   int vartop = calcCubicVariations (ymax, a, b, c, d, p1a, p1b, p0a);
