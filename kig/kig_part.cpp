@@ -41,6 +41,7 @@
 #include "../objects/translatedpoint.h"
 #include "../objects/mirrorpoint.h"
 #include "../objects/ray.h"
+#include "../objects/arc.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/calcpaths.h"
@@ -186,6 +187,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<Locus> );
     Object::addBuiltinType( new TStdType<Vector> );
     Object::addBuiltinType( new TStdType<Ray> );
+    Object::addBuiltinType( new TStdType<Arc> );
     Object::addBuiltinType( new TType<TextLabel> );
     Object::addBuiltinType( new TType<NormalPoint> );
 

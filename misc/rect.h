@@ -114,7 +114,7 @@ protected:
 };
 
 bool operator==( const Rect& r, const Rect& s );
-inline kdbgstream& operator<<( kdbgstream& s, const Rect& t );
+kdbgstream& operator<<( kdbgstream& s, const Rect& t );
 // this operator returns a rect that contains both the given
 // rects..
 Rect operator|( const Rect& lhs, const Rect& rhs );

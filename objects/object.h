@@ -133,7 +133,7 @@ public:
   virtual Segment* toSegment() { return 0; };
   virtual Vector* toVector() { return 0; };
   virtual Ray* toRay() { return 0; };
-//   virtual Line* toLine() { return 0; };
+  virtual Line* toLine() { return 0; };
   virtual Circle* toCircle() { return 0; };
   virtual Curve* toCurve() { return 0; };
   virtual NormalPoint* toNormalPoint() { return 0; };

@@ -163,18 +163,19 @@ void KigPainter::setBrushColor( const QColor& c )
 
 void KigPainter::drawPolygon( const std::vector<Coordinate>& pts, bool winding, int index, int npoints )
 {
+  Rect sr;
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
   QPointArray t( pts.size() );
   int c = 0;
   for( std::vector<Coordinate>::const_iterator i = pts.begin(); i != pts.end(); ++i )
     {
+      sr.setContains( *i );
       QPoint tt = toScreen (*i);
       t.putPoints( c++, 1, tt.x(), tt.y() );
     };
   mP.drawPolygon( t, winding, index, npoints );
-  // just repaint the entire window...
-  mOverlay.push_back( mP.viewport() );
+  mOverlay.push_back( toScreen( sr ) );
 }
 
 Rect KigPainter::window()
@@ -405,4 +406,14 @@ void KigPainter::drawRay( const Coordinate& a, const Coordinate& b )
   Coordinate tb = b;
   calcRayBorderPoints( a, tb, window() );
   drawSegment( a, tb );
+}
+
+void KigPainter::drawArc( const Rect& surroundingRect, int startAngle, int angle )
+{
+  mP.drawArc( toScreen( surroundingRect ), startAngle, angle );
+  Rect r = surroundingRect;
+  r *= 1.2;
+  r.setCenter( surroundingRect.center() );
+//  if ( mNeedOverlay ) mOverlay.push_back( toScreen( r ) );
+  setWholeWinOverlay();
 }

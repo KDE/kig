@@ -47,16 +47,17 @@
     </Menu>
     <Menu name="new_circle">
 	<text>Circle</text>
-	  <Action name="objects_new_circlebcp" />
-	  <Action name="objects_new_circlebtp" />
-	  <ActionList name="user_circle_types" />
+	<Action name="objects_new_circlebcp" />
+	<Action name="objects_new_circlebtp" />
+	<ActionList name="user_circle_types" />
     </Menu>
     <Menu name="new_other">
 	<text>Other</text>
-	  <Action name="objects_new_locus" />
-	  <Action name="objects_new_vector" />
-	  <Action name="objects_new_textlabel" />
-	  <ActionList name="user_other_types" />
+	<Action name="objects_new_locus" />
+	<Action name="objects_new_vector" />
+	<Action name="objects_new_textlabel" />
+	<Action name="objects_new_arc" />
+	<ActionList name="user_other_types" />
     </Menu>
     <Separator />
     <Action name="delete_objects" />
@@ -105,6 +106,7 @@
   <Action name="objects_new_locus" />
   <Action name="objects_new_vector" />
   <Action name="objects_new_textlabel" />
+  <Action name="objects_new_arc" />
   <ActionList name="user_other_types" />
   <ActionList name="user_circle_types" />
 </ToolBar>

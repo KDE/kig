@@ -26,7 +26,7 @@ bool operator==( const Rect& r, const Rect& s )
            && r.height() == s.height() );
 };
 
-inline kdbgstream& operator<<( kdbgstream& s, const Rect& t )
+kdbgstream& operator<<( kdbgstream& s, const Rect& t )
 {
   s << "left: " << t.left()
     << "bottom: " << t.bottom()
