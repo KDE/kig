@@ -216,19 +216,19 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "circumference", &CircleImp::circumference )
     ;
 
-  class_<BogusImp, bases<ObjectImp>, boost::noncopyable >( "Bogus", no_init )
+  class_<BogusImp, bases<ObjectImp>, boost::noncopyable >( "BogusObject", no_init )
     .def( "stype", &BogusImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )
     ;
 
-  class_<InvalidImp, bases<BogusImp> >( "Invalid", init<>() )
+  class_<InvalidImp, bases<BogusImp> >( "InvalidObject", init<>() )
     .def( "stype", &InvalidImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )
     ;
 
-  class_<DoubleImp, bases<BogusImp> >( "Double", init<double>() )
+  class_<DoubleImp, bases<BogusImp> >( "DoubleObject", init<double>() )
     .def( "stype", &DoubleImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )
@@ -236,7 +236,7 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "setData", &DoubleImp::setData )
     ;
 
-  class_<IntImp, bases<BogusImp> >( "Int", init<int>() )
+  class_<IntImp, bases<BogusImp> >( "IntObject", init<int>() )
     .def( "stype", &IntImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )
@@ -244,7 +244,7 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "setData", &IntImp::setData )
     ;
 
-  class_<StringImp, bases<BogusImp> >( "String", no_init )
+  class_<StringImp, bases<BogusImp> >( "StringObject", no_init )
     .def( "stype", &StringImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )
