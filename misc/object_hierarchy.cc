@@ -226,15 +226,20 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
   : mnumberofargs( from.size() ), mnumberofresults( 1 )
 {
   margrequirements.resize( from.size(), -1 );
-  visit( to, from );
+  std::map<const Object*, int> seenmap;
+  for ( uint i = 0; i < from.size(); ++i )
+    seenmap[from[i]] = i;
+  visit( to, seenmap );
 }
 
-int ObjectHierarchy::visit( const Object* o, const Objects& from )
+int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenmap )
 {
   using namespace std;
 
-  for ( uint i = 0; i < from.size(); ++i )
-    if ( from[i] == o ) return i;
+  std::map<const Object*, int>::iterator smi = seenmap.find( o );
+  if ( smi != seenmap.end() )
+    return smi->second;
+
   Objects p( o->parents() );
   if ( p.empty() ) return -1;
 
@@ -243,7 +248,7 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
   parents.resize( p.size(), -1 );
   for ( uint i = 0; i < p.size(); ++i )
   {
-    int v = visit( p[i], from );
+    int v = visit( p[i], seenmap );
     parents[i] = v;
     neednode |= (v != -1);
   };
@@ -276,6 +281,7 @@ int ObjectHierarchy::visit( const Object* o, const Objects& from )
     uint propid = static_cast<const PropertyObject*>( o )->propId();
     mnodes.push_back( new FetchPropertyNode( parent, op->propertiesInternalNames()[propid], propid ) );
   } else assert( false );
+  seenmap[o] = mnumberofargs + mnodes.size() - 1;
   return mnumberofargs + mnodes.size() - 1;
 }
 
@@ -315,8 +321,11 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
   : mnumberofargs( from.size() ), mnumberofresults( to.size() )
 {
   margrequirements.resize( from.size(), -1 );
+  std::map<const Object*, int> seenmap;
+  for ( uint i = 0; i < from.size(); ++i )
+    seenmap[from[i]] = i;
   for ( Objects::const_iterator i = to.begin(); i != to.end(); ++i )
-    visit( *i, from );
+    visit( *i, seenmap );
 }
 
 void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const

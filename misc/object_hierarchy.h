@@ -21,6 +21,8 @@
 
 #include "../objects/common.h"
 
+#include <map>
+
 class ArgParser;
 
 class ObjectHierarchy
@@ -33,7 +35,7 @@ private:
   uint mnumberofresults;
   std::vector<int> margrequirements;
 
-  int visit( const Object* o, const Objects& from );
+  int visit( const Object* o, std::map<const Object*, int>& );
 public:
   ObjectHierarchy( const Objects& from, const Object* to );
   ObjectHierarchy( const Objects& from, const Objects& to );
