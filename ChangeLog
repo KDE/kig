@@ -1,3 +1,8 @@
+2004-04-30  Dominique Devriese  <devriese@kde.org>
+
+	* make touch screens work by placing a mouseMoved call aboove
+	every mouseClicked call.
+
 2004-04-28  Dominique Devriese  <devriese@kde.org>
 
 	* change the Qt CapStyle used for drawing locuses, conics and

@@ -181,8 +181,9 @@ PointConstructMode::~PointConstructMode()
 }
 
 void PointConstructMode::leftClickedObject(
-  ObjectHolder*, const QPoint&, KigWidget& w, bool )
+  ObjectHolder*, const QPoint& p, KigWidget& w, bool shiftPressed)
 {
+  mouseMoved( std::vector<ObjectHolder*>(), p, w, shiftPressed );
   mdoc.addObject( new ObjectHolder( mpt.get() ) );
   w.redrawScreen( std::vector<ObjectHolder*>() );
   mdoc.doneMode( this );
@@ -343,6 +344,7 @@ void TestConstructMode::handleArgs( const std::vector<ObjectCalcer*>& args, KigW
 void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
                                            KigWidget& w, bool ctrlOrShiftDown )
 {
+  mouseMoved( std::vector<ObjectHolder*>(), p, w, ctrlOrShiftDown );
   if ( mresult ) {
     QPoint qloc = p + QPoint( -40, 0 );
     Coordinate loc = w.fromScreen( qloc );
