@@ -1,3 +1,8 @@
+2004-04-20  Dominique Devriese  <devriese@kde.org>
+
+	* Save and load line and point styles in the native format.  Most
+	of the code comes from Pino.
+
 2004-04-19  Pino Toscano <toscano.pino@tiscali.it>
 
 	* More work in Dr. Geo filter.

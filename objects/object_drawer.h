@@ -100,9 +100,14 @@ public:
   // returns a new ObjectDrawer that is identical to this one.. except
   // that the pointStyle state is set to p..
   ObjectDrawer* getCopyPointStyle( int p ) const;
+  // Note that this returns a valid point style in every case, even if
+  // the given style string is unknown.  In that case it returns a
+  // default value.
   static int pointStyleFromString( QString& style );
+  // Note that this returns a valid style in every case, even if the
+  // given style string is unknown.  In that case it returns a default
+  // value.
   static Qt::PenStyle styleFromString( QString& style );
-
 };
 
 #endif

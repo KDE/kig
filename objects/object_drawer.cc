@@ -153,8 +153,8 @@ int ObjectDrawer::pointStyleFromString( QString& style )
     return 3;
   else if ( style == "Cross" )
     return 4;
-  kdDebug() << "unknown point style: " << style << endl;
-  return 0;
+  assert( false );
+  return -1;
 }
 
 QString ObjectDrawer::pointStyleToString() const
@@ -169,6 +169,7 @@ QString ObjectDrawer::pointStyleToString() const
     return "RectangularEmpty";
   else if ( mpointstyle == 4 )
     return "Cross";
+  assert( false );
   return QString::null;
 }
 
@@ -180,17 +181,16 @@ Qt::PenStyle ObjectDrawer::styleFromString( QString& style )
     return Qt::DashLine;
   else if ( style == "DotLine" )
     return Qt::DotLine;
-  kdDebug() << "unknown style: " << style << endl;
-  return Qt::SolidLine;
+  else return Qt::SolidLine;
 }
 
 QString ObjectDrawer::styleToString() const
 {
-  if ( mpointstyle == Qt::SolidLine )
+  if ( mstyle == Qt::SolidLine )
     return "SolidLine";
-  else if ( mpointstyle == Qt::DashLine )
+  else if ( mstyle == Qt::DashLine )
     return "DashLine";
-  else if ( mpointstyle == Qt::DotLine )
+  else if ( mstyle == Qt::DotLine )
     return "DotLine";
   return "SolidLine";
 }
