@@ -13,7 +13,7 @@
         </rect>
     </property>
     <property name="caption">
-        <string>DrGeo Filter</string>
+        <string>Dr. Geo Filter</string>
     </property>
     <vbox>
         <property name="name">
@@ -30,7 +30,8 @@
                 <cstring>ExplanationTextLabel</cstring>
             </property>
             <property name="text">
-                <string>Select a figure of the current DrGeo file to import.</string>
+                <string>The current Dr. Geo file contains more than one figure.
+Please select which to import.</string>
             </property>
             <property name="alignment">
                 <set>WordBreak|AlignVCenter</set>

@@ -1,6 +1,6 @@
 // drgeo-filter.h
 // Copyright (C)  2004  Pino Toscano <toscano.pino@tiscali.it>
-// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
+// Copyright (C)  2004  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -25,10 +25,10 @@
 
 class QDomNode;
 class KigDocument;
-class ObjectFactory;
-class ObjectCalcer;
-class ObjectHolder;
-class KigWidget;
+//class ObjectFactory;
+//class ObjectCalcer;
+//class ObjectHolder;
+//class KigWidget;
 class QString;
 
 class KigFilterDrgeo
@@ -43,11 +43,7 @@ public:
   bool supportMime( const QString& mime );
   bool load( const QString& file, KigDocument& to );
 private:
-  std::vector<ObjectHolder*> holders;
-  std::vector<ObjectCalcer*> calcers;
-  const ObjectFactory* fact;
-  ObjectCalcer* oc;
-  void importFigure( QDomNode f );
+  bool importFigure( QDomNode f, KigDocument& doc, const QString& file );
 };
 
 #endif

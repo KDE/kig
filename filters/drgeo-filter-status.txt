@@ -1,0 +1,17 @@
+point     most (no On_curve & Intersection)
+ray       ok
+vector    ok
+line      ok + parallel + perpendicular
+circle    bcp
+numer     ok
+angle     ok (no label with measure)
+arc       ok
+
+to implement:
+ - locus (maybe they work)
+ - polygon (also in Kig :-) )
+ - transformation
+
+knwon problems:
+ - it causes Kig to crash when making a new ObjectTypeCalcer with a parent not 
+   implemented yet.

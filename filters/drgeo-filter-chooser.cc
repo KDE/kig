@@ -1,6 +1,6 @@
 // drgeo-filter-chooser.cc
 // Copyright (C)  2004  Pino Toscano <toscano.pino@tiscali.it>
-// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
+// Copyright (C)  2004  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 #include <klocale.h>
 
 KigFilterDrgeoChooser::KigFilterDrgeoChooser( QStringList& l )
-  : KigFilterDrgeoChooserBase( 0, I18N_NOOP( "DrGeo Filter" ), true )
+  : KigFilterDrgeoChooserBase( 0, I18N_NOOP( "Dr. Geo Filter" ), true )
 {
   FigureListBox->insertStringList( l );
 //  FigureListBox->setCurrentItem( 0 );
