@@ -23,6 +23,7 @@
 #define CONIC_H
 
 #include "curve.h"
+#include "line.h"
 #include "../misc/common.h"
 
 #include <vector>
@@ -313,6 +314,42 @@ protected:
   ConicPolarEquationData pequation;
 
   void calc();
+};
+
+// the directrix of a conic
+
+class LineDirectrix
+  : public Line
+{
+public:
+  LineDirectrix( const Objects& os );
+  LineDirectrix( const LineDirectrix& l );
+  ~LineDirectrix();
+  LineDirectrix* copy() { return new LineDirectrix (*this);};
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return ("LineDirectrix"); };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "directrix"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // arguments
+  static void sDrawPrelim ( KigPainter& p, const Objects& os );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
+
+  Objects getParents() const;
+
+  void calc();
+
+protected:
+  Conic* conic;
 };
 
 #endif

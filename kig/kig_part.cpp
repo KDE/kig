@@ -199,6 +199,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<Vector> );
     Object::addBuiltinType( new TStdType<Ray> );
     Object::addBuiltinType( new TStdType<Arc> );
+    Object::addBuiltinType( new TStdType<LineDirectrix> );
     Object::addBuiltinType( new TType<TextLabel> );
     Object::addBuiltinType( new TType<NormalPoint> );
     Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );

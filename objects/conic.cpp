@@ -907,7 +907,7 @@ Coordinate Conic::focus2() const
 
 const uint Conic::numberOfProperties() const
 {
-  return Curve::numberOfProperties() + 4;
+  return Curve::numberOfProperties() + 5;
 }
 
 const Property Conic::property( uint which ) const
@@ -923,6 +923,8 @@ const Property Conic::property( uint which ) const
     return Property( focus2() );
   else if ( which == Curve::numberOfProperties() + pnum++ )
     return Property( cartesianEquationString() );
+  else if ( which == Curve::numberOfProperties() + pnum++ )
+    return Property( polarEquationString() );
   else assert( false );
 }
 
@@ -933,6 +935,7 @@ const QCStringList Conic::properties() const
   l << I18N_NOOP( "First focus" );
   l << I18N_NOOP( "Second focus" );
   l << I18N_NOOP( "Cartesian equation" );
+  l << I18N_NOOP( "Polar equation" );
   assert( l.size() == Conic::numberOfProperties() );
   return l;
 }
@@ -982,8 +985,98 @@ ConicCartesianEquationData::ConicCartesianEquationData()
 
 QString Conic::polarEquationString() const
 {
-  //FIXME
+  QString ret = i18n( "rho = %1/(1 + %2 cos theta + %3 sin theta)\n    [centered at (%4;%5)]" );
+  const ConicPolarEquationData data = polarEquationData();
 
-  return QString::null;
+  ret = ret.arg( data.pdimen, 0, 'g', 3 );
+  ret = ret.arg( -data.ecostheta0, 0, 'g', 3 );
+  ret = ret.arg( -data.esintheta0, 0, 'g', 3 );
+  ret = ret.arg( data.focus1.x, 0, 'g', 3 );
+  ret = ret.arg( data.focus1.y, 0, 'g', 3 );
+  return ret;
 }
 
+LineDirectrix::~LineDirectrix()
+{
+}
+
+void LineDirectrix::calc()
+{
+  const ConicPolarEquationData data=conic->polarEquationData();
+
+  assert ( conic );
+  mvalid = true;
+  double ec = data.ecostheta0;
+  double es = data.esintheta0;
+  double eccsq = ec*ec + es*es;
+
+  mpa = data.focus1 - data.pdimen/eccsq*Coordinate(ec,es);
+  mpb = mpa + Coordinate(-es,ec);
+}
+
+Objects LineDirectrix::getParents() const
+{
+  Objects objs;
+  objs.push_back( conic );
+  return objs;
+}
+
+LineDirectrix::LineDirectrix(const LineDirectrix& l)
+  : Line( l ), conic( l.conic )
+{
+  conic->addChild(this);
+}
+
+const QString LineDirectrix::sDescriptiveName()
+{
+  return i18n("Directrix of a conic");
+}
+
+QString LineDirectrix::sDescription()
+{
+  return i18n( "The directrix line of a conic." );
+}
+
+const char* LineDirectrix::sActionName()
+{
+  return "objects_new_linedirectrix";
+}
+
+LineDirectrix::LineDirectrix( const Objects& os )
+  : conic( 0 )
+{
+  assert( os.size() == 1 );
+  conic = os[0]->toConic();
+  assert( conic );
+  conic->addChild( this );
+}
+
+void LineDirectrix::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  if ( os.size() != 1 ) return;
+  assert( os[0]->toConic() );
+  const ConicPolarEquationData data=os[0]->toConic()->polarEquationData();
+
+  double ec = data.ecostheta0;
+  double es = data.esintheta0;
+  double eccsq = ec*ec + es*es;
+
+  Coordinate a = data.focus1 - data.pdimen/eccsq*Coordinate(ec,es);
+  Coordinate b = a + Coordinate(-es,ec);
+  p.setPen (QPen (Qt::red,1));
+  p.drawLine( a, b );
+}
+
+Object::WantArgsResult LineDirectrix::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size != 1 ) return NotGood;
+  if ( os[0]->toConic() ) return Complete;
+  return NotGood;
+}
+
+QString LineDirectrix::sUseText( const Objects&, const Object* o )
+{
+  if ( o->toConic() ) return i18n( "Directrix line of this conic" );
+  else assert( false );
+}
