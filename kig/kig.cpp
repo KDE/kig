@@ -18,6 +18,8 @@
  USA
 **/
 
+#include <assert.h>
+
 #include "kig.h"
 #include "kig.moc"
 
