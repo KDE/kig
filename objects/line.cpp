@@ -116,7 +116,8 @@ void LineTTP::calc( const ScreenInfo& )
   {
     valid = false;
     return;
-  };
+  }
+  else valid = true;
   p1 = pt1->getCoord();
   p2 = pt2->getCoord();
 };
