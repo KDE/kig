@@ -76,15 +76,4 @@ public:
   int resultId() const;
 };
 
-class MidPointSegmentType
-  : public ArgparserObjectType
-{
-  MidPointSegmentType();
-  ~MidPointSegmentType();
-public:
-  static const MidPointSegmentType* instance();
-  ObjectImp* calc( const Args& a, const KigDocument& d ) const;
-  int resultId() const;
-};
-
 #endif

@@ -321,10 +321,18 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           if ( ! point ) return ParseError;
           break;
         case G_MID_POINT:
+        {
           // midpoint of a segment..
           if ( parents.size() != 1 ) return ParseError;
-          point = new RealObject( MidPointSegmentType::instance(), parents );
+          if ( !parents[0]->hasimp( ObjectImp::ID_SegmentImp ) ) return ParseError;
+          int index = parents[0]->propertiesInternalNames().findIndex( "mid-point" );
+          assert( index != -1 );
+          ret.push_back( new PropertyObject( parents[0], index ) );
+          Objects nparents( ret.end() - 1, ret.end() );
+          ret.back()->calc( todoc );
+          point = new RealObject( CopyObjectType::instance(), nparents );
           break;
+        }
         default:
           return ParseError;
         };
