@@ -35,7 +35,7 @@ cd $TEMPDIR
 cd $OLDPWD
 
 echo " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "
-echo "Niet vergeten om #MIN_CONFIG in "
-echo "configure.in.in te veranderen in "
-echo "#MIN_CONFIG( 3.0 ) zodat kig niet afhangt "
-echo "van Qt 3.1 maar Qt 3.0..."
+echo "Don't forget to change #MIN_CONFIG in "
+echo "configure.in.in to "
+echo "#MIN_CONFIG( 3.0 ) on packaging, so kig "
+echo "won't depend on Qt 3.1 but 3.0..."
