@@ -1,4 +1,4 @@
-INCLUDES=$(all_includes) @PYTHONINC@
+INCLUDES=$(all_includes) $(PYTHONINC)
 KDE_CXXFLAGS=$(USE_EXCEPTIONS)
 noinst_LTLIBRARIES=libscripting.la
 noinst_HEADERS = \
@@ -12,5 +12,6 @@ libscripting_la_SOURCES = \
 	script_mode.cc \
 	newscriptwizardbase.ui \
 	newscriptwizard.cc
-libscripting_la_LIBADD=@PYTHONLIB@ @LIBPYTHON@ -lboost_python
+libscripting_la_LDFLAGS = $(PYTHONLIB)
+libscripting_la_LIBADD = $(LIBPYTHON) -lboost_python
 #METASOURCES=AUTO
