@@ -8,8 +8,8 @@ while( <TODO> )
   {
     if( /^\* (.*)$/ )
       {
-	print "</li></ul>\n\n" if( $inlist );
-	print "<li><span style=\"font-weight:bold\">$1</span></li>\n";
+	print "</li></ul></li>\n\n" if( $inlist );
+	print "<li><span style=\"font-weight:bold\">$1</span><br/>\n";
 	$inlist = 0;
 	$initem = 0;
       }
@@ -23,4 +23,4 @@ while( <TODO> )
       }
     else { print unless /^$/; }
   };
-print "</li></ul></ul>\n";
+print "</li></ul></li></ul>\n";
