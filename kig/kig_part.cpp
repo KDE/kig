@@ -37,8 +37,8 @@
 #include "../misc/object_constructor.h"
 #include "../misc/screeninfo.h"
 #include "../modes/normal.h"
-#include "../objects/point_imp.h"
 #include "../objects/object_drawer.h"
+#include "../objects/point_imp.h"
 
 #include <stdio.h>
 
@@ -113,8 +113,6 @@ void SetCoordinateSystemAction::slotActivated( int index )
 class KigPrintDialogPage
   : public KPrintDialogPage
 {
-//  Q_OBJECT
-
 public:
   KigPrintDialogPage( QWidget* parent = 0, const char* name = 0 );
   ~KigPrintDialogPage();
@@ -780,6 +778,7 @@ void KigPart::filePrint()
   printer.setFullPage( true );
   printer.setOption( "kde-kig-showgrid", QString::number( document().grid() ) );
   printer.setOption( "kde-kig-showaxes", QString::number( document().axes() ) );
+  printer.setPageSelection( KPrinter::ApplicationSide );
   if ( printer.setup( m_widget, i18n("Print Geometry") ) )
   {
     doPrint( printer );
