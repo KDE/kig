@@ -52,12 +52,12 @@ BaseConstructMode::BaseConstructMode( KigPart& d )
   mpt->calc( d.document() );
   mcursor = ObjectFactory::instance()->cursorPointCalcer( Coordinate( 0, 0 ) );
   mcursor->calc( d.document() );
-  mcursorholder = new ObjectHolder( mcursor );
+//  mcursorholder = new ObjectHolder( mcursor );
 }
 
 BaseConstructMode::~BaseConstructMode()
 {
-  delete mcursorholder;
+//  delete mcursorholder;
 }
 
 void BaseConstructMode::leftClickedObject(
@@ -106,7 +106,11 @@ void BaseConstructMode::leftClickedObject(
     // the objectholder has been constructed once and for all
     // when entering construction mode, and delete in the
     // destructor.
-    selectObject( mcursorholder, w );
+    ObjectHolder* n = new ObjectHolder( mcursor );
+    selectObject( n, w );
+    mcursor = ObjectFactory::instance()->cursorPointCalcer( w.fromScreen( p ) );
+//    mcursor = ObjectFactory::instance()->sensiblePointCalcer( w.fromScreen( p ), mdoc.document(), w );
+    mcursor->calc( mdoc.document() );
   }
 }
 

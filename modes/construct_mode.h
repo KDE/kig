@@ -63,7 +63,7 @@ class BaseConstructMode
   // we also allocate here the corresponding objectholder, since the
   // only sensible place where to deallocate it is in the destructor
   // of this class
-  ObjectHolder* mcursorholder;
+//  ObjectHolder* mcursorholder;
   std::vector<ObjectHolder*> mparents;
 
 public:
