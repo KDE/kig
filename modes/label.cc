@@ -429,7 +429,7 @@ void TextLabelRedefineMode::finish(
   Objects rest( parents.begin() + 3, parents.end() );
   firstthree = TextType::instance()->argParser().parse( firstthree );
 
-  KigCommand* kc = new KigCommand( mdoc, i18n( "Change a Label" ) );
+  KigCommand* kc = new KigCommand( mdoc, i18n( "Change Label" ) );
   MonitorDataObjects mon( firstthree );
 
   assert( firstthree[0]->hasimp( ObjectImp::ID_IntImp ) );

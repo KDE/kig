@@ -287,7 +287,7 @@ void ConstrainedPointType::executeAction(
       Objects monos( po );
       MonitorDataObjects mon( monos );
       po->setImp( new DoubleImp( newp ) );
-      KigCommand* kc = new KigCommand( d, i18n( "Change the parameter of a constrained point" ) );
+      KigCommand* kc = new KigCommand( d, i18n( "Change Parameter of Constrained Point" ) );
       kc->addTask( mon.finish() );
       d.history()->addCommand( kc );
     };

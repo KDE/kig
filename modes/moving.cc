@@ -190,7 +190,7 @@ void PointRedefineMode::stopMove()
   // moldparents.. we don't want it anymore after this..
   delete mref;
 
-  KigCommand* command = new KigCommand( mdoc, i18n( "Redefine a Point" ) );
+  KigCommand* command = new KigCommand( mdoc, i18n( "Redefine Point" ) );
   command->addTask(
     new ChangeParentsAndTypeTask( mp, parents, type ) );
   command->addTask( mmon->finish() );

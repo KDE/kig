@@ -364,7 +364,7 @@ void AngleType::executeAction(
 
   MonitorDataObjects mon( getAllParents( parents ) );
   parents[2]->move( c, nc - c, d );
-  KigCommand* kc = new KigCommand( d, i18n( "Resize an &Angle" ) );
+  KigCommand* kc = new KigCommand( d, i18n( "Resize &Angle" ) );
   kc->addTask( mon.finish() );
   d.history()->addCommand( kc );
 }
