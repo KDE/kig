@@ -35,7 +35,8 @@ private:
   uint mnumberofresults;
   std::vector<int> margrequirements;
 
-  int visit( const Object* o, std::map<const Object*, int>& );
+  int visit( const Object* o, std::map<const Object*, int>&,
+             bool isresult = false);
 
   friend bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs );
 
@@ -67,6 +68,7 @@ public:
   uint numberOfResults() const { return mnumberofresults; };
 
   int idOfLastResult() const;
+  bool resultDoesNotDependOnGiven() const;
 
   ObjectHierarchy transformFinalObject( const Transformation& t ) const;
 };

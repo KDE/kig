@@ -19,6 +19,7 @@
 #include "object_hierarchy.h"
 
 #include "../objects/object.h"
+#include "../objects/other_type.h"
 #include "../objects/object_imp.h"
 #include "../objects/object_imp_factory.h"
 #include "../objects/object_type_factory.h"
@@ -223,27 +224,53 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument&
   };
 }
 
-int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenmap )
+int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenmap,
+                            bool isresult )
 {
   using namespace std;
 
   std::map<const Object*, int>::iterator smi = seenmap.find( o );
   if ( smi != seenmap.end() )
-    return smi->second;
+  {
+    if ( isresult )
+    {
+      // isresult means that this object is one of the resultant
+      // objects.  Therefore, its node has to appear at the end,
+      // because that's where we expect it..  We therefore copy it
+      // there using CopyObjectType..
+      int ret = mnumberofargs + mnodes.size();
+      std::vector<int> parents;
+      parents.push_back( smi->second );
+      mnodes.push_back( new ApplyTypeNode( CopyObjectType::instance(), parents ) );
+      return ret;
+    }
+    else return smi->second;
+  }
 
   Objects p( o->parents() );
-  if ( p.empty() ) return -1;
-
-  bool neednode = false;
+  // we check if o descends from the given objects..
+  bool descendsfromgiven = false;
   std::vector<int> parents;
   parents.resize( p.size(), -1 );
   for ( uint i = 0; i < p.size(); ++i )
   {
     int v = visit( p[i], seenmap );
     parents[i] = v;
-    neednode |= (v != -1);
+    descendsfromgiven |= (v != -1);
   };
-  if ( ! neednode ) return -1;
+
+  if ( ! descendsfromgiven )
+  {
+    if ( isresult )
+    {
+      // o is a result object that does not descend from the given
+      // objects..  We have to just save its value here, I guess..
+      mnodes.push_back( new PushStackNode( o->imp()->copy() ) );
+      return mnodes.size() + mnumberofargs - 1;
+    }
+    else
+      return -1;
+  };
 
   for ( uint i = 0; i < p.size(); ++i )
   {
@@ -272,7 +299,9 @@ int ObjectHierarchy::visit( const Object* o, std::map<const Object*, int>& seenm
     uint propid = static_cast<const PropertyObject*>( o )->propId();
     assert( propid < op->propertiesInternalNames().size() );
     mnodes.push_back( new FetchPropertyNode( parent, op->propertiesInternalNames()[propid], propid ) );
-  } else assert( false );
+  }
+  else
+    assert( false );
   seenmap[o] = mnumberofargs + mnodes.size() - 1;
   return mnumberofargs + mnodes.size() - 1;
 }
@@ -316,7 +345,11 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
   std::map<const Object*, int> seenmap;
   for ( uint i = 0; i < from.size(); ++i )
     seenmap[from[i]] = i;
-  visit( to, seenmap );
+  Objects parents = to->parents();
+  for ( Objects::const_iterator i = parents.begin();
+        i != parents.end(); ++i )
+    visit( *i, seenmap );
+  visit( to, seenmap, true );
 }
 
 ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
@@ -327,7 +360,14 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
   for ( uint i = 0; i < from.size(); ++i )
     seenmap[from[i]] = i;
   for ( Objects::const_iterator i = to.begin(); i != to.end(); ++i )
-    visit( *i, seenmap );
+  {
+    Objects parents = (*i)->parents();
+    for ( Objects::const_iterator j = parents.begin();
+          j != parents.end(); ++j )
+      visit( *j, seenmap );
+  }
+  for ( Objects::const_iterator i = to.begin(); i != to.end(); ++i )
+    visit( *i, seenmap, true );
 }
 
 void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
@@ -536,3 +576,13 @@ bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs )
 
   return true;
 };
+
+bool ObjectHierarchy::resultDoesNotDependOnGiven() const
+{
+  for ( uint i = mnodes.size() - mnumberofresults; i < mnodes.size(); ++i )
+  {
+    if ( mnodes[i]->id() == Node::ID_PushStack )
+      return true;
+  };
+  return false;
+}

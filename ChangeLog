@@ -1,3 +1,11 @@
+2003-05-24  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* when the user tries to construct a macro that constructs an
+		object from its children, warn him instead of
+		crashing... Thanks to Stephan Binner for the bug report
+
+	* improve the export to image dialog, as suggested by Stephan Binner
+
 2003-05-23  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* remove some obsolete code and clean some older code up..

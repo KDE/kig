@@ -30,6 +30,7 @@
 #include "../objects/object_imp.h"
 
 #include <klineedit.h>
+#include <kmessagebox.h>
 #include <kcursor.h>
 
 #include <functional>
@@ -98,6 +99,18 @@ void DefineMacroMode::finalPageEntered()
 
 void DefineMacroMode::namePageEntered()
 {
+  ObjectHierarchy hier( mgiven, mfinal );
+  if ( hier.resultDoesNotDependOnGiven() )
+  {
+    KMessageBox::sorry( mwizard,
+                        i18n( "One of the result objects you selected "
+                              "cannot be calculated from the given objects.  "
+                              "Kig cannot calculate this macro because of this."
+                              "Please press Back, and construct the objects "
+                              "in the correct order..." ) );
+    mwizard->back();
+  };
+
   using std::for_each;
   using std::bind2nd;
   using std::mem_fun;
@@ -110,8 +123,9 @@ void DefineMacroMode::namePageEntered()
 
 void DefineMacroMode::finishPressed()
 {
+  ObjectHierarchy hier( mgiven, mfinal );
   MacroConstructor* ctor =
-    new MacroConstructor( mgiven, mfinal,
+    new MacroConstructor( hier,
                           mwizard->KLineEdit2->text(),
                           mwizard->KLineEdit1->text() );
   ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
@@ -127,7 +141,10 @@ void DefineMacroMode::cancelPressed()
 
 void DefineMacroMode::macroNameChanged()
 {
-  updateNexts();
+  mwizard->setFinishEnabled(
+    mwizard->mpname,
+    !mwizard->KLineEdit2->text().isEmpty()
+    );
 }
 
 void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
