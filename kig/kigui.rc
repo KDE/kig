@@ -3,7 +3,4 @@
 	<MenuBar>
 		<Merge />
 	</MenuBar>
-	<ToolBar name="mainToolBar"><text>&amp;Main Toolbar</text>
-		<Action name="reload"/>
-	</ToolBar>
 </kpartgui>

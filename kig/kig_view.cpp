@@ -49,13 +49,14 @@ kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
 
 KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name )
   : QWidget(parent, name),
+    KXMLGUIClient( inDoc ),
     document(inDoc),
     stillPix(size()),
     curPix(size()),
     msi( Rect(), rect() )
 {
   setInstance( document->instance() );
-  setXMLFile("kigpartui.rc");
+  setXMLFile("kigviewui.rc");
 
   document->addView(this);
   connect( document, SIGNAL( recenterScreen() ), this, SLOT( recenterScreen() ) );

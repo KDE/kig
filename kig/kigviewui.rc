@@ -1,0 +1,17 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="kig_part" version="1">
+<MenuBar>
+  <Menu name="view">
+    <Action name="view_fullscreen" />
+    <Action name="view_zoom_in" />
+    <Action name="view_zoom_out" />
+    <Action name="view_recenter" />
+  </Menu>
+</MenuBar>
+<ToolBar name="view_toolbar">
+  <Action name="view_zoom_in" />
+  <Action name="view_zoom_out" />
+  <Action name="view_fullscreen" />
+  <Action name="view_recenter"/>
+</ToolBar>
+

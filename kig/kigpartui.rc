@@ -9,10 +9,7 @@
   </Menu>
   <Menu name="view">
     <text>&amp;View</text>
-    <Action name="view_fullscreen" />
-    <Action name="view_zoom_in" />
-    <Action name="view_zoom_out" />
-    <Action name="view_recenter" />
+    <Merge />
   </Menu>
   <Menu name="objects">
     <text>Objects</text>
@@ -39,12 +36,6 @@
   <Action name="delete_objects"/>
   <Action name="cancel_construction"/>
   <Action name="macro_action"/>
-</ToolBar>
-<ToolBar name="view_toolbar">
-  <Action name="view_zoom_in" />
-  <Action name="view_zoom_out" />
-  <Action name="view_fullscreen" />
-  <Action name="view_recenter"/>
 </ToolBar>
 <ToolBar name="points_toolbar">
   <Action name="objects_new_normalpoint" />

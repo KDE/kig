@@ -90,7 +90,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   m_widget = new KigView(this, parentWidget, widgetName);
   // notify the part that this is our internal widget
   setWidget( m_widget );
-  insertChildClient( m_widget );
+//   insertChildClient( m_widget );
 
   // create our actions...
   setupActions();
