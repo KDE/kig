@@ -25,6 +25,7 @@
 #include "i18n.h"
 
 #include "../objects/line_type.h"
+#include "../objects/intersection_types.h"
 #include "../objects/circle_type.h"
 #include "../objects/conic_types.h"
 #include "../objects/cubic_type.h"
@@ -221,6 +222,40 @@ void setupBuiltinStuff()
       "parabolabdp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_parabolabdp" ) );
+
+    {
+      // intersection stuff..
+      // There is one "toplevel" constructor, that is composed of
+      // multiple subconstructors..  First we build the
+      // subconstructors:
+      ObjectConstructor* lineline =
+        new SimpleObjectTypeConstructor(
+          LineLineIntersectionType::instance(),
+          "SHOULDNOTBESEEN", "SHOULDNOTBESEEN", // you shouldn't see
+                                                // these
+          "intersection" );
+      ObjectConstructor* lineconic =
+        new MultiObjectTypeConstructor(
+          ConicLineIntersectionType::instance(),
+          "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+          "intersection", -1, 1 );
+      ObjectConstructor* linecubic =
+        new MultiObjectTypeConstructor(
+          LineCubicIntersectionType::instance(),
+          "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+          "intersection", 1, 2, 3 );
+
+      // now for the toplevel constructor:
+      MergeObjectConstructor* m = new MergeObjectConstructor(
+        I18N_NOOP( "Intersection" ),
+        I18N_NOOP( "The intersection of two objects" ),
+        "intersection" );
+      m->merge( lineline );
+      m->merge( lineconic );
+      m->merge( linecubic );
+      ctors->add( m );
+      actions->add( new ConstructibleAction( m, "objects_new_intersection" ) );
+    };
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };

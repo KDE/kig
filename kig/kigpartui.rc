@@ -37,7 +37,7 @@
 	<text>Points</text>
 	  <Action name="objects_new_normalpoint" />
 	  <Action name="objects_new_midpoint" />
-	  <Action name="objects_new_intersectionpoint" />
+	  <Action name="objects_new_intersection" />
 	  <Action name="objects_new_point_xy" />
 	  <Action name="objects_new_translatedpoint" />
 	  <Action name="objects_new_rotatedpoint" />
@@ -50,7 +50,6 @@
 	<Action name="objects_new_circlebtp" />
 	<ActionList name="user_circle_types" />
 	<Action name="objects_new_lineradical" />
-	<Action name="objects_new_circlelineintersect" />
     </Menu>	
     <Menu name="new_conic">
 	<text>Conics</text>
@@ -68,7 +67,6 @@
 	<ActionList name="user_conic_types" />
 	<Action name="objects_new_linedirectrix" />
 	<Action name="objects_new_lineconicradical" />
-	<Action name="objects_new_coniclineintersect" />
     </Menu>
     <Menu name="new_other">
 	<text>Other</text>
@@ -79,7 +77,6 @@
 	<Action name="objects_new_cubicb9p" />
 	<Action name="objects_new_cubicnodeb6p" />
 	<Action name="objects_new_cubiccuspb4p" />
-	<Action name="objects_new_cubiclineintersect" />
 	<ActionList name="user_other_types" />
     </Menu>
     <Separator />
@@ -106,7 +103,7 @@
 <ToolBar name="points_toolbar"><text>Points</text>
   <Action name="objects_new_normalpoint" />
   <Action name="objects_new_point_xy" />
-  <Action name="objects_new_intersectionpoint" />
+  <Action name="objects_new_intersection" />
   <Action name="objects_new_midpoint" />
   <Action name="objects_new_mirrorpoint" />
   <Action name="objects_new_rotatedpoint" />
@@ -126,7 +123,6 @@
 <ToolBar name="circle_toolbar"><text>Circles</text>
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
-  <Action name="objects_new_circlelineintersect" />
   <Action name="objects_new_lineradical" />
 </ToolBar>  
 <Toolbar name="conic_toolbar"><text>Conics</text>
@@ -136,7 +132,6 @@
   <Action name="objects_new_conicb5p" />
   <Action name="user_conic_types" />
   <Action name="objects_new_lineconicradical" />
-  <Action name="objects_new_coniclineintersect" />
 </Toolbar>    
 <ToolBar name="rest_toolbar"><text>Rest</text>
   <Action name="objects_new_angle" />
