@@ -338,7 +338,7 @@ void BackwardSubstitution( double *matrix[], int numrows, int numcols,
   }
 }
 
-bool Invert3by3matrix ( double m[3][3], double inv[3][3] )
+bool Invert3by3matrix ( const double m[3][3], double inv[3][3] )
 {
   double det = m[0][0]*(m[1][1]*m[2][2] - m[1][2]*m[2][1]) -
                m[0][1]*(m[1][0]*m[2][2] - m[1][2]*m[2][0]) +
