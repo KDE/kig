@@ -34,6 +34,13 @@
 #include <algorithm>
 using namespace std;
 
+template<typename T>
+void vect_remove( std::vector<T>& v, const T& t )
+{
+  typename std::vector<T>::iterator new_end = std::remove( v.begin(), v.end(), t );
+  v.erase( new_end, v.end() );
+}
+
 GUIActionList* GUIActionList::instance()
 {
   static GUIActionList l;

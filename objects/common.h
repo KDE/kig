@@ -26,7 +26,6 @@
 #include <qstringlist.h>
 #include <cassert>
 #include <klocale.h>
-#include <algorithm>
 
 class Coordinate;
 class KigDocument;
@@ -49,13 +48,6 @@ class Transformation;
 
 typedef std::vector<const ObjectImp*> Args;
 typedef QValueList<QCString> QCStringList;
-
-template<typename T>
-void vect_remove( std::vector<T>& v, const T& t )
-{
-  typename std::vector<T>::iterator new_end = std::remove( v.begin(), v.end(), t );
-  v.erase( new_end, v.end() );
-}
 
 template<typename T>
 void delete_all( T begin, T end )
