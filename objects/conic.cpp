@@ -54,7 +54,7 @@ bool Conic::contains (const Coordinate& o, const ScreenInfo& si ) const
   double esintheta0 = d.esintheta0;
   double pdimen = d.pdimen;
 
-  pos = Coordinate(o) - focus1;
+  pos = o - focus1;
   len = pos.length();
   costheta = pos.x / len;
   sintheta = pos.y / len;
