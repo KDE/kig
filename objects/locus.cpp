@@ -254,9 +254,7 @@ const QString Locus::vDescription() const
 
 const QString Locus::sDescription()
 {
-  return i18n( "Construct a locus: let one point move around, and record "
-               "the places another object passes through. These combined "
-               "form a new object: the locus." );
+  return i18n( "A locus" );
 }
 
 const QCString Locus::vIconFileName() const

@@ -74,7 +74,7 @@ const QString AbstractLine::equationString( const KigWidget& ) const
   Coordinate q = p2();
 
   double m = ( q.y - p.y ) / ( q.x - p.x );
-  double r = ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;
+  double r = ( q.y - p.y ) * (-p.x) / ( q.x - p.x ) + p.y;
 
   ret = ret.arg( m, 0, 'g', 3 );
   ret = ret.arg( r, 0, 'g', 3 );
