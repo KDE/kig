@@ -227,13 +227,17 @@ bool Angle::contains(const Coordinate& a, const ScreenInfo& si ) const
 
   // and next we check if the angle is appropriate...
   Coordinate vect = a - cds[1];
-  vect = vect.normalize();
-  double angle = std::acos( vect.x );
-  if ( vect.y < 0 ) angle = 2*M_PI-angle;
-  if ( angle < 0 ) angle += 2* M_PI;
-  if ( angle < mstartangle ) return false;
-  if ( angle > mstartangle + manglelength ) return false;
-  return true;
+// atan2 is more appropriate...
+  double angle = std::atan2( vect.y, vect.x );
+//  vect = vect.normalize();
+//  double angle = std::acos( vect.x );
+//  if ( vect.y < 0 ) angle = 2*M_PI-angle;
+  while ( angle < mstartangle ) angle += 2*M_PI;
+  return ( angle <= mstartangle + manglelength );
+//  if ( angle < 0 ) angle += 2* M_PI;
+//  if ( angle < mstartangle ) return false;
+//  if ( angle > mstartangle + manglelength ) return false;
+//  return true;
 }
 
 void Angle::draw( KigPainter& p, bool ss ) const
