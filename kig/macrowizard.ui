@@ -1,0 +1,109 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>MacroWizard</class>
+<widget class="QWizard">
+    <property name="name">
+        <cstring>MacroWizard</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>359</width>
+            <height>116</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Construct a new Macro Command...</string>
+    </property>
+    <widget class="QWidget">
+        <property name="name">
+            <cstring>m_pGivenObjsPage</cstring>
+        </property>
+        <attribute name="title">
+            <string>Given objects...</string>
+        </attribute>
+        <hbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <property name="margin">
+                <number>11</number>
+            </property>
+            <property name="spacing">
+                <number>6</number>
+            </property>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>TextLabel1</cstring>
+                </property>
+                <property name="text">
+                    <string>Select the objects to start from...</string>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
+    <widget class="QWidget">
+        <property name="name">
+            <cstring>m_pFinalObjsPage</cstring>
+        </property>
+        <attribute name="title">
+            <string>Final objects.</string>
+        </attribute>
+        <hbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <property name="margin">
+                <number>11</number>
+            </property>
+            <property name="spacing">
+                <number>6</number>
+            </property>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>TextLabel2</cstring>
+                </property>
+                <property name="text">
+                    <string>Select the objects to finish with...</string>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
+    <widget class="QWidget">
+        <property name="name">
+            <cstring>m_pNameTypePage</cstring>
+        </property>
+        <attribute name="title">
+            <string>Enter a name for the new type...</string>
+        </attribute>
+        <hbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <property name="margin">
+                <number>11</number>
+            </property>
+            <property name="spacing">
+                <number>6</number>
+            </property>
+            <widget class="KLineEdit">
+                <property name="name">
+                    <cstring>KLineEdit1</cstring>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>KLineEdit1</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MacroWizard</receiver>
+        <slot>setFinishable(const QString&amp;)</slot>
+    </connection>
+</connections>
+<slots>
+    <slot specifier="pure virtual">setFinishable(const QString&amp; s)</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
