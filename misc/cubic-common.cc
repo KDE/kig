@@ -18,6 +18,7 @@
 
 #include "cubic-common.h"
 #include "kignumerics.h"
+#include "kigtransform.h"
 
 /*
  * coefficients of the cartesian equation for cubics
@@ -408,4 +409,102 @@ void calcCubicLineRestriction ( CubicCartesianData data,
   c += a112*(p.x*p.x*v.y + 2*p.x*v.x*p.y) + a122*(v.x*p.y*p.y + 2*p.x*p.y*v.y);
   b += a112*(v.x*v.x*p.y + 2*v.x*p.x*v.y) + a122*(p.x*v.y*v.y + 2*v.x*v.y*p.y);
   a += a112*v.x*v.x*v.y + a122*v.x*v.y*v.y;
+}
+
+
+const CubicCartesianData calcCubicTransformation (
+  const CubicCartesianData& data,
+  const Transformation& t, bool& valid )
+{
+  double a[3][3][3];
+  double b[3][3][3];
+  CubicCartesianData dataout;
+
+  int icount = 0;
+  for (int i=0; i < 3; i++)
+  {
+    for (int j=i; j < 3; j++)
+    {
+      for (int k=j; k < 3; k++)
+      {
+	a[i][j][k] = data.coeffs[icount++];
+	if ( i < k )
+	{
+	  if ( i == j )    // case aiik
+	  {
+	    a[i][i][k] /= 3.;
+	    a[i][k][i] = a[k][i][i] = a[i][i][k];
+	  }
+	  else if ( j == k )  // case aijj
+	  {
+	    a[i][j][j] /= 3.;
+	    a[j][i][j] = a[j][j][i] = a[i][j][j];
+	  }
+	  else             // case aijk  (i<j<k)
+	  {
+	    a[i][j][k] /= 6.;
+	    a[i][k][j] = a[j][i][k] = a[j][k][i] =
+                         a[k][i][j] = a[k][j][i] = a[i][j][k];
+	  }
+	}
+      }
+    }
+  }
+
+  Transformation ti = t.inverse( valid );
+  if ( ! valid ) return dataout;
+
+  for (int i = 0; i < 3; i++)
+  {
+    for (int j = 0; j < 3; j++)
+    {
+      for (int k = 0; k < 3; k++)
+      {
+	b[i][j][k] = 0.;
+        for (int ii = 0; ii < 3; ii++)
+        {
+          for (int jj = 0; jj < 3; jj++)
+          {
+            for (int kk = 0; kk < 3; kk++)
+            {
+	      b[i][j][k] += a[ii][jj][kk]*ti.data( ii, i )*ti.data( jj, j )*ti.data( kk, k );
+	    }
+	  }
+	}
+      }
+    }
+  }
+
+  assert (fabs(b[0][1][2] - b[1][2][0]) < 1e-8);  // test a couple of cases
+  assert (fabs(b[0][1][1] - b[1][1][0]) < 1e-8);
+
+  icount = 0;
+  for (int i=0; i < 3; i++)
+  {
+    for (int j=i; j < 3; j++)
+    {
+      for (int k=j; k < 3; k++)
+      {
+	dataout.coeffs[icount] = b[i][j][k];
+	if ( i < k )
+	{
+	  if ( i == j )    // case biik
+	  {
+	    dataout.coeffs[icount] *= 3.;
+	  }
+	  else if ( j == k )  // case bijj
+	  {
+	    dataout.coeffs[icount] *= 3.;
+	  }
+	  else             // case bijk  (i<j<k)
+	  {
+	    dataout.coeffs[icount] *= 6.;
+	  }
+	}
+	icount++;
+      }
+    }
+  }
+
+  return dataout;
 }

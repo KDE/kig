@@ -21,6 +21,8 @@
 
 #include "common.h"
 
+class Transformation;
+
 /**
  * This class represents an equation of a cubic in the form
  * "a_{ijk} x_i x_j x_k = 0" (in homogeneous coordinates, i,j,k = 0,1,2),
@@ -78,5 +80,9 @@ const Coordinate calcCubicLineIntersect( const CubicCartesianData& c,
 void calcCubicLineRestriction ( CubicCartesianData data,
          Coordinate p1, Coordinate dir,
          double& a, double& b, double& c, double& d );
+
+const CubicCartesianData calcCubicTransformation (
+  const CubicCartesianData& data,
+  const Transformation& t, bool& valid );
 
 #endif

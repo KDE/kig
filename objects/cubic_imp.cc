@@ -38,9 +38,12 @@ CubicImp::~CubicImp()
 {
 }
 
-ObjectImp* CubicImp::transform( const Transformation& ) const
+ObjectImp* CubicImp::transform( const Transformation& t ) const
 {
-  return new InvalidImp;
+  bool valid = true;
+  CubicCartesianData d = calcCubicTransformation( data(), t, valid );
+  if ( valid ) return new CubicImp( d );
+  else return new InvalidImp;
 }
 
 void CubicImp::draw( KigPainter& p ) const
