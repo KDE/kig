@@ -1,5 +1,5 @@
 // constructactions.cc
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -32,7 +32,7 @@
 
 ConstructAction::ConstructAction( KigDocument* d, Type* t,
                                   const int cut )
-  : KAction( i18n( t->descriptiveName() ), cut, d->actionCollection(), t->actionName() ),
+  : KAction( t->descriptiveName(), cut, d->actionCollection(), t->actionName() ),
     mdoc( d ),
     mtype( t )
 {
@@ -48,8 +48,10 @@ void ConstructAction::slotActivated()
 {
   NormalMode* nm = dynamic_cast<NormalMode*>( mdoc->mode() );
   assert( nm );
-  KigMode* m = mtype->constructMode( nm, mdoc );
-  mdoc->setMode( m );
+  KigMode* m = mtype->constructMode( *mdoc );
+  mdoc->runMode( m );
+  delete m;
+  nm->clearSelection();
 }
 
 Type* ConstructAction::type()

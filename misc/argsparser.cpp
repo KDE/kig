@@ -22,7 +22,7 @@
 
 #include <algorithm>
 
-ArgParser::ArgParser( const spec args[], int n )
+ArgParser::ArgParser( const spec* args, int n )
   : mndt( n ), mwantedobjscount( 0 ), margs( args )
 {
   for ( int i = 0; i < n; ++i )

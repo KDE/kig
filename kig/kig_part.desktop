@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=KigPart
-Name[sv]=Kig-del
+Name[sv]=Kigdel
+Name[ven]=TshipidatshaKig
+Name[zh_CN]=Kig 组件
 MimeType=application/x-kig;application/x-kgeo;
 ServiceTypes=KParts/ReadOnlyPart,KParts/ReadWritePart
 X-KDE-Library=libkigpart

@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -42,6 +42,7 @@ class CoordinateSystem;
 class MacroWizardImpl;
 class KigView;
 class Object;
+class ScreenInfo;
 
 /**
  * This is a "Part".  It that does all the real work in a KPart
@@ -50,7 +51,7 @@ class Object;
  * interface to shells
  *
  * @short Main Part
- * @author Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ * @author Dominique Devriese <devriese@kde.org>
  */
 class KigDocument : public KParts::ReadWritePart
 {
@@ -73,6 +74,8 @@ public:
   virtual ~KigDocument();
 
   static myvector<KigDocument*>& documents();
+
+  KigView* mainWidget();
 
 /*********************** KPart interface *************************/
 
@@ -97,11 +100,13 @@ signals:
 public:
   void emitStatusBarText( const QString& text );
 
-  /***************** some slots *************************/
 public slots:
+  void fileSaveAs();
+  void fileSave();
+
   void unplugActionLists();
   void plugActionLists();
-  
+
   void deleteObjects();
   void cancelConstruction();
   void showHidden();
@@ -118,13 +123,15 @@ public:
   void addView(KigView*) { numViews++; };
   void delView(KigView*) { numViews--; };
 
-  const Objects& objects() { return mObjs;};
-  const CoordinateSystem* coordinateSystem();
+  const Objects& objects() const { return mObjs;};
+  const CoordinateSystem& coordinateSystem() const;
   KigMode* mode() { return mMode; };
   void setMode( KigMode* );
+  void runMode( KigMode* );
+  void doneMode( KigMode* );
 
   // what objects are under point p
-  Objects whatAmIOn( const Coordinate& p, const double fault ) const;
+  Objects whatAmIOn( const Coordinate& p, const ScreenInfo& si ) const;
 
   Objects whatIsInHere( const Rect& p );
 
@@ -143,11 +150,14 @@ public:
   // actually, they only add a command object to the history, the real
   // work is done in _addObject() and _delObject()
   void addObject(Object* inObject);
+  void addObjects( const Objects& os );
   void delObject(Object* inObject);
   void delObjects( const Objects& os );
 
 /************* internal stuff *************/
 protected:
+  bool internalSaveAs();
+
   void _addObject( Object* inObject );
   void _addObjects( Objects& o);
   void _delObject(Object* inObject);
@@ -177,6 +187,7 @@ public:
   QPtrList<KAction> aMNewLine;
   QPtrList<KAction> aMNewOther;
   QPtrList<KAction> aMNewAll;
+  QPtrList<KAction> aMNewConic;
 
   KAction* aCancelConstruction;
   KAction* aDeleteObjects;

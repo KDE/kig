@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -29,10 +29,16 @@
 
 #include "../modes/normal.h"
 #include "../objects/circle.h"
+#include "../objects/conic.h"
+#include "../objects/coniclines.h"
+#include "../objects/conicsextra.h"
+#include "../objects/cubic.h"
+#include "../objects/transform.h"
 #include "../objects/segment.h"
 #include "../objects/normalpoint.h"
 #include "../objects/midpoint.h"
 #include "../objects/line.h"
+#include "../objects/radicallines.h"
 #include "../objects/macro.h"
 #include "../objects/label.h"
 #include "../objects/intersection.h"
@@ -41,6 +47,9 @@
 #include "../objects/translatedpoint.h"
 #include "../objects/mirrorpoint.h"
 #include "../objects/ray.h"
+#include "../objects/coordproppoint.h"
+#include "../objects/rotatedpoint.h"
+#include "../objects/angle.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/calcpaths.h"
@@ -49,7 +58,9 @@
 
 #include <kparts/genericfactory.h>
 #include <kinstance.h>
+#include <kfiledialog.h>
 #include <kaction.h>
+#include <kapplication.h>
 #include <ktoolbar.h>
 #include <kmainwindow.h>
 #include <kstdaction.h>
@@ -63,6 +74,9 @@
 
 #include <qfile.h>
 #include <qtimer.h>
+#if QT_VERSION >= 0x030100
+#include <qeventloop.h>
+#endif
 
 #include <algorithm>
 
@@ -112,76 +126,111 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
 
   setModified (false);
 
-  mMode = new NormalMode( this );
+  mMode = new NormalMode( *this );
 }
 
 void KigDocument::setupActions()
 {
+  // save actions..
+  KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
+  KStdAction::save(this, SLOT(fileSave()), actionCollection());
+
   // we need icons...
   KIconLoader* l = KGlobal::iconLoader();
   QPixmap tmp;
 
   tmp = l->loadIcon( "delete", KIcon::User);
   aDeleteObjects = new KAction(
-      i18n("Delete objects"), "editdelete", Key_Delete, this,
+      i18n("Delete Objects"), "editdelete", Key_Delete, this,
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
   tmp = l->loadIcon( "stop", KIcon::Toolbar);
   aCancelConstruction = new KAction(
-      i18n("Cancel construction"), tmp, Key_Escape, this,
+      i18n("Cancel Construction"), tmp, Key_Escape, this,
       SLOT(cancelConstruction()), actionCollection(), "cancel_construction");
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
   aShowHidden = new KAction(
-    i18n("Unhide all"), 0, this, SLOT( showHidden() ),
+    i18n("Unhide All"), 0, this, SLOT( showHidden() ),
     actionCollection(), "edit_unhide_all");
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
   tmp = l->loadIcon("gear", KIcon::Toolbar);
   aNewMacro = new KAction(
-    i18n("New macro"), tmp, 0, this, SLOT(newMacro()),
+    i18n("New Macro..."), tmp, 0, this, SLOT(newMacro()),
     actionCollection(), "macro_action");
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction(
     i18n("Types Manager"), 0, this, SLOT(editTypes()),
     actionCollection(), "types_edit");
-  aConfigureTypes->setToolTip(i18n("Manage macro types.."));
+  aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
 //   tmp = l->loadIcon( "window_fullscreen", KIcon::User );
 //   aFullScreen = new KAction(
-//     i18n( "Full screen" ), tmp, 0, this, SLOT( startKiosk() ),
+//     i18n( "Full Screen" ), tmp, 0, this, SLOT( startKiosk() ),
 //     actionCollection(), "view_fullscreen" );
 //   aFullScreen->setToolTip( i18n( "View this document full-screen." ) );
 
   tmp = l->loadIcon( "pointxy", KIcon::User );
   aFixedPoint = new AddFixedPointAction( this, tmp, actionCollection() );
+
+  tmp = l->loadIcon( "new", KIcon::User );
+  (void) new TestAction( this, tmp, actionCollection() );
 };
 
 void KigDocument::setupTypes()
 {
   if ( Object::types().empty() )
   {
-    Object::addBuiltinType( new TStdType<Segment> );
+    Object::addBuiltinType( new TStdType<SegmentAB> );
+    Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
+    Object::addBuiltinType( new TStdType<ConicBAAP> );
+    Object::addBuiltinType( new TStdType<ConicBDFP> );
+    Object::addBuiltinType( new TStdType<RotatedPoint> );
     Object::addBuiltinType( new TStdType<LineTTP> );
     Object::addBuiltinType( new TStdType<LinePerpend> );
     Object::addBuiltinType( new TStdType<LineParallel> );
     Object::addBuiltinType( new TStdType<LineRadical> );
+    Object::addBuiltinType( new TMultiType<LineConicRadical> );
+    Object::addBuiltinType( new TStdType<PointTransform> );
+    Object::addBuiltinType( new TStdType<LineTransform> );
+    Object::addBuiltinType( new TStdType<SegmentTransform> );
+    Object::addBuiltinType( new TStdType<RayTransform> );
+    Object::addBuiltinType( new TStdType<CircleTransform> );
+    Object::addBuiltinType( new TStdType<ConicTransform> );
     Object::addBuiltinType( new TStdType<CircleBCP> );
     Object::addBuiltinType( new TStdType<CircleBTP> );
+    Object::addBuiltinType( new TStdType<EllipseBFFP> );
+    Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
+    Object::addBuiltinType( new TStdType<ConicB5P> );
+    Object::addBuiltinType( new TStdType<CubicB9P> );
+    Object::addBuiltinType( new TStdType<CubicNodeB6P> );
+    Object::addBuiltinType( new TStdType<CubicCuspB4P> );
+    Object::addBuiltinType( new TStdType<CubicTransform> );
+    Object::addBuiltinType( new TStdType<ParabolaBTP> );
+    Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
     Object::addBuiltinType( new TStdType<MidPoint> );
     Object::addBuiltinType( new TStdType<IntersectionPoint> );
+    Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
+    Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
+    Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
     Object::addBuiltinType( new TStdType<TranslatedPoint> );
     Object::addBuiltinType( new TStdType<MirrorPoint> );
     Object::addBuiltinType( new TStdType<Locus> );
     Object::addBuiltinType( new TStdType<Vector> );
-    Object::addBuiltinType( new TStdType<Ray> );
+    Object::addBuiltinType( new TStdType<RayAB> );
+    Object::addBuiltinType( new TStdType<Angle> );
+    Object::addBuiltinType( new TStdType<LineDirectrix> );
+    Object::addBuiltinType( new TStdType<LinePolar> );
+    Object::addBuiltinType( new TStdType<PointPolar> );
     Object::addBuiltinType( new TType<TextLabel> );
     Object::addBuiltinType( new TType<NormalPoint> );
+    Object::addBuiltinType( new TUnconstructibleType<CoordinatePropertyPoint> );
 
     // our saved macro types:
     QStringList relFiles;
@@ -260,10 +309,10 @@ bool KigDocument::openFile()
         i18n( "You tried to open a document of type \"%1\".  Unfortunately, "
               "Kig doesn't support this format.  If you think the format in "
               "question would be worth implementing support for, you can "
-              "always ask me nicely on mailto:dominique.devriese@student.kuleuven.ac.be "
+              "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
-        i18n( "Format not supported" )
+        i18n( "Format not Supported" )
         );
     return false;
   };
@@ -279,7 +328,7 @@ bool KigDocument::openFile()
         "valid, and you think Kig should be able to open it, you can try to "
         "send me a copy of the file and ask me nicely to check it out.  If "
         "you want more certain results, you can always do the work yourself "
-        "( since Kig is Free Software ), and send me a patch..."
+        "( since Kig is Free Software ), and send me a patch."
                             ) );
     return false;
   };
@@ -291,21 +340,20 @@ bool KigDocument::openFile()
   mhistory->clear();
 
   Objects tmp = calcPath( os );
-  // terrible hackery, i know..
-  tmp.calc( ScreenInfo( Rect(), QRect() ) );
+  tmp.calc();
   emit recenterScreen();
-  // we do it again to avoid problems with points on locuses and such...
-  tmp.calc( m_widget->screenInfo() );
+  // we do it again to avoid problems with points on locuses and such,
+  // for which the size of the current screen matters..
+  tmp.calcForWidget( *m_widget->realWidget() );
   emit recenterScreen();
-  // i think ( hope ;) three times should be enough to avoid all
-  // possible problems...
-  tmp.calc( m_widget->screenInfo() );
+  tmp.calcForWidget( *m_widget->realWidget() );
 
   return true;
 }
 
 bool KigDocument::saveFile()
 {
+  if ( m_file.isEmpty() ) return internalSaveAs();
   // mimetype:
   KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
   kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
@@ -320,10 +368,10 @@ bool KigDocument::saveFile()
         i18n( "You tried to save to a file of type \"%1\".  Unfortunately, "
               "Kig doesn't support this format.  If you think the format in "
               "question would be worth implementing support for, you can "
-              "always ask me nicely on mailto:dominique.devriese@student.kuleuven.ac.be "
+              "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
-        i18n( "Format not supported" )
+        i18n( "Format not Supported" )
         );
     return false;
   };
@@ -335,19 +383,29 @@ bool KigDocument::saveFile()
     mhistory->documentSaved();
     return true;
   }
+  else if ( result == KigFilter::FileNotFound )
+  {
+    // i know i need to change the enum value name, but this means
+    // that the file could not be opened...
+    KMessageBox::sorry( m_widget,
+                        i18n( "The file \"%1\" could not be opened.  Please check if the file permissions are set correctly." )
+                        .arg( m_file ) );
+    return false;
+
+  }
   else // if ( result == KigFilter::NotSupported )
   {
     // we don't support this mime type...
     KMessageBox::sorry
       (
         widget(),
-        i18n( "You tried to save to a file of type \"%1\".  Unfortunately, "
+        i18n( "You tried to save to a file of MIME type \"%1\".  Unfortunately, "
               "Kig doesn't support this format.  If you think the format in "
               "question would be worth implementing support for, you can "
-              "always ask me nicely on mailto:dominique.devriese@student.kuleuven.ac.be "
+              "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
-        i18n( "Format not supported" )
+        i18n( "Format not Supported" )
         );
   };
   return false;
@@ -357,6 +415,11 @@ void KigDocument::addObject(Object* o)
 {
   mhistory->addCommand( new AddObjectsCommand(this, o) );
 };
+
+void KigDocument::addObjects( const Objects& os )
+{
+  mhistory->addCommand( new AddObjectsCommand(this, os) );
+}
 
 void KigDocument::_addObject( Object* o )
 {
@@ -380,13 +443,13 @@ void KigDocument::_delObject(Object* o)
   setModified(true);
 };
 
-Objects KigDocument::whatAmIOn(const Coordinate& p, const double miss ) const
+Objects KigDocument::whatAmIOn(const Coordinate& p, const ScreenInfo& si ) const
 {
   Objects tmp;
   Objects nonpoints;
   for ( Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if(!(*i)->contains(p, miss)) continue;
+    if(!(*i)->contains(p, si) || !(*i)->shown() || !(*i)->valid()) continue;
     if ( (*i)->toPoint()) tmp.push_back(*i);
     else nonpoints.push_back( *i );
   };
@@ -400,7 +463,7 @@ Objects KigDocument::whatIsInHere( const Rect& p )
   Objects nonpoints;
   for ( Objects::iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if(! (*i)->inRect( p )) continue;
+    if(! (*i)->inRect( p ) || !(*i)->shown() || ! (*i)->valid() ) continue;
     if ((*i)->toPoint()) tmp.push_back(*i);
     else nonpoints.push_back(*i);
   };
@@ -410,13 +473,13 @@ Objects KigDocument::whatIsInHere( const Rect& p )
 
 Rect KigDocument::suggestedRect()
 {
-  if( mObjs.empty() ) return Rect( -2, -2, 2, 2 );
+  if( mObjs.empty() ) return Rect( -7, -7, 7, 7 );
   bool rectInited = false;
   Rect r(0,0,0,0);
   Point* p;
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if ((p = (*i)->toPoint()))
+    if ((p = (*i)->toPoint()) && p->shown() && p->valid())
     {
       if( !rectInited )
       {
@@ -437,9 +500,10 @@ Rect KigDocument::suggestedRect()
   return r;
 }
 
-const CoordinateSystem* KigDocument::coordinateSystem()
+const CoordinateSystem& KigDocument::coordinateSystem() const
 {
-  return s;
+  assert( s );
+  return *s;
 }
 
 void KigDocument::setMode( KigMode* m )
@@ -516,6 +580,8 @@ void KigDocument::addType( Type* t, bool user )
       aMNewLine.append( a );
     else if (t->baseTypeName() == Circle::sBaseTypeName())
       aMNewCircle.append( a );
+    else if (t->baseTypeName() == Conic::sBaseTypeName())
+      aMNewConic.append( a );
     else if (t->baseTypeName() == Segment::sBaseTypeName())
       aMNewSegment.append( a );
     else
@@ -541,6 +607,7 @@ void KigDocument::enableConstructActions( bool enabled )
                                enabled ) );
   aFixedPoint->setEnabled( enabled );
 
+  setEnabled( aMNewConic, enabled );
   setEnabled( aMNewSegment, enabled );
   setEnabled( aMNewPoint, enabled );
   setEnabled( aMNewCircle, enabled );
@@ -558,6 +625,7 @@ myvector<KigDocument*>& KigDocument::documents()
 void KigDocument::removeAction( KAction* a )
 {
   aMNewSegment.remove( a );
+  aMNewConic.remove( a );
   aMNewPoint.remove( a );
   aMNewCircle.remove( a );
   aMNewLine.remove( a );
@@ -568,6 +636,7 @@ void KigDocument::removeAction( KAction* a )
 
 void KigDocument::unplugActionLists()
 {
+  unplugActionList( "user_conic_types" );
   unplugActionList( "user_segment_types" );
   unplugActionList( "user_point_types" );
   unplugActionList( "user_circle_types" );
@@ -578,6 +647,7 @@ void KigDocument::unplugActionLists()
 
 void KigDocument::plugActionLists()
 {
+  plugActionList( "user_conic_types", aMNewConic );
   plugActionList( "user_segment_types", aMNewSegment );
   plugActionList( "user_point_types", aMNewPoint );
   plugActionList( "user_circle_types", aMNewCircle );
@@ -589,4 +659,69 @@ void KigDocument::plugActionLists()
 void KigDocument::emitStatusBarText( const QString& text )
 {
   emit setStatusBarText( text );
+}
+
+void KigDocument::fileSaveAs()
+{
+  internalSaveAs();
+}
+
+void KigDocument::fileSave()
+{
+  save();
+}
+
+bool KigDocument::internalSaveAs()
+{
+  // this slot is connected to the KStdAction::saveAs action...
+  QString formats;
+  formats = QString::fromUtf8("*.kig|Kig Documents (*.kig)");
+
+  //  formats += "\n";
+  //  formats += KImageIO::pattern( KImageIO::Writing );
+
+  QString file_name = KFileDialog::getSaveFileName(":document", formats );
+  if (file_name.isEmpty()) return false;
+  else if ( QFileInfo( file_name ).exists() )
+  {
+    int ret = KMessageBox::warningYesNo( m_widget,
+                                         i18n( "The file \"%1\" already exists.  Do you wish to overwrite it?" )
+                                         .arg( file_name ) );
+    if ( ret != KMessageBox::Yes )
+    {
+      return false;
+    }
+  }
+  saveAs(file_name);
+  return true;
+}
+
+KigView* KigDocument::mainWidget()
+{
+  return m_widget;
+}
+
+void KigDocument::runMode( KigMode* m )
+{
+  KigMode* prev = mMode;
+
+  setMode( m );
+
+#if QT_VERSION >= 0x030100
+  (void) kapp->eventLoop()->enterLoop();
+#else
+  (void) kapp->enter_loop();
+#endif
+
+  setMode( prev );
+}
+
+void KigDocument::doneMode( KigMode* d )
+{
+  assert( d == mMode );
+#if QT_VERSION >= 0x030100
+  kapp->eventLoop()->exitLoop();
+#else
+  kapp->exit_loop();
+#endif
 }

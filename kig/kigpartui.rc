@@ -1,6 +1,13 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="kig_part" version="1">
 <MenuBar>
+  <Menu name="file"><text>&amp;File</text>
+		<Action name="file_save" />
+		<Action name="file_save_as" />
+		<Separator />
+		<Action name="file_export_to_image" />
+		<Separator />
+  </Menu>
   <Menu name="edit">
     <text>&amp;Edit</text>
     <Action name="edit_unhide_all" />
@@ -21,7 +28,7 @@
 	<Action name="objects_new_linettp" />
 	<Action name="objects_new_lineperpend" />
 	<Action name="objects_new_lineparallel" />
-	<Action name="objects_new_lineradical" />
+	<Action name="objects_new_ray" />
 	<Action name="objects_new_segment" />
 	<ActionList name="user_line_types" />
 	<ActionList name="user_segment_types" />
@@ -33,21 +40,46 @@
 	  <Action name="objects_new_intersectionpoint" />
 	  <Action name="objects_new_point_xy" />
 	  <Action name="objects_new_translatedpoint" />
+	  <Action name="objects_new_rotatedpoint" />
 	  <Action name="objects_new_mirrorpoint" />
 	  <ActionList name="user_point_types" />
     </Menu>
     <Menu name="new_circle">
-	<text>Circle</text>
-	  <Action name="objects_new_circlebcp" />
-	  <Action name="objects_new_circlebtp" />
-	  <ActionList name="user_circle_types" />
+	<text>Circles</text>
+	<Action name="objects_new_circlebcp" />
+	<Action name="objects_new_circlebtp" />
+	<ActionList name="user_circle_types" />
+	<Action name="objects_new_lineradical" />
+	<Action name="objects_new_circlelineintersect" />
+    </Menu>	
+    <Menu name="new_conic">
+	<text>Conics</text>
+	<Action name="objects_new_ellipsebffp" />
+	<Action name="objects_new_hyperbolabffp" />
+	<Action name="objects_new_conicb5p" />
+	<Action name="objects_new_parabolabtp" />
+	<Action name="objects_new_equilateralhyperbolab4p" />
+	<Action name="objects_new_conicbdfp" />
+	<Action name="objects_new_conicbaap" />
+	<Action name="objects_new_linepolar" />
+	<Action name="objects_new_lineconicasymptotes" />
+	<Action name="objects_new_pointpolar" />
+	<ActionList name="user_conic_types" />
+	<Action name="objects_new_linedirectrix" />
+	<Action name="objects_new_lineconicradical" />
+	<Action name="objects_new_coniclineintersect" />
     </Menu>
     <Menu name="new_other">
 	<text>Other</text>
-	  <Action name="objects_new_locus" />
-	  <Action name="objects_new_vector" />
-	  <Action name="objects_new_textlabel" />
-	  <ActionList name="user_other_types" />
+	<Action name="objects_new_locus" />
+	<Action name="objects_new_vector" />
+	<Action name="objects_new_textlabel" />
+	<Action name="objects_new_angle" />
+	<Action name="objects_new_cubicb9p" />
+	<Action name="objects_new_cubicnodeb6p" />
+	<Action name="objects_new_cubiccuspb4p" />
+	<Action name="objects_new_cubiclineintersect" />
+	<ActionList name="user_other_types" />
     </Menu>
     <Separator />
     <Action name="delete_objects" />
@@ -59,7 +91,10 @@
     <Action name="types_edit" />
   </Menu>
 </MenuBar>
-<ToolBar name="mainToolBar"><text>Main</text>
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
+	<Action name="file_save" />
+	<Action name="file_save_as" />
+	<Separator />
   <Action name="edit_undo"/>
   <Action name="edit_redo"/>
   <Separator />
@@ -69,27 +104,45 @@
 </ToolBar>
 <ToolBar name="points_toolbar"><text>Points</text>
   <Action name="objects_new_normalpoint" />
-  <Action name="objects_new_midpoint" />
-  <Action name="objects_new_intersectionpoint" />
   <Action name="objects_new_point_xy" />
-  <Action name="objects_new_translatedpoint" />
+  <Action name="objects_new_intersectionpoint" />
+  <Action name="objects_new_midpoint" />
   <Action name="objects_new_mirrorpoint" />
+  <Action name="objects_new_rotatedpoint" />
+  <Action name="objects_new_translatedpoint" />
+  <ActionList name="user_point_types" />
 </ToolBar>
 <ToolBar name="line_toolbar"><text>Lines</text>
+  <Action name="objects_new_segment" />
   <Action name="objects_new_linettp" />
+  <Action name="objects_new_vector" />
+  <Action name="objects_new_ray" />
   <Action name="objects_new_lineperpend" />
   <Action name="objects_new_lineparallel" />
-  <Action name="objects_new_lineradical" />
-  <Action name="objects_new_segment" />
+  <ActionList name="user_line_types" />
+  <ActionList name="user_segment_types" />
 </ToolBar>
-<ToolBar name="rest_toolbar"><text>Rest</text>
+<ToolBar name="circle_toolbar"><text>Circles</text>
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
-  <ActionList name="user_circle_types" />
+  <Action name="objects_new_circlelineintersect" />
+  <Action name="objects_new_lineradical" />
+</ToolBar>  
+<Toolbar name="conic_toolbar"><text>Conics</text>
+  <Action name="objects_new_ellipsebffp" />
+  <Action name="objects_new_hyperbolabffp" />
+  <Action name="objects_new_parabolabtp" />
+  <Action name="objects_new_conicb5p" />
+  <Action name="user_conic_types" />
+  <Action name="objects_new_lineconicradical" />
+  <Action name="objects_new_coniclineintersect" />
+</Toolbar>    
+<ToolBar name="rest_toolbar"><text>Rest</text>
+  <Action name="objects_new_angle" />
   <Action name="objects_new_locus" />
-  <Action name="objects_new_vector" />
   <Action name="objects_new_textlabel" />
   <ActionList name="user_other_types" />
+  <ActionList name="user_circle_types" />
 </ToolBar>
 <ToolBar name="view_toolbar"><text>View</text>
   <Action name="view_zoom_in" />
@@ -97,3 +150,6 @@
   <Action name="view_fullscreen" />
   <Action name="view_fit_to_page"/>
 </ToolBar>
+<!--<ToolBar name="test"><text>Test</text>
+  <Action name="test_stuff" />
+</ToolBar>-->
