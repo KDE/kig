@@ -1,0 +1,32 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.9.0" >
+ <Macro>
+  <Name>Equilateral Triangle</Name>
+  <Description>Equilateral triangle with given two vertices</Description>
+  <ActionName>objects_new_equitriangle</ActionName>
+  <IconFileName>equitriangle.png</IconFileName>
+  <Construction>
+   <input requirement="point" id="1" />
+   <input requirement="point" id="2" />
+   <intermediate action="calc" type="CircleBCP" id="3" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="calc" type="CircleBCP" id="4" >
+    <arg>2</arg>
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="push" type="int" id="5" >-1</intermediate>
+   <intermediate action="calc" type="CircleCircleIntersection" id="6" >
+    <arg>3</arg>
+    <arg>4</arg>
+    <arg>5</arg>
+   </intermediate>
+   <result action="calc" type="TriangleB3P" id="7" >
+    <arg>1</arg>
+    <arg>2</arg>
+    <arg>6</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

@@ -70,6 +70,8 @@
 	<Action name="objects_new_trianglebtp" />
 	<Action name="objects_new_polygonbnp" />
 	<Action name="objects_new_polygonbcv" />
+	<Action name="objects_new_equitriangle" />
+	<Action name="objects_new_square" />
 	<Action name="objects_new_polygonvertices" />
 	<Action name="objects_new_polygonsides" />
 	<Action name="objects_new_convexhull" />

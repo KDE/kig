@@ -27,6 +27,7 @@ kigicondata_DATA = \
 	distance.png \
 	ellipsebffp.png \
 	en.png \
+	equitriangle.png \
 	genericaffinity.png \
 	genericprojectivity.png \
 	halflinebyvector.png \
@@ -60,6 +61,7 @@ kigicondata_DATA = \
 	segment-midpoint.png \
 	sizer.png \
 	slope.png \
+	square.png \
 	stretch.png \
 	tangent.png \
 	test.png \

@@ -1,0 +1,44 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.9.0" >
+ <Macro>
+  <Name>Square</Name>
+  <Description>Square with two given adjacent vertices</Description>
+  <ActionName>objects_new_square</ActionName>
+  <IconFileName>square.png</IconFileName>
+  <Construction>
+   <input requirement="point" id="1" />
+   <input requirement="point" id="2" />
+   <intermediate action="calc" type="SegmentAB" id="3" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="fetch-property" property="mid-point" id="4" >
+    <arg>3</arg>
+   </intermediate>
+   <intermediate action="calc" type="CircleBCP" id="5" >
+    <arg>4</arg>
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="calc" type="SegmentAB" id="6" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="calc" type="LinePerpend" id="7" >
+    <arg>6</arg>
+    <arg>4</arg>
+   </intermediate>
+   <intermediate action="push" type="int" id="8" >-1</intermediate>
+   <intermediate action="calc" type="ConicLineIntersection" id="9" >
+    <arg>5</arg>
+    <arg>7</arg>
+    <arg>8</arg>
+   </intermediate>
+   <intermediate action="push" type="int" id="10" >4</intermediate>
+   <result action="calc" type="PoligonBCV" id="11" >
+    <arg>9</arg>
+    <arg>1</arg>
+    <arg>10</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>
