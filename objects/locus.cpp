@@ -96,9 +96,8 @@ void Locus::getOverlay(QPtrList<QRect>& list, const QRect& border) const
 {
   for (PointList::const_iterator i = points.begin(); i != points.end(); ++i)
     {
-      QRect* r = new QRect (0, 0,overlayRectSize(), overlayRectSize());
-      r->moveTopLeft(i->toQPoint() - QPoint(2,2));
-      while (r->contains(i->toQPoint())) ++i;
+      QRect* r = new QRect (0, 0, overlayRectSize(), overlayRectSize());
+      r->moveTopLeft(i->toQPoint());
       if (border.intersects(*r)) list.append(r);
     };
 }
