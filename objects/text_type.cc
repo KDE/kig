@@ -145,7 +145,6 @@ static uint percentCount( const QString& s )
 QValidator::State PercentStringValidator::validate( QString& input, int& ) const
 {
   int npcts = percentCount( input );
-  if ( npcts > mnumpcts ) return Invalid;
   if ( npcts == mnumpcts ) return Acceptable;
   return Intermediate;
 };
