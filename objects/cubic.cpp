@@ -710,7 +710,7 @@ void CubicLineIntersectionPoint::setParams( const prop_map& map )
   Point::setParams( map );
   prop_map::const_iterator p = map.find("cubiclineintersect-root");
   if( p == map.end() ) mroot = 1;  // this is an error in the kig
-  // file, but we ignore it..
+                                   // file, but we ignore it..
   else
   {
     bool ok = true;
