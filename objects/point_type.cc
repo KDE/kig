@@ -205,7 +205,7 @@ int MidPointType::resultId() const
 QStringList FixedPointType::specialActions() const
 {
   QStringList ret;
-  ret << i18n( "Set &Coordinate" );
+  ret << i18n( "Set &Coordinate..." );
   ret << i18n( "Redefine" );
   return ret;
 }
@@ -213,7 +213,7 @@ QStringList FixedPointType::specialActions() const
 QStringList ConstrainedPointType::specialActions() const
 {
   QStringList ret;
-  ret << i18n( "Set &Parameter" );
+  ret << i18n( "Set &Parameter..." );
   ret << i18n( "Redefine" );
   return ret;
 }

@@ -46,7 +46,7 @@
 
 ConicRadicalConstructor::ConicRadicalConstructor()
   : StandardConstructorBase(
-    I18N_NOOP( "Radical line for conics" ),
+    I18N_NOOP( "Radical Line for Conics" ),
     I18N_NOOP( "The lines constructed through the intersections "
                "of two conics.  This is also defined for "
                "non-intersecting conics." ),
@@ -105,7 +105,7 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
 
 static const struct ArgParser::spec argsspecpp[] =
 {
-  { ObjectImp::ID_PointImp, I18N_NOOP( "Moving point" ) },
+  { ObjectImp::ID_PointImp, I18N_NOOP( "Moving Point" ) },
   { ObjectImp::ID_PointImp, I18N_NOOP( "following" ) }
 };
 
@@ -207,7 +207,7 @@ bool LocusConstructor::isTransform() const
 }
 
 static const ArgParser::spec argsspectc[] = {
-  { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with this circle" ) },
+  { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with This Circle" ) },
   { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with this circle" ) }
 };
 

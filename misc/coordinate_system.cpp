@@ -521,7 +521,7 @@ const Coordinate CoordinateSystem::getCoordFromUser( const QString& caption,
     ret = toScreen( value, *ok );
     if ( *ok ) done = true;
     else
-      KMessageBox::sorry( parent, i18n( "The coordinate you entered was not valid.  Please try again.") );
+      KMessageBox::sorry( parent, i18n( "The coordinate you entered was not valid. Please try again.") );
   };
   return ret;
 }

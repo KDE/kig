@@ -196,7 +196,7 @@ int LineParallelLPType::resultId() const
 QStringList SegmentABType::specialActions() const
 {
   QStringList ret;
-  ret << i18n( "Set &Length" );
+  ret << i18n( "Set &Length..." );
   return ret;
 }
 

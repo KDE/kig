@@ -112,7 +112,7 @@ KigExportManager::~KigExportManager()
 void KigExportManager::addMenuAction( const KigDocument* doc, KigWidget* w,
                                       KActionCollection* coll )
 {
-  KActionMenu* m = new KActionMenu( i18n( "&Export to" ), coll, "file_export" );
+  KActionMenu* m = new KActionMenu( i18n( "&Export To" ), coll, "file_export" );
   for ( uint i = 0; i < mexporters.size(); ++i )
     m->insert( new ExporterAction( doc, w, coll, mexporters[i] ) );
 }
@@ -135,7 +135,7 @@ QString XFigExporter::exportToStatement() const
 
 QString XFigExporter::menuEntryName() const
 {
-  return i18n( "&XFig file" );
+  return i18n( "&XFig File..." );
 }
 
 class XFigExportImpVisitor
@@ -499,13 +499,13 @@ void XFigExporter::run( const KigDocument& doc, KigWidget& w )
   {
     int ret = KMessageBox::warningYesNo(
       &w,
-      i18n( "The file \"%1\" already exists.  Do you wish to overwrite it?" ).arg( file_name ) );
+      i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ).arg( file_name ) );
     if ( ret != KMessageBox::Yes ) return;
   };
   QFile file( file_name );
   if ( ! file.open( IO_WriteOnly ) )
   {
-    KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened.  Please "
+    KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
                                   "check if the file permissions are set correctly." )
                         .arg( file_name ) );
     return;

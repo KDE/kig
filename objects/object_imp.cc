@@ -151,25 +151,25 @@ QString ObjectImp::removeAStatement( int id )
 {
   switch( id )
   {
-  case ID_DoubleImp: return i18n( "Remove a number" );
-  case ID_IntImp: return i18n( "Remove a number" );
-  case ID_StringImp: return i18n( "Remove a string" );
-  case ID_HierarchyImp: return i18n( "Remove a hierarchy" );
-  case ID_TransformationImp: return i18n( "Remove a transformation" );
-  case ID_PointImp: return i18n( "Remove a point" );
-  case ID_CurveImp: return i18n( "Remove a curve" );
-  case ID_LineImp: return i18n( "Remove a line" );
-  case ID_TextImp: return i18n( "Remove a label" );
-  case ID_AngleImp: return i18n( "Remove an angle" );
-  case ID_VectorImp: return i18n( "Remove a vector" );
-  case ID_LocusImp: return i18n( "Remove a locus" );
-  case ID_CircleImp: return i18n( "Remove a circle" );
-  case ID_ConicImp: return i18n( "Remove a conic" );
-  case ID_CubicImp: return i18n( "Remove a cubic" );
-  case ID_SegmentImp: return i18n( "Remove a segment" );
-  case ID_RayImp: return i18n( "Remove a ray" );
-  case ID_ArcImp: return i18n( "Remove an arc" );
-  case ID_AnyImp: return i18n( "Remove an object" );
+  case ID_DoubleImp: return i18n( "Remove a Number" );
+  case ID_IntImp: return i18n( "Remove a Number" );
+  case ID_StringImp: return i18n( "Remove a String" );
+  case ID_HierarchyImp: return i18n( "Remove a Hierarchy" );
+  case ID_TransformationImp: return i18n( "Remove a Transformation" );
+  case ID_PointImp: return i18n( "Remove a Point" );
+  case ID_CurveImp: return i18n( "Remove a Curve" );
+  case ID_LineImp: return i18n( "Remove a Line" );
+  case ID_TextImp: return i18n( "Remove a Label" );
+  case ID_AngleImp: return i18n( "Remove an Angle" );
+  case ID_VectorImp: return i18n( "Remove a Vector" );
+  case ID_LocusImp: return i18n( "Remove a Locus" );
+  case ID_CircleImp: return i18n( "Remove a Circle" );
+  case ID_ConicImp: return i18n( "Remove a Conic" );
+  case ID_CubicImp: return i18n( "Remove a Cubic" );
+  case ID_SegmentImp: return i18n( "Remove a Segment" );
+  case ID_RayImp: return i18n( "Remove a Ray" );
+  case ID_ArcImp: return i18n( "Remove an Arc" );
+  case ID_AnyImp: return i18n( "Remove an Object" );
   default: return 0;
   };
 }
@@ -178,25 +178,25 @@ QString ObjectImp::addAStatement( int id )
 {
   switch( id )
   {
-  case ID_DoubleImp: return i18n( "Add a number" );
-  case ID_IntImp: return i18n( "Add a number" );
-  case ID_StringImp: return i18n( "Add a string" );
-  case ID_HierarchyImp: return i18n( "Add a hierarchy" );
-  case ID_TransformationImp: return i18n( "Add a transformation" );
-  case ID_PointImp: return i18n( "Add a point" );
-  case ID_CurveImp: return i18n( "Add a curve" );
-  case ID_LineImp: return i18n( "Add a line" );
-  case ID_TextImp: return i18n( "Add a label" );
-  case ID_AngleImp: return i18n( "Add an angle" );
-  case ID_VectorImp: return i18n( "Add a vector" );
-  case ID_LocusImp: return i18n( "Add a locus" );
-  case ID_CircleImp: return i18n( "Add a circle" );
-  case ID_ConicImp: return i18n( "Add a conic" );
-  case ID_CubicImp: return i18n( "Add a cubic" );
-  case ID_SegmentImp: return i18n( "Add a segment" );
-  case ID_RayImp: return i18n( "Add a ray" );
-  case ID_ArcImp: return i18n( "Add an arc" );
-  case ID_AnyImp: return i18n( "Add an object" );
+  case ID_DoubleImp: return i18n( "Add a Number" );
+  case ID_IntImp: return i18n( "Add a Number" );
+  case ID_StringImp: return i18n( "Add a String" );
+  case ID_HierarchyImp: return i18n( "Add a Hierarchy" );
+  case ID_TransformationImp: return i18n( "Add a Transformation" );
+  case ID_PointImp: return i18n( "Add a Point" );
+  case ID_CurveImp: return i18n( "Add a Curve" );
+  case ID_LineImp: return i18n( "Add a Line" );
+  case ID_TextImp: return i18n( "Add a Label" );
+  case ID_AngleImp: return i18n( "Add an Angle" );
+  case ID_VectorImp: return i18n( "Add a Vector" );
+  case ID_LocusImp: return i18n( "Add a Locus" );
+  case ID_CircleImp: return i18n( "Add a Circle" );
+  case ID_ConicImp: return i18n( "Add a Conic" );
+  case ID_CubicImp: return i18n( "Add a Cubic" );
+  case ID_SegmentImp: return i18n( "Add a Segment" );
+  case ID_RayImp: return i18n( "Add a Ray" );
+  case ID_ArcImp: return i18n( "Add an Arc" );
+  case ID_AnyImp: return i18n( "Add an Object" );
   default: return 0;
   };
 }

@@ -38,7 +38,7 @@ AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand( inDoc,
 		countRealObjects( inOs ) == 1 ?
                 ObjectImp::addAStatement( inOs.back()->imp()->id() ) :
-                i18n( "Add %1 objects" ).arg( countRealObjects( inOs ) ) ),
+                i18n( "Add %1 Objects" ).arg( countRealObjects( inOs ) ) ),
     undone(true),
     os (inOs)
 {
@@ -109,7 +109,7 @@ RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& in
   : KigCommand(inDoc,
 	       countRealObjects( inOs ) == 1 ?
                ObjectImp::removeAStatement( inOs.back()->imp()->id() ) :
-               i18n( "Remove %1 objects" ).arg( countRealObjects( inOs ) ) ),
+               i18n( "Remove %1 Objects" ).arg( countRealObjects( inOs ) ) ),
     undone( false ),
     os( inOs )
 {

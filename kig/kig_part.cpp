@@ -255,8 +255,8 @@ bool KigDocument::openFile()
     KMessageBox::sorry
       (
         widget(),
-        i18n( "You tried to open a document of type \"%1\".  Unfortunately, "
-              "Kig doesn't support this format.  If you think the format in "
+        i18n( "You tried to open a document of type \"%1\". Unfortunately, "
+              "Kig doesn't support this format. If you think the format in "
               "question would be worth implementing support for, you can "
               "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
@@ -269,10 +269,10 @@ bool KigDocument::openFile()
   {
     KMessageBox::sorry( widget(), i18n(
         "The file you tried to open contains some elements that Kig currently "
-        "doesn't understand.  It is possible that the file somehow got "
-        "corrupted and is no longer usable.  If you know that the file is "
+        "doesn't understand. It is possible that the file somehow got "
+        "corrupted and is no longer usable. If you know that the file is "
         "valid, and you think Kig should be able to open it, you can try to "
-        "send me a copy of the file and ask me to check it out.  If you want "
+        "send me a copy of the file and ask me to check it out. If you want "
         "more certain results, you can always do the work yourself ( since Kig "
         "is Free Software ), and send me a patch."
                             ) );
@@ -305,8 +305,8 @@ bool KigDocument::saveFile()
     KMessageBox::sorry
       (
         widget(),
-        i18n( "You tried to save to a file of type \"%1\".  Unfortunately, "
-              "Kig doesn't support this format.  If you think the format in "
+        i18n( "You tried to save to a file of type \"%1\". Unfortunately, "
+              "Kig doesn't support this format. If you think the format in "
               "question would be worth implementing support for, you can "
               "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
@@ -328,7 +328,7 @@ bool KigDocument::saveFile()
     // i know i need to change the enum value name, but this means
     // that the file could not be opened...
     KMessageBox::sorry( m_widget,
-                        i18n( "The file \"%1\" could not be opened.  Please "
+                        i18n( "The file \"%1\" could not be opened. Please "
                               "check if the file permissions are set correctly." )
                         .arg( m_file ) );
     return false;
@@ -340,8 +340,8 @@ bool KigDocument::saveFile()
     KMessageBox::sorry
       (
         widget(),
-        i18n( "You tried to save to a file of MIME type \"%1\".  Unfortunately, "
-              "Kig doesn't support this format.  If you think the format in "
+        i18n( "You tried to save to a file of MIME type \"%1\". Unfortunately, "
+              "Kig doesn't support this format. If you think the format in "
               "question would be worth implementing support for, you can "
               "always ask me nicely on mailto:devriese@kde.org "
               "or do the work yourself and send me a patch."
@@ -569,7 +569,7 @@ bool KigDocument::internalSaveAs()
   else if ( QFileInfo( file_name ).exists() )
   {
     int ret = KMessageBox::warningYesNo( m_widget,
-                                         i18n( "The file \"%1\" already exists.  Do you wish to overwrite it?" )
+                                         i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
                                          .arg( file_name ) );
     if ( ret != KMessageBox::Yes )
     {

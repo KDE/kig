@@ -109,7 +109,7 @@ void TextType::move( RealObject* ourobj, const Coordinate&,
 QStringList TextType::specialActions() const
 {
   QStringList ret;
-  ret << i18n( "&Toggle frame" );
+  ret << i18n( "&Toggle Frame" );
   return ret;
 }
 

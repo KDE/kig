@@ -83,7 +83,7 @@ public:
   // sbm: sos before moving: contains copies of the sos from before the move
   // sos: contains pointers to the objects as they are currently being used
   MoveCommand(KigDocument* inDoc, const Objects& inSbm, const Objects& inSos)
-    : KigCommand (inDoc, i18n("Move %1 objects").arg(sbm.size())),
+    : KigCommand (inDoc, i18n("Move %1 Objects").arg(sbm.size())),
       sbm (inSbm), sos(inSos) {};
   ~MoveCommand();
   void execute();
