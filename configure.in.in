@@ -19,6 +19,10 @@ kig_warn_about_disabling_python="no"
 # no otherwise
 kig_enable_python_scripting="yes"
 
+# this var is set to no if we want to disable support for compressed files
+# (for compatibility reasons with kde 3.1)
+kig_enable_compressed_files="yes"
+
 AC_DEFUN([KIG_PYTHON_NOT_FOUND], [
   AC_MSG_WARN( 
     [[Kig needs the Python and Boost.Python libraries and their headers \
@@ -31,6 +35,11 @@ AC_ARG_ENABLE( kig-python-scripting,
   [  --disable-kig-python-scripting	Disable Kig Python Scripting support],
   [  kig_enable_python_scripting=$enableval ],
   [  kig_enable_python_scripting=yes] )
+
+AC_ARG_ENABLE( kig-compressed-files, 
+  [  --disable-kig-compressed-files	Disable Kig Compressed Files support],
+  [  kig_enable_compressed_files=$enableval ],
+  [  kig_enable_compressed_files=yes] )
 
 dnl domi: we use some macro's by Ben Burton from the Regina program,
 dnl to check for the availability of a good python+boost.python
@@ -208,6 +217,10 @@ if test "x$kig_enable_python_scripting" != xno; then
 fi
 
 AM_CONDITIONAL(KIG_COMPILE_PYTHON_SCRIPTING, test x$kig_enable_python_scripting != xno)
+
+if test "x$kig_enable_compressed_files" = xno; then
+  CXXFLAGS="$CXXFLAGS -DKIG_NO_COMPRESSED_FILES"
+fi
 
 AC_SUBST( KIGVERSION, $kig_version )
 AC_DEFINE_UNQUOTED( KIGVERSION, "$kig_version", [The current Kig version as a string] )
