@@ -23,8 +23,12 @@
 #include "line_imp.h"
 #include "object.h"
 
+#include "../kig/kig_view.h"
 #include "../misc/common.h"
 #include "../misc/i18n.h"
+
+#include <qstringlist.h>
+#include <qinputdialog.h>
 
 static const ArgParser::spec argsspecSegmentAB[] =
 {
@@ -187,4 +191,43 @@ int LinePerpendLPType::resultId() const
 int LineParallelLPType::resultId() const
 {
   return ObjectImp::ID_LineImp;
+}
+
+QStringList SegmentABType::specialActions() const
+{
+  QStringList ret;
+  ret << i18n( "Set &Length" );
+  return ret;
+}
+
+void SegmentABType::executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
+                                   NormalMode& ) const
+{
+  assert( i == 0 );
+
+  Objects parents = o->parents();
+  assert( parents.size() == 2 );
+
+  if ( ! parents[0]->hasimp( ObjectImp::ID_PointImp ) ||
+       ! parents[1]->hasimp( ObjectImp::ID_PointImp ) )
+    return;
+
+  Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
+
+  bool ok = true;
+  // using QInputDialog, cause KDE doesn't have an equivalent..
+  double length = QInputDialog::getDouble( i18n( "Set Segment Length" ),
+                                           i18n( "Choose the new length: " ),
+                                           (b-a).length(), -2147483647, 2147483647,
+                                           3, &ok );
+  if ( ! ok ) return;
+
+  Coordinate nb = a + ( b - a ).normalize( length );
+
+  parents[1]->move( b, nb - b, d );
+  parents[1]->calc( d );
+  o->calc( d );
+
+  w.redrawScreen();
 }

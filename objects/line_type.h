@@ -33,6 +33,11 @@ public:
 
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
   int resultId() const;
+
+  QStringList specialActions() const;
+  // execute the i'th action from the specialActions above..
+  void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
+                      NormalMode& m ) const;
 };
 
 class LineABType
