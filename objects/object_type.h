@@ -22,6 +22,12 @@
 #include "common.h"
 #include "../misc/argsparser.h"
 
+/**
+ * The ObjectType class is a thing that represents the "behaviour" for
+ * a certain type..  This basically means that it decides what
+ * @ref ObjectImp the object gets in the calc() function, how the
+ * object move()'s etc.
+ */
 class ObjectType
 {
   const char* mbasetypename;

@@ -23,6 +23,12 @@
 
 typedef unsigned int uint;
 
+/**
+ * The ObjectImp class represents the behaviour of an object after it
+ * is calculated.   This means how to draw() it, whether it claims to
+ * contain a certain point etc.  It is also the class where the
+ * ObjectType's get their information from..
+ */
 class ObjectImp
 {
 public:
