@@ -127,19 +127,28 @@ bool PolygonImp::isInPolygon( const Coordinate& p ) const
     {
       // possibility of intersection: points on different side from
       // the X axis
-      bool rightofpt = point.x >= cx;
-      if ( rightofpt == ( prevpoint.x >= cx ) )
+      //bool rightofpt = point.x >= cx;
+      // mp: we need to be a little bit more conservative here, in
+      // order to treat properly the case when the point is on the
+      // boundary
+      //if ( rightofpt == ( prevpoint.x >= cx ) )
+      if ( ( point.x - cx )*(prevpoint.x - cx ) > 0 )
       {
         // points on same side of Y axis -> easy to test intersection
         // intersection iff one point to the right of c
-        if ( rightofpt )
+        if ( point.x >= cx )
           inside_flag = !inside_flag;
       }
       else
       {
         // points on different sides of Y axis -> we need to calculate
         // the intersection.
-        if ( ( point.x - ( point.y - cy )*( prevpoint.x-point.x )/( prevpoint.y - point.y ) ) >= cx )
+        // mp: we want to check if the point is on the boundary, and
+        // return false in such case
+        double num = ( point.y - cy )*( prevpoint.x - point.x );
+        double den = prevpoint.y - point.y;
+	if ( num == den*( point.x - cx ) ) return false;
+        if ( num/den <= point.x - cx )
           inside_flag = !inside_flag;
       }
     }

@@ -436,7 +436,7 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
        *
        * there is still a problem with this approach when
        * the segment/ray has an end-point coinciding with a
-       * vertex of the polygon
+       * concave vertex of the polygon
        */
       LineData side = LineData( prevpoint + a, point + a );
       double dcx = point.x - prevpoint.x;
