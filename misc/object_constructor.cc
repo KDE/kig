@@ -363,6 +363,7 @@ void MacroConstructor::handlePrelim( KigPainter& p, const Objects& sel,
   Args args;
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &Object::imp ) );
+  args = mparser.parse( args );
   std::vector<ObjectImp*> ret = mhier.calc( args, doc );
   for ( uint i = 0; i < ret.size(); ++i )
   {
