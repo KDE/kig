@@ -45,8 +45,9 @@ ConstructibleAction::~ConstructibleAction()
 
 ConstructibleAction::ConstructibleAction(
   ObjectConstructor* ctor,
-  const QCString& actionname )
-  : GUIAction(), mctor( ctor ), mactionname( actionname )
+  const QCString& actionname,
+  int shortcut )
+  : GUIAction(), mctor( ctor ), mactionname( actionname ), mshortcut( shortcut )
 {
 }
 
@@ -126,7 +127,7 @@ const char* ConstructPointAction::actionName() const
 
 int ConstructPointAction::shortcut() const
 {
-  return 0;
+  return Qt::Key_P;
 }
 
 void ConstructPointAction::act( KigDocument& d )
@@ -265,5 +266,20 @@ void TestAction::act( KigDocument& )
 
 void GUIAction::plug( KigDocument*, KigGUIAction* )
 {
+}
+
+int ConstructibleAction::shortcut() const
+{
+  return mshortcut;
+}
+
+int ConstructTextLabelAction::shortcut() const
+{
+  return Qt::Key_B;
+}
+
+int AddFixedPointAction::shortcut() const
+{
+  return Qt::Key_F;
 }
 

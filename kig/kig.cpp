@@ -162,7 +162,10 @@ void Kig::openURL(const KURL& url)
 
 void Kig::optionsConfigureKeys()
 {
-  KKeyDialog::configureKeys(actionCollection(), "kigui.rc");
+  KKeyDialog dlg( true, this );
+  dlg.insert( actionCollection() );
+  dlg.insert( m_part->actionCollection() );
+  (void) dlg.configure( true );
 }
 
 void Kig::optionsConfigureToolbars()

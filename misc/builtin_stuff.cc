@@ -49,14 +49,14 @@ void setupBuiltinStuff()
       I18N_NOOP( "A segment constructed from its start and end point" ),
       "segment" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_segment" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_segment", Qt::Key_S ) );
 
     // line by two points..
     c = new SimpleObjectTypeConstructor(
       LineABType::instance(), I18N_NOOP( "Line by Two Points" ),
       I18N_NOOP( "A line constructed through two points"), "line" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_linettp" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_linettp", Qt::Key_L ) );
 
     // ray by two points..
     c = new SimpleObjectTypeConstructor(
@@ -64,7 +64,7 @@ void setupBuiltinStuff()
       I18N_NOOP( "A ray by its start point, and another point somewhere on it." ),
       "ray" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_ray" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_ray", Qt::Key_R ) );
 
     // perpendicular line
     c = new SimpleObjectTypeConstructor(
@@ -88,7 +88,7 @@ void setupBuiltinStuff()
       I18N_NOOP( "A circle constructed by its center and a point on its border" ),
       "circlebcp" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_circlebcp" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_circlebcp", Qt::Key_C ) );
 
     c = new SimpleObjectTypeConstructor(
       CircleBTPType::instance(), I18N_NOOP( "Circle by Three Points" ),
@@ -213,7 +213,7 @@ void setupBuiltinStuff()
       I18N_NOOP( "An angle defined by three points" ),
       "angle" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_angle" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_angle", Qt::Key_A ) );
 
     c = new SimpleObjectTypeConstructor(
       EquilateralHyperbolaB4PType::instance(),
@@ -246,7 +246,7 @@ void setupBuiltinStuff()
         "bisection" );
       m.merge( mpotp );
       m.merge( mpos );
-      actions->add( new ConstructibleAction( &m, "objects_new_midpoint" ) );
+      actions->add( new ConstructibleAction( &m, "objects_new_midpoint", Qt::Key_M ) );
     };
 
     c = new SimpleObjectTypeConstructor(
@@ -255,7 +255,7 @@ void setupBuiltinStuff()
       I18N_NOOP( "Construct a vector from two given points." ),
       "vector" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_vector" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_vector", Qt::Key_V ) );
 
     c = new SimpleObjectTypeConstructor(
       ArcBTPType::instance(),
@@ -357,7 +357,7 @@ void setupBuiltinStuff()
     // the generic intersection constructor..
     c = new GenericIntersectionConstructor();
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_intersection" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_intersection", Qt::Key_I ) );
 
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );

@@ -1,5 +1,11 @@
 2003-06-20  Dominique Devriese  <devriese@kde.org>
 
+	* fix this bug: "2) Add the possibility to set shortcut for all
+	the actions & objects (For examples: Ctrl+P to construct a point,
+	Ctrl+R to start a reflection, and so on...).", and add some
+	default accels too ( "p" for point, "s" for segment etc. ( note :
+	no control key ).
+
 	* fix this bug: "3) When I select a segment, in his popup there are
 	two same entry in Construct submenu, called Mid point an
 	Midpoint. Why?" as reported by Pino Toscano

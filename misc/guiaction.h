@@ -52,7 +52,7 @@ public:
   virtual QCString iconFileName() const = 0;
   virtual QString descriptiveName() const = 0;
   virtual const char* actionName() const = 0;
-  virtual int shortcut() const;
+  virtual int shortcut() const = 0;
   virtual void act( KigDocument& ) = 0;
 
   virtual void plug( KigDocument* doc, KigGUIAction* kact );
@@ -65,13 +65,16 @@ class ConstructibleAction
 {
   ObjectConstructor* mctor;
   QCString mactionname;
+  int mshortcut;
 public:
-  ConstructibleAction( ObjectConstructor* ctor, const QCString& actionname );
+  ConstructibleAction( ObjectConstructor* ctor, const QCString& actionname,
+                       int shortcut = 0 );
   ~ConstructibleAction();
   QString description() const;
   QCString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
+  int shortcut() const;
   void act( KigDocument& );
   void plug( KigDocument* doc, KigGUIAction* kact );
 };
@@ -103,6 +106,7 @@ public:
   QCString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
+  int shortcut() const;
   void act( KigDocument& );
 };
 
@@ -117,6 +121,7 @@ public:
   QCString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
+  int shortcut() const;
   void act( KigDocument& );
 };
 
