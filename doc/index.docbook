@@ -34,8 +34,8 @@
 
     <legalnotice>&FDLNotice;</legalnotice>
 
-    <date>2003-05-22</date> <releaseinfo>0.5.1</releaseinfo>
-
+    <date>2003-07-27</date> <releaseinfo>0.6.0</releaseinfo>
+    
     <abstract>
       <para>
 	&kig; is a &kde; application for Interactive Geometry.  It is
@@ -635,7 +635,7 @@
     </section>
   </chapter>
 
-<!--  <chapter id="scripting">
+  <chapter id="scripting">
     <title>Scripting</title>
     <para>
       &kig; allows the user to create custom types in the Python
@@ -654,7 +654,72 @@
       write down in Python code how the point is to be calculated and
       &kig; will show it for you.
     </para>
-  </chapter> -->
+    <para>
+      Again, I will try to explain this by example.  Suppose you were
+      not aware of the Kig builtin MidPoint type, and you wanted to
+      show the midpoint of two given points.  You would then click on
+      the <guibutton>Python Script</guibutton> button in the toolbar,
+      or select <menuchoice> <guimenu>Objects</guimenu>
+      <guisubmenu>Other</guisubmenu> <guimenuitem>Script
+      Object</guimenuitem> </menuchoice> from the menu bar.  You are
+      then presented with a wizard that allows you to proceed.
+    </para>
+    <para>
+      The first thing you have to do is select the arguments for the
+      script object.  In our example, this means the two points of
+      which we want to show the midpoint.  Select them in the Kig main
+      window, and click <guibutton>Next</guibutton> to proceed.
+    </para>
+    <para>
+      Now you are presented with a text edit box where you can enter
+      the code for you script object.  Template code and some comments
+      are already in place.  It is important to make sure that you're
+      code is valid Python code.  People familiar with Python will
+      note that we are actually defining a Python function called
+      calc.  It is therefore necessary to adhere to the Python rules
+      for defining functions.  For example, every line of the function
+      should start with a tab.  The first line not starting with a tab
+      ends the definition of the function.  
+    </para>
+    <para>
+      The python function that should be defined is called "calc", and
+      in our case accepts two arguments.  These are the objects you
+      have selected as arguments in the previous screen.  There will
+      be as much arguments as you have selected there.  They are
+      called arg1 and arg2, but you can change their names to
+      something more meaningful if you want.
+    </para>
+    <para>
+      In the function, you can do all sorts of calculations that you
+      deem necessary, using the two arguments if needed.  You should
+      return the object you want to appear.  In our case, this is a
+      Point object.  The two arguments are also Point objects, and we
+      can use the Point.coordinate() function to get hold of the
+      coordinates of the two given points.  
+    </para>
+    <para>
+      The calculation necessary in our example is very simple, we
+      simply add the two coordinates together, and divide the result
+      by two.  We then construct a new point using that coordinate.
+      The python code needed is:
+      <programlisting>
+	def calc( a, b ):
+		m = ( a.coordinate() + b.coordinate() ) / 2;
+		return Point( m )
+
+      </programlisting>
+    </para>
+    <para>
+      All objects in Kig can be used in the Python code.  As we have
+      seen above, points are of the Point class, and you can use
+      e.g. the Point.coordinate() method.  You can also return all
+      kinds of objects, not just Points.  Many more classes and
+      methods are available from the Kig Python code, and a more
+      complete reference on them is provided
+      TODO !!!
+      here.
+    </para>
+  </chapter>
 
   <chapter id="kig-features">
     <title>&kig; Features</title>
