@@ -36,9 +36,12 @@ public:
   void setSystem( Goniometry::System system );
   void convertTo( Goniometry::System system );
   const Goniometry::System system() const;
+  double getValue( Goniometry::System system );
   static double convert( const double angle, const Goniometry::System from, const Goniometry::System to );
   static QStringList systemList();
   static Goniometry::System intToSystem( const int index );
+
+  Goniometry& operator= ( const Goniometry& g );
 
 private:
   double mvalue;

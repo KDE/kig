@@ -31,7 +31,10 @@
 
 #include <algorithm>
 
+#include <qclipboard.h>
 #include <qstringlist.h>
+
+#include <kapplication.h>
 
 #include <cmath>
 
@@ -116,6 +119,7 @@ void TextType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
 QStringList TextType::specialActions() const
 {
   QStringList ret;
+  ret << i18n( "&Copy Text" );
   ret << i18n( "&Toggle Frame" );
   ret << i18n( "&Redefine..." );
   return ret;
@@ -136,6 +140,14 @@ void TextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
 
   if ( i == 0 )
   {
+    QClipboard* cb = kapp->clipboard();
+
+    // copy the text into the clipboard
+    const TextImp* ti = static_cast<const TextImp*>( c.imp() );
+    cb->setText( ti->text(), QClipboard::Clipboard );
+  }
+  else if ( i == 1 )
+  {
     // toggle label frame
     int n = (static_cast<const IntImp*>( firstthree[0]->imp() )->data() + 1) % 2;
     KigCommand* kc = new KigCommand( doc, i18n( "Toggle Label Frame" ) );
@@ -144,7 +156,7 @@ void TextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
                    new IntImp( n ) ) );
     doc.history()->addCommand( kc );
   }
-  else if ( i == 1 )
+  else if ( i == 2 )
   {
     assert( dynamic_cast<ObjectTypeCalcer*>( o.calcer() ) );
     // redefine..

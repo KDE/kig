@@ -116,7 +116,7 @@ bool CircleImp::valid() const
 const uint CircleImp::numberOfProperties() const
 {
   // We _intentionally_ do not use the Conic properties..
-  return CurveImp::numberOfProperties() + 6;
+  return CurveImp::numberOfProperties() + 7;
 }
 
 const QCStringList CircleImp::propertiesInternalNames() const
@@ -127,6 +127,7 @@ const QCStringList CircleImp::propertiesInternalNames() const
   l << "radius";
   l << "center";
   l << "cartesian-equation";
+  l << "simply-cartesian-equation";
   l << "polar-equation";
   assert( l.size() == CircleImp::numberOfProperties() );
   return l;
@@ -140,6 +141,7 @@ const QCStringList CircleImp::properties() const
   l << I18N_NOOP( "Radius" );
   l << I18N_NOOP( "Center" );
   l << I18N_NOOP( "Cartesian Equation" );
+  l << I18N_NOOP( "Simply Cartesian Equation" );
   l << I18N_NOOP( "Polar Equation" );
   assert( l.size() == CircleImp::numberOfProperties() );
   return l;
@@ -168,6 +170,8 @@ const char* CircleImp::iconForProperty( uint which ) const
   else if ( which == CurveImp::numberOfProperties() + 4 )
     return "text"; // cartesian equation
   else if ( which == CurveImp::numberOfProperties() + 5 )
+    return "text"; // simply cartesian equation
+  else if ( which == CurveImp::numberOfProperties() + 6 )
     return "text"; // polar equation
   else assert( false );
   return "";
@@ -189,6 +193,8 @@ ObjectImp* CircleImp::property( uint which, const KigDocument& w ) const
   else if ( which == CurveImp::numberOfProperties() + 4 )
     return new StringImp( cartesianEquationString( w ) );
   else if ( which == CurveImp::numberOfProperties() + 5 )
+    return new StringImp( simplyCartesianEquationString( w ) );
+  else if ( which == CurveImp::numberOfProperties() + 6 )
     return new StringImp( polarEquationString( w ) );
   else assert( false );
   return new InvalidImp;
@@ -230,11 +236,20 @@ QString CircleImp::polarEquationString( const KigDocument& w ) const
 
 QString CircleImp::cartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "x^2 + y^2 + %1 x + %2 y + %3 = 0" );
+  QString ret = i18n( "x² + y² + %1 x + %2 y + %3 = 0" );
   ConicCartesianData data = cartesianData();
   ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
   ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
   ret = ret.arg( data.coeffs[5], 0, 'g', 3 );
+  return ret;
+}
+
+QString CircleImp::simplyCartesianEquationString( const KigDocument& ) const
+{
+  QString ret = i18n( "( x - %1 )² + ( y - %2 )² = %3" );
+  ret = ret.arg( mcenter.x, 0, 'g', 3 );
+  ret = ret.arg( mcenter.y, 0, 'g', 3 );
+  ret = ret.arg( mradius * mradius, 0, 'g', 3 );
   return ret;
 }
 

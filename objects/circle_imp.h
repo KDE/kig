@@ -110,6 +110,11 @@ public:
    */
   QString cartesianEquationString( const KigDocument& w ) const;
   /**
+   * Return a string containing the cartesian equation of this circle.
+   * This will be of the form "( x - x0 )^2 + ( y - y0 )^2 = r^2"
+   */
+  QString simplyCartesianEquationString( const KigDocument& w ) const;
+  /**
    * Return a string containing the polar equation of this circle.
    * This will be of the form "rho = r  [centered at p]"
    */

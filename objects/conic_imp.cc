@@ -203,7 +203,7 @@ QString ConicImp::conicTypeString() const
 
 QString ConicImp::cartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "%1 x^2 + %2 y^2 + %3 xy + %4 x + %5 y + %6 = 0" );
+  QString ret = i18n( "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0" );
   ConicCartesianData data = cartesianData();
   ret = ret.arg( data.coeffs[0], 0, 'g', 3 );
   ret = ret.arg( data.coeffs[1], 0, 'g', 3 );

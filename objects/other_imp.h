@@ -22,6 +22,9 @@
 #include "curve_imp.h"
 #include "../misc/coordinate.h"
 
+/**
+ * An ObjectImp representing an angle.
+ */
 class AngleImp
   : public ObjectImp
 {
@@ -30,8 +33,15 @@ class AngleImp
   const double mangle;
 public:
   typedef ObjectImp Parent;
+  /**
+   * Returns the ObjectImpType representing the AngleImp type..
+   */
   static const ObjectImpType* stype();
 
+  /**
+   * Construct an Angle with a given center, start angle and
+   * dimension (both in radians).
+   */
   AngleImp( const Coordinate& pt, double start_angle_in_radials,
             double angle_in_radials );
   ~AngleImp();
@@ -53,17 +63,32 @@ public:
 
   ObjectImp* copy() const;
 
+  /**
+   * Return the size in radians of this angle.
+   */
   const double size() const;
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
+  /**
+   * Return the center of this angle.
+   */
   const Coordinate point() const { return mpoint; };
+  /**
+   * Return the start angle in radians of this angle.
+   */
   const double startAngle() const { return mstartangle; };
+  /**
+   * Return the dimension in radians of this angle.
+   */
   const double angle() const { return mangle; };
 
   bool equals( const ObjectImp& rhs ) const;
 };
 
+/**
+ * An ObjectImp representing a vector.
+ */
 class VectorImp
   : public ObjectImp
 {
@@ -71,8 +96,14 @@ class VectorImp
   const Coordinate mb;
 public:
   typedef ObjectImp Parent;
+  /**
+   * Returns the ObjectImpType representing the VectorImp type..
+   */
   static const ObjectImpType* stype();
 
+  /**
+   * Construct a Vector with a given start point and end point.
+   */
   VectorImp( const Coordinate& a, const Coordinate& b );
   ~VectorImp();
 
@@ -93,9 +124,21 @@ public:
 
   ObjectImp* copy() const;
 
+  /**
+   * Return the direction of this vector.
+   */
   const Coordinate dir() const;
+  /**
+   * Return the start point of this vector.
+   */
   const Coordinate a() const;
+  /**
+   * Return the end point of this vector.
+   */
   const Coordinate b() const;
+  /**
+   * Return the length of this vector.
+   */
   const double length() const;
 
   const ObjectImpType* type() const;
@@ -104,6 +147,9 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+/**
+ * An ObjectImp representing an arc.
+ */
 class ArcImp
   : public CurveImp
 {
@@ -113,8 +159,15 @@ class ArcImp
   double ma;
 public:
   typedef CurveImp Parent;
+  /**
+   * Returns the ObjectImpType representing the ArcImp type..
+   */
   static const ObjectImpType* stype();
 
+  /**
+   * Construct an Arc with a given center, radius, start angle and
+   * dimension (both in radians).
+   */
   ArcImp( const Coordinate& center, const double radius,
           const double startangle, const double angle );
   ~ArcImp();
@@ -142,10 +195,25 @@ public:
   double getParam( const Coordinate& c, const KigDocument& d ) const;
   const Coordinate getPoint( double p, const KigDocument& d ) const;
 
+  /**
+   * Return the center of this arc.
+   */
   const Coordinate center() const;
+  /**
+   * Return the radius of this arc.
+   */
   double radius() const;
+  /**
+   * Return the start angle in radians of this arc.
+   */
   double startAngle() const;
+  /**
+   * Return the dimension in radians of this arc.
+   */
   double angle() const;
+  /**
+   * Return the size of the sector surface of this arc.
+   */
   const double sectorSurface() const;
 
   bool equals( const ObjectImp& rhs ) const;

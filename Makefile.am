@@ -6,7 +6,7 @@ scriptingdir =
 scriptinglib =
 endif
 
-SUBDIRS = objects misc modes icons filters examples kig mimetypes macros $(scriptingdir)
+SUBDIRS = objects misc modes icons filters examples kig mimetypes macros kfile $(scriptingdir)
 
 kde_module_LTLIBRARIES = libkigpart.la
 libkigpart_la_SOURCES = dummy.cpp

@@ -21,7 +21,7 @@
    step of the construction and a KToggleAction like "Settings->Show Side
    List" to show/hide it ).
 
-- Add the possibility to attach text label also to angles.
+- Add the possibility to attach text label also to angles and vectors.
 
 - Add the possibility to select, via new dialog, one or more types of
   object.

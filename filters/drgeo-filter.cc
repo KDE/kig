@@ -84,18 +84,23 @@ bool KigFilterDrgeo::load( const QString& file, KigDocument& to )
   if ( !doc.setContent( &f ) )
     KIG_FILTER_PARSE_ERROR;
   QDomElement main = doc.documentElement();
+  int nmacros = 0;
   // reading figures...
   for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
     QDomElement e = n.toElement();
     if ( e.isNull() ) continue;
     else if ( e.tagName() == "drgeo" )
-    {
       figures.append( e.attribute( "name" ) );
-    }
+    else if ( e.tagName() == "macro" )
+      nmacros++;
   }
   if ( figures.isEmpty() ) {
-    warning( i18n( "There are no figures in Dr. Geo file \"%1\"." ).arg( file ) );
+    if( nmacros > 0 )
+      warning( i18n( "The Dr. Geo file \"%1\" is a macro file so it contains no "
+                     "figures." ).arg( file ) );
+    else
+      warning( i18n( "There are no figures in Dr. Geo file \"%1\"." ).arg( file ) );
     return false;
   }
 
@@ -196,7 +201,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
   int curid = 0;
   const ObjectFactory* fact = ObjectFactory::instance();
   std::vector<ObjectHolder*> holders;
-  ObjectCalcer* oc = 0;
+  ObjectTypeCalcer* oc = 0;
   int nignored = 0;
 
   // there's no need to sort the objects because it seems that DrGeo objects
@@ -214,7 +219,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       parents.push_back( holders[parentid-nignored]->calcer() );
     };
     if ( parents.size() > 0 )
-      kdDebug() << "+++++++++ parents: " << parents[0] << " " << parents[1] << " " << parents[2] << endl;
+      kdDebug() << "+++++++++ parents: " << parents[0] << " " << parents[1] << endl;
     else
       kdDebug() << "+++++++++ parents: NO" << endl;
 
@@ -257,9 +262,18 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         if ( !parents[0]->imp()->inherits( SegmentImp::stype() ) )
           KIG_FILTER_PARSE_ERROR;
-        int index = parents[0]->imp()->propertiesInternalNames().findIndex( "mid-point" );
-        assert( index != -1 );
-        oc = new ObjectPropertyCalcer( parents[0], index );
+        int index1 = parents[0]->imp()->propertiesInternalNames().findIndex( "end-point-A" );
+        assert( index1 != -1 );
+        ObjectPropertyCalcer* o1 = new ObjectPropertyCalcer( parents[0], index1 );
+        o1->calc( doc );
+        int index2 = parents[0]->imp()->propertiesInternalNames().findIndex( "end-point-B" );
+        assert( index2 != -1 );
+        ObjectPropertyCalcer* o2 = new ObjectPropertyCalcer( parents[0], index2 );
+        o2->calc( doc );
+        std::vector<ObjectCalcer*> args;
+        args.push_back( o1 );
+        args.push_back( o2 );
+        oc = new ObjectTypeCalcer( MidPointType::instance(), args );
       }
       else if ( domelem.attribute( "type" ) == "On_curve" )
       {
@@ -438,7 +452,13 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       // types of 'numeric'
       // ugly hack to show value numerics...
       if ( domelem.attribute( "type" ) == "value" )
+      {
+        bool ok3;
+        double dvalue = value.toDouble( &ok3 );
+        if ( ok3 )
+          value = QString( "%1" ).arg( dvalue, 0, 'g', 3 );
         oc = fact->labelCalcer( value, m, false, std::vector<ObjectCalcer*>(), doc );
+      }
       else if ( domelem.attribute( "type" ) == "pt_abscissa" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
@@ -527,7 +547,7 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       else if ( domelem.attribute( "type" ) == "circle" )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-        oc = constructTextObject( m, parents[0], "cartesian-equation", doc );
+        oc = constructTextObject( m, parents[0], "simply-cartesian-equation", doc );
       }
       else
       {
@@ -648,7 +668,6 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       return false;
     }
     curid++;
-//    kdDebug() << "+++++++++ holders.size(): " << holders.size() << endl;
     if ( oc == 0 )
       continue;
 

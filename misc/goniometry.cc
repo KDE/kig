@@ -24,10 +24,10 @@
 
 #include <qstringlist.h>
 
+#include <kdebug.h>
 #include <klocale.h>
 
 #include <cmath>
-#include <cassert>
 
 Goniometry::Goniometry()
 {
@@ -69,6 +69,18 @@ void Goniometry::convertTo( Goniometry::System system )
 const Goniometry::System Goniometry::system() const
 {
   return msys;
+}
+
+double Goniometry::getValue( Goniometry::System system )
+{
+  return convert( mvalue, msys, system );
+}
+
+Goniometry& Goniometry::operator=( const Goniometry& g )
+{
+  mvalue = g.value();
+  msys = g.system();
+  return *this;
 }
 
 double Goniometry::convert( const double angle, const Goniometry::System from, const Goniometry::System to )
@@ -120,6 +132,6 @@ Goniometry::System Goniometry::intToSystem( const int index )
     return Rad;
   else if( index == 2 )
     return Grad;
-  assert( false );
+  kdDebug() << "No goniometric system with index " << index << endl;
   return Rad;
 }

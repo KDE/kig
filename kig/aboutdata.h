@@ -28,7 +28,8 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 
   KAboutData* tmp = new KAboutData( name, iname, version,
 				   description, KAboutData::License_GPL,
-				   I18N_NOOP( "(C) 2002-2004, The Kig developers" ) );
+				   I18N_NOOP( "(C) 2002-2004, The Kig developers" ),
+				   0, "http://edu.kde.org/kig" );
   tmp->addAuthor("Dominique Devriese",
                  I18N_NOOP("Original author, maintenance, design and lots of code."),
 		  "devriese@kde.org" );

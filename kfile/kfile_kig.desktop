@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Service
+Name=Kig Info
+ServiceTypes=KFilePlugin
+X-KDE-Library=kfile_kig
+MimeType=application/x-kig
+PreferredGroups=KigInfo
+PreferredItems=Version;CoordSytem

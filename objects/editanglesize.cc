@@ -49,8 +49,8 @@ EditAngleSize::~EditAngleSize()
 
 void EditAngleSize::okSlot()
 {
-  double dang = Goniometry::convert( mang.value(), mang.system(), Goniometry::Rad );
-  double dang_orig = Goniometry::convert( mang_orig.value(), mang_orig.system(), Goniometry::Rad );
+  double dang = mang.getValue( Goniometry::Rad );
+  double dang_orig = mang_orig.getValue( Goniometry::Rad );
   done( dang != dang_orig );
 }
 
@@ -63,7 +63,11 @@ void EditAngleSize::activatedSlot( int index )
 {
   if ( isnum )
   {
-    mang.convertTo( Goniometry::intToSystem( index ) );
+    Goniometry::System newsys = Goniometry::intToSystem( index );
+    if ( newsys == mang_orig.system() )
+      mang = mang_orig;
+    else
+      mang.convertTo( newsys );
     editAngle->setText( QString::number( mang.value() ) );
   }
 }

@@ -1,3 +1,18 @@
+2004-05-12  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Now circles can display their equation in the form
+	"( x - x0 )^2 + ( y - y0 )^2 = r^2".
+
+	* Add Doxygen comments for AngleImp, VectorImp and ArcImp
+	classes, to make them documented in scripting-api documentation.
+
+	* Add a Copy action to text labels to copy their text ( with
+	substitutions already made ) into the clipboard.
+
+	* Add two little kfile plugins: kfile_kig and kfile_drgeo.
+
+	* Various little improvements
+
 2004-05-11  Dominique Devriese  <devriese@kde.org>
 
 	* Rename the two Transformation::scaling functions to
