@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
 <class>TypesDialogBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -8,7 +8,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>401</width>
+            <width>456</width>
             <height>232</height>
         </rect>
     </property>
@@ -66,7 +66,7 @@
                     </property>
                 </widget>
                 <spacer>
-                    <property name="name" stdset="0">
+                    <property name="name">
                         <cstring>Spacer3</cstring>
                     </property>
                     <property name="orientation">
@@ -87,7 +87,7 @@
                         <cstring>buttonExport</cstring>
                     </property>
                     <property name="text">
-                        <string>Export Type To File</string>
+                        <string>Export Type to File...</string>
                     </property>
                 </widget>
                 <widget class="QPushButton">
@@ -95,7 +95,7 @@
                         <cstring>buttonImport</cstring>
                     </property>
                     <property name="text">
-                        <string>Import Types</string>
+                        <string>Import Types...</string>
                     </property>
                 </widget>
             </hbox>
@@ -104,7 +104,7 @@
             <property name="name">
                 <cstring>Line1</cstring>
             </property>
-            <property name="frameShape" stdset="0">
+            <property name="frameShape">
                 <enum>HLine</enum>
             </property>
             <property name="frameShadow">
@@ -140,7 +140,7 @@
                     </property>
                 </widget>
                 <spacer>
-                    <property name="name" stdset="0">
+                    <property name="name">
                         <cstring>Horizontal Spacing2</cstring>
                     </property>
                     <property name="orientation">
@@ -215,4 +215,7 @@
     <slot>typeList_doubleClicked( QListBoxItem *, const QPoint &amp; )</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>klistbox.h</includehint>
+</includehints>
 </UI>

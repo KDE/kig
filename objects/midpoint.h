@@ -1,5 +1,5 @@
 // midpoint.h
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -21,7 +21,7 @@
 
 #include "point.h"
 
-/** 
+/**
  * midpoint of two other points
  */
 class MidPoint
@@ -31,7 +31,6 @@ public:
   MidPoint( const Objects& os );
   MidPoint( const MidPoint& m );
   ~MidPoint();
-  MidPoint* copy() { return new MidPoint(*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "MidPoint"; };
@@ -51,12 +50,11 @@ public:
   static void sDrawPrelim( KigPainter& p, const Objects& args );
   Objects getParents() const;
 
-  void startMove(const Coordinate&);
+  void startMove(const Coordinate&, const ScreenInfo&);
   void moveTo(const Coordinate&);
   void stopMove();
-  void cancelMove();
-  void calc( const ScreenInfo& r );
-  void drawPrelim( KigPainter&, const Object* ) const {};
+
+  void calc();
 protected:
   enum { howmMoving, howmFollowing } howm; // how are we moving
   Point* p1;

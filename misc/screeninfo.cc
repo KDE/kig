@@ -1,5 +1,5 @@
 // screeninfo.cc
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -28,8 +28,8 @@ ScreenInfo::ScreenInfo( const Rect& docRect, const QRect& viewRect )
 Rect ScreenInfo::fromScreen( const QRect& r ) const
 {
   return Rect(
-    fromScreen(r.topLeft()),
-    fromScreen(r.bottomRight() )
+    fromScreen( r.topLeft() ),
+    fromScreen( r.bottomRight() )
     ).normalized();
 };
 
@@ -51,10 +51,10 @@ QPoint ScreenInfo::toScreen( const Coordinate& p ) const
   return QPoint( t.x, mqrect.height() - t.y );
 }
 
-QRect ScreenInfo::toScreen( const Rect r ) const
+QRect ScreenInfo::toScreen( const Rect& r ) const
 {
   return QRect(
-    toScreen( r.bottomLeft()),
+    toScreen( r.bottomLeft() ),
     toScreen( r.topRight() )
     ).normalize();
 }
@@ -76,7 +76,7 @@ void ScreenInfo::setShownRect( const Rect& r )
   mkrect = r;
 }
 
-const QRect& ScreenInfo::viewRect() const
+const QRect ScreenInfo::viewRect() const
 {
   return mqrect;
 }
@@ -84,4 +84,9 @@ const QRect& ScreenInfo::viewRect() const
 void ScreenInfo::setViewRect( const QRect& r )
 {
   mqrect = r;
+}
+
+double ScreenInfo::normalMiss() const
+{
+  return 3*pixelWidth();
 }

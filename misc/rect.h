@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -80,6 +80,15 @@ public:
   Rect& operator*=( const double r ) { scale(r); return *this; };
   Rect& operator/=( const double r ) { scale(1/r); return *this; };
 
+  /**
+   * This expands the rect so that it contains r.  It has synonyms
+   * '|=' and '|' below...
+   */
+  void eat( const Rect& r );
+
+  // synonym for eat..
+  Rect& operator|=( const Rect& rhs ) { eat( rhs ); return *this; };
+
   QRect toQRect() const;
   Coordinate bottomLeft() const;
   Coordinate bottomRight() const;
@@ -100,12 +109,15 @@ public:
   static Rect fromQRect( const QRect& );
 protected:
   Coordinate mBottomLeft;
-  double mWidth;
-  double mHeight;
+  double mwidth;
+  double mheight;
 };
 
 bool operator==( const Rect& r, const Rect& s );
-inline kdbgstream& operator<<( kdbgstream& s, const Rect& t );
+kdbgstream& operator<<( kdbgstream& s, const Rect& t );
+// this operator returns a rect that contains both the given
+// rects..
+Rect operator|( const Rect& lhs, const Rect& rhs );
 
 #endif
 

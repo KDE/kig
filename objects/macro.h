@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -21,13 +21,14 @@
 #ifndef MACRO_H
 #define MACRO_H
 
-#include "object.h"
+#include "curve.h"
 
 class ObjectHierarchy;
 class ScreenInfo;
+class MType;
 
 class MacroObject
-  : public Object
+  : public Curve
 {
 public:
   MacroObject( ObjectHierarchy* inHier, const Objects& args );
@@ -44,39 +45,39 @@ class MacroObjectOne
   // the objects we contain, these are not shown...
   Objects cos;
   Object* final;
+  const MType* mtype;
 public:
-  const Object* getFinal() const { return final; };
-  Object* getFinal() { return final; };
-  MacroObjectOne( ObjectHierarchy* inHier, const Objects& args );
+  MacroObjectOne( const MType* type, ObjectHierarchy* inHier, const Objects& args );
   MacroObjectOne(const MacroObjectOne& m);
-  MacroObjectOne* copy() { return new MacroObjectOne(*this); };
   ~MacroObjectOne();
+
+  const Curve* toCurve() const;
+  Curve* toCurve();
+
   void draw (KigPainter& p, bool ss) const;
-  bool contains (const Coordinate& p, const double fault ) const;
+  bool contains (const Coordinate& p, const ScreenInfo& si ) const;
   bool inRect(const Rect& r) const;
   Rect getSpan() const;
 
-  void startMove(const Coordinate& p);
+  void startMove(const Coordinate& p, const ScreenInfo&);
   void moveTo (const Coordinate& p);
   void stopMove();
-  void calc( const ScreenInfo& );
+  void calcForWidget( const KigWidget& w );
+  void calc();
+
   const QCString vBaseTypeName() const;
   const QCString vFullTypeName() const;
   const QString vDescriptiveName() const { return 0; };
   const QString vDescription() const { return 0; };
   const QCString vIconFileName() const { return 0; };
   Objects getParents() const { return arguments; };
-protected:
-  // have we constructed stuff yet?
-  bool constructed;
-};
 
-// class MacroObjectMulti
-//   : public MacroObject, public CollectionObject
-// {
-// public:
-//   MacroObjectMulti(ObjectHierarchy* inHier) : MacroObject (inHier) {};
-//   virtual void handleNewObjects (const Objects& o);
-// };
+  double getParam( const Coordinate& c ) const;
+  Coordinate getPoint( double param ) const;
+
+private:
+  void setValidFromParents();
+  void construct();
+};
 
 #endif

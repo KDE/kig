@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 
 #include "type.h"
 #include "objects.h"
+#include "../objects/object.h"
 #include "../kig/kig_part.h"
 
 #include <kdebug.h>
@@ -66,7 +67,7 @@ void Types::saveToDir(const QString dir_name) const
     {
       KMessageBox::sorry
         (0,
-         i18n("Unable to open file %1 for writing...").arg(filename),
+         i18n("Unable to open file %1 for writing.").arg(filename),
          i18n("Unable to Open File"));
       return;
     }
@@ -91,7 +92,7 @@ Types::Types( const QString& file_name)
   if (!file.open(IO_ReadOnly)) {
     KMessageBox::sorry
       (0,
-       i18n("Unable to open file %1 for reading...").arg(file_name),
+       i18n("Unable to open file %1 for reading.").arg(file_name),
        i18n("Unable to Open File"));
     return;
   };
@@ -104,7 +105,7 @@ Types::Types( const QString& file_name)
     if (e.isNull()) continue;
     if (e.tagName() != "MType")
     {
-      kdWarning() << "weird tag in file: " << e.tagName() << "skipping..." << endl;
+      kdWarning() << "weird tag in file: " << e.tagName() << "skipping." << endl;
       continue;
     };
     addType( new MType ( e ) );
@@ -119,7 +120,7 @@ void Types::saveToFile( const QString filename ) const
   {
     KMessageBox::sorry
       (0,
-       i18n("Unable to open file %1 for writing...").arg(filename),
+       i18n("Unable to open file %1 for writing.").arg(filename),
        i18n("Unable to Open File"));
     return;
   }
@@ -163,4 +164,28 @@ void Types::removeType( Type* t )
       erase( i );
       break;
     };
+}
+
+std::vector<Type*> Types::whoWantsArgs( const Objects& args, bool completeOnly ) const
+{
+  std::vector<Type*> ret;
+  for ( const_iterator i = begin(); i != end(); ++i )
+  {
+    StdConstructibleType* t = i->second->toStdConstructible();
+    if ( t )
+    {
+      switch ( t->wantArgs( args ) )
+      {
+      case Object::Complete:
+        ret.push_back( t );
+        break;
+      case Object::NotComplete:
+        if ( ! completeOnly ) ret.push_back( t );
+        break;
+      default:
+        break;
+      };
+    };
+  };
+  return ret;
 }

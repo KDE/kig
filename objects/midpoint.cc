@@ -1,5 +1,5 @@
 // midpoint.cc
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -20,8 +20,6 @@
 
 #include "segment.h"
 
-#include "../misc/kigpainter.h"
-
 #include <klocale.h>
 
 MidPoint::MidPoint(const MidPoint& m)
@@ -36,13 +34,13 @@ MidPoint::~MidPoint()
 {
 }
 
-void MidPoint::startMove(const Coordinate& p)
+void MidPoint::startMove(const Coordinate& p, const ScreenInfo& si)
 {
-  if (contains(p,false) && p1 )
+  if (contains(p, si) && p1 )
   {
     assert( p1 && p2 );
     howm = howmMoving;
-    p2->startMove(p2->getCoord());
+    p2->startMove(p2->getCoord(), si);
   }
   else howm = howmFollowing;
 }
@@ -59,17 +57,21 @@ void MidPoint::stopMove()
 {
 };
 
-void MidPoint::calc( const ScreenInfo& )
+void MidPoint::calc()
 {
   if ( p1 || p2 )
   {
     assert( p1 && p2 );
-    mC = ( p1->getCoord() + p2->getCoord() ) / 2;
+    assert( ! s );
+    mvalid = p1->valid() && p2->valid();
+    if ( mvalid ) mC = ( p1->getCoord() + p2->getCoord() ) / 2;
   }
   else
   {
     assert( s );
-    mC = ( s->getP1() + s->getP2() ) / 2;
+    assert( !p1 && ! p2 );
+    mvalid = s->valid();
+    if ( mvalid ) mC = ( s->p1() + s->p2() ) / 2;
   };
 }
 
@@ -151,7 +153,7 @@ void MidPoint::sDrawPrelim( KigPainter& p, const Objects& args )
     if ( args[0]->toPoint() ) return;
     else if ( ( s = args[0]->toSegment() ) )
     {
-      Coordinate a = s->getP1(), b = s->getP2();
+      Coordinate a = s->p1(), b = s->p2();
       m = (a+b)/2;
     }
     else assert( false );
@@ -165,5 +167,5 @@ void MidPoint::sDrawPrelim( KigPainter& p, const Objects& args )
     Coordinate a = p->getCoord(), b = q->getCoord();
     m = ( a + b ) / 2;
   };
-  p.drawPoint( m, false );
+  sDrawPrelimPoint( p, m );
 }

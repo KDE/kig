@@ -1,5 +1,5 @@
 // rect.cc
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -17,6 +17,7 @@
 // 02111-1307, USA.
 
 #include "rect.h"
+#include "common.h"
 
 bool operator==( const Rect& r, const Rect& s )
 {
@@ -25,7 +26,7 @@ bool operator==( const Rect& r, const Rect& s )
            && r.height() == s.height() );
 };
 
-inline kdbgstream& operator<<( kdbgstream& s, const Rect& t )
+kdbgstream& operator<<( kdbgstream& s, const Rect& t )
 {
   s << "left: " << t.left()
     << "bottom: " << t.bottom()
@@ -38,38 +39,38 @@ inline kdbgstream& operator<<( kdbgstream& s, const Rect& t )
 Rect::Rect( const Coordinate bottomLeft, const Coordinate topRight )
   : mBottomLeft(bottomLeft)
 {
-  mWidth = topRight.x - bottomLeft.x;
-  mHeight = topRight.y - bottomLeft.y;
+  mwidth = topRight.x - bottomLeft.x;
+  mheight = topRight.y - bottomLeft.y;
   normalize();
 }
 
 Rect::Rect( const Coordinate p, const double width, const double height )
   : mBottomLeft(p),
-    mWidth(width),
-    mHeight(height)
+    mwidth(width),
+    mheight(height)
 {
   normalize();
 }
 
 Rect::Rect( int xa, int ya, int xb, int yb )
   : mBottomLeft( xa, ya ),
-    mWidth( xb - xa ),
-    mHeight( yb - ya )
+    mwidth( xb - xa ),
+    mheight( yb - ya )
 {
   normalize();
 };
 
 Rect::Rect( const Rect& r )
   : mBottomLeft (r.mBottomLeft),
-    mWidth(r.mWidth),
-    mHeight(r.mHeight)
+    mwidth(r.mwidth),
+    mheight(r.mheight)
 {
   normalize();
 }
 
 Rect::Rect()
-  : mWidth(0),
-    mHeight(0)
+  : mwidth(0),
+    mheight(0)
 {
 };
 
@@ -80,17 +81,17 @@ void Rect::setBottomLeft( const Coordinate p )
 
 void Rect::setBottomRight( const Coordinate p )
 {
-  mBottomLeft = p - Coordinate(mWidth,0);
+  mBottomLeft = p - Coordinate(mwidth,0);
 }
 
 void Rect::setTopRight( const Coordinate p )
 {
-  mBottomLeft = p - Coordinate(mWidth, mHeight);
+  mBottomLeft = p - Coordinate(mwidth, mheight);
 }
 
 void Rect::setCenter( const Coordinate p )
 {
-  mBottomLeft = p - Coordinate(mWidth, mHeight)/2;
+  mBottomLeft = p - Coordinate(mwidth, mheight)/2;
 }
 
 void Rect::setLeft( const double p )
@@ -102,7 +103,7 @@ void Rect::setLeft( const double p )
 
 void Rect::setRight( const double p )
 {
-  mWidth = p - left();
+  mwidth = p - left();
 };
 
 void Rect::setBottom( const double p )
@@ -114,30 +115,30 @@ void Rect::setBottom( const double p )
 
 void Rect::setTop( const double p )
 {
-  mHeight = p - bottom();
+  mheight = p - bottom();
 };
 
 void Rect::setWidth( const double w )
 {
-  mWidth = w;
+  mwidth = w;
 }
 
 void Rect::setHeight( const double h )
 {
-  mHeight = h;
+  mheight = h;
 }
 
 void Rect::normalize()
 {
-  if ( mWidth < 0 )
+  if ( mwidth < 0 )
     {
-      mBottomLeft.x += mWidth;
-      mWidth = -mWidth;
+      mBottomLeft.x += mwidth;
+      mwidth = -mwidth;
     };
-  if ( mHeight < 0 )
+  if ( mheight < 0 )
     {
-      mBottomLeft.y += mHeight;
-      mHeight = -mHeight;
+      mBottomLeft.y += mheight;
+      mheight = -mheight;
     };
 }
 
@@ -148,8 +149,8 @@ void Rect::moveBy( const Coordinate p )
 
 void Rect::scale( const double r )
 {
-  mWidth *= r;
-  mHeight *= r;
+  mwidth *= r;
+  mheight *= r;
 };
 
 
@@ -165,22 +166,22 @@ Coordinate Rect::bottomLeft() const
 
 Coordinate Rect::bottomRight() const
 {
-  return mBottomLeft + Coordinate(mWidth, 0);
+  return mBottomLeft + Coordinate(mwidth, 0);
 }
 
 Coordinate Rect::topLeft() const
 {
-  return mBottomLeft + Coordinate(0, mHeight);
+  return mBottomLeft + Coordinate(0, mheight);
 }
 
 Coordinate Rect::topRight() const
 {
-  return mBottomLeft + Coordinate(mWidth, mHeight);
+  return mBottomLeft + Coordinate(mwidth, mheight);
 }
 
 Coordinate Rect::center() const
 {
-  return mBottomLeft + Coordinate(mWidth, mHeight)/2;
+  return mBottomLeft + Coordinate(mwidth, mheight)/2;
 }
 
 double Rect::left() const
@@ -189,7 +190,7 @@ double Rect::left() const
 };
 double Rect::right() const
 {
-  return left() + mWidth;
+  return left() + mwidth;
 }
 double Rect::bottom() const
 {
@@ -198,17 +199,17 @@ double Rect::bottom() const
 
 double Rect::top() const
 {
-  return bottom() + mHeight;
+  return bottom() + mheight;
 };
 
 double Rect::width() const
 {
-  return mWidth;
+  return mwidth;
 }
 
 double Rect::height() const
 {
-  return mHeight;
+  return mheight;
 }
 
 bool Rect::contains( const Coordinate& p ) const
@@ -249,3 +250,23 @@ Rect Rect::fromQRect( const QRect& r )
 {
   return Rect( r.left(), r.top(), r.right(), r.bottom() );
 };
+
+void Rect::setTopLeft( const Coordinate p )
+{
+  Coordinate bl = Coordinate( p.x, p.y - mheight );
+}
+
+Rect operator|( const Rect& lhs, const Rect& rhs )
+{
+  Rect r( lhs );
+  r |= rhs;
+  return r;
+};
+
+void Rect::eat( const Rect& r )
+{
+  setLeft( kigMin( left(), r.left() ) );
+  setRight( kigMax( right(), r.right() ) );
+  setBottom( kigMin( bottom(), r.bottom() ) );
+  setTop( kigMax( top(), r.top() ) );
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
 <class>MacroWizardBase</class>
 <widget class="QWizard">
     <property name="name">
@@ -6,10 +6,10 @@
     </property>
     <property name="geometry">
         <rect>
-            <x>0</x>
+            <x>4</x>
             <y>0</y>
-            <width>313</width>
-            <height>168</height>
+            <width>344</width>
+            <height>172</height>
         </rect>
     </property>
     <property name="sizePolicy">
@@ -21,7 +21,7 @@
         </sizepolicy>
     </property>
     <property name="caption">
-        <string>Define a new Macro...</string>
+        <string>Define New Macro</string>
     </property>
     <widget class="QWidget">
         <property name="name">
@@ -53,7 +53,7 @@
                     </sizepolicy>
                 </property>
                 <property name="text">
-                    <string>Select the "given" objects for your new macro and press next...</string>
+                    <string>Select the "given" objects for your new macro and press "Next".</string>
                 </property>
                 <property name="alignment">
                     <set>WordBreak|AlignVCenter</set>
@@ -83,7 +83,7 @@
                     <cstring>TextLabel2</cstring>
                 </property>
                 <property name="text">
-                    <string>Select the final object for your new macro...</string>
+                    <string>Select the final object for your new macro.</string>
                 </property>
             </widget>
         </vbox>
@@ -110,7 +110,7 @@
                     <cstring>TextLabel1_2</cstring>
                 </property>
                 <property name="text">
-                    <string>Enter a name and description for your new type...</string>
+                    <string>Enter a name and description for your new type.</string>
                 </property>
             </widget>
             <widget class="QLayoutWidget">
@@ -181,4 +181,8 @@
     </widget>
 </widget>
 <layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>klineedit.h</includehint>
+    <includehint>klineedit.h</includehint>
+</includehints>
 </UI>

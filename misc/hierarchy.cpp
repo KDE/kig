@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -228,12 +228,12 @@ void ObjectHierarchy::loadXML( QDomElement& ourElement)
 
     // two params we handle:
     QString tmpGiven = e.attribute("given");
-    assert(tmpGiven);
+    assert(!tmpGiven.isNull());
     QCString tmpS = tmpGiven.utf8();
     if (tmpS == "true" || tmpS == "yes") gegElems.push_back(tmpE);
 
     QString tmpFinal = e.attribute("final");
-    assert(tmpFinal);
+    assert(!tmpFinal.isNull());
     tmpS = tmpFinal.utf8();
     if (tmpS == "true" || tmpS == "yes") finElems.push_back(tmpE);
 
@@ -401,7 +401,7 @@ HierarchyElement::HierarchyElement( const QDomElement& e )
 
   // fetch the typeName
   QString tmpTN = e.attribute("typeName");
-  assert(tmpTN);
+  assert(!tmpTN.isNull());
   QCString typeName = tmpTN.utf8();
 
   mtype = Object::types().findType( typeName );

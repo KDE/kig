@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -34,14 +34,14 @@
 // internally, it does nothing, it could almost have been an ordinary
 // Object..., mapping coordinates from and to the screen to and from
 // the internal coordinates is done elsewhere ( KigPainter and
-// KigView... )
+// KigWidget... )
 class CoordinateSystem
   : public Qt
 {
 public:
   CoordinateSystem() {};
   virtual ~CoordinateSystem() {};
-  virtual QString fromScreen (const Coordinate& pt) const = 0;
+  virtual QString fromScreen ( const Coordinate& pt, const KigWidget& w ) const = 0;
   /**
    * This returns a notice to say in which format coordinates should
    * be entered.  This should be something like:
@@ -59,7 +59,7 @@ class EuclideanCoords
 public:
   EuclideanCoords();
   ~EuclideanCoords() {};
-  virtual QString fromScreen (const Coordinate& pt) const;
+  virtual QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
   virtual QString coordinateFormatNotice() const;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const;
   virtual void drawGrid ( KigPainter& p ) const;

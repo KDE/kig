@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -33,44 +33,74 @@
 #include "../misc/rect.h"
 #include "../misc/screeninfo.h"
 
+class QGridLayout;
+class QScrollBar;
+
 class KigDocument;
+class KigView;
 
 /**
- * This is the widget as represented on-screen.  It is basically a
- * dumb class, which is manipulated by KigMode's.  All events are
- * forwarded to them.  It has some actions which are widget specific
- * (basically the view-menu and printing (once i implement it ;))
+ * This class is the real widget showing the document.  The other is a
+ * wrapper, that has the scrollbars...  I'm not using QScrollView
+ * cause i've been having problems with that, and it's easier to do
+ * the work myself...
+ * Internally, this is basically a dumb class, which is manipulated by
+ * KigMode's.  All events are forwarded to them.
  */
-class KigView
-  : public QWidget
+class KigWidget : public QWidget
 {
   Q_OBJECT
 
-  KAction* aZoomIn;
-  KAction* aZoomOut;
-  KAction* aCenterScreen;
+  KigDocument* mdocument;
+  KigView* mview;
+
+  // we reimplement these from QWidget to suit our needs
+  void mousePressEvent (QMouseEvent* e);
+  void mouseMoveEvent (QMouseEvent* e);
+  void mouseReleaseEvent (QMouseEvent* e);
+  void paintEvent (QPaintEvent* e);
+  void resizeEvent(QResizeEvent*);
+
+  // this is called to match a rect's dimensions to the dimensions of
+  // the window before we set mViewRect to it.  This is done cause we
+  // always want circles to look like circles etc...
+  Rect matchScreenShape( const Rect& r ) const;
+
+  // to avoid stupid syntax.  Actually, the KigMode's implement
+  // functionality which is logically inherent to KigView.. So this
+  // isn't just an ugly hack ;)
+  friend class KigMode;
+  friend class NormalMode;
+  friend class MovingModeBase;
+  friend class StdConstructionMode;
+  friend class PointConstructionMode;
+  friend class DefineMacroMode;
+  friend class DragRectMode;
+  friend class SelectionModeBase;
+
+  // what do the still objects look like
+  // wondering if this is appropriate, maybe it should be part of
+  // MovingMode ?
+  QPixmap stillPix;
+  // temporary, gets bitBlt'd (copied) onto the widget
+  // (to avoid flickering)
+  QPixmap curPix;
+  std::vector<QRect> oldOverlay;
+
+  /**
+   * this is a class that maps from our widget coordinates to the
+   * document's coordinates ( and back ).
+   */
+  ScreenInfo msi;
 
 public:
-  KigView( KigDocument* inDoc,
-	   QWidget* parent = 0,
-	   const char* name = 0
+  KigWidget( KigDocument* doc,
+             KigView* view,
+             QWidget* parent = 0,
+             const char* name = 0
 	   );
-  ~KigView();
+  ~KigWidget();
 
-  void setupActions();
-
-public slots:
-
-  // this is connected to KigDocument::suggestRect, check that signal
-  // out for an explanation...
-  void recenterScreen();
-  // ...
-  void zoomIn();
-  void zoomOut();
-
-  void redrawScreen();
-
-public:
   /**
    * The following are functions used by KigMode's to tell us to draw
    * stuff...
@@ -105,68 +135,92 @@ public:
   void updateWidget( const std::vector<QRect>& = std::vector<QRect>() );
   void updateEntireWidget();
 
-protected:
-  KigDocument* document;
-  // what the cursor currently looks like
-
-protected:
-  // we reimplement these from QWidget to suit our needs
-  void mousePressEvent (QMouseEvent* e);
-  void mouseMoveEvent (QMouseEvent* e);
-  void mouseReleaseEvent (QMouseEvent* e);
-  void paintEvent (QPaintEvent* e);
-  void resizeEvent(QResizeEvent*);
-
-  /************** Mapping between Internal Coordinate Systems **********/
-public:
-  // there are two coordinate systems:
-  // 1 the widget's coordinates: these are simple int's from (0,0) in
-  // the topleft of the widget to size() in the bottomRight...
-  // 2 the document's coordinates: these are the coordinates used by
-  // the KigDocument.  Objects only know of their coordinates as
-  // related to this system.
-  // These are mapped by the KigView using the ScreenInfo class.
-
+  /** Mapping between Internal Coordinate Systems
+   * there are two coordinate systems:
+   * 1 the widget's coordinates: these are simple int's from (0,0) in
+   * the topleft of the widget to size() in the bottomRight...
+   * 2 the document's coordinates: these are the coordinates used by
+   * the KigDocument.  Objects only know of their coordinates as
+   * related to this system.
+   * These are mapped by the KigView using the ScreenInfo class.
+   */
   const Rect showingRect();
 
   const Coordinate fromScreen( const QPoint& p );
   const Rect fromScreen( const QRect& r );
-  double pixelWidth();
+  double pixelWidth() const;
 
   // the part of the document we're currently showing
   // i.e. a rectangle of the document (which has its own coordinate
   // system) which is mapped onto the widget.
-  const ScreenInfo& screenInfo();
+  const ScreenInfo& screenInfo() const;
 
-protected:
-  // this is called to match a rect's dimensions to the dimensions of
-  // the window before we set mViewRect to it.  This is done cause we
-  // always want circles to look like circles etc...
-  Rect matchScreenShape( const Rect& r );
+  Rect entireDocumentRect() const;
 
-  // to avoid stupid syntax.  Actually, the KigMode's implement
-  // functionality which is logically inherent to KigView.. So this
-  // isn't just an ugly hack ;)
-  friend class KigMode;
-  friend class NormalMode;
-  friend class MovingModeBase;
-  friend class StdConstructionMode;
-  friend class PointConstructionMode;
-  friend class DefineMacroMode;
+  void updateScrollBars();
 
-  // what do the still objects look like
-  // wondering if this is appropriate, maybe it should be part of
-  // MovingMode ?
-  QPixmap stillPix;
-  // temporary, gets bitBlt'd (copied) onto the widget
-  // (to avoid flickering)
-  QPixmap curPix;
-  std::vector<QRect> oldOverlay;
+  void scrollSetBottom( double rhs );
+  void scrollSetLeft( double rhs );
 
-  /**
-   * this is a class that maps from our widget coordinates to the
-   * document's coordinates ( and back ).
-   */
-  ScreenInfo msi;
+  const KigDocument& document() const;
+
+public slots:
+  // this is connected to KigDocument::recenterScreen, check that signal
+  // out for an explanation...
+  void recenterScreen();
+  // ...
+  void zoomIn();
+  void zoomOut();
+
+  void redrawScreen( bool paintOnWidget = true );
+};
+
+/**
+ * This class is a wrapper for KigWidget.  It has some actions
+ * that belong here, and not in the part.  It also maintains the
+ * scrollbars, but it doesn't manipulate them itself.  It forwards
+ * most of its functionality to KigWidget...
+ */
+class KigView
+  : public QWidget
+{
+  Q_OBJECT
+
+  KAction* aZoomIn;
+  KAction* aZoomOut;
+  KAction* aCenterScreen;
+  KAction* aExportToImage;
+
+  QGridLayout* mlayout;
+  QScrollBar* mrightscroll;
+  QScrollBar* mbottomscroll;
+
+  // apparently, QScrollBar also emits its signals when you update it
+  // manually, so we ignore them while we're in updateScrollBars()...
+  bool mupdatingscrollbars;
+
+  KigWidget* mrealwidget;
+  KigDocument* mdoc;
+
+public:
+  KigView( KigDocument* inDoc,
+	   QWidget* parent = 0,
+	   const char* name = 0
+	   );
+  ~KigView();
+
+  void setupActions();
+
+  const ScreenInfo& screenInfo() const;
+
+  KigWidget* realWidget();
+
+public slots:
+  void updateScrollBars();
+
+private slots:
+  void slotRightScrollValueChanged( int );
+  void slotBottomScrollValueChanged( int );
+  void slotExportToImage();
 };
 #endif

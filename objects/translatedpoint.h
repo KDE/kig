@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -35,8 +35,6 @@ public:
   TranslatedPoint( const TranslatedPoint& p );
   ~TranslatedPoint();
 
-  virtual TranslatedPoint* copy();
-
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();
   const QString vDescriptiveName() const;
@@ -54,14 +52,7 @@ public:
   static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
 
-  void startMove(const Coordinate& );
-  void moveTo(const Coordinate& );
-  void stopMove();
-  void cancelMove();
-
-  void drawPrelim( KigPainter&, const Object* ) const;
-
-  void calc( const ScreenInfo& );
+  void calc();
 };
 
 #endif

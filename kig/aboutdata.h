@@ -1,5 +1,5 @@
 // aboutdata.h
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -21,14 +21,14 @@
 
 inline KAboutData* kigAboutData( const char* name, const char* iname )
 {
-  const char* version = "v0.1";
+  const char* version = "v0.3";
   const char* description = I18N_NOOP( "KDE Interactive Geometry" );
 
   KAboutData* tmp = new KAboutData( name, iname, version,
 				   description, KAboutData::License_GPL,
 				   "(C) 2002, Dominique Devriese");
   tmp->addAuthor("Dominique Devriese", I18N_NOOP("Coding"),
-		  "dominique.devriese@student.kuleuven.ac.be" );
+		  "devriese@kde.org" );
 
   tmp->addCredit("Marc Bartsch",
 		  I18N_NOOP("Author of KGeo, where i got inspiration, "
@@ -41,19 +41,21 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 		  "ibaran@mit.edu");
 
   tmp->addCredit("Maurizio Paolini",
-		 I18N_NOOP( "Wrote the radical line as a patch for kgeo, "
-			    "which i ported to kig. Gave me some cool ideas "
-                            "on the object system too.." ),
+		 I18N_NOOP( "Wrote the radical line and the circle-line "
+                            "intersection as a patch for kgeo, which i "
+                            "ported to kig. Gave me some cool ideas on the "
+                            "object system, and did some really _great_ work "
+                            "on Kig's Conic support." ),
 		 "paolini@dmf.bs.unicatt.it");
 
   tmp->addCredit("Christophe Devriese",
                  I18N_NOOP( "My brother, I got him to write the algorithm for "
                             "calculating the center of the circle with three "
-                            "points given..." ),
+                            "points given." ),
                  "oelewapperke@ulyssis.org" );
 
   tmp->addCredit("Christophe Prud'homme",
-                 I18N_NOOP( "Sent me a patch for some bugs..." ),
+                 I18N_NOOP( "Sent me a patch for some bugs." ),
                  "prudhomm@mit.edu" );
 
   tmp->addCredit("Cabri coders",

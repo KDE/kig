@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -28,15 +28,14 @@
 class Vector
   : public Object
 {
+  typedef Object Parent;
 public:
   Vector( const Objects& os );
   Vector( const Vector& s );
-  Vector* copy();
   ~Vector();
 
-  // type identification
-  Vector* toVector();
-  const Vector* toVector() const;
+  bool isa( int type ) const;
+
   // some type information
   const QCString vBaseTypeName() const;
   static QCString sBaseTypeName();
@@ -52,7 +51,7 @@ public:
   static const int sShortCut();
   static const char* sActionName();
 
-  bool contains (const Coordinate& o, const double fault ) const;
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
   void draw ( KigPainter& p, bool showSelection ) const;
 
   static void drawVector( KigPainter& p, const Coordinate& a,
@@ -67,12 +66,7 @@ public:
 
   Objects getParents() const;
 
-  // moving
-  void startMove(const Coordinate&);
-  void moveTo(const Coordinate&);
-  void stopMove();
-
-  void calc( const ScreenInfo& );
+  void calc();
 
   const Coordinate getP1() const;
   const Coordinate getP2() const;

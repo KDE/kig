@@ -1,0 +1,69 @@
+<!DOCTYPE KigMacroFile>
+<Types>
+<MType name="fregier" >
+<ObjectHierarchy>
+<HierarchyElement given="true" typeName="EllipseBFFP" id="1" final="false" />
+   <HierarchyElement given="true" typeName="NormalPoint" id="2" final="false" />
+   <HierarchyElement given="false" typeName="IntersectionPoint" id="3" final="true" >
+<parent id="4" />
+    <parent id="5" />
+    <param name="color" >#0000ff</param>
+    <param name="point-size" >5</param>
+    <param name="shown" >true</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="Segment" id="4" final="false" >
+<parent id="6" />
+    <parent id="7" />
+    <param name="color" >#0000ff</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="LinePerpend" id="5" final="false" >
+<parent id="8" />
+    <parent id="2" />
+    <param name="color" >#0000ff</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="ConicLineIntersectionPoint" id="6" final="false" >
+<parent id="1" />
+    <parent id="9" />
+    <param name="color" >#0000ff</param>
+    <param name="coniclineintersect-side" >-1</param>
+    <param name="point-size" >5</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="ConicLineIntersectionPoint" id="7" final="false" >
+<parent id="1" />
+    <parent id="10" />
+    <param name="color" >#0000ff</param>
+    <param name="coniclineintersect-side" >1</param>
+    <param name="point-size" >5</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="LinePolar" id="8" final="false" >
+<parent id="1" />
+    <parent id="2" />
+    <param name="color" >#0000ff</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="LinePerpend" id="9" final="false" >
+<parent id="5" />
+    <parent id="11" />
+    <param name="color" >#0000ff</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="LinePerpend" id="10" final="false" >
+<parent id="12" />
+    <parent id="2" />
+    <param name="color" >#0000ff</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="MidPoint" id="11" final="false" >
+<parent id="2" />
+    <parent id="13" />
+    <param name="color" >#0000ff</param>
+    <param name="point-size" >5</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="Ray" id="12" final="false" >
+<parent id="2" />
+    <parent id="6" />
+    <param name="color" >#0000ff</param>
+    <param name="shown" >false</param>   </HierarchyElement>
+   <HierarchyElement given="false" typeName="ConicLineIntersectionPoint" id="13" final="false" >
+<parent id="1" />
+    <parent id="5" />
+    <param name="color" >#0000ff</param>
+    <param name="coniclineintersect-side" >1</param>
+    <param name="point-size" >5</param>
+    <param name="shown" >false</param>   </HierarchyElement>  </ObjectHierarchy> </MType></Types>

@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -23,22 +23,18 @@
 
 #include "point.h"
 
-class Segment;
-class Line;
+class AbstractLine;
 
 class MirrorPoint
   : public Point
 {
   Point* mp;
-  Segment* ms;
-  Line* ml;
+  AbstractLine* ml;
   Point* mc;
 public:
   MirrorPoint( const Objects& os );
   MirrorPoint( const MirrorPoint& p );
   ~MirrorPoint();
-
-  virtual MirrorPoint* copy();
 
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();
@@ -57,14 +53,7 @@ public:
   static QString sUseText( const Objects& os, const Object* o );
   Objects getParents() const;
 
-  void startMove(const Coordinate& );
-  void moveTo(const Coordinate& );
-  void stopMove();
-  void cancelMove();
-
-  void drawPrelim( KigPainter&, const Object* ) const;
-
-  void calc( const ScreenInfo& );
+  void calc();
 };
 
 #endif

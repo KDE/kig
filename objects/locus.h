@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -50,7 +50,6 @@ public:
   Locus( const Objects& os );
   Locus( const Locus& loc );
   ~Locus();
-  Locus* copy();
 
   virtual const QCString vBaseTypeName() const;
   static const QCString sBaseTypeName();
@@ -67,7 +66,7 @@ public:
   static const char* sActionName();
 
   void draw (KigPainter& p, bool showSelection) const;
-  bool contains (const Coordinate& o, const double fault ) const;
+  bool contains (const Coordinate& o, const ScreenInfo& si ) const;
   bool inRect (const Rect&) const;
 
   // arguments
@@ -75,29 +74,21 @@ public:
   static QString sUseText( const Objects&, const Object* o );
   static void sDrawPrelim( KigPainter& p, const Objects& args );
 
-  // moving
-  void startMove(const Coordinate&);
-  void moveTo(const Coordinate&);
-  void stopMove();
+  void calc();
+  void calcForWidget( const KigWidget& );
 
-  void calc( const ScreenInfo& );
-
-public:
   Coordinate getPoint( double param ) const;
   double getParam (const Coordinate&) const;
 
   Objects getParents() const;
 
-protected:
+private:
   NormalPoint* cp;
-  Object* obj;
-
-  bool isPointLocus() const;
-  bool _pointLocus;
+  Point* mp;
 
   Objects calcpath;
 
-  // objs is just a list of pointers to objects
+  // objs is a list of the objects we contain..
   Objects objs;
 
   struct CPt
@@ -113,15 +104,7 @@ protected:
   // type...
   CPts pts;
 
-  // this is used if the obj is a point; it selects the best points
-  // from the possible ones...
-  void calcPointLocus( const ScreenInfo& );
   // some functions used by calcPointLocus...
-  CPts::iterator addPoint( double param, const ScreenInfo& );
-  void recurse( CPts::iterator, CPts::iterator, int&, const ScreenInfo& );
-
-  // this is used when the obj is not a point; it just takes the first
-  // numberOfSamples objects it can find...
-  void calcObjectLocus( const ScreenInfo& );
+  inline Coordinate internalGetCoord( double, bool& valid );
 };
 #endif

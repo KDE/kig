@@ -27,6 +27,16 @@ here are some nice Kig features i'd like to show off :)
   native kig files ( which is an imho clean xml format ), and read
   support for kgeo files, but this is an area where i plan working
   on... ( KGeo and KSeg read-write, Cabri at least read support )..
+- Kig has an option "Export to image", which allows you to export a
+  kig document into one of the graphics formats that KDE or Qt
+  support...  This is useful since not all other programs support Kig
+  files yet... ;)
+- Kig is very compatible with the program it was intended to replace,
+  KGeo.  It supports all of its Object types and most of its file
+  format... 
+- There is a very flexible mechanism for supporting TextLabels with
+  variable parts..  Check out the text label wizard for more
+  explanation... 
 
 PLANNED FEATURES
 For a list of planned features, check out the TODO file.

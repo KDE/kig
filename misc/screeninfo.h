@@ -1,5 +1,5 @@
 // screeninfo.h
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 /**
  * ScreenInfo is a simple utility class that maps a region of the
  * document onto a region of the screen.  It is used by both
- * KigPainter and KigView, and the objects use it in their calc()
+ * KigPainter and KigWidget, and the objects use it in their calc()
  * method...
  */
 class ScreenInfo
@@ -40,15 +40,17 @@ public:
   Rect fromScreen( const QRect& r ) const;
 
   QPoint toScreen( const Coordinate& p ) const;
-  QRect toScreen( const Rect r ) const;
+  QRect toScreen( const Rect& r ) const;
 
   double pixelWidth() const;
+
+  double normalMiss() const;
 
   const Rect& shownRect() const;
 
   void setShownRect( const Rect& r );
 
-  const QRect& viewRect() const;
+  const QRect viewRect() const;
 
   void setViewRect( const QRect& r );
 };

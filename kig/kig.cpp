@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+ Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@
  *
  */
 #include "kig.h"
+#include "kig.moc"
 
 #include <kkeydialog.h>
 #include <kconfig.h>
@@ -42,8 +43,7 @@
 #include <kimageio.h>
 
 Kig::Kig()
-  : KParts::MainWindow( 0L, "Kig" ),
-    KigIface()
+  : KParts::MainWindow( 0L, "Kig" )
 {
   // set the shell's ui resource file
   setXMLFile("kigui.rc");
@@ -79,9 +79,6 @@ Kig::Kig()
   }
   resize (640,480);
 
-  // we have dcop
-  kapp->dcopClient()->setDefaultObject( objId() );
-
   // we have drag'n'drop
   setAcceptDrops(true);
 }
@@ -97,8 +94,6 @@ void Kig::setupActions()
 {
   KStdAction::openNew(this, SLOT(fileNew()), actionCollection());
   KStdAction::open(this, SLOT(fileOpen()), actionCollection());
-  KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
-  KStdAction::save(this, SLOT(fileSave()), actionCollection());
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
   m_toolbarAction = KStdAction::showToolbar(this, SLOT(optionsShowToolbar()), actionCollection());
@@ -210,7 +205,7 @@ bool Kig::queryClose()
 	  (
 	   widget(),
 	   i18n("Save changes to document %1?").arg(m_part->url().path()),
-	   i18n("Save changes?")
+	   i18n("Save Changes?")
 	   ))
     {
     case KMessageBox::Yes:
@@ -252,24 +247,3 @@ void Kig::fileOpen()
 
   if (!file_name.isEmpty()) openURL(file_name);
 }
-
-void Kig::fileSaveAs()
-{
-  // this slot is connected to the KStdAction::saveAs action...
-  QString formats;
-  formats = QString::fromUtf8("*.kig|Kig Documents (*.kig)");
-
-  //  formats += "\n";
-  //  formats += KImageIO::pattern( KImageIO::Writing );
-
-  QString file_name = KFileDialog::getSaveFileName(":document", formats );
-  if (!file_name.isEmpty()) m_part->saveAs(file_name);
-}
-
-void Kig::fileSave()
-{
-  // this slot is connected to the KStdAction::save action...
-  m_part->save();
-}
-
-#include "kig.moc"

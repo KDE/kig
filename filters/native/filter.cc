@@ -1,5 +1,5 @@
 // filter.cc
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -99,7 +99,7 @@ KigFilter::Result KigFilterNative::save( const Objects& os, const QString to )
 
   QDomDocument doc("KigDocument");
   QDomElement elem = doc.createElement( "KigDocument" );
-  elem.setAttribute( "Version", "0.1.0" );
+  elem.setAttribute( "Version", "0.3.0" );
 
   // saving is done very easily:
   // we create an ObjectHierarchy with no "given" objects, and all

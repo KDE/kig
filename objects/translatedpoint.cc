@@ -1,5 +1,5 @@
 // translatedpoint.cc
-// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -20,7 +20,6 @@
 
 #include "vector.h"
 
-#include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 
 #include <kdebug.h>
@@ -33,12 +32,16 @@ Objects TranslatedPoint::getParents() const
   return tmp;
 };
 
-void TranslatedPoint::calc( const ScreenInfo& )
+void TranslatedPoint::calc()
 {
-  Coordinate a = mp->getCoord();
-  Coordinate d = mv->getDir();
+  mvalid = mp->valid() && mv->valid();
+  if ( mvalid )
+  {
+    Coordinate a = mp->getCoord();
+    Coordinate d = mv->getDir();
 
-  mC = a + d;
+    mC = a + d;
+  };
 }
 
 TranslatedPoint::TranslatedPoint( const TranslatedPoint& p )
@@ -50,11 +53,6 @@ TranslatedPoint::TranslatedPoint( const TranslatedPoint& p )
 
 TranslatedPoint::~TranslatedPoint()
 {
-}
-
-TranslatedPoint* TranslatedPoint::copy()
-{
-  return new TranslatedPoint( *this );
 }
 
 const QCString TranslatedPoint::vFullTypeName() const
@@ -107,18 +105,6 @@ const int TranslatedPoint::sShortCut()
   return 0;
 }
 
-void TranslatedPoint::startMove(const Coordinate& )
-{
-}
-
-void TranslatedPoint::moveTo(const Coordinate& )
-{
-}
-
-void TranslatedPoint::stopMove()
-{
-}
-
 const char* TranslatedPoint::sActionName()
 {
   return "objects_new_translatedpoint";
@@ -150,8 +136,7 @@ void TranslatedPoint::sDrawPrelim( KigPainter& p, const Objects& os )
   };
   assert( q && v );
   Coordinate c = q->getCoord() + v->getDir();
-  p.setPen( QPen( Qt::red, 1 ) );
-  p.drawPoint( c, false );
+  sDrawPrelimPoint( p, c );
 }
 
 Object::WantArgsResult TranslatedPoint::sWantArgs( const Objects& os )
