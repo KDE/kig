@@ -53,7 +53,7 @@ const QString StandardConstructorBase::description() const
   return i18n( mdesc );
 }
 
-const QCString StandardConstructorBase::iconFileName() const
+const QCString StandardConstructorBase::iconFileName( const bool ) const
 {
   return miconfile;
 }
@@ -238,7 +238,7 @@ const QString MergeObjectConstructor::description() const
   return i18n( mdesc );
 }
 
-const QCString MergeObjectConstructor::iconFileName() const
+const QCString MergeObjectConstructor::iconFileName( const bool ) const
 {
   return miconfilename;
 }
@@ -341,9 +341,9 @@ const QString MacroConstructor::description() const
   return mdesc;
 }
 
-const QCString MacroConstructor::iconFileName() const
+const QCString MacroConstructor::iconFileName( const bool canBeNull ) const
 {
-  return miconfile.isNull() ? QCString( "gear" ) : miconfile;
+  return ( miconfile.isNull() && !canBeNull ) ? QCString( "gear" ) : miconfile;
 }
 
 const int MacroConstructor::wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument&,

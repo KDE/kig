@@ -86,6 +86,20 @@ Please select which to import.</string>
                 <property name="spacing">
                     <number>6</number>
                 </property>
+                <spacer>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
                 <widget class="KPushButton">
                     <property name="name">
                         <cstring>OKButton</cstring>

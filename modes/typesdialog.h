@@ -56,6 +56,8 @@ protected slots:
   void deleteType();
   void exportType();
   void importTypes();
+  void selectionChangedSlot();
+  void iconChangedSlot();
 };
 
 #endif

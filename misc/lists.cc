@@ -257,6 +257,15 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
     descelem.appendChild( doc.createTextNode( ctor->description() ) );
     macroelem.appendChild( descelem );
 
+    // icon
+    QCString icon = ctor->iconFileName( true );
+    if ( !icon.isNull() )
+    {
+      QDomElement descelem = doc.createElement( "IconFileName" );
+      descelem.appendChild( doc.createTextNode( icon ) );
+      macroelem.appendChild( descelem );
+    }
+
     // data
     QDomElement hierelem = doc.createElement( "Construction" );
     ctor->hierarchy().serialize( hierelem, doc );

@@ -1,3 +1,18 @@
+2004-04-04  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Now Kig can save icon information of every macro.
+
+	* Some work on types dialog: icon of every type is now visible,
+	and made a sort of skeleton to modify type's data.
+
+	* Made buttons of some dialogs like other KDE dialogs ones
+	  (with icons and correct alignment).
+
+	* Kig now ask the user when exporting type(s) to an already
+	existant file.
+
+	* Some i18n fixes
+
 2004-04-02  Dominique Devriese  <devriese@kde.org>
 
 	* Implement the point-on-curve checking.  The code should work,
@@ -29,7 +44,8 @@
 
 2004-03-26  Pino Toscano <toscano.pino@tiscali.it>
 
-	* Implement a popup menu submenu for changing the line style of an object.
+	* Implemented a popup menu submenu for changing the line style of
+	an object.
 	
 	* Various i18n fixes
 

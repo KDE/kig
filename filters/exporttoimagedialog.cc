@@ -29,6 +29,7 @@
 #include <kpushbutton.h>
 #include <kurlrequester.h>
 #include <kimageio.h>
+#include <kiconloader.h>
 #include <kmessagebox.h>
 #include <klocale.h>
 
@@ -36,6 +37,10 @@ ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigDocument* d )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),
     mv( v ), md( d ), msize( v->size() ), minternallysettingstuff( false )
 {
+  KIconLoader* l = KGlobal::iconLoader();
+  OKButton->setIconSet( QIconSet( l->loadIcon( "button_ok", KIcon::Small ) ) );
+  CancelButton->setIconSet( QIconSet( l->loadIcon( "button_cancel", KIcon::Small ) ) );
+
   WidthInput->setValue( msize.width() );
   HeightInput->setValue( msize.height() );
 
@@ -68,7 +73,7 @@ void ExportToImageDialog::slotOKPressed()
   {
     int ret = KMessageBox::warningYesNo( mv,
                                          i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
-                                         .arg( filename ) );
+                                         .arg( filename ), i18n( "Overwrite file?" ) );
     if ( ret != KMessageBox::Yes ) return;
   };
 

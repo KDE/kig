@@ -24,10 +24,15 @@
 #include <kpushbutton.h>
 #include <kmessagebox.h>
 #include <klocale.h>
+#include <kiconloader.h>
 
 KigFilterDrgeoChooser::KigFilterDrgeoChooser( QStringList& l )
   : KigFilterDrgeoChooserBase( 0, I18N_NOOP( "Dr. Geo Filter" ), true )
 {
+  KIconLoader* li = KGlobal::iconLoader();
+  OKButton->setIconSet( QIconSet( li->loadIcon( "button_ok", KIcon::Small ) ) );
+  CancelButton->setIconSet( QIconSet( li->loadIcon( "button_cancel", KIcon::Small ) ) );
+
   FigureListBox->insertStringList( l );
 //  FigureListBox->setCurrentItem( 0 );
 

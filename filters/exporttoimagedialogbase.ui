@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>545</width>
-            <height>342</height>
+            <width>490</width>
+            <height>280</height>
         </rect>
     </property>
     <property name="caption">
@@ -208,6 +208,20 @@
                 <property name="spacing">
                     <number>6</number>
                 </property>
+                <spacer>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
                 <widget class="KPushButton">
                     <property name="name">
                         <cstring>OKButton</cstring>

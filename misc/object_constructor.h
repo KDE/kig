@@ -49,7 +49,7 @@ public:
 
   virtual const QString descriptiveName() const = 0;
   virtual const QString description() const = 0;
-  virtual const QCString iconFileName() const = 0;
+  virtual const QCString iconFileName( const bool canBeNull = false ) const = 0;
 
   // can this constructor do something useful with os ?  return
   // ArgsParser::Complete, Valid or NotGood
@@ -125,7 +125,7 @@ public:
 
   const QString descriptiveName() const;
   const QString description() const;
-  const QCString iconFileName() const;
+  const QCString iconFileName( const bool canBeNull = false ) const;
 
   virtual const int wantArgs(
     const std::vector<ObjectCalcer*>& os, const KigDocument& d,
@@ -271,7 +271,7 @@ public:
 
   const QString descriptiveName() const;
   const QString description() const;
-  const QCString iconFileName() const;
+  const QCString iconFileName( const bool canBeNull = false ) const;
 
   const int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d,
@@ -321,7 +321,7 @@ public:
 
   const QString descriptiveName() const;
   const QString description() const;
-  const QCString iconFileName() const;
+  const QCString iconFileName( const bool canBeNull = false ) const;
 
   const int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
                       const KigWidget& v ) const;

@@ -7,10 +7,10 @@
 - create a ObjectImp::surroundingRect function, and use it in
    calculating the preferred screen size
 
-- make it possible to zoom to a very specific part of the screen (
+- make it possible to zoom to a very specific part of the screen,
    i.e. from (x0,y0) to (x1,y1)
 
-- export cubics to the python scripting stuff..
+- export vectors and cubics to the python scripting stuff...
 
 - add support for working with angles in degrees in the set size
   dialog of an angle..
@@ -34,7 +34,7 @@
 
 - make the dialogs not pop up over the main window..
 
-- make the python scripting work more like the macro system.  Make it
+- make the scripting system work more like the macro system. Make it
   a way to define new object types that can be reused more than once,
   instead of making it just a way to add *one* object..
 
@@ -51,10 +51,9 @@
   features.  E.g. I have been asked to allow the user to limit himself
   to compass-ruler constructions..
 
-- "export to *": add stuff like java applets, images in Encapsulated
-   Postcript (eps) format, SVG documents, etc...
+- "export to *": add stuff like java applets, SVG documents, etc...
 
-- koffice support ? 
+- koffice w/o OpenOffice.org support ?
 
 - add another viewmode ( which would be completely orthogonal to the
   KigMode concept ), where you can more clearly see the dependencies

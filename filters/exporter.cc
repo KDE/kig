@@ -500,7 +500,8 @@ void XFigExporter::run( const KigDocument& doc, KigWidget& w )
   {
     int ret = KMessageBox::warningYesNo(
       &w,
-      i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ).arg( file_name ) );
+      i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ).arg( file_name ),
+      i18n( "Overwrite file?" ) );
     if ( ret != KMessageBox::Yes ) return;
   };
   QFile file( file_name );

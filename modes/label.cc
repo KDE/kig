@@ -249,7 +249,8 @@ void TextLabelModeBase::cancelPressed()
 
 static uint percentCount( const QString& s )
 {
-  QRegExp re( QString::fromUtf8( "%[0-9]" ) );
+//  QRegExp re( QString::fromUtf8( "%[0-9]" ) );
+  QRegExp re( QString::fromUtf8( "%[\\d]+" ) );
   int offset = 0;
   uint percentcount = 0;
   while ( ( offset = re.search( s, offset ) ) != -1 )
@@ -328,7 +329,8 @@ void TextLabelModeBase::updateLinksLabel()
 {
   LinksLabel::LinksLabelEditBuf buf = d->wiz->myCustomWidget1->startEdit();
   QString s = d->wiz->labelTextInput->text();
-  QRegExp re( "%[0-9]" );
+//  QRegExp re( "%[0-9]" );
+  QRegExp re( "%[\\d]+" );
   int prevpos = 0;
   int pos = 0;
   uint count = 0;
@@ -363,7 +365,8 @@ void TextLabelModeBase::updateLinksLabel()
     d->wiz->myCustomWidget1->addLink( linktext, buf );
     // set pos and prevpos to the next char after the last match, so
     // we don't enter infinite loops...
-    pos += 2;
+//    pos += 2;
+    pos += re.matchedLength();
     prevpos = pos;
     ++count;
   };
