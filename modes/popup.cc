@@ -113,8 +113,7 @@ const QColor* NormalModePopupObjects::color( int i )
 
 QPopupMenu* NormalModePopupObjects::colorMenu( QWidget* parent )
 {
-  QPopupMenu* m = 0;
-  m = new QPopupMenu( parent, "color popup menu" );
+  QPopupMenu* m = new QPopupMenu( parent, "color popup menu" );
   const QColor* c = 0;
   QPixmap p( 50, 20 );
   for( uint i = 0; ( c = color( i ) ); ++i )
