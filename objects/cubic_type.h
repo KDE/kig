@@ -31,4 +31,14 @@ public:
   ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
 };
 
+class CubicNodeB6PType
+  : public ObjectType
+{
+  CubicNodeB6PType();
+  ~CubicNodeB6PType();
+public:
+  static const CubicNodeB6PType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& w ) const;
+};
+
 #endif

@@ -54,3 +54,34 @@ ObjectImp* CubicB9PType::calc( const Args& os, const KigWidget& ) const
 
   return new CubicImp( calcCubicThroughPoints( points ) );
 }
+
+static const ArgParser::spec argsspec6p[] =
+{
+  { ObjectImp::ID_PointImp, 6 }
+};
+
+CubicNodeB6PType::CubicNodeB6PType()
+  : ObjectType( "cubic", "CubicNodeB6P", argsspec6p, 1 )
+{
+}
+
+CubicNodeB6PType::~CubicNodeB6PType()
+{
+}
+
+const CubicNodeB6PType* CubicNodeB6PType::instance()
+{
+  static const CubicNodeB6PType t;
+  return &t;
+}
+
+ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigWidget& ) const
+{
+  if ( parents.size() < 2 ) return new InvalidImp;
+  std::vector<Coordinate> points;
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+    if ( (*i)->inherits( ObjectImp::ID_PointImp ) )
+      points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+  if ( points.size() < 2 ) return new InvalidImp;
+  return new CubicImp( calcCubicNodeThroughPoints( points ) );
+}

@@ -21,6 +21,9 @@
 
 #include "common.h"
 
+#include <string>
+#include <map>
+
 class ObjectTypeFactory
 {
   typedef std::map<std::string, const ObjectType*> maptype;
@@ -32,7 +35,7 @@ class ObjectTypeFactory
 public:
   static ObjectTypeFactory* instance();
   void add( const ObjectType* type );
-  ObjectType* find( const char* name ) const;
+  const ObjectType* find( const char* name ) const;
 };
 
 #endif

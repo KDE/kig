@@ -30,7 +30,7 @@ const QString ObjectType::translatedBaseName() const
   return i18n( mbasetypename );
 }
 
-const QCString ObjectType::fullName() const
+const char* ObjectType::fullName() const
 {
   return mfulltypename;
 }

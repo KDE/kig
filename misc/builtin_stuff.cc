@@ -163,6 +163,15 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linepolar" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      CubicNodeB6PType::instance(),
+      I18N_NOOP( "Cubic With Node by Six Points" ),
+      I18N_NOOP( "A cubic with a nodal point at the origin through six points" ),
+      "cubicnodeb6p" );
+    // disabled cause it's only cluttering up the ui..
+    // ctors->add( c );
+    // actions->add( new ConstructibleAction( c, "objects_new_cubicnodeb6p" ) );
+
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
   };
   done = true;

@@ -49,7 +49,7 @@ public:
 
   const QCString baseName() const;
   const QString translatedBaseName() const;
-  const QCString fullName() const;
+  const char* fullName() const;
 
   const ArgParser& argsParser() const;
 };
