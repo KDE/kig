@@ -35,7 +35,7 @@ class ObjectTypeFactory
 public:
   static ObjectTypeFactory* instance();
   void add( const ObjectType* type );
-  const ObjectType* find( const char* name ) const;
+  ObjectType* build( const char* name ) const;
 };
 
 #endif

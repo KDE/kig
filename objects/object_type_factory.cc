@@ -33,6 +33,8 @@ ObjectTypeFactory::ObjectTypeFactory()
 
 ObjectTypeFactory::~ObjectTypeFactory()
 {
+  for ( maptype::iterator i = mmap.begin(); i != mmap.end(); ++i )
+    delete i->second;
 }
 
 ObjectTypeFactory* ObjectTypeFactory::instance()
@@ -47,11 +49,11 @@ void ObjectTypeFactory::add( const ObjectType* type )
   mmap[std::string( type->fullName() )] = type;
 }
 
-const ObjectType* ObjectTypeFactory::find( const char* name ) const
+ObjectType* ObjectTypeFactory::build( const char* name ) const
 {
   maptype::const_iterator i = mmap.find( std::string( name ) );
   if ( i == mmap.end() ) return 0;
-  else return i->second;
+  else return i->second->copy();
 }
 
 void ObjectTypeFactory::setupBuiltinTypes()
