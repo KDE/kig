@@ -4,6 +4,7 @@
   <!ENTITY kig "<application>Kig</application>"> 
   <!ENTITY kseg "<application>KSeg</application>"> 
   <!ENTITY cabri "<application>Cabri</application>"> 
+  <!ENTITY drgenius "<application>Dr.Genius</application>"> 
   <!ENTITY package "kdeedu">
   <!ENTITY % addindex "IGNORE"> 
   <!ENTITY % English "INCLUDE">
@@ -338,6 +339,24 @@
     </section>
   </chapter>
 
+  <chapter id="kig-object-types">
+    <title>&kig; Object Types</title>
+    <para>
+      &kig; supports a rather large number of object types.  You are
+      encouraged to try out the various objects, as I think this is a
+      better way to find out about them than reading about them in
+      some boring manual ;).  Please note that not all of the
+      available object types are shown in the toolbars, but that there
+      are also some objects that you can only construct via the
+      <guimenu>Objects</guimenu> menu in the menu bar.  Of course, as
+      with all &kde; applications, what appears in the toolbars is
+      configurable.  Try out the
+      <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure
+      Toolbars...</guimenuitem></menuchoice> option if you want to do
+      this.
+    </para>
+  </chapter>
+
   <chapter id="using-advanced">
     <title>Advanced Usage</title>
     <section id="objects-context-menus">
@@ -558,33 +577,83 @@
 	</mediaobject>
       </screenshot>
     </section>
-<!--    <section id="scripting">
-      <title>Scripting</title>
+    <section id="locuses">
       <para>
-	&kig; allows the user to create custom types in the Python
-	scripting language.  This is a very advanced feature, and the
-	only
+	&kig; has support for geometrical locuses.  A locus is a
+	concept from high school math.  Briefly put, it is the figure
+	defined by all the points that a point moves over, when
+	another point moves along its constraints..  This may sound a
+	little complicated, but in fact, it's not a difficult concept.
+	I'll try to explain the idea by example.
       </para>
-    </section> -->
+      <para>
+	Consider the following geometrical construction: We draw a
+	circle, and a point that can move over its surface ( construct
+	this point by positioning the cursor on a circle, and clicking
+	the <mousebutton>Middle</mousebutton> mouse button.  If you
+	then try to move the resulting point, you'll see that you
+	can't move it off the circle ).  Then, we draw a segment from
+	that point to the center of the circle, and the midpoint of
+	that segment.
+      </para>
+      <screenshot>
+	<screeninfo>A simple locus construction</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata
+	      fileref="simple_locus_construction.png"
+	      format="PNG"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>A simple locus construction</phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>    
+      <para>
+	Now if you move the point that is constrained to the circle,
+	you can see that the second point moves along with it.  If you
+	would hold a pen above the second point, and you move the
+	first point around the entire circle, a new circle, half the
+	size of the other would be drawn.  We'll see below that this
+	is exactly what a locus does.  The path that the second point
+	travels while the first moves around the circle is what the
+	locus will look like.
+      </para>
+      <para>
+	Actually constructing the locus is very easy.  Click the locus
+	button in the toolbar, or select
+	<menuchoice><guimenu>Objects</guimenu>
+	  <guisubmenu>Other</guisubmenu>
+	  <guimenuitem>Locus</guimenuitem> 
+	</menuchoice>
+	from the menu bar.  Then select the constrained point as the
+	moving point ( the text "Moving Point" will appear as you move
+	the mouse over it ), and the other as the dependent point.
+	The locus will then appear.
+      </para>
+    </section>
   </chapter>
 
-  <chapter id="kig-object-types">
-    <title>&kig; Object Types</title>
-    <para>
-      &kig; supports a rather large number of object types.  You are
-      encouraged to try out the various objects, as I think this is a
-      better way to find out about them than reading about them in
-      some boring manual ;).  Please note that not all of the
-      available object types are shown in the toolbars, but that there
-      are also some objects that you can only construct via the
-      <guimenu>Objects</guimenu> menu in the menu bar.  Of course, as
-      with all &kde; applications, what appears in the toolbars is
-      configurable.  Try out the
-      <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure
-      Toolbars...</guimenuitem></menuchoice> option if you want to do
-      this.
+<!--  <chapter id="scripting">
+    <title>Scripting</title>
+    <para> 
+      &kig; allows the user to create custom types in the Python
+      scripting language.  This is a very advanced feature, and I know
+      of only one other Interactive Geometry program that has similar
+      functionality ( the GNOME program &drgenius; ).  It seems that
+      the &kig; scripting system is more flexible, but that could be
+      due to my huge bias of course ;).
     </para>
-  </chapter>
+    <para>
+      Python Scripting in &kig; basically allows you to create your
+      own way to define an object from certain parent objects.  For
+      example, if you're a math teacher, and you have some fancy way
+      of calculating an interesting point of a conic, then instead of
+      messing with complex constructions and macro's, you could just
+      write down in Python code how the point is to be calculated and
+      &kig; will show it for you.
+    </para>
+  </chapter> -->
 
   <chapter id="kig-features">
     <title>&kig; Features</title>
