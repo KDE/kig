@@ -190,6 +190,7 @@ public:
   KAction* aShowHidden;
   KAction* aConfigureTypes;
   KAction* aFullScreen;
+  KAction* aFixedPoint;
   myvector<KAction*> aActions;
 
   KCommandHistory* history();
@@ -205,7 +206,7 @@ protected:
 
   KigView* m_widget;
 
-  /** 
+  /**
    * Our internal document data:
    * first all objects we contain: all of them are in there, except
    * the obc.
@@ -215,7 +216,7 @@ protected:
    */
   Objects mObjs;
 
-  /** 
+  /**
    * The CoordinateSystem as the user sees it: this has little to do
    * with the internal coordinates of the objects... In fact, it's
    * not so different from an object itself ( uses KigPainter to draw

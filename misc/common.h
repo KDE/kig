@@ -75,6 +75,12 @@ void calcRayBorderPoints( const double xa, const double xb, double& ya,
 void calcBorderPoints( double& xa, double& xb, double& ya, double& yb, const Rect& r);
 
 /**
+ * calc the mirror point of p over the line defined by a and b...
+ */
+const Coordinate calcMirrorPoint( const Coordinate& a, const Coordinate& b,
+                                  const Coordinate& p );
+
+/**
  * is o on the line defined by point a and point b ?
  * fault is the allowed difference...
  */

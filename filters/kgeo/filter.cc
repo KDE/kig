@@ -149,6 +149,12 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
       e = new HierarchyElement( "TranslatedPoint", i );
       break;
     }
+    case ID_mirrorPoint:
+    {
+      e = new HierarchyElement( "MirrorPoint", i );
+      break;
+    }
+
 //  	case ID_pointOfConc:
 // 	  {
 // 	    objs.push_back( new PointOfConc() );
@@ -162,9 +168,6 @@ KigFilter::Result KigFilterKGeo::loadObjects( KSimpleConfig* c, Objects& os )
 // 	  break;
 // 	case ID_angle:
 // 	  objs.push_back( new Angle() );
-// 	  break;
-// 	case ID_mirrorPoint:
-// 	  objs.push_back( new MirrorPoint() );
 // 	  break;
 // 	case ID_distance:
 // 	  objs.push_back( new Distance() );

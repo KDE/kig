@@ -39,6 +39,7 @@
 #include "../objects/locus.h"
 #include "../objects/vector.h"
 #include "../objects/translatedpoint.h"
+#include "../objects/mirrorpoint.h"
 #include "../objects/ray.h"
 #include "../misc/type.h"
 #include "../misc/coordinate_system.h"
@@ -73,10 +74,10 @@ KAboutData* KigDocument::createAboutData()
   return kigAboutData( "kigpart", I18N_NOOP( "KigPart" ) );
 }
 
-KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
+KigDocument::KigDocument( QWidget *parentWidget, const char *,
 			  QObject *parent, const char *name,
 			  const QStringList& )
-  : KParts::ReadWritePart(parent, name),
+  : KParts::ReadWritePart( parent, name ),
     mMode( 0 ),
     numViews(0),
     s( new EuclideanCoords )
@@ -185,9 +186,8 @@ void KigDocument::setupActions()
   aMNewOther->setToolTip(i18n("Construct a new object of a special type"));
 
   tmp = l->loadIcon( "pointxy", KIcon::User );
-  KAction* a = new AddFixedPointAction( this, tmp, actionCollection() );
-
-  aMNewPoint->insert( a );
+  aFixedPoint = new AddFixedPointAction( this, tmp, actionCollection() );
+  aMNewPoint->insert( aFixedPoint );
 };
 
 void KigDocument::setupTypes()
@@ -205,6 +205,7 @@ void KigDocument::setupTypes()
     types.addType( new TStdType<MidPoint> );
     types.addType( new TStdType<IntersectionPoint> );
     types.addType( new TStdType<TranslatedPoint> );
+    types.addType( new TStdType<MirrorPoint> );
     types.addType( new TStdType<Locus> );
     types.addType( new TStdType<Vector> );
     types.addType( new TStdType<Ray> );
@@ -553,6 +554,7 @@ void KigDocument::enableConstructActions( bool enabled )
   std::for_each( aActions.begin(), aActions.end(),
                  std::bind2nd( std::mem_fun( &KAction::setEnabled ),
                                enabled ) );
+  aFixedPoint->setEnabled( enabled );
   aMNewSegment->setEnabled( enabled );
   aMNewPoint->setEnabled( enabled );
   aMNewCircle->setEnabled( enabled );

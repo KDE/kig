@@ -43,6 +43,7 @@
   <Action name="objects_new_intersectionpoint" />
   <Action name="objects_new_point_xy" />
   <Action name="objects_new_translatedpoint" />
+  <Action name="objects_new_mirrorpoint" />
 </ToolBar>
 <ToolBar name="line_toolbar"><text>Lines</text>
   <Action name="objects_new_linettp" />

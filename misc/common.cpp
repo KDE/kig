@@ -280,3 +280,12 @@ bool isOnRay( const Coordinate o, const Coordinate a,
     // not too far in front of a vertically..
     && ( a.y - b.y < fault ) == ( a.y - o.y < fault );
 };
+
+const Coordinate calcMirrorPoint( const Coordinate& a, const Coordinate& b,
+                                  const Coordinate& p )
+{
+  Coordinate m =
+    calcIntersectionPoint( a, b, p,
+                           calcPointOnPerpend( a, b, p ) );
+  return 2*m - p;
+}
