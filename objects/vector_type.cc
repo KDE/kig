@@ -58,13 +58,14 @@ const ObjectImpType* VectorType::resultId() const
 static const ArgsParser::spec argsspecVectorSum[] =
 {
   { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and another one." ), false },
-  { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and the other one." ), false }
+  { VectorImp::stype(), I18N_NOOP( "Construct the Vector Sum of this Vector and the other one." ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the Vector Sum starting at this point." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VectorSumType )
 
 VectorSumType::VectorSumType()
-  : ArgsParserObjectType( "VectorSum", argsspecVectorSum, 2 )
+  : ArgsParserObjectType( "VectorSum", argsspecVectorSum, 3 )
 {
 }
 
@@ -84,8 +85,9 @@ ObjectImp* VectorSumType::calc( const Args& args, const KigDocument& ) const
 
   const VectorImp& a = *static_cast<const VectorImp*>( args[0] );
   const VectorImp& b = *static_cast<const VectorImp*>( args[1] );
+  const PointImp& p = *static_cast<const PointImp*>( args[2] );
 
-  return new VectorImp( a.a(), a.b() + b.dir() );
+  return new VectorImp( p.coordinate(), p.coordinate() + a.dir() + b.dir() );
 }
 
 const ObjectImpType* VectorSumType::resultId() const
