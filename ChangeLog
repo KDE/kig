@@ -1,5 +1,9 @@
 2005-01-15  Maurizio Paolini <paolini@dmf.unicatt.it>
 
+	* new PolygonBNPType corresponding to a polygon with a
+	generic number of vertices.  It is constructed by selecting
+	the vertices and ending up selecting the first vertex again.
+
 	* the new ObjectConstructor::isAlreadySelectedOK method is a
 	technical addition, it returns false for all normal objects
 	(meaning that duplicated arguments are not acceptable). This
