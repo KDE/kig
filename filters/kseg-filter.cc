@@ -418,8 +418,32 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           break;
         }
         case G_CENTERRADIUS_CIRCLE:
-          return NotSupported;
+        {
+          Object* point;
+          Object* segment;
+          if ( parents[0]->hasimp( ObjectImp::ID_PointImp ) )
+          {
+            point = parents[0];
+            segment = parents[1];
+          }
+          else
+          {
+            point = parents[1];
+            segment = parents[0];
+          };
+          int index = segment->propertiesInternalNames().findIndex( "length" );
+          if ( index == -1 ) return ParseError;
+          Object* length = new PropertyObject( segment, index );
+          ret.push_back( length );
+          Objects cparents;
+          cparents.push_back( length );
+          cparents.push_back( point );
+          RealObject* o = new RealObject( CircleBPRType::instance(), cparents );
+          o->setWidth( style.pen.width() );
+          o->setColor( style.pen.color() );
+          object = o;
           break;
+        }
         default:
           return ParseError;
         };
