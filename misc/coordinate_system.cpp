@@ -147,7 +147,6 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
   QRegExp r( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" );
-  kdDebug() << r.pattern() << endl;
   ok = ( r.search(s) == 0 );
   if (ok)
   {
