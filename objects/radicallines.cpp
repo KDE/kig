@@ -221,6 +221,10 @@ std::pair<Coordinate, Coordinate> calcConicRadical( const ConicCartesianEquation
   fval = cf + lambda*fval;         // c + xb + xx
   fval = df + lambda*fval;         // d + xc + xxb + xxx
 
+  if (fabs(p0a) < 1e-7)
+  {   // this is the case if we intersect two vertical parabulas!
+    p0a = 1e-7;  // fall back to the one zero case
+  }
   if (p0a < 0)
   {
     // we have three roots..
@@ -285,17 +289,97 @@ std::pair<Coordinate, Coordinate> calcConicRadical( const ConicCartesianEquation
   // should be zero, for the new conic to be degenerate.
   df = 4*a*b*f - a*e*e - b*d*d - c*c*f + c*d*e;
 
+//lets work in homogeneous coordinates...
+
+  double dis1 = e*e - 4*b*f;
+  double maxval = fabs(dis1);
+  int maxind = 1;
+  double dis2 = d*d - 4*a*f;
+  if (fabs(dis2) > maxval)
+  {
+    maxval = fabs(dis2);
+    maxind = 2;
+  }
+  double dis3 = c*c - 4*a*b;
+  if (fabs(dis3) > maxval)
+  {
+    maxval = fabs(dis3);
+    maxind = 3;
+  }
+// one of these must be nonzero (otherwise the matrix is ...)
+// exchange elements so that the largest is the determinant of the
+// first 2x2 minor
+  double temp;
+  switch (maxind)
+  {
+    case 1:  // exchange 1 <-> 3
+    temp = a; a = f; f = temp;
+    temp = c; c = e; e = temp;
+    temp = dis1; dis1 = dis3; dis3 = temp;
+    break;
+
+    case 2:  // exchange 2 <-> 3
+    temp = b; b = f; f = temp;
+    temp = c; c = d; d = temp;
+    temp = dis2; dis2 = dis3; dis3 = temp;
+    break;
+  }
+
+
   // domi:
   // this is the negative of the determinant of the top left of the
   // matrix.  If it is 0, then the conic is a parabola, if it is < 0,
   // then the conic is an ellipse, if positive, the conic is a
   // hyperbola.  In this case, it should be positive, since we have a
   // degenerate conic, which is a degenerate case of a hyperbola..
-  double discrim = c*c - 4*a*b;
+//  double discrim = c*c - 4*a*b;
 
-  if (discrim >= 0)
+  if (dis3 >= 0)
   {
-    // ret.first is the solution of the equation A*(x,y) = (0,0) where
+    double r[3];   // direction of the null space
+    r[0] = 2*b*d - c*e;
+    r[1] = 2*a*e - c*d;
+    r[2] = dis3;
+    
+    double p[3];   // vector orthogonal to one of the two planes
+
+// there is still a stability problem here in the case of two parabolas:
+// in such case we get p[0] = p[1] = p[2] = 0
+// I must consider three cases
+    if (fabs(a) >= fabs(b) && fabs(a) >= fabs(f))
+    {
+      p[0] = 2*a;
+      p[1] = c + which*sqrt(dis3);
+      p[2] = (-p[0]*r[0] - p[1]*r[1])/r[2];
+    }
+    else if (fabs(b) >= fabs(a) && fabs(b) >= fabs(f))
+    {
+      p[0] = c + which*sqrt(dis3);
+      p[1] = 2*b;
+      p[2] = (-p[0]*r[0] - p[1]*r[1])/r[2];
+    }
+    else
+    {
+      p[2] = 2*f;
+      p[1] = d + which*sqrt(dis2);
+      p[0] = (-p[1]*r[1] - p[2]*r[2])/r[0];
+    }
+// now remember the switch and we are almost done;
+    switch (maxind)
+    {
+      case 1:  // exchange 1 <-> 3
+      temp = r[0]; r[0] = r[2]; r[2] = temp;
+      temp = p[0]; p[0] = p[2]; p[2] = temp;
+      break;
+
+      case 2:  // exchange 2 <-> 3
+      temp = r[1]; r[1] = r[2]; r[2] = temp;
+      temp = p[1]; p[1] = p[2]; p[2] = temp;
+      break;
+
+    }
+
+    // "r" is the solution of the equation A*(x,y,z) = (0,0,0) where
     // A is the matrix of the degenerate conic.  This is what we
     // called in the conic theory we saw in high school a "double
     // point".  It has the unique property that any line going through
@@ -311,8 +395,11 @@ std::pair<Coordinate, Coordinate> calcConicRadical( const ConicCartesianEquation
     // calcConicLineIntersect with the first conic and those two
     // lines.. this would prevent problems when the double point is
     // infinite etc.
-    ret.first = (1/discrim)*Coordinate (2*b*d - c*e, 2*a*e - c*d);
-    ret.second = ret.first - Coordinate (-2*b, c + which*sqrt(discrim));
+
+//    ret.first = (1/discrim)*Coordinate (2*b*d - c*e, 2*a*e - c*d);
+//    ret.second = ret.first - Coordinate (-2*b, c + which*sqrt(discrim));
+    ret.first = -p[2]/(p[0]*p[0] + p[1]*p[1]) * Coordinate (p[0],p[1]);
+    ret.second = ret.first + Coordinate (-p[1],p[0]);
     valid = true;
   }
   else
