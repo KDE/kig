@@ -312,7 +312,10 @@ bool KigFilterNative::loadNew( const QString& file, const QDomElement& docelem, 
           if ( ! imp )
           {
             notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support." ) );
+                                      "which this Kig version does not support.  "
+                                      "Perhaps you have compiled Kig without support "
+                                      "for this object type, or perhaps you are using "
+                                      "an older Kig version..." ) );
             return false;
           };
           ret[oldsize + i->id - 1] = new DataObject( imp );
@@ -347,9 +350,11 @@ bool KigFilterNative::loadNew( const QString& file, const QDomElement& docelem, 
             ObjectTypeFactory::instance()->find( tmp.latin1() );
           if ( !type )
           {
-            notSupported( file, i18n( "This Kig file contains a Kig object "
-                                      "of type \"%1\", that this version of "
-                                      "Kig does not support." ).arg( tmp ) );
+            notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
+                                      "which this Kig version does not support.  "
+                                      "Perhaps you have compiled Kig without support "
+                                      "for this object type, or perhaps you are using "
+                                      "an older Kig version..." ) );
             return false;
           };
 
