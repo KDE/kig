@@ -61,7 +61,7 @@ struct HierarchyElement
 };
 }
 
-bool KigFilterDrgeo::load( const QString& file, KigDocument& )
+bool KigFilterDrgeo::load( const QString& file, KigDocument& to )
 {
   QFile f( file );
   if ( ! f.open( IO_ReadOnly ) )
@@ -141,17 +141,17 @@ bool KigFilterDrgeo::load( const QString& file, KigDocument& )
 
 // constructs a text object with text "%1", location c, and variable
 // parts given by the argument arg of obj o.
-static ObjectTypeCalcer* constructTextObject(
-  const Coordinate& c, ObjectCalcer* o,
-  const QCString& arg, const KigDocument& doc )
-{
-  const ObjectFactory* fact = ObjectFactory::instance();
-  ObjectCalcer* propo = fact->propertyObjectCalcer( o, arg );
-  propo->calc( doc );
-  std::vector<ObjectCalcer*> args;
-  args.push_back( propo );
-  return fact->labelCalcer( QString::fromLatin1( "%1" ), c, false, args, doc );
-}
+// static ObjectTypeCalcer* constructTextObject(
+//   const Coordinate& c, ObjectCalcer* o,
+//   const QCString& arg, const KigDocument& doc )
+// {
+//   const ObjectFactory* fact = ObjectFactory::instance();
+//   ObjectCalcer* propo = fact->propertyObjectCalcer( o, arg );
+//   propo->calc( doc );
+//   std::vector<ObjectCalcer*> args;
+//   args.push_back( propo );
+//   return fact->labelCalcer( QString::fromLatin1( "%1" ), c, false, args, doc );
+// }
 
 int convertDrgeoIndex( const std::vector<HierarchyElement> es, const QString myid )
 {
