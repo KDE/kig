@@ -27,6 +27,7 @@
 #include "../objects/circle_type.h"
 #include "../objects/other_type.h"
 #include "../objects/point_type.h"
+#include "../objects/transform_types.h"
 #include "../misc/coordinate.h"
 
 #include <qfont.h>
@@ -147,8 +148,10 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
 
     // avoid g++ warnings about unused vars..
     // this doesn't really do anything..
-    if ( visible || labelVisible && given || final )
-      (void) descendtype;
+    (void) visible;
+    (void) labelVisible;
+    (void) given;
+    (void) final;
 
     drawstyle style = drawstyles[styleid];
 
@@ -168,153 +171,187 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
 
     // now load the object data..
     Object* object = 0;
-    switch( type )
+
+    if ( descendtype <= G_REFLECTED )
     {
-    case G_POINT:
-    {
-      RealObject* point = 0;
+      RealObject* o = 0;
+      // this is a transformed object..
       switch( descendtype )
       {
-      case G_FREE_POINT:
-      {
-        // fixed point
-        if ( nparents != 0 ) return ParseError;
-        Coordinate c = readKSegCoordinate( stream );
-        Objects os = ObjectFactory::instance()->fixedPoint( c );
-        point = static_cast<RealObject*>( os[2] );
-        copy( os.begin(), os.begin() + 2, back_inserter( ret ) );
+      case G_TRANSLATED:
+        o = new RealObject( TranslatedType::instance(), parents );
         break;
-      }
-      case G_CONSTRAINED_POINT:
-      {
-        // constrained point
-        double p;
-        stream >> p;
-        assert( nparents == 1 );
-        Object* parent = parents[0];
-        assert( parent );
-        Objects os = ObjectFactory::instance()->constrainedPoint( parent, p );
-        point = static_cast<RealObject*>( os[1] );
-        ret.push_back( os[0] );
+      case G_ROTATED:
+        o = new RealObject( RotationType::instance(), parents );
         break;
-      }
-      case G_INTERSECTION_POINT:
+      case G_SCALED:
+        o = new RealObject( ScalingOverCenterType::instance(), parents );
         break;
-      case G_INTERSECTION2_POINT:
+      case G_REFLECTED:
+        o = new RealObject( LineReflectionType::instance(), parents );
         break;
-      case G_MID_POINT:
-        // midpoint of a segment..
-        if ( parents.size() != 1 ) return ParseError;
-        point = new RealObject( MidPointSegmentType::instance(), parents );
-        break;
-      default:
-        return ParseError;
       };
-      assert( point );
-      point->calc( todoc );
-      point->setWidth( style.pointstyle == SMALL_CIRCLE ? 2 :
-                       style.pointstyle == MEDIUM_CIRCLE ? 3 : 5 );
-      point->setColor( style.brush.color() );
-      object = point;
-      break;
-    };
-    case G_SEGMENT:
-    {
-      if ( nparents != 2 ) return ParseError;
-      switch( descendtype )
+      assert( o );
+      if ( type == G_POINT )
       {
-      case G_ENDPOINTS_SEGMENT:
+        o->setWidth( style.pointstyle == SMALL_CIRCLE ? 2 :
+                     style.pointstyle == MEDIUM_CIRCLE ? 3 : 5 );
+        o->setColor( style.brush.color() );
+      }
+      else
       {
-        RealObject* o = new RealObject( SegmentABType::instance(), parents );
+        o->setWidth( style.pen.width() );
+        o->setColor( style.pen.color() );
+      };
+      object = o;
+    }
+    else
+      switch( type )
+      {
+      case G_POINT:
+      {
+        RealObject* point = 0;
+        switch( descendtype )
+        {
+        case G_FREE_POINT:
+        {
+          // fixed point
+          if ( nparents != 0 ) return ParseError;
+          Coordinate c = readKSegCoordinate( stream );
+          Objects os = ObjectFactory::instance()->fixedPoint( c );
+          point = static_cast<RealObject*>( os[2] );
+          copy( os.begin(), os.begin() + 2, back_inserter( ret ) );
+          break;
+        }
+        case G_CONSTRAINED_POINT:
+        {
+          // constrained point
+          double p;
+          stream >> p;
+          assert( nparents == 1 );
+          Object* parent = parents[0];
+          assert( parent );
+          Objects os = ObjectFactory::instance()->constrainedPoint( parent, p );
+          point = static_cast<RealObject*>( os[1] );
+          ret.push_back( os[0] );
+          break;
+        }
+        case G_INTERSECTION_POINT:
+          break;
+        case G_INTERSECTION2_POINT:
+          break;
+        case G_MID_POINT:
+          // midpoint of a segment..
+          if ( parents.size() != 1 ) return ParseError;
+          point = new RealObject( MidPointSegmentType::instance(), parents );
+          break;
+        default:
+          return ParseError;
+        };
+        assert( point );
+        point->setWidth( style.pointstyle == SMALL_CIRCLE ? 2 :
+                         style.pointstyle == MEDIUM_CIRCLE ? 3 : 5 );
+        point->setColor( style.brush.color() );
+        object = point;
+        break;
+      };
+      case G_SEGMENT:
+      {
+        switch( descendtype )
+        {
+        case G_ENDPOINTS_SEGMENT:
+        {
+          if ( nparents != 2 ) return ParseError;
+          RealObject* o = new RealObject( SegmentABType::instance(), parents );
+          o->setWidth( style.pen.width() );
+          o->setColor( style.pen.color() );
+          object = o;
+          break;
+        }
+        default:
+          return ParseError;
+        };
+        break;
+      };
+      case G_RAY:
+      {
+        if ( nparents != 2 ) return ParseError;
+        RealObject* o = new RealObject( RayABType::instance(), parents );
         o->setWidth( style.pen.width() );
         o->setColor( style.pen.color() );
         object = o;
         break;
-      }
-      default:
-        return ParseError;
       };
-      break;
-    };
-    case G_RAY:
-    {
-      if ( nparents != 2 ) return ParseError;
-      RealObject* o = new RealObject( RayABType::instance(), parents );
-      o->setWidth( style.pen.width() );
-      o->setColor( style.pen.color() );
-      object = o;
-      break;
-    };
-    case G_LINE:
-    {
-      if ( nparents != 2 ) return ParseError;
-      RealObject* o = 0;
-      switch( descendtype )
+      case G_LINE:
       {
-      case G_TWOPOINTS_LINE:
-        o = new RealObject( LineABType::instance(), parents );
+        if ( nparents != 2 ) return ParseError;
+        RealObject* o = 0;
+        switch( descendtype )
+        {
+        case G_TWOPOINTS_LINE:
+          o = new RealObject( LineABType::instance(), parents );
+          break;
+        case G_PARALLEL_LINE:
+          o = new RealObject( LineParallelLPType::instance(), parents );
+          break;
+        case G_PERPENDICULAR_LINE:
+          o = new RealObject( LinePerpendLPType::instance(), parents );
+          break;
+        default:
+          return ParseError;
+        };
+        assert( o );
+        o->setWidth( style.pen.width() );
+        o->setColor( style.pen.color() );
+        object = o;
         break;
-      case G_PARALLEL_LINE:
-        o = new RealObject( LineParallelLPType::instance(), parents );
+      };
+      case G_CIRCLE:
+      {
+        if ( nparents != 2 ) return ParseError;
+        RealObject* o = new RealObject( CircleBCPType::instance(), parents );
+        o->setWidth( style.pen.width() );
+        o->setColor( style.pen.color() );
+        object = o;
         break;
-      case G_PERPENDICULAR_LINE:
-        o = new RealObject( LinePerpendLPType::instance(), parents );
+      };
+      case G_ARC:
+      {
+        if ( nparents != 3 ) return ParseError;
+        RealObject* o = new RealObject( ArcBTPType::instance(), parents );
+        o->setWidth( style.pen.width() );
+        o->setColor( style.pen.color() );
+        object = o;
         break;
-      default:
+      };
+      case G_POLYGON:
+        return ParseError;
+      case G_CIRCLEINTERIOR:
+        return ParseError;
+      case G_ARCSECTOR:
+        return ParseError;
+      case G_ARCSEGMENT:
+        return ParseError;
+      case G_LOCUS:
+      {
+        if ( nparents != 2 ) return ParseError;
+        Objects os = ObjectFactory::instance()->locus( parents );
+        assert( os.size() == 2 );
+        ret.push_back( os[0] );
+        object = os.back();
+        static_cast<RealObject*>( object )->setWidth( style.pen.width() );
+        static_cast<RealObject*>( object )->setColor( style.pen.color() );
+        break;
+      };
+      case G_MEASURE:
+        return ParseError;
+      case G_CALCULATE:
+        return ParseError;
+      case G_ANNOTATION:
+        return ParseError;
+      case G_LOOP:
         return ParseError;
       };
-      assert( o );
-      o->setWidth( style.pen.width() );
-      o->setColor( style.pen.color() );
-      object = o;
-      break;
-    };
-    case G_CIRCLE:
-    {
-      if ( nparents != 2 ) return ParseError;
-      RealObject* o = new RealObject( CircleBCPType::instance(), parents );
-      o->setWidth( style.pen.width() );
-      o->setColor( style.pen.color() );
-      object = o;
-      break;
-    };
-    case G_ARC:
-    {
-      if ( nparents != 3 ) return ParseError;
-      RealObject* o = new RealObject( ArcBTPType::instance(), parents );
-      o->setWidth( style.pen.width() );
-      o->setColor( style.pen.color() );
-      object = o;
-      break;
-    };
-    case G_POLYGON:
-      return ParseError;
-    case G_CIRCLEINTERIOR:
-      return ParseError;
-    case G_ARCSECTOR:
-      return ParseError;
-    case G_ARCSEGMENT:
-      return ParseError;
-    case G_LOCUS:
-    {
-      if ( nparents != 2 ) return ParseError;
-      Objects os = ObjectFactory::instance()->locus( parents );
-      assert( os.size() == 2 );
-      ret.push_back( os[0] );
-      object = os.back();
-      static_cast<RealObject*>( object )->setWidth( style.pen.width() );
-      static_cast<RealObject*>( object )->setColor( style.pen.color() );
-      break;
-    };
-    case G_MEASURE:
-      return ParseError;
-    case G_CALCULATE:
-      return ParseError;
-    case G_ANNOTATION:
-      return ParseError;
-    case G_LOOP:
-      return ParseError;
-    };
     assert( object );
     ret[i] = object;
     object->calc( todoc );
