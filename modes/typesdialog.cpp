@@ -152,7 +152,7 @@ void TypesDialog::exportType()
     return;
   QFile fi( file_name );
   if ( fi.exists() )
-    if ( KMessageBox::questionYesNo( 0, i18n( "The file \"%1\" already exists. "
+    if ( KMessageBox::questionYesNo( this, i18n( "The file \"%1\" already exists. "
                                        "Do you wish to overwrite it?" ).arg( fi.name() ),
                                        i18n( "Overwrite File?" ) ) == KMessageBox::No )
        return;

@@ -111,13 +111,14 @@ const ObjectImpType* AngleImp::impRequirementForProperty( uint which ) const
 
 const char* AngleImp::iconForProperty( uint which ) const
 {
+  int numprop = 0;
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
-  if ( which == Parent::numberOfProperties() )
+  if ( which == Parent::numberOfProperties() + numprop++ )
     return "angle-size"; // size in radians
-  else if ( which == Parent::numberOfProperties() + 1 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "angle-size"; // size in degrees
-  else if ( which == Parent::numberOfProperties() + 2 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "angle-bisector"; // angle bisector..
   else assert( false );
   return "";
@@ -125,13 +126,14 @@ const char* AngleImp::iconForProperty( uint which ) const
 
 ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
 {
+  int numprop = 0;
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
-  if ( which == Parent::numberOfProperties() )
+  if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( size() );
-  else if ( which == Parent::numberOfProperties() + 1 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( Goniometry::convert( size(), Goniometry::Rad, Goniometry::Deg ) );
-  else if ( which == Parent::numberOfProperties() + 2 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
   {
     const double angle = mstartangle + mangle / 2;
     Coordinate p2 = mpoint + Coordinate( cos( angle ), sin( angle ) ) * 10;
@@ -352,7 +354,7 @@ bool ArcImp::valid() const
 
 const uint ArcImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 8;
+  return Parent::numberOfProperties() + 9;
 }
 
 const QCStringList ArcImp::properties() const
@@ -360,6 +362,7 @@ const QCStringList ArcImp::properties() const
   QCStringList ret = Parent::properties();
   ret << I18N_NOOP( "Center" );
   ret << I18N_NOOP( "Radius" );
+  ret << I18N_NOOP( "Angle" );
   ret << I18N_NOOP( "Angle in Degrees" );
   ret << I18N_NOOP( "Angle in Radians" );
   ret << I18N_NOOP( "Sector Surface" );
@@ -375,6 +378,7 @@ const QCStringList ArcImp::propertiesInternalNames() const
   QCStringList ret = Parent::propertiesInternalNames();
   ret << "center";
   ret << "radius";
+  ret << "angle";
   ret << "angle-degrees";
   ret << "angle-radians";
   ret << "sector-surface";
@@ -386,23 +390,26 @@ const QCStringList ArcImp::propertiesInternalNames() const
 
 const char* ArcImp::iconForProperty( uint which ) const
 {
+  int numprop = 0;
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
-  else if ( which == Parent::numberOfProperties() )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "arc-center"; // center
-  else if ( which == Parent::numberOfProperties() + 1 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "";
-  else if ( which == Parent::numberOfProperties() + 2 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return "angle";
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "angle-size";
-  else if ( which == Parent::numberOfProperties() + 3 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "angle-size";
-  else if ( which == Parent::numberOfProperties() + 4 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "";
-  else if ( which == Parent::numberOfProperties() + 5 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "";
-  else if ( which == Parent::numberOfProperties() + 6 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "";
-  else if ( which == Parent::numberOfProperties() + 7 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return "";
   else assert( false );
   return "";
@@ -410,23 +417,26 @@ const char* ArcImp::iconForProperty( uint which ) const
 
 ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
 {
+  int numprop = 0;
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, d );
-  else if ( which == Parent::numberOfProperties() )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new PointImp( mcenter );
-  else if ( which == Parent::numberOfProperties() + 1 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( mradius );
-  else if ( which == Parent::numberOfProperties() + 2 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return new AngleImp( mcenter, msa, ma );
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new IntImp( static_cast<int>( Goniometry::convert( ma, Goniometry::Rad, Goniometry::Deg ) ) );
-  else if ( which == Parent::numberOfProperties() + 3 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( ma );
-  else if ( which == Parent::numberOfProperties() + 4 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( sectorSurface() );
-  else if ( which == Parent::numberOfProperties() + 5 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( mradius * ma );
-  else if ( which == Parent::numberOfProperties() + 6 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new PointImp( firstEndPoint() );
-  else if ( which == Parent::numberOfProperties() + 7 )
+  else if ( which == Parent::numberOfProperties() + numprop++ )
     return new PointImp( secondEndPoint() );
   else assert( false );
   return new InvalidImp;

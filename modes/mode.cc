@@ -29,7 +29,7 @@ void KigMode::enableActions()
   mdoc.enableConstructActions( false );
   mdoc.aSelectAll->setEnabled( false );
   mdoc.aDeselectAll->setEnabled( false );
-  mdoc.aInvertSelection->setEnabled( true );
+  mdoc.aInvertSelection->setEnabled( false );
   mdoc.aCancelConstruction->setEnabled( false );
   mdoc.aConfigureTypes->setEnabled( false );
   mdoc.aDeleteObjects->setEnabled( false );
