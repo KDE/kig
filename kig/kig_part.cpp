@@ -195,7 +195,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TMultiType<LineConicRadical> );
     Object::addBuiltinType( new TStdType<PointTransform> );
     Object::addBuiltinType( new TStdType<LineTransform> );
-//    Object::addBuiltinType( new TStdType<SegmentTransform> );
+    Object::addBuiltinType( new TStdType<SegmentTransform> );
 //    Object::addBuiltinType( new TStdType<RayTransform> );
     Object::addBuiltinType( new TStdType<CircleTransform> );
     Object::addBuiltinType( new TStdType<ConicTransform> );

@@ -341,7 +341,10 @@ double SegmentTransform::getParam(const Coordinate& point) const
   double balsq = ba.x*ba.x + ba.y*ba.y;
   assert (balsq > 0);
 
-  return (pa.x*ba.x + pa.y*ba.y)/balsq;
+  double t = (pa.x*ba.x + pa.y*ba.y)/balsq;
+  if ( t < 0 ) return 0.;
+  if ( t > 1 ) return 1.;
+  return t;
 }
 
 void SegmentTransform::calc()
