@@ -87,6 +87,7 @@ public:
 
   // this translates an id ( e.g. ID_AnyImp ) to its name ( e.g. "any" )
   static const char* idToString( int id );
+  static QString translatedName( int id );
   // this translates an id ( e.g. ID_SegmentImp ) to a translated
   // string of the form "Select this %1" ( e.g. "Select this segment"
   // ).

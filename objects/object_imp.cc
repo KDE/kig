@@ -42,6 +42,30 @@ bool ObjectImp::inherits( int type ) const
   return type == ID_AnyImp;
 }
 
+QString ObjectImp::translatedName( int id )
+{
+  switch( id )
+  {
+  case ID_DoubleImp: return i18n( "double" );
+  case ID_IntImp: return i18n( "int" );
+  case ID_StringImp: return i18n( "string" );
+  case ID_PointImp: return i18n( "point" );
+  case ID_CurveImp: return i18n( "curve" );
+  case ID_LineImp: return i18n( "line" );
+  case ID_TextImp: return i18n( "label" );
+  case ID_AngleImp: return i18n( "angle" );
+  case ID_VectorImp: return i18n( "vector" );
+  case ID_LocusImp: return i18n( "locus" );
+  case ID_CircleImp: return i18n( "circle" );
+  case ID_ConicImp: return i18n( "conic" );
+  case ID_CubicImp: return i18n( "cubic" );
+  case ID_SegmentImp: return i18n( "segment" );
+  case ID_RayImp: return i18n( "ray" );
+//  case ID_AnyImp: return "any";
+  default: return QString::null;
+  }
+}
+
 const char* ObjectImp::idToString( int id )
 {
   switch( id )
@@ -166,20 +190,26 @@ void ObjectImp::fillInNextEscape( QString&, const KigDocument& ) const
 
 const QCStringList ObjectImp::properties() const
 {
-  return QCStringList();
+  QCStringList ret;
+  ret << I18N_NOOP( "Base Object Type" );
+  return ret;
 }
 
 const uint ObjectImp::numberOfProperties() const
 {
-  return 0;
+  return 1;
 }
 
 const QCStringList ObjectImp::propertiesInternalNames() const
 {
-  return QCStringList();
+  QCStringList ret;
+  ret << "base-object-type";
+  return ret;
 }
 
-ObjectImp* ObjectImp::property( uint, const KigDocument& ) const
+ObjectImp* ObjectImp::property( uint i, const KigDocument& ) const
 {
+  if ( i == 0 ) return new StringImp( translatedName( id() ) );
   return new InvalidImp;
 }
+
