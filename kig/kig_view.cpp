@@ -87,6 +87,7 @@ void KigView::mousePressEvent (QMouseEvent* e)
       else 
 	{
 	  if (e->button() & RightButton) { nmode = nmNothing; displayText(0); paintOnWidget(false); }
+	  else if (e->button() & MidButton) { nmode = nmClickedForNewPoint; displayText(0); paintOnWidget(false); }
 	  else nmode = nmClickedForSelecting;
 	};
       break;
@@ -235,7 +236,14 @@ void KigView::mouseReleaseEvent (QMouseEvent* e)
 	  document->selectObjects (QRect(plc, pmt));
 	  break;
 	case nmClickedForNewPoint:
-	  p = new Point(plc);
+	  if (oco.size() > 0 && oco.front()->toCurve() && oco.front()->contains(plc))
+	    {
+	      p = new ConstrainedPoint(oco.front()->toCurve(),plc);
+	    }
+	  else
+	    {
+	      p = new Point(plc);
+	    };
 // 	  kdDebug() << "new point: " << p << endl;
 	  document->addObject(p);
 	  break;

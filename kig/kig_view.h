@@ -31,7 +31,7 @@ protected:
   void resizeEvent(QResizeEvent*);
 
   // drawing: i tried to optimise this as much as possible, using ideas
-  // from the older kig
+  // from kgeo
   // we keep a picture ( stillPix ) of what the still objects look like,
   // and on moving,  we only draw the other on a copy of this pixmap.
   // furthermore,  on drawing the other, we only draw what is in
@@ -39,11 +39,11 @@ protected:
   // another thing: it turns out that working on the pixmaps isn't
   // that slow, but working on the widget is.  So we try to reduce the
   // amount of work we spend on the widget. (i got this idea from the
-  // original Kig, all credits for this should go to
-  // marc.bartsch@web.de) : objects have a getObjectOverlay function,
+  // kgeo, all credits for this should go to marc.bartsch@web.de) : objects
+  // have a getObjectOverlay function,
   // in which they specify some rects which they occupy.  We only
-  // bitBlt those rects on the widget.  For now, i'm only using this
-  // trick on moving, since that's where speed matters most...
+  // bitBlt those rects onto the widget. This is only done on moving,
+  // since that's where speed matters most...
   QPixmap stillPix; // What Do the Still Objects Look Like
   QPixmap curPix; // temporary, gets bitBlt'd (copied) onto the widget (to avoid flickering)
   QPtrList<QRect> objectOverlayList;
