@@ -303,7 +303,7 @@
 	currently hidden objects.
       </para>
     </section>
-    <section>
+    <section id="undo-redo">
       <title>Undo/Redo</title>
       <para>
 	In &kig;, you can undo almost any change you do to the
@@ -311,7 +311,7 @@
 	the appropriate shortcuts..
       </para>
     </section>
-    <section>
+    <section id="full-screen-mode">
       <title>Full Screen Mode</title>
       <para>
 	&kig; also has a Full Screen mode.  To use it, all you have
