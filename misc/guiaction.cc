@@ -32,6 +32,8 @@
 #include <kiconloader.h>
 #include <klocale.h>
 
+#include <qregexp.h>
+
 int GUIAction::shortcut() const
 {
   return 0;
@@ -88,7 +90,9 @@ KigGUIAction::KigGUIAction( GUIAction* act,
   mdoc( doc )
 {
   setWhatsThis( act->description() );
-  setToolTip( act->descriptiveName() );
+  QString tooltip = act->descriptiveName();
+  tooltip.replace( QRegExp( "&&" ), "&" );
+  setToolTip( tooltip );
 }
 
 void KigGUIAction::slotActivated()
@@ -312,8 +316,8 @@ void TestAction::act( KigDocument& doc )
 NewScriptAction::NewScriptAction( const char* descname, const char* description,
                                   const char* icon, const char* type,
                                   const char* actionname )
-  : GUIAction(), mdescname( descname ), mdescription( description ),
-    micon( icon ), mtype( type ), mactionname( actionname )
+  : GUIAction(), mactionname( actionname ), mdescname( descname ),
+    mdescription( description ), micon( icon ), mtype( type )
 {
 }
 

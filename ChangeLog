@@ -1,3 +1,7 @@
+2004-04-21  Dominique Devriese  <devriese@kde.org>
+
+	* Fix tooltips to not contain "&&" instead of "&" ( closes: 78411 ).
+
 2004-04-20  Dominique Devriese  <devriese@kde.org>
 
 	* Various i18n'able string fixes.
