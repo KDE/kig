@@ -1,11 +1,17 @@
 [Desktop Entry]
 Name=Kig
 Exec=kig %i %m -caption "%c"
-MimeType=application/x-kig;
+MimeType=application/x-kig;application/x-kgeo;
 Icon=kig
 Type=Application
 DocPath=kig/kig.html
 Comment=KDE Interactive Geometry
+Comment[be]=Інтэрактыўная геамэтрыя KDE
 Comment[da]=KDE Interaktiv geometri
-Comment[nl]=KDE Interaktieve Meetkunde
+Comment[el]=Πρόγραμμα γεωμετρίας για το KDE
+Comment[he]=גיאומטריה אינטראקטיבית
+Comment[hr]=Interaktivna geometrija za KDE
+Comment[pt_BR]=Geometria Interativa do KDE
+Comment[sv]=KDE interaktiv geometri
+Comment[tr]=KDE Etkileşimli Geometri
 Terminal=0

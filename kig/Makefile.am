@@ -11,9 +11,6 @@ noinst_HEADERS = kig.h kig_part.h kig_view.h kig_factory.h kig_commands.h type_e
 # let automoc handle all of the meta source files (moc)
 METASOURCES = AUTO
 
-messages: rc.cpp
-	$(XGETTEXT) *.cpp -o $(podir)/kig.pot
-
 KDE_ICON = kig
 
 # this Makefile creates both a KPart application and a KPart
@@ -45,7 +42,7 @@ kde_module_LTLIBRARIES = libkigpart.la
 # the Part's source, library search path, and link libraries
 libkigpart_la_SOURCES = kig_factory.cpp kig_part.cpp kig_view.cpp kig_commands.cpp type_edit.ui type_edit_impl.cpp macrowizard.ui macrowizard_impl.cpp
 libkigpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
-libkigpart_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) ../misc/libmisc.la ../objects/libobjects.la -lstdc++
+libkigpart_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) ../misc/libmisc.la ../objects/libobjects.la ../filters/libfilters.la -lstdc++
 
 # this is where the desktop file will go 
 partdesktopdir   = $(kde_servicesdir)
@@ -54,3 +51,7 @@ partdesktop_DATA = kig_part.desktop
 # this is where the part's XML-GUI resource file goes
 partrcdir   = $(kde_datadir)/kigpart
 partrc_DATA = kigpartui.rc
+
+# our mime types...
+kdemime_DATA = x-kig.desktop x-kgeo.desktop
+kdemimedir = $(kde_mimedir)/application
