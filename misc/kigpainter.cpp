@@ -22,6 +22,7 @@
 
 #include "../kig/kig_view.h"
 #include "../objects/object.h"
+#include "../objects/conic.h"
 #include "common.h"
 #include "coordinate_system.h"
 
@@ -424,8 +425,13 @@ void KigPainter::drawFatPoint( const Coordinate& p )
     drawFatPoint( p, 5 * pixelWidth() );
 }
 
-void KigPainter::drawConic( Coordinate focus1, double pdimen, double ecostheta, double esintheta )
+void KigPainter::drawConic( const ConicPolarEquationData& data )
 {
+  Coordinate focus1 = data.focus1;
+  double pdimen = data.pdimen;
+  double ecostheta0 = data.ecostheta0;
+  double esintheta0 = data.esintheta0;
+
   // this code is by Maurizio Paolini, I ( Dominique ) adapted it a
   // bit afterwards..
 
@@ -440,7 +446,7 @@ void KigPainter::drawConic( Coordinate focus1, double pdimen, double ecostheta, 
 
   // oldpos contains the point that we should draw a line towards from
   // the next point...
-  Coordinate oldpos = focus1 + Coordinate( pdimen / ( 1.0 - ecostheta ), 0 );
+  Coordinate oldpos = focus1 + Coordinate( pdimen / ( 1.0 - ecostheta0 ), 0 );
   const double stepDist = 2*M_PI / sDrawPrecision;
 
   for ( int step = 1; step <= sDrawPrecision; ++step )
@@ -448,7 +454,7 @@ void KigPainter::drawConic( Coordinate focus1, double pdimen, double ecostheta, 
     double theta = step * stepDist;
     double costheta = cos( theta );
     double sintheta = sin( theta );
-    double ecosthetamtheta = costheta*ecostheta + sintheta*esintheta;
+    double ecosthetamtheta = costheta*ecostheta0 + sintheta*esintheta0;
     double rho = pdimen / (1.0 - ecosthetamtheta);
     Coordinate pos = focus1 + rho * Coordinate( costheta, sintheta );
     overlay.setContains( pos );

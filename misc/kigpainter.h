@@ -36,6 +36,7 @@ class KigWidget;
 class QPaintDevice;
 class CoordinateSystem;
 class Object;
+class ConicPolarEquationData;
 
 /**
  * KigPainter is an extended qpainter...
@@ -178,8 +179,7 @@ public:
   /**
    * draw a conic..
    */
-  void drawConic( Coordinate focus1, double pdimen,
-                  double ecostheta0, double esintheta );
+  void drawConic( const ConicPolarEquationData& data );
 
   /*
    * draw text...
