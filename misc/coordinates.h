@@ -11,7 +11,7 @@ class CoordinateSystem
 public:
   CoordinateSystem() {};
   virtual ~CoordinateSystem() {};
-  virtual Point FromScreen (const QPoint& pt, const QRect& r) const = 0;
+  virtual Point fromScreen (const QPoint& pt, const QRect& r) const = 0;
   virtual QPoint toScreen (const Point& pt, const QRect& r) const = 0;
   virtual void drawGrid ( QPainter& p ) = 0;
 };
