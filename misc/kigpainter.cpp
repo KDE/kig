@@ -1014,7 +1014,7 @@ void KigPainter::drawTextFrame( const Rect& frame,
   };
   setPen( oldpen );
   setBrush( oldbrush );
-  drawText( frame, s, Qt::AlignVCenter | Qt::AlignHCenter );
+  drawText( frame, s, Qt::AlignVCenter | Qt::AlignLeft );
 }
 
 void KigPainter::drawArc( const Coordinate& center, const double radius,
