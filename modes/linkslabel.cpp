@@ -121,7 +121,9 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
 
   p->layout->activate();
   layout()->activate();
+  repaint( true );
   QWidget* parent = static_cast<QWidget*>( this->parent() );
   parent->layout()->activate();
-  parent->update();
+  parent->repaint( true );
+  repaint( true );
 }
