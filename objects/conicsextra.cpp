@@ -23,6 +23,7 @@
 #include "conic.h"
 #include "point.h"
 
+#include "../modes/constructing.h"
 #include "../misc/common.h"
 #include "../misc/conic-common.h"
 #include "../misc/kigpainter.h"
@@ -255,3 +256,132 @@ QString PointPolar::sUseText( const Objects&, const Object* o )
   else assert( false );
 }
 
+Objects LineConicAsymptotes::getParents() const
+{
+  Objects ret;
+  ret.push_back( conic );
+  return ret;
+}
+
+LineConicAsymptotes::LineConicAsymptotes(const LineConicAsymptotes& l)
+  : Line( l ), conic( l.conic ), mwhich( l.mwhich )
+{
+  assert( mwhich == -1 || mwhich == 1 );
+  assert( conic );
+  conic->addChild( this );
+}
+
+const QString LineConicAsymptotes::sDescriptiveName()
+{
+  return i18n("Asymptotes of a hyperbola");
+}
+
+const QString LineConicAsymptotes::sDescription()
+{
+  return i18n( "The two asymptotes of a hyperbola..." );
+}
+
+const char* LineConicAsymptotes::sActionName()
+{
+  return "objects_new_lineconicasymptotes";
+}
+
+LineConicAsymptotes* LineConicAsymptotes::copy()
+{
+  return new LineConicAsymptotes( *this );
+}
+
+LineConicAsymptotes::LineConicAsymptotes( const Objects& os )
+{
+  assert( os.size() == 1 );
+  conic = os[0]->toConic();
+  assert( conic );
+  conic->addChild( this );
+}
+
+Object::prop_map LineConicAsymptotes::getParams()
+{
+  prop_map map = Object::getParams();
+  map["lineconicasymptotes-branch"] = QString::number( mwhich );
+  return map;
+}
+
+void LineConicAsymptotes::setParams( const prop_map& map )
+{
+  Line::setParams( map );
+  prop_map::const_iterator p = map.find("lineconicasymptotes-branch");
+  bool ok = true;
+  if( p == map.end() ) mwhich = 1;   // fixme...
+  else
+    mwhich = p->second.toInt( &ok );
+  assert( ok && ( mwhich == 1 || mwhich == -1 ) );
+}
+
+KigMode* LineConicAsymptotes::sConstructMode(
+  MultiConstructibleType* ourtype,
+  KigDocument* theDoc,
+  NormalMode* previousMode )
+{
+  return new MultiConstructionMode( ourtype, previousMode, theDoc );
+}
+
+Objects LineConicAsymptotes::sMultiBuild( const Objects& args )
+{
+  LineConicAsymptotes* a = new LineConicAsymptotes( args );
+  LineConicAsymptotes* b = new LineConicAsymptotes( args );
+
+  a->mwhich = 1;
+  b->mwhich = -1;
+
+  Objects o;
+  o.push_back( a );
+  o.push_back( b );
+  return o;
+}
+
+void LineConicAsymptotes::calc()
+{
+  const ConicCartesianEquationData cequation = conic->cartesianEquationData();
+  mvalid = true;
+  LineData line = calcConicAsymptote( cequation, mwhich, mvalid );
+  if ( ! mvalid ) return;
+  mpa = line.a;
+  mpb = line.b;
+}
+
+void LineConicAsymptotes::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  assert( os.size() < 2 );
+  if ( os.size() != 1 ) return;
+
+  Conic* conic = os[0]->toConic();
+  assert( conic );
+
+  const ConicCartesianEquationData cequation = conic->cartesianEquationData();
+
+  bool mvalid = true;
+  const LineData line1 = calcConicAsymptote( cequation, 1, mvalid );
+  const LineData line2 = calcConicAsymptote( cequation, -1, mvalid );
+
+  if ( mvalid )
+  {
+    p.setPen( QPen (Qt::red,1) );
+    p.drawLine( line1 );
+    p.drawLine( line2 );
+  };
+}
+
+Object::WantArgsResult LineConicAsymptotes::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size != 1 ) return NotGood;
+  Conic* conic = os[0]->toConic();
+  if ( ! conic ) return NotGood;
+  if ( conic->conicType() != -1 ) return NotGood;
+  return Complete;
+}
+
+QString LineConicAsymptotes::sUseText( const Objects&, const Object* )
+{
+  return i18n("Asymptotes of this hyperbola");
+}

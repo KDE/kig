@@ -20,7 +20,10 @@
 
 #include "conic-common.h"
 
+#include "common.h"
+
 #include <cmath>
+#include <algorithm>
 
 ConicCartesianEquationData::ConicCartesianEquationData(
   const ConicPolarEquationData& polardata
@@ -421,7 +424,7 @@ const Coordinate calcConicPolarPoint (
   return Coordinate (x, y);
 }
 
-const Coordinate calcConicLineIntersect( const ConicCartesianEquationData c,
+const Coordinate calcConicLineIntersect( const ConicCartesianEquationData& c,
                                          const LineData& l,
                                          int which, bool& valid )
 {
@@ -470,3 +473,113 @@ ConicPolarEquationData::ConicPolarEquationData()
   : focus1(), pdimen( 0 ), ecostheta0( 0 ), esintheta0( 0 )
 {
 };
+
+const ConicPolarEquationData calcConicBDFP(
+  const LineData& directrix,
+  const Coordinate& cfocus,
+  const Coordinate& cpoint )
+{
+  ConicPolarEquationData ret;
+
+  Coordinate ba = directrix.dir();
+  double bal = ba.length();
+  ret.ecostheta0 = -ba.y / bal;
+  ret.esintheta0 = ba.x / bal;
+
+  Coordinate pa = cpoint - directrix.a;
+
+  double distpf = (cpoint - cfocus).length();
+  double distpd = ( pa.y*ba.x - pa.x*ba.y)/bal;
+
+  double eccentricity = distpf/distpd;
+  ret.ecostheta0 *= eccentricity;
+  ret.esintheta0 *= eccentricity;
+
+  Coordinate fa = cfocus - directrix.a;
+  ret.pdimen = ( fa.y*ba.x - fa.x*ba.y )/bal;
+  ret.pdimen *= eccentricity;
+  ret.focus1 = cfocus;
+
+  return ret;
+};
+
+ConicCartesianEquationData::ConicCartesianEquationData( const double incoeffs[6] )
+{
+  std::copy( incoeffs, incoeffs + 6, coeffs );
+}
+
+const LineData calcConicAsymptote(
+  const ConicCartesianEquationData data,
+  int which, bool &valid )
+{
+  assert( which == -1 || which == 1 );
+
+  LineData ret;
+  double a=data.coeffs[0];
+  double b=data.coeffs[1];
+  double c=data.coeffs[2];
+  double d=data.coeffs[3];
+  double e=data.coeffs[4];
+
+  double delta = c*c - 4*a*b;
+  if (fabs(delta) < 1e-6) { valid = false; return ret; }
+
+  double yc = (2*a*e - c*d)/delta;
+  double xc = (2*b*d - c*e)/delta;
+  // let c be nonnegative; we no longer need d, e, f.
+  if (c < 0)
+  {
+    c *= -1;
+    a *= -1;
+    b *= -1;
+  }
+
+  if ( delta < 0 )
+  {
+    valid = false;
+    return ret;
+  }
+
+  double sqrtdelta = sqrt(delta);
+  Coordinate displacement;
+  if (which > 0)
+    displacement = Coordinate(-2*b, c + sqrtdelta);
+  else
+    displacement = Coordinate(c + sqrtdelta, -2*a);
+  ret.a = Coordinate(xc, yc);
+  ret.b = ret.a + displacement;
+  return ret;
+};
+
+const ConicCartesianEquationData calcConicByAsymptotes(
+  const LineData& line1,
+  const LineData& line2,
+  const Coordinate& p )
+{
+  Coordinate p1 = line1.a;
+  Coordinate p2 = line1.b;
+  double x = p.x;
+  double y = p.y;
+
+  double c1 = p1.x*p2.y - p2.x*p1.y;
+  double b1 = p2.x - p1.x;
+  double a1 = p1.y - p2.y;
+
+  p1 = line2.a;
+  p2 = line2.b;
+
+  double c2 = p1.x*p2.y - p2.x*p1.y;
+  double b2 = p2.x - p1.x;
+  double a2 = p1.y - p2.y;
+
+  double a = a1*a2;
+  double b = b1*b2;
+  double c = a1*b2 + a2*b1;
+  double d = a1*c2 + a2*c1;
+  double e = b1*c2 + c1*b2;
+
+  double f = a*x*x + b*y*y + c*x*y + d*x + e*y;
+  f = -f;
+
+  return ConicCartesianEquationData( a, b, c, d, e, f );
+}

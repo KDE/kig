@@ -290,4 +290,6 @@ protected:
   void calc();
 };
 
+
+
 #endif // KIG_OBJECTS_CONIC_H

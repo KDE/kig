@@ -18,12 +18,14 @@
  USA
 **/
 
-
 #ifndef CONICSEXTRA_H
 #define CONICSEXTRA_H
 
 #include "point.h"
 #include "line.h"
+
+class MultiConstructibleType;
+class KigDocument;
 
 // the polar line of a point with respect to a conic
 
@@ -97,6 +99,53 @@ public:
 protected:
   Conic* conic;
   AbstractLine* polar;
+};
+
+/**
+ * implements the asymptotes of a hyperbola
+ */
+class LineConicAsymptotes
+  : public Line
+{
+public:
+  LineConicAsymptotes( const Objects& os );
+  LineConicAsymptotes( const LineConicAsymptotes& l );
+  ~LineConicAsymptotes() {};
+  LineConicAsymptotes* copy();
+
+  virtual const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "LineConicAsymptotes"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "conicasymptotes"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // arguments
+  static void sDrawPrelim ( KigPainter& p, const Objects& os );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
+  Objects getParents() const;
+
+  void calc();
+
+  virtual prop_map getParams ();
+  virtual void setParams ( const Object::prop_map& );
+
+  static Objects sMultiBuild( const Objects& args );
+
+  static KigMode* sConstructMode( MultiConstructibleType* ourtype,
+                                  KigDocument* theDoc,
+                                  NormalMode* previousMode );
+
+protected:
+  Conic* conic;
+  int mwhich;     // which of the two asymptotes:
+                  // -1 or 1
 };
 
 #endif

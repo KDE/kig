@@ -22,19 +22,20 @@
 #define KIG_MISC_CONIC_COMMON_H
 
 #include "coordinate.h"
-#include "common.h"
+#include <vector>
 
-struct ConicPolarEquationData;
+class ConicPolarEquationData;
+class LineData;
 
 /**
  * This class represents an equation of a conic in the form
  * "ax^2 + by^2 + cxy + dx + ey + f = 0".  The coefficients are stored
  * in the order a - f.
  */
-struct ConicCartesianEquationData
+class ConicCartesianEquationData
 {
-  double coeffs[6];
 public:
+  double coeffs[6];
   explicit ConicCartesianEquationData();
   explicit ConicCartesianEquationData( const ConicPolarEquationData& d );
   ConicCartesianEquationData( double a, double b, double c,
@@ -47,10 +48,7 @@ public:
       coeffs[4] = e;
       coeffs[5] = f;
     };
-  ConicCartesianEquationData( const double incoeffs[6] )
-    {
-      std::copy( incoeffs, incoeffs + 6, coeffs );
-    };
+  ConicCartesianEquationData( const double incoeffs[6] );
 };
 
 /**
@@ -60,8 +58,9 @@ public:
  * represent the coordinate system in which the equation yields the
  * good result..
  */
-struct ConicPolarEquationData
+class ConicPolarEquationData
 {
+public:
   explicit ConicPolarEquationData( const ConicCartesianEquationData& data );
   explicit ConicPolarEquationData();
   ConicPolarEquationData( const Coordinate& focus1, double dimen,
@@ -105,6 +104,22 @@ const ConicPolarEquationData calcConicBFFP(
   const std::vector<Coordinate>& args,
   int type );
 
+/**
+ * function used by ConicBDFP.  It calcs the conic with directrix d,
+ * focus f, and point p on the conic..
+ */
+const ConicPolarEquationData calcConicBDFP(
+  const LineData& d, const Coordinate& f, const Coordinate& p );
+
+/**
+ * This calcs the hyperbola defined by its two asymptotes line1 and
+ * line2, and a point p on the edge.
+ */
+const ConicCartesianEquationData calcConicByAsymptotes(
+  const LineData& line1,
+  const LineData& line2,
+  const Coordinate& p );
+
 const LineData calcConicPolarLine (
   const ConicCartesianEquationData& data,
   const Coordinate& cpole,
@@ -115,8 +130,12 @@ const Coordinate calcConicPolarPoint (
   const LineData& polar,
   bool& valid );
 
-const Coordinate calcConicLineIntersect( const ConicCartesianEquationData c,
+const Coordinate calcConicLineIntersect( const ConicCartesianEquationData& c,
                                          const LineData& l,
                                          int which, bool& valid );
+
+const LineData calcConicAsymptote(
+  const ConicCartesianEquationData data,
+  int which, bool &valid );
 
 #endif // KIG_MISC_CONIC_COMMON_H

@@ -179,6 +179,7 @@ void KigDocument::setupTypes()
   if ( Object::types().empty() )
   {
     Object::addBuiltinType( new TStdType<Segment> );
+    Object::addBuiltinType( new TMultiType<LineConicAsymptotes> );
     Object::addBuiltinType( new TStdType<RotatedPoint> );
     Object::addBuiltinType( new TStdType<LineTTP> );
     Object::addBuiltinType( new TStdType<LinePerpend> );
