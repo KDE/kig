@@ -50,45 +50,41 @@ static bool oldElemToNewObject( const QCString type,
                                 Objects& dataos,
                                 const KigDocument& kdoc )
 {
+  bool ok = true;
+  std::map<QCString, QString> params;
+  for ( QDomElement el = e.firstChild().toElement(); ! el.isNull();
+        el = el.nextSibling().toElement() )
+    if ( el.tagName() == "param" )
+    {
+      if ( el.attribute( "name" ).latin1() == "point-size" )
+      {
+        o.setWidth( el.text().toInt( &ok ) );
+        if ( ! ok ) return false;
+      }
+      else
+        params[el.attribute( "name" ).latin1()] = el.text();
+    };
+
   if ( type == "NormalPoint" )
   {
     o.setWidth( 5 ); // proper width default
-    bool constrained = false;
-    double param = 0.;
-    double x = 0.;
-    double y = 0.;
-    for ( QDomNode n = e.firstChild(); !n.isNull(); n = n.nextSibling() )
+    bool constrained = params["implementation-type"] == "Constrained";
+    if ( constrained )
     {
-      bool ok = true;
-      QDomElement e = n.toElement();
-      if ( e.isNull() ) return false;
-      if ( e.tagName() != "param" ) continue;
-      QString name = e.attribute( "name" );
-      if ( name == "implementation-type" )
-        constrained = e.text() == "Constrained";
-      else if ( name == "param" )
-      {
-        param = e.text().toDouble( &ok );
-        if ( ! ok ) return false;
-      }
-      else if ( name == "x" )
-      {
-        x = e.text().toDouble( &ok );
-        if ( ! ok ) return false;
-      }
-      else if ( name == "y" )
-      {
-        y = e.text().toDouble( &ok );
-        if ( ! ok ) return false;
-      }
-      else if ( name == "point-size" )
-      {
-        o.setWidth( e.text().toInt( &ok ) );
-        if ( ! ok ) return false;
-      };
-    };
-    if ( !constrained )
+      double param = params["param"].toDouble( &ok );
+      if ( ! ok ) return false;
+      assert( o.parents().size() == 1 );
+      o.setType( ConstrainedPointType::instance() );
+      DataObject* po = new DataObject( new DoubleImp( param ) );
+      o.addParent( po );
+      dataos.push_back( po );
+    }
+    else
     {
+      double x = params["x"].toDouble( &ok );
+      if ( ! ok ) return false;
+      double y = params["y"].toDouble( &ok );
+      if ( ! ok ) return false;
       DataObject* xo = new DataObject( new DoubleImp( x ) );
       DataObject* yo = new DataObject( new DoubleImp( y ) );
       o.addParent( xo );
@@ -97,15 +93,6 @@ static bool oldElemToNewObject( const QCString type,
       dataos.push_back( yo );
       o.setType( FixedPointType::instance() );
     }
-    else
-    {
-      assert( o.parents().size() == 1 );
-      o.setType( ConstrainedPointType::instance() );
-      DataObject* po = new DataObject( new DoubleImp( param ) );
-      o.addParent( po );
-      dataos.push_back( po );
-    };
-    return true;
   }
   else if ( type == "Locus" )
   {
@@ -115,32 +102,20 @@ static bool oldElemToNewObject( const QCString type,
     o.setType( locus->type() );
     o.setParents( locus->parents(), 0 );
     delete locus;
-    return true;
   }
   else if ( type == "CoordinatePropertyPoint" )
   {
     uint size = o.parents().size();
     if ( size != 1 ) return false;
     int wp = -1;
-    for ( QDomElement el = e.firstChild().toElement(); ! el.isNull();
-          el = el.nextSibling().toElement() )
-    {
-      if ( el.tagName() == "param" )
-      {
-        if ( el.attribute( "name" ) == "which-property" )
-        {
-          QString whichproperty = el.text();
-          QCString which = translateOldKigPropertyName( whichproperty );
-          wp = o.parents()[0]->propertiesInternalNames().findIndex( which );
-        }
-      };
-    };
+    QString whichproperty = params["which-property"];
+    QCString which = translateOldKigPropertyName( whichproperty );
+    wp = o.parents()[0]->propertiesInternalNames().findIndex( which );
     if ( wp == -1 ) return false;
     dataos.push_back( new PropertyObject( o.parents()[0], wp ) );
     dataos.back()->calc( kdoc );
     o.setParents( Objects( dataos.back() ), 0 );
     o.setType( CopyObjectType::instance() );
-    return true;
   }
   else if ( type == "CircleTransform" || type == "ConicTransform" || type == "CubicTransform" ||
             type == "LineTransform" || type == "RayTransform" || type == "SegmentTransform" ||
@@ -172,43 +147,27 @@ static bool oldElemToNewObject( const QCString type,
       // "lines"..
       t = LineReflectionType::instance();
     o.setType( t );
-    return true;
   }
   else if ( type == "TextLabel" )
   {
     bool ok = true;
     Objects parents = o.parents();
     Objects propos;
-    Coordinate c;
-    QString text;
-    for ( QDomElement el = e.firstChild().toElement(); ! el.isNull();
-          el = el.nextSibling().toElement() )
+    double x = params["coordinate-x"].toDouble( &ok );
+    if ( ! ok ) return false;
+    double y = params["coordinate-y"].toDouble( &ok );
+    if ( ! ok ) return false;
+    Coordinate c( x, y );
+    QString text = params["text"];
+    for ( uint i = 0; i < parents.size(); ++i )
     {
-      if ( el.tagName() == "param" )
-      {
-        QString name = el.attribute( "name" );
-        if ( name == "coordinate-x" )
-        {
-          c.x = el.text().toDouble( &ok );
-          if ( ! ok ) return false;
-        }
-        else if ( name == "coordinate-y" )
-        {
-          c.y = el.text().toDouble( &ok );
-          if ( ! ok ) return false;
-        }
-        else if ( name.left( 20 ) == "property-for-object-" )
-        {
-          int nparent = name.mid( 20 ).toInt( &ok );
-          if( ! ok ) return false;
-          QCString prop = translateOldKigPropertyName( el.text() );
-          int propid = parents[nparent]->propertiesInternalNames().findIndex( prop );
-          if ( propid == -1 ) return false;
-          propos.push_back( new PropertyObject( parents[nparent], propid ) );
-        }
-        else if ( name == "text" )
-          text = el.text();
-      };
+      QCString d;
+      d.setNum( i );
+      d.prepend( "property-for-object-" );
+      QCString prop = translateOldKigPropertyName( params[d] );
+      int propid = parents[i]->propertiesInternalNames().findIndex( prop );
+      if ( propid == -1 ) return false;
+      propos.push_back( new PropertyObject( parents[i], propid ) );
     };
     propos.calc( kdoc );
     copy( propos.begin(), propos.end(), back_inserter( dataos ) );
@@ -219,25 +178,75 @@ static bool oldElemToNewObject( const QCString type,
     o.setType( label->type() );
     o.setParents( label->parents(), 0 );
     delete label;
-    return true;
+  }
+  else if ( type == "CircleLineIntersectionPoint" )
+  {
+    QString sside = params["circlelineintersect-side"];
+    int side = sside == "first" ? -1 : 1;
+    DataObject* ndo = new DataObject( new IntImp( side ) );
+    dataos.push_back( ndo );
+    o.addParent( ndo );
+    o.setType( ConicLineIntersectionType::instance() );
+  }
+  else if ( type == "ConicLineIntersectionPoint" )
+  {
+    int side = params["coniclineintersect-side"].toInt( & ok );
+    if ( ! ok ) return false;
+    DataObject* ndo = new DataObject( new IntImp( side ) );
+    dataos.push_back( ndo );
+    o.addParent( ndo );
+    o.setType( ConicLineIntersectionType::instance() );
+  }
+  else if ( type == "CubicLineIntersectionPoint" )
+  {
+    int root = params["cubiclineintersect-root"].toInt( &ok );
+    if ( ! ok ) return false;
+    DataObject* ndo = new DataObject( new IntImp( root ) );
+    dataos.push_back( ndo );
+    o.addParent( ndo );
+    o.setType( LineCubicIntersectionType::instance() );
+  }
+  else if ( type == "LineConicAsymptotes" )
+  {
+    int branch = params["lineconicasymptotes-branch"].toInt( &ok );
+    if ( ! ok ) return false;
+    DataObject* ndo = new DataObject( new IntImp( branch ) );
+    dataos.push_back( ndo );
+    o.addParent( ndo );
+    o.setType( ConicAsymptoteType::instance() );
+  }
+  else if ( type == "LineConicRadical" || type == "LineRadical" )
+  {
+    int which = 1;
+    int zeroindex = 1;
+    std::map<QCString, QString>::iterator i;
+    i = params.find( "lineconicradical-branch" );
+    if ( i != params.end() )
+    {
+      which = i->second.toInt( &ok );
+      if ( ! ok ) return false;
+    };
+    i = params.find( "lineconicradical-zero" );
+    if ( i != params.end() )
+    {
+      zeroindex = i->second.toInt( &ok );
+      if ( ! ok ) return false;
+    };
+    DataObject* ndo = new DataObject( new IntImp( which ) );
+    dataos.push_back( ndo );
+    o.addParent( ndo );
+    ndo = new DataObject( new IntImp( zeroindex ) );
+    dataos.push_back( ndo );
+    o.addParent( ndo );
+    o.setType( ConicRadicalType::instance() );
   }
   else
   {
     const ObjectType* t = 0;
-    if ( type == "CircleLineIntersectionPoint" )
-      t = ConicLineIntersectionType::instance();
-    else if ( type == "ConicLineIntersectionPoint" )
-      t = ConicLineIntersectionType::instance();
-    else if ( type == "CubicLineIntersectionPoint" )
-      t = LineCubicIntersectionType::instance();
-    else if ( type == "IntersectionPoint" )
+    if ( type == "IntersectionPoint" )
       t = LineLineIntersectionType::instance();
     else if ( type == "LineTTP" )
       t = LineABType::instance();
-    else if ( type == "LineConicAsymptotes" )
-      t = ConicAsymptoteType::instance();
-    else if ( type == "LineConicRadical" || type == "LineRadical" )
-      t = ConicRadicalType::instance();
     else if ( type == "LineDirectrix" )
       t = ConicDirectrixType::instance();
     else if ( type == "LinePolar" )
@@ -260,8 +269,8 @@ static bool oldElemToNewObject( const QCString type,
       if ( ! t ) return false;
     };
     o.setType( t );
-    return true;
   }
+  return true;
 }
 
 QCString translateOldKigPropertyName( const QString& whichproperty )
