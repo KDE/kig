@@ -150,7 +150,7 @@ protected:
   // isn't just an ugly hack ;)
   friend class KigMode;
   friend class NormalMode;
-  friend class MovingMode;
+  friend class MovingModeBase;
   friend class StdConstructionMode;
   friend class PointConstructionMode;
   friend class DefineMacroMode;

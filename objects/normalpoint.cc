@@ -23,6 +23,7 @@
 #include "../kig/kig_part.h"
 
 #include "../modes/constructing.h"
+#include "../modes/moving.h"
 
 QString i18n( const char* );
 
@@ -54,9 +55,14 @@ void NormalPoint::redefine( const Coordinate& c,
 {
   Objects o = d.whatAmIOn( c, fault );
   Curve* v = 0;
+  // we don't want one of our children as a parent...
+  Objects children = getAllChildren();
   for ( Objects::iterator i = o.begin(); i != o.end(); ++i )
-    if ( ( v = (*i)->toCurve() ) )
+  {
+    if ( ( v = (*i)->toCurve() ) && ! children.contains( v ) )
       break;
+    else v = 0;
+  };
   if ( v )
   {
     // we need a ConstrainedPointImp...
@@ -525,4 +531,18 @@ const NormalPoint* NormalPoint::toNormalPoint() const
 const char* NormalPoint::sActionName()
 {
   return "objects_new_normalpoint";
+}
+
+const QStringList NormalPoint::objectActions() const
+{
+  QStringList l;
+  l << i18n( "Redefine this point..." );
+  return l;
+}
+
+void NormalPoint::doAction( int which, KigDocument* d, KigView* v, NormalMode* m )
+{
+  assert( which == 0 );
+  d->setMode( new NormalPointRedefineMode( this, d, v, m ) );
+  return;
 }

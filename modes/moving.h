@@ -25,38 +25,74 @@
 
 class Coordinate;
 class NormalMode;
+class NormalPoint;
 class KigView;
 class KigDocument;
 
 /**
- * i have thought about whether this should be a separate
- * mode, and i think it should.  Thus, every other mode can
- * decide to start moving some objects.  You could argue that it
- * doesn't handle much events, but ignoring events is a way of
- * handling them too...
+ * "Template method" pattern ( see the Design patterns book ):
+ * This is a base class for two modes: normal MovingMode: used for
+ * moving a set of objects around, using Object::startMove,
+ * Object::moveTo and Object::stopMove, and another mode
+ * NormalPointRedefineMode, used for redefining a NormalPoint...
  */
-class MovingMode
+class MovingModeBase
   : public KigMode
 {
+protected:
+  MovingModeBase( NormalMode* prev, KigView* v, KigDocument* d );
+  ~MovingModeBase();
+  // Subclasses should call this in their constructor, when they know
+  // which objects will be moving around... They are expected to be in
+  // the right order for being calc()'ed...
+  void initScreen( Objects& amo );
+  // in these functions, subclasses should do the equivalent of
+  // Object::stopMove() and moveTo()...  Note that no calc()'ing or
+  // drawing is to be done..
+  virtual void stopMove() = 0;
+  virtual void moveTo( const Coordinate& o ) = 0;
+public:
+  void leftReleased( QMouseEvent*, KigView* );
+  void leftMouseMoved( QMouseEvent*, KigView* );
+  void mouseMoved( QMouseEvent*, KigView* );
+private:
+  // all moving objects: these objects are all of the objects that
+  // need to be redrawn every time the cursor moves, and after calc is
+  // called.  Subclasses should set it in their constructors.
+  Objects amo;
+  // these are the objects that are not moving at all.. It is
+  // calculated as (mdoc->objects() - amo)...
+  Objects nmo;
+
+protected:
+  NormalMode* mprev;
+
+  KigView* mview;
+};
+
+class MovingMode
+  : public MovingModeBase
+{
+  // explicitly moving objects: these are the objects that the user
+  // requested to move...
+  Objects emo;
+  void stopMove();
+  void moveTo( const Coordinate& o );
 public:
   MovingMode( const Objects& objects, const Coordinate& c,
 	      NormalMode* previousMode, KigView*, KigDocument* );
   ~MovingMode();
-  void leftReleased( QMouseEvent*, KigView* );
-  void leftMouseMoved( QMouseEvent*, KigView* );
-  void mouseMoved( QMouseEvent*, KigView* );
-protected:
-  // explicitly moving objects: these are the objects that the user
-  // requested to move...
-  Objects emo;
-  // all moving objects: these objects are the emo, along with the
-  // objects that depend upon them...
-  Objects amo;
-  // these are the objects that are not moving at all..
-  Objects nmo;
-  NormalMode* mPrevious;
+};
 
-  KigView* mView;
+class NormalPointRedefineMode
+  : public MovingModeBase
+{
+  NormalPoint* mp;
+  void stopMove();
+  void moveTo( const Coordinate& o );
+public:
+  NormalPointRedefineMode( NormalPoint* p, KigDocument* d, KigView* v, NormalMode* m );
+  ~NormalPointRedefineMode();
 };
 
 #endif

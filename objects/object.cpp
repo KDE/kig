@@ -128,3 +128,13 @@ void Object::drawWrap(KigPainter& p, bool ss) const
   if (!shown) return;
   draw(p,ss);
 }
+
+const QStringList Object::objectActions() const
+{
+  return QStringList();
+}
+
+void Object::doAction( int, KigDocument*, KigView*, NormalMode* )
+{
+  return;
+}

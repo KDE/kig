@@ -25,6 +25,7 @@
 
 #include <qcstring.h>
 #include <qstring.h>
+#include <qstringlist.h>
 #include <qnamespace.h>
 #include <qcolor.h>
 
@@ -42,6 +43,7 @@ class TextLabel;
 class Types;
 class KAction;
 class KigDocument;
+class KigView;
 class KigMode;
 class Type;
 class KigPainter;
@@ -229,6 +231,14 @@ public:
    * that are in the rect, and throws away the rest... )
    */
   virtual void calc( const ScreenInfo& showingRect ) = 0;
+
+  /**
+   * This is a list of object-specific actions that appears when a
+   * popup menu for a single object is shown.  An example is
+   * NormalPoint that has a "redefine" action...
+   */
+  virtual const QStringList objectActions() const;
+  virtual void doAction( int which, KigDocument* d, KigView* v, NormalMode* m );
 
 protected:
   QColor mColor;

@@ -61,12 +61,24 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument* doc,
   // move action...
   id = insertItem( i18n( "Move..." ), 4 );
   assert( id == 4 );
+
+  if ( mobjs.size() == 1 )
+  {
+    // we show the object-specific actions...
+    QStringList l = mobjs[0]->objectActions();
+    for ( QStringList::const_iterator i = l.begin(); i != l.end(); ++i )
+    {
+      int rid = insertItem( *i, ++id );
+      assert( rid == id );
+    };
+  };
+
 }
 
 void NormalModePopupObjects::doAction( int i )
 {
   kdDebug() << k_funcinfo << " i == " << i << endl;
-  assert( 1 < i && i < 5 );
+  assert( 1 < i );
   switch( i )
   {
   case 2:
@@ -80,6 +92,7 @@ void NormalModePopupObjects::doAction( int i )
     mdoc->delObjects( mobjs );
     break;
   case 4:
+  {
     // move action..
     QRect r = this->frameRect();
     QPoint p = r.topLeft();
@@ -90,6 +103,17 @@ void NormalModePopupObjects::doAction( int i )
     // in this case, we return, cause we don't want objects to be
     // unselected... ( or maybe we do ? )
     return;
+  }
+  default:
+  {
+    // i >= 5, which means that one of the object specific actions was
+    // activated...
+    assert( i >= 5 );
+    assert( mobjs.size() == 1 );
+    Object* o = mobjs[0];
+    assert( ((uint)i) - 4 <= o->objectActions().size() );
+    o->doAction( i - 5, mdoc, mview, mmode );
+  }
   };
   mmode->clearSelection();
 }
