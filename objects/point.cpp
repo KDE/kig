@@ -168,7 +168,7 @@ ConstrainedPoint::ConstrainedPoint(Curve* inC, const QPoint& inPt)
 
 void ConstrainedPoint::calc()
 {
-  assert(c);
+  if (!c) return;
   Point::operator=(c->getPoint(p));
 }
 
