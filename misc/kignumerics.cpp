@@ -273,9 +273,9 @@ void GaussianElimination( double *matrix[], int numrows, int numcols,
   for ( int k = 0; k < numrows; ++k )
   {
     // ricerca elemento di modulo massimo
-    double maxval = -1.0;
-    int imax = -1;
-    int jmax = -1;
+    double maxval = -double_inf;
+    int imax = k;
+    int jmax = k;
     for( int i = k; i < numrows; ++i )
     {
       for( int j = k; j < numcols; ++j )
