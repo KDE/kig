@@ -219,7 +219,7 @@ ObjectImp* ScalingOverLineType::calc( const Args& args, const KigDocument& ) con
 static const ArgsParser::spec argsspecProjectiveRotation[] =
 {
   { ObjectImp::stype(), I18N_NOOP( "Projectively rotate this object" ), false },
-  { RayImp::stype(), I18N_NOOP( "Projectively rotate with this ray" ), false },
+  { RayImp::stype(), I18N_NOOP( "Projectively rotate with this half-line" ), false },
   { AngleImp::stype(), I18N_NOOP( "Projectively rotate by this angle" ), false }
 };
 

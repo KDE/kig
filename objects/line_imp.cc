@@ -460,14 +460,14 @@ const ObjectImpType* RayImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "ray",
-    I18N_NOOP( "ray" ),
-    I18N_NOOP( "Select this ray" ),
-    I18N_NOOP( "Remove a Ray" ),
-    I18N_NOOP( "Add a Ray" ),
-    I18N_NOOP( "Move a Ray" ),
-    I18N_NOOP( "Attach to this ray" ),
-    I18N_NOOP( "Show a Ray" ),
-    I18N_NOOP( "Hide a Ray" )
+    I18N_NOOP( "half-line" ),
+    I18N_NOOP( "Select this Half-Line" ),
+    I18N_NOOP( "Remove a Half-Line" ),
+    I18N_NOOP( "Add a Half-Line" ),
+    I18N_NOOP( "Move a Half-Line" ),
+    I18N_NOOP( "Attach to this half-line" ),
+    I18N_NOOP( "Show a Half-Line" ),
+    I18N_NOOP( "Hide a Half-Line" )
     );
   return &t;
 }
