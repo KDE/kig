@@ -221,7 +221,9 @@ const char* CircleImp::baseName() const
 double CircleImp::getParam( const Coordinate& point ) const
 {
   Coordinate tmp = point - mcenter;
-  return fmod(atan2(tmp.y, tmp.x) / ( 2 * M_PI ) + 1, 1);
+  double ret = atan2(tmp.y, tmp.x) / ( 2 * M_PI );
+  if ( ret > 0 ) return ret;
+  else return ret + 1;
 }
 
 const Coordinate CircleImp::getPoint( double p, const KigDocument& ) const
