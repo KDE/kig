@@ -68,17 +68,7 @@ class KigWidget : public QWidget
   // always want circles to look like circles etc...
   Rect matchScreenShape( const Rect& r ) const;
 
-  // to avoid stupid syntax.  Actually, the KigMode's implement
-  // functionality which is logically inherent to KigView.. So this
-  // isn't just an ugly hack ;)
-  friend class KigMode;
-  friend class NormalMode;
-  friend class MovingModeBase;
-  friend class ConstructMode;
-  friend class PointConstructMode;
-  friend class DefineMacroMode;
-  friend class DragRectMode;
-
+public:
   // what do the still objects look like
   // wondering if this is appropriate, maybe it should be part of
   // MovingMode ?
@@ -86,6 +76,8 @@ class KigWidget : public QWidget
   // temporary, gets bitBlt'd (copied) onto the widget
   // (to avoid flickering)
   QPixmap curPix;
+
+protected:
   std::vector<QRect> oldOverlay;
 
   /**
