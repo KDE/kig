@@ -11,14 +11,10 @@
 
 * harder:
 
-- split up KigDocument and KigPart
-
 - decouple the link between how an object is calc'ed and whether or
   not it is internal or drawn.  ( all combinations are possible,
-  except that internal objects are never drawn ).  Internal objects
-  should be differentiated by holding them in a separate container at
-  the KigPart level, I think..  This will require another file format
-  change, I think..
+  except that internal objects are never drawn ).  This will require
+  another file format change, I think..
 
 - undo support for changing the size and color of an object ( depends
   on the previous item )..
