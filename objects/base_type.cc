@@ -58,8 +58,10 @@ void ObjectABType::move( ObjectTypeCalcer& o, const Coordinate& to,
   const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
   const Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
   const Coordinate dist = b - a;
-  parents[0]->move( to, d );
-  parents[1]->move( to + dist, d );
+  if ( parents[0]->canMove() )
+    parents[0]->move( to, d );
+  if ( parents[1]->canMove() )
+    parents[1]->move( to + dist, d );
 }
 
 ObjectLPType::ObjectLPType( const char* fullname, const ArgsParser::spec* spec, int n )
