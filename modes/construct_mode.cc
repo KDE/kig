@@ -128,13 +128,13 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
 
   redefinePoint( mpt.get(), ncoord, mdoc.document(), w );
 
-  bool duplicationchecked = false;
   std::vector<ObjectCalcer*> args = getCalcers( mparents );
+  bool duplicationchecked = false;
   if ( ! os.empty() )
   {
     std::vector<ObjectHolder*>::iterator it 
           = std::find( mparents.begin(), mparents.end(), os.front() );
-    bool duplicationchecked = 
+    duplicationchecked = 
           ( it == mparents.end() ) || 
           isAlreadySelectedOK( args, it - mparents.begin() );
     if ( duplicationchecked ) args.push_back( os.front()->calcer() );

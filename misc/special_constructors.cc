@@ -268,6 +268,157 @@ bool LocusConstructor::isTransform() const
 }
 
 /*
+ * generic polygon constructor
+ */
+
+//static const struct ArgsParser::spec argsspecPolygonBNP =
+//  { PointImp::stype(), I18N_NOOP( "Construct a polygon with this vertex" ), 
+//    I18N_NOOP( "Select a point to be a vertex of the new polygon..." ), false };
+
+PolygonBNPTypeConstructor::PolygonBNPTypeConstructor()
+  : mtype( PolygonBNPType::instance() )
+{
+}
+
+PolygonBNPTypeConstructor::~PolygonBNPTypeConstructor()
+{
+}
+
+const QString PolygonBNPTypeConstructor::descriptiveName() const
+{
+  return i18n("Polygon by its vertices");
+}
+
+const QString PolygonBNPTypeConstructor::description() const
+{
+  return i18n("Construct a polygon by giving its vertices");
+}
+
+const QCString PolygonBNPTypeConstructor::iconFileName( const bool ) const
+{
+  return "polygon";
+}
+
+const bool PolygonBNPTypeConstructor::isAlreadySelectedOK(
+ const std::vector<ObjectCalcer*>& os, const int& pos ) const
+{
+  if ( pos == 0 && os.size() >= 3 ) return true;
+  return false;
+}
+
+const int PolygonBNPTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+                                             const KigDocument&,
+                                             const KigWidget& ) const
+{
+  uint count=os.size() - 1;
+
+  for ( uint i = 0; i <= count; i++ )
+  {
+    if ( ! ( os[i]->imp()->inherits( PointImp::stype() ) ) ) return ArgsParser::Invalid;
+  }
+  if ( count < 3 ) return ArgsParser::Valid;
+  if ( os[0] == os[count] ) return ArgsParser::Complete;
+  return ArgsParser::Valid;
+}
+
+void PolygonBNPTypeConstructor::handleArgs(
+  const std::vector<ObjectCalcer*>& os, KigPart& d,
+  KigWidget& v ) const
+{
+  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
+  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    (*i)->calc( d.document() );
+  }
+
+  d.addObjects( bos );
+}
+
+void PolygonBNPTypeConstructor::handlePrelim(
+  KigPainter& p, const std::vector<ObjectCalcer*>& os,
+  const KigDocument& d, const KigWidget&
+  ) const
+{
+  uint count = os.size();
+  if ( count < 2 ) return;
+
+  for ( uint i = 0; i < count; i++ )
+  {
+    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
+  }
+
+  std::vector<ObjectCalcer*> args = os;
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
+
+  ObjectDrawer drawer( Qt::red );
+  drawprelim( drawer, p, args, d );
+}
+
+QString PolygonBNPTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>&,
+                                          const KigDocument&, const KigWidget& ) const
+{
+  return i18n("Construct a polygon with this vertex");
+}
+
+QString PolygonBNPTypeConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>&, const KigDocument&,
+  const KigWidget& ) const
+{
+  return i18n("Select a point to be a vertex of the new polygon...");
+}
+
+void PolygonBNPTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+                                   const KigDocument& ) const
+{
+  if ( parents.size() < 2 ) return;
+
+  std::vector<Coordinate> points;
+
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    const Coordinate vertex =
+        static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
+    points.push_back( vertex );
+  }
+
+  if ( parents.size() == 2 )
+  {
+    SegmentImp segment = SegmentImp( points[0], points[1] );
+    drawer.draw( segment, p, true );
+  } else {
+    PolygonImp polygon = PolygonImp( points );
+    drawer.draw( polygon, p, true );
+  }
+}
+
+std::vector<ObjectHolder*> PolygonBNPTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
+{
+  uint count = parents.size() - 1;
+  assert ( count >= 3 );
+  std::vector<ObjectCalcer*> args;
+  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
+  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
+  ObjectHolder* h = new ObjectHolder( calcer );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( h );
+  return ret;
+}
+
+void PolygonBNPTypeConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool PolygonBNPTypeConstructor::isTransform() const
+{
+  return false;
+}
+
+/*
  * construction of polygon vertices
  */
 

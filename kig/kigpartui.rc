@@ -71,6 +71,7 @@
       <Menu name="new_poligon" icon="hexagonbcv">
 	<text>Poly&amp;gons</text>
 	<Action name="objects_new_trianglebtp" />
+	<Action name="objects_new_polygonbnp" />
         <Menu name="new_regularpolygon" icon="hexagonbcv">
 	  <text>Regular Poly&amp;gons</text>
 	  <Action name="objects_new_equitrianglebcv" />

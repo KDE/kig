@@ -118,6 +118,76 @@ std::vector<ObjectCalcer*> TriangleB3PType::movableParents( const ObjectTypeCalc
 }
 
 /*
+ * generic polygon
+ */
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PolygonBNPType )
+
+PolygonBNPType::PolygonBNPType()
+  : ObjectType( "PolygonBNP" )
+{
+}
+
+PolygonBNPType::~PolygonBNPType()
+{
+}
+
+const PolygonBNPType* PolygonBNPType::instance()
+{
+  static const PolygonBNPType s;
+  return &s;
+}
+
+ObjectImp* PolygonBNPType::calc( const Args& parents, const KigDocument& ) const
+{
+  uint count = parents.size();
+  assert (count >= 3); /* non sono ammessi poligoni con meno di tre lati */
+//  if ( parents[0] != parents[count] ) return new InvalidImp;
+  std::vector<Coordinate> points;
+
+  for ( uint i = 0; i < count; ++i )
+    points.push_back( static_cast<const PointImp*>( parents[i] )->coordinate() );
+  return new PolygonImp( points );
+}
+
+const ObjectImpType* PolygonBNPType::resultId() const
+{
+  return PolygonImp::stype();
+}
+
+const ObjectImpType* PolygonBNPType::impRequirement( const ObjectImp* obj, const Args& parents ) const
+{
+  bool found = false;
+
+  for ( Args::const_iterator o = parents.begin();
+        o != parents.end(); ++o )
+  {
+    if ( (*o)->inherits( PointImp::stype() ) && !found )
+    {
+      // object o is of a type that we're looking for
+      found = true;
+      if ( *o == obj ) return PointImp::stype();
+    }
+  }
+  return 0;
+}
+
+bool PolygonBNPType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  return false;  /* should be true? */
+}
+
+std::vector<ObjectCalcer*> PolygonBNPType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+{
+  return args;  /* should already be in correct order */
+}
+
+Args PolygonBNPType::sortArgs( const Args& args ) const
+{
+  return args;
+}
+
+/*
  * regular polygon by center and vertex
  */
 

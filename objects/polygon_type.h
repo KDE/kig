@@ -41,6 +41,25 @@ public:
 };
 
 /**
+ * Polygon by its vertices
+ */
+class PolygonBNPType
+  : public ObjectType
+{
+  PolygonBNPType();
+  ~PolygonBNPType();
+public:
+  static const PolygonBNPType* instance();
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
+  Args sortArgs( const Args& args ) const;
+};
+
+/**
  * Poligon by center and vertex
  */
 class PoligonBCVType

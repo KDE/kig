@@ -454,6 +454,10 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_trianglebtp" ) );
 
+    c = new PolygonBNPTypeConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_polygonbnp" ));
+
     c = new PoligonBCVConstructor(
 	I18N_NOOP( "Equilateral triangle with given center" ),
 	I18N_NOOP( "Construct an equilateral triangle with a given center and vertex." ),
