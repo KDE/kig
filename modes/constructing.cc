@@ -65,9 +65,9 @@ void PointConstructionMode::midReleased( QMouseEvent* e, KigView* v )
   leftReleased( e, v );
 }
 
-PointConstructionMode::PointConstructionMode( NormalMode* b, KigDocument* d )
+PointConstructionMode::PointConstructionMode( NormalMode* b, KigDocument* d, NormalPoint* rdp )
   : KigMode( d ),
-    mp( NormalPoint::fixedPoint( Coordinate( 0, 0 ) ) ),
+    mp( rdp ? rdp : NormalPoint::fixedPoint( Coordinate( 0, 0 ) ) ),
     mprev( b )
 {
 }

@@ -48,7 +48,12 @@ protected:
   void updateScreen( KigView* v );
 
 public:
-  PointConstructionMode( NormalMode* prev,  KigDocument* d );
+  /**
+   * This mode is not solely a ConstructionMode, we also use it for
+   * "redefining" a point.  If rdp == 0, we construct a point,
+   * otherwise, we redefine rdp...
+   */
+  PointConstructionMode( NormalMode* prev, KigDocument* d, NormalPoint* rdp = 0 );
   ~PointConstructionMode();
 
   void leftClicked( QMouseEvent* e, KigView* v );
