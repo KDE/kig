@@ -428,13 +428,13 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_lineconicradical") );
 
-    /* ----------- start poligons --------- */
+    /* ----------- start polygons --------- */
 
     c = new PoligonBCVConstructor(
 	I18N_NOOP( "Equilateral triangle with given center" ),
 	I18N_NOOP( "Construct an equilateral triangle with a given center and vertex." ),
 	"equitrianglebcv",
-	4 );
+	3 );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_equitrianglebcv" ) );
 
@@ -494,7 +494,7 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_decagonbcv" ) );
 
-    /* ----------- end poligons --------- */
+    /* ----------- end polygons --------- */
 
     c = new LocusConstructor();
     ctors->add( c );

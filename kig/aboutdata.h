@@ -83,8 +83,5 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                  I18N_NOOP("Responsible for the nice SVG Icon" ),
                  "david80v@tin.it");
 
-  tmp->setTranslator( I18N_NOOP( "_: NAME OF TRANSLATORS\\nYour names" ),
-                      I18N_NOOP( "_: EMAIL OF TRANSLATORS\\nYour emails" ) );
-
   return tmp;
 }

@@ -68,10 +68,15 @@
 	<ActionList name="user_circle_types" />
       </Menu>
       <Menu name="new_poligon" icon="hexagonbcv">
-	<text>&amp;Polygons</text>
+	<text>Poly&amp;gons</text>
+	<Action name="objects_new_equitrianglebcv" />
+	<Action name="objects_new_squarebcv" />
 	<Action name="objects_new_pentagonbcv" />
+	<Action name="objects_new_hexagonbcv" />
 	<Action name="objects_new_heptagonbcv" />
+	<Action name="objects_new_octagonbcv" />
 	<Action name="objects_new_nonagonbcv" />
+	<Action name="objects_new_decagonbcv" />
       </Menu>
       <Menu name="new_vector" icon="vector">
 	<text>&amp;Vectors &amp;&amp; Segments</text>
