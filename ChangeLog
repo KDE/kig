@@ -1,3 +1,9 @@
+2003-08-31  Dominique Devriese  <devriese@kde.org>
+
+	* keep the Kig version number in a central place, so that it can
+	easily be changed.  Use some autoconf magic to fill it in in the
+	other places..
+
 2003-08-25  Dominique Devriese  <devriese@kde.org>
 
 	* update the configure.in.* files and remove
