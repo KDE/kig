@@ -145,8 +145,9 @@ double ConicImp::getParam( const Coordinate& p, const KigDocument& ) const
     return fmod(theta / ( 2 * M_PI ) + 0.5, 1);
 }
 
-const Coordinate ConicImp::getPoint( double p, const KigDocument& ) const
+const Coordinate ConicImp::getPoint( double p, bool& valid, const KigDocument& ) const
 {
+  valid = true;
   const ConicPolarData d = polarData();
 
   double costheta = cos(p * 2 * M_PI);

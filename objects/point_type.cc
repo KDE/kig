@@ -63,7 +63,10 @@ ObjectImp* ConstrainedPointType::calc( const Args& tparents, const KigDocument& 
   if( ! parents[0] || ! parents[1] )
     return new InvalidImp;
   double param = static_cast<const DoubleImp*>( parents[0] )->data();
-  return new PointImp( static_cast<const CurveImp*>( parents[1] )->getPoint( param, doc ) );
+  bool valid = true;
+  const Coordinate nc = static_cast<const CurveImp*>( parents[1] )->getPoint( param, valid, doc );
+  if ( valid ) return new PointImp( nc );
+  else return new InvalidImp;
 }
 
 const ArgParser::spec argsspecdc[] =

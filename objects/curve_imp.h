@@ -36,8 +36,8 @@ public:
   // this should be the inverse function of getPoint().
   // Note that it should also do something reasonable when p is not on
   // the curve.
-  virtual const Coordinate getPoint( double param, const KigDocument& ) const = 0;
-  bool inherits( int typeID ) const;
+  virtual const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const = 0;
+  bool inherits( int type ) const;
   virtual CurveImp* copy() const = 0;
 };
 

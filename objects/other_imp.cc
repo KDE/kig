@@ -338,9 +338,10 @@ double ArcImp::getParam( const Coordinate& c, const KigDocument& d ) const
   return 0.;
 }
 
-const Coordinate ArcImp::getPoint( double p, const KigDocument& d ) const
+const Coordinate ArcImp::getPoint( double p, bool& valid, const KigDocument& d ) const
 {
   // TODO
+  valid = false;
   return Coordinate();
 }
 

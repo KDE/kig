@@ -43,7 +43,7 @@ public:
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   bool valid() const;
   double getParam( const Coordinate& point, const KigDocument& ) const;
-  const Coordinate getPoint( double param, const KigDocument& ) const;
+  const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
 
   // TODO ?
   const uint numberOfProperties() const;

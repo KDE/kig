@@ -124,7 +124,7 @@ public:
   const char* baseName() const;
 
   double getParam( const Coordinate& c, const KigDocument& d ) const;
-  const Coordinate getPoint( double p, const KigDocument& d ) const;
+  const Coordinate getPoint( double p, bool& valid, const KigDocument& d ) const;
 
   const Coordinate center() const;
   double radius() const;

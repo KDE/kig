@@ -74,7 +74,7 @@ public:
 
   int type() const;
 
-  const Coordinate getPoint( double param, const KigDocument& ) const;
+  const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
   const uint numberOfProperties() const;
@@ -108,7 +108,7 @@ public:
 
   ObjectImp* transform( const Transformation& ) const;
 
-  const Coordinate getPoint( double param, const KigDocument& ) const;
+  const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
   int type() const;
@@ -132,7 +132,7 @@ public:
 
   ObjectImp* transform( const Transformation& ) const;
 
-  const Coordinate getPoint( double param, const KigDocument& ) const;
+  const Coordinate getPoint( double param, bool& valid, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
   int type() const;

@@ -29,6 +29,8 @@
 #include <math.h>
 #include <klocale.h>
 
+static const double double_inf = HUGE_VAL;
+
 CubicImp::CubicImp( const CubicCartesianData& data )
   : CurveImp(), mdata( data )
 {
@@ -157,18 +159,19 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
   t = 0.5*(t + 1);
   t /= 3;
 
-  Coordinate p1 = internalGetPoint ( t );
-  Coordinate p2 = internalGetPoint ( t + 1.0/3.0 );
-  Coordinate p3 = internalGetPoint ( t + 2.0/3.0 );
+  bool valid1, valid2, valid3;
+  Coordinate p1 = internalGetPoint ( t, valid1 );
+  Coordinate p2 = internalGetPoint ( t + 1.0/3.0, valid2 );
+  Coordinate p3 = internalGetPoint ( t + 2.0/3.0, valid3 );
 
   double mint = t;
-  double mindist = fabs ( y - p1.y );
-  if ( fabs ( y - p2.y ) < mindist )
+  double mindist = valid1 ? fabs ( y - p1.y ) : double_inf;
+  if ( valid2 && fabs ( y - p2.y ) < mindist )
   {
     mint = t + 1.0/3.0;
     mindist = fabs ( y - p2.y );
   }
-  if ( fabs ( y - p3.y ) < mindist )
+  if ( valid3 && fabs ( y - p3.y ) < mindist )
   {
     mint = t + 2.0/3.0;
   }
@@ -176,12 +179,12 @@ double CubicImp::getParam( const Coordinate& p, const KigDocument& ) const
   return mint;
 }
 
-const Coordinate CubicImp::getPoint( double p, const KigDocument& ) const
+const Coordinate CubicImp::getPoint( double p, bool& valid, const KigDocument& ) const
 {
-  return internalGetPoint( p );
+  return internalGetPoint( p, valid );
 }
 
-const Coordinate CubicImp::internalGetPoint( double p ) const
+const Coordinate CubicImp::internalGetPoint( double p, bool& valid ) const
 {
   /*
    * this isn't really elegant...
@@ -204,7 +207,7 @@ const Coordinate CubicImp::internalGetPoint( double p ) const
   p = 2*p - 1;
   double x;
   if (p > 0) x = p/(1 - p);
-    else x = p/(1 + p);
+  else x = p/(1 + p);
 
   // calc the third degree polynomial:
   // compute the third degree polinomial:
@@ -273,18 +276,17 @@ const Coordinate CubicImp::internalGetPoint( double p ) const
     break;
   }
 
-  bool valid;
   int numroots;
   double y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
                                numroots );
   if ( valid ) return Coordinate(x,y);
   root--; if ( root <= 0) root += 3;
   y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
-                               numroots );
+                        numroots );
   if ( valid ) return Coordinate(x,y);
   root--; if ( root <= 0) root += 3;
   y = calcCubicYvalue ( x, -bound, bound, root, mdata, valid,
-                               numroots );
+                        numroots );
   assert ( valid );
   return Coordinate(x,y);
 }

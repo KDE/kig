@@ -223,8 +223,9 @@ bool AbstractLineImp::inherits( int typeID ) const
   return typeID == ID_LineImp ? true : Parent::inherits( typeID );
 }
 
-const Coordinate SegmentImp::getPoint( double param, const KigDocument& ) const
+const Coordinate SegmentImp::getPoint( double param, bool& valid, const KigDocument& ) const
 {
+  valid = true;
   return mdata.a + mdata.dir()*param;
 }
 
@@ -248,8 +249,9 @@ LineData AbstractLineImp::data() const
   return mdata;
 }
 
-const Coordinate RayImp::getPoint( double param, const KigDocument& ) const
+const Coordinate RayImp::getPoint( double param, bool& valid, const KigDocument& ) const
 {
+  valid = true;
   param = 1.0/param - 1.0;
   return mdata.a + mdata.dir()*param;
 }
@@ -281,8 +283,9 @@ double RayImp::getParam( const Coordinate& p, const KigDocument& ) const
   return param;
 }
 
-const Coordinate LineImp::getPoint( double p, const KigDocument& ) const
+const Coordinate LineImp::getPoint( double p, bool& valid, const KigDocument& ) const
 {
+  valid = true;
   // inspired upon KSeg
 
   // we need to spread the points over the line, it should also come near

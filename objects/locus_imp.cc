@@ -33,6 +33,8 @@
 
 using namespace std;
 
+static const double double_inf = HUGE_VAL;
+
 LocusImp::~LocusImp()
 {
   delete mcurve;
@@ -71,9 +73,10 @@ bool LocusImp::valid() const
   return true;
 }
 
-const Coordinate LocusImp::getPoint( double param, const KigDocument& doc ) const
+const Coordinate LocusImp::getPoint( double param, bool& valid, const KigDocument& doc ) const
 {
-  Coordinate arg = mcurve->getPoint( param, doc );
+  Coordinate arg = mcurve->getPoint( param, valid, doc );
+  if ( ! valid ) return Coordinate();
   PointImp argimp( arg );
   Args args;
   args.push_back( &argimp );
@@ -82,7 +85,13 @@ const Coordinate LocusImp::getPoint( double param, const KigDocument& doc ) cons
   ObjectImp* imp = calcret.front();
   Coordinate ret;
   if ( imp->inherits( ObjectImp::ID_PointImp ) )
+  {
+    valid = true;
     ret = static_cast<PointImp*>( imp )->coordinate();
+  }
+  else
+    valid = false;
+
   delete imp;
   return ret;
 }
@@ -151,8 +160,9 @@ double LocusImp::getDist(double param, const Coordinate& p, const KigDocument& d
 {
   param = fmod( param, 1 );
   if( param < 0 ) param += 1.;
-  Coordinate p1 = getPoint( param, doc );
-  return ( p1 - p ).length();
+  bool valid = true;
+  Coordinate p1 = getPoint( param, valid, doc );
+  return valid ? ( p1 - p ).length() : +double_inf;
 }
 
 /**

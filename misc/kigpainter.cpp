@@ -802,7 +802,8 @@ void KigPainter::drawVector( const Coordinate& a, const Coordinate& b )
 inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHierarchy& h,
                                  bool& valid, const KigDocument& doc )
 {
-  Coordinate pt = curve->getPoint( p, doc );
+  Coordinate pt = curve->getPoint( p, valid, doc );
+  if ( ! valid ) return Coordinate();
   PointImp pimp( pt );
   Args args;
   args.push_back( &pimp );
