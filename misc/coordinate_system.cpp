@@ -57,9 +57,9 @@ void EuclideanCoords::drawGrid( KigPainter& p ) const
 {
   // the intervals:
   const double hInterval =
-    static_cast<int>( pow( 10, floor( log10( p.window().width() / 1.5 ) ) ) );
-  const double vInterval =
-    static_cast<int>( pow( 10, floor( log10( p.window().height() / 1.5 ) ) ) );
+    static_cast<int>( pow( 10, floor( log10( p.window().width() / 2.5 ) ) ) );
+  const double vInterval = hInterval;
+
 
   // this grid comes largely from KGeo
   const double dMinX = p.window().left();
