@@ -27,9 +27,20 @@
 
 #include <qptrlist.h>
 #include <qrect.h>
+#include <kdeversion.h>
 
 #include <vector>
 #include <assert.h>
+
+#ifdef KDE_IS_VERSION
+#if KDE_IS_VERSION( 3, 1, 0 )
+#define KIG_USE_KDOUBLEVALIDATOR
+#else
+#undef KIG_USE_KDOUBLEVALIDATOR
+#endif
+#else
+#undef KIG_USE_KDOUBLEVALIDATOR
+#endif
 
 /**
  * Here, we define some algorithms which we need in

@@ -49,7 +49,11 @@ using std::log10;
 class CoordinateValidator
   : public QValidator
 {
+#ifdef KIG_USE_KDOUBLEVALIDATOR
   KDoubleValidator mdv;
+#else
+  KFloatValidator mdv;
+#endif
   mutable QRegExp mre;
 public:
   CoordinateValidator();
@@ -151,8 +155,10 @@ Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
     QString ys = r.cap(2);
     KLocale* l = KGlobal::locale();
     double x = l->readNumber( xs, &ok );
+    if ( ! ok ) x = xs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     double y = l->readNumber( ys, &ok );
+    if ( ! ok ) y = ys.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     return Coordinate( x, y );
   }
@@ -346,9 +352,11 @@ Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
   {
     QString rs = regexp.cap( 1 );
     double r = KGlobal::locale()->readNumber( rs, &ok );
+    if ( ! ok ) r = rs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     QString ts = regexp.cap( 2 );
     double theta = KGlobal::locale()->readNumber( ts, &ok );
+    if ( ! ok ) theta = ts.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     return Coordinate( cos( theta ) * r, sin( theta ) * r );
   }

@@ -379,9 +379,14 @@ Coordinate calcCircleRadicalStartPoint( const Coordinate& ca, const Coordinate& 
 double getDoubleFromUser( const QString& caption, const QString& label, double value,
                           QWidget* parent, bool* ok, double min, double max, int decimals )
 {
+#ifdef KIG_USE_KDOUBLEVALIDATOR
   KDoubleValidator vtor( min, max, decimals, 0, 0 );
+#else
+  KFloatValidator vtor( min, max, (QWidget*) 0, 0 );
+#endif
   QString input =
-    KLineEditDlg::getText( caption, label, QString::number( value ),
+    KLineEditDlg::getText( caption, label,
+                           KGlobal::locale()->formatNumber( value, decimals ),
                            ok, parent, &vtor );
   bool myok = true;
   double ret = KGlobal::locale()->readNumber( input, &myok );
