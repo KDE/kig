@@ -28,6 +28,7 @@
 
 #include "../objects/object_type.h"
 #include "../objects/object_imp.h"
+#include "../objects/bogus_imp.h"
 
 #include <qpen.h>
 
@@ -125,3 +126,148 @@ StandardConstructorBase::~StandardConstructorBase()
 {
 }
 
+MultiObjectTypeConstructor::MultiObjectTypeConstructor(
+  const ObjectType* t, const char* descname,
+  const char* desc, const char* iconfile,
+  const std::vector<int>& params )
+  : StandardConstructorBase( descname, desc, iconfile, mparser ),
+    mtype( t ), mparams( params ),
+    mparser( t->argsParser().without( ObjectImp::ID_IntImp ) )
+{
+}
+
+MultiObjectTypeConstructor::MultiObjectTypeConstructor(
+  const ObjectType* t, const char* descname,
+  const char* desc, const char* iconfile,
+  int a, int b, int c, int d )
+  : StandardConstructorBase( descname, desc, iconfile, mparser ),
+    mtype( t ), mparams(),
+    mparser( t->argsParser().without( ObjectImp::ID_IntImp ) )
+{
+  mparams.push_back( a );
+  mparams.push_back( b );
+  if ( c != -999 ) mparams.push_back( c );
+  if ( d != -999 ) mparams.push_back( d );
+}
+
+MultiObjectTypeConstructor::~MultiObjectTypeConstructor()
+{
+}
+
+void MultiObjectTypeConstructor::drawprelim( KigPainter& p,
+                                             const Objects& parents,
+                                             const KigWidget& w ) const
+{
+  Args args;
+  using namespace std;
+  transform( parents.begin(), parents.end(),
+             back_inserter( args ), mem_fun( &Object::imp ) );
+
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( 1 );
+
+  for ( vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
+  {
+    IntImp param( *i );
+    args.push_back( &param );
+    ObjectImp* data = mtype->calc( args, w );
+    data->draw( p );
+    delete data; data = 0;
+    args.pop_back();
+  };
+}
+
+Objects MultiObjectTypeConstructor::build(
+  const Objects& os, KigDocument&, KigWidget& ) const
+{
+  Objects ret;
+  using namespace std;
+  for ( vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i )
+  {
+    Args args;
+    args.push_back( new IntImp( *i ) );
+    Object* n = new Object( mtype, os, args );
+    ret.push_back( n );
+  };
+  return ret;
+}
+
+MergeObjectConstructor::~MergeObjectConstructor()
+{
+  for ( vectype::iterator i = mctors.begin(); i != mctors.end(); ++i )
+    delete *i;
+}
+
+MergeObjectConstructor::MergeObjectConstructor(
+  const char* descname, const char* desc, const char* iconfilename )
+  : ObjectConstructor(), mdescname( descname ), mdesc( desc ),
+    miconfilename( iconfilename ), mctors()
+{
+}
+
+ObjectConstructor::~ObjectConstructor()
+{
+}
+
+void MergeObjectConstructor::merge( ObjectConstructor* e )
+{
+  mctors.push_back( e );
+}
+
+const QString MergeObjectConstructor::descriptiveName() const
+{
+  return i18n( mdescname );
+}
+
+const QString MergeObjectConstructor::description() const
+{
+  return i18n( mdesc );
+}
+
+const QCString MergeObjectConstructor::iconFileName() const
+{
+  return miconfilename;
+}
+
+const int MergeObjectConstructor::wantArgs(
+  const Objects& os, const KigDocument& d, const KigWidget& v ) const
+{
+  for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
+  {
+    int w = (*i)->wantArgs( os, d, v );
+    if ( w != ArgsChecker::Invalid ) return w;
+  };
+  return ArgsChecker::Invalid;
+}
+
+void MergeObjectConstructor::handleArgs(
+  const Objects& os, KigDocument& d, KigWidget& v ) const
+{
+  for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
+  {
+    int w = (*i)->wantArgs( os, d, v );
+    if ( w == ArgsChecker::Complete )
+    {
+      (*i)->handleArgs( os, d, v );
+      return;
+    };
+  };
+  assert( false );
+}
+
+void MergeObjectConstructor::handlePrelim(
+  KigPainter& p, const Objects& sel,
+  const KigDocument& d, const KigWidget& v ) const
+{
+  for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
+  {
+    int w = (*i)->wantArgs( sel, d, v );
+    if ( w != ArgsChecker::Invalid )
+    {
+      (*i)->handlePrelim( p, sel, d, v );
+      return;
+    };
+  };
+}

@@ -43,6 +43,8 @@ class QCString;
 class ObjectConstructor
 {
 public:
+  virtual ~ObjectConstructor();
+
   virtual const QString descriptiveName() const = 0;
   virtual const QString description() const = 0;
   virtual const QCString iconFileName() const = 0;
@@ -80,6 +82,10 @@ public:
     ) const = 0;
 };
 
+/**
+ * This class provides wraps ObjectConstructor in a more simple
+ * interface for the most common object types..
+ */
 class StandardConstructorBase
   : public ObjectConstructor
 {
@@ -124,6 +130,10 @@ public:
     ) const = 0;
 };
 
+/**
+ * A standard implementation of StandardConstructorBase for simple
+ * types..
+ */
 class SimpleObjectTypeConstructor
   : public StandardConstructorBase
 {
@@ -142,6 +152,79 @@ public:
   Objects build( const Objects& os,
                  KigDocument& d,
                  KigWidget& w ) const;
+};
+
+/**
+ * This class is the equivalent of @ref SimpleObjectTypeConstructor
+ * for object types that are constructed in groups of more than one.
+ * For example, the intersection of a circle and line in general
+ * produces two points, in general.  Internally, we differentiate
+ * betweem them by passing them a parameter of ( in this case ) 1 or
+ * -1.  There are still other object types that work the same, and
+ * they all require this sort of parameter.
+ * E.g. CubicLineIntersectionType takes a parameter between 1 and 3.
+ * This class knows about that, and constructs the objects along this
+ * scheme..
+ */
+class MultiObjectTypeConstructor
+  : public StandardConstructorBase
+{
+  const ObjectType* mtype;
+  std::vector<int> mparams;
+  ArgParser mparser;
+public:
+  MultiObjectTypeConstructor(
+    const ObjectType* t, const char* descname,
+    const char* desc, const char* iconfile,
+    const std::vector<int>& params );
+  MultiObjectTypeConstructor(
+    const ObjectType* t, const char* descname,
+    const char* desc, const char* iconfile,
+    int a, int b, int c = -999, int d = -999 );
+  ~MultiObjectTypeConstructor();
+
+  void drawprelim( KigPainter& p,
+                   const Objects& parents,
+                   const KigWidget& w ) const;
+
+  Objects build( const Objects& os,
+                 KigDocument& d,
+                 KigWidget& w ) const;
+};
+
+/**
+ * This class is a collection of some other ObjectConstructors, that
+ * makes them appear to the user as a single ObjectConstructor.  It is
+ * e.g. used for the "intersection" constructor.
+ */
+class MergeObjectConstructor
+  : public ObjectConstructor
+{
+  const char* mdescname;
+  const char* mdesc;
+  const char* miconfilename;
+  typedef std::vector<ObjectConstructor*> vectype;
+  vectype mctors;
+public:
+  MergeObjectConstructor( const char* descname, const char* desc,
+                          const char* iconfilename );
+  ~MergeObjectConstructor();
+
+  void merge( ObjectConstructor* e );
+
+  const QString descriptiveName() const;
+  const QString description() const;
+  const QCString iconFileName() const;
+
+  const int wantArgs( const Objects& os,
+                      const KigDocument& d,
+                      const KigWidget& v
+    ) const;
+
+  void handleArgs( const Objects& os, KigDocument& d, KigWidget& v ) const;
+
+  void handlePrelim( KigPainter& p, const Objects& sel,
+                     const KigDocument& d, const KigWidget& v ) const;
 };
 
 #endif
