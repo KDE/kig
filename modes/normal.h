@@ -55,6 +55,7 @@ public:
   void deleteObjects();
   void showHidden();
   void newMacro();
+  void editTypes();
 
   void selectObject( Object* o );
   void selectObjects( Objects& os );

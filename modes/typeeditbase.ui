@@ -1,0 +1,217 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>TypeManagerDialogBase</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>TypeManagerDialogBase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>401</width>
+            <height>248</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Manage Types</string>
+        <comment>This is </comment>
+    </property>
+    <property name="whatsThis" stdset="0">
+        <string>Here you can manage types; you can remove them, and load and save them from and to files...</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>11</number>
+        </property>
+        <property name="spacing">
+            <number>6</number>
+        </property>
+        <widget class="KListBox">
+            <property name="name">
+                <cstring>typeList</cstring>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="selectionMode">
+                <enum>Multi</enum>
+            </property>
+            <property name="whatsThis" stdset="0">
+                <string>Here, you can select types...</string>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>Layout2</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonRemove</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Delete Type</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name" stdset="0">
+                        <cstring>Spacer3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonExport</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Export Type To File</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonImport</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Import Types</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="Line">
+            <property name="name">
+                <cstring>Line1</cstring>
+            </property>
+            <property name="frameShape" stdset="0">
+                <enum>HLine</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>Layout1</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonHelp</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Help</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name" stdset="0">
+                        <cstring>Horizontal Spacing2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonOk</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;OK</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                    <property name="default">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>buttonHelp</sender>
+        <signal>clicked()</signal>
+        <receiver>TypeManagerDialogBase</receiver>
+        <slot>helpSlot()</slot>
+    </connection>
+    <connection>
+        <sender>buttonOk</sender>
+        <signal>clicked()</signal>
+        <receiver>TypeManagerDialogBase</receiver>
+        <slot>okSlot()</slot>
+    </connection>
+    <connection>
+        <sender>buttonRemove</sender>
+        <signal>clicked()</signal>
+        <receiver>TypeManagerDialogBase</receiver>
+        <slot>deleteType()</slot>
+    </connection>
+    <connection>
+        <sender>buttonExport</sender>
+        <signal>clicked()</signal>
+        <receiver>TypeManagerDialogBase</receiver>
+        <slot>exportType()</slot>
+    </connection>
+    <connection>
+        <sender>buttonImport</sender>
+        <signal>clicked()</signal>
+        <receiver>TypeManagerDialogBase</receiver>
+        <slot>importTypes()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot access="protected">deleteType()</slot>
+    <slot access="protected">exportType()</slot>
+    <slot>helpSlot()</slot>
+    <slot access="protected">importTypes()</slot>
+    <slot>okSlot()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

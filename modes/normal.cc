@@ -340,3 +340,8 @@ void NormalMode::objectsRemoved()
 {
   static_cast<KigView*>(mDoc->widget())->redrawScreen();
 }
+
+void NormalMode::editTypes()
+{
+
+}
