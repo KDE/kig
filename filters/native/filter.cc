@@ -446,6 +446,7 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
     }
     else if ( e.tagName() == "Objects" )
     {
+      Objects ret = kdoc.objects();
       // first pass: do a topological sort of the objects, to support
       // randomly ordered files...
       std::vector<HierElem> elems;
@@ -493,6 +494,55 @@ KigFilter::Result KigFilterNative::loadNew( const QDomElement& docelem, KigDocum
         }
         else continue;
       };
+      elems = sortElems( elems );
+
+      uint oldsize = ret.size();
+      ret.resize( oldsize + elems.size(), 0 );
+
+      for ( std::vector<HierElem>::iterator i = elems.begin(); i != elems.end(); ++i )
+      {
+        QDomElement e = i->el;
+        if ( e.tagName() == "Data" )
+        {
+          QString tmp = e.attribute( "type" );
+          if ( tmp.isNull() ) return ParseError;
+          ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e );
+          ret[oldsize + i->id - 1] = new DataObject( imp );
+        }
+        else if ( e.tagName() == "Object" )
+        {
+          QString tmp = e.attribute( "type" );
+          if ( tmp.isNull() ) return ParseError;
+          const ObjectType* type = ObjectTypeFactory::instance()->find( tmp.latin1() );
+          if ( !type ) return ParseError;
+
+          tmp = e.attribute( "color" );
+          if ( tmp.isNull() ) return ParseError;
+          QColor color( tmp );
+
+          tmp = e.attribute( "shown" );
+          if ( tmp.isNull() ) return ParseError;
+          bool shown = ! ( tmp == "false" || tmp == "no" );
+
+          tmp = e.attribute( "width" );
+          int width;
+          if ( tmp.isNull() ) width = 5;
+          else width = tmp.toInt( &ok );
+          if ( ! ok ) width = 5;
+
+          Objects parents;
+          for ( std::vector<int>::iterator j = i->parents.begin(); j != i->parents.end(); ++j )
+            parents.push_back( ret[oldsize + *j - 1] );
+
+          RealObject* newobj = new RealObject( type, parents );
+          newobj->setColor( color );
+          newobj->setShown( shown );
+          newobj->setWidth( width );
+          ret[oldsize + i->id - 1] = newobj;
+        }
+        else continue;
+      }
+      kdoc.setObjects( ret );
     }
     else continue; // be forward-compatible..
   };
