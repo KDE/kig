@@ -166,14 +166,14 @@ Objects getAllParents( const Objects& objs )
 };
 
 // this calls delChild() on all of o's parents..
-static void delChildFromParents( Object* o )
+void delChildFromParents( Object* o )
 {
   Objects parents = o->parents();
   for ( Objects::iterator i = parents.begin(); i != parents.end(); ++i )
     (*i)->delChild( o );
 };
 
-static void addChildToParents( Object* o )
+void addChildToParents( Object* o )
 {
   Objects parents = o->parents();
   for ( Objects::iterator i = parents.begin(); i != parents.end(); ++i )

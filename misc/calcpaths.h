@@ -67,4 +67,9 @@ Objects getAllParents( const Objects& objs );
  */
 Objects deadParents( Objects& os );
 
+// this calls delChild() on all of o's parents..
+void delChildFromParents( Object* o );
+// reverses delChildFromParents..
+void addChildToParents( Object* o );
+
 #endif
