@@ -80,7 +80,8 @@ double Line::getParam(const Coordinate& point) const
   Coordinate dir = p1 - p2;
   Coordinate d = pt-m;
 
-  double p = d.x/dir.x;
+  double p = dir.x != 0 ? d.x/dir.x : d.y / dir.y;
+  assert( std::finite( p ) );
   if (p>=0) p = sqrt(sqrt(sqrt(p)));
   else p = -sqrt(sqrt(sqrt(-p)));
   p/=1.5;
