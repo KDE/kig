@@ -201,8 +201,20 @@ public:
   KAction* aFixedPoint;
   myvector<KigGUIAction*> aActions;
 
-  void actionAdded( GUIAction* a );
-  void actionRemoved( GUIAction* a );
+  /**
+   * the "token" keeps some objects that should be deleted, we only
+   * delete them after we replug the actionLists..  calling these
+   * functions should be done like:
+   * GUIUpdateToken t = doc->startGUIActionUpdate();
+   * doc->action[Added|Removed]( act, t );
+   * ...
+   * doc->endGUIActionUpdate( t );
+   */
+  typedef std::vector<KigGUIAction*> GUIUpdateToken;
+  GUIUpdateToken startGUIActionUpdate();
+  void actionAdded( GUIAction* a, GUIUpdateToken& t );
+  void actionRemoved( GUIAction* a, GUIUpdateToken& t );
+  void endGUIActionUpdate( GUIUpdateToken& t );
 
   KCommandHistory* history();
 

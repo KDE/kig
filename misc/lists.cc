@@ -53,14 +53,39 @@ void GUIActionList::add( GUIAction* a )
 {
   mactions.push_back( a );
   for ( uint i = 0; i < mdocs.size(); ++i )
-    mdocs[i]->actionAdded( a );
+  {
+    KigDocument::GUIUpdateToken t = mdocs[i]->startGUIActionUpdate();
+    mdocs[i]->actionAdded( a, t );
+    mdocs[i]->endGUIActionUpdate( t );
+  };
+}
+
+void GUIActionList::remove( myvector<GUIAction*> a )
+{
+  for ( uint i = 0; i < a.size(); ++i )
+  {
+    mactions.remove( a[i] );
+  };
+  for ( uint i = 0; i < mdocs.size(); ++i )
+  {
+    KigDocument::GUIUpdateToken t = mdocs[i]->startGUIActionUpdate();
+    for ( uint j = 0; j < a.size(); ++j )
+      mdocs[i]->actionRemoved( a[j], t );
+    mdocs[i]->endGUIActionUpdate( t );
+  };
+  delete_all( a.begin(), a.end() );
 }
 
 void GUIActionList::remove( GUIAction* a )
 {
   mactions.remove( a );
   for ( uint i = 0; i < mdocs.size(); ++i )
-    mdocs[i]->actionRemoved( a );
+  {
+    KigDocument::GUIUpdateToken t = mdocs[i]->startGUIActionUpdate();
+    mdocs[i]->actionRemoved( a, t );
+    mdocs[i]->endGUIActionUpdate( t );
+  };
+  delete a;
 }
 
 ObjectConstructorList::ObjectConstructorList()
@@ -93,7 +118,65 @@ ObjectConstructorList::vectype ObjectConstructorList::ctorsThatWantArgs(
   return ret;
 }
 
+void ObjectConstructorList::remove( ObjectConstructor* a )
+{
+  mctors.remove( a );
+  delete a;
+}
+
 void ObjectConstructorList::add( ObjectConstructor* a )
 {
   mctors.push_back( a );
 }
+
+Macro::Macro( GUIAction* a, ObjectConstructor* c )
+  : action( a ), ctor( c )
+{
+}
+
+MacroList::MacroList()
+{
+}
+
+MacroList::~MacroList()
+{
+  myvector<GUIAction*> actions;
+  myvector<ObjectConstructor*> ctors;
+  for ( vectype::iterator i = mdata.begin(); i != mdata.end(); ++i )
+  {
+    Macro* m = *i;
+    GUIAction* a = m->action;
+    actions.push_back( a );
+    ObjectConstructor* c = m->ctor;
+    ctors.push_back( c );
+    delete m;
+  };
+  mdata.clear();
+  GUIActionList::instance()->remove( actions );
+  for ( uint i = 0; i < ctors.size(); ++i )
+    ObjectConstructorList::instance()->remove( ctors[i] );
+}
+
+MacroList* MacroList::instance()
+{
+  static MacroList t;
+  return &t;
+}
+
+void MacroList::add( Macro* m )
+{
+  mdata.push_back( m );
+  ObjectConstructorList::instance()->add( m->ctor );
+  GUIActionList::instance()->add( m->action );
+}
+
+void MacroList::remove( Macro* m )
+{
+  GUIAction* a = m->action;
+  ObjectConstructor* c = m->ctor;
+  mdata.remove( m );
+  delete m;
+  GUIActionList::instance()->remove( a );
+  ObjectConstructorList::instance()->remove( c );
+}
+

@@ -27,6 +27,10 @@ class Objects;
 class KigDocument;
 class KigWidget;
 
+/**
+ * List of GUIActions for the parts to show.  Note that the list owns
+ * the actions it receives..
+ */
 class GUIActionList
 {
 public:
@@ -48,12 +52,17 @@ public:
 
   void add( GUIAction* a );
   void remove( GUIAction* a );
+  void remove( myvector<GUIAction*> a );
 };
 
+/**
+ * The list of object constructors for use in various places, e.g. RMB
+ * menu's.  Note that the list owns the ctors it gets..
+ */
 class ObjectConstructorList
 {
 public:
-  typedef std::vector<ObjectConstructor*> vectype;
+  typedef myvector<ObjectConstructor*> vectype;
 private:
   vectype mctors;
   ObjectConstructorList();
@@ -61,9 +70,55 @@ private:
 public:
   static ObjectConstructorList* instance();
   void add( ObjectConstructor* a );
+  void remove( ObjectConstructor* a );
   vectype ctorsThatWantArgs( const Objects&, const KigDocument&,
                              const KigWidget&, bool completeOnly = false
     ) const;
+};
+
+/**
+ * this is just a simple data struct.  doesn't have any functionality
+ * of its own..
+ */
+class Macro
+{
+public:
+  GUIAction* action;
+  ObjectConstructor* ctor;
+  Macro( GUIAction* a, ObjectConstructor* c );
+  ~Macro();
+};
+
+/**
+ * This class keeps a list of all macro's, and allows them to be
+ * easily accessed, added etc.  Macro objects are owned by this
+ * list..
+ */
+class MacroList
+{
+public:
+  typedef myvector<Macro*> vectype;
+private:
+  vectype mdata;
+  MacroList();
+  ~MacroList();
+public:
+  /**
+   * MacroList is a singleton
+   */
+  static MacroList* instance();
+
+  /**
+   * Add a Macro m.  MacroList takes care of adding the action and
+   * ctor in the relevant places..
+   */
+  void add( Macro* m );
+
+  /**
+   * Remove macro m.  Macrolist takes care of deleting everything, and
+   * unregistering the action and ctor from the relevant places..
+   */
+  void remove( Macro* m );
 };
 
 #endif

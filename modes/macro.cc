@@ -112,9 +112,8 @@ void DefineMacroMode::finishPressed()
     new MacroConstructor( mgiven, mfinal,
                           mwizard->KLineEdit2->text(),
                           mwizard->KLineEdit1->text() );
-
-  ObjectConstructorList::instance()->add( ctor );
-  GUIActionList::instance()->add( new ConstructibleAction( ctor, 0 ) );
+  ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
+  MacroList::instance()->add( new Macro( act, ctor ) );
 
   abandonMacro();
 }

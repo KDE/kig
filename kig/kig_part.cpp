@@ -657,7 +657,7 @@ void KigDocument::setCoordinateSystem( CoordinateSystem* cs )
   mcoordsystem = cs;
 }
 
-void KigDocument::actionRemoved( GUIAction* a )
+void KigDocument::actionRemoved( GUIAction* a, GUIUpdateToken& t )
 {
   KigGUIAction* rem = 0;
   for ( myvector<KigGUIAction*>::iterator i = aActions.begin(); i != aActions.end(); ++i )
@@ -673,19 +673,25 @@ void KigDocument::actionRemoved( GUIAction* a )
   aMNewLine.remove( rem );
   aMNewOther.remove( rem );
   aMNewAll.remove( rem );
-  unplugActionLists();
-  plugActionLists();
-  delete rem;
+  t.push_back( rem );
 }
 
-void KigDocument::actionAdded( GUIAction* a )
+void KigDocument::actionAdded( GUIAction* a, GUIUpdateToken& )
 {
-  // we don't pass actionCollection() as parent, because that is for
-  // actions with names that might appear in kigpartui.rc
   KigGUIAction* ret = new KigGUIAction( a, *this, actionCollection() );
   aActions.push_back( ret );
   ret->plug( this );
+}
 
+void KigDocument::endGUIActionUpdate( GUIUpdateToken& t )
+{
   unplugActionLists();
   plugActionLists();
+  delete_all( t.begin(), t.end() );
+  t.clear();
+}
+
+KigDocument::GUIUpdateToken KigDocument::startGUIActionUpdate()
+{
+  return GUIUpdateToken();
 }
