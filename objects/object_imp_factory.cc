@@ -180,3 +180,195 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
   assert( false );
 }
 
+static Coordinate readXYElements( const QDomElement& e, bool& ok )
+{
+  double x, y;
+  ok = true;
+  QDomElement xe = e.firstChild().toElement();
+  if ( xe.isNull() || xe.tagName() != "x" )
+    ok = false;
+  else x = xe.text().toDouble( &ok );
+  if ( ! ok ) return Coordinate();
+  QDomElement ye = xe.nextSibling().toElement();
+  if ( ye.isNull() || ye.tagName() != "y" ) ok = false;
+  else y = ye.text().toDouble( &ok );
+  if ( ! ok ) return Coordinate();
+  return Coordinate( x, y );
+};
+
+static Coordinate readCoordinateElement( QDomNode n, bool& ok,
+                                         const char* tagname )
+{
+  QDomElement e = n.toElement();
+  if ( e.isNull() || e.tagName() != tagname )
+  {
+    ok = false;
+    Coordinate ret;
+    return ret;
+  }
+  return readXYElements( e, ok );
+};
+
+static double readDoubleElement( QDomNode n, bool& ok,
+                                 const char* tagname )
+{
+  QDomElement e = n.toElement();
+  if ( e.isNull() || e.tagName() != tagname )
+  {
+    ok = false;
+    return 0.;
+  };
+  return e.text().toDouble( &ok );
+};
+
+ObjectImp* ObjectImpFactory::deserialize( const QString& type,
+                                          const QDomElement& parent ) const
+{
+  bool ok = true;
+  if ( type == "int" )
+  {
+    int ret = parent.text().toInt( &ok );
+    if ( ! ok ) return 0;
+    else return new IntImp( ret );
+  }
+  else if ( type == "double" )
+  {
+    double ret = parent.text().toDouble( &ok );
+    if ( ! ok ) return 0;
+    else return new DoubleImp( ret );
+  }
+  else if ( type == "string" )
+  {
+    return new StringImp( parent.text() );
+  }
+  else if ( type == "point" )
+  {
+    Coordinate ret = readXYElements( parent, ok );
+    if ( ! ok ) return 0;
+    else return new PointImp( ret );
+  }
+  else if ( type == "line" || type == "segment" || type == "ray" )
+  {
+    QDomNode n = parent.firstChild();
+    Coordinate a = readCoordinateElement( n, ok, "a" );
+    if ( !ok ) return 0;
+    n = n.nextSibling();
+    Coordinate b = readCoordinateElement( n, ok, "b" );
+    if ( ! ok ) return 0;
+    if ( type == "line" ) return new LineImp( a, b );
+    else if ( type == "segment" ) return new SegmentImp( a, b );
+    else return new RayImp( a, b );
+  }
+  else if( type == "angle" )
+  {
+    double size = readDoubleElement( parent.firstChild(), ok, "size" );
+    if ( ! ok ) return 0;
+    return new AngleImp( Coordinate(), 0, size );
+  }
+  else if( type == "vector" )
+  {
+    Coordinate dir = readXYElements( parent, ok );
+    if ( ! ok ) return 0;
+    else return new VectorImp( Coordinate(), dir );
+  }
+  else if( type == "locus" )
+  {
+    QDomElement curvee = parent.firstChild().toElement();
+    if ( curvee.isNull() || curvee.tagName() != "curve" ) return 0;
+    QString type = curvee.attribute( "type" );
+    ObjectImp* oi = deserialize( type, curvee );
+    if ( ! oi || ! oi->inherits( ObjectImp::ID_CurveImp ) ) return 0;
+    //CurveImp* curvei = static_cast<CurveImp*>( oi );
+
+    QDomElement hiere = curvee.nextSibling().toElement();
+    if ( hiere.isNull() || hiere.tagName() != "calculation" ) return 0;
+    assert( false );    // TODO
+//    return new LocusImp( curvei, hier );
+  }
+  else if( type == "circle" )
+  {
+    QDomNode n = parent.firstChild();
+    Coordinate center = readCoordinateElement( n, ok, "center" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double radius = readDoubleElement( n, ok, "radius" );
+    if ( ! ok ) return 0;
+
+    return new CircleImp( center, radius );
+  }
+  else if( type == "conic" )
+  {
+    QDomNode n = parent.firstChild();
+    Coordinate focus1 = readCoordinateElement( n, ok, "focus1" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double pdimen = readDoubleElement( n, ok, "pdimen" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double ecostheta0 = readDoubleElement( n, ok, "ecostheta0" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double esintheta0 = readDoubleElement( n, ok, "esintheta0" );
+    if ( ! ok ) return 0;
+
+    return new ConicImpPolar(
+      ConicPolarData( focus1, pdimen, ecostheta0, esintheta0 ) );
+  }
+  else if( type == "cubic" )
+  {
+    QDomElement coeffse = parent.firstChild().toElement();
+    if ( coeffse.isNull() || coeffse.tagName() != "coefficients" )
+      return 0;
+
+    QDomNode n = coeffse.firstChild();
+    double a000 = readDoubleElement( n, ok, "a000" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a001 = readDoubleElement( n, ok, "a001" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a002 = readDoubleElement( n, ok, "a002" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a011 = readDoubleElement( n, ok, "a011" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a012 = readDoubleElement( n, ok, "a012" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a022 = readDoubleElement( n, ok, "a022" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a111 = readDoubleElement( n, ok, "a111" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a112 = readDoubleElement( n, ok, "a112" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a122 = readDoubleElement( n, ok, "a112" );
+    if ( ! ok ) return 0;
+
+    n = n.nextSibling();
+    double a222 = readDoubleElement( n, ok, "a222" );
+    if ( ! ok ) return 0;
+
+    return new CubicImp( CubicCartesianData( a000, a001, a002,
+                                             a011, a012, a022,
+                                             a111, a112, a122,
+                                             a222 ) );
+  }
+  assert( false );
+}
+
