@@ -1,5 +1,8 @@
 2003-10-09  Dominique Devriese  <devriese@kde.org>
 
+	* make the New Script Wizard give an error when the script does
+	not generate a valid ObjectImp.
+
 	* fix some issues with the escaping of an & in a translatable
 	string in an xml file
 
