@@ -1,5 +1,5 @@
 // aboutdata.h
-// Copyright (C)  2002  Dominique Devriese <fritmebufstek@pandora.be>
+// Copyright (C)  2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -28,7 +28,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 				   description, KAboutData::License_GPL,
 				   "(C) 2002, Dominique Devriese");
   tmp->addAuthor("Dominique Devriese", I18N_NOOP("Coding"),
-		  "fritmebufstek@pandora.be" );
+		  "dominique.devriese@student.kuleuven.ac.be" );
 
   tmp->addCredit("Marc Bartsch",
 		  I18N_NOOP("Author of KGeo, where i got inspiration, "

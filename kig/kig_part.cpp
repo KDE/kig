@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese
+ Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -286,7 +286,7 @@ bool KigDocument::openFile()
         i18n( "You tried to open a document of type \"%1\".  Unfortunately, "
               "Kig doesn't support this format.  If you think the format in "
               "question would be worth implementing support for, you can "
-              "always ask me nicely on mailto:fritmebufstek@pandora.be "
+              "always ask me nicely on mailto:dominique.devriese@student.kuleuven.ac.be "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
         i18n( "Format not supported" )
@@ -346,7 +346,7 @@ bool KigDocument::saveFile()
         i18n( "You tried to save to a file of type \"%1\".  Unfortunately, "
               "Kig doesn't support this format.  If you think the format in "
               "question would be worth implementing support for, you can "
-              "always ask me nicely on mailto:fritmebufstek@pandora.be "
+              "always ask me nicely on mailto:dominique.devriese@student.kuleuven.ac.be "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
         i18n( "Format not supported" )
@@ -370,7 +370,7 @@ bool KigDocument::saveFile()
         i18n( "You tried to save to a file of type \"%1\".  Unfortunately, "
               "Kig doesn't support this format.  If you think the format in "
               "question would be worth implementing support for, you can "
-              "always ask me nicely on mailto:fritmebufstek@pandora.be "
+              "always ask me nicely on mailto:dominique.devriese@student.kuleuven.ac.be "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
         i18n( "Format not supported" )

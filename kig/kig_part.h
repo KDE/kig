@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese
+ Copyright (C) 2002  Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ class Object;
  * interface to shells
  *
  * @short Main Part
- * @author Dominique Devriese <fritmebufstek@pandora.be>
+ * @author Dominique Devriese <dominique.devriese@student.kuleuven.ac.be>
  */
 class KigDocument : public KParts::ReadWritePart
 {
