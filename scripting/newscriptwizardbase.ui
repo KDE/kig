@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>NewScriptWizardBase</class>
 <widget class="QWizard">
     <property name="name">
@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>510</width>
-            <height>414</height>
+            <width>724</width>
+            <height>418</height>
         </rect>
     </property>
     <property name="caption">
@@ -20,7 +20,7 @@
             <cstring>mpargs</cstring>
         </property>
         <attribute name="title">
-            <string>Select arguments</string>
+            <string>Select Arguments</string>
         </attribute>
         <vbox>
             <property name="name">
@@ -41,7 +41,7 @@
             <cstring>mpcode</cstring>
         </property>
         <attribute name="title">
-            <string>Enter the code</string>
+            <string>Enter Code</string>
         </attribute>
         <vbox>
             <property name="name">
@@ -52,7 +52,7 @@
                     <cstring>textLabel2</cstring>
                 </property>
                 <property name="text">
-                    <string>Now fill in the python code..</string>
+                    <string>Now fill in the python code:</string>
                 </property>
             </widget>
             <widget class="KTextEdit">
@@ -63,6 +63,8 @@
         </vbox>
     </widget>
 </widget>
+<customwidgets>
+</customwidgets>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>ktextedit.h</includehint>

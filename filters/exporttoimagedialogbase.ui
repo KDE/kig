@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>ExportToImageDialogBase</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>545</width>
-            <height>338</height>
+            <height>340</height>
         </rect>
     </property>
     <property name="caption">
@@ -210,7 +210,7 @@
                 </property>
                 <widget class="KPushButton">
                     <property name="name">
-                        <cstring>CancelButton</cstring>
+                        <cstring>OKButton</cstring>
                     </property>
                     <property name="sizePolicy">
                         <sizepolicy>
@@ -221,24 +221,31 @@
                         </sizepolicy>
                     </property>
                     <property name="text">
-                        <string>&amp;Cancel</string>
+                        <string>&amp;OK</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+O</string>
                     </property>
                 </widget>
                 <widget class="KPushButton">
                     <property name="name">
-                        <cstring>OKButton</cstring>
+                        <cstring>CancelButton</cstring>
                     </property>
                     <property name="text">
-                        <string>&amp;OK</string>
+                        <string>&amp;Cancel</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+C</string>
                     </property>
                 </widget>
             </hbox>
         </widget>
     </vbox>
 </widget>
+<customwidgets>
+</customwidgets>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>kurlrequester.h</includehint>
     <includehint>klineedit.h</includehint>
     <includehint>kpushbutton.h</includehint>
     <includehint>knuminput.h</includehint>
