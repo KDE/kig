@@ -673,8 +673,6 @@ void KigPainter::drawCurve( const CurveImp* curve )
   mNeedOverlay = false;
 
   QPen pen = mP.pen();
-  pen.setCapStyle( Qt::RoundCap );
-  mP.setPen( pen );
 
   // this stack contains pairs of Coordinates ( parameter intervals )
   // that we still need to process:
@@ -824,7 +822,6 @@ void KigPainter::drawCurve( const CurveImp* curve )
     }
   }
   // flush the rest of the curve
-//  mP.drawPolyline( curpolyline, 0, curpolylinenextfree - 1 );
   mP.drawPolyline( curpolyline, 0, curpolylinenextfree );
   curpolylinenextfree = 0;
 
@@ -843,8 +840,6 @@ void KigPainter::drawCurve( const CurveImp* curve )
     }
   }
   mNeedOverlay = tNeedOverlay;
-  pen.setCapStyle( Qt::FlatCap );
-  mP.setPen( pen );
 }
 
 void KigPainter::drawTextFrame( const Rect& frame,

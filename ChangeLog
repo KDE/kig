@@ -1,5 +1,9 @@
 2004-04-28  Dominique Devriese  <devriese@kde.org>
 
+	* change the Qt CapStyle used for drawing locuses, conics and
+	lines to FlatCap, which gives better results with large line
+	widths.
+
 	* Add two line styles: DashDotLine and DashDotDotLine
 
 	* Remove the KigPainter::drawConic and KigPainter::drawCubic
