@@ -459,7 +459,7 @@ KigWidget* KigView::realWidget()
 
 void KigView::slotExportToImage()
 {
-  ExportToImageDialog* d = new ExportToImageDialog( this, mdoc );
+  ExportToImageDialog* d = new ExportToImageDialog( realWidget(), mdoc );
   d->exec();
 }
 

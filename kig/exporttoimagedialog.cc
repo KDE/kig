@@ -32,9 +32,9 @@
 #include <kimageio.h>
 #include <kmessagebox.h>
 
-ExportToImageDialog::ExportToImageDialog( KigView* v, const KigDocument* d )
+ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigDocument* d )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),
-    mv( v ), md( d ), msize( v->realWidget()->size() ), minternallysettingstuff( false )
+    mv( v ), md( d ), msize( v->size() ), minternallysettingstuff( false )
 {
   WidthInput->setValue( msize.width() );
   HeightInput->setValue( msize.height() );
