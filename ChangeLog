@@ -1,3 +1,13 @@
+2004-02-09  Dominique Devriese  <devriese@kde.org>
+
+	* Replace the line-line-intersection algorithm with a much simpler
+	one by Maurizio Paolini
+
+	* Add three new transformations by Maurizio Paolini
+
+	* Remove people-to-inform-about-kig-releases as no further
+	separate releases are planned.
+
 2004-02-08  Dominique Devriese  <devriese@kde.org>
 
 	* Fix a bug reported by Maurizio Paolini: don't crash on getting
