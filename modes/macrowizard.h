@@ -36,6 +36,7 @@ public:
   void accept();
 private slots:
   void nameTextChanged( const QString& );
+  void slotHelpClicked();
 private:
   DefineMacroMode* mmode;
 };
