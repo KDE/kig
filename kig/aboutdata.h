@@ -85,5 +85,8 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                            "to chat with on irc :)" ),
                  "robertgogolok@gmx.de");
 
+  tmp->setTranslator( I18N_NOOP( "_: NAME OF TRANSLATORS\\nYour names" ),
+                      I18N_NOOP( "_: EMAIL OF TRANSLATORS\\nYour emails" ) );
+
   return tmp;
 };
