@@ -69,7 +69,7 @@
 
 - add a magnifying glass to magnify "on-the-fly" a part of the document.
 
-- Python scripting: improve existing API.
+- Python scripting: export cubics for real, improve existing API.
 
 - add support for work with other measure units (cm, inches, etc...)
   than just pixels...
