@@ -403,7 +403,7 @@ const Transformation Transformation::inverse( bool& valid ) const
 
   valid = Invert3by3matrix( mdata, ret.mdata );
 
-  // domi: is the inverse of a homothetic matrix a homothety ?
+  // the inverse of a homothety is a homothety..
   ret.mIsHomothety = mIsHomothety;
 
   return ret;
