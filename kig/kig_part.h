@@ -125,6 +125,7 @@ public:
   const Objects& objects() const { return mObjs;};
   void setObjects( const Objects& os );
   const CoordinateSystem& coordinateSystem() const;
+  void setCoordinateSystem( CoordinateSystem* s ) const;
   KigMode* mode() { return mMode; };
   void setMode( KigMode* );
   void runMode( KigMode* );

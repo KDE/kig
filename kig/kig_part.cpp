@@ -707,3 +707,9 @@ void KigDocument::setObjects( const Objects& os )
   assert( mObjs.empty() );
   mObjs = os;
 }
+
+void KigDocument::setCoordinateSystem( CoordinateSystem* cs ) const
+{
+  delete s;
+  s = is;
+}
