@@ -42,6 +42,10 @@ public:
   Rect( double xa, double ya, double width, double height );
   Rect( const Rect& r );
   Rect();
+  static Rect invalidRect();
+
+
+  bool valid();
 
   void setBottomLeft( const Coordinate p );
   void setTopLeft( const Coordinate p );

@@ -355,3 +355,10 @@ bool LocusImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }
+
+Rect LocusImp::surroundingRect() const
+{
+  // it's probably possible to calculate this, if it exists, but we
+  // don't for now.
+  return Rect::invalidRect();
+}

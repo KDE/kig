@@ -326,3 +326,9 @@ bool CircleImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
     return CurveImp::isPropertyDefinedOnOrThroughThisImp( which );
   return false;
 }
+
+Rect CircleImp::surroundingRect() const
+{
+  Coordinate d( mradius, mradius );
+  return Rect( mcenter - d, mcenter + d );
+}

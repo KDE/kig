@@ -375,3 +375,11 @@ bool ConicImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
     return Parent::isPropertyDefinedOnOrThroughThisImp( which );
   return false;
 }
+
+Rect ConicImp::surroundingRect() const
+{
+  // it's prolly possible to calculate this ( in the case that the
+  // conic is limited in size ), but for now we don't.
+
+  return Rect::invalidRect();
+}

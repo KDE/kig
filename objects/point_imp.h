@@ -42,6 +42,8 @@ public:
   PointImp( const Coordinate& c );
   ~PointImp();
 
+  Rect surroundingRect() const;
+
   /**
    * Get the coordinate of this PointImp.
    */

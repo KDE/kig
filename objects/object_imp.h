@@ -230,6 +230,8 @@ public:
                          const KigWidget& si ) const = 0;
   virtual bool inRect( const Rect& r, int width,
                        const KigWidget& si ) const = 0;
+  virtual Rect surroundingRect() const = 0;
+
   /**
    * Returns true if this is a valid ObjectImp.
    * If you want to return an invalid ObjectImp, you should return an

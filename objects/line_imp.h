@@ -101,6 +101,7 @@ public:
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+  Rect surroundingRect() const;
 
   ObjectImp* transform( const Transformation& ) const;
 
@@ -155,6 +156,7 @@ public:
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+  Rect surroundingRect() const;
 
   ObjectImp* transform( const Transformation& ) const;
 
@@ -195,6 +197,7 @@ public:
   LineImp( const LineData& d );
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+  Rect surroundingRect() const;
 
   ObjectImp* transform( const Transformation& ) const;
 

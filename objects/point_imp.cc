@@ -176,3 +176,8 @@ bool PointImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }
+
+Rect PointImp::surroundingRect() const
+{
+  return Rect( mc, 0., 0. );
+}

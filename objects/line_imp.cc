@@ -535,3 +535,18 @@ bool AbstractLineImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
   else assert( false );
   return false;
 }
+
+Rect SegmentImp::surroundingRect() const
+{
+  return Rect( mdata.a, mdata.b );
+}
+
+Rect RayImp::surroundingRect() const
+{
+  return Rect::invalidRect();
+}
+
+Rect LineImp::surroundingRect() const
+{
+  return Rect::invalidRect();
+}

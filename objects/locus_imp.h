@@ -68,6 +68,7 @@ public:
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
+  Rect surroundingRect() const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;

@@ -373,3 +373,10 @@ bool CubicImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }
+
+Rect CubicImp::surroundingRect() const
+{
+  // it's probably possible to calculate this if it exists, but for
+  // now we don't.
+  return Rect::invalidRect();
+}

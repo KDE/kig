@@ -40,6 +40,7 @@ public:
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
+  Rect surroundingRect() const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;

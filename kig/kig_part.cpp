@@ -458,15 +458,17 @@ Rect KigDocument::suggestedRect() const
   for ( std::set<ObjectHolder*>::const_iterator i = mobjs.begin();
         i != mobjs.end(); ++i )
   {
-    if ( (*i)->shown() && (*i)->imp()->inherits( PointImp::stype() ) )
+    if ( (*i)->shown() )
     {
+      Rect cr = (*i)->imp()->surroundingRect();
+      if ( ! cr.valid() ) continue;
       if( !rectInited )
       {
-        r.setCenter( static_cast<const PointImp*>( (*i)->imp() )->coordinate() );
+        r = cr;
         rectInited = true;
       }
       else
-        r.setContains( static_cast<const PointImp*>( (*i)->imp() )->coordinate() );
+        r.eat( cr );
     };
   };
 

@@ -22,7 +22,7 @@
 #include "../misc/kigpainter.h"
 
 TextImp::TextImp( const QString& text, const Coordinate& loc, bool frame )
-  : mtext( text), mloc( loc ), mframe( frame )
+  : mtext( text), mloc( loc ), mframe( frame ), mboundrect( Rect::invalidRect() )
 {
 }
 
@@ -160,4 +160,9 @@ const ObjectImpType* TextImp::type() const
 bool TextImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+}
+
+Rect TextImp::surroundingRect() const
+{
+  return mboundrect;
 }

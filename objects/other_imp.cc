@@ -604,3 +604,31 @@ bool ArcImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
   else
     return false;
 }
+
+Rect AngleImp::surroundingRect() const
+{
+  return Rect( mpoint, 0, 0 );
+}
+
+Rect VectorImp::surroundingRect() const
+{
+  return Rect( ma, mb );
+}
+
+Rect ArcImp::surroundingRect() const
+{
+  // the returned rect should contain the center point, the two end
+  // points, and all extreme x and y positions in between.
+  Rect ret( mcenter, 0, 0 );
+  double a = msa;
+  ret.setContains( mcenter + mradius*Coordinate( cos( a ), sin( a ) ) );
+  a = msa + ma;
+  ret.setContains( mcenter + mradius*Coordinate( cos( a ), sin( a ) ) );
+  for ( a = -2*M_PI; a <= 2*M_PI; a+=M_PI/2 )
+  {
+    Coordinate d = mcenter + mradius*Coordinate( cos( a ), sin( a ) );
+    if ( msa <= a && a <= msa + ma )
+      ret.setContains( d );
+  }
+  return ret;
+}

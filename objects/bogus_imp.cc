@@ -22,6 +22,8 @@
 #include <qstringlist.h>
 #include <klocale.h>
 
+#include "../misc/rect.h"
+
 void BogusImp::draw( KigPainter& ) const
 {
 }
@@ -374,4 +376,9 @@ bool TestResultImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return false;
+}
+
+Rect BogusImp::surroundingRect() const
+{
+  return Rect::invalidRect();
 }

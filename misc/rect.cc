@@ -298,4 +298,12 @@ Rect Rect::matchShape( const Rect& rhs, bool shrink ) const
   return ret.normalized();
 }
 
+bool Rect::valid()
+{
+  return mBottomLeft.valid() && mwidth != double_inf && mheight != double_inf;
+}
 
+Rect Rect::invalidRect()
+{
+  return Rect( Coordinate::invalidCoord(), double_inf, double_inf );
+}

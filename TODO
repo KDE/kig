@@ -8,9 +8,6 @@
 
 - add ObjectType's to the ObjectTypeFactory automatically.
 
-- create a ObjectImp::surroundingRect function, and use it in
-   calculating the preferred screen size
-
 - make it possible to zoom to a very specific part of the screen,
    i.e. from (x0,y0) to (x1,y1)
 
