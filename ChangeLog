@@ -1,3 +1,9 @@
+2003-05-08  Maurizio Paolini  <paolini@dmf.unicatt.it>
+
+        * fixed drawing problem while building a cubic by 9 points.  The
+		problem was located in calcCubicRoot when the degree is
+		less than 3
+
 2003-05-08  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* add some properties to the arc object
