@@ -78,27 +78,35 @@ void MacroObjectOne::stopMove()
 
 void MacroObjectOne::calc( const ScreenInfo& r )
 {
-  if (!constructed) {
-    hier->fillUp(arguments);
-    final = hier->getFinElems()[0]->actual();
-    cos = calcPath( arguments, final );
+  mvalid = true;
+  for ( Objects::const_iterator i = arguments.begin(); i != arguments.end(); ++i )
+  {
+    mvalid &= (*i)->valid();
+  };
+  if ( mvalid )
+  {
+    if (!constructed) {
+      hier->fillUp(arguments);
+      final = hier->getFinElems()[0]->actual();
+      cos = calcPath( arguments, final );
 
+      cos.calc( r );
+      final->calc( r );
+
+      for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
+        for( Objects::iterator j = cos.begin(); j != cos.end(); ++j )
+          ( *i )->delChild( *j );
+
+      for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
+        (*i)->setShown(false);
+
+      constructed = true;
+    };
+    // this should have the right order, since we used calcPath to find
+    // cos...
     cos.calc( r );
     final->calc( r );
-
-    for( Objects::iterator i = arguments.begin(); i != arguments.end(); ++i )
-      for( Objects::iterator j = cos.begin(); j != cos.end(); ++j )
-        ( *i )->delChild( *j );
-
-    for( Objects::iterator i = cos.begin(); i != cos.end(); ++i )
-      (*i)->setShown(false);
-
-    constructed = true;
   };
-  // this should have the right order, since we used calcPath to find
-  // cos...
-  cos.calc( r );
-  final->calc( r );
 }
 
 const QCString MacroObjectOne::vBaseTypeName() const

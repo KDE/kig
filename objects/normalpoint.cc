@@ -256,7 +256,11 @@ ConstrainedPointImp::ConstrainedPointImp( const ConstrainedPointImp& p,
 
 void NormalPoint::calc( const ScreenInfo& r )
 {
-  mimp->calc( this, r );
+  mvalid = true;
+  Objects p = getParents();
+  for ( Objects::iterator i = p.begin(); i != p.end(); ++i )
+    mvalid &= (*i)->valid();
+  if ( mvalid ) mimp->calc( this, r );
 }
 
 Objects NormalPoint::getParents() const

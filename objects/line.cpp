@@ -112,14 +112,16 @@ void LineTTP::stopMove()
 
 void LineTTP::calc( const ScreenInfo& )
 {
-  if( !pt1->getValid() || !pt2->getValid() )
+  if( !pt1->valid() || !pt2->valid() )
   {
-    valid = false;
-    return;
+    mvalid = false;
   }
-  else valid = true;
-  p1 = pt1->getCoord();
-  p2 = pt2->getCoord();
+  else
+  {
+    mvalid = true;
+    p1 = pt1->getCoord();
+    p2 = pt2->getCoord();
+  };
 };
 
 LinePerpend::~LinePerpend()
@@ -141,19 +143,23 @@ void LinePerpend::stopMove()
 void LinePerpend::calc( const ScreenInfo& )
 {
   assert (point && (segment || line));
+  mvalid = true;
+  mvalid &= point->valid();
   p1 = point->getCoord();
   Coordinate t1;
   Coordinate t2;
   if (segment)
-    {
-      t1 = segment->getP1();
-      t2 = segment->getP2();
-    }
+  {
+    mvalid &= segment->valid();
+    t1 = segment->getP1();
+    t2 = segment->getP2();
+  }
   else
-    {
-      t1 = line->getP1();
-      t2 = line->getP2();
-    };
+  {
+    mvalid &= line->valid();
+    t1 = line->getP1();
+    t2 = line->getP2();
+  };
   p2 = calcPointOnPerpend(t1, t2, point->getCoord());
 }
 
@@ -186,18 +192,22 @@ Objects LineParallel::getParents() const
 void LineParallel::calc( const ScreenInfo& )
 {
   assert (point && (segment || line));
+  mvalid = true;
+  mvalid &= point->valid();
   p1 = point->getCoord();
   Coordinate qpt1, qpt2;
   if (segment)
-    {
-      qpt1 = segment->getP1();
-      qpt2 = segment->getP2();
-    }
+  {
+    mvalid &= segment->valid();
+    qpt1 = segment->getP1();
+    qpt2 = segment->getP2();
+  }
   else
-    {
-      qpt1 = line->getP1();
-      qpt2 = line->getP2();
-    };
+  {
+    mvalid &= line->valid();
+    qpt1 = line->getP1();
+    qpt2 = line->getP2();
+  };
   p2 = calcPointOnParallel(qpt1, qpt2, point->getCoord());
 }
 
@@ -241,44 +251,42 @@ LineRadical::LineRadical(const LineRadical& l)
 
 void LineRadical::calc( const ScreenInfo& )
 {
-  if( !c1 && !c2 ) return;
-
   Coordinate ce1, ce2, direc, startpoint;
   double r1sq, r2sq, dsq, lambda;
 
   ce1 = c1->getCenter();
   ce2 = c2->getCenter();
   // the radical line is not defined if the centers are the same...
-  if( ce1 == ce2 || !c1->getValid() || !c2->getValid() )
+  if( ce1 == ce2 || !c1->valid() || !c2->valid() )
   {
-    valid = false;
-    return;
-  }
-  else valid = true; // else always defined...
-
-  r1sq = c1->radius();
-  r1sq = r1sq * r1sq;
-  r2sq = c2->radius();
-  r2sq = r2sq * r2sq;
-
-  direc = ce2 - ce1;
-  startpoint = (ce1 + ce2)/2;
-
-  dsq = direc.squareLength();
-  if (dsq == 0)
-  {
-    lambda = 0.0;
+    mvalid = false;
   }
   else
   {
-    lambda = (r1sq - r2sq) / dsq / 2;
-  }
-  direc *= lambda;
-  startpoint = startpoint + direc;
-  //  startCoords.coords = startpoint;
-  p1 = startpoint;
-  //  endCoords.coords = startpoint + direc.orthogonal();
-  p2 = startpoint + direc.orthogonal();
+    mvalid = true; // else always defined...
+
+    r1sq = c1->radius();
+    r1sq = r1sq * r1sq;
+    r2sq = c2->radius();
+    r2sq = r2sq * r2sq;
+
+    direc = ce2 - ce1;
+    startpoint = (ce1 + ce2)/2;
+
+    dsq = direc.squareLength();
+    if (dsq == 0)
+    {
+      lambda = 0.0;
+    }
+    else
+    {
+      lambda = (r1sq - r2sq) / dsq / 2;
+    }
+    direc *= lambda;
+    startpoint = startpoint + direc;
+    p1 = startpoint;
+    p2 = startpoint + direc.orthogonal();
+  };
 }
 
 Line* Line::toLine()

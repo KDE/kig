@@ -35,10 +35,14 @@ Objects TranslatedPoint::getParents() const
 
 void TranslatedPoint::calc( const ScreenInfo& )
 {
-  Coordinate a = mp->getCoord();
-  Coordinate d = mv->getDir();
+  mvalid = mp->valid() && mv->valid();
+  if ( mvalid )
+  {
+    Coordinate a = mp->getCoord();
+    Coordinate d = mv->getDir();
 
-  mC = a + d;
+    mC = a + d;
+  };
 }
 
 TranslatedPoint::TranslatedPoint( const TranslatedPoint& p )

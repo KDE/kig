@@ -38,6 +38,7 @@ Objects MirrorPoint::getParents() const
 
 void MirrorPoint::calc( const ScreenInfo& )
 {
+  mvalid = mp->valid();
   Coordinate a = mp->getCoord();
   if ( ! mc )
   {
@@ -45,20 +46,25 @@ void MirrorPoint::calc( const ScreenInfo& )
     Coordinate c;
     if ( ms )
     {
+      assert( ! ml );
+      mvalid &= ms->valid();
       b = ms->getP1();
       c = ms->getP2();
     }
     else
     {
       assert( ml );
+      mvalid &= ml->valid();
       b = ml->getP1();
       c = ml->getP2();
     };
-    mC = calcMirrorPoint( b, c, a );
+    if ( mvalid ) mC = calcMirrorPoint( b, c, a );
   }
   else
   {
-    mC = 2* mc->getCoord() - a;
+    assert( mc );
+    mvalid &= mc->valid();
+    if ( mvalid ) mC = 2* mc->getCoord() - a;
   };
 }
 

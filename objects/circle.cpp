@@ -83,11 +83,14 @@ CircleBCP::CircleBCP( const Objects& os )
 
 void CircleBCP::calc( const ScreenInfo& )
 {
-  if (poc && centre)
+  if (poc->valid() && centre->valid())
   {
+    mvalid = true;
     mradius = calcRadius(centre,poc);
     qpc = centre->getCoord();
-  };
+  }
+  else
+    mvalid = false;
 };
 
 inline double sqr (double x)
@@ -149,12 +152,18 @@ Objects CircleBCP::getParents() const
 
 void CircleBTP::calc( const ScreenInfo& )
 {
-  Coordinate a = pts[0]->getCoord();
-  Coordinate b = pts[1]->getCoord();
-  Coordinate c = pts[2]->getCoord();
-  // the center coords:
-  qpc = calcCenter( a, b, c );
-  mradius = calcRadius( qpc, c );
+  mvalid = true;
+  for ( Point** i = pts; i < pts + 3; ++i )
+    mvalid &= (*i)->valid();
+  if ( mvalid )
+  {
+    Coordinate a = pts[0]->getCoord();
+    Coordinate b = pts[1]->getCoord();
+    Coordinate c = pts[2]->getCoord();
+    // the center coords:
+    qpc = calcCenter( a, b, c );
+    mradius = calcRadius( qpc, c );
+  }
 };
 
 CircleBCP::CircleBCP(const CircleBCP& c)
@@ -353,3 +362,18 @@ const Circle* Circle::toCircle() const
 {
   return this;
 }
+
+void CircleBCP::startMove(const Coordinate&)
+{
+  // moving is disabled..
+}
+
+void CircleBCP::moveTo(const Coordinate&)
+{
+  // moving is disabled..
+}
+
+void CircleBCP::stopMove()
+{
+  // moving is disabled..
+};

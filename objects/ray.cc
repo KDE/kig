@@ -105,6 +105,7 @@ void Ray::stopMove()
 
 void Ray::calc( const ScreenInfo& )
 {
+  mvalid = p1->valid() && p2->valid();
 }
 
 Coordinate Ray::getPoint(double param) const

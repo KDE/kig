@@ -92,19 +92,23 @@ bool Locus::inRect(const Rect& r) const
 
 void Locus::calc( const ScreenInfo& r )
 {
-  if ( calcpath.empty() )
+  mvalid = cp->valid() && obj->valid();
+  if ( mvalid )
   {
-    calcpath = calcPath( Objects( cp ), obj );
-    calcpath.push_back( obj );
+    if ( calcpath.empty() )
+    {
+      calcpath = calcPath( Objects( cp ), obj );
+      calcpath.push_back( obj );
+    };
+    if( isPointLocus() ) calcPointLocus( r );
+    else calcObjectLocus( r );
   };
-  if( isPointLocus() ) calcPointLocus( r );
-  else calcObjectLocus( r );
 }
 
 Coordinate Locus::getPoint( double param ) const
 {
   Coordinate t;
-  if ( ! valid ) return Coordinate();
+  if ( ! mvalid ) return Coordinate();
   if (obj->toPoint())
   {
     double tmp = cp->constrainedImp()->getP();
@@ -127,7 +131,7 @@ double Locus::getParam(const Coordinate&) const
 
 void Locus::calcObjectLocus( const ScreenInfo& r )
 {
-  if ( ! valid ) return;
+  if ( ! mvalid ) return;
   delete_all( objs.begin(), objs.end() );
   objs.clear();
   double oldP = cp->constrainedImp()->getP();
@@ -340,7 +344,8 @@ Object::WantArgsResult Locus::sWantArgs( const Objects& os )
     else if ( (*i)->toPoint() ) gotmp = true;
   };
   if ( size == 1 ) return ( gotmp || gotcp ) ? NotComplete : NotGood;
-  if ( size == 2 ) return ( gotmp && gotcp ) ? Complete : NotGood;
+  assert( size == 2 );
+  return ( gotmp && gotcp ) ? Complete : NotGood;
 }
 
 QString Locus::sUseText( const Objects&, const Object* o )

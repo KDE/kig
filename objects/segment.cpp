@@ -97,8 +97,7 @@ void Segment::stopMove()
 
 void Segment::calc( const ScreenInfo& )
 {
-  if ( !p1->isValid() || ! p2->isValid() ) valid = false;
-  else valid = true;
+  mvalid = p1->valid() && p2->valid();
 }
 
 Coordinate Segment::getPoint(double param) const

@@ -43,10 +43,12 @@ Objects IntersectionPoint::getParents() const
 
 void IntersectionPoint::calc( const ScreenInfo& )
 {
+  mvalid = true;
   Coordinate t1, t2, t3, t4;
   bool gotfirst = false;
   if ( segment1 )
   {
+    mvalid &= segment1->valid();
     if ( gotfirst )
     {
       t3 = segment1->getP1();
@@ -61,6 +63,7 @@ void IntersectionPoint::calc( const ScreenInfo& )
   };
   if ( segment2 )
   {
+    mvalid &= segment2->valid();
     if ( gotfirst )
     {
       t3 = segment2->getP1();
@@ -75,6 +78,7 @@ void IntersectionPoint::calc( const ScreenInfo& )
   };
   if ( line1 )
   {
+    mvalid &= line1->valid();
     if ( gotfirst )
     {
       t3 = line1->getP1();
@@ -89,6 +93,7 @@ void IntersectionPoint::calc( const ScreenInfo& )
   };
   if ( line2 )
   {
+    mvalid &= line2->valid();
     if ( gotfirst )
     {
       t3 = line2->getP1();
@@ -101,7 +106,7 @@ void IntersectionPoint::calc( const ScreenInfo& )
       gotfirst = true;
     };
   };
-  mC = calcIntersectionPoint( t1, t2, t3, t4 );
+  if ( mvalid ) mC = calcIntersectionPoint( t1, t2, t3, t4 );
 }
 
 const QString IntersectionPoint::sDescriptiveName()
@@ -433,8 +438,8 @@ void CircleLineIntersectionPoint::calc( const ScreenInfo& )
   assert( mcircle && mline );
   Coordinate t;
   t = calcCircleLineIntersect( mcircle->getCenter(), mcircle->squareRadius(),
-                               mline->getP1(), mline->getP2(), mside, valid );
-  if ( valid ) mC = t;
+                               mline->getP1(), mline->getP2(), mside, mvalid );
+  if ( mvalid ) mC = t;
 }
 
 std::map<QCString,QString> CircleLineIntersectionPoint::getParams()

@@ -33,7 +33,7 @@ myvector<Type*> Object::susertypes;
 Types Object::stypes;
 
 Object::Object()
-  : mColor( Qt::blue ), selected(false), shown (true), valid(true)
+  : mColor( Qt::blue ), selected(false), shown (true), mvalid(true)
 {
 };
 
@@ -133,14 +133,14 @@ void Object::delChild(Object* o)
 
 Object::Object( const Object& o )
     : mColor( o.mColor ), selected( false ), shown( true ),
-      valid( o.valid )
+      mvalid( o.mvalid )
 {
 
 }
 
 void Object::drawWrap(KigPainter& p, bool ss) const
 {
-  if ( shown && valid ) draw(p,ss);
+  if ( shown && mvalid ) draw(p,ss);
 }
 
 const QStringList Object::objectActions() const
@@ -211,3 +211,7 @@ void Object::removeUserType( Type* t )
 // {
 
 // }
+bool Object::valid() const
+{
+  return mvalid;
+}

@@ -64,12 +64,16 @@ void MidPoint::calc( const ScreenInfo& )
   if ( p1 || p2 )
   {
     assert( p1 && p2 );
-    mC = ( p1->getCoord() + p2->getCoord() ) / 2;
+    assert( ! s );
+    mvalid = p1->valid() && p2->valid();
+    if ( mvalid ) mC = ( p1->getCoord() + p2->getCoord() ) / 2;
   }
   else
   {
     assert( s );
-    mC = ( s->getP1() + s->getP2() ) / 2;
+    assert( !p1 && ! p2 );
+    mvalid = s->valid();
+    if ( mvalid ) mC = ( s->getP1() + s->getP2() ) / 2;
   };
 }
 

@@ -218,6 +218,7 @@ void Vector::stopMove()
 
 void Vector::calc( const ScreenInfo& )
 {
+  mvalid = p1->valid() && p2->valid();
 }
 
 const Coordinate Vector::getP1() const

@@ -306,9 +306,9 @@ public:
    * 2 the object itself is unvalid due to its definition...
    * you should check for these cases in your calc() routine...
    */
-  bool valid;
+  bool mvalid;
  public:
-  bool getValid() const { return valid; };
+  bool valid() const;
  protected:
   /**
    * objects we know, and that know us: if they move, we move too, and vice versa
