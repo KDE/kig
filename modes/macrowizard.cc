@@ -19,64 +19,64 @@
 // #include "macrowizard.h"
 #include "macrowizard.moc"
 
-// #include "macro.h"
+#include "macro.h"
 
-// #include <kdebug.h>
-// #include <klineedit.h>
+#include <kdebug.h>
+#include <klineedit.h>
 
-// MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
-//   : MacroWizardBase( parent, "Define Macro Wizard", false ), mmode( m )
-// {
-//   connect( KLineEdit2, SIGNAL( textChanged( const QString& ) ),
-//            this, SLOT( nameTextChanged( const QString& ) ) );
-// };
+MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
+  : MacroWizardBase( parent, "Define Macro Wizard", false ), mmode( m )
+{
+  connect( KLineEdit2, SIGNAL( textChanged( const QString& ) ),
+           this, SLOT( nameTextChanged( const QString& ) ) );
+};
 
-// MacroWizard::~MacroWizard()
-// {
-// }
+MacroWizard::~MacroWizard()
+{
+}
 
-// void MacroWizard::back()
-// {
-//   if ( currentPage() == mpfinal )
-//   {
-//     // currentPage() is not yet updated when we get here, so this
-//     // means that the page about to be shown is actually mpgiven...
-//     mmode->givenPageEntered();
-//   }
-//   else if ( currentPage() == mpname )
-//   {
-//     mmode->finalPageEntered();
-//   }
-//   MacroWizardBase::back();
-// }
+void MacroWizard::back()
+{
+  if ( currentPage() == mpfinal )
+  {
+    // currentPage() is not yet updated when we get here, so this
+    // means that the page about to be shown is actually mpgiven...
+    mmode->givenPageEntered();
+  }
+  else if ( currentPage() == mpname )
+  {
+    mmode->finalPageEntered();
+  }
+  MacroWizardBase::back();
+}
 
-// void MacroWizard::next()
-// {
-//   if ( currentPage() == mpgiven )
-//   {
-//     // currentPage() is not yet updated when we get here, so this
-//     // means that the page about to be shown is actually mpfinal...
-//     mmode->finalPageEntered();
-//   }
-//   else if ( currentPage() == mpfinal )
-//   {
-//     mmode->namePageEntered();
-//   }
-//   MacroWizardBase::next();
-// }
+void MacroWizard::next()
+{
+  if ( currentPage() == mpgiven )
+  {
+    // currentPage() is not yet updated when we get here, so this
+    // means that the page about to be shown is actually mpfinal...
+    mmode->finalPageEntered();
+  }
+  else if ( currentPage() == mpfinal )
+  {
+    mmode->namePageEntered();
+  }
+  MacroWizardBase::next();
+}
 
-// void MacroWizard::reject()
-// {
-//   MacroWizardBase::reject();
-//   mmode->cancelPressed();
-// }
+void MacroWizard::reject()
+{
+  MacroWizardBase::reject();
+  mmode->cancelPressed();
+}
 
-// void MacroWizard::nameTextChanged( const QString& )
-// {
-//   mmode->macroNameChanged();
-// }
+void MacroWizard::nameTextChanged( const QString& )
+{
+  mmode->macroNameChanged();
+}
 
-// void MacroWizard::accept()
-// {
-//   mmode->finishPressed();
-// }
+void MacroWizard::accept()
+{
+  mmode->finishPressed();
+}
