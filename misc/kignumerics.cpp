@@ -191,43 +191,53 @@ double calcCubicRootwithNewton ( double xmin, double xmax, double a,
 {
   double fval, fpval, fppval;
 
+  double fval1, fval2, fpval1, fpval2, fppval1, fppval2;
+  calcCubicDerivatives ( xmin, a, b, c, d, fval1, fpval1, fppval1 );
+  calcCubicDerivatives ( xmax, a, b, c, d, fval2, fpval2, fppval2 );
+  assert ( fval1 * fval2 <= 0 );
+
   assert ( xmax > xmin );
   while ( xmax - xmin > tol )
   {
     // compute the values of function, derivative and second derivative:
-    double fval1, fval2, fpval1, fpval2, fppval1, fppval2;
-    calcCubicDerivatives ( xmin, a, b, c, d, fval1, fpval1, fppval1 );
-    calcCubicDerivatives ( xmax, a, b, c, d, fval2, fpval2, fppval2 );
     assert ( fval1 * fval2 <= 0 );
     if ( fppval1 * fppval2 < 0 || fpval1 * fpval2 < 0 )
     {
       double xmiddle = (xmin + xmax)/2;
       calcCubicDerivatives ( xmiddle, a, b, c, d, fval, fpval, fppval );
-      if ( fval1*fval < 0 )
+      if ( fval1*fval <= 0 )
       {
         xmax = xmiddle;
+	fval2 = fval;
+	fpval2 = fpval;
+	fppval2 = fppval;
       } else {
         xmin = xmiddle;
+	fval1 = fval;
+	fpval1 = fpval;
+	fppval1 = fppval;
       }
-      continue;
-    }
-    // now we have first and second derivative of constant sign, we
-    // can start with Newton from the Fourier point.
-    double x = xmin;
-    if ( fval2*fppval2 > 0 ) x = xmax;
-    double p = 1.0;
-    int iterations = 0;
-    while ( fabs(p) > tol && iterations++ < 100 )
+    } else
     {
-      calcCubicDerivatives ( x, a, b, c, d, fval, fpval, fppval );
-      p = fval/fpval;
-      x -= p;
+      // now we have first and second derivative of constant sign, we
+      // can start with Newton from the Fourier point.
+      double x = xmin;
+      if ( fval2*fppval2 > 0 ) x = xmax;
+      double p = 1.0;
+      int iterations = 0;
+      while ( fabs(p) > tol && iterations++ < 100 )
+      {
+        calcCubicDerivatives ( x, a, b, c, d, fval, fpval, fppval );
+        p = fval/fpval;
+        x -= p;
+      }
+      assert (iterations < 100);
+      return x;
     }
-    assert (iterations < 100);
-    return x;
   }
 
-  assert (false);
+  // we cannot apply Newton, (perhaps we are at an inflection point)
+
   return (xmin + xmax)/2;
 }
 
@@ -326,4 +336,29 @@ void BackwardSubstitution( double *matrix[], int numrows, int numcols,
     solution[k] = solution[jmax];
     solution[jmax] = t;
   }
+}
+
+/*
+ *
+ */
+
+bool Invert3by3matrix ( double m[3][3], double inv[3][3] )
+{
+  double det = m[0][0]*(m[1][1]*m[2][2] - m[1][2]*m[2][1]) -
+               m[0][1]*(m[1][0]*m[2][2] - m[1][2]*m[2][0]) +
+               m[0][2]*(m[1][0]*m[2][1] - m[1][1]*m[2][0]);
+  if (det == 0) return false;
+
+  for (int i=0; i < 3; i++)
+  {
+    for (int j=0; j < 3; j++)
+    {
+      int i1 = (i+1)%3;
+      int i2 = (i+2)%3;
+      int j1 = (j+1)%3;
+      int j2 = (j+2)%3;
+      inv[j][i] = (m[i1][j1]*m[i2][j2] - m[i1][j2]*m[i2][j1])/det;
+    }
+  }
+  return true;
 }
