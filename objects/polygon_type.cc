@@ -208,6 +208,53 @@ Args PolygonBNPType::sortArgs( const Args& args ) const
   return args;
 }
 
+bool PolygonBNPType::canMove( const ObjectTypeCalcer& o ) const
+{
+  return isFreelyTranslatable( o );
+}
+
+bool PolygonBNPType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    if ( !parents[i]->isFreelyTranslatable() ) return false;
+  }
+  return true;
+}
+
+void PolygonBNPType::move( ObjectTypeCalcer& o, const Coordinate& to,
+                         const KigDocument& d ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  const Coordinate ref = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+     const Coordinate a = static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
+     parents[i]->move( to + a - ref, d );
+  }
+}
+
+const Coordinate PolygonBNPType::moveReferencePoint( const ObjectTypeCalcer& o
+) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> PolygonBNPType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
+  std::set<ObjectCalcer*> ret;
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    std::vector<ObjectCalcer*> tmp = parents[i]->movableParents();
+    ret.insert( tmp.begin(), tmp.end() );
+  }
+  ret.insert( parents.begin(), parents.end() );
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
+}
+
 /*
  * regular polygon by center and vertex
  */
@@ -275,6 +322,48 @@ ObjectImp* PoligonBCVType::calc( const Args& parents, const KigDocument& ) const
 const ObjectImpType* PoligonBCVType::resultId() const
 {
   return SegmentImp::stype();
+}
+
+bool PoligonBCVType::canMove( const ObjectTypeCalcer& o ) const
+{
+  return isFreelyTranslatable( o );
+}
+
+bool PoligonBCVType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  return parents[0]->isFreelyTranslatable() &&
+         parents[1]->isFreelyTranslatable();
+}
+
+void PoligonBCVType::move( ObjectTypeCalcer& o, const Coordinate& to,
+                         const KigDocument& d ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  assert( margsparser.checkArgs( parents ) );
+  const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  const Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
+  parents[0]->move( to, d );
+  parents[1]->move( to + b - a, d );
+}
+
+const Coordinate PoligonBCVType::moveReferencePoint( const ObjectTypeCalcer& o) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  assert( margsparser.checkArgs( parents ) );
+  return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> PoligonBCVType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
+  std::set<ObjectCalcer*> ret;
+  std::vector<ObjectCalcer*> tmp = parents[0]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  tmp = parents[1]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  ret.insert( &parents[0], &parents[1] );
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
 }
 
 /* polygon-line intersection */

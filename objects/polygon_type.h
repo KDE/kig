@@ -58,6 +58,13 @@ public:
   bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
   std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
   Args sortArgs( const Args& args ) const;
+
+  bool canMove( const ObjectTypeCalcer& o ) const;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& o, const Coordinate& to,
+             const KigDocument& d ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
 };
 
 /**
@@ -73,6 +80,13 @@ public:
 
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
+
+  bool canMove( const ObjectTypeCalcer& o ) const;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& o, const Coordinate& to,
+             const KigDocument& d ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
 };
 
 class PolygonLineIntersectionType
