@@ -52,7 +52,7 @@ private:
   // the args spec..
   const struct spec* margs;
 public:
-  ArgParser( const struct spec args[], int n );
+  ArgParser( const struct spec* args, int n );
   int check( const Objects& os ) const;
   Objects parse( const Objects& os ) const;
 };
