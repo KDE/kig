@@ -1,3 +1,13 @@
+2003-05-09  Mauizio Paolini  <paolini@dmf.unicatt.it>
+
+	* the drawLocus is now changed to function as a generic drawCurve.
+		The changes are very little, and the locusCalcPoint is no
+		longer necessary.  It seems that performance is not affected
+		significantly.  The drawCubic is not used any longer; it is
+		still there in kigpainter, but can be purged as soon as
+		no problems arise with the new setup.  The generic drawCurve
+		is used in place of drawCubic.
+
 2003-05-08  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* add support for quite some more types to the kseg import filter

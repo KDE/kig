@@ -799,6 +799,7 @@ void KigPainter::drawVector( const Coordinate& a, const Coordinate& b )
   drawSegment( b, d );
 }
 
+/* *** this function is commented out ***
 inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHierarchy& h,
                                  bool& valid, const KigDocument& doc )
 {
@@ -821,8 +822,9 @@ inline Coordinate locusGetCoord( double p, const CurveImp* curve, const ObjectHi
   delete o;
   return ret;
 };
+ */
 
-void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
+void KigPainter::drawCurve( const CurveImp* curve )
 {
   // we manage our own overlay
   bool tNeedOverlay = mNeedOverlay;
@@ -862,9 +864,9 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   // final result).
   // First push the [0,1] interval into the stack:
 
-  Coordinate coo1 = locusGetCoord( 0, curve, hier, valid, mdoc );
+  Coordinate coo1 = curve->getPoint( 0, valid, mdoc );
   if ( ! valid ) coo1 = coo1.invalidCoord();
-  Coordinate coo2 = locusGetCoord( 1, curve, hier, valid, mdoc );
+  Coordinate coo2 = curve->getPoint( 1, valid, mdoc );
   if ( ! valid ) coo2 = coo2.invalidCoord();
   workstack.push( workitem(
                     coordparampair( 0, coo1 ),
@@ -924,7 +926,7 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
 //      }
 
       Rect *overlaypt = curitem.overlay;
-      Coordinate p2 = locusGetCoord( t2, curve, hier, valid, mdoc );
+      Coordinate p2 = curve->getPoint( t2, valid, mdoc );
       if ( ! valid ) p2 = p2.invalidCoord();
       bool allvalid = valid && valid0 && valid1;
       bool dooverlay = ! overlaypt && h < hmaxoverlay && valid0 && valid1

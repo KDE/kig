@@ -52,7 +52,7 @@ ObjectImp* LocusImp::transform( const Transformation& t ) const
 
 void LocusImp::draw( KigPainter& p ) const
 {
-  p.drawLocus( mcurve, mhier );
+  p.drawCurve( this );
 }
 
 bool LocusImp::contains( const Coordinate& p, int width, const KigWidget& w ) const

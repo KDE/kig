@@ -118,11 +118,9 @@ public:
   void drawObjects( const Objects& os );
 
   /**
-   * draw a locus...  h is an objectHierarchy that takes one argument,
-   * a PointImp, and returns a PointImp... curve is the curve over
-   * which a point should be iterated..
+   * draw a generic curve...
    */
-  void drawLocus( const CurveImp* curve, const ObjectHierarchy& h );
+  void drawCurve( const CurveImp* curve );
 
   /**
    * draws text in a standard manner, convenience function...

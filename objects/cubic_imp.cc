@@ -50,7 +50,8 @@ ObjectImp* CubicImp::transform( const Transformation& t ) const
 
 void CubicImp::draw( KigPainter& p ) const
 {
-  p.drawCubic( mdata );
+//  p.drawCubic( mdata );
+  p.drawCurve( this );
 }
 
 bool CubicImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
