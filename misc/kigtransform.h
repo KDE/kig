@@ -26,6 +26,11 @@
 
 class LineData;
 
+/**
+ * Class representing a transformation.  More specifically, this class
+ * represents a generic affine 2-dimensional transformation. Various
+ * common transformations can be used.
+ */
 class Transformation
 {
   double mdata[3][3];
@@ -35,7 +40,10 @@ public:
   ~Transformation();
   Transformation( double data[3][3], bool ishomothety );
 
-  const Coordinate apply( const Coordinate& c, bool& valid ) const;
+  /**
+   * Apply.  Apply this transformation to the Coordinate c.
+   */
+  const Coordinate apply( const Coordinate& c ) const;
 
   bool isHomothetic() const;
   double getAffineDeterminant() const;

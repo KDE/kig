@@ -160,11 +160,10 @@ VectorImp::~VectorImp()
 
 ObjectImp* VectorImp::transform( const Transformation& t ) const
 {
-  bool valid = true;
-  Coordinate ta = t.apply( ma, valid );
-  Coordinate tb = t.apply( mb, valid );
-  if ( !valid ) return new InvalidImp;
-  else return new VectorImp( ta, tb );
+  Coordinate ta = t.apply( ma );
+  Coordinate tb = t.apply( mb );
+  if ( ta.valid() && tb.valid() ) return new VectorImp( ta, tb );
+  else return new InvalidImp;
 }
 
 void VectorImp::draw( KigPainter& p ) const
@@ -262,8 +261,7 @@ ObjectImp* ArcImp::transform( const Transformation& t ) const
   //
   if ( ! t.isHomothetic() ) return new InvalidImp();
 
-  bool valid = true;
-  Coordinate nc = t.apply( mcenter, valid );
+  Coordinate nc = t.apply( mcenter );
   double nr = t.apply( mradius );
   // transform msa...
   double nmsa = msa;
@@ -278,7 +276,8 @@ ObjectImp* ArcImp::transform( const Transformation& t ) const
   }
   while ( nmsa < -M_PI ) nmsa += 2*M_PI;
   while ( nmsa > M_PI ) nmsa -= 2*M_PI;
-  return new ArcImp( nc, nr, nmsa, ma );
+  if ( nc.valid() ) return new ArcImp( nc, nr, nmsa, ma );
+  else return new InvalidImp;
 }
 
 void ArcImp::draw( KigPainter& p ) const

@@ -107,9 +107,8 @@ PointImp* PointImp::copy() const
 
 ObjectImp* PointImp::transform( const Transformation& t ) const
 {
-  bool valid = true;
-  Coordinate nc = t.apply( mc, valid );
-  if ( valid ) return new PointImp( nc );
+  Coordinate nc = t.apply( mc );
+  if ( nc.valid() ) return new PointImp( nc );
   else return new InvalidImp();
 }
 

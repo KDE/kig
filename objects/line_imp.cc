@@ -336,28 +336,25 @@ double LineImp::getParam( const Coordinate& point, const KigDocument& ) const
 
 ObjectImp* SegmentImp::transform( const Transformation& t ) const
 {
-  bool valid = true;
-  Coordinate na = t.apply( mdata.a, valid );
-  Coordinate nb = t.apply( mdata.b, valid );
-  if( valid ) return new SegmentImp( na, nb );
+  Coordinate na = t.apply( mdata.a );
+  Coordinate nb = t.apply( mdata.b );
+  if( na.valid() && nb.valid() ) return new SegmentImp( na, nb );
   else return new InvalidImp();
 }
 
 ObjectImp* LineImp::transform( const Transformation& t ) const
 {
-  bool valid = true;
-  Coordinate na = t.apply( mdata.a, valid );
-  Coordinate nb = t.apply( mdata.b, valid );
-  if ( valid ) return new LineImp( na, nb );
+  Coordinate na = t.apply( mdata.a );
+  Coordinate nb = t.apply( mdata.b );
+  if ( na.valid() && nb.valid() ) return new LineImp( na, nb );
   else return new InvalidImp();
 }
 
 ObjectImp* RayImp::transform( const Transformation& t ) const
 {
-  bool valid = true;
-  Coordinate na = t.apply( mdata.a, valid );
-  Coordinate nb = t.apply( mdata.b, valid );
-  if ( valid ) return new RayImp( na, nb );
+  Coordinate na = t.apply( mdata.a );
+  Coordinate nb = t.apply( mdata.b );
+  if ( na.valid() && nb.valid() ) return new RayImp( na, nb );
   else return new InvalidImp();
 }
 

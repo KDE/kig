@@ -1,3 +1,7 @@
+2003-08-03  Dominique Devriese  <devriese@kde.org>
+
+	* give Transformation::apply better semantics
+
 2003-07-27  Dominique Devriese  <devriese@kde.org>
 
 	* add a warning to configure.in.bot about how Boost.Python 1.30

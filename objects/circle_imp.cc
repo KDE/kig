@@ -44,10 +44,11 @@ ObjectImp* CircleImp::transform( const Transformation& t ) const
 {
   if ( t.isHomothetic() )
   {
-    bool valid = true;
-    Coordinate nc = t.apply( mcenter, valid );
+    Coordinate nc = t.apply( mcenter );
     double nr = t.apply( mradius );
-    return new CircleImp( nc, nr );
+    if ( nc.valid() )
+      return new CircleImp( nc, nr );
+    else return new InvalidImp;
   }
   else
   {

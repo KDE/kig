@@ -351,8 +351,7 @@ const Transformation Transformation::castShadow(
   // in the new coordinates the line is the x-axis
   // I must transform the point
 
-  bool isvalid = true;
-  Coordinate modlightsrc = sym.apply ( lightsrc, isvalid );
+  Coordinate modlightsrc = sym.apply ( lightsrc );
   Transformation ret = identity();
   ret.mdata[0][0] =  2*modlightsrc.y;
   ret.mdata[0][2] = -1;
@@ -385,9 +384,8 @@ const Transformation Transformation::projectiveRotation(
   return translation( t )*ret*translation( -t );
 }
 
-const Coordinate Transformation::apply( const Coordinate& p, bool& valid ) const
+const Coordinate Transformation::apply( const Coordinate& p ) const
 {
-  valid = true;
   double phom[3] = {1., p.x, p.y};
   double rhom[3] = {0., 0., 0.};
 
@@ -401,10 +399,7 @@ const Coordinate Transformation::apply( const Coordinate& p, bool& valid ) const
   }
 
   if (rhom[0] == 0.)
-  {
-    valid = false;
-    return Coordinate (0., 0.);
-  }
+    return Coordinate::invalidCoord();
 
   return Coordinate (rhom[1]/rhom[0], rhom[2]/rhom[0]);
 }
