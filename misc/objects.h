@@ -146,7 +146,7 @@ class Objects
 {
 public:
   Objects() {};
-  Objects( uint n, Object* l ) : myvector<Object*>( n, l ) {};
+  Objects( uint n, Object* l = 0 ) : myvector<Object*>( n, l ) {};
   template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {};
   Objects( const Objects& os ) : myvector<Object*>( os ) {};
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
