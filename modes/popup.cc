@@ -362,7 +362,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
 //        {
 //          case 1:
 //          {
-            ptr.setPen( QPen( color, 1 ) );    
+            ptr.setPen( QPen( color, 1 ) );
             ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
             QRect r( 6, 6, 8, 8 );
             ptr.drawEllipse( r );
@@ -503,7 +503,7 @@ bool BuiltinObjectActionsProvider::executeAction(
     else
     {
       Qt::PenStyle p = Qt::SolidLine;
-      switch ( id )
+      switch ( id + 1 )
       {
         case 2:
         {
