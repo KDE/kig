@@ -126,6 +126,8 @@ class Kig : public KParts::MainWindow, virtual public KigIface
   KToggleAction *m_toolbarAction;
   KToggleAction *m_statusbarAction;
   KRecentFilesAction *m_recentFilesAction;
+
+  static bool kimageioRegistered;
 };
 
 #endif // KIG_H

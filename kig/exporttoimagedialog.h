@@ -31,6 +31,13 @@ class ExportToImageDialog
 
   KigView* mv;
   KigDocument* md;
+
+  QSize msize;
+
+  // this is set by slotWidthChanged() when they set the other input
+  // widget's value, to avoid reacting to internal changes to the
+  // value like to user changes...
+  bool minternallysettingstuff;
 public:
   ExportToImageDialog( KigView* v, KigDocument* d );
   ~ExportToImageDialog();

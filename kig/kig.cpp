@@ -24,6 +24,7 @@
  *
  */
 #include "kig.h"
+#include "kig.moc"
 
 #include <kkeydialog.h>
 #include <kconfig.h>
@@ -250,5 +251,3 @@ void Kig::fileOpen()
 
   if (!file_name.isEmpty()) openURL(file_name);
 }
-
-#include "kig.moc"

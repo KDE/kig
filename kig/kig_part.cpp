@@ -342,13 +342,23 @@ bool KigDocument::saveFile()
     mhistory->documentSaved();
     return true;
   }
+  else if ( result == KigFilter::FileNotFound )
+  {
+    // i know i need to change the enum value name, but this means
+    // that the file could not be opened...
+    KMessageBox::sorry( m_widget,
+                        i18n( "The file \"%1\" could not be opened.  Please check if the file permissions are set correctly..." )
+                        .arg( m_file ) );
+    return false;
+
+  }
   else // if ( result == KigFilter::NotSupported )
   {
     // we don't support this mime type...
     KMessageBox::sorry
       (
         widget(),
-        i18n( "You tried to save to a file of type \"%1\".  Unfortunately, "
+        i18n( "You tried to save to a file of MIME type \"%1\".  Unfortunately, "
               "Kig doesn't support this format.  If you think the format in "
               "question would be worth implementing support for, you can "
               "always ask me nicely on mailto:devriese@kde.org "
@@ -624,9 +634,16 @@ bool KigDocument::internalSaveAs()
 
   QString file_name = KFileDialog::getSaveFileName(":document", formats );
   if (file_name.isEmpty()) return false;
-  else
+  else if ( QFileInfo( file_name ).exists() )
   {
-    saveAs(file_name);
-    return true;
+    int ret = KMessageBox::warningYesNo( m_widget,
+                                         i18n( "The file \"%1\" already exists.  Do you wish to overwrite it ?" )
+                                         .arg( file_name ) );
+    if ( ret != KMessageBox::Yes )
+    {
+      return false;
+    }
   }
+  saveAs(file_name);
+  return true;
 }

@@ -20,20 +20,32 @@
 #include "exporttoimagedialog.moc"
 
 #include "kig_view.h"
+#include "kig_part.h"
+
+#include "../misc/i18n.h"
+#include "../misc/kigpainter.h"
 
 #include <knuminput.h>
 #include <kpushbutton.h>
 #include <kurlrequester.h>
+#include <kimageio.h>
+#include <kmessagebox.h>
 
 ExportToImageDialog::ExportToImageDialog( KigView* v, KigDocument* d )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),
-    mv( v ), md( d )
+    mv( v ), md( d ), msize( v->realWidget()->size() ), minternallysettingstuff( false )
 {
-  WidthInput->setValue( v->realWidget()->size().width() );
-  HeightInput->setValue( v->realWidget()->size().height() );
+  WidthInput->setValue( msize.width() );
+  HeightInput->setValue( msize.height() );
 
-  URLRequester->setFilter( // TODO
-    "*" );
+  static bool kimageioRegistered = false;
+  if ( ! kimageioRegistered )
+  {
+    KImageIO::registerFormats();
+    kimageioRegistered = true;
+  };
+
+  URLRequester->setFilter( KImageIO::pattern( KImageIO::Writing ) );
   URLRequester->setMode( KFile::File | KFile::LocalOnly );
 
   connect( OKButton, SIGNAL( clicked() ), this, SLOT( slotOKPressed() ) );
@@ -44,22 +56,75 @@ ExportToImageDialog::ExportToImageDialog( KigView* v, KigDocument* d )
 
 void ExportToImageDialog::slotOKPressed()
 {
-  // TODO..
+  QString filename = URLRequester->url();
+  if ( filename.isEmpty() )
+  {
+    KMessageBox::sorry( mv, i18n( "Please enter a file name." ) );
+    return;
+  };
+  QFile file( filename );
+  if ( file.exists() )
+  {
+    int ret = KMessageBox::warningYesNo( mv,
+                                         i18n( "The file \"%1\" already exists.  Do you wish to overwrite it ?" )
+                                         .arg( filename ) );
+    if ( ret != KMessageBox::Yes ) return;
+  };
+
+  if ( ! file.open( IO_WriteOnly ) )
+  {
+    KMessageBox::sorry( mv,
+                        i18n( "The file \"%1\" could not be opened.  Please check if the file permissions are set correctly..." )
+                        .arg( filename ) );
+    return;
+  };
+
+  QString type =  KImageIO::type( filename );
+  if ( ! type )
+  {
+    KMessageBox::sorry( mv,
+                        i18n( "Sorry, this file format is not supported." ) );
+    return;
+  };
+
+  kdDebug() << type << endl;
+
+  QPixmap img( QSize( WidthInput->value(), HeightInput->value() ) );
+  img.fill( Qt::white );
+  KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img );
+  p.drawGrid( md->coordinateSystem() );
+  p.drawObjects( md->objects() );
+  if ( ! img.save( filename, type ) )
+  {
+    KMessageBox::error( md->widget(), i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );
+    return;
+  }
+  else accept();
 }
 
 void ExportToImageDialog::slotCancelPressed()
 {
-  // TODO..
+  reject();
 }
 
-void ExportToImageDialog::slotWidthChanged( int )
+void ExportToImageDialog::slotWidthChanged( int w )
 {
-  // TODO...
+  if ( ! minternallysettingstuff )
+  {
+    minternallysettingstuff = true;
+    HeightInput->setValue( w * msize.height() / msize.width() );
+    minternallysettingstuff = false;
+  };
 }
 
-void ExportToImageDialog::slotHeightChanged( int )
+void ExportToImageDialog::slotHeightChanged( int h )
 {
-  // TODO...
+  if ( ! minternallysettingstuff )
+  {
+    minternallysettingstuff = true;
+    WidthInput->setValue( h * msize.width() / msize.height() );
+    minternallysettingstuff = false;
+  };
 }
 
 ExportToImageDialog::~ExportToImageDialog()
