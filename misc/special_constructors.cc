@@ -635,11 +635,12 @@ void PolygonBCVConstructor::handlePrelim(
   Coordinate v = static_cast<const PointImp*>( os[1]->imp() )->coordinate();
 
   int nsides = 6;
+  int winding = 0;    // 0 means allow winding > 1
   if ( os.size() == 3 )
   {
     assert ( os[2]->imp()->inherits( BogusPointImp::stype() ) );
     Coordinate cntrl = static_cast<const PointImp*>( os[2]->imp() )->coordinate();
-    nsides = computeNsides( c, v, cntrl );
+    nsides = computeNsides( c, v, cntrl, winding );
   }
     
   std::vector<ObjectCalcer*> args;
@@ -647,6 +648,11 @@ void PolygonBCVConstructor::handlePrelim(
   args.push_back( os[1] );
   ObjectConstCalcer* ns = new ObjectConstCalcer( new IntImp( nsides ) );
   args.push_back( ns );
+  if ( winding > 1 )
+  {
+    ns = new ObjectConstCalcer( new IntImp( winding ) );
+    args.push_back( ns );
+  }
 
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
@@ -669,9 +675,15 @@ std::vector<ObjectHolder*> PolygonBCVConstructor::build( const std::vector<Objec
 
   args.push_back( parents[0] );
   args.push_back( parents[1] );
-  int nsides = computeNsides( c, v, cntrl );
+  int winding = 0;
+  int nsides = computeNsides( c, v, cntrl, winding );
   ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( nsides ) );
   args.push_back( d );
+  if ( winding > 1 )
+  {
+    d = new ObjectConstCalcer( new IntImp( winding ) );
+    args.push_back( d );
+  }
 
   ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
   ObjectHolder* h = new ObjectHolder( calcer );
@@ -697,12 +709,22 @@ QString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<O
     Coordinate c = static_cast<const PointImp*>( os[0]->imp() )->coordinate();
     Coordinate v = static_cast<const PointImp*>( os[1]->imp() )->coordinate();
     Coordinate cntrl = static_cast<const PointImp*>( os[2]->imp() )->coordinate();
-    int nsides = computeNsides( c, v, cntrl );
+    int winding = 0;
+    int nsides = computeNsides( c, v, cntrl, winding );
 
-    QString result = QString( 
-      i18n( "Adjust the number of sides (%1)" )
-      ).arg( nsides );
-    return result;
+    if ( winding > 1 )
+    {
+      QString result = QString( 
+        i18n( "Adjust the number of sides (%1/%2)" )
+        ).arg( nsides ).arg( winding );
+      return result;
+    } else
+    {
+      QString result = QString( 
+        i18n( "Adjust the number of sides (%1)" )
+        ).arg( nsides );
+      return result;
+    }
     break;
   }
 
@@ -734,11 +756,14 @@ QString PolygonBCVConstructor::selectStatement(
 void PolygonBCVConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                                    const KigDocument& doc ) const
 {
-  if ( parents.size() != 3 ) return;
+  if ( parents.size() < 3 || parents.size() > 4 ) return;
 
   assert ( parents[0]->imp()->inherits( PointImp::stype() ) &&
            parents[1]->imp()->inherits( PointImp::stype() ) &&
            parents[2]->imp()->inherits( IntImp::stype() ) );
+
+  if ( parents.size() == 4 )
+    assert ( parents[3]->imp()->inherits( IntImp::stype() ) );
 
   Args args;
   std::transform( parents.begin(), parents.end(),
@@ -760,7 +785,7 @@ bool PolygonBCVConstructor::isTransform() const
 }
 
 int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
-        const Coordinate& v, const Coordinate& cntrl ) const
+        const Coordinate& v, const Coordinate& cntrl, int& winding ) const
 {
   Coordinate lvect = v - c;
   Coordinate rvect = cntrl - c;
@@ -769,8 +794,17 @@ int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
   angle = fabs( angle/(2*M_PI) );
   while ( angle > 1 ) angle -= 1;
   if ( angle > 0.5 ) angle = 1 - angle;
- 
-  int nsides = int( 1.0/angle + 0.5 );
+
+  double realsides = 1.0/angle;    // this is bigger that 2 
+  if ( winding <= 0 )              // free to compute winding
+  {
+    winding = 1;
+    double ratio = lvect.length()/rvect.length();
+    winding = int ( ratio );
+    if ( winding < 1 ) winding = 1;
+  }
+  int nsides = int( winding*realsides + 0.5 );  // nsides/winding should be reduced!
+  while ( !relativePrimes ( nsides, winding ) ) ++nsides;
   if ( nsides < 3 ) nsides = 3;
   if ( nsides > 100 ) nsides = 100;     // well, 100 seems large enough!
   return nsides;
@@ -1474,6 +1508,16 @@ QString CocConstructor::useText(
   else if ( o.imp()->inherits( PointImp::stype() ) )
     return i18n( "Center of Curvature at This Point" );
   return QString::null;
+}
+
+bool relativePrimes( int n, int p )
+{
+  if ( p > n ) return relativePrimes( p, n );
+  assert ( p >= 0 );
+  if ( p == 0 ) return false;
+  if ( p == 1 ) return true;
+  int d = int( n/p ); 
+  return relativePrimes( p, n-d*p );
 }
 
 //QString CocConstructor::selectStatement(

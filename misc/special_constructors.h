@@ -125,7 +125,7 @@ public:
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigPart* doc, KigGUIAction* kact );
   bool isTransform() const;
-  int computeNsides( const Coordinate& c, const Coordinate& v, const Coordinate& cntrl ) const;
+  int computeNsides( const Coordinate& c, const Coordinate& v, const Coordinate& cntrl, int& winding ) const;
 };
 
 class MeasureTransportConstructor
@@ -304,4 +304,5 @@ public:
 //    const KigWidget& w ) const;
 };
 
+bool relativePrimes( int n, int p );
 #endif
