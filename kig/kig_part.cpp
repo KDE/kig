@@ -247,7 +247,7 @@ bool KigDocument::openFile()
   if ( mimeType->name() != QString::fromLatin1("application/x-kig") )
     {
       kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
-      KigFilter* filter = KigFilters::find( mimeType->name() );
+      KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
       if ( filter == 0 )
       {
 	// we don't support this mime type...

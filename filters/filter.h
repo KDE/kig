@@ -12,21 +12,20 @@ class KigFilter;
 class KigFilters
 {
 public:
-  KigFilters() { sThis = this; populate(); };
-  static KigFilters* sThis;
+  static KigFilters* instance() { return sThis ? sThis : sThis = new KigFilters(); };
+  KigFilter* find (const QString& mime);
+
 protected:
+  KigFilters();
+  static KigFilters* sThis;
   typedef std::vector<KigFilter*> vect;
-  static vect m_filters;
-public:
-  static void add (KigFilter* f) {m_filters.push_back(f); };
-  static KigFilter* find (const QString& mime);
-  static void populate();
+  vect mFilters;
 };
 
 class KigFilter
 {
 public:
-  KigFilter() { KigFilters::sThis->add(this); };
+  KigFilter() {};
   virtual ~KigFilter() {};
 
   typedef enum { OK, FileNotFound, ParseError, NotSupported } Result;

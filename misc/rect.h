@@ -153,7 +153,9 @@ void Rect::setCenter( const Coordinate p )
 
 void Rect::setLeft( const double p )
 {
+  double r = right();
   mBottomLeft.x = p;
+  setRight( r );
 };
 
 void Rect::setRight( const double p )
@@ -163,7 +165,9 @@ void Rect::setRight( const double p )
 
 void Rect::setBottom( const double p )
 {
+  double t = top();
   mBottomLeft.y = p;
+  setTop( t );
 };
 
 void Rect::setTop( const double p )

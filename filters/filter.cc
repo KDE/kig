@@ -3,20 +3,19 @@
 #include "kgeo.h"
 #include "cabri.h"
 
-KigFilters::vect KigFilters::m_filters;
 KigFilters* KigFilters::sThis;
 
 KigFilter* KigFilters::find(const QString& mime)
 {
-  for (vect::iterator i = m_filters.begin(); i != m_filters.end(); ++i)
+  for (vect::iterator i = mFilters.begin(); i != mFilters.end(); ++i)
     {
       if ((*i)->supportMime(mime)) return *i;
     };
   return 0;
 }
 
-void KigFilters::populate()
+KigFilters::KigFilters()
 {
-  new KigFilterKGeo;
-  new KigFilterCabri;
+  mFilters.push_back( new KigFilterKGeo );
+  mFilters.push_back( new KigFilterCabri );
 }

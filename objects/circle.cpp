@@ -242,7 +242,7 @@ void CircleBTP::drawPrelim( KigPainter& p, const Coordinate& t) const
     if( m < 0 ) dy = -dy;
 
     xc = xm + dx;
-    yc = xm + dy;
+    yc = ym + dy;
   };
   p.setPen(QPen (Qt::red, 1));
   Coordinate nC = calcCenter(xa, ya, xb, yb, xc, yc);

@@ -42,6 +42,7 @@ KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name, bool in
   document->addView(this);
   connect( document, SIGNAL( repaintOneObject(const Object*)), this, SLOT(updateObject(const Object*)) );
   connect( document, SIGNAL( allChanged() ), this, SLOT( updateAll() ) );
+  connect( document, SIGNAL( recenterScreen() ), this, SLOT( recenterScreen() ) );
 
   setFocusPolicy(QWidget::ClickFocus);
   setBackgroundMode( Qt::NoBackground );
