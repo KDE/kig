@@ -26,6 +26,7 @@ class Objects;
 class ArgsChecker
 {
 public:
+  virtual ~ArgsChecker();
   enum { Valid = 1, Complete = 2 };
 
   virtual int check( const Objects& os ) const = 0;
@@ -38,18 +39,18 @@ public:
   int check( const Objects& os ) const;
 };
 
-class ArgParser
-  : public ArgsChecker
-{
-  struct spec { int type; int number; };
+// class ArgParser
+//   : public ArgsChecker
+// {
+//   struct spec { int type; int number; };
 
-  typedef std::map<int, int> maptype;
-  std::map<int, int> mmap;
-  int mwantedobjscount;
-public:
-  ArgParser( const struct spec args[] );
-  int check( const Objects& os ) const;
-  Objects parse( const Objects& os ) const;
-};
+//   typedef std::map<int, int> maptype;
+//   std::map<int, int> mmap;
+//   int mwantedobjscount;
+// public:
+//   ArgParser( const struct spec args[] );
+//   int check( const Objects& os ) const;
+//   Objects parse( const Objects& os ) const;
+// };
 
 #endif

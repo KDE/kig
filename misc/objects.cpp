@@ -36,7 +36,7 @@ void Objects::calc() const
   };
 }
 
-Objects Objects::with( Object* o )
+Objects Objects::with( Object* o ) const
 {
   Objects os( *this );
   os.push_back( o );

@@ -63,11 +63,11 @@ public:
   // remove all occurences of o..
   void remove( const T& o );
 
-  myvector<T> with( const T& o );
+  myvector<T> with( const T& o ) const;
 };
 
 template<class T>
-myvector<T> myvector<T>::with( const T& o )
+myvector<T> myvector<T>::with( const T& o ) const
 {
   myvector<T> ret( *this );
   ret.push_back( o );
@@ -152,7 +152,7 @@ public:
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
   void calc() const;
   void calcForWidget( const KigWidget& w ) const;
-  Objects with( Object* );
+  Objects with( Object* ) const;
 };
 
 #endif

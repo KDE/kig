@@ -22,55 +22,59 @@
 
 #include <algorithm>
 
-ArgParser::ArgParser( const spec args[] )
-{
-  for ( const spec* s = args; s != 0; ++s )
-    mmap[s->type] = s->number;
-  mwantedobjscount = 0;
-  for ( const spec* s = args; s != 0; ++s )
-    mwantedobjscount += s->number;
-}
+// ArgParser::ArgParser( const spec args[] )
+// {
+//   for ( const spec* s = args; s != 0; ++s )
+//     mmap[s->type] = s->number;
+//   mwantedobjscount = 0;
+//   for ( const spec* s = args; s != 0; ++s )
+//     mwantedobjscount += s->number;
+// }
 
-int ArgParser::check( const Objects& os ) const
-{
-  // we take a copy, so we can change its contents..
-  maptype map = mmap;
-  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-  {
-    maptype::iterator r = map.find( (*i)->type() );
-    if ( r == map.end() )       // an obj of a type we don't want
-      return 0;
-    else if ( r->second <= 0 )  // too much objs of a type that we do
-                                // want..
-      return 0;
-    else r->second--;           // a good obj
-  };
-  for ( maptype::const_iterator i = map.begin(); i != map.end(); ++i )
-    if ( i->second > 0 ) return Valid; // we need more objs
-  return Valid | Complete;      // and we're done..
-}
+// int ArgParser::check( const Objects& os ) const
+// {
+//   // we take a copy, so we can change its contents..
+//   maptype map = mmap;
+//   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+//   {
+//     maptype::iterator r = map.find( (*i)->type() );
+//     if ( r == map.end() )       // an obj of a type we don't want
+//       return 0;
+//     else if ( r->second <= 0 )  // too much objs of a type that we do
+//                                 // want..
+//       return 0;
+//     else r->second--;           // a good obj
+//   };
+//   for ( maptype::const_iterator i = map.begin(); i != map.end(); ++i )
+//     if ( i->second > 0 ) return Valid; // we need more objs
+//   return Valid | Complete;      // and we're done..
+// }
 
-Objects ArgParser::parse( const Objects& os ) const
-{
-  assert( check( os ) & Valid );
+// Objects ArgParser::parse( const Objects& os ) const
+// {
+//   assert( check( os ) & Valid );
 
-  Objects ret( mwantedobjscount, static_cast<Object*>( 0 ) );
+//   Objects ret( mwantedobjscount, static_cast<Object*>( 0 ) );
 
-  int count = 0;
-  maptype map = mmap;
-  for ( maptype::iterator i = map.begin(); i != map.end(); ++i )
-  {
-    count += i->second;
-    i->second = count;
-  };
+//   int count = 0;
+//   maptype map = mmap;
+//   for ( maptype::iterator i = map.begin(); i != map.end(); ++i )
+//   {
+//     count += i->second;
+//     i->second = count;
+//   };
 
-  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-    ret[--map[(*i)->type()]] = *i;
+//   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+//     ret[--map[(*i)->type()]] = *i;
 
-  return ret;
-}
+//   return ret;
+// }
 
 int CheckOneArgs::check( const Objects& os ) const
 {
   return os.size() == 1 ? Valid | Complete : 0;
+}
+
+ArgsChecker::~ArgsChecker()
+{
 }
