@@ -34,7 +34,6 @@
 #include "../misc/kigpainter.h"
 #include "../misc/lists.h"
 #include "../misc/object_constructor.h"
-#include "../misc/objects.h"
 #include "../misc/screeninfo.h"
 #include "../modes/normal.h"
 #include "../objects/object.h"

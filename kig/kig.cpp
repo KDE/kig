@@ -35,7 +35,6 @@
 #include <kdebug.h>
 #include <kapplication.h>
 #include <klocale.h>
-#include <kimageio.h>
 #include <assert.h>
 
 Kig::Kig()
