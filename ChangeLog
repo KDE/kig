@@ -1,3 +1,8 @@
+2003-08-25  Dominique Devriese  <devriese@kde.org>
+
+	* fix a wrong "lib not found error" in configure.in.in by removing
+	-pedantic from CXXFLAGS while trying to compile.
+
 2003-08-15  Dominique Devriese  <devriese@kde.org>
 
 	* improve the inline documentation in order to improve the doxygen

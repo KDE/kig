@@ -37,6 +37,11 @@ if test "x$kig_enable_python_scripting" != xno; then
 
   AC_CHECK_HEADER(boost/python.hpp,,[KIG_PYTHON_NOT_FOUND] )
 
+  # this will try to compile a program which tries to call the main
+  # function inside the main function, which will cause a spurious
+  # error.  Therefore, we first remove the -pedantic flag from
+  # CXXFLAGS..
+  CXXFLAGS="$(echo "$CXXFLAGS" | sed -e 's/-pedantic//g')"
   KDE_CHECK_LIB( boost_python, main, [], [KIG_PYTHON_NOT_FOUND] )
 
   CPPFLAGS="$kig_ac_old_cppflags"
