@@ -56,7 +56,7 @@ const uint PointImp::numberOfProperties() const
 const QCStringList PointImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
-  l << I18N_NOOP( "coordinate" );
+  l << "coordinate";
   assert( l.size() == PointImp::numberOfProperties() );
   return l;
 }
