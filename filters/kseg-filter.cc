@@ -25,6 +25,7 @@
 #include "../objects/object_factory.h"
 #include "../objects/line_type.h"
 #include "../objects/circle_type.h"
+#include "../objects/other_type.h"
 #include "../misc/coordinate.h"
 
 #include <qfont.h>
@@ -123,6 +124,11 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
     bool given = info & 4;
     bool final = info & 8;
 
+    // avoid g++ warnings about unused vars..
+    // this doesn't really do anything..
+    if ( visible || labelVisible && given || final )
+      (void) descendtype;
+
     drawstyle style = drawstyles[styleid];
 
     if ( type == G_LOOP ) continue;
@@ -212,25 +218,39 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       break;
     };
     case G_ARC:
+    {
+      if ( nparents != 3 ) return ParseError;
+      RealObject* o = new RealObject( ArcBTPType::instance(), parents );
+      o->setWidth( style.pen.width() );
+      o->setColor( style.pen.color() );
+      object = o;
       break;
+    };
     case G_POLYGON:
-      break;
+      return ParseError;
     case G_CIRCLEINTERIOR:
-      break;
+      return ParseError;
     case G_ARCSECTOR:
-      break;
+      return ParseError;
     case G_ARCSEGMENT:
-      break;
+      return ParseError;
     case G_LOCUS:
+    {
+      if ( nparents != 2 ) return ParseError;
+      Objects os = ObjectFactory::instance()->locus( parents );
+      assert( os.size() == 2 );
+      ret.push_back( os[0] );
+      object = os.back();
       break;
+    };
     case G_MEASURE:
-      break;
+      return ParseError;
     case G_CALCULATE:
-      break;
+      return ParseError;
     case G_ANNOTATION:
-      break;
+      return ParseError;
     case G_LOOP:
-      break;
+      return ParseError;
     };
     assert( object );
     ret[i] = object;
