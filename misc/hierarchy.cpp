@@ -140,7 +140,7 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
   ElemList indElems = gegElems;
   for ( ElemList::const_iterator i = allElems.begin(); i != allElems.end(); ++i )
   {
-    if ( (*i)->parents().empty() )
+    if ( (*i)->parents().empty() && ! gegElems.contains( *i ) )
     {
       assert((*i)->tryBuild());
       cos.push_back( (*i)->actual() );

@@ -28,6 +28,9 @@ MacroObject::MacroObject( ObjectHierarchy* inHier, const Objects& args )
   : hier(inHier), arguments( args )
 {
   assert( args.size() == inHier->getGegElems().size() );
+  std::for_each( arguments.begin(), arguments.end(),
+                 std::bind2nd(
+                     std::mem_fun( &Object::addChild ), this ) );
 }
 
 MacroObjectOne::MacroObjectOne( ObjectHierarchy* inHier, const Objects& args )
@@ -122,5 +125,5 @@ MacroObject::MacroObject( const MacroObject& m )
 {
   std::for_each( arguments.begin(), arguments.end(),
                  std::bind2nd(
-                   std::mem_fun( &Object::addChild ), this ) );
+                     std::mem_fun( &Object::addChild ), this ) );
 }
