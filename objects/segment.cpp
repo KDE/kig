@@ -95,14 +95,10 @@ void Segment::stopMove()
 {
 }
 
-// void Segment::cancelMove()
-// {
-//     p1->cancelMove();
-//     p2->cancelMove();
-// }
-
 void Segment::calc( const ScreenInfo& )
 {
+  if ( !p1->isValid() || ! p2->isValid() ) valid = false;
+  else valid = true;
 }
 
 Coordinate Segment::getPoint(double param) const
