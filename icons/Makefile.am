@@ -10,6 +10,7 @@ kigicondata_DATA = \
 	baseCircle.png \
 	bisection.png \
 	centralsymmetry.png \
+	circlebcl.png \
 	circlebcp.png \
 	circlebpd.png \
 	circlebps.png \
@@ -26,9 +27,11 @@ kigicondata_DATA = \
 	harmonichomology.png \
 	genericaffinity.png \
 	genericprojectivity.png \
+	halflinebyvector.png \
 	hyperbolabffp.png \
 	intersection.png \
 	line.png \
+	linebyvector.png \
 	locus.png \
 	mirrorpoint.png \
 	move.png \
@@ -51,6 +54,7 @@ kigicondata_DATA = \
 	sizer.png \
 	slope.png \
 	stretch.png \
+	tangent.png \
 	test.png \
 	testcollinear.png \
 	testcontains.png \
@@ -60,6 +64,7 @@ kigicondata_DATA = \
 	translation.png \
 	triangle.png \
 	vector.png \
+	vectordifference.png \
 	vectorsum.png \
 	view_fit_to_page.png \
 	window_fullscreen.png \

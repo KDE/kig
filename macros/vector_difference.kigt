@@ -4,6 +4,7 @@
   <Name>Vector Difference</Name>
   <Description>Construct the vector difference of two vectors.</Description>
   <ActionName>objects_new_vectordifference</ActionName>
+  <IconFileName>vectordifference</IconFileName>
   <Construction>
    <input requirement="vector" id="1">
     <UseText>Construct the vector difference of this vector and another one.</UseText>

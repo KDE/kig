@@ -4,6 +4,7 @@
   <Name>Circle by Center &amp;&amp; Line</Name>
   <Description>A circle constructed by its center and tangent to a given line</Description>
   <ActionName>objects_new_circlebcl</ActionName>
+  <IconFileName>circlebcl</IconFileName>
   <Construction>
    <input requirement="line" id="1">
     <UseText>Construct a circle tangent to this line</UseText>
