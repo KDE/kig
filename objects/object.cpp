@@ -180,11 +180,12 @@ void Object::addUserTypes( Types& t, bool notify )
     mv& v = KigDocument::documents();
     for ( mv::const_iterator i = v.begin(); i != v.end(); ++i )
     {
+      (*i)->unplugActionLists();
       for ( Types::const_iterator j = t.begin(); j != t.end(); ++j )
       {
         (*i)->addType( j->second );
       };
-      (*i)->rebuildGui();
+      (*i)->plugActionLists();
     };
   };
   t.clear();
@@ -192,14 +193,18 @@ void Object::addUserTypes( Types& t, bool notify )
 
 void Object::removeUserType( Type* t )
 {
-  stypes.removeType( t );
   susertypes.remove( t );
-  t->deleteActions();
+  stypes.removeType( t );
   typedef myvector<KigDocument*> mv;
   mv& v = KigDocument::documents();
   for ( mv::const_iterator i = v.begin(); i != v.end(); ++i )
   {
-    (*i)->rebuildGui();
+    (*i)->unplugActionLists();
+  };
+  t->deleteActions();
+  for ( mv::const_iterator i = v.begin(); i != v.end(); ++i )
+  {
+    (*i)->plugActionLists();
   };
 }
 

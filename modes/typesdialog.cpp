@@ -111,7 +111,6 @@ void TypesDialog::deleteType()
     // count of objects using it, and a bool telling it whether its
     // type is still visible.  On saving we should also save any
     // ObjectHierarchy's that are used...
-    (*i)->deleteActions();
   };
 };
 

@@ -200,7 +200,6 @@ void Kig::optionsConfigureToolbars()
 
 void Kig::applyNewToolbarConfig()
 {
-  emit replugActionLists();
   applyMainWindowSettings(KGlobal::config(), "MainWindow");
 }
 

@@ -99,13 +99,15 @@ public:
 
   /***************** some slots *************************/
 public slots:
+  void unplugActionLists();
+  void plugActionLists();
+  
   void deleteObjects();
   void cancelConstruction();
   void showHidden();
   void newMacro();
   void editTypes();
   void startKiosk();
-  void rebuildGui();
   // equivalent to setModified( false ); ( did i mention i don't like
   // signals/slots for being this inflexible...
   // this is connected to mhistory->documentRestored();

@@ -57,9 +57,6 @@ class Kig : public KParts::MainWindow, virtual public KigIface
    */
   virtual ~Kig();
 
- signals:
-  void replugActionLists();
-
  public slots:
   /**
    * Open file in this window

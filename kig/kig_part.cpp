@@ -113,8 +113,6 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   setModified (false);
 
   mMode = new NormalMode( this );
-
-  connect( parent, SIGNAL( replugActionLists() ), this, SLOT( rebuildGui() ) );
 }
 
 void KigDocument::setupActions()
@@ -209,7 +207,7 @@ void KigDocument::setupTypes()
 
   // hack: we need to plug the action lists _after_ the gui is
   // built.. i can't find a better solution than this...
-  QTimer::singleShot( 0, this, SLOT( rebuildGui() ) );
+  QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
 };
 
 KigDocument::~KigDocument()
@@ -568,7 +566,7 @@ void KigDocument::removeAction( KAction* a )
   aActions.remove( a );
 }
 
-void KigDocument::rebuildGui()
+void KigDocument::unplugActionLists()
 {
   unplugActionList( "user_segment_types" );
   unplugActionList( "user_point_types" );
@@ -576,13 +574,18 @@ void KigDocument::rebuildGui()
   unplugActionList( "user_line_types" );
   unplugActionList( "user_other_types" );
   unplugActionList( "user_types" );
+};
+
+void KigDocument::plugActionLists()
+{
   plugActionList( "user_segment_types", aMNewSegment );
   plugActionList( "user_point_types", aMNewPoint );
   plugActionList( "user_circle_types", aMNewCircle );
   plugActionList( "user_line_types", aMNewLine );
   plugActionList( "user_other_types", aMNewOther );
   plugActionList( "user_types", aMNewAll );
-}
+};
+
 void KigDocument::emitStatusBarText( const QString& text )
 {
   emit setStatusBarText( text );

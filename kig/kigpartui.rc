@@ -88,6 +88,7 @@
   <ActionList name="user_circle_types" />
   <Action name="objects_new_locus" />
   <Action name="objects_new_vector" />
+  <ActionList name="user_other_types" />
 </ToolBar>
 <ToolBar name="view_toolbar"><text>View</text>
   <Action name="view_zoom_in" />
