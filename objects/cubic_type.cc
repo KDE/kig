@@ -24,7 +24,7 @@
 
 #include <vector>
 
-static const char* cubictpstatement = I18N_NOOP( "Construct a cubic through this point" );
+static const char cubictpstatement[] = I18N_NOOP( "Construct a cubic through this point" );
 
 static const struct ArgParser::spec argsspecCubicB9P[] =
 {

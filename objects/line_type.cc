@@ -58,7 +58,7 @@ ObjectImp* SegmentABType::calc( const Coordinate& a, const Coordinate& b ) const
   return new SegmentImp( a, b );
 }
 
-static const char* constructlineabstat = I18N_NOOP( "Construct a line through this point" );
+static const char constructlineabstat[] = I18N_NOOP( "Construct a line through this point" );
 
 static const ArgParser::spec argsspecLineAB[] =
 {

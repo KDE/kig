@@ -26,7 +26,7 @@
 #include "../misc/conic-common.h"
 #include "../misc/common.h"
 
-static const char* constructstatement = I18N_NOOP( "Construct a conic through this point" );
+static const char constructstatement[] = I18N_NOOP( "Construct a conic through this point" );
 
 static const struct ArgParser::spec argsspecConicB5P[] =
 {
@@ -133,7 +133,7 @@ ConicBFFPType::~ConicBFFPType()
 {
 }
 
-static const char* constructellipsewithfocusstat =
+static const char constructellipsewithfocusstat[] =
   I18N_NOOP( "Construct an ellipse with this focus" );
 
 static const ArgParser::spec argsspecEllipseBFFP[] =
@@ -163,7 +163,7 @@ const EllipseBFFPType* EllipseBFFPType::instance()
   return &t;
 }
 
-static const char* constructhyperbolawithfocusstat =
+static const char constructhyperbolawithfocusstat[] =
   I18N_NOOP( "Construct a hyperbola with this focus" );
 
 static const ArgParser::spec argsspecHyperbolaBFFP[] =
@@ -249,7 +249,7 @@ ObjectImp* ConicBDFPType::calc( const Args& parents, const KigDocument& ) const
   return new ConicImpPolar( calcConicBDFP( line, focus, point ) );
 }
 
-static const char* constructparabolathroughpointstat =
+static const char constructparabolathroughpointstat[] =
   I18N_NOOP( "Construct a parabola through this point" );
 
 static const ArgParser::spec argsspecParabolaBTP[] =
@@ -396,7 +396,7 @@ ObjectImp* ConicDirectrixType::calc( const Args& parents, const KigDocument& ) c
   return new LineImp( a, b );
 }
 
-static const char* hyperbolatpstatement = I18N_NOOP( "Construct a hyperbola through this point" );
+static const char hyperbolatpstatement[] = I18N_NOOP( "Construct a hyperbola through this point" );
 
 static const ArgParser::spec argsspecHyperbolaB4P[] =
 {
@@ -507,7 +507,7 @@ ObjectImp* ConicAsymptoteType::calc( const Args& parents, const KigDocument& ) c
   else return new InvalidImp;
 }
 
-static const char* radicallinesstatement = I18N_NOOP( "Construct the radical lines of this conic" );
+static const char radicallinesstatement[] = I18N_NOOP( "Construct the radical lines of this conic" );
 
 static const ArgParser::spec argsspecConicRadical[] =
 {

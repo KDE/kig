@@ -24,7 +24,7 @@
 
 #include "../misc/common.h"
 
-static const char* constructcirclethroughpointstat = I18N_NOOP( "Construct a circle through this point" );
+static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a circle through this point" );
 
 static const ArgParser::spec argsspecCircleBCP[] =
 {

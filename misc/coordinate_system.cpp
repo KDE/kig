@@ -533,8 +533,8 @@ CoordinateSystem* CoordinateSystemFactory::build( int which )
   else return 0;
 }
 
-static const char* euclideanTypeString = "Euclidean";
-static const char* polarTypeString = "Polar";
+static const char euclideanTypeString[] = "Euclidean";
+static const char polarTypeString[] = "Polar";
 
 CoordinateSystem* CoordinateSystemFactory::build( const char* type )
 {

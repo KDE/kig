@@ -83,7 +83,7 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
   else return new InvalidImp;
 }
 
-static const char* constructlinestat = I18N_NOOP( "Intersect with this line" );
+static const char constructlinestat[] = I18N_NOOP( "Intersect with this line" );
 
 static const ArgParser::spec argsspecLineLineIntersection[] =
 {
