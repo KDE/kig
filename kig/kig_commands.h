@@ -35,9 +35,9 @@ class KigCommand
 {
   Q_OBJECT
 public:
-  KigCommand (KigDocument* inDoc, const QString& name) : KNamedCommand(name), document( inDoc ) {};
+  KigCommand (KigDocument& inDoc, const QString& name) : KNamedCommand(name), document( inDoc ) {};
 public:
-  KigDocument* document;
+  KigDocument& document;
 };
 
 class AddObjectsCommand
@@ -45,8 +45,8 @@ class AddObjectsCommand
 {
   Q_OBJECT
 public:
-  AddObjectsCommand (KigDocument* inDoc, const Objects& os);
-  AddObjectsCommand( KigDocument* inDoc, Object* o );
+  AddObjectsCommand (KigDocument& inDoc, const Objects& os);
+  AddObjectsCommand( KigDocument& inDoc, Object* o );
   ~AddObjectsCommand ();
   void execute();
   void unexecute();
@@ -65,8 +65,8 @@ public:
    * its parents.  This class assumes you've done that.
    * KigDocument::delObjects takes care of this for you.
    */
-  RemoveObjectsCommand(KigDocument* inDoc, const Objects& o);
-  RemoveObjectsCommand( KigDocument* inDoc, Object* o );
+  RemoveObjectsCommand(KigDocument& inDoc, const Objects& o);
+  RemoveObjectsCommand( KigDocument& inDoc, Object* o );
   ~RemoveObjectsCommand ();
   void execute();
   void unexecute();
@@ -75,22 +75,34 @@ protected:
   Objects os;
 };
 
-// still needs (quite some) work
 class MoveCommand
   : public KigCommand
 {
 public:
-  // sbm: sos before moving: contains copies of the sos from before the move
-  // sos: contains pointers to the objects as they are currently being used
-  MoveCommand(KigDocument* inDoc, const Objects& inSbm, const Objects& inSos)
-    : KigCommand (inDoc, i18n("Move %1 Objects").arg(sbm.size())),
-      sbm (inSbm), sos(inSos) {};
+  /**
+   * Construct a MoveCommand that will have "Move n objects" as text
+   */
+  MoveCommand( KigDocument& doc, int n );
+  /**
+   * Construct a MoveCommand and set the text explicitly ( you should
+   * use ObjectImp::moveAStatement() if you're moving a single
+   * object..
+   */
+  MoveCommand( KigDocument& doc, const QString& text );
+
   ~MoveCommand();
+
+  /**
+   * add a changed dataobject.  this class gains ownership of the
+   * imp's, you should pass copies.. ( @see ObjectImp::copy() )
+   */
+  void addObject( DataObject* o, ObjectImp* oldimp, ObjectImp* newimp );
+
   void execute();
   void unexecute();
 protected:
-  Objects sbm;
-  Objects sos;
+  class Private;
+  Private* d;
 };
 
 #endif

@@ -75,6 +75,8 @@ class MovingMode
   // requested to move...
   Coordinate pwwlmt;
   Objects emo;
+  class Private;
+  Private* d;
   void stopMove();
   void moveTo( const Coordinate& o );
 public:

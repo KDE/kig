@@ -347,12 +347,12 @@ bool KigDocument::saveFile()
 
 void KigDocument::addObject(Object* o)
 {
-  mhistory->addCommand( new AddObjectsCommand(this, o) );
+  mhistory->addCommand( new AddObjectsCommand( *this, o ) );
 };
 
 void KigDocument::addObjects( const Objects& os )
 {
-  mhistory->addCommand( new AddObjectsCommand(this, os) );
+  mhistory->addCommand( new AddObjectsCommand( *this, os ) );
 }
 
 void KigDocument::_addObject( Object* o )
@@ -366,7 +366,7 @@ void KigDocument::delObject(Object* o)
   // we delete all children and their children etc. too...
   Objects all = o->getAllChildren();
   all.upush(o);
-  mhistory->addCommand( new RemoveObjectsCommand(this, all) );
+  mhistory->addCommand( new RemoveObjectsCommand( *this, all ) );
 };
 
 void KigDocument::_delObject(Object* o)
@@ -495,7 +495,7 @@ void KigDocument::delObjects( const Objects& os )
     if ( mObjs.contains( *i ) )
       dos.upush( *i );
   if ( dos.empty() ) return;
-  mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
+  mhistory->addCommand( new RemoveObjectsCommand( *this, dos ) );
 }
 
 void KigDocument::enableConstructActions( bool enabled )

@@ -25,6 +25,7 @@
 
 #include "../modes/mode.h"
 #include "../objects/object_imp.h"
+#include "../misc/calcpaths.h"
 
 static int countRealObjects( const Objects& os )
 {
@@ -34,7 +35,7 @@ static int countRealObjects( const Objects& os )
   return ret;
 };
 
-AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
+AddObjectsCommand::AddObjectsCommand(KigDocument& inDoc, const Objects& inOs)
   : KigCommand( inDoc,
 		countRealObjects( inOs ) == 1 ?
                 ObjectImp::addAStatement( inOs.back()->imp()->id() ) :
@@ -44,7 +45,7 @@ AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
 {
 }
 
-AddObjectsCommand::AddObjectsCommand( KigDocument* inDoc, Object* o )
+AddObjectsCommand::AddObjectsCommand( KigDocument& inDoc, Object* o )
     : KigCommand ( inDoc, ObjectImp::addAStatement( o->imp()->id() ) ),
       undone( true )
 {
@@ -55,21 +56,19 @@ void AddObjectsCommand::execute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
-    (*i)->calc( *document );
-    document->_addObject(*i);
+    (*i)->calc( document );
+    document._addObject(*i);
   }
   undone = false;
-  document->mode()->objectsAdded();
+  document.mode()->objectsAdded();
 };
 
 void AddObjectsCommand::unexecute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-  {
-    document->_delObject(*i);
-  };
+    document._delObject(*i);
   undone=true;
-  document->mode()->objectsRemoved();
+  document.mode()->objectsRemoved();
 };
 
 // this function is used by the AddObjectsCommand and
@@ -101,11 +100,11 @@ AddObjectsCommand::~AddObjectsCommand()
 {
   if ( undone )
   {
-    deleteObjectsAndDeadParents( os, *document );
+    deleteObjectsAndDeadParents( os, document );
   };
 }
 
-RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& inOs)
+RemoveObjectsCommand::RemoveObjectsCommand(KigDocument& inDoc, const Objects& inOs)
   : KigCommand(inDoc,
 	       countRealObjects( inOs ) == 1 ?
                ObjectImp::removeAStatement( inOs.back()->imp()->id() ) :
@@ -115,7 +114,7 @@ RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& in
 {
 }
 
-RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
+RemoveObjectsCommand::RemoveObjectsCommand( KigDocument& inDoc, Object* o)
   : KigCommand( inDoc, ObjectImp::removeAStatement( o->imp()->id() ) ),
     undone( false )
 {
@@ -125,36 +124,99 @@ RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)
 RemoveObjectsCommand::~RemoveObjectsCommand()
 {
   if (!undone)
-  {
-    deleteObjectsAndDeadParents( os, *document );
-  };
+    deleteObjectsAndDeadParents( os, document );
 }
 
 void RemoveObjectsCommand::execute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
-  {
-    document->_delObject(*i);
-  };
+    document._delObject(*i);
   undone=false;
-  document->mode()->objectsRemoved();
+  document.mode()->objectsRemoved();
 }
 
 void RemoveObjectsCommand::unexecute()
 {
   for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
   {
-    (*i)->calc( *document );
-    document->_addObject(*i);
+    (*i)->calc( document );
+    document._addObject(*i);
   };
   undone = true;
-  document->mode()->objectsAdded();
+  document.mode()->objectsAdded();
+}
+
+struct MoveObjectData
+{
+  DataObject* o;
+  ObjectImp* oldimp;
+  ObjectImp* newimp;
+};
+
+class MoveCommand::Private
+{
+public:
+  typedef std::vector<MoveObjectData> datavect;
+  datavect data;
+  bool undone;
+};
+
+MoveCommand::MoveCommand( KigDocument& inDoc, int n )
+  : KigCommand (inDoc, i18n("Move %1 Objects").arg( n ) ),
+    d( new Private )
+{
+}
+
+MoveCommand::MoveCommand( KigDocument& doc, const QString& text )
+  : KigCommand( doc, text ),
+    d( new Private )
+{
+}
+
+MoveCommand::~MoveCommand()
+{
+  for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
+  {
+    delete i->newimp;
+    delete i->oldimp;
+  };
+  delete d;
 }
 
 void MoveCommand::execute()
 {
+  Objects children;
+  for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
+  {
+    i->o->setImp( i->newimp->copy() );
+    children.upush( i->o->getAllChildren() );
+  };
+  children = calcPath( children );
+  children.calc( document );
+  document.mode()->objectsRemoved();
+  d->undone = false;
 }
 
 void MoveCommand::unexecute()
 {
+  Objects children;
+  for ( Private::datavect::iterator i = d->data.begin(); i != d->data.end(); ++i )
+  {
+    i->o->setImp( i->oldimp->copy() );
+    children.upush( i->o->getAllChildren() );
+  };
+  children = calcPath( children );
+  children.calc( document );
+  document.mode()->objectsRemoved();
+  d->undone = true;
 }
+
+void MoveCommand::addObject( DataObject* o, ObjectImp* oldimp, ObjectImp* newimp )
+{
+  MoveObjectData n;
+  n.o = o;
+  n.oldimp = oldimp;
+  n.newimp = newimp;
+  d->data.push_back( n );
+}
+

@@ -21,9 +21,11 @@
 #include "normal.h"
 
 #include "../objects/object.h"
+#include "../objects/object_imp.h"
 #include "../objects/object_factory.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+#include "../kig/kig_commands.h"
 #include "../misc/kigpainter.h"
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate_system.h"
@@ -96,9 +98,25 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   v->updateScrollBars();
 };
 
+struct MoveDataStruct
+{
+  DataObject* o;
+  ObjectImp* oldimp;
+  MoveDataStruct( DataObject* io, ObjectImp* oi )
+    : o( io ), oldimp( oi ) { }
+
+};
+
+class MovingMode::Private
+{
+public:
+  std::vector<MoveDataStruct> movedata;
+};
+
 MovingMode::MovingMode( const Objects& os, const Coordinate& c,
-                        KigWidget& v, KigDocument& d )
-  : MovingModeBase( d, v ), pwwlmt( c )
+                        KigWidget& v, KigDocument& doc )
+  : MovingModeBase( doc, v ), pwwlmt( c ),
+    d( new Private )
 {
   Objects objs;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
@@ -106,8 +124,16 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
     {
       emo.upush( *i );
       objs.upush( *i );
-      objs |= (*i)->parents();
+      objs |= getAllParents( Objects( *i ) );
     };
+
+  for ( Objects::const_iterator i = objs.begin(); i != objs.end(); ++i )
+    if ( (*i)->inherits( Object::ID_DataObject ) )
+    {
+      MoveDataStruct n( static_cast<DataObject*>( *i ), (*i)->imp()->copy() );
+      d->movedata.push_back( n );
+    };
+
   Objects tmp = objs;
   for ( Objects::const_iterator i = tmp.begin(); i != tmp.end(); ++i )
     objs |= (*i)->getAllChildren();
@@ -117,6 +143,20 @@ MovingMode::MovingMode( const Objects& os, const Coordinate& c,
 
 void MovingMode::stopMove()
 {
+  MoveCommand* mc = 0;
+  if ( emo.size() == 1 )
+    mc = new MoveCommand( mdoc, ObjectImp::moveAStatement( emo[0]->imp()->id() ) );
+  else
+    mc = new MoveCommand( mdoc, emo.size() );
+  assert( mc );
+
+  for ( uint i = 0; i < d->movedata.size(); ++i )
+  {
+    DataObject* o = d->movedata[i].o;
+    mc->addObject( o, d->movedata[i].oldimp, o->imp()->copy() );
+  };
+
+  mdoc.history()->addCommand( mc );
 }
 
 void MovingMode::moveTo( const Coordinate& o )
@@ -161,6 +201,7 @@ void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
 
 MovingMode::~MovingMode()
 {
+  delete d;
 }
 
 void PointRedefineMode::stopMove()
