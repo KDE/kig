@@ -16,51 +16,51 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-// #include "macro.h"
-// #include "macro.moc"
+#include "macro.h"
+#include "macro.moc"
 
-// #include "macrowizard.h"
-// #include "../kig/kig_part.h"
+#include "macrowizard.h"
+#include "../kig/kig_part.h"
 
-// #include <klineedit.h>
+#include <klineedit.h>
 
 // DefineMacroMode::DefineMacroMode( KigDocument* d, KigMode* p )
-//   : KigMode( d ), mPrev( p ), cur( &mGiven )
+//   : KigMode( d ), mprev( p ), cur( &mGiven )
 // {
-//   mWizard = new MacroWizard( d->widget(), "macro wizard" );
-//   mWizard->show();
+//   mwizard = new MacroWizard( d->widget(), "macro wizard" );
+//   mwizard->show();
 // }
 
-// // void DefineMacroMode::rejected()
-// // {
-// //   KigMode* m = mPrev;
-// //   KigDocument* d = mDoc;
-// //   delete this;
-// //   d->setMode( m );
-// // }
+// void DefineMacroMode::rejected()
+// {
+//   KigMode* m = mPrev;
+//   KigDocument* d = mDoc;
+//   delete this;
+//   d->setMode( m );
+// }
 
-// // DefineMacroMode::~DefineMacroMode()
-// // {
-// //   delete mWizard;
-// // }
+// DefineMacroMode::~DefineMacroMode()
+// {
+//   delete mWizard;
+// }
 
-// // void DefineMacroMode::updateNexts()
-// // {
-// //   mWizard->setNextEnabled( mWizard->mpgiven,
-// //                            !mGiven.empty() );
-// //   mWizard->setNextEnabled( mWizard->mpfinal,
-// //                            !mFinal.empty() );
-// //   mWizard->setFinishEnabled( mWizard->mpname,
-// //                              !mWizard->KLineEdit1->text().isEmpty()
-// //     );
-// // }
+// void DefineMacroMode::updateNexts()
+// {
+//   mWizard->setNextEnabled( mWizard->mpgiven,
+//                            !mGiven.empty() );
+//   mWizard->setNextEnabled( mWizard->mpfinal,
+//                            !mFinal.empty() );
+//   mWizard->setFinishEnabled( mWizard->mpname,
+//                              !mWizard->KLineEdit1->text().isEmpty()
+//     );
+// }
 
-// // void DefineMacroMode::enteredGosPage()
-// // {
-// //   cur = &mGiven;
-// // }
+// void DefineMacroMode::enteredGosPage()
+// {
+//   cur = &mGiven;
+// }
 
-// // void DefineMacroMode::enteredFosPage()
-// // {
-// //   cur = &mFinal;
-// // }
+// void DefineMacroMode::enteredFosPage()
+// {
+//   cur = &mFinal;
+// }

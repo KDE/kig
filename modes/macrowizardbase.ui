@@ -1,8 +1,8 @@
 <!DOCTYPE UI><UI version="3.0" stdsetdef="1">
-<class>MacroWizard</class>
+<class>MacroWizardBase</class>
 <widget class="QWizard">
     <property name="name">
-        <cstring>MacroWizard</cstring>
+        <cstring>MacroWizardBase</cstring>
     </property>
     <property name="geometry">
         <rect>

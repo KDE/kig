@@ -27,34 +27,35 @@
 
 class MacroWizard;
 
-// class DefineMacroMode
-//   : public QObject, public KigMode
-// {
-//   Q_OBJECT
-// public:
-//   DefineMacroMode( KigDocument*, KigMode* previousMode );
-//   ~DefineMacroMode();
-// //   void leftClicked( QMouseEvent*, KigView* );
-// //   void leftMouseMoved( QMouseEvent*, KigView* );
-// //   void leftReleased( QMouseEvent*, KigView* );
-// //   void rightClicked( QMouseEvent*, KigView* );
-// //   void rightReleased( QMouseEvent*, KigView* );
-// //   void midReleased( QMouseEvent*, KigView* );
-// //   void mouseMoved( QMouseEvent*, KigView* );
+class DefineMacroMode
+  : public KigMode
+{
+public:
+  DefineMacroMode( KigDocument*, KigMode* previousMode );
+  ~DefineMacroMode();
+  void leftClicked( QMouseEvent*, KigView* );
+  void leftMouseMoved( QMouseEvent*, KigView* );
+  void leftReleased( QMouseEvent*, KigView* );
+  void rightClicked( QMouseEvent*, KigView* );
+  void rightReleased( QMouseEvent*, KigView* );
+  void midReleased( QMouseEvent*, KigView* );
+  void mouseMoved( QMouseEvent*, KigView* );
 
-// // public slots:
-// //  void selected( const QString& );
+  // called by MacroWizard class
+  void cancelPressed();
+  void nextPressed();
+  void finishPressed();
 
-// // protected:
-// //   void updateNexts();
-// //   void cleanDraw();
+protected:
+  void updateNexts();
+  void cleanDraw();
 
-//   MacroWizard* mWizard;
-//   KigMode* mPrev;
-//   Objects* cur;
+  MacroWizard* mwizard;
+  KigMode* mprev;
+  Objects* cur;
 
-//   Objects mGiven;
-//   Objects mFinal;
-// };
+  Objects mGiven;
+  Objects mFinal;
+};
 
 #endif
