@@ -239,7 +239,7 @@ const char* ArgsParser::usetext( const ObjectImp* obj, const Args& sel ) const
 {
   spec s = findSpec( obj, sel );
   return s.usetext;
-};
+}
 
 template<typename Collection>
 static bool checkArgs( const Collection& os, uint min, const std::vector<ArgsParser::spec>& argsspec, uint anyobjsspecsize )
