@@ -1,3 +1,10 @@
+2003-05-08  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* organise the filters directory more sanely
+
+	* fix for deleting: remove deleted objects from their children, so
+		  they don't appear in saved files
+
 2003-05-07  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* more undo support: redefining text labels and points is undoable
