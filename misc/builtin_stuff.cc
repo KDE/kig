@@ -223,6 +223,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_parabolabdp" ) );
 
+    c = new MultiObjectTypeConstructor(
+      ConicAsymptoteType::instance(),
+      I18N_NOOP( "Asymptotes of a Hyperbola" ),
+      I18N_NOOP( "The two asymptotes of a hyperbola." ),
+      "conicasymptotes", -1, 1 );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_lineconicasymptotes" ) );
+
     {
       // intersection stuff..
       // There is one "toplevel" constructor, that is composed of

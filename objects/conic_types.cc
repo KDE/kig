@@ -400,3 +400,38 @@ ObjectImp* ParabolaBDPType::calc( const LineData& l,
   kdDebug() << k_funcinfo << r->conicTypeString() << endl;
   return r;
 }
+
+static const ArgParser::spec argsspecci[] =
+{
+  { ObjectImp::ID_ConicImp, 1 },
+  { ObjectImp::ID_IntImp, 1 }
+};
+
+ConicAsymptoteType::ConicAsymptoteType()
+  : ObjectType( "line", "ConicAsymptote", argsspecci, 2 )
+{
+}
+
+ConicAsymptoteType::~ConicAsymptoteType()
+{
+}
+
+const ConicAsymptoteType* ConicAsymptoteType::instance()
+{
+  static const ConicAsymptoteType t;
+  return &t;
+}
+
+ObjectImp* ConicAsymptoteType::calc( const Args& parents, const KigWidget& ) const
+{
+  if ( parents.size() < 2 ) return new InvalidImp;
+  Args p = margsparser.parse( parents );
+  if ( !p[0] || ! p[0] ) return new InvalidImp;
+  bool valid = true;
+  const LineData ret = calcConicAsymptote(
+    static_cast<const ConicImp*>( p[0] )->cartesianData(),
+    static_cast<const IntImp*>( p[1] )->data(),
+    valid );
+  if ( valid ) return new LineImp( ret );
+  else return new InvalidImp;
+}

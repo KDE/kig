@@ -144,5 +144,15 @@ public:
   ObjectImp* calc( const LineData& l, const Coordinate& c ) const;
 };
 
+class ConicAsymptoteType
+  : public ObjectType
+{
+  ConicAsymptoteType();
+  ~ConicAsymptoteType();
+public:
+  static const ConicAsymptoteType* instance();
+  ObjectImp* calc( const Args& parents, const KigWidget& ) const;
+};
+
 #endif
 
