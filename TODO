@@ -1,8 +1,11 @@
 * simple:
 - implement the helpSlot()'s in the wizards..
 - make the scroll wheel work in the kig window..
+- an arc ( nl: cirkelboog ) by the center, start and end point.  arc
+  by begin, end and in-between point can be done with a macro..
 
 * harder:
+- fillable polygons..
 - filters: more input filters ( get cabri to work somewhat, kseg
    support... )  and output filters...  
 - implement Circle by center and radius
@@ -24,6 +27,7 @@
 - scripting !  The GNOME Interactive Geometry program Dr. Genius seems
    to have this already ( albeit in Guile ;) ), so Kig can't lag
    behind ;) 
+- check "property's", like "is point x on line y"
 - figure out some cool way to "attach" a textlabel to an object.. 
 - koffice support ? 
 
