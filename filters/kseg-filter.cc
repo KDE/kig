@@ -221,7 +221,20 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
     case G_LINE:
     {
       if ( nparents != 2 ) return ParseError;
-      RealObject* o = new RealObject( LineABType::instance(), parents );
+      RealObject* o = 0;
+      switch( descendtype )
+      {
+      case G_TWOPOINTS_LINE:
+        o = new RealObject( LineABType::instance(), parents );
+        break;
+      case G_PARALLEL_LINE:
+        o = new RealObject( LineParallelLPType::instance(), parents );
+        break;
+      case G_PERPENDICULAR_LINE:
+        o = new RealObject( LinePerpendLPType::instance(), parents );
+        break;
+      };
+      assert( o );
       o->setWidth( style.pen.width() );
       o->setColor( style.pen.color() );
       object = o;
