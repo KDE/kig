@@ -47,6 +47,8 @@
 - filters: more input filters ( get cabri to work somewhat, Dr.Genius
   perhaps )
 
+- export to SVG
+
 * hard :
 
 - figure out a way to allow the user to enable and disable certain
