@@ -22,8 +22,6 @@
 #ifndef KIG_MISC_ZOOMAREA_H
 #define KIG_MISC_ZOOMAREA_H
 
-#include "zoomarea.h"
-
 #include "zoomareabase.h"
 #include "coordinate.h"
 #include "../kig/kig_document.h"
