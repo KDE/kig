@@ -25,11 +25,11 @@
 #include "moving.h"
 #include "macro.h"
 
-#include <qevent.h>
 #include <kcursor.h>
-#include <klocale.h>
 #include <kaction.h>
 #include <kcommand.h>
+
+QString i18n( const char* );
 
 NormalMode::NormalMode( KigDocument* d )
   : KigMode( d )
@@ -326,9 +326,8 @@ void NormalMode::showHidden()
 
 void NormalMode::newMacro()
 {
-//   DefineMacroMode* m = new DefineMacroMode( mDoc, this );
-
-//   mDoc->setMode( m );
+  DefineMacroMode* m = new DefineMacroMode( mDoc, this );
+  mDoc->setMode( m );
 }
 
 void NormalMode::objectsAdded()

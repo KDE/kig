@@ -25,6 +25,8 @@
 
 #include "../kig/constructactions.h"
 
+#include "../modes/constructing.h"
+
 #include "../objects/macro.h"
 
 #include <qregexp.h>
@@ -98,7 +100,12 @@ const QCString MType::iconFileName() const
   return "";
 }
 
-KAction* MType::constructAction( KigDocument* d )
+KAction* Type::constructAction( KigDocument* d )
 {
   return new ConstructAction( d, this );
+}
+
+KigMode* MType::constructMode( NormalMode* mode, KigDocument* doc )
+{
+  return new StdConstructionMode( build(), mode, doc );
 }

@@ -38,11 +38,13 @@ class Curve;
 class Types;
 class KAction;
 class KigDocument;
+class KigMode;
 class Type;
 class NormalPoint;
 class KigPainter;
 class Coordinate;
 class Rect;
+class NormalMode;
 
 // base class representing all objects (e.g. points, lines etc.)
 class Object
@@ -133,8 +135,9 @@ public:
   // static const QCString vIconFileName() const = 0;
 
   // this is used by TType, this implementation is good for almost
-  // all, only FixedPoint and ConstrainedPoint need something else...
-  static KAction* sConstructAction( KigDocument*, Type*, int shortCut );
+  // all, only NormalPoint needs something else...
+  static KigMode* sConstructMode( Type* ourtype, KigDocument* theDoc,
+                                  NormalMode* previousMode );
 
   // drawing etc.
   // @p showSelect: whether selection should be shown (we don't want to

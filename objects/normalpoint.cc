@@ -22,7 +22,9 @@
 
 #include "../kig/kig_part.h"
 
-#include <klocale.h>
+#include "../modes/constructing.h"
+
+QString i18n( const char* );
 
 NormalPoint* NormalPoint::copy()
 {
@@ -301,10 +303,9 @@ NormalPointImp* ConstrainedPointImp::copy( NormalPoint* p )
   return new ConstrainedPointImp( *this, p );
 }
 
-KAction* NormalPoint::sConstructAction( KigDocument*, Type*, int )
+KigMode* NormalPoint::sConstructMode( Type*, KigDocument* d, NormalMode* p )
 {
-  // TODO
-  return 0;
+  return new PointConstructionMode( p, d );
 }
 
 QString FixedPointImp::wantArg(const Object*) const

@@ -34,6 +34,10 @@ class myvector
   : public std::vector<T>
 {
 public:
+  myvector();
+  // constructs a vector with a single element in it...
+  explicit myvector( const T& element );
+
   typedef typename std::vector<T>::iterator iterator;
   typedef typename std::vector<T>::const_iterator const_iterator;
 
@@ -50,6 +54,18 @@ public:
 
   // remove all occurences of o..
   void remove( const T& o );
+};
+
+template<class T>
+myvector<T>::myvector( const T& t )
+{
+  push_back( t );
+};
+
+
+template<class T>
+myvector<T>::myvector()
+{
 };
 
 template<class T>

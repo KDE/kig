@@ -1,4 +1,4 @@
-// macrowizard.h
+// i18n.h
 // Copyright (C)  2002  Dominique Devriese <fritmebufstek@pandora.be>
 
 // This program is free software; you can redistribute it and/or
@@ -16,25 +16,6 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef MACROWIZARD_H
-#define MACROWIZARD_H
+QString i18n( const char* );
+#define I18N_NOOP( a ) a
 
-#include "macrowizardbase.h"
-
-class DefineMacroMode;
-
-class MacroWizard : public MacroWizardBase
-{
-  Q_OBJECT
-public:
-  MacroWizard( QWidget* parent, DefineMacroMode* m );
-  ~MacroWizard();
-
-  void back();
-  void next();
-  void reject();
-private:
-  DefineMacroMode* mmode;
-};
-
-#endif // MACROWIZARD_H

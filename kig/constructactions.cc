@@ -47,6 +47,6 @@ void ConstructAction::slotActivated()
 {
   NormalMode* nm = dynamic_cast<NormalMode*>( mdoc->mode() );
   assert( nm );
-  StdConstructionMode* m = new StdConstructionMode( mtype->build(), nm, mdoc );
+  KigMode* m = mtype->constructMode( nm, mdoc );
   mdoc->setMode( m );
 }

@@ -21,7 +21,8 @@
 #include "object.h"
 
 #include "../misc/types.h"
-#include "../kig/constructactions.h"
+#include "../misc/type.h"
+#include "../modes/constructing.h"
 
 #include <klocale.h>
 
@@ -92,9 +93,10 @@ Object* Object::newObject( const QCString& type )
   return types().buildObject( type );
 }
 
-KAction* Object::sConstructAction( KigDocument* d, Type* t, int cut )
+KigMode* Object::sConstructMode( Type* ourtype, KigDocument* theDoc,
+                                 NormalMode* previousMode )
 {
-  return new ConstructAction( d, t, cut );
+  return new StdConstructionMode( ourtype->build(), previousMode, theDoc );
 }
 
 const QString Object::vTBaseTypeName() const

@@ -94,6 +94,7 @@ PointConstructionMode::PointConstructionMode( NormalMode* b,
 
 void PointConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 {
+  v->setCursor( KCursor::blankCursor() );
   updatePoint( v->fromScreen( e->pos() ), v->pixelWidth() );
   v->updateCurPix();
   KigPainter p( v->showingRect(), &v->curPix );

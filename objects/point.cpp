@@ -23,7 +23,8 @@
 #include "../misc/kigpainter.h"
 
 #include <qpen.h>
-#include <klocale.h>
+
+#include "../misc/i18n.h"
 
 Point::Point( const Coordinate& p )
  : mC( p )

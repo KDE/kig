@@ -24,15 +24,12 @@
 #include "circle.h"
 #include "../misc/kigpainter.h"
 
-#include <klocale.h>
 #include <kdebug.h>
 #include <qpen.h>
 
 #include <cmath>
 
-#define max(a,b) ((a>b)?a:b)
-#define min(a,b) ((a>b)?b:a)
-#define SIGN(x) (x < 0 ? -1 : 1)
+#include "../misc/i18n.h"
 
 bool Line::contains(const Coordinate& o, const double fault ) const
 {

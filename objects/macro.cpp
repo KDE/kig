@@ -23,7 +23,7 @@
 #include "point.h"
 #include "../misc/hierarchy.h"
 
-#include <klocale.h>
+QString i18n( const char* );
 
 QString MacroObject::wantArg( const Object* o) const
 {

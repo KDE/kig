@@ -19,6 +19,10 @@
 #include "macrowizard.h"
 #include "macrowizard.moc"
 
+#include "macro.h"
+
+#include <kdebug.h>
+
 MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
   : MacroWizardBase( parent, "Define Macro Wizard", false ), mmode( m )
 {
@@ -26,4 +30,40 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
 
 MacroWizard::~MacroWizard()
 {
+}
+
+void MacroWizard::back()
+{
+  if ( currentPage() == mpfinal )
+  {
+    // currentPage() is not yet updated when we get here, so this
+    // means that the page about to be shown is actually mpgiven...
+    mmode->givenPageEntered();
+  }
+  else if ( currentPage() == mpname )
+  {
+    mmode->finalPageEntered();
+  }
+  MacroWizardBase::back();
+}
+
+void MacroWizard::next()
+{
+  if ( currentPage() == mpgiven )
+  {
+    // currentPage() is not yet updated when we get here, so this
+    // means that the page about to be shown is actually mpgiven...
+    kdDebug() << k_funcinfo << "mpgiven" << endl;
+  }
+  else if ( currentPage() == mpfinal )
+  {
+//    mmode->namePageEntered();
+  }
+  MacroWizardBase::next();
+}
+
+void MacroWizard::reject()
+{
+  MacroWizardBase::reject();
+  mmode->cancelPressed();
 }

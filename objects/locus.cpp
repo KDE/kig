@@ -27,7 +27,8 @@
 #include "../misc/kigpainter.h"
 
 #include <kdebug.h>
-#include <klocale.h>
+
+#include "../misc/i18n.h"
 
 /**
  * Locus: the calc routines of this class are a bit unusual:

@@ -34,28 +34,32 @@ public:
   DefineMacroMode( KigDocument*, KigMode* previousMode );
   ~DefineMacroMode();
   void leftClicked( QMouseEvent*, KigView* );
-  void leftMouseMoved( QMouseEvent*, KigView* );
   void leftReleased( QMouseEvent*, KigView* );
   void rightClicked( QMouseEvent*, KigView* );
   void rightReleased( QMouseEvent*, KigView* );
-  void midReleased( QMouseEvent*, KigView* );
   void mouseMoved( QMouseEvent*, KigView* );
 
+  void enableActions();
+
   // called by MacroWizard class
-  void cancelPressed();
-  void nextPressed();
+  void givenPageEntered();
+  void finalPageEntered();
+  void namePageEntered();
   void finishPressed();
+  void cancelPressed();
 
 protected:
+  // update the enabled state of the next buttons on the wizard...
   void updateNexts();
-  void cleanDraw();
+  // quit this mode...
+  void abandonMacro();
 
+  QPoint plc;
   MacroWizard* mwizard;
   KigMode* mprev;
-  Objects* cur;
 
-  Objects mGiven;
-  Objects mFinal;
+  Objects mgiven;
+  Object* mfinal;
 };
 
 #endif

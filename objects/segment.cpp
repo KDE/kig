@@ -24,10 +24,11 @@
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
 
-#include <klocale.h>
 #include <kdebug.h>
 #include <qpen.h>
 #include "math.h"
+
+#include "../misc/i18n.h"
 
 Segment::Segment()
  : p1( 0 ), p2( 0 )

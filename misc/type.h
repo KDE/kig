@@ -30,6 +30,8 @@ class QDomElement;
 class QDomNode;
 class KAction;
 class KigDocument;
+class KigMode;
+class NormalMode;
 
 #include <qstring.h>
 
@@ -83,10 +85,17 @@ public:
   virtual Object* build() = 0;
 
   /**
+   * returns a ConstructMode, which allows the user to construct a new
+   * Object... This calls Object::sConstructMode for TType and most of
+   * the times just returns new StdConstructionMode...
+   */
+  virtual KigMode* constructMode( NormalMode* prev, KigDocument* doc ) = 0;
+
+  /**
    * build an action which, when clicked, calls d->setMode(
    * new some_constructing_mode );
    */
-  virtual KAction* constructAction( KigDocument* d ) = 0;
+  KAction* constructAction( KigDocument* d );
 };
 
 /**
@@ -104,14 +113,13 @@ public:
   const QString description() const;
   const QCString iconFileName() const;
   void saveXML( QDomDocument&, QDomNode& ) const;
-  virtual KAction* constructAction( KigDocument* d );
+  KigMode* constructMode( NormalMode* prev, KigDocument* doc );
 };
 
-template <class T>
-KAction* TType<T>::constructAction( KigDocument* d )
+template<class T>
+KigMode* TType<T>::constructMode( NormalMode* prev, KigDocument* doc )
 {
-  // TODO: get the shortcuts right...
-  return T::sConstructAction( d, this, 0 );
+  return T::sConstructMode( this, doc, prev );
 }
 
 template <class T>
@@ -179,8 +187,8 @@ public:
   const QString descriptiveName() const;
   const QString description() const;
   const QCString iconFileName() const;
-  KAction* constructAction( KigDocument* );
   void saveXML( QDomDocument&, QDomNode& ) const;
+  KigMode* constructMode( NormalMode* mode, KigDocument* doc );
 };
 
 #endif

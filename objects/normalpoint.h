@@ -89,7 +89,7 @@ public:
   const int vShortCut() const;
   static const int sShortCut();
 
-  static KAction* sConstructAction( KigDocument*, Type*, int );
+  static KigMode* sConstructMode( Type*, KigDocument*, NormalMode* );
 
   // no drawPrelim...
   virtual void drawPrelim( KigPainter&, const Object* ) const;
