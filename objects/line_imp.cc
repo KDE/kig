@@ -19,6 +19,7 @@
 #include "line_imp.h"
 
 #include "bogus_imp.h"
+#include "point_imp.h"
 
 #include "../misc/rect.h"
 #include "../misc/common.h"
@@ -113,13 +114,14 @@ int LineImp::type() const
 
 const uint SegmentImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 1;
+  return Parent::numberOfProperties() + 2;
 }
 
 const QCStringList SegmentImp::propertiesInternalNames() const
 {
   QCStringList s = Parent::propertiesInternalNames();
   s << I18N_NOOP( "length" );
+  s << I18N_NOOP( "mid-point" );
   assert( s.size() == SegmentImp::numberOfProperties() );
   return s;
 }
@@ -128,6 +130,7 @@ const QCStringList SegmentImp::properties() const
 {
   QCStringList s = Parent::properties();
   s << I18N_NOOP( "Length" );
+  s << I18N_NOOP( "Mid Point" );
   assert( s.size() == SegmentImp::numberOfProperties() );
   return s;
 }
@@ -143,8 +146,10 @@ const char* SegmentImp::iconForProperty( uint which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
-  if ( which == Parent::numberOfProperties() )
+  else if ( which == Parent::numberOfProperties() )
     return "distance"; // length
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return "bisection"; // mid point
   else assert( false );
 }
 
@@ -152,8 +157,10 @@ ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
-  if ( which == Parent::numberOfProperties() )
+  else if ( which == Parent::numberOfProperties() )
     return new DoubleImp( mdata.dir().length() );
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return new PointImp( ( mdata.a + mdata.b ) / 2 );
   else assert( false );
 }
 
