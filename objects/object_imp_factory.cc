@@ -116,8 +116,9 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
       return QString::fromLatin1( "ray" );
     else return QString::fromLatin1( "line" );
   }
-  else if( d.inherits( ObjectImp::ID_LabelImp ) )
+  else if( d.inherits( ObjectImp::ID_TextImp ) )
   {
+    // TODO
     assert( false );
   }
   else if( d.inherits( ObjectImp::ID_AngleImp ) )

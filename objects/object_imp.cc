@@ -50,7 +50,7 @@ const char* ObjectImp::idToString( int id )
   case ID_PointImp: return "point";
   case ID_CurveImp: return "curve";
   case ID_LineImp: return "line";
-  case ID_LabelImp: return "label";
+  case ID_TextImp: return "label";
   case ID_AngleImp: return "angle";
   case ID_VectorImp: return "vector";
   case ID_LocusImp: return "locus";
@@ -74,7 +74,7 @@ const char* ObjectImp::selectStatement( int id )
   case ID_PointImp: return I18N_NOOP( "Select this point" );
   case ID_CurveImp: return I18N_NOOP( "Select this curve" );
   case ID_LineImp: return I18N_NOOP( "Select this line" );
-  case ID_LabelImp: return I18N_NOOP( "Select this label" );
+  case ID_TextImp: return I18N_NOOP( "Select this label" );
   case ID_AngleImp: return I18N_NOOP( "Select this angle" );
   case ID_VectorImp: return I18N_NOOP( "Select this vector" );
   case ID_LocusImp: return I18N_NOOP( "Select this locus" );
@@ -96,7 +96,7 @@ int ObjectImp::stringToID( const QCString& string )
   if( string == "point" ) return ID_PointImp;
   if( string == "curve" ) return ID_CurveImp;
   if( string == "line" ) return ID_LineImp;
-  if( string == "label" ) return ID_LabelImp;
+  if( string == "label" ) return ID_TextImp;
   if( string == "angle" ) return ID_AngleImp;
   if( string == "vector" ) return ID_VectorImp;
   if( string == "locus" ) return ID_LocusImp;
@@ -119,7 +119,7 @@ QString ObjectImp::removeAStatement( int id )
   case ID_PointImp: return i18n( "Remove a point" );
   case ID_CurveImp: return i18n( "Remove a curve" );
   case ID_LineImp: return i18n( "Remove a line" );
-  case ID_LabelImp: return i18n( "Remove a label" );
+  case ID_TextImp: return i18n( "Remove a label" );
   case ID_AngleImp: return i18n( "Remove an angle" );
   case ID_VectorImp: return i18n( "Remove a vector" );
   case ID_LocusImp: return i18n( "Remove a locus" );
@@ -143,7 +143,7 @@ QString ObjectImp::addAStatement( int id )
   case ID_PointImp: return i18n( "Add a point" );
   case ID_CurveImp: return i18n( "Add a curve" );
   case ID_LineImp: return i18n( "Add a line" );
-  case ID_LabelImp: return i18n( "Add a label" );
+  case ID_TextImp: return i18n( "Add a label" );
   case ID_AngleImp: return i18n( "Add an angle" );
   case ID_VectorImp: return i18n( "Add a vector" );
   case ID_LocusImp: return i18n( "Add a locus" );

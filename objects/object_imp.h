@@ -68,7 +68,7 @@ public:
 
     // Real object types..
     ID_PointImp,
-    ID_LabelImp,
+    ID_TextImp,
     ID_AngleImp,
     ID_VectorImp,
     ID_LocusImp,

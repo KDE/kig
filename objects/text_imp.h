@@ -38,7 +38,7 @@ public:
   TextImp* copy() const;
   ~TextImp();
 
-  TextImp* transform( const Transformation& ) const;
+  ObjectImp* transform( const Transformation& ) const;
 
   void draw( KigPainter& p ) const;
   bool contains( const Coordinate& p, int width, const ScreenInfo& si ) const;
