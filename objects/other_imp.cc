@@ -357,6 +357,9 @@ double ArcImp::getParam( const Coordinate& c, const KigDocument& ) const
 {
   Coordinate d = (c - mcenter).normalize();
   double angle = atan2( d.y, d.x );
+// mp: problems with large arcs
+  if ( angle < msa ) angle += 2*M_PI;
+//
   angle -= msa;
   angle = max( 0., min( angle, ma ) );
   angle /= ma;
