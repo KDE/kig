@@ -88,6 +88,7 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
     Objects args;
     args.push_back( new DataObject( new IntImp( i ) ) );
     args.push_back( new DataObject( new IntImp( 1 ) ) );
+    copy( args.begin(), args.end(), back_inserter( ret ) );
     copy( os.begin(), os.end(), back_inserter( args ) );
     ret.push_back( new RealObject( mtype, args ) );
   };

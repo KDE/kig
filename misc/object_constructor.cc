@@ -184,6 +184,7 @@ Objects MultiObjectTypeConstructor::build(
   {
     Objects args;
     args.push_back( new DataObject( new IntImp( *i ) ) );
+    ret.push_back( args.back() );
     copy( os.begin(), os.end(), back_inserter( args ) );
     RealObject* n = new RealObject( mtype, args );
     ret.push_back( n );
