@@ -56,7 +56,7 @@ bool KigFilterDrgeo::supportMime( const QString& mime )
 {
   // TODO: we need to define a drgeo mimetype, and add some way to
   // detect it ( ideally a KMimeMagic file )
-  return mime == "text/plain";
+  return mime == "application/x-drgeo";
 }
 
 namespace {
