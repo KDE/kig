@@ -6,8 +6,8 @@ ksapi_DATA = \
 	grad.png \
 	headerbg.png
 
+# generate the Kig Python Scriptin APIdocs from the Kig source code
 all-local:
-	# generate the Kig Python Scriptin APIdocs from the Kig source code
 	cat Doxyfile.scripting-api.in | sed -e 's#KIGVERSION#@KIGVERSION@#g' | sed -e 's#TOPSRCDIR#$(top_srcdir)#g' | sed -e 's#SRCDIR#$(srcdir)#g' > Doxyfile.scripting-api
 	doxygen $(srcdir)/Doxyfile.scripting-api
 
