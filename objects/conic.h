@@ -108,18 +108,65 @@ const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& 
  */
 const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartdata );
 
+/**
+ * This function is used by ConicBFFP.  It calcs the polar equation
+ * for a hyperbola ( type == -1 ) or ellipse ( type == 1 ) with
+ * focuses args[0] and args[1], and with args[2] on the edge of the
+ * conic.  args.size() should be two or three.  If it is two, the two
+ * points are taken to be the focuses, and a point is taken on the
+ * perpendicular through the middle of them for the third point.
+ */
+const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
+                                            int type );
+
+/**
+ * This class is a common base class for EllipseBFFP and HyperbolaBFFP
+ * meant to reduce code duplication.  It has protected constructors
+ * and destructors cause it is not meant to be instantiated...
+ * the functions that take a type argument take 1 for an Ellipse and
+ * -1 for a Hyperbola...
+ */
+class ConicBFFP
+  : public Conic
+{
+protected:
+  ConicBFFP( const Objects& os );
+  ConicBFFP( const ConicBFFP& c );
+  ~ConicBFFP();
+
+  void calcCommon( int type );
+
+  // passing arguments
+  Objects getParents() const;
+  static void sDrawPrelimCommon( KigPainter& p,
+                                 const Objects& args,
+                                 int type );
+public:
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+
+  //moving is disabled..
+  void startMove(const Coordinate&, const ScreenInfo& );
+  void moveTo(const Coordinate&);
+  void stopMove();
+
+protected:
+  Point* poc; // point on conic
+  Point* focus1;
+  Point* focus2;
+};
+
 // an ellipse by focuses and a point
 class EllipseBFFP
-  : public Conic
+  : public ConicBFFP
 {
 public:
   EllipseBFFP( const Objects& os );
-  ~EllipseBFFP(){};
-  EllipseBFFP(const EllipseBFFP& c);
-  EllipseBFFP* copy() { return new EllipseBFFP(*this); };
+  EllipseBFFP( const EllipseBFFP& c );
+  ~EllipseBFFP();
+  EllipseBFFP* copy();
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName() { return "EllipseBFFP"; };
+  static const QCString sFullTypeName();
   const QString vDescriptiveName() const { return sDescriptiveName(); };
   static const QString sDescriptiveName();
   const QString vDescription() const { return sDescription(); };
@@ -133,20 +180,39 @@ public:
   void calc();
 
   // passing arguments
-  static Object::WantArgsResult sWantArgs( const Objects& os );
   static QString sUseText( const Objects&, const Object* o );
   static void sDrawPrelim( KigPainter& p, const Objects& args );
 
   Objects getParents() const;
+};
 
-  //moving is disabled..
-  void startMove(const Coordinate&, const ScreenInfo& );
-  void moveTo(const Coordinate&);
-  void stopMove();
-protected:
-  Point* poc; // point on ellipse
-  Point* focus1;
-  Point* focus2;
+// a hyperbola by focuses and a point
+class HyperbolaBFFP
+  : public ConicBFFP
+{
+public:
+  HyperbolaBFFP( const Objects& os );
+  HyperbolaBFFP( const HyperbolaBFFP& c );
+  ~HyperbolaBFFP();
+  HyperbolaBFFP* copy();
+
+  void calc();
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "HyperbolaBFFP"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "hyperbolabffp"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // passing arguments
+  static QString sUseText( const Objects&, const Object* o );
+  static void sDrawPrelim( KigPainter& p, const Objects& args );
 };
 
 class ConicB5P
@@ -181,7 +247,6 @@ public:
   void startMove(const Coordinate&, const ScreenInfo& ) {};
   void moveTo(const Coordinate&) {};
   void stopMove() {};
-  void cancelMove() {};
 
 protected:
   Point* pts[5];

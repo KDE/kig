@@ -54,6 +54,7 @@
     </Menu>
     <Menu name="new_conic">
 	<Action name="objects_new_ellipsebffp" />
+	<Action name="objects_new_hyperbolabffp" />
 	<Action name="objects_new_conicb5p" />
 	<ActionList name="user_conic_types" />
     </Menu>
@@ -110,6 +111,7 @@
 </ToolBar>
 <Toolbar name="conic_toolbar"><text>Conics</text>
   <Action name="objects_new_ellipsebffp" />
+  <Action name="objects_new_hyperbolabffp" />
   <Action name="objects_new_conicb5p" />
   <Action name="user_conic_types" />
 </Toolbar>    

@@ -183,6 +183,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<CircleBCP> );
     Object::addBuiltinType( new TStdType<CircleBTP> );
     Object::addBuiltinType( new TStdType<EllipseBFFP> );
+    Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
     Object::addBuiltinType( new TStdType<ConicB5P> );
     Object::addBuiltinType( new TStdType<MidPoint> );
     Object::addBuiltinType( new TStdType<IntersectionPoint> );

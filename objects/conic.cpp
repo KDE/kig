@@ -56,7 +56,9 @@ bool Conic::contains (const Coordinate& o, const ScreenInfo& si ) const
   ecosthetamtheta0 = costheta*ecostheta0 + sintheta*esintheta0;
   rho = pdimen / (1.0 - ecosthetamtheta0);
 
-  return fabs(len - rho) <= si.normalMiss();
+  if ( fabs(len - rho) <= si.normalMiss() ) return true;
+  rho = - pdimen / ( 1.0 + ecosthetamtheta0 );
+  return fabs( len - rho ) <= si.normalMiss();
 };
 
 void Conic::draw (KigPainter& p, bool ss) const
@@ -67,7 +69,7 @@ void Conic::draw (KigPainter& p, bool ss) const
   p.drawConic( mequation );
 };
 
-bool Conic::inRect (const Rect& /*r*/) const
+bool Conic::inRect ( const Rect& ) const
 {
   // not implemented yet, i'm thinking: take the diagonals of the
   // rect, their intersections with the circle, and check their
@@ -98,42 +100,13 @@ double Conic::getParam (const Coordinate& p) const
 };
 
 EllipseBFFP::EllipseBFFP( const Objects& os )
-  : poc (0), focus1(0), focus2(0)
+  : ConicBFFP( os )
 {
-  assert( os.size() == 3 );
-  focus1 = os[0]->toPoint();
-  focus2 = os[1]->toPoint();
-  poc = os[2]->toPoint();
-  assert( poc );
-  assert( focus1 );
-  assert( focus2 );
-  poc->addChild( this );
-  focus1->addChild( this );
-  focus2->addChild( this );
 };
 
 void EllipseBFFP::calc()
 {
-  mvalid = poc->valid() && focus1->valid() && focus2->valid();
-
-  if ( mvalid )
-  {
-    Coordinate f2f1 = focus2->getCoord() - focus1->getCoord();
-    double f2f1l = f2f1.length();
-    mequation.ecostheta0 = f2f1.x / f2f1l;
-    mequation.esintheta0 = f2f1.y / f2f1l;
-
-    double d1 = (poc->getCoord() - focus1->getCoord()).length();
-    double d2 = (poc->getCoord() - focus2->getCoord()).length();
-    double rhomin = (d1 + d2 - f2f1l) /2.0;
-    double rhomax = (d1 + d2 + f2f1l) /2.0;
-    double eccentricity = (rhomax - rhomin) / (rhomax + rhomin);
-    mequation.ecostheta0 *= eccentricity;
-    mequation.esintheta0 *= eccentricity;
-    mequation.pdimen = (1 - eccentricity)*rhomax;
-
-    mequation.focus1 = focus1->getCoord();
-  }
+  calcCommon( 1 );
 };
 
 Objects EllipseBFFP::getParents() const
@@ -146,11 +119,8 @@ Objects EllipseBFFP::getParents() const
 }
 
 EllipseBFFP::EllipseBFFP(const EllipseBFFP& c)
-  : Conic( c ), poc( c.poc ), focus1( c.focus1 ), focus2 ( c.focus2 )
+  : ConicBFFP( c )
 {
-  poc->addChild(this);
-  focus1->addChild(this);
-  focus2->addChild(this);
 }
 
 const QCString Conic::sBaseTypeName()
@@ -180,16 +150,15 @@ Conic::Conic( const Conic& c )
 {
 }
 
-Object::WantArgsResult EllipseBFFP::sWantArgs( const Objects& os )
+Object::WantArgsResult ConicBFFP::sWantArgs( const Objects& os )
 {
   uint size = os.size();
+  assert( size > 0 );
   if ( size > 3 ) return NotGood;
-  if ( size < 1 ) return NotGood;
-  if ( !os[0]->toPoint() ) return NotGood;
-  if ( size < 2 ) return NotComplete;
-  if ( !os[1]->toPoint() ) return NotGood;
-  if ( size == 3 ) return os[2]->toPoint() ? Complete : NotGood;
-  else return NotComplete;
+  for ( uint i = 0; i < size; ++i )
+    if ( ! os[i]->toPoint() )
+      return NotGood;
+  return size == 3 ? Complete : NotComplete;
 }
 
 QString EllipseBFFP::sUseText( const Objects& os, const Object* )
@@ -207,33 +176,25 @@ QString EllipseBFFP::sUseText( const Objects& os, const Object* )
   };
 }
 
-void EllipseBFFP::sDrawPrelim( KigPainter& p, const Objects& args )
+void ConicBFFP::sDrawPrelimCommon( KigPainter& p,
+                                   const Objects& args,
+                                   int type)
 {
-  ConicPolarEquationData data;
+  if ( args.size() < 2 ) return;
+
+  assert( type == 1 || type == -1 );
+  assert( args.size() < 4 );
+
+  std::vector<Coordinate> cargs;
+  for ( Objects::const_iterator i = args.begin(); i != args.end(); ++i )
+  {
+    assert( (*i)->toPoint() );
+    cargs.push_back( (*i)->toPoint()->getCoord() );
+  };
+
+  ConicPolarEquationData data = calcConicBFFP( cargs, type );
+
   p.setPen(QPen (Qt::red, 1));
-
-  if ( args.size() != 3 ) return;
-  if ( ! ( args[0]->toPoint() && args[1]->toPoint() && args[2]->toPoint() ) ) return;
-
-  Coordinate f1 = args[0]->toPoint()->getCoord();
-  Coordinate f2 = args[1]->toPoint()->getCoord();
-  Coordinate d = args[2]->toPoint()->getCoord();
-
-  Coordinate f2f1 = f2 - f1;
-  double f2f1l = f2f1.length();
-  data.ecostheta0 = f2f1.x / f2f1l;
-  data.esintheta0 = f2f1.y / f2f1l;
-
-  double d1 = (d - f1).length();
-  double d2 = (d - f2).length();
-  double rhomin = (d1 + d2 - f2f1l) /2.0;
-  double rhomax = (d1 + d2 + f2f1l) /2.0;
-  double eccentricity = (rhomax - rhomin) / (rhomax + rhomin);
-  data.ecostheta0 *= eccentricity;
-  data.esintheta0 *= eccentricity;
-  data.pdimen = (1 - eccentricity)*rhomax;
-  data.focus1 = f1;
-
   p.drawConic( data );
 }
 
@@ -247,17 +208,17 @@ const Conic* Conic::toConic() const
   return this;
 }
 
-void EllipseBFFP::startMove(const Coordinate&, const ScreenInfo&)
+void ConicBFFP::startMove(const Coordinate&, const ScreenInfo&)
 {
   // moving is disabled..
 }
 
-void EllipseBFFP::moveTo(const Coordinate&)
+void ConicBFFP::moveTo(const Coordinate&)
 {
   // moving is disabled..
 }
 
-void EllipseBFFP::stopMove()
+void ConicBFFP::stopMove()
 {
   // moving is disabled..
 };
@@ -269,13 +230,13 @@ const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& 
   // this routine should compute the coefficients in the cartesian equation
   //    a x^2 + b y^2 + c xy + d x + e y + f = 0
   // they are defined up to a multiplicative factor.
-  // since we don't know (a priori) which one of them is nonzero, we
+  // since we don't know (in advance) which one of them is nonzero, we
   // simply keep all 6 parameters, obtaining a 5x6 linear system which
   // we solve using gaussian elimination with complete pivoting
-  double solution[6];
 
   // 5 rows, 6 columns..
   double matrix[5][6];
+  double solution[6];
   int scambio[5];
 
   int numpoints = points.size();
@@ -346,7 +307,7 @@ const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& 
   // il sistema e' sottodeterminato, fisso l'ultima incognita = 1
   for ( int j = numpoints; j < 6; ++j )
   {
-    solution[j] = 1.0;
+    solution[j] = 1.0;          // other choices are possible here
   };
 
   for( int k = numpoints - 1; k >= 0; --k )
@@ -403,19 +364,20 @@ const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartd
     double ff = f + aa*xc*xc + bb*yc*yc + dd*xc + ee*yc;
     if (ff*aa > 0)    // wrong orientation
     {
-      if (theta > 0)
-      {theta -= M_PI/2;} else {theta += M_PI/2;}
+      if (theta > 0) theta -= M_PI/2;
+      else theta += M_PI/2;
       costheta = cos(theta);
       sintheta = sin(theta);
       aa = a*costheta*costheta + b*sintheta*sintheta - c*sintheta*costheta;
       bb = a*sintheta*sintheta + b*costheta*costheta + c*sintheta*costheta;
     }
-  } else
+  }
+  else
   {
     if (fabs (bb) < fabs (aa) )
     {
-      if (theta > 0)
-      {theta -= M_PI/2;} else {theta += M_PI/2;}
+      if (theta > 0) theta -= M_PI/2;
+      else theta += M_PI/2;
       costheta = cos(theta);
       sintheta = sin(theta);
       aa = a*costheta*costheta + b*sintheta*sintheta - c*sintheta*costheta;
@@ -562,6 +524,7 @@ void ConicB5P::sDrawPrelim( KigPainter& p, const Objects& os )
 }
 
 ConicB5P::ConicB5P( const Objects& os )
+  : Conic()
 {
   assert( os.size() == 5 );
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
@@ -571,3 +534,173 @@ ConicB5P::ConicB5P( const Objects& os )
     pts[i-os.begin()] = static_cast<Point*>( *i );
   };
 }
+
+EllipseBFFP::~EllipseBFFP()
+{
+}
+
+EllipseBFFP* EllipseBFFP::copy()
+{
+  return new EllipseBFFP(*this);
+}
+
+const QCString EllipseBFFP::sFullTypeName()
+{
+  return "EllipseBFFP";
+}
+
+HyperbolaBFFP::~HyperbolaBFFP()
+{
+}
+
+HyperbolaBFFP* HyperbolaBFFP::copy()
+{
+  return new HyperbolaBFFP(*this);
+}
+
+ConicBFFP::~ConicBFFP()
+{
+}
+
+ConicBFFP::ConicBFFP( const Objects& os )
+  : Conic()
+{
+  assert( os.size() == 3 );
+  focus1 = os[0]->toPoint();
+  focus2 = os[1]->toPoint();
+  poc = os[2]->toPoint();
+  assert( poc && focus1 && focus2 );
+  poc->addChild( this );
+  focus1->addChild( this );
+  focus2->addChild( this );
+}
+
+void ConicBFFP::calcCommon( int type )
+{
+  assert( type == 1 || type == -1 );
+  mvalid = poc->valid() && focus1->valid() && focus2->valid();
+
+  if ( mvalid )
+  {
+    std::vector<Coordinate> args;
+    args.push_back( focus1->getCoord() );
+    args.push_back( focus2->getCoord() );
+    args.push_back( poc->getCoord() );
+    mequation = calcConicBFFP( args, type );
+  };
+};
+
+Objects ConicBFFP::getParents() const
+{
+  Objects objs;
+  objs.push_back( focus1 );
+  objs.push_back( focus2 );
+  objs.push_back( poc );
+  return objs;
+}
+
+ConicBFFP::ConicBFFP( const ConicBFFP& c )
+  : Conic( c ), poc( c.poc ), focus1( c.focus1 ), focus2 ( c.focus2 )
+{
+  poc->addChild(this);
+  focus1->addChild(this);
+  focus2->addChild(this);
+}
+
+void EllipseBFFP::sDrawPrelim( KigPainter& p, const Objects& args )
+{
+  sDrawPrelimCommon( p, args, 1 );
+}
+
+HyperbolaBFFP::HyperbolaBFFP( const Objects& os )
+  : ConicBFFP( os )
+{
+}
+
+HyperbolaBFFP::HyperbolaBFFP( const HyperbolaBFFP& c )
+  : ConicBFFP( c )
+{
+}
+
+const QString HyperbolaBFFP::sDescriptiveName()
+{
+  return i18n("Hyperbola by focuses and point");
+}
+
+const QString HyperbolaBFFP::sDescription()
+{
+  return i18n(
+    "A hyperbola constructed by its focuses and a point on its border"
+    );
+}
+
+const char* HyperbolaBFFP::sActionName()
+{
+  return "objects_new_hyperbolabffp";
+}
+
+QString HyperbolaBFFP::sUseText( const Objects& os, const Object* )
+{
+  switch ( os.size() )
+  {
+  case 0:
+    return i18n( "Hyperbola with this focus" );
+  case 1:
+    return i18n( "Hyperbola with this focus" );
+  case 2:
+    return i18n( "Hyperbola through this point" );
+  default:
+    return 0;
+  };
+}
+
+void HyperbolaBFFP::sDrawPrelim( KigPainter& p, const Objects& args )
+{
+  sDrawPrelimCommon( p, args, -1 );
+}
+
+void HyperbolaBFFP::calc()
+{
+  calcCommon( -1 );
+}
+
+const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
+                                            int type )
+{
+  assert( args.size() > 1 && args.size() < 4 );
+  assert( type == 1 || type == -1 );
+
+  ConicPolarEquationData ret;
+
+  Coordinate f1 = args[0];
+  Coordinate f2 = args[1];
+  Coordinate d;
+  if ( args.size() == 3 )
+    d = args[2];
+  else
+  {
+    // if there are only 2 points given, then we take the third to
+    // be a point on the perpendicular through the middle of the two
+    // points..
+    Coordinate diff = f2 - f1;
+    diff /= 2;
+    d = f1 + diff + diff.orthogonal();
+  }
+
+  Coordinate f2f1 = f2 - f1;
+  double f2f1l = f2f1.length();
+  ret.ecostheta0 = f2f1.x / f2f1l;
+  ret.esintheta0 = f2f1.y / f2f1l;
+
+  double d1 = ( d - f1 ).length();
+  double d2 = ( d - f2 ).length();
+  double dl = fabs( d1 + type * d2 );
+  double rhomax = (dl + f2f1l) /2.0;
+  double eccentricity = f2f1l/dl;
+  ret.ecostheta0 *= eccentricity;
+  ret.esintheta0 *= eccentricity;
+  ret.pdimen = type*(1 - eccentricity)*rhomax;
+  ret.focus1 = type == 1 ? f1 : f2;
+  return ret;
+}
+
