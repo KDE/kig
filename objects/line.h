@@ -24,8 +24,6 @@
 #include "curve.h"
 #include "../misc/common.h"
 
-#include <kdebug.h>
-
 class Line
   : public Curve
 {

@@ -26,7 +26,6 @@
 
 #include <kdebug.h>
 #include <qpen.h>
-#include "math.h"
 
 #include "../misc/i18n.h"
 
@@ -34,10 +33,9 @@ Segment::Segment( const Objects& os )
  : p1( 0 ), p2( 0 )
 {
   assert( os.size() == 2 );
-  assert( os[0]->toPoint() );
-  assert( os[1]->toPoint() );
-  p1 = static_cast<Point*>(os[0]);
-  p2 = static_cast<Point*>(os[1]);
+  p1 = os[0]->toPoint();
+  p2 = os[1]->toPoint();
+  assert( p1 && p2 );
   p1->addChild( this );
   p2->addChild( this );
 }

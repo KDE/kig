@@ -399,3 +399,10 @@ Rect KigPainter::fromScreen( const QRect& r ) const
 {
   return msi.fromScreen( r );
 }
+
+void KigPainter::drawRay( const Coordinate& a, const Coordinate& b )
+{
+  Coordinate tb = b;
+  calcRayBorderPoints( a, tb, window() );
+  drawSegment( a, tb );
+}

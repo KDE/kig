@@ -57,6 +57,18 @@ Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, co
  * as p1p2, and so that p1' and p2' are on the border of the Rect...
  */
 void calcBorderPoints( Coordinate& p1, Coordinate& p2, const Rect& r );
+
+/**
+ * this does the same as the above function, but only for b..
+ */
+void calcRayBorderPoints( const Coordinate& a, Coordinate& b, const Rect& r );
+
+/**
+ * overload...
+ */
+void calcRayBorderPoints( const double xa, const double xb, double& ya,
+                          double& yb, const Rect& r );
+
 /**
  * overload...
  */
@@ -75,7 +87,10 @@ bool isOnLine( const Coordinate o, const Coordinate a,
  * fault is the allowed difference...
  */
 bool isOnSegment( const Coordinate o, const Coordinate a,
-               const Coordinate b, const double fault );
+                  const Coordinate b, const double fault );
+
+bool isOnRay( const Coordinate o, const Coordinate a,
+              const Coordinate b, const double fault );
 
 template <typename T>
 T kigMin( const T& a, const T& b)

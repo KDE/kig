@@ -138,6 +138,11 @@ public:
   void drawSegment ( const Coordinate& from, const Coordinate& to );
 
   /**
+   * draw a ray...
+   */
+  void drawRay( const Coordinate& a, const Coordinate& b );
+
+  /**
    * draw a line...
    */
   void drawLine ( const Coordinate& p1, const Coordinate& p2 );

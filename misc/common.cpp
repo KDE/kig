@@ -176,6 +176,63 @@ void calcBorderPoints( double& xa, double& ya, double& xb, double& yb, const Rec
   };
 };
 
+void calcRayBorderPoints( const Coordinate& a, Coordinate& b, const Rect& r )
+{
+  calcRayBorderPoints( a.x, a.y, b.x, b.y, r );
+};
+
+void calcRayBorderPoints( const double xa, const double ya, double& xb,
+                          double& yb, const Rect& r )
+{
+  // we calc where the line through a(xa,ya) and b(xb,yb) intersects with r:
+  double left = (r.left()-xa)*(yb-ya)/(xb-xa)+ya;
+  double right = (r.right()-xa)*(yb-ya)/(xb-xa)+ya;
+  double top = (r.top()-ya)*(xb-xa)/(yb-ya)+xa;
+  double bottom = (r.bottom()-ya)*(xb-xa)/(yb-ya)+xa;
+
+  // now we see which we can use...
+  if(
+    // the ray intersects with the top side of the rect..
+    top >= r.left() && top <= r.right()
+    // and b is above a
+    && yb > ya )
+  {
+    xb = top;
+    yb = r.top();
+    return;
+  };
+  if(
+    // the ray intersects with the left side of the rect...
+    left >= r.bottom() && left <= r.top()
+    // and b is on the left of a..
+    && xb < xa )
+  {
+    xb = r.left();
+    yb=left;
+    return;
+  };
+  if (
+    // the ray intersects with the right side of the rect...
+    right >= r.bottom() && right <= r.top()
+    // and b is to the right of a..
+    && xb > xa )
+  {
+    xb = r.right();
+    yb=right;
+    return;
+  };
+  if(
+    // the ray intersects with the bottom side of the rect...
+    bottom >= r.left() && bottom <= r.right()
+    // and b is under a..
+    && yb < ya ) {
+    xb = bottom;
+    yb = r.bottom();
+    return;
+  };
+  kdError() << k_funcinfo << "damn" << endl;
+};
+
 bool isOnLine( const Coordinate o, const Coordinate a,
                const Coordinate b, const double fault )
 {
@@ -212,4 +269,14 @@ bool isOnSegment( const Coordinate o, const Coordinate a,
     && ( kigMin (a.y, b.y) - o.y < fault )
     // not too low
     && ( o.y - kigMax (a.y, b.y) < fault );
+};
+
+bool isOnRay( const Coordinate o, const Coordinate a,
+              const Coordinate b, const double fault )
+{
+  return isOnLine( o, a, b, fault )
+    // not too far in front of a horizontally..
+    && ( a.x - b.x < fault ) == ( a.x - o.x < fault )
+    // not too far in front of a vertically..
+    && ( a.y - b.y < fault ) == ( a.y - o.y < fault );
 };
