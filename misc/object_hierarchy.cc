@@ -20,8 +20,11 @@
 
 #include "../objects/object.h"
 #include "../objects/object_imp.h"
+#include "../objects/object_imp_factory.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/object_type.h"
+
+#include <qdom.h>
 
 class ObjectHierarchy::Node
 {
@@ -231,7 +234,7 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc )
       const ApplyTypeNode* node = static_cast<const ApplyTypeNode*>( mnodes[i] );
       e.setAttribute( "action", "calc" );
       e.setAttribute( "type", QString::fromLatin1( node->type()->fullName() ) );
-      for ( int i = 0; i < node->parents().size(); ++i )
+      for ( uint i = 0; i < node->parents().size(); ++i )
       {
         int parent = node->parents()[i] + 1;
         QDomElement arge = doc.createElement( "arg" );
