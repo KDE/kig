@@ -215,6 +215,7 @@ protected:
   KActionMenu* KANewPoint;
   KActionMenu* KANewCircle;
   KActionMenu* KANewLine;
+  KActionMenu* KANewOther;
 
   KAction* KACancelConstruction;
   KAction* KAStartKioskMode;

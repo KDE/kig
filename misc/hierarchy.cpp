@@ -280,4 +280,22 @@ void ObjectHierarchy::saveXML( QDomDocument& doc, QDomElement& p ) const
   p.appendChild(m);
 }
 
-
+void ObjectHierarchy::calc()
+{
+  ElemList tmp = gegElems, tmp2;
+  while (!tmp.empty())
+    {
+      for (ElemList::iterator i = tmp.begin(); i != tmp.end(); ++i)
+	{
+	  for (ElemList::const_iterator j = (*i)->getChildren().begin();
+	       j != (*i)->getChildren().begin();
+	       ++j)
+	    {
+	      (*j)->actual->calc();
+	      tmp2.push_back(*j);
+	    };
+	};
+      tmp = tmp2;
+      tmp2.clear();
+    };
+}

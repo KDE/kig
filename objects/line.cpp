@@ -29,12 +29,9 @@ bool Line::contains(const QPoint& o, bool strict) const
       // here, we're working with normal coords, no homogeneous ones, so all z's equal 1
 }
 
-void Line::draw(QPainter& p, bool showSelection) const
+void Line::draw(QPainter& p, bool ss) const
 {
-  if ( !shown ) return;
-  p.setPen( QPen( Qt::blue, 1 ));
-  if (showSelection && selected)
-    p.setPen (QPen (Qt::red,1));
+  p.setPen( ss && selected ? QPen(Qt::red,1) : QPen( Qt::blue, 1 ));
   drawLineTTP(p,qp1, qp2);
 }
 

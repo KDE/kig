@@ -86,9 +86,31 @@ void Object::saveXML( QDomDocument&, QDomElement& )
 
 const Curve* Object::toCurve() const
 {
-  return dynamic_cast<const Curve*>(this);
+  const Object* tmp = this;
+  const MacroObjectOne* tmp2;
+  if ((tmp2=dynamic_cast<const MacroObjectOne*>(tmp))) tmp = tmp2->getFinal();
+  return dynamic_cast<const Curve*>(tmp);
 }
 Curve* Object::toCurve()
 {
-  return dynamic_cast<Curve*>(this);
+  Object* tmp = this;
+  MacroObjectOne* tmp2;
+  if ((tmp2=dynamic_cast<MacroObjectOne*>(tmp))) tmp = tmp2->getFinal();
+  return dynamic_cast<Curve*>(tmp);
+}
+
+const ConstrainedPoint* Object::toConstrainedPoint() const
+{
+  const Object* tmp = this;
+  const MacroObjectOne* tmp2;
+  if ((tmp2=dynamic_cast<const MacroObjectOne*>(tmp))) tmp = tmp2->getFinal();
+  return dynamic_cast<const ConstrainedPoint*>(tmp);
+}
+
+ConstrainedPoint* Object::toConstrainedPoint()
+{
+  Object* tmp = this;
+  MacroObjectOne* tmp2;
+  if ((tmp2=dynamic_cast<MacroObjectOne*>(tmp))) tmp = tmp2->getFinal();
+  return dynamic_cast<ConstrainedPoint*>(tmp);
 }

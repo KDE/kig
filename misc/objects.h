@@ -14,20 +14,21 @@ class Objects
 : protected std::list<Object*>
 {
 public:
-    typedef std::list<Object*>::iterator iterator;
-    typedef std::list<Object*>::const_iterator const_iterator;
-    iterator begin() { return std::list<Object*>::begin(); };
-    const_iterator begin() const { return std::list<Object*>::begin(); };
-    iterator end() { return std::list<Object*>::end();} ;
-    const_iterator end() const { return std::list<Object*>::end();} ;
-    size_t size() const { return std::list<Object*>::size();} ;
-    bool empty() const { return std::list<Object*>::empty();};
-    void clear() { std::list<Object*>::clear(); };
-    Object* front() const { return std::list<Object*>::front();};
+  typedef std::list<Object*>::iterator iterator;
+  typedef std::list<Object*>::const_iterator const_iterator;
+  iterator begin() { return std::list<Object*>::begin(); };
+  const_iterator begin() const { return std::list<Object*>::begin(); };
+  iterator end() { return std::list<Object*>::end();} ;
+  const_iterator end() const { return std::list<Object*>::end();} ;
+  size_t size() const { return std::list<Object*>::size();} ;
+  bool empty() const { return std::list<Object*>::empty();};
+  void clear() { std::list<Object*>::clear(); };
+  Object* front() const { return std::list<Object*>::front();};
   Object* back() const { return std::list<Object*>::back(); };
  public:
-    Objects() {};
-    ~Objects() {};
+  Objects() {};
+  Objects(Object* o) { push_back(o); };
+  ~Objects() {};
 
     // deletes all objects
   void deleteAll();
@@ -65,5 +66,13 @@ public:
   // convenience: get the combined objectOverlayList from our children
   QPtrList<QRect> getOverlay( const QRect& border) const;
 };
+
+// this class sorts its objects, which should make it faster for very
+// large numbers of objects, but, more importantly, makes sure that
+// points are on top of other objects...
+class SortedObjects
+{
+};
+
 
 #endif

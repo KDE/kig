@@ -15,6 +15,7 @@
     <Action name="new_segment"/>
     <Action name="new_point"/>
     <Action name="new_circle"/>
+    <Action name="new_other"/>
   </Menu>
   <Menu name="types">
     <text>Types</text>
@@ -40,5 +41,6 @@
   <Action name="new_segment" />
   <Action name="new_point"/>
   <Action name="new_line"/>
+  <Action name="new_other"/>
 </ToolBar>
 </kpartgui>

@@ -12,6 +12,7 @@
 #include "../objects/line.h"
 #include "../objects/macro.h"
 #include "../objects/intersection.h"
+#include "../objects/locus.h"
 #include "../misc/hierarchy.h"
 
 #include <kinstance.h>
@@ -88,6 +89,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   KANewPoint = new KActionMenu(i18n("New Point"), tmp, actionCollection(), "new_point");
   tmp = l.loadIcon( "segment", KIcon::User );
   KANewSegment = new KActionMenu(i18n("New Segment"), tmp, actionCollection(), "new_segment");
+  KANewOther = new KActionMenu(i18n("New Other"), 0, actionCollection(), "new_other");
 
   // next we add our predefined types:
   // segments
@@ -135,6 +137,12 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
 	   "intersection",
 	   i18n("IntersectionPoint"),
 	   CTRL+Key_I));
+  // and, brand new: locuses !
+  addType(new TType<Locus>
+	  (this,
+	   "locus",
+	   i18n("Locus"),
+	   0));
 
   // we reload the types file we saved the last time, if it exists...
   QString typesFile = KGlobal::dirs()->findResource("config", "KigPart/types.kigt");
@@ -553,7 +561,7 @@ void KigDocument::addType(Type* t)
   else if (t->baseTypeName() == Line::sBaseTypeName()) KANewLine->insert(appel);
   else if (t->baseTypeName() == Circle::sBaseTypeName()) KANewCircle->insert(appel);
   else if (t->baseTypeName() == Segment::sBaseTypeName()) KANewSegment->insert(appel);
-  else kdError() << "new type is not a point, line, circle or segment" << endl;
+  else KANewOther->insert(appel);
   types.add(t);
 }
 

@@ -134,12 +134,14 @@ public:
   void unselectArg (Object*) {};
   Objects getParents() const;
 
-  // TODO:
   void startMove(const QPoint&) {};
   void moveTo(const QPoint& pt);
   void stopMove() {};
   void cancelMove() {};
   void calc();
+
+  double getP() { return p; };
+  void setP(double inP) { p = inP; };
 protected:
   double p;
   Curve* c;

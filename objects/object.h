@@ -19,6 +19,7 @@ class Segment;
 class Line;
 class Circle;
 class Curve;
+class ConstrainedPoint;
 
 // base class representing all objects (e.g. points, lines ..., and some day also user defined macro's)
 class Object
@@ -42,12 +43,14 @@ class Object
   Line* toLine();
   Circle* toCircle();
   Curve* toCurve();
+  ConstrainedPoint* toConstrainedPoint();
 
   const Point* toPoint() const;
   const Segment* toSegment() const;
   const Line* toLine() const;
   const Circle* toCircle() const;
   const Curve* toCurve() const;
+  const ConstrainedPoint* toConstrainedPoint() const;
 
   // type identification:
   // there are 3x2 functions: you don't need all of them in your
@@ -57,7 +60,7 @@ class Object
   // always simply call the static.  The static should return
   // interesting stuff. the static func should be there, even though
   // it's not in this prototype, because we use template classes here
-  // and there, and they assume the static funcs to be present
+  // and there, and they expect the static funcs to be present
   // 
   // the first two return the base type:  this should be something
   // like "point" for MidPoint, notice the minuscule.  Don't return
@@ -77,7 +80,8 @@ class Object
   // static QCString sFullTypeName();
 
   // drawing etc.
-  // showSelect: whether selection should be shown (we don't want to print selected stuff as selected...
+  // showSelect: whether selection should be shown (we don't want to
+  // print selected stuff as selected...
   void drawWrap(QPainter& p, bool ss) const { if (!shown) return; draw(p,ss); };
   virtual void draw (QPainter& p, bool showSelection) const = 0;
 
