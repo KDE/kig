@@ -59,10 +59,22 @@ class EuclideanCoords
 public:
   EuclideanCoords();
   ~EuclideanCoords();
-  virtual QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
-  virtual QString coordinateFormatNotice() const;
-  virtual Coordinate toScreen (const QString& pt, bool& ok) const;
-  virtual void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
+  QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
+  QString coordinateFormatNotice() const;
+  Coordinate toScreen (const QString& pt, bool& ok) const;
+  void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
+};
+
+class PolarCoords
+  : public CoordinateSystem
+{
+public:
+  PolarCoords();
+  ~PolarCoords();
+  QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
+  QString coordinateFormatNotice() const;
+  Coordinate toScreen (const QString& pt, bool& ok) const;
+  void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
 };
 
 #endif
