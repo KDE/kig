@@ -9,6 +9,7 @@
 #include "../misc/types.h"
 #include "../misc/type.h"
 
+class MacroWizardImpl;
 class QWidget;
 class QPainter;
 class KURL;
@@ -228,10 +229,9 @@ protected:
   Objects* macroFinObjs;
 public:
   bool isConstructingMacro() { return macroGegObjs; };
+protected:
+  MacroWizardImpl* m_pMacroWizard;
 public slots:
-  // decides based on isConstructingMacro() whether to call newMacro()
-  // or stepMacro()
-  void macroWrap() { if (isConstructingMacro()) stepMacro(); else newMacro(); };
   // start a new macro definition
   void newMacro();
   // step forward in the macro definition (i.e. start selecting final
@@ -241,6 +241,7 @@ public slots:
   void macroSelect(const Objects& os);
   void macroSelect(const QRect& r);
   void stepMacro();
+  void finishMacro();
   // delete the macro currently being defined
   void delMacro();
 public:

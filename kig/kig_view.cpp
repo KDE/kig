@@ -15,7 +15,7 @@
 #include <iostream>
 
 KigView::KigView (KigDocument* inDoc, QWidget* parent, const char* name, bool inIsKiosk)
-  : QWidget(parent, name),
+  : QWidget(parent, name, WPaintClever | WResizeNoErase | WRepaintNoErase),
     stillPix(size()),
     curPix(size()),
     document(inDoc),

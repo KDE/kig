@@ -4,6 +4,7 @@
 #include "kig_view.h"
 #include "kig_commands.h"
 #include "type_edit_impl.h"
+#include "macrowizard_impl.h"
 #include "../objects/circle.h"
 #include "../objects/segment.h"
 #include "../objects/point.h"
@@ -25,6 +26,7 @@
 #include <kstandarddirs.h>
 #include <klineeditdlg.h>
 #include <kglobal.h>
+#include <klineedit.h>
 
 #include <qfile.h>
 #include <qtextstream.h>
@@ -38,7 +40,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
     macroGegObjs(0),
     macroFinObjs(0),
     numViews(0),
-    types()
+    m_pMacroWizard(0)
 {
   // we need an instance
   setInstance( KigPartFactory::instance() );
@@ -72,7 +74,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   tmp = l.loadIcon("window_fullscreen", KIcon::User);
   KAStartKioskMode = new KAction (i18n("Full screen"), tmp, 0, m_widget, SLOT(startKioskMode()), actionCollection(), "full_screen");
 
-  KANewMacro = new KAction (i18n("New macro"), 0, this, SLOT(macroWrap()), actionCollection(), "macro_action");
+  KANewMacro = new KAction (i18n("New macro"), 0, this, SLOT(newMacro()), actionCollection(), "macro_action");
 
   KAConfigureTypes = new KAction (i18n("Edit Types"), 0, this, SLOT(editTypes()), actionCollection(), "types_edit");
 
@@ -158,6 +160,8 @@ KigDocument::~KigDocument()
   };
   mtypes.saveToFile(typesFile);
   objects.deleteAll();
+  delMacro();
+  delObc();
 }
 
 void KigDocument::setReadWrite(bool rw)
@@ -394,7 +398,7 @@ void KigDocument::selectObjects(const QRect & r)
 
 void KigDocument::clearSelection()
 {
-  for (Objects::iterator i = sos.begin(); i != sos.end(); i++)
+  for (Objects::iterator i = objects.begin(); i != objects.end(); i++)
     {
       (*i)->setSelected(false);
       emit selectionChanged(*i);
@@ -549,14 +553,40 @@ void KigDocument::addType(Type* t)
 
 void KigDocument::newMacro()
 {
-  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   delObc();
   delMacro();
   clearSelection();
   macroGegObjs = new Objects;
-  macroFinObjs = 0;
+  delete m_pMacroWizard;
+  m_pMacroWizard = new MacroWizardImpl(this);
+  connect(m_pMacroWizard, SIGNAL(canceled()), this, SLOT(delMacro()));
+  connect(m_pMacroWizard, SIGNAL(stepMacro()), this, SLOT(stepMacro()));
+  connect(m_pMacroWizard, SIGNAL(finishMacro()), this, SLOT(finishMacro()));
+  m_pMacroWizard->show();
   emit modeChanged();  
 }
+
+void KigDocument::finishMacro()
+{
+  // finish the macro
+  // get a name: 
+  QString appel = m_pMacroWizard->KLineEdit1->text();
+  // if the user pressed cancel, we quit
+  ObjectHierarchy* tmpH = new ObjectHierarchy(*macroGegObjs, *macroFinObjs, this);
+  // // show the hierarchy on cerr for debugging...
+  //       QDomDocument doc("KigDocument");
+  //       QDomElement elem = doc.createElement( "KigDocument" );
+  //       elem.setAttribute( "Version", "2.0.000" );
+  //       tmpH->saveXML(doc, elem);
+  //       doc.appendChild(elem);
+  //       kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
+  //       kdDebug() << doc.toCString() << endl;
+  Type* tmp = new MTypeOne(tmpH, appel, this);
+  assert(tmp);
+  addType(tmp);
+  delMacro();
+  emit modeChanged();
+};
 
 void KigDocument::stepMacro()
 {
@@ -571,29 +601,6 @@ void KigDocument::stepMacro()
   // if we already have macroFinObjs, then we finish the macro
   if (macroFinObjs)
     {
-      kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
-      // finish the macro
-      // get a name: 
-      bool ok;
-      QString appel = KLineEditDlg::getText(i18n("Name for the new macro: "), QString::null, &ok, m_widget);
-      // if the user pressed cancel, we quit
-      if (!ok) { delMacro(); emit modeChanged(); return; };
-      ObjectHierarchy* tmpH = new ObjectHierarchy(*macroGegObjs, *macroFinObjs, this);
-// // show the hierarchy on cerr for debugging...
-// #ifndef NDEBUG
-//       QDomDocument doc("KigDocument");
-//       QDomElement elem = doc.createElement( "KigDocument" );
-//       elem.setAttribute( "Version", "2.0.000" );
-//       tmpH->saveXML(doc, elem);
-//       doc.appendChild(elem);
-//       kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
-//       kdDebug() << doc.toCString() << endl;
-// #endif
-      Type* tmp = new MTypeOne(tmpH, appel, this);
-      assert(tmp);
-      addType(tmp);
-      delMacro();
-      emit modeChanged();
     }
   else
     {
@@ -607,6 +614,7 @@ void KigDocument::delMacro()
   // delete 0; is defined by ANSI C++ to do nothing, so this is ok
   delete macroGegObjs; macroGegObjs = 0;
   delete macroFinObjs; macroFinObjs = 0;
+  // delete m_pMacroWizard;
 }
 
 void KigDocument::macroSelect(Object* o)
@@ -625,8 +633,11 @@ void KigDocument::macroSelect(Object* o)
       a->push(o);
       o->setSelected(true);
       emit selectionChanged(o);
-    }
+    };
+  m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pGivenObjsPage, !macroGegObjs->empty());
+  if (macroFinObjs) m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pFinalObjsPage, !macroFinObjs->empty());
 }
+
 void KigDocument::macroSelect(const Objects& os)
 {
   for (Objects::const_iterator i = os.begin(); i != os.end(); ++i)
