@@ -1,2 +1,9 @@
+2003-04-19  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* Add KSeg file format support
+
+	* Start using the ChangeLog for versions after 0.4.1 ;)
+
 ma feb 11 00:12:52 CET 2002 - Dominique Devriese <devriese@kde.org>
-    o Initial Creation
+	
+	* Initial Creation
