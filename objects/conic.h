@@ -25,6 +25,8 @@
 #include "curve.h"
 #include "../misc/common.h"
 
+#include <vector>
+
 /**
  * This class represents an equation of a conic in the form
  * "ax^2 + by^2 + cxy + dx + ey + f = 0".  The coefficients are stored
@@ -93,10 +95,12 @@ protected:
 };
 
 /**
- * This function calcs a cartesian conic equation such that the 5
- * given points are on the conic..
+ * This function calcs a cartesian conic equation such that the
+ * given points are on the conic..  There can be at most 5 and at
+ * least 1 point.  If there are less than 5, than the coefficients
+ * will be chosen to 1.0 if possible
  */
-const ConicCartesianEquationData calcCartesian ( const Coordinate points[5] );
+const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& points );
 
 /**
  * This function calcs a polar equation for the conic defined by

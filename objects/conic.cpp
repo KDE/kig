@@ -262,7 +262,7 @@ void EllipseBFFP::stopMove()
   // moving is disabled..
 };
 
-const ConicCartesianEquationData calcCartesian ( const Coordinate points[5] )
+const ConicCartesianEquationData calcCartesian ( const std::vector<Coordinate>& points )
 {
   // points is a vector of exactly 5 points through which the conic is
   // constrained.
@@ -278,8 +278,10 @@ const ConicCartesianEquationData calcCartesian ( const Coordinate points[5] )
   double matrix[5][6];
   int scambio[5];
 
+  int numpoints = points.size();
+
   // fill in the matrix elements
-  for ( int i = 0; i < 5; ++i )
+  for ( int i = 0; i < numpoints; ++i )
   {
     double xi = points[i].x;
     double yi = points[i].y;
@@ -292,13 +294,13 @@ const ConicCartesianEquationData calcCartesian ( const Coordinate points[5] )
   }
 
   // start gaussian elimination
-  for ( int k = 0; k < 5; ++k )
+  for ( int k = 0; k < numpoints; ++k )
   {
     // ricerca elemento di modulo massimo
     double maxval = -1.0;
     int imax = -1;
     int jmax = -1;
-    for( int i = k; i < 5; ++i )
+    for( int i = k; i < numpoints; ++i )
     {
       for( int j = k; j < 6; ++j )
       {
@@ -311,14 +313,14 @@ const ConicCartesianEquationData calcCartesian ( const Coordinate points[5] )
       }
     }
     // scambio di riga
-    for( int j = k; j < 5 + 1; ++j )
+    for( int j = k; j < 6; ++j )
     {
       double t = matrix[k][j];
       matrix[k][j] = matrix[imax][j];
       matrix[imax][j] = t;
     }
     // scambio di colonna
-    for( int i = 0; i < 5; ++i )
+    for( int i = 0; i < numpoints; ++i )
     {
       double t = matrix[i][k];
       matrix[i][k] = matrix[i][jmax];
@@ -328,7 +330,7 @@ const ConicCartesianEquationData calcCartesian ( const Coordinate points[5] )
     scambio[k] = jmax;
 
     // ciclo sulle righe
-    for( int i = k+1; i < 5; ++i)
+    for( int i = k+1; i < numpoints; ++i)
     {
       double mik = matrix[i][k]/matrix[k][k];
       matrix[i][k] = mik;    //ricorda il moltiplicatore... (not necessary)
@@ -342,8 +344,12 @@ const ConicCartesianEquationData calcCartesian ( const Coordinate points[5] )
 
   // fine della fase di eliminazione
   // il sistema e' sottodeterminato, fisso l'ultima incognita = 1
-  solution[5] = 1.0;
-  for( int k = 4; k >= 0; --k )
+  for ( int j = numpoints; j < 6; ++j )
+  {
+    solution[j] = 1.0;
+  };
+
+  for( int k = numpoints - 1; k >= 0; --k )
   {
     // sostituzioni all'indietro
     solution[k] = 0.0;
@@ -356,7 +362,7 @@ const ConicCartesianEquationData calcCartesian ( const Coordinate points[5] )
 
   // ultima fase: riordinamento incognite
 
-  for( int k = 4; k >= 0; --k )
+  for( int k = numpoints - 1; k >= 0; --k )
   {
     int jmax = scambio[k];
     double t = solution[k];
@@ -372,11 +378,6 @@ const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartd
 {
   ConicPolarEquationData ret;
 
-  double theta, sintheta, costheta;
-  double aa, bb, cc, dd, ee, ff;
-  double xf, yf;
-  double eccentricity, sqrtdiscrim;
-
   double a = cartdata.coeffs[0];
   double b = cartdata.coeffs[1];
   double c = cartdata.coeffs[2];
@@ -385,19 +386,21 @@ const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartd
   double f = cartdata.coeffs[5];
 
   // 1. Compute theta (tilt of conic)
-  theta = atan2(c, b - a)/2;
+  double theta = atan2(c, b - a)/2;
 
   // now I should possibly add pi/2...
-  costheta = cos(theta);
-  sintheta = sin(theta);
+  double costheta = cos(theta);
+  double sintheta = sin(theta);
   // compute new coefficients (c should now be zero)
-  aa = a*costheta*costheta + b*sintheta*sintheta - c*sintheta*costheta;
-  bb = a*sintheta*sintheta + b*costheta*costheta + c*sintheta*costheta;
+  double aa = a*costheta*costheta + b*sintheta*sintheta - c*sintheta*costheta;
+  double bb = a*sintheta*sintheta + b*costheta*costheta + c*sintheta*costheta;
   if (aa*bb < 0)
   {   // we have a hyperbola we need to check the correct orientation
-    ee = d*sintheta + e*costheta;
-    yf = - ee/(2*bb);
-    ff = f + yf*yf + e*yf;
+    double dd = d*costheta - e*sintheta;
+    double ee = d*sintheta + e*costheta;
+    double xc = - dd / ( 2*aa );
+    double yc = - ee / ( 2*bb );
+    double ff = f + aa*xc*xc + bb*yc*yc + dd*xc + ee*yc;
     if (ff*aa > 0)    // wrong orientation
     {
       if (theta > 0)
@@ -419,17 +422,16 @@ const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartd
       bb = a*sintheta*sintheta + b*costheta*costheta + c*sintheta*costheta;
     }
   }
-  cc = 2*(a - b)*sintheta*costheta + c*(costheta*costheta - sintheta*sintheta);
 
+  double cc = 2*(a - b)*sintheta*costheta +
+              c*(costheta*costheta - sintheta*sintheta);
   //  cc should be zero!!!   cout << "cc = " << cc << "\n";
+  double dd = d*costheta - e*sintheta;
+  double ee = d*sintheta + e*costheta;
 
   a = aa;
   b = bb;
   c = cc;
-
-  dd = d*costheta - e*sintheta;
-  ee = d*sintheta + e*costheta;
-
   d = dd;
   e = ee;
 
@@ -443,7 +445,7 @@ const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartd
 
   // 2. compute y coordinate of focuses
 
-  yf = - e/2;
+  double yf = - e/2;
 
   // new values:
   f += yf*yf + e*yf;
@@ -453,12 +455,11 @@ const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartd
   //      a = 0 -> parabula
   //      a < 0 -> hyperbola
 
-  eccentricity = sqrt(1.0 - a);
+  double eccentricity = sqrt(1.0 - a);
 
-  sqrtdiscrim = sqrt(d*d - 4*a*f);
+  double sqrtdiscrim = sqrt(d*d - 4*a*f);
   if (d < 0.0) sqrtdiscrim = -sqrtdiscrim;
-  xf = (4*a*f - 4*f - d*d)/(d + eccentricity*sqrtdiscrim);
-  xf /= 2;
+  double xf = (4*a*f - 4*f - d*d)/(d + eccentricity*sqrtdiscrim) / 2;
 
   // 3. the focus needs to be rotated back into position
   ret.focus1.x = xf*costheta + yf*sintheta;
@@ -494,7 +495,7 @@ void ConicB5P::calc()
     {
       points[i] = pts[i]->getCoord();
     }
-    mequation = calcPolar( calcCartesian ( points ) );
+    mequation = calcPolar( calcCartesian ( std::vector<Coordinate>( points, points + 5 ) ) );
   }
 }
 
@@ -545,29 +546,18 @@ QString ConicB5P::sUseText( const Objects&, const Object* )
 
 void ConicB5P::sDrawPrelim( KigPainter& p, const Objects& os )
 {
-  Coordinate points[5];
-  int i;
+  std::vector<Coordinate> points;
 
-  // by now do now bother to draw a preliminar conic!
-  // lets think about that later...
   uint size = os.size();
-  if ( size != 5 ) return;
-  assert( os[0]->toPoint() );
-  assert( os[1]->toPoint() );
-  assert( os[2]->toPoint() );
-  assert( os[3]->toPoint() );
-  assert( os[4]->toPoint() );
-  os[4]->toPoint()->getCoord();
+  assert( size > 0 && size < 6 );
+  for ( uint i = 0; i < size; ++i )
+  {
+    assert( os[i]->toPoint() );
+    points.push_back( os[i]->toPoint()->getCoord() );
+  };
 
   p.setPen(QPen (Qt::red, 1));
-  for (i = 0; i < 5; i++)
-  {
-    points[i] = os[i]->toPoint()->getCoord();
-  }
-//  calcCartesian( points );
-//  calcPolar();
-//  p.drawConic( mfocus1, pdimen, ecostheta0, esintheta0 );
-// ... right now I have problems...
+  p.drawConic( calcPolar( calcCartesian( points ) ) );
   return;
 }
 
