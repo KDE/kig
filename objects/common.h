@@ -19,6 +19,7 @@
 #ifndef KIG_OBJECTS_COMMON_H
 #define KIG_OBJECTS_COMMON_H
 
+#include <assert.h>
 #include <vector>
 #include <utility>
 #include <qcstring.h>
