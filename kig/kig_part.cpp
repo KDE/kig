@@ -34,6 +34,7 @@
 #include "../objects/normalpoint.h"
 #include "../objects/midpoint.h"
 #include "../objects/line.h"
+#include "../objects/radicallines.h"
 #include "../objects/macro.h"
 #include "../objects/label.h"
 #include "../objects/intersection.h"
@@ -181,6 +182,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<LinePerpend> );
     Object::addBuiltinType( new TStdType<LineParallel> );
     Object::addBuiltinType( new TStdType<LineRadical> );
+    Object::addBuiltinType( new TMultiType<LineConicRadical> );
     Object::addBuiltinType( new TStdType<CircleBCP> );
     Object::addBuiltinType( new TStdType<CircleBTP> );
     Object::addBuiltinType( new TStdType<EllipseBFFP> );
@@ -190,6 +192,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<MidPoint> );
     Object::addBuiltinType( new TStdType<IntersectionPoint> );
     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
+    Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
     Object::addBuiltinType( new TStdType<TranslatedPoint> );
     Object::addBuiltinType( new TStdType<MirrorPoint> );
     Object::addBuiltinType( new TStdType<Locus> );

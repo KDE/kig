@@ -31,6 +31,7 @@
 	<Action name="objects_new_lineradical" />
 	<Action name="objects_new_ray" />
 	<Action name="objects_new_segment" />
+	<Action name="objects_new_lineconicradical" />
 	<ActionList name="user_line_types" />
 	<ActionList name="user_segment_types" />
     </Menu>
@@ -44,6 +45,7 @@
 	  <Action name="objects_new_rotatedpoint" />
 	  <Action name="objects_new_mirrorpoint" />
 	  <Action name="objects_new_circlelineintersect" />
+	  <Action name="objects_new_coniclineintersect" />
 	  <ActionList name="user_point_types" />
     </Menu>
     <Menu name="new_circle">
@@ -53,6 +55,7 @@
 	<ActionList name="user_circle_types" />
     </Menu>
     <Menu name="new_conic">
+	<text>Conic</text>
 	<Action name="objects_new_ellipsebffp" />
 	<Action name="objects_new_hyperbolabffp" />
 	<Action name="objects_new_conicb5p" />
@@ -97,6 +100,7 @@
   <Action name="objects_new_rotatedpoint" />
   <Action name="objects_new_translatedpoint" />
   <Action name="objects_new_circlelineintersect" />
+  <Action name="objects_new_coniclineintersect" />
   <ActionList name="user_point_types" />
 </ToolBar>
 <ToolBar name="line_toolbar"><text>Lines</text>
@@ -107,14 +111,15 @@
   <Action name="objects_new_lineperpend" />
   <Action name="objects_new_lineparallel" />
   <Action name="objects_new_lineradical" />
+  <Action name="objects_new_lineconicradical" />
   <ActionList name="user_line_types" />
   <ActionList name="user_segment_types" />
 </ToolBar>
 <Toolbar name="conic_toolbar"><text>Conics</text>
   <Action name="objects_new_ellipsebffp" />
   <Action name="objects_new_hyperbolabffp" />
-  <Action name="objects_new_conicb5p" />
   <Action name="objects_new_parabolabtp" />
+  <Action name="objects_new_conicb5p" />
   <Action name="user_conic_types" />
 </Toolbar>    
 <ToolBar name="rest_toolbar"><text>Rest</text>

@@ -95,10 +95,10 @@ const Coordinate calcCircleLineIntersect( const Coordinate& c,
  * the coefficients are stored in the coeffs vector in that order
  */
 const Coordinate calcConicLineIntersect( const double * coeffs,
-                                          const Coordinate& a,
-                                          const Coordinate& b,
-                                          int which,
-                                          bool& valid );
+                                         const Coordinate& a,
+                                         const Coordinate& b,
+                                         int which,
+                                         bool& valid );
 
 /**
  * this calculates the perpendicular projection of point p on line

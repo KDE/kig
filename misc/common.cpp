@@ -315,6 +315,8 @@ const Coordinate calcConicLineIntersect( const double* coeffs,
                                          const Coordinate& b,
                                          int which, bool& valid )
 {
+  assert( which == 1 || which == -1 );
+
   double aa = coeffs[0];
   double bb = coeffs[1];
   double cc = coeffs[2];
