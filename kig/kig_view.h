@@ -180,12 +180,18 @@ public:
   const KigDocument& document() const;
 
 public:
-  // this is connected to KigDocument::recenterScreen, check that signal
-  // out for an explanation...
+  // this recenters the screen, that is, resets the shown rect to
+  // mdocument->suggestedRect()..
   void recenterScreen();
-  // ...
-  void zoomIn();
-  void zoomOut();
+  // this gets called if the user clicks the recenter screen button.
+  // It adds a KigCommand to the CommandHistory that recenters the
+  // screen..
+  void slotRecenterScreen();
+
+  // called when the user clicks the appropriate buttons..
+  void slotZoomIn();
+  void slotZoomOut();
+
   void zoomRect();
 
   void redrawScreen( bool paintOnWidget = true );
@@ -230,10 +236,10 @@ public:
 
 public slots:
   void updateScrollBars();
-  void zoomIn();
-  void zoomOut();
+  void slotZoomIn();
+  void slotZoomOut();
   void zoomRect();
-  void recenterScreen();
+  void slotRecenterScreen();
   void toggleFullScreen();
 
 private slots:

@@ -22,6 +22,7 @@
 #include "kig_commands.moc"
 
 #include "kig_part.h"
+#include "kig_view.h"
 
 #include "../modes/mode.h"
 #include "../objects/object_imp.h"
@@ -51,6 +52,7 @@ KigCommand::~KigCommand()
 {
   for ( uint i = 0; i < d->tasks.size(); ++i )
     delete d->tasks[i];
+  delete d;
 }
 
 void KigCommand::execute()
@@ -331,6 +333,40 @@ void ChangeParentsAndTypeTask::execute( KigDocument& doc )
 }
 
 void ChangeParentsAndTypeTask::unexecute( KigDocument& doc )
+{
+  execute( doc );
+}
+
+class KigViewShownRectChangeTask::Private
+{
+public:
+  Private( KigWidget& view, const Rect& r ) : v( view ), rect( r )  { };
+  KigWidget& v;
+  Rect rect;
+};
+
+KigViewShownRectChangeTask::KigViewShownRectChangeTask(
+  KigWidget& v, const Rect& newrect )
+  : KigCommandTask()
+{
+  d = new Private( v, newrect );
+}
+
+KigViewShownRectChangeTask::~KigViewShownRectChangeTask()
+{
+  delete d;
+}
+
+void KigViewShownRectChangeTask::execute( KigDocument& )
+{
+  Rect oldrect = d->v.showingRect();
+  d->v.setShowingRect( d->rect );
+  d->v.redrawScreen();
+  d->v.updateScrollBars();
+  d->rect = oldrect;
+}
+
+void KigViewShownRectChangeTask::unexecute( KigDocument& doc )
 {
   execute( doc );
 }

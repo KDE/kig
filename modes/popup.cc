@@ -667,12 +667,12 @@ bool BuiltinDocumentActionsProvider::executeAction(
     }
     else if ( id == 1 )
     {
-      w.zoomIn();
+      w.slotZoomIn();
       return true;
     }
     else if ( id == 2 )
     {
-      w.zoomOut();
+      w.slotZoomOut();
       return true;
     }
     else if ( id == 3 )

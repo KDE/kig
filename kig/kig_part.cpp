@@ -174,17 +174,18 @@ void KigDocument::setupActions()
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
 
-  KAction* a = KStdAction::zoomIn( m_widget, SLOT( zoomIn() ), actionCollection() );
+  KAction* a = KStdAction::zoomIn( m_widget, SLOT( slotZoomIn() ),
+                                   actionCollection() );
   a->setToolTip( i18n( "Zoom in on the document" ) );
   a->setWhatsThis( i18n( "Zoom in on the document" ) );
 
-  a = KStdAction::zoomOut( m_widget, SLOT( zoomOut() ),
+  a = KStdAction::zoomOut( m_widget, SLOT( slotZoomOut() ),
                                   actionCollection() );
   a->setToolTip( i18n( "Zoom out of the document" ) );
   a->setWhatsThis( i18n( "Zoom out of the document" ) );
 
-  a = KStdAction::fitToPage( m_widget, SLOT( recenterScreen() ),
-                                         actionCollection() );
+  a = KStdAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
+                             actionCollection() );
   // grr.. why isn't there an icon for this..
   a->setIcon( "new" );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );

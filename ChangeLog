@@ -1,3 +1,11 @@
+2003-06-25  Dominique Devriese  <devriese@kde.org>
+
+	* add undo support for various view actions like zoom in, zoom
+	out, recenter screen, select screen rect etc.  Check out the
+	comment in the function KigWidget::slotZoomIn() in
+	kig/kig_view.cpp for why I implemented this even though it isn't
+	really "correct".
+
 2003-06-24  Dominique Devriese  <devriese@kde.org>
 
 	* fix a crash bug reported by Pino Toscano, that occurs because

@@ -32,6 +32,8 @@ class KigDocument;
 class CoordinateSystem;
 
 class KigCommandTask;
+class KigWidget;
+class Rect;
 
 class KigCommand
   : public QObject, public KNamedCommand
@@ -43,6 +45,10 @@ public:
   KigCommand( KigDocument& inDoc, const QString& name );
   ~KigCommand();
 
+  /**
+   * To avoid confusion, this doesn't add a command to anything, this
+   * creates an AddCommand ;)
+   */
   static KigCommand* addCommand( KigDocument& doc, const Objects& os );
   static KigCommand* addCommand( KigDocument& doc, Object* os );
   /**
@@ -174,6 +180,19 @@ public:
   ChangeParentsAndTypeTask( RealObject* o, const Objects& newparents,
                             const ObjectType* newtype );
   ~ChangeParentsAndTypeTask();
+
+  void execute( KigDocument& doc );
+  void unexecute( KigDocument& doc );
+};
+
+class KigViewShownRectChangeTask
+  : public KigCommandTask
+{
+  class Private;
+  Private* d;
+public:
+  KigViewShownRectChangeTask( KigWidget& v, const Rect& newrect );
+  ~KigViewShownRectChangeTask();
 
   void execute( KigDocument& doc );
   void unexecute( KigDocument& doc );

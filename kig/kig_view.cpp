@@ -22,9 +22,9 @@
 #include "kig_view.moc"
 
 #include "kig_part.h"
+#include "kig_commands.h"
 #include "../objects/object.h"
 #include "../misc/coordinate_system.h"
-
 #include "../modes/mode.h"
 #include "../modes/dragrectmode.h"
 
@@ -54,7 +54,8 @@ KigWidget::KigWidget( KigDocument* doc,
                       QWidget* parent,
                       const char* name,
                       bool fullscreen )
-  : QWidget(parent, name, fullscreen ? WStyle_Customize | WStyle_NoBorder : 0 ),
+  : QWidget( parent, name,
+             fullscreen ? WStyle_Customize | WStyle_NoBorder : 0 ),
     mdocument( doc ),
     mview( view ),
     stillPix(size()),
@@ -164,9 +165,8 @@ void KigWidget::resizeEvent( QResizeEvent* e )
   // don't..
   if ( nsize.width() / osize.width() > 4 ) recenterScreen();
 
-  updateScrollBars();
-
   redrawScreen();
+  updateScrollBars();
 }
 
 void KigWidget::updateCurPix( const std::vector<QRect>& ol )
@@ -185,8 +185,6 @@ void KigWidget::updateCurPix( const std::vector<QRect>& ol )
 void KigWidget::recenterScreen()
 {
   msi.setShownRect( matchScreenShape( mdocument->suggestedRect() ) );
-  updateScrollBars();
-  redrawScreen();
 }
 
 Rect KigWidget::matchScreenShape( const Rect& r ) const
@@ -194,26 +192,37 @@ Rect KigWidget::matchScreenShape( const Rect& r ) const
   return r.matchShape( Rect::fromQRect( rect() ) );
 }
 
-void KigWidget::zoomIn()
+void KigWidget::slotZoomIn()
 {
-  Rect r = msi.shownRect();
-  Coordinate c = r.center();
-  r /= 2;
-  r.setCenter( c );
-  msi.setShownRect( r );
-  redrawScreen();
-  updateScrollBars();
+  Rect nr = msi.shownRect();
+  Coordinate c = nr.center();
+  nr /= 2;
+  nr.setCenter( c );
+  KigCommand* cd =
+    new KigCommand( *mdocument,
+                    i18n( "Zoom In" ) );
+  cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
+  mdocument->history()->addCommand( cd );
 }
 
-void KigWidget::zoomOut()
+void KigWidget::slotZoomOut()
 {
-  Rect r = msi.shownRect();
-  Coordinate c = r.center();
-  r *= 2;
-  r.setCenter( c );
-  msi.setShownRect( r );
-  redrawScreen();
-  updateScrollBars();
+  Rect nr = msi.shownRect();
+  Coordinate c = nr.center();
+  nr *= 2;
+  nr.setCenter( c );
+
+  // zooming in is undoable..  I know this isn't really correct,
+  // because the current view doesn't really belong to the document (
+  // althought KGeo and KSeg both save them along, iirc ).  However,
+  // undoing a zoom or another operation affecting the window seems a
+  // bit too useful to not be available.  Please try to convince me if
+  // you feel otherwise ;-)
+  KigCommand* cd =
+    new KigCommand( *mdocument,
+                    i18n( "Zoom Out" ) );
+  cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
+  mdocument->history()->addCommand( cd );
 }
 
 void KigWidget::clearStillPix()
@@ -274,7 +283,7 @@ KigView::KigView( KigDocument* doc,
     mupdatingscrollbars( false ),
     mrealwidget( 0 ), mdoc( doc )
 {
-  connect( doc, SIGNAL( recenterScreen() ), this, SLOT( recenterScreen() ) );
+  connect( doc, SIGNAL( recenterScreen() ), this, SLOT( slotRecenterScreen() ) );
 
   mlayout = new QGridLayout( this, 2, 2 );
   mrightscroll = new QScrollBar( Vertical, this, "Right Scrollbar" );
@@ -296,6 +305,8 @@ KigView::KigView( KigDocument* doc,
 
   resize( sizeHint() );
   mrealwidget->recenterScreen();
+  mrealwidget->redrawScreen();
+  updateScrollBars();
 }
 
 void KigView::updateScrollBars()
@@ -447,19 +458,25 @@ bool KigWidget::isFullScreen() const
   return misfullscreen;
 }
 
-void KigView::zoomIn()
+void KigView::slotZoomIn()
 {
-  mrealwidget->zoomIn();
+  mrealwidget->slotZoomIn();
 }
 
-void KigView::zoomOut()
+void KigView::slotZoomOut()
 {
-  mrealwidget->zoomOut();
+  mrealwidget->slotZoomOut();
 }
 
-void KigView::recenterScreen()
+void KigWidget::slotRecenterScreen()
 {
-  mrealwidget->recenterScreen();
+  Rect nr = mdocument->suggestedRect();
+  KigCommand* cd =
+    new KigCommand( *mdocument,
+                    i18n( "Recenter the View" ) );
+
+  cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
+  mdocument->history()->addCommand( cd );
 }
 
 void KigView::toggleFullScreen()
@@ -484,8 +501,12 @@ void KigWidget::zoomRect()
   if ( ! d.cancelled() )
   {
     Rect nr = d.rect();
-    nr = nr.matchShape( Rect::fromQRect( rect() ) );
-    msi.setShownRect( nr );
+    KigCommand* cd =
+      new KigCommand( *mdocument,
+                      i18n( "Change the Shown Part of the Screen" ) );
+
+    cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
+    mdocument->history()->addCommand( cd );
   };
 
   redrawScreen();
@@ -495,4 +516,14 @@ void KigWidget::zoomRect()
 void KigView::zoomRect()
 {
   mrealwidget->zoomRect();
+}
+
+void KigWidget::setShowingRect( const Rect& r )
+{
+  msi.setShownRect( r.matchShape( Rect::fromQRect( rect() ) ) );
+}
+
+void KigView::slotRecenterScreen()
+{
+  mrealwidget->slotRecenterScreen();
 }
