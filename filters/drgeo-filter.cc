@@ -143,7 +143,8 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
 #ifdef DRGEO_DEBUG
         kdDebug() << "- Figure: '" << e.attribute("name") << "'" << endl;
 #endif
-        bool grid = ( e.attribute( "grid" ) != "False" );
+        bool grid = !e.attribute( "grid" ).isEmpty() &&
+                    ( e.attribute( "grid" ) != "False" );
         return importFigure( e.firstChild(), file, grid );
       }
     }
