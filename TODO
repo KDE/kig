@@ -1,3 +1,5 @@
+#include <
+- transformations.h>
 - move stillPix into movingMode, so the other modes won't suffer from
   its overhead...  
 - Finally fix the move dependencies... i am thinking of making
@@ -19,12 +21,13 @@
   format etc.
 - object labels !!! think about some generic way to do this...
 - locuses -> cf. KSeg
-	--> this is implemented (objects/locus.cpp), but can still be
-            improved upon quite a lot...
+    --> this is implemented (objects/locus.cpp), but can still be
+    	improved upon quite a lot...
 - koffice support ?
 - there should be a way to link a figure to a (html?) file containing
   exercises.  Teachers would be able to create exercises for Kig.  I'm
-  thinking of doing this with HTML (& KHTML) + Scripting
+  thinking of doing this with HTML (& KHTML) + Scripting ( but this is
+  _distant_ future.. )  
 - transformations like in KSeg...
 - think about what to do with coincident points..
 - filters: more input filters ( get cabri to work somewhat, kseg

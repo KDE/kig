@@ -20,11 +20,11 @@ here are some nice Kig features i'd like to show off :)
   KSeg which i also implemented in my program.  It's a very cool idea,
   and it supports rather advanded stuff like conic's in an easy (for
   the developer :) way...
-  To see it work, check out the conic5pt.kigt and locustest.kig files
-  (the first is based on the latter...
-- Kig also supports various file formats...  See the filters
-  directory.  Currently i have implemented read-write support for
-  native kig files ( which is a imho clean xml format ), and read
+  To see it work, check out the locustest.kig file in the examples
+  directory 
+- Kig supports various file formats...  See the filters directory.
+  Currently i have implemented read-write support for 
+  native kig files ( which is an imho clean xml format ), and read
   support for kgeo files, but this is an area where i plan working
   on... ( KGeo and KSeg read-write, Cabri at least read support )..
 
