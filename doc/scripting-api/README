@@ -1,0 +1,14 @@
+This directory contains mostly the things necessary for generating the
+Kig Python Scripting API documentation from the Kig source code.  This
+file serves to answer two questions:
+
+1 Why is this in its own directory ?  Because, when I tried putting it
+  in the directory above, the KDE_DOCS am_edit feature installed the
+  Doxyfile and stuff in the documentation dir, which is bogus.
+
+2 You copied doxygen.css, footer.html, header.html, headerbg.png,
+  docheadergears.png, grad.png, bottom1.png and bottom2.png from
+  kdelibs/doc/common, why didn't you use the already installed version
+  in kde_htmldir/common ?  -> because Kig is supposed to run on
+  various KDE installations ( ranging from 3.1 to HEAD ), and I don't
+  think the images in there are guaranteed not to change..
