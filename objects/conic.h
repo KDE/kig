@@ -19,57 +19,13 @@
 **/
 
 
-#ifndef CONIC_H
-#define CONIC_H
+#ifndef KIG_OBJECTS_CONIC_H
+#define KIG_OBJECTS_CONIC_H
 
 #include "curve.h"
-#include "../misc/common.h"
+#include "../misc/conic-common.h"
 
 #include <vector>
-
-enum LinearConstraints {noconstraint, zerotilt, parabolaifzt, circleifzt, 
-      equilateral, ysymmetry, xsymmetry};
-
-/**
- * This class represents an equation of a conic in the form
- * "ax^2 + by^2 + cxy + dx + ey + f = 0".  The coefficients are stored
- * in the order a - f.
- */
-struct ConicCartesianEquationData
-{
-  double coeffs[6];
-public:
-  explicit ConicCartesianEquationData();
-  ConicCartesianEquationData( double a, double b, double c,
-                              double d, double e, double f )
-    {
-      coeffs[0] = a;
-      coeffs[1] = b;
-      coeffs[2] = c;
-      coeffs[3] = d;
-      coeffs[4] = e;
-      coeffs[5] = f;
-    };
-  ConicCartesianEquationData( const double incoeffs[6] )
-    {
-      std::copy( incoeffs, incoeffs + 6, coeffs );
-    };
-};
-
-/**
- * This class represents an equation of a conic in the form
- * "\rho(\theta) = \frac{p}{1 - e \cos\theta}" ( run this through
- * LaTeX to get nice output ;)  focus and the ecostheta stuff
- * represent the coordinate system in which the equation yields the
- * good result..
- */
-struct ConicPolarEquationData
-{
-  Coordinate focus1;
-  double pdimen;
-  double ecostheta0;
-  double esintheta0;
-};
 
 /**
  * This is the abstract base class for all types of conics.  There are
@@ -115,39 +71,6 @@ class Conic
   virtual const Property property( uint which, const KigWidget& w ) const;
   virtual const QCStringList properties() const;
 };
-
-/**
- * This function calcs a cartesian conic equation such that the
- * given points are on the conic..  There can be at most 5 and at
- * least 1 point.  If there are less than 5, than the coefficients
- * will be chosen to 1.0 if possible
- */
-const ConicCartesianEquationData calcCartesian ( 
-    const std::vector<Coordinate>& points, 
-    const LinearConstraints c1 = noconstraint,
-    const LinearConstraints c2 = noconstraint,
-    const LinearConstraints c3 = noconstraint,
-    const LinearConstraints c4 = noconstraint,
-    const LinearConstraints c5 = noconstraint);
-
-/**
- * This function calcs a polar equation for the conic defined by
- * cartdata..
- */
-const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartdata );
-
-const ConicCartesianEquationData calcCartesianEquationFromPolar( const ConicPolarEquationData& polardata );
-
-/**
- * This function is used by ConicBFFP.  It calcs the polar equation
- * for a hyperbola ( type == -1 ) or ellipse ( type == 1 ) with
- * focuses args[0] and args[1], and with args[2] on the edge of the
- * conic.  args.size() should be two or three.  If it is two, the two
- * points are taken to be the focuses, and a point is taken on the
- * perpendicular through the middle of them for the third point.
- */
-const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
-                                            int type );
 
 /**
  * This class is a common base class for EllipseBFFP and HyperbolaBFFP
@@ -324,4 +247,47 @@ protected:
   void calc();
 };
 
-#endif
+/*
+ * an equilateral hyperbola through 4 points
+ */
+class EquilateralHyperbolaB4P
+  : public Conic
+{
+public:
+  EquilateralHyperbolaB4P( const Objects& os );
+  ~EquilateralHyperbolaB4P() {};
+  EquilateralHyperbolaB4P(const EquilateralHyperbolaB4P& c);
+  EquilateralHyperbolaB4P* copy() { return new EquilateralHyperbolaB4P(*this); };
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "EquilateralHyperbolaB4P"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "equilateralhyperbolab4p"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // passing arguments
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* );
+  static void sDrawPrelim( KigPainter& p, const Objects& os );
+
+  Objects getParents() const;
+
+  const ConicCartesianEquationData cartesianEquationData() const;
+  const ConicPolarEquationData polarEquationData() const;
+
+protected:
+  Point* pts[4];
+
+  ConicCartesianEquationData cequation;
+  ConicPolarEquationData pequation;
+
+  void calc();
+};
+
+#endif // KIG_OBJECTS_CONIC_H

@@ -35,6 +35,19 @@
  * various places...
  */
 
+// this class represents the data needed for defining a line.
+class LineData {
+public:
+  Coordinate a;
+  Coordinate b;
+  const Coordinate dir() const { return b - a; };
+  LineData() : a(), b() {};
+  LineData( const Coordinate na, const Coordinate nb ) : a( na ), b( nb ) {};
+};
+
+// i'm too lazy, i know :)
+typedef LineData RayData;
+
 /**
  * This calcs the rotation of point a around point c by arc arc.  Arc
  * is in radians, in the range 0 < arc < 2*pi ...
@@ -43,9 +56,9 @@ Coordinate calcRotatedPoint( const Coordinate& a, const Coordinate& c, const dou
 
 /**
  * this returns a point, so that the line through point t
- * and the point returned is perpendicular on the line p1p2.
+ * and the point returned is perpendicular on the line l.
  */
-Coordinate calcPointOnPerpend( const Coordinate& p1, const Coordinate& p2, const Coordinate& t );
+Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t );
 
 /**
  * this returns a point, so that the line through point t and the
@@ -55,9 +68,9 @@ Coordinate calcPointOnPerpend( const Coordinate& dir, const Coordinate& t );
 
 /**
  * this returns a point, so that the line throught point t
- * and the point returned is parallel with p1p2
+ * and the point returned is parallel with the line l
  */
-Coordinate calcPointOnParallel( const Coordinate& p1, const Coordinate& p2, const Coordinate& t );
+Coordinate calcPointOnParallel( const LineData& l, const Coordinate& t );
 
 /**
  * this returns a point, so that the line throught point t
@@ -67,13 +80,13 @@ Coordinate calcPointOnParallel( const Coordinate& dir, const Coordinate& t );
 
 
 /**
- * this calcs the point where p1p2 and p3p4 intersect...
+ * this calcs the point where the lines l and m intersect...
  */
-Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, const Coordinate& p3, const Coordinate& p4 );
+Coordinate calcIntersectionPoint( const LineData& l, const LineData& m );
 
 /**
  * this calcs the intersection points of the circle with center c and
- * radius sqrt( r ), and the line through a and b.  As a circle and a
+ * radius sqrt( r ), and the line l.  As a circle and a
  * line have two intersection points, side tells us which one we
  * need...  If the line and the circle have no intersection, valid is
  * set to false, otherwise to true...
@@ -82,44 +95,36 @@ Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, co
  */
 const Coordinate calcCircleLineIntersect( const Coordinate& c,
                                           const double sqr,
-                                          const Coordinate& a,
-                                          const Coordinate& b,
+                                          const LineData& l,
                                           bool side,
                                           bool& valid );
-
-/*
- * @author Maurizio Paolini
- * this function computes each of the two intersections
- * between a line given by a and b and a conic given by the
- * cartesian equation ax^2 + by^2 + cxy + dx + ey + f = 0.
- * the coefficients are stored in the coeffs vector in that order
- */
-const Coordinate calcConicLineIntersect( const double * coeffs,
-                                         const Coordinate& a,
-                                         const Coordinate& b,
-                                         int which,
-                                         bool& valid );
 
 /**
  * this calculates the perpendicular projection of point p on line
  * ab...
  */
 const Coordinate calcPointProjection( const Coordinate& p,
-                                      const Coordinate& a,
-                                      const Coordinate& b );
+                                      const LineData& l );
 
 /**
  * calc the distance of point p to the line through a and b...
  */
-double calcDistancePointLine( const Coordinate& p, const Coordinate& a,
-                              const Coordinate& b );
-
+double calcDistancePointLine( const Coordinate& p,
+                              const LineData& l );
 
 /**
  * this sets p1 and p2 to p1' and p2' so that p1'p2' is the same line
  * as p1p2, and so that p1' and p2' are on the border of the Rect...
  */
 void calcBorderPoints( Coordinate& p1, Coordinate& p2, const Rect& r );
+/**
+ * overload...
+ */
+void calcBorderPoints( double& xa, double& xb, double& ya, double& yb, const Rect& r);
+/**
+ * cleaner overload, intended to replace the above two...
+ */
+const LineData calcBorderPoints( const LineData& l, const Rect& r );
 
 /**
  * this does the same as the above function, but only for b..
@@ -133,14 +138,9 @@ void calcRayBorderPoints( const double xa, const double xb, double& ya,
                           double& yb, const Rect& r );
 
 /**
- * overload...
+ * calc the mirror point of p over the line l
  */
-void calcBorderPoints( double& xa, double& xb, double& ya, double& yb, const Rect& r);
-
-/**
- * calc the mirror point of p over the line defined by a and b...
- */
-const Coordinate calcMirrorPoint( const Coordinate& a, const Coordinate& b,
+const Coordinate calcMirrorPoint( const LineData& l,
                                   const Coordinate& p );
 
 /**
@@ -161,16 +161,20 @@ bool isOnSegment( const Coordinate o, const Coordinate a,
 bool isOnRay( const Coordinate o, const Coordinate a,
               const Coordinate b, const double fault );
 
-template <typename T>
-T kigMin( const T& a, const T& b)
-{
-    return a < b ? a : b;
-}
+Coordinate calcCircleRadicalStartPoint( const Coordinate& ca,
+                                        const Coordinate& cb,
+                                        double sqra, double sqrb );
 
-template <class T>
+template <typename T>
+T kigMin( const T& a, const T& b )
+{
+  return a < b ? a : b;
+};
+
+template <typename T>
 T kigMax( const T& a, const T& b )
 {
-    return a > b ? a : b;
+  return a > b ? a : b;
 };
 
 #endif

@@ -217,258 +217,6 @@ const Conic* Conic::toConic() const
   return this;
 }
 
-const ConicCartesianEquationData calcCartesian ( 
-  const std::vector<Coordinate>& points,
-  LinearConstraints c1,
-  LinearConstraints c2,
-  LinearConstraints c3,
-  LinearConstraints c4,
-  LinearConstraints c5)
-{
-  // points is a vector of exactly 5 points through which the conic is
-  // constrained.
-  // this routine should compute the coefficients in the cartesian equation
-  //    a x^2 + b y^2 + c xy + d x + e y + f = 0
-  // they are defined up to a multiplicative factor.
-  // since we don't know (in advance) which one of them is nonzero, we
-  // simply keep all 6 parameters, obtaining a 5x6 linear system which
-  // we solve using gaussian elimination with complete pivoting
-
-  // 5 rows, 6 columns..
-  double matrix[5][6];
-  double solution[6];
-  int scambio[5];
-  LinearConstraints constraints[] = {c1, c2, c3, c4, c5};
-
-  int numpoints = points.size();
-  int numconstraints = 5;
-
-  // fill in the matrix elements
-  for ( int i = 0; i < numpoints; ++i )
-  {
-    double xi = points[i].x;
-    double yi = points[i].y;
-    matrix[i][0] = xi*xi;
-    matrix[i][1] = yi*yi;
-    matrix[i][2] = xi*yi;
-    matrix[i][3] = xi;
-    matrix[i][4] = yi;
-    matrix[i][5] = 1.0;
-  }
-
-  for ( int i = 0; i < numconstraints; i++ )
-  {
-    if (numpoints >= 5) break;    // don't add constraints if we have enough
-    for (int j = 0; j < 6; ++j) matrix[numpoints][j] = 0.0;
-    // force the symmetry axes to be
-    // parallel to the coordinate system (zero tilt): c = 0
-    if (constraints[i] == zerotilt) matrix[numpoints][2] = 1.0;
-    // force a parabula (if zerotilt): b = 0
-    if (constraints[i] == parabolaifzt) matrix[numpoints][1] = 1.0;
-    // force a circle (if zerotilt): a = b
-    if (constraints[i] == circleifzt) {
-      matrix[numpoints][0] = 1.0;
-      matrix[numpoints][1] = -1.0; }
-    // force an equilateral hyperbola: a + b = 0
-    if (constraints[i] == equilateral) {
-      matrix[numpoints][0] = 1.0;
-      matrix[numpoints][1] = 1.0; }
-    // force symmetry about y-axis: d = 0
-    if (constraints[i] == ysymmetry) matrix[numpoints][3] = 1.0;
-    // force symmetry about x-axis: e = 0
-    if (constraints[i] == xsymmetry) matrix[numpoints][4] = 1.0;
-
-    if (constraints[i] != noconstraint) ++numpoints;
-  }
-
-  // start gaussian elimination
-  for ( int k = 0; k < numpoints; ++k )
-  {
-    // ricerca elemento di modulo massimo
-    double maxval = -1.0;
-    int imax = -1;
-    int jmax = -1;
-    for( int i = k; i < numpoints; ++i )
-    {
-      for( int j = k; j < 6; ++j )
-      {
-        if (fabs(matrix[i][j]) > maxval)
-        {
-          maxval = fabs(matrix[i][j]);
-          imax = i;
-          jmax = j;
-        }
-      }
-    }
-    // scambio di riga
-    for( int j = k; j < 6; ++j )
-    {
-      double t = matrix[k][j];
-      matrix[k][j] = matrix[imax][j];
-      matrix[imax][j] = t;
-    }
-    // scambio di colonna
-    for( int i = 0; i < numpoints; ++i )
-    {
-      double t = matrix[i][k];
-      matrix[i][k] = matrix[i][jmax];
-      matrix[i][jmax] = t;
-    }
-    // ricorda lo scambio effettuato al passo k
-    scambio[k] = jmax;
-
-    // ciclo sulle righe
-    for( int i = k+1; i < numpoints; ++i)
-    {
-      double mik = matrix[i][k]/matrix[k][k];
-      matrix[i][k] = mik;    //ricorda il moltiplicatore... (not necessary)
-      // ciclo sulle colonne
-      for( int j = k+1; j < 6; ++j )
-      {
-        matrix[i][j] -= mik*matrix[k][j];
-      }
-    }
-  }
-
-  // fine della fase di eliminazione
-  // il sistema e' sottodeterminato, fisso l'ultima incognita = 1
-  for ( int j = numpoints; j < 6; ++j )
-  {
-    solution[j] = 1.0;          // other choices are possible here
-  };
-
-  for( int k = numpoints - 1; k >= 0; --k )
-  {
-    // sostituzioni all'indietro
-    solution[k] = 0.0;
-    for ( int j = k+1; j < 6; ++j)
-    {
-      solution[k] -= matrix[k][j]*solution[j];
-    }
-    solution[k] /= matrix[k][k];
-  }
-
-  // ultima fase: riordinamento incognite
-
-  for( int k = numpoints - 1; k >= 0; --k )
-  {
-    int jmax = scambio[k];
-    double t = solution[k];
-    solution[k] = solution[jmax];
-    solution[jmax] = t;
-  }
-
-  // now solution should contain the correct coefficients..
-  return ConicCartesianEquationData( solution );
-}
-
-const ConicPolarEquationData calcPolar ( const ConicCartesianEquationData& cartdata )
-{
-  ConicPolarEquationData ret;
-
-  double a = cartdata.coeffs[0];
-  double b = cartdata.coeffs[1];
-  double c = cartdata.coeffs[2];
-  double d = cartdata.coeffs[3];
-  double e = cartdata.coeffs[4];
-  double f = cartdata.coeffs[5];
-
-  // 1. Compute theta (tilt of conic)
-  double theta = atan2(c, b - a)/2;
-
-  // now I should possibly add pi/2...
-  double costheta = cos(theta);
-  double sintheta = sin(theta);
-  // compute new coefficients (c should now be zero)
-  double aa = a*costheta*costheta + b*sintheta*sintheta - c*sintheta*costheta;
-  double bb = a*sintheta*sintheta + b*costheta*costheta + c*sintheta*costheta;
-  if (aa*bb < 0)
-  {   // we have a hyperbola we need to check the correct orientation
-    double dd = d*costheta - e*sintheta;
-    double ee = d*sintheta + e*costheta;
-    double xc = - dd / ( 2*aa );
-    double yc = - ee / ( 2*bb );
-    double ff = f + aa*xc*xc + bb*yc*yc + dd*xc + ee*yc;
-    if (ff*aa > 0)    // wrong orientation
-    {
-      if (theta > 0) theta -= M_PI/2;
-      else theta += M_PI/2;
-      costheta = cos(theta);
-      sintheta = sin(theta);
-      aa = a*costheta*costheta + b*sintheta*sintheta - c*sintheta*costheta;
-      bb = a*sintheta*sintheta + b*costheta*costheta + c*sintheta*costheta;
-    }
-  }
-  else
-  {
-    if (fabs (bb) < fabs (aa) )
-    {
-      if (theta > 0) theta -= M_PI/2;
-      else theta += M_PI/2;
-      costheta = cos(theta);
-      sintheta = sin(theta);
-      aa = a*costheta*costheta + b*sintheta*sintheta - c*sintheta*costheta;
-      bb = a*sintheta*sintheta + b*costheta*costheta + c*sintheta*costheta;
-    }
-  }
-
-  double cc = 2*(a - b)*sintheta*costheta +
-              c*(costheta*costheta - sintheta*sintheta);
-  //  cc should be zero!!!   cout << "cc = " << cc << "\n";
-  double dd = d*costheta - e*sintheta;
-  double ee = d*sintheta + e*costheta;
-
-  a = aa;
-  b = bb;
-  c = cc;
-  d = dd;
-  e = ee;
-
-  // now b cannot be zero (otherwise conic is degenerate)
-  a /= b;
-  c /= b;
-  d /= b;
-  e /= b;
-  f /= b;
-  b = 1.0;
-
-  // 2. compute y coordinate of focuses
-
-  double yf = - e/2;
-
-  // new values:
-  f += yf*yf + e*yf;
-  e += 2*yf;   // this should be zero!
-
-  // now: a > 0 -> ellipse
-  //      a = 0 -> parabula
-  //      a < 0 -> hyperbola
-
-  double eccentricity = sqrt(1.0 - a);
-
-  double sqrtdiscrim = sqrt(d*d - 4*a*f);
-  if (d < 0.0) sqrtdiscrim = -sqrtdiscrim;
-  double xf = (4*a*f - 4*f - d*d)/(d + eccentricity*sqrtdiscrim) / 2;
-
-  // 3. the focus needs to be rotated back into position
-  ret.focus1.x = xf*costheta + yf*sintheta;
-  ret.focus1.y = -xf*sintheta + yf*costheta;
-
-  // 4. final touch: the pdimen
-  ret.pdimen = -sqrtdiscrim/2;
-
-  ret.ecostheta0 = eccentricity*costheta;
-  ret.esintheta0 = -eccentricity*sintheta;
-  if ( ret.pdimen < 0)
-  {
-    ret.pdimen = -ret.pdimen;
-    ret.ecostheta0 = -ret.ecostheta0;
-    ret.esintheta0 = -ret.esintheta0;
-  }
-
-  return ret;
-}
-
 void ConicB5P::calc()
 {
   std::vector<Coordinate> points;
@@ -480,8 +228,8 @@ void ConicB5P::calc()
   {
     std::transform( pts, pts + 5, std::back_inserter( points ),
                     std::mem_fun( &Point::getCoord ) );
-    cequation = calcCartesian( points, zerotilt, parabolaifzt, ysymmetry );
-    pequation = calcPolar( cequation );
+    cequation = calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry );
+    pequation = ConicPolarEquationData( cequation );
   }
 }
 
@@ -544,13 +292,16 @@ void ConicB5P::sDrawPrelim( KigPainter& p, const Objects& os )
   };
 
   p.setPen(QPen (Qt::red, 1));
-  p.drawConic( calcPolar( calcCartesian( points, 
-      zerotilt, parabolaifzt, ysymmetry ) ) );
+  p.drawConic(
+    ConicPolarEquationData(
+      calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry )
+      )
+    );
   return;
 }
 
 ConicB5P::ConicB5P( const Objects& os )
-  : Conic()
+  : Conic(), pequation(), cequation()
 {
   assert( os.size() == 5 );
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
@@ -572,8 +323,8 @@ void ParabolaBTP::calc()
   {
     std::transform( pts, pts + 3, std::back_inserter( points ),
                     std::mem_fun( &Point::getCoord ) );
-    cequation = calcCartesian( points, zerotilt, parabolaifzt, ysymmetry );
-    pequation = calcPolar( cequation );
+    cequation = calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry );
+    pequation = ConicPolarEquationData( cequation );
   }
 }
 
@@ -636,13 +387,18 @@ void ParabolaBTP::sDrawPrelim( KigPainter& p, const Objects& os )
   };
 
   p.setPen(QPen (Qt::red, 1));
-  p.drawConic( calcPolar( calcCartesian( points,
-      zerotilt, parabolaifzt, ysymmetry ) ) );
+  p.drawConic(
+    ConicPolarEquationData(
+      calcConicThroughPoints(
+        points, zerotilt, parabolaifzt, ysymmetry
+        )
+      )
+    );
   return;
 }
 
 ParabolaBTP::ParabolaBTP( const Objects& os )
-  : Conic()
+  : Conic(), cequation(), pequation()
 {
   assert( os.size() == 3 );
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
@@ -783,47 +539,6 @@ void HyperbolaBFFP::calc()
   calcCommon( -1 );
 }
 
-const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
-                                            int type )
-{
-  assert( args.size() > 1 && args.size() < 4 );
-  assert( type == 1 || type == -1 );
-
-  ConicPolarEquationData ret;
-
-  Coordinate f1 = args[0];
-  Coordinate f2 = args[1];
-  Coordinate d;
-  double eccentricity, d1, d2, dl;
-
-  Coordinate f2f1 = f2 - f1;
-  double f2f1l = f2f1.length();
-  ret.ecostheta0 = f2f1.x / f2f1l;
-  ret.esintheta0 = f2f1.y / f2f1l;
-
-  if ( args.size() == 3 )
-  {
-    d = args[2];
-    d1 = ( d - f1 ).length();
-    d2 = ( d - f2 ).length();
-    dl = fabs( d1 + type * d2 );
-    eccentricity = f2f1l/dl;
-  }
-  else
-  {
-    if ( type > 0 ) eccentricity = 0.7; else eccentricity = 2.0;
-    dl = f2f1l/eccentricity;
-  }
-
-  double rhomax = (dl + f2f1l) /2.0;
-
-  ret.ecostheta0 *= eccentricity;
-  ret.esintheta0 *= eccentricity;
-  ret.pdimen = type*(1 - eccentricity)*rhomax;
-  ret.focus1 = type == 1 ? f1 : f2;
-  return ret;
-}
-
 int Conic::conicType() const
 {
   const ConicPolarEquationData d = polarEquationData();
@@ -853,31 +568,9 @@ QString Conic::type() const
   }
 }
 
-const ConicCartesianEquationData calcCartesianEquationFromPolar( const ConicPolarEquationData& polardata )
-{
-  double ec = polardata.ecostheta0;
-  double es = polardata.esintheta0;
-  double p = polardata.pdimen;
-  double fx = polardata.focus1.x;
-  double fy = polardata.focus1.y;
-
-  double a = 1 - ec*ec;
-  double b = 1 - es*es;
-  double c = - 2*ec*es;
-  double d = - 2*p*ec;
-  double e = - 2*p*es;
-  double f = - p*p;
-
-  f += a*fx*fx + b*fy*fy + c*fx*fy - d*fx - e*fy;
-  d -= 2*a*fx + c*fy;
-  e -= 2*b*fy + c*fx;
-
-  return ConicCartesianEquationData( a, b, c, d, e, f );
-};
-
 const ConicCartesianEquationData Conic::cartesianEquationData() const
 {
-  return calcCartesianEquationFromPolar( polarEquationData() );
+  return ConicCartesianEquationData( polarEquationData() );
 }
 
 Coordinate Conic::focus1() const
@@ -985,4 +678,116 @@ QString Conic::polarEquationString( const KigWidget& w ) const
 
   ret = ret.arg( w.document().coordinateSystem().fromScreen( data.focus1, w ) );
   return ret;
+}
+
+
+/*
+ * equilateral hyperbola by 4 points
+ */
+
+void EquilateralHyperbolaB4P::calc()
+{
+  std::vector<Coordinate> points;
+
+  mvalid = true;
+  for ( Point** ipt = pts; ipt < pts + 4; ++ipt )
+    mvalid &= (*ipt)->valid();
+  if ( mvalid )
+  {
+    std::transform( pts, pts + 4, std::back_inserter( points ),
+                    std::mem_fun( &Point::getCoord ) );
+    cequation = calcConicThroughPoints( points, equilateral );
+    pequation = ConicPolarEquationData( cequation );
+  }
+}
+
+const char* EquilateralHyperbolaB4P::sActionName()
+{
+  return "objects_new_equilateralhyperbolab4p";
+}
+
+Objects EquilateralHyperbolaB4P::getParents() const
+{
+  Objects objs ( pts, pts+4 );
+  return objs;
+}
+
+EquilateralHyperbolaB4P::EquilateralHyperbolaB4P(const EquilateralHyperbolaB4P& c)
+  : Conic( c ), cequation( c.cequation ), pequation( c.pequation )
+{
+  for ( int i = 0; i != 4; ++i )
+  {
+    pts[i]=c.pts[i];
+    pts[i]->addChild(this);
+  }
+}
+
+const QString EquilateralHyperbolaB4P::sDescriptiveName()
+{
+  return i18n( "Equilateral hyperbola by four points" );
+}
+
+const QString EquilateralHyperbolaB4P::sDescription()
+{
+  return i18n( "An equilateral hyperbola constructed through four points" );
+}
+
+Object::WantArgsResult EquilateralHyperbolaB4P::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size > 4 || size < 1 ) return NotGood;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( ! (*i)->toPoint() ) return NotGood;
+  return size == 4 ? Complete : NotComplete;
+}
+
+QString EquilateralHyperbolaB4P::sUseText( const Objects&, const Object* )
+{
+  return i18n( "Through point" );
+}
+
+void EquilateralHyperbolaB4P::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  std::vector<Coordinate> points;
+
+  uint size = os.size();
+  assert( size > 0 && size < 5 );
+  if ( size < 2 ) return;  // don't drawprelim if too few points
+  for ( uint i = 0; i < size; ++i )
+  {
+    assert( os[i]->toPoint() );
+    points.push_back( os[i]->toPoint()->getCoord() );
+  };
+
+  p.setPen(QPen (Qt::red, 1));
+  p.drawConic(
+    ConicPolarEquationData(
+      calcConicThroughPoints(
+        points, equilateral,
+        zerotilt, ysymmetry
+        )
+      )
+    );
+}
+
+EquilateralHyperbolaB4P::EquilateralHyperbolaB4P( const Objects& os )
+  : Conic()
+{
+  assert( os.size() == 4 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    assert( (*i)->toPoint() );
+    (*i)->addChild( this );
+    pts[i-os.begin()] = static_cast<Point*>( *i );
+  };
+}
+
+const ConicCartesianEquationData EquilateralHyperbolaB4P::cartesianEquationData() const
+{
+  return cequation;
+}
+
+const ConicPolarEquationData EquilateralHyperbolaB4P::polarEquationData() const
+{
+  return pequation;
 }

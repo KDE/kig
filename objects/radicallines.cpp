@@ -549,13 +549,12 @@ void ConicLineIntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
   assert( c && l );
 
   ConicCartesianEquationData ccd = c->cartesianEquationData();
-  Coordinate a = l->p1();
-  Coordinate b = l->p2();
+  const LineData ld = l->lineData();
 
   bool valid = true;
 
-  Coordinate cc = calcConicLineIntersect( ccd.coeffs, a, b, -1, valid );
-  Coordinate cd = calcConicLineIntersect( ccd.coeffs, a, b, 1, valid );
+  Coordinate cc = calcConicLineIntersect( ccd.coeffs, ld, -1, valid );
+  Coordinate cd = calcConicLineIntersect( ccd.coeffs, ld, 1, valid );
 
   if ( valid )
   {
@@ -606,7 +605,8 @@ void ConicLineIntersectionPoint::calc()
   Coordinate t;
   cequation = mconic->cartesianEquationData();
   t = calcConicLineIntersect( cequation.coeffs,
-                              mline->p1(), mline->p2(), mwhich, mvalid );
+                              mline->lineData(),
+                              mwhich, mvalid );
   if ( mvalid ) mC = t;
 }
 

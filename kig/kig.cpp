@@ -43,8 +43,7 @@
 #include <kimageio.h>
 
 Kig::Kig()
-  : KParts::MainWindow( 0L, "Kig" ),
-    KigIface()
+  : KParts::MainWindow( 0L, "Kig" )
 {
   // set the shell's ui resource file
   setXMLFile("kigui.rc");
@@ -79,9 +78,6 @@ Kig::Kig()
       return;
   }
   resize (640,480);
-
-  // we have dcop
-  kapp->dcopClient()->setDefaultObject( objId() );
 
   // we have drag'n'drop
   setAcceptDrops(true);

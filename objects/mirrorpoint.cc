@@ -40,13 +40,10 @@ void MirrorPoint::calc()
   Coordinate a = mp->getCoord();
   if ( ! mc )
   {
-    Coordinate b;
-    Coordinate c;
     assert( ml );
     mvalid &= ml->valid();
-    b = ml->p1();
-    c = ml->p2();
-    if ( mvalid ) mC = calcMirrorPoint( b, c, a );
+    LineData l = ml->lineData();
+    if ( mvalid ) mC = calcMirrorPoint( l, a );
   }
   else
   {
@@ -160,12 +157,9 @@ void MirrorPoint::sDrawPrelim( KigPainter& p, const Objects& os )
   Coordinate d;
   if ( ! c )
   {
-    Coordinate a;
-    Coordinate b;
-    a = l->p1();
-    b = l->p2();
+    LineData ld = l->lineData();
     Coordinate e = q->getCoord();
-    d = calcMirrorPoint( a, b, e );
+    d = calcMirrorPoint( ld, e );
   }
   else
   {

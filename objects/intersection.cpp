@@ -41,14 +41,9 @@ Objects IntersectionPoint::getParents() const
 void IntersectionPoint::calc()
 {
   mvalid = true;
-  Coordinate t1, t2, t3, t4;
   mvalid &= mla->valid();
-  t1 = mla->p1();
-  t2 = mla->p2();
   mvalid &= mlb->valid();
-  t3 = mlb->p1();
-  t4 = mlb->p2();
-  if ( mvalid ) mC = calcIntersectionPoint( t1, t2, t3, t4 );
+  if ( mvalid ) mC = calcIntersectionPoint( mla->lineData(), mlb->lineData() );
 }
 
 const QString IntersectionPoint::sDescriptiveName()
@@ -141,26 +136,22 @@ IntersectionPoint::IntersectionPoint( const Objects& os )
 void IntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
 {
   if ( os.size() != 2 ) return;
-  Coordinate pa, pb, pc, pd;
+  LineData la, lb;
   bool gota = false;
-  AbstractLine* l;
+  AbstractLine* l = 0;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
     l = (*i)->toAbstractLine();
     assert( l );
     if ( gota )
-    {
-      pc = l->p1();
-      pd = l->p2();
-    }
+      lb = l->lineData();
     else
     {
       gota = true;
-      pa = l->p1();
-      pb = l->p2();
+      la = l->lineData();
     };
   };
-  sDrawPrelimPoint( p, calcIntersectionPoint( pa, pb, pc, pd ) );
+  sDrawPrelimPoint( p, calcIntersectionPoint( la, lb ) );
 }
 
 Object::WantArgsResult IntersectionPoint::sWantArgs( const Objects& os )
@@ -274,12 +265,11 @@ void CircleLineIntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os 
   assert( c && l );
   const Coordinate center = c->center();
   const double sqr = c->squareRadius();
-  const Coordinate a = l->p1();
-  const Coordinate b = l->p2();
+  const LineData ld = l->lineData();
   bool valid = true;
-  const Coordinate d = calcCircleLineIntersect( center, sqr, a, b,
+  const Coordinate d = calcCircleLineIntersect( center, sqr, ld,
                                                 true, valid );
-  const Coordinate e = calcCircleLineIntersect( center, sqr, a, b,
+  const Coordinate e = calcCircleLineIntersect( center, sqr, ld,
                                                 false, valid );
   if ( valid )
   {
@@ -326,7 +316,7 @@ void CircleLineIntersectionPoint::calc()
   assert( mcircle && mline );
   Coordinate t;
   t = calcCircleLineIntersect( mcircle->center(), mcircle->squareRadius(),
-                               mline->p1(), mline->p2(), mside, mvalid );
+                               mline->lineData(), mside, mvalid );
   if ( mvalid ) mC = t;
 }
 

@@ -95,9 +95,7 @@ void KigPainter::drawPoint( const Coordinate& p )
 
 void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )
 {
-  Coordinate ba = p1, bb = p2;
-  calcBorderPoints( ba, bb, window() );
-  drawSegment( ba, bb );
+  drawLine( LineData( p1, p2 ) );
 }
 
 void KigPainter::drawText( const Rect p, const QString s, int textFlags, int len )
@@ -527,4 +525,15 @@ void KigPainter::drawConic( const ConicPolarEquationData& data )
 
   mOverlay.push_back( toScreen( overlay ) );
   mNeedOverlay = tNeedOverlay;
+}
+
+void KigPainter::drawLine( const LineData& d )
+{
+  LineData l = calcBorderPoints( d, window() );
+  drawSegment( l );
+}
+
+void KigPainter::drawSegment( const LineData& d )
+{
+  drawSegment( d.a, d.b );
 }

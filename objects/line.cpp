@@ -71,8 +71,8 @@ double Line::getParam(const Coordinate& point) const
   // points not on the line...
 
   // first we project the point onto the line...
-  Coordinate pt = calcPointOnPerpend(mpa, mpb, point);
-  pt = calcIntersectionPoint(mpa, mpb, point, pt);
+  Coordinate pt = calcPointOnPerpend( lineData(), point );
+  pt = calcIntersectionPoint( lineData(), LineData( point, pt ) );
 
   // next we fetch the parameter
   Coordinate m = Coordinate(mpa+mpb)/2;
@@ -458,20 +458,6 @@ LineRadical::LineRadical( const Objects& os )
   c2->addChild( this );
 }
 
-Coordinate calcRadicalStartPoint( const Coordinate& ca, const Coordinate& cb,
-                                  double sqra, double sqrb )
-{
-  Coordinate direc = cb - ca;
-  Coordinate m = (ca + cb)/2;
-
-  double dsq = direc.squareLength();
-  double lambda = dsq == 0.0 ? 0.0
-                  : (sqra - sqrb) / (2*dsq);
-
-  direc *= lambda;
-  return m + direc;
-};
-
 void LineRadical::calc()
 {
   Coordinate ce1 = c1->center();
@@ -484,9 +470,8 @@ void LineRadical::calc()
   else
   {
     mvalid = true; // else always defined...
-
-    mpa = calcRadicalStartPoint( ce1, ce2, c1->squareRadius(), c2->squareRadius() );
-    mpb = calcPointOnPerpend( ce1, ce2, mpa );
+    mpa = calcCircleRadicalStartPoint( ce1, ce2, c1->squareRadius(), c2->squareRadius() );
+    mpb = calcPointOnPerpend( LineData( ce1, ce2 ), mpa );
   };
 }
 
@@ -498,9 +483,9 @@ void LineRadical::sDrawPrelim( KigPainter& p, const Objects& os )
   assert ( ca && cb );
   Coordinate pa = ca->center();
   Coordinate pb = cb->center();
-  Coordinate s = calcRadicalStartPoint( pa, pb, ca->squareRadius(), cb->squareRadius() );
+  Coordinate s = calcCircleRadicalStartPoint( pa, pb, ca->squareRadius(), cb->squareRadius() );
   p.setPen( QPen (Qt::red,1) );
-  p.drawLine( s, calcPointOnPerpend( pa, pb, s ) );
+  p.drawLine( s, calcPointOnPerpend( LineData( pa, pb ), s ) );
 }
 
 Object::WantArgsResult LineRadical::sWantArgs( const Objects& os )

@@ -19,6 +19,7 @@
 #include "abstractline.h"
 
 #include "../misc/coordinate.h"
+#include "../misc/common.h"
 #include "../misc/i18n.h"
 
 AbstractLine::AbstractLine()
@@ -79,4 +80,9 @@ const QString AbstractLine::equationString( const KigWidget& ) const
   ret = ret.arg( r, 0, 'g', 3 );
 
   return ret;
+}
+
+const LineData AbstractLine::lineData() const
+{
+  return LineData( p1(), p2() );
 }

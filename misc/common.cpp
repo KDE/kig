@@ -25,9 +25,9 @@
 
 #include <kdebug.h>
 
-Coordinate calcPointOnPerpend( const Coordinate& p1, const Coordinate& p2, const Coordinate& t )
+Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t )
 {
-  return calcPointOnPerpend( p2 - p1, t );
+  return calcPointOnPerpend( l.b - l.a, t );
 };
 
 Coordinate calcPointOnPerpend( const Coordinate& dir, const Coordinate& t )
@@ -35,9 +35,9 @@ Coordinate calcPointOnPerpend( const Coordinate& dir, const Coordinate& t )
   return t + ( dir ).orthogonal();
 };
 
-Coordinate calcPointOnParallel( const Coordinate& p1, const Coordinate& p2, const Coordinate& t )
+Coordinate calcPointOnParallel( const LineData& l, const Coordinate& t )
 {
-  return calcPointOnParallel( p2 - p1, t );
+  return calcPointOnParallel( l.b - l.a, t );
 }
 
 Coordinate calcPointOnParallel( const Coordinate& dir, const Coordinate& t )
@@ -45,8 +45,13 @@ Coordinate calcPointOnParallel( const Coordinate& dir, const Coordinate& t )
   return t + dir*5;
 };
 
-Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, const Coordinate& p3, const Coordinate& p4 )
+Coordinate calcIntersectionPoint( const LineData& l1, const LineData& l2 )
 {
+  const Coordinate& p1 = l1.a;
+  const Coordinate& p2 = l1.b;
+  const Coordinate& p3 = l2.a;
+  const Coordinate& p4 = l2.b;
+
   double
     dxa = p1.x,
     dxb = p2.x,
@@ -126,9 +131,11 @@ Coordinate calcIntersectionPoint( const Coordinate& p1, const Coordinate& p2, co
 };
 
 
-void calcBorderPoints( Coordinate& p1, Coordinate& p2, const Rect& r )
+const LineData calcBorderPoints( const LineData& l, const Rect& r )
 {
-  calcBorderPoints( p1.x, p1.y, p2.x, p2.y, r );
+  LineData ret( l );
+  calcBorderPoints( ret.a.x, ret.a.y, ret.b.x, ret.b.y, r );
+  return ret;
 };
 
 void calcBorderPoints( double& xa, double& ya, double& xb, double& yb, const Rect& r )
@@ -273,24 +280,26 @@ bool isOnRay( const Coordinate o, const Coordinate a,
     && ( a.y - b.y < fault ) == ( a.y - o.y < fault );
 };
 
-const Coordinate calcMirrorPoint( const Coordinate& a, const Coordinate& b,
+const Coordinate calcMirrorPoint( const LineData& l,
                                   const Coordinate& p )
 {
   Coordinate m =
-    calcIntersectionPoint( a, b, p,
-                           calcPointOnPerpend( a, b, p ) );
+    calcIntersectionPoint( l,
+                           LineData( p,
+                                     calcPointOnPerpend( l, p )
+                             )
+      );
   return 2*m - p;
 }
 
 const Coordinate calcCircleLineIntersect( const Coordinate& c,
                                           const double sqr,
-                                          const Coordinate& a,
-                                          const Coordinate& b,
+                                          const LineData& l,
                                           bool side, bool& valid )
 {
-  Coordinate proj = calcPointProjection( c, a, b );
+  Coordinate proj = calcPointProjection( c, l );
   Coordinate hvec = proj - c;
-  Coordinate lvec = a - b;
+  Coordinate lvec = -l.dir();
 
   double sqdist = hvec.squareLength();
   double sql = sqr - sqdist;
@@ -310,64 +319,23 @@ const Coordinate calcCircleLineIntersect( const Coordinate& c,
   };
 };
 
-const Coordinate calcConicLineIntersect( const double* coeffs,
-                                         const Coordinate& a,
-                                         const Coordinate& b,
-                                         int which, bool& valid )
+const Coordinate calcPointProjection( const Coordinate& p,
+                                      const LineData& l )
 {
-  assert( which == 1 || which == -1 );
-
-  double aa = coeffs[0];
-  double bb = coeffs[1];
-  double cc = coeffs[2];
-  double dd = coeffs[3];
-  double ee = coeffs[4];
-  double ff = coeffs[5];
-
-  double x = a.x;
-  double y = a.y;
-  double dx = b.x - a.x;
-  double dy = b.y - a.y;
-
-  double aaa = aa*dx*dx + bb*dy*dy + cc*dx*dy;
-  double bbb = 2*aa*x*dx + 2*bb*y*dy + cc*x*dy + cc*y*dx + dd*dx + ee*dy;
-  double ccc = aa*x*x + bb*y*y + cc*x*y + dd*x + ee*y + ff;
-
-  double discrim = bbb*bbb - 4*aaa*ccc;
-  if (discrim < 0.0)
-  {
-    valid = false;
-    return Coordinate();
-  }
-  else
-  {
-    valid = true;
-    double t = -bbb + which*sqrt(discrim);
-    t /= 2*aaa;
-
-    return a + t*(b - a);
-  }
-}
-
-const Coordinate calcPointProjection( const Coordinate& p, const Coordinate& a,
-                                      const Coordinate& b )
-{
-  Coordinate vect = b - a;
-  Coordinate orth = vect.orthogonal();
-  return p + orth.normalize( calcDistancePointLine( p, a, b ) );
+  Coordinate orth = l.dir().orthogonal();
+  return p + orth.normalize( calcDistancePointLine( p, l ) );
 };
 
-double calcDistancePointLine( const Coordinate& p, const Coordinate& a,
-                              const Coordinate& b )
+double calcDistancePointLine( const Coordinate& p,
+                              const LineData& l )
 {
-  double xa = a.x;
-  double ya = a.y;
-  double xb = b.x;
-  double yb = b.y;
+  double xa = l.a.x;
+  double ya = l.a.y;
+  double xb = l.b.x;
+  double yb = l.b.y;
   double x = p.x;
   double y = p.y;
-  Coordinate dir = b - a;
-  double norm = dir.length();
+  double norm = l.dir().length();
   return ( yb * x - ya * x - xb * y + xa * y + xb * ya - yb * xa ) / norm;
 };
 
@@ -390,3 +358,18 @@ Coordinate calcRotatedPoint( const Coordinate& a, const Coordinate& c, const dou
   ret = ret.normalize( ( a -c ).length() );
   return ret + c;
 };
+
+Coordinate calcCircleRadicalStartPoint( const Coordinate& ca, const Coordinate& cb,
+                                        double sqra, double sqrb )
+{
+  Coordinate direc = cb - ca;
+  Coordinate m = (ca + cb)/2;
+
+  double dsq = direc.squareLength();
+  double lambda = dsq == 0.0 ? 0.0
+                  : (sqra - sqrb) / (2*dsq);
+
+  direc *= lambda;
+  return m + direc;
+};
+

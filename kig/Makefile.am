@@ -6,7 +6,7 @@
 INCLUDES = $(all_includes)
 
 # these are the headers for your project
-noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h kig_iface.h \
+noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h \
 		kig_actions.h
 
 # let automoc handle all of the meta source files (moc)
@@ -23,7 +23,7 @@ KDE_ICON = kig
 bin_PROGRAMS = kig
 
 # the application source, library search path, and link libraries
-kig_SOURCES = main.cpp kig.cpp kig_iface.cpp kig_iface.skel kig_iface.stub
+kig_SOURCES = main.cpp kig.cpp
 kig_LDFLAGS = $(KDE_RPATH) $(all_libraries)
 kig_LDADD   = $(LIB_KPARTS)
 
@@ -38,16 +38,12 @@ shellrc_DATA = kigui.rc
 #########################################################################
 # KPART SECTION
 #########################################################################
-kde_module_LTLIBRARIES = libkigpart.la
+noinst_LTLIBRARIES = libkigparttemp.la
 
 # the Part's source, library search path, and link libraries
-libkigpart_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp \
-			constructactions.cc kig_actions.cpp \
-			exporttoimagedialogbase.ui exporttoimagedialog.cc
-libkigpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
-libkigpart_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) ../misc/libmisc.la \
-			../objects/libobjects.la ../filters/libfilters.la \
-			../modes/libmodes.la -lstdc++
+libkigparttemp_la_SOURCES = kig_part.cpp kig_view.cpp kig_commands.cpp \
+	constructactions.cc kig_actions.cpp \
+	exporttoimagedialogbase.ui exporttoimagedialog.cc
 
 # this is where the desktop file will go 
 partdesktopdir   = $(kde_servicesdir)

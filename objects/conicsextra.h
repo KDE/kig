@@ -22,23 +22,8 @@
 #ifndef CONICSEXTRA_H
 #define CONICSEXTRA_H
 
-#include "conic.h"
 #include "point.h"
 #include "line.h"
-
-std::pair<Coordinate, Coordinate> linepolarcalc (
-        const ConicCartesianEquationData& data, const Coordinate& cpole,
-        bool& valid );
-
-Coordinate pointpolarcalc (
-        const ConicCartesianEquationData& data, const Coordinate& polara,
-        const Coordinate& polarb, bool& valid );
-
-// i consider this currently broken...
-// const ConicPolarEquationData calcConicBDF( const Coordinate& diama, const Coordinate& diamb,
-//                                            bool wantParabola, const Coordinate* focus = 0 );
-
-bool belongsPointLine ( Object* point, Object* line);
 
 // the polar line of a point with respect to a conic
 
@@ -113,90 +98,5 @@ protected:
   Conic* conic;
   AbstractLine* polar;
 };
-
-/*
- * an equilateral hyperbola through 4 points
- */
-class EquilateralHyperbolaB4P
-  : public Conic
-{
-public:
-  EquilateralHyperbolaB4P( const Objects& os );
-  ~EquilateralHyperbolaB4P() {};
-  EquilateralHyperbolaB4P(const EquilateralHyperbolaB4P& c);
-  EquilateralHyperbolaB4P* copy() { return new EquilateralHyperbolaB4P(*this); };
-
-  const QCString vFullTypeName() const { return sFullTypeName(); };
-  static const QCString sFullTypeName() { return "EquilateralHyperbolaB4P"; };
-  const QString vDescriptiveName() const { return sDescriptiveName(); };
-  static const QString sDescriptiveName();
-  const QString vDescription() const { return sDescription(); };
-  static const QString sDescription();
-  const QCString vIconFileName() const { return sIconFileName(); };
-  static const QCString sIconFileName() { return "equilateralhyperbolab4p"; };
-  const int vShortCut() const { return sShortCut(); };
-  static const int sShortCut() { return 0; };
-  static const char* sActionName();
-
-  // passing arguments
-  static Object::WantArgsResult sWantArgs( const Objects& os );
-  static QString sUseText( const Objects& os, const Object* );
-  static void sDrawPrelim( KigPainter& p, const Objects& os );
-
-  Objects getParents() const;
-
-  const ConicCartesianEquationData cartesianEquationData() const;
-  const ConicPolarEquationData polarEquationData() const;
-
-protected:
-  Point* pts[4];
-
-  ConicCartesianEquationData cequation;
-  ConicPolarEquationData pequation;
-
-  void calc();
-};
-
-// /*
-//  * this class gives a conic with a given diameter (principal axis with
-//  * two extremal points) and a focus on it
-//  */
-// class ConicBDF
-//   : public Conic
-// {
-// public:
-//   ConicBDF( const Objects& os );
-//   ConicBDF( const ConicBDF& c );
-//   ~ConicBDF();
-//   ConicBDF* copy() { return new ConicBDF (*this);};
-
-//   const QCString vFullTypeName() const { return sFullTypeName(); };
-//   static const QCString sFullTypeName() { return ("ConicBDF"); };
-//   const QString vDescriptiveName() const { return sDescriptiveName(); };
-//   static const QString sDescriptiveName();
-//   const QString vDescription() const { return sDescription(); };
-//   static QString sDescription();
-//   const QCString vIconFileName() const { return sIconFileName(); };
-//   static const QCString sIconFileName() { return "conicbdf"; };
-//   const int vShortCut() const { return sShortCut(); };
-//   static const int sShortCut() { return 0; };
-//   static const char* sActionName();
-//   static QString sUseText( const Objects& os, const Object* o );
-
-//   // passing arguments
-//   Objects getParents() const;
-//   static void sDrawPrelim( KigPainter& p,
-//                                  const Objects& args);
-
-//   virtual const ConicPolarEquationData polarEquationData() const;
-//   static Object::WantArgsResult sWantArgs( const Objects& os );
-
-// protected:
-//   AbstractLine* diameter; // diameter
-//   Point* focus1;
-
-//   void calc();
-//   ConicPolarEquationData pequation;
-// };
 
 #endif

@@ -22,8 +22,8 @@
 #include "types.h"
 
 #include "type.h"
-#include "../objects/object.h"
 #include "objects.h"
+#include "../objects/object.h"
 #include "../kig/kig_part.h"
 
 #include <kdebug.h>

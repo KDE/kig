@@ -375,11 +375,7 @@ const ConicCartesianEquationData Circle::cartesianEquationData() const
 
 const ConicPolarEquationData Circle::polarEquationData() const
 {
-  ConicPolarEquationData mdata;
-  mdata.focus1 = center();
-  mdata.pdimen = radius();
-  mdata.ecostheta0 = mdata.esintheta0 = 0;
-  return mdata;
+  return ConicPolarEquationData( center(), radius(), 0, 0 );
 }
 
 QString Circle::cartesianEquationString( const KigWidget& ) const

@@ -37,6 +37,7 @@ class QPaintDevice;
 class CoordinateSystem;
 class Object;
 class ConicPolarEquationData;
+struct LineData;
 
 /**
  * KigPainter is an extended qpainter...
@@ -137,6 +138,7 @@ public:
    * draw a segment...
    */
   void drawSegment ( const Coordinate& from, const Coordinate& to );
+  void drawSegment( const LineData& d );
 
   /**
    * draw a ray...
@@ -147,6 +149,7 @@ public:
    * draw a line...
    */
   void drawLine ( const Coordinate& p1, const Coordinate& p2 );
+  void drawLine( const LineData& d );
 
   /**
    * draw a point...  This means a single point, as in

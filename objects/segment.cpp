@@ -108,8 +108,8 @@ Coordinate Segment::getPoint(double param) const
 
 double Segment::getParam(const Coordinate& p) const
 {
-  Coordinate pt = calcPointOnPerpend(mpa->getCoord(), mpb->getCoord(), p);
-  pt = calcIntersectionPoint(mpa->getCoord(), mpb->getCoord(), p, pt);
+  Coordinate pt = calcPointOnPerpend( lineData(), p );
+  pt = calcIntersectionPoint( lineData(), LineData( p, pt ) );
   // if pt is over the end of the segment ( i.e. it's on the line
   // which the segment is a part of, but not of the segment itself..;
   // ) we set it to one of the end points of the segment...

@@ -21,6 +21,8 @@
 
 #include "curve.h"
 
+struct LineData;
+
 /**
  * This class is an abstract interface to an object that is somewhat
  * of a line.. Examples are Line, Segment, Ray etc.
@@ -34,6 +36,8 @@ public:
   AbstractLine( const AbstractLine& l );
   virtual const Coordinate p1() const = 0;
   virtual const Coordinate p2() const = 0;
+  const LineData lineData() const;
+
   const Coordinate direction() const;
   const AbstractLine* toAbstractLine() const { return this; };
   AbstractLine* toAbstractLine() { return this; };

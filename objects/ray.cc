@@ -117,15 +117,14 @@ Coordinate Ray::getPoint(double param) const
 
 double Ray::getParam(const Coordinate& p) const
 {
-  Coordinate a = mpa->getCoord();
-  Coordinate b = mpb->getCoord();
-  Coordinate pt = calcPointOnPerpend( a, b, p );
-  pt = calcIntersectionPoint( a, b, p, pt);
+  const LineData ld = lineData();
+  Coordinate pt = calcPointOnPerpend( ld, p );
+  pt = calcIntersectionPoint( ld, LineData( p, pt ));
   // if pt is over the end of the ray ( i.e. it's on the line
   // which the ray is a part of, but not of the ray itself..;
   // ) we set it to the start point of the ray...
-  Coordinate dir = b - a;
-  pt -= a;
+  Coordinate dir = ld.b - ld.a;
+  pt -= ld.a;
   double param;
   if ( dir.x != 0 ) param = pt.x / dir.x;
   else if ( dir.y != 0 ) param = pt.y / dir.y;

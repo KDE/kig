@@ -19,10 +19,8 @@
 **/
 
 
-#ifndef KIG_H
-#define KIG_H
-
-#include "kig_iface.h"
+#ifndef KIG_KIG_H
+#define KIG_KIG_H
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -43,7 +41,7 @@ class KRecentFilesAction;
  * @author Dominique Devriese <devriese@kde.org>
  * @version 2.0
  */
-class Kig : public KParts::MainWindow, virtual public KigIface
+class Kig : public KParts::MainWindow
 {
   Q_OBJECT
  public:
@@ -130,4 +128,4 @@ class Kig : public KParts::MainWindow, virtual public KigIface
   static bool kimageioRegistered;
 };
 
-#endif // KIG_H
+#endif // KIG_KIG_H
