@@ -111,7 +111,7 @@ Coordinate calcRotatedPoint( const Coordinate& a, const Coordinate& c, const dou
 
 /**
  * this returns a point, so that the line through point t
- * and the point returned is perpendicular on the line l.
+ * and the point returned is perpendicular to the line l.
  */
 Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t );
 

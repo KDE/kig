@@ -74,7 +74,7 @@ void setupBuiltinStuff()
     // perpendicular line
     c = new SimpleObjectTypeConstructor(
       LinePerpendLPType::instance(), I18N_NOOP( "Perpendicular" ),
-      I18N_NOOP( "A line constructed through a point, perpendicular on another line or segment." ),
+      I18N_NOOP( "A line constructed through a point, perpendicular to another line or segment." ),
       "perpendicular" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_lineperpend" ) );
@@ -90,7 +90,7 @@ void setupBuiltinStuff()
     // circle
     c = new SimpleObjectTypeConstructor(
       CircleBCPType::instance(), I18N_NOOP( "Circle by Center && Point" ),
-      I18N_NOOP( "A circle constructed by its center and a point on its border" ),
+      I18N_NOOP( "A circle constructed by its center and a point on its circumference" ),
       "circlebcp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebcp", Qt::Key_C ) );
@@ -135,7 +135,7 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       EllipseBFFPType::instance(),
       I18N_NOOP( "Ellipse by Focuses && Point" ),
-      I18N_NOOP( "An ellipse constructed by its focuses and a point on its border" ),
+      I18N_NOOP( "An ellipse constructed by its focuses and a point on its circumference" ),
       "ellipsebffp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_ellipsebffp" ) );
@@ -143,7 +143,7 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       HyperbolaBFFPType::instance(),
       I18N_NOOP( "Hyperbola by Focuses && Point" ),
-      I18N_NOOP( "A hyperbola constructed by its focuses and a point on its border" ),
+      I18N_NOOP( "A hyperbola constructed by its focuses and a point on its circumference" ),
       "hyperbolabffp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_hyperbolabffp" ) );

@@ -105,8 +105,8 @@ void DefineMacroMode::namePageEntered()
   {
     KMessageBox::sorry( mwizard,
                         i18n( "One of the result objects you selected "
-                              "cannot be calculated from the given objects.  "
-                              "Kig cannot calculate this macro because of this."
+                              "cannot be calculated from the given objects. "
+                              "Kig cannot calculate this macro because of this. "
                               "Please press Back, and construct the objects "
                               "in the correct order..." ) );
     mwizard->back();
