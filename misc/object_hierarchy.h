@@ -26,8 +26,11 @@ class ObjectHierarchy
   class Node;
   std::vector<Node*> mnodes;
   int mnumberofargs;
+  int visit( const Object* o, const Objects& from );
 public:
-  ObjectImp* calc( const Args& a, const KigWidget& w );
+  ObjectHierarchy( const Objects& from, const Object* to );
+  ~ObjectHierarchy();
+  ObjectImp* calc( const Args& a, const KigWidget& w ) const;
 };
 
 #endif

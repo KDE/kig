@@ -18,16 +18,16 @@
 
 #include "object_hierarchy.h"
 
+#include "../objects/object.h"
 #include "../objects/object_imp.h"
 #include "../objects/object_type.h"
 
 class ObjectHierarchy::Node
 {
-protected:
-  virtual ~Node();
 public:
+  virtual ~Node();
   virtual void apply( std::vector<const ObjectImp*>& stack, const KigWidget&,
-                      int loc ) = 0;
+                      int loc ) const = 0;
 };
 
 ObjectHierarchy::Node::~Node()
@@ -39,7 +39,21 @@ class PushStackNode
 {
   ObjectImp* mimp;
 public:
-  void apply( std::vector<const ObjectImp*>& stack, const KigWidget&, int loc );
+  PushStackNode( ObjectImp* imp ) : mimp( imp ) {};
+  ~PushStackNode();
+  void apply( std::vector<const ObjectImp*>& stack,
+              const KigWidget&, int loc ) const;
+};
+
+PushStackNode::~PushStackNode()
+{
+  delete mimp;
+};
+
+void PushStackNode::apply( std::vector<const ObjectImp*>& stack,
+                           const KigWidget&, int loc ) const
+{
+  stack[loc] = mimp->copy();
 };
 
 class ApplyTypeNode
@@ -48,17 +62,20 @@ class ApplyTypeNode
   ObjectType* mtype;
   std::vector<int> mparents;
 public:
-  void apply( std::vector<const ObjectImp*>& stack, const KigWidget&, int loc );
+  ApplyTypeNode( ObjectType* type, std::vector<int>& parents )
+    : mtype( type ), mparents( parents ) {};
+  ~ApplyTypeNode();
+  void apply( std::vector<const ObjectImp*>& stack, const KigWidget&,
+              int loc ) const;
 };
 
-void PushStackNode::apply( std::vector<const ObjectImp*>& stack, const KigWidget&,
-                           int loc )
+ApplyTypeNode::~ApplyTypeNode()
 {
-  stack[loc] = mimp->copy();
-};
+  delete mtype;
+}
 
-void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack, const KigWidget& w,
-                           int loc )
+void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
+                           const KigWidget& w,int loc ) const
 {
   Args args;
   for ( uint i = 0; i < mparents.size(); ++i )
@@ -68,7 +85,7 @@ void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack, const KigWidget
   stack[loc] = mtype->calc( args, w );
 };
 
-ObjectImp* ObjectHierarchy::calc( const Args& a, const KigWidget& w )
+ObjectImp* ObjectHierarchy::calc( const Args& a, const KigWidget& w ) const
 {
   std::vector<const ObjectImp*> stack;
   stack.resize( mnodes.size() + mnumberofargs, 0 );
@@ -81,4 +98,42 @@ ObjectImp* ObjectHierarchy::calc( const Args& a, const KigWidget& w )
     delete stack[i];
   if ( stack.empty() ) return 0;
   else return const_cast<ObjectImp*>( stack.back() );
+}
+
+ObjectHierarchy::ObjectHierarchy( const Objects& from, const Object* to )
+  : mnumberofargs( from.size() )
+{
+  visit( to, from );
+}
+
+int ObjectHierarchy::visit( const Object* o, const Objects& from )
+{
+  for ( uint i = 0; i < from.size(); ++i )
+    if ( from[i] == o ) return i;
+  Objects p( o->parents() );
+  bool neednode = false;
+  std::vector<int> parents;
+  parents.resize( p.size(), -1 );
+  for ( uint i = 0; i < p.size(); ++i )
+  {
+    parents[i] = visit( p[i], from );
+    neednode |= parents[i] != -1;
+  };
+  if ( ! neednode ) return -1;
+
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    if ( parents[i] == -1 )
+    {
+      mnodes.push_back( new PushStackNode( p[i]->imp()->copy() ) );
+      parents[i] = mnumberofargs + mnodes.size() - 1;
+    };
+  };
+  mnodes.push_back( new ApplyTypeNode( o->type()->copy(), parents ) );
+  return mnumberofargs + mnodes.size() - 1;
+}
+
+ObjectHierarchy::~ObjectHierarchy()
+{
+  for ( uint i = 0; i < mnodes.size(); ++i ) delete mnodes[i];
 }
