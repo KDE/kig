@@ -375,6 +375,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           break;
         }
         case G_BISECTOR_RAY:
+          return NotSupported;
           break;
         };
         break;
@@ -417,6 +418,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           break;
         }
         case G_CENTERRADIUS_CIRCLE:
+          return NotSupported;
           break;
         default:
           return ParseError;
