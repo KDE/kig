@@ -35,9 +35,10 @@ TextImp::~TextImp()
 {
 }
 
-ObjectImp* TextImp::transform( const Transformation& ) const
+ObjectImp* TextImp::transform( const Transformation& t ) const
 {
-  return new InvalidImp;
+  Coordinate nloc = t.apply( mloc );
+  return new TextImp( mtext, nloc, mframe );
 }
 
 void TextImp::draw( KigPainter& p ) const
