@@ -74,14 +74,24 @@ TestAction::TestAction( KigDocument* doc, const QIconSet& icon,
 {
 }
 
+const struct ArgParser::spec testspec[] =
+{
+  { Object::AbstractLineT, 2 },
+  { Object::PointT, 1 }
+};
+
 void TestAction::slotActivated()
 {
-  CheckOneArgs checker;
-  StandAloneSelectionMode mode( checker, mdoc );
+  ArgParser checker( testspec, 2 );
+  StandAloneSelectionMode mode( checker, *mdoc );
   mode.run( mdoc->mode() );
   Objects sel = mode.selection();
+  sel = checker.parse( sel );
   kdDebug() << k_funcinfo << endl
-            << sel.size() << endl
-            << sel[0]->vBaseTypeName() << endl;
+            << sel.size() << endl;
+  for ( uint i = 0; i < sel.size(); ++i )
+  {
+    kdDebug() << sel[i]->vBaseTypeName() << endl;
+  }
 }
 
