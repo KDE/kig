@@ -1,3 +1,18 @@
+* not too hard:
+
+- add a menu entry for changing the coordinate system..
+
+- add support for working with angles in degrees in the set size
+  dialog of an angle..
+
+- make shift snap to the grid in moving mode
+
+- add support for giving sizes in cm, inches in the export to image
+  dialog..
+
+- add an option to change the name and description of a type in the
+  "manage types" dialog..
+
 * harder:
 
 - split up KigDocument and KigPart
@@ -8,9 +23,17 @@
   should be differentiated by holding them in a separate container at
   the KigPart level, I think..  This will require another file format
   change, I think..
+
+- undo support for changing the size and color of an object ( depends
+  on the previous item )..
+
 - split up the transformation types as follows: they only generate a
   TransformationImp, and the real transforming is done by the
-  ApplyTransformationType..  This is dependent on the previous TODO.
+  ApplyTransformationType..  This is dependent on the item "decouple
+  the link..", I think..  I'm not really sure whether this is a good
+  idea actually, as I don't know how I would go about constructing a
+  transformed object then..
+
 - fillable polygons..
 - filters: more input filters ( get cabri to work somewhat, Dr.Genius
   perhaps ) and output filters...   
