@@ -1,3 +1,8 @@
+2003-08-15  Dominique Devriese  <devriese@kde.org>
+
+	* improve the inline documentation in order to improve the doxygen
+	generated docs for the python scripting API.
+
 2003-08-03  Dominique Devriese  <devriese@kde.org>
 
 	* give Transformation::apply better semantics

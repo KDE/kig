@@ -77,9 +77,9 @@ typedef unsigned int uint;
 
 /**
  * Instances of this class represent a certain ObjectImp type.  Every
- * ObjectImp type should have a static ObjectImpType member, that it
- * returns a reference to in its type() function..  It's really not
- * much more than a nice enum.
+ * ObjectImp type has a static ObjectImpType member, that it returns a
+ * reference to in its type() function..  Think of it as a nice enum,
+ * that you can also get some data from..
  */
 class ObjectImpType
 {
@@ -95,25 +95,25 @@ class ObjectImpType
   static StaticPrivate* sd();
 public:
   /**
-   * returns the type with name string.  Do *not* call this from
-   * functions that can be called at static initializer time !  It
-   * depends on information that is only available after that stage
-   * and will crash if used too early..
+   * Returns the type with name n.
+   *
+   * \internal Do *not* call this from functions that can be called at
+   * static initializer time !  It depends on information that is only
+   * available after that stage and will crash if used too early..
    */
-  static const ObjectImpType* typeFromInternalName( const char* string );
+  static const ObjectImpType* typeFromInternalName( const char* n );
 
   /**
-   * Construct an ObjectImpType, with a lot of data about your
-   * ObjectImp type.  translatedname is a translatable string like
-   * "segment", selectstatement is a translatable string like "Select
-   * a Segment", removeastatement is a translatable string like
-   * "Remove a Segment", addastatement is a translatable string like
-   * "Add a Segment", moveastatement is a translatable string like
-   * "Move a Segment".  All translatable strings should have I18N_NOOP
-   * around them !
-   * @param parent is the ObjectImpType of your parent ObjectImp
-   * type.  Never give 0 as parent, except for the top ObjectImp
-   * ObjectImpType..
+   * \internal Construct an ObjectImpType, with a lot of data about
+   * your ObjectImp type.  translatedname is a translatable string
+   * like "segment", selectstatement is a translatable string like
+   * "Select a Segment", removeastatement is a translatable string
+   * like "Remove a Segment", addastatement is a translatable string
+   * like "Add a Segment", moveastatement is a translatable string
+   * like "Move a Segment".  All translatable strings should have
+   * I18N_NOOP around them !  @param parent is the ObjectImpType of
+   * your parent ObjectImp type.  Never give 0 as parent, except for
+   * the top ObjectImp ObjectImpType..
    */
   ObjectImpType( const ObjectImpType* parent, const char* internalname,
                  const char* translatedname, const char* selectstatement,
@@ -122,25 +122,48 @@ public:
                  const char* attachtothisstatement );
   ~ObjectImpType();
 
+  /**
+   * Does the ObjectImp type represented by this instance inherit the
+   * ObjectImp type represented by t ?
+   */
   bool inherits( const ObjectImpType* t ) const;
-  //void serialize( const ObjectImp& imp );
+
+  /**
+   * Returns an internal name for this ObjectImp type.  This name is
+   * guaranteed unique, and mostly corresponds with the class name of
+   * the corresponding ObjectImp..
+   */
   const char* internalName() const;
+  /**
+   * The name of this type, translated to the currently used language.
+   */
   QString translatedName() const;
-  // returns a translated string of the form "Select this %1" (
-  // e.g. "Select this segment" ).
+  /**
+   * returns a translated string of the form "Select this %1" (
+   * e.g. "Select this segment" ).
+   */
   const char* selectStatement() const;
-  // returns a translated string of the form "remove a xxx" (
-  // e.g. "Remove a segment" ).
+
+  /**
+   * Returns a translated string of the form "Remove a xxx" (
+   * e.g. "Remove a segment" ).
+   */
   QString removeAStatement() const;
-  // returns a translated string of the form "add a xxx" (
-  // e.g. "Add a segment" ).
+  /**
+   * returns a translated string of the form "Add a xxx" (
+   * e.g. "Add a segment" ).
+   */
   QString addAStatement() const;
-  // returns a translated string of the form "move a xxx" (
-  // e.g. "Move a segment" ).
+  /**
+   * returns a translated string of the form "Move a xxx" (
+   * e.g. "Move a segment" ).
+   */
   QString moveAStatement() const;
-  // returns a translated string of the form "attach to this xxx" (
-  // e.g. "Attach to this segment" ). ( used by the text label
-  // construction mode )
+  /**
+   * returns a translated string of the form "Attach to this xxx" (
+   * e.g. "Attach to this segment" ). ( used by the text label
+   * construction mode )
+   */
   QString attachToThisStatement() const;
 };
 
@@ -152,20 +175,35 @@ public:
  */
 class ObjectImp
 {
-public:
-  static const ObjectImpType* stype();
+protected:
   ObjectImp();
+public:
+  /**
+   * The ObjectImpType representing the base ObjectImp class.  All
+   * other ObjectImp's inherit from this type.
+   */
+  static const ObjectImpType* stype();
+
   virtual ~ObjectImp();
 
+  /**
+   * Does this ObjectImp inherit the ObjectImp type represented by t ?
+   */
   bool inherits( const ObjectImpType* t ) const;
 
-  virtual ObjectImp* transform( const Transformation& ) const = 0;
+  /**
+   * Return this ObjectImp, transformed by the transformation t.
+   */
+  virtual ObjectImp* transform( const Transformation& t ) const = 0;
 
   virtual void draw( KigPainter& p ) const = 0;
   virtual bool contains( const Coordinate& p, int width,
                          const KigWidget& si ) const = 0;
   virtual bool inRect( const Rect& r, int width,
                        const KigWidget& si ) const = 0;
+  /**
+   * Is this a valid ObjectImp ?
+   */
   bool valid() const;
 
   virtual const uint numberOfProperties() const;
@@ -184,12 +222,19 @@ public:
   // What icon should be shown when talking about this property ?
   virtual const char* iconForProperty( uint which ) const;
 
+  /**
+   * Returns the lowermost ObjectImp type that this object is an
+   * instantiation of.
+   */
   virtual const ObjectImpType* type() const = 0;
   virtual void visit( ObjectImpVisitor* vtor ) const = 0;
 
+  /**
+   * Returns a copy of this ObjectImp.
+   */
   virtual ObjectImp* copy() const = 0;
 
-  // QString is a string with at least one escape ( "%N" where N is a
+  // s is a string with at least one escape ( "%N" where N is a
   // number ) somewhere.  This function replaces the first escape it
   // sees with the "value" of this imp ( using the QString::arg
   // functions ).  This is e.g. used by TextType to turn its variable
@@ -209,9 +254,9 @@ public:
   virtual bool equals( const ObjectImp& rhs ) const = 0;
 
   /**
-   * Return true if this imp is just a cache imp.  This means that it
-   * will never be considered to be stored in a file or in an
-   * ObjectHierarchy.  This is useful for objects which cannot
+   * \internal Return true if this imp is just a cache imp.  This
+   * means that it will never be considered to be stored in a file or
+   * in an ObjectHierarchy.  This is useful for objects which cannot
    * (easily and usefully) be (de)serialized, like e.g.
    * PythonCompiledScriptImp..  For normal objects, the default
    * implementation returns false, which is fine.

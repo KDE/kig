@@ -98,12 +98,31 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .staticmethod( "projectiveRotation" )
     ;
 
+  class_<ObjectImpType, boost::noncopyable>( "ObjectType", no_init )
+    .def( "fromInternalName", &ObjectImpType::typeFromInternalName,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "fromInternalName" )
+    .def( "inherits", &ObjectImpType::inherits )
+    .def( "internalName", &ObjectImpType::internalName )
+    .def( "translatedName", &ObjectImpType::translatedName )
+    .def( "selectStatement", &ObjectImpType::selectStatement )
+    .def( "removeAStatement", &ObjectImpType::removeAStatement )
+    .def( "addAStatement", &ObjectImpType::addAStatement )
+    .def( "moveAStatement", &ObjectImpType::moveAStatement )
+    .def( "attachToThisStatement", &ObjectImpType::attachToThisStatement )
+    ;
+
   class_<ObjectImp, boost::noncopyable>( "Object", no_init )
+    .def( "stype", &ObjectImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "inherits", &ObjectImp::inherits )
     .def( "transform", &ObjectImp::transform,
           return_value_policy<manage_new_object>() )
     .def( "valid", &ObjectImp::valid )
     .def( "copy", &ObjectImp::copy,
           return_value_policy<manage_new_object>() )
+    .def( "equals", &ObjectImp::equals )
     ;
 
   class_<CurveImp, bases<ObjectImp>, boost::noncopyable>( "Curve", no_init )
