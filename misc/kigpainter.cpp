@@ -21,6 +21,7 @@
 #include "kigpainter.h"
 
 #include "../kig/kig_view.h"
+#include "../misc/goniometry.h"
 #include "../objects/object_holder.h"
 #include "../objects/curve_imp.h"
 #include "../objects/point_imp.h"
@@ -142,6 +143,21 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       Rect r( tl, br );
       QRect qr = toScreen( r );
       mP.drawRect( qr );
+      if( mNeedOverlay ) mOverlay.push_back( qr );
+      break;
+    }
+    case 4:
+    {
+      double radius = twidth * pixelWidth();
+      Coordinate rad( radius, radius );
+      rad /= 2;
+      Coordinate tl = p - rad;
+      Coordinate br = p + rad;
+      Rect r( tl, br );
+      QRect qr = toScreen( r );
+      mP.setPen( QPen( color, 2 ) );
+      mP.drawLine( qr.topLeft(), qr.bottomRight() );
+      mP.drawLine( qr.topRight(), qr.bottomLeft() );
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
     }
@@ -786,8 +802,8 @@ void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
                             const double dangle )
 {
   // convert to 16th of degrees...
-  const int startangle = static_cast<int>( 16*180*dstartangle / M_PI );
-  const int angle = static_cast<int>( 16*180*dangle / M_PI );
+  const int startangle = static_cast<int>( Goniometry::convert( 16 * dstartangle, Goniometry::Rad, Goniometry::Deg ) );
+  const int angle = static_cast<int>( Goniometry::convert( 16 * dangle, Goniometry::Rad, Goniometry::Deg ) );
 
   QPoint point = toScreen( cpoint );
 
@@ -1068,8 +1084,8 @@ void KigPainter::drawArc( const Coordinate& center, const double radius,
                           const double dstartangle, const double dangle )
 {
   // convert to 16th of degrees...
-  const int startangle = static_cast<int>( 16*180*dstartangle / M_PI );
-  const int angle = static_cast<int>( 16*180*dangle / M_PI );
+  const int startangle = static_cast<int>( Goniometry::convert( 16 * dstartangle, Goniometry::Rad, Goniometry::Deg ) );
+  const int angle = static_cast<int>( Goniometry::convert( 16 * dangle, Goniometry::Rad, Goniometry::Deg ) );
 
   Rect krect( 0, 0, 2*radius, 2*radius );
   krect.setCenter( center );

@@ -30,7 +30,7 @@ Equations         line, circle
 
 Colors            ok
 Visibility        ok
-Styles            most
+Styles            ok
 
 Objects to implement
 --------------------
@@ -41,8 +41,6 @@ Locuses           may work
 Polygons          also in Kig :-)
 Transformations   scaling
 Intersections     arc-line (also in Kig)
-
-Styles            Points( Cross )
 
 Known problems
 --------------

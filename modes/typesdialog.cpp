@@ -25,6 +25,8 @@
 #include "../kig/kig_part.h"
 #include "../misc/lists.h"
 #include "../misc/guiaction.h"
+#include "../misc/object_constructor.h"
+#include "edittype.h"
 
 #include <kfiledialog.h>
 #include <kiconloader.h>
@@ -144,7 +146,7 @@ void TypesDialog::exportType()
     ++it;
   }
   if (types.empty()) return;
-  QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types Files\n*|All Files"));
+  QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
   if ( file_name.isNull() )
     return;
   QFile fi( file_name );
@@ -178,70 +180,53 @@ void TypesDialog::importTypes()
     typeList->insertItem( newListItem( macros[i] ) );
 }
 
-void TypesDialog::selectionChangedSlot()
+QString TypesDialog::fetchIconFromListItem( QListViewItem* i )
 {
-/*
-  int nselected = 0;
-  int lastselected = -1;
-  int current = -1;
   QListViewItemIterator it( typeList );
   while ( it.current() ) {
-    current++;
     if ( ( it.current() )->isSelected() )
     {
-      nselected++;
-      lastselected = current;
+      Macro* ai = static_cast<MacroListElement*>( i )->getMacro();
+      Macro* ait = static_cast<MacroListElement*>( it.current() )->getMacro();
+      if ( ai == ait )
+      {
+        return ai->ctor->iconFileName( true );
+      }
     }
     ++it;
   }
-  typedef MacroList::vectype vec;
-  const vec& macros = MacroList::instance()->macros();
-*/
+  return "gear";
 }
 
-/*
-void TypesDialog::iconChangedSlot()
+void TypesDialog::executed( QListViewItem* i )
 {
-  int nselected = 0;
-  int lastselected = -1;
-  int current = -1;
-  for( QListBoxItem* i = typeList->firstItem(); i; i = i->next() )
+  EditType* d = new EditType( this, i->text( 1 ), i->text( 2 ), fetchIconFromListItem( i ) );
+  if ( d->exec() )
   {
-    current++;
-    if (i->isSelected())
-    {
-      nselected++;
-      lastselected = current;
-    }
-  }
-  typedef MacroList::vectype vec;
-  const vec& macros = MacroList::instance()->macros();
-  ObjectHierarchy* macros[lastselected]->ctor->hierarchy();
-  QCString actionname = macros[lastselected]->action->descriptiveName();
-  QCString iconfile = macros[lastselected]->action->iconFileName();
-  char* name = macros[lastselected]->action->actionName();
-  
-  MacroConstructor* ctor =
-      new MacroConstructor( *hierarchy, name.latin1(), description.latin1(), iconfile );
-  GUIAction* act = new ConstructibleAction( ctor, actionname );
-  Macro* macro = new Macro( act, ctor );
+/*
+    QString newname = d->name();
+    QString newdesc = d->description();
+    QString newicon = d->icon();
+    
+    index = typeList->itemIndex( i );
+    typedef MacroList::vectype vec;
+    const vec& macros = MacroList::instance()->macros();
+    ObjectHierarchy* hierarchy = macros[index]->ctor->hierarchy();
+    char* name = macros[index]->action->actionName();
+    MacroConstructor* ctor =
+        new MacroConstructor( *hierarchy, name.latin1(), newdesc.latin1(), newicon );
+    GUIAction* act = new ConstructibleAction( ctor, newname );
+    Macro* macro = new Macro( act, ctor );
 
-  // TODO: implement insert for MacroList and, of course, for GUIActionList...
-  MacroList::instance()->insert( macros, lastselected );
+    // TODO: implement insert for MacroList and, of course, for ObjectConstructorList
+    // and GUIActionList...
+    MacroList::instance()->insert( macros, index );
 
-  typeList->removeItem( lastselected );
-  typeList->insertItem( new MacroListElement( macros[i] ), lastselected );
-
-}
+    delete typeList->itemAtIndex( index );
+    typeList->insertItem( newListItem( macros[i] ), index );
 */
-
-void TypesDialog::executed( QListViewItem* /* i */ )
-{
-  // TODO
-  // create a new ui where the user can edit the current type. A simple
-  // interface is needed, with two edit boxes (to modify name and
-  // description) and a KIconButton (to modify icon).
-  // See the TODO in the comment above...
+  }
+  delete d;
 }
 
 MacroListElement::MacroListElement( KListView* lv, Macro* m )

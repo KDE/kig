@@ -25,6 +25,7 @@
 
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
+#include "../misc/goniometry.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../kig/kig_commands.h"
@@ -358,7 +359,7 @@ void AngleType::executeAction(
   if ( anglelength < 0 ) anglelength += 2* M_PI;
   if ( startangle < 0 ) startangle += 2*M_PI;
 
-  int anglelengthdeg = static_cast<int>( anglelength * 180 / M_PI );
+  int anglelengthdeg = static_cast<int>( Goniometry::convert( anglelength, Goniometry::Rad, Goniometry::Deg ) );
 
   bool ok = true;
   double newsize = getDoubleFromUser(

@@ -1,6 +1,6 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
- Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
+ Copyright (C) 2004  Dominique Devriese <devriese@kde.org>
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -18,51 +18,32 @@
  USA
 **/
 
-#ifndef KIG_MODES_TYPESDIALOG_H
-#define KIG_MODES_TYPESDIALOG_H
+#ifndef KIG_MODES_EDITTYPE_H
+#define KIG_MODES_EDITTYPE_H
 
-#include "typesdialogbase.h"
+#include "edittypebase.h"
 
-#include <klistview.h>
 #include <kiconloader.h>
 
-class Macro;
-
-class MacroListElement
-  : public QListViewItem
-{
-  Macro* macro;
-public:
-  MacroListElement( KListView* lv, Macro* m );
-  Macro* getMacro() const { return macro; };
-};
-
-class KigDocument;
-
-class TypesDialog : public TypesDialogBase
+class EditType : public EditTypeBase
 {
   Q_OBJECT
 
-  // necessary because some MacroList functions need it..
-  const KigDocument& mdoc;
+  QString mname;
+  QString mdesc;
+  QString micon;
   const KIconLoader* il;
 public:
-  TypesDialog( QWidget* parent, const KigDocument& );
-  ~TypesDialog();
+  EditType( QWidget* parent, QString name = QString::null, QString desc = QString::null, QString icon = QString::null );
+  ~EditType();
+  const QString name() const;
+  const QString description() const;
+  const QString icon() const;
 
 public slots:
   void helpSlot();
   void okSlot();
-
-protected slots:
-  void deleteType();
-  void exportType();
-  void importTypes();
-  void executed( QListViewItem* i );
-
-private:
-  QListViewItem* newListItem( Macro* m );
-  QString fetchIconFromListItem( QListViewItem* i );
+  void cancelSlot();
 };
 
 #endif

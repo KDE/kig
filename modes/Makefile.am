@@ -5,6 +5,8 @@ libmodes_la_SOURCES= \
 	base_mode.cc \
 	construct_mode.cc \
 	dragrectmode.cc \
+	edittype.cc \
+	edittypebase.ui \
 	label.cc \
 	linkslabel.cpp \
 	macro.cc \
@@ -22,6 +24,7 @@ noinst_HEADERS=\
 	base_mode.h \
 	construct_mode.h \
 	dragrectmode.h \
+	edittype.h \
 	label.h \
 	linkslabel.h \
 	macro.h \

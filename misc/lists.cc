@@ -19,14 +19,13 @@
 #include "lists.h"
 
 #include "object_constructor.h"
-#include "i18n.h"
 #include "guiaction.h"
-// #include "oldkigformat.h"
 #include "object_hierarchy.h"
 #include "../kig/kig_part.h"
 
 #include "config.h"
 
+#include <klocale.h>
 #include <kmessagebox.h>
 #include <qfile.h>
 #include <qtextstream.h>
@@ -156,6 +155,13 @@ void ObjectConstructorList::add( ObjectConstructor* a )
 Macro::Macro( GUIAction* a, MacroConstructor* c )
   : action( a ), ctor( c )
 {
+}
+
+bool operator==( const Macro& l, const Macro& r )
+{
+  return ( l.action->descriptiveName() == r.action->descriptiveName() ) &&
+         ( l.action->description() == r.action->description() ) &&
+         ( l.action->iconFileName() == r.action->iconFileName() );
 }
 
 MacroList::MacroList()

@@ -253,12 +253,6 @@
     </connection>
     <connection>
         <sender>typeList</sender>
-        <signal>selectionChanged()</signal>
-        <receiver>TypesDialogBase</receiver>
-        <slot>selectionChangedSlot()</slot>
-    </connection>
-    <connection>
-        <sender>typeList</sender>
         <signal>executed(QListViewItem*)</signal>
         <receiver>TypesDialogBase</receiver>
         <slot>executed(QListViewItem*)</slot>
@@ -270,7 +264,6 @@
     <slot>helpSlot()</slot>
     <slot access="protected">importTypes()</slot>
     <slot>okSlot()</slot>
-    <slot access="protected">selectionChangedSlot()</slot>
     <slot access="protected">executed(QListViewItem*)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>

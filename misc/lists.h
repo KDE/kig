@@ -96,6 +96,11 @@ public:
 };
 
 /**
+ * a simply equality operator for Macro class.
+ */
+bool operator==( const Macro& l, const Macro& r );
+
+/**
  * This class keeps a list of all macro's, and allows them to be
  * easily accessed, added etc.  Macro objects are owned by this
  * list..

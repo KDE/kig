@@ -21,7 +21,6 @@
 #define KIG_FILTERS_DRGEO_FILTER_H
 
 #include "filter.h"
-#include "drgeo-filter-chooser.h"
 
 class QDomNode;
 class KigDocument;

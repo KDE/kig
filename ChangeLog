@@ -1,3 +1,17 @@
+2004-04-08  Pino Toscano <toscano.pino@tiscali.it>
+
+	* More work on types dialog: a new dialog will allow to edit
+	types that now work in read-only mode.
+
+	* Add a 'cross' style for points.
+
+	* Some very minor work in Dr. Geo filter.
+
+	* Add a new simple class to easily work with goniometric
+	measures, and adapt Kig to use this class.
+
+	* Some #include fixes
+
 2004-04-05  Pino Toscano <toscano.pino@tiscali.it>
 
 	* A new look for type list in the type dialog: a listview

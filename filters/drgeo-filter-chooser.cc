@@ -27,14 +27,13 @@
 #include <kiconloader.h>
 
 KigFilterDrgeoChooser::KigFilterDrgeoChooser( QStringList& l )
-  : KigFilterDrgeoChooserBase( 0, I18N_NOOP( "Dr. Geo Filter" ), true )
+  : KigFilterDrgeoChooserBase( 0, "drgeo_filter", true )
 {
   KIconLoader* li = KGlobal::iconLoader();
   OKButton->setIconSet( QIconSet( li->loadIcon( "button_ok", KIcon::Small ) ) );
   CancelButton->setIconSet( QIconSet( li->loadIcon( "button_cancel", KIcon::Small ) ) );
 
   FigureListBox->insertStringList( l );
-//  FigureListBox->setCurrentItem( 0 );
 
   connect( OKButton, SIGNAL( clicked() ), this, SLOT( slotOKPressed() ) );
   connect( CancelButton, SIGNAL( clicked() ), this, SLOT( slotCancelPressed() ) );

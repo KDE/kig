@@ -4,6 +4,8 @@
 
 * not too hard:
 
+- add intersection type between arcs and the other objects.
+
 - add ObjectType's to the ObjectTypeFactory automatically.
 
 - create a ObjectImp::surroundingRect function, and use it in
@@ -61,6 +63,11 @@
   KigMode concept ), where you can more clearly see the dependencies
   in a figure.  Something with colours, numberings, and/or a tree-like
   text representation of the dependencies..
+
+- add support for work via command line without GUI. Possible options
+  and uses:
+  -c, --convert <filename.ext> => Kig will convert the file in its own
+  format and output the file <filename.kig>
 
 * future ?
 - there should be a way to link a figure to a (html?) file containing

@@ -40,6 +40,7 @@
 #include "../misc/coordinate.h"
 #include "../misc/coordinate_system.h"
 #include "../kig/kig_part.h"
+#include "drgeo-filter-chooser.h"
 
 #include <qfile.h>
 #include <qnamespace.h>
@@ -55,8 +56,6 @@ KigFilterDrgeo::~KigFilterDrgeo()
 
 bool KigFilterDrgeo::supportMime( const QString& mime )
 {
-  // TODO: we need to define a drgeo mimetype, and add some way to
-  // detect it ( ideally a KMimeMagic file )
   return mime == "application/x-drgeo";
 }
 
@@ -764,6 +763,8 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         pointstyle = 2;
       else if ( domelem.attribute( "style" ) == "RectangularEmpty" )
         pointstyle = 3;
+      else if ( domelem.attribute( "style" ) == "Cross" )
+        pointstyle = 4;
     }
     else if ( ( domelem.tagName() == "line" ) ||
               ( domelem.tagName() == "halfLine" ) ||

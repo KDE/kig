@@ -24,7 +24,6 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../kig/kig_commands.h"
-#include "../misc/i18n.h"
 #include "../objects/object_imp.h"
 #include "../objects/object_drawer.h"
 #include "../objects/bogus_imp.h"
@@ -45,6 +44,7 @@
 #include <qdialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
+#include <klocale.h>
 #include <algorithm>
 #include <functional>
 #include <kcolordialog.h>
@@ -353,7 +353,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     bool point = ( npoints > nothers );
     if ( ! samecolor ) color = Qt::blue;
     if ( point )
-      for ( int i = 1; i < 5; ++i )
+      for ( int i = 1; i <= 5; ++i )
       {
         QPixmap p( 20, 20 );
         QPainter ptr( &p );
@@ -386,6 +386,13 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
           {
             ptr.setPen( QPen( color, 1 ) );
             ptr.drawRect( r );
+            break;
+          }
+          case 5:
+          {
+            ptr.setPen( QPen( color, 2 ) );
+            ptr.drawLine( r.topLeft(), r.bottomRight() );
+            ptr.drawLine( r.topRight(), r.bottomLeft() );
             break;
           }
         }
@@ -509,7 +516,7 @@ bool BuiltinObjectActionsProvider::executeAction(
         nothers++;
     };
     bool point = ( npoints > nothers );
-    int max = point ? 4 : 3;
+    int max = point ? 5 : 3;
     if ( id >= max )
     {
       id -= max;

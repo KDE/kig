@@ -9,6 +9,7 @@ noinst_HEADERS = \
 	coordinate.h \
 	coordinate_system.h \
 	cubic-common.h \
+	goniometry.h \
 	guiaction.h \
 	kignumerics.h \
 	kigpainter.h \
@@ -29,6 +30,7 @@ libmisc_la_SOURCES = \
 	coordinate.cpp \
 	coordinate_system.cpp \
 	cubic-common.cc \
+	goniometry.cc \
 	guiaction.cc \
 	kignumerics.cpp \
 	kigpainter.cpp \

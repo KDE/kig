@@ -26,11 +26,12 @@
 #include "../misc/common.h"
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
-#include "../misc/i18n.h"
+#include "../misc/goniometry.h"
 #include "../kig/kig_view.h"
 
+#include <klocale.h>
+
 #include <cmath>
-//#include <.h>
 #include <utility>
 using namespace std;
 
@@ -129,7 +130,7 @@ ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
   if ( which == Parent::numberOfProperties() )
     return new DoubleImp( size() );
   else if ( which == Parent::numberOfProperties() + 1 )
-    return new DoubleImp( size() * 180 / M_PI );
+    return new DoubleImp( Goniometry::convert( size(), Goniometry::Rad, Goniometry::Deg ) );
   else if ( which == Parent::numberOfProperties() + 2 )
   {
     const double angle = mstartangle + mangle / 2;
@@ -397,7 +398,7 @@ ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
   else if ( which == Parent::numberOfProperties() + 1 )
     return new DoubleImp( mradius );
   else if ( which == Parent::numberOfProperties() + 2 )
-    return new IntImp( static_cast<int>( ma * 180 / M_PI ) );
+    return new IntImp( static_cast<int>( Goniometry::convert( ma, Goniometry::Rad, Goniometry::Deg ) ) );
   else if ( which == Parent::numberOfProperties() + 3 )
     return new DoubleImp( ma );
   else if ( which == Parent::numberOfProperties() + 4 )

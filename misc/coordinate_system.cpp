@@ -23,9 +23,9 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
-#include "i18n.h"
 #include "common.h"
 #include "coordinate.h"
+#include "goniometry.h"
 #include "kigpainter.h"
 
 #include <qpainter.h>
@@ -333,7 +333,7 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
   int l = kigMax( 0, (int) ( 3 - log10( m ) ) );
 
   double r = pt.length();
-  double theta = atan2( pt.y, pt.x ) * 180 / M_PI;
+  double theta = Goniometry::convert( atan2( pt.y, pt.x ), Goniometry::Rad, Goniometry::Deg );
 
   QString rs = KGlobal::locale()->formatNumber( r, l );
   QString ts = KGlobal::locale()->formatNumber( theta, 0 );
