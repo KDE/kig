@@ -574,6 +574,7 @@ bool PropertiesActionsProvider::executeAction(
   {
     Objects ret;
     ret.push_back( new PropertyObject( parent, propid ) );
+    ret.back()->calc( doc );
     Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
     Object* label = ObjectFactory::instance()->label(
       QString::fromLatin1( "%1" ), c,

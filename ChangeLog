@@ -1,5 +1,8 @@
 2003-06-20  Dominique Devriese  <devriese@kde.org>
 
+	* fix: a text label constructed using "add text label" from an
+	object popup wasn't properly calced after construction..
+
 	* fix this bug: "2) Add the possibility to set shortcut for all
 	the actions & objects (For examples: Ctrl+P to construct a point,
 	Ctrl+R to start a reflection, and so on...).", and add some
