@@ -110,7 +110,7 @@ dnl    Example: REGINA_LIB_BOOST_PYTHON(PYTHON, [the Python interface])
 dnl
 AC_DEFUN([REGINA_LIB_BOOST_PYTHON], [
   AC_LANG_PUSH(C++)
-  AC_CHECK_HEADERS([boost/shared_ptr.hpp], [
+  KDE_CHECK_HEADERS([boost/shared_ptr.hpp], [
     __regina_py_save_cxxflags="$CXXFLAGS"
     __regina_py_save_ldflags="$LDFLAGS"
     __regina_py_save_libs="$LIBS"
@@ -225,7 +225,7 @@ fi
 AC_SUBST( KIGVERSION, $kig_version )
 AC_DEFINE_UNQUOTED( KIGVERSION, "$kig_version", [The current Kig version as a string] )
 
-AC_CHECK_HEADERS([ieeefp.h])
+KDE_CHECK_HEADERS([ieeefp.h])
 
 # apparently the KDE build system wants to see "dnl AC_OUTPUT( ... )",
 # not a normal AC_OUTPUT
