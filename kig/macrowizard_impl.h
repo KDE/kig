@@ -21,7 +21,7 @@ public slots:
   virtual void reject() { emit canceled(); MacroWizard::reject(); };
   // we also reimplement the QWizard::next() and back() functions
   virtual void next() { emit stepMacro(); MacroWizard::next(); };
-  virtual void back() {};
+  virtual void back() { emit stepBackMacro(); MacroWizard::back();};
   // we also reimplement QDialog::accept() to emit the stepMacro() signal
   virtual void accept() { emit finishMacro(); MacroWizard::accept(); };
 

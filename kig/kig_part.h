@@ -225,10 +225,12 @@ protected:
 protected slots:
   void updateActions();
 protected:
-  Objects* macroGegObjs;
-  Objects* macroFinObjs;
+  Objects macroGegObjs;
+  Objects macroFinObjs;
+  // Where Are We in the process of collecting gegObjs and finObjs:
+  enum { macroSGO, macroSFO, macroSN, macroDN } macroWAW;
 public:
-  bool isConstructingMacro() { return macroGegObjs; };
+  bool isConstructingMacro() { return macroWAW != macroDN; };
 protected:
   MacroWizardImpl* m_pMacroWizard;
 public slots:
@@ -241,6 +243,7 @@ public slots:
   void macroSelect(const Objects& os);
   void macroSelect(const QRect& r);
   void stepMacro();
+  void stepBackMacro();
   void finishMacro();
   // delete the macro currently being defined
   void delMacro();

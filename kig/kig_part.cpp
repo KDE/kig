@@ -37,8 +37,6 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   : KParts::ReadWritePart(parent, name),
     obc(0),
     _changed(false),
-    macroGegObjs(0),
-    macroFinObjs(0),
     numViews(0),
     m_pMacroWizard(0)
 {
@@ -556,23 +554,23 @@ void KigDocument::newMacro()
   delObc();
   delMacro();
   clearSelection();
-  macroGegObjs = new Objects;
   delete m_pMacroWizard;
   m_pMacroWizard = new MacroWizardImpl(this);
   connect(m_pMacroWizard, SIGNAL(canceled()), this, SLOT(delMacro()));
   connect(m_pMacroWizard, SIGNAL(stepMacro()), this, SLOT(stepMacro()));
+  connect(m_pMacroWizard, SIGNAL(stepBackMacro()), this, SLOT(stepBackMacro()));
   connect(m_pMacroWizard, SIGNAL(finishMacro()), this, SLOT(finishMacro()));
   m_pMacroWizard->show();
+  macroWAW = macroSGO;
   emit modeChanged();  
 }
 
 void KigDocument::finishMacro()
 {
   // finish the macro
-  // get a name: 
+  // get the name: 
   QString appel = m_pMacroWizard->KLineEdit1->text();
-  // if the user pressed cancel, we quit
-  ObjectHierarchy* tmpH = new ObjectHierarchy(*macroGegObjs, *macroFinObjs, this);
+  ObjectHierarchy* tmpH = new ObjectHierarchy(macroGegObjs, macroFinObjs, this);
   // // show the hierarchy on cerr for debugging...
   //       QDomDocument doc("KigDocument");
   //       QDomElement elem = doc.createElement( "KigDocument" );
@@ -581,46 +579,64 @@ void KigDocument::finishMacro()
   //       doc.appendChild(elem);
   //       kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   //       kdDebug() << doc.toCString() << endl;
+
+  // create the new Type
   Type* tmp = new MTypeOne(tmpH, appel, this);
-  assert(tmp);
+  // install it...
   addType(tmp);
+  // clear what we've done
   delMacro();
   emit modeChanged();
 };
 
 void KigDocument::stepMacro()
 {
-  // clear selections
-  Objects* a = (macroFinObjs ? macroFinObjs : macroGegObjs);
-  assert (a);
-  for (Objects::iterator i = a->begin(); i != a->end(); ++i)
+  assert(macroWAW != macroDN && macroWAW != macroSN );
+  Objects* curObjs, *oldObjs;
+  switch (macroWAW)
     {
-      (*i)->setSelected(false);
-      emit selectionChanged(*i);
+    case macroSFO:
+      macroWAW = macroSN;
+      curObjs = 0;
+      oldObjs = &macroFinObjs;
+      break;
+    case macroSGO:
+      macroWAW = macroSFO;
+      curObjs = &macroFinObjs;
+      oldObjs = &macroGegObjs;
+      break;
+    default:
+      curObjs = 0;
+      oldObjs = 0;
+      break;
     };
-  // if we already have macroFinObjs, then we finish the macro
-  if (macroFinObjs)
-    {
-    }
-  else
-    {
-      kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
-      macroFinObjs = new Objects;
-    };
+  // update the selected state of all objects...
+  if (oldObjs)
+    for (Objects::iterator i = oldObjs->begin(); i != oldObjs->end(); ++i)
+      {
+	(*i)->setSelected(false);
+	emit selectionChanged(*i);
+      };
+  if (curObjs)
+    for (Objects::iterator i = curObjs->begin(); i != curObjs->end(); ++i)
+      {
+	(*i)->setSelected(true);
+	emit selectionChanged(*i);
+      };
 }
 
 void KigDocument::delMacro()
 {
-  // delete 0; is defined by ANSI C++ to do nothing, so this is ok
-  delete macroGegObjs; macroGegObjs = 0;
-  delete macroFinObjs; macroFinObjs = 0;
-  // delete m_pMacroWizard;
+  macroGegObjs.clear();
+  macroFinObjs.clear();
+  macroWAW = macroDN;
 }
 
 void KigDocument::macroSelect(Object* o)
 {
-  Objects* a = (macroFinObjs ? macroFinObjs : macroGegObjs);
-  assert (a);
+  kdDebug() << k_funcinfo << macroWAW << endl;
+  assert(macroWAW == macroSGO || macroWAW == macroSFO);
+  Objects* a = (macroWAW == macroSFO ? &macroFinObjs : &macroGegObjs);
   assert(o);
   if (o->getSelected())
     {
@@ -628,14 +644,14 @@ void KigDocument::macroSelect(Object* o)
       o->setSelected(false);
       emit selectionChanged(o);
     }
-  else 
+  else
     {
       a->push(o);
       o->setSelected(true);
       emit selectionChanged(o);
     };
-  m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pGivenObjsPage, !macroGegObjs->empty());
-  if (macroFinObjs) m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pFinalObjsPage, !macroFinObjs->empty());
+  m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pGivenObjsPage, !macroGegObjs.empty());
+  m_pMacroWizard->setNextEnabled(m_pMacroWizard->m_pFinalObjsPage, !macroFinObjs.empty());
 }
 
 void KigDocument::macroSelect(const Objects& os)
@@ -672,4 +688,41 @@ void KigDocument::addTypes(const Types& ts)
 {
   for (Types::const_iterator i = ts.begin(); i != ts.end(); ++i)
     addType(*i);
+}
+
+void KigDocument::stepBackMacro()
+{
+  Objects* curObjs;
+  Objects* oldObjs;
+  assert (macroWAW == macroSN || macroWAW == macroSFO);
+  switch (macroWAW)
+    {
+    case macroSN:
+      macroWAW = macroSFO;
+      curObjs = &macroFinObjs;
+      oldObjs = 0;
+      break;
+    case macroSFO:
+      macroWAW = macroSGO;
+      curObjs = &macroGegObjs;
+      oldObjs = &macroFinObjs;
+      break;
+    default:
+      curObjs = 0;
+      oldObjs = 0;
+      break;
+    };
+  // update the selected state of all objects...
+  if (oldObjs)
+    for (Objects::iterator i = oldObjs->begin(); i != oldObjs->end(); ++i)
+      {
+	(*i)->setSelected(false);
+	emit selectionChanged(*i);
+      };
+  if (curObjs)
+    for (Objects::iterator i = curObjs->begin(); i != curObjs->end(); ++i)
+      {
+	(*i)->setSelected(true);
+	emit selectionChanged(*i);
+      };
 }
