@@ -44,7 +44,7 @@ class Circle;
 class Curve;
 class ConstrainedPoint;
 
-// base class representing all objects (e.g. points, lines ..., and some day also user defined macro's)
+// base class representing all objects (e.g. points, lines etc.)
 class Object
 {
  public:
