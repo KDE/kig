@@ -97,9 +97,10 @@ Objects calcPath( const Objects& from, const Object* to )
   };
 
   Objects ret;
-  for ( Objects::reverse_iterator i = all.rbegin(); i != all.rend(); ++i )
+  for ( Objects::iterator i = all.begin(); i != all.end(); ++i )
   {
     if ( ! ret.contains( *i ) ) ret.push_back( *i );
   };
+  std::reverse( ret.begin(), ret.end() );
   return ret;
 };
