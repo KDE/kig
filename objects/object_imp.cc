@@ -18,6 +18,8 @@
 
 #include "object_imp.h"
 
+#include "bogus_imp.h"
+
 #include "../misc/coordinate.h"
 
 #include <klocale.h>
@@ -160,4 +162,24 @@ QString ObjectImp::addAStatement( int id )
 void ObjectImp::fillInNextEscape( QString&, const KigDocument& ) const
 {
   assert( false );
+}
+
+const QCStringList ObjectImp::properties() const
+{
+  return QCStringList();
+}
+
+const uint ObjectImp::numberOfProperties() const
+{
+  return 0;
+}
+
+const QCStringList ObjectImp::propertiesInternalNames() const
+{
+  return QCStringList();
+}
+
+ObjectImp* ObjectImp::property( uint, const KigDocument& ) const
+{
+  return new InvalidImp;
 }
