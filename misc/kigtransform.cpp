@@ -408,3 +408,11 @@ const Transformation Transformation::inverse( bool& valid ) const
 
   return ret;
 }
+
+Transformation::Transformation()
+{
+}
+
+Transformation::~Transformation()
+{
+}
