@@ -24,22 +24,22 @@
 #include <algorithm>
 #include <kdebug.h>
 
-void ArgParser::initialize( const struct spec* args, int n )
+void ArgsParser::initialize( const struct spec* args, int n )
 {
   std::vector<spec> vect( args, args + n );
   initialize( vect );
 }
 
-ArgParser::ArgParser()
+ArgsParser::ArgsParser()
 {
 }
 
-ArgParser::ArgParser( const std::vector<spec>& args )
+ArgsParser::ArgsParser( const std::vector<spec>& args )
 {
   initialize( args );
 }
 
-void ArgParser::initialize( const std::vector<spec>& args )
+void ArgsParser::initialize( const std::vector<spec>& args )
 {
   margs.clear();
   manyobjsspec.clear();
@@ -49,12 +49,12 @@ void ArgParser::initialize( const std::vector<spec>& args )
     else manyobjsspec.push_back( args[i].usetext );
 }
 
-ArgParser::ArgParser( const spec* args, int n )
+ArgsParser::ArgsParser( const spec* args, int n )
 {
   initialize( args, n );
 }
 
-ArgParser::ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec )
+ArgsParser::ArgsParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec )
   : margs( args ), manyobjsspec( anyobjsspec )
 {
 }
@@ -74,7 +74,7 @@ static bool hasimp( const ObjectImp& o, const ObjectImpType* imptype )
 // not have to write the same thing twice..
 template <class Collection>
 static int check( const Collection& c, int numberofanyobjects,
-                  const std::vector<ArgParser::spec>& margs )
+                  const std::vector<ArgsParser::spec>& margs )
 {
   std::vector<bool> found( margs.size() );
 
@@ -93,29 +93,29 @@ static int check( const Collection& c, int numberofanyobjects,
       };
     };
     // object o is not of a type in margs..
-    if ( --numberofanyobjects < 0 ) return ArgsChecker::Invalid;
+    if ( --numberofanyobjects < 0 ) return ArgsParser::Invalid;
   matched:
     ;
   };
-  if ( numberofanyobjects > 0 ) return ArgsChecker::Valid;
+  if ( numberofanyobjects > 0 ) return ArgsParser::Valid;
   for( uint i = 0; i < margs.size(); ++i )
-    if ( !found[i] ) return ArgsChecker::Valid;
-  return ArgsChecker::Complete;
+    if ( !found[i] ) return ArgsParser::Valid;
+  return ArgsParser::Complete;
 }
 
-int ArgParser::check( const Args& os ) const
+int ArgsParser::check( const Args& os ) const
 {
   return ::check( os, manyobjsspec.size(), margs );
 }
 
-int ArgParser::check( const Objects& os ) const
+int ArgsParser::check( const Objects& os ) const
 {
   return ::check( os, manyobjsspec.size(), margs );
 }
 
 template <class Collection>
 Collection parse( const Collection& os, uint numberofanyobjects,
-                  const std::vector<ArgParser::spec> margs )
+                  const std::vector<ArgsParser::spec> margs )
 {
   Collection ret( margs.size() + numberofanyobjects, 0 );
 
@@ -138,40 +138,33 @@ Collection parse( const Collection& os, uint numberofanyobjects,
   return ret;
 }
 
-Args ArgParser::parse( const Args& os ) const
+Args ArgsParser::parse( const Args& os ) const
 {
   return ::parse( os, manyobjsspec.size(), margs );
 }
 
-Objects ArgParser::parse( const Objects& os ) const
+Objects ArgsParser::parse( const Objects& os ) const
 {
   return ::parse( os, manyobjsspec.size(), margs );
 }
 
-int CheckOneArgs::check( const Objects& os ) const
-{
-  if ( os.empty() ) return Valid;
-  if ( os.size() == 1 ) return Complete;
-  return Invalid;
-}
-
-ArgsChecker::~ArgsChecker()
+ArgsParser::~ArgsParser()
 {
 }
 
-ArgParser ArgParser::without( const ObjectImpType* type ) const
+ArgsParser ArgsParser::without( const ObjectImpType* type ) const
 {
   if ( type == ObjectImp::stype() )
-    return ArgParser( margs, std::vector<const char*>() );
+    return ArgsParser( margs, std::vector<const char*>() );
   std::vector<spec> ret;
   ret.reserve( margs.size() - 1 );
   for ( uint i = 0; i < margs.size(); ++i )
     if ( margs[i].type != type )
       ret.push_back( margs[i] );
-  return ArgParser( ret, manyobjsspec );
+  return ArgsParser( ret, manyobjsspec );
 }
 
-ArgParser::spec ArgParser::findSpec( const ObjectImp* obj, const Args& parents ) const
+ArgsParser::spec ArgsParser::findSpec( const ObjectImp* obj, const Args& parents ) const
 {
   spec ret;
   ret.type = 0;
@@ -226,14 +219,14 @@ ArgParser::spec ArgParser::findSpec( const ObjectImp* obj, const Args& parents )
   return ret;
 }
 
-const ObjectImpType* ArgParser::impRequirement(
+const ObjectImpType* ArgsParser::impRequirement(
   const ObjectImp* o, const Args& parents ) const
 {
   spec s = findSpec( o, parents );
   return s.type;
 }
 
-const char* ArgParser::usetext( const ObjectImp* obj, const Args& sel ) const
+const char* ArgsParser::usetext( const ObjectImp* obj, const Args& sel ) const
 {
   spec s = findSpec( obj, sel );
   return s.usetext;

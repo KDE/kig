@@ -47,7 +47,7 @@ class ConicBFFPType
   : public ArgparserObjectType
 {
 protected:
-  ConicBFFPType( const char* fullname, const ArgParser::spec*, int n );
+  ConicBFFPType( const char* fullname, const ArgsParser::spec*, int n );
   ~ConicBFFPType();
 public:
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;

@@ -469,19 +469,19 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
   };
 }
 
-ArgParser ObjectHierarchy::argParser() const
+ArgsParser ObjectHierarchy::argParser() const
 {
-  std::vector<ArgParser::spec> specs;
+  std::vector<ArgsParser::spec> specs;
   for ( uint i = 0; i < margrequirements.size(); ++i )
   {
     const ObjectImpType* req = margrequirements[i];
-    ArgParser::spec spec;
+    ArgsParser::spec spec;
     spec.type = req;
     spec.usetext = req->selectStatement();
     assert( spec.usetext );
     specs.push_back( spec );
   };
-  return ArgParser( specs );
+  return ArgsParser( specs );
 }
 
 Objects ObjectHierarchy::buildObjects( const Objects& os, const KigDocument& doc ) const

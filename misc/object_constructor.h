@@ -53,7 +53,7 @@ public:
   virtual const QCString iconFileName() const = 0;
 
   // can this constructor do something useful with os ?  return
-  // ArgsChecker::Complete, Valid or NotGood
+  // ArgsParser::Complete, Valid or NotGood
   virtual const int wantArgs( const Objects& os,
                               const KigDocument& d,
                               const KigWidget& v
@@ -100,12 +100,12 @@ class StandardConstructorBase
   const char* mdescname;
   const char* mdesc;
   const char* miconfile;
-  const ArgParser& margsparser;
+  const ArgsParser& margsparser;
 public:
   StandardConstructorBase( const char* descname,
                            const char* desc,
                            const char* iconfile,
-                           const ArgParser& parser );
+                           const ArgsParser& parser );
 
   virtual ~StandardConstructorBase();
 
@@ -174,7 +174,7 @@ public:
 class PropertyObjectConstructor
   : public StandardConstructorBase
 {
-  ArgParser mparser;
+  ArgsParser mparser;
   const char* mpropinternalname;
 public:
   PropertyObjectConstructor(
@@ -213,7 +213,7 @@ class MultiObjectTypeConstructor
 {
   const ArgparserObjectType* mtype;
   std::vector<int> mparams;
-  ArgParser mparser;
+  ArgsParser mparser;
 public:
   MultiObjectTypeConstructor(
     const ArgparserObjectType* t, const char* descname,
@@ -295,7 +295,7 @@ class MacroConstructor
   const QString mdesc;
   bool mbuiltin;
   const QCString miconfile;
-  ArgParser mparser;
+  ArgsParser mparser;
 public:
   MacroConstructor( const Objects& input, const Objects& output,
                     const QString& name, const QString& description,

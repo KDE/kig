@@ -25,7 +25,7 @@
 
 #include "../misc/common.h"
 
-ObjectABType::ObjectABType( const char* fulltypename, const ArgParser::spec* spec, int n )
+ObjectABType::ObjectABType( const char* fulltypename, const ArgsParser::spec* spec, int n )
   : ArgparserObjectType( fulltypename, spec, n )
 {
 }
@@ -63,7 +63,7 @@ void ObjectABType::move( RealObject* o,
   parents[1]->move( to + dist, d );
 }
 
-ObjectLPType::ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n )
+ObjectLPType::ObjectLPType( const char* fullname, const ArgsParser::spec* spec, int n )
   : ArgparserObjectType( fullname, spec, n )
 {
 }

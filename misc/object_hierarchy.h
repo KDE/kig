@@ -25,7 +25,7 @@
 #include <vector>
 
 class ObjectImpType;
-class ArgParser;
+class ArgsParser;
 
 class ObjectHierarchy
 {
@@ -70,7 +70,7 @@ public:
   // methods..
   Objects buildObjects( const Objects& os, const KigDocument& ) const;
 
-  ArgParser argParser() const;
+  ArgsParser argParser() const;
 
   uint numberOfArgs() const { return mnumberofargs; };
   uint numberOfResults() const { return mnumberofresults; };

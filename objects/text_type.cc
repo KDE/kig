@@ -31,7 +31,7 @@
 
 #include <qstringlist.h>
 
-static const ArgParser::spec arggspeccs[] =
+static const ArgsParser::spec arggspeccs[] =
 {
   { IntImp::stype(), "UNUSED" },
   { PointImp::stype(), "UNUSED" },
@@ -155,7 +155,7 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
   else assert( false );
 }
 
-const ArgParser& TextType::argParser() const
+const ArgsParser& TextType::argParser() const
 {
   return mparser;
 }

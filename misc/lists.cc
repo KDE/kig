@@ -136,7 +136,7 @@ ObjectConstructorList::vectype ObjectConstructorList::ctorsThatWantArgs(
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
     int r = (*i)->wantArgs( os, d, w );
-    if ( r == ArgsChecker::Complete || ( !co && r == ArgsChecker::Valid ) )
+    if ( r == ArgsParser::Complete || ( !co && r == ArgsParser::Valid ) )
       ret.push_back( *i );
   };
   return ret;

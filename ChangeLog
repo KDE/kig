@@ -1,3 +1,11 @@
+2003-09-02  Dominique Devriese  <devriese@kde.org>
+
+	* remove ArgsChecker class, and rename ArgParser to ArgsParser
+
+2003-09-02  Dominique Devriese  <devriese@kde.org>
+
+	* branch off Kig 0.6.0
+
 2003-09-01  Dominique Devriese  <devriese@kde.org>
 
 	* only move an object if its parents are not yet moving..  This

@@ -29,7 +29,7 @@ class ObjectABType
   : public ArgparserObjectType
 {
 protected:
-  ObjectABType( const char* fulltypename, const ArgParser::spec* argsspec, int n );
+  ObjectABType( const char* fulltypename, const ArgsParser::spec* argsspec, int n );
   ~ObjectABType();
 public:
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
@@ -45,7 +45,7 @@ class ObjectLPType
   : public ArgparserObjectType
 {
 protected:
-  ObjectLPType( const char* fullname, const ArgParser::spec* spec, int n );
+  ObjectLPType( const char* fullname, const ArgsParser::spec* spec, int n );
   ~ObjectLPType();
 public:
   ObjectImp* calc( const Args& args, const KigDocument& ) const;

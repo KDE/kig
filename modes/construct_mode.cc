@@ -142,7 +142,7 @@ void ConstructMode::selectObject( Object* o, KigWidget& w )
   mparents.push_back( o );
   o->setSelected( true );
 
-  if ( mctor->wantArgs( mparents, mdoc, w ) == ArgsChecker::Complete )
+  if ( mctor->wantArgs( mparents, mdoc, w ) == ArgsParser::Complete )
   {
     mctor->handleArgs( mparents, mdoc, w );
     // finish off..
@@ -244,7 +244,7 @@ void ConstructMode::selectObjects( const Objects& os, KigWidget& w )
 {
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    assert( mctor->wantArgs( mparents, mdoc, w ) != ArgsChecker::Complete );
+    assert( mctor->wantArgs( mparents, mdoc, w ) != ArgsParser::Complete );
     selectObject( *i, w );
   };
 }

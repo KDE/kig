@@ -413,10 +413,10 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     else
     {
       int ret = (*i)->wantArgs( popup.objects(), d, v );
-      if ( ret == ArgsChecker::Invalid ) continue;
+      if ( ret == ArgsParser::Invalid ) continue;
       if ( (*i)->isTransform() && popup.objects().size() == 1 ) add = menu == NormalModePopupObjects::TransformMenu;
       else if ( ( *i )->isIntersection() ) add = menu == NormalModePopupObjects::ToplevelMenu;
-      else if ( ret == ArgsChecker::Complete ) add = menu == NormalModePopupObjects::ConstructMenu;
+      else if ( ret == ArgsParser::Complete ) add = menu == NormalModePopupObjects::ConstructMenu;
       else add = menu == NormalModePopupObjects::StartMenu;
     };
     if ( add )
@@ -446,7 +446,7 @@ bool ObjectConstructorActionsProvider::executeAction(
   }
 
   ObjectConstructor* ctor = mctors[menu][id];
-  if ( ! os.empty() && ctor->wantArgs( os, doc, w ) == ArgsChecker::Complete )
+  if ( ! os.empty() && ctor->wantArgs( os, doc, w ) == ArgsParser::Complete )
   {
     ctor->handleArgs( os, doc, w );
     m.clearSelection();

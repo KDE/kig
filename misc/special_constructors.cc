@@ -108,7 +108,7 @@ Objects ConicRadicalConstructor::build( const Objects& os, KigDocument&, KigWidg
   return ret;
 }
 
-static const struct ArgParser::spec argsspecpp[] =
+static const struct ArgsParser::spec argsspecpp[] =
 {
   { PointImp::stype(), I18N_NOOP( "Moving Point" ) },
   { PointImp::stype(), I18N_NOOP( "following" ) }
@@ -162,7 +162,7 @@ const int LocusConstructor::wantArgs(
  ) const
 {
   int ret = margsparser.check( os );
-  if ( ret == ArgsChecker::Invalid ) return ret;
+  if ( ret == ArgsParser::Invalid ) return ret;
   else if ( os.size() != 2 ) return ret;
   if ( os[0]->inherits( Object::ID_RealObject ) &&
        static_cast<RealObject*>( os.front() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
@@ -172,7 +172,7 @@ const int LocusConstructor::wantArgs(
        static_cast<RealObject*>( os.back() )->type()->inherits( ObjectType::ID_ConstrainedPointType ) &&
        os.back()->getAllChildren().contains( os.front() ) )
     return ret;
-  return ArgsChecker::Invalid;
+  return ArgsParser::Invalid;
 }
 
 Objects LocusConstructor::build( const Objects& parents, KigDocument&, KigWidget& ) const
@@ -210,7 +210,7 @@ bool LocusConstructor::isTransform() const
   return false;
 }
 
-static const ArgParser::spec argsspectc[] = {
+static const ArgsParser::spec argsspectc[] = {
   { ConicImp::stype(), "" },
   { ConicImp::stype(), "" }
 };
@@ -375,7 +375,7 @@ QString GenericIntersectionConstructor::useText(
   return QString::null;
 }
 
-static const ArgParser::spec argsspecMidPointOfTwoPoints[] =
+static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) },
   { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) }

@@ -24,7 +24,7 @@
 class TextType
   : public ObjectType
 {
-  const ArgParser mparser;
+  const ArgsParser mparser;
 public:
   TextType();
   ~TextType();
@@ -44,7 +44,7 @@ public:
   void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
                       NormalMode& m ) const;
 
-  const ArgParser& argParser() const;
+  const ArgsParser& argParser() const;
 };
 
 #endif

@@ -88,13 +88,13 @@ class ArgparserObjectType
   : public ObjectType
 {
 protected:
-  const ArgParser margsparser;
+  const ArgsParser margsparser;
   ArgparserObjectType( const char fulltypename[],
-                       const struct ArgParser::spec argsspec[],
+                       const struct ArgsParser::spec argsspec[],
                        int n );
 public:
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
-  const ArgParser& argParser() const;
+  const ArgsParser& argParser() const;
 };
 
 #endif

@@ -25,7 +25,7 @@ class ConicRadicalConstructor
   : public StandardConstructorBase
 {
   const ArgparserObjectType* mtype;
-  const ArgParser mparser;
+  const ArgsParser mparser;
 public:
   ConicRadicalConstructor();
   ~ConicRadicalConstructor();
@@ -41,12 +41,12 @@ public:
 class LocusConstructor
   : public StandardConstructorBase
 {
-  ArgParser margsparser;
+  ArgsParser margsparser;
 public:
   LocusConstructor();
   ~LocusConstructor();
   // we override the wantArgs() function, since we need to see
-  // something about the objects that an ArgParser can't know about,
+  // something about the objects that an ArgsParser can't know about,
   // namely, whether the first point is a constrained point...
   const int wantArgs(
     const Objects& os, const KigDocument& d,
@@ -66,7 +66,7 @@ class ConicConicIntersectionConstructor
   : public StandardConstructorBase
 {
 protected:
-  ArgParser mparser;
+  ArgsParser mparser;
 public:
   ConicConicIntersectionConstructor();
   ~ConicConicIntersectionConstructor();
@@ -103,7 +103,7 @@ public:
 class MidPointOfTwoPointsConstructor
   : public StandardConstructorBase
 {
-  ArgParser mparser;
+  ArgsParser mparser;
 public:
   MidPointOfTwoPointsConstructor();
   ~MidPointOfTwoPointsConstructor();

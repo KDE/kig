@@ -32,7 +32,7 @@
 
 #include <qstringlist.h>
 
-static const ArgParser::spec argsspecSegmentAB[] =
+static const ArgsParser::spec argsspecSegmentAB[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct a segment from this point" ) },
   { PointImp::stype(), I18N_NOOP( "Construct a segment to this point" ) }
@@ -60,7 +60,7 @@ ObjectImp* SegmentABType::calc( const Coordinate& a, const Coordinate& b ) const
 
 static const char constructlineabstat[] = I18N_NOOP( "Construct a line through this point" );
 
-static const ArgParser::spec argsspecLineAB[] =
+static const ArgsParser::spec argsspecLineAB[] =
 {
   { PointImp::stype(), constructlineabstat },
   { PointImp::stype(), constructlineabstat }
@@ -86,7 +86,7 @@ ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
   return new LineImp( a, b );
 }
 
-static const ArgParser::spec argsspecRayAB[] =
+static const ArgsParser::spec argsspecRayAB[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct a ray from this point" ) },
   { PointImp::stype(), I18N_NOOP( "Construct a ray through this point" ) }
@@ -126,7 +126,7 @@ ObjectImp* LinePerpendLPType::calc(
   return new LineImp( b, p );
 }
 
-static const ArgParser::spec argsspecLineParallel[] =
+static const ArgsParser::spec argsspecLineParallel[] =
 {
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a parallel of this line" ) },
   { PointImp::stype(), I18N_NOOP( "Construct a parallel through this point" ) }
@@ -155,7 +155,7 @@ ObjectImp* LineParallelLPType::calc(
   return new LineImp( r, b );
 }
 
-static const ArgParser::spec argsspecLinePerpend[] =
+static const ArgsParser::spec argsspecLinePerpend[] =
 {
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a perpendicular of this line" ) },
   { PointImp::stype(), I18N_NOOP( "Construct a perpendicular through this point" ) }

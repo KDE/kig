@@ -28,7 +28,7 @@ class FixedPointType
   FixedPointType();
   ~FixedPointType();
 
-  static const ArgParser::spec argsspec[1];
+  static const ArgsParser::spec argsspec[1];
 public:
   static const FixedPointType* instance();
 

@@ -27,7 +27,7 @@
 
 #include <cmath>
 
-static const ArgParser::spec argsspecTranslation[] =
+static const ArgsParser::spec argsspecTranslation[] =
 {
   { VectorImp::stype(), I18N_NOOP("Translate by this vector") },
   { ObjectImp::stype(), I18N_NOOP("Translate this object") }
@@ -60,7 +60,7 @@ ObjectImp* TranslatedType::calc( const Args& targs, const KigDocument& ) const
   return args[1]->transform( t );
 }
 
-static const ArgParser::spec argsspecPointReflection[] =
+static const ArgsParser::spec argsspecPointReflection[] =
 {
   { PointImp::stype(), I18N_NOOP( "Reflect around this point" ) },
   { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ) }
@@ -93,7 +93,7 @@ ObjectImp* PointReflectionType::calc( const Args& targs, const KigDocument& ) co
   return args[1]->transform( t );
 }
 
-static const ArgParser::spec argsspecLineReflection[] =
+static const ArgsParser::spec argsspecLineReflection[] =
 {
   { AbstractLineImp::stype(), I18N_NOOP( "Reflect over this line" ) },
   { ObjectImp::stype(), I18N_NOOP( "Reflect this object" ) }
@@ -125,7 +125,7 @@ ObjectImp* LineReflectionType::calc( const Args& targs, const KigDocument& ) con
   return args[1]->transform( t );
 }
 
-static const ArgParser::spec argsspecRotation[] =
+static const ArgsParser::spec argsspecRotation[] =
 {
   { PointImp::stype(), I18N_NOOP( "Rotate around this point" ) },
   { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ) },
@@ -159,7 +159,7 @@ ObjectImp* RotationType::calc( const Args& targs, const KigDocument& ) const
   return args[2]->transform( Transformation::rotation( angle, center ) );
 }
 
-static const ArgParser::spec argsspecScalingOverCenter[] =
+static const ArgsParser::spec argsspecScalingOverCenter[] =
 {
   { PointImp::stype(), I18N_NOOP( "Scale with this center" ) },
   { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ) },
@@ -193,7 +193,7 @@ ObjectImp* ScalingOverCenterType::calc( const Args& targs, const KigDocument& ) 
   return args[2]->transform( Transformation::scaling( ratio, center ) );
 }
 
-static const ArgParser::spec argsspecScalingOverLine[] =
+static const ArgsParser::spec argsspecScalingOverLine[] =
 {
   { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ) },
   { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ) },
@@ -227,7 +227,7 @@ ObjectImp* ScalingOverLineType::calc( const Args& targs, const KigDocument& ) co
   return args[2]->transform( Transformation::scaling( ratio, line ) );
 }
 
-static const ArgParser::spec argsspecProjectiveRotation[] =
+static const ArgsParser::spec argsspecProjectiveRotation[] =
 {
   { RayImp::stype(), I18N_NOOP( "Projectively rotate with this ray" ) },
   { AngleImp::stype(), I18N_NOOP( "Projectively rotate by this angle" ) },
@@ -268,7 +268,7 @@ ObjectImp* ProjectiveRotationType::calc( const Args& targs, const KigDocument& )
     Transformation::projectiveRotation( alpha, dir, c1 ) );
 }
 
-static const ArgParser::spec argsspecCastShadow[] =
+static const ArgsParser::spec argsspecCastShadow[] =
 {
   { PointImp::stype(), I18N_NOOP( "Cast a shadow from this light source" ) },
   { AbstractLineImp::stype(), I18N_NOOP( "Cast a shadow on the plane defined by this line" ) },
@@ -381,7 +381,7 @@ bool CastShadowType::isTransform() const
   return true;
 }
 
-static const ArgParser::spec argsspecApplyTransformation[] =
+static const ArgsParser::spec argsspecApplyTransformation[] =
 {
   { TransformationImp::stype(), I18N_NOOP( "Transform using this transformation" ) },
   { ObjectImp::stype(), I18N_NOOP( "Transform this object" ) }

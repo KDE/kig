@@ -28,7 +28,7 @@
 
 static const char constructstatement[] = I18N_NOOP( "Construct a conic through this point" );
 
-static const struct ArgParser::spec argsspecConicB5P[] =
+static const struct ArgsParser::spec argsspecConicB5P[] =
 {
   { PointImp::stype(), constructstatement },
   { PointImp::stype(), constructstatement },
@@ -72,7 +72,7 @@ const ConicB5PType* ConicB5PType::instance()
   return &t;
 }
 
-static const ArgParser::spec argsspecConicBAAP[] =
+static const ArgsParser::spec argsspecConicBAAP[] =
 {
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a conic with this asymptote" ) },
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a conic with this asymptote" ) },
@@ -123,7 +123,7 @@ ObjectImp* ConicBFFPType::calc( const Args& parents, const KigDocument& ) const
   else return new ConicImpPolar( calcConicBFFP( cs, type() ) );
 }
 
-ConicBFFPType::ConicBFFPType( const char* fullname, const ArgParser::spec* spec, int n )
+ConicBFFPType::ConicBFFPType( const char* fullname, const ArgsParser::spec* spec, int n )
   : ArgparserObjectType( fullname, spec, n )
 {
 
@@ -136,7 +136,7 @@ ConicBFFPType::~ConicBFFPType()
 static const char constructellipsewithfocusstat[] =
   I18N_NOOP( "Construct an ellipse with this focus" );
 
-static const ArgParser::spec argsspecEllipseBFFP[] =
+static const ArgsParser::spec argsspecEllipseBFFP[] =
 {
   { PointImp::stype(), constructellipsewithfocusstat },
   { PointImp::stype(), constructellipsewithfocusstat },
@@ -166,7 +166,7 @@ const EllipseBFFPType* EllipseBFFPType::instance()
 static const char constructhyperbolawithfocusstat[] =
   I18N_NOOP( "Construct a hyperbola with this focus" );
 
-static const ArgParser::spec argsspecHyperbolaBFFP[] =
+static const ArgsParser::spec argsspecHyperbolaBFFP[] =
 {
   { PointImp::stype(), constructhyperbolawithfocusstat },
   { PointImp::stype(), constructhyperbolawithfocusstat },
@@ -199,7 +199,7 @@ const ConicBDFPType* ConicBDFPType::instance()
   return &t;
 }
 
-static const struct ArgParser::spec argsspecConicBDFP[] =
+static const struct ArgsParser::spec argsspecConicBDFP[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct a conic with this point as focus" ) },
   { PointImp::stype(), I18N_NOOP( "Construct a conic through this point" ) },
@@ -252,7 +252,7 @@ ObjectImp* ConicBDFPType::calc( const Args& parents, const KigDocument& ) const
 static const char constructparabolathroughpointstat[] =
   I18N_NOOP( "Construct a parabola through this point" );
 
-static const ArgParser::spec argsspecParabolaBTP[] =
+static const ArgsParser::spec argsspecParabolaBTP[] =
 {
   { PointImp::stype(), constructparabolathroughpointstat },
   { PointImp::stype(), constructparabolathroughpointstat },
@@ -289,7 +289,7 @@ ObjectImp* ParabolaBTPType::calc( const Args& parents, const KigDocument& ) cons
   else return new InvalidImp;
 }
 
-static const ArgParser::spec argsspecConicPolarPoint[] =
+static const ArgsParser::spec argsspecConicPolarPoint[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Construct a polar point wrt. this conic" ) },
   { AbstractLineImp::stype(), I18N_NOOP( "Construct the polar point of this line" ) }
@@ -324,7 +324,7 @@ ObjectImp* ConicPolarPointType::calc( const Args& parents, const KigDocument& ) 
   else return new InvalidImp;
 }
 
-static const ArgParser::spec argsspecConicPolarLine[] =
+static const ArgsParser::spec argsspecConicPolarLine[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Construct a polar line wrt. this conic" ) },
   { PointImp::stype(), I18N_NOOP( "Construct the polar line of this point" ) }
@@ -359,7 +359,7 @@ ObjectImp* ConicPolarLineType::calc( const Args& parents, const KigDocument& ) c
   else return new InvalidImp;
 }
 
-static const ArgParser::spec argsspecConicDirectrix[] =
+static const ArgsParser::spec argsspecConicDirectrix[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Construct the directrix of this conic" ) }
 };
@@ -398,7 +398,7 @@ ObjectImp* ConicDirectrixType::calc( const Args& parents, const KigDocument& ) c
 
 static const char hyperbolatpstatement[] = I18N_NOOP( "Construct a hyperbola through this point" );
 
-static const ArgParser::spec argsspecHyperbolaB4P[] =
+static const ArgsParser::spec argsspecHyperbolaB4P[] =
 {
   { PointImp::stype(), hyperbolatpstatement },
   { PointImp::stype(), hyperbolatpstatement },
@@ -434,7 +434,7 @@ ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents, const KigDocu
   else return new InvalidImp;
 }
 
-static const ArgParser::spec argsspecParabolaBDP[] =
+static const ArgsParser::spec argsspecParabolaBDP[] =
 {
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a parabola with this directrix" ) },
   { PointImp::stype(), I18N_NOOP( "Construct a parabola through this point" ) }
@@ -471,7 +471,7 @@ ObjectImp* ParabolaBDPType::calc( const LineData& l,
   return r;
 }
 
-static const ArgParser::spec argsspecConicAsymptote[] =
+static const ArgsParser::spec argsspecConicAsymptote[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Construct the asymptotes of this conic" ) },
   { IntImp::stype(), "param" }
@@ -509,7 +509,7 @@ ObjectImp* ConicAsymptoteType::calc( const Args& parents, const KigDocument& ) c
 
 static const char radicallinesstatement[] = I18N_NOOP( "Construct the radical lines of this conic" );
 
-static const ArgParser::spec argsspecConicRadical[] =
+static const ArgsParser::spec argsspecConicRadical[] =
 {
   { ConicImp::stype(), radicallinesstatement },
   { ConicImp::stype(), radicallinesstatement },

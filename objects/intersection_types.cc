@@ -25,7 +25,7 @@
 #include "circle_imp.h"
 #include "line_imp.h"
 
-static const ArgParser::spec argsspecConicLineIntersection[] =
+static const ArgsParser::spec argsspecConicLineIntersection[] =
 {
   { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ) },
   { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ) },
@@ -85,7 +85,7 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
 
 static const char constructlinestat[] = I18N_NOOP( "Intersect with this line" );
 
-static const ArgParser::spec argsspecLineLineIntersection[] =
+static const ArgsParser::spec argsspecLineLineIntersection[] =
 {
   { AbstractLineImp::stype(), constructlinestat },
   { AbstractLineImp::stype(), constructlinestat }
@@ -119,7 +119,7 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocumen
       static_cast<const AbstractLineImp*>( parents[1] )->data() ) );
 }
 
-static const ArgParser::spec argsspecLineCubicIntersection[] =
+static const ArgsParser::spec argsspecLineCubicIntersection[] =
 {
   { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic" ) },
   { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ) },

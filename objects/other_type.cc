@@ -41,7 +41,7 @@ using std::find;
 static const char* constructanglethroughpoint =
   I18N_NOOP( "Construct an angle through this point" );
 
-static const ArgParser::spec argsspecAngle[] =
+static const ArgsParser::spec argsspecAngle[] =
 {
   { PointImp::stype(), constructanglethroughpoint },
   { PointImp::stype(), I18N_NOOP( "Construct an angle at this point" ) },
@@ -86,7 +86,7 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
   return new AngleImp( points[1], startangle, anglelength );
 }
 
-static const ArgParser::spec argsspecVector[] =
+static const ArgsParser::spec argsspecVector[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct a vector from this point" ) },
   { PointImp::stype(), I18N_NOOP( "Construct a vector to this point" ) }
@@ -112,7 +112,7 @@ ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
   return new VectorImp( a, b );
 }
 
-static const struct ArgParser::spec argsspecLocus[] =
+static const struct ArgsParser::spec argsspecLocus[] =
 {
   { HierarchyImp::stype(), "hierarchy" },
   { CurveImp::stype(), "curve" }
@@ -216,7 +216,7 @@ const LocusType* LocusType::instance()
   return &t;
 }
 
-static const ArgParser::spec argsspecArcBTP[] =
+static const ArgsParser::spec argsspecArcBTP[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct an arc starting at this point" ) },
   { PointImp::stype(), I18N_NOOP( "Construct an arc through this point" ) },

@@ -57,7 +57,7 @@ const QCString StandardConstructorBase::iconFileName() const
 
 StandardConstructorBase::StandardConstructorBase(
   const char* descname, const char* desc,
-  const char* iconfile, const ArgParser& parser )
+  const char* iconfile, const ArgsParser& parser )
   : mdescname( descname ),
     mdesc( desc ),
     miconfile( iconfile ),
@@ -86,7 +86,7 @@ void StandardConstructorBase::handlePrelim(
   const KigDocument& d, const KigWidget&
   ) const
 {
-  assert ( margsparser.check( os ) != ArgParser::Invalid );
+  assert ( margsparser.check( os ) != ArgsParser::Invalid );
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
   p.setPen( QPen ( Qt::red,  1) );
@@ -238,9 +238,9 @@ const int MergeObjectConstructor::wantArgs(
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
     int w = (*i)->wantArgs( os, d, v );
-    if ( w != ArgsChecker::Invalid ) return w;
+    if ( w != ArgsParser::Invalid ) return w;
   };
-  return ArgsChecker::Invalid;
+  return ArgsParser::Invalid;
 }
 
 void MergeObjectConstructor::handleArgs(
@@ -249,7 +249,7 @@ void MergeObjectConstructor::handleArgs(
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
     int w = (*i)->wantArgs( os, d, v );
-    if ( w == ArgsChecker::Complete )
+    if ( w == ArgsParser::Complete )
     {
       (*i)->handleArgs( os, d, v );
       return;
@@ -265,7 +265,7 @@ void MergeObjectConstructor::handlePrelim(
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
     int w = (*i)->wantArgs( sel, d, v );
-    if ( w != ArgsChecker::Invalid )
+    if ( w != ArgsParser::Invalid )
     {
       (*i)->handlePrelim( p, sel, d, v );
       return;
@@ -292,7 +292,7 @@ QString MergeObjectConstructor::useText( const Object& o, const Objects& sel,
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
     int w = (*i)->wantArgs( sel.with( const_cast<Object*>( &o ) ), d, v );
-    if ( w != ArgsChecker::Invalid ) return (*i)->useText( o, sel, d, v );
+    if ( w != ArgsParser::Invalid ) return (*i)->useText( o, sel, d, v );
   };
   return QString::null;
 }
@@ -466,7 +466,7 @@ PropertyObjectConstructor::PropertyObjectConstructor(
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mpropinternalname( propertyinternalname )
 {
-  ArgParser::spec argsspec[1];
+  ArgsParser::spec argsspec[1];
   argsspec[0].type = imprequirement;
   argsspec[0].usetext = usetext;
   mparser.initialize( argsspec, 1 );

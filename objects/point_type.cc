@@ -34,7 +34,7 @@
 
 #include <qstringlist.h>
 
-static const ArgParser::spec argsspecFixedPoint[] =
+static const ArgsParser::spec argsspecFixedPoint[] =
 {
   { DoubleImp::stype(), "x" },
   { DoubleImp::stype(), "y" }
@@ -72,7 +72,7 @@ ObjectImp* ConstrainedPointType::calc( const Args& tparents, const KigDocument& 
   else return new InvalidImp;
 }
 
-const ArgParser::spec argsspecConstrainedPoint[] =
+const ArgsParser::spec argsspecConstrainedPoint[] =
 {
   { DoubleImp::stype(), "parameter" },
   { CurveImp::stype(), "Constrain the point to this curve" }
@@ -137,7 +137,7 @@ bool FixedPointType::canMove() const
   return true;
 }
 
-static const ArgParser::spec argsspecMidPoint[] =
+static const ArgsParser::spec argsspecMidPoint[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) },
   { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ) }

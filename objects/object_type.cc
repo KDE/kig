@@ -53,7 +53,7 @@ bool ObjectType::inherits( int ) const
 }
 
 ArgparserObjectType::ArgparserObjectType( const char fulltypename[],
-                                          const struct ArgParser::spec argsspec[],
+                                          const struct ArgsParser::spec argsspec[],
                                           int n )
   : ObjectType( fulltypename ), margsparser( argsspec, n )
 {
@@ -64,7 +64,7 @@ const ObjectImpType* ArgparserObjectType::impRequirement( const ObjectImp* o, co
   return margsparser.impRequirement( o, parents );
 }
 
-const ArgParser& ArgparserObjectType::argParser() const
+const ArgsParser& ArgparserObjectType::argParser() const
 {
   return margsparser;
 }

@@ -25,27 +25,11 @@
 
 class ObjectImpType;
 
-class ArgsChecker
-{
-public:
-  virtual ~ArgsChecker();
-  enum { Invalid = 0, Valid = 1, Complete = 2 };
-
-  virtual int check( const Objects& os ) const = 0;
-};
-
-class CheckOneArgs
-  : public ArgsChecker
-{
-public:
-  int check( const Objects& os ) const;
-};
-
-class ArgParser
-  : public ArgsChecker
+class ArgsParser
 {
 public:
   struct spec { const ObjectImpType* type; const char* usetext; };
+  enum { Invalid, Valid, Complete };
 private:
   // the args spec..
   std::vector<spec> margs;
@@ -56,16 +40,17 @@ private:
 
   spec findSpec( const ObjectImp* o, const Args& parents ) const;
 public:
-  ArgParser( const struct spec* args, int n );
-  ArgParser( const std::vector<spec>& args );
-  ArgParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec );
-  ArgParser();
+  ArgsParser( const struct spec* args, int n );
+  ArgsParser( const std::vector<spec>& args );
+  ArgsParser( const std::vector<spec>& args, const std::vector<const char*> anyobjsspec );
+  ArgsParser();
+  ~ArgsParser();
 
   void initialize( const std::vector<spec>& args );
   void initialize( const struct spec* args, int n );
-  // returns a new ArgParser that wants the same args, except for the
+  // returns a new ArgsParser that wants the same args, except for the
   // ones of the given type..
-  ArgParser without( const ObjectImpType* type ) const;
+  ArgsParser without( const ObjectImpType* type ) const;
   // checks if os matches the argument list this parser should parse..
   int check( const Objects& os ) const;
   int check( const Args& os ) const;
