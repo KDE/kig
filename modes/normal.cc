@@ -208,7 +208,7 @@ void NormalMode::rightClicked( QMouseEvent* e, KigView* v )
     };
     // show a popup menu...
     NormalModePopupObjects* p = new NormalModePopupObjects( mDoc, v, this, sos );
-    p->exec( plc );
+    p->exec( QCursor::pos() );
     delete p;
   }
   else
