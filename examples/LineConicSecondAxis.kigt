@@ -1,33 +1,34 @@
 <!DOCTYPE KigMacroFile>
-<Types>
-<MType name="LineConicSecondAxis" >
-<ObjectHierarchy>
-<HierarchyElement given="true" typeName="EllipseBFFP" id="1" final="false" />
-   <HierarchyElement given="false" typeName="LinePerpend" id="2" final="true" >
-<parent id="3" />
-    <parent id="4" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="Segment" id="3" final="false" >
-<parent id="5" />
-    <parent id="6" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="MidPoint" id="4" final="false" >
-<parent id="5" />
-    <parent id="6" />
-    <param name="color" >#0000ff</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >true</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="CoordinatePropertyPoint" id="5" final="false" >
-<parent id="1" />
-    <param name="color" >#0000ff</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >true</param>
-    <param name="which-property" >First focus</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="CoordinatePropertyPoint" id="6" final="false" >
-<parent id="1" />
-    <param name="color" >#0000ff</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >true</param>
-    <param name="which-property" >Second focus</param>   </HierarchyElement>  </ObjectHierarchy> </MType></Types>
+<KigMacroFile Number="1" Version="0.4.0" >
+ <Macro>
+  <Name>LineConicSecondAxis</Name>
+  <Description></Description>
+  <Construction>
+   <input requirement="conic" id="1" />
+   <intermediate action="fetch-property" property="first-focus" id="2" >
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="calc" type="Copy" id="3" >
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="fetch-property" property="second-focus" id="4" >
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="calc" type="Copy" id="5" >
+    <arg>4</arg>
+   </intermediate>
+   <intermediate action="calc" type="SegmentAB" id="6" >
+    <arg>3</arg>
+    <arg>5</arg>
+   </intermediate>
+   <intermediate action="calc" type="MidPoint" id="7" >
+    <arg>3</arg>
+    <arg>5</arg>
+   </intermediate>
+   <result action="calc" type="LinePerpend" id="8" >
+    <arg>6</arg>
+    <arg>7</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

@@ -1,29 +1,28 @@
 <!DOCTYPE KigMacroFile>
-<Types>
-<MType name="parabolaBDF" >
-<ObjectHierarchy>
-<HierarchyElement given="true" typeName="LineTTP" id="1" final="false" />
-   <HierarchyElement given="true" typeName="NormalPoint" id="2" final="false" />
-   <HierarchyElement given="false" typeName="ConicBDFP" id="3" final="true" >
-<parent id="1" />
-    <parent id="2" />
-    <parent id="4" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="MidPoint" id="4" final="false" >
-<parent id="2" />
-    <parent id="5" />
-    <param name="color" >#0000ff</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="IntersectionPoint" id="5" final="false" >
-<parent id="6" />
-    <parent id="1" />
-    <param name="color" >#0000ff</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LinePerpend" id="6" final="false" >
-<parent id="1" />
-    <parent id="2" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >false</param>   </HierarchyElement>  </ObjectHierarchy> </MType></Types>
+<KigMacroFile Number="1" Version="0.4.0" >
+ <Macro>
+  <Name>parabolaBDF</Name>
+  <Description></Description>
+  <Construction>
+   <input requirement="line" id="1" />
+   <input requirement="point" id="2" />
+   <intermediate action="calc" type="LinePerpend" id="3" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineLineIntersection" id="4" >
+    <arg>3</arg>
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="calc" type="MidPoint" id="5" >
+    <arg>2</arg>
+    <arg>4</arg>
+   </intermediate>
+   <result action="calc" type="ConicBDFP" id="6" >
+    <arg>1</arg>
+    <arg>2</arg>
+    <arg>5</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

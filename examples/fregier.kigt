@@ -1,69 +1,61 @@
 <!DOCTYPE KigMacroFile>
-<Types>
-<MType name="fregier" >
-<ObjectHierarchy>
-<HierarchyElement given="true" typeName="EllipseBFFP" id="1" final="false" />
-   <HierarchyElement given="true" typeName="NormalPoint" id="2" final="false" />
-   <HierarchyElement given="false" typeName="IntersectionPoint" id="3" final="true" >
-<parent id="4" />
-    <parent id="5" />
-    <param name="color" >#0000ff</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >true</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="Segment" id="4" final="false" >
-<parent id="6" />
-    <parent id="7" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LinePerpend" id="5" final="false" >
-<parent id="8" />
-    <parent id="2" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="ConicLineIntersectionPoint" id="6" final="false" >
-<parent id="1" />
-    <parent id="9" />
-    <param name="color" >#0000ff</param>
-    <param name="coniclineintersect-side" >-1</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="ConicLineIntersectionPoint" id="7" final="false" >
-<parent id="1" />
-    <parent id="10" />
-    <param name="color" >#0000ff</param>
-    <param name="coniclineintersect-side" >1</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LinePolar" id="8" final="false" >
-<parent id="1" />
-    <parent id="2" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LinePerpend" id="9" final="false" >
-<parent id="5" />
-    <parent id="11" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LinePerpend" id="10" final="false" >
-<parent id="12" />
-    <parent id="2" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="MidPoint" id="11" final="false" >
-<parent id="2" />
-    <parent id="13" />
-    <param name="color" >#0000ff</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="Ray" id="12" final="false" >
-<parent id="2" />
-    <parent id="6" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >false</param>   </HierarchyElement>
-   <HierarchyElement given="false" typeName="ConicLineIntersectionPoint" id="13" final="false" >
-<parent id="1" />
-    <parent id="5" />
-    <param name="color" >#0000ff</param>
-    <param name="coniclineintersect-side" >1</param>
-    <param name="point-size" >5</param>
-    <param name="shown" >false</param>   </HierarchyElement>  </ObjectHierarchy> </MType></Types>
+<KigMacroFile Number="1" Version="0.4.0" >
+ <Macro>
+  <Name>fregier</Name>
+  <Description></Description>
+  <Construction>
+   <input requirement="conic" id="1" />
+   <input requirement="point" id="2" />
+   <intermediate action="calc" type="ConicPolarLine" id="3" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="calc" type="LinePerpend" id="4" >
+    <arg>3</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="push" type="int" id="5" >1</intermediate>
+   <intermediate action="calc" type="ConicLineIntersection" id="6" >
+    <arg>1</arg>
+    <arg>4</arg>
+    <arg>5</arg>
+   </intermediate>
+   <intermediate action="calc" type="MidPoint" id="7" >
+    <arg>2</arg>
+    <arg>6</arg>
+   </intermediate>
+   <intermediate action="calc" type="LinePerpend" id="8" >
+    <arg>4</arg>
+    <arg>7</arg>
+   </intermediate>
+   <intermediate action="push" type="int" id="9" >-1</intermediate>
+   <intermediate action="calc" type="ConicLineIntersection" id="10" >
+    <arg>1</arg>
+    <arg>8</arg>
+    <arg>9</arg>
+   </intermediate>
+   <intermediate action="calc" type="RayAB" id="11" >
+    <arg>2</arg>
+    <arg>10</arg>
+   </intermediate>
+   <intermediate action="calc" type="LinePerpend" id="12" >
+    <arg>11</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="push" type="int" id="13" >1</intermediate>
+   <intermediate action="calc" type="ConicLineIntersection" id="14" >
+    <arg>1</arg>
+    <arg>12</arg>
+    <arg>13</arg>
+   </intermediate>
+   <intermediate action="calc" type="SegmentAB" id="15" >
+    <arg>10</arg>
+    <arg>14</arg>
+   </intermediate>
+   <result action="calc" type="LineLineIntersection" id="16" >
+    <arg>15</arg>
+    <arg>4</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

@@ -1,21 +1,19 @@
 <!DOCTYPE KigMacroFile>
-<Types>
- <MType name="Translatie" >
-  <ObjectHierarchy>
-   <HierarchyElement given="true" typeName="NormalPoint" id="1" final="false" />
-   <HierarchyElement given="true" typeName="NormalPoint" id="2" final="false" />
-   <HierarchyElement given="false" typeName="TranslatedPoint" id="3" final="true" >
-    <parent id="2" />
-    <parent id="4" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="Vector" id="4" final="false" >
-    <parent id="1" />
-    <parent id="2" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-  </ObjectHierarchy>
- </MType>
-</Types>
+<KigMacroFile Number="1" Version="0.4.0" >
+ <Macro>
+  <Name>Translatie</Name>
+  <Description></Description>
+  <Construction>
+   <input requirement="point" id="1" />
+   <input requirement="point" id="2" />
+   <intermediate action="calc" type="Vector" id="3" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <result action="calc" type="Translation" id="4" >
+    <arg>2</arg>
+    <arg>3</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

@@ -1,85 +1,69 @@
 <!DOCTYPE KigMacroFile>
-<Types>
- <MType name="Conic" >
-  <ObjectHierarchy>
-   <HierarchyElement given="true" typeName="NormalPoint" id="1" final="false" />
-   <HierarchyElement given="true" typeName="NormalPoint" id="2" final="false" />
-   <HierarchyElement given="true" typeName="NormalPoint" id="3" final="false" />
-   <HierarchyElement given="true" typeName="NormalPoint" id="4" final="false" />
-   <HierarchyElement given="true" typeName="NormalPoint" id="5" final="false" />
-   <HierarchyElement given="false" typeName="Locus" id="6" final="true" >
-    <parent id="7" />
-    <parent id="8" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="NormalPoint" id="7" final="false" >
-    <parent id="9" />
-    <param name="color" >#0000ff</param>
-    <param name="implementation-type" >Constrained</param>
-    <param name="param" >0.748691</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="IntersectionPoint" id="8" final="false" >
-    <parent id="10" />
-    <parent id="11" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LineTTP" id="9" final="false" >
-    <parent id="3" />
-    <parent id="1" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LineTTP" id="10" final="false" >
-    <parent id="12" />
-    <parent id="5" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LineTTP" id="11" final="false" >
-    <parent id="7" />
-    <parent id="4" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="IntersectionPoint" id="12" final="false" >
-    <parent id="13" />
-    <parent id="14" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LineTTP" id="13" final="false" >
-    <parent id="7" />
-    <parent id="15" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LineTTP" id="14" final="false" >
-    <parent id="2" />
-    <parent id="1" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="IntersectionPoint" id="15" final="false" >
-    <parent id="16" />
-    <parent id="17" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LineTTP" id="16" final="false" >
-    <parent id="2" />
-    <parent id="4" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-   <HierarchyElement given="false" typeName="LineTTP" id="17" final="false" >
-    <parent id="3" />
-    <parent id="5" />
-    <param name="color" >#0000ff</param>
-    <param name="shown" >true</param>
-   </HierarchyElement>
-  </ObjectHierarchy>
- </MType>
-</Types>
+<KigMacroFile Number="1" Version="0.4.0" >
+ <Macro>
+  <Name>Conic</Name>
+  <Description></Description>
+  <Construction>
+   <input requirement="point" id="1" />
+   <input requirement="point" id="2" />
+   <input requirement="point" id="3" />
+   <input requirement="point" id="4" />
+   <input requirement="point" id="5" />
+   <intermediate action="calc" type="LineAB" id="6" >
+    <arg>3</arg>
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineAB" id="7" >
+    <arg>2</arg>
+    <arg>4</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineAB" id="8" >
+    <arg>3</arg>
+    <arg>5</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineLineIntersection" id="9" >
+    <arg>7</arg>
+    <arg>8</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineAB" id="10" >
+    <arg>2</arg>
+    <arg>1</arg>
+   </intermediate>
+   <intermediate action="push" type="hierarchy" id="11" >
+    <input requirement="point" id="1" />
+    <input requirement="point" id="2" />
+    <input requirement="line" id="3" />
+    <input requirement="point" id="4" />
+    <input requirement="point" id="5" />
+    <intermediate action="calc" type="LineAB" id="6" >
+     <arg>1</arg>
+     <arg>2</arg>
+    </intermediate>
+    <intermediate action="calc" type="LineLineIntersection" id="7" >
+     <arg>6</arg>
+     <arg>3</arg>
+    </intermediate>
+    <intermediate action="calc" type="LineAB" id="8" >
+     <arg>7</arg>
+     <arg>4</arg>
+    </intermediate>
+    <intermediate action="calc" type="LineAB" id="9" >
+     <arg>1</arg>
+     <arg>5</arg>
+    </intermediate>
+    <result action="calc" type="LineLineIntersection" id="10" >
+     <arg>8</arg>
+     <arg>9</arg>
+    </result>
+   </intermediate>
+   <result action="calc" type="Locus" id="12" >
+    <arg>6</arg>
+    <arg>11</arg>
+    <arg>9</arg>
+    <arg>10</arg>
+    <arg>5</arg>
+    <arg>4</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>
