@@ -179,8 +179,9 @@ public:
 NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
                                                 KigWidget& view,
                                                 NormalMode& mode,
-                                                const std::vector<ObjectHolder*>& objs )
-  : KPopupMenu( &view ), mplc( QCursor::pos() ), mpart( part ), mview( view ), mobjs( objs ),
+                                                const std::vector<ObjectHolder*>& objs,
+						const QPoint& plc )
+  : KPopupMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
     mmode( mode )
 {
   bool empty = objs.empty();
@@ -533,7 +534,8 @@ bool NameObjectActionsProvider::executeAction(
       // if we just added the name, we add a label to show it to the user.
       if ( justadded )
         addNameLabel( os[0]->calcer(), namecalcer,
-                      w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) ),
+//                    w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) ),
+                      w.fromScreen( popup.plc() ),
                       doc );
     }
     return true;
@@ -554,7 +556,8 @@ bool NameObjectActionsProvider::executeAction(
       namecalcer = c;
     }
     addNameLabel( os[0]->calcer(), namecalcer,
-                  w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) ), doc );
+//                  w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) ), doc );
+                  w.fromScreen( popup.plc() ), doc );
     return true;
   }
   else
@@ -879,7 +882,8 @@ bool PropertiesActionsProvider::executeAction(
 // mp: it seems that we have no idea where to position the label, 
 // btw what's the meaning of (5,0)?    let the
 // attach method decide what to do... (passing an invalidCoord)
-    Coordinate c = Coordinate::invalidCoord();
+//  ///////    Coordinate c = Coordinate::invalidCoord();
+    Coordinate c = w.fromScreen( popup.plc() );
     ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
       QString::fromLatin1( "%1" ), parent->calcer(), c,
       false, args, doc.document() );

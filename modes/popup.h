@@ -50,7 +50,8 @@ class NormalModePopupObjects
 
 public:
   NormalModePopupObjects( KigPart& part, KigWidget& view,
-                          NormalMode& mode, const std::vector<ObjectHolder*>& objs );
+                          NormalMode& mode, 
+			  const std::vector<ObjectHolder*>& objs, const QPoint& p );
   ~NormalModePopupObjects();
 
   // the different "menu's", the toplevel is considered as just
@@ -70,6 +71,7 @@ public:
   std::vector<ObjectHolder*> objects() const { return mobjs; };
   KigPart& part() { return mpart; };
   KigWidget& widget() { return mview; };
+  QPoint plc() { return mplc; };
 
 protected:
   void activateAction( int menu, int action );

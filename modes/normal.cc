@@ -215,7 +215,7 @@ void NormalMode::midClicked( const QPoint& p, KigWidget& w )
 }
 
 void NormalMode::rightClicked( const std::vector<ObjectHolder*>& os,
-                               const QPoint&,
+                               const QPoint& plc,
                                KigWidget& w )
 {
   if( !os.empty() )
@@ -227,12 +227,12 @@ void NormalMode::rightClicked( const std::vector<ObjectHolder*>& os,
     };
     // show a popup menu...
     std::vector<ObjectHolder*> sosv( sos.begin(), sos.end() );
-    NormalModePopupObjects p( mdoc, w, *this, sosv );
+    NormalModePopupObjects p( mdoc, w, *this, sosv, plc );
     p.exec( QCursor::pos() );
   }
   else
   {
-    NormalModePopupObjects p( mdoc, w, *this, std::vector<ObjectHolder*>() );
+    NormalModePopupObjects p( mdoc, w, *this, std::vector<ObjectHolder*>(), plc );
     p.exec( QCursor::pos() );
   };
 }
