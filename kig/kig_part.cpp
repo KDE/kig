@@ -482,10 +482,14 @@ KCommandHistory* KigDocument::history()
 
 void KigDocument::delObjects( const Objects& os )
 {
-  Objects dos;
-  dos = os;
+  Objects tos;
+  tos = os;
   for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
-    dos.upush( (*i)->getAllChildren() );
+    tos.upush( (*i)->getAllChildren() );
+  Objects dos = os;
+  for ( Objects::iterator i = tos.begin(); i != tos.end(); ++i )
+    if ( mObjs.contains( *i ) )
+      dos.upush( *i );
   if ( dos.empty() ) return;
   mhistory->addCommand( new RemoveObjectsCommand( this, dos ) );
 }

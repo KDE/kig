@@ -26,11 +26,19 @@
 #include "../modes/mode.h"
 #include "../objects/object_imp.h"
 
+static int countRealObjects( const Objects& os )
+{
+  int ret = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( !(*i)->isInternal() ) ++ret;
+  return ret;
+};
+
 AddObjectsCommand::AddObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand( inDoc,
-		inOs.size() == 1 ?
-                ObjectImp::addAStatement( inOs.front()->imp()->id() ) :
-                i18n( "Add %1 objects" ).arg( os.size() ) ),
+		countRealObjects( inOs ) == 1 ?
+                ObjectImp::addAStatement( inOs.back()->imp()->id() ) :
+                i18n( "Add %1 objects" ).arg( countRealObjects( inOs ) ) ),
     undone(true),
     os (inOs)
 {
@@ -99,17 +107,12 @@ AddObjectsCommand::~AddObjectsCommand()
 
 RemoveObjectsCommand::RemoveObjectsCommand(KigDocument* inDoc, const Objects& inOs)
   : KigCommand(inDoc,
-	       inOs.size() == 1 ?
-               ObjectImp::removeAStatement( inOs.front()->imp()->id() ) :
-               i18n( "Remove %1 objects" ).arg( inOs.size()) ),
+	       countRealObjects( inOs ) == 1 ?
+               ObjectImp::removeAStatement( inOs.back()->imp()->id() ) :
+               i18n( "Remove %1 objects" ).arg( countRealObjects( inOs ) ) ),
     undone( false ),
     os( inOs )
 {
-  Objects children;
-  // we delete the children too
-  for (Objects::iterator i = os.begin(); i != os.end(); ++i )
-    children |= (*i)->children();
-  os |= children;
 }
 
 RemoveObjectsCommand::RemoveObjectsCommand( KigDocument* inDoc, Object* o)

@@ -60,8 +60,13 @@ class RemoveObjectsCommand
 {
   Q_OBJECT
 public:
+  /**
+   * make sure that when you delete something, you are also deleting
+   * its parents.  This class assumes you've done that.
+   * KigDocument::delObjects takes care of this for you.
+   */
   RemoveObjectsCommand(KigDocument* inDoc, const Objects& o);
-    RemoveObjectsCommand( KigDocument* inDoc, Object* o );
+  RemoveObjectsCommand( KigDocument* inDoc, Object* o );
   ~RemoveObjectsCommand ();
   void execute();
   void unexecute();
