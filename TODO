@@ -10,9 +10,6 @@
   Objects variable.  This should finally fix the move dependencies, i
   think... 
 - printing... (cf. the kdeprint tutorial on printing.kde.org ...
-- locuses -> cf. KSeg
-    --> this is implemented (objects/locus.cpp), but can still be
-    	improved upon quite a lot...
 - koffice support ?
 - there should be a way to link a figure to a (html?) file containing
   exercises.  Teachers would be able to create exercises for Kig.  I'm
