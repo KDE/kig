@@ -9,7 +9,7 @@ KDE_LANG_CPLUSPLUS
 kig_warn_about_disabling_python="no"
 
 AC_DEFUN( KIG_PYTHON_NOT_FOUND, [
-  AC_MSG_ERROR( 
+  AC_MSG_WARN( 
     [[Kig needs the Python and Boost.Python libraries and their headers \
 installed for its Python scripting support.  One of both was not \
 found, and Python scripting will be disabled.]] );
