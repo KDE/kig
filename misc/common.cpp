@@ -381,11 +381,29 @@ bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
                  const int width, const ObjectImp* imp, const KigWidget& w )
 {
   double miss = w.screenInfo().normalMiss( width );
-  if ( fabs( a.x - b.x ) <= 1e-7 )
-  {
-    // too small to be useful..
-    return r.contains( Coordinate( a.x, r.center().y ), miss );
-  }
+
+//mp: the following test didn't work for vertical segments; 
+// fortunately the ieee floating point standard allows us to avoid
+// the test altogether, since it would produce an infinity value that
+// makes the final r.contains to fail
+// in any case the corresponding test for a.y - b.y was missing.
+
+//  if ( fabs( a.x - b.x ) <= 1e-7 )
+//  {
+//    // too small to be useful..
+//    return r.contains( Coordinate( a.x, r.center().y ), miss );
+//  }
+
+// in case we have a segment we need also to check for the case when
+// the segment is entirely contained in the rect, in which case the
+// final tests all fail.
+// it is ok to just check for the midpoint in the rect since:
+// - if we have a segment completely contained in the rect this is true
+// - if the midpoint is in the rect than returning true is safe (also
+//   in the cases where we have a ray or a line)
+
+  if ( r.contains( 0.5*( a + b ), miss ) ) return true;
+
   Coordinate dir = b - a;
   double m = dir.y / dir.x;
   double lefty = a.y + m * ( r.left() - a.x );
