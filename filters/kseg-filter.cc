@@ -20,6 +20,7 @@
 
 #include "kseg-defs.h"
 
+#include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../misc/coordinate.h"
 #include "../objects/bogus_imp.h"
@@ -29,8 +30,10 @@
 #include "../objects/intersection_types.h"
 #include "../objects/line_imp.h"
 #include "../objects/line_type.h"
+#include "../objects/object_calcer.h"
 #include "../objects/object_drawer.h"
 #include "../objects/object_factory.h"
+#include "../objects/object_holder.h"
 #include "../objects/other_type.h"
 #include "../objects/point_imp.h"
 #include "../objects/point_type.h"
@@ -119,7 +122,7 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
   else return 0;
 }
 
-bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
+KigDocument* KigFilterKSeg::load( const QString& file )
 {
   QFile ffile( file );
   if ( ! ffile.open( IO_ReadOnly ) )
@@ -127,6 +130,9 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
     fileNotFound( file );
     return false;
   };
+
+  KigDocument* retdoc = new KigDocument();
+
   QDataStream fstream( &ffile );
 
   QString versionstring;
@@ -225,7 +231,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       {
         std::vector<ObjectCalcer*> vectorparents( parents.begin() + 1, parents.end() );
         ObjectTypeCalcer* vector = new ObjectTypeCalcer( VectorType::instance(), vectorparents );
-        vector->calc( todoc );
+        vector->calc( *retdoc );
 
         std::vector<ObjectCalcer*> transparents;
         transparents.push_back( parents[0] );
@@ -237,7 +243,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       {
         std::vector<ObjectCalcer*> angleparents( parents.begin() + 2, parents.end() );
         ObjectTypeCalcer* angle = new ObjectTypeCalcer( AngleType::instance(), angleparents );
-        angle->calc( todoc );
+        angle->calc( *retdoc );
 
         std::vector<ObjectCalcer*> rotparents;
         rotparents.push_back( parents[0] );
@@ -512,7 +518,7 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
       };
     assert( object );
     ret[i] = object;
-    object->calc( todoc );
+    object->calc( *retdoc );
   };
 
   // selection groups ( we ignore them, but we pretend to read them
@@ -534,8 +540,8 @@ bool KigFilterKSeg::load( const QString& file, KigDocument& todoc )
   };
 
   // no more data in the file..
-  todoc.setObjects( ret );
-  return true;
+  retdoc->addObjects( ret );
+  return retdoc;
 }
 
 KigFilterKSeg* KigFilterKSeg::instance()

@@ -33,7 +33,7 @@ public:
                    const KigWidget& v ) const;
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
 
   bool isTransform() const;
 };
@@ -57,7 +57,7 @@ public:
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
 
   bool isTransform() const;
 };
@@ -74,7 +74,7 @@ public:
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
 
   bool isTransform() const;
 };
@@ -111,7 +111,7 @@ public:
                    const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d,
                  KigWidget& w ) const;
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
   bool isTransform() const;
 };
 
@@ -129,11 +129,11 @@ public:
                  KigWidget& w ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d, const KigWidget& v ) const;
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
   bool isTransform() const;
   bool isTest() const;
 
-  BaseConstructMode* constructMode( KigDocument& doc );
+  BaseConstructMode* constructMode( KigPart& doc );
 };
 
 #endif

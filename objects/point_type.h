@@ -43,7 +43,7 @@ public:
 
   QStringList specialActions() const;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
-                      KigDocument& d, KigWidget& w, NormalMode& m ) const;
+                      KigPart& d, KigWidget& w, NormalMode& m ) const;
 };
 
 class ConstrainedPointType
@@ -66,7 +66,7 @@ public:
   const ObjectImpType* resultId() const;
 
   QStringList specialActions() const;
-  void executeAction( int i, ObjectHolder&, ObjectTypeCalcer& o, KigDocument& d, KigWidget& w,
+  void executeAction( int i, ObjectHolder&, ObjectTypeCalcer& o, KigPart& d, KigWidget& w,
                       NormalMode& m ) const;
 };
 

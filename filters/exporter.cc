@@ -20,17 +20,18 @@
 
 #include "exporttoimagedialog.h"
 
-#include "../kig/kig_view.h"
+#include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
-#include "../objects/object_imp.h"
-#include "../objects/object_holder.h"
-#include "../objects/object_drawer.h"
-#include "../objects/line_imp.h"
-#include "../objects/text_imp.h"
-#include "../objects/circle_imp.h"
-#include "../objects/point_imp.h"
-#include "../objects/other_imp.h"
+#include "../kig/kig_view.h"
 #include "../misc/common.h"
+#include "../objects/circle_imp.h"
+#include "../objects/line_imp.h"
+#include "../objects/object_drawer.h"
+#include "../objects/object_holder.h"
+#include "../objects/object_imp.h"
+#include "../objects/other_imp.h"
+#include "../objects/point_imp.h"
+#include "../objects/text_imp.h"
 
 #include <kaction.h>
 #include <kfiledialog.h>
@@ -52,15 +53,15 @@ class ExporterAction
   : public KAction
 {
   KigExporter* mexp;
-  const KigDocument* mdoc;
+  const KigPart* mdoc;
   KigWidget* mw;
 public:
-  ExporterAction( const KigDocument* doc, KigWidget* w,
+  ExporterAction( const KigPart* doc, KigWidget* w,
                   KActionCollection* parent, KigExporter* exp );
   void slotActivated();
 };
 
-ExporterAction::ExporterAction( const KigDocument* doc, KigWidget* w,
+ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )
   : KAction( exp->menuEntryName(), KShortcut(), 0, 0, parent ),
     mexp( exp ), mdoc( doc ), mw( w )
@@ -90,7 +91,7 @@ QString ImageExporter::menuEntryName() const
   return i18n( "&Image..." );
 }
 
-void ImageExporter::run( const KigDocument& doc, KigWidget& w )
+void ImageExporter::run( const KigPart& doc, KigWidget& w )
 {
   ExportToImageDialog* d = new ExportToImageDialog( &w, &doc );
   d->exec();
@@ -110,7 +111,7 @@ KigExportManager::~KigExportManager()
     delete mexporters[i];
 }
 
-void KigExportManager::addMenuAction( const KigDocument* doc, KigWidget* w,
+void KigExportManager::addMenuAction( const KigPart* doc, KigWidget* w,
                                       KActionCollection* coll )
 {
   KActionMenu* m =
@@ -491,7 +492,7 @@ void XFigExportImpVisitor::visit( const ArcImp* imp )
           << "\n";
 }
 
-void XFigExporter::run( const KigDocument& doc, KigWidget& w )
+void XFigExporter::run( const KigPart& doc, KigWidget& w )
 {
   QString formats = i18n( "*.fig|XFig Documents (*.fig)" );
   QString file_name = KFileDialog::getSaveFileName(":document", formats );
@@ -523,7 +524,7 @@ void XFigExporter::run( const KigDocument& doc, KigWidget& w )
   stream << "-2\n";
   stream << "1200 2\n";
 
-  std::vector<ObjectHolder*> os = doc.objects();
+  std::vector<ObjectHolder*> os = doc.document().objects();
   XFigExportImpVisitor visitor( stream, w );
 
   for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();

@@ -19,8 +19,9 @@
 #include "exporttoimagedialog.h"
 #include "exporttoimagedialog.moc"
 
-#include "../kig/kig_view.h"
+#include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 
 #include "../misc/kigpainter.h"
 
@@ -33,11 +34,11 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 
-ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigDocument* d )
+ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigPart* part )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),
-    mv( v ), md( d ), msize( v->size() ), minternallysettingstuff( false )
+    mv( v ), mpart( part ), msize( v->size() ), minternallysettingstuff( false )
 {
-  KIconLoader* l = d->instance()->iconLoader();
+  KIconLoader* l = part->instance()->iconLoader();
   OKButton->setIconSet( QIconSet( l->loadIcon( "button_ok", KIcon::Small ) ) );
   CancelButton->setIconSet( QIconSet( l->loadIcon( "button_cancel", KIcon::Small ) ) );
 
@@ -97,11 +98,11 @@ void ExportToImageDialog::slotOKPressed()
 
   QPixmap img( QSize( WidthInput->value(), HeightInput->value() ) );
   img.fill( Qt::white );
-  KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img, *md);
+  KigPainter p( ScreenInfo( mv->screenInfo().shownRect(), img.rect() ), &img, mpart->document());
   p.setWholeWinOverlay();
-  p.drawGrid( md->coordinateSystem(), showgridCheckBox->isOn(), showAxesCheckBox->isOn() );
+  p.drawGrid( mpart->document().coordinateSystem(), showgridCheckBox->isOn(), showAxesCheckBox->isOn() );
   // FIXME: show the selections ?
-  p.drawObjects( md->objects(), false );
+  p.drawObjects( mpart->document().objects(), false );
   if ( ! img.save( filename, type.latin1() ) )
   {
     KMessageBox::error( mv, i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );

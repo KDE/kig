@@ -31,7 +31,7 @@
 #include "../misc/calcpaths.h"
 #include "../misc/object_hierarchy.h"
 #include "../kig/kig_view.h"
-#include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 
 #include <algorithm>
 #include <functional>

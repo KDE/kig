@@ -6,7 +6,7 @@
 INCLUDES = $(all_includes)
 
 # these are the headers for your project
-noinst_HEADERS = kig.h kig_part.h kig_view.h kig_commands.h
+noinst_HEADERS = kig.h kig_document.h kig_part.h kig_view.h kig_commands.h
 
 # let automoc handle all of the meta source files (moc)
 METASOURCES = AUTO
@@ -40,6 +40,7 @@ noinst_LTLIBRARIES = libkigparttemp.la
 
 # the Part's source, library search path, and link libraries
 libkigparttemp_la_SOURCES = \
+	kig_document.cc \
 	kig_part.cpp \
 	kig_view.cpp \
 	kig_commands.cpp

@@ -87,7 +87,7 @@ QStringList ObjectType::specialActions() const
   return QStringList();
 }
 
-void ObjectType::executeAction( int, ObjectHolder&, ObjectTypeCalcer&, KigDocument&, KigWidget&,
+void ObjectType::executeAction( int, ObjectHolder&, ObjectTypeCalcer&, KigPart&, KigWidget&,
                                 NormalMode& ) const
 {
   assert( false );

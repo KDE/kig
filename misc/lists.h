@@ -26,6 +26,7 @@ class GUIAction;
 class ObjectConstructor;
 class MacroConstructor;
 class KigDocument;
+class KigPart;
 class KigWidget;
 class QString;
 class QDomElement;
@@ -39,7 +40,7 @@ class GUIActionList
 {
 public:
   typedef std::set<GUIAction*> avectype;
-  typedef std::set<KigDocument*> dvectype;
+  typedef std::set<KigPart*> dvectype;
 private:
   avectype mactions;
   dvectype mdocs;
@@ -51,8 +52,8 @@ public:
 
   // register this document, so that it receives notifications for
   // added and removed actions..
-  void regDoc( KigDocument* d );
-  void unregDoc( KigDocument* d );
+  void regDoc( KigPart* d );
+  void unregDoc( KigPart* d );
 
   void add( GUIAction* a );
   void add( const std::vector<GUIAction*>& a );
@@ -143,11 +144,11 @@ public:
    * note that this just returns the loaded macro's, and doesn't add
    * them to the various lists.  Use add() if you want
    * that behaviour..
-   * The fact that this functions requires a KigDocument argument is
+   * The fact that this functions requires a KigPart argument is
    * semantically incorrect, but i haven't been able to work around
    * it..
    */
-  bool load( const QString& f, vectype& ret, const KigDocument& );
+  bool load( const QString& f, vectype& ret, const KigPart& );
 
   /**
    * get access to the list of macro's..
@@ -155,7 +156,7 @@ public:
   const vectype& macros() const;
 
 private:
-  bool loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, const KigDocument& );
+  bool loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, const KigPart& );
 };
 
 #endif

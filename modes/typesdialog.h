@@ -27,6 +27,7 @@
 #include <kiconloader.h>
 
 class Macro;
+class KigPart;
 
 class MacroListElement
   : public QListViewItem
@@ -44,10 +45,10 @@ class TypesDialog : public TypesDialogBase
   Q_OBJECT
 
   // necessary because some MacroList functions need it..
-  const KigDocument& mdoc;
+  const KigPart& mpart;
   const KIconLoader* il;
 public:
-  TypesDialog( QWidget* parent, const KigDocument& );
+  TypesDialog( QWidget* parent, const KigPart& );
   ~TypesDialog();
 
 public slots:

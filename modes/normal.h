@@ -28,7 +28,7 @@ class NormalMode
   : public BaseMode
 {
 public:
-  NormalMode( KigDocument& );
+  NormalMode( KigPart& );
   ~NormalMode();
 protected:
   void dragRect( const QPoint& p, KigWidget& w );

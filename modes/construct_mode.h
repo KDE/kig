@@ -34,7 +34,7 @@ class PointConstructMode
   // somewhere..
   ObjectTypeCalcer::shared_ptr mpt;
 public:
-  PointConstructMode( KigDocument& d );
+  PointConstructMode( KigPart& d );
   ~PointConstructMode();
 protected:
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
@@ -61,7 +61,7 @@ public:
   void selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w );
   virtual ~BaseConstructMode();
 protected:
-  BaseConstructMode( KigDocument& d );
+  BaseConstructMode( KigPart& d );
 protected:
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
                           KigWidget& w, bool ctrlOrShiftDown );
@@ -84,7 +84,7 @@ class ConstructMode
 {
   const ObjectConstructor* mctor;
 public:
-  ConstructMode( KigDocument& d, const ObjectConstructor* ctor );
+  ConstructMode( KigPart& d, const ObjectConstructor* ctor );
   ~ConstructMode();
 
   void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
@@ -110,7 +110,7 @@ class TestConstructMode
   const ArgsParserObjectType* mtype;
   ObjectCalcer::shared_ptr mresult;
 public:
-  TestConstructMode( KigDocument& d, const ArgsParserObjectType* type );
+  TestConstructMode( KigPart& d, const ArgsParserObjectType* type );
   ~TestConstructMode();
 
   void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );

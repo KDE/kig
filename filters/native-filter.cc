@@ -19,9 +19,12 @@
 #include "native-filter.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 #include "../objects/object_type.h"
 #include "../objects/object_imp.h"
+#include "../objects/object_calcer.h"
 #include "../objects/object_drawer.h"
+#include "../objects/object_holder.h"
 #include "../objects/object_type_factory.h"
 #include "../objects/object_imp_factory.h"
 #include "../misc/calcpaths.h"
@@ -92,13 +95,13 @@ bool KigFilterNative::supportMime( const QString& mime )
   return mime == "application/x-kig";
 }
 
-bool KigFilterNative::load( const QString& file, KigDocument& to )
+KigDocument* KigFilterNative::load( const QString& file )
 {
   QFile ffile( file );
   if ( ! ffile.open( IO_ReadOnly ) )
   {
     fileNotFound( file );
-    return false;
+    return 0;
   };
   QDomDocument doc( "KigDocument" );
   if ( !doc.setContent( &ffile ) )
@@ -143,9 +146,9 @@ bool KigFilterNative::load( const QString& file, KigDocument& to )
     return false;
   }
   else if ( minor <= 6 )
-    return load04( file, main, to );
+    return load04( file, main );
   else
-    return load07( file, main, to );
+    return load07( file, main );
 }
 
 bool KigFilterNative::save04( const KigDocument& kdoc, const QString& to )
@@ -262,10 +265,11 @@ bool KigFilterNative::save04( const KigDocument& kdoc, const QString& to )
   return true;
 }
 
-bool KigFilterNative::load04( const QString& file, const QDomElement& docelem, KigDocument& kdoc )
+KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& docelem )
 {
   bool ok = true;
-  assert( kdoc.objects().empty() );
+
+  KigDocument* ret = new KigDocument();
 
   for ( QDomNode n = docelem.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
@@ -282,7 +286,7 @@ bool KigFilterNative::load04( const QString& file, const QDomElement& docelem, K
                        "A standard coordinate system will be used "
                        "instead." ) );
       }
-      else kdoc.setCoordinateSystem( s );
+      else ret->setCoordinateSystem( s );
     }
     else if ( e.tagName() == "Objects" )
     {
@@ -402,7 +406,7 @@ bool KigFilterNative::load04( const QString& file, const QDomElement& docelem, K
         }
         else continue;
 
-        o->calc( kdoc );
+        o->calc( *ret );
         retcalcers[i->id - 1] = o;
 
         if ( ! internal )
@@ -423,12 +427,12 @@ bool KigFilterNative::load04( const QString& file, const QDomElement& docelem, K
           retholders.push_back( new ObjectHolder( o, d ) );
         }
       }
-      kdoc._addObjects( retholders );
+      ret->addObjects( retholders );
     }
     else continue; // be forward-compatible..
   };
 
-  return true;
+  return ret;
 }
 
 KigFilterNative* KigFilterNative::instance()
@@ -437,10 +441,11 @@ KigFilterNative* KigFilterNative::instance()
   return &f;
 }
 
-bool KigFilterNative::load07( const QString& file, const QDomElement& docelem, KigDocument& kdoc )
+KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& docelem )
 {
+  KigDocument* ret = new KigDocument();
+
   bool ok = true;
-  assert( kdoc.objects().empty() );
   std::vector<ObjectCalcer::shared_ptr> calcers;
   std::vector<ObjectHolder*> holders;
 
@@ -458,7 +463,7 @@ bool KigFilterNative::load07( const QString& file, const QDomElement& docelem, K
                        "A standard coordinate system will be used "
                        "instead." ) );
       }
-      else kdoc.setCoordinateSystem( s );
+      else ret->setCoordinateSystem( s );
     }
     else if ( subsectionelement.tagName() == "Hierarchy" )
     {
@@ -531,7 +536,7 @@ bool KigFilterNative::load07( const QString& file, const QDomElement& docelem, K
         }
         else KIG_FILTER_PARSE_ERROR;
 
-        o->calc( kdoc );
+        o->calc( *ret );
         calcers.resize( id, 0 );
         calcers[id-1] = o;
       }
@@ -574,19 +579,12 @@ bool KigFilterNative::load07( const QString& file, const QDomElement& docelem, K
     }
   }
 
-  kdoc.setObjects( holders );
-  return true;
+  ret->addObjects( holders );
+  return ret;
 }
 
-bool KigFilterNative::save07( const KigDocument& kdoc, const QString& to )
+bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
 {
-  QFile file( to );
-  if ( ! file.open( IO_WriteOnly ) )
-  {
-    fileNotFound( to );
-    return false;
-  }
-  QTextStream stream( &file );
   QDomDocument doc( "KigDocument" );
 
   QDomElement docelem = doc.createElement( "KigDocument" );
@@ -671,11 +669,27 @@ bool KigFilterNative::save07( const KigDocument& kdoc, const QString& to )
 
   doc.appendChild( docelem );
   stream << doc.toCString();
-  file.close();
   return true;
 }
 
 bool KigFilterNative::save( const KigDocument& data, const QString& file )
 {
   return save07( data, file );
+}
+
+bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
+{
+  QFile file( outfile );
+  if ( ! file.open( IO_WriteOnly ) )
+  {
+    fileNotFound( outfile );
+    return false;
+  }
+  QTextStream stream( &file );
+  return save07( data, stream );
+}
+
+bool KigFilterNative::save( const KigDocument& data, QTextStream& stream )
+{
+  return save07( data, stream );
 }

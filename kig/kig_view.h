@@ -51,7 +51,7 @@ class KigWidget : public QWidget
 {
   Q_OBJECT
 
-  KigDocument* mdocument;
+  KigPart* mpart;
   KigView* mview;
 
   // we reimplement these from QWidget to suit our needs
@@ -96,7 +96,7 @@ public:
    * standard qwidget constructor.  if fullscreen is true, we're a
    * fullscreen widget.
    */
-  KigWidget( KigDocument* doc,
+  KigWidget( KigPart* doc,
              KigView* view,
              QWidget* parent = 0,
              const char* name = 0,
@@ -181,7 +181,7 @@ public:
 
 public:
   // this recenters the screen, that is, resets the shown rect to
-  // mdocument->suggestedRect()..
+  // mpart->document().suggestedRect()..
   void recenterScreen();
   // this gets called if the user clicks the recenter screen button.
   // It adds a KigCommand to the CommandHistory that recenters the
@@ -217,10 +217,10 @@ class KigView
   bool mupdatingscrollbars;
 
   KigWidget* mrealwidget;
-  KigDocument* mdoc;
+  KigPart* mpart;
 
 public:
-  KigView( KigDocument* inDoc,
+  KigView( KigPart* part,
            bool fullscreen = false,
 	   QWidget* parent = 0,
 	   const char* name = 0

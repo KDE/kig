@@ -36,9 +36,9 @@ public:
   static KigFilterDrgeo* instance();
 
   bool supportMime( const QString& mime );
-  bool load( const QString& file, KigDocument& to );
+  KigDocument* load( const QString& file );
 private:
-  bool importFigure( QDomNode f, KigDocument& doc, const QString& file, const bool grid );
+  KigDocument* importFigure( QDomNode f, const QString& file, const bool grid );
 };
 
 #endif

@@ -22,6 +22,7 @@
 #include "kig_commands.moc"
 
 #include "kig_part.h"
+#include "kig_document.h"
 #include "kig_view.h"
 
 #include "../modes/mode.h"
@@ -39,12 +40,12 @@ using std::min;
 class KigCommand::Private
 {
 public:
-  Private( KigDocument& d ) : doc( d ) {};
-  KigDocument& doc;
+  Private( KigPart& d ) : doc( d ) {};
+  KigPart& doc;
   vector<KigCommandTask*> tasks;
 };
 
-KigCommand::KigCommand( KigDocument& doc, const QString& name )
+KigCommand::KigCommand( KigPart& doc, const QString& name )
   : KNamedCommand(name), d( new Private( doc ) )
 {
 }
@@ -75,21 +76,21 @@ void KigCommand::addTask( KigCommandTask* t )
   d->tasks.push_back( t );
 }
 
-KigCommand* KigCommand::removeCommand( KigDocument& doc, ObjectHolder* o )
+KigCommand* KigCommand::removeCommand( KigPart& doc, ObjectHolder* o )
 {
   std::vector<ObjectHolder*> os;
   os.push_back( o );
   return removeCommand( doc, os );
 }
 
-KigCommand* KigCommand::addCommand( KigDocument& doc, ObjectHolder* o )
+KigCommand* KigCommand::addCommand( KigPart& doc, ObjectHolder* o )
 {
   std::vector<ObjectHolder*> os;
   os.push_back( o );
   return addCommand( doc, os );
 }
 
-KigCommand* KigCommand::removeCommand( KigDocument& doc, const std::vector<ObjectHolder*>& os )
+KigCommand* KigCommand::removeCommand( KigPart& doc, const std::vector<ObjectHolder*>& os )
 {
   assert( os.size() > 0 );
   QString text;
@@ -102,7 +103,7 @@ KigCommand* KigCommand::removeCommand( KigDocument& doc, const std::vector<Objec
   return ret;
 }
 
-KigCommand* KigCommand::addCommand( KigDocument& doc, const std::vector<ObjectHolder*>& os )
+KigCommand* KigCommand::addCommand( KigPart& doc, const std::vector<ObjectHolder*>& os )
 {
   QString text;
   if ( os.size() == 1 )
@@ -114,7 +115,7 @@ KigCommand* KigCommand::addCommand( KigDocument& doc, const std::vector<ObjectHo
   return ret;
 }
 
-KigCommand* KigCommand::changeCoordSystemCommand( KigDocument& doc, CoordinateSystem* s )
+KigCommand* KigCommand::changeCoordSystemCommand( KigPart& doc, CoordinateSystem* s )
 {
   QString text = CoordinateSystemFactory::setCoordinateSystemStatement( s->id() );
   KigCommand* ret = new KigCommand( doc, text );
@@ -135,13 +136,13 @@ AddObjectsTask::AddObjectsTask( const std::vector<ObjectHolder*>& os)
 {
 }
 
-void AddObjectsTask::execute( KigDocument& doc )
+void AddObjectsTask::execute( KigPart& doc )
 {
   doc._addObjects( mobjs );
   undone = false;
 }
 
-void AddObjectsTask::unexecute( KigDocument& doc )
+void AddObjectsTask::unexecute( KigPart& doc )
 {
   doc._delObjects( mobjs );
   undone = true;
@@ -161,12 +162,12 @@ RemoveObjectsTask::RemoveObjectsTask( const std::vector<ObjectHolder*>& os )
   undone = false;
 }
 
-void RemoveObjectsTask::execute( KigDocument& doc )
+void RemoveObjectsTask::execute( KigPart& doc )
 {
   AddObjectsTask::unexecute( doc );
 }
 
-void RemoveObjectsTask::unexecute( KigDocument& doc )
+void RemoveObjectsTask::unexecute( KigPart& doc )
 {
   AddObjectsTask::execute( doc );
 }
@@ -176,7 +177,7 @@ ChangeObjectConstCalcerTask::ChangeObjectConstCalcerTask( ObjectConstCalcer* cal
 {
 }
 
-void ChangeObjectConstCalcerTask::execute( KigDocument& doc )
+void ChangeObjectConstCalcerTask::execute( KigPart& doc )
 {
   mnewimp = mcalcer->switchImp( mnewimp );
 
@@ -185,10 +186,10 @@ void ChangeObjectConstCalcerTask::execute( KigDocument& doc )
   allchildrenvect = calcPath( allchildrenvect );
   for ( std::vector<ObjectCalcer*>::iterator i = allchildrenvect.begin();
         i != allchildrenvect.end(); ++i )
-    ( *i )->calc( doc );
+    ( *i )->calc( doc.document() );
 }
 
-void ChangeObjectConstCalcerTask::unexecute( KigDocument& doc )
+void ChangeObjectConstCalcerTask::unexecute( KigPart& doc )
 {
   execute( doc );
 }
@@ -250,15 +251,15 @@ ChangeCoordSystemTask::ChangeCoordSystemTask( CoordinateSystem* s )
 {
 }
 
-void ChangeCoordSystemTask::execute( KigDocument& doc )
+void ChangeCoordSystemTask::execute( KigPart& doc )
 {
-  mcs = doc.switchCoordinateSystem( mcs );
-  std::vector<ObjectCalcer*> calcpath = calcPath( getCalcers( doc.objects() ) );
+  mcs = doc.document().switchCoordinateSystem( mcs );
+  std::vector<ObjectCalcer*> calcpath = calcPath( getCalcers( doc.document().objects() ) );
   for ( std::vector<ObjectCalcer*>::iterator i = calcpath.begin(); i != calcpath.end(); ++i )
-    ( *i )->calc( doc );
+    ( *i )->calc( doc.document() );
 }
 
-void ChangeCoordSystemTask::unexecute( KigDocument& doc )
+void ChangeCoordSystemTask::unexecute( KigPart& doc )
 {
   execute( doc );
 }
@@ -292,7 +293,7 @@ ChangeParentsAndTypeTask::ChangeParentsAndTypeTask(
   d->newtype = newtype;
 }
 
-void ChangeParentsAndTypeTask::execute( KigDocument& doc )
+void ChangeParentsAndTypeTask::execute( KigPart& doc )
 {
   const ObjectType* oldtype = d->o->type();
   d->o->setType( d->newtype );
@@ -309,17 +310,17 @@ void ChangeParentsAndTypeTask::execute( KigDocument& doc )
   d->newparents = oldparents;
 
   for ( std::vector<ObjectCalcer*>::iterator i = newparents.begin(); i != newparents.end(); ++i )
-    ( *i )->calc( doc );
-  d->o->calc( doc );
+    ( *i )->calc( doc.document() );
+  d->o->calc( doc.document() );
   std::set<ObjectCalcer*> allchildren = getAllChildren( d->o );
   std::vector<ObjectCalcer*> allchildrenvect( allchildren.begin(), allchildren.end() );
   allchildrenvect = calcPath( allchildrenvect );
   for ( std::vector<ObjectCalcer*>::iterator i = allchildrenvect.begin();
         i != allchildrenvect.end(); ++i )
-    ( *i )->calc( doc );
+    ( *i )->calc( doc.document() );
 }
 
-void ChangeParentsAndTypeTask::unexecute( KigDocument& doc )
+void ChangeParentsAndTypeTask::unexecute( KigPart& doc )
 {
   execute( doc );
 }
@@ -344,7 +345,7 @@ KigViewShownRectChangeTask::~KigViewShownRectChangeTask()
   delete d;
 }
 
-void KigViewShownRectChangeTask::execute( KigDocument& doc )
+void KigViewShownRectChangeTask::execute( KigPart& doc )
 {
   Rect oldrect = d->v.showingRect();
   d->v.setShowingRect( d->rect );
@@ -353,7 +354,7 @@ void KigViewShownRectChangeTask::execute( KigDocument& doc )
   d->rect = oldrect;
 }
 
-void KigViewShownRectChangeTask::unexecute( KigDocument& doc )
+void KigViewShownRectChangeTask::unexecute( KigPart& doc )
 {
   execute( doc );
 }
@@ -369,12 +370,12 @@ ChangeObjectDrawerTask::ChangeObjectDrawerTask(
 {
 }
 
-void ChangeObjectDrawerTask::execute( KigDocument& )
+void ChangeObjectDrawerTask::execute( KigPart& )
 {
   mnewdrawer = mholder->switchDrawer( mnewdrawer );
 }
 
-void ChangeObjectDrawerTask::unexecute( KigDocument& doc )
+void ChangeObjectDrawerTask::unexecute( KigPart& doc )
 {
   execute( doc );
 }

@@ -23,8 +23,9 @@
 
 #include <qnamespace.h>
 
-class KigWidget;
 class KigDocument;
+class KigPart;
+class KigWidget;
 class QMouseEvent;
 class StdConstructionMode;
 
@@ -76,9 +77,9 @@ public:
    */
   virtual void redrawScreen( KigWidget* w );
 protected:
-  KigDocument& mdoc;
+  KigPart& mdoc;
 
-  KigMode( KigDocument& d );
+  KigMode( KigPart& d );
 };
 
 #endif

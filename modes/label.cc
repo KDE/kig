@@ -22,14 +22,15 @@
 #include "textlabelwizard.h"
 #include "linkslabel.h"
 
+#include "../kig/kig_commands.h"
+#include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
-#include "../kig/kig_commands.h"
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
-#include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/curve_imp.h"
+#include "../objects/object_factory.h"
 #include "../objects/point_imp.h"
 #include "../objects/text_imp.h"
 #include "../objects/text_type.h"
@@ -87,13 +88,13 @@ TextLabelModeBase::~TextLabelModeBase()
   delete d;
 }
 
-TextLabelModeBase::TextLabelModeBase( KigDocument& doc )
+TextLabelModeBase::TextLabelModeBase( KigPart& doc )
   : KigMode( doc ), d( new Private )
 {
   d->locationparent = 0;
   d->lpc = 0;
   d->mwawd = SelectingLocation;
-  d->wiz = new TextLabelWizard( doc.widgets()[0], this );
+  d->wiz = new TextLabelWizard( doc.widget(), this );
 }
 
 void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
@@ -129,7 +130,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
   case ReallySelectingArgs:
   {
     if ( ( d->plc - e->pos() ).manhattanLength() > 4 ) break;
-    std::vector<ObjectHolder*> os = mdoc.whatAmIOn( v->fromScreen( d->plc ), *v );
+    std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( v->fromScreen( d->plc ), *v );
     if ( os.empty() ) break;
     ObjectHolder* o = os[0];
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
@@ -157,7 +158,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     ObjectPropertyCalcer* n = new ObjectPropertyCalcer( o->calcer(), result );
     d->args[d->mwaaws] = n;
 
-    n->calc( mdoc );
+    n->calc( mdoc.document() );
     updateLinksLabel();
     updateWiz();
     break;
@@ -189,13 +190,13 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   if ( d->mwawd == ReallySelectingArgs )
   {
-    std::vector<ObjectHolder*> os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
+    std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( w->fromScreen( e->pos() ), *w );
     if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
     else w->setCursor( KCursor::arrowCursor() );
   }
   else if ( d->mwawd == SelectingLocation )
   {
-    std::vector<ObjectHolder*> os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
+    std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( w->fromScreen( e->pos() ), *w );
     bool attachable = false;
     d->locationparent = 0;
     for ( std::vector<ObjectHolder*>::iterator i = os.begin(); i != os.end(); ++i )
@@ -215,7 +216,7 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
       QString s = d->locationparent->imp()->type()->attachToThisStatement();
       mdoc.emitStatusBarText( s );
 
-      KigPainter p( w->screenInfo(), &w->curPix, mdoc );
+      KigPainter p( w->screenInfo(), &w->curPix, mdoc.document() );
 
       // set the text next to the arrow cursor
       QPoint point = e->pos();
@@ -356,7 +357,7 @@ void TextLabelModeBase::updateLinksLabel()
     {
       // if the user has already selected a property, then we show its
       // value...
-      d->args[count]->imp()->fillInNextEscape( linktext, mdoc );
+      d->args[count]->imp()->fillInNextEscape( linktext, mdoc.document() );
     }
     else
       // otherwise, we show a stub...
@@ -421,10 +422,10 @@ void TextLabelModeBase::setPropertyObjects( const argvect& props )
 {
   d->args = props;
   for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
-    (*i)->calc( mdoc );
+    (*i)->calc( mdoc.document() );
 }
 
-TextLabelConstructionMode::TextLabelConstructionMode( KigDocument& d )
+TextLabelConstructionMode::TextLabelConstructionMode( KigPart& d )
   : TextLabelModeBase( d )
 {
 }
@@ -445,13 +446,13 @@ void TextLabelConstructionMode::finish(
 
   ObjectHolder* label = 0;
   if ( locationparent )
-    label = ObjectFactory::instance()->attachedLabel( s, locationparent, coord, needframe, args, mdoc );
+    label = ObjectFactory::instance()->attachedLabel( s, locationparent, coord, needframe, args, mdoc.document() );
   else
-    label = ObjectFactory::instance()->label( s, coord, needframe, args, mdoc );
+    label = ObjectFactory::instance()->label( s, coord, needframe, args, mdoc.document() );
   mdoc.addObject( label );
 }
 
-TextLabelRedefineMode::TextLabelRedefineMode( KigDocument& d, ObjectTypeCalcer* label )
+TextLabelRedefineMode::TextLabelRedefineMode( KigPart& d, ObjectTypeCalcer* label )
   : TextLabelModeBase( d ), mlabel( label )
 {
   assert( label->imp()->inherits( TextImp::stype() ) );
@@ -532,14 +533,14 @@ void TextLabelRedefineMode::finish(
     p.push_back( i->get() );
   for ( std::vector<ObjectCalcer*>::iterator i = p.begin();
         i != p.end(); ++i )
-    ( *i )->calc( mdoc );
+    ( *i )->calc( mdoc.document() );
 
   std::vector<ObjectCalcer*> np = firstthree;
   if ( locationparent && locationparent->imp()->inherits( CurveImp::stype() ) )
   {
-    double param = static_cast<const CurveImp*>( locationparent->imp() )->getParam( coord, mdoc );
+    double param = static_cast<const CurveImp*>( locationparent->imp() )->getParam( coord, mdoc.document() );
     np[1] = ObjectFactory::instance()->constrainedPointCalcer( locationparent, param );
-    np[1]->calc( mdoc );
+    np[1]->calc( mdoc.document() );
   }
   else if ( locationparent )
   {

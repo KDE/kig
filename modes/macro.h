@@ -29,7 +29,7 @@ class DefineMacroMode
   : public BaseMode
 {
 public:
-  DefineMacroMode( KigDocument& );
+  DefineMacroMode( KigPart& );
   ~DefineMacroMode();
 
   void dragRect( const QPoint& p, KigWidget& w );

@@ -20,7 +20,6 @@
 
 #include "../objects/object_calcer.h"
 #include "../objects/object_imp.h"
-#include "../kig/kig_part.h"
 
 #include <algorithm>
 

@@ -22,6 +22,7 @@
 #include "kig_view.moc"
 
 #include "kig_part.h"
+#include "kig_document.h"
 #include "kig_commands.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/kigpainter.h"
@@ -50,21 +51,21 @@ kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
   return s;
 }
 
-KigWidget::KigWidget( KigDocument* doc,
+KigWidget::KigWidget( KigPart* part,
                       KigView* view,
                       QWidget* parent,
                       const char* name,
                       bool fullscreen )
   : QWidget( parent, name,
              fullscreen ? WStyle_Customize | WStyle_NoBorder : 0 ),
-    mdocument( doc ),
+    mpart( part ),
     mview( view ),
     stillPix(size()),
     curPix(size()),
     msi( Rect(), rect() ),
     misfullscreen( fullscreen )
 {
-  doc->addWidget(this);
+  part->addWidget(this);
 
   setFocusPolicy(QWidget::ClickFocus);
   setBackgroundMode( Qt::NoBackground );
@@ -76,7 +77,7 @@ KigWidget::KigWidget( KigDocument* doc,
 
 KigWidget::~KigWidget()
 {
-  mdocument->delWidget( this );
+  mpart->delWidget( this );
 }
 
 void KigWidget::paintEvent(QPaintEvent*)
@@ -87,32 +88,32 @@ void KigWidget::paintEvent(QPaintEvent*)
 void KigWidget::mousePressEvent (QMouseEvent* e)
 {
   if( e->button() & Qt::LeftButton )
-    return mdocument->mode()->leftClicked( e, this );
+    return mpart->mode()->leftClicked( e, this );
   if ( e->button() & Qt::MidButton )
-    return mdocument->mode()->midClicked( e, this );
+    return mpart->mode()->midClicked( e, this );
   if ( e->button() & Qt::RightButton )
-    return mdocument->mode()->rightClicked( e, this );
+    return mpart->mode()->rightClicked( e, this );
 }
 
 void KigWidget::mouseMoveEvent (QMouseEvent* e)
 {
   if( e->state() & Qt::LeftButton )
-    return mdocument->mode()->leftMouseMoved( e, this );
+    return mpart->mode()->leftMouseMoved( e, this );
   if ( e->state() & Qt::MidButton )
-    return mdocument->mode()->midMouseMoved( e, this );
+    return mpart->mode()->midMouseMoved( e, this );
   if ( e->state() & Qt::RightButton )
-    return mdocument->mode()->rightMouseMoved( e, this );
-  return mdocument->mode()->mouseMoved( e, this );
+    return mpart->mode()->rightMouseMoved( e, this );
+  return mpart->mode()->mouseMoved( e, this );
 }
 
 void KigWidget::mouseReleaseEvent (QMouseEvent* e)
 {
   if( e->state() & Qt::LeftButton )
-    return mdocument->mode()->leftReleased( e, this );
+    return mpart->mode()->leftReleased( e, this );
   if ( e->state() & Qt::MidButton )
-    return mdocument->mode()->midReleased( e, this );
+    return mpart->mode()->midReleased( e, this );
   if ( e->state() & Qt::RightButton )
-    return mdocument->mode()->rightReleased( e, this );
+    return mpart->mode()->rightReleased( e, this );
 }
 
 void KigWidget::updateWidget( const std::vector<QRect>& overlay )
@@ -166,7 +167,7 @@ void KigWidget::resizeEvent( QResizeEvent* e )
   // don't..
   if ( nsize.width() / osize.width() > 4 ) recenterScreen();
 
-  mdocument->redrawScreen( this );
+  mpart->redrawScreen( this );
   updateScrollBars();
 }
 
@@ -185,7 +186,7 @@ void KigWidget::updateCurPix( const std::vector<QRect>& ol )
 
 void KigWidget::recenterScreen()
 {
-  msi.setShownRect( matchScreenShape( mdocument->suggestedRect() ) );
+  msi.setShownRect( matchScreenShape( mpart->document().suggestedRect() ) );
 }
 
 Rect KigWidget::matchScreenShape( const Rect& r ) const
@@ -200,10 +201,10 @@ void KigWidget::slotZoomIn()
   nr /= 2;
   nr.setCenter( c );
   KigCommand* cd =
-    new KigCommand( *mdocument,
+    new KigCommand( *mpart,
                     i18n( "Zoom In" ) );
   cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mdocument->history()->addCommand( cd );
+  mpart->history()->addCommand( cd );
 }
 
 void KigWidget::slotZoomOut()
@@ -220,10 +221,10 @@ void KigWidget::slotZoomOut()
   // bit too useful to not be available.  Please try to convince me if
   // you feel otherwise ;-)
   KigCommand* cd =
-    new KigCommand( *mdocument,
+    new KigCommand( *mpart,
                     i18n( "Zoom Out" ) );
   cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mdocument->history()->addCommand( cd );
+  mpart->history()->addCommand( cd );
 }
 
 void KigWidget::clearStillPix()
@@ -236,14 +237,14 @@ void KigWidget::clearStillPix()
 void KigWidget::redrawScreen( const std::vector<ObjectHolder*>& selection, bool dos )
 {
   std::vector<ObjectHolder*> nonselection;
-  std::set<ObjectHolder*> objs = mdocument->objectsSet();
+  std::set<ObjectHolder*> objs = mpart->document().objectsSet();
   std::set_difference( objs.begin(), objs.end(), selection.begin(), selection.end(),
                        std::back_inserter( nonselection ) );
 
   // update the screen...
   clearStillPix();
-  KigPainter p( msi, &stillPix, *mdocument );
-  p.drawGrid( mdocument->coordinateSystem() );
+  KigPainter p( msi, &stillPix, mpart->document() );
+  p.drawGrid( mpart->document().coordinateSystem() );
   p.drawObjects( selection, true );
   p.drawObjects( nonselection, false );
   updateCurPix( p.overlay() );
@@ -281,16 +282,16 @@ void KigWidget::updateScrollBars()
   mview->updateScrollBars();
 }
 
-KigView::KigView( KigDocument* doc,
+KigView::KigView( KigPart* part,
                   bool fullscreen,
                   QWidget* parent,
                   const char* name )
   : QWidget( parent, name ),
     mlayout( 0 ), mrightscroll( 0 ), mbottomscroll( 0 ),
     mupdatingscrollbars( false ),
-    mrealwidget( 0 ), mdoc( doc )
+    mrealwidget( 0 ), mpart( part )
 {
-  connect( doc, SIGNAL( recenterScreen() ), this, SLOT( slotInternalRecenterScreen() ) );
+  connect( part, SIGNAL( recenterScreen() ), this, SLOT( slotInternalRecenterScreen() ) );
 
   mlayout = new QGridLayout( this, 2, 2 );
   mrightscroll = new QScrollBar( Vertical, this, "Right Scrollbar" );
@@ -305,14 +306,14 @@ KigView::KigView( KigDocument* doc,
            this, SLOT( slotBottomScrollValueChanged( int ) ) );
   connect( mbottomscroll, SIGNAL( sliderReleased() ),
            this, SLOT( updateScrollBars() ) );
-  mrealwidget = new KigWidget( doc, this, this, "Kig Widget", fullscreen );
+  mrealwidget = new KigWidget( part, this, this, "Kig Widget", fullscreen );
   mlayout->addWidget( mbottomscroll, 1, 0 );
   mlayout->addWidget( mrealwidget, 0, 0 );
   mlayout->addWidget( mrightscroll, 0, 1 );
 
   resize( sizeHint() );
   mrealwidget->recenterScreen();
-  doc->redrawScreen( mrealwidget );
+  part->redrawScreen( mrealwidget );
   updateScrollBars();
 }
 
@@ -374,7 +375,7 @@ void KigView::updateScrollBars()
 
 Rect KigWidget::entireDocumentRect() const
 {
-  return matchScreenShape( mdocument->suggestedRect() );
+  return matchScreenShape( mpart->document().suggestedRect() );
 }
 
 void KigView::slotRightScrollValueChanged( int v )
@@ -407,7 +408,7 @@ void KigWidget::scrollSetBottom( double rhs )
   bl.y = rhs;
   sr.setBottomLeft( bl );
   msi.setShownRect( sr );
-  mdocument->redrawScreen( this );
+  mpart->redrawScreen( this );
 }
 
 void KigWidget::scrollSetLeft( double rhs )
@@ -417,7 +418,7 @@ void KigWidget::scrollSetLeft( double rhs )
   bl.x = rhs;
   sr.setBottomLeft( bl );
   msi.setShownRect( sr );
-  mdocument->redrawScreen( this );
+  mpart->redrawScreen( this );
 }
 
 const ScreenInfo& KigView::screenInfo() const
@@ -436,7 +437,7 @@ KigWidget* KigView::realWidget() const
 
 const KigDocument& KigWidget::document() const
 {
-  return *mdocument;
+  return mpart->document();
 }
 
 QSize KigWidget::sizeHint() const
@@ -491,13 +492,13 @@ void KigView::slotZoomOut()
 
 void KigWidget::slotRecenterScreen()
 {
-  Rect nr = mdocument->suggestedRect();
+  Rect nr = mpart->document().suggestedRect();
   KigCommand* cd =
-    new KigCommand( *mdocument,
+    new KigCommand( *mpart,
                     i18n( "Recenter View" ) );
 
   cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mdocument->history()->addCommand( cd );
+  mpart->history()->addCommand( cd );
 }
 
 void KigView::toggleFullScreen()
@@ -516,21 +517,21 @@ void KigWidget::setFullScreen( bool f )
 
 void KigWidget::zoomRect()
 {
-  mdocument->emitStatusBarText( i18n( "Select the rectangle that should be shown." ) );
-  DragRectMode d( *mdocument, *this );
-  mdocument->runMode( &d );
+  mpart->emitStatusBarText( i18n( "Select the rectangle that should be shown." ) );
+  DragRectMode d( *mpart, *this );
+  mpart->runMode( &d );
   if ( ! d.cancelled() )
   {
     Rect nr = d.rect();
     KigCommand* cd =
-      new KigCommand( *mdocument,
+      new KigCommand( *mpart,
                       i18n( "Change Shown Part of Screen" ) );
 
     cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-    mdocument->history()->addCommand( cd );
+    mpart->history()->addCommand( cd );
   };
 
-  mdocument->redrawScreen( this );
+  mpart->redrawScreen( this );
   updateScrollBars();
 }
 

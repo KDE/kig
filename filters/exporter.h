@@ -23,6 +23,7 @@
 
 class QString;
 class KigDocument;
+class KigPart;
 class KigWidget;
 class KActionCollection;
 
@@ -35,7 +36,7 @@ class KigExportManager
   ~KigExportManager();
 public:
   static KigExportManager* instance();
-  void addMenuAction( const KigDocument* doc, KigWidget* w,
+  void addMenuAction( const KigPart* doc, KigWidget* w,
                       KActionCollection* coll );
 };
 
@@ -58,7 +59,7 @@ public:
    * ask the user for which file to export to etc., because they can
    * do a much better job at that..
    */
-  virtual void run( const KigDocument& doc, KigWidget& w ) = 0;
+  virtual void run( const KigPart& doc, KigWidget& w ) = 0;
 };
 
 /**
@@ -71,7 +72,7 @@ public:
   ~ImageExporter();
   QString exportToStatement() const;
   QString menuEntryName() const;
-  void run( const KigDocument& doc, KigWidget& w );
+  void run( const KigPart& doc, KigWidget& w );
 };
 
 /**
@@ -86,6 +87,6 @@ public:
   ~XFigExporter();
   QString exportToStatement() const;
   QString menuEntryName() const;
-  void run( const KigDocument& doc, KigWidget& w );
+  void run( const KigPart& doc, KigWidget& w );
 };
 #endif

@@ -26,6 +26,7 @@
 #include <vector>
 
 class KigDocument;
+class KigPart;
 class KigWidget;
 class NormalMode;
 class PopupActionProvider;
@@ -48,7 +49,7 @@ class NormalModePopupObjects
   Q_OBJECT
 
 public:
-  NormalModePopupObjects( KigDocument& doc, KigWidget& view,
+  NormalModePopupObjects( KigPart& part, KigWidget& view,
                           NormalMode& mode, const std::vector<ObjectHolder*>& objs );
   ~NormalModePopupObjects();
 
@@ -67,7 +68,7 @@ public:
   void setChecked( int menu, int n, bool checked );
 
   std::vector<ObjectHolder*> objects() const { return mobjs; };
-  KigDocument& document() { return mdoc; };
+  KigPart& part() { return mpart; };
   KigWidget& widget() { return mview; };
 
 protected:
@@ -87,7 +88,7 @@ private slots:
 
 protected:
   QPoint mplc;
-  KigDocument& mdoc;
+  KigPart& mpart;
   KigWidget& mview;
   std::vector<ObjectHolder*> mobjs;
   NormalMode& mmode;

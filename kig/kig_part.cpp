@@ -23,6 +23,7 @@
 
 #include "aboutdata.h"
 #include "kig_commands.h"
+#include "kig_document.h"
 #include "kig_view.h"
 
 #include "../filters/exporter.h"
@@ -38,6 +39,11 @@
 #include "../modes/normal.h"
 #include "../objects/point_imp.h"
 #include "../objects/object_drawer.h"
+
+#include <stdio.h>
+
+#include <algorithm>
+#include <functional>
 
 #include <kaction.h>
 #include <kapplication.h>
@@ -63,16 +69,13 @@
 #include <qeventloop.h>
 #endif
 
-#include <algorithm>
-#include <functional>
-
 using namespace std;
 
 // export this library...
-typedef KParts::GenericFactory<KigDocument> KigDocumentFactory;
-K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigDocumentFactory )
+typedef KParts::GenericFactory<KigPart> KigPartFactory;
+K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigPartFactory )
 
-KAboutData* KigDocument::createAboutData()
+KAboutData* KigPart::createAboutData()
 {
   return kigAboutData( "kig", I18N_NOOP( "KigPart" ) );
 }
@@ -80,16 +83,16 @@ KAboutData* KigDocument::createAboutData()
 class SetCoordinateSystemAction
   : public KAction
 {
-  KigDocument& md;
+  KigPart& md;
   uint mn;
 public:
-  SetCoordinateSystemAction( const QString text, KigDocument& d,
+  SetCoordinateSystemAction( const QString text, KigPart& d,
                              uint i, KActionCollection* parent );
   void slotActivated();
 };
 
 SetCoordinateSystemAction::SetCoordinateSystemAction(
-  const QString text, KigDocument& d,
+  const QString text, KigPart& d,
   uint i, KActionCollection* parent )
   : KAction( text, 0, 0, 0, parent, 0 ),
     md( d ), mn( i )
@@ -103,15 +106,14 @@ void SetCoordinateSystemAction::slotActivated()
   md.history()->addCommand( KigCommand::changeCoordSystemCommand( md, sys ) );
 }
 
-KigDocument::KigDocument( QWidget *parentWidget, const char *,
+KigPart::KigPart( QWidget *parentWidget, const char *,
 			  QObject *parent, const char *name,
 			  const QStringList& )
   : KParts::ReadWritePart( parent, name ),
-    mMode( 0 ),
-    mcoordsystem( new EuclideanCoords )
+    mMode( 0 ), mdocument( new KigDocument() )
 {
   // we need an instance
-  setInstance( KigDocumentFactory::instance() );
+  setInstance( KigPartFactory::instance() );
 
   mMode = new NormalMode( *this );
 
@@ -142,7 +144,7 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *,
   GUIActionList::instance()->regDoc( this );
 }
 
-void KigDocument::setupActions()
+void KigPart::setupActions()
 {
   // save actions..
   (void) KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
@@ -252,7 +254,7 @@ void KigDocument::setupActions()
                                                actionCollection() ) );
 }
 
-void KigDocument::setupTypes()
+void KigPart::setupTypes()
 {
   setupBuiltinStuff();
   setupBuiltinMacros();
@@ -267,7 +269,7 @@ void KigDocument::setupTypes()
   };
 }
 
-KigDocument::~KigDocument()
+KigPart::~KigPart()
 {
   GUIActionList::instance()->unregDoc( this );
 
@@ -284,12 +286,11 @@ KigDocument::~KigDocument()
   aActions.clear();
 
   // cleanup
-  delete mcoordsystem;
   delete mMode;
   delete mhistory;
 }
 
-bool KigDocument::openFile()
+bool KigPart::openFile()
 {
   QFileInfo fileinfo( m_file );
   if ( ! fileinfo.exists() )
@@ -322,15 +323,18 @@ bool KigDocument::openFile()
         );
     return false;
   };
-  if ( !filter->load (m_file, *this) )
-    return false;
+
+  KigDocument* newdoc = filter->load (m_file);
+  if ( !newdoc ) return false;
+  delete mdocument;
+  mdocument = newdoc;
 
   setModified(false);
   mhistory->clear();
 
-  std::vector<ObjectCalcer*> tmp = calcPath( getAllParents( getCalcers( objects() ) ) );
+  std::vector<ObjectCalcer*> tmp = calcPath( getAllParents( getCalcers( document().objects() ) ) );
   for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
-    ( *i )->calc( *this );
+    ( *i )->calc( document() );
   emit recenterScreen();
 
   redrawScreen();
@@ -338,7 +342,7 @@ bool KigDocument::openFile()
   return true;
 }
 
-bool KigDocument::saveFile()
+bool KigPart::saveFile()
 {
   if ( m_file.isEmpty() ) return internalSaveAs();
   // mimetype:
@@ -354,7 +358,7 @@ bool KigDocument::saveFile()
     internalSaveAs();
   };
 
-  if ( KigFilters::instance()->save( *this, m_file ) )
+  if ( KigFilters::instance()->save( document(), m_file ) )
   {
     setModified ( false );
     mhistory->documentSaved();
@@ -363,23 +367,23 @@ bool KigDocument::saveFile()
   return false;
 }
 
-void KigDocument::addObject(ObjectHolder* o)
+void KigPart::addObject(ObjectHolder* o)
 {
   mhistory->addCommand( KigCommand::addCommand( *this, o ) );
 }
 
-void KigDocument::addObjects( const std::vector<ObjectHolder*>& os )
+void KigPart::addObjects( const std::vector<ObjectHolder*>& os )
 {
   mhistory->addCommand( KigCommand::addCommand( *this, os ) );
 }
 
-void KigDocument::_addObject( ObjectHolder* o )
+void KigPart::_addObject( ObjectHolder* o )
 {
-  mobjs.insert( o );
+  document().addObject( o );
   setModified(true);
 }
 
-void KigDocument::delObject( ObjectHolder* o )
+void KigPart::delObject( ObjectHolder* o )
 {
   // we delete all children and their children etc. too...
   std::vector<ObjectHolder*> os;
@@ -387,142 +391,67 @@ void KigDocument::delObject( ObjectHolder* o )
   delObjects( os );
 }
 
-void KigDocument::_delObjects( const std::vector<ObjectHolder*>& o )
+void KigPart::_delObjects( const std::vector<ObjectHolder*>& o )
 {
-  for ( std::vector<ObjectHolder*>::const_iterator i = o.begin();
-        i != o.end(); ++i )
-  {
-    mobjs.erase( *i );
-  };
+  document().delObjects( o );
   setModified( true );
 }
 
-void KigDocument::_delObject(ObjectHolder* o)
+void KigPart::_delObject(ObjectHolder* o)
 {
-  mobjs.erase( o );
+  document().delObject( o );
   setModified(true);
 }
 
-std::vector<ObjectHolder*> KigDocument::whatAmIOn(const Coordinate& p, const KigWidget& w ) const
-{
-  std::vector<ObjectHolder*> ret;
-  std::vector<ObjectHolder*> nonpoints;
-  for ( std::set<ObjectHolder*>::const_iterator i = mobjs.begin();
-        i != mobjs.end(); ++i )
-  {
-    if(!(*i)->contains(p, w)) continue;
-    if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
-    else nonpoints.push_back( *i );
-  };
-  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( ret ) );
-  return ret;
-}
-
-std::vector<ObjectHolder*> KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
-{
-  std::vector<ObjectHolder*> ret;
-  std::vector<ObjectHolder*> nonpoints;
-  for ( std::set<ObjectHolder*>::const_iterator i = mobjs.begin();
-        i != mobjs.end(); ++i )
-  {
-    if(! (*i)->inRect( p, w ) ) continue;
-    if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
-    else nonpoints.push_back( *i );
-  };
-  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( ret ) );
-  return ret;
-}
-
-Rect KigDocument::suggestedRect() const
-{
-  bool rectInited = false;
-  Rect r(0.,0.,0.,0.);
-  for ( std::set<ObjectHolder*>::const_iterator i = mobjs.begin();
-        i != mobjs.end(); ++i )
-  {
-    if ( (*i)->shown() )
-    {
-      Rect cr = (*i)->imp()->surroundingRect();
-      if ( ! cr.valid() ) continue;
-      if( !rectInited )
-      {
-        r = cr;
-        rectInited = true;
-      }
-      else
-        r.eat( cr );
-    };
-  };
-
-  if ( ! rectInited )
-    return Rect( -5.5, -5.5, 11., 11. );
-  r.setContains( Coordinate( 0, 0 ) );
-  if( r.width() == 0 ) r.setWidth( 1 );
-  if( r.height() == 0 ) r.setHeight( 1 );
-  Coordinate center = r.center();
-  r *= 2;
-  r.setCenter(center);
-  return r;
-}
-
-const CoordinateSystem& KigDocument::coordinateSystem() const
-{
-  assert( mcoordsystem );
-  return *mcoordsystem;
-}
-
-void KigDocument::setMode( KigMode* m )
+void KigPart::setMode( KigMode* m )
 {
   mMode = m;
   m->enableActions();
   redrawScreen();
 }
 
-void KigDocument::_addObjects( const std::vector<ObjectHolder*>& os )
+void KigPart::_addObjects( const std::vector<ObjectHolder*>& os )
 {
-  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
-        i != os.end(); ++i )
-    ( *i )->calc( *this );
-  std::copy( os.begin(), os.end(), std::inserter( mobjs, mobjs.begin() ) );
+  document().addObjects( os );
   setModified( true );
 }
 
-void KigDocument::deleteObjects()
+void KigPart::deleteObjects()
 {
   mode()->deleteObjects();
 }
 
-void KigDocument::cancelConstruction()
+void KigPart::cancelConstruction()
 {
   mode()->cancelConstruction();
 }
 
-void KigDocument::showHidden()
+void KigPart::showHidden()
 {
   mode()->showHidden();
 }
 
-void KigDocument::newMacro()
+void KigPart::newMacro()
 {
   mode()->newMacro();
 }
 
-void KigDocument::editTypes()
+void KigPart::editTypes()
 {
   mode()->editTypes();
 }
 
-void KigDocument::setUnmodified()
+void KigPart::setUnmodified()
 {
   setModified( false );
 }
 
-KCommandHistory* KigDocument::history()
+KCommandHistory* KigPart::history()
 {
   return mhistory;
 }
 
-void KigDocument::delObjects( const std::vector<ObjectHolder*>& os )
+void KigPart::delObjects( const std::vector<ObjectHolder*>& os )
 {
   if ( os.size() < 1 ) return;
   std::set<ObjectHolder*> delobjs;
@@ -530,8 +459,10 @@ void KigDocument::delObjects( const std::vector<ObjectHolder*>& os )
   std::set<ObjectCalcer*> delcalcers = getAllChildren( getCalcers( os ) );
   std::map<ObjectCalcer*, ObjectHolder*> holdermap;
 
-  for ( std::set<ObjectHolder*>::iterator i = mobjs.begin();
-        i != mobjs.end(); ++i )
+  std::set<ObjectHolder*> curobjs = document().objectsSet();
+
+  for ( std::set<ObjectHolder*>::iterator i = curobjs.begin();
+        i != curobjs.end(); ++i )
     holdermap[( *i )->calcer()] = *i;
 
   for ( std::set<ObjectCalcer*>::iterator i = delcalcers.begin();
@@ -548,14 +479,14 @@ void KigDocument::delObjects( const std::vector<ObjectHolder*>& os )
   mhistory->addCommand( KigCommand::removeCommand( *this, delobjsvect ) );
 }
 
-void KigDocument::enableConstructActions( bool enabled )
+void KigPart::enableConstructActions( bool enabled )
 {
   for_each( aActions.begin(), aActions.end(),
             bind2nd( mem_fun( &KAction::setEnabled ),
                      enabled ) );
 }
 
-void KigDocument::unplugActionLists()
+void KigPart::unplugActionLists()
 {
   unplugActionList( "user_conic_types" );
   unplugActionList( "user_segment_types" );
@@ -566,7 +497,7 @@ void KigDocument::unplugActionLists()
   unplugActionList( "user_types" );
 }
 
-void KigDocument::plugActionLists()
+void KigPart::plugActionLists()
 {
   plugActionList( "user_conic_types", aMNewConic );
   plugActionList( "user_segment_types", aMNewSegment );
@@ -577,22 +508,22 @@ void KigDocument::plugActionLists()
   plugActionList( "user_types", aMNewAll );
 }
 
-void KigDocument::emitStatusBarText( const QString& text )
+void KigPart::emitStatusBarText( const QString& text )
 {
   emit setStatusBarText( text );
 }
 
-void KigDocument::fileSaveAs()
+void KigPart::fileSaveAs()
 {
   internalSaveAs();
 }
 
-void KigDocument::fileSave()
+void KigPart::fileSave()
 {
   save();
 }
 
-bool KigDocument::internalSaveAs()
+bool KigPart::internalSaveAs()
 {
   // this slot is connected to the KStdAction::saveAs action...
   QString formats;
@@ -617,7 +548,7 @@ bool KigDocument::internalSaveAs()
   return true;
 }
 
-void KigDocument::runMode( KigMode* m )
+void KigPart::runMode( KigMode* m )
 {
   KigMode* prev = mMode;
 
@@ -633,7 +564,7 @@ void KigDocument::runMode( KigMode* m )
   redrawScreen();
 }
 
-void KigDocument::doneMode( KigMode* d )
+void KigPart::doneMode( KigMode* d )
 {
   assert( d == mMode );
   // pretend to use this var..
@@ -645,23 +576,7 @@ void KigDocument::doneMode( KigMode* d )
 #endif
 }
 
-void KigDocument::setObjects( const std::vector<ObjectHolder*>& os )
-{
-  assert( objects().empty() );
-  mobjs.clear();
-  mobjs.insert( os.begin(), os.end() );
-  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
-        i != os.end(); ++i )
-    ( *i )->calc( *this );
-}
-
-void KigDocument::setCoordinateSystem( CoordinateSystem* cs )
-{
-  delete mcoordsystem;
-  mcoordsystem = cs;
-}
-
-void KigDocument::actionRemoved( GUIAction* a, GUIUpdateToken& t )
+void KigPart::actionRemoved( GUIAction* a, GUIUpdateToken& t )
 {
   KigGUIAction* rem = 0;
   for ( std::vector<KigGUIAction*>::iterator i = aActions.begin(); i != aActions.end(); ++i )
@@ -684,14 +599,14 @@ void KigDocument::actionRemoved( GUIAction* a, GUIUpdateToken& t )
   t.push_back( rem );
 }
 
-void KigDocument::actionAdded( GUIAction* a, GUIUpdateToken& )
+void KigPart::actionAdded( GUIAction* a, GUIUpdateToken& )
 {
   KigGUIAction* ret = new KigGUIAction( a, *this, actionCollection() );
   aActions.push_back( ret );
   ret->plug( this );
 }
 
-void KigDocument::endGUIActionUpdate( GUIUpdateToken& t )
+void KigPart::endGUIActionUpdate( GUIUpdateToken& t )
 {
   unplugActionLists();
   plugActionLists();
@@ -699,12 +614,12 @@ void KigDocument::endGUIActionUpdate( GUIUpdateToken& t )
   t.clear();
 }
 
-KigDocument::GUIUpdateToken KigDocument::startGUIActionUpdate()
+KigPart::GUIUpdateToken KigPart::startGUIActionUpdate()
 {
   return GUIUpdateToken();
 }
 
-void KigDocument::setupMacroTypes()
+void KigPart::setupMacroTypes()
 {
   static bool alreadysetup = false;
   if ( ! alreadysetup )
@@ -731,7 +646,7 @@ void KigDocument::setupMacroTypes()
   QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
 }
 
-void KigDocument::setupBuiltinMacros()
+void KigPart::setupBuiltinMacros()
 {
   static bool alreadysetup = false;
   if ( ! alreadysetup )
@@ -763,36 +678,24 @@ void KigDocument::setupBuiltinMacros()
   };
 }
 
-void KigDocument::addWidget( KigWidget* v )
+void KigPart::addWidget( KigWidget* v )
 {
   mwidgets.push_back( v );
 }
 
-void KigDocument::delWidget( KigWidget* v )
+void KigPart::delWidget( KigWidget* v )
 {
-  std::remove( mwidgets.begin(), mwidgets.end(), v );
+  mwidgets.erase( std::remove( mwidgets.begin(), mwidgets.end(), v ), mwidgets.end() );
 }
 
-const std::vector<KigWidget*>& KigDocument::widgets()
-{
-  return mwidgets;
-}
-
-CoordinateSystem* KigDocument::switchCoordinateSystem( CoordinateSystem* s )
-{
-  CoordinateSystem* ret = mcoordsystem;
-  mcoordsystem = s;
-  return ret;
-}
-
-void KigDocument::filePrintPreview()
+void KigPart::filePrintPreview()
 {
   KPrinter printer;
   printer.setPreviewOnly( true );
   doPrint( printer );
 }
 
-void KigDocument::filePrint()
+void KigPart::filePrint()
 {
   KPrinter printer;
   if ( printer.setup( m_widget, i18n("Print Geometry") ) )
@@ -801,10 +704,10 @@ void KigDocument::filePrint()
   };
 }
 
-void KigDocument::doPrint( KPrinter& printer )
+void KigPart::doPrint( KPrinter& printer )
 {
   QPaintDeviceMetrics metrics( &printer );
-  Rect rect = suggestedRect();
+  Rect rect = document().suggestedRect();
   QRect qrect( 0, 0, metrics.width(), metrics.height() );
   if ( rect.width() * qrect.height() > rect.height() * qrect.width() )
   {
@@ -823,34 +726,28 @@ void KigDocument::doPrint( KPrinter& printer )
     qrect.setRight( qrect.right() - rest / 2 );
   };
   ScreenInfo si( rect, qrect );
-  KigPainter painter( si, &printer, *this );
+  KigPainter painter( si, &printer, document() );
   painter.setWholeWinOverlay();
-  painter.drawGrid( coordinateSystem() );
-  painter.drawObjects( objects(), false );
+  painter.drawGrid( document().coordinateSystem() );
+  painter.drawObjects( document().objects(), false );
 }
 
-const std::vector<ObjectHolder*> KigDocument::objects() const
-{
-  std::vector<ObjectHolder*> ret( mobjs.begin(), mobjs.end() );
-  return ret;
-}
-
-void KigDocument::slotSelectAll()
+void KigPart::slotSelectAll()
 {
   mMode->selectAll();
 }
 
-void KigDocument::slotDeselectAll()
+void KigPart::slotDeselectAll()
 {
   mMode->deselectAll();
 }
 
-void KigDocument::slotInvertSelection()
+void KigPart::slotInvertSelection()
 {
   mMode->invertSelection();
 }
 
-void KigDocument::hideObjects( const std::vector<ObjectHolder*>& inos )
+void KigPart::hideObjects( const std::vector<ObjectHolder*>& inos )
 {
   std::vector<ObjectHolder*> os;
   for (std::vector<ObjectHolder*>::const_iterator i = inos.begin(); i != inos.end(); ++i )
@@ -869,7 +766,7 @@ void KigDocument::hideObjects( const std::vector<ObjectHolder*>& inos )
   mhistory->addCommand( kc );
 }
 
-void KigDocument::showObjects( const std::vector<ObjectHolder*>& inos )
+void KigPart::showObjects( const std::vector<ObjectHolder*>& inos )
 {
   std::vector<ObjectHolder*> os;
   for (std::vector<ObjectHolder*>::const_iterator i = inos.begin(); i != inos.end(); ++i )
@@ -888,17 +785,12 @@ void KigDocument::showObjects( const std::vector<ObjectHolder*>& inos )
   mhistory->addCommand( kc );
 }
 
-const std::set<ObjectHolder*> KigDocument::objectsSet() const
-{
-  return mobjs;
-}
-
-void KigDocument::redrawScreen( KigWidget* w )
+void KigPart::redrawScreen( KigWidget* w )
 {
   mode()->redrawScreen( w );
 }
 
-void KigDocument::redrawScreen()
+void KigPart::redrawScreen()
 {
   for ( std::vector<KigWidget*>::iterator i = mwidgets.begin();
         i != mwidgets.end(); ++i )
@@ -906,3 +798,72 @@ void KigDocument::redrawScreen()
     mode()->redrawScreen( *i );
   }
 }
+
+const KigDocument& KigPart::document() const
+{
+  return *mdocument;
+}
+
+KigDocument& KigPart::document()
+{
+  return *mdocument;
+}
+
+extern "C" int convertToNative( const KURL& url, const QCString& outfile )
+{
+  kdDebug() << "converting " << url << " to " << outfile << endl;
+
+  if ( ! url.isLocalFile() )
+  {
+    // TODO
+    kdError() << "--convert-to-native only supports local files for now." << endl;
+    return -1;
+  }
+
+  QString file = url.path();
+
+  QFileInfo fileinfo( file );
+  if ( ! fileinfo.exists() )
+  {
+    kdError() << "The file \"" << file << "\" does not exist" << endl;
+    return -1;
+  };
+
+  KMimeType::Ptr mimeType = KMimeType::findByPath ( file );
+  kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
+  KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
+  if ( !filter )
+  {
+    kdError() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
+    return -1;
+  };
+
+  KigDocument* doc = filter->load (file);
+  if ( !doc )
+  {
+    kdError() << "Parse error in file \"" << file << "\"." << endl;
+    return -1;
+  }
+
+  std::vector<ObjectCalcer*> tmp = calcPath( getAllParents( getCalcers( doc->objects() ) ) );
+  for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
+    ( *i )->calc( *doc );
+  for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
+    ( *i )->calc( *doc );
+
+  bool success = true;
+  QTextStream stdoutstream( stdout, IO_WriteOnly );
+  if ( outfile == "-" )
+    success = KigFilters::instance()->save( *doc, stdoutstream );
+  else
+    success = KigFilters::instance()->save( *doc, outfile );
+  if ( !success )
+  {
+    kdError() << "something went wrong while saving" << endl;
+    return -1;
+  }
+
+  delete doc;
+
+  return 0;
+};

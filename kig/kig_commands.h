@@ -29,6 +29,7 @@
 #include "../objects/object_holder.h"
 
 class KigDocument;
+class KigPart;
 class CoordinateSystem;
 
 class KigCommandTask;
@@ -42,24 +43,24 @@ class KigCommand
   class Private;
   Private* d;
 public:
-  KigCommand( KigDocument& inDoc, const QString& name );
+  KigCommand( KigPart& inDoc, const QString& name );
   ~KigCommand();
 
   /**
    * To avoid confusion, this doesn't add a command to anything, this
    * creates an AddCommand ;)
    */
-  static KigCommand* addCommand( KigDocument& doc, const std::vector<ObjectHolder*>& os );
-  static KigCommand* addCommand( KigDocument& doc, ObjectHolder* os );
+  static KigCommand* addCommand( KigPart& doc, const std::vector<ObjectHolder*>& os );
+  static KigCommand* addCommand( KigPart& doc, ObjectHolder* os );
   /**
    * make sure that when you delete something, you are also deleting
    * its parents.  This class assumes you've done that.
    * KigDocument::delObjects takes care of this for you.
    */
-  static KigCommand* removeCommand( KigDocument& doc, const std::vector<ObjectHolder*>& os );
-  static KigCommand* removeCommand( KigDocument& doc, ObjectHolder* o );
+  static KigCommand* removeCommand( KigPart& doc, const std::vector<ObjectHolder*>& os );
+  static KigCommand* removeCommand( KigPart& doc, ObjectHolder* o );
 
-  static KigCommand* changeCoordSystemCommand( KigDocument& doc, CoordinateSystem* s );
+  static KigCommand* changeCoordSystemCommand( KigPart& doc, CoordinateSystem* s );
 
   void addTask( KigCommandTask* );
 
@@ -73,8 +74,8 @@ public:
   KigCommandTask();
   virtual ~KigCommandTask();
 
-  virtual void execute( KigDocument& doc ) = 0;
-  virtual void unexecute( KigDocument& doc ) = 0;
+  virtual void execute( KigPart& doc ) = 0;
+  virtual void unexecute( KigPart& doc ) = 0;
 };
 
 class AddObjectsTask
@@ -83,8 +84,8 @@ class AddObjectsTask
 public:
   AddObjectsTask( const std::vector<ObjectHolder*>& os);
   ~AddObjectsTask ();
-  void execute( KigDocument& doc );
-  void unexecute( KigDocument& doc );
+  void execute( KigPart& doc );
+  void unexecute( KigPart& doc );
 protected:
   bool undone;
 
@@ -96,8 +97,8 @@ class RemoveObjectsTask
 {
 public:
   RemoveObjectsTask( const std::vector<ObjectHolder*>& os );
-  void execute( KigDocument& );
-  void unexecute( KigDocument& );
+  void execute( KigPart& );
+  void unexecute( KigPart& );
 };
 
 class ChangeObjectConstCalcerTask
@@ -106,8 +107,8 @@ class ChangeObjectConstCalcerTask
 public:
   ChangeObjectConstCalcerTask( ObjectConstCalcer* calcer, ObjectImp* newimp );
 
-  void execute( KigDocument& );
-  void unexecute( KigDocument& );
+  void execute( KigPart& );
+  void unexecute( KigPart& );
 protected:
   ObjectConstCalcer::shared_ptr mcalcer;
   ObjectImp* mnewimp;
@@ -160,8 +161,8 @@ public:
   ChangeCoordSystemTask( CoordinateSystem* s );
   ~ChangeCoordSystemTask();
 
-  void execute( KigDocument& doc );
-  void unexecute( KigDocument& doc );
+  void execute( KigPart& doc );
+  void unexecute( KigPart& doc );
 };
 
 class ChangeParentsAndTypeTask
@@ -174,8 +175,8 @@ public:
                             const ObjectType* newtype );
   ~ChangeParentsAndTypeTask();
 
-  void execute( KigDocument& doc );
-  void unexecute( KigDocument& doc );
+  void execute( KigPart& doc );
+  void unexecute( KigPart& doc );
 };
 
 class KigViewShownRectChangeTask
@@ -187,8 +188,8 @@ public:
   KigViewShownRectChangeTask( KigWidget& v, const Rect& newrect );
   ~KigViewShownRectChangeTask();
 
-  void execute( KigDocument& doc );
-  void unexecute( KigDocument& doc );
+  void execute( KigPart& doc );
+  void unexecute( KigPart& doc );
 };
 
 class ChangeObjectDrawerTask
@@ -200,8 +201,8 @@ public:
   ChangeObjectDrawerTask( ObjectHolder* holder, ObjectDrawer* newdrawer );
   ~ChangeObjectDrawerTask();
 
-  void execute( KigDocument& doc );
-  void unexecute( KigDocument& doc );
+  void execute( KigPart& doc );
+  void unexecute( KigPart& doc );
 };
 
 #endif

@@ -90,7 +90,7 @@ public:
   virtual QStringList specialActions() const;
   // execute the i'th action from the specialActions above..
   virtual void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
-                              KigDocument& d, KigWidget& w, NormalMode& m ) const;
+                              KigPart& d, KigWidget& w, NormalMode& m ) const;
 };
 
 /**

@@ -315,7 +315,7 @@ QStringList AngleType::specialActions() const
 
 void AngleType::executeAction(
   int i, ObjectHolder&, ObjectTypeCalcer& t,
-  KigDocument& d, KigWidget& w, NormalMode& ) const
+  KigPart& d, KigWidget& w, NormalMode& ) const
 {
   assert( i == 0 );
   // pretend to use this var..
@@ -351,7 +351,7 @@ void AngleType::executeAction(
   Coordinate nc = b + cdir.normalize( rvect.length() );
 
   MonitorDataObjects mon( getAllParents( parents ) );
-  parents[2]->move( nc, d );
+  parents[2]->move( nc, d.document() );
   KigCommand* kc = new KigCommand( d, i18n( "Resize Angle" ) );
   mon.finish( kc );
   d.history()->addCommand( kc );

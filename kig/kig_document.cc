@@ -1,0 +1,162 @@
+// kig_document.cc
+// Copyright (C)  2004  Dominique Devriese <devriese@kde.org>
+
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+// 02111-1307, USA.
+
+#include "kig_document.h"
+
+#include "../objects/object_calcer.h"
+#include "../objects/object_holder.h"
+#include "../objects/point_imp.h"
+#include "../misc/coordinate_system.h"
+#include "../misc/rect.h"
+
+#include <assert.h>
+
+KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem )
+  : mobjects( objects ), mcoordsystem( coordsystem )
+{
+}
+
+const CoordinateSystem& KigDocument::coordinateSystem() const
+{
+  assert( mcoordsystem );
+  return *mcoordsystem;
+}
+
+const std::vector<ObjectHolder*> KigDocument::objects() const
+{
+  return std::vector<ObjectHolder*>( mobjects.begin(), mobjects.end() );
+}
+
+const std::set<ObjectHolder*> KigDocument::objectsSet() const
+{
+  return mobjects;
+}
+
+void KigDocument::setCoordinateSystem( CoordinateSystem* s )
+{
+  delete switchCoordinateSystem( s );
+}
+
+CoordinateSystem* KigDocument::switchCoordinateSystem( CoordinateSystem* s )
+{
+  CoordinateSystem* ret = mcoordsystem;
+  mcoordsystem = s;
+  return ret;
+}
+
+std::vector<ObjectHolder*> KigDocument::whatAmIOn( const Coordinate& p, const KigWidget& w ) const
+{
+  std::vector<ObjectHolder*> ret;
+  std::vector<ObjectHolder*> nonpoints;
+  for ( std::set<ObjectHolder*>::const_iterator i = mobjects.begin();
+        i != mobjects.end(); ++i )
+  {
+    if(!(*i)->contains(p, w)) continue;
+    if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
+    else nonpoints.push_back( *i );
+  };
+  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( ret ) );
+  return ret;
+}
+
+std::vector<ObjectHolder*> KigDocument::whatIsInHere( const Rect& p, const KigWidget& w )
+{
+  std::vector<ObjectHolder*> ret;
+  std::vector<ObjectHolder*> nonpoints;
+  for ( std::set<ObjectHolder*>::const_iterator i = mobjects.begin();
+        i != mobjects.end(); ++i )
+  {
+    if(! (*i)->inRect( p, w ) ) continue;
+    if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
+    else nonpoints.push_back( *i );
+  };
+  std::copy( nonpoints.begin(), nonpoints.end(), std::back_inserter( ret ) );
+  return ret;
+}
+
+Rect KigDocument::suggestedRect() const
+{
+  bool rectInited = false;
+  Rect r(0.,0.,0.,0.);
+  for ( std::set<ObjectHolder*>::const_iterator i = mobjects.begin();
+        i != mobjects.end(); ++i )
+  {
+    if ( (*i)->shown() )
+    {
+      Rect cr = (*i)->imp()->surroundingRect();
+      if ( ! cr.valid() ) continue;
+      if( !rectInited )
+      {
+        r = cr;
+        rectInited = true;
+      }
+      else
+        r.eat( cr );
+    };
+  };
+
+  if ( ! rectInited )
+    return Rect( -5.5, -5.5, 11., 11. );
+  r.setContains( Coordinate( 0, 0 ) );
+  if( r.width() == 0 ) r.setWidth( 1 );
+  if( r.height() == 0 ) r.setHeight( 1 );
+  Coordinate center = r.center();
+  r *= 2;
+  r.setCenter(center);
+  return r;
+}
+
+void KigDocument::addObject( ObjectHolder* o )
+{
+  mobjects.insert( o );
+}
+
+void KigDocument::addObjects( const std::vector<ObjectHolder*>& os )
+{
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
+        i != os.end(); ++i )
+    ( *i )->calc( *this );
+  std::copy( os.begin(), os.end(), std::inserter( mobjects, mobjects.begin() ) );
+}
+
+void KigDocument::delObject( ObjectHolder* o )
+{
+  mobjects.erase( o );
+}
+
+void KigDocument::delObjects( const std::vector<ObjectHolder*>& os )
+{
+  for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
+        i != os.end(); ++i )
+    mobjects.erase( *i );
+}
+
+KigDocument::KigDocument()
+  : mcoordsystem( new EuclideanCoords )
+{
+}
+
+KigDocument::~KigDocument()
+{
+  typedef std::set<ObjectHolder*> s;
+  for ( s::iterator i = mobjects.begin(); i != mobjects.end(); ++i ) {
+    delete *i;
+  }
+}
+
+

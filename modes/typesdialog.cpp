@@ -44,11 +44,11 @@
 #include <vector>
 #include <algorithm>
 
-TypesDialog::TypesDialog( QWidget* parent, const KigDocument& doc )
-  : TypesDialogBase( parent, "types_dialog", true ), mdoc( doc )
+TypesDialog::TypesDialog( QWidget* parent, const KigPart& part )
+  : TypesDialogBase( parent, "types_dialog", true ), mpart( part )
 {
   // improving GUI look'n'feel...
-  il = doc.instance()->iconLoader();
+  il = part.instance()->iconLoader();
   buttonHelp->setIconSet( QIconSet( il->loadIcon( "help", KIcon::Small ) ) );
   buttonOk->setIconSet( QIconSet( il->loadIcon( "button_ok", KIcon::Small ) ) );
   buttonRemove->setIconSet( QIconSet( il->loadIcon( "editdelete", KIcon::Small ) ) );
@@ -176,7 +176,7 @@ void TypesDialog::importTypes()
         i != file_names.end(); ++i)
   {
     std::vector<Macro*> nmacros;
-    bool ok = MacroList::instance()->load( *i, nmacros, mdoc );
+    bool ok = MacroList::instance()->load( *i, nmacros, mpart );
     if ( ! ok )
       continue;
     std::copy( nmacros.begin(), nmacros.end(), std::back_inserter( macros ) );

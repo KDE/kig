@@ -42,7 +42,7 @@ void ScriptMode::dragRect( const QPoint& p, KigWidget& w )
   mdoc.runMode( &dm );
   std::vector<ObjectHolder*> ret = dm.ret();
 
-  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
   if ( dm.needClear() )
   {
     std::vector<ObjectHolder*> tmp( margs.begin(), margs.begin() );
@@ -62,7 +62,7 @@ void ScriptMode::leftClickedObject( ObjectHolder* o, const QPoint&,
 {
   if ( mwawd != SelectingArgs ) return;
 
-  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
 
   if ( margs.find( o ) != margs.end() )
   {
@@ -99,7 +99,7 @@ void ScriptMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint&
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );
-    KigPainter p( w.screenInfo(), &w.curPix, mdoc );
+    KigPainter p( w.screenInfo(), &w.curPix, mdoc.document() );
 
     // set the text next to the arrow cursor
     QPoint point = pt;
@@ -110,7 +110,7 @@ void ScriptMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint&
   }
 }
 
-ScriptMode::ScriptMode( KigDocument& doc )
+ScriptMode::ScriptMode( KigPart& doc )
   : BaseMode( doc ), mwizard( 0 ),
     mwawd( SelectingArgs )
 {
@@ -201,7 +201,7 @@ bool ScriptMode::queryFinish()
 
   ObjectTypeCalcer* compiledscript =
     new ObjectTypeCalcer( PythonCompileType::instance(), args );
-  compiledscript->calc( mdoc );
+  compiledscript->calc( mdoc.document() );
 
   args.clear();
   args.push_back( compiledscript );
@@ -211,7 +211,7 @@ bool ScriptMode::queryFinish()
 
   ObjectTypeCalcer::shared_ptr reto =
     new ObjectTypeCalcer( PythonExecuteType::instance(), args );
-  reto->calc( mdoc );
+  reto->calc( mdoc.document() );
 
   if ( reto->imp()->inherits( InvalidImp::stype() ) )
   {

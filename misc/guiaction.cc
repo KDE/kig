@@ -24,8 +24,10 @@
 #include "object_constructor.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 #include "../modes/construct_mode.h"
 #include "../modes/label.h"
+#include "../objects/object_holder.h"
 #include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
 
@@ -70,7 +72,7 @@ QString ConstructibleAction::descriptiveName() const
   return mctor->descriptiveName();
 }
 
-void ConstructibleAction::act( KigDocument& d )
+void ConstructibleAction::act( KigPart& d )
 {
   BaseConstructMode* m = mctor->constructMode( d );
   d.runMode( m );
@@ -78,7 +80,7 @@ void ConstructibleAction::act( KigDocument& d )
 }
 
 KigGUIAction::KigGUIAction( GUIAction* act,
-                            KigDocument& doc,
+                            KigPart& doc,
                             QObject* parent )
   : KAction( act->descriptiveName(),
              doc.instance()->iconLoader()->loadIcon(
@@ -137,7 +139,7 @@ int ConstructPointAction::shortcut() const
   return Qt::Key_P;
 }
 
-void ConstructPointAction::act( KigDocument& d )
+void ConstructPointAction::act( KigPart& d )
 {
   PointConstructMode m( d );
   d.runMode( &m );
@@ -153,12 +155,12 @@ GUIAction* KigGUIAction::guiAction()
   return mact;
 }
 
-void KigGUIAction::plug( KigDocument* doc )
+void KigGUIAction::plug( KigPart* doc )
 {
   mact->plug( doc, this );
 }
 
-void ConstructibleAction::plug( KigDocument* doc, KigGUIAction* kact )
+void ConstructibleAction::plug( KigPart* doc, KigGUIAction* kact )
 {
   mctor->plug( doc, kact );
 }
@@ -183,7 +185,7 @@ const char* ConstructTextLabelAction::actionName() const
   return mactionname;
 }
 
-void ConstructTextLabelAction::act( KigDocument& d )
+void ConstructTextLabelAction::act( KigPart& d )
 {
   TextLabelConstructionMode m( d );
   d.runMode( &m );
@@ -214,18 +216,18 @@ const char* AddFixedPointAction::actionName() const
   return mactionname;
 }
 
-void AddFixedPointAction::act( KigDocument& doc )
+void AddFixedPointAction::act( KigPart& doc )
 {
   bool ok;
-  Coordinate c = doc.coordinateSystem().getCoordFromUser(
+  Coordinate c = doc.document().coordinateSystem().getCoordFromUser(
     i18n( "Fixed Point" ),
     i18n( "Enter the coordinates for the new point." ) +
     QString::fromLatin1("\n") +
-    doc.coordinateSystem().coordinateFormatNotice(),
-    doc, doc.widget(), &ok );
+    doc.document().coordinateSystem().coordinateFormatNotice(),
+    doc.document(), doc.widget(), &ok );
   if ( ! ok ) return;
   ObjectHolder* p = ObjectFactory::instance()->fixedPoint( c );
-  p->calc( doc );
+  p->calc( doc.document() );
   doc.addObject( p );
 }
 
@@ -238,7 +240,7 @@ AddFixedPointAction::~AddFixedPointAction()
 {
 }
 
-void GUIAction::plug( KigDocument*, KigGUIAction* )
+void GUIAction::plug( KigPart*, KigGUIAction* )
 {
 }
 
@@ -287,7 +289,7 @@ const char* TestAction::actionName() const
   return mactionname;
 }
 
-void TestAction::act( KigDocument& doc )
+void TestAction::act( KigPart& doc )
 {
   const char* script =
     "def calc( a ):\n\treturn Point( a.coordinate() + Coordinate( 2, 0 ) )\n";
@@ -345,7 +347,7 @@ const char* NewScriptAction::actionName() const
   return mactionname;
 }
 
-void NewScriptAction::act( KigDocument& doc )
+void NewScriptAction::act( KigPart& doc )
 {
   ScriptMode m( doc );
   QString t( mtype );

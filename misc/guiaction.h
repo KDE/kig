@@ -26,23 +26,23 @@
 #include <kaction.h>
 
 class GUIAction;
-class KigDocument;
+class KigPart;
 
 class KigGUIAction
   : public KAction
 {
   Q_OBJECT
   GUIAction* mact;
-  KigDocument& mdoc;
+  KigPart& mdoc;
 public:
   KigGUIAction( GUIAction* act,
-                KigDocument& doc,
+                KigPart& doc,
                 QObject* parent );
   void slotActivated();
 
   GUIAction* guiAction();
 
-  void plug( KigDocument* doc );
+  void plug( KigPart* doc );
 };
 
 class GUIAction
@@ -55,9 +55,9 @@ public:
   virtual QString descriptiveName() const = 0;
   virtual const char* actionName() const = 0;
   virtual int shortcut() const = 0;
-  virtual void act( KigDocument& ) = 0;
+  virtual void act( KigPart& ) = 0;
 
-  virtual void plug( KigDocument* doc, KigGUIAction* kact );
+  virtual void plug( KigPart* doc, KigGUIAction* kact );
 };
 
 class ObjectConstructor;
@@ -77,8 +77,8 @@ public:
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
-  void act( KigDocument& );
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void act( KigPart& );
+  void plug( KigPart* doc, KigGUIAction* kact );
 };
 
 class ConstructPointAction
@@ -94,7 +94,7 @@ public:
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
-  void act( KigDocument& );
+  void act( KigPart& );
 };
 
 class ConstructTextLabelAction
@@ -109,7 +109,7 @@ public:
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
-  void act( KigDocument& );
+  void act( KigPart& );
 };
 
 class AddFixedPointAction
@@ -124,7 +124,7 @@ public:
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
-  void act( KigDocument& );
+  void act( KigPart& );
 };
 
 #if 0
@@ -139,7 +139,7 @@ public:
   QCString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
-  void act( KigDocument& );
+  void act( KigPart& );
 };
 #endif
 
@@ -161,7 +161,7 @@ public:
   QCString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
-  void act( KigDocument& );
+  void act( KigPart& );
   int shortcut() const;
 };
 

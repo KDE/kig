@@ -55,7 +55,7 @@ protected:
   virtual void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed ) = 0;
 
 protected:
-  BaseMode( KigDocument& );
+  BaseMode( KigPart& );
   ~BaseMode();
 };
 

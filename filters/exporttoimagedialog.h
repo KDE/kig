@@ -21,8 +21,9 @@
 
 #include "exporttoimagedialogbase.h"
 
-class KigWidget;
 class KigDocument;
+class KigPart;
+class KigWidget;
 
 class ExportToImageDialog
   : public ExportToImageDialogBase
@@ -30,7 +31,7 @@ class ExportToImageDialog
   Q_OBJECT
 
   KigWidget* mv;
-  const KigDocument* md;
+  const KigPart* mpart;
 
   QSize msize;
 
@@ -39,7 +40,7 @@ class ExportToImageDialog
   // value like to user changes...
   bool minternallysettingstuff;
 public:
-  ExportToImageDialog( KigWidget* v, const KigDocument* d );
+  ExportToImageDialog( KigWidget* v, const KigPart* part );
   ~ExportToImageDialog();
 public slots:
   void slotOKPressed();

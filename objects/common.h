@@ -30,6 +30,7 @@
 class Coordinate;
 class KigDocument;
 class KigPainter;
+class KigPart;
 class KigWidget;
 class NormalMode;
 class ObjectCalcer;

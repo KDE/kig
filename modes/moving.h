@@ -50,7 +50,7 @@ private:
   std::vector<ObjectCalcer*> mcalcable;
   std::vector<ObjectHolder*> mdrawable;
 protected:
-  MovingModeBase( KigDocument& doc, KigWidget& v );
+  MovingModeBase( KigPart& doc, KigWidget& v );
   ~MovingModeBase();
 
   // Subclasses should call this in their constructor, when they know
@@ -79,7 +79,7 @@ class MovingMode
   void moveTo( const Coordinate& o, bool snaptogrid );
 public:
   MovingMode( const std::vector<ObjectHolder*>& objects, const Coordinate& c,
-	      KigWidget&, KigDocument& );
+	      KigWidget&, KigPart& );
   ~MovingMode();
 };
 
@@ -93,7 +93,7 @@ class PointRedefineMode
   void stopMove();
   void moveTo( const Coordinate& o, bool snaptogrid );
 public:
-  PointRedefineMode( ObjectHolder* p, KigDocument& d, KigWidget& v );
+  PointRedefineMode( ObjectHolder* p, KigPart& d, KigWidget& v );
   ~PointRedefineMode();
 };
 

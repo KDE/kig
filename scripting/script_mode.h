@@ -39,7 +39,7 @@ class ScriptMode
 
   QString mtype;
 public:
-  ScriptMode( KigDocument& doc );
+  ScriptMode( KigPart& doc );
   ~ScriptMode();
 
   void dragRect( const QPoint& p, KigWidget& w );

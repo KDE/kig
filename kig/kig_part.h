@@ -25,7 +25,6 @@
 #include <kparts/part.h>
 #include <qptrlist.h>
 
-#include "../objects/object_holder.h"
 #include "../objects/common.h"
 
 class KAboutData;
@@ -44,6 +43,7 @@ class KigMode;
 class KigObjectsPopup;
 class KigView;
 class MacroWizardImpl;
+class ObjectHolder;
 class Rect;
 class ScreenInfo;
 
@@ -56,14 +56,14 @@ class ScreenInfo;
  * @short Main Part
  * @author Dominique Devriese <devriese@kde.org>
  */
-class KigDocument : public KParts::ReadWritePart
+class KigPart : public KParts::ReadWritePart
 {
   Q_OBJECT
 public:
   /**
    * Default constructor
    */
-  KigDocument( QWidget* parentWidget, const char* widgetName,
+  KigPart( QWidget* parentWidget, const char* widgetName,
 	       QObject* parent = 0, const char* name = 0,
 	       const QStringList& = QStringList()
 	       );
@@ -71,14 +71,9 @@ public:
   /**
    * Destructor
    */
-  virtual ~KigDocument();
-
-  const std::vector<KigWidget*>& widgets();
+  virtual ~KigPart();
 
 /*********************** KPart interface *************************/
-
-public:
-  static KAboutData* createAboutData();
 
 protected:
   /**
@@ -125,34 +120,10 @@ public:
   void addWidget( KigWidget* );
   void delWidget( KigWidget* );
 
-  // these are the objects that the user is aware of..
-  const std::vector<ObjectHolder*> objects() const;
-  const std::set<ObjectHolder*> objectsSet() const;
-  void setObjects( const std::vector<ObjectHolder*>& os );
-  const CoordinateSystem& coordinateSystem() const;
-
-  /**
-   * sets the coordinate system to s, and returns the old one..
-   */
-  CoordinateSystem* switchCoordinateSystem( CoordinateSystem* s );
-
-  /**
-   * sets the coordinate system to s, and deletes the old one..
-   */
-  void setCoordinateSystem( CoordinateSystem* s );
   KigMode* mode() const { return mMode; };
   void setMode( KigMode* );
   void runMode( KigMode* );
   void doneMode( KigMode* );
-
-  // what objects are under point p
-  std::vector<ObjectHolder*> whatAmIOn( const Coordinate& p, const KigWidget& si ) const;
-
-  std::vector<ObjectHolder*> whatIsInHere( const Rect& p, const KigWidget& );
-
-  // a rect containing most of the objects, which would be a fine
-  // suggestion to mapt to the widget...
-  Rect suggestedRect() const;
 
 signals: // these signals are for telling KigView it should do something...
   // emitted when we want to suggest a new size for the view (
@@ -171,16 +142,17 @@ public:
   void hideObjects( const std::vector<ObjectHolder*>& os );
   void showObjects( const std::vector<ObjectHolder*>& os );
 
-/************* internal stuff *************/
-protected:
-  bool internalSaveAs();
-
-public:
   void _addObject( ObjectHolder* inObject );
   void _addObjects( const std::vector<ObjectHolder*>& o);
   void _delObject( ObjectHolder* inObject );
   void _delObjects( const std::vector<ObjectHolder*>& o );
 
+/************* internal stuff *************/
+protected:
+  bool internalSaveAs();
+
+public:
+  static KAboutData* createAboutData();
 protected:
   void setupActions();
   void setupTypes();
@@ -248,18 +220,10 @@ protected:
 
   KigView* m_widget;
 
-  /**
-   * Here we keep the objects in the document.
-   */
-  std::set<ObjectHolder*> mobjs;
-
-  /**
-   * The CoordinateSystem as the user sees it: this has little to do
-   * with the internal coordinates of the objects... In fact, it's
-   * not so different from an object itself ( uses KigPainter to draw
-   * itself too...).
-   */
-  CoordinateSystem* mcoordsystem;
+  KigDocument* mdocument;
+public:
+  const KigDocument& document() const;
+  KigDocument& document();
 };
 
 #endif // KIGPART_H

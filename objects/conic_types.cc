@@ -639,7 +639,7 @@ QStringList ConicRadicalType::specialActions() const
 }
 
 void ConicRadicalType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& t,
-                                      KigDocument& d, KigWidget&, NormalMode& ) const
+                                      KigPart& d, KigWidget&, NormalMode& ) const
 {
   assert( i == 0 );
   std::vector<ObjectCalcer*> parents = t.parents();

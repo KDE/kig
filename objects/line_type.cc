@@ -217,7 +217,7 @@ QStringList SegmentABType::specialActions() const
 }
 
 void SegmentABType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
-                                   KigDocument& d, KigWidget& w, NormalMode& ) const
+                                   KigPart& d, KigWidget& w, NormalMode& ) const
 {
   assert( i == 0 );
   // pretend to use this var..
@@ -238,7 +238,7 @@ void SegmentABType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
   Coordinate nb = a + ( b - a ).normalize( length );
 
   MonitorDataObjects mon( getAllParents( parents ) );
-  parents[1]->move( nb, d );
+  parents[1]->move( nb, d.document() );
   KigCommand* cd = new KigCommand( d, i18n( "Resize Segment" ) );
   mon.finish( cd );
   d.history()->addCommand( cd );

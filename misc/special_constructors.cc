@@ -212,11 +212,11 @@ QString LocusConstructor::useText( const ObjectCalcer& o, const std::vector<Obje
   else return i18n( "Dependent Point" );
 }
 
-void ConicRadicalConstructor::plug( KigDocument*, KigGUIAction* )
+void ConicRadicalConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
-void LocusConstructor::plug( KigDocument*, KigGUIAction* )
+void LocusConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
@@ -306,7 +306,7 @@ std::vector<ObjectHolder*> ConicConicIntersectionConstructor::build(
   return ret;
 }
 
-void ConicConicIntersectionConstructor::plug( KigDocument*, KigGUIAction* )
+void ConicConicIntersectionConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
@@ -447,7 +447,7 @@ std::vector<ObjectHolder*> MidPointOfTwoPointsConstructor::build(
   return ret;
 }
 
-void MidPointOfTwoPointsConstructor::plug( KigDocument*, KigGUIAction* )
+void MidPointOfTwoPointsConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
@@ -483,7 +483,7 @@ std::vector<ObjectHolder*> TestConstructor::build( const std::vector<ObjectCalce
   return ret;
 }
 
-void TestConstructor::plug( KigDocument*, KigGUIAction* )
+void TestConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
@@ -497,7 +497,7 @@ bool TestConstructor::isTest() const
   return true;
 }
 
-BaseConstructMode* TestConstructor::constructMode( KigDocument& doc )
+BaseConstructMode* TestConstructor::constructMode( KigPart& doc )
 {
   return new TestConstructMode( doc, mtype );
 }

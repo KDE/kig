@@ -51,7 +51,9 @@ Kig::Kig()
 
   // we use globalLibrary() because if we use python scripting, then
   // we need the python symbols to be exported, in order for python to
-  // be able to load its dll modules..
+  // be able to load its dll modules..  Another part of the problem is
+  // that boost.python fails to link against python ( on Debian at
+  // least ).
   KLibrary* library = KLibLoader::self()->globalLibrary("libkigpart");
   KLibFactory* factory = 0;
   if ( library ) factory = library->factory();

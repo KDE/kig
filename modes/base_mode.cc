@@ -20,11 +20,12 @@
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 
 #include <qevent.h>
 #include <kcursor.h>
 
-BaseMode::BaseMode( KigDocument& d )
+BaseMode::BaseMode( KigPart& d )
   : KigMode( d )
 {
 }
@@ -44,7 +45,7 @@ void BaseMode::leftClicked( QMouseEvent* e, KigWidget* v )
   v->updateWidget();
 
   mplc = e->pos();
-  moco = mdoc.whatAmIOn( v->fromScreen( mplc ), *v );
+  moco = mdoc.document().whatAmIOn( v->fromScreen( mplc ), *v );
 
   if( moco.empty() )
   {
@@ -88,7 +89,7 @@ void BaseMode::midClicked( QMouseEvent* e, KigWidget* v )
   v->updateWidget();
 
   mplc = e->pos();
-  moco = mdoc.whatAmIOn( v->fromScreen( e->pos() ), *v );
+  moco = mdoc.document().whatAmIOn( v->fromScreen( e->pos() ), *v );
 }
 
 void BaseMode::midReleased( QMouseEvent* e, KigWidget* v )
@@ -107,14 +108,14 @@ void BaseMode::rightClicked( QMouseEvent* e, KigWidget* w )
   w->setCursor( KCursor::arrowCursor() );
 
   mplc = e->pos();
-  moco = mdoc.whatAmIOn( w->fromScreen( mplc ), *w );
+  moco = mdoc.document().whatAmIOn( w->fromScreen( mplc ), *w );
 
   rightClicked( moco, mplc, *w );
 }
 
 void BaseMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
-  std::vector<ObjectHolder*> os = mdoc.whatAmIOn( w->fromScreen( e->pos() ), *w );
+  std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( w->fromScreen( e->pos() ), *w );
   mouseMoved( os, e->pos(), *w, e->state() & Qt::ShiftButton );
 }
 

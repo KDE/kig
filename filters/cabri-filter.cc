@@ -20,6 +20,7 @@
 
 #include "cabri-filter.h"
 
+#include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../misc/coordinate.h"
 #include "../objects/bogus_imp.h"
@@ -148,10 +149,16 @@ static QColor translatecolor( const QString& s )
   return Qt::black;
 }
 
-bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
+KigDocument* KigFilterCabri::load( const QString& file )
 {
   QFile f( file );
-  f.open( IO_ReadOnly );
+  if ( ! f.open( IO_ReadOnly ) )
+  {
+    fileNotFound( file );
+    return 0;
+  }
+
+  KigDocument* ret = new KigDocument();
 
   QString s = readLine( f );
   QString a = s.left( 21 );
@@ -349,7 +356,7 @@ bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
         args.push_back( vectorcalcer );
         ObjectTypeCalcer* secondpoint =
           new ObjectTypeCalcer( TranslatedType::instance(), args );
-        secondpoint->calc( kdoc );
+        secondpoint->calc( *ret );
         args[1] = secondpoint;
       }
       if ( args.size() != 2 ) KIG_FILTER_PARSE_ERROR;
@@ -372,7 +379,7 @@ bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
         KIG_FILTER_PARSE_ERROR;
       const CurveImp* curve = static_cast<const CurveImp*>( parent->imp() );
       Coordinate pt = Coordinate( data[0], data[1] );
-      double param = curve->getParam( pt, kdoc );
+      double param = curve->getParam( pt, *ret );
       args.push_back( new ObjectConstCalcer( new DoubleImp( param ) ) );
       oc = new ObjectTypeCalcer( ConstrainedPointType::instance(), args );
     }
@@ -404,7 +411,7 @@ bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
       {
         ObjectCalcer* c =
           new ObjectTypeCalcer( SegmentABType::instance(), args );
-        c->calc( kdoc );
+        c->calc( *ret );
         args.clear();
         args.push_back( c );
       }
@@ -426,7 +433,7 @@ bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
       {
         ObjectCalcer* c =
           new ObjectTypeCalcer( SegmentABType::instance(), args );
-        c->calc( kdoc );
+        c->calc( *ret );
         args.clear();
         args.push_back( c );
       }
@@ -439,7 +446,7 @@ bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
 //       else if ( parent->imp()->inherits( VectorImp::stype() ) )
 //         midpoint = fact->propertyObjectCalcer( parent, "vect-mid-point" );
       else KIG_FILTER_PARSE_ERROR;
-      midpoint->calc( kdoc );
+      midpoint->calc( *ret );
       args.push_back( midpoint );
       oc = new ObjectTypeCalcer( LinePerpendLPType::instance(), args );
     }
@@ -447,15 +454,15 @@ bool KigFilterCabri::load( const QString& file, KigDocument& kdoc )
 
     if ( oc == 0 ) KIG_FILTER_PARSE_ERROR;
 
-    oc->calc( kdoc );
+    oc->calc( *ret );
     calcers.push_back( oc );
     ObjectHolder* oh =
       new ObjectHolder( oc, new ObjectDrawer( color, thick, visible ) );
     holders.push_back( oh );
   }
 
-  kdoc.setObjects( holders );
-  return true;
+  ret->addObjects( holders );
+  return ret;
 }
 
 KigFilterCabri* KigFilterCabri::instance()

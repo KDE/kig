@@ -8,7 +8,7 @@
 - add support for work via command line without GUI. Possible options
   and uses:<br />
   -c, --convert filename.ext => Kig will convert the file in its own
-  format and output the file filename.kig
+  format and output the file filename.kig -> domi: done
 
 - make stuff from RMB menu's accessible from other places as well.
 

@@ -24,11 +24,15 @@
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
+#include <klibloader.h>
+#include <kdebug.h>
 
 #include "aboutdata.h"
 
 static KCmdLineOptions options[] =
   {
+    { "convert-to-native", I18N_NOOP( "Don't show a GUI.  Convert the specified file to the native Kig format.  Output goes to stdout unless --outfile is specified." ), 0 },
+    { "outfile <file>", I18N_NOOP( "File to output the created native file to.  '-' means output to stdout.  Default is stdout as well." ), 0 },
     { "+[URL]", I18N_NOOP( "Document to open." ), 0 },
     KCmdLineLastOption
   };
@@ -37,20 +41,26 @@ class KigApplication
   : public KUniqueApplication
 {
 public:
+  KigApplication( bool gui = true );
   int newInstance();
   void handleArgs( KCmdLineArgs* args );
 };
 
+KigApplication::KigApplication( bool gui )
+  : KUniqueApplication( gui, gui )
+{
+}
+
 int KigApplication::newInstance()
 {
   static bool first = true;
-  if (isRestored() && first) 
+  if (isRestored() && first)
   {
     first = false;
     return 0;
   }
   first = false;
-  
+
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
   handleArgs(args);
   args->clear();
@@ -75,6 +85,20 @@ void KigApplication::handleArgs( KCmdLineArgs* args )
   }
 }
 
+static int convertToNative( const KURL& file, const QCString& outfile )
+{
+  KigApplication app( false );
+  KLibrary* library = KLibLoader::self()->globalLibrary( "libkigpart" );
+  int ( *converterfunction )( const KURL&, const QCString& );
+  converterfunction = ( int ( * )( const KURL&, const QCString& ) ) library->symbol( "convertToNative" );
+  if ( !converterfunction )
+  {
+    kdError() << "Error: broken Kig installation: different library and application version !" << endl;
+    return -1;
+  }
+  return (*converterfunction)( file, outfile );
+}
+
 int main(int argc, char **argv)
 {
   KAboutData *about = kigAboutData( "kig", I18N_NOOP("Kig") );
@@ -82,9 +106,37 @@ int main(int argc, char **argv)
   KCmdLineArgs::init(argc, argv, about);
   KCmdLineArgs::addCmdLineOptions( options );
   KigApplication::addCmdLineOptions();
-  KigApplication app;
 
-  // see if we are starting with session management
-  if (app.isRestored()) RESTORE(Kig)
-  return app.exec();
+  KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+  if ( args->isSet( "convert-to-native" ) )
+  {
+    QCString outfile = args->getOption( "outfile" );
+    if ( outfile.isNull() )
+      outfile = "-";
+
+    if ( args->count() == 0 )
+    {
+      kdError() << "Error: --convert-to-native specified without a file to convert." << endl;
+      return -1;
+    }
+    if ( args->count() > 1 )
+    {
+      kdError() << "Error: --convert-to-native specified with more than one file to convert." << endl;
+      return -1;
+    }
+    return convertToNative( args->url( 0 ), outfile );
+  }
+  else
+  {
+    if ( args->isSet( "outfile" ) )
+    {
+      kdError() << "Error: --outfile specified without convert-to-native." << endl;
+      return -1;
+    }
+    KigApplication app;
+
+    // see if we are starting with session management
+    if (app.isRestored()) RESTORE(Kig)
+      return app.exec();
+  }
 }

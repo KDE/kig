@@ -63,7 +63,7 @@ public:
   // drawing.. after somebody calls this function, he should
   // redrawScreen() himself..
   virtual void handleArgs( const std::vector<ObjectCalcer*>& os,
-                           KigDocument& d,
+                           KigPart& d,
                            KigWidget& v
     ) const = 0;
 
@@ -83,7 +83,7 @@ public:
                              const KigWidget& v
     ) const = 0;
 
-  virtual void plug( KigDocument* doc, KigGUIAction* kact ) = 0;
+  virtual void plug( KigPart* doc, KigGUIAction* kact ) = 0;
 
   virtual bool isTransform() const = 0;
   virtual bool isTest() const;
@@ -101,7 +101,7 @@ public:
    *
    * This function is only overridden in TestConstructor.
    */
-  virtual BaseConstructMode* constructMode( KigDocument& doc );
+  virtual BaseConstructMode* constructMode( KigPart& doc );
 };
 
 /**
@@ -133,7 +133,7 @@ public:
     ) const;
 
   void handleArgs( const std::vector<ObjectCalcer*>& os,
-                   KigDocument& d,
+                   KigPart& d,
                    KigWidget& v
     ) const;
 
@@ -175,7 +175,7 @@ public:
                                     KigDocument& d,
                                     KigWidget& w ) const;
 
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
 
   bool isTransform() const;
 };
@@ -203,7 +203,7 @@ public:
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
                                     KigDocument& d, KigWidget& w ) const;
 
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
 
   bool isTransform() const;
 };
@@ -244,7 +244,7 @@ public:
     const std::vector<ObjectCalcer*>& os,
     KigDocument& d, KigWidget& w ) const;
 
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
 
   bool isTransform() const;
 };
@@ -281,12 +281,12 @@ public:
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v ) const;
 
-  void handleArgs( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& v ) const;
+  void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d, KigWidget& v ) const;
 
   void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
                      const KigDocument& d, const KigWidget& v ) const;
 
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
 
   bool isTransform() const;
 };
@@ -326,7 +326,7 @@ public:
   const int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
                       const KigWidget& v ) const;
 
-  void handleArgs( const std::vector<ObjectCalcer*>& os, KigDocument& d,
+  void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d,
                    KigWidget& v ) const;
 
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
@@ -337,7 +337,7 @@ public:
                      const KigDocument& d, const KigWidget& v
     ) const;
 
-  void plug( KigDocument* doc, KigGUIAction* kact );
+  void plug( KigPart* doc, KigGUIAction* kact );
 
   void setBuiltin( bool builtin );
 

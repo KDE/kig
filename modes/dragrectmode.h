@@ -71,8 +71,8 @@ private:
   void enableActions();
 
 public:
-  DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w );
-  DragRectMode( KigDocument& d, KigWidget& w );
+  DragRectMode( const QPoint& start, KigPart& d, KigWidget& w );
+  DragRectMode( KigPart& d, KigWidget& w );
   ~DragRectMode();
 
   // this returns the selected objects..

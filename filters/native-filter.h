@@ -24,6 +24,7 @@
 class QDomElement;
 class KigDocument;
 class QDomElement;
+class QTextStream;
 class QCString;
 
 // Kig's native format.  Between versions 0.3.1 and 0.4, there was a
@@ -34,16 +35,17 @@ class KigFilterNative
 {
   // this is the load function for the Kig format that is used,
   // starting at Kig 0.4
-  bool load04( const QString& file, const QDomElement& doc, KigDocument& to );
+  KigDocument* load04( const QString& file, const QDomElement& doc );
   // this is the load function for the Kig format that is used
   // starting at Kig 0.7
-  bool load07( const QString& file, const QDomElement& doc, KigDocument& to );
+  KigDocument* load07( const QString& file, const QDomElement& doc );
 
   // save in the pre-0.7 Kig format..
   bool save04( const KigDocument& data, const QString& file );
 
   // save in the Kig format that is used starting at Kig 0.7
-  bool save07( const KigDocument& data, const QString& file );
+  bool save07( const KigDocument& data, const QString& outfile );
+  bool save07( const KigDocument& data, QTextStream& file );
 
   KigFilterNative();
   ~KigFilterNative();
@@ -51,9 +53,10 @@ public:
   static KigFilterNative* instance();
 
   bool supportMime( const QString& mime );
-  bool load( const QString& file, KigDocument& to );
+  KigDocument* load( const QString& file );
 
   bool save( const KigDocument& data, const QString& file );
+  bool save( const KigDocument& data, QTextStream& stream );
 };
 
 #endif

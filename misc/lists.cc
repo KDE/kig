@@ -57,12 +57,12 @@ GUIActionList::GUIActionList()
 {
 }
 
-void GUIActionList::regDoc( KigDocument* d )
+void GUIActionList::regDoc( KigPart* d )
 {
   mdocs.insert( d );
 }
 
-void GUIActionList::unregDoc( KigDocument* d )
+void GUIActionList::unregDoc( KigPart* d )
 {
   mdocs.erase( d );
 }
@@ -72,7 +72,7 @@ void GUIActionList::add( const std::vector<GUIAction*>& a )
   copy( a.begin(), a.end(), inserter( mactions, mactions.begin() ) );
   for ( dvectype::iterator i = mdocs.begin(); i != mdocs.end(); ++i )
   {
-    KigDocument::GUIUpdateToken t = (*i)->startGUIActionUpdate();
+    KigPart::GUIUpdateToken t = (*i)->startGUIActionUpdate();
     for ( uint j = 0; j < a.size(); ++j )
       (*i)->actionAdded( a[j], t );
     (*i)->endGUIActionUpdate( t );
@@ -84,7 +84,7 @@ void GUIActionList::add( GUIAction* a )
   mactions.insert( a );
   for ( dvectype::iterator i = mdocs.begin(); i != mdocs.end(); ++i )
   {
-    KigDocument::GUIUpdateToken t = (*i)->startGUIActionUpdate();
+    KigPart::GUIUpdateToken t = (*i)->startGUIActionUpdate();
     (*i)->actionAdded( a, t );
     (*i)->endGUIActionUpdate( t );
   };
@@ -98,7 +98,7 @@ void GUIActionList::remove( const std::vector<GUIAction*>& a )
   };
   for ( dvectype::iterator i = mdocs.begin(); i != mdocs.end(); ++i )
   {
-    KigDocument::GUIUpdateToken t = (*i)->startGUIActionUpdate();
+    KigPart::GUIUpdateToken t = (*i)->startGUIActionUpdate();
     for ( uint j = 0; j < a.size(); ++j )
       (*i)->actionRemoved( a[j], t );
     (*i)->endGUIActionUpdate( t );
@@ -111,7 +111,7 @@ void GUIActionList::remove( GUIAction* a )
   mactions.erase( a );
   for ( dvectype::iterator i = mdocs.begin(); i != mdocs.end(); ++i )
   {
-    KigDocument::GUIUpdateToken t = (*i)->startGUIActionUpdate();
+    KigPart::GUIUpdateToken t = (*i)->startGUIActionUpdate();
     (*i)->actionRemoved( a, t );
     (*i)->endGUIActionUpdate( t );
   };
@@ -297,7 +297,7 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
   return true;
 }
 
-bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigDocument& kdoc )
+bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart& kdoc )
 {
   QFile file( f );
   if ( ! file.open( IO_ReadOnly ) )
@@ -329,7 +329,7 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigDocum
   }
 }
 
-bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, const KigDocument& )
+bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, const KigPart& )
 {
   bool sok = true;
   // unused..

@@ -58,7 +58,7 @@ public:
 protected:
   typedef std::vector<ObjectPropertyCalcer::shared_ptr> argvect;
   // the protected interface for subclasses
-  TextLabelModeBase( KigDocument& d );
+  TextLabelModeBase( KigPart& d );
   ~TextLabelModeBase();
 
   void setCoordinate( const Coordinate& coord );
@@ -103,7 +103,7 @@ class TextLabelConstructionMode
   : public TextLabelModeBase
 {
 public:
-  TextLabelConstructionMode( KigDocument& d );
+  TextLabelConstructionMode( KigPart& d );
   ~TextLabelConstructionMode();
 
   void finish( const Coordinate& coord, const QString& s,
@@ -119,7 +119,7 @@ class TextLabelRedefineMode
                const argvect& props, bool needframe,
                ObjectCalcer* locationparent );
 public:
-  TextLabelRedefineMode( KigDocument& d, ObjectTypeCalcer* label );
+  TextLabelRedefineMode( KigPart& d, ObjectTypeCalcer* label );
   ~TextLabelRedefineMode();
 };
 

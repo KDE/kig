@@ -38,7 +38,8 @@ public:
 
   // saving is always done with the native filter.  We don't support
   // output filters..
-  bool save ( const KigDocument& data, const QString& tofile );
+  bool save ( const KigDocument& data, QTextStream& stream );
+  bool save ( const KigDocument& data, const QString& outfile );
 protected:
   KigFilters();
   static KigFilters* sThis;
@@ -46,15 +47,15 @@ protected:
   vect mFilters;
 };
 
-// use this macro to conveniently return a very useful parse error in
-// a filter's load function..
+// KigFilter::load functions should use this macro to conveniently
+// return a very useful parse error in a filter's load function..
 #define KIG_FILTER_PARSE_ERROR \
   { \
     QString locs = i18n( "An error was encountered at " \
                          "line %1 in file %2." ) \
       .arg( __LINE__ ).arg( __FILE__ ); \
     parseError( file, locs ); \
-    return false; \
+    return 0; \
   }
 
 class KigFilter
@@ -72,9 +73,12 @@ public:
   // can the filter handle this mimetype ?
   virtual bool supportMime ( const QString& mime );
 
-  // load file fromfile..  ( don't forget to make this atomic, this
-  // means: only really change to's data when you're sure no error
-  // will occur in reading/parsing the file..
-  virtual bool load ( const QString& fromfile, KigDocument& to ) = 0;
+  // load file fromfile and build a KigDocument from it..  If this
+  // function returns 0, that means that an error occurred while
+  // loading ( implementations of this function are responsible for
+  // showing an error message themselves, using the above error
+  // functions ).  If this functions returns non-0, the caller owns
+  // the returned KigDocument ( that was allocated with "new" ).
+  virtual KigDocument* load ( const QString& fromfile ) = 0;
 };
 #endif

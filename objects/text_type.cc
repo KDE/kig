@@ -126,7 +126,7 @@ QStringList TextType::specialActions() const
 }
 
 void TextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                              KigDocument& doc, KigWidget&,
+                              KigPart& doc, KigWidget&,
                               NormalMode& ) const
 {
   std::vector<ObjectCalcer*> parents = c.parents();

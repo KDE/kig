@@ -20,6 +20,7 @@
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 #include "../kig/kig_commands.h"
 #include "../objects/object_factory.h"
 #include "../objects/object_imp.h"
@@ -92,7 +93,7 @@ void NormalMode::clearSelection()
 
 void NormalMode::showHidden()
 {
-  mdoc.showObjects( mdoc.objects() );
+  mdoc.showObjects( mdoc.document().objects() );
 }
 
 void NormalMode::newMacro()
@@ -105,7 +106,7 @@ void NormalMode::redrawScreen( KigWidget* w )
 {
   // unselect removed objects..
   std::vector<ObjectHolder*> nsos;
-  const std::set<ObjectHolder*> docobjs = mdoc.objectsSet();
+  const std::set<ObjectHolder*> docobjs = mdoc.document().objectsSet();
   std::set_intersection( docobjs.begin(), docobjs.end(), sos.begin(), sos.end(),
                          std::back_inserter( nsos ) );
   sos = std::set<ObjectHolder*>( nsos.begin(), nsos.end() );
@@ -119,7 +120,7 @@ void NormalMode::editTypes()
   d.exec();
 }
 
-NormalMode::NormalMode( KigDocument& d )
+NormalMode::NormalMode( KigPart& d )
   : BaseMode( d )
 {
 }
@@ -133,7 +134,7 @@ void NormalMode::dragRect( const QPoint& p, KigWidget& w )
   DragRectMode d( p, mdoc, w );
   mdoc.runMode( &d );
 
-  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
 
   if ( ! d.cancelled() )
   {
@@ -174,7 +175,7 @@ void NormalMode::dragObject( const std::vector<ObjectHolder*>& oco, const QPoint
 void NormalMode::leftClickedObject( ObjectHolder* o, const QPoint&,
                                     KigWidget& w, bool ctrlOrShiftDown )
 {
-  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
 
   if ( ! o )
   {
@@ -204,8 +205,8 @@ void NormalMode::leftClickedObject( ObjectHolder* o, const QPoint&,
 
 void NormalMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  ObjectHolder* pto = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc, w );
-  pto->calc( mdoc );
+  ObjectHolder* pto = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc.document(), w );
+  pto->calc( mdoc.document() );
   mdoc.addObject( pto );
 
   // refresh the screen...
@@ -260,7 +261,7 @@ void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
 
     // statusbar text
     mdoc.emitStatusBarText( stat );
-    KigPainter p( w.screenInfo(), &w.curPix, mdoc );
+    KigPainter p( w.screenInfo(), &w.curPix, mdoc.document() );
 
     // set the text next to the arrow cursor
     QPoint point = plc;
@@ -273,7 +274,7 @@ void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
 
 void NormalMode::selectAll()
 {
-  const std::vector<ObjectHolder*> os = mdoc.objects();
+  const std::vector<ObjectHolder*> os = mdoc.document().objects();
   selectObjects( os );
   mdoc.redrawScreen();
 }
@@ -286,7 +287,7 @@ void NormalMode::deselectAll()
 
 void NormalMode::invertSelection()
 {
-  std::vector<ObjectHolder*> os = mdoc.objects();
+  std::vector<ObjectHolder*> os = mdoc.document().objects();
   std::set<ObjectHolder*> oldsel = sos;
   clearSelection();
   for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();

@@ -22,6 +22,7 @@
 
 #include "../objects/object_imp.h"
 #include "../objects/object_factory.h"
+#include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../kig/kig_commands.h"
@@ -40,7 +41,7 @@ void MovingModeBase::initScreen( const std::vector<ObjectCalcer*>& in )
 
   // don't try to move objects that have been deleted from the
   // document or internal objects that the user is not aware of..
-  std::vector<ObjectHolder*> docobjs = mdoc.objects();
+  std::vector<ObjectHolder*> docobjs = mdoc.document().objects();
   for ( std::vector<ObjectHolder*>::iterator i = docobjs.begin();
         i != docobjs.end(); ++i )
     if ( calcableset.find( ( *i )->calcer() ) != calcableset.end() )
@@ -53,12 +54,12 @@ void MovingModeBase::initScreen( const std::vector<ObjectCalcer*>& in )
                        std::inserter( notmovingobjs, notmovingobjs.begin() ) );
 
   mview.clearStillPix();
-  KigPainter p( mview.screenInfo(), &mview.stillPix, mdoc );
-  p.drawGrid( mdoc.coordinateSystem() );
+  KigPainter p( mview.screenInfo(), &mview.stillPix, mdoc.document() );
+  p.drawGrid( mdoc.document().coordinateSystem() );
   p.drawObjects( notmovingobjs.begin(), notmovingobjs.end(), false );
   mview.updateCurPix();
 
-  KigPainter p2( mview.screenInfo(), &mview.curPix, mdoc );
+  KigPainter p2( mview.screenInfo(), &mview.curPix, mdoc.document() );
   p2.drawObjects( drawableset.begin(), drawableset.end(), true );
 }
 
@@ -67,7 +68,7 @@ void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
   // clean up after ourselves:
   for ( std::vector<ObjectCalcer*>::iterator i = mcalcable.begin();
         i != mcalcable.end(); ++i )
-    ( *i )->calc( mdoc );
+    ( *i )->calc( mdoc.document() );
   stopMove();
   mdoc.setModified( true );
 
@@ -87,8 +88,8 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   moveTo( c, snaptogrid );
   for ( std::vector<ObjectCalcer*>::iterator i = mcalcable.begin();
         i != mcalcable.end(); ++i )
-    ( *i )->calc( mdoc );
-  KigPainter p( v->screenInfo(), &v->curPix, mdoc );
+    ( *i )->calc( mdoc.document() );
+  KigPainter p( v->screenInfo(), &v->curPix, mdoc.document() );
   // TODO: only draw the explicitly moving objects as selected, the
   // other ones as deselected.. Needs some support from the
   // subclasses..
@@ -114,7 +115,7 @@ public:
 };
 
 MovingMode::MovingMode( const std::vector<ObjectHolder*>& os, const Coordinate& c,
-                        KigWidget& v, KigDocument& doc )
+                        KigWidget& v, KigPart& doc )
   : MovingModeBase( doc, v ), d( new Private )
 {
   d->pwwsm = c;
@@ -163,12 +164,12 @@ void MovingMode::moveTo( const Coordinate& o, bool snaptogrid )
   {
     assert( d->refmap.find( *i ) != d->refmap.end() );
     Coordinate nc = d->refmap[*i] + ( o - d->pwwsm );
-    if ( snaptogrid ) nc = mdoc.coordinateSystem().snapToGrid( nc, mview );
-    (*i)->move( nc, mdoc );
+    if ( snaptogrid ) nc = mdoc.document().coordinateSystem().snapToGrid( nc, mview );
+    (*i)->move( nc, mdoc.document() );
   };
 }
 
-PointRedefineMode::PointRedefineMode( ObjectHolder* p, KigDocument& d, KigWidget& v )
+PointRedefineMode::PointRedefineMode( ObjectHolder* p, KigPart& d, KigWidget& v )
   : MovingModeBase( d, v ), mp( p ), mmon( 0 )
 {
   assert( dynamic_cast<ObjectTypeCalcer*>( p->calcer() ) );
@@ -187,16 +188,16 @@ PointRedefineMode::PointRedefineMode( ObjectHolder* p, KigDocument& d, KigWidget
 void PointRedefineMode::moveTo( const Coordinate& o, bool snaptogrid )
 {
   Coordinate realo =
-    snaptogrid ? mdoc.coordinateSystem().snapToGrid( o, mview ) : o;
+    snaptogrid ? mdoc.document().coordinateSystem().snapToGrid( o, mview ) : o;
   ObjectFactory::instance()->redefinePoint(
-    static_cast<ObjectTypeCalcer*>( mp->calcer() ), realo, mdoc, mview );
+    static_cast<ObjectTypeCalcer*>( mp->calcer() ), realo, mdoc.document(), mview );
 }
 
 PointRedefineMode::~PointRedefineMode()
 {
 }
 
-MovingModeBase::MovingModeBase( KigDocument& doc, KigWidget& v )
+MovingModeBase::MovingModeBase( KigPart& doc, KigWidget& v )
   : KigMode( doc ), mview( v )
 {
 }
@@ -232,7 +233,7 @@ void PointRedefineMode::stopMove()
     oldparents.push_back( i->get() );
   mpcalc->setType( moldtype );
   mpcalc->setParents( oldparents );
-  mp->calc( mdoc );
+  mp->calc( mdoc.document() );
 
   KigCommand* command = new KigCommand( mdoc, i18n( "Redefine Point" ) );
   command->addTask(

@@ -43,7 +43,7 @@ KigMode::~KigMode()
 {
 }
 
-KigMode::KigMode( KigDocument& d )
+KigMode::KigMode( KigPart& d )
   : mdoc( d )
 {
 }

@@ -25,7 +25,7 @@
 #include "../misc/common.h"
 #include "../misc/coordinate_system.h"
 
-#include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 
 #include <klocale.h>

@@ -46,7 +46,7 @@ public:
   static KigFilterCabri* instance();
 
   bool supportMime ( const QString& mime );
-  bool load ( const QString& fromfile, KigDocument& to );
+  KigDocument* load ( const QString& fromfile );
 };
 
 #endif

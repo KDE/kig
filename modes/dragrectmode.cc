@@ -18,22 +18,23 @@
 
 #include "dragrectmode.h"
 
-#include "../kig/kig_view.h"
+#include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
+#include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
 
 #include <qevent.h>
 #include <qglobal.h>
 #include <kaction.h>
 
-DragRectMode::DragRectMode( const QPoint& start, KigDocument& d, KigWidget& w )
+DragRectMode::DragRectMode( const QPoint& start, KigPart& d, KigWidget& w )
   : KigMode( d ), mstart( start ), mnc( true ), mstartselected( true ),
     mcancelled( false )
 {
   moved( start, w );
 }
 
-DragRectMode::DragRectMode( KigDocument& d, KigWidget& w )
+DragRectMode::DragRectMode( KigPart& d, KigWidget& w )
   : KigMode( d ), mnc( true ), mstartselected( false ),
     mcancelled( false )
 {
@@ -48,7 +49,7 @@ void DragRectMode::moved( const QPoint& p, KigWidget& w )
   std::vector<QRect> overlay;
   if ( mstartselected )
   {
-    KigPainter pt( w.screenInfo(), &w.curPix, mdoc );
+    KigPainter pt( w.screenInfo(), &w.curPix, mdoc.document() );
     pt.drawFilledRect( QRect( p,  mstart ) );
     overlay = pt.overlay();
   };
@@ -60,7 +61,7 @@ void DragRectMode::released( const QPoint& p, KigWidget& w, bool nc )
   if ( mstartselected )
   {
     mrect =  w.fromScreen( QRect( mstart, p ) );
-    mret = mdoc.whatIsInHere( mrect, w );
+    mret = mdoc.document().whatIsInHere( mrect, w );
     mnc = nc;
 
     mdoc.doneMode( this );

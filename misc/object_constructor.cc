@@ -77,15 +77,16 @@ const int StandardConstructorBase::wantArgs( const std::vector<ObjectCalcer*>& o
 }
 
 void StandardConstructorBase::handleArgs(
-  const std::vector<ObjectCalcer*>& os, KigDocument& d,
+  const std::vector<ObjectCalcer*>& os, KigPart& d,
   KigWidget& v ) const
 {
-  std::vector<ObjectHolder*> bos = build( os, d, v );
+  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
   for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
         i != bos.end(); ++i )
   {
-    (*i)->calc( d );
+    (*i)->calc( d.document() );
   }
+
   d.addObjects( bos );
 }
 
@@ -258,11 +259,11 @@ const int MergeObjectConstructor::wantArgs(
 }
 
 void MergeObjectConstructor::handleArgs(
-  const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& v ) const
+  const std::vector<ObjectCalcer*>& os, KigPart& d, KigWidget& v ) const
 {
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
   {
-    int w = (*i)->wantArgs( os, d, v );
+    int w = (*i)->wantArgs( os, d.document(), v );
     if ( w == ArgsParser::Complete )
     {
       (*i)->handleArgs( os, d, v );
@@ -355,17 +356,17 @@ const int MacroConstructor::wantArgs( const std::vector<ObjectCalcer*>& os, cons
   return mparser.check( os );
 }
 
-void MacroConstructor::handleArgs( const std::vector<ObjectCalcer*>& os, KigDocument& d,
+void MacroConstructor::handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d,
                                    KigWidget& ) const
 {
   std::vector<ObjectCalcer*> args = mparser.parse( os );
-  std::vector<ObjectCalcer*> bos = mhier.buildObjects( args, d );
+  std::vector<ObjectCalcer*> bos = mhier.buildObjects( args, d.document() );
   std::vector<ObjectHolder*> hos;
   for ( std::vector<ObjectCalcer*>::iterator i = bos.begin();
         i != bos.end(); ++i )
   {
     hos.push_back( new ObjectHolder( *i ) );
-    hos.back()->calc( d );
+    hos.back()->calc( d.document() );
   }
 
   d.addObjects( hos );
@@ -403,19 +404,19 @@ void MacroConstructor::handlePrelim( KigPainter& p, const std::vector<ObjectCalc
   };
 }
 
-void SimpleObjectTypeConstructor::plug( KigDocument*, KigGUIAction* )
+void SimpleObjectTypeConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
-void MultiObjectTypeConstructor::plug( KigDocument*, KigGUIAction* )
+void MultiObjectTypeConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
-void MergeObjectConstructor::plug( KigDocument*, KigGUIAction* )
+void MergeObjectConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
-void MacroConstructor::plug( KigDocument* doc, KigGUIAction* kact )
+void MacroConstructor::plug( KigPart* doc, KigGUIAction* kact )
 {
   if ( mbuiltin ) return;
   if ( mhier.numberOfResults() != 1 )
@@ -517,7 +518,7 @@ std::vector<ObjectHolder*> PropertyObjectConstructor::build(
   return ret;
 }
 
-void PropertyObjectConstructor::plug( KigDocument*, KigGUIAction* )
+void PropertyObjectConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
@@ -531,7 +532,7 @@ bool ObjectConstructor::isTest() const
   return false;
 }
 
-BaseConstructMode* ObjectConstructor::constructMode( KigDocument& doc )
+BaseConstructMode* ObjectConstructor::constructMode( KigPart& doc )
 {
   return new ConstructMode( doc, this );
 }

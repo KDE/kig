@@ -28,6 +28,7 @@
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
 #include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 #include "../kig/kig_commands.h"
 
@@ -206,7 +207,7 @@ QStringList ConstrainedPointType::specialActions() const
   return ret;
 }
 
-static void redefinePoint( ObjectHolder* o, KigDocument& d, KigWidget& w )
+static void redefinePoint( ObjectHolder* o, KigPart& d, KigWidget& w )
 {
   PointRedefineMode pm( o, d, w );
   d.runMode( &pm );
@@ -214,7 +215,7 @@ static void redefinePoint( ObjectHolder* o, KigDocument& d, KigWidget& w )
 
 void FixedPointType::executeAction(
   int i, ObjectHolder& oh, ObjectTypeCalcer& o,
-  KigDocument& d, KigWidget& w, NormalMode& ) const
+  KigPart& d, KigWidget& w, NormalMode& ) const
 {
   switch( i )
   {
@@ -223,13 +224,13 @@ void FixedPointType::executeAction(
     bool ok = true;
     assert ( o.imp()->inherits( PointImp::stype() ) );
     Coordinate oldc = static_cast<const PointImp*>( o.imp() )->coordinate();
-    Coordinate c = d.coordinateSystem().getCoordFromUser(
+    Coordinate c = d.document().coordinateSystem().getCoordFromUser(
       i18n( "Set Coordinate" ), i18n( "Enter the new coordinate: " ),
-      d, &w, &ok, &oldc );
+      d.document(), &w, &ok, &oldc );
     if ( ! ok ) break;
 
     MonitorDataObjects mon( getAllParents( &o ) );
-    o.move( c, d );
+    o.move( c, d.document() );
     KigCommand* kc = new KigCommand( d, PointImp::stype()->moveAStatement() );
     mon.finish( kc );
 
@@ -245,7 +246,7 @@ void FixedPointType::executeAction(
 }
 
 void ConstrainedPointType::executeAction(
-  int i, ObjectHolder& oh, ObjectTypeCalcer& o, KigDocument& d, KigWidget& w,
+  int i, ObjectHolder& oh, ObjectTypeCalcer& o, KigPart& d, KigWidget& w,
   NormalMode& ) const
 {
   switch( i )

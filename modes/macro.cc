@@ -38,7 +38,7 @@
 
 using namespace std;
 
-DefineMacroMode::DefineMacroMode( KigDocument& d )
+DefineMacroMode::DefineMacroMode( KigPart& d )
   : BaseMode( d )
 {
   mwizard = new MacroWizard( d.widget(), this );
@@ -168,7 +168,7 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
   std::vector<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
   DragRectMode dm( p, mdoc, w );
   mdoc.runMode( &dm );
-  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc );
+  KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
   if ( ! dm.cancelled() )
   {
     std::vector<ObjectHolder*> ret = dm.ret();
@@ -197,7 +197,7 @@ void DefineMacroMode::leftClickedObject( ObjectHolder* o, const QPoint&,
   if ( isselected ) objs->erase( iter );
   else objs->push_back( o );
 
-  KigPainter p( w.screenInfo(), &w.stillPix, mdoc );
+  KigPainter p( w.screenInfo(), &w.stillPix, mdoc.document() );
   p.drawObject( o, !isselected );
   w.updateCurPix( p.overlay() );
   w.updateWidget();
@@ -226,7 +226,7 @@ void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QP
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );
-    KigPainter p( w.screenInfo(), &w.curPix, mdoc );
+    KigPainter p( w.screenInfo(), &w.curPix, mdoc.document() );
 
     // set the text next to the arrow cursor
     QPoint point = pt;

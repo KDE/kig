@@ -23,13 +23,16 @@
 #include "kgeo-resource.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/circle_imp.h"
 #include "../objects/circle_type.h"
 #include "../objects/intersection_types.h"
 #include "../objects/line_type.h"
+#include "../objects/object_calcer.h"
 #include "../objects/object_drawer.h"
 #include "../objects/object_factory.h"
+#include "../objects/object_holder.h"
 #include "../objects/other_type.h"
 #include "../objects/point_imp.h"
 #include "../objects/point_type.h"
@@ -47,13 +50,13 @@ bool KigFilterKGeo::supportMime( const QString& mime )
   return mime == "application/x-kgeo";
 }
 
-bool KigFilterKGeo::load( const QString& sFrom, KigDocument& doc )
+KigDocument* KigFilterKGeo::load( const QString& sFrom )
 {
   // kgeo uses a KSimpleConfig to save its contents...
   KSimpleConfig config ( sFrom );
 
   loadMetrics ( &config );
-  return loadObjects ( sFrom, &config, doc );
+  return loadObjects ( sFrom, &config );
 }
 
 void KigFilterKGeo::loadMetrics(KSimpleConfig* c )
@@ -110,9 +113,12 @@ static ObjectTypeCalcer* constructTextObject(
                             args, doc );
 }
 
-bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocument& doc )
+KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
 {
+  KigDocument* ret = new KigDocument();
+
   using namespace std;
+
   QString group;
   bool ok = true;
   c->setGroup("Main");
@@ -260,7 +266,7 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       x -= width / 80;
       y -= height / 80;
       o = factory->labelCalcer(
-        text, Coordinate( x, y ), frame, std::vector<ObjectCalcer*>(), doc );
+        text, Coordinate( x, y ), frame, std::vector<ObjectCalcer*>(), *ret );
       break;
     }
     case ID_fixedCircle:
@@ -275,7 +281,7 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       if ( parents.size() == 3 )
       {
         ObjectTypeCalcer* ao = new ObjectTypeCalcer( AngleType::instance(), parents );
-        ao->calc( doc );
+        ao->calc( *ret );
         parents.clear();
         parents.push_back( ao );
       };
@@ -284,17 +290,17 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       parents.clear();
       const Coordinate c =
         static_cast<const PointImp*>( angle->parents()[1]->imp() )->coordinate();
-      o = constructTextObject( c, angle, "angle-degrees", doc );
+      o = constructTextObject( c, angle, "angle-degrees", *ret );
       break;
     }
     case ID_distance:
     {
       if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
       ObjectTypeCalcer* segment = new ObjectTypeCalcer( SegmentABType::instance(), parents );
-      segment->calc( doc );
+      segment->calc( *ret );
       Coordinate m = ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
                        static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
-      o = constructTextObject( m, segment, "length", doc );
+      o = constructTextObject( m, segment, "length", *ret );
       break;
     }
     case ID_arc:
@@ -307,7 +313,7 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
       const CircleImp* circle = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate c = circle->center() + Coordinate( circle->radius(), 0 );
-      o = constructTextObject( c, parents[0], "surface", doc );
+      o = constructTextObject( c, parents[0], "surface", *ret );
       break;
     }
     case ID_slope:
@@ -320,8 +326,8 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
         static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
         static_cast<const PointImp*>( parents[1]->imp() )->coordinate() ) / 2;
       ObjectTypeCalcer* line = new ObjectTypeCalcer( LineABType::instance(), parents );
-      line->calc( doc );
-      o = constructTextObject( c, line, "slope", doc );
+      line->calc( *ret );
+      o = constructTextObject( c, line, "slope", *ret );
       break;
     }
     case ID_circumference:
@@ -329,7 +335,7 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
       const CircleImp* c = static_cast<const CircleImp*>( parents[0]->imp() );
       const Coordinate m = c->center() + Coordinate( c->radius(), 0 );
-      o = constructTextObject( m, parents[0], "circumference", doc );
+      o = constructTextObject( m, parents[0], "circumference", *ret );
       break;
     }
     case ID_rotation:
@@ -357,12 +363,11 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
     assert( d );
 
     os[i] = new ObjectHolder( o, d );
-    os[i]->calc( doc );
+    os[i]->calc( *ret );
   }; // for loop (creating HierarchyElements..
 
-  doc.setObjects( os );
-
-  return true;
+  ret->addObjects( os );
+  return ret;
 }
 
 KigFilterKGeo::KigFilterKGeo()
