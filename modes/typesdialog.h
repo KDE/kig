@@ -28,18 +28,7 @@
 #include <klistview.h>
 #include <kiconloader.h>
 
-class Macro;
 class KigPart;
-
-class MacroListElement
-  : public QListViewItem
-{
-  Macro* macro;
-public:
-  MacroListElement( KListView* lv, Macro* m );
-  Macro* getMacro() const { return macro; };
-};
-
 class KigDocument;
 
 class TypesDialog : public TypesDialogBase

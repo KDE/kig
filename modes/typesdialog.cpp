@@ -18,30 +18,44 @@
    USA
 **/
 
-
 #include "typesdialog.h"
 #include "typesdialog.moc"
 
+#include "edittype.h"
 #include "../kig/kig_part.h"
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
-#include "edittype.h"
 
+#include <kapplication.h>
+#include <kdebug.h>
 #include <kfiledialog.h>
 #include <kiconloader.h>
+#include <klocale.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kapplication.h>
 
 #include <qfile.h>
-#include <qtextstream.h>
-#include <qstringlist.h>
 #include <qpixmap.h>
+#include <qstringlist.h>
+#include <qtextstream.h>
 
-#include <vector>
 #include <algorithm>
+#include <vector>
+
+class MacroListElement
+  : public QListViewItem
+{
+  Macro* macro;
+public:
+  MacroListElement( KListView* lv, Macro* m );
+  Macro* getMacro() const { return macro; };
+};
+
+MacroListElement::MacroListElement( KListView* lv, Macro* m )
+  : QListViewItem( lv, QString::null, m->action->descriptiveName(), m->action->description() ),
+    macro( m )
+{
+}
 
 TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   : TypesDialogBase( parent, "types_dialog", true ), mpart( part )
@@ -50,7 +64,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   il = part.instance()->iconLoader();
   buttonHelp->setIconSet( QIconSet( il->loadIcon( "help", KIcon::Small ) ) );
   buttonOk->setIconSet( QIconSet( il->loadIcon( "button_ok", KIcon::Small ) ) );
+  buttonEdit->setIconSet( QIconSet( il->loadIcon( "edit", KIcon::Small ) ) );
   buttonRemove->setIconSet( QIconSet( il->loadIcon( "editdelete", KIcon::Small ) ) );
+  buttonExport->setIconSet( QIconSet( il->loadIcon( "fileexport", KIcon::Small ) ) );
+  buttonImport->setIconSet( QIconSet( il->loadIcon( "fileimport", KIcon::Small ) ) );
 
   typeList->setColumnWidth( 0, 22 );
   typeList->setColumnWidth( 1, 140 );
@@ -101,29 +118,16 @@ void TypesDialog::deleteType()
     ++it;
   }
   if (selectedTypes.empty()) return;
-  if (selectedTypes.size()==1)
-  {
-    if (KMessageBox::warningContinueCancel
-	(this,
-	 i18n("Are you sure you want to delete the type named \"%1\"?").arg(selectedTypes.front()->action->descriptiveName()),
-	 i18n("Are You Sure?"),
-	 KStdGuiItem::cont(),
-	 "deleteTypeWarning") ==KMessageBox::Cancel ) return;
-  }
-  else
-  {
-    QStringList types;
-    for ( std::vector<Macro*>::iterator j = selectedTypes.begin();
-        j != selectedTypes.end(); ++j)
-      types << ( *j )->action->descriptiveName();
-    if( KMessageBox::warningContinueCancelList
-	(this,
-	 i18n("Are you sure you want to delete these %1 types?").arg(selectedTypes.size()),
-	 types,
-	 i18n("Are You Sure?"),
-	 KStdGuiItem::cont(),
-	 "deleteTypeWarning") == KMessageBox::Cancel ) return;
-  }
+  QStringList types;
+  for ( std::vector<Macro*>::iterator j = selectedTypes.begin(); 
+        j != selectedTypes.end(); ++j )
+    types << ( *j )->action->descriptiveName();
+  if ( KMessageBox::warningContinueCancelList( this,
+        i18n( "Are you sure you want to delete this type?",
+              "Are you sure you want to delete these %n types?", selectedTypes.size() ),
+        types, i18n("Are You Sure?"), KStdGuiItem::cont(),
+        "deleteTypeWarning") == KMessageBox::Cancel )
+     return;
   for ( std::vector<QListViewItem*>::iterator i = items.begin(); i != items.end(); ++i)
   {
     int appel = typeList->itemIndex(*i);
@@ -208,15 +212,23 @@ void TypesDialog::editType()
       items.push_back( it.current() );
     ++it;
   }
+/*
   if ( items.size() == 0 )
   {
-    KMessageBox::sorry( this, i18n( "There is no type selected. Please select a type to edit and try again." ),
+    KMessageBox::sorry( this,
+                        i18n( "There is no type selected. Please select a type "
+                              "to edit and try again." ),
                         i18n( "No Type Selected" ) );
     return;
   }
-  else if ( items.size() != 1 )
+*/
+  if ( items.size() > 1 )
   {
-    KMessageBox::sorry( this, i18n( "There is more than one type selected.  You can only edit one type at a time. Please select only the type you want to edit and try again." ), i18n( "More Than One Type Selected" ) );
+    KMessageBox::sorry( this,
+                        i18n( "There is more than one type selected. You can "
+                              "only edit one type at a time. Please select "
+                              "only the type you want to edit and try again." ),
+                        i18n( "More Than One Type Selected" ) );
     return;
   }
   QListViewItem* i = items[0];
@@ -240,12 +252,6 @@ void TypesDialog::editType()
     loadAllMacros();
   }
   delete d;
-}
-
-MacroListElement::MacroListElement( KListView* lv, Macro* m )
-  : QListViewItem( lv, QString::null, m->action->descriptiveName(), m->action->description() ),
-    macro( m )
-{
 }
 
 void TypesDialog::loadAllMacros()

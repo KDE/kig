@@ -14,7 +14,6 @@
     </property>
     <property name="caption">
         <string>Manage Types</string>
-        <comment>This is </comment>
     </property>
     <property name="whatsThis" stdset="0">
         <string>Here you can manage types; you can remove them, and load and save them from and to files...</string>
@@ -97,13 +96,31 @@
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QPushButton">
+                <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>buttonRemove</cstring>
+                        <cstring>layout3</cstring>
                     </property>
-                    <property name="text">
-                        <string>Delete</string>
-                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="KPushButton">
+                            <property name="name">
+                                <cstring>buttonEdit</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Edit...</string>
+                            </property>
+                        </widget>
+                        <widget class="KPushButton">
+                            <property name="name">
+                                <cstring>buttonRemove</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Delete</string>
+                            </property>
+                        </widget>
+                    </vbox>
                 </widget>
                 <spacer>
                     <property name="name">
@@ -117,34 +134,36 @@
                     </property>
                     <property name="sizeHint">
                         <size>
-                            <width>71</width>
+                            <width>20</width>
                             <height>20</height>
                         </size>
                     </property>
                 </spacer>
-                <widget class="KPushButton">
+                <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>buttonEdit</cstring>
+                        <cstring>layout4</cstring>
                     </property>
-                    <property name="text">
-                        <string>Edit...</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>buttonExport</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Export...</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>buttonImport</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Import...</string>
-                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="KPushButton">
+                            <property name="name">
+                                <cstring>buttonExport</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Export...</string>
+                            </property>
+                        </widget>
+                        <widget class="KPushButton">
+                            <property name="name">
+                                <cstring>buttonImport</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Import...</string>
+                            </property>
+                        </widget>
+                    </vbox>
                 </widget>
             </hbox>
         </widget>
@@ -271,6 +290,9 @@
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klistview.h</includehint>
+    <includehint>kpushbutton.h</includehint>
+    <includehint>kpushbutton.h</includehint>
+    <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>
     <includehint>kpushbutton.h</includehint>
