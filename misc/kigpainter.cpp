@@ -1030,6 +1030,8 @@ void KigPainter::drawCurve( const CurveImp* curve )
           debug_nr_flushes++;
           curpolyline[curpolylinenextfree++] = tp1;
         }
+        if ( curpolylinenextfree == 0 ) 
+          curpolyline[curpolylinenextfree++] = tp1;
         curpolyline[curpolylinenextfree++] = tp2;
         curpolyline[curpolylinenextfree++] = tp0;
       }
@@ -1049,7 +1051,8 @@ void KigPainter::drawCurve( const CurveImp* curve )
     }
   }
   // flush the rest of the curve
-  mP.drawPolyline( curpolyline, 0, curpolylinenextfree - 1 );
+//  mP.drawPolyline( curpolyline, 0, curpolylinenextfree - 1 );
+  mP.drawPolyline( curpolyline, 0, curpolylinenextfree );
   curpolylinenextfree = 0;
   debug_nr_flushes++;
 
