@@ -50,7 +50,7 @@ public:
    */
   virtual QString coordinateFormatNotice() const = 0;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const = 0;
-  virtual void drawGrid ( KigPainter& p ) const = 0;
+  virtual void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const = 0;
 };
 
 class EuclideanCoords
@@ -62,7 +62,7 @@ public:
   virtual QString fromScreen( const Coordinate& pt, const KigWidget& w ) const;
   virtual QString coordinateFormatNotice() const;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const;
-  virtual void drawGrid ( KigPainter& p ) const;
+  virtual void drawGrid ( KigPainter& p, bool showgrid = true, bool showaxes = true ) const;
 };
 
 #endif

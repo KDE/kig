@@ -43,6 +43,7 @@ KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device, bool no )
     mNeedOverlay( no ),
     overlayenlarge( 0 )
 {
+  mP.setBackgroundColor( Qt::white );
 }
 
 KigPainter::~KigPainter()
@@ -351,9 +352,9 @@ QPoint KigPainter::toScreen( const Coordinate p ) const
   return msi.toScreen( p );
 }
 
-void KigPainter::drawGrid( const CoordinateSystem& c )
+void KigPainter::drawGrid( const CoordinateSystem& c, bool showGrid, bool showAxes )
 {
-  c.drawGrid( *this );
+  c.drawGrid( *this, showGrid, showAxes );
   setWholeWinOverlay();
 }
 

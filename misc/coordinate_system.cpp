@@ -64,7 +64,7 @@ Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 };
 
 
-void EuclideanCoords::drawGrid( KigPainter& p ) const
+void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
 {
   // the intervals:
   // we try to have one of them per 50 pixels or so..
@@ -91,73 +91,79 @@ void EuclideanCoords::drawGrid( KigPainter& p ) const
   const int iMaxY = static_cast<int>( ( dMaxY - hInterval / 4 ) / vInterval );
 
   /****** the grid lines ******/
-  p.setPen( QPen( lightGray, 0, DotLine ) );
-  // vertical lines...
-  for ( int i = iMinX; i <= iMaxX; ++i )
-    p.drawSegment( Coordinate( i * hInterval, iMinY * vInterval ),
-		   Coordinate( i * hInterval, iMaxY * vInterval ) );
-  // horizontal lines...
-  for ( int i = iMinY; i <= iMaxY; ++i )
-    p.drawSegment( Coordinate( iMinX * hInterval, i * vInterval ),
-		   Coordinate( iMaxX * hInterval, i * vInterval ) );
+  if ( showgrid )
+  {
+    p.setPen( QPen( lightGray, 0, DotLine ) );
+    // vertical lines...
+    for ( int i = iMinX; i <= iMaxX; ++i )
+      p.drawSegment( Coordinate( i * hInterval, iMinY * vInterval ),
+                     Coordinate( i * hInterval, iMaxY * vInterval ) );
+    // horizontal lines...
+    for ( int i = iMinY; i <= iMaxY; ++i )
+      p.drawSegment( Coordinate( iMinX * hInterval, i * vInterval ),
+                     Coordinate( iMaxX * hInterval, i * vInterval ) );
+  }
 
   /****** the axes ******/
-  p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
-  // x axis
-  p.drawSegment( Coordinate( dMinX, 0 ), Coordinate( dMaxX, 0 ) );
-  // y axis
-  p.drawSegment( Coordinate( 0, dMinY ), Coordinate( 0, dMaxY ) );
-
-  /****** the numbers ******/
-
-  // we don't draw all numbers...
-  const int hStep = (iMaxX - iMinX) >= 10 ? 2 : 1;
-  const int vStep = (iMaxY - iMinY) >= 10 ? 2 : 1;
-
-  // x axis
-  for( int i = iMinX; i <= iMaxX; i += hStep )
+  if ( showaxes )
   {
-    // we skip 0 since that would look stupid... (the axes going
-    // through the 0 etc. )
-    if( i == 0 ) continue;
+    p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
+    // x axis
+    p.drawSegment( Coordinate( dMinX, 0 ), Coordinate( dMaxX, 0 ) );
+    // y axis
+    p.drawSegment( Coordinate( 0, dMinY ), Coordinate( 0, dMaxY ) );
 
-    p.drawText(
-      Rect( Coordinate( i * hInterval, 0 ), hStep*hInterval, -2*vInterval ).normalized(),
-      QString().setNum( i * hInterval ),
-      AlignLeft | AlignTop
-      );
-  };
-  // y axis...
-  for ( int i = iMinY; i <= iMaxY; i += vStep )
-  {
-    if( i == 0 ) continue;
-    p.drawText ( Rect( Coordinate( 0, i * vInterval ), vStep*hInterval, vInterval ).normalized(),
-                 QString().setNum( i * vInterval ),
-                 AlignBottom | AlignLeft
-      );
-  };
-  // arrows on the ends of the axes...
-  p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
-  p.setBrush( QBrush( Qt::gray ) );
-  std::vector<Coordinate> a;
+    /****** the numbers ******/
 
-  // the arrow on the right end of the X axis...
-  a.reserve( 3 );
-  double u = p.pixelWidth();
-  a.push_back( Coordinate( dMaxX - 6 * u, -3 * u) );
-  a.push_back( Coordinate( dMaxX, 0 ) );
-  a.push_back( Coordinate( dMaxX - 6 * u, 3 * u ) );
-  p.drawPolygon( a, true );
-  //  p.drawLine( right, 0, right + 5, 0 );
+    // we don't draw all numbers...
+    const int hStep = (iMaxX - iMinX) >= 10 ? 2 : 1;
+    const int vStep = (iMaxY - iMinY) >= 10 ? 2 : 1;
 
-  // the arrow on the top end of the Y axis...
-  a.clear();
-  a.reserve( 3 );
-  a.push_back( Coordinate( 3 * u, dMaxY - 6 * u ) );
-  a.push_back( Coordinate( 0, dMaxY ) );
-  a.push_back( Coordinate( -3 * u, dMaxY - 6 * u ) );
-  p.drawPolygon( a, true );
-  //  p.drawLine( 0, top, 0, top - 6 );
+    // x axis
+    for( int i = iMinX; i <= iMaxX; i += hStep )
+    {
+      // we skip 0 since that would look stupid... (the axes going
+      // through the 0 etc. )
+      if( i == 0 ) continue;
+
+      p.drawText(
+        Rect( Coordinate( i * hInterval, 0 ), hStep*hInterval, -2*vInterval ).normalized(),
+        QString().setNum( i * hInterval ),
+        AlignLeft | AlignTop
+        );
+    };
+    // y axis...
+    for ( int i = iMinY; i <= iMaxY; i += vStep )
+    {
+      if( i == 0 ) continue;
+      p.drawText ( Rect( Coordinate( 0, i * vInterval ), vStep*hInterval, vInterval ).normalized(),
+                   QString().setNum( i * vInterval ),
+                   AlignBottom | AlignLeft
+        );
+    };
+    // arrows on the ends of the axes...
+    p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
+    p.setBrush( QBrush( Qt::gray ) );
+    std::vector<Coordinate> a;
+
+    // the arrow on the right end of the X axis...
+    a.reserve( 3 );
+    double u = p.pixelWidth();
+    a.push_back( Coordinate( dMaxX - 6 * u, -3 * u) );
+    a.push_back( Coordinate( dMaxX, 0 ) );
+    a.push_back( Coordinate( dMaxX - 6 * u, 3 * u ) );
+    p.drawPolygon( a, true );
+    //  p.drawLine( right, 0, right + 5, 0 );
+
+    // the arrow on the top end of the Y axis...
+    a.clear();
+    a.reserve( 3 );
+    a.push_back( Coordinate( 3 * u, dMaxY - 6 * u ) );
+    a.push_back( Coordinate( 0, dMaxY ) );
+    a.push_back( Coordinate( -3 * u, dMaxY - 6 * u ) );
+    p.drawPolygon( a, true );
+    //  p.drawLine( 0, top, 0, top - 6 );
+  }; // if( showaxes )
 }
 
 QString EuclideanCoords::coordinateFormatNotice() const

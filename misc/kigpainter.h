@@ -238,7 +238,7 @@ public:
 
   const Rect simpleBoundingRect( const Coordinate& c, const QString s );
 
-  void drawGrid( const CoordinateSystem& c );
+  void drawGrid( const CoordinateSystem& c, bool showGrid = true, bool showAxes = true );
 
   const std::vector<QRect>& overlay() { return mOverlay; };
 
