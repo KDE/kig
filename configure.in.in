@@ -141,7 +141,7 @@ AC_DEFUN([REGINA_LIB_BOOST_PYTHON], [
 	
             # Check for -lpython.
             for pylib in "$pyver" python python2.3 python2.2; do
-              for pylibdir in "/usr/lib/" "/usr/local/lib" "/usr/lib/$pyver/config/" \
+              for pylibdir in "/usr/lib" "/usr/local/lib" "/usr/lib/$pyver/config" \
 		"/usr/local/lib/$pyver/config"; do
 		for extralibs in "" "-lpthread -lm -lutil -ldl"; do
                   AC_MSG_CHECKING([for $pylibdir/lib$pylib and $extralibs with $incdir/Python.h])
