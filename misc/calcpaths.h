@@ -50,4 +50,11 @@ Objects calcPath( const Objects& from, const Object* to );
  */
 Objects sideOfTreePath( const Objects& from, const Object* to );
 
+/**
+ * This function returns all objects above the @p given in the
+ * dependency graph.  The @p given objects are also included
+ * themselves..
+ */
+Objects getAllParents( const Objects& objs );
+
 #endif

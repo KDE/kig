@@ -109,7 +109,7 @@ Objects calcPath( const Objects& from, const Object* to )
   return ret;
 };
 
-bool sideOfTreePathVisit( const Object* o, const Objects& from, Objects& ret )
+static bool visit( const Object* o, const Objects& from, Objects& ret )
 {
   // this function returns true if the visited object depends on one
   // of the objects in from.  If we encounter objects that are on the
@@ -122,7 +122,7 @@ bool sideOfTreePathVisit( const Object* o, const Objects& from, Objects& ret )
   bool alldepend = true;
   for ( uint i = 0; i < o->parents().size(); ++i )
   {
-    bool v = sideOfTreePathVisit( o->parents()[i], from, ret );
+    bool v = visit( o->parents()[i], from, ret );
     somedepend |= v;
     alldepend &= v;
     deps[i] = v;
@@ -140,6 +140,21 @@ bool sideOfTreePathVisit( const Object* o, const Objects& from, Objects& ret )
 Objects sideOfTreePath( const Objects& from, const Object* to )
 {
   Objects ret;
-  sideOfTreePathVisit( to, from, ret );
+  visit( to, from, ret );
+  return ret;
+};
+
+Objects getAllParents( const Objects& objs )
+{
+  Objects ret( objs );
+  Objects::const_iterator begin = ret.begin();
+  Objects::const_iterator end = ret.end();
+  while ( begin != end )
+  {
+    for ( Objects::const_iterator i = begin; i != end; ++i )
+      ret.upush( (*i)->parents() );
+    begin = end;
+    end = ret.end();
+  };
   return ret;
 };
