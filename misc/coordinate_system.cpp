@@ -490,7 +490,7 @@ QValidator* EuclideanCoords::coordinateValidator() const
 
 QValidator* PolarCoords::coordinateValidator() const
 {
-  return new CoordinateValidator()
+  return new CoordinateValidator();
 }
 
 const Coordinate CoordinateSystem::getCoordFromUser( const QString& caption,
