@@ -246,6 +246,8 @@ static bool oldElemToNewObject( const QCString type,
       t = LineReflectionType::instance();
     else if ( type == "PointPolar" )
       t = ConicPolarPointType::instance();
+    else if ( type == "Ray" )
+      t = RayABType::instance();
     else if ( type == "RotatedPoint" )
       t = RotationType::instance();
     else if ( type == "Segment" )
