@@ -61,10 +61,12 @@ public:
   // of the complication there..
   Object* locus( const Objects& parents );
 
-  // returns a label with text s at point c..
+  // returns a label with text s at point c..  It ( and its parents )
+  // is calced already...
   Object* label( const QString& s, const Coordinate& loc,
-                 bool needframe = false,
-                 const Objects& parents = Objects() );
+                 bool needframe,
+                 const Objects& parents,
+                 const KigDocument& doc );
 
   // returns a property object for the property p of object o.  NOTE
   // that o should have already been calc'd, or this will fail and

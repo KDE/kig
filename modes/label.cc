@@ -416,8 +416,7 @@ void TextLabelConstructionMode::finish(
   const argvect& props, bool needframe )
 {
   Objects args( props.begin(), props.end() );
-  Object* label = ObjectFactory::instance()->label( s, coord, needframe, args );
-  label->calc( mdoc );
+  Object* label = ObjectFactory::instance()->label( s, coord, needframe, args, mdoc );
   mdoc.addObject( label );
 }
 

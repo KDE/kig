@@ -171,7 +171,8 @@ Object* ObjectFactory::locus( const Objects& parents )
 }
 
 Object* ObjectFactory::label( const QString& s, const Coordinate& loc,
-                              bool needframe, const Objects& nparents )
+                              bool needframe, const Objects& nparents,
+                              const KigDocument& doc )
 {
   using namespace std;
   Objects parents;
@@ -180,7 +181,9 @@ Object* ObjectFactory::label( const QString& s, const Coordinate& loc,
   parents.push_back( new DataObject( new StringImp( s ) ) );
   parents.push_back( new DataObject( new PointImp( loc ) ) );
   copy( nparents.begin(), nparents.end(), back_inserter( parents ) );
-  return new RealObject( TextType::instance(), parents );
+  RealObject* ret = new RealObject( TextType::instance(), parents );
+  ret->calc( doc );
+  return ret;
 }
 
 Object* ObjectFactory::constrainedPoint( Object* curve, double param )

@@ -96,15 +96,19 @@ bool TextType::canMove() const
 }
 
 void TextType::move( RealObject* ourobj, const Coordinate& to,
-                     const KigDocument& ) const
+                     const KigDocument& d ) const
 {
   const Objects parents = ourobj->parents();
   assert( parents.size() >= 3 );
   const Objects firstthree( parents.begin(), parents.begin() + 3 );
   const Objects ps = mparser.parse( firstthree );
-  assert( ps[1]->inherits( Object::ID_DataObject ) );
-  DataObject* c = static_cast<DataObject*>( ps[1] );
-  c->setImp( new PointImp( to ) );
+  if( ps[1]->inherits( Object::ID_DataObject ) )
+  {
+    DataObject* c = static_cast<DataObject*>( ps[1] );
+    c->setImp( new PointImp( to ) );
+  }
+  else
+    ps[1]->move( to, d );
 }
 
 QStringList TextType::specialActions() const

@@ -105,7 +105,7 @@ static Object* constructTextObject( const Coordinate& c, Object* o,
   Object* propo = fact->propertyObject( o, arg );
   propo->calc( doc );
   return fact->label( QString::fromLatin1( "%1" ), c, true,
-                      Objects( propo ) );
+                      Objects( propo ), doc );
 };
 
 bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocument& doc )
@@ -254,8 +254,7 @@ bool KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c, KigDocum
       // we don't want the center, but the top left..
       x -= width / 80;
       y -= height / 80;
-      Object* label = factory->label( text, Coordinate( x, y ), frame );
-      label->calc( doc );
+      Object* label = factory->label( text, Coordinate( x, y ), frame, Objects(), doc );
       os[id] = label;
       break;
     }

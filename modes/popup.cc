@@ -580,8 +580,7 @@ bool PropertiesActionsProvider::executeAction(
     Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
     Object* label = ObjectFactory::instance()->label(
       QString::fromLatin1( "%1" ), c,
-      false, ret );
-    label->calc( doc );
+      false, ret, doc );
     doc.addObject( label );
   }
   else

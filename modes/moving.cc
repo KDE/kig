@@ -37,7 +37,7 @@
 void MovingModeBase::initScreen( const Objects& tin )
 {
   // don't try to move objects that have been deleted from the
-  // document..
+  // document or internal objects that the user is not aware of..
   Objects in;
   Objects docobjs = mdoc.allObjects();
   for ( uint i = 0; i < tin.size(); ++i )
@@ -89,7 +89,6 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
 {
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
-
 
   bool snaptogrid = e->state() & Qt::ShiftButton;
   moveTo( c, snaptogrid );

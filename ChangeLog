@@ -3,6 +3,11 @@
 	* add documentation about installing the python dev libs to
 	configure.in.bot
 
+	* adapt some infrastructure regarding text labels to be able to
+	work with labels that get their location from an invisible Point
+	object.  This will ease the adding of support for attached text
+	labels..
+
 2003-07-12  Dominique Devriese  <devriese@kde.org>
 
 	* prevent a crash when kig cannot find its library.  It now just

@@ -164,10 +164,9 @@ static bool oldElemToNewObject( const QCString type,
       propos.push_back( new PropertyObject( parents[i], propid ) );
     };
     propos.calc( kdoc );
-    Object* tlabel = ObjectFactory::instance()->label( text, c, false, propos );
+    Object* tlabel = ObjectFactory::instance()->label( text, c, false, propos, kdoc );
     assert( tlabel->inherits( Object::ID_RealObject ) );
     RealObject* label = static_cast<RealObject*>( tlabel );
-    label->calc( kdoc );
     o.setType( label->type() );
     o.setParents( label->parents() );
 
