@@ -357,10 +357,11 @@
     <section id="document-context-menus">
       <title>Document context menus</title>
       <para>
-	<mousebutton>Right-</mousebutton>clicking on the document will
-	present a popup that you can use to start constructing a new
-	object, change the coordinate system used, show hidden
-	objects, and even zoom in and zoom out of the document.
+	<mousebutton>Right-</mousebutton>clicking on the document (
+	i.e. not on an object ) will present a popup that you can use
+	to start constructing a new object, change the coordinate
+	system used, show hidden objects, and even zoom in and zoom
+	out of the document.
       </para>
     </section>
     <section id="defining-macros">
@@ -474,17 +475,32 @@
 	about objects ( a.k.a. properties ).
       </para>
       <para>
-        To construct a text label, simply press the Text Label button
-        in the Kig toolbar or select
+        To start constructing a text label, simply press the Text
+        Label button in the Kig toolbar or select
         <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
         </guisubmenu><guimenuitem>Text label</guimenuitem>
-        </menuchoice> in the menu bar.  Then click the screen on the
-        place where you want to place the label.
+        </menuchoice> in the menu bar.
       </para>
       <para>
-        Type in the text that you want to show in the new label, and
-        click "Finish". The label should be present on your document
-        now.
+	Next, you have to choose a location for the text label.  You
+	can either just select a random location on the screen, or
+	choose to "attach" the label to another object.
+      </para>
+      <screenshot>
+	<screeninfo>Attaching a label to a circle...</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="text_label_attaching.png" format="PNG"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>Attaching a label to a circle...</phrase>
+	  </textobject>
+	</mediaobject>
+      </screenshot>
+      <para>
+        You now reach the text label dialog.  Here, you can type in
+        the text that you want to show in the new label, and click
+        "Finish". The label should now be present on your document.
       </para>
       <screenshot>
 	<screeninfo>The Text Label Dialog</screeninfo>
@@ -502,11 +518,12 @@
         text.  However, there is also support for showing variable
         information about objects in a label (e.g. you can construct a
         label showing the text "This segment is %1 units long.." where
-        "%1" would be replaced with the length of a specific segment).
+        "%1" would be dynamically replaced with the length of a
+        specific segment).
       </para>
       <para>
-        To do this, enter text with a number of placeholders ( "%1",
-        "%2", "%3" etc. ) in it.  When you are finished, press the
+        To do this, enter a text with a number of placeholders ( "%1",
+        "%2" etc. ) in it.  When you are finished, press the
         <guibutton>Next</guibutton> button to continue. If you want to
         change the text or variables later, you can go back using the
         <guibutton>Back</guibutton> button.
@@ -528,7 +545,7 @@
       </para>
       <screenshot>
 	<screeninfo>Selecting a property for a variable
-	part</screeninfo>
+	  part</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata
@@ -541,6 +558,14 @@
 	</mediaobject>
       </screenshot>
     </section>
+<!--    <section id="scripting">
+      <title>Scripting</title>
+      <para>
+	&kig; allows the user to create custom types in the Python
+	scripting language.  This is a very advanced feature, and the
+	only
+      </para>
+    </section> -->
   </chapter>
 
   <chapter id="kig-object-types">
@@ -577,7 +602,7 @@
 	    Free software programs are developed in a very open
 	    spirit, and its developers are usually very responsive to
 	    user feedback.  Therefore, if you have any questions,
-	    complaints, or whatever about kig, please let me know at
+	    complaints, or whatever about &kig;, please let me know at
 	    <email>devriese@kde.org</email>.
 	  </para>
 	</listitem>
