@@ -303,50 +303,6 @@ PointTransform::PointTransform( const Objects& os )
  * transform a segment
  */
 
-/*
- * since we cannot inherit directly from the Segment object, we
- * must provide some of the functions ourselves:
- * draw, ...
- */
-
-bool SegmentTransform::contains(const Coordinate& o, 
-                                const ScreenInfo& si ) const
-{
-  return isOnSegment( o, mpa, mpb, si.normalMiss() );
-}
-
-void SegmentTransform::draw(KigPainter& p, bool ss) const
-{
-  p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
-  p.drawSegment( mpa, mpb );
-}
-
-bool SegmentTransform::inRect(const Rect&) const
-{
-  // TODO: implement for real (see segment.cpp)
-//  if ( mpa->inRect( p ) || mpb->inRect( p ) ) return true;
-  return false;
-}
-
-Coordinate SegmentTransform::getPoint(double param) const
-{
-  Coordinate dir = mpb - mpa;
-  return mpa + dir*param;
-}
-
-double SegmentTransform::getParam(const Coordinate& point) const
-{
-  Coordinate pa = point - mpa;
-  Coordinate ba = mpb - mpa;
-  double balsq = ba.x*ba.x + ba.y*ba.y;
-  assert (balsq > 0);
-
-  double t = (pa.x*ba.x + pa.y*ba.y)/balsq;
-  if ( t < 0 ) return 0.;
-  if ( t > 1 ) return 1.;
-  return t;
-}
-
 void SegmentTransform::calc()
 {
   mvalid = true;
@@ -379,7 +335,7 @@ Objects SegmentTransform::getParents() const
 }
 
 SegmentTransform::SegmentTransform(const SegmentTransform& c)
-  : Line( c ), msegment( c.msegment ), 
+  : Segment ( c ), msegment( c.msegment ), 
     transformationsnum ( c.transformationsnum )
 {
   for ( int i = 0; i < c.transformationsnum; i++ )
@@ -458,7 +414,7 @@ void SegmentTransform::sDrawPrelim( KigPainter& p, const Objects& os )
 }
 
 SegmentTransform::SegmentTransform( const Objects& os )
-  : Line()
+  : Segment()
 {
   assert( os.size() <= MAXTRANSFORMATIONS + 1 );
   Objects::const_iterator i = os.begin();
