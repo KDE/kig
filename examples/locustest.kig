@@ -1,113 +1,116 @@
 <!DOCTYPE KigDocument>
-<KigDocument Version="0.1.0" >
- <ObjectHierarchy>
-  <HierarchyElement given="false" typeName="NormalPoint" id="1" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="shown" >true</param>
-   <param name="x" >9.99611</param>
-   <param name="y" >9.67971</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="2" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="shown" >true</param>
-   <param name="x" >9.18808</param>
-   <param name="y" >-2.03061</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="3" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="shown" >true</param>
-   <param name="x" >-1.55367</param>
-   <param name="y" >13.0171</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="4" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="shown" >true</param>
-   <param name="x" >-9.63092</param>
-   <param name="y" >9.86598</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineTTP" id="5" final="true" >
-   <parent id="4" />
-   <parent id="1" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="6" final="true" >
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="shown" >true</param>
-   <param name="x" >-10.4258</param>
-   <param name="y" >-10.3351</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineTTP" id="7" final="true" >
-   <parent id="4" />
-   <parent id="6" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineTTP" id="8" final="true" >
-   <parent id="3" />
-   <parent id="6" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="9" final="true" >
-   <parent id="8" />
-   <param name="color" >#0000ff</param>
-   <param name="implementation-type" >Constrained</param>
-   <param name="param" >0.725237</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineTTP" id="10" final="true" >
-   <parent id="9" />
-   <parent id="1" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineTTP" id="11" final="true" >
-   <parent id="3" />
-   <parent id="2" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="IntersectionPoint" id="12" final="true" >
-   <parent id="5" />
-   <parent id="11" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineTTP" id="13" final="true" >
-   <parent id="9" />
-   <parent id="12" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="IntersectionPoint" id="14" final="true" >
-   <parent id="13" />
-   <parent id="7" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="LineTTP" id="15" final="true" >
-   <parent id="14" />
-   <parent id="2" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="IntersectionPoint" id="16" final="true" >
-   <parent id="15" />
-   <parent id="10" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
-  <HierarchyElement given="false" typeName="Locus" id="17" final="true" >
-   <parent id="9" />
-   <parent id="16" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>
-  </HierarchyElement>
- </ObjectHierarchy>
+<KigDocument Version="0.4.0" >
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Objects>
+  <Data type="double" id="1" >9.99611</Data>
+  <Data type="double" id="2" >9.67971</Data>
+  <Data type="double" id="3" >9.18808</Data>
+  <Data type="double" id="4" >-2.03061</Data>
+  <Data type="double" id="5" >-1.55367</Data>
+  <Data type="double" id="6" >13.0171</Data>
+  <Data type="double" id="7" >-9.63092</Data>
+  <Data type="double" id="8" >9.86598</Data>
+  <Data type="double" id="9" >-10.4258</Data>
+  <Data type="double" id="10" >-10.3351</Data>
+  <Data type="double" id="11" >0.725237</Data>
+  <Data type="hierarchy" id="12" >
+   <input requirement="point" id="1" />
+   <input requirement="point" id="2" />
+   <input requirement="line" id="3" />
+   <input requirement="point" id="4" />
+   <input requirement="point" id="5" />
+   <intermediate action="calc" type="LineAB" id="6" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineLineIntersection" id="7" >
+    <arg>6</arg>
+    <arg>3</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineAB" id="8" >
+    <arg>7</arg>
+    <arg>4</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineAB" id="9" >
+    <arg>1</arg>
+    <arg>5</arg>
+   </intermediate>
+   <result action="calc" type="LineLineIntersection" id="10" >
+    <arg>8</arg>
+    <arg>9</arg>
+   </result>
+  </Data>
+  <Object width="5" shown="true" type="FixedPoint" id="13" color="#0000ff" >
+   <Parent id="1" />
+   <Parent id="2" />
+  </Object>
+  <Object width="5" shown="true" type="FixedPoint" id="14" color="#0000ff" >
+   <Parent id="3" />
+   <Parent id="4" />
+  </Object>
+  <Object width="5" shown="true" type="FixedPoint" id="15" color="#0000ff" >
+   <Parent id="5" />
+   <Parent id="6" />
+  </Object>
+  <Object width="5" shown="true" type="FixedPoint" id="16" color="#0000ff" >
+   <Parent id="7" />
+   <Parent id="8" />
+  </Object>
+  <Object width="5" shown="true" type="FixedPoint" id="17" color="#0000ff" >
+   <Parent id="9" />
+   <Parent id="10" />
+  </Object>
+  <Object width="-1" shown="true" type="LineAB" id="18" color="#0000ff" >
+   <Parent id="15" />
+   <Parent id="14" />
+  </Object>
+  <Object width="-1" shown="true" type="LineAB" id="19" color="#0000ff" >
+   <Parent id="16" />
+   <Parent id="13" />
+  </Object>
+  <Object width="-1" shown="true" type="LineAB" id="20" color="#0000ff" >
+   <Parent id="16" />
+   <Parent id="17" />
+  </Object>
+  <Object width="-1" shown="true" type="LineAB" id="21" color="#0000ff" >
+   <Parent id="15" />
+   <Parent id="17" />
+  </Object>
+  <Object width="-1" shown="true" type="LineLineIntersection" id="22" color="#0000ff" >
+   <Parent id="19" />
+   <Parent id="18" />
+  </Object>
+  <Object width="5" shown="true" type="ConstrainedPoint" id="23" color="#0000ff" >
+   <Parent id="21" />
+   <Parent id="11" />
+  </Object>
+  <Object width="-1" shown="true" type="Locus" id="24" color="#0000ff" >
+   <Parent id="21" />
+   <Parent id="12" />
+   <Parent id="22" />
+   <Parent id="20" />
+   <Parent id="14" />
+   <Parent id="13" />
+  </Object>
+  <Object width="-1" shown="true" type="LineAB" id="25" color="#0000ff" >
+   <Parent id="23" />
+   <Parent id="13" />
+  </Object>
+  <Object width="-1" shown="true" type="LineAB" id="26" color="#0000ff" >
+   <Parent id="23" />
+   <Parent id="22" />
+  </Object>
+  <Object width="-1" shown="true" type="LineLineIntersection" id="27" color="#0000ff" >
+   <Parent id="26" />
+   <Parent id="20" />
+  </Object>
+  <Object width="-1" shown="true" type="LineAB" id="28" color="#0000ff" >
+   <Parent id="27" />
+   <Parent id="14" />
+  </Object>
+  <Object width="-1" shown="true" type="LineLineIntersection" id="29" color="#0000ff" >
+   <Parent id="28" />
+   <Parent id="25" />
+  </Object>
+ </Objects>
 </KigDocument>

@@ -1,30 +1,29 @@
 <!DOCTYPE KigDocument>
-<KigDocument Version="0.2.0" >
-<ObjectHierarchy>
-<HierarchyElement given="false" typeName="NormalPoint" id="1" final="true" >
-<param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >-5.76253</param>
-   <param name="y" >0.831135</param>  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="2" final="true" >
-<param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >1.77309</param>
-   <param name="y" >1.20053</param>  </HierarchyElement>
-  <HierarchyElement given="false" typeName="NormalPoint" id="3" final="true" >
-<param name="color" >#0000ff</param>
-   <param name="implementation-type" >Fixed</param>
-   <param name="point-size" >5</param>
-   <param name="shown" >true</param>
-   <param name="x" >-2.29024</param>
-   <param name="y" >4.15567</param>  </HierarchyElement>
-  <HierarchyElement given="false" typeName="EllipseBFFP" id="4" final="true" >
-<parent id="1" />
-   <parent id="2" />
-   <parent id="3" />
-   <param name="color" >#0000ff</param>
-   <param name="shown" >true</param>  </HierarchyElement> </ObjectHierarchy></KigDocument>
+<KigDocument Version="0.4.0" >
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Objects>
+  <Data type="double" id="1" >-5.76253</Data>
+  <Data type="double" id="2" >0.831135</Data>
+  <Data type="double" id="3" >1.77309</Data>
+  <Data type="double" id="4" >1.20053</Data>
+  <Data type="double" id="5" >-2.29024</Data>
+  <Data type="double" id="6" >4.15567</Data>
+  <Object width="5" shown="true" type="FixedPoint" id="7" color="#0000ff" >
+   <Parent id="1" />
+   <Parent id="2" />
+  </Object>
+  <Object width="5" shown="true" type="FixedPoint" id="8" color="#0000ff" >
+   <Parent id="3" />
+   <Parent id="4" />
+  </Object>
+  <Object width="5" shown="true" type="FixedPoint" id="9" color="#0000ff" >
+   <Parent id="5" />
+   <Parent id="6" />
+  </Object>
+  <Object width="-1" shown="true" type="EllipseBFFP" id="10" color="#0000ff" >
+   <Parent id="7" />
+   <Parent id="8" />
+   <Parent id="9" />
+  </Object>
+ </Objects>
+</KigDocument>
