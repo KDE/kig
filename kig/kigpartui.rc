@@ -29,7 +29,7 @@
     <Action name="types_edit" />
   </Menu>
 </MenuBar>
-<ToolBar name="mainToolBar">
+<ToolBar name="mainToolBar"><text>Main</text>
   <Action name="edit_undo"/>
   <Action name="edit_redo"/>
   <Separator />
@@ -37,21 +37,21 @@
   <Action name="cancel_construction"/>
   <Action name="macro_action"/>
 </ToolBar>
-<ToolBar name="points_toolbar">
+<ToolBar name="points_toolbar"><text>Points</text>
   <Action name="objects_new_normalpoint" />
   <Action name="objects_new_midpoint" />
   <Action name="objects_new_intersectionpoint" />
   <Action name="objects_new_point_xy" />
   <Action name="objects_new_translatedpoint" />
 </ToolBar>
-<ToolBar name="line_toolbar">
+<ToolBar name="line_toolbar"><text>Lines</text>
   <Action name="objects_new_linettp" />
   <Action name="objects_new_lineperpend" />
   <Action name="objects_new_lineparallel" />
   <Action name="objects_new_lineradical" />
   <Action name="objects_new_segment" />
 </ToolBar>
-<ToolBar name="rest_toolbar">
+<ToolBar name="rest_toolbar"><text>Rest</text>
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
   <Action name="objects_new_locus" />

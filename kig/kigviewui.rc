@@ -8,7 +8,7 @@
     <Action name="view_recenter" />
   </Menu>
 </MenuBar>
-<ToolBar name="view_toolbar">
+<ToolBar name="view_toolbar"><text>View</text>
   <Action name="view_zoom_in" />
   <Action name="view_zoom_out" />
   <Action name="view_fullscreen" />
