@@ -30,6 +30,7 @@ kigicondata_DATA = \
 	line4.png \
 	line5.png \
 	line.png \
+	locus.png \
 	mirrorpoint.png \
 	move.png \
 	paint.png \
@@ -51,6 +52,7 @@ kigicondata_DATA = \
 	ray.png \
 	rotation.png \
 	scale.png \
+	script.png \
 	segment.png \
 	sizer.png \
 	slope.png \
