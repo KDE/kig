@@ -412,7 +412,7 @@ Objects KigDocument::whatAmIOn(const Coordinate& p, const double miss ) const
   Objects nonpoints;
   for ( Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if(!(*i)->contains(p, miss)) continue;
+    if(!(*i)->contains(p, miss) || !(*i)->shown() || !(*i)->valid()) continue;
     if ( (*i)->toPoint()) tmp.push_back(*i);
     else nonpoints.push_back( *i );
   };
@@ -426,7 +426,7 @@ Objects KigDocument::whatIsInHere( const Rect& p )
   Objects nonpoints;
   for ( Objects::iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if(! (*i)->inRect( p )) continue;
+    if(! (*i)->inRect( p ) || !(*i)->shown() || ! (*i)->valid() ) continue;
     if ((*i)->toPoint()) tmp.push_back(*i);
     else nonpoints.push_back(*i);
   };
@@ -442,7 +442,7 @@ Rect KigDocument::suggestedRect()
   Point* p;
   for (Objects::const_iterator i = mObjs.begin(); i != mObjs.end(); ++i )
   {
-    if ((p = (*i)->toPoint()))
+    if ((p = (*i)->toPoint()) && p->shown() && p->valid())
     {
       if( !rectInited )
       {

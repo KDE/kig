@@ -33,7 +33,7 @@ myvector<Type*> Object::susertypes;
 Types Object::stypes;
 
 Object::Object()
-  : mColor( Qt::blue ), selected(false), shown (true), mvalid(true)
+  : mColor( Qt::blue ), selected(false), mshown (true), mvalid(true)
 {
 };
 
@@ -68,7 +68,7 @@ std::map<QCString,QString> Object::getParams()
 {
   std::map<QCString, QString> m;
   m["color"] = mColor.name();
-  m["shown"] = QString::fromUtf8( shown ? "true" : "false" );
+  m["shown"] = QString::fromUtf8( mshown ? "true" : "false" );
   return m;
 }
 
@@ -83,8 +83,8 @@ void Object::setParams( const std::map<QCString,QString>& m )
   {
     std::map<QCString,QString>::const_iterator p = m.find("shown");
     if( p != m.end() && p->second == QString::fromUtf8( "false" ) )
-      shown = false;
-    else shown = true;
+      mshown = false;
+    else mshown = true;
   };
 }
 
@@ -132,15 +132,15 @@ void Object::delChild(Object* o)
 }
 
 Object::Object( const Object& o )
-    : mColor( o.mColor ), selected( false ), shown( true ),
-      mvalid( o.mvalid )
+  : mColor( o.mColor ), selected( false ), mshown( true ),
+    mvalid( o.mvalid )
 {
 
 }
 
 void Object::drawWrap(KigPainter& p, bool ss) const
 {
-  if ( shown && mvalid ) draw(p,ss);
+  if ( mshown && mvalid ) draw(p,ss);
 }
 
 const QStringList Object::objectActions() const
@@ -214,4 +214,13 @@ void Object::removeUserType( Type* t )
 bool Object::valid() const
 {
   return mvalid;
+}
+
+bool Object::shown() const
+{
+  return mshown;
+}
+void Object::setShown( bool in )
+{
+  mshown = in;
 }

@@ -49,9 +49,9 @@ MacroObjectOne::~MacroObjectOne()
 
 void MacroObjectOne::draw(KigPainter& p, bool ss) const
 {
-  final->setSelected(selected);
-  final->setShown(shown);
-  final->draw(p, ss);
+  final->setSelected( selected );
+  final->setShown( shown() );
+  final->drawWrap(p, ss);
 }
 
 bool MacroObjectOne::contains(const Coordinate& p, const double fault ) const

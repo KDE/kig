@@ -295,12 +295,12 @@ public:
  public:
   bool getSelected() const { return selected; };
   virtual void setSelected(bool in);
- protected:
+ private:
   // are we shown?
-  bool shown;
+  bool mshown;
  public:
-  bool getShown() const { return shown; };
-  void setShown(bool inShown) { shown = inShown; };
+  bool shown() const;
+  void setShown(bool s);
  protected:
   /**
    * An object is valid if it's in a state where its position and such

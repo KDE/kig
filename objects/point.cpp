@@ -38,7 +38,6 @@ bool Point::contains( const Coordinate& o, const double error ) const
 
 void Point::draw (KigPainter& p, bool ss) const
 {
-  if (!shown) return;
   bool s = selected && ss;
   p.setBrushStyle( Qt::SolidPattern );
   p.setBrushColor( s ? Qt::red : mColor );
