@@ -39,3 +39,8 @@ void KigMode::enableActions()
 KigMode::~KigMode()
 {
 }
+
+StdConstructionMode* KigMode::toStdConstructionMode()
+{
+  return 0;
+}

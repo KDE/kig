@@ -114,6 +114,9 @@ public:
   StdConstructionMode( StdConstructibleType* t, NormalMode* b,
                        KigDocument* d );
   ~StdConstructionMode();
+
+  virtual StdConstructionMode* toStdConstructionMode();
+
   void leftClicked( QMouseEvent*, KigView* );
   void leftReleased( QMouseEvent*, KigView* );
   void midClicked( QMouseEvent*, KigView* );
@@ -126,6 +129,10 @@ public:
   void enableActions();
 
   void cancelConstruction();
+
+  int wantArgs( const Objects& o ) const;
+  void selectArgs( const Objects& o, KigView* v );
+
 };
 
 class MultiConstructionMode

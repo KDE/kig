@@ -34,16 +34,32 @@ class NormalModePopupObjects
   : public KPopupMenu
 {
   Q_OBJECT
+
+  static const uint titleId = 0;
+  static const uint useId = 1;
+  static const uint colorId = 2;
+  static const uint moveId = 3;
+  static const uint deleteId = 4;
+  static const uint hideId = 5;
+  static const uint restOffset = 6;
+
   QPoint mp;
   KigDocument* mdoc;
   KigView* mview;
   Objects mobjs;
   NormalMode* mmode;
-  QPopupMenu* mcolorpopup;
+
   QPopupMenu* colorMenu( QWidget* parent );
   const QColor* color( int );
-  QPopupMenu* constructMenu( QWidget* parent );
-  QPopupMenu* virtualMenu( QWidget* parent );
+
+  void addColorPopup();
+  void addUsePopup();
+  void addHideItem();
+  void addMoveItem();
+  void addDeleteItem();
+  void addVirtualItems();       // this adds the objects own actions (
+                                // see Object::objectActions() )...
+
 public:
   NormalModePopupObjects( KigDocument* doc, KigView* view,
                           NormalMode* mode, const Objects& objs );
@@ -51,6 +67,7 @@ public:
 
 protected slots:
   void doAction( int );
+  void doUse( int );
   void setColor( int );
 };
 

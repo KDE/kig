@@ -94,9 +94,9 @@ void PointConstructionMode::finish( KigView* v )
   mp = mp->copy();
   mp->calc( v->screenInfo() );
 
+  mprev->clearSelection();
   updateScreen( v );
 
-  mprev->clearSelection();
   NormalMode* s = mprev;
   KigDocument* d = mDoc;
   delete this;
@@ -140,13 +140,13 @@ void StdConstructionMode::leftReleased( QMouseEvent* e, KigView* v )
 
   // if the user clicked on an obj, first see if we can use that...
   if( ! oco.empty() &&
-      mtype->wantArgs( osa.with( oco.front() ) ) != Object::NotGood )
+      wantArgs( osa.with( oco.front() ) ) != Object::NotGood )
     selectArg( oco.front(), v );
   else
   {
     // oco is empty or the obc doesn't like it...
     // so we try if it wants our point..
-    if ( mtype->wantArgs( osa.with( mp ) ) != Object::NotGood )
+    if ( wantArgs( osa.with( mp ) ) != Object::NotGood )
     {
       updatePoint( v->fromScreen( plc ), v->screenInfo() );
       mDoc->addObject( mp );
@@ -168,7 +168,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
 
   v->updateCurPix();
   KigPainter p( v->screenInfo(), &v->curPix );
-  if ( ! ouc.empty() && mtype->wantArgs( osa.with( ouc.front() ) ) != Object::NotGood )
+  if ( ! ouc.empty() && wantArgs( osa.with( ouc.front() ) ) != Object::NotGood )
   {
     // the object wants the arg currently under the cursor...
     // draw mobc...
@@ -181,7 +181,7 @@ void StdConstructionMode::mouseMoved( QMouseEvent* e, KigView* v )
     v->setCursor (KCursor::handCursor());
   }
   // see if mobc wants the point we're dragging around...
-  else if ( mtype->wantArgs( osa.with( mp ) ) != Object::NotGood )
+  else if ( wantArgs( osa.with( mp ) ) != Object::NotGood )
   {
     // it does...
     // so we first draw the point, then mobc, and then the text that
@@ -221,7 +221,7 @@ void StdConstructionMode::midReleased( QMouseEvent* e, KigView* v )
 {
   if ( (e->pos() - plc).manhattanLength() > 4 ) return;
 
-  if ( mtype->wantArgs( osa.with( mp ) ) != Object::NotGood )
+  if ( wantArgs( osa.with( mp ) ) != Object::NotGood )
   {
     updatePoint( v->fromScreen( plc ), v->screenInfo() );
     mDoc->addObject( mp );
@@ -238,7 +238,7 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
 //  all of the data is copied along
 //  mp->calc( v->screenInfo() );
   osa.push_back( o );
-  int a = mtype->wantArgs( osa );
+  int a = wantArgs( osa );
   assert( a != Object::NotGood );
   bool finished = ( a == Object::Complete );
   if( finished )
@@ -246,12 +246,12 @@ void StdConstructionMode::selectArg( Object* o, KigView* v )
     buildCalcAndAdd( mtype, osa, v );
   };
 
+  mprev->clearSelection();
   updateScreen( v );
 
   if( finished )
   {
     // delete ourselves...
-    mprev->clearSelection();
     NormalMode* s = mprev;
     KigDocument* d = mDoc;
     delete this;
@@ -375,3 +375,20 @@ void MultiConstructionMode::buildCalcAndAdd( const Type* type,
   os.calc( v->screenInfo() );
   mDoc->addObjects( os );
 };
+
+int StdConstructionMode::wantArgs( const Objects& o ) const
+{
+  return mtype->wantArgs( o );
+}
+
+void StdConstructionMode::selectArgs( const Objects& o, KigView* v )
+{
+  assert( wantArgs( o ) );
+  for ( Objects::const_iterator i = o.begin(); i != o.end(); ++i )
+    selectArg( *i, v );
+}
+
+StdConstructionMode* StdConstructionMode::toStdConstructionMode()
+{
+  return this;
+}

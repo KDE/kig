@@ -26,6 +26,7 @@
 class KigView;
 class KigDocument;
 class QMouseEvent;
+class StdConstructionMode;
 
 /**
  * this is an ABC of a class containing the current "Mode" of the kig
@@ -36,6 +37,8 @@ class KigMode
 {
 public:
   virtual ~KigMode() = 0;
+
+  virtual StdConstructionMode* toStdConstructionMode();
   virtual void leftClicked( QMouseEvent*, KigView* ) {};
   // this means: mouse moved with left mouse button down (in case that
   // wasn't clear...)

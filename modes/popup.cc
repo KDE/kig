@@ -24,6 +24,8 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/i18n.h"
+#include "../misc/type.h"
+#include "../modes/constructing.h"
 #include "normal.h"
 #include "moving.h"
 
@@ -33,46 +35,21 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument* doc,
                                                 KigView* view,
                                                 NormalMode* mode,
                                                 const Objects& objs )
-  : mdoc( doc ), mview( view ), mobjs( objs ), mmode( mode ),
-    mcolorpopup( 0 )
+  : mdoc( doc ), mview( view ), mobjs( objs ), mmode( mode )
 {
   assert ( ! objs.empty() );
   bool single = objs.size() == 1;
   connect( this, SIGNAL( activated( int ) ), this, SLOT( doAction( int ) ) );
   // title..
   insertTitle( single ? objs[0]->vTBaseTypeName()
-               : i18n( "%1 Objects" ).arg( objs.size() ), 0 );
+               : i18n( "%1 Objects" ).arg( objs.size() ), titleId );
 
-  // set the color
-  mcolorpopup = colorMenu( this );
-  connect( mcolorpopup, SIGNAL( activated( int ) ),
-           this, SLOT( setColor( int ) ) );
-  int id = insertItem( i18n( "Set Color..." ), mcolorpopup, 1 );
-  assert( id == 1 );
-
-  // hide action..
-  id = insertItem( i18n( "Hide..." ), 2 );
-  assert( id == 2 );
-
-  // delete action..
-  id = insertItem( i18n( "Delete..." ), 3 );
-  assert( id == 3 );
-
-  // move action...
-  id = insertItem( i18n( "Move..." ), 4 );
-  assert( id == 4 );
-
-  if ( mobjs.size() == 1 )
-  {
-    // we show the object-specific actions...
-    QStringList l = mobjs[0]->objectActions();
-    for ( QStringList::const_iterator i = l.begin(); i != l.end(); ++i )
-    {
-      int rid = insertItem( *i, ++id );
-      assert( rid == id );
-    };
-  };
-
+  addUsePopup();
+  addColorPopup();
+  addHideItem();
+  addMoveItem();
+  addDeleteItem();
+  addVirtualItems();
 }
 
 void NormalModePopupObjects::doAction( int i )
@@ -81,17 +58,17 @@ void NormalModePopupObjects::doAction( int i )
   assert( 1 < i );
   switch( i )
   {
-  case 2:
+  case hideId:
     // hide action..
     std::for_each( mobjs.begin(), mobjs.end(),
                    std::bind2nd( std::mem_fun( &Object::setShown ), false ) );
     mdoc->mode()->objectsRemoved();
     break;
-  case 3:
+  case deleteId:
     // delete action..
     mdoc->delObjects( mobjs );
     break;
-  case 4:
+  case moveId:
   {
     // move action..
     QRect r = this->frameRect();
@@ -106,13 +83,13 @@ void NormalModePopupObjects::doAction( int i )
   }
   default:
   {
-    // i >= 5, which means that one of the object specific actions was
+    // i >= restOffset, which means that one of the object specific actions was
     // activated...
-    assert( i >= 5 );
+    assert( (uint) i >= restOffset );
     assert( mobjs.size() == 1 );
     Object* o = mobjs[0];
-    assert( ((uint)i) - 4 <= o->objectActions().size() );
-    o->doAction( i - 5, mdoc, mview, mmode );
+    assert( ((uint)i) - restOffset < o->objectActions().size() );
+    o->doAction( i - restOffset, mdoc, mview, mmode );
   }
   };
   mmode->clearSelection();
@@ -141,17 +118,18 @@ QPopupMenu* NormalModePopupObjects::colorMenu( QWidget* parent )
   m = new QPopupMenu( parent, "color popup menu" );
   const QColor* c = 0;
   QPixmap p( 50, 20 );
-  for( int i = 0; ( c = color( i ) ); ++i )
-    {
-      p.fill( *c );
-      m->insertItem( p );
-    };
+  for( uint i = 0; ( c = color( i ) ); ++i )
+  {
+    p.fill( *c );
+    uint id = m->insertItem( p, i );
+    assert( id == i );
+  };
   return m;
 }
 
 void NormalModePopupObjects::setColor( int c )
 {
-  const QColor* d = color( mcolorpopup->indexOf(c) );
+  const QColor* d = color( c );
   assert( d );
   for ( Objects::const_iterator i = mobjs.begin(); i != mobjs.end(); ++i )
   {
@@ -161,3 +139,113 @@ void NormalModePopupObjects::setColor( int c )
   mview->redrawScreen();
 }
 
+void NormalModePopupObjects::addColorPopup()
+{
+  QPopupMenu* colorpopup = colorMenu( this );
+  connect( colorpopup, SIGNAL( activated( int ) ), this, SLOT( setColor( int ) ) );
+  uint id = insertItem( i18n( "Set Color..." ), colorpopup, colorId );
+  assert( id == colorId );
+}
+
+void NormalModePopupObjects::addUsePopup()
+{
+  typedef std::vector<Type*> vec;
+  vec t = Object::types().whoWantsArgs( mobjs );
+  uint size = t.size();
+  kdDebug() << k_funcinfo << "number of constructable types: "
+            << size << endl;
+
+  if ( size > 0 )
+  {
+    QPopupMenu* usepopup = new QPopupMenu( this, "use popup" );
+    connect( usepopup, SIGNAL( activated( int ) ),
+             this, SLOT( doUse( int ) ) );
+    for ( uint i = 0; i < t.size(); ++i )
+    {
+      uint id = usepopup->insertItem( t[i]->descriptiveName(), i );
+      assert( id == i );
+    };
+    uint id = insertItem( mobjs.size() != 1 ? i18n( "Use these objects to construct a ...")
+                          : i18n( "Use this %1 to construct a ...").arg(
+                              mobjs[0]->vTBaseTypeName() ),
+                          usepopup, useId );
+    assert( id == useId );
+  };
+}
+
+void NormalModePopupObjects::addHideItem()
+{
+  uint id = insertItem( i18n( "Hide..." ), hideId );
+  assert( id == hideId );
+}
+
+void NormalModePopupObjects::addMoveItem()
+{
+  uint id = insertItem( i18n( "Move..." ), moveId );
+  assert( id == moveId );
+}
+
+void NormalModePopupObjects::addDeleteItem()
+{
+  uint id = insertItem( i18n( "Delete..." ), deleteId );
+  assert( id == deleteId );
+}
+
+void NormalModePopupObjects::addVirtualItems()
+{
+  if ( mobjs.size() == 1 )
+  {
+    uint id = restOffset;
+    // we show the object-specific actions...
+    QStringList l = mobjs[0]->objectActions();
+    for ( QStringList::const_iterator i = l.begin(); i != l.end(); ++i, ++id )
+    {
+      uint rid = insertItem( *i, id );
+      assert( rid == id );
+    };
+  };
+}
+
+void NormalModePopupObjects::doUse( int id )
+{
+  typedef std::vector<Type*> vec;
+  vec t = Object::types().whoWantsArgs( mobjs );
+  uint size = t.size();
+  kdDebug() << k_funcinfo << "number of constructable types: "
+            << size << endl;
+
+  assert( static_cast<uint>(id) < size );
+  Type* typet = t[id];
+  assert( typet );
+  StdConstructibleType* type = typet->toStdConstructible();
+
+  switch( type->wantArgs( mobjs ) )
+  {
+  case Object::NotGood:
+    assert( false );
+    break;
+  case Object::Complete:
+  {
+    Object* o = type->build( mobjs );
+    assert( o );
+    o->calc( mview->screenInfo() );
+    mdoc->addObject( o );
+    mmode->clearSelection();
+    break;
+  };
+  case Object::NotComplete:
+  {
+    KigMode* m = type->constructMode( mmode, mdoc );
+    assert( m );
+    StdConstructionMode* s = m->toStdConstructionMode();
+    assert( s );
+    assert( s->wantArgs( mobjs ) == Object::NotComplete );
+    s->selectArgs( mobjs, mview );
+    mdoc->setMode( s );
+    break;
+  };
+  default:
+    assert( false );
+    break;
+  };
+}
