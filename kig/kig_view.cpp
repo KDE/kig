@@ -170,7 +170,7 @@ void KigWidget::resizeEvent( QResizeEvent* e )
   stillPix.resize( nsize );
   msi.setViewRect( rect() );
 
-  Rect nrect( 0, 0,
+  Rect nrect( 0., 0.,
               orect.width() * nsize.width() / osize.width(),
               orect.height() * nsize.height() / osize.height() );
   nrect = matchScreenShape( nrect );
@@ -374,21 +374,21 @@ void KigView::updateScrollBars()
 
   mrightscroll->setMinValue( rightmin );
   mrightscroll->setMaxValue( rightmax );
-  mrightscroll->setLineStep( sr.height() / pw / 10 );
-  mrightscroll->setPageStep( sr.height() / pw / 1.2 );
+  mrightscroll->setLineStep( (int)( sr.height() / pw / 10 ) );
+  mrightscroll->setPageStep( (int)( sr.height() / pw / 1.2 ) );
 
   // note that since Qt has a coordinate system with the lowest y
   // values at the top, and we have it the other way around ( i know i
   // shouldn't have done this.. :( ), we invert the value that the
   // scrollbar shows.  This is inverted again in
   // slotRightScrollValueChanged()...
-  mrightscroll->setValue( rightmin + ( rightmax - ( sr.bottom() / pw ) ) );
+  mrightscroll->setValue( (int) ( rightmin + ( rightmax - ( sr.bottom() / pw ) ) ) );
 
-  mbottomscroll->setMinValue( er.left() / pw );
-  mbottomscroll->setMaxValue( ( er.right() - sr.width() ) / pw );
-  mbottomscroll->setLineStep( sr.width() / pw / 10 );
-  mbottomscroll->setPageStep( sr.width() / pw / 1.2 );
-  mbottomscroll->setValue( sr.left() / pw );
+  mbottomscroll->setMinValue( (int)( er.left() / pw ) );
+  mbottomscroll->setMaxValue( (int)( ( er.right() - sr.width() ) / pw ) );
+  mbottomscroll->setLineStep( (int)( sr.width() / pw / 10 ) );
+  mbottomscroll->setPageStep( (int)( sr.width() / pw / 1.2 ) );
+  mbottomscroll->setValue( (int)( sr.left() / pw ) );
 
   mupdatingscrollbars = false;
 }

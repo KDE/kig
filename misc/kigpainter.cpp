@@ -749,8 +749,8 @@ void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
   mP.drawArc( surroundingRect, startangle, angle );
 
   // now for the arrow...
-  QPoint end( point.x() + radius * cos( dstartangle + dangle ),
-              point.y() - radius * sin( dstartangle + dangle ) );
+  QPoint end( static_cast<int>( point.x() + radius * cos( dstartangle + dangle ) ),
+              static_cast<int>( point.y() - radius * sin( dstartangle + dangle ) ) );
   QPoint vect = (end - point);
   double vectlen = sqrt( vect.x() * vect.x() + vect.y() * vect.y() );
   QPoint orthvect( -vect.y(), vect.x() );

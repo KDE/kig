@@ -37,6 +37,8 @@
 #include <klocale.h>
 #include <kimageio.h>
 
+#include <assert.h>
+
 Kig::Kig()
   : KParts::MainWindow( 0L, "Kig" )
 {

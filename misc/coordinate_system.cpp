@@ -30,6 +30,7 @@
 #include <kdebug.h>
 
 #include <cmath>
+#include <string>
 
 using std::ceil;
 using std::floor;
@@ -49,9 +50,9 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   // other time :)
   Rect sr = d.suggestedRect();
   double m = max( sr.width(), sr.height() );
-  double l;
-  if ( m < 1 ) l = 3 - log10( m );
-  else l = log10( m ) + 2;
+  int l;
+  if ( m < 1 ) l = 3 - (int) log10( m );
+  else l = (int) log10( m ) + 2;
   return QString::fromLatin1("( %1; %2 )").arg(p.x, 0, 'g', l ).arg(p.y, 0, 'g', l );
 };
 
@@ -198,9 +199,9 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
 {
   Rect sr = d.suggestedRect();
   double m = max( sr.width(), sr.height() );
-  double l;
-  if ( m < 1 ) l = 3 - log10( m );
-  else l = log10( m ) + 2;
+  int l;
+  if ( m < 1 ) l = 3 - (int) log10( m );
+  else l = (int) log10( m ) + 2;
 
   double r = pt.length();
   double theta = atan2( pt.y, pt.x );
