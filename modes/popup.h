@@ -53,6 +53,7 @@ public:
 
   // used by the PopupActionProvider's to add actions to us..
   void addAction( int menu, const QString& name, int id );
+  void addAction( int menu, const QPixmap& icon, const QString& name, int id );
   void addAction( int menu, const QPixmap& pix, int id );
 
   Objects objects() { return mobjs; };

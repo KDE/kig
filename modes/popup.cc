@@ -38,6 +38,8 @@
 #include <qcursor.h>
 #include <qpainter.h>
 #include <qpen.h>
+#include <kglobal.h>
+#include <kiconloader.h>
 
 #include <algorithm>
 #include <functional>
@@ -377,7 +379,8 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     else add = menu == NormalModePopupObjects::StartMenu;
     if ( add )
     {
-      popup.addAction( menu, (*i)->descriptiveName(), nextfree++ );
+      QPixmap icon = KGlobal::iconLoader()->loadIcon( (*i)->iconFileName(), KIcon::User );
+      popup.addAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
       mctors[menu].push_back( *i );
     }
   };
@@ -428,6 +431,15 @@ void NormalModePopupObjects::setColorMenuSlot( int i )
 void NormalModePopupObjects::setSizeMenuSlot( int i )
 {
   activateAction( SetSizeMenu, i );
+}
+
+void NormalModePopupObjects::addAction( int menu, const QPixmap& icon, const QString& name, int id )
+{
+  QPopupMenu* m = 0;
+  if ( menu == ToplevelMenu ) m = this;
+  else m = mmenus[menu];
+  int ret = m->insertItem( QIconSet( icon ), name, id );
+  assert( ret == id );
 }
 
 void NormalModePopupObjects::addAction( int menu, const QString& name, int id )
@@ -536,3 +548,4 @@ bool ObjectTypeActionsProvider::executeAction(
   o->type()->executeAction( id, o, doc, w, m );
   return true;
 }
+
