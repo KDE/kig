@@ -39,8 +39,7 @@
 
 - "export to *": add stuff like java applets, etc...
 
-- add support for saving/opening native compressed files like
-  'myfile.kig.tar.gz', 'myfile.kig.tbz' or 'myfile.kig.tar.bz2'.
+- add support for saving/opening native compressed files like myfile.kigz.
 
 * objects
 
