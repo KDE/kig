@@ -37,7 +37,7 @@ ExportToImageDialog::ExportToImageDialog( KigWidget* v, const KigDocument* d )
   : ExportToImageDialogBase( v, "Export to image dialog", true ),
     mv( v ), md( d ), msize( v->size() ), minternallysettingstuff( false )
 {
-  KIconLoader* l = KGlobal::iconLoader();
+  KIconLoader* l = d->instance()->iconLoader();
   OKButton->setIconSet( QIconSet( l->loadIcon( "button_ok", KIcon::Small ) ) );
   CancelButton->setIconSet( QIconSet( l->loadIcon( "button_cancel", KIcon::Small ) ) );
 

@@ -284,7 +284,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    KIconLoader* l = KGlobal::iconLoader();
+    KIconLoader* l = popup.document().instance()->iconLoader();
     popup.addAction( menu, i18n( "&Hide" ), nextfree++ );
     QPixmap p = l->loadIcon( "move", KIcon::User );
     popup.addAction( menu, p, i18n( "&Move" ), nextfree++ );
@@ -544,7 +544,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
       QCString iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
-        QPixmap icon = KGlobal::iconLoader()->loadIcon( iconfile, KIcon::User );
+        QPixmap icon = popup.document().instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
         popup.addAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
       }
       else
@@ -669,7 +669,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
     {
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = KGlobal::iconLoader()->loadIcon( iconfile, KIcon::User );
+        QPixmap pix = popup.document().instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
         popup.addAction( menu, pix, i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else
@@ -759,7 +759,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
     popup.addAction( menu, i18n( "Unhide &All" ), nextfree++ );
-    KIconLoader* l = KGlobal::iconLoader();
+    KIconLoader* l = popup.document().instance()->iconLoader();
     QPixmap p = l->loadIcon( "viewmag+", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "Zoom &In" ), nextfree++ );
     p = l->loadIcon( "viewmag-", KIcon::Toolbar );

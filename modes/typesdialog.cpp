@@ -48,7 +48,7 @@ TypesDialog::TypesDialog( QWidget* parent, const KigDocument& doc )
   : TypesDialogBase( parent, "types_dialog", true ), mdoc( doc )
 {
   // improving GUI look'n'feel...
-  il = KGlobal::iconLoader();
+  il = doc.instance()->iconLoader();
   buttonHelp->setIconSet( QIconSet( il->loadIcon( "help", KIcon::Small ) ) );
   buttonOk->setIconSet( QIconSet( il->loadIcon( "button_ok", KIcon::Small ) ) );
   buttonRemove->setIconSet( QIconSet( il->loadIcon( "editdelete", KIcon::Small ) ) );
@@ -207,7 +207,7 @@ void TypesDialog::executed( QListViewItem* i )
     QString newname = d->name();
     QString newdesc = d->description();
     QString newicon = d->icon();
-    
+
     index = typeList->itemIndex( i );
     typedef MacroList::vectype vec;
     const vec& macros = MacroList::instance()->macros();

@@ -74,7 +74,7 @@ K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigDocumentFactory )
 
 KAboutData* KigDocument::createAboutData()
 {
-  return kigAboutData( "kigpart", I18N_NOOP( "KigPart" ) );
+  return kigAboutData( "kig", I18N_NOOP( "KigPart" ) );
 }
 
 class SetCoordinateSystemAction
@@ -163,7 +163,7 @@ void KigDocument::setupActions()
     "edit_invert_selection" );
 
   // we need icons...
-  KIconLoader* l = KGlobal::iconLoader();
+  KIconLoader* l = instance()->iconLoader();
   QPixmap tmp;
 
   tmp = l->loadIcon( "editdelete", KIcon::Toolbar);

@@ -1,3 +1,10 @@
+2004-04-11  Dominique Devriese  <devriese@kde.org>
+
+	* Improve Kig embedded in Konqueror experience: make translations
+	and icons work by using the correct instanceName(), and using the
+	iconLoader we get from our KInstance instead of from KGlobal ( so
+	that the kig specific dirs are checked for icons as well ).
+
 2004-04-10  Dominique Devriese  <devriese@kde.org>
 
 	* Enable the DrGeo input filter.

@@ -142,7 +142,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
       int t;
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = KGlobal::iconLoader()->loadIcon( iconfile, KIcon::User );
+        QPixmap pix = mdoc.instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
         t = p->insertItem( QIconSet( pix ), s, i );
       }
       else

@@ -30,8 +30,8 @@ kig_LDADD   = $(LIB_KPARTS)
 xdg_apps_DATA = kig.desktop
 
 # this is where the shell's XML-GUI resource file goes
-shellrcdir   = $(kde_datadir)/kig
-shellrc_DATA = kigui.rc
+rcdir   = $(kde_datadir)/kig
+rc_DATA = kigui.rc kigpartui.rc
 
 #########################################################################
 # KPART SECTION
@@ -49,7 +49,3 @@ libkigparttemp_la_LIBADD = $(LIB_KDEPRINT) $(LIB_KIO)
 # this is where the desktop file will go 
 partdesktopdir   = $(kde_servicesdir)
 partdesktop_DATA = kig_part.desktop
-
-# this is where the part's XML-GUI resource file goes
-partrcdir   = $(kde_datadir)/kigpart
-partrc_DATA = kigpartui.rc
