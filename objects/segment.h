@@ -31,7 +31,6 @@ class Segment
 public:
   Segment( const Objects& os );
   Segment( const Segment& s );
-  Segment* copy();
   ~Segment();
 
   // type identification

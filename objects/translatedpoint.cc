@@ -55,11 +55,6 @@ TranslatedPoint::~TranslatedPoint()
 {
 }
 
-TranslatedPoint* TranslatedPoint::copy()
-{
-  return new TranslatedPoint( *this );
-}
-
 const QCString TranslatedPoint::vFullTypeName() const
 {
   return sFullTypeName();

@@ -35,8 +35,6 @@ public:
   TranslatedPoint( const TranslatedPoint& p );
   ~TranslatedPoint();
 
-  virtual TranslatedPoint* copy();
-
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();
   const QString vDescriptiveName() const;

@@ -193,7 +193,6 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<CircleBTP> );
     Object::addBuiltinType( new TStdType<EllipseBFFP> );
     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
-//     Object::addBuiltinType( new TStdType<ConicBDF> );
     Object::addBuiltinType( new TStdType<ConicB5P> );
     Object::addBuiltinType( new TStdType<CubicB9P> );
     Object::addBuiltinType( new TStdType<ParabolaBTP> );
@@ -202,6 +201,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<IntersectionPoint> );
     Object::addBuiltinType( new TMultiType<CircleLineIntersectionPoint> );
     Object::addBuiltinType( new TMultiType<ConicLineIntersectionPoint> );
+    Object::addBuiltinType( new TMultiType<CubicLineIntersectionPoint> );
     Object::addBuiltinType( new TStdType<TranslatedPoint> );
     Object::addBuiltinType( new TStdType<MirrorPoint> );
     Object::addBuiltinType( new TStdType<Locus> );

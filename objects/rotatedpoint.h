@@ -36,8 +36,6 @@ public:
   RotatedPoint( const RotatedPoint& p );
   ~RotatedPoint();
 
-  virtual RotatedPoint* copy();
-
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();
   const QString vDescriptiveName() const;

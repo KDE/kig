@@ -31,7 +31,6 @@ public:
   MidPoint( const Objects& os );
   MidPoint( const MidPoint& m );
   ~MidPoint();
-  MidPoint* copy() { return new MidPoint(*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "MidPoint"; };

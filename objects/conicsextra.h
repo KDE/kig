@@ -36,7 +36,6 @@ public:
   LinePolar( const Objects& os );
   LinePolar( const LinePolar& l );
   ~LinePolar();
-  LinePolar* copy() { return new LinePolar (*this);};
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return ("LinePolar"); };
@@ -73,7 +72,6 @@ public:
   PointPolar( const Objects& os );
   PointPolar( const PointPolar& l );
   ~PointPolar();
-  PointPolar* copy() { return new PointPolar (*this);};
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return ("PointPolar"); };
@@ -111,7 +109,6 @@ public:
   LineConicAsymptotes( const Objects& os );
   LineConicAsymptotes( const LineConicAsymptotes& l );
   ~LineConicAsymptotes() {};
-  LineConicAsymptotes* copy();
 
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineConicAsymptotes"; };

@@ -50,11 +50,6 @@ Arc::Arc( const Arc& a )
   std::for_each( mpts, mpts+3, std::bind2nd( std::mem_fun( &Object::addChild ), this ) );
 }
 
-Arc* Arc::copy()
-{
-  return new Arc( *this );
-}
-
 Arc::~Arc()
 {
 }

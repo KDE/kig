@@ -51,7 +51,6 @@ public:
   Object* getFinal() { return final; };
   MacroObjectOne( const MType* type, ObjectHierarchy* inHier, const Objects& args );
   MacroObjectOne(const MacroObjectOne& m);
-  MacroObjectOne* copy() { return new MacroObjectOne(*this); };
   ~MacroObjectOne();
   void draw (KigPainter& p, bool ss) const;
   bool contains (const Coordinate& p, const ScreenInfo& si ) const;

@@ -65,11 +65,6 @@ MirrorPoint::~MirrorPoint()
 {
 }
 
-MirrorPoint* MirrorPoint::copy()
-{
-  return new MirrorPoint( *this );
-}
-
 const QCString MirrorPoint::vFullTypeName() const
 {
   return sFullTypeName();

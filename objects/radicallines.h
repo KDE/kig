@@ -37,7 +37,6 @@ public:
   LineConicRadical( const Objects& os );
   LineConicRadical( const LineConicRadical& l );
   ~LineConicRadical() {};
-  LineConicRadical* copy();
 
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineConicRadical"; };
@@ -94,8 +93,6 @@ public:
   ConicLineIntersectionPoint( const Objects& os );
   ConicLineIntersectionPoint( const ConicLineIntersectionPoint& p );
   ~ConicLineIntersectionPoint();
-
-  virtual ConicLineIntersectionPoint* copy();
 
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();

@@ -217,11 +217,6 @@ Locus::~Locus()
   delete_all( objs.begin(), objs.end() );
 }
 
-Locus* Locus::copy()
-{
-  return new Locus(*this);
-}
-
 const QCString Locus::vBaseTypeName() const
 {
   return sBaseTypeName();

@@ -52,11 +52,6 @@ RotatedPoint::~RotatedPoint()
 {
 }
 
-RotatedPoint* RotatedPoint::copy()
-{
-  return new RotatedPoint( *this );
-}
-
 const QCString RotatedPoint::vFullTypeName() const
 {
   return sFullTypeName();

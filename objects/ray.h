@@ -29,7 +29,6 @@ class Ray
 public:
   Ray( const Objects& os );
   Ray( const Ray& s );
-  Ray* copy();
   ~Ray();
 
   // type identification

@@ -63,7 +63,7 @@ Coordinate Line::getPoint(double p) const
 //  p *= 1024;    // such multiplying factor could be useful in order to
                   // have more points near infinity, at the expense of
                   // points near mpa and mpb
-  return mpa + p*(mpb - mpa); 
+  return mpa + p*(mpb - mpa);
 };
 
 double Line::getParam(const Coordinate& point) const
@@ -437,11 +437,6 @@ QString LineParallel::sUseText( const Objects&, const Object* o )
   else if ( o->toLine() ) return i18n( "Line parallel on this line" );
   else if ( o->toRay() ) return i18n( "Line parallel on this ray" );
   else assert( false );
-}
-
-LineRadical* LineRadical::copy()
-{
-  return new LineRadical (*this);
 }
 
 LineRadical::LineRadical( const Objects& os )

@@ -45,11 +45,6 @@ Vector::Vector( const Vector& s )
   p2->addChild(this);
 }
 
-Vector* Vector::copy()
-{
-  return new Vector( * this );
-}
-
 Vector::~Vector()
 {
 };

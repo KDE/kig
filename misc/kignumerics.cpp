@@ -22,6 +22,114 @@
 #include "common.h"
 
 /*
+ * compute one of the roots of a cubic polynomial
+ * if xmin << 0 or xmax >> 0 then autocompute a bound for all the
+ * roots
+ */
+
+double calcCubicRoot ( double xmin, double xmax, double a,
+      double b, double c, double d, int root, bool& valid, int& numroots )
+{
+  // renormalize: positive a
+  if ( a < 0 )
+  {
+    a *= -1;
+    b *= -1;
+    c *= -1;
+    d *= -1;
+  }
+
+  if ( xmin < -1e8 || xmax > 1e8 )
+  {
+    const double small = 1e-7;
+    int degree = 3;
+    if ( fabs(a) < small*fabs(b) ||
+         fabs(a) < small*fabs(c) ||
+         fabs(a) < small*fabs(d) )
+    {
+      degree = 2;
+      if ( fabs(b) < small*fabs(c) ||
+           fabs(b) < small*fabs(d) )
+      {
+        degree = 1;
+      }
+    }
+
+    // and a bound for all the real roots:
+
+    switch (degree)
+    {
+      case 3:
+      xmax = fabs(d/a);
+      if ( fabs(c/a) + 1 > xmax ) xmax = fabs(c/a) + 1;
+      if ( fabs(b/a) + 1 > xmax ) xmax = fabs(b/a) + 1;
+      break;
+
+      case 2:
+      xmax = fabs(d/b);
+      if ( fabs(c/b) + 1 > xmax ) xmax = fabs(c/b) + 1;
+      break;
+
+      case 1:
+      default:
+      xmax = fabs(d/c) + 1;
+      break;
+    }
+    xmin = -xmax;
+  }
+
+  // computing the coefficients of the Sturm sequence
+  double p1a = 2*b*b - 6*a*c;
+  double p1b = b*c - 9*a*d;
+  double p0a = c*p1a*p1a + p1b*(3*a*p1b - 2*b*p1a);
+
+  int varbottom = calcCubicVariations (xmin, a, b, c, d, p1a, p1b, p0a);
+  int vartop = calcCubicVariations (xmax, a, b, c, d, p1a, p1b, p0a);
+  numroots = vartop - varbottom;
+  valid = false;
+  if (root <= varbottom || root > vartop ) return 0.0;
+
+  valid = true;
+
+  // now use bisection to separate the required root
+  double dx = (xmax - xmin)/2;
+  double sigma = dx/1000;
+  while ( dx > sigma && vartop - varbottom > 1 )
+  {
+    double xmiddle = xmin + dx;
+    int varmiddle = calcCubicVariations (xmiddle, a, b, c, d, p1a, p1b, p0a);
+    if ( varmiddle < root )   // I am below
+    {
+      xmin = xmiddle;
+      varbottom = varmiddle;
+    } else {
+      xmax = xmiddle;
+      vartop = varmiddle;
+    }
+    dx /= 2;
+  }
+
+  /*
+   * now [xmin, xmax] enclose a single root, try using Newton
+   */
+  if ( vartop - varbottom == 1 )
+  {
+    double fval1 = a;     // double check...
+    double fval2 = a;
+    fval1 = b + xmin*fval1;
+    fval2 = b + xmax*fval2;
+    fval1 = c + xmin*fval1;
+    fval2 = c + xmax*fval2;
+    fval1 = d + xmin*fval1;
+    fval2 = d + xmax*fval2;
+    assert ( fval1 * fval2 <= 0 );
+    return calcCubicRootwithNewton ( xmin, xmax, a, b, c, d, 1e-8 );
+  }
+  else   // probably a double root here!
+    return ( xmin + xmax )/2;
+}
+
+/*
  * computation of the number of sign changes in the sturm sequence for
  * a third degree polynomial at x.  This number counts the number of
  * roots of the polynomial on the left of point x.
@@ -79,7 +187,7 @@ inline void calcCubicDerivatives ( double x, double a, double b, double c,
 }
 
 double calcCubicRootwithNewton ( double xmin, double xmax, double a,
-      double b, double c, double d, double tol, bool &valid )
+      double b, double c, double d, double tol )
 {
   double fval, fpval, fppval;
 

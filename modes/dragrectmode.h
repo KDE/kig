@@ -26,17 +26,17 @@
 
 #include <qpoint.h>
 
-class QEventLoop;
-
 class DragRectMode
   : public KigMode
 {
   QPoint mstart;
-  QEventLoop* el;
   Objects mret;
+  bool mnc;
 private:
-  void released( const QPoint& p, KigWidget& w );
+  void released( const QPoint& p, KigWidget& w, bool nc );
+  void released( QMouseEvent* e, KigWidget& w );
   void moved( const QPoint& p, KigWidget& w );
+  void moved( QMouseEvent*, KigWidget& w );
 
   void leftMouseMoved( QMouseEvent*, KigWidget* );
   void leftReleased( QMouseEvent*, KigWidget* );
@@ -51,7 +51,9 @@ private:
 public:
   DragRectMode( KigDocument* );
   ~DragRectMode();
-  Objects run( const QPoint& start, KigMode* prev );
+  void run( const QPoint& start, KigWidget& w, KigMode* prev );
+  Objects ret();
+  bool needClear();
 };
 
 #endif

@@ -142,12 +142,41 @@ Coordinate Cubic::getPoint (double p) const
     d *= -1;
   }
 
-// and a bound for all the real roots:
-  assert ( a != 0 );
+  const double small = 1e-7;
+  int degree = 3;
+  if ( fabs(a) < small*fabs(b) ||
+       fabs(a) < small*fabs(c) ||
+       fabs(a) < small*fabs(d) )
+  {
+    degree = 2;
+    if ( fabs(b) < small*fabs(c) ||
+         fabs(b) < small*fabs(d) )
+    {
+      degree = 1;
+    }
+  }
 
-  double bound = fabs(d/a);
-  if ( fabs(c/a) + 1 > bound ) bound = fabs(c/a) + 1;
-  if ( fabs(b/a) + 1 > bound ) bound = fabs(b/a) + 1;
+// and a bound for all the real roots:
+
+  double bound;
+  switch (degree)
+  {
+    case 3:
+    bound = fabs(d/a);
+    if ( fabs(c/a) + 1 > bound ) bound = fabs(c/a) + 1;
+    if ( fabs(b/a) + 1 > bound ) bound = fabs(b/a) + 1;
+    break;
+
+    case 2:
+    bound = fabs(d/b);
+    if ( fabs(c/b) + 1 > bound ) bound = fabs(c/b) + 1;
+    break;
+
+    case 1:
+    default:
+    bound = fabs(d/c) + 1;
+    break;
+  }
 
   bool valid;
   int numroots;
@@ -171,8 +200,60 @@ double Cubic::getParam (const Coordinate& p) const
   double y = p.y;
   double t;
 
+  double a000 = cequation.coeffs[0];
+  double a001 = cequation.coeffs[1];
+  double a002 = cequation.coeffs[2];
+  double a011 = cequation.coeffs[3];
+  double a012 = cequation.coeffs[4];
+  double a022 = cequation.coeffs[5];
+  double a111 = cequation.coeffs[6];
+  double a112 = cequation.coeffs[7];
+  double a122 = cequation.coeffs[8];
+  double a222 = cequation.coeffs[9];
+
+  /*
+   * first project p onto the cubic. This is done by computing the
+   * line through p in the direction of the gradient
+   */
+
+  double f = a000 + a001*x + a002*y + a011*x*x + a012*x*y + a022*y*y +
+             a111*x*x*x + a112*x*x*y + a122*x*y*y + a222*y*y*y;
+  if ( f != 0 )
+  {
+    double fx = a001 + 2*a011*x + a012*y + 3*a111*x*x + 2*a112*x*y + a122*y*y;
+    double fy = a002 + 2*a022*y + a012*x + 3*a222*y*y + 2*a122*x*y + a112*x*x;
+    Coordinate v = Coordinate (fx, fy);
+    if ( f < 0 ) v = -v;   // the line points away from the intersection
+    double a, b, c, d;
+    calcCubicLineRestriction ( cequation, p, v, a, b, c, d );
+    if ( a < 0 )
+    {
+       a *= -1;
+       b *= -1;
+       c *= -1;
+       d *= -1;
+    }
+
+    // computing the coefficients of the Sturm sequence
+    double p1a = 2*b*b - 6*a*c;
+    double p1b = b*c - 9*a*d;
+    double p0a = c*p1a*p1a + p1b*(3*a*p1b - 2*b*p1a);
+    // compute the number of roots for negative lambda
+    int variations = calcCubicVariations ( 0, a, b, c, d, p1a, p1b, p0a );
+    bool valid;
+    int numroots;
+    double lambda = calcCubicRoot ( -1e10, 1e10, a, b, c, d, variations, valid,
+                               numroots );
+    if ( valid )
+    {
+      Coordinate pnew = p + lambda*v;
+      x = pnew.x;
+      y = pnew.y;
+    }
+  }
+
   if (x > 0) t = x/(1+x);
-    else t = x/(1-x); 
+    else t = x/(1-x);
   t = 0.5*(t + 1);
   t /= 3;
 
@@ -186,13 +267,13 @@ double Cubic::getParam (const Coordinate& p) const
   {
     mint = t + 1.0/3.0;
     mindist = fabs ( y - p2.y );
-  } 
+  }
   if ( fabs ( y - p3.y ) < mindist )
   {
     mint = t + 2.0/3.0;
-  } 
+  }
 
-  return mint; 
+  return mint;
 };
 
 const QCString Cubic::sBaseTypeName()
@@ -213,6 +294,11 @@ Cubic* Cubic::toCubic()
 const Cubic* Cubic::toCubic() const
 {
   return this;
+}
+
+const CubicCartesianEquationData Cubic::cartesianEquationData() const
+{
+  return cequation;
 }
 
 void CubicB9P::calc()
@@ -324,7 +410,7 @@ CubicCartesianEquationData::CubicCartesianEquationData()
   std::fill( coeffs, coeffs + 10, 0 );
 };
 
-CubicCartesianEquationData::CubicCartesianEquationData( 
+CubicCartesianEquationData::CubicCartesianEquationData(
             const double incoeffs[10] )
 {
   std::copy( incoeffs, incoeffs + 10, coeffs );
@@ -455,64 +541,273 @@ double calcCubicYvalue ( double x, double ymin, double ymax, int root,
   // finally the constant coefficient (from a111, a011, a001 and a000):
   double d = a111*x*x*x + a011*x*x + a001*x + a000;
 
-  // renormalize:
-  if ( a < 0 )
+  return calcCubicRoot ( ymin, ymax, a, b, c, d, root, valid, numroots );
+}
+
+/*
+ * intersection of a cubic and a line.  There are in general 3
+ * intersection points, so we need a parameter (mroot) to
+ * distinguish among them
+ */
+
+CubicLineIntersectionPoint::CubicLineIntersectionPoint( const Objects& os )
+  : Point(), mcubic( 0 ), mline( 0 ), mroot( 0 )
+{
+  assert( os.size() == 2 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    a *= -1;
-    b *= -1;
-    c *= -1;
-    d *= -1;
-  }
+    if ( ! mcubic ) mcubic = (*i)->toCubic();
+    if ( ! mline ) mline = (*i)->toAbstractLine();
+  };
+  assert( mcubic && mline );
+  mcubic->addChild( this );
+  mline->addChild( this );
+}
 
-// computing the coefficients of the Sturm sequence
-  assert ( a != 0 );
-  double p1a = 2*b*b - 6*a*c;
-  double p1b = b*c - 9*a*d;
-  double p0a = c*p1a*p1a + p1b*(3*a*p1b - 2*b*p1a);
+CubicLineIntersectionPoint::CubicLineIntersectionPoint( const CubicLineIntersectionPoint& p )
+  : Point( p ), mcubic( p.mcubic ), mline( p.mline ), mroot( p.mroot )
+{
+  assert( mcubic && mline );
+  mcubic->addChild( this );
+  mline->addChild( this );
+}
 
-  int varbottom = calcCubicVariations (ymin, a, b, c, d, p1a, p1b, p0a);
-  int vartop = calcCubicVariations (ymax, a, b, c, d, p1a, p1b, p0a);
-  numroots = vartop - varbottom;
-  valid = false;
-  if (root <= varbottom || root > vartop ) return 0.0;
+CubicLineIntersectionPoint::~CubicLineIntersectionPoint()
+{
+}
 
-  valid = true;
+const QCString CubicLineIntersectionPoint::vFullTypeName() const
+{
+  return sFullTypeName();
+}
 
-  // now use bisection to separate the required root
-  double dy = (ymax - ymin)/2;
-  double sigma = dy/1000;
-  while ( dy > sigma && vartop - varbottom > 1 )
+const QCString CubicLineIntersectionPoint::sFullTypeName()
+{
+  return "CubicLineIntersectionPoint";
+}
+
+const QString CubicLineIntersectionPoint::vDescriptiveName() const
+{
+  return sDescriptiveName();
+}
+
+const QString CubicLineIntersectionPoint::sDescriptiveName()
+{
+  return i18n("The intersections of a line and a cubic");
+}
+
+const QString CubicLineIntersectionPoint::vDescription() const
+{
+  return sDescription();
+}
+
+const QCString CubicLineIntersectionPoint::vIconFileName() const
+{
+  return sIconFileName();
+}
+
+const QCString CubicLineIntersectionPoint::sIconFileName()
+{
+  return "cubiclineintersection";
+}
+
+const int CubicLineIntersectionPoint::vShortCut() const
+{
+  return sShortCut();
+}
+
+const int CubicLineIntersectionPoint::sShortCut()
+{
+  return 0;
+}
+
+const char* CubicLineIntersectionPoint::sActionName()
+{
+  return "objects_new_cubiclineintersect";
+}
+
+void CubicLineIntersectionPoint::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  assert( os.size() <= 2 );
+  if ( os.size() != 2 ) return;
+  Cubic* c = 0;
+  AbstractLine* l = 0;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    double ymiddle = ymin + dy;
-    int varmiddle = calcCubicVariations (ymiddle, a, b, c, d, p1a, p1b, p0a);
-    if ( varmiddle < root )   // I am below
-    {
-      ymin = ymiddle;
-      varbottom = varmiddle;
-    } else {
-      ymax = ymiddle;
-      vartop = varmiddle;
-    }
-    dy /= 2;
-  }
+    if ( ! c ) c = (*i)->toCubic();
+    if ( ! l ) l = (*i)->toAbstractLine();
+  };
+  assert( c && l );
 
-  /*
-   * now [ymin, ymax] enclose a single root, try using Newton
-   */
-  if ( vartop - varbottom == 1 )
+  CubicCartesianEquationData ccd = c->cartesianEquationData();
+  const LineData ld = l->lineData();
+
+  bool valid = true;
+
+  Coordinate cc = calcCubicLineIntersect( ccd.coeffs, ld, 1, valid );
+  if ( valid ) sDrawPrelimPoint( p, cc );
+  cc = calcCubicLineIntersect( ccd.coeffs, ld, 2, valid );
+  if ( valid ) sDrawPrelimPoint( p, cc );
+  cc = calcCubicLineIntersect( ccd.coeffs, ld, 3, valid );
+  if ( valid ) sDrawPrelimPoint( p, cc );
+
+  return;
+}
+
+Object::WantArgsResult CubicLineIntersectionPoint::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size != 1 && size != 2 ) return NotGood;
+  bool gotc = false;
+  bool gotl = false;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
   {
-    double fval1 = a;     // double check...
-    double fval2 = a;
-    fval1 = b + ymin*fval1;
-    fval2 = b + ymax*fval2;
-    fval1 = c + ymin*fval1;
-    fval2 = c + ymax*fval2;
-    fval1 = d + ymin*fval1;
-    fval2 = d + ymax*fval2;
-    assert ( fval1 * fval2 <= 0 );
-    return calcCubicRootwithNewton ( ymin, ymax, a, b, c, d, 1e-8, valid );
-  }
-  else   // probably a double root here!
-    return ( ymin + ymax )/2;
+    if ( ! gotc ) gotc = (*i)->toCubic();
+    if ( ! gotl ) gotl = (*i)->toAbstractLine();
+  };
+  if ( size == 1 ) return ( gotc || gotl ) ? NotComplete : NotGood;
+  if ( size == 2 ) return ( gotc && gotl ) ? Complete : NotGood;
+  assert( false );
+}
 
+QString CubicLineIntersectionPoint::sUseText( const Objects&, const Object* o )
+{
+  if ( o->toCubic() ) return i18n( "Intersections of a line and this cubic" );
+  if ( o->toLine() ) return i18n( "Intersections of a cubic and this line" );
+  if ( o->toSegment() ) return i18n( "Intersections of a cubic and this segment" );
+  if ( o->toRay() ) return i18n( "Intersections of a cubic and this ray" );
+  assert( false );
+}
+
+Objects CubicLineIntersectionPoint::getParents() const
+{
+  Objects o;
+  o.push_back( mcubic );
+  o.push_back( mline );
+  return o;
+}
+
+void CubicLineIntersectionPoint::calc()
+{
+  assert( mcubic && mline );
+  Coordinate t;
+  CubicCartesianEquationData cequation = mcubic->cartesianEquationData();
+  t = calcCubicLineIntersect( cequation.coeffs,
+                              mline->lineData(),
+                              mroot, mvalid );
+  if ( mvalid ) mC = t;
+}
+
+Object::prop_map CubicLineIntersectionPoint::getParams()
+{
+  prop_map map = Point::getParams();
+  map["cubiclineintersect-root"] = QString::number( mroot );
+  return map;
+}
+
+void CubicLineIntersectionPoint::setParams( const prop_map& map )
+{
+  Point::setParams( map );
+  prop_map::const_iterator p = map.find("cubiclineintersect-root");
+  if( p == map.end() ) mroot = 1;  // this is an error in the kig
+  // file, but we ignore it..
+  else
+  {
+    bool ok = true;
+    mroot = p->second.toInt( &ok );
+    assert( ok && ( mroot == 1 || mroot == 2 || mroot == 3 ) );
+  };
+}
+
+Objects CubicLineIntersectionPoint::sMultiBuild( const Objects& args )
+{
+  CubicLineIntersectionPoint* a;
+  CubicLineIntersectionPoint* b;
+  CubicLineIntersectionPoint* c;
+  a = new CubicLineIntersectionPoint( args );
+  b = new CubicLineIntersectionPoint( args );
+  c = new CubicLineIntersectionPoint( args );
+  a->mroot = 1;
+  b->mroot = 2;
+  c->mroot = 3;
+  Objects o;
+  o.push_back( a );
+  o.push_back( b );
+  o.push_back( c );
+  return o;
+}
+
+KigMode*
+CubicLineIntersectionPoint::sConstructMode( MultiConstructibleType* ourtype,
+                                            KigDocument* theDoc,
+                                            NormalMode* previousMode )
+{
+  return new MultiConstructionMode( ourtype, previousMode, theDoc );
+}
+
+const QString CubicLineIntersectionPoint::sDescription()
+{
+  return i18n("Construct the intersections of a line and a cubic...");
+}
+
+const Coordinate calcCubicLineIntersect( const CubicCartesianEquationData& cu,
+                                         const LineData& l,
+                                         int root, bool& valid )
+{
+  assert( root == 1 || root == 2 || root == 3 );
+
+  double a, b, c, d;
+  calcCubicLineRestriction ( cu, l.a, l.b-l.a, a, b, c, d );
+  int numroots;
+  double param =
+    calcCubicRoot ( -1e10, 1e10, a, b, c, d, root, valid, numroots );
+  return l.a + param*(l.b - l.a);
+}
+
+/*
+ * calculate the cubic polynomial resulting from the restriction
+ * of a cubic to a line (defined by two "Coordinates": a point and a
+ * direction)
+ */
+
+void calcCubicLineRestriction ( CubicCartesianEquationData data,
+                                Coordinate p, Coordinate v,
+                                double& a, double& b, double& c, double& d )
+{
+  a = b = c = d = 0;
+
+  double a000 = data.coeffs[0];
+  double a001 = data.coeffs[1];
+  double a002 = data.coeffs[2];
+  double a011 = data.coeffs[3];
+  double a012 = data.coeffs[4];
+  double a022 = data.coeffs[5];
+  double a111 = data.coeffs[6];
+  double a112 = data.coeffs[7];
+  double a122 = data.coeffs[8];
+  double a222 = data.coeffs[9];
+
+  // zero degree term
+  d += a000;
+
+  // first degree terms
+  d += a001*p.x + a002*p.y;
+  c += a001*v.x + a002*v.y;
+
+  // second degree terms
+  d +=   a011*p.x*p.x + a012*p.x*p.y             +   a022*p.y*p.y;
+  c += 2*a011*p.x*v.x + a012*(p.x*v.y + v.x*p.y) + 2*a022*p.y*v.y;
+  b +=   a011*v.x*v.x + a012*v.x*v.y             +   a022*v.y*v.y;
+
+  // third degree terms: a111 x^3 + a222 y^3
+  d +=    a111*p.x*p.x*p.x + a222*p.y*p.y*p.y;
+  c += 3*(a111*p.x*p.x*v.x + a222*p.y*p.y*v.y);
+  b += 3*(a111*p.x*v.x*v.x + a222*p.y*v.y*v.y);
+  a +=    a111*v.x*v.x*v.x + a222*v.y*v.y*v.y;
+
+  // third degree terms: a112 x^2 y + a122 x y^2
+  d += a112*p.x*p.x*p.y + a122*p.x*p.y*p.y;
+  c += a112*(p.x*p.x*v.y + 2*p.x*v.x*p.y) + a122*(v.x*p.y*p.y + 2*p.x*p.y*v.y);
+  b += a112*(v.x*v.x*p.y + 2*v.x*p.x*v.y) + a122*(p.x*v.y*v.y + 2*v.x*v.y*p.y);
+  a += a112*v.x*v.x*v.y + a122*v.x*v.y*v.y;
 }

@@ -31,7 +31,6 @@ class Vector
 public:
   Vector( const Objects& os );
   Vector( const Vector& s );
-  Vector* copy();
   ~Vector();
 
   // type identification

@@ -68,11 +68,6 @@ IntersectionPoint::~IntersectionPoint()
 {
 }
 
-IntersectionPoint* IntersectionPoint::copy()
-{
-  return new IntersectionPoint( *this );
-}
-
 const QCString IntersectionPoint::vFullTypeName() const
 {
   return sFullTypeName();
@@ -194,11 +189,6 @@ CircleLineIntersectionPoint::CircleLineIntersectionPoint( const CircleLineInters
 
 CircleLineIntersectionPoint::~CircleLineIntersectionPoint()
 {
-}
-
-CircleLineIntersectionPoint* CircleLineIntersectionPoint::copy()
-{
-  return new CircleLineIntersectionPoint( *this );
 }
 
 const QCString CircleLineIntersectionPoint::vFullTypeName() const

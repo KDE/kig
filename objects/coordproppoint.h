@@ -39,7 +39,6 @@ public:
   CoordinatePropertyPoint( const Objects& os );
   CoordinatePropertyPoint( const CoordinatePropertyPoint& p );
   ~CoordinatePropertyPoint();
-  CoordinatePropertyPoint* copy();
 
   virtual CoordinatePropertyPoint* toCooordinatePropertyPoint();
   virtual const CoordinatePropertyPoint* toCooordinatePropertyPoint() const;

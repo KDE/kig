@@ -50,7 +50,6 @@ public:
   Locus( const Objects& os );
   Locus( const Locus& loc );
   ~Locus();
-  Locus* copy();
 
   virtual const QCString vBaseTypeName() const;
   static const QCString sBaseTypeName();

@@ -36,8 +36,6 @@ public:
   MirrorPoint( const MirrorPoint& p );
   ~MirrorPoint();
 
-  virtual MirrorPoint* copy();
-
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();
   const QString vDescriptiveName() const;

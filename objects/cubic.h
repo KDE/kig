@@ -27,10 +27,15 @@
 
 #include <vector>
 
+#include "line.h"
+#include "point.h"
+#include "../modes/constructing.h"
+#include "../misc/common.h"
+
 /**
  * This class represents an equation of a cubic in the form
  * "a_{ijk} x_i x_j x_k = 0" (in homogeneous coordinates, i,j,k = 0,1,2),
- * i <= j <= k.  
+ * i <= j <= k.
  * The coefficients are stored in lessicografic order.
  */
 class CubicCartesianEquationData
@@ -67,15 +72,21 @@ public:
 const CubicCartesianEquationData calcCubicThroughPoints (
     const std::vector<Coordinate>& points );
 
-double calcCubicYvalue ( double x, double ymin, double ymax, 
+double calcCubicYvalue ( double x, double ymin, double ymax,
                          int root, CubicCartesianEquationData data,
                          bool& valid, int& numroots );
 
+const Coordinate calcCubicLineIntersect( const CubicCartesianEquationData& c,
+                                         const LineData& l,
+                                         int root, bool& valid );
+
+void calcCubicLineRestriction ( CubicCartesianEquationData data,
+         Coordinate p1, Coordinate dir,
+         double& a, double& b, double& c, double& d );
+
 /**
- * This is the abstract base class for all types of conics.  There are
- * a lot of them, ranging from CircleBCP to ConicB5P ( in order of
- * complexity :).  Some of them have easy ways to calculate some of
- * the properties ( e.g. focus1() is very easy for a circle.. )
+ * This is the abstract base class for cubics.
+ * For now just CubicB9P
  */
 class Cubic
   : public Curve
@@ -97,10 +108,9 @@ class Cubic
   virtual bool inRect (const Rect&) const;
   virtual Coordinate getPoint (double param) const;
   virtual double getParam (const Coordinate&) const;
-
+  const CubicCartesianEquationData cartesianEquationData() const;
 protected:
   CubicCartesianEquationData cequation;
-
 };
 
 class CubicB9P
@@ -110,7 +120,6 @@ public:
   CubicB9P( const Objects& os );
   ~CubicB9P() {};
   CubicB9P(const CubicB9P& c);
-  CubicB9P* copy() { return new CubicB9P(*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "CubicB9P"; };
@@ -135,6 +144,52 @@ protected:
   Point* pts[9];
 
   void calc();
+};
+
+class MultiConstructibleType;
+
+/*
+ * intersection of a line and a cubic
+ */
+
+class CubicLineIntersectionPoint
+  : public Point
+{
+  Cubic* mcubic;
+  AbstractLine* mline;
+  int mroot;            // which of the three intersections
+public:
+  CubicLineIntersectionPoint( const Objects& os );
+  CubicLineIntersectionPoint( const CubicLineIntersectionPoint& p );
+  ~CubicLineIntersectionPoint();
+
+  const QCString vFullTypeName() const;
+  static const QCString sFullTypeName();
+  const QString vDescriptiveName() const;
+  static const QString sDescriptiveName();
+  const QString vDescription() const;
+  static const QString sDescription();
+  const QCString vIconFileName() const;
+  static const QCString sIconFileName();
+  const int vShortCut() const;
+  static const int sShortCut();
+  static const char* sActionName();
+
+  static void sDrawPrelim ( KigPainter& p, const Objects& os );
+  static Object::WantArgsResult sWantArgs ( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* o );
+  Objects getParents() const;
+
+  void calc();
+
+  virtual prop_map getParams ();
+  virtual void setParams ( const Object::prop_map& );
+
+  static Objects sMultiBuild( const Objects& args );
+
+  static KigMode* sConstructMode( MultiConstructibleType* ourtype,
+                                  KigDocument* theDoc,
+                                  NormalMode* previousMode );
 };
 
 #endif // KIG_OBJECTS_CUBIC_H

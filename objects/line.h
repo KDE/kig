@@ -63,7 +63,6 @@ public:
   LineTTP( const Objects& os );
   LineTTP(const LineTTP& l);
   ~LineTTP();
-  LineTTP* copy() { return new LineTTP(*this); };
 
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineTTP"; };
@@ -104,7 +103,6 @@ public:
   LinePerpend( const Objects& os );
   LinePerpend( const LinePerpend& l );
   ~LinePerpend();
-  LinePerpend* copy() { return new LinePerpend (*this);};
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return ("LinePerpend"); };
@@ -140,7 +138,6 @@ public:
   LineParallel( const Objects& o );
   LineParallel (const LineParallel& l);
   ~LineParallel() {};
-  LineParallel* copy() { return new LineParallel (*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineParallel"; };
@@ -180,7 +177,6 @@ public:
   LineRadical( const Objects& os );
   LineRadical( const LineRadical& l );
   ~LineRadical() {};
-  LineRadical* copy();
 
   virtual const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "LineRadical"; };

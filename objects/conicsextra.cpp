@@ -286,11 +286,6 @@ const char* LineConicAsymptotes::sActionName()
   return "objects_new_lineconicasymptotes";
 }
 
-LineConicAsymptotes* LineConicAsymptotes::copy()
-{
-  return new LineConicAsymptotes( *this );
-}
-
 LineConicAsymptotes::LineConicAsymptotes( const Objects& os )
 {
   assert( os.size() == 1 );

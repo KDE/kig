@@ -414,11 +414,6 @@ EllipseBFFP::~EllipseBFFP()
 {
 }
 
-EllipseBFFP* EllipseBFFP::copy()
-{
-  return new EllipseBFFP(*this);
-}
-
 const QCString EllipseBFFP::sFullTypeName()
 {
   return "EllipseBFFP";
@@ -426,11 +421,6 @@ const QCString EllipseBFFP::sFullTypeName()
 
 HyperbolaBFFP::~HyperbolaBFFP()
 {
-}
-
-HyperbolaBFFP* HyperbolaBFFP::copy()
-{
-  return new HyperbolaBFFP(*this);
 }
 
 ConicBFFP::~ConicBFFP()

@@ -146,11 +146,6 @@ Segment::Segment(const Segment& s)
   mpb->addChild(this);
 }
 
-Segment* Segment::copy()
-{
-  return new Segment(*this);
-}
-
 Segment* Segment::toSegment()
 {
   return this;

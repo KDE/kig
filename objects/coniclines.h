@@ -30,7 +30,6 @@ public:
   LineDirectrix( const Objects& os );
   LineDirectrix( const LineDirectrix& l );
   ~LineDirectrix();
-  LineDirectrix* copy() { return new LineDirectrix (*this);};
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return ("LineDirectrix"); };

@@ -37,8 +37,6 @@ public:
   TextLabel( const QString text, const Coordinate c, const propvect& props );
   ~TextLabel();
 
-  TextLabel* copy();
-
   prop_map getParams ();
   void setParams ( const prop_map& );
 

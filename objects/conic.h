@@ -115,7 +115,6 @@ public:
   EllipseBFFP( const Objects& os );
   EllipseBFFP( const EllipseBFFP& c );
   ~EllipseBFFP();
-  EllipseBFFP* copy();
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName();
@@ -146,7 +145,6 @@ public:
   HyperbolaBFFP( const Objects& os );
   HyperbolaBFFP( const HyperbolaBFFP& c );
   ~HyperbolaBFFP();
-  HyperbolaBFFP* copy();
 
   void calc();
 
@@ -174,7 +172,6 @@ public:
   ConicB5P( const Objects& os );
   ~ConicB5P() {};
   ConicB5P(const ConicB5P& c);
-  ConicB5P* copy() { return new ConicB5P(*this); };
 
   virtual const ConicPolarEquationData polarEquationData() const;
   virtual const ConicCartesianEquationData cartesianEquationData() const;
@@ -214,7 +211,6 @@ public:
   ParabolaBTP( const Objects& os );
   ~ParabolaBTP() {};
   ParabolaBTP(const ParabolaBTP& c);
-  ParabolaBTP* copy() { return new ParabolaBTP(*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "ParabolaBTP"; };
@@ -257,7 +253,6 @@ public:
   EquilateralHyperbolaB4P( const Objects& os );
   ~EquilateralHyperbolaB4P() {};
   EquilateralHyperbolaB4P(const EquilateralHyperbolaB4P& c);
-  EquilateralHyperbolaB4P* copy() { return new EquilateralHyperbolaB4P(*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "EquilateralHyperbolaB4P"; };
@@ -300,7 +295,6 @@ public:
   ConicBAAP( const Objects& os );
   ~ConicBAAP() {};
   ConicBAAP(const ConicBAAP& c);
-  ConicBAAP* copy() { return new ConicBAAP(*this); };
 
   virtual const ConicPolarEquationData polarEquationData() const;
   virtual const ConicCartesianEquationData cartesianEquationData() const;
@@ -345,7 +339,6 @@ public:
   ConicBDFP( const Objects& os );
   ~ConicBDFP() {};
   ConicBDFP(const ConicBDFP& c);
-  ConicBDFP* copy() { return new ConicBDFP(*this); };
 
   virtual const ConicPolarEquationData polarEquationData() const;
   virtual const ConicCartesianEquationData cartesianEquationData() const;

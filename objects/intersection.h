@@ -35,8 +35,6 @@ public:
   IntersectionPoint( const IntersectionPoint& p );
   ~IntersectionPoint();
 
-  virtual IntersectionPoint* copy();
-
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();
   const QString vDescriptiveName() const;
@@ -69,8 +67,6 @@ public:
   CircleLineIntersectionPoint( const Objects& os );
   CircleLineIntersectionPoint( const CircleLineIntersectionPoint& p );
   ~CircleLineIntersectionPoint();
-
-  virtual CircleLineIntersectionPoint* copy();
 
   const QCString vFullTypeName() const;
   static const QCString sFullTypeName();

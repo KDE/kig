@@ -42,6 +42,7 @@ class Ray;
 class Line;
 class Circle;
 class Conic;
+class Cubic;
 class Curve;
 class NormalPoint;
 class TextLabel;
@@ -120,12 +121,6 @@ public:
   Object( const Object& o );
   virtual ~Object() {};
 
-  /**
-   * returns a copy of the object.  This should prolly simply do
-   * "return new <Type>(*this);" (if you have a good copy constructor...)
-   */
-  virtual Object* copy() = 0;
-
   // Properties are a generic way to retrieve object information.
   // They are mainly used for showing textlabels with information
   // about an object ( e.g. This segment is %1 units long ).
@@ -158,6 +153,7 @@ public:
   virtual Line* toLine() { return 0; };
   virtual Circle* toCircle() { return 0; };
   virtual Conic* toConic() { return 0; };
+  virtual Cubic* toCubic() { return 0; };
   virtual Curve* toCurve() { return 0; };
   virtual NormalPoint* toNormalPoint() { return 0; };
   virtual TextLabel* toTextLabel() { return 0; };
@@ -171,6 +167,7 @@ public:
   virtual const Line* toLine() const { return 0; };
   virtual const Circle* toCircle() const { return 0; };
   virtual const Conic* toConic() const { return 0; };
+  virtual const Cubic* toCubic() const { return 0; };
   virtual const Curve* toCurve() const { return 0; };
   virtual const NormalPoint* toNormalPoint() const { return 0; };
   virtual const TextLabel* toTextLabel() const { return 0; };

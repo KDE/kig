@@ -65,11 +65,6 @@ const char* LineConicRadical::sActionName()
   return "objects_new_lineconicradical";
 }
 
-LineConicRadical* LineConicRadical::copy()
-{
-  return new LineConicRadical( *this );
-}
-
 LineConicRadical::LineConicRadical( const Objects& os )
 {
   assert( os.size() == 2 );
@@ -210,11 +205,6 @@ ConicLineIntersectionPoint::ConicLineIntersectionPoint( const ConicLineIntersect
 
 ConicLineIntersectionPoint::~ConicLineIntersectionPoint()
 {
-}
-
-ConicLineIntersectionPoint* ConicLineIntersectionPoint::copy()
-{
-  return new ConicLineIntersectionPoint( *this );
 }
 
 const QCString ConicLineIntersectionPoint::vFullTypeName() const

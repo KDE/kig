@@ -23,11 +23,14 @@
 
 #include <cmath>
 
+double calcCubicRoot ( double xmin, double xmax, double a,
+      double b, double c, double d, int root, bool& valid, int& numroots );
+
 int calcCubicVariations (double x, double a, double b, double c,
       double d, double p1a, double p1b, double p0a);
 
 double calcCubicRootwithNewton ( double ymin, double ymax, double a, 
-    double b, double c, double d, double tol, bool& valid );
+    double b, double c, double d, double tol );
 
 void GaussianElimination( double *matrix[], int numrows, int numcols,
     int scambio[] );

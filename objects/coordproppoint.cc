@@ -38,11 +38,6 @@ CoordinatePropertyPoint::~CoordinatePropertyPoint()
 {
 }
 
-CoordinatePropertyPoint* CoordinatePropertyPoint::copy()
-{
-  return new CoordinatePropertyPoint( *this );
-}
-
 CoordinatePropertyPoint* CoordinatePropertyPoint::toCooordinatePropertyPoint()
 {
   return this;

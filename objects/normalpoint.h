@@ -52,8 +52,6 @@ public:
 
   ~NormalPoint();
 
-  NormalPoint* copy();
-
   // we provide these functions so clients don't have to mess with
   // constructing Imp's...  (which is made impossible btw, by making
   // imp constructors private...)

@@ -29,11 +29,6 @@
 
 QString i18n( const char* );
 
-NormalPoint* NormalPoint::copy()
-{
-  return new NormalPoint( *this );
-}
-
 NormalPoint::NormalPoint( const Objects& os )
   : mimp( 0 ), tparents( os )
 {

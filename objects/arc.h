@@ -35,7 +35,6 @@ class Arc
 public:
   Arc( const Objects& os );
   Arc( const Arc& a );
-  Arc* copy();
   ~Arc();
 
   Arc* toArc();

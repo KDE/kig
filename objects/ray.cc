@@ -160,11 +160,6 @@ void Ray::sDrawPrelim( KigPainter& p, const Objects& os )
   p.drawRay( a, b );
 }
 
-Ray* Ray::copy()
-{
-  return new Ray(*this);
-}
-
 Ray* Ray::toRay()
 {
   return this;

@@ -81,7 +81,6 @@ public:
   CircleBCP( const Objects& os );
   ~CircleBCP(){};
   CircleBCP(const CircleBCP& c);
-  CircleBCP* copy() { return new CircleBCP(*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "CircleBCP"; };
@@ -116,7 +115,6 @@ public:
   CircleBTP( const Objects& os );
   ~CircleBTP() {};
   CircleBTP(const CircleBTP& c);
-  CircleBTP* copy() { return new CircleBTP(*this); };
 
   const QCString vFullTypeName() const { return sFullTypeName(); };
   static const QCString sFullTypeName() { return "CircleBTP"; };

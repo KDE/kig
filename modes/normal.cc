@@ -24,6 +24,7 @@
 #include "popup.h"
 #include "moving.h"
 #include "macro.h"
+#include "dragrectmode.h"
 #include "typesdialog.h"
 
 #include <kcursor.h>
@@ -47,15 +48,24 @@ void NormalMode::leftClicked( QMouseEvent* e, KigWidget* v )
   oco = mDoc->whatAmIOn( v->fromScreen( e->pos() ), v->screenInfo() );
   if( oco.empty() )
   {
-    // clicked on an empty spot --> we show the rectangle for
-    // selecting stuff...
-    // FIXME: make this into a separate KigMode...
-    // make it into a KigMode which returns a number of selected
-    // objects on "exit", so we can use it from other modes as
-    // well...
-    v->updateCurPix();
+    DragRectMode d( mDoc );
+    d.run( e->pos(), *v, this );
+    Objects sel = d.ret();
+
+    Objects cos = sel;
+
+    if ( d.needClear() )
+    {
+      cos |= sos;
+      clearSelection();
+    };
+
+    selectObjects( sel );
+
+    KigPainter p( v->screenInfo(), &v->stillPix );
+    p.drawObjects( cos );
+    v->updateCurPix( p.overlay() );
     v->updateWidget();
-    mDoc->emitStatusBarText( 0 );
   }
   else
   {
@@ -69,35 +79,24 @@ void NormalMode::leftClicked( QMouseEvent* e, KigWidget* v )
 
 void NormalMode::leftMouseMoved( QMouseEvent* e, KigWidget* v )
 {
-  if( oco.empty() )
+  // clicked on an object, move it ?
+  if( ( plc - e->pos() ).manhattanLength() > 3 )
   {
-    // dragging the selection rect...
-    v->updateCurPix();
-    KigPainter p( v->screenInfo(), &v->curPix );
-    p.drawFilledRect( QRect( e->pos(),  plc ) );
-    v->updateWidget( p.overlay() );
-  }
-  else
-  {
-    // clicked on an object, move it ?
-    if( ( plc - e->pos() ).manhattanLength() > 3 )
+    // yes, we move it...
+    // now to determine what to move...
+    if( ( oco & sos ).empty() )
     {
-      // yes, we move it...
-      // now to determine what to move...
-      if( ( oco & sos ).empty() )
-      {
-        // the user clicked on something that is currently not
-        // selected... --> we select it, taking the Ctrl- and
-        // Shift-buttons into account...
-        if (!(e->state() & (ControlButton | ShiftButton)))
-          clearSelection();
-        selectObject(oco.front());
-      }
+      // the user clicked on something that is currently not
+      // selected... --> we select it, taking the Ctrl- and
+      // Shift-buttons into account...
+      if (!(e->state() & (ControlButton | ShiftButton)))
+        clearSelection();
+      selectObject(oco.front());
+    }
 
-      MovingMode* m = new MovingMode( sos, v->fromScreen( plc ),
-                                      this, v, mDoc );
-      mDoc->setMode( m );
-    };
+    MovingMode* m = new MovingMode( sos, v->fromScreen( plc ),
+                                    this, v, mDoc );
+    mDoc->setMode( m );
   };
 };
 
