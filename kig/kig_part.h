@@ -251,7 +251,6 @@ protected:
   KAction* newMacroAction;
 
   KAction* configureTypesAction;
-  KAction* startKioskModeAction;
 
   int numViews;
 

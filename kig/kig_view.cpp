@@ -29,11 +29,15 @@
 #include "../misc/coordinate_system.h"
 
 #include <qdialog.h>
+#include <qwhatsthis.h>
 
 #include <kpopupmenu.h>
 #include <kdebug.h>
 #include <kcursor.h>
 #include <kapplication.h>
+#include <kstdaction.h>
+#include <kaction.h>
+#include <kiconloader.h>
 
 kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
 {
@@ -55,6 +59,9 @@ KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name, bool in
     isKiosk(inIsKiosk),
     mViewRect( )
 {
+  setInstance( document->instance() );
+  setXMLFile("kigpartui.rc");
+
   if (inIsKiosk)
     {
       kiosKontext = new KPopupMenu(this, "kiosKontext");
@@ -77,7 +84,31 @@ KigView::KigView( KigDocument* inDoc, QWidget* parent, const char* name, bool in
   recenterScreen();
   redrawStillPix();
   updateWidget(true);
+
+  setupActions();
 };
+
+void KigView::setupActions()
+{
+  KAction* a;
+  KIconLoader l;
+
+  a = KStdAction::zoomIn( this, SLOT( zoomIn() ), actionCollection() );
+  a->setWhatsThis( i18n( "Zoom in on the document" ) );
+
+  a = KStdAction::zoomOut( this, SLOT( zoomOut() ), actionCollection() );
+  a->setWhatsThis( i18n( "Zoom out of the document" ) );
+
+  a = new KAction( i18n( "Center screen" ), 0, this, SLOT( recenterScreen() ),
+		   actionCollection(), "view_recenter" );
+  a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
+
+  QPixmap tmp = l.loadIcon( "window_fullscreen", KIcon::User );
+  a = new KAction( i18n( "Full screen" ), tmp, 0, this,
+		   SLOT( startKioskMode() ), actionCollection(),
+		   "view_fullscreen" );
+  a->setWhatsThis( i18n( "View this document full-screen." ) );
+}
 
 KigView::~KigView()
 {
@@ -483,6 +514,7 @@ void KigView::recenterScreen()
 	    << "showingRect:" << showingRect() << endl
 	    << "fromScreen(...): " << fromScreen(QRect(QPoint(0,0), size()))
 	    << endl;
+  updateAll();
 }
 
 double KigView::pixelWidth()
@@ -532,4 +564,20 @@ void KigView::startMovingSos( const QPoint& p )
   KigPainter pt( this, &stillPix );
   drawObjects(stillObjs, pt);
   updateCurPix();
+}
+
+void KigView::zoomIn()
+{
+  Coordinate c = mViewRect.center();
+  mViewRect /= 2;
+  mViewRect.setCenter( c );
+  updateAll();
+}
+
+void KigView::zoomOut()
+{
+  Coordinate c = mViewRect.center();
+  mViewRect *= 2;
+  mViewRect.setCenter( c );
+  updateAll();
 }

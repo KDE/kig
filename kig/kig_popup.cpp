@@ -108,17 +108,14 @@ int KigObjectsPopup::exec( const QPoint& p )
 
 QPopupMenu* KigObjectsPopup::colorMenu( QWidget* parent )
 {
-  static QPopupMenu* m = 0;
-  if( !m )
+  QPopupMenu* m = 0;
+  m = new QPopupMenu( parent, "color popup menu" );
+  const QColor* c = 0;
+  QPixmap p( 50, 20 );
+  for( int i = 0; ( c = color( i ) ); ++i )
     {
-      m = new QPopupMenu( parent, "color popup menu" );
-      const QColor* c = 0;
-      QPixmap p( 50, 20 );
-      for( int i = 0; ( c = color( i ) ); ++i )
-	{
-	  p.fill( *c );
-	  m->insertItem( p );
-	};
+      p.fill( *c );
+      m->insertItem( p );
     };
   return m;
 }

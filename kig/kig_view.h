@@ -26,6 +26,7 @@
 
 #include <kdebug.h>
 #include <kpopupmenu.h>
+#include <kparts/part.h>
 
 #include <vector>
 
@@ -35,7 +36,7 @@
 class KigDocument;
 
 class KigView
-  : public QWidget
+  : public QWidget, public KXMLGUIClient
 {
   Q_OBJECT
 public:
@@ -53,6 +54,10 @@ public slots:
   // this is connected to KigDocument::suggestRect, check that signal 
   // out for an explanation...
   void recenterScreen();
+  // ...
+  void zoomIn();
+  void zoomOut();
+  // ...
 
 signals:
   void endKiosk();
@@ -199,5 +204,7 @@ protected:
    * what part of the document are we showing...
    */
   Rect mViewRect;
+
+  void setupActions();
 };
 #endif

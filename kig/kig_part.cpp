@@ -82,7 +82,9 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   // we need a widget, to actually show the document
   m_widget = new KigView(this, parentWidget, widgetName);
   // notify the part that this is our internal widget
-  setWidget(m_widget);
+  setWidget( m_widget );
+  insertChildClient( m_widget );
+
   // give m_widget control over the status bar.
   connect(m_widget, SIGNAL(setStatusBarText (const QString&)), this, SIGNAL(setStatusBarText(const QString&)));
 
@@ -121,18 +123,12 @@ void KigDocument::setupActions()
   cancelConstructionAction->setWhatsThis(i18n("Cancel the construction of the object being constructed"));
   cancelConstructionAction->setEnabled(false);
 
-  // FIXME: does this somehow belong in the widget ?
-  tmp = l.loadIcon("window_fullscreen", KIcon::User);
-  startKioskModeAction = new KAction (i18n("Full screen"), tmp, 0, m_widget, SLOT(startKioskMode()), actionCollection(), "full_screen");
-  startKioskModeAction->setWhatsThis(i18n("View this document full-screen."));
-
   tmp = l.loadIcon("macro", KIcon::User);
   newMacroAction = new KAction (i18n("New macro"), tmp, 0, this, SLOT(newMacro()), actionCollection(), "macro_action");
   newMacroAction->setWhatsThis(i18n("Define a new macro"));
 
   configureTypesAction = new KAction (i18n("Edit Types"), 0, this, SLOT(editTypes()), actionCollection(), "types_edit");
   configureTypesAction->setWhatsThis(i18n("Edit your defined macro types"));
-
 
   tmp = l.loadIcon( "line", KIcon::User);
   newLineAction = new KActionMenu (i18n("New Line"), tmp, actionCollection(), "new_line");

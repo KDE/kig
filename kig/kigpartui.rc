@@ -1,8 +1,11 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="kig_part" version="1">
 <MenuBar>
-  <Menu name="file"><text>&amp;File</text>
-    <Action name="full_screen"/>
+  <Menu name="view"><text>&amp;View</text>
+    <Action name="view_fullscreen"/>
+    <Action name="view_zoom_in"/>
+    <Action name="view_zoom_out"/>
+    <Action name="view_recenter"/>
   </Menu>
   <Menu name="objects">
     <text>Objects</text>
@@ -21,11 +24,16 @@
 <ToolBar name="mainToolBar">
   <Action name="edit_undo"/>
   <Action name="edit_redo"/>
+  <Separator />
   <Action name="delete_objects"/>
   <Action name="cancel_construction"/>
   <Action name="macro_action"/>
-  <Separator/>
-  <Action name="full_screen"/>
+</ToolBar>
+<ToolBar name="view_toolbar">
+  <Action name="view_zoom_in" />
+  <Action name="view_zoom_out" />
+  <Action name="view_fullscreen" />
+  <Action name="view_recenter"/>
 </ToolBar>
 <ToolBar name="new_stuff_toolbar">
   <Action name="new_circle" />
