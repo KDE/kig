@@ -392,6 +392,24 @@ const PolygonLineIntersectionType* PolygonLineIntersectionType::instance()
   return &t;
 }
 
+/*
+ * Intersection of a polygon and a line/ray/segment.
+ *
+ * geometrically speaking the result is always a collection of
+ * collinear nonintersecting open segments (at most one if the
+ * polygon is convex).  Since we don't know in advance how many
+ * segments will result, the obvious choice is to return an
+ * InvalidImp in cases when the result is *not* a single segment
+ *
+ * computing the two ends of this segment is more tricky then one 
+ * expects especially when intersecting segments/rays.
+ *
+ * particularly "difficult" situations are those where we intersect
+ * a segment/ray with an/the endpoint coinciding with a vertex of
+ * the polygon, especially if that vertex is a "reentrant" (concave)
+ * vertex of the polygon.
+ */
+
 ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
@@ -402,27 +420,22 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
   Coordinate intersections[2];
   uint whichintersection = 0;
 
-  bool isline = true;
-  bool isray = false;
+  bool boundleft = false;
+  bool boundright = false;
   if ( parents[1]->inherits( SegmentImp::stype() ) )
   {
-    isline = false;
-    if ( polygon->isInPolygon( line.a ) )
-      intersections[whichintersection++] = line.a;
-    if ( polygon->isInPolygon( line.b ) )
-      intersections[whichintersection++] = line.b;
+    boundleft = boundright = true;
   } 
   if ( parents[1]->inherits( RayImp::stype() ) )
   {
-    isray = true;
-    isline = false;
-    if ( polygon->isInPolygon( line.a ) )
-      intersections[whichintersection++] = line.a;
+    boundleft = true;
   } 
   Coordinate a = line.a;
   double abx = line.b.x - a.x;
   double aby = line.b.y - a.y;
 
+  double leftendinside = false;
+  double rightendinside = false;
   Coordinate prevpoint = ppoints.back() - a;
   bool prevpointbelow = ( abx*prevpoint.y <= aby*prevpoint.x );
   for ( uint i = 0; i < ppoints.size(); ++i )
@@ -433,19 +446,22 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
     {
       /* found an intersection with the support line
        * compute the value of the parameter...
-       *
-       * there is still a problem with this approach when
-       * the segment/ray has an end-point coinciding with a
-       * concave vertex of the polygon
        */
-      LineData side = LineData( prevpoint + a, point + a );
       double dcx = point.x - prevpoint.x;
       double dcy = point.y - prevpoint.y;
       double num = point.x*dcy - point.y*dcx;
       double den = abx*dcy - aby*dcx;
-      if ( std::fabs( den ) < 1.e-6*std::fabs( num ) ) continue;
+      if ( std::fabs( den ) <= 1.e-6*std::fabs( num ) ) continue; //parallel
       double t = num/den;
-      if ( isline || ( isray && t >= 0 ) || ( t >= 0 && t <= 1 ) )
+      if ( boundleft && t <= 0 )
+      {
+        leftendinside = !leftendinside;
+      }
+      else if ( boundright && t >= 1 )
+      {
+        rightendinside = !rightendinside;
+      }
+      else
       {
         if ( whichintersection >= 2 ) return new InvalidImp;
         intersections[whichintersection++] = a + t*Coordinate( abx, aby );
@@ -453,6 +469,18 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
     }
     prevpoint = point;
     prevpointbelow = pointbelow;
+  }
+
+  if ( leftendinside )
+  {
+    if ( whichintersection >= 2 ) return new InvalidImp;
+    intersections[whichintersection++] = a;
+  }
+
+  if ( rightendinside )
+  {
+    if ( whichintersection >= 2 ) return new InvalidImp;
+    intersections[whichintersection++] = line.b;
   }
 
   switch (whichintersection)
