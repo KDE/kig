@@ -107,7 +107,7 @@ public:
   StdConstructionMode( StdConstructibleType* t, KigDocument& d );
   ~StdConstructionMode();
 
-  virtual StdConstructionMode* toStdConstructionMode();
+  StdConstructionMode* toStdConstructionMode();
 
   void leftClicked( QMouseEvent*, KigWidget* );
   void leftReleased( QMouseEvent*, KigWidget* );

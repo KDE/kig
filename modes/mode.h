@@ -38,7 +38,7 @@ class KigMode
 public:
   virtual ~KigMode();
 
-  StdConstructionMode* toStdConstructionMode();
+  virtual StdConstructionMode* toStdConstructionMode();
 
   virtual void leftClicked( QMouseEvent*, KigWidget* );
   // this means: mouse moved with left mouse button down (in case that
