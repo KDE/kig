@@ -660,7 +660,7 @@ KAboutData* KigDocument::createAboutData()
   const char* version = "v2.0";
   const char* description = "KDE Interactive Geometry";
 
-  KAboutData* tmp = new KAboutData("KigPart", I18N_NOOP("Kig"), version,
+  KAboutData* tmp = new KAboutData("kigpart", I18N_NOOP("KigPart"), version,
 				   description, KAboutData::License_GPL,
 				   "(C) 2002, Dominique Devriese");
   tmp->addAuthor("Dominique Devriese", I18N_NOOP("Coding"),

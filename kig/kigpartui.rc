@@ -4,8 +4,8 @@
   <Menu name="file"><text>&amp;File</text>
     <Action name="full_screen"/>
   </Menu>
-  <Menu name="new">
-    <text>New</text>
+  <Menu name="objects">
+    <text>Objects</text>
     <Action name="new_line"/>
     <Action name="new_segment"/>
     <Action name="new_point"/>
