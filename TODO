@@ -5,6 +5,10 @@
 
 * not too hard:
 
+- When selecting an argument of a certain type, show something like
+   "Select a vector", so that the user is not confused, looking for an
+   object he can't find.
+
 - add intersection type between arcs and the other objects.
 
 - add ObjectType's to the ObjectTypeFactory automatically.
