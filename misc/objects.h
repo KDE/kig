@@ -35,8 +35,11 @@ template<class T>
 class myvector
   : public std::vector<T>
 {
+  typedef std::vector<T> parent;
 public:
   myvector();
+  myvector( uint size, const T& l )
+    : parent( size, l ) {};
   template<class Iter> myvector( Iter b, Iter e )
     : std::vector<T>( b, e ) {};
 
@@ -143,6 +146,7 @@ class Objects
 {
 public:
   Objects() {};
+  Objects( uint n, Object* l ) : myvector<Object*>( n, l ) {};
   template<class Iter> Objects( Iter b, Iter e ) : myvector<Object*>( b, e ) {};
   Objects( const Objects& os ) : myvector<Object*>( os ) {};
   explicit Objects( Object* const o ) : myvector<Object*>( o ) {};
