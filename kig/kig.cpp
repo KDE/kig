@@ -256,13 +256,17 @@ void Kig::dropEvent(QDropEvent* e)
 
 void Kig::fileOpen()
 {
+  QString formats =
+     i18n( "*.kig *.kigz *.kgeo *.seg|All Supported Files (*.kig *.kigz *.kgeo *.seg)\n"
+           "*.kig|Kig Documents (*.kig)\n"
+           "*.kigz|Compressed Kig Documents (*.kigz)\n"
+           "*.kgeo|KGeo Documents (*.kgeo)\n"
+           "*.seg|KSeg Documents (*.seg)\n"
+           "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+           "*.fig *.FIG|Cabri Documents (*.fig *.FIG)" );
+
   // this slot is connected to the KStdAction::open action...
-  QString file_name = KFileDialog::getOpenFileName(":document", i18n("*.kig *.kgeo *.seg|All Supported Files (*.kig *.kgeo *.seg)\n"
-                                                                     "*.kig|Kig Documents (*.kig)\n"
-                                                                     "*.kgeo|KGeo Documents (*.kgeo)\n"
-                                                                     "*.seg|KSeg Documents (*.seg)\n"
-                                                                     "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
-                                                                     "*.fig *.FIG|Cabri Documents (*.fig *.FIG)" ) );
+  QString file_name = KFileDialog::getOpenFileName(":document", formats );
 
   if (!file_name.isEmpty()) openURL(file_name);
 }

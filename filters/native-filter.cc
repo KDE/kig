@@ -32,10 +32,17 @@
 
 #include "config.h"
 
+#include <qdom.h>
 #include <qfile.h>
 #include <qregexp.h>
-#include <qdom.h>
+
+#include <karchive.h>
+#include <kdebug.h>
 #include <kglobal.h>
+#include <kstandarddirs.h>
+#include <ktar.h>
+
+#include <stdio.h>
 
 #include <vector>
 #include <algorithm>
@@ -103,10 +110,52 @@ KigDocument* KigFilterNative::load( const QString& file )
     fileNotFound( file );
     return 0;
   };
-  QDomDocument doc( "KigDocument" );
-  if ( !doc.setContent( &ffile ) )
+
+  QFile kigdoc( file );
+  if ( !file.endsWith( ".kig", false ) )
+  {
+    // the file is compressed, so we have to decompress it and fetch the
+    // kig file inside it...
+
+    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    if ( tempdir.isEmpty() )
+      KIG_FILTER_PARSE_ERROR;
+
+    QString tempname = file.section( '/', -1 );
+    if ( file.endsWith( ".kigz", false ) )
+    {
+      tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
+    }
+    else
+      KIG_FILTER_PARSE_ERROR;
+    KTar* ark = new KTar( file, "application/x-gzip" );
+    ark->open( IO_ReadOnly );
+    const KArchiveDirectory* dir = ark->directory();
+//    assert( dir );
+    QStringList entries = dir->entries();
+    QStringList kigfiles = entries.grep( QRegExp( "\\.kig$" ) );
+    if ( kigfiles.count() != 1 )
+      // I throw a generic parse error here, but I should warn the user that
+      // this kig archive file doesn't contain one kig file (it contains no
+      // kig files or more than one).
+      KIG_FILTER_PARSE_ERROR;
+    const KArchiveEntry* kigz = dir->entry( kigfiles[0] );
+    if ( !kigz->isFile() )
+      KIG_FILTER_PARSE_ERROR;
+    dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
+    kdDebug() << "extracted file: " << tempdir + kigz->name() << endl
+              << "exists: " << QFile::exists( tempdir + kigz->name() ) << endl;
+    
+    kigdoc.setName( tempdir + kigz->name() );
+  }
+
+  if ( !kigdoc.open( IO_ReadOnly ) )
     KIG_FILTER_PARSE_ERROR;
-  ffile.close();
+
+  QDomDocument doc( "KigDocument" );
+  if ( !doc.setContent( &kigdoc ) )
+    KIG_FILTER_PARSE_ERROR;
+  kigdoc.close();
   QDomElement main = doc.documentElement();
 
   QString version = main.attribute( "CompatibilityVersion" );
@@ -610,17 +659,64 @@ bool KigFilterNative::save( const KigDocument& data, const QString& file )
 
 bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
 {
-  QFile file( outfile );
-  if ( ! file.open( IO_WriteOnly ) )
+  // we have an empty outfile, so we have to print all to stdout
+  if ( outfile.isEmpty() )
   {
-    fileNotFound( outfile );
-    return false;
+    QTextStream stdoutstream( stdout, IO_WriteOnly );
+    return save07( data, stdoutstream );
   }
-  QTextStream stream( &file );
-  return save07( data, stream );
+  if ( !outfile.endsWith( ".kig", false ) )
+  {
+    // the user wants to save a compressed file, so we have to save our kig
+    // file to a temp file and then compress it...
+
+    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    if ( tempdir.isEmpty() )
+      return false;
+
+    QString tempname = outfile.section( '/', -1 );
+    if ( outfile.endsWith( ".kigz", false ) )
+      tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
+    else
+      return false;
+
+    QString tmpfile = tempdir + tempname + ".kig";
+    QFile ftmpfile( tmpfile );
+    if ( !ftmpfile.open( IO_WriteOnly ) )
+      return false;
+    QTextStream stream( &ftmpfile );
+    if ( !save07( data, stream ) )
+      return false;
+    ftmpfile.close();
+
+    kdDebug() << "tmp saved file: " << tmpfile << endl;
+
+    KTar* ark = new KTar( outfile,  "application/x-gzip" );
+    ark->open( IO_WriteOnly );
+    ark->addLocalFile( tmpfile, tempname + ".kig" );
+    ark->close();
+
+    return true;
+  }
+  else
+  {
+    QFile file( outfile );
+    if ( ! file.open( IO_WriteOnly ) )
+    {
+      fileNotFound( outfile );
+      return false;
+    }
+    QTextStream stream( &file );
+    return save07( data, stream );
+  }
+
+  // we should never reach this point...
+  return false;
 }
 
+/*
 bool KigFilterNative::save( const KigDocument& data, QTextStream& stream )
 {
   return save07( data, stream );
 }
+*/

@@ -38,7 +38,7 @@ public:
 
   // saving is always done with the native filter.  We don't support
   // output filters..
-  bool save ( const KigDocument& data, QTextStream& stream );
+//  bool save ( const KigDocument& data, QTextStream& stream );
   bool save ( const KigDocument& data, const QString& outfile );
 protected:
   KigFilters();

@@ -22,9 +22,8 @@
 
 class QDomElement;
 class KigDocument;
-class QDomElement;
 class QTextStream;
-class QCString;
+class QString;
 
 // Kig's native format.  Between versions 0.3.1 and 0.4, there was a
 // change in the file format.  This filter no longer supports pre-0.4
@@ -52,7 +51,7 @@ public:
   KigDocument* load( const QString& file );
 
   bool save( const KigDocument& data, const QString& file );
-  bool save( const KigDocument& data, QTextStream& stream );
+//  bool save( const KigDocument& data, QTextStream& stream );
 };
 
 #endif

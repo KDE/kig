@@ -106,7 +106,9 @@ bool KigFilters::save( const KigDocument& data, const QString& tofile )
   return KigFilterNative::instance()->save( data, tofile );
 }
 
+/*
 bool KigFilters::save( const KigDocument& data, QTextStream& stream )
 {
   return KigFilterNative::instance()->save( data, stream );
 }
+*/

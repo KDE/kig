@@ -40,8 +40,6 @@
 #include "../objects/object_drawer.h"
 #include "../objects/point_imp.h"
 
-#include <stdio.h>
-
 #include <algorithm>
 #include <functional>
 
@@ -603,8 +601,8 @@ void KigPart::fileSave()
 bool KigPart::internalSaveAs()
 {
   // this slot is connected to the KStdAction::saveAs action...
-  QString formats;
-  formats = i18n("*.kig|Kig Documents (*.kig)");
+  QString formats = i18n( "*.kig|Kig Documents (*.kig)\n"
+                          "*.kigz|Compressed Kig Documents (*.kigz)" );
 
   //  formats += "\n";
   //  formats += KImageIO::pattern( KImageIO::Writing );
@@ -946,12 +944,8 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
   for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
     ( *i )->calc( *doc );
 
-  bool success = true;
-  QTextStream stdoutstream( stdout, IO_WriteOnly );
-  if ( outfile == "-" )
-    success = KigFilters::instance()->save( *doc, stdoutstream );
-  else
-    success = KigFilters::instance()->save( *doc, outfile );
+  QString out = ( outfile == "-" ) ? "" : outfile;
+  bool success = KigFilters::instance()->save( *doc, out );
   if ( !success )
   {
     kdError() << "something went wrong while saving" << endl;
@@ -961,7 +955,7 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
   delete doc;
 
   return 0;
-}
+};
 
 void KigPart::toggleGrid()
 {
