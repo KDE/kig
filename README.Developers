@@ -1,40 +1,14 @@
-Hi,
-I'm Dominique Devriese, I've spent the last few months writing this program.
+Hi, here are some things that might not be immediately clear :
 
-Here is some information to developers who want to check out my code:
-
-- i subdivided my source dir into three dirs: kig, objects and misc.  This
-  is to provide some more organisation in the source.  Automake + KDE build
-  stuff provides for the necessary compilation magic, so that's no problem
-  at all.  If, however, you are doing a make in the kig dir, and make tells
-  you it doesn't know how to build the library's from the two other dirs,
-  just do a "cd ..; make", and you should be fine.
+- There are different source dirs ( kig, objects, misc, filters and
+  modes ) ( just in case this wasn't clear.. )
 
 - for testing code, i don't really know how you're supposed to do this with
   kparts, so i just do a "make install" every time, and then simply run the
   program, you prolly want to do "./configure --enable-debug=full
-  --prefix=/usr" (/usr is for Debian, maybe you need another prefix
-  (/opt/kde ?)) (meanwhile, i found out, the solution is in a
+  --prefix=/usr/local/kde3" (meanwhile, i found out, the solution is in a
   developer faq on developer.kde.org
   (http://developer.kde.org/documentation/other/developer-faq.html#q67.1)
-
-- debugging doesn't work for me.  Gdb seems to get line numbers in shared
-  libs wrong, so that looks incredibly ugly.  Luckily, there is kcrash,
-  which at least shows where the application crashed (check the tab
-  "Backtrace") And of course, you can always put the debugging info you need
-  on stdout / stderr... (kdDebug() << "..." << endl;)
-
-- i have been working on a trick to speed up moving, which involves only
-  redrawing certain parts of the screen (which is what Object::getOverlay)
-  is for.  All of this is copied from KGeo, so all credit goes to Marc
-  Bartsch. For debugging this, there's some code between #ifdef's in
-  kig/kig_view.cpp, which enables/disables showing in yellow rects which
-  parts of the screen are being drawn.  For general use, you want to disable
-  this.
-
-- i have some assert() calls here and there, so if you see Kig crashing,
-  first check for assert output on stderr before hunting SIGSEGV's and
-  such...
 
 - if you want to contribute, your work is more than welcome, no matter where
   you want to help: translation, coding, art, just send me a mail at
