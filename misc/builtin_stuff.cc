@@ -279,14 +279,6 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_vectorsum", 0 ) );
 
     c = new SimpleObjectTypeConstructor(
-      VectorDifferenceType::instance(),
-      I18N_NOOP( "Vector Difference" ),
-      I18N_NOOP( "Construct the vector difference of two vectors." ),
-      "vectordifference" );
-    ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_vectordifference", 0 ) );
-
-    c = new SimpleObjectTypeConstructor(
       LineByVectorType::instance(),
       I18N_NOOP( "Line by Vector" ),
       I18N_NOOP( "Construct the line by a given vector though a given point." ),

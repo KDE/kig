@@ -4,6 +4,10 @@
 
 2004-09-01  Pino Toscano <toscano.pino@tiscali.it>
 
+	* Implement Vector difference as internal macro.
+
+2004-09-01  Pino Toscano <toscano.pino@tiscali.it>
+
 	* The Type list has a popup menu to edit, delete and export types.
 
 2004-09-01  Pino Toscano <toscano.pino@tiscali.it>

@@ -1,0 +1,30 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.9.0" >
+ <Macro>
+  <Name>Vector Difference</Name>
+  <Description>Construct the vector difference of two vectors.</Description>
+  <ActionName>objects_new_vectordifference</ActionName>
+  <Construction>
+   <input requirement="vector" id="1">
+    <UseText>Construct the vector difference of this vector and another one.</UseText>
+    <SelectStatement>Select the first of the two vectors of which you want to construct the difference...</SelectStatement>
+   </input>
+   <input requirement="vector" id="2">
+    <UseText>Construct the vector difference of the other vector and this one.</UseText>
+    <SelectStatement>Select the other of the two vectors of which you want to construct the difference...</SelectStatement>
+   </input>
+   <input requirement="point" id="3">
+    <UseText>Construct the vector difference starting at this point.</UseText>
+    <SelectStatement>Select the point to construct the difference vector in...</SelectStatement>
+   </input>
+   <intermediate action="fetch-property" property="vector-opposite" id="4" >
+    <arg>2</arg>
+   </intermediate>
+   <result action="calc" type="VectorSum" id="5" >
+    <arg>1</arg>
+    <arg>4</arg>
+    <arg>3</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

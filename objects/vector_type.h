@@ -43,15 +43,4 @@ public:
   const ObjectImpType* resultId() const;
 };
 
-class VectorDifferenceType
-  : public ArgsParserObjectType
-{
-  VectorDifferenceType();
-  ~VectorDifferenceType();
-public:
-  static const VectorDifferenceType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
-};
-
 #endif
