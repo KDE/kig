@@ -17,6 +17,7 @@
 #include <kmessagebox.h>
 #include <kdebug.h>
 #include <kapplication.h>
+#include <klocale.h>
 
 Kig::Kig()
   : KParts::MainWindow( 0L, "Kig" ),
@@ -38,9 +39,8 @@ Kig::Kig()
     {
       // now that the Part is loaded, we cast it to a Part to get
       // our hands on it
-      m_part = static_cast<KParts::ReadWritePart *>
+      m_part = static_cast<KParts::ReadWritePart*>
 	(factory->create(this, "kig_part", "KParts::ReadWritePart" ));
-
       if (m_part)
         {
 	  // tell the KParts::MainWindow that this is indeed the main widget
@@ -163,6 +163,29 @@ void Kig::openURL(const KURL& url)
   Kig* widget = new Kig;
   widget->show();
   widget->load(url);
+}
+
+bool Kig::queryClose()
+{
+  if (!m_part->isReadWrite() || !m_part->isModified()) return true;
+  switch( KMessageBox::warningYesNoCancel 
+	  (
+	   widget(),
+	   i18n("Save changes to document %1 ?").arg(m_part->url().path()),
+	   i18n("Save changes ?")
+	   ))
+    {
+    case KMessageBox::Yes:
+      if (m_part->save()) return true;
+      else return false;
+      break;
+    case KMessageBox::No:
+      return true;
+      break;
+    default: // cancel
+      return false;
+      break;
+    };
 }
 
 #include "kig.moc"

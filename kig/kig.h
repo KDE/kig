@@ -49,6 +49,11 @@ class Kig : public KParts::MainWindow, virtual public KigIface
   void openURL (const QString& s) { openURL(KURL(s)); };
   void openURL (const KURL& url);
  protected:
+  // this is called by the framework before closing the window, to
+  // allow the user to save his changes... returning false cancels the
+  // close request...
+  bool queryClose();
+  
   /**
    * This method is called when it is time for the app to save its
    * properties for session management purposes.
@@ -75,7 +80,6 @@ class Kig : public KParts::MainWindow, virtual public KigIface
   void setupAccel();
   void setupActions();
 
- private:
   KParts::ReadWritePart *m_part;
 
   KToggleAction *m_toolbarAction;
