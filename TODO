@@ -3,8 +3,6 @@
 - add support for working with angles in degrees in the set size
   dialog of an angle..
 
-- make shift snap to the grid in moving mode
-
 - add support for giving sizes in cm, inches in the export to image
   dialog..
 
