@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Kig
-Name[ar]=كيج
 Name[ta]=கிக்
 Name[xx]=xxKigxx
 GenericName=Interactive Geometry
+GenericName[af]=Interaktiewe Meetkunde
 GenericName[bg]=Интерактивна геометрия
 GenericName[bs]=Interaktivna geometrija
 GenericName[ca]=Geometria interactiva
@@ -41,5 +41,5 @@ MimeType=application/x-kig;application/x-kgeo;
 Icon=kig
 Type=Application
 DocPath=kig/index.html
-Terminal=0
-Categories=Qt;KDE;Education;Math
+Terminal=false
+Categories=Qt;KDE;Education;Math;
