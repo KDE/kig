@@ -23,8 +23,9 @@
 
 #include <algorithm>
 
-ArgParser::ArgParser( const spec* args, int n )
-  : mwantedobjscount( 0 ), margs( args, args + n )
+ArgParser::ArgParser( const spec* args, int n, int numberofanyobjects )
+  : mwantedobjscount( 0 ), margs( args, args + n ),
+    manyobjectscount( numberofanyobjects )
 {
   for ( int i = 0; i < n; ++i )
     mwantedobjscount += margs[i].number;
@@ -32,6 +33,8 @@ ArgParser::ArgParser( const spec* args, int n )
 
 int ArgParser::check( const Objects& os ) const
 {
+  int numberofanyobjects = manyobjectscount;
+
   std::vector<int> numbers( margs.size() );
   for ( uint i = 0; i < margs.size(); ++i )
     numbers[i] = margs[i].number;
@@ -51,10 +54,11 @@ int ArgParser::check( const Objects& os ) const
       };
     };
     // object o is not of a type in margs..
-    return Invalid;
+    if ( --numberofanyobjects < 0 ) return Invalid;
   matched:
     ;
   };
+  if ( numberofanyobjects > 0 ) return Valid;
   for( uint i = 0; i < margs.size(); ++i )
     if ( numbers[i] > 0 ) return Valid;
   return Complete;
@@ -63,7 +67,9 @@ int ArgParser::check( const Objects& os ) const
 Args ArgParser::parse( const Args& os ) const
 {
 //  assert( check( os ) != Invalid );
-  Args ret( mwantedobjscount );
+  Args ret( mwantedobjscount + manyobjectscount );
+
+  int anyobjscounter = 0;
 
   std::vector<int> numbers( margs.size() );
   for( uint i = 0; i < margs.size(); ++i )
@@ -75,14 +81,23 @@ Args ArgParser::parse( const Args& os ) const
     counters[i] = counters[i-1] + margs[i-1].number;
 
   for ( Args::const_iterator o = os.begin(); o != os.end(); ++o )
+  {
+    bool added = false;
     for( uint i = 0; i < margs.size(); ++i )
       if ( (*o)->inherits( margs[i].type ) && numbers[i] > 0 )
       {
         // object o is of a type that we're looking for
         ret[counters[i]++] = *o;
+        added = true;
         --numbers[i];
         break;
       }
+    if ( ! added )
+    {
+      assert( anyobjscounter < manyobjectscount );
+      ret[mwantedobjscount + anyobjscounter++]= *o;
+    };
+  };
   return ret;
 }
 
@@ -98,7 +113,9 @@ ArgsChecker::~ArgsChecker()
 Objects ArgParser::parse( const Objects& os ) const
 {
   assert( check( os ) != Invalid );
-  Objects ret( mwantedobjscount );
+  Objects ret( mwantedobjscount + manyobjectscount );
+
+  int anyobjscounter = 0;
 
   std::vector<int> numbers( margs.size() );
   for( uint i = 0; i < margs.size(); ++i )
@@ -110,19 +127,28 @@ Objects ArgParser::parse( const Objects& os ) const
     counters[i] = counters[i-1] + margs[i-1].number;
 
   for ( Objects::const_iterator o = os.begin(); o != os.end(); ++o )
+  {
+    bool added = false;
     for( uint i = 0; i < margs.size(); ++i )
       if ( (*o)->hasimp( margs[i].type ) && numbers[i] > 0 )
       {
         // object o is of a type that we're looking for
         ret[counters[i]++] = *o;
+        added = true;
         --numbers[i];
         break;
       }
+    if ( ! added )
+    {
+      assert( anyobjscounter < manyobjectscount );
+      ret[mwantedobjscount + anyobjscounter++] = *o;
+    };
+  };
   return ret;
 }
 
-ArgParser::ArgParser( const std::vector<spec>& args )
-  : mwantedobjscount( 0 ), margs( args )
+ArgParser::ArgParser( const std::vector<spec>& args, int anyobjscount )
+  : mwantedobjscount( 0 ), margs( args ), manyobjectscount( anyobjscount )
 {
   for ( uint i = 0; i < margs.size(); ++i )
     mwantedobjscount += margs[i].number;
@@ -130,10 +156,12 @@ ArgParser::ArgParser( const std::vector<spec>& args )
 
 ArgParser ArgParser::without( int type ) const
 {
+  if ( type == ObjectImp::ID_AnyImp )
+    return ArgParser( margs, 0 );
   std::vector<spec> ret;
   ret.reserve( margs.size() - 1 );
   for ( uint i = 0; i < margs.size(); ++i )
     if ( margs[i].type != type )
       ret.push_back( margs[i] );
-  return ArgParser( ret );
+  return ArgParser( ret, manyobjectscount );
 }

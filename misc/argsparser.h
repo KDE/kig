@@ -49,9 +49,12 @@ private:
   int mwantedobjscount;
   // the args spec..
   const std::vector<spec> margs;
+  // the number of objects that we want other than thos in margs and
+  // mwantedobjscount..
+  int manyobjectscount;
 public:
-  ArgParser( const struct spec* args, int n );
-  ArgParser( const std::vector<spec>& args );
+  ArgParser( const struct spec* args, int n, int numberofanyobjects = 0 );
+  ArgParser( const std::vector<spec>& args, int numberofanyobjects );
   // returns a new ArgParser that wants the same args, except for the
   // ones of the given type..
   ArgParser without( int type ) const;

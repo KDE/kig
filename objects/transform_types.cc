@@ -27,12 +27,11 @@
 
 static const ArgParser::spec argsspecav[] =
 {
-  { ObjectImp::ID_AnyImp, 1 },
   { ObjectImp::ID_VectorImp, 1 }
 };
 
 TranslatedType::TranslatedType()
-  : ObjectType( "TranslatedType", argsspecav, 2 )
+  : ObjectType( "TranslatedType", argsspecav, 1, 1 )
 {
 }
 
@@ -46,24 +45,24 @@ const TranslatedType* TranslatedType::instance()
   return &t;
 }
 
-ObjectImp* TranslatedType::calc( const Args& args ) const
+ObjectImp* TranslatedType::calc( const Args& targs ) const
 {
-  if ( args.size() != 2 ) return new InvalidImp;
-  assert( args[1]->inherits( ObjectImp::ID_VectorImp ) );
+  if ( targs.size() != 2 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  assert( args[0]->inherits( ObjectImp::ID_VectorImp ) );
 
-  Coordinate dir = static_cast<const VectorImp*>( args[1] )->dir();
+  Coordinate dir = static_cast<const VectorImp*>( args[0] )->dir();
   Transformation t = Transformation::translation( dir );
-  return args[0]->transform( t );
+  return args[1]->transform( t );
 }
 
 static const ArgParser::spec argsspecap[] =
 {
-  { ObjectImp::ID_AnyImp, 1 },
   { ObjectImp::ID_PointImp, 1 }
 };
 
 PointReflectionType::PointReflectionType()
-  : ObjectType( "PointReflection", argsspecap, 2 )
+  : ObjectType( "PointReflection", argsspecap, 1, 1 )
 {
 }
 
@@ -77,24 +76,24 @@ const PointReflectionType* PointReflectionType::instance()
   return &t;
 }
 
-ObjectImp* PointReflectionType::calc( const Args& args ) const
+ObjectImp* PointReflectionType::calc( const Args& targs ) const
 {
-  if ( args.size() != 2 ) return new InvalidImp;
-  assert( args[1]->inherits( ObjectImp::ID_PointImp ) );
+  if ( targs.size() != 2 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  assert( args[0]->inherits( ObjectImp::ID_PointImp ) );
 
-  Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
+  Coordinate center = static_cast<const PointImp*>( args[0] )->coordinate();
   Transformation t = Transformation::pointReflection( center );
-  return args[0]->transform( t );
+  return args[1]->transform( t );
 }
 
 static const ArgParser::spec argsspecal[] =
 {
-  { ObjectImp::ID_AnyImp, 1 },
   { ObjectImp::ID_LineImp, 1 }
 };
 
 LineReflectionType::LineReflectionType()
-  : ObjectType( "LineReflection", argsspecal, 2 )
+  : ObjectType( "LineReflection", argsspecal, 1, 1 )
 {
 }
 
@@ -108,12 +107,13 @@ const LineReflectionType* LineReflectionType::instance()
   return &t;
 }
 
-ObjectImp* LineReflectionType::calc( const Args& args ) const
+ObjectImp* LineReflectionType::calc( const Args& targs ) const
 {
-  if ( args.size() != 2 ) return new InvalidImp;
-  assert( args[1]->inherits( ObjectImp::ID_LineImp ) );
+  if ( targs.size() != 2 ) return new InvalidImp;
+  Args args = margsparser.parse( targs );
+  assert( args[0]->inherits( ObjectImp::ID_LineImp ) );
 
-  LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
+  LineData d = static_cast<const AbstractLineImp*>( args[0] )->data();
   Transformation t = Transformation::lineReflection( d );
-  return args[0]->transform( t );
+  return args[1]->transform( t );
 }

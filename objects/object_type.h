@@ -35,7 +35,7 @@ protected:
   const ArgParser margsparser;
   ObjectType( const char fulltypename[],
               const struct ArgParser::spec margsspec[],
-              int n );
+              int n, int any = 0 );
 public:
   virtual ~ObjectType();
 

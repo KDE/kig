@@ -31,9 +31,9 @@ ObjectType::~ObjectType()
 
 ObjectType::ObjectType( const char fulltypename[],
                         const struct ArgParser::spec argsspec[],
-                        int n )
+                        int n, int any )
   : mfulltypename( fulltypename ),
-    margsparser( argsspec, n )
+    margsparser( argsspec, n, any )
 {
 }
 
