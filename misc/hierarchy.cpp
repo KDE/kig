@@ -132,7 +132,10 @@ Objects ObjectHierarchy::fillUp( const Objects& inGegObjs ) const
 	    if (!(*j)->actual)
 	      {
 		// we construct it, and add it to the necessary places
-		Object* appel = doc->newObject((*j)->getTypeName());
+		Object* appel;
+		if ((*j)->getTypeName() == "ConstrainedPoint")
+		  appel = new ConstrainedPoint((*j)->getParam());
+		else appel = doc->newObject((*j)->getTypeName());
 		assert(appel);
 		(*j)->actual = appel;
 		cos.add(appel);
@@ -279,13 +282,14 @@ void HierarchyElement::saveXML(QDomDocument& doc, QDomElement& p, bool
   e.setAttribute("typeName", typeName);
   e.setAttribute("id", id);
 
+  if (typeName == "ConstrainedPoint") e.setAttribute ("param", param);
+
   // if we're only writing a reference to ourselves, we don't need all
   // this information..
   if (!ref) {
     // whether we are given/final:
     e.setAttribute("given", given?"true":"false");
     e.setAttribute("final", final?"true":"false");
-    if (typeName == "ConstrainedPoint") e.setAttribute ("param", param);
     // references to our parents
     for (ElemList::const_iterator i = parents.begin(); i != parents.end(); ++i)
       (*i)->saveXML(doc,e,true);

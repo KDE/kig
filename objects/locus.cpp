@@ -11,9 +11,13 @@ void Locus::draw(QPainter& p, bool ss) const
   if (ss && selected ) p.setPen( QPen(Qt::red) );
   else p.setPen( QPen(Qt::blue) );
   kdDebug() << k_funcinfo << "number of points: " << points.size() << endl;
-  for (PointList::const_iterator i = points.begin(); i!=points.end(); ++i)
+  Point tmp;
+  PointList::const_iterator i = points.begin();
+  tmp = *i;
+  ++i;
+  for (; i!=points.end(); tmp = *i, ++i)
     {
-      p.drawPoint(i->toQPoint());
+      p.drawLine(tmp.toQPoint(), i->toQPoint());
     };
 }
 
