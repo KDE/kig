@@ -37,6 +37,12 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                             "support." ),
 		 "paolini@dmf.bs.unicatt.it");
 
+  tmp->addCredit( "Franco Pasquarelli",
+                  I18N_NOOP( "Helped with the implementation of the Locus object, "
+                             "there's some math involved in doing it right, and "
+                             "Franco basically wrote the difficult parts for me." ),
+                  "pasqui@dmf.bs.unicatt.it" );
+
   tmp->addCredit("Marc Bartsch",
 		  I18N_NOOP("Author of KGeo, where i got inspiration, "
 			    "some source, and most of the artwork from"),
