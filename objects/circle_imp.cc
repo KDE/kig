@@ -140,8 +140,8 @@ const QCStringList CircleImp::properties() const
   l << I18N_NOOP( "Circumference" );
   l << I18N_NOOP( "Radius" );
   l << I18N_NOOP( "Center" );
+  l << I18N_NOOP( "Expanded Cartesian Equation" );
   l << I18N_NOOP( "Cartesian Equation" );
-  l << I18N_NOOP( "Simply Cartesian Equation" );
   l << I18N_NOOP( "Polar Equation" );
   assert( l.size() == CircleImp::numberOfProperties() );
   return l;

@@ -358,7 +358,7 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       ScalingOverLineType::instance(),
       I18N_NOOP( "Scale over Line" ),
-      I18N_NOOP( "An object scaled over a point, by the ratio given by the length of a segment" ),
+      I18N_NOOP( "An object scaled over a line, by the ratio given by the length of a segment" ),
       "stretch" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline" ) );

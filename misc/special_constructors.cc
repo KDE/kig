@@ -457,9 +457,9 @@ QString GenericIntersectionConstructor::useText(
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct Midpoint of This Point" ),
+  { PointImp::stype(), I18N_NOOP( "Construct Midpoint of This Point and Another One" ),
     I18N_NOOP( "Select the first of the points of which you want to construct the midpoint..." ), false },
-  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point" ),
+  { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another one" ),
     I18N_NOOP( "Select the other of the points of which to construct the midpoint..." ), false }
 };
 
