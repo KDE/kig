@@ -63,6 +63,7 @@ class TextLabelConstructionMode
 public:
   TextLabelConstructionMode( KigDocument& d );
   ~TextLabelConstructionMode();
+
   void leftClicked( QMouseEvent*, KigWidget* );
   void leftReleased( QMouseEvent*, KigWidget* );
 

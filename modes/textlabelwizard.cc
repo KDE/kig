@@ -22,7 +22,7 @@
 #include "label.h"
 #include "linkslabel.h"
 
-#include <klineedit.h>
+#include <ktextedit.h>
 #include <kapplication.h>
 
 #include <qlayout.h>
@@ -30,8 +30,8 @@
 TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelConstructionMode* mode )
   : TextLabelWizardBase( parent, "TextLabelWizard", false ), mmode( mode )
 {
-  connect( labelTextInput, SIGNAL( textChanged( const QString& ) ),
-           SLOT( textChanged( const QString& ) ) );
+  connect( labelTextInput, SIGNAL( textChanged() ),
+           SLOT( textChanged() ) );
   connect( myCustomWidget1, SIGNAL( linkClicked( int ) ),
            SLOT( linkClicked( int ) ) );
   connect( this, SIGNAL( helpClicked() ),
@@ -71,7 +71,7 @@ void TextLabelWizard::accept()
   mmode->finishPressed();
 }
 
-void TextLabelWizard::textChanged( const QString& )
+void TextLabelWizard::textChanged()
 {
   mmode->labelTextChanged();
 }

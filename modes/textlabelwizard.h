@@ -37,7 +37,7 @@ public:
 
   void relayoutArgsPage();
 private slots:
-  void textChanged( const QString& );
+  void textChanged();
   void linkClicked( int which );
   void slotHelpClicked();
 private:

@@ -32,7 +32,7 @@
 #include <kcursor.h>
 #include <kmessagebox.h>
 #include <kaction.h>
-#include <klineedit.h>
+#include <ktextedit.h>
 #include <kdebug.h>
 #include <kiconloader.h>
 #include <qregexp.h>
@@ -195,6 +195,8 @@ void TextLabelConstructionMode::finishPressed()
     // no arguments...
     assert( percentCount( s ) == 0 );
 
+    //s.replace( "\\n", "\n" );
+
     Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe );
     labelos.calc( mdoc );
     killMode();
@@ -312,7 +314,8 @@ void TextLabelConstructionMode::updateLinksLabel()
     ++count;
   };
 
-  if ( static_cast<uint>( prevpos ) != s.length() ) mwiz->myCustomWidget1->addText( s.mid( prevpos ), buf );
+  if ( static_cast<uint>( prevpos ) != s.length() )
+    mwiz->myCustomWidget1->addText( s.mid( prevpos ), buf );
 
   mwiz->myCustomWidget1->applyEdit( buf );
   mwiz->relayoutArgsPage();
