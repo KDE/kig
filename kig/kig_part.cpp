@@ -328,7 +328,8 @@ bool KigDocument::saveFile()
     // i know i need to change the enum value name, but this means
     // that the file could not be opened...
     KMessageBox::sorry( m_widget,
-                        i18n( "The file \"%1\" could not be opened.  Please check if the file permissions are set correctly." )
+                        i18n( "The file \"%1\" could not be opened.  Please "
+                              "check if the file permissions are set correctly." )
                         .arg( m_file ) );
     return false;
 
