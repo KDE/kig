@@ -1,3 +1,7 @@
+2003-05-01  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* add a change text action to text labels
+
 2003-04-28  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* add undo support for moving
