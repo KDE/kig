@@ -34,14 +34,14 @@
 
 #include <qstringlist.h>
 
-static const ArgParser::spec argsspecdd[] =
+static const ArgParser::spec argsspecFixedPoint[] =
 {
   { ObjectImp::ID_DoubleImp, "x" },
   { ObjectImp::ID_DoubleImp, "y" }
 };
 
 FixedPointType::FixedPointType()
-  : ArgparserObjectType( "FixedPoint", argsspecdd, 1 )
+  : ArgparserObjectType( "FixedPoint", argsspecFixedPoint, 1 )
 {
 }
 
@@ -72,14 +72,14 @@ ObjectImp* ConstrainedPointType::calc( const Args& tparents, const KigDocument& 
   else return new InvalidImp;
 }
 
-const ArgParser::spec argsspecdc[] =
+const ArgParser::spec argsspecConstrainedPoint[] =
 {
   { ObjectImp::ID_DoubleImp, "parameter" },
   { ObjectImp::ID_CurveImp, "Constrain the point to this curve" }
 };
 
 ConstrainedPointType::ConstrainedPointType()
-  : ArgparserObjectType( "ConstrainedPoint", argsspecdc, 2 )
+  : ArgparserObjectType( "ConstrainedPoint", argsspecConstrainedPoint, 2 )
 {
 }
 

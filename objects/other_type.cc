@@ -110,14 +110,14 @@ ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
   return new VectorImp( a, b );
 }
 
-static const struct ArgParser::spec argsspec1c[] =
+static const struct ArgParser::spec argsspecLocus[] =
 {
   { ObjectImp::ID_HierarchyImp, "hierarchy" },
   { ObjectImp::ID_CurveImp, "curve" }
 };
 
 LocusType::LocusType()
-  : ArgparserObjectType( "Locus", argsspec1c, 2 )
+  : ArgparserObjectType( "Locus", argsspecLocus, 2 )
 {
 }
 
@@ -216,7 +216,7 @@ const LocusType* LocusType::instance()
   return &t;
 }
 
-static const ArgParser::spec argsspec3p[] =
+static const ArgParser::spec argsspecArcBTP[] =
 {
   { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an arc starting at this point" ) },
   { ObjectImp::ID_PointImp, I18N_NOOP( "Construct an arc through this point" ) },
@@ -224,7 +224,7 @@ static const ArgParser::spec argsspec3p[] =
 };
 
 ArcBTPType::ArcBTPType()
-  : ArgparserObjectType( "ArcBTP", argsspec3p, 3 )
+  : ArgparserObjectType( "ArcBTP", argsspecArcBTP, 3 )
 {
 }
 

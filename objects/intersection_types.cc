@@ -25,7 +25,7 @@
 #include "circle_imp.h"
 #include "line_imp.h"
 
-static const ArgParser::spec argsspeccl[] =
+static const ArgParser::spec argsspecConicLineIntersection[] =
 {
   { ObjectImp::ID_ConicImp, I18N_NOOP( "Intersect with this conic" ) },
   { ObjectImp::ID_LineImp, I18N_NOOP( "Intersect with this line" ) },
@@ -34,7 +34,7 @@ static const ArgParser::spec argsspeccl[] =
 
 ConicLineIntersectionType::ConicLineIntersectionType()
   : ArgparserObjectType( "ConicLineIntersection",
-                 argsspeccl, 3 )
+                         argsspecConicLineIntersection, 3 )
 {
 }
 
@@ -85,7 +85,7 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
 
 static const char* constructlinestat = I18N_NOOP( "Intersect with this line" );
 
-static const ArgParser::spec argsspecll[] =
+static const ArgParser::spec argsspecLineLineIntersection[] =
 {
   { ObjectImp::ID_LineImp, constructlinestat },
   { ObjectImp::ID_LineImp, constructlinestat }
@@ -93,7 +93,7 @@ static const ArgParser::spec argsspecll[] =
 
 LineLineIntersectionType::LineLineIntersectionType()
   : ArgparserObjectType( "LineLineIntersection",
-                 argsspecll, 2 )
+                         argsspecLineLineIntersection, 2 )
 {
 }
 
@@ -119,7 +119,7 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocumen
       static_cast<const AbstractLineImp*>( parents[1] )->data() ) );
 }
 
-static const ArgParser::spec argsspeclcu[] =
+static const ArgParser::spec argsspecLineCubicIntersection[] =
 {
   { ObjectImp::ID_CubicImp, I18N_NOOP( "Intersect with this cubic" ) },
   { ObjectImp::ID_LineImp, I18N_NOOP( "Intersect with this line" ) },
@@ -128,7 +128,7 @@ static const ArgParser::spec argsspeclcu[] =
 
 LineCubicIntersectionType::LineCubicIntersectionType()
   : ArgparserObjectType( "LineCubicIntersection",
-                         argsspeclcu, 3 )
+                         argsspecLineCubicIntersection, 3 )
 {
 }
 

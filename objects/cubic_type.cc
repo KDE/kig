@@ -26,7 +26,7 @@
 
 static const char* cubictpstatement = I18N_NOOP( "Construct a cubic through this point" );
 
-static const struct ArgParser::spec argsspec9p[] =
+static const struct ArgParser::spec argsspecCubicB9P[] =
 {
   { ObjectImp::ID_PointImp, cubictpstatement },
   { ObjectImp::ID_PointImp, cubictpstatement },
@@ -40,7 +40,7 @@ static const struct ArgParser::spec argsspec9p[] =
 };
 
 CubicB9PType::CubicB9PType()
-  : ArgparserObjectType( "CubicB9P", argsspec9p, 9 )
+  : ArgparserObjectType( "CubicB9P", argsspecCubicB9P, 9 )
 {
 }
 
@@ -65,7 +65,7 @@ ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
   return new CubicImp( calcCubicThroughPoints( points ) );
 }
 
-static const ArgParser::spec argsspec6p[] =
+static const ArgParser::spec argsspecCubicNodeB6P[] =
 {
   { ObjectImp::ID_PointImp, cubictpstatement },
   { ObjectImp::ID_PointImp, cubictpstatement },
@@ -76,7 +76,7 @@ static const ArgParser::spec argsspec6p[] =
 };
 
 CubicNodeB6PType::CubicNodeB6PType()
-  : ArgparserObjectType( "CubicNodeB6P", argsspec6p, 6 )
+  : ArgparserObjectType( "CubicNodeB6P", argsspecCubicNodeB6P, 6 )
 {
 }
 
@@ -101,7 +101,7 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) con
   return new CubicImp( calcCubicNodeThroughPoints( points ) );
 }
 
-static const ArgParser::spec argsspec4p[] =
+static const ArgParser::spec argsspecCubicCuspB4P[] =
 {
   { ObjectImp::ID_PointImp, cubictpstatement },
   { ObjectImp::ID_PointImp, cubictpstatement },
@@ -110,7 +110,7 @@ static const ArgParser::spec argsspec4p[] =
 };
 
 CubicCuspB4PType::CubicCuspB4PType()
-  : ArgparserObjectType( "CubicCuspB4P", argsspec4p, 4 )
+  : ArgparserObjectType( "CubicCuspB4P", argsspecCubicCuspB4P, 4 )
 {
 }
 

@@ -131,14 +131,14 @@ int CircleBTPType::resultId() const
   return ObjectImp::ID_CircleImp;
 }
 
-static const ArgParser::spec argsspecpd[] =
+static const ArgParser::spec argsspecCircleBPR[] =
 {
   { ObjectImp::ID_PointImp, I18N_NOOP( "Construct a circle with this center" ) },
   { ObjectImp::ID_DoubleImp, "UNUSED" }
 };
 
 CircleBPRType::CircleBPRType()
-  : ArgparserObjectType( "CircleBPR", argsspecpd, 2 )
+  : ArgparserObjectType( "CircleBPR", argsspecCircleBPR, 2 )
 {
 }
 
