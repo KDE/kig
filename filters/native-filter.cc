@@ -501,7 +501,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
 	  // 1. the arguments should already be in their intended order, since the file was
 	  // saved from a working hierarchy; furthermore we actually want to restore the original
 	  // hierarchy, not really to also fix possible problems with the original hierarchy;
-	  // 2. calling sortArgs could have undesirable side effects in particular situations, 
+	  // 2. calling sortArgs could have undesirable side effects in particular situations,
 	  // since kig actually allow an ObjectType to produce different type of ObjectImp's
 	  // it may happen that the parents of an object do not satisfy the requirements
 	  // enforced by sortArgs (while moving around the free objects) but still be
@@ -553,7 +553,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         {
           int ncid = tmp.toInt( &ok );
           if ( !ok ) KIG_FILTER_PARSE_ERROR;
-          if ( ncid <= 0 || id > calcers.size() )
+          if ( ncid <= 0 || ncid > calcers.size() )
             KIG_FILTER_PARSE_ERROR;
           if ( ! dynamic_cast<ObjectConstCalcer*>( calcers[ncid-1].get() ) )
             KIG_FILTER_PARSE_ERROR;

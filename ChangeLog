@@ -1,3 +1,13 @@
+2005-02-10  Dominique Devriese  <devriese@kde.org>
+
+	* The rest of a fix for bug #98517.  The problem was that
+	namecalcer's weren't being saved if they weren't shown on the
+	document.  This fixes the previous fix to not crash on faulty
+	documents, but give a proper parser error.  This should
+	permanently fix #98517.
+
+	* Fix this ChangeLog to document the previous fix for #98517.
+
 2005-02-07  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Bug fix: new algorithm for calcPath in calcpath.cc; the
@@ -74,6 +84,14 @@
 	* new action to construct a generic triangle (as a polygon) given
 	its vertices
 
+2004-12-30  Dominique Devriese <devriese@kde.org>
+
+	* Fix for a bug where a name calcer wasn't saved if it was only
+	referred to from the object it is the namecalcer for, and not by
+	its own objectholder.  This commit makes sure that no more such
+	files are generated, and that kig no longer crashes on such
+	files. Thanks to Pino Toscano for help in fixing this. (#98517)
+	
 2004-12-28  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* polygons are filled; no boundary drawn
