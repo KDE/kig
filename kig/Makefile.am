@@ -6,7 +6,7 @@
 INCLUDES = $(all_includes)
 
 # these are the headers for your project
-noinst_HEADERS = kig.h kig_part.h kig_view.h kig_factory.h kig_commands.h type_edit_impl.h macrowizard_impl.h
+noinst_HEADERS = kig.h kig_part.h kig_view.h kig_factory.h kig_commands.h type_edit_impl.h macrowizard_impl.h kig_iface.h
 
 # let automoc handle all of the meta source files (moc)
 METASOURCES = AUTO
@@ -25,7 +25,7 @@ KDE_ICON = kig
 bin_PROGRAMS = kig
 
 # the application source, library search path, and link libraries
-kig_SOURCES = main.cpp kig.cpp
+kig_SOURCES = main.cpp kig.cpp kig_iface.cpp kig_iface.skel kig_iface.stub
 kig_LDFLAGS = $(KDE_RPATH) $(all_libraries)
 kig_LDADD   = $(LIB_KPARTS)
 

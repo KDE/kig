@@ -19,7 +19,8 @@
 #include <kapplication.h>
 
 Kig::Kig()
-  : KParts::MainWindow( 0L, "Kig" )
+  : KParts::MainWindow( 0L, "Kig" ),
+    KigIface()
 {
   // set the shell's ui resource file
   setXMLFile("kig_shell.rc");
@@ -57,6 +58,12 @@ Kig::Kig()
       KApplication::exit();
     }
   resize (640,480);
+
+  if (!kapp->dcopClient()->isRegistered())
+    {
+      kapp->dcopClient()->registerAs("kigiface");
+      kapp->dcopClient()->setDefaultObject( objId() );
+    };
 }
 
 Kig::~Kig()
@@ -72,7 +79,7 @@ void Kig::load(const KURL& url)
 void Kig::setupActions()
 {
   KStdAction::openNew(this, SLOT(fileNew()), actionCollection());
-  KStdAction::quit(kapp, SLOT(quit()), actionCollection());
+  KStdAction::quit(this, SLOT(close()), actionCollection());
 
   m_toolbarAction = KStdAction::showToolbar(this, SLOT(optionsShowToolbar()), actionCollection());
   m_statusbarAction = KStdAction::showStatusbar(this, SLOT(optionsShowStatusbar()), actionCollection());
@@ -149,6 +156,13 @@ void Kig::optionsConfigureToolbars()
 void Kig::applyNewToolbarConfig()
 {
   applyMainWindowSettings(KGlobal::config(), "MainWindow");
+}
+
+void Kig::openURL(const KURL& url)
+{
+  Kig* widget = new Kig;
+  widget->show();
+  widget->load(url);
 }
 
 #include "kig.moc"

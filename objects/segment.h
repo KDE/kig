@@ -8,6 +8,8 @@ class Segment
 {
 public:
   Segment();
+  Segment(const Segment& s);
+  Segment* copy() { return new Segment(*this); };
   ~Segment();
 
   // type identification
@@ -49,9 +51,10 @@ public:
 protected:
   Point* p1, *p2;
   QPoint pwwsm; // point where we started moving
+  // TODO: remove
   double x1y2_y1x2; // =x1y2-y1x2,  so we wouldn't have to calc that every time
   double y1_y2, x2_x1; // ... , dito
-  void calcVars(); // calculate the previous vars from the points
+  void calcVars(); // calculate the vars from the points
 public:
   void getOverlay(QPtrList<QRect>& list, const QRect& border) const { if (p1 && p2) segmentOverlay(*p1, *p2, list, border); };
   static void segmentOverlay(const Point& p1, const Point& p2, QPtrList<QRect>& list, const QRect& border);

@@ -48,6 +48,8 @@ class CircleBCP
 public:
   CircleBCP();
   ~CircleBCP(){};
+  CircleBCP(const CircleBCP& c);
+  CircleBCP* copy() { return new CircleBCP(*this); };
 
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "CircleBCP"; };
@@ -80,6 +82,8 @@ class CircleBTP
 public:
   CircleBTP() :p1(0), p2(0), p3(0) {};
   ~CircleBTP() {};
+  CircleBTP(const CircleBTP& c);
+  CircleBTP* copy() { return new CircleBTP(*this); };
 
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "CircleBTP"; };

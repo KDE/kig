@@ -53,6 +53,9 @@ public:
   virtual QCString getPicName() const = 0;
   // short cut key
   virtual int getShortCutKey() const = 0;
+  // a description for this type, it is shown on the "What's this"
+  // help function
+  virtual QString getDescription() const = 0;
   // (external) name we should give to the action
   virtual QString getActionName() const = 0;
   // internal name we should give to the action
@@ -78,16 +81,19 @@ class TType
 protected:
   QCString picName;
   QString actionName;
+  QString description;
   int shortCutKey;
 public:
   TType( KigDocument* inDoc,
 	 const QCString& inPicName,
-	 const QString inActionName,
+	 const QString& inActionName,
+	 const QString& inDescription,
 	 const int inShortCutKey = 0
 	 )
     : Type( inDoc ),
       picName( inPicName ),
       actionName (inActionName),
+      description (inDescription),
       shortCutKey( inShortCutKey )
   {};
   Object* newObject() { return new ObjectType;};
@@ -96,6 +102,7 @@ public:
   QCString getPicName() const { return picName;};
   int getShortCutKey() const { return shortCutKey;};
   QString getActionName() const { return actionName; };
+  QString getDescription() const { return description; };
   QCString getInternalActionName() const { return QCString("new_")+fullTypeName();};
 };
 
@@ -114,9 +121,12 @@ class MTypeOne
 {
   Type* finalType;
   QString actionName;
+  QString description;
 public:
   MTypeOne( ObjectHierarchy* inHier,
-	    const QString& inActionName, KigDocument*);
+	    const QString& actionName,
+	    const QString& description,
+	    KigDocument*);
   MTypeOne( const QDomElement& e, KigDocument*);
   ~MTypeOne() {};
   // TODO: check this..;
@@ -131,6 +141,8 @@ public:
   int getShortCutKey() const { return 0; };
   // yup, this is ok
   QString getActionName() const { return actionName; };
+  // ...
+  QString getDescription() const { return description; };
   // not ok, obviously, this way, the user can't put these actions in
   // his toolbars and such...
   QCString getInternalActionName() const { return 0; };

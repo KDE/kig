@@ -76,22 +76,40 @@
         <attribute name="title">
             <string>Enter a name for the new type...</string>
         </attribute>
-        <hbox>
-            <property name="name">
-                <cstring>unnamed</cstring>
-            </property>
-            <property name="margin">
-                <number>11</number>
-            </property>
-            <property name="spacing">
-                <number>6</number>
-            </property>
-            <widget class="KLineEdit">
-                <property name="name">
-                    <cstring>KLineEdit1</cstring>
-                </property>
-            </widget>
-        </hbox>
+	<vbox>
+	    <hbox>
+        	<property name="name">
+                	<cstring>unnamed</cstring>
+	        </property>
+        	<property name="margin">
+                	<number>11</number>
+            	</property>
+            	<property name="spacing">
+                	<number>6</number>
+            	</property>
+            	<widget class="KLineEdit">
+                	<property name="name">
+                    		<cstring>KLineEdit1</cstring>
+                	</property>
+            	</widget>
+            </hbox>
+	    <hbox>
+		<property name="name">
+			<cstring>unnamed</cstring>
+		</property>
+        	<property name="margin">
+                	<number>11</number>
+            	</property>
+            	<property name="spacing">
+                	<number>6</number>
+            	</property>
+            	<widget class="KLineEdit">
+                	<property name="name">
+                    		<cstring>DescriptionEdit</cstring>
+                	</property>
+            	</widget>
+            </hbox>
+	</vbox>
     </widget>
 </widget>
 <connections>
@@ -100,6 +118,12 @@
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>MacroWizard</receiver>
         <slot>setFinishable(const QString&amp;)</slot>
+    </connection>
+    <connection>
+	<sender>DescriptionEdit</sender>
+	<signal>textChanged(const QString&amp;)</signal>
+	<receiver>MacroWizard</receiver>
+	<slot>setFinishable(const QString&amp;)</slot>
     </connection>
 </connections>
 <slots>

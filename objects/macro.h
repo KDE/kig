@@ -42,6 +42,8 @@ public:
   const Object* getFinal() const { return final; };
   Object* getFinal() { return final; };
   MacroObjectOne( ObjectHierarchy* inHier);
+  MacroObjectOne(const MacroObjectOne& m);
+  MacroObjectOne* copy() { return new MacroObjectOne(*this); };
   ~MacroObjectOne();
   void draw (QPainter& p, bool ss) const;
   bool contains (const QPoint& p, bool strict = false) const;

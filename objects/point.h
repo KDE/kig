@@ -17,6 +17,7 @@ class Point
   Point(double inX, double inY) : x(inX), y(inY) { complete = true;};
   Point(const QPoint& p) : x(p.x()), y(p.y()) { complete = true; };
   Point(const Point& p) : Object(p), x(p.getX()), y(p.getY()) {};
+  Point* copy() { return new Point (*this); };
 
   void saveXML(QDomDocument& doc, QDomElement& parentElem);
 
@@ -92,6 +93,9 @@ class MidPoint
 public:
   MidPoint() :p1(0), p2(0) {};
   ~MidPoint(){};
+  MidPoint(const MidPoint& m);
+
+  MidPoint* copy() { return new MidPoint(*this); };
 
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "MidPoint"; };
@@ -126,7 +130,10 @@ public:
   ConstrainedPoint(Curve* inC, const QPoint& inPt);
   ConstrainedPoint(const double inP) : p(inP), c(0) {};
   ~ConstrainedPoint() {};
-
+  ConstrainedPoint( const ConstrainedPoint& c);
+  
+  ConstrainedPoint* copy() { return new ConstrainedPoint(*this); };
+  
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "ConstrainedPoint"; };
 

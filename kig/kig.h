@@ -1,12 +1,15 @@
 #ifndef KIG_H
 #define KIG_H
 
+#include "kig_iface.h"
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif 
 
 #include <kapp.h>
 #include <kparts/mainwindow.h>
+#include <dcopclient.h>
  
 class KToggleAction;
 class KRecentFilesAction;
@@ -19,7 +22,7 @@ class KRecentFilesAction;
  * @author Dominique Devriese <fritmebufstek@pandora.be>
  * @version 2.0
  */
-class Kig : public KParts::MainWindow
+class Kig : public KParts::MainWindow, virtual public KigIface
 {
   Q_OBJECT
  public:
@@ -34,10 +37,17 @@ class Kig : public KParts::MainWindow
   virtual ~Kig();
  public slots:
   /**
-   * Use this method to load whatever file/URL you have
+   * this opens url in this window
    */
   void load(const KURL& url);
 
+  /** 
+   * this opens the file specified in s in a new window
+   * 
+   * @param s 
+   */
+  void openURL (const QString& s) { openURL(KURL(s)); };
+  void openURL (const KURL& url);
  protected:
   /**
    * This method is called when it is time for the app to save its

@@ -215,3 +215,14 @@ void Segment::getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, const
   if (!(shown  && p1)) return;
   segmentOverlay(*p1, pt, list, border);
 }
+
+Segment::Segment(const Segment& s)
+  : Curve()
+{
+  p1 = s.p1;
+  p1->addChild(this);
+  p2 = s.p2;
+  p2->addChild(this);
+  complete = s.complete;
+  if (complete) calc();
+}

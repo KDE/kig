@@ -120,3 +120,15 @@ void MacroObjectOne::handleNewObjects(const Objects& o)
 //   cos = o;
 // }
 
+MacroObjectOne::MacroObjectOne(const MacroObjectOne& m)
+  : MacroObject(m.hier), final(0), constructed(false)
+{
+  arguments=m.arguments; 
+  Object* i;
+  for (Objects::iterator it (arguments); (i = it.current()); ++it)
+  {
+    i->addChild(this);
+  };
+  complete = m.complete;
+  if (complete) calc();
+}

@@ -331,3 +331,23 @@ void CircleBTP::getPrelimOverlay(QPtrList<QRect>& list, const QRect& border, con
   Point nQpc = calcCenter(p1->getX(), p1->getY(), xb, yb, t.x(), t.y());
   circleGetOverlay(nQpc, calcRadius (nQpc, *p1), list, border);
 }
+CircleBCP::CircleBCP(const CircleBCP& c)
+{
+  poc = c.poc;
+  poc->addChild(this);
+  centre = c.centre;
+  centre->addChild(this);
+  complete = c.complete;
+  if (complete) calc();
+}
+CircleBTP::CircleBTP(const CircleBTP& c)
+{
+  p1=c.p1;
+  p1->addChild(this);
+  p2=c.p2;
+  p2->addChild(this);
+  p3=c.p3;
+  p3->addChild(this);
+  complete = c.complete;
+  if(complete) calc();
+}

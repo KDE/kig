@@ -495,3 +495,35 @@ Point LineParallel::calcPointOnParallel(const Point& p1, const Point& p2, const 
   if (dir.length() < 1) return q;
   return q + dir;
 }
+
+LineTTP::LineTTP(const LineTTP& l)
+{
+  p1 = l.p1;
+  p1->addChild(this);
+  p2=l.p2;
+  p2->addChild(this);
+  complete = l.complete;
+  if(complete) calc();
+}
+LineParallel::LineParallel(const LineParallel& l)
+{
+  segment = l.segment;
+  if(segment) segment->addChild(this);
+  line = l.line;
+  if (line) line->addChild(this);
+  point = l.point;
+  point->addChild(this);
+  complete = l.complete;
+  if (complete) calc();
+}
+LinePerpend::LinePerpend(const LinePerpend& l)
+{
+  segment = l.segment;
+  if(segment) segment->addChild(this);
+  line = l.line;
+  if (line) line->addChild(this);
+  point = l.point;
+  point->addChild(this);
+  complete = l.complete;
+  if (complete) calc();
+}

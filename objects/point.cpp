@@ -190,3 +190,22 @@ QString ConstrainedPoint::wantArg(const Object* o) const
   if (!c && Object::toCurve(o)) return i18n("On Curve");
   return 0;
 }
+MidPoint::MidPoint(const MidPoint& m)
+  : Point()
+{
+  p1 = m.p1;
+  p1->addChild(this);
+  p2 = m.p2;
+  p2->addChild(this);
+  complete = m.complete;
+  if (complete) calc();
+}
+ConstrainedPoint::ConstrainedPoint( const ConstrainedPoint& cp)
+  : Point()
+{
+  p = cp.p;
+  c = cp.c;
+  c->addChild(this);
+  complete = cp.complete;
+  if (complete) calc();
+}

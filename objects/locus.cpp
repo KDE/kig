@@ -6,24 +6,37 @@
 
 void Locus::draw(QPainter& p, bool ss) const
 {
-  // todo: draw lines between the points instead of only the
-  // points...
-  if (ss && selected ) p.setPen( QPen(Qt::red) );
-  else p.setPen( QPen(Qt::blue) );
-  kdDebug() << k_funcinfo << "number of points: " << points.size() << endl;
-  Point tmp;
-  PointList::const_iterator i = points.begin();
-  tmp = *i;
-  ++i;
-  for (; i!=points.end(); tmp = *i, ++i)
+  kdDebug() << k_funcinfo << "number of objects: " << objs.count() << endl;
+  // we don't let the points draw themselves, since that would get us
+  // the big points (5x5) like we normally see them...
+  // all objs are of the same type, so we only check the first
+  if (toPoint(objs.getFirst()))
     {
-      p.drawLine(tmp.toQPoint(), i->toQPoint());
+      QPen pen (selected && ss ? Qt::red : Qt::blue);
+      p.setPen(pen);
+      Object* i;
+      for (Objects::iterator it(objs); (i = it.current()); ++it)
+	{
+	  Point* tmp = toPoint(i);
+	  assert (tmp);
+	  p.drawPoint( toPoint(i)->toQPoint() );
+	};
+    }
+  else
+    {
+      Object* i;
+      for ( Objects::iterator it(objs); (i = it.current()); ++it)
+	{
+	  i->setSelected(selected);
+	  i->draw(p, ss);
+	}
     };
 }
 
 bool Locus::contains(const QPoint& o, bool strict ) const
 {
-  for (PointList::const_iterator i = points.begin(); i != points.end(); ++i)
+  Object* i;
+  for (Objects::iterator it(objs); (i = it.current()); ++it)
     {
       if (i->contains(o, strict)) return true;
     };
@@ -32,9 +45,10 @@ bool Locus::contains(const QPoint& o, bool strict ) const
 
 bool Locus::inRect(const QRect& r) const
 {
-  for (PointList::const_iterator i = points.begin(); i != points.end(); ++i)
+  Object* i;
+  for (Objects::iterator it(objs); (i = it.current()); ++it)
     {
-      if (r.contains(i->toQPoint())) return true;
+      if (i->inRect(r)) return true;
     };
   return false;
 }
@@ -45,9 +59,9 @@ QString Locus::wantArg( const Object* o ) const
     {
       return i18n("Moving point");
     };
-  if (toPoint(o) && !point)
+  if (!obj)
     {
-      return i18n("Dependent point");
+      return i18n("Dependent object");
     };
   return 0;
 }
@@ -60,59 +74,99 @@ bool Locus::selectArg(Object* o)
     }
   else 
     {
-      assert (!point);
-      point = toPoint(o);
-      assert (point);
-      point->addChild(this);
+      assert (!obj);
+      obj = o;
+      obj->addChild(this);
     };
-  if (cp && point) { complete = true; calc(); }
+  if (cp && obj) { complete = true; calc(); }
   return complete;
 }
 
 void Locus::calc()
 {
-  points.clear();
+  objs.deleteAll();
+  objs.clear();
   Objects given;
   given.append(cp);
   Objects final;
-  final.append(point);
+  final.append(obj);
   hierarchy = new ObjectHierarchy(given, final, 0);
-  double oldP = cp->getP();
-  double period = double(1)/numberOfPoints;
-  for (double i = 0; i <= 1; i += period)
-    {
-      cp->setP(i);
-      cp->calc();
-      hierarchy->calc();
-      points.push_back(*point);
-    };
-  cp->setP(oldP);
-  cp->calc();
-  hierarchy->calc();
+  if (toPoint(obj)) calcPointLocus();
+  else calcObjectLocus();
   kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
 }
 
 void Locus::getOverlay(QPtrList<QRect>& list, const QRect& border) const
 {
-  for (PointList::const_iterator i = points.begin(); i != points.end(); ++i)
+  Object* i;
+  for (Objects::iterator it (objs); (i = it.current()); ++it)
     {
       QRect* r = new QRect (0, 0, overlayRectSize(), overlayRectSize());
-      r->moveTopLeft(i->toQPoint());
+      r->moveTopLeft(toPoint(i)->toQPoint());
       if (border.intersects(*r)) list.append(r);
     };
 }
 
 Point Locus::getPoint(double param) const
 {
-  double tmp = cp->getP();
-  cp->setP(param);
-  hierarchy->calc();
-  Point t= *point;
-  cp->setP(tmp);
-  hierarchy->calc();
+  Point t;
+  if (toPoint(obj))
+    {
+      double tmp = cp->getP();
+      cp->setP(param);
+      hierarchy->calc();
+      t= *toPoint(obj);
+      cp->setP(tmp);
+      hierarchy->calc();
+    }
+  else t = Point();
   return t;
 }
 double Locus::getParam(const Point&) const
 {
   return 0.5;
+}
+void Locus::calcObjectLocus()
+{
+  objs.deleteAll();
+  objs.clear();
+  double oldP = cp->getP();
+  double period = double(1)/numberOfSamples;
+  for (double i = 0; i <= 1; i += period)
+    {
+      cp->setP(i);
+      cp->calc();
+      hierarchy->calc();
+      objs.append(obj->copy());
+    };
+  cp->setP(oldP);
+  cp->calc();
+  hierarchy->calc();
+}
+void Locus::calcPointLocus()
+{
+  objs.deleteAll();
+  objs.clear();
+  double oldP = cp->getP();
+  // TODO: improve (cf. KSeg: choose which samples we want...)
+  double period = double(1)/numberOfSamples;
+  for (double i = 0; i <= 1; i += period)
+    {
+      cp->setP(i);
+      cp->calc();
+      hierarchy->calc();
+      objs.append(obj->copy());
+    };
+  cp->setP(oldP);
+  cp->calc();
+  hierarchy->calc();
+}
+
+Locus::Locus(const Locus& loc)
+  : Curve(), cp(loc.cp), obj(loc.obj), hierarchy(loc.hierarchy)
+{
+  cp->addChild(this);
+  obj->addChild(this);
+  complete = loc.complete;
+  if (complete) calc();
 }

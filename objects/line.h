@@ -58,6 +58,8 @@ class LineTTP
 public:
   LineTTP() : p1(0), p2(0) { };
   ~LineTTP();
+  LineTTP(const LineTTP& l);
+  LineTTP* copy() { return new LineTTP(*this); };
 
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "LineTTP"; };
@@ -90,6 +92,8 @@ class LinePerpend
 public:
   LinePerpend() : segment(0), line(0), point(0) {};
   ~LinePerpend();
+  LinePerpend(const LinePerpend& l);
+  LinePerpend* copy() { return new LinePerpend (*this);};
 
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return ("LinePerpend"); };
@@ -125,6 +129,8 @@ class LineParallel
 public:
   LineParallel() : segment(0), line(0), point(0) {};
   ~LineParallel() {};
+  LineParallel (const LineParallel& l);
+  LineParallel* copy() { return new LineParallel (*this); };
 
   virtual QCString vFullTypeName() const { return sFullTypeName(); };
   static QCString sFullTypeName() { return "LineParallel"; };

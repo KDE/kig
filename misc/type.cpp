@@ -12,10 +12,11 @@ void SlotWrapper::newObc()
 {
     doc->newObc( t->newObject() );
 };
-MTypeOne::MTypeOne( ObjectHierarchy* inHier, const QString& inActionName, KigDocument* inDoc )
+MTypeOne::MTypeOne( ObjectHierarchy* inHier, const QString& inActionName, const QString& inDesc, KigDocument* inDoc )
   : MType(inHier, inDoc ), 
     finalType(inDoc->getTypes()->findType(inHier->getFinElems()[0]->getTypeName())),
-    actionName(inActionName)
+    actionName(inActionName),
+    description(inDesc)
 {    
 }
 

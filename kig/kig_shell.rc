@@ -6,6 +6,7 @@
     <Merge/>
     <Separator/>
     <Action name="file_quit"/>
+    <Action name="file_open_recent"/>
   </Menu>
   <Merge/>
   <Menu noMerge="1" name="settings"><text>&amp;Settings</text>

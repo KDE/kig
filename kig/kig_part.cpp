@@ -63,33 +63,44 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
   KAFileOpen = KStdAction::open(this, SLOT(fileOpen()), actionCollection());
   KAFileSaveAs = KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
   KAFileSave = KStdAction::save(this, SLOT(save()), actionCollection());
+//   KAFileRecent = KStdAction::recent(
 
   KIconLoader l;
   QPixmap tmp;
   tmp = l.loadIcon( "delete", KIcon::User);
   KADeleteObjects = new KAction(i18n("Delete objects"), "editdelete", Key_Delete, this, SLOT(deleteSelected()), actionCollection(), "delete_objects");
+  KADeleteObjects->setWhatsThis(i18n("Delete all the selected objects"));
   tmp = l.loadIcon( "cancel", KIcon::User);
   KACancelConstruction = new KAction(i18n("Cancel construction"), tmp, Key_Escape, this, SLOT(delObc()), actionCollection(), "cancel_construction");
+  KACancelConstruction->setWhatsThis(i18n("Cancel the construction of the object being constructed"));
   KACancelConstruction->setEnabled(false);
 
   tmp = l.loadIcon("window_fullscreen", KIcon::User);
   KAStartKioskMode = new KAction (i18n("Full screen"), tmp, 0, m_widget, SLOT(startKioskMode()), actionCollection(), "full_screen");
+  KAStartKioskMode->setWhatsThis(i18n("Make this window cover the entire screen"));
 
   tmp = l.loadIcon("macro", KIcon::User);
   KANewMacro = new KAction (i18n("New macro"), tmp, 0, this, SLOT(newMacro()), actionCollection(), "macro_action");
+  KANewMacro->setWhatsThis(i18n("Define a new macro"));
 
   KAConfigureTypes = new KAction (i18n("Edit Types"), 0, this, SLOT(editTypes()), actionCollection(), "types_edit");
+  KAConfigureTypes->setWhatsThis(i18n("Edit your defined macro types"));
 
   // first we create our KMenuActions
   tmp = l.loadIcon( "line", KIcon::User);
   KANewLine = new KActionMenu (i18n("New Line"), tmp, actionCollection(), "new_line");
+  KANewLine->setWhatsThis(i18n("Construct a new line"));
   tmp = l.loadIcon( "circle", KIcon::User );
   KANewCircle = new KActionMenu(i18n("New Circle"), tmp, actionCollection(), "new_circle");
+  KANewCircle->setWhatsThis(i18n("Construct a new circle"));
   tmp = l.loadIcon( "point4", KIcon::User );
   KANewPoint = new KActionMenu(i18n("New Point"), tmp, actionCollection(), "new_point");
+  KANewPoint->setWhatsThis(i18n("Construct a new point"));
   tmp = l.loadIcon( "segment", KIcon::User );
   KANewSegment = new KActionMenu(i18n("New Segment"), tmp, actionCollection(), "new_segment");
+  KANewSegment->setWhatsThis(i18n("Construct a new segment"));
   KANewOther = new KActionMenu(i18n("New Other"), 0, actionCollection(), "new_other");
+  KANewOther->setWhatsThis(i18n("Construct a new object of another type"));
 
   // next we add our predefined types:
   // segments
@@ -97,33 +108,43 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
 	  (this,
 	   "segment",
 	   i18n("Segment"),
-	   CTRL+Key_S));
+	   i18n("Construct a segment by its start and end point"),
+	   CTRL+Key_S
+	   ));
   // lines
   addType(new TType<LineTTP>
 	  (this,
 	   "line",
 	   i18n("Line by two points"),
+	   i18n("Construct a line through two points"),
 	   CTRL+Key_L));
   addType(new TType<LinePerpend>
 	  (this,
 	   "perpendicular",
 	   i18n("Perpendicular"),
+	   i18n("Construct a line through a point, and perpendicular on "
+		"another line or segment"),
 	   0));
   addType(new TType<LineParallel>
 	  (this,
 	   "parallel",
 	   i18n("Parallel"),
+	   i18n("Construct a line through a point, and parallel on "
+		"another line or segment"),
 	   0));
   // circles
   addType(new TType<CircleBCP>
 	  (this,
 	   "circle",
 	   i18n("Circle by center and point"),
+	   i18n("Construct a circle by its centre and a point "
+		"on its border"),
 	   CTRL+Key_C));
   addType(new TType<CircleBTP>
 	  (this,
 	   "circle",
 	   i18n("Circle by three points"),
+	   i18n("Construct a circle through three points"),
 	   0));
 
   // points
@@ -131,17 +152,24 @@ KigDocument::KigDocument( QWidget *parentWidget, const char *widgetName,
 	  (this,
 	   "bisection",
 	   i18n("Midpoint"),
+	   i18n("Construct the midpoint of two other points or a segment"),
 	   0));
   addType(new TType<IntersectionPoint>
 	  (this,
 	   "intersection",
 	   i18n("Intersection point"),
+	   i18n("Construct the point where two lines or segments "
+		"intersect"),
 	   CTRL+Key_I));
   // and, brand new: locuses !
   addType(new TType<Locus>
 	  (this,
 	   "locus",
 	   i18n("Locus"),
+	   i18n("Construct a locus: let one point move around, and record "
+		"the places an other object goes through.  Those together "
+		"form a new object, which is the one where constructing "
+		"here"),
 	   0));
 
   // we reload the types file we saved the last time, if it exists...
@@ -561,6 +589,7 @@ void KigDocument::addType(Type* t)
 				actionCollection(),
 				t->getActionName()
 				);
+  appel->setWhatsThis(t->getDescription());
   t->setAction(appel);
 //   if (o->getPoint()) KANewPoint->insert(appel);
 //   else if (o->getLine()) KANewLine->insert(appel);
@@ -596,6 +625,7 @@ void KigDocument::finishMacro()
   // finish the macro
   // get the name: 
   QString appel = m_pMacroWizard->KLineEdit1->text();
+  QString description = m_pMacroWizard->DescriptionEdit->text();
   ObjectHierarchy* tmpH = new ObjectHierarchy(macroGegObjs, macroFinObjs, this);
   // // show the hierarchy on cerr for debugging...
   //       QDomDocument doc("KigDocument");
@@ -607,7 +637,7 @@ void KigDocument::finishMacro()
   //       kdDebug() << doc.toCString() << endl;
 
   // create the new Type
-  Type* tmp = new MTypeOne(tmpH, appel, this);
+  Type* tmp = new MTypeOne(tmpH, appel, description, this);
   // install it...
   addType(tmp);
   // clear what we've done

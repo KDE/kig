@@ -3,6 +3,8 @@
 
 #include "kig_part.h"
 
+#include <klineedit.h>
+
 /* 
  *  Constructs a MacroWizardImpl which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
@@ -29,5 +31,5 @@ MacroWizardImpl::~MacroWizardImpl()
 
 void MacroWizardImpl::setFinishable(const QString& s)
 {
-  if (!s.isEmpty()) setFinishEnabled( m_pNameTypePage, true );
+  if (!KLineEdit1->text().isEmpty()) setFinishEnabled( m_pNameTypePage, true );
 }

@@ -27,6 +27,9 @@ class Object
  public:
   Object();
   virtual ~Object() {};
+  // returns a copy of the object.  This should prolly simply do
+  // "return new <Type>(*this);" (if you have a good copy constructor...)
+  virtual Object* copy() = 0;
 
   // saving is done rather special:
   // we only save a few independent objects, and we have an
