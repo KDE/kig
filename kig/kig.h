@@ -30,7 +30,6 @@
 #include <kparts/mainwindow.h>
 #include <dcopclient.h>
 
-class KToggleAction;
 class KRecentFilesAction;
 
 /**
@@ -109,8 +108,6 @@ class Kig : public KParts::MainWindow
  private slots:
   void fileNew();
   void fileOpen();
-  void optionsShowToolbar();
-  void optionsShowStatusbar();
   void optionsConfigureKeys();
   void optionsConfigureToolbars();
 
@@ -121,8 +118,6 @@ class Kig : public KParts::MainWindow
 
   KParts::ReadWritePart *m_part;
 
-  KToggleAction *m_toolbarAction;
-  KToggleAction *m_statusbarAction;
   KRecentFilesAction *m_recentFilesAction;
 
   static bool kimageioRegistered;

@@ -96,8 +96,8 @@ void Kig::setupActions()
   KStdAction::open(this, SLOT(fileOpen()), actionCollection());
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
-  m_toolbarAction = KStdAction::showToolbar(this, SLOT(optionsShowToolbar()), actionCollection());
-  m_statusbarAction = KStdAction::showStatusbar(this, SLOT(optionsShowStatusbar()), actionCollection());
+  createStandardStatusBarAction();
+  setStandardToolBarMenuEnabled(true);
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
   m_recentFilesAction = KStdAction::openRecent(this, SLOT(openURL(const KURL&)), actionCollection());
@@ -159,22 +159,6 @@ void Kig::openURL(const KURL& url)
     widget->load(url);
     widget->show();
   };
-}
-
-void Kig::optionsShowToolbar()
-{
-  if (m_toolbarAction->isChecked())
-    toolBar()->show();
-  else
-    toolBar()->hide();
-}
-
-void Kig::optionsShowStatusbar()
-{
-  if (m_statusbarAction->isChecked())
-    statusBar()->show();
-  else
-    statusBar()->hide();
 }
 
 void Kig::optionsConfigureKeys()
