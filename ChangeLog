@@ -1,3 +1,8 @@
+2004-07-21  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Now the code editor in the Script Wizard uses KDE global fixed
+	font.
+
 2004-07-20  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Implement arc-line intersection in KSeg filter.

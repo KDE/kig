@@ -16,13 +16,14 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-
 #include "newscriptwizard.h"
 #include "newscriptwizard.moc"
 
 #include "script_mode.h"
 
 #include <kapplication.h>
+#include <kglobalsettings.h>
+#include <ktextedit.h>
 
 #include <assert.h>
 
@@ -34,6 +35,8 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
   : NewScriptWizardBase( parent, "New Script Wizard" ),
     mmode( mode )
 {
+  codeeditor->setFont( KGlobalSettings::fixedFont() );
+
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelpClicked() ) );
 }
 
