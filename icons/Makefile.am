@@ -22,6 +22,7 @@ kigicondata_DATA = \
 	directrix.png \
 	distance.png \
 	ellipsebffp.png \
+	harmonichomology.png \
 	genericaffinity.png \
 	genericprojectivity.png \
 	hyperbolabffp.png \
