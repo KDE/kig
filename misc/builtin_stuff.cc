@@ -338,7 +338,7 @@ void setupBuiltinStuff()
       AffinityGI3PType::instance(),
       I18N_NOOP( "Generic affinity" ),
       I18N_NOOP( "The unique affinity that maps 3 given points onto 3 given points" ),
-      "affinitygi3p" );
+      "genericaffinity" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_affinitygi3p" ) );
 
@@ -346,7 +346,7 @@ void setupBuiltinStuff()
       ProjectivityGI4PType::instance(),
       I18N_NOOP( "Generic projectivity" ),
       I18N_NOOP( "The unique projectivity that maps 4 given points onto 4 given points" ),
-      "projectivitygi4p" );
+      "genericprojectivity" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_projectivitygi4p" ) );
 
