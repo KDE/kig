@@ -69,7 +69,7 @@ If you want to show variable parts, then put %1, %2, ... at the appropriate plac
                     <cstring>selectArgsLabel</cstring>
                 </property>
                 <property name="text">
-                    <string>Now select the argument(s) you need.  For every argument, click on it, select an object and a property in the Kig window, and click finish when you're done...</string>
+                    <string>Now select the argument(s) you need.  For every argument, click on it, select an object and a property in the Kig window, and click finish when you are done...</string>
                 </property>
                 <property name="alignment">
                     <set>WordBreak|AlignVCenter</set>
