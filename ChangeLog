@@ -1,3 +1,13 @@
+2004-10-11  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Added PoligonBCVType for regular poligons with n sides
+	given the center and a vertex.
+
+	* Transport of Measure is generalized to allow both
+	segments and arcs to provide a length and both a line
+	or a circle with a point on it as the target of the
+	transport.
+
 2004-10-09  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Add a CircleByCenterAndDiameter object, to construct a circle

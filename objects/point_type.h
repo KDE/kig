@@ -93,4 +93,16 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class MeasureTransportTypeOld
+  : public ArgsParserObjectType
+{
+  MeasureTransportTypeOld();
+  ~MeasureTransportTypeOld();
+public:
+  static const MeasureTransportTypeOld* instance();
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

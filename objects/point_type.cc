@@ -21,6 +21,7 @@
 #include "point_imp.h"
 #include "curve_imp.h"
 #include "line_imp.h"
+#include "other_imp.h"
 #include "bogus_imp.h"
 
 #include "../modes/moving.h"
@@ -307,7 +308,92 @@ std::vector<ObjectCalcer*> ConstrainedPointType::movableParents( const ObjectTyp
   return ret;
 }
 
+/* ----------------- Transport of measure ------------------------------ */
+
 ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& doc ) const
+{
+  double measure;
+
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  if ( parents[0]->inherits (SegmentImp::stype()) )
+  {
+    const SegmentImp* s = static_cast<const SegmentImp*>( parents[0] );
+    measure = s->length();
+  } else if ( parents[0]->inherits (ArcImp::stype()) )
+  {
+    const ArcImp* s = static_cast<const ArcImp*>( parents[0] );
+    measure = s->radius()*s->angle();
+  } else return new InvalidImp;
+
+  const Coordinate& p = static_cast<const PointImp*>( parents[2] )->coordinate();
+  if ( parents[1]->inherits (LineImp::stype()) )
+  {
+    const LineImp* c = static_cast<const LineImp*>( parents[1] );
+
+    if ( !c->containsPoint( p, doc ) )
+      return new InvalidImp;
+
+    const LineData line = c->data();
+    const Coordinate dir = line.dir()/line.length();
+    const Coordinate nc = p + measure*dir;
+
+    if ( nc.valid() ) return new PointImp( nc );
+    else return new InvalidImp;
+  } else if ( parents[1]->inherits (CircleImp::stype()) )
+  {
+    const CircleImp* c = static_cast<const CircleImp*>( parents[1] );
+    if ( !c->containsPoint( p, doc ) )
+      return new InvalidImp;
+
+    double param = c->getParam( p, doc );
+    measure /= 2*c->radius()*M_PI;
+    param += measure;
+    while (param > 1) param -= 1;
+
+    const Coordinate nc = c->getPoint( param, doc );
+    if ( nc.valid() ) return new PointImp( nc );
+    else return new InvalidImp;
+  }
+
+  return new InvalidImp;
+}
+
+static const ArgsParser::spec argsspecMeasureTransport[] =
+{
+  { ObjectImp::stype(), "Segment/Arc to transport",
+    I18N_NOOP( "Select the segment/arc to transport on the circle/line..." ), false },
+  { ObjectImp::stype(), "Transport a measure on this circle/line",
+    I18N_NOOP( "Select the circle/line on which to transport a measure..." ), true },
+  { PointImp::stype(), "Start transport from this point of the circle/line",
+    I18N_NOOP( "Select a point on the circle/line..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MeasureTransportType )
+
+MeasureTransportType::MeasureTransportType()
+  : ArgsParserObjectType( "TransportOfMeasure", argsspecMeasureTransport, 3 )
+{
+}
+
+MeasureTransportType::~MeasureTransportType()
+{
+}
+
+const MeasureTransportType* MeasureTransportType::instance()
+{
+  static const MeasureTransportType t;
+  return &t;
+}
+
+const ObjectImpType* MeasureTransportType::resultId() const
+{
+  return PointImp::stype();
+}
+
+/* - transport of measure (old, for compatibility with prev. kig files) - */
+
+ObjectImp* MeasureTransportTypeOld::calc( const Args& parents, const KigDocument& doc ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
@@ -329,7 +415,7 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
   else return new InvalidImp;
 }
 
-static const ArgsParser::spec argsspecMeasureTransport[] =
+static const ArgsParser::spec argsspecMeasureTransportOld[] =
 {
   { CircleImp::stype(), "Transport a measure on this circle",
     I18N_NOOP( "Select the circle on which to transport a measure..." ), true },
@@ -339,24 +425,27 @@ static const ArgsParser::spec argsspecMeasureTransport[] =
     I18N_NOOP( "Select the segment to transport on the circle..." ), false }
 };
 
-KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MeasureTransportType )
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MeasureTransportTypeOld )
 
-MeasureTransportType::MeasureTransportType()
-  : ArgsParserObjectType( "MeasureTransport", argsspecMeasureTransport, 3 )
+MeasureTransportTypeOld::MeasureTransportTypeOld()
+  : ArgsParserObjectType( "MeasureTransport", argsspecMeasureTransportOld, 3 )
 {
 }
 
-MeasureTransportType::~MeasureTransportType()
+MeasureTransportTypeOld::~MeasureTransportTypeOld()
 {
 }
 
-const MeasureTransportType* MeasureTransportType::instance()
+const MeasureTransportTypeOld* MeasureTransportTypeOld::instance()
 {
-  static const MeasureTransportType t;
+  static const MeasureTransportTypeOld t;
   return &t;
 }
 
-const ObjectImpType* MeasureTransportType::resultId() const
+const ObjectImpType* MeasureTransportTypeOld::resultId() const
 {
   return PointImp::stype();
 }
+
+/* ----------------- end transport of measure ------------------------- */
+

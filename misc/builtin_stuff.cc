@@ -555,10 +555,18 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       MeasureTransportType::instance(),
       I18N_NOOP( "Measure Transport" ),
-      I18N_NOOP( "Transport the measure of a segment over a circle." ),
+      I18N_NOOP( "Transport the measure of a segment or arc over a line or circle." ),
       "measuretransport" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_measuretransport" ) );
+
+//    c = new SimpleObjectTypeConstructor(
+//      MeasureTransportTypeOld::instance(),
+//      I18N_NOOP( "Measure Transport (old)" ),
+//      I18N_NOOP( "Transport the measure of a segment over a circle." ),
+//      "measuretransport" );
+//    ctors->add( c );
+//    actions->add( new ConstructibleAction( c, "objects_new_measuretransport_old" ) );
 
     // the generic intersection constructor..
     c = new GenericIntersectionConstructor();
