@@ -20,6 +20,7 @@
 
 #include "circle_imp.h"
 #include "bogus_imp.h"
+#include "line_imp.h"
 #include "point_imp.h"
 
 #include "../misc/common.h"
@@ -28,9 +29,11 @@
 
 static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a circle through this point" );
 
+static const char constructcirclewithcenterstat[] = I18N_NOOP( "Construct a circle with this center" );
+
 static const ArgsParser::spec argsspecCircleBCP[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ), false },
+  { PointImp::stype(), constructcirclewithcenterstat, false },
   { PointImp::stype(), constructcirclethroughpointstat, true }
 };
 
@@ -139,7 +142,7 @@ const ObjectImpType* CircleBTPType::resultId() const
 
 static const ArgsParser::spec argsspecCircleBPR[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct a circle with this center" ), false },
+  { PointImp::stype(), constructcirclewithcenterstat, false },
   { DoubleImp::stype(), "UNUSED", false }
 };
 

@@ -190,10 +190,10 @@ void TypesDialog::importTypes()
 QString TypesDialog::fetchIconFromListItem( QListViewItem* i )
 {
   QListViewItemIterator it( typeList );
+  Macro* ai = static_cast<MacroListElement*>( i )->getMacro();
   while ( it.current() ) {
     if ( ( it.current() )->isSelected() )
     {
-      Macro* ai = static_cast<MacroListElement*>( i )->getMacro();
       Macro* ait = static_cast<MacroListElement*>( it.current() )->getMacro();
       if ( ai == ait )
       {

@@ -23,6 +23,7 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../misc/coordinate.h"
+#include "../objects/arc_type.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/circle_type.h"
 #include "../objects/conic_imp.h"

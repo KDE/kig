@@ -50,6 +50,7 @@ kigicondata_DATA = \
 	sizer.png \
 	slope.png \
 	stretch.png \
+	test.png \
 	testcollinear.png \
 	testcontains.png \
 	testorthogonal.png \
@@ -60,4 +61,5 @@ kigicondata_DATA = \
 	vector.png \
 	vectorsum.png \
 	view_fit_to_page.png \
-	window_fullscreen.png
+	window_fullscreen.png \
+	xfig.png

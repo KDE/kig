@@ -436,7 +436,7 @@ ObjectImp* EquilateralHyperbolaB4PType::calc( const Args& parents, const KigDocu
 static const ArgsParser::spec argsspecParabolaBDP[] =
 {
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a parabola with this directrix" ), false },
-  { PointImp::stype(), I18N_NOOP( "Construct a parabola through this point" ), true }
+  { PointImp::stype(), I18N_NOOP( "Construct a parabola with this focus" ), true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ParabolaBDPType )

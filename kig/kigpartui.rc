@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kig_part" version="8">
+<kpartgui name="kig_part" version="9">
   <MenuBar>
     <Menu name="file">
       <text>&amp;File</text>
@@ -62,11 +62,13 @@
 	<ActionList name="user_point_types" />
       </Menu>
       <Menu name="new_circle">
-	<text>&amp;Circles</text>
+	<text>&amp;Circles and Arcs</text>
 	<Action name="objects_new_circlebcp" />
 	<Action name="objects_new_circlebtp" />
 	<Action name="objects_new_circlebps" />
+	<Action name="objects_new_circlebcl" />
 	<Action name="objects_new_arcbtp" />
+	<Action name="objects_new_arcbcpa" />
 	<ActionList name="user_circle_types" />
       </Menu>	
       <Menu name="new_conic">
@@ -146,6 +148,8 @@
     <Action name="file_save" />
     <Action name="file_save_as" />
     <Separator />
+    <Action name="file_print" />
+    <Separator />
     <Action name="edit_undo"/>
     <Action name="edit_redo"/>
     <Separator />
@@ -173,7 +177,6 @@
     <Action name="objects_new_linebyvector" />
     <Action name="objects_new_halflinebyvector" />
     <ActionList name="user_line_types" />
-    <ActionList name="user_segment_types" />
   </ToolBar>
   <ToolBar name="vectseg_toolbar" position="left">
     <text>Vectors &amp; Segments</text>
@@ -181,9 +184,10 @@
     <Action name="objects_new_segment_axis" />
     <Action name="objects_new_vector" />
     <Action name="objects_new_vectorsum" />
+    <ActionList name="user_segment_types" />
   </ToolBar>
   <ToolBar name="circle_toolbar" position="left">
-    <text>Circles</text>
+    <text>Circles and Arcs</text>
     <Action name="objects_new_circlebcp" />
     <Action name="objects_new_circlebtp" />
     <Action name="objects_new_circlebps" />
@@ -222,9 +226,10 @@
       <Action name="objects_new_areorthogonal" />
       <Action name="objects_new_arecollinear" />
       <Action name="objects_new_containstest" />
+      <Action name="objects_new_distancetest" />
   </ToolBar>
   <ToolBar name="rest_toolbar" position="left">
-    <text>Rest</text>
+    <text>Other Objects</text>
     <Action name="objects_new_locus" />
     <Action name="objects_new_textlabel" />
     <Action name="objects_new_script_python" />

@@ -1,6 +1,10 @@
 FEATURES
 here are some nice Kig features i'd like to show off :)
-- macro's: if you want to try, open macrotest.kig, then click the 
+- More than 40 various nice objects: from the easiest ones ( points ),
+  up to lines, circles, conics, cubics, and more. See the Objects
+  menu...
+- Macros: the power of constructing new objects using the builtin
+  ones. If you want to try, open macrotest.kig, then click the 
   button to the left of the fullscreen button, select the three
   corners of the triangle, then click the button again, click the
   circle, click the button again, type in a name.  Then check out the
@@ -34,7 +38,6 @@ here are some nice Kig features i'd like to show off :)
   explanation... 
 - nice support for Locuses, inspired by KSeg's version of this.  Check
   the documentation and examples/locustest.kig for more info..
-- various nice objects: conics, cubics etc.
 - flexible transformation facility
 
 PLANNED FEATURES

@@ -1,0 +1,24 @@
+<!DOCTYPE KigMacroFile>
+<KigMacroFile Number="1" Version="0.7.1" >
+ <Macro>
+  <Name>Circle by Center &amp;&amp; Line</Name>
+  <Description>A circle constructed by its center and tangent to a given line</Description>
+  <ActionName>objects_new_circlebcl</ActionName>
+  <Construction>
+   <input requirement="line" id="1" />
+   <input requirement="point" id="2" />
+   <intermediate action="calc" type="LinePerpend" id="3" >
+    <arg>1</arg>
+    <arg>2</arg>
+   </intermediate>
+   <intermediate action="calc" type="LineLineIntersection" id="4" >
+    <arg>1</arg>
+    <arg>3</arg>
+   </intermediate>
+   <result action="calc" type="CircleBCP" id="5" >
+    <arg>2</arg>
+    <arg>4</arg>
+   </result>
+  </Construction>
+ </Macro>
+</KigMacroFile>

@@ -215,11 +215,34 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       QString::null,
       i18n( "Set Coordinate S&ystem" )
     };
+  static const QString menuicons[NumberOfMenus] =
+    {
+      QString::null,
+      "test",
+      QString::null,
+      QString::null,
+      "text",
+      "color_fill",
+//      "colorize",
+      "sizer",
+      "paintbrush",
+      QString::null,
+      QString::null
+    };
   int index = 1;
   for ( int i = 0; i < NumberOfMenus; ++i )
   {
     if ( mmenus[i]->count() == 0 ) continue;
-    insertItem( menunames[i], mmenus[i], i, index++ );
+    if ( menuicons[i].isNull() )
+      insertItem( menunames[i], mmenus[i], i, index++ );
+    else
+    {
+      KIconLoader* l = part.instance()->iconLoader();
+      QPixmap icon = l->loadIcon( menuicons[i], KIcon::User, 0, KIcon::DefaultState, 0L, true );
+      if ( icon.isNull() )
+        icon = l->loadIcon( menuicons[i], KIcon::Toolbar );
+      insertItem( QIconSet( icon ), menunames[i], mmenus[i], i, index++ );
+    }
   };
 }
 

@@ -25,6 +25,7 @@
 #include "special_constructors.h"
 #include "guiaction.h"
 
+#include "../objects/arc_type.h"
 #include "../objects/circle_type.h"
 #include "../objects/conic_types.h"
 #include "../objects/cubic_type.h"
@@ -290,11 +291,20 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ArcBTPType::instance(),
-      I18N_NOOP( "Arc" ),
+      I18N_NOOP( "Arc by Three Points" ),
       I18N_NOOP( "Construct an arc through three points." ),
       "arc" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_arcbtp" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      ArcBCPAType::instance(),
+      I18N_NOOP( "Arc by Center, Angle && Point" ),
+      I18N_NOOP( "Construct an arc by its center and a given angle, "
+                 "starting at a given point" ),
+      "arcbcpa" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_arcbcpa" ) );
 
     c = new SimpleObjectTypeConstructor(
       ParabolaBDPType::instance(),
@@ -447,7 +457,8 @@ void setupBuiltinStuff()
       I18N_NOOP( "Distance Test" ),
       I18N_NOOP( "Test whether a given point have the same distance from a given point "
                  "and from another given point" ),
-      "testdistance" );
+      "test" );
+//      "testdistance" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_distancetest" ) );
 

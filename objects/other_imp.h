@@ -212,6 +212,14 @@ public:
    */
   double angle() const;
   /**
+   * Return the start point of this arc.
+   */
+  Coordinate firstEndPoint() const;
+  /**
+   * Return the end point of this arc.
+   */
+  Coordinate secondEndPoint() const;
+  /**
    * Return the size of the sector surface of this arc.
    */
   const double sectorSurface() const;

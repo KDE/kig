@@ -1,4 +1,4 @@
-// other_type.h
+// arc_type.h
 // Copyright (C) 2003-2004  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
@@ -16,35 +16,23 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
-#ifndef KIG_MISC_OTHER_TYPE_H
-#define KIG_MISC_OTHER_TYPE_H
+#ifndef KIG_OBJECTS_ARC_TYPE_H
+#define KIG_OBJECTS_ARC_TYPE_H
 
 #include "base_type.h"
 #include "../misc/object_hierarchy.h"
 
-class AngleType
-  : public ArgsParserObjectType
-{
-  AngleType();
-  ~AngleType();
-public:
-  static const AngleType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
-
-  QStringList specialActions() const;
-  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const;
-};
-
-class LocusType
+/**
+ * an arc by a start point, an intermediate point and an end point
+ */
+class ArcBTPType
   : public ArgsParserObjectType
 {
   typedef ArgsParserObjectType Parent;
-  LocusType();
-  ~LocusType();
+  ArcBTPType();
+  ~ArcBTPType();
 public:
-  static const LocusType* instance();
+  static const ArcBTPType* instance();
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
 
@@ -52,26 +40,26 @@ public:
 
   bool inherits( int type ) const;
   const ObjectImpType* resultId() const;
-
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
-  Args sortArgs( const Args& args ) const;
 };
 
-class CopyObjectType
-  : public ObjectType
+/**
+ * an arc by a point (center), a starting point and an angle
+ */
+class ArcBCPAType
+  : public ArgsParserObjectType
 {
-protected:
-  CopyObjectType();
-  ~CopyObjectType();
+  typedef ArgsParserObjectType Parent;
+  ArcBCPAType();
+  ~ArcBCPAType();
 public:
-  static CopyObjectType* instance();
-  bool inherits( int type ) const;
-  ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
+  static const ArcBCPAType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
+
+  bool inherits( int type ) const;
   const ObjectImpType* resultId() const;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const;
-  Args sortArgs( const Args& args ) const;
 };
 
 #endif

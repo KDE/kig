@@ -252,6 +252,8 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "angle", &ArcImp::angle )
     .def( "radius", &ArcImp::radius )
     .def( "center", &ArcImp::center )
+    .def( "firstEndPoint", &ArcImp::firstEndPoint )
+    .def( "secondEndPoint", &ArcImp::secondEndPoint )
     .def( "sectorSurface", &ArcImp::sectorSurface )
     ;
 
@@ -297,6 +299,15 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .staticmethod( "stype" )
 //     .def( "data", &TestResultImp::data )
     ;
+
+//  class_<TextImp, bases<ObjectImp> >( "Text", init<string, Coordinate, bool>() )
+//    .def( "stype", &TextImp::stype,
+//          return_value_policy<reference_existing_object>() )
+//    .staticmethod( "stype" )
+//    .def( "text", &TextImp::text )
+//    .def( "coordinate", &TextImp::coordinate )
+//    .def( "hasFrame", &TextImp::hasFrame )
+//    ;
 
 //   class_<CubicCartesianData>
 

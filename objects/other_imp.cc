@@ -352,7 +352,7 @@ bool ArcImp::valid() const
 
 const uint ArcImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 6;
+  return Parent::numberOfProperties() + 8;
 }
 
 const QCStringList ArcImp::properties() const
@@ -364,6 +364,8 @@ const QCStringList ArcImp::properties() const
   ret << I18N_NOOP( "Angle in Radians" );
   ret << I18N_NOOP( "Sector Surface" );
   ret << I18N_NOOP( "Arc Length" );
+  ret << I18N_NOOP( "First End Point" );
+  ret << I18N_NOOP( "Second End Point" );
   assert( ret.size() == ArcImp::numberOfProperties() );
   return ret;
 }
@@ -377,6 +379,8 @@ const QCStringList ArcImp::propertiesInternalNames() const
   ret << "angle-radians";
   ret << "sector-surface";
   ret << "arc-length";
+  ret << "end-point-A";
+  ret << "end-point-B";
   return ret;
 }
 
@@ -395,6 +399,10 @@ const char* ArcImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + 4 )
     return "";
   else if ( which == Parent::numberOfProperties() + 5 )
+    return "";
+  else if ( which == Parent::numberOfProperties() + 6 )
+    return "";
+  else if ( which == Parent::numberOfProperties() + 7 )
     return "";
   else assert( false );
   return "";
@@ -416,6 +424,10 @@ ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
     return new DoubleImp( sectorSurface() );
   else if ( which == Parent::numberOfProperties() + 5 )
     return new DoubleImp( mradius * ma );
+  else if ( which == Parent::numberOfProperties() + 6 )
+    return new PointImp( firstEndPoint() );
+  else if ( which == Parent::numberOfProperties() + 7 )
+    return new PointImp( secondEndPoint() );
   else assert( false );
   return new InvalidImp;
 }
@@ -477,6 +489,18 @@ double ArcImp::startAngle() const
 double ArcImp::angle() const
 {
   return ma;
+}
+
+Coordinate ArcImp::firstEndPoint() const
+{
+  double angle = msa;
+  return mcenter + Coordinate( cos( angle ), sin( angle ) ) * mradius;
+}
+
+Coordinate ArcImp::secondEndPoint() const
+{
+  double angle = msa + ma;
+  return mcenter + Coordinate( cos( angle ), sin( angle ) ) * mradius;
 }
 
 const Coordinate VectorImp::a() const

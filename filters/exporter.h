@@ -53,6 +53,10 @@ public:
    * Returns a string like i18n( "Image..." )
    */
   virtual QString menuEntryName() const = 0;
+  /**
+   * Returns a string with the name of the icon
+   */
+  virtual QString menuIcon() const = 0;
 
   /**
    * Do what you need to do.  It's up to the individual exporters to
@@ -72,6 +76,7 @@ public:
   ~ImageExporter();
   QString exportToStatement() const;
   QString menuEntryName() const;
+  QString menuIcon() const;
   void run( const KigPart& doc, KigWidget& w );
 };
 
@@ -87,6 +92,7 @@ public:
   ~XFigExporter();
   QString exportToStatement() const;
   QString menuEntryName() const;
+  QString menuIcon() const;
   void run( const KigPart& doc, KigWidget& w );
 };
 #endif

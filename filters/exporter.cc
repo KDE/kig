@@ -33,13 +33,16 @@
 #include "../objects/point_imp.h"
 #include "../objects/text_imp.h"
 
+#include <qcolor.h>
+#include <qfile.h>
+#include <qiconset.h>
+#include <qtextstream.h>
+
 #include <kaction.h>
 #include <kfiledialog.h>
+#include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <qfile.h>
-#include <qtextstream.h>
-#include <qcolor.h>
 
 #include <map>
 
@@ -66,6 +69,12 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
   : KAction( exp->menuEntryName(), KShortcut(), 0, 0, parent ),
     mexp( exp ), mdoc( doc ), mw( w )
 {
+  KIconLoader* l = doc->instance()->iconLoader();
+  QPixmap icon = l->loadIcon( exp->menuIcon(), KIcon::User, 0, KIcon::DefaultState, 0L, true );
+  if ( icon.isNull() )
+    icon = l->loadIcon( exp->menuIcon(), KIcon::Small );
+  if ( !icon.isNull() )
+    setIconSet( QIconSet( icon ) );
 }
 
 void ExporterAction::slotActivated()
@@ -89,6 +98,11 @@ QString ImageExporter::exportToStatement() const
 QString ImageExporter::menuEntryName() const
 {
   return i18n( "&Image..." );
+}
+
+QString ImageExporter::menuIcon() const
+{
+  return "image";
 }
 
 void ImageExporter::run( const KigPart& doc, KigWidget& w )
@@ -139,6 +153,11 @@ QString XFigExporter::exportToStatement() const
 QString XFigExporter::menuEntryName() const
 {
   return i18n( "&XFig File..." );
+}
+
+QString XFigExporter::menuIcon() const
+{
+  return "xfig";
 }
 
 class XFigExportImpVisitor

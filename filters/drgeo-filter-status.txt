@@ -18,9 +18,10 @@ Rays              ok
 Vectors           ok
 Lines             most
 Circles           2pts, segment
-Numberics         value (with a label), segment_length, circle_perimeter, 
-                  arc_length, distance_2pts, vector_norm, pt_abscissa, 
-                  pt_ordinate, vector_abscissa, vector_ordinate, slope
+Numberics         value (with a label), segment_length, circle_perimeter,
+                  arc_length, distance_2pts, vector_norm, pt_abscissa,
+                  pt_ordinate, vector_abscissa, vector_ordinate, slope,
+                  distance_pt_line
 Angles            3pts (partially)
 Arcs              ok
 Locuses           ok
@@ -40,7 +41,7 @@ Objects to implement
 Points            Coordinate(*)
 Lines             pt_slope(*)
 Circle            radius(*)
-Numberics         distance_pt_line, distance_pt_circle
+Numberics         distance_pt_circle
 Angles            vectors
 Polygons          also in Kig
 Transformations   scaling(*)

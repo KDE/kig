@@ -1,4 +1,17 @@
-2004-05-18  Dominique Devriese  <devriese@kde.org>
+2004-05-18  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Move ArcBTPType from other_type.* into arc_type.*.
+
+	* Add two new types, ArcBCPA ( Arc By Center, starting Point and
+	Angle ) and CircleBCL ( Circle By Center and Line - via macro ).
+
+	* Now every submenu in the RMB menu can have an own icon.
+
+	* Add a menu icon for every ExportAction.
+
+	* Various little improvements
+
+04-05-18  Dominique Devriese  <devriese@kde.org>
 
 	* Add a --convert-to-native command line option, which converts
 	the given file to the native Kig file format ( without a GUI ).

@@ -25,6 +25,7 @@
 #include "../kig/kig_part.h"
 #include "../misc/coordinate.h"
 #include "../misc/coordinate_system.h"
+#include "../objects/arc_type.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/circle_imp.h"
 #include "../objects/circle_type.h"
@@ -514,33 +515,26 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = constructTextObject( m, parents[0], "slope", *ret );
       }
-/*
       else if ( domelem.attribute( "type" ) == "distance_pt_line" )
       {
         if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
-        kdDebug() << ">>>>>>>>> Creating po" << endl;
         std::vector<ObjectCalcer*> args;
         args.push_back( parents[1] );
         args.push_back( parents[0] );
         ObjectTypeCalcer* po = new ObjectTypeCalcer( LinePerpendLPType::instance(), args );
         po->calc( *ret );
-        kdDebug() << ">>>>>>>>> Creating io" << endl;
         args.clear();
         args.push_back( parents[1] );
         args.push_back( po );
         ObjectTypeCalcer* io = new ObjectTypeCalcer( LineLineIntersectionType::instance(), args );
         io->calc( *ret );
-        kdDebug() << ">>>>>>>>> Creating so" << endl;
         args.clear();
         args.push_back( parents[0] );
-        args.push_back( po );
+        args.push_back( io );
         ObjectTypeCalcer* so = new ObjectTypeCalcer( SegmentABType::instance(), args );
         so->calc( *ret );
-        kdDebug() << ">>>>>>>>> " << so->imp()->inherits( SegmentImp::stype() ) << endl;
-        kdDebug() << ">>>>>>>>> Creating oc" << endl;
         oc = constructTextObject( m, so, "length", *ret );
       }
-*/
       // types of 'equation'
       else if ( domelem.attribute( "type" ) == "line" )
       {
