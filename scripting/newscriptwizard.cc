@@ -18,6 +18,7 @@
 
 
 #include "newscriptwizard.h"
+#include "newscriptwizard.moc"
 
 #include "script_mode.h"
 
@@ -57,12 +58,14 @@ void NewScriptWizard::next()
 
 void NewScriptWizard::reject()
 {
-  mmode->cancelPressed();
+  if ( mmode->queryCancel() )
+    NewScriptWizardBase::reject();
 }
 
 void NewScriptWizard::accept()
 {
-  mmode->finishPressed();
+  if ( mmode->queryFinish() )
+    NewScriptWizardBase::accept();
 }
 
 void NewScriptWizard::slotHelpClicked()

@@ -14,4 +14,4 @@ libscripting_la_SOURCES = \
 	newscriptwizard.cc
 libscripting_la_LDFLAGS = $(PYTHONLIB)
 libscripting_la_LIBADD = $(LIBPYTHON) -lboost_python
-#METASOURCES=AUTO
+METASOURCES=AUTO

@@ -26,6 +26,7 @@ class ScriptMode;
 class NewScriptWizard
   : public NewScriptWizardBase
 {
+  Q_OBJECT
   ScriptMode* mmode;
 public:
   NewScriptWizard( QWidget* parent, ScriptMode* mode );
@@ -34,10 +35,10 @@ public:
   void back();
   void next();
   void reject();
-  void accept();
 
 public slots:
   void slotHelpClicked();
+  void accept();
 };
 
 #endif

@@ -49,8 +49,8 @@ public:
   void argsPageEntered();
   void codePageEntered();
 
-  void finishPressed();
-  void cancelPressed();
+  bool queryFinish();
+  bool queryCancel();
 
   void redrawScreen();
 

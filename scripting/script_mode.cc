@@ -30,6 +30,7 @@
 #include "../misc/kigpainter.h"
 
 #include <kcursor.h>
+#include <kmessagebox.h>
 #include <ktextedit.h>
 
 void ScriptMode::dragRect( const QPoint& p, KigWidget& w )
@@ -121,7 +122,6 @@ ScriptMode::ScriptMode( KigDocument& doc )
 
 ScriptMode::~ScriptMode()
 {
-  delete mwizard;
 }
 
 void ScriptMode::killMode()
@@ -129,9 +129,10 @@ void ScriptMode::killMode()
   mdoc.doneMode( this );
 }
 
-void ScriptMode::cancelPressed()
+bool ScriptMode::queryCancel()
 {
   killMode();
+  return true;
 }
 
 void ScriptMode::argsPageEntered()
@@ -196,7 +197,7 @@ void ScriptMode::redrawScreen()
   };
 }
 
-void ScriptMode::finishPressed()
+bool ScriptMode::queryFinish()
 {
   Objects ret;
 
@@ -213,10 +214,25 @@ void ScriptMode::finishPressed()
   copy( margs.begin(), margs.end(), back_inserter( args ) );
 
   Object* reto = new RealObject( PythonExecuteType::instance(), args );
+  ReferenceObject ref( reto );
   reto->calc( mdoc );
 
-  mdoc.addObject( reto );
-  killMode();
+  if ( reto->imp()->inherits( InvalidImp::stype() ) )
+  {
+    // TODO: show the error from the python interpreter to the user (
+    // how ?? :) )
+    KMessageBox::sorry(
+      mwizard, i18n( "There seems to be an error in your script; it will not generate "
+                     "a valid object.  Please fix the script, and press the Finish button "
+                     "again." ) );
+    return false;
+  }
+  else
+  {
+    mdoc.addObject( reto );
+    killMode();
+    return true;
+  }
 }
 
 void ScriptMode::midClicked( const QPoint&, KigWidget& )
