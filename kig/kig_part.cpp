@@ -555,7 +555,7 @@ bool KigDocument::internalSaveAs()
 {
   // this slot is connected to the KStdAction::saveAs action...
   QString formats;
-  formats = QString::fromUtf8("*.kig|Kig Documents (*.kig)");
+  formats = i18n("*.kig|Kig Documents (*.kig)");
 
   //  formats += "\n";
   //  formats += KImageIO::pattern( KImageIO::Writing );
