@@ -110,6 +110,7 @@ void ObjectTypeFactory::setupBuiltinTypes()
   // other_type.h
   add( AngleType::instance() );
   add( VectorType::instance() );
+  add( LocusType::instance() );
 
   // point_type.h
   add( FixedPointType::instance() );
