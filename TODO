@@ -3,7 +3,11 @@
   not it is internal or drawn.  ( all combinations are possible,
   except that internal objects are never drawn ).  Internal objects
   should be differentiated by holding them in a separate container at
-  the KigPart level, I think..
+  the KigPart level, I think..  This will require another file format
+  change, I think..
+- split up the transformation types as follows: they only generate a
+  TransformationImp, and the real transforming is done by the
+  ApplyTransformationType..  This is dependent on the previous TODO.
 - fillable polygons..
 - full screen mode
 - filters: more input filters ( get cabri to work somewhat, Dr.Genius
@@ -12,7 +16,8 @@
 - printing... (cf. the kdeprint tutorial on printing.kde.org ...
 - move stillPix into movingMode, so the other modes won't suffer from
    its overhead...
-- add full undo support for everything the user might do
+- add full undo support for everything the user might do: most
+  importantly moving..
 
 * hard :
 - figure out a way to allow the user to enable and disable certain
