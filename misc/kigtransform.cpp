@@ -746,7 +746,7 @@ Transformation::Transformation()
 {
   // this is the constructor used by the static Transformation
   // creation functions, so mIsHomothety is in general false
-  mIsHomothety = false;
+  mIsHomothety = mIsAffine = false;
   for ( int i = 0; i < 3; ++i )
     for ( int j = 0; j < 3; ++j )
       mdata[i][j] = ( i == j ) ? 1 : 0;
