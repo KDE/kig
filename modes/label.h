@@ -82,6 +82,7 @@ public:
   void selectArgumentsPageEntered();
   void labelTextChanged();
   void linkClicked( int );
+  void objectsAdded();
 };
 
 #endif

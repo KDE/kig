@@ -214,7 +214,8 @@ void NormalMode::midClicked( const QPoint& p, KigWidget& w )
   mdoc.addObjects( ptos );
 
   // refresh the screen...
-  w.redrawScreen();
+  // not necessary, done by addObjects, which calls NormalMode::objectsAdded..
+//  w.redrawScreen();
   w.updateScrollBars();
 }
 

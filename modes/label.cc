@@ -219,7 +219,7 @@ void TextLabelConstructionMode::finishPressed()
       Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe, args );
       labelos.calc( mdoc );
       killMode();
-      mdoc.addObjects( labelos );
+      copy( labelos.begin(), labelos.end(), back_inserter( args ) );
       mdoc.addObjects( args );
     };
   };
@@ -331,4 +331,15 @@ void TextLabelConstructionMode::linkClicked( int i )
   mwaaws = i;
 
   mdoc.emitStatusBarText( i18n( "Selecting argument %1" ).arg( i + 1 ) );
+}
+
+void TextLabelConstructionMode::objectsAdded()
+{
+  const std::vector<KigWidget*>& widgets = mdoc.widgets();
+  for ( uint i = 0; i < widgets.size(); ++i )
+  {
+    KigWidget* w = widgets[i];
+    w->redrawScreen();
+    w->updateScrollBars();
+  };
 }
