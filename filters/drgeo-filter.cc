@@ -38,6 +38,7 @@
 #include "../objects/object_type.h"
 #include "../objects/intersection_types.h"
 #include "../misc/coordinate.h"
+#include "../misc/coordinate_system.h"
 #include "../kig/kig_part.h"
 
 #include <qfile.h>
@@ -117,7 +118,10 @@ bool KigFilterDrgeo::load( const QString& file, KigDocument& to )
       kdDebug() << "- Figure: '" << e.attribute("name") << "'" << endl;
       curfig += 1;
       if ( curfig == myfig )
-        return importFigure( e.firstChild(), to, file );
+      {
+        bool grid = ( e.attribute( "grid" ) != "False" );
+        return importFigure( e.firstChild(), to, file, grid );
+      }
     }
   }
 
@@ -146,7 +150,7 @@ int convertDrgeoIndex( const std::vector<HierarchyElement> es, const QString myi
   return -1;
 }
 
-bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& file )
+bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& file, const bool grid )
 {
   using namespace std;
   std::vector<HierarchyElement> elems;
@@ -516,6 +520,68 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
         Coordinate m( x, y );
         oc = constructTextObject( m, parents[0], "length", doc );
       }
+      else if ( domelem.attribute( "type" ) == "vector_abscissa" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "length-x", doc );
+      }
+      else if ( domelem.attribute( "type" ) == "vector_ordinate" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "length-y", doc );
+      }
+      else
+      {
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  domelem.attribute( "type" ) ) );
+        return false;
+      }
+      kdDebug() << "+++++++++ oc:" << oc << endl;
+    }
+    else if ( domelem.tagName() == "equation" )
+    {
+      QString xs;
+      QString ys;
+      QString value;
+      for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
+      {
+        QDomElement ce = c.toElement();
+        if ( ce.isNull() ) continue;
+        else if ( ce.tagName() == "x" )
+        {
+          xs = ce.text();
+        }
+        else if ( ce.tagName() == "y" )
+        {
+          ys = ce.text();
+        }
+        else if ( ce.tagName() == "value" )
+        {
+          value = ce.text();
+        }
+      }
+      kdDebug() << "+++++++++ equation - " << domelem.attribute( "type" ) << endl;
+      bool ok;
+      bool ok2;
+      double x = xs.toDouble( &ok );
+      double y = ys.toDouble( &ok2 );
+      if ( ! ( ok && ok2 ) )
+        KIG_FILTER_PARSE_ERROR;
+      if ( domelem.attribute( "type" ) == "line" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "equation", doc );
+      }
+      else if ( domelem.attribute( "type" ) == "circle" )
+      {
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        Coordinate m( x, y );
+        oc = constructTextObject( m, parents[0], "cartesian-equation", doc );
+      }
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
@@ -625,9 +691,9 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
       double y = ys.toDouble( &ok2 );
       if ( ! ( ok && ok2 ) )
         KIG_FILTER_PARSE_ERROR;
-      // ugly hack to show scripts... since kig doesn't support Scheme scripts,
-      // kig will write script's text into a label, so the user can freely see
-      // the code and make whatever he/she wants.
+      // since kig doesn't support Scheme scripts, it will write script's text
+      // in a label, so the user can freely see the code and make whatever
+      // he/she wants
       if ( domelem.attribute( "type" ) == "nitems" )
         oc = fact->labelCalcer( text, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), doc );
       else
@@ -721,6 +787,9 @@ bool KigFilterDrgeo::importFigure( QDomNode f, KigDocument& doc, const QString& 
   }
 
   doc.setObjects( holders );
+  CoordinateSystem* s = CoordinateSystemFactory::build( grid ? "Euclidean" : "Invisible" );
+  if ( s )
+    doc.setCoordinateSystem( s );
   return true;
 }
 

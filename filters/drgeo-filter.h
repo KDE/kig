@@ -39,7 +39,7 @@ public:
   bool supportMime( const QString& mime );
   bool load( const QString& file, KigDocument& to );
 private:
-  bool importFigure( QDomNode f, KigDocument& doc, const QString& file );
+  bool importFigure( QDomNode f, KigDocument& doc, const QString& file, const bool grid );
 };
 
 #endif

@@ -2,7 +2,10 @@
 [Desktop Entry]
 Encoding=UTF-8
 MimeType=application/x-drgeo
-Comment=DrGeo Figure
+Comment=Dr. Geo Figure
+Comment[da]=DrGeo-figur
+Comment[pt_BR]=Figuras do DrGeo
+Comment[sv]=Dr. Geo-figur
 Type=MimeType
 Patterns=*.fgeo
 X-KDE-AutoEmbed=false
