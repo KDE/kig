@@ -56,7 +56,8 @@ public:
   static const Transformation lineReflection( const LineData& l );
   // this is a test example of a projective non-affine transformation
   static const Transformation projectiveRotation( double alpha,
-                                              const Coordinate& d );
+                                              const Coordinate& d,
+                                              const Coordinate& t );
 
   friend const Transformation operator*( const Transformation&, const Transformation& );
 };

@@ -73,6 +73,7 @@ Transformation getProjectiveTransformation ( int argsnum,
     //       really sure..
      Ray* line = transform->toRay();
      Coordinate d = line->direction().normalize();
+     Coordinate t = line->p1();
      double alpha = 0.1*M_PI/2;  // a small angle for the DrawPrelim
      if (argn < argsnum)
      {
@@ -80,7 +81,7 @@ Transformation getProjectiveTransformation ( int argsnum,
        alpha = angle->size();
      }
      assert (argn == argsnum);
-     return Transformation::projectiveRotation( alpha, d );
+     return Transformation::projectiveRotation( alpha, d, t );
   }
 
   if (transform->toAngle())
@@ -335,7 +336,7 @@ const Transformation Transformation::scaling( double factor, const LineData& l )
 }
 
 const Transformation Transformation::projectiveRotation(
-  double alpha, const Coordinate& d )
+  double alpha, const Coordinate& d, const Coordinate& t )
 {
   Transformation ret;
   ret.mdata[0][0] =  cos(alpha);
@@ -349,7 +350,7 @@ const Transformation Transformation::projectiveRotation(
   ret.mdata[2][2] =  cos(alpha)*d.y*d.y + d.x*d.x;
 
   ret.mIsHomothety = false;
-  return ret;
+  return translation( t )*ret*translation( -t );
 }
 
 const Coordinate Transformation::apply( const Coordinate& p, bool& valid ) const
