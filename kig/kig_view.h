@@ -17,36 +17,8 @@ class KigView
 public:
   KigView( KigDocument* inDoc, QWidget* parent = 0, const char* name = 0, bool inIsKiosk = false);
   ~KigView();
-protected:
-  bool readOnly;
-public:
+
   void setReadOnly (bool ro);
-
-protected:
-  // we reimplement these from QWidget to suit our needs
-  void mousePressEvent (QMouseEvent* e);
-  void mouseMoveEvent (QMouseEvent* e);
-  void mouseReleaseEvent (QMouseEvent* e);
-  void paintEvent (QPaintEvent* e);
-  void resizeEvent(QResizeEvent*);
-
-  // drawing: i tried to optimise this as much as possible, using ideas
-  // from kgeo
-  // we keep a picture ( stillPix ) of what the still objects look like,
-  // and on moving,  we only draw the other on a copy of this pixmap.
-  // furthermore,  on drawing the other, we only draw what is in
-  // document->sos->getSpan()
-  // another thing: it turns out that working on the pixmaps isn't
-  // that slow, but working on the widget is.  So we try to reduce the
-  // amount of work we spend on the widget. (i got this idea from the
-  // kgeo, all credits for this should go to marc.bartsch@web.de) : objects
-  // have a getObjectOverlay function,
-  // in which they specify some rects which they occupy.  We only
-  // bitBlt those rects onto the widget. This is only done on moving,
-  // since that's where speed matters most...
-  QPixmap stillPix; // What Do the Still Objects Look Like
-  QPixmap curPix; // temporary, gets bitBlt'd (copied) onto the widget (to avoid flickering)
-  QPtrList<QRect> objectOverlayList;
 
 public slots:
   void paintOnPartOfWidget() { paintOnWidget(false); };
@@ -59,7 +31,6 @@ public slots:
   void startKioskMode();
   void endKioskMode();
 signals:
-  void changed();
   void setStatusBarText(const QString&);
 
 protected:
@@ -98,11 +69,41 @@ protected:
   void setCMode (CModeEnum inCMode);
 
 protected:
+  // we reimplement these from QWidget to suit our needs
+  void mousePressEvent (QMouseEvent* e);
+  void mouseMoveEvent (QMouseEvent* e);
+  void mouseReleaseEvent (QMouseEvent* e);
+  void paintEvent (QPaintEvent* e);
+  void resizeEvent(QResizeEvent*);
+
+protected:
+  bool readOnly;
+  // drawing: i tried to optimise this as much as possible, using ideas
+  // from kgeo
+  // we keep a picture ( stillPix ) of what the still objects look like,
+  // and on moving,  we only draw the other on a copy of this pixmap.
+  // furthermore,  on drawing the other, we only draw what is in
+  // document->sos->getSpan()
+  // another thing: it turns out that working on the pixmaps isn't
+  // that slow, but working on the widget is.  So we try to reduce the
+  // amount of work we spend on the widget. (i got this idea from the
+  // kgeo, all credits for this should go to marc.bartsch@web.de) : objects
+  // have a getObjectOverlay function,
+  // in which they specify some rects which they occupy.  We only
+  // bitBlt those rects onto the widget. This is only done on moving,
+  // since that's where speed matters most...
+  QPixmap stillPix; // What Do the Still Objects Look Like
+  QPixmap curPix; // temporary, gets bitBlt'd (copied) onto the widget
+		  // (to avoid flickering)
+  QPtrList<QRect> objectOverlayList; // the rects we need to refresh
+				     // on screen
+
   QDialog* kiosk;
   KPopupMenu* kiosKontext;
   KigView* kioskView;
   bool isKiosk;
-  signals:
+
+signals:
   void endKiosk();
 };
 #endif

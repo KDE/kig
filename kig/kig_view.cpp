@@ -331,7 +331,6 @@ void KigView::endKioskMode()
 
 void KigView::redrawStillPix()
 {
-  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   stillPix.fill(Qt::white); 
   QPainter p(&stillPix );
   // this grid comes from KGeo
@@ -393,7 +392,6 @@ void KigView::redrawStillPix()
 
 void KigView::paintOnWidget( bool needRedraw )
 {
-  kdDebug() << k_funcinfo << " at line no. " << __LINE__ << endl;
   //maybe i should add an option to configure for this ?
 #undef SHOW_OVERLAY_RECTS
 #ifdef SHOW_OVERLAY_RECTS

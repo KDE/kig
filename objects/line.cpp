@@ -1,9 +1,12 @@
 #include "line.h"
 
+#include "segment.h"
+#include "intersection.h"
+
 #include <klocale.h>
 #include <kdebug.h>
 
-#include "segment.h"
+#include <cmath>
 
 #define max(a,b) ((a>b)?a:b)
 #define min(a,b) ((a>b)?b:a)
@@ -45,10 +48,7 @@ bool Line::inRect(const QRect& p) const
 
 Point Line::getPoint(double p) const
 {
-  // this code is copied from the KSeg source (with some
-  // modifications), thanks to the author Ilya Baran
-  /* still needs fixing */
-  // set p's range to [-1;1] (was [0;1])
+  // inspired upon KSeg
   p = (p - 0.5) * 2;
 
   Point m = (qp1+qp2)/2;
@@ -58,24 +58,33 @@ Point Line::getPoint(double p) const
   // the (infinite) end of the line, but most points should be near
   // the two points we contain...
   p = p*2;
-  if (p>0) p = pow(p, 10);
-  else p = -pow(p,10);
+  if (p>0) p = pow(p, 8);
+  else p = -pow(p,8);
 
   return m+dir*p;
 };
 
-double Line::getParam(const Point& p) const
+double Line::getParam(const Point& point) const
 {
-  // this code is copied from the KSeg source (with some
-  // modifications), thanks to the author Ilya Baran
-  /* still needs fixing :)
-  Point dir = p-Point(qp1);
-  double c = atan(dir.length()) * SIGN(dir.getX()/(qp1 - qp2).getX());
-  c/=M_PI;
-  c = pow (2*c,81);
-  return c / 2 +0.5;
-  */
-  return 0;
+  // somewhat the reverse of getPoint, although it also supports
+  // points not on the line...
+  
+  // first we project the point onto the line...
+  Point pt = LinePerpend::calcPointOnPerpend(qp1, qp2, point);
+  pt = IntersectionPoint::calc(qp1, qp2, point, pt);
+
+  // next we fetch the parameter
+  Point m = Point(qp1+qp2)/2;
+  Point dir = (qp1 - qp2);
+  if (dir.getX() < 0) dir = -dir;
+  Point d = pt-m;
+
+  double p = d.getX()/dir.getX();
+  if (p>=0) p = sqrt(sqrt(sqrt(p)));
+  else p = -sqrt(sqrt(sqrt(-p)));
+  p/=2;
+  p = p/2 + 0.5;
+  return p;
 }
 
 void Line::calcVars()

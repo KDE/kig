@@ -6,6 +6,20 @@
 	pointonline
 - locuses -> cf. KSeg
 - koffice support !
-- i just had another idea for speeding up drawing (imagine moving objects without shocky movement :), the idea is that we extend qpainter to support for saving a sequence of bits: e.g. drawEllipse is extended with saveEllipse, which saves the colors on the place where the ellipse will be drawn, there would of course be the inverse.
-In practice an object would save what's on the screen before it is drawn, then draw itself, and when it should draw again, it first restores what was under it before it started.  this would make some other stuff obsolete like the getOverlay stuff which i just got to work quite nice... Anyway, this will be something for a later release, if i ever implement it...
-I'll have to write myself a subclass for QPainter for this, maybe without anti-aliasing.
+- i just had an idea for speeding up drawin, the idea is that we
+extend qpainter to support for saving a sequence of bits:
+e.g. drawEllipse is extended with saveEllipse, which saves the colours
+on the place where the ellipse will be drawn, there would of course be
+the inverse. In practice an object would save what's on the screen
+before it is drawn, then draw itself, and when it should draw again,
+it first restores what was under it before it started.  this would
+make some other stuff obsolete like the getOverlay stuff which i just
+got to work quite nice... Anyway, this will be something for a later
+release, if i ever implement it... 
+I'll have to write myself a subclass for QPainter for this, prolly
+without anti-aliasing.
+
+- there should be a way to link a figure to a (html?) file containing
+exercises.  Teachers would be able to create exercises for Kig.  I'm
+thinking of doing this with HTML (& KHTML) + JavaScript (KJS, which i
+extend to support my own DOM (Document Object Model)).
