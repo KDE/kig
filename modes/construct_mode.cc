@@ -147,6 +147,8 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
     }
     else
     {
+      mdoc.emitStatusBarText( QString::null );
+
       w.setCursor( KCursor::arrowCursor() );
     }
   }
@@ -339,6 +341,7 @@ void TestConstructMode::handleArgs( const std::vector<ObjectCalcer*>& args, KigW
 {
   mresult = new ObjectTypeCalcer( mtype, args );
   mresult->calc( mdoc.document() );
+  mdoc.emitStatusBarText( QString::null );
 }
 
 void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
