@@ -151,7 +151,9 @@ AC_DEFUN(REGINA_LIB_BOOST_PYTHON, [
 		  ])
 		  if test "$__regina_py_ok" = "1"; then break; fi
 		done
+	        if test "$__regina_py_ok" = "1"; then break; fi
               done
+              if test "$__regina_py_ok" = "1"; then break; fi
             done
           ], [
             AC_MSG_RESULT([no])
