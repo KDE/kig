@@ -28,6 +28,7 @@
 #include "../objects/other_type.h"
 #include "../objects/point_type.h"
 #include "../objects/transform_types.h"
+#include "../objects/intersection_types.h"
 #include "../misc/coordinate.h"
 
 #include <qfont.h>
@@ -265,7 +266,12 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
           break;
         }
         case G_INTERSECTION_POINT:
+        {
+          // the intersection of two abstract lines..
+          if ( parents.size() != 2 ) return ParseError;
+          point = new RealObject( LineLineIntersectionType::instance(), parents );
           break;
+        }
         case G_INTERSECTION2_POINT:
           break;
         case G_MID_POINT:
@@ -303,11 +309,20 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       };
       case G_RAY:
       {
-        if ( nparents != 2 ) return ParseError;
-        RealObject* o = new RealObject( RayABType::instance(), parents );
-        o->setWidth( style.pen.width() );
-        o->setColor( style.pen.color() );
-        object = o;
+        switch( descendtype )
+        {
+        case G_TWOPOINTS_RAY:
+        {
+          if ( nparents != 2 ) return ParseError;
+          RealObject* o = new RealObject( RayABType::instance(), parents );
+          o->setWidth( style.pen.width() );
+          o->setColor( style.pen.color() );
+          object = o;
+          break;
+        }
+        case G_BISECTOR_RAY:
+          break;
+        };
         break;
       };
       case G_LINE:
@@ -336,11 +351,22 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       };
       case G_CIRCLE:
       {
-        if ( nparents != 2 ) return ParseError;
-        RealObject* o = new RealObject( CircleBCPType::instance(), parents );
-        o->setWidth( style.pen.width() );
-        o->setColor( style.pen.color() );
-        object = o;
+        switch( descendtype )
+        {
+        case G_CENTERPOINT_CIRCLE:
+        {
+          if ( nparents != 2 ) return ParseError;
+          RealObject* o = new RealObject( CircleBCPType::instance(), parents );
+          o->setWidth( style.pen.width() );
+          o->setColor( style.pen.color() );
+          object = o;
+          break;
+        }
+        case G_CENTERRADIUS_CIRCLE:
+          break;
+        default:
+          return ParseError;
+        };
         break;
       };
       case G_ARC:
