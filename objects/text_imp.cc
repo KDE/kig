@@ -19,7 +19,6 @@
 #include "text_imp.h"
 
 #include "bogus_imp.h"
-#include "property.h"
 #include "../misc/kigpainter.h"
 
 TextImp::TextImp( const QString& text, const Coordinate& loc )
@@ -72,7 +71,7 @@ const QCStringList TextImp::properties() const
   return Parent::properties();
 }
 
-const Property TextImp::property( uint which, const KigWidget& w ) const
+ObjectImp* TextImp::property( uint which, const KigWidget& w ) const
 {
   return Parent::property( which, w );
 }

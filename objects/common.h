@@ -33,7 +33,6 @@ class DataObject;
 class ObjectImp;
 class ObjectType;
 class CustomType;
-class Property;
 class KigPainter;
 class Coordinate;
 class ScreenInfo;

@@ -21,7 +21,6 @@
 #include "object_type.h"
 #include "object_imp.h"
 #include "curve_imp.h"
-#include "property.h"
 #include "../misc/kigpainter.h"
 
 #include <qpen.h>
@@ -112,7 +111,7 @@ const uint Object::numberOfProperties() const
   return imp()->numberOfProperties();
 }
 
-const Property Object::property( uint which, const KigWidget& w ) const
+ObjectImp* Object::property( uint which, const KigWidget& w ) const
 {
   return imp()->property( which, w );
 }

@@ -18,7 +18,6 @@
 
 #include "cubic_imp.h"
 
-#include "property.h"
 #include "bogus_imp.h"
 
 #include "../misc/kigpainter.h"
@@ -296,7 +295,7 @@ const QCStringList CubicImp::properties() const
   return Parent::properties();
 }
 
-const Property CubicImp::property( uint which, const KigWidget& w ) const
+ObjectImp* CubicImp::property( uint which, const KigWidget& w ) const
 {
   // TODO ?
   return Parent::property( which, w );

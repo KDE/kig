@@ -22,7 +22,6 @@
 #include "mode.h"
 
 #include "../misc/coordinate.h"
-#include "../objects/property.h"
 
 #include <vector>
 

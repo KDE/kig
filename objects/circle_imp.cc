@@ -18,7 +18,8 @@
 
 #include "circle_imp.h"
 
-#include "property.h"
+#include "bogus_imp.h"
+#include "point_imp.h"
 
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
@@ -96,23 +97,23 @@ const QCStringList CircleImp::properties() const
   return l;
 }
 
-const Property CircleImp::property( uint which, const KigWidget& w ) const
+ObjectImp* CircleImp::property( uint which, const KigWidget& w ) const
 {
   assert( which < CircleImp::numberOfProperties() );
   if ( which < CurveImp::numberOfProperties() )
     return CurveImp::property( which, w );
   if ( which == CurveImp::numberOfProperties() )
-    return Property( surface() );
+    return new DoubleImp( surface() );
   else if ( which == CurveImp::numberOfProperties() + 1 )
-    return Property( circumference() );
+    return new DoubleImp( circumference() );
   else if ( which == CurveImp::numberOfProperties() + 2 )
-    return Property( radius() );
+    return new DoubleImp( radius() );
   else if ( which == CurveImp::numberOfProperties() + 3 )
-    return Property( center() );
+    return new PointImp( center() );
   else if ( which == CurveImp::numberOfProperties() + 4 )
-    return Property( cartesianEquationString( w ) );
+    return new StringImp( cartesianEquationString( w ) );
   else if ( which == CurveImp::numberOfProperties() + 5 )
-    return Property( polarEquationString( w ) );
+    return new StringImp( polarEquationString( w ) );
   else assert( false );
 }
 

@@ -18,8 +18,8 @@
 
 #include "conic_imp.h"
 
-#include "property.h"
 #include "bogus_imp.h"
+#include "point_imp.h"
 
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
@@ -91,22 +91,22 @@ const QCStringList ConicImp::properties() const
   return l;
 }
 
-const Property ConicImp::property( uint which, const KigWidget& w ) const
+ObjectImp* ConicImp::property( uint which, const KigWidget& w ) const
 {
   int pnum = 0;
 
   if ( which < CurveImp::numberOfProperties() )
     return CurveImp::property( which, w );
   if ( which == CurveImp::numberOfProperties() + pnum++ )
-    return Property( conicTypeString() );
+    return new StringImp( conicTypeString() );
   else if ( which == CurveImp::numberOfProperties() + pnum++ )
-    return Property( focus1() );
+    return new PointImp( focus1() );
   else if ( which == CurveImp::numberOfProperties() + pnum++ )
-    return Property( focus2() );
+    return new PointImp( focus2() );
   else if ( which == CurveImp::numberOfProperties() + pnum++ )
-    return Property( cartesianEquationString( w ) );
+    return new StringImp( cartesianEquationString( w ) );
   else if ( which == CurveImp::numberOfProperties() + pnum++ )
-    return Property( polarEquationString( w ) );
+    return new StringImp( polarEquationString( w ) );
   else assert( false );
 }
 

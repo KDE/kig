@@ -25,7 +25,6 @@
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
-#include "property.h"
 
 AbstractLineImp::AbstractLineImp( const Coordinate& a, const Coordinate& b )
   : mdata( a, b )
@@ -47,14 +46,14 @@ const uint AbstractLineImp::numberOfProperties() const
   return Parent::numberOfProperties() + 2;
 }
 
-const Property AbstractLineImp::property( uint which, const KigWidget& w ) const
+ObjectImp* AbstractLineImp::property( uint which, const KigWidget& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   if ( which == Parent::numberOfProperties() )
-    return Property( slope() );
+    return new DoubleImp( slope() );
   if ( which == Parent::numberOfProperties() + 1 )
-    return Property( equationString( w ) );
+    return new StringImp( equationString( w ) );
   else assert( false );
 }
 
@@ -95,12 +94,12 @@ const QCStringList SegmentImp::properties() const
   return s;
 }
 
-const Property SegmentImp::property( uint which, const KigWidget& w ) const
+ObjectImp* SegmentImp::property( uint which, const KigWidget& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   if ( which == Parent::numberOfProperties() )
-    return Property( mdata.dir().length() );
+    return new DoubleImp( mdata.dir().length() );
   else assert( false );
 }
 

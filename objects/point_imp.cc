@@ -23,8 +23,6 @@
 #include "../misc/kigpainter.h"
 #include "../misc/i18n.h"
 
-#include "property.h"
-
 PointImp::PointImp( const Coordinate& c )
   : mc( c )
 {
@@ -59,12 +57,12 @@ const QCStringList PointImp::properties() const
   return l;
 }
 
-const Property PointImp::property( uint which, const KigWidget& w ) const
+ObjectImp* PointImp::property( uint which, const KigWidget& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   if ( which == Parent::numberOfProperties() )
-    return Property( mc );
+    return new PointImp( mc );
   else assert( false );
 }
 

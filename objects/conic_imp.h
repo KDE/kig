@@ -43,7 +43,7 @@ public:
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
-  const Property property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigWidget& w ) const;
 
   double getParam( const Coordinate& point ) const;
   const Coordinate getPoint( double param ) const;

@@ -44,7 +44,7 @@ public:
 
   virtual const uint numberOfProperties() const = 0;
   virtual const QCStringList properties() const = 0;
-  virtual const Property property( uint which, const KigWidget& w ) const = 0;
+  virtual ObjectImp* property( uint which, const KigWidget& w ) const = 0;
 
   enum {
     // we guarantee that "more specialized" types are lower in the list

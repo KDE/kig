@@ -18,8 +18,6 @@
 
 #include "bogus_imp.h"
 
-#include "property.h"
-
 #include <qcstring.h>
 #include <qstringlist.h>
 #include <klocale.h>
@@ -53,10 +51,10 @@ const QCStringList BogusImp::properties() const
   return QCStringList();
 }
 
-const Property BogusImp::property( uint, const KigWidget& ) const
+ObjectImp* BogusImp::property( uint, const KigWidget& ) const
 {
   assert( false );
-  return Property( 0 );
+  return new InvalidImp;
 }
 
 DoubleImp::DoubleImp( const double d )

@@ -81,7 +81,7 @@ public:
   bool valid() const;
 
   const uint numberOfProperties() const;
-  const Property property( uint which, const KigWidget& w ) const;
+  ObjectImp* property( uint which, const KigWidget& w ) const;
   const QCStringList properties() const;
 
   // every kind of object can have children, and there is no easier

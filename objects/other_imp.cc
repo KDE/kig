@@ -19,7 +19,6 @@
 #include "other_imp.h"
 
 #include "bogus_imp.h"
-#include "property.h"
 
 #include "../misc/screeninfo.h"
 #include "../misc/common.h"
@@ -85,14 +84,14 @@ const QCStringList AngleImp::properties() const
   return l;
 }
 
-const Property AngleImp::property( uint which, const KigWidget& w ) const
+ObjectImp* AngleImp::property( uint which, const KigWidget& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   if ( which == Parent::numberOfProperties() )
-    return Property( size() );
+    return new DoubleImp( size() );
   else if ( which == Parent::numberOfProperties() + 1 )
-    return Property( size() * 180 / M_PI );
+    return new DoubleImp( size() * 180 / M_PI );
   else assert( false );
 }
 
@@ -155,7 +154,7 @@ const QCStringList VectorImp::properties() const
   return Parent::properties();
 }
 
-const Property VectorImp::property( uint which, const KigWidget& w ) const
+ObjectImp* VectorImp::property( uint which, const KigWidget& w ) const
 {
   return Parent::property( which, w );
 }

@@ -70,7 +70,7 @@ bool TextType::canMove() const
   return true;
 }
 
-void TextType::move( RealObject* ourobj, const Coordinate& from,
+void TextType::move( RealObject* ourobj, const Coordinate&,
                      const Coordinate& dist ) const
 {
   const Objects parents = mparser.parse( ourobj->parents() );
