@@ -140,7 +140,7 @@ void NormalModePopupObjects::doSetColor( int c )
 void NormalModePopupObjects::addColorPopup()
 {
   QPopupMenu* colorpopup = colorMenu( this );
-  connect( colorpopup, SIGNAL( activated( int ) ), this, SLOT( setColor( int ) ) );
+  connect( colorpopup, SIGNAL( activated( int ) ), this, SLOT( doSetColor( int ) ) );
   uint id = insertItem( i18n( "Set Color..." ), colorpopup, colorId );
   assert( id == colorId );
 }
