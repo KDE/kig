@@ -30,6 +30,8 @@ public:
   static const TranslatedType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  bool isTransform() const;
 };
 
 class PointReflectionType
@@ -41,6 +43,8 @@ public:
   static const PointReflectionType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  bool isTransform() const;
 };
 
 class LineReflectionType
@@ -52,6 +56,8 @@ public:
   static const LineReflectionType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  bool isTransform() const;
 };
 
 class RotationType
@@ -63,6 +69,8 @@ public:
   static const RotationType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  bool isTransform() const;
 };
 
 class ScalingOverCenterType
@@ -74,6 +82,8 @@ public:
   static const ScalingOverCenterType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  bool isTransform() const;
 };
 
 class ScalingOverLineType
@@ -85,6 +95,8 @@ public:
   static const ScalingOverLineType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  bool isTransform() const;
 };
 
 class ProjectiveRotationType
@@ -96,6 +108,8 @@ public:
   static const ProjectiveRotationType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  bool isTransform() const;
 };
 
 class CastShadowType
@@ -107,6 +121,8 @@ public:
   static const CastShadowType* instance();
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   int resultId() const;
+
+  bool isTransform() const;
 };
 
 #endif

@@ -61,6 +61,11 @@ public:
   // ObjectImp's, it should return the biggest common id, or
   // ID_AnyImp..
   virtual int resultId() const = 0;
+
+  // is this object type a transformation type.  We want to know this
+  // cause transform types are shown separately in an object's RMB
+  // menu..
+  virtual bool isTransform() const;
 };
 
 /**

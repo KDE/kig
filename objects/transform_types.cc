@@ -342,3 +342,43 @@ int CastShadowType::resultId() const
 {
   return ObjectImp::ID_AnyImp;
 }
+
+bool TranslatedType::isTransform() const
+{
+  return true;
+}
+
+bool PointReflectionType::isTransform() const
+{
+  return true;
+}
+
+bool LineReflectionType::isTransform() const
+{
+  return true;
+}
+
+bool RotationType::isTransform() const
+{
+  return true;
+}
+
+bool ScalingOverCenterType::isTransform() const
+{
+  return true;
+}
+
+bool ScalingOverLineType::isTransform() const
+{
+  return true;
+}
+
+bool ProjectiveRotationType::isTransform() const
+{
+  return true;
+}
+
+bool CastShadowType::isTransform() const
+{
+  return true;
+}

@@ -67,4 +67,9 @@ const ArgParser& ArgparserObjectType::argParser() const
   return margsparser;
 }
 
+bool ObjectType::isTransform() const
+{
+  return false;
+}
+
 
