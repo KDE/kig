@@ -82,11 +82,11 @@ const uint ConicImp::numberOfProperties() const
 const QCStringList ConicImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
-  l << I18N_NOOP( "type" );
-  l << I18N_NOOP( "first-focus" );
-  l << I18N_NOOP( "second-focus" );
-  l << I18N_NOOP( "cartesian-equation" );
-  l << I18N_NOOP( "polar-equation" );
+  l << "type";
+  l << "first-focus";
+  l << "second-focus";
+  l << "cartesian-equation";
+  l << "polar-equation";
   assert( l.size() == ConicImp::numberOfProperties() );
   return l;
 }
