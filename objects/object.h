@@ -117,7 +117,7 @@ public:
   const Objects& children() const { return mchildren; };
   Objects getAllChildren() const;
 
-  Objects parents() const;
+  const Objects& parents() const;
 
   bool has( int typeID ) const;
 

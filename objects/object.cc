@@ -149,7 +149,7 @@ Objects Object::getAllChildren() const
   return tmp;
 }
 
-Objects Object::parents() const
+const Objects& Object::parents() const
 {
   return mparents;
 }
