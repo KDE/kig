@@ -184,7 +184,7 @@ QString EllipseBFFP::sUseText( const Objects& os, const Object* )
   case 2:
     return i18n( "Ellipse through this point" );
   default:
-    return 0;
+    assert( false );
   };
 }
 
@@ -575,6 +575,105 @@ ConicB5P::ConicB5P( const Objects& os )
   };
 }
 
+void ParabolaBTP::calc()
+{
+  Coordinate points[3];
+  int i;
+
+  mvalid = true;
+  for ( Point** ipt = pts; ipt < pts + 3; ++ipt )
+    mvalid &= (*ipt)->valid();
+  if ( mvalid )
+  {
+
+    for (i = 0; i < 3; i++)
+    {
+      points[i] = pts[i]->getCoord();
+    }
+    mequation = calcPolar( calcCartesian ( std::vector<Coordinate>( points, points + 3 ) ) );
+  }
+}
+
+const char* ParabolaBTP::sActionName()
+{
+  return "objects_new_parabolabtp";
+}
+
+Objects ParabolaBTP::getParents() const
+{
+  Objects objs ( pts, pts+3 );
+  return objs;
+}
+
+ParabolaBTP::ParabolaBTP(const ParabolaBTP& c)
+  : Conic( c )
+{
+  for ( int i = 0; i != 3; ++i )
+  {
+    pts[i]=c.pts[i];
+    pts[i]->addChild(this);
+  }
+}
+
+const QString ParabolaBTP::sDescriptiveName()
+{
+  return i18n("Vertical parabola by three points");
+}
+
+const QString ParabolaBTP::sDescription()
+{
+  return i18n( "A vertical parabola constructed through three points" );
+}
+
+Object::WantArgsResult ParabolaBTP::sWantArgs( const Objects& os )
+{
+  uint size = os.size();
+  if ( size > 3 || size < 1 ) return NotGood;
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+    if ( ! (*i)->toPoint() ) return NotGood;
+  return size == 3 ? Complete : NotComplete;
+}
+
+QString ParabolaBTP::sUseText( const Objects&, const Object* )
+{
+  return i18n("Through point");
+}
+
+void ParabolaBTP::sDrawPrelim( KigPainter& p, const Objects& os )
+{
+  std::vector<Coordinate> points;
+
+  uint size = os.size();
+  assert( size > 0 && size < 4 );
+  if ( size < 2 ) return;  // don't drawprelim if too few points
+  for ( uint i = 0; i < size; ++i )
+  {
+    assert( os[i]->toPoint() );
+    points.push_back( os[i]->toPoint()->getCoord() );
+  };
+
+  p.setPen(QPen (Qt::red, 1));
+  //
+  // please note: right now this relies on the calcCartesian placing
+  // the right constraints to get a vertical parabola.  It would be
+  // better to pass some flag to tell calcCartesian to do just that!
+  //
+  p.drawConic( calcPolar( calcCartesian( points ) ) );
+  return;
+}
+
+ParabolaBTP::ParabolaBTP( const Objects& os )
+  : Conic()
+{
+  assert( os.size() == 3 );
+  for ( Objects::const_iterator i = os.begin(); i != os.end(); ++i )
+  {
+    assert( (*i)->toPoint() );
+    (*i)->addChild( this );
+    pts[i-os.begin()] = static_cast<Point*>( *i );
+  };
+}
+
 EllipseBFFP::~EllipseBFFP()
 {
 }
@@ -690,7 +789,7 @@ QString HyperbolaBFFP::sUseText( const Objects& os, const Object* )
   case 2:
     return i18n( "Hyperbola through this point" );
   default:
-    return 0;
+    assert( false );
   };
 }
 
@@ -747,21 +846,57 @@ const ConicPolarEquationData calcConicBFFP( const std::vector<Coordinate>& args,
 
 int Conic::conicType() const
 {
-  /* Maurizio: please fill up :)
-   * This function returns -1 for hyperbola, 1 for ellipses and 0 for
-   * parabola's...
-   */
+  double ec = mequation.ecostheta0;
+  double es = mequation.esintheta0;
+  double esquare = ec*ec + es*es;
+  const double parabolamiss = 1e-3;  // don't know what a good value could be
+
+  if (esquare < 1.0 - parabolamiss) return 1;
+  if (esquare > 1.0 + parabolamiss) return -1;
+
   return 0;
+}
+
+QString Conic::type() const
+{
+  switch (conicType())
+  {
+  case 1:
+    return I18N_NOOP("ellipse");
+
+  case -1:
+    return I18N_NOOP("hyperbola");
+
+  case 0:
+    return I18N_NOOP("parabola");
+
+  default:
+    assert( false );
+  }
 }
 
 const ConicCartesianEquationData calcCartesianEquationFromPolar( const ConicPolarEquationData& polardata )
 {
-  /* Maurizio: please fill up :)
-   * This function returns the cartesian equation for a conic given
-   * the polar one..
-   */
-  return ConicCartesianEquationData( 0, 0, 0, 0, 0, 0 );
+  double ec = polardata.ecostheta0;
+  double es = polardata.esintheta0;
+  double p = polardata.pdimen;
+  double fx = polardata.focus1.x;
+  double fy = polardata.focus1.x;
+
+  double a = 1 - ec*ec;
+  double b = 1 - es*es;
+  double c = - 2*ec*es;
+  double d = - 2*p*ec;
+  double e = - 2*p*es;
+  double f = - p*p;
+
+  f += a*fx*fx + b*fy*fy + c*fx*fy - d*fx - e*fy;
+  d -= 2*a*fx + c*fy;
+  e -= 2*b*fy + c*fx;
+
+  return ConicCartesianEquationData( a, b, c, d, e, f );
 };
+
 ConicCartesianEquationData Conic::cartesianEquationData() const
 {
   return calcCartesianEquationFromPolar( mequation );
@@ -777,23 +912,41 @@ Coordinate Conic::focus1() const
   return mequation.focus1;
 }
 
+Coordinate Conic::focus2() const
+{
+  double ec = mequation.ecostheta0;
+  double es = mequation.esintheta0;
+
+  double fact = 2*mequation.pdimen/(1 - ec*ec - es*es);
+
+  return mequation.focus1 + fact*Coordinate(ec, es);
+}
+
 const uint Conic::numberOfProperties() const
 {
-  return Curve::numberOfProperties() + 1;
+  return Curve::numberOfProperties() + 3;
 }
 
 const Property Conic::property( uint which ) const
 {
+  int pnum = 0;
+
   if ( which < Curve::numberOfProperties() ) return Curve::property( which );
-  if ( which == Curve::numberOfProperties() )
+  if ( which == Curve::numberOfProperties() + pnum++ )
+    return Property( type() );
+  else if ( which == Curve::numberOfProperties() + pnum++ )
     return Property( focus1() );
+  else if ( which == Curve::numberOfProperties() + pnum++ )
+    return Property( focus2() );
   else assert( false );
 }
 
 const QCStringList Conic::properties() const
 {
   QCStringList l = Curve::properties();
+  l << I18N_NOOP( "Type" );
   l << I18N_NOOP( "First focus" );
+  l << I18N_NOOP( "Second focus" );
   return l;
 }
 

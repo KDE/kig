@@ -370,8 +370,6 @@ QRect KigPainter::toScreen( const Rect r ) const
 void KigPainter::drawSimpleText( const Coordinate& c, const QString s )
 {
   int tf = AlignLeft | AlignTop | DontClip | WordBreak;
-  setPen(QPen(Qt::blue, 1, SolidLine));
-  setBrush(Qt::NoBrush);
   drawText( c, s, tf);
 }
 

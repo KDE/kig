@@ -107,9 +107,10 @@ void TextLabel::setParams( const prop_map& m )
   };
 }
 
-void TextLabel::draw(KigPainter& p, bool ) const
+void TextLabel::draw(KigPainter& p, bool ss ) const
 {
-  p.setColor( mColor );
+  p.setColor( selected && ss ? Qt::red : mColor );
+  p.setBrush( Qt::NoBrush );
   p.drawSimpleText( mcoord, mcurtext );
   mrwdoi = p.simpleBoundingRect( mcoord, mtext );
 }
@@ -188,7 +189,7 @@ const QCString TextLabel::vIconFileName() const
 
 const QCString TextLabel::sIconFileName()
 {
-  return 0;
+  return "text";
 }
 
 const char* TextLabel::sActionName()

@@ -93,10 +93,12 @@ class Conic
    * parabola's...
    */
   int conicType() const;
+  QString type() const;
 
   ConicCartesianEquationData cartesianEquationData() const;
   ConicPolarEquationData polarEquationData() const;
   Coordinate focus1() const;
+  Coordinate focus2() const;
 
   virtual const uint numberOfProperties() const;
   virtual const Property property( uint which ) const;
@@ -253,6 +255,40 @@ public:
 
 protected:
   Point* pts[5];
+
+  void calc();
+};
+
+class ParabolaBTP
+  : public Conic
+{
+public:
+  ParabolaBTP( const Objects& os );
+  ~ParabolaBTP() {};
+  ParabolaBTP(const ParabolaBTP& c);
+  ParabolaBTP* copy() { return new ParabolaBTP(*this); };
+
+  const QCString vFullTypeName() const { return sFullTypeName(); };
+  static const QCString sFullTypeName() { return "ParabolaBTP"; };
+  const QString vDescriptiveName() const { return sDescriptiveName(); };
+  static const QString sDescriptiveName();
+  const QString vDescription() const { return sDescription(); };
+  static const QString sDescription();
+  const QCString vIconFileName() const { return sIconFileName(); };
+  static const QCString sIconFileName() { return "parabolabtp"; };
+  const int vShortCut() const { return sShortCut(); };
+  static const int sShortCut() { return 0; };
+  static const char* sActionName();
+
+  // passing arguments
+  static Object::WantArgsResult sWantArgs( const Objects& os );
+  static QString sUseText( const Objects& os, const Object* );
+  static void sDrawPrelim( KigPainter& p, const Objects& os );
+
+  Objects getParents() const;
+
+protected:
+  Point* pts[3];
 
   void calc();
 };

@@ -56,6 +56,7 @@
 	<Action name="objects_new_ellipsebffp" />
 	<Action name="objects_new_hyperbolabffp" />
 	<Action name="objects_new_conicb5p" />
+	<Action name="objects_new_parabolabtp" />
 	<ActionList name="user_conic_types" />
     </Menu>
     <Menu name="new_other">
@@ -113,6 +114,7 @@
   <Action name="objects_new_ellipsebffp" />
   <Action name="objects_new_hyperbolabffp" />
   <Action name="objects_new_conicb5p" />
+  <Action name="objects_new_parabolabtp" />
   <Action name="user_conic_types" />
 </Toolbar>    
 <ToolBar name="rest_toolbar"><text>Rest</text>
