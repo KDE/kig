@@ -247,6 +247,7 @@ void Angle::draw( KigPainter& p, bool ss ) const
 
   QColor color = selected && ss ? Qt::red : mColor;
   p.setPen( QPen( color, 1 ) );
+  p.setWidth ( mWidth );
   p.setBrush( QBrush( color, Qt::SolidPattern ) );
   int startangle = static_cast<int>( mstartangle * 2880. / M_PI );
   int anglelength = static_cast<int>( manglelength * 2880 / M_PI );

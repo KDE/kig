@@ -23,49 +23,13 @@
 #include "../misc/i18n.h"
 #include "../kig/kig_view.h"
 
-#include <kiconloader.h>
 #include <qpopupmenu.h>
 
 Curve::Curve()
-  : mWidth( 1 )
 {
 };
 
 bool Curve::isa( int type ) const
 {
   return type == CurveT ? true : Parent::isa( type );
-}
-
-void Curve::addActions( NormalModePopupObjects& p )
-{
-  bool ok = false;
-  if ( this->toAbstractLine() ) ok = true;
-  if ( this->toConic() ) ok = true;
-//  if ( this->toCircle() ) ok = false;
-  if ( ! ok ) return;
-
-  QPopupMenu* pop = new QPopupMenu( &p, "curve virtual popup" );
-  uint id;
-  id = pop->insertItem( UserIcon( "line1"), 1 );
-  assert ( id == 1 );
-  id = pop->insertItem( UserIcon( "line2"), 2 );
-  assert ( id == 2 );
-  id = pop->insertItem( UserIcon( "line3"), 3 );
-  assert ( id == 3 );
-  id = pop->insertItem( UserIcon( "line4"), 4 );
-  assert ( id == 4 );
-  id = pop->insertItem( UserIcon( "line5"), 5 );
-  assert ( id == 5 );
-// CHECK...
-  p.addPopupAction( 10, i18n( "Set Width" ), pop );
-}
-
-void Curve::doPopupAction( int popupid, int actionid, KigDocument*, KigWidget* w, NormalMode* m, const Coordinate& )
-{
-  if ( popupid == 10 )
-  {
-    mWidth = actionid;
-    m->clearSelection();
-    w->redrawScreen();
-  };
 }

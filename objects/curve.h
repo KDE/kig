@@ -42,12 +42,7 @@ public:
   // Note that it should also do something reasonable when p is not on
   // the curve.
   virtual double getParam ( const Coordinate& p ) const = 0;
-//  void setWidth( const int w ) { mWidth = w; };
 
-  virtual void addActions( NormalModePopupObjects& );
-  virtual void doPopupAction( int popupid, int actionid, KigDocument* d, KigWidget* w, NormalMode* m, const Coordinate& );
-protected:
-  int mWidth;
 };
 
 #endif // KIG_OBJECTS_CURVE_H

@@ -37,11 +37,13 @@
 #include "../misc/type.h"
 #include "../modes/constructing.h"
 #include "../modes/popup.h"
+#include "../modes/normal.h"
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
 #include <klocale.h>
+#include <kiconloader.h>
 #include <qpopupmenu.h>
 #include <qcursor.h>
 
@@ -50,7 +52,8 @@ myvector<Type*> Object::susertypes;
 Types Object::stypes;
 
 Object::Object()
-  : mColor( Qt::blue ), selected(false), mshown (true), mvalid(true)
+  : mColor( Qt::blue ), mWidth( 1 ), selected(false), mshown (true), 
+    mvalid(true)
 {
 };
 
@@ -261,6 +264,28 @@ void Object::addActions( NormalModePopupObjects& m )
   };
   m.addPopupAction( 3850, i18n( "Show The" ), pm );
 
+  bool ok = false;
+  if ( this->toAbstractLine() ) ok = true;
+  if ( this->toConic() ) ok = true;
+  if ( this->toCubic() ) ok = true;
+  if ( this->toVector() ) ok = true;
+  if ( this->toAngle() ) ok = true;
+  if ( ok )
+  {
+    pm = new QPopupMenu( &m, "curve virtual popup" );
+    uint id = pm->insertItem( UserIcon( "line1"), 1 );
+    assert ( id == 1 );
+    id = pm->insertItem( UserIcon( "line2"), 2 );
+    assert ( id == 2 );
+    id = pm->insertItem( UserIcon( "line3"), 3 );
+    assert ( id == 3 );
+    id = pm->insertItem( UserIcon( "line4"), 4 );
+    assert ( id == 4 );
+    id = pm->insertItem( UserIcon( "line5"), 5 );
+    assert ( id == 5 );
+    m.addPopupAction( 3851, i18n( "Set Width" ), pm );
+  }
+
   return;
 }
 
@@ -269,7 +294,7 @@ void Object::doNormalAction( int, KigDocument*, KigWidget*, NormalMode*, const C
   return;
 }
 
-void Object::doPopupAction( int popupid, int actionid, KigDocument* doc, KigWidget* w, NormalMode*, const Coordinate& cp )
+void Object::doPopupAction( int popupid, int actionid, KigDocument* doc, KigWidget* w, NormalMode* m, const Coordinate& cp )
 {
   if( popupid == 3849 )
   {
@@ -288,6 +313,12 @@ void Object::doPopupAction( int popupid, int actionid, KigDocument* doc, KigWidg
     Object* o = new TextLabel( QString::fromLatin1( "%1" ), cp, props );
     o->calcForWidget( *w );
     doc->addObject( o );
+    w->redrawScreen();
+  }
+  else if ( popupid == 3851 )   // Set Width
+  {
+    mWidth = actionid;
+    m->clearSelection();
     w->redrawScreen();
   }
   else assert( false );

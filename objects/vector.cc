@@ -124,6 +124,7 @@ void Vector::draw( KigPainter& p, bool ss ) const
   Coordinate a = p1->getCoord();
   Coordinate b = p2->getCoord();
   p.setPen( QPen( selected && ss ? Qt::red : mColor, 1 ));
+  p.setWidth ( mWidth );
   drawVector( p, a, b );
 };
 

@@ -675,6 +675,9 @@ void KigPainter::drawCubic( const CubicCartesianEquationData& data )
   // we manage our own overlay
   bool tNeedOverlay = mNeedOverlay;
   mNeedOverlay = false;
+  QPen pen = mP.pen();
+  pen.setCapStyle( Qt::RoundCap );
+  mP.setPen( pen );
   Rect border = window();
   Rect overlay;
 
@@ -703,6 +706,8 @@ void KigPainter::drawCubic( const CubicCartesianEquationData& data )
   }
   if ( tNeedOverlay ) mOverlay.push_back( toScreen( overlay ) );
   mNeedOverlay = tNeedOverlay;
+  pen.setCapStyle( Qt::FlatCap );
+  mP.setPen( pen );
 }
 
 void KigPainter::drawLine( const LineData& d )

@@ -320,6 +320,7 @@ public:
 
 protected:
   QColor mColor;
+  int mWidth;
 public:
   QColor color() const { return mColor; };
   void setColor( const QColor c ) { mColor = c; };

@@ -79,6 +79,7 @@ bool Cubic::contains (const Coordinate& o, const ScreenInfo& si ) const
 void Cubic::draw (KigPainter& p, bool ss) const
 {
   p.setPen(QPen ( selected && ss ? Qt::red : mColor, 1));
+  p.setWidth ( mWidth );
   p.setBrush( Qt::NoBrush );
 
   p.drawCubic ( cequation );
