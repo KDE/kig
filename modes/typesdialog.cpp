@@ -113,7 +113,7 @@ void TypesDialog::deleteType()
 	(this,
 	 i18n("Are you sure you want to delete the type named \"%1\"?").arg(selectedTypes.front()->action->descriptiveName()),
 	 i18n("Are you sure?"),
-	 i18n("Continue"),
+	 KStdGuiItem::cont(),
 	 "deleteTypeWarning") ==KMessageBox::Cancel ) return;
   }
   else
@@ -121,7 +121,7 @@ void TypesDialog::deleteType()
 	(this,
 	 i18n("Are you sure you want to delete these %1 types?").arg(selectedTypes.size()),
 	 i18n("Are you sure?"),
-	 i18n("Continue"),
+	 KStdGuiItem::cont(),
 	 "deleteTypeWarning") == KMessageBox::Cancel ) return;
   for ( std::vector<QListViewItem*>::iterator i = items.begin(); i != items.end(); ++i)
   {
