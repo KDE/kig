@@ -3,9 +3,9 @@ SUBDIRS = objects misc modes icons filters examples kig mimetypes macros
 kde_module_LTLIBRARIES = libkigpart.la
 libkigpart_la_SOURCES = dummy.cpp
 libkigpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
-libkigpart_la_LIBADD  = $(LIB_QT) $(LIB_KPARTS) $(LIB_KFILE) \
+libkigpart_la_LIBADD  = $(LIB_KPARTS) \
 	misc/libmisc.la objects/libobjects.la filters/libfilters.la \
-	modes/libmodes.la kig/libkigparttemp.la -lstdc++
+	modes/libmodes.la kig/libkigparttemp.la 
 
 messages: rc.cpp
 	$(EXTRACTRC) *.rc */*.rc >> rc.cpp
