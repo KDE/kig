@@ -59,13 +59,13 @@ void EditType::okSlot()
   bool namechanged = false;
   bool descchanged = false;
   bool iconchanged = false;
-  QString tmp = editName->originalText();
+  QString tmp = editName->text();
   if ( tmp != mname )
   {
     mname = tmp;
     namechanged = true;
   }
-  tmp = editDescription->originalText();
+  tmp = editDescription->text();
   if ( tmp != mdesc )
   {
     mdesc = tmp;
