@@ -4,6 +4,8 @@
 	arc
 	ellipse
 - locuses -> cf. KSeg
+	--> this is implemented (objects/locus.cpp), but can still be
+            improved quite a lot...
 - koffice support !
 - i had an idea for speeding up drawing, the idea is that we
 extend qpainter to support for saving a sequence of bits:
