@@ -1,29 +1,33 @@
-- transformations like in KSeg...
-- rework Macro support into something simpler: make it into types that
-  simply add a lot of normal ( as in: builtin ) objects instead of one
-  ugly object of the Macro class ( which, erm.. sucks :)
+simple:
+- get rid of segmentOverlay warnings on startup..
+- implement the helpSlot()'s in the wizards..
+- change resizeEvent to not recenter the screen..
+
+harder:
+- filters: more input filters ( get cabri to work somewhat, kseg
+  support... )  and output filters...
 - implement Circle by center and radius
-- rearrange some of the icons to match KGeo's appearance..
-- figure out some cool way to "attach" a textlabel to an object..
-- move stillPix into movingMode, so the other modes won't suffer from
-  its overhead...  
+- printing... (cf. the kdeprint tutorial on printing.kde.org ...
 - Finally fix the move dependencies... i am thinking of making
   Object::startMove() into Object::startMove( Objects& ).  Objects
   could decide on what objects are already moving how they will move,
   and they add themselves and other things they will be moving to the
   Objects variable.  This should finally fix the move dependencies, i
   think... 
-- printing... (cf. the kdeprint tutorial on printing.kde.org ...
+- move stillPix into movingMode, so the other modes won't suffer from
+  its overhead...  
+
+hard :
+- transformations like in KSeg...
+- rework Macro support into something simpler: make it into types that
+  simply add a lot of normal ( as in: builtin ) objects instead of one
+  ugly object of the Macro class ( which, erm.. sucks :)
+- rearrange some of the icons to match KGeo's appearance..
+- figure out some cool way to "attach" a textlabel to an object..
 - koffice support ?
+
+future ?
 - there should be a way to link a figure to a (html?) file containing
   exercises.  Teachers would be able to create exercises for Kig.  I'm
-  thinking of doing this with HTML (& KHTML) + Scripting ( but this is
+  thinking of doing this with HTML (& KHTML) + scripting ( but this is
   _distant_ future.. )  
-- think about what to do with coincident points..
-- filters: more input filters ( get cabri to work somewhat, kseg
-  support... )  and output filters...
-- Add a CollectionObject: this object holds a list of subobjects.  The
-  user sees this in a way that right-clicking a selection shows a rmb
-  option group, and rmb'ing a collectionObject shows a split
-  option...  There are a few behavioural problems with this; I'm still
-  thinking about what it would take to implement this...
