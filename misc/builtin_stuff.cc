@@ -37,6 +37,7 @@
 #include "../objects/point_type.h"
 #include "../objects/other_imp.h"
 #include "../objects/line_imp.h"
+#include "../objects/text_type.h"
 
 void setupBuiltinStuff()
 {
@@ -327,6 +328,30 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline" ) );
 
     c = new SimpleObjectTypeConstructor(
+      HarmonicHomologyType::instance(),
+      I18N_NOOP( "Harmonic Homology" ),
+      I18N_NOOP( "The harmonic homology with a given center and a given axis (this is a projective transformation)" ),
+      "harmonichomology" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_harmonichomology" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      AffinityGI3PType::instance(),
+      I18N_NOOP( "Generic affinity" ),
+      I18N_NOOP( "The unique affinity that maps 3 given points onto 3 given points" ),
+      "affinitygi3p" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_affinitygi3p" ) );
+
+    c = new SimpleObjectTypeConstructor(
+      ProjectivityGI4PType::instance(),
+      I18N_NOOP( "Generic projectivity" ),
+      I18N_NOOP( "The unique projectivity that maps 4 given points onto 4 given points" ),
+      "projectivitygi4p" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_projectivitygi4p" ) );
+
+    c = new SimpleObjectTypeConstructor(
       CastShadowType::instance(),
       I18N_NOOP( "Draw Projective Shadow" ),
       I18N_NOOP( "The shadow of an object with a given light source and projection plane (indicated by a line)" ),
@@ -366,6 +391,13 @@ void setupBuiltinStuff()
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );
     actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );
+
+    // are two lines parallel?
+    c = new SimpleObjectTypeConstructor(
+      TextAreParallelType::instance(), I18N_NOOP( "Parallel?" ),
+      I18N_NOOP( "Test if two lines are parallel"), "parallel?" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_areparallel" ) );
 
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
     actions->add( new NewScriptAction( "objects_new_script_object" ) );

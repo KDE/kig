@@ -23,6 +23,7 @@
 #define KIG_MISC_KIGTRANSFORM_H
 
 #include "coordinate.h"
+#include <vector>
 
 class LineData;
 
@@ -106,6 +107,29 @@ public:
    * \note This equals scaling( -1, l );
    */
   static const Transformation lineReflection( const LineData& l );
+  /**
+   * Harmonic Homology. Returns a Transformation that transforms points in
+   * such a way that it appears to cast a shadow, given a certain
+   * light source (center), and a line (axis) indicating a plane.
+   */
+  static const Transformation harmonicHomology( const Coordinate& center,
+                                          const LineData& axis );
+  /**
+   * Affinity given the image of 3 points. Returns the unique
+   * affinity that transforms 3 given points into 3 given points.
+   */
+  static const Transformation affinityGI3P(
+                const std::vector<Coordinate>& FromPoints,
+                const std::vector<Coordinate>& ToPoints,
+                bool& valid );
+  /**
+   * Projectivity given the image of 4 points. Returns the unique
+   * projectivity that transforms 4 given points into 4 given points.
+   */
+  static const Transformation projectivityGI4P(
+                const std::vector<Coordinate>& FromPoints,
+                const std::vector<Coordinate>& ToPoints,
+                bool& valid );
   /**
    * Cast Shadow.  Returns a Transformation that transforms points in
    * such a way that it appears to cast a shadow, given a certain

@@ -329,6 +329,211 @@ const Transformation Transformation::scaling( double factor, const LineData& l )
   return ret;
 }
 
+const Transformation Transformation::harmonicHomology(
+  const Coordinate& center, const LineData& axis )
+{
+  // this is a well known projective transformation.  We find it by first
+  // computing the homogeneous equation of the axis ax + by + cz = 0
+  // then a straightforward computation shows that the 3x3 matrix describing
+  // the transformation is of the form:
+  //
+  // (r . C) Id - 2 (C tensor r)
+  //
+  // where r = [c, a, b], C = [1, Cx, Cy], Cx and Cy are the coordinates of
+  // the center, '.' denotes the scalar product, Id is the identity matrix, 
+  // 'tensor' is the tensor product producing a 3x3 matrix.
+  //
+  // note: here we decide to use coordinate '0' in place of the third coordinate
+  // in homogeneous notation; e.g. C = [1, cx, cy]
+
+  Coordinate pointa = axis.a;
+  Coordinate pointb = axis.b;
+
+  double a = pointa.y - pointb.y;
+  double b = pointb.x - pointa.x;
+  double c = pointa.x*pointb.y - pointa.y*pointb.x;
+
+  double cx = center.x;
+  double cy = center.y;
+
+  double scalprod = a*cx + b*cy + c;
+  scalprod *= 0.5;
+  Transformation ret;
+
+  ret.mdata[0][0]  = c - scalprod;
+  ret.mdata[0][1]  = a;
+  ret.mdata[0][2]  = b;
+
+  ret.mdata[1][0]  = c*cx;
+  ret.mdata[1][1]  = a*cx - scalprod;
+  ret.mdata[1][2]  = b*cx;
+
+  ret.mdata[2][0]  = c*cy;
+  ret.mdata[2][1]  = a*cy;
+  ret.mdata[2][2]  = b*cy - scalprod;
+
+  ret.mIsHomothety = false;
+  return ret;
+}
+
+const Transformation Transformation::affinityGI3P(
+  const std::vector<Coordinate>& FromPoints,
+  const std::vector<Coordinate>& ToPoints,
+  bool& valid )
+{
+  // construct the (generically) unique affinity that transforms 3 given
+  // point into 3 other given points; i.e. it depends on the coordinates of
+  // a total of 6 points.  This actually amounts in solving a 6x6 linear
+  // system to find the entries of a 2x2 linear transformation matrix T
+  // and of a translation vector t.  
+  // If Pi denotes one of the starting points and Qi the corresponding
+  // final position we actually have to solve: Qi = t + T Pi, for i=1,2,3
+  // (each one is a vector equation, so that it really gives 2 equations).
+  // In our context T and t are used to build a 3x3 projective transformation 
+  // as follows:
+  //
+  //    [  1  0   0  ]
+  //    [ t1 T11 T12 ]
+  //    [ t2 T21 T22 ]
+  //
+  // In order to take advantage of the two functions "GaussianElimination"
+  // and "BackwardSubstitution", which are specifically aimed at solving
+  // homogeneous underdetermined linear systems, we just add a further
+  // unknown m and solve for t + T Pi - m Qi = 0.  Since our functions
+  // returns a nonzero solution we shall have a nonzero 'm' in the end and
+  // can build the 3x3 matrix as follows:
+  //
+  //    [  m  0   0  ]
+  //    [ t1 T11 T12 ]
+  //    [ t2 T21 T22 ]
+  //
+  // we order the unknowns as follows: m, t1, t2, T11, T12, T21, T22
+
+  double row0[7], row1[7], row2[7], row3[7], row4[7], row5[7];
+
+  double *matrix[6] = {row0, row1, row2, row3, row4, row5};
+
+  double solution[7];
+  int scambio[7];
+
+  assert (FromPoints.size() == 3);
+  assert (ToPoints.size() == 3);
+
+  // fill in the matrix elements
+  for ( int i = 0; i < 6; i++ )
+  {
+    for ( int j = 0; j < 7; j++ )
+    {
+      matrix[i][j] = 0.0;
+    }
+  }
+
+  for ( int i = 0; i < 3; i++ )
+  {
+    Coordinate p = FromPoints[i];
+    Coordinate q = ToPoints[i];
+    matrix[i][0] = -q.x;
+    matrix[i][1] = 1.0;
+    matrix[i][3] = p.x;
+    matrix[i][4] = p.y;
+    matrix[i+3][0] = -q.y;
+    matrix[i+3][2] = 1.0;
+    matrix[i+3][5] = p.x;
+    matrix[i+3][6] = p.y;
+  }
+
+  Transformation ret;
+  valid = true;
+  if ( ! GaussianElimination( matrix, 6, 7, scambio ) )
+    { valid = false; return ret; }
+
+  // fine della fase di eliminazione
+  BackwardSubstitution( matrix, 6, 7, scambio, solution );
+
+  // now we can build the 3x3 transformation matrix; remember that
+  // unknown 0 is the multiplicator 'm'
+
+  ret.mdata[0][0] = solution[0];
+  ret.mdata[0][1] = ret.mdata[0][2] = 0.0;
+  ret.mdata[1][0] = solution[1];
+  ret.mdata[2][0] = solution[2];
+  ret.mdata[1][1] = solution[3];
+  ret.mdata[1][2] = solution[4];
+  ret.mdata[2][1] = solution[5];
+  ret.mdata[2][2] = solution[6];
+
+  ret.mIsHomothety = false;
+  return ret;
+}
+
+const Transformation Transformation::projectivityGI4P(
+  const std::vector<Coordinate>& FromPoints,
+  const std::vector<Coordinate>& ToPoints,
+  bool& valid )
+{
+  // construct the (generically) unique projectivity that transforms 4 given
+  // point into 4 other given points; i.e. it depends on the coordinates of
+  // a total of 8 points.  This actually amounts in solving an underdetermined
+  // homogeneous linear system.
+
+  double 
+    row0[13], row1[13], row2[13], row3[13], row4[13], row5[13], row6[13], row7[13],
+    row8[13], row9[13], row10[13], row11[13];
+
+  double *matrix[12] = {row0, row1, row2, row3, row4, row5, row6, row7, 
+                        row8, row9, row10, row11};
+
+  double solution[13];
+  int scambio[13];
+
+  assert (FromPoints.size() == 4);
+  assert (ToPoints.size() == 4);
+
+  // fill in the matrix elements
+  for ( int i = 0; i < 12; i++ )
+  {
+    for ( int j = 0; j < 13; j++ )
+    {
+      matrix[i][j] = 0.0;
+    }
+  }
+
+  for ( int i = 0; i < 4; i++ )
+  {
+    Coordinate p = FromPoints[i];
+    Coordinate q = ToPoints[i];
+    matrix[i][0] = matrix[4+i][3] = matrix[8+i][6] = 1.0;
+    matrix[i][1] = matrix[4+i][4] = matrix[8+i][7] = p.x;
+    matrix[i][2] = matrix[4+i][5] = matrix[8+i][8] = p.y;
+    matrix[i][9+i] = -1.0;
+    matrix[4+i][9+i] = -q.x;
+    matrix[8+i][9+i] = -q.y;
+  }
+
+  Transformation ret;
+  valid = true;
+  if ( ! GaussianElimination( matrix, 12, 13, scambio ) )
+    { valid = false; return ret; }
+
+  // fine della fase di eliminazione
+  BackwardSubstitution( matrix, 12, 13, scambio, solution );
+
+  // now we can build the 3x3 transformation matrix; remember that
+  // unknowns from 9 to 13 are just multiplicators that we don't need here
+
+  int k = 0;  
+  for ( int i = 0; i < 3; i++ )
+  {
+    for ( int j = 0; j < 3; j++ )
+    {
+      ret.mdata[i][j]  = solution[k++];
+    }
+  }
+
+  ret.mIsHomothety = false;
+  return ret;
+}
+
 const Transformation Transformation::castShadow(
   const Coordinate& lightsrc, const LineData& l )
 {

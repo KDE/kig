@@ -112,6 +112,45 @@ public:
   bool isTransform() const;
 };
 
+class HarmonicHomologyType
+  : public ArgsParserObjectType
+{
+  HarmonicHomologyType();
+  ~HarmonicHomologyType();
+public:
+  static const HarmonicHomologyType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+  bool isTransform() const;
+};
+
+class AffinityGI3PType
+  : public ArgsParserObjectType
+{
+  AffinityGI3PType();
+  ~AffinityGI3PType();
+public:
+  static const AffinityGI3PType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+  bool isTransform() const;
+};
+
+class ProjectivityGI4PType
+  : public ArgsParserObjectType
+{
+  ProjectivityGI4PType();
+  ~ProjectivityGI4PType();
+public:
+  static const ProjectivityGI4PType* instance();
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+
+  bool isTransform() const;
+};
+
 class CastShadowType
   : public ArgsParserObjectType
 {

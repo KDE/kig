@@ -251,6 +251,137 @@ ObjectImp* ProjectiveRotationType::calc( const Args& args, const KigDocument& ) 
     Transformation::projectiveRotation( alpha, dir, c1 ) );
 }
 
+static const ArgsParser::spec argsspecHarmonicHomology[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Harmonic Homology of this object" ) },
+  { PointImp::stype(), I18N_NOOP( "Harmonic Homology with this center" ) },
+  { AbstractLineImp::stype(),
+    I18N_NOOP( "Harmonic Homology with this axis" ) }
+};
+
+HarmonicHomologyType::HarmonicHomologyType()
+  : ArgsParserObjectType( "HarmonicHomology", argsspecHarmonicHomology, 3 )
+{
+}
+
+HarmonicHomologyType::~HarmonicHomologyType()
+{
+}
+
+const HarmonicHomologyType* HarmonicHomologyType::instance()
+{
+  static const HarmonicHomologyType t;
+  return &t;
+}
+
+ObjectImp* HarmonicHomologyType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
+  LineData axis = static_cast<const AbstractLineImp*>( args[2] )->data();
+  return args[0]->transform(
+    Transformation::harmonicHomology( center, axis ) );
+}
+
+static const ArgsParser::spec argsspecAffinityGI3P[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Generic affinity of this object" ) },
+  { PointImp::stype(), I18N_NOOP( "First of 3 starting points" ) },
+  { PointImp::stype(), I18N_NOOP( "Second of 3 starting points" ) },
+  { PointImp::stype(), I18N_NOOP( "Third of 3 starting points" ) },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of first point" ) },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of second point" ) },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of third point" ) },
+};
+
+AffinityGI3PType::AffinityGI3PType()
+  : ArgsParserObjectType( "AffinityGI3P", argsspecAffinityGI3P, 7 )
+{
+}
+
+AffinityGI3PType::~AffinityGI3PType()
+{
+}
+
+const AffinityGI3PType* AffinityGI3PType::instance()
+{
+  static const AffinityGI3PType t;
+  return &t;
+}
+
+ObjectImp* AffinityGI3PType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  std::vector<Coordinate> frompoints;
+  std::vector<Coordinate> topoints;
+  for ( uint i = 0; i < 3; ++i )
+  {
+    frompoints.push_back( 
+           static_cast<const PointImp*>( args[i+1] )->coordinate() );
+    topoints.push_back( 
+           static_cast<const PointImp*>( args[i+4] )->coordinate() );
+  }
+
+  bool valid = true;
+  Transformation t = Transformation::affinityGI3P( frompoints, topoints,
+        valid );
+
+  if (valid == false) return new InvalidImp;
+  return args[0]->transform( t );
+}
+
+static const ArgsParser::spec argsspecProjectivityGI4P[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Generic projectivity of this object" ) },
+  { PointImp::stype(), I18N_NOOP( "First of 4 starting points" ) },
+  { PointImp::stype(), I18N_NOOP( "Second of 4 starting points" ) },
+  { PointImp::stype(), I18N_NOOP( "Third of 4 starting points" ) },
+  { PointImp::stype(), I18N_NOOP( "Fourth of 4 starting points" ) },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of first point" ) },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of second point" ) },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of third point" ) },
+  { PointImp::stype(), I18N_NOOP( "Transformed position of fourth point" ) }
+};
+
+ProjectivityGI4PType::ProjectivityGI4PType()
+  : ArgsParserObjectType( "ProjectivityGI4P", argsspecProjectivityGI4P, 9 )
+{
+}
+
+ProjectivityGI4PType::~ProjectivityGI4PType()
+{
+}
+
+const ProjectivityGI4PType* ProjectivityGI4PType::instance()
+{
+  static const ProjectivityGI4PType t;
+  return &t;
+}
+
+ObjectImp* ProjectivityGI4PType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  std::vector<Coordinate> frompoints;
+  std::vector<Coordinate> topoints;
+  for ( uint i = 0; i < 4; ++i )
+  {
+    frompoints.push_back( 
+           static_cast<const PointImp*>( args[i+1] )->coordinate() );
+    topoints.push_back( 
+           static_cast<const PointImp*>( args[i+5] )->coordinate() );
+  }
+
+  bool valid = true;
+  Transformation t = Transformation::projectivityGI4P( frompoints, topoints,
+        valid );
+
+  if (valid == false) return new InvalidImp;
+  return args[0]->transform( t );
+}
+
 static const ArgsParser::spec argsspecCastShadow[] =
 {
   { ObjectImp::stype(), I18N_NOOP( "Cast the shadow of this object" ) },
@@ -319,6 +450,21 @@ const ObjectImpType* ProjectiveRotationType::resultId() const
   return ObjectImp::stype();
 }
 
+const ObjectImpType* HarmonicHomologyType::resultId() const
+{
+  return ObjectImp::stype();
+}
+
+const ObjectImpType* AffinityGI3PType::resultId() const
+{
+  return ObjectImp::stype();
+}
+
+const ObjectImpType* ProjectivityGI4PType::resultId() const
+{
+  return ObjectImp::stype();
+}
+
 const ObjectImpType* CastShadowType::resultId() const
 {
   return ObjectImp::stype();
@@ -355,6 +501,21 @@ bool ScalingOverLineType::isTransform() const
 }
 
 bool ProjectiveRotationType::isTransform() const
+{
+  return true;
+}
+
+bool HarmonicHomologyType::isTransform() const
+{
+  return true;
+}
+
+bool AffinityGI3PType::isTransform() const
+{
+  return true;
+}
+
+bool ProjectivityGI4PType::isTransform() const
 {
   return true;
 }
