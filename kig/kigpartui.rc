@@ -111,7 +111,7 @@
   <Action name="cancel_construction"/>
   <Action name="macro_action"/>
 </Toolbar>
-<Toolbar name="points_toolbar"><text>Points</text>
+<Toolbar name="points_toolbar" position="left"><text>Points</text>
   <Action name="objects_new_normalpoint" />
   <Action name="objects_new_point_xy" />
   <Action name="objects_new_intersection" />
@@ -121,7 +121,7 @@
   <Action name="objects_new_translatedpoint" />
   <ActionList name="user_point_types" />
 </Toolbar>
-<Toolbar name="line_toolbar"><text>Lines</text>
+<Toolbar name="line_toolbar" position="left"><text>Lines</text>
   <Action name="objects_new_segment" />
   <Action name="objects_new_linettp" />
   <Action name="objects_new_vector" />
@@ -131,12 +131,11 @@
   <ActionList name="user_line_types" />
   <ActionList name="user_segment_types" />
 </Toolbar>
-<Toolbar name="circle_toolbar"><text>Circles</text>
+<Toolbar name="circle_toolbar" position="left"><text>Circles</text>
   <Action name="objects_new_circlebcp" />
   <Action name="objects_new_circlebtp" />
-  <Action name="objects_new_lineradical" />
 </Toolbar>  
-<Toolbar name="conic_toolbar"><text>Conics</text>
+<Toolbar name="conic_toolbar" position="left"><text>Conics</text>
   <Action name="objects_new_ellipsebffp" />
   <Action name="objects_new_hyperbolabffp" />
   <Action name="objects_new_parabolabtp" />
@@ -144,7 +143,7 @@
   <Action name="user_conic_types" />
   <Action name="objects_new_lineconicradical" />
 </Toolbar>    
-<Toolbar name="transformation_toolbar"><text>Transformation</text>
+<Toolbar name="transformation_toolbar" position="right"><text>Transformation</text>
   <Action name="objects_new_translation" />
   <Action name="objects_new_pointreflection" />
   <Action name="objects_new_linereflection" />
@@ -152,7 +151,7 @@
   <Action name="objects_new_scalingovercenter" />
   <Action name="objects_new_scalingoverline" />
 </Toolbar>
-<Toolbar name="rest_toolbar"><text>Rest</text>
+<Toolbar name="rest_toolbar" position="left"><text>Rest</text>
   <Action name="objects_new_angle" />
   <Action name="objects_new_locus" />
   <Action name="objects_new_textlabel" />
