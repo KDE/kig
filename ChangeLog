@@ -1,3 +1,9 @@
+2005-01-31  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* added point inversion with respect to a given
+	circle.  Yet to come: inversion of lines and
+	circles.
+
 2005-01-26  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* added many constructions related to polygons:

@@ -30,6 +30,7 @@
 #include "../objects/conic_types.h"
 #include "../objects/cubic_type.h"
 #include "../objects/intersection_types.h"
+#include "../objects/inversion_type.h"
 #include "../objects/line_imp.h"
 #include "../objects/line_type.h"
 #include "../objects/object_imp.h"
@@ -320,6 +321,14 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_parabolabdp" ) );
 
     // Transformation stuff..
+    c = new SimpleObjectTypeConstructor(
+      InvertPointType::instance(),
+      I18N_NOOP( "Inversion of a point" ),
+      I18N_NOOP( "The inversion of a point with respect to a circle" ),
+      "inversion" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_invertpoint" ) );
+
     c = new SimpleObjectTypeConstructor(
       TranslatedType::instance(),
       I18N_NOOP( "Translate" ),

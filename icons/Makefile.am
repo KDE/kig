@@ -35,6 +35,7 @@ kigicondata_DATA = \
 	hexagonbcv.png \
 	hyperbolabffp.png \
 	intersection.png \
+	inversion.png \
 	line.png \
 	linebyvector.png \
 	locus.png \

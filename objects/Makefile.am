@@ -16,6 +16,7 @@ noinst_HEADERS=\
 	curve_imp.h \
 	editanglesize.h \
 	intersection_types.h \
+	inversion_type.h \
 	line_imp.h \
 	line_type.h \
 	locus_imp.h \
@@ -55,6 +56,7 @@ libobjects_la_SOURCES=\
 	editanglesizebase.ui \
 	editanglesize.cc \
 	intersection_types.cc \
+	inversion_type.cc \
 	line_imp.cc \
 	line_type.cc \
 	locus_imp.cc \
