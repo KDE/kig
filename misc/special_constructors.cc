@@ -867,10 +867,9 @@ const int MeasureTransportConstructor::wantArgs(
   if ( ! os[2]->imp()->inherits( PointImp::stype() ) )
     return ArgsParser::Invalid;
 
-  // TODO: insert here a check that this point lies on the
-  // curve defined by os[1]
-//  if ( !c->containsPoint( p, doc ) )
-//    return new InvalidImp;
+  // we here use the "isPointOnCurve", which relies on
+  // "by construction" incidence, instead of a numerical
+  // check
   if ( ! isPointOnCurve( os[2], os[1] ) )
     return ArgsParser::Invalid;
 
@@ -1257,19 +1256,23 @@ QString TangentConstructor::useText(
     return i18n( "Tangent to This Arc" );
   else if ( o.imp()->inherits( CubicImp::stype() ) )
     return i18n( "Tangent to This Cubic Curve" );
+  else if ( o.imp()->inherits( CurveImp::stype() ) )
+    return i18n( "Tangent to This Curve" );
+  else if ( o.imp()->inherits( PointImp::stype() ) )
+    return i18n( "Tangent at This Point" );
 //  else assert( false );
   return QString::null;
 }
 
-QString TangentConstructor::selectStatement(
-  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
-  const KigWidget& ) const
-{
-  if ( sel.size() == 0 )
-    return i18n( "Select the object..." );
-  else
-    return i18n( "Select the point for the tangent to go through..." );
-}
+//QString TangentConstructor::selectStatement(
+//  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
+//  const KigWidget& ) const
+//{
+//  if ( sel.size() == 0 )
+//    return i18n( "Select the object..." );
+//  else
+//    return i18n( "Select the point for the tangent to go through..." );
+//}
 
 /*
  * center of curvature of a curve
@@ -1316,16 +1319,19 @@ QString CocConstructor::useText(
     return i18n( "Center of Curvature of This Conic" );
   else if ( o.imp()->inherits( CubicImp::stype() ) )
     return i18n( "Center of Curvature of This Cubic Curve" );
-//  else assert( false );
+  else if ( o.imp()->inherits( CurveImp::stype() ) )
+    return i18n( "Center of Curvature of This Curve" );
+  else if ( o.imp()->inherits( PointImp::stype() ) )
+    return i18n( "Center of Curvature at This Point" );
   return QString::null;
 }
 
-QString CocConstructor::selectStatement(
-  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
-  const KigWidget& ) const
-{
-  if ( sel.size() == 0 )
-    return i18n( "Select the object..." );
-  else
-    return i18n( "Select the point where to compute the center of curvature..." );
-}
+//QString CocConstructor::selectStatement(
+//  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
+//  const KigWidget& ) const
+//{
+//  if ( sel.size() == 0 )
+//    return i18n( "Select the object..." );
+//  else
+//    return i18n( "Select the point where to compute the center of curvature..." );
+//}

@@ -30,15 +30,15 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
-static const char constructcenterofcurvaturepoint[] =
-  I18N_NOOP( "Construct the center of curvature corresponding to this point" );
+static const char constructcenterofcurvaturepoint[] = "SHOULDNOTBESEEN";
+//  I18N_NOOP( "Construct the center of curvature corresponding to this point" );
+static const char selectcoc1[] = I18N_NOOP( "Select the curve..." );
+static const char selectcoc2[] = I18N_NOOP( "Select a point on the curve..." );
 
 static const ArgsParser::spec argsspecCocConic[] =
 {
-  { ConicImp::stype(), I18N_NOOP( "Construct the center of curvature wrt. this conic" ),
-    I18N_NOOP( "Select the conic..." ), false },
-  { PointImp::stype(), constructcenterofcurvaturepoint,
-    I18N_NOOP( "Select a point on the conic..." ), false }
+  { ConicImp::stype(), "SHOULDNOTBESEEN", selectcoc1, false },
+  { PointImp::stype(), constructcenterofcurvaturepoint, selectcoc2, false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CocConicType )
@@ -123,10 +123,8 @@ const ObjectImpType* CocConicType::resultId() const
 
 static const ArgsParser::spec argsspecCocCubic[] =
 {
-  { CubicImp::stype(), I18N_NOOP( "Construct the center of curvature wrt. this cubic" ),
-    I18N_NOOP( "Select the cubic..." ), false },
-  { PointImp::stype(), constructcenterofcurvaturepoint,
-    I18N_NOOP( "Select a point on the cubic..." ), false }
+  { CubicImp::stype(), "SHOULDNOTBESEEN", selectcoc1, false },
+  { PointImp::stype(), constructcenterofcurvaturepoint, selectcoc2, false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CocCubicType )
@@ -207,10 +205,8 @@ const ObjectImpType* CocCubicType::resultId() const
 
 static const ArgsParser::spec argsspecCocCurve[] =
 {
-  { CurveImp::stype(), I18N_NOOP( "Construct the center of curvature wrt. this curve" ),
-    I18N_NOOP( "Select the curve..." ), false },
-  { PointImp::stype(), constructcenterofcurvaturepoint,
-    I18N_NOOP( "Select a point on the curve..." ), false }
+  { CurveImp::stype(), "SHOULDNOTBESEEN", selectcoc1, false },
+  { PointImp::stype(), constructcenterofcurvaturepoint, selectcoc2, false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CocCurveType )

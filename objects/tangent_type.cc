@@ -31,15 +31,16 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
-static const char constructlinetangentpoint[] =
-  I18N_NOOP( "Construct the line tangent to this point" );
+static const char constructlinetangentpoint[] = "SHOULDNOTBESEEN";
+static const char selecttangent1[] = 
+  I18N_NOOP( "Select the curve..." );
+static const char selecttangent2[] = 
+  I18N_NOOP( "Select the point for the tangent to go through..." );
 
 static const ArgsParser::spec argsspecTangentConic[] =
 {
-  { ConicImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this conic" ),
-    I18N_NOOP( "Select the conic..." ), false },
-  { PointImp::stype(), constructlinetangentpoint,
-    I18N_NOOP( "Select the point for the tangent to go through..." ), true }
+  { ConicImp::stype(), "SHOULDNOTBESEEN", selecttangent1, false },
+  { PointImp::stype(), constructlinetangentpoint, selecttangent2, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TangentConicType )
@@ -88,10 +89,8 @@ const ObjectImpType* TangentConicType::resultId() const
 
 static const ArgsParser::spec argsspecTangentArc[] =
 {
-  { ArcImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this arc" ),
-    I18N_NOOP( "Select the arc..." ), false },
-  { PointImp::stype(), constructlinetangentpoint,
-    I18N_NOOP( "Select the point for the tangent to go through..." ), true }
+  { ArcImp::stype(), "SHOULDNOTBESEEN", selecttangent1, false },
+  { PointImp::stype(), constructlinetangentpoint, selecttangent2, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TangentArcType )
@@ -145,10 +144,8 @@ const ObjectImpType* TangentArcType::resultId() const
 
 static const ArgsParser::spec argsspecTangentCubic[] =
 {
-  { CubicImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this cubic" ),
-    I18N_NOOP( "Select the cubic..." ), false },
-  { PointImp::stype(), constructlinetangentpoint,
-    I18N_NOOP( "Select the point for the tangent to go through..." ), true }
+  { CubicImp::stype(), "SHOULDNOTBESEEN", selecttangent1, false },
+  { PointImp::stype(), constructlinetangentpoint, selecttangent2, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TangentCubicType )
@@ -218,10 +215,8 @@ const ObjectImpType* TangentCubicType::resultId() const
 
 static const ArgsParser::spec argsspecTangentCurve[] =
 {
-  { CurveImp::stype(), I18N_NOOP( "Construct the line tangent wrt. this curve" ),
-    I18N_NOOP( "Select the curve..." ), false },
-  { PointImp::stype(), constructlinetangentpoint,
-    I18N_NOOP( "Select the point for the tangent to go through..." ), true }
+  { CurveImp::stype(), "SHOULDNOTBESEEN", selecttangent1, false },
+  { PointImp::stype(), constructlinetangentpoint, selecttangent2, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TangentCurveType )
