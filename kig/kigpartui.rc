@@ -75,6 +75,7 @@
 	<Action name="objects_new_vector" />
 	<Action name="objects_new_textlabel" />
 	<Action name="objects_new_arc" />
+	<Action name="objects_new_cubicb9p" />
 	<ActionList name="user_other_types" />
     </Menu>
     <Separator />

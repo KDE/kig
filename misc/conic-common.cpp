@@ -178,9 +178,14 @@ const ConicCartesianEquationData calcConicThroughPoints (
   // given..
 
   // 5 rows, 6 columns..
-  double matrix[5][6];
+  double row0[6];
+  double row1[6];
+  double row2[6];
+  double row3[6];
+  double row4[6];
+  double *matrix[5] = {row0, row1, row2, row3, row4};
   double solution[6];
-  int scambio[5];
+  int scambio[6];
   LinearConstraints constraints[] = {c1, c2, c3, c4, c5};
 
   int numpoints = points.size();
@@ -224,82 +229,9 @@ const ConicCartesianEquationData calcConicThroughPoints (
     if (constraints[i] != noconstraint) ++numpoints;
   }
 
-  // start gaussian elimination
-  for ( int k = 0; k < numpoints; ++k )
-  {
-    // ricerca elemento di modulo massimo
-    double maxval = -1.0;
-    int imax = -1;
-    int jmax = -1;
-    for( int i = k; i < numpoints; ++i )
-    {
-      for( int j = k; j < 6; ++j )
-      {
-        if (fabs(matrix[i][j]) > maxval)
-        {
-          maxval = fabs(matrix[i][j]);
-          imax = i;
-          jmax = j;
-        }
-      }
-    }
-    // scambio di riga
-    for( int j = k; j < 6; ++j )
-    {
-      double t = matrix[k][j];
-      matrix[k][j] = matrix[imax][j];
-      matrix[imax][j] = t;
-    }
-    // scambio di colonna
-    for( int i = 0; i < numpoints; ++i )
-    {
-      double t = matrix[i][k];
-      matrix[i][k] = matrix[i][jmax];
-      matrix[i][jmax] = t;
-    }
-    // ricorda lo scambio effettuato al passo k
-    scambio[k] = jmax;
-
-    // ciclo sulle righe
-    for( int i = k+1; i < numpoints; ++i)
-    {
-      double mik = matrix[i][k]/matrix[k][k];
-      matrix[i][k] = mik;    //ricorda il moltiplicatore... (not necessary)
-      // ciclo sulle colonne
-      for( int j = k+1; j < 6; ++j )
-      {
-        matrix[i][j] -= mik*matrix[k][j];
-      }
-    }
-  }
-
+  GaussianElimination( matrix, numpoints, 6, scambio );
   // fine della fase di eliminazione
-  // il sistema e' sottodeterminato, fisso l'ultima incognita = 1
-  for ( int j = numpoints; j < 6; ++j )
-  {
-    solution[j] = 1.0;          // other choices are possible here
-  };
-
-  for( int k = numpoints - 1; k >= 0; --k )
-  {
-    // sostituzioni all'indietro
-    solution[k] = 0.0;
-    for ( int j = k+1; j < 6; ++j)
-    {
-      solution[k] -= matrix[k][j]*solution[j];
-    }
-    solution[k] /= matrix[k][k];
-  }
-
-  // ultima fase: riordinamento incognite
-
-  for( int k = numpoints - 1; k >= 0; --k )
-  {
-    int jmax = scambio[k];
-    double t = solution[k];
-    solution[k] = solution[jmax];
-    solution[jmax] = t;
-  }
+  BackwardSubstitution( matrix, numpoints, 6, scambio, solution );
 
   // now solution should contain the correct coefficients..
   return ConicCartesianEquationData( solution );

@@ -32,6 +32,7 @@
 #include "../objects/conic.h"
 #include "../objects/coniclines.h"
 #include "../objects/conicsextra.h"
+#include "../objects/cubic.h"
 #include "../objects/segment.h"
 #include "../objects/normalpoint.h"
 #include "../objects/midpoint.h"
@@ -194,6 +195,7 @@ void KigDocument::setupTypes()
     Object::addBuiltinType( new TStdType<HyperbolaBFFP> );
 //     Object::addBuiltinType( new TStdType<ConicBDF> );
     Object::addBuiltinType( new TStdType<ConicB5P> );
+    Object::addBuiltinType( new TStdType<CubicB9P> );
     Object::addBuiltinType( new TStdType<ParabolaBTP> );
     Object::addBuiltinType( new TStdType<EquilateralHyperbolaB4P> );
     Object::addBuiltinType( new TStdType<MidPoint> );

@@ -37,6 +37,7 @@ class QPaintDevice;
 class CoordinateSystem;
 class Object;
 class ConicPolarEquationData;
+class CubicCartesianEquationData;
 struct LineData;
 
 /**
@@ -183,6 +184,19 @@ public:
    * draw a conic..
    */
   void drawConic( const ConicPolarEquationData& data );
+
+  /**
+   * draw a cubic..
+   */
+  void drawCubic( const CubicCartesianEquationData& data );
+  void drawCubicRecurse(
+                   double& xleft, double& yleft, bool& validleft,
+                   int& numrootsleft,
+                   double& xright, double& yright, bool& validright,
+                   int& numrootsright,
+                   const CubicCartesianEquationData& data, int& root,
+                   double& ymin, double& ymax, double& tol,
+                   bool& tNeedOverlay, Rect& overlay);
 
   /*
    * draw text...

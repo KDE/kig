@@ -23,6 +23,7 @@
 
 #include "coordinate.h"
 #include <vector>
+#include "kignumerics.h"
 
 class ConicPolarEquationData;
 class LineData;
