@@ -26,6 +26,9 @@
 class ObjectHierarchy::Node
 {
 public:
+  enum { ID_PushStack, ID_ApplyType };
+  virtual int id() const = 0;
+
   virtual ~Node();
   virtual Node* copy() const = 0;
   virtual void apply( std::vector<const ObjectImp*>& stack, int loc ) const = 0;
@@ -42,10 +45,16 @@ class PushStackNode
 public:
   PushStackNode( ObjectImp* imp ) : mimp( imp ) {};
   ~PushStackNode();
+
+  const ObjectImp* imp() const { return mimp; };
+
+  int id() const;
   Node* copy() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc ) const;
 };
+
+int PushStackNode::id() const { return ID_PushStack; };
 
 PushStackNode::~PushStackNode()
 {
@@ -73,9 +82,16 @@ public:
     : mtype( type ), mparents( parents ) {};
   ~ApplyTypeNode();
   Node* copy() const;
+
+  const ObjectType* type() const { return mtype; };
+  const std::vector<int>& parents() const { return mparents; };
+
+  int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
               int loc ) const;
 };
+
+int ApplyTypeNode::id() const { return ID_ApplyType; };
 
 ApplyTypeNode::~ApplyTypeNode()
 {
@@ -193,4 +209,56 @@ ObjectHierarchy::ObjectHierarchy( const Objects& from, const Objects& to )
 {
   for ( Objects::const_iterator i = to.begin(); i != to.end(); ++i )
     visit( *i, from );
+}
+
+void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc )
+{
+  int id = 1;
+  for ( uint i = 0; i < mnumberofargs; ++i )
+  {
+    QDomElement e = doc.createElement( "input" );
+    e.setAttribute( "id", id++ );
+    parent.appendChild( e );
+  }
+  for ( uint i = 0; i < mnodes.size(); ++i )
+  {
+    bool result = mnodes.size() - ( id - mnumberofargs - 1 ) <= mnumberofresults;
+    QDomElement e = doc.createElement( result ? "result" : "intermediate" );
+    e.setAttribute( "id", id++ );
+
+    if ( mnodes[i]->id() == ObjectHierarchy::Node::ID_ApplyType )
+    {
+      const ApplyTypeNode* node = static_cast<const ApplyTypeNode*>( mnodes[i] );
+      e.setAttribute( "action", "calc" );
+      e.setAttribute( "type", QString::fromLatin1( node->type()->fullName() ) );
+      for ( int i = 0; i < node->parents().size(); ++i )
+      {
+        int parent = node->parents()[i] + 1;
+        QDomElement arge = doc.createElement( "arg" );
+        arge.appendChild( doc.createTextNode( QString::number( parent ) ) );
+        e.appendChild( arge );
+      };
+   }
+    else
+    {
+      assert( mnodes[i]->id() == ObjectHierarchy::Node::ID_PushStack );
+      const PushStackNode* node = static_cast<const PushStackNode*>( mnodes[i] );
+      e.setAttribute( "action", "push" );
+      QString type = ObjectImpFactory::instance()->serialize( *node->imp(), e, doc );
+      e.setAttribute( "type", type );
+    };
+
+    parent.appendChild( e );
+  };
+}
+
+ObjectHierarchy::ObjectHierarchy( QDomElement& parent )
+  : mnumberofargs( 0 ), mnumberofresults( 0 )
+{
+  QDomElement e = parent.firstChild().toElement();
+  for (; !e.isNull(); e = e.nextSibling().toElement() )
+  {
+    if ( e.tagName() != "input" ) break;
+    else ++mnumberofargs;
+  }
 }

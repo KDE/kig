@@ -40,6 +40,10 @@ public:
   // arguments, but uses copies of the ObjectImp's in a instead..
   ObjectHierarchy withFixedArgs( const Args& a ) const;
   std::vector<ObjectImp*> calc( const Args& a ) const;
+
+  void serialize( QDomElement& parent, QDomDocument& doc );
+  // deserialize..
+  ObjectHierarchy( QDomElement& parent );
 };
 
 #endif
