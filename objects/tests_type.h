@@ -76,4 +76,15 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class VectorEqualityTestType
+  : public ArgsParserObjectType
+{
+  VectorEqualityTestType();
+  ~VectorEqualityTestType();
+public:
+  static const VectorEqualityTestType* instance();
+  ObjectImp* calc( const Args& parents,  const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

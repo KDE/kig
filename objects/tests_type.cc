@@ -21,6 +21,7 @@
 #include "line_imp.h"
 #include "point_imp.h"
 #include "bogus_imp.h"
+#include "other_imp.h"
 
 #include <cmath>
 
@@ -229,6 +230,46 @@ ObjectImp* SameDistanceType::calc( const Args& parents, const KigDocument& ) con
 }
 
 const ObjectImpType* SameDistanceType::resultId() const
+{
+  return TestResultImp::stype();
+}
+
+static const ArgsParser::spec vectorEqualityArgsSpec[] =
+{
+  { VectorImp::stype(), I18N_NOOP( "Check whether this vector is equal to another vector" ), false },
+  { VectorImp::stype(), I18N_NOOP( "Check whether this vector is equal to the other vector" ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VectorEqualityTestType )
+
+VectorEqualityTestType::VectorEqualityTestType()
+  : ArgsParserObjectType( "VectorEquality", vectorEqualityArgsSpec, 2 )
+{
+}
+
+VectorEqualityTestType::~VectorEqualityTestType()
+{
+}
+
+const VectorEqualityTestType* VectorEqualityTestType::instance()
+{
+  static const VectorEqualityTestType t;
+  return &t;
+}
+
+ObjectImp* VectorEqualityTestType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  const Coordinate& v1 = static_cast<const VectorImp*>( parents[0] )->dir();
+  const Coordinate& v2 = static_cast<const VectorImp*>( parents[1] )->dir();
+
+  if ( ( v1 - v2 ).length() < 10e-5  )
+    return new TestResultImp( i18n( "The two vectors are the same." ) );
+  else
+    return new TestResultImp( i18n( "The two vectors are not the same." ) );
+}
+
+const ObjectImpType* VectorEqualityTestType::resultId() const
 {
   return TestResultImp::stype();
 }

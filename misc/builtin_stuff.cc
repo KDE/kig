@@ -462,6 +462,15 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_distancetest" ) );
 
+    c = new TestConstructor(
+      VectorEqualityTestType::instance(),
+      I18N_NOOP( "Vector Equality Test" ),
+      I18N_NOOP( "Test whether two vectors are equal" ),
+      "test" );
+//      "testequal" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_vectorequalitytest" ) );
+
     c = new SimpleObjectTypeConstructor(
       MeasureTransportType::instance(),
       I18N_NOOP( "Measure transport" ),
