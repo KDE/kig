@@ -153,6 +153,7 @@ PointConstructMode::PointConstructMode( KigDocument& d )
   : BaseMode( d ),
     mpt( ObjectFactory::instance()->fixedPoint( Coordinate() ) )
 {
+  mpt.calc( d );
 }
 
 PointConstructMode::~PointConstructMode()
