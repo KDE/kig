@@ -297,3 +297,8 @@ const Property CubicImp::property( uint which, const KigWidget& w ) const
   // TODO ?
   return Parent::property( which, w );
 }
+
+const CubicCartesianData CubicImp::data() const
+{
+  return mdata;
+}
