@@ -1,4 +1,5 @@
 #include "kig_commands.h"
+#include "kig_commands.moc"
 
 #include "kig_part.h"
 

@@ -1,4 +1,5 @@
 #include "kig_view.h"
+#include "kig_view.moc"
 
 #include "kig_part.h"
 #include "../objects/object.h"

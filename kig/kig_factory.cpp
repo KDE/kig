@@ -1,4 +1,5 @@
 #include "kig_factory.h"
+#include "kig_factory.moc"
 
 #include <kinstance.h>
 #include <kaboutdata.h>
