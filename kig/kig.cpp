@@ -1,7 +1,7 @@
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -11,7 +11,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
@@ -49,7 +49,7 @@ Kig::Kig()
   setXMLFile("kigui.rc");
   // then, setup our actions
   setupActions();
-  
+
   // this routine will find and load our Part.  it finds the Part by
   // name which is a bad idea usually.. but it's alright in this
   // case since our Part is made for this Shell
@@ -75,6 +75,7 @@ Kig::Kig()
       // itself can't do anything useful
       KMessageBox::error(this, "Could not find the necessary kig library, check your installation.");
       KApplication::exit();
+      return;
     }
   resize (640,480);
 
@@ -195,7 +196,7 @@ void Kig::applyNewToolbarConfig()
 bool Kig::queryClose()
 {
   if (!m_part->isReadWrite() || !m_part->isModified()) return true;
-  switch( KMessageBox::warningYesNoCancel 
+  switch( KMessageBox::warningYesNoCancel
 	  (
 	   widget(),
 	   i18n("Save changes to document %1?").arg(m_part->url().path()),
