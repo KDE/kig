@@ -44,10 +44,21 @@ public:
   void rightClicked( QMouseEvent*, KigView* );
   void rightMouseMoved( QMouseEvent*, KigView* );
   void rightReleased( QMouseEvent*, KigView* );
+
+  /**
+   * The user is just moving around his cursor, 
+   * without having clicked anywhere...
+   */
   void mouseMoved( QMouseEvent*, KigView* );
 
-  // objects were added or removed by a command in mDoc->history ...
+  /**
+   * Objcects were added by a command in mDoc->history.
+   */
   void objectsAdded();
+
+   /**
+   * Objcects were removed by a command in mDoc->history.
+   */
   void objectsRemoved();
 
   void enableActions();

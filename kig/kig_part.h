@@ -205,18 +205,22 @@ protected:
 
   KigView* m_widget;
 
-  // our internal document data:
-  // first all objects we contain: all of them are in there, except
-  // the obc.
-  // this is the one that owns all objects, all other object
-  // containers only contain pointers to the objects, and don't own
-  // them
+  /** 
+   * Our internal document data:
+   * first all objects we contain: all of them are in there, except
+   * the obc.
+   * This is the one that owns all objects, all other object
+   * containers only contain pointers to the objects, and don't own
+   * them.
+   */
   Objects mObjs;
 
-  // the CoordinateSystem as the user sees it: this has little to do
-  // with the internal coordinates of the objects... In fact, it's
-  // not so different from an object itself ( uses KigPainter to draw
-  // itself too...)
+  /** 
+   * The CoordinateSystem as the user sees it: this has little to do
+   * with the internal coordinates of the objects... In fact, it's
+   * not so different from an object itself ( uses KigPainter to draw
+   * itself too...).
+   */
   CoordinateSystem* s;
 };
 

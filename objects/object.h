@@ -125,21 +125,24 @@ public:
   virtual const QCString vFullTypeName() const = 0;
   // static const QCString sFullTypeName();
 
-  // gives a descriptive name like i18n( "Circle defined by three
-  // specified points" ) for CircleTTP... Do _NOT_ forget the i18n()
-  // call !!!
+  /**
+   * Gives a descriptive name like i18n( "Circle defined by three
+   * specified points" ) for CircleTTP... Do _NOT_ forget the i18n()
+   * call !!!
+   */
   virtual const QString vDescriptiveName() const = 0;
   // static const QString sDescriptiveName() const = 0;
 
   /** 
-   * gives an explanation like i18n( "A circle which is defined by
+   * Gives an explanation like i18n( "A circle which is defined by
    * its center and a point on its edge." ). Do _NOT_ forget the
    * i18n() call !!!
    */
   virtual const QString vDescription() const = 0;
   // static const QString sDescription() const = 0;
 
-  /** gives the filename of a icon file.  e.g. "segment" for Segment,
+  /** 
+   * Gives the filename of a icon file.  e.g. "segment" for Segment,
    * "point4" for FixedPoint etc.  return 0 or "" if you don't have an
    * icon.
    */
@@ -147,7 +150,7 @@ public:
   // static const QCString vIconFileName() = 0;
 
   /** 
-   * this is used by TType, this implementation is good for almost
+   * This is used by TType, this implementation is good for almost
    * all, only NormalPoint needs something else...
    */
   static KigMode* sConstructMode( Type* ourtype, KigDocument* theDoc,
@@ -167,14 +170,14 @@ public:
   virtual void draw (KigPainter& p, bool showSelection) const = 0;
 
   /** 
-   * whether the object contains o
+   * Whether the object contains o.
    * allowed_miss contains the maximum distance there may be between
    * o and your object...
    */
   virtual bool contains ( const Coordinate& o, const double allowed_miss ) const = 0;
 
   /**
-   * is this object in rect r ?
+   * Is this object in rect r ?
    */
   virtual bool inRect (const Rect& r) const = 0;
 
@@ -193,7 +196,7 @@ public:
   virtual bool selectArg (Object* which) = 0;
   
   /**
-   * draw a preliminary version of yourself, as if prelimArg had been
+   * Draw a preliminary version of yourself, as if prelimArg had been
    * selected...
    */
   virtual void drawPrelim (KigPainter& p, const Object* prelimArg ) const = 0;
@@ -207,7 +210,7 @@ public:
   virtual void stopMove() = 0;
 
   /**
-   * informs the object that it ( or one of its parents ) has been
+   * Informs the object that it ( or one of its parents ) has been
    * moved (or other situations), and that it should recalculate any
    * of its variables.  showingRect is the rect that is currently
    * showing.  Some objects need this ( e.g. Locus only wants points
@@ -238,14 +241,16 @@ public:
  public:
   bool getComplete() const { return complete; };
  protected:
-  // an object is valid if it's in a state where its position and such
-  // is defined: example: the intersection of a line and a circle:
-  // this can be defined and undefined ( unless you start playing with
-  // complex numbers, which is useless to us... )
-  // objects are unvalid if
-  // 1 its parents are unvalid..
-  // 2 the object itself is unvalid due to its definition...
-  // you should check for these cases in your calc() routine...
+  /**
+   * An object is valid if it's in a state where its position and such
+   * is defined: example: the intersection of a line and a circle:
+   * this can be defined and undefined ( unless you start playing with
+   * complex numbers, which is useless to us... )
+   * objects are unvalid if
+   * 1 its parents are unvalid..
+   * 2 the object itself is unvalid due to its definition...
+   * you should check for these cases in your calc() routine...
+   */
   bool valid;
  public:
   bool getValid() const { return valid; };

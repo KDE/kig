@@ -229,12 +229,8 @@ void NormalMode::rightReleased( QMouseEvent*, KigView* )
 
 void NormalMode::mouseMoved( QMouseEvent* e, KigView* v )
 {
-  // the user is just moving around his cursor, without having clicked
-  // anywhere...
-  QPoint p = e->pos();
-  const Objects tmp = mDoc->whatAmIOn( v->fromScreen( p ),
-                                       2 * v->pixelWidth()
-    );
+  const Objects tmp = mDoc->whatAmIOn( v->fromScreen( e->pos() ),
+                                       2 * v->pixelWidth() );
   v->updateCurPix();
   if( tmp.empty() )
   {
@@ -242,14 +238,22 @@ void NormalMode::mouseMoved( QMouseEvent* e, KigView* v )
     mDoc->emitStatusBarText( 0 );
     v->updateWidget();
   }
-  else
+  else 
   {
+    // the cursor is over an object, show object type next to cursor 
+    // and set statusbar text
+
     v->setCursor( KCursor::handCursor() );
     QString typeName = tmp.front()->vTBaseTypeName();
-    QString shownText = i18n( "Select this %1" ).arg( typeName );
-    mDoc->emitStatusBarText( shownText );
-    KigPainter p( v->screenInfo(), &v->curPix );
-    p.drawTextStd( e->pos(), typeName );
+
+    // statusbar text
+    mDoc->emitStatusBarText( i18n( "Select this %1" ).arg( typeName ) );     KigPainter p( v->screenInfo(), &v->curPix );
+
+    // set the text next to the arrow cursor
+    QPoint point = e->pos(); 
+    point.setX(point.x()+15);
+    
+    p.drawTextStd( point, typeName );
     v->updateWidget( p.overlay() );
   };
 }
