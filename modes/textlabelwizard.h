@@ -21,13 +21,13 @@
 
 #include "textlabelwizardbase.h"
 
-class TextLabelConstructionMode;
+class TextLabelModeBase;
 
 class TextLabelWizard : public TextLabelWizardBase
 {
   Q_OBJECT
 public:
-  TextLabelWizard( QWidget* parent, TextLabelConstructionMode* mode );
+  TextLabelWizard( QWidget* parent, TextLabelModeBase* mode );
   ~TextLabelWizard();
 
   void back();
@@ -41,7 +41,7 @@ private slots:
   void linkClicked( int which );
   void slotHelpClicked();
 private:
-  TextLabelConstructionMode* mmode;
+  TextLabelModeBase* mmode;
 };
 
 #endif // TEXTLABELWIZARD_H

@@ -42,6 +42,8 @@ public:
   QStringList specialActions() const;
   void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
                       NormalMode& m ) const;
+
+  const ArgParser& argParser() const;
 };
 
 #endif

@@ -20,6 +20,7 @@
 
 #include "objects.h"
 #include "../objects/object.h"
+#include "../kig/kig_part.h"
 
 // these first two functions were written before i read stuff about
 // graph theory and algorithms, so i'm sure they're far from optimal.
@@ -162,4 +163,22 @@ Objects getAllParents( const Objects& objs )
     end = ret.end();
   };
   return ret;
+};
+
+void deleteObjectsAndDeadParents( Objects& os, KigDocument* d )
+{
+  while ( !os.empty() )
+  {
+    Objects tmp;
+    for ( Objects::iterator i = os.begin(); i != os.end(); ++i )
+    {
+      if ( d ) d->_delObject( *i );
+      Objects parents = (*i)->parents();
+      delete *i;
+      for ( Objects::iterator j = parents.begin(); j != parents.end(); ++j )
+        if ( (*j)->isInternal() && (*j)->children().empty() && ! os.contains( *j ) )
+          tmp.upush( *j );
+    };
+    os = tmp;
+  };
 };

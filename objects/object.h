@@ -239,6 +239,7 @@ public:
   Objects parents() const;
 
   const Object* parent() const;
+  Object* parent();
   int propId() const;
 
   void draw( KigPainter& p, bool showSelection ) const;

@@ -23,6 +23,7 @@
 #include "curve_imp.h"
 #include "bogus_imp.h"
 #include "../misc/kigpainter.h"
+#include "../misc/calcpaths.h"
 #include "../kig/kig_part.h"
 
 #include <qpen.h>
@@ -168,6 +169,7 @@ void ObjectWithParents::delParent( Object* o )
 
 void ObjectWithParents::setParents( const Objects& parents, KigDocument* doc )
 {
+  Objects killable;
   for ( uint i = 0; i < mparents.size(); ++i )
   {
     mparents[i]->delChild( this );
@@ -176,10 +178,12 @@ void ObjectWithParents::setParents( const Objects& parents, KigDocument* doc )
     {
       // mparents[i] is an internal object that is no longer used..
       // so we remove it from the document, and delete it..
-      if ( doc ) doc->_delObject( mparents[i] );
-      delete mparents[i];
+      killable.push_back( mparents[i] );
     };
   };
+
+  deleteObjectsAndDeadParents( killable, doc );
+
   mparents = parents;
   for ( uint i = 0; i < mparents.size(); ++i )
     mparents[i]->addChild( this );
@@ -492,4 +496,9 @@ void RealObject::calc( const KigDocument& d )
 const char* Object::iconForProperty( uint which ) const
 {
   return imp()->iconForProperty( which );
+}
+
+Object* PropertyObject::parent()
+{
+  return mparent;
 }

@@ -27,7 +27,10 @@
 #include "../misc/i18n.h"
 #include "../misc/common.h"
 #include "../objects/object_factory.h"
-#include "../objects/object_imp.h"
+#include "../objects/bogus_imp.h"
+#include "../objects/point_imp.h"
+#include "../objects/text_imp.h"
+#include "../objects/text_type.h"
 
 #include <kcursor.h>
 #include <kmessagebox.h>
@@ -39,13 +42,13 @@
 #include <qpopupmenu.h>
 #include <qcheckbox.h>
 
-TextLabelConstructionMode::~TextLabelConstructionMode()
+TextLabelModeBase::~TextLabelModeBase()
 {
   delete mwiz;
   delete_all( margs.begin(), margs.end() );
 }
 
-TextLabelConstructionMode::TextLabelConstructionMode( KigDocument& d )
+TextLabelModeBase::TextLabelModeBase( KigDocument& d )
   : KigMode( d ), mlpc( 0 ), mwiz( 0 ), mwawd( SelectingLocation )
 {
   const std::vector<KigWidget*>& widgets = mdoc.widgets();
@@ -57,7 +60,7 @@ TextLabelConstructionMode::TextLabelConstructionMode( KigDocument& d )
   mwiz = new TextLabelWizard( d.widgets()[0], this );
 }
 
-void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
+void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
 {
   mplc = e->pos();
   switch( mwawd )
@@ -72,7 +75,7 @@ void TextLabelConstructionMode::leftClicked( QMouseEvent* e, KigWidget* )
   };
 }
 
-void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
+void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   switch( mwawd )
   {
@@ -128,24 +131,24 @@ void TextLabelConstructionMode::leftReleased( QMouseEvent* e, KigWidget* v )
   };
 }
 
-void TextLabelConstructionMode::killMode()
+void TextLabelModeBase::killMode()
 {
   mdoc.doneMode( this );
 }
 
-void TextLabelConstructionMode::cancelConstruction()
+void TextLabelModeBase::cancelConstruction()
 {
   killMode();
 }
 
-void TextLabelConstructionMode::enableActions()
+void TextLabelModeBase::enableActions()
 {
   KigMode::enableActions();
 
   mdoc.aCancelConstruction->setEnabled( true );
 }
 
-void TextLabelConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* w )
+void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   if ( mwawd == ReallySelectingArgs )
   {
@@ -155,16 +158,16 @@ void TextLabelConstructionMode::mouseMoved( QMouseEvent* e, KigWidget* w )
   };
 }
 
-void TextLabelConstructionMode::enterTextPageEntered()
+void TextLabelModeBase::enterTextPageEntered()
 {
 }
 
-void TextLabelConstructionMode::selectArgumentsPageEntered()
+void TextLabelModeBase::selectArgumentsPageEntered()
 {
   updateLinksLabel();
 }
 
-void TextLabelConstructionMode::cancelPressed()
+void TextLabelModeBase::cancelPressed()
 {
   cancelConstruction();
 }
@@ -182,49 +185,34 @@ static uint percentCount( const QString& s )
   return percentcount;
 };
 
-void TextLabelConstructionMode::finishPressed()
+void TextLabelModeBase::finishPressed()
 {
   bool needframe = mwiz->needFrameCheckBox->isChecked();
   QString s = mwiz->labelTextInput->text();
+
+  assert( percentCount( s ) == margs.size() );
   if ( mwiz->currentPage() == mwiz->enter_text_page )
+    assert( margs.size() == 0 );
+
+  bool finished = true;
+  for ( argvect::iterator i = margs.begin(); i != margs.end(); ++i )
   {
-    // no arguments...
-    assert( percentCount( s ) == 0 );
+    finished &= ( *i != 0 );
+  };
 
-    //s.replace( "\\n", "\n" );
-
-    Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe );
-    labelos.calc( mdoc );
-    mdoc.addObjects( labelos );
-    killMode();
-  }
+  if ( ! finished )
+    KMessageBox::sorry( mdoc.widget(),
+                        i18n( "There are '%n' parts in the text that you have not selected a "
+                              "value for. Please remove them or select enough arguments." ) );
   else
   {
-    // user wants a text label with args...
-    bool finished = true;
-    for ( argvect::iterator i = margs.begin(); i != margs.end(); ++i )
-    {
-      finished &= ( *i != 0 );
-    };
-    assert( percentCount( s ) == margs.size() );
-    if ( ! finished )
-      KMessageBox::sorry( mdoc.widget(),
-                          i18n( "There are '%n' parts in the text that you have not selected a "
-                                "value for. Please remove them or select enough arguments." ) );
-    else
-    {
-      Objects args( margs.begin(), margs.end() );
-      margs.clear();
-      Objects labelos = ObjectFactory::instance()->label( s, mcoord, needframe, args );
-      labelos.calc( mdoc );
-      copy( labelos.begin(), labelos.end(), back_inserter( args ) );
-      mdoc.addObjects( args );
-      killMode();
-    };
+    finish( mcoord, s, margs, needframe );
+    margs.clear();
+    killMode();
   };
 }
 
-void TextLabelConstructionMode::updateWiz()
+void TextLabelModeBase::updateWiz()
 {
   QString s = mwiz->labelTextInput->text();
   uint percentcount = percentCount( s );
@@ -263,12 +251,12 @@ void TextLabelConstructionMode::updateWiz()
   mlpc = percentcount;
 }
 
-void TextLabelConstructionMode::labelTextChanged()
+void TextLabelModeBase::labelTextChanged()
 {
   updateWiz();
 }
 
-void TextLabelConstructionMode::updateLinksLabel()
+void TextLabelModeBase::updateLinksLabel()
 {
   LinksLabel::LinksLabelEditBuf buf = mwiz->myCustomWidget1->startEdit();
   QString s = mwiz->labelTextInput->text();
@@ -321,7 +309,7 @@ void TextLabelConstructionMode::updateLinksLabel()
   mwiz->resize( mwiz->size() );
 }
 
-void TextLabelConstructionMode::linkClicked( int i )
+void TextLabelModeBase::linkClicked( int i )
 {
   mdoc.widget()->setActiveWindow();
   mdoc.widget()->raise();
@@ -334,7 +322,7 @@ void TextLabelConstructionMode::linkClicked( int i )
   mdoc.emitStatusBarText( i18n( "Selecting argument %1" ).arg( i + 1 ) );
 }
 
-void TextLabelConstructionMode::objectsAdded()
+void TextLabelModeBase::objectsAdded()
 {
   const std::vector<KigWidget*>& widgets = mdoc.widgets();
   for ( uint i = 0; i < widgets.size(); ++i )
@@ -345,7 +333,7 @@ void TextLabelConstructionMode::objectsAdded()
   };
 }
 
-void TextLabelConstructionMode::setCoordinate( const Coordinate& coord )
+void TextLabelModeBase::setCoordinate( const Coordinate& coord )
 {
   mcoord = coord;
   if ( mwawd == SelectingLocation )
@@ -358,8 +346,112 @@ void TextLabelConstructionMode::setCoordinate( const Coordinate& coord )
   };
 }
 
-void TextLabelConstructionMode::setText( const QString& s )
+void TextLabelModeBase::setText( const QString& s )
 {
-  mtext = s;
-  updateWiz();
+  mwiz->labelTextInput->setText( s );
+}
+
+void TextLabelModeBase::setPropertyObjects( const argvect& props )
+{
+  delete_all( margs.begin(), margs.end() );
+  margs = props;
+  for ( argvect::iterator i = margs.begin(); i != margs.end(); ++i )
+    (*i)->calc( mdoc );
+}
+
+TextLabelConstructionMode::TextLabelConstructionMode( KigDocument& d )
+  : TextLabelModeBase( d )
+{
+}
+
+TextLabelConstructionMode::~TextLabelConstructionMode()
+{
+}
+
+void TextLabelConstructionMode::finish(
+  const Coordinate& coord, const QString& s,
+  const argvect& props, bool needframe )
+{
+  Objects args( props.begin(), props.end() );
+  Objects labelos = ObjectFactory::instance()->label( s, coord, needframe, args );
+  labelos.calc( mdoc );
+  copy( labelos.begin(), labelos.end(), back_inserter( args ) );
+  mdoc.addObjects( args );
+}
+
+TextLabelRedefineMode::TextLabelRedefineMode( KigDocument& d, RealObject* label )
+  : TextLabelModeBase( d ), mlabel( label )
+{
+  assert( label->hasimp( ObjectImp::ID_TextImp ) );
+  Objects parents = label->parents();
+  assert( parents.size() >= 3 );
+  Objects firstthree( parents.begin(), parents.begin() + 3 );
+  Objects rest( parents.begin() + 3, parents.end() );
+  firstthree = TextType::instance()->argParser().parse( firstthree );
+
+  assert( firstthree[0]->hasimp( ObjectImp::ID_IntImp ) );
+  assert( firstthree[1]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( firstthree[2]->hasimp( ObjectImp::ID_StringImp ) );
+
+  bool frame = static_cast<const IntImp*>( firstthree[0]->imp() )->data() != 0;
+  Coordinate coord = static_cast<const PointImp*>( firstthree[1]->imp() )->coordinate();
+  QString text = static_cast<const StringImp*>( firstthree[2]->imp() )->data();
+
+  setCoordinate( coord );
+  setText( text );
+  setFrame( frame );
+
+  argvect v;
+  for ( uint i = 0; i < rest.size(); ++i )
+  {
+    assert( rest[i]->inherits( Object::ID_PropertyObject ) );
+    PropertyObject* o = static_cast<PropertyObject*>( rest[i] );
+    PropertyObject* n = new PropertyObject( o->parent(), o->propId() );
+    v.push_back( n );
+  };
+  assert( v.size() == rest.size() );
+
+  setPropertyObjects( v );
+}
+
+TextLabelRedefineMode::~TextLabelRedefineMode()
+{
+}
+
+void TextLabelRedefineMode::finish(
+  const Coordinate& coord, const QString& s,
+  const argvect& props, bool needframe )
+{
+  Objects parents = mlabel->parents();
+  assert( parents.size() >= 3 );
+  Objects firstthree( parents.begin(), parents.begin() + 3 );
+  Objects rest( parents.begin() + 3, parents.end() );
+  firstthree = TextType::instance()->argParser().parse( firstthree );
+
+  assert( firstthree[0]->hasimp( ObjectImp::ID_IntImp ) );
+  assert( firstthree[1]->hasimp( ObjectImp::ID_PointImp ) );
+  assert( firstthree[2]->hasimp( ObjectImp::ID_StringImp ) );
+
+  assert( firstthree[0]->inherits( Object::ID_DataObject ) );
+  assert( firstthree[1]->inherits( Object::ID_DataObject ) );
+  assert( firstthree[2]->inherits( Object::ID_DataObject ) );
+  static_cast<DataObject*>( firstthree[0] )->setImp( new IntImp( needframe ? 1 : 0 ) );
+  static_cast<DataObject*>( firstthree[1] )->setImp( new PointImp( coord ) );
+  static_cast<DataObject*>( firstthree[2] )->setImp( new StringImp( s ) );
+
+  Objects oldparents = mlabel->parents();
+  Objects p( props.begin(), props.end() );
+  mdoc._addObjects( p );
+
+  Objects np = firstthree;
+  copy( p.begin(), p.end(), back_inserter( np ) );
+  mlabel->setParents( np, &mdoc );
+
+  p.calc( mdoc );
+  mlabel->calc( mdoc );
+}
+
+void TextLabelModeBase::setFrame( bool f )
+{
+  mwiz->needFrameCheckBox->setChecked( f );
 }

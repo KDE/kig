@@ -27,8 +27,9 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_commands.h"
 
+#include "../modes/label.h"
+
 #include <qstringlist.h>
-#include <qvalidator.h>
 
 #include <klineeditdlg.h>
 
@@ -115,41 +116,9 @@ QStringList TextType::specialActions() const
 {
   QStringList ret;
   ret << i18n( "&Toggle Frame" );
-  ret << i18n( "C&hange text" );
+  ret << i18n( "C&hange..." );
   return ret;
 }
-
-class PercentStringValidator
-  : public QValidator
-{
-  int mnumpcts;
-public:
-  PercentStringValidator( int numpcts )
-    : QValidator( 0, 0 ), mnumpcts( numpcts )
-    {
-    };
-  State validate( QString& input, int& pos ) const;
-};
-
-static uint percentCount( const QString& s )
-{
-  QRegExp re( QString::fromUtf8( "%[0-9]" ) );
-  int offset = 0;
-  uint percentcount = 0;
-  while ( ( offset = re.search( s, offset ) ) != -1 )
-  {
-    ++percentcount;
-    offset += re.matchedLength();
-  };
-  return percentcount;
-};
-
-QValidator::State PercentStringValidator::validate( QString& input, int& ) const
-{
-  int npcts = percentCount( input );
-  if ( npcts == mnumpcts ) return Acceptable;
-  return Intermediate;
-};
 
 void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget& w,
                               NormalMode& ) const
@@ -176,25 +145,14 @@ void TextType::executeAction( int i, RealObject* o, KigDocument& doc, KigWidget&
   }
   else if ( i == 1 )
   {
-    QString s = static_cast<const StringImp*>( os[2]->imp() )->data();
-    int numargs = parents.size() - 3;
-
-    PercentStringValidator val( numargs );
-    bool ok = true;
-    QString ret = KLineEditDlg::getText(
-      i18n( "Change Label Text" ),
-      i18n( "Set the new string to be shown in the text label.  "
-            "Variable arguments are referenced with %1 to %9." ),
-      s, &ok, &w, &val );
-
-    if ( ok )
-    {
-      Objects monos( os[2] );
-      MonitorDataObjects mon( monos );
-      static_cast<DataObject*>( os[2] )->setImp(
-        new StringImp( ret ) );
-      doc.history()->addCommand( mon.finish( doc, i18n( "Change a label's text" ) ) );
-    };
+    TextLabelRedefineMode m( doc, o );
+    doc.runMode( &m );
+    w.redrawScreen();
   }
   else assert( false );
+}
+
+const ArgParser& TextType::argParser() const
+{
+  return mparser;
 }

@@ -57,4 +57,17 @@ Objects sideOfTreePath( const Objects& from, const Object* to );
  */
 Objects getAllParents( const Objects& objs );
 
+/**
+ * this function is used by the AddObjectsCommand and
+ * RemoveObjectsCommand destructors and some more places...  They have
+ * to delete the objects they contain, but what this function adds is
+ * that they also delete their parents if those are internal and have
+ * no more children.  Same goes for their deleted parents' parents
+ * etc.  This to avoid KigDocument keeping useless DataObjects around
+ * after all their children have been deleted..
+ * if you're sure that no parents of os will be known by the document,
+ * you can pass 0 for argument d..
+ */
+void deleteObjectsAndDeadParents( Objects& os, KigDocument* d );
+
 #endif

@@ -1,3 +1,9 @@
+2003-05-06  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
+
+	* fix the change text action for text labels to reuse the label
+		  construction dialog.  this makes it support multi-line
+		  labels, and changing the parameters
+
 2003-05-05  Dominique Devriese  <dominique.devriese@student.kuleuven.ac.be>
 
 	* add zoom in/out icons to the document popup menu

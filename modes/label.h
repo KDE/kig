@@ -28,19 +28,33 @@
 class TextLabelWizard;
 class NormalMode;
 class Object;
+class RealObject;
 class PropertyObject;
 
-class TextLabelConstructionMode
+/**
+ * this is the base class for TextLabelConstructionMode and
+ * TextLabelRedefineMode..  most of the work is done in this class,
+ * with some specific things delegated to the children..  Template
+ * method pattern, right ? :)
+ */
+class TextLabelModeBase
   : public KigMode
 {
-public:
-//protected:
+protected:
+  typedef std::vector<PropertyObject*> argvect;
   // the protected interface for subclasses
-  TextLabelConstructionMode( KigDocument& d );
-  ~TextLabelConstructionMode();
+  TextLabelModeBase( KigDocument& d );
+  ~TextLabelModeBase();
 
   void setCoordinate( const Coordinate& coord );
   void setText( const QString& s );
+  // objects you pass here, should be newly created property objects,
+  // that have no children..
+  void setPropertyObjects( const argvect& props );
+  void setFrame( bool f );
+
+  virtual void finish( const Coordinate& s, const QString& s,
+                       const argvect& props, bool needframe ) = 0;
 
 private:
   // the KigMode interface..
@@ -71,8 +85,8 @@ private:
   QPoint mplc;
 
   Coordinate mcoord;
-  QString mtext;
-  typedef std::vector<PropertyObject*> argvect;
+  // the text is only kept in the text input widget, not here
+//   QString mtext;
   argvect margs;
 
   // if we're ReallySelectingArgs, then this var points to the arg
@@ -95,6 +109,26 @@ private:
   void updateLinksLabel();
 };
 
+class TextLabelConstructionMode
+  : public TextLabelModeBase
+{
+public:
+  TextLabelConstructionMode( KigDocument& d );
+  ~TextLabelConstructionMode();
 
+  void finish( const Coordinate& coord, const QString& s,
+               const argvect& props, bool needframe );
+};
+
+class TextLabelRedefineMode
+  : public TextLabelModeBase
+{
+  RealObject* mlabel;
+  void finish( const Coordinate& coord, const QString& s,
+               const argvect& props, bool needframe );
+public:
+  TextLabelRedefineMode( KigDocument& d, RealObject* label );
+  ~TextLabelRedefineMode();
+};
 
 #endif

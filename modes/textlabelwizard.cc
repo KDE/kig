@@ -27,7 +27,7 @@
 
 #include <qlayout.h>
 
-TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelConstructionMode* mode )
+TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
   : TextLabelWizardBase( parent, "TextLabelWizard", false ), mmode( mode )
 {
   connect( labelTextInput, SIGNAL( textChanged() ),
