@@ -73,5 +73,6 @@ kigicondata_DATA = \
 	vectordifference.png \
 	vectorsum.png \
 	view_fit_to_page.png \
+	w.png \
 	window_fullscreen.png \
 	xfig.png
