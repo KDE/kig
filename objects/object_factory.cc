@@ -93,8 +93,13 @@ ObjectTypeCalcer* ObjectFactory::relativePointCalcer(
       static_cast<const ObjectImp*>( o->imp() )->attachPoint();
   assert( reference.valid() );
 
-  double x = loc.x - reference.x;
-  double y = loc.y - reference.y;
+  double x = 0.0;
+  double y = 0.0;
+  if ( loc.valid() )
+  {
+    x = loc.x - reference.x;
+    y = loc.y - reference.y;
+  }
   std::vector<ObjectCalcer*> parents;
   parents.push_back( new ObjectConstCalcer( new DoubleImp( x ) ) );
   parents.push_back( new ObjectConstCalcer( new DoubleImp( y ) ) );
@@ -216,12 +221,21 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
   }
   else if ( p && p->imp()->inherits( CurveImp::stype() ) )
   {
-    ObjectCalcer* o = constrainedPointCalcer( p, static_cast<const CurveImp*>( p->imp() )->getParam( loc, doc ) );
+    double param = 0.5;
+    if ( loc.valid() )
+      param = static_cast<const CurveImp*>( p->imp() )->getParam( loc, doc );
+
+    ObjectCalcer* o = constrainedPointCalcer( p, param );
     o->calc( doc );
     parents.push_back( o );
   }
   else
-    parents.push_back( new ObjectConstCalcer( new PointImp( loc ) ) );
+  {
+    if ( loc.valid() )
+      parents.push_back( new ObjectConstCalcer( new PointImp( loc ) ) );
+    else
+      parents.push_back( new ObjectConstCalcer( new PointImp( Coordinate( 0, 0 ) ) ) );
+  }
 
   parents.push_back( new ObjectConstCalcer( new StringImp( s ) ) );
   std::copy( nparents.begin(), nparents.end(), std::back_inserter( parents ) );

@@ -873,7 +873,11 @@ bool PropertiesActionsProvider::executeAction(
     std::vector<ObjectCalcer*> args;
     args.push_back( new ObjectPropertyCalcer( parent->calcer(), propid ) );
     args.back()->calc( doc.document() );
-    Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
+//    Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
+// mp: it seems that we have no idea where to position the label, 
+// btw what's the meaning of (5,0)?    let the
+// attach method decide what to do... (passing an invalidCoord)
+    Coordinate c = Coordinate::invalidCoord();
     ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
       QString::fromLatin1( "%1" ), parent->calcer(), c,
       false, args, doc.document() );
