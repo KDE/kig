@@ -74,7 +74,7 @@ KigFilter::Result KigFilterNative::load( const QString& from, KigDocument& to )
 
   // we only support 0.* ( for now ? :)
   if ( major != 0 ) return NotSupported;
-  if ( minor > 4 ) return NotSupported;
+  if ( minor > 5 ) return NotSupported;
   return minor > 3 ?
     loadNew( main, to ) : loadOld( main, to );
 }
@@ -112,7 +112,7 @@ KigFilter::Result KigFilterNative::save( const KigDocument& kdoc, const QString&
 //  doc.appendChild( QDomImplementation().createDocumentType( ... ) );
 
   QDomElement docelem = doc.createElement( "KigDocument" );
-  docelem.setAttribute( "Version", "0.4.1" );
+  docelem.setAttribute( "Version", "0.5.0" );
 
   // save the coordinate system type..
   QDomElement cselem = doc.createElement( "CoordinateSystem" );
