@@ -874,8 +874,8 @@ void KigPainter::drawLocus( const CurveImp* curve, const ObjectHierarchy& hier )
   // distance between two parameter values cannot be too small
   double hmin = 1e-4;
   // distance between two parameter values cannot be too large
-  double hmax = 1/40; ///
-  double hmaxoverlay = 1/8; ///
+  double hmax = M_PI/20; ///
+  double hmaxoverlay = M_PI/4; ///
 
   int count = 1;               // the number of segments we've already
                                // visited...
