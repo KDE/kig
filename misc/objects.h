@@ -158,6 +158,7 @@ public:
   void calc( const KigDocument& ) const;
   Objects with( Object* ) const;
   void setSelected( bool sel );
+  Objects getAllChildren() const;
 };
 
 #endif

@@ -46,3 +46,11 @@ void Objects::setSelected( bool sel )
   for ( iterator i = begin(); i != end(); ++i )
     (*i)->setSelected( sel );
 }
+
+Objects Objects::getAllChildren() const
+{
+  Objects ret;
+  for ( const_iterator i = begin(); i != end(); ++i )
+    ret |= (*i)->getAllChildren();
+  return ret;
+}
