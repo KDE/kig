@@ -75,6 +75,7 @@ class KigWidget : public QWidget
   friend class StdConstructionMode;
   friend class PointConstructionMode;
   friend class DefineMacroMode;
+  friend class DragRectMode;
 
   // what do the still objects look like
   // wondering if this is appropriate, maybe it should be part of
