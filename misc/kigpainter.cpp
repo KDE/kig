@@ -253,6 +253,11 @@ void KigPainter::setBrushColor( const QColor& c )
   mP.setBrush( QBrush( brushColor, brushStyle ) );
 }
 
+QColor KigPainter::getColor() const
+{
+  return color;
+}
+
 static void setContains( QRect& r, const QPoint& p )
 {
   if ( r.left() > p.x() ) r.setLeft( p.x() );

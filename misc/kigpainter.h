@@ -101,6 +101,8 @@ public:
   void setBrushStyle( const BrushStyle c );
   void setBrush( const QBrush& b );
   void setBrushColor( const QColor& c );
+  
+  QColor getColor() const;
 
   double pixelWidth();
 
