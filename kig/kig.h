@@ -26,7 +26,7 @@
 #include <config.h>
 #endif
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kparts/mainwindow.h>
 #include <dcopclient.h>
 

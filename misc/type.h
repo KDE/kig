@@ -40,7 +40,6 @@ class KigPainter;
 class KigMode;
 class NormalMode;
 
-#include <qstring.h>
 
 class MType;
 class StdConstructibleType;
