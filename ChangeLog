@@ -1,5 +1,10 @@
 2004-01-21  Dominique Devriese  <devriese@kde.org>
 
+	* replace my own autoconf code in configure.in.in for checking for
+	boost.python and python by some macro's by Ben Burton which
+	additionally check whether the python and boost.python combination
+	found is sane.  They're also generally cleaner and such.
+
 	* clean up configure.in.bot a bit
 
 2004-01-20  Dominique Devriese  <devriese@kde.org>
