@@ -28,6 +28,7 @@ kigicondata_DATA = \
 	genericaffinity.png \
 	genericprojectivity.png \
 	halflinebyvector.png \
+	hexagonbcv.png \
 	hyperbolabffp.png \
 	intersection.png \
 	line.png \
