@@ -3,6 +3,7 @@ simple:
 - implement the helpSlot()'s in the wizards..
 - change resizeEvent to not recenter the screen..
 - implement a polar CoordinateSystem..
+- rearrange some of the icons to match KGeo's appearance..
 
 harder:
 - fix the KDE style issues, there are quite some problems, i guess i
@@ -21,11 +22,9 @@ harder:
   its overhead...  
 
 hard :
-- transformations like in KSeg...
 - rework Macro support into something simpler: make it into types that
   simply add a lot of normal ( as in: builtin ) objects instead of one
   ugly object of the Macro class ( which, erm.. sucks :)
-- rearrange some of the icons to match KGeo's appearance..
 - figure out some cool way to "attach" a textlabel to an object..
 - koffice support ?
 
