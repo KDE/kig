@@ -446,3 +446,8 @@ void MacroConstructor::setBuiltin( bool builtin )
   mbuiltin = builtin;
 }
 
+bool ObjectConstructor::isIntersection() const
+{
+  return false;
+}
+

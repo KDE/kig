@@ -88,7 +88,7 @@ public:
 class ObjectConstructorActionsProvider
   : public PopupActionProvider
 {
-  std::vector<ObjectConstructor*> mctors[3];
+  std::vector<ObjectConstructor*> mctors[7];
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
   bool executeAction( int menu, int& id, const Objects& os,
@@ -132,11 +132,11 @@ NormalModePopupObjects::NormalModePopupObjects( KigDocument& doc,
   insertTitle( single ? ObjectImp::translatedName( objs[0]->imp()->id() )
                : i18n( "%1 Objects" ).arg( objs.size() ), 1 );
 
-  // stuff like hide, show, delete, set size, set color..
-  mproviders.push_back( new BuiltinActionsProvider() );
   // construct an object using these objects and start constructing an
   // object using these objects
   mproviders.push_back( new ObjectConstructorActionsProvider() );
+  // stuff like hide, show, delete, set size, set color..
+  mproviders.push_back( new BuiltinActionsProvider() );
   // show property as text label -> show menu
   // and construct property's as objects -> construct menu
   mproviders.push_back( new PropertiesActionsProvider() );
@@ -378,6 +378,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     if ( ret == ArgsChecker::Invalid ) continue;
     bool add = false;
     if ( (*i)->isTransform() && popup.objects().size() == 1 ) add = menu == NormalModePopupObjects::TransformMenu;
+    else if ( ( *i )->isIntersection() ) add = menu == NormalModePopupObjects::ToplevelMenu;
     else if ( ret == ArgsChecker::Complete ) add = menu == NormalModePopupObjects::ConstructMenu;
     else add = menu == NormalModePopupObjects::StartMenu;
     if ( add )
@@ -394,7 +395,6 @@ bool ObjectConstructorActionsProvider::executeAction(
   NormalModePopupObjects&,
   KigDocument& doc, KigWidget& w, NormalMode& m )
 {
-  if ( menu > NormalModePopupObjects::StartMenu ) return false;
   if ( (uint) id >= mctors[menu].size() )
   {
     id -= mctors[menu].size();

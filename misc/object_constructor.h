@@ -87,6 +87,7 @@ public:
   virtual void plug( KigDocument* doc, KigGUIAction* kact ) = 0;
 
   virtual bool isTransform() const = 0;
+  virtual bool isIntersection() const;
 };
 
 /**
