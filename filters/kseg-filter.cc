@@ -56,6 +56,26 @@ struct drawstyle
   QBrush brush;
 };
 
+static Coordinate readKSegCoordinate( QDataStream& stream )
+{
+  // read the coord..
+  float inx, iny;
+  stream >> inx >> iny;
+  // KSeg uses a coordinate system, where the topleft is (0,0), and
+  // the bottom right is the widget coordinate in the window: if the
+  // KSeg window had a width of 600 pixels and a height of 600, then
+  // the bottom right will be at (600,600).  We assume a window of
+  // such a height here, and transform it into Kig Coordinates.  This
+  // function is quite similar to ScreenInfo::fromScreen, and it's
+  // basically a simple modification of that code to floats..
+
+  // invert the y-axis: 0 is at the bottom !
+  Coordinate t( inx, 600 - iny );
+  t *= 14;
+  t /= 600;
+  return t + Coordinate( -7, -7 );
+};
+
 KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& todoc )
 {
   QFile file( fromfile );
@@ -135,12 +155,14 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
     // read the label..
     QString labeltext;
     stream >> labeltext;
-    float rel_x, rel_y;
-    stream >> rel_x >> rel_y;
+    Coordinate relcoord = readKSegCoordinate( stream );
+    // shut up gcc
+    (void) relcoord;
     if ( type & G_CURVE )
     {
-      float curve_rel_x, curve_rel_y;
-      stream >> curve_rel_x >> curve_rel_y;
+      Coordinate relcurvecoord = readKSegCoordinate( stream );
+      // shut up gcc
+      (void) relcurvecoord;
     };
 
     // now load the object data..
@@ -153,10 +175,7 @@ KigFilter::Result KigFilterKSeg::load( const QString& fromfile, KigDocument& tod
       if ( nparents == 0 )
       {
         // fixed point
-        float x, y;
-        stream >> x;
-        stream >> y;
-        Coordinate c( x, y );
+        Coordinate c = readKSegCoordinate( stream );
         Objects os = ObjectFactory::instance()->fixedPoint( c );
         point = static_cast<RealObject*>( os[2] );
         copy( os.begin(), os.begin() + 2, back_inserter( ret ) );
