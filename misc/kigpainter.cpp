@@ -287,3 +287,7 @@ void KigPainter::pointOverlay( const Coordinate& p1 )
   r.setCenter( p1 );
   mView->appendOverlay( mView->toScreen( r) );
 }
+double KigPainter::pixelWidth()
+{
+  return mView->pixelWidth();
+}

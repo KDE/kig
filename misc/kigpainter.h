@@ -75,6 +75,8 @@ public:
   void setBrush( const QBrush& b );
   void setBrushColor( const QColor& c );
 
+  double pixelWidth();
+
   /**
    * draw a rect..
    */

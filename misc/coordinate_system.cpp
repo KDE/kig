@@ -117,23 +117,26 @@ void EuclideanCoords::drawGrid( KigPainter& p ) const
 		   AlignBottom | AlignLeft
 		   );
     };
-  /*
-  // arrows on the axes...
+  // arrows on the ends of the axes...
   p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
-  p.setBrushColor( Qt::gray );
+  p.setBrush( QBrush( Qt::gray ) );
   std::vector<Coordinate> a;
+
+  // the arrow on the right end of the X axis...
   a.reserve( 3 );
-  a.push_back( Coordinate( mMaxX - 0.6, -0.3 ) );
-  a.push_back( Coordinate( mMaxX, 0 ) );
-  a.push_back( Coordinate( mMaxX - 0.6, 0 + 0.3 ) );
+  double u = p.pixelWidth();
+  a.push_back( Coordinate( dMaxX - 6 * u, -3 * u) );
+  a.push_back( Coordinate( dMaxX, 0 ) );
+  a.push_back( Coordinate( dMaxX - 6 * u, 3 * u ) );
   p.drawPolygon( a, true );
   //  p.drawLine( right, 0, right + 5, 0 );
+
+  // the arrow on the top end of the Y axis...
   a.clear();
   a.reserve( 3 );
-  a.push_back( Coordinate( 0.3, mMaxY - 0.6 ) );
-  a.push_back( Coordinate( 0, mMaxY) );
-  a.push_back( Coordinate( 0.3, mMaxY - 6 ) );
+  a.push_back( Coordinate( 3 * u, dMaxY - 6 * u ) );
+  a.push_back( Coordinate( 0, dMaxY ) );
+  a.push_back( Coordinate( -3 * u, dMaxY - 6 * u ) );
   p.drawPolygon( a, true );
   //  p.drawLine( 0, top, 0, top - 6 );
-  */
 }
