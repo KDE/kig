@@ -45,7 +45,7 @@ void ConstructMode::leftClickedObject(
   ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
                                             mdoc, w );
   mpt->calc( w );
-  if ( o && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
+  if ( o && !mparents.contains( o ) && mctor->wantArgs( mparents.with( o ), mdoc, w ) )
   {
     selectObject( o, p, w );
   }
@@ -94,7 +94,8 @@ void ConstructMode::mouseMoved( const Objects& os,
   ObjectFactory::instance()->redefinePoint( mpt, w.fromScreen( p ),
                                             mdoc, w );
   mpt->calc( w );
-  if ( !os.empty() && mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
+  if ( !os.empty() && !mparents.contains( os.front() ) &&
+       mctor->wantArgs( mparents.with( os.front() ), mdoc, w ) )
   {
     mctor->handlePrelim( pter, mparents.with( os.front() ), mdoc, w );
     w.setCursor( KCursor::handCursor() );
