@@ -164,14 +164,18 @@ const LineLineIntersectionType* LineLineIntersectionType::instance()
   return &t;
 }
 
-ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
+ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocument& d ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  return new PointImp(
+  Coordinate p =
     calcIntersectionPoint(
       static_cast<const AbstractLineImp*>( parents[0] )->data(),
-      static_cast<const AbstractLineImp*>( parents[1] )->data() ) );
+      static_cast<const AbstractLineImp*>( parents[1] )->data() );
+  if ( static_cast<const AbstractLineImp*>( parents[0] )->containsPoint( p, d ) &&
+       static_cast<const AbstractLineImp*>( parents[1] )->containsPoint( p, d ) )
+    return new PointImp( p );
+  else return new InvalidImp();
 }
 
 static const ArgsParser::spec argsspecLineCubicIntersection[] =
