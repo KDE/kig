@@ -16,9 +16,15 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 // 02111-1307, USA.
 
+#include <config.h>
+
 #include "cubic-common.h"
 #include "kignumerics.h"
 #include "kigtransform.h"
+
+#ifdef HAVE_IEEEFP_H
+#include <ieeefp.h>
+#endif
 
 /*
  * coefficients of the cartesian equation for cubics

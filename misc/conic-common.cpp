@@ -18,6 +18,8 @@
  USA
 **/
 
+#include <config.h>
+
 #include "conic-common.h"
 
 #include "common.h"
@@ -25,6 +27,10 @@
 
 #include <cmath>
 #include <algorithm>
+
+#ifdef HAVE_IEEEFP_H
+#include <ieeeefp.h>
+#endif
 
 ConicCartesianData::ConicCartesianData(
   const ConicPolarData& polardata

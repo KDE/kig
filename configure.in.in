@@ -60,6 +60,8 @@ AM_CONDITIONAL(KIG_COMPILE_PYTHON_SCRIPTING, test x$kig_enable_python_scripting 
 AC_SUBST( KIGVERSION, $kig_version )
 AC_DEFINE_UNQUOTED( KIGVERSION, "$kig_version", [The current Kig version as a string] )
 
+AC_CHECK_HEADERS([ieeefp.h])
+
 # apparently the KDE build system wants to see "dnl AC_OUTPUT( ... )",
 # not a normal AC_OUTPUT
 dnl AC_OUTPUT( kig/kig.lsm )
