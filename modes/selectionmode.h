@@ -36,6 +36,7 @@ class SelectionModeBase
   Objects mselection;
   QPoint mplc;
   Objects moco;
+  bool mcswc;
 
   void leftClicked( QMouseEvent* e, KigWidget* v );
   void leftMouseMoved( QMouseEvent*, KigWidget* );
@@ -59,6 +60,8 @@ public:
   SelectionModeBase( KigDocument* );
   ~SelectionModeBase();
 
+  void setClearSelectWithoutControl( bool b );
+
   void run( KigMode* prev );
 
   const Objects& selection() const;
@@ -74,7 +77,7 @@ class StandAloneSelectionMode
 {
   const ArgsChecker& mchecker;
 public:
-  StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d );
+  StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d, bool cswc = false );
   void selectionChanged( KigWidget& w );
   virtual bool wantObject( const Object& o, KigWidget& );
 };

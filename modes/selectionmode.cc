@@ -34,7 +34,7 @@
 #include <qglobal.h>
 
 SelectionModeBase::SelectionModeBase( KigDocument* d )
-  : KigMode( d )
+  : KigMode( d ), mcswc( true )
 {
 }
 
@@ -84,7 +84,7 @@ void SelectionModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     // expects.  E.g. if he clicks on a point which is on a line,
     // then moco will contain first the point, then the line.
     // Obviously, we only want the point...
-    if (!(e->state() & (ControlButton | ShiftButton)))
+    if (!(e->state() & (ControlButton | ShiftButton)) && mcswc )
     {
       cos = mselection;
       clearSelection( *v );
@@ -255,9 +255,10 @@ bool StandAloneSelectionMode::wantObject( const Object& o, KigWidget& )
   return res != ArgsChecker::Invalid;
 }
 
-StandAloneSelectionMode::StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d )
+StandAloneSelectionMode::StandAloneSelectionMode( const ArgsChecker& c, KigDocument* d, bool cswc )
   : SelectionModeBase( d ), mchecker( c )
 {
+  setClearSelectWithoutControl( cswc );
 }
 
 void SelectionModeBase::unselectObject( Object* o, KigWidget& w )
@@ -265,4 +266,9 @@ void SelectionModeBase::unselectObject( Object* o, KigWidget& w )
   o->setSelected( false );
   mselection.remove( o );
   selectionChanged( w );
+}
+
+void SelectionModeBase::setClearSelectWithoutControl( bool b )
+{
+  mcswc = b;
 }
