@@ -48,10 +48,6 @@ class KRecentFilesAction;
 /**
  * This is the application "Shell".  It has a menubar, toolbar, and
  * statusbar but relies on the "Part" to do all the real work.
- *
- * @short Application Shell
- * @author Dominique Devriese <devriese@kde.org>
- * @version 2.0
  */
 class Kig : public KParts::MainWindow
 {

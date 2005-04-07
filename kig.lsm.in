@@ -7,8 +7,8 @@ Description:    Kig is an application meant to allow high school
 		concepts, much like Dr.Geo, KGeo, KSeg and Cabri.
 Keywords:       KDE Interactive Geometry KGeo KDE-Edu KSeg Cabri
 		math GPL
-Author:         Dominique Devriese <devriese@kde.org>
-Maintained-by:  Dominique Devriese <devriese@kde.org>
+Author:         Kig developers <kde-edu-devel@kde.org>
+Maintained-by:  Kig developers <kde-edu-devel@kde.org>
 Home-page:      http://edu.kde.org/kig
 Primary-site:   ftp://ftp.kde.org/pub/kde/stable/apps/KDE3.x/math/
                 xxxxxx  kig-@KIGVERSION@.tar.bz2

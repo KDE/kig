@@ -57,7 +57,6 @@ class ScreenInfo;
  * interface to shells
  *
  * @short Main Part
- * @author Dominique Devriese <devriese@kde.org>
  */
 class KigPart : public KParts::ReadWritePart
 {

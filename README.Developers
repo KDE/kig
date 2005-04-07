@@ -13,8 +13,8 @@ Hi, here are some things that might not be immediately clear :
 - There is some documentation about the design in the file DESIGN
 
 - if you want to contribute, your work is more than welcome, no matter where
-  you want to help: translation, coding, art, just send me a mail at
-  devriese@kde.org (preferably before you start, so you won't be
+  you want to help: translation, coding, art, just send us a mail at
+  kde-edu-devel@kde.org (preferably before you start, so you won't be
   doing unnecessary work or something like that), if you have cvs access,
   you can of course always commit to cvs
 
@@ -43,4 +43,4 @@ free software in general.
 
 Cheers,
 
-Dominique Devriese
+The Kig Developers

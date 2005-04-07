@@ -30,7 +30,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 				   I18N_NOOP( "(C) 2002-2004, The Kig developers" ),
 				   0, "http://edu.kde.org/kig" );
   tmp->addAuthor("Dominique Devriese",
-                 I18N_NOOP("Original author, maintenance, design and lots of code."),
+                 I18N_NOOP("Original author, long time maintainer, design and lots of code."),
 		  "devriese@kde.org" );
 
   tmp->addAuthor("Maurizio Paolini",
