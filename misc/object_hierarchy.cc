@@ -468,9 +468,15 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
   };
 }
 
-ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
+ObjectHierarchy::ObjectHierarchy()
   : mnumberofargs( 0 ), mnumberofresults( 0 )
 {
+}
+
+ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& parent )
+{
+  ObjectHierarchy* obhi = new ObjectHierarchy();
+
   bool ok = true;
   QString tmp;
   QDomElement e = parent.firstChild().toElement();
@@ -480,28 +486,28 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
 
     tmp = e.attribute( "id" );
     uint id = tmp.toInt( &ok );
-    assert( ok );
+    if ( !ok ) return 0;
 
-    mnumberofargs = kMax( id, mnumberofargs );
+    obhi->mnumberofargs = kMax( id, obhi->mnumberofargs );
 
     tmp = e.attribute( "requirement" );
     const ObjectImpType* req = ObjectImpType::typeFromInternalName( tmp.latin1() );
     if ( req == 0 ) req = ObjectImp::stype(); // sucks, i know..
-    margrequirements.resize( mnumberofargs, ObjectImp::stype() );
-    musetexts.resize( mnumberofargs, "" );
-    mselectstatements.resize( mnumberofargs, "" );
-    margrequirements[id - 1] = req;
-    musetexts[id - 1] = req->selectStatement();
+    obhi->margrequirements.resize( obhi->mnumberofargs, ObjectImp::stype() );
+    obhi->musetexts.resize( obhi->mnumberofargs, "" );
+    obhi->mselectstatements.resize( obhi->mnumberofargs, "" );
+    obhi->margrequirements[id - 1] = req;
+    obhi->musetexts[id - 1] = req->selectStatement();
     QDomElement esub = e.firstChild().toElement();
     for ( ; !esub.isNull(); esub = esub.nextSibling().toElement() )
     {
       if ( esub.tagName() == "UseText" )
       {
-        musetexts[id - 1] = esub.text().latin1();
+        obhi->musetexts[id - 1] = esub.text().latin1();
       }
       else if ( esub.tagName() == "SelectStatement" )
       {
-        mselectstatements[id - 1] = esub.text().latin1();
+        obhi->mselectstatements[id - 1] = esub.text().latin1();
       }
       else
       {
@@ -512,11 +518,11 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
     bool result = e.tagName() == "result";
-    if ( result ) ++mnumberofresults;
+    if ( result ) ++obhi->mnumberofresults;
 
     tmp = e.attribute( "id" );
     int id = tmp.toInt( &ok );
-    assert( ok );
+    if ( !ok ) return 0;
 
     tmp = e.attribute( "action" );
     Node* newnode = 0;
@@ -525,25 +531,16 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
       // ApplyTypeNode
       QCString typen = e.attribute( "type" ).latin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
+      if ( ! type ) return 0;
 
-
-
-
-      // BUG: what if the type doesn't exist ?
-
-
-
-
-
-      assert( type );
       std::vector<int> parents;
       for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
       {
         QDomElement q = p.toElement();
-        assert( !q.isNull() ); // see above
-        assert ( q.tagName() == "arg" );
+        if ( q.isNull() ) return 0; // see above
+        if ( q.tagName() != "arg" ) return 0;
         int pid = q.text().toInt(&ok );
-        assert( ok );
+        if ( !ok ) return 0;
         parents.push_back( pid - 1 );
       };
       newnode = new ApplyTypeNode( type, parents );
@@ -554,21 +551,26 @@ ObjectHierarchy::ObjectHierarchy( const QDomElement& parent )
       QCString propname = e.attribute( "property" ).latin1();
       QDomElement arge = e.firstChild().toElement();
       int parent = arge.text().toInt( &ok );
-      assert( ok );
+      if ( !ok ) return 0;
       newnode = new FetchPropertyNode( parent - 1, propname );
     }
     else
     {
       // PushStackNode
-      assert( e.attribute( "action" ) == "push" );
+      if ( e.attribute( "action" ) != "push" ) return 0;
       QString typen = e.attribute( "type" );
-      assert ( !typen.isNull() );
-      ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e );
+      if ( typen.isNull() ) return 0;
+      QString err;
+      ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e, err );
+      if ( ! imp ) return 0;
       newnode = new PushStackNode( imp );
     };
-    mnodes.resize( kMax( size_t(id - mnumberofargs), mnodes.size() ) );
-    mnodes[id - mnumberofargs - 1] = newnode;
+    obhi->mnodes.resize( kMax( size_t(id - obhi->mnumberofargs), obhi->mnodes.size() ) );
+    obhi->mnodes[id - obhi->mnumberofargs - 1] = newnode;
   };
+
+  // if we are here, all went fine
+  return obhi;
 }
 
 ArgsParser ObjectHierarchy::argParser() const

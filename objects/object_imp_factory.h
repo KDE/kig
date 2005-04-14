@@ -28,7 +28,7 @@ public:
   static const ObjectImpFactory* instance();
   // loads data from parent, and returns a new ObjectImp from the type
   // string type.
-  ObjectImp* deserialize( const QString& type, const QDomElement& parent ) const;
+  ObjectImp* deserialize( const QString& type, const QDomElement& parent, QString error ) const;
   // adds data to parent, and returns a type string..
   QString serialize( const ObjectImp& d, QDomElement& parent, QDomDocument& doc ) const;
 };

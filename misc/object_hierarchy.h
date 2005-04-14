@@ -49,6 +49,10 @@ private:
 
   void init( const std::vector<ObjectCalcer*>& from, const std::vector<ObjectCalcer*>& to );
 
+  // this constructor is private since it should be used only by the static
+  // constructor buildSafeObjectHierarchy
+  ObjectHierarchy();
+
 public:
   ObjectHierarchy( const ObjectCalcer* from, const ObjectCalcer* to );
   ObjectHierarchy( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
@@ -64,9 +68,13 @@ public:
 
   // saves the ObjectHierarchy data in children xml tags of parent..
   void serialize( QDomElement& parent, QDomDocument& doc ) const;
-  // deserialize the ObjectHierarchy data from the xml element
-  // parent..
-  ObjectHierarchy( const QDomElement& parent );
+  /**
+   * Deserialize the ObjectHierarchy data from the xml element parent..
+   * Since this operation can fail for some reasons, we provide it as a
+   * static to return 0 in case of error.
+   */
+  static ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& parent );
+//  ObjectHierarchy( const QDomElement& parent );
 
   // build a set of objects that interdepend according to this
   // ObjectHierarchy..  Only the result objects are returned.  Helper

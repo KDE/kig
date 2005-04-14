@@ -32,6 +32,8 @@
 
 #include <qdom.h>
 
+#include <klocale.h>
+
 const ObjectImpFactory* ObjectImpFactory::instance()
 {
   static const ObjectImpFactory t;
@@ -283,20 +285,28 @@ static double readDoubleElement( QDomNode n, bool& ok,
 }
 
 ObjectImp* ObjectImpFactory::deserialize( const QString& type,
-                                          const QDomElement& parent ) const
+                                          const QDomElement& parent,
+                                          QString error ) const
 {
+#define KIG_GENERIC_PARSE_ERROR \
+  { \
+    error = i18n( "An error was encountered at line %1 in file %2." ) \
+            .arg( __LINE__ ).arg( __FILE__ ); \
+    return 0; \
+  }
+
   bool ok = true;
   if ( type == "int" )
   {
     int ret = parent.text().toInt( &ok );
-    if ( ! ok ) return 0;
-    else return new IntImp( ret );
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
+    return new IntImp( ret );
   }
   else if ( type == "double" )
   {
     double ret = parent.text().toDouble( &ok );
-    if ( ! ok ) return 0;
-    else return new DoubleImp( ret );
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
+    return new DoubleImp( ret );
   }
   else if ( type == "string" )
   {
@@ -308,7 +318,9 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   }
   else if ( type == "hierarchy" )
   {
-    return new HierarchyImp( ObjectHierarchy( parent ) );
+    ObjectHierarchy* hier = ObjectHierarchy::buildSafeObjectHierarchy( parent );
+    if ( ! hier ) KIG_GENERIC_PARSE_ERROR;
+    return new HierarchyImp( *hier );
   }
   else if ( type == "transformation" )
   {
@@ -322,14 +334,14 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
         for ( QDomElement elel = childe.firstChild().toElement();
               ! elel.isNull(); elel = elel.nextSibling().toElement() )
         {
-          if ( elel.tagName() != "element" ) return 0;
+          if ( elel.tagName() != "element" ) KIG_GENERIC_PARSE_ERROR;
           bool ok = true;
           int row = elel.attribute( "row" ).toInt( &ok );
-          if ( ! ok ) return 0;
+          if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
           int column = elel.attribute( "column" ).toInt( &ok );
-          if ( ! ok ) return 0;
+          if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
           data[row][column] = elel.text().toDouble( &ok );
-          if ( ! ok ) return 0;
+          if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
         };
       }
       else if ( childe.tagName() == "homothetic" )
@@ -344,17 +356,17 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   else if ( type == "point" )
   {
     Coordinate ret = readXYElements( parent, ok );
-    if ( ! ok ) return 0;
-    else return new PointImp( ret );
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
+    return new PointImp( ret );
   }
   else if ( type == "line" || type == "segment" || type == "ray" )
   {
     QDomNode n = parent.firstChild();
     Coordinate a = readCoordinateElement( n, ok, "a" );
-    if ( !ok ) return 0;
+    if ( !ok ) KIG_GENERIC_PARSE_ERROR;
     n = n.nextSibling();
     Coordinate b = readCoordinateElement( n, ok, "b" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
     if ( type == "line" ) return new LineImp( a, b );
     else if ( type == "segment" ) return new SegmentImp( a, b );
     else return new RayImp( a, b );
@@ -362,42 +374,42 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   else if( type == "angle" )
   {
     double size = readDoubleElement( parent.firstChild(), ok, "size" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
     return new AngleImp( Coordinate(), 0, size );
   }
   else if ( type == "arc" )
   {
     QDomNode n = parent.firstChild();
     Coordinate center = readCoordinateElement( n, ok, "center" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
     n = n.nextSibling();
     double radius = readDoubleElement( n, ok, "radius" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
     n = n.nextSibling();
     double startangle = readDoubleElement( n, ok, "startangle" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
     n = n.nextSibling();
     double angle = readDoubleElement( n, ok, "angle" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
     return new ArcImp( center, radius, startangle, angle );
   }
   else if( type == "vector" )
   {
     Coordinate dir = readXYElements( parent, ok );
-    if ( ! ok ) return 0;
-    else return new VectorImp( Coordinate(), dir );
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
+    return new VectorImp( Coordinate(), dir );
   }
   else if( type == "locus" )
   {
     QDomElement curvee = parent.firstChild().toElement();
-    if ( curvee.isNull() || curvee.tagName() != "curve" ) return 0;
+    if ( curvee.isNull() || curvee.tagName() != "curve" ) KIG_GENERIC_PARSE_ERROR;
     QString type = curvee.attribute( "type" );
-    ObjectImp* oi = deserialize( type, curvee );
-    if ( ! oi || ! oi->inherits( CurveImp::stype() ) ) return 0;
+    ObjectImp* oi = deserialize( type, curvee, error );
+    if ( ! oi || ! oi->inherits( CurveImp::stype() ) ) KIG_GENERIC_PARSE_ERROR;
     //CurveImp* curvei = static_cast<CurveImp*>( oi );
 
     QDomElement hiere = curvee.nextSibling().toElement();
-    if ( hiere.isNull() || hiere.tagName() != "calculation" ) return 0;
+    if ( hiere.isNull() || hiere.tagName() != "calculation" ) KIG_GENERIC_PARSE_ERROR;
     assert( false );    // TODO
 //    return new LocusImp( curvei, hier );
   }
@@ -405,11 +417,11 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   {
     QDomNode n = parent.firstChild();
     Coordinate center = readCoordinateElement( n, ok, "center" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double radius = readDoubleElement( n, ok, "radius" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     return new CircleImp( center, radius );
   }
@@ -417,19 +429,19 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   {
     QDomNode n = parent.firstChild();
     Coordinate focus1 = readCoordinateElement( n, ok, "focus1" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double pdimen = readDoubleElement( n, ok, "pdimen" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double ecostheta0 = readDoubleElement( n, ok, "ecostheta0" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double esintheta0 = readDoubleElement( n, ok, "esintheta0" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     return new ConicImpPolar(
       ConicPolarData( focus1, pdimen, ecostheta0, esintheta0 ) );
@@ -438,54 +450,59 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   {
     QDomElement coeffse = parent.firstChild().toElement();
     if ( coeffse.isNull() || coeffse.tagName() != "coefficients" )
-      return 0;
+      KIG_GENERIC_PARSE_ERROR;
 
     QDomNode n = coeffse.firstChild();
     double a000 = readDoubleElement( n, ok, "a000" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a001 = readDoubleElement( n, ok, "a001" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a002 = readDoubleElement( n, ok, "a002" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a011 = readDoubleElement( n, ok, "a011" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a012 = readDoubleElement( n, ok, "a012" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a022 = readDoubleElement( n, ok, "a022" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a111 = readDoubleElement( n, ok, "a111" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a112 = readDoubleElement( n, ok, "a112" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a122 = readDoubleElement( n, ok, "a112" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     n = n.nextSibling();
     double a222 = readDoubleElement( n, ok, "a222" );
-    if ( ! ok ) return 0;
+    if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
     return new CubicImp( CubicCartesianData( a000, a001, a002,
                                              a011, a012, a022,
                                              a111, a112, a122,
                                              a222 ) );
   }
-  assert( false );
-  return new InvalidImp;
+
+  error = i18n( "This Kig file uses an object of type \"%1\", "
+                "which this Kig version does not support."
+                "Perhaps you have compiled Kig without support "
+                "for this object type,"
+                "or perhaps you are using an older Kig version." ).arg( type );
+  return 0;
 }
 
