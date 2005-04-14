@@ -361,7 +361,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
       else if ( dataelem.tagName() == "Description" )
         description = dataelem.text();
       else if ( dataelem.tagName() == "Construction" )
-        hierarchy = new ObjectHierarchy( dataelem );
+        hierarchy = ObjectHierarchy::buildSafeObjectHierarchy( dataelem );
       else if ( dataelem.tagName() == "ActionName" )
         actionname = dataelem.text().latin1();
       else if ( dataelem.tagName() == "IconFileName" )

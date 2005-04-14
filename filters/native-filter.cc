@@ -296,16 +296,13 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
           QString tmp = e.attribute( "type" );
           if ( tmp.isNull() )
             KIG_FILTER_PARSE_ERROR;
-          ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e );
-          if ( ! imp )
+          QString error;
+          ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
+          if ( ( !imp ) && !error.isEmpty() )
           {
-            notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support."
-                                      "Perhaps you have compiled Kig without support "
-                                      "for this object type,"
-                                      "or perhaps you are using an older Kig version." ).arg( tmp ) );
+            parseError( file, error );
             return false;
-          };
+          }
           o = new ObjectConstCalcer( imp );
         }
         else if ( e.tagName() == "Property" )
@@ -457,14 +454,11 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         {
           if ( !parents.empty() ) KIG_FILTER_PARSE_ERROR;
           QString tmp = e.attribute( "type" );
-          ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e );
-          if ( ! imp )
+          QString error;
+          ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
+          if ( ( !imp ) && !error.isEmpty() )
           {
-            notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support."
-                                      "Perhaps you have compiled Kig without support "
-                                      "for this object type,"
-                                      "or perhaps you are using an older Kig version." ).arg( tmp ) );
+            parseError( file, error );
             return false;
           }
           o = new ObjectConstCalcer( imp );
