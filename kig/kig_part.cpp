@@ -229,7 +229,6 @@ void KigPart::setupActions()
   KIconLoader* l = instance()->iconLoader();
   QPixmap tmp;
 
-  tmp = l->loadIcon( "editdelete", KIcon::Toolbar);
   aDeleteObjects = new KAction(
       i18n("&Delete Objects"), "editdelete", Key_Delete, this,
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
@@ -248,9 +247,8 @@ void KigPart::setupActions()
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  tmp = l->loadIcon("gear", KIcon::Toolbar);
   aNewMacro = new KAction(
-    i18n("&New Macro..."), tmp, 0, this, SLOT(newMacro()),
+    i18n("&New Macro..."), "gear", 0, this, SLOT(newMacro()),
     actionCollection(), "macro_action");
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
@@ -297,16 +295,14 @@ void KigPart::setupActions()
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  tmp = l->loadIcon( "viewmagfit", KIcon::Toolbar );
   a = new KAction(
-    i18n( "&Select Shown Area" ), tmp, 0, m_widget, SLOT( zoomRect() ),
+    i18n( "&Select Shown Area" ), "viewmagfit", 0, m_widget, SLOT( zoomRect() ),
     actionCollection(), "view_select_shown_rect" );
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  tmp = l->loadIcon( "viewmag", KIcon::Toolbar );
   a = new KAction(
-    i18n( "S&elect Zoom Area" ), tmp, 0, m_widget, SLOT( zoomArea() ),
+    i18n( "S&elect Zoom Area" ), "viewmag", 0, m_widget, SLOT( zoomArea() ),
     actionCollection(), "view_zoom_area" );
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
