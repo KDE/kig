@@ -316,7 +316,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
 
 QString EuclideanCoords::coordinateFormatNotice() const
 {
-  return i18n( "Enter coordinates in the following form: \"x;y\",\n"
+  return i18n( "Enter coordinates in the following format: \"x;y\",\n"
                "where x is the x coordinate, and y is the y coordinate." );
 }
 
@@ -358,7 +358,7 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
 QString PolarCoords::coordinateFormatNotice() const
 {
   // \xCE\xB8 is utf8 for the greek theta sign..
-  return i18n( "Enter coordinates in the following form: \"r; \xCE\xB8°\",\n"
+  return i18n( "Enter coordinates in the following format: \"r; \xCE\xB8°\",\n"
                "where r and \xCE\xB8 are the polar coordinates." );
 }
 
