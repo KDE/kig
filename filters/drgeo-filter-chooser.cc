@@ -19,18 +19,17 @@
 #include "drgeo-filter-chooser.h"
 #include "drgeo-filter-chooser.moc"
 
-#include <kiconloader.h>
 #include <klistbox.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
+#include <kstdguiitem.h>
 
 KigFilterDrgeoChooser::KigFilterDrgeoChooser( const QStringList& l )
   : KigFilterDrgeoChooserBase( 0, "drgeo_filter", true )
 {
-  KIconLoader* li = KGlobal::iconLoader();
-  OKButton->setIconSet( QIconSet( li->loadIcon( "button_ok", KIcon::Small ) ) );
-  CancelButton->setIconSet( QIconSet( li->loadIcon( "button_cancel", KIcon::Small ) ) );
+  OKButton->setGuiItem( KStdGuiItem::ok() );
+  CancelButton->setGuiItem( KStdGuiItem::cancel() );
 
   FigureListBox->insertStringList( l );
 

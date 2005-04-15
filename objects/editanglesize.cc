@@ -19,22 +19,20 @@
    USA
 **/
 
-
 #include "editanglesize.h"
 #include "editanglesize.moc"
 
 #include <kcombobox.h>
-#include <kiconloader.h>
 #include <klineedit.h>
 #include <kpushbutton.h>
+#include <kstdguiitem.h>
 
 EditAngleSize::EditAngleSize( QWidget* parent, double angle, Goniometry::System system )
   : EditAngleSizeBase( parent, "editsizeangle", true ), mang( angle, system ), mang_orig( angle, system )
 {
   // improving GUI look'n'feel...
-  il = KGlobal::iconLoader();
-  buttonOk->setIconSet( QIconSet( il->loadIcon( "button_ok", KIcon::Small ) ) );
-  buttonCancel->setIconSet( QIconSet( il->loadIcon( "button_cancel", KIcon::Small ) ) );
+  buttonOk->setGuiItem( KStdGuiItem::ok() );
+  buttonCancel->setGuiItem( KStdGuiItem::cancel() );
 
   comboSystem->insertStringList( Goniometry::systemList() );
 

@@ -33,6 +33,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
+#include <kstdguiitem.h>
 
 #include <qfile.h>
 #include <qpixmap.h>
@@ -61,10 +62,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   : TypesDialogBase( parent, "types_dialog", true ), mpart( part )
 {
   // improving GUI look'n'feel...
+  buttonHelp->setGuiItem( KStdGuiItem::help() );
+  buttonOk->setGuiItem( KStdGuiItem::ok() );
+  buttonCancel->setGuiItem( KStdGuiItem::cancel() );
   il = part.instance()->iconLoader();
-  buttonHelp->setIconSet( QIconSet( il->loadIcon( "help", KIcon::Small ) ) );
-  buttonOk->setIconSet( QIconSet( il->loadIcon( "button_ok", KIcon::Small ) ) );
-  buttonCancel->setIconSet( QIconSet( il->loadIcon( "button_cancel", KIcon::Small ) ) );
   buttonEdit->setIconSet( QIconSet( il->loadIcon( "edit", KIcon::Small ) ) );
   buttonRemove->setIconSet( QIconSet( il->loadIcon( "editdelete", KIcon::Small ) ) );
   buttonExport->setIconSet( QIconSet( il->loadIcon( "fileexport", KIcon::Small ) ) );
@@ -78,13 +79,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   loadAllMacros();
 
   popup = new QPopupMenu( this );
-  popup->insertItem( QIconSet( il->loadIcon( "edit", KIcon::Small ) ),
-                     i18n( "&Edit..." ), this, SLOT( editType() ) );
-  popup->insertItem( QIconSet( il->loadIcon( "editdelete", KIcon::Small ) ),
-                     i18n( "&Delete" ), this, SLOT( deleteType() ) );
+  popup->insertItem( SmallIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
+  popup->insertItem( SmallIcon( "editdelete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
   popup->insertSeparator();
-  popup->insertItem( QIconSet( il->loadIcon( "fileexport", KIcon::Small ) ),
-                     i18n( "E&xport..." ), this, SLOT( exportType() ) );
+  popup->insertItem( SmallIcon( "fileexport" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
 
   // saving types
   part.saveTypes();
