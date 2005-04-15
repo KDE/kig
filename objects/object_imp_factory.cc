@@ -286,7 +286,7 @@ static double readDoubleElement( QDomNode n, bool& ok,
 
 ObjectImp* ObjectImpFactory::deserialize( const QString& type,
                                           const QDomElement& parent,
-                                          QString error ) const
+                                          QString& error ) const
 {
 #define KIG_GENERIC_PARSE_ERROR \
   { \
@@ -318,8 +318,8 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   }
   else if ( type == "hierarchy" )
   {
-    ObjectHierarchy* hier = ObjectHierarchy::buildSafeObjectHierarchy( parent );
-    if ( ! hier ) KIG_GENERIC_PARSE_ERROR;
+    ObjectHierarchy* hier = ObjectHierarchy::buildSafeObjectHierarchy( parent, error );
+    if ( ! hier ) return 0;
     return new HierarchyImp( *hier );
   }
   else if ( type == "transformation" )
