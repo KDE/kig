@@ -473,8 +473,15 @@ ObjectHierarchy::ObjectHierarchy()
 {
 }
 
-ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& parent )
+ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& parent, QString& error )
 {
+#define KIG_GENERIC_PARSE_ERROR \
+  { \
+    error = i18n( "An error was encountered at line %1 in file %2." ) \
+            .arg( __LINE__ ).arg( __FILE__ ); \
+    return 0; \
+  }
+
   ObjectHierarchy* obhi = new ObjectHierarchy();
 
   bool ok = true;
@@ -486,7 +493,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
 
     tmp = e.attribute( "id" );
     uint id = tmp.toInt( &ok );
-    if ( !ok ) return 0;
+    if ( !ok ) KIG_GENERIC_PARSE_ERROR;
 
     obhi->mnumberofargs = kMax( id, obhi->mnumberofargs );
 
@@ -522,7 +529,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
 
     tmp = e.attribute( "id" );
     int id = tmp.toInt( &ok );
-    if ( !ok ) return 0;
+    if ( !ok ) KIG_GENERIC_PARSE_ERROR;
 
     tmp = e.attribute( "action" );
     Node* newnode = 0;
@@ -531,16 +538,24 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
       // ApplyTypeNode
       QCString typen = e.attribute( "type" ).latin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
-      if ( ! type ) return 0;
+      if ( ! type )
+      {
+        error = i18n( "This Kig file uses an object of type \"%1\", "
+                      "which this Kig version does not support."
+                      "Perhaps you have compiled Kig without support "
+                      "for this object type,"
+                      "or perhaps you are using an older Kig version." ).arg( typen );
+        return 0;
+      }
 
       std::vector<int> parents;
       for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
       {
         QDomElement q = p.toElement();
-        if ( q.isNull() ) return 0; // see above
-        if ( q.tagName() != "arg" ) return 0;
+        if ( q.isNull() ) KIG_GENERIC_PARSE_ERROR; // see above
+        if ( q.tagName() != "arg" ) KIG_GENERIC_PARSE_ERROR;
         int pid = q.text().toInt(&ok );
-        if ( !ok ) return 0;
+        if ( !ok ) KIG_GENERIC_PARSE_ERROR;
         parents.push_back( pid - 1 );
       };
       newnode = new ApplyTypeNode( type, parents );
@@ -551,18 +566,17 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
       QCString propname = e.attribute( "property" ).latin1();
       QDomElement arge = e.firstChild().toElement();
       int parent = arge.text().toInt( &ok );
-      if ( !ok ) return 0;
+      if ( !ok ) KIG_GENERIC_PARSE_ERROR;
       newnode = new FetchPropertyNode( parent - 1, propname );
     }
     else
     {
       // PushStackNode
-      if ( e.attribute( "action" ) != "push" ) return 0;
+      if ( e.attribute( "action" ) != "push" ) KIG_GENERIC_PARSE_ERROR;
       QString typen = e.attribute( "type" );
-      if ( typen.isNull() ) return 0;
-      QString err;
-      ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e, err );
-      if ( ! imp ) return 0;
+      if ( typen.isNull() ) KIG_GENERIC_PARSE_ERROR;
+      ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e, error );
+      if ( ( ! imp ) && !error.isEmpty() ) return 0;
       newnode = new PushStackNode( imp );
     };
     obhi->mnodes.resize( kMax( size_t(id - obhi->mnumberofargs), obhi->mnodes.size() ) );

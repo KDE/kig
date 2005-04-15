@@ -345,6 +345,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
 //  if ( ! sok ) return false;
 
   int unnamedindex = 1;
+  QString tmp;
 
   for ( QDomElement macroelem = docelem.firstChild().toElement();
         ! macroelem.isNull(); macroelem = macroelem.nextSibling().toElement() )
@@ -361,7 +362,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
       else if ( dataelem.tagName() == "Description" )
         description = dataelem.text();
       else if ( dataelem.tagName() == "Construction" )
-        hierarchy = ObjectHierarchy::buildSafeObjectHierarchy( dataelem );
+        hierarchy = ObjectHierarchy::buildSafeObjectHierarchy( dataelem, tmp );
       else if ( dataelem.tagName() == "ActionName" )
         actionname = dataelem.text().latin1();
       else if ( dataelem.tagName() == "IconFileName" )
