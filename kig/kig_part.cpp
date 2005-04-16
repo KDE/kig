@@ -422,7 +422,7 @@ bool KigPart::openFile()
 
 bool KigPart::saveFile()
 {
-  if ( m_file.isEmpty() ) return internalSaveAs();
+  if ( m_file.isEmpty() || m_bTemp ) return internalSaveAs();
   // mimetype:
   KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
   if ( mimeType->name() != "application/x-kig" )
