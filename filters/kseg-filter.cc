@@ -172,6 +172,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
   };
 
   std::vector<ObjectHolder*> ret;
+  std::vector<ObjectHolder*> ret2;
 
   // G_refs
   unsigned int count;
@@ -210,7 +211,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
 
     // avoid g++ warnings about unused vars..
     // this doesn't really do anything..
-    (void) labelVisible;
     (void) given;
     (void) final;
 
@@ -305,7 +305,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
       };
       assert( d );
-      object = new ObjectHolder( o, d );
+      if ( !labeltext.isEmpty() )
+      {
+        ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+        object = new ObjectHolder( o, d, name );
+      }
+      else
+      {
+        object = new ObjectHolder( o, d );
+      }
     }
     else
       switch( type )
@@ -366,7 +374,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         int width = style.pointstyle == SMALL_CIRCLE ? 2 : style.pointstyle == MEDIUM_CIRCLE ? 3 : 5;
         ObjectDrawer* d =
           new ObjectDrawer( style.brush.color(), width, visible, style.pen.style() );
-        object = new ObjectHolder( point, d );
+        if ( !labeltext.isEmpty() )
+        {
+          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+          object = new ObjectHolder( point, d, name );
+        }
+        else
+        {
+          object = new ObjectHolder( point, d );
+        }
         break;
       };
       case G_SEGMENT:
@@ -378,7 +394,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           ObjectTypeCalcer* o = new ObjectTypeCalcer( SegmentABType::instance(), parents );
           ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-          object = new ObjectHolder( o, d );
+          if ( !labeltext.isEmpty() )
+          {
+            ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+            object = new ObjectHolder( o, d, name );
+          }
+          else
+          {
+            object = new ObjectHolder( o, d );
+          }
           break;
         }
         default:
@@ -395,7 +419,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           ObjectTypeCalcer* o = new ObjectTypeCalcer( RayABType::instance(), parents );
           ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-          object = new ObjectHolder( o, d );
+          if ( !labeltext.isEmpty() )
+          {
+            ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+            object = new ObjectHolder( o, d, name );
+          }
+          else
+          {
+            object = new ObjectHolder( o, d );
+          }
           break;
         }
         case G_BISECTOR_RAY:
@@ -404,7 +436,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           angle->calc( *retdoc );
           ObjectPropertyCalcer* o = fact->propertyObjectCalcer( angle, "angle-bisector" );
           ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-          object = new ObjectHolder( o, d );
+          if ( !labeltext.isEmpty() )
+          {
+            ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+            object = new ObjectHolder( o, d, name );
+          }
+          else
+          {
+            object = new ObjectHolder( o, d );
+          }
           break;
         }
         default:
@@ -432,7 +472,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         };
         assert( o );
         ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        object = new ObjectHolder( o, d );
+        if ( !labeltext.isEmpty() )
+        {
+          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+          object = new ObjectHolder( o, d, name );
+        }
+        else
+        {
+          object = new ObjectHolder( o, d );
+        }
         break;
       };
       case G_CIRCLE:
@@ -474,7 +522,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         };
         assert( o );
         ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        object = new ObjectHolder( o, d );
+        if ( !labeltext.isEmpty() )
+        {
+          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+          object = new ObjectHolder( o, d, name );
+        }
+        else
+        {
+          object = new ObjectHolder( o, d );
+        }
         break;
       };
       case G_ARC:
@@ -490,7 +546,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         if ( nparents < 3 ) KIG_FILTER_PARSE_ERROR;
         ObjectTypeCalcer* o = new ObjectTypeCalcer( PolygonBNPType::instance(), parents );
         ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        object = new ObjectHolder( o, d );
+        if ( !labeltext.isEmpty() )
+        {
+          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+          object = new ObjectHolder( o, d, name );
+        }
+        else
+        {
+          object = new ObjectHolder( o, d );
+        }
         break;
       };
       case G_CIRCLEINTERIOR:
@@ -516,7 +580,15 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
         ObjectTypeCalcer* o = fact->locusCalcer( parents[0], parents[1] );
         ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        object = new ObjectHolder( o, d );
+        if ( !labeltext.isEmpty() )
+        {
+          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+          object = new ObjectHolder( o, d, name );
+        }
+        else
+        {
+          object = new ObjectHolder( o, d );
+        }
         break;
       };
       case G_MEASURE:
@@ -531,6 +603,19 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     assert( object );
     ret[i] = object;
     object->calc( *retdoc );
+    if ( !labeltext.isEmpty() && labelVisible )
+    {
+      std::vector<ObjectCalcer*> args2;
+      args2.push_back( object->nameCalcer() );
+      ObjectCalcer* oc2 = fact->attachedLabelCalcer(
+               QString::fromLatin1( "%1" ), object->calcer(),
+               static_cast<const PointImp*>( object->imp() )->coordinate(),
+               false, args2, *retdoc );
+      oc2->calc( *retdoc );
+      ObjectDrawer* d2 = new ObjectDrawer( style.pen.color() );
+      ObjectHolder* o2 = new ObjectHolder( oc2, d2 );
+      ret2.push_back( o2 );
+    }
   };
 
   // selection groups ( we ignore them, but we pretend to read them
@@ -553,6 +638,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
 
   // no more data in the file..
   retdoc->addObjects( ret );
+  retdoc->addObjects( ret2 );
   retdoc->setAxes( false );
   retdoc->setGrid( false );
   return retdoc;
