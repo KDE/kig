@@ -105,7 +105,7 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
     else return 0;
   };
   if ( nlines == 2 )
-    return which == 1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : 0;
+    return which == -1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : 0;
   else if ( nlines == 1 && nconics == 1 )
   {
     std::vector<ObjectCalcer*> intparents( parents );
@@ -348,12 +348,12 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           // for all objects G_INTERSECTION_POINT gets the
           // first intersection of its parents, G_INTERSECTION2_POINT
           // represents the second, if present.
-          point = intersectionPoint( parents, 1 );
+          point = intersectionPoint( parents, -1 );
           if ( ! point ) KIG_FILTER_PARSE_ERROR;
           break;
         }
         case G_INTERSECTION2_POINT:
-          point = intersectionPoint( parents, -1 );
+          point = intersectionPoint( parents, 1 );
           if ( ! point ) KIG_FILTER_PARSE_ERROR;
           break;
         case G_MID_POINT:
