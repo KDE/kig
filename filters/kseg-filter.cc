@@ -280,6 +280,8 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         o = new ObjectTypeCalcer( LineReflectionType::instance(), mirparents );
         break;
       }
+      default:
+        KIG_FILTER_PARSE_ERROR;
       }
       assert( o );
       ObjectDrawer* d;
@@ -598,6 +600,8 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       case G_ANNOTATION:
         KIG_FILTER_PARSE_ERROR;
       case G_LOOP:
+        KIG_FILTER_PARSE_ERROR;
+      default:
         KIG_FILTER_PARSE_ERROR;
       };
     assert( object );
