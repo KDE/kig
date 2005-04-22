@@ -1,3 +1,39 @@
+2005-04-20  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Give to the KSeg filter the ability to import names (called
+	labels) of objects. This is not so perfect, because we need to
+	decode better the read object label.
+
+	* Fix intersection points loading in KSeg filter.
+
+2005-04-16  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Fixing a small issue when saving a file with no name set. The
+	name wasn't empty, but it contained a temp file. Luckly m_bTemp
+	stores whether using a temp file. This could fix bug #98142.
+
+2005-04-15  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Correct size for some menu item icons, as reported by Danny
+	Allen.
+
+	* Better handling of unexistant types found when loading a
+	document.
+
+	* Corrected two strings, thanks to Danny Allen.
+
+	* Use KStdGuiItem in more places than before.
+
+2005-04-14  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Committing fix for bug #100292. The new code makes the
+	ObjectHierarchy construction from QDomElement more safe than
+	before; the new "static constructor" and
+	ObjectImpFactory::deserialize() can report an error in case of.
+
+	* As a result of the fix, less assert() asre used in
+	deserialization code.
+
 2005-02-21  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Again, bump the version number to 0.10.
