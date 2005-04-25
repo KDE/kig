@@ -1,0 +1,41 @@
+KSeg filter status
+==================
+
+Objects imported
+----------------
+
+Points            ok
+Rays              ok
+Vectors           ok
+Lines             ok
+Circles           ok
+Angles            ok
+Arcs              ok
+Locuses           some
+Transformations   most
+Intersections     most
+Polygons          ok
+Labels            ok
+
+Colors            ok
+Visibility        ok
+Styles            ok
+Grid              ok
+
+Objects not imported
+--------------------
+
+Transformations   scaling (with ratio as formula) (*)
+Intersections     arc-circle(*)
+Filled circles    (*)
+Arc sectors       (*)
+Arc segments      (*)
+Formulas          (*)
+
+(*) objects which currently are not implemented in Kig
+
+Known problems
+--------------
+
+* Some locuses may crash the filter.
+* Label text should be correctly encoded.

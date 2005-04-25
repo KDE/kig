@@ -298,6 +298,9 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     ObjectCalcer* o = 0;
     bool ok = true;
 
+    QColor color = style.pen.color();
+    int width = style.pen.width();
+
 /*
     kdDebug() << "type: " << type << endl
               << "descendtype: " << descendtype << endl
@@ -316,13 +319,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_REFLECTED:
         {
           o = transformObject( file, *retdoc, parents, descendtype, ok );
-          if ( ! o )
-          {
-            if ( ok )
-              KIG_FILTER_PARSE_ERROR
-            else
-              return 0;
-          }
           break;
         }
         case G_FREE_POINT:
@@ -374,19 +370,8 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         default:
           KIG_FILTER_PARSE_ERROR;
         };
-        assert( o );
-        int width = style.pointstyle == SMALL_CIRCLE ? 2 : style.pointstyle == MEDIUM_CIRCLE ? 3 : 5;
-        ObjectDrawer* d =
-          new ObjectDrawer( style.brush.color(), width, visible, style.pen.style() );
-        if ( !labeltext.isEmpty() )
-        {
-          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( o, d, name );
-        }
-        else
-        {
-          object = new ObjectHolder( o, d );
-        }
+        width = style.pointstyle == SMALL_CIRCLE ? 2 : style.pointstyle == MEDIUM_CIRCLE ? 3 : 5;
+        color = style.brush.color();
         break;
       };
       case G_SEGMENT:
@@ -399,13 +384,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_REFLECTED:
         {
           o = transformObject( file, *retdoc, parents, descendtype, ok );
-          if ( ! o )
-          {
-            if ( ok )
-              KIG_FILTER_PARSE_ERROR
-            else
-              return 0;
-          }
           break;
         }
         case G_ENDPOINTS_SEGMENT:
@@ -416,16 +394,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         }
         default:
           KIG_FILTER_PARSE_ERROR;
-        }
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        if ( !labeltext.isEmpty() )
-        {
-          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( o, d, name );
-        }
-        else
-        {
-          object = new ObjectHolder( o, d );
         }
         break;
       };
@@ -439,13 +407,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_REFLECTED:
         {
           o = transformObject( file, *retdoc, parents, descendtype, ok );
-          if ( ! o )
-          {
-            if ( ok )
-              KIG_FILTER_PARSE_ERROR
-            else
-              return 0;
-          }
           break;
         }
         case G_TWOPOINTS_RAY:
@@ -464,16 +425,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         default:
           KIG_FILTER_PARSE_ERROR;
         };
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        if ( !labeltext.isEmpty() )
-        {
-          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( o, d, name );
-        }
-        else
-        {
-          object = new ObjectHolder( o, d );
-        }
         break;
       };
       case G_LINE:
@@ -486,13 +437,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_REFLECTED:
         {
           o = transformObject( file, *retdoc, parents, descendtype, ok );
-          if ( ! o )
-          {
-            if ( ok )
-              KIG_FILTER_PARSE_ERROR
-            else
-              return 0;
-          }
           break;
         }
         case G_TWOPOINTS_LINE:
@@ -516,17 +460,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         default:
           KIG_FILTER_PARSE_ERROR;
         };
-        assert( o );
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        if ( !labeltext.isEmpty() )
-        {
-          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( o, d, name );
-        }
-        else
-        {
-          object = new ObjectHolder( o, d );
-        }
         break;
       };
       case G_CIRCLE:
@@ -539,13 +472,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_REFLECTED:
         {
           o = transformObject( file, *retdoc, parents, descendtype, ok );
-          if ( ! o )
-          {
-            if ( ok )
-              KIG_FILTER_PARSE_ERROR
-            else
-              return 0;
-          }
           break;
         }
         case G_CENTERPOINT_CIRCLE:
@@ -581,17 +507,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         default:
           KIG_FILTER_PARSE_ERROR;
         };
-        assert( o );
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        if ( !labeltext.isEmpty() )
-        {
-          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( o, d, name );
-        }
-        else
-        {
-          object = new ObjectHolder( o, d );
-        }
         break;
       };
       case G_ARC:
@@ -604,13 +519,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_REFLECTED:
         {
           o = transformObject( file, *retdoc, parents, descendtype, ok );
-          if ( ! o )
-          {
-            if ( ok )
-              KIG_FILTER_PARSE_ERROR
-            else
-              return 0;
-          }
           break;
         }
         case G_THREEPOINTS_ARC:
@@ -621,16 +529,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         }
         default:
           KIG_FILTER_PARSE_ERROR;
-        }
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        if ( !labeltext.isEmpty() )
-        {
-          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( o, d, name );
-        }
-        else
-        {
-          object = new ObjectHolder( o, d );
         }
         break;
       };
@@ -644,13 +542,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_REFLECTED:
         {
           o = transformObject( file, *retdoc, parents, descendtype, ok );
-          if ( ! o )
-          {
-            if ( ok )
-              KIG_FILTER_PARSE_ERROR
-            else
-              return 0;
-          }
           break;
         }
         default:
@@ -661,16 +552,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         }
 //        default:
 //          KIG_FILTER_PARSE_ERROR;
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        if ( !labeltext.isEmpty() )
-        {
-          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( o, d, name );
-        }
-        else
-        {
-          object = new ObjectHolder( o, d );
-        }
         break;
       };
       case G_CIRCLEINTERIOR:
@@ -701,13 +582,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_REFLECTED:
         {
           o = transformObject( file, *retdoc, parents, descendtype, ok );
-          if ( ! o )
-          {
-            if ( ok )
-              KIG_FILTER_PARSE_ERROR
-            else
-              return 0;
-          }
           break;
         }
         case G_OBJECT_LOCUS:
@@ -718,16 +592,6 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         }
         default:
           KIG_FILTER_PARSE_ERROR;
-        }
-        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        if ( !labeltext.isEmpty() )
-        {
-          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( o, d, name );
-        }
-        else
-        {
-          object = new ObjectHolder( o, d );
         }
         break;
       };
@@ -742,6 +606,26 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       default:
         KIG_FILTER_PARSE_ERROR;
 
+    }
+
+    // checking if the object was correctly created
+    if ( ! o )
+    {
+      if ( ok )
+        KIG_FILTER_PARSE_ERROR
+      else
+        return 0;
+    }
+
+    ObjectDrawer* d = new ObjectDrawer( color, width, visible, style.pen.style() );
+    if ( !labeltext.isEmpty() )
+    {
+      ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+      object = new ObjectHolder( o, d, name );
+    }
+    else
+    {
+      object = new ObjectHolder( o, d );
     }
 
     assert( object );
