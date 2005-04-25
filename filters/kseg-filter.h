@@ -20,11 +20,17 @@
 
 #include "filter.h"
 
+class ObjectCalcer;
+
 class KigFilterKSeg
   : public KigFilter
 {
   KigFilterKSeg();
   ~KigFilterKSeg();
+
+  ObjectCalcer* transformObject( const QString& file, KigDocument& kigdoc,
+                                 std::vector<ObjectCalcer*>& parents,
+                                 int subtype, bool& ok );
 
 public:
   static KigFilterKSeg* instance();

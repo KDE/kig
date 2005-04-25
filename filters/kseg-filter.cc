@@ -50,6 +50,8 @@
 #include <qdatastream.h>
 #include <qbuffer.h>
 
+#include <klocale.h>
+
 KigFilterKSeg::KigFilterKSeg()
 {
 }
@@ -131,6 +133,67 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
     return new ObjectTypeCalcer( ArcLineIntersectionType::instance(), intparents );
   }
   else return 0;
+}
+
+ObjectCalcer* KigFilterKSeg::transformObject( const QString& file, KigDocument& kigdoc,
+                                              std::vector<ObjectCalcer*>& parents,
+                                              int subtype, bool& ok )
+{
+  ok = true;
+  ObjectCalcer* retobj = 0;
+  switch( subtype )
+  {
+    case G_TRANSLATED:
+    {
+      std::vector<ObjectCalcer*> vectorparents( parents.begin() + 1, parents.end() );
+      ObjectTypeCalcer* vector = new ObjectTypeCalcer( VectorType::instance(), vectorparents );
+      vector->calc( kigdoc );
+
+      std::vector<ObjectCalcer*> transparents;
+      transparents.push_back( parents[0] );
+      transparents.push_back( vector );
+      retobj = new ObjectTypeCalcer( TranslatedType::instance(), transparents );
+      break;
+    }
+    case G_ROTATED:
+    {
+      std::vector<ObjectCalcer*> angleparents( parents.begin() + 2, parents.end() );
+      ObjectTypeCalcer* angle = new ObjectTypeCalcer( AngleType::instance(), angleparents );
+      angle->calc( kigdoc );
+
+      std::vector<ObjectCalcer*> rotparents;
+      rotparents.push_back( parents[0] );
+      rotparents.push_back( parents[1] );
+      rotparents.push_back( angle );
+      retobj = new ObjectTypeCalcer( RotationType::instance(), rotparents );
+      break;
+    }
+    case G_SCALED:
+    {
+      if ( parents.size() == 4 )
+      {
+        retobj = new ObjectTypeCalcer( ScalingOverCenter2Type::instance(), parents );
+      }
+      else
+      {
+        // TODO
+        notSupported( file, i18n( "This KSeg document uses a scaling "
+                                  "transformation, which Kig currently "
+                                  "cannot import." ) );
+        ok = false;
+        return 0;
+      }
+      break;
+    }
+    case G_REFLECTED:
+    {
+      std::vector<ObjectCalcer*> mirparents( parents.begin(), parents.end() );
+      retobj = new ObjectTypeCalcer( LineReflectionType::instance(), mirparents );
+      break;
+    }
+  }
+
+  return retobj;
 }
 
 KigDocument* KigFilterKSeg::load( const QString& file )
@@ -232,105 +295,42 @@ KigDocument* KigFilterKSeg::load( const QString& file )
 
     // now load the object data..
     ObjectHolder* object = 0;
+    ObjectCalcer* o = 0;
+    bool ok = true;
 
-    if ( descendtype <= G_REFLECTED )
+/*
+    kdDebug() << "type: " << type << endl
+              << "descendtype: " << descendtype << endl
+              << "label: " << labeltext << endl;
+//*/
+
+    switch ( type )
     {
-      ObjectTypeCalcer* o = 0;
-      // this is a transformed object..
-      switch( descendtype )
-      {
-      case G_TRANSLATED:
-      {
-        std::vector<ObjectCalcer*> vectorparents( parents.begin() + 1, parents.end() );
-        ObjectTypeCalcer* vector = new ObjectTypeCalcer( VectorType::instance(), vectorparents );
-        vector->calc( *retdoc );
-
-        std::vector<ObjectCalcer*> transparents;
-        transparents.push_back( parents[0] );
-        transparents.push_back( vector );
-        o = new ObjectTypeCalcer( TranslatedType::instance(), transparents );
-        break;
-      }
-      case G_ROTATED:
-      {
-        std::vector<ObjectCalcer*> angleparents( parents.begin() + 2, parents.end() );
-        ObjectTypeCalcer* angle = new ObjectTypeCalcer( AngleType::instance(), angleparents );
-        angle->calc( *retdoc );
-
-        std::vector<ObjectCalcer*> rotparents;
-        rotparents.push_back( parents[0] );
-        rotparents.push_back( parents[1] );
-        rotparents.push_back( angle );
-        o = new ObjectTypeCalcer( RotationType::instance(), rotparents );
-        break;
-      }
-      case G_SCALED:
-      {
-        // TODO
-        notSupported( file, i18n( "This KSeg document uses a scaling "
-                                  "transformation, which Kig currently "
-                                  "cannot import." ) );
-        return false;
-        o = new ObjectTypeCalcer( ScalingOverCenterType::instance(), parents );
-        break;
-      }
-      case G_REFLECTED:
-      {
-        std::vector<ObjectCalcer*> mirparents( parents.begin(), parents.end() );
-        o = new ObjectTypeCalcer( LineReflectionType::instance(), mirparents );
-        break;
-      }
-      default:
-        KIG_FILTER_PARSE_ERROR;
-      }
-      assert( o );
-      ObjectDrawer* d;
-      if ( type == G_POINT )
-      {
-        int width;
-        switch( style.pointstyle )
-        {
-        case SMALL_CIRCLE:
-          width = 2;
-          break;
-        case MEDIUM_CIRCLE:
-          width = 3;
-          break;
-        default:
-          width = 5;
-          break;
-        }
-        d = new ObjectDrawer( style.brush.color(), width, visible );
-      }
-      else
-      {
-        d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-      };
-      assert( d );
-      if ( !labeltext.isEmpty() )
-      {
-        ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-        object = new ObjectHolder( o, d, name );
-      }
-      else
-      {
-        object = new ObjectHolder( o, d );
-      }
-    }
-    else
-      switch( type )
-      {
       case G_POINT:
       {
-        ObjectCalcer* point = 0;
         switch( descendtype )
         {
+        case G_TRANSLATED:
+        case G_ROTATED:
+        case G_SCALED:
+        case G_REFLECTED:
+        {
+          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          if ( ! o )
+          {
+            if ( ok )
+              KIG_FILTER_PARSE_ERROR
+            else
+              return 0;
+          }
+          break;
+        }
         case G_FREE_POINT:
         {
           // fixed point
           if ( nparents != 0 ) KIG_FILTER_PARSE_ERROR;
           Coordinate c = readKSegCoordinate( stream );
-          point = fact->fixedPointCalcer( c );
+          o = fact->fixedPointCalcer( c );
           break;
         }
         case G_CONSTRAINED_POINT:
@@ -338,10 +338,10 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           // constrained point
           double p;
           stream >> p;
-          assert( nparents == 1 );
+          if ( nparents != 1 ) KIG_FILTER_PARSE_ERROR;
           ObjectCalcer* parent = parents[0];
           assert( parent );
-          point = fact->constrainedPointCalcer( parent, p );
+          o = fact->constrainedPointCalcer( parent, p );
           break;
         }
         case G_INTERSECTION_POINT:
@@ -350,14 +350,16 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           // for all objects G_INTERSECTION_POINT gets the
           // first intersection of its parents, G_INTERSECTION2_POINT
           // represents the second, if present.
-          point = intersectionPoint( parents, -1 );
-          if ( ! point ) KIG_FILTER_PARSE_ERROR;
+          o = intersectionPoint( parents, -1 );
+          if ( ! o ) KIG_FILTER_PARSE_ERROR;
           break;
         }
         case G_INTERSECTION2_POINT:
-          point = intersectionPoint( parents, 1 );
-          if ( ! point ) KIG_FILTER_PARSE_ERROR;
+        {
+          o = intersectionPoint( parents, 1 );
+          if ( ! o ) KIG_FILTER_PARSE_ERROR;
           break;
+        }
         case G_MID_POINT:
         {
           // midpoint of a segment..
@@ -366,24 +368,24 @@ KigDocument* KigFilterKSeg::load( const QString& file )
             KIG_FILTER_PARSE_ERROR;
           int index = parents[0]->imp()->propertiesInternalNames().findIndex( "mid-point" );
           assert( index != -1 );
-          point = new ObjectPropertyCalcer( parents[0], index );
+          o = new ObjectPropertyCalcer( parents[0], index );
           break;
         }
         default:
           KIG_FILTER_PARSE_ERROR;
         };
-        assert( point );
+        assert( o );
         int width = style.pointstyle == SMALL_CIRCLE ? 2 : style.pointstyle == MEDIUM_CIRCLE ? 3 : 5;
         ObjectDrawer* d =
           new ObjectDrawer( style.brush.color(), width, visible, style.pen.style() );
         if ( !labeltext.isEmpty() )
         {
           ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-          object = new ObjectHolder( point, d, name );
+          object = new ObjectHolder( o, d, name );
         }
         else
         {
-          object = new ObjectHolder( point, d );
+          object = new ObjectHolder( o, d );
         }
         break;
       };
@@ -391,84 +393,126 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       {
         switch( descendtype )
         {
+        case G_TRANSLATED:
+        case G_ROTATED:
+        case G_SCALED:
+        case G_REFLECTED:
+        {
+          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          if ( ! o )
+          {
+            if ( ok )
+              KIG_FILTER_PARSE_ERROR
+            else
+              return 0;
+          }
+          break;
+        }
         case G_ENDPOINTS_SEGMENT:
         {
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-          ObjectTypeCalcer* o = new ObjectTypeCalcer( SegmentABType::instance(), parents );
-          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-          if ( !labeltext.isEmpty() )
-          {
-            ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-            object = new ObjectHolder( o, d, name );
-          }
-          else
-          {
-            object = new ObjectHolder( o, d );
-          }
+          o = new ObjectTypeCalcer( SegmentABType::instance(), parents );
           break;
         }
         default:
           KIG_FILTER_PARSE_ERROR;
-        };
+        }
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
+        if ( !labeltext.isEmpty() )
+        {
+          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+          object = new ObjectHolder( o, d, name );
+        }
+        else
+        {
+          object = new ObjectHolder( o, d );
+        }
         break;
       };
       case G_RAY:
       {
         switch( descendtype )
         {
+        case G_TRANSLATED:
+        case G_ROTATED:
+        case G_SCALED:
+        case G_REFLECTED:
+        {
+          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          if ( ! o )
+          {
+            if ( ok )
+              KIG_FILTER_PARSE_ERROR
+            else
+              return 0;
+          }
+          break;
+        }
         case G_TWOPOINTS_RAY:
         {
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-          ObjectTypeCalcer* o = new ObjectTypeCalcer( RayABType::instance(), parents );
-          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-          if ( !labeltext.isEmpty() )
-          {
-            ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-            object = new ObjectHolder( o, d, name );
-          }
-          else
-          {
-            object = new ObjectHolder( o, d );
-          }
+          o = new ObjectTypeCalcer( RayABType::instance(), parents );
           break;
         }
         case G_BISECTOR_RAY:
         {
           ObjectTypeCalcer* angle = new ObjectTypeCalcer( HalfAngleType::instance(), parents );
           angle->calc( *retdoc );
-          ObjectPropertyCalcer* o = fact->propertyObjectCalcer( angle, "angle-bisector" );
-          ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-          if ( !labeltext.isEmpty() )
-          {
-            ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
-            object = new ObjectHolder( o, d, name );
-          }
-          else
-          {
-            object = new ObjectHolder( o, d );
-          }
+          o = fact->propertyObjectCalcer( angle, "angle-bisector" );
           break;
         }
         default:
           KIG_FILTER_PARSE_ERROR;
         };
+        ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
+        if ( !labeltext.isEmpty() )
+        {
+          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+          object = new ObjectHolder( o, d, name );
+        }
+        else
+        {
+          object = new ObjectHolder( o, d );
+        }
         break;
       };
       case G_LINE:
       {
-        if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-        ObjectTypeCalcer* o = 0;
         switch( descendtype )
         {
+        case G_TRANSLATED:
+        case G_ROTATED:
+        case G_SCALED:
+        case G_REFLECTED:
+        {
+          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          if ( ! o )
+          {
+            if ( ok )
+              KIG_FILTER_PARSE_ERROR
+            else
+              return 0;
+          }
+          break;
+        }
         case G_TWOPOINTS_LINE:
+        {
+          if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           o = new ObjectTypeCalcer( LineABType::instance(), parents );
           break;
+        }
         case G_PARALLEL_LINE:
+        {
+          if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           o = new ObjectTypeCalcer( LineParallelLPType::instance(), parents );
           break;
+        }
         case G_PERPENDICULAR_LINE:
+        {
+          if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
           o = new ObjectTypeCalcer( LinePerpendLPType::instance(), parents );
           break;
+        }
         default:
           KIG_FILTER_PARSE_ERROR;
         };
@@ -487,9 +531,23 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       };
       case G_CIRCLE:
       {
-        ObjectTypeCalcer* o = 0;
         switch( descendtype )
         {
+        case G_TRANSLATED:
+        case G_ROTATED:
+        case G_SCALED:
+        case G_REFLECTED:
+        {
+          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          if ( ! o )
+          {
+            if ( ok )
+              KIG_FILTER_PARSE_ERROR
+            else
+              return 0;
+          }
+          break;
+        }
         case G_CENTERPOINT_CIRCLE:
         {
           if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
@@ -513,6 +571,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           int index = segment->imp()->propertiesInternalNames().findIndex( "length" );
           if ( index == -1 ) KIG_FILTER_PARSE_ERROR;
           ObjectPropertyCalcer* length = new ObjectPropertyCalcer( segment, index );
+          length->calc( *retdoc );
           std::vector<ObjectCalcer*> cparents;
           cparents.push_back( point );
           cparents.push_back( length );
@@ -537,16 +596,71 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       };
       case G_ARC:
       {
-        if ( nparents != 3 ) KIG_FILTER_PARSE_ERROR;
-        ObjectTypeCalcer* o = new ObjectTypeCalcer( ArcBTPType::instance(), parents );
+        switch( descendtype )
+        {
+        case G_TRANSLATED:
+        case G_ROTATED:
+        case G_SCALED:
+        case G_REFLECTED:
+        {
+          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          if ( ! o )
+          {
+            if ( ok )
+              KIG_FILTER_PARSE_ERROR
+            else
+              return 0;
+          }
+          break;
+        }
+        case G_THREEPOINTS_ARC:
+        {
+          if ( nparents != 3 ) KIG_FILTER_PARSE_ERROR;
+          o = new ObjectTypeCalcer( ArcBTPType::instance(), parents );
+          break;
+        }
+        default:
+          KIG_FILTER_PARSE_ERROR;
+        }
         ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
-        object = new ObjectHolder( o, d );
+        if ( !labeltext.isEmpty() )
+        {
+          ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( labeltext ) );
+          object = new ObjectHolder( o, d, name );
+        }
+        else
+        {
+          object = new ObjectHolder( o, d );
+        }
         break;
       };
       case G_POLYGON:
       {
-        if ( nparents < 3 ) KIG_FILTER_PARSE_ERROR;
-        ObjectTypeCalcer* o = new ObjectTypeCalcer( PolygonBNPType::instance(), parents );
+        switch( descendtype )
+        {
+        case G_TRANSLATED:
+        case G_ROTATED:
+        case G_SCALED:
+        case G_REFLECTED:
+        {
+          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          if ( ! o )
+          {
+            if ( ok )
+              KIG_FILTER_PARSE_ERROR
+            else
+              return 0;
+          }
+          break;
+        }
+        default:
+        {
+          if ( nparents < 3 ) KIG_FILTER_PARSE_ERROR;
+          o = new ObjectTypeCalcer( PolygonBNPType::instance(), parents );
+        }
+        }
+//        default:
+//          KIG_FILTER_PARSE_ERROR;
         ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
         if ( !labeltext.isEmpty() )
         {
@@ -579,8 +693,32 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       };
       case G_LOCUS:
       {
-        if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
-        ObjectTypeCalcer* o = fact->locusCalcer( parents[0], parents[1] );
+        switch( descendtype )
+        {
+        case G_TRANSLATED:
+        case G_ROTATED:
+        case G_SCALED:
+        case G_REFLECTED:
+        {
+          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          if ( ! o )
+          {
+            if ( ok )
+              KIG_FILTER_PARSE_ERROR
+            else
+              return 0;
+          }
+          break;
+        }
+        case G_OBJECT_LOCUS:
+        {
+          if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
+          o = fact->locusCalcer( parents[0], parents[1] );
+          break;
+        }
+        default:
+          KIG_FILTER_PARSE_ERROR;
+        }
         ObjectDrawer* d = new ObjectDrawer( style.pen.color(), style.pen.width(), visible, style.pen.style() );
         if ( !labeltext.isEmpty() )
         {
@@ -603,7 +741,9 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         KIG_FILTER_PARSE_ERROR;
       default:
         KIG_FILTER_PARSE_ERROR;
-      };
+
+    }
+
     assert( object );
     ret[i] = object;
     object->calc( *retdoc );
