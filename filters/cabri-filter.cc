@@ -37,6 +37,7 @@
 #include "../objects/other_imp.h"
 #include "../objects/other_type.h"
 #include "../objects/point_type.h"
+#include "../objects/polygon_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
@@ -160,7 +161,7 @@ static QColor translatecolor( const QString& s )
   if ( s == "G" ) return Qt::green;
   if ( s == "dG" ) return Qt::darkGreen;
   if ( s == "Br" ) return QColor( 165, 42, 42 );
-  if ( s == "dBr" ) return Qt::black; // TODO: beige-brown
+  if ( s == "dBr" ) return QColor( 128, 128, 0 );
   if ( s == "lGr" ) return Qt::lightGray;
   if ( s == "Gr" ) return Qt::gray;
   if ( s == "dGr" ) return Qt::darkGray;
@@ -478,6 +479,30 @@ KigDocument* KigFilterCabri::load( const QString& file )
       midpoint->calc( *ret );
       args.push_back( midpoint );
       oc = new ObjectTypeCalcer( LinePerpendLPType::instance(), args );
+    }
+    else if ( obj.type == "Pol" )
+    {
+      if ( args.size() < 3 || !obj.data.empty() )
+        KIG_FILTER_PARSE_ERROR;
+      oc = new ObjectTypeCalcer( PolygonBNPType::instance(), args );
+    }
+    else if ( obj.type == "Locus" )
+    {
+      if ( args.size() != 2 || !obj.data.empty() )
+        KIG_FILTER_PARSE_ERROR;
+      oc = fact->locusCalcer( args[0], args[1] );
+    }
+    else if ( obj.type == "Refl" )
+    {
+      if ( args.size() != 2 || !obj.data.empty() )
+        KIG_FILTER_PARSE_ERROR;
+      oc = new ObjectTypeCalcer( LineReflectionType::instance(), args );
+    }
+    else if ( obj.type == "Sym" )
+    {
+      if ( args.size() != 2 || !obj.data.empty() )
+        KIG_FILTER_PARSE_ERROR;
+      oc = new ObjectTypeCalcer( PointReflectionType::instance(), args );
     }
     else
     {
