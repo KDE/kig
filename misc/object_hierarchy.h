@@ -73,7 +73,7 @@ public:
    * Since this operation can fail for some reasons, we provide it as a
    * static to return 0 in case of error.
    */
-  static ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& parent, QString& error );
+  static ObjectHierarchy* buildSafeObjectHierarchy( const QDomElement& parent, QString& error );
 //  ObjectHierarchy( const QDomElement& parent );
 
   // build a set of objects that interdepend according to this
