@@ -40,9 +40,9 @@
   difficult, because the export plugins require extra parameters.
   E.g. the ImageExporter needs an image size etc.
 
-- filters: more input filters, improve Cabri filter and Dr. Geo filter
-  ( see filters/drgeo-filter-status.txt ), add the possibility to ignore
-  errors on loading
+- filters: more input filters; improve the existent ones ( see
+  filters/*-filter-status.txt ); add the possibility to ignore errors
+  on loading
 
 - "export to *": add stuff like java applets, kmplot documents, etc...
 
@@ -87,7 +87,8 @@
 - Add the possibility to select, via new dialog, one or more types of
   object.
 
-- add a magnifying glass to magnify "on-the-fly" a part of the document.
+- add a magnifying glass/zoom window to magnify "on-the-fly" a part of
+  the document.
 
 - improve the KTextEditor interface in the script code wizard.
 
@@ -158,7 +159,7 @@
 - document mathematical i18n strings, so that the translators have a
    clue about how to translate them !
 
-- write *-filter-status.txt's for the kseg and cabri filters.
+- write *-filter-status.txt's for the cabri filter.
 
 - add "Tools": easy tools designed for geometry, like Angle converter and
   so on...
