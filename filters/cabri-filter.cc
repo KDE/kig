@@ -342,6 +342,15 @@ KigDocument* KigFilterCabri::load( const QString& file )
     if ( !readObject( f, obj ) )
       return 0;
 
+// reading linestyle
+    Qt::PenStyle ls = Qt::SolidLine;
+    if ( ( obj.lineSegLength > 1 ) && ( obj.lineSegLength < 6 ) &&
+         ( obj.lineSegSplit > 1 ) && ( obj.lineSegSplit <= 10 ) )
+      ls = Qt::DotLine;
+    else if ( ( obj.lineSegLength >= 6 ) && ( obj.lineSegSplit > 10 ) )
+      ls = Qt::DashLine;
+    int ps = 0;
+
     args.clear();
     for ( std::vector<int>::iterator i = obj.parents.begin();
           i != obj.parents.end(); ++i )
@@ -352,10 +361,37 @@ KigDocument* KigFilterCabri::load( const QString& file )
     oc = 0;
     if ( obj.type == "Pt" )
     {
-      // different sizes for points..
-      obj.thick *= 2;
       if ( ! args.empty() ) KIG_FILTER_PARSE_ERROR;
       if ( obj.data.size() != 2 ) KIG_FILTER_PARSE_ERROR;
+
+      switch ( obj.specialAppearanceSwitch )
+      {
+        case 0:
+        {
+          obj.thick -= 1;
+          break;
+        }
+        case 2:
+        {
+          obj.thick += 1;
+          break;
+        }
+        case 3:
+        {
+          obj.thick += 1;
+          ps = 1;
+          break;
+        }
+        case 4:
+        {
+          obj.thick += 2;
+          ps = 4;
+          break;
+        }
+      }
+      // different sizes for points..
+      obj.thick *= 2;
+
       oc = fact->fixedPointCalcer( Coordinate( obj.data[0], obj.data[1] ) );
     }
     else if ( obj.type == "Cir" )
@@ -504,6 +540,12 @@ KigDocument* KigFilterCabri::load( const QString& file )
         KIG_FILTER_PARSE_ERROR;
       oc = new ObjectTypeCalcer( PointReflectionType::instance(), args );
     }
+    else if ( obj.type == "Tran" )
+    {
+      if ( args.size() != 2 || !obj.data.empty() )
+        KIG_FILTER_PARSE_ERROR;
+      oc = new ObjectTypeCalcer( TranslatedType::instance(), args );
+    }
     else
     {
       notSupported( file, i18n( "This Cabri file contains a \"%1\" object, "
@@ -515,7 +557,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
 
     oc->calc( *ret );
     calcers.push_back( oc );
-    ObjectDrawer* d = new ObjectDrawer( obj.color, obj.thick, obj.visible );
+    ObjectDrawer* d = new ObjectDrawer( obj.color, obj.thick, obj.visible, ls, ps );
     ObjectHolder* oh = new ObjectHolder( oc, d );
     holders.push_back( oh );
 
