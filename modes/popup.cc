@@ -640,7 +640,9 @@ bool BuiltinObjectActionsProvider::executeAction(
       color = *colors[id];
     else
     {
-      int result = KColorDialog::getColor( color );
+      if ( os.size() == 1 )
+        color = os.front()->drawer()->color();
+      int result = KColorDialog::getColor( color, &w );
       if ( result != KColorDialog::Accepted ) return true;
     }
     KigCommand* kc = new KigCommand( doc, i18n( "Change Object Color" ) );
