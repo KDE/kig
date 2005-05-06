@@ -121,7 +121,7 @@ void setupBuiltinStuff()
       I18N_NOOP( "Select the angle you want to construct the bisector of..." ),
       I18N_NOOP( "Angle Bisector" ),
       I18N_NOOP( "The bisector of an angle" ),
-      "angle-bisector",
+      "angle_bisector",
       "angle-bisector" );
     actions->add( new ConstructibleAction( &anglebisectionctor, "objects_new_angle_bisector" ) );
 

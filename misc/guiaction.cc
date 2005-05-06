@@ -83,7 +83,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
                             QObject* parent )
   : KAction( act->descriptiveName(),
              doc.instance()->iconLoader()->loadIcon(
-               act->iconFileName(), KIcon::User ),
+               act->iconFileName(), KIcon::Toolbar, 0, KIcon::DefaultState, 0L, true ),
              act->shortcut(),
              0, 0,              // no slot connection
              parent, act->actionName() ),

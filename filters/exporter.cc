@@ -74,7 +74,7 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
   if ( iconstr.isEmpty() )
     return;
   KIconLoader* l = doc->instance()->iconLoader();
-  QPixmap icon = l->loadIcon( iconstr, KIcon::User, 0, KIcon::DefaultState, 0L, true );
+  QPixmap icon = l->loadIcon( iconstr, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
   if ( icon.isNull() )
     icon = l->loadIcon( exp->menuIcon(), KIcon::Small );
   if ( !icon.isNull() )

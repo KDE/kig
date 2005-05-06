@@ -119,11 +119,11 @@ const char* AngleImp::iconForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   if ( which == Parent::numberOfProperties() + numprop++ )
-    return "angle-size"; // size in radians
+    return "angle_size"; // size in radians
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return "angle-size"; // size in degrees
+    return "angle_size"; // size in degrees
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return "angle-bisector"; // angle bisector..
+    return "angle_bisector"; // angle bisector..
   else assert( false );
   return "";
 }
@@ -398,15 +398,15 @@ const char* ArcImp::iconForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return "arc-center"; // center
+    return "arc_center"; // center
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return "";
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return "angle";
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return "angle-size";
+    return "angle_size";
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return "angle-size";
+    return "angle_size";
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return "";
   else if ( which == Parent::numberOfProperties() + numprop++ )

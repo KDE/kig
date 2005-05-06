@@ -292,7 +292,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     else
     {
       KIconLoader* l = part.instance()->iconLoader();
-      QPixmap icon = l->loadIcon( menuicons[i], KIcon::User, 0, KIcon::DefaultState, 0L, true );
+      QPixmap icon = l->loadIcon( menuicons[i], KIcon::User, 22, KIcon::DefaultState, 0L, true );
       if ( icon.isNull() )
         icon = l->loadIcon( menuicons[i], KIcon::Toolbar );
       insertItem( QIconSet( icon ), menunames[i], mmenus[i], i, index++ );
@@ -384,7 +384,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       popup.addAction( menu, i18n( "&Show" ), nextfree+1 );
     }
     nextfree += 2;
-    QPixmap p = l->loadIcon( "move", KIcon::User );
+    QPixmap p = l->loadIcon( "move", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "&Move" ), nextfree++ );
     p = l->loadIcon( "editdelete", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "&Delete" ), nextfree++ );
@@ -743,7 +743,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
       QCString iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
-        QPixmap icon = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
+        QPixmap icon = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
         popup.addAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
       }
       else
@@ -868,7 +868,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
     {
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
+        QPixmap pix = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
         popup.addAction( menu, pix, i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else
@@ -1043,7 +1043,7 @@ void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu,
   if ( menu == NormalModePopupObjects::StartMenu )
   {
     KIconLoader* l = popup.part().instance()->iconLoader();
-    QPixmap p = l->loadIcon( ScriptType::icon( ScriptType::Python ), KIcon::User );
+    QPixmap p = l->loadIcon( ScriptType::icon( ScriptType::Python ), KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
     popup.addAction( menu, p, i18n( "Python Script" ), nextfree++ );
     mns++;
   }
