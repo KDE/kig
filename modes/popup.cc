@@ -50,6 +50,7 @@
 #include <qregexp.h>
 #include <qvalidator.h>
 
+#include <kaction.h>
 #include <kcolordialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -964,14 +965,11 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    popup.addAction( menu, i18n( "Unhide &All" ), nextfree++ );
-    KIconLoader* l = popup.part().instance()->iconLoader();
-    QPixmap p = l->loadIcon( "viewmag+", KIcon::Toolbar );
-    popup.addAction( menu, p, i18n( "Zoom &In" ), nextfree++ );
-    p = l->loadIcon( "viewmag-", KIcon::Toolbar );
-    popup.addAction( menu, p, i18n( "Zoom &Out" ), nextfree++ );
-    p = l->loadIcon( "window_fullscreen", KIcon::Toolbar );
-    popup.addAction( menu, p, i18n( "Toggle &Full Screen Mode" ), nextfree++ );
+    popup.addAction( menu, i18n( "U&nhide All" ), nextfree++ );
+    popup.part().action( "view_zoom_in" )->plug( &popup );
+    popup.part().action( "view_zoom_out" )->plug( &popup );
+    popup.part().action( "fullscreen" )->plug( &popup );
+    nextfree += 3;
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
   {
@@ -988,32 +986,18 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
 bool BuiltinDocumentActionsProvider::executeAction(
   int menu, int& id, const std::vector<ObjectHolder*>&,
   NormalModePopupObjects&,
-  KigPart& doc, KigWidget& w, NormalMode& m )
+  KigPart& doc, KigWidget&, NormalMode& m )
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
+    kdDebug() << "id: " << id << endl;
     if ( id == 0 )
     {
       doc.showHidden();
       m.clearSelection();
       return true;
     }
-    else if ( id == 1 )
-    {
-      w.slotZoomIn();
-      return true;
-    }
-    else if ( id == 2 )
-    {
-      w.slotZoomOut();
-      return true;
-    }
-    else if ( id == 3 )
-    {
-      w.view()->toggleFullScreen();
-      return true;
-    }
-    id -= 4;
+    id -= 1;
     return false;
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )

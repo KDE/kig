@@ -1,3 +1,25 @@
+2005-05-07  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Using three standard action in our popup menu instead of
+	creating new actions "from scratch". Removing the Toggle
+	fullscreen action created by hand, fixes also an ugly bug that
+	happened when choosing Toggle fullscreen from the popup to exit
+	from fullscreen.
+
+2005-05-06  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Made Kig standard names for its icons, so artists can theme them
+	in their icon themes. Some files needed obviously changes.
+
+2005-04-30  Pino Toscano <toscano.pino@tiscali.it>
+
+	* When selecting a custom color for one object, put the old object
+	color as selected color in the Color dialog.
+
+2005-04-28  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Other work on Cabri filter: can read styles and translations.
+
 2005-04-27  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Some work also on Cabri filter: fixed a color, and imported four

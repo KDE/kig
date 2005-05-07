@@ -242,7 +242,7 @@ void KigPart::setupActions()
   aCancelConstruction->setEnabled(false);
 
   aShowHidden = new KAction(
-    i18n("Unhide &All"), 0, this, SLOT( showHidden() ),
+    i18n("U&nhide All"), 0, this, SLOT( showHidden() ),
     actionCollection(), "edit_unhide_all");
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
