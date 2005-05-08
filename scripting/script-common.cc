@@ -31,7 +31,7 @@ struct script_prop
 
 static const script_prop scripts_properties[] =
 {
-  { I18N_NOOP( "Now fill in the code:" ), "script", "" },
+  { I18N_NOOP( "Now fill in the code:" ), "shellscript", "" },
   { I18N_NOOP( "Now fill in the Python code:" ), "source_py", "Python-Kig" }
 };
 
