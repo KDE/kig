@@ -33,6 +33,8 @@
 #include "../misc/kigpainter.h"
 #include "../misc/calcpaths.h"
 
+#include "popup.h"
+
 #include <kcursor.h>
 #include <kaction.h>
 
@@ -58,6 +60,42 @@ BaseConstructMode::BaseConstructMode( KigPart& d )
 BaseConstructMode::~BaseConstructMode()
 {
 //  delete mcursorholder;
+}
+
+void BaseConstructMode::leftReleased( QMouseEvent* e, KigWidget* v )
+{
+  if( (pointLocation() - e->pos()).manhattanLength() > 4 ) return;
+
+  ObjectHolder* o = 0;
+  bool keyCtrlOrShift = ( e->state() & ( ControlButton | ShiftButton) ) != 0;
+  std::vector<ObjectHolder*> moco = oco();
+  if ( ! moco.empty() )
+  {
+    std::vector<ObjectHolder*> goodargs;
+    if ( !moco.empty() )
+    {
+      std::vector<ObjectHolder*>::const_iterator it;
+      std::vector<ObjectCalcer*> testargs = getCalcers( mparents );
+      for ( std::vector<ObjectHolder*>::const_iterator i = moco.begin(); i != moco.end(); ++i )
+      {
+        it = std::find( mparents.begin(), mparents.end(), *i );
+        bool newdup =
+            ( it == mparents.end() ) || 
+            isAlreadySelectedOK( testargs, it - mparents.begin() );
+        if ( newdup )
+        {
+          testargs.push_back( ( *i )->calcer() );
+          if ( wantArgs( testargs, mdoc.document(), *v ) )
+            goodargs.push_back( *i );
+          testargs.pop_back();
+        }
+      }
+      int id = ObjectChooserPopup::getObjectFromList( e->pos(), v, goodargs );
+      if ( id >= 0 )
+        o = goodargs[id];
+    }
+  }
+  leftClickedObject( o, e->pos(), *v, keyCtrlOrShift );
 }
 
 void BaseConstructMode::leftClickedObject(
@@ -153,16 +191,33 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
 
   std::vector<ObjectCalcer*> args = getCalcers( mparents );
   bool duplicationchecked = false;
+  std::vector<ObjectHolder*> goodargs;
   if ( ! os.empty() )
   {
-    std::vector<ObjectHolder*>::iterator it 
-          = std::find( mparents.begin(), mparents.end(), os.front() );
-    duplicationchecked = 
+    std::vector<ObjectHolder*>::const_iterator it;
+    std::vector<ObjectCalcer*> testargs = getCalcers( mparents );
+    for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
+    {
+      it = std::find( mparents.begin(), mparents.end(), *i );
+      bool newdup =
           ( it == mparents.end() ) || 
           isAlreadySelectedOK( args, it - mparents.begin() );
-    if ( duplicationchecked ) args.push_back( os.front()->calcer() );
+      if ( newdup )
+      {
+        testargs.push_back( ( *i )->calcer() );
+        if ( wantArgs( testargs, mdoc.document(), w ) )
+          goodargs.push_back( *i );
+        testargs.pop_back();
+      }
+      duplicationchecked |= newdup;
+    }
   }
-  if ( !os.empty() && duplicationchecked && wantArgs( args, mdoc.document(), w ) )
+  if ( goodargs.size() == 1 )
+  {
+    args.push_back( goodargs.front()->calcer() );
+  }
+
+  if ( !os.empty() && duplicationchecked && ( goodargs.size() == 1 ) )
   {
     handlePrelim( args, p, pter, w );
 
@@ -174,6 +229,7 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
     args.push_back( mpt.get() );
     std::vector<ObjectCalcer*> argscursor = getCalcers( mparents );
     argscursor.push_back( mcursor );
+    bool text = true;
     if ( wantArgs( args, mdoc.document(), w ) )
     {
       ObjectDrawer d;
@@ -195,6 +251,18 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
     else
     {
       w.setCursor( KCursor::arrowCursor() );
+      text = false;
+    }
+    if ( !text && ( goodargs.size() > 1 ) )
+    {
+      QString strwhich = i18n( "Which object?" );
+      mdoc.emitStatusBarText( strwhich );
+
+      QPoint textloc = p;
+      textloc.setX( textloc.x() + 15 );
+      pter.drawTextStd( textloc, strwhich );
+
+      w.setCursor( KCursor::handCursor() );
     }
   }
   w.updateWidget( pter.overlay() );

@@ -1,3 +1,16 @@
+2005-05-14  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Created a new system to select - in normal mode - one object
+	among some: using Shift (or Control) + LMB the user can select the
+	object he/she desire through a popup menu. This new system is
+	applyed also to to mouse hover/left click in construct mode, to
+	select one object if we have more than one valid object. This,
+	plus a search among the object under the mouse, allow the fixing
+	of bug #99870.
+
+	* Added a "tip of day" to inform the user of the possibility to
+	select any object from an object stack under the cursor.
+
 2005-05-07  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Using three standard action in our popup menu instead of

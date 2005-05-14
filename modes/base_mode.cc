@@ -17,6 +17,8 @@
 
 #include "base_mode.h"
 
+#include "popup.h"
+
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
@@ -75,10 +77,19 @@ void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
   if( (mplc - e->pos()).manhattanLength() > 4 ) return;
 
   ObjectHolder* o = 0;
-  if ( ! moco.empty() ) o = moco.front();
-  leftClickedObject( o, e->pos(), *v,
-                     ( e->state() & ( ControlButton | ShiftButton) ) != 0
-    );
+  bool keyCtrlOrShift = ( e->state() & ( ControlButton | ShiftButton) ) != 0;
+  if ( ! moco.empty() )
+  {
+    if ( keyCtrlOrShift )
+    {
+      int id = ObjectChooserPopup::getObjectFromList( e->pos(), v, moco );
+      if ( id >= 0 )
+        o = moco[id];
+    }
+    else
+      o = moco.front();
+  }
+  leftClickedObject( o, e->pos(), *v, keyCtrlOrShift );
 }
 
 void BaseMode::midClicked( QMouseEvent* e, KigWidget* v )
@@ -135,4 +146,14 @@ void BaseMode::dragObject( const std::vector<ObjectHolder*>&, const QPoint&,
 void BaseMode::enableActions()
 {
   KigMode::enableActions();
+}
+
+std::vector<ObjectHolder*> BaseMode::oco()
+{
+  return moco;
+}
+
+QPoint BaseMode::pointLocation()
+{
+  return mplc;
 }

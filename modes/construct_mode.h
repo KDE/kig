@@ -66,6 +66,8 @@ class BaseConstructMode
 //  ObjectHolder* mcursorholder;
   std::vector<ObjectHolder*> mparents;
 
+  void leftReleased( QMouseEvent* e, KigWidget* v );
+
 public:
   void selectObject( ObjectHolder* o, KigWidget& w );
   void selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w );

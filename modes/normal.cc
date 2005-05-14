@@ -256,7 +256,8 @@ void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
 
     w.setCursor( KCursor::handCursor() );
 
-    QString stat = os.front()->selectStatement();
+    int id = ObjectChooserPopup::getObjectFromList( plc, &w, os, false );
+    QString stat = id == 0 ? os.front()->selectStatement() : i18n( "Which object?" );
 
     // statusbar text
     mdoc.emitStatusBarText( stat );

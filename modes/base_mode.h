@@ -43,6 +43,9 @@ class BaseMode
 
 protected:
   void enableActions();
+
+  std::vector<ObjectHolder*> oco();
+  QPoint pointLocation();
 protected:
 
   virtual void dragRect( const QPoint& p, KigWidget& w );
