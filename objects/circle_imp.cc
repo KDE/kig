@@ -167,11 +167,11 @@ const char* CircleImp::iconForProperty( uint which ) const
   else if ( which == CurveImp::numberOfProperties() + 3 )
     return "baseCircle"; // circle center
   else if ( which == CurveImp::numberOfProperties() + 4 )
-    return "text"; // cartesian equation
+    return "kig_text"; // cartesian equation
   else if ( which == CurveImp::numberOfProperties() + 5 )
-    return "text"; // simply cartesian equation
+    return "kig_text"; // simply cartesian equation
   else if ( which == CurveImp::numberOfProperties() + 6 )
-    return "text"; // polar equation
+    return "kig_text"; // polar equation
   else assert( false );
   return "";
 }

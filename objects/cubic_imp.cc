@@ -302,13 +302,13 @@ const ObjectImpType* CubicImp::impRequirementForProperty( uint which ) const
 
 const char* CubicImp::iconForProperty( uint which ) const
 {
-	int pnum = 0;
+  int pnum = 0;
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   if ( which == Parent::numberOfProperties() + pnum++ )
-    return "text"; // cartesian equation string
+    return "kig_text"; // cartesian equation string
   else 
-		assert( false );
+    assert( false );
   return "";
 }
 

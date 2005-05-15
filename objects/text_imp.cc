@@ -74,7 +74,7 @@ const uint TextImp::numberOfProperties() const
 const QCStringList TextImp::propertiesInternalNames() const
 {
   QCStringList ret = Parent::propertiesInternalNames();
-  ret << "text";
+  ret << "kig_text";
   return ret;
 }
 

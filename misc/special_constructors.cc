@@ -296,7 +296,7 @@ const QString PolygonBNPTypeConstructor::description() const
 
 const QCString PolygonBNPTypeConstructor::iconFileName( const bool ) const
 {
-  return "polygon";
+  return "kig_polygon";
 }
 
 const bool PolygonBNPTypeConstructor::isAlreadySelectedOK(

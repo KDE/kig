@@ -171,7 +171,7 @@ QString ConstructTextLabelAction::description() const
 
 QCString ConstructTextLabelAction::iconFileName() const
 {
-  return "text";
+  return "kig_text";
 }
 
 QString ConstructTextLabelAction::descriptiveName() const

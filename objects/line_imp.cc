@@ -64,7 +64,7 @@ const char* AbstractLineImp::iconForProperty( uint which ) const
   if ( which == Parent::numberOfProperties() )
     return "slope"; // slope
   if ( which == Parent::numberOfProperties() + 1 )
-    return "text"; // equation
+    return "kig_text"; // equation
   else assert( false );
   return "";
 }

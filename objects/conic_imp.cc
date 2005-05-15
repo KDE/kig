@@ -100,15 +100,15 @@ const char* ConicImp::iconForProperty( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   if ( which == Parent::numberOfProperties() + pnum++ )
-    return "text"; // conic type string
+    return "kig_text"; // conic type string
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return ""; // focus1
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return ""; // focus2
   else if ( which == Parent::numberOfProperties() + pnum++ )
-    return "text"; // cartesian equation string
+    return "kig_text"; // cartesian equation string
   else if ( which == Parent::numberOfProperties() + pnum++ )
-    return "text"; // polar equation string
+    return "kig_text"; // polar equation string
   else assert( false );
   return "";
 }

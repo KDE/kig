@@ -170,7 +170,7 @@ void ObjectImpVisitor::visit( const TestResultImp* )
 
 const char* ObjectImp::iconForProperty( uint ) const
 {
-  return "text";
+  return "kig_text";
 }
 
 bool ObjectImp::canFillInNextEscape() const
