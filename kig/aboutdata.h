@@ -59,7 +59,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 
   tmp->addCredit("Marc Bartsch",
 		  I18N_NOOP("Author of KGeo, where I got inspiration, "
-			    "some source, and most of the artwork from"),
+			    "some source, and most of the artwork from." ),
 		  "marc.bartsch@web.de");
 
   tmp->addCredit("Christophe Devriese",
@@ -79,8 +79,12 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                  "robertgogolok@gmx.de");
 
   tmp->addCredit("David Vignoni",
-                 I18N_NOOP("Responsible for the nice SVG Icon" ),
+                 I18N_NOOP("Responsible for the nice application SVG Icon." ),
                  "david80v@tin.it");
+
+  tmp->addCredit( "Danny Allen",
+                  I18N_NOOP( "New action (toolbars, etc.) icons for Kig." ),
+                  "danny@dannyallen.co.uk" );
 
   return tmp;
 }
