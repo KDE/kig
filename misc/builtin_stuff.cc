@@ -534,8 +534,7 @@ void setupBuiltinStuff()
       I18N_NOOP( "Distance Test" ),
       I18N_NOOP( "Test whether a given point have the same distance from a given point "
                  "and from another given point" ),
-      "test" );
-//      "testdistance" );
+      "testdistance" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_distancetest" ) );
 
