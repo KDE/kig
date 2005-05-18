@@ -429,7 +429,7 @@ INPUT                  =  @top_srcdir@/kig/misc/coordinate.h \
 			  @top_srcdir@/kig/objects/bogus_imp.h \ 
 			  @top_srcdir@/kig/objects/circle_imp.h \
 			  @top_srcdir@/kig/objects/other_imp.h \
-			  @top_srcdir@/kig/scripting/python-scripting-api-dox-mainpage.h
+			  @top_srcdir@/kig/scripting/python-scripting-api-dox-mainpage.dox
 
 # If the value of the INPUT tag contains directories, you can use the 
 # FILE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp 
