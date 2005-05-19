@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>300</width>
-            <height>108</height>
+            <height>111</height>
         </rect>
     </property>
     <property name="caption">
@@ -66,6 +66,20 @@ If you switch to another unit, the value in the edit field on the left will be c
                 </widget>
             </hbox>
         </widget>
+        <widget class="Line">
+            <property name="name">
+                <cstring>Line1</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>HLine</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
         <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout4</cstring>
@@ -74,20 +88,6 @@ If you switch to another unit, the value in the edit field on the left will be c
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="Line">
-                    <property name="name">
-                        <cstring>Line1</cstring>
-                    </property>
-                    <property name="frameShape">
-                        <enum>HLine</enum>
-                    </property>
-                    <property name="frameShadow">
-                        <enum>Sunken</enum>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                </widget>
                 <spacer>
                     <property name="name">
                         <cstring>spacer</cstring>
