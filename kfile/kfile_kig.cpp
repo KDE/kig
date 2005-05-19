@@ -22,9 +22,14 @@
 
 #include <qdom.h>
 #include <qfile.h>
+#include <qregexp.h>
 
+#include <karchive.h>
 #include <kgenericfactory.h>
+#include <kglobal.h>
 #include <klocale.h>
+#include <kstandarddirs.h>
+#include <ktar.h>
 
 typedef KGenericFactory<KigPlugin> kigFactory;
 
@@ -49,7 +54,43 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
 {
   KFileMetaInfoGroup metagroup = appendGroup( metainfo, "KigInfo");
 
-  QFile f( metainfo.path() );
+  QString sfile =  metainfo.path();
+  bool iscompressed = false;
+  QFile f( sfile );
+  if ( !sfile.endsWith( ".kig", false ) )
+  {
+    iscompressed = true;
+
+    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    if ( tempdir.isEmpty() )
+      return false;
+
+    QString tempname = sfile.section( '/', -1 );
+    if ( sfile.endsWith( ".kigz", false ) )
+    {
+      tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
+    }
+    else
+      return false;
+    // reading compressed file
+    KTar* ark = new KTar( sfile, "application/x-gzip" );
+    ark->open( IO_ReadOnly );
+    const KArchiveDirectory* dir = ark->directory();
+    QStringList entries = dir->entries();
+    QStringList kigfiles = entries.grep( QRegExp( "\\.kig$" ) );
+    if ( kigfiles.count() != 1 )
+      return false;
+    const KArchiveEntry* kigz = dir->entry( kigfiles[0] );
+    if ( !kigz->isFile() )
+      return false;
+    dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
+
+    f.setName( tempdir + kigz->name() );
+  }
+
+  if ( !f.open( IO_ReadOnly ) )
+    return false;
+
   QDomDocument doc( "KigDocument" );
   if ( !doc.setContent( &f ) )
     return false;
