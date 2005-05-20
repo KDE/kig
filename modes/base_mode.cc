@@ -77,10 +77,11 @@ void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
   if( (mplc - e->pos()).manhattanLength() > 4 ) return;
 
   ObjectHolder* o = 0;
-  bool keyCtrlOrShift = ( e->state() & ( ControlButton | ShiftButton) ) != 0;
+  bool keyCtrl = ( e->state() & ControlButton ) != 0;
+  bool keyShift = ( e->state() & ShiftButton ) != 0;
   if ( ! moco.empty() )
   {
-    if ( keyCtrlOrShift )
+    if ( keyShift )
     {
       int id = ObjectChooserPopup::getObjectFromList( e->pos(), v, moco );
       if ( id >= 0 )
@@ -89,7 +90,7 @@ void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
     else
       o = moco.front();
   }
-  leftClickedObject( o, e->pos(), *v, keyCtrlOrShift );
+  leftClickedObject( o, e->pos(), *v, keyCtrl );
 }
 
 void BaseMode::midClicked( QMouseEvent* e, KigWidget* v )
