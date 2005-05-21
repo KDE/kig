@@ -294,9 +294,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     else
     {
       KIconLoader* l = part.instance()->iconLoader();
-      QPixmap icon = l->loadIcon( menuicons[i], KIcon::User, 22, KIcon::DefaultState, 0L, true );
-      if ( icon.isNull() )
-        icon = l->loadIcon( menuicons[i], KIcon::Toolbar );
+      QPixmap icon = l->loadIcon( menuicons[i], KIcon::Small, 22, KIcon::DefaultState, 0L, true );
       insertItem( QIconSet( icon ), menunames[i], mmenus[i], i, index++ );
     }
   };
