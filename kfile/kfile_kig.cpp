@@ -48,6 +48,7 @@ KigPlugin::KigPlugin( QObject *parent, const char *name, const QStringList &args
   item = addItemInfo( group, "CoordSystem", i18n( "Coordinate System" ), QVariant::String );
   item = addItemInfo( group, "Grid", i18n( "Grid" ), QVariant::String );
   item = addItemInfo( group, "Axes", i18n( "Axes" ), QVariant::String );
+  item = addItemInfo( group, "Compressed", i18n( "Compressed" ), QVariant::String );
 }
 
 bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
@@ -94,6 +95,13 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   QDomDocument doc( "KigDocument" );
   if ( !doc.setContent( &f ) )
     return false;
+
+  f.close();
+
+  // removing temp file
+  if ( iscompressed )
+    f.remove();
+
   QDomElement main = doc.documentElement();
 
   // reading the version...
@@ -135,6 +143,9 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
     btmp = ( stmp != "0" );
   stmp2 = btmp ? i18n( "Yes" ) : i18n( "No" );
   appendItem( metagroup, "Axes", stmp2 );
+
+  stmp2 = iscompressed ? i18n( "Yes" ) : i18n( "No" );
+  appendItem( metagroup, "Compressed", stmp2 );
 
   return true;
 }
