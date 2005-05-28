@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+<!ENTITY % English "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title>KDE User's Manual</title>
+<author><personname>
+<firstname>Ben</firstname>
+<surname>Burton</surname>
+</personname><email>bab@debian.org</email></author>
+<date>May 25, 2005</date>
+<productname>K Desktop Environment</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle><command>kig</command></refentrytitle>
+<manvolnum>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname><command>kig</command></refname>
+<refpurpose>an interactive geometry program for &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>kig</command>
+<group choice="opt"><option>-c, --convert-to-native</option>
+<group choice="opt"><option>-o, --outfile <replaceable>filename</replaceable></option>
+</group>
+</group>
+<arg choice="opt">KDE Generic Options</arg>
+<arg choice="opt">Qt Generic Options</arg>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>&kig; is an application for interactive geometry.  It is intended to
+serve two purposes:</para>
+<itemizedlist><listitem><para>To allow students to interactively explore
+mathematical figures and concepts using the computer;</para></listitem>
+<listitem><para>To serve as a WYSIWYG tool for drawing mathematical figures and
+including them in other documents.</para></listitem></itemizedlist>
+<para>With this program you can do geometry on a computer just like you
+would on a blackboard in a classroom.  However the program allows you to
+move and change parts of a geometrical drawing so that you can see how other
+parts change as a result.</para>
+<para>&kig; supports loci and user-defined macros.  It also imports and
+exports both to and from foreign file formats including
+<application>Cabri</application>, <application>Dr. Geo</application>,
+&kgeo;, <application>KSeg</application> and <application>XFig</application>.</para>
+<para>This application is part of the official &kde; edutainment module.</para>
+</refsect1>
+
+<refsect1>
+<title>Options</title>
+<para>App options, in a variablelist</para>
+
+<variablelist>
+<varlistentry>
+<term><option>-c, --convert-to-native</option></term>
+<listitem><para>Do not show a &GUI;.  Instead convert the specified file to
+native &kig; format.  The native &kig; file will be written to standard
+output unless <option>--outfile</option> is passed.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><option>-o, --outfile <replaceable>filename</replaceable></option></term>
+<listitem><para>Used with <option>--convert-to-native</option> to specify
+where to save the newly created &kig; file.  Not specifying this option, or
+providing a filename of <filename>-</filename> will output the file to
+standard output.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title>See Also</title>
+<para>More detailed user documentation is available from <ulink
+url="help:/kig">help:/kig</ulink>
+(either enter this <acronym>URL</acronym> into &konqueror;, or run
+<userinput><command>khelpcenter</command>
+<parameter>help:/kig</parameter></userinput>).</para>
+
+<para>There is also further information available at the <ulink
+url="http://edu.kde.org/kig/">&kde; Edutainment website</ulink>.</para>
+</refsect1>
+
+<refsect1>
+<title>Authors</title>
+<para>&kig; was written by
+<personname><firstname>Dominique</firstname><surname>Devriese</surname></personname>
+<email>devriese@kde.org</email>,
+<personname><firstname>Maurizio</firstname><surname>Paolini</surname></personname>
+<email>paolini@dmf.bs.unicatt.it</email>,
+<personname><firstname>Franco</firstname><surname>Pasquarelli</surname></personname>
+<email>pasqui@dmf.bs.unicatt.it</email>,
+<personname><firstname>Pino</firstname><surname>Toscano</surname></personname>
+<email>toscano.pino@tiscali.it</email>, and others.</para>
+<para>This man page based on the one prepared for Debian by
+<personname><firstname>Ben</firstname><surname>Burton</surname></personname>
+<email>bab@debian.org</email>.</para>
+</refsect1>
+
+</refentry>
