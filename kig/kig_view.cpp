@@ -31,6 +31,7 @@
 #include "../modes/dragrectmode.h"
 
 #include <qdialog.h>
+#include <qevent.h>
 #include <qwhatsthis.h>
 #include <qlayout.h>
 #include <qscrollbar.h>
@@ -68,7 +69,7 @@ KigWidget::KigWidget( KigPart* part,
 {
   part->addWidget(this);
 
-  setFocusPolicy(QWidget::ClickFocus);
+  setFocusPolicy(ClickFocus);
   setBackgroundMode( Qt::NoBackground );
   setMouseTracking(true);
 

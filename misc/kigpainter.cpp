@@ -509,7 +509,7 @@ void KigPainter::drawFilledRect( const QRect& r )
 
 void KigPainter::drawTextStd( const QPoint& p, const QString& s )
 {
-  if ( ! s ) return;
+  if ( s.isNull() ) return;
   // tf = text formatting flags
   int tf = AlignLeft | AlignTop | DontClip | WordBreak;
   // we need the rect where we're going to paint text

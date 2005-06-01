@@ -106,13 +106,13 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
 
   // reading the version...
   QString version = main.attribute( "Version" );
-  if ( ! version ) version = main.attribute( "version" );
-  if ( ! version ) version = i18n( "Translators: Not Available", "n/a" );
+  if ( version.isEmpty() ) version = main.attribute( "version" );
+  if ( version.isEmpty() ) version = i18n( "Translators: Not Available", "n/a" );
   appendItem( metagroup, "Version", version );
 
   // reading the compatibility version...
   QString compatversion = main.attribute( "CompatibilityVersion" );
-  if ( ! compatversion )
+  if ( compatversion.isEmpty() )
     compatversion = i18n( "%1 represents Kig version",
                           "%1 (as the version)" ).arg( version );
   appendItem( metagroup, "CompatVersion", compatversion );

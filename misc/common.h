@@ -25,7 +25,6 @@
 #include "coordinate.h"
 #include "rect.h"
 
-#include <qptrlist.h>
 #include <qrect.h>
 #include <kdeversion.h>
 

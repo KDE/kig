@@ -230,7 +230,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   mproviders.push_back( new ScriptActionsProvider() );
 #endif
 
-  for ( int i = 0; i < (int) NumberOfMenus; ++i )
+  for ( uint i = 0; i < NumberOfMenus; ++i )
     mmenus[i] = new QPopupMenu( this );
 
   connect( mmenus[TransformMenu], SIGNAL( activated( int ) ),

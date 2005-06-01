@@ -171,9 +171,9 @@ KigDocument* KigFilterNative::load( const QString& file )
   QDomElement main = doc.documentElement();
 
   QString version = main.attribute( "CompatibilityVersion" );
-  if ( ! version ) version = main.attribute( "Version" );
-  if ( ! version ) version = main.attribute( "version" );
-  if ( ! version )
+  if ( version.isEmpty() ) version = main.attribute( "Version" );
+  if ( version.isEmpty() ) version = main.attribute( "version" );
+  if ( version.isEmpty() )
     KIG_FILTER_PARSE_ERROR;
 
   // matches 0.1, 0.2.0, 153.128.99 etc.
