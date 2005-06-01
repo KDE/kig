@@ -29,6 +29,8 @@
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate_system.h"
 
+#include <qevent.h>
+
 #include <functional>
 #include <algorithm>
 #include <map>
