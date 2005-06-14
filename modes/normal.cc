@@ -218,22 +218,30 @@ void NormalMode::rightClicked( const std::vector<ObjectHolder*>& os,
                                const QPoint& plc,
                                KigWidget& w )
 {
+  // saving the current cursor position
+  QPoint pt = QCursor::pos();
   if( !os.empty() )
   {
-    if( sos.find( os.front() ) == sos.end() )
+    ObjectHolder* o = 0;
+    int id = ObjectChooserPopup::getObjectFromList( pt, &w, os );
+    if ( id >= 0 )
+      o = os[id];
+    else
+      return;
+    if( sos.find( o ) == sos.end() )
     {
       clearSelection();
-      selectObject( os.front() );
+      selectObject( o );
     };
     // show a popup menu...
     std::vector<ObjectHolder*> sosv( sos.begin(), sos.end() );
     NormalModePopupObjects p( mdoc, w, *this, sosv, plc );
-    p.exec( QCursor::pos() );
+    p.exec( pt );
   }
   else
   {
     NormalModePopupObjects p( mdoc, w, *this, std::vector<ObjectHolder*>(), plc );
-    p.exec( QCursor::pos() );
+    p.exec( pt );
   };
 }
 

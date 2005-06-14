@@ -156,7 +156,7 @@ const ObjectImpType* PythonExecuteType::impRequirement( const ObjectImp* o, cons
 {
   if ( o == parents[0] ) return PythonCompiledScriptImp::stype();
   else return ObjectImp::stype();
-};
+}
 
 const ObjectImpType* PythonExecuteType::resultId() const
 {
