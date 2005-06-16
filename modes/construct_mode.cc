@@ -212,12 +212,13 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
       duplicationchecked |= newdup;
     }
   }
-  if ( goodargs.size() == 1 )
+  bool calcnow = ( goodargs.size() == 1 ) || ( ( goodargs.size() > 0 ) && ( goodargs.front()->imp()->inherits( PointImp::stype() ) ) );
+  if ( calcnow )
   {
     args.push_back( goodargs.front()->calcer() );
   }
 
-  if ( !os.empty() && duplicationchecked && ( goodargs.size() == 1 ) )
+  if ( !os.empty() && duplicationchecked && calcnow )
   {
     handlePrelim( args, p, pter, w );
 
