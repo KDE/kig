@@ -25,8 +25,8 @@
 #include "kig_document.h"
 #include "kig_commands.h"
 #include "../misc/coordinate_system.h"
+#include "../misc/kiginputdialog.h"
 #include "../misc/kigpainter.h"
-#include "zoomarea.h"
 #include "../modes/mode.h"
 #include "../modes/dragrectmode.h"
 
@@ -561,25 +561,26 @@ void KigView::slotInternalRecenterScreen()
 void KigWidget::zoomArea()
 {
 //  mpart->emitStatusBarText( i18n( "Select the area that should be shown." ) );
-  ZoomArea* za = new ZoomArea( this, mpart->document() );
   Rect oldrect = showingRect();
-  Coordinate tc = oldrect.topLeft();
-  za->setCoord0( tc );
-  tc = oldrect.bottomRight();
-  za->setCoord1( tc );
-  if ( za->exec() )
+  Coordinate tl = oldrect.topLeft();
+  Coordinate br = oldrect.bottomRight();
+  bool ok = true;
+  KigInputDialog::getTwoCoordinates( i18n( "Select Zoom Area" ),
+        i18n( "Select the zoom area by entering the coordinates of "
+              "the upper left corner and the lower right corner." ) +
+        QString::fromLatin1("<br>") +
+        mpart->document().coordinateSystem().coordinateFormatNoticeMarkup(),
+        this, &ok, mpart->document(), &tl, &br );
+  if ( ok )
   {
-    Coordinate c1 = za->coord0();
-    Coordinate c2 = za->coord1();
-    Coordinate nc1( c2.y, c1.x );
-    Coordinate nc2( c1.y, c2.x );
+    Coordinate nc1( tl.x, br.y );
+    Coordinate nc2( br.x, tl.y );
     Rect nr( nc1, nc2 );
     KigCommand* cd = new KigCommand( *mpart, i18n( "Change Shown Part of Screen" ) );
 
     cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
     mpart->history()->addCommand( cd );
   }
-  delete za;
 
   mpart->redrawScreen( this );
   updateScrollBars();

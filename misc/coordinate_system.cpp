@@ -26,6 +26,7 @@
 #include "common.h"
 #include "coordinate.h"
 #include "goniometry.h"
+#include "kiginputdialog.h"
 #include "kigpainter.h"
 
 #include <qpainter.h>
@@ -34,14 +35,7 @@
 #include <kdebug.h>
 #include <kglobal.h>
 #include <klocale.h>
-#include <kmessagebox.h>
 #include <knumvalidator.h>
-#include <kdeversion.h>
-#if KDE_IS_VERSION( 3, 1, 90 )
-#include <kinputdialog.h>
-#else
-#include <klineeditdlg.h>
-#endif
 
 #include <string>
 #include <math.h>
@@ -320,6 +314,12 @@ QString EuclideanCoords::coordinateFormatNotice() const
                "where x is the x coordinate, and y is the y coordinate." );
 }
 
+QString EuclideanCoords::coordinateFormatNoticeMarkup() const
+{
+  return i18n( "Enter coordinates in the following format: <b>\"x;y\"</b>, "
+               "where x is the x coordinate, and y is the y coordinate." );
+}
+
 EuclideanCoords::~EuclideanCoords()
 {
 }
@@ -359,6 +359,13 @@ QString PolarCoords::coordinateFormatNotice() const
 {
   // \xCE\xB8 is utf8 for the greek theta sign..
   return i18n( "Enter coordinates in the following format: \"r; \xCE\xB8°\",\n"
+               "where r and \xCE\xB8 are the polar coordinates." );
+}
+
+QString PolarCoords::coordinateFormatNoticeMarkup() const
+{
+  // \xCE\xB8 is utf8 for the greek theta sign..
+  return i18n( "Enter coordinates in the following format: <b>\"r; \xCE\xB8°\"</b>, "
                "where r and \xCE\xB8 are the polar coordinates." );
 }
 
@@ -505,35 +512,6 @@ QValidator* EuclideanCoords::coordinateValidator() const
 QValidator* PolarCoords::coordinateValidator() const
 {
   return new CoordinateValidator( true );
-}
-
-const Coordinate CoordinateSystem::getCoordFromUser( const QString& caption,
-                                                     const QString& label,
-                                                     const KigDocument& doc,
-                                                     QWidget* parent, bool* ok,
-                                                     const Coordinate* cvalue ) const
-{
-  bool done = false;
-  Coordinate ret;
-  QString value = cvalue ? fromScreen( *cvalue, doc ) : QString::null;
-  while ( ! done )
-  {
-    QValidator* vtor = coordinateValidator();
-#if KDE_IS_VERSION( 3, 1, 90 )
-    value = KInputDialog::getText( caption, label, value, ok, parent, 0, vtor );
-#else
-    value = KLineEditDlg::getText( caption, label, value, ok, parent, vtor );
-#endif
-    delete vtor;
-
-    if ( ! *ok ) return Coordinate();
-
-    ret = toScreen( value, *ok );
-    if ( *ok ) done = true;
-    else
-      KMessageBox::sorry( parent, i18n( "The coordinates you entered was not valid. Please try again.") );
-  };
-  return ret;
 }
 
 QStringList CoordinateSystemFactory::names()

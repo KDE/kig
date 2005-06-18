@@ -27,6 +27,7 @@
 #include "../misc/coordinate_system.h"
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
+#include "../misc/kiginputdialog.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
@@ -392,13 +393,15 @@ void FixedPointType::executeAction(
     bool ok = true;
     assert ( o.imp()->inherits( PointImp::stype() ) );
     Coordinate oldc = static_cast<const PointImp*>( o.imp() )->coordinate();
-    Coordinate c = d.document().coordinateSystem().getCoordFromUser(
-      i18n( "Set Coordinate" ), i18n( "Enter the new coordinate: " ),
-      d.document(), &w, &ok, &oldc );
+    KigInputDialog::getCoordinate(
+      i18n( "Set Coordinate" ),
+      i18n( "Enter the new coordinate." ) + QString::fromLatin1( "<br>" ) +
+      d.document().coordinateSystem().coordinateFormatNoticeMarkup(),
+      &w, &ok, d.document(), &oldc );
     if ( ! ok ) break;
 
     MonitorDataObjects mon( getAllParents( &o ) );
-    o.move( c, d.document() );
+    o.move( oldc, d.document() );
     KigCommand* kc = new KigCommand( d, PointImp::stype()->moveAStatement() );
     mon.finish( kc );
 

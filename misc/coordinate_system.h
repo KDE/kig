@@ -59,10 +59,6 @@ public:
   CoordinateSystem();
   virtual ~CoordinateSystem();
 
-  const Coordinate getCoordFromUser( const QString& caption, const QString& label,
-                                     const KigDocument& doc, QWidget* parent, bool* ok = 0,
-                                     const Coordinate* value = 0 ) const;
-
   virtual QString fromScreen ( const Coordinate& pt, const KigDocument& w ) const = 0;
   /**
    * This returns a notice to say in which format coordinates should
@@ -71,6 +67,7 @@ public:
    * x is the x coordinate, and y is the y coordinate." );
    */
   virtual QString coordinateFormatNotice() const = 0;
+  virtual QString coordinateFormatNoticeMarkup() const = 0;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const = 0;
   virtual void drawGrid ( KigPainter& p, bool showgrid = true,
                           bool showaxes = true ) const = 0;
@@ -90,6 +87,7 @@ public:
   ~EuclideanCoords();
   QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
   QString coordinateFormatNotice() const;
+  QString coordinateFormatNoticeMarkup() const;
   Coordinate toScreen (const QString& pt, bool& ok) const;
   void drawGrid ( KigPainter& p, bool showgrid = true,
                   bool showaxes = true ) const;
@@ -111,6 +109,7 @@ public:
   ~PolarCoords();
   QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
   QString coordinateFormatNotice() const;
+  QString coordinateFormatNoticeMarkup() const;
   Coordinate toScreen (const QString& pt, bool& ok) const;
   void drawGrid ( KigPainter& p, bool showgrid = true,
                   bool showaxes = true ) const;

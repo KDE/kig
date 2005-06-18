@@ -24,6 +24,7 @@
 
 #include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
+#include "../misc/kiginputdialog.h"
 #include "../modes/construct_mode.h"
 #include "../modes/label.h"
 #include "../objects/object_holder.h"
@@ -218,12 +219,13 @@ const char* AddFixedPointAction::actionName() const
 void AddFixedPointAction::act( KigPart& doc )
 {
   bool ok;
-  Coordinate c = doc.document().coordinateSystem().getCoordFromUser(
+  Coordinate c = Coordinate::invalidCoord();
+  KigInputDialog::getCoordinate(
     i18n( "Fixed Point" ),
     i18n( "Enter the coordinates for the new point." ) +
-    QString::fromLatin1("\n") +
-    doc.document().coordinateSystem().coordinateFormatNotice(),
-    doc.document(), doc.widget(), &ok );
+    QString::fromLatin1( "<br>" ) +
+    doc.document().coordinateSystem().coordinateFormatNoticeMarkup(),
+    doc.widget(), &ok, doc.document(), &c );
   if ( ! ok ) return;
   ObjectHolder* p = ObjectFactory::instance()->fixedPoint( c );
   p->calc( doc.document() );

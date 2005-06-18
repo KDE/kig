@@ -6,7 +6,7 @@
 INCLUDES = $(all_includes)
 
 # these are the headers for your project
-noinst_HEADERS = kig.h kig_document.h kig_part.h kig_view.h kig_commands.h zoomarea.h
+noinst_HEADERS = kig.h kig_document.h kig_part.h kig_view.h kig_commands.h
 
 # let automoc handle all of the meta source files (moc)
 METASOURCES = AUTO
@@ -43,9 +43,8 @@ libkigparttemp_la_SOURCES = \
 	kig_document.cc \
 	kig_part.cpp \
 	kig_view.cpp \
-	kig_commands.cpp \
-	zoomarea.cc \
-	zoomareabase.ui
+	kig_commands.cpp
+
 libkigparttemp_la_LDFLAGS = $(all_libraries)
 libkigparttemp_la_LIBADD = $(LIB_KDEPRINT) $(LIB_KIO)
 
