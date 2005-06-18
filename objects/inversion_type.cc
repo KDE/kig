@@ -19,6 +19,7 @@
 #include "point_imp.h"
 #include "line_imp.h"
 #include "circle_imp.h"
+#include "other_imp.h"
 #include "bogus_imp.h"
 
 #include "../misc/common.h"
@@ -184,5 +185,94 @@ ObjectImp* InvertCircleType::calc( const Args& args, const KigDocument& ) const
   double rprime = 0.5*( bprime - aprime ).length();
 
   return new CircleImp( cprime + refc, rprime );
+}
+
+/*
+ * inversion of an arc
+ */
+
+static const ArgsParser::spec argsspecInvertArc[] =
+{
+  { ArcImp::stype(), I18N_NOOP( "Compute the inversion of this arc" ),
+    I18N_NOOP( "Select the arc to invert..." ), false },
+  { CircleImp::stype(), str1, str2, false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( InvertArcType )
+
+InvertArcType::InvertArcType()
+  : ArgsParserObjectType( "InvertArc", argsspecInvertArc, 2 )
+{
+}
+
+InvertArcType::~InvertArcType()
+{
+}
+
+const InvertArcType* InvertArcType::instance()
+{
+  static const InvertArcType s;
+  return &s;
+}
+
+const ObjectImpType* InvertArcType::resultId() const
+{
+  return ArcImp::stype();
+}
+
+ObjectImp* InvertArcType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  const CircleImp* refcircle = static_cast<const CircleImp*>( args[1] );
+  Coordinate refc = refcircle->center();
+  double refrsq = refcircle->squareRadius();
+  const ArcImp* arc = static_cast<const ArcImp*>( args[0] );
+  Coordinate c = arc->center() - refc;
+  double r = arc->radius();
+  if ( c.length() == 0.0 ) return new InvalidImp;
+  double t = r/c.length();
+  /*
+   * t > 1 means center of inversion circle inside of circle supporting arc
+   */
+  Coordinate b = (1 + t)*c;
+  double bsq = b.x*b.x + b.y*b.y;
+  Coordinate bprime = refrsq*b/bsq;
+  if ( std::fabs( 1 - t ) < 1e-6 )       // circle through origin -> line
+  {
+    return new LineImp( bprime+refc, bprime+refc+Coordinate( -c.y, c.x ) );
+  }
+
+  Coordinate a = (1 - t)*c;
+  double asq = a.x*a.x + a.y*a.y;
+  Coordinate aprime = refrsq*a/asq;
+
+  Coordinate cprime = 0.5*(aprime + bprime);
+  double rprime = 0.5*( bprime - aprime ).length();
+
+  Coordinate ep1 = arc->firstEndPoint() - refc;
+  double ang1 = arc->startAngle();
+  double newstartangle = 2*atan2(ep1.y,ep1.x) - ang1;
+  Coordinate ep2 = arc->secondEndPoint() - refc;
+  double ang2 = ang1 + arc->angle();
+  double newendangle = 2*atan2(ep2.y,ep2.x) - ang2;
+  double newangle = newendangle - newstartangle;
+
+  /*
+   * newstartangle and newendangle might have to be exchanged:
+   * this is the case if the circle supporting our arc does not
+   * contain the center of the inversion circle
+   */
+  if ( t < 1.0 )
+  {
+    newstartangle = newendangle - M_PI;
+    newangle = - newangle;
+    // newendangle is no-longer valid!
+  }
+  while ( newstartangle < 0 ) newstartangle += 2*M_PI;
+  while ( newstartangle >= 2*M_PI ) newstartangle -= 2*M_PI;
+  while ( newangle < 0 ) newangle += 2*M_PI;
+  while ( newangle >= 2*M_PI ) newangle -= 2*M_PI;
+  return new ArcImp( cprime + refc, rprime, newstartangle, newangle );
 }
 

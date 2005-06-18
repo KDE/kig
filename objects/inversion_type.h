@@ -59,4 +59,16 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class InvertArcType
+  : public ArgsParserObjectType
+{
+  InvertArcType();
+  ~InvertArcType();
+public:
+  static const InvertArcType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

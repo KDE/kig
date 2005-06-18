@@ -1064,6 +1064,13 @@ InversionConstructor::InversionConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "inversion" );
 
+  SimpleObjectTypeConstructor* arcobj =
+     new SimpleObjectTypeConstructor(
+      InvertArcType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "inversion" );
+
+  merge( arcobj );
   merge( circleobj );
   merge( pointobj );
   merge( lineobj );
