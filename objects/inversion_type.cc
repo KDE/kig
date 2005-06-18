@@ -238,9 +238,38 @@ ObjectImp* InvertArcType::calc( const Args& args, const KigDocument& ) const
   Coordinate b = (1 + t)*c;
   double bsq = b.x*b.x + b.y*b.y;
   Coordinate bprime = refrsq*b/bsq;
-  if ( std::fabs( 1 - t ) < 1e-6 )       // circle through origin -> line
+  if ( std::fabs( 1 - t ) < 1e-6 )  // support circle through origin -> segment, ray or invalid
+                                    // (reversed segment, union of two rays)
   {
-    return new LineImp( bprime+refc, bprime+refc+Coordinate( -c.y, c.x ) );
+    bool valid1 = false;
+    bool valid2 = false;
+    Coordinate ep1 = arc->firstEndPoint() - refc;
+    Coordinate ep2 = arc->secondEndPoint() - refc;
+    Coordinate ep1inv = Coordinate::invalidCoord();
+    Coordinate ep2inv = Coordinate::invalidCoord();
+    double ep1sq = ep1.squareLength();
+    if ( ep1sq > 1e-12 )
+    {
+      valid1 = true;
+      ep1inv = refrsq/ep1sq * ep1;
+    }
+    double ep2sq = ep2.squareLength();
+    if ( ep2sq > 1e-12 )
+    {
+      valid2 = true;
+      ep2inv = refrsq/ep2sq * ep2;
+    }
+    if ( valid1 || valid2 )
+    {
+      if ( valid1 && valid2 )
+      {
+        // this gives either a segment or the complement of a segment (relative
+        // to its support line).  We return a segment in any case (fixme)
+        return new SegmentImp( ep1inv + refc, ep2inv + refc );
+      } else
+        return new InvalidImp ();  // this should give a Ray
+    } else
+      return new LineImp( bprime+refc, bprime+refc+Coordinate( -c.y, c.x ) );
   }
 
   Coordinate a = (1 - t)*c;
@@ -267,7 +296,7 @@ ObjectImp* InvertArcType::calc( const Args& args, const KigDocument& ) const
   {
     newstartangle = newendangle - M_PI;
     newangle = - newangle;
-    // newendangle is no-longer valid!
+    // newendangle is no-longer valid
   }
   while ( newstartangle < 0 ) newstartangle += 2*M_PI;
   while ( newstartangle >= 2*M_PI ) newstartangle -= 2*M_PI;
