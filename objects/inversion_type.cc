@@ -166,18 +166,20 @@ ObjectImp* InvertCircleType::calc( const Args& args, const KigDocument& ) const
   double refrsq = refcircle->squareRadius();
   const CircleImp* circle = static_cast<const CircleImp*>( args[0] );
   Coordinate c = circle->center() - refc;
-  double rsq = circle->squareRadius();
-  if ( c.length() == 0.0 ) return new InvalidImp;
-  double t = sqrt( rsq )/c.length();
-  Coordinate b = (1 + t)*c;
+  double clength = c.length();
+  Coordinate cnorm = Coordinate (1.,0.);
+  if ( clength != 0.0 ) cnorm = c/clength;
+  double r = circle->radius();
+  Coordinate tc = r*cnorm;
+  Coordinate b = c + tc;   //(1 + t)*c;
   double bsq = b.x*b.x + b.y*b.y;
   Coordinate bprime = refrsq*b/bsq;
-  if ( std::fabs( 1 - t ) < 1e-6 )       // circle through origin -> line
+  if ( std::fabs( clength - r ) < 1e-6*clength )       // circle through origin -> line
   {
     return new LineImp( bprime+refc, bprime+refc+Coordinate( -c.y, c.x ) );
   }
 
-  Coordinate a = (1 - t)*c;
+  Coordinate a = c - tc;
   double asq = a.x*a.x + a.y*a.y;
   Coordinate aprime = refrsq*a/asq;
 
@@ -229,17 +231,20 @@ ObjectImp* InvertArcType::calc( const Args& args, const KigDocument& ) const
   double refrsq = refcircle->squareRadius();
   const ArcImp* arc = static_cast<const ArcImp*>( args[0] );
   Coordinate c = arc->center() - refc;
+  double clength = c.length();
+  Coordinate cnorm = Coordinate (1.,0.);
+  if ( clength != 0.0 ) cnorm = c/clength;
   double r = arc->radius();
-  if ( c.length() == 0.0 ) return new InvalidImp;
-  double t = r/c.length();
   /*
-   * t > 1 means center of inversion circle inside of circle supporting arc
+   * r > clength means center of inversion circle inside of circle supporting arc
    */
-  Coordinate b = (1 + t)*c;
+  Coordinate tc = r*cnorm;
+  Coordinate b = c + tc;
   double bsq = b.x*b.x + b.y*b.y;
   Coordinate bprime = refrsq*b/bsq;
-  if ( std::fabs( 1 - t ) < 1e-6 )  // support circle through origin -> segment, ray or invalid
-                                    // (reversed segment, union of two rays)
+  if ( std::fabs( clength - r ) < 1e-6*clength )  // support circle through origin -> 
+                                                  // segment, ray or invalid
+                                                  // (reversed segment, union of two rays)
   {
     bool valid1 = false;
     bool valid2 = false;
@@ -253,11 +258,15 @@ ObjectImp* InvertArcType::calc( const Args& args, const KigDocument& ) const
       valid1 = true;
       ep1inv = refrsq/ep1sq * ep1;
     }
+    Coordinate rayendp = ep1inv;
+    int sign = 1;
     double ep2sq = ep2.squareLength();
     if ( ep2sq > 1e-12 )
     {
       valid2 = true;
       ep2inv = refrsq/ep2sq * ep2;
+      rayendp = ep2inv;
+      sign = -1;
     }
     if ( valid1 || valid2 )
     {
@@ -265,14 +274,19 @@ ObjectImp* InvertArcType::calc( const Args& args, const KigDocument& ) const
       {
         // this gives either a segment or the complement of a segment (relative
         // to its support line).  We return a segment in any case (fixme)
+        double ang = atan2( -c.y, -c.x );
+        double sa = arc->startAngle();
+        if ( ang < sa ) ang += 2*M_PI;
+        if ( ang - sa - arc->angle() < 0 ) return new InvalidImp();
         return new SegmentImp( ep1inv + refc, ep2inv + refc );
       } else
-        return new InvalidImp ();  // this should give a Ray
+        return new RayImp ( rayendp + refc, 
+                 rayendp + refc + sign*Coordinate( -c.y, c.x ) );  // this should give a Ray
     } else
       return new LineImp( bprime+refc, bprime+refc+Coordinate( -c.y, c.x ) );
   }
 
-  Coordinate a = (1 - t)*c;
+  Coordinate a = c - tc;
   double asq = a.x*a.x + a.y*a.y;
   Coordinate aprime = refrsq*a/asq;
 
@@ -292,7 +306,7 @@ ObjectImp* InvertArcType::calc( const Args& args, const KigDocument& ) const
    * this is the case if the circle supporting our arc does not
    * contain the center of the inversion circle
    */
-  if ( t < 1.0 )
+  if ( r < clength )
   {
     newstartangle = newendangle - M_PI;
     newangle = - newangle;
