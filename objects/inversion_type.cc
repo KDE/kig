@@ -125,6 +125,97 @@ ObjectImp* InvertLineType::calc( const Args& args, const KigDocument& ) const
 }
 
 /*
+ * inversion of a segment
+ */
+
+static const ArgsParser::spec argsspecInvertSegment[] =
+{
+  { SegmentImp::stype(), I18N_NOOP( "Compute the inversion of this segment" ),
+    I18N_NOOP( "Select the segment to invert..." ), false },
+  { CircleImp::stype(), str1, str2, false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( InvertSegmentType )
+
+InvertSegmentType::InvertSegmentType()
+  : ArgsParserObjectType( "InvertSegment", argsspecInvertSegment, 2 )
+{
+}
+
+InvertSegmentType::~InvertSegmentType()
+{
+}
+
+const InvertSegmentType* InvertSegmentType::instance()
+{
+  static const InvertSegmentType s;
+  return &s;
+}
+
+const ObjectImpType* InvertSegmentType::resultId() const
+{
+  return ArcImp::stype();
+}
+
+ObjectImp* InvertSegmentType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  const CircleImp* c = static_cast<const CircleImp*>( args[1] );
+  Coordinate center = c->center();
+  double radiussq = c->squareRadius();
+  const LineData line = static_cast<const AbstractLineImp*>( args[0] )->data();
+  Coordinate rela = line.a - center;
+  Coordinate relb = line.b - center;
+  Coordinate ab = relb - rela;
+  double t = (relb.x*ab.x + relb.y*ab.y)/(ab.x*ab.x + ab.y*ab.y);
+  Coordinate relh = relb - t*ab;
+  double normhsq = relh.x*relh.x + relh.y*relh.y;
+
+  /*
+   * compute the inversion of the two endpoints
+   */
+
+  Coordinate newcenterrel = 0.5*radiussq/normhsq*relh;
+  Coordinate relainv = radiussq/rela.squareLength() * rela;
+  Coordinate relbinv = radiussq/relb.squareLength() * relb;
+
+  if ( normhsq < 1e-12*radiussq )
+  {
+    if ( rela.squareLength() < 1e-12 )
+    {
+      return new RayImp( relbinv + center, 2*relbinv + center );
+    }
+    if ( relb.squareLength() < 1e-12 )
+    {
+      return new RayImp( relainv + center, 2*relainv + center );
+    }
+    if ( relb.x*rela.x + relb.y*rela.y > 0 )
+    {
+      return new SegmentImp( relainv + center, relbinv + center );
+    }
+    return new InvalidImp();
+  }
+  double newradius = 0.5*radiussq/sqrt(normhsq);
+
+  relainv -= newcenterrel;
+  relbinv -= newcenterrel;
+  double angle1 = atan2( relainv.y, relainv.x );
+  double angle2 = atan2( relbinv.y, relbinv.x );
+  double angle = angle2 - angle1;
+  if ( ab.x*rela.y - ab.y*rela.x > 0 )
+  {
+    angle1 = angle2;
+    angle = -angle;
+  }
+  while ( angle1 < 0 ) angle1 += 2*M_PI;
+  while ( angle1 >= 2*M_PI ) angle1 -= 2*M_PI;
+  while ( angle < 0 ) angle += 2*M_PI;
+  while ( angle >= 2*M_PI ) angle -= 2*M_PI;
+  return new ArcImp( newcenterrel + center, newradius, angle1, angle );
+}
+
+/*
  * inversion of a circle
  */
 

@@ -47,6 +47,18 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class InvertSegmentType
+  : public ArgsParserObjectType
+{
+  InvertSegmentType();
+  ~InvertSegmentType();
+public:
+  static const InvertSegmentType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class InvertCircleType
   : public ArgsParserObjectType
 {

@@ -1058,6 +1058,12 @@ InversionConstructor::InversionConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "inversion" );
 
+  SimpleObjectTypeConstructor* segmentobj =
+     new SimpleObjectTypeConstructor(
+      InvertSegmentType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "inversion" );
+
   SimpleObjectTypeConstructor* circleobj =
      new SimpleObjectTypeConstructor(
       InvertCircleType::instance(),
@@ -1073,6 +1079,7 @@ InversionConstructor::InversionConstructor()
   merge( arcobj );
   merge( circleobj );
   merge( pointobj );
+  merge( segmentobj );
   merge( lineobj );
 }
 
