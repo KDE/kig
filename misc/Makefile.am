@@ -33,7 +33,7 @@ libmisc_la_SOURCES = \
 	cubic-common.cc \
 	goniometry.cc \
 	guiaction.cc \
-	kiginputdialog.cpp \
+	kiginputdialog.cc \
 	kignumerics.cpp \
 	kigpainter.cpp \
 	kigtransform.cpp \
