@@ -19,12 +19,12 @@
 #include "angle_type.h"
 
 #include "bogus_imp.h"
-#include "editanglesize.h"
 #include "other_imp.h"
 #include "point_imp.h"
 #include "../misc/calcpaths.h"
 #include "../misc/common.h"
 #include "../misc/goniometry.h"
+#include "../misc/kiginputdialog.h"
 #include "../kig/kig_commands.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
@@ -129,15 +129,16 @@ void AngleType::executeAction(
   if ( anglelength < 0 ) anglelength += 2* M_PI;
   if ( startangle < 0 ) startangle += 2*M_PI;
 
-  int anglelengthdeg = static_cast<int>( Goniometry::convert( anglelength, Goniometry::Rad, Goniometry::Deg ) );
+  Goniometry go( anglelength, Goniometry::Rad );
+  go.convertTo( Goniometry::Deg );
 
-  double newsize = 0;
-  EditAngleSize* e = new EditAngleSize( &w, anglelengthdeg, Goniometry::Deg );
-  if( !e->exec() )
+  bool ok;
+  Goniometry newsize = KigInputDialog::getAngle( &w, &ok, go );
+  if ( !ok )
     return;
-  newsize = Goniometry::convert( e->angle(), e->system(), Goniometry::Rad );
+  newsize.convertTo( Goniometry::Rad );
 
-  double newcangle = startangle + newsize;
+  double newcangle = startangle + newsize.value();
   Coordinate cdir( cos( newcangle ), sin( newcangle ) );
   Coordinate nc = b + cdir.normalize( rvect.length() );
 

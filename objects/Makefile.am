@@ -14,7 +14,6 @@ noinst_HEADERS=\
 	cubic_imp.h \
 	cubic_type.h \
 	curve_imp.h \
-	editanglesize.h \
 	intersection_types.h \
 	inversion_type.h \
 	line_imp.h \
@@ -53,8 +52,6 @@ libobjects_la_SOURCES=\
 	cubic_imp.cc \
 	cubic_type.cc \
 	curve_imp.cc \
-	editanglesizebase.ui \
-	editanglesize.cc \
 	intersection_types.cc \
 	inversion_type.cc \
 	line_imp.cc \
