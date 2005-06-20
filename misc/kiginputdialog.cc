@@ -29,7 +29,9 @@
 
 #include <qlabel.h>
 #include <qlayout.h>
+#include <qpushbutton.h>
 #include <qvalidator.h>
+#include <qwhatsthis.h>
 
 #include <kcombobox.h>
 #include <kdebug.h>
@@ -139,11 +141,20 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 
   d->m_lineEditFirst = new KLineEdit( frame );
   d->m_lineEditFirst->setText( QString::number( d->m_gonio.value() ) );
+  QWhatsThis::add(
+        d->m_lineEditFirst,
+        i18n( "Use this edit field to modify the size of this angle." ) );
   horlay->addWidget( d->m_lineEditFirst );
 
   d->m_comboBox = new KComboBox( frame );
   d->m_comboBox->insertStringList( Goniometry::systemList() );
   d->m_comboBox->setCurrentItem( d->m_gonio.system() );
+  QWhatsThis::add(
+        d->m_comboBox,
+        i18n( "Choose from this list the goniometric unit you want to use to "
+              "modify the size of this angle.<br>\n"
+              "If you switch to another unit, the value in the edit field on "
+              "the left will be converted to the new selected unit." ) );
   horlay->addWidget( d->m_comboBox );
 
   mainlay->addLayout( horlay );
@@ -156,6 +167,26 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   resize( 350, 100 );
 
   d->m_lineEditFirst->setFocus();
+}
+
+void KigInputDialog::keyPressEvent( QKeyEvent* e )
+{
+  if ( ( e->key() == Qt::Key_Return ) && ( e->state() == 0 ) )
+  {
+    if ( actionButton( Ok )->isEnabled() )
+    {
+      actionButton( Ok )->animateClick();
+      e->accept();
+      return;
+    }
+  }
+  else  if ( ( e->key() == Qt::Key_Escape ) && ( e->state() == 0 ) )
+  {
+    actionButton( Cancel )->animateClick();
+    e->accept();
+    return;
+  }
+
 }
 
 void KigInputDialog::slotCoordsChanged( const QString& )

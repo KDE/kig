@@ -49,6 +49,8 @@ private:
         const KigDocument& doc, Coordinate* c1, Coordinate* c2 );
   KigInputDialog( QWidget* parent, const Goniometry& g );
 
+  virtual void keyPressEvent( QKeyEvent* e );
+
   KigInputDialogPrivate* const d;
   friend class KInputDialogPrivate;
 

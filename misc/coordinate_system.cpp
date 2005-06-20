@@ -26,7 +26,6 @@
 #include "common.h"
 #include "coordinate.h"
 #include "goniometry.h"
-#include "kiginputdialog.h"
 #include "kigpainter.h"
 
 #include <qpainter.h>
