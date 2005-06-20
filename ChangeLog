@@ -1,3 +1,59 @@
+2005-06-20  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Moved the EditAngleSize dialog to the KigInputDialog class.
+
+2005-06-19  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Creating a new class, KigInputDialog. This new class is much
+	like KInputDialog, but it fits better Kig purpouses. At the moment
+	it has two methods to get one or two coordinates, made in a
+	cleaner way than the former ZoomArea class and
+	CoordinateSystem::getCoordFromUser(). Using it instead of the
+	former class/method listed above. This way we can construct a
+	custom input dialog accepting also markup text, allowing us to
+	give instructions much clear when we want the user insert a
+	coordinate, fixing also the bug #100007.
+
+2005-06-16  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Re-enable the "snap" to points in construct mode.
+
+2005-06-14  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Give to the user the possbility to select which element popup a
+	menu for.
+
+2005-06-01  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Small changes to make the port to Qt4 less intrusive.
+
+2005-05-25  Pino Toscano <toscano.pino@tiscali.it>
+
+	* The kfile_kig displays also whether the file is compressed or
+	not.
+
+2005-05-21  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Created a new system to select - in normal mode - one object 
+	among some: using Shift (or Control) + LMB the user can select the
+	object he/she desire through a popup menu. This new system is
+	applyed also to to mouse hover/left click in construct mode, to
+	select one object if we have more than one valid object. This,
+	plus a search among the object under the mouse, allow the fixing
+	of bug #99870.
+
+	* Added a "tip of day" to inform the user of the possibility to
+	select any object from an object stack under the cursor.
+
+	* Give a different behaviour for Shift and Control keys in normal
+	mode: Shift make appear a popup to choose an object from the
+	object stack under the cursor; Control keep the selection.
+
+2005-05-19  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Give to the kfile_kig the ability to read info from compressed
+	files.
+
 2005-05-15  Danny Allen <dannya40uk@yahoo.co.uk>
 
 	* Added my new action icons for Kig, with SVG sources, changed 

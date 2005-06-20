@@ -1,12 +1,5 @@
 * bugs
 
-- Related to "polygon by its vertices contruction".  The user right-clicks
-  on a point and then selects "start"; among the choices there is also
-  the polygon construction, but if selected kig crashes!
-  Probably related to the fact that this ObjectType does not inherit
-  from ArgsParserObjectType but directly from ObjectType, perhaps
-  I (maurizio) forgot to overload some important method.
-
 - There is a pretty strange bug in kig when you use the accel keys.
    Open Kig, type p to start constructing a point.  Click somewhere to
    construct one.  Now click p again, and press escape to cancel the
@@ -154,7 +147,7 @@
 - document mathematical i18n strings, so that the translators have a
    clue about how to translate them !
 
-- write *-filter-status.txt's for the cabri filter.
+- write cabri-filter-status.txt.
 
 - add "Tools": easy tools designed for geometry, like Angle converter and
   so on...
