@@ -152,7 +152,7 @@ void ScriptMode::codePageEntered()
   if ( mwizard->text().isEmpty() )
   {
     // insert template code..
-    QString tempcode = ScriptType::templateCode( mtype, margs.size() );
+    QString tempcode = ScriptType::templateCode( mtype, margs );
     mwizard->setText( tempcode );
   };
   mwizard->setFinishEnabled( mwizard->mpcode, true );

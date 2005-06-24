@@ -20,6 +20,8 @@
 
 #include <algorithm>
 
+#include "../objects/object_holder.h"
+
 class QString;
 
 class ScriptType
@@ -39,7 +41,7 @@ public:
   /**
    * Returns a template code for a script language.
    */
-  static QString templateCode( ScriptType::Type type, uint nargs );
+  static QString templateCode( ScriptType::Type type, std::set<ObjectHolder*> args );
   /**
    * Returns the icon's name for a script language.
    */

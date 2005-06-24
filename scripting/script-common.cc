@@ -40,7 +40,7 @@ QString ScriptType::fillCodeStatement( ScriptType::Type type )
   return i18n( scripts_properties[type].fillCodeStatement );
 }
 
-QString ScriptType::templateCode( ScriptType::Type type, uint nargs )
+QString ScriptType::templateCode( ScriptType::Type type, std::set<ObjectHolder*> args )
 {
   if ( type == Python )
   {
@@ -52,11 +52,14 @@ QString ScriptType::templateCode( ScriptType::Type type, uint nargs )
                             "arg2, etc. Give something which seems "
                             "appropriate for your language.", "arg%1" );
 
-    for ( uint i = 0; i < nargs; ++i )
+    uint id = 1;
+    for ( std::set<ObjectHolder*>::const_iterator i = args.begin(); i != args.end(); ++i )
     {
       if ( !firstarg ) tempcode += ", ";
-      firstarg = false;
-      tempcode += temparg.arg( i + 1 );
+      else firstarg = false;
+      QString n = ( *i )->name();
+      tempcode += n.isEmpty() ? temparg.arg( id ) : n;
+      id++;
     };
     tempcode +=
       " ):\n"
