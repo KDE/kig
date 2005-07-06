@@ -120,11 +120,15 @@ protected:
  * appropriate ChangeObjectImpsCommand if necessary..
  * E.g.  MovingMode wants to move certain objects, so it monitors all
  * the parents of the explicitly moving objects:
+ * \code
  *   MonitorDataObjects mon( getAllParents( emo ) );
+ * \endcode
  * It then moves them around, and when it is finished, it asks to add
  * the KigCommandTasks to a KigCommand, and applies that..
+ * \code
  *   KigCommand* comm = new KigCommand( doc, i18n( "Move Stuff" ) );
  *   mon.finish( comm );
+ * \endcode
  */
 class MonitorDataObjects
 {
@@ -148,7 +152,7 @@ public:
    * add the generated KigCommandTasks to the command comm..
    * monitoring stops after this is called..
    */
-  void finish( KigCommand* comm);
+  void finish( KigCommand* comm );
 };
 
 class ChangeCoordSystemTask

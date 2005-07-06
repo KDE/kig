@@ -43,10 +43,12 @@ class KigDocument;
 class ObjectHolder;
 
 /**
- * KigPainter is an extended qpainter...
- * currently the only difference is that it translates coordinates
+ * KigPainter is an extended QPainter.
+ *
+ * Currently the only difference is that it translates coordinates
  * from and to the internal coordinates/ the widget coordinates...
- * it calls KigWidget::appendOverlay() for all of the places it draws in...
+ *
+ * It calls KigWidget::appendOverlay() for all of the places it draws in...
  */
 class KigPainter
   : public Qt

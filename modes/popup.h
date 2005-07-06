@@ -122,8 +122,8 @@ public:
    * \param objs is the vector with the objects to chose from
    * \param givepopup true means that we have to show a popup to the user
    *
-   * \return the index of the chosen element( starting from 0 ), or -1
-   * if none was selected.
+   * \return the index of the chosen element ( starting from 0 ), or -1
+   *         if none was selected.
    */
   static int getObjectFromList( const QPoint& p, KigWidget* w,
                                 const std::vector<ObjectHolder*>& objs,

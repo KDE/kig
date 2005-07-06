@@ -67,8 +67,8 @@ public:
     ) const = 0;
 
   /**
-   * do something fun with \p os ..  this func is only called if wantArgs
-   * returned Complete.. handleArgs should _not_ do any
+   * do something fun with \p os .. This func is only called if wantArgs
+   * returned Complete.. handleArgs should <i>not<i> do any
    * drawing.. after somebody calls this function, he should
    * redrawScreen() himself..
    */

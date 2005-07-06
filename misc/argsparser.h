@@ -47,7 +47,7 @@ class ObjectImpType;
  *
  * E.g., let's see what CircleBCPType has for its arguments spec:
  * here's some code:
- * <code>
+ * \code
  * static const ArgsParser::spec argsspecTranslation[] =
  * {
  *   { ObjectImp::stype(), I18N_NOOP("Translate this object"), false },
@@ -68,7 +68,7 @@ class ObjectImpType;
  *
  *   return args[0]->transform( t );
  * }
- * </code>
+ * \endcode
  *
  * As you can see above, the argsspec can be declared right in the
  * cpp-file.  The usetexts explain to the user what the argument in

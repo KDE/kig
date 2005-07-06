@@ -91,8 +91,10 @@ std::vector<ObjectCalcer*> getCalcers( const std::vector<ObjectHolder*>& os );
  *
  * Thus, for your own ObjectType classes: use the scheme with the
  * static ::instance methods, and add
- * "KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MyObjectType)" ( no
- * semicolon ! ) to the .cpp file of your class.
+ * \code
+ * KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MyObjectType)
+ * \endcode
+ * to the .cpp file of your class.
  */
 class FakeClass {
 public:
