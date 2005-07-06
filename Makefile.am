@@ -50,4 +50,8 @@ dummy.cpp:
 TAGS: 
 	find -name '*.cc' -o -name '*.cpp' -o -name '*.h' | etags -
 
+# Want to do the scripting part separately, but
+# include everything else.
+DOXYGEN_EXCLUDE = script_mode.h python-scripting-api-dox-mainpage.dox
+DOXYGEN_SET_RECURSIVE = YES
 include ../admin/Doxyfile.am

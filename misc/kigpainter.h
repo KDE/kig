@@ -186,7 +186,7 @@ public:
   /**
    * draw a thick point..  This is what the user sees when he draws a
    * point.  In fact it isn't a point, but a filled circle of a
-   * certain @param radius...
+   * certain radius...
    */
   void drawFatPoint( const Coordinate& p );
 
