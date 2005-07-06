@@ -69,20 +69,24 @@ public:
   // the following two return zero if no name is set.
   const ObjectConstCalcer* nameCalcer() const;
   ObjectConstCalcer* nameCalcer();
-  // Setting the namecalcer is only allowed if previously none was
-  // set.  This way, we avoid keeping a useless namecalcer around if
-  // no name is set.
+  /**
+   * Setting the namecalcer is only allowed if previously none was
+   * set. This way, we avoid keeping a useless namecalcer around if
+   * no name is set.
+   */
   void setNameCalcer( ObjectConstCalcer* namecalcer );
 
-  // returns QString::null if no name is set.
+  /**
+   * returns QString::null if no name is set.
+   */
   const QString name() const;
   /**
-   * Set the ObjectDrawer of this ObjectHolder to d, the old
+   * Set the ObjectDrawer of this ObjectHolder to \p d , the old
    * ObjectDrawer is deleted.
    */
   void setDrawer( ObjectDrawer* d );
   /**
-   * Set the ObjectDrawer of this ObjectHolder to d, the old
+   * Set the ObjectDrawer of this ObjectHolder to \p d , the old
    * ObjectDrawer is not deleted, but returned.
    */
   ObjectDrawer* switchDrawer( ObjectDrawer* d );
@@ -92,22 +96,22 @@ public:
    */
   void calc( const KigDocument& );
   /**
-   * Draw this object on the given KigPainter.  If selected is true,
+   * Draw this object on the given KigPainter.  If \p selected is true,
    * then it will be drawn in red, instead of its normal color.
    */
   void draw( KigPainter& p, bool selected ) const;
   /**
-   * Returns whether this object contains the point p.
+   * Returns whether this object contains the point \p p .
    */
   bool contains( const Coordinate& p, const KigWidget& w, bool nv = false ) const;
   /**
-   * Returns whether this object is in the rectangle r.
+   * Returns whether this object is in the rectangle \p r .
    */
   bool inRect( const Rect& r, const KigWidget& w ) const;
   /**
    * Returns whether this object is shown.
    */
-  bool shown( ) const;
+  bool shown() const;
 
   /**
    * This call is simply forwarded to the ObjectCalcer.  Check the
