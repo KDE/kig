@@ -36,7 +36,7 @@ div.header table {
 }
 div.header table tr td h1 {
         color: white;
-        font: bold 20pt courier;
+        font: bold 20pt monospace;
         padding-top: 0.5em;
 }
 
