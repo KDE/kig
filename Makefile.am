@@ -49,3 +49,5 @@ dummy.cpp:
 
 TAGS: 
 	find -name '*.cc' -o -name '*.cpp' -o -name '*.h' | etags -
+
+include ../admin/Doxyfile.am
