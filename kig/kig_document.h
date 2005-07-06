@@ -65,24 +65,23 @@ public:
                bool showgrid = true, bool showaxes = true, bool nv = false );
   ~KigDocument();
 
-  /**
-   * Get a hold of the objects and coordinate system of this
-   * KigDocument.
-   */
   const CoordinateSystem& coordinateSystem() const;
   const bool grid() const;
   const bool axes() const;
   const bool getNightVision() const;
+  /**
+   * Get a hold of the objects of this KigDocument.
+   */
   const std::vector<ObjectHolder*> objects() const;
   const std::set<ObjectHolder*>& objectsSet() const;
 
   /**
-   * sets the coordinate system to s, and returns the old one..
+   * sets the coordinate system to \p s , and returns the old one..
    */
   CoordinateSystem* switchCoordinateSystem( CoordinateSystem* s );
 
   /**
-   * sets the coordinate system to s, and deletes the old one..
+   * sets the coordinate system to \p s , and deletes the old one..
    */
   void setCoordinateSystem( CoordinateSystem* s );
 

@@ -48,9 +48,13 @@ public:
 
 protected:
   void enableActions();
-  // update the enabled state of the next buttons on the wizard...
+  /**
+   * update the enabled state of the next buttons on the wizard...
+   */
   void updateNexts();
-  // quit this mode...
+  /**
+   * quit this mode...
+   */
   void abandonMacro();
 
   QPoint plc;

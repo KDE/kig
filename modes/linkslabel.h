@@ -23,8 +23,10 @@
 #include <vector>
 #include <utility>
 
-// this widget shows a line of text, with some links underlined, and
-// emits a signal if one of the links is clicked...
+/**
+ * this widget shows a line of text, with some links underlined, and
+ * emits a signal if one of the links is clicked...
+ */
 class LinksLabel : public QWidget
 {
   Q_OBJECT
@@ -45,21 +47,31 @@ public:
     vec data;
   };
 
-  // start editing, start recording changes in a LinksLabelEditBuf,
-  // but don't apply them until after endEdit();
+  /**
+   * start editing, start recording changes in a LinksLabelEditBuf,
+   * but don't apply them until after endEdit();
+   */
   LinksLabelEditBuf startEdit();
-  // add a piece of normal text..
+  /**
+   * add a piece of normal text..
+   */
   void addText( const QString& s, LinksLabelEditBuf& buf );
-  // add a link...
+  /**
+   * add a link...
+   */
   void addLink( const QString& s, LinksLabelEditBuf& buf );
-  // apply the changes... This clears the current contents and adds
-  // the new data...
+  /**
+   * apply the changes... This clears the current contents and adds
+   * the new data...
+   */
   void applyEdit( LinksLabelEditBuf& buf );
 
 signals:
-  // the user clicked on a link.  The index is the order in which it
-  // was added.  E.g. this signal is emitted with arg 0 if the link
-  // you first added is clicked, argument 2 for the third link etc.
+  /**
+   * the user clicked on a link.  The index is the order in which it
+   * was added.  E.g. this signal is emitted with arg 0 if the link
+   * you first added is clicked, argument 2 for the third link etc.
+   */
   void linkClicked( int i );
 
 private slots:

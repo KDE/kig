@@ -25,20 +25,28 @@ class KigDocument;
 class QTextStream;
 class QString;
 
-// Kig's native format.  Between versions 0.3.1 and 0.4, there was a
-// change in the file format.  This filter no longer supports pre-0.4
-// formats, it did up until Kig 0.6.
+/**
+ * Kig's native format.  Between versions 0.3.1 and 0.4, there was a
+ * change in the file format.  This filter no longer supports pre-0.4
+ * formats, it did up until Kig 0.6.
+ */
 class KigFilterNative
   : public KigFilter
 {
-  // this is the load function for the Kig format that is used,
-  // starting at Kig 0.4
+  /**
+   * this is the load function for the Kig format that is used,
+   * starting at Kig 0.4
+   */
   KigDocument* load04( const QString& file, const QDomElement& doc );
-  // this is the load function for the Kig format that is used
-  // starting at Kig 0.7
+  /**
+   * this is the load function for the Kig format that is used
+   * starting at Kig 0.7
+   */
   KigDocument* load07( const QString& file, const QDomElement& doc );
 
-  // save in the Kig format that is used starting at Kig 0.7
+  /**
+   * save in the Kig format that is used starting at Kig 0.7
+   */
   bool save07( const KigDocument& data, const QString& outfile );
   bool save07( const KigDocument& data, QTextStream& file );
 

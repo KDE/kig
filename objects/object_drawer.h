@@ -38,7 +38,7 @@ class Rect;
  * information like the thickness of an object, its color, and whether
  * or not it is hidden.
  *
- * @note The default width of an object depends on its type.  E.g. A
+ * \note The default width of an object depends on its type.  E.g. A
  * point is by default drawn at width 5, a line at width 1.
  * Therefore, there is a special width -1, which means "the default
  * width for this object".
@@ -58,54 +58,88 @@ public:
    */
   ObjectDrawer();
   ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0 );
-  // Draw the object imp on kigpainter p.  If selected is true, it is
-  // drawn in red, otherwise in its normal color.
+  /**
+   * Draw the object \p imp on kigpainter \p p .  If \p selected is true, it is
+   * drawn in red, otherwise in its normal color.
+   */
   void draw( const ObjectImp& imp, KigPainter& p, bool selected ) const;
-  // returns whether the object imp contains coordinate p.  This is
-  // dependent on whether it is shown ( when it will never contain
-  // anything ), and on its width..
+  /**
+   * returns whether the object \p imp contains coordinate \p p . This is
+   * dependent on whether it is shown ( when it will never contain
+   * anything ), and on its width..
+   */
   bool contains( const ObjectImp& imp, const Coordinate& pt, const KigWidget& w, bool nv = false ) const;
-  // returns whether the object imp is in the rectangle r.  This is
-  // dependent on whether it is shown and on its width..
+  /**
+   * returns whether the object \p imp is in the rectangle \p r . This is
+   * dependent on whether it is shown and on its width..
+   */
   bool inRect( const ObjectImp& imp, const Rect& r, const KigWidget& w ) const;
 
-  // returns whether the object this ObjectDrawer is responsible for
-  // will be drawn or not..
-  bool shown( ) const;
-  // returns the color that the object will be drawn in
+  /**
+   * returns whether the object this ObjectDrawer is responsible for
+   * will be drawn or not..
+   */
+  bool shown() const;
+  /**
+   * returns the color that the object will be drawn in
+   */
   QColor color() const;
-  // return the width of the object
+  /**
+   * return the width of the object
+   */
   int width() const;
-  // return PenStyle for all objects except points
+  /**
+   * return PenStyle for all objects except points
+   */
   Qt::PenStyle style() const;
-  // return pointStyle for points
+  /**
+   * return pointStyle for points
+   */
   int pointStyle() const;
-  // return pointStyle trasnformed in a string
+  /**
+   * return pointStyle trasnformed in a string
+   */
   QString pointStyleToString() const;
-  // return style trasnformed in a string
+  /**
+   * return style trasnformed in a string
+   */
   QString styleToString() const;
-  // returns a new ObjectDrawer that is identical to this one.. except
-  // that the shown state is set to s..
+  /**
+   * returns a new ObjectDrawer that is identical to this one.. except
+   * that the shown state is set to \p s ..
+   */
   ObjectDrawer* getCopyShown( bool s ) const;
-  // returns a new ObjectDrawer that is identical to this one.. except
-  // that the color is set to c..
+  /**
+   * returns a new ObjectDrawer that is identical to this one.. except
+   * that the color is set to \p c ..
+   */
   ObjectDrawer* getCopyColor( const QColor& c ) const;
-  // returns a new ObjectDrawer that is identical to this one.. except
-  // that the width is set to w..
+  /**
+   * returns a new ObjectDrawer that is identical to this one.. except
+   * that the width is set to \p w ..
+   */
   ObjectDrawer* getCopyWidth( int w ) const;
-  // returns a new ObjectDrawer that is identical to this one.. except
-  // that the PenStyle state is set to s..
+  /**
+   * returns a new ObjectDrawer that is identical to this one.. except
+   * that the PenStyle state is set to \p s ..
+   */
   ObjectDrawer* getCopyStyle( Qt::PenStyle s ) const;
-  // returns a new ObjectDrawer that is identical to this one.. except
-  // that the pointStyle state is set to p..
+  /**
+   * returns a new ObjectDrawer that is identical to this one.. except
+   * that the pointStyle state is set to \p p ..
+   */
   ObjectDrawer* getCopyPointStyle( int p ) const;
-  // Note that this returns a valid point style in every case, even if
-  // the given style string is unknown.  In that case it returns a
-  // default value.
+  /**
+   * Note that this returns a valid point style in every case, even if
+   * the given \p style string is unknown. In that case it returns a
+   * default value.
+   */
   static int pointStyleFromString( const QString& style );
-  // Note that this returns a valid style in every case, even if the
-  // given style string is unknown.  In that case it returns a default
-  // value.
+  /**
+   * Note that this returns a valid style in every case, even if the
+   * given \p style string is unknown. In that case it returns a default
+   * value.
+   */
   static Qt::PenStyle styleFromString( const QString& style );
 };
 

@@ -21,8 +21,10 @@ class ObjectCalcer;
 class QCString;
 class KigDocument;
 
-// constructs a text object with text "%1", location c, and variable
-// parts given by the argument arg of obj o.
+/**
+ * constructs a text object with text "%1", location \p c, and variable
+ * parts given by the argument \p arg of obj \p o.
+ */
 ObjectTypeCalcer* filtersConstructTextObject(
   const Coordinate& c, ObjectCalcer* o,
   const QCString& arg, const KigDocument& doc, bool needframe );

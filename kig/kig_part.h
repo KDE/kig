@@ -117,9 +117,11 @@ public slots:
   void toggleAxes();
   void toggleNightVision();
 
-  // equivalent to setModified( false ); ( did i mention i don't like
-  // signals/slots for being this inflexible...
-  // this is connected to mhistory->documentRestored();
+  /**
+   * equivalent to setModified( false ); ( did i mention i don't like
+   * signals/slots for being this inflexible...
+   * this is connected to mhistory->documentRestored();
+   */
   void setUnmodified();
 
   /****************** cooperation with stuff ******************/
@@ -135,8 +137,10 @@ public:
   void coordSystemChanged( int );
 
 signals: // these signals are for telling KigView it should do something...
-  // emitted when we want to suggest a new size for the view (
-  // basically after loading a file, and on startup... )
+  /**
+   * emitted when we want to suggest a new size for the view
+   * ( basically after loading a file, and on startup... )
+   */
   void recenterScreen();
 
 /************** working with our internal document **********/
@@ -172,7 +176,9 @@ protected:
   KigMode* mMode;
   KSelectAction* aCoordSystem;
 
-  // the command history
+  /**
+   * the command history
+   */
   KCommandHistory* mhistory;
 
 public:

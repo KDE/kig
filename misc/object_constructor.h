@@ -50,43 +50,55 @@ public:
   virtual const QString description() const = 0;
   virtual const QCString iconFileName( const bool canBeNull = false ) const = 0;
 
-  // the following function is called in case of duplication of arguments
-  // and returns true if this is acceptable; this will return false for
-  // typical objects
+  /**
+   * the following function is called in case of duplication of arguments
+   * and returns true if this is acceptable; this will return false for
+   * typical objects
+   */
   virtual const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                               const int& ) const = 0;
-  // can this constructor do something useful with os ?  return
-  // ArgsParser::Complete, Valid or NotGood
+  /**
+   * can this constructor do something useful with \p os ?  return
+   * ArgsParser::Complete, Valid or NotGood
+   */
   virtual const int wantArgs( const std::vector<ObjectCalcer*>& os,
                               const KigDocument& d,
                               const KigWidget& v
     ) const = 0;
 
-  // do something fun with os..  this func is only called if wantArgs
-  // returned Complete.. handleArgs should _not_ do any
-  // drawing.. after somebody calls this function, he should
-  // redrawScreen() himself..
+  /**
+   * do something fun with \p os ..  this func is only called if wantArgs
+   * returned Complete.. handleArgs should _not_ do any
+   * drawing.. after somebody calls this function, he should
+   * redrawScreen() himself..
+   */
   virtual void handleArgs( const std::vector<ObjectCalcer*>& os,
                            KigPart& d,
                            KigWidget& v
     ) const = 0;
 
-  // return a string describing what you would use o for if it were
-  // selected...  o should be part of sel.
+  /**
+   * return a string describing what you would use \p o for if it were
+   * selected...  \p o should be part of \p sel .
+   */
   virtual QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const = 0;
 
-  // return a string describing what argument you want next, if the
-  // given selection of objects were selected.
+  /**
+   * return a string describing what argument you want next, if the
+   * given selection of objects were selected.
+   */
   virtual QString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const = 0;
 
-  // show a preliminary version of what you would do when handleArgs
-  // would be called..  E.g. if this constructor normally constructs a
-  // locus through some 5 points, then it will try to draw a locus
-  // through whatever number of points it gets..
+  /**
+   * show a preliminary version of what you would do when handleArgs
+   * would be called..  E.g. if this constructor normally constructs a
+   * locus through some 5 points, then it will try to draw a locus
+   * through whatever number of points it gets..
+   */
   virtual void handlePrelim( KigPainter& p,
                              const std::vector<ObjectCalcer*>& sel,
                              const KigDocument& d,
@@ -225,7 +237,7 @@ public:
 };
 
 /**
- * This class is the equivalent of @ref SimpleObjectTypeConstructor
+ * This class is the equivalent of \ref SimpleObjectTypeConstructor
  * for object types that are constructed in groups of more than one.
  * For example, the intersection of a circle and line in general
  * produces two points, in general.  Internally, we differentiate
@@ -319,7 +331,7 @@ public:
  * output objects.  The macro-constructor saves the way in which the
  * output objects have been built from the input objects, and when
  * given similar input objects, it will produce objects in the given
- * way.  The data is saved in a @ref ObjectHierarchy.
+ * way.  The data is saved in a \ref ObjectHierarchy.
  */
 class MacroConstructor
   : public ObjectConstructor
@@ -369,9 +381,11 @@ public:
 
   void setBuiltin( bool builtin );
 
-  // is this the ctor for a transformation type.  We want to know this
-  // cause transform types are shown separately in an object's RMB
-  // menu..
+  /**
+   * is this the ctor for a transformation type.  We want to know this
+   * cause transform types are shown separately in an object's RMB
+   * menu..
+   */
   bool isTransform() const;
 
   void setName( const QString& name );

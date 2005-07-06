@@ -29,8 +29,10 @@ class ObjectCalcer;
 class PointConstructMode
   : public BaseMode
 {
-  // this is the point that we move around, for the user to add
-  // somewhere..
+  /**
+   * this is the point that we move around, for the user to add
+   * somewhere..
+   */
   ObjectTypeCalcer::shared_ptr mpt;
 public:
   PointConstructMode( KigPart& d );
@@ -51,14 +53,19 @@ protected:
 class BaseConstructMode
   : public BaseMode
 {
-  // this is the point that we move around, in case the user wants to
-  // add a point somewhere..
+  /**
+   * this is the point that we move around, in case the user wants to
+   * add a point somewhere..
+   */
   ObjectTypeCalcer::shared_ptr mpt;
-  // mp: this point always follows the cursor
-  // IMPORTANT: this Calcer must NEVER be added to the document, since
-  // its is used in constructors that need more input from the user
-  // to decide parameters of the constructed object that will be fixed
-  // afterwards (like the number of sides of a regular polygon)
+  /**
+   * mp: this point always follows the cursor
+   *
+   * IMPORTANT: this Calcer must NEVER be added to the document, since
+   * its is used in constructors that need more input from the user
+   * to decide parameters of the constructed object that will be fixed
+   * afterwards (like the number of sides of a regular polygon)
+   */
   ObjectTypeCalcer* mcursor;
   // we also allocate here the corresponding objectholder, since the
   // only sensible place where to deallocate it is in the destructor

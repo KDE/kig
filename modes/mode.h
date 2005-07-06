@@ -42,8 +42,10 @@ public:
   virtual StdConstructionMode* toStdConstructionMode();
 
   virtual void leftClicked( QMouseEvent*, KigWidget* );
-  // this means: mouse moved with left mouse button down (in case that
-  // wasn't clear...)
+  /**
+   * this means: mouse moved with left mouse button down (in case that
+   * wasn't clear...)
+   */
   virtual void leftMouseMoved( QMouseEvent*, KigWidget* );
   virtual void leftReleased( QMouseEvent*, KigWidget* );
   virtual void midClicked( QMouseEvent*, KigWidget* );
@@ -52,14 +54,18 @@ public:
   virtual void rightClicked( QMouseEvent*, KigWidget* );
   virtual void rightMouseMoved( QMouseEvent*, KigWidget* );
   virtual void rightReleased( QMouseEvent*, KigWidget* );
-  // mouse moved without any buttons down...
+  /**
+   * mouse moved without any buttons down...
+   */
   virtual void mouseMoved( QMouseEvent*, KigWidget* );
 
-  // actions: we enable the actions we want when our mode is made
-  // active.  These actions are members of KigDocument, and call slots
-  // on KigDocument.  These slots all call the correspondent mode()
-  // member.  Modes reimplement the ones they need, and turn on the
-  // actions they support in enableActions().
+  /**
+   * actions: we enable the actions we want when our mode is made
+   * active.  These actions are members of KigDocument, and call slots
+   * on KigDocument.  These slots all call the correspondent mode()
+   * member.  Modes reimplement the ones they need, and turn on the
+   * actions they support in enableActions().
+   */
   virtual void enableActions();
 
   virtual void cancelConstruction();
@@ -72,7 +78,7 @@ public:
   virtual void invertSelection();
 
   /**
-   * Redraw the document on KigWidget w.  It's up to the mode to
+   * Redraw the document on KigWidget \p w .  It's up to the mode to
    * refresh the screen...
    */
   virtual void redrawScreen( KigWidget* w );

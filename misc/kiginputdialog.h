@@ -67,13 +67,13 @@ public:
   /**
    * Static convenience function to get a Coordinate from the user.
    *
-   * @param caption caption of the dialog
-   * @param label text of the label of the dialog
-   * @param parent parent of the dialog widget
-   * @param ok it will be set to true if the user pressed Ok after inserting a
+   * \param caption caption of the dialog
+   * \param label text of the label of the dialog
+   * \param parent parent of the dialog widget
+   * \param ok it will be set to true if the user pressed Ok after inserting a
    *           well-formatted Coordinate
-   * @param doc the actual Kig document
-   * @param cvalue a pointer to a Coordinate class. If the user inserted
+   * \param doc the actual Kig document
+   * \param cvalue a pointer to a Coordinate class. If the user inserted
    *               successfully a new Coordinate, the value will be stored
    *               here. If this points to a valid Coordinate, then it will be
    *               displayed as initial value of the correspondenting text edit
@@ -84,18 +84,18 @@ public:
   /**
    * Static convenience function to get two Coordinates at once from the user.
    *
-   * @param caption caption of the dialog
-   * @param label text of the label of the dialog
-   * @param parent parent of the dialog widget
-   * @param ok it will be set to true if the user pressed Ok after inserting
+   * \param caption caption of the dialog
+   * \param label text of the label of the dialog
+   * \param parent parent of the dialog widget
+   * \param ok it will be set to true if the user pressed Ok after inserting
    *           well-formatted Coordinates
-   * @param doc the actual Kig document
-   * @param cvalue a pointer to a Coordinate class. If the user inserted
+   * \param doc the actual Kig document
+   * \param cvalue a pointer to a Coordinate class. If the user inserted
    *               successfully new Coordinates, the value of the first
    *               Coordinate will be stored here. If this points to a valid
    *               Coordinate, then it will be displayed as initial value of
    *               the text edit representing the first Coordinate.
-   * @param cvalue2 a pointer to a Coordinate class. If the user inserted
+   * \param cvalue2 a pointer to a Coordinate class. If the user inserted
    *                successfully new Coordinates, the value of the second
    *                Coordinate will be stored here. If this points to a valid
    *                Coordinate, then it will be displayed as initial value of
@@ -109,13 +109,13 @@ public:
    * Static convenience function to get an angle incapsulated in a Goniometry
    * class.
    *
-   * @param parent parent of the dialog widget
-   * @param ok it will be set to true if the user pressed Ok after inserting a
+   * \param parent parent of the dialog widget
+   * \param ok it will be set to true if the user pressed Ok after inserting a
    *           well-formatted angle
-   * @param g the Goniometry class containing the original angle we are going
+   * \param g the Goniometry class containing the original angle we are going
    *          to modify.
    *
-   * @return a Goniometry class containing the new angle
+   * \return a Goniometry class containing the new angle
    */
   static Goniometry getAngle( QWidget* parent, bool* ok, const Goniometry& g );
 };

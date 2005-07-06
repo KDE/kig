@@ -49,8 +49,12 @@ private:
 
   void init( const std::vector<ObjectCalcer*>& from, const std::vector<ObjectCalcer*>& to );
 
-  // this constructor is private since it should be used only by the static
-  // constructor buildSafeObjectHierarchy
+  /**
+   * this constructor is private since it should be used only by the static
+   * constructor buildSafeObjectHierarchy
+   *
+   * \see ObjectHierarchy::buildSafeObjectHierarchy
+   */
   ObjectHierarchy();
 
 public:
@@ -60,27 +64,33 @@ public:
   ObjectHierarchy( const ObjectHierarchy& h );
   ~ObjectHierarchy();
 
-  // this creates a new ObjectHierarchy, that takes a.size() less
-  // arguments, but uses copies of the ObjectImp's in a instead..
+  /**
+   * this creates a new ObjectHierarchy, that takes a.size() less
+   * arguments, but uses copies of the ObjectImp's in \p a instead..
+   */
   ObjectHierarchy withFixedArgs( const Args& a ) const;
 
   std::vector<ObjectImp*> calc( const Args& a, const KigDocument& doc ) const;
 
-  // saves the ObjectHierarchy data in children xml tags of parent..
+  /**
+   * saves the ObjectHierarchy data in children xml tags of \p parent ..
+   */
   void serialize( QDomElement& parent, QDomDocument& doc ) const;
   /**
-   * Deserialize the ObjectHierarchy data from the xml element parent..
+   * Deserialize the ObjectHierarchy data from the xml element \p parent ..
    * Since this operation can fail for some reasons, we provide it as a
    * static to return 0 in case of error.
    */
   static ObjectHierarchy* buildSafeObjectHierarchy( const QDomElement& parent, QString& error );
 //  ObjectHierarchy( const QDomElement& parent );
 
-  // build a set of objects that interdepend according to this
-  // ObjectHierarchy..  Only the result objects are returned.  Helper
-  // objects that connect the given objects with the returned objects,
-  // can only be found by following the returned objects' parents()
-  // methods..
+  /**
+   * build a set of objects that interdepend according to this
+   * ObjectHierarchy..  Only the result objects are returned.  Helper
+   * objects that connect the given objects with the returned objects,
+   * can only be found by following the returned objects' parents()
+   * methods..
+   */
   std::vector<ObjectCalcer*> buildObjects( const std::vector<ObjectCalcer*>& os, const KigDocument& ) const;
 
   ArgsParser argParser() const;

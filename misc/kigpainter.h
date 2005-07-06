@@ -80,7 +80,9 @@ public:
               bool needOverlay = true );
   ~KigPainter();
 
-  // what rect are we drawing on ?
+  /**
+   * what rect are we drawing on ?
+   */
   Rect window();
 
   QPoint toScreen( const Coordinate p ) const;
@@ -92,16 +94,17 @@ public:
   // colors and stuff...
   void setStyle( const PenStyle c );
   void setColor( const QColor& c );
-  void setWidth( const int c ); // setting this to -1 means to use
-                                 // the default width for the object
-                                 // being drawn..  a point -> 5, other
-                                 // objects -> 1
+  /**
+   * setting this to -1 means to use the default width for the object
+   * being drawn..  a point -> 5, other objects -> 1
+   */
+  void setWidth( const int c );
   void setPointStyle( const int p );
   void setPen( const QPen& p );
   void setBrushStyle( const BrushStyle c );
   void setBrush( const QBrush& b );
   void setBrushColor( const QColor& c );
-  
+
   QColor getColor() const;
   bool getNightVision( ) const;
 
@@ -154,12 +157,12 @@ public:
    */
   void drawRect( const QRect& r );
 
-  /*
+  /**
    * draw a circle...
    */
   void drawCircle( const Coordinate& center, const double radius );
 
-  /*
+  /**
    * draw a segment...
    */
   void drawSegment ( const Coordinate& from, const Coordinate& to );
@@ -223,9 +226,9 @@ public:
 
   void drawVector( const Coordinate& a, const Coordinate& b );
 
-  /*
+  /**
    * draw text...
-   * @see QPainter::drawText()
+   * \see QPainter::drawText()
    */
   void drawText( const Rect r, const QString s, int textFlags = 0,
                  int len = -1);
@@ -251,7 +254,7 @@ protected:
   /**
    * adds a number of rects to mOverlay so that the rects entirely
    * contain the circle...
-   * @see mOverlay
+   * \see mOverlay
    */
   void circleOverlay( const Coordinate& centre, double radius );
   // this works recursively...
@@ -260,7 +263,7 @@ protected:
   /**
    * adds some rects to mOverlay, so that they cover the segment p1p2
    * completely...
-   * @see Object::getOverlay()
+   * \see Object::getOverlay()
    */
   void segmentOverlay( const Coordinate& p1, const Coordinate& p2 );
 
@@ -271,11 +274,13 @@ protected:
 
   /**
    * ...
-   * @see drawText(), QPainter::boundingRect()
+   * \see drawText(), QPainter::boundingRect()
    */
   void textOverlay( const QRect& r, const QString s, int textFlags, int len );
 
-  // the size we want the overlay rects to be...
+  /**
+   * the size we want the overlay rects to be...
+   */
   double overlayRectSize();
 
   std::vector<QRect> mOverlay;

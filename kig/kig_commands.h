@@ -157,7 +157,7 @@ class ChangeCoordSystemTask
   CoordinateSystem* mcs;
 public:
   /**
-   * a command that changes the coordinate-system to s..
+   * a command that changes the coordinate-system to \p s ..
    */
   ChangeCoordSystemTask( CoordinateSystem* s );
   ~ChangeCoordSystemTask();

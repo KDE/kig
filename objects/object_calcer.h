@@ -84,12 +84,16 @@ protected:
 
   ObjectCalcer();
 public:
-  // a calcer should call this to register itself as a child of this
-  // calcer.  This automatically takes a reference.
+  /**
+   * a calcer should call this to register itself as a child of this
+   * calcer.  This automatically takes a reference.
+   */
   void addChild( ObjectCalcer* c );
-  // a calcer should call this in its destructor, to inform its parent
-  // that it is no longer a child of this calcer.  This will release
-  // the reference taken in addChild..
+  /**
+   * a calcer should call this in its destructor, to inform its parent
+   * that it is no longer a child of this calcer.  This will release
+   * the reference taken in addChild..
+   */
   void delChild( ObjectCalcer* c );
 
   // use this pointer type to keep a reference to an ObjectCalcer...
@@ -187,7 +191,7 @@ public:
    * Construct a new ObjectTypeCalcer with a given type and parents.
    */
 //  ObjectTypeCalcer( const ObjectType* type, const std::vector<ObjectCalcer*>& parents );
-  /*
+  /**
    * the sort boolean tells whether the sortArgs method should be invoked or not;
    * if not present
    */
@@ -266,7 +270,7 @@ public:
  * This is an ObjectCalcer that has a single parent, and gets a
  * certain property from it in its calc() method.
  *
- * @see ObjectImp::property
+ * \see ObjectImp::property
  */
 class ObjectPropertyCalcer
   : public ObjectCalcer

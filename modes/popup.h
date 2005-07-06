@@ -65,7 +65,9 @@ public:
   void addAction( int menu, const QPixmap& icon, const QString& name, int id );
   void addAction( int menu, const QPixmap& pix, int id );
 
-  // set the checked state of the n'th item in menu to checked..
+  /**
+   * set the checked state of the \p n 'th item in \p menu to \p checked ..
+   */
   void setChecked( int menu, int n, bool checked );
 
   std::vector<ObjectHolder*> objects() const { return mobjs; };

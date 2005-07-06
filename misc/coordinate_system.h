@@ -44,14 +44,16 @@ public:
   static CoordinateSystem* build( const char* type );
 };
 
-// a CoordinateSystem is what the user sees: it is kept by KigPart to
-// show the user a grid, and to show the coordinates of points... it
-// allows for weird CoordinateSystem's like homogeneous or
-// projective...
-// internally, it does nothing, it could almost have been an ordinary
-// Object..., mapping coordinates from and to the screen to and from
-// the internal coordinates is done elsewhere ( KigPainter and
-// KigWidget... )
+/**
+ * a CoordinateSystem is what the user sees: it is kept by KigPart to
+ * show the user a grid, and to show the coordinates of points... it
+ * allows for weird CoordinateSystem's like homogeneous or
+ * projective...
+ * internally, it does nothing, it could almost have been an ordinary
+ * Object..., mapping coordinates from and to the screen to and from
+ * the internal coordinates is done elsewhere ( KigPainter and
+ * KigWidget... )
+ */
 class CoordinateSystem
   : public Qt
 {

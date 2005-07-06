@@ -21,7 +21,7 @@
 #include "../objects/common.h"
 
 /**
- * This function sorts os such that they're in the right order for
+ * This function sorts \p os such that they're in the right order for
  * calc()-ing.  This means that child objects must appear after their
  * parents ( for you graph people, this is just a topological sort.. )
  */
@@ -48,36 +48,36 @@ std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& from, con
 std::vector<ObjectCalcer*> sideOfTreePath( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
 
 /**
- * This function returns all objects above the @p given in the
- * dependency graph.  The @p given objects are also included
+ * This function returns all objects above the \p given in the
+ * dependency graph.  The \p given objects are also included
  * themselves..
  */
 std::vector<ObjectCalcer*> getAllParents( const std::vector<ObjectCalcer*>& objs );
 /**
- * @overload
+ * \overload
  */
 std::vector<ObjectCalcer*> getAllParents( ObjectCalcer* obj );
 
 /**
- * This function returns all objects below the objects in objs in the
- * dependency graphy.  The objects in objs are also included
+ * This function returns all objects below the objects in \p objs in the
+ * dependency graphy.  The objects in \p objs are also included
  * themselves..
  */
 std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> objs );
 
 /**
- * @overload
+ * \overload
  */
 std::set<ObjectCalcer*> getAllChildren( ObjectCalcer* obj );
 
 /**
- * Returns true if o is a descendant of any of the objects in os..
+ * Returns true if \p o is a descendant of any of the objects in \p os..
  */
 bool isChild( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& os );
 
 /**
- * Return true if the given point is ( by construction ) on the given
- * curve.  This means that it is either a constrained point on the
+ * Return true if the given \p point is ( by construction ) on the given
+ * \p curve.  This means that it is either a constrained point on the
  * curve, or the curve is constructed through the point, or the point
  * is an intersection point of the curve with another curve.
  * Note that it is assumed that the given point is in fact a point and the

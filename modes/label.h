@@ -63,8 +63,10 @@ protected:
   void setCoordinate( const Coordinate& coord );
   void setText( const QString& s );
   void setLocationParent( ObjectCalcer* o );
-  // objects you pass here, should be newly created property objects,
-  // that have no children..
+  /**
+   * objects you pass here, should be newly created property objects,
+   * that have no children..
+   */
   void setPropertyObjects( const argvect& props );
   void setFrame( bool f );
 
@@ -86,12 +88,14 @@ private:
   void killMode();
 
 private:
-  //internal
-  // What Are We Doing...
-  // the diff between SelectingArgs and ReallySelectingArgs is that
-  // the latter means the user is selecting an arg in the kig window,
-  // whereas the first only means that he's looking at the second
-  // page of the wizard...
+  /**
+   * \internal
+   * What Are We Doing...
+   * the diff between SelectingArgs and ReallySelectingArgs is that
+   * the latter means the user is selecting an arg in the kig window,
+   * whereas the first only means that he's looking at the second
+   * page of the wizard...
+   */
   typedef enum { SelectingLocation, RequestingText, SelectingArgs, ReallySelectingArgs } wawdtype;
 
   void updateWiz();

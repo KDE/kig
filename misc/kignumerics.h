@@ -32,8 +32,10 @@ int calcCubicVariations (double x, double a, double b, double c,
 double calcCubicRootwithNewton ( double ymin, double ymax, double a,
     double b, double c, double d, double tol );
 
-// Gaussian Elimination.  We return false if the matrix is singular,
-// and can't be usefully eliminated..
+/**
+ * Gaussian Elimination.  We return false if the matrix is singular,
+ * and can't be usefully eliminated..
+ */
 bool GaussianElimination( double *matrix[], int numrows, int numcols,
                           int scambio[] );
 

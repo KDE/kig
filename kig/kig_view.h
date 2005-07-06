@@ -63,18 +63,24 @@ class KigWidget : public QWidget
   void resizeEvent( QResizeEvent* );
   QSize sizeHint() const;
 
-  // this is called to match a rect's dimensions to the dimensions of
-  // the window before we set mViewRect to it.  This is done cause we
-  // always want circles to look like circles etc...
+  /**
+   * this is called to match a rect's dimensions to the dimensions of
+   * the window before we set mViewRect to it.  This is done cause we
+   * always want circles to look like circles etc...
+   */
   Rect matchScreenShape( const Rect& r ) const;
 
 public:
-  // what do the still objects look like
-  // wondering if this is appropriate, maybe it should be part of
-  // MovingMode ?
+  /**
+   * what do the still objects look like
+   * wondering if this is appropriate, maybe it should be part of
+   * MovingMode ?
+   */
   QPixmap stillPix;
-  // temporary, gets bitBlt'd (copied) onto the widget
-  // (to avoid flickering)
+  /**
+   * temporary, gets bitBlt'd (copied) onto the widget
+   * (to avoid flickering)
+   */
   QPixmap curPix;
 
 protected:
@@ -142,10 +148,14 @@ public:
 
   // clear stillPix...
   void clearStillPix();
-  // update curPix (bitBlt stillPix onto curPix..)
+  /**
+   * update curPix (bitBlt stillPix onto curPix..)
+   */
   void updateCurPix( const std::vector<QRect>& = std::vector<QRect>());
 
-  // this means bitBlting curPix on the actual widget...
+  /**
+   * this means bitBlting curPix on the actual widget...
+   */
   void updateWidget( const std::vector<QRect>& = std::vector<QRect>() );
   void updateEntireWidget();
 
@@ -180,12 +190,16 @@ public:
   const KigDocument& document() const;
 
 public:
-  // this recenters the screen, that is, resets the shown rect to
-  // mpart->document().suggestedRect()..
+  /**
+   * this recenters the screen, that is, resets the shown rect to
+   * mpart->document().suggestedRect()..
+   */
   void recenterScreen();
-  // this gets called if the user clicks the recenter screen button.
-  // It adds a KigCommand to the CommandHistory that recenters the
-  // screen..
+  /**
+   * this gets called if the user clicks the recenter screen button.
+   * It adds a KigCommand to the CommandHistory that recenters the
+   * screen..
+   */
   void slotRecenterScreen();
 
   // called when the user clicks the appropriate buttons..

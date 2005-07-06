@@ -74,22 +74,30 @@ public:
   DragRectMode( KigPart& d, KigWidget& w );
   ~DragRectMode();
 
-  // this returns the selected objects..
+  /**
+   * this returns the selected objects..
+   */
   std::vector<ObjectHolder*> ret() const;
 
-  // this returns the selected rect..
+  /**
+   * this returns the selected rect..
+   */
   Rect rect() const;
 
-  // this returns false if the control or shift button were pressed
-  // when the mouse button was released, and true otherwise.  This is
-  // because the user expects us to not clear the selection before
-  // adding the newly selected objects if (s)he pressed control or
-  // shift..
+  /**
+   * this returns false if the control or shift button were pressed
+   * when the mouse button was released, and true otherwise.  This is
+   * because the user expects us to not clear the selection before
+   * adding the newly selected objects if (s)he pressed control or
+   * shift..
+   */
   bool needClear() const;
 
-  // whether the user cancelled the rect mode..  If this returns true,
-  // all the other return data above will be in undefined state, so
-  // first check this function's result..
+  /**
+   * whether the user cancelled the rect mode..  If this returns true,
+   * all the other return data above will be in undefined state, so
+   * first check this function's result..
+   */
   bool cancelled() const;
 };
 

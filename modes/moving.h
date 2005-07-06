@@ -52,9 +52,11 @@ protected:
   MovingModeBase( KigPart& doc, KigWidget& v );
   ~MovingModeBase();
 
-  // Subclasses should call this in their constructor, when they know
-  // which objects will be moving around... They are expected to be in
-  // the right order for being calc()'ed...
+  /**
+   * Subclasses should call this in their constructor, when they know
+   * which objects will be moving around... They are expected to be in
+   * the right order for being calc()'ed...
+   */
   void initScreen( const std::vector<ObjectCalcer*>& amo );
 
   // in these functions, subclasses should do the equivalent of

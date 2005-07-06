@@ -106,11 +106,15 @@ class ObjectImpType;
 class ArgsParser
 {
 public:
-  // this are some enum values that we return from some functions.
+  /**
+   * this are some enum values that we return from some functions.
+   */
   enum { Invalid = 0, Valid = 1, Complete = 2 };
   struct spec { const ObjectImpType* type; std::string usetext; std::string selectstat; bool onOrThrough;};
 private:
-  // the args spec..
+  /**
+   * the args spec..
+   */
   std::vector<spec> margs;
 
   spec findSpec( const ObjectImp* o, const Args& parents ) const;
@@ -123,19 +127,25 @@ public:
   void initialize( const std::vector<spec>& args );
   void initialize( const struct spec* args, int n );
 
-  // returns a new ArgsParser that wants the same args, except for the
-  // ones of the given type..
+  /**
+   * returns a new ArgsParser that wants the same args, except for the
+   * ones of the given type..
+   */
   ArgsParser without( const ObjectImpType* type ) const;
   // checks if os matches the argument list this parser should parse..
   int check( const Args& os ) const;
   int check( const std::vector<ObjectCalcer*>& os ) const;
-  // returns the usetext for the argument that o would be used for,
-  // if sel were used as parents..
-  // o should be in sel...
+  /**
+   * returns the usetext for the argument that o would be used for,
+   * if sel were used as parents..
+   * \p o should be in \p sel ...
+   */
   std::string usetext( const ObjectImp* o, const Args& sel ) const;
 
-  // returns the select statement for the next selectable argument
-  // when the given args are selected.
+  /**
+   * returns the select statement for the next selectable argument
+   * when the given args are selected.
+   */
   std::string selectStatement( const Args& sel ) const;
 
   // this reorders the objects or args so that they are in the same
@@ -143,13 +153,17 @@ public:
   Args parse( const Args& os ) const;
   std::vector<ObjectCalcer*> parse( const std::vector<ObjectCalcer*>& os ) const;
 
-  // returns the minimal ObjectImp ID that o needs to inherit in order
-  // to be useful..  o should be part of parents.
+  /**
+   * returns the minimal ObjectImp ID that \p o needs to inherit in order
+   * to be useful..  \p o should be part of \p parents .
+   */
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
 
-  // Supposing that parents would be given as parents, this function
-  // returns whether the returned ObjectImp will be, by construction,
-  // on o ( if o is a curve ), or through o ( if o is a point ).
+  /**
+   * Supposing that \p parents would be given as parents, this function
+   * returns whether the returned ObjectImp will be, by construction,
+   * on \p o ( if \p o is a curve ), or through \p o ( if \p o is a point ).
+   */
   bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
 
   // Checks the args according to this args specification.  If the

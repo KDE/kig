@@ -193,9 +193,11 @@ class LocusConstructor
 public:
   LocusConstructor();
   ~LocusConstructor();
-  // we override the wantArgs() function, since we need to see
-  // something about the objects that an ArgsParser can't know about,
-  // namely, whether the first point is a constrained point...
+  /**
+   * we override the wantArgs() function, since we need to see
+   * something about the objects that an ArgsParser can't know about,
+   * namely, whether the first point is a constrained point...
+   */
   const int wantArgs(
     const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v

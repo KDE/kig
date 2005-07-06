@@ -65,7 +65,9 @@ public:
 //   KigObjectsPopup* popup( const Objects& os );
 //   KigDocumentPopup* popup( KigDocument* );
 protected:
-  // selected objects...
+  /**
+   * selected objects...
+   */
   std::set<ObjectHolder*> sos;
 };
 

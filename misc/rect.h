@@ -90,13 +90,17 @@ public:
    */
   void eat( const Rect& r );
 
-  // synonym for eat..
+  /**
+   * synonym for eat..
+   */
   Rect& operator|=( const Rect& rhs ) { eat( rhs ); return *this; };
 
-  // return a rect which is a copy of this rect, but has an aspect
-  // ratio equal to rhs's one..  if shrink is true, the rect will be
-  // shrunk, otherwise extended..  The center of the new rect is the
-  // same as this rect's center..
+  /**
+   * return a rect which is a copy of this rect, but has an aspect
+   * ratio equal to rhs's one..  if \p shrink is true, the rect will be
+   * shrunk, otherwise extended..  The center of the new rect is the
+   * same as this rect's center..
+   */
   Rect matchShape( const Rect& rhs, bool shrink = false ) const;
 
   QRect toQRect() const;
@@ -126,8 +130,10 @@ protected:
 
 bool operator==( const Rect& r, const Rect& s );
 kdbgstream& operator<<( kdbgstream& s, const Rect& t );
-// this operator returns a rect that contains both the given
-// rects..
+/**
+ * this operator returns a Rect that contains both the given
+ * rects..
+ */
 Rect operator|( const Rect& lhs, const Rect& rhs );
 
 #endif

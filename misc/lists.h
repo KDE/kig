@@ -49,8 +49,10 @@ public:
   static GUIActionList* instance();
   const avectype& actions() const { return mactions; };
 
-  // register this document, so that it receives notifications for
-  // added and removed actions..
+  /**
+   * register this document, so that it receives notifications for
+   * added and removed actions..
+   */
   void regDoc( KigPart* d );
   void unregDoc( KigPart* d );
 
@@ -120,26 +122,26 @@ public:
   static MacroList* instance();
 
   /**
-   * Add a Macro m.  MacroList takes care of adding the action and
+   * Add a Macro \p m .  MacroList takes care of adding the action and
    * ctor in the relevant places..
    */
   void add( Macro* m );
   void add( const vectype& ms );
 
   /**
-   * Remove macro m.  Macrolist takes care of deleting everything, and
+   * Remove macro \p m .  Macrolist takes care of deleting everything, and
    * unregistering the action and ctor from the relevant places..
    */
   void remove( Macro* m );
 
   /**
-   * Save macro(s) m to file f..
+   * Save macro(s) \p m to file \p f ..
    */
   bool save( Macro* m, const QString& f );
   bool save( const vectype& ms, const QString& f );
 
   /**
-   * load macro's from file f..
+   * load macro's from file \p f ..
    * note that this just returns the loaded macro's, and doesn't add
    * them to the various lists.  Use add() if you want
    * that behaviour..

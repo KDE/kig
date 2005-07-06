@@ -36,9 +36,11 @@ public:
   static KigFilters* instance();
   KigFilter* find (const QString& mime);
 
-  // saving is always done with the native filter.  We don't support
-  // output filters..
 //  bool save ( const KigDocument& data, QTextStream& stream );
+  /**
+   * saving is always done with the native filter.  We don't support
+   * output filters..
+   */
   bool save ( const KigDocument& data, const QString& outfile );
 protected:
   KigFilters();
@@ -70,15 +72,19 @@ public:
   KigFilter();
   virtual ~KigFilter();
 
-  // can the filter handle this mimetype ?
+  /**
+   * can the filter handle the mimetype \p mime ?
+   */
   virtual bool supportMime ( const QString& mime );
 
-  // load file fromfile and build a KigDocument from it..  If this
-  // function returns 0, that means that an error occurred while
-  // loading ( implementations of this function are responsible for
-  // showing an error message themselves, using the above error
-  // functions ).  If this functions returns non-0, the caller owns
-  // the returned KigDocument ( that was allocated with "new" ).
+  /**
+   * load file \p fromfile and build a KigDocument from it..  If this
+   * function returns 0, that means that an error occurred while
+   * loading ( implementations of this function are responsible for
+   * showing an error message themselves, using the above error
+   * functions ). If this functions returns non-0, the caller owns
+   * the returned KigDocument ( that was allocated with "new" ).
+   */
   virtual KigDocument* load ( const QString& fromfile ) = 0;
 };
 #endif
