@@ -46,3 +46,4 @@ libmisc_la_SOURCES = \
 
 libmisc_la_LIBADD=-lm
 METASOURCES=AUTO
+KDE_OPTIONS=nofinal
