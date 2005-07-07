@@ -68,7 +68,7 @@ public:
 
   /**
    * do something fun with \p os .. This func is only called if wantArgs
-   * returned Complete.. handleArgs should <i>not<i> do any
+   * returned Complete.. handleArgs should <i>not</i> do any
    * drawing.. after somebody calls this function, he should
    * redrawScreen() himself..
    */

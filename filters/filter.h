@@ -1,4 +1,4 @@
-/**
+/*
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
@@ -16,7 +16,7 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
  USA
-**/
+*/
 
 
 #ifndef FILTER_H
@@ -30,6 +30,9 @@ class KigFilter;
 class ScreenInfo;
 class KigDocument;
 
+/**
+ * This singleton class handles all the input filters.
+ */
 class KigFilters
 {
 public:
@@ -60,6 +63,12 @@ protected:
     return 0; \
   }
 
+/**
+ * This is the base class for an input filter.
+ *
+ * All the needed work to add a new input filter to Kig is
+ * subclassing this class and implement supportMime() and load().
+ */
 class KigFilter
 {
 protected:

@@ -33,6 +33,7 @@ class QString;
 class KigFilterNative
   : public KigFilter
 {
+private:
   /**
    * this is the load function for the Kig format that is used,
    * starting at Kig 0.4

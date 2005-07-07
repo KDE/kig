@@ -39,6 +39,11 @@ public:
                       KActionCollection* coll );
 };
 
+/**
+ * Base class for a Kig exporter.
+ *
+ * Subclass it and implement its methods to have it working.
+ */
 class KigExporter
 {
 public:
