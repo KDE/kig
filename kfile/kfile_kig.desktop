@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Type=Service
 Name=Kig Info
+Name[bn]=কিগ সংক্রান্ত তথ্য
 Name[br]=Titouroù diwar-benn Kig
 Name[ca]=Informació Kig
 Name[cs]=Kig info
