@@ -1,4 +1,4 @@
-/**
+/*
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2004  Dominique Devriese <devriese@kde.org>
  Copyright (C) 2004  Pino Toscano <toscano.pino@tiscali.it>
@@ -17,13 +17,16 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA  02110-1301
  USA
-**/
+*/
 
 #ifndef KIG_MODES_EDITTYPE_H
 #define KIG_MODES_EDITTYPE_H
 
 #include "edittypebase.h"
 
+/**
+ * Simply dialog that allow the user the editing of a macro type...
+ */
 class EditType : public EditTypeBase
 {
   Q_OBJECT

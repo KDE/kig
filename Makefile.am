@@ -52,6 +52,6 @@ TAGS:
 
 # Want to do the scripting part separately, but
 # include everything else.
-DOXYGEN_EXCLUDE = script_mode.h python-scripting-api-dox-mainpage.dox
+DOXYGEN_EXCLUDE = python-scripting-api-dox-mainpage.dox
 DOXYGEN_SET_RECURSIVE = YES
 include ../admin/Doxyfile.am

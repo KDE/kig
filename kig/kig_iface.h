@@ -1,4 +1,4 @@
-/**
+/*
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
@@ -16,7 +16,7 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA  02110-1301
  USA
-**/
+*/
 
 
 #ifndef KIG_IFACE_H

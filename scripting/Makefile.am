@@ -20,6 +20,3 @@ METASOURCES=AUTO
 
 xml_DATA = python-kig.xml
 xmldir = $(kde_datadir)/katepart/syntax
-
-DOXYGEN_REFERENCES = kig
-include ../../admin/Doxyfile.am

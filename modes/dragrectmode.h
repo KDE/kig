@@ -31,11 +31,11 @@ class ObjectHolder;
 /**
  * DragRectMode is a mode that provides a rect for selecting the
  * objects inside it.  Here's an example of how to use it
- * <code>
+ * \code
  * DragRectMode d( e->pos(), document, widget );
  * mDoc.runMode( &d );
  * Objects sel = d.ret();
- * </code>
+ * \endcode
  */
 class DragRectMode
   : public KigMode

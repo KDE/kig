@@ -1,4 +1,4 @@
-/**
+/*
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
@@ -16,7 +16,7 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA  02110-1301
  USA
-**/
+*/
 
 
 #ifndef KIG_KIG_H
@@ -66,14 +66,14 @@ class Kig : public KParts::MainWindow
  public slots:
   /**
    * Open file in this window
-   * @param file file to open
+   * \param file file to open
    */
   void load (const KURL& file);
 
   /**
-   * this opens the file specified in s in a new window
+   * this opens the file specified in \p s in a new window
    *
-   * @param s
+   * \param s the url of the file to open
    */
   void openURL (const QString& s) { openURL(KURL(s)); };
   void openURL (const KURL& s);
@@ -83,14 +83,14 @@ class Kig : public KParts::MainWindow
   /**
    * The user started dragging something onto us...
    *
-   * @param e
+   * \param e
    */
   void dragEnterEvent(QDragEnterEvent* e);
 
   /**
    * The user dropped something onto us...
    *
-   * @param e
+   * \param e
    */
   void dropEvent (QDropEvent* e);
 
@@ -110,7 +110,7 @@ class Kig : public KParts::MainWindow
   /**
    * This method is called when this app is restored.  The KConfig
    * object points to the session management config file that was saved
-   * with @ref saveProperties
+   * with \ref saveProperties
    */
   void readProperties(KConfig *);
 

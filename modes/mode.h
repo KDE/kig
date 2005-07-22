@@ -1,4 +1,4 @@
-/**
+/*
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
@@ -16,7 +16,7 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA  02110-1301
  USA
-**/
+*/
 
 #ifndef KIG_PART_MODE_H
 #define KIG_PART_MODE_H
@@ -30,7 +30,7 @@ class QMouseEvent;
 class StdConstructionMode;
 
 /**
- * this is an ABC of a class containing the current "Mode" of the kig
+ * this is an ABC of a class containing the current "Mode" of the Kig
  * document... It tells us how to respond to a certain event.
  */
 class KigMode

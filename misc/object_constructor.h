@@ -94,7 +94,7 @@ public:
     const KigWidget& w ) const = 0;
 
   /**
-   * show a preliminary version of what you would do when handleArgs
+   * show a preliminary version of what you would do when \ref handleArgs
    * would be called..  E.g. if this constructor normally constructs a
    * locus through some 5 points, then it will try to draw a locus
    * through whatever number of points it gets..

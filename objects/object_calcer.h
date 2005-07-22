@@ -121,11 +121,11 @@ public:
 
   /**
    * An ObjectCalcer expects its parents to have an ObjectImp of a
-   * certain type.  This method returns the ObjectImpType that o
-   * should have.  os is a list of all the parents in order, and o is
-   * part of it.  This method will return the ObjectImpType that the
-   * parent should *at least* be.  For example, a Translated object
-   * can translate any sort of object, so it will return
+   * certain type.  This method returns the ObjectImpType that \p o
+   * should have. \p os is a list of all the parents in order, and
+   * \p o is part of it. This method will return the ObjectImpType
+   * that the parent should *at least* be.  For example, a Translated
+   * object can translate any sort of object, so it will return
    * ObjectImp::stype() here ( the topmost ObjectImpType, that all
    * other ObjectImpType's inherit ).
    */

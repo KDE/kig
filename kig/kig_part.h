@@ -217,10 +217,12 @@ public:
    * the "token" keeps some objects that should be deleted, we only
    * delete them after we replug the actionLists..  calling these
    * functions should be done like:
+   * \code
    * GUIUpdateToken t = doc->startGUIActionUpdate();
    * doc->action[Added|Removed]( act, t );
    * ...
    * doc->endGUIActionUpdate( t );
+   * \endcode
    */
   typedef std::vector<KigGUIAction*> GUIUpdateToken;
   GUIUpdateToken startGUIActionUpdate();

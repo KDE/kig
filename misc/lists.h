@@ -126,6 +126,10 @@ public:
    * ctor in the relevant places..
    */
   void add( Macro* m );
+  /**
+   * Add the Macro's \p ms. MacroList takes care of adding the action
+   * and ctor in the relevant places..
+   */
   void add( const vectype& ms );
 
   /**
@@ -135,9 +139,12 @@ public:
   void remove( Macro* m );
 
   /**
-   * Save macro(s) \p m to file \p f ..
+   * Save macro \p m to file \p f ..
    */
   bool save( Macro* m, const QString& f );
+  /**
+   * Save macros \p ms to file \p f ..
+   */
   bool save( const vectype& ms, const QString& f );
 
   /**

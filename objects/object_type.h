@@ -108,7 +108,7 @@ public:
 
 /**
  * This is a convenience subclass of ObjectType that a type should
- * inherit from if its parents can be specified in an argparser..
+ * inherit from if its parents can be specified in an ArgsParser..
  */
 class ArgsParserObjectType
   : public ObjectType

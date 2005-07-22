@@ -1,4 +1,4 @@
-/**
+/*
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
 
@@ -16,7 +16,7 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA  02110-1301
  USA
-**/
+*/
 
 #ifndef KIG_MISC_COORDINATE_SYSTEM_H
 #define KIG_MISC_COORDINATE_SYSTEM_H
@@ -33,6 +33,10 @@ class QString;
 class QStringList;
 class QWidget;
 
+/**
+ * a factory to build a CoordinateSystem and a small handle to the
+ * existant CoordinateSystem's...
+ */
 class CoordinateSystemFactory
 {
 public:
@@ -69,6 +73,10 @@ public:
    * x is the x coordinate, and y is the y coordinate." );
    */
   virtual QString coordinateFormatNotice() const = 0;
+  /**
+   * Like \ref coordinateFormatNotice(), but with HTML tags useful to
+   * have a rich text...
+   */
   virtual QString coordinateFormatNoticeMarkup() const = 0;
   virtual Coordinate toScreen (const QString& pt, bool& ok) const = 0;
   virtual void drawGrid ( KigPainter& p, bool showgrid = true,
