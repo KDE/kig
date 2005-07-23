@@ -63,10 +63,10 @@ void ExportToLatexDialog::slotOKPressed()
   QFile file( filename );
   if ( file.exists() )
   {
-    int ret = KMessageBox::warningYesNo( mv,
+    int ret = KMessageBox::warningContinueCancel( mv,
                                          i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
-                                         .arg( filename ), i18n( "Overwrite File?" ) );
-    if ( ret != KMessageBox::Yes ) return;
+                                         .arg( filename ), i18n( "Overwrite File?" ), i18n("Overwrite") );
+    if ( ret != KMessageBox::Continue ) return;
   };
 
   accept();

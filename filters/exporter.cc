@@ -524,11 +524,11 @@ void XFigExporter::run( const KigPart& doc, KigWidget& w )
   if ( file_name.isEmpty() ) return;
   else if ( QFileInfo( file_name ).exists() )
   {
-    int ret = KMessageBox::warningYesNo(
+    int ret = KMessageBox::warningContinueCancel(
       &w,
       i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ).arg( file_name ),
-      i18n( "Overwrite File?" ) );
-    if ( ret != KMessageBox::Yes ) return;
+      i18n( "Overwrite File?" ), i18n("Overwrite") );
+    if ( ret != KMessageBox::Continue ) return;
   };
   QFile file( file_name );
   if ( ! file.open( IO_WriteOnly ) )
