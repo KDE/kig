@@ -59,7 +59,7 @@ public:
   /**
    * make sure that when you delete something, you are also deleting
    * its parents.  This class assumes you've done that.
-   * KigDocument::delObjects takes care of this for you.
+   * \ref KigDocument::delObjects() takes care of this for you.
    */
   static KigCommand* removeCommand( KigPart& doc, const std::vector<ObjectHolder*>& os );
   static KigCommand* removeCommand( KigPart& doc, ObjectHolder* o );

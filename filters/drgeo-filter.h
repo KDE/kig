@@ -25,6 +25,9 @@ class QDomNode;
 class KigDocument;
 class QString;
 
+/**
+ * This is an import filter for the GNOME geometry program Dr. Geo.
+ */
 class KigFilterDrgeo
   : public KigFilter
 {
