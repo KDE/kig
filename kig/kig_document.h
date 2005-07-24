@@ -116,9 +116,21 @@ public:
    */
   Rect suggestedRect() const;
 
+  /**
+   * Add the objects \p o to the document.
+   */
   void addObject( ObjectHolder* oObject );
+  /**
+   * Add the objects \p os to the document.
+   */
   void addObjects( const std::vector<ObjectHolder*>& os);
+  /**
+   * Remove the object \p o from the document.
+   */
   void delObject( ObjectHolder* o );
+  /**
+   * Remove the objects \p os from the document.
+   */
   void delObjects( const std::vector<ObjectHolder*>& os );
 };
 
