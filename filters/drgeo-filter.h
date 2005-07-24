@@ -26,7 +26,7 @@ class KigDocument;
 class QString;
 
 /**
- * This is an import filter for the GNOME geometry program Dr. Geo.
+ * This is an import filter for the GNOME geometry program DrGeo.
  */
 class KigFilterDrgeo
   : public KigFilter

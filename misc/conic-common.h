@@ -78,10 +78,9 @@ public:
 
 /**
  * This class represents an equation of a conic in the form
- * "\rho(\theta) = \frac{p}{1 - e \cos\theta}" ( run this through
- * LaTeX to get nice output ;)  focus and the ecostheta stuff
- * represent the coordinate system in which the equation yields the
- * good result..
+ * \f$ \rho(\theta) = \frac{p}{1 - e \cos\theta}\f$. focus and the
+ * ecostheta stuff represent the coordinate system in which the
+ * equation yields the good result..
  */
 class ConicPolarData
 {
@@ -96,7 +95,7 @@ public:
   explicit ConicPolarData();
   /**
    * Construct a ConicPolarData using the parameters from the equation
-   * "\rho(\theta) = \frac{p}{1 - e \cos\theta}"
+   * \f$ \rho(\theta) = \frac{p}{1 - e \cos\theta}\f$
    */
   ConicPolarData( const Coordinate& focus1, double dimen,
                   double ecostheta0, double esintheta0 );

@@ -24,8 +24,8 @@ class Transformation;
 
 /**
  * This class represents an equation of a cubic in the form
- * "a_{ijk} x_i x_j x_k = 0" (in homogeneous coordinates, i,j,k = 0,1,2),
- * i <= j <= k.
+ * \f$ a_{ijk} x_i x_j x_k = 0 \f$ (in homogeneous coordinates,
+ * i,j,k = 0,1,2), i <= j <= k.
  * The coefficients are stored in lessicografic order.
  */
 class CubicCartesianData
