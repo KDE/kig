@@ -63,7 +63,6 @@ bool operator==( const CubicCartesianData& lhs, const CubicCartesianData& rhs );
  * least 2 point.  If there are less than 9, than the coefficients
  * will be chosen to 1.0 if possible
  */
-
 const CubicCartesianData calcCubicThroughPoints (
     const std::vector<Coordinate>& points );
 

@@ -146,7 +146,9 @@ public:
    * bitBlt'd again on the widget...
    */
 
-  // clear stillPix...
+  /**
+   * clear stillPix...
+   */
   void clearStillPix();
   /**
    * update curPix (bitBlt stillPix onto curPix..)
@@ -159,7 +161,8 @@ public:
   void updateWidget( const std::vector<QRect>& = std::vector<QRect>() );
   void updateEntireWidget();
 
-  /** Mapping between Internal Coordinate Systems
+  /**
+   * Mapping between Internal Coordinate Systems
    * there are two coordinate systems:
    * 1 the widget's coordinates: these are simple int's from (0,0) in
    * the topleft of the widget to size() in the bottomRight...
@@ -175,9 +178,11 @@ public:
   const Rect fromScreen( const QRect& r );
   double pixelWidth() const;
 
-  // the part of the document we're currently showing
-  // i.e. a rectangle of the document (which has its own coordinate
-  // system) which is mapped onto the widget.
+  /**
+   * the part of the document we're currently showing
+   * i.e. a rectangle of the document (which has its own coordinate
+   * system) which is mapped onto the widget.
+   */
   const ScreenInfo& screenInfo() const;
 
   Rect entireDocumentRect() const;
@@ -227,8 +232,10 @@ class KigView
   QScrollBar* mrightscroll;
   QScrollBar* mbottomscroll;
 
-  // apparently, QScrollBar also emits its signals when you update it
-  // manually, so we ignore them while we're in updateScrollBars()...
+  /**
+   * apparently, QScrollBar also emits its signals when you update it
+   * manually, so we ignore them while we're in \ref updateScrollBars()...
+   */
   bool mupdatingscrollbars;
 
   KigWidget* mrealwidget;
