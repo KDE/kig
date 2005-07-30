@@ -6,11 +6,9 @@ noinst_LTLIBRARIES=libfilters.la
 noinst_HEADERS= \
 	cabri-filter.h \
 	exporter.h \
-	exporttoimagedialog.h \
-	exporttolatexdialog.h \
-	exporttosvgdialog.h \
 	filter.h \
 	filters-common.h \
+	imageexporteroptions.h \
 	kgeo-filter.h \
 	kgeo-resource.h \
 	kseg-defs.h \
@@ -23,19 +21,17 @@ noinst_HEADERS= \
 libfilters_la_SOURCES= \
 	cabri-filter.cc \
 	exporter.cc \
-	exporttoimagedialog.cc \
-	exporttoimagedialogbase.ui \
-	exporttolatexdialog.cc \
-	exporttolatexdialogbase.ui \
-	exporttosvgdialog.cc \
-	exporttosvgdialogbase.ui \
 	filter.cc \
 	filters-common.cc \
+	imageexporteroptions.cc \
+	imageexporteroptionsbase.ui \
 	kgeo-filter.cc \
 	kseg-filter.cc \
 	latexexporter.cc \
+	latexexporteroptions.ui \
 	native-filter.cc \
 	svgexporter.cc \
+	svgexporteroptions.ui \
 	drgeo-filter.cc \
 	drgeo-filter-chooser.cc \
 	drgeo-filter-chooserbase.ui

@@ -1,0 +1,69 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>LatexExporterOptions</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>LatexExporterOptions</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>450</width>
+            <height>150</height>
+        </rect>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <property name="spacing">
+            <number>6</number>
+        </property>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>groupBox1</cstring>
+            </property>
+            <property name="title">
+                <string>Options</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QCheckBox" row="0" column="0">
+                    <property name="name">
+                        <cstring>showGridCheckBox</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Show grid</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>showAxesCheckBox</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Show axes</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="1" column="0">
+                    <property name="name">
+                        <cstring>showExtraFrameCheckBox</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Show extra frame</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+    </vbox>
+</widget>
+<customwidgets>
+</customwidgets>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+</includehints>
+</UI>

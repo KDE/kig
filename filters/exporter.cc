@@ -17,7 +17,7 @@
 
 #include "exporter.h"
 
-#include "exporttoimagedialog.h"
+#include "imageexporteroptions.h"
 #include "latexexporter.h"
 #include "svgexporter.h"
 
@@ -25,6 +25,8 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/common.h"
+#include "../misc/kigfiledialog.h"
+#include "../misc/kigpainter.h"
 #include "../objects/circle_imp.h"
 #include "../objects/line_imp.h"
 #include "../objects/object_drawer.h"
@@ -34,16 +36,18 @@
 #include "../objects/point_imp.h"
 #include "../objects/text_imp.h"
 
+#include <qcheckbox.h>
 #include <qcolor.h>
 #include <qfile.h>
 #include <qiconset.h>
 #include <qtextstream.h>
 
 #include <kaction.h>
-#include <kfiledialog.h>
 #include <kiconloader.h>
+#include <kimageio.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <knuminput.h>
 
 #include <map>
 
@@ -109,9 +113,65 @@ QString ImageExporter::menuIcon() const
 
 void ImageExporter::run( const KigPart& doc, KigWidget& w )
 {
-  ExportToImageDialog* d = new ExportToImageDialog( &w, &doc );
-  d->exec();
-  delete d;
+  static bool kimageioRegistered = false;
+  if ( ! kimageioRegistered )
+  {
+    KImageIO::registerFormats();
+    kimageioRegistered = true;
+  }
+
+  KigFileDialog* kfd = new KigFileDialog(
+      QString::null, KImageIO::pattern( KImageIO::Writing ),
+      i18n( "Export as Image" ), &w );
+  kfd->setOptionCaption( i18n( "Image Options" ) );
+  ImageExporterOptions* opts = new ImageExporterOptions( 0L, w.size() );
+  kfd->setOptionsWidget( opts );
+  opts->WidthInput->setValue( w.size().width() );
+  opts->HeightInput->setValue( w.size().height() );
+  opts->showGridCheckBox->setChecked( doc.document().grid() );
+  opts->showAxesCheckBox->setChecked( doc.document().axes() );
+  if ( !kfd->exec() )
+    return;
+
+  QString filename = kfd->selectedFile();
+  bool showgrid = opts->showGridCheckBox->isOn();
+  bool showaxes = opts->showAxesCheckBox->isOn();
+  int width = opts->WidthInput->value();
+  int height = opts->HeightInput->value();
+
+  delete opts;
+  delete kfd;
+
+  QFile file( filename );
+  if ( ! file.open( IO_WriteOnly ) )
+  {
+    KMessageBox::sorry( &w,
+                        i18n( "The file \"%1\" could not be opened. Please check if the file permissions are set correctly." )
+                        .arg( filename ) );
+    return;
+  };
+
+  QString type = KImageIO::type( filename );
+  if ( type.isNull() )
+  {
+    KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
+    return;
+  };
+
+  kdDebug() << k_funcinfo << type << endl;
+
+  QPixmap img( QSize( width, height ) );
+  img.fill( Qt::white );
+  KigPainter p( ScreenInfo( w.screenInfo().shownRect(), img.rect() ), &img, doc.document() );
+  p.setWholeWinOverlay();
+  p.drawGrid( doc.document().coordinateSystem(), showgrid, showaxes );
+  // FIXME: show the selections ?
+  p.drawObjects( doc.document().objects(), false );
+  if ( ! img.save( filename, type.latin1() ) )
+  {
+    KMessageBox::error( &w, i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );
+  }
+
 }
 
 KigExportManager::KigExportManager()
@@ -518,18 +578,16 @@ void XFigExportImpVisitor::visit( const ArcImp* imp )
 
 void XFigExporter::run( const KigPart& doc, KigWidget& w )
 {
-  QString formats = i18n( "*.fig|XFig Documents (*.fig)" );
-  QString file_name = KFileDialog::getSaveFileName(":document", formats, &w,
-                        i18n( "Export as XFig File" ) );
-  if ( file_name.isEmpty() ) return;
-  else if ( QFileInfo( file_name ).exists() )
-  {
-    int ret = KMessageBox::warningContinueCancel(
-      &w,
-      i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ).arg( file_name ),
-      i18n( "Overwrite File?" ), i18n("Overwrite") );
-    if ( ret != KMessageBox::Continue ) return;
-  };
+  KigFileDialog* kfd = new KigFileDialog(
+      ":document", i18n( "*.fig|XFig Documents (*.fig)" ),
+      i18n( "Export as XFig File" ), &w );
+  if ( !kfd->exec() )
+    return;
+
+  QString file_name = kfd->selectedFile();
+
+  delete kfd;
+
   QFile file( file_name );
   if ( ! file.open( IO_WriteOnly ) )
   {
