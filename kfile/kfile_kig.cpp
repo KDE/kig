@@ -137,7 +137,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   appendItem( metagroup, "Grid", stmp2 );
 
   // has Kig document the axes?
-  stmp = true;
+  btmp = true;
   stmp = main.attribute( "axes" );
   if ( !( stmp.isEmpty() || ( stmp != "0" ) ) )
     btmp = ( stmp != "0" );
