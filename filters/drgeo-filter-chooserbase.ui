@@ -31,7 +31,7 @@
             </property>
             <property name="text">
                 <string>The current Dr. Geo file contains more than one figure.
-Please select which to import.</string>
+Please select which to import:</string>
             </property>
             <property name="alignment">
                 <set>WordBreak|AlignVCenter</set>
