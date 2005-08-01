@@ -22,6 +22,8 @@
 
 #include "../misc/coordinate.h"
 #include "../objects/object_calcer.h"
+//Added by qt3to4:
+#include <QMouseEvent>
 
 class ObjectType;
 class Coordinate;

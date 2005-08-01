@@ -24,6 +24,9 @@
 #include <kpopupmenu.h>
 
 #include <vector>
+//Added by qt3to4:
+#include <QPixmap>
+#include <Q3PopupMenu>
 
 class KigDocument;
 class KigPart;
@@ -99,7 +102,7 @@ protected:
 
   std::vector<PopupActionProvider*> mproviders;
 
-  QPopupMenu* mmenus[NumberOfMenus];
+  Q3PopupMenu* mmenus[NumberOfMenus];
 };
 
 /**

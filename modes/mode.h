@@ -22,6 +22,8 @@
 #define KIG_PART_MODE_H
 
 #include <qnamespace.h>
+//Added by qt3to4:
+#include <QMouseEvent>
 
 class KigDocument;
 class KigPart;

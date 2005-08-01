@@ -25,7 +25,7 @@
 
 #include "../misc/lists.h"
 
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 
 #include <klistview.h>
 #include <kiconloader.h>
@@ -43,7 +43,7 @@ class TypesDialog : public TypesDialogBase
   // necessary because some MacroList functions need it..
   KigPart& mpart;
   const KIconLoader* il;
-  QPopupMenu* popup;
+  Q3PopupMenu* popup;
 public:
   TypesDialog( QWidget* parent, KigPart& );
   ~TypesDialog();
@@ -58,11 +58,11 @@ protected slots:
   void exportType();
   void importTypes();
   void editType();
-  void contextMenuRequested( QListViewItem* i, const QPoint& p, int c );
+  void contextMenuRequested( Q3ListViewItem* i, const QPoint& p, int c );
 
 private:
-  QListViewItem* newListItem( Macro* m );
-  QString fetchIconFromListItem( QListViewItem* i );
+  Q3ListViewItem* newListItem( Macro* m );
+  QString fetchIconFromListItem( Q3ListViewItem* i );
   void loadAllMacros();
   typedef MacroList::vectype vec;
 };

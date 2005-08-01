@@ -39,12 +39,15 @@
 #include <qpixmap.h>
 #include <qstringlist.h>
 #include <qtextstream.h>
+//Added by qt3to4:
+#include <Q3PopupMenu>
+#include <Q3CString>
 
 #include <algorithm>
 #include <vector>
 
 class MacroListElement
-  : public QListViewItem
+  : public Q3ListViewItem
 {
   Macro* macro;
 public:
@@ -53,7 +56,7 @@ public:
 };
 
 MacroListElement::MacroListElement( KListView* lv, Macro* m )
-  : QListViewItem( lv, QString::null, m->action->descriptiveName(), m->action->description() ),
+  : Q3ListViewItem( lv, QString::null, m->action->descriptiveName(), m->action->description() ),
     macro( m )
 {
 }
@@ -66,10 +69,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   buttonOk->setGuiItem( KStdGuiItem::ok() );
   buttonCancel->setGuiItem( KStdGuiItem::cancel() );
   il = part.instance()->iconLoader();
-  buttonEdit->setIconSet( QIconSet( il->loadIcon( "edit", KIcon::Small ) ) );
-  buttonRemove->setIconSet( QIconSet( il->loadIcon( "editdelete", KIcon::Small ) ) );
-  buttonExport->setIconSet( QIconSet( il->loadIcon( "fileexport", KIcon::Small ) ) );
-  buttonImport->setIconSet( QIconSet( il->loadIcon( "fileimport", KIcon::Small ) ) );
+  buttonEdit->setIconSet( QIcon( il->loadIcon( "edit", KIcon::Small ) ) );
+  buttonRemove->setIconSet( QIcon( il->loadIcon( "editdelete", KIcon::Small ) ) );
+  buttonExport->setIconSet( QIcon( il->loadIcon( "fileexport", KIcon::Small ) ) );
+  buttonImport->setIconSet( QIcon( il->loadIcon( "fileimport", KIcon::Small ) ) );
 
   typeList->setColumnWidth( 0, 22 );
   typeList->setColumnWidth( 1, 140 );
@@ -78,7 +81,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   // loading macros...
   loadAllMacros();
 
-  popup = new QPopupMenu( this );
+  popup = new Q3PopupMenu( this );
   popup->insertItem( SmallIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
   popup->insertItem( SmallIcon( "editdelete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
   popup->insertSeparator();
@@ -88,10 +91,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   part.saveTypes();
 }
 
-QListViewItem* TypesDialog::newListItem( Macro* m )
+Q3ListViewItem* TypesDialog::newListItem( Macro* m )
 {
   MacroListElement* e = new MacroListElement( typeList, m );
-  QCString ifn = m->action->iconFileName();
+  Q3CString ifn = m->action->iconFileName();
   if ( !ifn.isNull() )
   {
     QPixmap p = il->loadIcon( ifn, KIcon::Small );
@@ -120,9 +123,9 @@ void TypesDialog::okSlot()
 
 void TypesDialog::deleteType()
 {
-  std::vector<QListViewItem*> items;
+  std::vector<Q3ListViewItem*> items;
   std::vector<Macro*> selectedTypes;
-  QListViewItemIterator it( typeList );
+  Q3ListViewItemIterator it( typeList );
   while ( it.current() ) {
     if ( ( it.current() )->isSelected() )
     {
@@ -142,7 +145,7 @@ void TypesDialog::deleteType()
         types, i18n("Are You Sure?"), KStdGuiItem::cont(),
         "deleteTypeWarning") == KMessageBox::Cancel )
      return;
-  for ( std::vector<QListViewItem*>::iterator i = items.begin(); i != items.end(); ++i)
+  for ( std::vector<Q3ListViewItem*>::iterator i = items.begin(); i != items.end(); ++i)
   {
     int appel = typeList->itemIndex(*i);
     assert (appel != -1);
@@ -156,7 +159,7 @@ void TypesDialog::deleteType()
 void TypesDialog::exportType()
 {
   std::vector<Macro*> types;
-  QListViewItemIterator it( typeList );
+  Q3ListViewItemIterator it( typeList );
   while ( it.current() ) {
     if ( ( it.current() )->isSelected() )
     {
@@ -199,9 +202,9 @@ void TypesDialog::importTypes()
     typeList->insertItem( newListItem( macros[i] ) );
 }
 
-QString TypesDialog::fetchIconFromListItem( QListViewItem* i )
+QString TypesDialog::fetchIconFromListItem( Q3ListViewItem* i )
 {
-  QListViewItemIterator it( typeList );
+  Q3ListViewItemIterator it( typeList );
   Macro* ai = static_cast<MacroListElement*>( i )->getMacro();
   while ( it.current() ) {
     if ( ( it.current() )->isSelected() )
@@ -219,8 +222,8 @@ QString TypesDialog::fetchIconFromListItem( QListViewItem* i )
 
 void TypesDialog::editType()
 {
-  std::vector<QListViewItem*> items;
-  QListViewItemIterator it( typeList );
+  std::vector<Q3ListViewItem*> items;
+  Q3ListViewItemIterator it( typeList );
   while ( it.current() ) {
     if ( ( it.current() )->isSelected() )
       items.push_back( it.current() );
@@ -237,7 +240,7 @@ void TypesDialog::editType()
                         i18n( "More Than One Type Selected" ) );
     return;
   }
-  QListViewItem* i = items[0];
+  Q3ListViewItem* i = items[0];
   EditType* d = new EditType( this, i->text( 1 ), i->text( 2 ), fetchIconFromListItem( i ) );
   if ( d->exec() )
   {
@@ -249,7 +252,7 @@ void TypesDialog::editType()
 //    mpart.unplugActionLists();
     oldmacro->ctor->setName( newname );
     oldmacro->ctor->setDescription( newdesc );
-    QCString ncicon( newicon.utf8() );
+    Q3CString ncicon( newicon.utf8() );
     oldmacro->ctor->setIcon( ncicon );
 //    mpart.plugActionLists();
 
@@ -260,7 +263,7 @@ void TypesDialog::editType()
   delete d;
 }
 
-void TypesDialog::contextMenuRequested( QListViewItem*, const QPoint& p, int )
+void TypesDialog::contextMenuRequested( Q3ListViewItem*, const QPoint& p, int )
 {
   popup->exec( p );
 }
