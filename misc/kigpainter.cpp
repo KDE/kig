@@ -33,6 +33,8 @@
 #include "coordinate_system.h"
 
 #include <qpen.h>
+//Added by qt3to4:
+#include <Q3PointArray>
 
 #include <cmath>
 #include <stack>
@@ -220,7 +222,7 @@ void KigPainter::setColor( const QColor& c )
   mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
-void KigPainter::setStyle( const PenStyle c )
+void KigPainter::setStyle( const Qt::PenStyle c )
 {
   style = c;
   mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
@@ -253,7 +255,7 @@ void KigPainter::setBrush( const QBrush& b )
   mP.setBrush( b );
 }
 
-void KigPainter::setBrushStyle( const BrushStyle c )
+void KigPainter::setBrushStyle( const Qt::BrushStyle c )
 {
   brushStyle = c;
   mP.setBrush( QBrush( brushColor, brushStyle ) );
@@ -292,11 +294,11 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
 {
   QPen oldpen = mP.pen();
   QBrush oldbrush = mP.brush();
-  setBrush( QBrush( color, Dense4Pattern ) );
+  setBrush( QBrush( color, Qt::Dense4Pattern ) );
   setPen( Qt::NoPen );
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
-  QPointArray t( pts.size() );
+  Q3PointArray t( pts.size() );
   int c = 0;
   for( std::vector<QPoint>::const_iterator i = pts.begin(); i != pts.end(); ++i )
   {
@@ -312,12 +314,12 @@ void KigPainter::drawArea( const std::vector<Coordinate>& pts, bool border )
 {
   QPen oldpen = mP.pen();
   QBrush oldbrush = mP.brush();
-  setBrush( QBrush( color, SolidPattern ) );
+  setBrush( QBrush( color, Qt::SolidPattern ) );
   if ( border )
     setPen( QPen( color, width == -1 ? 1 : width ) );
   else
     setPen( Qt::NoPen );
-  QPointArray t( pts.size() );
+  Q3PointArray t( pts.size() );
   int c = 0;
   for( std::vector<Coordinate>::const_iterator i = pts.begin(); i != pts.end(); ++i )
   {
@@ -503,7 +505,7 @@ void KigPainter::drawFilledRect( const QRect& r )
 {
   QPen pen( Qt::black, 1, Qt::DotLine );
   setPen( pen );
-  setBrush( QBrush( Qt::cyan, Dense6Pattern ) );
+  setBrush( QBrush( Qt::cyan, Qt::Dense6Pattern ) );
   drawRect( r.normalize() );
 }
 
@@ -636,7 +638,7 @@ void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
   vect = vect * 6 / vectlen;
   orthvect = orthvect * 6 / vectlen;
 
-  QPointArray arrow( 3 );
+  Q3PointArray arrow( 3 );
   arrow.setPoint( 0, end );
   arrow.setPoint( 1, end + orthvect + vect );
   arrow.setPoint( 2, end + orthvect - vect );
@@ -792,7 +794,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
   // Possibly there are performance advantages as well ?  this array
   // is a buffer of the polyline approximation of the part of the
   // curve that we are currently processing.
-  QPointArray curpolyline( 1000 );
+  Q3PointArray curpolyline( 1000 );
   int curpolylinenextfree = 0;
 
   // we don't use recursion, but a stack based approach for efficiency

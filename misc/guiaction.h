@@ -25,7 +25,7 @@
 #endif
 
 #include <qstring.h>
-#include <qcstring.h>
+#include <q3cstring.h>
 #include <kaction.h>
 
 class GUIAction;
@@ -54,7 +54,7 @@ public:
   virtual ~GUIAction();
 
   virtual QString description() const = 0;
-  virtual QCString iconFileName() const = 0;
+  virtual Q3CString iconFileName() const = 0;
   virtual QString descriptiveName() const = 0;
   virtual const char* actionName() const = 0;
   virtual int shortcut() const = 0;
@@ -69,14 +69,14 @@ class ConstructibleAction
   : public GUIAction
 {
   ObjectConstructor* mctor;
-  QCString mactionname;
+  Q3CString mactionname;
   int mshortcut;
 public:
-  ConstructibleAction( ObjectConstructor* ctor, const QCString& actionname,
+  ConstructibleAction( ObjectConstructor* ctor, const Q3CString& actionname,
                        int shortcut = 0 );
   ~ConstructibleAction();
   QString description() const;
-  QCString iconFileName() const;
+  Q3CString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -93,7 +93,7 @@ public:
   ~ConstructPointAction();
 
   QString description() const;
-  QCString iconFileName() const;
+  Q3CString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -108,7 +108,7 @@ public:
   ConstructTextLabelAction( const char* actionname );
 
   QString description() const;
-  QCString iconFileName() const;
+  Q3CString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -123,7 +123,7 @@ public:
   AddFixedPointAction( const char* actionname );
   ~AddFixedPointAction();
   QString description() const;
-  QCString iconFileName() const;
+  Q3CString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -139,7 +139,7 @@ public:
   TestAction( const char* actionname );
   ~TestAction();
   QString description() const;
-  QCString iconFileName() const;
+  Q3CString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
   void act( KigPart& );
@@ -162,7 +162,7 @@ public:
                    const char* icon = "" );
   ~NewScriptAction();
   QString description() const;
-  QCString iconFileName() const;
+  Q3CString iconFileName() const;
   QString descriptiveName() const;
   const char* actionName() const;
   void act( KigPart& );

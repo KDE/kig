@@ -23,6 +23,9 @@
 
 #include <qevent.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <QDragEnterEvent>
+#include <QDropEvent>
 
 #include <kaction.h>
 #include <kapplication.h>

@@ -64,11 +64,15 @@
 #include <qcheckbox.h>
 #include <qfile.h>
 #include <qlayout.h>
-#include <qpaintdevicemetrics.h>
+#include <q3paintdevicemetrics.h>
 #include <qsizepolicy.h>
 #include <qtimer.h>
 #if QT_VERSION >= 0x030100
 #include <qeventloop.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <Q3CString>
+#include <QVBoxLayout>
 #endif
 
 using namespace std;
@@ -273,7 +277,7 @@ void KigPart::setupActions()
   a = KStdAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
-  a->setIconSet( QIconSet( l->loadIcon( "view_fit_to_page", KIcon::Toolbar ) ) );
+  a->setIconSet( QIcon( l->loadIcon( "view_fit_to_page", KIcon::Toolbar ) ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
@@ -790,7 +794,7 @@ void KigPart::filePrint()
 
 void KigPart::doPrint( KPrinter& printer )
 {
-  QPaintDeviceMetrics metrics( &printer );
+  Q3PaintDeviceMetrics metrics( &printer );
   Rect rect = document().suggestedRect();
   QRect qrect( 0, 0, metrics.width(), metrics.height() );
   if ( rect.width() * qrect.height() > rect.height() * qrect.width() )
@@ -905,7 +909,7 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" int convertToNative( const KURL& url, const QCString& outfile )
+extern "C" int convertToNative( const KURL& url, const Q3CString& outfile )
 {
   kdDebug() << "converting " << url.prettyURL() << " to " << outfile << endl;
 

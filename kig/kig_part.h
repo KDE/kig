@@ -22,7 +22,7 @@
 #ifndef KIGPART_H
 #define KIGPART_H
 
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 
 #include <kparts/part.h>
 
@@ -191,13 +191,13 @@ public:
   // the previous mode.  Enabling/disabling is done at the same time,
   // of course..
   // some MenuActions..
-  QPtrList<KAction> aMNewSegment;
-  QPtrList<KAction> aMNewPoint;
-  QPtrList<KAction> aMNewCircle;
-  QPtrList<KAction> aMNewLine;
-  QPtrList<KAction> aMNewOther;
-  QPtrList<KAction> aMNewAll;
-  QPtrList<KAction> aMNewConic;
+  Q3PtrList<KAction> aMNewSegment;
+  Q3PtrList<KAction> aMNewPoint;
+  Q3PtrList<KAction> aMNewCircle;
+  Q3PtrList<KAction> aMNewLine;
+  Q3PtrList<KAction> aMNewOther;
+  Q3PtrList<KAction> aMNewAll;
+  Q3PtrList<KAction> aMNewConic;
 
 
   KAction* aCancelConstruction;

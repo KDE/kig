@@ -24,6 +24,12 @@
 
 #include <qwidget.h>
 #include <qpixmap.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QWheelEvent>
+#include <QGridLayout>
+#include <QResizeEvent>
+#include <QPaintEvent>
 
 #include <kparts/part.h>
 

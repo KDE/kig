@@ -32,9 +32,15 @@
 
 #include <qdialog.h>
 #include <qevent.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
 #include <qlayout.h>
 #include <qscrollbar.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QWheelEvent>
+#include <QGridLayout>
+#include <QResizeEvent>
+#include <QPaintEvent>
 
 #include <kdebug.h>
 #include <kcursor.h>
@@ -59,7 +65,7 @@ KigWidget::KigWidget( KigPart* part,
                       const char* name,
                       bool fullscreen )
   : QWidget( parent, name,
-             fullscreen ? WStyle_Customize | WStyle_NoBorder : 0 ),
+             fullscreen ? Qt::WStyle_Customize | Qt::WStyle_NoBorder : 0 ),
     mpart( part ),
     mview( view ),
     stillPix(size()),

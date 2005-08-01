@@ -94,7 +94,7 @@ public:
   Rect fromScreen( const QRect& r ) const;
 
   // colors and stuff...
-  void setStyle( const PenStyle c );
+  void setStyle( const Qt::PenStyle c );
   void setColor( const QColor& c );
   /**
    * setting this to -1 means to use the default width for the object
@@ -103,7 +103,7 @@ public:
   void setWidth( const int c );
   void setPointStyle( const int p );
   void setPen( const QPen& p );
-  void setBrushStyle( const BrushStyle c );
+  void setBrushStyle( const Qt::BrushStyle c );
   void setBrush( const QBrush& b );
   void setBrushColor( const QColor& c );
 
