@@ -393,7 +393,7 @@ bool KigPart::openFile()
               "always ask us nicely on mailto:kde-edu-devel@kde.org "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
-        i18n( "Format not Supported" )
+        i18n( "Format Not Supported" )
         );
     return false;
   };
@@ -431,7 +431,7 @@ bool KigPart::saveFile()
     if( KMessageBox::warningYesNo( widget(),
                      i18n( "Kig does not support saving to any other file format than "
                            "its own. Save to Kig's format instead?" ),
-                     i18n( "Format not Supported" ), i18n("Save Kig Format"), KStdGuiItem::cancel() ) == KMessageBox::No )
+                     i18n( "Format Not Supported" ), i18n("Save Kig Format"), KStdGuiItem::cancel() ) == KMessageBox::No )
       return false;
     internalSaveAs();
   };
