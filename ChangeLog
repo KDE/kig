@@ -1,6 +1,53 @@
+2005-08-15  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Bump the version to 0.10.5 (I don't think to have enough stuff
+	to have a 0.11 version - at least at the moment).
+
+	* Small changes in the credits, putting me as maintainer.
+
+	* Small update in the TODO.
+
+	* Avoid setting empty captions in the KigFileDialog.
+
+	* Update a bit one tip.
+
+	* Add apidox comments for two classes.
+
+2005-07-30  Pino Toscano <toscano.pino@tiscali.it>
+
+	* With the help of the kde-usability team, I've refactored the Kig
+	exporter dialogs. These new ones are more usable than the previous
+	ones, more simply and more maintainable. This could make us
+	closing bug #101072.
+
+2005-07-25  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Apidox improvements.
+
+2005-07-24  Pino Toscano <toscano.pino@tiscali.it>
+
+	* More apidox fixes.
+
+2005-07-23  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Apidox fixes.
+
+2005-07-06  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Apidox improvements.
+
+2005-06-24  Pino Toscano <toscano.pino@tiscali.it>
+
+	* When making the template fo a new script, give as args names the
+	names of the related objects, if they have one, as suggested by
+	Daniel Moyne. Otherwise, will be used argn as usual.
+
 2005-06-20  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Moved the EditAngleSize dialog to the KigInputDialog class.
+
+	* Handle Return and Escape as key shortcuts to respectively accept
+	or reject a KigInputDialog.
 
 2005-06-19  Pino Toscano <toscano.pino@tiscali.it>
 
