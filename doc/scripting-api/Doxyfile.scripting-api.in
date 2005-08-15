@@ -419,6 +419,7 @@ WARN_LOGFILE           =
 INPUT                  =  @top_srcdir@/kig/misc/coordinate.h \
                           @top_srcdir@/kig/misc/common.h \
 			  @top_srcdir@/kig/misc/conic-common.h \
+			  @top_srcdir@/kig/misc/cubic-common.h \
 			  @top_srcdir@/kig/misc/kigtransform.h \
 			  @top_srcdir@/kig/objects/object_imp.h \
 			  @top_srcdir@/kig/objects/curve_imp.h \
