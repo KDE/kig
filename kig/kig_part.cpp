@@ -390,7 +390,7 @@ bool KigPart::openFile()
         i18n( "You tried to open a document of type \"%1\"; unfortunately, "
               "Kig does not support this format. If you think the format in "
               "question would be worth implementing support for, you can "
-              "always ask us nicely on mailto:kde-edu-devel@kde.org "
+              "always ask us nicely on mailto:toscano.pino@tiscali.it "
               "or do the work yourself and send me a patch."
           ).arg(mimeType->name()),
         i18n( "Format Not Supported" )

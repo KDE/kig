@@ -74,5 +74,8 @@ void KigFileDialog::accept()
 
 void KigFileDialog::setOptionCaption( const QString& caption )
 {
+  if ( caption.isEmpty() )
+    return;
+
   moptcaption = caption;
 }

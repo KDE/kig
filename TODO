@@ -85,8 +85,6 @@
 - add QTooltip and QWhatsThis to the widgets in the various dialogs
   (export dialogs, types dialog, ...)
 
-- use KStdGuiItem's wherever is possible.
-
 * core
 
 - When selecting an argument of a certain type, maybe we should check
