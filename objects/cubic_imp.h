@@ -24,6 +24,9 @@
 
 class LineData;
 
+/**
+ * An ObjectImp representing a cubic.
+ */
 class CubicImp
   : public CurveImp
 {
@@ -40,7 +43,7 @@ public:
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
-	QString cartesianEquationString( const KigDocument& ) const;
+  QString cartesianEquationString( const KigDocument& ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
@@ -61,6 +64,9 @@ public:
   const Coordinate getPoint( double param ) const;
 
 public:
+  /**
+   * Return the cartesian representation of this cubic.
+   */
   const CubicCartesianData data() const;
 
   const ObjectImpType* type() const;
