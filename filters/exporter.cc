@@ -173,7 +173,7 @@ class XFigExportImpVisitor
   ObjectHolder* mcurobj;
   const KigWidget& mw;
   Rect msr;
-  std::map<const QColor, int> mcolormap;
+  std::map<QColor, int> mcolormap;
   int mnextcolorid;
   int mcurcolorid;
 
