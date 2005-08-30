@@ -27,7 +27,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 
   KAboutData* tmp = new KAboutData( name, iname, version,
 				   description, KAboutData::License_GPL,
-				   I18N_NOOP( "(C) 2002-2004, The Kig developers" ),
+				   I18N_NOOP( "(C) 2002-2005, The Kig developers" ),
 				   0, "http://edu.kde.org/kig" );
   tmp->addAuthor("Dominique Devriese",
                  I18N_NOOP("Original author, long time maintainer, design and lots of code."),
@@ -39,18 +39,17 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                             "transformations and property tests support." ),
 		 "paolini@dmf.bs.unicatt.it");
 
+  tmp->addAuthor( "Pino Toscano",
+                  I18N_NOOP( "Actual maintainer, Dr. Geo import filter, point and "
+                             "line styles, Italian translation, "
+                             "miscellaneous stuff here and there." ),
+                  "toscano.pino@tiscali.it" );
+
   tmp->addAuthor( "Franco Pasquarelli",
                   I18N_NOOP( "Helped a lot with the implementation of the Locus object, "
                              "there's quite some math involved in doing it right, and "
                              "Franco wrote the most difficult parts." ),
                   "pasqui@dmf.bs.unicatt.it" );
-
-  tmp->addAuthor( "Pino Toscano",
-                  I18N_NOOP( "Worked on the Dr. Geo import filter, point and "
-                             "line styles and the Italian translations, "
-                             "also gave me lots of useful feedback, "
-                             "like feature requests and bug reports." ),
-                  "toscano.pino@tiscali.it" );
 
   tmp->addCredit( "Eric Depagne",
                   I18N_NOOP( "The French translator, who also sent me some useful "
@@ -83,7 +82,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                  "david80v@tin.it");
 
   tmp->addCredit( "Danny Allen",
-                  I18N_NOOP( "New action (toolbars, etc.) icons for Kig." ),
+                  I18N_NOOP( "Resonsible for the new object action icons." ),
                   "danny@dannyallen.co.uk" );
 
   return tmp;

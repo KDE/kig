@@ -38,9 +38,6 @@
 #include <kapplication.h>
 #include <kparts/mainwindow.h>
 #include <dcopclient.h>
-//Added by qt3to4:
-#include <QDragEnterEvent>
-#include <QDropEvent>
 
 class KToggleAction;
 class KRecentFilesAction;
