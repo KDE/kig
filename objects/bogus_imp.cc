@@ -17,7 +17,6 @@
 
 #include "bogus_imp.h"
 
-#include <qcstring.h>
 #include <qstringlist.h>
 #include <klocale.h>
 
