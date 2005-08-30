@@ -1,5 +1,3 @@
-//Added by qt3to4:
-#include <QKeyEvent>
 /**
  This file is part of Kig, a KDE program for Interactive Geometry...
  Copyright (C) 2005  Pino Toscano <toscano.pino@tiscali.it>

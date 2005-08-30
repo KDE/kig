@@ -109,7 +109,7 @@ public:
   /**
    * this are some enum values that we return from some functions.
    */
-  enum { Invalid = 0, QValidator::Intermediate = 1, Complete = 2 };
+  enum { Invalid = 0, Valid = 1, Complete = 2 };
   struct spec { const ObjectImpType* type; std::string usetext; std::string selectstat; bool onOrThrough;};
 private:
   /**

@@ -53,7 +53,7 @@ const QString StandardConstructorBase::description() const
   return i18n( mdesc );
 }
 
-const QCString StandardConstructorBase::iconFileName( const bool ) const
+const Q3CString StandardConstructorBase::iconFileName( const bool ) const
 {
   return miconfile;
 }
@@ -246,7 +246,7 @@ const QString MergeObjectConstructor::description() const
   return i18n( mdesc );
 }
 
-const QCString MergeObjectConstructor::iconFileName( const bool ) const
+const Q3CString MergeObjectConstructor::iconFileName( const bool ) const
 {
   return miconfilename;
 }
@@ -348,7 +348,7 @@ QString MergeObjectConstructor::selectStatement(
 }
 
 MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const QString& name,
-                                    const QString& desc, const QCString& iconfile )
+                                    const QString& desc, const Q3CString& iconfile )
   : ObjectConstructor(), mhier( hier ), mname( name ), mdesc( desc ),
     mbuiltin( false ), miconfile( iconfile ),
     mparser( mhier.argParser() )
@@ -358,7 +358,7 @@ MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const QString& 
 MacroConstructor::MacroConstructor(
   const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
   const QString& name, const QString& description,
-  const QCString& iconfile )
+  const Q3CString& iconfile )
   : ObjectConstructor(), mhier( input, output ),
     mname( name ), mdesc( description ), mbuiltin( false ),
     miconfile( iconfile ),
@@ -380,9 +380,9 @@ const QString MacroConstructor::description() const
   return mdesc;
 }
 
-const QCString MacroConstructor::iconFileName( const bool canBeNull ) const
+const Q3CString MacroConstructor::iconFileName( const bool canBeNull ) const
 {
-  return ( miconfile.isNull() && !canBeNull ) ? QCString( "gear" ) : miconfile;
+  return ( miconfile.isNull() && !canBeNull ) ? Q3CString( "gear" ) : miconfile;
 }
 
 const bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
@@ -603,7 +603,7 @@ void MacroConstructor::setDescription( const QString& desc )
   mdesc = desc;
 }
 
-void MacroConstructor::setIcon( QCString& icon )
+void MacroConstructor::setIcon( Q3CString& icon )
 {
   miconfile = icon;
 }

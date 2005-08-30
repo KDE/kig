@@ -187,13 +187,13 @@ class FetchPropertyNode
 {
   mutable int mpropid;
   int mparent;
-  const QCString mname;
+  const Q3CString mname;
 public:
   // propid is a cache of the location of name in the parent's
   // propertiesInternalNames(), just as it is in PropertyObject.  We
   // don't want to ever save this value, since we cannot guarantee it
   // remains consistent if we add properties some place..
-  FetchPropertyNode( const int parent, const QCString& name, const int propid = -1 )
+  FetchPropertyNode( const int parent, const Q3CString& name, const int propid = -1 )
     : mpropid( propid ), mparent( parent ), mname( name ) {};
   ~FetchPropertyNode();
   Node* copy() const;
@@ -201,7 +201,7 @@ public:
   void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
   void checkArgumentsUsed( std::vector<bool>& usedstack ) const;
   int parent() const { return mparent; };
-  const QCString& propinternalname() const { return mname; };
+  const Q3CString& propinternalname() const { return mname; };
 
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
@@ -450,7 +450,7 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
     {
       const FetchPropertyNode* node = static_cast<const FetchPropertyNode*>( mnodes[i] );
       e.setAttribute( "action", "fetch-property" );
-      e.setAttribute( "property", node->propinternalname() );
+      e.setAttribute( "property", QString( node->propinternalname() ) );
       QDomElement arge = doc.createElement( "arg" );
       arge.appendChild( doc.createTextNode( QString::number( node->parent() + 1 ) ) );
       e.appendChild( arge );
@@ -536,7 +536,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     if ( tmp == "calc" )
     {
       // ApplyTypeNode
-      QCString typen = e.attribute( "type" ).latin1();
+      Q3CString typen = e.attribute( "type" ).latin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
       if ( ! type )
       {
@@ -544,7 +544,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
                       "which this Kig version does not support."
                       "Perhaps you have compiled Kig without support "
                       "for this object type,"
-                      "or perhaps you are using an older Kig version." ).arg( typen );
+                      "or perhaps you are using an older Kig version." ).arg( QString( typen ) );
         return 0;
       }
 
@@ -563,7 +563,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     else if ( tmp == "fetch-property" )
     {
       // FetchPropertyNode
-      QCString propname = e.attribute( "property" ).latin1();
+      Q3CString propname = e.attribute( "property" ).latin1();
       QDomElement arge = e.firstChild().toElement();
       int parent = arge.text().toInt( &ok );
       if ( !ok ) KIG_GENERIC_PARSE_ERROR;

@@ -11,6 +11,7 @@ noinst_HEADERS = \
 	cubic-common.h \
 	goniometry.h \
 	guiaction.h \
+	kigfiledialog.h \
 	kiginputdialog.h \
 	kignumerics.h \
 	kigpainter.h \
@@ -33,6 +34,7 @@ libmisc_la_SOURCES = \
 	cubic-common.cc \
 	goniometry.cc \
 	guiaction.cc \
+	kigfiledialog.cc \
 	kiginputdialog.cc \
 	kignumerics.cpp \
 	kigpainter.cpp \

@@ -25,14 +25,26 @@ class Transformation;
 /**
  * This class represents an equation of a cubic in the form
  * \f$ a_{ijk} x_i x_j x_k = 0 \f$ (in homogeneous coordinates,
- * i,j,k = 0,1,2), i <= j <= k.
+ * \f$ i,j,k = 0,1,2 \f$), \f$ i <= j <= k \f$.
  * The coefficients are stored in lessicografic order.
  */
 class CubicCartesianData
 {
 public:
   double coeffs[10];
+  /**
+   * \ifnot creating-python-scripting-doc
+   * \brief Default Constructor
+   *
+   * Constructs a new CubicCartesianData, with all the coeffs
+   * initialized to 0.
+   * \endif
+   */
   explicit CubicCartesianData();
+  /**
+   * Constructor. Construct a new CubicCartesianData, with the given
+   * values as coeffs.
+   */
   CubicCartesianData( double a000, double a001, double a002,
                       double a011, double a012, double a022,
                       double a111, double a112, double a122,
@@ -51,7 +63,24 @@ public:
     };
   CubicCartesianData( const double incoeffs[10] );
 
+  /**
+   * Create an invalid CubicCartesianData. This is a special state of a
+   * CubicCartesianData that signals that something went wrong..
+   *
+   * \see CubicCartesianData::valid
+   *
+   * \internal We represent an invalid CubicCartesianData by setting all
+   * the coeffs to positive or negative infinity. This is handy, since
+   * it doesn't require us to adapt most of the functions, it doesn't
+   * need extra space, and most of the times that we should get an
+   * invalid CubicCartesianData, we get one automatically..
+   */
   static CubicCartesianData invalidData();
+  /**
+   * Return whether this is a valid CubicCartesianData.
+   *
+   * \see CubicCartesianData::invalidData
+   */
   bool valid() const;
 };
 

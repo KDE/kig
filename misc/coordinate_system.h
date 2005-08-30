@@ -59,7 +59,7 @@ public:
  * KigWidget... )
  */
 class CoordinateSystem
-  : public Qt
+//  : public Qt
 {
 public:
   CoordinateSystem();

@@ -27,6 +27,7 @@
 
 #include "../kig/kig_document.h"
 
+#include <qevent.h>
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
@@ -84,7 +85,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   d->m_textEdit = new KTextEdit( frame );
   d->m_textEdit->setText( label );
   d->m_textEdit->setReadOnly( true );
-  d->m_textEdit->setFocusPolicy( NoFocus );
+  d->m_textEdit->setFocusPolicy( Qt::NoFocus );
 //  d->m_textEdit->setAlignment( d->m_textEdit->alignment() | Qt::WordBreak );
   d->m_textEdit->setFrameStyle( QFrame::NoFrame );
   mainlay->addWidget( d->m_textEdit );

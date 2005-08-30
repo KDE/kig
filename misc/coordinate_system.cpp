@@ -59,7 +59,7 @@ public:
 
 CoordinateValidator::CoordinateValidator( bool polar )
   : QValidator( 0, 0 ), mpolar( polar ), mdv( 0, 0 ),
-    mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?"
+    mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?"
          : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
 {
 }
@@ -75,7 +75,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
   if ( mpolar )
   {
     if ( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
-    if ( tinput[tinput.length() - 1 ] == '°' ) tinput.truncate( tinput.length() - 1 );
+    if ( tinput[tinput.length() - 1 ] == (char)( "" ) ) tinput.truncate( tinput.length() - 1 );
   };
   if( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
   if ( tinput[0] == '(' ) tinput = tinput.mid( 1 );
@@ -101,7 +101,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
 
 void CoordinateValidator::fixup( QString & input ) const
 {
-  int nsc = input.contains( ';' );
+  int nsc = input.count( ';' );
   if ( nsc > 1 )
   {
     // where is the second ';'
@@ -117,7 +117,7 @@ void CoordinateValidator::fixup( QString & input ) const
     KLocale* l = KGlobal::locale();
     if ( mpolar )
       input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
-                    QString::fromLatin1( "0°" ) );
+                    QString::fromLatin1( "0" ) );
     else
       input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
                     QString::fromLatin1( "0" ) + l->decimalSymbol() +
@@ -238,7 +238,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   /****** the grid lines ******/
   if ( showgrid )
   {
-    p.setPen( QPen( lightGray, 0, DotLine ) );
+    p.setPen( QPen( Qt::lightGray, 0, Qt::DotLine ) );
     // vertical lines...
     for ( double i = hgraphmin; i <= hgraphmax + hd/2; i += hd )
       p.drawSegment( Coordinate( i, vgraphmin ),
@@ -270,7 +270,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
         KGlobal::locale()->formatNumber( i, hnfrac ),
-        AlignLeft | AlignTop
+        Qt::AlignLeft | Qt::AlignTop
         );
     };
     // y axis...
@@ -279,7 +279,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
       if( fabs( i ) < 1e-8 ) continue;
       p.drawText ( Rect( Coordinate( 0, i ), 2*hd, vd ).normalized(),
                    KGlobal::locale()->formatNumber( i, vnfrac ),
-                   AlignBottom | AlignLeft
+                   Qt::AlignBottom | Qt::AlignLeft
         );
     };
     // arrows on the ends of the axes...
@@ -351,7 +351,7 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
   QString rs = KGlobal::locale()->formatNumber( r, l );
   QString ts = KGlobal::locale()->formatNumber( theta, 0 );
 
-  return QString::fromLatin1("( %1; %2° )").arg( rs ).arg( ts );
+  return QString::fromLatin1("( %1; %2 )").arg( rs ).arg( ts );
 }
 
 QString PolarCoords::coordinateFormatNotice() const
@@ -370,7 +370,7 @@ QString PolarCoords::coordinateFormatNoticeMarkup() const
 
 Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?" );
+  QRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?" );
   ok = ( regexp.search( s ) == 0 );
   if (ok)
   {
@@ -439,7 +439,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     // we also want the circles that don't fit entirely in the
     // screen..
     Coordinate c( 0, 0 );
-    p.setPen( QPen( lightGray, 0, DotLine ) );
+    p.setPen( QPen( Qt::lightGray, 0, Qt::DotLine ) );
     for ( double i = begin; i <= end + d / 2; i += d )
       drawGridLine( p, c, fabs( i ) );
   }
@@ -465,7 +465,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
       QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
-        is, AlignLeft | AlignTop );
+        is, Qt::AlignLeft | Qt::AlignTop );
     };
     // y axis...
     for ( double i = vgraphmin; i <= vgraphmax + vd / 2; i += vd )
@@ -475,7 +475,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
       QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
 
       p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
-                   is, AlignBottom | AlignLeft
+                   is, Qt::AlignBottom | Qt::AlignLeft
         );
     };
     // arrows on the ends of the axes...

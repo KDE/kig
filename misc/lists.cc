@@ -270,7 +270,7 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
     macroelem.appendChild( descelem );
 
     // icon
-    QCString icon = ctor->iconFileName( true );
+    Q3CString icon = ctor->iconFileName( true );
     if ( !icon.isNull() )
     {
       QDomElement descelem = doc.createElement( "IconFileName" );
@@ -292,7 +292,7 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
   if ( ! file.open( IO_WriteOnly ) )
     return false;
   QTextStream stream( &file );
-  stream << doc.toCString();
+  stream << doc.toByteArray();
   return true;
 }
 
@@ -352,7 +352,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
   {
     QString name, description;
     ObjectHierarchy* hierarchy = 0;
-    QCString actionname, iconfile;
+    Q3CString actionname, iconfile;
     if ( macroelem.tagName() != "Macro" ) continue; // forward compat ?
     for ( QDomElement dataelem = macroelem.firstChild().toElement();
           ! dataelem.isNull(); dataelem = dataelem.nextSibling().toElement() )

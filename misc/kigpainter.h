@@ -51,7 +51,7 @@ class ObjectHolder;
  * It calls KigWidget::appendOverlay() for all of the places it draws in...
  */
 class KigPainter
-  : public Qt
+//  : public Qt
 {
 protected:
   // don't blaim me for this mutable hack.  It's TT that hasn't got
@@ -59,10 +59,10 @@ protected:
   mutable QPainter mP;
 
   QColor color;
-  PenStyle style;
+  Qt::PenStyle style;
   int pointstyle;
   int width;
-  BrushStyle brushStyle;
+  Qt::BrushStyle brushStyle;
   QColor brushColor;
 
   const KigDocument& mdoc;
