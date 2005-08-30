@@ -125,12 +125,12 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     group.setNum( i + 1 );
     group.prepend( "Object " );
     c->setGroup( group );
-    QStrList parents;
+    QStringList parents;
     c->readListEntry( "Parents", parents );
     elems.push_back( elem );
-    for ( const char* parent = parents.first(); parent; parent = parents.next() )
+    for ( QStringList::ConstIterator parent = parents.constBegin(); parent != parents.constEnd(); ++parent )
     {
-      int parentIndex = QString::fromLatin1( parent ).toInt( &ok );
+      int parentIndex = ( *parent ).toInt( &ok );
       if ( ! ok ) KIG_FILTER_PARSE_ERROR;
       if ( parentIndex != 0 )
         elems[i].parents.push_back( parentIndex - 1 );

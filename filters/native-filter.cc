@@ -32,9 +32,11 @@
 
 #include "config.h"
 
+#include <q3cstring.h>
 #include <qdom.h>
 #include <qfile.h>
 #include <qregexp.h>
+#include <qtextstream.h>
 
 #include <karchive.h>
 #include <kdebug.h>
@@ -225,8 +227,8 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
     if ( e.isNull() ) continue;
     if ( e.tagName() == "CoordinateSystem" )
     {
-      const QCString type = e.text().latin1();
-      CoordinateSystem* s = CoordinateSystemFactory::build( type );
+      const Q3CString type = e.text().latin1();
+      CoordinateSystem* s = CoordinateSystemFactory::build( type.data() );
       if ( ! s )
       {
         warning( i18n( "This Kig file has a coordinate system "
@@ -307,7 +309,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
         }
         else if ( e.tagName() == "Property" )
         {
-          QCString propname;
+          Q3CString propname;
           for ( QDomElement ec = e.firstChild().toElement(); !ec.isNull();
                 ec = ec.nextSibling().toElement() )
           {
@@ -414,8 +416,8 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         ret->setGrid( false );
         ret->setAxes( false );
       }
-      const QCString type = tmptype.latin1();
-      CoordinateSystem* s = CoordinateSystemFactory::build( type );
+      const Q3CString type = tmptype.latin1();
+      CoordinateSystem* s = CoordinateSystemFactory::build( type.data() );
       if ( ! s )
       {
         warning( i18n( "This Kig file has a coordinate system "
@@ -466,7 +468,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         else if ( e.tagName() == "Property" )
         {
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-          QCString propname = e.attribute( "which" ).latin1();
+          Q3CString propname = e.attribute( "which" ).latin1();
 
           ObjectCalcer* parent = parents[0];
           int propid = parent->imp()->propertiesInternalNames().findIndex( propname );
@@ -604,8 +606,8 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
       const ObjectPropertyCalcer* o = static_cast<const ObjectPropertyCalcer*>( *i );
       objectelem = doc.createElement( "Property" );
 
-      QCString propname = o->parent()->imp()->propertiesInternalNames()[o->propId()];
-      objectelem.setAttribute( "which", propname );
+      Q3CString propname = o->parent()->imp()->propertiesInternalNames()[o->propId()];
+      objectelem.setAttribute( "which", QString( propname ) );
     }
     else if ( dynamic_cast<const ObjectTypeCalcer*>( *i ) )
     {
@@ -665,7 +667,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   docelem.appendChild( windowelem );
 
   doc.appendChild( docelem );
-  stream << doc.toCString();
+  stream << doc.toByteArray();
   return true;
 }
 

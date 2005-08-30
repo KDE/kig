@@ -18,7 +18,7 @@
 class ObjectTypeCalcer;
 class Coordinate;
 class ObjectCalcer;
-class QCString;
+class Q3CString;
 class KigDocument;
 
 /**
@@ -27,4 +27,4 @@ class KigDocument;
  */
 ObjectTypeCalcer* filtersConstructTextObject(
   const Coordinate& c, ObjectCalcer* o,
-  const QCString& arg, const KigDocument& doc, bool needframe );
+  const Q3CString& arg, const KigDocument& doc, bool needframe );

@@ -1,4 +1,4 @@
-// Copyright (C)  2004  Pino Toscano <toscano.pino@tiscali.it>
+// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -15,31 +15,31 @@
 // Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#ifndef EXPORTTOSVGDIALOG_H
-#define EXPORTTOSVGDIALOG_H
+#ifndef KIG_FILTERS_IMAGEEXPORTEROPTIONS_H
+#define KIG_FILTERS_IMAGEEXPORTEROPTIONS_H
 
-#include "exporttosvgdialogbase.h"
+#include "imageexporteroptionsbase.h"
 
-class KigPart;
-class KigWidget;
+class QSize;
 
-class ExportToSVGDialog
-  : public ExportToSVGDialogBase
+class ImageExporterOptions
+  : public ImageExporterOptionsBase
 {
   Q_OBJECT
 
-  KigWidget* mv;
-  const KigPart* mpart;
+  QSize msize;
 
+  // this is set by slotWidthChanged() when they set the other input
+  // widget's value, to avoid reacting to internal changes to the
+  // value like to user changes...
+  bool minternallysettingstuff;
 public:
-  ExportToSVGDialog( KigWidget* v, const KigPart* part );
-  ~ExportToSVGDialog();
-  QString fileName();
-  bool showAxes();
-  bool showGrid();
-public slots:
-  void slotOKPressed();
-  void slotCancelPressed();
+  ImageExporterOptions( QWidget* parent, const QSize& s );
+  ~ImageExporterOptions();
+
+protected slots:
+  void slotWidthChanged( int );
+  void slotHeightChanged( int );
 };
 
 #endif

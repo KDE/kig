@@ -216,7 +216,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
 
   QByteArray array;
   fstream >> array;
-  QBuffer buf( array );
+  QBuffer buf( &array );
   buf.open( IO_ReadOnly );
   QDataStream stream( &buf );
 

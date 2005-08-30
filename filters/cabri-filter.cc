@@ -44,6 +44,7 @@
 #include <qcolor.h>
 #include <qfile.h>
 #include <qregexp.h>
+#include <q3cstring.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -108,7 +109,7 @@
 struct CabriObject
 {
   uint id;
-  QCString type;
+  Q3CString type;
   uint numberOfParents;
   QColor color;
   QColor fillColor;
@@ -140,8 +141,7 @@ bool KigFilterCabri::supportMime( const QString& mime )
 
 static QString readLine( QFile& file )
 {
-  QString ret;
-  file.readLine( ret, 10000L );
+  QString ret = file.readLine( 10000L );
   if ( ret[ret.length() - 1] == '\n' )
     ret.truncate( ret.length() - 1 );
   if ( ret[ret.length() - 1] == '\r' )
@@ -549,7 +549,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     else
     {
       notSupported( file, i18n( "This Cabri file contains a \"%1\" object, "
-                                "which Kig does not currently support." ).arg( obj.type ) );
+                                "which Kig does not currently support." ).arg( QString( obj.type ) ) );
       return 0;
     }
 

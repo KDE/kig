@@ -19,7 +19,7 @@
 
 #include <vector>
 
-#include <qcstring.h>
+#include <q3cstring.h>
 #include <qstring.h>
 
 #include "../objects/object_calcer.h"
@@ -27,7 +27,7 @@
 
 ObjectTypeCalcer* filtersConstructTextObject(
   const Coordinate& c, ObjectCalcer* o,
-  const QCString& arg, const KigDocument& doc, bool needframe )
+  const Q3CString& arg, const KigDocument& doc, bool needframe )
 {
   const ObjectFactory* fact = ObjectFactory::instance();
   ObjectCalcer* propo = fact->propertyObjectCalcer( o, arg );

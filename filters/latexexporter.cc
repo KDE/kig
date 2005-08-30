@@ -19,13 +19,14 @@
 
 #include "latexexporter.h"
 
-#include "exporttolatexdialog.h"
+#include "latexexporteroptions.h"
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/common.h"
 #include "../misc/goniometry.h"
+#include "../misc/kigfiledialog.h"
 #include "../misc/rect.h"
 #include "../objects/circle_imp.h"
 #include "../objects/cubic_imp.h"
@@ -43,11 +44,11 @@
 #include <math.h>
 #include <algorithm>
 
+#include <qcheckbox.h>
 #include <qcolor.h>
 #include <qfile.h>
 #include <qtextstream.h>
 
-#include <kfiledialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 
@@ -439,16 +440,25 @@ void LatexExportImpVisitor::visit( const PolygonImp* imp )
 
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {
-  ExportToLatexDialog* d = new ExportToLatexDialog( &w, &doc );
-  if ( !d->exec() )
+  KigFileDialog* kfd = new KigFileDialog(
+      QString::null, i18n( "*.tex|Latex Documents (*.tex)" ),
+      i18n( "Export as Latex" ), &w );
+  kfd->setOptionCaption( i18n( "Latex Options" ) );
+  LatexExporterOptions* opts = new LatexExporterOptions( 0L );
+  kfd->setOptionsWidget( opts );
+  opts->showGridCheckBox->setChecked( doc.document().grid() );
+  opts->showAxesCheckBox->setChecked( doc.document().axes() );
+  opts->showExtraFrameCheckBox->setChecked( false );
+  if ( !kfd->exec() )
     return;
 
-  QString file_name = d->fileName();
-  bool showgrid = d->showGrid();
-  bool showaxes = d->showAxes();
-  bool showframe = d->extraFrame();
+  QString file_name = kfd->selectedFile();
+  bool showgrid = opts->showGridCheckBox->isOn();
+  bool showaxes = opts->showAxesCheckBox->isOn();
+  bool showframe = opts->showExtraFrameCheckBox->isOn();
 
-  delete d;
+  delete opts;
+  delete kfd;
 
   QFile file( file_name );
   if ( ! file.open( IO_WriteOnly ) )

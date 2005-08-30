@@ -1,70 +1,27 @@
 <!DOCTYPE UI><UI version="3.1" stdsetdef="1">
-<class>ExportToImageDialogBase</class>
-<widget class="QDialog">
+<class>ImageExporterOptionsBase</class>
+<widget class="QWidget">
     <property name="name">
-        <cstring>ExportToImageDialogBase</cstring>
+        <cstring>ImageExporterOptionsBase</cstring>
     </property>
     <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>490</width>
-            <height>282</height>
+            <width>400</width>
+            <height>250</height>
         </rect>
-    </property>
-    <property name="caption">
-        <string>Export to Image</string>
     </property>
     <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
         <property name="margin">
-            <number>11</number>
+            <number>0</number>
         </property>
         <property name="spacing">
             <number>6</number>
         </property>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>ExplanationTextLabel</cstring>
-            </property>
-            <property name="text">
-                <string>Select a file name and resolution for the image file to save the screen to.</string>
-            </property>
-            <property name="alignment">
-                <set>WordBreak|AlignVCenter</set>
-            </property>
-        </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>Layout1</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>URLLabel_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Image file:</string>
-                    </property>
-                </widget>
-                <widget class="KURLRequester">
-                    <property name="name">
-                        <cstring>URLRequester</cstring>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
         <widget class="QGroupBox">
             <property name="name">
                 <cstring>groupBox1</cstring>
@@ -146,6 +103,14 @@
                         </widget>
                     </hbox>
                 </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>keepAspectRatio</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Keep aspect ratio</string>
+                    </property>
+                </widget>
             </vbox>
         </widget>
         <widget class="QGroupBox">
@@ -177,89 +142,17 @@
                 </widget>
             </grid>
         </widget>
-        <widget class="Line">
-            <property name="name">
-                <cstring>Line1</cstring>
-            </property>
-            <property name="frameShape">
-                <enum>HLine</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Sunken</enum>
-            </property>
-            <property name="orientation">
-                <enum>Horizontal</enum>
-            </property>
-        </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>Layout7</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="KPushButton">
-                    <property name="name">
-                        <cstring>OKButton</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="text">
-                        <string>&amp;OK</string>
-                    </property>
-                </widget>
-                <widget class="KPushButton">
-                    <property name="name">
-                        <cstring>CancelButton</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Cancel</string>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
     </vbox>
 </widget>
+<customwidgets>
+    <customwidget>
+        <class>KIntNumInput</class>
+        <header location="local">knuminput.h</header>
+    </customwidget>
+</customwidgets>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>kurlrequester.h</includehint>
-    <includehint>klineedit.h</includehint>
-    <includehint>kpushbutton.h</includehint>
     <includehint>knuminput.h</includehint>
     <includehint>knuminput.h</includehint>
-    <includehint>knuminput.h</includehint>
-    <includehint>knuminput.h</includehint>
-    <includehint>kpushbutton.h</includehint>
-    <includehint>kpushbutton.h</includehint>
 </includehints>
 </UI>

@@ -17,14 +17,16 @@
 
 #include "svgexporter.h"
 
-#include "exporttosvgdialog.h"
+#include "svgexporteroptions.h"
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 #include "../misc/common.h"
+#include "../misc/kigfiledialog.h"
 #include "../misc/kigpainter.h"
 
+#include <qcheckbox.h>
 #include <qfile.h>
 #include <qpicture.h>
 #include <qrect.h>
@@ -56,15 +58,23 @@ QString SVGExporter::menuIcon() const
 
 void SVGExporter::run( const KigPart& part, KigWidget& w )
 {
-  ExportToSVGDialog* d = new ExportToSVGDialog( &w, &part );
-  if ( !d->exec() )
+  KigFileDialog* kfd = new KigFileDialog(
+      QString::null, i18n( "*.svg|Scalable Vector Graphics (*.svg)" ),
+      i18n( "Export as SVG" ), &w );
+  kfd->setOptionCaption( i18n( "SVG Options" ) );
+  SVGExporterOptions* opts = new SVGExporterOptions( 0L );
+  kfd->setOptionsWidget( opts );
+  opts->showGridCheckBox->setChecked( part.document().grid() );
+  opts->showAxesCheckBox->setChecked( part.document().axes() );
+  if ( !kfd->exec() )
     return;
 
-  QString file_name = d->fileName();
-  bool showgrid = d->showGrid();
-  bool showaxes = d->showAxes();
+  QString file_name = kfd->selectedFile();
+  bool showgrid = opts->showGridCheckBox->isOn();
+  bool showaxes = opts->showAxesCheckBox->isOn();
 
-  delete d;
+  delete opts;
+  delete kfd;
 
   QFile file( file_name );
   if ( ! file.open( IO_WriteOnly ) )
