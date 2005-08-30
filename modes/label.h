@@ -23,8 +23,6 @@
 #include "../objects/object_calcer.h"
 
 #include <vector>
-//Added by qt3to4:
-#include <QMouseEvent>
 
 class TextLabelWizard;
 class NormalMode;

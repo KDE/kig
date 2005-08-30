@@ -21,9 +21,7 @@
 #ifndef KIG_PART_MODE_H
 #define KIG_PART_MODE_H
 
-#include <qnamespace.h>
-//Added by qt3to4:
-#include <QMouseEvent>
+//#include <qnamespace.h>
 
 class KigDocument;
 class KigPart;
@@ -36,7 +34,7 @@ class StdConstructionMode;
  * document... It tells us how to respond to a certain event.
  */
 class KigMode
-  : public Qt
+//  : public Qt
 {
 public:
   virtual ~KigMode();

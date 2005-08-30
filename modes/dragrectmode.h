@@ -24,8 +24,6 @@
 #include "../misc/rect.h"
 
 #include <qpoint.h>
-//Added by qt3to4:
-#include <QMouseEvent>
 #include <vector>
 
 class ObjectHolder;

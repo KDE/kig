@@ -27,8 +27,9 @@
 #include <qlayout.h>
 
 TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
-  : TextLabelWizardBase( parent, "TextLabelWizard", false ), mmode( mode )
+  : TextLabelWizardBase( parent, "TextLabelWizard" ), mmode( mode )
 {
+  setModal( false );
   connect( labelTextInput, SIGNAL( textChanged() ),
            SLOT( textChanged() ) );
   connect( myCustomWidget1, SIGNAL( linkClicked( int ) ),
@@ -83,7 +84,7 @@ void TextLabelWizard::linkClicked( int which )
 
 void TextLabelWizard::relayoutArgsPage()
 {
-  select_arguments_pageLayout->activate();
+  vboxLayout1->activate();
   repaint();
 }
 

@@ -35,6 +35,8 @@
 
 #include "popup.h"
 
+#include <qevent.h>
+
 #include <kcursor.h>
 #include <kaction.h>
 
@@ -67,7 +69,7 @@ void BaseConstructMode::leftReleased( QMouseEvent* e, KigWidget* v )
   if( (pointLocation() - e->pos()).manhattanLength() > 4 ) return;
 
   ObjectHolder* o = 0;
-  bool keyCtrlOrShift = ( e->state() & ( ControlButton | ShiftButton) ) != 0;
+  bool keyCtrlOrShift = ( e->state() & ( Qt::ControlButton | Qt::ShiftButton) ) != 0;
   std::vector<ObjectHolder*> moco = oco();
   if ( ! moco.empty() )
   {

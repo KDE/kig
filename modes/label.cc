@@ -42,7 +42,7 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 #include <qregexp.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qcheckbox.h>
 
 #include <algorithm>
@@ -132,7 +132,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( v->fromScreen( d->plc ), *v );
     if ( os.empty() ) break;
     ObjectHolder* o = os[0];
-    QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
+    Q3PopupMenu* p = new Q3PopupMenu( v, "text_label_select_arg_popup" );
     p->insertItem( i18n( "Name" ), 0 );
     QCStringList l = o->imp()->properties();
     assert( l.size() == o->imp()->numberOfProperties() );

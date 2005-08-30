@@ -21,8 +21,6 @@
 #include "base_mode.h"
 
 #include "../objects/object_calcer.h"
-//Added by qt3to4:
-#include <QMouseEvent>
 
 class ArgsParserObjectType;
 class ObjectConstructor;

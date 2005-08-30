@@ -249,6 +249,10 @@
     </vbox>
 </widget>
 <customwidgets>
+    <customwidget>
+        <class>KIconButton</class>
+        <header location="local">kicondialog.h</header>
+    </customwidget>
 </customwidgets>
 <connections>
     <connection>

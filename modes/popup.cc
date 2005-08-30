@@ -231,7 +231,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
 #endif
 
   for ( uint i = 0; i < NumberOfMenus; ++i )
-    mmenus[i] = new QPopupMenu( this );
+    mmenus[i] = new Q3PopupMenu( this );
 
   connect( mmenus[TransformMenu], SIGNAL( activated( int ) ),
            this, SLOT( transformMenuSlot( int ) ) );
@@ -347,14 +347,14 @@ NormalModePopupObjects::~NormalModePopupObjects()
 
 static const QColor* colors[] =
 {
-  &Qt::blue,
-  &Qt::black,
-  &Qt::gray,
-  &Qt::red,
-  &Qt::green,
-  &Qt::cyan,
-  &Qt::yellow,
-  &Qt::darkRed
+  &QColor(Qt::blue),
+  &QColor(Qt::black),
+  &QColor(Qt::gray),
+  &QColor(Qt::red),
+  &QColor(Qt::green),
+  &QColor(Qt::cyan),
+  &QColor(Qt::yellow),
+  &QColor(Qt::darkRed)
 };
 static const int numberofcolors = sizeof( colors ) / sizeof( QColor* );
 
@@ -740,7 +740,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     };
     if ( add )
     {
-      QCString iconfile = (*i)->iconFileName();
+      Q3CString iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
         QPixmap icon = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
@@ -783,7 +783,7 @@ bool ObjectConstructorActionsProvider::executeAction(
 
 void NormalModePopupObjects::addAction( int menu, const QPixmap& pix, int id )
 {
-  QPopupMenu* m = 0;
+  Q3PopupMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
   int ret = m->insertItem( pix, id );
@@ -814,7 +814,7 @@ void NormalModePopupObjects::setCoordinateSystemMenuSlot( int i )
 
 void NormalModePopupObjects::addAction( int menu, const QPixmap& icon, const QString& name, int id )
 {
-  QPopupMenu* m = 0;
+  Q3PopupMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
   int ret = m->insertItem( QIconSet( icon ), name, id );
@@ -825,7 +825,7 @@ void NormalModePopupObjects::addAction( int menu, const QPixmap& icon, const QSt
 
 void NormalModePopupObjects::addAction( int menu, const QString& name, int id )
 {
-  QPopupMenu* m = 0;
+  Q3PopupMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
   int ret = m->insertItem( name, id );

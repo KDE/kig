@@ -25,8 +25,9 @@
 #include <kapplication.h>
 
 MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
-  : MacroWizardBase( parent, "Define Macro Wizard", false ), mmode( m )
+  : MacroWizardBase( parent, "Define Macro Wizard" ), mmode( m )
 {
+  setModal( false );
   connect( KLineEdit2, SIGNAL( textChanged( const QString& ) ),
            this, SLOT( nameTextChanged( const QString& ) ) );
   connect( this, SIGNAL( helpClicked() ), this,
