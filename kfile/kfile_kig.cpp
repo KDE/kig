@@ -20,11 +20,10 @@
 
 #include "kfile_kig.h"
 
+#include <q3cstring.h>
 #include <qdom.h>
 #include <qfile.h>
 #include <qregexp.h>
-//Added by qt3to4:
-#include <Q3CString>
 
 #include <karchive.h>
 #include <kgenericfactory.h>
@@ -77,7 +76,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
       return false;
     // reading compressed file
     KTar* ark = new KTar( sfile, "application/x-gzip" );
-    ark->open( QIODevice::ReadOnly );
+    ark->open( IO_ReadOnly );
     const KArchiveDirectory* dir = ark->directory();
     QStringList entries = dir->entries();
     QStringList kigfiles = entries.grep( QRegExp( "\\.kig$" ) );
@@ -91,7 +90,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
     f.setName( tempdir + kigz->name() );
   }
 
-  if ( !f.open( QIODevice::ReadOnly ) )
+  if ( !f.open( IO_ReadOnly ) )
     return false;
 
   QDomDocument doc( "KigDocument" );
@@ -139,7 +138,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   appendItem( metagroup, "Grid", stmp2 );
 
   // has Kig document the axes?
-  stmp = true;
+  btmp = true;
   stmp = main.attribute( "axes" );
   if ( !( stmp.isEmpty() || ( stmp != "0" ) ) )
     btmp = ( stmp != "0" );
