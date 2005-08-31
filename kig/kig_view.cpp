@@ -65,7 +65,8 @@ KigWidget::KigWidget( KigPart* part,
     stillPix(size()),
     curPix(size()),
     msi( Rect(), rect() ),
-    misfullscreen( fullscreen )
+    misfullscreen( fullscreen ),
+    mispainting( false )
 {
   part->addWidget(this);
 
@@ -84,6 +85,7 @@ KigWidget::~KigWidget()
 
 void KigWidget::paintEvent(QPaintEvent*)
 {
+  mispainting = true;
   updateEntireWidget();
 }
 
@@ -120,23 +122,38 @@ void KigWidget::mouseReleaseEvent (QMouseEvent* e)
 
 void KigWidget::updateWidget( const std::vector<QRect>& overlay )
 {
+  QPixmap tmp( size() );
 #undef SHOW_OVERLAY_RECTS
 #ifdef SHOW_OVERLAY_RECTS
-  QPainter debug (this, this);
+  QPainter debug( &tmp );
   debug.setPen(Qt::yellow);
 #endif // SHOW_OVERLAY_RECTS
   // we undo our old changes...
   for ( std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
-    bitBlt( this, i->topLeft(), &curPix, *i );
+    bitBlt( &tmp, i->topLeft(), &curPix, *i );
   // we add our new changes...
   for ( std::vector<QRect>::const_iterator i = overlay.begin(); i != overlay.end(); ++i )
   {
-    bitBlt( this, i->topLeft(), &curPix, *i );
+    bitBlt( &tmp, i->topLeft(), &curPix, *i );
 #ifdef SHOW_OVERLAY_RECTS
     debug.drawRect(*i);
 #endif
   };
   oldOverlay = overlay;
+
+#ifdef SHOW_OVERLAY_RECTS
+  debug.end();
+#endif
+
+  if ( mispainting )
+  {
+    bitBlt( this, 0, 0, &tmp );
+    mispainting = false;
+  }
+  else
+  {
+    repaint();
+  }
 }
 
 void KigWidget::updateEntireWidget()

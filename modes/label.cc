@@ -136,7 +136,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     p->insertItem( i18n( "Name" ), 0 );
     QCStringList l = o->imp()->properties();
     assert( l.size() == o->imp()->numberOfProperties() );
-    for ( int i = 0; static_cast<uint>( i ) < l.size(); ++i )
+    for ( int i = 0; i < l.size(); ++i )
     {
       QString s = i18n( l[i] );
       const char* iconfile = o->imp()->iconForProperty( i );
@@ -167,7 +167,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     }
     else
     {
-      assert( static_cast<uint>( result ) < l.size() + 1 );
+      assert( result < l.size() + 1 );
       argcalcer = new ObjectPropertyCalcer( o->calcer(), result - 1 );
     }
     d->args[d->mwaaws] = argcalcer.get();
@@ -387,7 +387,7 @@ void TextLabelModeBase::updateLinksLabel()
     ++count;
   };
 
-  if ( static_cast<uint>( prevpos ) != s.length() )
+  if ( prevpos != s.length() )
     d->wiz->myCustomWidget1->addText( s.mid( prevpos ), buf );
 
   d->wiz->myCustomWidget1->applyEdit( buf );

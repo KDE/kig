@@ -178,7 +178,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
                                                 KigWidget& view,
                                                 NormalMode& mode,
                                                 const std::vector<ObjectHolder*>& objs,
-						const QPoint& plc )
+                                                const QPoint& plc )
   : KPopupMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
     mmode( mode )
 {
@@ -332,6 +332,7 @@ void NormalModePopupObjects::activateAction( int menu, int action )
   // we need action - 10 cause we called fillUpMenu with nextfree set
   // to 10 initially..
   action -= 10;
+kdDebug() << "MENU: " << menu << " - ACTION: " << action << endl;
   for ( uint i = 0; ! done && i < mproviders.size(); ++i )
     done = mproviders[i]->executeAction( menu, action, mobjs, *this, mpart, mview, mmode );
 }
@@ -341,24 +342,30 @@ NormalModePopupObjects::~NormalModePopupObjects()
   delete_all ( mproviders.begin(), mproviders.end() );
 }
 
-static const QColor* colors[] =
+struct color_struct
 {
-  &QColor(Qt::blue),
-  &QColor(Qt::black),
-  &QColor(Qt::gray),
-  &QColor(Qt::red),
-  &QColor(Qt::green),
-  &QColor(Qt::cyan),
-  &QColor(Qt::yellow),
-  &QColor(Qt::darkRed)
+  const Qt::GlobalColor color;
+  const char* name;
 };
-static const int numberofcolors = sizeof( colors ) / sizeof( QColor* );
+
+static const color_struct colors[] =
+{
+  { Qt::black, I18N_NOOP( "Black" ) },
+  { Qt::gray, I18N_NOOP( "Gray" ) },
+  { Qt::red, I18N_NOOP( "Red" ) },
+  { Qt::green, I18N_NOOP( "Green" ) },
+  { Qt::cyan, I18N_NOOP( "Cyan" ) },
+  { Qt::yellow, I18N_NOOP( "Yellow" ) },
+  { Qt::darkRed, I18N_NOOP( "Dark Red" ) }
+};
+
+const int numberofcolors = 7; // is there a better way to calc that?
 
 void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
+  KIconLoader* l = popup.part().instance()->iconLoader();
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    KIconLoader* l = popup.part().instance()->iconLoader();
     std::vector<ObjectHolder*> os = popup.objects();
 
     /*
@@ -387,13 +394,14 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
   }
   else if ( menu == NormalModePopupObjects::SetColorMenu )
   {
-    QPixmap p( 50, 20 );
-    for( const QColor** c = colors; c < colors + numberofcolors; ++c )
+    QPixmap p( 20, 20 );
+    for( int i = 0; i < numberofcolors; i++ )
     {
-      p.fill( **c );
-      popup.addAction( menu, p, nextfree++ );
+      p.fill( QColor( colors[i].color ) );
+      popup.addAction( menu, p, i18n( colors[i].name ), nextfree++ );
     }
-    popup.addAction( menu, i18n( "&Custom Color" ), nextfree++ );
+    QPixmap icon = l->loadIcon( "colorize", KIcon::Small, 22, KIcon::DefaultState, 0L, true );
+    popup.addAction( menu, icon, i18n( "&Custom Color" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetSizeMenu )
   {
@@ -519,11 +527,11 @@ bool NameObjectActionsProvider::executeAction(
     assert( os.size() == 1 );
     QString name = os[0]->name();
     bool ok;
-    QRegExp re(  ".*" );
-    QRegExpValidator* rev = new QRegExpValidator(  re,  &doc );
-    QString caption = i18n( "Set Object Name" );
-    QString label = i18n( "Set Name of this Object:" );
-    name = KInputDialog::getText( caption, label, name, &ok, &w, 0, rev );
+    QRegExp re( ".*" );
+    QRegExpValidator* rev = new QRegExpValidator( re,  &doc );
+    name = KInputDialog::getText(
+               i18n( "Set Object Name" ), i18n( "Set Name of this Object:" ),
+               name, &ok, &w, 0, rev );
     if ( ok )
     {
       bool justadded = false;
@@ -629,7 +637,7 @@ bool BuiltinObjectActionsProvider::executeAction(
     };
     QColor color;
     if ( id < numberofcolors )
-      color = *colors[id];
+      color = QColor( colors[id].color );
     else
     {
       if ( os.size() == 1 )
@@ -967,7 +975,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
     int idoffset = nextfree;
     QStringList l = CoordinateSystemFactory::names();
     mnumberofcoordsystems = l.count();
-    for ( uint i = 0; i < l.count(); ++i )
+    for ( int i = 0; i < l.count(); ++i )
       popup.addAction( menu, l[i], nextfree++ );
     int current = popup.part().document().coordinateSystem().id();
     popup.setChecked( menu, idoffset + current, true );

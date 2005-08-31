@@ -740,7 +740,7 @@ int ObjectHierarchy::storeObject( const ObjectCalcer* o, const std::vector<Objec
     int parent = pl.front();
     ObjectCalcer* op = po.front();
     assert( op );
-    uint propid = static_cast<const ObjectPropertyCalcer*>( o )->propId();
+    int propid = static_cast<const ObjectPropertyCalcer*>( o )->propId();
     assert( propid < op->imp()->propertiesInternalNames().size() );
     mnodes.push_back( new FetchPropertyNode( parent, op->imp()->propertiesInternalNames()[propid], propid ) );
   }
