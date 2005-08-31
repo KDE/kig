@@ -110,23 +110,14 @@ void Kig::setupActions()
   KStdAction::open(this, SLOT(fileOpen()), actionCollection());
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
-#ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-  m_toolbarAction = KStdAction::showToolbar(this, SLOT(optionsShowToolbar()), actionCollection());
-  m_statusbarAction = KStdAction::showStatusbar(this, SLOT(optionsShowStatusbar()), actionCollection());
-#else
   createStandardStatusBarAction();
   setStandardToolBarMenuEnabled(true);
-#endif
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
   m_recentFilesAction = KStdAction::openRecent(this, SLOT(openURL(const KURL&)), actionCollection());
   m_recentFilesAction->loadEntries(config);
 
-#if KDE_IS_VERSION( 3, 2, 90 )
   KStdAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
-#else
-  KStdAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
-#endif
   KStdAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
 
   KStdAction::tipOfDay( this, SLOT( tipOfDay() ), actionCollection(), "help_tipofday" );
@@ -184,18 +175,6 @@ void Kig::openURL(const KURL& url)
     widget->load(url);
     widget->show();
   };
-}
-
-void Kig::optionsConfigureKeys()
-{
-#if KDE_IS_VERSION( 3, 2, 90 )
-  assert( false );
-#else
-  KKeyDialog dlg( true, this );
-  dlg.insert( actionCollection() );
-  dlg.insert( m_part->actionCollection() );
-  (void) dlg.configure( true );
-#endif
 }
 
 void Kig::optionsConfigureToolbars()
@@ -272,33 +251,6 @@ void Kig::fileOpen()
 
   if (!file_name.isEmpty()) openURL(file_name);
 }
-
-// ifdef's disabled, cause Qt moc doesn't handle ifdef's..
-// #ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-void Kig::optionsShowToolbar()
-{
-#ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-  if (m_toolbarAction->isChecked())
-    toolBar()->show();
-  else
-    toolBar()->hide();
-#else
-  assert( false );
-#endif
-}
-
-void Kig::optionsShowStatusbar()
-{
-#ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-  if (m_statusbarAction->isChecked())
-    statusBar()->show();
-  else
-    statusBar()->hide();
-#else
-  assert( false );
-#endif
-}
-// #endif
 
 void Kig::tipOfDay() {
   KTipDialog::showTip( "kig/tips", true );

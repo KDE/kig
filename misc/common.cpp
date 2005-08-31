@@ -28,11 +28,7 @@
 #include <kdebug.h>
 #include <knumvalidator.h>
 #include <klocale.h>
-#if KDE_IS_VERSION( 3, 1, 90 )
 #include <kinputdialog.h>
-#else
-#include <klineeditdlg.h>
-#endif
 
 Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t )
 {
@@ -193,7 +189,7 @@ bool isOnLine( const Coordinate& o, const Coordinate& a,
   double x2 = b.x;
   double y2 = b.y;
 
-  // check your math theory ( homogeneous coördinates ) for this
+  // check your math theory ( homogeneous coordinates ) for this
   double tmp = fabs( o.x * (y1-y2) + o.y*(x2-x1) + (x1*y2-y1*x2) );
   return tmp < ( fault * (b-a).length());
   // if o is on the line ( if the determinant of the matrix
@@ -347,21 +343,11 @@ Coordinate calcCircleRadicalStartPoint( const Coordinate& ca, const Coordinate& 
 double getDoubleFromUser( const QString& caption, const QString& label, double value,
                           QWidget* parent, bool* ok, double min, double max, int decimals )
 {
-#ifdef KIG_USE_KDOUBLEVALIDATOR
   KDoubleValidator vtor( min, max, decimals, 0, 0 );
-#else
-  KFloatValidator vtor( min, max, (QWidget*) 0, 0 );
-#endif
-#if KDE_IS_VERSION( 3, 1, 90 )
+
   QString input = KInputDialog::getText(
     caption, label, KGlobal::locale()->formatNumber( value, decimals ),
     ok, parent, "getDoubleFromUserDialog", &vtor );
-#else
-  QString input =
-    KLineEditDlg::getText( caption, label,
-                           KGlobal::locale()->formatNumber( value, decimals ),
-                           ok, parent, &vtor );
-#endif
 
   bool myok = true;
   double ret = KGlobal::locale()->readNumber( input, &myok );

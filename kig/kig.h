@@ -23,18 +23,6 @@
 #include <config.h>
 #endif
 
-#include <kdeversion.h>
-
-#ifdef KDE_IS_VERSION
-#if KDE_IS_VERSION( 3, 1, 90 )
-#undef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-#else
-#define KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-#endif
-#else
-#define KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-#endif
-
 #include <kapplication.h>
 #include <kparts/mainwindow.h>
 #include <dcopclient.h>
@@ -114,14 +102,6 @@ class Kig : public KParts::MainWindow
  private slots:
   void fileNew();
   void fileOpen();
-  // Qt moc doesn't handle ifdef's, so i'm disabling it..
-// #ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-  void optionsShowToolbar();
-  void optionsShowStatusbar();
-// #endif
-// #if KDE_IS_VERSION( 3, 2, 90 )
-  void optionsConfigureKeys();
-// #endif
   void optionsConfigureToolbars();
 
   void applyNewToolbarConfig();
@@ -134,10 +114,6 @@ class Kig : public KParts::MainWindow
 
   KParts::ReadWritePart *m_part;
 
-//#ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-  KToggleAction *m_toolbarAction;
-  KToggleAction *m_statusbarAction;
-//#endif
   KRecentFilesAction *m_recentFilesAction;
 
   KConfig* config;

@@ -56,11 +56,7 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <klocale.h>
-#if KDE_IS_VERSION( 3, 1, 90 )
 #include <kinputdialog.h>
-#else
-#include <klineeditdlg.h>
-#endif
 
 #include <config.h>
 
@@ -527,11 +523,7 @@ bool NameObjectActionsProvider::executeAction(
     QRegExpValidator* rev = new QRegExpValidator(  re,  &doc );
     QString caption = i18n( "Set Object Name" );
     QString label = i18n( "Set Name of this Object:" );
-#if KDE_IS_VERSION( 3, 1, 90 )
     name = KInputDialog::getText( caption, label, name, &ok, &w, 0, rev );
-#else
-    name = KLineEditDlg::getText( caption, label, name, &ok, &w, rev );
-#endif
     if ( ok )
     {
       bool justadded = false;

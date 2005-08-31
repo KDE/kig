@@ -43,11 +43,7 @@ class CoordinateValidator
   : public QValidator
 {
   bool mpolar;
-#ifdef KIG_USE_KDOUBLEVALIDATOR
   KDoubleValidator mdv;
-#else
-  KFloatValidator mdv;
-#endif
   mutable QRegExp mre;
 public:
   CoordinateValidator( bool polar );

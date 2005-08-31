@@ -276,20 +276,8 @@ void KigPart::setupActions()
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
-#ifdef KDE_IS_VERSION
-#if KDE_IS_VERSION(3,1,90)
-#define KIG_PART_CPP_STD_FULLSCREEN_ACTION
-#endif
-#endif
-#ifdef KIG_PART_CPP_STD_FULLSCREEN_ACTION
   a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), (QWidget*)(widget()->parent()),"fullscreen" );
-#else
-  tmp = l->loadIcon( "window_fullscreen", KIcon::Toolbar );
-  a = new KAction(
-    i18n( "Full Screen" ), tmp, CTRL+SHIFT+Key_F,
-    m_widget, SLOT( toggleFullScreen() ),
-    actionCollection(), "fullscreen" );
-#endif
+
   a->setToolTip( i18n( "View this document full-screen." ) );
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
