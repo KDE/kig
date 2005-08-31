@@ -45,8 +45,10 @@
 #include <algorithm>
 #include <functional>
 
+#include <qaction.h>
 #include <qcursor.h>
 #include <qdialog.h>
+#include <qicon.h>
 #include <qpen.h>
 #include <qregexp.h>
 #include <qvalidator.h>
@@ -184,7 +186,6 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
 {
   bool empty = objs.empty();
   bool single = objs.size() == 1;
-  connect( this, SIGNAL( activated( int ) ), this, SLOT( toplevelMenuSlot( int ) ) );
 
   QString title;
   if ( empty )
@@ -227,26 +228,10 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
 #endif
 
   for ( uint i = 0; i < NumberOfMenus; ++i )
-    mmenus[i] = new Q3PopupMenu( this );
+    mmenus[i] = new QMenu( this );
 
-  connect( mmenus[TransformMenu], SIGNAL( activated( int ) ),
-           this, SLOT( transformMenuSlot( int ) ) );
-  connect( mmenus[TestMenu], SIGNAL( activated( int ) ),
-           this, SLOT( testMenuSlot( int ) ) );
-  connect( mmenus[ConstructMenu], SIGNAL( activated( int ) ),
-           this, SLOT( constructMenuSlot( int ) ) );
-  connect( mmenus[StartMenu], SIGNAL( activated( int ) ),
-           this, SLOT( startMenuSlot( int ) ) );
-  connect( mmenus[ShowMenu], SIGNAL( activated( int ) ),
-           this, SLOT( showMenuSlot( int ) ) );
-  connect( mmenus[SetColorMenu], SIGNAL( activated( int ) ),
-           this, SLOT( setColorMenuSlot( int ) ) );
-  connect( mmenus[SetSizeMenu], SIGNAL( activated( int ) ),
-           this, SLOT( setSizeMenuSlot( int ) ) );
-  connect( mmenus[SetStyleMenu], SIGNAL( activated( int ) ),
-           this, SLOT( setStyleMenuSlot( int ) ) );
-  connect( mmenus[SetCoordinateSystemMenu], SIGNAL( activated( int ) ),
-           this, SLOT( setCoordinateSystemMenuSlot( int ) ) );
+  connect( this, SIGNAL( triggered( QAction* ) ),
+           this, SLOT( toplevelMenuSlot( QAction* ) ) );
 
   for ( int i = 0; i <= NumberOfMenus; ++i )
   {
@@ -296,34 +281,14 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   };
 }
 
-void NormalModePopupObjects::testMenuSlot( int i )
+void NormalModePopupObjects::toplevelMenuSlot( QAction* act )
 {
-  activateAction( TestMenu, i );
-}
-
-void NormalModePopupObjects::transformMenuSlot( int i )
-{
-  activateAction( TransformMenu, i );
-}
-
-void NormalModePopupObjects::constructMenuSlot( int i )
-{
-  activateAction( ConstructMenu, i );
-}
-
-void NormalModePopupObjects::startMenuSlot( int i )
-{
-  activateAction( StartMenu, i );
-}
-
-void NormalModePopupObjects::showMenuSlot( int i )
-{
-  activateAction( ShowMenu, i );
-}
-
-void NormalModePopupObjects::toplevelMenuSlot( int i )
-{
-  activateAction( ToplevelMenu, i );
+//  activateAction( ToplevelMenu, i );
+  int data = act->data().toInt();
+  int id = data & 0xFF;
+  int menu = data >> 8;
+kdDebug() << "menu: " << menu << " - id: " << id << endl;
+  activateAction( menu, id );
 }
 
 void NormalModePopupObjects::activateAction( int menu, int action )
@@ -740,6 +705,8 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     };
     if ( add )
     {
+//if ( menu == NormalModePopupObjects::StartMenu )
+//kdDebug() << "ACTION: " << nextfree << " : " << (*i)->descriptiveName() << endl;
       Q3CString iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
@@ -773,6 +740,7 @@ bool ObjectConstructorActionsProvider::executeAction(
   }
   else
   {
+//kdDebug() << "starting: " << ctor->descriptiveName() << endl;
     BaseConstructMode* mode = ctor->constructMode( doc );
     mode->selectObjects( os, w );
     doc.runMode( mode );
@@ -783,55 +751,45 @@ bool ObjectConstructorActionsProvider::executeAction(
 
 void NormalModePopupObjects::addAction( int menu, const QPixmap& pix, int id )
 {
-  Q3PopupMenu* m = 0;
+  QMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
-  int ret = m->insertItem( pix, id );
-  assert( ret == id );
+  QAction* newaction = m->addAction( QIcon( pix ), "" );
+  newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
+//  assert( ret == id );
   // pretend to use this var..
-  (void) ret;
-}
-
-void NormalModePopupObjects::setColorMenuSlot( int i )
-{
-  activateAction( SetColorMenu, i );
-}
-
-void NormalModePopupObjects::setSizeMenuSlot( int i )
-{
-  activateAction( SetSizeMenu, i );
-}
-
-void NormalModePopupObjects::setStyleMenuSlot( int i )
-{
-  activateAction( SetStyleMenu, i );
-}
-
-void NormalModePopupObjects::setCoordinateSystemMenuSlot( int i )
-{
-  activateAction( SetCoordinateSystemMenu, i );
+//  (void) ret;
 }
 
 void NormalModePopupObjects::addAction( int menu, const QPixmap& icon, const QString& name, int id )
 {
-  Q3PopupMenu* m = 0;
+//kdDebug() << k_funcinfo << "ID: " << id << endl;
+  QMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
+/*
   int ret = m->insertItem( QIconSet( icon ), name, id );
   assert( ret == id );
   // pretend to use this var..
   (void)ret;
+*/
+  QAction* newaction = m->addAction( QIcon( icon ), name );
+  newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
 }
 
 void NormalModePopupObjects::addAction( int menu, const QString& name, int id )
 {
-  Q3PopupMenu* m = 0;
+  QMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
+/*
   int ret = m->insertItem( name, id );
   assert( ret == id );
   // pretend to use this var..
   (void)ret;
+*/
+  QAction* newaction = m->addAction( name );
+  newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
 }
 
 PopupActionProvider::~PopupActionProvider()

@@ -25,6 +25,7 @@
 
 #include <vector>
 
+class QAction;
 class KigDocument;
 class KigPart;
 class KigWidget;
@@ -79,16 +80,7 @@ protected:
   void activateAction( int menu, int action );
 
 private slots:
-  void transformMenuSlot( int );
-  void testMenuSlot( int );
-  void constructMenuSlot( int );
-  void startMenuSlot( int );
-  void showMenuSlot( int );
-  void setColorMenuSlot( int );
-  void setSizeMenuSlot( int );
-  void setStyleMenuSlot( int );
-  void toplevelMenuSlot( int );
-  void setCoordinateSystemMenuSlot( int );
+  void toplevelMenuSlot( QAction* );
 
 protected:
   QPoint mplc;
@@ -99,7 +91,7 @@ protected:
 
   std::vector<PopupActionProvider*> mproviders;
 
-  Q3PopupMenu* mmenus[NumberOfMenus];
+  QMenu* mmenus[NumberOfMenus];
 };
 
 /**
