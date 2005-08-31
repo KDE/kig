@@ -59,7 +59,7 @@ KigWidget::KigWidget( KigPart* part,
                       const char* name,
                       bool fullscreen )
   : QWidget( parent, name,
-             fullscreen ? WStyle_Customize | WStyle_NoBorder : 0 ),
+             fullscreen ? Qt::WStyle_Customize | Qt::WStyle_NoBorder : (Qt::WFlags)0 ),
     mpart( part ),
     mview( view ),
     stillPix(size()),
@@ -69,7 +69,7 @@ KigWidget::KigWidget( KigPart* part,
 {
   part->addWidget(this);
 
-  setFocusPolicy(ClickFocus);
+  setFocusPolicy(Qt::ClickFocus);
   setBackgroundMode( Qt::NoBackground );
   setMouseTracking(true);
 
@@ -297,14 +297,14 @@ KigView::KigView( KigPart* part,
   connect( part, SIGNAL( recenterScreen() ), this, SLOT( slotInternalRecenterScreen() ) );
 
   mlayout = new QGridLayout( this, 2, 2 );
-  mrightscroll = new QScrollBar( Vertical, this, "Right Scrollbar" );
+  mrightscroll = new QScrollBar( Qt::Vertical, this, "Right Scrollbar" );
   // TODO: make this configurable...
   mrightscroll->setTracking( true );
   connect( mrightscroll, SIGNAL( valueChanged( int ) ),
            this, SLOT( slotRightScrollValueChanged( int ) ) );
   connect( mrightscroll, SIGNAL( sliderReleased() ),
            this, SLOT( updateScrollBars() ) );
-  mbottomscroll = new QScrollBar( Horizontal, this, "Bottom Scrollbar" );
+  mbottomscroll = new QScrollBar( Qt::Horizontal, this, "Bottom Scrollbar" );
   connect( mbottomscroll, SIGNAL( valueChanged( int ) ),
            this, SLOT( slotBottomScrollValueChanged( int ) ) );
   connect( mbottomscroll, SIGNAL( sliderReleased() ),

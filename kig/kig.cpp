@@ -76,7 +76,8 @@ Kig::Kig()
 	  setCentralWidget(m_part->widget());
 
 	  // and integrate the part's GUI with the shell's
-	  createGUI(m_part);
+	  // FIXME!!! disabling for now as it seems to create a unending loop
+//	  createGUI(m_part);
 	  // finally show tip-of-day ( if the user wants it :) )
 	  QTimer::singleShot( 0, this, SLOT( startupTipOfDay() ) );
       }

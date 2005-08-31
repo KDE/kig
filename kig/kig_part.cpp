@@ -64,12 +64,11 @@
 #include <qcheckbox.h>
 #include <qfile.h>
 #include <qlayout.h>
-#include <qpaintdevicemetrics.h>
+#include <q3paintdevicemetrics.h>
 #include <qsizepolicy.h>
 #include <qtimer.h>
-#if QT_VERSION >= 0x030100
-#include <qeventloop.h>
-#endif
+#include <q3cstring.h>
+//#include <qeventloop.h>
 
 using namespace std;
 
@@ -230,12 +229,12 @@ void KigPart::setupActions()
   QPixmap tmp;
 
   aDeleteObjects = new KAction(
-      i18n("&Delete Objects"), "editdelete", Key_Delete, this,
+      i18n("&Delete Objects"), "editdelete", Qt::Key_Delete, this,
       SLOT(deleteObjects()), actionCollection(), "delete_objects");
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
   aCancelConstruction = new KAction(
-      i18n("Cancel Construction"), "stop", Key_Escape, this,
+      i18n("Cancel Construction"), "stop", Qt::Key_Escape, this,
       SLOT(cancelConstruction()), actionCollection(), "cancel_construction");
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
@@ -632,11 +631,7 @@ void KigPart::runMode( KigMode* m )
 
   setMode( m );
 
-#if QT_VERSION >= 0x030100
-  (void) kapp->eventLoop()->enterLoop();
-#else
   (void) kapp->enter_loop();
-#endif
 
   setMode( prev );
   redrawScreen();
@@ -647,11 +642,7 @@ void KigPart::doneMode( KigMode* d )
   assert( d == mMode );
   // pretend to use this var..
   (void)d;
-#if QT_VERSION >= 0x030100
-  kapp->eventLoop()->exitLoop();
-#else
   kapp->exit_loop();
-#endif
 }
 
 void KigPart::actionRemoved( GUIAction* a, GUIUpdateToken& t )
@@ -790,7 +781,7 @@ void KigPart::filePrint()
 
 void KigPart::doPrint( KPrinter& printer )
 {
-  QPaintDeviceMetrics metrics( &printer );
+  Q3PaintDeviceMetrics metrics( &printer );
   Rect rect = document().suggestedRect();
   QRect qrect( 0, 0, metrics.width(), metrics.height() );
   if ( rect.width() * qrect.height() > rect.height() * qrect.width() )
@@ -905,7 +896,7 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" int convertToNative( const KURL& url, const QCString& outfile )
+extern "C" int convertToNative( const KURL& url, const Q3CString& outfile )
 {
   kdDebug() << "converting " << url.prettyURL() << " to " << outfile << endl;
 
@@ -947,7 +938,7 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
   for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
     ( *i )->calc( *doc );
 
-  QString out = ( outfile == "-" ) ? QString::null : outfile;
+  QString out = ( outfile == "-" ) ? QString() : outfile;
   bool success = KigFilters::instance()->save( *doc, out );
   if ( !success )
   {

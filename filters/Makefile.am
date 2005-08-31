@@ -16,8 +16,7 @@ noinst_HEADERS= \
 	latexexporter.h \
 	native-filter.h \
 	svgexporter.h \
-	drgeo-filter.h \
-	drgeo-filter-chooser.h
+	drgeo-filter.h
 libfilters_la_SOURCES= \
 	cabri-filter.cc \
 	exporter.cc \
@@ -32,7 +31,5 @@ libfilters_la_SOURCES= \
 	native-filter.cc \
 	svgexporter.cc \
 	svgexporteroptions.ui \
-	drgeo-filter.cc \
-	drgeo-filter-chooser.cc \
-	drgeo-filter-chooserbase.ui
+	drgeo-filter.cc
 

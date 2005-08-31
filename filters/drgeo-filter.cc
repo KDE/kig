@@ -18,7 +18,6 @@
 
 #include "drgeo-filter.h"
 
-#include "drgeo-filter-chooser.h"
 #include "filters-common.h"
 
 #include "../kig/kig_document.h"
@@ -54,6 +53,7 @@
 #include <qfile.h>
 #include <qnamespace.h>
 
+#include <kinputdialog.h>
 #include <klocale.h>
 
 #undef DRGEO_DEBUG
@@ -117,20 +117,31 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   if ( nfig == 0 )
     return 0;
 
-  int myfig = 0;
-  
+  QString myfig = "";
+
   if ( nfig > 1 )
   {
     // Dr. Geo file has more than 1 figure, let the user choose one...
+/*
     KigFilterDrgeoChooser* c = new KigFilterDrgeoChooser( figures );
     myfig = c->exec();
     delete c;
+*/
+    bool ok = true;
+    myfig = KInputDialog::getItem(
+                i18n( "Dr. Geo Filter" ),
+                i18n( "The current Dr. Geo file contains more than one figure.\n"
+                      "Please select which to import:" ),
+                figures, 0, false, &ok );
+    if ( !ok )
+      return 0;
   }
+
 
 #ifdef DRGEO_DEBUG
   kdDebug() << "drgeo file " << file << endl;
 #endif
-  int curfig = -1;
+//  int curfig = -1;
 
   for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
@@ -138,8 +149,8 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
     if ( e.isNull() ) continue;
     else if ( e.tagName() == "drgeo" )
     {
-      curfig += 1;
-      if ( curfig == myfig )
+//      curfig += 1;
+      if ( e.attribute("name") == myfig )
       {
 #ifdef DRGEO_DEBUG
         kdDebug() << "- Figure: '" << e.attribute("name") << "'" << endl;
