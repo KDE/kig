@@ -33,8 +33,7 @@
 #include "coordinate_system.h"
 
 #include <qpen.h>
-//Added by qt3to4:
-#include <Q3PointArray>
+#include <qpolygon.h>
 
 #include <cmath>
 #include <stack>
@@ -298,7 +297,7 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
   setPen( Qt::NoPen );
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
-  Q3PointArray t( pts.size() );
+  QPolygon t( pts.size() );
   int c = 0;
   for( std::vector<QPoint>::const_iterator i = pts.begin(); i != pts.end(); ++i )
   {
@@ -319,7 +318,7 @@ void KigPainter::drawArea( const std::vector<Coordinate>& pts, bool border )
     setPen( QPen( color, width == -1 ? 1 : width ) );
   else
     setPen( Qt::NoPen );
-  Q3PointArray t( pts.size() );
+  QPolygon t( pts.size() );
   int c = 0;
   for( std::vector<Coordinate>::const_iterator i = pts.begin(); i != pts.end(); ++i )
   {
@@ -638,7 +637,7 @@ void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
   vect = vect * 6 / vectlen;
   orthvect = orthvect * 6 / vectlen;
 
-  Q3PointArray arrow( 3 );
+  QPolygon arrow( 3 );
   arrow.setPoint( 0, end );
   arrow.setPoint( 1, end + orthvect + vect );
   arrow.setPoint( 2, end + orthvect - vect );
@@ -794,7 +793,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
   // Possibly there are performance advantages as well ?  this array
   // is a buffer of the polyline approximation of the part of the
   // curve that we are currently processing.
-  Q3PointArray curpolyline( 1000 );
+  QPolygon curpolyline( 1000 );
   int curpolylinenextfree = 0;
 
   // we don't use recursion, but a stack based approach for efficiency
