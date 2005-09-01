@@ -19,8 +19,6 @@
 #define KIG_MISC_SPECIAL_CONSTRUCTORS_H
 
 #include "object_constructor.h"
-//Added by qt3to4:
-#include <Q3CString>
 
 class PolygonVertexTypeConstructor
   : public StandardConstructorBase

@@ -135,7 +135,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     Q3PopupMenu* p = new Q3PopupMenu( v, "text_label_select_arg_popup" );
     p->insertItem( i18n( "Name" ), 0 );
     QCStringList l = o->imp()->properties();
-    assert( l.size() == o->imp()->numberOfProperties() );
+    assert( static_cast<uint>( l.size() ) == o->imp()->numberOfProperties() );
     for ( int i = 0; i < l.size(); ++i )
     {
       QString s = i18n( l[i] );

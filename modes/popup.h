@@ -127,7 +127,7 @@ protected:
   ~ObjectChooserPopup();
 
 protected slots:
-  void actionActivatedSlot( int );
+  void actionActivatedSlot( QAction* );
 
 protected:
   QPoint mplc;

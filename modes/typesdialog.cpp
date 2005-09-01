@@ -36,12 +36,11 @@
 #include <kstdguiitem.h>
 
 #include <qfile.h>
+#include <qmenu.h>
 #include <qpixmap.h>
 #include <qstringlist.h>
 #include <qtextstream.h>
-//Added by qt3to4:
-#include <Q3PopupMenu>
-#include <Q3CString>
+#include <q3cstring.h>
 
 #include <algorithm>
 #include <vector>
@@ -81,11 +80,11 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   // loading macros...
   loadAllMacros();
 
-  popup = new Q3PopupMenu( this );
-  popup->insertItem( SmallIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
-  popup->insertItem( SmallIcon( "editdelete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
-  popup->insertSeparator();
-  popup->insertItem( SmallIcon( "fileexport" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
+  popup = new QMenu( this );
+  popup->addAction( SmallIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
+  popup->addAction( SmallIcon( "editdelete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
+  popup->addSeparator();
+  popup->addAction( SmallIcon( "fileexport" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
 
   // saving types
   part.saveTypes();

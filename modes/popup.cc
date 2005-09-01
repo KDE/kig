@@ -927,6 +927,8 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
     popup.part().action( "view_zoom_out" )->plug( &popup );
     popup.part().action( "fullscreen" )->plug( &popup );
     nextfree += 3;
+    popup.part().action( "types_edit" )->plug( &popup );
+    ++nextfree;
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
   {
@@ -1085,20 +1087,21 @@ ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
 {
   for ( uint i = 0; i < mobjs.size(); i++ )
   {
-    insertItem( !mobjs[i]->name().isEmpty()
+    QAction* newaction = addAction(
+                !mobjs[i]->name().isEmpty()
                 ? QString::fromLatin1( "%1 %2" ).arg( mobjs[i]->imp()->type()->translatedName() ).arg( mobjs[i]->name() )
-                : mobjs[i]->imp()->type()->translatedName(),
-                i );
+                : mobjs[i]->imp()->type()->translatedName() );
+    newaction->setData( QVariant::fromValue( i ) );
   }
 
-  connect( this, SIGNAL( activated( int ) ), this, SLOT( actionActivatedSlot( int ) ) );
+  connect( this, SIGNAL( triggered( QAction* ) ), this, SLOT( actionActivatedSlot( QAction* ) ) );
 }
 
 ObjectChooserPopup::~ObjectChooserPopup()
 {
 }
 
-void ObjectChooserPopup::actionActivatedSlot( int which )
+void ObjectChooserPopup::actionActivatedSlot( QAction* act )
 {
-  mselected = which;
+  mselected = act->data().toInt();
 }

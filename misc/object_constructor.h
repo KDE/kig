@@ -20,8 +20,6 @@
 
 #include "argsparser.h"
 #include "object_hierarchy.h"
-//Added by qt3to4:
-#include <Q3CString>
 
 class KigPainter;
 class KigDocument;

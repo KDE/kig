@@ -25,11 +25,10 @@
 
 #include "../misc/lists.h"
 
-#include <q3popupmenu.h>
-
 #include <klistview.h>
 #include <kiconloader.h>
 
+class QMenu;
 class KigPart;
 class KigDocument;
 
@@ -43,7 +42,7 @@ class TypesDialog : public TypesDialogBase
   // necessary because some MacroList functions need it..
   KigPart& mpart;
   const KIconLoader* il;
-  Q3PopupMenu* popup;
+  QMenu* popup;
 public:
   TypesDialog( QWidget* parent, KigPart& );
   ~TypesDialog();
