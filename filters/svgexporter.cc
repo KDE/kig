@@ -28,7 +28,7 @@
 
 #include <qcheckbox.h>
 #include <qfile.h>
-#include <qpicture.h>
+#include <q3picture.h>
 #include <qrect.h>
 
 #include <klocale.h>
@@ -88,7 +88,7 @@ void SVGExporter::run( const KigPart& part, KigWidget& w )
   QRect viewrect( w.screenInfo().viewRect() );
   QRect r( 0, 0, viewrect.width(), viewrect.height() );
 
-  QPicture pic;
+  Q3Picture pic;
   pic.setBoundingRect( r );
   KigPainter* p = new KigPainter( ScreenInfo( w.screenInfo().shownRect(), viewrect ),
                                   &pic, part.document() );
