@@ -32,7 +32,6 @@
 
 #include <qdialog.h>
 #include <qevent.h>
-#include <qwhatsthis.h>
 #include <qlayout.h>
 #include <qscrollbar.h>
 

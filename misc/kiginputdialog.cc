@@ -30,14 +30,13 @@
 #include <qevent.h>
 #include <qlabel.h>
 #include <qlayout.h>
-#include <qpushbutton.h>
 #include <qvalidator.h>
-#include <qwhatsthis.h>
 
 #include <kcombobox.h>
 #include <kdebug.h>
 #include <klineedit.h>
 #include <klocale.h>
+#include <kpushbutton.h>
 #include <ktextedit.h>
 
 class KigInputDialogPrivate
@@ -142,16 +141,14 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 
   d->m_lineEditFirst = new KLineEdit( frame );
   d->m_lineEditFirst->setText( QString::number( d->m_gonio.value() ) );
-  QWhatsThis::add(
-        d->m_lineEditFirst,
+  d->m_lineEditFirst->setWhatsThis(
         i18n( "Use this edit field to modify the size of this angle." ) );
   horlay->addWidget( d->m_lineEditFirst );
 
   d->m_comboBox = new KComboBox( frame );
   d->m_comboBox->insertStringList( Goniometry::systemList() );
   d->m_comboBox->setCurrentItem( d->m_gonio.system() );
-  QWhatsThis::add(
-        d->m_comboBox,
+  d->m_comboBox->setWhatsThis(
         i18n( "Choose from this list the goniometric unit you want to use to "
               "modify the size of this angle.<br>\n"
               "If you switch to another unit, the value in the edit field on "
