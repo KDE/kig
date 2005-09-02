@@ -83,7 +83,7 @@
                     <cstring>TextLabel2</cstring>
                 </property>
                 <property name="text">
-                    <string>Select the final object for your new macro.</string>
+                    <string>Select the final object(s) for your new macro.</string>
                 </property>
             </widget>
         </vbox>
