@@ -16,10 +16,10 @@
 // 02110-1301, USA.
 
 #include "label.h"
-#include "normal.h"
 
-#include "textlabelwizard.h"
 #include "linkslabel.h"
+#include "normal.h"
+#include "textlabelwizard.h"
 
 #include "../kig/kig_commands.h"
 #include "../kig/kig_document.h"
@@ -34,16 +34,19 @@
 #include "../objects/text_imp.h"
 #include "../objects/text_type.h"
 
-#include <kcursor.h>
-#include <kmessagebox.h>
-#include <kaction.h>
-#include <klocale.h>
+#include <qaction.h>
+#include <qcheckbox.h>
+#include <qmenu.h>
+#include <qregexp.h>
 #include <qtextedit.h>
+#include <qvariant.h>
+
+#include <kaction.h>
+#include <kcursor.h>
 #include <kdebug.h>
 #include <kiconloader.h>
-#include <qregexp.h>
-#include <q3popupmenu.h>
-#include <qcheckbox.h>
+#include <klocale.h>
+#include <kmessagebox.h>
 
 #include <algorithm>
 #include <functional>
@@ -132,29 +135,33 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( v->fromScreen( d->plc ), *v );
     if ( os.empty() ) break;
     ObjectHolder* o = os[0];
-    Q3PopupMenu* p = new Q3PopupMenu( v, "text_label_select_arg_popup" );
-    p->insertItem( i18n( "Name" ), 0 );
+    QMenu* p = new QMenu( v );
+    p->setObjectName( "text_label_select_arg_popup" );
+    QAction* act = p->addAction( i18n( "Name" ) );
+    act->setData( QVariant::fromValue( 0 ) );
     QCStringList l = o->imp()->properties();
     assert( static_cast<uint>( l.size() ) == o->imp()->numberOfProperties() );
     for ( int i = 0; i < l.size(); ++i )
     {
       QString s = i18n( l[i] );
       const char* iconfile = o->imp()->iconForProperty( i );
-      int t;
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = mdoc.instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
-        t = p->insertItem( QIconSet( pix ), s, i + 1 );
+        QPixmap pix = mdoc.instance()->iconLoader()->loadIcon( iconfile, KIcon::Small, 22, KIcon::DefaultState, 0L, true );
+        act = p->addAction( QIcon( pix ), s );
+        act->setData( QVariant::fromValue( i + 1 ) );
       }
       else
       {
-        t = p->insertItem( s, i + 1 );
+        act = p->addAction( s );
+        act->setData( QVariant::fromValue( i + 1 ) );
       };
-      assert( t == i + 1 );
     };
-    int result = p->exec( v->mapToGlobal( d->plc ) );
+    act = p->exec( v->mapToGlobal( d->plc ) );
+    if ( !act ) break;
+    int result = act->data().toInt();
     ObjectCalcer::shared_ptr argcalcer;
-    if ( result == -1 ) break;
+    if ( result < 0 ) break;
     else if ( result == 0 )
     {
       argcalcer = o->nameCalcer();

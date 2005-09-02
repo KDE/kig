@@ -56,7 +56,10 @@
                     <string>Select the "given" objects for your new macro and press "Next".</string>
                 </property>
                 <property name="alignment">
-                    <set>WordBreak|AlignVCenter</set>
+                    <set>AlignVCenter</set>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool>
                 </property>
             </widget>
         </vbox>
@@ -83,7 +86,7 @@
                     <cstring>TextLabel2</cstring>
                 </property>
                 <property name="text">
-                    <string>Select the final object for your new macro.</string>
+                    <string>Select the final object(s) for your new macro.</string>
                 </property>
             </widget>
         </vbox>
