@@ -64,11 +64,9 @@
 #include <qcheckbox.h>
 #include <qfile.h>
 #include <qlayout.h>
-#include <q3paintdevicemetrics.h>
 #include <qsizepolicy.h>
 #include <qtimer.h>
 #include <q3cstring.h>
-//#include <qeventloop.h>
 
 using namespace std;
 
@@ -130,15 +128,15 @@ KigPrintDialogPage::KigPrintDialogPage( QWidget* parent, const char* name )
 {
   setTitle( i18n( "Kig Options" ) );
 
- QVBoxLayout* vl = new QVBoxLayout( this, 0 , 11 );
+  QVBoxLayout* vl = new QVBoxLayout( this, 0 , 11 );
 
- showgrid = new QCheckBox( i18n( "Show grid" ), this );
- vl->addWidget( showgrid );
+  showgrid = new QCheckBox( i18n( "Show grid" ), this );
+  vl->addWidget( showgrid );
 
- showaxes = new QCheckBox( i18n( "Show axes" ), this );
- vl->addWidget( showaxes );
+  showaxes = new QCheckBox( i18n( "Show axes" ), this );
+  vl->addWidget( showaxes );
 
- vl->addItem( new QSpacerItem( 10, 10, QSizePolicy::Fixed, QSizePolicy::Expanding ) );
+  vl->addItem( new QSpacerItem( 10, 10, QSizePolicy::Fixed, QSizePolicy::Expanding ) );
 }
 
 KigPrintDialogPage::~KigPrintDialogPage()
@@ -167,8 +165,8 @@ bool KigPrintDialogPage::isValid( QString& )
 }
 
 KigPart::KigPart( QWidget *parentWidget, const char *,
-			  QObject *parent, const char *name,
-			  const QStringList& )
+                  QObject *parent, const char *name,
+                  const QStringList& )
   : KParts::ReadWritePart( parent, name ),
     mMode( 0 ), mdocument( new KigDocument() )
 {
@@ -769,9 +767,8 @@ void KigPart::filePrint()
 
 void KigPart::doPrint( KPrinter& printer )
 {
-  Q3PaintDeviceMetrics metrics( &printer );
   Rect rect = document().suggestedRect();
-  QRect qrect( 0, 0, metrics.width(), metrics.height() );
+  QRect qrect( 0, 0, printer.width(), printer.height() );
   if ( rect.width() * qrect.height() > rect.height() * qrect.width() )
   {
     // qrect is too high..

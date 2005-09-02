@@ -927,8 +927,6 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
     popup.part().action( "view_zoom_out" )->plug( &popup );
     popup.part().action( "fullscreen" )->plug( &popup );
     nextfree += 3;
-    popup.part().action( "types_edit" )->plug( &popup );
-    ++nextfree;
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
   {
