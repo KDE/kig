@@ -48,7 +48,7 @@ private:
   KigInputDialog( const QString& caption, const QString& label, QWidget* parent,
         const KigDocument& doc, Coordinate* c1, Coordinate* c2 );
   KigInputDialog( QWidget* parent, const Goniometry& g );
-
+	virtual ~KigInputDialog(){}
   virtual void keyPressEvent( QKeyEvent* e );
 
   KigInputDialogPrivate* const d;
