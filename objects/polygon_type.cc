@@ -164,6 +164,7 @@ ObjectImp* PolygonBNPType::calc( const Args& parents, const KigDocument& ) const
   for ( uint i = 0; i < count; ++i )
   {
     npoints++;
+    if ( ! parents[i]->inherits( PointImp::stype() ) ) return new InvalidImp;
     Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
     centerofmassn += point;
     points.push_back( point );
@@ -283,12 +284,11 @@ const PolygonBCVType* PolygonBCVType::instance()
 ObjectImp* PolygonBCVType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( parents.size() < 3 || parents.size() > 4 ) return new InvalidImp;
-  for ( uint i = 0; i < 2; ++i )
-  {
-    if ( ! parents[0]->inherits( PointImp::stype() ) ) return new InvalidImp;
-  }
 
-  if ( ! parents[2]->inherits( IntImp::stype() ) ) return new InvalidImp;
+  if ( ( ! parents[0]->inherits( PointImp::stype() ) ) ||
+       ( ! parents[1]->inherits( PointImp::stype() ) ) ||
+       ( ! parents[2]->inherits( IntImp::stype() ) ) )
+    return new InvalidImp;
 
   const Coordinate center = 
         static_cast<const PointImp*>( parents[0] )->coordinate();

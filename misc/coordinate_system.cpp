@@ -71,7 +71,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
   if ( mpolar )
   {
     if ( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
-    if ( tinput[tinput.length() - 1 ] == (char)( "" ) ) tinput.truncate( tinput.length() - 1 );
+    if ( QString( tinput[tinput.length() - 1 ] ).isEmpty() ) tinput.truncate( tinput.length() - 1 );
   };
   if( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
   if ( tinput[0] == '(' ) tinput = tinput.mid( 1 );
