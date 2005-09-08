@@ -108,9 +108,9 @@ double calcCubicRoot ( double xmin, double xmax, double a,
 
   // now use bisection to separate the required root
   double dx = (xmax - xmin)/2;
-  double sigma = dx/1000;
-  while ( dx > sigma && vartop - varbottom > 1 )
+  while ( vartop - varbottom > 1 )
   {
+    if ( fabs( dx ) < 1e-8 ) return (xmin + xmax)/2;
     double xmiddle = xmin + dx;
     int varmiddle = calcCubicVariations (xmiddle, a, b, c, d, p1a, p1b, p0a);
     if ( varmiddle < root )   // I am below
