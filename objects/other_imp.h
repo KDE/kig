@@ -55,8 +55,8 @@ public:
 
   Coordinate attachPoint() const;
   const uint numberOfProperties() const;
-  const QCStringList properties() const;
-  const QCStringList propertiesInternalNames() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
@@ -118,8 +118,8 @@ public:
   Rect surroundingRect() const;
 
   const uint numberOfProperties() const;
-  const QCStringList properties() const;
-  const QCStringList propertiesInternalNames() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
@@ -192,8 +192,8 @@ public:
   bool valid() const;
 
   const uint numberOfProperties() const;
-  const QCStringList properties() const;
-  const QCStringList propertiesInternalNames() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;

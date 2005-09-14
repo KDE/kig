@@ -207,9 +207,9 @@ const uint PolygonImp::numberOfProperties() const
   return Parent::numberOfProperties() + 5;
 }
 
-const QCStringList PolygonImp::propertiesInternalNames() const
+const QByteArrayList PolygonImp::propertiesInternalNames() const
 {
-  QCStringList l = Parent::propertiesInternalNames();
+  QByteArrayList l = Parent::propertiesInternalNames();
   l += "polygon-number-of-sides";
   l += "polygon-perimeter";
   l += "polygon-surface";
@@ -219,9 +219,9 @@ const QCStringList PolygonImp::propertiesInternalNames() const
   return l;
 }
 
-const QCStringList PolygonImp::properties() const
+const QByteArrayList PolygonImp::properties() const
 {
-  QCStringList l = Parent::properties();
+  QByteArrayList l = Parent::properties();
   l += I18N_NOOP( "Number of sides" );
   l += I18N_NOOP( "Perimeter" );
   l += I18N_NOOP( "Surface" );

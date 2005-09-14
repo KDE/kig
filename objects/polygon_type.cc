@@ -527,8 +527,9 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
     case 0:
     default:
       return new InvalidImp;
-      break;
   }
+  // we never should reach this point...
+  return new InvalidImp;
 }
 
 const ObjectImpType* PolygonLineIntersectionType::resultId() const

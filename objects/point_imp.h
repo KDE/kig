@@ -58,8 +58,8 @@ public:
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
 
   const uint numberOfProperties() const;
-  const QCStringList properties() const;
-  const QCStringList propertiesInternalNames() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( uint which, const KigDocument& d ) const;
   const char* iconForProperty( uint which ) const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;

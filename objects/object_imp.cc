@@ -48,9 +48,9 @@ void ObjectImp::fillInNextEscape( QString&, const KigDocument& ) const
   assert( false );
 }
 
-const QCStringList ObjectImp::properties() const
+const QByteArrayList ObjectImp::properties() const
 {
-  QCStringList ret;
+  QByteArrayList ret;
   ret << I18N_NOOP( "Object Type" );
   return ret;
 }
@@ -60,9 +60,9 @@ const uint ObjectImp::numberOfProperties() const
   return 1;
 }
 
-const QCStringList ObjectImp::propertiesInternalNames() const
+const QByteArrayList ObjectImp::propertiesInternalNames() const
 {
-  QCStringList ret;
+  QByteArrayList ret;
   ret << "base-object-type";
   return ret;
 }

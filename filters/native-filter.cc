@@ -32,7 +32,7 @@
 
 #include "config.h"
 
-#include <q3cstring.h>
+#include <qbytearray.h>
 #include <qdom.h>
 #include <qfile.h>
 #include <qregexp.h>
@@ -227,7 +227,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
     if ( e.isNull() ) continue;
     if ( e.tagName() == "CoordinateSystem" )
     {
-      const Q3CString type = e.text().latin1();
+      const QByteArray type = e.text().latin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type.data() );
       if ( ! s )
       {
@@ -309,7 +309,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
         }
         else if ( e.tagName() == "Property" )
         {
-          Q3CString propname;
+          QByteArray propname;
           for ( QDomElement ec = e.firstChild().toElement(); !ec.isNull();
                 ec = ec.nextSibling().toElement() )
           {
@@ -319,7 +319,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
 
           if ( i->parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
           ObjectCalcer* parent = retcalcers[i->parents[0] -1];
-          QCStringList propnames = parent->imp()->propertiesInternalNames();
+          QByteArrayList propnames = parent->imp()->propertiesInternalNames();
           int propid = propnames.findIndex( propname );
           if ( propid == -1 )
             KIG_FILTER_PARSE_ERROR;
@@ -416,7 +416,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         ret->setGrid( false );
         ret->setAxes( false );
       }
-      const Q3CString type = tmptype.latin1();
+      const QByteArray type = tmptype.latin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type.data() );
       if ( ! s )
       {
@@ -468,7 +468,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         else if ( e.tagName() == "Property" )
         {
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-          Q3CString propname = e.attribute( "which" ).latin1();
+          QByteArray propname = e.attribute( "which" ).latin1();
 
           ObjectCalcer* parent = parents[0];
           int propid = parent->imp()->propertiesInternalNames().findIndex( propname );
@@ -549,7 +549,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         {
           int ncid = tmp.toInt( &ok );
           if ( !ok ) KIG_FILTER_PARSE_ERROR;
-          if ( ncid <= 0 || ncid > calcers.size() )
+          if ( ncid <= 0 || ncid > static_cast<int>( calcers.size() ) )
             KIG_FILTER_PARSE_ERROR;
           if ( ! dynamic_cast<ObjectConstCalcer*>( calcers[ncid-1].get() ) )
             KIG_FILTER_PARSE_ERROR;
@@ -606,7 +606,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
       const ObjectPropertyCalcer* o = static_cast<const ObjectPropertyCalcer*>( *i );
       objectelem = doc.createElement( "Property" );
 
-      Q3CString propname = o->parent()->imp()->propertiesInternalNames()[o->propId()];
+      QByteArray propname = o->parent()->imp()->propertiesInternalNames()[o->propId()];
       objectelem.setAttribute( "which", QString( propname ) );
     }
     else if ( dynamic_cast<const ObjectTypeCalcer*>( *i ) )

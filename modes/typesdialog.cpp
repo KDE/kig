@@ -35,12 +35,12 @@
 #include <kpushbutton.h>
 #include <kstdguiitem.h>
 
+#include <qbytearray.h>
 #include <qfile.h>
 #include <qmenu.h>
 #include <qpixmap.h>
 #include <qstringlist.h>
 #include <qtextstream.h>
-#include <q3cstring.h>
 
 #include <algorithm>
 #include <vector>
@@ -93,7 +93,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 Q3ListViewItem* TypesDialog::newListItem( Macro* m )
 {
   MacroListElement* e = new MacroListElement( typeList, m );
-  Q3CString ifn = m->action->iconFileName();
+  QByteArray ifn = m->action->iconFileName();
   if ( !ifn.isNull() )
   {
     QPixmap p = il->loadIcon( ifn, KIcon::Small );
@@ -251,7 +251,7 @@ void TypesDialog::editType()
 //    mpart.unplugActionLists();
     oldmacro->ctor->setName( newname );
     oldmacro->ctor->setDescription( newdesc );
-    Q3CString ncicon( newicon.utf8() );
+    QByteArray ncicon( newicon.utf8() );
     oldmacro->ctor->setIcon( ncicon );
 //    mpart.plugActionLists();
 

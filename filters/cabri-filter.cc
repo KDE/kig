@@ -41,10 +41,10 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
+#include <qbytearray.h>
 #include <qcolor.h>
 #include <qfile.h>
 #include <qregexp.h>
-#include <q3cstring.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -109,7 +109,7 @@
 struct CabriObject
 {
   uint id;
-  Q3CString type;
+  QByteArray type;
   uint numberOfParents;
   QColor color;
   QColor fillColor;

@@ -71,16 +71,16 @@ const uint TextImp::numberOfProperties() const
   return Parent::numberOfProperties() + 1;
 }
 
-const QCStringList TextImp::propertiesInternalNames() const
+const QByteArrayList TextImp::propertiesInternalNames() const
 {
-  QCStringList ret = Parent::propertiesInternalNames();
+  QByteArrayList ret = Parent::propertiesInternalNames();
   ret << "kig_text";
   return ret;
 }
 
-const QCStringList TextImp::properties() const
+const QByteArrayList TextImp::properties() const
 {
-  QCStringList ret = Parent::properties();
+  QByteArrayList ret = Parent::properties();
   ret << I18N_NOOP( "Text" );
   return ret;
 }

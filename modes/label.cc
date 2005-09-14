@@ -139,7 +139,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     p->setObjectName( "text_label_select_arg_popup" );
     QAction* act = p->addAction( i18n( "Name" ) );
     act->setData( QVariant::fromValue( 0 ) );
-    QCStringList l = o->imp()->properties();
+    QByteArrayList l = o->imp()->properties();
     assert( static_cast<uint>( l.size() ) == o->imp()->numberOfProperties() );
     for ( int i = 0; i < l.size(); ++i )
     {

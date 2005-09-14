@@ -59,9 +59,9 @@ const uint PointImp::numberOfProperties() const
   return Parent::numberOfProperties() + 3;
 }
 
-const QCStringList PointImp::propertiesInternalNames() const
+const QByteArrayList PointImp::propertiesInternalNames() const
 {
-  QCStringList l = Parent::propertiesInternalNames();
+  QByteArrayList l = Parent::propertiesInternalNames();
   l << "coordinate";
   l << "coordinate-x";
   l << "coordinate-y";
@@ -69,9 +69,9 @@ const QCStringList PointImp::propertiesInternalNames() const
   return l;
 }
 
-const QCStringList PointImp::properties() const
+const QByteArrayList PointImp::properties() const
 {
-  QCStringList l = Parent::properties();
+  QByteArrayList l = Parent::properties();
   l << I18N_NOOP( "Coordinate" );
   l << I18N_NOOP( "X coordinate" );
   l << I18N_NOOP( "Y coordinate" );

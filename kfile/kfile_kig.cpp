@@ -20,7 +20,7 @@
 
 #include "kfile_kig.h"
 
-#include <q3cstring.h>
+#include <qbytearray.h>
 #include <qdom.h>
 #include <qfile.h>
 #include <qregexp.h>
@@ -119,7 +119,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   appendItem( metagroup, "CompatVersion", compatversion );
 
   // reading the Coordinate System...
-  Q3CString coordsystem;
+  QByteArray coordsystem;
   for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
     QDomElement e = n.toElement();

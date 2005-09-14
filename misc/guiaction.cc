@@ -51,7 +51,7 @@ ConstructibleAction::~ConstructibleAction()
 
 ConstructibleAction::ConstructibleAction(
   ObjectConstructor* ctor,
-  const Q3CString& actionname,
+  const QByteArray& actionname,
   int shortcut )
   : GUIAction(), mctor( ctor ), mactionname( actionname ), mshortcut( shortcut )
 {
@@ -62,7 +62,7 @@ QString ConstructibleAction::description() const
   return mctor->description();
 }
 
-Q3CString ConstructibleAction::iconFileName() const
+QByteArray ConstructibleAction::iconFileName() const
 {
   return mctor->iconFileName();
 }
@@ -119,7 +119,7 @@ QString ConstructPointAction::description() const
     );
 }
 
-Q3CString ConstructPointAction::iconFileName() const
+QByteArray ConstructPointAction::iconFileName() const
 {
   return "point";
 }
@@ -170,7 +170,7 @@ QString ConstructTextLabelAction::description() const
   return i18n( "Construct a text label." );
 }
 
-Q3CString ConstructTextLabelAction::iconFileName() const
+QByteArray ConstructTextLabelAction::iconFileName() const
 {
   return "kig_text";
 }
@@ -201,7 +201,7 @@ QString AddFixedPointAction::description() const
   return i18n( "Construct a Point by its Coordinates" );
 }
 
-Q3CString AddFixedPointAction::iconFileName() const
+QByteArray AddFixedPointAction::iconFileName() const
 {
   return "pointxy";
 }
@@ -275,7 +275,7 @@ QString TestAction::description() const
   return QString::fromLatin1( "Test stuff !!!" );
 }
 
-Q3CString TestAction::iconFileName() const
+QByteArray TestAction::iconFileName() const
 {
   return "new";
 }
@@ -337,7 +337,7 @@ QString NewScriptAction::description() const
   return i18n( mdescription );
 }
 
-Q3CString NewScriptAction::iconFileName() const
+QByteArray NewScriptAction::iconFileName() const
 {
   return micon;
 }

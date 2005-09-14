@@ -118,9 +118,9 @@ const uint CircleImp::numberOfProperties() const
   return CurveImp::numberOfProperties() + 7;
 }
 
-const QCStringList CircleImp::propertiesInternalNames() const
+const QByteArrayList CircleImp::propertiesInternalNames() const
 {
-  QCStringList l = CurveImp::propertiesInternalNames();
+  QByteArrayList l = CurveImp::propertiesInternalNames();
   l << "surface";
   l << "circumference";
   l << "radius";
@@ -132,9 +132,9 @@ const QCStringList CircleImp::propertiesInternalNames() const
   return l;
 }
 
-const QCStringList CircleImp::properties() const
+const QByteArrayList CircleImp::properties() const
 {
-  QCStringList l = CurveImp::properties();
+  QByteArrayList l = CurveImp::properties();
   l << I18N_NOOP( "Surface" );
   l << I18N_NOOP( "Circumference" );
   l << I18N_NOOP( "Radius" );

@@ -59,8 +59,8 @@ public:
   const uint numberOfProperties() const;
   const ObjectImpType* impRequirementForProperty( uint which ) const;
   bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
-  const QCStringList properties() const;
-  const QCStringList propertiesInternalNames() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
   const char* iconForProperty( uint which ) const;
   ObjectImp* property( uint which, const KigDocument& w ) const;
 

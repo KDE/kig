@@ -81,18 +81,18 @@ ObjectImp* AbstractLineImp::property( uint which, const KigDocument& w ) const
   return new InvalidImp;
 }
 
-const QCStringList AbstractLineImp::propertiesInternalNames() const
+const QByteArrayList AbstractLineImp::propertiesInternalNames() const
 {
-  QCStringList l = Parent::propertiesInternalNames();
+  QByteArrayList l = Parent::propertiesInternalNames();
   l << "slope";
   l << "equation";
   assert( l.size() == AbstractLineImp::numberOfProperties() );
   return l;
 }
 
-const QCStringList AbstractLineImp::properties() const
+const QByteArrayList AbstractLineImp::properties() const
 {
-  QCStringList l = Parent::properties();
+  QByteArrayList l = Parent::properties();
   l << I18N_NOOP( "Slope" );
   l << I18N_NOOP( "Equation" );
   assert( l.size() == AbstractLineImp::numberOfProperties() );
@@ -104,9 +104,9 @@ const uint SegmentImp::numberOfProperties() const
   return Parent::numberOfProperties() + 4;
 }
 
-const QCStringList SegmentImp::propertiesInternalNames() const
+const QByteArrayList SegmentImp::propertiesInternalNames() const
 {
-  QCStringList s = Parent::propertiesInternalNames();
+  QByteArrayList s = Parent::propertiesInternalNames();
   s << "length";
   s << "mid-point";
   s << "end-point-A";
@@ -115,9 +115,9 @@ const QCStringList SegmentImp::propertiesInternalNames() const
   return s;
 }
 
-const QCStringList SegmentImp::properties() const
+const QByteArrayList SegmentImp::properties() const
 {
-  QCStringList s = Parent::properties();
+  QByteArrayList s = Parent::properties();
   s << I18N_NOOP( "Length" );
   s << I18N_NOOP( "Mid Point" );
   s << I18N_NOOP( "First End Point" );

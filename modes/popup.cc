@@ -707,7 +707,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     {
 //if ( menu == NormalModePopupObjects::StartMenu )
 //kdDebug() << "ACTION: " << nextfree << " : " << (*i)->descriptiveName() << endl;
-      Q3CString iconfile = (*i)->iconFileName();
+      QByteArray iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
         QPixmap icon = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );

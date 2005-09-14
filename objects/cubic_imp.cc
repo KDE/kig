@@ -271,9 +271,9 @@ const uint CubicImp::numberOfProperties() const
   return Parent::numberOfProperties() + 1;
 }
 
-const QCStringList CubicImp::propertiesInternalNames() const
+const QByteArrayList CubicImp::propertiesInternalNames() const
 {
-	QCStringList l = Parent::propertiesInternalNames();
+	QByteArrayList l = Parent::propertiesInternalNames();
   l << "cartesian-equation";
   assert( l.size() == CubicImp::numberOfProperties() );
   return l;
@@ -284,9 +284,9 @@ const QCStringList CubicImp::propertiesInternalNames() const
  * cartesian equation property contributed by Carlo Sardi
  */
 
-const QCStringList CubicImp::properties() const
+const QByteArrayList CubicImp::properties() const
 {
- 	QCStringList l = Parent::properties();
+ 	QByteArrayList l = Parent::properties();
   l << I18N_NOOP( "Cartesian Equation" );
   assert( l.size() == CubicImp::numberOfProperties() );
   return l;

@@ -63,9 +63,9 @@ const uint ConicImp::numberOfProperties() const
   return Parent::numberOfProperties() + 5;
 }
 
-const QCStringList ConicImp::propertiesInternalNames() const
+const QByteArrayList ConicImp::propertiesInternalNames() const
 {
-  QCStringList l = Parent::propertiesInternalNames();
+  QByteArrayList l = Parent::propertiesInternalNames();
   l << "type";
   l << "first-focus";
   l << "second-focus";
@@ -75,9 +75,9 @@ const QCStringList ConicImp::propertiesInternalNames() const
   return l;
 }
 
-const QCStringList ConicImp::properties() const
+const QByteArrayList ConicImp::properties() const
 {
-  QCStringList l = Parent::properties();
+  QByteArrayList l = Parent::properties();
   l << I18N_NOOP( "Conic Type" );
   l << I18N_NOOP( "First Focus" );
   l << I18N_NOOP( "Second Focus" );

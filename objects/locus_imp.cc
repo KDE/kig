@@ -93,12 +93,12 @@ const uint LocusImp::numberOfProperties() const
   return Parent::numberOfProperties();
 }
 
-const QCStringList LocusImp::propertiesInternalNames() const
+const QByteArrayList LocusImp::propertiesInternalNames() const
 {
   return Parent::propertiesInternalNames();
 }
 
-const QCStringList LocusImp::properties() const
+const QByteArrayList LocusImp::properties() const
 {
   return Parent::properties();
 }

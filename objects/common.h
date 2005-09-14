@@ -47,7 +47,7 @@ class ScreenInfo;
 class Transformation;
 
 typedef std::vector<const ObjectImp*> Args;
-typedef QList<Q3CString> QCStringList;
+typedef QList<Q3CString> QByteArrayList;
 
 template<typename T>
 void delete_all( T begin, T end )

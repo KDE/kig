@@ -294,7 +294,7 @@ const QString PolygonBNPTypeConstructor::description() const
   return i18n("Construct a polygon by giving its vertices");
 }
 
-const Q3CString PolygonBNPTypeConstructor::iconFileName( const bool ) const
+const QByteArray PolygonBNPTypeConstructor::iconFileName( const bool ) const
 {
   return "kig_polygon";
 }
@@ -578,7 +578,7 @@ const QString PolygonBCVConstructor::description() const
   return i18n("Construct a regular polygon with a given center and vertex");
 }
 
-const Q3CString PolygonBCVConstructor::iconFileName( const bool ) const
+const QByteArray PolygonBCVConstructor::iconFileName( const bool ) const
 {
   return "hexagonbcv";
 }
@@ -1108,7 +1108,7 @@ const QString MeasureTransportConstructor::description() const
   return i18n("Transport the measure of a segment or arc over a line or circle.");
 }
 
-const Q3CString MeasureTransportConstructor::iconFileName( const bool ) const
+const QByteArray MeasureTransportConstructor::iconFileName( const bool ) const
 {
   return "measuretransport";
 }

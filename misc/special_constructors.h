@@ -60,7 +60,7 @@ public:
 
   const QString descriptiveName() const;
   const QString description() const;
-  const Q3CString iconFileName( const bool canBeNull = false ) const;
+  const QByteArray iconFileName( const bool canBeNull = false ) const;
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
 			      const int& ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os,
@@ -99,7 +99,7 @@ public:
 
   const QString descriptiveName() const;
   const QString description() const;
-  const Q3CString iconFileName( const bool canBeNull = false ) const;
+  const QByteArray iconFileName( const bool canBeNull = false ) const;
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
                               const int& ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os,
@@ -140,7 +140,7 @@ public:
 
   const QString descriptiveName() const;
   const QString description() const;
-  const Q3CString iconFileName( const bool canBeNull = false ) const;
+  const QByteArray iconFileName( const bool canBeNull = false ) const;
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
                               const int& ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os,

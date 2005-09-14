@@ -284,11 +284,11 @@ public:
   virtual const uint numberOfProperties() const;
   // the names of the properties as perceived by the user..  put
   // I18N_NOOP's around them here..
-  virtual const QCStringList properties() const;
+  virtual const QByteArrayList properties() const;
   // the names of the properties as known only by kig internally.  No
   // need for I18N_NOOP.  Preferably choose some lowercase name with
   // only letters and dashes, no spaces..
-  virtual const QCStringList propertiesInternalNames() const;
+  virtual const QByteArrayList propertiesInternalNames() const;
   virtual ObjectImp* property( uint which, const KigDocument& d ) const;
   // Sometimes we need to know which type an imp needs to be at least
   // in order to have the imp with number which.  Macro's need it

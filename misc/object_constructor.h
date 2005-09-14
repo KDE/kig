@@ -30,7 +30,7 @@ class ObjectType;
 class BaseConstructMode;
 
 class QString;
-class Q3CString;
+class QByteArray;
 
 /**
  * This class represents a way to construct a set of objects from a
@@ -48,7 +48,7 @@ public:
 
   virtual const QString descriptiveName() const = 0;
   virtual const QString description() const = 0;
-  virtual const Q3CString iconFileName( const bool canBeNull = false ) const = 0;
+  virtual const QByteArray iconFileName( const bool canBeNull = false ) const = 0;
 
   /**
    * the following function is called in case of duplication of arguments
@@ -147,7 +147,7 @@ public:
 
   const QString descriptiveName() const;
   const QString description() const;
-  const Q3CString iconFileName( const bool canBeNull = false ) const;
+  const QByteArray iconFileName( const bool canBeNull = false ) const;
 
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
@@ -299,7 +299,7 @@ public:
 
   const QString descriptiveName() const;
   const QString description() const;
-  const Q3CString iconFileName( const bool canBeNull = false ) const;
+  const QByteArray iconFileName( const bool canBeNull = false ) const;
 
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
@@ -340,22 +340,22 @@ class MacroConstructor
   QString mname;
   QString mdesc;
   bool mbuiltin;
-  Q3CString miconfile;
+  QByteArray miconfile;
   ArgsParser mparser;
 public:
   MacroConstructor( const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
                     const QString& name, const QString& description,
-                    const Q3CString& iconfile = 0 );
+                    const QByteArray& iconfile = 0 );
   MacroConstructor( const ObjectHierarchy& hier, const QString& name,
                     const QString& desc,
-                    const Q3CString& iconfile = 0 );
+                    const QByteArray& iconfile = 0 );
   ~MacroConstructor();
 
   const ObjectHierarchy& hierarchy() const;
 
   const QString descriptiveName() const;
   const QString description() const;
-  const Q3CString iconFileName( const bool canBeNull = false ) const;
+  const QByteArray iconFileName( const bool canBeNull = false ) const;
 
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
@@ -390,7 +390,7 @@ public:
 
   void setName( const QString& name );
   void setDescription( const QString& desc );
-  void setIcon( Q3CString& icon );
+  void setIcon( QByteArray& icon );
 };
 
 #endif

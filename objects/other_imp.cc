@@ -86,9 +86,9 @@ const uint AngleImp::numberOfProperties() const
   return Parent::numberOfProperties() + 3;
 }
 
-const QCStringList AngleImp::propertiesInternalNames() const
+const QByteArrayList AngleImp::propertiesInternalNames() const
 {
-  QCStringList l = Parent::propertiesInternalNames();
+  QByteArrayList l = Parent::propertiesInternalNames();
   l << "angle-radian";
   l << "angle-degrees";
   l << "angle-bisector";
@@ -96,9 +96,9 @@ const QCStringList AngleImp::propertiesInternalNames() const
   return l;
 }
 
-const QCStringList AngleImp::properties() const
+const QByteArrayList AngleImp::properties() const
 {
-  QCStringList l = Parent::properties();
+  QByteArrayList l = Parent::properties();
   l << I18N_NOOP( "Angle in Radians" );
   l << I18N_NOOP( "Angle in Degrees" );
   l << I18N_NOOP( "Angle Bisector" );
@@ -194,9 +194,9 @@ const uint VectorImp::numberOfProperties() const
   return Parent::numberOfProperties() + 5;
 }
 
-const QCStringList VectorImp::propertiesInternalNames() const
+const QByteArrayList VectorImp::propertiesInternalNames() const
 {
-  QCStringList ret = Parent::propertiesInternalNames();
+  QByteArrayList ret = Parent::propertiesInternalNames();
   ret << "length";
   ret << "vect-mid-point";
   ret << "length-x";
@@ -206,9 +206,9 @@ const QCStringList VectorImp::propertiesInternalNames() const
   return ret;
 }
 
-const QCStringList VectorImp::properties() const
+const QByteArrayList VectorImp::properties() const
 {
-  QCStringList ret = Parent::properties();
+  QByteArrayList ret = Parent::properties();
   ret << I18N_NOOP( "Length" );
   ret << I18N_NOOP( "Midpoint" );
   ret << I18N_NOOP( "X length" );
@@ -361,9 +361,9 @@ const uint ArcImp::numberOfProperties() const
   return Parent::numberOfProperties() + 9;
 }
 
-const QCStringList ArcImp::properties() const
+const QByteArrayList ArcImp::properties() const
 {
-  QCStringList ret = Parent::properties();
+  QByteArrayList ret = Parent::properties();
   ret << I18N_NOOP( "Center" );
   ret << I18N_NOOP( "Radius" );
   ret << I18N_NOOP( "Angle" );
@@ -377,9 +377,9 @@ const QCStringList ArcImp::properties() const
   return ret;
 }
 
-const QCStringList ArcImp::propertiesInternalNames() const
+const QByteArrayList ArcImp::propertiesInternalNames() const
 {
-  QCStringList ret = Parent::propertiesInternalNames();
+  QByteArrayList ret = Parent::propertiesInternalNames();
   ret << "center";
   ret << "radius";
   ret << "angle";

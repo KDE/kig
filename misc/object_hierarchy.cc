@@ -187,13 +187,13 @@ class FetchPropertyNode
 {
   mutable int mpropid;
   int mparent;
-  const Q3CString mname;
+  const QByteArray mname;
 public:
   // propid is a cache of the location of name in the parent's
   // propertiesInternalNames(), just as it is in PropertyObject.  We
   // don't want to ever save this value, since we cannot guarantee it
   // remains consistent if we add properties some place..
-  FetchPropertyNode( const int parent, const Q3CString& name, const int propid = -1 )
+  FetchPropertyNode( const int parent, const QByteArray& name, const int propid = -1 )
     : mpropid( propid ), mparent( parent ), mname( name ) {};
   ~FetchPropertyNode();
   Node* copy() const;
@@ -201,7 +201,7 @@ public:
   void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
   void checkArgumentsUsed( std::vector<bool>& usedstack ) const;
   int parent() const { return mparent; };
-  const Q3CString& propinternalname() const { return mname; };
+  const QByteArray& propinternalname() const { return mname; };
 
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
@@ -536,7 +536,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     if ( tmp == "calc" )
     {
       // ApplyTypeNode
-      Q3CString typen = e.attribute( "type" ).latin1();
+      QByteArray typen = e.attribute( "type" ).latin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
       if ( ! type )
       {
@@ -563,7 +563,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     else if ( tmp == "fetch-property" )
     {
       // FetchPropertyNode
-      Q3CString propname = e.attribute( "property" ).latin1();
+      QByteArray propname = e.attribute( "property" ).latin1();
       QDomElement arge = e.firstChild().toElement();
       int parent = arge.text().toInt( &ok );
       if ( !ok ) KIG_GENERIC_PARSE_ERROR;

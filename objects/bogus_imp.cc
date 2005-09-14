@@ -331,17 +331,17 @@ const uint TestResultImp::numberOfProperties() const
   return Parent::numberOfProperties() + 1;
 }
 
-const QCStringList TestResultImp::properties() const
+const QByteArrayList TestResultImp::properties() const
 {
-  QCStringList l = Parent::properties();
+  QByteArrayList l = Parent::properties();
   l << I18N_NOOP( "Test Result" );
   assert( l.size() == TestResultImp::numberOfProperties() );
   return l;
 }
 
-const QCStringList TestResultImp::propertiesInternalNames() const
+const QByteArrayList TestResultImp::propertiesInternalNames() const
 {
-  QCStringList s = Parent::propertiesInternalNames();
+  QByteArrayList s = Parent::propertiesInternalNames();
   s << "test-result";
   assert( s.size() == TestResultImp::numberOfProperties() );
   return s;
