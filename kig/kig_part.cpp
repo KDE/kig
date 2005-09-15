@@ -61,12 +61,12 @@
 #include <kparts/genericfactory.h>
 #include <kdeprint/kprintdialogpage.h>
 
+#include <qbytearray.h>
 #include <qcheckbox.h>
 #include <qfile.h>
 #include <qlayout.h>
 #include <qsizepolicy.h>
 #include <qtimer.h>
-#include <q3cstring.h>
 
 using namespace std;
 
@@ -881,7 +881,7 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" int convertToNative( const KURL& url, const Q3CString& outfile )
+extern "C" int convertToNative( const KURL& url, const QByteArray& outfile )
 {
   kdDebug() << "converting " << url.prettyURL() << " to " << outfile << endl;
 

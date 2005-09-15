@@ -20,7 +20,7 @@
 
 #include <set>
 #include <vector>
-#include <q3cstring.h>
+#include <qbytearray.h>
 #include <qlist.h>
 #include <qstringlist.h>
 #include <cassert>
@@ -47,7 +47,7 @@ class ScreenInfo;
 class Transformation;
 
 typedef std::vector<const ObjectImp*> Args;
-typedef QList<Q3CString> QByteArrayList;
+typedef QList<QByteArray> QByteArrayList;
 
 template<typename T>
 void delete_all( T begin, T end )

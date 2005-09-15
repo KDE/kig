@@ -27,7 +27,7 @@
 class ObjectImpType::StaticPrivate
 {
 public:
-  std::map<Q3CString, const ObjectImpType*> namemap;
+  std::map<QByteArray, const ObjectImpType*> namemap;
 };
 
 ObjectImp::ObjectImp()
@@ -247,8 +247,8 @@ QString ObjectImpType::moveAStatement() const
 
 const ObjectImpType* ObjectImpType::typeFromInternalName( const char* string )
 {
-  Q3CString s( string );
-  std::map<Q3CString, const ObjectImpType*>::iterator i = sd()->namemap.find( s );
+  QByteArray s( string );
+  std::map<QByteArray, const ObjectImpType*>::iterator i = sd()->namemap.find( s );
   if ( i == sd()->namemap.end() )
     return 0;
   else return i->second;

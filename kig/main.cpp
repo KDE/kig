@@ -20,7 +20,7 @@
 
 #include "kig.h"
 
-#include <q3cstring.h>
+#include <qbytearray.h>
 
 #include <kuniqueapplication.h>
 #include <kaboutdata.h>
@@ -89,12 +89,12 @@ void KigApplication::handleArgs( KCmdLineArgs* args )
   }
 }
 
-static int convertToNative( const KURL& file, const Q3CString& outfile )
+static int convertToNative( const KURL& file, const QByteArray& outfile )
 {
   KigApplication app( false );
   KLibrary* library = KLibLoader::self()->globalLibrary( "libkigpart" );
-  int ( *converterfunction )( const KURL&, const Q3CString& );
-  converterfunction = ( int ( * )( const KURL&, const Q3CString& ) ) library->symbol( "convertToNative" );
+  int ( *converterfunction )( const KURL&, const QByteArray& );
+  converterfunction = ( int ( * )( const KURL&, const QByteArray& ) ) library->symbol( "convertToNative" );
   if ( !converterfunction )
   {
     kdError() << "Error: broken Kig installation: different library and application version !" << endl;
@@ -114,7 +114,7 @@ int main(int argc, char **argv)
   KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
   if ( args->isSet( "convert-to-native" ) )
   {
-    Q3CString outfile = args->getOption( "outfile" );
+    QByteArray outfile = args->getOption( "outfile" );
     if ( outfile.isEmpty() )
       outfile = "-";
 
