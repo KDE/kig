@@ -1,3 +1,56 @@
+2005-09-15  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Get rid of all the Q3CString (and derived) classes: 
+	Q3CString => QByteArray, QCStringList => QByteArrayList.
+
+2005-09-08  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Fix two bugs, patch by Maurizio Paolini.
+
+	* Make again to compile.
+
+2005-09-02  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Slightly change in the text when asking for the results of a
+	macro: tell the user that a macro can construct more than one
+	object per time.
+
+	* Removed the usage of Q3PopupMenu in some other places,
+	hopefully all.
+
+	* Get rid of Q3PaintDeviceMetrics.
+
+	* Taking the usage of Q3Picture, since QPicture doesn't support
+	saving to SVG.
+
+2005-09-01  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Removed the usage of Q3PopupMenu in other places.
+
+2005-08-31  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Complete the compiling with Qt4/KDE4.
+
+	* Dropped the compatibility with KDE 3.x, as it will be
+	impossbile to keep it.
+
+	* Make the painting system working again.
+
+	* Getting rid of some Q3* classes such as Q3PointArray and some
+	Q3PopupMenu.
+
+2005-08-30  Pino Toscano <toscano.pino@tiscali.it>
+
+	* First attempts to make Kig compile with Qt4/KDE4: mainly
+	converting to the compatibility classes.
+
+	* Merge all the changes done in the 3.5 branch.
+
+2005-08-25  Inge Wallin <inge@lysator.liu.se>
+
+	* Fix bug 111452: Code violates C++ spec with improper const and
+	iterator declarations.
+
 2005-08-15  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Bump the version to 0.10.5 (I don't think to have enough stuff
