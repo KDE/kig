@@ -199,7 +199,6 @@ void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags, in
 {
   //  kdDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) ) << endl;
   QRect newr( mP.boundingRect( r, textFlags, s, len ) );
-  newr.moveBy( -2, -2 );
   newr.setWidth( newr.width() + 4 );
   newr.setHeight( newr.height() + 4 );
   mOverlay.push_back( newr );
@@ -209,7 +208,6 @@ const Rect KigPainter::boundingRect( const Rect& r, const QString s,
                                      int f, int l ) const
 {
   QRect qr = mP.boundingRect( toScreen( r ), f, s, l );
-  qr.moveBy( -2, -2 );
   qr.setWidth( qr.width() + 4 );
   qr.setHeight( qr.height() + 4 );
   return fromScreen( qr );
