@@ -67,6 +67,7 @@ KigWidget::KigWidget( KigPart* part,
     misfullscreen( fullscreen ),
     mispainting( false )
 {
+  setAttribute( Qt::WA_PaintOnScreen );
   part->addWidget(this);
 
   setFocusPolicy(Qt::ClickFocus);
@@ -121,6 +122,12 @@ void KigWidget::mouseReleaseEvent (QMouseEvent* e)
 
 void KigWidget::updateWidget( const std::vector<QRect>& overlay )
 {
+  if ( !mispainting )
+  {
+    repaint();
+    return;
+  }
+
   QPixmap tmp( size() );
 #undef SHOW_OVERLAY_RECTS
 #ifdef SHOW_OVERLAY_RECTS
@@ -144,15 +151,8 @@ void KigWidget::updateWidget( const std::vector<QRect>& overlay )
   debug.end();
 #endif
 
-  if ( mispainting )
-  {
-    bitBlt( this, 0, 0, &tmp );
-    mispainting = false;
-  }
-  else
-  {
-    repaint();
-  }
+  bitBlt( this, 0, 0, &tmp );
+  mispainting = false;
 }
 
 void KigWidget::updateEntireWidget()
