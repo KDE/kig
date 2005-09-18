@@ -21,7 +21,7 @@
 #ifndef KIG_MODES_POPUP_H
 #define KIG_MODES_POPUP_H
 
-#include <kpopupmenu.h>
+#include <kmenu.h>
 
 #include <vector>
 
@@ -45,7 +45,7 @@ class ObjectHolder;
  * PopupActionProviders are disabled, and some others enabled..
  */
 class NormalModePopupObjects
-  : public KPopupMenu
+  : public KMenu
 {
   Q_OBJECT
 
@@ -62,9 +62,9 @@ public:
          SetCoordinateSystemMenu, NumberOfMenus };
 
   // used by the PopupActionProvider's to add actions to us..
-  void addAction( int menu, const QString& name, int id );
-  void addAction( int menu, const QPixmap& icon, const QString& name, int id );
-  void addAction( int menu, const QPixmap& pix, int id );
+  void addInternalAction( int menu, const QString& name, int id );
+  void addInternalAction( int menu, const QPixmap& icon, const QString& name, int id );
+  void addInternalAction( int menu, const QPixmap& pix, int id );
 
   /**
    * set the checked state of the \p n 'th item in \p menu to \p checked ..
@@ -101,7 +101,7 @@ protected:
  * You can't use this class directly, but these's a convenience method.
  */
 class ObjectChooserPopup
-  : public KPopupMenu
+  : public KMenu
 {
   Q_OBJECT
 

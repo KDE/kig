@@ -48,6 +48,7 @@
 #include <qaction.h>
 #include <qcursor.h>
 #include <qdialog.h>
+#include <qfont.h>
 #include <qicon.h>
 #include <qpen.h>
 #include <qregexp.h>
@@ -181,7 +182,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
                                                 NormalMode& mode,
                                                 const std::vector<ObjectHolder*>& objs,
                                                 const QPoint& plc )
-  : KPopupMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
+  : KMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
     mmode( mode )
 {
   bool empty = objs.empty();
@@ -199,7 +200,11 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   }
   else
     title = i18n( "%1 Objects" ).arg( objs.size() );
-  insertTitle( title, 1 );
+  QAction* act = addAction( title );
+  QFont f = act->font();
+  f.setBold( true );
+  act->setFont( f );
+  act->setEnabled( false );
 
   if ( empty )
   {
@@ -345,17 +350,17 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
 
     if ( os.size() > 1 || os.front()->shown() )
     {
-      popup.addAction( menu, i18n( "&Hide" ), nextfree );
+      popup.addInternalAction( menu, i18n( "&Hide" ), nextfree );
     }
     if ( os.size() == 1 && !os.front()->shown() )
     {
-      popup.addAction( menu, i18n( "&Show" ), nextfree+1 );
+      popup.addInternalAction( menu, i18n( "&Show" ), nextfree+1 );
     }
     nextfree += 2;
     QPixmap p = l->loadIcon( "move", KIcon::Toolbar );
-    popup.addAction( menu, p, i18n( "&Move" ), nextfree++ );
+    popup.addInternalAction( menu, p, i18n( "&Move" ), nextfree++ );
     p = l->loadIcon( "editdelete", KIcon::Toolbar );
-    popup.addAction( menu, p, i18n( "&Delete" ), nextfree++ );
+    popup.addInternalAction( menu, p, i18n( "&Delete" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetColorMenu )
   {
@@ -363,10 +368,10 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     for( int i = 0; i < numberofcolors; i++ )
     {
       p.fill( QColor( colors[i].color ) );
-      popup.addAction( menu, p, i18n( colors[i].name ), nextfree++ );
+      popup.addInternalAction( menu, p, i18n( colors[i].name ), nextfree++ );
     }
     QPixmap icon = l->loadIcon( "colorize", KIcon::Small, 22, KIcon::DefaultState, 0L, true );
-    popup.addAction( menu, icon, i18n( "&Custom Color" ), nextfree++ );
+    popup.addInternalAction( menu, icon, i18n( "&Custom Color" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetSizeMenu )
   {
@@ -400,7 +405,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
         ptr.drawLine( QPoint( 0, 10 ), QPoint( 50, 10 ) );
       };
       ptr.end();
-      popup.addAction( menu, p, nextfree++ );
+      popup.addInternalAction( menu, p, nextfree++ );
     };
   }
   else if ( menu == NormalModePopupObjects::SetStyleMenu )
@@ -430,7 +435,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
         PointImp pt( Coordinate( 0, 0 ) );
         ObjectDrawer d( color, -1, true, Qt::SolidLine, i );
         d.draw( pt, ptr, false );
-        popup.addAction( menu, p, nextfree++ );
+        popup.addInternalAction( menu, p, nextfree++ );
       }
     else
     {
@@ -445,7 +450,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
         Qt::PenStyle ps = penstyles[i];
         ObjectDrawer d( color, -1, true, ps, 1 );
         d.draw( line, ptr, false );
-        popup.addAction( menu, p, nextfree++ );
+        popup.addInternalAction( menu, p, nextfree++ );
       };
     }
   }
@@ -455,11 +460,11 @@ void NameObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int m
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    popup.addAction( menu, i18n( "Set &Name..." ), nextfree++ );
+    popup.addInternalAction( menu, i18n( "Set &Name..." ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::ShowMenu )
   {
-    popup.addAction( menu, i18n( "&Name" ), nextfree++ );
+    popup.addInternalAction( menu, i18n( "&Name" ), nextfree++ );
   }
 }
 
@@ -705,16 +710,14 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     };
     if ( add )
     {
-//if ( menu == NormalModePopupObjects::StartMenu )
-//kdDebug() << "ACTION: " << nextfree << " : " << (*i)->descriptiveName() << endl;
       QByteArray iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
         QPixmap icon = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
-        popup.addAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
+        popup.addInternalAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
       }
       else
-        popup.addAction( menu, (*i)->descriptiveName(), nextfree++ );
+        popup.addInternalAction( menu, (*i)->descriptiveName(), nextfree++ );
       mctors[menu].push_back( *i );
     }
   };
@@ -740,7 +743,6 @@ bool ObjectConstructorActionsProvider::executeAction(
   }
   else
   {
-//kdDebug() << "starting: " << ctor->descriptiveName() << endl;
     BaseConstructMode* mode = ctor->constructMode( doc );
     mode->selectObjects( os, w );
     doc.runMode( mode );
@@ -749,45 +751,26 @@ bool ObjectConstructorActionsProvider::executeAction(
   return true;
 }
 
-void NormalModePopupObjects::addAction( int menu, const QPixmap& pix, int id )
+void NormalModePopupObjects::addInternalAction( int menu, const QPixmap& pix, int id )
 {
-  QMenu* m = 0;
-  if ( menu == ToplevelMenu ) m = this;
-  else m = mmenus[menu];
-  QAction* newaction = m->addAction( QIcon( pix ), "" );
-  newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
-//  assert( ret == id );
-  // pretend to use this var..
-//  (void) ret;
+  addInternalAction( menu, pix, "", id );
 }
 
-void NormalModePopupObjects::addAction( int menu, const QPixmap& icon, const QString& name, int id )
+void NormalModePopupObjects::addInternalAction( int menu, const QPixmap& icon, const QString& name, int id )
 {
 //kdDebug() << k_funcinfo << "ID: " << id << endl;
   QMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
-/*
-  int ret = m->insertItem( QIconSet( icon ), name, id );
-  assert( ret == id );
-  // pretend to use this var..
-  (void)ret;
-*/
   QAction* newaction = m->addAction( QIcon( icon ), name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
 }
 
-void NormalModePopupObjects::addAction( int menu, const QString& name, int id )
+void NormalModePopupObjects::addInternalAction( int menu, const QString& name, int id )
 {
   QMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
-/*
-  int ret = m->insertItem( name, id );
-  assert( ret == id );
-  // pretend to use this var..
-  (void)ret;
-*/
   QAction* newaction = m->addAction( name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
 }
@@ -827,11 +810,11 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
       if ( iconfile && *iconfile )
       {
         QPixmap pix = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
-        popup.addAction( menu, pix, i18n( o->imp()->properties()[i] ), nextfree++ );
+        popup.addInternalAction( menu, pix, i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else
       {
-        popup.addAction( menu, i18n( o->imp()->properties()[i] ), nextfree++ );
+        popup.addInternalAction( menu, i18n( o->imp()->properties()[i] ), nextfree++ );
       };
       mprops[menu-1].push_back( i );
     };
@@ -896,7 +879,7 @@ void ObjectTypeActionsProvider::fillUpMenu(
   QStringList l = t->specialActions();
   mnoa = l.count();
   for ( int i = 0; i < mnoa; ++i )
-    popup.addAction( menu, l[i], nextfree++ );
+    popup.addInternalAction( menu, l[i], nextfree++ );
 }
 
 bool ObjectTypeActionsProvider::executeAction(
@@ -922,7 +905,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    popup.addAction( menu, i18n( "U&nhide All" ), nextfree++ );
+    popup.addInternalAction( menu, i18n( "U&nhide All" ), nextfree++ );
     popup.part().action( "view_zoom_in" )->plug( &popup );
     popup.part().action( "view_zoom_out" )->plug( &popup );
     popup.part().action( "fullscreen" )->plug( &popup );
@@ -934,7 +917,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
     QStringList l = CoordinateSystemFactory::names();
     mnumberofcoordsystems = l.count();
     for ( int i = 0; i < l.count(); ++i )
-      popup.addAction( menu, l[i], nextfree++ );
+      popup.addInternalAction( menu, l[i], nextfree++ );
     int current = popup.part().document().coordinateSystem().id();
     popup.setChecked( menu, idoffset + current, true );
   }
@@ -985,7 +968,7 @@ void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu,
   {
     KIconLoader* l = popup.part().instance()->iconLoader();
     QPixmap p = l->loadIcon( ScriptType::icon( ScriptType::Python ), KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
-    popup.addAction( menu, p, i18n( "Python Script" ), nextfree++ );
+    popup.addInternalAction( menu, p, i18n( "Python Script" ), nextfree++ );
     mns++;
   }
 }
@@ -1081,11 +1064,16 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
 
 ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
                                         const std::vector<ObjectHolder*>& objs )
-  : KPopupMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
+  : KMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
 {
+  QAction* newaction = addAction( i18n( "%n Object", "%n Objects", mobjs.size() ) );
+  QFont f = newaction->font();
+  f.setBold( true );
+  newaction->setFont( f );
+  newaction->setEnabled( false );
   for ( uint i = 0; i < mobjs.size(); i++ )
   {
-    QAction* newaction = addAction(
+    newaction = addAction(
                 !mobjs[i]->name().isEmpty()
                 ? QString::fromLatin1( "%1 %2" ).arg( mobjs[i]->imp()->type()->translatedName() ).arg( mobjs[i]->name() )
                 : mobjs[i]->imp()->type()->translatedName() );
