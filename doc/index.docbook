@@ -33,7 +33,7 @@
 
     <legalnotice>&FDLNotice;</legalnotice>
 
-    <date>2004-06-29</date> <releaseinfo>0.9.0</releaseinfo>
+    <date>2005-08-20</date> <releaseinfo>0.10.5</releaseinfo>
     
     <abstract>
       <para>
@@ -72,14 +72,14 @@
       reporting tool
       (<menuchoice><guimenu>Help</guimenu><guimenuitem>Report
       Bug...</guimenuitem></menuchoice>), or just contact me at
-      <email>devriese@kde.org</email>.
+      <email>toscano.pino@tiscali.it</email>.
     </para>
     <para>
       Since &kig; supports macros and the construction of locuses, it allows for some
       rather advanced macros to be defined.  If you have created an
       interesting macro, which you think might be useful for other
       people, please mail it to me at
-      <email>devriese@kde.org</email>, so I can include it in the
+      <email>toscano.pino@tiscali.it</email>, so I can include it in the
       distribution (if you do this, it will be licensed under the
       terms of &kig;'s license, the <ulink
       url="http://www.gnu.org/licenses/licenses.html#GPL">GPL</ulink>,
@@ -173,7 +173,7 @@
 	  These arguments are objects too, which can also be selected, simply by clicking on them.
 	  When you move the cursor over an argument you want to use to construct an object,
 	  a preliminary image will be shown of
-	  the object, so you 'll know what it will look like.  For objects that require
+	  the object, so you will know what it will look like.  For objects that require
 	  points as arguments, you can place a new point at the
 	  current cursor position and select it by clicking the
 	  &LMB;.
@@ -223,6 +223,14 @@
 	  </para>
 	</listitem>
       </itemizedlist>
+      <para>
+        When you have more than one object under the mouse, you can easily
+        choose which object select or add to the current selection. Click
+        with the &LMB;, while holding the &Shift; key, to have a popup with
+        all the objects under the mouse. Then, you can select the object
+        you need. As said before, the behaviour of the &Ctrl; key will
+        affect the selection.
+      </para>
 
       <screenshot>
 	<screeninfo>Selecting objects</screeninfo>
@@ -307,6 +315,26 @@
 	all</guimenuitem></menuchoice>. This will unhide all
 	currently hidden objects.
       </para>
+      <section id="night-vision">
+        <title>The night vision</title>
+        <para>
+          Night vision is a particular way of working with hidden
+          objects. When you have to move or change something in one or
+          more object but without unhiding all the hidden objects you
+          have, then the night vision mode will be of benefit to you.
+        </para>
+        <para>
+          Basically, it allows you to see the hidden objects as they
+          were visible, so  that you can manipulate them as you would
+	  normally. In Night Vision mode, the hidden objects will be
+	  visible with a grey colour.
+        </para>
+        <para>
+          To toggle the night vision, use
+          <menuchoice><guimenu>Settings</guimenu><guimenuitem>Wear
+          Infrared Glasses</guimenuitem></menuchoice>.
+        </para>
+      </section>
     </section>
     <section id="undo-redo">
       <title>Undo/Redo</title>
@@ -329,7 +357,7 @@
 	To leave Full Screen mode,
 	&RMB; click the screen at a place
 	where there is no object present, and select
-	<guimenuitem>Toggle Full Screen Mode</guimenuitem>, or press the
+	<guimenuitem>Exit Full Screen Mode</guimenuitem>, or press the
 	&Esc; key. 
       </para>
     </section>
@@ -771,7 +799,7 @@ def calc( a, b ):
 	    spirit, and its developers are usually very responsive to
 	    user feedback.  Therefore, if you have any questions,
 	    complaints, or whatever about &kig;, please let the author
-	    know at <email>devriese@kde.org</email>.
+	    know at <email>toscano.pino@tiscali.it</email>.
 	  </para>
 	</listitem>
 	<listitem>
@@ -842,7 +870,7 @@ def calc( a, b ):
   <chapter id="faq">
     <title>Questions and Answers</title>
 
-    &reporting.bugs; &updating.documentation; <para></para>
+    &reporting.bugs; &updating.documentation;
   </chapter>
 
   <chapter id="credits">
@@ -858,12 +886,19 @@ def calc( a, b ):
 
     <para>
       Documentation copyright 2002-2004 Dominique
-      Devriese. <email>devriese@kde.org</email>
+      Devriese <email>devriese@kde.org</email>.
     </para>
 
     <para>
-Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.</para>
-    <!-- TRANS:CREDIT_FOR_TRANSLATORS --> &underFDL; &underGPL;
+      Documentation copyright 2004-2005 Pino Toscano
+      <email>toscano.pino@tiscali.it</email>.
+    </para>
+
+    <para>
+      Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.
+    </para>
+    <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+    &underFDL; &underGPL;
   </chapter>
 
   <appendix id="installation">
@@ -906,7 +941,7 @@ Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.</para>
 	software, you are allowed (and encouraged) to fix problems
 	you encounter while using it, to add features you miss, to
 	distribute your modified program, and to send these
-	modifications to me at <email>devriese@kde.org</email>, so
+	modifications to me at <email>toscano.pino@tiscali.it</email>, so
 	that I can include them in the next version for others to
 	enjoy.  Please note I personally have no financial interest in this
 	project whatsoever.
