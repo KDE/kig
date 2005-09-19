@@ -181,7 +181,7 @@ the circle.
 <para>
 These arguments are objects too, which can also be selected, simply by
 clicking on them. When you move the cursor over an argument you want to use to
-construct an object, a preliminary image will be shown of the object, so you 'll
+construct an object, a preliminary image will be shown of the object, so you will
 know what it will look like. For objects that require points as arguments, you
 can place a new point at the
 current cursor position and select it by clicking the &LMB;.
@@ -885,7 +885,7 @@ support for other formats is planned.
 <chapter id="faq">
 <title>Questions and Answers</title>
 
-&reporting.bugs; &updating.documentation; <para></para>
+&reporting.bugs; &updating.documentation;
 </chapter>
 
 
@@ -913,7 +913,8 @@ Documentation copyright 2004-2005 Pino Toscano
 <para>
 Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.
 </para>
-<!-- TRANS:CREDIT_FOR_TRANSLATORS --> &underFDL; &underGPL;
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+&underFDL; &underGPL;
 </chapter>
 
 <appendix id="installation">
