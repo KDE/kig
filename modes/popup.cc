@@ -386,7 +386,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       if ( (*i)->drawer()->color() != color ) samecolor = false;
     };
     if ( ! samecolor ) color = Qt::blue;
-    QPixmap p( point ? 20 : 50, 20 );
+    QPixmap p( 20, 20 );
     for ( int i = 1; i < 8; ++i )
     {
       p.fill( popup.eraseColor() );
