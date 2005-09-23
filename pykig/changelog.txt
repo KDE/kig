@@ -1,0 +1,64 @@
+0.2.10
+Aggiunte alcune virgole mancanti
+cambiato il nome dell'oggetti da InvertObject a CircularInversion
+0.2.9
+Eliminati gli oggetti: InvertLine, InvertCircle, InvertArc, InvertSegment
+Aggiunto gli oggetti InvertObject, VerticalCubic, ConicArc
+Aggiunta la proproietà support
+Modificati alcuni esempi
+0.2.8
+Aggiunte a Triangle le proprietà dei poligoni.
+0.2.7
+Aggiunta, al manuale, la sezione sui metodi di kigdocument.
+E sugli oggetti Punto, Linea, Circonferenza, Parabola.
+Corretto un bug sul valore di default di internal.
+0.2.6
+Aggiustata la codifica dei caratteri nel manuale.
+0.2.5
+Scritti i primi 3 capitoli del manuale.
+Modificato gli esempi in modo che funzionino.
+7 nuovi metodi in KigDocument per settare i valori di default.
+eliminate la funzioni per settare i valori di default-
+Semplificata la gerarchia di classi con l'eliminazione di KigOut.
+0.2.4
+Aggiunti: gli oggetti "InvertArc" e "InvertSegment"
+Predisposte le tuple per l'aggiunta di propietà di alcuni oggetti.
+0.2.3
+Corretta la generazione del file .kig
+Aggiunta la proprietà "Bisector"
+Aggiunto il metodo "bisector"
+Aggiunti 4 nuovi esempi.
+Nell'esempio 1170Circocentro2.kpy è inserito un esempio di OOP
+ in 3 righe di codice:
+ la cerazione della classe Segmento che estende la classe "Segment"
+0.2.2
+Modificato il nome del programma: da pykig a pykig.py
+Modificato il nome della funzione main() ora si chiama prog()
+Modificato l'impianto del programma in modo che possa essere eseguito sia 
+ come programma, sia come libreria.
+In particolare: modificati i metodi di KigDocument: __init__() e close()
+Inseriti dei controlli sugli errori in scrittura del file
+Aggiunti gli esempi esempi01, equivalenti a quelli di esempi00, che
+ utilizzano pykig.py come libreria
+Rinominata la directory con gli esempi seri in esempi02.
+Rimodificato il comportamento di pykig.py, quando si chiede di avere un file
+ in output non chiama Kig.
+Ora le stringhe visualizzano correttamente le lettere accentate.
+Modificata la funzione convstr(s), aggiunta la costante DICT.
+Aggiunto l'oggetto Label che associa una stringa ad un oggetto.
+Aggiornato il file API.txt per allinearlo ai cambiamenti.
+0.2.1:
+Modificato il numero di versione, per renderlo coerente tra codice e nome 
+del file compresso.
+Modificata la gerarchia di classi con l'aggiunta di KigOut
+Modificati i nomi di variabili che hanno visibilità all'interno dei file .pyk
+Riunito tutte le istruzioni di scrittura sul file in un'unica procedura:
+ KigDocument.close()
+Resa inutile la chiamata a kigopen()
+Aggiunte le due funzioni noaxes() e nogrid()
+Riuniti una sequenza di comandi nella funzione main() che viene eseguita
+ quando pykig viene chiamato come programma.
+Modificata la costruzione di alcuni oggetti: dove è richiesto un punto di tipo
+ internal si può passare una tupla con le due coordinate.
+Modificati gli esempi in modo da farli funzionere con le nuove 
+ caratteristiche.
