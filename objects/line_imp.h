@@ -162,6 +162,13 @@ public:
   const Coordinate getPoint( double param, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
+  const uint numberOfProperties() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
+  ObjectImp* property( uint which, const KigDocument& d ) const;
+  const char* iconForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
+
   RayImp* copy() const;
 
   const ObjectImpType* type() const;

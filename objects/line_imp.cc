@@ -101,7 +101,7 @@ const QByteArrayList AbstractLineImp::properties() const
 
 const uint SegmentImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 4;
+  return Parent::numberOfProperties() + 5;
 }
 
 const QByteArrayList SegmentImp::propertiesInternalNames() const
@@ -109,6 +109,7 @@ const QByteArrayList SegmentImp::propertiesInternalNames() const
   QByteArrayList s = Parent::propertiesInternalNames();
   s << "length";
   s << "mid-point";
+  s << "support";
   s << "end-point-A";
   s << "end-point-B";
   assert( s.size() == SegmentImp::numberOfProperties() );
@@ -120,6 +121,7 @@ const QByteArrayList SegmentImp::properties() const
   QByteArrayList s = Parent::properties();
   s << I18N_NOOP( "Length" );
   s << I18N_NOOP( "Mid Point" );
+  s << I18N_NOOP( "Support Line" );
   s << I18N_NOOP( "First End Point" );
   s << I18N_NOOP( "Second End Point" );
   assert( s.size() == SegmentImp::numberOfProperties() );
@@ -143,6 +145,8 @@ const char* SegmentImp::iconForProperty( uint which ) const
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return "segment_midpoint"; // mid point
   else if ( which == Parent::numberOfProperties() + pnum++ )
+    return ""; // support line
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return "endpoint1"; // mid point
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return "endpoint2"; // mid point
@@ -161,9 +165,68 @@ ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return new PointImp( ( mdata.a + mdata.b ) / 2 );
   else if ( which == Parent::numberOfProperties() + pnum++ )
+    return new LineImp( mdata.a, mdata.b );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return new PointImp( mdata.a );
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return new PointImp( mdata.b );
+  else assert( false );
+  return new InvalidImp;
+}
+
+const uint RayImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties() + 2;
+}
+
+const QByteArrayList RayImp::propertiesInternalNames() const
+{
+  QByteArrayList s = Parent::propertiesInternalNames();
+  s << "support";
+  s << "end-point-A";
+  assert( s.size() == RayImp::numberOfProperties() );
+  return s;
+}
+
+const QByteArrayList RayImp::properties() const
+{
+  QByteArrayList s = Parent::properties();
+  s << I18N_NOOP( "Support Line" );
+  s << I18N_NOOP( "End Point" );
+  assert( s.size() == RayImp::numberOfProperties() );
+  return s;
+}
+
+const ObjectImpType* RayImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return RayImp::stype();
+}
+
+const char* RayImp::iconForProperty( uint which ) const
+{
+  int pnum = 0;
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return ""; // support line
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return "endpoint1"; // end point
+  else assert( false );
+  return "";
+}
+
+ObjectImp* RayImp::property( uint which, const KigDocument& w ) const
+{
+  int pnum = 0;
+
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return new LineImp( mdata.a, mdata.b );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return new PointImp( mdata.a );
   else assert( false );
   return new InvalidImp;
 }
