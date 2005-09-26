@@ -61,4 +61,22 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * a conic arc by a start point, an intermediate point, an end point and
+ * the conic center
+ */
+class ConicArcBTPCType
+  : public ArgsParserObjectType
+{
+  typedef ArgsParserObjectType Parent;
+  ConicArcBTPCType();
+  ~ConicArcBTPCType();
+public:
+  static const ConicArcBTPCType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+
+  const ObjectImpType* resultId() const;
+};
+
 #endif

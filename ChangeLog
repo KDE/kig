@@ -34,6 +34,18 @@
 	* Dropped the compatibility with KDE 3.x, as it will be
 	impossbile to keep it.
 
+2005-08-13  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Arc of conics are implemented as a new graphic object
+	(inherited from ConicImp).  There is only one construction
+	for them right now: Construct the conic arc with given endpoints,
+	a "through" point and the conic center.
+	Projective transformations are implemented and a circular arc
+	can now be transformed with a generic affine or projective
+	transformation.
+	Three properties are implemented: supporting conic, first end-point
+	and second end-point.
+
 	* Make the painting system working again.
 
 	* Getting rid of some Q3* classes such as Q3PointArray and some

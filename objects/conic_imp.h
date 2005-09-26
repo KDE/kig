@@ -67,6 +67,11 @@ public:
   double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;
 
+  // getPoint and getParam do not really need the KigDocument arg...
+
+  double getParam( const Coordinate& point ) const;
+  const Coordinate getPoint( double param ) const;
+
   // information about ourselves..  These are all virtual, because a
   // trivial subclass like CircleImp can override these with trivial
   // versions..
@@ -127,6 +132,7 @@ public:
 class ConicImpCart
   : public ConicImp
 {
+protected:
   ConicCartesianData mcartdata;
   ConicPolarData mpolardata;
 public:
@@ -139,7 +145,7 @@ public:
 };
 
 /**
- * An implementation of ConicImp to be used when only the cartesian
+ * An implementation of ConicImp to be used when only the polar
  * equation of the conic is known.
  */
 class ConicImpPolar
@@ -152,6 +158,65 @@ public:
   ConicImpPolar* copy() const;
 
   const ConicPolarData polarData() const;
+};
+
+/**
+ * A conic arc, which is given by the cartesian equation and two angles
+ */
+class ConicArcImp
+  : public ConicImpCart
+{
+  double msa;
+  double ma;
+public:
+  typedef CurveImp Parent;
+  /**
+   * Returns the ObjectImpType representing the ConicImp type.
+   */
+  static const ObjectImpType* stype();
+  /**
+   * Construct a Conic Arc with given cartesian equation, start angle and
+   * dimension (both in radians).
+   */
+  ConicArcImp( const ConicCartesianData& data,
+               const double startangle, const double angle );
+  ~ConicArcImp();
+
+  ConicArcImp* copy() const;
+
+  ObjectImp* transform( const Transformation& t ) const;
+
+  const uint numberOfProperties() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
+  ObjectImp* property( uint which, const KigDocument& w ) const;
+  const char* iconForProperty( uint which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+
+  double getParam( const Coordinate& point, const KigDocument& ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const;
+
+  double getParam( const Coordinate& point ) const;
+  const Coordinate getPoint( double param ) const;
+
+  /**
+   * Set the start angle in radians of this arc.
+   */
+  void setStartAngle( double sa ) { msa = sa; };
+  /**
+   * Set the dimension in radians of this arc.
+   */
+  void setAngle( double a ) { ma = a; };
+  /**
+   * Return the start point of this arc.
+   */
+  Coordinate firstEndPoint() const;
+  /**
+   * Return the end point of this arc.
+   */
+  Coordinate secondEndPoint() const;
+
+  const ObjectImpType* type() const;
 };
 
 #endif

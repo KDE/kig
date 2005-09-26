@@ -135,6 +135,11 @@ ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
 
 double ConicImp::getParam( const Coordinate& p, const KigDocument& ) const
 {
+  return getParam( p );
+}
+
+double ConicImp::getParam( const Coordinate& p ) const
+{
   const ConicPolarData d = polarData();
   Coordinate tmp = p - d.focus1;
   double l = tmp.length();
@@ -161,6 +166,11 @@ double ConicImp::getParam( const Coordinate& p, const KigDocument& ) const
 }
 
 const Coordinate ConicImp::getPoint( double p, const KigDocument& ) const
+{
+  return getPoint( p );
+}
+
+const Coordinate ConicImp::getPoint( double p ) const
 {
   const ConicPolarData d = polarData();
 
@@ -383,3 +393,191 @@ Rect ConicImp::surroundingRect() const
 
   return Rect::invalidRect();
 }
+
+/* An arc of a conic is identified by a startangle and a size (angle);
+ * both angles are measured with respect to the first focus of the conic
+ * (the one used for the conic polar equation
+ */
+
+ConicArcImp::ConicArcImp( const ConicCartesianData& data,
+                  const double startangle, const double angle )
+  : ConicImpCart( data ), msa( startangle ), ma( angle )
+{
+}
+
+ConicArcImp::~ConicArcImp()
+{
+}
+
+ConicArcImp* ConicArcImp::copy() const
+{
+  return new ConicArcImp( mcartdata, msa, ma );
+}
+
+ObjectImp* ConicArcImp::transform( const Transformation& t ) const
+{
+  bool valid = true;
+  ConicCartesianData d = calcConicTransformation( cartesianData(), t, valid );
+  if ( ! valid ) return new InvalidImp;
+  ConicArcImp* result = new ConicArcImp( d, 0.0, 2*M_PI );
+
+  Coordinate a = t.apply( getPoint ( 0. ) );
+  Coordinate b = t.apply( getPoint( 0.5 ) );
+  Coordinate c = t.apply( getPoint( 1. ) );
+  double anglea = 2*M_PI*result->getParam( a );
+  double angleb = 2*M_PI*result->getParam( b );
+  double anglec = 2*M_PI*result->getParam( c );
+  double startangle = 0.;
+  double angle = 2*M_PI;
+  // anglea should be smaller than anglec
+  if ( anglea > anglec )
+  {
+    double t = anglea;
+    anglea = anglec;
+    anglec = t;
+  };
+  if ( angleb > anglec || angleb < anglea )
+  {
+    startangle = anglec;
+    angle = 2 * M_PI + anglea - startangle;
+  }
+  else
+  {
+    startangle = anglea;
+    angle = anglec - anglea;
+  };
+
+  result->setStartAngle( startangle );
+  result->setAngle( angle );
+  return result;
+}
+
+const uint ConicArcImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties() + 3;
+}
+
+const QByteArrayList ConicArcImp::properties() const
+{
+  QByteArrayList ret = Parent::properties();
+  ret << I18N_NOOP( "Supporting Conic" );
+  ret << I18N_NOOP( "First End Point" );
+  ret << I18N_NOOP( "Second End Point" );
+  assert( ret.size() == ConicArcImp::numberOfProperties() );
+  return ret;
+}
+
+const QByteArrayList ConicArcImp::propertiesInternalNames() const
+{
+  QByteArrayList ret = Parent::propertiesInternalNames();
+  ret << "support";
+  ret << "end-point-A";
+  ret << "end-point-B";
+  return ret;
+}
+
+const char* ConicArcImp::iconForProperty( uint which ) const
+{
+  int numprop = 0;
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return "";
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return "";
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return "";
+  else assert( false );
+  return "";
+}
+
+ObjectImp* ConicArcImp::property( uint which, const KigDocument& d ) const
+{
+  int numprop = 0;
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, d );
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return new ConicImpCart( cartesianData() );
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return new PointImp( firstEndPoint());
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return new PointImp( secondEndPoint());
+  else return new InvalidImp;
+  return new InvalidImp;
+}
+
+bool ConicArcImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  int pnum = 0;
+
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;  // support
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;   // first end-point
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;   // second end-point
+  else return false;
+  return false;
+}
+
+Coordinate ConicArcImp::firstEndPoint() const
+{
+  return getPoint( 0. );
+}
+
+Coordinate ConicArcImp::secondEndPoint() const
+{
+  return getPoint( 1. );
+}
+
+const ObjectImpType* ConicArcImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "conic arc",
+    I18N_NOOP( "conic arc" ),
+    I18N_NOOP( "Select this conic arc" ),
+    I18N_NOOP( "Select conic arc %1" ),
+    I18N_NOOP( "Remove a Conic Arc" ),
+    I18N_NOOP( "Add a Conic Arc" ),
+    I18N_NOOP( "Move a Conic Arc" ),
+    I18N_NOOP( "Attach to this conic arc" ),
+    I18N_NOOP( "Show a Conic Arc" ),
+    I18N_NOOP( "Hide a Conic Arc" )
+    );
+  return &t;
+}
+
+const ObjectImpType* ConicArcImp::type() const
+{
+  return ConicArcImp::stype();
+}
+
+double ConicArcImp::getParam( const Coordinate& p, const KigDocument& ) const
+{
+  return getParam( p );
+}
+
+double ConicArcImp::getParam( const Coordinate& p ) const
+{
+  double thetarel = 2 * M_PI * ConicImpCart::getParam( p ) - msa;
+  while ( thetarel < 0 ) thetarel += 2 * M_PI;
+  if ( thetarel <= ma ) return ( thetarel / ma );
+
+  double antipodo = ( 2 * M_PI + ma )/2;
+  if ( thetarel < antipodo ) return (1.0);
+  return (0.0);
+}
+
+const Coordinate ConicArcImp::getPoint( double p, const KigDocument& ) const
+{
+  return getPoint( p );
+}
+
+const Coordinate ConicArcImp::getPoint( double p ) const
+{
+  double pwide = ( p * ma + msa )/ (2*M_PI);
+  return ConicImpCart::getPoint( pwide );
+}
+

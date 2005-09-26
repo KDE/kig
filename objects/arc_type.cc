@@ -20,6 +20,7 @@
 #include "bogus_imp.h"
 #include "other_imp.h"
 #include "point_imp.h"
+#include "conic_imp.h"
 #include "line_imp.h"
 #include "locus_imp.h"
 
@@ -37,6 +38,10 @@
 using std::find;
 
 #include <qstringlist.h>
+
+/*
+ * arc by three points
+ */
 
 static const char constructarcstartingstat[] = I18N_NOOP( "Construct an arc starting at this point" );
 
@@ -140,6 +145,10 @@ const ObjectImpType* ArcBTPType::resultId() const
   return ArcImp::stype();
 }
 
+/*
+ * arc by center, starting point and angle
+ */
+
 static const ArgsParser::spec argsspecArcBCPA[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct an arc with this center" ),
@@ -197,3 +206,101 @@ const ObjectImpType* ArcBCPAType::resultId() const
 {
   return ArcImp::stype();
 }
+
+/*
+ * arc of conic by three points and center
+ */
+
+static const char constructconicarcstartingstat[] = I18N_NOOP( "Construct a conic arc starting at this point" );
+
+static const ArgsParser::spec argsspecConicArcBTPC[] =
+{
+  { PointImp::stype(), constructconicarcstartingstat,
+    I18N_NOOP( "Select the start point of the new conic arc..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct a conic arc through this point" ),
+    I18N_NOOP( "Select a point for the new conic arc to go through..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct a conic arc ending at this point" ),
+    I18N_NOOP( "Select the end point of the new conic arc..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct an conic arc with this center" ),
+    I18N_NOOP( "Select the center of the new conic arc..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicArcBTPCType )
+
+ConicArcBTPCType::ConicArcBTPCType()
+  : ArgsParserObjectType( "ConicArcBTPC", argsspecConicArcBTPC, 4 )
+{
+}
+
+ConicArcBTPCType::~ConicArcBTPCType()
+{
+}
+
+const ConicArcBTPCType* ConicArcBTPCType::instance()
+{
+  static const ConicArcBTPCType t;
+  return &t;
+}
+
+ObjectImp* ConicArcBTPCType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) )
+    return new InvalidImp;
+
+  const Coordinate a =
+    static_cast<const PointImp*>( args[0] )->coordinate();
+  const Coordinate b =
+    static_cast<const PointImp*>( args[1] )->coordinate();
+  const Coordinate c =
+    static_cast<const PointImp*>( args[2] )->coordinate();
+  const Coordinate center =
+    static_cast<const PointImp*>( args[3] )->coordinate();
+  const Coordinate d = 2*center - a;
+  const Coordinate e = 2*center - c;
+
+  std::vector<Coordinate> points;
+  points.push_back( a );
+  points.push_back( b );
+  points.push_back( c );
+  points.push_back( d );
+  points.push_back( e );
+  ConicCartesianData cart =
+    calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry );
+  if ( ! d.valid() )
+    return new InvalidImp;
+
+  ConicArcImp *me = new ConicArcImp( cart, 0.0, 2*M_PI );
+  double angle = 0.;
+  double startangle = 0.;
+  double anglea = 2*M_PI*me->getParam( a );
+  double angleb = 2*M_PI*me->getParam( b );
+  double anglec = 2*M_PI*me->getParam( c );
+
+  // anglea should be smaller than anglec
+  if ( anglea > anglec )
+  {
+    double t = anglea;
+    anglea = anglec;
+    anglec = t;
+  };
+  if ( angleb > anglec || angleb < anglea )
+  {
+    startangle = anglec;
+    angle = 2 * M_PI + anglea - startangle;
+  }
+  else
+  {
+    startangle = anglea;
+    angle = anglec - anglea;
+  };
+
+  me->setStartAngle( startangle );
+  me->setAngle( angle );
+  return me;
+}
+
+const ObjectImpType* ConicArcBTPCType::resultId() const
+{
+  return ConicArcImp::stype();
+}
+
