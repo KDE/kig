@@ -8,7 +8,7 @@
 #
 # (licenza GPL)
 
-version="0.2.9"
+version="0.2.11"
 
 #####
 # Type constant
@@ -588,14 +588,14 @@ objects=(\
                     "point, circle,", "(point, circle),"),
 ("CircularInversion", "CircularInversion",
                     "objecttoinvert, circle,", "(objecttoinvert, circle),"),
-##("InvertLine",      "InvertLine",
-##                    "line, circle,", "(line, circle),"),
-##("InvertCircle",    "InvertCircle",
-##                    "circletoinvert, circle,", "(circletoinvert, circle),"),
-##("InvertArc",       "InvertArc",
-##                    "arctoinvert, circle,", "(arctoinvert, circle),"),
-##("InvertSegment",   "InvertSegment",
-##                    "segment, circle,", "(segment, circle),"),
+("InvertLine",      "InvertLine",
+                    "line, circle,", "(line, circle),"),
+("InvertCircle",    "InvertCircle",
+                    "circletoinvert, circle,", "(circletoinvert, circle),"),
+("InvertArc",       "InvertArc",
+                    "arctoinvert, circle,", "(arctoinvert, circle),"),
+("InvertSegment",   "InvertSegment",
+                    "segment, circle,", "(segment, circle),"),
 ###### Text, Label, ...
 ("Text",            "Label",
                     "point, string, boxed=0,",
@@ -679,12 +679,13 @@ for p in property:
 #####
 # da sistemare!
 points  =(Point, ConstrainedPoint, RelativePoint, PolygonVertex)
-segments=(Segment, Ray, Vector, PolygonSide)
+lines=(Segment, Ray, Vector, InvertLine)
+segments=(Segment, Vector, PolygonSide, InvertSegment)
 circles =(Circle, CircleBy3Points, CircularInversion, ArcBy3Points,
-          ArcByCenterPointAngle)
+          ArcByCenterPointAngle, InvertCircle)
 polygons=(Polygon, PolygonBCV, Triangle)
 angles  =(Angle,)
-supp    = circles+segments
+supp    = circles+lines
 
 methods=(\
 ("coordinate", "coordinate", points),
@@ -694,8 +695,8 @@ methods=(\
 ("end-point-A", "endpointA", segments),
 ("end-point-B", "endpointB", segments),
 ("length", "length", segments),
-("equation", "equation", segments),
-("slope", "slope", segments),
+("equation", "equation", lines),
+("slope", "slope", lines),
 ("polygon-number-of-sides", "numofsides", polygons),
 ("polygon-perimeter", "perimeter", polygons),
 ("polygon-surface", "surface", polygons),

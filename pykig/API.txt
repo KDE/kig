@@ -171,7 +171,11 @@ Scale(object,center, segment)             The length of the segment is the
 Scale2(object, center, s1, s2)            The ratio of the lengths of s1 and
                                           s2 is the scaling ratio
 InvertPoint(point, circle)                Circular invertion of: a point
-CircularInversion(object, circle)              ... an other object 
+InvertLine(line, circle)                 ... an other object 
+InvertCircle(circle, circle)
+InvertArc(arc, circle)
+InvertSegment(segment, circle)
+CircularInversion(object, circle)
 
 -------------------------------------------------------------------------------
 
