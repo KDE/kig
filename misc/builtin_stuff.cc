@@ -214,6 +214,14 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_cubiccuspb4p" ) );
 
     c = new SimpleObjectTypeConstructor(
+      VerticalCubicB4PType::instance(),
+      I18N_NOOP( "Vertical Cubic by Four Points" ),
+      I18N_NOOP( "A vertical cubic curve through four points" ),
+      "verticalcubicb4p" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_verticalcubicb4p" ) );
+
+    c = new SimpleObjectTypeConstructor(
       ConicDirectrixType::instance(),
       I18N_NOOP( "Directrix of a Conic" ),
       I18N_NOOP( "The directrix line of a conic." ),
