@@ -111,7 +111,7 @@ class KigPrintDialogPage
   : public KPrintDialogPage
 {
 public:
-  KigPrintDialogPage( QWidget* parent = 0, const char* name = 0 );
+  KigPrintDialogPage( QWidget* parent = 0 );
   ~KigPrintDialogPage();
 
   void getOptions( QMap<QString,QString>& opts, bool );
@@ -123,8 +123,8 @@ private:
   QCheckBox *showaxes;
 };
 
-KigPrintDialogPage::KigPrintDialogPage( QWidget* parent, const char* name )
- : KPrintDialogPage( parent, name )
+KigPrintDialogPage::KigPrintDialogPage( QWidget* parent )
+ : KPrintDialogPage( parent )
 {
   setTitle( i18n( "Kig Options" ) );
 
