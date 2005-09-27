@@ -19,6 +19,18 @@
 
 #include <iostream>
 #include <string>
+
+// FIXME!!! (paolini@dmf.unicatt.it)
+// in the new qt4 includes there is a weird definition of "slots" which
+// clashes badly with code in "pytho2.4/object.h":
+//   .../python2.4/object.h:343: error: expected unqualified-id before ";" token
+// such definition of "slots" is precisely located in
+//   $QTDIR/include/Qt/qobjectdefs.h and $QTDIR/include/QtCore/qobjectdefs.h
+// (the two files are identical!) at line #43
+// for now I will just "#undef slots"
+#undef slots
+//
+
 #include <Python.h>
 #include <boost/python.hpp>
 #include <boost/mpl/bool.hpp>
