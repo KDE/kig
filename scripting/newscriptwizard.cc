@@ -23,21 +23,20 @@
 #include <qlabel.h>
 #include <qlayout.h>
 
-//#include <kactionclasses.h>
-//#include <kactioncollection.h>
-// make it still work on old kde 3.1...
 #include <kaction.h>
-//
+#include <kactioncollection.h>
 #include <kapplication.h>
 #include <kglobalsettings.h>
 #include <kpopupmenu.h>
 #include <ktextedit.h>
+#if 0
 #include <ktexteditor/clipboardinterface.h>
 #include <ktexteditor/dynwordwrapinterface.h>
-#include <ktexteditor/editinterface.h>
-#include <ktexteditor/editorchooser.h>
-#include <ktexteditor/popupmenuinterface.h>
+#endif
+#include <ktexteditor/editor.h>
+#if 0
 #include <ktexteditor/undointerface.h>
+#endif
 #include <ktexteditor/view.h>
 
 #include <assert.h>
@@ -50,22 +49,28 @@ NewScriptWizard::~NewScriptWizard()
   }
   else
   {
+#if 0
     //restoring the state of the dynamic word wrap
     dynamic_cast<KTextEditor::DynWordWrapInterface*>( editor )->setDynWordWrap( prevDynWordWrap );
-    delete editor->document();
+#endif
+    delete document;
   }
 }
 
 NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
   : NewScriptWizardBase( parent, "New Script Wizard" ),
-    mmode( mode )
+    mmode( mode ), textedit( 0 ), document( 0 ), hli( 0 ), docview( 0 )
 {
-  document = KTextEditor::EditorChooser::createDocument( 0, "KTextEditor::Document" );
-//  document = 0;
+//  document = KTextEditor::EditorChooser::createDocument( 0, "KTextEditor::Document" );
+#if 0
+  KTextEditor::Editor* editor = KTextEditor::editor( "katepart" );
+  kdDebug() << "EDITOR: " << editor << endl;
+#endif
+  KTextEditor::Editor* editor = 0;
 
   gridLayout->expand( 2, 1 );
 
-  if ( !document )
+  if ( !editor )
   {
     // there is no KDE textditor component installed, so we'll use a
     // simplier KTextEdit
@@ -75,28 +80,50 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
   }
   else
   {
-    // creating the 'view', hat is what the user see and interact with
-    editor = document->createView( mpcode, "editor" );
-    gridLayout->addWidget( editor, 1, 0 );
+    document = editor->createDocument( 0 );
+    // creating the 'view', that is what the user see and interact with
+    docview = dynamic_cast<KTextEditor::View*>( document->createView( mpcode ) );
+
+    gridLayout->addWidget( docview, 1, 0 );
 
     // casting to the interfaces we'll use often
     hli = dynamic_cast<KTextEditor::HighlightingInterface*>( document );
 
     // displaying the left border with line numbers
-    KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("view_line_numbers") );
+    KToggleAction *a = dynamic_cast<KToggleAction*>( document->actionCollection()->action( "view_line_numbers" ) );
     a->activate();
 
+#if 0
     // saving the state of dynamic word wrap and disabling it
     prevDynWordWrap = dynamic_cast<KTextEditor::DynWordWrapInterface*>( editor )->dynWordWrap();
     dynamic_cast<KTextEditor::DynWordWrapInterface*>( editor )->setDynWordWrap( false );
+#endif
 
     // saving the "no highlight" id
     noHlStyle = hli->hlMode();
 
     // creating the popup menu
-    KPopupMenu* pm = new KPopupMenu( editor );
-    // creating the actions for the code editor...
-    KActionCollection* ac = new KActionCollection( editor );
+    KPopupMenu* pm = new KPopupMenu( docview );
+    // creating the actions for the code editor and plugging them into
+    // the popup menu (to build it, of course :) )
+    KAction* act = document->actionCollection()->action( "edit_undo" );
+    connect( act, SIGNAL( activated() ), this, SLOT( slotUndo() ) );
+    act->plug( pm );
+    act = document->actionCollection()->action( "edit_redo" );
+    connect( act, SIGNAL( activated() ), this, SLOT( slotRedo() ) );
+    act->plug( pm );
+    act = document->actionCollection()->action( "edit_cut" );
+    connect( act, SIGNAL( activated() ), this, SLOT( slotCut() ) );
+    act->plug( pm );
+    act = document->actionCollection()->action( "edit_copy" );
+    connect( act, SIGNAL( activated() ), this, SLOT( slotCopy() ) );
+    act->plug( pm );
+    act = document->actionCollection()->action( "edit_paste" );
+    connect( act, SIGNAL( activated() ), this, SLOT( slotPaste() ) );
+    act->plug( pm );
+
+#if 0
+    KActionCollection* ac = new KActionCollection( document );
     KAction* undoAction = KStdAction::undo( this, SLOT( slotUndo() ), ac );
     KAction* redoAction = KStdAction::redo( this, SLOT( slotRedo() ), ac );
     KAction* cutAction = KStdAction::cut( this, SLOT( slotCut() ), ac );
@@ -109,9 +136,10 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
     cutAction->plug( pm );
     copyAction->plug( pm );
     pasteAction->plug( pm );
+#endif
 
     // finally, we install the popup menu
-    dynamic_cast<KTextEditor::PopupMenuInterface*>( editor )->installPopup( pm );
+    docview->setContextMenu( pm );
   }
 
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelpClicked() ) );
@@ -140,7 +168,7 @@ void NewScriptWizard::next()
   }
   else
   {
-    editor->setFocus();
+    docview->setFocus();
   }
   NewScriptWizardBase::next();
 }
@@ -171,7 +199,7 @@ void NewScriptWizard::setText( const QString& text )
   }
   else
   {
-    dynamic_cast<KTextEditor::EditInterface*>( document )->setText( text );
+    document->setText( text );
   }
 }
 
@@ -183,7 +211,7 @@ QString NewScriptWizard::text()
   }
   else
   {
-    return dynamic_cast<KTextEditor::EditInterface*>( document )->text();
+    return document->text();
   }
 }
 
@@ -214,21 +242,31 @@ void NewScriptWizard::setType( ScriptType::Type type )
 
 void NewScriptWizard::slotUndo()
 {
+#if 0
   dynamic_cast<KTextEditor::UndoInterface*>( document )->undo();
+#endif
 }
 
 void NewScriptWizard::slotRedo() {
+#if 0
   dynamic_cast<KTextEditor::UndoInterface*>( document )->redo();
+#endif
 }
 
 void NewScriptWizard::slotCut() {
+#if 0
   dynamic_cast<KTextEditor::ClipboardInterface*>( editor )->cut();
+#endif
 }
 
 void NewScriptWizard::slotCopy() {
+#if 0
   dynamic_cast<KTextEditor::ClipboardInterface*>( editor )->copy();
+#endif
 }
 
 void NewScriptWizard::slotPaste() {
+#if 0
   dynamic_cast<KTextEditor::ClipboardInterface*>( editor )->paste();
+#endif
 }

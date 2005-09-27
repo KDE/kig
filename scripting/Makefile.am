@@ -14,7 +14,7 @@ libscripting_la_SOURCES = \
 	script_mode.cc \
 	newscriptwizardbase.ui \
 	newscriptwizard.cc
-libscripting_la_LIBADD = $(BOOST_PYTHON_LIBS) $(PYTHON_LIBS) -lkatepartinterfaces
+libscripting_la_LIBADD = $(BOOST_PYTHON_LIBS) $(PYTHON_LIBS) -lktexteditor -lkdocument
 libscripting_la_LDFLAGS = $(all_libraries) $(PYTHON_LDFLAGS)
 METASOURCES=AUTO
 

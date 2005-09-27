@@ -28,6 +28,7 @@
 #include "../objects/bogus_imp.h"
 #include "../objects/object_imp.h"
 
+#include <qbytearray.h>
 #include <qlabel.h>
 
 #include <kcursor.h>
@@ -193,13 +194,13 @@ bool ScriptMode::queryFinish()
   if ( reto->imp()->inherits( InvalidImp::stype() ) )
   {
     PythonScripter* inst = PythonScripter::instance();
-    QCString errtrace = inst->lastErrorExceptionTraceback().c_str();
+    QByteArray errtrace = inst->lastErrorExceptionTraceback().c_str();
     if ( inst->errorOccurred() )
     {
       KMessageBox::detailedSorry(
         mwizard, i18n( "The Python interpreter caught an error during the execution of your "
                        "script. Please fix the script and click the Finish button again." ),
-        i18n( "The Python Interpreter generated the following error output:\n%1").arg( errtrace ) );
+        i18n( "The Python Interpreter generated the following error output:\n%1").arg( QString( errtrace ) ) );
     }
     else
     {

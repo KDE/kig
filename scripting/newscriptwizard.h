@@ -63,7 +63,7 @@ protected:
   KTextEdit* textedit;
   KTextEditor::Document* document;
   KTextEditor::HighlightingInterface* hli;
-  KTextEditor::View* editor;
+  KTextEditor::View* docview;
 
   uint noHlStyle;
   bool prevDynWordWrap;
