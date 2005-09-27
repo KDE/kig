@@ -112,7 +112,7 @@ bool CircleImp::valid() const
   return true;
 }
 
-const uint CircleImp::numberOfProperties() const
+const int CircleImp::numberOfProperties() const
 {
   // We _intentionally_ do not use the Conic properties..
   return CurveImp::numberOfProperties() + 7;
@@ -146,14 +146,14 @@ const QByteArrayList CircleImp::properties() const
   return l;
 }
 
-const ObjectImpType* CircleImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* CircleImp::impRequirementForProperty( int which ) const
 {
   if ( which < CurveImp::numberOfProperties() )
     return CurveImp::impRequirementForProperty( which );
   else return CircleImp::stype();
 }
 
-const char* CircleImp::iconForProperty( uint which ) const
+const char* CircleImp::iconForProperty( int which ) const
 {
   assert( which < CircleImp::numberOfProperties() );
   if ( which < CurveImp::numberOfProperties() )
@@ -176,7 +176,7 @@ const char* CircleImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* CircleImp::property( uint which, const KigDocument& w ) const
+ObjectImp* CircleImp::property( int which, const KigDocument& w ) const
 {
   assert( which < CircleImp::numberOfProperties() );
   if ( which < CurveImp::numberOfProperties() )
@@ -334,7 +334,7 @@ const ObjectImpType* CircleImp::type() const
   return CircleImp::stype();
 }
 
-bool CircleImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool CircleImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   assert( which < CircleImp::numberOfProperties() );
   if ( which < CurveImp::numberOfProperties() )

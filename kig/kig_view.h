@@ -107,7 +107,6 @@ public:
   KigWidget( KigPart* doc,
              KigView* view,
              QWidget* parent = 0,
-             const char* name = 0,
              bool fullscreen = false
 	   );
   ~KigWidget();
@@ -246,9 +245,8 @@ class KigView
 public:
   KigView( KigPart* part,
            bool fullscreen = false,
-	   QWidget* parent = 0,
-	   const char* name = 0
-	   );
+           QWidget* parent = 0
+          );
   ~KigView();
 
   void setupActions();

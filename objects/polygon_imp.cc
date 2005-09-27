@@ -202,7 +202,7 @@ bool PolygonImp::valid() const
   return true;
 }
 
-const uint PolygonImp::numberOfProperties() const
+const int PolygonImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 5;
 }
@@ -231,14 +231,14 @@ const QByteArrayList PolygonImp::properties() const
   return l;
 }
 
-const ObjectImpType* PolygonImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* PolygonImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return PolygonImp::stype();
 }
 
-const char* PolygonImp::iconForProperty( uint which ) const
+const char* PolygonImp::iconForProperty( int which ) const
 {
   assert( which < PolygonImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )
@@ -257,7 +257,7 @@ const char* PolygonImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* PolygonImp::property( uint which, const KigDocument& w ) const
+ObjectImp* PolygonImp::property( int which, const KigDocument& w ) const
 {
   assert( which < PolygonImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )
@@ -398,7 +398,7 @@ const ObjectImpType* PolygonImp::type() const
   return PolygonImp::stype();
 }
 
-bool PolygonImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool PolygonImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   assert( which < PolygonImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )

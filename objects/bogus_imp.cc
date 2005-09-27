@@ -326,7 +326,7 @@ bool TestResultImp::equals( const ObjectImp& rhs ) const
 
 }
 
-const uint TestResultImp::numberOfProperties() const
+const int TestResultImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }
@@ -347,7 +347,7 @@ const QByteArrayList TestResultImp::propertiesInternalNames() const
   return s;
 }
 
-ObjectImp* TestResultImp::property( uint which, const KigDocument& d ) const
+ObjectImp* TestResultImp::property( int which, const KigDocument& d ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, d );
@@ -357,7 +357,7 @@ ObjectImp* TestResultImp::property( uint which, const KigDocument& d ) const
   return new InvalidImp;
 }
 
-const char* TestResultImp::iconForProperty( uint which ) const
+const char* TestResultImp::iconForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
@@ -367,14 +367,14 @@ const char* TestResultImp::iconForProperty( uint which ) const
   return "";
 }
 
-const ObjectImpType* TestResultImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* TestResultImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return TestResultImp::stype();
 }
 
-bool TestResultImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool TestResultImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );

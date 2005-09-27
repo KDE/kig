@@ -55,7 +55,7 @@ const QByteArrayList ObjectImp::properties() const
   return ret;
 }
 
-const uint ObjectImp::numberOfProperties() const
+const int ObjectImp::numberOfProperties() const
 {
   return 1;
 }
@@ -67,13 +67,13 @@ const QByteArrayList ObjectImp::propertiesInternalNames() const
   return ret;
 }
 
-ObjectImp* ObjectImp::property( uint i, const KigDocument& ) const
+ObjectImp* ObjectImp::property( int i, const KigDocument& ) const
 {
   if ( i == 0 ) return new StringImp( type()->translatedName() );
   return new InvalidImp;
 }
 
-const ObjectImpType* ObjectImp::impRequirementForProperty( uint ) const
+const ObjectImpType* ObjectImp::impRequirementForProperty( int ) const
 {
   return ObjectImp::stype();
 }
@@ -168,7 +168,7 @@ void ObjectImpVisitor::visit( const TestResultImp* )
 {
 }
 
-const char* ObjectImp::iconForProperty( uint ) const
+const char* ObjectImp::iconForProperty( int ) const
 {
   return "kig_text";
 }
@@ -301,7 +301,7 @@ QString ObjectImpType::hideAStatement() const
   return i18n( mhideastatement );
 }
 
-bool ObjectImp::isPropertyDefinedOnOrThroughThisImp( uint ) const
+bool ObjectImp::isPropertyDefinedOnOrThroughThisImp( int ) const
 {
   return false;
 }

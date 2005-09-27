@@ -55,9 +55,8 @@ kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
 KigWidget::KigWidget( KigPart* part,
                       KigView* view,
                       QWidget* parent,
-                      const char* name,
                       bool fullscreen )
-  : QWidget( parent, name,
+  : QWidget( parent,
              fullscreen ? Qt::WStyle_Customize | Qt::WStyle_NoBorder : (Qt::WFlags)0 ),
     mpart( part ),
     mview( view ),
@@ -83,10 +82,13 @@ KigWidget::~KigWidget()
   mpart->delWidget( this );
 }
 
-void KigWidget::paintEvent(QPaintEvent*)
+void KigWidget::paintEvent(QPaintEvent* e)
 {
   mispainting = true;
-  updateEntireWidget();
+//  updateEntireWidget();
+  std::vector<QRect> overlay;
+  overlay.push_back( e->rect() );
+  updateWidget( overlay );
 }
 
 void KigWidget::mousePressEvent (QMouseEvent* e)
@@ -303,9 +305,8 @@ void KigWidget::updateScrollBars()
 
 KigView::KigView( KigPart* part,
                   bool fullscreen,
-                  QWidget* parent,
-                  const char* name )
-  : QWidget( parent, name ),
+                  QWidget* parent )
+  : QWidget( parent ),
     mlayout( 0 ), mrightscroll( 0 ), mbottomscroll( 0 ),
     mupdatingscrollbars( false ),
     mrealwidget( 0 ), mpart( part )
@@ -325,7 +326,8 @@ KigView::KigView( KigPart* part,
            this, SLOT( slotBottomScrollValueChanged( int ) ) );
   connect( mbottomscroll, SIGNAL( sliderReleased() ),
            this, SLOT( updateScrollBars() ) );
-  mrealwidget = new KigWidget( part, this, this, "Kig Widget", fullscreen );
+  mrealwidget = new KigWidget( part, this, this, fullscreen );
+  mrealwidget->setObjectName( "Kig Widget" );
   mlayout->addWidget( mbottomscroll, 1, 0 );
   mlayout->addWidget( mrealwidget, 0, 0 );
   mlayout->addWidget( mrightscroll, 0, 1 );

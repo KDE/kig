@@ -281,7 +281,7 @@ public:
    */
   bool valid() const;
 
-  virtual const uint numberOfProperties() const;
+  virtual const int numberOfProperties() const;
   // the names of the properties as perceived by the user..  put
   // I18N_NOOP's around them here..
   virtual const QByteArrayList properties() const;
@@ -289,17 +289,17 @@ public:
   // need for I18N_NOOP.  Preferably choose some lowercase name with
   // only letters and dashes, no spaces..
   virtual const QByteArrayList propertiesInternalNames() const;
-  virtual ObjectImp* property( uint which, const KigDocument& d ) const;
+  virtual ObjectImp* property( int which, const KigDocument& d ) const;
   // Sometimes we need to know which type an imp needs to be at least
   // in order to have the imp with number which.  Macro's need it
   // foremost.  This function answers that question..
-  virtual const ObjectImpType* impRequirementForProperty( uint which ) const;
+  virtual const ObjectImpType* impRequirementForProperty( int which ) const;
   // Return whether the property with number which is by construction
   // always a point on this curve ( if this is a curve ), or always a
   // curve through this point ( if this is a curve ).
-  virtual bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+  virtual bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
   // What icon should be shown when talking about this property ?
-  virtual const char* iconForProperty( uint which ) const;
+  virtual const char* iconForProperty( int which ) const;
 
   /**
    * Returns the lowermost ObjectImpType that this object is an

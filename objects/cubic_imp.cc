@@ -266,14 +266,14 @@ const Coordinate CubicImp::getPoint( double p ) const
 //  return Coordinate(x,y);
 }
 
-const uint CubicImp::numberOfProperties() const
+const int CubicImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }
 
 const QByteArrayList CubicImp::propertiesInternalNames() const
 {
-	QByteArrayList l = Parent::propertiesInternalNames();
+  QByteArrayList l = Parent::propertiesInternalNames();
   l << "cartesian-equation";
   assert( l.size() == CubicImp::numberOfProperties() );
   return l;
@@ -286,43 +286,43 @@ const QByteArrayList CubicImp::propertiesInternalNames() const
 
 const QByteArrayList CubicImp::properties() const
 {
- 	QByteArrayList l = Parent::properties();
+  QByteArrayList l = Parent::properties();
   l << I18N_NOOP( "Cartesian Equation" );
   assert( l.size() == CubicImp::numberOfProperties() );
   return l;
 
 }
 
-const ObjectImpType* CubicImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* CubicImp::impRequirementForProperty( int which ) const
 {
-	if ( which < Parent::numberOfProperties() )
+  if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return CubicImp::stype();
 }
 
-const char* CubicImp::iconForProperty( uint which ) const
+const char* CubicImp::iconForProperty( int which ) const
 {
   int pnum = 0;
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   if ( which == Parent::numberOfProperties() + pnum++ )
     return "kig_text"; // cartesian equation string
-  else 
+  else
     assert( false );
   return "";
 }
 
-ObjectImp* CubicImp::property( uint which, const KigDocument& w ) const
+ObjectImp* CubicImp::property( int which, const KigDocument& w ) const
 {
-	int pnum = 0;
+  int pnum = 0;
 
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
-	if ( which == Parent::numberOfProperties() + pnum++ )
+  if ( which == Parent::numberOfProperties() + pnum++ )
     return new StringImp( cartesianEquationString( w ) );
-	else 
-		assert( false );
-	return new InvalidImp;
+  else
+    assert( false );
+  return new InvalidImp;
 }
 
 const CubicCartesianData CubicImp::data() const
@@ -394,7 +394,7 @@ bool CubicImp::internalContainsPoint( const Coordinate& p, double threshold ) co
   return dist <= threshold;
 }
 
-bool CubicImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool CubicImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }

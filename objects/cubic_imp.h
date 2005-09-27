@@ -45,13 +45,13 @@ public:
   Rect surroundingRect() const;
   QString cartesianEquationString( const KigDocument& ) const;
 
-  const uint numberOfProperties() const;
+  const int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& w ) const;
-  const char* iconForProperty( uint which ) const;
-  const ObjectImpType* impRequirementForProperty( uint which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
 
   CubicImp* copy() const;
 

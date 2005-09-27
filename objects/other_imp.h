@@ -54,13 +54,13 @@ public:
   Rect surroundingRect() const;
 
   Coordinate attachPoint() const;
-  const uint numberOfProperties() const;
+  const int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& w ) const;
-  const char* iconForProperty( uint which ) const;
-  const ObjectImpType* impRequirementForProperty( uint which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
 
   ObjectImp* copy() const;
 
@@ -117,13 +117,13 @@ public:
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
 
-  const uint numberOfProperties() const;
+  const int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& w ) const;
-  const char* iconForProperty( uint which ) const;
-  const ObjectImpType* impRequirementForProperty( uint which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
 
   VectorImp* copy() const;
 
@@ -191,13 +191,13 @@ public:
   Rect surroundingRect() const;
   bool valid() const;
 
-  const uint numberOfProperties() const;
+  const int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& d ) const;
-  const char* iconForProperty( uint which ) const;
-  const ObjectImpType* impRequirementForProperty( uint which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+  ObjectImp* property( int which, const KigDocument& d ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;

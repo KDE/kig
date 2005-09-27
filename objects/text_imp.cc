@@ -66,7 +66,7 @@ bool TextImp::valid() const
   return true;
 }
 
-const uint TextImp::numberOfProperties() const
+const int TextImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }
@@ -85,14 +85,14 @@ const QByteArrayList TextImp::properties() const
   return ret;
 }
 
-const ObjectImpType* TextImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* TextImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   return TextImp::stype();
 }
 
-const char* TextImp::iconForProperty( uint which ) const
+const char* TextImp::iconForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
@@ -102,7 +102,7 @@ const char* TextImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
+ObjectImp* TextImp::property( int which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
@@ -162,7 +162,7 @@ const ObjectImpType* TextImp::type() const
   return TextImp::stype();
 }
 
-bool TextImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool TextImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }

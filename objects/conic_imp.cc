@@ -58,7 +58,7 @@ bool ConicImp::inRect( const Rect&, int, const KigWidget& ) const
   return false;
 }
 
-const uint ConicImp::numberOfProperties() const
+const int ConicImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 5;
 }
@@ -87,14 +87,14 @@ const QByteArrayList ConicImp::properties() const
   return l;
 }
 
-const ObjectImpType* ConicImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* ConicImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return ConicImp::stype();
 }
 
-const char* ConicImp::iconForProperty( uint which ) const
+const char* ConicImp::iconForProperty( int which ) const
 {
   int pnum = 0;
   if ( which < Parent::numberOfProperties() )
@@ -113,7 +113,7 @@ const char* ConicImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
+ObjectImp* ConicImp::property( int which, const KigDocument& w ) const
 {
   int pnum = 0;
 
@@ -379,7 +379,7 @@ bool ConicImp::internalContainsPoint( const Coordinate& p, double threshold ) co
   return fabs(( len - rho )*fact) <= threshold;
 }
 
-bool ConicImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool ConicImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::isPropertyDefinedOnOrThroughThisImp( which );
@@ -452,7 +452,7 @@ ObjectImp* ConicArcImp::transform( const Transformation& t ) const
   return result;
 }
 
-const uint ConicArcImp::numberOfProperties() const
+const int ConicArcImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 3;
 }
@@ -476,7 +476,7 @@ const QByteArrayList ConicArcImp::propertiesInternalNames() const
   return ret;
 }
 
-const char* ConicArcImp::iconForProperty( uint which ) const
+const char* ConicArcImp::iconForProperty( int which ) const
 {
   int numprop = 0;
   if ( which < Parent::numberOfProperties() )
@@ -491,7 +491,7 @@ const char* ConicArcImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* ConicArcImp::property( uint which, const KigDocument& d ) const
+ObjectImp* ConicArcImp::property( int which, const KigDocument& d ) const
 {
   int numprop = 0;
   if ( which < Parent::numberOfProperties() )
@@ -506,7 +506,7 @@ ObjectImp* ConicArcImp::property( uint which, const KigDocument& d ) const
   return new InvalidImp;
 }
 
-bool ConicArcImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool ConicArcImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   int pnum = 0;
 

@@ -32,7 +32,7 @@ class LinksLabel : public QWidget
   Q_OBJECT
 
 public:
-  LinksLabel( QWidget* parent = 0, const char* name = 0 );
+  LinksLabel( QWidget* parent = 0 );
   ~LinksLabel();
 
   class LinksLabelEditBuf

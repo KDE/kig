@@ -140,7 +140,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     QAction* act = p->addAction( i18n( "Name" ) );
     act->setData( QVariant::fromValue( 0 ) );
     QByteArrayList l = o->imp()->properties();
-    assert( static_cast<uint>( l.size() ) == o->imp()->numberOfProperties() );
+    assert( l.size() == o->imp()->numberOfProperties() );
     for ( int i = 0; i < l.size(); ++i )
     {
       QString s = i18n( l[i] );

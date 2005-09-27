@@ -54,7 +54,7 @@ bool PointImp::inRect( const Rect& r, int width, const KigWidget& w ) const
   return r.contains( mc, am );
 }
 
-const uint PointImp::numberOfProperties() const
+const int PointImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 3;
 }
@@ -79,14 +79,14 @@ const QByteArrayList PointImp::properties() const
   return l;
 }
 
-const ObjectImpType* PointImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* PointImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return PointImp::stype();
 }
 
-const char* PointImp::iconForProperty( uint which ) const
+const char* PointImp::iconForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
@@ -100,7 +100,7 @@ const char* PointImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* PointImp::property( uint which, const KigDocument& d ) const
+ObjectImp* PointImp::property( int which, const KigDocument& d ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, d );
@@ -178,7 +178,7 @@ const ObjectImpType* PointImp::type() const
   return PointImp::stype();
 }
 
-bool PointImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool PointImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }

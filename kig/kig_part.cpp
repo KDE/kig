@@ -176,7 +176,8 @@ KigPart::KigPart( QWidget *parentWidget, const char *,
   mMode = new NormalMode( *this );
 
   // we need a widget, to actually show the document
-  m_widget = new KigView(this, false, parentWidget, "kig_view");
+  m_widget = new KigView( this, false, parentWidget );
+  m_widget->setObjectName( "kig_view" );
   // notify the part that this is our internal widget
   setWidget( m_widget );
 

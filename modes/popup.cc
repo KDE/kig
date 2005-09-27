@@ -784,10 +784,10 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
 {
   if ( popup.objects().size() != 1 ) return;
   ObjectHolder* o = popup.objects()[0];
-  uint np = o->imp()->numberOfProperties();
+  int np = o->imp()->numberOfProperties();
   if ( menu != NormalModePopupObjects::ConstructMenu &&
        menu != NormalModePopupObjects::ShowMenu ) return;
-  for ( uint i = 0; i < np; ++i )
+  for ( int i = 0; i < np; ++i )
   {
     ObjectImp* prop = o->imp()->property( i, popup.part().document() );
     const char* iconfile = o->imp()->iconForProperty( i );

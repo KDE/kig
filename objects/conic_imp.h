@@ -56,13 +56,13 @@ public:
   bool valid() const;
   Rect surroundingRect() const;
 
-  const uint numberOfProperties() const;
-  const ObjectImpType* impRequirementForProperty( uint which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+  const int numberOfProperties() const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  const char* iconForProperty( uint which ) const;
-  ObjectImp* property( uint which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
 
   double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;
@@ -186,12 +186,12 @@ public:
 
   ObjectImp* transform( const Transformation& t ) const;
 
-  const uint numberOfProperties() const;
+  const int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& w ) const;
-  const char* iconForProperty( uint which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
 
   double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;

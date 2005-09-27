@@ -38,8 +38,8 @@ public:
   std::vector<KURLLabel*> urllabels;
 };
 
-LinksLabel::LinksLabel( QWidget* parent, const char* name )
-  : QWidget( parent, name )
+LinksLabel::LinksLabel( QWidget* parent )
+  : QWidget( parent )
 {
   p = new Private;
   p->layout = new QHBoxLayout( this );

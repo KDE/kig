@@ -48,13 +48,13 @@ public:
 
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
 
-  const uint numberOfProperties() const;
+  const int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& d ) const;
-  const char* iconForProperty( uint which ) const;
-  const ObjectImpType* impRequirementForProperty( uint which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
+  ObjectImp* property( int which, const KigDocument& d ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
 
   /**
    * Get the slope of this AbstractLineImp..  For a line through
@@ -107,12 +107,12 @@ public:
   const Coordinate getPoint( double param, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
-  const uint numberOfProperties() const;
+  const int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& d ) const;
-  const char* iconForProperty( uint which ) const;
-  const ObjectImpType* impRequirementForProperty( uint which ) const;
+  ObjectImp* property( int which, const KigDocument& d ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
 
   SegmentImp* copy() const;
 
@@ -162,12 +162,12 @@ public:
   const Coordinate getPoint( double param, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
-  const uint numberOfProperties() const;
+  const int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( uint which, const KigDocument& d ) const;
-  const char* iconForProperty( uint which ) const;
-  const ObjectImpType* impRequirementForProperty( uint which ) const;
+  ObjectImp* property( int which, const KigDocument& d ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
 
   RayImp* copy() const;
 

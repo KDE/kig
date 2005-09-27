@@ -88,7 +88,7 @@ LocusImp::LocusImp( CurveImp* curve, const ObjectHierarchy& hier )
 {
 }
 
-const uint LocusImp::numberOfProperties() const
+const int LocusImp::numberOfProperties() const
 {
   return Parent::numberOfProperties();
 }
@@ -103,17 +103,17 @@ const QByteArrayList LocusImp::properties() const
   return Parent::properties();
 }
 
-const ObjectImpType* LocusImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* LocusImp::impRequirementForProperty( int which ) const
 {
   return Parent::impRequirementForProperty( which );
 }
 
-const char* LocusImp::iconForProperty( uint which ) const
+const char* LocusImp::iconForProperty( int which ) const
 {
   return Parent::iconForProperty( which );
 }
 
-ObjectImp* LocusImp::property( uint which, const KigDocument& w ) const
+ObjectImp* LocusImp::property( int which, const KigDocument& w ) const
 {
   return Parent::property( which, w );
 }
@@ -362,7 +362,7 @@ bool LocusImp::internalContainsPoint( const Coordinate& p, double threshold, con
   return fabs( dist ) <= threshold;
 }
 
-bool LocusImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool LocusImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }

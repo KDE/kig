@@ -45,19 +45,19 @@ bool AbstractLineImp::inRect( const Rect& r, int width, const KigWidget& w ) con
   return lineInRect( r, mdata.a, mdata.b, width, this, w );
 }
 
-const uint AbstractLineImp::numberOfProperties() const
+const int AbstractLineImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 2;
 }
 
-const ObjectImpType* AbstractLineImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* AbstractLineImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return AbstractLineImp::stype();
 }
 
-const char* AbstractLineImp::iconForProperty( uint which ) const
+const char* AbstractLineImp::iconForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
@@ -69,7 +69,7 @@ const char* AbstractLineImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* AbstractLineImp::property( uint which, const KigDocument& w ) const
+ObjectImp* AbstractLineImp::property( int which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
@@ -99,7 +99,7 @@ const QByteArrayList AbstractLineImp::properties() const
   return l;
 }
 
-const uint SegmentImp::numberOfProperties() const
+const int SegmentImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 5;
 }
@@ -128,14 +128,14 @@ const QByteArrayList SegmentImp::properties() const
   return s;
 }
 
-const ObjectImpType* SegmentImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* SegmentImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return SegmentImp::stype();
 }
 
-const char* SegmentImp::iconForProperty( uint which ) const
+const char* SegmentImp::iconForProperty( int which ) const
 {
   int pnum = 0;
   if ( which < Parent::numberOfProperties() )
@@ -154,7 +154,7 @@ const char* SegmentImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
+ObjectImp* SegmentImp::property( int which, const KigDocument& w ) const
 {
   int pnum = 0;
 
@@ -174,7 +174,7 @@ ObjectImp* SegmentImp::property( uint which, const KigDocument& w ) const
   return new InvalidImp;
 }
 
-const uint RayImp::numberOfProperties() const
+const int RayImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 2;
 }
@@ -197,14 +197,14 @@ const QByteArrayList RayImp::properties() const
   return s;
 }
 
-const ObjectImpType* RayImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* RayImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return RayImp::stype();
 }
 
-const char* RayImp::iconForProperty( uint which ) const
+const char* RayImp::iconForProperty( int which ) const
 {
   int pnum = 0;
   if ( which < Parent::numberOfProperties() )
@@ -217,7 +217,7 @@ const char* RayImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* RayImp::property( uint which, const KigDocument& w ) const
+ObjectImp* RayImp::property( int which, const KigDocument& w ) const
 {
   int pnum = 0;
 
@@ -600,7 +600,7 @@ bool LineImp::internalContainsPoint( const Coordinate& p, double threshold ) con
   return isOnLine( p, mdata.a, mdata.b, threshold );
 }
 
-bool AbstractLineImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool AbstractLineImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   int pnum = 0;
 

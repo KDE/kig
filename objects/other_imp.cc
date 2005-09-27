@@ -82,7 +82,7 @@ Coordinate AngleImp::attachPoint() const
   return mpoint;
 }
 
-const uint AngleImp::numberOfProperties() const
+const int AngleImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 3;
 }
@@ -107,14 +107,14 @@ const QByteArrayList AngleImp::properties() const
   return l;
 }
 
-const ObjectImpType* AngleImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* AngleImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return AngleImp::stype();
 }
 
-const char* AngleImp::iconForProperty( uint which ) const
+const char* AngleImp::iconForProperty( int which ) const
 {
   int numprop = 0;
   if ( which < Parent::numberOfProperties() )
@@ -129,7 +129,7 @@ const char* AngleImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* AngleImp::property( uint which, const KigDocument& w ) const
+ObjectImp* AngleImp::property( int which, const KigDocument& w ) const
 {
   int numprop = 0;
   if ( which < Parent::numberOfProperties() )
@@ -190,7 +190,7 @@ bool VectorImp::inRect( const Rect& r, int width, const KigWidget& w ) const
   return lineInRect( r, mdata.a, mdata.b, width, this, w );
 }
 
-const uint VectorImp::numberOfProperties() const
+const int VectorImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 5;
 }
@@ -219,14 +219,14 @@ const QByteArrayList VectorImp::properties() const
   return ret;
 }
 
-const ObjectImpType* VectorImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* VectorImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   else return VectorImp::stype();
 }
 
-const char* VectorImp::iconForProperty( uint which ) const
+const char* VectorImp::iconForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
@@ -244,7 +244,7 @@ const char* VectorImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* VectorImp::property( uint which, const KigDocument& w ) const
+ObjectImp* VectorImp::property( int which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
@@ -364,7 +364,7 @@ bool ArcImp::valid() const
   return true;
 }
 
-const uint ArcImp::numberOfProperties() const
+const int ArcImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 10;
 }
@@ -402,7 +402,7 @@ const QByteArrayList ArcImp::propertiesInternalNames() const
   return ret;
 }
 
-const char* ArcImp::iconForProperty( uint which ) const
+const char* ArcImp::iconForProperty( int which ) const
 {
   int numprop = 0;
   if ( which < Parent::numberOfProperties() )
@@ -431,7 +431,7 @@ const char* ArcImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
+ObjectImp* ArcImp::property( int which, const KigDocument& d ) const
 {
   int numprop = 0;
   if ( which < Parent::numberOfProperties() )
@@ -465,7 +465,7 @@ const double ArcImp::sectorSurface() const
   return mradius * mradius * ma / 2;
 }
 
-const ObjectImpType* ArcImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* ArcImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
@@ -638,19 +638,19 @@ bool ArcImp::internalContainsPoint( const Coordinate& p, double threshold ) cons
   return isOnArc( p, mcenter, mradius, msa, ma, threshold );
 }
 
-bool AngleImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool AngleImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::isPropertyDefinedOnOrThroughThisImp( which );
   return false;
 }
 
-bool VectorImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool VectorImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }
 
-bool ArcImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool ArcImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   int pnum = 0;
 
