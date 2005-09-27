@@ -15,23 +15,16 @@
 // Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
+// mp: following a kind suggestion by David Faure the Python.h include has
+// been moved before all qt includes in order to avoid a clash related to
+// the "slots" identifier
+#include <Python.h>
 #include "python_scripter.h"
 
 #include <iostream>
 #include <string>
 
-// FIXME!!! (paolini@dmf.unicatt.it)
-// in the new qt4 includes there is a weird definition of "slots" which
-// clashes badly with code in "pytho2.4/object.h":
-//   .../python2.4/object.h:343: error: expected unqualified-id before ";" token
-// such definition of "slots" is precisely located in
-//   $QTDIR/include/Qt/qobjectdefs.h and $QTDIR/include/QtCore/qobjectdefs.h
-// (the two files are identical!) at line #43
-// for now I will just "#undef slots"
-#undef slots
-//
-
-#include <Python.h>
+//#include <Python.h>   // (see above)
 #include <boost/python.hpp>
 #include <boost/mpl/bool.hpp>
 
