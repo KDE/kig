@@ -1,0 +1,182 @@
+Version 0.2.4
+
+There are two way to use pykig.py:
+- as a program:
+  $ pykig.py <nameprog>.kpy
+- as a Python library within a Python program:
+  from pykig import *
+
+A ".kpy" file is a "python" script.
+
+A new object is created by callig a python "constructor";
+the result can be stored in a python variable for later
+use.  E.g.:
+
+   a = Point(0.5, 1.5, name="A")
+
+to create a point with coordinates (0.5, 1.5), give it a
+the name "A" (at kig level) and recall it in the python
+variable a. See the examples for practical use.
+
+All constructors accept some optional parameters:
+
+shown = HIDDEN | VISIBLE                  default value: VISIBLE
+name = string                             a name to refer to the object within
+                                          kig
+internal = bool                           this object is internal and cannot be
+                                          made visible
+width = integer                           the line width
+pointstyle = "Round"|"RoundEmpty"|"Rectangular"|"RectangularEmpty"|"Cross"
+linestyle = "SolidLine"|"DashLine"|"DashDotLine"|"DashDotDotLine"|"DotLine"
+color = "#RRGGBB"                         where RR, GG, BB are three numbers
+                                          wich represent the red, green, blue
+                                          components 
+
+The kigdocument is a global object to allow two methods for modify Kig look and
+default behaviour:
+
+kigdocument.noaxes()
+kigdocument.nogrid()
+kigdocument.hideobjects()
+kigdocument.showobjects()
+kigdocument.setwidth()
+kigdocument.setpointstyle()
+kigdocument.setname()
+kigdocument.setlinestyle()
+kigdocument.setshown()
+kigdocument.setcolor()
+kigdocument.setinternal()
+
+
+Generic methods for objects:
+
+obj.hide()
+obj.show()                                hide/show given object
+obj.setwidth(width)                       set obj width
+obj.setpointstyle(self, pointstyle)       set obj point style
+obj.setlinestyle(self, linestyle)         set obj line style
+obj.setcolor(self, color)                 set obj color
+obj.setname()                             set obj name
+obj.type()                                return obj type
+
+Some objects have other methods:
+
+obj.coordinate()                          for points
+obj.xcoord()
+obj.ycoord()
+obj.midpoint()                            for segments
+obj.endpointA()
+obj.endpointB()
+obj.length()
+obj.equation()
+obj.slope()
+obj.numofsides()                          for polygons
+obj.perimeter()
+obj.surface()
+obj.centerofmass()
+obj.windingnumber()
+obj.center()                              for circles
+obj.bisector()                            for angles
+obj.support()
+
+====================================================================
+
+Properties:
+
+Type(object)                              type of object
+Coordinate(point)                         coordinate of point
+XCoord(point)                             
+YCoord(point)
+MidPoints(a, b)                           midpoint of two points a and b
+MidPoint(segment)                         midpoint of a segment
+EndPointA(segment)                        
+EndPointB(segment)
+Length(segment)
+Equation(segment)
+Slope(segment)
+NumOfSides(poly)
+Perimeter(poly)
+Surface(poly)
+CenterOfMass(poly)
+WindingNumber(poly)
+Center(circle)
+Bisector(angle)
+Support(object)
+====================================================================
+
+Objects:
+
+Point(x, y)                               free (unconstrained) point
+ConstrainedPoint(t, curve)                constrained point on 'curve'; t
+                                          *must* be in [0,1]; for segments and
+                                          arcs the position of the point is 
+                                          proportional to the value of t
+Line(a, b)                                straight line through a and b
+Ray(a, b)                                 halfline starting in a through b
+Segment(a, b)                             segment from a to b
+Orthogonal(line, point)                   line through 'point' orthogonal to
+                                          'line'
+
+Circle(center, point)
+CircleByCenterRadius(center, radius)
+CircleBy3Points(p1, p2, p3)
+ArcBy3Points(p1, p2, p3)
+ArcByCenterPointAngle(center, point, angle)
+
+ParabolaByDirectrixFocus(directrix, focus)
+VerticalCubic(p1, p2, p3, p4)
+ConicArc(p1, p2, p3, center)
+
+LineLineIntersection(line1, line2)        produces a point
+CircleCircleIntersection(c1, c2, which)   c1 and c2 are two circles, 'which'
+                                          is an integer that can only be +1 
+                                          or -1 and tells which one of the
+                                          two intersections has to be created.
+                                          To have both you must call this
+                                          function twice.
+ConicLineIntersection(conic, line, which) conic can also be a circle; which
+                                          has the same meaning as for the
+                                          CircleCircleIntersection
+
+Polygon((p1, p2,..., pn))                 A polygon with the given vertices
+PolygonBCV(center, vertex, n)             A regular polygon with 'n' sides
+PolygonVertex(polygon, i)                 Generate the i-th vertex of the
+                                          given polygon
+PolygonSide(polygon, i)                   Generate the i-th side of the given
+                                          polygon
+
+Vector(p1, p2)
+Angle(p1, center, p2)
+
+Text(point, string, boxed)                point is a Point or a tuple of 
+                                          two numbers
+                                          boxed is a integer in [0, 1] telling
+                                          if we want the frame
+VarText(point, string, vars, boxed)       point is a Point or a tuple of 
+                                          two numbers
+                                          vars hold variables parts
+Label(obj, displ, string, boxed)          is a Text connected tu a object
+VarLabel(obj, displ, string, vars, boxed)
+
+PythonScript(script, argvec)              "script" is a string containing the
+                                          python script
+
+Translate(object, vector)                 The result is an object of the same
+                                          kind as 'object'
+CentralSymmetry(object, center)
+AxialSymmetry(object, line)
+Rotate(object,center, angle)
+Scale(object,center, segment)             The length of the segment is the
+                                          scaling ratio
+Scale2(object, center, s1, s2)            The ratio of the lengths of s1 and
+                                          s2 is the scaling ratio
+InvertPoint(point, circle)                Circular invertion of: a point
+InvertLine(line, circle)                 ... an other object 
+InvertCircle(circle, circle)
+InvertArc(arc, circle)
+InvertSegment(segment, circle)
+CircularInversion(object, circle)
+
+-------------------------------------------------------------------------------
+
+
