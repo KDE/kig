@@ -15,6 +15,7 @@
 // Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
+#include "object_imp.h"
 #include "inversion_type.h"
 #include "point_imp.h"
 #include "line_imp.h"
@@ -26,8 +27,332 @@
 
 #include <klocale.h>
 
+/*
+ * The "InvertibleImpType" class, inherited fron ObjectImpType
+ * is used to recognize non-point objects that we know how to
+ * circular-invert, namely: lines, segments, rays, circles, arcs.
+ * The trick is done by redefining the "match" method of the
+ * class in order to return "true" if the argument is one of the
+ * types above.
+ * This same trick could also be used for TransportOfMeasure in
+ * order to allow us to inherit from ArgsParserObjectType instead of
+ * directly from ObjectType.
+ */
+
+class InvertibleImpType
+  : public ObjectImpType
+{
+public:
+  InvertibleImpType( const ObjectImpType* parent, const char* internalname,
+    const char* translatedname,
+    const char* selectstatement,
+    const char* selectnamestatement,
+    const char* removeastatement,
+    const char* addastatement,
+    const char* moveastatement,
+    const char* attachtothisstatement,
+    const char* showastatement,
+    const char* hideastatement );
+  ~InvertibleImpType();
+  virtual bool match( const ObjectImpType* t ) const;
+};
+
+InvertibleImpType::InvertibleImpType( const ObjectImpType* parent, 
+    const char* internalname,
+    const char* translatedname,
+    const char* selectstatement,
+    const char* selectnamestatement,
+    const char* removeastatement,
+    const char* addastatement,
+    const char* moveastatement,
+    const char* attachtothisstatement,
+    const char* showastatement,
+    const char* hideastatement )
+  : ObjectImpType( parent, internalname, translatedname, selectstatement,
+                   selectnamestatement, removeastatement, addastatement,
+                   moveastatement, attachtothisstatement,
+                   showastatement, hideastatement )
+{
+}
+
+InvertibleImpType::~InvertibleImpType()
+{
+}
+
+bool InvertibleImpType::match( const ObjectImpType* t ) const
+{
+  return t == this || t == LineImp::stype() || t == RayImp::stype() ||
+         t == SegmentImp::stype() || t == CircleImp::stype() ||
+         t == ArcImp::stype();
+}
+
+static const InvertibleImpType invertibleimp(
+    ObjectImp::stype(), "invertible-object",
+    I18N_NOOP( "invertible object" ),
+    I18N_NOOP( "Select this invertible object" ),
+    I18N_NOOP( "Select invertible object %1" ),
+    I18N_NOOP( "Remove an Invertible Object" ),
+    I18N_NOOP( "Add an Invertible Object" ),
+    I18N_NOOP( "Move an Invertible Object" ),
+    I18N_NOOP( "Attach to this Invertible Object" ),
+    I18N_NOOP( "Show an Invertible Object" ),
+    I18N_NOOP( "Hide an Invertible Object" )
+    );
+
 static const char str1[] = I18N_NOOP( "Invert with respect to this circle" );
 static const char str2[] = I18N_NOOP( "Select the circle we want to invert against..." );
+
+static const ArgsParser::spec argsspecCircularInversion[] =
+{
+  { &invertibleimp, I18N_NOOP( "Compute the inversion of this object" ),
+    I18N_NOOP( "Select the object to invert..." ), false },
+  { CircleImp::stype(), str1, str2, false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircularInversionType )
+
+CircularInversionType::CircularInversionType()
+  : ArgsParserObjectType( "CircularInversion", argsspecCircularInversion, 2 )
+{
+}
+
+CircularInversionType::~CircularInversionType()
+{
+}
+
+const CircularInversionType* CircularInversionType::instance()
+{
+  static const CircularInversionType s;
+  return &s;
+}
+
+const ObjectImpType* CircularInversionType::resultId() const
+{
+  return &invertibleimp;
+}
+
+ObjectImp* CircularInversionType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( args.size() == 2 && args[1]->inherits( LineImp::stype() ) )
+  {
+    /* we also accept the special case when the circle becomes a
+     * straight line (this is not accepted during interactive construction,
+     * but could happen dinamically when a construction can result either
+     * with a circle or a line.
+     * In this case we simply have a reflection
+     */
+    LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
+    Transformation t = Transformation::lineReflection( d );
+    return args[0]->transform( t );
+  }
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  const CircleImp* refcircle = static_cast<const CircleImp*>( args[1] );
+  Coordinate refc = refcircle->center();
+  double refrsq = refcircle->squareRadius();
+
+  if ( args[0]->inherits( PointImp::stype() ) )
+  {
+    Coordinate relp = static_cast<const PointImp*>( args[0] )->coordinate() - refc;
+    double normsq = relp.x*relp.x + relp.y*relp.y;
+    if ( normsq == 0 ) return new InvalidImp;
+    return new PointImp( refc + (refrsq/normsq)*relp );
+  }
+
+  if ( args[0]->inherits( AbstractLineImp::stype() ) )
+  {
+    bool isline = args[0]->inherits( LineImp::stype() );
+    bool issegment = args[0]->inherits( SegmentImp::stype() );
+    bool isray = args[0]->inherits( RayImp::stype() );
+    const LineData line = static_cast<const AbstractLineImp*>( args[0] )->data();
+    Coordinate rela = line.a - refc;
+    Coordinate relb = line.b - refc;
+    Coordinate ab = relb - rela;
+    double t = (relb.x*ab.x + relb.y*ab.y)/(ab.x*ab.x + ab.y*ab.y);
+    Coordinate relh = relb - t*ab;
+    double normhsq = relh.x*relh.x + relh.y*relh.y;
+    if ( isline )
+    {
+      if ( normhsq < 1e-12*refrsq ) return new LineImp( line.a, line.b );
+      Coordinate newcenter = refc + 0.5*refrsq/normhsq*relh;
+      double newradius = 0.5*refrsq/sqrt(normhsq);
+
+      return new CircleImp( newcenter, newradius );
+    }
+    if ( issegment || isray )
+    {
+      /*
+       * now for the SegmentImp or RayImp
+       * compute the inversion of the two endpoints
+       */
+
+      Coordinate newcenterrel = 0.5*refrsq/normhsq*relh;
+      Coordinate relainv = refrsq/rela.squareLength() * rela;
+      Coordinate relbinv = Coordinate( 0., 0. );
+      if ( issegment ) relbinv = refrsq/relb.squareLength() * relb;
+
+      if ( normhsq < 1e-12*refrsq )
+      {
+        if ( rela.squareLength() < 1e-12 )
+        {
+          return new RayImp( relbinv + refc, 2*relbinv + refc );
+        }
+        if ( issegment && relb.squareLength() < 1e-12 )
+        {
+          return new RayImp( relainv + refc, 2*relainv + refc );
+        }
+        if ( relb.x*rela.x + relb.y*rela.y > 0 )
+        {
+          return new SegmentImp( relainv + refc, relbinv + refc );
+        }
+        return new InvalidImp();
+      }
+      double newradius = 0.5*refrsq/sqrt(normhsq);
+
+      relainv -= newcenterrel;
+      relbinv -= newcenterrel;
+      double angle1 = atan2( relainv.y, relainv.x );
+      double angle2 = atan2( relbinv.y, relbinv.x );
+      double angle = angle2 - angle1;
+      if ( ab.x*rela.y - ab.y*rela.x > 0 )
+      {
+        angle1 = angle2;
+        angle = -angle;
+      }
+      while ( angle1 <= -M_PI ) angle1 += 2*M_PI;
+      while ( angle1 > M_PI ) angle1 -= 2*M_PI;
+      while ( angle < 0 ) angle += 2*M_PI;
+      while ( angle >= 2*M_PI ) angle -= 2*M_PI;
+      return new ArcImp( newcenterrel + refc, newradius, angle1, angle );
+    }
+    return new InvalidImp;
+  }
+
+  if ( args[0]->inherits( CircleImp::stype() ) )
+  {
+    const CircleImp* circle = static_cast<const CircleImp*>( args[0] );
+    Coordinate c = circle->center() - refc;
+    double clength = c.length();
+    Coordinate cnorm = Coordinate (1.,0.);
+    if ( clength != 0.0 ) cnorm = c/clength;
+    double r = circle->radius();
+    Coordinate tc = r*cnorm;
+    Coordinate b = c + tc;   //(1 + t)*c;
+    double bsq = b.x*b.x + b.y*b.y;
+    Coordinate bprime = refrsq*b/bsq;
+    if ( std::fabs( clength - r ) < 1e-6*clength )       // circle through origin -> line
+    {
+      return new LineImp( bprime+refc, bprime+refc+Coordinate( -c.y, c.x ) );
+    }
+
+    Coordinate a = c - tc;
+    double asq = a.x*a.x + a.y*a.y;
+    Coordinate aprime = refrsq*a/asq;
+
+    Coordinate cprime = 0.5*(aprime + bprime);
+    double rprime = 0.5*( bprime - aprime ).length();
+
+    return new CircleImp( cprime + refc, rprime );
+  }
+
+  if ( args[0]->inherits( ArcImp::stype() ) )
+  {
+    const ArcImp* arc = static_cast<const ArcImp*>( args[0] );
+    Coordinate c = arc->center() - refc;
+    double clength = c.length();
+    Coordinate cnorm = Coordinate (1.,0.);
+    if ( clength != 0.0 ) cnorm = c/clength;
+    double r = arc->radius();
+    /*
+     * r > clength means center of inversion circle inside of circle supporting arc
+     */
+    Coordinate tc = r*cnorm;
+    Coordinate b = c + tc;
+    double bsq = b.x*b.x + b.y*b.y;
+    Coordinate bprime = refrsq*b/bsq;
+    if ( std::fabs( clength - r ) < 1e-6*clength )  // support circle through origin ->
+                                                    // segment, ray or invalid
+                                                    // (reversed segment, union of two rays)
+    {
+      bool valid1 = false;
+      bool valid2 = false;
+      Coordinate ep1 = arc->firstEndPoint() - refc;
+      Coordinate ep2 = arc->secondEndPoint() - refc;
+      Coordinate ep1inv = Coordinate::invalidCoord();
+      Coordinate ep2inv = Coordinate::invalidCoord();
+      double ep1sq = ep1.squareLength();
+      if ( ep1sq > 1e-12 )
+      {
+        valid1 = true;
+        ep1inv = refrsq/ep1sq * ep1;
+      }
+      Coordinate rayendp = ep1inv;
+      int sign = 1;
+      double ep2sq = ep2.squareLength();
+      if ( ep2sq > 1e-12 )
+      {
+        valid2 = true;
+        ep2inv = refrsq/ep2sq * ep2;
+        rayendp = ep2inv;
+        sign = -1;
+      }
+      if ( valid1 || valid2 )
+      {
+        if ( valid1 && valid2 )
+        {
+          // this gives either a segment or the complement of a segment (relative
+          // to its support line).  We return a segment in any case (fixme)
+          double ang = atan2( -c.y, -c.x );
+          double sa = arc->startAngle();
+          if ( ang < sa ) ang += 2*M_PI;
+          if ( ang - sa - arc->angle() < 0 ) return new InvalidImp();
+          return new SegmentImp( ep1inv + refc, ep2inv + refc );
+        } else
+          return new RayImp ( rayendp + refc,
+                 rayendp + refc + sign*Coordinate( -c.y, c.x ) );  // this should give a Ray
+      } else
+        return new LineImp( bprime+refc, bprime+refc+Coordinate( -c.y, c.x ) );
+    }
+
+    Coordinate a = c - tc;
+    double asq = a.x*a.x + a.y*a.y;
+    Coordinate aprime = refrsq*a/asq;
+
+    Coordinate cprime = 0.5*(aprime + bprime);
+    double rprime = 0.5*( bprime - aprime ).length();
+
+    Coordinate ep1 = arc->firstEndPoint() - refc;
+    double ang1 = arc->startAngle();
+    double newstartangle = 2*atan2(ep1.y,ep1.x) - ang1;
+    Coordinate ep2 = arc->secondEndPoint() - refc;
+    double ang2 = ang1 + arc->angle();
+    double newendangle = 2*atan2(ep2.y,ep2.x) - ang2;
+    double newangle = newendangle - newstartangle;
+
+    /*
+     * newstartangle and newendangle might have to be exchanged:
+     * this is the case if the circle supporting our arc does not
+     * contain the center of the inversion circle
+     */
+    if ( r < clength )
+    {
+      newstartangle = newendangle - M_PI;
+      newangle = - newangle;
+      // newendangle is no-longer valid
+    }
+    while ( newstartangle <= -M_PI ) newstartangle += 2*M_PI;
+    while ( newstartangle > M_PI ) newstartangle -= 2*M_PI;
+    while ( newangle < 0 ) newangle += 2*M_PI;
+    while ( newangle >= 2*M_PI ) newangle -= 2*M_PI;
+    return new ArcImp( cprime + refc, rprime, newstartangle, newangle );
+  }
+
+  return new InvalidImp;
+}
+
+/*
+ * inversion of a point
+ */
 
 static const ArgsParser::spec argsspecInvertPoint[] =
 {
@@ -60,6 +385,15 @@ const ObjectImpType* InvertPointType::resultId() const
 
 ObjectImp* InvertPointType::calc( const Args& args, const KigDocument& ) const
 {
+  if ( args.size() == 2 && args[1]->inherits( LineImp::stype() ) )
+  {
+    /* we also accept the special case when the circle becomes a
+     * straight line (see comment above)
+     */
+    LineData d = static_cast<const AbstractLineImp*>( args[1] )->data();
+    Transformation t = Transformation::lineReflection( d );
+    return args[0]->transform( t );
+  }
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   const CircleImp* c = static_cast<const CircleImp*>( args[1] );
@@ -70,6 +404,12 @@ ObjectImp* InvertPointType::calc( const Args& args, const KigDocument& ) const
   if ( normsq == 0 ) return new InvalidImp;
   return new PointImp( center + (radiussq/normsq)*relp );
 }
+
+/*
+ * old-style invertion types.  These can be safely removed, since trying
+ * to load kig files that use these constructions are correctly converted
+ * into the new CircularInversion.
+ */
 
 /*
  * inversion of a line
@@ -85,7 +425,7 @@ static const ArgsParser::spec argsspecInvertLine[] =
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( InvertLineType )
 
 InvertLineType::InvertLineType()
-  : ArgsParserObjectType( "InvertLine", argsspecInvertLine, 2 )
+  : ArgsParserObjectType( "InvertLineObsolete", argsspecInvertLine, 2 )
 {
 }
 
@@ -138,7 +478,7 @@ static const ArgsParser::spec argsspecInvertSegment[] =
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( InvertSegmentType )
 
 InvertSegmentType::InvertSegmentType()
-  : ArgsParserObjectType( "InvertSegment", argsspecInvertSegment, 2 )
+  : ArgsParserObjectType( "InvertSegmentObsolete", argsspecInvertSegment, 2 )
 {
 }
 
@@ -229,7 +569,7 @@ static const ArgsParser::spec argsspecInvertCircle[] =
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( InvertCircleType )
 
 InvertCircleType::InvertCircleType()
-  : ArgsParserObjectType( "InvertCircle", argsspecInvertCircle, 2 )
+  : ArgsParserObjectType( "InvertCircleObsolete", argsspecInvertCircle, 2 )
 {
 }
 
@@ -294,7 +634,7 @@ static const ArgsParser::spec argsspecInvertArc[] =
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( InvertArcType )
 
 InvertArcType::InvertArcType()
-  : ArgsParserObjectType( "InvertArc", argsspecInvertArc, 2 )
+  : ArgsParserObjectType( "InvertArcObsolete", argsspecInvertArc, 2 )
 {
 }
 

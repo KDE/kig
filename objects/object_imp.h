@@ -141,13 +141,14 @@ public:
     const char* attachtothisstatement,
     const char* showastatement,
     const char* hideastatement );
-  ~ObjectImpType();
+  virtual ~ObjectImpType();
 
   /**
    * Does the ObjectImp type represented by this instance inherit the
    * ObjectImp type represented by t ?
    */
   bool inherits( const ObjectImpType* t ) const;
+  virtual bool match( const ObjectImpType* t ) const;
 
   /**
    * Returns an internal name for this ObjectImp type.  This name is

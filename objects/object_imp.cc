@@ -207,7 +207,13 @@ ObjectImpType::~ObjectImpType()
 
 bool ObjectImpType::inherits( const ObjectImpType* t ) const
 {
-  return t == this || (mparent && mparent->inherits( t ) );
+//  return t == this || (mparent && mparent->inherits( t ) );
+  return t->match( this ) || (mparent && mparent->inherits( t ) );
+}
+
+bool ObjectImpType::match( const ObjectImpType* t ) const
+{
+  return t == this;
 }
 
 const char* ObjectImpType::internalName() const

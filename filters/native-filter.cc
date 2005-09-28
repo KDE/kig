@@ -388,6 +388,11 @@ KigFilterNative* KigFilterNative::instance()
   return &f;
 }
 
+static const char* obsoletemessage = I18N_NOOP(
+                           "This Kig file uses an object of type \"%1\", "
+                           "which is obsolete, you should save the construction with "
+                           "a different name and check that it works as expected." );
+
 KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& docelem )
 {
   KigDocument* ret = new KigDocument();
@@ -483,12 +488,40 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
             ObjectTypeFactory::instance()->find( tmp.latin1() );
           if ( ! type )
           {
-            notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support."
-                                      "Perhaps you have compiled Kig without support "
-                                      "for this object type,"
-                                      "or perhaps you are using an older Kig version." ).arg( tmp ) );
-            return false;
+            if ( tmp == "MeasureTransport" && parents.size() == 3 )
+            {
+              warning( i18n( obsoletemessage ).arg( "MeasureTransport" ) );
+              type = ObjectTypeFactory::instance()->find( "TransportOfMeasure" );
+              ObjectCalcer* circle = parents[0];
+              ObjectCalcer* point = parents[1];
+              ObjectCalcer* segment = parents[2];
+              parents[0] = segment;
+              parents[1] = circle;
+              parents[2] = point;
+            } else if ( tmp == "InvertLine" )
+            {
+              warning( i18n( obsoletemessage ).arg( "InvertLine" ) );
+              type = ObjectTypeFactory::instance()->find( "CircularInversion" );
+            } else if ( tmp == "InvertSegment" )
+            {
+              warning( i18n( obsoletemessage ).arg( "InvertSegment" ) );
+              type = ObjectTypeFactory::instance()->find( "CircularInversion" );
+            } else if ( tmp == "InvertCircle" )
+            {
+              warning( i18n( obsoletemessage ).arg( "InvertCircle" ) );
+              type = ObjectTypeFactory::instance()->find( "CircularInversion" );
+            } else if ( tmp == "InvertArc" )
+            {
+              warning( i18n( obsoletemessage ).arg( "InvertArc" ) );
+              type = ObjectTypeFactory::instance()->find( "CircularInversion" );
+            } else {
+              notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
+                                        "which this Kig version does not support."
+                                        "Perhaps you have compiled Kig without support "
+                                        "for this object type,"
+                                        "or perhaps you are using an older Kig version." ).arg( tmp ) );
+              return false;
+            }
           }
 
 	  // mp: (I take the responsibility for this!) explanation: the usual ObjectTypeCalcer
