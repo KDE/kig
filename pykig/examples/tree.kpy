@@ -1,0 +1,35 @@
+kigdocument.noaxes()
+kigdocument.nogrid()
+
+a = Point(0., 0.)
+b = Point(0., 1.)
+c = Point(-0.3,1.6)
+d = Point(0.2,1.4)
+
+kigdocument.hideobjects()
+
+e = CentralSymmetry (a, b)
+
+angolo1 = Angle(e, b, c)
+angolo2 = Angle(e, b, d)
+segmento0 = Segment(a, b, VISIBLE)
+segmento1 = Segment(b, c, VISIBLE)
+segmento2 = Segment(b, d, VISIBLE)
+
+def tree (p1, p2, n):   # build a tree with a trunk from p1 to p2, depth n
+  s = Segment (p1, p2, VISIBLE)
+  if n == 0:
+    return
+
+  p3 = CentralSymmetry (p1, p2)
+  p4a = Rotate (p3, p2, angolo1)
+  p5a = Scale2 (p4a, p2, segmento0, segmento1)
+  p4b = Rotate (p3, p2, angolo2)
+  p5b = Scale2 (p4b, p2, segmento0, segmento2)
+
+  tree (p2, p5a, n-1)
+  tree (p2, p5b, n-1)
+
+
+tree (a, b, 6)
+

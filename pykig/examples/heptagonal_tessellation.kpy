@@ -1,0 +1,175 @@
+#
+# Copyright: Maurizio Paolini, 2005
+# License: GPL
+#
+# please note: this construction requires a very recent
+# "subversion" version of kig (uses circular inversion of
+# circular arcs) and of pykig (version >= 0.2.4)
+#
+execfile ("poincare.kpyh")
+execfile ("trianglebyangles.kpyh")
+
+def reflect ( s, s0 ):
+#  P = EndPointA (s0, HIDDEN)
+#  C = Center (s0, HIDDEN)
+#  cir = Circle (C, P, HIDDEN)
+  cir = Support (s0, HIDDEN)
+  return CircularInversion (s, cir)
+
+def referenceheptagon ():
+  p14c = Point(0,0,internal=True)
+  p14v = Point(1,0,internal=True)
+  p14 = PolygonBCV (p14c, p14v, 14, internal=True)
+  p14v2 = PolygonVertex (p14, 1, internal=True)
+  p14v3 = PolygonVertex (p14, 2, internal=True)
+  Alfa = Angle (p14v, p14c, p14v2, HIDDEN)
+  anglerot = Angle (p14v, p14c, p14v3, HIDDEN)
+
+  Cen = Point(0,0.5,VISIBLE)
+
+  hexagon = PolygonBCV (p14c, p14v, 6, internal=True)
+  hexav2 = PolygonVertex (hexagon, 1, internal=True)
+  Beta = Angle (p14v, p14c, hexav2, HIDDEN)
+
+#  A = Point(0,1.16,VISIBLE)
+  kigdocument.hideobjects()
+  [AA, A0, l1, l2, l3] = trianglebyangles(Cen, Alfa, Beta)
+  AA.hide()
+  A0.hide()
+
+# costruisci A sulla circonferenza iperbolica di centro Cen e
+# passante per AA
+  hcirc = HyperbolicCircle(Cen, AA)
+  l1.hide()
+  l2.hide()
+  l3.hide()
+  kigdocument.showobjects()
+  A = ConstrainedPoint(0.01,hcirc)
+  B = HyperbolicRotation(A, Cen, anglerot)
+  C = HyperbolicRotation(B, Cen, anglerot)
+  D = HyperbolicRotation(C, Cen, anglerot)
+  E = HyperbolicRotation(D, Cen, anglerot)
+  F = HyperbolicRotation(E, Cen, anglerot)
+  G = HyperbolicRotation(F, Cen, anglerot)
+  B.hide()
+  C.hide()
+  D.hide()
+  E.hide()
+  F.hide()
+  G.hide()
+
+  s1 = HyperbolicSegment (A,B)
+  s2 = HyperbolicSegment (B,C)
+  s3 = HyperbolicSegment (C,D)
+  s4 = HyperbolicSegment (D,E)
+  s5 = HyperbolicSegment (E,F)
+  s6 = HyperbolicSegment (F,G)
+  s7 = HyperbolicSegment (G,A)
+
+  return [s1, s2, s3, s4, s5, s6, s7]
+
+def tessellation (heptagon, n):
+  [s1, s2, s3, s4, s5, s6, s7] = heptagon
+  #           
+  # la tassellazione attorno ad un ettagono si ottiene
+  # dividendo la regione esterna all'ettagono in 7
+  # regioni (vshape), ognuna delle quali e' definita da uno
+  # degli ettagoni adiacenti
+  #
+
+  s21 = reflect (s2, s1)
+  s31 = reflect (s3, s1)
+  s41 = reflect (s4, s1)
+  s51 = reflect (s5, s1)
+  s61 = reflect (s6, s1)
+  s71 = reflect (s7, s1)
+
+  s12 = reflect (s1, s2)
+  s32 = reflect (s3, s2)
+  s42 = reflect (s4, s2)
+  s52 = reflect (s5, s2)
+  s62 = reflect (s6, s2)
+  s72 = reflect (s7, s2)
+
+  s13 = reflect (s1, s3)
+  s23 = reflect (s2, s3)
+  s43 = reflect (s4, s3)
+  s53 = reflect (s5, s3)
+  s63 = reflect (s6, s3)
+  s73 = reflect (s7, s3)
+
+  s14 = reflect (s1, s4)
+  s24 = reflect (s2, s4)
+  s34 = reflect (s3, s4)
+  s54 = reflect (s5, s4)
+  s64 = reflect (s6, s4)
+  s74 = reflect (s7, s4)
+
+  s15 = reflect (s1, s5)
+  s25 = reflect (s2, s5)
+  s35 = reflect (s3, s5)
+  s45 = reflect (s4, s5)
+  s65 = reflect (s6, s5)
+  s75 = reflect (s7, s5)
+
+  s16 = reflect (s1, s6)
+  s26 = reflect (s2, s6)
+  s36 = reflect (s3, s6)
+  s46 = reflect (s4, s6)
+  s56 = reflect (s5, s6)
+  s76 = reflect (s7, s6)
+
+  s17 = reflect (s1, s7)
+  s27 = reflect (s2, s7)
+  s37 = reflect (s3, s7)
+  s47 = reflect (s4, s7)
+  s57 = reflect (s5, s7)
+  s67 = reflect (s6, s7)
+
+  vshape ([s71, s61, s51, s41, s31, s21, s1], n)
+  vshape ([s12, s72, s62, s52, s42, s32, s2], n)
+  vshape ([s23, s13, s73, s63, s53, s43, s3], n)
+  vshape ([s34, s24, s14, s74, s64, s54, s4], n)
+  vshape ([s45, s35, s25, s15, s75, s65, s5], n)
+  vshape ([s56, s46, s36, s26, s16, s76, s6], n)
+  vshape ([s67, s57, s47, s37, s27, s17, s7], n)
+
+def vshape (heptagon, n):
+  #
+  # si tratta di un insieme definito da un ettagono e tutti
+  # quelli che si diramano a partire da tre lati consecutivi
+  # (i lati 4, 5 e 6)
+  #
+  if n == 0:
+    return
+
+  [s1, s2, s3, s4, s5, s6, s7] = heptagon
+  
+  s14 = reflect (s1, s4)
+  s24 = reflect (s2, s4)
+  s34 = reflect (s3, s4)
+  s54 = reflect (s5, s4)
+  s64 = reflect (s6, s4)
+  s74 = reflect (s7, s4)
+
+  s15 = reflect (s1, s5)
+  s25 = reflect (s2, s5)
+  s35 = reflect (s3, s5)
+  s45 = reflect (s4, s5)
+  s65 = reflect (s6, s5)
+  s75 = reflect (s7, s5)
+
+  s16 = reflect (s1, s6)
+  s26 = reflect (s2, s6)
+  s36 = reflect (s3, s6)
+  s46 = reflect (s4, s6)
+  s56 = reflect (s5, s6)
+  s76 = reflect (s7, s6)
+
+  vshape ([s4, s34, s24, s14, s74, s64, s54], n-1)
+  vshape ([s5, s45, s35, s25, s15, s75, s65], n-1)
+  vshape ([s6, s56, s46, s36, s26, s16, s76], n-1)
+ 
+heptagon = referenceheptagon()
+
+tessellation (heptagon, 3) 

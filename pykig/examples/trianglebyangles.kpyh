@@ -1,0 +1,48 @@
+#
+# dati due angoli alfa e beta, costruire un triangolo
+# iperbolico di angoli pi/2, alfa, beta (alfa+beta < pi/2)
+#
+
+#alfa0 = Point(-4,-2)
+#alfa1 = Point(-2,-2)
+#Alfa = Angle (alfa1, alfa0, Point(-2, -0.5))
+#Beta = Angle (alfa1, alfa0, Point(-2, -1))
+
+#Ass1 = Point(-6,0,internal=True)
+#Ass2 = Point(6,0,internal=True)
+#assoluto = Line(Ass1, Ass2)
+
+#
+# il vertice A puo' essere fissato a piacere
+# inoltre decido che un cateto e' diretto
+# verticalmente
+#
+#A = Point (0,1)
+
+#hideobjects()
+
+def trianglebyangles (A, Alfa, Beta):
+  vert = Orthogonal(assoluto,A,VISIBLE)
+  H = LineLineIntersection(assoluto,vert)
+
+  vertrotalfa = Rotate(vert, A, Alfa)
+  l1 = Orthogonal(vertrotalfa,A)
+  K = LineLineIntersection(l1,assoluto)
+  lato1 = Circle(K,A,VISIBLE)
+  l1rotbeta = Rotate(l1,K,Beta)
+  l2 = Orthogonal(l1rotbeta,A,HIDDEN)
+  M = LineLineIntersection(l2,l1rotbeta)
+  seg = Segment(A,M)
+  N = MidPoints(H,K)
+  c1 = Circle(N,H)
+  ct1 = Circle(M,A,internal=True)
+  tras1 = Vector(M,K,internal=True)
+  c2 = Translate(ct1,tras1)
+  R = CircleCircleIntersection(c1,c2,-1)
+
+  l3 = Line(R, H)
+  B = ConicLineIntersection(lato1, l3, -1, VISIBLE)
+  lato2 = Circle(H,B,VISIBLE)
+  C = ConicLineIntersection(lato2, vert, -1, VISIBLE)
+
+  return [B, C, lato1, lato2, vert]

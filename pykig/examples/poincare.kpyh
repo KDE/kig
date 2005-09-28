@@ -1,0 +1,252 @@
+# Autore: Maurizio Paolini (2005)
+# Licenza: GPL
+#
+# seguono alcune costruzioni basate sullo scripting python
+# di 'kig' e l'interfaccia 'pykig.py' di Daniele Zambelli
+# per operare con il modello del semipiano di Poincare'
+#
+# Le costruzioni particolari ottenute possono essere utilizzate
+# per ottenere delle macro
+#
+# ROTAZIONE:
+# la rotazione nel semipiano di Poincare' non e' ottenuta
+
+scriptsegment='''def calc( arg1, arg2 ):
+	# Construct the hyperbolic segment (arc) connecting the two points
+        a=arg1.coordinate();
+        b=arg2.coordinate();
+        ax=a.x
+        ay=a.y
+        if ay < 0:
+           return InvalidObject()
+
+        bx=b.x
+        by=b.y
+        if by < 0:
+           return InvalidObject()
+
+        asq=ax*ax + ay*ay
+        bsq=bx*bx + by*by
+
+        den = 2*(bx - ax)
+        if den == 0:
+          return Segment(a,b)
+
+        x = (bsq - asq)/den
+        c = Coordinate(x,0)
+        rsq = asq + x*x - 2*x*ax
+        r = sqrt (rsq)
+
+        if rsq > 100000000*asq:
+          return Segment(a,b)
+
+        alfa = atan2(ay, ax-x)
+        beta = atan2(by, bx-x)
+
+        return Arc(c,r,alfa,beta-alfa)
+'''
+
+def HyperbolicSegment ( a, b ):
+  return PythonScript (scriptsegment, [a, b])
+
+scriptline='''def calc( arg1, arg2 ):
+	# Construct the hyperbolic line (semicircle) through two points
+        a=arg1.coordinate();
+        b=arg2.coordinate();
+        ax=a.x
+        ay=a.y
+        if ay < 0:
+           return InvalidObject()
+
+        bx=b.x
+        by=b.y
+        if by < 0:
+           return InvalidObject()
+
+        asq=ax*ax + ay*ay
+        bsq=bx*bx + by*by
+
+        den = 2*(bx - ax)
+        if den == 0:
+          return Ray(Coordinate(ax,0.),b)
+
+        x = (bsq - asq)/den
+        c = Coordinate(x,0)
+        rsq = asq + x*x - 2*x*ax
+        r = sqrt (rsq)
+
+        if rsq > 100000*asq:
+          return Ray(Coordinate(ax,0.),b)
+
+        alfa = atan2(ay, ax-x)
+        beta = atan2(by, bx-x)
+
+        return Arc(c,r,0.,atan2(0.,-1.))
+'''
+
+def HyperbolicLine ( a, b ):
+  return PythonScript (scriptline, [a, b])
+
+scriptcircle='''def calc( arg1, arg2 ):
+	# Construct the hyperbolic circle centered in arg1 through arg2
+        a=arg1.coordinate();
+        b=arg2.coordinate();
+        ax=a.x
+        ay=a.y
+        if ay < 0:
+           return InvalidObject()
+
+        bx=b.x
+        by=b.y
+        if by <= 0:
+           return InvalidObject()
+
+        asq=ax*ax + ay*ay
+        bsq=bx*bx + by*by
+
+        den = 2*(bx - ax)
+
+        num2 = bsq - asq - den*bx
+        dby2 = num2/by
+        dy = by - dby2/2.
+        d = Coordinate(ax,dy)
+	r2 = sqrt( den*den + dby2*dby2 )
+        return Circle(d,r2/2.)
+'''
+
+def HyperbolicCircle ( a, b ):
+  return PythonScript (scriptcircle, [a, b])
+
+scriptlinebyvector='''def calc( arg1, arg2 ):
+	# Construct the hyperbolic line through arg1 and direction arg2
+        a=arg1.coordinate()
+        dir=arg2.dir()
+        ax=a.x
+        ay=a.y
+        if ay < 0:
+           return InvalidObject()
+
+        dirx=dir.x
+        diry=dir.y
+
+	cx=ax + ay*diry/dirx
+
+	r = sqrt ((cx-ax)*(cx-ax) + ay*ay)
+
+        c = Coordinate(cx,0.)
+        return Arc(c,r,0.,atan2(0.,-1.))
+'''
+
+scriptlineend1='''def calc( arg1 ):
+	# Construct the first endpoint of a line
+        if arg1.inherits( Ray.stype() ):
+	  ld = arg1.data()
+	  return Point( ld.a )
+
+        return Point (arg1.secondEndPoint())
+'''
+
+scriptlineend2='''def calc( arg1 ):
+	# Construct the second endpoint of a line
+        if arg1.inherits( Ray.stype() ):
+	  return InvalidObject()
+
+        return Point (arg1.firstEndPoint())
+'''
+
+scriptsegmentdir1='''def calc( arg1, arg2 ):
+	# Construct the vector tangent in A to the hyp segment AB
+	# A (arg1) and B (arg2) are the two endpoints
+        a=arg1.coordinate();
+        b=arg2.coordinate();
+        ax=a.x
+        ay=a.y
+        if ay < 0:
+           return InvalidObject()
+
+        bx=b.x
+        by=b.y
+        if by < 0:
+           return InvalidObject()
+
+        asq=ax*ax + ay*ay
+        bsq=bx*bx + by*by
+
+        den = 2*(bx - ax)
+        if den == 0:
+          return Segment(a,b)
+
+        cx = (bsq - asq)/den
+        dirort = Coordinate( ay, cx - ax)
+	dirortnorm = dirort.length()
+	if den < 0:
+	  dirortnorm = -dirortnorm
+
+	return Vector (a, a + dirort/dirortnorm)
+'''
+
+scriptcirclelineradical='''def calc( arg1, arg2 ):
+        if arg2.inherits( Ray.stype() ):
+          # by now...
+	  line = Ray.data()
+	  return Line(line)
+
+	a = arg1.center()
+	ax = a.x
+	ay = a.y
+	#return Point (a)
+        r1sq = arg1.squareRadius()
+
+        c = arg2.center()
+        cx = c.x
+        r2 = arg2.radius()
+        r2sq = r2*r2
+	dirx = ax - cx
+	diry = ay
+
+        if c.y != 0:
+          return InvalidObject()
+
+        num = r2sq - r1sq
+	dirsq = dirx*dirx + diry*diry
+	lam = num/(2*dirsq)
+        #lam = (ax*ax + ay*ay - cx*cx - r1sq + r2sq)/(2*((ax - cx)*(ax - cx) + ay*ay))
+        #lam = 0.5
+	mx = (ax + cx)/2
+	my = ay/2
+	dir = Coordinate(dirx, diry)
+
+	point = Coordinate (mx + lam*dirx, my + lam*diry)
+	dirort = Coordinate (-diry, dirx)
+        return Line (point, point + dirort)
+	#return Point (a)
+'''
+
+assoluto = Line(Point(-1.,0.,internal=True),Point(1.,0.,internal=True))
+
+#
+# ROTAZIONE del punto B attorno ad A di angolo "Angle".
+# basata su una riflessione attorno all'asse verticale per A
+# seguita da una inversione circolare rispetto ad un cerchio
+# passante per A e centro sull'asse delle ascisse costruito in
+# modo che l'angolo che forma in A rispetto all'asse verticale
+# sia la meta' dell'angolo "Angle".
+#
+
+def HyperbolicRotation (B, A, Angle):
+  reflectionaxis = Orthogonal (assoluto, A, HIDDEN)
+  Breflected = AxialSymmetry (B, reflectionaxis, HIDDEN)
+  projection = LineLineIntersection (reflectionaxis, assoluto, HIDDEN)
+  rotatedprojection = Rotate (projection, A, Angle, HIDDEN)
+
+  # angleatA = Angle (projection, A, rotatedprojection)
+  # ... non proseguo in questo modo perche' al momento pykig non
+  # permette di costruire la bisettrice
+
+  pushdown = Vector (A, projection, HIDDEN)
+  pusheddown = Translate (rotatedprojection, pushdown, HIDDEN)
+  ltangent = Line (A, pusheddown, HIDDEN)
+  ortoline = Orthogonal (ltangent, A, HIDDEN)
+  inversioncenter = LineLineIntersection (ortoline, assoluto, HIDDEN)
+  inversioncircle = Circle (inversioncenter, A, HIDDEN)
+  return InvertPoint (Breflected, inversioncircle)
