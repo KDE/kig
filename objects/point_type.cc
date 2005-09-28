@@ -606,6 +606,9 @@ Args MeasureTransportType::sortArgs( const Args& args ) const
 }
 
 /* - transport of measure (old, for compatibility with prev. kig files) - */
+/* it should be safe now to remove this completely, since the loading of "MeasureTransport"
+ * is treated in "load07" building a node that uses the new version
+ */
 
 ObjectImp* MeasureTransportTypeOld::calc( const Args& parents, const KigDocument& doc ) const
 {
@@ -642,7 +645,7 @@ static const ArgsParser::spec argsspecMeasureTransportOld[] =
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MeasureTransportTypeOld )
 
 MeasureTransportTypeOld::MeasureTransportTypeOld()
-  : ArgsParserObjectType( "MeasureTransport", argsspecMeasureTransportOld, 3 )
+  : ArgsParserObjectType( "MeasureTransportObsoleted", argsspecMeasureTransportOld, 3 )
 {
 }
 
