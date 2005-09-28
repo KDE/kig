@@ -18,6 +18,7 @@ SUBDIRS = \
 	macros \
 	kfile \
 	data \
+	pykig \
 	$(scriptingdir)
 
 kde_module_LTLIBRARIES = libkigpart.la
