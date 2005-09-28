@@ -27,14 +27,7 @@
 
 	* Removed the usage of Q3PopupMenu in other places.
 
-2005-08-31  Pino Toscano <toscano.pino@tiscali.it>
-
-	* Complete the compiling with Qt4/KDE4.
-
-	* Dropped the compatibility with KDE 3.x, as it will be
-	impossbile to keep it.
-
-2005-08-13  Maurizio Paolini <paolini@dmf.unicatt.it>
+2005-08-31  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Arc of conics are implemented as a new graphic object
 	(inherited from ConicImp).  There is only one construction
@@ -45,6 +38,13 @@
 	transformation.
 	Three properties are implemented: supporting conic, first end-point
 	and second end-point.
+
+2005-08-31  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Complete the compiling with Qt4/KDE4.
+
+	* Dropped the compatibility with KDE 3.x, as it will be
+	impossbile to keep it.
 
 	* Make the painting system working again.
 
