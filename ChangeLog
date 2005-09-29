@@ -7,7 +7,7 @@
 
 	* Imported PyKig, and made install as a binary script.
 
-2005-09-08  Pino Toscano <toscano.pino@tiscali.it>
+2005-09-16  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Move a text label by (2,2), so the attached ones should be less
 	sticky to the "parent" object.
