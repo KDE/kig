@@ -931,11 +931,20 @@ void KigPainter::drawArc( const Coordinate& center, const double radius,
   const int startangle = static_cast<int>( Goniometry::convert( 16 * dstartangle, Goniometry::Rad, Goniometry::Deg ) );
   const int angle = static_cast<int>( Goniometry::convert( 16 * dangle, Goniometry::Rad, Goniometry::Deg ) );
 
-  Rect krect( 0, 0, 2*radius, 2*radius );
-  krect.setCenter( center );
-  QRect rect = toScreen( krect );
+  if ( angle <= 16 )  // in this case just draw a segment
+  {
+    Coordinate a = center + radius * Coordinate( cos( dstartangle ), sin( dstartangle ));
+    Coordinate b = center + radius * Coordinate( cos( dstartangle + dangle ), sin( dstartangle + dangle ));
+    drawSegment ( a , b );
+  } 
+  else
+  { 
+    Rect krect( 0, 0, 2*radius, 2*radius );
+    krect.setCenter( center );
+    QRect rect = toScreen( krect );
 
-  mP.drawArc( rect, startangle, angle );
-  setWholeWinOverlay();
+    mP.drawArc( rect, startangle, angle );
+    setWholeWinOverlay();
+  }
 }
 
