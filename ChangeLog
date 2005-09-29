@@ -1,3 +1,72 @@
+2005-09-29  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Fix drawing of arcs with very small angle (patch by
+	F. Pasquarelli).
+
+2005-09-28  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Made PyKig install.
+
+	* CircularInversion (as a unified construction as compared to the
+	various InvertLine, InvertSegment, InvertCircle, InvertArc).
+
+	* Basic treatment of obsoleted actions.
+
+	* A couple of example of pykig scripts.
+
+	* Obsoleting MeasureTransport in favor of TransportOfMeasure (more
+	general treatment of argument types).
+
+2005-09-27  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Removed some old Qt3 constructors.
+
+	* Moved the property system from uint to int.
+
+	 * Make the ScriptWizard compile and link again. As the katepart
+	seems crashy at startup, for the moment it's disabled, so the
+	wizard will fall back on a simple KTextEdit - this means no
+	indentation and no advantanges of the katepart, but at least the
+	scripting functionalities in Kig are up again.
+
+2005-09-27  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Fixed the compiling of the pyhon_scripter, thanks also to a
+	suggestion by David Faure.
+
+2005-09-26  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Added support for Conic arcs.
+
+	* New property "support" for segments/rays/arc/conic_arc. This
+	constructs the line/circle/conic that contain the given object.
+
+	* Added support for vertical cubics (i.e. cubics with equation
+	"y = ax^3 + bx^2 + cx + d", compare with a generic cubic that has
+	an equation where all terms of total degree <= 3 in x and y are
+	present).
+
+	* Updated to version 0.2.11 (by Daniele Zambelli).
+
+2005-09-23  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Imported PyKig, a Python interface capable of generating a .kig
+	file (and passing it to kig) controlled by a user-written Python
+	program. This makes it possible to automate constructions and to
+	obtain very complicated iterative objects, like fractals,
+	tessellations and the like.
+
+2005-09-18  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Ported from KPopupMenu to KMenu. Drawbacks: menu caption
+	implemented as disabled QAction; KAction->plug() isn't working yet
+	on QMenu.
+
+2005-09-16  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Move a text label by (2,2), so the attached ones should be less
+	sticky to the "parent" object.
+
 2005-09-15  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Get rid of all the Q3CString (and derived) classes: 
