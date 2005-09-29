@@ -1,3 +1,17 @@
+2005-09-29  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Fix drawing of arcs with very small angle (patch by
+	F. Pasquarelli).
+
+2005-09-27  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Imported PyKig, and made install as a binary script.
+
+2005-09-08  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Move a text label by (2,2), so the attached ones should be less
+	sticky to the "parent" object.
+
 2005-09-08  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Fix two bugs, patch by Maurizio Paolini.
