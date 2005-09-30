@@ -170,7 +170,7 @@ QString ObjectDrawer::pointStyleToString() const
   else if ( mpointstyle == 4 )
     return "Cross";
   assert( false );
-  return QString::null;
+  return QString();
 }
 
 Qt::PenStyle ObjectDrawer::styleFromString( const QString& style )

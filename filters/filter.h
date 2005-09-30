@@ -71,7 +71,7 @@ class KigFilter
 protected:
   // shows errors to the user..
   void fileNotFound( const QString& file ) const;
-  void parseError( const QString& file, const QString& explanation = QString::null ) const;
+  void parseError( const QString& file, const QString& explanation = QString() ) const;
   void notSupported( const QString& file, const QString& explanation ) const;
   void warning( const QString& explanation ) const;
 public:

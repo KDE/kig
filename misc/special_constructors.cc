@@ -1368,7 +1368,7 @@ QString GenericIntersectionConstructor::useText(
       break;
   }
 
-  return QString::null;
+  return QString();
 }
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =
@@ -1548,7 +1548,7 @@ QString TangentConstructor::useText(
   else if ( o.imp()->inherits( PointImp::stype() ) )
     return i18n( "Tangent at This Point" );
 //  else assert( false );
-  return QString::null;
+  return QString();
 }
 
 //QString TangentConstructor::selectStatement(
@@ -1610,7 +1610,7 @@ QString CocConstructor::useText(
     return i18n( "Center of Curvature of This Curve" );
   else if ( o.imp()->inherits( PointImp::stype() ) )
     return i18n( "Center of Curvature at This Point" );
-  return QString::null;
+  return QString();
 }
 
 bool relativePrimes( int n, int p )

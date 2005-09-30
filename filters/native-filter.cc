@@ -116,7 +116,7 @@ KigDocument* KigFilterNative::load( const QString& file )
   QFile kigdoc( file );
 #ifndef KIG_NO_COMPRESSED_FILES
   bool iscompressed = false;
-  if ( !file.endsWith( ".kig", false ) )
+  if ( !file.endsWith( ".kig", Qt::CaseInsensitive ) )
   {
     // the file is compressed, so we have to decompress it and fetch the
     // kig file inside it...
@@ -127,7 +127,7 @@ KigDocument* KigFilterNative::load( const QString& file )
       KIG_FILTER_PARSE_ERROR;
 
     QString tempname = file.section( '/', -1 );
-    if ( file.endsWith( ".kigz", false ) )
+    if ( file.endsWith( ".kigz", Qt::CaseInsensitive ) )
     {
       tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
     }
@@ -139,20 +139,20 @@ KigDocument* KigFilterNative::load( const QString& file )
     const KArchiveDirectory* dir = ark->directory();
 //    assert( dir );
     QStringList entries = dir->entries();
-    QStringList kigfiles = entries.grep( QRegExp( "\\.kig$" ) );
+    QStringList kigfiles = entries.filter( QRegExp( "\\.kig$" ) );
     if ( kigfiles.count() != 1 )
       // I throw a generic parse error here, but I should warn the user that
       // this kig archive file doesn't contain one kig file (it contains no
       // kig files or more than one).
       KIG_FILTER_PARSE_ERROR;
-    const KArchiveEntry* kigz = dir->entry( kigfiles[0] );
+    const KArchiveEntry* kigz = dir->entry( kigfiles.at( 0 ) );
     if ( !kigz->isFile() )
       KIG_FILTER_PARSE_ERROR;
     dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
     kdDebug() << "extracted file: " << tempdir + kigz->name() << endl
               << "exists: " << QFile::exists( tempdir + kigz->name() ) << endl;
 
-    kigdoc.setName( tempdir + kigz->name() );
+    kigdoc.setFileName( tempdir + kigz->name() );
   }
 #endif
 
@@ -227,7 +227,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
     if ( e.isNull() ) continue;
     if ( e.tagName() == "CoordinateSystem" )
     {
-      const QByteArray type = e.text().latin1();
+      const QByteArray type = e.text().toLatin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type.data() );
       if ( ! s )
       {
@@ -314,7 +314,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
                 ec = ec.nextSibling().toElement() )
           {
             if ( ec.tagName() == "Property" )
-              propname = ec.text().latin1();
+              propname = ec.text().toLatin1();
           };
 
           if ( i->parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
@@ -333,7 +333,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
             KIG_FILTER_PARSE_ERROR;
 
           const ObjectType* type =
-            ObjectTypeFactory::instance()->find( tmp.latin1() );
+            ObjectTypeFactory::instance()->find( tmp.toLatin1() );
           if ( !type )
           {
             notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
@@ -421,7 +421,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         ret->setGrid( false );
         ret->setAxes( false );
       }
-      const QByteArray type = tmptype.latin1();
+      const QByteArray type = tmptype.toLatin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type.data() );
       if ( ! s )
       {
@@ -473,7 +473,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         else if ( e.tagName() == "Property" )
         {
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-          QByteArray propname = e.attribute( "which" ).latin1();
+          QByteArray propname = e.attribute( "which" ).toLatin1();
 
           ObjectCalcer* parent = parents[0];
           int propid = parent->imp()->propertiesInternalNames().findIndex( propname );
@@ -485,7 +485,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         {
           QString tmp = e.attribute( "type" );
           const ObjectType* type =
-            ObjectTypeFactory::instance()->find( tmp.latin1() );
+            ObjectTypeFactory::instance()->find( tmp.toLatin1() );
           if ( ! type )
           {
             if ( tmp == "MeasureTransport" && parents.size() == 3 )
@@ -677,7 +677,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
     QDomElement drawelem = doc.createElement( "Draw" );
     drawelem.setAttribute( "object", id );
     drawelem.setAttribute( "color", d->color().name() );
-    drawelem.setAttribute( "shown", QString::fromLatin1( d->shown() ? "true" : "false" ) );
+    drawelem.setAttribute( "shown", QLatin1String( d->shown() ? "true" : "false" ) );
     drawelem.setAttribute( "width", QString::number( d->width() ) );
     drawelem.setAttribute( "style", d->styleToString() );
     drawelem.setAttribute( "point-style", d->pointStyleToString() );
@@ -718,7 +718,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     return save07( data, stdoutstream );
   }
 #ifndef KIG_NO_COMPRESSED_FILES
-  if ( !outfile.endsWith( ".kig", false ) )
+  if ( !outfile.endsWith( ".kig", Qt::CaseInsensitive ) )
   {
     // the user wants to save a compressed file, so we have to save our kig
     // file to a temp file and then compress it...
@@ -728,7 +728,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
       return false;
 
     QString tempname = outfile.section( '/', -1 );
-    if ( outfile.endsWith( ".kigz", false ) )
+    if ( outfile.endsWith( ".kigz", Qt::CaseInsensitive ) )
       tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
     else
       return false;

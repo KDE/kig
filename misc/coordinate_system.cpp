@@ -568,7 +568,7 @@ QString CoordinateSystemFactory::setCoordinateSystemStatement( int id )
     return i18n( "Set Polar Coordinate System" );
   default:
     assert( false );
-    return QString::null;
+    return QString();
   }
 }
 

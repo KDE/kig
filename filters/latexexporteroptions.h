@@ -1,4 +1,4 @@
-// Copyright (C)  2002  Dominique Devriese <devriese@kde.org>
+// Copyright (C)  2005  Pino Toscano       <toscano.pino@tiscali.it>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -15,29 +15,23 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#ifndef KIG_FILTERS_IMAGEEXPORTEROPTIONS_H
-#define KIG_FILTERS_IMAGEEXPORTEROPTIONS_H
+#ifndef KIG_FILTERS_LATEXEXPORTEROPTIONS_H
+#define KIG_FILTERS_LATEXEXPORTEROPTIONS_H
 
 #include <qwidget.h>
 
-class QSize;
-class Ui_ImageExporterOptionsWidget;
+class Ui_LatexExporterOptionsWidget;
 
-class ImageExporterOptions
+class LatexExporterOptions
   : public QWidget
 {
   Q_OBJECT
 
-  QSize msize;
-  Ui_ImageExporterOptionsWidget* expwidget;
+  Ui_LatexExporterOptionsWidget* expwidget;
 
-  // this is set by slotWidthChanged() when they set the other input
-  // widget's value, to avoid reacting to internal changes to the
-  // value like to user changes...
-  bool minternallysettingstuff;
 public:
-  ImageExporterOptions( QWidget* parent );
-  ~ImageExporterOptions();
+  LatexExporterOptions( QWidget* parent );
+  ~LatexExporterOptions();
 
   void setGrid( bool grid );
   bool showGrid() const;
@@ -45,12 +39,8 @@ public:
   void setAxes( bool axes );
   bool showAxes() const;
 
-  void setImageSize( const QSize& size );
-  QSize imageSize() const;
-
-protected slots:
-  void slotWidthChanged( int );
-  void slotHeightChanged( int );
+  void setExtraFrame( bool frame );
+  bool showExtraFrame() const;
 };
 
 #endif

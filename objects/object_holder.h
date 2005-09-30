@@ -77,7 +77,7 @@ public:
   void setNameCalcer( ObjectConstCalcer* namecalcer );
 
   /**
-   * returns QString::null if no name is set.
+   * returns a null QString if no name is set.
    */
   const QString name() const;
   /**

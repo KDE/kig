@@ -305,7 +305,7 @@ QString StandardConstructorBase::useText( const ObjectCalcer& o, const std::vect
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
   std::string ret = margsparser.usetext( o.imp(), args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return QString();
   return i18n( ret.c_str() );
 }
 
@@ -318,7 +318,7 @@ QString StandardConstructorBase::selectStatement(
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
   std::string ret = margsparser.selectStatement( args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return QString();
   return i18n( ret.c_str() );
 }
 
@@ -331,7 +331,7 @@ QString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vecto
     int w = (*i)->wantArgs( args, d, v );
     if ( w != ArgsParser::Invalid ) return (*i)->useText( o, sel, d, v );
   };
-  return QString::null;
+  return QString();
 }
 
 QString MergeObjectConstructor::selectStatement(
@@ -344,7 +344,7 @@ QString MergeObjectConstructor::selectStatement(
     int wa = (*i)->wantArgs( args, d, w );
     if ( wa != ArgsParser::Invalid ) return (*i)->selectStatement( sel, d, w );
   };
-  return QString::null;
+  return QString();
 }
 
 MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const QString& name,
@@ -421,7 +421,7 @@ QString MacroConstructor::selectStatement(
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &ObjectCalcer::imp ) );
   std::string ret = mparser.selectStatement( args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return QString();
   else return i18n( ret.c_str() );
 }
 
@@ -434,7 +434,7 @@ QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<Obje
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &ObjectCalcer::imp ) );
   std::string ret = mparser.usetext( o.imp(), args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return QString();
   else return i18n( ret.c_str() );
 }
 

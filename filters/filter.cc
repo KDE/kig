@@ -83,7 +83,7 @@ void KigFilter::parseError( const QString& file, const QString& explanation ) co
           "cannot be opened." ).arg( file );
   const QString title = i18n( "Parse Error" );
 
-  if ( explanation.isNull() )
+  if ( explanation.isEmpty() )
     KMessageBox::sorry( 0, text, title );
   else
     KMessageBox::detailedSorry( 0, text, explanation, title );

@@ -233,7 +233,7 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     return QString::fromLatin1( "cubic" );
   }
   assert( false );
-  return QString::null;
+  return QString();
 }
 
 static Coordinate readXYElements( const QDomElement& e, bool& ok )

@@ -14,7 +14,7 @@
 
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA  02110-1301
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
  USA
 **/
 
@@ -254,32 +254,32 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       i18n( "Set Co&lor" ),
       i18n( "Set Si&ze" ),
       i18n( "Set St&yle" ),
-      QString::null,
+      QString(),
       i18n( "Set Coordinate S&ystem" )
     };
   static const QString menuicons[NumberOfMenus] =
     {
       "centralsymmetry",
       "test",
-      QString::null,
+      QString(),
       "launch",
       "kig_text",
       "color_fill",
 //      "colorize",
       "sizer",
       "paintbrush",
-      QString::null,
-      QString::null
+      QString(),
+      QString()
     };
   int index = 1;
+  KIconLoader* l = part.instance()->iconLoader();
   for ( int i = 0; i < NumberOfMenus; ++i )
   {
     if ( mmenus[i]->count() == 0 ) continue;
-    if ( menuicons[i].isNull() )
+    if ( menuicons[i].isEmpty() )
       insertItem( menunames[i], mmenus[i], i, index++ );
     else
     {
-      KIconLoader* l = part.instance()->iconLoader();
       QPixmap icon = l->loadIcon( menuicons[i], KIcon::Small, 22, KIcon::DefaultState, 0L, true );
       insertItem( QIconSet( icon ), menunames[i], mmenus[i], i, index++ );
     }
@@ -879,7 +879,7 @@ void ObjectTypeActionsProvider::fillUpMenu(
   QStringList l = t->specialActions();
   mnoa = l.count();
   for ( int i = 0; i < mnoa; ++i )
-    popup.addInternalAction( menu, l[i], nextfree++ );
+    popup.addInternalAction( menu, l.at( i ), nextfree++ );
 }
 
 bool ObjectTypeActionsProvider::executeAction(
@@ -917,7 +917,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
     QStringList l = CoordinateSystemFactory::names();
     mnumberofcoordsystems = l.count();
     for ( int i = 0; i < l.count(); ++i )
-      popup.addInternalAction( menu, l[i], nextfree++ );
+      popup.addInternalAction( menu, l.at( i ), nextfree++ );
     int current = popup.part().document().coordinateSystem().id();
     popup.setChecked( menu, idoffset + current, true );
   }

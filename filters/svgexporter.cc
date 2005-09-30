@@ -59,19 +59,19 @@ QString SVGExporter::menuIcon() const
 void SVGExporter::run( const KigPart& part, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QString::null, i18n( "*.svg|Scalable Vector Graphics (*.svg)" ),
+      QString(), i18n( "*.svg|Scalable Vector Graphics (*.svg)" ),
       i18n( "Export as SVG" ), &w );
   kfd->setOptionCaption( i18n( "SVG Options" ) );
   SVGExporterOptions* opts = new SVGExporterOptions( 0L );
   kfd->setOptionsWidget( opts );
-  opts->showGridCheckBox->setChecked( part.document().grid() );
-  opts->showAxesCheckBox->setChecked( part.document().axes() );
+  opts->setGrid( part.document().grid() );
+  opts->setAxes( part.document().axes() );
   if ( !kfd->exec() )
     return;
 
   QString file_name = kfd->selectedFile();
-  bool showgrid = opts->showGridCheckBox->isOn();
-  bool showaxes = opts->showAxesCheckBox->isOn();
+  bool showgrid = opts->showGrid();
+  bool showaxes = opts->showAxes();
 
   delete opts;
   delete kfd;

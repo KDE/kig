@@ -14,8 +14,10 @@ noinst_HEADERS= \
 	kseg-defs.h \
 	kseg-filter.h \
 	latexexporter.h \
+	latexexporteroptions.h \
 	native-filter.h \
 	svgexporter.h \
+	svgexporteroptions.h \
 	drgeo-filter.h
 libfilters_la_SOURCES= \
 	cabri-filter.cc \
@@ -23,13 +25,15 @@ libfilters_la_SOURCES= \
 	filter.cc \
 	filters-common.cc \
 	imageexporteroptions.cc \
-	imageexporteroptionsbase.ui \
+	imageexporteroptionswidget.ui \
 	kgeo-filter.cc \
 	kseg-filter.cc \
 	latexexporter.cc \
-	latexexporteroptions.ui \
+	latexexporteroptions.cc \
+	latexexporteroptionswidget.ui \
 	native-filter.cc \
 	svgexporter.cc \
-	svgexporteroptions.ui \
+	svgexporteroptions.cc \
+	svgexporteroptionswidget.ui \
 	drgeo-filter.cc
 

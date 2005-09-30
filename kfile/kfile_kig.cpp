@@ -59,7 +59,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   QString sfile =  metainfo.path();
   bool iscompressed = false;
   QFile f( sfile );
-  if ( !sfile.endsWith( ".kig", false ) )
+  if ( !sfile.endsWith( ".kig", Qt::CaseInsensitive ) )
   {
     iscompressed = true;
 
@@ -68,7 +68,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
       return false;
 
     QString tempname = sfile.section( '/', -1 );
-    if ( sfile.endsWith( ".kigz", false ) )
+    if ( sfile.endsWith( ".kigz", Qt::CaseInsensitive ) )
     {
       tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
     }
@@ -79,15 +79,15 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
     ark->open( IO_ReadOnly );
     const KArchiveDirectory* dir = ark->directory();
     QStringList entries = dir->entries();
-    QStringList kigfiles = entries.grep( QRegExp( "\\.kig$" ) );
+    QStringList kigfiles = entries.filter( QRegExp( "\\.kig$" ) );
     if ( kigfiles.count() != 1 )
       return false;
-    const KArchiveEntry* kigz = dir->entry( kigfiles[0] );
+    const KArchiveEntry* kigz = dir->entry( kigfiles.at( 0 ) );
     if ( !kigz->isFile() )
       return false;
     dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
 
-    f.setName( tempdir + kigz->name() );
+    f.setFileName( tempdir + kigz->name() );
   }
 
   if ( !f.open( IO_ReadOnly ) )
@@ -125,7 +125,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
     QDomElement e = n.toElement();
     if ( e.isNull() ) continue;
     if ( e.tagName() == "CoordinateSystem" )
-      coordsystem = e.text().latin1();
+      coordsystem = e.text().toLatin1();
   }
   appendItem( metagroup, "CoordSystem", coordsystem );
 

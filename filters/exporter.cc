@@ -12,7 +12,7 @@
 
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
 #include "exporter.h"
@@ -121,23 +121,21 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   }
 
   KigFileDialog* kfd = new KigFileDialog(
-      QString::null, KImageIO::pattern( KImageIO::Writing ),
+      QString(), KImageIO::pattern( KImageIO::Writing ),
       i18n( "Export as Image" ), &w );
   kfd->setOptionCaption( i18n( "Image Options" ) );
-  ImageExporterOptions* opts = new ImageExporterOptions( 0L, w.size() );
+  ImageExporterOptions* opts = new ImageExporterOptions( 0L );
   kfd->setOptionsWidget( opts );
-  opts->WidthInput->setValue( w.size().width() );
-  opts->HeightInput->setValue( w.size().height() );
-  opts->showGridCheckBox->setChecked( doc.document().grid() );
-  opts->showAxesCheckBox->setChecked( doc.document().axes() );
+  opts->setImageSize( w.size() );
+  opts->setGrid( doc.document().grid() );
+  opts->setAxes( doc.document().axes() );
   if ( !kfd->exec() )
     return;
 
   QString filename = kfd->selectedFile();
-  bool showgrid = opts->showGridCheckBox->isOn();
-  bool showaxes = opts->showAxesCheckBox->isOn();
-  int width = opts->WidthInput->value();
-  int height = opts->HeightInput->value();
+  bool showgrid = opts->showGrid();
+  bool showaxes = opts->showAxes();
+  QSize imgsize = opts->imageSize();
 
   delete opts;
   delete kfd;
@@ -160,14 +158,14 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
 
   kdDebug() << k_funcinfo << type << endl;
 
-  QPixmap img( QSize( width, height ) );
+  QPixmap img( imgsize );
   img.fill( Qt::white );
   KigPainter p( ScreenInfo( w.screenInfo().shownRect(), img.rect() ), &img, doc.document() );
   p.setWholeWinOverlay();
   p.drawGrid( doc.document().coordinateSystem(), showgrid, showaxes );
   // FIXME: show the selections ?
   p.drawObjects( doc.document().objects(), false );
-  if ( ! img.save( filename, type.latin1() ) )
+  if ( !img.save( filename, type.toLatin1() ) )
   {
     KMessageBox::error( &w, i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );
   }

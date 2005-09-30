@@ -13,7 +13,7 @@
 
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
 #include "drgeo-filter.h"
@@ -122,11 +122,6 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   if ( nfig > 1 )
   {
     // Dr. Geo file has more than 1 figure, let the user choose one...
-/*
-    KigFilterDrgeoChooser* c = new KigFilterDrgeoChooser( figures );
-    myfig = c->exec();
-    delete c;
-*/
     bool ok = true;
     myfig = KInputDialog::getItem(
                 i18n( "Dr. Geo Filter" ),
@@ -137,11 +132,9 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
       return 0;
   }
 
-
 #ifdef DRGEO_DEBUG
   kdDebug() << "drgeo file " << file << endl;
 #endif
-//  int curfig = -1;
 
   for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
@@ -149,7 +142,6 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
     if ( e.isNull() ) continue;
     else if ( e.tagName() == "drgeo" )
     {
-//      curfig += 1;
       if ( e.attribute("name") == myfig )
       {
 #ifdef DRGEO_DEBUG

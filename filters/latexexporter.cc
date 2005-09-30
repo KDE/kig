@@ -12,7 +12,7 @@
 
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
 #include <config.h>
@@ -441,21 +441,21 @@ void LatexExportImpVisitor::visit( const PolygonImp* imp )
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QString::null, i18n( "*.tex|Latex Documents (*.tex)" ),
+      QString(), i18n( "*.tex|Latex Documents (*.tex)" ),
       i18n( "Export as Latex" ), &w );
   kfd->setOptionCaption( i18n( "Latex Options" ) );
   LatexExporterOptions* opts = new LatexExporterOptions( 0L );
   kfd->setOptionsWidget( opts );
-  opts->showGridCheckBox->setChecked( doc.document().grid() );
-  opts->showAxesCheckBox->setChecked( doc.document().axes() );
-  opts->showExtraFrameCheckBox->setChecked( false );
+  opts->setGrid( doc.document().grid() );
+  opts->setAxes( doc.document().axes() );
+  opts->setExtraFrame( false );
   if ( !kfd->exec() )
     return;
 
   QString file_name = kfd->selectedFile();
-  bool showgrid = opts->showGridCheckBox->isOn();
-  bool showaxes = opts->showAxesCheckBox->isOn();
-  bool showframe = opts->showExtraFrameCheckBox->isOn();
+  bool showgrid = opts->showGrid();
+  bool showaxes = opts->showAxes();
+  bool showframe = opts->showExtraFrame();
 
   delete opts;
   delete kfd;

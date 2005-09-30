@@ -145,7 +145,7 @@ const QString ObjectHolder::name() const
     return static_cast<const StringImp*>( mnamecalcer->imp() )->data();
   }
   else
-    return QString::null;
+    return QString();
 }
 
 void ObjectHolder::setNameCalcer( ObjectConstCalcer* namecalcer )

@@ -307,7 +307,7 @@ void PointConstructMode::leftClickedObject(
   mdoc.addObject( new ObjectHolder( mpt.get() ) );
   w.redrawScreen( std::vector<ObjectHolder*>() );
 
-  mdoc.emitStatusBarText( QString::null );
+  mdoc.emitStatusBarText( QString() );
   mdoc.doneMode( this );
 }
 
@@ -496,7 +496,7 @@ void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
     mdoc.addObject( new ObjectHolder( ret ) );
 
     w.unsetCursor();
-    mdoc.emitStatusBarText( QString::null );
+    mdoc.emitStatusBarText( QString() );
 
     finish();
   }
@@ -556,7 +556,7 @@ QString TestConstructMode::selectStatement( const std::vector<ObjectCalcer*>& se
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
   std::string ret = mtype->argsParser().selectStatement( args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return QString();
   return i18n( ret.c_str() );
 }
 
