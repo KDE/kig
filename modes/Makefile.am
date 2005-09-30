@@ -19,7 +19,7 @@ libmodes_la_SOURCES= \
 	textlabelwizard.cc \
 	textlabelwizardbase.ui \
 	typesdialog.cpp \
-	typesdialogbase.ui
+	typeswidget.ui
 noinst_HEADERS=\
 	base_mode.h \
 	construct_mode.h \

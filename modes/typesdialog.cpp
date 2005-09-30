@@ -22,6 +22,7 @@
 #include "typesdialog.moc"
 
 #include "edittype.h"
+#include "typeswidget.h"
 #include "../kig/kig_part.h"
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
@@ -32,53 +33,134 @@
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kpushbutton.h>
-#include <kstdguiitem.h>
 
 #include <qbytearray.h>
 #include <qfile.h>
+#include <qlayout.h>
+#include <qlist.h>
 #include <qmenu.h>
-#include <qpixmap.h>
+#include <qpushbutton.h>
 #include <qstringlist.h>
 #include <qtextstream.h>
 
 #include <algorithm>
 #include <vector>
 
-class MacroListElement
-  : public Q3ListViewItem
+class BaseListElement
+  : public QTreeWidgetItem
 {
-  Macro* macro;
+protected:
+  BaseListElement( QTreeWidget* lv );
+
 public:
-  MacroListElement( KListView* lv, Macro* m );
-  Macro* getMacro() const { return macro; };
+  virtual bool isMacro() const { return false; }
+  virtual QString name() const = 0;
+  virtual QString description() const = 0;
+  virtual QString icon( bool canNull = false ) const = 0;
+  virtual QString type() const = 0;
+  void setData();
 };
 
-MacroListElement::MacroListElement( KListView* lv, Macro* m )
-  : Q3ListViewItem( lv, QString::null, m->action->descriptiveName(), m->action->description() ),
-    macro( m )
+BaseListElement::BaseListElement( QTreeWidget* lv )
+  : QTreeWidgetItem( lv )
 {
 }
 
-TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
-  : TypesDialogBase( parent, "types_dialog", true ), mpart( part )
+void BaseListElement::setData()
 {
-  // improving GUI look'n'feel...
-  buttonHelp->setGuiItem( KStdGuiItem::help() );
-  buttonOk->setGuiItem( KStdGuiItem::ok() );
-  buttonCancel->setGuiItem( KStdGuiItem::cancel() );
-  il = part.instance()->iconLoader();
-  buttonEdit->setIconSet( QIcon( il->loadIcon( "edit", KIcon::Small ) ) );
-  buttonRemove->setIconSet( QIcon( il->loadIcon( "editdelete", KIcon::Small ) ) );
-  buttonExport->setIconSet( QIcon( il->loadIcon( "fileexport", KIcon::Small ) ) );
-  buttonImport->setIconSet( QIcon( il->loadIcon( "fileimport", KIcon::Small ) ) );
+  QString ifn = icon();
+  if ( !ifn.isEmpty() )
+    setIcon( 0, SmallIcon( ifn ) );
+  setText( 1, type() );
+  setText( 2, name() );
+  setText( 3, description() );
+}
 
-  typeList->setColumnWidth( 0, 22 );
-  typeList->setColumnWidth( 1, 140 );
-  typeList->setColumnWidth( 2, 240 );
+class MacroListElement
+  : public BaseListElement
+{
+  Macro* mmacro;
+public:
+  MacroListElement( QTreeWidget* lv, Macro* m );
+  Macro* getMacro() const { return mmacro; };
+  virtual bool isMacro() const { return true; };
+  virtual QString name() const;
+  virtual QString description() const;
+  virtual QString icon( bool canNull = false ) const;
+  virtual QString type() const;
+};
+
+MacroListElement::MacroListElement( QTreeWidget* lv, Macro* m )
+  : BaseListElement( lv ), mmacro( m )
+{
+  setData();
+}
+
+QString MacroListElement::name() const
+{
+  return mmacro->action->descriptiveName();
+}
+
+QString MacroListElement::description() const
+{
+  return mmacro->action->description();
+}
+
+QString MacroListElement::icon( bool canNull ) const
+{
+  return mmacro->ctor->iconFileName( canNull );
+}
+
+QString MacroListElement::type() const
+{
+  return i18n( "Macro" );
+}
+
+TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
+  : KDialogBase( parent, "types-dialog", true, i18n( "Manage Types" ),
+                 Help|Ok|Cancel, Ok, true ), mpart( part )
+{
+  QWidget* base = new QWidget( this );
+  setMainWidget( base );
+  mtypeswidget = new Ui_TypesWidget();
+  mtypeswidget->setupUi( base );
+  base->layout()->setMargin( 0 );
+
+  // improving GUI look'n'feel...
+  KIconLoader* il = part.instance()->iconLoader();
+  mtypeswidget->buttonEdit->setIcon( QIcon( il->loadIcon( "edit", KIcon::Small ) ) );
+  mtypeswidget->buttonEdit->setWhatsThis(
+        i18n( "Edit the selected type." ) );
+  mtypeswidget->buttonRemove->setIcon( QIcon( il->loadIcon( "editdelete", KIcon::Small ) ) );
+  mtypeswidget->buttonRemove->setWhatsThis(
+        i18n( "Delete all the selected types in the list." ) );
+  mtypeswidget->buttonExport->setIcon( QIcon( il->loadIcon( "fileexport", KIcon::Small ) ) );
+  mtypeswidget->buttonExport->setWhatsThis(
+        i18n( "Export all the selected types to a file." ) );
+  mtypeswidget->buttonImport->setIcon( QIcon( il->loadIcon( "fileimport", KIcon::Small ) ) );
+  mtypeswidget->buttonImport->setWhatsThis(
+        i18n( "Import macros that are contained in one or more files." ) );
+
+  mtypeswidget->typeList->setToolTip(
+        i18n( "Select types here..." ) );
+  mtypeswidget->typeList->setWhatsThis(
+        i18n( "This is a list of the current macro types... You can select, "
+              "edit, delete, export and import them..." ) );
+
+  QStringList hl;
+  hl << i18n( "Icon" )
+     << i18n( "Type" )
+     << i18n( "Name" )
+     << i18n( "Description" );
+  mtypeswidget->typeList->setHeaderLabels( hl );
 
   // loading macros...
   loadAllMacros();
+
+  mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
+
+  mtypeswidget->typeList->resizeColumnToContents( 0 );
+  mtypeswidget->typeList->resizeColumnToContents( 1 );
 
   popup = new QMenu( this );
   popup->addAction( SmallIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
@@ -87,32 +169,27 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   popup->addAction( SmallIcon( "fileexport" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
 
   // saving types
-  part.saveTypes();
-}
+  mpart.saveTypes();
 
-Q3ListViewItem* TypesDialog::newListItem( Macro* m )
-{
-  MacroListElement* e = new MacroListElement( typeList, m );
-  QByteArray ifn = m->action->iconFileName();
-  if ( !ifn.isNull() )
-  {
-    QPixmap p = il->loadIcon( ifn, KIcon::Small );
-    e->setPixmap( 0, p );
-  }
-  return e;
+  connect( mtypeswidget->buttonExport, SIGNAL( clicked() ), this, SLOT( exportType() ) );
+  connect( mtypeswidget->buttonImport, SIGNAL( clicked() ), this, SLOT( importTypes() ) );
+  connect( mtypeswidget->buttonRemove, SIGNAL( clicked() ), this, SLOT( deleteType() ) );
+  connect( mtypeswidget->buttonEdit, SIGNAL( clicked() ), this, SLOT( editType() ) );
+
+  resize( 460, 270 );
 }
 
 TypesDialog::~TypesDialog()
 {
 }
 
-void TypesDialog::helpSlot()
+void TypesDialog::slotHelp()
 {
   kapp->invokeHelp( QString::fromLatin1( "working-with-types" ),
                     QString::fromLatin1( "kig" ) );
 }
 
-void TypesDialog::okSlot()
+void TypesDialog::slotOk()
 {
   mpart.saveTypes();
   mpart.deleteTypes();
@@ -122,34 +199,33 @@ void TypesDialog::okSlot()
 
 void TypesDialog::deleteType()
 {
-  std::vector<Q3ListViewItem*> items;
   std::vector<Macro*> selectedTypes;
-  Q3ListViewItemIterator it( typeList );
-  while ( it.current() ) {
-    if ( ( it.current() )->isSelected() )
-    {
-      items.push_back( it.current() );
-      selectedTypes.push_back( static_cast<MacroListElement*>( it.current() )->getMacro() );
-    }
-    ++it;
+  QList<QTreeWidgetItem*> items = mtypeswidget->typeList->selectedItems();
+  for ( int i = 0; i < items.count(); i++ )
+  {
+    BaseListElement* e = static_cast<BaseListElement*>( items.at( i ) );
+    if ( e->isMacro() )
+      selectedTypes.push_back( static_cast<MacroListElement*>( e )->getMacro() );
   }
+
   if (selectedTypes.empty()) return;
   QStringList types;
   for ( std::vector<Macro*>::iterator j = selectedTypes.begin(); 
         j != selectedTypes.end(); ++j )
     types << ( *j )->action->descriptiveName();
+  types.sort();
   if ( KMessageBox::warningContinueCancelList( this,
         i18n( "Are you sure you want to delete this type?",
               "Are you sure you want to delete these %n types?", selectedTypes.size() ),
         types, i18n("Are You Sure?"), KStdGuiItem::cont(),
         "deleteTypeWarning") == KMessageBox::Cancel )
      return;
-  for ( std::vector<Q3ListViewItem*>::iterator i = items.begin(); i != items.end(); ++i)
+  for ( int i = 0; i < items.count(); i++ )
   {
-    int appel = typeList->itemIndex(*i);
-    assert (appel != -1);
-    delete *i;
-  };
+    BaseListElement* e = static_cast<BaseListElement*>( items.at( i ) );
+    if ( e->isMacro() )
+      delete items.at( i );
+  }
   for ( std::vector<Macro*>::iterator j = selectedTypes.begin();
         j != selectedTypes.end(); ++j)
     MacroList::instance()->remove( *j );
@@ -158,13 +234,12 @@ void TypesDialog::deleteType()
 void TypesDialog::exportType()
 {
   std::vector<Macro*> types;
-  Q3ListViewItemIterator it( typeList );
-  while ( it.current() ) {
-    if ( ( it.current() )->isSelected() )
-    {
-      types.push_back( static_cast<MacroListElement*>( it.current() )->getMacro() );
-    }
-    ++it;
+  QList<QTreeWidgetItem*> items = mtypeswidget->typeList->selectedItems();
+  for ( int i = 0; i < items.count(); i++ )
+  {
+    BaseListElement* e = static_cast<BaseListElement*>( items.at( i ) );
+    if ( e->isMacro() )
+      types.push_back( static_cast<MacroListElement*>( e )->getMacro() );
   }
   if (types.empty()) return;
   QString file_name = KFileDialog::getSaveFileName(":macro", i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
@@ -198,36 +273,13 @@ void TypesDialog::importTypes()
   MacroList::instance()->add( macros );
 
   for ( uint i = 0; i < macros.size(); ++i )
-    typeList->insertItem( newListItem( macros[i] ) );
-}
-
-QString TypesDialog::fetchIconFromListItem( Q3ListViewItem* i )
-{
-  Q3ListViewItemIterator it( typeList );
-  Macro* ai = static_cast<MacroListElement*>( i )->getMacro();
-  while ( it.current() ) {
-    if ( ( it.current() )->isSelected() )
-    {
-      Macro* ait = static_cast<MacroListElement*>( it.current() )->getMacro();
-      if ( ai == ait )
-      {
-        return ai->ctor->iconFileName( true );
-      }
-    }
-    ++it;
-  }
-  return "gear";
+    new MacroListElement( mtypeswidget->typeList, macros[i] );
+  mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
 }
 
 void TypesDialog::editType()
 {
-  std::vector<Q3ListViewItem*> items;
-  Q3ListViewItemIterator it( typeList );
-  while ( it.current() ) {
-    if ( ( it.current() )->isSelected() )
-      items.push_back( it.current() );
-    ++it;
-  }
+  QList<QTreeWidgetItem*> items = mtypeswidget->typeList->selectedItems();
   if ( items.size() == 0 )
     return;
   if ( items.size() > 1 )
@@ -239,44 +291,54 @@ void TypesDialog::editType()
                         i18n( "More Than One Type Selected" ) );
     return;
   }
-  Q3ListViewItem* i = items[0];
-  EditType* d = new EditType( this, i->text( 1 ), i->text( 2 ), fetchIconFromListItem( i ) );
-  if ( d->exec() )
+  bool refresh = false;
+  BaseListElement* e = static_cast<BaseListElement*>( items.at( 0 ) );
+  if ( e->isMacro() )
   {
-    QString newname = d->name();
-    QString newdesc = d->description();
-    QString newicon = d->icon();
+    EditType* d = new EditType( this, e->name(), e->description(), e->icon() );
+    if ( d->exec() )
+    {
+      QString newname = d->name();
+      QString newdesc = d->description();
+      QString newicon = d->icon();
+      delete d;
 
-    Macro* oldmacro = static_cast<MacroListElement*>( i )->getMacro();
-//    mpart.unplugActionLists();
-    oldmacro->ctor->setName( newname );
-    oldmacro->ctor->setDescription( newdesc );
-    QByteArray ncicon( newicon.utf8() );
-    oldmacro->ctor->setIcon( ncicon );
-//    mpart.plugActionLists();
-
-    typeList->clear();
+      Macro* oldmacro = static_cast<MacroListElement*>( e )->getMacro();
+//      mpart.unplugActionLists();
+      oldmacro->ctor->setName( newname );
+      oldmacro->ctor->setDescription( newdesc );
+      QByteArray ncicon( newicon.utf8() );
+      oldmacro->ctor->setIcon( ncicon );
+//      mpart.plugActionLists();
+      refresh = true;
+    }
+  }
+  if ( refresh )
+  {
+    mtypeswidget->typeList->clear();
 
     loadAllMacros();
+    mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
   }
-  delete d;
 }
 
+/*
 void TypesDialog::contextMenuRequested( Q3ListViewItem*, const QPoint& p, int )
 {
   popup->exec( p );
 }
+*/
 
 void TypesDialog::loadAllMacros()
 {
   const vec& macros = MacroList::instance()->macros();
   for ( vec::const_reverse_iterator i = macros.rbegin(); i != macros.rend(); ++i )
   {
-    typeList->insertItem( newListItem( *i ) );
+    new MacroListElement( mtypeswidget->typeList, ( *i ) );
   }
 }
 
-void TypesDialog::cancelSlot()
+void TypesDialog::slotCancel()
 {
   mpart.deleteTypes();
   mpart.loadTypes();

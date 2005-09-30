@@ -21,47 +21,42 @@
 #ifndef KIG_MODES_TYPESDIALOG_H
 #define KIG_MODES_TYPESDIALOG_H
 
-#include "typesdialogbase.h"
+#include <kdialogbase.h>
 
 #include "../misc/lists.h"
-
-#include <klistview.h>
-#include <kiconloader.h>
 
 class QMenu;
 class KigPart;
 class KigDocument;
+class Ui_TypesWidget;
 
 /**
  * Manage the macro types...
  */
-class TypesDialog : public TypesDialogBase
+class TypesDialog : public KDialogBase
 {
   Q_OBJECT
 
   // necessary because some MacroList functions need it..
   KigPart& mpart;
-  const KIconLoader* il;
   QMenu* popup;
+  Ui_TypesWidget* mtypeswidget;
 public:
   TypesDialog( QWidget* parent, KigPart& );
   ~TypesDialog();
 
-public slots:
-  void helpSlot();
-  void okSlot();
-  void cancelSlot();
-
 protected slots:
+  virtual void slotHelp();
+  virtual void slotOk();
+  virtual void slotCancel();
+
   void deleteType();
   void exportType();
   void importTypes();
   void editType();
-  void contextMenuRequested( Q3ListViewItem* i, const QPoint& p, int c );
+//  void contextMenuRequested( Q3ListViewItem* i, const QPoint& p, int c );
 
 private:
-  Q3ListViewItem* newListItem( Macro* m );
-  QString fetchIconFromListItem( Q3ListViewItem* i );
   void loadAllMacros();
   typedef MacroList::vectype vec;
 };
