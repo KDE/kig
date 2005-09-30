@@ -6,7 +6,7 @@ libmodes_la_SOURCES= \
 	construct_mode.cc \
 	dragrectmode.cc \
 	edittype.cc \
-	edittypebase.ui \
+	edittypewidget.ui \
 	label.cc \
 	linkslabel.cpp \
 	macro.cc \

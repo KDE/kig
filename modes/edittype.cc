@@ -1,4 +1,4 @@
-/**
+/*
    This file is part of Kig, a KDE program for Interactive Geometry...
    Copyright (C) 2004  Dominique Devriese <devriese@kde.org>
    Copyright (C) 2004  Pino Toscano <toscano.pino@tiscali.it>
@@ -15,48 +15,61 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA  02110-1301
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
    USA
-**/
-
+*/
 
 #include "edittype.h"
 #include "edittype.moc"
+
+#include "edittypewidget.h"
 
 #include <kapplication.h>
 #include <kicondialog.h>
 #include <klineedit.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kpushbutton.h>
-#include <kstdguiitem.h>
 
-EditType::EditType( QWidget* parent, QString name, QString desc, QString icon )
-  : EditTypeBase( parent, "edittype", true ), mname( name ), mdesc( desc ), micon( icon )
+EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
+                    const QString& icon )
+  : KDialogBase( parent, "edit-type-dialog", true, i18n( "Edit Type" ),
+                 Help|Ok|Cancel, Ok, true ),
+    mname( name ), mdesc( desc ), micon( icon )
 {
-  // improving GUI look'n'feel...
-  buttonHelp->setGuiItem( KStdGuiItem::help() );
-  buttonOk->setGuiItem( KStdGuiItem::ok() );
-  buttonCancel->setGuiItem( KStdGuiItem::cancel() );
+  QWidget* base = new QWidget( this );
+  setMainWidget( base );
+  medittypewidget = new Ui_EditTypeWidget();
+  medittypewidget->setupUi( base );
+  base->layout()->setMargin( 0 );
 
-  editName->setText( mname );
-  editDescription->setText( mdesc );
-  typeIcon->setIcon( !micon.isEmpty() ? micon : "gear" );
+  medittypewidget->editName->setText( mname );
+  medittypewidget->editName->setWhatsThis(
+        i18n( "Here you can edit the name of the current macro type." ) );
+  medittypewidget->editDescription->setText( mdesc );
+  medittypewidget->editDescription->setWhatsThis(
+        i18n( "Here you can edit the description of the current macro type. "
+              "This field is optional, so you can also leave this empty: if "
+              "you do so, then your macro type will have no description." ) );
+  medittypewidget->typeIcon->setIcon( !micon.isEmpty() ? micon : "gear" );
+  medittypewidget->typeIcon->setWhatsThis(
+        i18n( "Use this button to change the icon of the current macro type." ) );
+
+  resize( 450, 150 );
 }
 
 EditType::~EditType()
 {
 }
 
-void EditType::helpSlot()
+void EditType::slotHelp()
 {
-  kapp->invokeHelp( QString::fromLatin1( "working-with-types" ),
-                    QString::fromLatin1( "kig" ) );
+  kapp->invokeHelp( QLatin1String( "working-with-types" ),
+                    QLatin1String( "kig" ) );
 }
 
-void EditType::okSlot()
+void EditType::slotOk()
 {
-  QString tmp = editName->text();
+  QString tmp = medittypewidget->editName->text();
   if ( tmp.isEmpty() )
   {
     KMessageBox::information( this, i18n( "The name of the macro can not be empty." ) );
@@ -71,13 +84,13 @@ void EditType::okSlot()
     mname = tmp;
     namechanged = true;
   }
-  tmp = editDescription->text();
+  tmp = medittypewidget->editDescription->text();
   if ( tmp != mdesc )
   {
     mdesc = tmp;
     descchanged = true;
   }
-  tmp = typeIcon->icon();
+  tmp = medittypewidget->typeIcon->icon();
   if ( tmp != micon )
   {
     micon = tmp;
@@ -86,7 +99,7 @@ void EditType::okSlot()
   done( namechanged || descchanged || iconchanged );
 }
 
-void EditType::cancelSlot()
+void EditType::slotCancel()
 {
   done( 0 );
 }

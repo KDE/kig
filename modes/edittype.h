@@ -14,35 +14,41 @@
 
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
 #ifndef KIG_MODES_EDITTYPE_H
 #define KIG_MODES_EDITTYPE_H
 
-#include "edittypebase.h"
+#include <kdialogbase.h>
+
+class Ui_EditTypeWidget;
 
 /**
  * Simply dialog that allow the user the editing of a macro type...
  */
-class EditType : public EditTypeBase
+class EditType : public KDialogBase
 {
   Q_OBJECT
+
+  Ui_EditTypeWidget* medittypewidget;
 
   QString mname;
   QString mdesc;
   QString micon;
 public:
-  EditType( QWidget* parent, QString name = QString::null, QString desc = QString::null, QString icon = QString::null );
+  EditType( QWidget* parent, const QString& name = QString(),
+            const QString& desc = QString(), const QString& icon = QString() );
   ~EditType();
+
   const QString name() const;
   const QString description() const;
   const QString icon() const;
 
-public slots:
-  void helpSlot();
-  void okSlot();
-  void cancelSlot();
+protected slots:
+  virtual void slotHelp();
+  virtual void slotOk();
+  virtual void slotCancel();
 };
 
 #endif
