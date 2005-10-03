@@ -58,7 +58,7 @@
 
 2005-09-18  Pino Toscano <toscano.pino@tiscali.it>
 
-	* Ported from KMenu to KMenu. Drawbacks: menu caption
+	* Ported from KPopupMenu to KMenu. Drawbacks: menu caption
 	implemented as disabled QAction; KAction->plug() isn't working yet
 	on QMenu.
 
