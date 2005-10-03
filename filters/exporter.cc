@@ -45,6 +45,7 @@
 #include <kaction.h>
 #include <kiconloader.h>
 #include <kimageio.h>
+#include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <knuminput.h>
@@ -71,7 +72,7 @@ public:
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )
-  : KAction( exp->menuEntryName(), KShortcut(), 0, 0, parent ),
+  : KAction( exp->menuEntryName(), KShortcut(), 0L, 0, parent, "action" ),
     mexp( exp ), mdoc( doc ), mw( w )
 {
   QString iconstr = exp->menuIcon();
@@ -80,7 +81,7 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
   KIconLoader* l = doc->instance()->iconLoader();
   QPixmap icon = l->loadIcon( iconstr, KIcon::Small, 16, KIcon::DefaultState, 0L, true );
   if ( !icon.isNull() )
-    setIconSet( QIconSet( icon ) );
+    setIcon( QIcon( icon ) );
 }
 
 void ExporterAction::slotActivated()

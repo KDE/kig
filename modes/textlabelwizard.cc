@@ -21,10 +21,10 @@
 #include "label.h"
 #include "linkslabel.h"
 
-#include <qtextedit.h>
-#include <kapplication.h>
-
 #include <qlayout.h>
+#include <qtextedit.h>
+
+#include <ktoolinvocation.h>
 
 TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
   : TextLabelWizardBase( parent, "TextLabelWizard" ), mmode( mode )
@@ -90,7 +90,7 @@ void TextLabelWizard::relayoutArgsPage()
 
 void TextLabelWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( QString::fromLatin1( "text-labels" ),
-                    QString::fromLatin1( "kig" ) );
+  KToolInvocation::invokeHelp( QLatin1String( "text-labels" ),
+                               QLatin1String( "kig" ) );
 }
 

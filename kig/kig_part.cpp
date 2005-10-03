@@ -165,9 +165,9 @@ bool KigPrintDialogPage::isValid( QString& )
 }
 
 KigPart::KigPart( QWidget *parentWidget, const char *,
-                  QObject *parent, const char *name,
+                  QObject *parent, const char *,
                   const QStringList& )
-  : KParts::ReadWritePart( parent, name ),
+  : KParts::ReadWritePart( parent ),
     mMode( 0 ), mdocument( new KigDocument() )
 {
   // we need an instance
@@ -271,12 +271,11 @@ void KigPart::setupActions()
   a = KStdAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
-  a->setIconSet( QIconSet( l->loadIcon( "view_fit_to_page", KIcon::Toolbar ) ) );
+  a->setIcon( QIcon( l->loadIcon( "view_fit_to_page", KIcon::Toolbar ) ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
   a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), (QWidget*)(widget()->parent()),"fullscreen" );
-
   a->setToolTip( i18n( "View this document full-screen." ) );
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
@@ -324,7 +323,7 @@ void KigPart::setupTypes()
   typedef GUIActionList::avectype::const_iterator iter;
   for ( iter i = l.actions().begin(); i != l.actions().end(); ++i )
   {
-    KigGUIAction* ret = new KigGUIAction( *i, *this, actionCollection() );
+    KigGUIAction* ret = new KigGUIAction( *i, *this );
     aActions.push_back( ret );
     ret->plug( this );
   };
@@ -657,7 +656,7 @@ void KigPart::actionRemoved( GUIAction* a, GUIUpdateToken& t )
 
 void KigPart::actionAdded( GUIAction* a, GUIUpdateToken& )
 {
-  KigGUIAction* ret = new KigGUIAction( a, *this, actionCollection() );
+  KigGUIAction* ret = new KigGUIAction( a, *this );
   aActions.push_back( ret );
   ret->plug( this );
 }

@@ -58,8 +58,9 @@
 #include <kcolordialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
-#include <klocale.h>
 #include <kinputdialog.h>
+#include <kinstance.h>
+#include <klocale.h>
 
 #include <config.h>
 

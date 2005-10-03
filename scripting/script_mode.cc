@@ -33,6 +33,7 @@
 
 #include <kcursor.h>
 #include <kiconloader.h>
+#include <kinstance.h>
 #include <kmessagebox.h>
 
 void ScriptMode::dragRect( const QPoint& p, KigWidget& w )

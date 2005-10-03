@@ -39,8 +39,7 @@ class KigGUIAction
   KigPart& mdoc;
 public:
   KigGUIAction( GUIAction* act,
-                KigPart& doc,
-                QObject* parent );
+                KigPart& doc );
   void slotActivated();
 
   GUIAction* guiAction();

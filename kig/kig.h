@@ -60,7 +60,7 @@ class Kig : public KParts::MainWindow
    *
    * \param s the url of the file to open
    */
-  void openURL (const QString& s) { openURL(KURL(s)); };
+  virtual void openURL ( const QString& s ) { openURL( KURL( s ) ); };
   void openURL (const KURL& s);
 
  protected:
@@ -70,14 +70,14 @@ class Kig : public KParts::MainWindow
    *
    * \param e
    */
-  void dragEnterEvent(QDragEnterEvent* e);
+  virtual void dragEnterEvent( QDragEnterEvent* e );
 
   /**
    * The user dropped something onto us...
    *
    * \param e
    */
-  void dropEvent (QDropEvent* e);
+  virtual void dropEvent( QDropEvent* e );
 
   /**
    * this is called by the framework before closing the window, to

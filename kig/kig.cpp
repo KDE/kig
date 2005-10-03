@@ -38,7 +38,7 @@
 #include <kstdaction.h>
 #include <ktip.h>
 #include <kurl.h>
-#include <kurldrag.h>
+#include <kxmlguifactory.h>
 
 #include <assert.h>
 
@@ -77,7 +77,7 @@ Kig::Kig()
 
 	  // and integrate the part's GUI with the shell's
 	  // FIXME!!! disabling for now as it seems to create a unending loop
-	  createGUI(m_part);
+//	  createGUI(m_part);
 	  // finally show tip-of-day ( if the user wants it :) )
 	  QTimer::singleShot( 0, this, SLOT( startupTipOfDay() ) );
       }
@@ -218,21 +218,18 @@ bool Kig::queryClose()
 
 void Kig::dragEnterEvent(QDragEnterEvent* e)
 {
-  e->accept(KURLDrag::canDecode(e));
+  e->accept( KURL::List::canDecode( e->mimeData() ) );
 }
 
 void Kig::dropEvent(QDropEvent* e)
 {
-  KURL::List urls;
-  if ( KURLDrag::decode (e, urls) )
-    {
-      for (KURL::List::iterator u = urls.begin(); u != urls.end(); ++u)
-	{
-	   Kig* k = new Kig;
-	   k->show();
-	   k->load(*u);
-	};
-    };
+  KURL::List urls = KURL::List::fromMimeData( e->mimeData() );
+  for ( KURL::List::iterator u = urls.begin(); u != urls.end(); ++u )
+  {
+    Kig* k = new Kig();
+    k->show();
+    k->load( *u );
+  }
 }
 
 void Kig::fileOpen()

@@ -45,6 +45,7 @@
 #include <kcursor.h>
 #include <kdebug.h>
 #include <kiconloader.h>
+#include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 

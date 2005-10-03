@@ -32,6 +32,7 @@
 #include "../objects/bogus_imp.h"
 
 #include <kiconloader.h>
+#include <kinstance.h>
 #include <klocale.h>
 
 #include <qregexp.h>
@@ -80,14 +81,13 @@ void ConstructibleAction::act( KigPart& d )
 }
 
 KigGUIAction::KigGUIAction( GUIAction* act,
-                            KigPart& doc,
-                            QObject* parent )
+                            KigPart& doc )
   : KAction( act->descriptiveName(),
              doc.instance()->iconLoader()->loadIcon(
                act->iconFileName(), KIcon::Toolbar, 0, KIcon::DefaultState, 0L, true ),
              act->shortcut(),
              0, 0,              // no slot connection
-             parent, act->actionName() ),
+             doc.actionCollection(), act->actionName() ),
   mact( act ),
   mdoc( doc )
 {

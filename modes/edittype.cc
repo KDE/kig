@@ -24,11 +24,11 @@
 
 #include "edittypewidget.h"
 
-#include <kapplication.h>
 #include <kicondialog.h>
 #include <klineedit.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <ktoolinvocation.h>
 
 EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
                     const QString& icon )
@@ -63,8 +63,8 @@ EditType::~EditType()
 
 void EditType::slotHelp()
 {
-  kapp->invokeHelp( QLatin1String( "working-with-types" ),
-                    QLatin1String( "kig" ) );
+  KToolInvocation::invokeHelp( QLatin1String( "working-with-types" ),
+                               QLatin1String( "kig" ) );
 }
 
 void EditType::slotOk()

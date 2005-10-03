@@ -22,7 +22,7 @@
 
 #include <kdebug.h>
 #include <klineedit.h>
-#include <kapplication.h>
+#include <ktoolinvocation.h>
 
 MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
   : MacroWizardBase( parent, "Define Macro Wizard" ), mmode( m )
@@ -86,6 +86,6 @@ void MacroWizard::accept()
 
 void MacroWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( QString::fromLatin1( "defining-macros"),
-                    QString::fromLatin1( "kig" ) );
+  KToolInvocation::invokeHelp( QLatin1String( "defining-macros"),
+                               QLatin1String( "kig" ) );
 }

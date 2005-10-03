@@ -22,12 +22,11 @@
 
 #include <qlabel.h>
 #include <qlayout.h>
+#include <qmenu.h>
 
 #include <kaction.h>
 #include <kactioncollection.h>
-#include <kapplication.h>
 #include <kglobalsettings.h>
-#include <kpopupmenu.h>
 #include <ktextedit.h>
 #if 0
 #include <ktexteditor/clipboardinterface.h>
@@ -38,6 +37,7 @@
 #include <ktexteditor/undointerface.h>
 #endif
 #include <ktexteditor/view.h>
+#include <ktoolinvocation.h>
 
 #include <assert.h>
 
@@ -74,7 +74,8 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
   {
     // there is no KDE textditor component installed, so we'll use a
     // simplier KTextEdit
-    textedit = new KTextEdit( mpcode, "textedit" );
+    textedit = new KTextEdit( mpcode );
+    textedit->setObjectName( "textedit" );
     textedit->setFont( KGlobalSettings::fixedFont() );
     gridLayout->addWidget( textedit, 1, 0 );
   }
@@ -103,24 +104,24 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
     noHlStyle = hli->hlMode();
 
     // creating the popup menu
-    KPopupMenu* pm = new KPopupMenu( docview );
+    QMenu* menu = new QMenu( docview );
     // creating the actions for the code editor and plugging them into
     // the popup menu (to build it, of course :) )
     KAction* act = document->actionCollection()->action( "edit_undo" );
     connect( act, SIGNAL( activated() ), this, SLOT( slotUndo() ) );
-    act->plug( pm );
+    act->plug( menu );
     act = document->actionCollection()->action( "edit_redo" );
     connect( act, SIGNAL( activated() ), this, SLOT( slotRedo() ) );
-    act->plug( pm );
+    act->plug( menu );
     act = document->actionCollection()->action( "edit_cut" );
     connect( act, SIGNAL( activated() ), this, SLOT( slotCut() ) );
-    act->plug( pm );
+    act->plug( menu );
     act = document->actionCollection()->action( "edit_copy" );
     connect( act, SIGNAL( activated() ), this, SLOT( slotCopy() ) );
-    act->plug( pm );
+    act->plug( menu );
     act = document->actionCollection()->action( "edit_paste" );
     connect( act, SIGNAL( activated() ), this, SLOT( slotPaste() ) );
-    act->plug( pm );
+    act->plug( menu );
 
 #if 0
     KActionCollection* ac = new KActionCollection( document );
@@ -139,7 +140,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
 #endif
 
     // finally, we install the popup menu
-    docview->setContextMenu( pm );
+    docview->setContextMenu( menu );
   }
 
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelpClicked() ) );
@@ -187,8 +188,8 @@ void NewScriptWizard::accept()
 
 void NewScriptWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( QString::fromLatin1( "scripting" ),
-                    QString::fromLatin1( "kig" ) );
+  KToolInvocation::invokeHelp( QLatin1String( "scripting" ),
+                               QLatin1String( "kig" ) );
 }
 
 void NewScriptWizard::setText( const QString& text )

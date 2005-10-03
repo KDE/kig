@@ -29,8 +29,8 @@ typedef KGenericFactory<DrgeoPlugin> drgeoFactory;
 
 K_EXPORT_COMPONENT_FACTORY( kfile_drgeo, drgeoFactory( "kfile_drgeo" ) )
 
-DrgeoPlugin::DrgeoPlugin( QObject *parent, const char *name, const QStringList &args )
-    : KFilePlugin( parent, name, args )
+DrgeoPlugin::DrgeoPlugin( QObject *parent, const char *, const QStringList &args )
+    : KFilePlugin( parent, args )
 {
   info = addMimeTypeInfo( "application/x-drgeo" );
 

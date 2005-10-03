@@ -27,12 +27,13 @@
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
 
-#include <kapplication.h>
 #include <kdebug.h>
 #include <kfiledialog.h>
 #include <kiconloader.h>
+#include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <ktoolinvocation.h>
 
 #include <qbytearray.h>
 #include <qfile.h>
@@ -185,8 +186,8 @@ TypesDialog::~TypesDialog()
 
 void TypesDialog::slotHelp()
 {
-  kapp->invokeHelp( QString::fromLatin1( "working-with-types" ),
-                    QString::fromLatin1( "kig" ) );
+  KToolInvocation::invokeHelp( QLatin1String( "working-with-types" ),
+                               QLatin1String( "kig" ) );
 }
 
 void TypesDialog::slotOk()
