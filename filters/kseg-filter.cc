@@ -199,7 +199,7 @@ ObjectCalcer* KigFilterKSeg::transformObject( const QString& file, KigDocument& 
 KigDocument* KigFilterKSeg::load( const QString& file )
 {
   QFile ffile( file );
-  if ( ! ffile.open( IO_ReadOnly ) )
+  if ( ! ffile.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
     return false;
@@ -217,7 +217,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
   QByteArray array;
   fstream >> array;
   QBuffer buf( &array );
-  buf.open( IO_ReadOnly );
+  buf.open( QIODevice::ReadOnly );
   QDataStream stream( &buf );
 
   stream.setVersion( 3 );
@@ -362,7 +362,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
           if ( !parents[0]->imp()->inherits( SegmentImp::stype() ) )
             KIG_FILTER_PARSE_ERROR;
-          int index = parents[0]->imp()->propertiesInternalNames().findIndex( "mid-point" );
+          int index = parents[0]->imp()->propertiesInternalNames().indexOf( "mid-point" );
           assert( index != -1 );
           o = new ObjectPropertyCalcer( parents[0], index );
           break;
@@ -494,7 +494,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
             point = parents[1];
             segment = parents[0];
           };
-          int index = segment->imp()->propertiesInternalNames().findIndex( "length" );
+          int index = segment->imp()->propertiesInternalNames().indexOf( "length" );
           if ( index == -1 ) KIG_FILTER_PARSE_ERROR;
           ObjectPropertyCalcer* length = new ObjectPropertyCalcer( segment, index );
           length->calc( *retdoc );

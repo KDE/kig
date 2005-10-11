@@ -128,7 +128,9 @@ KigPrintDialogPage::KigPrintDialogPage( QWidget* parent )
 {
   setTitle( i18n( "Kig Options" ) );
 
-  QVBoxLayout* vl = new QVBoxLayout( this, 0 , 11 );
+  QVBoxLayout* vl = new QVBoxLayout( this );
+  vl->setMargin( 0 );
+  vl->setSpacing( 11 );
 
   showgrid = new QCheckBox( i18n( "Show grid" ), this );
   vl->addWidget( showgrid );

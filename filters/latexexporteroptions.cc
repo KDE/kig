@@ -43,7 +43,7 @@ void LatexExporterOptions::setGrid( bool grid )
 
 bool LatexExporterOptions::showGrid() const
 {
-  return expwidget->showGridCheckBox->isOn();
+  return expwidget->showGridCheckBox->isChecked();
 }
 
 void LatexExporterOptions::setAxes( bool axes )
@@ -53,7 +53,7 @@ void LatexExporterOptions::setAxes( bool axes )
 
 bool LatexExporterOptions::showAxes() const
 {
-  return expwidget->showAxesCheckBox->isOn();
+  return expwidget->showAxesCheckBox->isChecked();
 }
 
 void LatexExporterOptions::setExtraFrame( bool frame )
@@ -63,5 +63,5 @@ void LatexExporterOptions::setExtraFrame( bool frame )
 
 bool LatexExporterOptions::showExtraFrame() const
 {
-  return expwidget->showFrameCheckBox->isOn();
+  return expwidget->showFrameCheckBox->isChecked();
 }

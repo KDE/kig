@@ -43,7 +43,7 @@ void SVGExporterOptions::setGrid( bool grid )
 
 bool SVGExporterOptions::showGrid() const
 {
-  return expwidget->showGridCheckBox->isOn();
+  return expwidget->showGridCheckBox->isChecked();
 }
 
 void SVGExporterOptions::setAxes( bool axes )
@@ -53,5 +53,5 @@ void SVGExporterOptions::setAxes( bool axes )
 
 bool SVGExporterOptions::showAxes() const
 {
-  return expwidget->showAxesCheckBox->isOn();
+  return expwidget->showAxesCheckBox->isChecked();
 }

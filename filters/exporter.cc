@@ -142,7 +142,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   delete kfd;
 
   QFile file( filename );
-  if ( ! file.open( IO_WriteOnly ) )
+  if ( ! file.open( QIODevice::WriteOnly ) )
   {
     KMessageBox::sorry( &w,
                         i18n( "The file \"%1\" could not be opened. Please check if the file permissions are set correctly." )
@@ -401,7 +401,7 @@ void XFigExportImpVisitor::visit( const TextImp* imp )
           << "500 500 " // height, width: large enough..
           << coord.x() << " " // x, y
           << coord.y() << " "
-          << text.ascii() << "\\001" // text, terminated by \001
+          << text.toAscii() << "\\001" // text, terminated by \001
           << "\n";
 }
 
@@ -588,7 +588,7 @@ void XFigExporter::run( const KigPart& doc, KigWidget& w )
   delete kfd;
 
   QFile file( file_name );
-  if ( ! file.open( IO_WriteOnly ) )
+  if ( ! file.open( QIODevice::WriteOnly ) )
   {
     KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
                                   "check if the file permissions are set correctly." )

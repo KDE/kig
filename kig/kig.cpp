@@ -218,7 +218,7 @@ bool Kig::queryClose()
 
 void Kig::dragEnterEvent(QDragEnterEvent* e)
 {
-  e->accept( KURL::List::canDecode( e->mimeData() ) );
+  e->setAccepted( KURL::List::canDecode( e->mimeData() ) );
 }
 
 void Kig::dropEvent(QDropEvent* e)

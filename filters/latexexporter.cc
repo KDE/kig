@@ -461,7 +461,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
   delete kfd;
 
   QFile file( file_name );
-  if ( ! file.open( IO_WriteOnly ) )
+  if ( ! file.open( QIODevice::WriteOnly ) )
   {
     KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
                                   "check if the file permissions are set correctly." )

@@ -177,7 +177,7 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
   // there are 4 lines per object in the file, so we read them all
   // four now.
   QString line1, line2, line3, s;
-  QString file = f.name();
+  QString file = f.fileName();
   line1 = readLine( f );
   line2 = readLine( f );
   line3 = readLine( f );
@@ -196,7 +196,7 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
   if ( !ok ) KIG_FILTER_PARSE_ERROR;
 
   tmp = firstlinere.cap( 2 );
-  myobj.type = tmp.latin1();
+  myobj.type = tmp.toLatin1();
 
   tmp = firstlinere.cap( 3 );
   // i have no idea what this number means..
@@ -246,7 +246,7 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
     KIG_FILTER_PARSE_ERROR;
 
   tmp = thirdlinere.cap( 2 );
-  QStringList parentsids = QStringList::split( ' ', tmp );
+  QStringList parentsids = tmp.split( tmp, QString::SkipEmptyParts );
   for ( QStringList::iterator i = parentsids.begin();
         i != parentsids.end(); ++i )
   {
@@ -257,7 +257,7 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
     KIG_FILTER_PARSE_ERROR;
 
   tmp = thirdlinere.cap( 4 );
-  QStringList valIds = QStringList::split( ' ', tmp );
+  QStringList valIds = tmp.split( tmp, QString::SkipEmptyParts );
   for ( QStringList::iterator i = valIds.begin();
         i != valIds.end(); ++i )
   {
@@ -290,7 +290,7 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
 KigDocument* KigFilterCabri::load( const QString& file )
 {
   QFile f( file );
-  if ( ! f.open( IO_ReadOnly ) )
+  if ( ! f.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
     return 0;

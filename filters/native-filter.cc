@@ -107,7 +107,7 @@ bool KigFilterNative::supportMime( const QString& mime )
 KigDocument* KigFilterNative::load( const QString& file )
 {
   QFile ffile( file );
-  if ( ! ffile.open( IO_ReadOnly ) )
+  if ( ! ffile.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
     return 0;
@@ -135,7 +135,7 @@ KigDocument* KigFilterNative::load( const QString& file )
       KIG_FILTER_PARSE_ERROR;
     // reading compressed file
     KTar* ark = new KTar( file, "application/x-gzip" );
-    ark->open( IO_ReadOnly );
+    ark->open( QIODevice::ReadOnly );
     const KArchiveDirectory* dir = ark->directory();
 //    assert( dir );
     QStringList entries = dir->entries();
@@ -156,7 +156,7 @@ KigDocument* KigFilterNative::load( const QString& file )
   }
 #endif
 
-  if ( !kigdoc.open( IO_ReadOnly ) )
+  if ( !kigdoc.open( QIODevice::ReadOnly ) )
     KIG_FILTER_PARSE_ERROR;
 
   QDomDocument doc( "KigDocument" );
@@ -320,7 +320,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
           if ( i->parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
           ObjectCalcer* parent = retcalcers[i->parents[0] -1];
           QByteArrayList propnames = parent->imp()->propertiesInternalNames();
-          int propid = propnames.findIndex( propname );
+          int propid = propnames.indexOf( propname );
           if ( propid == -1 )
             KIG_FILTER_PARSE_ERROR;
 
@@ -476,7 +476,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
           QByteArray propname = e.attribute( "which" ).toLatin1();
 
           ObjectCalcer* parent = parents[0];
-          int propid = parent->imp()->propertiesInternalNames().findIndex( propname );
+          int propid = parent->imp()->propertiesInternalNames().indexOf( propname );
           if ( propid == -1 ) KIG_FILTER_PARSE_ERROR;
 
           o = new ObjectPropertyCalcer( parent, propid );
@@ -714,7 +714,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
   // we have an empty outfile, so we have to print all to stdout
   if ( outfile.isEmpty() )
   {
-    QTextStream stdoutstream( stdout, IO_WriteOnly );
+    QTextStream stdoutstream( stdout, QIODevice::WriteOnly );
     return save07( data, stdoutstream );
   }
 #ifndef KIG_NO_COMPRESSED_FILES
@@ -735,7 +735,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
 
     QString tmpfile = tempdir + tempname + ".kig";
     QFile ftmpfile( tmpfile );
-    if ( !ftmpfile.open( IO_WriteOnly ) )
+    if ( !ftmpfile.open( QIODevice::WriteOnly ) )
       return false;
     QTextStream stream( &ftmpfile );
     if ( !save07( data, stream ) )
@@ -746,7 +746,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
 
     // creating the archive and adding our file
     KTar* ark = new KTar( outfile,  "application/x-gzip" );
-    ark->open( IO_WriteOnly );
+    ark->open( QIODevice::WriteOnly );
     ark->addLocalFile( tmpfile, tempname + ".kig" );
     ark->close();
 
@@ -759,7 +759,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
   {
 #endif
     QFile file( outfile );
-    if ( ! file.open( IO_WriteOnly ) )
+    if ( ! file.open( QIODevice::WriteOnly ) )
     {
       fileNotFound( outfile );
       return false;

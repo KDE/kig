@@ -52,7 +52,7 @@ void ImageExporterOptions::setGrid( bool grid )
 
 bool ImageExporterOptions::showGrid() const
 {
-  return expwidget->showGridCheckBox->isOn();
+  return expwidget->showGridCheckBox->isChecked();
 }
 
 void ImageExporterOptions::setAxes( bool axes )
@@ -62,7 +62,7 @@ void ImageExporterOptions::setAxes( bool axes )
 
 bool ImageExporterOptions::showAxes() const
 {
-  return expwidget->showAxesCheckBox->isOn();
+  return expwidget->showAxesCheckBox->isChecked();
 }
 
 void ImageExporterOptions::setImageSize( const QSize& size )
@@ -81,7 +81,7 @@ QSize ImageExporterOptions::imageSize() const
 
 void ImageExporterOptions::slotWidthChanged( int w )
 {
-  if ( ! minternallysettingstuff && expwidget->keepAspectRatio->isOn() )
+  if ( ! minternallysettingstuff && expwidget->keepAspectRatio->isChecked() )
   {
     minternallysettingstuff = true;
     expwidget->HeightInput->setValue( w * msize.height() / msize.width() );
@@ -91,7 +91,7 @@ void ImageExporterOptions::slotWidthChanged( int w )
 
 void ImageExporterOptions::slotHeightChanged( int h )
 {
-  if ( ! minternallysettingstuff && expwidget->keepAspectRatio->isOn() )
+  if ( ! minternallysettingstuff && expwidget->keepAspectRatio->isChecked() )
   {
     minternallysettingstuff = true;
     expwidget->WidthInput->setValue( h * msize.width() / msize.height() );

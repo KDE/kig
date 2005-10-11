@@ -57,7 +57,7 @@ KigWidget::KigWidget( KigPart* part,
                       QWidget* parent,
                       bool fullscreen )
   : QWidget( parent,
-             fullscreen ? Qt::WStyle_Customize | Qt::WStyle_NoBorder : (Qt::WFlags)0 ),
+             fullscreen ? Qt::FramelessWindowHint : (Qt::WFlags)0 ),
     mpart( part ),
     mview( view ),
     stillPix(size()),
@@ -103,22 +103,22 @@ void KigWidget::mousePressEvent (QMouseEvent* e)
 
 void KigWidget::mouseMoveEvent (QMouseEvent* e)
 {
-  if( e->state() & Qt::LeftButton )
+  if( e->button() & Qt::LeftButton )
     return mpart->mode()->leftMouseMoved( e, this );
-  if ( e->state() & Qt::MidButton )
+  if ( e->button() & Qt::MidButton )
     return mpart->mode()->midMouseMoved( e, this );
-  if ( e->state() & Qt::RightButton )
+  if ( e->button() & Qt::RightButton )
     return mpart->mode()->rightMouseMoved( e, this );
   return mpart->mode()->mouseMoved( e, this );
 }
 
 void KigWidget::mouseReleaseEvent (QMouseEvent* e)
 {
-  if( e->state() & Qt::LeftButton )
+  if( e->button() & Qt::LeftButton )
     return mpart->mode()->leftReleased( e, this );
-  if ( e->state() & Qt::MidButton )
+  if ( e->button() & Qt::MidButton )
     return mpart->mode()->midReleased( e, this );
-  if ( e->state() & Qt::RightButton )
+  if ( e->button() & Qt::RightButton )
     return mpart->mode()->rightReleased( e, this );
 }
 
@@ -313,21 +313,25 @@ KigView::KigView( KigPart* part,
 {
   connect( part, SIGNAL( recenterScreen() ), this, SLOT( slotInternalRecenterScreen() ) );
 
-  mlayout = new QGridLayout( this, 2, 2 );
-  mrightscroll = new QScrollBar( Qt::Vertical, this, "Right Scrollbar" );
+  mlayout = new QGridLayout( this );
+  mlayout->setMargin( 2 );
+  mlayout->setSpacing( 2 );
+  mrightscroll = new QScrollBar( Qt::Vertical, this );
+  mrightscroll->setObjectName( QLatin1String( "Right Scrollbar" ) );
   // TODO: make this configurable...
   mrightscroll->setTracking( true );
   connect( mrightscroll, SIGNAL( valueChanged( int ) ),
            this, SLOT( slotRightScrollValueChanged( int ) ) );
   connect( mrightscroll, SIGNAL( sliderReleased() ),
            this, SLOT( updateScrollBars() ) );
-  mbottomscroll = new QScrollBar( Qt::Horizontal, this, "Bottom Scrollbar" );
+  mbottomscroll = new QScrollBar( Qt::Horizontal, this );
+  mbottomscroll->setObjectName( QLatin1String( "Bottom Scrollbar" ) );
   connect( mbottomscroll, SIGNAL( valueChanged( int ) ),
            this, SLOT( slotBottomScrollValueChanged( int ) ) );
   connect( mbottomscroll, SIGNAL( sliderReleased() ),
            this, SLOT( updateScrollBars() ) );
   mrealwidget = new KigWidget( part, this, this, fullscreen );
-  mrealwidget->setObjectName( "Kig Widget" );
+  mrealwidget->setObjectName( QLatin1String( "Kig Widget" ) );
   mlayout->addWidget( mbottomscroll, 1, 0 );
   mlayout->addWidget( mrealwidget, 0, 0 );
   mlayout->addWidget( mrightscroll, 0, 1 );

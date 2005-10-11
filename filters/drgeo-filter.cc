@@ -81,7 +81,7 @@ bool KigFilterDrgeo::supportMime( const QString& mime )
 KigDocument* KigFilterDrgeo::load( const QString& file )
 {
   QFile f( file );
-  if ( ! f.open( IO_ReadOnly ) )
+  if ( ! f.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
     return 0;
