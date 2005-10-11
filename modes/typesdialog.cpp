@@ -249,7 +249,7 @@ void TypesDialog::exportType()
   QFile fi( file_name );
   if ( fi.exists() )
     if ( KMessageBox::warningContinueCancel( this, i18n( "The file \"%1\" already exists. "
-                                       "Do you wish to overwrite it?" ).arg( fi.name() ),
+                                       "Do you wish to overwrite it?" ).arg( fi.fileName() ),
                                        i18n( "Overwrite File?" ), i18n("Overwrite") ) == KMessageBox::Cancel )
        return;
   MacroList::instance()->save( types, file_name );
@@ -308,7 +308,7 @@ void TypesDialog::editType()
 //      mpart.unplugActionLists();
       oldmacro->ctor->setName( newname );
       oldmacro->ctor->setDescription( newdesc );
-      QByteArray ncicon( newicon.utf8() );
+      QByteArray ncicon( newicon.toUtf8() );
       oldmacro->ctor->setIcon( ncicon );
 //      mpart.plugActionLists();
       refresh = true;

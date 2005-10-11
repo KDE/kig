@@ -69,7 +69,7 @@ void BaseConstructMode::leftReleased( QMouseEvent* e, KigWidget* v )
   if( (pointLocation() - e->pos()).manhattanLength() > 4 ) return;
 
   ObjectHolder* o = 0;
-  bool keyCtrlOrShift = ( e->state() & ( Qt::ControlButton | Qt::ShiftButton) ) != 0;
+  bool keyCtrlOrShift = ( e->modifiers() & ( Qt::ControlModifier | Qt::ShiftModifier) ) != 0;
   std::vector<ObjectHolder*> moco = oco();
   if ( ! moco.empty() )
   {
@@ -488,7 +488,7 @@ void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
     assert( mresult->imp()->inherits( TestResultImp::stype() ) );
     parents.push_back(
       new ObjectPropertyCalcer(
-        mresult.get(), mresult->imp()->propertiesInternalNames().findIndex( "test-result" ) ) );
+        mresult.get(), mresult->imp()->propertiesInternalNames().indexOf( "test-result" ) ) );
     parents.back()->calc( mdoc.document() );
 
     ObjectCalcer* ret = new ObjectTypeCalcer( TextType::instance(), parents );

@@ -36,6 +36,7 @@
 
 #include <qaction.h>
 #include <qcheckbox.h>
+#include <qevent.h>
 #include <qmenu.h>
 #include <qregexp.h>
 #include <qtextedit.h>
@@ -277,7 +278,7 @@ static uint percentCount( const QString& s )
   QRegExp re( QString::fromUtf8( "%[\\d]+" ) );
   int offset = 0;
   uint percentcount = 0;
-  while ( ( offset = re.search( s, offset ) ) != -1 )
+  while ( ( offset = re.indexIn( s, offset ) ) != -1 )
   {
     ++percentcount;
     offset += re.matchedLength();
@@ -359,7 +360,7 @@ void TextLabelModeBase::updateLinksLabel()
   int pos = 0;
   uint count = 0;
   // we split up the string into text and "links"
-  while ( ( pos = re.search( s, pos ) ) != -1 )
+  while ( ( pos = re.indexIn( s, pos ) ) != -1 )
   {
     // prevpos is the first character after the last match, pos is the
     // first char of the current match..

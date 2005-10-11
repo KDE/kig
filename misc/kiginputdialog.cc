@@ -78,11 +78,13 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   bool ok = false;
 
   QFrame* frame = makeMainWidget();
-  QVBoxLayout* mainlay = new QVBoxLayout( frame, 0, spacingHint() );
+  QVBoxLayout* mainlay = new QVBoxLayout( frame );
+  mainlay->setMargin( 0 );
+  mainlay->setSpacing( spacingHint() );
   mainlay->activate();
 
   d->m_textEdit = new KTextEdit( frame );
-  d->m_textEdit->setText( label );
+  d->m_textEdit->setHtml( label );
   d->m_textEdit->setReadOnly( true );
   d->m_textEdit->setFocusPolicy( Qt::NoFocus );
 //  d->m_textEdit->setAlignment( d->m_textEdit->alignment() | Qt::WordBreak );
@@ -129,7 +131,9 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   d->m_gonioIsNum = true;
 
   QFrame* frame = makeMainWidget();
-  QVBoxLayout* mainlay = new QVBoxLayout( frame, 0, spacingHint() );
+  QVBoxLayout* mainlay = new QVBoxLayout( frame);
+  mainlay->setMargin( 0 );
+  mainlay->setSpacing( spacingHint() );
   mainlay->activate();
 
   d->m_label = new QLabel( frame );
@@ -169,7 +173,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 
 void KigInputDialog::keyPressEvent( QKeyEvent* e )
 {
-  if ( ( e->key() == Qt::Key_Return ) && ( e->state() == 0 ) )
+  if ( ( e->key() == Qt::Key_Return ) && ( e->modifiers() == 0 ) )
   {
     if ( actionButton( Ok )->isEnabled() )
     {
@@ -178,7 +182,7 @@ void KigInputDialog::keyPressEvent( QKeyEvent* e )
       return;
     }
   }
-  else  if ( ( e->key() == Qt::Key_Escape ) && ( e->state() == 0 ) )
+  else  if ( ( e->key() == Qt::Key_Escape ) && ( e->modifiers() == 0 ) )
   {
     actionButton( Cancel )->animateClick();
     e->accept();

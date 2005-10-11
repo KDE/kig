@@ -68,7 +68,7 @@ void BaseMode::leftMouseMoved( QMouseEvent* e, KigWidget* w )
 {
   if( !moco.empty() && ( mplc - e->pos() ).manhattanLength() > 3 )
     dragObject( moco, mplc, *w,
-                ( e->state() & (Qt::ShiftButton | Qt::ControlButton ) ) != 0
+                ( e->modifiers() & (Qt::ShiftModifier | Qt::ControlModifier ) ) != 0
       );
 }
 
@@ -77,8 +77,8 @@ void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
   if( (mplc - e->pos()).manhattanLength() > 4 ) return;
 
   ObjectHolder* o = 0;
-  bool keyCtrl = ( e->state() & Qt::ControlButton ) != 0;
-  bool keyShift = ( e->state() & Qt::ShiftButton ) != 0;
+  bool keyCtrl = ( e->modifiers() & Qt::ControlModifier ) != 0;
+  bool keyShift = ( e->modifiers() & Qt::ShiftModifier ) != 0;
   if ( ! moco.empty() )
   {
     if ( keyShift )
@@ -127,7 +127,7 @@ void BaseMode::rightClicked( QMouseEvent* e, KigWidget* w )
 void BaseMode::mouseMoved( QMouseEvent* e, KigWidget* w )
 {
   std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( w->fromScreen( e->pos() ), *w );
-  mouseMoved( os, e->pos(), *w, e->state() & Qt::ShiftButton );
+  mouseMoved( os, e->pos(), *w, e->modifiers() & Qt::ShiftModifier );
 }
 
 void BaseMode::dragRect( const QPoint&, KigWidget& )

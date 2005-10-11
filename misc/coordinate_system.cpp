@@ -54,7 +54,7 @@ public:
 
 
 CoordinateValidator::CoordinateValidator( bool polar )
-  : QValidator( 0, 0 ), mpolar( polar ), mdv( 0, 0 ),
+  : QValidator( 0L ), mpolar( polar ), mdv( 0, 0 ),
     mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?"
          : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
 {
@@ -76,7 +76,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
   if( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
   if ( tinput[0] == '(' ) tinput = tinput.mid( 1 );
   if( tinput[0] == ' ' ) tinput = tinput.mid( 1 );
-  int scp = tinput.find( ';' );
+  int scp = tinput.indexOf( ';' );
   if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Valid;
   else
   {
@@ -101,12 +101,12 @@ void CoordinateValidator::fixup( QString & input ) const
   if ( nsc > 1 )
   {
     // where is the second ';'
-    int i = input.find( ';' );
-    i = input.find( ';', i );
+    int i = input.indexOf( ';' );
+    i = input.indexOf( ';', i );
     input = input.left( i );
   };
   // now the string has at most one semicolon left..
-  int sc = input.find( ';' );
+  int sc = input.indexOf( ';' );
   if ( sc == -1 )
   {
     sc = input.length();
@@ -148,7 +148,7 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
   QRegExp r( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" );
-  ok = ( r.search(s) == 0 );
+  ok = ( r.indexIn(s) == 0 );
   if (ok)
   {
     QString xs = r.cap(1);
@@ -367,7 +367,7 @@ QString PolarCoords::coordinateFormatNoticeMarkup() const
 Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
 {
   QRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?" );
-  ok = ( regexp.search( s ) == 0 );
+  ok = ( regexp.indexIn( s ) == 0 );
   if (ok)
   {
     QString rs = regexp.cap( 1 );

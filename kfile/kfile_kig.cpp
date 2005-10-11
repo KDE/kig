@@ -76,7 +76,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
       return false;
     // reading compressed file
     KTar* ark = new KTar( sfile, "application/x-gzip" );
-    ark->open( IO_ReadOnly );
+    ark->open( QIODevice::ReadOnly );
     const KArchiveDirectory* dir = ark->directory();
     QStringList entries = dir->entries();
     QStringList kigfiles = entries.filter( QRegExp( "\\.kig$" ) );
@@ -90,7 +90,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
     f.setFileName( tempdir + kigz->name() );
   }
 
-  if ( !f.open( IO_ReadOnly ) )
+  if ( !f.open( QIODevice::ReadOnly ) )
     return false;
 
   QDomDocument doc( "KigDocument" );

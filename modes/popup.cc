@@ -276,13 +276,13 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   KIconLoader* l = part.instance()->iconLoader();
   for ( int i = 0; i < NumberOfMenus; ++i )
   {
-    if ( mmenus[i]->count() == 0 ) continue;
+    if ( mmenus[i]->actions().count() == 0 ) continue;
     if ( menuicons[i].isEmpty() )
       insertItem( menunames[i], mmenus[i], i, index++ );
     else
     {
       QPixmap icon = l->loadIcon( menuicons[i], KIcon::Small, 22, KIcon::DefaultState, 0L, true );
-      insertItem( QIconSet( icon ), menunames[i], mmenus[i], i, index++ );
+      insertItem( QIcon( icon ), menunames[i], mmenus[i], i, index++ );
     }
   };
 }

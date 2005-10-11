@@ -91,7 +91,7 @@ void DragRectMode::moved( QMouseEvent* e, KigWidget& w )
 
 void DragRectMode::released( QMouseEvent* e, KigWidget& w )
 {
-  released( e->pos(), w, ! ( e->state() & ( Qt::ControlButton | Qt::ShiftButton ) ) );
+  released( e->pos(), w, ! ( e->modifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) );
 }
 
 DragRectMode::~DragRectMode()

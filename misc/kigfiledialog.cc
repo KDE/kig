@@ -19,7 +19,6 @@
 #include "kigfiledialog.moc"
 
 #include <qfile.h>
-#include <qpoint.h>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -64,7 +63,7 @@ void KigFileDialog::accept()
   {
     KDialogBase* optdlg = new KDialogBase(
         this, "optdlg", true, moptcaption, Cancel|Ok, Cancel, true );
-    mow->reparent( optdlg, QPoint() );
+    mow->setParent( optdlg );
     optdlg->setMainWidget( mow );
     optdlg->exec() == QDialog::Accepted ? KFileDialog::accept() : KFileDialog::reject();
   }

@@ -554,7 +554,7 @@ void PropertyObjectConstructor::drawprelim(
   const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
   const KigDocument& d ) const
 {
-  int index = parents[0]->imp()->propertiesInternalNames().findIndex( mpropinternalname );
+  int index = parents[0]->imp()->propertiesInternalNames().indexOf( mpropinternalname );
   assert ( index != -1 );
   ObjectImp* imp = parents[0]->imp()->property( index, d );
   drawer.draw( *imp, p, true );
@@ -565,7 +565,7 @@ std::vector<ObjectHolder*> PropertyObjectConstructor::build(
   const std::vector<ObjectCalcer*>& parents, KigDocument&,
   KigWidget& ) const
 {
-  int index = parents[0]->imp()->propertiesInternalNames().findIndex( mpropinternalname );
+  int index = parents[0]->imp()->propertiesInternalNames().indexOf( mpropinternalname );
   assert( index != -1 );
   std::vector<ObjectHolder*> ret;
   ret.push_back(

@@ -289,7 +289,7 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
   doc.appendChild( docelem );
 
   QFile file( f );
-  if ( ! file.open( IO_WriteOnly ) )
+  if ( ! file.open( QIODevice::WriteOnly ) )
     return false;
   QTextStream stream( &file );
   stream << doc.toByteArray();
@@ -299,7 +299,7 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
 bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart& kdoc )
 {
   QFile file( f );
-  if ( ! file.open( IO_ReadOnly ) )
+  if ( ! file.open( QIODevice::ReadOnly ) )
   {
     KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'" ).arg( f ) );
     return false;
@@ -364,9 +364,9 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
       else if ( dataelem.tagName() == "Construction" )
         hierarchy = ObjectHierarchy::buildSafeObjectHierarchy( dataelem, tmp );
       else if ( dataelem.tagName() == "ActionName" )
-        actionname = dataelem.text().latin1();
+        actionname = dataelem.text().toLatin1();
       else if ( dataelem.tagName() == "IconFileName" )
-        iconfile = dataelem.text().latin1();
+        iconfile = dataelem.text().toLatin1();
       else continue;
     };
     assert( hierarchy );
@@ -374,7 +374,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
     if ( name.isEmpty() )
       name = i18n( "Unnamed Macro #%1" ).arg( unnamedindex++ );
     MacroConstructor* ctor =
-      new MacroConstructor( *hierarchy, i18n( name.latin1() ), i18n( description.latin1() ), iconfile );
+      new MacroConstructor( *hierarchy, i18n( name.toLatin1() ), i18n( description.toLatin1() ), iconfile );
     delete hierarchy;
     GUIAction* act = new ConstructibleAction( ctor, actionname );
     Macro* macro = new Macro( act, ctor );

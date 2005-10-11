@@ -86,7 +86,7 @@ void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
 
-  bool snaptogrid = e->state() & Qt::ShiftButton;
+  bool snaptogrid = e->modifiers() & Qt::ShiftModifier;
   moveTo( c, snaptogrid );
   for ( std::vector<ObjectCalcer*>::iterator i = mcalcable.begin();
         i != mcalcable.end(); ++i )

@@ -269,7 +269,7 @@ ObjectHolder* ObjectFactory::attachedLabel(
 ObjectPropertyCalcer* ObjectFactory::propertyObjectCalcer(
   ObjectCalcer* o, const char* p ) const
 {
-  int wp = o->imp()->propertiesInternalNames().findIndex( p );
+  int wp = o->imp()->propertiesInternalNames().indexOf( p );
   if ( wp == -1 ) return 0;
   return new ObjectPropertyCalcer( o, wp );
 }
