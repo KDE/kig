@@ -194,7 +194,7 @@
     <Action name="cancel_construction"/>
     <Action name="macro_action"/>
   </ToolBar>
-  <ToolBar name="points_toolbar" position="left">
+  <ToolBar name="points_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Points</text>
     <Action name="objects_new_normalpoint" />
     <Action name="objects_new_point_xy" />
@@ -205,7 +205,7 @@
     <Action name="objects_new_translatedpoint" />
     <ActionList name="user_point_types" />
   </ToolBar>
-  <ToolBar name="line_toolbar" position="left">
+  <ToolBar name="line_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Lines</text>
     <Action name="objects_new_linettp" />
     <Action name="objects_new_ray" />
@@ -215,7 +215,7 @@
     <Action name="objects_new_halflinebyvector" />
     <ActionList name="user_line_types" />
   </ToolBar>
-  <ToolBar name="vectseg_toolbar" position="left">
+  <ToolBar name="vectseg_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Vectors &amp;&amp; Segments</text>
     <Action name="objects_new_segment" />
     <Action name="objects_new_segment_axis" />
@@ -223,7 +223,7 @@
     <Action name="objects_new_vectorsum" />
     <ActionList name="user_segment_types" />
   </ToolBar>
-  <ToolBar name="circle_toolbar" position="left">
+  <ToolBar name="circle_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Circles &amp;&amp; Arcs</text>
     <Action name="objects_new_circlebcp" />
     <Action name="objects_new_circlebtp" />
@@ -232,7 +232,7 @@
     <Action name="objects_new_arcbtp" />
     <ActionList name="user_circle_types" />
   </ToolBar>
-  <ToolBar name="conic_toolbar" position="left">
+  <ToolBar name="conic_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Conics</text>
     <Action name="objects_new_ellipsebffp" />
     <Action name="objects_new_hyperbolabffp" />
@@ -241,12 +241,12 @@
     <ActionList name="user_conic_types" />
     <Action name="objects_new_lineconicradical" />
   </ToolBar>
-  <ToolBar name="angles_toolbar" position="left">
+  <ToolBar name="angles_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Angles</text>
     <Action name="objects_new_angle" />
     <Action name="objects_new_angle_bisector" />
   </ToolBar>
-  <ToolBar name="transformation_toolbar" position="right">
+  <ToolBar name="transformation_toolbar" position="right" iconText="icononly" iconSize="22">
     <text>Transformations</text>
     <Action name="objects_new_translation" />
     <Action name="objects_new_pointreflection" />
@@ -260,7 +260,7 @@
     <Action name="objects_new_genericaffinity" />
     <Action name="objects_new_genericprojectivity" />
   </ToolBar>
-  <ToolBar name="tests_toolbar" position="right">
+  <ToolBar name="tests_toolbar" position="right" iconText="icononly" iconSize="22">
     <text>Tests</text>
     <Action name="objects_new_areparallel" />
     <Action name="objects_new_areorthogonal" />
@@ -271,7 +271,7 @@
     <Action name="objects_new_inpolygontest" />
     <Action name="objects_new_convexpolygontest" />
   </ToolBar>
-  <ToolBar name="rest_toolbar" position="left">
+  <ToolBar name="rest_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Other Objects</text>
     <Action name="objects_new_locus" />
     <Action name="objects_new_textlabel" />

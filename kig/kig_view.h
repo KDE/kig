@@ -99,6 +99,8 @@ protected:
 
   bool mispainting;
 
+  bool malreadyresized;
+
 public:
   /**
    * standard qwidget constructor.  if fullscreen is true, we're a
