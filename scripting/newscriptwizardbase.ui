@@ -76,6 +76,6 @@ in the Kig window and press "Next".</string>
 </customwidgets>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>ktextedit.h</includehint>
+    
 </includehints>
 </UI>

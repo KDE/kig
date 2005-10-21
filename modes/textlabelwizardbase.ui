@@ -108,6 +108,6 @@ If you want to show variable parts, then put %1, %2, ... at the appropriate plac
 </images>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>linkslabel.h</includehint>
+    
 </includehints>
 </UI>

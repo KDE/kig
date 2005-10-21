@@ -182,7 +182,7 @@
 </widget>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>klineedit.h</includehint>
-    <includehint>klineedit.h</includehint>
+    
+    
 </includehints>
 </UI>
