@@ -58,7 +58,7 @@ KigApplication::KigApplication( bool gui )
 int KigApplication::newInstance()
 {
   static bool first = true;
-  if (isRestored() && first)
+  if (isSessionRestored() && first)
   {
     first = false;
     return 0;
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
     KigApplication app;
 
     // see if we are starting with session management
-    if (app.isRestored()) RESTORE(Kig)
+    if (app.isSessionRestored()) RESTORE(Kig)
       return app.exec();
   }
 }
