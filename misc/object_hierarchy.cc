@@ -495,7 +495,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     uint id = tmp.toInt( &ok );
     if ( !ok ) KIG_GENERIC_PARSE_ERROR;
 
-    obhi->mnumberofargs = kMax( id, obhi->mnumberofargs );
+    obhi->mnumberofargs = qMax( id, obhi->mnumberofargs );
 
     tmp = e.attribute( "requirement" );
     const ObjectImpType* req = ObjectImpType::typeFromInternalName( tmp.latin1() );
@@ -579,7 +579,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
       if ( ( ! imp ) && !error.isEmpty() ) return 0;
       newnode = new PushStackNode( imp );
     };
-    obhi->mnodes.resize( kMax( size_t(id - obhi->mnumberofargs), obhi->mnodes.size() ) );
+    obhi->mnodes.resize( qMax( size_t(id - obhi->mnumberofargs), obhi->mnodes.size() ) );
     obhi->mnodes[id - obhi->mnumberofargs - 1] = newnode;
   };
 
