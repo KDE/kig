@@ -510,7 +510,7 @@ void KigPainter::drawTextStd( const QPoint& p, const QString& s )
 {
   if ( s.isNull() ) return;
   // tf = text formatting flags
-  int tf = Qt::AlignLeft | Qt::AlignTop | Qt::DontClip | Qt::WordBreak;
+  int tf = Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap;
   // we need the rect where we're going to paint text
   setPen(QPen(Qt::blue, 1, Qt::SolidLine));
   setBrush(Qt::NoBrush);
@@ -540,7 +540,7 @@ QRect KigPainter::toScreenEnlarge( const Rect r ) const
 
 void KigPainter::drawSimpleText( const Coordinate& c, const QString s )
 {
-  int tf = Qt::AlignLeft | Qt::AlignTop | Qt::DontClip | Qt::WordBreak;
+  int tf = Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap;
   drawText( c, s, tf);
 }
 
@@ -552,7 +552,7 @@ void KigPainter::drawText( const Coordinate p, const QString s,
 }
 const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const QString s )
 {
-  int tf = Qt::AlignLeft | Qt::AlignTop | Qt::DontClip | Qt::WordBreak;
+  int tf = Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap;
   return boundingRect( c, s, tf );
 }
 
