@@ -131,7 +131,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   d->m_gonioIsNum = true;
 
   QFrame* frame = makeMainWidget();
-  QVBoxLayout* mainlay = new QVBoxLayout( frame);
+  QVBoxLayout* mainlay = new QVBoxLayout( frame );
   mainlay->setMargin( 0 );
   mainlay->setSpacing( spacingHint() );
   mainlay->activate();
@@ -140,7 +140,9 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   d->m_label->setText( i18n( "Insert the new size of this angle:" ) );
   mainlay->addWidget( d->m_label );
 
-  QHBoxLayout* horlay = new QHBoxLayout( 0, 0, spacingHint() );
+  QHBoxLayout* horlay = new QHBoxLayout( (QWidget*)0 );
+  horlay->setMargin( 0 );
+  horlay->setSpacing( spacingHint() );
   horlay->activate();
 
   d->m_lineEditFirst = new KLineEdit( frame );
@@ -150,7 +152,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   horlay->addWidget( d->m_lineEditFirst );
 
   d->m_comboBox = new KComboBox( frame );
-  d->m_comboBox->insertStringList( Goniometry::systemList() );
+  d->m_comboBox->addItems( Goniometry::systemList() );
   d->m_comboBox->setCurrentItem( d->m_gonio.system() );
   d->m_comboBox->setWhatsThis(
         i18n( "Choose from this list the goniometric unit you want to use to "

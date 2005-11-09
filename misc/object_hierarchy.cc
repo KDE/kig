@@ -237,7 +237,7 @@ void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
                                int loc, const KigDocument& d ) const
 {
   assert( stack[mparent] );
-  if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
+  if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().indexOf( mname );
   if ( mpropid != -1 )
     stack[loc] = stack[mparent]->property( mpropid, d );
   else
@@ -247,7 +247,7 @@ void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
 void FetchPropertyNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
 {
   if ( mpropid == -1 )
-    mpropid = stack[mparent]->imp()->propertiesInternalNames().findIndex( mname );
+    mpropid = stack[mparent]->imp()->propertiesInternalNames().indexOf( mname );
   assert( mpropid != -1 );
   stack[loc] = new ObjectPropertyCalcer( stack[mparent], mpropid );
 }
@@ -498,7 +498,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     obhi->mnumberofargs = qMax( id, obhi->mnumberofargs );
 
     tmp = e.attribute( "requirement" );
-    const ObjectImpType* req = ObjectImpType::typeFromInternalName( tmp.latin1() );
+    const ObjectImpType* req = ObjectImpType::typeFromInternalName( tmp.toLatin1() );
     if ( req == 0 ) req = ObjectImp::stype(); // sucks, i know..
     obhi->margrequirements.resize( obhi->mnumberofargs, ObjectImp::stype() );
     obhi->musetexts.resize( obhi->mnumberofargs, "" );
@@ -510,11 +510,11 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     {
       if ( esub.tagName() == "UseText" )
       {
-        obhi->musetexts[id - 1] = esub.text().latin1();
+        obhi->musetexts[id - 1] = esub.text().toLatin1().data();
       }
       else if ( esub.tagName() == "SelectStatement" )
       {
-        obhi->mselectstatements[id - 1] = esub.text().latin1();
+        obhi->mselectstatements[id - 1] = esub.text().toLatin1().data();
       }
       else
       {
@@ -536,7 +536,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     if ( tmp == "calc" )
     {
       // ApplyTypeNode
-      QByteArray typen = e.attribute( "type" ).latin1();
+      QByteArray typen = e.attribute( "type" ).toLatin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
       if ( ! type )
       {
@@ -563,7 +563,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     else if ( tmp == "fetch-property" )
     {
       // FetchPropertyNode
-      QByteArray propname = e.attribute( "property" ).latin1();
+      QByteArray propname = e.attribute( "property" ).toLatin1();
       QDomElement arge = e.firstChild().toElement();
       int parent = arge.text().toInt( &ok );
       if ( !ok ) KIG_GENERIC_PARSE_ERROR;

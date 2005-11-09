@@ -72,11 +72,11 @@ KigWidget::KigWidget( KigPart* part,
   part->addWidget(this);
 
   setFocusPolicy(Qt::ClickFocus);
-  setBackgroundMode( Qt::NoBackground );
+  setAttribute( Qt::WA_NoBackground, true );
   setMouseTracking(true);
 
-  curPix.resize( size() );
-  stillPix.resize( size() );
+  curPix = QPixmap( size() );
+  stillPix = QPixmap( size() );
 }
 
 KigWidget::~KigWidget()
@@ -385,9 +385,9 @@ void KigView::updateScrollBars()
   int rightmin = static_cast<int>( er.bottom() / pw );
   int rightmax = static_cast<int>( ( er.top() - sr.height() ) / pw );
 
-  mrightscroll->setMinValue( rightmin );
-  mrightscroll->setMaxValue( rightmax );
-  mrightscroll->setLineStep( (int)( sr.height() / pw / 10 ) );
+  mrightscroll->setMinimum( rightmin );
+  mrightscroll->setMaximum( rightmax );
+  mrightscroll->setSingleStep( (int)( sr.height() / pw / 10 ) );
   mrightscroll->setPageStep( (int)( sr.height() / pw / 1.2 ) );
 
   // note that since Qt has a coordinate system with the lowest y
@@ -397,9 +397,9 @@ void KigView::updateScrollBars()
   // slotRightScrollValueChanged()...
   mrightscroll->setValue( (int) ( rightmin + ( rightmax - ( sr.bottom() / pw ) ) ) );
 
-  mbottomscroll->setMinValue( (int)( er.left() / pw ) );
-  mbottomscroll->setMaxValue( (int)( ( er.right() - sr.width() ) / pw ) );
-  mbottomscroll->setLineStep( (int)( sr.width() / pw / 10 ) );
+  mbottomscroll->setMinimum( (int)( er.left() / pw ) );
+  mbottomscroll->setMaximum( (int)( ( er.right() - sr.width() ) / pw ) );
+  mbottomscroll->setSingleStep( (int)( sr.width() / pw / 10 ) );
   mbottomscroll->setPageStep( (int)( sr.width() / pw / 1.2 ) );
   mbottomscroll->setValue( (int)( sr.left() / pw ) );
 
@@ -417,7 +417,7 @@ void KigView::slotRightScrollValueChanged( int v )
   {
     // we invert the inversion that was done in updateScrollBars() (
     // check the documentation there..; )
-    v = mrightscroll->minValue() + ( mrightscroll->maxValue() - v );
+    v = mrightscroll->minimum() + ( mrightscroll->maximum() - v );
     double pw = mrealwidget->screenInfo().pixelWidth();
     double nb = double( v ) * pw;
     mrealwidget->scrollSetBottom( nb );

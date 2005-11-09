@@ -232,19 +232,15 @@ public:
    * draw text...
    * \see QPainter::drawText()
    */
-  void drawText( const Rect r, const QString s, int textFlags = 0,
-                 int len = -1);
-  void drawText( const Coordinate p, const QString s,
-                 int textFlags = 0, int len = -1);
+  void drawText( const Rect r, const QString s, int textFlags = 0 );
+  void drawText( const Coordinate p, const QString s, int textFlags = 0 );
 
   void drawSimpleText( const Coordinate& c, const QString s );
   void drawTextFrame( const Rect& frame, const QString& s, bool frame );
 
-  const Rect boundingRect( const Rect& r, const QString s,
-                            int f = 0, int l = -1 ) const;
+  const Rect boundingRect( const Rect& r, const QString s, int f = 0 ) const;
 
-  const Rect boundingRect( const Coordinate& c, const QString s,
-                            int f = 0, int l = -1 ) const;
+  const Rect boundingRect( const Coordinate& c, const QString s, int f = 0 ) const;
 
   const Rect simpleBoundingRect( const Coordinate& c, const QString s );
 
@@ -278,7 +274,7 @@ protected:
    * ...
    * \see drawText(), QPainter::boundingRect()
    */
-  void textOverlay( const QRect& r, const QString s, int textFlags, int len );
+  void textOverlay( const QRect& r, const QString s, int textFlags );
 
   /**
    * the size we want the overlay rects to be...

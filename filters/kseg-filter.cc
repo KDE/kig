@@ -67,7 +67,7 @@ bool KigFilterKSeg::supportMime( const QString& mime )
 
 struct drawstyle
 {
-  Q_INT8 pointstyle;
+  qint8 pointstyle;
   QFont font;
   QPen pen;
   QBrush brush;

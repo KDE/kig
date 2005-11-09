@@ -64,8 +64,7 @@ KigPainter::~KigPainter()
 void KigPainter::drawRect( const Rect& r )
 {
   Rect rt = r.normalized();
-  QRect qr = toScreen(rt);
-  qr.normalize();
+  QRect qr = toScreen(rt).normalized();
   mP.drawRect(qr);
   if( mNeedOverlay ) mOverlay.push_back( qr );
 }
@@ -184,30 +183,29 @@ void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )
   drawLine( LineData( p1, p2 ) );
 }
 
-void KigPainter::drawText( const Rect p, const QString s, int textFlags, int len )
+void KigPainter::drawText( const Rect p, const QString s, int textFlags )
 {
   QRect t = toScreen(p);
   int tf = textFlags;
-  t.moveBy( 2, 2 );
+  t.translate( 2, 2 );
   t.setWidth( t.width() - 4 );
   t.setHeight( t.height() - 4 );
-  mP.drawText( t, tf, s, len );
-  if( mNeedOverlay ) textOverlay( t, s, tf, len );
+  mP.drawText( t, tf, s );
+  if( mNeedOverlay ) textOverlay( t, s, tf );
 }
 
-void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags, int len )
+void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags )
 {
   //  kdDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) ) << endl;
-  QRect newr( mP.boundingRect( r, textFlags, s, len ) );
+  QRect newr( mP.boundingRect( r, textFlags, s ) );
   newr.setWidth( newr.width() + 4 );
   newr.setHeight( newr.height() + 4 );
   mOverlay.push_back( newr );
 }
 
-const Rect KigPainter::boundingRect( const Rect& r, const QString s,
-                                     int f, int l ) const
+const Rect KigPainter::boundingRect( const Rect& r, const QString s, int f ) const
 {
-  QRect qr = mP.boundingRect( toScreen( r ), f, s, l );
+  QRect qr = mP.boundingRect( toScreen( r ), f, s );
   qr.setWidth( qr.width() + 4 );
   qr.setHeight( qr.height() + 4 );
   return fromScreen( qr );
@@ -503,7 +501,7 @@ void KigPainter::drawFilledRect( const QRect& r )
   QPen pen( Qt::black, 1, Qt::DotLine );
   setPen( pen );
   setBrush( QBrush( Qt::cyan, Qt::Dense6Pattern ) );
-  drawRect( r.normalize() );
+  drawRect( r.normalized() );
 }
 
 void KigPainter::drawTextStd( const QPoint& p, const QString& s )
@@ -530,7 +528,7 @@ QRect KigPainter::toScreenEnlarge( const Rect r ) const
   if ( overlayenlarge == 0 ) return msi.toScreen( r );
 
   QRect qr = msi.toScreen( r );
-  qr.moveBy ( -overlayenlarge, -overlayenlarge );
+  qr.translate( -overlayenlarge, -overlayenlarge );
   int w = qr.width();
   int h = qr.height();
   qr.setWidth (w + 2*overlayenlarge);
@@ -541,14 +539,12 @@ QRect KigPainter::toScreenEnlarge( const Rect r ) const
 void KigPainter::drawSimpleText( const Coordinate& c, const QString s )
 {
   int tf = Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap;
-  drawText( c, s, tf);
+  drawText( c, s, tf );
 }
 
-void KigPainter::drawText( const Coordinate p, const QString s,
-                           int textFlags, int len )
+void KigPainter::drawText( const Coordinate p, const QString s, int textFlags )
 {
-  drawText( Rect( p, mP.window().right(), mP.window().top() ),
-            s, textFlags, len );
+  drawText( Rect( p, mP.window().right(), mP.window().top() ), s, textFlags );
 }
 const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const QString s )
 {
@@ -556,11 +552,9 @@ const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const QString s 
   return boundingRect( c, s, tf );
 }
 
-const Rect KigPainter::boundingRect( const Coordinate& c, const QString s,
-                                     int f, int l ) const
+const Rect KigPainter::boundingRect( const Coordinate& c, const QString s, int f ) const
 {
-  return boundingRect( Rect( c, mP.window().right(), mP.window().top() ),
-                       s, f, l );
+  return boundingRect( Rect( c, mP.window().right(), mP.window().top() ), s, f );
 }
 
 Coordinate KigPainter::fromScreen( const QPoint& p ) const

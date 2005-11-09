@@ -20,7 +20,7 @@
 #include <cmath>
 
 ScreenInfo::ScreenInfo( const Rect& docRect, const QRect& viewRect )
-  : mkrect( docRect.normalized() ), mqrect( viewRect.normalize() )
+  : mkrect( docRect.normalized() ), mqrect( viewRect.normalized() )
 {
 }
 
@@ -55,7 +55,7 @@ QRect ScreenInfo::toScreen( const Rect& r ) const
   return QRect(
     toScreen( r.bottomLeft() ),
     toScreen( r.topRight() )
-    ).normalize();
+    ).normalized();
 }
 
 double ScreenInfo::pixelWidth() const
