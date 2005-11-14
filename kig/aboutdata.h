@@ -82,7 +82,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                  "david80v@tin.it");
 
   tmp->addCredit( "Danny Allen",
-                  I18N_NOOP( "Resonsible for the new object action icons." ),
+                  I18N_NOOP( "Responsible for the new object action icons." ),
                   "danny@dannyallen.co.uk" );
 
   return tmp;
