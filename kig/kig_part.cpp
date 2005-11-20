@@ -57,7 +57,6 @@
 #include <kprinter.h>
 #include <kstandarddirs.h>
 #include <kstdaction.h>
-#include <ktoolbar.h>
 #include <kparts/genericfactory.h>
 #include <kdeprint/kprintdialogpage.h>
 
@@ -646,13 +645,13 @@ void KigPart::actionRemoved( GUIAction* a, GUIUpdateToken& t )
     }
   };
   assert( rem );
-  aMNewSegment.remove( rem );
-  aMNewConic.remove( rem );
-  aMNewPoint.remove( rem );
-  aMNewCircle.remove( rem );
-  aMNewLine.remove( rem );
-  aMNewOther.remove( rem );
-  aMNewAll.remove( rem );
+  aMNewSegment.removeAll( rem );
+  aMNewConic.removeAll( rem );
+  aMNewPoint.removeAll( rem );
+  aMNewCircle.removeAll( rem );
+  aMNewLine.removeAll( rem );
+  aMNewOther.removeAll( rem );
+  aMNewAll.removeAll( rem );
   t.push_back( rem );
 }
 

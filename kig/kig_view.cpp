@@ -31,27 +31,15 @@
 #include "../modes/dragrectmode.h"
 
 #include <qapplication.h>
-#include <qdialog.h>
 #include <qevent.h>
 #include <qlayout.h>
 #include <qscrollbar.h>
 
 #include <kdebug.h>
-#include <kcursor.h>
 #include <klocale.h>
-#include <kapplication.h>
-#include <kstdaction.h>
-#include <kaction.h>
-#include <kiconloader.h>
 
 #include <cmath>
 #include <algorithm>
-
-kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
-{
-  s << "x: " << t.x() << " y: " << t.y();
-  return s;
-}
 
 KigWidget::KigWidget( KigPart* part,
                       KigView* view,
@@ -321,7 +309,7 @@ KigView::KigView( KigPart* part,
   mlayout->setMargin( 2 );
   mlayout->setSpacing( 2 );
   mrightscroll = new QScrollBar( Qt::Vertical, this );
-  mrightscroll->setObjectName( QLatin1String( "Right Scrollbar" ) );
+  mrightscroll->setObjectName( "Right Scrollbar" );
   // TODO: make this configurable...
   mrightscroll->setTracking( true );
   connect( mrightscroll, SIGNAL( valueChanged( int ) ),
@@ -329,13 +317,13 @@ KigView::KigView( KigPart* part,
   connect( mrightscroll, SIGNAL( sliderReleased() ),
            this, SLOT( updateScrollBars() ) );
   mbottomscroll = new QScrollBar( Qt::Horizontal, this );
-  mbottomscroll->setObjectName( QLatin1String( "Bottom Scrollbar" ) );
+  mbottomscroll->setObjectName( "Bottom Scrollbar" );
   connect( mbottomscroll, SIGNAL( valueChanged( int ) ),
            this, SLOT( slotBottomScrollValueChanged( int ) ) );
   connect( mbottomscroll, SIGNAL( sliderReleased() ),
            this, SLOT( updateScrollBars() ) );
   mrealwidget = new KigWidget( part, this, this, fullscreen );
-  mrealwidget->setObjectName( QLatin1String( "Kig Widget" ) );
+  mrealwidget->setObjectName( "Kig Widget" );
   mlayout->addWidget( mbottomscroll, 1, 0 );
   mlayout->addWidget( mrealwidget, 0, 0 );
   mlayout->addWidget( mrightscroll, 0, 1 );
@@ -488,20 +476,20 @@ void KigView::scrollHorizontal( int delta )
 {
   if ( delta >= 0 )
     for ( int i = 0; i < delta; i += 120 )
-      mbottomscroll->subtractLine();
+      mbottomscroll->triggerAction( QScrollBar::SliderSingleStepSub );
   else
     for ( int i = 0; i >= delta; i -= 120 )
-      mbottomscroll->addLine();
+      mbottomscroll->triggerAction( QScrollBar::SliderSingleStepAdd );
 }
 
 void KigView::scrollVertical( int delta )
 {
   if ( delta >= 0 )
     for ( int i = 0; i < delta; i += 120 )
-      mrightscroll->subtractLine();
+      mrightscroll->triggerAction( QScrollBar::SliderSingleStepSub );
   else
     for ( int i = 0; i >= delta; i -= 120 )
-      mrightscroll->addLine();
+      mrightscroll->triggerAction( QScrollBar::SliderSingleStepAdd );
 }
 
 bool KigWidget::isFullScreen() const
