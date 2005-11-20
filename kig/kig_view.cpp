@@ -68,7 +68,7 @@ KigWidget::KigWidget( KigPart* part,
     mispainting( false ),
     malreadyresized( false )
 {
-  setAttribute( Qt::WA_PaintOnScreen );
+  setAttribute( Qt::WA_PaintOnScreen, true );
   part->addWidget(this);
 
   setFocusPolicy(Qt::ClickFocus);
@@ -87,7 +87,6 @@ KigWidget::~KigWidget()
 void KigWidget::paintEvent(QPaintEvent* e)
 {
   mispainting = true;
-//  updateEntireWidget();
   std::vector<QRect> overlay;
   overlay.push_back( e->rect() );
   updateWidget( overlay );
@@ -130,34 +129,31 @@ void KigWidget::updateWidget( const std::vector<QRect>& overlay )
 {
   if ( !mispainting )
   {
-    repaint();
+    QRect r;
+    int rectinited = false;
+    for ( std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
+      if ( rectinited )
+        r |= *i;
+      else
+      {
+        r = *i;
+        rectinited = true;
+      }
+    for ( std::vector<QRect>::const_iterator i = overlay.begin(); i != overlay.end(); ++i )
+      if ( rectinited )
+        r |= *i;
+      else
+      {
+        r = *i;
+        rectinited = true;
+      }
+    repaint( r );
     return;
   }
 
-  QPixmap tmp( size() );
-#undef SHOW_OVERLAY_RECTS
-#ifdef SHOW_OVERLAY_RECTS
-  QPainter debug( &tmp );
-  debug.setPen(Qt::yellow);
-#endif // SHOW_OVERLAY_RECTS
-  // we undo our old changes...
-  for ( std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
-    bitBlt( &tmp, i->topLeft(), &curPix, *i );
-  // we add our new changes...
-  for ( std::vector<QRect>::const_iterator i = overlay.begin(); i != overlay.end(); ++i )
-  {
-    bitBlt( &tmp, i->topLeft(), &curPix, *i );
-#ifdef SHOW_OVERLAY_RECTS
-    debug.drawRect(*i);
-#endif
-  };
   oldOverlay = overlay;
 
-#ifdef SHOW_OVERLAY_RECTS
-  debug.end();
-#endif
-
-  bitBlt( this, 0, 0, &tmp );
+  bitBlt( this, overlay.front().topLeft(), &curPix, overlay.front() );
   mispainting = false;
 }
 
