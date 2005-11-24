@@ -20,6 +20,7 @@
 #include "bogus_imp.h"
 #include "point_imp.h"
 #include "line_imp.h"
+#include "circle_imp.h"
 
 #include "../misc/screeninfo.h"
 #include "../misc/common.h"
@@ -311,10 +312,17 @@ ArcImp* ArcImp::copy() const
 ObjectImp* ArcImp::transform( const Transformation& t ) const
 {
   //
-  // we don't have conic arcs! So it is invalid to transform an arc
-  // with a nonhomothetic transformation
+  // if the transformation is nonhomothetic, the result is a conic arc,
+  // not a circular arc
   //
-  if ( ! t.isHomothetic() ) return new InvalidImp();
+  if ( ! t.isHomothetic() )
+  {
+    //CircleImp support = CircleImp( mcenter, mradius );
+    ConicCartesianData data = CircleImp( mcenter, mradius ).cartesianData();
+    //return new InvalidImp();
+    ConicArcImp conicarc = ConicArcImp( data, msa, ma );
+    return conicarc.transform ( t );
+  }
 
   Coordinate nc = t.apply( mcenter );
   double nr = t.apply( mradius );
@@ -358,7 +366,7 @@ bool ArcImp::valid() const
 
 const uint ArcImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 9;
+  return Parent::numberOfProperties() + 10;
 }
 
 const QCStringList ArcImp::properties() const
@@ -371,6 +379,7 @@ const QCStringList ArcImp::properties() const
   ret << I18N_NOOP( "Angle in Radians" );
   ret << I18N_NOOP( "Sector Surface" );
   ret << I18N_NOOP( "Arc Length" );
+  ret << I18N_NOOP( "Support Circle" );
   ret << I18N_NOOP( "First End Point" );
   ret << I18N_NOOP( "Second End Point" );
   assert( ret.size() == ArcImp::numberOfProperties() );
@@ -387,6 +396,7 @@ const QCStringList ArcImp::propertiesInternalNames() const
   ret << "angle-radians";
   ret << "sector-surface";
   ret << "arc-length";
+  ret << "support";
   ret << "end-point-A";
   ret << "end-point-B";
   return ret;
@@ -407,6 +417,8 @@ const char* ArcImp::iconForProperty( uint which ) const
     return "angle_size";
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return "angle_size";
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return "";
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return "";
   else if ( which == Parent::numberOfProperties() + numprop++ )
@@ -438,6 +450,8 @@ ObjectImp* ArcImp::property( uint which, const KigDocument& d ) const
     return new DoubleImp( sectorSurface() );
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( mradius * ma );
+  else if ( which == Parent::numberOfProperties() + numprop++ )
+    return new CircleImp( mcenter, mradius );
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new PointImp( firstEndPoint() );
   else if ( which == Parent::numberOfProperties() + numprop++ )
@@ -638,12 +652,32 @@ bool VectorImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
 
 bool ArcImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
 {
+  int pnum = 0;
+
   if ( which < Parent::numberOfProperties() )
     return Parent::isPropertyDefinedOnOrThroughThisImp( which );
-  else if ( which == Parent::numberOfProperties() )
-    return true;
-  else
-    return false;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;  // center
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;   // radius
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;   // angle
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;   // angle in degrees
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;   // angle in radians
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;   // sector surface
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;   // arc length
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;    // support
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;    // first end-point
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;    // second end-point
+  else return false;
+  return false;
 }
 
 Rect AngleImp::surroundingRect() const

@@ -9,6 +9,8 @@
 	transformation.
 	Three properties are implemented: supporting conic, first end-point
 	and second end-point.
+	The "support" property is also added to circular arcs, segments and
+	rays.
 
 2005-09-29  Maurizio Paolini <paolini@dmf.unicatt.it>
 
