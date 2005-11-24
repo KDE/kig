@@ -1,5 +1,11 @@
 2005-11-24  Maurizio Paolini <paolini@dmf.unicatt.it>
 
+	* Added "vertical cubic". This is a cubic of the form
+	y = p(x) with degree of p = 3.  It's arguments are
+	4 through points.
+
+2005-11-24  Maurizio Paolini <paolini@dmf.unicatt.it>
+
 	* Arc of conics are implemented as a new graphic object
 	(inherited from ConicImp).  There is only one construction
 	for them right now: Construct the conic arc with given endpoints,
