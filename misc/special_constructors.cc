@@ -1052,35 +1052,42 @@ InversionConstructor::InversionConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "inversion" );
 
-  SimpleObjectTypeConstructor* lineobj =
+  SimpleObjectTypeConstructor* curveobj =
      new SimpleObjectTypeConstructor(
-      InvertLineType::instance(),
+      CircularInversionType::instance(),
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "inversion" );
 
-  SimpleObjectTypeConstructor* segmentobj =
-     new SimpleObjectTypeConstructor(
-      InvertSegmentType::instance(),
-      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-      "inversion" );
+//  SimpleObjectTypeConstructor* lineobj =
+//     new SimpleObjectTypeConstructor(
+//      InvertLineType::instance(),
+//      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+//      "inversion" );
+//
+//  SimpleObjectTypeConstructor* segmentobj =
+//     new SimpleObjectTypeConstructor(
+//      InvertSegmentType::instance(),
+//      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+//      "inversion" );
+//
+//  SimpleObjectTypeConstructor* circleobj =
+//     new SimpleObjectTypeConstructor(
+//      InvertCircleType::instance(),
+//      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+//      "inversion" );
+//
+//  SimpleObjectTypeConstructor* arcobj =
+//     new SimpleObjectTypeConstructor(
+//      InvertArcType::instance(),
+//      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+//      "inversion" );
 
-  SimpleObjectTypeConstructor* circleobj =
-     new SimpleObjectTypeConstructor(
-      InvertCircleType::instance(),
-      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-      "inversion" );
-
-  SimpleObjectTypeConstructor* arcobj =
-     new SimpleObjectTypeConstructor(
-      InvertArcType::instance(),
-      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-      "inversion" );
-
-  merge( arcobj );
-  merge( circleobj );
+//  merge( arcobj );
+//  merge( circleobj );
+  merge( curveobj );
   merge( pointobj );
-  merge( segmentobj );
-  merge( lineobj );
+//  merge( segmentobj );
+//  merge( lineobj );
 }
 
 InversionConstructor::~InversionConstructor() {}

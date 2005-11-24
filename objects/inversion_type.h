@@ -21,6 +21,22 @@
 #include "base_type.h"
 
 /**
+ * Circular inversion (new style)
+ */
+
+class CircularInversionType
+  : public ArgsParserObjectType
+{
+  CircularInversionType();
+  ~CircularInversionType();
+public:
+  static const CircularInversionType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+/**
  * Inversion of a point, line
  */
 class InvertPointType

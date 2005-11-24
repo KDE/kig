@@ -148,6 +148,7 @@ public:
    * ObjectImp type represented by t ?
    */
   bool inherits( const ObjectImpType* t ) const;
+  virtual bool match( const ObjectImpType* t ) const;
 
   /**
    * Returns an internal name for this ObjectImp type.  This name is

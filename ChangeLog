@@ -1,5 +1,15 @@
 2005-11-24  Maurizio Paolini <paolini@dmf.unicatt.it>
 
+	* Restructuring CircularInversion. Creation of a
+	special ObjectImpType representing 1D objects that kig
+	knows how to invert: segments, lines, rays, arcs, circles.
+	To maintain backward compatibility the load function from
+	native kig save files authomatically translates old-style
+	circular inversions into the new style, also presenting a
+	warning to the user about this.
+
+2005-11-24  Maurizio Paolini <paolini@dmf.unicatt.it>
+
 	* Added "vertical cubic". This is a cubic of the form
 	y = p(x) with degree of p = 3.  It's arguments are
 	4 through points.
