@@ -24,27 +24,19 @@
 #include <klocale.h>
 
 static const char cubictpstatement[] = I18N_NOOP( "Construct a cubic curve through this point" );
+static const char cubicselectstatement[] = I18N_NOOP( "Select a point for the new cubic to go through..." );
 
 static const struct ArgsParser::spec argsspecCubicB9P[] =
 {
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true }
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicB9PType )
@@ -81,18 +73,12 @@ ObjectImp* CubicB9PType::calc( const Args& os, const KigDocument& ) const
 
 static const ArgsParser::spec argsspecCubicNodeB6P[] =
 {
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true }
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicNodeB6PType )
@@ -129,14 +115,10 @@ ObjectImp* CubicNodeB6PType::calc( const Args& parents, const KigDocument& ) con
 
 static const ArgsParser::spec argsspecCubicCuspB4P[] =
 {
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true },
-  { PointImp::stype(), cubictpstatement,
-    I18N_NOOP( "Select a point for the new cubic to go through..." ), true }
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicCuspB4PType )
@@ -169,6 +151,44 @@ ObjectImp* CubicCuspB4PType::calc( const Args& parents, const KigDocument& ) con
   else return new InvalidImp;
 }
 
+static const ArgsParser::spec argsspecVerticalCubicB4P[] =
+{
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true },
+  { PointImp::stype(), cubictpstatement, cubicselectstatement, true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( VerticalCubicB4PType )
+
+VerticalCubicB4PType::VerticalCubicB4PType()
+  : ArgsParserObjectType( "VerticalCubicB4P", argsspecVerticalCubicB4P, 4 )
+{
+}
+
+VerticalCubicB4PType::~VerticalCubicB4PType()
+{
+}
+
+const VerticalCubicB4PType* VerticalCubicB4PType::instance()
+{
+  static const VerticalCubicB4PType t;
+  return &t;
+}
+
+ObjectImp* VerticalCubicB4PType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents, 2 ) ) return new InvalidImp;
+
+  std::vector<Coordinate> points;
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+    points.push_back( static_cast<const PointImp*>( *i )->coordinate() );
+
+  CubicCartesianData d = calcCubicThroughPoints( points );
+  if ( d.valid() ) return new CubicImp( d );
+  else return new InvalidImp;
+}
+
 const ObjectImpType* CubicB9PType::resultId() const
 {
   return CubicImp::stype();
@@ -180,6 +200,11 @@ const ObjectImpType* CubicNodeB6PType::resultId() const
 }
 
 const ObjectImpType* CubicCuspB4PType::resultId() const
+{
+  return CubicImp::stype();
+}
+
+const ObjectImpType* VerticalCubicB4PType::resultId() const
 {
   return CubicImp::stype();
 }

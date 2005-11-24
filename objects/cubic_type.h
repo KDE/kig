@@ -53,4 +53,15 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class VerticalCubicB4PType
+  : public ArgsParserObjectType
+{
+  VerticalCubicB4PType();
+  ~VerticalCubicB4PType();
+public:
+  static const VerticalCubicB4PType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

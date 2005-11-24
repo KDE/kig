@@ -109,6 +109,7 @@
         <Menu name="new_cubic">
 	  <text>Cu&amp;bics</text>
 	  <Action name="objects_new_cubicb9p" />
+	  <Action name="objects_new_verticalcubicb4p" />
 	  <Action name="objects_new_cubicnodeb6p" />
 	  <Action name="objects_new_cubiccuspb4p" />
         </Menu>
