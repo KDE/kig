@@ -26,6 +26,7 @@
 #include <vector>
 
 class QAction;
+class KAction;
 class KigDocument;
 class KigPart;
 class KigWidget;
@@ -65,6 +66,7 @@ public:
   void addInternalAction( int menu, const QString& name, int id );
   void addInternalAction( int menu, const QPixmap& icon, const QString& name, int id );
   void addInternalAction( int menu, const QPixmap& pix, int id );
+  void addInternalAction( int menu, KAction* act );
 
   /**
    * set the checked state of the \p n 'th item in \p menu to \p checked ..

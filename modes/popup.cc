@@ -201,11 +201,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   }
   else
     title = i18n( "%1 Objects" ).arg( objs.size() );
-  QAction* act = addAction( title );
-  QFont f = act->font();
-  f.setBold( true );
-  act->setFont( f );
-  act->setEnabled( false );
+  addTitle( title );
 
   if ( empty )
   {
@@ -233,18 +229,6 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   mproviders.push_back( new ScriptActionsProvider() );
 #endif
 
-  for ( uint i = 0; i < NumberOfMenus; ++i )
-    mmenus[i] = new QMenu( this );
-
-  connect( this, SIGNAL( triggered( QAction* ) ),
-           this, SLOT( toplevelMenuSlot( QAction* ) ) );
-
-  for ( int i = 0; i <= NumberOfMenus; ++i )
-  {
-    int nextfree = 10;
-    for ( uint j = 0; j < mproviders.size(); ++j )
-      mproviders[j]->fillUpMenu( *this, i, nextfree );
-  };
   static const QString menunames[NumberOfMenus] =
     {
       i18n( "&Transform" ),
@@ -272,19 +256,37 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       QString(),
       QString()
     };
-  int index = 1;
+
+  // creating the menus and setting their title and icon
   KIconLoader* l = part.instance()->iconLoader();
+  for ( uint i = 0; i < NumberOfMenus; ++i )
+  {
+    mmenus[i] = new QMenu( this );
+    if ( !menunames[i].isEmpty() )
+      mmenus[i]->setTitle( menunames[i] );
+    if ( !menuicons[i].isEmpty() )
+    {
+      QPixmap icon = l->loadIcon( menuicons[i], KIcon::Small, 22, KIcon::DefaultState, 0L, true );
+      mmenus[i]->setIcon( QIcon( icon ) );
+    }
+  }
+
+  connect( this, SIGNAL( triggered( QAction* ) ),
+           this, SLOT( toplevelMenuSlot( QAction* ) ) );
+
+  for ( int i = 0; i < NumberOfMenus; ++i )
+  {
+    int nextfree = 10;
+    for ( uint j = 0; j < mproviders.size(); ++j )
+      mproviders[j]->fillUpMenu( *this, i, nextfree );
+  };
   for ( int i = 0; i < NumberOfMenus; ++i )
   {
     if ( mmenus[i]->actions().count() == 0 ) continue;
-    if ( menuicons[i].isEmpty() )
-      insertItem( menunames[i], mmenus[i], i, index++ );
-    else
-    {
-      QPixmap icon = l->loadIcon( menuicons[i], KIcon::Small, 22, KIcon::DefaultState, 0L, true );
-      insertItem( QIcon( icon ), menunames[i], mmenus[i], i, index++ );
-    }
+    if ( i == ToplevelMenu ) continue;
+    addMenu( mmenus[i] );
   };
+  addActions( mmenus[ToplevelMenu]->actions() );
 }
 
 void NormalModePopupObjects::toplevelMenuSlot( QAction* act )
@@ -760,21 +762,24 @@ void NormalModePopupObjects::addInternalAction( int menu, const QPixmap& pix, in
 void NormalModePopupObjects::addInternalAction( int menu, const QPixmap& icon, const QString& name, int id )
 {
 //kdDebug() << k_funcinfo << "ID: " << id << endl;
-  QMenu* m = 0;
-  if ( menu == ToplevelMenu ) m = this;
-  else m = mmenus[menu];
+  QMenu* m = mmenus[menu];
   QAction* newaction = m->addAction( QIcon( icon ), name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
 }
 
 void NormalModePopupObjects::addInternalAction( int menu, const QString& name, int id )
 {
-  QMenu* m = 0;
-  if ( menu == ToplevelMenu ) m = this;
-  else m = mmenus[menu];
+  QMenu* m = mmenus[menu];
   QAction* newaction = m->addAction( name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
 }
+
+void NormalModePopupObjects::addInternalAction( int menu, KAction* act )
+{
+  QMenu* m = mmenus[menu];
+  act->plug( m );
+}
+
 
 PopupActionProvider::~PopupActionProvider()
 {
@@ -907,9 +912,9 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
     popup.addInternalAction( menu, i18n( "U&nhide All" ), nextfree++ );
-    popup.part().action( "view_zoom_in" )->plug( &popup );
-    popup.part().action( "view_zoom_out" )->plug( &popup );
-    popup.part().action( "fullscreen" )->plug( &popup );
+    popup.addInternalAction( menu, popup.part().action( "view_zoom_in" ) );
+    popup.addInternalAction( menu, popup.part().action( "view_zoom_out" ) );
+    popup.addInternalAction( menu, popup.part().action( "fullscreen" ) );
     nextfree += 3;
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
@@ -1067,11 +1072,8 @@ ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
                                         const std::vector<ObjectHolder*>& objs )
   : KMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
 {
-  QAction* newaction = addAction( i18n( "%n Object", "%n Objects", mobjs.size() ) );
-  QFont f = newaction->font();
-  f.setBold( true );
-  newaction->setFont( f );
-  newaction->setEnabled( false );
+  addTitle( i18n( "%n Object", "%n Objects", mobjs.size() ) );
+  QAction* newaction = 0;
   for ( uint i = 0; i < mobjs.size(); i++ )
   {
     newaction = addAction(
