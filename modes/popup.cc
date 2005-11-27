@@ -392,7 +392,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     QPixmap p( 20, 20 );
     for ( int i = 1; i < 8; ++i )
     {
-      p.fill( popup.eraseColor() );
+      p.fill( popup.palette().color( popup.backgroundRole() ) );
       QPainter ptr( &p );
       ptr.setPen( QPen( color, 1 ) );
       ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
@@ -432,7 +432,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       for ( int i = 0; i < 5; ++i )
       {
         QPixmap p( 20, 20 );
-        p.fill( popup.eraseColor() );
+        p.fill( popup.palette().color( popup.backgroundRole() ) );
         ScreenInfo si( Rect( -1, -1, 2, 2 ), p.rect() );
         KigPainter ptr( si, &p, popup.part().document(), false );
         PointImp pt( Coordinate( 0, 0 ) );
@@ -446,7 +446,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       for ( int i = 0; i < (int) ( sizeof( penstyles ) / sizeof( Qt::PenStyle ) ); ++i )
       {
         QPixmap p( 50, 20 );
-        p.fill( popup.eraseColor() );
+        p.fill( popup.palette().color( popup.backgroundRole() ) );
         ScreenInfo si( Rect( -2.5, -1, 5, 2 ), p.rect() );
         KigPainter ptr( si, &p, popup.part().document(), false );
         LineImp line( Coordinate( -1, 0 ), Coordinate( 1, 0 ) );
