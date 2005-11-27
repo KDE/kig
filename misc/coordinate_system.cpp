@@ -77,7 +77,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
   if ( tinput[0] == '(' ) tinput = tinput.mid( 1 );
   if( tinput[0] == ' ' ) tinput = tinput.mid( 1 );
   int scp = tinput.indexOf( ';' );
-  if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Valid;
+  if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Acceptable;
   else
   {
     QString p1 = tinput.left( scp );
