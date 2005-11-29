@@ -20,6 +20,8 @@
 
 #include "object_type.h"
 
+double getDoubleFromImp( const ObjectImp*, bool& );
+
 class TranslatedType
   : public ArgsParserObjectType
 {
