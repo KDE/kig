@@ -27,6 +27,7 @@
 #include "../modes/dragrectmode.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/object_imp.h"
+#include "../objects/object_factory.h"
 
 #include <qbytearray.h>
 #include <qlabel.h>
@@ -215,7 +216,23 @@ bool ScriptMode::queryFinish()
   }
   else
   {
-    mdoc.addObject( new ObjectHolder( reto.get() ) );
+    if ( reto->imp()->inherits( DoubleImp::stype() ) || 
+         reto->imp()->inherits( IntImp::stype() ) )
+    {
+      /*
+       * if the python script returns a DoubleImp (IntImp) we need a way to let the user
+       * interact with the result.  We do this by adding a text label (located at
+       * the origin) that contains the DoubleImp (IntImp) value.
+       */
+      QString s = QString("%1");
+      Coordinate coord = Coordinate( 0., 0. );
+      bool needframe = false;
+      std::vector<ObjectCalcer*> args;
+      args.push_back( reto.get() );
+      ObjectHolder* label = 0;
+      label = ObjectFactory::instance()->label( s, coord, needframe, args, mdoc.document() );
+      mdoc.addObject( label );
+    } else mdoc.addObject( new ObjectHolder( reto.get() ) );
     killMode();
     return true;
   }
