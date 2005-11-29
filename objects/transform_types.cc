@@ -27,6 +27,142 @@
 
 #include <cmath>
 
+double getDoubleFromImp( const ObjectImp* obj, bool& valid )
+{
+  valid = true;
+
+  if ( obj->inherits( SegmentImp::stype() ) )
+    return static_cast<const SegmentImp*>( obj )->length();
+
+  if ( obj->inherits( AngleImp::stype() ) )
+    return static_cast<const AngleImp*>( obj )->size();
+
+  if ( obj->inherits( DoubleImp::stype() ) )
+    return static_cast<const DoubleImp*>( obj )->data();
+
+  valid = false;
+  return 0;
+}
+
+class LengthImpType
+  : public ObjectImpType
+{
+public:
+  LengthImpType( const ObjectImpType* parent, const char* internalname,
+    const char* translatedname,
+    const char* selectstatement,
+    const char* selectnamestatement,
+    const char* removeastatement,
+    const char* addastatement,
+    const char* moveastatement,
+    const char* attachtothisstatement,
+    const char* showastatement,
+    const char* hideastatement );
+  ~LengthImpType();
+  virtual bool match( const ObjectImpType* t ) const;
+};
+
+LengthImpType::LengthImpType( const ObjectImpType* parent,
+    const char* internalname,
+    const char* translatedname,
+    const char* selectstatement,
+    const char* selectnamestatement,
+    const char* removeastatement,
+    const char* addastatement,
+    const char* moveastatement,
+    const char* attachtothisstatement,
+    const char* showastatement,
+    const char* hideastatement )
+  : ObjectImpType( parent, internalname, translatedname, selectstatement,
+                   selectnamestatement, removeastatement, addastatement,
+                   moveastatement, attachtothisstatement,
+                   showastatement, hideastatement )
+{
+}
+
+LengthImpType::~LengthImpType()
+{
+}
+
+bool LengthImpType::match( const ObjectImpType* t ) const
+{
+  return t == this || t == SegmentImp::stype() || t == DoubleImp::stype();
+}
+
+static const LengthImpType lengthimp(
+    ObjectImp::stype(), "length-object",
+    I18N_NOOP( "length" ),
+    I18N_NOOP( "Select this length" ),
+    I18N_NOOP( "Select length %1" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" )
+    );
+
+class AngleImpType
+  : public ObjectImpType
+{
+public:
+  AngleImpType( const ObjectImpType* parent, const char* internalname,
+    const char* translatedname,
+    const char* selectstatement,
+    const char* selectnamestatement,
+    const char* removeastatement,
+    const char* addastatement,
+    const char* moveastatement,
+    const char* attachtothisstatement,
+    const char* showastatement,
+    const char* hideastatement );
+  ~AngleImpType();
+  virtual bool match( const ObjectImpType* t ) const;
+};
+
+AngleImpType::AngleImpType( const ObjectImpType* parent,
+    const char* internalname,
+    const char* translatedname,
+    const char* selectstatement,
+    const char* selectnamestatement,
+    const char* removeastatement,
+    const char* addastatement,
+    const char* moveastatement,
+    const char* attachtothisstatement,
+    const char* showastatement,
+    const char* hideastatement )
+  : ObjectImpType( parent, internalname, translatedname, selectstatement,
+                   selectnamestatement, removeastatement, addastatement,
+                   moveastatement, attachtothisstatement,
+                   showastatement, hideastatement )
+{
+}
+
+AngleImpType::~AngleImpType()
+{
+}
+
+bool AngleImpType::match( const ObjectImpType* t ) const
+{
+  return t == this || t == AngleImp::stype() || t == DoubleImp::stype();
+}
+
+static const AngleImpType angleimp(
+    ObjectImp::stype(), "angle-object",
+    I18N_NOOP( "angle" ),
+    I18N_NOOP( "Select this angle" ),
+    I18N_NOOP( "Select angle %1" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" )
+    );
+
+/*
+ */
+
 static const ArgsParser::spec argsspecTranslation[] =
 {
   { ObjectImp::stype(), I18N_NOOP("Translate this object"),
@@ -138,7 +274,9 @@ static const ArgsParser::spec argsspecRotation[] =
     I18N_NOOP( "Select the object to rotate..." ), false },
   { PointImp::stype(), I18N_NOOP( "Rotate around this point" ),
     I18N_NOOP( "Select the center point of the rotation..." ), false },
-  { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ),
+//  { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ),
+//    I18N_NOOP( "Select the angle of the rotation..." ), false }
+  { &angleimp, I18N_NOOP( "Rotate by this angle" ),
     I18N_NOOP( "Select the angle of the rotation..." ), false }
 };
 
@@ -164,7 +302,10 @@ ObjectImp* RotationType::calc( const Args& args, const KigDocument& ) const
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
-  double angle = static_cast<const AngleImp*>( args[2] )->size();
+//  double angle = static_cast<const AngleImp*>( args[2] )->size();
+  bool valid;
+  double angle = getDoubleFromImp( args[2], valid);
+  if ( ! valid ) return new InvalidImp;
 
   return args[0]->transform( Transformation::rotation( angle, center ) );
 }
@@ -175,8 +316,10 @@ static const ArgsParser::spec argsspecScalingOverCenter[] =
     I18N_NOOP( "Select the object to scale..." ), false },
   { PointImp::stype(), I18N_NOOP( "Scale with this center" ),
     I18N_NOOP( "Select the center point of the scaling..." ), false },
-  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ),
-    I18N_NOOP( "Select a segment whose length is the factor of the scaling..." ), false }
+//  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ),
+//    I18N_NOOP( "Select a segment whose length is the factor of the scaling..." ), false }
+  { &lengthimp, I18N_NOOP( "Scale by this length" ),
+    I18N_NOOP( "Select a length or a segment whose length is the factor of the scaling..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ScalingOverCenterType )
@@ -201,7 +344,9 @@ ObjectImp* ScalingOverCenterType::calc( const Args& args, const KigDocument& ) c
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
-  double ratio = static_cast<const SegmentImp*>( args[2] )->length();
+  bool valid;
+  double ratio = getDoubleFromImp( args[2], valid);
+  if ( ! valid ) return new InvalidImp;
 
   return args[0]->transform( Transformation::scalingOverPoint( ratio, center ) );
 }
@@ -212,10 +357,14 @@ static const ArgsParser::spec argsspecScalingOverCenter2[] =
     I18N_NOOP( "Select the object to scale..." ), false },
   { PointImp::stype(), I18N_NOOP( "Scale with this center" ),
     I18N_NOOP( "Select the center point of the scaling..." ), false },
-  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ),
-    I18N_NOOP( "Select the first of two segments whose ratio is the factor of the scaling..." ), false },
-  { SegmentImp::stype(), I18N_NOOP( "...to the length of this other segment" ),
-    I18N_NOOP( "Select the second of two segments whose ratio is the factor of the scaling..." ), false }
+//  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ),
+//    I18N_NOOP( "Select the first of two segments whose ratio is the factor of the scaling..." ), false },
+//  { SegmentImp::stype(), I18N_NOOP( "...to the length of this other segment" ),
+//    I18N_NOOP( "Select the second of two segments whose ratio is the factor of the scaling..." ), false }
+  { &lengthimp, I18N_NOOP( "Scale this length..." ),
+    I18N_NOOP( "Select the first of two lengths whose ratio is the factor of the scaling..." ), false },
+  { &lengthimp, I18N_NOOP( "...to this other length" ),
+    I18N_NOOP( "Select the second of two lengths whose ratio is the factor of the scaling..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ScalingOverCenter2Type )
@@ -240,8 +389,13 @@ ObjectImp* ScalingOverCenter2Type::calc( const Args& args, const KigDocument& ) 
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   Coordinate center = static_cast<const PointImp*>( args[1] )->coordinate();
-  double ratio = static_cast<const SegmentImp*>( args[3] )->length()/
-                 static_cast<const SegmentImp*>( args[2] )->length();
+//  double ratio = static_cast<const SegmentImp*>( args[3] )->length()/
+//                 static_cast<const SegmentImp*>( args[2] )->length();
+  bool valid;
+  double denom = getDoubleFromImp( args[2], valid );
+  if ( ! valid || denom == 0.0 ) return new InvalidImp;
+  double ratio = getDoubleFromImp( args[3], valid )/denom;
+  if ( ! valid ) return new InvalidImp;
 
   return args[0]->transform( Transformation::scalingOverPoint( ratio, center ) );
 }
@@ -250,7 +404,9 @@ static const ArgsParser::spec argsspecScalingOverLine[] =
 {
   { ObjectImp::stype(), I18N_NOOP( "Scale this object" ), I18N_NOOP( "Select the object to scale" ), false },
   { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ), I18N_NOOP( "Select the line to scale over" ), false },
-  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ), I18N_NOOP( "Select a segment whose length is the factor for the scaling" ), false }
+//  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ), I18N_NOOP( "Select a segment whose length is the factor for the scaling" ), false }
+  { &lengthimp, I18N_NOOP( "Scale by this length" ),
+    I18N_NOOP( "Select a length or a segment whose length is the factor of the scaling..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ScalingOverLineType )
@@ -275,7 +431,9 @@ ObjectImp* ScalingOverLineType::calc( const Args& args, const KigDocument& ) con
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   LineData line = static_cast<const AbstractLineImp*>( args[1] )->data();
-  double ratio = static_cast<const SegmentImp*>( args[2] )->length();
+  bool valid;
+  double ratio = getDoubleFromImp( args[2], valid);
+  if ( ! valid ) return new InvalidImp;
 
   return args[0]->transform( Transformation::scalingOverLine( ratio, line ) );
 }
@@ -284,8 +442,12 @@ static const ArgsParser::spec argsspecScalingOverLine2[] =
 {
   { ObjectImp::stype(), I18N_NOOP( "Scale this object" ), I18N_NOOP( "Select the object to scale" ), false },
   { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ), I18N_NOOP( "Select the line to scale over" ), false },
-  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ), I18N_NOOP( "Select the first of two segments whose ratio is the factor for the scaling" ), false },
-  { SegmentImp::stype(), I18N_NOOP( "...to the length of this segment" ), I18N_NOOP( "Select the second of two segments whose ratio is the factor for the scaling" ), false }
+//  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ), I18N_NOOP( "Select the first of two segments whose ratio is the factor for the scaling" ), false },
+//  { SegmentImp::stype(), I18N_NOOP( "...to the length of this segment" ), I18N_NOOP( "Select the second of two segments whose ratio is the factor for the scaling" ), false }
+  { &lengthimp, I18N_NOOP( "Scale this length..." ),
+    I18N_NOOP( "Select the first of two lengths whose ratio is the factor of the scaling..." ), false },
+  { &lengthimp, I18N_NOOP( "...to this other length" ),
+    I18N_NOOP( "Select the second of two lengths whose ratio is the factor of the scaling..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ScalingOverLine2Type )
@@ -310,8 +472,13 @@ ObjectImp* ScalingOverLine2Type::calc( const Args& args, const KigDocument& ) co
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
   LineData line = static_cast<const AbstractLineImp*>( args[1] )->data();
-  double ratio = static_cast<const SegmentImp*>( args[3] )->length()/
-                 static_cast<const SegmentImp*>( args[2] )->length();
+//  double ratio = static_cast<const SegmentImp*>( args[3] )->length()/
+//                 static_cast<const SegmentImp*>( args[2] )->length();
+  bool valid;
+  double denom = getDoubleFromImp( args[2], valid );
+  if ( ! valid || denom == 0.0 ) return new InvalidImp;
+  double ratio = getDoubleFromImp( args[3], valid )/denom;
+  if ( ! valid ) return new InvalidImp;
 
   return args[0]->transform( Transformation::scalingOverLine( ratio, line ) );
 }
