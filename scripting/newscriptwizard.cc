@@ -68,8 +68,6 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
 #endif
   KTextEditor::Editor* editor = 0;
 
-  gridLayout->expand( 2, 1 );
-
   if ( !editor )
   {
     // there is no KDE textditor component installed, so we'll use a
@@ -188,15 +186,14 @@ void NewScriptWizard::accept()
 
 void NewScriptWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( QLatin1String( "scripting" ),
-                               QLatin1String( "kig" ) );
+  KToolInvocation::invokeHelp( "scripting", "kig" );
 }
 
 void NewScriptWizard::setText( const QString& text )
 {
   if ( !document )
   {
-    textedit->setText( text );
+    textedit->setPlainText( text );
   }
   else
   {
@@ -208,7 +205,7 @@ QString NewScriptWizard::text()
 {
   if ( !document )
   {
-    return textedit->text();
+    return textedit->toPlainText();
   }
   else
   {

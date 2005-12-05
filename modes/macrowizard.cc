@@ -86,6 +86,5 @@ void MacroWizard::accept()
 
 void MacroWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( QLatin1String( "defining-macros"),
-                               QLatin1String( "kig" ) );
+  KToolInvocation::invokeHelp( "defining-macros", "kig" );
 }

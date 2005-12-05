@@ -90,7 +90,6 @@ void TextLabelWizard::relayoutArgsPage()
 
 void TextLabelWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( QLatin1String( "text-labels" ),
-                               QLatin1String( "kig" ) );
+  KToolInvocation::invokeHelp( "text-labels", "kig" );
 }
 

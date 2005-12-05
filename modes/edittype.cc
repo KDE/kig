@@ -63,8 +63,7 @@ EditType::~EditType()
 
 void EditType::slotHelp()
 {
-  KToolInvocation::invokeHelp( QLatin1String( "working-with-types" ),
-                               QLatin1String( "kig" ) );
+  KToolInvocation::invokeHelp( "working-with-types", "kig" );
 }
 
 void EditType::slotOk()
