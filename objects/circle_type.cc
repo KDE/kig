@@ -109,7 +109,7 @@ ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
       double d = -(b.x-a.x)/(b.y-a.y);
 
       // length:
-      // sqrt( 3 ) == tan( 60° ) == sqrt( 2^2 - 1^2 )
+      // sqrt( 3 ) == tan( 60Â° ) == sqrt( 2^2 - 1^2 )
       double l = 1.73205080756 * (a-b).length() / 2;
 
       double d2 = d*d;
