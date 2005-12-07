@@ -27,6 +27,7 @@
 #include "../kig/kig_view.h"
 #include "../misc/common.h"
 #include "../misc/kigpainter.h"
+#include "../misc/calcpaths.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/curve_imp.h"
 #include "../objects/object_factory.h"
@@ -111,13 +112,21 @@ void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
   };
 }
 
-void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
+/*
+ * prevlabel is nonzero only if we are redefining an existing label
+ * in which case we have to check that the new parents of the label
+ * are not childs of the label itself, thus causing circular dependence
+ * in the object hierarchy
+ */
+void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v, 
+         ObjectTypeCalcer* prevlabel )
 {
   switch( d->mwawd )
   {
   case SelectingLocation:
   {
     if ( ( d->plc - e->pos() ).manhattanLength() > 4 ) return;
+    // need to check if the new position is on a curve that is child of prevlabel
     setCoordinate( v->fromScreen( d->plc ) );
     break;
   }
@@ -132,6 +141,12 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( v->fromScreen( d->plc ), *v );
     if ( os.empty() ) break;
     ObjectHolder* o = os[0];
+    /*
+     * if prevlabel != 0 then we are redefining an existing label.  
+     * In this case it is important to check that the new arguments 
+     * are not children of the label
+     */
+    if ( prevlabel && isChild( o->calcer(), prevlabel ) ) break;
     QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
     p->insertItem( i18n( "Name" ), 0 );
     QCStringList l = o->imp()->properties();
@@ -502,6 +517,11 @@ TextLabelRedefineMode::TextLabelRedefineMode( KigPart& d, ObjectTypeCalcer* labe
 
 TextLabelRedefineMode::~TextLabelRedefineMode()
 {
+}
+
+void TextLabelRedefineMode::leftReleased( QMouseEvent* e, KigWidget* v )
+{
+  TextLabelModeBase::leftReleased( e, v, mlabel );
 }
 
 void TextLabelRedefineMode::finish(
