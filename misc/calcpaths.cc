@@ -251,6 +251,13 @@ std::vector<ObjectCalcer*> getAllParents( ObjectCalcer* obj )
   return getAllParents( objs );
 }
 
+bool isChild( const ObjectCalcer* o, ObjectCalcer* op )
+{
+  std::vector<ObjectCalcer*> os;
+  os.push_back( op );
+  return isChild( o, os );
+}
+
 bool isChild( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& os )
 {
   std::vector<ObjectCalcer*> parents = o->parents();
