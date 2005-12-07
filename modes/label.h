@@ -73,11 +73,11 @@ protected:
   virtual void finish( const Coordinate& s, const QString& s,
                        const argvect& props, bool needframe,
                        ObjectCalcer* locationparent ) = 0;
+  void leftReleased( QMouseEvent*, KigWidget*, ObjectTypeCalcer* prevlabel = 0 );
 
 private:
   // the KigMode interface..
   void leftClicked( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
 
   void mouseMoved( QMouseEvent*, KigWidget* );
 
@@ -124,6 +124,7 @@ class TextLabelRedefineMode
 public:
   TextLabelRedefineMode( KigPart& d, ObjectTypeCalcer* label );
   ~TextLabelRedefineMode();
+  void leftReleased( QMouseEvent*, KigWidget* );
 };
 
 #endif
