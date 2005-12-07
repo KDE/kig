@@ -58,6 +58,9 @@ void KigMode::leftMouseMoved( QMouseEvent*, KigWidget* )
 
 void KigMode::leftReleased( QMouseEvent*, KigWidget* )
 {
+  /* insist disabling the undo button to avoid crashes */
+  mdoc.action( "edit_undo" )->setEnabled( false );
+  mdoc.action( "edit_redo" )->setEnabled( false );
 }
 
 void KigMode::midClicked( QMouseEvent*, KigWidget* )
