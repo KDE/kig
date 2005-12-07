@@ -74,6 +74,7 @@ std::set<ObjectCalcer*> getAllChildren( ObjectCalcer* obj );
  * Returns true if \p o is a descendant of any of the objects in \p os..
  */
 bool isChild( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& os );
+bool isChild( const ObjectCalcer* o, ObjectCalcer* op );
 
 /**
  * Return true if the given \p point is ( by construction ) on the given
