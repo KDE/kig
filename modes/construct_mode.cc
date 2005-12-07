@@ -96,6 +96,7 @@ void BaseConstructMode::leftReleased( QMouseEvent* e, KigWidget* v )
     }
   }
   leftClickedObject( o, e->pos(), *v, keyCtrlOrShift );
+  KigMode::leftReleased( e, v );
 }
 
 void BaseConstructMode::leftClickedObject(
