@@ -126,7 +126,16 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
   case SelectingLocation:
   {
     if ( ( d->plc - e->pos() ).manhattanLength() > 4 ) return;
-    // need to check if the new position is on a curve that is child of prevlabel
+    /*
+     * in case we are redefining a text label:
+     * we postpone the circular recursion check untill the
+     * finish() method is called.  This is not the optimal
+     * solution, since the user receives confusing feedback
+     * from the cursor, which seemingly indicates that some
+     * curve or point could be selected for the new position
+     * although in the end a new fixed point will be created
+     * if the circularity (isChild) test fails.
+     */
     setCoordinate( v->fromScreen( d->plc ) );
     break;
   }
@@ -568,6 +577,12 @@ void TextLabelRedefineMode::finish(
     ( *i )->calc( mdoc.document() );
 
   std::vector<ObjectCalcer*> np = firstthree;
+  /*
+   * this avoids circular recursion in case the location parent
+   * is actually a child of this label
+   */
+  if ( locationparent && isChild( locationparent, mlabel ) )
+    locationparent = 0;
   if ( locationparent && locationparent->imp()->inherits( CurveImp::stype() ) )
   {
     double param = static_cast<const CurveImp*>( locationparent->imp() )->getParam( coord, mdoc.document() );
