@@ -78,6 +78,7 @@ protected:
 private:
   // the KigMode interface..
   void leftClicked( QMouseEvent*, KigWidget* );
+  void leftReleased( QMouseEvent*, KigWidget* );
 
   void mouseMoved( QMouseEvent*, KigWidget* );
 
