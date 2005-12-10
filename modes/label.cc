@@ -112,6 +112,11 @@ void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
   };
 }
 
+void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
+{
+  leftReleased( e, v, 0 );
+}
+
 /*
  * prevlabel is nonzero only if we are redefining an existing label
  * in which case we have to check that the new parents of the label
