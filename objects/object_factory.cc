@@ -203,6 +203,20 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
   parents.reserve( nparents.size() + 3 );
   parents.push_back( new ObjectConstCalcer( new IntImp( needframe ? 1 : 0 ) ) );
 
+  parents.push_back( getAttachPoint( p, loc, doc ) );
+
+  parents.push_back( new ObjectConstCalcer( new StringImp( s ) ) );
+  std::copy( nparents.begin(), nparents.end(), std::back_inserter( parents ) );
+  ObjectTypeCalcer* ret = new ObjectTypeCalcer( TextType::instance(), parents );
+  ret->calc( doc );
+  return ret;
+}
+
+ObjectCalcer* ObjectFactory::getAttachPoint(
+  ObjectCalcer* p,
+  const Coordinate& loc,
+  const KigDocument& doc ) const
+{
 /*
  * mp: (changes to add relative-attachment).  Now an object is tested
  * as follows:
@@ -226,11 +240,11 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
   {
     ObjectCalcer* o = relativePointCalcer( p, loc );
     o->calc( doc );
-    parents.push_back( o );
+    return o;
   }
   else if ( p && p->imp()->inherits( PointImp::stype() ) )
   {
-    parents.push_back( p );
+    return p;
   }
   else if ( p && p->imp()->inherits( CurveImp::stype() ) )
   {
@@ -240,21 +254,15 @@ ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
 
     ObjectCalcer* o = constrainedPointCalcer( p, param );
     o->calc( doc );
-    parents.push_back( o );
+    return o;
   }
   else
   {
     if ( loc.valid() )
-      parents.push_back( new ObjectConstCalcer( new PointImp( loc ) ) );
+      return new ObjectConstCalcer( new PointImp( loc ) );
     else
-      parents.push_back( new ObjectConstCalcer( new PointImp( Coordinate( 0, 0 ) ) ) );
+      return new ObjectConstCalcer( new PointImp( Coordinate( 0, 0 ) ) );
   }
-
-  parents.push_back( new ObjectConstCalcer( new StringImp( s ) ) );
-  std::copy( nparents.begin(), nparents.end(), std::back_inserter( parents ) );
-  ObjectTypeCalcer* ret = new ObjectTypeCalcer( TextType::instance(), parents );
-  ret->calc( doc );
-  return ret;
 }
 
 ObjectHolder* ObjectFactory::attachedLabel(
