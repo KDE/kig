@@ -92,7 +92,13 @@ ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
   for ( Args::iterator i = varargs.begin(); i != varargs.end(); ++i )
     (*i)->fillInNextEscape( s, doc );
 
-  return new TextImp( s, t, needframe );
+  if ( varargs.size() == 1 && varargs[0]->inherits( DoubleImp::stype() ) )
+  {
+    double value = static_cast<const DoubleImp*>( varargs[0] )->data();
+    return new NumericTextImp( s, t, needframe, value );
+  } else {
+    return new TextImp( s, t, needframe );
+  }
 }
 
 bool TextType::canMove( const ObjectTypeCalcer& ) const
