@@ -27,65 +27,28 @@
 
 #include <klocale.h>
 
+/*
+ * (mp)
+ * we use here common code with transformation_type.cc
+ *
+ * getDoubleFromImp:  is used to get a double from various
+ * different Imp(s): DoubeImp, NumericTextImp, SegmentImp (length)
+ *
+ * class LengthImpType: (defined in transformation_type.cc)
+ * is used to match different Imp(s) upon construction
+ * 
+ * lengthimptypeinstance: is just an instance of such class
+ *
+ * perhaps the stuff in transformation_type.cc should be moved
+ * in some other place?
+ */
+
 double getDoubleFromImp( const ObjectImp* obj, bool& valid );
 
 class LengthImpType
-  : public ObjectImpType
-{
-public:
-  LengthImpType( const ObjectImpType* parent, const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement );
-  ~LengthImpType();
-  virtual bool match( const ObjectImpType* t ) const;
-};
+  : public ObjectImpType{};
 
-//LengthImpType::LengthImpType( const ObjectImpType* parent,
-//    const char* internalname,
-//    const char* translatedname,
-//    const char* selectstatement,
-//    const char* selectnamestatement,
-//    const char* removeastatement,
-//    const char* addastatement,
-//    const char* moveastatement,
-//    const char* attachtothisstatement,
-//    const char* showastatement,
-//    const char* hideastatement )
-//  : ObjectImpType( parent, internalname, translatedname, selectstatement,
-//                   selectnamestatement, removeastatement, addastatement,
-//                   moveastatement, attachtothisstatement,
-//                   showastatement, hideastatement )
-//{
-//}
-//
-//LengthImpType::~LengthImpType()
-//{
-//}
-//
-//bool LengthImpType::match( const ObjectImpType* t ) const
-//{
-//  return t == this || t == SegmentImp::stype() || t == NumericTextImp::stype();
-//}
-
-static const LengthImpType lengthimp(
-    ObjectImp::stype(), "length-object",
-    I18N_NOOP( "length" ),
-    I18N_NOOP( "Select this length" ),
-    I18N_NOOP( "Select length %1" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" )
-    );
+extern LengthImpType lengthimptypeinstance;
 
 static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a circle through this point" );
 
@@ -209,7 +172,7 @@ static const ArgsParser::spec argsspecCircleBPR[] =
 {
   { PointImp::stype(), constructcirclewithcenterstat,
       I18N_NOOP( "Select the center of the new circle..." ), false },
-  { &lengthimp, I18N_NOOP( "With this radius" ), 
+  { &lengthimptypeinstance, I18N_NOOP( "With this radius" ), 
       I18N_NOOP( "Select the length of the radius..." ), false }
 };
 
