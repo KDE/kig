@@ -408,37 +408,30 @@ Rect CubicImp::surroundingRect() const
 
 QString CubicImp::cartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "%7 x³+ %10 y³ + %8 x²y + %9 xy² +%6 y² + %4 x² + %5 xy + %2 x + %3 y + %1 = 0" );
-  ret = ret.arg( mdata.coeffs[0], 0, 'g', 3 );
+  /*
+   * unfortunately QStrings.arg method is limited to %1, %9, so we cannot
+   * treat all 10 arguments!  Let's split the equation in two parts...
+   * Now this ends up also in the translation machinery, is this really
+   * necessary?  Otherwise we could do a little bit of tidy up on the
+   * the equation (removal of zeros, avoid " ... + -1234 x ", etc.)
+   */
+
+  QString ret = i18n( "%6 x³+ %9 y³ + %7 x²y + %8 xy² +%5 y² + %3 x² + %4 xy + %1 x + %2 y" );
   ret = ret.arg( mdata.coeffs[1], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[2], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[3], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[4], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[5], 0, 'g', 3 );
-	ret = ret.arg( mdata.coeffs[6], 0, 'g', 3 );
+  ret = ret.arg( mdata.coeffs[6], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[7], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[8], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[9], 0, 'g', 3 );
 
-  return ret;
-/*	double a000 = mdata.coeffs[0];
-  double a001 = mdata.coeffs[1];
-  double a002 = mdata.coeffs[2];
-  double a011 = mdata.coeffs[3];
-  double a012 = mdata.coeffs[4];
-  double a022 = mdata.coeffs[5];
-  double a111 = mdata.coeffs[6];
-  double a112 = mdata.coeffs[7];
-  double a122 = mdata.coeffs[8];
-  double a222 = mdata.coeffs[9];*/
-	//
-//  // first the y^3 coefficient, it coming only from a222:
-//  double a = a222;
-//  // next the y^2 coefficient (from a122 and a022):
-//  double b = a122*x + a022;
-//  // next the y coefficient (from a112, a012 and a002):
-//  double c = a112*x*x + a012*x + a002;
-//  // finally the constant coefficient (from a111, a011, a001 and a000):
-//  double d = a111*x*x*x + a011*x*x + a001*x + a000;
+  ret.append( i18n( " + %1 = 0" ) );
+  ret = ret.arg( mdata.coeffs[0], 0, 'g', 3 );
 
+  // we should find a common place to do this...
+  ret.replace( "+ -", "- " );
+  ret.replace( "+-", "-" );
+  return ret;
 }
