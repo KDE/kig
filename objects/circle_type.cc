@@ -21,10 +21,71 @@
 #include "bogus_imp.h"
 #include "line_imp.h"
 #include "point_imp.h"
+#include "text_imp.h"
 
 #include "../misc/common.h"
 
 #include <klocale.h>
+
+double getDoubleFromImp( const ObjectImp* obj, bool& valid );
+
+class LengthImpType
+  : public ObjectImpType
+{
+public:
+  LengthImpType( const ObjectImpType* parent, const char* internalname,
+    const char* translatedname,
+    const char* selectstatement,
+    const char* selectnamestatement,
+    const char* removeastatement,
+    const char* addastatement,
+    const char* moveastatement,
+    const char* attachtothisstatement,
+    const char* showastatement,
+    const char* hideastatement );
+  ~LengthImpType();
+  virtual bool match( const ObjectImpType* t ) const;
+};
+
+//LengthImpType::LengthImpType( const ObjectImpType* parent,
+//    const char* internalname,
+//    const char* translatedname,
+//    const char* selectstatement,
+//    const char* selectnamestatement,
+//    const char* removeastatement,
+//    const char* addastatement,
+//    const char* moveastatement,
+//    const char* attachtothisstatement,
+//    const char* showastatement,
+//    const char* hideastatement )
+//  : ObjectImpType( parent, internalname, translatedname, selectstatement,
+//                   selectnamestatement, removeastatement, addastatement,
+//                   moveastatement, attachtothisstatement,
+//                   showastatement, hideastatement )
+//{
+//}
+//
+//LengthImpType::~LengthImpType()
+//{
+//}
+//
+//bool LengthImpType::match( const ObjectImpType* t ) const
+//{
+//  return t == this || t == SegmentImp::stype() || t == NumericTextImp::stype();
+//}
+
+static const LengthImpType lengthimp(
+    ObjectImp::stype(), "length-object",
+    I18N_NOOP( "length" ),
+    I18N_NOOP( "Select this length" ),
+    I18N_NOOP( "Select length %1" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" ),
+    I18N_NOOP( "SHOULD NOT BE SEEN" )
+    );
 
 static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a circle through this point" );
 
@@ -146,8 +207,10 @@ const ObjectImpType* CircleBTPType::resultId() const
 
 static const ArgsParser::spec argsspecCircleBPR[] =
 {
-  { PointImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", false },
-  { DoubleImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", false }
+  { PointImp::stype(), constructcirclewithcenterstat,
+      I18N_NOOP( "Select the center of the new circle..." ), false },
+  { &lengthimp, I18N_NOOP( "With this radius" ), 
+      I18N_NOOP( "Select the length of the radius..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleBPRType )
@@ -171,7 +234,11 @@ ObjectImp* CircleBPRType::calc( const Args& args, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
   const Coordinate c = static_cast<const PointImp*>( args[0] )->coordinate();
-  double r = static_cast<const DoubleImp*>( args[1] )->data();
+  bool valid;
+  double r = getDoubleFromImp( args[1], valid);
+  if ( ! valid ) return new InvalidImp;
+  r = fabs( r );
+  // double r = static_cast<const DoubleImp*>( args[1] )->data();
   return new CircleImp( c, r );
 }
 

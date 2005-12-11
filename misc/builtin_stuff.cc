@@ -107,6 +107,13 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebtp" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      CircleBPRType::instance(), I18N_NOOP( "Circle by Point && Radius" ),
+      I18N_NOOP( "A circle defined by its center and the length of the radius" ),
+      "circlebps" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_circlebpr" ) );
+
     // declare this object static to this function, so it gets deleted
     // at the end of the program, without us having to wonder about
     // deleting it..  We don't want to register this

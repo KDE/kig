@@ -90,7 +90,8 @@ LengthImpType::~LengthImpType()
 
 bool LengthImpType::match( const ObjectImpType* t ) const
 {
-  return t == this || t == SegmentImp::stype() || t == NumericTextImp::stype();
+  return t == this || t == SegmentImp::stype() || t == NumericTextImp::stype()
+                   || t == DoubleImp::stype();
 }
 
 static const LengthImpType lengthimp(
