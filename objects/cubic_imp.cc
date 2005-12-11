@@ -416,7 +416,7 @@ QString CubicImp::cartesianEquationString( const KigDocument& ) const
    * the equation (removal of zeros, avoid " ... + -1234 x ", etc.)
    */
 
-  QString ret = i18n( "%6 x³+ %9 y³ + %7 x²y + %8 xy² +%5 y² + %3 x² + %4 xy + %1 x + %2 y" );
+  QString ret = i18n( "%6 x³ + %9 y³ + %7 x²y + %8 xy² + %5 y² + %3 x² + %4 xy + %1 x + %2 y" );
   ret = ret.arg( mdata.coeffs[1], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[2], 0, 'g', 3 );
   ret = ret.arg( mdata.coeffs[3], 0, 'g', 3 );
