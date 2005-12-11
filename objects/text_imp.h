@@ -67,4 +67,13 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+class NumericTextImp
+  : public TextImp
+{
+  double mvalue;
+public:
+  NumericTextImp( const QString& text, const Coordinate& loc, bool frame, double value );
+  double getValue() const;
+};
+
 #endif

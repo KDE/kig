@@ -171,3 +171,17 @@ Rect TextImp::surroundingRect() const
 {
   return mboundrect;
 }
+
+/*
+ * NumericTextImp
+ */
+
+NumericTextImp::NumericTextImp( const QString& text, const Coordinate& loc, bool frame, double value )
+  : TextImp( text, loc, frame ), mvalue( value )
+{
+}
+
+double NumericTextImp::getValue( void ) const
+{
+  return mvalue;
+}
