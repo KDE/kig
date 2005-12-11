@@ -34,6 +34,7 @@
 #include "../objects/line_imp.h"
 #include "../objects/other_imp.h"
 #include "../objects/point_imp.h"
+#include "../objects/text_imp.h"
 
 using namespace boost::python;
 
@@ -310,6 +311,13 @@ BOOST_PYTHON_MODULE_INIT( kig )
 //    .def( "coordinate", &TextImp::coordinate )
 //    .def( "hasFrame", &TextImp::hasFrame )
 //    ;
+
+  class_<NumericTextImp, bases<ObjectImp> >( "NumericObject", no_init )
+    .def( "stype", &NumericTextImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "value", &NumericTextImp::getValue )
+    ;
 
   class_<CubicCartesianData>( "CubicCartesianData", init<double,double,double,double,double,double,double,double,double,double>() )
     .def( "invalidData", &CubicCartesianData::invalidData )
