@@ -94,7 +94,7 @@ bool LengthImpType::match( const ObjectImpType* t ) const
                    || t == DoubleImp::stype();
 }
 
-static const LengthImpType lengthimp(
+LengthImpType lengthimptypeinstance(
     ObjectImp::stype(), "length-object",
     I18N_NOOP( "length" ),
     I18N_NOOP( "Select this length" ),
@@ -323,7 +323,7 @@ static const ArgsParser::spec argsspecScalingOverCenter[] =
     I18N_NOOP( "Select the center point of the scaling..." ), false },
 //  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ),
 //    I18N_NOOP( "Select a segment whose length is the factor of the scaling..." ), false }
-  { &lengthimp, I18N_NOOP( "Scale by this length" ),
+  { &lengthimptypeinstance, I18N_NOOP( "Scale by this length" ),
     I18N_NOOP( "Select a length or a segment whose length is the factor of the scaling..." ), false }
 };
 
@@ -366,9 +366,9 @@ static const ArgsParser::spec argsspecScalingOverCenter2[] =
 //    I18N_NOOP( "Select the first of two segments whose ratio is the factor of the scaling..." ), false },
 //  { SegmentImp::stype(), I18N_NOOP( "...to the length of this other segment" ),
 //    I18N_NOOP( "Select the second of two segments whose ratio is the factor of the scaling..." ), false }
-  { &lengthimp, I18N_NOOP( "Scale this length..." ),
+  { &lengthimptypeinstance, I18N_NOOP( "Scale this length..." ),
     I18N_NOOP( "Select the first of two lengths whose ratio is the factor of the scaling..." ), false },
-  { &lengthimp, I18N_NOOP( "...to this other length" ),
+  { &lengthimptypeinstance, I18N_NOOP( "...to this other length" ),
     I18N_NOOP( "Select the second of two lengths whose ratio is the factor of the scaling..." ), false }
 };
 
@@ -410,7 +410,7 @@ static const ArgsParser::spec argsspecScalingOverLine[] =
   { ObjectImp::stype(), I18N_NOOP( "Scale this object" ), I18N_NOOP( "Select the object to scale" ), false },
   { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ), I18N_NOOP( "Select the line to scale over" ), false },
 //  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ), I18N_NOOP( "Select a segment whose length is the factor for the scaling" ), false }
-  { &lengthimp, I18N_NOOP( "Scale by this length" ),
+  { &lengthimptypeinstance, I18N_NOOP( "Scale by this length" ),
     I18N_NOOP( "Select a length or a segment whose length is the factor of the scaling..." ), false }
 };
 
@@ -449,9 +449,9 @@ static const ArgsParser::spec argsspecScalingOverLine2[] =
   { AbstractLineImp::stype(), I18N_NOOP( "Scale over this line" ), I18N_NOOP( "Select the line to scale over" ), false },
 //  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ), I18N_NOOP( "Select the first of two segments whose ratio is the factor for the scaling" ), false },
 //  { SegmentImp::stype(), I18N_NOOP( "...to the length of this segment" ), I18N_NOOP( "Select the second of two segments whose ratio is the factor for the scaling" ), false }
-  { &lengthimp, I18N_NOOP( "Scale this length..." ),
+  { &lengthimptypeinstance, I18N_NOOP( "Scale this length..." ),
     I18N_NOOP( "Select the first of two lengths whose ratio is the factor of the scaling..." ), false },
-  { &lengthimp, I18N_NOOP( "...to this other length" ),
+  { &lengthimptypeinstance, I18N_NOOP( "...to this other length" ),
     I18N_NOOP( "Select the second of two lengths whose ratio is the factor of the scaling..." ), false }
 };
 
