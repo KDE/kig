@@ -22,6 +22,7 @@
 #include "line_imp.h"
 #include "other_imp.h"
 #include "polygon_imp.h"
+#include "text_imp.h"
 #include "../misc/coordinate.h"
 #include "../misc/kigtransform.h"
 
@@ -39,6 +40,9 @@ double getDoubleFromImp( const ObjectImp* obj, bool& valid )
 
   if ( obj->inherits( DoubleImp::stype() ) )
     return static_cast<const DoubleImp*>( obj )->data();
+
+  if ( obj->inherits( NumericTextImp::stype() ) )
+    return static_cast<const NumericTextImp*>( obj )->getValue();
 
   valid = false;
   return 0;
@@ -86,7 +90,7 @@ LengthImpType::~LengthImpType()
 
 bool LengthImpType::match( const ObjectImpType* t ) const
 {
-  return t == this || t == SegmentImp::stype() || t == DoubleImp::stype();
+  return t == this || t == SegmentImp::stype() || t == NumericTextImp::stype();
 }
 
 static const LengthImpType lengthimp(
@@ -144,7 +148,7 @@ AngleImpType::~AngleImpType()
 
 bool AngleImpType::match( const ObjectImpType* t ) const
 {
-  return t == this || t == AngleImp::stype() || t == DoubleImp::stype();
+  return t == this || t == AngleImp::stype() || t == NumericTextImp::stype();
 }
 
 static const AngleImpType angleimp(
