@@ -41,6 +41,17 @@
 
 * objects
 
+- When intersection objects that generally have two intersection
+  points (in particular: line-conic, circle-circle) let
+  kig try to figure out if one of the intersections is already there
+  (it must be an intersection "by construction" and not by chance),
+  in which case build only the "other" intersection by using information
+  from the already present point.  This would have two beneficial effects:
+  1. decrease de amount of coincident points
+  2. the constructed point will always be "the other" intersection
+  also when moving objects around.  This is not the case now, which
+  leads to unexpected behavious sometimes (from the user perspective)
+
 - Two new transformations: projection on a line, orthogonally and
   according to a given direction.  As a mathematician, I'm supposed to
   have a grudge against these, as they don't fit the definition for
@@ -52,11 +63,11 @@
   useful for points though.
 
 - make DoubleImp a "visible" object with uses like Dr. Geo numeric
-  values.
+  values. (done)
 
 - Provide some nice stuff for differential geometry: velocity vector
   of a curve, curvature vector, osculating parabole. Most of this is
-  not too difficult to implement, but very cool :)
+  not too difficult to implement, but very cool :)  (mostly done)
 
 - create a formula label to display math formulas in the document, and
   allow for importing from/exporting to other formula formats such as
@@ -92,8 +103,6 @@
    user to select them.  Then we could give an error telling the user
    to first construct the other objects.  An exception should be made
    for points of course.
-
-- Add the possibility to attach text label also to angles.
 
 - add the possibility to transform more than one object at one time,
   using the popup menu. For example, I select two circles, I choose
