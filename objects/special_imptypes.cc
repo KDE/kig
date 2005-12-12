@@ -20,6 +20,9 @@
 #include "other_imp.h"
 #include "bogus_imp.h"
 #include "text_imp.h"
+#include "circle_imp.h"
+
+static char snbs[] = "SHOULD NOT BE SEEN";
 
 double getDoubleFromImp( const ObjectImp* obj, bool& valid )
 {
@@ -42,20 +45,9 @@ double getDoubleFromImp( const ObjectImp* obj, bool& valid )
 }
 
 LengthImpType::LengthImpType( const ObjectImpType* parent,
-    const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement )
-  : ObjectImpType( parent, internalname, translatedname, selectstatement,
-                   selectnamestatement, removeastatement, addastatement,
-                   moveastatement, attachtothisstatement,
-                   showastatement, hideastatement )
+    const char* internalname )
+  : ObjectImpType( parent, internalname, snbs, snbs,
+                   snbs, snbs, snbs, snbs, snbs, snbs, snbs )
 {
 }
 
@@ -70,33 +62,12 @@ bool LengthImpType::match( const ObjectImpType* t ) const
 }
 
 LengthImpType lengthimptypeinstance(
-    ObjectImp::stype(), "length-object",
-    I18N_NOOP( "length" ),
-    I18N_NOOP( "Select this length" ),
-    I18N_NOOP( "Select length %1" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" )
-    );
+    ObjectImp::stype(), "length-object" );
 
 AngleImpType::AngleImpType( const ObjectImpType* parent,
-    const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement )
-  : ObjectImpType( parent, internalname, translatedname, selectstatement,
-                   selectnamestatement, removeastatement, addastatement,
-                   moveastatement, attachtothisstatement,
-                   showastatement, hideastatement )
+    const char* internalname )
+  : ObjectImpType( parent, internalname, snbs, snbs,
+                   snbs, snbs, snbs, snbs, snbs, snbs, snbs )
 {
 }
 
@@ -110,15 +81,25 @@ bool AngleImpType::match( const ObjectImpType* t ) const
 }
 
 AngleImpType angleimptypeinstance(
-    ObjectImp::stype(), "angle-object",
-    I18N_NOOP( "angle" ),
-    I18N_NOOP( "Select this angle" ),
-    I18N_NOOP( "Select angle %1" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" )
-    );
+    ObjectImp::stype(), "angle-object" );
 
+InvertibleImpType::InvertibleImpType( const ObjectImpType* parent,
+    const char* internalname )
+  : ObjectImpType( parent, internalname, snbs, snbs,
+                   snbs, snbs, snbs, snbs, snbs, snbs, snbs )
+{
+}
+
+InvertibleImpType::~InvertibleImpType()
+{
+}
+
+bool InvertibleImpType::match( const ObjectImpType* t ) const
+{
+  return t == this || t == LineImp::stype() || t == RayImp::stype() ||
+         t == SegmentImp::stype() || t == CircleImp::stype() ||
+         t == ArcImp::stype();
+}
+
+InvertibleImpType invertibleimptypeinstance(
+    ObjectImp::stype(), "invertible-object" );
