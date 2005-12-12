@@ -22,151 +22,11 @@
 #include "line_imp.h"
 #include "other_imp.h"
 #include "polygon_imp.h"
-#include "text_imp.h"
+#include "special_imptypes.h"
 #include "../misc/coordinate.h"
 #include "../misc/kigtransform.h"
 
 #include <cmath>
-
-double getDoubleFromImp( const ObjectImp* obj, bool& valid )
-{
-  valid = true;
-
-  if ( obj->inherits( SegmentImp::stype() ) )
-    return static_cast<const SegmentImp*>( obj )->length();
-
-  if ( obj->inherits( AngleImp::stype() ) )
-    return static_cast<const AngleImp*>( obj )->size();
-
-  if ( obj->inherits( DoubleImp::stype() ) )
-    return static_cast<const DoubleImp*>( obj )->data();
-
-  if ( obj->inherits( NumericTextImp::stype() ) )
-    return static_cast<const NumericTextImp*>( obj )->getValue();
-
-  valid = false;
-  return 0;
-}
-
-class LengthImpType
-  : public ObjectImpType
-{
-public:
-  LengthImpType( const ObjectImpType* parent, const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement );
-  ~LengthImpType();
-  virtual bool match( const ObjectImpType* t ) const;
-};
-
-LengthImpType::LengthImpType( const ObjectImpType* parent,
-    const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement )
-  : ObjectImpType( parent, internalname, translatedname, selectstatement,
-                   selectnamestatement, removeastatement, addastatement,
-                   moveastatement, attachtothisstatement,
-                   showastatement, hideastatement )
-{
-}
-
-LengthImpType::~LengthImpType()
-{
-}
-
-bool LengthImpType::match( const ObjectImpType* t ) const
-{
-  return t == this || t == SegmentImp::stype() || t == NumericTextImp::stype()
-                   || t == DoubleImp::stype();
-}
-
-LengthImpType lengthimptypeinstance(
-    ObjectImp::stype(), "length-object",
-    I18N_NOOP( "length" ),
-    I18N_NOOP( "Select this length" ),
-    I18N_NOOP( "Select length %1" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" )
-    );
-
-class AngleImpType
-  : public ObjectImpType
-{
-public:
-  AngleImpType( const ObjectImpType* parent, const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement );
-  ~AngleImpType();
-  virtual bool match( const ObjectImpType* t ) const;
-};
-
-AngleImpType::AngleImpType( const ObjectImpType* parent,
-    const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement )
-  : ObjectImpType( parent, internalname, translatedname, selectstatement,
-                   selectnamestatement, removeastatement, addastatement,
-                   moveastatement, attachtothisstatement,
-                   showastatement, hideastatement )
-{
-}
-
-AngleImpType::~AngleImpType()
-{
-}
-
-bool AngleImpType::match( const ObjectImpType* t ) const
-{
-  return t == this || t == AngleImp::stype() || t == NumericTextImp::stype();
-}
-
-static const AngleImpType angleimp(
-    ObjectImp::stype(), "angle-object",
-    I18N_NOOP( "angle" ),
-    I18N_NOOP( "Select this angle" ),
-    I18N_NOOP( "Select angle %1" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" ),
-    I18N_NOOP( "SHOULD NOT BE SEEN" )
-    );
-
-/*
- */
 
 static const ArgsParser::spec argsspecTranslation[] =
 {
@@ -281,7 +141,7 @@ static const ArgsParser::spec argsspecRotation[] =
     I18N_NOOP( "Select the center point of the rotation..." ), false },
 //  { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ),
 //    I18N_NOOP( "Select the angle of the rotation..." ), false }
-  { &angleimp, I18N_NOOP( "Rotate by this angle" ),
+  { &angleimptypeinstance, I18N_NOOP( "Rotate by this angle" ),
     I18N_NOOP( "Select the angle of the rotation..." ), false }
 };
 
