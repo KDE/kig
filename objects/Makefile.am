@@ -38,7 +38,8 @@ noinst_HEADERS=\
 	text_imp.h \
 	text_type.h \
 	transform_types.h \
-	vector_type.h
+	vector_type.h \
+	special_imptypes.h
 libobjects_la_SOURCES=\
 	angle_type.cc \
 	arc_type.cc \
@@ -77,6 +78,7 @@ libobjects_la_SOURCES=\
 	text_imp.cc \
 	text_type.cc \
 	transform_types.cc \
-	vector_type.cc
+	vector_type.cc \
+	special_imptypes.cc
 libobjects_la_LIBADD=-lm
 METASOURCES=AUTO

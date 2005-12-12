@@ -21,34 +21,11 @@
 #include "bogus_imp.h"
 #include "line_imp.h"
 #include "point_imp.h"
-#include "text_imp.h"
+#include "special_imptypes.h"
 
 #include "../misc/common.h"
 
 #include <klocale.h>
-
-/*
- * (mp)
- * we use here common code with transformation_type.cc
- *
- * getDoubleFromImp:  is used to get a double from various
- * different Imp(s): DoubeImp, NumericTextImp, SegmentImp (length)
- *
- * class LengthImpType: (defined in transformation_type.cc)
- * is used to match different Imp(s) upon construction
- * 
- * lengthimptypeinstance: is just an instance of such class
- *
- * perhaps the stuff in transformation_type.cc should be moved
- * in some other place?
- */
-
-double getDoubleFromImp( const ObjectImp* obj, bool& valid );
-
-class LengthImpType
-  : public ObjectImpType{};
-
-extern LengthImpType lengthimptypeinstance;
 
 static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a circle through this point" );
 
