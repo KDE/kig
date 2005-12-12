@@ -37,7 +37,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
 		 I18N_NOOP( "Did a lot of important work all around Kig, "
                             "including, but not limited to conics, cubics, "
                             "transformations and property tests support." ),
-		 "paolini@dmf.bs.unicatt.it");
+		 "paolini@dmf.unicatt.it");
 
   tmp->addAuthor( "Pino Toscano",
                   I18N_NOOP( "Actual maintainer, Dr. Geo import filter, point and "
@@ -49,7 +49,7 @@ inline KAboutData* kigAboutData( const char* name, const char* iname )
                   I18N_NOOP( "Helped a lot with the implementation of the Locus object, "
                              "there's quite some math involved in doing it right, and "
                              "Franco wrote the most difficult parts." ),
-                  "pasqui@dmf.bs.unicatt.it" );
+                  "pasqui@dmf.unicatt.it" );
 
   tmp->addCredit( "Eric Depagne",
                   I18N_NOOP( "The French translator, who also sent me some useful "
