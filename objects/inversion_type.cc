@@ -22,89 +22,19 @@
 #include "circle_imp.h"
 #include "other_imp.h"
 #include "bogus_imp.h"
+#include "special_imptypes.h"
 
 #include "../misc/common.h"
 
 #include <klocale.h>
-
-/*
- * The "InvertibleImpType" class, inherited fron ObjectImpType
- * is used to recognize non-point objects that we know how to
- * circular-invert, namely: lines, segments, rays, circles, arcs.
- * The trick is done by redefining the "match" method of the
- * class in order to return "true" if the argument is one of the
- * types above.
- * This same trick could also be used for TransportOfMeasure in
- * order to allow us to inherit from ArgsParserObjectType instead of
- * directly from ObjectType.
- */
-
-class InvertibleImpType
-  : public ObjectImpType
-{
-public:
-  InvertibleImpType( const ObjectImpType* parent, const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement );
-  ~InvertibleImpType();
-  virtual bool match( const ObjectImpType* t ) const;
-};
-
-InvertibleImpType::InvertibleImpType( const ObjectImpType* parent, 
-    const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement )
-  : ObjectImpType( parent, internalname, translatedname, selectstatement,
-                   selectnamestatement, removeastatement, addastatement,
-                   moveastatement, attachtothisstatement,
-                   showastatement, hideastatement )
-{
-}
-
-InvertibleImpType::~InvertibleImpType()
-{
-}
-
-bool InvertibleImpType::match( const ObjectImpType* t ) const
-{
-  return t == this || t == LineImp::stype() || t == RayImp::stype() ||
-         t == SegmentImp::stype() || t == CircleImp::stype() ||
-         t == ArcImp::stype();
-}
-
-static const InvertibleImpType invertibleimp(
-    ObjectImp::stype(), "invertible-object",
-    I18N_NOOP( "invertible object" ),
-    I18N_NOOP( "Select this invertible object" ),
-    I18N_NOOP( "Select invertible object %1" ),
-    I18N_NOOP( "Remove an Invertible Object" ),
-    I18N_NOOP( "Add an Invertible Object" ),
-    I18N_NOOP( "Move an Invertible Object" ),
-    I18N_NOOP( "Attach to this Invertible Object" ),
-    I18N_NOOP( "Show an Invertible Object" ),
-    I18N_NOOP( "Hide an Invertible Object" )
-    );
 
 static const char str1[] = I18N_NOOP( "Invert with respect to this circle" );
 static const char str2[] = I18N_NOOP( "Select the circle we want to invert against..." );
 
 static const ArgsParser::spec argsspecCircularInversion[] =
 {
-  { &invertibleimp, I18N_NOOP( "Compute the inversion of this object" ),
+  { &invertibleimptypeinstance, 
+    I18N_NOOP( "Compute the inversion of this object" ),
     I18N_NOOP( "Select the object to invert..." ), false },
   { CircleImp::stype(), str1, str2, false }
 };
@@ -128,7 +58,7 @@ const CircularInversionType* CircularInversionType::instance()
 
 const ObjectImpType* CircularInversionType::resultId() const
 {
-  return &invertibleimp;
+  return &invertibleimptypeinstance;
 }
 
 ObjectImp* CircularInversionType::calc( const Args& args, const KigDocument& ) const

@@ -43,16 +43,7 @@ class LengthImpType
   : public ObjectImpType
 {
 public:
-  LengthImpType( const ObjectImpType* parent, const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement );
+  LengthImpType( const ObjectImpType* parent, const char* internalname );
   ~LengthImpType();
   virtual bool match( const ObjectImpType* t ) const;
 };
@@ -63,20 +54,34 @@ class AngleImpType
   : public ObjectImpType
 {
 public:
-  AngleImpType( const ObjectImpType* parent, const char* internalname,
-    const char* translatedname,
-    const char* selectstatement,
-    const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement );
+  AngleImpType( const ObjectImpType* parent, const char* internalname );
   ~AngleImpType();
   virtual bool match( const ObjectImpType* t ) const;
 };
 
 extern AngleImpType angleimptypeinstance;
+
+/*
+ * The "InvertibleImpType" class, inherited fron ObjectImpType
+ * is used to recognize non-point objects that we know how to
+ * circular-invert, namely: lines, segments, rays, circles, arcs.
+ * The trick is done by redefining the "match" method of the
+ * class in order to return "true" if the argument is one of the
+ * types above.
+ * This same trick could also be used for TransportOfMeasure in
+ * order to allow us to inherit from ArgsParserObjectType instead of
+ * directly from ObjectType.
+ */
+
+class InvertibleImpType
+  : public ObjectImpType
+{
+public:
+  InvertibleImpType( const ObjectImpType* parent, const char* internalname );
+  ~InvertibleImpType();
+  virtual bool match( const ObjectImpType* t ) const;
+};
+
+extern InvertibleImpType invertibleimptypeinstance;
 
 #endif
