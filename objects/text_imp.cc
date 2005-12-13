@@ -181,6 +181,28 @@ NumericTextImp::NumericTextImp( const QString& text, const Coordinate& loc, bool
 {
 }
 
+const ObjectImpType* NumericTextImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "numeric-label",
+    I18N_NOOP( "numeric label" ),
+    I18N_NOOP( "Select this numeric label" ),
+    I18N_NOOP( "Select numeric label %1" ),
+    I18N_NOOP( "Remove a Numeric Label" ),
+    I18N_NOOP( "Add a Numeric Label" ),
+    I18N_NOOP( "Move a Numeric Label" ),
+    I18N_NOOP( "Attach to this numeric label" ),
+    I18N_NOOP( "Show a Numeric Label" ),
+    I18N_NOOP( "Hide a Numeric Label" )
+    );
+  return &t;
+}
+
+const ObjectImpType* NumericTextImp::type() const
+{
+  return NumericTextImp::stype();
+}
+
 double NumericTextImp::getValue( void ) const
 {
   return mvalue;
