@@ -72,8 +72,11 @@ class NumericTextImp
 {
   double mvalue;
 public:
+  typedef TextImp Parent;
+  static const ObjectImpType* stype();
   NumericTextImp( const QString& text, const Coordinate& loc, bool frame, double value );
   double getValue() const;
+  const ObjectImpType* type() const;
 };
 
 #endif
