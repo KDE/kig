@@ -16,6 +16,7 @@
 // 02110-1301, USA.
 
 #include "script-common.h"
+#include "../objects/text_imp.h"
 
 #include <qstring.h>
 
@@ -63,10 +64,28 @@ QString ScriptType::templateCode( ScriptType::Type type, std::set<ObjectHolder*>
     };
     tempcode +=
       " ):\n"
-      "\t# Calculate whatever you want to show here, and return it.\n"
-      "\t# For example, to implement a mid point, you would put\n"
-      "\t# this code here:\n"
-      "\t#\treturn Point( ( arg1.coordinate() + arg2.coordinate() ) / 2 )\n"
+      "\t# Calculate whatever you want to show here, and return it.\n";
+    if ( args.empty() )
+    {
+      tempcode +=
+        "\t# For example, to return the number pi, you would put\n"
+        "\t# this code here:\n"
+        "\t#\treturn DoubleObject( 4*atan(1.0) )\n";
+    } else {
+      if ( ! args.empty() && (*args.begin())->imp()->inherits( NumericTextImp::stype() ) )
+      {
+        tempcode +=
+          "\t# For example, to return one half of the input number,\n"
+          "\t# you would put this code here:\n"
+          "\t#\treturn DoubleObject( arg1.value()/ 2 )\n";
+      } else {
+        tempcode +=
+          "\t# For example, to implement a mid point, you would put\n"
+          "\t# this code here:\n"
+          "\t#\treturn Point( ( arg1.coordinate() + arg2.coordinate() ) / 2 )\n";
+      }
+    }
+    tempcode +=
       "\t# Please refer to the manual for more information.\n"
       "\n";
     return tempcode;
