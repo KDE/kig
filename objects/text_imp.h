@@ -77,6 +77,14 @@ public:
   NumericTextImp( const QString& text, const Coordinate& loc, bool frame, double value );
   double getValue() const;
   const ObjectImpType* type() const;
+
+  const uint numberOfProperties() const;
+  const QCStringList properties() const;
+  const QCStringList propertiesInternalNames() const;
+  ObjectImp* property( uint which, const KigDocument& w ) const;
+  const char* iconForProperty( uint which ) const;
+  const ObjectImpType* impRequirementForProperty( uint which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( uint which ) const;
 };
 
 #endif
