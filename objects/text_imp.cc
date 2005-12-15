@@ -207,3 +207,54 @@ double NumericTextImp::getValue( void ) const
 {
   return mvalue;
 }
+
+const uint NumericTextImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties() + 1;
+}
+
+const QCStringList NumericTextImp::propertiesInternalNames() const
+{
+  QCStringList ret = Parent::propertiesInternalNames();
+  ret << "kig_value";
+  return ret;
+}
+
+const QCStringList NumericTextImp::properties() const
+{
+  QCStringList ret = Parent::properties();
+  ret << I18N_NOOP( "Numeric value" );
+  return ret;
+}
+
+const ObjectImpType* NumericTextImp::impRequirementForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  return NumericTextImp::stype();
+}
+
+const char* NumericTextImp::iconForProperty( uint which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() )
+    return "value"; // text
+  else assert( false );
+  return "";
+}
+
+ObjectImp* NumericTextImp::property( uint which, const KigDocument& w ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  else if ( which == Parent::numberOfProperties() )
+    return new DoubleImp( getValue() );
+  else assert( false );
+  return new InvalidImp;
+}
+
+bool NumericTextImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+{
+  return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+}
