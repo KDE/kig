@@ -208,33 +208,33 @@ double NumericTextImp::getValue( void ) const
   return mvalue;
 }
 
-const uint NumericTextImp::numberOfProperties() const
+const int NumericTextImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }
 
-const QCStringList NumericTextImp::propertiesInternalNames() const
+const QByteArrayList NumericTextImp::propertiesInternalNames() const
 {
-  QCStringList ret = Parent::propertiesInternalNames();
+  QByteArrayList ret = Parent::propertiesInternalNames();
   ret << "kig_value";
   return ret;
 }
 
-const QCStringList NumericTextImp::properties() const
+const QByteArrayList NumericTextImp::properties() const
 {
-  QCStringList ret = Parent::properties();
+  QByteArrayList ret = Parent::properties();
   ret << I18N_NOOP( "Numeric value" );
   return ret;
 }
 
-const ObjectImpType* NumericTextImp::impRequirementForProperty( uint which ) const
+const ObjectImpType* NumericTextImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
   return NumericTextImp::stype();
 }
 
-const char* NumericTextImp::iconForProperty( uint which ) const
+const char* NumericTextImp::iconForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
@@ -244,7 +244,7 @@ const char* NumericTextImp::iconForProperty( uint which ) const
   return "";
 }
 
-ObjectImp* NumericTextImp::property( uint which, const KigDocument& w ) const
+ObjectImp* NumericTextImp::property( int which, const KigDocument& w ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
@@ -254,7 +254,7 @@ ObjectImp* NumericTextImp::property( uint which, const KigDocument& w ) const
   return new InvalidImp;
 }
 
-bool NumericTextImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
+bool NumericTextImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }
