@@ -548,19 +548,26 @@ void TextLabelRedefineMode::finish(
     ( *i )->calc( mdoc.document() );
 
   std::vector<ObjectCalcer*> np = firstthree;
-  if ( locationparent && locationparent->imp()->inherits( CurveImp::stype() ) )
-  {
-    double param = static_cast<const CurveImp*>( locationparent->imp() )->getParam( coord, mdoc.document() );
-    np[1] = ObjectFactory::instance()->constrainedPointCalcer( locationparent, param );
-    np[1]->calc( mdoc.document() );
-  }
-  else if ( locationparent )
-  {
-    assert( locationparent->imp()->inherits( PointImp::stype() ) );
-    np[1] = locationparent;
-  }
-  else
-    np[1] = new ObjectConstCalcer( new PointImp( coord ) );
+  /*
+   * take advantage of the method "getAttachPoint" that should
+   * do all the work; it is also used when creating a new label
+   */
+  np[1] = ObjectFactory::instance()->getAttachPoint( locationparent, coord, mdoc.document() );
+
+/* this is the old code, just in case... */
+//  if ( locationparent && locationparent->imp()->inherits( CurveImp::stype() ) )
+//  {
+//    double param = static_cast<const CurveImp*>( locationparent->imp() )->getParam( coord, mdoc.document() );
+//    np[1] = ObjectFactory::instance()->constrainedPointCalcer( locationparent, param );
+//    np[1]->calc( mdoc.document() );
+//  }
+//  else if ( locationparent )
+//  {
+//    assert( locationparent->imp()->inherits( PointImp::stype() ) );
+//    np[1] = locationparent;
+//  }
+//  else
+//    np[1] = new ObjectConstCalcer( new PointImp( coord ) );
 
   copy( p.begin(), p.end(), back_inserter( np ) );
 

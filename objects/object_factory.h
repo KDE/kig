@@ -115,6 +115,15 @@ public:
     const Coordinate& loc, bool needframe,
     const std::vector<ObjectCalcer*>& parents,
     const KigDocument& doc ) const;
+  /**
+   * this has been added because it comes handy when redefining
+   * a text label, we move here all the code for getting an
+   * attach point from the method above
+   */
+  ObjectCalcer* getAttachPoint(
+    ObjectCalcer* locationparent,
+    const Coordinate& loc,
+    const KigDocument& doc ) const;
   ObjectHolder* attachedLabel(
     const QString& s, ObjectCalcer* locationparent,
     const Coordinate& loc, bool needframe,
