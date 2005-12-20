@@ -52,6 +52,28 @@ ObjectTypeCalcer* ObjectFactory::fixedPointCalcer( const Coordinate& c ) const
   return oc;
 }
 
+ObjectHolder* ObjectFactory::numericValue(
+  const double value, const Coordinate& loc, const KigDocument& doc ) const
+{
+  return new ObjectHolder( numericValueCalcer( value, loc, doc ) );
+}
+
+ObjectTypeCalcer* ObjectFactory::numericValueCalcer(
+  const double value, const Coordinate& loc, const KigDocument& doc ) const
+{
+  std::vector<ObjectCalcer*> parents;
+  parents.reserve( 4 );
+  const bool needframe = false;
+  parents.push_back( new ObjectConstCalcer( new IntImp( needframe ? 1 : 0 ) ) );
+  parents.push_back( getAttachPoint( 0, loc, doc ) );
+  parents.push_back( new ObjectConstCalcer( new StringImp( "%1" ) ) );
+  parents.push_back( new ObjectConstCalcer( new DoubleImp( value ) ) );
+
+  ObjectTypeCalcer* ret = new ObjectTypeCalcer( NumericTextType::instance(), parents );
+  ret->calc( doc );
+  return ret;
+}
+
 ObjectTypeCalcer* ObjectFactory::cursorPointCalcer( const Coordinate& c ) const
 {
   std::vector<ObjectCalcer*> args;

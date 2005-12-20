@@ -608,6 +608,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructPointAction( "objects_new_normalpoint" ) );
     actions->add( new ConstructTextLabelAction( "objects_new_textlabel" ) );
     actions->add( new AddFixedPointAction( "objects_new_point_xy" ) );
+    actions->add( new ConstructNumericLabelAction( "objects_new_numericlabel" ) );
 
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
 #include "../scripting/script-common.h"

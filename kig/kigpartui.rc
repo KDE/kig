@@ -159,6 +159,7 @@
 	<text>&amp;Other</text>
 	<Action name="objects_new_locus" />
 	<Action name="objects_new_textlabel" />
+	<Action name="objects_new_numericlabel" />
 	<Action name="objects_new_measuretransport" />
 	<Action name="objects_new_script_python" />
 	<ActionList name="user_other_types" />

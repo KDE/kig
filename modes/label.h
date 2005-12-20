@@ -22,6 +22,8 @@
 
 #include "../objects/object_calcer.h"
 
+#include <qpoint.h>
+
 #include <vector>
 
 class TextLabelWizard;
@@ -127,5 +129,32 @@ public:
   ~TextLabelRedefineMode();
   void leftReleased( QMouseEvent*, KigWidget* );
 };
+
+/**
+ * How to construct a numeric label in a clean way.
+ */
+class NumericLabelMode
+  : public KigMode
+{
+public:
+  NumericLabelMode( KigPart& d );
+  ~NumericLabelMode();
+
+  void redrawScreen( KigWidget* w );
+
+  void leftClicked( QMouseEvent*, KigWidget* );
+  void leftReleased( QMouseEvent*, KigWidget* );
+  void mouseMoved( QMouseEvent*, KigWidget* );
+
+  void enableActions();
+
+  void cancelConstruction();
+
+  void killMode();
+
+private:
+  QPoint mplc;
+};
+
 
 #endif
