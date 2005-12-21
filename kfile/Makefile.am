@@ -1,4 +1,5 @@
 INCLUDES         = $(all_includes)
+KDE_CXXFLAGS = -UQT3_SUPPORT
 
 noinst_HEADERS   = \
 	kfile_drgeo.h \
