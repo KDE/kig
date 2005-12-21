@@ -241,6 +241,46 @@ AddFixedPointAction::~AddFixedPointAction()
 {
 }
 
+QString ConstructNumericLabelAction::description() const
+{
+  return i18n( "Construct a Numeric Value" );
+}
+
+QByteArray ConstructNumericLabelAction::iconFileName() const
+{
+  return "kig_numericvalue";
+}
+
+QString ConstructNumericLabelAction::descriptiveName() const
+{
+  return i18n( "Numeric Value" );
+}
+
+const char* ConstructNumericLabelAction::actionName() const
+{
+  return mactionname;
+}
+
+void ConstructNumericLabelAction::act( KigPart& doc )
+{
+  NumericLabelMode m( doc );
+  doc.runMode( &m );
+}
+
+ConstructNumericLabelAction::ConstructNumericLabelAction( const char* actionname )
+  : mactionname( actionname )
+{
+}
+
+ConstructNumericLabelAction::~ConstructNumericLabelAction()
+{
+}
+
+int ConstructNumericLabelAction::shortcut() const
+{
+  return Qt::Key_N;
+}
+
 void GUIAction::plug( KigPart*, KigGUIAction* )
 {
 }

@@ -44,39 +44,33 @@ static const ArgsParser::spec arggspeccs[] =
   { StringImp::stype(), "UNUSED", "SHOULD NOT BE SEEN", false }
 };
 
-KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TextType )
+// KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( GenericTextType )
 
-TextType::TextType()
-  : ObjectType( "Label" ), mparser( arggspeccs, 3 )
+GenericTextType::GenericTextType( const char fulltypename[] )
+  : ObjectType( fulltypename ), mparser( arggspeccs, 3 )
 {
 }
 
-TextType::~TextType()
+GenericTextType::~GenericTextType()
 {
 }
 
-const TextType* TextType::instance()
-{
-  static const TextType t;
-  return &t;
-}
-
-const ObjectImpType* TextType::resultId() const
+const ObjectImpType* GenericTextType::resultId() const
 {
   return TextImp::stype();
 }
 
-const ObjectImpType* TextType::impRequirement( const ObjectImp* o, const Args& args ) const
+const ObjectImpType* GenericTextType::impRequirement( const ObjectImp* o, const Args& args ) const
 {
   assert( args.size() >= 3 );
   Args firstthree( args.begin(), args.begin() + 3 );
   if ( o == args[0] || o == args[1] || o == args[2] )
-    return mparser.impRequirement( o, firstthree );
+    return argParser().impRequirement( o, firstthree );
   else
     return ObjectImp::stype();
 }
 
-ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
+ObjectImp* GenericTextType::calc( const Args& parents, const KigDocument& doc ) const
 {
   if( parents.size() < 3 ) return new InvalidImp;
   Args firstthree( parents.begin(), parents.begin() + 3 );
@@ -101,17 +95,17 @@ ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
   }
 }
 
-bool TextType::canMove( const ObjectTypeCalcer& ) const
+bool GenericTextType::canMove( const ObjectTypeCalcer& ) const
 {
   return true;
 }
 
-bool TextType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
+bool GenericTextType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
 {
   return true;
 }
 
-void TextType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
+void GenericTextType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
                      const KigDocument& d ) const
 {
   const std::vector<ObjectCalcer*> parents = ourobj.parents();
@@ -126,16 +120,58 @@ void TextType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
     firstthree[1]->move( to, d );
 }
 
-QStringList TextType::specialActions() const
+const ArgsParser& GenericTextType::argParser() const
+{
+  return mparser;
+}
+
+const Coordinate GenericTextType::moveReferencePoint( const ObjectTypeCalcer& ourobj ) const
+{
+  assert( ourobj.imp()->inherits( TextImp::stype() ) );
+  return static_cast<const TextImp*>( ourobj.imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> GenericTextType::sortArgs( const std::vector<ObjectCalcer*>& os ) const
+{
+  assert( os.size() >= 3 );
+  std::vector<ObjectCalcer*> ret( os.begin(), os.begin() + 3 );
+  ret = mparser.parse( ret );
+  std::copy( os.begin() + 3,  os.end(), std::back_inserter( ret ) );
+  return ret;
+}
+
+Args GenericTextType::sortArgs( const Args& args ) const
+{
+  assert( args.size() >= 3 );
+  Args ret( args.begin(), args.begin() + 3 );
+  ret = mparser.parse( ret );
+  std::copy( args.begin() + 3,  args.end(), std::back_inserter( ret ) );
+  return ret;
+}
+
+std::vector<ObjectCalcer*> GenericTextType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  const std::vector<ObjectCalcer*> parents = ourobj.parents();
+  assert( parents.size() >= 3 );
+  std::vector<ObjectCalcer*> ret = parents[1]->movableParents();
+  ret.push_back( parents[1] );
+  return ret;
+}
+
+bool GenericTextType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  return false;
+}
+
+QStringList GenericTextType::specialActions() const
 {
   QStringList ret;
   ret << i18n( "&Copy Text" );
   ret << i18n( "&Toggle Frame" );
-  ret << i18n( "&Redefine..." );
   return ret;
 }
 
-void TextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+void GenericTextType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
                               KigPart& doc, KigWidget&,
                               NormalMode& ) const
 {
@@ -166,7 +202,50 @@ void TextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
                    new IntImp( n ) ) );
     doc.history()->addCommand( kc );
   }
-  else if ( i == 2 )
+  else assert( false );
+}
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( TextType )
+
+TextType::TextType()
+  : GenericTextType( "Label" )
+{
+}
+
+TextType::~TextType()
+{
+}
+
+const TextType* TextType::instance()
+{
+  static const TextType t;
+  return &t;
+}
+
+QStringList TextType::specialActions() const
+{
+  QStringList ret = GenericTextType::specialActions();
+  ret << i18n( "&Redefine..." );
+  return ret;
+}
+
+void TextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+                              KigPart& doc, KigWidget& w,
+                              NormalMode& nm ) const
+{
+  std::vector<ObjectCalcer*> parents = c.parents();
+  assert( parents.size() >= 3 );
+
+  std::vector<ObjectCalcer*> firstthree( parents.begin(), parents.begin() + 3 );
+
+  assert( argParser().checkArgs( firstthree ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( firstthree[0] ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( firstthree[2] ) );
+
+  const int parentactions = GenericTextType::specialActions().count();
+  if ( i < parentactions )
+    GenericTextType::executeAction( i, o, c, doc, w, nm );
+  else if ( i == parentactions )
   {
     assert( dynamic_cast<ObjectTypeCalcer*>( o.calcer() ) );
     // redefine..
@@ -176,46 +255,64 @@ void TextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
   else assert( false );
 }
 
-const ArgsParser& TextType::argParser() const
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( NumericTextType )
+
+NumericTextType::NumericTextType()
+  : GenericTextType( "NumericLabel" )
 {
-  return mparser;
 }
 
-const Coordinate TextType::moveReferencePoint( const ObjectTypeCalcer& ourobj ) const
+NumericTextType::~NumericTextType()
 {
-  assert( ourobj.imp()->inherits( TextImp::stype() ) );
-  return static_cast<const TextImp*>( ourobj.imp() )->coordinate();
 }
 
-std::vector<ObjectCalcer*> TextType::sortArgs( const std::vector<ObjectCalcer*>& os ) const
+const NumericTextType* NumericTextType::instance()
 {
-  assert( os.size() >= 3 );
-  std::vector<ObjectCalcer*> ret( os.begin(), os.begin() + 3 );
-  ret = mparser.parse( ret );
-  std::copy( os.begin() + 3,  os.end(), std::back_inserter( ret ) );
+  static const NumericTextType t;
+  return &t;
+}
+
+QStringList NumericTextType::specialActions() const
+{
+  QStringList ret = GenericTextType::specialActions();
+  ret << i18n( "Change &Value..." );
   return ret;
 }
 
-Args TextType::sortArgs( const Args& args ) const
+void NumericTextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+                              KigPart& doc, KigWidget& w,
+                              NormalMode& nm) const
 {
-  assert( args.size() >= 3 );
-  Args ret( args.begin(), args.begin() + 3 );
-  ret = mparser.parse( ret );
-  std::copy( args.begin() + 3,  args.end(), std::back_inserter( ret ) );
-  return ret;
-}
+  std::vector<ObjectCalcer*> parents = c.parents();
+  assert( parents.size() == 4 );
 
-std::vector<ObjectCalcer*> TextType::movableParents( const ObjectTypeCalcer& ourobj ) const
-{
-  const std::vector<ObjectCalcer*> parents = ourobj.parents();
-  assert( parents.size() >= 3 );
-  std::vector<ObjectCalcer*> ret = parents[1]->movableParents();
-  ret.push_back( parents[1] );
-  return ret;
-}
+  std::vector<ObjectCalcer*> firstthree( parents.begin(), parents.begin() + 3 );
 
-bool TextType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
-{
-  return false;
+  assert( o.imp()->inherits( NumericTextImp::stype() ) );
+  assert( argParser().checkArgs( firstthree ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( firstthree[0] ) );
+  assert( dynamic_cast<ObjectConstCalcer*>( firstthree[2] ) );
+
+  const int parentactions = GenericTextType::specialActions().count();
+  if ( i < parentactions )
+    GenericTextType::executeAction( i, o, c, doc, w, nm );
+  else if ( i == parentactions )
+  {
+    bool ok;
+    ObjectConstCalcer* valuecalcer = dynamic_cast<ObjectConstCalcer*>( parents[3] );
+    assert( valuecalcer );
+    double oldvalue = static_cast<const NumericTextImp*>( o.imp() )->getValue();
+    double value = getDoubleFromUser(
+      i18n( "Set Value" ), i18n( "Enter the new value: " ),
+      oldvalue, &w, &ok, -2147483647, 2147483647, 7 );
+    if ( ! ok ) return;
+    MonitorDataObjects mon( parents );
+    valuecalcer->setImp( new DoubleImp( value ) );
+    KigCommand* kc = new KigCommand( doc, i18n( "Change Displayed Value" ) );
+    mon.finish( kc );
+    doc.history()->addCommand( kc );
+  }
+  else assert( false );
 }
 

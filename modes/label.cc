@@ -636,3 +636,68 @@ void TextLabelModeBase::setLocationParent( ObjectCalcer* o )
 {
   d->locationparent = o;
 }
+
+NumericLabelMode::NumericLabelMode( KigPart& doc )
+  : KigMode( doc )
+{
+}
+
+NumericLabelMode::~NumericLabelMode()
+{
+}
+
+void NumericLabelMode::leftClicked( QMouseEvent* e, KigWidget* )
+{
+  mplc = e->pos();
+}
+
+void NumericLabelMode::leftReleased( QMouseEvent* e, KigWidget* v )
+{
+  if ( ( mplc - e->pos() ).manhattanLength() > 4 ) return;
+
+  bool ok;
+  double val = getDoubleFromUser(
+      i18n( "Set Value" ), i18n( "Enter value:" ),
+      0.0, v, &ok, -2147483647, 2147483647, 7 );
+
+  if ( !ok )
+  {
+    cancelConstruction();
+    return;
+  }
+  Coordinate loc = v->fromScreen( mplc );
+  ObjectHolder* p = ObjectFactory::instance()->numericValue( val, loc, mdoc.document() );
+  p->calc( mdoc.document() );
+  mdoc.addObject( p );
+  killMode();
+}
+
+void NumericLabelMode::killMode()
+{
+  mdoc.doneMode( this );
+}
+
+void NumericLabelMode::cancelConstruction()
+{
+  killMode();
+}
+
+void NumericLabelMode::enableActions()
+{
+  KigMode::enableActions();
+
+  mdoc.aCancelConstruction->setEnabled( true );
+
+  mdoc.emitStatusBarText( i18n( "Select the position for the new numeric value..." ) );
+}
+
+void NumericLabelMode::mouseMoved( QMouseEvent*, KigWidget* w )
+{
+  w->setCursor( KCursor::crossCursor() );
+}
+
+void NumericLabelMode::redrawScreen( KigWidget* w )
+{
+  w->redrawScreen( std::vector<ObjectHolder*>() );
+  w->updateScrollBars();
+}

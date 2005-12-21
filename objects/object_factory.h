@@ -34,6 +34,16 @@ public:
   ObjectTypeCalcer* fixedPointCalcer( const Coordinate& c ) const;
 
   /**
+   * this returns a numeric label with the value \p value at the position
+   * \p loc .  Note that the returned object is not added to the document
+   * but calced already...
+   */
+  ObjectHolder* numericValue(
+    const double value, const Coordinate& loc, const KigDocument& doc ) const;
+  ObjectTypeCalcer* numericValueCalcer(
+    const double value, const Coordinate& loc, const KigDocument& doc ) const;
+
+  /**
    * this returns a CursorPointType; this is used during special
    * constructions (e.g. regular polygons) where the constructor
    * wants to use the cursor position without actually generating

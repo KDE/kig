@@ -20,15 +20,14 @@
 
 #include "object_type.h"
 
-class TextType
+class GenericTextType
   : public ObjectType
 {
   const ArgsParser mparser;
-  TextType();
-  ~TextType();
+protected:
+  GenericTextType( const char* fulltypename );
+  ~GenericTextType();
 public:
-  static const TextType* instance();
-
   const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
   bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
   const ObjectImpType* resultId() const;
@@ -52,4 +51,29 @@ public:
   const ArgsParser& argParser() const;
 };
 
+class TextType
+  : public GenericTextType
+{
+  TextType();
+  ~TextType();
+public:
+  static const TextType* instance();
+
+  QStringList specialActions() const;
+  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+};
+
+class NumericTextType
+  : public GenericTextType
+{
+  NumericTextType();
+  ~NumericTextType();
+public:
+  static const NumericTextType* instance();
+
+  QStringList specialActions() const;
+  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
+                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+};
 #endif

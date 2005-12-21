@@ -129,6 +129,21 @@ public:
   void act( KigPart& );
 };
 
+class ConstructNumericLabelAction
+  : public GUIAction
+{
+  const char* mactionname;
+public:
+  ConstructNumericLabelAction( const char* actionname );
+  ~ConstructNumericLabelAction();
+  QString description() const;
+  QByteArray iconFileName() const;
+  QString descriptiveName() const;
+  const char* actionName() const;
+  int shortcut() const;
+  void act( KigPart& );
+};
+
 #if 0
 class TestAction
   : public GUIAction
