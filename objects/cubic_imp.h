@@ -22,6 +22,16 @@
 
 #include "../misc/cubic-common.h"
 
+class EquationString
+ : public QString
+{
+public:
+  EquationString( const QString string );
+  double trunc( double );
+  void prettify( void );
+  void addTerm( double coeff, const QString unknowns, bool& needsign );
+};
+
 class LineData;
 
 /**
@@ -76,6 +86,7 @@ public:
 
   bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
+  bool isVerticalCubic() const;
 };
 
 #endif

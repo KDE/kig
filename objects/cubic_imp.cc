@@ -27,6 +27,78 @@
 
 #include <math.h>
 #include <klocale.h>
+#include <qstring.h>
+
+/*
+ * Pino: questa parte, compresi tutti metodi relativi a EquationString
+ * andrebbero spostati in un altro file (un file nuovo, ad es
+ * misc/equationstring.* oppure uno esistente, come kigpainter.*)
+ * e poi utilizzarli anche per le equazioni degli altri oggetti geometrici,
+ * ma pensavo di cominciare con qualche esperimento sulle cubiche.
+ * Comunque, se non hai nulla in contrario fra un po' penso di
+ * sistemare il codice nel posto giusto.
+ *
+ * Una domanda: i monomi qui sotto potrebbero (forse) richiedere
+ * la localizzazione; nel caso come si fa? Con I18N_NOOP ?
+ * tu cosa suggerisci?
+ */
+
+static QString mon_x3 = QString::fromUtf8( "x³" );
+static QString mon_y3 = QString::fromUtf8( "y³" );
+static QString mon_x2y = QString::fromUtf8( "x²y" );
+static QString mon_xy2 = QString::fromUtf8( "xy²" );
+static QString mon_x2 = QString::fromUtf8( "x²" );
+static QString mon_y2 = QString::fromUtf8( "y²" );
+static QString mon_xy = "xy";
+static QString mon_x = "x";
+static QString mon_y = "y";
+
+EquationString::EquationString( const QString s )
+  : QString( s )
+{
+}
+
+double EquationString::trunc( double d )
+{
+  if ( fabs( d ) < 1e-12 ) return 0.0;
+  return d;
+}
+
+void EquationString::addTerm( double coeff, const QString monomial, bool& needsign )
+{
+  if ( trunc( coeff ) == 0.0 ) return;
+  if ( needsign )
+  {
+    if ( coeff < 0 )
+    {
+      append( " - " );
+    } else {
+      append( " + " );
+    }
+  } else {
+    needsign = true;
+    if ( coeff < 0 )
+    {
+      append( "- " );
+    }
+  }
+  coeff = fabs( coeff );
+  if ( monomial.isEmpty() || fabs( coeff - 1.0 ) > 1e-6 ) append( number( coeff, 'g', 3 ) );
+  if ( !monomial.isEmpty() )
+  {
+    append( " " );
+    append( monomial );
+  }
+  return;
+}
+
+/* might be useless... */
+
+void EquationString::prettify( void )
+{
+  replace( "+ -", "- " );
+  replace( "+-", "-" );
+}
 
 CubicImp::CubicImp( const CubicCartesianData& data )
   : CurveImp(), mdata( data )
@@ -399,6 +471,17 @@ bool CubicImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }
 
+bool CubicImp::isVerticalCubic( ) const
+{
+  return (
+           fabs( mdata.coeffs[9] ) < 1e-12 &&     // y^3
+           fabs( mdata.coeffs[7] ) < 1e-12 &&     // x^2y
+           fabs( mdata.coeffs[8] ) < 1e-12 &&     // xy^2
+           fabs( mdata.coeffs[5] ) < 1e-12 &&     // y^2
+           fabs( mdata.coeffs[4] ) < 1e-12 &&     // xy
+           fabs( mdata.coeffs[2] ) > 1e-5 );      // y
+}
+
 Rect CubicImp::surroundingRect() const
 {
   // it's probably possible to calculate this if it exists, but for
@@ -408,30 +491,62 @@ Rect CubicImp::surroundingRect() const
 
 QString CubicImp::cartesianEquationString( const KigDocument& ) const
 {
-  /*
-   * unfortunately QStrings.arg method is limited to %1, %9, so we cannot
-   * treat all 10 arguments!  Let's split the equation in two parts...
-   * Now this ends up also in the translation machinery, is this really
-   * necessary?  Otherwise we could do a little bit of tidy up on the
-   * the equation (removal of zeros, avoid " ... + -1234 x ", etc.)
-   */
-
-  QString ret = i18n( "%6 x³ + %9 y³ + %7 x²y + %8 xy² + %5 y² + %3 x² + %4 xy + %1 x + %2 y" );
-  ret = ret.arg( mdata.coeffs[1], 0, 'g', 3 );
-  ret = ret.arg( mdata.coeffs[2], 0, 'g', 3 );
-  ret = ret.arg( mdata.coeffs[3], 0, 'g', 3 );
-  ret = ret.arg( mdata.coeffs[4], 0, 'g', 3 );
-  ret = ret.arg( mdata.coeffs[5], 0, 'g', 3 );
-  ret = ret.arg( mdata.coeffs[6], 0, 'g', 3 );
-  ret = ret.arg( mdata.coeffs[7], 0, 'g', 3 );
-  ret = ret.arg( mdata.coeffs[8], 0, 'g', 3 );
-  ret = ret.arg( mdata.coeffs[9], 0, 'g', 3 );
-
-  ret.append( i18n( " + %1 = 0" ) );
-  ret = ret.arg( mdata.coeffs[0], 0, 'g', 3 );
-
-  // we should find a common place to do this...
-  ret.replace( "+ -", "- " );
-  ret.replace( "+-", "-" );
+  EquationString ret = EquationString( "" );
+  bool needsign = false;
+  if ( isVerticalCubic() )
+  {
+    double f = - 1.0/mdata.coeffs[2];
+    ret.addTerm( - f*mdata.coeffs[2], mon_y, needsign );
+    ret.append( " = " );
+    needsign = false;
+    ret.addTerm( f*mdata.coeffs[6], mon_x3, needsign );
+    ret.addTerm( f*mdata.coeffs[9], mon_y3, needsign );
+    ret.addTerm( f*mdata.coeffs[7], mon_x2y, needsign );
+    ret.addTerm( f*mdata.coeffs[8], mon_xy2, needsign );
+    ret.addTerm( f*mdata.coeffs[5], mon_y2, needsign );
+    ret.addTerm( f*mdata.coeffs[3], mon_x2, needsign );
+    ret.addTerm( f*mdata.coeffs[4], mon_xy, needsign );
+    ret.addTerm( f*mdata.coeffs[1], mon_x, needsign );
+    ret.addTerm( f*mdata.coeffs[0], "", needsign );
+    return ret;
+  }
+  ret.addTerm( mdata.coeffs[6], mon_x3, needsign );
+  ret.addTerm( mdata.coeffs[9], mon_y3, needsign );
+  ret.addTerm( mdata.coeffs[7], mon_x2y, needsign );
+  ret.addTerm( mdata.coeffs[8], mon_xy2, needsign );
+  ret.addTerm( mdata.coeffs[5], mon_y2, needsign );
+  ret.addTerm( mdata.coeffs[3], mon_x2, needsign );
+  ret.addTerm( mdata.coeffs[4], mon_xy, needsign );
+  ret.addTerm( mdata.coeffs[1], mon_x, needsign );
+  ret.addTerm( mdata.coeffs[2], mon_y, needsign );
+  ret.addTerm( mdata.coeffs[0], "", needsign );
+  ret.append( " = 0" );
+// ret.prettify();
   return ret;
+
+//  /*
+//   * unfortunately QStrings.arg method is limited to %1, %9, so we cannot
+//   * treat all 10 arguments!  Let's split the equation in two parts...
+//   * Now this ends up also in the translation machinery, is this really
+//   * necessary?  Otherwise we could do a little bit of tidy up on the
+//   * the equation (removal of zeros, avoid " ... + -1234 x ", etc.)
+//   */
+//
+//  QString ret = i18n( "%6 x³ + %9 y³ + %7 x²y + %8 xy² + %5 y² + %3 x² + %4 xy + %1 x + %2 y" );
+//  ret = ret.arg( ret.chop( mdata.coeffs[1] ), 0, 'g', 3 );
+//  ret = ret.arg( ret.chop( mdata.coeffs[2] ), 0, 'g', 3 );
+//  ret = ret.arg( ret.chop( mdata.coeffs[3] ), 0, 'g', 3 );
+//  ret = ret.arg( ret.chop( mdata.coeffs[4] ), 0, 'g', 3 );
+//  ret = ret.arg( ret.chop( mdata.coeffs[5] ), 0, 'g', 3 );
+//  ret = ret.arg( ret.chop( mdata.coeffs[6] ), 0, 'g', 3 );
+//  ret = ret.arg( ret.chop( mdata.coeffs[7] ), 0, 'g', 3 );
+//  ret = ret.arg( ret.chop( mdata.coeffs[8] ), 0, 'g', 3 );
+//  ret = ret.arg( ret.chop( mdata.coeffs[9] ), 0, 'g', 3 );
+
+//  ret.append( " + %1 = 0" );
+//  ret = ret.arg( ret.chop( mdata.coeffs[0] ), 0, 'g', 3 );
+
+//  ret.replace( "+ -", "- " );
+//  ret.replace( "+-", "-" );
+//  return ret;
 }
