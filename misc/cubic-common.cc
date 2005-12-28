@@ -38,6 +38,21 @@ CubicCartesianData::CubicCartesianData(
             const double incoeffs[10] )
 {
   std::copy( incoeffs, incoeffs + 10, coeffs );
+  normalize();
+}
+
+void CubicCartesianData::normalize()
+{
+  double norm = 0.0;
+  for ( int i = 0; i < 10; ++i )
+  {
+    if ( fabs( coeffs[i] ) > norm ) norm = fabs( coeffs[i] );
+  }
+  if ( norm < 1e-8 ) return;
+  for ( int i = 0; i < 10; ++i )
+  {
+    coeffs[i] /= norm;
+  }
 }
 
 const CubicCartesianData calcCubicThroughPoints (
