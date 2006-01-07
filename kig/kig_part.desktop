@@ -1,14 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KigPart
-Name[ar]=جزء كيج
-Name[et]=Kigi komponent
-Name[hi]=के-इग-पार्ट
-Name[sv]=Kigdel
-Name[ta]=கிக்பகுதி
-Name[ven]=TshipidatshaKig
-Name[xx]=xxKigPartxx
-Name[zh_CN]=Kig 组件
+Name[x-test]=xxKigPartxx
 MimeType=application/x-kig;application/x-kgeo;
 ServiceTypes=KParts/ReadOnlyPart,KParts/ReadWritePart
 X-KDE-Library=libkigpart
