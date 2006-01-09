@@ -20,210 +20,306 @@
 #include <qregexp.h>
 
 #include <cmath>
-#include <vector>
+//#include <vector>
 
-struct EqElem
-{
-  double coeff;
-  int xpow;
-  int ypow;
-};
+/*
+ * Definitions for EquationString
+ */
 
-static const QString mon_3 = QString/*::fromUtf8*/( "³" );
-static const QString mon_2 = QString/*::fromUtf8*/( "²" );
-
-static QString varToString( const char* var, int power, bool& outputted )
-{
-  outputted = true;
-  switch ( power )
-  {
-    case 0:
-      outputted = false;
-      return "";
-      break;
-    case 1:
-      return QString( var );
-      break;
-    case 2:
-      return QString( var ) + mon_2;
-      break;
-    case 3:
-      return QString( var ) + mon_3;
-      break;
-  }
-  return QString( var ) + "^" + QString::number( power );
-}
-
-static QString sign( double x )
-{
-  if ( x < 0 )
-    return "-";
-  else if ( x > 0 )
-    return "+";
- return "";
-}
-
-static QString coeffToString( double coeff, bool with_spaces, bool& iszero )
-{
-  iszero = false;
-  QString res;
-  if ( fabs( coeff ) < 1e-8 )
-  {
-    iszero = true;
-    return "";
-  }
-  else if ( coeff == 1 )
-  {
-    return "+";
-  }
-  else
-  {
-    return sign( coeff ) + ( with_spaces ? " " : "" ) + QString::number( fabs( coeff ) );
-  }
-}
-
-static QString EqElemToString( const EqElem& el, bool with_spaces )
-{
-  bool iszero = false;
-  QString res = coeffToString( el.coeff, with_spaces, iszero )
-                + ( with_spaces ? " " : "" );
-  if ( !iszero )
-  {
-    bool xout = true;
-    bool yout = true;
-    res += varToString( "x", el.xpow, xout )
-           + varToString( "y", el.ypow, yout );
-    if ( xout || yout )
-      res += ( with_spaces ? " " : "" );
-  }
-
-  return res;
-}
-
-
-class Equation::Private
-{
-public:
-  Private()
-    : m_show2ndMember( false ), m_2ndMemberValue( 0.0 )
-  {
-  }
-
-  std::vector<EqElem> m_elems;
-  bool m_show2ndMember;
-  double m_2ndMemberValue;
-};
-
-static int hash( const EqElem& el )
-{
-  // order by grade, then by x power and then by y power
-  return ( ( el.xpow + el.ypow ) << 8 ) | ( el.xpow << 4 ) | el.ypow;
-}
-
-Equation::Equation()
-  : d( new Private )
+EquationString::EquationString( const QString s )
+  : QString( s )
 {
 }
 
-void Equation::addTerm( double coeff, int xpower, int ypower )
+double EquationString::trunc( double d )
 {
-  if ( fabs( coeff ) < 1e-8 )
+  if ( fabs( d ) < 1e-12 ) return 0.0;
+  return d;
+}
+
+void EquationString::addTerm( double coeff, const QString monomial, bool& needsign )
+{
+  if ( trunc( coeff ) == 0.0 ) return;
+  if ( needsign )
   {
-    removeTerm( xpower, ypower );
-    return;
-  }
-  EqElem el;
-  el.coeff = coeff;
-  el.xpow = xpower;
-  el.ypow = ypower;
-  int newhash = hash( el );
-  bool found = false;
-  for ( std::vector<EqElem>::iterator it = d->m_elems.begin(); it != d->m_elems.end() && !found; ++it )
-  {
-    int currhash = hash( *it );
-    if ( newhash > currhash )
+    if ( coeff < 0 )
     {
-      d->m_elems.insert( it, el );
-      found = true;
+      append( " - " );
+    } else {
+      append( " + " );
     }
-    else if ( newhash == currhash )
+  } else {
+    needsign = true;
+    if ( coeff < 0 )
     {
-      (*it).coeff = el.coeff;
-      found = true;
+      append( "- " );
     }
   }
-  if ( !found )
+  coeff = fabs( coeff );
+  if ( monomial.isEmpty() || fabs( coeff - 1.0 ) > 1e-6 ) append( number( coeff, 'g', 3 ) );
+  if ( !monomial.isEmpty() )
   {
-    d->m_elems.push_back( el );
+    append( " " );
+    append( monomial );
   }
+  return;
 }
 
-void Equation::removeTerm( int xpower, int ypower )
+const QString EquationString::x3() const
 {
-  bool found = false;
-  for ( std::vector<EqElem>::iterator it = d->m_elems.begin(); it != d->m_elems.end() && !found; ++it )
-  {
-    if ( ( (*it).xpow == xpower ) && ( (*it).ypow == ypower ) )
-    {
-      d->m_elems.erase( it );
-      found = true;
-    }
-  }
+  return QString::fromUtf8( "x³" );
 }
 
-bool Equation::term( double& value, int xpower, int ypower )
+const QString EquationString::y3() const
 {
-  bool found = false;
-  value = 0;
-  for ( std::vector<EqElem>::iterator it = d->m_elems.begin(); it != d->m_elems.end() && !found; ++it )
-  {
-    if ( ( (*it).xpow == xpower ) && ( (*it).ypow == ypower ) )
-    {
-      value = (*it).coeff;
-      found = true;
-    }
-  }
-  return found;
+  return QString::fromUtf8( "y³" );
 }
 
-void Equation::clear()
+const QString EquationString::x2y() const
 {
-  d->m_elems.clear();
+  return QString::fromUtf8( "x²y" );
 }
 
-void Equation::setSecondMemberShown( bool show )
+const QString EquationString::xy2() const
 {
-  d->m_show2ndMember = show;
+  return QString::fromUtf8( "xy²" );
 }
 
-bool Equation::isSecondMemberShown() const
+const QString EquationString::x2() const
 {
-  return d->m_show2ndMember;
+  return QString::fromUtf8( "x²" );
 }
 
-void Equation::setSecondMemberValue( double value )
+const QString EquationString::y2() const
 {
-  d->m_2ndMemberValue = value;
+  return QString::fromUtf8( "y²" );
 }
 
-double Equation::secondMemberValue() const
+const QString EquationString::xy() const
 {
-  return d->m_2ndMemberValue;
+  return "xy";
 }
 
-QString Equation::prettyString( bool with_spaces ) const
+const QString EquationString::x() const
 {
-  QString res;
-  if ( d->m_elems.size() == 0 ) return res;
-
-  for ( std::vector<EqElem>::iterator it = d->m_elems.begin(); it != d->m_elems.end(); ++it )
-    res += EqElemToString( *it, with_spaces );
-  if ( d->m_show2ndMember )
-    res += QString( "=" ) + ( with_spaces ? " " : "" ) + QString::number( d->m_2ndMemberValue );
-
-  res.replace( QRegExp("^\\+\\s?"), "" );
-  res.replace( QRegExp("\\s?$"), "" );
-
-  return res;
+  return "x";
 }
+
+const QString EquationString::y() const
+{
+  return "y";
+}
+
+/* used in the circle equation */
+
+void EquationString::prettify( void )
+{
+  replace( "( x )", "x" );
+  replace( "( y )", "y" );
+}
+
+//struct EqElem
+//{
+//  double coeff;
+//  int xpow;
+//  int ypow;
+//};
+//
+//static const QString mon_3 = QString/*::fromUtf8*/( "³" );
+//static const QString mon_2 = QString/*::fromUtf8*/( "²" );
+//
+//static QString varToString( const char* var, int power, bool& outputted )
+//{
+//  outputted = true;
+//  switch ( power )
+//  {
+//    case 0:
+//      outputted = false;
+//      return "";
+//      break;
+//    case 1:
+//      return QString( var );
+//      break;
+//    case 2:
+//      return QString( var ) + mon_2;
+//      break;
+//    case 3:
+//      return QString( var ) + mon_3;
+//      break;
+//  }
+//  return QString( var ) + "^" + QString::number( power );
+//}
+//
+//static QString sign( double x )
+//{
+//  if ( x < 0 )
+//    return "-";
+//  else if ( x > 0 )
+//    return "+";
+// return "";
+//}
+//
+//static QString coeffToString( double coeff, bool with_spaces, bool& iszero )
+//{
+//  iszero = false;
+//  QString res;
+//  if ( fabs( coeff ) < 1e-8 )
+//  {
+//    iszero = true;
+//    return "";
+//  }
+//  else if ( coeff == 1 )
+//  {
+//    return "+";
+//  }
+//  else
+//  {
+//    return sign( coeff ) + ( with_spaces ? " " : "" ) + QString::number( fabs( coeff ) );
+//  }
+//}
+//
+//static QString EqElemToString( const EqElem& el, bool with_spaces )
+//{
+//  bool iszero = false;
+//  QString res = coeffToString( el.coeff, with_spaces, iszero )
+//                + ( with_spaces ? " " : "" );
+//  if ( !iszero )
+//  {
+//    bool xout = true;
+//    bool yout = true;
+//    res += varToString( "x", el.xpow, xout )
+//           + varToString( "y", el.ypow, yout );
+//    if ( xout || yout )
+//      res += ( with_spaces ? " " : "" );
+//  }
+//
+//  return res;
+//}
+//
+//
+//class Equation::Private
+//{
+//public:
+//  Private()
+//    : m_show2ndMember( false ), m_2ndMemberValue( 0.0 )
+//  {
+//  }
+//
+//  std::vector<EqElem> m_elems;
+//  bool m_show2ndMember;
+//  double m_2ndMemberValue;
+//};
+//
+//static int hash( const EqElem& el )
+//{
+//  // order by grade, then by x power and then by y power
+//  return ( ( el.xpow + el.ypow ) << 8 ) | ( el.xpow << 4 ) | el.ypow;
+//}
+//
+//Equation::Equation()
+//  : d( new Private )
+//{
+//}
+//
+//void Equation::addTerm( double coeff, int xpower, int ypower )
+//{
+//  if ( fabs( coeff ) < 1e-8 )
+//  {
+//    removeTerm( xpower, ypower );
+//    return;
+//  }
+//  EqElem el;
+//  el.coeff = coeff;
+//  el.xpow = xpower;
+//  el.ypow = ypower;
+//  int newhash = hash( el );
+//  bool found = false;
+//  for ( std::vector<EqElem>::iterator it = d->m_elems.begin(); it != d->m_elems.end() && !found; ++it )
+//  {
+//    int currhash = hash( *it );
+//    if ( newhash > currhash )
+//    {
+//      d->m_elems.insert( it, el );
+//      found = true;
+//    }
+//    else if ( newhash == currhash )
+//    {
+//      (*it).coeff = el.coeff;
+//      found = true;
+//    }
+//  }
+//  if ( !found )
+//  {
+//    d->m_elems.push_back( el );
+//  }
+//}
+//
+//void Equation::removeTerm( int xpower, int ypower )
+//{
+//  bool found = false;
+//  for ( std::vector<EqElem>::iterator it = d->m_elems.begin(); it != d->m_elems.end() && !found; ++it )
+//  {
+//    if ( ( (*it).xpow == xpower ) && ( (*it).ypow == ypower ) )
+//    {
+//      d->m_elems.erase( it );
+//      found = true;
+//    }
+//  }
+//}
+//
+//bool Equation::term( double& value, int xpower, int ypower )
+//{
+//  bool found = false;
+//  value = 0;
+//  for ( std::vector<EqElem>::iterator it = d->m_elems.begin(); it != d->m_elems.end() && !found; ++it )
+//  {
+//    if ( ( (*it).xpow == xpower ) && ( (*it).ypow == ypower ) )
+//    {
+//      value = (*it).coeff;
+//      found = true;
+//    }
+//  }
+//  return found;
+//}
+//
+//void Equation::clear()
+//{
+//  d->m_elems.clear();
+//}
+//
+//void Equation::setSecondMemberShown( bool show )
+//{
+//  d->m_show2ndMember = show;
+//}
+//
+//bool Equation::isSecondMemberShown() const
+//{
+//  return d->m_show2ndMember;
+//}
+//
+//void Equation::setSecondMemberValue( double value )
+//{
+//  d->m_2ndMemberValue = value;
+//}
+//
+//double Equation::secondMemberValue() const
+//{
+//  return d->m_2ndMemberValue;
+//}
+//
+//QString Equation::prettyString( bool with_spaces ) const
+//{
+//  QString res;
+//  if ( d->m_elems.size() == 0 ) return res;
+//
+//  for ( std::vector<EqElem>::iterator it = d->m_elems.begin(); it != d->m_elems.end(); ++it )
+//    res += EqElemToString( *it, with_spaces );
+//  if ( d->m_show2ndMember )
+//    res += QString( "=" ) + ( with_spaces ? " " : "" ) + QString::number( d->m_2ndMemberValue );
+//
+//  res.replace( QRegExp("^\\+\\s?"), "" );
+//  res.replace( QRegExp("\\s?$"), "" );
+//
+//  return res;
+//}
 
