@@ -21,6 +21,7 @@
 #include "curve_imp.h"
 
 #include "../misc/conic-common.h"
+#include "../misc/equation.h"
 
 /**
  * An ObjectImp representing a conic.
@@ -123,6 +124,7 @@ public:
 
   bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
+  bool isVerticalParabola( ConicCartesianData& data ) const;
 };
 
 /**

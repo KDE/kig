@@ -24,6 +24,7 @@
 #include "../misc/common.h"
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
+#include "../misc/equation.h"
 #include "../kig/kig_view.h"
 
 #include <klocale.h>
@@ -242,15 +243,35 @@ const QString AbstractLineImp::equationString() const
   Coordinate p = mdata.a;
   Coordinate q = mdata.b;
 
-  double m = ( q.y - p.y ) / ( q.x - p.x );
-  double r = - ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;
+  EquationString ret = EquationString( "" );
 
-  QString ret = QString::fromUtf8( "y = %1x " ) +
-                QString::fromUtf8( r > 0 ? "+" : "-" ) +
-                QString::fromUtf8( " %2" );
+  double a = q.y - p.y;
+  double b = p.x - q.x;
+  double c = q.x*p.y - q.y*p.x;
 
-  ret = ret.arg( m, 0, 'g', 3 );
-  ret = ret.arg( abs( r ), 0, 'g', 3 );
+  bool needsign = false;
+  if ( fabs( b ) < 1e-6*fabs( a ) )
+  {
+    ret.addTerm( 1.0, ret.x(), needsign );
+    ret.addTerm( b/a, ret.y(), needsign );
+    ret.addTerm( c/a, "", needsign );
+    ret.append( " = 0" );
+    return ret;
+  }
+
+  ret.append( "y = " );
+  ret.addTerm( -a/b, ret.x(), needsign );
+  ret.addTerm( -c/b, "", needsign );
+  if ( ! needsign ) ret.append( "0" );
+//  double m = ( q.y - p.y ) / ( q.x - p.x );
+//  double r = - ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;
+//
+//  QString ret = QString::fromUtf8( "y = %1x " ) +
+//                QString::fromUtf8( r > 0 ? "+" : "-" ) +
+//                QString::fromUtf8( " %2" );
+//
+//  ret = ret.arg( m, 0, 'g', 3 );
+//  ret = ret.arg( abs( r ), 0, 'g', 3 );
 
   return ret;
 }

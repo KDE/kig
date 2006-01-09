@@ -22,6 +22,7 @@
 
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
+#include "../misc/equation.h"
 #include "../misc/coordinate_system.h"
 
 #include "../kig/kig_document.h"
@@ -235,20 +236,38 @@ QString CircleImp::polarEquationString( const KigDocument& w ) const
 
 QString CircleImp::cartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "x² + y² + %1 x + %2 y + %3 = 0" );
+//  QString ret = i18n( "x² + y² + %1 x + %2 y + %3 = 0" );
   ConicCartesianData data = cartesianData();
-  ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
-  ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
-  ret = ret.arg( data.coeffs[5], 0, 'g', 3 );
+  EquationString ret = EquationString( "" );
+  bool needsign = false;
+  ret.addTerm( 1., ret.x2(), needsign );
+  ret.addTerm( 1., ret.y2(), needsign );
+  ret.addTerm( data.coeffs[3], ret.x(), needsign );
+  ret.addTerm( data.coeffs[4], ret.y(), needsign );
+  ret.addTerm( data.coeffs[5], "", needsign );
+  ret.append( " = 0" );
+//  ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
+//  ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
+//  ret = ret.arg( data.coeffs[5], 0, 'g', 3 );
   return ret;
 }
 
 QString CircleImp::simplyCartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "( x - %1 )² + ( y - %2 )² = %3" );
-  ret = ret.arg( mcenter.x, 0, 'g', 3 );
-  ret = ret.arg( mcenter.y, 0, 'g', 3 );
-  ret = ret.arg( mradius * mradius, 0, 'g', 3 );
+  EquationString ret = EquationString( "( x" );
+  bool needsign = true;
+  ret.addTerm( -mcenter.x, "", needsign );
+  ret.append( QString::fromUtf8( " )² + ( y" ) );
+  ret.addTerm( -mcenter.y, "", needsign );
+  ret.append( QString::fromUtf8( " )² = " ) );
+  needsign = false;
+  ret.addTerm( mradius*mradius, "", needsign );
+  ret.prettify();
+
+//  QString ret = i18n( "( x - %1 )² + ( y - %2 )² = %3" );
+//  ret = ret.arg( mcenter.x, 0, 'g', 3 );
+//  ret = ret.arg( mcenter.y, 0, 'g', 3 );
+//  ret = ret.arg( mradius * mradius, 0, 'g', 3 );
   return ret;
 }
 

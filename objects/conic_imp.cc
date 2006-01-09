@@ -212,27 +212,65 @@ QString ConicImp::conicTypeString() const
 
 QString ConicImp::cartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0" );
   ConicCartesianData data = cartesianData();
-  ret = ret.arg( data.coeffs[0], 0, 'g', 3 );
-  ret = ret.arg( data.coeffs[1], 0, 'g', 3 );
-  ret = ret.arg( data.coeffs[2], 0, 'g', 3 );
-  ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
-  ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
-  ret = ret.arg( data.coeffs[5], 0, 'g', 3 );
+  EquationString ret = EquationString( "" );
+  bool needsign = false;
+  if ( isVerticalParabola( data ) )
+  {
+    double f = - 1.0/data.coeffs[4];
+    ret.addTerm( - f*data.coeffs[4], ret.y(), needsign );
+    ret.append( " = " );
+    needsign = false;
+    ret.addTerm( f*data.coeffs[0], ret.x2(), needsign );
+    ret.addTerm( f*data.coeffs[1], ret.y2(), needsign );
+    ret.addTerm( f*data.coeffs[2], ret.xy(), needsign );
+    ret.addTerm( f*data.coeffs[3], ret.x(), needsign );
+    ret.addTerm( f*data.coeffs[5], "", needsign );
+    return ret;
+  }
+  ret.addTerm( data.coeffs[0], ret.x2(), needsign );
+  ret.addTerm( data.coeffs[1], ret.y2(), needsign );
+  ret.addTerm( data.coeffs[2], ret.xy(), needsign );
+  ret.addTerm( data.coeffs[3], ret.x(), needsign );
+  ret.addTerm( data.coeffs[4], ret.y(), needsign );
+  ret.addTerm( data.coeffs[5], "", needsign );
+  ret.append( " = 0" );
   return ret;
+
+//  QString ret = i18n( "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0" );
+//  ConicCartesianData data = cartesianData();
+//  ret = ret.arg( data.coeffs[0], 0, 'g', 3 );
+//  ret = ret.arg( data.coeffs[1], 0, 'g', 3 );
+//  ret = ret.arg( data.coeffs[2], 0, 'g', 3 );
+//  ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
+//  ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
+//  ret = ret.arg( data.coeffs[5], 0, 'g', 3 );
+//  return ret;
 }
 
 QString ConicImp::polarEquationString( const KigDocument& w ) const
 {
-  QString ret = i18n( "rho = %1/(1 + %2 cos theta + %3 sin theta)\n    [centered at %4]" );
+//  QString ret = i18n( "rho = %1/(1 + %2 cos theta + %3 sin theta)\n    [centered at %4]" );
   const ConicPolarData data = polarData();
 
-  ret = ret.arg( data.pdimen, 0, 'g', 3 );
-  ret = ret.arg( -data.ecostheta0, 0, 'g', 3 );
-  ret = ret.arg( -data.esintheta0, 0, 'g', 3 );
+  EquationString ret = EquationString( i18n( "rho" ) );
+  ret.append( " = " );
+  if ( data.pdimen < 0 ) ret.append( "- " );
+  bool needsign = false;
+  ret.addTerm( fabs( data.pdimen ), "", needsign );
+  ret.append( "/(1" );
+  needsign = true;
+  ret.addTerm( -data.ecostheta0, i18n( "cos theta" ), needsign );
+  ret.addTerm( -data.esintheta0, i18n( "sin theta" ), needsign );
+  ret.append( ")\n" );
+  ret.append( i18n( "[centered at %1]" ) );
+
+//  ret = ret.arg( data.pdimen, 0, 'g', 3 );
+//  ret = ret.arg( -data.ecostheta0, 0, 'g', 3 );
+//  ret = ret.arg( -data.esintheta0, 0, 'g', 3 );
 
   ret = ret.arg( w.coordinateSystem().fromScreen( data.focus1, w ) );
+  ret.prettify();
   return ret;
 }
 
@@ -384,6 +422,14 @@ bool ConicImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::isPropertyDefinedOnOrThroughThisImp( which );
   return false;
+}
+
+bool ConicImp::isVerticalParabola( ConicCartesianData& data ) const
+{
+  return (
+           fabs( data.coeffs[1] ) < 1e-12 &&     // y^2
+           fabs( data.coeffs[2] ) < 1e-12 &&     // xy
+           fabs( data.coeffs[4] ) > 1e-5 );      // y
 }
 
 Rect ConicImp::surroundingRect() const
