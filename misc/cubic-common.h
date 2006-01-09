@@ -82,6 +82,10 @@ public:
    * \see CubicCartesianData::invalidData
    */
   bool valid() const;
+  /*
+   * normalize mdata with infinity norm of the coefficients = 1
+   */
+  void normalize();
 };
 
 bool operator==( const CubicCartesianData& lhs, const CubicCartesianData& rhs );
