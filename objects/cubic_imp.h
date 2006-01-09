@@ -22,16 +22,6 @@
 
 #include "../misc/cubic-common.h"
 
-class EquationString
- : public QString
-{
-public:
-  EquationString( const QString string );
-  double trunc( double );
-  void prettify( void );
-  void addTerm( double coeff, const QString unknowns, bool& needsign );
-};
-
 class LineData;
 
 /**
