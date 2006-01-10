@@ -18,7 +18,8 @@
 #include "equation.h"
 
 #include <qregexp.h>
-
+#include <klocale.h>
+#include <kglobal.h>
 #include <cmath>
 //#include <vector>
 
@@ -56,7 +57,8 @@ void EquationString::addTerm( double coeff, const QString monomial, bool& needsi
     }
   }
   coeff = fabs( coeff );
-  if ( monomial.isEmpty() || fabs( coeff - 1.0 ) > 1e-6 ) append( number( coeff, 'g', 3 ) );
+  if ( monomial.isEmpty() || fabs( coeff - 1.0 ) > 1e-6 ) 
+    append( KGlobal::locale()->formatNumber( coeff, 3 ) );
   if ( !monomial.isEmpty() )
   {
     append( " " );
