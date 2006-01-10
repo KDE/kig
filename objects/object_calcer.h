@@ -277,25 +277,44 @@ class ObjectPropertyCalcer
 {
   ObjectImp* mimp;
   ObjectCalcer* mparent;
-  int mpropid;
+  int mpropgid;
+/*
+ * The following two variables are used for a caching
+ * mechanism to avoid computing the Lid corresponding to
+ * a Gid each time.  The "typeid" function in C++ is
+ * used to compare the object class of the parent Imp;
+ * the new Lid is computed only when the object class
+ * of the parent imp changes.
+ * As an alternative we could use "type" that each
+ * object imp provides, but this is not completely
+ * safe since in future extensions, in principle, two 
+ * different ObjectImps could return the same "type" 
+ * (although this is quite unlikely to happen)
+ */
+  mutable int mpropid;
+//  mutable const ObjectImpType* mparenttype;
+  mutable const std::type_info* mparenttype;
 public:
   /**
    * Construct a new ObjectPropertyCalcer, that will get the property
    * from parent with number propid.
    */
-  ObjectPropertyCalcer( ObjectCalcer* parent, int propid );
+  ObjectPropertyCalcer( ObjectCalcer* parent, int propid, bool islocal );
+  ObjectPropertyCalcer( ObjectCalcer* parent, const char* pintname );
   ~ObjectPropertyCalcer();
 
   const ObjectImp* imp() const;
   std::vector<ObjectCalcer*> parents() const;
   void calc( const KigDocument& doc );
 
-  int propId() const;
   ObjectCalcer* parent() const;
 
   const ObjectImpType* impRequirement(
     ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const;
   bool isDefinedOnOrThrough( const ObjectCalcer* o ) const;
+
+  int propLid() const;
+  int propGid() const;
 };
 
 #endif

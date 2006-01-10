@@ -206,7 +206,8 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
     else
     {
       assert( result < l.size() + 1 );
-      argcalcer = new ObjectPropertyCalcer( o->calcer(), result - 1 );
+//      argcalcer = new ObjectPropertyCalcer( o->calcer(), result - 1 );
+      argcalcer = new ObjectPropertyCalcer( o->calcer(), result - 1, true );
     }
     d->args[d->mwaaws] = argcalcer.get();
     argcalcer->calc( mdoc.document() );

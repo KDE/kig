@@ -847,7 +847,7 @@ bool PropertiesActionsProvider::executeAction(
   if ( menu == NormalModePopupObjects::ShowMenu )
   {
     std::vector<ObjectCalcer*> args;
-    args.push_back( new ObjectPropertyCalcer( parent->calcer(), propid ) );
+    args.push_back( new ObjectPropertyCalcer( parent->calcer(), propid, true ) );
     args.back()->calc( doc.document() );
 // TODO: recover the cursor position somehow... the following does not work
 // in general...
@@ -865,7 +865,7 @@ bool PropertiesActionsProvider::executeAction(
   else
   {
     ObjectHolder* h = new ObjectHolder(
-      new ObjectPropertyCalcer( parent->calcer(), propid ) );
+      new ObjectPropertyCalcer( parent->calcer(), propid, true ) );
     h->calc( doc.document() );
     doc.addObject( h );
   };

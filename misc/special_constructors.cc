@@ -1409,9 +1409,9 @@ std::vector<ObjectHolder*> MidPointOfTwoPointsConstructor::build(
 {
   ObjectTypeCalcer* seg = new ObjectTypeCalcer( SegmentABType::instance(), os );
   seg->calc( d );
-  int index = seg->imp()->propertiesInternalNames().indexOf( "mid-point" );
-  assert( index != -1 );
-  ObjectPropertyCalcer* prop = new ObjectPropertyCalcer( seg, index );
+//  int index = seg->imp()->propertiesInternalNames().indexOf( "mid-point" );
+//  assert( index != -1 );
+  ObjectPropertyCalcer* prop = new ObjectPropertyCalcer( seg, "mid-point" );
   prop->calc( d );
   std::vector<ObjectHolder*> ret;
   ret.push_back( new ObjectHolder( prop ) );

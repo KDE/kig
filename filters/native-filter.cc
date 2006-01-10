@@ -324,7 +324,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
           if ( propid == -1 )
             KIG_FILTER_PARSE_ERROR;
 
-          o = new ObjectPropertyCalcer( parent, propid );
+          o = new ObjectPropertyCalcer( parent, propname );
         }
         else if ( e.tagName() == "Object" )
         {
@@ -479,7 +479,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
           int propid = parent->imp()->propertiesInternalNames().indexOf( propname );
           if ( propid == -1 ) KIG_FILTER_PARSE_ERROR;
 
-          o = new ObjectPropertyCalcer( parent, propid );
+          o = new ObjectPropertyCalcer( parent, propname );
         }
         else if ( e.tagName() == "Object" )
         {
@@ -639,7 +639,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
       const ObjectPropertyCalcer* o = static_cast<const ObjectPropertyCalcer*>( *i );
       objectelem = doc.createElement( "Property" );
 
-      QByteArray propname = o->parent()->imp()->propertiesInternalNames()[o->propId()];
+      QByteArray propname = o->parent()->imp()->getPropName( o->propGid() );
       objectelem.setAttribute( "which", QString( propname ) );
     }
     else if ( dynamic_cast<const ObjectTypeCalcer*>( *i ) )

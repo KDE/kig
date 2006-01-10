@@ -19,12 +19,14 @@
 
 #include "object_holder.h"
 #include "object_imp.h"
+#include "bogus_imp.h"
 #include "object_type.h"
 #include "../misc/coordinate.h"
 #include "common.h"
 
 #include <algorithm>
 #include <set>
+#include <typeinfo>
 
 void ObjectTypeCalcer::calc( const KigDocument& doc )
 {
@@ -131,12 +133,28 @@ const ObjectType* ObjectTypeCalcer::type() const
   return mtype;
 }
 
-ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, int propid )
-  : mimp( 0 ), mparent( parent ), mpropid( propid )
+ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, const char* pname )
+  : mimp( 0 ), mparent( parent ), mparenttype( 0 )
 {
   // Some weird C++ thing prevents me from calling protected members
   // of ObjectCalcer on mparent.. This is an ugly workaround..
   ( mparent->*&ObjectCalcer::addChild )( this );
+  mpropgid = mparent->imp()->getPropGid( pname );
+  //mparent->addChild( this );
+}
+
+ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, int propid, bool islocal )
+  : mimp( 0 ), mparent( parent ), mparenttype( 0 )
+{
+  // Some weird C++ thing prevents me from calling protected members
+  // of ObjectCalcer on mparent.. This is an ugly workaround..
+  ( mparent->*&ObjectCalcer::addChild )( this );
+  if ( islocal )
+  {
+    mpropgid = parent->imp()->getPropGid( parent->imp()->propertiesInternalNames()[propid] );
+  } else {
+    mpropgid = propid;
+  }
   //mparent->addChild( this );
 }
 
@@ -163,7 +181,19 @@ std::vector<ObjectCalcer*> ObjectPropertyCalcer::parents() const
 
 void ObjectPropertyCalcer::calc( const KigDocument& doc )
 {
-  ObjectImp* n = mparent->imp()->property( mpropid, doc );
+  //if ( mparenttype != mparent->imp()->type() )
+  if ( mparenttype == 0 || *mparenttype != typeid( *(mparent->imp()) ) )
+  {
+    mpropid = mparent->imp()->getPropLid( mpropgid );
+//    mparenttype = mparent->imp()->type();
+    mparenttype = &typeid( *(mparent->imp()) );
+//    printf ("changing type, new type: %s\n", mparenttype->internalName());
+  }
+  ObjectImp* n;
+  if ( mpropid >= 0 )
+  {
+    n = mparent->imp()->property( mpropid, doc );
+  } else n = new InvalidImp;
   delete mimp;
   mimp = n;
 }
@@ -183,7 +213,8 @@ std::vector<ObjectCalcer*> ObjectCalcer::children() const
 const ObjectImpType* ObjectPropertyCalcer::impRequirement(
   ObjectCalcer*, const std::vector<ObjectCalcer*>& ) const
 {
-  return mparent->imp()->impRequirementForProperty( mpropid );
+  int proplid = mparent->imp()->getPropLid( mpropgid );
+  return mparent->imp()->impRequirementForProperty( proplid );
 }
 
 const ObjectImpType* ObjectConstCalcer::impRequirement(
@@ -204,11 +235,6 @@ const ObjectImpType* ObjectTypeCalcer::impRequirement(
     std::mem_fun( &ObjectCalcer::imp ) );
   assert( std::find( args.begin(), args.end(), o->imp() ) != args.end() );
   return mtype->impRequirement( o->imp(), args );
-}
-
-int ObjectPropertyCalcer::propId() const
-{
-  return mpropid;
 }
 
 void ObjectConstCalcer::setImp( ObjectImp* newimp )
@@ -304,7 +330,8 @@ bool ObjectConstCalcer::isDefinedOnOrThrough( const ObjectCalcer* ) const
 bool ObjectPropertyCalcer::isDefinedOnOrThrough( const ObjectCalcer* o ) const
 {
   return o == mparent &&
-    mparent->imp()->isPropertyDefinedOnOrThroughThisImp( propId() );
+    mparent->imp()->isPropertyDefinedOnOrThroughThisImp( 
+       mparent->imp()->getPropLid( mpropgid ) );
 }
 
 bool ObjectTypeCalcer::isDefinedOnOrThrough( const ObjectCalcer* o ) const
@@ -319,5 +346,15 @@ bool ObjectTypeCalcer::isDefinedOnOrThrough( const ObjectCalcer* o ) const
     return false;
 
   return mtype->isDefinedOnOrThrough( o->imp(), args );
+}
+
+int ObjectPropertyCalcer::propLid() const
+{
+  return mparent->imp()->getPropLid( mpropgid );
+}
+
+int ObjectPropertyCalcer::propGid() const
+{
+  return mpropgid;
 }
 
