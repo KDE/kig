@@ -54,7 +54,7 @@ public:
 
 
 CoordinateValidator::CoordinateValidator( bool polar )
-  : QValidator( 0L ), mpolar( polar ), mdv( 0, 0 ),
+  : QValidator( 0L ), mpolar( polar ), mdv( 0, 0, 0 , this ),
     mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?"
          : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
 {
