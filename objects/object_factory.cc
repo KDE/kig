@@ -301,7 +301,7 @@ ObjectPropertyCalcer* ObjectFactory::propertyObjectCalcer(
 {
   int wp = o->imp()->propertiesInternalNames().findIndex( p );
   if ( wp == -1 ) return 0;
-  return new ObjectPropertyCalcer( o, wp );
+  return new ObjectPropertyCalcer( o, p );
 }
 
 ObjectHolder* ObjectFactory::propertyObject(

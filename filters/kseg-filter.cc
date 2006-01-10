@@ -362,9 +362,9 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
           if ( !parents[0]->imp()->inherits( SegmentImp::stype() ) )
             KIG_FILTER_PARSE_ERROR;
-          int index = parents[0]->imp()->propertiesInternalNames().findIndex( "mid-point" );
-          assert( index != -1 );
-          o = new ObjectPropertyCalcer( parents[0], index );
+//          int index = parents[0]->imp()->propertiesInternalNames().findIndex( "mid-point" );
+//          assert( index != -1 );
+          o = new ObjectPropertyCalcer( parents[0], "mid-point" );
           break;
         }
         default:
@@ -496,7 +496,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
           };
           int index = segment->imp()->propertiesInternalNames().findIndex( "length" );
           if ( index == -1 ) KIG_FILTER_PARSE_ERROR;
-          ObjectPropertyCalcer* length = new ObjectPropertyCalcer( segment, index );
+          ObjectPropertyCalcer* length = new ObjectPropertyCalcer( segment, "length" );
           length->calc( *retdoc );
           std::vector<ObjectCalcer*> cparents;
           cparents.push_back( point );

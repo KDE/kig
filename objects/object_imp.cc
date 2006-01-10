@@ -312,3 +312,33 @@ bool ObjectImp::isPropertyDefinedOnOrThroughThisImp( uint ) const
   return false;
 }
 
+static QCStringList propertiesGlobalInternalNames;
+
+int ObjectImp::getPropGid( const char* pname ) const
+{
+  int wp = propertiesGlobalInternalNames.findIndex( pname );
+  if ( wp >= 0 ) return wp;
+
+  int lp = propertiesInternalNames().findIndex( pname );
+  if ( lp < 0 ) return lp; // insist that this exists as a property
+
+  propertiesGlobalInternalNames << pname;
+  wp = propertiesGlobalInternalNames.findIndex( pname );
+  assert( wp >= 0 );
+  return wp;
+}
+
+int ObjectImp::getPropLid( int propgid ) const
+{
+  assert( propgid >= 0 && uint( propgid ) < propertiesGlobalInternalNames.size() );
+  int proplid = propertiesInternalNames().findIndex(
+              propertiesGlobalInternalNames[propgid] );
+//  printf ("getPropLid: converting %d in %d\n", propgid, proplid);
+  return proplid;
+}
+
+const char* ObjectImp::getPropName( int propgid ) const
+{
+  assert( propgid >= 0 && uint( propgid ) < propertiesGlobalInternalNames.size() );
+  return propertiesGlobalInternalNames[propgid];
+}

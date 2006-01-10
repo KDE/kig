@@ -487,7 +487,8 @@ void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
     assert( mresult->imp()->inherits( TestResultImp::stype() ) );
     parents.push_back(
       new ObjectPropertyCalcer(
-        mresult.get(), mresult->imp()->propertiesInternalNames().findIndex( "test-result" ) ) );
+//        mresult.get(), mresult->imp()->propertiesInternalNames().findIndex( "test-result" ) ) );
+        mresult.get(), "test-result" ) );
     parents.back()->calc( mdoc.document() );
 
     ObjectCalcer* ret = new ObjectTypeCalcer( TextType::instance(), parents );

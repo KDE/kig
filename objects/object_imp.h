@@ -227,6 +227,48 @@ public:
    */
   static const ObjectImpType* stype();
 
+  /**
+   * mp: The following three methods (getPropLid, getPropGid, getPropName)
+   * deal with the properties of ObjectImp(s).
+   * the properties architecture (vectors of properties associated to
+   * each Imp) didn't work at all in situation when a node in the object
+   * hierarchy of which a properties is used changes it's Imp dynamically.
+   * An example of this is a python script that constructs a "hyperbolic 
+   * segment" in the half-plane model of hyperbolic geometry, that results
+   * in a circular arc or a segment depending on the relative position of
+   * the two end-points.
+   * A workaround for this problem is to maintain two numberings for a
+   * property: the "local" id (Lid) is the index in the property vector
+   * associated to an ObjectImp, it makes only sense relatively to a
+   * specific ObjectImp; the "global" id (Gid) is a global numbering
+   * generated runtime and distinguishing properties only based on their
+   * internal name.
+   * A property node must only use the global numbering, so that when the
+   * parent changes it's Imp, the correct property (if it exists) of the
+   * new Imp will be used.
+   * the association of Gid to properties is constructed runtime whenever
+   * a new property is first used by populating a static vector
+   * (see object_imp.cc).
+   * The conversion Gid->Lid requires a vector search, so that a caching
+   * mechanism has been set up in the ObjectPropertyCalcer that stores the
+   * Lid and recalculates it when the typeid of the ObjectImp of the parent
+   * changes.
+   *
+   * getPropLid: returns the local numbering corresponding to a Gid
+   * getPropGid: returns the Gid of a property given its internal name
+   * getPropName: returns the internal name of a property given its Gid
+   *
+   * Note: in object_hierarchy.cc the class "FetchPropertyNode" is quite
+   * similar to "ObjectPropertyCalcer", and thus is similarly restructured.
+   * However the caching mechanism has not been setup in this case. 
+   * It seems that "FetchPropertyNode" is only used for the "drawprelim"
+   * in constructions that involve a macro that in turn involves a property,
+   * so perhaps the caching is not that important.
+   */
+  int getPropLid( int propgid ) const;
+  int getPropGid( const char *pname ) const;
+  const char* getPropName( int propgid ) const;
+
   virtual ~ObjectImp();
 
   /**

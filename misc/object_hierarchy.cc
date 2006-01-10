@@ -185,16 +185,16 @@ void ApplyTypeNode::apply( std::vector<const ObjectImp*>& stack,
 class FetchPropertyNode
   : public ObjectHierarchy::Node
 {
-  mutable int mpropid;
+  mutable int mpropgid;
   int mparent;
   const QCString mname;
 public:
-  // propid is a cache of the location of name in the parent's
-  // propertiesInternalNames(), just as it is in PropertyObject.  We
+  // propgid is a cache of the global id of property "name",
+  // just as it is in PropertyObject.  We
   // don't want to ever save this value, since we cannot guarantee it
   // remains consistent if we add properties some place..
-  FetchPropertyNode( const int parent, const QCString& name, const int propid = -1 )
-    : mpropid( propid ), mparent( parent ), mname( name ) {};
+  FetchPropertyNode( const int parent, const QCString& name, const int propgid = -1 )
+    : mpropgid( propgid ), mparent( parent ), mname( name ) {};
   ~FetchPropertyNode();
   Node* copy() const;
 
@@ -225,7 +225,7 @@ void FetchPropertyNode::checkDependsOnGiven( std::vector<bool>& dependsstack, in
 
 ObjectHierarchy::Node* FetchPropertyNode::copy() const
 {
-  return new FetchPropertyNode( mparent, mname, mpropid );
+  return new FetchPropertyNode( mparent, mname, mpropgid );
 }
 
 int FetchPropertyNode::id() const
@@ -237,19 +237,20 @@ void FetchPropertyNode::apply( std::vector<const ObjectImp*>& stack,
                                int loc, const KigDocument& d ) const
 {
   assert( stack[mparent] );
-  if ( mpropid == -1 ) mpropid = stack[mparent]->propertiesInternalNames().findIndex( mname );
-  if ( mpropid != -1 )
-    stack[loc] = stack[mparent]->property( mpropid, d );
+  if ( mpropgid == -1 ) mpropgid = stack[mparent]->getPropGid( mname );
+  if ( mpropgid != -1 )
+    stack[loc] = stack[mparent]->property( 
+           stack[mparent]->getPropLid( mpropgid ), d );
   else
     stack[loc] = new InvalidImp();
 }
 
 void FetchPropertyNode::apply( std::vector<ObjectCalcer*>& stack, int loc ) const
 {
-  if ( mpropid == -1 )
-    mpropid = stack[mparent]->imp()->propertiesInternalNames().findIndex( mname );
-  assert( mpropid != -1 );
-  stack[loc] = new ObjectPropertyCalcer( stack[mparent], mpropid );
+  if ( mpropgid == -1 )
+    mpropgid = stack[mparent]->imp()->getPropGid( mname );
+  assert( mpropgid != -1 );
+  stack[loc] = new ObjectPropertyCalcer( stack[mparent], mpropgid, false );
 }
 
 std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument& doc ) const
@@ -740,9 +741,10 @@ int ObjectHierarchy::storeObject( const ObjectCalcer* o, const std::vector<Objec
     int parent = pl.front();
     ObjectCalcer* op = po.front();
     assert( op );
-    uint propid = static_cast<const ObjectPropertyCalcer*>( o )->propId();
-    assert( propid < op->imp()->propertiesInternalNames().size() );
-    mnodes.push_back( new FetchPropertyNode( parent, op->imp()->propertiesInternalNames()[propid], propid ) );
+    uint propgid = static_cast<const ObjectPropertyCalcer*>( o )->propGid();
+//    assert( propid < op->imp()->propertiesInternalNames().size() );
+//    mnodes.push_back( new FetchPropertyNode( parent, op->imp()->propertiesInternalNames()[propid], propgid ) );
+    mnodes.push_back( new FetchPropertyNode( parent, op->imp()->getPropName( propgid ), propgid ) );
   }
   else
     assert( false );
