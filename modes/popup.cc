@@ -504,7 +504,7 @@ bool NameObjectActionsProvider::executeAction(
     QRegExpValidator* rev = new QRegExpValidator( re,  &doc );
     name = KInputDialog::getText(
                i18n( "Set Object Name" ), i18n( "Set Name of this Object:" ),
-               name, &ok, &w, 0, rev );
+               name, &ok, &w, rev );
     if ( ok )
     {
       bool justadded = false;
