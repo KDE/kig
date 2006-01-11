@@ -248,7 +248,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     }
     case ID_text:
     {
-      bool frame = c->readEntry( "Frame" );
+      bool frame = c->readEntry( "Frame",true );
       double x = c->readDoubleNumEntry( "TextRectCenterX" );
       double y = c->readDoubleNumEntry( "TextRectCenterY" );
       QString text = c->readEntry( "TextRectEntry" );
