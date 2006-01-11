@@ -658,3 +658,50 @@ const ObjectImpType* MeasureTransportTypeOld::resultId() const
 
 /* ----------------- end transport of measure ------------------------- */
 
+/* Construct a point whose coordinates are indicated by numeric labels    */
+
+ObjectImp* PointByCoordsType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  bool valid;
+  double x = getDoubleFromImp( parents[0], valid);
+  if ( ! valid ) return new InvalidImp;
+  double y = getDoubleFromImp( parents[1], valid);
+  if ( ! valid ) return new InvalidImp;
+
+  const Coordinate nc = Coordinate( x, y );
+  if ( nc.valid() ) return new PointImp( nc );
+  else return new InvalidImp;
+}
+
+static const ArgsParser::spec argsspecPointByCoords[] =
+{
+  { &lengthimptypeinstance, "X coordinate given by this number/length",
+    I18N_NOOP( "Select a number/length as x coordinate of the point..." ), false },
+  { &lengthimptypeinstance, "Y coordinate given by this number/length",
+    I18N_NOOP( "Select a number/length as y coordinate of the point..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PointByCoordsType )
+
+PointByCoordsType::PointByCoordsType()
+  : ArgsParserObjectType( "PointByCoordinates", argsspecPointByCoords, 2 )
+{
+}
+
+PointByCoordsType::~PointByCoordsType()
+{
+}
+
+const PointByCoordsType* PointByCoordsType::instance()
+{
+  static const PointByCoordsType t;
+  return &t;
+}
+
+const ObjectImpType* PointByCoordsType::resultId() const
+{
+  return PointImp::stype();
+}
+

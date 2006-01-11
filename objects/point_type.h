@@ -156,4 +156,16 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class PointByCoordsType
+  : public ArgsParserObjectType
+{
+  PointByCoordsType();
+  ~PointByCoordsType();
+public:
+  static const PointByCoordsType* instance();
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 #endif

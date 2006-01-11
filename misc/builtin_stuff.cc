@@ -53,6 +53,15 @@ void setupBuiltinStuff()
     GUIActionList* actions = GUIActionList::instance();
     ObjectConstructor* c = 0;
 
+    // point by coords...
+    c = new SimpleObjectTypeConstructor(
+      PointByCoordsType::instance(),
+      I18N_NOOP( "Point by Numeric Labels" ),
+      I18N_NOOP( "A point whose coordinates are given by two numeric labels" ),
+      "pointxy" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_point_by_coords" ) );
+
     // segment...
     c = new SimpleObjectTypeConstructor(
       SegmentABType::instance(), I18N_NOOP( "Segment" ),
