@@ -66,8 +66,8 @@ void KigFilterKGeo::loadMetrics(KSimpleConfig* c )
   c->setGroup("Main");
   xMax = c->readNumEntry("XMax", 16);
   yMax = c->readNumEntry("YMax", 11);
-  grid = c->readBoolEntry( "Grid", true );
-  axes = c->readBoolEntry( "Axes", true );
+  grid = c->readEntry( "Grid", true );
+  axes = c->readEntry( "Axes", true );
   // the rest is not relevant to us (yet ?)...
 }
 
@@ -248,7 +248,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     }
     case ID_text:
     {
-      bool frame = c->readBoolEntry( "Frame" );
+      bool frame = c->readEntry( "Frame" );
       double x = c->readDoubleNumEntry( "TextRectCenterX" );
       double y = c->readDoubleNumEntry( "TextRectCenterY" );
       QString text = c->readEntry( "TextRectEntry" );
