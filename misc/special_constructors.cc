@@ -25,6 +25,7 @@
 
 #include "../kig/kig_part.h"
 #include "../modes/construct_mode.h"
+#include "../objects/special_imptypes.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/centerofcurvature_type.h"
 #include "../objects/circle_imp.h"
@@ -1139,8 +1140,7 @@ const int MeasureTransportConstructor::wantArgs(
 {
   if ( os.size() == 0 ) return ArgsParser::Valid;
 
-  if ( ! os[0]->imp()->inherits( SegmentImp::stype() ) &&
-       ! os[0]->imp()->inherits( ArcImp::stype() ) )
+  if ( ! os[0]->imp()->inherits( &lengthimptypeinstance ) )
     return ArgsParser::Invalid;
 
   if ( os.size() == 1 ) return ArgsParser::Valid;
@@ -1216,6 +1216,8 @@ QString MeasureTransportConstructor::useText( const ObjectCalcer& o,
     return i18n("Segment to transport");
   if ( o.imp()->inherits( ArcImp::stype() ) )
     return i18n("Arc to transport");
+  if ( o.imp()->inherits( NumericTextImp::stype() ) )
+    return i18n("Value to transport");
   if ( o.imp()->inherits( LineImp::stype() ) )
     return i18n("Transport a measure on this line");
   if ( o.imp()->inherits( CircleImp::stype() ) )

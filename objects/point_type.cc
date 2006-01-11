@@ -17,6 +17,7 @@
 
 #include "point_type.h"
 
+#include "special_imptypes.h"
 #include "point_imp.h"
 #include "curve_imp.h"
 #include "line_imp.h"
@@ -499,15 +500,9 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
 
   if ( parents.size() != 3 ) return new InvalidImp;
 
-  if ( parents[0]->inherits (SegmentImp::stype()) )
-  {
-    const SegmentImp* s = static_cast<const SegmentImp*>( parents[0] );
-    measure = s->length();
-  } else if ( parents[0]->inherits (ArcImp::stype()) )
-  {
-    const ArcImp* s = static_cast<const ArcImp*>( parents[0] );
-    measure = s->radius()*s->angle();
-  } else return new InvalidImp;
+  bool valid;
+  measure = getDoubleFromImp( parents[0], valid );
+  if ( ! valid ) return new InvalidImp;
 
   const Coordinate& p = static_cast<const PointImp*>( parents[2] )->coordinate();
   if ( parents[1]->inherits (LineImp::stype()) )
