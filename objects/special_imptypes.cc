@@ -31,6 +31,12 @@ double getDoubleFromImp( const ObjectImp* obj, bool& valid )
   if ( obj->inherits( SegmentImp::stype() ) )
     return static_cast<const SegmentImp*>( obj )->length();
 
+  if ( obj->inherits( ArcImp::stype() ) )
+  {
+    const ArcImp* arc = static_cast<const ArcImp*>( obj );
+    return arc->radius()*arc->angle();
+  }
+
   if ( obj->inherits( AngleImp::stype() ) )
     return static_cast<const AngleImp*>( obj )->size();
 
@@ -57,8 +63,8 @@ LengthImpType::~LengthImpType()
 
 bool LengthImpType::match( const ObjectImpType* t ) const
 {
-  return t == this || t == SegmentImp::stype() || t == NumericTextImp::stype()
-                   || t == DoubleImp::stype();
+  return t == this || t == SegmentImp::stype() || t == ArcImp::stype()
+                   || t == NumericTextImp::stype() || t == DoubleImp::stype();
 }
 
 LengthImpType lengthimptypeinstance(
