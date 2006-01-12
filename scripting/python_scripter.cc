@@ -319,6 +319,13 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "value", &NumericTextImp::getValue )
     ;
 
+  class_<BoolTextImp, bases<ObjectImp> >( "BooleanObject", no_init )
+    .def( "stype", &BoolTextImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "value", &BoolTextImp::getValue )
+    ;
+
   class_<CubicCartesianData>( "CubicCartesianData", init<double,double,double,double,double,double,double,double,double,double>() )
     .def( "invalidData", &CubicCartesianData::invalidData )
     .staticmethod( "invalidData" )
