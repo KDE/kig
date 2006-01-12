@@ -487,11 +487,21 @@ void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
     parents.push_back( new ObjectConstCalcer( new PointImp( loc ) ) );
     parents.push_back( new ObjectConstCalcer( new StringImp( QString::fromLatin1( "%1" ) ) ) );
     assert( mresult->imp()->inherits( TestResultImp::stype() ) );
-    parents.push_back(
-      new ObjectPropertyCalcer(
-//        mresult.get(), mresult->imp()->propertiesInternalNames().indexOf( "test-result" ) ) );
-        mresult.get(), "test-result" ) );
-    parents.back()->calc( mdoc.document() );
+//    parents.push_back(
+//      new ObjectPropertyCalcer(
+//        mresult.get(), "test-result" ) );
+//    parents.back()->calc( mdoc.document() );
+
+/* (mp)
+ * now we can refer directly to the TestResultImp, since it is also a StringImp
+ * this creates a backward compatibility issue with kig save files: new versions of
+ * kig can still read old saved files, but files created with the new kig version
+ * cannot be read by old versions of kig.  This is necessary in order to allow a test
+ * result to also carry its intrinsic boolean value and thus be used in further
+ * constructions, e.g. as an argument to a python script.
+ */
+
+    parents.push_back( mresult.get() );
 
     ObjectCalcer* ret = new ObjectTypeCalcer( TextType::instance(), parents );
     ret->calc( mdoc.document() );

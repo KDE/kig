@@ -102,6 +102,7 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
   }
   else if ( d.inherits( TestResultImp::stype() ) )
   {
+    assert( false );
     parent.appendChild(
       doc.createTextNode(
         static_cast<const TestResultImp&>( d ).data() ) );
@@ -314,7 +315,8 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   }
   else if ( type == "testresult" )
   {
-    return new TestResultImp( parent.text() );
+// should never get here, at least for new save files!
+    return new TestResultImp( true, parent.text() );
   }
   else if ( type == "hierarchy" )
   {

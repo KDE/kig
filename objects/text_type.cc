@@ -90,6 +90,10 @@ ObjectImp* GenericTextType::calc( const Args& parents, const KigDocument& doc ) 
   {
     double value = static_cast<const DoubleImp*>( varargs[0] )->data();
     return new NumericTextImp( s, t, needframe, value );
+  } else if ( varargs.size() == 1 && varargs[0]->inherits( TestResultImp::stype() ) )
+  {
+    bool value = static_cast<const TestResultImp*>( varargs[0] )->truth();
+    return new BoolTextImp( s, t, needframe, value );
   } else {
     return new TextImp( s, t, needframe );
   }

@@ -258,3 +258,90 @@ bool NumericTextImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 {
   return Parent::isPropertyDefinedOnOrThroughThisImp( which );
 }
+
+/*
+ * BoolTextImp
+ */
+
+BoolTextImp::BoolTextImp( const QString& text, const Coordinate& loc, bool frame, bool value )
+  : TextImp( text, loc, frame ), mvalue( value )
+{
+}
+
+const ObjectImpType* BoolTextImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "boolean-label",
+    I18N_NOOP( "boolean label" ),
+    I18N_NOOP( "Select this boolean label" ),
+    I18N_NOOP( "Select boolean label %1" ),
+    I18N_NOOP( "Remove a Boolean Label" ),
+    I18N_NOOP( "Add a Boolean Label" ),
+    I18N_NOOP( "Move a Boolean Label" ),
+    I18N_NOOP( "Attach to this boolean label" ),
+    I18N_NOOP( "Show a Boolean Label" ),
+    I18N_NOOP( "Hide a Boolean Label" )
+    );
+  return &t;
+}
+
+const ObjectImpType* BoolTextImp::type() const
+{
+  return BoolTextImp::stype();
+}
+
+bool BoolTextImp::getValue( void ) const
+{
+  return mvalue;
+}
+
+const int BoolTextImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties() + 1;
+}
+
+const QByteArrayList BoolTextImp::propertiesInternalNames() const
+{
+  QByteArrayList ret = Parent::propertiesInternalNames();
+  ret << "kig_value";
+  return ret;
+}
+
+const QByteArrayList BoolTextImp::properties() const
+{
+  QByteArrayList ret = Parent::properties();
+  ret << I18N_NOOP( "Numeric value" );
+  return ret;
+}
+
+const ObjectImpType* BoolTextImp::impRequirementForProperty( int which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  return NumericTextImp::stype();
+}
+
+const char* BoolTextImp::iconForProperty( int which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() )
+    return "value"; // text
+  else assert( false );
+  return "";
+}
+
+ObjectImp* BoolTextImp::property( int which, const KigDocument& w ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  else if ( which == Parent::numberOfProperties() )
+    return new DoubleImp( getValue() );
+  else assert( false );
+  return new InvalidImp;
+}
+
+bool BoolTextImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+{
+  return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+}

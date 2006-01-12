@@ -87,4 +87,24 @@ public:
   bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
 };
 
+class BoolTextImp
+  : public TextImp
+{
+  bool mvalue;
+public:
+  typedef TextImp Parent;
+  static const ObjectImpType* stype();
+  BoolTextImp( const QString& text, const Coordinate& loc, bool frame, bool value );
+  bool getValue() const;
+  const ObjectImpType* type() const;
+
+  const int numberOfProperties() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+};
+
 #endif

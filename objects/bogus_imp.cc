@@ -299,14 +299,14 @@ const ObjectImpType* TestResultImp::stype()
 
 }
 
-TestResultImp::TestResultImp( const QString& s )
-  : mdata( s )
+TestResultImp::TestResultImp( bool t, const QString& s )
+  : StringImp( s ), mtruth( t )
 {
 }
 
 TestResultImp* TestResultImp::copy() const
 {
-  return new TestResultImp( mdata );
+  return new TestResultImp( mtruth, data() );
 }
 
 const ObjectImpType* TestResultImp::type() const
@@ -322,7 +322,8 @@ void TestResultImp::visit( ObjectImpVisitor* vtor ) const
 bool TestResultImp::equals( const ObjectImp& rhs ) const
 {
   return rhs.inherits( TestResultImp::stype() ) &&
-    static_cast<const TestResultImp&>( rhs ).mdata == mdata;
+// (FIXME?)    static_cast<const TestResultImp&>( rhs ).mdata == mdata &&
+    static_cast<const TestResultImp&>( rhs ).mtruth == mtruth;
 
 }
 

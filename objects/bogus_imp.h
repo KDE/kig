@@ -251,18 +251,19 @@ public:
 };
 
 class TestResultImp
-  : public BogusImp
+  : public StringImp
 {
-  const QString mdata;
+  bool mtruth;
 public:
   static const ObjectImpType* stype();
-  typedef BogusImp Parent;
+  typedef StringImp Parent;
 
-  TestResultImp( const QString& s );
+  TestResultImp( bool truth, const QString& s );
 
   TestResultImp* copy() const;
 
-  const QString& data() const { return mdata; };
+  // const QString& data() const { return mdata; };
+  bool truth() const { return mtruth; };
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
