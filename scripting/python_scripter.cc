@@ -293,7 +293,7 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "setData", &IntImp::setData )
     ;
 
-  class_<StringImp, bases<BogusImp> >( "StringObject", no_init )
+  class_<StringImp, bases<BogusImp> >( "StringObject", init<char*>() )
     .def( "stype", &StringImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )

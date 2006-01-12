@@ -232,6 +232,20 @@ bool ScriptMode::queryFinish()
       ObjectHolder* label = 0;
       label = ObjectFactory::instance()->label( s, coord, needframe, args, mdoc.document() );
       mdoc.addObject( label );
+    } else if ( reto->imp()->inherits( StringImp::stype() ) )
+    {
+      /*
+       * if the python script returns a StringImp we need a way to let the user
+       * interact with the result, see above.
+       */
+      QString s = QString("%1");
+      Coordinate coord = Coordinate( 0., 0. );
+      bool needframe = false;
+      std::vector<ObjectCalcer*> args;
+      args.push_back( reto.get() );
+      ObjectHolder* label = 0;
+      label = ObjectFactory::instance()->label( s, coord, needframe, args, mdoc.document() );
+      mdoc.addObject( label );
     } else mdoc.addObject( new ObjectHolder( reto.get() ) );
     killMode();
     return true;
