@@ -58,9 +58,9 @@ ObjectImp* AreParallelType::calc( const Args& parents, const KigDocument& ) cons
   const LineData& l2 = static_cast<const AbstractLineImp*>( parents[1] )->data();
 
   if ( l1.isParallelTo( l2 ) )
-    return new TestResultImp( i18n( "These lines are parallel." ) );
+    return new TestResultImp( true, i18n( "These lines are parallel." ) );
   else
-    return new TestResultImp( i18n( "These lines are not parallel." ) );
+    return new TestResultImp( false, i18n( "These lines are not parallel." ) );
 
 }
 
@@ -102,9 +102,9 @@ ObjectImp* AreOrthogonalType::calc( const Args& parents, const KigDocument& ) co
   const LineData& l2 = static_cast<const AbstractLineImp*>( parents[1] )->data();
 
   if ( l1.isOrthogonalTo( l2 ) )
-    return new TestResultImp( i18n( "These lines are orthogonal." ) );
+    return new TestResultImp( true, i18n( "These lines are orthogonal." ) );
   else
-    return new TestResultImp( i18n( "These lines are not orthogonal." ) );
+    return new TestResultImp( false, i18n( "These lines are not orthogonal." ) );
 
 }
 
@@ -149,9 +149,9 @@ ObjectImp* AreCollinearType::calc( const Args& parents, const KigDocument& ) con
   const Coordinate& p3 = static_cast<const PointImp*>( parents[2] )->coordinate();
 
   if ( areCollinear( p1, p2, p3 ) )
-    return new TestResultImp( i18n( "These points are collinear." ) );
+    return new TestResultImp( true, i18n( "These points are collinear." ) );
   else
-    return new TestResultImp( i18n( "These points are not collinear." ) );
+    return new TestResultImp( false, i18n( "These points are not collinear." ) );
 }
 
 const ObjectImpType* AreCollinearType::resultId() const
@@ -191,9 +191,9 @@ ObjectImp* ContainsTestType::calc( const Args& parents, const KigDocument& doc )
   const CurveImp* c = static_cast<const CurveImp*>( parents[1] );
 
   if ( c->containsPoint( p, doc ) )
-    return new TestResultImp( i18n( "This curve contains the point." ) );
+    return new TestResultImp( true, i18n( "This curve contains the point." ) );
   else
-    return new TestResultImp( i18n( "This curve does not contain the point." ) );
+    return new TestResultImp( false, i18n( "This curve does not contain the point." ) );
 }
 
 const ObjectImpType* ContainsTestType::resultId() const
@@ -237,9 +237,9 @@ ObjectImp* InPolygonTestType::calc( const Args& parents, const KigDocument& ) co
   const PolygonImp* pol = static_cast<const PolygonImp*>( parents[1] );
 
   if ( pol->isInPolygon( p ) )
-    return new TestResultImp( i18n( "This polygon contains the point." ) );
+    return new TestResultImp( true, i18n( "This polygon contains the point." ) );
   else
-    return new TestResultImp( i18n( "This polygon does not contain the point." ) );
+    return new TestResultImp( false, i18n( "This polygon does not contain the point." ) );
 }
 
 const ObjectImpType* InPolygonTestType::resultId() const
@@ -280,9 +280,9 @@ ObjectImp* ConvexPolygonTestType::calc( const Args& parents, const KigDocument& 
   const PolygonImp* pol = static_cast<const PolygonImp*>( parents[0] );
 
   if ( pol->isConvex() )
-    return new TestResultImp( i18n( "This polygon is convex." ) );
+    return new TestResultImp( true, i18n( "This polygon is convex." ) );
   else
-    return new TestResultImp( i18n( "This polygon is not convex." ) );
+    return new TestResultImp( false, i18n( "This polygon is not convex." ) );
 }
 
 const ObjectImpType* ConvexPolygonTestType::resultId() const
@@ -329,9 +329,9 @@ ObjectImp* SameDistanceType::calc( const Args& parents, const KigDocument& ) con
   const Coordinate& p3 = static_cast<const PointImp*>( parents[2] )->coordinate();
 
   if ( fabs( ( p1 - p2 ).length() - ( p1 - p3 ).length() ) < 10e-5  )
-    return new TestResultImp( i18n( "The two distances are the same." ) );
+    return new TestResultImp( true, i18n( "The two distances are the same." ) );
   else
-    return new TestResultImp( i18n( "The two distances are not the same." ) );
+    return new TestResultImp( false, i18n( "The two distances are not the same." ) );
 }
 
 const ObjectImpType* SameDistanceType::resultId() const
@@ -371,9 +371,9 @@ ObjectImp* VectorEqualityTestType::calc( const Args& parents, const KigDocument&
   const Coordinate& v2 = static_cast<const VectorImp*>( parents[1] )->dir();
 
   if ( ( v1 - v2 ).length() < 10e-5  )
-    return new TestResultImp( i18n( "The two vectors are the same." ) );
+    return new TestResultImp( true, i18n( "The two vectors are the same." ) );
   else
-    return new TestResultImp( i18n( "The two vectors are not the same." ) );
+    return new TestResultImp( false, i18n( "The two vectors are not the same." ) );
 }
 
 const ObjectImpType* VectorEqualityTestType::resultId() const
