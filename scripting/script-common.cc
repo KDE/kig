@@ -78,6 +78,15 @@ QString ScriptType::templateCode( ScriptType::Type type, std::set<ObjectHolder*>
           "\t# For example, to return one half of the input number,\n"
           "\t# you would put this code here:\n"
           "\t#\treturn DoubleObject( arg1.value()/ 2 )\n";
+      } else if ( ! args.empty() && (*args.begin())->imp()->inherits( BoolTextImp::stype() ) )
+      {
+        tempcode +=
+          "\t# For example, to return a string based on the test result,\n"
+          "\t# you would put this code here:\n"
+          "\t#\tif arg1.value():\n"
+          "\t#\t\treturn StringObject( \"TRUE!\" )\n"
+          "\t#\telse:\n"
+          "\t#\t\treturn StringObject( \"FALSE!\" )\n";
       } else {
         tempcode +=
           "\t# For example, to implement a mid point, you would put\n"
