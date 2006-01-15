@@ -224,9 +224,11 @@ bool isOnRay( const Coordinate& o, const Coordinate& a,
 {
   return isOnLine( o, a, b, fault )
     // not too far in front of a horizontally..
-    && ( a.x - b.x < fault ) == ( a.x - o.x < fault )
+//    && ( a.x - b.x < fault ) == ( a.x - o.x < fault )
+    && ( ( a.x < b.x ) ? ( a.x - o.x < fault ) : ( a.x - o.x > -fault ) )
     // not too far in front of a vertically..
-    && ( a.y - b.y < fault ) == ( a.y - o.y < fault );
+//    && ( a.y - b.y < fault ) == ( a.y - o.y < fault );
+    && ( ( a.y < b.y ) ? ( a.y - o.y < fault ) : ( a.y - o.y > -fault ) );
 }
 
 bool isOnArc( const Coordinate& o, const Coordinate& c, const double r,
