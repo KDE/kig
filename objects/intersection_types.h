@@ -45,7 +45,7 @@ public:
  * two intersections
  */
 class ConicLineOtherIntersectionType
-  : public ArgsParserObjectType
+  : public ObjectType
 {
   ConicLineOtherIntersectionType();
   ~ConicLineOtherIntersectionType();
@@ -53,6 +53,11 @@ public:
   static const ConicLineOtherIntersectionType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
+
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args )const;
+  Args sortArgs( const Args& args ) const;
 };
 
 class LineLineIntersectionType

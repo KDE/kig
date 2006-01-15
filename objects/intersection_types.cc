@@ -82,20 +82,21 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
   else return new InvalidImp;
 }
 
-static const ArgsParser::spec argsspecConicLineOtherIntersection[] =
-{
-  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
-    "SHOULD NOT BE SEEN", true },
-  { AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true },
-  { PointImp::stype(), I18N_NOOP( "Already computed intersection point"),
-    "SHOULD NOT BE SEEN", true }
-};
+//static const ArgsParser::spec argsspecConicLineOtherIntersection[] =
+//{
+//  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
+//    "SHOULD NOT BE SEEN", true },
+//  { AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true },
+//  { PointImp::stype(), I18N_NOOP( "Already computed intersection point"),
+//    "SHOULD NOT BE SEEN", false }
+//};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicLineOtherIntersectionType )
 
 ConicLineOtherIntersectionType::ConicLineOtherIntersectionType()
-  : ArgsParserObjectType( "ConicLineOtherIntersection",
-                         argsspecConicLineOtherIntersection, 3 )
+//  : ArgsParserObjectType( "ConicLineOtherIntersection",
+//                         argsspecConicLineOtherIntersection, 3 )
+  : ObjectType( "ConicLineOtherIntersection" )
 {
 }
 
@@ -109,36 +110,68 @@ const ConicLineOtherIntersectionType* ConicLineOtherIntersectionType::instance()
   return &t;
 }
 
-ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigDocument& ) const
+ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigDocument& doc ) const
 {
-  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  // if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  if ( !parents[0]->inherits( ConicImp::stype() ) ||
+       !parents[1]->inherits( AbstractLineImp::stype() ) ||
+       !parents[2]->inherits( PointImp::stype() ) )
+           return new InvalidImp;
 
   Coordinate p = static_cast<const PointImp*>( parents[2] )->coordinate();
-  const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
+  const AbstractLineImp* line = static_cast<const AbstractLineImp*>( parents[1] );
+  const ConicImp* conic = static_cast<const ConicImp*>( parents[0] );
+  const LineData linedata = line->data();
+
+  if ( !line->containsPoint( p, doc ) || !conic->containsPoint( p, doc ) )
+    return new InvalidImp;
 
   Coordinate ret;
-//  if ( parents[0]->inherits( CircleImp::stype() ) )
-//  {
-//    // easy case..
-//    const CircleImp* c = static_cast<const CircleImp*>( parents[0] );
-//    ret = calcCircleLineIntersect(
-//      c->center(), c->squareRadius(), line, side, valid );
-//  }
-//  else
-//  {
-    // harder case..
-    double pax = p.x - line.a.x;
-    double pay = p.y - line.a.y;
-    double bax = line.b.x - line.a.x;
-    double bay = line.b.y - line.a.y;
-    double knownparam = (pax*bax + pay*bay)/(bax*bax + bay*bay);
-    ret = calcConicLineIntersect(
-      static_cast<const ConicImp*>( parents[0] )->cartesianData(),
-      line, knownparam, 0 );
-//  }
+  double pax = p.x - linedata.a.x;
+  double pay = p.y - linedata.a.y;
+  double bax = linedata.b.x - linedata.a.x;
+  double bay = linedata.b.y - linedata.a.y;
+  double knownparam = (pax*bax + pay*bay)/(bax*bax + bay*bay);
+  ret = calcConicLineIntersect(
+    conic->cartesianData(),
+    linedata, knownparam, 0 );
   if ( ret.valid() ) return new PointImp( ret );
   else return new InvalidImp;
 }
+
+const ObjectImpType* ConicLineOtherIntersectionType::impRequirement( 
+                const ObjectImp* obj, 
+                const Args& ) const
+{
+  if ( obj->inherits( LineImp::stype () ) )
+    return LineImp::stype ();
+
+  if ( obj->inherits( ConicImp::stype () ) )
+    return ConicImp::stype ();
+
+  return 0;
+}
+
+bool ConicLineOtherIntersectionType::isDefinedOnOrThrough( const ObjectImp* o, const Args& ) const
+{
+  if ( o->inherits( LineImp::stype() ) ) return true;
+  if ( o->inherits( ConicImp::stype() ) ) return true;
+  return false;
+}
+
+std::vector<ObjectCalcer*> ConicLineOtherIntersectionType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+{
+  assert (args.size() == 3);
+  return args;  /* should already be in correct order */
+}
+
+Args ConicLineOtherIntersectionType::sortArgs( const Args& args ) const
+{
+  assert (args.size() == 3);
+  return args;
+}
+
+/* LineLineIntersection */
 
 static const ArgsParser::spec argsspecLineLineIntersection[] =
 {
