@@ -604,11 +604,6 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_intersection", Qt::Key_I ) );
 
-    // (WORK HERE!) temporary addition...
-    c = new NewConicLineIntersectionConstructor();
-    ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_coniclineotherintersection" ) );
-
     // the generic tangent constructor
     c = new TangentConstructor();
     ctors->add( c );

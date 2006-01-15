@@ -38,7 +38,6 @@
 	<Action name="objects_new_normalpoint" />
 	<Action name="objects_new_midpoint" />
 	<Action name="objects_new_intersection" />
-	<Action name="objects_new_coniclineotherintersection" />
 	<Action name="objects_new_point_xy" />
 	<Action name="objects_new_point_by_coords" />
 	<Action name="objects_new_translatedpoint" />
