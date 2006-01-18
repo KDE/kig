@@ -132,7 +132,48 @@ ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
   const Coordinate center = calcCenter( a, b, c );
   if ( center.valid() )
     return new CircleImp( center, (center - a ).length() );
-  else return new InvalidImp;
+
+  /*
+   * case of collinear points, we need to identify the intermediate one
+   */
+
+  double xmin = fmin( a.x, fmin( b.x, c.x) );
+  double xmax = fmax( a.x, fmax( b.x, c.x) );
+  double ymin = fmin( a.y, fmin( b.y, c.y) );
+  double ymax = fmax( a.y, fmax( b.y, c.y) );
+  double axy, bxy, cxy;
+
+  /* decide whether to work with x coordinate or y coordinate */
+
+  if ( xmax - xmin > ymax - ymin )
+  {
+    axy = a.x;
+    bxy = b.x;
+    cxy = c.x;
+  } else
+  {
+    axy = a.y;
+    bxy = b.y;
+    cxy = c.y;
+  }
+
+  /*
+   * compute baricentric coordinate of c with respect to a and b
+   * (if a and c are not coincident)
+   */
+  if ( fabs( cxy - axy ) < 1e-6*fabs( bxy - axy ) ) return new InvalidImp;
+  double t = (bxy - axy)/(cxy - axy);
+
+  if ( fabs( t ) < 1e-6  || fabs( 1.0 - t ) < 1e-6 ) return new InvalidImp;
+
+  /*
+   * t < 0:     a between c and b
+   * 0 < t < 1: b between a and c
+   * t > 1:     c between a and b
+   */
+  if ( t < 0.0 ) return new LineImp( c, b );
+  if ( t > 1.0 ) return new LineImp( a, b );
+  return new LineImp( a, c );
 }
 
 const ObjectImpType* CircleBCPType::resultId() const

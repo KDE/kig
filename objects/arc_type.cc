@@ -88,7 +88,17 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
   {
     Coordinate c = static_cast<const PointImp*>( args[2] )->coordinate();
     center = calcCenter( a, b, c );
-    if ( ! center.valid() ) return new InvalidImp;
+    if ( ! center.valid() )
+    {
+      if ( fabs( a.x - c.x ) > fabs( a.y - c.y ) )
+      {
+        if ( ( b.x - a.x)*(c.x - b.x) > 1e-12 ) return new SegmentImp(a, c);
+      } else
+      {
+        if ( ( b.y - a.y)*(c.y - b.y) > 1e-12 ) return new SegmentImp(a, c);
+      }
+      return new InvalidImp;
+    }
     Coordinate ad = a - center;
     Coordinate bd = b - center;
     Coordinate cd = c - center;
