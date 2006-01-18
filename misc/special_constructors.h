@@ -20,6 +20,22 @@
 
 #include "object_constructor.h"
 
+class NewConicLineIntersectionConstructor
+  : public StandardConstructorBase
+{
+  const ArgsParserObjectType* mtype_std;
+  const ArgsParserObjectType* mtype_special;
+  ArgsParser margsparser;
+public:
+  NewConicLineIntersectionConstructor();
+  ~NewConicLineIntersectionConstructor();
+
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
+  void plug( KigPart* doc, KigGUIAction* kact );
+  bool isTransform() const;
+};
+
 class PolygonVertexTypeConstructor
   : public StandardConstructorBase
 {
@@ -317,4 +333,9 @@ public:
 };
 
 bool relativePrimes( int n, int p );
+
+std::vector<ObjectCalcer*> 
+removeDuplicatedPoints( std::vector<ObjectCalcer*> points );
+bool coincidentPoints( const ObjectImp* p1, const ObjectImp* p2 );
+
 #endif

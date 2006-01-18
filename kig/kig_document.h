@@ -25,6 +25,7 @@ class Coordinate;
 class CoordinateSystem;
 class KigWidget;
 class ObjectHolder;
+class ObjectCalcer;
 class Rect;
 
 /**
@@ -132,6 +133,14 @@ public:
    * Remove the objects \p os from the document.
    */
   void delObjects( const std::vector<ObjectHolder*>& os );
+  /**
+   * Return all the points that belong (by construction) on both the
+   * given curves.  This is useful when the user asks for an intersection
+   * point between a conic and a line (or two circles) and one is already
+   * there.
+   */
+  std::vector<ObjectCalcer*> findIntersectionPoints( const ObjectCalcer* c1,
+                                                     const ObjectCalcer* c2);
 };
 
 #endif
