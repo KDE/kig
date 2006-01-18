@@ -144,6 +144,62 @@ ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigD
   else return new InvalidImp;
 }
 
+/*
+ * This construction is authomatically invoked when the user 
+ * intersects two circles with one of the intersections
+ * already present, see above...
+ */
+
+static const ArgsParser::spec argsspecCircleCircleOtherIntersection[] =
+{
+  { CircleImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true },
+  { CircleImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", true },
+  { PointImp::stype(), "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN", false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CircleCircleOtherIntersectionType )
+
+CircleCircleOtherIntersectionType::CircleCircleOtherIntersectionType()
+  : ArgsParserObjectType( "CircleCircleOtherIntersection",
+                         argsspecCircleCircleOtherIntersection, 3 )
+{
+}
+
+CircleCircleOtherIntersectionType::~CircleCircleOtherIntersectionType()
+{
+}
+
+const CircleCircleOtherIntersectionType* CircleCircleOtherIntersectionType::instance()
+{
+  static const CircleCircleOtherIntersectionType t;
+  return &t;
+}
+
+ObjectImp* CircleCircleOtherIntersectionType::calc( const Args& parents, const KigDocument& doc ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  Coordinate p = static_cast<const PointImp*>( parents[2] )->coordinate();
+  const CircleImp* circle1 = static_cast<const CircleImp*>( parents[0] );
+  const CircleImp* circle2 = static_cast<const CircleImp*>( parents[1] );
+
+  if ( !circle1->containsPoint( p, doc ) || !circle2->containsPoint( p, doc ) )
+  {
+    return new InvalidImp;
+  }
+
+  Coordinate c1 = circle1->center();
+  Coordinate c1c2 = circle2->center() - c1;
+  Coordinate c1p = p - c1;
+  Coordinate w = Coordinate( -c1c2.y, c1c2.x );   /* w is normal to the line through the centers */
+  double wnormsq = w.x*w.x + w.y*w.y;
+  if ( wnormsq < 1e-12 ) return new InvalidImp;
+  double pc1c2dist = ( c1p.x*w.x + c1p.y*w.y )/wnormsq;
+
+  Coordinate ret = p - 2*pc1c2dist*w;
+  return new PointImp( ret );
+}
+
 /* LineLineIntersection */
 
 static const ArgsParser::spec argsspecLineLineIntersection[] =
@@ -230,6 +286,11 @@ const ObjectImpType* ConicLineIntersectionType::resultId() const
 }
 
 const ObjectImpType* ConicLineOtherIntersectionType::resultId() const
+{
+  return PointImp::stype();
+}
+
+const ObjectImpType* CircleCircleOtherIntersectionType::resultId() const
 {
   return PointImp::stype();
 }

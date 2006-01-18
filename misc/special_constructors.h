@@ -20,15 +20,18 @@
 
 #include "object_constructor.h"
 
-class NewConicLineIntersectionConstructor
+class TwoOrOneIntersectionConstructor
   : public StandardConstructorBase
 {
   const ArgsParserObjectType* mtype_std;
   const ArgsParserObjectType* mtype_special;
   ArgsParser margsparser;
 public:
-  NewConicLineIntersectionConstructor();
-  ~NewConicLineIntersectionConstructor();
+  TwoOrOneIntersectionConstructor( const ArgsParserObjectType* t_std,
+                                   const ArgsParserObjectType* t_special,
+                                   const char* iconfile,
+                                   const struct ArgsParser::spec argsspecv[] );
+  ~TwoOrOneIntersectionConstructor();
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;

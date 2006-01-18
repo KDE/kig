@@ -62,36 +62,34 @@
 #include <functional>
 
 /*
- * conic-line intersection (with search for already computed
+ * conic-line and circle-circle intersection (with search for already computed
  * intersections)
  * the previous "ConicLineIntersectionConstructor" is now
  * dead code, which could be remove in the future
  */
 
-static const struct ArgsParser::spec argsspeccli[] =
-{
-  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
-    "SHOULD NOT BE SEEN", true },
-  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
-    "SHOULD NOT BE SEEN", true }
-};
-
-NewConicLineIntersectionConstructor::NewConicLineIntersectionConstructor()
-  : StandardConstructorBase( I18N_NOOP( "SHOULD NOT BE SEEN:Conic-line intersection" ),
-       I18N_NOOP( "SHOULD NOT BE SEEN: Intersect a line and a conic" ),
-       "intersection", margsparser ),
-    mtype_std( ConicLineIntersectionType::instance() ),
-    mtype_special( ConicLineOtherIntersectionType::instance() ),
-    margsparser( argsspeccli, 2 )
+TwoOrOneIntersectionConstructor::TwoOrOneIntersectionConstructor(
+                                       const ArgsParserObjectType* t_std,
+                                       const ArgsParserObjectType* t_special,
+                                       const char* iconfile,
+                                       const struct ArgsParser::spec argsspecv[] )
+  : StandardConstructorBase( "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN",
+       iconfile, margsparser ),
+    mtype_std( t_std ),
+    mtype_special( t_special ),
+    margsparser( argsspecv, 2 )
 {
 }
 
-NewConicLineIntersectionConstructor::~NewConicLineIntersectionConstructor()
+TwoOrOneIntersectionConstructor::~TwoOrOneIntersectionConstructor()
 {
 }
 
-void NewConicLineIntersectionConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                                   const KigDocument& doc ) const
+void TwoOrOneIntersectionConstructor::drawprelim(
+           const ObjectDrawer& drawer, 
+           KigPainter& p, 
+           const std::vector<ObjectCalcer*>& parents,
+           const KigDocument& doc ) const
 {
   Args args;
   if ( parents.size() != 2 ) return;
@@ -138,7 +136,10 @@ bool coincidentPoints( const ObjectImp* p1, const ObjectImp* p2 )
   return false;
 }
 
-std::vector<ObjectHolder*> NewConicLineIntersectionConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument& doc, KigWidget& ) const
+std::vector<ObjectHolder*> TwoOrOneIntersectionConstructor::build( 
+           const std::vector<ObjectCalcer*>& parents, 
+           KigDocument& doc, 
+           KigWidget& ) const
 {
   std::vector<ObjectHolder*> ret;
   assert( parents.size() == 2 );
@@ -168,11 +169,11 @@ std::vector<ObjectHolder*> NewConicLineIntersectionConstructor::build( const std
   return ret;
 }
 
-void NewConicLineIntersectionConstructor::plug( KigPart*, KigGUIAction* )
+void TwoOrOneIntersectionConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
-bool NewConicLineIntersectionConstructor::isTransform() const
+bool TwoOrOneIntersectionConstructor::isTransform() const
 {
   return false;
 }
@@ -1391,6 +1392,27 @@ bool MeasureTransportConstructor::isTransform() const
  * Generic intersection
  */
 
+/*
+ * these two argsparser spec vectors are used for the special
+ * construction of conic-line and circle-circle constructions
+ */
+
+static const struct ArgsParser::spec argsspeccli[] =
+{
+  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
+    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
+    "SHOULD NOT BE SEEN", true }
+};
+
+static const struct ArgsParser::spec argsspeccci[] =
+{
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ),
+    "SHOULD NOT BE SEEN", true },
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ),
+    "SHOULD NOT BE SEEN", true }
+};
+
 GenericIntersectionConstructor::GenericIntersectionConstructor()
   : MergeObjectConstructor(
     I18N_NOOP( "Intersect" ),
@@ -1409,7 +1431,11 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
 
   ObjectConstructor* lineconic =
 //    new ConicLineIntersectionConstructor();
-    new NewConicLineIntersectionConstructor();
+    new TwoOrOneIntersectionConstructor(
+          ConicLineIntersectionType::instance(),
+          ConicLineOtherIntersectionType::instance(),
+          "curvelineintersection",
+          argsspeccli);
 
   ObjectConstructor* arcline =
     new ArcLineIntersectionConstructor();
@@ -1423,11 +1449,17 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
   ObjectConstructor* conicconic =
     new ConicConicIntersectionConstructor();
 
-  MultiObjectTypeConstructor* circlecircle =
-    new MultiObjectTypeConstructor(
-      CircleCircleIntersectionType::instance(),
-      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-      "circlecircleintersection", -1, 1 );
+//  MultiObjectTypeConstructor* circlecircle =
+//    new MultiObjectTypeConstructor(
+//      CircleCircleIntersectionType::instance(),
+//      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+//      "circlecircleintersection", -1, 1 );
+  ObjectConstructor* circlecircle =
+    new TwoOrOneIntersectionConstructor(
+          CircleCircleIntersectionType::instance(),
+          CircleCircleOtherIntersectionType::instance(),
+          "circlecircleintersection",
+          argsspeccci);
 
   SimpleObjectTypeConstructor* polygonline =
     new SimpleObjectTypeConstructor(
