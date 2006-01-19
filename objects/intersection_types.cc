@@ -55,13 +55,14 @@ const ConicLineIntersectionType* ConicLineIntersectionType::instance()
   return &t;
 }
 
-ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
+ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocument& doc ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
   int side = static_cast<const IntImp*>( parents[2] )->data();
   assert( side == 1 || side == -1 );
-  const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
+  const AbstractLineImp* lineimp = static_cast<const AbstractLineImp*>( parents[1] );
+  const LineData line = lineimp->data();
 
   Coordinate ret;
   if ( parents[0]->inherits( CircleImp::stype() ) )
@@ -78,8 +79,9 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
       static_cast<const ConicImp*>( parents[0] )->cartesianData(),
       line, 0.0, side );
   }
-  if ( ret.valid() ) return new PointImp( ret );
-  else return new InvalidImp;
+  if ( !ret.valid() ) return new InvalidImp;
+  if ( !lineimp->containsPoint( ret, doc ) ) return new InvalidImp;
+  return new PointImp( ret );
 }
 
 /*
@@ -140,8 +142,9 @@ ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigD
   ret = calcConicLineIntersect(
     conic->cartesianData(),
     linedata, knownparam, 0 );
-  if ( ret.valid() ) return new PointImp( ret );
-  else return new InvalidImp;
+  if ( !ret.valid() ) return new InvalidImp;
+  if ( !line->containsPoint( ret, doc ) ) return new InvalidImp;
+  return new PointImp( ret );
 }
 
 /*
