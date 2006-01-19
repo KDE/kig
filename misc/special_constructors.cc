@@ -24,6 +24,7 @@
 #include "kigpainter.h"
 
 #include "../kig/kig_part.h"
+#include "../kig/kig_document.h"
 #include "../modes/construct_mode.h"
 #include "../objects/special_imptypes.h"
 #include "../objects/bogus_imp.h"
@@ -59,6 +60,127 @@
 
 #include <algorithm>
 #include <functional>
+
+/*
+ * conic-line and circle-circle intersection (with search for already computed
+ * intersections)
+ * the previous "ConicLineIntersectionConstructor" is now
+ * dead code, which could be remove in the future
+ */
+
+TwoOrOneIntersectionConstructor::TwoOrOneIntersectionConstructor(
+                                       const ArgsParserObjectType* t_std,
+                                       const ArgsParserObjectType* t_special,
+                                       const char* iconfile,
+                                       const struct ArgsParser::spec argsspecv[] )
+  : StandardConstructorBase( "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN",
+       iconfile, margsparser ),
+    mtype_std( t_std ),
+    mtype_special( t_special ),
+    margsparser( argsspecv, 2 )
+{
+}
+
+TwoOrOneIntersectionConstructor::~TwoOrOneIntersectionConstructor()
+{
+}
+
+void TwoOrOneIntersectionConstructor::drawprelim(
+           const ObjectDrawer& drawer, 
+           KigPainter& p, 
+           const std::vector<ObjectCalcer*>& parents,
+           const KigDocument& doc ) const
+{
+  Args args;
+  if ( parents.size() != 2 ) return;
+  transform( parents.begin(), parents.end(),
+             back_inserter( args ), std::mem_fun( &ObjectCalcer::imp ) );
+
+  for ( int i = -1; i <= 1; i += 2 )
+  {
+    IntImp param( i );
+    args.push_back( &param );
+    ObjectImp* data = mtype_std->calc( args, doc );
+    drawer.draw( *data, p, true );
+    delete data;
+    args.pop_back();
+  }
+}
+
+std::vector<ObjectCalcer*> removeDuplicatedPoints( std::vector<ObjectCalcer*> points )
+{
+  std::vector<ObjectCalcer*> ret;
+
+  for ( std::vector<ObjectCalcer*>::iterator i = points.begin();
+        i != points.end(); ++i )
+  {
+    for ( std::vector<ObjectCalcer*>::iterator j = ret.begin();
+          j != ret.end(); ++j )
+    {
+      if ( coincidentPoints( (*i)->imp(), (*j)->imp() ) ) break;
+    }
+    ret.push_back( *i );
+  }
+  return ret;
+}
+
+bool coincidentPoints( const ObjectImp* p1, const ObjectImp* p2 )
+{
+  const PointImp* pt1 = dynamic_cast<const PointImp*>( p1 );
+  if ( !pt1 ) return false;
+  const PointImp* pt2 = dynamic_cast<const PointImp*>( p2 );
+  if ( !pt2 ) return false;
+
+  Coordinate diff = pt1->coordinate() - pt2->coordinate();
+  if ( diff.squareLength() < 1e-12 ) return true;
+  return false;
+}
+
+std::vector<ObjectHolder*> TwoOrOneIntersectionConstructor::build( 
+           const std::vector<ObjectCalcer*>& parents, 
+           KigDocument& doc, 
+           KigWidget& ) const
+{
+  std::vector<ObjectHolder*> ret;
+  assert( parents.size() == 2 );
+
+  std::vector<ObjectCalcer*> points = doc.findIntersectionPoints( parents[0], parents[1] );
+  std::vector<ObjectCalcer*> uniquepoints = removeDuplicatedPoints( points );
+
+  if ( uniquepoints.size() == 1 )
+  {
+    std::vector<ObjectCalcer*> args( parents );
+    args.push_back( uniquepoints[0] );
+    ret.push_back( new ObjectHolder( new ObjectTypeCalcer(
+      mtype_special, args
+      ) ) );
+    return ret;
+  }
+  for ( int i = -1; i <= 1; i += 2 )
+  {
+    ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( i ) );
+    std::vector<ObjectCalcer*> args( parents );
+    args.push_back( d );
+
+    ret.push_back( new ObjectHolder( new ObjectTypeCalcer(
+      mtype_std, args
+      ) ) );
+  }
+  return ret;
+}
+
+void TwoOrOneIntersectionConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool TwoOrOneIntersectionConstructor::isTransform() const
+{
+  return false;
+}
+
+/*
+ * conic-conic intersection
+ */
 
 class ConicConicIntersectionConstructor
   : public StandardConstructorBase
@@ -1270,6 +1392,27 @@ bool MeasureTransportConstructor::isTransform() const
  * Generic intersection
  */
 
+/*
+ * these two argsparser spec vectors are used for the special
+ * construction of conic-line and circle-circle constructions
+ */
+
+static const struct ArgsParser::spec argsspeccli[] =
+{
+  { ConicImp::stype(), I18N_NOOP( "Intersect with this conic" ),
+    "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(), I18N_NOOP( "Intersect with this line" ),
+    "SHOULD NOT BE SEEN", true }
+};
+
+static const struct ArgsParser::spec argsspeccci[] =
+{
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ),
+    "SHOULD NOT BE SEEN", true },
+  { CircleImp::stype(), I18N_NOOP( "Intersect with this circle" ),
+    "SHOULD NOT BE SEEN", true }
+};
+
 GenericIntersectionConstructor::GenericIntersectionConstructor()
   : MergeObjectConstructor(
     I18N_NOOP( "Intersect" ),
@@ -1287,7 +1430,12 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
       "curvelineintersection" );
 
   ObjectConstructor* lineconic =
-    new ConicLineIntersectionConstructor();
+//    new ConicLineIntersectionConstructor();
+    new TwoOrOneIntersectionConstructor(
+          ConicLineIntersectionType::instance(),
+          ConicLineOtherIntersectionType::instance(),
+          "curvelineintersection",
+          argsspeccli);
 
   ObjectConstructor* arcline =
     new ArcLineIntersectionConstructor();
@@ -1301,11 +1449,17 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
   ObjectConstructor* conicconic =
     new ConicConicIntersectionConstructor();
 
-  MultiObjectTypeConstructor* circlecircle =
-    new MultiObjectTypeConstructor(
-      CircleCircleIntersectionType::instance(),
-      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
-      "circlecircleintersection", -1, 1 );
+//  MultiObjectTypeConstructor* circlecircle =
+//    new MultiObjectTypeConstructor(
+//      CircleCircleIntersectionType::instance(),
+//      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+//      "circlecircleintersection", -1, 1 );
+  ObjectConstructor* circlecircle =
+    new TwoOrOneIntersectionConstructor(
+          CircleCircleIntersectionType::instance(),
+          CircleCircleOtherIntersectionType::instance(),
+          "circlecircleintersection",
+          argsspeccci);
 
   SimpleObjectTypeConstructor* polygonline =
     new SimpleObjectTypeConstructor(

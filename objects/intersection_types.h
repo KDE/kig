@@ -55,6 +55,21 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * circle circle 'other' intersection.  In case we already know one of the
+ * two intersections
+ */
+class CircleCircleOtherIntersectionType
+  : public ArgsParserObjectType
+{
+  CircleCircleOtherIntersectionType();
+  ~CircleCircleOtherIntersectionType();
+public:
+  static const CircleCircleOtherIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class LineLineIntersectionType
   : public ArgsParserObjectType
 {

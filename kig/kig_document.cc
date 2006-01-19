@@ -23,6 +23,7 @@
 #include "../objects/polygon_imp.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/rect.h"
+#include "../misc/calcpaths.h"
 
 #include <assert.h>
 
@@ -197,4 +198,36 @@ const bool KigDocument::axes() const
 const bool KigDocument::getNightVision() const
 {
   return mnightvision;
+}
+
+/*
+ * scan all points in the document and find those that simultaneously
+ * belong to two curves c1 and c2.  This is required when the user
+ * asks for intersections between a conic and a line (or two circles)
+ * and one of the intersections is already present.  In this case
+ * we construct the "other" intersection instead of the two standard
+ * intersections.  Note that this is a completely different construction
+ * which takes into account the known intersection in order to reduce
+ * the resolvant equation to first degree, thus ensuring that the newly
+ * constructed point is *always* the other intersection
+ */
+
+std::vector<ObjectCalcer*> 
+KigDocument::findIntersectionPoints( const ObjectCalcer* c1,
+                                     const ObjectCalcer* c2)
+{
+  std::vector<ObjectCalcer*> ret;
+  for ( std::set<ObjectHolder*>::const_iterator i = mobjects.begin();
+        i != mobjects.end(); ++i )
+  {
+    if ( !(*i)->imp()->inherits( PointImp::stype() ) ) continue;
+    ObjectCalcer* o = (*i)->calcer();
+    if ( isPointOnCurve( o, c1 ) && 
+         isPointOnCurve( o, c2 ) )
+    {
+      ret.push_back( o );
+    }
+  };
+
+  return ret;
 }
