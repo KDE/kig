@@ -231,8 +231,8 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       VerticalCubicB4PType::instance(),
-      I18N_NOOP( "Vertical Cubic by Four Points" ),
-      I18N_NOOP( "A vertical cubic curve through four points" ),
+      I18N_NOOP( "Cubic Function by Four Points" ),
+      I18N_NOOP( "A cubic function through four points" ),
       "verticalcubicb4p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_verticalcubicb4p" ) );
