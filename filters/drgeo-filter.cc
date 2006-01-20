@@ -154,7 +154,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   return 0;
 }
 
-int convertDrgeoIndex( const std::vector<DrGeoHierarchyElement> es, const QString myid )
+static int convertDrgeoIndex( const std::vector<DrGeoHierarchyElement>& es, const QString& myid )
 {
   for ( uint i = 0; i < es.size(); ++i )
     if ( es[i].id == myid )
@@ -162,7 +162,7 @@ int convertDrgeoIndex( const std::vector<DrGeoHierarchyElement> es, const QStrin
   return -1;
 }
 
-const Coordinate convertDrgeoLineParam( const double param, const LineData& line )
+static const Coordinate convertDrgeoLineParam( const double param, const LineData& line )
 {
   const double n = ( param - 0.5 ) * M_PI;
   const Coordinate c = line.dir() / line.dir().length();
@@ -170,7 +170,7 @@ const Coordinate convertDrgeoLineParam( const double param, const LineData& line
   return p;
 }
 
-const Coordinate convertDrgeoHalflineParam( const double param, const LineData& line )
+static const Coordinate convertDrgeoHalflineParam( const double param, const LineData& line )
 {
   const double n = param * M_PI * 0.5;
   const Coordinate c = line.dir() / line.dir().length();
@@ -178,7 +178,7 @@ const Coordinate convertDrgeoHalflineParam( const double param, const LineData& 
   return p;
 }
 
-KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, const bool grid )
+KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& file, const bool grid )
 {
   KigDocument* ret = new KigDocument();
 
