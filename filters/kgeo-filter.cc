@@ -64,8 +64,8 @@ KigDocument* KigFilterKGeo::load( const QString& sFrom )
 void KigFilterKGeo::loadMetrics(KSimpleConfig* c )
 {
   c->setGroup("Main");
-  xMax = c->readNumEntry("XMax", 16);
-  yMax = c->readNumEntry("YMax", 11);
+  xMax = c->readEntry("XMax", 16);
+  yMax = c->readEntry("YMax", 11);
   grid = c->readEntry( "Grid", true );
   axes = c->readEntry( "Axes", true );
   // the rest is not relevant to us (yet ?)...
@@ -109,7 +109,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
   QString group;
   bool ok = true;
   c->setGroup("Main");
-  int number = c->readNumEntry ("Number");
+  int number = c->readEntry ("Number",0);
 
   // first we determine the parent relationships, and sort the
   // elements in an order that we can be sure all of an object's
@@ -151,7 +151,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     group.setNum( id + 1 );
     group.prepend( "Object " );
     c->setGroup( group );
-    int objID = c->readNumEntry( "Geo" );
+    int objID = c->readEntry( "Geo",0 );
 
     std::vector<ObjectCalcer*> parents;
     for ( uint j = 0; j < e.parents.size(); ++j )
@@ -249,11 +249,11 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     case ID_text:
     {
       bool frame = c->readEntry( "Frame",true );
-      double x = c->readDoubleNumEntry( "TextRectCenterX" );
-      double y = c->readDoubleNumEntry( "TextRectCenterY" );
+      double x = c->readEntry( "TextRectCenterX",0.0 );
+      double y = c->readEntry( "TextRectCenterY",0.0 );
       QString text = c->readEntry( "TextRectEntry" );
-      double height = c->readNumEntry( "TextRectHeight" );
-      double width  = c->readNumEntry( "TextRectWidth" );
+      double height = c->readEntry( "TextRectHeight",0.0 );
+      double width  = c->readEntry( "TextRectWidth",0.0 );
       // we don't want the center, but the top left..
       x -= width / 80;
       y -= height / 80;
@@ -263,7 +263,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     }
     case ID_fixedCircle:
     {
-      double r = c->readDoubleNumEntry( "Radius" );
+      double r = c->readEntry( "Radius",0.0 );
       parents.push_back( new ObjectConstCalcer( new DoubleImp( r ) ) );
       o = new ObjectTypeCalcer( CircleBPRType::instance(), parents );
       break;
@@ -344,7 +344,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     };
 
     // set the color...
-    QColor co = c->readColorEntry( "Color" );
+    QColor co = c->readEntry( "Color",QColor() );
     if( !co.isValid() )
       co = Qt::blue;
     ObjectDrawer* d = new ObjectDrawer( co );
