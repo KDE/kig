@@ -35,7 +35,7 @@ class LinksLabel::Private
 public:
   QHBoxLayout* layout;
   std::vector<QLabel*> labels;
-  std::vector<KURLLabel*> urllabels;
+  std::vector<KUrlLabel*> urllabels;
 };
 
 LinksLabel::LinksLabel( QWidget* parent )
@@ -48,7 +48,7 @@ LinksLabel::LinksLabel( QWidget* parent )
   p->labels.push_back( l );
   p->layout->addWidget( l );
 
-  KURLLabel* u = new KURLLabel( QString::fromUtf8( "http://www.kde.org/" ),
+  KUrlLabel* u = new KUrlLabel( QString::fromUtf8( "http://www.kde.org/" ),
                                 QString::fromUtf8( "url"), this );
   p->urllabels.push_back( u );
   p->layout->addWidget( u );
@@ -68,7 +68,7 @@ LinksLabel::~LinksLabel()
 void LinksLabel::urlClicked()
 {
   const QObject* o = sender();
-  std::vector<KURLLabel*>::iterator i = std::find( p->urllabels.begin(), p->urllabels.end(), static_cast<const KURLLabel*>( o ) );
+  std::vector<KUrlLabel*>::iterator i = std::find( p->urllabels.begin(), p->urllabels.end(), static_cast<const KUrlLabel*>( o ) );
   assert( i != p->urllabels.end() );
   emit linkClicked( i - p->urllabels.begin() );
 }
@@ -106,9 +106,9 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
   {
     if ( i->first )
     {
-      // we need a KURLLabel...
+      // we need a KUrlLabel...
       // the url is an unused stub...
-      KURLLabel* l = new KURLLabel( QString::fromUtf8( "http://edu.kde.org/kig" ),
+      KUrlLabel* l = new KUrlLabel( QString::fromUtf8( "http://edu.kde.org/kig" ),
                                     i->second, this );
       p->urllabels.push_back( l );
       p->layout->addWidget( l );

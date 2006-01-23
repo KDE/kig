@@ -35,7 +35,6 @@ class KPrinter;
 class KSelectAction;
 class KToolBar;
 class KToggleAction;
-class KURL;
 class QWidget;
 
 class Coordinate;
