@@ -346,6 +346,7 @@ ObjectHierarchy::~ObjectHierarchy()
 
 ObjectHierarchy::ObjectHierarchy( const ObjectHierarchy& h )
   : mnumberofargs( h.mnumberofargs ), mnumberofresults( h.mnumberofresults ),
+    msaveinputtags( h.msaveinputtags ),
     margrequirements( h.margrequirements ), musetexts( h.musetexts ),
     mselectstatements( h.mselectstatements )
 {
@@ -377,6 +378,7 @@ ObjectHierarchy ObjectHierarchy::withFixedArgs( const Args& a ) const
 
 void ObjectHierarchy::init( const std::vector<ObjectCalcer*>& from, const std::vector<ObjectCalcer*>& to )
 {
+  msaveinputtags = false;
   mnumberofargs = from.size();
   mnumberofresults = to.size();
   margrequirements.resize( from.size(), ObjectImp::stype() );
@@ -419,12 +421,15 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
     e.setAttribute( "requirement", margrequirements[i]->internalName() );
     // we don't save these atm, since the user can't define them.
     // we only load them from builtin macro's.
-//     QDomElement ut = doc.createElement( "UseText" );
-//     ut.appendChild( doc.createTextNode( QString::fromLatin1(musetexts[i].c_str() ) ) );
-//     e.appendChild( ut );
-//     QDomElement ss = doc.createElement( "SelectStatement" );
-//     ss.appendChild( doc.createTextNode( QString::fromLatin1(mselectstatements[i].c_str() ) ) );
-//     e.appendChild( ss );
+    if ( msaveinputtags )
+    {
+      QDomElement ut = doc.createElement( "UseText" );
+      ut.appendChild( doc.createTextNode( QString::fromLatin1(musetexts[i].c_str() ) ) );
+      e.appendChild( ut );
+      QDomElement ss = doc.createElement( "SelectStatement" );
+      ss.appendChild( doc.createTextNode( QString::fromLatin1(mselectstatements[i].c_str() ) ) );
+      e.appendChild( ss );
+    }
     parent.appendChild( e );
   }
 
@@ -470,7 +475,7 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
 }
 
 ObjectHierarchy::ObjectHierarchy()
-  : mnumberofargs( 0 ), mnumberofresults( 0 )
+  : mnumberofargs( 0 ), mnumberofresults( 0 ), msaveinputtags( false )
 {
 }
 
@@ -511,10 +516,12 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     {
       if ( esub.tagName() == "UseText" )
       {
+        obhi->msaveinputtags = true;
         obhi->musetexts[id - 1] = esub.text().latin1();
       }
       else if ( esub.tagName() == "SelectStatement" )
       {
+        obhi->msaveinputtags = true;
         obhi->mselectstatements[id - 1] = esub.text().latin1();
       }
       else
