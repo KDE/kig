@@ -35,6 +35,7 @@ private:
   std::vector<Node*> mnodes;
   uint mnumberofargs;
   uint mnumberofresults;
+  bool msaveinputtags;   // if true the UseText and SelectStatement are serialized for saving
   std::vector<const ObjectImpType*> margrequirements;
   std::vector<std::string> musetexts;
   std::vector<std::string> mselectstatements;
