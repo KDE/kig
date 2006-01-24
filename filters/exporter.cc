@@ -117,7 +117,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   static bool kimageioRegistered = false;
   if ( ! kimageioRegistered )
   {
-    KImageIO::registerFormats();
+    
     kimageioRegistered = true;
   }
 
