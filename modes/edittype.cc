@@ -32,8 +32,7 @@
 
 EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
                     const QString& icon )
-  : KDialogBase( parent, "edit-type-dialog", true, i18n( "Edit Type" ),
-                 Help|Ok|Cancel, Ok, true ),
+  : KDialog( parent, i18n( "Edit Type" ), Help|Ok|Cancel ),
     mname( name ), mdesc( desc ), micon( icon )
 {
   QWidget* base = new QWidget( this );
@@ -53,6 +52,10 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
   medittypewidget->typeIcon->setIcon( !micon.isEmpty() ? micon : "gear" );
   medittypewidget->typeIcon->setWhatsThis(
         i18n( "Use this button to change the icon of the current macro type." ) );
+
+  connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
+  connect( this, SIGNAL( okClicked() ), this, SLOT( slotOk() ) );
+  connect( this, SIGNAL( cancelClicked() ), this, SLOT( slotCancel() ) );
 
   resize( 450, 150 );
 }
@@ -103,17 +106,17 @@ void EditType::slotCancel()
   done( 0 );
 }
 
-const QString EditType::name() const
+QString EditType::name() const
 {
   return mname;
 }
 
-const QString EditType::description() const
+QString EditType::description() const
 {
   return mdesc;
 }
 
-const QString EditType::icon() const
+QString EditType::icon() const
 {
   return micon;
 }

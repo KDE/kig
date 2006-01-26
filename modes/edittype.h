@@ -20,14 +20,14 @@
 #ifndef KIG_MODES_EDITTYPE_H
 #define KIG_MODES_EDITTYPE_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 class Ui_EditTypeWidget;
 
 /**
  * Simply dialog that allow the user the editing of a macro type...
  */
-class EditType : public KDialogBase
+class EditType : public KDialog
 {
   Q_OBJECT
 
@@ -41,14 +41,14 @@ public:
             const QString& desc = QString(), const QString& icon = QString() );
   ~EditType();
 
-  const QString name() const;
-  const QString description() const;
-  const QString icon() const;
+  QString name() const;
+  QString description() const;
+  QString icon() const;
 
-protected slots:
-  virtual void slotHelp();
-  virtual void slotOk();
-  virtual void slotCancel();
+private slots:
+  void slotHelp();
+  void slotOk();
+  void slotCancel();
 };
 
 #endif

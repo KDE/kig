@@ -27,7 +27,7 @@ class Goniometry;
 class KigDocument;
 class KigInputDialogPrivate;
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 /**
  * The KigInputDialog class provides easy ways of interaction with the user.
@@ -38,7 +38,7 @@ class KigInputDialogPrivate;
  * getTwoCoordinates(), getAngle().
  */
 class KigInputDialog
-  : KDialogBase
+  : KDialog
 {
 Q_OBJECT
 
@@ -48,11 +48,11 @@ private:
   KigInputDialog( const QString& caption, const QString& label, QWidget* parent,
         const KigDocument& doc, Coordinate* c1, Coordinate* c2 );
   KigInputDialog( QWidget* parent, const Goniometry& g );
-	virtual ~KigInputDialog(){}
+  virtual ~KigInputDialog();
   virtual void keyPressEvent( QKeyEvent* e );
 
-  KigInputDialogPrivate* const d;
-  friend class KInputDialogPrivate;
+  KigInputDialogPrivate* d;
+  class KInputDialogPrivate;
 
   Coordinate coordinateFirst() const;
   Coordinate coordinateSecond() const;

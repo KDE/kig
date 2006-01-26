@@ -33,11 +33,9 @@
 #include <qvalidator.h>
 
 #include <kcombobox.h>
-#include <kdebug.h>
 #include <klineedit.h>
 #include <klocale.h>
 #include <kpushbutton.h>
-#include <ktextedit.h>
 
 class KigInputDialogPrivate
 {
@@ -48,7 +46,6 @@ public:
   KLineEdit* m_lineEditFirst;
   KLineEdit* m_lineEditSecond;
   KComboBox* m_comboBox;
-  KTextEdit* m_textEdit;
 
   Coordinate m_coord1;
   Coordinate m_coord2;
@@ -59,14 +56,17 @@ public:
 };
 
 KigInputDialogPrivate::KigInputDialogPrivate()
-  : m_label( 0L ), m_lineEditFirst( 0L ), m_lineEditSecond( 0L ), m_comboBox( 0L ),
-    m_textEdit( 0L )
+  : m_label( 0L ), m_lineEditFirst( 0L ), m_lineEditSecond( 0L ), m_comboBox( 0L )
+{
+}
+
+KigInputDialog::~KigInputDialog()
 {
 }
 
 KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
       QWidget* parent, const KigDocument& doc, Coordinate* c1, Coordinate* c2 )
-  : KDialogBase( parent, "kigdialog", true, caption, Ok|Cancel, Cancel, true ),
+  : KDialog( parent, caption, Ok|Cancel ),
     d( new KigInputDialogPrivate() )
 {
   d->m_coord1 = c1 ? Coordinate( *c1 ) : Coordinate::invalidCoord();
@@ -74,22 +74,19 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   d->m_doc = doc;
   d->m_vtor = d->m_doc.coordinateSystem().coordinateValidator();
 
-  int deltay = 0;
   bool ok = false;
 
-  QFrame* frame = makeMainWidget();
+  QWidget* frame = new QWidget();
+  setMainWidget( frame );
   QVBoxLayout* mainlay = new QVBoxLayout( frame );
   mainlay->setMargin( 0 );
   mainlay->setSpacing( spacingHint() );
   mainlay->activate();
 
-  d->m_textEdit = new KTextEdit( frame );
-  d->m_textEdit->setHtml( label );
-  d->m_textEdit->setReadOnly( true );
-  d->m_textEdit->setFocusPolicy( Qt::NoFocus );
-//  d->m_textEdit->setAlignment( d->m_textEdit->alignment() | Qt::TextWordWrap );
-  d->m_textEdit->setFrameStyle( QFrame::NoFrame );
-  mainlay->addWidget( d->m_textEdit );
+  d->m_label = new QLabel( frame );
+  d->m_label->setTextFormat( Qt::RichText );
+  d->m_label->setText( label );
+  mainlay->addWidget( d->m_label );
 
   d->m_lineEditFirst = new KLineEdit( frame );
 //  d->m_lineEditFirst->setValidator( d->m_vtor );
@@ -112,11 +109,9 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 
     connect( d->m_lineEditSecond, SIGNAL(textChanged(const QString&)),
              this, SLOT(slotCoordsChanged(const QString&)) );
-
-    deltay += d->m_lineEditSecond->height() + spacingHint();
   }
 
-  resize( 400, 160 + deltay );
+  resize( minimumSizeHint() );
 
   d->m_lineEditFirst->setFocus();
 
@@ -124,13 +119,14 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 }
 
 KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
-  : KDialogBase( parent, "kigdialog", true, i18n( "Set Angle Size" ), Ok|Cancel, Cancel, true ),
+  : KDialog( parent, i18n( "Set Angle Size" ), Ok|Cancel ),
     d( new KigInputDialogPrivate() )
 {
   d->m_gonio = g;
   d->m_gonioIsNum = true;
 
-  QFrame* frame = makeMainWidget();
+  QWidget* frame = new QWidget();
+  setMainWidget( frame );
   QVBoxLayout* mainlay = new QVBoxLayout( frame );
   mainlay->setMargin( 0 );
   mainlay->setSpacing( spacingHint() );

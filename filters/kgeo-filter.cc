@@ -125,8 +125,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     group.setNum( i + 1 );
     group.prepend( "Object " );
     c->setGroup( group );
-    QStringList parents;
-    c->readListEntry( "Parents", parents );
+    QStringList parents = c->readEntry( "Parents", QVariant( QVariant::StringList ) ).toStringList();
     elems.push_back( elem );
     for ( QStringList::ConstIterator parent = parents.constBegin(); parent != parents.constEnd(); ++parent )
     {

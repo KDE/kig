@@ -27,7 +27,6 @@
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
 
-#include <kdebug.h>
 #include <kfiledialog.h>
 #include <kiconloader.h>
 #include <kinstance.h>
@@ -118,8 +117,8 @@ QString MacroListElement::type() const
 }
 
 TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
-  : KDialogBase( parent, "types-dialog", true, i18n( "Manage Types" ),
-                 Help|Ok|Cancel, Ok, true ), mpart( part )
+  : KDialog( parent, i18n( "Manage Types" ), Help|Ok|Cancel ),
+    mpart( part )
 {
   QWidget* base = new QWidget( this );
   setMainWidget( base );
@@ -176,6 +175,9 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   connect( mtypeswidget->buttonImport, SIGNAL( clicked() ), this, SLOT( importTypes() ) );
   connect( mtypeswidget->buttonRemove, SIGNAL( clicked() ), this, SLOT( deleteType() ) );
   connect( mtypeswidget->buttonEdit, SIGNAL( clicked() ), this, SLOT( editType() ) );
+  connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
+  connect( this, SIGNAL( okClicked() ), this, SLOT( slotOk() ) );
+  connect( this, SIGNAL( cancelClicked() ), this, SLOT( slotCancel() ) );
 
   resize( 460, 270 );
 }

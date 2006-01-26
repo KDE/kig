@@ -608,7 +608,7 @@ bool KigPart::internalSaveAs()
       return false;
     }
   }
-  saveAs(KURL::fromPathOrURL( file_name ));
+  saveAs( KUrl::fromPathOrURL( file_name ) );
   return true;
 }
 
@@ -882,7 +882,7 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" int convertToNative( const KURL& url, const QByteArray& outfile )
+extern "C" int convertToNative( const KUrl& url, const QByteArray& outfile )
 {
   kdDebug() << "converting " << url.prettyURL() << " to " << outfile << endl;
 

@@ -48,6 +48,7 @@
 #include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <kmimetype.h>
 #include <knuminput.h>
 
 #include <map>
@@ -114,13 +115,6 @@ QString ImageExporter::menuIcon() const
 
 void ImageExporter::run( const KigPart& doc, KigWidget& w )
 {
-  static bool kimageioRegistered = false;
-  if ( ! kimageioRegistered )
-  {
-    
-    kimageioRegistered = true;
-  }
-
   KigFileDialog* kfd = new KigFileDialog(
       QString(), KImageIO::pattern( KImageIO::Writing ),
       i18n( "Export as Image" ), &w );
@@ -141,6 +135,14 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   delete opts;
   delete kfd;
 
+  KMimeType::Ptr mimeType = KMimeType::findByPath( filename );
+  kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
+  if ( !KImageIO::isSupported( mimeType->name(), KImageIO::Writing ) )
+  {
+    KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
+    return;
+  };
+
   QFile file( filename );
   if ( ! file.open( QIODevice::WriteOnly ) )
   {
@@ -150,15 +152,6 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
     return;
   };
 
-  QString type = KImageIO::type( filename );
-  if ( type.isNull() )
-  {
-    KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
-    return;
-  };
-
-  kdDebug() << k_funcinfo << type << endl;
-
   QPixmap img( imgsize );
   img.fill( Qt::white );
   KigPainter p( ScreenInfo( w.screenInfo().shownRect(), img.rect() ), &img, doc.document() );
@@ -166,7 +159,9 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   p.drawGrid( doc.document().coordinateSystem(), showgrid, showaxes );
   // FIXME: show the selections ?
   p.drawObjects( doc.document().objects(), false );
-  if ( !img.save( filename, type.toLatin1() ) )
+  QStringList types = KImageIO::typeForMime( mimeType->name() );
+  if ( types.isEmpty() ) return; // TODO error dialog?
+  if ( !img.save( filename, types.at(0).toLatin1() ) )
   {
     KMessageBox::error( &w, i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );
   }

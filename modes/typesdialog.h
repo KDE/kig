@@ -21,7 +21,7 @@
 #ifndef KIG_MODES_TYPESDIALOG_H
 #define KIG_MODES_TYPESDIALOG_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 #include "../misc/lists.h"
 
@@ -33,7 +33,7 @@ class Ui_TypesWidget;
 /**
  * Manage the macro types...
  */
-class TypesDialog : public KDialogBase
+class TypesDialog : public KDialog
 {
   Q_OBJECT
 

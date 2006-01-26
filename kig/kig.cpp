@@ -114,7 +114,7 @@ void Kig::setupActions()
   setStandardToolBarMenuEnabled(true);
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
-  m_recentFilesAction = KStdAction::openRecent(this, SLOT(openURL(const KURL&)), actionCollection());
+  m_recentFilesAction = KStdAction::openRecent( this, SLOT( openURL( const KUrl& ) ), actionCollection() );
   m_recentFilesAction->loadEntries(config);
 
   KStdAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
@@ -137,10 +137,10 @@ void Kig::readProperties(KConfig* config)
   // config file.  this function is automatically called whenever
   // the app is being restored.  read in here whatever you wrote
   // in 'saveProperties'
-  load ( KURL(config->readPathEntry("fileName")));
+  load( KUrl( config->readPathEntry( "fileName" ) ) );
 }
 
-void Kig::load(const KURL& url)
+void Kig::load( const KUrl& url )
 {
   // we check for m_part not being 0, because in the case of us not
   // finding our library, we would otherwise get a crash...
@@ -159,7 +159,7 @@ void Kig::fileNew()
     (new Kig)->show();
 }
 
-void Kig::openURL(const KURL& url)
+void Kig::openURL( const KUrl& url )
 {
   // Called for opening a file by either the KRecentFilesAction or our
   // own fileOpen() method.
@@ -218,13 +218,13 @@ bool Kig::queryClose()
 
 void Kig::dragEnterEvent(QDragEnterEvent* e)
 {
-  e->setAccepted( KURL::List::canDecode( e->mimeData() ) );
+  e->setAccepted( KUrl::List::canDecode( e->mimeData() ) );
 }
 
 void Kig::dropEvent(QDropEvent* e)
 {
-  KURL::List urls = KURL::List::fromMimeData( e->mimeData() );
-  for ( KURL::List::iterator u = urls.begin(); u != urls.end(); ++u )
+  KUrl::List urls = KUrl::List::fromMimeData( e->mimeData() );
+  for ( KUrl::List::iterator u = urls.begin(); u != urls.end(); ++u )
   {
     Kig* k = new Kig();
     k->show();

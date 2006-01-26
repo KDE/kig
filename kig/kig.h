@@ -53,15 +53,15 @@ class Kig : public KParts::MainWindow
    * Open file in this window
    * \param file file to open
    */
-  void load (const KURL& file);
+  void load( const KUrl& file );
 
   /**
    * this opens the file specified in \p s in a new window
    *
    * \param s the url of the file to open
    */
-  virtual void openURL ( const QString& s ) { openURL( KURL( s ) ); };
-  void openURL (const KURL& s);
+  virtual void openURL( const QString& s ) { openURL( KUrl( s ) ); };
+  void openURL( const KUrl& s );
 
  protected:
 

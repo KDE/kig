@@ -54,7 +54,7 @@ public:
 
 
 CoordinateValidator::CoordinateValidator( bool polar )
-  : QValidator( 0L ), mpolar( polar ), mdv( 0, 0, 0 , this ),
+  : QValidator( 0L ), mpolar( polar ), mdv( 0L ),
     mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?"
          : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
 {
@@ -82,6 +82,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
   {
     QString p1 = tinput.left( scp );
     QString p2 = tinput.mid( scp + 1 );
+    if ( p2.size() > 0 && p2.at(0) == ' ' ) p2 = p2.mid( 1 );
 
     State ret = Acceptable;
 
@@ -311,7 +312,7 @@ QString EuclideanCoords::coordinateFormatNotice() const
 
 QString EuclideanCoords::coordinateFormatNoticeMarkup() const
 {
-  return i18n( "Enter coordinates in the following format: <b>\"x;y\"</b>, "
+  return i18n( "Enter coordinates in the following format: <b>\"x;y\"</b>,<br>"
                "where x is the x coordinate, and y is the y coordinate." );
 }
 
@@ -360,7 +361,7 @@ QString PolarCoords::coordinateFormatNotice() const
 QString PolarCoords::coordinateFormatNoticeMarkup() const
 {
   // \xCE\xB8 is utf8 for the greek theta sign..
-  return i18n( "Enter coordinates in the following format: <b>\"r; \xCE\xB8°\"</b>, "
+  return i18n( "Enter coordinates in the following format: <b>\"r; \xCE\xB8°\"</b>,<br>"
                "where r and \xCE\xB8 are the polar coordinates." );
 }
 

@@ -89,12 +89,12 @@ void KigApplication::handleArgs( KCmdLineArgs* args )
   }
 }
 
-static int convertToNative( const KURL& file, const QByteArray& outfile )
+static int convertToNative( const KUrl& file, const QByteArray& outfile )
 {
   KigApplication app( false );
   KLibrary* library = KLibLoader::self()->globalLibrary( "libkigpart" );
-  int ( *converterfunction )( const KURL&, const QByteArray& );
-  converterfunction = ( int ( * )( const KURL&, const QByteArray& ) ) library->symbol( "convertToNative" );
+  int ( *converterfunction )( const KUrl&, const QByteArray& );
+  converterfunction = ( int ( * )( const KUrl&, const QByteArray& ) ) library->symbol( "convertToNative" );
   if ( !converterfunction )
   {
     kdError() << "Error: broken Kig installation: different library and application version !" << endl;
