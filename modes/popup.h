@@ -63,15 +63,10 @@ public:
          SetCoordinateSystemMenu, NumberOfMenus };
 
   // used by the PopupActionProvider's to add actions to us..
-  void addInternalAction( int menu, const QString& name, int id );
-  void addInternalAction( int menu, const QPixmap& icon, const QString& name, int id );
-  void addInternalAction( int menu, const QPixmap& pix, int id );
-  void addInternalAction( int menu, KAction* act );
-
-  /**
-   * set the checked state of the \p n 'th item in \p menu to \p checked ..
-   */
-  void setChecked( int menu, int n, bool checked );
+  QAction* addInternalAction( int menu, const QString& name, int id );
+  QAction* addInternalAction( int menu, const QPixmap& icon, const QString& name, int id );
+  QAction* addInternalAction( int menu, const QPixmap& pix, int id );
+  QAction* addInternalAction( int menu, KAction* act );
 
   std::vector<ObjectHolder*> objects() const { return mobjs; };
   KigPart& part() { return mpart; };

@@ -21,14 +21,46 @@
 #ifndef KIG_MODES_TYPESDIALOG_H
 #define KIG_MODES_TYPESDIALOG_H
 
+#include <qabstractitemmodel.h>
+
 #include <kdialog.h>
 
 #include "../misc/lists.h"
 
+#include <vector>
+
 class QMenu;
 class KigPart;
-class KigDocument;
 class Ui_TypesWidget;
+class BaseListElement;
+
+/**
+ * A model for representing the datas.
+ */
+class TypesModel
+  : public QAbstractTableModel
+{
+  Q_OBJECT
+
+  std::vector<BaseListElement*> melems;
+
+public:
+  TypesModel( QObject* parent = 0 );
+  virtual ~TypesModel();
+
+  const std::vector<BaseListElement*>& elements() const;
+
+  void addElements( const std::vector<BaseListElement*>& elems );
+  void removeElements( const std::vector<BaseListElement*>& elems );
+
+  void clear();
+
+  // reimplementations from QAbstractTableModel
+  virtual int columnCount( const QModelIndex& parent = QModelIndex() ) const;
+  virtual QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const;
+  virtual QVariant headerData( int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
+  virtual int rowCount( const QModelIndex& parent = QModelIndex() ) const;
+};
 
 /**
  * Manage the macro types...
@@ -41,6 +73,7 @@ class TypesDialog : public KDialog
   KigPart& mpart;
   QMenu* popup;
   Ui_TypesWidget* mtypeswidget;
+  TypesModel* mmodel;
 public:
   TypesDialog( QWidget* parent, KigPart& );
   ~TypesDialog();
@@ -54,11 +87,15 @@ protected slots:
   void exportType();
   void importTypes();
   void editType();
-//  void contextMenuRequested( Q3ListViewItem* i, const QPoint& p, int c );
+
+protected:
+  virtual bool eventFilter( QObject* obj, QEvent* event );
 
 private:
-  void loadAllMacros();
+  void loadAllMacros( std::vector<BaseListElement*>& el );
   typedef MacroList::vectype vec;
+
+  std::set<int> selectedRows() const;
 };
 
 #endif

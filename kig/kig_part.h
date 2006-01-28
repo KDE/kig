@@ -22,32 +22,26 @@
 #ifndef KIGPART_H
 #define KIGPART_H
 
-#include <q3ptrlist.h>
+#include <qlist.h>
 
 #include <kparts/part.h>
 
-#include "../objects/common.h"
+#include <vector>
 
 class KAboutData;
-class KActionMenu;
 class KCommandHistory;
 class KPrinter;
 class KSelectAction;
-class KToolBar;
 class KToggleAction;
 class QWidget;
 
-class Coordinate;
-class CoordinateSystem;
 class GUIAction;
 class KigGUIAction;
+class KigDocument;
 class KigMode;
-class KigObjectsPopup;
 class KigView;
-class MacroWizardImpl;
+class KigWidget;
 class ObjectHolder;
-class Rect;
-class ScreenInfo;
 
 /**
  * This is a "Part".  It that does all the real work in a KPart
@@ -253,4 +247,3 @@ public:
 };
 
 #endif // KIGPART_H
-

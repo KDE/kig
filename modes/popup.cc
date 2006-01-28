@@ -754,32 +754,35 @@ bool ObjectConstructorActionsProvider::executeAction(
   return true;
 }
 
-void NormalModePopupObjects::addInternalAction( int menu, const QPixmap& pix, int id )
+QAction* NormalModePopupObjects::addInternalAction( int menu, const QPixmap& pix, int id )
 {
-  addInternalAction( menu, pix, "", id );
+  return addInternalAction( menu, pix, "", id );
 }
 
-void NormalModePopupObjects::addInternalAction( int menu, const QPixmap& icon, const QString& name, int id )
+QAction* NormalModePopupObjects::addInternalAction( int menu, const QPixmap& icon, const QString& name, int id )
 {
 //kdDebug() << k_funcinfo << "ID: " << id << endl;
   QMenu* m = mmenus[menu];
   QAction* newaction = m->addAction( QIcon( icon ), name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
+  return newaction;
 }
 
-void NormalModePopupObjects::addInternalAction( int menu, const QString& name, int id )
+QAction* NormalModePopupObjects::addInternalAction( int menu, const QString& name, int id )
 {
   QMenu* m = mmenus[menu];
   QAction* newaction = m->addAction( name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
+  return newaction;
 }
 
-void NormalModePopupObjects::addInternalAction( int menu, KAction* act )
+QAction* NormalModePopupObjects::addInternalAction( int menu, KAction* act )
 {
   QMenu* m = mmenus[menu];
   act->plug( m );
+  // FIXME it should return the QAction* of the newly plugged action
+  return m->menuAction();
 }
-
 
 PopupActionProvider::~PopupActionProvider()
 {
@@ -919,13 +922,17 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
   }
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
   {
-    int idoffset = nextfree;
     QStringList l = CoordinateSystemFactory::names();
     mnumberofcoordsystems = l.count();
-    for ( int i = 0; i < l.count(); ++i )
-      popup.addInternalAction( menu, l.at( i ), nextfree++ );
     int current = popup.part().document().coordinateSystem().id();
-    popup.setChecked( menu, idoffset + current, true );
+    QAction* act = 0;
+    for ( int i = 0; i < mnumberofcoordsystems; ++i )
+    {
+      act = popup.addInternalAction( menu, l.at( i ), nextfree++ );
+      act->setCheckable( true );
+      if ( i == current )
+        act->setChecked( true );
+    }
   }
 }
 
@@ -960,11 +967,6 @@ bool BuiltinDocumentActionsProvider::executeAction(
     return true;
   }
   else return false;
-}
-
-void NormalModePopupObjects::setChecked( int menu, int n, bool checked )
-{
-  mmenus[menu]->setItemChecked( n, checked );
 }
 
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING

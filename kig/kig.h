@@ -23,9 +23,7 @@
 #include <config.h>
 #endif
 
-#include <kapplication.h>
 #include <kparts/mainwindow.h>
-#include <dcopclient.h>
 
 class KToggleAction;
 class KRecentFilesAction;
@@ -117,8 +115,6 @@ class Kig : public KParts::MainWindow
   KRecentFilesAction *m_recentFilesAction;
 
   KConfig* config;
-
-  static bool kimageioRegistered;
 };
 
 #endif // KIG_KIG_H

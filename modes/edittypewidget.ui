@@ -118,10 +118,10 @@
        <item>
         <widget class="KIconButton" name="typeIcon" >
          <property name="iconSize" >
-          <number>32</number>
+          <number>22</number>
          </property>
          <property name="strictIconSize" >
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>

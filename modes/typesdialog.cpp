@@ -32,48 +32,56 @@
 #include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <kpushbutton.h>
 #include <ktoolinvocation.h>
 
 #include <qbytearray.h>
+#include <qevent.h>
 #include <qfile.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qmenu.h>
-#include <qpushbutton.h>
 #include <qstringlist.h>
 #include <qtextstream.h>
 
 #include <algorithm>
-#include <vector>
+
+static QString wrapAt( const QString& str, int col = 50 )
+{
+  QStringList ret;
+  int delta = 0;
+  while ( delta + col < str.length() )
+  {
+    int pos = delta + col;
+    while ( !str.at( pos ).isSpace() ) --pos;
+    ret << str.mid( delta, pos - delta );
+    delta = pos + 1;
+  }
+  ret << str.mid( delta );
+  return ret.join( "<br>" );
+}
 
 class BaseListElement
-  : public QTreeWidgetItem
 {
 protected:
-  BaseListElement( QTreeWidget* lv );
+  BaseListElement();
 
 public:
+  virtual ~BaseListElement();
+
   virtual bool isMacro() const { return false; }
   virtual QString name() const = 0;
   virtual QString description() const = 0;
   virtual QString icon( bool canNull = false ) const = 0;
   virtual QString type() const = 0;
-  void setData();
 };
 
-BaseListElement::BaseListElement( QTreeWidget* lv )
-  : QTreeWidgetItem( lv )
+BaseListElement::BaseListElement()
 {
 }
 
-void BaseListElement::setData()
+BaseListElement::~BaseListElement()
 {
-  QString ifn = icon();
-  if ( !ifn.isEmpty() )
-    setIcon( 0, SmallIcon( ifn ) );
-  setText( 1, type() );
-  setText( 2, name() );
-  setText( 3, description() );
 }
 
 class MacroListElement
@@ -81,7 +89,9 @@ class MacroListElement
 {
   Macro* mmacro;
 public:
-  MacroListElement( QTreeWidget* lv, Macro* m );
+  MacroListElement( Macro* m );
+  virtual ~MacroListElement();
+
   Macro* getMacro() const { return mmacro; };
   virtual bool isMacro() const { return true; };
   virtual QString name() const;
@@ -90,10 +100,16 @@ public:
   virtual QString type() const;
 };
 
-MacroListElement::MacroListElement( QTreeWidget* lv, Macro* m )
-  : BaseListElement( lv ), mmacro( m )
+MacroListElement::MacroListElement( Macro* m )
+  : BaseListElement(), mmacro( m )
 {
-  setData();
+}
+
+MacroListElement::~MacroListElement()
+{
+  // do NOT delete the associated macro, but instead safely release the
+  // pointer, as it's kept elsewhere
+  mmacro = 0;
 }
 
 QString MacroListElement::name() const
@@ -116,6 +132,160 @@ QString MacroListElement::type() const
   return i18n( "Macro" );
 }
 
+
+TypesModel::TypesModel( QObject* parent )
+  : QAbstractTableModel( parent )
+{
+}
+
+TypesModel::~TypesModel()
+{
+}
+
+const std::vector<BaseListElement*>& TypesModel::elements() const
+{
+  return melems;
+}
+
+void TypesModel::addElements( const std::vector<BaseListElement*>& elems )
+{
+  beginInsertRows( QModelIndex(), melems.size() + 1, melems.size() + elems.size() );
+
+  std::copy( elems.begin(), elems.end(), std::back_inserter( melems ) );
+
+  endInsertRows();
+}
+
+void TypesModel::removeElements( const std::vector<BaseListElement*>& elems )
+{
+  // this way of deleting needs some explanation: the std::vector.erase needs
+  // an iterator to the element to remove from the list, while the
+  // beginRemoveRows() of Qt needs the index(es). so, for each element to
+  // delete, we search it into melems (keeping a count of the id), and when we
+  // find it, we free the memory of the BaseListElement and remove the element
+  // from the list. in the meanwhile, we notify the model structure of Qt that
+  // we're removing a row.
+  std::vector<BaseListElement*> newelems = elems;
+  for ( std::vector<BaseListElement*>::iterator it = newelems.begin();
+        it != newelems.end(); ++it )
+  {
+    bool found = false;
+    int id = 0;
+    for ( std::vector<BaseListElement*>::iterator mit = melems.begin();
+          mit != melems.end() && !found; ++mit )
+    {
+      if ( *mit == *it )
+      {
+        found = true;
+        beginRemoveRows( QModelIndex(), id, id );
+
+        delete (*mit);
+        melems.erase( mit );
+
+        endRemoveRows();
+      }
+      ++id;
+    }
+  }
+}
+
+void TypesModel::clear()
+{
+  for ( std::vector<BaseListElement*>::const_iterator it = melems.begin();
+          it != melems.end(); ++it )
+    delete *it;
+  melems.clear();
+}
+
+int TypesModel::columnCount( const QModelIndex& ) const
+{
+  return 4;
+}
+
+QVariant TypesModel::data( const QModelIndex& index, int role ) const
+{
+  if ( !index.isValid() )
+    return QVariant();
+
+  if ( ( index.row() < 0 ) || ( index.row() >= static_cast<int>( melems.size() ) ) )
+    return QVariant();
+
+  switch ( role )
+  {
+    case Qt::DecorationRole:
+    {
+      if ( index.column() == 0 )
+        return SmallIcon( melems[ index.row() ]->icon() );
+      else
+        return QVariant();
+      break;
+    }
+    case Qt::DisplayRole:
+    {
+      switch ( index.column() )
+      {
+        case 1: return melems[ index.row() ]->type(); break;
+        case 2: return melems[ index.row() ]->name(); break;
+        case 3: return melems[ index.row() ]->description(); break;
+        default:
+          return QVariant();
+      }
+      break;
+    }
+    case Qt::ToolTipRole:
+    {
+      static QString macro_with_image(
+          "<qt><table cellspacing=\"5\"><tr><td><b>%1</b> (%4)</td>"
+          "<td rowspan=\"2\" align=\"right\"><img src=\"%3\"></td></tr>"
+          "<tr><td>%2</td></tr></table></qt>" );
+      static QString macro_no_image(
+          "<qt><b>%1</b> (%3)<br>%2</qt>" );
+
+      if ( melems[ index.row() ]->icon( true ).isEmpty() )
+        return macro_no_image
+                 .arg( melems[ index.row() ]->name() )
+                 .arg( wrapAt( melems[ index.row() ]->description() ) )
+                 .arg( melems[ index.row() ]->type() );
+      else
+        return macro_with_image
+                 .arg( melems[ index.row() ]->name() )
+                 .arg( wrapAt( melems[ index.row() ]->description() ) )
+                 .arg( KGlobal::iconLoader()->iconPath( melems[ index.row() ]->icon(), - KIcon::SizeMedium ) )
+                 .arg( melems[ index.row() ]->type() );
+    }
+    default:
+      return QVariant();
+  }
+}
+
+QVariant TypesModel::headerData( int section, Qt::Orientation orientation, int role ) const
+{
+  if ( orientation != Qt::Horizontal )
+    return QVariant();
+
+  if ( role == Qt::TextAlignmentRole )
+    return QVariant( Qt::AlignLeft );
+
+  if ( role != Qt::DisplayRole )
+    return QVariant();
+
+  switch ( section )
+  {
+    case 0: return i18n( "Icon" ); break;
+    case 1: return i18n( "Type" ); break;
+    case 2: return i18n( "Name" ); break;
+    case 3: return i18n( "Description" ); break;
+    default:
+      return QVariant();
+  }
+}
+
+int TypesModel::rowCount( const QModelIndex& ) const
+{
+  return melems.size();
+}
+
+
 TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   : KDialog( parent, i18n( "Manage Types" ), Help|Ok|Cancel ),
     mpart( part )
@@ -126,38 +296,26 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->setupUi( base );
   base->layout()->setMargin( 0 );
 
+  // model creation and usage
+  mmodel = new TypesModel();
+  mtypeswidget->typeList->setModel( mmodel );
+
+  mtypeswidget->typeList->installEventFilter( this );
+
   // improving GUI look'n'feel...
   KIconLoader* il = part.instance()->iconLoader();
   mtypeswidget->buttonEdit->setIcon( QIcon( il->loadIcon( "edit", KIcon::Small ) ) );
-  mtypeswidget->buttonEdit->setWhatsThis(
-        i18n( "Edit the selected type." ) );
   mtypeswidget->buttonRemove->setIcon( QIcon( il->loadIcon( "editdelete", KIcon::Small ) ) );
-  mtypeswidget->buttonRemove->setWhatsThis(
-        i18n( "Delete all the selected types in the list." ) );
   mtypeswidget->buttonExport->setIcon( QIcon( il->loadIcon( "fileexport", KIcon::Small ) ) );
-  mtypeswidget->buttonExport->setWhatsThis(
-        i18n( "Export all the selected types to a file." ) );
   mtypeswidget->buttonImport->setIcon( QIcon( il->loadIcon( "fileimport", KIcon::Small ) ) );
-  mtypeswidget->buttonImport->setWhatsThis(
-        i18n( "Import macros that are contained in one or more files." ) );
 
-  mtypeswidget->typeList->setToolTip(
-        i18n( "Select types here..." ) );
-  mtypeswidget->typeList->setWhatsThis(
-        i18n( "This is a list of the current macro types... You can select, "
-              "edit, delete, export and import them..." ) );
-
-  QStringList hl;
-  hl << i18n( "Icon" )
-     << i18n( "Type" )
-     << i18n( "Name" )
-     << i18n( "Description" );
-  mtypeswidget->typeList->setHeaderLabels( hl );
-
+  std::vector<BaseListElement*> el;
   // loading macros...
-  loadAllMacros();
+  loadAllMacros( el );
+  // .. and filling the model
+  mmodel->addElements( el );
 
-  mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
+//  mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
 
   mtypeswidget->typeList->resizeColumnToContents( 0 );
   mtypeswidget->typeList->resizeColumnToContents( 1 );
@@ -202,17 +360,18 @@ void TypesDialog::slotOk()
 void TypesDialog::deleteType()
 {
   std::vector<Macro*> selectedTypes;
-  QList<QTreeWidgetItem*> items = mtypeswidget->typeList->selectedItems();
-  for ( int i = 0; i < items.count(); i++ )
+  std::set<int> rows = selectedRows();
+  const std::vector<BaseListElement*>& el = mmodel->elements();
+  for ( std::set<int>::const_iterator it = rows.begin(); it != rows.end(); ++it )
   {
-    BaseListElement* e = static_cast<BaseListElement*>( items.at( i ) );
+    BaseListElement* e = el[ *it ];
     if ( e->isMacro() )
       selectedTypes.push_back( static_cast<MacroListElement*>( e )->getMacro() );
   }
 
   if (selectedTypes.empty()) return;
   QStringList types;
-  for ( std::vector<Macro*>::iterator j = selectedTypes.begin(); 
+  for ( std::vector<Macro*>::iterator j = selectedTypes.begin();
         j != selectedTypes.end(); ++j )
     types << ( *j )->action->descriptiveName();
   types.sort();
@@ -222,12 +381,19 @@ void TypesDialog::deleteType()
         types, i18n("Are You Sure?"), KStdGuiItem::cont(),
         "deleteTypeWarning") == KMessageBox::Cancel )
      return;
-  for ( int i = 0; i < items.count(); i++ )
+  std::vector<BaseListElement*> todelete;
+  for ( std::set<int>::const_iterator it = rows.begin(); it != rows.end(); ++it )
   {
-    BaseListElement* e = static_cast<BaseListElement*>( items.at( i ) );
+    BaseListElement* e = el[ *it ];
     if ( e->isMacro() )
-      delete items.at( i );
+    {
+      todelete.push_back( e );
+    }
   }
+  bool updates = mtypeswidget->typeList->updatesEnabled();
+  mtypeswidget->typeList->setUpdatesEnabled( false );
+  mmodel->removeElements( todelete );
+  mtypeswidget->typeList->setUpdatesEnabled( updates );
   for ( std::vector<Macro*>::iterator j = selectedTypes.begin();
         j != selectedTypes.end(); ++j)
     MacroList::instance()->remove( *j );
@@ -236,10 +402,11 @@ void TypesDialog::deleteType()
 void TypesDialog::exportType()
 {
   std::vector<Macro*> types;
-  QList<QTreeWidgetItem*> items = mtypeswidget->typeList->selectedItems();
-  for ( int i = 0; i < items.count(); i++ )
+  std::set<int> rows = selectedRows();
+  const std::vector<BaseListElement*>& el = mmodel->elements();
+  for ( std::set<int>::const_iterator it = rows.begin(); it != rows.end(); ++it )
   {
-    BaseListElement* e = static_cast<BaseListElement*>( items.at( i ) );
+    BaseListElement* e = el[ *it ];
     if ( e->isMacro() )
       types.push_back( static_cast<MacroListElement*>( e )->getMacro() );
   }
@@ -274,17 +441,18 @@ void TypesDialog::importTypes()
   };
   MacroList::instance()->add( macros );
 
+  std::vector<BaseListElement*> el;
   for ( uint i = 0; i < macros.size(); ++i )
-    new MacroListElement( mtypeswidget->typeList, macros[i] );
-  mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
+    el.push_back( new MacroListElement( macros[i] ) );
+  mmodel->addElements( el );
 }
 
 void TypesDialog::editType()
 {
-  QList<QTreeWidgetItem*> items = mtypeswidget->typeList->selectedItems();
-  if ( items.size() == 0 )
+  std::set<int> rows = selectedRows();
+  if ( rows.empty() )
     return;
-  if ( items.size() > 1 )
+  if ( rows.size() > 1 )
   {
     KMessageBox::sorry( this,
                         i18n( "There is more than one type selected. You can "
@@ -294,7 +462,12 @@ void TypesDialog::editType()
     return;
   }
   bool refresh = false;
-  BaseListElement* e = static_cast<BaseListElement*>( items.at( 0 ) );
+  const std::vector<BaseListElement*>& el = mmodel->elements();
+  // we get the iterator pointing at the beginning and use it to point to the
+  // only object inside. this is done as we know that there's only one object
+  // inside.
+  std::set<int>::const_iterator first = rows.begin();
+  BaseListElement* e = el[ *first ];
   if ( e->isMacro() )
   {
     EditType* d = new EditType( this, e->name(), e->description(), e->icon() );
@@ -317,26 +490,23 @@ void TypesDialog::editType()
   }
   if ( refresh )
   {
-    mtypeswidget->typeList->clear();
+    bool updates = mtypeswidget->typeList->updatesEnabled();
+    mtypeswidget->typeList->setUpdatesEnabled( false );
+    mmodel->clear();
 
-    loadAllMacros();
-    mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
+    std::vector<BaseListElement*> newelements;
+    loadAllMacros( newelements );
+    mmodel->addElements( newelements );
+    mtypeswidget->typeList->setUpdatesEnabled( updates );
   }
 }
 
-/*
-void TypesDialog::contextMenuRequested( Q3ListViewItem*, const QPoint& p, int )
-{
-  popup->exec( p );
-}
-*/
-
-void TypesDialog::loadAllMacros()
+void TypesDialog::loadAllMacros( std::vector<BaseListElement*>& el )
 {
   const vec& macros = MacroList::instance()->macros();
-  for ( vec::const_reverse_iterator i = macros.rbegin(); i != macros.rend(); ++i )
+  for ( vec::const_iterator i = macros.begin(); i != macros.end(); ++i )
   {
-    new MacroListElement( mtypeswidget->typeList, ( *i ) );
+    el.push_back( new MacroListElement( *i ) );
   }
 }
 
@@ -345,4 +515,31 @@ void TypesDialog::slotCancel()
   mpart.deleteTypes();
   mpart.loadTypes();
   reject();
+}
+
+std::set<int> TypesDialog::selectedRows() const
+{
+  QModelIndexList indexes = mtypeswidget->typeList->selectionModel()->selectedIndexes();
+  std::set<int> rows;
+  for ( int i = 0; i < indexes.count(); ++i )
+    rows.insert( indexes.at(i).row() );
+  return rows;
+}
+
+bool TypesDialog::eventFilter( QObject* obj, QEvent* event )
+{
+  (void)obj;
+  if ( event->type() == QEvent::ContextMenu )
+  {
+    if ( !selectedRows().empty() )
+    {
+      QContextMenuEvent* e = (QContextMenuEvent*)event;
+      popup->exec( e->globalPos() );
+      e->accept();
+      return true;
+    }
+    else
+      return false;
+  }
+  return false;
 }
