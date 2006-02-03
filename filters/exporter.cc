@@ -34,6 +34,7 @@
 #include "../objects/object_imp.h"
 #include "../objects/other_imp.h"
 #include "../objects/point_imp.h"
+#include "../objects/polygon_imp.h"
 #include "../objects/text_imp.h"
 
 #include <qcheckbox.h>
@@ -272,6 +273,7 @@ public:
   void visit( const SegmentImp* imp );
   void visit( const RayImp* imp );
   void visit( const ArcImp* imp );
+  void visit( const PolygonImp* imp );
 };
 
 void XFigExportImpVisitor::mapColor( const ObjectDrawer* obj )
@@ -570,6 +572,57 @@ void XFigExportImpVisitor::visit( const ArcImp* imp )
           << "\n";
 }
 
+void XFigExportImpVisitor::visit( const PolygonImp* imp )
+{
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
+  const std::vector<Coordinate> oldpts = imp->points();
+  // it has n points, but the first point is counted twice (ie. as ending too)
+  std::vector<Coordinate> pts;
+  std::copy( oldpts.begin(), oldpts.end(), std::back_inserter( pts ) );
+  pts.push_back( pts[0] );
+  mstream << "2 "; // polyline type;
+  mstream << "3 "; // polygon subtype;
+  mstream << "0 "; // line_style: Solid
+  mstream << width << " "; // thickness: *1/80 inch
+  mstream << mcurcolorid << " "; // pen_color: our color
+  mstream << mcurcolorid << " "; // fill_color: our color
+  mstream << "50 "; // depth: 50
+  mstream << "-1 "; // pen_style: unused by XFig
+  mstream << "10 "; // area_fill: 50% of opacity
+  mstream << "0.000 "; // style_val: the distance between dots and
+                       // dashes in case of dotted or dashed lines..
+  mstream << "0 "; // join_style: Miter
+  mstream << "0 "; // cap_style: Butt
+  mstream << "-1 "; // radius in case of an arc-box, but we're a
+                    // polygon, so nothing here..
+  mstream << "0 "; // forward arrow: no
+  mstream << "0 "; // backward arrow: no
+  mstream << pts.size(); // it has n (well, n+1) points
+  mstream << "\n";
+
+  // write the list of points, max 6 per line..
+  bool in_line = false;
+  for ( uint i = 0; i < pts.size(); ++i )
+  {
+    int m = i % 6;
+    if ( m == 0 )
+    {
+      in_line = true;
+      mstream << "\t";
+    }
+    QPoint p = convertCoord( pts[i] );
+    mstream << " " << p.x() << " " << p.y();
+    if ( m == 5 )
+    {
+      in_line = false;
+      mstream << "\n";
+    }
+  }
+  if ( in_line )
+      mstream << "\n";
+}
+
 void XFigExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
@@ -591,7 +644,7 @@ void XFigExporter::run( const KigPart& doc, KigWidget& w )
     return;
   };
   QTextStream stream( &file );
-  stream << "#FIG 3.2\n";
+  stream << "#FIG 3.2  Produced by Kig\n";
   stream << "Landscape\n";
   stream << "Center\n";
   stream << "Metric\n";

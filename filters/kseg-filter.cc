@@ -17,6 +17,7 @@
 
 #include "kseg-filter.h"
 
+#include "filters-common.h"
 #include "kseg-defs.h"
 
 #include "../kig/kig_document.h"
@@ -39,6 +40,7 @@
 #include "../objects/other_type.h"
 #include "../objects/point_imp.h"
 #include "../objects/point_type.h"
+#include "../objects/polygon_imp.h"
 #include "../objects/polygon_type.h"
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
@@ -596,7 +598,78 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         break;
       };
       case G_MEASURE:
-        KIG_FILTER_PARSE_ERROR;
+      {
+        QByteArray prop;
+        Coordinate txtcoords = readKSegCoordinate( stream );
+        switch( descendtype )
+        {
+        case G_DISTANCE_MEASURE:
+        {
+          if ( nparents != 2 ) KIG_FILTER_PARSE_ERROR;
+          ObjectCalcer* c =
+            new ObjectTypeCalcer( SegmentABType::instance(), parents );
+          c->calc( *retdoc );
+          parents.clear();
+          parents.push_back( c );
+          prop = "length";
+          break;
+        }
+        case G_LENGTH_MEASURE:
+        {
+          if ( nparents != 1 ) KIG_FILTER_PARSE_ERROR;
+          if ( parents[0]->imp()->inherits( SegmentImp::stype() ) )
+            prop = "length";
+          else if ( parents[0]->imp()->inherits( CircleImp::stype() ) )
+            prop = "circumference";
+          else KIG_FILTER_PARSE_ERROR;
+          break;
+        }
+        case G_RADIUS_MEASURE:
+        {
+          if ( nparents != 1 ) KIG_FILTER_PARSE_ERROR;
+          if ( !parents[0]->imp()->inherits( CircleImp::stype() ) )
+            KIG_FILTER_PARSE_ERROR;
+          prop = "radius";
+          break;
+        }
+        case G_ANGLE_MEASURE:
+        {
+          if ( nparents != 3 ) KIG_FILTER_PARSE_ERROR;
+          ObjectTypeCalcer* ao =
+            new ObjectTypeCalcer( AngleType::instance(), parents );
+          ao->calc( *retdoc );
+          parents.clear();
+          parents.push_back( ao );
+          prop = "angle-degrees";
+          break;
+        }
+//        case G_RATIO_MEASURE: // TODO
+        case G_SLOPE_MEASURE:
+        {
+          if ( nparents != 1 ) KIG_FILTER_PARSE_ERROR;
+          if ( !parents[0]->imp()->inherits( AbstractLineImp::stype() ) )
+            KIG_FILTER_PARSE_ERROR;
+          prop = "slope";
+          break;
+        }
+        case G_AREA_MEASURE:
+        {
+          if ( nparents != 1 ) KIG_FILTER_PARSE_ERROR;
+          if ( parents[0]->imp()->inherits( PolygonImp::stype() )
+               || parents[0]->imp()->inherits( PolygonImp::stype3() )
+               || parents[0]->imp()->inherits( PolygonImp::stype4() ) )
+            prop = "polygon-surface";
+          else KIG_FILTER_PARSE_ERROR;
+          break;
+        }
+        default:
+          KIG_FILTER_PARSE_ERROR;
+        }
+        if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
+        o = filtersConstructTextObject(
+                txtcoords, parents[0], prop, *retdoc, false );
+        break;
+      }
       case G_CALCULATE:
         KIG_FILTER_PARSE_ERROR;
       case G_ANNOTATION:
@@ -631,7 +704,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     assert( object );
     ret[i] = object;
     object->calc( *retdoc );
-    if ( !labeltext.isEmpty() && labelVisible )
+    if ( !labeltext.isEmpty() && labelVisible && object->imp()->inherits( PointImp::stype() ) )
     {
       std::vector<ObjectCalcer*> args2;
       args2.push_back( object->nameCalcer() );
