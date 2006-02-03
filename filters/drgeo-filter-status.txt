@@ -8,12 +8,12 @@ Points            most, On_curve (most)
 Rays              ok
 Vectors           ok
 Lines             most
-Circles           most
-Numberics         most (as a label)
+Circles           ok
+Numerics          most
 Angles            3pts
 Arcs              ok
 Locuses           ok
-Transformations   most
+Transformations   ok
 Intersections     most
 Scripts           as a label
 Equations         ok
@@ -27,15 +27,11 @@ Grid              ok
 Objects not imported
 --------------------
 
-Points            Coordinate(*)
-Lines             pt_slope(*)
-Circle            radius(*)
-Numberics         distance_pt_circle
+Lines             pt_slope
+Numerics          distance_pt_circle
 Angles            vectors
-Transformations   scaling(*)
 Intersections     arc-circle(**), locus-other object(**)
 
-(*) objects which depend on numerics
 (**) objects which currently are not implemented in Kig
 
 Objects ignored

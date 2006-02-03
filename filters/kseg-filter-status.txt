@@ -16,6 +16,7 @@ Transformations   most
 Intersections     most
 Polygons          ok
 Labels            ok
+Numerics          some
 
 Colors            ok
 Visibility        ok
@@ -30,6 +31,7 @@ Intersections     arc-circle(*)
 Filled circles    (*)
 Arc sectors       (*)
 Arc segments      (*)
+Numerics          some
 Formulas          (*)
 
 (*) objects which currently are not implemented in Kig

@@ -376,6 +376,8 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           oc = new ObjectTypeCalcer( type, args );
         }
       }
+      else if ( domelem.attribute( "type" ) == "Coordinate" )
+        oc = new ObjectTypeCalcer( PointByCoordsType::instance(), parents );
       else if ( domelem.attribute( "type" ) == "Reflexion" )
         oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
       else if ( domelem.attribute( "type" ) == "Symmetry" )
@@ -384,6 +386,8 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
       else if ( domelem.attribute( "type" ) == "Rotation" )
         oc = new ObjectTypeCalcer( RotationType::instance(), parents );
+      else if ( domelem.attribute( "type" ) == "Scale" )
+        oc = new ObjectTypeCalcer( ScalingOverCenterType::instance(), parents );
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
@@ -438,17 +442,19 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
-      else if( domelem.attribute( "type" ) == "segment" )
+      else if ( ( domelem.attribute( "type" ) == "segment" ) ||
+                ( domelem.attribute( "type" ) == "radius" ) )
       {
         if( domelem.tagName() == "circle" )
         {
           type = CircleBPRType::instance();
-          ObjectPropertyCalcer* o = fact->propertyObjectCalcer( parents[1], "length" );
-          o->calc( *ret );
-          ObjectCalcer* a = parents[0];
-          parents.clear();
-          parents.push_back( a );
-          parents.push_back( o );
+          if ( domelem.attribute( "type" ) == "segment" )
+          {
+            ObjectPropertyCalcer* o = fact->propertyObjectCalcer( parents[1], "length" );
+            o->calc( *ret );
+            parents.pop_back();
+            parents.push_back( o );
+          }
         }
         else
         {
@@ -487,6 +493,8 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
       else if ( domelem.attribute( "type" ) == "Rotation" )
         oc = new ObjectTypeCalcer( RotationType::instance(), parents );
+      else if ( domelem.attribute( "type" ) == "Scale" )
+        oc = new ObjectTypeCalcer( ScalingOverCenterType::instance(), parents );
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
@@ -523,14 +531,13 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         KIG_FILTER_PARSE_ERROR;
       Coordinate m( x, y );
       // types of 'numeric'
-      // ugly hack to show value numerics...
       if ( domelem.attribute( "type" ) == "value" )
       {
         bool ok3;
         double dvalue = value.toDouble( &ok3 );
-        if ( ok3 )
-          value = QString( "%1" ).arg( dvalue, 0, 'g', 3 );
-        oc = fact->labelCalcer( value, m, false, std::vector<ObjectCalcer*>(), *ret );
+        if ( !ok3 )
+          KIG_FILTER_PARSE_ERROR;
+        oc = fact->numericValueCalcer( dvalue, m, *ret );
       }
       else if ( domelem.attribute( "type" ) == "pt_abscissa" )
       {
@@ -763,6 +770,10 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
     kdDebug() << ">>>>>>>>> calc" << endl;
 #endif
     holders[curid-1-nignored]->calc( *ret );
+#ifdef DRGEO_DEBUG
+    kdDebug() << "+++++++++ oc: " << oc << " - "
+              << oc->imp()->type()->internalName() << endl;
+#endif
 
     if ( domelem.tagName() == "point" )
     {
