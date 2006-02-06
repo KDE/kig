@@ -149,7 +149,7 @@ KigDocument* KigFilterNative::load( const QString& file )
     if ( !kigz->isFile() )
       KIG_FILTER_PARSE_ERROR;
     dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
-    kdDebug() << "extracted file: " << tempdir + kigz->name() << endl
+    kDebug() << "extracted file: " << tempdir + kigz->name() << endl
               << "exists: " << QFile::exists( tempdir + kigz->name() ) << endl;
 
     kigdoc.setFileName( tempdir + kigz->name() );
@@ -742,7 +742,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
       return false;
     ftmpfile.close();
 
-    kdDebug() << "tmp saved file: " << tmpfile << endl;
+    kDebug() << "tmp saved file: " << tmpfile << endl;
 
     // creating the archive and adding our file
     KTar* ark = new KTar( outfile,  "application/x-gzip" );

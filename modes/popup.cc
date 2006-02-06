@@ -295,7 +295,7 @@ void NormalModePopupObjects::toplevelMenuSlot( QAction* act )
   int data = act->data().toInt();
   int id = data & 0xFF;
   int menu = data >> 8;
-kdDebug() << "menu: " << menu << " - id: " << id << endl;
+kDebug() << "menu: " << menu << " - id: " << id << endl;
   activateAction( menu, id );
 }
 
@@ -305,7 +305,7 @@ void NormalModePopupObjects::activateAction( int menu, int action )
   // we need action - 10 cause we called fillUpMenu with nextfree set
   // to 10 initially..
   action -= 10;
-kdDebug() << "MENU: " << menu << " - ACTION: " << action << endl;
+kDebug() << "MENU: " << menu << " - ACTION: " << action << endl;
   for ( uint i = 0; ! done && i < mproviders.size(); ++i )
     done = mproviders[i]->executeAction( menu, action, mobjs, *this, mpart, mview, mmode );
 }
@@ -761,7 +761,7 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QPixmap& pix
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QPixmap& icon, const QString& name, int id )
 {
-//kdDebug() << k_funcinfo << "ID: " << id << endl;
+//kDebug() << k_funcinfo << "ID: " << id << endl;
   QMenu* m = mmenus[menu];
   QAction* newaction = m->addAction( QIcon( icon ), name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
@@ -943,7 +943,7 @@ bool BuiltinDocumentActionsProvider::executeAction(
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    kdDebug() << "id: " << id << endl;
+    kDebug() << "id: " << id << endl;
     if ( id == 0 )
     {
       doc.showHidden();
@@ -1062,7 +1062,7 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
       id = 1;
     }
   }
-//  kdDebug() << "numpoints: " << numpoints << endl
+//  kDebug() << "numpoints: " << numpoints << endl
 //            << "numothers: " << numothers << endl
 //            << "numpolygons: " << numpolygons << endl
 //            << "id: " << id << endl;

@@ -365,7 +365,7 @@ bool KigPart::openFile()
   // m_file is always local, so we can use findByPath instead of
   // findByURL...
   KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
-  kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
+  kDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
   {
@@ -884,12 +884,12 @@ KigDocument& KigPart::document()
 
 extern "C" int convertToNative( const KUrl& url, const QByteArray& outfile )
 {
-  kdDebug() << "converting " << url.prettyURL() << " to " << outfile << endl;
+  kDebug() << "converting " << url.prettyURL() << " to " << outfile << endl;
 
   if ( ! url.isLocalFile() )
   {
     // TODO
-    kdError() << "--convert-to-native only supports local files for now." << endl;
+    kError() << "--convert-to-native only supports local files for now." << endl;
     return -1;
   }
 
@@ -898,23 +898,23 @@ extern "C" int convertToNative( const KUrl& url, const QByteArray& outfile )
   QFileInfo fileinfo( file );
   if ( ! fileinfo.exists() )
   {
-    kdError() << "The file \"" << file << "\" does not exist" << endl;
+    kError() << "The file \"" << file << "\" does not exist" << endl;
     return -1;
   };
 
   KMimeType::Ptr mimeType = KMimeType::findByPath ( file );
-  kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
+  kDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
   {
-    kdError() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
+    kError() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
     return -1;
   };
 
   KigDocument* doc = filter->load (file);
   if ( !doc )
   {
-    kdError() << "Parse error in file \"" << file << "\"." << endl;
+    kError() << "Parse error in file \"" << file << "\"." << endl;
     return -1;
   }
 
@@ -928,7 +928,7 @@ extern "C" int convertToNative( const KUrl& url, const QByteArray& outfile )
   bool success = KigFilters::instance()->save( *doc, out );
   if ( !success )
   {
-    kdError() << "something went wrong while saving" << endl;
+    kError() << "something went wrong while saving" << endl;
     return -1;
   }
 

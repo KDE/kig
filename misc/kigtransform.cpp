@@ -789,7 +789,7 @@ bool operator==( const Transformation& lhs, const Transformation& rhs )
 const Transformation Transformation::similitude(
   const Coordinate& center, double theta, double factor )
 {
-  //kdDebug() << k_funcinfo << "theta: " << theta << " factor: " << factor << endl;
+  //kDebug() << k_funcinfo << "theta: " << theta << " factor: " << factor << endl;
   Transformation ret;
   ret.mIsHomothety = true;
   double costheta = cos( theta );

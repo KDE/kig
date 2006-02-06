@@ -97,7 +97,7 @@ static int convertToNative( const KUrl& file, const QByteArray& outfile )
   converterfunction = ( int ( * )( const KUrl&, const QByteArray& ) ) library->symbol( "convertToNative" );
   if ( !converterfunction )
   {
-    kdError() << "Error: broken Kig installation: different library and application version !" << endl;
+    kError() << "Error: broken Kig installation: different library and application version !" << endl;
     return -1;
   }
   return (*converterfunction)( file, outfile );
@@ -120,12 +120,12 @@ int main(int argc, char **argv)
 
     if ( args->count() == 0 )
     {
-      kdError() << "Error: --convert-to-native specified without a file to convert." << endl;
+      kError() << "Error: --convert-to-native specified without a file to convert." << endl;
       return -1;
     }
     if ( args->count() > 1 )
     {
-      kdError() << "Error: --convert-to-native specified with more than one file to convert." << endl;
+      kError() << "Error: --convert-to-native specified with more than one file to convert." << endl;
       return -1;
     }
     return convertToNative( args->url( 0 ), outfile );
@@ -134,7 +134,7 @@ int main(int argc, char **argv)
   {
     if ( args->isSet( "outfile" ) )
     {
-      kdError() << "Error: --outfile specified without convert-to-native." << endl;
+      kError() << "Error: --outfile specified without convert-to-native." << endl;
       return -1;
     }
     KigApplication app;

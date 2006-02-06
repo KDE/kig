@@ -137,7 +137,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   delete kfd;
 
   KMimeType::Ptr mimeType = KMimeType::findByPath( filename );
-  kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
+  kDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
   if ( !KImageIO::isSupported( mimeType->name(), KImageIO::Writing ) )
   {
     KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
@@ -234,7 +234,7 @@ class XFigExportImpVisitor
     {
       Coordinate ret = ( c - msr.bottomLeft() );
       ret.y = msr.height() - ret.y;
-//       kdDebug() << "msr: " << msr << endl
+//       kDebug() << "msr: " << msr << endl
 //                 << "ret: " << ret << endl
 //                 << "c: " << c << endl;
       ret *= 9450;

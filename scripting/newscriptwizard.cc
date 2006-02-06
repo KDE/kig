@@ -64,7 +64,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
 //  document = KTextEditor::EditorChooser::createDocument( 0, "KTextEditor::Document" );
 #if 0
   KTextEditor::Editor* editor = KTextEditor::editor( "katepart" );
-  kdDebug() << "EDITOR: " << editor << endl;
+  kDebug() << "EDITOR: " << editor << endl;
 #endif
   KTextEditor::Editor* editor = 0;
 

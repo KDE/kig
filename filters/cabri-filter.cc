@@ -168,7 +168,7 @@ static QColor translatecolor( const QString& s )
   if ( s == "B" ) return Qt::black;
   if ( s == "W" ) return Qt::white;
 
-  kdDebug() << k_funcinfo << "unknown color: " << s << endl;
+  kDebug() << k_funcinfo << "unknown color: " << s << endl;
   return Qt::black;
 }
 
@@ -264,7 +264,7 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
     myobj.data.push_back( ( *i ).toDouble( &ok ) );
     if ( ! ok ) KIG_FILTER_PARSE_ERROR;
   }
-//     kdDebug()
+//     kDebug()
 //       << k_funcinfo << endl
 //       << "id = " << myobj.id << endl
 //       << "type = " << myobj.type << endl
@@ -279,10 +279,10 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
 //       << "fixed = " << myobj.fixed << endl
 //       << "parents =" << endl;
 //     for ( std::vector<int>::iterator i = myobj.parents.begin(); i != myobj.parents.end(); ++i )
-//       kdDebug() << "	" << *i << endl;
-//     kdDebug() << "vals = " << endl;
+//       kDebug() << "	" << *i << endl;
+//     kDebug() << "vals = " << endl;
 //     for ( std::vector<double>::iterator i = myobj.data.begin(); i != myobj.data.end(); ++i )
-//       kdDebug() << "	" << *i << endl;
+//       kDebug() << "	" << *i << endl;
 
   return true;
 }

@@ -178,7 +178,7 @@ void calcRayBorderPoints( const double xa, const double ya, double& xb,
     yb = r.bottom();
     return;
   };
-  kdError() << k_funcinfo << "damn" << endl;
+  kError() << k_funcinfo << "damn" << endl;
 }
 
 bool isOnLine( const Coordinate& o, const Coordinate& a,
