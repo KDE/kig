@@ -5,6 +5,7 @@ METASOURCES = AUTO
 noinst_LTLIBRARIES=libfilters.la
 noinst_HEADERS= \
 	cabri-filter.h \
+	cabri-utils.h \
 	exporter.h \
 	filter.h \
 	filters-common.h \
@@ -20,6 +21,7 @@ noinst_HEADERS= \
 	drgeo-filter-chooser.h
 libfilters_la_SOURCES= \
 	cabri-filter.cc \
+	cabri-utils.cc \
 	exporter.cc \
 	filter.cc \
 	filters-common.cc \

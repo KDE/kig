@@ -1,0 +1,107 @@
+Cabri filter status
+===================
+
+Kig is able to read (even partially) more than one Cabri version.
+The current versions are: 1.0, 1.2.
+
+Version 1.0.x
+=============
+
+Objects imported
+----------------
+
+Points            ok
+Rays              most
+Vectors           most
+Lines             ok
+Circles           ok
+Angles            ok
+Arcs              ok
+Conics            ok
+Locuses           ok
+Transformations   most
+Polygons          Pol, Tr [normal ones]
+
+Colors            ok
+Visibility        ok
+Styles            ok
+Grid              ok
+
+Objects not imported
+--------------------
+
+Rays              bisector
+Vectors           sum
+Transformations   rotation, scaling
+Intersections     all kinds
+Polygons          PReg/PolReg [regular ones]
+Numbers
+Numeric props     all
+Formulas          (*)
+Tests             all
+Text labels
+Tables
+Object names
+
+Ticks             segments, angles (*)
+
+(*) objects which currently are not implemented in Kig
+
+Known problems
+--------------
+
+* None found
+
+
+Version 1.2.x
+=============
+
+Objects imported
+----------------
+
+Points            ok
+Rays              ok
+Vectors           most
+Lines             ok
+Circles           ok
+Angles            ok
+Arcs              ok
+Conics            ok
+Locuses           most
+Transformations   most
+Intersections     some
+Polygons          Pol, Tr [normal ones]
+Numeric props     some
+Text labels       some
+Object names      ok?
+
+Colors            ok
+Visibility        ok
+Styles            most
+Grid              ok
+
+Objects not imported
+--------------------
+
+Vectors           sum
+Transformations   rotation [by numeric label], scaling
+Intersections     some
+Polygons          PReg/PolReg [regular ones]
+Numbers
+Numerics          some
+Text labels       some
+Compass
+Numeric props     some
+Formulas          (*)
+Tests             all
+Tables
+
+Styles            PLUS (*)
+Ticks             segments, angles (*)
+
+(*) objects which currently are not implemented in Kig
+
+Known problems
+--------------
+
+* None found
