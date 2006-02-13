@@ -4,6 +4,7 @@ Name=Kig
 Name[x-test]=xxKigxx
 GenericName=Interactive Geometry
 GenericName[x-test]=xxInteractive Geometryxx
+Comment=Explore Geometric Constructions
 Exec=kig %i %m -caption "%c"
 MimeType=application/x-kig;application/x-kgeo;
 Icon=kig
