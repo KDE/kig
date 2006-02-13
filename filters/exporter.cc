@@ -142,15 +142,6 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   delete opts;
   delete kfd;
 
-  QFile file( filename );
-  if ( ! file.open( IO_WriteOnly ) )
-  {
-    KMessageBox::sorry( &w,
-                        i18n( "The file \"%1\" could not be opened. Please check if the file permissions are set correctly." )
-                        .arg( filename ) );
-    return;
-  };
-
   QString type = KImageIO::type( filename );
   if ( type.isNull() )
   {
@@ -159,6 +150,15 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   };
 
   kdDebug() << k_funcinfo << type << endl;
+
+  QFile file( filename );
+  if ( ! file.open( IO_WriteOnly ) )
+  {
+    KMessageBox::sorry( &w,
+                        i18n( "The file \"%1\" could not be opened. Please check if the file permissions are set correctly." )
+                        .arg( filename ) );
+    return;
+  };
 
   QPixmap img( QSize( width, height ) );
   img.fill( Qt::white );
