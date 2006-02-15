@@ -12,7 +12,7 @@
             <height>360</height>
         </rect>
     </property>
-    <property name="caption">
+    <property name="windowTitle">
         <string>New Script</string>
     </property>
     <widget class="QWidget">
