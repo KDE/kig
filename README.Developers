@@ -1,5 +1,11 @@
 Hi, here are some things that might not be immediately clear :
 
+- Do you get a strange error involving grep, sed and /lib/libattr.la?
+  I (mp) had that problem on a partially updated fedora core 4.  The
+  problem is related to /usr/lib/libacl.la that refers to a nonexisting
+  /lib/libattr.la.  I solved the problem by updating both "libacl-devel"
+  and "libattr-devel"
+
 - There are different source dirs ( kig, objects, misc, filters and
   modes ) ( just in case this wasn't clear.. )
 
