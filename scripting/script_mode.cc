@@ -318,10 +318,10 @@ ScriptEditMode::ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc )
 
   mwizard->setCaption( i18n( "'Edit' is a verb", "Edit Script" ) );
   mwizard->setText( morigscript );
-  mwizard->backButton()->setEnabled( false );
-  mwizard->finishButton()->setEnabled( true );
   mwizard->show();
   mwizard->next();
+  mwizard->backButton()->setEnabled( false );
+  mwizard->finishButton()->setEnabled( true );
 }
 
 ScriptEditMode::~ScriptEditMode()
