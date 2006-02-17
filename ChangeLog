@@ -1,3 +1,252 @@
+2006-02-17  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Adding the support for editing a Python script. It's possible
+	to start the diting by right-clicking on an object created by a
+	script and then selecting Edit Script. It includes full undo/redo
+	support.
+
+2006-02-13  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Add a Comment enty in kig.desktop, fixing #121578.
+
+2006-02-08  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Big refactoring of the Cabri filter. The main changes affect
+	the reader part, that was moved in a own class. Every class that
+	inherits it represent a reader for a particular Cabri version.
+	Before we supported (partially) only Cabri 1.0, now most of the
+	basic objects of Cabri 1.2 are read correctly. As a result of
+	this refactoring, a pair of objects of Cabri 1.0 are loaded
+	correctly. Still some issues remain, like: support for objects
+	which have a syntax different from "normal" ones (for example the
+	Compass, the Vector Sum and the Regular polygons); the
+	intersections need some more loving. Added a filter status file
+	for the Cabri filter.
+
+2006-02-06  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Remove deprecated kd* functions.
+
+2006-02-03  Pino Toscano <toscano.pino@tiscali.it>
+
+	* DrGeo import filter: import some new objects, mainly because
+	Kig supports numeric labels.
+
+	* KSeg import filter: import some new objects, mainly because
+	Kig supports numeric labels.
+
+	* XFig exporter: added support for exporting polygons.
+
+	* Image exporter: before attempting opening a file for writing,
+	check that the current file name represents a supported image
+	type.
+
+2006-01-29  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Created a new model, TypesModel, to provide types datas into
+	the types tree view.
+
+	* Make the current coordinate system checked when showing the
+	popup.
+
+	* Some minor things.
+
+2006-01-27  Pino Toscano <toscano.pino@tiscali.it>
+
+	* KDialogBase -> KDialog (it's quite fine for our needs).
+
+	* Make the KGeo import filter work again.
+
+	* Make the Image exporter work again (after the recent changes to
+	KImageIO).
+
+	* KURL -> KUrl.
+
+	* No need anymore for KTextEdit to show rich text in the coords
+	mode of KigInputDialog.
+
+	* Make the CoordinateValidator work again (tested only with
+	cartesian coords, but should work also with polar ones).
+
+	* Some other minor changes.
+
+2006-01-24  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Allow kig to save UseText and SelectStatement in macros.kigt if
+	the original .kigt had them.
+
+2006-01-19  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Compute the "other" intersection when intersecting a line with
+	a conic or two circles, if one of the intersection points is
+	already present.
+
+	* Invalidate intersections of a conic with a segment/ray if it
+	follows outside of the segment/ray (on the support line).
+
+	* Also update the versione number to 0.90.0.
+
+2006-01-18  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Special case of collinear point for CircleBTP and ArcBTP.
+
+2006-01-15  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Fix bug in contains of RayImp.
+
+2006-01-12  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Ability to return a string from a Python script.
+
+	* Allow a TestResult to carry a boolean value.
+
+	* Allow a Python script to depend on a test-result string.
+
+2006-01-11  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Allow measure transport to transport a numeric label.
+
+	* Construct a point with coordinates given by numeric labels.
+
+2006-01-10  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Allow properties to be properly inherited (based on their name)
+	when an object dynamically changes its "Imp" type.
+
+	* Localize numbers in equation strings.
+
+2006-01-09  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Update one of the tips.
+
+	* Add a normalization in the coefficients of the cartesian
+	equation of a cubic.
+
+	* New class EquationString.
+
+	* Prettify equation strings.
+
+2005-12-23  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Better representation of cubic cartesian equations.
+
+2005-12-21  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Split the TextType class in a base class and a derived class,
+	and inherit a NumericTextType class from the base. This new Type
+	handles better a NumericTextImp. Added also a very simple
+	construct mode to construct a numeric label, and the way to
+	change the value of the numeric.
+
+2005-12-21  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Less Qt3 support around.
+
+2005-12-15  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* A NumericTextImp has a new property to extract its associated
+	value.
+
+2005-12-13  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Ad hoc Python script example code in the wizard depending on
+	arguments.
+
+2005-12-12  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Moving "imptype" related stuff in a common place (created
+	objects/special_imptypes.*).
+
+	* Move InvertibleImpType in the new special_imptypes and clean up
+	the special imptypes.
+
+2005-12-11  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Cartesian equation for cubics had arguments %1, %10m which are
+	too many for QString(s).
+
+	* Added NumericTextImp, first step towards the possibility to
+	interact with numeric texts.
+
+	* Allow a Python script to get a NumericTextImp as argument.
+
+	* Change transformations (scalings and rotation) to allow
+	NumericTextImp as argument.
+
+	* Now construction by center and radius can also be done using the
+	NumericTextImp (not yet circle_by_center_and_diameter).
+	Compatibility with old kig files is preserved. User can still
+	click on a segment.
+
+	* Removing builtin macro for circle by point and segment.
+
+	* Add the "other intersection" construction in the TODO.
+
+2005-12-10  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Fix the previous patch to avoid circular recursion, as it was
+	buggy.
+
+	* Redefinition of a label did not use the new attach method, this
+	caused strange behaviour and even crashes when trying to redefine
+	a label and reattaching it to an angle (or a polygon).
+
+2005-12-08  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Avoiding circular recursion when redefining a text label
+	(potential bug). This completes the previous patch adding control
+	for the location parent also.
+
+2005-12-07  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Fixing a potential bug when redefining a text label.
+
+2005-12-05  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Less Qt3 support around.
+
+2005-11-29  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Prepare transformations (scalings and rotation) to accept a
+	DoubleImp as a scaling factor/rotation angle
+
+	* If a Python script returns a DoubleObject or IntObject (i.e.
+	DoubleImp or IntImp) then also a text label containing the result
+	is created.
+
+2005-11-27  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Simplify a bit the code that builds the NormalModePopupObjects.
+
+	* Less Qt3 support around.
+
+2005-11-22  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Patch for methods getParam and getParamofmin in case of locuses,
+	now the golden-ratio method is used and a better termination test
+	that vastly improves the "containment test" of a point on a locus
+	(Franco Pasquarelli).
+
+2005-11-20  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Yet-another-attempt to get the painting system work again, this
+	way almost perfectly I hope.
+
+	* Less Qt3 support around.
+
+2005-11-09  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Less Qt3 support around.
+
+2005-10-11  Pino Toscano <toscano.pino@tiscali.it>
+
+	* Less Qt3 support around.
+
+2005-09-30  Pino Toscano <toscano.pino@tiscali.it>
+
+	* More porting to Qt4: Types Dialog (partially), Edit Dialog and
+	exporters dialogs.
+
 2005-09-29  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Fix drawing of arcs with very small angle (patch by
