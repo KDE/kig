@@ -57,7 +57,7 @@ NewScriptWizard::~NewScriptWizard()
   }
 }
 
-NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
+NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
   : NewScriptWizardBase( parent, "New Script Wizard" ),
     mmode( mode ), textedit( 0 ), document( 0 ), hli( 0 ), docview( 0 )
 {
