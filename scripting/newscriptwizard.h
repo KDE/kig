@@ -29,15 +29,15 @@
 
 #include <algorithm>
 
-class ScriptMode;
+class ScriptModeBase;
 
 class NewScriptWizard
   : public NewScriptWizardBase
 {
   Q_OBJECT
-  ScriptMode* mmode;
+  ScriptModeBase* mmode;
 public:
-  NewScriptWizard( QWidget* parent, ScriptMode* mode );
+  NewScriptWizard( QWidget* parent, ScriptModeBase* mode );
   ~NewScriptWizard();
 
   void back();

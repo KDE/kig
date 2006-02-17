@@ -56,7 +56,7 @@ NewScriptWizard::~NewScriptWizard()
   }
 }
 
-NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptMode* mode )
+NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
   : NewScriptWizardBase( parent, "New Script Wizard" ),
     mmode( mode )
 {
