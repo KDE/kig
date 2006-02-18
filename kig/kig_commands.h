@@ -55,6 +55,9 @@ public:
    * creates an AddCommand ;)
    */
   static KigCommand* addCommand( KigPart& doc, const std::vector<ObjectHolder*>& os );
+  /**
+   * \overload
+   */
   static KigCommand* addCommand( KigPart& doc, ObjectHolder* os );
   /**
    * make sure that when you delete something, you are also deleting
@@ -62,8 +65,16 @@ public:
    * \ref KigDocument::delObjects() takes care of this for you.
    */
   static KigCommand* removeCommand( KigPart& doc, const std::vector<ObjectHolder*>& os );
+  /**
+   * \overload
+   */
   static KigCommand* removeCommand( KigPart& doc, ObjectHolder* o );
 
+  /**
+   * This creates directly a command to change the coordinate system
+   * to \p s .
+   * \sa ChangeCoordSystemTask
+   */
   static KigCommand* changeCoordSystemCommand( KigPart& doc, CoordinateSystem* s );
 
   void addTask( KigCommandTask* );
@@ -72,6 +83,9 @@ public:
   void unexecute();
 };
 
+/**
+ * This represents a single task to be executed in a KigCommand.
+ */
 class KigCommandTask
 {
 public:
@@ -159,6 +173,9 @@ public:
   void finish( KigCommand* comm );
 };
 
+/**
+ * A task to change the coordinate system.
+ */
 class ChangeCoordSystemTask
   : public KigCommandTask
 {

@@ -33,23 +33,23 @@ std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& os );
  * already.  Then, it puts the necessary part of their children in the
  * right order, so that calc()-ing correctly updates all of their data
  * ( they're calc'ed in the right order, i mean... ).  The objects in
- * from are normally not included in the output, unless they appear
- * somewhere in the middle of the calc-path towards to...
+ * \p from are normally not included in the output, unless they appear
+ * somewhere in the middle of the calc-path towards \p to ...
  */
 std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
 
 /**
  * This function returns all objects on the side of the path through
- * the dependency tree from from down to to.  This means that we look
- * for any objects that don't depend on any of the objects in from
- * themselves, but of which one of the direct children does.  We need
- * this function for Locus stuff...
+ * the dependency tree from \p from down to \p to . This means that we
+ * look for any objects that don't depend on any of the objects in
+ * \p from themselves, but of which one of the direct children does.
+ * We need this function for Locus stuff...
  */
 std::vector<ObjectCalcer*> sideOfTreePath( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
 
 /**
- * This function returns all objects above the \p given in the
- * dependency graph.  The \p given objects are also included
+ * This function returns all objects above the given in the
+ * dependency graph.  The given objects \p objs are also included
  * themselves..
  */
 std::vector<ObjectCalcer*> getAllParents( const std::vector<ObjectCalcer*>& objs );

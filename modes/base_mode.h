@@ -27,6 +27,10 @@ class KigWidget;
 class KigDocument;
 class ObjectHolder;
 
+/**
+ * The BaseMode is a particular mode that allows an easy mapping of
+ * the mouse actions to real, logical actions of the mode.
+ */
 class BaseMode
   : public KigMode
 {
