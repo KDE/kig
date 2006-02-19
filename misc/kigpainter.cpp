@@ -678,8 +678,12 @@ void KigPainter::drawVector( const Coordinate& a, const Coordinate& b )
   dir /= length;
   Coordinate c = b - dir + perp;
   Coordinate d = b - dir - perp;
+  // draw the arrow lines with a normal style
+  mP.setPen( QPen( color, width == -1 ? 1 : width, Qt::SolidLine ) );
   drawSegment( b, c );
   drawSegment( b, d );
+  // setting again the original style
+  mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
 /* *** this function is commented out ***
