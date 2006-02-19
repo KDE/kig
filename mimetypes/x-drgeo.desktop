@@ -4,6 +4,7 @@ Encoding=UTF-8
 MimeType=application/x-drgeo
 Icon=kig_doc
 Comment=Dr. Geo Figure
+Comment[fr]=Figure Dr. Geo
 Comment[x-test]=xxDr. Geo Figurexx
 Type=MimeType
 Patterns=*.fgeo

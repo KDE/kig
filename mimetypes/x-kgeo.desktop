@@ -4,6 +4,7 @@ Encoding=UTF-8
 MimeType=application/x-kgeo
 Icon=kig_doc
 Comment=KGeo Figure
+Comment[fr]=Figure KGeo
 Comment[x-test]=xxKGeo Figurexx
 Type=MimeType
 Patterns=*.kgeo;

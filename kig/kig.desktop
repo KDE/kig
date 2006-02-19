@@ -3,6 +3,7 @@ Encoding=UTF-8
 Name=Kig
 Name[x-test]=xxKigxx
 GenericName=Interactive Geometry
+GenericName[fr]=Géométrie interactive
 GenericName[x-test]=xxInteractive Geometryxx
 Comment=Explore Geometric Constructions
 Exec=kig %i %m -caption "%c"
