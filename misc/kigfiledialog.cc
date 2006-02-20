@@ -25,7 +25,7 @@
 
 KigFileDialog::KigFileDialog( const QString& startDir, const QString& filter,
               const QString& caption,  QWidget* parent )
-  : KFileDialog( startDir, filter, parent, "kigfiledialog", true ),
+  : KFileDialog( startDir, filter, parent ),
     mow( 0L )
 {
   setCaption( caption );
