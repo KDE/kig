@@ -70,6 +70,13 @@ bool CircleImp::contains( const Coordinate& p, int width, const KigWidget& w ) c
 
 bool CircleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
+  // first we check if the rect contains at least one of the
+  // north/south/east/west points of the circle
+  if ( r.contains( mcenter + Coordinate( 0, -mradius ) ) ) return true;
+  if ( r.contains( mcenter + Coordinate( mradius, 0 ) ) ) return true;
+  if ( r.contains( mcenter + Coordinate( 0, mradius ) ) ) return true;
+  if ( r.contains( mcenter + Coordinate( -mradius, 0 ) ) ) return true;
+
   // we allow a miss of some pixels ..
   double miss = w.screenInfo().normalMiss( width );
   double bigradius = mradius + miss;

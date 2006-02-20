@@ -20,10 +20,6 @@
   Smaller parts of the document cause bigger problems. pino: this is
   due to the polar grid: try to make zoom if there is no grid.
 
-- Improve the selection of circles, which now is done correctly if the
-  selected rectangle intersects a circle in a ( more or less ) small
-  part of it.
-
 * I/O: filters, exporters, ...
 
 - add other command line options, like:<br />
