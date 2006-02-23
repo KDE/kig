@@ -251,7 +251,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       i18n( "&Start" ),
       i18n( "Add Te&xt Label" ),
       i18n( "Set Co&lor" ),
-      i18n( "Set Si&ze" ),
+      i18n( "Set &Pen Width" ),
       i18n( "Set St&yle" ),
       QString(),
       i18n( "Set Coordinate S&ystem" )
