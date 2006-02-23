@@ -73,6 +73,8 @@ public:
   KigWidget& widget() { return mview; };
   QPoint plc() { return mplc; };
 
+  bool onlyLabels() const { return monlylabels; };
+
 protected:
   void activateAction( int menu, int action );
 
@@ -89,6 +91,9 @@ protected:
   std::vector<PopupActionProvider*> mproviders;
 
   QMenu* mmenus[NumberOfMenus];
+
+private:
+  bool monlylabels;
 };
 
 /**
