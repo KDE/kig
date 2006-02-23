@@ -33,6 +33,7 @@
 #include "../objects/other_type.h"
 #include "../objects/object_factory.h"
 #include "../objects/polygon_imp.h"
+#include "../objects/text_imp.h"
 #include "../misc/lists.h"
 #include "../misc/argsparser.h"
 #include "../misc/kigpainter.h"
@@ -184,7 +185,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
                                                 const std::vector<ObjectHolder*>& objs,
 						const QPoint& plc )
   : KPopupMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
-    mmode( mode )
+    mmode( mode ), monlylabels( false )
 {
   bool empty = objs.empty();
   bool single = objs.size() == 1;
@@ -203,6 +204,17 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   else
     title = i18n( "%1 Objects" ).arg( objs.size() );
   insertTitle( title, 1 );
+
+  if ( !empty )
+  {
+    monlylabels = true;
+    uint i = 0;
+    while ( i < objs.size() && monlylabels )
+    {
+      monlylabels &= objs[i]->imp()->inherits( TextImp::stype() );
+      ++i;
+    }
+  }
 
   if ( empty )
   {
@@ -399,7 +411,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     }
     popup.addAction( menu, i18n( "&Custom Color" ), nextfree++ );
   }
-  else if ( menu == NormalModePopupObjects::SetSizeMenu )
+  else if ( menu == NormalModePopupObjects::SetSizeMenu && !popup.onlyLabels() )
   {
     bool point = true;
     bool samecolor = true;
@@ -434,7 +446,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       popup.addAction( menu, p, nextfree++ );
     };
   }
-  else if ( menu == NormalModePopupObjects::SetStyleMenu )
+  else if ( menu == NormalModePopupObjects::SetStyleMenu && !popup.onlyLabels() )
   {
     bool samecolor = true;
     int npoints = 0;
