@@ -20,14 +20,18 @@
 #ifndef KIG_MODES_EDITTYPE_H
 #define KIG_MODES_EDITTYPE_H
 
-#include "edittypebase.h"
+#include <kdialogbase.h>
+
+class EditTypeBase;
 
 /**
  * Simply dialog that allow the user the editing of a macro type...
  */
-class EditType : public EditTypeBase
+class EditType : public KDialogBase
 {
   Q_OBJECT
+
+  EditTypeBase* meditwidgetbase;
 
   QString mname;
   QString mdesc;
@@ -39,10 +43,10 @@ public:
   const QString description() const;
   const QString icon() const;
 
-public slots:
-  void helpSlot();
-  void okSlot();
-  void cancelSlot();
+protected slots:
+  virtual void slotOk();
+  virtual void slotHelp();
+  virtual void slotCancel();
 };
 
 #endif

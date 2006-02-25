@@ -19,9 +19,11 @@
    USA
 **/
 
-
 #include "edittype.h"
 #include "edittype.moc"
+#include "edittypebase.h"
+
+#include <qlayout.h>
 
 #include <kapplication.h>
 #include <kicondialog.h>
@@ -32,31 +34,30 @@
 #include <kstdguiitem.h>
 
 EditType::EditType( QWidget* parent, QString name, QString desc, QString icon )
-  : EditTypeBase( parent, "edittype", true ), mname( name ), mdesc( desc ), micon( icon )
+  : KDialogBase( parent, "edittype", true, i18n( "Edit Type" ),
+    Help|Ok|Cancel, Ok, true ), mname( name ), mdesc( desc ), micon( icon )
 {
-  // improving GUI look'n'feel...
-  buttonHelp->setGuiItem( KStdGuiItem::help() );
-  buttonOk->setGuiItem( KStdGuiItem::ok() );
-  buttonCancel->setGuiItem( KStdGuiItem::cancel() );
+  meditwidgetbase = new EditTypeBase( this );
+  setMainWidget( meditwidgetbase );
 
-  editName->setText( mname );
-  editDescription->setText( mdesc );
-  typeIcon->setIcon( !micon.isEmpty() ? micon : "gear" );
+  meditwidgetbase->editName->setText( mname );
+  meditwidgetbase->editDescription->setText( mdesc );
+  meditwidgetbase->typeIcon->setIcon( !micon.isEmpty() ? micon : "gear" );
 }
 
 EditType::~EditType()
 {
 }
 
-void EditType::helpSlot()
+void EditType::slotHelp()
 {
   kapp->invokeHelp( QString::fromLatin1( "working-with-types" ),
                     QString::fromLatin1( "kig" ) );
 }
 
-void EditType::okSlot()
+void EditType::slotOk()
 {
-  QString tmp = editName->text();
+  QString tmp = meditwidgetbase->editName->text();
   if ( tmp.isEmpty() )
   {
     KMessageBox::information( this, i18n( "The name of the macro can not be empty." ) );
@@ -71,13 +72,13 @@ void EditType::okSlot()
     mname = tmp;
     namechanged = true;
   }
-  tmp = editDescription->text();
+  tmp = meditwidgetbase->editDescription->text();
   if ( tmp != mdesc )
   {
     mdesc = tmp;
     descchanged = true;
   }
-  tmp = typeIcon->icon();
+  tmp = meditwidgetbase->typeIcon->icon();
   if ( tmp != micon )
   {
     micon = tmp;
@@ -86,7 +87,7 @@ void EditType::okSlot()
   done( namechanged || descchanged || iconchanged );
 }
 
-void EditType::cancelSlot()
+void EditType::slotCancel()
 {
   done( 0 );
 }
