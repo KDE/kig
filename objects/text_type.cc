@@ -19,6 +19,7 @@
 
 #include "text_imp.h"
 #include "bogus_imp.h"
+#include "object_drawer.h"
 #include "point_imp.h"
 #include "line_imp.h"
 
@@ -34,6 +35,7 @@
 #include <qstringlist.h>
 
 #include <kapplication.h>
+#include <kfontdialog.h>
 
 #include <cmath>
 
@@ -172,11 +174,12 @@ QStringList GenericTextType::specialActions() const
   QStringList ret;
   ret << i18n( "&Copy Text" );
   ret << i18n( "&Toggle Frame" );
+  ret << i18n( "Set &Font..." );
   return ret;
 }
 
-void GenericTextType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
-                              KigPart& doc, KigWidget&,
+void GenericTextType::executeAction( int i, ObjectHolder& oh, ObjectTypeCalcer& c,
+                              KigPart& doc, KigWidget& w,
                               NormalMode& ) const
 {
   std::vector<ObjectCalcer*> parents = c.parents();
@@ -204,6 +207,16 @@ void GenericTextType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
     kc->addTask( new ChangeObjectConstCalcerTask(
                    static_cast<ObjectConstCalcer*>( firstthree[0] ),
                    new IntImp( n ) ) );
+    doc.history()->addCommand( kc );
+  }
+  else if ( i == 2 )
+  {
+    // change label font
+    QFont f = oh.drawer()->font();
+    int result = KFontDialog::getFont( f, false, &w );
+    if ( result != KFontDialog::Accepted ) return;
+    KigCommand* kc = new KigCommand( doc, i18n( "Change Label Font" ) );
+    kc->addTask( new ChangeObjectDrawerTask( &oh, oh.drawer()->getCopyFont( f ) ) );
     doc.history()->addCommand( kc );
   }
   else assert( false );

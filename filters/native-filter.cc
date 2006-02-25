@@ -35,6 +35,7 @@
 #include <qbytearray.h>
 #include <qdom.h>
 #include <qfile.h>
+#include <qfont.h>
 #include <qregexp.h>
 #include <qtextstream.h>
 
@@ -576,6 +577,11 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         tmp = e.attribute( "point-style" );
         int pointstyle = ObjectDrawer::pointStyleFromString( tmp );
 
+        tmp = e.attribute( "font" );
+        QFont f;
+        if ( !tmp.isEmpty() )
+          f.fromString( tmp );
+
         ObjectConstCalcer* namecalcer = 0;
         tmp = e.attribute( "namecalcer" );
         if ( tmp != "none" && !tmp.isEmpty() )
@@ -589,7 +595,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
           namecalcer = static_cast<ObjectConstCalcer*>( calcers[ncid-1].get() );
         }
 
-        ObjectDrawer* drawer = new ObjectDrawer( color, width, shown, style, pointstyle );
+        ObjectDrawer* drawer = new ObjectDrawer( color, width, shown, style, pointstyle, f );
         holders.push_back( new ObjectHolder( calcer, drawer, namecalcer ) );
       }
     }
@@ -681,6 +687,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
     drawelem.setAttribute( "width", QString::number( d->width() ) );
     drawelem.setAttribute( "style", d->styleToString() );
     drawelem.setAttribute( "point-style", d->pointStyleToString() );
+    drawelem.setAttribute( "font", d->font().toString() );
 
     ObjectCalcer* namecalcer = ( *i )->nameCalcer();
     if ( namecalcer )

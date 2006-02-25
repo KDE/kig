@@ -37,6 +37,7 @@ void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
     p.setWidth( mwidth );
     p.setStyle( mstyle );
     p.setPointStyle( mpointstyle );
+    p.setFont( mfont );
     imp.draw( p );
   }
 }
@@ -65,6 +66,7 @@ ObjectDrawer* ObjectDrawer::getCopyShown( bool s ) const
   ret->mwidth = mwidth;
   ret->mstyle = mstyle;
   ret->mpointstyle = mpointstyle;
+  ret->mfont = mfont;
   return ret;
 }
 
@@ -76,6 +78,7 @@ ObjectDrawer* ObjectDrawer::getCopyColor( const QColor& c ) const
   ret->mwidth = mwidth;
   ret->mstyle = mstyle;
   ret->mpointstyle = mpointstyle;
+  ret->mfont = mfont;
   return ret;
 }
 
@@ -87,6 +90,7 @@ ObjectDrawer* ObjectDrawer::getCopyWidth( int w ) const
   ret->mwidth = w;
   ret->mstyle = mstyle;
   ret->mpointstyle = mpointstyle;
+  ret->mfont = mfont;
   return ret;
 }
 
@@ -98,6 +102,7 @@ ObjectDrawer* ObjectDrawer::getCopyStyle( Qt::PenStyle s ) const
   ret->mwidth = mwidth;
   ret->mstyle = s;
   ret->mpointstyle = mpointstyle;
+  ret->mfont = mfont;
   return ret;
 }
 
@@ -109,6 +114,19 @@ ObjectDrawer* ObjectDrawer::getCopyPointStyle( int p ) const
   ret->mwidth = mwidth;
   ret->mstyle = mstyle;
   ret->mpointstyle = p;
+  ret->mfont = mfont;
+  return ret;
+}
+
+ObjectDrawer* ObjectDrawer::getCopyFont( const QFont& f ) const
+{
+  ObjectDrawer* ret = new ObjectDrawer;
+  ret->mcolor = mcolor;
+  ret->mshown = mshown;
+  ret->mwidth = mwidth;
+  ret->mstyle = mstyle;
+  ret->mpointstyle = mpointstyle;
+  ret->mfont = f;
   return ret;
 }
 
@@ -127,13 +145,18 @@ int ObjectDrawer::pointStyle() const
   return mpointstyle;
 }
 
-ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown, Qt::PenStyle style, int pointStyle )
-  : mcolor( color ), mshown( shown ), mwidth( width ), mstyle( style ), mpointstyle( pointStyle )
+QFont ObjectDrawer::font() const
+{
+  return mfont;
+}
+
+ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown, Qt::PenStyle style, int pointStyle, const QFont& f )
+  : mcolor( color ), mshown( shown ), mwidth( width ), mstyle( style ), mpointstyle( pointStyle ), mfont( f )
 {
 }
 
 ObjectDrawer::ObjectDrawer()
-  : mcolor( Qt::blue ), mshown( true ), mwidth( -1 ), mstyle( Qt::SolidLine ), mpointstyle( 0 )
+  : mcolor( Qt::blue ), mshown( true ), mwidth( -1 ), mstyle( Qt::SolidLine ), mpointstyle( 0 ), mfont( QFont() )
 {
 }
 
