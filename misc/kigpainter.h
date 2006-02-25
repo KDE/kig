@@ -28,6 +28,7 @@
 
 #include <qpainter.h>
 #include <qcolor.h>
+#include <qfont.h>
 
 #include <vector>
 
@@ -106,6 +107,8 @@ public:
   void setBrushStyle( const BrushStyle c );
   void setBrush( const QBrush& b );
   void setBrushColor( const QColor& c );
+
+  void setFont( const QFont& f );
 
   QColor getColor() const;
   bool getNightVision( ) const;

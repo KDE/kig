@@ -263,6 +263,11 @@ void KigPainter::setBrushColor( const QColor& c )
   mP.setBrush( QBrush( brushColor, brushStyle ) );
 }
 
+void KigPainter::setFont( const QFont& f )
+{
+  mP.setFont( f );
+}
+
 bool KigPainter::getNightVision( ) const
 {
   return mdoc.getNightVision();

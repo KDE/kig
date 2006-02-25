@@ -19,6 +19,7 @@
 #define KIG_OBJECTS_OBJECT_DRAWER_H
 
 #include <qcolor.h>
+#include <qfont.h>
 #include <qnamespace.h>
 
 class ObjectImp;
@@ -50,14 +51,15 @@ class ObjectDrawer
   int mwidth;
   Qt::PenStyle mstyle;
   int mpointstyle;
+  QFont mfont;
 public:
   /**
    * Construct a new ObjectDrawer with a default color ( Qt::blue ),
    * width ( -1 ), shown state ( true ), PenStyle ( Qt::SolidLine ),
-   * and pointstyle ( 0 )
+   * pointstyle ( 0 ) and font ( default application font )
    */
   ObjectDrawer();
-  ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0 );
+  ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0, const QFont& f = QFont() );
   /**
    * Draw the object \p imp on kigpainter \p p .  If \p selected is true, it is
    * drawn in red, otherwise in its normal color.
@@ -97,6 +99,10 @@ public:
    */
   int pointStyle() const;
   /**
+   * return the font
+   */
+  QFont font() const;
+  /**
    * return pointStyle trasnformed in a string
    */
   QString pointStyleToString() const;
@@ -129,6 +135,11 @@ public:
    * that the pointStyle state is set to \p p ..
    */
   ObjectDrawer* getCopyPointStyle( int p ) const;
+  /**
+   * returns a new ObjectDrawer that is identical to this one.. except
+   * that the font state is set to \p f ..
+   */
+  ObjectDrawer* getCopyFont( const QFont& f ) const;
   /**
    * Note that this returns a valid point style in every case, even if
    * the given \p style string is unknown. In that case it returns a
