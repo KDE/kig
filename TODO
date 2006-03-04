@@ -105,9 +105,6 @@
   Transform->Translate form the RMB menu and then Kig should ask me for
   a vector to use to translate all the selected objects.
 
-- add support for work with other measure units (cm, inches, etc...)
-  than just pixels...
-
 - extend ObjectFactory::sensiblePointCalcer to also construct
    intersection points of stuff... (pino: done for lines)
 

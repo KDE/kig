@@ -22,7 +22,8 @@ noinst_HEADERS = \
 	object_hierarchy.h \
 	rect.h \
 	screeninfo.h \
-	special_constructors.h
+	special_constructors.h \
+	unit.h
 
 libmisc_la_SOURCES = \
 	argsparser.cpp \
@@ -46,7 +47,8 @@ libmisc_la_SOURCES = \
 	object_hierarchy.cc \
 	rect.cc \
 	screeninfo.cc \
-	special_constructors.cc
+	special_constructors.cc \
+	unit.cc
 
 libmisc_la_LIBADD=-lm
 METASOURCES=AUTO

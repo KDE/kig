@@ -22,6 +22,7 @@
 
 class QSize;
 class Ui_ImageExporterOptionsWidget;
+class Unit;
 
 class ImageExporterOptions
   : public QWidget
@@ -30,6 +31,9 @@ class ImageExporterOptions
 
   QSize msize;
   Ui_ImageExporterOptionsWidget* expwidget;
+  double maspectratio;
+  Unit* mxunit;
+  Unit* myunit;
 
   // this is set by slotWidthChanged() when they set the other input
   // widget's value, to avoid reacting to internal changes to the
@@ -49,8 +53,9 @@ public:
   QSize imageSize() const;
 
 protected slots:
-  void slotWidthChanged( int );
-  void slotHeightChanged( int );
+  void slotWidthChanged( double );
+  void slotHeightChanged( double );
+  void slotUnitChanged( int );
 };
 
 #endif

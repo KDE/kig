@@ -20,11 +20,14 @@
 
 #include "imageexporteroptionswidget.h"
 
+#include "../misc/unit.h"
+
+#include <qapplication.h>
 #include <qcheckbox.h>
+#include <qdesktopwidget.h>
 #include <qlayout.h>
 #include <qsize.h>
-
-#include <knuminput.h>
+#include <qspinbox.h>
 
 ImageExporterOptions::ImageExporterOptions( QWidget* parent )
   : QWidget( parent ), minternallysettingstuff( false )
@@ -32,17 +35,30 @@ ImageExporterOptions::ImageExporterOptions( QWidget* parent )
   expwidget = new Ui_ImageExporterOptionsWidget();
   expwidget->setupUi( this );
 
+  msize = QSize( 1, 1 );
+
+  // detecting the dpi resolutions
+  QDesktopWidget* dw = QApplication::desktop();
+  // and creating the Unit objects
+  mxunit = new Unit( msize.width(), Unit::pixel, dw->logicalDpiX() );
+  myunit = new Unit( msize.height(), Unit::pixel, dw->logicalDpiY() );
+
+  maspectratio = (double)msize.height() / (double)msize.width();
+
   expwidget->keepAspectRatio->setChecked( true );
   layout()->setMargin( 0 );
 
-  msize = QSize( 1, 1 );
+  expwidget->comboUnit->insertStringList( Unit::unitList() );
 
-  connect( expwidget->WidthInput, SIGNAL( valueChanged( int ) ), this, SLOT( slotWidthChanged( int ) ) );
-  connect( expwidget->HeightInput, SIGNAL( valueChanged( int ) ), this, SLOT( slotHeightChanged( int ) ) );
+  connect( expwidget->WidthInput, SIGNAL( valueChanged( double ) ), this, SLOT( slotWidthChanged( double ) ) );
+  connect( expwidget->HeightInput, SIGNAL( valueChanged( double ) ), this, SLOT( slotHeightChanged( double ) ) );
+  connect( expwidget->comboUnit, SIGNAL( activated( int ) ), this, SLOT( slotUnitChanged( int ) ) );
 }
 
 ImageExporterOptions::~ImageExporterOptions()
 {
+  delete mxunit;
+  delete myunit;
 }
 
 void ImageExporterOptions::setGrid( bool grid )
@@ -71,30 +87,52 @@ void ImageExporterOptions::setImageSize( const QSize& size )
   minternallysettingstuff = true;
   expwidget->WidthInput->setValue( size.width() );
   expwidget->HeightInput->setValue( size.height() );
+  mxunit->setValue( size.width() );
+  myunit->setValue( size.height() );
+  maspectratio = (double)msize.height() / (double)msize.width();
   minternallysettingstuff = false;
 }
 
 QSize ImageExporterOptions::imageSize() const
 {
-  return QSize( expwidget->WidthInput->value(), expwidget->HeightInput->value() );
+  return QSize( (int)qRound( mxunit->getValue( Unit::pixel ) ),
+                (int)qRound( myunit->getValue( Unit::pixel ) ) );
 }
 
-void ImageExporterOptions::slotWidthChanged( int w )
+void ImageExporterOptions::slotWidthChanged( double w )
 {
   if ( ! minternallysettingstuff && expwidget->keepAspectRatio->isChecked() )
   {
     minternallysettingstuff = true;
-    expwidget->HeightInput->setValue( w * msize.height() / msize.width() );
+    expwidget->HeightInput->setValue( w * maspectratio );
+    mxunit->setValue( w );
+    myunit->setValue( w * maspectratio );
     minternallysettingstuff = false;
   };
 }
 
-void ImageExporterOptions::slotHeightChanged( int h )
+void ImageExporterOptions::slotHeightChanged( double h )
 {
   if ( ! minternallysettingstuff && expwidget->keepAspectRatio->isChecked() )
   {
     minternallysettingstuff = true;
-    expwidget->WidthInput->setValue( h * msize.width() / msize.height() );
+    expwidget->WidthInput->setValue( h / maspectratio );
+    mxunit->setValue( h / maspectratio );
+    myunit->setValue( h );
     minternallysettingstuff = false;
   };
+}
+
+void ImageExporterOptions::slotUnitChanged( int index )
+{
+  minternallysettingstuff = true;
+  Unit::MetricalUnit newunit = Unit::intToUnit( index );
+  mxunit->convertTo( newunit );
+  myunit->convertTo( newunit );
+  int newprecision = Unit::precision( newunit );
+  expwidget->WidthInput->setDecimals( newprecision );
+  expwidget->WidthInput->setValue( mxunit->value() );
+  expwidget->HeightInput->setDecimals( newprecision );
+  expwidget->HeightInput->setValue( myunit->value() );
+  minternallysettingstuff = false;
 }

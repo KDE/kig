@@ -9,7 +9,7 @@
     <x>0</x>
     <y>0</y>
     <width>401</width>
-    <height>222</height>
+    <height>198</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,7 +17,7 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>8</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
@@ -30,65 +30,90 @@
      <property name="checkable" >
       <bool>false</bool>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
-       <number>8</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
-           <string>&amp;Width:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="KIntNumInput" name="WidthInput" >
-          <property name="suffix" >
-           <string> pixels</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label_2" >
-          <property name="text" >
-           <string>&amp;Height:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="KIntNumInput" name="HeightInput" >
-          <property name="suffix" >
-           <string> pixels</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
+      <item row="2" column="0" colspan="3" >
        <widget class="QCheckBox" name="keepAspectRatio" >
         <property name="text" >
          <string>&amp;Keep Aspect Ratio</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QDoubleSpinBox" name="HeightInput" >
+        <property name="decimals" >
+         <number>0</number>
+        </property>
+        <property name="maximum" >
+         <double>2000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_2" >
+        <property name="text" >
+         <string>Height:</string>
+        </property>
+       </widget>
+      </item>
+      <item rowspan="2" row="0" column="2" >
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>20</width>
+            <height>1</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboUnit" />
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>20</width>
+            <height>1</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QDoubleSpinBox" name="WidthInput" >
+        <property name="decimals" >
+         <number>0</number>
+        </property>
+        <property name="maximum" >
+         <double>2000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Width:</string>
         </property>
        </widget>
       </item>
@@ -141,8 +166,8 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>20</width>
-       <height>8</height>
+       <width>383</width>
+       <height>1</height>
       </size>
      </property>
     </spacer>
@@ -150,18 +175,6 @@
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>KIntNumInput</class>
-   <extends></extends>
-   <header>knuminput.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
- <tabstops>
-  <tabstop>keepAspectRatio</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>
