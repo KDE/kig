@@ -341,7 +341,7 @@ BOOST_PYTHON_MODULE_INIT( kig )
      .def( "data", &CubicImp::data )
      ;
 
-};
+}
 
 PythonScripter* PythonScripter::instance()
 {
@@ -361,7 +361,7 @@ static char* newstring( const char* contents )
   char* ret = new char[strlen( contents ) + 1];
   strcpy( ret, contents );
   return ret;
-};
+}
 
 PythonScripter::PythonScripter()
 {
