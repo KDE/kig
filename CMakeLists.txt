@@ -1,5 +1,32 @@
 kde4_header()
 
+set(libmisc_SRCS
+   ${CMAKE_SOURCE_DIR}/kig/misc/argsparser.cpp 
+   ${CMAKE_SOURCE_DIR}/kig/misc/builtin_stuff.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/calcpaths.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/common.cpp 
+   ${CMAKE_SOURCE_DIR}/kig/misc/conic-common.cpp 
+   ${CMAKE_SOURCE_DIR}/kig/misc/coordinate.cpp 
+   ${CMAKE_SOURCE_DIR}/kig/misc/coordinate_system.cpp 
+   ${CMAKE_SOURCE_DIR}/kig/misc/cubic-common.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/equation.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/goniometry.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/guiaction.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/kigfiledialog.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/kiginputdialog.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/kignumerics.cpp 
+   ${CMAKE_SOURCE_DIR}/kig/misc/kigpainter.cpp 
+   ${CMAKE_SOURCE_DIR}/kig/misc/kigtransform.cpp 
+   ${CMAKE_SOURCE_DIR}/kig/misc/lists.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/object_constructor.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/object_hierarchy.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/rect.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/screeninfo.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/special_constructors.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/unit.cc
+)
+
+
 add_subdirectory( objects ) 
 add_subdirectory( misc ) 
 add_subdirectory( modes ) 
@@ -19,7 +46,7 @@ include_directories( ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_D
 
 ########### next target ###############
 
-set(kigpart_PART_SRCS dummy.cpp )
+set(kigpart_PART_SRCS dummy.cpp ${libmisc_SRCS})
 
 kde4_automoc(${kigpart_PART_SRCS})
 
@@ -28,7 +55,7 @@ kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kigpart )
 
-target_link_libraries(kigpart  ${QT_AND_KDECORE_LIBS} kparts misc objects filters modes kigparttemp )
+target_link_libraries(kigpart  ${LIB_KPARTS} kparts objects filters modes kigparttemp )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kigpart )
 
