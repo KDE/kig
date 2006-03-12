@@ -1,5 +1,32 @@
 kde4_header()
 
+set(libmodes_SRCS
+   ${CMAKE_SOURCE_DIR}/kig/modes/base_mode.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/construct_mode.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/dragrectmode.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/edittype.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/label.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/linkslabel.cpp
+   ${CMAKE_SOURCE_DIR}/kig/modes/macro.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/macrowizard.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/mode.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/moving.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/normal.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/popup.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/textlabelwizard.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/typesdialog.cpp
+)
+
+kde4_add_ui3_files(libmodes_SRCS
+   ${CMAKE_SOURCE_DIR}/kig/modes/macrowizardbase.ui
+   ${CMAKE_SOURCE_DIR}/kig/modes/textlabelwizardbase.ui
+)
+
+kde4_add_ui_files(libmodes_SRCS
+   ${CMAKE_SOURCE_DIR}/kig/modes/typeswidget.ui
+   ${CMAKE_SOURCE_DIR}/kig/modes/edittypewidget.ui
+)
+
 set(libmisc_SRCS
    ${CMAKE_SOURCE_DIR}/kig/misc/argsparser.cpp 
    ${CMAKE_SOURCE_DIR}/kig/misc/builtin_stuff.cc 
@@ -104,12 +131,12 @@ add_subdirectory( data )
 add_subdirectory( pykig ) 
 
 message(STATUS "${CMAKE_CURRENT_SOURCE_DIR}: skipped subdir $(scriptingdir)")
-include_directories( ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories( ${CMAKE_SOURCE_DIR}/kig/modes/ ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
 
 
 ########### next target ###############
 
-set(kigpart_PART_SRCS dummy.cpp ${libmisc_SRCS} ${libobjects_SRCS} ${libfilters_SRCS})
+set(kigpart_PART_SRCS dummy.cpp ${libmisc_SRCS} ${libobjects_SRCS} ${libfilters_SRCS} ${libmodes_SRCS})
 
 kde4_automoc(${kigpart_PART_SRCS})
 
@@ -118,7 +145,7 @@ kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kigpart )
 
-target_link_libraries(kigpart  ${LIB_KPARTS}  modes kigparttemp )
+target_link_libraries(kigpart  ${LIB_KPARTS}  kigparttemp )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kigpart )
 
