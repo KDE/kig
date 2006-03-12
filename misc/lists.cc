@@ -251,7 +251,7 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
 
   QDomElement docelem = doc.createElement( "KigMacroFile" );
   docelem.setAttribute( "Version", KIGVERSION );
-  docelem.setAttribute( "Number", ms.size() );
+  docelem.setAttribute( "Number", static_cast<uint>( ms.size() ) );
 
   for ( uint i = 0; i < ms.size(); ++i )
   {
