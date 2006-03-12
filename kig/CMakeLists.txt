@@ -11,7 +11,7 @@ kde4_automoc(${kig_SRCS})
 
 kde4_add_executable(kig ${kig_SRCS})
 
-target_link_libraries(kig  ${QT_AND_KDECORE_LIBS} kparts )
+target_link_libraries(kig  ${LIB_KPARTS} )
 
 install_targets(/bin kig )
 
