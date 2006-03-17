@@ -1,4 +1,5 @@
 kde4_header()
+project(kig)
 
 set(libmodes_SRCS
    ${CMAKE_SOURCE_DIR}/kig/modes/base_mode.cc
