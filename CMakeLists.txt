@@ -1,6 +1,14 @@
 kde4_header()
 project(kig)
 
+set(libkigparttemp_SRCS
+	${CMAKE_SOURCE_DIR}/kig/kig/kig_document.cc 
+	${CMAKE_SOURCE_DIR}/kig/kig/kig_part.cpp 
+	${CMAKE_SOURCE_DIR}/kig/kig/kig_view.cpp 
+	${CMAKE_SOURCE_DIR}/kig/kig/kig_commands.cpp
+	)
+
+
 set(libmodes_SRCS
    ${CMAKE_SOURCE_DIR}/kig/modes/base_mode.cc
    ${CMAKE_SOURCE_DIR}/kig/modes/construct_mode.cc
@@ -137,7 +145,7 @@ include_directories( ${CMAKE_SOURCE_DIR}/kig/modes/ ${KDE4_INCLUDE_DIR} ${QT_INC
 
 ########### next target ###############
 
-set(kigpart_PART_SRCS dummy.cpp ${libmisc_SRCS} ${libobjects_SRCS} ${libfilters_SRCS} ${libmodes_SRCS})
+set(kigpart_PART_SRCS dummy.cpp ${libmisc_SRCS} ${libobjects_SRCS} ${libfilters_SRCS} ${libmodes_SRCS} ${libkigparttemp_SRCS})
 
 kde4_automoc(${kigpart_PART_SRCS})
 
@@ -146,7 +154,7 @@ kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kigpart )
 
-target_link_libraries(kigpart  ${LIB_KPARTS}  kigparttemp )
+target_link_libraries(kigpart  ${LIB_KPARTS} kdeprint )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kigpart )
 
