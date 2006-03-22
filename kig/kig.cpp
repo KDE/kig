@@ -144,7 +144,7 @@ void Kig::load( const KUrl& url )
 {
   // we check for m_part not being 0, because in the case of us not
   // finding our library, we would otherwise get a crash...
-  if ( m_part && m_part->openURL( url ) ) m_recentFilesAction->addURL( url );
+  if ( m_part && m_part->openURL( url ) ) m_recentFilesAction->addUrl( url );
 }
 
 void Kig::fileNew()
