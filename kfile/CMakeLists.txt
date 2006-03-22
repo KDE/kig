@@ -13,7 +13,7 @@ kde4_add_plugin(kfile_drgeo ${kfile_drgeo_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kfile_drgeo )
 
-target_link_libraries(kfile_drgeo  ${LIB_KIO} ${QT_QTXML_LIBRARY} )
+target_link_libraries(kfile_drgeo  ${KDE4_KIO_LIBS} ${QT_QTXML_LIBRARY} )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kfile_drgeo )
 
@@ -28,7 +28,7 @@ kde4_add_plugin(kfile_kig ${kfile_kig_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kfile_kig )
 
-target_link_libraries(kfile_kig  ${LIB_KIO} ${QT_QTXML_LIBRARY} )
+target_link_libraries(kfile_kig  ${KDE4_KIO_LIBS} ${QT_QTXML_LIBRARY} )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kfile_kig )
 
