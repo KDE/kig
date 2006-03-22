@@ -84,7 +84,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc )
   : KAction( act->descriptiveName(),
              doc.instance()->iconLoader()->loadIcon(
-               act->iconFileName(), KIcon::Toolbar, 0, KIcon::DefaultState, 0L, true ),
+               act->iconFileName(), K3Icon::Toolbar, 0, K3Icon::DefaultState, 0L, true ),
              act->shortcut(),
              0, 0,              // no slot connection
              doc.actionCollection(), act->actionName() ),

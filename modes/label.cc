@@ -178,7 +178,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
       const char* iconfile = o->imp()->iconForProperty( i );
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = mdoc.instance()->iconLoader()->loadIcon( iconfile, KIcon::Small, 22, KIcon::DefaultState, 0L, true );
+        QPixmap pix = mdoc.instance()->iconLoader()->loadIcon( iconfile, K3Icon::Small, 22, K3Icon::DefaultState, 0L, true );
         act = p->addAction( QIcon( pix ), s );
         act->setData( QVariant::fromValue( i + 1 ) );
       }

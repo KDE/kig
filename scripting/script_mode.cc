@@ -271,7 +271,7 @@ void ScriptModeBase::setScriptType( ScriptType::Type type )
   if ( mtype != ScriptType::Unknown )
   {
     KIconLoader* il = mpart.instance()->iconLoader();
-    mwizard->setIcon( il->loadIcon( ScriptType::icon( mtype ), KIcon::Small ) );
+    mwizard->setIcon( il->loadIcon( ScriptType::icon( mtype ), K3Icon::Small ) );
   }
 }
 

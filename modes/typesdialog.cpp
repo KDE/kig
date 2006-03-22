@@ -250,7 +250,7 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
         return macro_with_image
                  .arg( melems[ index.row() ]->name() )
                  .arg( wrapAt( melems[ index.row() ]->description() ) )
-                 .arg( KGlobal::iconLoader()->iconPath( melems[ index.row() ]->icon(), - KIcon::SizeMedium ) )
+                 .arg( KGlobal::iconLoader()->iconPath( melems[ index.row() ]->icon(), - K3Icon::SizeMedium ) )
                  .arg( melems[ index.row() ]->type() );
     }
     default:
@@ -304,10 +304,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 
   // improving GUI look'n'feel...
   KIconLoader* il = part.instance()->iconLoader();
-  mtypeswidget->buttonEdit->setIcon( QIcon( il->loadIcon( "edit", KIcon::Small ) ) );
-  mtypeswidget->buttonRemove->setIcon( QIcon( il->loadIcon( "editdelete", KIcon::Small ) ) );
-  mtypeswidget->buttonExport->setIcon( QIcon( il->loadIcon( "fileexport", KIcon::Small ) ) );
-  mtypeswidget->buttonImport->setIcon( QIcon( il->loadIcon( "fileimport", KIcon::Small ) ) );
+  mtypeswidget->buttonEdit->setIcon( QIcon( il->loadIcon( "edit", K3Icon::Small ) ) );
+  mtypeswidget->buttonRemove->setIcon( QIcon( il->loadIcon( "editdelete", K3Icon::Small ) ) );
+  mtypeswidget->buttonExport->setIcon( QIcon( il->loadIcon( "fileexport", K3Icon::Small ) ) );
+  mtypeswidget->buttonImport->setIcon( QIcon( il->loadIcon( "fileimport", K3Icon::Small ) ) );
 
   std::vector<BaseListElement*> el;
   // loading macros...
