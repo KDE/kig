@@ -154,7 +154,7 @@ kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kigpart )
 
-target_link_libraries(kigpart  ${LIB_KPARTS} kdeprint )
+target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} kdeprint )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kigpart )
 
