@@ -24,6 +24,7 @@
 
 #include <qlist.h>
 
+#include <kactionclasses.h>
 #include <kparts/part.h>
 
 #include <vector>
@@ -39,9 +40,21 @@ class GUIAction;
 class KigGUIAction;
 class KigDocument;
 class KigMode;
+class KigPart;
 class KigView;
 class KigWidget;
 class ObjectHolder;
+
+class SetCoordinateSystemAction
+  : public KSelectAction
+{
+  Q_OBJECT
+  KigPart& md;
+public:
+  SetCoordinateSystemAction( KigPart& d, KActionCollection* parent );
+private slots:
+  void slotActivated( int index );
+};
 
 /**
  * This is a "Part".  It that does all the real work in a KPart

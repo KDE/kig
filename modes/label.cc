@@ -110,7 +110,7 @@ void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
   case RequestingText:
   case SelectingArgs:
     d->wiz->raise();
-    d->wiz->setActiveWindow();
+    d->wiz->activateWindow();
     break;
   default:
     break;
@@ -152,7 +152,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
   case RequestingText:
   case SelectingArgs:
     d->wiz->raise();
-    d->wiz->setActiveWindow();
+    d->wiz->activateWindow();
     break;
   case ReallySelectingArgs:
   {
@@ -437,7 +437,7 @@ void TextLabelModeBase::updateLinksLabel()
 
 void TextLabelModeBase::linkClicked( int i )
 {
-  mdoc.widget()->setActiveWindow();
+  mdoc.widget()->activateWindow();
   mdoc.widget()->raise();
 
   assert( d->args.size() >= static_cast<uint>( i + 1 ) );

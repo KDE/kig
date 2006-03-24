@@ -80,22 +80,14 @@ KAboutData* KigPart::createAboutData()
   return kigAboutData( "kig", I18N_NOOP( "KigPart" ) );
 }
 
-class SetCoordinateSystemAction
-  : public KSelectAction
-{
-  KigPart& md;
-public:
-  SetCoordinateSystemAction( KigPart& d, KActionCollection* parent );
-  void slotActivated( int index );
-};
-
 SetCoordinateSystemAction::SetCoordinateSystemAction(
   KigPart& d, KActionCollection* parent )
-  : KSelectAction( i18n( "&Set Coordinate System" ), (KShortcut)0, parent, "settings_set_coordinate_system" ),
+  : KSelectAction( i18n( "&Set Coordinate System" ), parent, "settings_set_coordinate_system" ),
     md( d )
 {
   setItems( CoordinateSystemFactory::names() );
   setCurrentItem( md.document().coordinateSystem().id() );
+  connect( this, SIGNAL( triggered( int ) ), this, SLOT( slotActivated( int ) ) );
 }
 
 void SetCoordinateSystemAction::slotActivated( int index )

@@ -54,7 +54,7 @@ KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device,
     mNeedOverlay( no ),
     overlayenlarge( 0 )
 {
-  mP.setBackgroundColor( Qt::white );
+  mP.setBackground( QBrush( Qt::white ) );
 }
 
 KigPainter::~KigPainter()
@@ -645,7 +645,7 @@ void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
 
   setBrushStyle( Qt::SolidPattern );
 //  drawPolygon( arrow );
-  mP.drawPolygon( arrow, false, 0, -1 );
+  mP.drawPolygon( arrow );
 
 //  if ( mNeedOverlay ) mOverlay.push_back( toScreen( r ) );
   setWholeWinOverlay();   //mp: ugly! why not compute a correct overlay?

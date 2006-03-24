@@ -793,9 +793,8 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QString& nam
 QAction* NormalModePopupObjects::addInternalAction( int menu, KAction* act )
 {
   QMenu* m = mmenus[menu];
-  act->plug( m );
-  // FIXME it should return the QAction* of the newly plugged action
-  return m->menuAction();
+  m->addAction( act );
+  return act;
 }
 
 PopupActionProvider::~PopupActionProvider()
