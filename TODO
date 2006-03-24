@@ -13,6 +13,7 @@
    better way to manage all this. pino: seems pressing the stop button
    n times, where n are the times you pressed escape, cancel all the
    constructions, so the problem is the behaviour of escape.
+   (note: it seems fixed with kdelibs4)
 
 - The polar coordinate system blocks Kig when zooming. Select the
   polar coordinate system, use the Select shown area tool ( or your

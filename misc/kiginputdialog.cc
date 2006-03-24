@@ -149,7 +149,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 
   d->m_comboBox = new KComboBox( frame );
   d->m_comboBox->addItems( Goniometry::systemList() );
-  d->m_comboBox->setCurrentItem( d->m_gonio.system() );
+  d->m_comboBox->setCurrentIndex( d->m_gonio.system() );
   d->m_comboBox->setWhatsThis(
         i18n( "Choose from this list the goniometric unit you want to use to "
               "modify the size of this angle.<br>\n"

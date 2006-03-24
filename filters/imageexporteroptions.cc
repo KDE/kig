@@ -48,7 +48,7 @@ ImageExporterOptions::ImageExporterOptions( QWidget* parent )
   expwidget->keepAspectRatio->setChecked( true );
   layout()->setMargin( 0 );
 
-  expwidget->comboUnit->insertStringList( Unit::unitList() );
+  expwidget->comboUnit->addItems( Unit::unitList() );
 
   connect( expwidget->WidthInput, SIGNAL( valueChanged( double ) ), this, SLOT( slotWidthChanged( double ) ) );
   connect( expwidget->HeightInput, SIGNAL( valueChanged( double ) ), this, SLOT( slotHeightChanged( double ) ) );

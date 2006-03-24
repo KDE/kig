@@ -82,11 +82,8 @@ void ConstructibleAction::act( KigPart& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc )
-  : KAction( act->descriptiveName(),
-             doc.instance()->iconLoader()->loadIcon(
-               act->iconFileName(), K3Icon::Toolbar, 0, K3Icon::DefaultState, 0L, true ),
-             act->shortcut(),
-             0, 0,              // no slot connection
+  : KAction( KIcon( act->iconFileName(), doc.instance()->iconLoader() ),
+             act->descriptiveName(),
              doc.actionCollection(), act->actionName() ),
   mact( act ),
   mdoc( doc )
@@ -95,6 +92,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
   QString tooltip = act->descriptiveName();
   tooltip.replace( QRegExp( "&&" ), "&" );
   setToolTip( tooltip );
+  setShortcut( KShortcut( act->shortcut() ) );
   connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
 }
 

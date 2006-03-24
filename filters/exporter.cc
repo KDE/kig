@@ -59,7 +59,7 @@ static bool operator<( const QColor& a, const QColor& b )
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )
-  : KAction( exp->menuEntryName(), KShortcut(), 0L, 0, parent, "action" ),
+  : KAction( exp->menuEntryName(), parent, "action" ),
     mexp( exp ), mdoc( doc ), mw( w )
 {
   QString iconstr = exp->menuIcon();
@@ -172,7 +172,7 @@ void KigExportManager::addMenuAction( const KigPart* doc, KigWidget* w,
   KActionMenu* m =
     new KActionMenu( i18n( "&Export To" ), coll, "file_export" );
   for ( uint i = 0; i < mexporters.size(); ++i )
-    m->insert( new ExporterAction( doc, w, coll, mexporters[i] ) );
+    m->addAction( new ExporterAction( doc, w, coll, mexporters[i] ) );
 }
 
 KigExportManager* KigExportManager::instance()
