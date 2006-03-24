@@ -18,6 +18,8 @@
 #ifndef KIG_FILTERS_EXPORTER_H
 #define KIG_FILTERS_EXPORTER_H
 
+#include <kaction.h>
+
 #include <vector>
 
 class QString;
@@ -37,6 +39,21 @@ public:
   static KigExportManager* instance();
   void addMenuAction( const KigPart* doc, KigWidget* w,
                       KActionCollection* coll );
+};
+
+class ExporterAction
+  : public KAction
+{
+  Q_OBJECT
+
+  KigExporter* mexp;
+  const KigPart* mdoc;
+  KigWidget* mw;
+public:
+  ExporterAction( const KigPart* doc, KigWidget* w,
+                  KActionCollection* parent, KigExporter* exp );
+private slots:
+  void slotActivated();
 };
 
 /**

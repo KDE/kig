@@ -95,6 +95,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
   QString tooltip = act->descriptiveName();
   tooltip.replace( QRegExp( "&&" ), "&" );
   setToolTip( tooltip );
+  connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
 }
 
 void KigGUIAction::slotActivated()

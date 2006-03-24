@@ -91,7 +91,7 @@ public:
 
 SetCoordinateSystemAction::SetCoordinateSystemAction(
   KigPart& d, KActionCollection* parent )
-  : KSelectAction( i18n( "&Set Coordinate System" ), 0, parent, "settings_set_coordinate_system" ),
+  : KSelectAction( i18n( "&Set Coordinate System" ), (KShortcut)0, parent, "settings_set_coordinate_system" ),
     md( d )
 {
   setItems( CoordinateSystemFactory::names() );
@@ -272,7 +272,7 @@ void KigPart::setupActions()
   a = KStdAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
-  a->setIcon( QIcon( l->loadIcon( "view_fit_to_page", K3Icon::Toolbar ) ) );
+  a->setIcon( KIcon( "view_fit_to_page", l ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 

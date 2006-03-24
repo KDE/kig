@@ -16,6 +16,7 @@
 // 02110-1301, USA.
 
 #include "exporter.h"
+#include "exporter.moc"
 
 #include "imageexporteroptions.h"
 #include "latexexporter.h"
@@ -37,20 +38,16 @@
 #include "../objects/polygon_imp.h"
 #include "../objects/text_imp.h"
 
-#include <qcheckbox.h>
 #include <qcolor.h>
 #include <qfile.h>
-#include <qiconset.h>
 #include <qtextstream.h>
 
-#include <kaction.h>
 #include <kiconloader.h>
 #include <kimageio.h>
 #include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
-#include <knuminput.h>
 
 #include <map>
 
@@ -60,30 +57,15 @@ static bool operator<( const QColor& a, const QColor& b )
   return a.rgb() < b.rgb();
 }
 
-class ExporterAction
-  : public KAction
-{
-  KigExporter* mexp;
-  const KigPart* mdoc;
-  KigWidget* mw;
-public:
-  ExporterAction( const KigPart* doc, KigWidget* w,
-                  KActionCollection* parent, KigExporter* exp );
-  void slotActivated();
-};
-
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )
   : KAction( exp->menuEntryName(), KShortcut(), 0L, 0, parent, "action" ),
     mexp( exp ), mdoc( doc ), mw( w )
 {
   QString iconstr = exp->menuIcon();
-  if ( iconstr.isEmpty() )
-    return;
-  KIconLoader* l = doc->instance()->iconLoader();
-  QPixmap icon = l->loadIcon( iconstr, K3Icon::Small, 16, K3Icon::DefaultState, 0L, true );
-  if ( !icon.isNull() )
-    setIcon( QIcon( icon ) );
+  if ( !iconstr.isEmpty() )
+    setIcon( KIcon( iconstr, doc->instance()->iconLoader() ) );
+  connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
 }
 
 void ExporterAction::slotActivated()

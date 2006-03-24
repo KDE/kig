@@ -40,11 +40,12 @@ class KigGUIAction
 public:
   KigGUIAction( GUIAction* act,
                 KigPart& doc );
-  void slotActivated();
 
   GUIAction* guiAction();
 
   void plug( KigPart* doc );
+private slots:
+  void slotActivated();
 };
 
 class GUIAction
