@@ -90,7 +90,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
 
     // displaying the left border with line numbers
     KToggleAction *a = dynamic_cast<KToggleAction*>( document->actionCollection()->action( "view_line_numbers" ) );
-    a->activate();
+    a->trigger();
 
 #if 0
     // saving the state of dynamic word wrap and disabling it
