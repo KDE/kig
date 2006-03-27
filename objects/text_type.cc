@@ -31,10 +31,10 @@
 
 #include <algorithm>
 
+#include <qapplication.h>
 #include <qclipboard.h>
 #include <qstringlist.h>
 
-#include <kapplication.h>
 #include <kfontdialog.h>
 
 #include <cmath>
@@ -193,7 +193,7 @@ void GenericTextType::executeAction( int i, ObjectHolder& oh, ObjectTypeCalcer& 
 
   if ( i == 0 )
   {
-    QClipboard* cb = kapp->clipboard();
+    QClipboard* cb = QApplication::clipboard();
 
     // copy the text into the clipboard
     const TextImp* ti = static_cast<const TextImp*>( c.imp() );

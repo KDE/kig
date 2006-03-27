@@ -218,7 +218,6 @@ void KigPart::setupActions()
 
   // we need icons...
   KIconLoader* l = instance()->iconLoader();
-  QPixmap tmp;
 
   aDeleteObjects = new KAction(
       i18n("&Delete Objects"), "editdelete", Qt::Key_Delete, this,
