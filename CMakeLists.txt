@@ -2,12 +2,11 @@ kde4_header()
 project(kig)
 
 set(libkigparttemp_SRCS
-	${CMAKE_SOURCE_DIR}/kig/kig/kig_document.cc 
-	${CMAKE_SOURCE_DIR}/kig/kig/kig_part.cpp 
-	${CMAKE_SOURCE_DIR}/kig/kig/kig_view.cpp 
-	${CMAKE_SOURCE_DIR}/kig/kig/kig_commands.cpp
-	)
-
+   ${CMAKE_SOURCE_DIR}/kig/kig/kig_document.cc
+   ${CMAKE_SOURCE_DIR}/kig/kig/kig_part.cpp
+   ${CMAKE_SOURCE_DIR}/kig/kig/kig_view.cpp
+   ${CMAKE_SOURCE_DIR}/kig/kig/kig_commands.cpp
+)
 
 set(libmodes_SRCS
    ${CMAKE_SOURCE_DIR}/kig/modes/base_mode.cc
@@ -37,109 +36,115 @@ kde4_add_ui_files(libmodes_SRCS
 )
 
 set(libmisc_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/misc/argsparser.cpp 
-   ${CMAKE_SOURCE_DIR}/kig/misc/builtin_stuff.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/calcpaths.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/common.cpp 
-   ${CMAKE_SOURCE_DIR}/kig/misc/conic-common.cpp 
-   ${CMAKE_SOURCE_DIR}/kig/misc/coordinate.cpp 
-   ${CMAKE_SOURCE_DIR}/kig/misc/coordinate_system.cpp 
-   ${CMAKE_SOURCE_DIR}/kig/misc/cubic-common.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/equation.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/goniometry.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/guiaction.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/kigfiledialog.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/kiginputdialog.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/kignumerics.cpp 
-   ${CMAKE_SOURCE_DIR}/kig/misc/kigpainter.cpp 
-   ${CMAKE_SOURCE_DIR}/kig/misc/kigtransform.cpp 
-   ${CMAKE_SOURCE_DIR}/kig/misc/lists.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/object_constructor.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/object_hierarchy.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/rect.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/screeninfo.cc 
-   ${CMAKE_SOURCE_DIR}/kig/misc/special_constructors.cc 
+   ${CMAKE_SOURCE_DIR}/kig/misc/argsparser.cpp
+   ${CMAKE_SOURCE_DIR}/kig/misc/builtin_stuff.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/calcpaths.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/common.cpp
+   ${CMAKE_SOURCE_DIR}/kig/misc/conic-common.cpp
+   ${CMAKE_SOURCE_DIR}/kig/misc/coordinate.cpp
+   ${CMAKE_SOURCE_DIR}/kig/misc/coordinate_system.cpp
+   ${CMAKE_SOURCE_DIR}/kig/misc/cubic-common.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/equation.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/goniometry.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/guiaction.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/kigfiledialog.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/kiginputdialog.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/kignumerics.cpp
+   ${CMAKE_SOURCE_DIR}/kig/misc/kigpainter.cpp
+   ${CMAKE_SOURCE_DIR}/kig/misc/kigtransform.cpp
+   ${CMAKE_SOURCE_DIR}/kig/misc/lists.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/object_constructor.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/object_hierarchy.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/rect.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/screeninfo.cc
+   ${CMAKE_SOURCE_DIR}/kig/misc/special_constructors.cc
    ${CMAKE_SOURCE_DIR}/kig/misc/unit.cc
 )
 
 set(libfilters_SRCS
-	${CMAKE_SOURCE_DIR}/kig/filters/cabri-filter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/cabri-utils.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/drgeo-filter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/exporter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/filter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/filters-common.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/imageexporteroptions.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/kgeo-filter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/kseg-filter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/latexexporter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/latexexporteroptions.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/native-filter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/svgexporter.cc
-	${CMAKE_SOURCE_DIR}/kig/filters/svgexporteroptions.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/cabri-filter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/cabri-utils.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/drgeo-filter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/exporter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/filter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/filters-common.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/imageexporteroptions.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/kgeo-filter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/kseg-filter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/latexexporter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/latexexporteroptions.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/native-filter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/svgexporter.cc
+   ${CMAKE_SOURCE_DIR}/kig/filters/svgexporteroptions.cc
 )
-kde4_add_ui_files(libfilters_SRCS 
-	${CMAKE_SOURCE_DIR}/kig/filters/imageexporteroptionswidget.ui
-	${CMAKE_SOURCE_DIR}/kig/filters/latexexporteroptionswidget.ui
-	${CMAKE_SOURCE_DIR}/kig/filters/svgexporteroptionswidget.ui
-	)
+kde4_add_ui_files(libfilters_SRCS
+   ${CMAKE_SOURCE_DIR}/kig/filters/imageexporteroptionswidget.ui
+   ${CMAKE_SOURCE_DIR}/kig/filters/latexexporteroptionswidget.ui
+   ${CMAKE_SOURCE_DIR}/kig/filters/svgexporteroptionswidget.ui
+)
 
 set(libobjects_SRCS
    ${CMAKE_SOURCE_DIR}/kig/objects/angle_type.cc
    ${CMAKE_SOURCE_DIR}/kig/objects/arc_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/base_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/bogus_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/circle_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/circle_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/polygon_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/common.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/conic_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/conic_types.cc 
+   ${CMAKE_SOURCE_DIR}/kig/objects/base_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/bogus_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/circle_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/circle_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/polygon_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/common.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/conic_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/conic_types.cc
    ${CMAKE_SOURCE_DIR}/kig/objects/cubic_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/cubic_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/curve_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/intersection_types.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/inversion_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/line_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/line_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/locus_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_calcer.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_drawer.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_factory.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_holder.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_imp_factory.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_type_factory.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/other_imp.cc 
+   ${CMAKE_SOURCE_DIR}/kig/objects/cubic_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/curve_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/intersection_types.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/inversion_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/line_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/line_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/locus_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/object_calcer.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/object_drawer.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/object_factory.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/object_holder.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/object_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/object_imp_factory.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/object_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/object_type_factory.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/other_imp.cc
    ${CMAKE_SOURCE_DIR}/kig/objects/other_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/point_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/point_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/polygon_imp.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/tangent_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/centerofcurvature_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/tests_type.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/text_imp.cc 
+   ${CMAKE_SOURCE_DIR}/kig/objects/point_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/point_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/polygon_imp.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/tangent_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/centerofcurvature_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/tests_type.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/text_imp.cc
    ${CMAKE_SOURCE_DIR}/kig/objects/text_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/transform_types.cc 
-   ${CMAKE_SOURCE_DIR}/kig/objects/vector_type.cc 
+   ${CMAKE_SOURCE_DIR}/kig/objects/transform_types.cc
+   ${CMAKE_SOURCE_DIR}/kig/objects/vector_type.cc
    ${CMAKE_SOURCE_DIR}/kig/objects/special_imptypes.cc
 )
 
-add_subdirectory( objects ) 
-add_subdirectory( misc ) 
-add_subdirectory( modes ) 
-add_subdirectory( icons ) 
-add_subdirectory( filters ) 
-add_subdirectory( kig ) 
-add_subdirectory( mimetypes ) 
-add_subdirectory( macros ) 
-add_subdirectory( kfile ) 
-add_subdirectory( data ) 
-add_subdirectory( pykig ) 
+add_subdirectory( objects )
+add_subdirectory( misc )
+add_subdirectory( modes )
+add_subdirectory( icons )
+add_subdirectory( filters )
+add_subdirectory( kig )
+add_subdirectory( mimetypes )
+add_subdirectory( macros )
+add_subdirectory( kfile )
+add_subdirectory( data )
+add_subdirectory( pykig )
 
 message(STATUS "${CMAKE_CURRENT_SOURCE_DIR}: skipped subdir $(scriptingdir)")
-include_directories( ${CMAKE_SOURCE_DIR}/kig/modes/ ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories(
+   ${KDE4_INCLUDE_DIR}
+   ${QT_INCLUDES}
+   ${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_CURRENT_BINARY_DIR}
+   ${CMAKE_SOURCE_DIR}/kig/modes
+)
 
 
 ########### next target ###############
@@ -153,7 +158,7 @@ kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kigpart )
 
-target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} kdeprint )
+target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} ${KDE4_KDEPRINT_LIBS} )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kigpart )
 
