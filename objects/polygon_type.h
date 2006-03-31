@@ -93,6 +93,11 @@ public:
   const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
 };
 
+int polygonlineintersection( const std::vector<Coordinate>& ppoints, 
+      const Coordinate a, const Coordinate b,
+      bool boundleft, bool boundright, double& t1, double& t2,
+      std::vector<Coordinate>::const_iterator& intersectionside );
+
 class PolygonLineIntersectionType
   : public ArgsParserObjectType
 {
@@ -100,6 +105,17 @@ class PolygonLineIntersectionType
   ~PolygonLineIntersectionType();
 public:
   static const PolygonLineIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+class PolygonPolygonIntersectionType
+  : public ArgsParserObjectType
+{
+  PolygonPolygonIntersectionType();
+  ~PolygonPolygonIntersectionType();
+public:
+  static const PolygonPolygonIntersectionType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };
