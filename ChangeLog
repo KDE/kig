@@ -1,3 +1,20 @@
+2006-03-31  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Add polygon-polygon intersection.  This is not yet
+	completely functional: right now it requires both
+	polygons to be non-self-intersecting, and it still
+	does not work in special situation such as two polygons
+	with more than one or two common vertices.
+	In such cases an InvalidImp is returned instead of the
+	correct intersection polygon.
+
+2006-02-28  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Various improvements concerning internal scripting usability
+	such as: allow working with numeric/boolean labels (as input
+	parameters), allow returning a number or a string, allow
+	various constructions to depend on numeric labels
+
 2006-02-17  Pino Toscano <toscano.pino@tiscali.it>
 
 	* Adding the support for editing a Python script. It's possible

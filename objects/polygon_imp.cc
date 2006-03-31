@@ -450,6 +450,54 @@ int PolygonImp::windingNumber() const
   return winding;
 }
 
+bool PolygonImp::isTwisted() const
+{
+  /*
+   * returns true if this is a "twisted" polygon, i.e.
+   * with selfintersecting sides
+   */
+
+  std::vector<Coordinate>::const_iterator ia, ib, ic, id;
+  double abx, aby, cdx, cdy, acx, acy, adx, ady, cax, cay, cbx, cby;
+  bool pointbelow, prevpointbelow;
+
+  if ( mpoints.size() <= 3 ) return false;
+  ia = mpoints.end() - 1;
+
+  for ( ib = mpoints.begin(); ib + 1 != mpoints.end(); ib++)
+  {
+    abx = ib->x - ia->x;
+    aby = ib->y - ia->y;
+    ic = ib + 1;
+    acx = ic->x - ia->x;
+    acy = ic->y - ia->y;
+    prevpointbelow = ( abx*acy <= aby*acx );
+
+    for ( id = ib + 2; id != mpoints.end(); id++)
+    {
+      if ( id == ia ) break;
+      adx = id->x - ia->x;
+      ady = id->y - ia->y;
+      pointbelow = ( abx*ady <= aby*adx );
+      if ( prevpointbelow != pointbelow )
+      {
+        /* il segmento cd interseca il supporto di ab */
+        cdx = id->x - ic->x;
+        cdy = id->y - ic->y;
+        cax = ia->x - ic->x;
+        cay = ia->y - ic->y;
+        cbx = ib->x - ic->x;
+        cby = ib->y - ic->y;
+        if ( ( cdx*cay <= cdy*cax ) != ( cdx*cby <= cdy*cbx ) ) return true;
+      }
+      prevpointbelow = pointbelow;
+      ic = id;
+    }
+    ia = ib;
+  }
+  return false;
+}
+
 bool PolygonImp::isMonotoneSteering() const
 {
   /*

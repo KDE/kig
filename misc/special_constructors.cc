@@ -1467,6 +1467,12 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "curvelineintersection" );
 
+  SimpleObjectTypeConstructor* polygonpolygon =
+    new SimpleObjectTypeConstructor(
+      PolygonPolygonIntersectionType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "curvelineintersection" );
+
   merge( lineline );
   merge( circlecircle );
   merge( lineconic );
@@ -1474,6 +1480,7 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
   merge( conicconic );
   merge( arcline );
   merge( polygonline );
+  merge( polygonpolygon );
 }
 
 GenericIntersectionConstructor::~GenericIntersectionConstructor()
