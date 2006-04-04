@@ -248,26 +248,10 @@ std::vector<ObjectCalcer*> PolygonBNPType::movableParents( const ObjectTypeCalce
  * regular polygon by center and vertex
  */
 
-//static const char constructpoligonthroughpointstat[] = I18N_NOOP( "Construct a polygon with this vertex" );
-//
-//static const char constructpoligonwithcenterstat[] = I18N_NOOP( "Construct a polygon with this center" );
-//
-//static const ArgsParser::spec argsspecPoligonBCV[] =
-//{
-//  { PointImp::stype(), constructpoligonwithcenterstat,
-//    I18N_NOOP( "Select the center of the new polygon..." ), false },
-//  { PointImp::stype(), constructpoligonthroughpointstat,
-//    I18N_NOOP( "Select a vertex for the new polygon..." ), true },
-//  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
-//};
-
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PolygonBCVType )
 
 PolygonBCVType::PolygonBCVType()
   : ObjectType( "PoligonBCV" )
-// we keep the name "PoligonBCV" although syntactically incorrect for
-// compatibility reasons with old kig files
-//  : ArgsParserObjectType( "PoligonBCV", argsspecPoligonBCV, 3 )
 {
 }
 
@@ -405,7 +389,9 @@ static const ArgsParser::spec argsspecPolygonLineIntersection[] =
 {
   { PolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
     I18N_NOOP( "Select the polygon of which you want the intersection with a line..." ), false },
-  { AbstractLineImp::stype(), "Intersect this line with a polygon", "Select the line of which you want the intersection with a polygon...", false }
+  { AbstractLineImp::stype(), 
+    I18N_NOOP( "Intersect this line with a polygon" ), 
+    I18N_NOOP( "Select the line of which you want the intersection with a polygon..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( PolygonLineIntersectionType )
