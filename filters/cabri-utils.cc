@@ -30,8 +30,8 @@
 
 #define KIG_CABRI_FILTER_PARSE_ERROR \
 { \
-  QString locs = i18n( "An error was encountered at line %1 in file %2." ) \
-    .arg( __LINE__ ).arg( __FILE__ ); \
+  QString locs = i18n( "An error was encountered at line %1 in file %2.", \
+      __LINE__, __FILE__ ); \
   m_filter->publicParseError( file, locs ); \
   return 0; \
 }

@@ -130,8 +130,8 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   if ( ! file.open( QIODevice::WriteOnly ) )
   {
     KMessageBox::sorry( &w,
-                        i18n( "The file \"%1\" could not be opened. Please check if the file permissions are set correctly." )
-                        .arg( filename ) );
+                        i18n( "The file \"%1\" could not be opened. Please check if the file permissions are set correctly." ,
+                          filename ) );
     return;
   };
 
@@ -146,7 +146,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   if ( types.isEmpty() ) return; // TODO error dialog?
   if ( !img.save( filename, types.at(0).toLatin1() ) )
   {
-    KMessageBox::error( &w, i18n( "Sorry, something went wrong while saving to image \"%1\"" ).arg( filename ) );
+    KMessageBox::error( &w, i18n( "Sorry, something went wrong while saving to image \"%1\"", filename ) );
   }
 
 }
@@ -621,8 +621,8 @@ void XFigExporter::run( const KigPart& doc, KigWidget& w )
   if ( ! file.open( QIODevice::WriteOnly ) )
   {
     KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
-                                  "check if the file permissions are set correctly." )
-                        .arg( file_name ) );
+                                  "check if the file permissions are set correctly." ,
+                          file_name ) );
     return;
   };
   QTextStream stream( &file );

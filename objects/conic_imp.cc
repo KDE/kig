@@ -263,13 +263,13 @@ QString ConicImp::polarEquationString( const KigDocument& w ) const
   ret.addTerm( -data.ecostheta0, i18n( "cos theta" ), needsign );
   ret.addTerm( -data.esintheta0, i18n( "sin theta" ), needsign );
   ret.append( ")\n" );
-  ret.append( i18n( "[centered at %1]" ) );
+  ret.append( ki18n( "[centered at %1]" )
+                   .subs( w.coordinateSystem().fromScreen( data.focus1, w ) )
+//                   .subs( data.pdimen, 0, 'g', 3 );
+//                   .subs( -data.ecostheta0, 0, 'g', 3 );
+//                   .subs( -data.esintheta0, 0, 'g', 3 );
+                   .toString() );
 
-//  ret = ret.arg( data.pdimen, 0, 'g', 3 );
-//  ret = ret.arg( -data.ecostheta0, 0, 'g', 3 );
-//  ret = ret.arg( -data.esintheta0, 0, 'g', 3 );
-
-  ret = ret.arg( w.coordinateSystem().fromScreen( data.focus1, w ) );
   ret.prettify();
   return ret;
 }

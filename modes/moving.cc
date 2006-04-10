@@ -154,7 +154,7 @@ void MovingMode::stopMove()
 {
   QString text = d->emo.size() == 1 ?
                  d->emo[0]->imp()->type()->moveAStatement() :
-                 i18n( "Move %1 Objects" ).arg( d->emo.size() );
+                 i18n( "Move %1 Objects", d->emo.size() );
   KigCommand* mc = new KigCommand( mdoc, text );
   d->mon->finish( mc );
   mdoc.history()->addCommand( mc );

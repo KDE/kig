@@ -203,7 +203,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       title = objs[0]->imp()->type()->translatedName();
   }
   else
-    title = i18n( "%1 Objects" ).arg( objs.size() );
+    title = i18n( "%1 Objects", objs.size() );
   addTitle( title );
 
   if ( !empty )
@@ -1141,7 +1141,7 @@ ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
                                         const std::vector<ObjectHolder*>& objs )
   : KMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
 {
-  addTitle( i18n( "%n Object", "%n Objects", mobjs.size() ) );
+  addTitle( i18np( "%n Object", "%n Objects", mobjs.size() ) );
   QAction* newaction = 0;
   for ( uint i = 0; i < mobjs.size(); i++ )
   {

@@ -118,9 +118,9 @@ double Unit::convert( double value, Unit::MetricalUnit from, Unit::MetricalUnit 
 QStringList Unit::unitList()
 {
   QStringList ul;
-  ul << i18n( "Translators: Pixel", "pixel" );
-  ul << i18n( "Translators: Centimeter", "cm" );
-  ul << i18n( "Translators: Inch", "in" );
+  ul << i18nc( "Translators: Pixel", "pixel" );
+  ul << i18nc( "Translators: Centimeter", "cm" );
+  ul << i18nc( "Translators: Inch", "in" );
   return ul;
 }
 

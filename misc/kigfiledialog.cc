@@ -51,8 +51,8 @@ void KigFileDialog::accept()
   if ( QFile::exists( sFile ) )
   {
     int ret = KMessageBox::warningContinueCancel( this,
-                                         i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
-                                         .arg( sFile ), i18n( "Overwrite File?" ), i18n("Overwrite") );
+                                         i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ,
+                                           sFile ), i18n( "Overwrite File?" ), i18n("Overwrite") );
     if ( ret != KMessageBox::Continue )
     {
       KFileDialog::reject();

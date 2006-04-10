@@ -54,8 +54,8 @@ protected:
 #define KIG_FILTER_PARSE_ERROR \
   { \
     QString locs = i18n( "An error was encountered at " \
-                         "line %1 in file %2." ) \
-      .arg( __LINE__ ).arg( __FILE__ ); \
+                         "line %1 in file %2.", \
+        __LINE__, __FILE__ ); \
     parseError( file, locs ); \
     return 0; \
   }

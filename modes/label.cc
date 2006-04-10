@@ -415,7 +415,7 @@ void TextLabelModeBase::updateLinksLabel()
     }
     else
       // otherwise, we show a stub...
-      linktext = i18n( "argument %1" ).arg( count + 1 );
+      linktext = i18n( "argument %1", count + 1 );
 
     d->wiz->myCustomWidget1->addLink( linktext, buf );
     // set pos and prevpos to the next char after the last match, so
@@ -445,7 +445,7 @@ void TextLabelModeBase::linkClicked( int i )
   d->mwawd = ReallySelectingArgs;
   d->mwaaws = i;
 
-  mdoc.emitStatusBarText( i18n( "Selecting argument %1" ).arg( i + 1 ) );
+  mdoc.emitStatusBarText( i18n( "Selecting argument %1", i + 1 ) );
 }
 
 void TextLabelModeBase::redrawScreen( KigWidget* w )

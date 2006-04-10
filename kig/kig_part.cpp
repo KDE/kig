@@ -348,7 +348,7 @@ bool KigPart::openFile()
   {
     KMessageBox::sorry( widget(),
                         i18n( "The file \"%1\" you tried to open does not exist. "
-                              "Please verify that you entered the correct path." ).arg( m_file ),
+                              "Please verify that you entered the correct path.", m_file ),
                         i18n( "File Not Found" ) );
     return false;
   };
@@ -369,7 +369,7 @@ bool KigPart::openFile()
               "question would be worth implementing support for, you can "
               "always ask us nicely on mailto:toscano.pino@tiscali.it "
               "or do the work yourself and send me a patch."
-          ).arg(mimeType->name()),
+          , mimeType->name()),
         i18n( "Format Not Supported" )
         );
     return false;
@@ -592,8 +592,8 @@ bool KigPart::internalSaveAs()
   else if ( QFileInfo( file_name ).exists() )
   {
     int ret = KMessageBox::warningContinueCancel( m_widget,
-                                         i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
-                                         .arg( file_name ), i18n( "Overwrite File?" ), i18n("Overwrite") );
+                                         i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ,
+                                           file_name ), i18n( "Overwrite File?" ), i18n("Overwrite") );
     if ( ret != KMessageBox::Continue )
     {
       return false;
@@ -823,7 +823,7 @@ void KigPart::hideObjects( const std::vector<ObjectHolder*>& inos )
   if ( os.size() == 0 ) return;
   else if ( os.size() == 1 )
     kc = new KigCommand( *this, os[0]->imp()->type()->hideAStatement() );
-  else kc = new KigCommand( *this, i18n( "Hide %n Object", "Hide %n Objects", os.size() ) );
+  else kc = new KigCommand( *this, i18np( "Hide %n Object", "Hide %n Objects", os.size() ) );
   for ( std::vector<ObjectHolder*>::iterator i = os.begin();
         i != os.end(); ++i )
     kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( false ) ) );
@@ -842,7 +842,7 @@ void KigPart::showObjects( const std::vector<ObjectHolder*>& inos )
   if ( os.size() == 0 ) return;
   else if ( os.size() == 1 )
     kc = new KigCommand( *this, os[0]->imp()->type()->showAStatement() );
-  else kc = new KigCommand( *this, i18n( "Show %n Object", "Show %n Objects", os.size() ) );
+  else kc = new KigCommand( *this, i18np( "Show %n Object", "Show %n Objects", os.size() ) );
   for ( std::vector<ObjectHolder*>::iterator i = os.begin();
         i != os.end(); ++i )
     kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( true ) ) );

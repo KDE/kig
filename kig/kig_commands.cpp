@@ -97,7 +97,7 @@ KigCommand* KigCommand::removeCommand( KigPart& doc, const std::vector<ObjectHol
   if ( os.size() == 1 )
     text = os.back()->imp()->type()->removeAStatement();
   else
-    text = i18n( "Remove %1 Objects" ).arg( os.size() );
+    text = i18n( "Remove %1 Objects", os.size() );
   KigCommand* ret = new KigCommand( doc, text );
   ret->addTask( new RemoveObjectsTask( os ) );
   return ret;
@@ -109,7 +109,7 @@ KigCommand* KigCommand::addCommand( KigPart& doc, const std::vector<ObjectHolder
   if ( os.size() == 1 )
     text = os.back()->imp()->type()->addAStatement();
   else
-    text = i18n( "Add %1 Objects" ).arg( os.size() );
+    text = i18n( "Add %1 Objects", os.size() );
   KigCommand* ret = new KigCommand( doc, text );
   ret->addTask( new AddObjectsTask( os ) );
   return ret;

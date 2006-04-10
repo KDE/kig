@@ -106,9 +106,9 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   if ( figures.isEmpty() ) {
     if( nmacros > 0 )
       warning( i18n( "The Dr. Geo file \"%1\" is a macro file so it contains no "
-                     "figures." ).arg( file ) );
+                     "figures.", file ) );
     else
-      warning( i18n( "There are no figures in Dr. Geo file \"%1\"." ).arg( file ) );
+      warning( i18n( "There are no figures in Dr. Geo file \"%1\".", file ) );
     return false;
   }
 
@@ -336,7 +336,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         {
 //          oc = fact->constrainedPointCalcer( parents[0], value );
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    "which Kig does not currently support.", domelem.tagName() , 
                                       domelem.attribute( "type" ) ) );
           return false;
         }
@@ -394,7 +394,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
         return false;
       }
@@ -426,7 +426,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         else
         {
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
           return false;
         }
@@ -439,7 +439,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         else
         {
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
           return false;
         }
@@ -462,7 +462,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         else
         {
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
           return false;
         }
@@ -478,7 +478,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         else
         {
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                    "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
           return false;
         }
@@ -501,7 +501,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
         return false;
       }
@@ -628,7 +628,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
         return false;
       }
@@ -646,7 +646,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
         return false;
       }
@@ -687,7 +687,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
         return false;
       }
@@ -699,7 +699,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       else
       {
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                  "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
         return false;
       }
@@ -719,7 +719,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       kDebug() << ">>>>>>>>> UNKNOWN OBJECT" << endl;
 #endif
       notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
+                                "which Kig does not currently support.", domelem.tagName() , 
                                 domelem.attribute( "type" ) ) );
       return false;
     }

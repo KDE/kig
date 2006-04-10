@@ -376,7 +376,7 @@ void TypesDialog::deleteType()
     types << ( *j )->action->descriptiveName();
   types.sort();
   if ( KMessageBox::warningContinueCancelList( this,
-        i18n( "Are you sure you want to delete this type?",
+        i18np( "Are you sure you want to delete this type?",
               "Are you sure you want to delete these %n types?", selectedTypes.size() ),
         types, i18n("Are You Sure?"), KStdGuiItem::cont(),
         "deleteTypeWarning") == KMessageBox::Cancel )
@@ -417,7 +417,7 @@ void TypesDialog::exportType()
   QFile fi( file_name );
   if ( fi.exists() )
     if ( KMessageBox::warningContinueCancel( this, i18n( "The file \"%1\" already exists. "
-                                       "Do you wish to overwrite it?" ).arg( fi.fileName() ),
+                                       "Do you wish to overwrite it?", fi.fileName() ),
                                        i18n( "Overwrite File?" ), i18n("Overwrite") ) == KMessageBox::Cancel )
        return;
   MacroList::instance()->save( types, file_name );

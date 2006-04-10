@@ -40,7 +40,7 @@ DrgeoPlugin::DrgeoPlugin( QObject *parent, const char *, const QStringList &args
   item = addItemInfo( group, "NumOfTexts", i18n( "Texts" ), QVariant::Int );
   item = addItemInfo( group, "NumOfMacros", i18n( "Macros" ), QVariant::Int );
   
-  group_contents = addGroupInfo( info, "DrgeoContents", i18n( "Translators: what this drgeo "
+  group_contents = addGroupInfo( info, "DrgeoContents", i18nc( "Translators: what this drgeo "
                                                               "file contains", "Contents" ) );
 }
 

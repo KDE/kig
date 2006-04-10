@@ -160,5 +160,5 @@ QString ObjectHolder::selectStatement() const
   if ( n.isEmpty() )
     return i18n( imp()->type()->selectStatement() );
   else
-    return i18n( imp()->type()->selectNameStatement() ).arg( n );
+    return i18n( imp()->type()->selectNameStatement(), n );
 }

@@ -234,10 +234,11 @@ double CircleImp::circumference() const
 
 QString CircleImp::polarEquationString( const KigDocument& w ) const
 {
-  QString ret = i18n( "rho = %1   [centered at %2]" );
   ConicPolarData data = polarData();
-  ret = ret.arg( data.pdimen, 0, 'g', 3 );
-  ret = ret.arg( w.coordinateSystem().fromScreen( data.focus1, w ) );
+  QString ret = ki18n( "rho = %1   [centered at %2]" )
+                     .subs( data.pdimen, 0, 'g', 3 )
+                     .subs( w.coordinateSystem().fromScreen( data.focus1, w ) )
+                     .toString();
   return ret;
 }
 

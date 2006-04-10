@@ -73,14 +73,14 @@ void KigFilter::fileNotFound( const QString& file ) const
                       i18n( "The file \"%1\" could not be opened.  "
                             "This probably means that it does not "
                             "exist, or that it cannot be opened due to "
-                            "its permissions" ).arg( file ) );
+                            "its permissions", file ) );
 }
 
 void KigFilter::parseError( const QString& file, const QString& explanation ) const
 {
   const QString text =
     i18n( "An error was encountered while parsing the file \"%1\".  It "
-          "cannot be opened." ).arg( file );
+          "cannot be opened.", file );
   const QString title = i18n( "Parse Error" );
 
   if ( explanation.isEmpty() )
@@ -92,7 +92,7 @@ void KigFilter::parseError( const QString& file, const QString& explanation ) co
 void KigFilter::notSupported( const QString& file, const QString& explanation ) const
 {
   KMessageBox::detailedSorry( 0,
-                              i18n( "Kig cannot open the file \"%1\"." ).arg( file ),
+                              i18n( "Kig cannot open the file \"%1\".", file ),
                               explanation, i18n( "Not Supported" ) );
 }
 

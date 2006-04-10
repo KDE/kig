@@ -108,14 +108,14 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   // reading the version...
   QString version = main.attribute( "Version" );
   if ( version.isEmpty() ) version = main.attribute( "version" );
-  if ( version.isEmpty() ) version = i18n( "Translators: Not Available", "n/a" );
+  if ( version.isEmpty() ) version = i18nc( "Translators: Not Available", "n/a" );
   appendItem( metagroup, "Version", version );
 
   // reading the compatibility version...
   QString compatversion = main.attribute( "CompatibilityVersion" );
   if ( compatversion.isEmpty() )
-    compatversion = i18n( "%1 represents Kig version",
-                          "%1 (as the version)" ).arg( version );
+    compatversion = i18nc( "%1 represents Kig version",
+                          "%1 (as the version)", version );
   appendItem( metagroup, "CompatVersion", compatversion );
 
   // reading the Coordinate System...

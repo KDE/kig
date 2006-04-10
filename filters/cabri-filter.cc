@@ -193,7 +193,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     notSupported( file,
         i18n( "This Cabri version (%1) is not supported yet.\n"
               "Please contact the Kig authors to help supporting this Cabri "
-              "version." ).arg( header.cap( 3 ) ) );
+              "version.", header.cap( 3 ) ) );
     return 0;
   }
 
@@ -621,7 +621,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     else
     {
       notSupported( file, i18n( "This Cabri file contains a \"%1\" object, "
-                                "which Kig does not currently support." ).arg( QString( obj->type ) ) );
+                                "which Kig does not currently support.", QString( obj->type ) ) );
       return 0;
     }
 #ifdef CABRI_DEBUG

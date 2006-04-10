@@ -196,7 +196,7 @@ KigDocument* KigFilterNative::load( const QString& file )
   if ( major > 0 || minor > 9 )
   {
     notSupported( file, i18n( "This file was created by Kig version \"%1\", "
-                              "which this version cannot open." ).arg( version ) );
+                              "which this version cannot open.", version ) );
     return false;
   }
   else if ( major == 0 && minor <= 3 )
@@ -207,7 +207,7 @@ KigDocument* KigFilterNative::load( const QString& file )
                               "You can try to open this file with an older Kig "
                               "version (0.4 to 0.6),\n"
                               "and then save it again, which will save it in the "
-                              "new format." ).arg( version ) );
+                              "new format.", version ) );
     return false;
   }
   else if ( major == 0 && minor <= 6 )
@@ -341,7 +341,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
                                       "which this Kig version does not support."
                                       "Perhaps you have compiled Kig without support "
                                       "for this object type,"
-                                      "or perhaps you are using an older Kig version." ).arg( tmp ) );
+                                      "or perhaps you are using an older Kig version.", tmp ) );
             return false;
           };
 
@@ -491,7 +491,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
           {
             if ( tmp == "MeasureTransport" && parents.size() == 3 )
             {
-              warning( i18n( obsoletemessage ).arg( "MeasureTransport" ) );
+              warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "TransportOfMeasure" );
               ObjectCalcer* circle = parents[0];
               ObjectCalcer* point = parents[1];
@@ -501,26 +501,26 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
               parents[2] = point;
             } else if ( tmp == "InvertLine" )
             {
-              warning( i18n( obsoletemessage ).arg( "InvertLine" ) );
+              warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
             } else if ( tmp == "InvertSegment" )
             {
-              warning( i18n( obsoletemessage ).arg( "InvertSegment" ) );
+              warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
             } else if ( tmp == "InvertCircle" )
             {
-              warning( i18n( obsoletemessage ).arg( "InvertCircle" ) );
+              warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
             } else if ( tmp == "InvertArc" )
             {
-              warning( i18n( obsoletemessage ).arg( "InvertArc" ) );
+              warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
             } else {
               notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
                                         "which this Kig version does not support."
                                         "Perhaps you have compiled Kig without support "
                                         "for this object type,"
-                                        "or perhaps you are using an older Kig version." ).arg( tmp ) );
+                                        "or perhaps you are using an older Kig version.", tmp ) );
               return false;
             }
           }

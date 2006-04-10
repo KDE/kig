@@ -291,8 +291,8 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
 {
 #define KIG_GENERIC_PARSE_ERROR \
   { \
-    error = i18n( "An error was encountered at line %1 in file %2." ) \
-            .arg( __LINE__ ).arg( __FILE__ ); \
+    error = i18n( "An error was encountered at line %1 in file %2.", \
+              __LINE__, __FILE__ ); \
     return 0; \
   }
 
@@ -504,7 +504,7 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
                 "which this Kig version does not support."
                 "Perhaps you have compiled Kig without support "
                 "for this object type,"
-                "or perhaps you are using an older Kig version." ).arg( type );
+                "or perhaps you are using an older Kig version.", type );
   return 0;
 }
 

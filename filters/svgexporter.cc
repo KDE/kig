@@ -80,8 +80,8 @@ void SVGExporter::run( const KigPart& part, KigWidget& w )
   if ( ! file.open( QIODevice::WriteOnly ) )
   {
     KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
-                                  "check if the file permissions are set correctly." )
-                        .arg( file_name ) );
+                                  "check if the file permissions are set correctly." ,
+                          file_name ) );
     return;
   };
 
@@ -105,7 +105,7 @@ void SVGExporter::run( const KigPart& part, KigWidget& w )
 
   if ( !pic.save( file_name, "SVG" ) )
   {
-    KMessageBox::error( &w, i18n( "Sorry, something went wrong while saving to SVG file \"%1\"" ).arg( file_name ) );
+    KMessageBox::error( &w, i18n( "Sorry, something went wrong while saving to SVG file \"%1\"", file_name ) );
   }
 
 }

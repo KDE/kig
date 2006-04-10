@@ -118,9 +118,9 @@ double Goniometry::convert( const double angle, const Goniometry::System from, c
 QStringList Goniometry::systemList()
 {
   QStringList sl;
-  sl << i18n( "Translators: Degrees", "Deg" );
-  sl << i18n( "Translators: Radians", "Rad" );
-  sl << i18n( "Translators: Gradians", "Grad" );
+  sl << i18nc( "Translators: Degrees", "Deg" );
+  sl << i18nc( "Translators: Radians", "Rad" );
+  sl << i18nc( "Translators: Gradians", "Grad" );
   return sl;
 }
 

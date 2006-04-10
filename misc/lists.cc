@@ -301,13 +301,13 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
   QFile file( f );
   if ( ! file.open( QIODevice::ReadOnly ) )
   {
-    KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'" ).arg( f ) );
+    KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'", f ) );
     return false;
   }
   QDomDocument doc( "KigMacroFile" );
   if ( !doc.setContent( &file ) )
   {
-    KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'" ).arg( f ) );
+    KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'", f ) );
     return false;
   }
   file.close();
@@ -318,7 +318,7 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
   else
   {
     KMessageBox::detailedSorry(
-      0, i18n( "Kig cannot open the macro file \"%1\"." ).arg( f ),
+      0, i18n( "Kig cannot open the macro file \"%1\".", f ),
       i18n( "This file was created by a very old Kig version (pre-0.4). "
             "Support for this format has been removed from recent Kig versions. "
             "You can try to import this macro using a previous Kig version "
@@ -372,7 +372,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
     assert( hierarchy );
     // if the macro has no name, we give it a bogus name...
     if ( name.isEmpty() )
-      name = i18n( "Unnamed Macro #%1" ).arg( unnamedindex++ );
+      name = i18n( "Unnamed Macro #%1", unnamedindex++ );
     MacroConstructor* ctor =
       new MacroConstructor( *hierarchy, i18n( name.toLatin1() ), i18n( description.toLatin1() ), iconfile );
     delete hierarchy;

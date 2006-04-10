@@ -483,8 +483,8 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
 {
 #define KIG_GENERIC_PARSE_ERROR \
   { \
-    error = i18n( "An error was encountered at line %1 in file %2." ) \
-            .arg( __LINE__ ).arg( __FILE__ ); \
+    error = i18n( "An error was encountered at line %1 in file %2.", \
+              __LINE__, __FILE__ ); \
     return 0; \
   }
 
@@ -552,7 +552,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
                       "which this Kig version does not support."
                       "Perhaps you have compiled Kig without support "
                       "for this object type,"
-                      "or perhaps you are using an older Kig version." ).arg( QString( typen ) );
+                      "or perhaps you are using an older Kig version.", QString( typen ) );
         return 0;
       }
 

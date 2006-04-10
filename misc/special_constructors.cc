@@ -872,15 +872,11 @@ QString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<O
 
     if ( winding > 1 )
     {
-      QString result = QString(
-        i18n( "Adjust the number of sides (%1/%2)" )
-        ).arg( nsides ).arg( winding );
+      QString result = i18n( "Adjust the number of sides (%1/%2)", nsides, winding );
       return result;
     } else
     {
-      QString result = QString(
-        i18n( "Adjust the number of sides (%1)" )
-        ).arg( nsides );
+      QString result = i18n( "Adjust the number of sides (%1)", nsides );
       return result;
     }
     break;
