@@ -18,7 +18,7 @@
 #include "latexexporteroptions.h"
 #include "latexexporteroptions.moc"
 
-#include "latexexporteroptionswidget.h"
+#include "ui_latexexporteroptionswidget.h"
 
 #include <qcheckbox.h>
 #include <qlayout.h>

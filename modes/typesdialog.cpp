@@ -22,7 +22,7 @@
 #include "typesdialog.moc"
 
 #include "edittype.h"
-#include "typeswidget.h"
+#include "ui_typeswidget.h"
 #include "../kig/kig_part.h"
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"

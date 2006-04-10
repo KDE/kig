@@ -22,7 +22,7 @@
 #include "edittype.h"
 #include "edittype.moc"
 
-#include "edittypewidget.h"
+#include "ui_edittypewidget.h"
 
 #include <kicondialog.h>
 #include <klineedit.h>

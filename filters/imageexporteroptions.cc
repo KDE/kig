@@ -18,7 +18,7 @@
 #include "imageexporteroptions.h"
 #include "imageexporteroptions.moc"
 
-#include "imageexporteroptionswidget.h"
+#include "ui_imageexporteroptionswidget.h"
 
 #include "../misc/unit.h"
 

@@ -18,7 +18,7 @@
 #include "svgexporteroptions.h"
 #include "svgexporteroptions.moc"
 
-#include "svgexporteroptionswidget.h"
+#include "ui_svgexporteroptionswidget.h"
 
 #include <qcheckbox.h>
 #include <qlayout.h>
