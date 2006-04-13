@@ -82,8 +82,8 @@ typedef unsigned int uint;
 /**
  * Instances of this class represent a certain ObjectImp type.  Every
  * ObjectImp type has a static ObjectImpType member, that it returns a
- * reference to in its type() function..  Think of it as a nice enum,
- * that you can also get some data from..
+ * reference to in its type() function.  Think of it as a nice enum,
+ * that you can also get some data from.
  */
 class ObjectImpType
 {
@@ -106,7 +106,7 @@ public:
    *
    * \internal Do *not* call this from functions that can be called at
    * static initializer time !  It depends on information that is only
-   * available after that stage and will crash if used too early..
+   * available after that stage and will crash if used too early.
    */
   static const ObjectImpType* typeFromInternalName( const char* n );
 
@@ -128,7 +128,7 @@ public:
    * All translatable strings should have
    * I18N_NOOP around them !  @param parent is the ObjectImpType of
    * your parent ObjectImp type.  Never give 0 as parent, except for
-   * the top ObjectImp ObjectImpType..
+   * the top ObjectImp ObjectImpType.
    */
   ObjectImpType(
     const ObjectImpType* parent, const char* internalname,
@@ -153,7 +153,7 @@ public:
   /**
    * Returns an internal name for this ObjectImp type.  This name is
    * guaranteed unique, and mostly corresponds with the class name of
-   * the corresponding ObjectImp..
+   * the corresponding ObjectImp.
    */
   const char* internalName() const;
   /**
@@ -214,7 +214,7 @@ public:
  * The ObjectImp class represents the behaviour of an object after it
  * is calculated.   This means how to draw() it, whether it claims to
  * contain a certain point etc.  It is also the class where the
- * ObjectType's get their information from..
+ * ObjectType's get their information from.
  */
 class ObjectImp
 {
@@ -386,7 +386,7 @@ public:
    * This function checks whether rhs is of the same ObjectImp type,
    * and whether it contains the same data as this ObjectImp.
    * \internal It is used e.g. by the KigCommand stuff to see what the
-   * user has changed during a move..
+   * user has changed during a move.
    */
   virtual bool equals( const ObjectImp& rhs ) const = 0;
 
@@ -395,7 +395,7 @@ public:
    * means that it will never be considered to be stored in a file or
    * in an ObjectHierarchy.  This is useful for objects which cannot
    * (easily and usefully) be (de)serialized, like e.g.
-   * PythonCompiledScriptImp..  For normal objects, the default
+   * PythonCompiledScriptImp.  For normal objects, the default
    * implementation returns false, which is fine.
    */
   virtual bool isCache() const;

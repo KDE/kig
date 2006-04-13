@@ -28,7 +28,7 @@ public:
 
   /**
    * this returns a fixed point.  Note that the returned object is
-   * not added to the document..
+   * not added to the document.
    */
   ObjectHolder* fixedPoint( const Coordinate& c ) const;
   ObjectTypeCalcer* fixedPointCalcer( const Coordinate& c ) const;
@@ -36,7 +36,7 @@ public:
   /**
    * this returns a numeric label with the value \p value at the position
    * \p loc .  Note that the returned object is not added to the document
-   * but calced already...
+   * but calced already.
    */
   ObjectHolder* numericValue(
     const double value, const Coordinate& loc, const KigDocument& doc ) const;
@@ -53,19 +53,19 @@ public:
 
   /**
    * this returns a relative point (to an object). Note that the returned object
-   * is not added to the document..
+   * is not added to the document.
    */
   ObjectTypeCalcer* relativePointCalcer( ObjectCalcer* o, const Coordinate& loc ) const;
 
   /**
    * this returns a constrained point. Note that the returned object
-   * is not added to the document..
+   * is not added to the document.
    */
   ObjectHolder* constrainedPoint( ObjectCalcer* curve, double param ) const;
   ObjectTypeCalcer* constrainedPointCalcer( ObjectCalcer* curve, double param ) const;
   /**
    * \overload, changes nothing to the semantics, only calcs the param
-   * value for you..
+   * value for you.
    */
   ObjectTypeCalcer* constrainedPointCalcer(
     ObjectCalcer* curve, const Coordinate& c, const KigDocument& ) const;
@@ -78,8 +78,8 @@ public:
    * the user expects when he asks for a point at point \p c . This is a
    * constrained point if \p c is on a curve, and otherwise a fixed
    * point.  I might add the possibility for an intersection point
-   * sometime.. Note that the returned object is not added to
-   * the document..
+   * sometime. Note that the returned object is not added to
+   * the document.
    */
   ObjectTypeCalcer* sensiblePointCalcer(
     const Coordinate& c, const KigDocument& d, const KigWidget& w ) const;
@@ -87,7 +87,7 @@ public:
     const Coordinate& c, const KigDocument& d, const KigWidget& w ) const;
 
   /**
-   * set point to what sensiblePoint would have returned..
+   * set point to what sensiblePoint would have returned.
    */
   void redefinePoint( ObjectTypeCalcer* point, const Coordinate& c,
                       KigDocument& d, const KigWidget& w ) const;
@@ -98,14 +98,14 @@ public:
    * and thus, it has to be of type ObjectTypeCalcer where a->type() is of
    * type ConstrainedPointType.  The semantics of LocusType are a bit
    * weird ( but I believe correct :) ), so this function takes care
-   * of the complication there..
+   * of the complication there.
    */
   ObjectTypeCalcer* locusCalcer( ObjectCalcer* a, ObjectCalcer* b ) const;
   ObjectHolder* locus( ObjectCalcer* a, ObjectCalcer* b ) const;
 
   /**
    * returns a label with text \p s at point \p c .. It ( and its parents )
-   * is calced already...
+   * is calced already.
    */
   ObjectHolder* label(
     const QString& s, const Coordinate& loc,
@@ -118,7 +118,7 @@ public:
 
   /**
    * this one does the same as the above, only that the new label is
-   * attached to locationparent if it is non-null..
+   * attached to locationparent if it is non-null.
    */
   ObjectTypeCalcer* attachedLabelCalcer(
     const QString& s, ObjectCalcer* locationparent,
@@ -145,8 +145,8 @@ public:
    *
    * \note
    * \p o should have already been calc'd, or this will fail and
-   * return 0..  The returned object also needs to be calced after
-   * this..
+   * return 0.  The returned object also needs to be calced after
+   * this.
    */
   ObjectPropertyCalcer* propertyObjectCalcer( ObjectCalcer* o, const char* p ) const;
   ObjectHolder* propertyObject( ObjectCalcer* o, const char* p ) const;

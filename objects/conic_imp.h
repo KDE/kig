@@ -27,7 +27,7 @@
  * An ObjectImp representing a conic.
  *
  * A conic is a general second degree curve, and some beautiful theory
- * has been developed about it..  See a math book for more
+ * has been developed about it.  See a math book for more
  * information.  This class is in fact an abstract base class hiding
  * the fact that a ConicImp can be constructed in two ways.  If only
  * its Cartesian equation is known, then you should use ConicImpCart,
@@ -73,9 +73,9 @@ public:
   double getParam( const Coordinate& point ) const;
   const Coordinate getPoint( double param ) const;
 
-  // information about ourselves..  These are all virtual, because a
+  // information about ourselves.  These are all virtual, because a
   // trivial subclass like CircleImp can override these with trivial
-  // versions..
+  // versions.
 
   /**
    * Type of conic.

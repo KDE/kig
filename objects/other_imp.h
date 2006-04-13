@@ -34,7 +34,7 @@ class AngleImp
 public:
   typedef ObjectImp Parent;
   /**
-   * Returns the ObjectImpType representing the AngleImp type..
+   * Returns the ObjectImpType representing the AngleImp type.
    */
   static const ObjectImpType* stype();
 
@@ -97,7 +97,7 @@ class VectorImp
 public:
   typedef CurveImp Parent;
   /**
-   * Returns the ObjectImpType representing the VectorImp type..
+   * Returns the ObjectImpType representing the VectorImp type.
    */
   static const ObjectImpType* stype();
 
@@ -170,7 +170,7 @@ class ArcImp
 public:
   typedef CurveImp Parent;
   /**
-   * Returns the ObjectImpType representing the ArcImp type..
+   * Returns the ObjectImpType representing the ArcImp type.
    */
   static const ObjectImpType* stype();
 

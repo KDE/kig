@@ -32,7 +32,7 @@ class CircleImp
 public:
   typedef ConicImp Parent;
   /**
-   * Returns the ObjectImpType representing the CircleImp type..
+   * Returns the ObjectImpType representing the CircleImp type.
    */
   static const ObjectImpType* stype();
 
@@ -87,7 +87,7 @@ public:
    */
   double circumference() const;
 
-  // trivial versions of the conic information functions..
+  // trivial versions of the conic information functions.
   /**
    * Always returns 1, since a circle always is an ellipse.
    */

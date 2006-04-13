@@ -131,7 +131,7 @@ class IntImp
   int mdata;
 public:
   /**
-   * Returns the ObjectImpType representing the IntImp type..
+   * Returns the ObjectImpType representing the IntImp type.
    */
   static const ObjectImpType* stype();
   typedef BogusImp Parent;
@@ -170,7 +170,7 @@ class StringImp
   QString mdata;
 public:
   /**
-   * Returns the ObjectImpType representing the StringImp type..
+   * Returns the ObjectImpType representing the StringImp type.
    */
   static const ObjectImpType* stype();
   typedef BogusImp Parent;

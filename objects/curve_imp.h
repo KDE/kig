@@ -22,7 +22,7 @@
 
 /**
  * This class represents a curve: something which is composed of
- * points, like a line, a circle, a locus...
+ * points, like a line, a circle, a locus.
  */
 class CurveImp
   : public ObjectImp

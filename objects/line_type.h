@@ -35,7 +35,7 @@ public:
 
   QStringList specialActions() const;
   /**
-   * execute the \p i 'th action from the specialActions above..
+   * execute the \p i 'th action from the specialActions above.
    */
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
                       KigPart& d, KigWidget& w, NormalMode& m ) const;

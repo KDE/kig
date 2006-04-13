@@ -25,7 +25,7 @@ class ObjectTypeCalcer;
 
 /**
  * The ObjectType class is a thing that represents the "behaviour" for
- * a certain type..  This basically means that it decides what
+ * a certain type.  This basically means that it decides what
  * \ref ObjectImp the object gets in the calc() function, how the
  * object move()'s etc.
  */
@@ -59,7 +59,7 @@ public:
   /**
    * Supposing that \p parents would be given as parents to
    * this type's calc function, this function returns the ObjectImp id
-   * that \p o should at least have..  ( \p o should be part of \p parents )
+   * that \p o should at least have.  ( \p o should be part of \p parents )
    */
   virtual const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const = 0;
 
@@ -73,9 +73,9 @@ public:
 
   /**
    * returns the ObjectImp id of the ObjectImp's produced by this
-   * ObjectType..  if the ObjectType can return different sorts of
+   * ObjectType.  if the ObjectType can return different sorts of
    * ObjectImp's, it should return the biggest common id, or
-   * ID_AnyImp..
+   * ID_AnyImp.
    */
   virtual const ObjectImpType* resultId() const = 0;
 
@@ -86,7 +86,7 @@ public:
   /**
    * is this object type a transformation type.  We want to know this
    * cause transform types are shown separately in an object's RMB
-   * menu..
+   * menu.
    */
   virtual bool isTransform() const;
 
@@ -96,11 +96,11 @@ public:
   // points can be redefined etc.
 
   /**
-   * return i18n'd names for the special actions..
+   * return i18n'd names for the special actions.
    */
   virtual QStringList specialActions() const;
   /**
-   * execute the \p i 'th action from the specialActions above..
+   * execute the \p i 'th action from the specialActions above.
    */
   virtual void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
                               KigPart& d, KigWidget& w, NormalMode& m ) const;
@@ -108,7 +108,7 @@ public:
 
 /**
  * This is a convenience subclass of ObjectType that a type should
- * inherit from if its parents can be specified in an ArgsParser..
+ * inherit from if its parents can be specified in an ArgsParser.
  */
 class ArgsParserObjectType
   : public ObjectType

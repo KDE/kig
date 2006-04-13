@@ -41,10 +41,10 @@
  * much, and because every ObjectImp should contain all the data it
  * needs itself.  ObjectImp's are entirely independent objects.
  * That's also why we don't keep a pointer to the old CurveImp, but a
- * copy of it..
+ * copy of it.
  *
  * i hope this is a bit clear, if not, feel free to ask for
- * explanation of what you don't understand..
+ * explanation of what you don't understand.
  */
 class LocusImp
   : public CurveImp

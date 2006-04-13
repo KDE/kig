@@ -32,7 +32,7 @@ public:
    */
   ObjectImp* deserialize( const QString& type, const QDomElement& parent, QString& error ) const;
   /**
-   * adds data to \p parent , and returns a type string..
+   * adds data to \p parent , and returns a type string.
    */
   QString serialize( const ObjectImp& d, QDomElement& parent, QDomDocument& doc ) const;
 };

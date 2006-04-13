@@ -68,18 +68,18 @@ public:
   /**
    * returns whether the object \p imp contains coordinate \p p . This is
    * dependent on whether it is shown ( when it will never contain
-   * anything ), and on its width..
+   * anything ), and on its width.
    */
   bool contains( const ObjectImp& imp, const Coordinate& pt, const KigWidget& w, bool nv = false ) const;
   /**
    * returns whether the object \p imp is in the rectangle \p r . This is
-   * dependent on whether it is shown and on its width..
+   * dependent on whether it is shown and on its width.
    */
   bool inRect( const ObjectImp& imp, const Rect& r, const KigWidget& w ) const;
 
   /**
    * returns whether the object this ObjectDrawer is responsible for
-   * will be drawn or not..
+   * will be drawn or not.
    */
   bool shown() const;
   /**
@@ -103,41 +103,41 @@ public:
    */
   QFont font() const;
   /**
-   * return pointStyle trasnformed in a string
+   * return pointStyle transformed in a string
    */
   QString pointStyleToString() const;
   /**
-   * return style trasnformed in a string
+   * return style transformed in a string
    */
   QString styleToString() const;
   /**
-   * returns a new ObjectDrawer that is identical to this one.. except
-   * that the shown state is set to \p s ..
+   * returns a new ObjectDrawer that is identical to this one, except
+   * that the shown state is set to \p s 
    */
   ObjectDrawer* getCopyShown( bool s ) const;
   /**
-   * returns a new ObjectDrawer that is identical to this one.. except
-   * that the color is set to \p c ..
+   * returns a new ObjectDrawer that is identical to this one, except
+   * that the color is set to \p c 
    */
   ObjectDrawer* getCopyColor( const QColor& c ) const;
   /**
-   * returns a new ObjectDrawer that is identical to this one.. except
-   * that the width is set to \p w ..
+   * returns a new ObjectDrawer that is identical to this one, except
+   * that the width is set to \p w 
    */
   ObjectDrawer* getCopyWidth( int w ) const;
   /**
-   * returns a new ObjectDrawer that is identical to this one.. except
-   * that the PenStyle state is set to \p s ..
+   * returns a new ObjectDrawer that is identical to this one, except
+   * that the PenStyle state is set to \p s 
    */
   ObjectDrawer* getCopyStyle( Qt::PenStyle s ) const;
   /**
-   * returns a new ObjectDrawer that is identical to this one.. except
-   * that the pointStyle state is set to \p p ..
+   * returns a new ObjectDrawer that is identical to this one, except
+   * that the pointStyle state is set to \p p
    */
   ObjectDrawer* getCopyPointStyle( int p ) const;
   /**
-   * returns a new ObjectDrawer that is identical to this one.. except
-   * that the font state is set to \p f ..
+   * returns a new ObjectDrawer that is identical to this one, except
+   * that the font state is set to \p f 
    */
   ObjectDrawer* getCopyFont( const QFont& f ) const;
   /**

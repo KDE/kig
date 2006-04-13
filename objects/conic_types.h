@@ -52,7 +52,7 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
 
   /**
-   * -1 for hyperbola, 1 for ellipse..
+   * -1 for hyperbola, 1 for ellipse.
    */
   virtual int type() const = 0;
   const ObjectImpType* resultId() const;

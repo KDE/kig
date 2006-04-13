@@ -34,7 +34,7 @@ class PolygonImp
 public:
   typedef ObjectImp Parent;
   /**
-   * Returns the ObjectImpType representing the PolygonImp type..
+   * Returns the ObjectImpType representing the PolygonImp type.
    */
   static const ObjectImpType* stype();
   static const ObjectImpType* stype3();

@@ -35,7 +35,7 @@ void intrusive_ptr_release( ObjectCalcer* p );
  * case, there would be an ObjectCalcer that keeps a reference to its
  * two parents ( the ObjectCalcer's representing the points ), and
  * that will calculate its ObjectImp value every time it is asked to
- * do so ( i.e. every time one of its parents moves.. ).
+ * do so ( i.e. every time one of its parents moves ).
  *
  * Each ObjectHolder keeps its ObjectImp itself, and recalculates it
  * from its parents in its calc() method ( if necessary ).
@@ -49,7 +49,7 @@ void intrusive_ptr_release( ObjectCalcer* p );
  * parents, to ensure that those aren't deleted before it is deleted.
  *
  * At runtime, there will be an entire graph of ObjectCalcer that
- * depend on their parents..  At the bottom, there are Calcer's that
+ * depend on their parents.  At the bottom, there are Calcer's that
  * the user is aware of, and that are held by ObjectHolder's.  At the
  * top, there are Calcer's without parents that serve only to hold
  * some data.  Those are most likely ObjectConstCalcer's.  There are
@@ -60,16 +60,16 @@ void intrusive_ptr_release( ObjectCalcer* p );
  * move.  If the user selects a point, and tries to move it, then its
  * ObjectCalcer will be asked whether it can move, and if so, will be
  * asked to move.  See below with the canMove(), move() and
- * moveReferencePoint() methods..
+ * moveReferencePoint() methods.
  */
 class ObjectCalcer
 {
 protected:
   /**
-   * ObjectCalcer's are reference counted..  They all take a reference
+   * ObjectCalcer's are reference counted.  They all take a reference
    * to their parents, and some other classes like ObjectHolder take a
    * reference to some ObjectCalcer's that they don't want to see
-   * deleted..
+   * deleted.
    */
   friend void intrusive_ptr_add_ref( ObjectCalcer* p );
   friend void intrusive_ptr_release( ObjectCalcer* p );
@@ -92,7 +92,7 @@ public:
   /**
    * a calcer should call this in its destructor, to inform its parent
    * that it is no longer a child of this calcer.  This will release
-   * the reference taken in addChild..
+   * the reference taken in addChild.
    */
   void delChild( ObjectCalcer* c );
 

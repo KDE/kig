@@ -27,7 +27,7 @@
  * difference between both types is quite small ( same number of
  * intersections with a line, for example.. ), and since with
  * transformations, Circles might dynamically change types to
- * Conics..
+ * Conics.
  */
 class ConicLineIntersectionType
   : public ArgsParserObjectType

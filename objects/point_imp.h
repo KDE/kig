@@ -22,7 +22,7 @@
 #include "../misc/coordinate.h"
 
 /**
- * An ObjectImp representing a point..
+ * An ObjectImp representing a point.
  */
 class PointImp
   : public ObjectImp
