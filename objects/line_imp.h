@@ -26,7 +26,7 @@ class LineData;
 
 /**
  * An ObjectImp class that is the base of the line-like ObjectImp's:
- * SegmentImp, LineImp and RayImp..
+ * SegmentImp, LineImp and RayImp.
  */
 class AbstractLineImp
   : public CurveImp
@@ -40,7 +40,7 @@ public:
   typedef CurveImp Parent;
   /**
    * Returns the ObjectImpType representing the AbstractLineImp
-   * type..
+   * type.
    */
   static const ObjectImpType* stype();
 
@@ -57,7 +57,7 @@ public:
   bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
 
   /**
-   * Get the slope of this AbstractLineImp..  For a line through
+   * Get the slope of this AbstractLineImp.  For a line through
    * points a( xa, ya ) and b ( xb, yb ), this means the value ( yb -
    * ya ) / ( xb - xa ).
    */
@@ -85,7 +85,7 @@ public:
   typedef AbstractLineImp Parent;
   /**
    * Returns the ObjectImpType representing the SegmentImp
-   * type..
+   * type.
    */
   static const ObjectImpType* stype();
 
@@ -131,7 +131,7 @@ public:
 /**
  * An ObjectImp representing a ray. This means half of a line, it is
  * infinite in one direction, but ends at a certain point in the other
- * direction..
+ * direction.
  */
 class RayImp
   : public AbstractLineImp
@@ -140,7 +140,7 @@ public:
   typedef AbstractLineImp Parent;
   /**
    * Returns the ObjectImpType representing the RayImp
-   * type..
+   * type.
    */
   static const ObjectImpType* stype();
 
@@ -189,7 +189,7 @@ public:
 
   /**
    * Returns the ObjectImpType representing the LineImp
-   * type..
+   * type.
    */
   static const ObjectImpType* stype();
 
