@@ -15,7 +15,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kfile_drgeo )
 
 target_link_libraries(kfile_drgeo  ${KDE4_KIO_LIBS} ${QT_QTXML_LIBRARY} )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 kfile_drgeo )
+install_targets(${PLUGIN_INSTALL_DIR} kfile_drgeo )
 
 
 ########### next target ###############
@@ -30,7 +30,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kfile_kig )
 
 target_link_libraries(kfile_kig  ${KDE4_KIO_LIBS} ${QT_QTXML_LIBRARY} )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 kfile_kig )
+install_targets(${PLUGIN_INSTALL_DIR} kfile_kig )
 
 
 ########### install files ###############
