@@ -271,7 +271,7 @@ void ScriptModeBase::setScriptType( ScriptType::Type type )
   if ( mtype != ScriptType::Unknown )
   {
     KIconLoader* il = mpart.instance()->iconLoader();
-    mwizard->setIcon( il->loadIcon( ScriptType::icon( mtype ), K3Icon::Small ) );
+    mwizard->setWindowIcon( il->loadIconSet( ScriptType::icon( mtype ), K3Icon::Small ) );
   }
 }
 
@@ -318,7 +318,7 @@ ScriptEditMode::ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc )
   // in the editor and aborts the editing
   morigscript = static_cast<const StringImp*>( imp )->data();
 
-  mwizard->setCaption( i18nc( "'Edit' is a verb", "Edit Script" ) );
+  mwizard->setWindowTitle( i18nc( "'Edit' is a verb", "Edit Script" ) );
   mwizard->setText( morigscript );
   mwizard->show();
   mwizard->next();
