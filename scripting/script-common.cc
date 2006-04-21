@@ -47,7 +47,7 @@ QString ScriptType::templateCode( ScriptType::Type type, std::set<ObjectHolder*>
   {
     QString tempcode = QString::fromLatin1( "def calc( " );
     bool firstarg = true;
-    QString temparg = ki18nc( "Note to translators: this should be a default "
+    KLocalizedString temparg = ki18nc( "Note to translators: this should be a default "
                             "name for an argument in a Python function. The "
                             "default is \"arg%1\" which would become arg1, "
                             "arg2, etc. Give something which seems "

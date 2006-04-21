@@ -125,9 +125,25 @@ set(libobjects_SRCS
    ${CMAKE_SOURCE_DIR}/kig/objects/special_imptypes.cc
 )
 
+if(BOOST_PYTHON_FOUND)
+  set(libscripting_SRCS
+     ${CMAKE_SOURCE_DIR}/kig/scripting/newscriptwizard.cc
+     ${CMAKE_SOURCE_DIR}/kig/scripting/python_scripter.cc
+     ${CMAKE_SOURCE_DIR}/kig/scripting/python_type.cc
+     ${CMAKE_SOURCE_DIR}/kig/scripting/script-common.cc
+     ${CMAKE_SOURCE_DIR}/kig/scripting/script_mode.cc
+  )
+  kde4_add_ui3_files(libscripting_SRCS
+     ${CMAKE_SOURCE_DIR}/kig/scripting/newscriptwizardbase.ui
+  )
+
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
+endif(BOOST_PYTHON_FOUND)
+
 add_subdirectory( objects )
 add_subdirectory( misc )
 add_subdirectory( modes )
+add_subdirectory( scripting )
 add_subdirectory( icons )
 add_subdirectory( filters )
 add_subdirectory( kig )
@@ -137,7 +153,6 @@ add_subdirectory( kfile )
 add_subdirectory( data )
 add_subdirectory( pykig )
 
-message(STATUS "${CMAKE_CURRENT_SOURCE_DIR}: skipped subdir $(scriptingdir)")
 include_directories(
    ${KDE4_INCLUDE_DIR}
    ${QT_INCLUDES}
@@ -145,11 +160,14 @@ include_directories(
    ${CMAKE_CURRENT_BINARY_DIR}
    ${CMAKE_SOURCE_DIR}/kig/modes
 )
+if(BOOST_PYTHON_FOUND)
+  include_directories(${BOOST_PYTHON_INCLUDES})
+endif(BOOST_PYTHON_FOUND)
 
 
 ########### next target ###############
 
-set(kigpart_PART_SRCS dummy.cpp ${libmisc_SRCS} ${libobjects_SRCS} ${libfilters_SRCS} ${libmodes_SRCS} ${libkigparttemp_SRCS})
+set(kigpart_PART_SRCS dummy.cpp ${libmisc_SRCS} ${libobjects_SRCS} ${libfilters_SRCS} ${libmodes_SRCS} ${libscripting_SRCS} ${libkigparttemp_SRCS})
 
 kde4_automoc(${kigpart_PART_SRCS})
 
@@ -159,6 +177,9 @@ kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kigpart )
 
 target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} ${KDE4_KDEPRINT_LIBS} )
+if(BOOST_PYTHON_FOUND)
+  target_link_libraries(kigpart ${BOOST_PYTHON_LIBS} ktexteditor kdocument)
+endif(BOOST_PYTHON_FOUND)
 
 install_targets(${PLUGIN_INSTALL_DIR} kigpart )
 
