@@ -35,11 +35,12 @@ install_targets(${PLUGIN_INSTALL_DIR} kfile_kig )
 
 ########### install files ###############
 
-install_files( ${SERVICES_INSTALL_DIR} FILES kfile_drgeo.desktop  	kfile_kig.desktop )
+install_files(${SERVICES_INSTALL_DIR} FILES
+   kfile_drgeo.desktop
+   kfile_kig.desktop
+)
 
 kde4_footer()
-
-
 
 #original Makefile.am contents follow:
 
