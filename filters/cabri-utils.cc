@@ -128,7 +128,7 @@ kDebug() << "+++++++++ text: \"" << ret << "\"" << endl;
   return ret;
 }
 
-}; // CabriNS
+} // CabriNS
 
 CabriObject::CabriObject()
   : id( 0 ), thick( 1 ), lineSegLength( 0 ), lineSegSplit( 0 ), visible( true ),
