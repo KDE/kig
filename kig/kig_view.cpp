@@ -158,8 +158,8 @@ void KigWidget::resizeEvent( QResizeEvent* e )
   QSize nsize = e->size();
   Rect orect = msi.shownRect();
 
-  curPix.resize( nsize );
-  stillPix.resize( nsize );
+  curPix = QPixmap( nsize );
+  stillPix = QPixmap( nsize );
   msi.setViewRect( rect() );
 
   Rect nrect( 0., 0.,
