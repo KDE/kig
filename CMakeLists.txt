@@ -135,7 +135,7 @@ if(BOOST_PYTHON_FOUND)
      ${CMAKE_SOURCE_DIR}/kig/scripting/newscriptwizardbase.ui
   )
 
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
+  set_source_files_properties(${CMAKE_SOURCE_DIR}/kig/scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "-fexceptions")
 endif(BOOST_PYTHON_FOUND)
 
 add_subdirectory( scripting )
