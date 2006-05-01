@@ -187,8 +187,6 @@ install_targets(${PLUGIN_INSTALL_DIR} kigpart )
 ########### install files ###############
 
 
-kde4_create_doxygen_docs( RECURSIVE EXCLUDE python-scripting-api-dox-mainpage.dox  )
-
 kde4_footer()
 
 
