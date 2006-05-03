@@ -1,6 +1,9 @@
 kde4_header()
 project(kig)
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-kig.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kig.h )
+
+
 set(libkigparttemp_SRCS
    ${CMAKE_SOURCE_DIR}/kig/kig/kig_commands.cpp
    ${CMAKE_SOURCE_DIR}/kig/kig/kig_document.cc

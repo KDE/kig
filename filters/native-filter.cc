@@ -31,6 +31,7 @@
 #include "../misc/coordinate_system.h"
 
 #include "config.h"
+#include "config-kig.h"
 
 #include <qbytearray.h>
 #include <qdom.h>

@@ -19,7 +19,7 @@
 #define KIG_MISC_GUIACTION_H
 
 #include <config.h>
-
+#include <config-kig.h>
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
 #include "../scripting/script-common.h"
 #endif

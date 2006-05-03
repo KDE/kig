@@ -23,7 +23,7 @@
 #include "../kig/kig_part.h"
 
 #include "config.h"
-
+#include "config-kig.h"
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <qfile.h>
