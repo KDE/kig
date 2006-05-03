@@ -16,7 +16,7 @@
 // 02110-1301, USA.
 
 #include <config.h>
-
+#include <config-kig.h>
 #include "cubic-common.h"
 #include "kignumerics.h"
 #include "kigtransform.h"
