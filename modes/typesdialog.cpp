@@ -172,7 +172,7 @@ void TypesModel::removeElements( const std::vector<BaseListElement*>& elems )
     bool found = false;
     int id = 0;
     for ( std::vector<BaseListElement*>::iterator mit = melems.begin();
-          mit != melems.end() && !found; ++mit )
+          mit != melems.end() && !found; )
     {
       if ( *mit == *it )
       {
@@ -180,10 +180,12 @@ void TypesModel::removeElements( const std::vector<BaseListElement*>& elems )
         beginRemoveRows( QModelIndex(), id, id );
 
         delete (*mit);
-        melems.erase( mit );
+        mit = melems.erase( mit );
 
         endRemoveRows();
       }
+      else
+        ++mit;
       ++id;
     }
   }
