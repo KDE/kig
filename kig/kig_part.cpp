@@ -278,22 +278,22 @@ void KigPart::setupActions()
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
   aToggleGrid = new KToggleAction(
-    i18n( "Show &Grid" ), 0, this, SLOT( toggleGrid() ),
-    actionCollection(), "settings_show_grid" );
+    i18n( "Show &Grid" ), actionCollection(), "settings_show_grid" );
   aToggleGrid->setToolTip( i18n( "Show or hide the grid." ) );
   aToggleGrid->setChecked( true );
+  connect( aToggleGrid, SIGNAL( triggered() ), this, SLOT( toggleGrid() ) );
 
   aToggleAxes = new KToggleAction(
-    i18n( "Show &Axes" ), 0, this, SLOT( toggleAxes() ),
-    actionCollection(), "settings_show_axes" );
+    i18n( "Show &Axes" ), actionCollection(), "settings_show_axes" );
   aToggleAxes->setToolTip( i18n( "Show or hide the axes." ) );
   aToggleAxes->setChecked( true );
+  connect( aToggleAxes, SIGNAL( triggered() ), this, SLOT( toggleAxes() ) );
 
   aToggleNightVision = new KToggleAction(
-    i18n( "Wear Infrared Glasses" ), 0, this, SLOT( toggleNightVision() ),
-    actionCollection(), "settings_toggle_nightvision" );
+    i18n( "Wear Infrared Glasses" ), actionCollection(), "settings_toggle_nightvision" );
   aToggleNightVision->setToolTip( i18n( "Enable/Disable hidden objects visibility." ) );
   aToggleNightVision->setChecked( false );
+  connect( aToggleNightVision, SIGNAL( triggered() ), this, SLOT( toggleNightVision() ) );
 
   // select coordinate system KActionMenu..
   aCoordSystem = new SetCoordinateSystemAction( *this, actionCollection() );

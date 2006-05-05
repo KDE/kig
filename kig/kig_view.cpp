@@ -141,7 +141,9 @@ void KigWidget::updateWidget( const std::vector<QRect>& overlay )
 
   oldOverlay = overlay;
 
-  bitBlt( this, overlay.front().topLeft(), &curPix, overlay.front() );
+  QPainter p( this );
+  p.drawPixmap( overlay.front().topLeft(), curPix, overlay.front() );
+  p.end();
   mispainting = false;
 }
 
@@ -186,10 +188,12 @@ void KigWidget::resizeEvent( QResizeEvent* e )
 void KigWidget::updateCurPix( const std::vector<QRect>& ol )
 {
   // we make curPix look like stillPix again...
+  QPainter p( &curPix );
   for ( std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
-    bitBlt( &curPix, i->topLeft(), &stillPix, *i );
+    p.drawPixmap( i->topLeft(), stillPix, *i );
   for ( std::vector<QRect>::const_iterator i = ol.begin(); i != ol.end(); ++i )
-    bitBlt( &curPix, i->topLeft(), &stillPix, *i );
+    p.drawPixmap( i->topLeft(), stillPix, *i );
+  p.end();
 
   // we add ol to oldOverlay, so that part of the widget will be
   // updated too in updateWidget...
