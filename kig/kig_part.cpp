@@ -231,9 +231,8 @@ void KigPart::setupActions()
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
-  aShowHidden = new KAction(
-    i18n("U&nhide All"), 0, this, SLOT( showHidden() ),
-    actionCollection(), "edit_unhide_all");
+  aShowHidden = new KAction( i18n("U&nhide All"), actionCollection(), "edit_unhide_all");
+  connect(aShowHidden, SIGNAL(triggered(bool) ), SLOT( showHidden() ));
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
@@ -243,8 +242,7 @@ void KigPart::setupActions()
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction(
-    i18n("Manage &Types..."), 0, this, SLOT(editTypes()),
-    actionCollection(), "types_edit");
+    i18n("Manage &Types..."), 0, this, SLOT(editTypes()), actionCollection(), "types_edit");
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
