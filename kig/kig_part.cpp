@@ -241,8 +241,8 @@ void KigPart::setupActions()
     actionCollection(), "macro_action");
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
-  aConfigureTypes = new KAction(
-    i18n("Manage &Types..."), 0, this, SLOT(editTypes()), actionCollection(), "types_edit");
+  aConfigureTypes = new KAction( i18n("Manage &Types..."), actionCollection(), "types_edit");
+  connect(aConfigureTypes, SIGNAL(triggered(bool) ), SLOT(editTypes()));
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
