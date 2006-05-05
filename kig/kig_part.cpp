@@ -211,22 +211,20 @@ void KigPart::setupActions()
     this, SLOT( slotSelectAll() ), actionCollection() );
   aDeselectAll = KStdAction::deselect(
     this, SLOT( slotDeselectAll() ), actionCollection() );
-  aInvertSelection = new KAction(
-    i18n( "Invert Selection" ), "", 0, this,
-    SLOT( slotInvertSelection() ), actionCollection(),
-    "edit_invert_selection" );
+  aInvertSelection = new KAction( i18n( "Invert Selection" ), actionCollection(), "edit_invert_selection" );
+  connect(aInvertSelection, SIGNAL(triggered(bool) ), SLOT( slotInvertSelection() ));
 
   // we need icons...
   KIconLoader* l = instance()->iconLoader();
 
-  aDeleteObjects = new KAction(
-      i18n("&Delete Objects"), "editdelete", Qt::Key_Delete, this,
-      SLOT(deleteObjects()), actionCollection(), "delete_objects");
+  aDeleteObjects = new KAction(KIcon("editdelete"),  i18n("&Delete Objects"), actionCollection(), "delete_objects");
+  connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
+  aDeleteObjects->setShortcut(Qt::Key_Delete);
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  aCancelConstruction = new KAction(
-      i18n("Cancel Construction"), "stop", Qt::Key_Escape, this,
-      SLOT(cancelConstruction()), actionCollection(), "cancel_construction");
+  aCancelConstruction = new KAction(KIcon("stop"),  i18n("Cancel Construction"), actionCollection(), "cancel_construction");
+  connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
+  aCancelConstruction->setShortcut(Qt::Key_Escape);
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
@@ -236,9 +234,8 @@ void KigPart::setupActions()
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  aNewMacro = new KAction(
-    i18n("&New Macro..."), "gear", 0, this, SLOT(newMacro()),
-    actionCollection(), "macro_action");
+  aNewMacro = new KAction(KIcon("gear"),  i18n("&New Macro..."), actionCollection(), "macro_action");
+  connect(aNewMacro, SIGNAL(triggered(bool) ), SLOT(newMacro()));
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction( i18n("Manage &Types..."), actionCollection(), "types_edit");
@@ -270,15 +267,13 @@ void KigPart::setupActions()
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  a = new KAction(
-    i18n( "&Select Shown Area" ), "viewmagfit", 0, m_widget, SLOT( zoomRect() ),
-    actionCollection(), "view_select_shown_rect" );
+  a = new KAction(KIcon("viewmagfit"),  i18n( "&Select Shown Area" ), actionCollection(), "view_select_shown_rect" );
+  connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomRect() ));
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  a = new KAction(
-    i18n( "S&elect Zoom Area" ), "viewmag", 0, m_widget, SLOT( zoomArea() ),
-    actionCollection(), "view_zoom_area" );
+  a = new KAction(KIcon("viewmag"),  i18n( "S&elect Zoom Area" ), actionCollection(), "view_zoom_area" );
+  connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomArea() ));
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
