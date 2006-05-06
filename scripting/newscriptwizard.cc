@@ -1,4 +1,5 @@
 // Copyright (C)  2003  Dominique Devriese <devriese@kde.org>
+// Copyright (C)  2005-2006  Pino Toscano <toscano.pino@tiscali.it>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -28,14 +29,10 @@
 #include <kactioncollection.h>
 #include <kglobalsettings.h>
 #include <ktextedit.h>
-#if 0
-#include <ktexteditor/clipboardinterface.h>
-#include <ktexteditor/dynwordwrapinterface.h>
-#endif
+#include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
-#if 0
-#include <ktexteditor/undointerface.h>
-#endif
+#include <ktexteditor/editorchooser.h>
+#include <ktexteditor/highlightinginterface.h>
 #include <ktexteditor/view.h>
 #include <ktoolinvocation.h>
 
@@ -49,10 +46,6 @@ NewScriptWizard::~NewScriptWizard()
   }
   else
   {
-#if 0
-    //restoring the state of the dynamic word wrap
-    dynamic_cast<KTextEditor::DynWordWrapInterface*>( editor )->setDynWordWrap( prevDynWordWrap );
-#endif
     delete document;
   }
 }
@@ -61,12 +54,9 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
   : NewScriptWizardBase( parent, "New Script Wizard" ),
     mmode( mode ), textedit( 0 ), document( 0 ), hli( 0 ), docview( 0 )
 {
-//  document = KTextEditor::EditorChooser::createDocument( 0, "KTextEditor::Document" );
-#if 0
-  KTextEditor::Editor* editor = KTextEditor::editor( "katepart" );
+  KTextEditor::Editor* editor = KTextEditor::EditorChooser::editor();
+//  KTextEditor::Editor* editor = 0;
   kDebug() << "EDITOR: " << editor << endl;
-#endif
-  KTextEditor::Editor* editor = 0;
 
   if ( !editor )
   {
@@ -81,61 +71,35 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
   {
     document = editor->createDocument( 0 );
     // creating the 'view', that is what the user see and interact with
-    docview = dynamic_cast<KTextEditor::View*>( document->createView( mpcode ) );
+    (void)document->createView( mpcode );
+    docview = document->activeView();
 
     gridLayout->addWidget( docview, 1, 0 );
 
-    // casting to the interfaces we'll use often
-    hli = dynamic_cast<KTextEditor::HighlightingInterface*>( document );
+    // getting the highlight interface
+    hli = qobject_cast<KTextEditor::HighlightingInterface*>( document );
+    if ( hli )
+    {
+      // saving the "no highlight" id
+      noHlStyle = hli->hlMode();
+    }
 
     // displaying the left border with line numbers
-    KToggleAction *a = dynamic_cast<KToggleAction*>( document->actionCollection()->action( "view_line_numbers" ) );
-    a->trigger();
-
-#if 0
-    // saving the state of dynamic word wrap and disabling it
-    prevDynWordWrap = dynamic_cast<KTextEditor::DynWordWrapInterface*>( editor )->dynWordWrap();
-    dynamic_cast<KTextEditor::DynWordWrapInterface*>( editor )->setDynWordWrap( false );
-#endif
-
-    // saving the "no highlight" id
-    noHlStyle = hli->hlMode();
+    KAction *a = docview->actionCollection()->action( "view_line_numbers" );
+    if ( a )
+    {
+      a->trigger();
+    }
 
     // creating the popup menu
     QMenu* menu = new QMenu( docview );
-    // creating the actions for the code editor and plugging them into
-    // the popup menu (to build it, of course :) )
-    KAction* act = document->actionCollection()->action( "edit_undo" );
-    connect( act, SIGNAL( activated() ), this, SLOT( slotUndo() ) );
-    act->plug( menu );
-    act = document->actionCollection()->action( "edit_redo" );
-    connect( act, SIGNAL( activated() ), this, SLOT( slotRedo() ) );
-    act->plug( menu );
-    act = document->actionCollection()->action( "edit_cut" );
-    connect( act, SIGNAL( activated() ), this, SLOT( slotCut() ) );
-    act->plug( menu );
-    act = document->actionCollection()->action( "edit_copy" );
-    connect( act, SIGNAL( activated() ), this, SLOT( slotCopy() ) );
-    act->plug( menu );
-    act = document->actionCollection()->action( "edit_paste" );
-    connect( act, SIGNAL( activated() ), this, SLOT( slotPaste() ) );
-    act->plug( menu );
-
-#if 0
-    KActionCollection* ac = new KActionCollection( document );
-    KAction* undoAction = KStdAction::undo( this, SLOT( slotUndo() ), ac );
-    KAction* redoAction = KStdAction::redo( this, SLOT( slotRedo() ), ac );
-    KAction* cutAction = KStdAction::cut( this, SLOT( slotCut() ), ac );
-    KAction* copyAction = KStdAction::copy( this, SLOT( slotCopy() ), ac );
-    KAction* pasteAction = KStdAction::paste( this, SLOT( slotPaste() ), ac );
-    // ... and plugging them into the popup menu (to build it, of course :) )
-    undoAction->plug( pm );
-    redoAction->plug( pm );
-    pm->insertSeparator();
-    cutAction->plug( pm );
-    copyAction->plug( pm );
-    pasteAction->plug( pm );
-#endif
+    // adding the standard actions to the context menu
+    menu->addAction( docview->actionCollection()->action( "edit_undo" ) );
+    menu->addAction( docview->actionCollection()->action( "edit_redo" ) );
+    menu->addSeparator();
+    menu->addAction( docview->actionCollection()->action( "edit_cut" ) );
+    menu->addAction( docview->actionCollection()->action( "edit_copy" ) );
+    menu->addAction( docview->actionCollection()->action( "edit_paste" ) );
 
     // finally, we install the popup menu
     docview->setContextMenu( menu );
@@ -201,7 +165,7 @@ void NewScriptWizard::setText( const QString& text )
   }
 }
 
-QString NewScriptWizard::text()
+QString NewScriptWizard::text() const
 {
   if ( !document )
   {
@@ -219,52 +183,26 @@ void NewScriptWizard::setType( ScriptType::Type type )
 
   if ( !!document )
   {
-    if ( type != ScriptType::Unknown )
+    // setting the highlight mode
+    if ( hli )
     {
-      for ( uint i = 0; i < hli->hlModeCount(); ++i )
+      if ( type != ScriptType::Unknown )
       {
-        if ( hli->hlModeName( i ) == ScriptType::highlightStyle( type ) )
+        QString newhlstyle = ScriptType::highlightStyle( type );
+        for ( uint i = 0; i < hli->hlModeCount(); ++i )
         {
-          // we found our highlight style, setting it
-          hli->setHlMode( i );
-          return;
+          if ( hli->hlModeName( i ) == newhlstyle )
+          {
+            // we found our highlight style, setting it
+            hli->setHlMode( i );
+            break;
+          }
         }
       }
-    }
-    else
-    {
-      hli->setHlMode( noHlStyle );
+      else
+      {
+        hli->setHlMode( noHlStyle );
+      }
     }
   }
-}
-
-void NewScriptWizard::slotUndo()
-{
-#if 0
-  dynamic_cast<KTextEditor::UndoInterface*>( document )->undo();
-#endif
-}
-
-void NewScriptWizard::slotRedo() {
-#if 0
-  dynamic_cast<KTextEditor::UndoInterface*>( document )->redo();
-#endif
-}
-
-void NewScriptWizard::slotCut() {
-#if 0
-  dynamic_cast<KTextEditor::ClipboardInterface*>( editor )->cut();
-#endif
-}
-
-void NewScriptWizard::slotCopy() {
-#if 0
-  dynamic_cast<KTextEditor::ClipboardInterface*>( editor )->copy();
-#endif
-}
-
-void NewScriptWizard::slotPaste() {
-#if 0
-  dynamic_cast<KTextEditor::ClipboardInterface*>( editor )->paste();
-#endif
 }

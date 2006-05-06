@@ -22,13 +22,13 @@
 
 #include "script-common.h"
 
-#include <ktextedit.h>
-#include <ktexteditor/document.h>
-#include <ktexteditor/highlightinginterface.h>
-#include <ktexteditor/view.h>
-
-#include <algorithm>
-
+class KTextEdit;
+namespace KTextEditor
+{
+  class Document;
+  class HighlightingInterface;
+  class View;
+};
 class ScriptModeBase;
 
 class NewScriptWizard
@@ -45,19 +45,15 @@ public:
   void reject();
 
   void setText( const QString& text );
-  QString text();
+  QString text() const;
 
   void setType( ScriptType::Type type );
 
 public slots:
-  void slotHelpClicked();
   void accept();
 
-  void slotUndo();
-  void slotRedo();
-  void slotCut();
-  void slotCopy();
-  void slotPaste();
+protected slots:
+  void slotHelpClicked();
 
 protected:
   KTextEdit* textedit;
@@ -66,7 +62,6 @@ protected:
   KTextEditor::View* docview;
 
   uint noHlStyle;
-  bool prevDynWordWrap;
 };
 
 #endif
