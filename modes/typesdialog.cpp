@@ -149,6 +149,9 @@ const std::vector<BaseListElement*>& TypesModel::elements() const
 
 void TypesModel::addElements( const std::vector<BaseListElement*>& elems )
 {
+  if ( elems.size() < 1 )
+    return;
+
   beginInsertRows( QModelIndex(), melems.size() + 1, melems.size() + elems.size() );
 
   std::copy( elems.begin(), elems.end(), std::back_inserter( melems ) );
