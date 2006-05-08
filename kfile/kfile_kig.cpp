@@ -36,7 +36,7 @@ typedef KGenericFactory<KigPlugin> kigFactory;
 
 K_EXPORT_COMPONENT_FACTORY( kfile_kig, kigFactory( "kfile_kig" ) )
 
-KigPlugin::KigPlugin( QObject *parent, const char *, const QStringList &args )
+KigPlugin::KigPlugin( QObject *parent, const QStringList &args )
     : KFilePlugin( parent, args )
 {
   KFileMimeTypeInfo::ItemInfo* item;

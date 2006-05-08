@@ -34,6 +34,7 @@
 #include <klibloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <krecentfilesaction.h>
 #include <kstatusbar.h>
 #include <kstdaction.h>
 #include <ktip.h>
@@ -69,7 +70,7 @@ Kig::Kig()
       // now that the Part is loaded, we cast it to a Part to get
       // our hands on it
       m_part = static_cast<KParts::ReadWritePart*>
-               (factory->create(this, "kig_part", "KParts::ReadWritePart" ));
+               ( factory->create( this, "KigPart" ) );
       if (m_part)
       {
 	  // tell the KParts::MainWindow that this is indeed the main widget
