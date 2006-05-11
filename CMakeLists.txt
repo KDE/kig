@@ -150,15 +150,10 @@ add_subdirectory( kfile )
 add_subdirectory( data )
 add_subdirectory( pykig )
 
-include_directories(
-   ${KDE4_INCLUDE_DIR}
-   ${QT_INCLUDES}
-   ${CMAKE_CURRENT_SOURCE_DIR}
-   ${CMAKE_CURRENT_BINARY_DIR}
-   ${CMAKE_SOURCE_DIR}/kig/modes
-)
+include_directories( ${CMAKE_SOURCE_DIR}/kig/modes )
+
 if(BOOST_PYTHON_FOUND)
-  include_directories(${BOOST_PYTHON_INCLUDES})
+   include_directories(${BOOST_PYTHON_INCLUDES})
 endif(BOOST_PYTHON_FOUND)
 
 
