@@ -1,4 +1,3 @@
-kde4_header()
 project(kig)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-kig.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kig.h )
@@ -185,7 +184,6 @@ install_targets(${PLUGIN_INSTALL_DIR} kigpart )
 ########### install files ###############
 
 
-kde4_footer()
 
 
 

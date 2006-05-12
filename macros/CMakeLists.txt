@@ -1,4 +1,3 @@
-kde4_header()
 
 install_files(${DATA_INSTALL_DIR}/kig/builtin-macros FILES
    circle_by_center_and_line.kigt
@@ -11,7 +10,6 @@ install_files(${DATA_INSTALL_DIR}/kig/builtin-macros FILES
    vector_difference.kigt
 )
 
-kde4_footer()
 
 #original Makefile.am contents follow:
 

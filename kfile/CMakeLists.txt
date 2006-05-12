@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -40,7 +39,6 @@ install_files(${SERVICES_INSTALL_DIR} FILES
    kfile_kig.desktop
 )
 
-kde4_footer()
 
 #original Makefile.am contents follow:
 

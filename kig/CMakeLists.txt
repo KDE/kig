@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories(  ${CMAKE_CURRENT_BINARY_DIR}/..  )
 
@@ -24,7 +23,6 @@ install_files( ${DATA_INSTALL_DIR}/kig FILES kigui.rc kigpartui.rc )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
-kde4_footer()
 
 
 

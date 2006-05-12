@@ -1,10 +1,8 @@
-kde4_header()
 
 install_files(${DATA_INSTALL_DIR}/kig FILES
    tips
 )
 
-kde4_footer()
 
 #original Makefile.am contents follow:
 
