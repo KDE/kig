@@ -38,7 +38,7 @@ class KigInputDialogPrivate;
  * getTwoCoordinates(), getAngle().
  */
 class KigInputDialog
-  : KDialog
+  : public KDialog
 {
 Q_OBJECT
 
