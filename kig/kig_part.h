@@ -24,15 +24,14 @@
 
 #include <qlist.h>
 
-#include <kactionclasses.h>
 #include <kparts/part.h>
+#include <kselectaction.h>
 
 #include <vector>
 
 class KAboutData;
 class KCommandHistory;
 class KPrinter;
-class KSelectAction;
 class KToggleAction;
 class QWidget;
 
