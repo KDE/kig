@@ -37,6 +37,7 @@ Name[ta]=கிக் தகவல்
 Name[tg]=Ахборот дар бораи Kig
 Name[tr]=Kig Bilgisi
 Name[uk]=Інформація для Kig
+Name[vi]=Thông tin Kig
 Name[zh_CN]=Kig 信息
 ServiceTypes=KFilePlugin
 X-KDE-Library=kfile_kig
