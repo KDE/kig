@@ -29,6 +29,7 @@
 #include "moving.h"
 #include "macro.h"
 #include "dragrectmode.h"
+#include "historydialog.h"
 #include "typesdialog.h"
 
 #include <kcursor.h>
@@ -52,6 +53,7 @@ void NormalMode::enableActions()
   mdoc.aShowHidden->setEnabled( true );
   mdoc.aNewMacro->setEnabled( true );
   mdoc.aConfigureTypes->setEnabled( true );
+  mdoc.aBrowseHistory->setEnabled( true );
   mdoc.history()->updateActions();
 }
 
@@ -117,6 +119,14 @@ void NormalMode::editTypes()
 {
   TypesDialog d( mdoc.widget(), mdoc );
   d.exec();
+}
+
+void NormalMode::browseHistory()
+{
+  KigMode::enableActions();
+  HistoryDialog d( mdoc.history(), mdoc.widget() );
+  d.exec();
+  enableActions();
 }
 
 NormalMode::NormalMode( KigPart& d )

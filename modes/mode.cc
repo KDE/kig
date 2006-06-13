@@ -32,6 +32,7 @@ void KigMode::enableActions()
   mdoc.aInvertSelection->setEnabled( false );
   mdoc.aCancelConstruction->setEnabled( false );
   mdoc.aConfigureTypes->setEnabled( false );
+  mdoc.aBrowseHistory->setEnabled( false );
   mdoc.aDeleteObjects->setEnabled( false );
   mdoc.aShowHidden->setEnabled( false );
   mdoc.aNewMacro->setEnabled( false );
@@ -108,6 +109,10 @@ void KigMode::newMacro()
 }
 
 void KigMode::editTypes()
+{
+}
+
+void KigMode::browseHistory()
 {
 }
 

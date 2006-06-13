@@ -15,6 +15,7 @@ set(libmodes_SRCS
    ${CMAKE_SOURCE_DIR}/kig/modes/construct_mode.cc
    ${CMAKE_SOURCE_DIR}/kig/modes/dragrectmode.cc
    ${CMAKE_SOURCE_DIR}/kig/modes/edittype.cc
+   ${CMAKE_SOURCE_DIR}/kig/modes/historydialog.cc
    ${CMAKE_SOURCE_DIR}/kig/modes/label.cc
    ${CMAKE_SOURCE_DIR}/kig/modes/linkslabel.cpp
    ${CMAKE_SOURCE_DIR}/kig/modes/macro.cc
@@ -33,6 +34,7 @@ kde4_add_ui3_files(libmodes_SRCS
 kde4_add_ui_files(libmodes_SRCS
    ${CMAKE_SOURCE_DIR}/kig/modes/typeswidget.ui
    ${CMAKE_SOURCE_DIR}/kig/modes/edittypewidget.ui
+   ${CMAKE_SOURCE_DIR}/kig/modes/historywidget.ui
 )
 
 set(libmisc_SRCS

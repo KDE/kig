@@ -73,6 +73,7 @@ public:
   virtual void showHidden();
   virtual void newMacro();
   virtual void editTypes();
+  virtual void browseHistory();
   virtual void selectAll();
   virtual void deselectAll();
   virtual void invertSelection();

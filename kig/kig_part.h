@@ -115,6 +115,7 @@ public slots:
   void showHidden();
   void newMacro();
   void editTypes();
+  void browseHistory();
 
   void toggleGrid();
   void toggleAxes();
@@ -211,6 +212,7 @@ public:
   KAction* aNewMacro;
   KAction* aShowHidden;
   KAction* aConfigureTypes;
+  KAction* aBrowseHistory;
   KToggleAction* aToggleGrid;
   KToggleAction* aToggleAxes;
   KToggleAction* aToggleNightVision;

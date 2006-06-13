@@ -55,6 +55,7 @@ protected:
   void showHidden();
   void newMacro();
   void editTypes();
+  void browseHistory();
 
 public:
   void selectObject( ObjectHolder* o );

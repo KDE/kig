@@ -243,6 +243,10 @@ void KigPart::setupActions()
   connect(aConfigureTypes, SIGNAL(triggered(bool) ), SLOT(editTypes()));
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
+  aBrowseHistory = new KAction( i18n( "&Browse History..." ), actionCollection(), "browse_history" );
+  connect( aBrowseHistory, SIGNAL( triggered( bool ) ), SLOT( browseHistory() ) );
+  aBrowseHistory->setToolTip( i18n( "Browse the history of the current costruction." ) );
+
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
 
@@ -488,6 +492,11 @@ void KigPart::newMacro()
 void KigPart::editTypes()
 {
   mode()->editTypes();
+}
+
+void KigPart::browseHistory()
+{
+  mode()->browseHistory();
 }
 
 void KigPart::setUnmodified()

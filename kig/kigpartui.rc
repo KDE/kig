@@ -174,6 +174,10 @@
       <Action name="macro_action" />
       <Action name="types_edit" />
     </Menu>
+    <Menu name="tools">
+      <text>&amp;Tools</text>
+      <Action name="browse_history" />
+    </Menu>
     <Menu name="settings">
       <Action name="fullscreen" />
       <Action name="settings_set_coordinate_system" />
