@@ -61,7 +61,9 @@ void KigFileDialog::accept()
   }
   if ( mow )
   {
-    KDialog* optdlg = new KDialog( this, moptcaption, KDialog::Cancel|KDialog::Ok );
+    KDialog* optdlg = new KDialog( this );
+    optdlg->setCaption( moptcaption );
+    optdlg->setButtons( KDialog::Cancel | KDialog::Ok );
     mow->setParent( optdlg );
     optdlg->setMainWidget( mow );
     optdlg->exec() == QDialog::Accepted ? KFileDialog::accept() : KFileDialog::reject();

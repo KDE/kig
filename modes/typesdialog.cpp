@@ -292,9 +292,12 @@ int TypesModel::rowCount( const QModelIndex& ) const
 
 
 TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
-  : KDialog( parent, i18n( "Manage Types" ), Help|Ok|Cancel ),
+  : KDialog( parent ),
     mpart( part )
 {
+  setCaption( i18n( "Manage Types" ) );
+  setButtons( Help | Ok | Cancel );
+
   QWidget* base = new QWidget( this );
   setMainWidget( base );
   mtypeswidget = new Ui_TypesWidget();

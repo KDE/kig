@@ -66,9 +66,12 @@ KigInputDialog::~KigInputDialog()
 
 KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
       QWidget* parent, const KigDocument& doc, Coordinate* c1, Coordinate* c2 )
-  : KDialog( parent, caption, Ok|Cancel ),
+  : KDialog( parent ),
     d( new KigInputDialogPrivate() )
 {
+  setCaption( caption );
+  setButtons( Ok | Cancel );
+
   d->m_coord1 = c1 ? Coordinate( *c1 ) : Coordinate::invalidCoord();
   d->m_coord2 = c2 ? Coordinate( *c2 ) : Coordinate::invalidCoord();
   d->m_doc = doc;
@@ -119,9 +122,12 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 }
 
 KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
-  : KDialog( parent, i18n( "Set Angle Size" ), Ok|Cancel ),
+  : KDialog( parent ),
     d( new KigInputDialogPrivate() )
 {
+  setCaption( i18n( "Set Angle Size" ) );
+  setButtons( Ok | Cancel );
+
   d->m_gonio = g;
   d->m_gonioIsNum = true;
 
@@ -171,6 +177,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 
 void KigInputDialog::keyPressEvent( QKeyEvent* e )
 {
+#if 0
   if ( ( e->key() == Qt::Key_Return ) && ( e->modifiers() == 0 ) )
   {
     if ( actionButton( Ok )->isEnabled() )
@@ -186,7 +193,8 @@ void KigInputDialog::keyPressEvent( QKeyEvent* e )
     e->accept();
     return;
   }
-
+#endif
+  KDialog::keyPressEvent( e );
 }
 
 void KigInputDialog::slotCoordsChanged( const QString& )

@@ -32,9 +32,12 @@
 
 EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
                     const QString& icon )
-  : KDialog( parent, i18n( "Edit Type" ), Help|Ok|Cancel ),
+  : KDialog( parent ),
     mname( name ), mdesc( desc ), micon( icon )
 {
+  setCaption( i18n( "Edit Type" ) );
+  setButtons( Help | Ok | Cancel );
+
   QWidget* base = new QWidget( this );
   setMainWidget( base );
   medittypewidget = new Ui_EditTypeWidget();
