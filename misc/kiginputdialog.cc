@@ -118,7 +118,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 
   d->m_lineEditFirst->setFocus();
 
-  enableButtonOK( ok );
+  enableButtonOk( ok );
 }
 
 KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
@@ -213,7 +213,7 @@ void KigInputDialog::slotCoordsChanged( const QString& )
       d->m_coord2 = d->m_doc.coordinateSystem().toScreen( t, ok );
   }
 
-  enableButtonOK( ok );
+  enableButtonOk( ok );
 }
 
 void KigInputDialog::slotGonioSystemChanged( int index )
@@ -235,7 +235,7 @@ void KigInputDialog::slotGonioTextChanged( const QString& txt )
     double v = txt.toDouble( &(d->m_gonioIsNum) );
     d->m_gonio.setValue( v );
   }
-  enableButtonOK( d->m_gonioIsNum );
+  enableButtonOk( d->m_gonioIsNum );
 }
 
 
