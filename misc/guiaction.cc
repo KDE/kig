@@ -354,7 +354,7 @@ const char* NewScriptAction::actionName() const
 
 void NewScriptAction::act( KigPart& doc )
 {
-  ScriptMode m( doc );
+  ScriptCreationMode m( doc );
   m.setScriptType( mtype );
   doc.runMode( &m );
 }

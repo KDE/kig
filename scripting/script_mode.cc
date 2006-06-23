@@ -21,20 +21,23 @@
 #include "python_type.h"
 #include "python_scripter.h"
 
+#include "../kig/kig_commands.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
+#include "../misc/calcpaths.h"
 #include "../misc/kigpainter.h"
 #include "../modes/dragrectmode.h"
 #include "../objects/bogus_imp.h"
 #include "../objects/object_imp.h"
 
 #include <qlabel.h>
+#include <qpushbutton.h>
 
 #include <kcursor.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-void ScriptMode::dragRect( const QPoint& p, KigWidget& w )
+void ScriptModeBase::dragRect( const QPoint& p, KigWidget& w )
 {
   if ( mwawd != SelectingArgs ) return;
 
@@ -57,8 +60,8 @@ void ScriptMode::dragRect( const QPoint& p, KigWidget& w )
   w.updateWidget();
 }
 
-void ScriptMode::leftClickedObject( ObjectHolder* o, const QPoint&,
-                                    KigWidget& w, bool )
+void ScriptModeBase::leftClickedObject( ObjectHolder* o, const QPoint&,
+                                        KigWidget& w, bool )
 {
   if ( mwawd != SelectingArgs ) return;
 
@@ -78,7 +81,8 @@ void ScriptMode::leftClickedObject( ObjectHolder* o, const QPoint&,
   w.updateWidget();
 }
 
-void ScriptMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& pt, KigWidget& w, bool )
+void ScriptModeBase::mouseMoved( const std::vector<ObjectHolder*>& os,
+                                 const QPoint& pt, KigWidget& w, bool )
 {
   if ( mwawd != SelectingArgs ) return;
 
@@ -110,44 +114,43 @@ void ScriptMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint&
   }
 }
 
-ScriptMode::ScriptMode( KigPart& doc )
+ScriptModeBase::ScriptModeBase( KigPart& doc )
   : BaseMode( doc ), mwizard( 0 ), mpart( doc ),
     mwawd( SelectingArgs )
 {
   mwizard = new NewScriptWizard( doc.widget(), this );
-  mwizard->show();
 
   doc.redrawScreen();
 }
 
-ScriptMode::~ScriptMode()
+ScriptModeBase::~ScriptModeBase()
 {
 }
 
-void ScriptMode::killMode()
+void ScriptModeBase::killMode()
 {
   mdoc.doneMode( this );
 }
 
-bool ScriptMode::queryCancel()
+bool ScriptCreationMode::queryCancel()
 {
   killMode();
   return true;
 }
 
-void ScriptMode::argsPageEntered()
+void ScriptModeBase::argsPageEntered()
 {
   mwawd = SelectingArgs;
   mdoc.redrawScreen();
 }
 
-void ScriptMode::enableActions()
+void ScriptModeBase::enableActions()
 {
   KigMode::enableActions();
   // we don't enable any actions..
 }
 
-void ScriptMode::codePageEntered()
+void ScriptModeBase::codePageEntered()
 {
   if ( mwizard->text().isEmpty() )
   {
@@ -160,7 +163,7 @@ void ScriptMode::codePageEntered()
   mdoc.redrawScreen();
 }
 
-void ScriptMode::redrawScreen( KigWidget* w )
+void ScriptModeBase::redrawScreen( KigWidget* w )
 {
   std::vector<ObjectHolder*> sel;
   if ( mwawd == SelectingArgs )
@@ -169,7 +172,7 @@ void ScriptMode::redrawScreen( KigWidget* w )
   w->updateScrollBars();
 }
 
-bool ScriptMode::queryFinish()
+bool ScriptCreationMode::queryFinish()
 {
   std::vector<ObjectCalcer*> args;
 
@@ -219,15 +222,16 @@ bool ScriptMode::queryFinish()
   }
 }
 
-void ScriptMode::midClicked( const QPoint&, KigWidget& )
+void ScriptModeBase::midClicked( const QPoint&, KigWidget& )
 {
 }
 
-void ScriptMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
+void ScriptModeBase::rightClicked( const std::vector<ObjectHolder*>&,
+                                   const QPoint&, KigWidget& )
 {
 }
 
-void ScriptMode::setScriptType( ScriptType::Type type )
+void ScriptModeBase::setScriptType( ScriptType::Type type )
 {
   mtype = type;
   mwizard->setType( mtype );
@@ -238,7 +242,7 @@ void ScriptMode::setScriptType( ScriptType::Type type )
   }
 }
 
-void ScriptMode::addArgs( const std::vector<ObjectHolder*>& obj, KigWidget& w )
+void ScriptModeBase::addArgs( const std::vector<ObjectHolder*>& obj, KigWidget& w )
 {
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
 
@@ -249,7 +253,107 @@ void ScriptMode::addArgs( const std::vector<ObjectHolder*>& obj, KigWidget& w )
   w.updateWidget();
 }
 
-void ScriptMode::goToCodePage()
+void ScriptModeBase::goToCodePage()
 {
   mwizard->next();
 }
+
+ScriptCreationMode::ScriptCreationMode( KigPart& doc )
+  : ScriptModeBase( doc )
+{
+  mwizard->show();
+}
+
+ScriptCreationMode::~ScriptCreationMode()
+{
+}
+
+ScriptEditMode::ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc )
+  : ScriptModeBase( doc ), mexecuted( exec_calc )
+{
+  mwawd = EnteringCode;
+
+  mexecargs = mexecuted->parents();
+  assert( mexecargs.size() >= 1 );
+
+  mcompiledargs = mexecargs[0]->parents();
+  assert( mcompiledargs.size() == 1 );
+
+  const ObjectImp* imp = static_cast<ObjectConstCalcer*>( mcompiledargs[0] )->imp();
+  assert( dynamic_cast<const StringImp*>( imp ) );
+  // save the original script text, in case the user modifies the text
+  // in the editor and aborts the editing
+  morigscript = static_cast<const StringImp*>( imp )->data();
+
+  mwizard->setCaption( i18n( "'Edit' is a verb", "Edit Script" ) );
+  mwizard->setText( morigscript );
+  mwizard->show();
+  mwizard->next();
+  mwizard->backButton()->setEnabled( false );
+  mwizard->finishButton()->setEnabled( true );
+}
+
+ScriptEditMode::~ScriptEditMode()
+{
+}
+
+bool ScriptEditMode::queryFinish()
+{
+  MonitorDataObjects mon( mcompiledargs );
+
+  static_cast<ObjectConstCalcer*>( mcompiledargs[0] )->switchImp( new StringImp( mwizard->text() ) );
+  mexecargs[0]->calc( mpart.document() );
+
+  mexecuted->calc( mpart.document() );
+
+  mpart.redrawScreen();
+
+  KigCommand* comm = new KigCommand( mpart, i18n( "Edit Python Script" ) );
+  mon.finish( comm );
+
+  if ( mexecuted->imp()->inherits( InvalidImp::stype() ) )
+  {
+    PythonScripter* inst = PythonScripter::instance();
+    QCString errtrace = inst->lastErrorExceptionTraceback().c_str();
+    if ( inst->errorOccurred() )
+    {
+      KMessageBox::detailedSorry(
+        mpart.widget(), i18n( "The Python interpreter caught an error during the execution of your "
+                              "script. Please fix the script." ),
+        i18n( "The Python Interpreter generated the following error output:\n%1").arg( errtrace ) );
+    }
+    else
+    {
+      KMessageBox::sorry(
+        mpart.widget(), i18n( "There seems to be an error in your script. The Python interpreter "
+                              "reported no errors, but the script does not generate "
+                              "a valid object. Please fix the script." ) );
+    }
+    delete comm;
+    return false;
+  }
+
+  mpart.history()->addCommand( comm );
+
+  killMode();
+  return true;
+}
+
+bool ScriptEditMode::queryCancel()
+{
+  // reverting the original script text
+  static_cast<ObjectConstCalcer*>( mcompiledargs[0] )->switchImp( new StringImp( morigscript ) );
+  mexecargs[0]->calc( mpart.document() );
+
+  mexecuted->calc( mpart.document() );
+  // paranoic check
+  assert( !mexecuted->imp()->inherits( InvalidImp::stype() ) );
+
+  mpart.redrawScreen();
+
+  // no need to further checks here, as the original script text is ok
+
+  killMode();
+  return true;
+}
+

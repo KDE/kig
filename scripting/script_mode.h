@@ -27,11 +27,14 @@
 class NewScriptWizard;
 
 /**
- * Mode to create a new scripted type..
+ * Base mode to interact with a script.
  */
-class ScriptMode
+class ScriptModeBase
   : public BaseMode
 {
+protected:
+  ScriptModeBase( KigPart& doc );
+
   std::set<ObjectHolder*> margs;
   NewScriptWizard* mwizard;
 
@@ -40,11 +43,11 @@ class ScriptMode
   enum WAWD { SelectingArgs, EnteringCode };
   WAWD mwawd;
 
+private:
   ScriptType::Type mtype;
 
 public:
-  ScriptMode( KigPart& doc );
-  ~ScriptMode();
+  virtual ~ScriptModeBase();
 
   void dragRect( const QPoint& p, KigWidget& w );
 //  void dragObject( const Objects& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
@@ -58,8 +61,8 @@ public:
   void argsPageEntered();
   void codePageEntered();
 
-  bool queryFinish();
-  bool queryCancel();
+  virtual bool queryFinish() = 0;
+  virtual bool queryCancel() = 0;
 
   void redrawScreen( KigWidget* w );
 
@@ -73,6 +76,41 @@ public:
 
   void goToCodePage();
 
+};
+
+/**
+ * Script mode to create a script.
+ */
+class ScriptCreationMode
+  : public ScriptModeBase
+{
+public:
+  ScriptCreationMode( KigPart& doc );
+  virtual ~ScriptCreationMode();
+
+  virtual bool queryFinish();
+  virtual bool queryCancel();
+};
+
+/**
+ * Script mode to edit an already-built script.
+ */
+class ScriptEditMode
+  : public ScriptModeBase
+{
+private:
+  ObjectTypeCalcer* mexecuted;
+  std::vector<ObjectCalcer*> mexecargs;
+  std::vector<ObjectCalcer*> mcompiledargs;
+
+  QString morigscript;
+
+public:
+  ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc );
+  virtual ~ScriptEditMode();
+
+  virtual bool queryFinish();
+  virtual bool queryCancel();
 };
 
 #endif
