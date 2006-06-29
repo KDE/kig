@@ -465,11 +465,8 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
       return new SegmentImp( line.a + t1*(line.b - line.a),
                              line.a + t2*(line.b - line.a) );
       break;
-    case 0:
-    default:
-      return new InvalidImp;
-      break;
   }
+  return new InvalidImp;
 }
 
 /*
