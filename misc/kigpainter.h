@@ -201,8 +201,8 @@ public:
   /**
    * draw a polygon defined by the points in pts...
    */
-  void drawPolygon( const std::vector<QPoint>& pts, bool winding = false, int index = 0, int npoints = -1 );
-  void drawPolygon( const std::vector<Coordinate>& pts, bool winding = false, int index = 0, int npoints = -1 );
+  void drawPolygon( const std::vector<QPoint>& pts, Qt::FillRule fillRule = Qt::OddEvenFill );
+  void drawPolygon( const std::vector<Coordinate>& pts, Qt::FillRule fillRule = Qt::OddEvenFill );
 
   /**
    * draw an area defined by the points in pts filled with the set

@@ -289,8 +289,7 @@ static void setContains( QRect& r, const QPoint& p )
 }
 */
 
-void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
-                              bool winding, int index, int npoints )
+void KigPainter::drawPolygon( const std::vector<QPoint>& pts, Qt::FillRule fillRule )
 {
   QPen oldpen = mP.pen();
   QBrush oldbrush = mP.brush();
@@ -304,7 +303,7 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
   {
     t.putPoints( c++, 1, i->x(), i->y() );
   };
-  mP.drawPolygon( t, winding, index, npoints );
+  mP.drawPolygon( t, fillRule );
   setPen( oldpen );
   setBrush( oldbrush );
   if( mNeedOverlay ) mOverlay.push_back( t.boundingRect() );
@@ -652,14 +651,13 @@ void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
                           //    mOverlay.push_back( arrow.boundingRect() ); 
 }
 
-void KigPainter::drawPolygon( const std::vector<Coordinate>& pts,
-                              bool winding, int index, int npoints )
+void KigPainter::drawPolygon( const std::vector<Coordinate>& pts, Qt::FillRule fillRule )
 {
   using namespace std;
   vector<QPoint> points;
   for ( uint i = 0; i < pts.size(); ++i )
     points.push_back( toScreen( pts[i] ) );
-  drawPolygon( points, winding, index, npoints );
+  drawPolygon( points, fillRule  );
 }
 
 void KigPainter::drawVector( const Coordinate& a, const Coordinate& b )
@@ -859,7 +857,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
         if ( curpolylinenextfree > 0 && curpolyline[curpolylinenextfree - 1] != tp1 )
         {
           // flush the current part of the curve
-          mP.drawPolyline( curpolyline, 0, curpolylinenextfree );
+          mP.drawPolyline( curpolyline.constData(), curpolylinenextfree );
           curpolylinenextfree = 0;
         }
         if ( curpolylinenextfree == 0 )
@@ -883,7 +881,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
     }
   }
   // flush the rest of the curve
-  mP.drawPolyline( curpolyline, 0, curpolylinenextfree );
+  mP.drawPolyline( curpolyline.constData(), curpolylinenextfree );
   curpolylinenextfree = 0;
 
   if ( ! workstack.empty () )
