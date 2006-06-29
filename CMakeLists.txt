@@ -4,142 +4,142 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-kig.h.cmake ${CMAKE_CURRENT_BI
 
 
 set(libkigparttemp_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/kig/kig_commands.cpp
-   ${CMAKE_SOURCE_DIR}/kig/kig/kig_document.cc
-   ${CMAKE_SOURCE_DIR}/kig/kig/kig_part.cpp
-   ${CMAKE_SOURCE_DIR}/kig/kig/kig_view.cpp
+   kig/kig_commands.cpp
+   kig/kig_document.cc
+   kig/kig_part.cpp
+   kig/kig_view.cpp
 )
 
 set(libmodes_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/modes/base_mode.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/construct_mode.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/dragrectmode.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/edittype.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/historydialog.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/label.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/linkslabel.cpp
-   ${CMAKE_SOURCE_DIR}/kig/modes/macro.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/macrowizard.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/mode.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/moving.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/normal.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/popup.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/textlabelwizard.cc
-   ${CMAKE_SOURCE_DIR}/kig/modes/typesdialog.cpp
+   modes/base_mode.cc
+   modes/construct_mode.cc
+   modes/dragrectmode.cc
+   modes/edittype.cc
+   modes/historydialog.cc
+   modes/label.cc
+   modes/linkslabel.cpp
+   modes/macro.cc
+   modes/macrowizard.cc
+   modes/mode.cc
+   modes/moving.cc
+   modes/normal.cc
+   modes/popup.cc
+   modes/textlabelwizard.cc
+   modes/typesdialog.cpp
 )
 kde4_add_ui3_files(libmodes_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/modes/macrowizardbase.ui
-   ${CMAKE_SOURCE_DIR}/kig/modes/textlabelwizardbase.ui
+   modes/macrowizardbase.ui
+   modes/textlabelwizardbase.ui
 )
 kde4_add_ui_files(libmodes_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/modes/typeswidget.ui
-   ${CMAKE_SOURCE_DIR}/kig/modes/edittypewidget.ui
-   ${CMAKE_SOURCE_DIR}/kig/modes/historywidget.ui
+   modes/typeswidget.ui
+   modes/edittypewidget.ui
+   modes/historywidget.ui
 )
 
 set(libmisc_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/misc/argsparser.cpp
-   ${CMAKE_SOURCE_DIR}/kig/misc/builtin_stuff.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/calcpaths.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/common.cpp
-   ${CMAKE_SOURCE_DIR}/kig/misc/conic-common.cpp
-   ${CMAKE_SOURCE_DIR}/kig/misc/coordinate.cpp
-   ${CMAKE_SOURCE_DIR}/kig/misc/coordinate_system.cpp
-   ${CMAKE_SOURCE_DIR}/kig/misc/cubic-common.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/equation.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/goniometry.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/guiaction.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/kigfiledialog.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/kiginputdialog.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/kignumerics.cpp
-   ${CMAKE_SOURCE_DIR}/kig/misc/kigpainter.cpp
-   ${CMAKE_SOURCE_DIR}/kig/misc/kigtransform.cpp
-   ${CMAKE_SOURCE_DIR}/kig/misc/lists.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/object_constructor.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/object_hierarchy.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/rect.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/screeninfo.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/special_constructors.cc
-   ${CMAKE_SOURCE_DIR}/kig/misc/unit.cc
+   misc/argsparser.cpp
+   misc/builtin_stuff.cc
+   misc/calcpaths.cc
+   misc/common.cpp
+   misc/conic-common.cpp
+   misc/coordinate.cpp
+   misc/coordinate_system.cpp
+   misc/cubic-common.cc
+   misc/equation.cc
+   misc/goniometry.cc
+   misc/guiaction.cc
+   misc/kigfiledialog.cc
+   misc/kiginputdialog.cc
+   misc/kignumerics.cpp
+   misc/kigpainter.cpp
+   misc/kigtransform.cpp
+   misc/lists.cc
+   misc/object_constructor.cc
+   misc/object_hierarchy.cc
+   misc/rect.cc
+   misc/screeninfo.cc
+   misc/special_constructors.cc
+   misc/unit.cc
 )
 
 set(libfilters_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/filters/cabri-filter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/cabri-utils.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/drgeo-filter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/exporter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/filter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/filters-common.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/imageexporteroptions.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/kgeo-filter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/kseg-filter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/latexexporter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/latexexporteroptions.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/native-filter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/svgexporter.cc
-   ${CMAKE_SOURCE_DIR}/kig/filters/svgexporteroptions.cc
+   filters/cabri-filter.cc
+   filters/cabri-utils.cc
+   filters/drgeo-filter.cc
+   filters/exporter.cc
+   filters/filter.cc
+   filters/filters-common.cc
+   filters/imageexporteroptions.cc
+   filters/kgeo-filter.cc
+   filters/kseg-filter.cc
+   filters/latexexporter.cc
+   filters/latexexporteroptions.cc
+   filters/native-filter.cc
+   filters/svgexporter.cc
+   filters/svgexporteroptions.cc
 )
 kde4_add_ui_files(libfilters_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/filters/imageexporteroptionswidget.ui
-   ${CMAKE_SOURCE_DIR}/kig/filters/latexexporteroptionswidget.ui
-   ${CMAKE_SOURCE_DIR}/kig/filters/svgexporteroptionswidget.ui
+   filters/imageexporteroptionswidget.ui
+   filters/latexexporteroptionswidget.ui
+   filters/svgexporteroptionswidget.ui
 )
 
 set(libobjects_SRCS
-   ${CMAKE_SOURCE_DIR}/kig/objects/angle_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/arc_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/base_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/bogus_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/centerofcurvature_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/circle_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/circle_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/common.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/conic_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/conic_types.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/cubic_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/cubic_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/curve_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/intersection_types.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/inversion_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/line_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/line_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/locus_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_calcer.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_drawer.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_factory.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_holder.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_imp_factory.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/object_type_factory.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/other_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/other_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/point_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/point_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/polygon_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/polygon_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/tangent_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/special_imptypes.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/tests_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/text_imp.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/text_type.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/transform_types.cc
-   ${CMAKE_SOURCE_DIR}/kig/objects/vector_type.cc
+   objects/angle_type.cc
+   objects/arc_type.cc
+   objects/base_type.cc
+   objects/bogus_imp.cc
+   objects/centerofcurvature_type.cc
+   objects/circle_imp.cc
+   objects/circle_type.cc
+   objects/common.cc
+   objects/conic_imp.cc
+   objects/conic_types.cc
+   objects/cubic_imp.cc
+   objects/cubic_type.cc
+   objects/curve_imp.cc
+   objects/intersection_types.cc
+   objects/inversion_type.cc
+   objects/line_imp.cc
+   objects/line_type.cc
+   objects/locus_imp.cc
+   objects/object_calcer.cc
+   objects/object_drawer.cc
+   objects/object_factory.cc
+   objects/object_holder.cc
+   objects/object_imp.cc
+   objects/object_imp_factory.cc
+   objects/object_type.cc
+   objects/object_type_factory.cc
+   objects/other_imp.cc
+   objects/other_type.cc
+   objects/point_imp.cc
+   objects/point_type.cc
+   objects/polygon_imp.cc
+   objects/polygon_type.cc
+   objects/tangent_type.cc
+   objects/special_imptypes.cc
+   objects/tests_type.cc
+   objects/text_imp.cc
+   objects/text_type.cc
+   objects/transform_types.cc
+   objects/vector_type.cc
 )
 
 if(BOOST_PYTHON_FOUND)
   set(libscripting_SRCS
-     ${CMAKE_SOURCE_DIR}/kig/scripting/newscriptwizard.cc
-     ${CMAKE_SOURCE_DIR}/kig/scripting/python_scripter.cc
-     ${CMAKE_SOURCE_DIR}/kig/scripting/python_type.cc
-     ${CMAKE_SOURCE_DIR}/kig/scripting/script-common.cc
-     ${CMAKE_SOURCE_DIR}/kig/scripting/script_mode.cc
+     scripting/newscriptwizard.cc
+     scripting/python_scripter.cc
+     scripting/python_type.cc
+     scripting/script-common.cc
+     scripting/script_mode.cc
   )
   kde4_add_ui3_files(libscripting_SRCS
-     ${CMAKE_SOURCE_DIR}/kig/scripting/newscriptwizardbase.ui
+     scripting/newscriptwizardbase.ui
   )
 
-  set_source_files_properties(${CMAKE_SOURCE_DIR}/kig/scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "-fexceptions")
+  set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "-fexceptions")
 endif(BOOST_PYTHON_FOUND)
 
 add_subdirectory( scripting )
