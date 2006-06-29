@@ -44,8 +44,9 @@
 #include <assert.h>
 
 Kig::Kig()
-  : KParts::MainWindow( 0L, "Kig" ), m_part( 0 )
+  : KParts::MainWindow(), m_part( 0 )
 {
+  setObjectName( QLatin1String( "Kig" ) ); 
   // setting the configation file
   config = new KConfig( "kigrc" );
   // set the shell's ui resource file

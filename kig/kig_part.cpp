@@ -602,7 +602,7 @@ bool KigPart::internalSaveAs()
       return false;
     }
   }
-  saveAs( KUrl::fromPathOrUrl( file_name ) );
+  saveAs( KUrl( file_name ) );
   return true;
 }
 
