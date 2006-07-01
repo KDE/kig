@@ -51,6 +51,7 @@ Comment[ven]=Tshiimo tsha KGeo
 Comment[vi]=Hình KGeo
 Comment[xh]=Umfanekiso we KGeo
 Comment[zh_CN]=KGeo 图形
+Comment[zh_TW]=KGeo 圖形
 Type=MimeType
 Patterns=*.kgeo;
 X-KDE-AutoEmbed=false

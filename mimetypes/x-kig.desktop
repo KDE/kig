@@ -51,6 +51,7 @@ Comment[ven]=Tshiimo tsha Kig
 Comment[vi]=Hình Kig
 Comment[xh]=Kig Inani
 Comment[zh_CN]=Kig 图形
+Comment[zh_TW]=Kig 圖形
 Type=MimeType
 Patterns=*.kig;*.kigz;
 X-KDE-AutoEmbed=false

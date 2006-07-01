@@ -44,6 +44,7 @@ Comment[tr]=Dr. Geo Figürü
 Comment[uk]=Фігура Dr. Geo
 Comment[vi]=Tiến sĩ Hình Hình học
 Comment[zh_CN]=Dr. Geo 图形
+Comment[zh_TW]=Dr. Geo 圖形
 Type=MimeType
 Patterns=*.fgeo
 X-KDE-AutoEmbed=false

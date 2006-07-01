@@ -50,6 +50,7 @@ Comment[tr]=KSeg Belgesi
 Comment[uk]=Документ KSeg
 Comment[vi]=Tài liệu KSeg
 Comment[zh_CN]=KSeg 文档
+Comment[zh_TW]=KSeg 文件
 Type=MimeType
 Patterns=*.seg;
 X-KDE-AutoEmbed=false
