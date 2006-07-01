@@ -239,7 +239,7 @@ public:
   void drawText( const Coordinate p, const QString s, int textFlags = 0 );
 
   void drawSimpleText( const Coordinate& c, const QString s );
-  void drawTextFrame( const Rect& frame, const QString& s, bool frame );
+  void drawTextFrame( const Rect& frame, const QString& s, bool needframe );
 
   const Rect boundingRect( const Rect& r, const QString s, int f = 0 ) const;
 
