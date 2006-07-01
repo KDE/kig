@@ -241,7 +241,7 @@ public:
                  int textFlags = 0, int len = -1);
 
   void drawSimpleText( const Coordinate& c, const QString s );
-  void drawTextFrame( const Rect& frame, const QString& s, bool frame );
+  void drawTextFrame( const Rect& frame, const QString& s, bool needframe );
 
   const Rect boundingRect( const Rect& r, const QString s,
                             int f = 0, int l = -1 ) const;
