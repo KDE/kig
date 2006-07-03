@@ -246,7 +246,7 @@ void Kig::fileOpen()
            "*.fig *.FIG|Cabri Documents (*.fig *.FIG)" );
 
   // this slot is connected to the KStdAction::open action...
-  QString file_name = KFileDialog::getOpenFileName(":document", formats );
+  QString file_name = KFileDialog::getOpenFileName( KUrl( "kfiledialog:///document" ), formats );
 
   if (!file_name.isEmpty()) openURL(file_name);
 }

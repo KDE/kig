@@ -590,7 +590,7 @@ bool KigPart::internalSaveAs()
   //  formats += "\n";
   //  formats += KImageIO::pattern( KImageIO::Writing );
 
-  QString file_name = KFileDialog::getSaveFileName(":document", formats );
+  QString file_name = KFileDialog::getSaveFileName( KUrl( "kfiledialog:///document" ), formats );
   if (file_name.isEmpty()) return false;
   else if ( QFileInfo( file_name ).exists() )
   {
