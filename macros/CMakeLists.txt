@@ -1,5 +1,4 @@
-
-install_files(${DATA_INSTALL_DIR}/kig/builtin-macros FILES
+install(FILES
    circle_by_center_and_line.kigt
    circle_by_point_and_diameter.kigt
    equitriangle.kigt
@@ -8,7 +7,7 @@ install_files(${DATA_INSTALL_DIR}/kig/builtin-macros FILES
    segment_axis.kigt
    square.kigt
    vector_difference.kigt
-)
+   DESTINATION ${DATA_INSTALL_DIR}/kig/builtin-macros)
 
 
 #original Makefile.am contents follow:

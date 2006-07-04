@@ -1,7 +1,6 @@
-
-install_files(${DATA_INSTALL_DIR}/katepart/syntax FILES
+install(FILES
    python-kig.xml
-)
+   DESTINATION ${DATA_INSTALL_DIR}/katepart/syntax)
 
 
 #original Makefile.am contents follow:

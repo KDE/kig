@@ -1,7 +1,6 @@
-
-install_files(${DATA_INSTALL_DIR}/kig FILES
+install(FILES
    tips
-)
+   DESTINATION ${DATA_INSTALL_DIR}/kig)
 
 
 #original Makefile.am contents follow:

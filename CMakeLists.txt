@@ -180,7 +180,7 @@ if(BOOST_PYTHON_FOUND)
   target_link_libraries(kigpart ${BOOST_PYTHON_LIBS} ktexteditor kdocument)
 endif(BOOST_PYTHON_FOUND)
 
-install_targets(${PLUGIN_INSTALL_DIR} kigpart )
+install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
 ########### install files ###############

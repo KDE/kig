@@ -14,7 +14,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kfile_drgeo )
 
 target_link_libraries(kfile_drgeo  ${KDE4_KIO_LIBS} ${QT_QTXML_LIBRARY} )
 
-install_targets(${PLUGIN_INSTALL_DIR} kfile_drgeo )
+install(TARGETS kfile_drgeo DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
 ########### next target ###############
@@ -29,15 +29,15 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kfile_kig )
 
 target_link_libraries(kfile_kig  ${KDE4_KIO_LIBS} ${QT_QTXML_LIBRARY} )
 
-install_targets(${PLUGIN_INSTALL_DIR} kfile_kig )
+install(TARGETS kfile_kig DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
 ########### install files ###############
 
-install_files(${SERVICES_INSTALL_DIR} FILES
+install(FILES
    kfile_drgeo.desktop
    kfile_kig.desktop
-)
+   DESTINATION  ${SERVICES_INSTALL_DIR})
 
 
 #original Makefile.am contents follow:

@@ -1,6 +1,14 @@
-
-install_files( ${MIME_INSTALL_DIR}/application FILES x-kig.desktop x-kgeo.desktop x-kseg.desktop x-cabri.desktop x-drgeo.desktop )
-install_files( ${CONFIG_INSTALL_DIR}/magic FILES cabri.magic drgeo.magic )
+install(FILES
+   x-kig.desktop
+   x-kgeo.desktop
+   x-kseg.desktop
+   x-cabri.desktop
+   x-drgeo.desktop
+   DESTINATION ${MIME_INSTALL_DIR}/application)
+install(FILES
+   cabri.magic
+   drgeo.magic
+   DESTINATION ${CONFIG_INSTALL_DIR}/magic)
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
