@@ -1253,7 +1253,7 @@ const bool MeasureTransportConstructor::isAlreadySelectedOK(
 
 const int MeasureTransportConstructor::wantArgs(
                                 const std::vector<ObjectCalcer*>& os,
-                                const KigDocument&,
+                                const KigDocument& doc,
                                 const KigWidget& ) const
 {
   if ( os.size() == 0 ) return ArgsParser::Valid;
@@ -1266,16 +1266,29 @@ const int MeasureTransportConstructor::wantArgs(
   if ( ! os[1]->imp()->inherits( LineImp::stype() ) &&
        ! os[1]->imp()->inherits( CircleImp::stype() ) )
     return ArgsParser::Invalid;
+  const CurveImp* c = static_cast<const CurveImp*>( os[1]->imp() );
 
   if ( os.size() == 2 ) return ArgsParser::Valid;
 
   if ( ! os[2]->imp()->inherits( PointImp::stype() ) )
     return ArgsParser::Invalid;
+  const PointImp* p = static_cast<const PointImp*>( os[2]->imp() );
 
-  // we here use the "isPointOnCurve", which relies on
-  // "by construction" incidence, instead of a numerical
-  // check
-  if ( ! isPointOnCurve( os[2], os[1] ) )
+  // we have two choices:
+  // - using "isPointOnCurve" produces a "by construction" incidence
+  //   test.  This would be fine, but doesn't always work; e.g. if we
+  //   have two points A, B, the segment s = AB and we construct the
+  //   support line of the segment (property of segments), then kig
+  //   is not able to understand that A is "by construction" on the
+  //   constructed line.
+  //   Moreover there are problems when hovering the cursor over points
+  //   that are on both a segment and its support line.
+  //      if ( ! isPointOnCurve( os[2], os[1] ) )
+  // - using "containsPoint", which is actually the test performed
+  //   when calc-ing the TransportOfMeasure; the risk here is to
+  //   be able to select points that are only coincidentally on the line.
+
+  if ( ! c->containsPoint( p->coordinate(), doc ) )
     return ArgsParser::Invalid;
 
   if ( os.size() == 3 ) return ArgsParser::Complete;
