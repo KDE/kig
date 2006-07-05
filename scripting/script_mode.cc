@@ -66,18 +66,20 @@ void ScriptModeBase::dragRect( const QPoint& p, KigWidget& w )
 void ScriptModeBase::leftClickedObject( ObjectHolder* o, const QPoint&,
                                         KigWidget& w, bool )
 {
+  std::list<ObjectHolder*>::iterator dup_o;
+
   if ( mwawd != SelectingArgs ) return;
 
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
 
-  if ( margs.find( o ) != margs.end() )
+  if ( (dup_o = std::find( margs.begin(), margs.end(), o )) != margs.end() )
   {
-    margs.erase( o );
+    margs.erase( dup_o );
     pter.drawObject( o, false );
   }
   else
   {
-    margs.insert( o );
+    margs.push_back( o );
     pter.drawObject( o, true );
   };
   w.updateCurPix( pter.overlay() );
@@ -188,7 +190,7 @@ bool ScriptCreationMode::queryFinish()
 
   args.clear();
   args.push_back( compiledscript );
-  for ( std::set<ObjectHolder*>::iterator i = margs.begin();
+  for ( std::list<ObjectHolder*>::iterator i = margs.begin();
         i != margs.end(); ++i )
     args.push_back( ( *i )->calcer() );
 
