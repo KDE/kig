@@ -128,8 +128,6 @@
 
 - Python scripting: export cubics for real, improve existing API.
 
-- allow editing of Python scripts.
-
 - make the scripting system work more like the macro system. Make it
   a way to define new object types that can be reused more than once,
   instead of making it just a way to add *one* object.
