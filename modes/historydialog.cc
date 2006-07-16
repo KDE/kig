@@ -119,7 +119,7 @@ void HistoryDialog::updateWidgets()
   }
   else
   {
-    mwidget->description->setPlainText( i18n( "Start of the costruction" ) );
+    mwidget->description->setPlainText( i18n( "Start of the construction" ) );
   }
 
   bool notfirst = currentstep > 1;
