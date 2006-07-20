@@ -1,5 +1,5 @@
 
-install(PROGRAMS pykig.py DESTINATION bin )
+install(PROGRAMS pykig.py DESTINATION ${BIN_INSTALL_DIR} )
 
 
 #original Makefile.am contents follow:
