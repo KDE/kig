@@ -10,7 +10,7 @@ install(FILES
    drgeo.magic
    DESTINATION ${CONFIG_INSTALL_DIR}/magic)
 
-kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
+kde4_install_icons( ${ICON_INSTALL_DIR}  crystalsvg )
 
 
 #original Makefile.am contents follow:
