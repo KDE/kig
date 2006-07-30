@@ -262,6 +262,6 @@ std::string ArgsParser::selectStatement( const Args& selection ) const
       return margs[i].selectstat;
   }
   kDebug() << k_funcinfo << "no proper select statement found :(" << endl;
-  return 0;
+  return "";
 }
 
