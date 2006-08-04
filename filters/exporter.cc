@@ -49,6 +49,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
+#include <kicon.h>
 
 #include <map>
 

@@ -34,6 +34,7 @@
 #include <kiconloader.h>
 #include <kinstance.h>
 #include <klocale.h>
+#include <kicon.h>
 
 #include <qregexp.h>
 

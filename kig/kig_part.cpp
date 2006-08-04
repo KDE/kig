@@ -61,6 +61,7 @@
 #include <ktogglefullscreenaction.h>
 #include <kparts/genericfactory.h>
 #include <kdeprint/kprintdialogpage.h>
+#include <kicon.h>
 
 #include <qbytearray.h>
 #include <qcheckbox.h>
