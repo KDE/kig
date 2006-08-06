@@ -6,6 +6,7 @@ GenericName=Interactive Geometry
 GenericName[fr]=Géométrie interactive
 GenericName[x-test]=xxInteractive Geometryxx
 Comment=Explore Geometric Constructions
+Comment[x-test]=xxExplore Geometric Constructionsxx
 Exec=kig %i %m -caption "%c"
 MimeType=application/x-kig;application/x-kgeo;
 Icon=kig
