@@ -549,9 +549,9 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
       if ( ! type )
       {
         error = i18n( "This Kig file uses an object of type \"%1\", "
-                      "which this Kig version does not support."
+                      "which this Kig version does not support. "
                       "Perhaps you have compiled Kig without support "
-                      "for this object type,"
+                      "for this object type, "
                       "or perhaps you are using an older Kig version.", QString( typen ) );
         return 0;
       }

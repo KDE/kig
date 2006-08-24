@@ -433,7 +433,7 @@ void setupBuiltinStuff()
     c = new SimpleObjectTypeConstructor(
       SimilitudeType::instance(),
       I18N_NOOP( "Apply Similitude" ),
-      I18N_NOOP( "Apply a similitude to an object ( the sequence of a scaling and rotation around a center )" ),
+      I18N_NOOP( "Apply a similitude to an object (the sequence of a scaling and rotation around a center)" ),
       "similitude" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_similitude" ) );
