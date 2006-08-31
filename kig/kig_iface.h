@@ -31,7 +31,7 @@ public:
   KigIface();
   ~KigIface();
 k_dcop:
-  virtual void openURL(const QString& s) = 0;
+  virtual void openUrl(const QString& s) = 0;
 };
 
 #endif

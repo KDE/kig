@@ -116,7 +116,7 @@ void Kig::setupActions()
   setStandardToolBarMenuEnabled(true);
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
-  m_recentFilesAction = KStdAction::openRecent( this, SLOT( openURL( const KUrl& ) ), actionCollection() );
+  m_recentFilesAction = KStdAction::openRecent( this, SLOT( openUrl( const KUrl& ) ), actionCollection() );
   m_recentFilesAction->loadEntries(config);
 
   KStdAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
@@ -161,7 +161,7 @@ void Kig::fileNew()
     (new Kig)->show();
 }
 
-void Kig::openURL( const KUrl& url )
+void Kig::openUrl( const KUrl& url )
 {
   // Called for opening a file by either the KRecentFilesAction or our
   // own fileOpen() method.
@@ -248,7 +248,7 @@ void Kig::fileOpen()
   // this slot is connected to the KStdAction::open action...
   QString file_name = KFileDialog::getOpenFileName( KUrl( "kfiledialog:///document" ), formats );
 
-  if (!file_name.isEmpty()) openURL(file_name);
+  if (!file_name.isEmpty()) openUrl(file_name);
 }
 
 void Kig::tipOfDay() {
