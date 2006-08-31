@@ -78,6 +78,7 @@ Comment[sl]=Raziskovanje geometrijskih konstrukcij
 Comment[sr]=Истражујте геометријске конструкције
 Comment[sr@Latn]=Istražujte geometrijske konstrukcije
 Comment[sv]=Utforska geometriska konstruktioner
+Comment[uk]=Дослідження геометричних конструкцій
 Comment[vi]=Khám phá các phép Dụng Hình học
 Comment[zh_TW]=作出幾何圖形
 Exec=kig %i %m -caption "%c"
