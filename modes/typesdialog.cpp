@@ -426,7 +426,7 @@ void TypesDialog::exportType()
   if ( fi.exists() )
     if ( KMessageBox::warningContinueCancel( this, i18n( "The file \"%1\" already exists. "
                                        "Do you wish to overwrite it?", fi.fileName() ),
-                                       i18n( "Overwrite File?" ), i18n("Overwrite") ) == KMessageBox::Cancel )
+                                       i18n( "Overwrite File?" ), KStdGuiItem::overwrite() ) == KMessageBox::Cancel )
        return;
   MacroList::instance()->save( types, file_name );
 }
