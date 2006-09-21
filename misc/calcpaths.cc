@@ -88,9 +88,9 @@ void localdfs( ObjectCalcer* obj,
 
 #else
 // these first two functions were written before i read stuff about
-// graph theory and algorithms, so i'm sure they're far from optimal.
+// graph theory and algorithms, so I'm sure they're far from optimal.
 // However, they seem to work fine, and i don't think there's a real
-// need for optimisation here..
+// need for optimization here..
 std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& os )
 {
   // this is a little experiment of mine, i don't know if it is the

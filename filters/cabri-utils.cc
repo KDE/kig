@@ -475,7 +475,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   if ( !extractValuesFromString( tmp, myobj->parents ) )
     KIG_CABRI_FILTER_PARSE_ERROR;
 
-  // datas
+  // data
   tmp = firstlinere.cap( 15 );
   QStringList valIds = tmp.split( ' ', QString::SkipEmptyParts );
   for ( QStringList::iterator i = valIds.begin(); i != valIds.end(); ++i )

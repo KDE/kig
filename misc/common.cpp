@@ -382,7 +382,7 @@ const Coordinate calcCenter(
     // this means that the lines ac and ab have the same direction,
     // which means they're the same line..
     // FIXME: i would normally throw an error here, but KDE doesn't
-    // use exceptions, so i'm returning a bogus point :(
+    // use exceptions, so I'm returning a bogus point :(
     return a.invalidCoord();
     /* return (a+c)/2; */
   };

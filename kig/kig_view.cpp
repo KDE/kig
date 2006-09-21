@@ -361,7 +361,7 @@ void KigView::updateScrollBars()
   // we need ints, not doubles, so since "pixelwidth == widgetcoord /
   // internalcoord", we use "widgetcoord/pixelwidth", which would then
   // equal "internalcoord", which has to be an int ( by definition.. )
-  // i know, i'm a freak to think about these sorts of things... ;)
+  // i know, I'm a freak to think about these sorts of things... ;)
   double pw = mrealwidget->screenInfo().pixelWidth();
 
   // what the scrollbars reflect is the bottom resp. the left side of

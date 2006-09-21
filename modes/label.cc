@@ -125,7 +125,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
 /*
  * prevlabel is nonzero only if we are redefining an existing label
  * in which case we have to check that the new parents of the label
- * are not childs of the label itself, thus causing circular dependence
+ * are not children of the label itself, thus causing circular dependence
  * in the object hierarchy
  */
 void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v, 

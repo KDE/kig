@@ -134,7 +134,7 @@ public:
    * curPix ), and bitBlt that onto the widget to avoid flickering.
    * TRIPLE BUFFERING:
    * we also currently keep an extra pixmap of what the widget looks
-   * like without objects that are moving... i'm currently wondering
+   * like without objects that are moving... I'm currently wondering
    * whether this isn't a performance loss rather than a gain, but
    * well, i haven't done any measurements (yet ?), so for now it
    * stays in...

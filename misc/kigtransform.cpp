@@ -65,7 +65,7 @@
 //   if (transform->toRay())
 //   {
 //     // domi: sorry, but what kind of transformation does this do ?
-//     //       i'm guessing it's some sort of rotation, but i'm not
+//     //       I'm guessing it's some sort of rotation, but I'm not
 //     //       really sure..
 //      Ray* line = transform->toRay();
 //      Coordinate d = line->direction().normalize();

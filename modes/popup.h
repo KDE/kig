@@ -109,9 +109,9 @@ class ObjectChooserPopup
 
 public:
   /**
-   * Get the index of the choosen object from a list of objects.
+   * Get the index of the chosen object from a list of objects.
    *
-   * \param p is the point whene executre the popup
+   * \param p is the point where execute the popup
    * \param w is the pointer to a KigWidget
    * \param objs is the vector with the objects to chose from
    * \param givepopup true means that we have to show a popup to the user

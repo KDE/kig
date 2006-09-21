@@ -35,7 +35,7 @@ class Ui_TypesWidget;
 class BaseListElement;
 
 /**
- * A model for representing the datas.
+ * A model for representing the data.
  */
 class TypesModel
   : public QAbstractTableModel

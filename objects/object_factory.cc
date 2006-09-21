@@ -99,7 +99,7 @@ ObjectTypeCalcer* ObjectFactory::sensiblePointCalcer(
     std::vector<ObjectCalcer*> args;
     args.push_back( os[0]->calcer() );
     args.push_back( os[1]->calcer() );
-    // the simpliest case: two lines...
+    // the simplest case: two lines...
     if ( ( os[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
          ( os[1]->imp()->inherits( AbstractLineImp::stype() ) ) )
       return new ObjectTypeCalcer( LineLineIntersectionType::instance(), args );
