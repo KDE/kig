@@ -221,7 +221,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
     x = "";
     for ( uint j = 0; j < elems[i].parents.size(); ++j )
     {
-      x += elems[i].parents[j] + "_";
+      x += elems[i].parents[j] + '_';
     }
     kDebug() << "  --> " << i << " - " << elems[i].id << " - " << x << endl;
   }
