@@ -19,9 +19,7 @@
 #ifndef KIG_KIG_H
 #define KIG_KIG_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <kparts/mainwindow.h>
 
