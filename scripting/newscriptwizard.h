@@ -60,8 +60,6 @@ protected:
   KTextEditor::Document* document;
   KTextEditor::HighlightingInterface* hli;
   KTextEditor::View* docview;
-
-  uint noHlStyle;
 };
 
 #endif

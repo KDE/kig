@@ -78,11 +78,6 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
 
     // getting the highlight interface
     hli = qobject_cast<KTextEditor::HighlightingInterface*>( document );
-    if ( hli )
-    {
-      // saving the "no highlight" id
-      noHlStyle = hli->hlMode();
-    }
 
     // displaying the left border with line numbers
     KAction *a = docview->actionCollection()->action( "view_line_numbers" );
@@ -188,20 +183,11 @@ void NewScriptWizard::setType( ScriptType::Type type )
     {
       if ( type != ScriptType::Unknown )
       {
-        QString newhlstyle = ScriptType::highlightStyle( type );
-        for ( uint i = 0; i < hli->hlModeCount(); ++i )
-        {
-          if ( hli->hlModeName( i ) == newhlstyle )
-          {
-            // we found our highlight style, setting it
-            hli->setHlMode( i );
-            break;
-          }
-        }
+        hli->setHighlighting ( ScriptType::highlightStyle( type ) );
       }
       else
       {
-        hli->setHlMode( noHlStyle );
+        hli->setHighlighting ( QString () );
       }
     }
   }
