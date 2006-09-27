@@ -18,6 +18,7 @@
 #ifndef KIG_OBJECTS_OBJECT_CALCER_H
 #define KIG_OBJECTS_OBJECT_CALCER_H
 
+#include <typeinfo>
 #include "common.h"
 #include "../misc/boost_intrusive_pointer.hpp"
 
