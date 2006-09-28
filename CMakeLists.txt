@@ -27,14 +27,13 @@ set(libmodes_SRCS
    modes/textlabelwizard.cc
    modes/typesdialog.cpp
 )
-kde4_add_ui3_files(libmodes_SRCS
-   modes/macrowizardbase.ui
-   modes/textlabelwizardbase.ui
-)
+
 kde4_add_ui_files(libmodes_SRCS
    modes/typeswidget.ui
    modes/edittypewidget.ui
    modes/historywidget.ui
+   modes/textlabelwizardbase.ui
+   modes/macrowizardbase.ui
 )
 
 set(libmisc_SRCS

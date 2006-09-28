@@ -18,9 +18,18 @@
 #ifndef KIG_MODES_TEXTLABELWIZARD_H
 #define KIG_MODES_TEXTLABELWIZARD_H
 
-#include "textlabelwizardbase.h"
-
+#include "ui_textlabelwizardbase.h"
+#include <Q3Wizard>
 class TextLabelModeBase;
+
+class TextLabelWizardBase : public Q3Wizard, public Ui::TextLabelWizardBase
+{
+public:
+  TextLabelWizardBase( QWidget *parent ) : Q3Wizard( parent ) {
+    setupUi( this );
+  }
+};
+
 
 class TextLabelWizard : public TextLabelWizardBase
 {
