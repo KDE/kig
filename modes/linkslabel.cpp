@@ -112,7 +112,7 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
                                     i->second, this );
       p->urllabels.push_back( l );
       p->layout->addWidget( l );
-      connect( l, SIGNAL( leftClickedURL() ), SLOT( urlClicked() ) );
+      connect( l, SIGNAL( leftClickedUrl() ), SLOT( urlClicked() ) );
     }
     else
     {
