@@ -18,19 +18,9 @@
 #ifndef MACROWIZARD_H
 #define MACROWIZARD_H
 
-#include "ui_macrowizardbase.h"
-#include <Q3Wizard>
+#include "macrowizardbase.h"
 
 class DefineMacroMode;
-
-class MacroWizardBase : public Q3Wizard, public Ui::MacroWizardBase
-{
-public:
-  MacroWizardBase( QWidget *parent ) : Q3Wizard( parent ) {
-    setupUi( this );
-  }
-};
-
 
 class MacroWizard : public MacroWizardBase
 {

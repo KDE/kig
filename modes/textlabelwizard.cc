@@ -27,9 +27,8 @@
 #include <ktoolinvocation.h>
 
 TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
-  : TextLabelWizardBase( parent), mmode( mode )
+  : TextLabelWizardBase( parent, "TextLabelWizard" ), mmode( mode )
 {
-  setObjectName("TextLabelWizard");
   setModal( false );
   connect( labelTextInput, SIGNAL( textChanged() ),
            SLOT( textChanged() ) );
