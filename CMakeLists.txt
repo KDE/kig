@@ -169,7 +169,7 @@ set(kigpart_PART_SRCS
    ${libscripting_SRCS}
 )
 
-kde4_automoc(${kigpart_PART_SRCS})
+kde4_automoc(kigpart ${kigpart_PART_SRCS})
 
 kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 

@@ -6,7 +6,7 @@
 
 set(kfile_drgeo_PART_SRCS kfile_drgeo.cpp )
 
-kde4_automoc(${kfile_drgeo_PART_SRCS})
+kde4_automoc(kfile_drgeo ${kfile_drgeo_PART_SRCS})
 
 kde4_add_plugin(kfile_drgeo ${kfile_drgeo_PART_SRCS})
 
@@ -21,7 +21,7 @@ install(TARGETS kfile_drgeo DESTINATION ${PLUGIN_INSTALL_DIR})
 
 set(kfile_kig_PART_SRCS kfile_kig.cpp )
 
-kde4_automoc(${kfile_kig_PART_SRCS})
+kde4_automoc(kfile_kig ${kfile_kig_PART_SRCS})
 
 kde4_add_plugin(kfile_kig ${kfile_kig_PART_SRCS})
 
