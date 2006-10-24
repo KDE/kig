@@ -152,7 +152,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
   {
     if ( s.startsWith( "#FIG " ) )
     {
-      notSupported( file, i18n( "This is a XFig file, not a Cabri figure." ) );
+      notSupported( file, i18n( "This is an XFig file, not a Cabri figure." ) );
       return 0;
     }
     else
