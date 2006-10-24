@@ -19,6 +19,7 @@
 #define KIG_SCRIPTING_SCRIPT_COMMON_H
 
 #include <algorithm>
+#include <list>
 
 #include "../objects/object_holder.h"
 
@@ -41,7 +42,7 @@ public:
   /**
    * Returns a template code for a script language.
    */
-  static QString templateCode( ScriptType::Type type, std::set<ObjectHolder*> args );
+  static QString templateCode( ScriptType::Type type, std::list<ObjectHolder*> args );
   /**
    * Returns the icon's name for a script language.
    */

@@ -22,7 +22,7 @@
 
 #include "../modes/base_mode.h"
 
-#include <set>
+#include <list>
 
 class NewScriptWizard;
 
@@ -35,7 +35,10 @@ class ScriptModeBase
 protected:
   ScriptModeBase( KigPart& doc );
 
-  std::set<ObjectHolder*> margs;
+// mp: argument list is implemented as a std::list instead of std::set
+// because otherwise the user loses the correct argument ordering (in
+// case of more than one argument
+  std::list<ObjectHolder*> margs;
   NewScriptWizard* mwizard;
 
   KigPart& mpart;
