@@ -1,10 +1,4 @@
 project(kig)
-OPTION(KIG_ENABLE_COMPRESSED_FILES "Disable it if you want to disable support for compressed files(for compatibility reasons with kde 3.1)" ON)
-
-
-if(NOT KIG_ENABLE_COMPRESSED_FILES)
-	add_definitions(-DKIG_NO_COMPRESSED_FILES)
-endif(NOT KIG_ENABLE_COMPRESSED_FILES)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-kig.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kig.h )
 
