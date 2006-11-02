@@ -57,7 +57,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 
-static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& parents, int which )
+static ObjectTypeCalcer* intersectionPoints( const std::vector<ObjectCalcer*>& parents, int which )
 {
   if ( parents.size() != 2 ) return 0;
   int nlines = 0;
@@ -346,7 +346,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     else if ( obj->type == "Int" && curVer == CabriNS::CV_1_2 ) // Cabri1.2
     {
       if ( args.size() != 2 || !obj->data.empty() ) KIG_FILTER_PARSE_ERROR;
-      oc = intersectionPoint( args, obj->intersectionId );
+      oc = intersectionPoints( args, obj->intersectionId );
     }
     else if ( obj->type == "Perp" || obj->type == "Par" )
     {
