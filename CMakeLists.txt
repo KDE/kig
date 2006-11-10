@@ -173,7 +173,7 @@ kde4_automoc(${kigpart_PART_SRCS})
 
 kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
-kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kigpart )
+
 
 target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} ${KDE4_KDEPRINT_LIBS} )
 if(BOOST_PYTHON_FOUND)
