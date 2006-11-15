@@ -109,6 +109,10 @@ public:
    */
   virtual const ConicPolarData polarData() const = 0;
   /**
+   * Return the center of this conic.
+   */
+  virtual Coordinate coniccenter() const;
+  /**
    * Return the first focus of this conic.
    */
   virtual Coordinate focus1() const;

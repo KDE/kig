@@ -60,13 +60,14 @@ bool ConicImp::inRect( const Rect&, int, const KigWidget& ) const
 
 const uint ConicImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 5;
+  return Parent::numberOfProperties() + 6;
 }
 
 const QCStringList ConicImp::propertiesInternalNames() const
 {
   QCStringList l = Parent::propertiesInternalNames();
   l << "type";
+  l << "center";
   l << "first-focus";
   l << "second-focus";
   l << "cartesian-equation";
@@ -79,6 +80,7 @@ const QCStringList ConicImp::properties() const
 {
   QCStringList l = Parent::properties();
   l << I18N_NOOP( "Conic Type" );
+  l << I18N_NOOP( "Center" );
   l << I18N_NOOP( "First Focus" );
   l << I18N_NOOP( "Second Focus" );
   l << I18N_NOOP( "Cartesian Equation" );
@@ -102,6 +104,8 @@ const char* ConicImp::iconForProperty( uint which ) const
   if ( which == Parent::numberOfProperties() + pnum++ )
     return "kig_text"; // conic type string
   else if ( which == Parent::numberOfProperties() + pnum++ )
+    return ""; // center
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return ""; // focus1
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return ""; // focus2
@@ -121,6 +125,8 @@ ObjectImp* ConicImp::property( uint which, const KigDocument& w ) const
     return Parent::property( which, w );
   if ( which == Parent::numberOfProperties() + pnum++ )
     return new StringImp( conicTypeString() );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return new PointImp( coniccenter() );
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return new PointImp( focus1() );
   else if ( which == Parent::numberOfProperties() + pnum++ )
@@ -282,6 +288,17 @@ const ConicCartesianData ConicImp::cartesianData() const
 Coordinate ConicImp::focus1() const
 {
   return polarData().focus1;
+}
+
+Coordinate ConicImp::coniccenter() const
+{
+  const ConicPolarData d = polarData();
+  double ec = d.ecostheta0;
+  double es = d.esintheta0;
+
+  double fact = d.pdimen/(1 - ec*ec - es*es);
+
+  return d.focus1 + fact*Coordinate(ec, es);
 }
 
 Coordinate ConicImp::focus2() const
