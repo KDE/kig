@@ -325,7 +325,7 @@ const ConicCartesianData ConicImpCart::cartesianData() const
 ConicImpCart::ConicImpCart( const ConicCartesianData& data )
   : ConicImp(), mcartdata( data ), mpolardata( data )
 {
-  assert( data.valid() );
+  //assert( data.valid() );
 }
 
 ConicImpPolar::ConicImpPolar( const ConicPolarData& data )
