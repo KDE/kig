@@ -223,59 +223,69 @@ const ObjectImpType* ArcBCPAType::resultId() const
 
 static const char constructconicarcstartingstat[] = I18N_NOOP( "Construct a conic arc starting at this point" );
 
-static const ArgsParser::spec argsspecConicArcBTPC[] =
+static const ArgsParser::spec argsspecConicArcBCTP[] =
 {
+  { PointImp::stype(), I18N_NOOP( "Construct an conic arc with this center" ),
+    I18N_NOOP( "Select the center of the new conic arc..." ), false },
   { PointImp::stype(), constructconicarcstartingstat,
     I18N_NOOP( "Select the start point of the new conic arc..." ), true },
   { PointImp::stype(), I18N_NOOP( "Construct a conic arc through this point" ),
     I18N_NOOP( "Select a point for the new conic arc to go through..." ), true },
   { PointImp::stype(), I18N_NOOP( "Construct a conic arc ending at this point" ),
-    I18N_NOOP( "Select the end point of the new conic arc..." ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct an conic arc with this center" ),
-    I18N_NOOP( "Select the center of the new conic arc..." ), false }
+    I18N_NOOP( "Select the end point of the new conic arc..." ), true }
 };
 
-KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicArcBTPCType )
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicArcBCTPType )
 
-ConicArcBTPCType::ConicArcBTPCType()
-  : ArgsParserObjectType( "ConicArcBTPC", argsspecConicArcBTPC, 4 )
+ConicArcBCTPType::ConicArcBCTPType()
+  : ArgsParserObjectType( "ConicArcBCTP", argsspecConicArcBCTP, 4 )
 {
 }
 
-ConicArcBTPCType::~ConicArcBTPCType()
+ConicArcBCTPType::~ConicArcBCTPType()
 {
 }
 
-const ConicArcBTPCType* ConicArcBTPCType::instance()
+const ConicArcBCTPType* ConicArcBCTPType::instance()
 {
-  static const ConicArcBTPCType t;
+  static const ConicArcBCTPType t;
   return &t;
 }
 
-ObjectImp* ConicArcBTPCType::calc( const Args& args, const KigDocument& ) const
+ObjectImp* ConicArcBCTPType::calc( const Args& args, const KigDocument& ) const
 {
-  if ( ! margsparser.checkArgs( args ) )
+  if ( ! margsparser.checkArgs( args, 2 ) )
     return new InvalidImp;
 
-  const Coordinate a =
-    static_cast<const PointImp*>( args[0] )->coordinate();
-  const Coordinate b =
-    static_cast<const PointImp*>( args[1] )->coordinate();
-  const Coordinate c =
-    static_cast<const PointImp*>( args[2] )->coordinate();
   const Coordinate center =
-    static_cast<const PointImp*>( args[3] )->coordinate();
+    static_cast<const PointImp*>( args[0] )->coordinate();
+  const Coordinate a =
+    static_cast<const PointImp*>( args[1] )->coordinate();
   const Coordinate d = 2*center - a;
-  const Coordinate e = 2*center - c;
+  Coordinate b = center + (a-center).orthogonal();
+  Coordinate e = 2*center - b;
+  if ( args.size() >= 3 )
+  {
+    b = static_cast<const PointImp*>( args[2] )->coordinate();
+    e = 2*center - b;
+  }
+  bool have_c = false;
+  Coordinate c;
+  if ( args.size() == 4 )
+  {
+    c = static_cast<const PointImp*>( args[3] )->coordinate();
+    const Coordinate e = 2*center - c;
+    have_c = true;
+  }
 
   std::vector<Coordinate> points;
   points.push_back( a );
   points.push_back( b );
-  points.push_back( c );
+  if (have_c) points.push_back( c );
   points.push_back( d );
   points.push_back( e );
   ConicCartesianData cart =
-    calcConicThroughPoints( points, zerotilt, parabolaifzt, ysymmetry );
+    calcConicThroughPoints( points, zerotilt, circleifzt, ysymmetry );
   if ( ! d.valid() )
     return new InvalidImp;
 
@@ -283,8 +293,10 @@ ObjectImp* ConicArcBTPCType::calc( const Args& args, const KigDocument& ) const
   double angle = 0.;
   double startangle = 0.;
   double anglea = 2*M_PI*me->getParam( a );
-  double angleb = 2*M_PI*me->getParam( b );
-  double anglec = 2*M_PI*me->getParam( c );
+  double angleb = anglea + M_PI/2;
+  angleb = 2*M_PI*me->getParam( b );
+  double anglec = 2*angleb - anglea;
+  if ( have_c ) anglec = 2*M_PI*me->getParam( c );
 
   // anglea should be smaller than anglec
   if ( anglea > anglec )
@@ -309,7 +321,7 @@ ObjectImp* ConicArcBTPCType::calc( const Args& args, const KigDocument& ) const
   return me;
 }
 
-const ObjectImpType* ConicArcBTPCType::resultId() const
+const ObjectImpType* ConicArcBCTPType::resultId() const
 {
   return ConicArcImp::stype();
 }

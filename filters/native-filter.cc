@@ -489,7 +489,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
           {
             if ( tmp == "MeasureTransport" && parents.size() == 3 )
             {
-              warning( i18n( obsoletemessage ).arg( "MeasureTransport" ) );
+              warning( i18n( obsoletemessage ).arg( tmp ) );
               type = ObjectTypeFactory::instance()->find( "TransportOfMeasure" );
               ObjectCalcer* circle = parents[0];
               ObjectCalcer* point = parents[1];
@@ -499,20 +499,34 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
               parents[2] = point;
             } else if ( tmp == "InvertLine" )
             {
-              warning( i18n( obsoletemessage ).arg( "InvertLine" ) );
+              warning( i18n( obsoletemessage ).arg( tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
             } else if ( tmp == "InvertSegment" )
             {
-              warning( i18n( obsoletemessage ).arg( "InvertSegment" ) );
+              warning( i18n( obsoletemessage ).arg( tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
             } else if ( tmp == "InvertCircle" )
             {
-              warning( i18n( obsoletemessage ).arg( "InvertCircle" ) );
+              warning( i18n( obsoletemessage ).arg( tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
             } else if ( tmp == "InvertArc" )
             {
-              warning( i18n( obsoletemessage ).arg( "InvertArc" ) );
+              warning( i18n( obsoletemessage ).arg( tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
+            } else if ( tmp == "ConicArcBTPC" )
+            {
+              warning( i18n( obsoletemessage ).arg( tmp ) );
+              type = ObjectTypeFactory::instance()->find( "ConicArcBCTP" );
+              //
+              // the only difference is in the order of parents
+              // entering the center first seems more useful, and allows
+              // for a better user interface
+              //
+              ObjectCalcer* point = parents[3];
+              parents[3] = parents[2];
+              parents[2] = parents[1];
+              parents[1] = parents[0];
+              parents[0] = point;
             } else {
               notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
                                         "which this Kig version does not support."

@@ -65,14 +65,14 @@ public:
  * a conic arc by a start point, an intermediate point, an end point and
  * the conic center
  */
-class ConicArcBTPCType
+class ConicArcBCTPType
   : public ArgsParserObjectType
 {
   typedef ArgsParserObjectType Parent;
-  ConicArcBTPCType();
-  ~ConicArcBTPCType();
+  ConicArcBCTPType();
+  ~ConicArcBCTPType();
 public:
-  static const ConicArcBTPCType* instance();
+  static const ConicArcBCTPType* instance();
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
 

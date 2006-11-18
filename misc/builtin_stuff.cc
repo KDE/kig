@@ -328,9 +328,9 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_arcbtp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      ConicArcBTPCType::instance(),
-      I18N_NOOP( "Conic Arc by Three Points and Center" ),
-      I18N_NOOP( "Construct a conic arc through three points and given center." ),
+      ConicArcBCTPType::instance(),
+      I18N_NOOP( "Conic Arc by Center and Three Points" ),
+      I18N_NOOP( "Construct a conic arc with given center through three points." ),
       "conicarc" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicarcbtpc" ) );
