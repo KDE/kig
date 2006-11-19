@@ -515,6 +515,12 @@ ObjectImp* ConicArcImp::transform( const Transformation& t ) const
   return result;
 }
 
+bool ConicArcImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
+{
+  return internalContainsPoint( o, w.screenInfo().normalMiss( width ),
+     w.document() );
+}
+
 const int ConicArcImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 3;
@@ -615,6 +621,24 @@ const ObjectImpType* ConicArcImp::stype()
 const ObjectImpType* ConicArcImp::type() const
 {
   return ConicArcImp::stype();
+}
+
+bool ConicArcImp::containsPoint( const Coordinate& p, const KigDocument& doc) const
+{
+  const ConicPolarData d = polarData();
+
+// the threshold is relative to the size of the conic (mp)
+  return internalContainsPoint( p, test_threshold*d.pdimen, doc );
+}
+
+bool ConicArcImp::internalContainsPoint( const Coordinate& p, double threshold,
+    const KigDocument& doc ) const
+{
+  // this is directly stolen from locus code...
+  double param = getParam( p, doc );
+  Coordinate p1 = getPoint( param, doc );
+  double dist = (p1 - p).length();
+  return fabs( dist ) <= threshold;
 }
 
 double ConicArcImp::getParam( const Coordinate& p, const KigDocument& ) const
