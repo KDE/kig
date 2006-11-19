@@ -21,7 +21,7 @@
 
 /*
  *  KSeg
- *  Copyright (C) 1999-2003 Ilya Baran
+ *  Copyright (C) 1999-2003 Ilya Baran <ibaran@mit.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -266,7 +266,7 @@ enum MenuIDs
 
 /*
  *  KSeg
- *  Copyright (C) 1999-2003 Ilya Baran
+ *  Copyright (C) 1999-2003 Ilya Baran <ibaran@mit.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
