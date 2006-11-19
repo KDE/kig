@@ -191,6 +191,10 @@ public:
   ConicArcImp* copy() const;
 
   ObjectImp* transform( const Transformation& t ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool internalContainsPoint( const Coordinate& p, double threshold,
+     const KigDocument& doc ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;
