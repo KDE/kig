@@ -516,6 +516,20 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
             {
               warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
+            } else if ( tmp == "ConicArcBTPC" )
+            {
+              warning( i18n( obsoletemessage, tmp ) );
+              type = ObjectTypeFactory::instance()->find( "ConicArcBCTP" );
+              //
+              // the only difference is in the order of parents
+              // entering the center first seems more useful, and allows
+              // for a better user interface
+              //
+              ObjectCalcer* point = parents[3];
+              parents[3] = parents[2];
+              parents[2] = parents[1];
+              parents[1] = parents[0];
+              parents[0] = point;
             } else {
               notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
                                         "which this Kig version does not support."
