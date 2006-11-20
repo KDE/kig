@@ -79,4 +79,23 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * a conic arc by a five points, a starting point, intermediate,
+ * intermediate (used to compute angles), intermediate and
+ * end point
+ */
+class ConicArcB5PType
+  : public ArgsParserObjectType
+{
+  typedef ArgsParserObjectType Parent;
+  ConicArcB5PType();
+  ~ConicArcB5PType();
+public:
+  static const ConicArcB5PType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+
+  const ObjectImpType* resultId() const;
+};
+
 #endif
