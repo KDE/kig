@@ -222,17 +222,22 @@ const ObjectImpType* ArcBCPAType::resultId() const
  */
 
 static const char constructconicarcstartingstat[] = I18N_NOOP( "Construct a conic arc starting at this point" );
+static const char selectconicarcstartingstat[] = I18N_NOOP( "Select the start point of the new conic arc..." );
+static const char constructconicarcthrustat[] = I18N_NOOP( "Construct a conic arc through this point" );
+static const char selectconicarcthrustat[] = I18N_NOOP( "Select a point for the new conic arc to go through..." );
+static const char constructconicarcendingstat[] = I18N_NOOP( "Construct a conic arc ending at this point" );
+static const char selectconicarcendingstat[] = I18N_NOOP( "Select the end point of the new conic arc..." );
 
 static const ArgsParser::spec argsspecConicArcBCTP[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct an conic arc with this center" ),
     I18N_NOOP( "Select the center of the new conic arc..." ), false },
   { PointImp::stype(), constructconicarcstartingstat,
-    I18N_NOOP( "Select the start point of the new conic arc..." ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct a conic arc through this point" ),
-    I18N_NOOP( "Select a point for the new conic arc to go through..." ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct a conic arc ending at this point" ),
-    I18N_NOOP( "Select the end point of the new conic arc..." ), true }
+    selectconicarcstartingstat, true },
+  { PointImp::stype(), constructconicarcthrustat,
+    selectconicarcthrustat, true },
+  { PointImp::stype(), constructconicarcendingstat,
+    selectconicarcendingstat, true }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicArcBCTPType )
@@ -322,6 +327,120 @@ ObjectImp* ConicArcBCTPType::calc( const Args& args, const KigDocument& ) const
 }
 
 const ObjectImpType* ConicArcBCTPType::resultId() const
+{
+  return ConicArcImp::stype();
+}
+
+/*
+ * arc of conic by five points
+ */
+
+static const ArgsParser::spec argsspecConicArcB5P[] =
+{
+  { PointImp::stype(), constructconicarcstartingstat,
+    selectconicarcstartingstat, true },
+  { PointImp::stype(), constructconicarcthrustat,
+    selectconicarcthrustat, true },
+  { PointImp::stype(), constructconicarcthrustat,
+    selectconicarcthrustat, true },
+  { PointImp::stype(), constructconicarcthrustat,
+    selectconicarcthrustat, true },
+  { PointImp::stype(), constructconicarcendingstat,
+    selectconicarcendingstat, true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ConicArcB5PType )
+
+ConicArcB5PType::ConicArcB5PType()
+  : ArgsParserObjectType( "ConicArcB5P", argsspecConicArcB5P, 5 )
+{
+}
+
+ConicArcB5PType::~ConicArcB5PType()
+{
+}
+
+const ConicArcB5PType* ConicArcB5PType::instance()
+{
+  static const ConicArcB5PType t;
+  return &t;
+}
+
+ObjectImp* ConicArcB5PType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args, 2 ) )
+    return new InvalidImp;
+
+  const Coordinate a =
+    static_cast<const PointImp*>( args[0] )->coordinate();
+  const Coordinate b =
+    static_cast<const PointImp*>( args[1] )->coordinate();
+
+  Coordinate c, d, e;
+  bool have_c = false;
+  bool have_d = false;
+  bool have_e = false;
+  if ( args.size() >= 3 )
+  {
+    c = static_cast<const PointImp*>( args[2] )->coordinate();
+    have_c = true;
+  }
+  if ( args.size() >= 4 )
+  {
+    d = static_cast<const PointImp*>( args[3] )->coordinate();
+    have_d = true;
+  }
+  if ( args.size() >= 5 )
+  {
+    e = static_cast<const PointImp*>( args[4] )->coordinate();
+    have_e = true;
+  }
+
+  std::vector<Coordinate> points;
+  points.push_back( a );
+  points.push_back( b );
+  if (have_c) points.push_back( c );
+  if (have_d) points.push_back( d );
+  if (have_e) points.push_back( e );
+  ConicCartesianData cart =
+    calcConicThroughPoints( points, zerotilt, circleifzt, ysymmetry );
+  if ( ! d.valid() )
+    return new InvalidImp;
+
+  ConicArcImp *me = new ConicArcImp( cart, 0.0, 2*M_PI );
+  double angle = 0.;
+  double startangle = 0.;
+  double anglea = 2*M_PI*me->getParam( a );
+  double angleb = anglea + M_PI/2;
+  angleb = 2*M_PI*me->getParam( b );
+  if ( have_c ) angleb = 2*M_PI*me->getParam( c );
+  double anglec = 2*angleb - anglea;
+  if ( have_e ) anglec = 2*M_PI*me->getParam( e );
+
+  // anglea should be smaller than anglec
+  if ( anglea > anglec )
+  {
+    double t = anglea;
+    anglea = anglec;
+    anglec = t;
+  };
+  if ( angleb > anglec || angleb < anglea )
+  {
+    startangle = anglec;
+    angle = 2 * M_PI + anglea - startangle;
+  }
+  else
+  {
+    startangle = anglea;
+    angle = anglec - anglea;
+  };
+
+  me->setStartAngle( startangle );
+  me->setAngle( angle );
+  return me;
+}
+
+const ObjectImpType* ConicArcB5PType::resultId() const
 {
   return ConicArcImp::stype();
 }
