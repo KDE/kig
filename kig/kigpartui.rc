@@ -95,7 +95,7 @@
 	<ActionList name="user_conic_types" />
 	<Menu name="new_moreconics" icon="conicsradicalline">
 	  <text>More Conics</text>
-	  <Action name="objects_new_conicarcbtpc" />
+	  <Action name="objects_new_conicarcbctp" />
 	  <Action name="objects_new_parabolabdp" />
 	  <Action name="objects_new_equilateralhyperbolab4p" />
 	  <Action name="objects_new_conicbdfp" />

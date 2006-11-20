@@ -334,7 +334,7 @@ void setupBuiltinStuff()
       I18N_NOOP( "Construct a conic arc with given center through three points." ),
       "conicarc" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_conicarcbtpc" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_conicarcbctp" ) );
 
     c = new SimpleObjectTypeConstructor(
       ArcBCPAType::instance(),
