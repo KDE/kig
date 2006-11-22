@@ -1,3 +1,19 @@
+2006-11-22  Maurizio Paolini <paolini@dmf.unicatt.it>
+
+	* Added support for conic arcs.  There are two
+	constructions available to generate a conic arc:
+	1. Three points (start point, end point and
+	an intermediate point) and the conic center.
+	2. Conic arc through five points.  The first
+	and fifth points are respectively the start and
+	end-point of the arc; the third point is used to
+	select which one of the two arcs with the given
+	end-points; the second and fourth are only required
+	to belong to the supporting conic.
+	Construction 2 is motivated because construction 1
+	cannot be used to constract the special case of
+	constructing an exact "half-ellipse".
+
 2006-03-31  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Add polygon-polygon intersection.  This is not yet

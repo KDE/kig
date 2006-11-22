@@ -48,6 +48,7 @@
   2. the constructed point will always be "the other" intersection
   also when moving objects around.  This is not the case now, which
   leads to unexpected behavious sometimes (from the user perspective)
+  (done: 2006-01-19, post-kde-3.5)
 
 - Two new transformations: projection on a line, orthogonally and
   according to a given direction.  As a mathematician, I'm supposed to
