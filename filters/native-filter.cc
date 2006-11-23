@@ -719,7 +719,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   docelem.appendChild( windowelem );
 
   doc.appendChild( docelem );
-  stream << doc.toCString();
+  stream << doc.toString();
   return true;
 }
 
