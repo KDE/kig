@@ -219,12 +219,12 @@ void KigPart::setupActions()
 
   aDeleteObjects = new KAction(KIcon("editdelete"),  i18n("&Delete Objects"), actionCollection(), "delete_objects");
   connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
-  aDeleteObjects->setShortcut(Qt::Key_Delete);
+  aDeleteObjects->setShortcut(QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
   aCancelConstruction = new KAction(KIcon("stop"),  i18n("Cancel Construction"), actionCollection(), "cancel_construction");
   connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
-  aCancelConstruction->setShortcut(Qt::Key_Escape);
+  aCancelConstruction->setShortcut(QKeySequence(Qt::Key_Escape));
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
