@@ -228,20 +228,54 @@ void LatexExportImpVisitor::plotGenericCurve( const CurveImp* imp )
   int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
 
-  mstream << "\\pscurve[linecolor=" << mcurcolorid << ",linewidth=" << width / 100.0
-          << "," << writeStyle( mcurobj->drawer()->style() ) << "]";
+  QString prefix = QString( "\\pscurve[linecolor=%1,linewidth=%2,%3]" )
+      .arg( mcurcolorid )
+      .arg( width / 100.0 )
+      .arg( writeStyle( mcurobj->drawer()->style() ) );
+
+  std::vector< std::vector< Coordinate > > coordlist;
+  coordlist.push_back( std::vector< Coordinate >() );
+  uint curid = 0;
 
   Coordinate c;
+  Coordinate prev = Coordinate::invalidCoord();
   for ( double i = 0.0; i <= 1.0; i += 0.005 )
   {
     c = imp->getPoint( i, mw.document() );
     if ( !c.valid() )
+    {
+      if ( coordlist[curid].size() > 0 )
+      {
+        coordlist.push_back( std::vector< Coordinate >() );
+        ++curid;
+        prev = Coordinate::invalidCoord();
+      }
       continue;
+    }
     if ( ! ( ( fabs( c.x ) <= 1000 ) && ( fabs( c.y ) <= 1000 ) ) )
       continue;
-    emitCoord( c );
+    // if there's too much distance between this coordinate and the previous
+    // one, then it's another piece of curve not joined with the rest
+    if ( prev.valid() && ( c.distance( prev ) > 4.0 ) )
+    {
+      coordlist.push_back( std::vector< Coordinate >() );
+      ++curid;
+    }
+    coordlist[curid].push_back( c );
+    prev = c;
   }
-  newLine();
+  for ( uint i = 0; i < coordlist.size(); ++i )
+  {
+    uint s = coordlist[i].size();
+    // there's no point in draw curves empty or with only one point
+    if ( s <= 1 )
+      continue;
+
+    mstream << prefix;
+    for ( uint j = 0; j < s; ++j )
+      emitCoord( coordlist[i][j] );
+    newLine();
+  }
 }
 
 void LatexExportImpVisitor::visit( ObjectHolder* obj )
