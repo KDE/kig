@@ -790,7 +790,7 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QString& nam
   return newaction;
 }
 
-QAction* NormalModePopupObjects::addInternalAction( int menu, KAction* act )
+QAction* NormalModePopupObjects::addInternalAction( int menu, QAction* act )
 {
   QMenu* m = mmenus[menu];
   m->addAction( act );
