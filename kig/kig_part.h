@@ -195,13 +195,13 @@ public:
   // the previous mode.  Enabling/disabling is done at the same time,
   // of course..
   // some MenuActions..
-  QList<KAction*> aMNewSegment;
-  QList<KAction*> aMNewPoint;
-  QList<KAction*> aMNewCircle;
-  QList<KAction*> aMNewLine;
-  QList<KAction*> aMNewOther;
-  QList<KAction*> aMNewAll;
-  QList<KAction*> aMNewConic;
+  QList<QAction*> aMNewSegment;
+  QList<QAction*> aMNewPoint;
+  QList<QAction*> aMNewCircle;
+  QList<QAction*> aMNewLine;
+  QList<QAction*> aMNewOther;
+  QList<QAction*> aMNewAll;
+  QList<QAction*> aMNewConic;
 
 
   KAction* aCancelConstruction;

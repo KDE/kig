@@ -66,7 +66,7 @@ public:
   QAction* addInternalAction( int menu, const QString& name, int id );
   QAction* addInternalAction( int menu, const QPixmap& icon, const QString& name, int id );
   QAction* addInternalAction( int menu, const QPixmap& pix, int id );
-  QAction* addInternalAction( int menu, KAction* act );
+  QAction* addInternalAction( int menu, QAction* act );
 
   std::vector<ObjectHolder*> objects() const { return mobjs; };
   KigPart& part() { return mpart; };
