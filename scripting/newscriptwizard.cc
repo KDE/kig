@@ -80,7 +80,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
     hli = qobject_cast<KTextEditor::HighlightingInterface*>( document );
 
     // displaying the left border with line numbers
-    KAction *a = docview->actionCollection()->action( "view_line_numbers" );
+    QAction *a = docview->actionCollection()->action( "view_line_numbers" );
     if ( a )
     {
       a->trigger();
