@@ -2,90 +2,25 @@ project(kig)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-kig.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kig.h )
 
+add_subdirectory( icons )
+add_subdirectory( kig )
+add_subdirectory( mimetypes )
+add_subdirectory( macros )
+add_subdirectory( kfile )
+add_subdirectory( data )
+add_subdirectory( pykig )
+if(BOOST_PYTHON_FOUND)
+  add_subdirectory( scripting )
+endif(BOOST_PYTHON_FOUND)
 
-set(libkigparttemp_SRCS
-   kig/kig_commands.cpp
-   kig/kig_document.cc
-   kig/kig_part.cpp
-   kig/kig_view.cpp
-)
+include_directories( ${CMAKE_SOURCE_DIR}/kig/modes )
+if(BOOST_PYTHON_FOUND)
+  include_directories(${BOOST_PYTHON_INCLUDES})
+endif(BOOST_PYTHON_FOUND)
 
-set(libmodes_SRCS
-   modes/base_mode.cc
-   modes/construct_mode.cc
-   modes/dragrectmode.cc
-   modes/edittype.cc
-   modes/historydialog.cc
-   modes/label.cc
-   modes/linkslabel.cpp
-   modes/macro.cc
-   modes/macrowizard.cc
-   modes/mode.cc
-   modes/moving.cc
-   modes/normal.cc
-   modes/popup.cc
-   modes/textlabelwizard.cc
-   modes/typesdialog.cpp
-)
-kde4_add_ui3_files(libmodes_SRCS
-   modes/macrowizardbase.ui
-   modes/textlabelwizardbase.ui
-)
-kde4_add_ui_files(libmodes_SRCS
-   modes/typeswidget.ui
-   modes/edittypewidget.ui
-   modes/historywidget.ui
-)
+# kigpart
 
-set(libmisc_SRCS
-   misc/argsparser.cpp
-   misc/builtin_stuff.cc
-   misc/calcpaths.cc
-   misc/common.cpp
-   misc/conic-common.cpp
-   misc/coordinate.cpp
-   misc/coordinate_system.cpp
-   misc/cubic-common.cc
-   misc/equation.cc
-   misc/goniometry.cc
-   misc/guiaction.cc
-   misc/kigfiledialog.cc
-   misc/kiginputdialog.cc
-   misc/kignumerics.cpp
-   misc/kigpainter.cpp
-   misc/kigtransform.cpp
-   misc/lists.cc
-   misc/object_constructor.cc
-   misc/object_hierarchy.cc
-   misc/rect.cc
-   misc/screeninfo.cc
-   misc/special_constructors.cc
-   misc/unit.cc
-)
-
-set(libfilters_SRCS
-   filters/cabri-filter.cc
-   filters/cabri-utils.cc
-   filters/drgeo-filter.cc
-   filters/exporter.cc
-   filters/filter.cc
-   filters/filters-common.cc
-   filters/imageexporteroptions.cc
-   filters/kgeo-filter.cc
-   filters/kseg-filter.cc
-   filters/latexexporter.cc
-   filters/latexexporteroptions.cc
-   filters/native-filter.cc
-   filters/svgexporter.cc
-   filters/svgexporteroptions.cc
-)
-kde4_add_ui_files(libfilters_SRCS
-   filters/imageexporteroptionswidget.ui
-   filters/latexexporteroptionswidget.ui
-   filters/svgexporteroptionswidget.ui
-)
-
-set(libobjects_SRCS
+set(kigpart_PART_SRCS
    objects/angle_type.cc
    objects/arc_type.cc
    objects/base_type.cc
@@ -118,64 +53,105 @@ set(libobjects_SRCS
    objects/point_type.cc
    objects/polygon_imp.cc
    objects/polygon_type.cc
-   objects/tangent_type.cc
    objects/special_imptypes.cc
+   objects/tangent_type.cc
    objects/tests_type.cc
    objects/text_imp.cc
    objects/text_type.cc
    objects/transform_types.cc
    objects/vector_type.cc
+   misc/argsparser.cpp
+   misc/builtin_stuff.cc
+   misc/calcpaths.cc
+   misc/common.cpp
+   misc/conic-common.cpp
+   misc/coordinate.cpp
+   misc/coordinate_system.cpp
+   misc/cubic-common.cc
+   misc/equation.cc
+   misc/goniometry.cc
+   misc/guiaction.cc
+   misc/kigfiledialog.cc
+   misc/kiginputdialog.cc
+   misc/kignumerics.cpp
+   misc/kigpainter.cpp
+   misc/kigtransform.cpp
+   misc/lists.cc
+   misc/object_constructor.cc
+   misc/object_hierarchy.cc
+   misc/rect.cc
+   misc/screeninfo.cc
+   misc/special_constructors.cc
+   misc/unit.cc
+   modes/base_mode.cc
+   modes/construct_mode.cc
+   modes/dragrectmode.cc
+   modes/edittype.cc
+   modes/historydialog.cc
+   modes/label.cc
+   modes/linkslabel.cpp
+   modes/macro.cc
+   modes/macrowizard.cc
+   modes/mode.cc
+   modes/moving.cc
+   modes/normal.cc
+   modes/popup.cc
+   modes/textlabelwizard.cc
+   modes/typesdialog.cpp
+   filters/cabri-filter.cc
+   filters/cabri-utils.cc
+   filters/drgeo-filter.cc
+   filters/exporter.cc
+   filters/filter.cc
+   filters/filters-common.cc
+   filters/imageexporteroptions.cc
+   filters/kgeo-filter.cc
+   filters/kseg-filter.cc
+   filters/latexexporter.cc
+   filters/latexexporteroptions.cc
+   filters/native-filter.cc
+   filters/svgexporter.cc
+   filters/svgexporteroptions.cc
+   kig/kig_commands.cpp
+   kig/kig_document.cc
+   kig/kig_part.cpp
+   kig/kig_view.cpp
+)
+
+kde4_add_ui3_files(kigpart_PART_SRCS
+   modes/macrowizardbase.ui
+   modes/textlabelwizardbase.ui
+)
+
+kde4_add_ui_files(kigpart_PART_SRCS
+   modes/typeswidget.ui
+   modes/edittypewidget.ui
+   modes/historywidget.ui
+   filters/imageexporteroptionswidget.ui
+   filters/latexexporteroptionswidget.ui
+   filters/svgexporteroptionswidget.ui
 )
 
 if(BOOST_PYTHON_FOUND)
-  set(libscripting_SRCS
+  set(kigpart_PART_SRCS ${kigpart_PART_SRCS}
      scripting/newscriptwizard.cc
      scripting/python_scripter.cc
      scripting/python_type.cc
      scripting/script-common.cc
      scripting/script_mode.cc
   )
-  kde4_add_ui3_files(libscripting_SRCS
+  kde4_add_ui3_files(kigpart_PART_SRCS
      scripting/newscriptwizardbase.ui
   )
 
   set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "-fexceptions")
 endif(BOOST_PYTHON_FOUND)
 
-add_subdirectory( scripting )
-add_subdirectory( icons )
-add_subdirectory( kig )
-add_subdirectory( mimetypes )
-add_subdirectory( macros )
-add_subdirectory( kfile )
-add_subdirectory( data )
-add_subdirectory( pykig )
-
-include_directories( ${CMAKE_SOURCE_DIR}/kig/modes )
-
-if(BOOST_PYTHON_FOUND)
-   include_directories(${BOOST_PYTHON_INCLUDES})
-endif(BOOST_PYTHON_FOUND)
-
-
-########### next target ###############
-
-set(kigpart_PART_SRCS
-   ${libobjects_SRCS}
-   ${libmisc_SRCS}
-   ${libmodes_SRCS}
-   ${libfilters_SRCS}
-   ${libkigparttemp_SRCS}
-   ${libscripting_SRCS}
-)
-
 kde4_automoc(${kigpart_PART_SRCS})
 
 kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
-
-
-target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} ${KDE4_KDEPRINT_LIBS} )
+target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} ${KDE4_KDEPRINT_LIBRARY} )
 if(BOOST_PYTHON_FOUND)
   target_link_libraries(kigpart ${BOOST_PYTHON_LIBS} ktexteditor kdocument)
 endif(BOOST_PYTHON_FOUND)
