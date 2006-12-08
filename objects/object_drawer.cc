@@ -38,6 +38,7 @@ void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
     p.setStyle( mstyle );
     p.setPointStyle( mpointstyle );
     p.setFont( mfont );
+    p.setSelected( sel );
     imp.draw( p );
   }
 }

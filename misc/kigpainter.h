@@ -71,6 +71,7 @@ protected:
 
   bool mNeedOverlay;
   int overlayenlarge;
+  bool mSelected;
 public:
   /**
    * construct a new KigPainter:
@@ -109,6 +110,8 @@ public:
   void setBrushColor( const QColor& c );
 
   void setFont( const QFont& f );
+
+  void setSelected( bool selected );
 
   QColor getColor() const;
   bool getNightVision( ) const;
@@ -283,6 +286,8 @@ protected:
    * the size we want the overlay rects to be...
    */
   double overlayRectSize();
+
+  void unsetSelected();
 
   std::vector<QRect> mOverlay;
 };

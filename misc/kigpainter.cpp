@@ -52,7 +52,8 @@ KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device,
     mdoc( doc ),
     msi( si ),
     mNeedOverlay( no ),
-    overlayenlarge( 0 )
+    overlayenlarge( 0 ),
+    mSelected( false )
 {
   mP.setBackground( QBrush( Qt::white ) );
 }
@@ -277,6 +278,11 @@ QColor KigPainter::getColor() const
   return color;
 }
 
+void KigPainter::setSelected( bool selected )
+{
+  mSelected = selected;
+}
+
 /*
 static void setContains( QRect& r, const QPoint& p )
 {
@@ -293,7 +299,10 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts, Qt::FillRule fillR
 {
   QPen oldpen = mP.pen();
   QBrush oldbrush = mP.brush();
-  setBrush( QBrush( color, Qt::Dense4Pattern ) );
+  QColor alphacolor = color;
+  if ( !mSelected )
+    alphacolor.setAlpha( 100 );
+  setBrush( QBrush( alphacolor, Qt::SolidPattern ) );
   setPen( Qt::NoPen );
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
@@ -306,6 +315,7 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts, Qt::FillRule fillR
   mP.drawPolygon( t, fillRule );
   setPen( oldpen );
   setBrush( oldbrush );
+  unsetSelected();
   if( mNeedOverlay ) mOverlay.push_back( t.boundingRect() );
 }
 
@@ -457,6 +467,11 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
 double KigPainter::overlayRectSize()
 {
   return 20 * pixelWidth();
+}
+
+void KigPainter::unsetSelected()
+{
+  mSelected = false;
 }
 
 void KigPainter::pointOverlay( const Coordinate& p1 )
