@@ -1,4 +1,4 @@
-kig_version=0.10.6
+kig_version=0.10.7
 
 kde_save_LIBS=$LIBS
 LIBS="$LIBS -lm"
