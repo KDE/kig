@@ -264,6 +264,15 @@ void LatexExportImpVisitor::plotGenericCurve( const CurveImp* imp )
     coordlist[curid].push_back( c );
     prev = c;
   }
+  // special case for ellipse
+  if ( const ConicImp* conic = dynamic_cast< const ConicImp* >( imp ) )
+  {
+    // if ellipse, close its path
+    if ( conic->conicType() == 1 && coordlist.size() == 1 && coordlist[0].size() > 1 )
+    {
+      coordlist[0].push_back( coordlist[0][0] );
+    }
+  }
   for ( uint i = 0; i < coordlist.size(); ++i )
   {
     uint s = coordlist[i].size();
