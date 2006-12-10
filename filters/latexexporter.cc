@@ -389,7 +389,6 @@ void LatexExportImpVisitor::visit( const CircleImp* imp )
 {
   int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
-  width /= 5;
 
   mstream << "\\pscircle[linecolor=" << mcurcolorid << ",linewidth=" << width / 100.0
           << "," << writeStyle( mcurobj->drawer()->style() ) << "]";
