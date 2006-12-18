@@ -36,7 +36,7 @@
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
 #include <kstatusbar.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <ktip.h>
 #include <kurl.h>
 #include <kxmlguifactory.h>
@@ -108,21 +108,21 @@ Kig::~Kig()
 
 void Kig::setupActions()
 {
-  KStdAction::openNew(this, SLOT(fileNew()), actionCollection());
-  KStdAction::open(this, SLOT(fileOpen()), actionCollection());
-  KStdAction::quit(this, SLOT(close()), actionCollection());
+  KStandardAction::openNew(this, SLOT(fileNew()), actionCollection());
+  KStandardAction::open(this, SLOT(fileOpen()), actionCollection());
+  KStandardAction::quit(this, SLOT(close()), actionCollection());
 
   createStandardStatusBarAction();
   setStandardToolBarMenuEnabled(true);
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
-  m_recentFilesAction = KStdAction::openRecent( this, SLOT( openUrl( const KUrl& ) ), actionCollection() );
+  m_recentFilesAction = KStandardAction::openRecent( this, SLOT( openUrl( const KUrl& ) ), actionCollection() );
   m_recentFilesAction->loadEntries(config);
 
-  KStdAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
-  KStdAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
+  KStandardAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
+  KStandardAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
 
-  KStdAction::tipOfDay( this, SLOT( tipOfDay() ), actionCollection(), "help_tipofday" );
+  KStandardAction::tipOfDay( this, SLOT( tipOfDay() ), actionCollection(), "help_tipofday" );
 }
 
 void Kig::saveProperties(KConfig* config)
@@ -245,7 +245,7 @@ void Kig::fileOpen()
            "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
            "*.fig *.FIG|Cabri Documents (*.fig *.FIG)" );
 
-  // this slot is connected to the KStdAction::open action...
+  // this slot is connected to the KStandardAction::open action...
   QString file_name = KFileDialog::getOpenFileName( KUrl( "kfiledialog:///document" ), formats );
 
   if (!file_name.isEmpty()) openUrl(file_name);

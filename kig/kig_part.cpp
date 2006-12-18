@@ -56,7 +56,7 @@
 #include <kmimetype.h>
 #include <kprinter.h>
 #include <kstandarddirs.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <ktoggleaction.h>
 #include <ktogglefullscreenaction.h>
 #include <kparts/genericfactory.h>
@@ -199,17 +199,17 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
 void KigPart::setupActions()
 {
   // save actions..
-  (void) KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
-  (void) KStdAction::save(this, SLOT(fileSave()), actionCollection());
+  (void) KStandardAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
+  (void) KStandardAction::save(this, SLOT(fileSave()), actionCollection());
 
   // print actions
-  (void) KStdAction::print( this, SLOT( filePrint() ), actionCollection() );
-  (void) KStdAction::printPreview( this, SLOT( filePrintPreview() ), actionCollection() );
+  (void) KStandardAction::print( this, SLOT( filePrint() ), actionCollection() );
+  (void) KStandardAction::printPreview( this, SLOT( filePrintPreview() ), actionCollection() );
 
   // selection actions
-  aSelectAll = KStdAction::selectAll(
+  aSelectAll = KStandardAction::selectAll(
     this, SLOT( slotSelectAll() ), actionCollection() );
-  aDeselectAll = KStdAction::deselect(
+  aDeselectAll = KStandardAction::deselect(
     this, SLOT( slotDeselectAll() ), actionCollection() );
   aInvertSelection = new KAction( i18n( "Invert Selection" ), actionCollection(), "edit_invert_selection" );
   connect(aInvertSelection, SIGNAL(triggered(bool) ), SLOT( slotInvertSelection() ));
@@ -249,24 +249,24 @@ void KigPart::setupActions()
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
 
-  KAction* a = KStdAction::zoomIn( m_widget, SLOT( slotZoomIn() ),
+  KAction* a = KStandardAction::zoomIn( m_widget, SLOT( slotZoomIn() ),
                                    actionCollection() );
   a->setToolTip( i18n( "Zoom in on the document" ) );
   a->setWhatsThis( i18n( "Zoom in on the document" ) );
 
-  a = KStdAction::zoomOut( m_widget, SLOT( slotZoomOut() ),
+  a = KStandardAction::zoomOut( m_widget, SLOT( slotZoomOut() ),
                            actionCollection() );
   a->setToolTip( i18n( "Zoom out of the document" ) );
   a->setWhatsThis( i18n( "Zoom out of the document" ) );
 
-  a = KStdAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
+  a = KStandardAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
   a->setIcon( KIcon( "view_fit_to_page", l,0 ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
-  a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), (QWidget*)(widget()->parent()),"fullscreen" );
+  a = KStandardAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), (QWidget*)(widget()->parent()),"fullscreen" );
   a->setToolTip( i18n( "View this document full-screen." ) );
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
@@ -582,7 +582,7 @@ void KigPart::fileSave()
 
 bool KigPart::internalSaveAs()
 {
-  // this slot is connected to the KStdAction::saveAs action...
+  // this slot is connected to the KStandardAction::saveAs action...
   QString formats = i18n( "*.kig|Kig Documents (*.kig)\n"
                           "*.kigz|Compressed Kig Documents (*.kigz)" );
 
