@@ -220,7 +220,7 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
     case Qt::DecorationRole:
     {
       if ( index.column() == 0 )
-        return SmallIcon( melems[ index.row() ]->icon() );
+        return KIcon( melems[ index.row() ]->icon() );
       else
         return QVariant();
       break;
@@ -312,10 +312,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 
   // improving GUI look'n'feel...
   KIconLoader* il = part.instance()->iconLoader();
-  mtypeswidget->buttonEdit->setIcon( QIcon( il->loadIcon( "edit", K3Icon::Small ) ) );
-  mtypeswidget->buttonRemove->setIcon( QIcon( il->loadIcon( "editdelete", K3Icon::Small ) ) );
-  mtypeswidget->buttonExport->setIcon( QIcon( il->loadIcon( "fileexport", K3Icon::Small ) ) );
-  mtypeswidget->buttonImport->setIcon( QIcon( il->loadIcon( "fileimport", K3Icon::Small ) ) );
+  mtypeswidget->buttonEdit->setIcon( KIcon("edit", il) );
+  mtypeswidget->buttonRemove->setIcon( KIcon("editdelete", il) );
+  mtypeswidget->buttonExport->setIcon( KIcon("fileexport", il) );
+  mtypeswidget->buttonImport->setIcon( KIcon("fileimport", il) );
 
   std::vector<BaseListElement*> el;
   // loading macros...
@@ -329,10 +329,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->resizeColumnToContents( 1 );
 
   popup = new QMenu( this );
-  popup->addAction( SmallIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
-  popup->addAction( SmallIcon( "editdelete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
+  popup->addAction( KIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
+  popup->addAction( KIcon( "editdelete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
   popup->addSeparator();
-  popup->addAction( SmallIcon( "fileexport" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
+  popup->addAction( KIcon( "fileexport" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
 
   // saving types
   mpart.saveTypes();
