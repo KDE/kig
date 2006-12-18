@@ -28,6 +28,7 @@
 #include <kdebug.h>
 #include <knumvalidator.h>
 #include <klocale.h>
+#include <kglobal.h>
 #include <kinputdialog.h>
 
 Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t )
