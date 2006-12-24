@@ -36,7 +36,7 @@
 #include <qpushbutton.h>
 
 #include <kcursor.h>
-#include <kiconloader.h>
+#include <kicon.h>
 #include <kinstance.h>
 #include <kmessagebox.h>
 
@@ -273,7 +273,7 @@ void ScriptModeBase::setScriptType( ScriptType::Type type )
   if ( mtype != ScriptType::Unknown )
   {
     KIconLoader* il = mpart.instance()->iconLoader();
-    mwizard->setWindowIcon( il->loadIconSet( ScriptType::icon( mtype ), K3Icon::Small ) );
+    mwizard->setWindowIcon( KIcon( ScriptType::icon( mtype ), il ) );
   }
 }
 
