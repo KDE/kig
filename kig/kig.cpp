@@ -202,7 +202,7 @@ bool Kig::queryClose()
 	  (
 	   widget(),
 	   i18n("Save changes to document %1?", m_part->url().path()),
-	   i18n("Save Changes?"),KStdGuiItem::save(),KStdGuiItem::discard()
+	   i18n("Save Changes?"),KStandardGuiItem::save(),KStandardGuiItem::discard()
 	   ))
     {
     case KMessageBox::Yes:

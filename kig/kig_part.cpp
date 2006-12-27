@@ -405,7 +405,7 @@ bool KigPart::saveFile()
     if( KMessageBox::warningYesNo( widget(),
                      i18n( "Kig does not support saving to any other file format than "
                            "its own. Save to Kig's format instead?" ),
-                     i18n( "Format Not Supported" ), KGuiItem( i18n( "Save Kig Format" ) ), KStdGuiItem::cancel() ) == KMessageBox::No )
+                     i18n( "Format Not Supported" ), KGuiItem( i18n( "Save Kig Format" ) ), KStandardGuiItem::cancel() ) == KMessageBox::No )
       return false;
     internalSaveAs();
   };
@@ -595,7 +595,7 @@ bool KigPart::internalSaveAs()
   {
     int ret = KMessageBox::warningContinueCancel( m_widget,
                                          i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ,
-                                           file_name ), i18n( "Overwrite File?" ), KStdGuiItem::overwrite() );
+                                           file_name ), i18n( "Overwrite File?" ), KStandardGuiItem::overwrite() );
     if ( ret != KMessageBox::Continue )
     {
       return false;

@@ -386,7 +386,7 @@ void TypesDialog::deleteType()
   if ( KMessageBox::warningContinueCancelList( this,
         i18np( "Are you sure you want to delete this type?",
               "Are you sure you want to delete these %n types?", selectedTypes.size() ),
-        types, i18n("Are You Sure?"), KStdGuiItem::cont(),
+        types, i18n("Are You Sure?"), KStandardGuiItem::cont(),
         "deleteTypeWarning") == KMessageBox::Cancel )
      return;
   std::vector<BaseListElement*> todelete;
@@ -426,7 +426,7 @@ void TypesDialog::exportType()
   if ( fi.exists() )
     if ( KMessageBox::warningContinueCancel( this, i18n( "The file \"%1\" already exists. "
                                        "Do you wish to overwrite it?", fi.fileName() ),
-                                       i18n( "Overwrite File?" ), KStdGuiItem::overwrite() ) == KMessageBox::Cancel )
+                                       i18n( "Overwrite File?" ), KStandardGuiItem::overwrite() ) == KMessageBox::Cancel )
        return;
   MacroList::instance()->save( types, file_name );
 }

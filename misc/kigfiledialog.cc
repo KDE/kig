@@ -52,7 +52,7 @@ void KigFileDialog::accept()
   {
     int ret = KMessageBox::warningContinueCancel( this,
                                          i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" ,
-                                           sFile ), i18n( "Overwrite File?" ), KStdGuiItem::overwrite() );
+                                           sFile ), i18n( "Overwrite File?" ), KStandardGuiItem::overwrite() );
     if ( ret != KMessageBox::Continue )
     {
       KFileDialog::reject();
