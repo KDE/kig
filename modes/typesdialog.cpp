@@ -34,6 +34,7 @@
 #include <kmessagebox.h>
 #include <kpushbutton.h>
 #include <ktoolinvocation.h>
+#include <kapplication.h>
 
 #include <qbytearray.h>
 #include <qevent.h>
@@ -255,7 +256,7 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
         return macro_with_image
                  .arg( melems[ index.row() ]->name() )
                  .arg( wrapAt( melems[ index.row() ]->description() ) )
-                 .arg( KGlobal::iconLoader()->iconPath( melems[ index.row() ]->icon(), - K3Icon::SizeMedium ) )
+                 .arg( kapp->iconLoader()->iconPath( melems[ index.row() ]->icon(), - K3Icon::SizeMedium ) )
                  .arg( melems[ index.row() ]->type() );
     }
     default:
@@ -311,7 +312,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->installEventFilter( this );
 
   // improving GUI look'n'feel...
-  KIconLoader* il = part.instance()->iconLoader();
+  KIconLoader* il = kapp->iconLoader();
   mtypeswidget->buttonEdit->setIcon( KIcon("edit", il) );
   mtypeswidget->buttonRemove->setIcon( KIcon("editdelete", il) );
   mtypeswidget->buttonExport->setIcon( KIcon("fileexport", il) );
