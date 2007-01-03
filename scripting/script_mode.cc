@@ -35,9 +35,9 @@
 #include <qlabel.h>
 #include <qpushbutton.h>
 
+#include <kapplication.h>
 #include <kcursor.h>
 #include <kicon.h>
-#include <kinstance.h>
 #include <kmessagebox.h>
 
 void ScriptModeBase::dragRect( const QPoint& p, KigWidget& w )
@@ -272,7 +272,7 @@ void ScriptModeBase::setScriptType( ScriptType::Type type )
   mwizard->setType( mtype );
   if ( mtype != ScriptType::Unknown )
   {
-    KIconLoader* il = mpart.instance()->iconLoader();
+    KIconLoader* il = kapp->iconLoader();
     mwizard->setWindowIcon( KIcon( ScriptType::icon( mtype ), il ) );
   }
 }

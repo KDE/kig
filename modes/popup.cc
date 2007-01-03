@@ -57,13 +57,11 @@
 #include <qvalidator.h>
 
 #include <kaction.h>
+#include <kapplication.h>
 #include <kcolordialog.h>
-#include <kglobal.h>
 #include <kiconloader.h>
 #include <kinputdialog.h>
-#include <kinstance.h>
 #include <klocale.h>
-#include <kapplication.h>
 
 #include <config.h>
 #include <config-kig.h>
@@ -1015,7 +1013,7 @@ void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu,
 {
   if ( menu == NormalModePopupObjects::StartMenu )
   {
-    KIconLoader* l = popup.part().instance()->iconLoader();
+    KIconLoader* l = kapp->iconLoader();
     QPixmap p = l->loadIcon( ScriptType::icon( ScriptType::Python ), K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
     popup.addInternalAction( menu, p, i18n( "Python Script" ), nextfree++ );
     mns++;
