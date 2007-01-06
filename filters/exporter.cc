@@ -43,6 +43,7 @@
 #include <qtextstream.h>
 
 #include <kactionmenu.h>
+#include <kapplication.h>
 #include <kiconloader.h>
 #include <kimageio.h>
 #include <kinstance.h>
@@ -66,7 +67,7 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
 {
   QString iconstr = exp->menuIcon();
   if ( !iconstr.isEmpty() )
-    setIcon( KIcon( iconstr, doc->instance()->iconLoader(),0 ) );
+    setIcon( KIcon( iconstr, kapp->iconLoader(),0 ) );
   connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
 }
 

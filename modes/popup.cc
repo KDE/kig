@@ -57,11 +57,10 @@
 #include <qvalidator.h>
 
 #include <kaction.h>
+#include <kapplication.h>
 #include <kcolordialog.h>
-#include <kglobal.h>
 #include <kiconloader.h>
 #include <kinputdialog.h>
-#include <kinstance.h>
 #include <klocale.h>
 
 #include <config.h>
@@ -272,7 +271,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     };
 
   // creating the menus and setting their title and icon
-  KIconLoader* l = part.instance()->iconLoader();
+  KIconLoader* l = kapp->iconLoader();
   for ( uint i = 0; i < NumberOfMenus; ++i )
   {
     mmenus[i] = new QMenu( this );
@@ -350,7 +349,7 @@ const int numberofcolors = 7; // is there a better way to calc that?
 
 void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
-  KIconLoader* l = popup.part().instance()->iconLoader();
+  KIconLoader* l = kapp->iconLoader();
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
     std::vector<ObjectHolder*> os = popup.objects();
@@ -730,7 +729,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
       QByteArray iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
-        QPixmap icon = popup.part().instance()->iconLoader()->loadIcon( iconfile, K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
+        QPixmap icon = kapp->iconLoader()->loadIcon( iconfile, K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
         popup.addInternalAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
       }
       else
@@ -831,7 +830,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
     {
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = popup.part().instance()->iconLoader()->loadIcon( iconfile, K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
+        QPixmap pix = kapp->iconLoader()->loadIcon( iconfile, K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
         popup.addInternalAction( menu, pix, i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else
@@ -1014,7 +1013,7 @@ void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu,
 {
   if ( menu == NormalModePopupObjects::StartMenu )
   {
-    KIconLoader* l = popup.part().instance()->iconLoader();
+    KIconLoader* l = kapp->iconLoader();
     QPixmap p = l->loadIcon( ScriptType::icon( ScriptType::Python ), K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
     popup.addInternalAction( menu, p, i18n( "Python Script" ), nextfree++ );
     mns++;

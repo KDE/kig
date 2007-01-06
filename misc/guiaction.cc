@@ -35,6 +35,7 @@
 #include <kinstance.h>
 #include <klocale.h>
 #include <kicon.h>
+#include <kapplication.h>
 
 #include <qregexp.h>
 
@@ -83,7 +84,7 @@ void ConstructibleAction::act( KigPart& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc )
-  : KAction( KIcon( act->iconFileName(), doc.instance()->iconLoader(), 0 ),
+  : KAction( KIcon( act->iconFileName(), kapp->iconLoader(), 0 ),
              act->descriptiveName(),
              doc.actionCollection(), act->actionName() ),
   mact( act ),
