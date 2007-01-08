@@ -52,6 +52,7 @@
 #include <kinstance.h>
 #include <klocale.h>
 #include <kmainwindow.h>
+#include <kactioncollection.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
 #include <kprinter.h>
@@ -85,12 +86,14 @@ KAboutData* KigPart::createAboutData()
 
 SetCoordinateSystemAction::SetCoordinateSystemAction(
   KigPart& d, KActionCollection* parent )
-  : KSelectAction( i18n( "&Set Coordinate System" ), parent, "settings_set_coordinate_system" ),
+  : KSelectAction( i18n( "&Set Coordinate System" ), &d),
     md( d )
 {
   setItems( CoordinateSystemFactory::names() );
   setCurrentItem( md.document().coordinateSystem().id() );
   connect( this, SIGNAL( triggered( int ) ), this, SLOT( slotActivated( int ) ) );
+  if(parent)
+    parent->addAction("settings_set_coordinate_system", this);
 }
 
 void SetCoordinateSystemAction::slotActivated( int index )
@@ -211,45 +214,52 @@ void KigPart::setupActions()
     this, SLOT( slotSelectAll() ), actionCollection() );
   aDeselectAll = KStandardAction::deselect(
     this, SLOT( slotDeselectAll() ), actionCollection() );
-  aInvertSelection = new KAction( i18n( "Invert Selection" ), actionCollection(), "edit_invert_selection" );
+  aInvertSelection  = new KAction(i18n("Invert Selection"), this);
+  actionCollection()->addAction("edit_invert_selection", aInvertSelection );
   connect(aInvertSelection, SIGNAL(triggered(bool) ), SLOT( slotInvertSelection() ));
 
   // we need icons...
   KIconLoader* l = KIconLoader::global();
 
-  aDeleteObjects = new KAction(KIcon("editdelete"),  i18n("&Delete Objects"), actionCollection(), "delete_objects");
+  aDeleteObjects  = new KAction(KIcon("editdelete"), i18n("&Delete Objects"), this);
+  actionCollection()->addAction("delete_objects", aDeleteObjects );
   connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
   aDeleteObjects->setShortcut(QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  aCancelConstruction = new KAction(KIcon("stop"),  i18n("Cancel Construction"), actionCollection(), "cancel_construction");
+  aCancelConstruction  = new KAction(KIcon("stop"), i18n("Cancel Construction"), this);
+  actionCollection()->addAction("cancel_construction", aCancelConstruction );
   connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
   aCancelConstruction->setShortcut(QKeySequence(Qt::Key_Escape));
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
-  aShowHidden = new KAction( i18n("U&nhide All"), actionCollection(), "edit_unhide_all");
+  aShowHidden  = new KAction(i18n("U&nhide All"), this);
+  actionCollection()->addAction("edit_unhide_all", aShowHidden );
   connect(aShowHidden, SIGNAL(triggered(bool) ), SLOT( showHidden() ));
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  aNewMacro = new KAction(KIcon("gear"),  i18n("&New Macro..."), actionCollection(), "macro_action");
+  aNewMacro  = new KAction(KIcon("gear"), i18n("&New Macro..."), this);
+  actionCollection()->addAction("macro_action", aNewMacro );
   connect(aNewMacro, SIGNAL(triggered(bool) ), SLOT(newMacro()));
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
-  aConfigureTypes = new KAction( i18n("Manage &Types..."), actionCollection(), "types_edit");
+  aConfigureTypes  = new KAction(i18n("Manage &Types..."), this);
+  actionCollection()->addAction("types_edit", aConfigureTypes );
   connect(aConfigureTypes, SIGNAL(triggered(bool) ), SLOT(editTypes()));
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
-  aBrowseHistory = new KAction( i18n( "&Browse History..." ), actionCollection(), "browse_history" );
+  aBrowseHistory  = new KAction(i18n("&Browse History..."), this);
+  actionCollection()->addAction("browse_history", aBrowseHistory );
   connect( aBrowseHistory, SIGNAL( triggered( bool ) ), SLOT( browseHistory() ) );
   aBrowseHistory->setToolTip( i18n( "Browse the history of the current costruction." ) );
 
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
 
-  KAction* a = KStandardAction::zoomIn( m_widget, SLOT( slotZoomIn() ),
+  QAction * a = KStandardAction::zoomIn( m_widget, SLOT( slotZoomIn() ),
                                    actionCollection() );
   a->setToolTip( i18n( "Zoom in on the document" ) );
   a->setWhatsThis( i18n( "Zoom in on the document" ) );
@@ -266,35 +276,37 @@ void KigPart::setupActions()
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
-  a = KStandardAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), (QWidget*)(widget()->parent()),"fullscreen" );
+  a = actionCollection()->addAction(KStandardAction::FullScreen, "fullscreen", m_widget, SLOT( toggleFullScreen() ));
   a->setToolTip( i18n( "View this document full-screen." ) );
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  a = new KAction(KIcon("viewmagfit"),  i18n( "&Select Shown Area" ), actionCollection(), "view_select_shown_rect" );
+  a  = new KAction(KIcon("viewmagfit"), i18n("&Select Shown Area"), this);
+  actionCollection()->addAction("view_select_shown_rect", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomRect() ));
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  a = new KAction(KIcon("viewmag"),  i18n( "S&elect Zoom Area" ), actionCollection(), "view_zoom_area" );
+  a  = new KAction(KIcon("viewmag"), i18n("S&elect Zoom Area"), this);
+  actionCollection()->addAction("view_zoom_area", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomArea() ));
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  aToggleGrid = new KToggleAction(
-    i18n( "Show &Grid" ), actionCollection(), "settings_show_grid" );
+  aToggleGrid  = new KToggleAction(i18n("Show &Grid"), this);
+  actionCollection()->addAction("settings_show_grid", aToggleGrid );
   aToggleGrid->setToolTip( i18n( "Show or hide the grid." ) );
   aToggleGrid->setChecked( true );
   connect( aToggleGrid, SIGNAL( triggered() ), this, SLOT( toggleGrid() ) );
 
-  aToggleAxes = new KToggleAction(
-    i18n( "Show &Axes" ), actionCollection(), "settings_show_axes" );
+  aToggleAxes  = new KToggleAction(i18n("Show &Axes"), this);
+  actionCollection()->addAction("settings_show_axes", aToggleAxes );
   aToggleAxes->setToolTip( i18n( "Show or hide the axes." ) );
   aToggleAxes->setChecked( true );
   connect( aToggleAxes, SIGNAL( triggered() ), this, SLOT( toggleAxes() ) );
 
-  aToggleNightVision = new KToggleAction(
-    i18n( "Wear Infrared Glasses" ), actionCollection(), "settings_toggle_nightvision" );
+  aToggleNightVision  = new KToggleAction(i18n("Wear Infrared Glasses"), this);
+  actionCollection()->addAction("settings_toggle_nightvision", aToggleNightVision );
   aToggleNightVision->setToolTip( i18n( "Enable/Disable hidden objects visibility." ) );
   aToggleNightVision->setChecked( false );
   connect( aToggleNightVision, SIGNAL( triggered() ), this, SLOT( toggleNightVision() ) );

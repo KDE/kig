@@ -43,6 +43,8 @@
 #include <qtextstream.h>
 
 #include <kactionmenu.h>
+#include <kactioncollection.h>
+#include <kapplication.h>
 #include <kiconloader.h>
 #include <kimageio.h>
 #include <kinstance.h>
@@ -61,13 +63,15 @@ static bool operator<( const QColor& a, const QColor& b )
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )
-  : KAction( exp->menuEntryName(), parent, "action" ),
+  : KAction( exp->menuEntryName(), parent),
     mexp( exp ), mdoc( doc ), mw( w )
 {
   QString iconstr = exp->menuIcon();
   if ( !iconstr.isEmpty() )
     setIcon( KIcon( iconstr, KIconLoader::global(),0 ) );
   connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
+  if(parent)
+    parent->addAction("action", this );
 }
 
 void ExporterAction::slotActivated()
@@ -171,10 +175,11 @@ KigExportManager::~KigExportManager()
 void KigExportManager::addMenuAction( const KigPart* doc, KigWidget* w,
                                       KActionCollection* coll )
 {
-  KActionMenu* m =
-    new KActionMenu( i18n( "&Export To" ), coll, "file_export" );
+  KActionMenu* m = new KActionMenu( i18n( "&Export To" ), w);
   for ( uint i = 0; i < mexporters.size(); ++i )
     m->addAction( new ExporterAction( doc, w, coll, mexporters[i] ) );
+  if(coll)
+    coll->addAction("file_export", m );
 }
 
 KigExportManager* KigExportManager::instance()

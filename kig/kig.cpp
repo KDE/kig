@@ -33,6 +33,7 @@
 #include <kkeydialog.h>
 #include <klibloader.h>
 #include <klocale.h>
+#include <kactioncollection.h>
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
 #include <kstatusbar.h>
@@ -122,7 +123,7 @@ void Kig::setupActions()
   KStandardAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
   KStandardAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
 
-  KStandardAction::tipOfDay( this, SLOT( tipOfDay() ), actionCollection(), "help_tipofday" );
+  actionCollection()->addAction(KStandardAction::TipofDay,  "help_tipofday", this, SLOT( tipOfDay() ));
 }
 
 void Kig::saveProperties(KConfig* config)
