@@ -34,7 +34,6 @@
 #include <kmessagebox.h>
 #include <kpushbutton.h>
 #include <ktoolinvocation.h>
-#include <kapplication.h>
 
 #include <qbytearray.h>
 #include <qevent.h>

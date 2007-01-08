@@ -50,7 +50,6 @@
 #include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kapplication.h>
 
 #include <algorithm>
 #include <functional>

@@ -35,7 +35,6 @@
 #include <kinstance.h>
 #include <klocale.h>
 #include <kicon.h>
-#include <kapplication.h>
 
 #include <qregexp.h>
 

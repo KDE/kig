@@ -43,7 +43,6 @@
 #include <qtextstream.h>
 
 #include <kactionmenu.h>
-#include <kapplication.h>
 #include <kiconloader.h>
 #include <kimageio.h>
 #include <kinstance.h>
