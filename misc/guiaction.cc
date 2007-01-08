@@ -84,7 +84,7 @@ void ConstructibleAction::act( KigPart& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc )
-  : KAction( KIcon( act->iconFileName(), kapp->iconLoader(), 0 ),
+  : KAction( KIcon( act->iconFileName(), KIconLoader::global(), 0 ),
              act->descriptiveName(),
              doc.actionCollection(), act->actionName() ),
   mact( act ),

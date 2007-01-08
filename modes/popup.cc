@@ -271,7 +271,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     };
 
   // creating the menus and setting their title and icon
-  KIconLoader* l = kapp->iconLoader();
+  KIconLoader* l = KIconLoader::global();
   for ( uint i = 0; i < NumberOfMenus; ++i )
   {
     mmenus[i] = new QMenu( this );
@@ -349,7 +349,7 @@ const int numberofcolors = 7; // is there a better way to calc that?
 
 void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
-  KIconLoader* l = kapp->iconLoader();
+  KIconLoader* l = KIconLoader::global();
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
     std::vector<ObjectHolder*> os = popup.objects();
@@ -729,7 +729,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
       QByteArray iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
-        QPixmap icon = kapp->iconLoader()->loadIcon( iconfile, K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
+        QPixmap icon = KIconLoader::global()->loadIcon( iconfile, K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
         popup.addInternalAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
       }
       else
@@ -830,7 +830,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
     {
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = kapp->iconLoader()->loadIcon( iconfile, K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
+        QPixmap pix = KIconLoader::global()->loadIcon( iconfile, K3Icon::Toolbar, 22, K3Icon::DefaultState, 0L, true );
         popup.addInternalAction( menu, pix, i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else

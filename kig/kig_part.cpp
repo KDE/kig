@@ -215,7 +215,7 @@ void KigPart::setupActions()
   connect(aInvertSelection, SIGNAL(triggered(bool) ), SLOT( slotInvertSelection() ));
 
   // we need icons...
-  KIconLoader* l = kapp->iconLoader();
+  KIconLoader* l = KIconLoader::global();
 
   aDeleteObjects = new KAction(KIcon("editdelete"),  i18n("&Delete Objects"), actionCollection(), "delete_objects");
   connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
