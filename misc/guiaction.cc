@@ -36,6 +36,7 @@
 #include <klocale.h>
 #include <kicon.h>
 #include <kapplication.h>
+#include <kactioncollection.h>
 
 #include <qregexp.h>
 
@@ -84,9 +85,7 @@ void ConstructibleAction::act( KigPart& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc )
-  : KAction( KIcon( act->iconFileName(), kapp->iconLoader(), 0 ),
-             act->descriptiveName(),
-             doc.actionCollection(), act->actionName() ),
+  : KAction( KIcon( act->iconFileName(), kapp->iconLoader(), 0 ), act->descriptiveName(), doc.actionCollection()),
   mact( act ),
   mdoc( doc )
 {
@@ -96,6 +95,8 @@ KigGUIAction::KigGUIAction( GUIAction* act,
   setToolTip( tooltip );
   setShortcut( KShortcut( act->shortcut() ) );
   connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
+
+    doc.actionCollection()->addAction(act->actionName(), this);
 }
 
 void KigGUIAction::slotActivated()
