@@ -311,11 +311,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->installEventFilter( this );
 
   // improving GUI look'n'feel...
-  KIconLoader* il = KIconLoader::global();
-  mtypeswidget->buttonEdit->setIcon( KIcon("edit", il) );
-  mtypeswidget->buttonRemove->setIcon( KIcon("editdelete", il) );
-  mtypeswidget->buttonExport->setIcon( KIcon("fileexport", il) );
-  mtypeswidget->buttonImport->setIcon( KIcon("fileimport", il) );
+  mtypeswidget->buttonEdit->setIcon( KIcon( "edit" ) );
+  mtypeswidget->buttonRemove->setIcon( KIcon("editdelete" ) );
+  mtypeswidget->buttonExport->setIcon( KIcon("fileexport" ) );
+  mtypeswidget->buttonImport->setIcon( KIcon("fileimport" ) );
 
   std::vector<BaseListElement*> el;
   // loading macros...

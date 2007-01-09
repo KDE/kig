@@ -44,7 +44,6 @@
 
 #include <kactionmenu.h>
 #include <kactioncollection.h>
-#include <kapplication.h>
 #include <kiconloader.h>
 #include <kimageio.h>
 #include <kinstance.h>
@@ -68,7 +67,7 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
 {
   QString iconstr = exp->menuIcon();
   if ( !iconstr.isEmpty() )
-    setIcon( KIcon( iconstr, KIconLoader::global(),0 ) );
+    setIcon( KIcon( iconstr, const_cast<KigPart*>( doc )->iconLoader() ) );
   connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
   if(parent)
     parent->addAction("action", this );

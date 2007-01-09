@@ -271,7 +271,7 @@ void ScriptModeBase::setScriptType( ScriptType::Type type )
   mwizard->setType( mtype );
   if ( mtype != ScriptType::Unknown )
   {
-    KIconLoader* il = KIconLoader::global();
+    KIconLoader* il = mdoc.iconLoader();
     mwizard->setWindowIcon( KIcon( ScriptType::icon( mtype ), il ) );
   }
 }
