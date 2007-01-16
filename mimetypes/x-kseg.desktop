@@ -4,6 +4,7 @@ Encoding=UTF-8
 MimeType=application/x-kseg
 Icon=kig_doc
 Comment=KSeg Document
+Comment[el]=Έγγραφο KSeg
 Comment[fr]=Document KSeg
 Comment[x-test]=xxKSeg Documentxx
 Type=MimeType

@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Type=Service
 Name=Dr. Geo Info
+Name[el]=Πληροφορίες για το Dr. Geo
 Name[fr]=Informations de Dr. Geo
 Name[x-test]=xxDr. Geo Infoxx
 ServiceTypes=KFilePlugin

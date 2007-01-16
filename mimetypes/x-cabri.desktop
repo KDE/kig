@@ -4,6 +4,7 @@ Encoding=UTF-8
 MimeType=application/x-cabri
 Icon=kig_doc
 Comment=Cabri Figure
+Comment[el]=Σχέδιο του Cabri
 Comment[fr]=Figure Cabri
 Comment[x-test]=xxCabri Figurexx
 Type=MimeType
