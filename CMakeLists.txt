@@ -13,6 +13,8 @@ if(BOOST_PYTHON_FOUND)
   add_subdirectory( scripting )
 endif(BOOST_PYTHON_FOUND)
 
+add_definitions(-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
+
 include_directories( ${CMAKE_SOURCE_DIR}/kig/modes )
 if(BOOST_PYTHON_FOUND)
   include_directories(${BOOST_PYTHON_INCLUDES})
