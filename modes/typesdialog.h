@@ -78,18 +78,17 @@ public:
   TypesDialog( QWidget* parent, KigPart& );
   ~TypesDialog();
 
-protected slots:
-  virtual void slotHelp();
-  virtual void slotOk();
-  virtual void slotCancel();
+private slots:
+  void slotHelp();
+  void slotOk();
+  void slotCancel();
 
   void deleteType();
   void exportType();
   void importTypes();
   void editType();
 
-protected:
-  virtual bool eventFilter( QObject* obj, QEvent* event );
+  void typeListContextMenu( const QPoint& );
 
 private:
   void loadAllMacros( std::vector<BaseListElement*>& el );

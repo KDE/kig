@@ -308,7 +308,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mmodel = new TypesModel();
   mtypeswidget->typeList->setModel( mmodel );
 
-  mtypeswidget->typeList->installEventFilter( this );
+  mtypeswidget->typeList->setContextMenuPolicy( Qt::CustomContextMenu );
 
   // improving GUI look'n'feel...
   mtypeswidget->buttonEdit->setIcon( KIcon( "edit" ) );
@@ -340,6 +340,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   connect( mtypeswidget->buttonImport, SIGNAL( clicked() ), this, SLOT( importTypes() ) );
   connect( mtypeswidget->buttonRemove, SIGNAL( clicked() ), this, SLOT( deleteType() ) );
   connect( mtypeswidget->buttonEdit, SIGNAL( clicked() ), this, SLOT( editType() ) );
+  connect( mtypeswidget->typeList, SIGNAL( customContextMenuRequested( const QPoint& ) ), this, SLOT( typeListContextMenu( const QPoint& ) ) );
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
   connect( this, SIGNAL( okClicked() ), this, SLOT( slotOk() ) );
   connect( this, SIGNAL( cancelClicked() ), this, SLOT( slotCancel() ) );
@@ -533,20 +534,11 @@ std::set<int> TypesDialog::selectedRows() const
   return rows;
 }
 
-bool TypesDialog::eventFilter( QObject* obj, QEvent* event )
+void TypesDialog::typeListContextMenu( const QPoint& pos )
 {
-  (void)obj;
-  if ( event->type() == QEvent::ContextMenu )
-  {
-    if ( !selectedRows().empty() )
-    {
-      QContextMenuEvent* e = (QContextMenuEvent*)event;
-      popup->exec( e->globalPos() );
-      e->accept();
-      return true;
-    }
-    else
-      return false;
-  }
-  return false;
+  QModelIndexList indexes = mtypeswidget->typeList->selectionModel()->selectedIndexes();
+  if ( indexes.isEmpty() )
+    return;
+
+  popup->exec( mtypeswidget->typeList->viewport()->mapToGlobal( pos ) );
 }
