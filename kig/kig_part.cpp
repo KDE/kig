@@ -66,6 +66,7 @@
 
 #include <qbytearray.h>
 #include <qcheckbox.h>
+#include <qeventloop.h>
 #include <qfile.h>
 #include <qlayout.h>
 #include <qsizepolicy.h>
@@ -623,7 +624,9 @@ void KigPart::runMode( KigMode* m )
 
   setMode( m );
 
-  (void) kapp->enter_loop();
+  QEventLoop e;
+  m->setEventLoop( &e );
+  e.exec( QEventLoop::AllEvents | QEventLoop::WaitForMoreEvents );
 
   setMode( prev );
   redrawScreen();
@@ -632,9 +635,9 @@ void KigPart::runMode( KigMode* m )
 void KigPart::doneMode( KigMode* d )
 {
   assert( d == mMode );
-  // pretend to use this var..
-  (void)d;
-  kapp->exit_loop();
+
+  if ( d->eventLoop() )
+    d->eventLoop()->exit();
 }
 
 void KigPart::actionRemoved( GUIAction* a, GUIUpdateToken& t )

@@ -26,6 +26,7 @@
 class KigDocument;
 class KigPart;
 class KigWidget;
+class QEventLoop;
 class QMouseEvent;
 class StdConstructionMode;
 
@@ -83,10 +84,19 @@ public:
    * refresh the screen...
    */
   virtual void redrawScreen( KigWidget* w );
+
+  /// @internal
+  void setEventLoop( QEventLoop* e );
+  /// @internal
+  QEventLoop* eventLoop() const;
+
 protected:
   KigPart& mdoc;
 
   KigMode( KigPart& d );
+
+private:
+  QEventLoop* mevloop;
 };
 
 #endif

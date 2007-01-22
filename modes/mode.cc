@@ -136,3 +136,14 @@ void KigMode::deselectAll()
 void KigMode::invertSelection()
 {
 }
+
+void KigMode::setEventLoop( QEventLoop* e )
+{
+  mevloop = e;
+}
+
+QEventLoop* KigMode::eventLoop() const
+{
+  return mevloop;
+}
+
