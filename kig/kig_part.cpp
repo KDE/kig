@@ -49,7 +49,7 @@
 #include <kfiledialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
-#include <kinstance.h>
+#include <kcomponentdata.h>
 #include <klocale.h>
 #include <kmainwindow.h>
 #include <kactioncollection.h>
@@ -168,7 +168,7 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
     mMode( 0 ), mdocument( new KigDocument() )
 {
   // we need an instance
-  setInstance( KigPartFactory::instance() );
+  setComponentData( KigPartFactory::componentData() );
 
   mMode = new NormalMode( *this );
 

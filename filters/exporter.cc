@@ -46,7 +46,7 @@
 #include <kactioncollection.h>
 #include <kiconloader.h>
 #include <kimageio.h>
-#include <kinstance.h>
+#include <kcomponentdata.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
