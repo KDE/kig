@@ -32,7 +32,6 @@
 #include "../objects/bogus_imp.h"
 
 #include <kiconloader.h>
-#include <kinstance.h>
 #include <klocale.h>
 #include <kicon.h>
 #include <kactioncollection.h>

@@ -43,11 +43,9 @@
 #include <qtextedit.h>
 #include <qvariant.h>
 
-#include <kaction.h>
 #include <kcursor.h>
 #include <kdebug.h>
 #include <kiconloader.h>
-#include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 

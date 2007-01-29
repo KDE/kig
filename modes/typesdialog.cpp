@@ -29,7 +29,6 @@
 
 #include <kfiledialog.h>
 #include <kiconloader.h>
-#include <kinstance.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
@@ -39,10 +38,8 @@
 #include <qevent.h>
 #include <qfile.h>
 #include <qlayout.h>
-#include <qlist.h>
 #include <qmenu.h>
 #include <qstringlist.h>
-#include <qtextstream.h>
 
 #include <algorithm>
 
