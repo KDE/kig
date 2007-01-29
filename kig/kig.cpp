@@ -182,7 +182,7 @@ void Kig::openUrl( const KUrl& url )
 
 void Kig::optionsConfigureToolbars()
 {
-  saveMainWindowSettings(KGlobal::config(), "MainWindow");
+  saveMainWindowSettings(KGlobal::config().data(), "MainWindow");
 
   // use the standard toolbar editor
   KEditToolbar dlg(factory());
@@ -193,7 +193,7 @@ void Kig::optionsConfigureToolbars()
 
 void Kig::applyNewToolbarConfig()
 {
-  applyMainWindowSettings(KGlobal::config(), "MainWindow");
+  applyMainWindowSettings(KGlobal::config().data(), "MainWindow");
 }
 
 bool Kig::queryClose()
