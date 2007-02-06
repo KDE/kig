@@ -18,8 +18,7 @@
 #include <kaboutdata.h>
 #include <klocale.h>
 
-#include "config.h"
-#include "config-kig.h"
+#include <config-kig.h>
 
 inline KAboutData* kigAboutData( const char* name, const char* iname )
 {

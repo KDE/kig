@@ -17,7 +17,6 @@
 
 #include "builtin_stuff.h"
 
-#include <config.h>
 #include <config-kig.h>
 
 #include "object_constructor.h"

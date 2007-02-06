@@ -19,8 +19,6 @@
 #ifndef KIG_KIG_H
 #define KIG_KIG_H
 
-#include <config.h>
-
 #include <kparts/mainwindow.h>
 
 class KToggleAction;

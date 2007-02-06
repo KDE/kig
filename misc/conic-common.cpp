@@ -18,8 +18,8 @@
  USA
 **/
 
-#include <config.h>
 #include <config-kig.h>
+
 #include "conic-common.h"
 
 #include "common.h"

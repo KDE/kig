@@ -17,8 +17,8 @@
 
 #include "object_type_factory.h"
 
-#include <config.h>
 #include <config-kig.h>
+
 #include "object_type.h"
 #include "circle_type.h"
 #include "conic_types.h"
