@@ -30,8 +30,7 @@
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate_system.h"
 
-#include "config.h"
-#include "config-kig.h"
+#include <config-kig.h>
 
 #include <qbytearray.h>
 #include <qdom.h>
@@ -116,7 +115,6 @@ KigDocument* KigFilterNative::load( const QString& file )
   };
 
   QFile kigdoc( file );
-#ifndef KIG_NO_COMPRESSED_FILES
   bool iscompressed = false;
   if ( !file.endsWith( ".kig", Qt::CaseInsensitive ) )
   {
@@ -156,7 +154,6 @@ KigDocument* KigFilterNative::load( const QString& file )
 
     kigdoc.setFileName( tempdir + kigz->name() );
   }
-#endif
 
   if ( !kigdoc.open( QIODevice::ReadOnly ) )
     KIG_FILTER_PARSE_ERROR;
@@ -166,11 +163,9 @@ KigDocument* KigFilterNative::load( const QString& file )
     KIG_FILTER_PARSE_ERROR;
   kigdoc.close();
 
-#ifndef KIG_NO_COMPRESSED_FILES
   // removing temp file
   if ( iscompressed )
     kigdoc.remove();
-#endif
 
   QDomElement main = doc.documentElement();
 
@@ -739,7 +734,6 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     QTextStream stdoutstream( stdout, QIODevice::WriteOnly );
     return save07( data, stdoutstream );
   }
-#ifndef KIG_NO_COMPRESSED_FILES
   if ( !outfile.endsWith( ".kig", Qt::CaseInsensitive ) )
   {
     // the user wants to save a compressed file, so we have to save our kig
@@ -779,7 +773,6 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
   }
   else
   {
-#endif
     QFile file( outfile );
     if ( ! file.open( QIODevice::WriteOnly ) )
     {
@@ -788,12 +781,10 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     }
     QTextStream stream( &file );
     return save07( data, stream );
-#ifndef KIG_NO_COMPRESSED_FILES
   }
 
   // we should never reach this point...
   return false;
-#endif
 }
 
 /*
