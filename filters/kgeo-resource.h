@@ -42,8 +42,6 @@
 #ifndef RESOURCE_H
 #define RESOURCE_H
 
-#include <config.h>
-
 #include <iostream>
 #include <qstring.h>
 #include <klocale.h>
