@@ -840,7 +840,7 @@ void KigPart::hideObjects( const std::vector<ObjectHolder*>& inos )
   if ( os.size() == 0 ) return;
   else if ( os.size() == 1 )
     kc = new KigCommand( *this, os[0]->imp()->type()->hideAStatement() );
-  else kc = new KigCommand( *this, i18np( "Hide %n Object", "Hide %n Objects", os.size() ) );
+  else kc = new KigCommand( *this, i18np( "Hide %1 Object", "Hide %1 Objects", os.size() ) );
   for ( std::vector<ObjectHolder*>::iterator i = os.begin();
         i != os.end(); ++i )
     kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( false ) ) );
@@ -859,7 +859,7 @@ void KigPart::showObjects( const std::vector<ObjectHolder*>& inos )
   if ( os.size() == 0 ) return;
   else if ( os.size() == 1 )
     kc = new KigCommand( *this, os[0]->imp()->type()->showAStatement() );
-  else kc = new KigCommand( *this, i18np( "Show %n Object", "Show %n Objects", os.size() ) );
+  else kc = new KigCommand( *this, i18np( "Show %1 Object", "Show %1 Objects", os.size() ) );
   for ( std::vector<ObjectHolder*>::iterator i = os.begin();
         i != os.end(); ++i )
     kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( true ) ) );

@@ -382,7 +382,7 @@ void TypesDialog::deleteType()
   types.sort();
   if ( KMessageBox::warningContinueCancelList( this,
         i18np( "Are you sure you want to delete this type?",
-              "Are you sure you want to delete these %n types?", selectedTypes.size() ),
+              "Are you sure you want to delete these %1 types?", selectedTypes.size() ),
         types, i18n("Are You Sure?"), KStandardGuiItem::cont(),
         "deleteTypeWarning") == KMessageBox::Cancel )
      return;

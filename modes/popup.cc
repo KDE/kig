@@ -1139,7 +1139,7 @@ ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
                                         const std::vector<ObjectHolder*>& objs )
   : KMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
 {
-  addTitle( i18np( "%n Object", "%n Objects", mobjs.size() ) );
+  addTitle( i18np( "%1 Object", "%1 Objects", mobjs.size() ) );
   QAction* newaction = 0;
   for ( uint i = 0; i < mobjs.size(); i++ )
   {
