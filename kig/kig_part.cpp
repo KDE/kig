@@ -693,7 +693,7 @@ void KigPart::setupMacroTypes()
     // the user's saved macro types:
     QStringList dataFiles =
       KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
-                                        true, false );
+                                        KStandardDirs::Recursive);
     std::vector<Macro*> macros;
     for ( QStringList::iterator file = dataFiles.begin();
           file != dataFiles.end(); ++file )
@@ -719,7 +719,7 @@ void KigPart::setupBuiltinMacros()
     // builtin macro types ( we try to make the user think these are
     // normal types )..
     QStringList builtinfiles =
-      KGlobal::dirs()->findAllResources( "appdata", "builtin-macros/*.kigt", true, false );
+      KGlobal::dirs()->findAllResources( "appdata", "builtin-macros/*.kigt", KStandardDirs::Recursive);
     for ( QStringList::iterator file = builtinfiles.begin();
           file != builtinfiles.end(); ++file )
     {
