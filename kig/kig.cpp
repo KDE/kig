@@ -47,7 +47,7 @@
 Kig::Kig()
   : KParts::MainWindow(), m_part( 0 )
 {
-  setObjectName( QLatin1String( "Kig" ) ); 
+  setObjectName( QLatin1String( "Kig" ) );
   // setting the configation file
   config = new KConfig( "kigrc" );
   // set the shell's ui resource file
@@ -103,7 +103,7 @@ Kig::Kig()
 
 Kig::~Kig()
 {
-  m_recentFilesAction->saveEntries(config);
+  m_recentFilesAction->saveEntries(config->group( QString() ));
   delete config;
 }
 
@@ -118,7 +118,7 @@ void Kig::setupActions()
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
   m_recentFilesAction = KStandardAction::openRecent( this, SLOT( openUrl( const KUrl& ) ), actionCollection() );
-  m_recentFilesAction->loadEntries(config);
+  m_recentFilesAction->loadEntries(config->group( QString() ) );
 
   KStandardAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
   KStandardAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
@@ -182,7 +182,7 @@ void Kig::openUrl( const KUrl& url )
 
 void Kig::optionsConfigureToolbars()
 {
-  saveMainWindowSettings(KGlobal::config().data(), "MainWindow");
+  saveMainWindowSettings(KGlobal::config()->group( "MainWindow") );
 
   // use the standard toolbar editor
   KEditToolbar dlg(factory());
@@ -193,7 +193,7 @@ void Kig::optionsConfigureToolbars()
 
 void Kig::applyNewToolbarConfig()
 {
-  applyMainWindowSettings(KGlobal::config().data(), "MainWindow");
+  applyMainWindowSettings(KGlobal::config()->group( "MainWindow") );
 }
 
 bool Kig::queryClose()
