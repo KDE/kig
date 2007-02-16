@@ -54,8 +54,8 @@ bool KigFilterKGeo::supportMime( const QString& mime )
 
 KigDocument* KigFilterKGeo::load( const QString& sFrom )
 {
-  // kgeo uses a KSimpleConfig to save its contents...
-  KSimpleConfig config ( sFrom );
+  // kgeo uses a KConfig to save its contents...
+  KConfig config ( sFrom, KConfig::OnlyLocal );
 
   loadMetrics ( &config );
   return loadObjects ( sFrom, &config );
