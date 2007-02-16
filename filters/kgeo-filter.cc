@@ -42,7 +42,7 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 
 #include <algorithm>
 #include <functional>
