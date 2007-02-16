@@ -153,7 +153,7 @@ kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
 target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} ${KDE4_KDEPRINT_LIBRARY} )
 if(BOOST_PYTHON_FOUND)
-  target_link_libraries(kigpart ${BOOST_PYTHON_LIBS} ktexteditor kdocument)
+  target_link_libraries(kigpart ${BOOST_PYTHON_LIBS} ktexteditor)
 endif(BOOST_PYTHON_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
