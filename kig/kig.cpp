@@ -126,21 +126,21 @@ void Kig::setupActions()
   actionCollection()->addAction(KStandardAction::TipofDay,  "help_tipofday", this, SLOT( tipOfDay() ));
 }
 
-void Kig::saveProperties(KConfig* config)
+void Kig::saveProperties(KConfigGroup &config)
 {
   // the 'config' object points to the session managed
   // config file.  anything you write here will be available
   // later when this app is restored
-  config->writePathEntry("fileName", m_part->url().path());
+  config.writePathEntry("fileName", m_part->url().path());
 }
 
-void Kig::readProperties(KConfig* config)
+void Kig::readProperties(const KConfigGroup &config)
 {
   // the 'config' object points to the session managed
   // config file.  this function is automatically called whenever
   // the app is being restored.  read in here whatever you wrote
   // in 'saveProperties'
-  load( KUrl( config->readPathEntry( "fileName" ) ) );
+  load( KUrl( config.readPathEntry( "fileName" ) ) );
 }
 
 void Kig::load( const KUrl& url )
