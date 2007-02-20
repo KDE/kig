@@ -84,14 +84,14 @@ class Kig : public KParts::MainWindow
    * This method is called when it is time for the app to save its
    * properties for session management purposes.
    */
-  void saveProperties(KConfig *);
+  void saveProperties(KConfigGroup &);
 
   /**
    * This method is called when this app is restored.  The KConfig
    * object points to the session management config file that was saved
    * with \ref saveProperties
    */
-  void readProperties(KConfig *);
+  void readProperties(const KConfigGroup &);
 
  private slots:
   void fileNew();

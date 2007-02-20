@@ -42,7 +42,7 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 
 #include <algorithm>
 #include <functional>
@@ -54,14 +54,14 @@ bool KigFilterKGeo::supportMime( const QString& mime )
 
 KigDocument* KigFilterKGeo::load( const QString& sFrom )
 {
-  // kgeo uses a KSimpleConfig to save its contents...
-  KSimpleConfig config ( sFrom );
+  // kgeo uses a KConfig to save its contents...
+  KConfig config ( sFrom, KConfig::OnlyLocal );
 
   loadMetrics ( &config );
   return loadObjects ( sFrom, &config );
 }
 
-void KigFilterKGeo::loadMetrics(KSimpleConfig* c )
+void KigFilterKGeo::loadMetrics(KConfig* c )
 {
   c->setGroup("Main");
   xMax = c->readEntry("XMax", 16);
@@ -100,7 +100,7 @@ static std::vector<KGeoHierarchyElement> sortElems( const std::vector<KGeoHierar
   return ret;
 }
 
-KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
+KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
 {
   KigDocument* ret = new KigDocument();
 
