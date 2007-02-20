@@ -63,11 +63,11 @@ KigDocument* KigFilterKGeo::load( const QString& sFrom )
 
 void KigFilterKGeo::loadMetrics(KConfig* c )
 {
-  c->setGroup("Main");
-  xMax = c->readEntry("XMax", 16);
-  yMax = c->readEntry("YMax", 11);
-  grid = c->readEntry( "Grid", true );
-  axes = c->readEntry( "Axes", true );
+  KConfigGroup grp = c->group("Main");
+  xMax = grp.readEntry("XMax", 16);
+  yMax = grp.readEntry("YMax", 11);
+  grid = grp.readEntry( "Grid", true );
+  axes = grp.readEntry( "Axes", true );
   // the rest is not relevant to us (yet ?)...
 }
 
@@ -108,8 +108,8 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
 
   QString group;
   bool ok = true;
-  c->setGroup("Main");
-  int number = c->readEntry ("Number",0);
+  KConfigGroup grp = c->group("Main");
+  int number = grp.readEntry ("Number",0);
 
   // first we determine the parent relationships, and sort the
   // elements in an order that we can be sure all of an object's
@@ -124,8 +124,9 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
     elem.id = i;
     group.setNum( i + 1 );
     group.prepend( "Object " );
-    c->setGroup( group );
-    QStringList parents = c->readEntry( "Parents", QVariant( QVariant::StringList ) ).toStringList();
+
+    KConfigGroup grp = c->group(group);
+    QStringList parents = grp.readEntry( "Parents", QVariant( QVariant::StringList ) ).toStringList();
     elems.push_back( elem );
     for ( QStringList::ConstIterator parent = parents.constBegin(); parent != parents.constEnd(); ++parent )
     {
@@ -149,8 +150,8 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
     int id = e.id;
     group.setNum( id + 1 );
     group.prepend( "Object " );
-    c->setGroup( group );
-    int objID = c->readEntry( "Geo",0 );
+    KConfigGroup grp = c->group(group );
+    int objID = grp.readEntry( "Geo",0 );
 
     std::vector<ObjectCalcer*> parents;
     for ( uint j = 0; j < e.parents.size(); ++j )
@@ -165,8 +166,8 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
     case ID_point:
     {
       // fetch the coordinates...
-      QString strX = c->readEntry("QPointX");
-      QString strY = c->readEntry("QPointY");
+      QString strX = grp.readEntry("QPointX");
+      QString strY = grp.readEntry("QPointY");
       double x = strX.toDouble(&ok);
       if (!ok) KIG_FILTER_PARSE_ERROR;
       double y = strY.toDouble(&ok);
@@ -247,12 +248,12 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
     }
     case ID_text:
     {
-      bool frame = c->readEntry( "Frame",true );
-      double x = c->readEntry( "TextRectCenterX",0.0 );
-      double y = c->readEntry( "TextRectCenterY",0.0 );
-      QString text = c->readEntry( "TextRectEntry" );
-      double height = c->readEntry( "TextRectHeight",0.0 );
-      double width  = c->readEntry( "TextRectWidth",0.0 );
+      bool frame = grp.readEntry( "Frame",true );
+      double x = grp.readEntry( "TextRectCenterX",0.0 );
+      double y = grp.readEntry( "TextRectCenterY",0.0 );
+      QString text = grp.readEntry( "TextRectEntry" );
+      double height = grp.readEntry( "TextRectHeight",0.0 );
+      double width  = grp.readEntry( "TextRectWidth",0.0 );
       // we don't want the center, but the top left..
       x -= width / 80;
       y -= height / 80;
@@ -262,7 +263,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
     }
     case ID_fixedCircle:
     {
-      double r = c->readEntry( "Radius",0.0 );
+      double r = grp.readEntry( "Radius",0.0 );
       parents.push_back( new ObjectConstCalcer( new DoubleImp( r ) ) );
       o = new ObjectTypeCalcer( CircleBPRType::instance(), parents );
       break;
@@ -343,7 +344,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
     };
 
     // set the color...
-    QColor co = c->readEntry( "Color",QColor() );
+    QColor co = grp.readEntry( "Color",QColor() );
     if( !co.isValid() )
       co = Qt::blue;
     ObjectDrawer* d = new ObjectDrawer( co );
