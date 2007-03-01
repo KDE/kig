@@ -44,7 +44,6 @@
 #include <functional>
 
 #include <kaction.h>
-#include <kapplication.h>
 #include <kdebug.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
