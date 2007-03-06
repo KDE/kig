@@ -1,6 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KigPart
+Name[ar]=جزء كيج
+Name[et]=Kigi komponent
+Name[ne]=किग पार्ट
+Name[sv]=Kigdel
+Name[ta]=கிக்பகுதி
 Name[x-test]=xxKigPartxx
 MimeType=application/x-kig;application/x-kgeo;
 ServiceTypes=KParts/ReadOnlyPart,KParts/ReadWritePart
