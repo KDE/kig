@@ -221,13 +221,13 @@ void KigPart::setupActions()
   // we need icons...
   KIconLoader* l = iconLoader();
 
-  aDeleteObjects  = new KAction(KIcon("editdelete"), i18n("&Delete Objects"), this);
+  aDeleteObjects  = new KAction(KIcon("edit-delete"), i18n("&Delete Objects"), this);
   actionCollection()->addAction("delete_objects", aDeleteObjects );
   connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
   aDeleteObjects->setShortcut(QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  aCancelConstruction  = new KAction(KIcon("stop"), i18n("Cancel Construction"), this);
+  aCancelConstruction  = new KAction(KIcon("process-stop"), i18n("Cancel Construction"), this);
   actionCollection()->addAction("cancel_construction", aCancelConstruction );
   connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
   aCancelConstruction->setShortcut(QKeySequence(Qt::Key_Escape));
@@ -281,13 +281,13 @@ void KigPart::setupActions()
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  a  = new KAction(KIcon("viewmagfit"), i18n("&Select Shown Area"), this);
+  a  = new KAction(KIcon("zoom-best-fit"), i18n("&Select Shown Area"), this);
   actionCollection()->addAction("view_select_shown_rect", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomRect() ));
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  a  = new KAction(KIcon("viewmag"), i18n("S&elect Zoom Area"), this);
+  a  = new KAction(KIcon("zoom-original"), i18n("S&elect Zoom Area"), this);
   actionCollection()->addAction("view_zoom_area", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomArea() ));
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );

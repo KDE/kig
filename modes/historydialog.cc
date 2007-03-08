@@ -48,19 +48,19 @@ HistoryDialog::HistoryDialog( KCommandHistory* kch, QWidget* parent )
 
   mtotalsteps = mch->undoCommands().size() + mch->redoCommands().size() + 1;
 
-  mwidget->buttonFirst->setIcon( KIcon( "2leftarrow" ) );
+  mwidget->buttonFirst->setIcon( KIcon( "arrow-left-double" ) );
   connect( mwidget->buttonFirst, SIGNAL( clicked() ), this, SLOT( goToFirst() ) );
 
-  mwidget->buttonBack->setIcon( KIcon( "1leftarrow" ) );
+  mwidget->buttonBack->setIcon( KIcon( "arrow-left" ) );
   connect( mwidget->buttonBack, SIGNAL( clicked() ), this, SLOT( goBack() ) );
 
   mwidget->editStep->setValidator( new KIntValidator( 1, mtotalsteps, mwidget->editStep ) );
   mwidget->labelSteps->setText( QString::number( mtotalsteps ) );
 
-  mwidget->buttonNext->setIcon( KIcon( "1rightarrow" ) );
+  mwidget->buttonNext->setIcon( KIcon( "arrow-right" ) );
   connect( mwidget->buttonNext, SIGNAL( clicked() ), this, SLOT( goToNext() ) );
 
-  mwidget->buttonLast->setIcon( KIcon( "2rightarrow" ) );
+  mwidget->buttonLast->setIcon( KIcon( "arrow-right-double" ) );
   connect( mwidget->buttonLast, SIGNAL( clicked() ), this, SLOT( goToLast() ) );
 
   updateWidgets();

@@ -374,7 +374,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     nextfree += 2;
     QPixmap p = l->loadIcon( "move", K3Icon::Toolbar );
     popup.addInternalAction( menu, p, i18n( "&Move" ), nextfree++ );
-    p = l->loadIcon( "editdelete", K3Icon::Toolbar );
+    p = l->loadIcon( "edit-delete", K3Icon::Toolbar );
     popup.addInternalAction( menu, p, i18n( "&Delete" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetColorMenu )

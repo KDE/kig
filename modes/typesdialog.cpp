@@ -309,9 +309,9 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 
   // improving GUI look'n'feel...
   mtypeswidget->buttonEdit->setIcon( KIcon( "edit" ) );
-  mtypeswidget->buttonRemove->setIcon( KIcon("editdelete" ) );
+  mtypeswidget->buttonRemove->setIcon( KIcon("edit-delete" ) );
   mtypeswidget->buttonExport->setIcon( KIcon("fileexport" ) );
-  mtypeswidget->buttonImport->setIcon( KIcon("fileimport" ) );
+  mtypeswidget->buttonImport->setIcon( KIcon("file-import" ) );
 
   std::vector<BaseListElement*> el;
   // loading macros...
@@ -326,7 +326,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 
   popup = new QMenu( this );
   popup->addAction( KIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
-  popup->addAction( KIcon( "editdelete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
+  popup->addAction( KIcon( "edit-delete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
   popup->addSeparator();
   popup->addAction( KIcon( "fileexport" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
 
