@@ -186,7 +186,7 @@ void Kig::optionsConfigureToolbars()
 
   // use the standard toolbar editor
   KEditToolbar dlg(factory());
-  connect(&dlg, SIGNAL(newToolbarConfig()),
+  connect(&dlg, SIGNAL(newToolBarConfig()),
 	  this, SLOT(applyNewToolbarConfig()));
   dlg.exec();
 }
