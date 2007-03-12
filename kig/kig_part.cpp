@@ -352,19 +352,19 @@ KigPart::~KigPart()
 
 bool KigPart::openFile()
 {
-  QFileInfo fileinfo( m_file );
+  QFileInfo fileinfo( localFilePath() );
   if ( ! fileinfo.exists() )
   {
     KMessageBox::sorry( widget(),
                         i18n( "The file \"%1\" you tried to open does not exist. "
-                              "Please verify that you entered the correct path.", m_file ),
+                              "Please verify that you entered the correct path.", localFilePath() ),
                         i18n( "File Not Found" ) );
     return false;
   };
 
   // m_file is always local, so we can use findByPath instead of
   // findByURL...
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
+  KMimeType::Ptr mimeType = KMimeType::findByPath ( localFilePath() );
   kDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
@@ -384,7 +384,7 @@ bool KigPart::openFile()
     return false;
   };
 
-  KigDocument* newdoc = filter->load (m_file);
+  KigDocument* newdoc = filter->load (localFilePath());
   if ( !newdoc ) return false;
   delete mdocument;
   mdocument = newdoc;
@@ -408,9 +408,9 @@ bool KigPart::openFile()
 
 bool KigPart::saveFile()
 {
-  if ( m_file.isEmpty() || m_bTemp ) return internalSaveAs();
+  if ( localFilePath().isEmpty() || isLocalFileTemporary() ) return internalSaveAs();
   // mimetype:
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
+  KMimeType::Ptr mimeType = KMimeType::findByPath ( localFilePath() );
   if ( mimeType->name() != "application/x-kig" )
   {
     // we don't support this mime type...
@@ -422,7 +422,7 @@ bool KigPart::saveFile()
     internalSaveAs();
   };
 
-  if ( KigFilters::instance()->save( document(), m_file ) )
+  if ( KigFilters::instance()->save( document(), localFilePath() ) )
   {
     setModified ( false );
     mhistory->documentSaved();
