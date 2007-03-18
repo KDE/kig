@@ -54,7 +54,7 @@ public:
   virtual ~GUIAction();
 
   virtual QString description() const = 0;
-  virtual QByteArray iconFileName() const = 0;
+  virtual QByteArray iconFileName( const bool canBeNull = false ) const = 0;
   virtual QString descriptiveName() const = 0;
   virtual const char* actionName() const = 0;
   virtual int shortcut() const = 0;
@@ -76,7 +76,7 @@ public:
                        int shortcut = 0 );
   ~ConstructibleAction();
   QString description() const;
-  QByteArray iconFileName() const;
+  QByteArray iconFileName( const bool canBeNull = false ) const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -93,7 +93,7 @@ public:
   ~ConstructPointAction();
 
   QString description() const;
-  QByteArray iconFileName() const;
+  QByteArray iconFileName( const bool canBeNull = false ) const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -108,7 +108,7 @@ public:
   ConstructTextLabelAction( const char* actionname );
 
   QString description() const;
-  QByteArray iconFileName() const;
+  QByteArray iconFileName( const bool canBeNull = false ) const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -123,7 +123,7 @@ public:
   AddFixedPointAction( const char* actionname );
   ~AddFixedPointAction();
   QString description() const;
-  QByteArray iconFileName() const;
+  QByteArray iconFileName( const bool canBeNull = false ) const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -138,7 +138,7 @@ public:
   ConstructNumericLabelAction( const char* actionname );
   ~ConstructNumericLabelAction();
   QString description() const;
-  QByteArray iconFileName() const;
+  QByteArray iconFileName( const bool canBeNull = false ) const;
   QString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
@@ -154,7 +154,7 @@ public:
   TestAction( const char* actionname );
   ~TestAction();
   QString description() const;
-  QByteArray iconFileName() const;
+  QByteArray iconFileName( const bool canBeNull = false ) const;
   QString descriptiveName() const;
   const char* actionName() const;
   void act( KigPart& );
@@ -177,7 +177,7 @@ public:
                    const char* icon = "" );
   ~NewScriptAction();
   QString description() const;
-  QByteArray iconFileName() const;
+  QByteArray iconFileName( const bool canBeNull = false ) const;
   QString descriptiveName() const;
   const char* actionName() const;
   void act( KigPart& );

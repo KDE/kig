@@ -64,9 +64,9 @@ QString ConstructibleAction::description() const
   return mctor->description();
 }
 
-QByteArray ConstructibleAction::iconFileName() const
+QByteArray ConstructibleAction::iconFileName( const bool canBeNull ) const
 {
-  return mctor->iconFileName();
+  return mctor->iconFileName( canBeNull );
 }
 
 QString ConstructibleAction::descriptiveName() const
@@ -83,10 +83,13 @@ void ConstructibleAction::act( KigPart& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc )
-  : KAction( KIcon( act->iconFileName(), doc.iconLoader() ), act->descriptiveName(), doc.actionCollection()),
+  : KAction( act->descriptiveName(), doc.actionCollection() ),
   mact( act ),
   mdoc( doc )
 {
+  QByteArray icon = act->iconFileName( true );
+  if ( !icon.isEmpty() )
+    setIcon( KIcon( icon, doc.iconLoader() ) );
   setWhatsThis( act->description() );
   QString tooltip = act->descriptiveName();
   tooltip.replace( QRegExp( "&&" ), "&" );
@@ -119,7 +122,7 @@ QString ConstructPointAction::description() const
     );
 }
 
-QByteArray ConstructPointAction::iconFileName() const
+QByteArray ConstructPointAction::iconFileName( const bool ) const
 {
   return "point";
 }
@@ -170,7 +173,7 @@ QString ConstructTextLabelAction::description() const
   return i18n( "Construct a text label." );
 }
 
-QByteArray ConstructTextLabelAction::iconFileName() const
+QByteArray ConstructTextLabelAction::iconFileName( const bool ) const
 {
   return "kig_text";
 }
@@ -201,7 +204,7 @@ QString AddFixedPointAction::description() const
   return i18n( "Construct a Point by its Coordinates" );
 }
 
-QByteArray AddFixedPointAction::iconFileName() const
+QByteArray AddFixedPointAction::iconFileName( const bool ) const
 {
   return "pointxy";
 }
@@ -246,7 +249,7 @@ QString ConstructNumericLabelAction::description() const
   return i18n( "Construct a Numeric Value" );
 }
 
-QByteArray ConstructNumericLabelAction::iconFileName() const
+QByteArray ConstructNumericLabelAction::iconFileName( const bool ) const
 {
   return "kig_numericvalue";
 }
@@ -315,7 +318,7 @@ QString TestAction::description() const
   return QString::fromLatin1( "Test stuff !!!" );
 }
 
-QByteArray TestAction::iconFileName() const
+QByteArray TestAction::iconFileName( const bool ) const
 {
   return "new";
 }
@@ -377,7 +380,7 @@ QString NewScriptAction::description() const
   return i18n( mdescription );
 }
 
-QByteArray NewScriptAction::iconFileName() const
+QByteArray NewScriptAction::iconFileName( const bool ) const
 {
   return micon;
 }
