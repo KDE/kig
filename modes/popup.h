@@ -27,6 +27,7 @@
 
 class QAction;
 class KAction;
+class KIcon;
 class KigDocument;
 class KigPart;
 class KigWidget;
@@ -64,8 +65,8 @@ public:
 
   // used by the PopupActionProvider's to add actions to us..
   QAction* addInternalAction( int menu, const QString& name, int id );
-  QAction* addInternalAction( int menu, const QPixmap& icon, const QString& name, int id );
-  QAction* addInternalAction( int menu, const QPixmap& pix, int id );
+  QAction* addInternalAction( int menu, const QIcon& icon, const QString& name, int id );
+  QAction* addInternalAction( int menu, const QIcon& pix, int id );
   QAction* addInternalAction( int menu, QAction* act );
 
   std::vector<ObjectHolder*> objects() const { return mobjs; };
