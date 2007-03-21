@@ -269,29 +269,15 @@ ObjectImp* PolygonImp::property( int which, const KigDocument& w ) const
   }
   else if ( which == Parent::numberOfProperties() + 1)
   {
-    double circumference = 0.;
-    // circumference
-    for ( uint i = 0; i < mpoints.size(); ++i )
-    {
-      uint prev = ( i + mpoints.size() - 1 ) % mpoints.size();
-      circumference += ( mpoints[i] - mpoints[prev] ).length();
-    }
-    return new DoubleImp( circumference );
+    // perimeter
+    return new DoubleImp( perimeter () );
   }
   else if ( which == Parent::numberOfProperties() + 2)
   {
     int wn = windingNumber ();  // not able to compute area for such polygons...
     if ( wn < 0 ) wn = -wn;
     if ( wn != 1 ) return new InvalidImp;
-    double surface2 = 0.0;
-    Coordinate prevpoint = mpoints.back();
-    for ( uint i = 0; i < mpoints.size(); ++i )
-    {
-      Coordinate point = mpoints[i];
-      surface2 += ( point.x - prevpoint.x ) * ( point.y + prevpoint.y ); 
-      prevpoint = point;
-    }
-    return new DoubleImp( fabs( surface2 / 2 ) );
+    return new DoubleImp( fabs( area () ) );
   }
   else if ( which == Parent::numberOfProperties() + 3 )
   {
@@ -317,6 +303,36 @@ const std::vector<Coordinate> PolygonImp::points() const
 const uint PolygonImp::npoints() const
 {
   return mnpoints;
+}
+
+const double PolygonImp::perimeter() const
+{
+  double perimeter = 0.;
+  for ( uint i = 0; i < mpoints.size(); ++i )
+  {
+    uint prev = ( i + mpoints.size() - 1 ) % mpoints.size();
+    perimeter += ( mpoints[i] - mpoints[prev] ).length();
+  }
+  return perimeter;
+}
+
+/*
+ * returns the *signed* area, this has a result even if the
+ * polygon is selfintersecting.  On the contrary, the "area"
+ * property returns an InvalidObject in such case.
+ */
+
+const double PolygonImp::area() const
+{
+  double surface2 = 0.0;
+  Coordinate prevpoint = mpoints.back();
+  for ( uint i = 0; i < mpoints.size(); ++i )
+  {
+    Coordinate point = mpoints[i];
+    surface2 += ( point.x - prevpoint.x ) * ( point.y + prevpoint.y ); 
+    prevpoint = point;
+  }
+  return -surface2/2;  /* positive if counterclockwise */
 }
 
 PolygonImp* PolygonImp::copy() const
