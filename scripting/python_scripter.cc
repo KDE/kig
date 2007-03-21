@@ -35,6 +35,7 @@
 #include "../objects/other_imp.h"
 #include "../objects/point_imp.h"
 #include "../objects/text_imp.h"
+#include "../objects/polygon_imp.h"
 
 using namespace boost::python;
 
@@ -226,6 +227,16 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "squareRadius", &CircleImp::squareRadius )
     .def( "surface", &CircleImp::surface )
     .def( "circumference", &CircleImp::circumference )
+    ;
+
+  class_<PolygonImp, bases<ObjectImp>, boost::noncopyable>( "Polygon", no_init )
+    .def( "stype", &PolygonImp::stype,
+          return_value_policy<reference_existing_object>() )
+    .staticmethod( "stype" )
+    .def( "npoints", &PolygonImp::npoints )
+    .def( "perimeter", &PolygonImp::perimeter )
+    .def( "area", &PolygonImp::area )
+    .def( "windingNumber", &PolygonImp::windingNumber )
     ;
 
   class_<VectorImp, bases<CurveImp> >( "Vector", init<Coordinate, Coordinate>() )
