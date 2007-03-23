@@ -171,7 +171,7 @@ KigPart::KigPart( QWidget *parentWidget, const char *,
 			  QObject *parent, const char *name,
 			  const QStringList& )
   : KParts::ReadWritePart( parent, name ),
-    mMode( 0 ), mdocument( new KigDocument() )
+    mMode( 0 ), mRememberConstruction( 0 ), mdocument( new KigDocument() )
 {
   // we need an instance
   setInstance( KigPartFactory::instance() );
@@ -240,6 +240,13 @@ void KigPart::setupActions()
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
+
+  aRepeatLastConstruction = new KAction(
+      i18n("Repeat Construction"), "gear", Key_Z, this,
+      SLOT(repeatLastConstruction()), actionCollection(), "repeat_last_construction");
+  aRepeatLastConstruction->setToolTip(
+      i18n("Repeat the last construction (with new data)"));
+  aRepeatLastConstruction->setEnabled(false);
 
   aShowHidden = new KAction(
     i18n("U&nhide All"), 0, this, SLOT( showHidden() ),
@@ -342,6 +349,20 @@ void KigPart::setupTypes()
     aActions.push_back( ret );
     ret->plug( this );
   };
+}
+
+void KigPart::rememberConstruction( ConstructibleAction* ca )
+{
+  // mp:
+  // mRememberConstruction holds a pointer to the last construction
+  // done by the user, so that it can be quickly repeated
+
+  mRememberConstruction = ca;
+  aRepeatLastConstruction->setEnabled(true);
+  aRepeatLastConstruction->setText( 
+      i18n( "Repeat Construction (%1)" ).arg( ca->descriptiveName() ) );
+  aRepeatLastConstruction->setToolTip(
+      i18n( "Repeat %1 (with new data)" ).arg( ca->descriptiveName() ) );
 }
 
 KigPart::~KigPart()
@@ -502,6 +523,15 @@ void KigPart::deleteObjects()
 void KigPart::cancelConstruction()
 {
   mode()->cancelConstruction();
+}
+
+void KigPart::repeatLastConstruction()
+{
+  if ( mRememberConstruction )
+  {
+    ConstructibleAction* ca = mRememberConstruction;
+    ca->act( *this );
+  }
 }
 
 void KigPart::showHidden()

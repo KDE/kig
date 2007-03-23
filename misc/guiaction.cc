@@ -77,6 +77,7 @@ void ConstructibleAction::act( KigPart& d )
   BaseConstructMode* m = mctor->constructMode( d );
   d.runMode( m );
   delete m;
+  d.rememberConstruction( this );
 }
 
 KigGUIAction::KigGUIAction( GUIAction* act,

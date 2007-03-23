@@ -49,6 +49,7 @@ class MacroWizardImpl;
 class ObjectHolder;
 class Rect;
 class ScreenInfo;
+class ConstructibleAction;
 
 /**
  * This is a "Part".  It that does all the real work in a KPart
@@ -109,6 +110,7 @@ public slots:
 
   void deleteObjects();
   void cancelConstruction();
+  void repeatLastConstruction();
   void showHidden();
   void newMacro();
   void editTypes();
@@ -134,6 +136,7 @@ public:
   void runMode( KigMode* );
   void doneMode( KigMode* );
 
+  void rememberConstruction( ConstructibleAction* );
   void coordSystemChanged( int );
 
 signals: // these signals are for telling KigView it should do something...
@@ -175,6 +178,7 @@ protected:
 protected:
   KigMode* mMode;
   KSelectAction* aCoordSystem;
+  ConstructibleAction* mRememberConstruction;
 
   /**
    * the command history
@@ -201,6 +205,7 @@ public:
 
 
   KAction* aCancelConstruction;
+  KAction* aRepeatLastConstruction;
   KAction* aSelectAll;
   KAction* aDeselectAll;
   KAction* aInvertSelection;
