@@ -169,6 +169,7 @@
       <Separator />
       <Action name="delete_objects" />
       <Action name="cancel_construction" />
+      <Action name="repeat_last_construction" />
     </Menu>
     <Menu name="types">
       <text>&amp;Types</text>

@@ -43,6 +43,7 @@ class KigPart;
 class KigView;
 class KigWidget;
 class ObjectHolder;
+class ConstructibleAction;
 
 class SetCoordinateSystemAction
   : public KSelectAction
@@ -112,6 +113,7 @@ public slots:
 
   void deleteObjects();
   void cancelConstruction();
+  void repeatLastConstruction();
   void showHidden();
   void newMacro();
   void editTypes();
@@ -138,6 +140,7 @@ public:
   void runMode( KigMode* );
   void doneMode( KigMode* );
 
+  void rememberConstruction( ConstructibleAction* );
   void coordSystemChanged( int );
 
 signals: // these signals are for telling KigView it should do something...
@@ -179,6 +182,7 @@ protected:
 protected:
   KigMode* mMode;
   KSelectAction* aCoordSystem;
+  ConstructibleAction* mRememberConstruction;
 
   /**
    * the command history
@@ -205,6 +209,7 @@ public:
 
 
   KAction* aCancelConstruction;
+  KAction* aRepeatLastConstruction;
   KAction* aSelectAll;
   KAction* aDeselectAll;
   KAction* aInvertSelection;
