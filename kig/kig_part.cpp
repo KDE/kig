@@ -347,9 +347,9 @@ void KigPart::rememberConstruction( ConstructibleAction* ca )
   mRememberConstruction = ca;
   aRepeatLastConstruction->setEnabled(true);
   aRepeatLastConstruction->setText( 
-      i18n( "Repeat Construction (%1)" ).arg( ca->descriptiveName() ) );
+      i18n( "Repeat Construction (%1)", ca->descriptiveName() ) );
   aRepeatLastConstruction->setToolTip(
-      i18n( "Repeat %1 (with new data)" ).arg( ca->descriptiveName() ) );
+      i18n( "Repeat %1 (with new data)", ca->descriptiveName() ) );
 }
 
 KigPart::~KigPart()
