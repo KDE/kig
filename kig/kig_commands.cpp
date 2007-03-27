@@ -40,7 +40,7 @@ using std::min;
 class KigCommand::Private
 {
 public:
-  Private( KigPart& d ) : doc( d ) {};
+  Private( KigPart& d ) : doc( d ) {}
   KigPart& doc;
   vector<KigCommandTask*> tasks;
 };
@@ -329,7 +329,7 @@ void ChangeParentsAndTypeTask::unexecute( KigPart& doc )
 class KigViewShownRectChangeTask::Private
 {
 public:
-  Private( KigWidget& view, const Rect& r ) : v( view ), rect( r )  { };
+  Private( KigWidget& view, const Rect& r ) : v( view ), rect( r )  { }
   KigWidget& v;
   Rect rect;
 };

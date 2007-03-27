@@ -323,7 +323,7 @@ void LocusConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, co
   drawer.draw( limp, p, true );
 }
 
-const int LocusConstructor::wantArgs(
+int LocusConstructor::wantArgs(
  const std::vector<ObjectCalcer*>& os, const KigDocument&, const KigWidget&
  ) const
 {
@@ -422,16 +422,16 @@ const QByteArray PolygonBNPTypeConstructor::iconFileName( const bool ) const
   return "kig_polygon";
 }
 
-const bool PolygonBNPTypeConstructor::isAlreadySelectedOK(
+bool PolygonBNPTypeConstructor::isAlreadySelectedOK(
  const std::vector<ObjectCalcer*>& os, const int& pos ) const
 {
   if ( pos == 0 && os.size() >= 3 ) return true;
   return false;
 }
 
-const int PolygonBNPTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
-                                             const KigDocument&,
-                                             const KigWidget& ) const
+int PolygonBNPTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+                                         const KigDocument&,
+                                         const KigWidget& ) const
 {
   int count=os.size() - 1;
 
@@ -706,15 +706,15 @@ const QByteArray PolygonBCVConstructor::iconFileName( const bool ) const
   return "hexagonbcv";
 }
 
-const bool PolygonBCVConstructor::isAlreadySelectedOK(
+bool PolygonBCVConstructor::isAlreadySelectedOK(
  const std::vector<ObjectCalcer*>&, const int& ) const
 {
   return false;
 }
 
-const int PolygonBCVConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
-                                           const KigDocument&,
-                                           const KigWidget& ) const
+int PolygonBCVConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+                                     const KigDocument&,
+                                     const KigWidget& ) const
 {
   if ( os.size() > 3 ) return ArgsParser::Invalid;
 
@@ -1239,7 +1239,7 @@ const QByteArray MeasureTransportConstructor::iconFileName( const bool ) const
   return "measuretransport";
 }
 
-const bool MeasureTransportConstructor::isAlreadySelectedOK(
+bool MeasureTransportConstructor::isAlreadySelectedOK(
  const std::vector<ObjectCalcer*>&, const int& ) const
 {
   return false;
@@ -1251,7 +1251,7 @@ const bool MeasureTransportConstructor::isAlreadySelectedOK(
  * to the user
  */
 
-const int MeasureTransportConstructor::wantArgs(
+int MeasureTransportConstructor::wantArgs(
                                 const std::vector<ObjectCalcer*>& os,
                                 const KigDocument& doc,
                                 const KigWidget& ) const
@@ -1645,7 +1645,7 @@ BaseConstructMode* TestConstructor::constructMode( KigPart& doc )
   return new TestConstructMode( doc, mtype );
 }
 
-const int TestConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+int TestConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
                                      const KigDocument& d, const KigWidget& v ) const
 {
   int ret = StandardConstructorBase::wantArgs( os, d, v );

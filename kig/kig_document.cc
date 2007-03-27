@@ -175,7 +175,7 @@ void KigDocument::setGrid( bool showgrid )
   mshowgrid = showgrid;
 }
 
-const bool KigDocument::grid() const
+bool KigDocument::grid() const
 {
   return mshowgrid;
 }
@@ -190,12 +190,12 @@ void KigDocument::setNightVision( bool nv )
   mnightvision = nv;
 }
 
-const bool KigDocument::axes() const
+bool KigDocument::axes() const
 {
   return mshowaxes;
 }
 
-const bool KigDocument::getNightVision() const
+bool KigDocument::getNightVision() const
 {
   return mnightvision;
 }

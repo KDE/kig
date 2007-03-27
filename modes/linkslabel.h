@@ -39,10 +39,10 @@ public:
   {
   public:
     friend class LinksLabel;
-    ~LinksLabelEditBuf() {};
+    ~LinksLabelEditBuf() {}
   private:
     // declare these private so only LinksLabel can use them...
-    LinksLabelEditBuf() {};
+    LinksLabelEditBuf() {}
     typedef std::vector<std::pair<bool,QString> > vec;
     vec data;
   };

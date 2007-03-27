@@ -305,7 +305,7 @@ uint PolygonImp::npoints() const
   return mnpoints;
 }
 
-const double PolygonImp::perimeter() const
+double PolygonImp::perimeter() const
 {
   double perimeter = 0.;
   for ( uint i = 0; i < mpoints.size(); ++i )
@@ -322,7 +322,7 @@ const double PolygonImp::perimeter() const
  * property returns an InvalidObject in such case.
  */
 
-const double PolygonImp::area() const
+double PolygonImp::area() const
 {
   double surface2 = 0.0;
   Coordinate prevpoint = mpoints.back();

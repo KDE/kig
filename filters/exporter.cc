@@ -227,7 +227,7 @@ class XFigExportImpVisitor
       ret *= 9450;
       ret /= msr.width();
       return ret.toQPoint();
-    };
+    }
 
   void emitLine( const Coordinate& a, const Coordinate& b, int width, bool vector = false );
 public:
@@ -247,7 +247,7 @@ public:
       mcolormap[Qt::magenta] = 5;
       mcolormap[Qt::yellow] = 6;
       mcolormap[Qt::white] = 7;
-    };
+    }
   void visit( const LineImp* imp );
   void visit( const PointImp* imp );
   void visit( const TextImp* imp );

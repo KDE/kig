@@ -99,7 +99,7 @@ public:
   LatexExportImpVisitor( QTextStream& s, const KigWidget& w )
     : mstream( s ), mw( w ), msr( mw.showingRect() )
     {
-    };
+    }
   void visit( const LineImp* imp );
   void visit( const PointImp* imp );
   void visit( const TextImp* imp );

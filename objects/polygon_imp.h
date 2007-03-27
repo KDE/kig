@@ -84,11 +84,11 @@ public:
   /**
    * Returns the perimeter of this polygon.
    */
-  const double perimeter() const;
+  double perimeter() const;
   /**
    * Returns the area of this polygon.
    */
-  const double area() const;
+  double area() const;
 
   bool equals( const ObjectImp& rhs ) const;
   bool isInPolygon( const Coordinate& p ) const;

@@ -69,12 +69,12 @@ public:
   QAction* addInternalAction( int menu, const QIcon& pix, int id );
   QAction* addInternalAction( int menu, QAction* act );
 
-  std::vector<ObjectHolder*> objects() const { return mobjs; };
-  KigPart& part() { return mpart; };
-  KigWidget& widget() { return mview; };
-  QPoint plc() { return mplc; };
+  std::vector<ObjectHolder*> objects() const { return mobjs; }
+  KigPart& part() { return mpart; }
+  KigWidget& widget() { return mview; }
+  QPoint plc() { return mplc; }
 
-  bool onlyLabels() const { return monlylabels; };
+  bool onlyLabels() const { return monlylabels; }
 
 protected:
   void activateAction( int menu, int action );
