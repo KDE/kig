@@ -58,7 +58,7 @@ const QByteArray StandardConstructorBase::iconFileName( const bool ) const
   return miconfile;
 }
 
-const bool StandardConstructorBase::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+bool StandardConstructorBase::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
 {
   return false;
 }
@@ -73,7 +73,7 @@ StandardConstructorBase::StandardConstructorBase(
 {
 }
 
-const int StandardConstructorBase::wantArgs( const std::vector<ObjectCalcer*>& os,
+int StandardConstructorBase::wantArgs( const std::vector<ObjectCalcer*>& os,
                                              const KigDocument&,
                                              const KigWidget& ) const
 {
@@ -251,12 +251,12 @@ const QByteArray MergeObjectConstructor::iconFileName( const bool ) const
   return miconfilename;
 }
 
-const bool MergeObjectConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+bool MergeObjectConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
 {
   return false;
 }
 
-const int MergeObjectConstructor::wantArgs(
+int MergeObjectConstructor::wantArgs(
   const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v ) const
 {
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
@@ -385,12 +385,12 @@ const QByteArray MacroConstructor::iconFileName( const bool canBeNull ) const
   return ( miconfile.isNull() && !canBeNull ) ? QByteArray( "gear" ) : miconfile;
 }
 
-const bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
 {
   return false;
 }
 
-const int MacroConstructor::wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument&,
+int MacroConstructor::wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument&,
                                       const KigWidget& ) const
 {
   return mparser.check( os );

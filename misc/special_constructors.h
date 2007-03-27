@@ -80,12 +80,8 @@ public:
   const QString descriptiveName() const;
   const QString description() const;
   const QByteArray iconFileName( const bool canBeNull = false ) const;
-  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
-			      const int& ) const;
-  const int wantArgs( const std::vector<ObjectCalcer*>& os,
-                              const KigDocument& d,
-                              const KigWidget& v
-    ) const;
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const int& ) const;
+  int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v) const;
   void handleArgs( const std::vector<ObjectCalcer*>& os,
                            KigPart& d,
                            KigWidget& v
@@ -119,9 +115,8 @@ public:
   const QString descriptiveName() const;
   const QString description() const;
   const QByteArray iconFileName( const bool canBeNull = false ) const;
-  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
-                              const int& ) const;
-  const int wantArgs( const std::vector<ObjectCalcer*>& os,
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const int& ) const;
+  int wantArgs( const std::vector<ObjectCalcer*>& os,
                               const KigDocument& d,
                               const KigWidget& v
     ) const;
@@ -160,9 +155,9 @@ public:
   const QString descriptiveName() const;
   const QString description() const;
   const QByteArray iconFileName( const bool canBeNull = false ) const;
-  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
                               const int& ) const;
-  const int wantArgs( const std::vector<ObjectCalcer*>& os,
+  int wantArgs( const std::vector<ObjectCalcer*>& os,
                               const KigDocument& d,
                               const KigWidget& v
     ) const;
@@ -217,7 +212,7 @@ public:
    * something about the objects that an ArgsParser can't know about,
    * namely, whether the first point is a constrained point...
    */
-  const int wantArgs(
+  int wantArgs(
     const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v
     ) const;
@@ -298,7 +293,7 @@ public:
                    const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d,
                  KigWidget& w ) const;
-  const int wantArgs( const std::vector<ObjectCalcer*>& os,
+  int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d, const KigWidget& v ) const;
   void plug( KigPart* doc, KigGUIAction* kact );
   bool isTransform() const;

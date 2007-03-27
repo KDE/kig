@@ -48,7 +48,7 @@ public:
 
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& d ) const;
@@ -107,7 +107,7 @@ public:
   const Coordinate getPoint( double param, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& d ) const;
@@ -162,7 +162,7 @@ public:
   const Coordinate getPoint( double param, const KigDocument& ) const;
   double getParam( const Coordinate&, const KigDocument& ) const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& d ) const;

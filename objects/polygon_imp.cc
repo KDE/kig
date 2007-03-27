@@ -202,7 +202,7 @@ bool PolygonImp::valid() const
   return true;
 }
 
-const int PolygonImp::numberOfProperties() const
+int PolygonImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 5;
 }
@@ -300,7 +300,7 @@ const std::vector<Coordinate> PolygonImp::points() const
   return np;
 }
 
-const uint PolygonImp::npoints() const
+uint PolygonImp::npoints() const
 {
   return mnpoints;
 }

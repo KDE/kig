@@ -55,13 +55,13 @@ public:
    * and returns true if this is acceptable; this will return false for
    * typical objects
    */
-  virtual const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+  virtual bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                               const int& ) const = 0;
   /**
    * can this constructor do something useful with \p os ?  return
    * ArgsParser::Complete, Valid or NotGood
    */
-  virtual const int wantArgs( const std::vector<ObjectCalcer*>& os,
+  virtual int wantArgs( const std::vector<ObjectCalcer*>& os,
                               const KigDocument& d,
                               const KigWidget& v
     ) const = 0;
@@ -149,9 +149,9 @@ public:
   const QString description() const;
   const QByteArray iconFileName( const bool canBeNull = false ) const;
 
-  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
-  virtual const int wantArgs(
+  virtual int wantArgs(
     const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v
     ) const;
@@ -301,9 +301,9 @@ public:
   const QString description() const;
   const QByteArray iconFileName( const bool canBeNull = false ) const;
 
-  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
-  const int wantArgs( const std::vector<ObjectCalcer*>& os,
+  int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d,
                       const KigWidget& v
     ) const;
@@ -357,9 +357,9 @@ public:
   const QString description() const;
   const QByteArray iconFileName( const bool canBeNull = false ) const;
 
-  const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
-  const int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
+  int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
                       const KigWidget& v ) const;
 
   void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d,

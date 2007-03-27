@@ -67,9 +67,9 @@ public:
   ~KigDocument();
 
   const CoordinateSystem& coordinateSystem() const;
-  const bool grid() const;
-  const bool axes() const;
-  const bool getNightVision() const;
+  bool grid() const;
+  bool axes() const;
+  bool getNightVision() const;
   /**
    * Get a hold of the objects of this KigDocument.
    */

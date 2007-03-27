@@ -88,7 +88,7 @@ LocusImp::LocusImp( CurveImp* curve, const ObjectHierarchy& hier )
 {
 }
 
-const int LocusImp::numberOfProperties() const
+int LocusImp::numberOfProperties() const
 {
   return Parent::numberOfProperties();
 }

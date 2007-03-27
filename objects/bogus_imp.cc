@@ -327,7 +327,7 @@ bool TestResultImp::equals( const ObjectImp& rhs ) const
 
 }
 
-const int TestResultImp::numberOfProperties() const
+int TestResultImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }

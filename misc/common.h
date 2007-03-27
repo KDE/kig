@@ -53,11 +53,11 @@ public:
    * Default constructor.  Sets a and b to the origin.
    * \endif
    */
-  LineData() : a(), b() {};
+  LineData() : a(), b() {}
   /**
    * Constructor.  Sets a and b to the given Coordinates.
    */
-  LineData( const Coordinate& na, const Coordinate& nb ) : a( na ), b( nb ) {};
+  LineData( const Coordinate& na, const Coordinate& nb ) : a( na ), b( nb ) {}
   /**
    * One point on the line.
    */
@@ -69,11 +69,11 @@ public:
   /**
    * The direction of the line.  Equivalent to b - a.
    */
-  const Coordinate dir() const { return b - a; };
+  const Coordinate dir() const { return b - a; }
   /**
    * The length from a to b.
    */
-  double length() const { return ( b - a ).length(); };
+  double length() const { return ( b - a ).length(); }
 
   /**
    * Return true if this line is parallel to l.

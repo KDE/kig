@@ -82,7 +82,7 @@ Coordinate AngleImp::attachPoint() const
   return mpoint;
 }
 
-const int AngleImp::numberOfProperties() const
+int AngleImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 3;
 }
@@ -148,7 +148,7 @@ ObjectImp* AngleImp::property( int which, const KigDocument& w ) const
   return new InvalidImp;
 }
 
-const double AngleImp::size() const
+double AngleImp::size() const
 {
   return mangle;
 }
@@ -190,7 +190,7 @@ bool VectorImp::inRect( const Rect& r, int width, const KigWidget& w ) const
   return lineInRect( r, mdata.a, mdata.b, width, this, w );
 }
 
-const int VectorImp::numberOfProperties() const
+int VectorImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 5;
 }
@@ -282,7 +282,7 @@ void VectorImp::visit( ObjectImpVisitor* vtor ) const
   vtor->visit( this );
 }
 
-const double VectorImp::length() const
+double VectorImp::length() const
 {
   return ( mdata.a - mdata.b ).length();
 }
@@ -364,7 +364,7 @@ bool ArcImp::valid() const
   return true;
 }
 
-const int ArcImp::numberOfProperties() const
+int ArcImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 10;
 }
@@ -460,7 +460,7 @@ ObjectImp* ArcImp::property( int which, const KigDocument& d ) const
   return new InvalidImp;
 }
 
-const double ArcImp::sectorSurface() const
+double ArcImp::sectorSurface() const
 {
   return mradius * mradius * ma / 2;
 }

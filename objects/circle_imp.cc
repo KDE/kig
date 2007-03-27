@@ -120,7 +120,7 @@ bool CircleImp::valid() const
   return true;
 }
 
-const int CircleImp::numberOfProperties() const
+int CircleImp::numberOfProperties() const
 {
   // We _intentionally_ do not use the Conic properties..
   return CurveImp::numberOfProperties() + 7;

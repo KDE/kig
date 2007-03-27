@@ -96,8 +96,8 @@ public:
 
   ArgsParser argParser() const;
 
-  uint numberOfArgs() const { return mnumberofargs; };
-  uint numberOfResults() const { return mnumberofresults; };
+  uint numberOfArgs() const { return mnumberofargs; }
+  uint numberOfResults() const { return mnumberofresults; }
 
   const ObjectImpType* idOfLastResult() const;
 

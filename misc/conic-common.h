@@ -59,7 +59,7 @@ public:
       coeffs[3] = d;
       coeffs[4] = e;
       coeffs[5] = f;
-    };
+    }
   ConicCartesianData( const double incoeffs[6] );
 
   /**

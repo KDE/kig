@@ -73,7 +73,7 @@ public:
   /**
    * synonym for moveBy...
    */
-  Rect& operator+=( const Coordinate p ) { moveBy(p); return *this; };
+  Rect& operator+=( const Coordinate p ) { moveBy(p); return *this; }
   /**
    * scale: only the size changes, topLeft is kept where it is...
    */
@@ -81,8 +81,8 @@ public:
   /**
    * synonym for scale...
    */
-  Rect& operator*=( const double r ) { scale(r); return *this; };
-  Rect& operator/=( const double r ) { scale(1/r); return *this; };
+  Rect& operator*=( const double r ) { scale(r); return *this; }
+  Rect& operator/=( const double r ) { scale(1/r); return *this; }
 
   /**
    * This expands the rect so that it contains r.  It has friends
@@ -93,7 +93,7 @@ public:
   /**
    * synonym for eat..
    */
-  Rect& operator|=( const Rect& rhs ) { eat( rhs ); return *this; };
+  Rect& operator|=( const Rect& rhs ) { eat( rhs ); return *this; }
 
   /**
    * return a rect which is a copy of this rect, but has an aspect

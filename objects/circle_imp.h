@@ -54,7 +54,7 @@ public:
   double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& w ) const;

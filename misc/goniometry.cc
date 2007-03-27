@@ -50,7 +50,7 @@ void Goniometry::setValue( double value )
   mvalue = value;
 }
 
-const double Goniometry::value() const
+double Goniometry::value() const
 {
   return mvalue;
 }
@@ -66,7 +66,7 @@ void Goniometry::convertTo( Goniometry::System system )
   msys = system;
 }
 
-const Goniometry::System Goniometry::system() const
+Goniometry::System Goniometry::system() const
 {
   return msys;
 }

@@ -46,7 +46,7 @@ bool AbstractLineImp::inRect( const Rect& r, int width, const KigWidget& w ) con
   return lineInRect( r, mdata.a, mdata.b, width, this, w );
 }
 
-const int AbstractLineImp::numberOfProperties() const
+int AbstractLineImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 2;
 }
@@ -100,7 +100,7 @@ const QByteArrayList AbstractLineImp::properties() const
   return l;
 }
 
-const int SegmentImp::numberOfProperties() const
+int SegmentImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 5;
 }
@@ -175,7 +175,7 @@ ObjectImp* SegmentImp::property( int which, const KigDocument& w ) const
   return new InvalidImp;
 }
 
-const int RayImp::numberOfProperties() const
+int RayImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 2;
 }

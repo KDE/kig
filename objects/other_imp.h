@@ -54,7 +54,7 @@ public:
   Rect surroundingRect() const;
 
   Coordinate attachPoint() const;
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& w ) const;
@@ -67,22 +67,22 @@ public:
   /**
    * Return the size in radians of this angle.
    */
-  const double size() const;
+  double size() const;
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
   /**
    * Return the center of this angle.
    */
-  const Coordinate point() const { return mpoint; };
+  const Coordinate point() const { return mpoint; }
   /**
    * Return the start angle in radians of this angle.
    */
-  const double startAngle() const { return mstartangle; };
+  double startAngle() const { return mstartangle; }
   /**
    * Return the dimension in radians of this angle.
    */
-  const double angle() const { return mangle; };
+  double angle() const { return mangle; }
 
   bool equals( const ObjectImp& rhs ) const;
 };
@@ -117,7 +117,7 @@ public:
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& w ) const;
@@ -142,7 +142,7 @@ public:
   /**
    * Return the length of this vector.
    */
-  const double length() const;
+  double length() const;
   /**
    * Get the LineData for this vector.
    */
@@ -191,7 +191,7 @@ public:
   Rect surroundingRect() const;
   bool valid() const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& d ) const;
@@ -232,7 +232,7 @@ public:
   /**
    * Return the size of the sector surface of this arc.
    */
-  const double sectorSurface() const;
+  double sectorSurface() const;
 
   bool equals( const ObjectImp& rhs ) const;
 

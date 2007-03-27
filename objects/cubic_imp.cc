@@ -269,7 +269,7 @@ const Coordinate CubicImp::getPoint( double p ) const
 //  return Coordinate(x,y);
 }
 
-const int CubicImp::numberOfProperties() const
+int CubicImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }

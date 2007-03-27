@@ -55,7 +55,7 @@ const QByteArrayList ObjectImp::properties() const
   return ret;
 }
 
-const int ObjectImp::numberOfProperties() const
+int ObjectImp::numberOfProperties() const
 {
   return 1;
 }

@@ -73,7 +73,7 @@ public:
   const Coordinate getPoint( double param, const KigDocument& ) const;
 
   // TODO ?
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& w ) const;

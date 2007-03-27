@@ -58,7 +58,7 @@ public:
   bool valid() const;
   Rect surroundingRect() const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& w ) const;
@@ -80,7 +80,7 @@ public:
   /**
    * Returns the number of points of this polygon.
    */
-  const uint npoints() const;
+  uint npoints() const;
   /**
    * Returns the perimeter of this polygon.
    */

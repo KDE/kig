@@ -66,7 +66,7 @@ bool TextImp::valid() const
   return true;
 }
 
-const int TextImp::numberOfProperties() const
+int TextImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }
@@ -208,7 +208,7 @@ double NumericTextImp::getValue( void ) const
   return mvalue;
 }
 
-const int NumericTextImp::numberOfProperties() const
+int NumericTextImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }
@@ -295,7 +295,7 @@ bool BoolTextImp::getValue( void ) const
   return mvalue;
 }
 
-const int BoolTextImp::numberOfProperties() const
+int BoolTextImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 1;
 }

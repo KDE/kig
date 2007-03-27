@@ -324,7 +324,7 @@ public:
    */
   bool valid() const;
 
-  virtual const int numberOfProperties() const;
+  virtual int numberOfProperties() const;
   // the names of the properties as perceived by the user..  put
   // I18N_NOOP's around them here..
   virtual const QByteArrayList properties() const;

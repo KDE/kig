@@ -58,7 +58,7 @@ bool ConicImp::inRect( const Rect&, int, const KigWidget& ) const
   return false;
 }
 
-const int ConicImp::numberOfProperties() const
+int ConicImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 6;
 }
@@ -521,7 +521,7 @@ bool ConicArcImp::contains( const Coordinate& o, int width, const KigWidget& w )
      w.document() );
 }
 
-const int ConicArcImp::numberOfProperties() const
+int ConicArcImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 3;
 }

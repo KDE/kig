@@ -105,11 +105,11 @@ public:
   /**
    * Get hold of the contained data.
    */
-  double data() const { return mdata; };
+  double data() const { return mdata; }
   /**
    * Set the contained data to d.
    */
-  void setData( double d ) { mdata = d; };
+  void setData( double d ) { mdata = d; }
 
   DoubleImp* copy() const;
 
@@ -144,7 +144,7 @@ public:
   /**
    * Get hold of the contained data.
    */
-  int data() const { return mdata; };
+  int data() const { return mdata; }
   /**
    * Set the contained data to d.
    */
@@ -183,7 +183,7 @@ public:
   /**
    * Get hold of the contained data.
    */
-  const QString& data() const { return mdata; };
+  const QString& data() const { return mdata; }
   /**
    * Set the contained data.
    */
@@ -210,8 +210,8 @@ public:
 
   HierarchyImp( const ObjectHierarchy& h );
 
-  const ObjectHierarchy& data() const { return mdata; };
-  void setData( const ObjectHierarchy& h ) { mdata = h; };
+  const ObjectHierarchy& data() const { return mdata; }
+  void setData( const ObjectHierarchy& h ) { mdata = h; }
 
   HierarchyImp* copy() const;
   const char* baseName() const;
@@ -239,8 +239,8 @@ public:
 
   TransformationImp( const Transformation& h );
 
-  const Transformation& data() const { return mdata; };
-  void setData( const Transformation& h ) { mdata = h; };
+  const Transformation& data() const { return mdata; }
+  void setData( const Transformation& h ) { mdata = h; }
 
   TransformationImp* copy() const;
 
@@ -263,12 +263,12 @@ public:
   TestResultImp* copy() const;
 
   // const QString& data() const { return mdata; };
-  bool truth() const { return mtruth; };
+  bool truth() const { return mtruth; }
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& d ) const;

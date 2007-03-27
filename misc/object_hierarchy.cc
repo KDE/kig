@@ -67,10 +67,10 @@ class PushStackNode
 {
   ObjectImp* mimp;
 public:
-  PushStackNode( ObjectImp* imp ) : mimp( imp ) {};
+  PushStackNode( ObjectImp* imp ) : mimp( imp ) {}
   ~PushStackNode();
 
-  const ObjectImp* imp() const { return mimp; };
+  const ObjectImp* imp() const { return mimp; }
 
   int id() const;
   Node* copy() const;
@@ -121,12 +121,12 @@ class ApplyTypeNode
   std::vector<int> mparents;
 public:
   ApplyTypeNode( const ObjectType* type, const std::vector<int>& parents )
-    : mtype( type ), mparents( parents ) {};
+    : mtype( type ), mparents( parents ) {}
   ~ApplyTypeNode();
   Node* copy() const;
 
-  const ObjectType* type() const { return mtype; };
-  const std::vector<int>& parents() const { return mparents; };
+  const ObjectType* type() const { return mtype; }
+  const std::vector<int>& parents() const { return mparents; }
 
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
@@ -194,14 +194,14 @@ public:
   // don't want to ever save this value, since we cannot guarantee it
   // remains consistent if we add properties some place..
   FetchPropertyNode( const int parent, const QByteArray& name, const int propgid = -1 )
-    : mpropgid( propgid ), mparent( parent ), mname( name ) {};
+    : mpropgid( propgid ), mparent( parent ), mname( name ) {}
   ~FetchPropertyNode();
   Node* copy() const;
 
   void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
   void checkArgumentsUsed( std::vector<bool>& usedstack ) const;
-  int parent() const { return mparent; };
-  const QByteArray& propinternalname() const { return mname; };
+  int parent() const { return mparent; }
+  const QByteArray& propinternalname() const { return mname; }
 
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,

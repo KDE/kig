@@ -33,7 +33,7 @@ public:
   Goniometry( double value, Goniometry::System system );
   ~Goniometry();
   void setValue( double value );
-  const double value() const;
+  double value() const;
   /**
    * Set the system of the current angle to \p system, but it doesn't
    * convert the value to the new system.
@@ -48,7 +48,7 @@ public:
    * \see setSystem()
    */
   void convertTo( Goniometry::System system );
-  const Goniometry::System system() const;
+  Goniometry::System system() const;
   double getValue( Goniometry::System system );
   /**
    * The most useful method of this class: convert the specified

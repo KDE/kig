@@ -54,7 +54,7 @@ bool PointImp::inRect( const Rect& r, int width, const KigWidget& w ) const
   return r.contains( mc, am );
 }
 
-const int PointImp::numberOfProperties() const
+int PointImp::numberOfProperties() const
 {
   return Parent::numberOfProperties() + 3;
 }

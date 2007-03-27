@@ -57,7 +57,7 @@ public:
   bool valid() const;
   Rect surroundingRect() const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const ObjectImpType* impRequirementForProperty( int which ) const;
   bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
   const QByteArrayList properties() const;
@@ -196,7 +196,7 @@ public:
   bool internalContainsPoint( const Coordinate& p, double threshold,
      const KigDocument& doc ) const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& w ) const;
@@ -212,11 +212,11 @@ public:
   /**
    * Set the start angle in radians of this arc.
    */
-  void setStartAngle( double sa ) { msa = sa; };
+  void setStartAngle( double sa ) { msa = sa; }
   /**
    * Set the dimension in radians of this arc.
    */
-  void setAngle( double a ) { ma = a; };
+  void setAngle( double a ) { ma = a; }
   /**
    * Return the start point of this arc.
    */

@@ -99,7 +99,7 @@ std::vector<ObjectCalcer*> getCalcers( const std::vector<ObjectHolder*>& os );
 class FakeClass {
 public:
   FakeClass( const ObjectType* ) {
-  };
+  }
 };
 
 #define KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( type ) static class FakeClass _fake_class_instance_##type( type::instance() );

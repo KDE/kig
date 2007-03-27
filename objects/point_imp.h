@@ -47,7 +47,7 @@ public:
   /**
    * Get the coordinate of this PointImp.
    */
-  const Coordinate& coordinate() const { return mc; };
+  const Coordinate& coordinate() const { return mc; }
   /**
    * Set the coordinate of this PointImp.
    */
@@ -57,7 +57,7 @@ public:
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
 
-  const int numberOfProperties() const;
+  int numberOfProperties() const;
   const QByteArrayList properties() const;
   const QByteArrayList propertiesInternalNames() const;
   ObjectImp* property( int which, const KigDocument& d ) const;
