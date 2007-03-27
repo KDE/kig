@@ -145,7 +145,7 @@ if(BOOST_PYTHON_FOUND)
      scripting/newscriptwizardbase.ui
   )
 
-  set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "-fexceptions")
+  set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "${KDE4_ENABLE_EXCEPTIONS}")
 endif(BOOST_PYTHON_FOUND)
 
 kde4_automoc(${kigpart_PART_SRCS})
