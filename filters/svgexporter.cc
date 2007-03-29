@@ -28,8 +28,8 @@
 
 #include <qcheckbox.h>
 #include <qfile.h>
-#include <q3picture.h>
 #include <qrect.h>
+#include <qsvggenerator.h>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -88,8 +88,11 @@ void SVGExporter::run( const KigPart& part, KigWidget& w )
   QRect viewrect( w.screenInfo().viewRect() );
   QRect r( 0, 0, viewrect.width(), viewrect.height() );
 
-  Q3Picture pic;
-  pic.setBoundingRect( r );
+  // workaround for QSvgGenerator bug not checking for already open device
+  file.close();
+  QSvgGenerator pic;
+  pic.setOutputDevice( &file );
+  pic.setSize( r.size() );
   KigPainter* p = new KigPainter( ScreenInfo( w.screenInfo().shownRect(), viewrect ),
                                   &pic, part.document() );
 //  p->setWholeWinOverlay();
@@ -103,9 +106,9 @@ void SVGExporter::run( const KigPart& part, KigWidget& w )
 
   delete p;
 
-  if ( !pic.save( file_name, "SVG" ) )
+  if ( !file.flush() )
   {
     KMessageBox::error( &w, i18n( "Sorry, something went wrong while saving to SVG file \"%1\"", file_name ) );
   }
-
+  file.close();
 }
