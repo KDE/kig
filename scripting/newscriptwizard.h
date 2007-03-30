@@ -18,10 +18,11 @@
 #ifndef KIG_SCRIPTING_NEWSCRIPTWIZARD_H
 #define KIG_SCRIPTING_NEWSCRIPTWIZARD_H
 
-#include "newscriptwizardbase.h"
+#include <qwizard.h>
 
 #include "script-common.h"
 
+class QLabel;
 class KTextEdit;
 namespace KTextEditor
 {
@@ -32,17 +33,13 @@ namespace KTextEditor
 class ScriptModeBase;
 
 class NewScriptWizard
-  : public NewScriptWizardBase
+  : public QWizard
 {
   Q_OBJECT
   ScriptModeBase* mmode;
 public:
   NewScriptWizard( QWidget* parent, ScriptModeBase* mode );
   ~NewScriptWizard();
-
-  void back();
-  void next();
-  void reject();
 
   void setText( const QString& text );
   QString text() const;
@@ -51,11 +48,14 @@ public:
 
 public slots:
   void accept();
+  void reject();
 
 protected slots:
   void slotHelpClicked();
+  void currentIdChanged( int id );
 
 protected:
+  QLabel* mLabelFillCode;
   KTextEdit* textedit;
   KTextEditor::Document* document;
   KTextEditor::HighlightingInterface* hli;

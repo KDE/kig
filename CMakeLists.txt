@@ -141,9 +141,6 @@ if(BOOST_PYTHON_FOUND)
      scripting/script-common.cc
      scripting/script_mode.cc
   )
-  kde4_add_ui3_files(kigpart_PART_SRCS
-     scripting/newscriptwizardbase.ui
-  )
 
   set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "${KDE4_ENABLE_EXCEPTIONS}")
 endif(BOOST_PYTHON_FOUND)

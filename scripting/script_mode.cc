@@ -36,6 +36,7 @@
 #include <qpushbutton.h>
 
 #include <kcursor.h>
+#include <kdialog.h>
 #include <kicon.h>
 #include <kmessagebox.h>
 
@@ -162,7 +163,6 @@ void ScriptModeBase::codePageEntered()
     QString tempcode = ScriptType::templateCode( mtype, margs );
     mwizard->setText( tempcode );
   };
-  mwizard->setFinishEnabled( mwizard->mpcode, true );
   mwawd = EnteringCode;
   mdoc.redrawScreen();
 }
@@ -319,12 +319,11 @@ ScriptEditMode::ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc )
   // in the editor and aborts the editing
   morigscript = static_cast<const StringImp*>( imp )->data();
 
-  mwizard->setWindowTitle( i18nc( "'Edit' is a verb", "Edit Script" ) );
+  mwizard->setWindowTitle( KDialog::makeStandardCaption( i18nc( "'Edit' is a verb", "Edit Script" ) ) );
   mwizard->setText( morigscript );
   mwizard->show();
   mwizard->next();
-  mwizard->backButton()->setEnabled( false );
-  mwizard->finishButton()->setEnabled( true );
+  mwizard->button( QWizard::BackButton )->setEnabled( false );
 }
 
 ScriptEditMode::~ScriptEditMode()
@@ -352,14 +351,14 @@ bool ScriptEditMode::queryFinish()
     if ( inst->errorOccurred() )
     {
       KMessageBox::detailedSorry(
-        mpart.widget(), i18n( "The Python interpreter caught an error during the execution of your "
+        mwizard, i18n( "The Python interpreter caught an error during the execution of your "
                               "script. Please fix the script." ),
         i18n( "The Python Interpreter generated the following error output:\n%1", QString( errtrace ) ) );
     }
     else
     {
       KMessageBox::sorry(
-        mpart.widget(), i18n( "There seems to be an error in your script. The Python interpreter "
+        mwizard, i18n( "There seems to be an error in your script. The Python interpreter "
                               "reported no errors, but the script does not generate "
                               "a valid object. Please fix the script." ) );
     }

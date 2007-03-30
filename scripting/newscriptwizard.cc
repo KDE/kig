@@ -27,7 +27,9 @@
 
 #include <kaction.h>
 #include <kactioncollection.h>
+#include <kdialog.h>
 #include <kglobalsettings.h>
+#include <klocale.h>
 #include <ktextedit.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
@@ -37,6 +39,9 @@
 #include <ktoolinvocation.h>
 
 #include <assert.h>
+
+static const int IntroPageId = 1;
+static const int CodePageId = 2;
 
 NewScriptWizard::~NewScriptWizard()
 {
@@ -51,9 +56,34 @@ NewScriptWizard::~NewScriptWizard()
 }
 
 NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
-  : NewScriptWizardBase( parent, "New Script Wizard" ),
+  : QWizard( parent ),
     mmode( mode ), textedit( 0 ), document( 0 ), hli( 0 ), docview( 0 )
 {
+  setObjectName( QLatin1String( "New Script Wizard" ) );
+  setWindowTitle( KDialog::makeStandardCaption( i18n( "New Script" ) ) );
+
+  QWizardPage* firstPage = new QWizardPage( this );
+  firstPage->setTitle( i18n( "Select Arguments" ) );
+  firstPage->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  QVBoxLayout* lay1 = new QVBoxLayout( firstPage );
+  lay1->setMargin( 0 );
+  QLabel* infoText = new QLabel( firstPage );
+  lay1->addWidget( infoText );
+  infoText->setText( i18n( "Select the argument objects ( if any )\n"
+                           "in the Kig window and press \"Next\"." ) );
+  infoText->setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
+  setPage( IntroPageId, firstPage );
+
+  QWizardPage* secondPage = new QWizardPage( this );
+  secondPage->setTitle( i18n( "Enter Code" ) );
+  secondPage->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  secondPage->setFinalPage( true );
+  QVBoxLayout* lay2 = new QVBoxLayout( secondPage );
+  lay2->setMargin( 0 );
+  mLabelFillCode = new QLabel( secondPage );
+  lay2->addWidget( mLabelFillCode );
+  setPage( CodePageId, secondPage );
+
   KTextEditor::Editor* editor = KTextEditor::EditorChooser::editor();
 //  KTextEditor::Editor* editor = 0;
   kDebug() << "EDITOR: " << editor << endl;
@@ -62,19 +92,19 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
   {
     // there is no KDE textditor component installed, so we'll use a
     // simplier KTextEdit
-    textedit = new KTextEdit( mpcode );
+    textedit = new KTextEdit( secondPage );
     textedit->setObjectName( "textedit" );
     textedit->setFont( KGlobalSettings::fixedFont() );
-    gridLayout->addWidget( textedit, 1, 0 );
+    lay2->addWidget( textedit );
   }
   else
   {
     document = editor->createDocument( 0 );
     // creating the 'view', that is what the user see and interact with
-    (void)document->createView( mpcode );
+    (void)document->createView( secondPage );
     docview = document->activeView();
 
-    gridLayout->addWidget( docview, 1, 0 );
+    lay2->addWidget( docview );
 
     // getting the highlight interface
     hli = qobject_cast<KTextEditor::HighlightingInterface*>( document );
@@ -100,47 +130,45 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
     docview->setContextMenu( menu );
   }
 
-  connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelpClicked() ) );
+  connect( this, SIGNAL( currentIdChanged( int ) ), this, SLOT( currentIdChanged( int ) ) );
+  connect( this, SIGNAL( helpRequested() ), this, SLOT( slotHelpClicked() ) );
 }
 
-void NewScriptWizard::back()
+void NewScriptWizard::currentIdChanged( int id )
 {
-  if ( currentPage() == mpcode )
+  switch ( id )
   {
-    // currentPage() is not yet updated, so we're now entering the
-    // args page..
-    mmode->argsPageEntered();
+    case IntroPageId:
+      mmode->argsPageEntered();
+      break;
+    case CodePageId:
+      mmode->codePageEntered();
+      if ( !document )
+      {
+        textedit->setFocus();
+      }
+      else
+      {
+        docview->setFocus();
+      }
+      break;
+    case -1: // no id - skip it
+      break;
+    default:
+      assert( false );
   }
-  else assert( false );
-  NewScriptWizardBase::back();
-}
-
-void NewScriptWizard::next()
-{
-  if ( currentPage() == mpargs )
-    mmode->codePageEntered();
-  else assert( false );
-  if ( !document )
-  {
-    textedit->setFocus();
-  }
-  else
-  {
-    docview->setFocus();
-  }
-  NewScriptWizardBase::next();
 }
 
 void NewScriptWizard::reject()
 {
   if ( mmode->queryCancel() )
-    NewScriptWizardBase::reject();
+    QWizard::reject();
 }
 
 void NewScriptWizard::accept()
 {
   if ( mmode->queryFinish() )
-    NewScriptWizardBase::accept();
+    QWizard::accept();
 }
 
 void NewScriptWizard::slotHelpClicked()
@@ -174,7 +202,7 @@ QString NewScriptWizard::text() const
 
 void NewScriptWizard::setType( ScriptType::Type type )
 {
-  labelFillCode->setText( ScriptType::fillCodeStatement( type ) );
+  mLabelFillCode->setText( ScriptType::fillCodeStatement( type ) );
 
   if ( !!document )
   {
