@@ -1,5 +1,40 @@
 <tip category="Kig">
 <html>
+<p>You can control a kig construction by means of a "pykig" 
+python script, that can be executed with the command 
+<code>pykig.py</code>.  Here is a nice example 
+(<code>hexagons.kpy</code>) you can try:
+<code><pre>
+kigdocument.hideobjects()
+def hexagons (c, v, n):
+  hexagon = PolygonBCV (c, v, 6)
+  if n &lt;= 0:
+    hexagon.show()
+    for i in range(6): 
+      PolygonSide (hexagon, i, True)
+    return
+  cnew = MidPoints (c, v)
+  hexagons (cnew, v, n-1)
+  for k in [2,4]:
+    v1 = PolygonVertex (hexagon, k)
+    cnew = MidPoints (c, v1)
+    hexagons (cnew, v1, n-1)
+hexagons (Point(0,0), Point(1,0), 5)
+</pre></code>
+</html>
+</tip>
+
+<tip category="Kig">
+<html>
+<p>You can repeat the latest construction simply by pressing the key
+'Z'; this cames very handy if you need to construct a sequence
+of objects with the same construction, especially if there is
+no shortcut for that construction.</p>
+</html>
+</tip>
+
+<tip category="Kig">
+<html>
 <p>One of the most powerful tools in Kig are the menus that you can
 enter by right-clicking on an object, or on some empty space in the
 document.  You can use them to give objects names, change their colors
