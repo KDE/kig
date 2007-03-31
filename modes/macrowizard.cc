@@ -20,71 +20,202 @@
 
 #include "macro.h"
 
+#include <qlabel.h>
+#include <qlayout.h>
+
 #include <kdebug.h>
+#include <kdialog.h>
 #include <klineedit.h>
+#include <klocale.h>
 #include <ktoolinvocation.h>
 
+class GivenArgsPage
+  : public QWizardPage
+{
+public:
+  GivenArgsPage( QWidget* parent, DefineMacroMode* mode );
+
+  bool isComplete() const;
+
+  void setChanged();
+
+private:
+  DefineMacroMode* mmode;
+};
+
+GivenArgsPage::GivenArgsPage( QWidget* parent, DefineMacroMode* mode )
+  : QWizardPage( parent ), mmode( mode )
+{
+  setTitle( i18n( "Given Objects" ) );
+  setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+
+  QVBoxLayout* lay = new QVBoxLayout( this );
+  lay->setMargin( 0 );
+  QLabel* label = new QLabel( this );
+  lay->addWidget( label );
+  label->setText( i18n( "Select the \"given\" objects for your new macro and press \"Next\"." ) );
+  label->setAlignment( Qt::AlignCenter );
+}
+
+bool GivenArgsPage::isComplete() const
+{
+  return mmode->hasGivenArgs();
+}
+
+void GivenArgsPage::setChanged()
+{
+  emit completeChanged();
+}
+
+
+class FinalArgsPage
+  : public QWizardPage
+{
+public:
+  FinalArgsPage( QWidget* parent, DefineMacroMode* mode );
+
+  bool isComplete() const;
+  bool validatePage();
+
+  void setChanged();
+
+private:
+  DefineMacroMode* mmode;
+};
+
+FinalArgsPage::FinalArgsPage( QWidget* parent, DefineMacroMode* mode )
+  : QWizardPage( parent ), mmode( mode )
+{
+  setTitle( i18n( "Final Object" ) );
+  setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+
+  QVBoxLayout* lay = new QVBoxLayout( this );
+  lay->setMargin( 0 );
+  QLabel* label = new QLabel( this );
+  lay->addWidget( label );
+  label->setText( i18n( "Select the final object(s) for your new macro." ) );
+  label->setAlignment( Qt::AlignCenter );
+}
+
+bool FinalArgsPage::isComplete() const
+{
+  return mmode->hasFinalArgs();
+}
+
+bool FinalArgsPage::validatePage()
+{
+  return mmode->validateObjects();
+}
+
+void FinalArgsPage::setChanged()
+{
+  emit completeChanged();
+}
+
+
+class MacroInfoPage
+  : public QWizardPage
+{
+public:
+  MacroInfoPage( QWidget* parent, DefineMacroMode* mode );
+
+private:
+  DefineMacroMode* mmode;
+};
+
+MacroInfoPage::MacroInfoPage( QWidget* parent, DefineMacroMode* mode )
+  : QWizardPage( parent ), mmode( mode )
+{
+  setTitle( i18n( "Name" ) );
+  setSubTitle( i18n( "Enter a name and description for your new type." ) );
+  setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  setFinalPage( true );
+
+  QGridLayout* lay = new QGridLayout( this );
+  lay->setMargin( 0 );
+  QLabel* label = new QLabel( this );
+  lay->addWidget( label, 0, 0 );
+  label->setText( i18n( "&Name:" ) );
+  label->setAlignment( Qt::AlignRight );
+  KLineEdit* editname = new KLineEdit( this );
+  lay->addWidget( editname, 0, 1 );
+  label->setBuddy( editname );
+  label = new QLabel( this );
+  lay->addWidget( label, 1, 0 );
+  label->setText( i18n( "&Description:" ) );
+  label->setAlignment( Qt::AlignRight );
+  KLineEdit* editdesc = new KLineEdit( this );
+  lay->addWidget( editdesc, 1, 1 );
+  label->setBuddy( editdesc );
+
+  registerField( "name*", editname );
+  registerField( "description", editdesc );
+}
+
+
 MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
-  : MacroWizardBase( parent, "Define Macro Wizard" ), mmode( m )
+  : QWizard( parent ), mmode( m )
 {
   setModal( false );
-  connect( KLineEdit2, SIGNAL( textChanged( const QString& ) ),
-           this, SLOT( nameTextChanged( const QString& ) ) );
-  connect( this, SIGNAL( helpClicked() ), this,
+  setObjectName( QLatin1String( "Define Macro Wizard" ) );
+  setWindowTitle( KDialog::makeStandardCaption( i18n( "Define New Macro" ) ) );
+  setOption( HaveHelpButton );
+
+  mgivenArgsPage = new GivenArgsPage( this, mmode );
+  setPage( GivenArgsPageId, mgivenArgsPage );
+  mfinalArgsPage = new FinalArgsPage( this, mmode );
+  setPage( FinalArgsPageId, mfinalArgsPage );
+  setPage( MacroInfoPageId, new MacroInfoPage( this, mmode ) );
+
+  connect( this, SIGNAL( helpRequested() ), this,
            SLOT( slotHelpClicked() ) );
+  connect( this, SIGNAL( currentIdChanged( int ) ), this, SLOT( currentIdChanged( int ) ) );
 }
 
 MacroWizard::~MacroWizard()
 {
 }
 
-void MacroWizard::back()
-{
-  if ( currentPage() == mpfinal )
-  {
-    // currentPage() is not yet updated when we get here, so this
-    // means that the page about to be shown is actually mpgiven...
-    mmode->givenPageEntered();
-  }
-  else if ( currentPage() == mpname )
-  {
-    mmode->finalPageEntered();
-  }
-  MacroWizardBase::back();
-}
-
-void MacroWizard::next()
-{
-  if ( currentPage() == mpgiven )
-  {
-    // currentPage() is not yet updated when we get here, so this
-    // means that the page about to be shown is actually mpfinal...
-    mmode->finalPageEntered();
-  }
-  else if ( currentPage() == mpfinal )
-  {
-    mmode->namePageEntered();
-  }
-  MacroWizardBase::next();
-}
-
 void MacroWizard::reject()
 {
-  MacroWizardBase::reject();
+  QWizard::reject();
   mmode->cancelPressed();
-}
-
-void MacroWizard::nameTextChanged( const QString& )
-{
-  mmode->macroNameChanged();
 }
 
 void MacroWizard::accept()
 {
+  QWizard::accept();
   mmode->finishPressed();
 }
 
 void MacroWizard::slotHelpClicked()
 {
   KToolInvocation::invokeHelp( "defining-macros", "kig" );
+}
+
+void MacroWizard::currentIdChanged( int id )
+{
+  switch ( id )
+  {
+    case GivenArgsPageId:
+      mmode->givenPageEntered();
+      break;
+    case FinalArgsPageId:
+      mmode->finalPageEntered();
+      break;
+    case -1: // no id - skip it
+      break;
+    default:
+      ;
+  }
+}
+
+void MacroWizard::givenArgsChanged()
+{
+  mgivenArgsPage->setChanged();
+}
+
+void MacroWizard::finalArgsChanged()
+{
+  mfinalArgsPage->setChanged();
 }

@@ -120,7 +120,6 @@ set(kigpart_PART_SRCS
 )
 
 kde4_add_ui3_files(kigpart_PART_SRCS
-   modes/macrowizardbase.ui
    modes/textlabelwizardbase.ui
 )
 

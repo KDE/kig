@@ -41,17 +41,15 @@ public:
   // called by MacroWizard class
   void givenPageEntered();
   void finalPageEntered();
-  void namePageEntered();
+  bool validateObjects();
   void finishPressed();
   void cancelPressed();
-  void macroNameChanged();
+
+  bool hasGivenArgs() const;
+  bool hasFinalArgs() const;
 
 protected:
   void enableActions();
-  /**
-   * update the enabled state of the next buttons on the wizard...
-   */
-  void updateNexts();
   /**
    * quit this mode...
    */

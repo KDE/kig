@@ -42,7 +42,6 @@ DefineMacroMode::DefineMacroMode( KigPart& d )
 {
   mwizard = new MacroWizard( d.widget(), this );
   mwizard->show();
-  updateNexts();
 }
 
 DefineMacroMode::~DefineMacroMode()
@@ -55,18 +54,6 @@ void DefineMacroMode::abandonMacro()
   mdoc.doneMode( this );
 }
 
-void DefineMacroMode::updateNexts()
-{
-  mwizard->setNextEnabled( mwizard->mpgiven,
-                           !mgiven.empty() );
-  mwizard->setNextEnabled( mwizard->mpfinal,
-                           !mfinal.empty() );
-  mwizard->setFinishEnabled(
-    mwizard->mpname,
-    !mwizard->KLineEdit2->text().isEmpty()
-    );
-}
-
 void DefineMacroMode::enableActions()
 {
   KigMode::enableActions();
@@ -77,19 +64,17 @@ void DefineMacroMode::givenPageEntered()
 {
   std::vector<ObjectHolder*> given( mgiven.begin(), mgiven.end() );
   static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen( given );
-  updateNexts();
 }
 
 void DefineMacroMode::finalPageEntered()
 {
   std::vector<ObjectHolder*> final( mfinal.begin(), mfinal.end() );
   static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen( final );
-
-  updateNexts();
 }
 
-void DefineMacroMode::namePageEntered()
+bool DefineMacroMode::validateObjects()
 {
+  bool res = true;
   ObjectCalcer* (ObjectHolder::*memfun)() = &ObjectHolder::calcer;
   std::vector<ObjectCalcer*> given;
   std::transform( mgiven.begin(), mgiven.end(),
@@ -108,7 +93,7 @@ void DefineMacroMode::namePageEntered()
                               "Kig cannot calculate this macro because of this. "
                               "Please press Back, and construct the objects "
                               "in the correct order..." ) );
-    mwizard->back();
+    res = false;
   }
   else if( !hier.allGivenObjectsUsed() )
   {
@@ -118,12 +103,12 @@ void DefineMacroMode::namePageEntered()
                               "probably means you are expecting Kig to do "
                               "something impossible.  Please check the "
                               "macro and try again." ) );
-    mwizard->back();
+    res = false;
   }
 
   static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen( std::vector<ObjectHolder*>() );
 
-  updateNexts();
+  return res;
 }
 
 void DefineMacroMode::finishPressed()
@@ -140,8 +125,8 @@ void DefineMacroMode::finishPressed()
   ObjectHierarchy hier( given, final );
   MacroConstructor* ctor =
     new MacroConstructor( hier,
-                          mwizard->KLineEdit2->text(),
-                          mwizard->KLineEdit1->text() );
+                          mwizard->field( "name" ).toString(),
+                          mwizard->field( "description" ).toString() );
   ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
   MacroList::instance()->add( new Macro( act, ctor ) );
 
@@ -153,18 +138,10 @@ void DefineMacroMode::cancelPressed()
   abandonMacro();
 }
 
-void DefineMacroMode::macroNameChanged()
-{
-  mwizard->setFinishEnabled(
-    mwizard->mpname,
-    !mwizard->KLineEdit2->text().isEmpty()
-    );
-}
-
 void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
 {
-  if ( mwizard->currentPage() == mwizard->mpname ) return;
-  std::vector<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
+  if ( mwizard->currentId() == MacroWizard::MacroInfoPageId ) return;
+  std::vector<ObjectHolder*>* objs = mwizard->currentId() == MacroWizard::GivenArgsPageId ? &mgiven : &mfinal;
   DragRectMode dm( p, mdoc, w );
   mdoc.runMode( &dm );
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
@@ -183,14 +160,17 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
   w.updateCurPix( pter.overlay() );
   w.updateWidget();
 
-  updateNexts();
+  if ( mwizard->currentId() == MacroWizard::GivenArgsPageId )
+    mwizard->givenArgsChanged();
+  else
+    mwizard->finalArgsChanged();
 }
 
 void DefineMacroMode::leftClickedObject( ObjectHolder* o, const QPoint&,
                                          KigWidget& w, bool )
 {
-  if ( mwizard->currentPage() == mwizard->mpname ) return;
-  std::vector<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
+  if ( mwizard->currentId() == MacroWizard::MacroInfoPageId ) return;
+  std::vector<ObjectHolder*>* objs = mwizard->currentId() == MacroWizard::GivenArgsPageId ? &mgiven : &mfinal;
   std::vector<ObjectHolder*>::iterator iter = std::find( objs->begin(), objs->end(), o );
   bool isselected = ( iter != objs->end() );
   if ( isselected ) objs->erase( iter );
@@ -201,7 +181,10 @@ void DefineMacroMode::leftClickedObject( ObjectHolder* o, const QPoint&,
   w.updateCurPix( p.overlay() );
   w.updateWidget();
 
-  updateNexts();
+  if ( mwizard->currentId() == MacroWizard::GivenArgsPageId )
+    mwizard->givenArgsChanged();
+  else
+    mwizard->finalArgsChanged();
 }
 
 void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& pt, KigWidget& w, bool )
@@ -243,3 +226,12 @@ void DefineMacroMode::midClicked( const QPoint&, KigWidget& )
 {
 }
 
+bool DefineMacroMode::hasGivenArgs() const
+{
+  return !mgiven.empty();
+}
+
+bool DefineMacroMode::hasFinalArgs() const
+{
+  return !mfinal.empty();
+}
