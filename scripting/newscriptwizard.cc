@@ -61,6 +61,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
 {
   setObjectName( QLatin1String( "New Script Wizard" ) );
   setWindowTitle( KDialog::makeStandardCaption( i18n( "New Script" ) ) );
+  setOption( HaveHelpButton );
 
   QWizardPage* firstPage = new QWizardPage( this );
   firstPage->setTitle( i18n( "Select Arguments" ) );
