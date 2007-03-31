@@ -36,16 +36,14 @@
 #include "../objects/text_type.h"
 
 #include <qaction.h>
-#include <qcheckbox.h>
 #include <qevent.h>
 #include <qmenu.h>
 #include <qregexp.h>
-#include <qtextedit.h>
 #include <qvariant.h>
 
 #include <kcursor.h>
 #include <kdebug.h>
-#include <kiconloader.h>
+#include <kicon.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 
@@ -164,9 +162,9 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
      * are not children of the label
      */
     if ( prevlabel && isChild( o->calcer(), prevlabel ) ) break;
-    QMenu* p = new QMenu( v );
-    p->setObjectName( "text_label_select_arg_popup" );
-    QAction* act = p->addAction( i18n( "Name" ) );
+    QMenu p( v );
+    p.setObjectName( "text_label_select_arg_popup" );
+    QAction* act = p.addAction( i18n( "Name" ) );
     act->setData( QVariant::fromValue( 0 ) );
     QByteArrayList l = o->imp()->properties();
     assert( l.size() == o->imp()->numberOfProperties() );
@@ -176,17 +174,15 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
       const char* iconfile = o->imp()->iconForProperty( i );
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = mdoc.iconLoader()->loadIcon( iconfile, K3Icon::Small, 22, K3Icon::DefaultState, 0L, true );
-        act = p->addAction( QIcon( pix ), s );
-        act->setData( QVariant::fromValue( i + 1 ) );
+        act = p.addAction( KIcon( QLatin1String( iconfile ), mdoc.iconLoader() ), s );
       }
       else
       {
-        act = p->addAction( s );
-        act->setData( QVariant::fromValue( i + 1 ) );
+        act = p.addAction( s );
       };
+      act->setData( QVariant::fromValue( i + 1 ) );
     };
-    act = p->exec( v->mapToGlobal( d->plc ) );
+    act = p.exec( v->mapToGlobal( d->plc ) );
     if ( !act ) break;
     int result = act->data().toInt();
     ObjectCalcer::shared_ptr argcalcer;
