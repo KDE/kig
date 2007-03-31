@@ -52,9 +52,10 @@ public:
   void finishPressed();
   void enterTextPageEntered();
   void selectArgumentsPageEntered();
-  void labelTextChanged();
   void linkClicked( int );
   void redrawScreen( KigWidget* w );
+  bool percentCountChanged( uint percentcount );
+  bool canFinish();
 
 protected:
   typedef std::vector<ObjectCalcer::shared_ptr> argvect;
@@ -101,7 +102,6 @@ private:
    */
   typedef enum { SelectingLocation, RequestingText, SelectingArgs, ReallySelectingArgs } wawdtype;
 
-  void updateWiz();
   void updateLinksLabel();
 };
 

@@ -119,10 +119,6 @@ set(kigpart_PART_SRCS
    kig/kig_view.cpp
 )
 
-kde4_add_ui3_files(kigpart_PART_SRCS
-   modes/textlabelwizardbase.ui
-)
-
 kde4_add_ui_files(kigpart_PART_SRCS
    modes/typeswidget.ui
    modes/edittypewidget.ui

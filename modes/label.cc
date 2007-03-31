@@ -211,7 +211,6 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
     argcalcer->calc( mdoc.document() );
 
     updateLinksLabel();
-    updateWiz();
     break;
   }
   default:
@@ -300,7 +299,8 @@ void TextLabelModeBase::cancelPressed()
   cancelConstruction();
 }
 
-static uint percentCount( const QString& s )
+// also used in textlabelwizard.cc
+uint percentCount( const QString& s )
 {
 //  QRegExp re( QString::fromUtf8( "%[0-9]" ) );
   QRegExp re( QString::fromUtf8( "%[\\d]+" ) );
@@ -314,13 +314,13 @@ static uint percentCount( const QString& s )
   return percentcount;
 }
 
-void TextLabelModeBase::finishPressed()
+bool TextLabelModeBase::canFinish()
 {
-  bool needframe = d->wiz->needFrameCheckBox->isChecked();
-  QString s = d->wiz->labelTextInput->text();
+  bool finish = true;
+  QString s = d->wiz->text();
 
   assert( percentCount( s ) == d->args.size() );
-  if ( d->wiz->currentPage() == d->wiz->enter_text_page )
+  if ( d->wiz->currentId() == TextLabelWizard::TextPageId )
     assert( d->args.size() == 0 );
 
   bool finished = true;
@@ -328,20 +328,31 @@ void TextLabelModeBase::finishPressed()
     finished &= ( *i != 0 );
 
   if ( ! finished )
+  {
     KMessageBox::sorry( mdoc.widget(),
                         i18n( "There are '%n' parts in the text that you have not selected a "
                               "value for. Please remove them or select enough arguments." ) );
-  else
-  {
-    finish( d->mcoord, s, d->args, needframe, d->locationparent );
-    killMode();
+    finished = false;
   };
+
+  return finish;
 }
 
-void TextLabelModeBase::updateWiz()
+void TextLabelModeBase::finishPressed()
 {
-  QString s = d->wiz->labelTextInput->text();
-  uint percentcount = percentCount( s );
+  if ( !canFinish() )
+    return;
+
+  bool needframe = d->wiz->field( "wantframe" ).toBool();
+  QString s = d->wiz->text();
+
+  finish( d->mcoord, s, d->args, needframe, d->locationparent );
+  killMode();
+}
+
+bool TextLabelModeBase::percentCountChanged( uint percentcount )
+{
+  bool finish = true;
   if ( d->lpc > percentcount )
   {
     d->args = argvect( d->args.begin(), d->args.begin() + percentcount );
@@ -351,37 +362,24 @@ void TextLabelModeBase::updateWiz()
     d->args.resize( percentcount, 0 );
   };
 
-  if ( percentcount == 0 && ! s.isEmpty() )
+  if ( percentcount != 0 )
   {
-    d->wiz->setNextEnabled( d->wiz->enter_text_page, false );
-    d->wiz->setFinishEnabled( d->wiz->enter_text_page, true );
-    d->wiz->setAppropriate( d->wiz->select_arguments_page, false );
-  }
-  else
-  {
-    d->wiz->setAppropriate( d->wiz->select_arguments_page, !s.isEmpty() );
-    d->wiz->setNextEnabled( d->wiz->enter_text_page, ! s.isEmpty() );
-    d->wiz->setFinishEnabled( d->wiz->enter_text_page, false );
     bool finished = true;
     for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
       finished &= ( *i != 0 );
-    assert( percentCount( s ) == d->args.size() );
-
-    d->wiz->setFinishEnabled( d->wiz->select_arguments_page, finished );
+    assert( percentcount == d->args.size() );
+    finish = finished;
   };
 
   d->lpc = percentcount;
-}
 
-void TextLabelModeBase::labelTextChanged()
-{
-  updateWiz();
+  return finish;
 }
 
 void TextLabelModeBase::updateLinksLabel()
 {
-  LinksLabel::LinksLabelEditBuf buf = d->wiz->myCustomWidget1->startEdit();
-  QString s = d->wiz->labelTextInput->text();
+  LinksLabel::LinksLabelEditBuf buf = d->wiz->linksLabel()->startEdit();
+  QString s = d->wiz->text();
 //  QRegExp re( "%[0-9]" );
   QRegExp re( "%[\\d]+" );
   int prevpos = 0;
@@ -400,7 +398,7 @@ void TextLabelModeBase::updateLinksLabel()
       // fetch the text part...
       QString subs = s.mid( prevpos, pos - prevpos );
       // and add it...
-      d->wiz->myCustomWidget1->addText( subs, buf );
+      d->wiz->linksLabel()->addText( subs, buf );
     };
     // we always need a link part...
     QString linktext( "%1" );
@@ -415,7 +413,7 @@ void TextLabelModeBase::updateLinksLabel()
       // otherwise, we show a stub...
       linktext = i18n( "argument %1", count + 1 );
 
-    d->wiz->myCustomWidget1->addLink( linktext, buf );
+    d->wiz->linksLabel()->addLink( linktext, buf );
     // set pos and prevpos to the next char after the last match, so
     // we don't enter infinite loops...
 //    pos += 2;
@@ -425,10 +423,9 @@ void TextLabelModeBase::updateLinksLabel()
   };
 
   if ( prevpos != s.length() )
-    d->wiz->myCustomWidget1->addText( s.mid( prevpos ), buf );
+    d->wiz->linksLabel()->addText( s.mid( prevpos ), buf );
 
-  d->wiz->myCustomWidget1->applyEdit( buf );
-  d->wiz->relayoutArgsPage();
+  d->wiz->linksLabel()->applyEdit( buf );
 
   d->wiz->resize( d->wiz->size() );
 }
@@ -458,16 +455,13 @@ void TextLabelModeBase::setCoordinate( const Coordinate& coord )
   if ( d->mwawd == SelectingLocation )
   {
     d->mwawd = RequestingText;
-    updateWiz();
     d->wiz->show();
-    // shouldn't be necessary, but seems to be anyway.. :(
-    updateWiz();
   };
 }
 
 void TextLabelModeBase::setText( const QString& s )
 {
-  d->wiz->labelTextInput->setText( s );
+  d->wiz->setText( s );
 }
 
 void TextLabelModeBase::setPropertyObjects( const argvect& props )
@@ -628,7 +622,7 @@ void TextLabelRedefineMode::finish(
 
 void TextLabelModeBase::setFrame( bool f )
 {
-  d->wiz->needFrameCheckBox->setChecked( f );
+  d->wiz->setField( "wantframe", f );
 }
 
 void TextLabelModeBase::setLocationParent( ObjectCalcer* o )

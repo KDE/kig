@@ -74,6 +74,11 @@ signals:
    */
   void linkClicked( int i );
 
+  /**
+   * the structure of links and texts was changed
+   */
+  void changed();
+
 private slots:
   void urlClicked();
 

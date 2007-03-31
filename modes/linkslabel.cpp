@@ -131,4 +131,6 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
 
   std::for_each( p->urllabels.begin(), p->urllabels.end(), mem_fun( &QWidget::show ) );
   std::for_each( p->labels.begin(), p->labels.end(), mem_fun( &QWidget::show ) );
+
+  emit changed();
 }
