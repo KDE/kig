@@ -29,7 +29,7 @@ namespace KTextEditor
   class Document;
   class HighlightingInterface;
   class View;
-};
+}
 class ScriptModeBase;
 
 class NewScriptWizard
