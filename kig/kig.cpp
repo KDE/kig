@@ -30,7 +30,7 @@
 #include <kdebug.h>
 #include <kedittoolbar.h>
 #include <kfiledialog.h>
-#include <kkeydialog.h>
+#include <kshortcutsdialog.h>
 #include <klibloader.h>
 #include <klocale.h>
 #include <kactioncollection.h>
