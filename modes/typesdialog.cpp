@@ -383,7 +383,7 @@ void TypesDialog::deleteType()
   if ( KMessageBox::warningContinueCancelList( this,
         i18np( "Are you sure you want to delete this type?",
               "Are you sure you want to delete these %1 types?", selectedTypes.size() ),
-        types, i18n("Are You Sure?"), KStandardGuiItem::cont(),
+        types, i18n("Are You Sure?"), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
         "deleteTypeWarning") == KMessageBox::Cancel )
      return;
   std::vector<BaseListElement*> todelete;
