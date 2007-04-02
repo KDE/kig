@@ -144,7 +144,7 @@ kde4_automoc(${kigpart_PART_SRCS})
 
 kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
-target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} ${KDE4_KDEPRINT_LIBRARY} ${KDE4_KDE3SUPPORT_LIBS} )
+target_link_libraries(kigpart  ${KDE4_KPARTS_LIBS} ${KDE4_KDEPRINT_LIBRARY} ${KDE4_KDE3SUPPORT_LIBRARY} )
 if(BOOST_PYTHON_FOUND)
   target_link_libraries(kigpart ${BOOST_PYTHON_LIBS} ktexteditor)
 endif(BOOST_PYTHON_FOUND)
