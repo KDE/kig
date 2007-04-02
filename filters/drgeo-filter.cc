@@ -117,7 +117,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   if ( nfig == 0 )
     return 0;
 
-  QString myfig = "";
+  QString myfig = figures.at( 0 );
 
   if ( nfig > 1 )
   {
