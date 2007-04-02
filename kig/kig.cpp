@@ -185,7 +185,7 @@ void Kig::optionsConfigureToolbars()
   saveMainWindowSettings(KGlobal::config()->group( "MainWindow") );
 
   // use the standard toolbar editor
-  KEditToolbar dlg(factory());
+  KEditToolBar dlg(factory());
   connect(&dlg, SIGNAL(newToolBarConfig()),
 	  this, SLOT(applyNewToolbarConfig()));
   dlg.exec();
