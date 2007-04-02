@@ -27,7 +27,7 @@
 #include <qtextedit.h>
 #include <qtimer.h>
 
-#include <kcommand.h>
+#include <k3command.h>
 #include <kdebug.h>
 #include <kicon.h>
 #include <klineedit.h>
@@ -35,7 +35,7 @@
 #include <knumvalidator.h>
 #include <kpushbutton.h>
 
-HistoryDialog::HistoryDialog( KCommandHistory* kch, QWidget* parent )
+HistoryDialog::HistoryDialog( K3CommandHistory* kch, QWidget* parent )
   : KDialog( parent ), mch( kch )
 {
   setCaption( i18n( "History Browser" ) );

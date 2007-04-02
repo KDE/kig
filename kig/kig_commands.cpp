@@ -46,7 +46,7 @@ public:
 };
 
 KigCommand::KigCommand( KigPart& doc, const QString& name )
-  : KNamedCommand(name), d( new Private( doc ) )
+  : K3NamedCommand(name), d( new Private( doc ) )
 {
 }
 

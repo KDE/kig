@@ -30,7 +30,7 @@
 #include <vector>
 
 class KAboutData;
-class KCommandHistory;
+class K3CommandHistory;
 class KPrinter;
 class KToggleAction;
 class QWidget;
@@ -187,7 +187,7 @@ protected:
   /**
    * the command history
    */
-  KCommandHistory* mhistory;
+  K3CommandHistory* mhistory;
 
 public:
   // actions: this is an annoying case, didn't really fit into my
@@ -240,7 +240,7 @@ public:
   void actionRemoved( GUIAction* a, GUIUpdateToken& t );
   void endGUIActionUpdate( GUIUpdateToken& t );
 
-  KCommandHistory* history();
+  K3CommandHistory* history();
 
   void enableConstructActions( bool enabled );
 

@@ -187,7 +187,7 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   setupTypes();
 
   // construct our command history
-  mhistory = new KCommandHistory(actionCollection());
+  mhistory = new K3CommandHistory(actionCollection());
   mhistory->documentSaved();
   connect( mhistory, SIGNAL( documentRestored() ), this, SLOT( setUnmodified() ) );
 
@@ -546,7 +546,7 @@ void KigPart::setUnmodified()
   setModified( false );
 }
 
-KCommandHistory* KigPart::history()
+K3CommandHistory* KigPart::history()
 {
   return mhistory;
 }
