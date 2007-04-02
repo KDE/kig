@@ -34,7 +34,6 @@
 
 #include <kcursor.h>
 #include <kaction.h>
-#include <kcommand.h>
 #include <klocale.h>
 
 #include <algorithm>
