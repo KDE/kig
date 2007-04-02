@@ -193,7 +193,7 @@ void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QP
 
   if ( os.empty() )
   {
-    w.setCursor( KCursor::arrowCursor() );
+    w.setCursor( Qt::ArrowCursor );
     mdoc.emitStatusBarText( 0 );
     w.updateWidget();
   }
@@ -202,7 +202,7 @@ void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QP
     // the cursor is over an object, show object type next to cursor
     // and set statusbar text
 
-    w.setCursor( KCursor::handCursor() );
+    w.setCursor( Qt::PointingHandCursor );
     QString selectstat = os.front()->selectStatement();
 
     // statusbar text

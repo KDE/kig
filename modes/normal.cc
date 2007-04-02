@@ -262,7 +262,7 @@ void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
   w.updateCurPix();
   if( os.empty() )
   {
-    w.setCursor( KCursor::arrowCursor() );
+    w.setCursor( Qt::ArrowCursor );
     mdoc.emitStatusBarText( 0 );
     w.updateWidget();
   }
@@ -271,7 +271,7 @@ void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
     // the cursor is over an object, show object type next to cursor
     // and set statusbar text
 
-    w.setCursor( KCursor::handCursor() );
+    w.setCursor( Qt::PointingHandCursor );
 
     int id = ObjectChooserPopup::getObjectFromList( plc, &w, os, false );
     QString stat = id == 0 ? os.front()->selectStatement() : i18n( "Which object?" );

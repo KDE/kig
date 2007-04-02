@@ -225,7 +225,7 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
   {
     handlePrelim( args, p, pter, w );
 
-    w.setCursor( KCursor::handCursor() );
+    w.setCursor( Qt::PointingHandCursor );
   }
   else
   {
@@ -241,7 +241,7 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
 
       handlePrelim( args, p, pter, w );
 
-      w.setCursor( KCursor::handCursor() );
+      w.setCursor( Qt::PointingHandCursor );
     }
     else if ( wantArgs( argscursor, mdoc.document(), w ) )
     {
@@ -250,11 +250,11 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
 
       handlePrelim( argscursor, p, pter, w );
 
-      w.setCursor( KCursor::crossCursor() );
+      w.setCursor( Qt::CrossCursor );
     }
     else
     {
-      w.setCursor( KCursor::arrowCursor() );
+      w.setCursor( Qt::ArrowCursor );
       text = false;
     }
     if ( !text && ( goodargs.size() > 1 ) )
@@ -266,7 +266,7 @@ void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const 
       textloc.setX( textloc.x() + 15 );
       pter.drawTextStd( textloc, strwhich );
 
-      w.setCursor( KCursor::handCursor() );
+      w.setCursor( Qt::PointingHandCursor );
     }
   }
   w.updateWidget( pter.overlay() );
@@ -340,7 +340,7 @@ void PointConstructMode::mouseMoved(
 
   ObjectDrawer d;
   d.draw( *mpt->imp(), pter, true );
-  w.setCursor( KCursor::blankCursor() );
+  w.setCursor( Qt::BlankCursor );
 
   w.updateWidget( pter.overlay() );
 }
@@ -537,7 +537,7 @@ void TestConstructMode::rightClicked( const std::vector<ObjectHolder*>& oco, con
 void TestConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftPressed )
 {
   if ( mresult ) {
-    w.setCursor( KCursor::blankCursor() );
+    w.setCursor( Qt::BlankCursor );
 
     w.updateCurPix();
     KigPainter pter( w.screenInfo(), &w.curPix, mdoc.document() );

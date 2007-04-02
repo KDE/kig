@@ -237,8 +237,8 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
   if ( d->mwawd == ReallySelectingArgs )
   {
     std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( w->fromScreen( e->pos() ), *w );
-    if ( !os.empty() ) w->setCursor( KCursor::handCursor() );
-    else w->setCursor( KCursor::arrowCursor() );
+    if ( !os.empty() ) w->setCursor( Qt::PointingHandCursor );
+    else w->setCursor( Qt::ArrowCursor );
   }
   else if ( d->mwawd == SelectingLocation )
   {
@@ -259,7 +259,7 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
     w->updateCurPix();
     if ( attachable )
     {
-      w->setCursor( KCursor::handCursor() );
+      w->setCursor( Qt::PointingHandCursor );
       QString s = d->locationparent->imp()->type()->attachToThisStatement();
       mdoc.emitStatusBarText( s );
 
@@ -274,7 +274,7 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
     }
     else
     {
-      w->setCursor( KCursor::crossCursor() );
+      w->setCursor( Qt::CrossCursor );
       mdoc.emitStatusBarText( 0 );
       w->updateWidget();
     };
@@ -682,7 +682,7 @@ void NumericLabelMode::enableActions()
 
 void NumericLabelMode::mouseMoved( QMouseEvent*, KigWidget* w )
 {
-  w->setCursor( KCursor::crossCursor() );
+  w->setCursor( Qt::CrossCursor );
 }
 
 void NumericLabelMode::redrawScreen( KigWidget* w )

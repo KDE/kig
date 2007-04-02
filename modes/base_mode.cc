@@ -116,7 +116,7 @@ void BaseMode::rightClicked( QMouseEvent* e, KigWidget* w )
   w->updateCurPix();
   w->updateWidget();
   // set a normal cursor...
-  w->setCursor( KCursor::arrowCursor() );
+  w->setCursor( Qt::ArrowCursor );
 
   mplc = e->pos();
   moco = mdoc.document().whatAmIOn( w->fromScreen( mplc ), *w );
