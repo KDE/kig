@@ -48,19 +48,21 @@ HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
 
   mtotalsteps = mch->count() + 1;
 
-  mwidget->buttonFirst->setIcon( KIcon( "arrow-left-double" ) );
+  bool reversed = layoutDirection() == Qt::RightToLeft;
+
+  mwidget->buttonFirst->setIcon( KIcon( reversed ? "arrow-right-double" : "arrow-left-double" ) );
   connect( mwidget->buttonFirst, SIGNAL( clicked() ), this, SLOT( goToFirst() ) );
 
-  mwidget->buttonBack->setIcon( KIcon( "arrow-left" ) );
+  mwidget->buttonBack->setIcon( KIcon( reversed ? "arrow-right" : "arrow-left" ) );
   connect( mwidget->buttonBack, SIGNAL( clicked() ), this, SLOT( goBack() ) );
 
   mwidget->editStep->setValidator( new KIntValidator( 1, mtotalsteps, mwidget->editStep ) );
   mwidget->labelSteps->setText( QString::number( mtotalsteps ) );
 
-  mwidget->buttonNext->setIcon( KIcon( "arrow-right" ) );
+  mwidget->buttonNext->setIcon( KIcon( reversed ? "arrow-left" : "arrow-right" ) );
   connect( mwidget->buttonNext, SIGNAL( clicked() ), this, SLOT( goToNext() ) );
 
-  mwidget->buttonLast->setIcon( KIcon( "arrow-right-double" ) );
+  mwidget->buttonLast->setIcon( KIcon( reversed ? "arrow-left-double" : "arrow-right-double" ) );
   connect( mwidget->buttonLast, SIGNAL( clicked() ), this, SLOT( goToLast() ) );
 
   updateWidgets();
