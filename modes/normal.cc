@@ -53,7 +53,8 @@ void NormalMode::enableActions()
   mdoc.aNewMacro->setEnabled( true );
   mdoc.aConfigureTypes->setEnabled( true );
   mdoc.aBrowseHistory->setEnabled( true );
-  mdoc.history()->updateActions();
+  mdoc.action( "edit_undo" )->setEnabled( true );
+  mdoc.action( "edit_redo" )->setEnabled( true );
 }
 
 void NormalMode::deleteObjects()

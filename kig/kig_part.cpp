@@ -100,7 +100,7 @@ void SetCoordinateSystemAction::slotActivated( int index )
 {
   CoordinateSystem* sys = CoordinateSystemFactory::build( index );
   assert( sys );
-  md.history()->addCommand( KigCommand::changeCoordSystemCommand( md, sys ) );
+  md.history()->push( KigCommand::changeCoordSystemCommand( md, sys ) );
   setCurrentItem( index );
 }
 
@@ -187,9 +187,14 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   setupTypes();
 
   // construct our command history
-  mhistory = new K3CommandHistory(actionCollection());
-  mhistory->documentSaved();
-  connect( mhistory, SIGNAL( documentRestored() ), this, SLOT( setUnmodified() ) );
+  mhistory = new QUndoStack();
+  QAction* undoact = mhistory->createUndoAction( actionCollection() );
+  undoact->setIcon( KIcon( "edit-undo" ) );
+  actionCollection()->addAction( "edit_undo", undoact );
+  QAction* redoact = mhistory->createRedoAction( actionCollection() );
+  redoact->setIcon( KIcon( "edit-redo" ) );
+  actionCollection()->addAction( "edit_redo", redoact );
+  connect( mhistory, SIGNAL( cleanChanged( bool ) ), this, SLOT( setHistoryClean( bool ) ) );
 
   // we are read-write by default
   setReadWrite(true);
@@ -447,7 +452,7 @@ bool KigPart::saveFile()
   if ( KigFilters::instance()->save( document(), localFilePath() ) )
   {
     setModified ( false );
-    mhistory->documentSaved();
+    mhistory->setClean();
     return true;
   }
   return false;
@@ -455,12 +460,12 @@ bool KigPart::saveFile()
 
 void KigPart::addObject(ObjectHolder* o)
 {
-  mhistory->addCommand( KigCommand::addCommand( *this, o ) );
+  mhistory->push( KigCommand::addCommand( *this, o ) );
 }
 
 void KigPart::addObjects( const std::vector<ObjectHolder*>& os )
 {
-  mhistory->addCommand( KigCommand::addCommand( *this, os ) );
+  mhistory->push( KigCommand::addCommand( *this, os ) );
 }
 
 void KigPart::_addObject( ObjectHolder* o )
@@ -541,12 +546,12 @@ void KigPart::browseHistory()
   mode()->browseHistory();
 }
 
-void KigPart::setUnmodified()
+void KigPart::setHistoryClean( bool clean )
 {
-  setModified( false );
+  setModified( !clean );
 }
 
-K3CommandHistory* KigPart::history()
+QUndoStack* KigPart::history()
 {
   return mhistory;
 }
@@ -576,7 +581,7 @@ void KigPart::delObjects( const std::vector<ObjectHolder*>& os )
   assert( delobjs.size() >= os.size() );
 
   std::vector<ObjectHolder*> delobjsvect( delobjs.begin(), delobjs.end() );
-  mhistory->addCommand( KigCommand::removeCommand( *this, delobjsvect ) );
+  mhistory->push( KigCommand::removeCommand( *this, delobjsvect ) );
 }
 
 void KigPart::enableConstructActions( bool enabled )
@@ -874,7 +879,7 @@ void KigPart::hideObjects( const std::vector<ObjectHolder*>& inos )
   for ( std::vector<ObjectHolder*>::iterator i = os.begin();
         i != os.end(); ++i )
     kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( false ) ) );
-  mhistory->addCommand( kc );
+  mhistory->push( kc );
 }
 
 void KigPart::showObjects( const std::vector<ObjectHolder*>& inos )
@@ -893,7 +898,7 @@ void KigPart::showObjects( const std::vector<ObjectHolder*>& inos )
   for ( std::vector<ObjectHolder*>::iterator i = os.begin();
         i != os.end(); ++i )
     kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyShown( true ) ) );
-  mhistory->addCommand( kc );
+  mhistory->push( kc );
 }
 
 void KigPart::redrawScreen( KigWidget* w )

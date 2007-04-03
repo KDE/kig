@@ -46,7 +46,7 @@ public:
 };
 
 KigCommand::KigCommand( KigPart& doc, const QString& name )
-  : K3NamedCommand(name), d( new Private( doc ) )
+  : QUndoCommand( name ), d( new Private( doc ) )
 {
 }
 
@@ -57,14 +57,14 @@ KigCommand::~KigCommand()
   delete d;
 }
 
-void KigCommand::execute()
+void KigCommand::redo()
 {
   for ( uint i = 0; i < d->tasks.size(); ++i )
     d->tasks[i]->execute( d->doc );
   d->doc.redrawScreen();
 }
 
-void KigCommand::unexecute()
+void KigCommand::undo()
 {
   for ( uint i = 0; i < d->tasks.size(); ++i )
     d->tasks[i]->unexecute( d->doc );

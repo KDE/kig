@@ -366,7 +366,7 @@ bool ScriptEditMode::queryFinish()
     return false;
   }
 
-  mpart.history()->addCommand( comm );
+  mpart.history()->push( comm );
   mpart.setModified( true );
 
   killMode();

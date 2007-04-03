@@ -613,7 +613,7 @@ void TextLabelRedefineMode::finish(
     new ChangeParentsAndTypeTask(
       mlabel, np, TextType::instance() ) );
 
-  mdoc.history()->addCommand( kc );
+  mdoc.history()->push( kc );
 }
 
 void TextLabelModeBase::setFrame( bool f )

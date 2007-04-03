@@ -406,7 +406,7 @@ void FixedPointType::executeAction(
     KigCommand* kc = new KigCommand( d, PointImp::stype()->moveAStatement() );
     mon.finish( kc );
 
-    d.history()->addCommand( kc );
+    d.history()->push( kc );
     break;
   };
   case 1:
@@ -445,7 +445,7 @@ void ConstrainedPointType::executeAction(
     po->setImp( new DoubleImp( newp ) );
     KigCommand* kc = new KigCommand( d, i18n( "Change Parameter of Constrained Point" ) );
     mon.finish( kc );
-    d.history()->addCommand( kc );
+    d.history()->push( kc );
     break;
   };
   default:

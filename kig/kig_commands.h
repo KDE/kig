@@ -22,7 +22,8 @@
 #ifndef KIG_COMMANDS_H
 #define KIG_COMMANDS_H
 
-#include <k3command.h>
+#include <qundostack.h>
+
 #include <klocale.h>
 #include <kdebug.h>
 
@@ -41,7 +42,7 @@ class Rect;
  * Used mainly in the Undo/Redo stuff...
  */
 class KigCommand
-  : public QObject, public K3NamedCommand
+  : public QObject, public QUndoCommand
 {
   Q_OBJECT
   class Private;
@@ -79,8 +80,8 @@ public:
 
   void addTask( KigCommandTask* );
 
-  void execute();
-  void unexecute();
+  void redo();
+  void undo();
 };
 
 /**

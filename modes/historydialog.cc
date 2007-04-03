@@ -26,8 +26,8 @@
 #include <qlabel.h>
 #include <qtextedit.h>
 #include <qtimer.h>
+#include <qundostack.h>
 
-#include <k3command.h>
 #include <kdebug.h>
 #include <kicon.h>
 #include <klineedit.h>
@@ -35,7 +35,7 @@
 #include <knumvalidator.h>
 #include <kpushbutton.h>
 
-HistoryDialog::HistoryDialog( K3CommandHistory* kch, QWidget* parent )
+HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
   : KDialog( parent ), mch( kch )
 {
   setCaption( i18n( "History Browser" ) );
@@ -46,7 +46,7 @@ HistoryDialog::HistoryDialog( K3CommandHistory* kch, QWidget* parent )
   mwidget->setupUi( main );
   setMainWidget( main );
 
-  mtotalsteps = mch->undoCommands().size() + mch->redoCommands().size() + 1;
+  mtotalsteps = mch->count() + 1;
 
   mwidget->buttonFirst->setIcon( KIcon( "arrow-left-double" ) );
   connect( mwidget->buttonFirst, SIGNAL( clicked() ), this, SLOT( goToFirst() ) );
@@ -74,7 +74,7 @@ HistoryDialog::~HistoryDialog()
 
 void HistoryDialog::goToFirst()
 {
-  int undosteps = mch->undoCommands().size();
+  int undosteps = mch->index();
   for ( int i = 0; i < undosteps; ++i )
   {
     mch->undo();
@@ -99,7 +99,7 @@ void HistoryDialog::goToNext()
 
 void HistoryDialog::goToLast()
 {
-  int redosteps = mch->redoCommands().size();
+  int redosteps = mch->count() - mch->index();
   for ( int i = 0; i < redosteps; ++i )
   {
     mch->redo();
@@ -110,12 +110,12 @@ void HistoryDialog::goToLast()
 
 void HistoryDialog::updateWidgets()
 {
-  int currentstep = mch->undoCommands().size() + 1;
+  int currentstep = mch->index() + 1;
 
   mwidget->editStep->setText( QString::number( currentstep ) );
-  if ( mch->presentCommand() )
+  if ( mch->index() > 0 )
   {
-    mwidget->description->setPlainText( mch->presentCommand()->name() );
+    mwidget->description->setPlainText( mch->text( mch->index() - 1 ) );
   }
   else
   {

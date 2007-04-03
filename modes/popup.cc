@@ -529,7 +529,7 @@ bool NameObjectActionsProvider::executeAction(
       cnamecalcer->setImp( new StringImp( name ) );
       KigCommand* kc = new KigCommand( doc, i18n( "Set Object Name" ) );
       mon.finish( kc );
-      doc.history()->addCommand( kc );
+      doc.history()->push( kc );
 
       // if we just added the name, we add a label to show it to the user.
       if ( justadded )
@@ -629,7 +629,7 @@ bool BuiltinObjectActionsProvider::executeAction(
     assert( color.isValid() );
     for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
       kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyColor( color ) ) );
-    doc.history()->addCommand( kc );
+    doc.history()->push( kc );
     mode.clearSelection();
     return true;
   }
@@ -644,7 +644,7 @@ bool BuiltinObjectActionsProvider::executeAction(
     KigCommand* kc = new KigCommand( doc, i18n( "Change Object Width" ) );
     for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
       kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyWidth( 1 + 2 * id ) ) );
-    doc.history()->addCommand( kc );
+    doc.history()->push( kc );
     mode.clearSelection();
     return true;
   }
@@ -673,7 +673,7 @@ bool BuiltinObjectActionsProvider::executeAction(
       for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
         if ( (*i)->imp()->inherits( PointImp::stype() ) )
           kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyPointStyle( id ) ) );
-      doc.history()->addCommand( kc );
+      doc.history()->push( kc );
       mode.clearSelection();
       return true;
     }
@@ -686,7 +686,7 @@ bool BuiltinObjectActionsProvider::executeAction(
       for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
         if ( ! (*i)->imp()->inherits( PointImp::stype() ) )
           kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyStyle( p ) ) );
-      doc.history()->addCommand( kc );
+      doc.history()->push( kc );
       mode.clearSelection();
     }
     return true;
@@ -966,7 +966,7 @@ bool BuiltinDocumentActionsProvider::executeAction(
     };
     CoordinateSystem* sys = CoordinateSystemFactory::build( id );
     assert( sys );
-    doc.history()->addCommand( KigCommand::changeCoordSystemCommand( doc, sys ) );
+    doc.history()->push( KigCommand::changeCoordSystemCommand( doc, sys ) );
     m.clearSelection();
     return true;
   }

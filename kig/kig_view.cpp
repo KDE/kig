@@ -220,7 +220,7 @@ void KigWidget::slotZoomIn()
     new KigCommand( *mpart,
                     i18n( "Zoom In" ) );
   cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mpart->history()->addCommand( cd );
+  mpart->history()->push( cd );
 }
 
 void KigWidget::slotZoomOut()
@@ -240,7 +240,7 @@ void KigWidget::slotZoomOut()
     new KigCommand( *mpart,
                     i18n( "Zoom Out" ) );
   cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mpart->history()->addCommand( cd );
+  mpart->history()->push( cd );
 }
 
 void KigWidget::clearStillPix()
@@ -519,7 +519,7 @@ void KigWidget::slotRecenterScreen()
                     i18n( "Recenter View" ) );
 
   cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mpart->history()->addCommand( cd );
+  mpart->history()->push( cd );
 }
 
 void KigView::toggleFullScreen()
@@ -549,7 +549,7 @@ void KigWidget::zoomRect()
                       i18n( "Change Shown Part of Screen" ) );
 
     cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-    mpart->history()->addCommand( cd );
+    mpart->history()->push( cd );
   };
 
   mpart->redrawScreen( this );
@@ -597,7 +597,7 @@ void KigWidget::zoomArea()
     KigCommand* cd = new KigCommand( *mpart, i18n( "Change Shown Part of Screen" ) );
 
     cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-    mpart->history()->addCommand( cd );
+    mpart->history()->push( cd );
   }
 
   mpart->redrawScreen( this );

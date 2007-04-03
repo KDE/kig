@@ -157,7 +157,7 @@ void MovingMode::stopMove()
                  i18n( "Move %1 Objects", d->emo.size() );
   KigCommand* mc = new KigCommand( mdoc, text );
   d->mon->finish( mc );
-  mdoc.history()->addCommand( mc );
+  mdoc.history()->push( mc );
 }
 
 void MovingMode::moveTo( const Coordinate& o, bool snaptogrid )
@@ -241,5 +241,5 @@ void PointRedefineMode::stopMove()
   command->addTask(
     new ChangeParentsAndTypeTask( mpcalc, newparents, newtype ) );
   mmon->finish( command );
-  mdoc.history()->addCommand( command );
+  mdoc.history()->push( command );
 }

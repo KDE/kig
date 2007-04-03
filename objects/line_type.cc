@@ -250,7 +250,7 @@ void SegmentABType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& c,
   parents[1]->move( nb, d.document() );
   KigCommand* cd = new KigCommand( d, i18n( "Resize Segment" ) );
   mon.finish( cd );
-  d.history()->addCommand( cd );
+  d.history()->push( cd );
 }
 
 static const ArgsParser::spec argsspecLineByVector[] =

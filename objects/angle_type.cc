@@ -146,7 +146,7 @@ void AngleType::executeAction(
   parents[2]->move( nc, d.document() );
   KigCommand* kc = new KigCommand( d, i18n( "Resize Angle" ) );
   mon.finish( kc );
-  d.history()->addCommand( kc );
+  d.history()->push( kc );
 }
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( HalfAngleType )

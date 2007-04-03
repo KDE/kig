@@ -207,7 +207,7 @@ void GenericTextType::executeAction( int i, ObjectHolder& oh, ObjectTypeCalcer& 
     kc->addTask( new ChangeObjectConstCalcerTask(
                    static_cast<ObjectConstCalcer*>( firstthree[0] ),
                    new IntImp( n ) ) );
-    doc.history()->addCommand( kc );
+    doc.history()->push( kc );
   }
   else if ( i == 2 )
   {
@@ -217,7 +217,7 @@ void GenericTextType::executeAction( int i, ObjectHolder& oh, ObjectTypeCalcer& 
     if ( result != KFontDialog::Accepted ) return;
     KigCommand* kc = new KigCommand( doc, i18n( "Change Label Font" ) );
     kc->addTask( new ChangeObjectDrawerTask( &oh, oh.drawer()->getCopyFont( f ) ) );
-    doc.history()->addCommand( kc );
+    doc.history()->push( kc );
   }
   else assert( false );
 }
@@ -328,7 +328,7 @@ void NumericTextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c
     valuecalcer->setImp( new DoubleImp( value ) );
     KigCommand* kc = new KigCommand( doc, i18n( "Change Displayed Value" ) );
     mon.finish( kc );
-    doc.history()->addCommand( kc );
+    doc.history()->push( kc );
   }
   else assert( false );
 }

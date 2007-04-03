@@ -30,9 +30,9 @@
 #include <vector>
 
 class KAboutData;
-class K3CommandHistory;
 class KPrinter;
 class KToggleAction;
+class QUndoStack;
 class QWidget;
 
 class GUIAction;
@@ -123,12 +123,7 @@ public slots:
   void toggleAxes();
   void toggleNightVision();
 
-  /**
-   * equivalent to setModified( false ); ( did i mention i don't like
-   * signals/slots for being this inflexible...
-   * this is connected to mhistory->documentRestored();
-   */
-  void setUnmodified();
+  void setHistoryClean( bool );
 
   /****************** cooperation with stuff ******************/
 public:
@@ -187,7 +182,7 @@ protected:
   /**
    * the command history
    */
-  K3CommandHistory* mhistory;
+  QUndoStack* mhistory;
 
 public:
   // actions: this is an annoying case, didn't really fit into my
@@ -240,7 +235,7 @@ public:
   void actionRemoved( GUIAction* a, GUIUpdateToken& t );
   void endGUIActionUpdate( GUIUpdateToken& t );
 
-  K3CommandHistory* history();
+  QUndoStack* history();
 
   void enableConstructActions( bool enabled );
 

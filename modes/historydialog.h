@@ -21,8 +21,8 @@
 #ifndef KIG_MODES_HISTORYDIALOG_H
 #define KIG_MODES_HISTORYDIALOG_H
 
+class QUndoStack;
 class QWidget;
-class K3CommandHistory;
 class Ui_HistoryWidget;
 
 #include <kdialog.h>
@@ -37,7 +37,7 @@ class HistoryDialog
 Q_OBJECT
 
 public:
-  HistoryDialog( K3CommandHistory* kch, QWidget* parent );
+  HistoryDialog( QUndoStack* kch, QWidget* parent );
   virtual ~HistoryDialog();
 
 private slots:
@@ -49,7 +49,7 @@ private slots:
   void goToLast();
 
 private:
-  K3CommandHistory* mch;
+  QUndoStack* mch;
 
   Ui_HistoryWidget* mwidget;
 
