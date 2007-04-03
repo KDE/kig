@@ -118,14 +118,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
     }
 
     // creating the popup menu
-    QMenu* menu = new QMenu( docview );
-    // adding the standard actions to the context menu
-    menu->addAction( docview->actionCollection()->action( "edit_undo" ) );
-    menu->addAction( docview->actionCollection()->action( "edit_redo" ) );
-    menu->addSeparator();
-    menu->addAction( docview->actionCollection()->action( "edit_cut" ) );
-    menu->addAction( docview->actionCollection()->action( "edit_copy" ) );
-    menu->addAction( docview->actionCollection()->action( "edit_paste" ) );
+    QMenu* menu = docview->defaultContextMenu();
 
     // finally, we install the popup menu
     docview->setContextMenu( menu );
