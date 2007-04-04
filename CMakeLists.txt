@@ -113,6 +113,7 @@ set(kigpart_PART_SRCS
    filters/native-filter.cc
    filters/svgexporter.cc
    filters/svgexporteroptions.cc
+   filters/xfigexporter.cc
    kig/kig_commands.cpp
    kig/kig_document.cc
    kig/kig_part.cpp
