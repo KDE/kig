@@ -45,6 +45,7 @@
 
 #include <kaction.h>
 #include <kdebug.h>
+#include <kdemacros.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -925,7 +926,7 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" int convertToNative( const KUrl& url, const QByteArray& outfile )
+extern "C" KDE_EXPORT int convertToNative( const KUrl& url, const QByteArray& outfile )
 {
   kDebug() << "converting " << url.prettyUrl() << " to " << outfile << endl;
 
