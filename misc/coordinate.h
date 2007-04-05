@@ -51,7 +51,7 @@ public:
    * \endif
    */
   Coordinate();
-  ~Coordinate() {};
+  ~Coordinate() {}
 
   /** Create an invalid Coordinate.  This is a special value of a
    * Coordinate that signals that something went wrong..

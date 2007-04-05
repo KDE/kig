@@ -60,7 +60,7 @@ public:
       coeffs[7] = a112;
       coeffs[8] = a122;
       coeffs[9] = a222;
-    };
+    }
   CubicCartesianData( const double incoeffs[10] );
 
   /**

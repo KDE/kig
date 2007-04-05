@@ -74,15 +74,15 @@ public:
   /**
    * Return the center of this angle.
    */
-  const Coordinate point() const { return mpoint; };
+  const Coordinate point() const { return mpoint; }
   /**
    * Return the start angle in radians of this angle.
    */
-  const double startAngle() const { return mstartangle; };
+  const double startAngle() const { return mstartangle; }
   /**
    * Return the dimension in radians of this angle.
    */
-  const double angle() const { return mangle; };
+  const double angle() const { return mangle; }
 
   bool equals( const ObjectImp& rhs ) const;
 };

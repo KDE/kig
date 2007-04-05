@@ -115,11 +115,11 @@ public:
 
   const KigView* view() const {
     return mview;
-  };
+  }
 
   KigView* view() {
     return mview;
-  };
+  }
 
   /**
    * The following are functions used by KigMode's to tell us to draw

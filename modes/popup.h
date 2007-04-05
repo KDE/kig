@@ -70,12 +70,12 @@ public:
    */
   void setChecked( int menu, int n, bool checked );
 
-  std::vector<ObjectHolder*> objects() const { return mobjs; };
-  KigPart& part() { return mpart; };
-  KigWidget& widget() { return mview; };
-  QPoint plc() { return mplc; };
+  std::vector<ObjectHolder*> objects() const { return mobjs; }
+  KigPart& part() { return mpart; }
+  KigWidget& widget() { return mview; }
+  QPoint plc() { return mplc; }
 
-  bool onlyLabels() const { return monlylabels; };
+  bool onlyLabels() const { return monlylabels; }
 
 protected:
   void activateAction( int menu, int action );

@@ -72,7 +72,7 @@ class Kig : public KParts::MainWindow
    *
    * \param s the url of the file to open
    */
-  void openURL (const QString& s) { openURL(KURL(s)); };
+  void openURL (const QString& s) { openURL(KURL(s)); }
   void openURL (const KURL& s);
 
  protected:

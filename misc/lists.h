@@ -47,7 +47,7 @@ private:
   ~GUIActionList();
 public:
   static GUIActionList* instance();
-  const avectype& actions() const { return mactions; };
+  const avectype& actions() const { return mactions; }
 
   /**
    * register this document, so that it receives notifications for

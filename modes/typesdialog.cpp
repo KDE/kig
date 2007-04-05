@@ -49,7 +49,7 @@ class MacroListElement
   Macro* macro;
 public:
   MacroListElement( KListView* lv, Macro* m );
-  Macro* getMacro() const { return macro; };
+  Macro* getMacro() const { return macro; }
 };
 
 MacroListElement::MacroListElement( KListView* lv, Macro* m )

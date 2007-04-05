@@ -250,7 +250,7 @@ public:
 
   void drawGrid( const CoordinateSystem& c, bool showGrid = true, bool showAxes = true );
 
-  const std::vector<QRect>& overlay() { return mOverlay; };
+  const std::vector<QRect>& overlay() { return mOverlay; }
 
 protected:
   /**

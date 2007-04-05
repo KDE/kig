@@ -47,7 +47,7 @@ public:
   /**
    * Get the coordinate of this PointImp.
    */
-  const Coordinate& coordinate() const { return mc; };
+  const Coordinate& coordinate() const { return mc; }
   /**
    * Set the coordinate of this PointImp.
    */

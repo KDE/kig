@@ -584,7 +584,7 @@ typedef std::pair<double,Coordinate> coordparampair;
 struct workitem
 {
   workitem( coordparampair f, coordparampair s, Rect *o) :
-    first(f), second(s), overlay(o) {};
+    first(f), second(s), overlay(o) {}
   coordparampair first;
   coordparampair second;
   Rect		 *overlay;
@@ -718,7 +718,7 @@ public:
   CurveImpPointCalcer( const CurveImp* c )
     : curve( c )
     {
-    };
+    }
   static const double endinterval;
   inline const Coordinate getPoint( double param, const KigDocument& d ) const {
     return curve->getPoint( param, d );

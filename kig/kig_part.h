@@ -129,7 +129,7 @@ public:
   void addWidget( KigWidget* );
   void delWidget( KigWidget* );
 
-  KigMode* mode() const { return mMode; };
+  KigMode* mode() const { return mMode; }
   void setMode( KigMode* );
   void runMode( KigMode* );
   void doneMode( KigMode* );
