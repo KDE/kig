@@ -25,7 +25,6 @@
 #include <qtimer.h>
 
 #include <kaction.h>
-#include <kapplication.h>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kedittoolbar.h>
@@ -41,7 +40,7 @@
 #include <ktip.h>
 #include <kurl.h>
 #include <kxmlguifactory.h>
-
+#include <kapplication.h>
 #include <assert.h>
 
 Kig::Kig()
