@@ -51,7 +51,7 @@
 #include <kiconloader.h>
 #include <kcomponentdata.h>
 #include <klocale.h>
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include <kactioncollection.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
