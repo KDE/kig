@@ -181,6 +181,11 @@ NumericTextImp::NumericTextImp( const QString& text, const Coordinate& loc, bool
 {
 }
 
+NumericTextImp* NumericTextImp::copy() const
+{
+  return new NumericTextImp( text(), coordinate(), hasFrame(), mvalue );
+}
+
 const ObjectImpType* NumericTextImp::stype()
 {
   static const ObjectImpType t(
@@ -266,6 +271,11 @@ bool NumericTextImp::isPropertyDefinedOnOrThroughThisImp( uint which ) const
 BoolTextImp::BoolTextImp( const QString& text, const Coordinate& loc, bool frame, bool value )
   : TextImp( text, loc, frame ), mvalue( value )
 {
+}
+
+BoolTextImp* BoolTextImp::copy() const
+{
+  return new BoolTextImp( text(), coordinate(), hasFrame(), mvalue );
 }
 
 const ObjectImpType* BoolTextImp::stype()

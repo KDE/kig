@@ -75,6 +75,7 @@ public:
   typedef TextImp Parent;
   static const ObjectImpType* stype();
   NumericTextImp( const QString& text, const Coordinate& loc, bool frame, double value );
+  NumericTextImp* copy() const;
   double getValue() const;
   const ObjectImpType* type() const;
 
@@ -95,6 +96,7 @@ public:
   typedef TextImp Parent;
   static const ObjectImpType* stype();
   BoolTextImp( const QString& text, const Coordinate& loc, bool frame, bool value );
+  BoolTextImp* copy() const;
   bool getValue() const;
   const ObjectImpType* type() const;
 
