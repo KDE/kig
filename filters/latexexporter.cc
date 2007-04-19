@@ -15,8 +15,6 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#include <config-kig.h>
-
 #include "latexexporter.h"
 
 #include "latexexporteroptions.h"
@@ -51,6 +49,8 @@
 
 #include <klocale.h>
 #include <kmessagebox.h>
+
+#include <config-kig.h>
 
 #ifdef HAVE_TRUNC
 #define KDE_TRUNC(a)	trunc(a)

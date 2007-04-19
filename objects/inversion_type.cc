@@ -15,8 +15,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#include "object_imp.h"
 #include "inversion_type.h"
+
+#include "object_imp.h"
 #include "point_imp.h"
 #include "line_imp.h"
 #include "circle_imp.h"

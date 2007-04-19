@@ -15,11 +15,11 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#include <config-kig.h>
-
 #include "cubic-common.h"
 #include "kignumerics.h"
 #include "kigtransform.h"
+
+#include <config-kig.h>
 
 #ifdef HAVE_IEEEFP_H
 #include <ieeefp.h>

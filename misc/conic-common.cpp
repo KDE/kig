@@ -18,8 +18,6 @@
  USA
 **/
 
-#include <config-kig.h>
-
 #include "conic-common.h"
 
 #include "common.h"
@@ -27,6 +25,8 @@
 
 #include <cmath>
 #include <algorithm>
+
+#include <config-kig.h>
 
 #ifdef HAVE_IEEEFP_H
 #include <ieeefp.h>
