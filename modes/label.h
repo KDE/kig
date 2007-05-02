@@ -70,7 +70,7 @@ protected:
   void setPropertyObjects( const argvect& props );
   void setFrame( bool f );
 
-  virtual void finish( const Coordinate& s, const QString& s,
+  virtual void finish( const Coordinate& c, const QString& s,
                        const argvect& props, bool needframe,
                        ObjectCalcer* locationparent ) = 0;
 

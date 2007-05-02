@@ -126,8 +126,8 @@ public:
   void plug( KigPart* doc, KigGUIAction* kact );
   bool isTransform() const;
   int computeNsides( const Coordinate& c, const Coordinate& v, const Coordinate& cntrl, int& winding ) const;
-  Coordinate getRotatedCoord( const Coordinate& c,
-               const Coordinate& c, double alpha ) const;
+  Coordinate getRotatedCoord( const Coordinate& c1,
+               const Coordinate& c2, double alpha ) const;
 };
 
 class MeasureTransportConstructor
