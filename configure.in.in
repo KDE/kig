@@ -153,7 +153,7 @@ AC_DEFUN([REGINA_LIB_BOOST_PYTHON], [
 		    Py_Initialize(); Py_Finalize();
 		  ], [
 		    AC_MSG_RESULT([yes])
-		    for bplib in "-lboost_python-gcc-mt-1_32" "-lboost_python-gcc-mt-1_31" "-lboost_python-gcc-mt" "-lboost_python"; do
+		    for bplib in "-lboost_python-mt" "-lboost_python-gcc-mt-1_32" "-lboost_python-gcc-mt-1_31" "-lboost_python-gcc-mt" "-lboost_python"; do
 		      AC_MSG_CHECKING([compilation of a boost.python program with $bplib])
 		      LDFLAGS="$__regina_py_save_ldflags -L$pylibdir"
 		      LIBS="-l$pylib $bplib $extralibs"
