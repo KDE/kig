@@ -199,11 +199,11 @@ void NewScriptWizard::setType( ScriptType::Type type )
     // setting the highlight mode
     if ( type != ScriptType::Unknown )
     {
-      hli->setMode ( ScriptType::highlightStyle( type ) );
+      document->setMode ( ScriptType::highlightStyle( type ) );
     }
     else
     {
-      hli->setMode ( QString () );
+      document->setMode ( QString () );
     }
   }
 }
