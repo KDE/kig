@@ -27,7 +27,6 @@ class KTextEdit;
 namespace KTextEditor
 {
   class Document;
-  class HighlightingInterface;
   class View;
 }
 class ScriptModeBase;
@@ -58,7 +57,6 @@ protected:
   QLabel* mLabelFillCode;
   KTextEdit* textedit;
   KTextEditor::Document* document;
-  KTextEditor::HighlightingInterface* hli;
   KTextEditor::View* docview;
 };
 

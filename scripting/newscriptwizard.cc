@@ -34,7 +34,6 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
 #include <ktexteditor/editorchooser.h>
-#include <ktexteditor/highlightinginterface.h>
 #include <ktexteditor/view.h>
 #include <ktoolinvocation.h>
 
@@ -57,7 +56,7 @@ NewScriptWizard::~NewScriptWizard()
 
 NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
   : QWizard( parent ),
-    mmode( mode ), textedit( 0 ), document( 0 ), hli( 0 ), docview( 0 )
+    mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 )
 {
   setObjectName( QLatin1String( "New Script Wizard" ) );
   setWindowTitle( KDialog::makeStandardCaption( i18n( "New Script" ) ) );
@@ -106,9 +105,6 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
     docview = document->activeView();
 
     lay2->addWidget( docview );
-
-    // getting the highlight interface
-    hli = qobject_cast<KTextEditor::HighlightingInterface*>( document );
 
     // displaying the left border with line numbers
     QAction *a = docview->actionCollection()->action( "view_line_numbers" );
@@ -198,19 +194,16 @@ void NewScriptWizard::setType( ScriptType::Type type )
 {
   mLabelFillCode->setText( ScriptType::fillCodeStatement( type ) );
 
-  if ( !!document )
+  if ( document )
   {
     // setting the highlight mode
-    if ( hli )
+    if ( type != ScriptType::Unknown )
     {
-      if ( type != ScriptType::Unknown )
-      {
-        hli->setHighlighting ( ScriptType::highlightStyle( type ) );
-      }
-      else
-      {
-        hli->setHighlighting ( QString () );
-      }
+      hli->setMode ( ScriptType::highlightStyle( type ) );
+    }
+    else
+    {
+      hli->setMode ( QString () );
     }
   }
 }
