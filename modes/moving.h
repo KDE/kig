@@ -27,7 +27,6 @@ class ObjectType;
 class Coordinate;
 class NormalPoint;
 class KigWidget;
-class KigDocument;
 class MonitorDataObjects;
 
 /**

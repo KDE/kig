@@ -21,7 +21,6 @@
 
 #include <kparts/mainwindow.h>
 
-class KToggleAction;
 class KRecentFilesAction;
 
 /**

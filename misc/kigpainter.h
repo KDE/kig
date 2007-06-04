@@ -35,9 +35,6 @@
 class KigWidget;
 class QPaintDevice;
 class CoordinateSystem;
-class ObjectHierarchy;
-class ConicPolarData;
-class CubicCartesianData;
 class LineData;
 class CurveImp;
 class KigDocument;

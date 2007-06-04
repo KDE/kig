@@ -24,7 +24,6 @@
 #include <vector>
 
 class KigFilter;
-class ScreenInfo;
 class KigDocument;
 
 /**

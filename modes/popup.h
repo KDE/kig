@@ -26,9 +26,6 @@
 #include <vector>
 
 class QAction;
-class KAction;
-class KIcon;
-class KigDocument;
 class KigPart;
 class KigWidget;
 class NormalMode;

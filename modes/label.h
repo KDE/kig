@@ -27,10 +27,8 @@
 #include <vector>
 
 class TextLabelWizard;
-class NormalMode;
 class Coordinate;
 class QString;
-class ObjectPropertyCalcer;
 class ObjectTypeCalcer;
 class ObjectCalcer;
 

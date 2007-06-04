@@ -24,7 +24,6 @@
 #include <vector>
 
 class KigWidget;
-class KigDocument;
 class ObjectHolder;
 
 /**

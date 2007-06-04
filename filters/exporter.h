@@ -23,7 +23,6 @@
 #include <vector>
 
 class QString;
-class KigDocument;
 class KigPart;
 class KigWidget;
 class KActionCollection;

@@ -22,7 +22,6 @@
 
 #include "../misc/cubic-common.h"
 
-class LineData;
 
 /**
  * An ObjectImp representing a cubic.

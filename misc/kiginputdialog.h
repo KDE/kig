@@ -52,8 +52,7 @@ private:
   virtual void keyPressEvent( QKeyEvent* e );
 
   KigInputDialogPrivate* d;
-  class KInputDialogPrivate;
-
+  
   Coordinate coordinateFirst() const;
   Coordinate coordinateSecond() const;
   Goniometry goniometry() const;

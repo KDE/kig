@@ -27,7 +27,6 @@ class InvalidImp;
 class HierarchyImp;
 class TransformationImp;
 class TestResultImp;
-class CurveImp;
 class LineImp;
 class PointImp;
 class TextImp;
