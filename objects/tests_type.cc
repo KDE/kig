@@ -380,3 +380,40 @@ const ObjectImpType* VectorEqualityTestType::resultId() const
 {
   return TestResultImp::stype();
 }
+
+static const ArgsParser::spec existenceArgsSpec[] =
+{
+  { ObjectImp::stype(), I18N_NOOP( "Check whether this object exists" ),
+    I18N_NOOP( "Select the object for the existence check..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ExistenceTestType )
+
+ExistenceTestType::ExistenceTestType()
+  : ArgsParserObjectType( "Existence", existenceArgsSpec, 1 )
+{
+}
+
+ExistenceTestType::~ExistenceTestType()
+{
+}
+
+const ExistenceTestType* ExistenceTestType::instance()
+{
+  static const ExistenceTestType t;
+  return &t;
+}
+
+ObjectImp* ExistenceTestType::calc( const Args& parents, const KigDocument& ) const
+{
+  //if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+  if ( static_cast<const ObjectImp*>( parents[0] )->valid() )
+    return new TestResultImp( true, i18n( "Object exists." ) );
+  else
+    return new TestResultImp( false, i18n( "The Object does not exist." ) );
+}
+
+const ObjectImpType* ExistenceTestType::resultId() const
+{
+  return TestResultImp::stype();
+}
