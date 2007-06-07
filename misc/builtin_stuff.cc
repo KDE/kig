@@ -578,6 +578,14 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_convexpolygontest" ) );
 
     c = new TestConstructor(
+      ExistenceTestType::instance(),
+      I18N_NOOP( "Existence Test" ),
+      I18N_NOOP( "Test whether a given object is constructible" ),
+      "test" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_existencetest" ) );
+
+    c = new TestConstructor(
       SameDistanceType::instance(),
       I18N_NOOP( "Distance Test" ),
       I18N_NOOP( "Test whether a given point have the same distance from a given point "

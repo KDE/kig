@@ -108,4 +108,14 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class ExistenceTestType
+  : public ArgsParserObjectType
+{
+  ExistenceTestType();
+  ~ExistenceTestType();
+public:
+  static const ExistenceTestType* instance();
+  ObjectImp* calc( const Args& parents,  const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
 #endif

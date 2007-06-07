@@ -277,6 +277,7 @@
     <Action name="objects_new_vectorequalitytest" />
     <Action name="objects_new_inpolygontest" />
     <Action name="objects_new_convexpolygontest" />
+    <Action name="objects_new_existencetest" />
   </ToolBar>
   <ToolBar name="rest_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Other Objects</text>
