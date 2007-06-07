@@ -184,7 +184,7 @@ void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )
   drawLine( LineData( p1, p2 ) );
 }
 
-void KigPainter::drawText( const Rect p, const QString s, int textFlags )
+void KigPainter::drawText( const Rect p, const QString& s, int textFlags )
 {
   QRect t = toScreen(p);
   int tf = textFlags;
@@ -195,7 +195,7 @@ void KigPainter::drawText( const Rect p, const QString s, int textFlags )
   if( mNeedOverlay ) textOverlay( t, s, tf );
 }
 
-void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags )
+void KigPainter::textOverlay( const QRect& r, const QString& s, int textFlags )
 {
   //  kDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) ) << endl;
   QRect newr( mP.boundingRect( r, textFlags, s ) );
@@ -204,7 +204,7 @@ void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags )
   mOverlay.push_back( newr );
 }
 
-const Rect KigPainter::boundingRect( const Rect& r, const QString s, int f ) const
+const Rect KigPainter::boundingRect( const Rect& r, const QString& s, int f ) const
 {
   QRect qr = mP.boundingRect( toScreen( r ), f, s );
   qr.setWidth( qr.width() + 4 );
@@ -555,23 +555,23 @@ QRect KigPainter::toScreenEnlarge( const Rect r ) const
   return qr;
 }
 
-void KigPainter::drawSimpleText( const Coordinate& c, const QString s )
+void KigPainter::drawSimpleText( const Coordinate& c, const QString& s )
 {
   int tf = Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap;
   drawText( c, s, tf );
 }
 
-void KigPainter::drawText( const Coordinate p, const QString s, int textFlags )
+void KigPainter::drawText( const Coordinate p, const QString& s, int textFlags )
 {
   drawText( Rect( p, mP.window().right(), mP.window().top() ), s, textFlags );
 }
-const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const QString s )
+const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const QString& s )
 {
   int tf = Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap;
   return boundingRect( c, s, tf );
 }
 
-const Rect KigPainter::boundingRect( const Coordinate& c, const QString s, int f ) const
+const Rect KigPainter::boundingRect( const Coordinate& c, const QString& s, int f ) const
 {
   return boundingRect( Rect( c, mP.window().right(), mP.window().top() ), s, f );
 }

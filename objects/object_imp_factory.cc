@@ -260,7 +260,7 @@ static Coordinate readXYElements( const QDomElement& e, bool& ok )
   return Coordinate( x, y );
 }
 
-static Coordinate readCoordinateElement( QDomNode n, bool& ok,
+static Coordinate readCoordinateElement( const QDomNode& n, bool& ok,
                                          const char* tagname )
 {
   QDomElement e = n.toElement();
@@ -273,7 +273,7 @@ static Coordinate readCoordinateElement( QDomNode n, bool& ok,
   return readXYElements( e, ok );
 }
 
-static double readDoubleElement( QDomNode n, bool& ok,
+static double readDoubleElement( const QDomNode& n, bool& ok,
                                  const char* tagname )
 {
   QDomElement e = n.toElement();

@@ -94,7 +94,7 @@ class LatexExportImpVisitor
   QString mcurcolorid;
 public:
   void visit( ObjectHolder* obj );
-  void mapColor( QColor color );
+  void mapColor( const QColor& color );
 
   LatexExportImpVisitor( QTextStream& s, const KigWidget& w )
     : mstream( s ), mw( w ), msr( mw.showingRect() )
@@ -135,7 +135,7 @@ private:
    * Searches if a color is already mapped into mcolors, and returns its
    * index or -1 if not found.
    */
-  int findColor( QColor c );
+  int findColor( const QColor& c );
   /**
    * Use to convert a dimension "on the screen" to a dimension wrt.
    * Kig coordinate system.
@@ -177,7 +177,7 @@ void LatexExportImpVisitor::newLine()
   mstream << "\n";
 }
 
-int LatexExportImpVisitor::findColor( QColor c )
+int LatexExportImpVisitor::findColor( const QColor& c )
 {
   for ( uint i = 0; i < mcolors.size(); ++i )
   {
@@ -187,7 +187,7 @@ int LatexExportImpVisitor::findColor( QColor c )
   return -1;
 }
 
-void LatexExportImpVisitor::mapColor( QColor color )
+void LatexExportImpVisitor::mapColor( const QColor& color )
 {
   if ( findColor( color ) == -1 )
   {

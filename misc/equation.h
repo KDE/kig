@@ -50,10 +50,10 @@ class EquationString
  : public QString
 {
 public:
-  EquationString( const QString string );
+  EquationString( const QString& string );
   double trunc( double );
   void prettify( void );
-  void addTerm( double coeff, const QString unknowns, bool& needsign );
+  void addTerm( double coeff, const QString& unknowns, bool& needsign );
 
   const QString x3() const;
   const QString y3() const;

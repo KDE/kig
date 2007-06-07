@@ -235,17 +235,17 @@ public:
    * draw text...
    * \see QPainter::drawText()
    */
-  void drawText( const Rect r, const QString s, int textFlags = 0 );
-  void drawText( const Coordinate p, const QString s, int textFlags = 0 );
+  void drawText( const Rect r, const QString& s, int textFlags = 0 );
+  void drawText( const Coordinate p, const QString& s, int textFlags = 0 );
 
-  void drawSimpleText( const Coordinate& c, const QString s );
+  void drawSimpleText( const Coordinate& c, const QString& s );
   void drawTextFrame( const Rect& frame, const QString& s, bool needframe );
 
-  const Rect boundingRect( const Rect& r, const QString s, int f = 0 ) const;
+  const Rect boundingRect( const Rect& r, const QString& s, int f = 0 ) const;
 
-  const Rect boundingRect( const Coordinate& c, const QString s, int f = 0 ) const;
+  const Rect boundingRect( const Coordinate& c, const QString& s, int f = 0 ) const;
 
-  const Rect simpleBoundingRect( const Coordinate& c, const QString s );
+  const Rect simpleBoundingRect( const Coordinate& c, const QString& s );
 
   void drawGrid( const CoordinateSystem& c, bool showGrid = true, bool showAxes = true );
 
@@ -277,7 +277,7 @@ protected:
    * ...
    * \see drawText(), QPainter::boundingRect()
    */
-  void textOverlay( const QRect& r, const QString s, int textFlags );
+  void textOverlay( const QRect& r, const QString& s, int textFlags );
 
   /**
    * the size we want the overlay rects to be...

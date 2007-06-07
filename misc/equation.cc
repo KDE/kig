@@ -27,7 +27,7 @@
  * Definitions for EquationString
  */
 
-EquationString::EquationString( const QString s )
+EquationString::EquationString( const QString& s )
   : QString( s )
 {
 }
@@ -38,7 +38,7 @@ double EquationString::trunc( double d )
   return d;
 }
 
-void EquationString::addTerm( double coeff, const QString monomial, bool& needsign )
+void EquationString::addTerm( double coeff, const QString& monomial, bool& needsign )
 {
   if ( trunc( coeff ) == 0.0 ) return;
   if ( needsign )
