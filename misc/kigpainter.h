@@ -86,23 +86,23 @@ public:
    */
   Rect window();
 
-  QPoint toScreen( const Coordinate p ) const;
-  QRect toScreen( const Rect r ) const;
-  QRect toScreenEnlarge( const Rect r ) const;
+  QPoint toScreen( const Coordinate& p ) const;
+  QRect toScreen( const Rect& r ) const;
+  QRect toScreenEnlarge( const Rect& r ) const;
   Coordinate fromScreen( const QPoint& p ) const;
   Rect fromScreen( const QRect& r ) const;
 
   // colors and stuff...
-  void setStyle( const Qt::PenStyle c );
+  void setStyle( Qt::PenStyle c );
   void setColor( const QColor& c );
   /**
    * setting this to -1 means to use the default width for the object
    * being drawn..  a point -> 5, other objects -> 1
    */
-  void setWidth( const int c );
-  void setPointStyle( const int p );
+  void setWidth( int c );
+  void setPointStyle( int p );
   void setPen( const QPen& p );
-  void setBrushStyle( const Qt::BrushStyle c );
+  void setBrushStyle( Qt::BrushStyle c );
   void setBrush( const QBrush& b );
   void setBrushColor( const QColor& c );
 
@@ -165,7 +165,7 @@ public:
   /**
    * draw a circle...
    */
-  void drawCircle( const Coordinate& center, const double radius );
+  void drawCircle( const Coordinate& center, double radius );
 
   /**
    * draw a segment...
@@ -214,16 +214,16 @@ public:
    * draw the angle with center point, with size angle, starting
    * at the angle startAngle..  Angles should be in radians.
    */
-  void drawAngle( const Coordinate& point, const double startangle,
-                  const double angle );
+  void drawAngle( const Coordinate& point, double startangle,
+                  double angle );
 
   /**
    * draw the arc ( a part of a circle ), of the circle with center
    * center, radius radius, with size angle, starting at the angle
    * startAngle..  Angles should be in radians..
    */
-  void drawArc( const Coordinate& center, const double radius,
-                const double startangle, const double angle );
+  void drawArc( const Coordinate& center, double radius,
+                double startangle, double angle );
 
   /**
    * draw a vector ( with an arrow etc. )
@@ -235,8 +235,8 @@ public:
    * draw text...
    * \see QPainter::drawText()
    */
-  void drawText( const Rect r, const QString& s, int textFlags = 0 );
-  void drawText( const Coordinate p, const QString& s, int textFlags = 0 );
+  void drawText( const Rect& r, const QString& s, int textFlags = 0 );
+  void drawText( const Coordinate& p, const QString& s, int textFlags = 0 );
 
   void drawSimpleText( const Coordinate& c, const QString& s );
   void drawTextFrame( const Rect& frame, const QString& s, bool needframe );

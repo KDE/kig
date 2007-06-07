@@ -76,7 +76,7 @@ void KigPainter::drawRect( const QRect& r )
   if( mNeedOverlay ) mOverlay.push_back( r );
 }
 
-void KigPainter::drawCircle( const Coordinate& center, const double radius )
+void KigPainter::drawCircle( const Coordinate& center, double radius )
 {
   Coordinate bottomLeft = center - Coordinate(radius, radius);
   Coordinate topRight = center + Coordinate(radius, radius);
@@ -184,7 +184,7 @@ void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )
   drawLine( LineData( p1, p2 ) );
 }
 
-void KigPainter::drawText( const Rect p, const QString& s, int textFlags )
+void KigPainter::drawText( const Rect& p, const QString& s, int textFlags )
 {
   QRect t = toScreen(p);
   int tf = textFlags;
@@ -218,20 +218,20 @@ void KigPainter::setColor( const QColor& c )
   mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
-void KigPainter::setStyle( const Qt::PenStyle c )
+void KigPainter::setStyle( Qt::PenStyle c )
 {
   style = c;
   mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
-void KigPainter::setWidth( const int c )
+void KigPainter::setWidth( int c )
 {
   width = c;
   if (c > 0) overlayenlarge = c - 1;
   mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
-void KigPainter::setPointStyle( const int p )
+void KigPainter::setPointStyle( int p )
 {
   pointstyle = p;
 }
@@ -251,7 +251,7 @@ void KigPainter::setBrush( const QBrush& b )
   mP.setBrush( b );
 }
 
-void KigPainter::setBrushStyle( const Qt::BrushStyle c )
+void KigPainter::setBrushStyle( Qt::BrushStyle c )
 {
   brushStyle = c;
   mP.setBrush( QBrush( brushColor, brushStyle ) );
@@ -494,7 +494,7 @@ void KigPainter::setWholeWinOverlay()
   mNeedOverlay = false;
 }
 
-QPoint KigPainter::toScreen( const Coordinate p ) const
+QPoint KigPainter::toScreen( const Coordinate& p ) const
 {
   return msi.toScreen( p );
 }
@@ -537,12 +537,12 @@ void KigPainter::drawTextStd( const QPoint& p, const QString& s )
 
 }
 
-QRect KigPainter::toScreen( const Rect r ) const
+QRect KigPainter::toScreen( const Rect& r ) const
 {
   return msi.toScreen( r );
 }
 
-QRect KigPainter::toScreenEnlarge( const Rect r ) const
+QRect KigPainter::toScreenEnlarge( const Rect& r ) const
 {
   if ( overlayenlarge == 0 ) return msi.toScreen( r );
 
@@ -561,7 +561,7 @@ void KigPainter::drawSimpleText( const Coordinate& c, const QString& s )
   drawText( c, s, tf );
 }
 
-void KigPainter::drawText( const Coordinate p, const QString& s, int textFlags )
+void KigPainter::drawText( const Coordinate& p, const QString& s, int textFlags )
 {
   drawText( Rect( p, mP.window().right(), mP.window().top() ), s, textFlags );
 }
@@ -623,8 +623,8 @@ void KigPainter::drawRay( const LineData& d )
   drawRay( d.a, d.b );
 }
 
-void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
-                            const double dangle )
+void KigPainter::drawAngle( const Coordinate& cpoint, double dstartangle,
+                            double dangle )
 {
   // convert to 16th of degrees...
   const int startangle = static_cast<int>( Goniometry::convert( 16 * dstartangle, Goniometry::Rad, Goniometry::Deg ) );
@@ -940,8 +940,8 @@ void KigPainter::drawTextFrame( const Rect& frame,
   drawText( frame, s, Qt::AlignVCenter | Qt::AlignLeft );
 }
 
-void KigPainter::drawArc( const Coordinate& center, const double radius,
-                          const double dstartangle, const double dangle )
+void KigPainter::drawArc( const Coordinate& center, double radius,
+                          double dstartangle, double dangle )
 {
   // convert to 16th of degrees...
   const int startangle = static_cast<int>( Goniometry::convert( 16 * dstartangle, Goniometry::Rad, Goniometry::Deg ) );
