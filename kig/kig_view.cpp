@@ -250,10 +250,12 @@ void KigWidget::clearStillPix()
   oldOverlay.push_back ( QRect( QPoint(0,0), size() ) );
 }
 
-void KigWidget::redrawScreen( const std::vector<ObjectHolder*>& selection, bool dos )
+void KigWidget::redrawScreen( const std::vector<ObjectHolder*>& _selection, bool dos )
 {
   std::vector<ObjectHolder*> nonselection;
+  std::vector<ObjectHolder*> selection = _selection;
   std::set<ObjectHolder*> objs = mpart->document().objectsSet();
+  std::sort( selection.begin(), selection.end() );
   std::set_difference( objs.begin(), objs.end(), selection.begin(), selection.end(),
                        std::back_inserter( nonselection ) );
 
