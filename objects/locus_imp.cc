@@ -165,7 +165,7 @@ void LocusImp::getInterval( double& x1, double& x2,
   {
     double x3 = x2 + incr;
     double mm2 = getDist (x3, p, doc);
-    while( mm > mm1 & mm1 > mm2 )
+    while( mm > mm1 && mm1 > mm2 )
     {
       x1 = x2;
       x2 = x3;
@@ -228,7 +228,7 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
         double x3 = x2 + incr;
         mm2 = getDist (x3, p, doc);
 	j++;
-        while( mm1 > mm2 & j <= N )
+        while( mm1 > mm2 && j <= N )
 	{
           x1 = x2;
           x2 = x3;
