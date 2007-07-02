@@ -31,16 +31,6 @@
 
 #include "aboutdata.h"
 
-static KCmdLineOptions options[] =
-  {
-    { "c", 0, 0 },
-    { "convert-to-native", I18N_NOOP( "Do not show a GUI. Convert the specified file to the native Kig format. Output goes to stdout unless --outfile is specified." ), 0 },
-    { "o", 0, 0 },
-    { "outfile <file>", I18N_NOOP( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ), 0 },
-    { "+[URL]", I18N_NOOP( "Document to open" ), 0 },
-    KCmdLineLastOption
-  };
-
 class KigApplication
   : public KUniqueApplication
 {
@@ -108,13 +98,20 @@ int main(int argc, char **argv)
   KAboutData *about = kigAboutData( "kig", I18N_NOOP("Kig") );
 
   KCmdLineArgs::init(argc, argv, about);
+
+  KCmdLineOptions options;
+  options.add("c");
+  options.add("convert-to-native", ki18n( "Do not show a GUI. Convert the specified file to the native Kig format. Output goes to stdout unless --outfile is specified." ));
+  options.add("o");
+  options.add("outfile <file>", ki18n( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ));
+  options.add("+[URL]", ki18n( "Document to open" ));
   KCmdLineArgs::addCmdLineOptions( options );
   KigApplication::addCmdLineOptions();
 
   KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
   if ( args->isSet( "convert-to-native" ) )
   {
-    QByteArray outfile = args->getOption( "outfile" );
+    QString outfile = args->getOption( "outfile" );
     if ( outfile.isEmpty() )
       outfile = "-";
 
@@ -128,7 +125,7 @@ int main(int argc, char **argv)
       kError() << "Error: --convert-to-native specified with more than one file to convert." << endl;
       return -1;
     }
-    return convertToNative( args->url( 0 ), outfile );
+    return convertToNative( args->url( 0 ), outfile.toLocal8Bit() );
   }
   else
   {
