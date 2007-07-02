@@ -25,6 +25,7 @@
 
 #include <kdebug.h>
 #include <kdialog.h>
+#include <kicondialog.h>
 #include <klineedit.h>
 #include <klocale.h>
 #include <ktoolinvocation.h>
@@ -147,9 +148,21 @@ MacroInfoPage::MacroInfoPage( QWidget* parent, DefineMacroMode* mode )
   KLineEdit* editdesc = new KLineEdit( this );
   lay->addWidget( editdesc, 1, 1 );
   label->setBuddy( editdesc );
+  label = new QLabel( this );
+  label->setText( i18n( "&Icon:" ) );
+  label->setAlignment( Qt::AlignRight );
+  lay->addWidget( label, 2, 0 );
+  QHBoxLayout* iconlay = new QHBoxLayout();
+  lay->addLayout( iconlay, 2, 1 );
+  KIconButton* iconbutton = new KIconButton( this );
+  iconlay->addWidget( iconbutton );
+  label->setBuddy( iconbutton );
+  iconbutton->setIcon( "gear" );
+  iconlay->addItem( new QSpacerItem( 5, 5, QSizePolicy::Expanding, QSizePolicy::Fixed ) );
 
   registerField( "name*", editname );
   registerField( "description", editdesc );
+  registerField( "icon", iconbutton, "icon", SIGNAL( iconChanged( const QString& ) ) );
 }
 
 

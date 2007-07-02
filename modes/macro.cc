@@ -126,7 +126,8 @@ void DefineMacroMode::finishPressed()
   MacroConstructor* ctor =
     new MacroConstructor( hier,
                           mwizard->field( "name" ).toString(),
-                          mwizard->field( "description" ).toString() );
+                          mwizard->field( "description" ).toString(),
+                          mwizard->field( "icon" ).toByteArray() );
   ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
   MacroList::instance()->add( new Macro( act, ctor ) );
 
