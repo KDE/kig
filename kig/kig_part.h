@@ -71,7 +71,7 @@ public:
   /**
    * Default constructor
    */
-  explicit KigPart( QWidget* parentWidget, QObject* parent = 0,
+  KigPart( QWidget* parentWidget, QObject* parent = 0,
            const QStringList& = QStringList() );
 
   /**

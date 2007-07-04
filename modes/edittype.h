@@ -37,7 +37,7 @@ class EditType : public KDialog
   QString mdesc;
   QString micon;
 public:
-  explicit EditType( QWidget* parent, const QString& name = QString(),
+  EditType( QWidget* parent, const QString& name = QString(),
             const QString& desc = QString(), const QString& icon = QString() );
   ~EditType();
 

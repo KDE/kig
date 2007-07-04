@@ -245,7 +245,7 @@ class KigView
   KigPart* mpart;
 
 public:
-  explicit KigView( KigPart* part,
+  KigView( KigPart* part,
            bool fullscreen = false,
            QWidget* parent = 0
           );

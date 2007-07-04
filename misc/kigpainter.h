@@ -257,9 +257,9 @@ protected:
    * contain the circle...
    * \see mOverlay
    */
-  void circleOverlay( const Coordinate& center, double radius );
+  void circleOverlay( const Coordinate& centre, double radius );
   // this works recursively...
-  void circleOverlayRecurse( const Coordinate& center, double radius, const Rect& currentRect );
+  void circleOverlayRecurse( const Coordinate& centre, double radius, const Rect& currentRect );
 
   /**
    * adds some rects to mOverlay, so that they cover the segment p1p2

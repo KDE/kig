@@ -34,7 +34,7 @@ public:
    * The kinds of metrical units we support.
    */
   enum MetricalUnit { pixel = 0, cm, in };
-  explicit Unit( double value = 0.0, Unit::MetricalUnit unit = cm, int dpi = 1 );
+  Unit( double value = 0.0, Unit::MetricalUnit unit = cm, int dpi = 1 );
   ~Unit();
   void setValue( double value );
   double value() const;

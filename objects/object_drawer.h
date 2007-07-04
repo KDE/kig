@@ -59,7 +59,7 @@ public:
    * pointstyle ( 0 ) and font ( default application font )
    */
   ObjectDrawer();
-  explicit ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0, const QFont& f = QFont() );
+  ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0, const QFont& f = QFont() );
   /**
    * Draw the object \p imp on kigpainter \p p .  If \p selected is true, it is
    * drawn in red, otherwise in its normal color.
