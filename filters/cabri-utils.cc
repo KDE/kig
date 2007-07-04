@@ -99,17 +99,17 @@ QString readLine( QFile& file )
 QString readText( QFile& f, const QString& s, const QString& sep )
 {
   QString line = s;
-  if ( !line.startsWith( "\"" ) || f.atEnd() )
+  if ( !line.startsWith( '\"' ) || f.atEnd() )
     // don't blame on failing here
     return QString();
 
   QStringList l;
-  bool go_on = !line.endsWith( "\"" );
+  bool go_on = !line.endsWith( '\"' );
   while ( go_on && !f.atEnd() )
   {
     l << line;
     line = readLine( f );
-    go_on = !line.endsWith( "\"" );
+    go_on = !line.endsWith( '\"' );
   }
   if ( !go_on )
   {

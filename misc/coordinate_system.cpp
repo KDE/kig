@@ -312,7 +312,7 @@ QString EuclideanCoords::coordinateFormatNotice() const
 
 QString EuclideanCoords::coordinateFormatNoticeMarkup() const
 {
-  return i18n( "Enter coordinates in the following format: <b>\"x;y\"</b>,<br>"
+  return i18n( "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />"
                "where x is the x coordinate, and y is the y coordinate." );
 }
 
@@ -361,7 +361,7 @@ QString PolarCoords::coordinateFormatNotice() const
 QString PolarCoords::coordinateFormatNoticeMarkup() const
 {
   // \xCE\xB8 is utf8 for the greek theta sign..
-  return i18n( "Enter coordinates in the following format: <b>\"r; \xCE\xB8°\"</b>,<br>"
+  return i18n( "Enter coordinates in the following format: <b>\"r; \xCE\xB8°\"</b>,<br />"
                "where r and \xCE\xB8 are the polar coordinates." );
 }
 
