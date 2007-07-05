@@ -13,7 +13,7 @@ kde4_automoc(${kig_SRCS})
 
 kde4_add_executable(kig ${kig_SRCS})
 
-target_link_libraries(kig  ${KDE4_KPARTS_LIBS} ${KDE4_KDE3SUPPORT_LIBS} )
+target_link_libraries(kig   ${KDE4_KDE3SUPPORT_LIBS} )
 
 install(TARGETS kig DESTINATION ${BIN_INSTALL_DIR})
 
