@@ -9,7 +9,6 @@ set(kig_SRCS
   kig.cpp
 )
 
-kde4_automoc(${kig_SRCS})
 
 kde4_add_executable(kig ${kig_SRCS})
 

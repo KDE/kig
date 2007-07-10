@@ -141,7 +141,6 @@ if(BOOST_PYTHON_FOUND)
   set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "${KDE4_ENABLE_EXCEPTIONS}")
 endif(BOOST_PYTHON_FOUND)
 
-kde4_automoc(${kigpart_PART_SRCS})
 
 kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
 
