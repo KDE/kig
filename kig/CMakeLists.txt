@@ -19,7 +19,7 @@ install(TARGETS kig DESTINATION ${BIN_INSTALL_DIR})
 
 ########### install files ###############
 
-install( FILES kig.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES kig.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kig_part.desktop  DESTINATION  ${SERVICES_INSTALL_DIR} )
 install( FILES kigui.rc kigpartui.rc DESTINATION ${DATA_INSTALL_DIR}/kig )
 
