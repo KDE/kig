@@ -30,9 +30,9 @@ Coordinate Coordinate::fromQPoint( const QPoint& p )
   return Coordinate( p.x(), p.y() );
 }
 
-kdbgstream& operator<<( kdbgstream& s, const Coordinate& t )
+QDebug& operator<<( QDebug& s, const Coordinate& t )
 {
-  s << "x: " << t.x << "  y: " << t.y << endl;
+  s << "x:" << t.x << "y:" << t.y;
   return s;
 }
 

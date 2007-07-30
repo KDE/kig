@@ -23,7 +23,7 @@
 #define KIG_MISC_COORDINATE_H
 
 class QPoint;
-class kdbgstream;
+class QDebug;
 
 /**
  * The Coordinate class is the basic class representing a 2D location
@@ -128,7 +128,7 @@ public:
    */
   double y;
 
-  friend kdbgstream& operator<<( kdbgstream& s, const Coordinate& t );
+  friend QDebug& operator<<( QDebug& s, const Coordinate& t );
   /** Add.  Returns the sum of a and b.
    */
   friend const Coordinate operator+ ( const Coordinate& a, const Coordinate& b );
@@ -153,7 +153,7 @@ public:
 };
 
 const Coordinate operator/ ( const Coordinate& a, double r );
-kdbgstream& operator<<( kdbgstream& s, const Coordinate& t );
+QDebug& operator<<( QDebug& s, const Coordinate& t );
 const Coordinate operator+ ( const Coordinate& a, const Coordinate& b );
 const Coordinate operator- ( const Coordinate& a, const Coordinate& b );
 const Coordinate operator* ( const Coordinate& a, double r );
