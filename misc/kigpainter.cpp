@@ -197,7 +197,7 @@ void KigPainter::drawText( const Rect& p, const QString& s, int textFlags )
 
 void KigPainter::textOverlay( const QRect& r, const QString& s, int textFlags )
 {
-  //  kDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) ) << endl;
+  //  kDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) );
   QRect newr( mP.boundingRect( r, textFlags, s ) );
   newr.setWidth( newr.width() + 4 );
   newr.setHeight( newr.height() + 4 );
@@ -452,13 +452,13 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
     tR.setCenter(tP);
     if (!tR.intersects(r))
     {
-      //kDebug()<< "stopped after "<< counter << " passes." << endl;
+      //kDebug()<< "stopped after "<< counter << " passes.";
       break;
     }
     if (tR.intersects(border)) mOverlay.push_back( toScreenEnlarge( tR ) );
     if (++counter > 100)
     {
-      kDebug()<< k_funcinfo << "counter got too big :( " << endl;
+      kDebug()<< k_funcinfo << "counter got too big :( ";
       break;
     }
   }
@@ -900,7 +900,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
   curpolylinenextfree = 0;
 
   if ( ! workstack.empty () )
-    kDebug() << "Stack not empty in KigPainter::drawCurve!\n" << endl;
+    kDebug() << "Stack not empty in KigPainter::drawCurve!\n";
   assert ( tNeedOverlay || overlaystack.empty() );
   if ( tNeedOverlay )
   {

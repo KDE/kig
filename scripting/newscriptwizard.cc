@@ -86,7 +86,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
 
   KTextEditor::Editor* editor = KTextEditor::EditorChooser::editor();
 //  KTextEditor::Editor* editor = 0;
-  kDebug() << "EDITOR: " << editor << endl;
+  kDebug() << "EDITOR: " << editor;
 
   if ( !editor )
   {

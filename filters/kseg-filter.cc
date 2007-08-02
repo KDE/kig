@@ -304,7 +304,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     int width = style.pen.width();
 
 /*
-    kDebug() << "type: " << type << endl
+    kDebug() << "type: " << type
               << "descendtype: " << descendtype << endl
               << "label: " << labeltext << endl;
 //*/

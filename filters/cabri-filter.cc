@@ -73,7 +73,7 @@ static ObjectTypeCalcer* intersectionPoints( const std::vector<ObjectCalcer*>& p
     else return 0;
   };
 #ifdef CABRI_DEBUG
-  kDebug() << k_funcinfo << "which: " << which << endl;
+  kDebug() << k_funcinfo << "which: " << which;
 #endif
   if ( nlines == 2 )
     return which == -1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : 0;
@@ -170,12 +170,12 @@ KigDocument* KigFilterCabri::load( const QString& file )
   CabriReader* reader = 0;
 
 #ifdef CABRI_DEBUG
-  kDebug() << ">>>>>>>>> version: " << header.cap( 3 ) << endl;
+  kDebug() << ">>>>>>>>> version: " << header.cap( 3 );
   if ( !header.cap( 10 ).isEmpty() )
   {
-    kDebug() << ">>>>>>>>> session file:" << endl;
-    kDebug() << ">>>>>>>>>  -> time = " << header.cap( 12 ) << " sec" << endl;
-    kDebug() << ">>>>>>>>>  -> action = \"" << header.cap( 11 ) << "\"" << endl;
+    kDebug() << ">>>>>>>>> session file:";
+    kDebug() << ">>>>>>>>>  -> time = " << header.cap( 12 ) << " sec";
+    kDebug() << ">>>>>>>>>  -> action = \"" << header.cap( 11 ) << "\"";
   }
 #endif
   if ( ( major == 1 ) && ( minor == 0 ) )
@@ -229,7 +229,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
   while ( ! f.atEnd() )
   {
 #ifdef CABRI_DEBUG
-    kDebug() << ">>>>>>>>> -------------------------------" << endl;
+    kDebug() << ">>>>>>>>> -------------------------------";
 #endif
     // we do one object each iteration..
     CabriObject* obj = reader->readObject( f );
@@ -237,7 +237,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
       return 0;
 
 #ifdef CABRI_DEBUG
-    kDebug() << "+++++ " << obj->id << " - " << obj->type << endl;
+    kDebug() << "+++++ " << obj->id << " - " << obj->type;
 #endif
 
     if ( obj->type == "Grid" )
@@ -266,7 +266,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
 #ifdef CABRI_DEBUG
         else
         {
-          kDebug() << ">>>>>>>>> OBJECT TO AXIS/GRID: \"" << obj->type << "\"" << endl;
+          kDebug() << ">>>>>>>>> OBJECT TO AXIS/GRID: \"" << obj->type << "\"";
         }
 #endif
       }
@@ -285,8 +285,8 @@ KigDocument* KigFilterCabri::load( const QString& file )
                   << args[j]->imp()->type()->internalName() << endl;
       }
     else
-      kDebug() << "+++++++++ args: NO" << endl;
-    kDebug() << "+++++++++ data: " << obj->data.size() << endl;
+      kDebug() << "+++++++++ args: NO";
+    kDebug() << "+++++++++ data: " << obj->data.size();
 #endif
     if ( obj->type == "Pt" )
     {
@@ -625,7 +625,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
       return 0;
     }
 #ifdef CABRI_DEBUG
-    kDebug() << "+++++++++ oc: " << oc << endl;
+    kDebug() << "+++++++++ oc: " << oc;
 #endif
 
     if ( oc == 0 ) KIG_FILTER_PARSE_ERROR;

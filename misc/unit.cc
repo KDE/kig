@@ -132,7 +132,7 @@ Unit::MetricalUnit Unit::intToUnit( int index )
     return cm;
   else if ( index == 2 )
     return in;
-  kDebug() << "No measure unit with index " << index << endl;
+  kDebug() << "No measure unit with index " << index;
   return pixel;
 }
 

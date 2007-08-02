@@ -83,7 +83,7 @@ class XFigExportImpVisitor
     {
       Coordinate ret = ( c - msr.bottomLeft() );
       ret.y = msr.height() - ret.y;
-//       kDebug() << "msr: " << msr << endl
+//       kDebug() << "msr: " << msr
 //                 << "ret: " << ret << endl
 //                 << "c: " << c << endl;
       ret *= 9450;

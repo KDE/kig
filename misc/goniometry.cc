@@ -132,6 +132,6 @@ Goniometry::System Goniometry::intToSystem( const int index )
     return Rad;
   else if( index == 2 )
     return Grad;
-  kDebug() << "No goniometric system with index " << index << endl;
+  kDebug() << "No goniometric system with index " << index;
   return Rad;
 }

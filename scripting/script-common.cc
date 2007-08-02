@@ -100,7 +100,7 @@ QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*
     return tempcode;
   }
 
-  kDebug() << "No such script type: " << type << endl;
+  kDebug() << "No such script type: " << type;
   return "";
 }
 

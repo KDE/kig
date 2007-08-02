@@ -393,7 +393,7 @@ bool KigPart::openFile()
   // m_file is always local, so we can use findByPath instead of
   // findByURL...
   KMimeType::Ptr mimeType = KMimeType::findByPath ( localFilePath() );
-  kDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
+  kDebug() << k_funcinfo << "mimetype: " << mimeType->name();
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
   {
@@ -928,7 +928,7 @@ KigDocument& KigPart::document()
 
 extern "C" KDE_EXPORT int convertToNative( const KUrl& url, const QByteArray& outfile )
 {
-  kDebug() << "converting " << url.prettyUrl() << " to " << outfile << endl;
+  kDebug() << "converting " << url.prettyUrl() << " to " << outfile;
 
   if ( ! url.isLocalFile() )
   {
@@ -947,7 +947,7 @@ extern "C" KDE_EXPORT int convertToNative( const KUrl& url, const QByteArray& ou
   };
 
   KMimeType::Ptr mimeType = KMimeType::findByPath ( file );
-  kDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
+  kDebug() << k_funcinfo << "mimetype: " << mimeType->name();
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
   {
