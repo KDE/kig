@@ -92,13 +92,11 @@ void KigWidget::mousePressEvent (QMouseEvent* e)
 
 void KigWidget::mouseMoveEvent (QMouseEvent* e)
 {
-  // using QApplication as the QMouseButton::button() doesn't work in
-  // a mouseMoveEvent()
-  if( QApplication::mouseButtons() == Qt::LeftButton )
+  if( ( e->buttons() & Qt::LeftButton ) == Qt::LeftButton )
     return mpart->mode()->leftMouseMoved( e, this );
-  if ( QApplication::mouseButtons() == Qt::MidButton )
+  if ( ( e->buttons() & Qt::MidButton ) == Qt::MidButton )
     return mpart->mode()->midMouseMoved( e, this );
-  if ( QApplication::mouseButtons() == Qt::RightButton )
+  if ( ( e->buttons() & Qt::RightButton ) == Qt::RightButton )
     return mpart->mode()->rightMouseMoved( e, this );
   return mpart->mode()->mouseMoved( e, this );
 }
