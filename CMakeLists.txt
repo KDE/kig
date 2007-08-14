@@ -152,6 +152,10 @@ endif(BOOST_PYTHON_FOUND)
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
+# unit tests
+add_subdirectory(tests)
+
+
 ########### install files ###############
 
 
