@@ -39,6 +39,17 @@
 #include <string>
 #include <math.h>
 
+static QString withoutSpaces( const QString& str )
+{
+  QString newstr;
+  int s = str.size();
+  for ( int i = 0; i < s; ++i )
+    if ( !str.at( i ).isSpace() )
+      newstr.append( str.at( i ) );
+  return newstr;
+}
+
+
 class CoordinateValidator
   : public QValidator
 {
@@ -66,23 +77,23 @@ CoordinateValidator::~CoordinateValidator()
 
 QValidator::State CoordinateValidator::validate( QString & input, int & pos ) const
 {
-  QString tinput = input;
-  if ( tinput[tinput.length() - 1 ] == ')' ) tinput.truncate( tinput.length() - 1 );
+  QString tinput = withoutSpaces( input );
+  if ( tinput.isEmpty() )
+    return Invalid;
+  if ( tinput.at( tinput.length() - 1 ) == ')' ) tinput.truncate( tinput.length() - 1 );
   if ( mpolar )
   {
-    if ( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
-    if ( QString( tinput[tinput.length() - 1 ] ).isEmpty() ) tinput.truncate( tinput.length() - 1 );
+    // strip the eventual '°'
+    if ( !tinput.isEmpty() && tinput.at( tinput.length() - 1 ).unicode() == 176 )
+      tinput.truncate( tinput.length() - 1 );
   };
-  if( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
   if ( tinput[0] == '(' ) tinput = tinput.mid( 1 );
-  if( tinput[0] == ' ' ) tinput = tinput.mid( 1 );
   int scp = tinput.indexOf( ';' );
-  if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Acceptable;
+  if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Intermediate;
   else
   {
     QString p1 = tinput.left( scp );
     QString p2 = tinput.mid( scp + 1 );
-    if ( p2.size() > 0 && p2.at(0) == ' ' ) p2 = p2.mid( 1 );
 
     State ret = Acceptable;
 

@@ -52,25 +52,35 @@ CoordinateValidator::~CoordinateValidator()
 {
 }
 
+static QString withoutSpaces( const QString& str )
+{
+  QString newstr;
+  int s = str.size();
+  for ( int i = 0; i < s; ++i )
+    if ( !str.at( i ).isSpace() )
+      newstr.append( str.at( i ) );
+  return newstr;
+}
+
 QValidator::State CoordinateValidator::validate( QString & input, int & pos ) const
 {
-  QString tinput = input;
-  if ( tinput[tinput.length() - 1 ] == ')' ) tinput.truncate( tinput.length() - 1 );
+  QString tinput = withoutSpaces( input );
+  if ( tinput.isEmpty() )
+    return Invalid;
+  if ( tinput.at( tinput.length() - 1 ) == ')' ) tinput.truncate( tinput.length() - 1 );
   if ( mpolar )
   {
-    if ( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
-    if ( QString( tinput[tinput.length() - 1 ] ).isEmpty() ) tinput.truncate( tinput.length() - 1 );
+    // strip the eventual '°'
+    if ( !tinput.isEmpty() && tinput.at( tinput.length() - 1 ).unicode() == 176 )
+      tinput.truncate( tinput.length() - 1 );
   };
-  if( tinput[tinput.length() - 1 ] == ' ' ) tinput.truncate( tinput.length() - 1 );
   if ( tinput[0] == '(' ) tinput = tinput.mid( 1 );
-  if( tinput[0] == ' ' ) tinput = tinput.mid( 1 );
   int scp = tinput.indexOf( ';' );
-  if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Acceptable;
+  if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Intermediate;
   else
   {
     QString p1 = tinput.left( scp );
     QString p2 = tinput.mid( scp + 1 );
-    if ( p2.size() > 0 && p2.at(0) == ' ' ) p2 = p2.mid( 1 );
 
     State ret = Acceptable;
 
@@ -126,6 +136,7 @@ public:
 
 private slots:
   void testEuclideanSystem();
+  void testPolarSystem();
 };
 
 CoordinateValidatorTest::CoordinateValidatorTest()
@@ -139,6 +150,75 @@ void CoordinateValidatorTest::testEuclideanSystem()
   QString s;
   int fakepos = 0;
   QCOMPARE( v.validate( s, fakepos ), QValidator::Invalid );
+  s = QString::fromUtf8( "5" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( ")" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "()" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "(5.3;5)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( "5.3;5" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( "  5.3 ;5)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( ";5)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "(;)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "4;5.6)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( ";5..6)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Invalid );
+  s = QString::fromUtf8( "5;" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+}
+
+void CoordinateValidatorTest::testPolarSystem()
+{
+  CoordinateValidator v( true );
+
+  QString s;
+  int fakepos = 0;
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Invalid );
+  s = QString::fromUtf8( "°" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( ")" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "°)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "5" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "5°" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "(5)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "(5.3;5)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( "(5.3;5°)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( "5.3;5" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( "5.3;5°" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( "  5.3 ;5)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( ";5)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( ";5°)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "(;)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "(;°)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
+  s = QString::fromUtf8( "4;5.6)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Acceptable );
+  s = QString::fromUtf8( ";5..6)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Invalid );
+  s = QString::fromUtf8( "5..6;°)" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Invalid );
+  s = QString::fromUtf8( "5;" );
+  QCOMPARE( v.validate( s, fakepos ), QValidator::Intermediate );
 }
 
 QTEST_KDEMAIN_CORE( CoordinateValidatorTest )
