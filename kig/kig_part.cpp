@@ -60,6 +60,7 @@
 #include <kstandardaction.h>
 #include <ktoggleaction.h>
 #include <ktogglefullscreenaction.h>
+#include <kundostack.h>
 #include <kparts/genericfactory.h>
 #include <kdeprint/kprintdialogpage.h>
 #include <kicon.h>
@@ -188,12 +189,10 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   setupTypes();
 
   // construct our command history
-  mhistory = new QUndoStack();
+  mhistory = new KUndoStack();
   QAction* undoact = mhistory->createUndoAction( actionCollection() );
-  undoact->setIcon( KIcon( "edit-undo" ) );
   actionCollection()->addAction( "edit_undo", undoact );
   QAction* redoact = mhistory->createRedoAction( actionCollection() );
-  redoact->setIcon( KIcon( "edit-redo" ) );
   actionCollection()->addAction( "edit_redo", redoact );
   connect( mhistory, SIGNAL( cleanChanged( bool ) ), this, SLOT( setHistoryClean( bool ) ) );
 
