@@ -370,10 +370,16 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
     };
     assert( hierarchy );
     // if the macro has no name, we give it a bogus name...
+    bool name_i18ned = false;
     if ( name.isEmpty() )
+    {
       name = i18n( "Unnamed Macro #%1", unnamedindex++ );
+      name_i18ned = true;
+    }
     MacroConstructor* ctor =
-      new MacroConstructor( *hierarchy, i18n( name.toLatin1() ), i18n( description.toLatin1() ), iconfile );
+      new MacroConstructor( *hierarchy, name_i18ned ? name : i18n( name.toUtf8() ),
+                            description.isEmpty() ? QString() : i18n( description.toUtf8() ),
+                            iconfile );
     delete hierarchy;
     GUIAction* act = new ConstructibleAction( ctor, actionname );
     Macro* macro = new Macro( act, ctor );
