@@ -237,7 +237,7 @@ void Kig::dropEvent(QDropEvent* e)
 void Kig::fileOpen()
 {
   QString formats =
-     i18n( "*.kig *.kigz *.kgeo *.seg|All Supported Files (*.kig *.kigz *.kgeo *.seg)\n"
+     i18n( "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *.seg *.fgeo *.fig)\n"
            "*.kig|Kig Documents (*.kig)\n"
            "*.kigz|Compressed Kig Documents (*.kigz)\n"
            "*.kgeo|KGeo Documents (*.kgeo)\n"
