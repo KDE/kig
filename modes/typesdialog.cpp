@@ -139,11 +139,6 @@ TypesModel::~TypesModel()
 {
 }
 
-const std::vector<BaseListElement*>& TypesModel::elements() const
-{
-  return melems;
-}
-
 void TypesModel::addMacros( const std::vector<Macro*>& macros )
 {
   if ( macros.size() < 1 )
@@ -160,7 +155,7 @@ void TypesModel::addMacros( const std::vector<Macro*>& macros )
   endInsertRows();
 }
 
-void TypesModel::removeElements( const std::vector<BaseListElement*>& elems )
+void TypesModel::removeElements( const QModelIndexList& elems )
 {
   // this way of deleting needs some explanation: the std::vector.erase needs
   // an iterator to the element to remove from the list, while the
@@ -169,22 +164,28 @@ void TypesModel::removeElements( const std::vector<BaseListElement*>& elems )
   // find it, we free the memory of the BaseListElement and remove the element
   // from the list. in the meanwhile, we notify the model structure of Qt that
   // we're removing a row.
-  std::vector<BaseListElement*> newelems = elems;
-  for ( std::vector<BaseListElement*>::iterator it = newelems.begin();
-        it != newelems.end(); ++it )
+  for ( int i = elems.count(); i > 0; --i )
   {
+    QModelIndex index = elems.at( i - 1 );
+    if ( !index.isValid() || index.row() < 0 || index.row() >= static_cast<int>( melems.size() )
+         || index.column() < 0 || index.column() > 3 )
+      continue;
+
+    BaseListElement* element = melems[ index.row() ];
+
     bool found = false;
     int id = 0;
     for ( std::vector<BaseListElement*>::iterator mit = melems.begin();
           mit != melems.end() && !found; )
     {
-      if ( *mit == *it )
+      if ( *mit == element )
       {
         found = true;
         beginRemoveRows( QModelIndex(), id, id );
 
         delete (*mit);
         mit = melems.erase( mit );
+        element = 0;
 
         endRemoveRows();
       }
@@ -406,12 +407,19 @@ void TypesDialog::deleteType()
 {
   std::vector<Macro*> selectedTypes;
   std::set<int> rows = selectedRows();
-  const std::vector<BaseListElement*>& el = mmodel->elements();
-  for ( std::set<int>::const_iterator it = rows.begin(); it != rows.end(); ++it )
+  QModelIndexList indexes;
+  std::vector<int> sortedrows;
+  std::copy( rows.begin(), rows.end(), std::back_inserter( sortedrows ) );
+  std::sort( sortedrows.begin(), sortedrows.end() );
+  for ( std::vector<int>::const_iterator it = sortedrows.begin(); it != sortedrows.end(); ++it )
   {
-    BaseListElement* e = el[ *it ];
-    if ( e->isMacro() )
-      selectedTypes.push_back( static_cast<MacroListElement*>( e )->getMacro() );
+    QModelIndex index = mmodel->index( *it, 0 );
+    Macro* macro = mmodel->macroFromIndex( index );
+    if ( macro )
+    {
+      selectedTypes.push_back( macro );
+      indexes.append( index );
+    }
   }
 
   if (selectedTypes.empty()) return;
@@ -426,18 +434,9 @@ void TypesDialog::deleteType()
         types, i18n("Are You Sure?"), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
         "deleteTypeWarning") == KMessageBox::Cancel )
      return;
-  std::vector<BaseListElement*> todelete;
-  for ( std::set<int>::const_iterator it = rows.begin(); it != rows.end(); ++it )
-  {
-    BaseListElement* e = el[ *it ];
-    if ( e->isMacro() )
-    {
-      todelete.push_back( e );
-    }
-  }
   bool updates = mtypeswidget->typeList->updatesEnabled();
   mtypeswidget->typeList->setUpdatesEnabled( false );
-  mmodel->removeElements( todelete );
+  mmodel->removeElements( indexes );
   mtypeswidget->typeList->setUpdatesEnabled( updates );
   for ( std::vector<Macro*>::iterator j = selectedTypes.begin();
         j != selectedTypes.end(); ++j)

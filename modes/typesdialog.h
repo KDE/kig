@@ -48,10 +48,8 @@ public:
   TypesModel( QObject* parent = 0 );
   virtual ~TypesModel();
 
-  const std::vector<BaseListElement*>& elements() const;
-
   void addMacros( const std::vector<Macro*>& macros );
-  void removeElements( const std::vector<BaseListElement*>& elems );
+  void removeElements( const QModelIndexList& elems );
 
   void clear();
 
