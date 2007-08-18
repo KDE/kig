@@ -199,9 +199,9 @@ void TypesModel::clear()
   melems.clear();
 }
 
-int TypesModel::columnCount( const QModelIndex& ) const
+int TypesModel::columnCount( const QModelIndex& parent ) const
 {
-  return 4;
+  return parent.isValid() ? 0 : 3;
 }
 
 QVariant TypesModel::data( const QModelIndex& index, int role ) const
@@ -216,7 +216,7 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
   {
     case Qt::DecorationRole:
     {
-      if ( index.column() == 0 )
+      if ( index.column() == 1 )
         return KIcon( melems[ index.row() ]->icon() );
       else
         return QVariant();
@@ -226,9 +226,9 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
     {
       switch ( index.column() )
       {
-        case 1: return melems[ index.row() ]->type(); break;
-        case 2: return melems[ index.row() ]->name(); break;
-        case 3: return melems[ index.row() ]->description(); break;
+        case 0: return melems[ index.row() ]->type(); break;
+        case 1: return melems[ index.row() ]->name(); break;
+        case 2: return melems[ index.row() ]->description(); break;
         default:
           return QVariant();
       }
@@ -273,18 +273,17 @@ QVariant TypesModel::headerData( int section, Qt::Orientation orientation, int r
 
   switch ( section )
   {
-    case 0: return i18n( "Icon" ); break;
-    case 1: return i18n( "Type" ); break;
-    case 2: return i18n( "Name" ); break;
-    case 3: return i18n( "Description" ); break;
+    case 0: return i18n( "Type" ); break;
+    case 1: return i18n( "Name" ); break;
+    case 2: return i18n( "Description" ); break;
     default:
       return QVariant();
   }
 }
 
-int TypesModel::rowCount( const QModelIndex& ) const
+int TypesModel::rowCount( const QModelIndex& parent ) const
 {
-  return melems.size();
+  return parent.isValid() ? 0 : melems.size();
 }
 
 
@@ -322,7 +321,6 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 //  mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
 
   mtypeswidget->typeList->resizeColumnToContents( 0 );
-  mtypeswidget->typeList->resizeColumnToContents( 1 );
 
   popup = new QMenu( this );
   popup->addAction( KIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
@@ -450,6 +448,8 @@ void TypesDialog::importTypes()
   for ( uint i = 0; i < macros.size(); ++i )
     el.push_back( new MacroListElement( macros[i] ) );
   mmodel->addElements( el );
+
+  mtypeswidget->typeList->resizeColumnToContents( 0 );
 }
 
 void TypesDialog::editType()
