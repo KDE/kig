@@ -95,9 +95,7 @@ private slots:
   void typeListContextMenu( const QPoint& );
 
 private:
-  typedef MacroList::vectype vec;
-
-  std::set<int> selectedRows() const;
+  QModelIndexList selectedRows() const;
 };
 
 #endif

@@ -356,7 +356,6 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->buttonExport->setIcon( KIcon( "file-export" ) );
   mtypeswidget->buttonImport->setIcon( KIcon("file-import" ) );
 
-  std::vector<BaseListElement*> el;
   // loading macros...
   mmodel->addMacros( MacroList::instance()->macros() );
 
@@ -406,19 +405,13 @@ void TypesDialog::slotOk()
 void TypesDialog::deleteType()
 {
   std::vector<Macro*> selectedTypes;
-  std::set<int> rows = selectedRows();
-  QModelIndexList indexes;
-  std::vector<int> sortedrows;
-  std::copy( rows.begin(), rows.end(), std::back_inserter( sortedrows ) );
-  std::sort( sortedrows.begin(), sortedrows.end() );
-  for ( std::vector<int>::const_iterator it = sortedrows.begin(); it != sortedrows.end(); ++it )
+  QModelIndexList indexes = selectedRows();
+  for ( QModelIndexList::const_iterator it = indexes.begin(); it != indexes.end(); ++it )
   {
-    QModelIndex index = mmodel->index( *it, 0 );
-    Macro* macro = mmodel->macroFromIndex( index );
+    Macro* macro = mmodel->macroFromIndex( *it );
     if ( macro )
     {
       selectedTypes.push_back( macro );
-      indexes.append( index );
     }
   }
 
@@ -446,11 +439,10 @@ void TypesDialog::deleteType()
 void TypesDialog::exportType()
 {
   std::vector<Macro*> types;
-  std::set<int> rows = selectedRows();
-  for ( std::set<int>::const_iterator it = rows.begin(); it != rows.end(); ++it )
+  QModelIndexList indexes = selectedRows();
+  for ( QModelIndexList::const_iterator it = indexes.begin(); it != indexes.end(); ++it )
   {
-    QModelIndex index = mmodel->index( *it, 0 );
-    Macro* macro = mmodel->macroFromIndex( index );
+    Macro* macro = mmodel->macroFromIndex( *it );
     if ( macro )
       types.push_back( macro );
   }
@@ -492,10 +484,10 @@ void TypesDialog::importTypes()
 
 void TypesDialog::editType()
 {
-  std::set<int> rows = selectedRows();
-  if ( rows.empty() )
+  QModelIndexList indexes = selectedRows();
+  if ( indexes.isEmpty() )
     return;
-  if ( rows.size() > 1 )
+  if ( indexes.count() > 1 )
   {
     KMessageBox::sorry( this,
                         i18n( "There is more than one type selected. You can "
@@ -505,11 +497,7 @@ void TypesDialog::editType()
     return;
   }
   bool refresh = false;
-  // we get the iterator pointing at the beginning and use it to point to the
-  // only object inside. this is done as we know that there's only one object
-  // inside.
-  std::set<int>::const_iterator first = rows.begin();
-  QModelIndex index = mmodel->index( *first, 0 );
+  QModelIndex index = indexes.first();
   if ( mmodel->isMacro( index ) )
   {
     Macro* oldmacro = mmodel->macroFromIndex( index );
@@ -543,18 +531,16 @@ void TypesDialog::slotCancel()
   reject();
 }
 
-std::set<int> TypesDialog::selectedRows() const
+QModelIndexList TypesDialog::selectedRows() const
 {
-  QModelIndexList indexes = mtypeswidget->typeList->selectionModel()->selectedIndexes();
-  std::set<int> rows;
-  for ( int i = 0; i < indexes.count(); ++i )
-    rows.insert( indexes.at(i).row() );
-  return rows;
+  QModelIndexList indexes = mtypeswidget->typeList->selectionModel()->selectedRows();
+  qSort( indexes );
+  return indexes;
 }
 
 void TypesDialog::typeListContextMenu( const QPoint& pos )
 {
-  QModelIndexList indexes = mtypeswidget->typeList->selectionModel()->selectedIndexes();
+  QModelIndexList indexes = mtypeswidget->typeList->selectionModel()->selectedRows();
   if ( indexes.isEmpty() )
     return;
 
