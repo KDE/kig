@@ -18,11 +18,12 @@
 #ifndef KIG_FILTERS_IMAGEEXPORTEROPTIONS_H
 #define KIG_FILTERS_IMAGEEXPORTEROPTIONS_H
 
+#include "../misc/unit.h"
+
 #include <qwidget.h>
 
 class QSize;
 class Ui_ImageExporterOptionsWidget;
-class Unit;
 
 class ImageExporterOptions
   : public QWidget
@@ -32,8 +33,8 @@ class ImageExporterOptions
   QSize msize;
   Ui_ImageExporterOptionsWidget* expwidget;
   double maspectratio;
-  Unit* mxunit;
-  Unit* myunit;
+  Unit mxunit;
+  Unit myunit;
 
   // this is set by slotWidthChanged() when they set the other input
   // widget's value, to avoid reacting to internal changes to the

@@ -72,6 +72,7 @@ HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
 
 HistoryDialog::~HistoryDialog()
 {
+  delete mwidget;
 }
 
 void HistoryDialog::goToFirst()

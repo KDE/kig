@@ -20,8 +20,6 @@
 
 #include "ui_imageexporteroptionswidget.h"
 
-#include "../misc/unit.h"
-
 #include <qapplication.h>
 #include <qcheckbox.h>
 #include <qdesktopwidget.h>
@@ -40,8 +38,8 @@ ImageExporterOptions::ImageExporterOptions( QWidget* parent )
   // detecting the dpi resolutions
   QDesktopWidget* dw = QApplication::desktop();
   // and creating the Unit objects
-  mxunit = new Unit( msize.width(), Unit::pixel, dw->logicalDpiX() );
-  myunit = new Unit( msize.height(), Unit::pixel, dw->logicalDpiY() );
+  mxunit = Unit( msize.width(), Unit::pixel, dw->logicalDpiX() );
+  myunit = Unit( msize.height(), Unit::pixel, dw->logicalDpiY() );
 
   maspectratio = (double)msize.height() / (double)msize.width();
 
@@ -57,8 +55,7 @@ ImageExporterOptions::ImageExporterOptions( QWidget* parent )
 
 ImageExporterOptions::~ImageExporterOptions()
 {
-  delete mxunit;
-  delete myunit;
+  delete expwidget;
 }
 
 void ImageExporterOptions::setGrid( bool grid )
@@ -87,16 +84,16 @@ void ImageExporterOptions::setImageSize( const QSize& size )
   minternallysettingstuff = true;
   expwidget->WidthInput->setValue( size.width() );
   expwidget->HeightInput->setValue( size.height() );
-  mxunit->setValue( size.width() );
-  myunit->setValue( size.height() );
+  mxunit.setValue( size.width() );
+  myunit.setValue( size.height() );
   maspectratio = (double)msize.height() / (double)msize.width();
   minternallysettingstuff = false;
 }
 
 QSize ImageExporterOptions::imageSize() const
 {
-  return QSize( (int)qRound( mxunit->getValue( Unit::pixel ) ),
-                (int)qRound( myunit->getValue( Unit::pixel ) ) );
+  return QSize( (int)qRound( mxunit.getValue( Unit::pixel ) ),
+                (int)qRound( myunit.getValue( Unit::pixel ) ) );
 }
 
 void ImageExporterOptions::slotWidthChanged( double w )
@@ -105,8 +102,8 @@ void ImageExporterOptions::slotWidthChanged( double w )
   {
     minternallysettingstuff = true;
     expwidget->HeightInput->setValue( w * maspectratio );
-    mxunit->setValue( w );
-    myunit->setValue( w * maspectratio );
+    mxunit.setValue( w );
+    myunit.setValue( w * maspectratio );
     minternallysettingstuff = false;
   };
 }
@@ -117,8 +114,8 @@ void ImageExporterOptions::slotHeightChanged( double h )
   {
     minternallysettingstuff = true;
     expwidget->WidthInput->setValue( h / maspectratio );
-    mxunit->setValue( h / maspectratio );
-    myunit->setValue( h );
+    mxunit.setValue( h / maspectratio );
+    myunit.setValue( h );
     minternallysettingstuff = false;
   };
 }
@@ -127,12 +124,12 @@ void ImageExporterOptions::slotUnitChanged( int index )
 {
   minternallysettingstuff = true;
   Unit::MetricalUnit newunit = Unit::intToUnit( index );
-  mxunit->convertTo( newunit );
-  myunit->convertTo( newunit );
+  mxunit.convertTo( newunit );
+  myunit.convertTo( newunit );
   int newprecision = Unit::precision( newunit );
   expwidget->WidthInput->setDecimals( newprecision );
-  expwidget->WidthInput->setValue( mxunit->value() );
+  expwidget->WidthInput->setValue( mxunit.value() );
   expwidget->HeightInput->setDecimals( newprecision );
-  expwidget->HeightInput->setValue( myunit->value() );
+  expwidget->HeightInput->setValue( myunit.value() );
   minternallysettingstuff = false;
 }

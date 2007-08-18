@@ -34,6 +34,7 @@ SVGExporterOptions::SVGExporterOptions( QWidget* parent )
 
 SVGExporterOptions::~SVGExporterOptions()
 {
+  delete expwidget;
 }
 
 void SVGExporterOptions::setGrid( bool grid )

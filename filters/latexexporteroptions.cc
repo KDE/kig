@@ -34,6 +34,7 @@ LatexExporterOptions::LatexExporterOptions( QWidget* parent )
 
 LatexExporterOptions::~LatexExporterOptions()
 {
+  delete expwidget;
 }
 
 void LatexExporterOptions::setGrid( bool grid )

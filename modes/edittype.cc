@@ -65,6 +65,7 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
 
 EditType::~EditType()
 {
+  delete medittypewidget;
 }
 
 void EditType::slotHelp()
