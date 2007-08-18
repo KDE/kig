@@ -42,9 +42,8 @@ class Rect;
  * Used mainly in the Undo/Redo stuff...
  */
 class KigCommand
-  : public QObject, public QUndoCommand
+  : public QUndoCommand
 {
-  Q_OBJECT
   class Private;
   Private* d;
 public:
@@ -82,6 +81,8 @@ public:
 
   void redo();
   void undo();
+private:
+  Q_DISABLE_COPY( KigCommand )
 };
 
 /**
