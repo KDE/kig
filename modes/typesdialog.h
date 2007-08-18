@@ -50,17 +50,21 @@ public:
 
   const std::vector<BaseListElement*>& elements() const;
 
-  void addElements( const std::vector<BaseListElement*>& elems );
+  void addMacros( const std::vector<Macro*>& macros );
   void removeElements( const std::vector<BaseListElement*>& elems );
 
   void clear();
 
-  void elementChanged( BaseListElement* elem );
+  void elementChanged( const QModelIndex& index );
+
+  bool isMacro( const QModelIndex& index ) const;
+  Macro* macroFromIndex( const QModelIndex& index ) const;
 
   // reimplementations from QAbstractTableModel
   virtual int columnCount( const QModelIndex& parent = QModelIndex() ) const;
   virtual QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const;
   virtual QVariant headerData( int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
+  virtual QModelIndex index( int row, int column, const QModelIndex& parent = QModelIndex() ) const;
   virtual int rowCount( const QModelIndex& parent = QModelIndex() ) const;
 };
 
@@ -93,7 +97,6 @@ private slots:
   void typeListContextMenu( const QPoint& );
 
 private:
-  void loadAllMacros( std::vector<BaseListElement*>& el );
   typedef MacroList::vectype vec;
 
   std::set<int> selectedRows() const;

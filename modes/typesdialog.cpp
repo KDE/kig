@@ -144,14 +144,18 @@ const std::vector<BaseListElement*>& TypesModel::elements() const
   return melems;
 }
 
-void TypesModel::addElements( const std::vector<BaseListElement*>& elems )
+void TypesModel::addMacros( const std::vector<Macro*>& macros )
 {
-  if ( elems.size() < 1 )
+  if ( macros.size() < 1 )
     return;
 
-  beginInsertRows( QModelIndex(), melems.size() + 1, melems.size() + elems.size() );
+  beginInsertRows( QModelIndex(), melems.size(), melems.size() + macros.size() - 1 );
 
-  std::copy( elems.begin(), elems.end(), std::back_inserter( melems ) );
+  for ( std::vector<Macro*>::const_iterator it = macros.begin();
+        it != macros.end(); ++it )
+  {
+    melems.push_back( new MacroListElement( *it ) );
+  }
 
   endInsertRows();
 }
@@ -199,20 +203,35 @@ void TypesModel::clear()
   melems.clear();
 }
 
-void TypesModel::elementChanged( BaseListElement* elem )
+void TypesModel::elementChanged( const QModelIndex& index )
 {
-  int i = 0;
-  for ( std::vector<BaseListElement*>::const_iterator it = melems.begin();
-          it != melems.end(); ++it, ++i )
-  {
-    if ( *it == elem )
-    {
-      QModelIndex left = createIndex( i, 1 );
-      QModelIndex right = createIndex( i, 2 );
-      emit dataChanged( left, right );
-      break;
-    }
-  }
+  if ( !index.isValid() || index.row() < 0 || index.row() >= static_cast<int>( melems.size() )
+       || index.column() < 0 || index.column() > 3 )
+    return;
+
+  QModelIndex left = createIndex( index.row(), 1 );
+  QModelIndex right = createIndex( index.row(), 2 );
+  emit dataChanged( left, right );
+}
+
+bool TypesModel::isMacro( const QModelIndex& index ) const
+{
+  if ( !index.isValid() || index.row() < 0 || index.row() >= static_cast<int>( melems.size() ) )
+    return false;
+
+  return melems[ index.row() ]->isMacro();
+}
+
+Macro* TypesModel::macroFromIndex( const QModelIndex& index ) const
+{
+  if ( !index.isValid() || index.row() < 0 || index.row() >= static_cast<int>( melems.size() ) )
+    return 0;
+
+  BaseListElement* el = melems[ index.row() ];
+  if ( !el->isMacro() )
+    return 0;
+
+  return static_cast<MacroListElement*>( el )->getMacro();
 }
 
 int TypesModel::columnCount( const QModelIndex& parent ) const
@@ -297,6 +316,14 @@ QVariant TypesModel::headerData( int section, Qt::Orientation orientation, int r
   }
 }
 
+QModelIndex TypesModel::index( int row, int column, const QModelIndex& parent ) const
+{
+  if ( parent.isValid() || row < 0 || row >= static_cast<int>( melems.size() ) || column < 0 || column > 3 )
+    return QModelIndex();
+
+  return createIndex( row, column, melems[row] );
+}
+
 int TypesModel::rowCount( const QModelIndex& parent ) const
 {
   return parent.isValid() ? 0 : melems.size();
@@ -330,9 +357,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 
   std::vector<BaseListElement*> el;
   // loading macros...
-  loadAllMacros( el );
-  // .. and filling the model
-  mmodel->addElements( el );
+  mmodel->addMacros( MacroList::instance()->macros() );
 
 //  mtypeswidget->typeList->sortItems( 2, Qt::AscendingOrder );
 
@@ -423,12 +448,12 @@ void TypesDialog::exportType()
 {
   std::vector<Macro*> types;
   std::set<int> rows = selectedRows();
-  const std::vector<BaseListElement*>& el = mmodel->elements();
   for ( std::set<int>::const_iterator it = rows.begin(); it != rows.end(); ++it )
   {
-    BaseListElement* e = el[ *it ];
-    if ( e->isMacro() )
-      types.push_back( static_cast<MacroListElement*>( e )->getMacro() );
+    QModelIndex index = mmodel->index( *it, 0 );
+    Macro* macro = mmodel->macroFromIndex( index );
+    if ( macro )
+      types.push_back( macro );
   }
   if (types.empty()) return;
   QString file_name = KFileDialog::getSaveFileName( KUrl( "kfiledialog:///macro" ), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
@@ -461,10 +486,7 @@ void TypesDialog::importTypes()
   };
   MacroList::instance()->add( macros );
 
-  std::vector<BaseListElement*> el;
-  for ( uint i = 0; i < macros.size(); ++i )
-    el.push_back( new MacroListElement( macros[i] ) );
-  mmodel->addElements( el );
+  mmodel->addMacros( macros );
 
   mtypeswidget->typeList->resizeColumnToContents( 0 );
 }
@@ -484,22 +506,22 @@ void TypesDialog::editType()
     return;
   }
   bool refresh = false;
-  const std::vector<BaseListElement*>& el = mmodel->elements();
   // we get the iterator pointing at the beginning and use it to point to the
   // only object inside. this is done as we know that there's only one object
   // inside.
   std::set<int>::const_iterator first = rows.begin();
-  BaseListElement* e = el[ *first ];
-  if ( e->isMacro() )
+  QModelIndex index = mmodel->index( *first, 0 );
+  if ( mmodel->isMacro( index ) )
   {
-    EditType editdialog( this, e->name(), e->description(), e->icon() );
+    Macro* oldmacro = mmodel->macroFromIndex( index );
+    EditType editdialog( this, oldmacro->action->descriptiveName(), oldmacro->action->description(),
+                         oldmacro->ctor->iconFileName( false ) );
     if ( editdialog.exec() )
     {
       QString newname = editdialog.name();
       QString newdesc = editdialog.description();
       QString newicon = editdialog.icon();
 
-      Macro* oldmacro = static_cast<MacroListElement*>( e )->getMacro();
 //      mpart.unplugActionLists();
       oldmacro->ctor->setName( newname );
       oldmacro->ctor->setDescription( newdesc );
@@ -511,16 +533,7 @@ void TypesDialog::editType()
   }
   if ( refresh )
   {
-    mmodel->elementChanged( e );
-  }
-}
-
-void TypesDialog::loadAllMacros( std::vector<BaseListElement*>& el )
-{
-  const vec& macros = MacroList::instance()->macros();
-  for ( vec::const_iterator i = macros.begin(); i != macros.end(); ++i )
-  {
-    el.push_back( new MacroListElement( *i ) );
+    mmodel->elementChanged( index );
   }
 }
 
