@@ -55,6 +55,8 @@ public:
 
   void clear();
 
+  void elementChanged( BaseListElement* elem );
+
   // reimplementations from QAbstractTableModel
   virtual int columnCount( const QModelIndex& parent = QModelIndex() ) const;
   virtual QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const;

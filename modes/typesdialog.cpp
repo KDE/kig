@@ -199,6 +199,22 @@ void TypesModel::clear()
   melems.clear();
 }
 
+void TypesModel::elementChanged( BaseListElement* elem )
+{
+  int i = 0;
+  for ( std::vector<BaseListElement*>::const_iterator it = melems.begin();
+          it != melems.end(); ++it, ++i )
+  {
+    if ( *it == elem )
+    {
+      QModelIndex left = createIndex( i, 1 );
+      QModelIndex right = createIndex( i, 2 );
+      emit dataChanged( left, right );
+      break;
+    }
+  }
+}
+
 int TypesModel::columnCount( const QModelIndex& parent ) const
 {
   return parent.isValid() ? 0 : 3;
@@ -301,7 +317,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   base->layout()->setMargin( 0 );
 
   // model creation and usage
-  mmodel = new TypesModel();
+  mmodel = new TypesModel( mtypeswidget->typeList );
   mtypeswidget->typeList->setModel( mmodel );
 
   mtypeswidget->typeList->setContextMenuPolicy( Qt::CustomContextMenu );
@@ -345,6 +361,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 
 TypesDialog::~TypesDialog()
 {
+  delete mtypeswidget;
 }
 
 void TypesDialog::slotHelp()
@@ -475,13 +492,12 @@ void TypesDialog::editType()
   BaseListElement* e = el[ *first ];
   if ( e->isMacro() )
   {
-    EditType* d = new EditType( this, e->name(), e->description(), e->icon() );
-    if ( d->exec() )
+    EditType editdialog( this, e->name(), e->description(), e->icon() );
+    if ( editdialog.exec() )
     {
-      QString newname = d->name();
-      QString newdesc = d->description();
-      QString newicon = d->icon();
-      delete d;
+      QString newname = editdialog.name();
+      QString newdesc = editdialog.description();
+      QString newicon = editdialog.icon();
 
       Macro* oldmacro = static_cast<MacroListElement*>( e )->getMacro();
 //      mpart.unplugActionLists();
@@ -495,14 +511,7 @@ void TypesDialog::editType()
   }
   if ( refresh )
   {
-    bool updates = mtypeswidget->typeList->updatesEnabled();
-    mtypeswidget->typeList->setUpdatesEnabled( false );
-    mmodel->clear();
-
-    std::vector<BaseListElement*> newelements;
-    loadAllMacros( newelements );
-    mmodel->addElements( newelements );
-    mtypeswidget->typeList->setUpdatesEnabled( updates );
+    mmodel->elementChanged( e );
   }
 }
 
