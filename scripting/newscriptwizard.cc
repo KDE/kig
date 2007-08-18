@@ -96,6 +96,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
     textedit = new KTextEdit( secondPage );
     textedit->setObjectName( "textedit" );
     textedit->setFont( KGlobalSettings::fixedFont() );
+    textedit->setAcceptRichText( false );
     lay2->addWidget( textedit );
   }
   else
