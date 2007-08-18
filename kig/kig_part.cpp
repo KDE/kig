@@ -389,9 +389,12 @@ bool KigPart::openFile()
     return false;
   };
 
-  // m_file is always local, so we can use findByPath instead of
-  // findByURL...
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( localFilePath() );
+  KMimeType::Ptr mimeType = KMimeType::mimeType( arguments().mimeType() );
+  if ( !mimeType )
+  {
+    // we can always use findByPath instead of findByURL with localFilePath()
+    mimeType = KMimeType::findByPath( localFilePath() );
+  }
   kDebug() << k_funcinfo << "mimetype: " << mimeType->name();
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
