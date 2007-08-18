@@ -23,6 +23,7 @@
 #include "script-common.h"
 
 class QLabel;
+class KIconLoader;
 class KTextEdit;
 namespace KTextEditor
 {
@@ -37,7 +38,7 @@ class NewScriptWizard
   Q_OBJECT
   ScriptModeBase* mmode;
 public:
-  NewScriptWizard( QWidget* parent, ScriptModeBase* mode );
+  NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLoader* il );
   ~NewScriptWizard();
 
   void setText( const QString& text );
@@ -58,6 +59,7 @@ protected:
   KTextEdit* textedit;
   KTextEditor::Document* document;
   KTextEditor::View* docview;
+  KIconLoader* mIconLoader;
 };
 
 #endif

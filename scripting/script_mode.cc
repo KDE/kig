@@ -123,7 +123,7 @@ ScriptModeBase::ScriptModeBase( KigPart& doc )
   : BaseMode( doc ), mwizard( 0 ), mpart( doc ),
     mwawd( SelectingArgs )
 {
-  mwizard = new NewScriptWizard( doc.widget(), this );
+  mwizard = new NewScriptWizard( doc.widget(), this, doc.iconLoader() );
 
   doc.redrawScreen();
 }
@@ -269,11 +269,6 @@ void ScriptModeBase::setScriptType( ScriptType::Type type )
 {
   mtype = type;
   mwizard->setType( mtype );
-  if ( mtype != ScriptType::Unknown )
-  {
-    KIconLoader* il = mdoc.iconLoader();
-    mwizard->setWindowIcon( KIcon( ScriptType::icon( mtype ), il ) );
-  }
 }
 
 void ScriptModeBase::addArgs( const std::vector<ObjectHolder*>& obj, KigWidget& w )

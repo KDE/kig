@@ -29,6 +29,7 @@
 #include <kactioncollection.h>
 #include <kdialog.h>
 #include <kglobalsettings.h>
+#include <kiconloader.h>
 #include <klocale.h>
 #include <ktextedit.h>
 #include <ktexteditor/document.h>
@@ -54,9 +55,9 @@ NewScriptWizard::~NewScriptWizard()
   }
 }
 
-NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
+NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLoader* il )
   : QWizard( parent ),
-    mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 )
+    mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 ), mIconLoader( il )
 {
   setObjectName( QLatin1String( "New Script Wizard" ) );
   setWindowTitle( KDialog::makeStandardCaption( i18n( "New Script" ) ) );
@@ -193,6 +194,12 @@ QString NewScriptWizard::text() const
 void NewScriptWizard::setType( ScriptType::Type type )
 {
   mLabelFillCode->setText( ScriptType::fillCodeStatement( type ) );
+  KIcon scriptIcon( ScriptType::icon( type ), mIconLoader );
+  if ( type != ScriptType::Unknown )
+  {
+    setWindowIcon( scriptIcon );
+  }
+  setPixmap( LogoPixmap, scriptIcon.pixmap( 64, 64 ) );
 
   if ( document )
   {
