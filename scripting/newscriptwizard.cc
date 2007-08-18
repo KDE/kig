@@ -204,13 +204,6 @@ void NewScriptWizard::setType( ScriptType::Type type )
   if ( document )
   {
     // setting the highlight mode
-    if ( type != ScriptType::Unknown )
-    {
-      document->setMode ( ScriptType::highlightStyle( type ) );
-    }
-    else
-    {
-      document->setMode ( QString () );
-    }
+    document->setMode( ScriptType::highlightStyle( type ) );
   }
 }

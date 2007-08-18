@@ -32,7 +32,7 @@ struct script_prop
 
 static const script_prop scripts_properties[] =
 {
-  { I18N_NOOP( "Now fill in the code:" ), "application-x-thoshellscript", "" },
+  { I18N_NOOP( "Now fill in the code:" ), "application-x-thoshellscript", 0 },
   { I18N_NOOP( "Now fill in the Python code:" ), "text-x-python", "Python-Kig" }
 };
 
@@ -111,7 +111,9 @@ const char* ScriptType::icon( ScriptType::Type type )
 
 QString ScriptType::highlightStyle( ScriptType::Type type )
 {
-  return QString( scripts_properties[type].highlightStyle );
+  return scripts_properties[type].highlightStyle
+         ? QString::fromLatin1( scripts_properties[type].highlightStyle )
+         : QString();
 }
 
 ScriptType::Type ScriptType::intToType( int type )
