@@ -655,6 +655,7 @@ Coordinate PolarCoords::snapToGrid( const Coordinate& c,
 void PolarCoords::drawGridLine( KigPainter& p, const Coordinate& c,
                                 double r ) const
 {
+#ifdef KIG_TESSELLATE_POLAR_GRID_CIRCLE
   Rect rect = p.window();
 
   struct iterdata_t
@@ -721,5 +722,7 @@ void PolarCoords::drawGridLine( KigPainter& p, const Coordinate& c,
 
     p.drawArc( c, r, kigMin( horizangle, vertangle ), kigMax( horizangle, vertangle ) );
   }
-//  p.drawCircle( c, r );
+#else
+  p.drawCircle( c, r );
+#endif
 }
