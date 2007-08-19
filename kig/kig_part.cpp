@@ -415,7 +415,12 @@ bool KigPart::openFile()
   };
 
   KigDocument* newdoc = filter->load (localFilePath());
-  if ( !newdoc ) return false;
+  if ( !newdoc )
+  {
+    closeUrl();
+    setUrl( KUrl() );
+    return false;
+  }
   delete mdocument;
   mdocument = newdoc;
   coordSystemChanged( mdocument->coordinateSystem().id() );
