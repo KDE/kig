@@ -267,7 +267,7 @@ void KigPart::setupActions()
   aBrowseHistory  = new KAction(i18n("&Browse History..."), this);
   actionCollection()->addAction("browse_history", aBrowseHistory );
   connect( aBrowseHistory, SIGNAL( triggered( bool ) ), SLOT( browseHistory() ) );
-  aBrowseHistory->setToolTip( i18n( "Browse the history of the current costruction." ) );
+  aBrowseHistory->setToolTip( i18n( "Browse the history of the current construction." ) );
 
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
