@@ -321,7 +321,7 @@ void NumericTextType::executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c
     assert( valuecalcer );
     double oldvalue = static_cast<const NumericTextImp*>( o.imp() )->getValue();
     double value = getDoubleFromUser(
-      i18n( "Set Value" ), i18n( "Enter the new value: " ),
+      i18n( "Set Value" ), i18n( "Enter the new value:" ),
       oldvalue, &w, &ok, -2147483647, 2147483647, 7 );
     if ( ! ok ) return;
     MonitorDataObjects mon( parents );

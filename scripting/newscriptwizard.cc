@@ -70,7 +70,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   lay1->setMargin( 0 );
   QLabel* infoText = new QLabel( firstPage );
   lay1->addWidget( infoText );
-  infoText->setText( i18n( "Select the argument objects ( if any )\n"
+  infoText->setText( i18n( "Select the argument objects (if any)\n"
                            "in the Kig window and press \"Next\"." ) );
   infoText->setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
   setPage( IntroPageId, firstPage );

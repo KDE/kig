@@ -408,9 +408,9 @@ ObjectImp* ExistenceTestType::calc( const Args& parents, const KigDocument& ) co
 {
   //if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
   if ( static_cast<const ObjectImp*>( parents[0] )->valid() )
-    return new TestResultImp( true, i18n( "Object exists." ) );
+    return new TestResultImp( true, i18n( "The object exists." ) );
   else
-    return new TestResultImp( false, i18n( "The Object does not exist." ) );
+    return new TestResultImp( false, i18n( "The object does not exist." ) );
 }
 
 const ObjectImpType* ExistenceTestType::resultId() const

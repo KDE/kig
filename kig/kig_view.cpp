@@ -584,9 +584,9 @@ void KigWidget::zoomArea()
   Coordinate br = oldrect.bottomRight();
   bool ok = true;
   KigInputDialog::getTwoCoordinates( i18n( "Select Zoom Area" ),
-        i18n( "Select the zoom area by entering the coordinates of "
-              "the upper left corner and the lower right corner." ) +
-        QString::fromLatin1("<br>") +
+        i18n( "Select the zoom area by entering the coordinates<br />"
+              "of the upper left corner and the lower right corner." ) +
+        QString::fromLatin1( "<br />" ) +
         mpart->document().coordinateSystem().coordinateFormatNoticeMarkup(),
         this, &ok, mpart->document(), &tl, &br );
   if ( ok )
