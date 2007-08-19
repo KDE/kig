@@ -399,7 +399,12 @@ bool KigPart::openFile()
   };
 
   KigDocument* newdoc = filter->load (m_file);
-  if ( !newdoc ) return false;
+  if ( !newdoc )
+  {
+    closeURL();
+    m_url = KURL();
+    return false;
+  }
   delete mdocument;
   mdocument = newdoc;
   coordSystemChanged( mdocument->coordinateSystem().id() );
