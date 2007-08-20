@@ -496,7 +496,7 @@ ObjectImp* ParabolaBDPType::calc( const LineData& l, const Coordinate& c ) const
   Coordinate fa = c - l.a;
   ret.pdimen = fa.y*ldir.x - fa.x*ldir.y;
   ConicImpPolar* r = new ConicImpPolar( ret );
-  kDebug() << k_funcinfo << r->conicTypeString();
+  kDebug() << r->conicTypeString();
   return r;
 }
 

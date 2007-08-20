@@ -767,7 +767,7 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& pix, 
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& icon, const QString& name, int id )
 {
-//kDebug() << k_funcinfo << "ID: " << id;
+//kDebug() << "ID: " << id;
   QMenu* m = mmenus[menu];
   QAction* newaction = m->addAction( icon, name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );

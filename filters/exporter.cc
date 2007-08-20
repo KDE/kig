@@ -104,7 +104,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   delete kfd;
 
   KMimeType::Ptr mimeType = KMimeType::findByPath( filename );
-  kDebug() << k_funcinfo << "mimetype: " << mimeType->name();
+  kDebug() << "mimetype: " << mimeType->name();
   if ( !KImageIO::isSupported( mimeType->name(), KImageIO::Writing ) )
   {
     KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );

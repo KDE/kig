@@ -188,7 +188,7 @@ QColor CabriReader::translateColor( const QString& s )
   cmit it = colormap.find( s );
   if ( it != colormap.end() ) return (*it).second;
 
-  kDebug() << k_funcinfo << "unknown color: " << s;
+  kDebug() << "unknown color: " << s;
   return Qt::black;
 }
 
@@ -309,7 +309,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
   }
 //     kDebug()
-//       << k_funcinfo << endl
+//       << endl
 //       << "id = " << myobj->id << endl
 //       << "type = " << myobj->type << endl
 //       << "numberOfParents = " << numberOfParents << endl
@@ -605,7 +605,7 @@ QColor CabriReader_v12::translateColor( const QString& s )
   cmit it = colormap_v12.find( s );
   if ( it != colormap_v12.end() ) return (*it).second;
 
-  kDebug() << k_funcinfo << "unknown color: " << s;
+  kDebug() << "unknown color: " << s;
   return CabriReader::translateColor( s );
 }
 

@@ -178,7 +178,7 @@ ArgsParser::spec ArgsParser::findSpec( const ObjectImp* obj, const Args& parents
   matched:
     ;
   };
-  kDebug() << k_funcinfo << "no proper spec found :(";
+  kDebug() << "no proper spec found :(";
   return ret;
 }
 
@@ -261,7 +261,7 @@ std::string ArgsParser::selectStatement( const Args& selection ) const
     if ( !found[i] )
       return margs[i].selectstat;
   }
-  kDebug() << k_funcinfo << "no proper select statement found :(";
+  kDebug() << "no proper select statement found :(";
   return "";
 }
 

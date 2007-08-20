@@ -73,7 +73,7 @@ static ObjectTypeCalcer* intersectionPoints( const std::vector<ObjectCalcer*>& p
     else return 0;
   };
 #ifdef CABRI_DEBUG
-  kDebug() << k_funcinfo << "which: " << which;
+  kDebug() << "which: " << which;
 #endif
   if ( nlines == 2 )
     return which == -1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : 0;

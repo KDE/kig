@@ -458,7 +458,7 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
     if (tR.intersects(border)) mOverlay.push_back( toScreenEnlarge( tR ) );
     if (++counter > 100)
     {
-      kDebug()<< k_funcinfo << "counter got too big :( ";
+      kDebug()<< "counter got too big :( ";
       break;
     }
   }
