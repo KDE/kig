@@ -64,14 +64,13 @@ Kig::Kig()
   // that boost.python fails to link against python ( on Debian at
   // least ).
   KLibrary* library = KLibLoader::self()->library( "libkigpart", QLibrary::ExportExternalSymbolsHint );
-  KLibFactory* factory = 0;
+  KPluginFactory* factory = 0;
   if ( library ) factory = library->factory();
   if (factory)
   {
       // now that the Part is loaded, we cast it to a Part to get
       // our hands on it
-      m_part = static_cast<KParts::ReadWritePart*>
-               ( factory->create( this, "KigPart" ) );
+      m_part = factory->create< KParts::ReadWritePart >( this );
       if (m_part)
       {
 	  // tell the KParts::MainWindow that this is indeed the main widget
