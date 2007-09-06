@@ -99,6 +99,6 @@ Exec=kig %i -caption "%c"
 MimeType=application/x-kig;application/x-kgeo;
 Icon=kig
 Type=Application
-DocPath=kig/index.html
+X-DocPath=kig/index.html
 Terminal=false
 Categories=Qt;KDE;Education;Math;
