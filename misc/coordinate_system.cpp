@@ -57,17 +57,21 @@ class CoordinateValidator
   KDoubleValidator mdv;
   mutable QRegExp mre;
 public:
+  static const char reEuclidean[];
+  static const char rePolar[];
+
   CoordinateValidator( bool polar );
   ~CoordinateValidator();
   State validate ( QString & input,  int & pos ) const;
   void fixup ( QString & input ) const;
 };
 
+const char CoordinateValidator::reEuclidean[] = "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?";
+const char CoordinateValidator::rePolar[] = "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?";
 
 CoordinateValidator::CoordinateValidator( bool polar )
   : QValidator( 0L ), mpolar( polar ), mdv( 0L ),
-    mre( QString::fromUtf8( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?"
-         : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" ) )
+    mre( QString::fromUtf8( polar ? rePolar : reEuclidean ) )
 {
 }
 
@@ -159,7 +163,7 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
 
 Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp r( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" );
+  QRegExp r( QString::fromUtf8( CoordinateValidator::reEuclidean ) );
   ok = ( r.indexIn(s) == 0 );
   if (ok)
   {
@@ -378,7 +382,7 @@ QString PolarCoords::coordinateFormatNoticeMarkup() const
 
 Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp regexp( QString::fromUtf8( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?" ) );
+  QRegExp regexp( QString::fromUtf8( CoordinateValidator::rePolar ) );
   ok = ( regexp.indexIn( s ) == 0 );
   if (ok)
   {
