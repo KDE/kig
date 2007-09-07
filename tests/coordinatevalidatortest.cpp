@@ -43,8 +43,8 @@ public:
   void fixup ( QString & input ) const;
 };
 
-const char CoordinateValidator::reEuclidean[] = "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?";
-const char CoordinateValidator::rePolar[] = "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?";
+const char CoordinateValidator::reEuclidean[] = "\\s*\\(?\\s*([0-9.,+-]+)\\s*;\\s*([0-9.,+-]+)\\s*\\)?\\s*";
+const char CoordinateValidator::rePolar[] = "\\s*\\(?\\s*([0-9.,+-]+)\\s*;\\s*([0-9.,+-]+) ?°?\\s*\\)?\\s*";
 
 CoordinateValidator::CoordinateValidator( bool polar )
   : QValidator( 0L ), mpolar( polar ), mdv( 0L ),
