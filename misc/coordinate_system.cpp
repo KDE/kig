@@ -66,8 +66,8 @@ public:
 
 CoordinateValidator::CoordinateValidator( bool polar )
   : QValidator( 0L ), mpolar( polar ), mdv( 0L ),
-    mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?"
-         : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
+    mre( QString::fromUtf8( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?"
+         : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" ) )
 {
 }
 
@@ -378,7 +378,7 @@ QString PolarCoords::coordinateFormatNoticeMarkup() const
 
 Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
 {
-  QRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?" );
+  QRegExp regexp( QString::fromUtf8( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?" ) );
   ok = ( regexp.indexIn( s ) == 0 );
   if (ok)
   {

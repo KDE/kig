@@ -43,8 +43,8 @@ public:
 
 CoordinateValidator::CoordinateValidator( bool polar )
   : QValidator( 0L ), mpolar( polar ), mdv( 0L ),
-    mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?? ?\\)?"
-         : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
+    mre( QString::fromUtf8( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?"
+         : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" ) )
 {
 }
 
