@@ -43,6 +43,7 @@ Name[tr]=Kig Bilgisi
 Name[uk]=Інформація для Kig
 Name[vi]=Thông tin Kig
 Name[x-test]=xxKig Infoxx
+Name[zh_CN]=Kig 信息
 Name[zh_TW]=Kig 資訊
 ServiceTypes=KFilePlugin
 X-KDE-Library=kfile_kig
