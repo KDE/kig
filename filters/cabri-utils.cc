@@ -104,25 +104,14 @@ QString readText( QFile& f, const QString& s, const QString& sep )
     // don't blame on failing here
     return QString();
 
-  QStringList l;
-  bool go_on = !line.endsWith( "\"" );
-  while ( go_on && !f.atEnd() )
+  QString tmp = s;
+  QString text = tmp;
+  while ( tmp.at( tmp.length() - 1 ) != '"' )
   {
-    l << line;
-    line = readLine( f );
-    go_on = !line.endsWith( "\"" );
+    tmp = readLine( f );
+    text += sep + tmp;
   }
-  if ( !go_on )
-  {
-    l << line;
-  }
-  // the first line starts with ", so removing it
-  l[0] = l[0].remove( 0, 1 );
-  // and the last one ends with "
-  QString tmp = l[l.count() - 1];
-  l[l.count() - 1] = tmp.remove( tmp.length() - 1, 1 );
-  // joining together the lines of the label/name
-  QString ret = l.join( sep );
+  QString ret = text.mid( 1, text.length() - 2 );
 
 kdDebug() << "+++++++++ text: \"" << ret << "\"" << endl;
 
@@ -213,22 +202,24 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
 {
   CabriObject_v10* myobj = new CabriObject_v10();
 
-  // there are 4 lines per object in the file, so we read them all
-  // four now.
-  QString line1, line2, line3, s;
   QString file = f.name();
-  line1 = CabriNS::readLine( f );
-  line2 = CabriNS::readLine( f );
-  line3 = CabriNS::readLine( f );
-  // ignore line 4, it is empty..
-  s = CabriNS::readLine( f );
+
+  bool ok;
+  QString tmp;
+
+  QString line1 = CabriNS::readLine( f );
+  QRegExp namelinere( "^\"([^\"]+)\", NP: ([\\d-]+), ([\\d-]+), NS: (\\d+), (\\d+)$" );
+  if ( namelinere.exactMatch( line1 ) )
+  {
+    tmp = namelinere.cap( 1 );
+    myobj->name = tmp;
+
+    line1 = CabriNS::readLine( f );
+  }
 
   QRegExp firstlinere( "^([^:]+): ([^,]+), ([^,]+), CN:([^,]*), VN:(.*)$" );
   if ( ! firstlinere.exactMatch( line1 ) )
     KIG_CABRI_FILTER_PARSE_ERROR;
-
-  bool ok;
-  QString tmp;
 
   tmp = firstlinere.cap( 1 );
   myobj->id = tmp.toUInt( &ok );
@@ -247,6 +238,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
   tmp = firstlinere.cap( 5 );
   // i have no idea what this number means..
 
+  QString line2 = CabriNS::readLine( f );
   QRegExp secondlinere( "^([^,]+), ([^,]+), ([^,]+), DS:([^ ]+) ([^,]+), GT:([^,]+), ([^,]+), (.*)$" );
   if ( ! secondlinere.exactMatch( line2 ) )
     KIG_CABRI_FILTER_PARSE_ERROR;
@@ -278,7 +270,8 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
   tmp = secondlinere.cap( 8 );
   myobj->fixed = tmp == "St";
 
-  QRegExp thirdlinere( "^(Const: ([^,]*),? ?)?(Val: (.*))?$" );
+  QString line3 = CabriNS::readLine( f );
+  QRegExp thirdlinere( "^(Const: ([^,]*),? ?)?(Val: ([^,]*)(,(.*))?)?$" );
   if ( ! thirdlinere.exactMatch( line3 ) )
     KIG_CABRI_FILTER_PARSE_ERROR;
 
@@ -301,6 +294,40 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     myobj->data.push_back( ( *i ).toDouble( &ok ) );
     if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
   }
+
+  QString thirdlineextra = thirdlinere.cap( 6 );
+  if ( myobj->type == "Text" )
+  {
+    QRegExp textMetrics( "TP:[\\s]*([^,]+),[\\s]*([^,]+),TS:[\\s]*([^,]+),[\\s]*([^,]+)" );
+    if ( textMetrics.search( thirdlineextra ) != -1 )
+    {
+      double xa = textMetrics.cap( 1 ).toDouble( &ok );
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      double ya = textMetrics.cap( 2 ).toDouble( &ok );
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      double tw = textMetrics.cap( 3 ).toDouble( &ok );
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      double th = textMetrics.cap( 4 ).toDouble( &ok );
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      myobj->textRect = Rect( xa, ya, tw, th );
+    }
+  }
+
+  QString line4 = CabriNS::readLine( f );
+  if ( !line4.isEmpty() )
+  {
+    myobj->text = CabriNS::readText( f, line4, "\n" );
+    line4 = CabriNS::readLine( f );
+  }
+  if ( !line4.isEmpty() )
+  {
+    QRegExp fontlinere( "^p: (\\d+), ([^,]+), S: (\\d+) C: (\\d+) Fa: (\\d+)$" );
+    if ( !fontlinere.exactMatch( line4 ) )
+      KIG_CABRI_FILTER_PARSE_ERROR;
+
+    line4 = CabriNS::readLine( f );
+  }
+
 //     kdDebug()
 //       << k_funcinfo << endl
 //       << "id = " << myobj->id << endl
