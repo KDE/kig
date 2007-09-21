@@ -481,10 +481,10 @@ KigDocument* KigFilterCabri::load( const QString& file )
     }
     else if ( obj->type == "Angle" )
     {
-      if ( args.size() != 3 || obj->data.size() != 2 ) KIG_FILTER_PARSE_ERROR;
+      if ( args.size() != 3 ) KIG_FILTER_PARSE_ERROR;
       oc = new ObjectTypeCalcer( AngleType::instance(), args );
     }
-    else if ( obj->type == "Text" && curVer == CabriNS::CV_1_2 ) // Cabri1.2
+    else if ( obj->type == "Text" )
     {
 //      if ( !args.empty() /* || obj->data.size() != 2 */ ) KIG_FILTER_PARSE_ERROR;
       if ( !obj->textRect.valid() ) KIG_FILTER_PARSE_ERROR;
