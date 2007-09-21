@@ -73,7 +73,7 @@ public:
    * Default constructor
    */
   KigPart( QWidget* parentWidget, QObject* parent = 0,
-           const QStringList& = QStringList() );
+           const QVariantList& = QVariantList() );
 
   /**
    * Destructor
@@ -167,8 +167,6 @@ public:
 protected:
   bool internalSaveAs();
 
-public:
-  static KAboutData* createAboutData();
 protected:
   void setupActions();
   void setupTypes();

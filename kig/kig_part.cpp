@@ -78,13 +78,8 @@ using namespace std;
 static const QString typesFile = "macros.kigt";
 
 // export this library...
-typedef KParts::GenericFactory<KigPart> KigPartFactory;
-K_EXPORT_COMPONENT_FACTORY ( libkigpart, KigPartFactory )
-
-KAboutData* KigPart::createAboutData()
-{
-  return kigAboutData( "kig", I18N_NOOP( "KigPart" ) );
-}
+K_PLUGIN_FACTORY( KigPartFactory, registerPlugin< KigPart >(); )
+K_EXPORT_PLUGIN( KigPartFactory( kigAboutData( "kig", I18N_NOOP( "KigPart" ) ) ) )
 
 SetCoordinateSystemAction::SetCoordinateSystemAction(
   KigPart& d, KActionCollection* parent )
@@ -164,7 +159,7 @@ bool KigPrintDialogPage::isValid( QString& )
 }
 
 KigPart::KigPart( QWidget *parentWidget, QObject *parent,
-                  const QStringList& )
+                  const QVariantList& )
   : KParts::ReadWritePart( parent ),
     mMode( 0 ), mRememberConstruction( 0 ), mdocument( new KigDocument() )
 {

@@ -95,9 +95,9 @@ static int convertToNative( const KUrl& file, const QByteArray& outfile )
 
 int main(int argc, char **argv)
 {
-  KAboutData *about = kigAboutData( "kig", I18N_NOOP("Kig") );
+  KAboutData about = kigAboutData( "kig", I18N_NOOP("Kig") );
 
-  KCmdLineArgs::init(argc, argv, about);
+  KCmdLineArgs::init(argc, argv, &about);
 
   KCmdLineOptions options;
   options.add("c");
