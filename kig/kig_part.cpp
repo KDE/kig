@@ -185,10 +185,8 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
 
   // construct our command history
   mhistory = new KUndoStack();
-  QAction* undoact = mhistory->createUndoAction( actionCollection() );
-  actionCollection()->addAction( "edit_undo", undoact );
-  QAction* redoact = mhistory->createRedoAction( actionCollection() );
-  actionCollection()->addAction( "edit_redo", redoact );
+  mhistory->createUndoAction( actionCollection() );
+  mhistory->createRedoAction( actionCollection() );
   connect( mhistory, SIGNAL( cleanChanged( bool ) ), this, SLOT( setHistoryClean( bool ) ) );
 
   // we are read-write by default
