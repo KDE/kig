@@ -322,7 +322,9 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   {
     ObjectHierarchy* hier = ObjectHierarchy::buildSafeObjectHierarchy( parent, error );
     if ( ! hier ) return 0;
-    return new HierarchyImp( *hier );
+    HierarchyImp* imp = new HierarchyImp( *hier );
+    delete hier;
+    return imp;
   }
   else if ( type == "transformation" )
   {
