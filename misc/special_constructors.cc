@@ -820,6 +820,7 @@ void PolygonBCVConstructor::handlePrelim(
       circle.draw( p );
     }
   }
+  delete_all( args.begin() + 2, args.end() );
 }
 
 std::vector<ObjectHolder*> PolygonBCVConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const

@@ -61,6 +61,7 @@ BaseConstructMode::BaseConstructMode( KigPart& d )
 
 BaseConstructMode::~BaseConstructMode()
 {
+  delete mcursor;
 //  delete mcursorholder;
 }
 
@@ -152,6 +153,7 @@ void BaseConstructMode::leftClickedObject(
     mcursor = ObjectFactory::instance()->cursorPointCalcer( w.fromScreen( p ) );
 //    mcursor = ObjectFactory::instance()->sensiblePointCalcer( w.fromScreen( p ), mdoc.document(), w );
     mcursor->calc( mdoc.document() );
+    delete n;
   }
 }
 
