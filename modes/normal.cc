@@ -32,6 +32,7 @@
 #include "historydialog.h"
 #include "typesdialog.h"
 
+#include <qundostack.h>
 #include <kcursor.h>
 #include <kaction.h>
 #include <klocale.h>
@@ -53,8 +54,8 @@ void NormalMode::enableActions()
   mdoc.aNewMacro->setEnabled( true );
   mdoc.aConfigureTypes->setEnabled( true );
   mdoc.aBrowseHistory->setEnabled( true );
-  mdoc.action( "edit_undo" )->setEnabled( true );
-  mdoc.action( "edit_redo" )->setEnabled( true );
+  mdoc.action( "edit_undo" )->setEnabled( mdoc.history()->canUndo() );
+  mdoc.action( "edit_redo" )->setEnabled( mdoc.history()->canRedo() );
 }
 
 void NormalMode::deleteObjects()
