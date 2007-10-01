@@ -288,7 +288,7 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
         return macro_with_image
                  .arg( melems[ index.row() ]->name() )
                  .arg( wrapAt( melems[ index.row() ]->description() ) )
-                 .arg( KIconLoader::global()->iconPath( melems[ index.row() ]->icon(), - K3Icon::SizeMedium ) )
+                 .arg( KIconLoader::global()->iconPath( melems[ index.row() ]->icon(), - KIconLoader::SizeMedium ) )
                  .arg( melems[ index.row() ]->type() );
     }
     default:
