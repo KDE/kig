@@ -298,7 +298,8 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
   QString thirdlineextra = thirdlinere.cap( 6 );
   if ( myobj->type == "Text" )
   {
-    QRegExp textMetrics( "TP:[\\s]*([^,]+),[\\s]*([^,]+),TS:[\\s]*([^,]+),[\\s]*([^,]+)" );
+    // per Pino: nel file .fig che ho io ci sono degli spazi dopo le virgole...
+    QRegExp textMetrics( "TP: *[\\s]*([^,]+), *[\\s]*([^,]+), *TS:[\\s]*([^,]+), *[\\s]*([^,]+)" );
     if ( textMetrics.search( thirdlineextra ) != -1 )
     {
       double xa = textMetrics.cap( 1 ).toDouble( &ok );
