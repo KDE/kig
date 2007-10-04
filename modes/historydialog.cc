@@ -50,19 +50,19 @@ HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
 
   bool reversed = layoutDirection() == Qt::RightToLeft;
 
-  mwidget->buttonFirst->setIcon( KIcon( reversed ? "arrow-right-double" : "arrow-left-double" ) );
+  mwidget->buttonFirst->setIcon( KIcon( reversed ? "go-first-rtl" : "go-first" ) );
   connect( mwidget->buttonFirst, SIGNAL( clicked() ), this, SLOT( goToFirst() ) );
 
-  mwidget->buttonBack->setIcon( KIcon( reversed ? "arrow-right" : "arrow-left" ) );
+  mwidget->buttonBack->setIcon( KIcon( reversed ? "go-previous-rtl" : "go-previous" ) );
   connect( mwidget->buttonBack, SIGNAL( clicked() ), this, SLOT( goBack() ) );
 
   mwidget->editStep->setValidator( new KIntValidator( 1, mtotalsteps, mwidget->editStep ) );
   mwidget->labelSteps->setText( QString::number( mtotalsteps ) );
 
-  mwidget->buttonNext->setIcon( KIcon( reversed ? "arrow-left" : "arrow-right" ) );
+  mwidget->buttonNext->setIcon( KIcon( reversed ? "go-next-rtl" : "go-next" ) );
   connect( mwidget->buttonNext, SIGNAL( clicked() ), this, SLOT( goToNext() ) );
 
-  mwidget->buttonLast->setIcon( KIcon( reversed ? "arrow-left-double" : "arrow-right-double" ) );
+  mwidget->buttonLast->setIcon( KIcon( reversed ? "go-last-rtl" : "go-last" ) );
   connect( mwidget->buttonLast, SIGNAL( clicked() ), this, SLOT( goToLast() ) );
 
   updateWidgets();
