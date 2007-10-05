@@ -146,7 +146,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
   }
 
   QString s = CabriNS::readLine( f );
-  QRegExp header( "Figure Cabri\\s?II (Plus )?vers\\. (MS-Windows|DOS) ((\\d+)\\.(\\d+)(\\.(\\d+))?(\\.(\\d+))?)(, ([^,]+), t=(\\d+)s)?" );
+  QRegExp header( "Figure Cabri\\s?II (Plus )?vers\\. (MS-Windows|DOS) ((\\d+)\\.(\\d+)(\\.(\\d+))?(\\.(\\d+))?|(\\d+)\\.x \\((\\d+)\\.(\\d+)\\))(, ([^,]+), t=(\\d+)s)?" );
   header.setCaseSensitive( false );
   if ( !header.exactMatch( s ) )
   {
@@ -160,9 +160,15 @@ KigDocument* KigFilterCabri::load( const QString& file )
   }
 
   bool ok = true;
-  int major = header.cap( 4 ).toInt( &ok );
+  QString majorstr = header.cap( 4 );
+  if ( majorstr.isEmpty() )
+    majorstr = header.cap( 11 );
+  int major = majorstr.toInt( &ok );
   bool ok2 = true;
-  int minor = header.cap( 5 ).toInt( &ok2 );
+  QString minorstr = header.cap( 5 );
+  if ( minorstr.isEmpty() )
+    minorstr = header.cap( 12 );
+  int minor = minorstr.toInt( &ok2 );
   if ( !ok || !ok2 )
     KIG_FILTER_PARSE_ERROR;
 
@@ -171,11 +177,11 @@ KigDocument* KigFilterCabri::load( const QString& file )
 
 #ifdef CABRI_DEBUG
   kdDebug() << ">>>>>>>>> version: " << header.cap( 3 ) << endl;
-  if ( !header.cap( 10 ).isEmpty() )
+  if ( !header.cap( 13 ).isEmpty() )
   {
     kdDebug() << ">>>>>>>>> session file:" << endl;
-    kdDebug() << ">>>>>>>>>  -> time = " << header.cap( 12 ) << " sec" << endl;
-    kdDebug() << ">>>>>>>>>  -> action = \"" << header.cap( 11 ) << "\"" << endl;
+    kdDebug() << ">>>>>>>>>  -> time = " << header.cap( 15 ) << " sec" << endl;
+    kdDebug() << ">>>>>>>>>  -> action = \"" << header.cap( 14 ) << "\"" << endl;
   }
 #endif
   if ( ( major == 1 ) && ( minor == 0 ) )
@@ -183,7 +189,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     curVer = CabriNS::CV_1_0;
     reader = new CabriReader_v10( this );
   }
-  else if ( ( major == 1 ) && ( minor == 2 ) )
+  else if ( ( major == 1 ) && ( minor == 2 || minor == 4 ) )
   {
     curVer = CabriNS::CV_1_2;
     reader = new CabriReader_v12( this );
