@@ -43,6 +43,7 @@
 #include "../objects/vector_type.h"
 
 #include <kconfig.h>
+#include <kconfiggroup.h>
 
 #include <algorithm>
 #include <functional>
