@@ -305,7 +305,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
   QString thirdlineextra = thirdlinere.cap( 6 );
   if ( myobj->type == "Text" )
   {
-    QRegExp textMetrics( "TP:[\\s]*([^,]+),[\\s]*([^,]+),TS:[\\s]*([^,]+),[\\s]*([^,]+)" );
+    QRegExp textMetrics( "TP: *[\\s]*([^,]+), *[\\s]*([^,]+), *TS:[\\s]*([^,]+), *[\\s]*([^,]+)" );
     if ( textMetrics.indexIn( thirdlineextra ) != -1 )
     {
       double xa = textMetrics.cap( 1 ).toDouble( &ok );
