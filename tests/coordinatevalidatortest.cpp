@@ -20,7 +20,7 @@
 #include "../misc/common.h"
 
 #include <qtest_kde.h>
-
+#include <kglobal.h>
 #include <qobject.h>
 #include <qvalidator.h>
 
