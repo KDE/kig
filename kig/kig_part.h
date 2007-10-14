@@ -30,11 +30,11 @@
 #include <vector>
 
 class KAboutData;
-class KPrinter;
 class KToggleAction;
 class KUndoStack;
 class QUndoStack;
 class QWidget;
+class QPrinter;
 
 class GUIAction;
 class KigGUIAction;
@@ -239,7 +239,7 @@ public:
   void enableConstructActions( bool enabled );
 
 protected:
-  void doPrint( KPrinter& printer );
+  void doPrint( QPrinter& printer, bool printGrid, bool printAxes );
 
   std::vector<KigWidget*> mwidgets;
 

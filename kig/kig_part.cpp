@@ -55,15 +55,15 @@
 #include <kactioncollection.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
-#include <kprinter.h>
 #include <kstandarddirs.h>
 #include <kstandardaction.h>
 #include <ktoggleaction.h>
 #include <ktogglefullscreenaction.h>
 #include <kundostack.h>
 #include <kparts/genericfactory.h>
-#include <kdeprint/kprintdialogpage.h>
 #include <kicon.h>
+#include <kdeprintdialog.h>
+#include <kprintpreview.h>
 
 #include <qbytearray.h>
 #include <qcheckbox.h>
@@ -72,6 +72,8 @@
 #include <qlayout.h>
 #include <qsizepolicy.h>
 #include <qtimer.h>
+#include <QtGui/QPrinter>
+#include <QtGui/QPrintDialog>
 
 using namespace std;
 
@@ -102,14 +104,18 @@ void SetCoordinateSystemAction::slotActivated( int index )
 }
 
 class KigPrintDialogPage
-  : public KPrintDialogPage
+  : public QWidget
 {
 public:
   KigPrintDialogPage( QWidget* parent = 0 );
   ~KigPrintDialogPage();
 
-  void getOptions( QMap<QString,QString>& opts, bool );
-  void setOptions( const QMap<QString,QString>& opts );
+  bool printShowGrid();
+  void setPrintShowGrid( bool status );
+
+  bool printShowAxes();
+  void setPrintShowAxes( bool status );
+
   bool isValid( QString& );
 
 private:
@@ -118,9 +124,9 @@ private:
 };
 
 KigPrintDialogPage::KigPrintDialogPage( QWidget* parent )
- : KPrintDialogPage( parent )
+ : QWidget( parent )
 {
-  setTitle( i18n( "Kig Options" ) );
+  setWindowTitle( i18n( "Kig Options" ) );
 
   QVBoxLayout* vl = new QVBoxLayout( this );
 
@@ -137,20 +143,24 @@ KigPrintDialogPage::~KigPrintDialogPage()
 {
 }
 
-void KigPrintDialogPage::getOptions( QMap< QString, QString >& opts, bool )
+bool KigPrintDialogPage::printShowGrid()
 {
-  opts[ "kde-kig-showgrid" ] = QString::number( showgrid->isChecked() );
-  opts[ "kde-kig-showaxes" ] = QString::number( showaxes->isChecked() );
+  return showgrid->isChecked();
 }
 
-void KigPrintDialogPage::setOptions( const QMap< QString, QString >& opts )
+void KigPrintDialogPage::setPrintShowGrid( bool status )
 {
-  QString tmp = opts[ "kde-kig-showgrid" ];
-  bool bt = ( tmp != "0" );
-  showgrid->setChecked( bt );
-  tmp = opts[ "kde-kig-showaxes" ];
-  bt = ( tmp != "0" );
-  showaxes->setChecked( bt );
+  showgrid->setChecked( status );
+}
+
+bool KigPrintDialogPage::printShowAxes()
+{
+  return showaxes->isChecked();
+}
+
+void KigPrintDialogPage::setPrintShowAxes( bool status )
+{
+  showaxes->setChecked( status );
 }
 
 bool KigPrintDialogPage::isValid( QString& )
@@ -790,27 +800,30 @@ void KigPart::delWidget( KigWidget* v )
 
 void KigPart::filePrintPreview()
 {
-  KPrinter printer;
-  printer.setPreviewOnly( true );
-  doPrint( printer );
+  QPrinter printer;
+  KPrintPreview printPreview( &printer );
+  doPrint( printer, document().grid(), document().axes() );
+  printPreview.exec();
 }
 
 void KigPart::filePrint()
 {
-  KPrinter printer;
+  QPrinter printer;
   KigPrintDialogPage* kp = new KigPrintDialogPage();
-  printer.addDialogPage( kp );
+  QPrintDialog *printDialog = KdePrint::createPrintDialog( &printer, QList<QWidget*>() << kp, m_widget );
+  printDialog->setWindowTitle( i18n("Print Geometry") );
   printer.setFullPage( true );
-  printer.setOption( "kde-kig-showgrid", QString::number( document().grid() ) );
-  printer.setOption( "kde-kig-showaxes", QString::number( document().axes() ) );
-  printer.setPageSelection( KPrinter::ApplicationSide );
-  if ( printer.setup( m_widget, i18n("Print Geometry") ) )
+  //Unsupported in Qt
+  //printer.setPageSelection( QPrinter::ApplicationSide );
+  kp->setPrintShowGrid( document().grid() );
+  kp->setPrintShowAxes( document().axes() );
+  if (printDialog->exec())
   {
-    doPrint( printer );
+    doPrint( printer, kp->printShowGrid(), kp->printShowAxes() );
   };
 }
 
-void KigPart::doPrint( KPrinter& printer )
+void KigPart::doPrint( QPrinter& printer, bool printGrid, bool printAxes )
 {
   Rect rect = document().suggestedRect();
   QRect qrect( 0, 0, printer.width(), printer.height() );
@@ -833,19 +846,7 @@ void KigPart::doPrint( KPrinter& printer )
   ScreenInfo si( rect, qrect );
   KigPainter painter( si, &printer, document() );
   painter.setWholeWinOverlay();
-  bool sg = true;
-  bool sa = true;
-  if ( !printer.previewOnly() )
-  {
-    sg = ( printer.option( "kde-kig-showgrid" ) != "0" );
-    sa = ( printer.option( "kde-kig-showaxes" ) != "0" );
-  }
-  else
-  {
-    sg = document().grid();
-    sg = document().axes();
-  }
-  painter.drawGrid( document().coordinateSystem(), sg, sa );
+  painter.drawGrid( document().coordinateSystem(), printGrid, printAxes );
   painter.drawObjects( document().objects(), false );
 }
 
