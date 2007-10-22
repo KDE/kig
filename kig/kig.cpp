@@ -138,7 +138,7 @@ void Kig::readProperties(const KConfigGroup &config)
   // config file.  this function is automatically called whenever
   // the app is being restored.  read in here whatever you wrote
   // in 'saveProperties'
-  load( KUrl( config.readPathEntry( "fileName" ) ) );
+  load( KUrl( config.readPathEntry( "fileName", QString() ) ) );
 }
 
 void Kig::load( const KUrl& url )
