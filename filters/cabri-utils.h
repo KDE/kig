@@ -72,6 +72,7 @@ public:
 
   uint id;
   QCString type;
+  int specification;
   QColor color;
   QColor fillColor;
   int thick;

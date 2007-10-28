@@ -568,6 +568,34 @@ KigDocument* KigFilterCabri::load( const QString& file )
       }
       oc = fact->propertyObjectCalcer( args[0], prop );
     }
+    else if ( obj->type == "Eq/Co" && curVer == CabriNS::CV_1_0 )
+    {
+      if ( args.size() < 1 )
+        KIG_FILTER_PARSE_ERROR;
+
+      ObjectCalcer* thisarg = args[0];
+      QCString prop;
+      if ( thisarg->imp()->inherits( PointImp::stype() ) )
+      {
+        switch ( obj->specification )
+        {
+          case 0:
+            prop = "coordinate-x";
+            break;
+          case 1:
+            prop = "coordinate-y";
+            break;
+          default:
+            KIG_FILTER_PARSE_ERROR;
+        }
+      }
+      else
+        KIG_FILTER_PARSE_ERROR;
+
+      assert( !prop.isEmpty() );
+
+      oc = fact->propertyObjectCalcer( thisarg, prop );
+    }
     else if ( obj->type == "Tr" )
     {
       if ( args.size() != 3 || !obj->data.empty() )
