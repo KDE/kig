@@ -52,8 +52,7 @@ QString SVGExporter::menuEntryName() const
 
 QString SVGExporter::menuIcon() const
 {
-  // TODO
-  return "vectorgfx";
+  return "image-svg+xml";
 }
 
 void SVGExporter::run( const KigPart& part, KigWidget& w )

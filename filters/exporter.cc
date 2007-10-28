@@ -78,7 +78,7 @@ QString ImageExporter::menuEntryName() const
 
 QString ImageExporter::menuIcon() const
 {
-  return "image";
+  return "image-x-generic";
 }
 
 void ImageExporter::run( const KigPart& doc, KigWidget& w )

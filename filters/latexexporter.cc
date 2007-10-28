@@ -79,8 +79,7 @@ QString LatexExporter::menuEntryName() const
 
 QString LatexExporter::menuIcon() const
 {
-  // TODO
-  return "tex";
+  return "text-x-tex";
 }
 
 class LatexExportImpVisitor
