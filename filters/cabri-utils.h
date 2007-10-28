@@ -72,6 +72,7 @@ public:
 
   uint id;
   QByteArray type;
+  int specification;
   QColor color;
   QColor fillColor;
   int thick;

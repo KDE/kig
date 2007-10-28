@@ -89,9 +89,9 @@ namespace CabriNS
 QString readLine( QFile& file )
 {
   QString ret = file.readLine( 10000L );
-  if ( ret[ret.length() - 1] == '\n' )
+  if ( !ret.isEmpty() && ret[ret.length() - 1] == '\n' )
     ret.truncate( ret.length() - 1 );
-  if ( ret[ret.length() - 1] == '\r' )
+  if ( !ret.isEmpty() && ret[ret.length() - 1] == '\r' )
     ret.truncate( ret.length() - 1 );
   return ret;
 }
@@ -236,7 +236,11 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
   myobj->type = tmp.toLatin1();
 
   tmp = firstlinere.cap( 3 );
-  // i have no idea what this number means..
+  myobj->specification = tmp.toInt( &ok );
+  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+  // for "Eq/Co" this is presumably what we want:
+  //  0: x coordinate (of point)
+  //  1: y coordinate (of point)
 
   tmp = firstlinere.cap( 4 );
   uint numberOfParents = tmp.toUInt( &ok );
@@ -247,35 +251,64 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
 
   QString line2 = CabriNS::readLine( f );
   QRegExp secondlinere( "^([^,]+), ([^,]+), ([^,]+), DS:([^ ]+) ([^,]+), GT:([^,]+), ([^,]+), (.*)$" );
-  if ( ! secondlinere.exactMatch( line2 ) )
+  QRegExp secondlinere2( "^([^,]+), ([^,]+), NbD:([^,]+), ([^,]+), ([^,]+), GT:([^,]+), ([^,]+), (.*)$" );
+  if ( secondlinere.exactMatch( line2 ) )
+  {
+    tmp = secondlinere.cap( 1 );
+    myobj->color = translateColor( tmp );
+
+    tmp = secondlinere.cap( 2 );
+    myobj->fillColor = translateColor( tmp );
+
+    tmp = secondlinere.cap( 3 );
+    myobj->thick = tmp == "t" ? 1 : tmp == "tT" ? 2 : 3;
+
+    tmp = secondlinere.cap( 4 );
+    myobj->lineSegLength = tmp.toInt( &ok );
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+
+    tmp = secondlinere.cap( 5 );
+    myobj->lineSegSplit = tmp.toInt( &ok );
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+
+    tmp = secondlinere.cap( 6 );
+    myobj->specialAppearanceSwitch = tmp.toInt( &ok );
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+
+    tmp = secondlinere.cap( 7 );
+    myobj->visible = tmp == "V";
+
+    tmp = secondlinere.cap( 8 );
+    myobj->fixed = tmp == "St";
+  }
+  else if ( secondlinere2.exactMatch( line2 ) )  // e.g. for AngVal
+  {
+    tmp = secondlinere2.cap( 1 );
+    myobj->color = translateColor( tmp );
+
+    tmp = secondlinere2.cap( 2 );
+    myobj->fillColor = translateColor( tmp );
+
+    // 3: e.g. "NbD:129" what is the meaning?
+    // 4: e.g. "FD"
+
+    tmp = secondlinere2.cap( 5 );
+    if ( tmp == "deg" )
+      myobj->gonio = CabriNS::CG_Deg;
+
+    tmp = secondlinere2.cap( 6 );
+    myobj->specialAppearanceSwitch = tmp.toInt( &ok );
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+
+    tmp = secondlinere2.cap( 7 );
+    myobj->visible = tmp == "V";
+
+    tmp = secondlinere2.cap( 8 );
+    myobj->fixed = tmp == "St";
+
+  }
+  else
     KIG_CABRI_FILTER_PARSE_ERROR;
-
-  tmp = secondlinere.cap( 1 );
-  myobj->color = translateColor( tmp );
-
-  tmp = secondlinere.cap( 2 );
-  myobj->fillColor = translateColor( tmp );
-
-  tmp = secondlinere.cap( 3 );
-  myobj->thick = tmp == "t" ? 1 : tmp == "tT" ? 2 : 3;
-
-  tmp = secondlinere.cap( 4 );
-  myobj->lineSegLength = tmp.toInt( &ok );
-  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
-
-  tmp = secondlinere.cap( 5 );
-  myobj->lineSegSplit = tmp.toInt( &ok );
-  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
-
-  tmp = secondlinere.cap( 6 );
-  myobj->specialAppearanceSwitch = tmp.toInt( &ok );
-  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
-
-  tmp = secondlinere.cap( 7 );
-  myobj->visible = tmp == "V";
-
-  tmp = secondlinere.cap( 8 );
-  myobj->fixed = tmp == "St";
 
   QString line3 = CabriNS::readLine( f );
   QRegExp thirdlinere( "^(Const: ([^,]*),? ?)?(Val: ([^,]*)(,(.*))?)?$" );
@@ -303,7 +336,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
   }
 
   QString thirdlineextra = thirdlinere.cap( 6 );
-  if ( myobj->type == "Text" )
+  if ( myobj->type == "Text" || myobj->type == "Formula" )
   {
     QRegExp textMetrics( "TP: *[\\s]*([^,]+), *[\\s]*([^,]+), *TS:[\\s]*([^,]+), *[\\s]*([^,]+)" );
     if ( textMetrics.indexIn( thirdlineextra ) != -1 )
@@ -318,14 +351,30 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
       if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
       myobj->textRect = Rect( xa, ya, tw, th );
     }
+    QString textline = CabriNS::readLine( f );
+    if ( textline.isEmpty() )
+      KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( myobj->type == "Formula" )
+    {
+      // Just hope there is no escaping!
+      myobj->text = textline;
+    }
+    else
+      myobj->text = CabriNS::readText( f, textline, "\n" );
+
+    // Hack: extracting substitution arguments from the parents list
+    // and inserting them into the "incs" vector
+    // under the assumption that the required parents are the last
+    // in the arguments list (in forward order)
+    // note that we do not check for special escaping of the symbols
+    // '"' and '#'
+    int count = myobj->text.count( "\"#" );
+    int parentsnum = myobj->parents.size();
+    for ( int i = parentsnum - count; i < parentsnum; ++i )
+      myobj->incs.push_back( myobj->parents[i] );
   }
 
   QString line4 = CabriNS::readLine( f );
-  if ( !line4.isEmpty() )
-  {
-    myobj->text = CabriNS::readText( f, line4, "\n" );
-    line4 = CabriNS::readLine( f );
-  }
   if ( !line4.isEmpty() )
   {
     QRegExp fontlinere( "^p: (\\d+), ([^,]+), S: (\\d+) C: (\\d+) Fa: (\\d+)$" );
@@ -539,19 +588,25 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
     KIG_CABRI_FILTER_PARSE_ERROR;
 
   line = CabriNS::readLine( f );
+
+  QRegExp textMetrics( "^TP:[\\s]*([^,]+),[\\s]*([^,]+), TS:[\\s]*([^,]+),[\\s]*([^,]+)$" );
+  bool freeText = false;
   while ( !line.isEmpty() )
   {
-    QString txt;
-    if ( !( txt = CabriNS::readText( f, line ) ).isEmpty() )
+    if ( line.startsWith( "\"" ) )
     {
-      myobj->text = txt;
+      QString txt = CabriNS::readText( f, line );
       if ( myobj->type != "Text" )
         myobj->name = txt;
-      // text label metrics
-      line = CabriNS::readLine( f );
-      QRegExp textMetrics( "^TP:[\\s]*([^,]+),[\\s]*([^,]+), TS:[\\s]*([^,]+),[\\s]*([^,]+)$" );
-      if ( !textMetrics.exactMatch( line ) )
-        KIG_CABRI_FILTER_PARSE_ERROR;
+      else
+        myobj->text = txt;
+    }
+    else if ( line.startsWith( "NbD:" ) )
+    {
+      // TODO
+    }
+    else if ( textMetrics.exactMatch( line ) )
+    {
       double xa = textMetrics.cap( 1 ).toDouble( &ok );
       if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
       double ya = textMetrics.cap( 2 ).toDouble( &ok );
@@ -561,13 +616,16 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
       double th = textMetrics.cap( 4 ).toDouble( &ok );
       if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
       myobj->textRect = Rect( xa, ya, tw, th );
-      // font settings
-      line = CabriNS::readLine( f );
     }
     else
     {
-      if ( !readStyles( file, line, myobj ) )
-        return 0;
+      if ( !freeText && myobj->type == "Formula" )
+      {
+        myobj->text = line;
+        freeText = true;
+      }
+      else
+        readStyles( file, line, myobj );
     }
 
     line = CabriNS::readLine( f );
