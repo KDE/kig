@@ -353,8 +353,8 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   // improving GUI look'n'feel...
   mtypeswidget->buttonEdit->setIcon( KIcon( "edit" ) );
   mtypeswidget->buttonRemove->setIcon( KIcon("edit-delete" ) );
-  mtypeswidget->buttonExport->setIcon( KIcon( "file-export" ) );
-  mtypeswidget->buttonImport->setIcon( KIcon("file-import" ) );
+  mtypeswidget->buttonExport->setIcon( KIcon( "document-export" ) );
+  mtypeswidget->buttonImport->setIcon( KIcon("document-import" ) );
 
   // loading macros...
   mmodel->addMacros( MacroList::instance()->macros() );
@@ -367,7 +367,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   popup->addAction( KIcon( "edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
   popup->addAction( KIcon( "edit-delete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
   popup->addSeparator();
-  popup->addAction( KIcon( "file-export" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
+  popup->addAction( KIcon( "document-export" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
 
   // saving types
   mpart.saveTypes();
