@@ -452,13 +452,13 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       Qt::PenStyle penstyles[] = {Qt::SolidLine, Qt::DashLine, Qt::DashDotLine, Qt::DashDotDotLine, Qt::DotLine};
       for ( int i = 0; i < (int) ( sizeof( penstyles ) / sizeof( Qt::PenStyle ) ); ++i )
       {
-        QPixmap p( 50, 20 );
+        QPixmap p( 20, 20 );
         p.fill( popup.palette().color( popup.backgroundRole() ) );
-        ScreenInfo si( Rect( -2.5, -1, 5, 2 ), p.rect() );
+        ScreenInfo si( Rect( -2.5, -1, 2.5, 1 ), p.rect() );
         KigPainter ptr( si, &p, popup.part().document(), false );
         LineImp line( Coordinate( -1, 0 ), Coordinate( 1, 0 ) );
         Qt::PenStyle ps = penstyles[i];
-        ObjectDrawer d( color, -1, true, ps, 1 );
+        ObjectDrawer d( color, 2, true, ps, 1 );
         d.draw( line, ptr, false );
         popup.addInternalAction( menu, QIcon( p ), nextfree++ );
       };
