@@ -251,9 +251,9 @@ void Kig::fileOpen()
 }
 
 void Kig::tipOfDay() {
-  KTipDialog::showTip( "kig/tips", true );
+  KTipDialog::showTip(this, "kig/tips", true);
 }
 
 void Kig::startupTipOfDay() {
-  KTipDialog::showTip( "kig/tips" );
+  KTipDialog::showTip(this, "kig/tips");
 }
