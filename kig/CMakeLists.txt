@@ -10,14 +10,22 @@ set(kig_SRCS
 )
 
 
-if(MSVC)
-  set(kig_SRCS ${kig_SRCS} kig.rc)
-endif(MSVC)
-
-if(MINGW)
-   KDE_ADD_RESOURCES2(kig_SRCS kig.rc)
-endif(MINGW)
-
+#uncomment this if oxygen icons for kig are available
+#set(kig_icons
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/16x16/apps/kig.png
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/32x32/apps/kig.png
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/48x48/apps/kig.png
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/64x64/apps/kig.png
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/128x128/apps/kig.png
+#)
+set(kig_icons
+    ${CMAKE_CURRENT_SOURCE_DIR}/kig/kig/hi16-app-kig.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/kig/kig/hi32-app-kig.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/kig/kig/hi48-app-kig.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/kig/kig/hi64-app-kig.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/kig/kig/hi128-app-kig.png
+)
+kde4_add_win32_app_icon(kig kig_SRCS ${kig_icons})
 kde4_add_executable(kig ${kig_SRCS})
 
 target_link_libraries(kig ${KDE4_KPARTS_LIBS})
