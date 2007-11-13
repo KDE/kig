@@ -25,7 +25,7 @@ set(kig_icons
     ${CMAKE_CURRENT_SOURCE_DIR}/kig/kig/hi64-app-kig.png
     ${CMAKE_CURRENT_SOURCE_DIR}/kig/kig/hi128-app-kig.png
 )
-kde4_add_win32_app_icon(kig kig_SRCS ${kig_icons})
+kde4_add_win32_app_icon(kig_SRCS ${kig_icons})
 kde4_add_executable(kig ${kig_SRCS})
 
 target_link_libraries(kig ${KDE4_KPARTS_LIBS})
