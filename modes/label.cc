@@ -325,7 +325,6 @@ bool TextLabelModeBase::canFinish()
 
   if ( ! finished )
   {
-    //TODO fix i18n: %n must be replace by %1 and add argument.
     KMessageBox::sorry( mdoc.widget(),
                         i18n( "There are '%n' parts in the text that you have not selected a "
                               "value for. Please remove them or select enough arguments." ) );
