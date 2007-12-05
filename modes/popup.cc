@@ -370,7 +370,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       popup.addInternalAction( menu, i18n( "&Show" ), nextfree+1 );
     }
     nextfree += 2;
-    popup.addInternalAction( menu, KIcon( "move", l ), i18n( "&Move" ), nextfree++ );
+    popup.addInternalAction( menu, KIcon( "transform-move", l ), i18n( "&Move" ), nextfree++ );
     popup.addInternalAction( menu, KIcon( "edit-delete", l ), i18n( "&Delete" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetColorMenu )

@@ -267,7 +267,7 @@ void KigPart::setupActions()
   connect(aConfigureTypes, SIGNAL(triggered(bool) ), SLOT(editTypes()));
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
-  aBrowseHistory  = new KAction(i18n("&Browse History..."), this);
+  aBrowseHistory  = new KAction(KIcon("view-history"), i18n("&Browse History..."), this);
   actionCollection()->addAction("browse_history", aBrowseHistory );
   connect( aBrowseHistory, SIGNAL( triggered( bool ) ), SLOT( browseHistory() ) );
   aBrowseHistory->setToolTip( i18n( "Browse the history of the current construction." ) );
