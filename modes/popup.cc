@@ -263,7 +263,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       "color-fill",
 //      "colorize",
       "sizer",
-      "paintbrush",
+      "draw-brush",
       QString(),
       QString()
     };
