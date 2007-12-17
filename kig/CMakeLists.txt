@@ -12,11 +12,11 @@ set(kig_SRCS
 
 #uncomment this if oxygen icons for kig are available
 #set(kig_icons
-#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/16x16/apps/kig.png
-#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/32x32/apps/kig.png
-#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/48x48/apps/kig.png
-#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/64x64/apps/kig.png
-#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/128x128/apps/kig.png
+#    ${KDE4_ICON_DIR}/oxygen/16x16/apps/kig.png
+#    ${KDE4_ICON_DIR}/oxygen/32x32/apps/kig.png
+#    ${KDE4_ICON_DIR}/oxygen/48x48/apps/kig.png
+#    ${KDE4_ICON_DIR}/oxygen/64x64/apps/kig.png
+#    ${KDE4_ICON_DIR}/oxygen/128x128/apps/kig.png
 #)
 set(kig_icons
     ${CMAKE_CURRENT_SOURCE_DIR}/hi16-app-kig.png
