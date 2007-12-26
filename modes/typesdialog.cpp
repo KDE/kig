@@ -351,10 +351,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->setContextMenuPolicy( Qt::CustomContextMenu );
 
   // improving GUI look'n'feel...
-  mtypeswidget->buttonEdit->setIcon( KIcon( "object-edit" ) );
-  mtypeswidget->buttonRemove->setIcon( KIcon("edit-delete" ) );
+  mtypeswidget->buttonEdit->setIcon( KIcon( "document-properties" ) );
+  mtypeswidget->buttonRemove->setIcon( KIcon( "edit-delete" ) );
   mtypeswidget->buttonExport->setIcon( KIcon( "document-export" ) );
-  mtypeswidget->buttonImport->setIcon( KIcon("document-import" ) );
+  mtypeswidget->buttonImport->setIcon( KIcon( "document-import" ) );
 
   // loading macros...
   mmodel->addMacros( MacroList::instance()->macros() );
@@ -364,7 +364,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->resizeColumnToContents( 0 );
 
   popup = new QMenu( this );
-  popup->addAction( KIcon( "object-edit" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
+  popup->addAction( KIcon( "document-properties" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
   popup->addAction( KIcon( "edit-delete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
   popup->addSeparator();
   popup->addAction( KIcon( "document-export" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
