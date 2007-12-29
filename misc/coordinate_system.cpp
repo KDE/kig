@@ -211,18 +211,21 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   // first Graphics Gems book.  Credits to Paul S. Heckbert, who wrote
   // the "Nice number for graph labels" gem.
 
-  const double hmax = p.window().right();
-  const double hmin = p.window().left();
-  const double vmax = p.window().top();
-  const double vmin = p.window().bottom();
+  const double hmax = ceil( p.window().right() );
+  const double hmin = floor( p.window().left() );
+  const double vmax = ceil( p.window().top() );
+  const double vmin = floor( p.window().bottom() );
 
   // the number of intervals we would like to have:
   // we try to have one of them per 40 pixels or so..
   const int ntick = static_cast<int>(
     kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 40. ) + 1;
 
-  const double hrange = nicenum( hmax - hmin, false );
-  const double vrange = nicenum( vmax - vmin, false );
+  double hrange = nicenum( hmax - hmin, false );
+  double vrange = nicenum( vmax - vmin, false );
+  const double newrange = kigMin( hrange, vrange );
+  hrange = newrange;
+  vrange = newrange;
 
   const double hd = nicenum( hrange / ( ntick - 1 ), true );
   const double vd = nicenum( vrange / ( ntick - 1 ), true );
