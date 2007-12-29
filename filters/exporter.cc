@@ -390,7 +390,7 @@ void XFigExportImpVisitor::visit( const PointImp* imp )
 void XFigExportImpVisitor::visit( const TextImp* imp )
 {
   QString text = imp->text();
-  QPoint coord = convertCoord( imp->coordinate() );
+  QPoint coord = convertCoord( imp->surroundingRect().bottomLeft() );
 
   mstream << "4 "    // text type
           << "0 "    // subtype: left justfied
