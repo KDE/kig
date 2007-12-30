@@ -63,7 +63,7 @@ Kig::Kig()
   // be able to load its dll modules..  Another part of the problem is
   // that boost.python fails to link against python ( on Debian at
   // least ).
-  KLibrary* library = KLibLoader::self()->library( "libkigpart", QLibrary::ExportExternalSymbolsHint );
+  KLibrary* library = KLibLoader::self()->library( "kigpart", QLibrary::ExportExternalSymbolsHint );
   KPluginFactory* factory = 0;
   if ( library ) factory = library->factory();
   if (factory)

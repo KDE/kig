@@ -142,7 +142,7 @@ if(BOOST_PYTHON_FOUND)
 endif(BOOST_PYTHON_FOUND)
 
 
-kde4_add_plugin(kigpart WITH_PREFIX ${kigpart_PART_SRCS})
+kde4_add_plugin(kigpart ${kigpart_PART_SRCS})
 
 target_link_libraries(kigpart ${KDE4_KPARTS_LIBS} ${KDE4_KUTILS_LIBS} )
 if(BOOST_PYTHON_FOUND)
