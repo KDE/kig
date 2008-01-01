@@ -52,7 +52,7 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
         i18n( "Here you can edit the description of the current macro type. "
               "This field is optional, so you can also leave this empty: if "
               "you do so, then your macro type will have no description." ) );
-  medittypewidget->typeIcon->setIcon( !micon.isEmpty() ? micon : "gear" );
+  medittypewidget->typeIcon->setIcon( !micon.isEmpty() ? micon : "system-run" );
   medittypewidget->typeIcon->setWhatsThis(
         i18n( "Use this button to change the icon of the current macro type." ) );
 

@@ -382,7 +382,7 @@ const QString MacroConstructor::description() const
 
 const QByteArray MacroConstructor::iconFileName( const bool canBeNull ) const
 {
-  return ( miconfile.isNull() && !canBeNull ) ? QByteArray( "gear" ) : miconfile;
+  return ( miconfile.isNull() && !canBeNull ) ? QByteArray( "system-run" ) : miconfile;
 }
 
 bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const

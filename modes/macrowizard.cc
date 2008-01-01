@@ -157,7 +157,7 @@ MacroInfoPage::MacroInfoPage( QWidget* parent, DefineMacroMode* mode )
   KIconButton* iconbutton = new KIconButton( this );
   iconlay->addWidget( iconbutton );
   label->setBuddy( iconbutton );
-  iconbutton->setIcon( "gear" );
+  iconbutton->setIcon( "system-run" );
   iconlay->addItem( new QSpacerItem( 5, 5, QSizePolicy::Expanding, QSizePolicy::Fixed ) );
 
   registerField( "name*", editname );

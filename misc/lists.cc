@@ -351,7 +351,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
     QString name, description;
     ObjectHierarchy* hierarchy = 0;
     QByteArray actionname;
-    QByteArray iconfile( "gear" );
+    QByteArray iconfile( "system-run" );
     if ( macroelem.tagName() != "Macro" ) continue; // forward compat ?
     for ( QDomElement dataelem = macroelem.firstChild().toElement();
           ! dataelem.isNull(); dataelem = dataelem.nextSibling().toElement() )

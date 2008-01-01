@@ -243,7 +243,7 @@ void KigPart::setupActions()
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
-  aRepeatLastConstruction = new KAction(KIcon("gear"), i18n("Repeat Construction"), this);
+  aRepeatLastConstruction = new KAction(KIcon("system-run"), i18n("Repeat Construction"), this);
   actionCollection()->addAction("repeat_last_construction", aRepeatLastConstruction );
   connect(aRepeatLastConstruction, SIGNAL(triggered(bool) ), SLOT(repeatLastConstruction()));
   aRepeatLastConstruction->setShortcut(QKeySequence(Qt::Key_Z));
@@ -257,7 +257,7 @@ void KigPart::setupActions()
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  aNewMacro  = new KAction(KIcon("gear"), i18n("&New Macro..."), this);
+  aNewMacro  = new KAction(KIcon("system-run"), i18n("&New Macro..."), this);
   actionCollection()->addAction("macro_action", aNewMacro );
   connect(aNewMacro, SIGNAL(triggered(bool) ), SLOT(newMacro()));
   aNewMacro->setToolTip(i18n("Define a new macro"));
