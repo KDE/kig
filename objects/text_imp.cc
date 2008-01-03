@@ -97,7 +97,7 @@ const char* TextImp::iconForProperty( int which ) const
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   else if ( which == Parent::numberOfProperties() )
-    return "text"; // text
+    return "draw-text"; // text
   else assert( false );
   return "";
 }
