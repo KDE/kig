@@ -27,7 +27,7 @@ hexagons (Point(0,0), Point(1,0), 5)
 <tip category="Kig">
 <html>
 <p>You can repeat the latest construction simply by pressing the key
-'Z'; this cames very handy if you need to construct a sequence
+'Z'; this comes in very handy if you need to construct a sequence
 of objects with the same construction, especially if there is
 no shortcut for that construction.</p>
 </html>
