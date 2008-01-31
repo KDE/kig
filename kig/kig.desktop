@@ -108,6 +108,7 @@ Comment[sv]=Utforska geometriska konstruktioner
 Comment[tr]=Geometik Şekilleri Keşfedin
 Comment[uk]=Дослідження геометричних конструкцій
 Comment[vi]=Khám phá các phép Dụng Hình học
+Comment[zh_CN]=探索几何构造的世界
 Comment[zh_TW]=作出幾何圖形
 Exec=kig %i %m -caption "%c"
 MimeType=application/x-kig;application/x-kgeo;
