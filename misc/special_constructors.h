@@ -39,6 +39,26 @@ public:
   bool isTransform() const;
 };
 
+class ThreeOrOneIntersectionConstructor
+  : public StandardConstructorBase
+{
+  const ArgsParserObjectType* mtype_std;
+  const ArgsParserObjectType* mtype_special;
+  ArgsParser margsparser;
+public:
+  ThreeOrOneIntersectionConstructor( const ArgsParserObjectType* t_std,
+                                   const ArgsParserObjectType* t_special,
+                                   const char* iconfile,
+                                   const struct ArgsParser::spec argsspecv[] );
+  ~ThreeOrOneIntersectionConstructor();
+
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
+  void plug( KigPart* doc, KigGUIAction* kact );
+  bool isTransform() const;
+};
+
+
 class PolygonVertexTypeConstructor
   : public StandardConstructorBase
 {
