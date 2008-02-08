@@ -54,6 +54,22 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };
+/**
+ * Francesca Gatti (frency.gatti@gmail.com), january 2008:
+ *
+ * cubic line 'other' intersection.  In case we already know two of the
+ * three intersections
+ */
+class CubicLineOtherIntersectionType
+  : public ArgsParserObjectType
+{
+  CubicLineOtherIntersectionType();
+  ~CubicLineOtherIntersectionType();
+public:
+  static const CubicLineOtherIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
 
 /**
  * circle circle 'other' intersection.  In case we already know one of the

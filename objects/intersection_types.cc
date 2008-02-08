@@ -146,6 +146,75 @@ ObjectImp* ConicLineOtherIntersectionType::calc( const Args& parents, const KigD
   if ( !line->containsPoint( ret, doc ) ) return new InvalidImp;
   return new PointImp( ret );
 }
+// cubic line other intersection
+
+static const ArgsParser::spec argsspecCubicLineOtherIntersection[] =
+{
+  { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic"),  "SHOULD NOT BE SEEN", true },
+  { AbstractLineImp::stype(),  intersectlinestat , "SHOULD NOT BE SEEN", true },
+  { PointImp::stype(), I18N_NOOP( "Already computed intersection point"), "SHOULD NOT BE SEEN", true },
+  { PointImp::stype(), I18N_NOOP( "Already computed intersection point"), "SHOULD NOT BE SEEN", true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicLineOtherIntersectionType )
+
+CubicLineOtherIntersectionType::CubicLineOtherIntersectionType()
+  : ArgsParserObjectType( "CubicLineOtherIntersection",
+                         argsspecCubicLineOtherIntersection, 4 )
+{
+}
+
+CubicLineOtherIntersectionType::~CubicLineOtherIntersectionType()
+{
+}
+
+const CubicLineOtherIntersectionType* CubicLineOtherIntersectionType::instance()
+{
+  static const CubicLineOtherIntersectionType t;
+  return &t;
+}
+
+ObjectImp* CubicLineOtherIntersectionType::calc( const Args& parents, const KigDocument& doc ) const
+{
+  if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
+
+  Coordinate p = static_cast<const PointImp*>( parents[2] )->coordinate();
+  Coordinate q = static_cast<const PointImp*>( parents[3] )->coordinate();
+  const AbstractLineImp* line = static_cast<const AbstractLineImp*>( parents[1] );
+  const CubicImp* cubic = static_cast<const CubicImp*>( parents[0] );
+  const LineData linedata = line->data();
+  const CubicCartesianData cubicData = cubic->data();
+
+  if ( !line->containsPoint( p, doc ) || !cubic->containsPoint( p, doc ) )
+  {
+    return new InvalidImp;
+  }
+  if ( !line->containsPoint( q, doc ) || !cubic->containsPoint( q, doc ) )
+  {
+    return new InvalidImp;
+  }
+  Coordinate ret;
+  double pax = p.x - linedata.a.x;
+  double pay = p.y - linedata.a.y;
+  double bax = linedata.b.x - linedata.a.x;
+  double bay = linedata.b.y - linedata.a.y;
+  double qax = q.x - linedata.a.x;
+  double qay = q.y - linedata.a.y;
+  double knownparam1 = (pax*bax + pay*bay)/(bax*bax + bay*bay);
+  double knownparam2 = (qax*bax + qay*bay)/(bax*bax + bay*bay);
+  double t, aa, bb, cc, dd;
+  calcCubicLineRestriction ( cubicData, linedata.a, linedata.b-linedata.a, aa, bb, cc, dd );
+
+  t = - bb/aa - knownparam1 - knownparam2;
+
+  ret = linedata.a + t*(linedata.b - linedata.a);
+
+  if ( !ret.valid() ) return new InvalidImp;
+ // if ( !line->containsPoint( ret, doc ) ) return new InvalidImp;
+  return new PointImp( ret );
+}
+
+
 
 /*
  * This construction is authomatically invoked when the user 
@@ -304,6 +373,11 @@ const ObjectImpType* LineLineIntersectionType::resultId() const
 }
 
 const ObjectImpType* LineCubicIntersectionType::resultId() const
+{
+  return PointImp::stype();
+}
+
+const ObjectImpType* CubicLineOtherIntersectionType::resultId() const
 {
   return PointImp::stype();
 }
