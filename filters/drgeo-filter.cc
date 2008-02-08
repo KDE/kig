@@ -52,6 +52,7 @@
 
 #include <qfile.h>
 #include <qnamespace.h>
+#include <QDomDocument>
 
 #include <kinputdialog.h>
 #include <klocale.h>
