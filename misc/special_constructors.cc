@@ -178,24 +178,26 @@ bool TwoOrOneIntersectionConstructor::isTransform() const
   return false;
 }
 
-ThreeOrOneIntersectionConstructor::ThreeOrOneIntersectionConstructor(
+ThreeTwoOneIntersectionConstructor::ThreeTwoOneIntersectionConstructor(
                                        const ArgsParserObjectType* t_std,
                                        const ArgsParserObjectType* t_special,
+				       const ArgsParserObjectType* t_special2,
                                        const char* iconfile,
                                        const struct ArgsParser::spec argsspecv[] )
   : StandardConstructorBase( "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN",
        iconfile, margsparser ),
     mtype_std( t_std ),
     mtype_special( t_special ),
+    mtype_special2( t_special2 ),
     margsparser( argsspecv, 2 )
 {
 }
 
-ThreeOrOneIntersectionConstructor::~ThreeOrOneIntersectionConstructor()
+ThreeTwoOneIntersectionConstructor::~ThreeTwoOneIntersectionConstructor()
 {
 }
 
-void ThreeOrOneIntersectionConstructor::drawprelim(
+void ThreeTwoOneIntersectionConstructor::drawprelim(
            const ObjectDrawer& drawer, 
            KigPainter& p, 
            const std::vector<ObjectCalcer*>& parents,
@@ -217,7 +219,7 @@ void ThreeOrOneIntersectionConstructor::drawprelim(
   }
 }
 
-std::vector<ObjectHolder*> ThreeOrOneIntersectionConstructor::build( 
+std::vector<ObjectHolder*> ThreeTwoOneIntersectionConstructor::build( 
            const std::vector<ObjectCalcer*>& parents, 
            KigDocument& doc, 
            KigWidget& ) const
@@ -238,7 +240,22 @@ std::vector<ObjectHolder*> ThreeOrOneIntersectionConstructor::build(
       ) ) );
     return ret;
   }
-
+  if ( uniquepoints.size() == 1 )
+  {
+  for ( int i = -1; i <= 1; i += 2 )
+  {
+     std::vector<ObjectCalcer*> args( parents );
+     args.push_back( uniquepoints[0] );
+     ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( i ) );
+     args.push_back( d );
+ 
+     ret.push_back( new ObjectHolder( new ObjectTypeCalcer(
+     CubicLineTwoIntersectionType::instance(), args
+      ) ) );
+    args.clear();
+  }
+    return ret;
+  }
   for ( int i = 1; i <= 3; i += 1 )
   {
     ObjectConstCalcer* d = new ObjectConstCalcer( new IntImp( i ) );
@@ -252,12 +269,11 @@ std::vector<ObjectHolder*> ThreeOrOneIntersectionConstructor::build(
   return ret;
 }
 
-
-void ThreeOrOneIntersectionConstructor::plug( KigPart*, KigGUIAction* )
+void ThreeTwoOneIntersectionConstructor::plug( KigPart*, KigGUIAction* )
 {
 }
 
-bool ThreeOrOneIntersectionConstructor::isTransform() const
+bool ThreeTwoOneIntersectionConstructor::isTransform() const
 {
   return false;
 }
@@ -1545,9 +1561,10 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
     new ArcLineIntersectionConstructor();
 
   ObjectConstructor* linecubic =
-    new ThreeOrOneIntersectionConstructor(
+    new ThreeTwoOneIntersectionConstructor(
           LineCubicIntersectionType::instance(),
           CubicLineOtherIntersectionType::instance(),
+	  CubicLineTwoIntersectionType::instance(),
           "curvelineintersection",
           argsspeccbli);
 

@@ -39,18 +39,20 @@ public:
   bool isTransform() const;
 };
 
-class ThreeOrOneIntersectionConstructor
+class ThreeTwoOneIntersectionConstructor
   : public StandardConstructorBase
 {
   const ArgsParserObjectType* mtype_std;
   const ArgsParserObjectType* mtype_special;
+  const ArgsParserObjectType* mtype_special2;
   ArgsParser margsparser;
 public:
-  ThreeOrOneIntersectionConstructor( const ArgsParserObjectType* t_std,
+  ThreeTwoOneIntersectionConstructor( const ArgsParserObjectType* t_std,
                                    const ArgsParserObjectType* t_special,
+				   const ArgsParserObjectType* t_special2,
                                    const char* iconfile,
                                    const struct ArgsParser::spec argsspecv[] );
-  ~ThreeOrOneIntersectionConstructor();
+  ~ThreeTwoOneIntersectionConstructor();
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;

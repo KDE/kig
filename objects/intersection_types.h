@@ -60,6 +60,7 @@ public:
  * cubic line 'other' intersection.  In case we already know two of the
  * three intersections
  */
+
 class CubicLineOtherIntersectionType
   : public ArgsParserObjectType
 {
@@ -70,7 +71,21 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };
-
+/**
+ *
+ * one of the two cubic line intersection points,  in case we already know one of the
+ * three intersections
+ */
+class CubicLineTwoIntersectionType
+  : public ArgsParserObjectType
+{
+  CubicLineTwoIntersectionType();
+  ~CubicLineTwoIntersectionType();
+public:
+  static const CubicLineTwoIntersectionType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
 /**
  * circle circle 'other' intersection.  In case we already know one of the
  * two intersections
