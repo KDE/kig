@@ -87,8 +87,8 @@ Type(object)                              type of object
 Coordinate(point)                         coordinate of point
 XCoord(point)                             
 YCoord(point)
-MidPoints(a, b)                           midpoint of two points a and b
-MidPoint(segment)                         midpoint of a segment
+MidPointAB(a, b)                           midpoint of two points a and b
+MidPointSegment(segment)                   midpoint of a segment
 EndPointA(segment)                        
 EndPointB(segment)
 Length(segment)
@@ -124,9 +124,12 @@ ArcBy3Points(p1, p2, p3)
 ArcByCenterPointAngle(center, point, angle)
 
 ParabolaByDirectrixFocus(directrix, focus)
+ParabolaBy3Points(p1, p2, p3)
+EllipseByFocusFocusPoint(p1, p2, p3)
+HyperbolaByFocusFocusPoint(p1, p2, p3)
+CubicBy9Points(p1, p2, p3, p4, p5, p6, p7, p8, p9)
 VerticalCubic(p1, p2, p3, p4)
 ConicArc(p1, p2, p3, center)
-
 LineLineIntersection(line1, line2)        produces a point
 CircleCircleIntersection(c1, c2, which)   c1 and c2 are two circles, 'which'
                                           is an integer that can only be +1 
@@ -136,8 +139,16 @@ CircleCircleIntersection(c1, c2, which)   c1 and c2 are two circles, 'which'
                                           function twice.
 ConicLineIntersection(conic, line, which) conic can also be a circle; which
                                           has the same meaning as for the
-                                          CircleCircleIntersection
+                                          CircleCircleIntersection.
 
+CubicLineIntersection(cubic, line, which) 'which' is an integer that tells which one 
+					  of the three intersection has to be created.
+ConicLineOtherIntersection(conic, line, p)
+					  p is the known intersection Point; 
+					  it creates the other one.
+CubicLineOtherIntersection(cubic, line, p1, p2) 
+					  p1 and p2 are two already known intersection
+					  Points; it produces the third one.
 Polygon((p1, p2,..., pn))                 A polygon with the given vertices
 PolygonBCV(center, vertex, n)             A regular polygon with 'n' sides
 PolygonVertex(polygon, i)                 Generate the i-th vertex of the

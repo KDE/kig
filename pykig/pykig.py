@@ -532,6 +532,7 @@ objects=(\
 ("Parallel",        "LineParallel", "line, point,", "(line, point,),"),
 ###### Circles, arcs, ...
 ("Circle",          "CircleBCP", "center, point,", "(center, point,),"),
+("CircleByCenterPoint",          "CircleBCP", "center, point,", "(center, point,),"),
 ("CircleByCenterRadius", "CircleBPR", "center, radius,", "(center, radius,),"),
 ("CircleBy3Points",  "CircleBTP", "p1, p2, p3,", "(p1, p2, p3,),"),
 ("ArcBy3Points",    "ArcBTP", "p1, p2, p3,", "(p1, p2, p3,),"),
@@ -539,8 +540,14 @@ objects=(\
                     "center, point, angle,", "(center, point, angle),"),
 ###### Conics...
 ("ParabolaByDirectrixFocus", "ParabolaBDP", "line, point,", "(line, point,),"),
-("VerticalCubic", "VerticalCubicB4P", "p1, p2, p3, p4,", "(p1, p2, p3, p4),"),
+("VerticalCubic", "VerticalCubicB4P", "p1, p2, p3, p4,", "(p1, p2, p3, p4,),"),
 ("ConicArc", "ConicArcBTPC", "p1, p2, p3, center,", "(p1, p2, p3, center),"),
+("ConicBy5Points", "ConicB5P", "p1, p2, p3, p4, p5,", "(p1, p2, p3, p4, p5,),"),
+("EllipseByFocusFocusPoint", "EllipseBFFP", "p1, p2, p3,", "(p1, p2, p3,),"),
+("ParabolaBy3Points", "ParabolaBTP", "p1, p2, p3,", "(p1, p2, p3,),"),
+("HyperbolaByFocusFocusPoint", "HyperbolaBFFP", "p1, p2, p3,", "(p1, p2, p3,),"),
+#### Cubics
+("CubicBy9Points", "CubicB9P", "p1, p2, p3, p4, p5, p6, p7, p8, p9,","(p1, p2, p3, p4, p5, p6, p7, p8, p9,)," ),
 #####
 # intersections.  The only standard object is the intersection
 # of two lines, which always gives one single point
@@ -553,9 +560,14 @@ objects=(\
 # si potrebbe mettere un controllo...
 #####
 ("CircleCircleIntersection", "CircleCircleIntersection",
-                    "c1, c2, witch,", "(c1, c2, Int(witch),),"),
+                    "c1, c2, which,", "(c1, c2, Int(which),),"),
 ("ConicLineIntersection", "ConicLineIntersection",
-                    "conic, line, witch,", "(conic, line, Int(witch),),"),
+                    "conic, line, which,", "(conic, line, Int(which),),"),
+("ConicLineOtherIntersection", "ConicLineOtherIntersection",
+           	    "conic, line, p,", "(conic, line, p),"),
+("CubicLineIntersection", "CubicLineIntersection",
+                    "cubic, line, which,", "(cubic, line, Int(which),),"),
+("CubicLineOtherIntersection", "CubicLineOtherIntersection", "cubic, line, p1, p2,", "(cubic, line, p1, p2),"),
 ###### Classe Triangle
 ("Triangle",        "TriangleB3P", "p1, p2, p3,", "(p1, p2, p3),"),
 ###### Classe Polygon   (the only argument is a points vect)
@@ -644,6 +656,8 @@ property=(\
 ("YCoord",          "coordinate-y", "point,", "point,"),
 ("MidPoints",       "mid-point", "a, b,", "Segment(a, b, internal=True),"),
 ("MidPoint",        "mid-point", "segment,", "segment,"),
+("MidPointAB",      "mid-point", "a, b,", "Segment(a, b, internal=True),"),
+("MidPointSegment", "mid-point", "segment,", "segment,"),
 ("EndPointA",       "end-point-A", "segment,", "segment,"),
 ("EndPointB",       "end-point-B", "segment,", "segment,"),
 ("Length",          "length", "segment,", "segment,"),
@@ -681,7 +695,7 @@ for p in property:
 points  =(Point, ConstrainedPoint, RelativePoint, PolygonVertex)
 lines=(Segment, Ray, Vector, InvertLine)
 segments=(Segment, Vector, PolygonSide, InvertSegment)
-circles =(Circle, CircleBy3Points, CircularInversion, ArcBy3Points,
+circles =(CircleByCenterPoint, CircleBy3Points, CircularInversion, ArcBy3Points,
           ArcByCenterPointAngle, InvertCircle)
 polygons=(Polygon, PolygonBCV, Triangle)
 angles  =(Angle,)
