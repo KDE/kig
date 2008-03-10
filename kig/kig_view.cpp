@@ -526,9 +526,9 @@ void KigView::toggleFullScreen()
 {
   mrealwidget->setFullScreen( ! mrealwidget->isFullScreen() );
   if ( mrealwidget->isFullScreen() )
-    topLevelWidget()->showFullScreen();
+    topLevelWidget()->setWindowState( topLevelWidget()->windowState() | Qt::WindowFullScreen ); // set
   else
-    topLevelWidget()->showNormal();
+    topLevelWidget()->setWindowState( topLevelWidget()->windowState() & ~Qt::WindowFullScreen ); // reset
 }
 
 void KigWidget::setFullScreen( bool f )
