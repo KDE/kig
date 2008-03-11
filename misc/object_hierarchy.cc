@@ -694,11 +694,17 @@ bool ObjectHierarchy::resultDoesNotDependOnGiven() const
 // basically means: return the type that inherits the other type,
 // because if another type inherits the lowermost type, then it will
 // also inherit the other..
-const ObjectImpType* lowermost( const ObjectImpType* a, const ObjectImpType* b )
+// mp: if a and b are not directly comparable, as a last resort return c, 
+// which is the "actual" ImpType of the object (see bug #157736 on
+// bugs.kde.org)
+const ObjectImpType* lowermost( const ObjectImpType* a, const ObjectImpType* b,
+			        const ObjectImpType* c )
 {
   if ( a->inherits( b ) ) return a;
-  assert( b->inherits( a ) );
-  return b;
+  if ( b->inherits( a ) ) return b;
+  assert( c-> inherits( a ) );
+  assert( c-> inherits( b ) );
+  return c;  // this is a last resort!
 }
 
 // this function is part of the visit procedure really.  It is
@@ -736,7 +742,7 @@ int ObjectHierarchy::storeObject( const ObjectCalcer* o, const std::vector<Objec
 
       margrequirements[pl[i]] =
         lowermost( margrequirements[pl[i]],
-                   o->impRequirement( parent, opl ) );
+                   o->impRequirement( parent, opl ), parent->imp()->type() );
       musetexts[pl[i]] = margrequirements[pl[i]]->selectStatement();
     };
   };
