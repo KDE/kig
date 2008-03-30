@@ -35,7 +35,7 @@
 
 #include <cmath>
 
-PolygonImp::PolygonImp( uint npoints, const std::vector<Coordinate>& points,
+PolygonImp::PolygonImp( const uint npoints, const std::vector<Coordinate>& points,
                         const Coordinate& centerofmass )
   : mnpoints( npoints ), mpoints( points ), mcenterofmass( centerofmass )
 {
