@@ -18,6 +18,8 @@
  USA
 **/
 
+#include <math.h>
+
 #include "conic-common.h"
 
 #include "common.h"

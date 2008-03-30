@@ -19,6 +19,7 @@
    USA
 **/
 
+#include <math.h>
 
 #include "goniometry.h"
 

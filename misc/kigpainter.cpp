@@ -40,6 +40,11 @@
 #include <functional>
 #include <algorithm>
 
+using std::fabs;
+using std::cos;
+using std::sin;
+
+
 KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device,
                         const KigDocument& doc, bool no )
   : mP ( device ),
@@ -643,7 +648,7 @@ void KigPainter::drawAngle( const Coordinate& cpoint, double dstartangle,
   QPoint end( static_cast<int>( point.x() + radius * cos( dstartangle + dangle ) ),
               static_cast<int>( point.y() - radius * sin( dstartangle + dangle ) ) );
   QPoint vect = (end - point);
-  double vectlen = sqrt( float( vect.x() * vect.x() + vect.y() * vect.y() ) );
+  double vectlen = std::sqrt( float( vect.x() * vect.x() + vect.y() * vect.y() ) );
   QPoint orthvect( -vect.y(), vect.x() );
   vect = vect * 6 / vectlen;
   orthvect = orthvect * 6 / vectlen;

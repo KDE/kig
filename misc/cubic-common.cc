@@ -46,7 +46,7 @@ void CubicCartesianData::normalize()
   double norm = 0.0;
   for ( int i = 0; i < 10; ++i )
   {
-    if ( fabs( coeffs[i] ) > norm ) norm = fabs( coeffs[i] );
+    if ( std::fabs( coeffs[i] ) > norm ) norm = std::fabs( coeffs[i] );
   }
   if ( norm < 1e-8 ) return;
   for ( int i = 0; i < 10; ++i )

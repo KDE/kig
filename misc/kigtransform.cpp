@@ -29,6 +29,11 @@
 #include <klocale.h>
 #include <kdebug.h>
 
+using std::fabs;
+using std::cos;
+using std::sin;
+using std::atan2;
+
 // Transformation getProjectiveTransformation ( int argsnum,
 //     Object *transforms[], bool& valid )
 // {
@@ -761,7 +766,7 @@ double Transformation::apply( double length ) const
   assert( isHomothetic() );
   double det = mdata[1][1]*mdata[2][2] -
                mdata[1][2]*mdata[2][1];
-  return sqrt( fabs( det ) ) * length;
+  return std::sqrt( fabs( det ) ) * length;
 }
 
 Transformation::Transformation( double data[3][3], bool ishomothety )

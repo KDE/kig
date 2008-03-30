@@ -34,7 +34,7 @@ EquationString::EquationString( const QString& s )
 
 double EquationString::trunc( double d )
 {
-  if ( fabs( d ) < 1e-12 ) return 0.0;
+  if ( std::fabs( d ) < 1e-12 ) return 0.0;
   return d;
 }
 
@@ -56,8 +56,8 @@ void EquationString::addTerm( double coeff, const QString& monomial, bool& needs
       append( "- " );
     }
   }
-  coeff = fabs( coeff );
-  if ( monomial.isEmpty() || fabs( coeff - 1.0 ) > 1e-6 ) 
+  coeff = std::fabs( coeff );
+  if ( monomial.isEmpty() || std::fabs( coeff - 1.0 ) > 1e-6 ) 
     append( KGlobal::locale()->formatNumber( coeff, 3 ) );
   if ( !monomial.isEmpty() )
   {

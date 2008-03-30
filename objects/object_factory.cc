@@ -189,7 +189,7 @@ ObjectTypeCalcer* ObjectFactory::locusCalcer(
   std::vector<ObjectCalcer*> realparents( 2 + sideOfTree.size(), 0 );
   realparents[0] = new ObjectConstCalcer( new HierarchyImp( hier ) );
   realparents[1] = curve;
-  copy( sideOfTree.begin(), sideOfTree.end(), realparents.begin() + 2 );
+  std::copy( sideOfTree.begin(), sideOfTree.end(), realparents.begin() + 2 );
 
   return new ObjectTypeCalcer( LocusType::instance(), realparents );
 }

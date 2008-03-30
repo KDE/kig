@@ -21,6 +21,8 @@
 #include "kignumerics.h"
 #include "common.h"
 
+using std::fabs;
+
 /*
  * compute one of the roots of a cubic polynomial
  * if xmin << 0 or xmax >> 0 then autocompute a bound for all the
@@ -70,7 +72,7 @@ double calcCubicRoot ( double xmin, double xmax, double a,
       numroots = 0;
       return 0.0;
     }
-    discrim = sqrt(discrim)/(2*fabs(b));
+    discrim = std::sqrt(discrim)/(2*fabs(b));
     double rootmiddle = -c/(2*b);
     if ( rootmiddle - discrim < xmin ) numroots--;
     if ( rootmiddle + discrim > xmax ) numroots--;

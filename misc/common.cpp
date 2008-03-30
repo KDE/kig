@@ -18,6 +18,8 @@
  USA
 **/
 
+#include <math.h>
+
 #include "common.h"
 
 #include "../kig/kig_view.h"
