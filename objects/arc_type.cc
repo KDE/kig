@@ -34,6 +34,7 @@
 #include <functional>
 #include <algorithm>
 #include <cmath>
+#include <math.h>
 
 using std::find;
 

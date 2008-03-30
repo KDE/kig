@@ -32,6 +32,7 @@
 #include <functional>
 #include <algorithm>
 #include <cmath>
+#include <math.h>
 
 #include <qstringlist.h>
 
