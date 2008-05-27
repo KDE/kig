@@ -17,7 +17,7 @@ kde4_add_executable(kig ${kig_SRCS})
 
 target_link_libraries(kig ${KDE4_KPARTS_LIBS})
 
-install(TARGETS kig DESTINATION ${BIN_INSTALL_DIR})
+install(TARGETS kig ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### install files ###############
