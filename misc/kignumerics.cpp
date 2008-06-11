@@ -138,7 +138,7 @@ double calcCubicRoot ( double xmin, double xmax, double a,
     fval1 = d + xmin*fval1;
     fval2 = d + xmax*fval2;
     assert ( fval1 * fval2 <= 0 );
-    return calcCubicRootwithNewton ( xmin, xmax, a, b, c, d, 1e-8 );
+    return calcCubicRootwithNewton ( xmin, xmax, a, b, c, d, 1e-12 );
   }
   else   // probably a double root here!
     return ( xmin + xmax )/2;
