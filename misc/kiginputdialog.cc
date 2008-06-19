@@ -62,6 +62,7 @@ KigInputDialogPrivate::KigInputDialogPrivate()
 
 KigInputDialog::~KigInputDialog()
 {
+    delete d;
 }
 
 KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
