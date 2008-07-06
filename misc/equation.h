@@ -64,6 +64,7 @@ public:
   const QString xy() const;
   const QString x() const;
   const QString y() const;
+  const QString xnym(int n, int m) const;
 };
 
 //class Equation

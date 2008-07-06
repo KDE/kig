@@ -1,3 +1,10 @@
+2008-07-06  Francesca Gatti <frency.gatti@gmail.com>
+
+	* Added support for the numerical computation of the cartesian
+	equation of a locus, if the locus is an algebraic curve of
+	degree not greater than 5.  It is implemented as a property
+	of a LocusImp object.
+
 2006-03-31  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Add polygon-polygon intersection.  This is not yet

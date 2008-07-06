@@ -34,7 +34,7 @@ EquationString::EquationString( const QString s )
 
 double EquationString::trunc( double d )
 {
-  if ( fabs( d ) < 1e-12 ) return 0.0;
+  if ( fabs( d ) < 1e-7 ) return 0.0;
   return d;
 }
 
@@ -118,6 +118,64 @@ void EquationString::prettify( void )
 {
   replace( "( x )", "x" );
   replace( "( y )", "y" );
+}
+
+const QString EquationString::xnym(int n, int m) const
+{
+ QString ret="";
+ switch (n)
+ {
+   case 0: 
+     break;
+   case 1:
+     ret += "x";
+     break;
+   case 2:
+     ret += QString::fromUtf8( "x²" );
+     break;
+   case 3:
+     ret += QString::fromUtf8( "x³" );
+     break;
+   case 4: 
+     ret += QString::fromUtf8( "x⁴" );
+     break;
+   case 5:
+     ret += QString::fromUtf8( "x⁵" );
+     break;
+   case 6:
+     ret += QString::fromUtf8( "x⁶" );
+     break;
+   default:
+     ret += "x^"+n;
+ }
+
+ switch (m)
+ {
+   case 0:
+     break;
+   case 1:
+     ret += "y";
+     break;
+   case 2:
+     ret += QString::fromUtf8( "y²" );
+     break;
+   case 3:
+     ret += QString::fromUtf8( "y³" );
+     break;
+   case 4:
+     ret += QString::fromUtf8( "y⁴" );
+     break;
+   case 5:
+     ret += QString::fromUtf8( "y⁵" );
+     break;
+   case 6:
+     ret += QString::fromUtf8( "y⁶" );
+     break;
+   default:
+     ret += "y^"+m;
+ }
+
+ return ret;
 }
 
 //struct EqElem

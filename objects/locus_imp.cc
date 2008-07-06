@@ -23,7 +23,8 @@
 #include "../misc/kigpainter.h"
 #include "../misc/coordinate.h"
 #include "../misc/common.h"
-
+#include "../misc/kignumerics.h"
+#include "../misc/equation.h"
 #include "../kig/kig_view.h"
 
 #include <klocale.h>
@@ -90,17 +91,23 @@ LocusImp::LocusImp( CurveImp* curve, const ObjectHierarchy& hier )
 
 const uint LocusImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties();
+  return Parent::numberOfProperties() + 1;
 }
 
 const QCStringList LocusImp::propertiesInternalNames() const
 {
-  return Parent::propertiesInternalNames();
+  QCStringList l = Parent::propertiesInternalNames();
+  l << "cartesian-equation";
+  assert( l.size() == LocusImp::numberOfProperties() );
+  return l;
 }
 
 const QCStringList LocusImp::properties() const
 {
-  return Parent::properties();
+  QCStringList l = Parent::properties();
+  l << I18N_NOOP( "Cartesian Equation" );
+  assert( l.size() == LocusImp::numberOfProperties() );
+  return l;
 }
 
 const ObjectImpType* LocusImp::impRequirementForProperty( uint which ) const
@@ -110,12 +117,27 @@ const ObjectImpType* LocusImp::impRequirementForProperty( uint which ) const
 
 const char* LocusImp::iconForProperty( uint which ) const
 {
-  return Parent::iconForProperty( which );
+  int pnum = 0;
+  if ( which < Parent::numberOfProperties() )
+	return Parent::iconForProperty( which );
+  if ( which == Parent::numberOfProperties() + pnum++ )
+	return "kig_text"; // cartesian equation string
+  else 
+	assert( false );
+  return "";
 }
 
 ObjectImp* LocusImp::property( uint which, const KigDocument& w ) const
 {
-  return Parent::property( which, w );
+  int pnum = 0;
+
+  if ( which < Parent::numberOfProperties() )
+	return Parent::property( which, w );
+  if ( which == Parent::numberOfProperties() + pnum++ )
+	return new StringImp( cartesianEquationString( w ) );
+  else 
+	assert( false );
+  return new InvalidImp;
 }
 
 LocusImp* LocusImp::copy() const
@@ -394,4 +416,166 @@ Rect LocusImp::surroundingRect() const
   // it's probably possible to calculate this, if it exists, but we
   // don't for now.
   return Rect::invalidRect();
+}
+
+//This function is used to obtain a pseudo-random number using the bitwise operators
+double LocusImp::revert (int n) const
+{
+ int nl = n;
+ double b = 1.0;
+ double t = 0.0;
+
+ assert (n > 0);
+ while (nl)
+ {
+   b /= 2;
+   if (nl & 1) 
+	t += b;
+   nl >>= 1;
+ }
+ t += b/2 - b*(rand() / (RAND_MAX+1.0));
+ assert(t <1 && t >0);
+ return (t);
+}
+
+/*
+ * Francesca Gatti <frency.gatti@gmail.com> 2008
+ * added support for the numerical computation of the cartesian equation
+ * of a locus, if it is algebric with low degree.
+ */
+
+/**
+ *Nella funzione seguente, per il calcolo di f, fx e fy l'indice corretto 
+ *da considerare nel vettore "sol" lo si ottiene utilizzando il valore dei 
+ *gradi degx, degy di x e y, e del grado totale di ogni monomio, deg; in 
+ *particolare, in ogni monomio bisogna considerare l'elemento del vettore 
+ *"sol" in posizione:
+ *((degx+degy)*(degx+degy)+degx+3*degy)/2 per la f;
+ *((degx+degy+1)*(degx+degy+1)+degx+1+3*degy)/2 per la fx;
+ *((degx+degy+1)*(degx+degy+1)+degx+3+3*degy)/2 per la fy.
+ *In realtà, grazie al modo con cui sono stati costruiti i due cicli for 
+ *che scorrono secondo deg e degy, è sufficiente introdurre un nuovo indice, 
+ *idx, che si autoincrementa, per accedere all'elemento corretto nel vettore soluzione.
+ **/
+QString LocusImp::cartesianEquationString (const KigDocument& doc ) const
+{
+  EquationString ret = EquationString( "" );
+  const double threshold = 1e-10;
+  const int degmax=6;
+  int N = (degmax + 1)*(degmax + 2)/2;
+  int M = N - 1; 
+  double rows[M][N];
+  double *matrix[M];
+  double sol[N]; 
+  double dist; 
+  int deg, degx, degy, deglocus;
+  int i=0, j=0; 
+  bool test=true; 
+  double exp[degmax+2];
+  double x, y;
+  double xi, yi;
+  double t;
+  double f, fx, fy;
+  int m, n, k, idx;
+  int exchange[N];
+  bool needsign = false;
+  Coordinate point[M];
+  Coordinate p;
+  for(m = 0; m < M; m++) matrix[m] = rows[m];
+  for(deglocus = 1; deglocus <= degmax; deglocus++)
+  {
+    n=((deglocus+1)*(deglocus+2))/2;
+    m=n-1;
+    k=1;
+    for(i=0; i<m; i++) 
+    { 
+      do{
+        point[i] = getPoint(revert(k++), doc);
+        } while(point[i].valid() == false); // now we have a valid point
+      xi = point[i].x;
+      yi = point[i].y;
+      j=0;
+      matrix[i][j]=1;
+      for(deg=1; deg<=deglocus; deg++)
+      {
+        for(degy=0; degy<=deg; degy++)
+	{
+	  j++;
+	  degx=deg-degy;
+	  if(degx==0)
+	    {
+	      matrix[i][j]=matrix[i][j-deg-1]*yi;
+            }
+	  else
+	  {
+	    matrix[i][j]=matrix[i][j-deg]*xi;
+	  }
+        }
+      }
+    } 
+    assert(j==m);
+    GaussianElimination( matrix, m, n, exchange );
+    BackwardSubstitution( matrix, m, n, exchange, sol);
+    for(i=0; i<m; i++)
+    {
+      test = true;
+      do{
+        t=revert(k++);
+        p = getPoint(t,doc);
+      } while(p.valid() == false);
+      x = p.x;
+      y = p.y;
+      exp[0]=1;
+      exp[1]=1;
+      fx=sol[1];
+      fy=sol[2];
+      f= sol[0];
+      //now we test if p is a point of the curve
+      idx=1;
+      for (deg=1; deg<=deglocus; deg++){
+        for(degy=0; degy<=deg; degy++)
+        {
+          degx = deg - degy;
+          if(degy!=deg)
+          {
+            exp[degy] *= x;
+          }
+          else
+          {
+            exp[degy] *= y;
+	    exp[degy+1]=exp[degy];
+          }
+	  if(deg!= deglocus)
+          {
+           fx += (degx+1)*exp[degy]*sol[deg+idx+1];
+           fy += (degy+1)*exp[degy]*sol[deg+idx+2];
+          }
+          f += exp[degy]*sol[idx++];
+        }
+      }
+      dist=fabs(f)/(fabs(fx) + fabs(fy));
+      if (dist > threshold){
+        test=false;
+        break;
+        }
+    }
+    if(test==true) // now we can costruct the cartesian equation of the the locus
+    {
+      assert ( deglocus >= 0 && deglocus <= degmax );
+      for (deg = deglocus; deg > 0; deg--)
+      {
+        j = deg*(deg+1)/2;
+        for (degy = 0; degy <= deg; degy++)
+          {
+            degx = deg - degy;
+            ret.addTerm( sol[j++], ret.xnym(degx,degy), needsign );
+           }
+      }
+      ret.addTerm( sol[0], "", needsign );
+      ret.append( " = 0" );
+      return ret;
+    }
+  }
+  ret = i18n("Possibly trascendental curve");
+  return ret;
 }
