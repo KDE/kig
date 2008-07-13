@@ -820,7 +820,8 @@ void KigPart::filePrint()
   if (printDialog->exec())
   {
     doPrint( printer, kp->printShowGrid(), kp->printShowAxes() );
-  };
+  }
+  delete printDialog;
 }
 
 void KigPart::doPrint( QPrinter& printer, bool printGrid, bool printAxes )
