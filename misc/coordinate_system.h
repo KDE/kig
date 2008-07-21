@@ -34,7 +34,7 @@ class QStringList;
 
 /**
  * a factory to build a CoordinateSystem and a small handle to the
- * existant CoordinateSystem's...
+ * existent CoordinateSystem's...
  */
 class CoordinateSystemFactory
 {

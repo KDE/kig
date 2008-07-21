@@ -15,9 +15,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#include <math.h>
-
 #include "circle_type.h"
+
+#include <math.h>
 
 #include "circle_imp.h"
 #include "bogus_imp.h"

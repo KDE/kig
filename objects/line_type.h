@@ -15,8 +15,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#ifndef KIG_OBJECTS_SEGMENT_H
-#define KIG_OBJECTS_SEGMENT_H
+#ifndef KIG_OBJECTS_LINE_TYPE_H
+#define KIG_OBJECTS_LINE_TYPE_H
 
 #include "base_type.h"
 

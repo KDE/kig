@@ -18,9 +18,9 @@
  USA
 **/
 
-#include <math.h>
-
 #include "common.h"
+
+#include <math.h>
 
 #include "../kig/kig_view.h"
 #include "../objects/object_imp.h"

@@ -15,9 +15,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#include <math.h>
-
 #include "transform_types.h"
+
+#include <math.h>
 
 #include "bogus_imp.h"
 #include "point_imp.h"

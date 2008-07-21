@@ -245,10 +245,10 @@ class KigView
   KigPart* mpart;
 
 public:
-  KigView( KigPart* part,
-           bool fullscreen = false,
-           QWidget* parent = 0
-          );
+  explicit KigView( KigPart* part,
+                    bool fullscreen = false,
+                    QWidget* parent = 0
+                  );
   ~KigView();
 
   void setupActions();

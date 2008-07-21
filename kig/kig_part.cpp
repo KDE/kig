@@ -1018,11 +1018,11 @@ void KigPart::coordSystemChanged( int id )
 void KigPart::saveTypes()
 {
   QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
-  if ( typesDir[ typesDir.length() - 1 ] != '/' )
+  if ( !typesDir.endsWith( '/' ) )
     typesDir += '/';
   QString typesFileWithPath = typesDir + typesFile;
 
-  // removing existant types file
+  // removing existent types file
   if ( QFile::exists( typesFileWithPath ) )
     QFile::remove( typesFileWithPath );
 
@@ -1033,7 +1033,7 @@ void KigPart::saveTypes()
 void KigPart::loadTypes()
 {
   QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
-  if ( typesDir[ typesDir.length() - 1 ] != '/' )
+  if ( !typesDir.endsWith( '/' ) )
     typesDir += '/';
   QString typesFileWithPath = typesDir + typesFile;
 

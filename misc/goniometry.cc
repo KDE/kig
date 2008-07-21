@@ -19,9 +19,9 @@
    USA
 **/
 
-#include <math.h>
-
 #include "goniometry.h"
+
+#include <math.h>
 
 #include <qstringlist.h>
 

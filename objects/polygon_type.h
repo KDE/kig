@@ -15,8 +15,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#ifndef KIG_OBJECTS_POLIGON_TYPE_H
-#define KIG_OBJECTS_POLIGON_TYPE_H
+#ifndef KIG_OBJECTS_POLYGON_TYPE_H
+#define KIG_OBJECTS_POLYGON_TYPE_H
 
 #include "base_type.h"
 
@@ -152,4 +152,5 @@ public:
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };
+
 #endif

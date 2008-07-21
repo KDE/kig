@@ -15,6 +15,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
+#ifndef KIG_ABOUTDATA_H
+#define KIG_ABOUTDATA_H
+
 #include <kaboutdata.h>
 #include <klocale.h>
 
@@ -87,3 +90,5 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
 
   return tmp;
 }
+
+#endif  // KIG_ABOUTDATA_H

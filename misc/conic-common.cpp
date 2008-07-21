@@ -18,9 +18,9 @@
  USA
 **/
 
-#include <math.h>
-
 #include "conic-common.h"
+
+#include <math.h>
 
 #include "common.h"
 #include "kigtransform.h"

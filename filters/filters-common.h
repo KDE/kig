@@ -15,6 +15,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
+#ifndef FILTERS_COMMON_H
+#define FILTERS_COMMON_H
+
 class ObjectTypeCalcer;
 class Coordinate;
 class ObjectCalcer;
@@ -28,3 +31,5 @@ class KigDocument;
 ObjectTypeCalcer* filtersConstructTextObject(
   const Coordinate& c, ObjectCalcer* o,
   const QByteArray& arg, const KigDocument& doc, bool needframe );
+
+#endif  // FILTERS_COMMON_H
