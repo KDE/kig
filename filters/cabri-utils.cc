@@ -593,7 +593,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   bool freeText = false;
   while ( !line.isEmpty() )
   {
-    if ( line.startsWith( "\"" ) )
+    if ( line.startsWith( '\"' ) )
     {
       QString txt = CabriNS::readText( f, line );
       if ( myobj->type != "Text" )

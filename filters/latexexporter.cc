@@ -193,7 +193,7 @@ void LatexExportImpVisitor::mapColor( const QColor& color )
     ColorMap newcolor;
     newcolor.color = color;
     QString tmpname = color.name();
-    tmpname.replace( "#", "" );
+    tmpname.remove( '#' );
     newcolor.name = tmpname;
     mcolors.push_back( newcolor );
     mstream << "\\newrgbcolor{" << tmpname << "}{" 
