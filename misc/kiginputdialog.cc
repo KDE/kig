@@ -49,14 +49,15 @@ public:
 
   Coordinate m_coord1;
   Coordinate m_coord2;
-  KigDocument m_doc;
+  const KigDocument* m_doc;
   QValidator* m_vtor;
   Goniometry m_gonio;
   bool m_gonioIsNum;
 };
 
 KigInputDialogPrivate::KigInputDialogPrivate()
-  : m_label( 0L ), m_lineEditFirst( 0L ), m_lineEditSecond( 0L ), m_comboBox( 0L )
+  : m_label( 0L ), m_lineEditFirst( 0L ), m_lineEditSecond( 0L ), m_comboBox( 0L ),
+    m_doc( 0 )
 {
 }
 
@@ -75,8 +76,8 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 
   d->m_coord1 = c1 ? Coordinate( *c1 ) : Coordinate::invalidCoord();
   d->m_coord2 = c2 ? Coordinate( *c2 ) : Coordinate::invalidCoord();
-  d->m_doc = doc;
-  d->m_vtor = d->m_doc.coordinateSystem().coordinateValidator();
+  d->m_doc = &doc;
+  d->m_vtor = d->m_doc->coordinateSystem().coordinateValidator();
 
   bool ok = false;
 
@@ -96,7 +97,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 //  d->m_lineEditFirst->setValidator( d->m_vtor );
   if ( d->m_coord1.valid() )
   {
-    d->m_lineEditFirst->setText( d->m_doc.coordinateSystem().fromScreen( d->m_coord1, d->m_doc ) );
+    d->m_lineEditFirst->setText( d->m_doc->coordinateSystem().fromScreen( d->m_coord1, *d->m_doc ) );
     ok = true;
   }
   mainlay->addWidget( d->m_lineEditFirst );
@@ -108,7 +109,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   {
     d->m_lineEditSecond = new KLineEdit( frame );
 //    d->m_lineEditSecond->setValidator( d->m_vtor );
-    d->m_lineEditSecond->setText( d->m_doc.coordinateSystem().fromScreen( d->m_coord2, d->m_doc ) );
+    d->m_lineEditSecond->setText( d->m_doc->coordinateSystem().fromScreen( d->m_coord2, *d->m_doc ) );
     mainlay->addWidget( d->m_lineEditSecond );
 
     connect( d->m_lineEditSecond, SIGNAL(textChanged(const QString&)),
@@ -204,14 +205,14 @@ void KigInputDialog::slotCoordsChanged( const QString& )
   QString t = d->m_lineEditFirst->text();
   bool ok = d->m_vtor->validate( t, p ) == QValidator::Acceptable;
   if ( ok )
-    d->m_coord1 = d->m_doc.coordinateSystem().toScreen( t, ok );
+    d->m_coord1 = d->m_doc->coordinateSystem().toScreen( t, ok );
   if ( d->m_lineEditSecond )
   {
     p = 0;
     t = d->m_lineEditSecond->text();
     ok &= d->m_vtor->validate( t, p ) == QValidator::Acceptable;
     if ( ok )
-      d->m_coord2 = d->m_doc.coordinateSystem().toScreen( t, ok );
+      d->m_coord2 = d->m_doc->coordinateSystem().toScreen( t, ok );
   }
 
   enableButtonOk( ok );
