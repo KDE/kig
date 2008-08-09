@@ -91,3 +91,11 @@ of them, you can click with the <em>left mouse button</em>, while holding the
 you can then select from.</p>
 </html>
 </tip>
+
+<tip category="Kig">
+<html>
+<p>When you construct a locus, you can click on it with the <em>right</em> mouse
+botton and select <em>cartesian equation</em> to see its cartesian equation, 
+whenever it is an algebraic curve of low degree.</p>
+</html>
+</tip>
