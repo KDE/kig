@@ -55,6 +55,7 @@ class LocusImp
   double getDist(double param, const Coordinate& p, const KigDocument& doc) const;
   void getInterval(double& x1,double& x2,double incr,const Coordinate& p, const KigDocument& doc) const;
   double getParamofmin(double a, double b, const Coordinate& p, const KigDocument& doc) const;
+  double revert (int n) const;
 public:
   typedef CurveImp Parent;
   static const ObjectImpType* stype();
@@ -91,6 +92,10 @@ public:
 
   bool containsPoint( const Coordinate& p, const KigDocument& d ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold, const KigDocument& doc ) const;
+
+  virtual QString cartesianEquationString( const KigDocument& w ) const;
+  //virtual QString LocusTypeString(const KigDocument& w) const;
+
 };
 
 #endif
