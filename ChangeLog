@@ -1,3 +1,13 @@
+2008-08-09  Francesca Gatti <frency.gatti@gmail.com>
+
+	* Added support for cartesian equation of a locus:
+	The new property "cartesian-equation" for a locus_imp
+	allows for the construction of the cartesian-equation
+	of the locus.  This is done numerically by solving a
+	linear system where the unknowns are the coefficient
+	of a generic algebraic equation of degree <= 5.
+	See files objects/locus_imp.* for details.
+
 2006-11-22  Maurizio Paolini <paolini@dmf.unicatt.it>
 
 	* Added support for conic arcs.  There are two
