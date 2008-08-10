@@ -443,8 +443,8 @@ QString LocusImp::cartesianEquationString (const KigDocument& doc ) const
   EquationString ret = EquationString( "" );
   const double threshold = 1e-10;
   const int degmax=6;
-  int N = (degmax + 1)*(degmax + 2)/2;
-  int M = N - 1; 
+  const int N = (degmax + 1)*(degmax + 2)/2;
+  const int M = N - 1; 
   double rows[M][N];
   double *matrix[M];
   double sol[N]; 
