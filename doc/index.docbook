@@ -35,7 +35,7 @@ Devriese</holder>
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2005-08-20</date> <releaseinfo>0.10.5</releaseinfo>
+<date>2005-08-20</date> <releaseinfo>1.0 (&kde; 4.1.1)</releaseinfo>
 
 <abstract>
 <para>
@@ -189,7 +189,7 @@ current cursor position and select it by clicking the &LMB;.
 <para>
 You can always cancel the construction of the new object by
 pressing the &Esc; button or by clicking
-on the <guiicon>Stop</guiicon> button (red octagon with an
+on the <guiicon>Cancel Construction</guiicon> button (red octagon with an
 <quote>X</quote>) on the toolbar.
 </para>
 <screenshot>
@@ -287,7 +287,7 @@ Press the <keycap>Delete</keycap> key.
 </listitem>
 <listitem>
 <para>
-Press the <guiicon>delete</guiicon> button on the toolbar.
+Press the <guiicon>Delete Objects</guiicon> button on the toolbar.
 </para>
 </listitem>
 <listitem>
@@ -316,7 +316,7 @@ that appears.
 <para>
 To unhide the objects, use the
 <menuchoice><guimenu>Edit</guimenu><guimenuitem>Unhide
-all</guimenuitem></menuchoice>. This will unhide all
+All</guimenuitem></menuchoice>. This will unhide all
 currently hidden objects.
 </para>
 
@@ -347,8 +347,8 @@ Infrared Glasses</guimenuitem></menuchoice>.
 <para>
 In &kig;, you can undo almost any change you make in the
 document. Just use the
-<guiicon>undo</guiicon>/<guiicon>redo</guiicon> buttons on the
-toolbar, or the appropriate shortcuts.
+<guiicon>Undo</guiicon>/<guiicon>Redo</guiicon> buttons on the
+toolbar, the <guimenu>Edit</guimenu> menu or the appropriate shortcuts.
 </para>
 </section>
 
@@ -364,8 +364,8 @@ Screen Mode</guimenuitem></menuchoice>.
 To leave Full Screen mode,
 &RMB; click the screen at a place
 where there is no object present, and select
-<guimenuitem>Exit Full Screen Mode</guimenuitem>, or press the
-&Esc; key.
+<guimenuitem>Exit Full Screen Mode</guimenuitem>, or press the shortcut
+<keycombo action="simul">&Ctrl;&Shift;<keycap>F</keycap></keycombo>.
 </para>
 </section>
 </chapter>
@@ -425,7 +425,7 @@ For example: Suppose you want to make a macro for constructing
 a circle from three points on it. You would input three points,
 then construct some perpendiculars and midpoints
 until you find the center. Now you can use the existing
-<quote>Construct a circle by center and point</quote> command
+<guimenuitem>Circle by Center &amp; Point</guimenuitem> command
 (using one of the three points as the point for this command). The
 following image should make this a bit more clear:
 </para>
@@ -443,7 +443,7 @@ following image should make this a bit more clear:
 
 <para>
 Next comes defining the macro. Select <guimenuitem>New
-macro</guimenuitem> from the <guimenu>Type</guimenu> menu, or
+Macro...</guimenuitem> from the <guimenu>Types</guimenu> menu, or
 click on the button on the toolbar. A wizard will appear and
 ask you to select the given objects. In our example, these
 are the three points. Select the three points (click on them
@@ -528,7 +528,7 @@ about objects (also known as <quote>properties</quote>).
 To start constructing a text label, simply press the
 <guibutton>Text Label</guibutton> button in the &kig; toolbar or
 select <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
-</guisubmenu><guimenuitem>Text label</guimenuitem>
+</guisubmenu><guimenuitem>Text Label</guimenuitem>
 </menuchoice> in the menubar.
 </para>
 <para>
@@ -968,7 +968,7 @@ If you are uncertain of your rights to use this software, or
 other people's right to use any modifications you make to this
 program &etc;, please read the license. You can find it in the
 <filename>COPYING</filename> file in the &kig; source tree or
-the <guilabel>license</guilabel> tab in the <guilabel>About
+the license link in the <guilabel>About
 Kig</guilabel> dialog.
 </para>
 </section>
