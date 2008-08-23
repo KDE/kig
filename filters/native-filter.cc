@@ -619,6 +619,10 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
 {
   QDomDocument doc( "KigDocument" );
 
+  QDomProcessingInstruction xmlpi = doc.createProcessingInstruction(
+          QString::fromLatin1( "xml" ), QString::fromLatin1( "version=\"1.0\" encoding=\"utf-8\"" ) );
+  doc.appendChild( xmlpi );
+
   QDomElement docelem = doc.createElement( "KigDocument" );
   docelem.setAttribute( "Version", KIGVERSION );
   docelem.setAttribute( "CompatibilityVersion", "0.7.0" );
@@ -732,6 +736,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
   if ( outfile.isEmpty() )
   {
     QTextStream stdoutstream( stdout, QIODevice::WriteOnly );
+    stdoutstream.setCodec( "UTF-8" );
     return save07( data, stdoutstream );
   }
   if ( !outfile.endsWith( ".kig", Qt::CaseInsensitive ) )
@@ -754,6 +759,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     if ( !ftmpfile.open( QIODevice::WriteOnly ) )
       return false;
     QTextStream stream( &ftmpfile );
+    stream.setCodec( "UTF-8" );
     if ( !save07( data, stream ) )
       return false;
     ftmpfile.close();
@@ -780,6 +786,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
       return false;
     }
     QTextStream stream( &file );
+    stream.setCodec( "UTF-8" );
     return save07( data, stream );
   }
 
