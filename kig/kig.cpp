@@ -121,7 +121,7 @@ void Kig::setupActions()
   KStandardAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
   KStandardAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
 
-  actionCollection()->addAction(KStandardAction::TipofDay,  "help_tipofday", this, SLOT( tipOfDay() ));
+  KStandardAction::tipOfDay( this, SLOT( tipOfDay() ), actionCollection() );
 }
 
 void Kig::saveProperties(KConfigGroup &config)
