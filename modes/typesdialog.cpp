@@ -466,7 +466,7 @@ void TypesDialog::importTypes()
 
   std::vector<Macro*> macros;
 
-  for ( QStringList::Iterator i = file_names.begin();
+  for ( QStringList::const_iterator i = file_names.begin();
         i != file_names.end(); ++i)
   {
     std::vector<Macro*> nmacros;
