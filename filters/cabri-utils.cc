@@ -316,8 +316,8 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     KIG_CABRI_FILTER_PARSE_ERROR;
 
   tmp = thirdlinere.cap( 2 );
-  QStringList parentsids = tmp.split( ' ', QString::SkipEmptyParts );
-  for ( QStringList::iterator i = parentsids.begin();
+  const QStringList parentsids = tmp.split( ' ', QString::SkipEmptyParts );
+  for ( QStringList::const_iterator i = parentsids.begin();
         i != parentsids.end(); ++i )
   {
     myobj->parents.push_back( ( *i ).toInt( &ok ) );
@@ -327,8 +327,8 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     KIG_CABRI_FILTER_PARSE_ERROR;
 
   tmp = thirdlinere.cap( 4 );
-  QStringList valIds = tmp.split( ' ', QString::SkipEmptyParts );
-  for ( QStringList::iterator i = valIds.begin();
+  const QStringList valIds = tmp.split( ' ', QString::SkipEmptyParts );
+  for ( QStringList::const_iterator i = valIds.begin();
         i != valIds.end(); ++i )
   {
     myobj->data.push_back( ( *i ).toDouble( &ok ) );
@@ -553,8 +553,8 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
 
   // data
   tmp = firstlinere.cap( 15 );
-  QStringList valIds = tmp.split( ' ', QString::SkipEmptyParts );
-  for ( QStringList::iterator i = valIds.begin(); i != valIds.end(); ++i )
+  const QStringList valIds = tmp.split( ' ', QString::SkipEmptyParts );
+  for ( QStringList::const_iterator i = valIds.begin(); i != valIds.end(); ++i )
   {
     myobj->data.push_back( ( *i ).toDouble( &ok ) );
     if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
