@@ -550,7 +550,7 @@ QString LocusImp::cartesianEquationString (const KigDocument& doc ) const
         break;
         }
     }
-    if(test==true) // now we can costruct the cartesian equation of the the locus
+    if(test==true) // now we can costruct the cartesian equation of the locus
     {
       assert ( deglocus >= 0 && deglocus <= degmax );
       for (deg = deglocus; deg > 0; deg--)
