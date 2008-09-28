@@ -128,7 +128,7 @@ const QString EquationString::xnym(int n, int m) const
    case 0: 
      break;
    case 1:
-     ret += "x";
+     ret += 'x';
      break;
    case 2:
      ret += QString::fromUtf8( "x²" );
@@ -154,7 +154,7 @@ const QString EquationString::xnym(int n, int m) const
    case 0:
      break;
    case 1:
-     ret += "y";
+     ret += 'y';
      break;
    case 2:
      ret += QString::fromUtf8( "y²" );
