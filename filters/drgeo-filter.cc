@@ -731,10 +731,12 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
 // reading color
     QColor co( domelem.attribute( "color" ) );
     if ( ! co.isValid() )
+    {
       if ( domelem.attribute( "color" ) == "Bordeaux" )
         co.setRgb( 145, 0, 0 );
       else
         co = Qt::blue;
+    }
 // reading width and style
 // Dashed -> the little one
 // Normal -> the medium
