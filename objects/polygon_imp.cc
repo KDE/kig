@@ -482,7 +482,7 @@ bool PolygonImp::isTwisted() const
   if ( mpoints.size() <= 3 ) return false;
   ia = mpoints.end() - 1;
 
-  for ( ib = mpoints.begin(); ib + 1 != mpoints.end(); ib++)
+  for ( ib = mpoints.begin(); ib + 1 != mpoints.end(); ++ib)
   {
     abx = ib->x - ia->x;
     aby = ib->y - ia->y;
@@ -491,7 +491,7 @@ bool PolygonImp::isTwisted() const
     acy = ic->y - ia->y;
     prevpointbelow = ( abx*acy <= aby*acx );
 
-    for ( id = ib + 2; id != mpoints.end(); id++)
+    for ( id = ib + 2; id != mpoints.end(); ++id)
     {
       if ( id == ia ) break;
       adx = id->x - ia->x;
