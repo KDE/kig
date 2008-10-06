@@ -18,6 +18,7 @@
 // mp: following a kind suggestion by David Faure the Python.h include has
 // been moved before all qt includes in order to avoid a clash related to
 // the "slots" identifier
+// krazy:excludeall=includes
 #include <Python.h>
 #include "python_scripter.h"
 
