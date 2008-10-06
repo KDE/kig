@@ -15,9 +15,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#include <math.h>
-
 #include "polygon_imp.h"
+
+#include <math.h>
 
 #include "bogus_imp.h"
 #include "line_imp.h"
