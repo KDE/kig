@@ -184,17 +184,16 @@ bool PolygonImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
   bool ret = false;
   uint reduceddim = mpoints.size() - 1;
-  for ( uint i = 0; i < reduceddim; ++i )
+  for ( uint i = 0; !ret && i < reduceddim; ++i )
   {
-    SegmentImp* s = new SegmentImp( mpoints[i], mpoints[i+1] );
-    ret |= lineInRect( r, mpoints[i], mpoints[i+1], width, s, w );
-    delete s;
-    s = 0;
+    SegmentImp s( mpoints[i], mpoints[i+1] );
+    ret = lineInRect( r, mpoints[i], mpoints[i+1], width, &s, w );
   }
-  SegmentImp* t = new SegmentImp( mpoints[reduceddim], mpoints[0] );
-  ret |= lineInRect( r, mpoints[reduceddim], mpoints[0], width, t, w );
-  delete t;
-  t = 0;
+  if ( !ret )
+  {
+    SegmentImp s( mpoints[reduceddim], mpoints[0] );
+    ret = lineInRect( r, mpoints[reduceddim], mpoints[0], width, &s, w );
+  }
 
   return ret;
 }
