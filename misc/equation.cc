@@ -146,7 +146,7 @@ const QString EquationString::xnym(int n, int m) const
      ret += QString::fromUtf8( "x⁶" );
      break;
    default:
-     ret += "x^"+n;
+     ret += QString::fromLatin1( "x^" ) + QString::number( n );
  }
 
  switch (m)
@@ -172,7 +172,7 @@ const QString EquationString::xnym(int n, int m) const
      ret += QString::fromUtf8( "y⁶" );
      break;
    default:
-     ret += "y^"+m;
+     ret += QString::fromLatin1( "y^" ) + QString::number( n );
  }
 
  return ret;
