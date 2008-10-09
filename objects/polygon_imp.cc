@@ -295,10 +295,7 @@ ObjectImp* PolygonImp::property( int which, const KigDocument& w ) const
 
 const std::vector<Coordinate> PolygonImp::points() const
 {
-  std::vector<Coordinate> np;
-  np.reserve( mpoints.size() );
-  std::copy( mpoints.begin(), mpoints.end(), std::back_inserter( np ) );
-  return np;
+  return mpoints;
 }
 
 uint PolygonImp::npoints() const
