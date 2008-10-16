@@ -265,7 +265,7 @@ double calcCubicRootwithNewton ( double xmin, double xmax, double a,
 
 /*
  * This function computes the LU factorization of a mxn matrix, with
- * m typically less then n.  This is done with complete pivoting; the
+ * m typically less than n.  This is done with complete pivoting; the
  * exchanges in columns are recorded in the integer vector "exchange"
  */
 bool GaussianElimination( double *matrix[], int numrows,
