@@ -406,7 +406,7 @@ void TypesDialog::deleteType()
 {
   std::vector<Macro*> selectedTypes;
   QModelIndexList indexes = selectedRows();
-  for ( QModelIndexList::const_iterator it = indexes.begin(); it != indexes.end(); ++it )
+  for ( QModelIndexList::const_iterator it = indexes.constBegin(); it != indexes.constEnd(); ++it )
   {
     Macro* macro = mmodel->macroFromIndex( *it );
     if ( macro )
@@ -440,7 +440,7 @@ void TypesDialog::exportType()
 {
   std::vector<Macro*> types;
   QModelIndexList indexes = selectedRows();
-  for ( QModelIndexList::const_iterator it = indexes.begin(); it != indexes.end(); ++it )
+  for ( QModelIndexList::const_iterator it = indexes.constBegin(); it != indexes.constEnd(); ++it )
   {
     Macro* macro = mmodel->macroFromIndex( *it );
     if ( macro )
@@ -466,8 +466,8 @@ void TypesDialog::importTypes()
 
   std::vector<Macro*> macros;
 
-  for ( QStringList::const_iterator i = file_names.begin();
-        i != file_names.end(); ++i)
+  for ( QStringList::const_iterator i = file_names.constBegin();
+        i != file_names.constEnd(); ++i)
   {
     std::vector<Macro*> nmacros;
     bool ok = MacroList::instance()->load( *i, nmacros, mpart );
