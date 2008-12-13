@@ -381,7 +381,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       p.fill( QColor( colors[i].color ) );
       popup.addInternalAction( menu, QIcon( p ), i18n( colors[i].name ), nextfree++ );
     }
-    popup.addInternalAction( menu, KIcon( "colorize", l ), i18n( "&Custom Color" ), nextfree++ );
+    popup.addInternalAction( menu, KIcon( "color", l ), i18n( "&Custom Color" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetSizeMenu && !popup.onlyLabels() )
   {
