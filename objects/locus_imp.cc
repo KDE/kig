@@ -463,12 +463,12 @@ QString LocusImp::cartesianEquationString (const KigDocument& doc ) const
   Coordinate point[M];
   Coordinate p;
   for(m = 0; m < M; m++) matrix[m] = rows[m];
-  for(deglocus = 1; deglocus <= degmax; deglocus++)
+  for(deglocus = 1; deglocus <= degmax; ++deglocus)
   {
     n=((deglocus+1)*(deglocus+2))/2;
     m=n-1;
     k=1;
-    for(i=0; i<m; i++) 
+    for(i=0; i<m; ++i)
     { 
       do{
         point[i] = getPoint(revert(k++), doc);
@@ -477,9 +477,9 @@ QString LocusImp::cartesianEquationString (const KigDocument& doc ) const
       yi = point[i].y;
       j=0;
       matrix[i][j]=1;
-      for(deg=1; deg<=deglocus; deg++)
+      for(deg=1; deg<=deglocus; ++deg)
       {
-        for(degy=0; degy<=deg; degy++)
+        for(degy=0; degy<=deg; ++degy)
 	{
 	  j++;
 	  degx=deg-degy;
@@ -497,7 +497,7 @@ QString LocusImp::cartesianEquationString (const KigDocument& doc ) const
     assert(j==m);
     GaussianElimination( matrix, m, n, exchange );
     BackwardSubstitution( matrix, m, n, exchange, sol);
-    for(i=0; i<m; i++)
+    for(i=0; i<m; ++i)
     {
       test = true;
       do{
@@ -513,8 +513,8 @@ QString LocusImp::cartesianEquationString (const KigDocument& doc ) const
       f= sol[0];
       //now we test if p is a point of the curve
       idx=1;
-      for (deg=1; deg<=deglocus; deg++){
-        for(degy=0; degy<=deg; degy++)
+      for (deg=1; deg<=deglocus; ++deg){
+        for(degy=0; degy<=deg; ++degy)
         {
           degx = deg - degy;
           if(degy!=deg)
@@ -553,10 +553,10 @@ QString LocusImp::cartesianEquationString (const KigDocument& doc ) const
     if(test==true) // now we can costruct the cartesian equation of the locus
     {
       assert ( deglocus >= 0 && deglocus <= degmax );
-      for (deg = deglocus; deg > 0; deg--)
+      for (deg = deglocus; deg > 0; --deg)
       {
         j = deg*(deg+1)/2;
-        for (degy = 0; degy <= deg; degy++)
+        for (degy = 0; degy <= deg; ++degy)
           {
             degx = deg - degy;
             ret.addTerm( sol[j++], ret.xnym(degx,degy), needsign );
