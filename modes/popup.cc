@@ -200,7 +200,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       title = objs[0]->imp()->type()->translatedName();
   }
   else
-    title = i18n( "%1 Objects", objs.size() );
+    title = i18np( "%1 Object", "%1 Objects", objs.size() );
   addTitle( title );
 
   if ( !empty )
