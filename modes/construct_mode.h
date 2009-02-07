@@ -62,7 +62,7 @@ class BaseConstructMode
    * mp: this point always follows the cursor
    *
    * IMPORTANT: this Calcer must NEVER be added to the document, since
-   * its is used in constructors that need more input from the user
+   * it is used in constructors that need more input from the user
    * to decide parameters of the constructed object that will be fixed
    * afterwards (like the number of sides of a regular polygon)
    */
