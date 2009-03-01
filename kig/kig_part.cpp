@@ -323,7 +323,7 @@ void KigPart::setupActions()
 
   aToggleNightVision  = new KToggleAction(i18n("Wear Infrared Glasses"), this);
   actionCollection()->addAction("settings_toggle_nightvision", aToggleNightVision );
-  aToggleNightVision->setToolTip( i18n( "Enable/disable hidden objects visibility." ) );
+  aToggleNightVision->setToolTip( i18n( "Enable/disable hidden objects' visibility." ) );
   aToggleNightVision->setChecked( false );
   connect( aToggleNightVision, SIGNAL( triggered() ), this, SLOT( toggleNightVision() ) );
 
