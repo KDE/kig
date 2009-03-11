@@ -874,7 +874,7 @@ support the &kig; file format yet.
 <para>
 &kig; aims to be compatible with its competitors. This is
 why it supports the &kgeo; file format, the &kseg; file
-format and partially the &drgeo; and &cabri; formats; morover,
+format and partially the &drgeo; and &cabri; formats; moreover,
 support for other formats is planned.
 </para>
 </listitem>
