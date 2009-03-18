@@ -939,7 +939,7 @@ extern "C" KDE_EXPORT int convertToNative( const KUrl& url, const QByteArray& ou
     return -1;
   }
 
-  QString file = url.path();
+  QString file = url.toLocalFile();
 
   QFileInfo fileinfo( file );
   if ( ! fileinfo.exists() )
