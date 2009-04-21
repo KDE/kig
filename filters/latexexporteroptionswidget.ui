@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>LatexExporterOptionsWidget</class>
  <widget class="QWidget" name="LatexExporterOptionsWidget" >
   <property name="geometry" >
@@ -80,7 +77,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <resources/>
  <connections/>
 </ui>

@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>SVGExporterOptionsWidget</class>
  <widget class="QWidget" name="SVGExporterOptionsWidget" >
   <property name="geometry" >
@@ -73,7 +70,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <resources/>
  <connections/>
 </ui>
