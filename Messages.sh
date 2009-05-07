@@ -1,5 +1,4 @@
 #! /bin/sh
-rm -f tips.cpp
 $EXTRACTRC */*.rc >> rc.cpp || exit 11
 $EXTRACTRC */*.ui >> rc.cpp || exit 12
 (cd data && $PREPARETIPS > ../tips.cpp)
@@ -12,4 +11,4 @@ done
 $XGETTEXT tips.cpp rc.cpp filters/*.h kig/*.h misc/*.h modes/*.h objects/*.h scripting/*.h */*.cc kig/*.cpp misc/*.cpp modes/*.cpp -o $podir/kig.pot
 $XGETTEXT kfile/kfile_drgeo.cpp kfile/kfile_drgeo.h -o $podir/kfile_drgeo.pot
 $XGETTEXT kfile/kfile_kig.cpp kfile/kfile_kig.h -o $podir/kfile_kig.pot
-
+rm -f tips.cpp
