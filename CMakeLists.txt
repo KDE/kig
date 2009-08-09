@@ -1,5 +1,7 @@
 project(kig)
 
+kde4_no_enable_final(kig)
+
 include(KigConfigureChecks.cmake)
 
 add_subdirectory( icons )
