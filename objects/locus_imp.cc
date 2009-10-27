@@ -155,6 +155,11 @@ const ObjectHierarchy& LocusImp::hierarchy() const
   return mhier;
 }
 
+/*
+ * TODO: (Maurizio Paolini <paolini@dmf.unicatt.it> and Petr Gajdos <pgajdos@suse.cz>)
+ * getDist should be removed, see comment about getParamofmin
+ */
+
 /**
  * This function returns the distance between the point with parameter
  * param and point p.  param is allowed to not be between 0 and 1, in
@@ -199,6 +204,53 @@ void LocusImp::getInterval( double& x1, double& x2,
     x2=x3;
   }
 }
+
+/*
+ * TODO: (Maurizio Paolini <paolini@dmf.unicatt.it> and Petr Gajdos <pgajdos@suse.cz>)
+ * the following function is duplicated exactly in curve_imp.cc.
+ * ideally it should be removed from here, which we shall do in the
+ * next future.
+ *
+ * before removing this we should however clarify the reason of the following
+ * changes:
+--------------------------------------------------------------------
+$ diff -u getParam_from_locus_imp.txt getParam_from_curve_imp.txt
+--- getParam_from_locus_imp.txt 2009-10-27 18:54:26.000000000 +0100
++++ getParam_from_curve_imp.txt 2009-10-27 18:52:55.000000000 +0100
+@@ -1,12 +1,9 @@
+-double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
++double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
+ {
+   // this function ( and related functions like getInterval etc. ) is
+   // written by Franco Pasquarelli <pasqui@dmf.bs.unicatt.it>.
+   // I ( domi ) have adapted and documented it a bit.
+
+-  if ( cachedparam >= 0. && cachedparam <= 1. &&
+-       getPoint ( cachedparam, doc ) == p ) return cachedparam;
+-
+   // consider the function that returns the distance for a point at
+   // parameter x to the locus for a given parameter x.  What we do
+   // here is look for the global minimum of this function.  We do that
+@@ -14,7 +11,7 @@
+   // for a local minimum from there on.  If we find one, we keep it if
+   // it is the lowest of all the ones we've already found..
+
+-  const int N = 50;
++  const int N = 100;
+   const double incr = 1. / (double) N;
+
+   // xm is the best parameter we've found so far, fxm is the distance
+@@ -28,7 +25,7 @@
+   int j = 0;
+   double mm = fxm;
+
+-  while( j < N )
++  while( j < N - 1 )
+   {
+     // [x1,x2] is the range we're currently considering..
+     double x1 = j * incr;
+--------------------------------------------------------------------
+ */
 
 double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
 {
@@ -282,6 +334,13 @@ double LocusImp::getParam( const Coordinate& p, const KigDocument& doc ) const
   }
   return xm;
 }
+
+/*
+ * TODO: (Maurizio Paolini <paolini@dmf.unicatt.it> and Petr Gajdos <pgajdos@suse.cz>)
+ * the following function is duplicated exactly in curve_imp.cc.
+ * ideally it should be removed from here, which we shall do in the
+ * next future.
+ */
 
 /**
  * This function calculates the parameter of the point that realizes the
