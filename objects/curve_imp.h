@@ -27,6 +27,12 @@
 class CurveImp
   : public ObjectImp
 {
+protected:
+  // following two functions are used by generic getParam()
+  double getParamofmin( double a, double b,
+                        const Coordinate& p,
+                        const KigDocument& doc ) const;
+  double getDist(double param, const Coordinate& p, const KigDocument& doc) const;
 public:
   typedef ObjectImp Parent;
 
@@ -41,7 +47,7 @@ public:
   // end-points.  E.g. for a Line, getPoint(0) returns a more or less
   // infinite point.  getPoint(0.5) should return the point in the
   // middle.
-  virtual double getParam( const Coordinate& point, const KigDocument& ) const = 0;
+  virtual double getParam( const Coordinate& point, const KigDocument& ) const;
   // this should be the inverse function of getPoint().
   // Note that it should also do something reasonable when p is not on
   // the curve.  You can return an invalid Coordinate(
