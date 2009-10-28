@@ -1,3 +1,15 @@
+2009-10-29  Petr Gajdos <pgajdos@suse.cz>
+
+	* New object type OpenPolygon:
+	This is defined similarly to a polygon with an ordered
+	set of <n> points, but refers to the open polygonal chain
+	corresponding to the border of the polygon but one
+	of its sides (the side connecting node <n> to node <1>
+	is not included).  Not all actions work with this new
+	object at the moment.  Also, the construction should
+	be done differently (e.g. selecting twice the last
+	point terminates the construction).
+
 2008-08-09  Francesca Gatti <frency.gatti@gmail.com>
 
 	* Added support for cartesian equation of a locus:

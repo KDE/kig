@@ -102,7 +102,7 @@ ObjectImp* PolygonImp::transform( const Transformation& t ) const
       return new InvalidImp;
     np.push_back( nc );
   }
-  return new PolygonImp( np );
+  return new PolygonImp( np, mopen );
 }
 
 void PolygonImp::draw( KigPainter& p ) const
@@ -385,6 +385,24 @@ const ObjectImpType* PolygonImp::stype()
   return &t;
 }
 
+const ObjectImpType* PolygonImp::stypeo()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "polygonal",
+    I18N_NOOP( "polygonal curve" ),
+    I18N_NOOP( "Select this polygonal curve" ),
+    I18N_NOOP( "Select polygonal curve %1" ),
+    I18N_NOOP( "Remove a Polygonal curve" ),
+    I18N_NOOP( "Add a Polygonal curve" ),
+    I18N_NOOP( "Move a Polygonal curve" ),
+    I18N_NOOP( "Attach to this polygonal curve" ),
+    I18N_NOOP( "Show a Polygonal curve" ),
+    I18N_NOOP( "Hide a Polygonal curve" )
+    );
+
+  return &t;
+}
+
 const ObjectImpType* PolygonImp::stype3()
 {
   static const ObjectImpType t3(
@@ -425,7 +443,7 @@ const ObjectImpType* PolygonImp::type() const
 {
   uint n = mpoints.size();
 
-  if ( mopen ) return PolygonImp::stype();
+  if ( mopen ) return PolygonImp::stypeo();
   if ( n == 3 ) return PolygonImp::stype3();
   if ( n == 4 ) return PolygonImp::stype4();
   return PolygonImp::stype();

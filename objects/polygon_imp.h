@@ -40,6 +40,7 @@ public:
   static const ObjectImpType* stype();
   static const ObjectImpType* stype3();
   static const ObjectImpType* stype4();
+  static const ObjectImpType* stypeo();
 
   /**
    * Constructs a polygon.

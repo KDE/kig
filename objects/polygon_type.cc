@@ -247,6 +247,7 @@ std::vector<ObjectCalcer*> PolygonBNPType::movableParents( const ObjectTypeCalce
 }
 
 /*
+ * Added by Petr Gajdos <pgajdos@suse.cz>
  * opened polygon
  */
 
