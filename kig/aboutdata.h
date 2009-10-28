@@ -54,6 +54,11 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
                              "Franco wrote the most difficult parts." ),
                   "pasqui@dmf.unicatt.it" );
 
+  tmp.addAuthor( ki18n("Francesca Gatti"),
+                  ki18n( "Responsible for the computation of the algebraic equation "
+                             "of a locus." ),
+                  "frency.gatti@gmail.com" );
+
   tmp.addCredit( ki18n("Eric Depagne"),
                   ki18n( "The French translator, who also sent me some useful "
                              "feedback, like feature requests and bug reports." ),
