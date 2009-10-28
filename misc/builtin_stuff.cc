@@ -503,6 +503,10 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_polygonbnp" ));
 
+    c = new OpenPolygonTypeConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_openpolygon" ));
+
     c = new PolygonBCVConstructor();
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_polygonbcv" ) );

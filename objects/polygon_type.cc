@@ -247,6 +247,117 @@ std::vector<ObjectCalcer*> PolygonBNPType::movableParents( const ObjectTypeCalce
 }
 
 /*
+ * opened polygon
+ */
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( OpenPolygonType )
+
+OpenPolygonType::OpenPolygonType()
+  : ObjectType( "OpenPolygon" )
+{
+}
+
+OpenPolygonType::~OpenPolygonType()
+{
+}
+
+const OpenPolygonType* OpenPolygonType::instance()
+{
+  static const OpenPolygonType s;
+  return &s;
+}
+
+ObjectImp* OpenPolygonType::calc( const Args& parents, const KigDocument& ) const
+{
+  uint count = parents.size();
+  assert (count >= 3);
+  std::vector<Coordinate> points;
+
+  uint npoints = 0;
+  for ( uint i = 0; i < count; ++i )
+  {
+    npoints++;
+    if ( ! parents[i]->inherits( PointImp::stype() ) ) return new InvalidImp;
+    Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
+    points.push_back( point );
+  }
+  return new PolygonImp( points, true );
+}
+
+const ObjectImpType* OpenPolygonType::resultId() const
+{
+  return PolygonImp::stype();
+}
+
+const ObjectImpType* OpenPolygonType::impRequirement( const ObjectImp*, const Args& ) const
+{
+  return PointImp::stype();
+}
+
+bool OpenPolygonType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  return false;  /* should be true? */
+}
+
+std::vector<ObjectCalcer*> OpenPolygonType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+{
+  return args;  /* should already be in correct order */
+}
+
+Args OpenPolygonType::sortArgs( const Args& args ) const
+{
+  return args;
+}
+
+bool OpenPolygonType::canMove( const ObjectTypeCalcer& o ) const
+{
+  return isFreelyTranslatable( o );
+}
+
+bool OpenPolygonType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    if ( !parents[i]->isFreelyTranslatable() ) return false;
+  }
+  return true;
+}
+
+void OpenPolygonType::move( ObjectTypeCalcer& o, const Coordinate& to,
+                         const KigDocument& d ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  const Coordinate ref = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+     const Coordinate a = static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
+     parents[i]->move( to + a - ref, d );
+  }
+}
+
+const Coordinate OpenPolygonType::moveReferencePoint( const ObjectTypeCalcer& o
+) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> OpenPolygonType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
+  std::set<ObjectCalcer*> ret;
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    std::vector<ObjectCalcer*> tmp = parents[i]->movableParents();
+    ret.insert( tmp.begin(), tmp.end() );
+  }
+  ret.insert( parents.begin(), parents.end() );
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
+}
+
+
+/*
  * regular polygon by center and vertex
  */
 

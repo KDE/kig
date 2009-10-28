@@ -618,7 +618,7 @@ void PolygonBNPTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPaint
     SegmentImp segment = SegmentImp( points[0], points[1] );
     drawer.draw( segment, p, true );
   } else {
-    PolygonImp polygon = PolygonImp( points );
+    PolygonImp polygon = PolygonImp( points, false );
     drawer.draw( polygon, p, true );
   }
 }
@@ -641,6 +641,157 @@ void PolygonBNPTypeConstructor::plug( KigPart*, KigGUIAction* )
 }
 
 bool PolygonBNPTypeConstructor::isTransform() const
+{
+  return false;
+}
+
+
+
+/*
+ * open polygon (polyline) constructor
+ */
+
+OpenPolygonTypeConstructor::OpenPolygonTypeConstructor()
+  : mtype( OpenPolygonType::instance() )
+{
+}
+
+OpenPolygonTypeConstructor::~OpenPolygonTypeConstructor()
+{
+}
+
+const QString OpenPolygonTypeConstructor::descriptiveName() const
+{
+  return i18n("Open Polygon (Polygonal Line)");
+}
+
+const QString OpenPolygonTypeConstructor::description() const
+{
+  return i18n("Construct a open polygon");
+}
+
+const QByteArray OpenPolygonTypeConstructor::iconFileName( const bool ) const
+{
+  return "openpolygon";
+}
+
+bool OpenPolygonTypeConstructor::isAlreadySelectedOK(
+ const std::vector<ObjectCalcer*>& os, const int& pos ) const
+{
+  if ( pos == 0 && os.size() >= 2 ) return true;
+  return false;
+}
+
+int OpenPolygonTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+                                         const KigDocument&,
+                                         const KigWidget& ) const
+{
+  int count=os.size() - 1;
+
+  for ( int i = 0; i <= count; i++ )
+  {
+    if ( ! ( os[i]->imp()->inherits( PointImp::stype() ) ) ) return ArgsParser::Invalid;
+  }
+  if ( count < 2 ) return ArgsParser::Valid;
+  if ( os[0] == os[count] ) return ArgsParser::Complete;
+  return ArgsParser::Valid;
+}
+
+void OpenPolygonTypeConstructor::handleArgs(
+  const std::vector<ObjectCalcer*>& os, KigPart& d,
+  KigWidget& v ) const
+{
+  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
+  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    (*i)->calc( d.document() );
+  }
+
+  d.addObjects( bos );
+}
+
+void OpenPolygonTypeConstructor::handlePrelim(
+  KigPainter& p, const std::vector<ObjectCalcer*>& os,
+  const KigDocument& d, const KigWidget&
+  ) const
+{
+  uint count = os.size();
+  if ( count < 2 ) return;
+
+  for ( uint i = 0; i < count; i++ )
+  {
+    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
+  }
+
+  std::vector<ObjectCalcer*> args = os;
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
+
+  ObjectDrawer drawer( Qt::red );
+  drawprelim( drawer, p, args, d );
+}
+
+QString OpenPolygonTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
+                                          const KigDocument&, const KigWidget& ) const
+{
+  if ( os.size() > 2 )
+    return i18n("... with this vertex (click on the first vertex to terminate construction)");
+  else return i18n("Construct a open polygon (polyline) with this vertex");
+}
+
+QString OpenPolygonTypeConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>&, const KigDocument&,
+  const KigWidget& ) const
+{
+  return i18n("Select a point to be a vertex of the new open polygon...");
+}
+
+void OpenPolygonTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+                                   const KigDocument& ) const
+{
+  if ( parents.size() < 2 ) return;
+
+  std::vector<Coordinate> points;
+
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    const Coordinate vertex =
+        static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
+    points.push_back( vertex );
+  }
+
+  if ( parents.size() == 2 )
+  {
+    SegmentImp segment = SegmentImp( points[0], points[1] );
+    drawer.draw( segment, p, true );
+  } else {
+    PolygonImp polygon = PolygonImp( points, true );
+    drawer.draw( polygon, p, true );
+  }
+}
+
+std::vector<ObjectHolder*> OpenPolygonTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
+{
+  uint count = parents.size() - 1;
+  assert ( count >= 3 );
+  std::vector<ObjectCalcer*> args;
+  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
+  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
+  ObjectHolder* h = new ObjectHolder( calcer );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( h );
+  return ret;
+}
+
+void OpenPolygonTypeConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool OpenPolygonTypeConstructor::isTransform() const
 {
   return false;
 }

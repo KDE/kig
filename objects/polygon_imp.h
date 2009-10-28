@@ -30,6 +30,7 @@ class PolygonImp
 {
   uint mnpoints;
   std::vector<Coordinate> mpoints;
+  bool mopen;
   Coordinate mcenterofmass;
 public:
   typedef ObjectImp Parent;
@@ -43,7 +44,8 @@ public:
   /**
    * Constructs a polygon.
    */
-  PolygonImp( const std::vector<Coordinate>& points );
+  // open polygon == polyline
+  PolygonImp( const std::vector<Coordinate>& points, bool open = false );
   PolygonImp( const uint nsides, const std::vector<Coordinate>& points, 
               const Coordinate& centerofmass );
   ~PolygonImp();
@@ -92,6 +94,7 @@ public:
 
   bool equals( const ObjectImp& rhs ) const;
   bool isInPolygon( const Coordinate& p ) const;
+  bool isOnPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const;
   int windingNumber() const;
   bool isTwisted() const;
   bool isMonotoneSteering() const;

@@ -70,6 +70,7 @@
 	<text>Poly&amp;gons</text>
 	<Action name="objects_new_trianglebtp" />
 	<Action name="objects_new_polygonbnp" />
+        <Action name="objects_new_openpolygon" />
 	<Action name="objects_new_polygonbcv" />
 	<Action name="objects_new_equitriangle" />
 	<Action name="objects_new_square" />

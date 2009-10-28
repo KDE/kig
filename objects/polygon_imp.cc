@@ -37,12 +37,12 @@
 
 PolygonImp::PolygonImp( const uint npoints, const std::vector<Coordinate>& points,
                         const Coordinate& centerofmass )
-  : mnpoints( npoints ), mpoints( points ), mcenterofmass( centerofmass )
+  : mnpoints( npoints ), mpoints( points ), mopen( false ), mcenterofmass( centerofmass )
 {
 //  mpoints = points;
 }
 
-PolygonImp::PolygonImp( const std::vector<Coordinate>& points )
+PolygonImp::PolygonImp( const std::vector<Coordinate>& points, bool open )
 {
   uint npoints = points.size();
   Coordinate centerofmassn = Coordinate( 0, 0 );
@@ -54,6 +54,7 @@ PolygonImp::PolygonImp( const std::vector<Coordinate>& points )
   mpoints = points;
   mcenterofmass = centerofmassn/npoints;
   mnpoints = npoints;
+  mopen = open;
 }
 
 PolygonImp::~PolygonImp()
@@ -106,7 +107,15 @@ ObjectImp* PolygonImp::transform( const Transformation& t ) const
 
 void PolygonImp::draw( KigPainter& p ) const
 {
-  p.drawPolygon( mpoints );
+  if ( mopen )
+  {
+    for ( unsigned int i = 0; i < mnpoints - 1; i++ )
+      p.drawSegment( mpoints[i], mpoints[i+1] );
+  }
+  else
+  {
+    p.drawPolygon( mpoints );
+  }
 }
 
 bool PolygonImp::isInPolygon( const Coordinate& p ) const
@@ -159,14 +168,8 @@ bool PolygonImp::isInPolygon( const Coordinate& p ) const
   }
   return inside_flag;
 }
-#define selectpolygonwithinside 1
-#ifdef selectpolygonwithinside
-bool PolygonImp::contains( const Coordinate& p, int, const KigWidget& ) const
-{
-  return isInPolygon( p );
-}
-#else
-bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+
+bool PolygonImp::isOnPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const
 {
   bool ret = false;
   uint reduceddim = mpoints.size() - 1;
@@ -177,6 +180,21 @@ bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) 
   ret |= isOnSegment( p, mpoints[reduceddim], mpoints[0], w.screenInfo().normalMiss( width ) );
 
   return ret;
+}
+
+#define selectpolygonwithinside 1
+#ifdef selectpolygonwithinside
+bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+{
+  if ( mopen )
+    return isOnPolygonBorder( p, width,  w );
+  else
+    return isInPolygon( p );
+}
+#else
+bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+{
+  return isOnPolygonBorder( p, width, w );
 }
 #endif
 
@@ -407,6 +425,7 @@ const ObjectImpType* PolygonImp::type() const
 {
   uint n = mpoints.size();
 
+  if ( mopen ) return PolygonImp::stype();
   if ( n == 3 ) return PolygonImp::stype3();
   if ( n == 4 ) return PolygonImp::stype4();
   return PolygonImp::stype();
