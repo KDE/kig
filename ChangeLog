@@ -1,6 +1,6 @@
 2009-10-29  Petr Gajdos <pgajdos@suse.cz>
 
-	* New object: Bezier curves:
+	* New object: Bezier curves and rational Bezier curves:
 	This object is similar to the polygon and open polygon
 	in that it depends on a control polygon.
 	At the moment it is possible to constrain a point to

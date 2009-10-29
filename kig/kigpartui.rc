@@ -122,6 +122,9 @@
         <Action name="objects_new_bezierquadric" />
         <Action name="objects_new_beziercubic" />
         <Action name="objects_new_beziercurve" />
+        <Separator />
+        <Action name="objects_new_rationalbezierquadric" />
+        <Action name="objects_new_rationalbeziercubic" />
       </Menu>
       <Menu name="new_angle" icon="angle">
 	<text>&amp;Angles</text>
@@ -260,6 +263,9 @@
     <Action name="objects_new_bezierquadric" />
     <Action name="objects_new_beziercubic" />
     <Action name="objects_new_beziercurve" />
+    <Separator />
+    <Action name="objects_new_rationalbezierquadric" />
+    <Action name="objects_new_rationalbeziercubic" />
   </ToolBar>
   <ToolBar name="angles_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Angles</text>

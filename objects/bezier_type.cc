@@ -352,3 +352,231 @@ std::vector<ObjectCalcer*> BezierCurveType::movableParents( const ObjectTypeCalc
   return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
 }
 
+/*
+ * Rational Bézier curve of degree 2
+ */
+
+static const char rbezier2_constructstatement[] = I18N_NOOP( "Construct a rational quadric with this control point" );
+static const char rbezier2_constructstatement2[] = I18N_NOOP( "Select three points and three numeric values as weights to construct rational quadric..." );
+static const char rbezier2_constructstatement3[] = I18N_NOOP( "Select this value as weight" );
+
+
+static const struct ArgsParser::spec argsspecRationalBezier2[] =
+{
+  { PointImp::stype(), rbezier2_constructstatement, rbezier2_constructstatement2, true },
+  { NumericTextImp::stype(), rbezier2_constructstatement3, rbezier2_constructstatement2, false },
+  { PointImp::stype(), rbezier2_constructstatement, rbezier2_constructstatement2, false },
+  { NumericTextImp::stype(), rbezier2_constructstatement3, rbezier2_constructstatement2, false },
+  { PointImp::stype(), rbezier2_constructstatement, rbezier2_constructstatement2, true },
+  { NumericTextImp::stype(), rbezier2_constructstatement3, rbezier2_constructstatement2, false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( RationalBezierQuadricType )
+
+RationalBezierQuadricType::RationalBezierQuadricType()
+  : ArgsParserObjectType( "RationalBezierQuadric", argsspecRationalBezier2, 6 )
+{
+}
+
+RationalBezierQuadricType::~RationalBezierQuadricType()
+{
+}
+
+const RationalBezierQuadricType* RationalBezierQuadricType::instance()
+{
+  static const RationalBezierQuadricType s;
+  return &s;
+}
+
+ObjectImp* RationalBezierQuadricType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents, 6 ) ) return new InvalidImp;
+  std::vector<Coordinate> points;
+  std::vector<double> weights;
+
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+  {
+    Coordinate point = static_cast<const PointImp*>( *i )->coordinate();
+    points.push_back( point );
+    ++i;
+    double weight = static_cast<const NumericTextImp*>( *i )->getValue();
+    weights.push_back( weight );
+  }
+  return new RationalBezierImp( points, weights );
+}
+
+const ObjectImpType* RationalBezierQuadricType::resultId() const
+{
+  return RationalBezierImp::stype2();
+}
+
+bool RationalBezierQuadricType::canMove( const ObjectTypeCalcer& o ) const
+{
+  return isFreelyTranslatable( o );
+}
+
+bool RationalBezierQuadricType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  return parents[0]->isFreelyTranslatable() && 
+         parents[2]->isFreelyTranslatable() &&
+         parents[4]->isFreelyTranslatable();
+}
+
+void RationalBezierQuadricType::move( ObjectTypeCalcer& o, const Coordinate& to,
+                                      const KigDocument& d ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  assert( margsparser.checkArgs( parents ) );
+  const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  const Coordinate b = static_cast<const PointImp*>( parents[2]->imp() )->coordinate();
+  const Coordinate c = static_cast<const PointImp*>( parents[4]->imp() )->coordinate();
+
+  if ( parents[0]->canMove() )
+    parents[0]->move( to, d );
+  if ( parents[2]->canMove() )
+    parents[2]->move( to + b - a, d );
+  if ( parents[4]->canMove() )
+    parents[4]->move( to + c - a, d );
+}
+
+const Coordinate RationalBezierQuadricType::moveReferencePoint( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  assert( margsparser.checkArgs( parents ) );
+  return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> RationalBezierQuadricType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
+  std::set<ObjectCalcer*> ret;
+  std::vector<ObjectCalcer*> tmp = parents[0]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  tmp = parents[2]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  tmp = parents[4]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  ret.insert( parents.begin(), parents.end() );
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
+}
+
+/*
+ * Rational Bézier curve of degree 3
+ */
+
+static const char rbezier3_constructstatement[] = I18N_NOOP( "Construct a rational cubic with this control point" );
+static const char rbezier3_constructstatement2[] = I18N_NOOP( "Select three points and three numeric values as weights to construct rational cubic..." );
+static const char rbezier3_constructstatement3[] = I18N_NOOP( "Select this value as weight" );
+
+
+static const struct ArgsParser::spec argsspecRationalBezier3[] =
+{
+  { PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, true },
+  { NumericTextImp::stype(), rbezier3_constructstatement3, rbezier3_constructstatement2, false },
+  { PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, false },
+  { NumericTextImp::stype(), rbezier3_constructstatement3, rbezier3_constructstatement2, false },
+  { PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, false },
+  { NumericTextImp::stype(), rbezier3_constructstatement3, rbezier3_constructstatement2, false },
+  { PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, true },
+  { NumericTextImp::stype(), rbezier3_constructstatement3, rbezier3_constructstatement2, false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( RationalBezierCubicType )
+
+RationalBezierCubicType::RationalBezierCubicType()
+  : ArgsParserObjectType( "RationalBezierCubic", argsspecRationalBezier3, 8 )
+{
+}
+
+RationalBezierCubicType::~RationalBezierCubicType()
+{
+}
+
+const RationalBezierCubicType* RationalBezierCubicType::instance()
+{
+  static const RationalBezierCubicType s;
+  return &s;
+}
+
+ObjectImp* RationalBezierCubicType::calc( const Args& parents, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( parents, 8 ) ) return new InvalidImp;
+  std::vector<Coordinate> points;
+  std::vector<double> weights;
+
+  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+  {
+    Coordinate point = static_cast<const PointImp*>( *i )->coordinate();
+    points.push_back( point );
+    ++i;
+    double weight = static_cast<const NumericTextImp*>( *i )->getValue();
+    weights.push_back( weight );
+  }
+  return new RationalBezierImp( points, weights );
+}
+
+const ObjectImpType* RationalBezierCubicType::resultId() const
+{
+  return RationalBezierImp::stype3();
+}
+
+bool RationalBezierCubicType::canMove( const ObjectTypeCalcer& o ) const
+{
+  return isFreelyTranslatable( o );
+}
+
+bool RationalBezierCubicType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  return parents[0]->isFreelyTranslatable() && 
+         parents[2]->isFreelyTranslatable() &&
+         parents[4]->isFreelyTranslatable() &&
+         parents[6]->isFreelyTranslatable();
+}
+
+void RationalBezierCubicType::move( ObjectTypeCalcer& o, const Coordinate& to,
+                         const KigDocument& d ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  assert( margsparser.checkArgs( parents ) );
+  const Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  const Coordinate b = static_cast<const PointImp*>( parents[2]->imp() )->coordinate();
+  const Coordinate c = static_cast<const PointImp*>( parents[4]->imp() )->coordinate();
+  const Coordinate e = static_cast<const PointImp*>( parents[6]->imp() )->coordinate();
+  if ( parents[0]->canMove() )
+    parents[0]->move( to, d );
+  if ( parents[2]->canMove() )
+    parents[2]->move( to + b - a, d );
+  if ( parents[4]->canMove() )
+    parents[4]->move( to + c - a, d );
+  if ( parents[6]->canMove() )
+    parents[6]->move( to + e - a, d );
+}
+
+const Coordinate RationalBezierCubicType::moveReferencePoint( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  assert( margsparser.checkArgs( parents ) );
+  return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> RationalBezierCubicType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
+  std::set<ObjectCalcer*> ret;
+  std::vector<ObjectCalcer*> tmp = parents[0]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  tmp = parents[2]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  tmp = parents[4]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  ret.insert( parents.begin(), parents.end() );
+  tmp = parents[6]->movableParents();
+  ret.insert( tmp.begin(), tmp.end() );
+  ret.insert( parents.begin(), parents.end() );
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
+}
+
+
+

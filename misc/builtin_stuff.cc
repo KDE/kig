@@ -551,6 +551,22 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_beziercurve" ));
 
+    c = new SimpleObjectTypeConstructor(
+      RationalBezierQuadricType::instance(),
+      I18N_NOOP( "Rational Bézier Quadric by its Control Points" ),
+      I18N_NOOP( "Construct a Rational Bézier quadric given its three control points." ),
+      "rbezier3" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_rationalbezierquadric" ) );
+
+     c = new SimpleObjectTypeConstructor(
+      RationalBezierCubicType::instance(),
+      I18N_NOOP( "Rational Bézier Cubic by its Control Points" ),
+      I18N_NOOP( "Construct a Rational Bézier cubic given its four control points." ),
+      "rbezier4" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_rationalbeziercubic" ) );
+
 
    /* ----------- end bezier ----------- */
 

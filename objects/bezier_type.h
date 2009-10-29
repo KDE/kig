@@ -88,4 +88,47 @@ public:
   const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
 }; 
 
+/**
+ * Rational Bézier curve of degree 2
+ */
+class RationalBezierQuadricType
+  : public ArgsParserObjectType
+{
+  RationalBezierQuadricType();
+  ~RationalBezierQuadricType();
+public:
+  static const RationalBezierQuadricType* instance();
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+  bool canMove( const ObjectTypeCalcer& o ) const;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& o, const Coordinate& to,
+             const KigDocument& d ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
+};
+
+/**
+ * Rational Bézier curve of degree 3
+ */
+class RationalBezierCubicType
+  : public ArgsParserObjectType
+{
+  RationalBezierCubicType();
+  ~RationalBezierCubicType();
+public:
+  static const RationalBezierCubicType* instance();
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+  bool canMove( const ObjectTypeCalcer& o ) const;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
+  void move( ObjectTypeCalcer& o, const Coordinate& to,
+             const KigDocument& d ) const;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
+};
+
+
 #endif

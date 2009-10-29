@@ -93,4 +93,76 @@ public:
   bool equals( const ObjectImp& rhs ) const;
 };
 
+/**
+ * An ObjectImp representing a rational Bézier curve.
+ */
+class RationalBezierImp
+  : public CurveImp
+{
+  uint mnpoints;
+  std::vector<Coordinate> mpoints;
+  std::vector<double> mweights;
+  Coordinate mcenterofmass;
+  
+  Coordinate deCasteljauPoints( unsigned int m, unsigned int k, double p ) const;
+  double deCasteljauWeights( unsigned int m, unsigned int k, double p ) const;
+
+public:
+  typedef CurveImp Parent;
+  /**
+   * Returns the ObjectImpType representing the RationalBezierImp type.
+   */
+  static const ObjectImpType* stype();
+  static const ObjectImpType* stype2();
+  static const ObjectImpType* stype3();
+
+  /**
+   * Constructs a rational Bézier curve.
+   */
+  RationalBezierImp( const std::vector<Coordinate>& points, const std::vector<double>& weights );
+  ~RationalBezierImp();
+  RationalBezierImp* copy() const;
+
+  Coordinate attachPoint() const;
+  ObjectImp* transform( const Transformation& ) const;
+
+  void draw( KigPainter& p ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
+  bool inRect( const Rect& r, int width, const KigWidget& ) const;
+  bool valid() const;
+  Rect surroundingRect() const;
+
+  const Coordinate getPoint( double param, const KigDocument& ) const;
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool internalContainsPoint( const Coordinate& p, double threshold, 
+                              const KigDocument& doc ) const;
+
+  int numberOfProperties() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+
+  const ObjectImpType* type() const;
+  void visit( ObjectImpVisitor* vtor ) const;
+
+  /**
+   * Returns the vector with control points.
+   */
+  const std::vector<Coordinate> points() const; 
+  /**
+   * Returns the center of mass of the control polygon.
+   */
+  const Coordinate centerOfMass() const; 
+  /**
+   * Returns the number of control points.
+   */
+  uint npoints() const;
+
+  bool equals( const ObjectImp& rhs ) const;
+};
+
+
 #endif
