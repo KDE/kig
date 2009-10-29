@@ -41,6 +41,7 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 #include "../objects/polygon_type.h"
+#include "../objects/bezier_type.h"
 
 #include <klocale.h>
 
@@ -527,6 +528,31 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_convexhull" ) );
 
     /* ----------- end polygons --------- */
+
+    /* ----------- start bezier --------- */
+
+    c = new SimpleObjectTypeConstructor(
+      BezierQuadricType::instance(),
+      I18N_NOOP( "Bezier Quadric by its Control Points" ),
+      I18N_NOOP( "Construct a Bezier quadric given its three control points." ),
+      "bezier3" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_bezierquadric" ) );
+
+     c = new SimpleObjectTypeConstructor(
+      BezierCubicType::instance(),
+      I18N_NOOP( "Bezier Cubic by its Control Points" ),
+      I18N_NOOP( "Construct a Bezier cubic given its four control points." ),
+      "bezier4" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_beziercubic" ) );
+
+    c = new BezierCurveTypeConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_beziercurve" ));
+
+
+   /* ----------- end bezier ----------- */
 
     c = new LocusConstructor();
     ctors->add( c );

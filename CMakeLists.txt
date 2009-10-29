@@ -56,6 +56,8 @@ set(kigpart_PART_SRCS
    objects/point_type.cc
    objects/polygon_imp.cc
    objects/polygon_type.cc
+   objects/bezier_imp.cc
+   objects/bezier_type.cc
    objects/special_imptypes.cc
    objects/tangent_type.cc
    objects/tests_type.cc

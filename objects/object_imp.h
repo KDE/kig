@@ -40,6 +40,7 @@ class SegmentImp;
 class RayImp;
 class ArcImp;
 class PolygonImp;
+class BezierImp;
 
 /**
  * \internal This is some OO magic commonly referred to as "double
@@ -74,6 +75,7 @@ public:
   virtual void visit( const RayImp* imp );
   virtual void visit( const ArcImp* imp );
   virtual void visit( const PolygonImp* imp );
+  virtual void visit( const BezierImp* imp );
 };
 
 typedef unsigned int uint;

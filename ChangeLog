@@ -1,5 +1,14 @@
 2009-10-29  Petr Gajdos <pgajdos@suse.cz>
 
+	* New object: Bezier curves:
+	This object is similar to the polygon and open polygon
+	in that it depends on a control polygon.
+	At the moment it is possible to constrain a point to
+	a Bezier curve.  Other constructions can be added in
+	the future.
+
+2009-10-28  Petr Gajdos <pgajdos@suse.cz>
+
 	* New object type OpenPolygon:
 	This is defined similarly to a polygon with an ordered
 	set of <n> points, but refers to the open polygonal chain

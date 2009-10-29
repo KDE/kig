@@ -52,6 +52,8 @@
 #include "../objects/point_type.h"
 #include "../objects/polygon_imp.h"
 #include "../objects/polygon_type.h"
+#include "../objects/bezier_imp.h"
+#include "../objects/bezier_type.h"
 #include "../objects/tangent_type.h"
 #include "../objects/text_imp.h"
 #include "../objects/transform_types.h"
@@ -1228,6 +1230,151 @@ int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
   if ( nsides < 3 ) nsides = 3;
   while ( !relativePrimes ( nsides, winding ) ) ++nsides;
   return nsides;
+}
+
+/*
+ * generic Bézier curve constructor
+ */
+
+BezierCurveTypeConstructor::BezierCurveTypeConstructor()
+  : mtype( BezierCurveType::instance() )
+{
+}
+
+BezierCurveTypeConstructor::~BezierCurveTypeConstructor()
+{
+}
+
+const QString BezierCurveTypeConstructor::descriptiveName() const
+{
+  return i18n("Bézier Curve by its Control Points");
+}
+
+const QString BezierCurveTypeConstructor::description() const
+{
+  return i18n("Construct a Bézier curve by giving its control points");
+}
+
+const QByteArray BezierCurveTypeConstructor::iconFileName( const bool ) const
+{
+  return "bezierN";
+}
+
+bool BezierCurveTypeConstructor::isAlreadySelectedOK(
+ const std::vector<ObjectCalcer*>& os, const int& pos ) const
+{
+  if ( pos == 0 && os.size() >= 3 ) return true;
+  return false;
+}
+
+int BezierCurveTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+                                          const KigDocument&,
+                                          const KigWidget& ) const
+{
+  int count=os.size() - 1;
+
+  for ( int i = 0; i <= count; i++ )
+  {
+    if ( ! ( os[i]->imp()->inherits( PointImp::stype() ) ) ) return ArgsParser::Invalid;
+  }
+  if ( count < 3 ) return ArgsParser::Valid;
+  if ( os[0] == os[count] ) return ArgsParser::Complete;
+  return ArgsParser::Valid;
+}
+
+void BezierCurveTypeConstructor::handleArgs(
+  const std::vector<ObjectCalcer*>& os, KigPart& d,
+  KigWidget& v ) const
+{
+  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
+  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    (*i)->calc( d.document() );
+  }
+
+  d.addObjects( bos );
+}
+
+void BezierCurveTypeConstructor::handlePrelim(
+  KigPainter& p, const std::vector<ObjectCalcer*>& os,
+  const KigDocument& d, const KigWidget&
+  ) const
+{
+  uint count = os.size();
+  if ( count < 2 ) return;
+
+  for ( uint i = 0; i < count; i++ )
+  {
+    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
+  }
+
+  std::vector<ObjectCalcer*> args = os;
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
+
+  ObjectDrawer drawer( Qt::red );
+  drawprelim( drawer, p, args, d );
+}
+
+QString BezierCurveTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
+                                             const KigDocument&, const KigWidget& ) const
+{
+  if ( os.size() > 3 )
+    return i18n("... with this control point (click on the first control point to terminate construction)");
+  else return i18n("Construct a polygon with this control point");
+}
+
+QString BezierCurveTypeConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>&, const KigDocument&,
+  const KigWidget& ) const
+{
+  return i18n("Select a point to be a control point of the new Bézier curve...");
+}
+
+void BezierCurveTypeConstructor::drawprelim( const ObjectDrawer& drawer, 
+                                             KigPainter& p, 
+                                             const std::vector<ObjectCalcer*>& parents,
+                                             const KigDocument& ) const
+{
+  if ( parents.size() < 2 ) return;
+
+  std::vector<Coordinate> points;
+
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    const Coordinate vertex =
+        static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
+    points.push_back( vertex );
+  }
+
+  BezierImp B = BezierImp( points );
+  B.draw( p );
+}
+
+std::vector<ObjectHolder*> BezierCurveTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
+{
+  uint count = parents.size() - 1;
+  assert ( count >= 3 );
+  std::vector<ObjectCalcer*> args;
+  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
+  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
+  ObjectHolder* h = new ObjectHolder( calcer );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( h );
+  return ret;
+}
+
+void BezierCurveTypeConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool BezierCurveTypeConstructor::isTransform() const
+{
+  return false;
 }
 
 /*

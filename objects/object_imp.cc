@@ -155,6 +155,10 @@ void ObjectImpVisitor::visit( const PolygonImp* )
 {
 }
 
+void ObjectImpVisitor::visit( const BezierImp* )
+{
+}
+
 ObjectImpVisitor::~ObjectImpVisitor()
 {
 

@@ -117,6 +117,12 @@
 	  <Action name="objects_new_cubiccuspb4p" />
         </Menu>
       </Menu>
+      <Menu name="new_bezier" icon="beziercurves">
+        <text>&amp;Bézier curves</text>
+        <Action name="objects_new_bezierquadric" />
+        <Action name="objects_new_beziercubic" />
+        <Action name="objects_new_beziercurve" />
+      </Menu>
       <Menu name="new_angle" icon="angle">
 	<text>&amp;Angles</text>
 	<Action name="objects_new_angle" />
@@ -248,6 +254,12 @@
     <Action name="objects_new_conicb5p" />
     <ActionList name="user_conic_types" />
     <Action name="objects_new_lineconicradical" />
+  </ToolBar>
+  <ToolBar name="bezier_toolbar" position="left" iconText="icononly" iconSize="22">
+    <text>Bézier Curves</text>
+    <Action name="objects_new_bezierquadric" />
+    <Action name="objects_new_beziercubic" />
+    <Action name="objects_new_beziercurve" />
   </ToolBar>
   <ToolBar name="angles_toolbar" position="left" iconText="icononly" iconSize="22">
     <text>Angles</text>
