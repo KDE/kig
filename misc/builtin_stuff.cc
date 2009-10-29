@@ -533,16 +533,16 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       BezierQuadricType::instance(),
-      I18N_NOOP( "Bezier Quadric by its Control Points" ),
-      I18N_NOOP( "Construct a Bezier quadric given its three control points." ),
+      I18N_NOOP( "Bézier Quadric by its Control Points" ),
+      I18N_NOOP( "Construct a Bézier quadric given its three control points." ),
       "bezier3" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_bezierquadric" ) );
 
      c = new SimpleObjectTypeConstructor(
       BezierCubicType::instance(),
-      I18N_NOOP( "Bezier Cubic by its Control Points" ),
-      I18N_NOOP( "Construct a Bezier cubic given its four control points." ),
+      I18N_NOOP( "Bézier Cubic by its Control Points" ),
+      I18N_NOOP( "Construct a Bézier cubic given its four control points." ),
       "bezier4" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_beziercubic" ) );
