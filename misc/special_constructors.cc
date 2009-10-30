@@ -680,7 +680,7 @@ const QByteArray OpenPolygonTypeConstructor::iconFileName( const bool ) const
 bool OpenPolygonTypeConstructor::isAlreadySelectedOK(
  const std::vector<ObjectCalcer*>& os, const int& pos ) const
 {
-  if ( pos == 0 && os.size() >= 2 ) return true;
+  if ( pos == os.size() - 1 && os.size() >= 2 ) return true;
   return false;
 }
 
@@ -695,7 +695,7 @@ int OpenPolygonTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
     if ( ! ( os[i]->imp()->inherits( PointImp::stype() ) ) ) return ArgsParser::Invalid;
   }
   if ( count < 2 ) return ArgsParser::Valid;
-  if ( os[0] == os[count] ) return ArgsParser::Complete;
+  if ( os[count] == os[count - 1] ) return ArgsParser::Complete;
   return ArgsParser::Valid;
 }
 
@@ -741,15 +741,15 @@ QString OpenPolygonTypeConstructor::useText( const ObjectCalcer&, const std::vec
                                           const KigDocument&, const KigWidget& ) const
 {
   if ( os.size() > 2 )
-    return i18n("... with this vertex (click on the first vertex to terminate construction)");
-  else return i18n("Construct a open polygon (polyline) with this vertex");
+    return i18n("... with this vertex (click again on the last vertex to terminate construction)");
+  else return i18n("Construct a polygonal line with this vertex");
 }
 
 QString OpenPolygonTypeConstructor::selectStatement(
   const std::vector<ObjectCalcer*>&, const KigDocument&,
   const KigWidget& ) const
 {
-  return i18n("Select a point to be a vertex of the new open polygon...");
+  return i18n("Select a point to be a vertex of the new polygonal line...");
 }
 
 void OpenPolygonTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
@@ -1263,7 +1263,7 @@ const QByteArray BezierCurveTypeConstructor::iconFileName( const bool ) const
 bool BezierCurveTypeConstructor::isAlreadySelectedOK(
  const std::vector<ObjectCalcer*>& os, const int& pos ) const
 {
-  if ( pos == 0 && os.size() >= 3 ) return true;
+  if ( pos == os.size() - 1 && os.size() >= 3 ) return true;
   return false;
 }
 
@@ -1278,7 +1278,7 @@ int BezierCurveTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
     if ( ! ( os[i]->imp()->inherits( PointImp::stype() ) ) ) return ArgsParser::Invalid;
   }
   if ( count < 3 ) return ArgsParser::Valid;
-  if ( os[0] == os[count] ) return ArgsParser::Complete;
+  if ( os[count] == os[count - 1] ) return ArgsParser::Complete;
   return ArgsParser::Valid;
 }
 
@@ -1324,8 +1324,8 @@ QString BezierCurveTypeConstructor::useText( const ObjectCalcer&, const std::vec
                                              const KigDocument&, const KigWidget& ) const
 {
   if ( os.size() > 3 )
-    return i18n("... with this control point (click on the first control point to terminate construction)");
-  else return i18n("Construct a polygon with this control point");
+    return i18n("... with this control point (click again on the last control point to terminate construction)");
+  else return i18n("Construct a Bézie curve with this control point");
 }
 
 QString BezierCurveTypeConstructor::selectStatement(
