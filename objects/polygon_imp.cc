@@ -15,6 +15,15 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
+//
+// note (mp): there are now two boolean flags:
+//   minside: tells if we want a "filled polygon"
+//   mopen: in case of boundary, if we want an open polygonal
+//
+// a much more clean solution would be to have an AbstractPolygon class
+// from which to inherit "Polygon", "ClosedPolygonal" and "OpenPolygonal"
+// we should think of the possibility of doing this...
+//
 #include "polygon_imp.h"
 
 #include <math.h>
@@ -221,22 +230,38 @@ bool PolygonImp::valid() const
 
 int PolygonImp::numberOfProperties() const
 {
-  if ( minside )
-    return Parent::numberOfProperties() + 5;
   if ( mopen )
-    return Parent::numberOfProperties() + 6;
-  return Parent::numberOfProperties() + 5;
+    return Parent::numberOfProperties() + 5;
+  return Parent::numberOfProperties() + 7;
 }
 
 const QByteArrayList PolygonImp::propertiesInternalNames() const
 {
   QByteArrayList l = Parent::propertiesInternalNames();
-  l += "polygon-number-of-sides";
-  l += "polygon-perimeter";
-  l += "polygon-surface";
-  l += "polygon-center-of-mass";
-  l += "polygon-winding-number";
-  if ( mopen ) l+= "bezier-curve";
+  if ( mopen )
+  {
+    l += "number-of-sides";
+    l += "length";
+  } else {
+    l += "polygon-number-of-sides";
+    l += "polygon-perimeter";
+  }
+  if ( mopen ) l += "bezier-curve";
+    else l += "polygon-surface";
+  if ( mopen )
+  {
+    l += "polygon";
+    l += "closed-polygonal";
+  } else {
+    if ( minside ) l += "closed-polygonal";
+      else l += "polygon";
+    l += "polygonal";
+  }
+  if ( ! mopen )
+  {
+    l += "polygon-center-of-mass";
+    l += "polygon-winding-number";
+  }
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -245,11 +270,29 @@ const QByteArrayList PolygonImp::properties() const
 {
   QByteArrayList l = Parent::properties();
   l += I18N_NOOP( "Number of sides" );
-  l += I18N_NOOP( "Perimeter" );
-  l += I18N_NOOP( "Surface" );
-  l += I18N_NOOP( "Center of Mass of the Vertices" );
-  l += I18N_NOOP( "Winding Number" );
+  if ( mopen ) l += I18N_NOOP( "Length" );
+    else l += I18N_NOOP( "Perimeter" );
   if ( mopen ) l+= I18N_NOOP( "Bezier Curve" );
+    else l += I18N_NOOP( "Surface" );
+  if ( mopen )
+  {
+    l += I18N_NOOP( "Associated Polygon" );
+    l += I18N_NOOP( "Closed Polygonal" );
+  } else {
+    if ( minside )
+    {
+      l += I18N_NOOP( "Boundary Polygonal" );
+      l += I18N_NOOP( "Open Boundary Polygonal" );
+    } else {
+      l += I18N_NOOP( "Inside Polygon" );
+      l += I18N_NOOP( "Open Polygonal" );
+    }
+  }
+  if ( ! mopen )
+  {
+    l += I18N_NOOP( "Center of Mass of the Vertices" );
+    l += I18N_NOOP( "Winding Number" );
+  }
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -271,13 +314,21 @@ const char* PolygonImp::iconForProperty( int which ) const
   else if ( which == Parent::numberOfProperties() + 1 )
     return "circumference"; // perimeter
   else if ( which == Parent::numberOfProperties() + 2 )
-    return "areaCircle"; // surface
+    {
+      if ( mopen ) return "bezierN"; // Bezier curve
+      else return "areaCircle"; // surface
+    }
   else if ( which == Parent::numberOfProperties() + 3 )
-    return "point"; // center of mass
+    return "kig_polygon"; // closed polygonal (minside = true) or polygon
   else if ( which == Parent::numberOfProperties() + 4 )
-    return "w"; // winding number
+    {
+      if ( mopen ) return "kig_polygon"; // closed polygonal
+      else return "openpolygon"; // open polygonal
+    }
   else if ( which == Parent::numberOfProperties() + 5 )
-    return "bezierN"; // Bezier curve
+    return "point"; // center of mass
+  else if ( which == Parent::numberOfProperties() + 6 )
+    return "w"; // winding number
   else assert( false );
   return "";
 }
@@ -300,24 +351,32 @@ ObjectImp* PolygonImp::property( int which, const KigDocument& w ) const
   }
   else if ( which == Parent::numberOfProperties() + 2)
   {
-    int wn = windingNumber ();  // not able to compute area for such polygons...
-    if ( wn < 0 ) wn = -wn;
-    if ( wn != 1 ) return new InvalidImp;
-    return new DoubleImp( fabs( area () ) );
+    if ( mopen ) return new BezierImp( mpoints ); // bezier curve
+    else {
+      int wn = windingNumber ();  // not able to compute area for such polygons...
+      if ( wn < 0 ) wn = -wn;
+      if ( wn != 1 ) return new InvalidImp;
+      return new DoubleImp( fabs( area () ) );
+    }
   }
-  else if ( which == Parent::numberOfProperties() + 3 )
+  else if ( which == Parent::numberOfProperties() + 3)
   {
-    return new PointImp( mcenterofmass );
+    if ( minside ) return new PolygonImp( mpoints, false, false ); // polygon boundary
+    else return new PolygonImp( mpoints, true, false ); // filled polygon
   }
-  else if ( which == Parent::numberOfProperties() + 4 )
+  else if ( which == Parent::numberOfProperties() + 4)
   {
-    // winding number
-    return new IntImp( windingNumber() );
+    if ( mopen ) return new PolygonImp( mpoints, false, false ); // polygon boundary
+    else return new PolygonImp( mpoints, false, true ); // open polygonal
   }
   else if ( which == Parent::numberOfProperties() + 5 )
   {
-    // bezier curve
-    return new BezierImp( mpoints );
+    return new PointImp( mcenterofmass );
+  }
+  else if ( which == Parent::numberOfProperties() + 6 )
+  {
+    // winding number
+    return new IntImp( windingNumber() );
   }
   else assert( false );
   return new InvalidImp;
