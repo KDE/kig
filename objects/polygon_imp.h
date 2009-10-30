@@ -30,7 +30,8 @@ class PolygonImp
 {
   uint mnpoints;
   std::vector<Coordinate> mpoints;
-  bool mopen;
+  bool minside;   // true: filled polygon, false: polygon boundary
+  bool mopen;     // true: polygonal curve (minside must be false)
   Coordinate mcenterofmass;
 public:
   typedef ObjectImp Parent;
@@ -40,13 +41,14 @@ public:
   static const ObjectImpType* stype();
   static const ObjectImpType* stype3();
   static const ObjectImpType* stype4();
+  static const ObjectImpType* stypeb();
   static const ObjectImpType* stypeo();
 
   /**
    * Constructs a polygon.
    */
   // open polygon == polyline
-  PolygonImp( const std::vector<Coordinate>& points, bool open = false );
+  PolygonImp( const std::vector<Coordinate>& points, bool inside = true, bool open = false );
   PolygonImp( const uint nsides, const std::vector<Coordinate>& points, 
               const Coordinate& centerofmass );
   ~PolygonImp();

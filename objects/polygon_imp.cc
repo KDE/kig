@@ -37,12 +37,13 @@
 
 PolygonImp::PolygonImp( const uint npoints, const std::vector<Coordinate>& points,
                         const Coordinate& centerofmass )
-  : mnpoints( npoints ), mpoints( points ), mopen( false ), mcenterofmass( centerofmass )
+  : mnpoints( npoints ), mpoints( points ), minside( true ), 
+    mopen( false ), mcenterofmass( centerofmass )
 {
 //  mpoints = points;
 }
 
-PolygonImp::PolygonImp( const std::vector<Coordinate>& points, bool open )
+PolygonImp::PolygonImp( const std::vector<Coordinate>& points, bool inside, bool open )
 {
   uint npoints = points.size();
   Coordinate centerofmassn = Coordinate( 0, 0 );
@@ -54,7 +55,9 @@ PolygonImp::PolygonImp( const std::vector<Coordinate>& points, bool open )
   mpoints = points;
   mcenterofmass = centerofmassn/npoints;
   mnpoints = npoints;
+  minside = inside;
   mopen = open;
+  assert ( ! ( minside && mopen ) );
 }
 
 PolygonImp::~PolygonImp()
@@ -102,19 +105,20 @@ ObjectImp* PolygonImp::transform( const Transformation& t ) const
       return new InvalidImp;
     np.push_back( nc );
   }
-  return new PolygonImp( np, mopen );
+  return new PolygonImp( np, minside, mopen );
 }
 
 void PolygonImp::draw( KigPainter& p ) const
 {
-  if ( mopen )
+  if ( minside )
   {
-    for ( unsigned int i = 0; i < mnpoints - 1; i++ )
-      p.drawSegment( mpoints[i], mpoints[i+1] );
+    p.drawPolygon( mpoints );
   }
   else
   {
-    p.drawPolygon( mpoints );
+    for ( unsigned int i = 0; i < mnpoints - 1; i++ )
+      p.drawSegment( mpoints[i], mpoints[i+1] );
+    if ( ! mopen ) p.drawSegment( mpoints[mnpoints-1], mpoints[0] );
   }
 }
 
@@ -177,26 +181,19 @@ bool PolygonImp::isOnPolygonBorder( const Coordinate& p, int width, const KigWid
   {
     ret |= isOnSegment( p, mpoints[i], mpoints[i+1], w.screenInfo().normalMiss( width ) );
   }
-  ret |= isOnSegment( p, mpoints[reduceddim], mpoints[0], w.screenInfo().normalMiss( width ) );
+  if ( ! mopen )
+    ret |= isOnSegment( p, mpoints[reduceddim], mpoints[0], w.screenInfo().normalMiss( width ) );
 
   return ret;
 }
 
-#define selectpolygonwithinside 1
-#ifdef selectpolygonwithinside
 bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  if ( mopen )
-    return isOnPolygonBorder( p, width,  w );
-  else
+  if ( minside )
     return isInPolygon( p );
+  else
+    return isOnPolygonBorder( p, width,  w );
 }
-#else
-bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
-{
-  return isOnPolygonBorder( p, width, w );
-}
-#endif
 
 bool PolygonImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
@@ -385,6 +382,24 @@ const ObjectImpType* PolygonImp::stype()
   return &t;
 }
 
+const ObjectImpType* PolygonImp::stypeb()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "closedpolygonal",
+    I18N_NOOP( "closed polygonal" ),
+    I18N_NOOP( "Select this closed polygonal" ),
+    I18N_NOOP( "Select closed polygonal %1" ),
+    I18N_NOOP( "Remove a closed polygonal" ),
+    I18N_NOOP( "Add a closed polygonal" ),
+    I18N_NOOP( "Move a closed polygonal" ),
+    I18N_NOOP( "Attach to this closed polygonal" ),
+    I18N_NOOP( "Show a closed polygonal" ),
+    I18N_NOOP( "Hide a closed polygonal" )
+    );
+
+  return &t;
+}
+
 const ObjectImpType* PolygonImp::stypeo()
 {
   static const ObjectImpType t(
@@ -392,12 +407,12 @@ const ObjectImpType* PolygonImp::stypeo()
     I18N_NOOP( "polygonal curve" ),
     I18N_NOOP( "Select this polygonal curve" ),
     I18N_NOOP( "Select polygonal curve %1" ),
-    I18N_NOOP( "Remove a Polygonal curve" ),
-    I18N_NOOP( "Add a Polygonal curve" ),
-    I18N_NOOP( "Move a Polygonal curve" ),
+    I18N_NOOP( "Remove a polygonal curve" ),
+    I18N_NOOP( "Add a polygonal curve" ),
+    I18N_NOOP( "Move a polygonal curve" ),
     I18N_NOOP( "Attach to this polygonal curve" ),
-    I18N_NOOP( "Show a Polygonal curve" ),
-    I18N_NOOP( "Hide a Polygonal curve" )
+    I18N_NOOP( "Show a polygonal curve" ),
+    I18N_NOOP( "Hide a polygonal curve" )
     );
 
   return &t;
@@ -443,7 +458,8 @@ const ObjectImpType* PolygonImp::type() const
 {
   uint n = mpoints.size();
 
-  if ( mopen ) return PolygonImp::stypeo();
+  if ( ! minside && mopen ) return PolygonImp::stypeo();
+  if ( ! minside ) return PolygonImp::stypeb();
   if ( n == 3 ) return PolygonImp::stype3();
   if ( n == 4 ) return PolygonImp::stype4();
   return PolygonImp::stype();

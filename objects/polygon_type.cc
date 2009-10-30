@@ -282,7 +282,7 @@ ObjectImp* OpenPolygonType::calc( const Args& parents, const KigDocument& ) cons
     Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
     points.push_back( point );
   }
-  return new PolygonImp( points, true );
+  return new PolygonImp( points, false, true );  // minside = false, mopen = true
 }
 
 const ObjectImpType* OpenPolygonType::resultId() const
