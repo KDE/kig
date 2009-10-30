@@ -71,10 +71,15 @@ std::vector<ObjectHolder*> KigDocument::whatAmIOn( const Coordinate& p, const Ki
         i != mobjects.end(); ++i )
   {
     if(!(*i)->contains(p, w, mnightvision)) continue;
-    if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
+    const ObjectImp* oimp = (*i)->imp();
+    if ( oimp->inherits( PointImp::stype() ) ) ret.push_back( *i );
     else 
-      if ( !(*i)->imp()->inherits( PolygonImp::stype() ) ) curves.push_back( *i );
-      else fatobjects.push_back( *i );
+      if ( !oimp->inherits( PolygonImp::stype() ) ) curves.push_back( *i );
+      else
+      {
+// TODO (mp) with the introduction of open polygon this is not always a "fat" object!
+        fatobjects.push_back( *i );
+      }
   };
   std::copy( curves.begin(), curves.end(), std::back_inserter( ret ) );
   std::copy( fatobjects.begin(), fatobjects.end(), std::back_inserter( ret ) );

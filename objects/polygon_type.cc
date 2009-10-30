@@ -297,7 +297,7 @@ const ObjectImpType* OpenPolygonType::impRequirement( const ObjectImp*, const Ar
 
 bool OpenPolygonType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
 {
-  return false;  /* should be true? */
+  return true;
 }
 
 std::vector<ObjectCalcer*> OpenPolygonType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
