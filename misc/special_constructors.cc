@@ -620,7 +620,7 @@ void PolygonBNPTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPaint
     SegmentImp segment = SegmentImp( points[0], points[1] );
     drawer.draw( segment, p, true );
   } else {
-    PolygonImp polygon = PolygonImp( points, false );
+    PolygonImp polygon = PolygonImp( points, true, false );
     drawer.draw( polygon, p, true );
   }
 }
@@ -771,7 +771,7 @@ void OpenPolygonTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPain
     SegmentImp segment = SegmentImp( points[0], points[1] );
     drawer.draw( segment, p, true );
   } else {
-    PolygonImp polygon = PolygonImp( points, true );
+    PolygonImp polygon = PolygonImp( points, false, true );
     drawer.draw( polygon, p, true );
   }
 }

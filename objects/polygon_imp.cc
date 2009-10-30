@@ -22,6 +22,7 @@
 #include "bogus_imp.h"
 #include "line_imp.h"
 #include "point_imp.h"
+#include "bezier_imp.h"
 
 #include "../misc/common.h"
 #include "../misc/coordinate.h"
@@ -220,6 +221,10 @@ bool PolygonImp::valid() const
 
 int PolygonImp::numberOfProperties() const
 {
+  if ( minside )
+    return Parent::numberOfProperties() + 5;
+  if ( mopen )
+    return Parent::numberOfProperties() + 6;
   return Parent::numberOfProperties() + 5;
 }
 
@@ -231,6 +236,7 @@ const QByteArrayList PolygonImp::propertiesInternalNames() const
   l += "polygon-surface";
   l += "polygon-center-of-mass";
   l += "polygon-winding-number";
+  if ( mopen ) l+= "bezier-curve";
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -243,6 +249,7 @@ const QByteArrayList PolygonImp::properties() const
   l += I18N_NOOP( "Surface" );
   l += I18N_NOOP( "Center of Mass of the Vertices" );
   l += I18N_NOOP( "Winding Number" );
+  if ( mopen ) l+= I18N_NOOP( "Bezier Curve" );
   assert( l.size() == PolygonImp::numberOfProperties() );
   return l;
 }
@@ -269,6 +276,8 @@ const char* PolygonImp::iconForProperty( int which ) const
     return "point"; // center of mass
   else if ( which == Parent::numberOfProperties() + 4 )
     return "w"; // winding number
+  else if ( which == Parent::numberOfProperties() + 5 )
+    return "bezierN"; // Bezier curve
   else assert( false );
   return "";
 }
@@ -280,7 +289,8 @@ ObjectImp* PolygonImp::property( int which, const KigDocument& w ) const
     return Parent::property( which, w );
   else if ( which == Parent::numberOfProperties() )
   {
-    // number of points
+    // number of sides
+    if ( mopen ) return new IntImp( mnpoints - 1 );
     return new IntImp( mnpoints );
   }
   else if ( which == Parent::numberOfProperties() + 1)
@@ -304,6 +314,11 @@ ObjectImp* PolygonImp::property( int which, const KigDocument& w ) const
     // winding number
     return new IntImp( windingNumber() );
   }
+  else if ( which == Parent::numberOfProperties() + 5 )
+  {
+    // bezier curve
+    return new BezierImp( mpoints );
+  }
   else assert( false );
   return new InvalidImp;
 }
@@ -321,11 +336,11 @@ uint PolygonImp::npoints() const
 double PolygonImp::perimeter() const
 {
   double perimeter = 0.;
-  for ( uint i = 0; i < mpoints.size(); ++i )
+  for ( uint i = 0; i < mpoints.size() - 1; ++i )
   {
-    uint prev = ( i + mpoints.size() - 1 ) % mpoints.size();
-    perimeter += ( mpoints[i] - mpoints[prev] ).length();
+    perimeter += ( mpoints[i+1] - mpoints[i] ).length();
   }
+  if ( ! mopen ) perimeter += ( mpoints[0] - mpoints[mpoints.size()-1] ).length();
   return perimeter;
 }
 
