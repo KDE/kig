@@ -1325,7 +1325,7 @@ QString BezierCurveTypeConstructor::useText( const ObjectCalcer&, const std::vec
 {
   if ( os.size() > 3 )
     return i18n("... with this control point (click again on the last control point to terminate construction)");
-  else return i18n("Construct a Bézie curve with this control point");
+  else return i18n("Construct a Bézier curve with this control point");
 }
 
 QString BezierCurveTypeConstructor::selectStatement(

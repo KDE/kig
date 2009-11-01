@@ -272,7 +272,7 @@ const QByteArrayList PolygonImp::properties() const
   l += I18N_NOOP( "Number of sides" );
   if ( mopen ) l += I18N_NOOP( "Length" );
     else l += I18N_NOOP( "Perimeter" );
-  if ( mopen ) l+= I18N_NOOP( "Bezier Curve" );
+  if ( mopen ) l+= I18N_NOOP( "Bézier Curve" );
     else l += I18N_NOOP( "Surface" );
   if ( mopen )
   {
