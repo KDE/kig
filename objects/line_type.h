@@ -30,7 +30,7 @@ class SegmentABType
 public:
   static const SegmentABType* instance();
 
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 
   QStringList specialActions() const;
@@ -48,7 +48,7 @@ class LineABType
   ~LineABType();
 public:
   static const LineABType* instance();
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 };
 
@@ -59,7 +59,7 @@ class RayABType
   ~RayABType();
 public:
   static const RayABType* instance();
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 };
 

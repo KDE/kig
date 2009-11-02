@@ -124,7 +124,8 @@ class MidPointType
   ~MidPointType();
 public:
   static const MidPointType* instance();
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  // calcx was an overloaded calc, which produced a compilation warning
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 };
 

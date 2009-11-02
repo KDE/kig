@@ -39,7 +39,8 @@ public:
              const KigDocument& d ) const;
   const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const;
 
-  virtual ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const = 0;
+  // mp: calcx was an overloaded calc, which caused a compilation warning
+  virtual ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const = 0;
 };
 
 class ObjectLPType

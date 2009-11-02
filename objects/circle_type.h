@@ -31,7 +31,7 @@ class CircleBCPType
 public:
   static const CircleBCPType* instance();
 
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 };
 

@@ -58,7 +58,7 @@ const SegmentABType* SegmentABType::instance()
   return &s;
 }
 
-ObjectImp* SegmentABType::calc( const Coordinate& a, const Coordinate& b ) const
+ObjectImp* SegmentABType::calcx( const Coordinate& a, const Coordinate& b ) const
 {
   return new SegmentImp( a, b );
 }
@@ -90,7 +90,7 @@ const LineABType* LineABType::instance()
   return &s;
 }
 
-ObjectImp* LineABType::calc( const Coordinate& a, const Coordinate& b ) const
+ObjectImp* LineABType::calcx( const Coordinate& a, const Coordinate& b ) const
 {
   return new LineImp( a, b );
 }
@@ -122,7 +122,7 @@ const RayABType* RayABType::instance()
   return &s;
 }
 
-ObjectImp* RayABType::calc( const Coordinate& a, const Coordinate& b ) const
+ObjectImp* RayABType::calcx( const Coordinate& a, const Coordinate& b ) const
 {
   return new RayImp( a, b );
 }

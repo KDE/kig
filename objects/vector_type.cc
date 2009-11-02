@@ -46,7 +46,7 @@ const VectorType* VectorType::instance()
   return &t;
 }
 
-ObjectImp* VectorType::calc( const Coordinate& a, const Coordinate& b ) const
+ObjectImp* VectorType::calcx( const Coordinate& a, const Coordinate& b ) const
 {
   return new VectorImp( a, b );
 }

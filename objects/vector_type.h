@@ -27,7 +27,7 @@ class VectorType
   ~VectorType();
 public:
   static const VectorType* instance();
-  ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 };
 

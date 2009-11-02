@@ -41,7 +41,7 @@ ObjectImp* ObjectABType::calc( const Args& parents, const KigDocument& ) const
   Coordinate a = static_cast<const PointImp*>( parents[0] )->coordinate();
   Coordinate b = static_cast<const PointImp*>( parents[1] )->coordinate();
 
-  return calc( a, b );
+  return calcx( a, b );
 }
 
 bool ObjectABType::canMove( const ObjectTypeCalcer& o ) const

@@ -284,7 +284,7 @@ const MidPointType* MidPointType::instance()
   return &t;
 }
 
-ObjectImp* MidPointType::calc( const Coordinate& a, const Coordinate& b ) const
+ObjectImp* MidPointType::calcx( const Coordinate& a, const Coordinate& b ) const
 {
   return new PointImp( ( a + b ) / 2 );
 }

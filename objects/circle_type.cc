@@ -58,7 +58,7 @@ const CircleBCPType* CircleBCPType::instance()
   return &s;
 }
 
-ObjectImp* CircleBCPType::calc( const Coordinate& a, const Coordinate& b ) const
+ObjectImp* CircleBCPType::calcx( const Coordinate& a, const Coordinate& b ) const
 {
   return new CircleImp( a, ( b - a ).length() );
 }
