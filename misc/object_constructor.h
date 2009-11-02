@@ -56,7 +56,7 @@ public:
    * typical objects
    */
   virtual bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                              const int& ) const = 0;
+                              const uint& ) const = 0;
   /**
    * can this constructor do something useful with \p os ?  return
    * ArgsParser::Complete, Valid or NotGood
@@ -150,7 +150,7 @@ public:
   const QByteArray iconFileName( const bool canBeNull = false ) const;
 
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                                  const int& ) const;
+                                  const uint& ) const;
   virtual int wantArgs(
     const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v
@@ -302,7 +302,7 @@ public:
   const QByteArray iconFileName( const bool canBeNull = false ) const;
 
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                                  const int& ) const;
+                                  const uint& ) const;
   int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d,
                       const KigWidget& v
@@ -358,7 +358,7 @@ public:
   const QByteArray iconFileName( const bool canBeNull = false ) const;
 
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                                  const int& ) const;
+                                  const uint& ) const;
   int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
                       const KigWidget& v ) const;
 

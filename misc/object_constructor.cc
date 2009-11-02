@@ -58,7 +58,7 @@ const QByteArray StandardConstructorBase::iconFileName( const bool ) const
   return miconfile;
 }
 
-bool StandardConstructorBase::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+bool StandardConstructorBase::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const uint& ) const
 {
   return false;
 }
@@ -251,7 +251,7 @@ const QByteArray MergeObjectConstructor::iconFileName( const bool ) const
   return miconfilename;
 }
 
-bool MergeObjectConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+bool MergeObjectConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const uint& ) const
 {
   return false;
 }
@@ -385,7 +385,7 @@ const QByteArray MacroConstructor::iconFileName( const bool canBeNull ) const
   return ( miconfile.isNull() && !canBeNull ) ? QByteArray( "system-run" ) : miconfile;
 }
 
-bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
+bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const uint& ) const
 {
   return false;
 }

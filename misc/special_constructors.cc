@@ -607,7 +607,7 @@ PolygonBNPTypeConstructor::~PolygonBNPTypeConstructor()
 }
 
 bool PolygonBNPTypeConstructor::isAlreadySelectedOK(
- const std::vector<ObjectCalcer*>& os, const int& pos ) const
+ const std::vector<ObjectCalcer*>& os, const uint& pos ) const
 {
   if ( pos == 0 && os.size() >= 3 ) return true;
   return false;
@@ -686,7 +686,7 @@ OpenPolygonTypeConstructor::~OpenPolygonTypeConstructor()
 }
 
 bool OpenPolygonTypeConstructor::isAlreadySelectedOK(
-  const std::vector<ObjectCalcer*>& os, const int& pos ) const
+  const std::vector<ObjectCalcer*>& os, const uint& pos ) const
 {
   if ( pos == os.size() - 1 && os.size() >= 2 ) return true;
   return false;
@@ -910,7 +910,7 @@ const QByteArray PolygonBCVConstructor::iconFileName( const bool ) const
 }
 
 bool PolygonBCVConstructor::isAlreadySelectedOK(
- const std::vector<ObjectCalcer*>&, const int& ) const
+ const std::vector<ObjectCalcer*>&, const uint& ) const
 {
   return false;
 }
@@ -1198,7 +1198,7 @@ BezierCurveTypeConstructor::~BezierCurveTypeConstructor()
 }
 
 bool BezierCurveTypeConstructor::isAlreadySelectedOK(
- const std::vector<ObjectCalcer*>& os, const int& pos ) const
+ const std::vector<ObjectCalcer*>& os, const uint& pos ) const
 {
   if ( pos == os.size() - 1 && os.size() >= 3 ) return true;
   return false;
@@ -1519,7 +1519,7 @@ const QByteArray MeasureTransportConstructor::iconFileName( const bool ) const
 }
 
 bool MeasureTransportConstructor::isAlreadySelectedOK(
- const std::vector<ObjectCalcer*>&, const int& ) const
+ const std::vector<ObjectCalcer*>&, const uint& ) const
 {
   return false;
 }
