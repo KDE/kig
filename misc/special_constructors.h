@@ -91,75 +91,85 @@ public:
   bool isTransform() const;
 };
 
-class PolygonBNPTypeConstructor
+/*
+ */
+
+class PointSequenceConstructor
   : public ObjectConstructor
 {
+  const char* mdescname;
+  const char* mdesc;
+  const char* miconfile;
   const ObjectType* mtype;
 public:
-  PolygonBNPTypeConstructor();
-  ~PolygonBNPTypeConstructor();
+  PointSequenceConstructor( const char* descname,
+			    const char* desc,
+			    const char* iconfile,
+			    const ObjectType* type );
 
   const QString descriptiveName() const;
   const QString description() const;
   const QByteArray iconFileName( const bool canBeNull = false ) const;
-  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const int& ) const;
-  int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v) const;
   void handleArgs( const std::vector<ObjectCalcer*>& os,
                            KigPart& d,
                            KigWidget& v
     ) const;
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
-                           const KigDocument& d, const KigWidget& v
-    ) const;
-  QString selectStatement(
-    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-    const KigWidget& w ) const;
   void handlePrelim( KigPainter& p,
                              const std::vector<ObjectCalcer*>& sel,
                              const KigDocument& d,
                              const KigWidget& v
     ) const;
+  // TODO: move here actual drawprelm when AbstractPolygon is in place!
+  virtual void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const = 0;
 
-  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
   void plug( KigPart* doc, KigGUIAction* kact );
   bool isTransform() const;
 };
 
+/*
+ * classes PolygonBNPTypeConstructor, OpenPolygonTypeConstructor and 
+ *         BezierCurveTypeConstructor
+ * all inherit from the PointSequenceConstructor
+ */
 
-class OpenPolygonTypeConstructor
-  : public ObjectConstructor
+class PolygonBNPTypeConstructor
+  : public PointSequenceConstructor
 {
-  const ObjectType* mtype;
 public:
-  OpenPolygonTypeConstructor();
-  ~OpenPolygonTypeConstructor();
+  PolygonBNPTypeConstructor();
+  ~PolygonBNPTypeConstructor();
 
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QByteArray iconFileName( const bool canBeNull = false ) const;
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const int& ) const;
   int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v) const;
-  void handleArgs( const std::vector<ObjectCalcer*>& os,
-                           KigPart& d,
-                           KigWidget& v
-    ) const;
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const;
   QString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
-  void handlePrelim( KigPainter& p,
-                             const std::vector<ObjectCalcer*>& sel,
-                             const KigDocument& d,
-                             const KigWidget& v
-    ) const;
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
-  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
-  void plug( KigPart* doc, KigGUIAction* kact );
-  bool isTransform() const;
+};
+
+
+class OpenPolygonTypeConstructor
+  : public PointSequenceConstructor
+{
+public:
+  OpenPolygonTypeConstructor();
+  ~OpenPolygonTypeConstructor();
+
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const int& ) const;
+  int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v) const;
+  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+                           const KigDocument& d, const KigWidget& v
+    ) const;
+  QString selectStatement(
+    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+    const KigWidget& w ) const;
+
+  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
 };
 
 class PolygonBCVConstructor
@@ -203,38 +213,22 @@ public:
 };
 
 class BezierCurveTypeConstructor
-  : public ObjectConstructor
+  : public PointSequenceConstructor
 {
-  const ObjectType* mtype;
 public:
   BezierCurveTypeConstructor();
   ~BezierCurveTypeConstructor();
 
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QByteArray iconFileName( const bool canBeNull = false ) const;
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const int& ) const;
   int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v) const;
-  void handleArgs( const std::vector<ObjectCalcer*>& os,
-                           KigPart& d,
-                           KigWidget& v
-    ) const;
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const;
   QString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
-  void handlePrelim( KigPainter& p,
-                             const std::vector<ObjectCalcer*>& sel,
-                             const KigDocument& d,
-                             const KigWidget& v
-    ) const;
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
-  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
-  void plug( KigPart* doc, KigGUIAction* kact );
-  bool isTransform() const;
 };
 
 class MeasureTransportConstructor

@@ -499,31 +499,111 @@ bool LocusConstructor::isTransform() const
 }
 
 /*
+ * generic sequence of points constructor
+ */
+
+PointSequenceConstructor::PointSequenceConstructor(
+  const char* descname,
+  const char* desc,
+  const char* iconfile,
+  const ObjectType* type )
+  : mdescname( descname ),
+    mdesc( desc ),
+    miconfile( iconfile ),
+    mtype( type )
+{
+}
+
+const QString PointSequenceConstructor::descriptiveName() const
+{
+  return i18n( mdescname );
+}
+
+const QString PointSequenceConstructor::description() const
+{
+  return i18n( mdesc );
+}
+
+const QByteArray PointSequenceConstructor::iconFileName( const bool ) const
+{
+  return miconfile;
+}
+
+void PointSequenceConstructor::handleArgs(
+  const std::vector<ObjectCalcer*>& os, KigPart& d,
+  KigWidget& v ) const
+{
+  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
+  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    (*i)->calc( d.document() );
+  }
+
+  d.addObjects( bos );
+}
+
+void PointSequenceConstructor::handlePrelim(
+  KigPainter& p, const std::vector<ObjectCalcer*>& os,
+  const KigDocument& d, const KigWidget&
+  ) const
+{
+  uint count = os.size();
+  if ( count < 2 ) return;
+
+  for ( uint i = 0; i < count; i++ )
+  {
+    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
+  }
+
+  std::vector<ObjectCalcer*> args = os;
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
+
+  ObjectDrawer drawer( Qt::red );
+  drawprelim( drawer, p, args, d );
+}
+
+std::vector<ObjectHolder*> PointSequenceConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
+{
+  uint count = parents.size() - 1;
+  assert ( count >= 3 );
+  std::vector<ObjectCalcer*> args;
+  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
+  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
+  ObjectHolder* h = new ObjectHolder( calcer );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( h );
+  return ret;
+}
+
+void PointSequenceConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool PointSequenceConstructor::isTransform() const
+{
+  return false;
+}
+
+/*
  * generic polygon constructor
  */
 
 PolygonBNPTypeConstructor::PolygonBNPTypeConstructor()
-  : mtype( PolygonBNPType::instance() )
+  : PointSequenceConstructor(
+    I18N_NOOP( "Polygon by Its Vertices" ),
+    I18N_NOOP( "Construct a polygon by giving its vertices" ),
+    "kig_polygon",
+    PolygonBNPType::instance() )
 {
 }
 
 PolygonBNPTypeConstructor::~PolygonBNPTypeConstructor()
 {
-}
-
-const QString PolygonBNPTypeConstructor::descriptiveName() const
-{
-  return i18n("Polygon by Its Vertices");
-}
-
-const QString PolygonBNPTypeConstructor::description() const
-{
-  return i18n("Construct a polygon by giving its vertices");
-}
-
-const QByteArray PolygonBNPTypeConstructor::iconFileName( const bool ) const
-{
-  return "kig_polygon";
 }
 
 bool PolygonBNPTypeConstructor::isAlreadySelectedOK(
@@ -546,44 +626,6 @@ int PolygonBNPTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
   if ( count < 3 ) return ArgsParser::Valid;
   if ( os[0] == os[count] ) return ArgsParser::Complete;
   return ArgsParser::Valid;
-}
-
-void PolygonBNPTypeConstructor::handleArgs(
-  const std::vector<ObjectCalcer*>& os, KigPart& d,
-  KigWidget& v ) const
-{
-  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
-  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
-        i != bos.end(); ++i )
-  {
-    (*i)->calc( d.document() );
-  }
-
-  d.addObjects( bos );
-}
-
-void PolygonBNPTypeConstructor::handlePrelim(
-  KigPainter& p, const std::vector<ObjectCalcer*>& os,
-  const KigDocument& d, const KigWidget&
-  ) const
-{
-  uint count = os.size();
-  if ( count < 2 ) return;
-
-  for ( uint i = 0; i < count; i++ )
-  {
-    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
-  }
-
-  std::vector<ObjectCalcer*> args = os;
-  p.setBrushStyle( Qt::NoBrush );
-  p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
-  p.setWidth( -1 ); // -1 means the default width for the object being
-                    // drawn..
-
-  ObjectDrawer drawer( Qt::red );
-  drawprelim( drawer, p, args, d );
 }
 
 QString PolygonBNPTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
@@ -625,36 +667,17 @@ void PolygonBNPTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPaint
   }
 }
 
-std::vector<ObjectHolder*> PolygonBNPTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
-{
-  uint count = parents.size() - 1;
-  assert ( count >= 3 );
-  std::vector<ObjectCalcer*> args;
-  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
-  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
-  ObjectHolder* h = new ObjectHolder( calcer );
-  std::vector<ObjectHolder*> ret;
-  ret.push_back( h );
-  return ret;
-}
-
-void PolygonBNPTypeConstructor::plug( KigPart*, KigGUIAction* )
-{
-}
-
-bool PolygonBNPTypeConstructor::isTransform() const
-{
-  return false;
-}
-
-
 
 /*
  * open polygon (polyline) constructor
  */
 
 OpenPolygonTypeConstructor::OpenPolygonTypeConstructor()
-  : mtype( OpenPolygonType::instance() )
+  : PointSequenceConstructor(
+    I18N_NOOP( "Open Polygon (Polygonal Line)" ),
+    I18N_NOOP( "Construct an open polygon" ),
+    "openpolygon",
+    OpenPolygonType::instance() )
 {
 }
 
@@ -662,23 +685,8 @@ OpenPolygonTypeConstructor::~OpenPolygonTypeConstructor()
 {
 }
 
-const QString OpenPolygonTypeConstructor::descriptiveName() const
-{
-  return i18n("Open Polygon (Polygonal Line)");
-}
-
-const QString OpenPolygonTypeConstructor::description() const
-{
-  return i18n("Construct a open polygon");
-}
-
-const QByteArray OpenPolygonTypeConstructor::iconFileName( const bool ) const
-{
-  return "openpolygon";
-}
-
 bool OpenPolygonTypeConstructor::isAlreadySelectedOK(
- const std::vector<ObjectCalcer*>& os, const int& pos ) const
+  const std::vector<ObjectCalcer*>& os, const int& pos ) const
 {
   if ( pos == os.size() - 1 && os.size() >= 2 ) return true;
   return false;
@@ -697,44 +705,6 @@ int OpenPolygonTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
   if ( count < 2 ) return ArgsParser::Valid;
   if ( os[count] == os[count - 1] ) return ArgsParser::Complete;
   return ArgsParser::Valid;
-}
-
-void OpenPolygonTypeConstructor::handleArgs(
-  const std::vector<ObjectCalcer*>& os, KigPart& d,
-  KigWidget& v ) const
-{
-  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
-  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
-        i != bos.end(); ++i )
-  {
-    (*i)->calc( d.document() );
-  }
-
-  d.addObjects( bos );
-}
-
-void OpenPolygonTypeConstructor::handlePrelim(
-  KigPainter& p, const std::vector<ObjectCalcer*>& os,
-  const KigDocument& d, const KigWidget&
-  ) const
-{
-  uint count = os.size();
-  if ( count < 2 ) return;
-
-  for ( uint i = 0; i < count; i++ )
-  {
-    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
-  }
-
-  std::vector<ObjectCalcer*> args = os;
-  p.setBrushStyle( Qt::NoBrush );
-  p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
-  p.setWidth( -1 ); // -1 means the default width for the object being
-                    // drawn..
-
-  ObjectDrawer drawer( Qt::red );
-  drawprelim( drawer, p, args, d );
 }
 
 QString OpenPolygonTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
@@ -774,28 +744,6 @@ void OpenPolygonTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPain
     PolygonImp polygon = PolygonImp( points, false, true );
     drawer.draw( polygon, p, true );
   }
-}
-
-std::vector<ObjectHolder*> OpenPolygonTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
-{
-  uint count = parents.size() - 1;
-  assert ( count >= 3 );
-  std::vector<ObjectCalcer*> args;
-  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
-  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
-  ObjectHolder* h = new ObjectHolder( calcer );
-  std::vector<ObjectHolder*> ret;
-  ret.push_back( h );
-  return ret;
-}
-
-void OpenPolygonTypeConstructor::plug( KigPart*, KigGUIAction* )
-{
-}
-
-bool OpenPolygonTypeConstructor::isTransform() const
-{
-  return false;
 }
 
 /*
@@ -1237,27 +1185,16 @@ int PolygonBCVConstructor::computeNsides ( const Coordinate& c,
  */
 
 BezierCurveTypeConstructor::BezierCurveTypeConstructor()
-  : mtype( BezierCurveType::instance() )
+  : PointSequenceConstructor(
+    I18N_NOOP( "Bézier Curve by its Control Points" ),
+    I18N_NOOP( "Construct a Bézier curve by giving its control points" ),
+    "bezierN",
+    BezierCurveType::instance() )
 {
 }
 
 BezierCurveTypeConstructor::~BezierCurveTypeConstructor()
 {
-}
-
-const QString BezierCurveTypeConstructor::descriptiveName() const
-{
-  return i18n("Bézier Curve by its Control Points");
-}
-
-const QString BezierCurveTypeConstructor::description() const
-{
-  return i18n("Construct a Bézier curve by giving its control points");
-}
-
-const QByteArray BezierCurveTypeConstructor::iconFileName( const bool ) const
-{
-  return "bezierN";
 }
 
 bool BezierCurveTypeConstructor::isAlreadySelectedOK(
@@ -1282,44 +1219,6 @@ int BezierCurveTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
   return ArgsParser::Valid;
 }
 
-void BezierCurveTypeConstructor::handleArgs(
-  const std::vector<ObjectCalcer*>& os, KigPart& d,
-  KigWidget& v ) const
-{
-  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
-  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
-        i != bos.end(); ++i )
-  {
-    (*i)->calc( d.document() );
-  }
-
-  d.addObjects( bos );
-}
-
-void BezierCurveTypeConstructor::handlePrelim(
-  KigPainter& p, const std::vector<ObjectCalcer*>& os,
-  const KigDocument& d, const KigWidget&
-  ) const
-{
-  uint count = os.size();
-  if ( count < 2 ) return;
-
-  for ( uint i = 0; i < count; i++ )
-  {
-    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
-  }
-
-  std::vector<ObjectCalcer*> args = os;
-  p.setBrushStyle( Qt::NoBrush );
-  p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
-  p.setWidth( -1 ); // -1 means the default width for the object being
-                    // drawn..
-
-  ObjectDrawer drawer( Qt::red );
-  drawprelim( drawer, p, args, d );
-}
-
 QString BezierCurveTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
                                              const KigDocument&, const KigWidget& ) const
 {
@@ -1335,7 +1234,7 @@ QString BezierCurveTypeConstructor::selectStatement(
   return i18n("Select a point to be a control point of the new Bézier curve...");
 }
 
-void BezierCurveTypeConstructor::drawprelim( const ObjectDrawer& drawer, 
+void BezierCurveTypeConstructor::drawprelim( const ObjectDrawer& , 
                                              KigPainter& p, 
                                              const std::vector<ObjectCalcer*>& parents,
                                              const KigDocument& ) const
@@ -1355,27 +1254,6 @@ void BezierCurveTypeConstructor::drawprelim( const ObjectDrawer& drawer,
   B.draw( p );
 }
 
-std::vector<ObjectHolder*> BezierCurveTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
-{
-  uint count = parents.size() - 1;
-  assert ( count >= 3 );
-  std::vector<ObjectCalcer*> args;
-  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
-  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( mtype, args );
-  ObjectHolder* h = new ObjectHolder( calcer );
-  std::vector<ObjectHolder*> ret;
-  ret.push_back( h );
-  return ret;
-}
-
-void BezierCurveTypeConstructor::plug( KigPart*, KigGUIAction* )
-{
-}
-
-bool BezierCurveTypeConstructor::isTransform() const
-{
-  return false;
-}
 
 /*
  * ConicConic intersection...
