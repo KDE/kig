@@ -428,9 +428,9 @@ static const ArgsParser::spec argsspecAffinityB2Tr[] =
 {
   { ObjectImp::stype(), I18N_NOOP( "Generic affinity of this object" ),
     I18N_NOOP( "Select the object to transform..." ), false },
-  { PolygonImp::stype3(), I18N_NOOP( "Map this triangle" ),
+  { FilledPolygonImp::stype3(), I18N_NOOP( "Map this triangle" ),
     I18N_NOOP( "Select the triangle that has to be transformed onto a given triangle..." ), false },
-  { PolygonImp::stype3(), I18N_NOOP( "onto this other triangle" ),
+  { FilledPolygonImp::stype3(), I18N_NOOP( "onto this other triangle" ),
     I18N_NOOP( "Select the triangle that is the image by the affinity of the first triangle..." ), false }
 };
 
@@ -455,8 +455,8 @@ ObjectImp* AffinityB2TrType::calc( const Args& args, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  std::vector<Coordinate> frompoints = static_cast<const PolygonImp*>( args[1] )->points();
-  std::vector<Coordinate> topoints = static_cast<const PolygonImp*>( args[2] )->points();
+  std::vector<Coordinate> frompoints = static_cast<const FilledPolygonImp*>( args[1] )->points();
+  std::vector<Coordinate> topoints = static_cast<const FilledPolygonImp*>( args[2] )->points();
 
   bool valid = true;
   Transformation t = Transformation::affinityGI3P( frompoints, topoints,
@@ -527,9 +527,9 @@ static const ArgsParser::spec argsspecProjectivityB2Qu[] =
 {
   { ObjectImp::stype(), I18N_NOOP( "Generic projective transformation of this object" ),
     I18N_NOOP( "Select the object to transform..." ), false },
-  { PolygonImp::stype4(), I18N_NOOP( "Map this quadrilateral" ),
+  { FilledPolygonImp::stype4(), I18N_NOOP( "Map this quadrilateral" ),
     I18N_NOOP( "Select the quadrilateral that has to be transformed onto a given quadrilateral..." ), false },
-  { PolygonImp::stype4(), I18N_NOOP( "onto this other quadrilateral" ),
+  { FilledPolygonImp::stype4(), I18N_NOOP( "onto this other quadrilateral" ),
     I18N_NOOP( "Select the quadrilateral that is the image by the projective transformation of the first quadrilateral..." ), false }
 };
 
@@ -554,8 +554,8 @@ ObjectImp* ProjectivityB2QuType::calc( const Args& args, const KigDocument& ) co
 {
   if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
 
-  std::vector<Coordinate> frompoints = static_cast<const PolygonImp*>( args[1] )->points();
-  std::vector<Coordinate> topoints = static_cast<const PolygonImp*>( args[2] )->points();
+  std::vector<Coordinate> frompoints = static_cast<const FilledPolygonImp*>( args[1] )->points();
+  std::vector<Coordinate> topoints = static_cast<const FilledPolygonImp*>( args[2] )->points();
 
   bool valid = true;
   Transformation t = Transformation::projectivityGI4P( frompoints, topoints,

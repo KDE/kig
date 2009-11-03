@@ -74,12 +74,13 @@ ObjectImp* TriangleB3PType::calc( const Args& parents, const KigDocument& ) cons
     centerofmass3 += point;
     points.push_back( point );
   }
-  return new PolygonImp( 3, points, centerofmass3/3 );
+  // return new PolygonImp( 3, points, centerofmass3/3 );
+  return new FilledPolygonImp( points );
 }
 
 const ObjectImpType* TriangleB3PType::resultId() const
 {
-  return PolygonImp::stype();
+  return FilledPolygonImp::stype();
 }
 
 bool TriangleB3PType::canMove( const ObjectTypeCalcer& o ) const
@@ -171,12 +172,13 @@ ObjectImp* PolygonBNPType::calc( const Args& parents, const KigDocument& ) const
     centerofmassn += point;
     points.push_back( point );
   }
-  return new PolygonImp( npoints, points, centerofmassn/npoints );
+  //return new PolygonImp( npoints, points, centerofmassn/npoints );
+  return new FilledPolygonImp( points );
 }
 
 const ObjectImpType* PolygonBNPType::resultId() const
 {
-  return PolygonImp::stype();
+  return FilledPolygonImp::stype();
 }
 
 const ObjectImpType* PolygonBNPType::impRequirement( const ObjectImp*, const Args& ) const
@@ -282,12 +284,12 @@ ObjectImp* OpenPolygonType::calc( const Args& parents, const KigDocument& ) cons
     Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
     points.push_back( point );
   }
-  return new PolygonImp( points, false, true );  // minside = false, mopen = true
+  return new OpenPolygonalImp( points );  // minside = false, mopen = true
 }
 
 const ObjectImpType* OpenPolygonType::resultId() const
 {
-  return PolygonImp::stype();
+  return OpenPolygonalImp::stype();
 }
 
 const ObjectImpType* OpenPolygonType::impRequirement( const ObjectImp*, const Args& ) const
@@ -416,7 +418,8 @@ ObjectImp* PolygonBCVType::calc( const Args& parents, const KigDocument& ) const
                                          stheta1*dx + ctheta1*dy );
     vertexes.push_back( v1 );
   }
-  return new PolygonImp( uint (sides), vertexes, center );
+  //return new PolygonImp( uint (sides), vertexes, center );
+  return new FilledPolygonImp( vertexes );
 }
 
 const ObjectImpType* PolygonBCVType::resultId() const
@@ -501,7 +504,7 @@ std::vector<ObjectCalcer*> PolygonBCVType::movableParents( const ObjectTypeCalce
 
 static const ArgsParser::spec argsspecPolygonLineIntersection[] =
 {
-  { PolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
     I18N_NOOP( "Select the polygon of which you want the intersection with a line..." ), false },
   { AbstractLineImp::stype(), 
     I18N_NOOP( "Intersect this line with a polygon" ), 
@@ -547,7 +550,7 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  const PolygonImp* polygon = static_cast<const PolygonImp*>( parents[0] );
+  const FilledPolygonImp* polygon = static_cast<const FilledPolygonImp*>( parents[0] );
   const std::vector<Coordinate> ppoints = polygon->points();
   const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
   double t1, t2;
@@ -714,9 +717,9 @@ const ObjectImpType* PolygonLineIntersectionType::resultId() const
 
 static const ArgsParser::spec argsspecPolygonPolygonIntersection[] =
 {
-  { PolygonImp::stype(), I18N_NOOP( "Intersect this polygon with another polygon" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Intersect this polygon with another polygon" ),
     I18N_NOOP( "Select the polygon of which you want the intersection with another polygon..." ), false },
-  { PolygonImp::stype(), I18N_NOOP( "Intersect with this polygon" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Intersect with this polygon" ),
     I18N_NOOP( "Select the second polygon for the intersection..." ), false }
 };
 
@@ -741,9 +744,9 @@ ObjectImp* PolygonPolygonIntersectionType::calc( const Args& parents, const KigD
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  const PolygonImp* polygon1 = static_cast<const PolygonImp*>( parents[0] );
+  const FilledPolygonImp* polygon1 = static_cast<const FilledPolygonImp*>( parents[0] );
   const std::vector<Coordinate> ppoints1 = polygon1->points();
-  const PolygonImp* polygon2 = static_cast<const PolygonImp*>( parents[1] );
+  const FilledPolygonImp* polygon2 = static_cast<const FilledPolygonImp*>( parents[1] );
   const std::vector<Coordinate> ppoints2 = polygon2->points();
   std::vector<Coordinate> ppointsint;
   double t1, t2;
@@ -851,19 +854,19 @@ ObjectImp* PolygonPolygonIntersectionType::calc( const Args& parents, const KigD
   if (ppointsint.size() < 2) return new InvalidImp;   /* should never happen */
   ppointsint.pop_back();
   ppointsint.pop_back();
-  return new PolygonImp (ppointsint);
+  return new FilledPolygonImp (ppointsint);
 }
 
 const ObjectImpType* PolygonPolygonIntersectionType::resultId() const
 {
-  return PolygonImp::stype();
+  return FilledPolygonImp::stype();
 }
 
 /* polygon vertices  */
 
 static const ArgsParser::spec argsspecPolygonVertex[] =
 {
-  { PolygonImp::stype(), I18N_NOOP( "Construct the vertices of this polygon" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Construct the vertices of this polygon" ),
     I18N_NOOP( "Select the polygon of which you want to construct the vertices..." ), true },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
@@ -889,7 +892,7 @@ ObjectImp* PolygonVertexType::calc( const Args& parents, const KigDocument& ) co
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  const std::vector<Coordinate> ppoints = static_cast<const PolygonImp*>( parents[0] )->points();
+  const std::vector<Coordinate> ppoints = static_cast<const FilledPolygonImp*>( parents[0] )->points();
   const uint i = static_cast<const IntImp*>( parents[1] )->data();
 
   if ( i >= ppoints.size() ) return new InvalidImp;
@@ -906,7 +909,7 @@ const ObjectImpType* PolygonVertexType::resultId() const
 
 static const ArgsParser::spec argsspecPolygonSide[] =
 {
-  { PolygonImp::stype(), I18N_NOOP( "Construct the sides of this polygon" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Construct the sides of this polygon" ),
     I18N_NOOP( "Select the polygon of which you want to construct the sides..." ), false },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
@@ -932,7 +935,7 @@ ObjectImp* PolygonSideType::calc( const Args& parents, const KigDocument& ) cons
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  const std::vector<Coordinate> ppoints = static_cast<const PolygonImp*>( parents[0] )->points();
+  const std::vector<Coordinate> ppoints = static_cast<const FilledPolygonImp*>( parents[0] )->points();
   const uint i = static_cast<const IntImp*>( parents[1] )->data();
 
   if ( i >= ppoints.size() ) return new InvalidImp;
@@ -952,7 +955,7 @@ const ObjectImpType* PolygonSideType::resultId() const
 
 static const ArgsParser::spec argsspecConvexHull[] =
 {
-  { PolygonImp::stype(), I18N_NOOP( "Construct the convex hull of this polygon" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Construct the convex hull of this polygon" ),
     I18N_NOOP( "Select the polygon of which you want to construct the convex hull..." ), false }
 };
 
@@ -977,16 +980,16 @@ ObjectImp* ConvexHullType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  const std::vector<Coordinate> ppoints = static_cast<const PolygonImp*>( parents[0] )->points();
+  const std::vector<Coordinate> ppoints = static_cast<const FilledPolygonImp*>( parents[0] )->points();
 
   if ( ppoints.size() < 3 ) return new InvalidImp;
 
   std::vector<Coordinate> hull = computeConvexHull( ppoints );
   if ( hull.size() < 3 ) return new InvalidImp;
-  return new PolygonImp( hull );
+  return new FilledPolygonImp( hull );
 }
 
 const ObjectImpType* ConvexHullType::resultId() const
 {
-  return PolygonImp::stype();
+  return FilledPolygonImp::stype();
 }

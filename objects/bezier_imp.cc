@@ -170,7 +170,7 @@ ObjectImp* BezierImp::property( int which, const KigDocument& w ) const
   else if ( which == Parent::numberOfProperties() + 1 )
   {
     // control polygon
-    return new PolygonImp( mpoints, false, true );
+    return new OpenPolygonalImp( mpoints );
   }
   else assert( false );
   return new InvalidImp;
@@ -458,7 +458,7 @@ ObjectImp* RationalBezierImp::property( int which, const KigDocument& w ) const
   else if ( which == Parent::numberOfProperties() + 1 )
   {
     // control polygon
-    return new PolygonImp( mpoints, false, true );
+    return new OpenPolygonalImp( mpoints );
   }
   else assert( false );
   return new InvalidImp;

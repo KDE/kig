@@ -211,7 +211,7 @@ static const ArgsParser::spec InPolygonTestArgsSpec[] =
 {
   { PointImp::stype(), I18N_NOOP( "Check whether this point is in a polygon" ),
     I18N_NOOP( "Select the point you want to test..." ), false },
-  { PolygonImp::stype(), I18N_NOOP( "Check whether the point is in this polygon" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Check whether the point is in this polygon" ),
     I18N_NOOP( "Select the polygon that the point might be in..." ), false }
 };
 
@@ -236,7 +236,7 @@ ObjectImp* InPolygonTestType::calc( const Args& parents, const KigDocument& ) co
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
   const Coordinate& p = static_cast<const PointImp*>( parents[0] )->coordinate();
-  const PolygonImp* pol = static_cast<const PolygonImp*>( parents[1] );
+  const FilledPolygonImp* pol = static_cast<const FilledPolygonImp*>( parents[1] );
 
   if ( pol->isInPolygon( p ) )
     return new TestResultImp( true, i18n( "This polygon contains the point." ) );
@@ -255,7 +255,7 @@ const ObjectImpType* InPolygonTestType::resultId() const
 
 static const ArgsParser::spec ConvexPolygonTestArgsSpec[] =
 {
-  { PolygonImp::stype(), I18N_NOOP( "Check whether this polygon is convex" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Check whether this polygon is convex" ),
     I18N_NOOP( "Select the polygon you want to test for convexity..." ), false }
 };
 
@@ -279,7 +279,7 @@ const ConvexPolygonTestType* ConvexPolygonTestType::instance()
 ObjectImp* ConvexPolygonTestType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
-  const PolygonImp* pol = static_cast<const PolygonImp*>( parents[0] );
+  const FilledPolygonImp* pol = static_cast<const FilledPolygonImp*>( parents[0] );
 
   if ( pol->isConvex() )
     return new TestResultImp( true, i18n( "This polygon is convex." ) );

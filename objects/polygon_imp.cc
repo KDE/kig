@@ -45,15 +45,13 @@
 
 #include <cmath>
 
-PolygonImp::PolygonImp( const uint npoints, const std::vector<Coordinate>& points,
+AbstractPolygonImp::AbstractPolygonImp( const uint npoints, const std::vector<Coordinate>& points,
                         const Coordinate& centerofmass )
-  : mnpoints( npoints ), mpoints( points ), minside( true ), 
-    mopen( false ), mcenterofmass( centerofmass )
+  : mnpoints( npoints ), mpoints( points ), mcenterofmass( centerofmass )
 {
-//  mpoints = points;
 }
 
-PolygonImp::PolygonImp( const std::vector<Coordinate>& points, bool inside, bool open )
+AbstractPolygonImp::AbstractPolygonImp( const std::vector<Coordinate>& points )
 {
   uint npoints = points.size();
   Coordinate centerofmassn = Coordinate( 0, 0 );
@@ -65,21 +63,18 @@ PolygonImp::PolygonImp( const std::vector<Coordinate>& points, bool inside, bool
   mpoints = points;
   mcenterofmass = centerofmassn/npoints;
   mnpoints = npoints;
-  minside = inside;
-  mopen = open;
-  assert ( ! ( minside && mopen ) );
 }
 
-PolygonImp::~PolygonImp()
+AbstractPolygonImp::~AbstractPolygonImp()
 {
 }
 
-Coordinate PolygonImp::attachPoint() const
+Coordinate AbstractPolygonImp::attachPoint() const
 {
   return mcenterofmass;
 }
 
-ObjectImp* PolygonImp::transform( const Transformation& t ) const
+std::vector<Coordinate> AbstractPolygonImp::ptransform( const Transformation& t ) const
 {
 /*mp:
  * any projective transformation makes sense for a polygon,
@@ -92,6 +87,7 @@ ObjectImp* PolygonImp::transform( const Transformation& t ) const
  * this can be easily checked using the getProjectiveIndicator
  * function
  */
+  std::vector<Coordinate> np;
 //  if ( ! t.isHomothetic() )
 //    return new InvalidImp();
 
@@ -105,34 +101,40 @@ ObjectImp* PolygonImp::transform( const Transformation& t ) const
       if ( p > maxp ) maxp = p;
       if ( p < minp ) minp = p;
     }
-    if ( maxp > 0 && minp < 0 ) return new InvalidImp;
+    if ( maxp > 0 && minp < 0 ) return np;
   }
-  std::vector<Coordinate> np;
   for ( uint i = 0; i < mpoints.size(); ++i )
   {
     Coordinate nc = t.apply( mpoints[i] );
     if ( !nc.valid() )
-      return new InvalidImp;
+      return np;
     np.push_back( nc );
   }
-  return new PolygonImp( np, minside, mopen );
+  return np;
 }
 
-void PolygonImp::draw( KigPainter& p ) const
+ObjectImp* FilledPolygonImp::transform( const Transformation& t ) const
 {
-  if ( minside )
-  {
-    p.drawPolygon( mpoints );
-  }
-  else
-  {
-    for ( unsigned int i = 0; i < mnpoints - 1; i++ )
-      p.drawSegment( mpoints[i], mpoints[i+1] );
-    if ( ! mopen ) p.drawSegment( mpoints[mnpoints-1], mpoints[0] );
-  }
+  std::vector<Coordinate> np = ptransform( t );
+  if ( np.size() != mnpoints ) return new InvalidImp;
+  return new FilledPolygonImp( np );
 }
 
-bool PolygonImp::isInPolygon( const Coordinate& p ) const
+ObjectImp* ClosedPolygonalImp::transform( const Transformation& t ) const
+{
+  std::vector<Coordinate> np = ptransform( t );
+  if ( np.size() != mnpoints ) return new InvalidImp;
+  return new ClosedPolygonalImp( np );
+}
+
+ObjectImp* OpenPolygonalImp::transform( const Transformation& t ) const
+{
+  std::vector<Coordinate> np = ptransform( t );
+  if ( np.size() != mnpoints ) return new InvalidImp;
+  return new OpenPolygonalImp( np );
+}
+
+bool AbstractPolygonImp::isInPolygon( const Coordinate& p ) const
 {
   // (algorithm sent to me by domi)
   // We intersect with the horizontal ray from point to the right and
@@ -183,7 +185,18 @@ bool PolygonImp::isInPolygon( const Coordinate& p ) const
   return inside_flag;
 }
 
-bool PolygonImp::isOnPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const
+bool AbstractPolygonImp::isOnCPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const
+{
+  uint reduceddim = mpoints.size() - 1;
+
+  if ( isOnSegment( p, mpoints[reduceddim], mpoints[0],
+                  w.screenInfo().normalMiss( width ) ) )
+    return true;
+
+  return isOnOPolygonBorder( p, width, w );
+}
+
+bool AbstractPolygonImp::isOnOPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const
 {
   bool ret = false;
   uint reduceddim = mpoints.size() - 1;
@@ -191,21 +204,11 @@ bool PolygonImp::isOnPolygonBorder( const Coordinate& p, int width, const KigWid
   {
     ret |= isOnSegment( p, mpoints[i], mpoints[i+1], w.screenInfo().normalMiss( width ) );
   }
-  if ( ! mopen )
-    ret |= isOnSegment( p, mpoints[reduceddim], mpoints[0], w.screenInfo().normalMiss( width ) );
 
   return ret;
 }
 
-bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
-{
-  if ( minside )
-    return isInPolygon( p );
-  else
-    return isOnPolygonBorder( p, width,  w );
-}
-
-bool PolygonImp::inRect( const Rect& r, int width, const KigWidget& w ) const
+bool AbstractPolygonImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
   bool ret = false;
   uint reduceddim = mpoints.size() - 1;
@@ -223,90 +226,161 @@ bool PolygonImp::inRect( const Rect& r, int width, const KigWidget& w ) const
   return ret;
 }
 
-bool PolygonImp::valid() const
+bool AbstractPolygonImp::valid() const
 {
   return true;
 }
 
-int PolygonImp::numberOfProperties() const
+int AbstractPolygonImp::numberOfProperties() const
 {
-  if ( mopen )
-    return Parent::numberOfProperties() + 5;
+  return Parent::numberOfProperties();
+}
+
+int FilledPolygonImp::numberOfProperties() const
+{
   return Parent::numberOfProperties() + 7;
 }
 
-const QByteArrayList PolygonImp::propertiesInternalNames() const
+int ClosedPolygonalImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties() + 7;
+}
+
+int OpenPolygonalImp::numberOfProperties() const
+{
+  return Parent::numberOfProperties() + 5;
+}
+
+const QByteArrayList AbstractPolygonImp::propertiesInternalNames() const
+{
+  return Parent::propertiesInternalNames();
+}
+
+const QByteArrayList FilledPolygonImp::propertiesInternalNames() const
 {
   QByteArrayList l = Parent::propertiesInternalNames();
-  if ( mopen )
-  {
-    l += "number-of-sides";
-    l += "length";
-  } else {
-    l += "polygon-number-of-sides";
-    l += "polygon-perimeter";
-  }
-  if ( mopen ) l += "bezier-curve";
-    else l += "polygon-surface";
-  if ( mopen )
-  {
-    l += "polygon";
-    l += "closed-polygonal";
-  } else {
-    if ( minside ) l += "closed-polygonal";
-      else l += "polygon";
-    l += "polygonal";
-  }
-  if ( ! mopen )
-  {
-    l += "polygon-center-of-mass";
-    l += "polygon-winding-number";
-  }
-  assert( l.size() == PolygonImp::numberOfProperties() );
+  l += "polygon-number-of-sides";
+  l += "polygon-perimeter";
+  l += "polygon-surface";
+  l += "closed-polygonal";
+  l += "polygonal";
+  l += "polygon-center-of-mass";
+  l += "polygon-winding-number";
+  assert( l.size() == FilledPolygonImp::numberOfProperties() );
   return l;
 }
 
-const QByteArrayList PolygonImp::properties() const
+const QByteArrayList ClosedPolygonalImp::propertiesInternalNames() const
+{
+  QByteArrayList l = Parent::propertiesInternalNames();
+  l += "number-of-sides";
+  l += "polygon-perimeter";
+  l += "polygon-surface";
+  l += "polygon";
+  l += "polygonal";
+  l += "polygon-center-of-mass";
+  l += "polygon-winding-number";
+  assert( l.size() == ClosedPolygonalImp::numberOfProperties() );
+  return l;
+}
+
+const QByteArrayList OpenPolygonalImp::propertiesInternalNames() const
+{
+  QByteArrayList l = Parent::propertiesInternalNames();
+  l += "number-of-sides";
+  l += "length";
+  l += "bezier-curve";
+  l += "polygon";
+  l += "closed-polygonal";
+  assert( l.size() == OpenPolygonalImp::numberOfProperties() );
+  return l;
+}
+
+const QByteArrayList AbstractPolygonImp::properties() const
+{
+  return Parent::properties();
+}
+
+const QByteArrayList FilledPolygonImp::properties() const
 {
   QByteArrayList l = Parent::properties();
   l += I18N_NOOP( "Number of sides" );
-  if ( mopen ) l += I18N_NOOP( "Length" );
-    else l += I18N_NOOP( "Perimeter" );
-  if ( mopen ) l+= I18N_NOOP( "Bézier Curve" );
-    else l += I18N_NOOP( "Surface" );
-  if ( mopen )
-  {
-    l += I18N_NOOP( "Associated Polygon" );
-    l += I18N_NOOP( "Closed Polygonal" );
-  } else {
-    if ( minside )
-    {
-      l += I18N_NOOP( "Boundary Polygonal" );
-      l += I18N_NOOP( "Open Boundary Polygonal" );
-    } else {
-      l += I18N_NOOP( "Inside Polygon" );
-      l += I18N_NOOP( "Open Polygonal" );
-    }
-  }
-  if ( ! mopen )
-  {
-    l += I18N_NOOP( "Center of Mass of the Vertices" );
-    l += I18N_NOOP( "Winding Number" );
-  }
-  assert( l.size() == PolygonImp::numberOfProperties() );
+  l += I18N_NOOP( "Perimeter" );
+  l += I18N_NOOP( "Surface" );
+  l += I18N_NOOP( "Boundary Polygonal" );
+  l += I18N_NOOP( "Open Boundary Polygonal" );
+  l += I18N_NOOP( "Center of Mass of the Vertices" );
+  l += I18N_NOOP( "Winding Number" );
+  assert( l.size() == FilledPolygonImp::numberOfProperties() );
   return l;
 }
 
-const ObjectImpType* PolygonImp::impRequirementForProperty( int which ) const
+const QByteArrayList ClosedPolygonalImp::properties() const
+{
+  QByteArrayList l = Parent::properties();
+  l += I18N_NOOP( "Number of sides" );
+  l += I18N_NOOP( "Perimeter" );
+  l += I18N_NOOP( "Surface" );
+  l += I18N_NOOP( "Inside Polygon" );
+  l += I18N_NOOP( "Open Polygonal" );
+  l += I18N_NOOP( "Center of Mass of the Vertices" );
+  l += I18N_NOOP( "Winding Number" );
+  assert( l.size() == ClosedPolygonalImp::numberOfProperties() );
+  return l;
+}
+
+const QByteArrayList OpenPolygonalImp::properties() const
+{
+  QByteArrayList l = Parent::properties();
+  l += I18N_NOOP( "Number of sides" );
+  l += I18N_NOOP( "Length" );
+  l += I18N_NOOP( "Bézier Curve" );
+  l += I18N_NOOP( "Associated Polygon" );
+  l += I18N_NOOP( "Closed Polygonal" );
+  assert( l.size() == OpenPolygonalImp::numberOfProperties() );
+  return l;
+}
+
+const ObjectImpType* AbstractPolygonImp::impRequirementForProperty( int which ) const
 {
   if ( which < Parent::numberOfProperties() )
     return Parent::impRequirementForProperty( which );
-  else return PolygonImp::stype();
+  else return AbstractPolygonImp::stype();
 }
 
-const char* PolygonImp::iconForProperty( int which ) const
+const ObjectImpType* FilledPolygonImp::impRequirementForProperty( int which ) const
 {
-  assert( which < PolygonImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return FilledPolygonImp::stype();
+}
+
+const ObjectImpType* ClosedPolygonalImp::impRequirementForProperty( int which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return ClosedPolygonalImp::stype();
+}
+
+const ObjectImpType* OpenPolygonalImp::impRequirementForProperty( int which ) const
+{
+  if ( which < Parent::numberOfProperties() )
+    return Parent::impRequirementForProperty( which );
+  else return OpenPolygonalImp::stype();
+}
+
+const char* AbstractPolygonImp::iconForProperty( int which ) const
+{
+  assert( which < AbstractPolygonImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else assert( false );
+  return "";
+}
+
+const char* FilledPolygonImp::iconForProperty( int which ) const
+{
+  assert( which < FilledPolygonImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )
     return Parent::iconForProperty( which );
   else if ( which == Parent::numberOfProperties() )
@@ -314,17 +388,11 @@ const char* PolygonImp::iconForProperty( int which ) const
   else if ( which == Parent::numberOfProperties() + 1 )
     return "circumference"; // perimeter
   else if ( which == Parent::numberOfProperties() + 2 )
-    {
-      if ( mopen ) return "bezierN"; // Bezier curve
-      else return "areaCircle"; // surface
-    }
+    return "areaCircle"; // surface
   else if ( which == Parent::numberOfProperties() + 3 )
     return "kig_polygon"; // closed polygonal (minside = true) or polygon
   else if ( which == Parent::numberOfProperties() + 4 )
-    {
-      if ( mopen ) return "kig_polygon"; // closed polygonal
-      else return "openpolygon"; // open polygonal
-    }
+    return "openpolygon"; // open polygonal
   else if ( which == Parent::numberOfProperties() + 5 )
     return "point"; // center of mass
   else if ( which == Parent::numberOfProperties() + 6 )
@@ -333,41 +401,86 @@ const char* PolygonImp::iconForProperty( int which ) const
   return "";
 }
 
-ObjectImp* PolygonImp::property( int which, const KigDocument& w ) const
+const char* ClosedPolygonalImp::iconForProperty( int which ) const
 {
-  assert( which < PolygonImp::numberOfProperties() );
+  assert( which < ClosedPolygonalImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() )
+    return "en"; // number of sides
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return "circumference"; // perimeter
+  else if ( which == Parent::numberOfProperties() + 2 )
+    return "areaCircle"; // surface
+  else if ( which == Parent::numberOfProperties() + 3 )
+    return "kig_polygon"; // closed polygonal (minside = true) or polygon
+  else if ( which == Parent::numberOfProperties() + 4 )
+    return "openpolygon"; // open polygonal
+  else if ( which == Parent::numberOfProperties() + 5 )
+    return "point"; // center of mass
+  else if ( which == Parent::numberOfProperties() + 6 )
+    return "w"; // winding number
+  else assert( false );
+  return "";
+}
+
+const char* OpenPolygonalImp::iconForProperty( int which ) const
+{
+  assert( which < OpenPolygonalImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::iconForProperty( which );
+  else if ( which == Parent::numberOfProperties() )
+    return "en"; // number of sides
+  else if ( which == Parent::numberOfProperties() + 1 )
+    return "circumference"; // perimeter
+  else if ( which == Parent::numberOfProperties() + 2 )
+    return "bezierN"; // Bezier curve
+  else if ( which == Parent::numberOfProperties() + 3 )
+    return "kig_polygon"; // closed polygonal (minside = true) or polygon
+  else if ( which == Parent::numberOfProperties() + 4 )
+    return "kig_polygon"; // closed polygonal
+  else assert( false );
+  return "";
+}
+
+ObjectImp* AbstractPolygonImp::property( int which, const KigDocument& w ) const
+{
+  assert( which < AbstractPolygonImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  else assert( false );
+  return new InvalidImp;
+}
+
+ObjectImp* FilledPolygonImp::property( int which, const KigDocument& w ) const
+{
+  assert( which < FilledPolygonImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )
     return Parent::property( which, w );
   else if ( which == Parent::numberOfProperties() )
   {
     // number of sides
-    if ( mopen ) return new IntImp( mnpoints - 1 );
     return new IntImp( mnpoints );
   }
   else if ( which == Parent::numberOfProperties() + 1)
   {
     // perimeter
-    return new DoubleImp( perimeter () );
+    return new DoubleImp( cperimeter () );
   }
   else if ( which == Parent::numberOfProperties() + 2)
   {
-    if ( mopen ) return new BezierImp( mpoints ); // bezier curve
-    else {
-      int wn = windingNumber ();  // not able to compute area for such polygons...
-      if ( wn < 0 ) wn = -wn;
-      if ( wn != 1 ) return new InvalidImp;
-      return new DoubleImp( fabs( area () ) );
-    }
+    int wn = windingNumber ();  // not able to compute area for such polygons...
+    if ( wn < 0 ) wn = -wn;
+    if ( wn != 1 ) return new InvalidImp;
+    return new DoubleImp( fabs( area () ) );
   }
   else if ( which == Parent::numberOfProperties() + 3)
   {
-    if ( minside ) return new PolygonImp( mpoints, false, false ); // polygon boundary
-    else return new PolygonImp( mpoints, true, false ); // filled polygon
+    return new ClosedPolygonalImp( mpoints ); // polygon boundary
   }
   else if ( which == Parent::numberOfProperties() + 4)
   {
-    if ( mopen ) return new PolygonImp( mpoints, false, false ); // polygon boundary
-    else return new PolygonImp( mpoints, false, true ); // open polygonal
+    return new OpenPolygonalImp( mpoints ); // open polygonal
   }
   else if ( which == Parent::numberOfProperties() + 5 )
   {
@@ -382,25 +495,103 @@ ObjectImp* PolygonImp::property( int which, const KigDocument& w ) const
   return new InvalidImp;
 }
 
-const std::vector<Coordinate> PolygonImp::points() const
+ObjectImp* ClosedPolygonalImp::property( int which, const KigDocument& w ) const
+{
+  assert( which < ClosedPolygonalImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  else if ( which == Parent::numberOfProperties() )
+  {
+    // number of sides
+    return new IntImp( mnpoints );
+  }
+  else if ( which == Parent::numberOfProperties() + 1)
+  {
+    // perimeter
+    return new DoubleImp( cperimeter () );
+  }
+  else if ( which == Parent::numberOfProperties() + 2)
+  {
+    int wn = windingNumber ();  // not able to compute area for such polygons...
+    if ( wn < 0 ) wn = -wn;
+    if ( wn != 1 ) return new InvalidImp;
+    return new DoubleImp( fabs( area () ) );
+  }
+  else if ( which == Parent::numberOfProperties() + 3)
+  {
+    return new FilledPolygonImp( mpoints ); // filled polygon
+  }
+  else if ( which == Parent::numberOfProperties() + 4)
+  {
+    return new OpenPolygonalImp( mpoints ); // open polygonal
+  }
+  else if ( which == Parent::numberOfProperties() + 5 )
+  {
+    return new PointImp( mcenterofmass );
+  }
+  else if ( which == Parent::numberOfProperties() + 6 )
+  {
+    // winding number
+    return new IntImp( windingNumber() );
+  }
+  else assert( false );
+  return new InvalidImp;
+}
+
+ObjectImp* OpenPolygonalImp::property( int which, const KigDocument& w ) const
+{
+  assert( which < OpenPolygonalImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::property( which, w );
+  else if ( which == Parent::numberOfProperties() )
+  {
+    // number of sides
+    return new IntImp( mnpoints - 1 );
+  }
+  else if ( which == Parent::numberOfProperties() + 1)
+  {
+    // perimeter
+    return new DoubleImp( operimeter () );
+  }
+  else if ( which == Parent::numberOfProperties() + 2)
+  {
+    return new BezierImp( mpoints ); // bezier curve
+  }
+  else if ( which == Parent::numberOfProperties() + 3)
+  {
+    return new FilledPolygonImp( mpoints ); // filled polygon
+  }
+  else if ( which == Parent::numberOfProperties() + 4)
+  {
+    return new ClosedPolygonalImp( mpoints ); // polygon boundary
+  }
+  else assert( false );
+  return new InvalidImp;
+}
+
+const std::vector<Coordinate> AbstractPolygonImp::points() const
 {
   return mpoints;
 }
 
-uint PolygonImp::npoints() const
+uint AbstractPolygonImp::npoints() const
 {
   return mnpoints;
 }
 
-double PolygonImp::perimeter() const
+double AbstractPolygonImp::operimeter() const
 {
   double perimeter = 0.;
   for ( uint i = 0; i < mpoints.size() - 1; ++i )
   {
     perimeter += ( mpoints[i+1] - mpoints[i] ).length();
   }
-  if ( ! mopen ) perimeter += ( mpoints[0] - mpoints[mpoints.size()-1] ).length();
   return perimeter;
+}
+
+double AbstractPolygonImp::cperimeter() const
+{
+  return operimeter() + ( mpoints[0] - mpoints[mpoints.size()-1] ).length();
 }
 
 /*
@@ -409,7 +600,7 @@ double PolygonImp::perimeter() const
  * property returns an InvalidObject in such case.
  */
 
-double PolygonImp::area() const
+double AbstractPolygonImp::area() const
 {
   double surface2 = 0.0;
   Coordinate prevpoint = mpoints.back();
@@ -422,23 +613,52 @@ double PolygonImp::area() const
   return -surface2/2;  /* positive if counterclockwise */
 }
 
-PolygonImp* PolygonImp::copy() const
+FilledPolygonImp* FilledPolygonImp::copy() const
 {
-  return new PolygonImp( mpoints );
+  return new FilledPolygonImp( mpoints );
 }
 
-void PolygonImp::visit( ObjectImpVisitor* vtor ) const
+ClosedPolygonalImp* ClosedPolygonalImp::copy() const
+{
+  return new ClosedPolygonalImp( mpoints );
+}
+
+OpenPolygonalImp* OpenPolygonalImp::copy() const
+{
+  return new OpenPolygonalImp( mpoints );
+}
+
+void FilledPolygonImp::visit( ObjectImpVisitor* vtor ) const
 {
   vtor->visit( this );
 }
 
-bool PolygonImp::equals( const ObjectImp& rhs ) const
+void ClosedPolygonalImp::visit( ObjectImpVisitor* vtor ) const
 {
-  return rhs.inherits( PolygonImp::stype() ) &&
-    static_cast<const PolygonImp&>( rhs ).points() == mpoints;
+  vtor->visit( this );
 }
 
-const ObjectImpType* PolygonImp::stype()
+void OpenPolygonalImp::visit( ObjectImpVisitor* vtor ) const
+{
+  vtor->visit( this );
+}
+
+bool AbstractPolygonImp::equals( const ObjectImp& rhs ) const
+{
+  return rhs.inherits( AbstractPolygonImp::stype() ) &&
+    static_cast<const AbstractPolygonImp&>( rhs ).points() == mpoints;
+}
+
+const ObjectImpType* AbstractPolygonImp::stype()
+{
+  static const ObjectImpType t(
+    Parent::stype(), "polygon",
+    I18N_NOOP( "polygon" ),
+    I18N_NOOP( "Select this polygon" ), 0, 0, 0, 0, 0, 0, 0 );
+  return &t;
+}
+
+const ObjectImpType* FilledPolygonImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "polygon",
@@ -456,7 +676,7 @@ const ObjectImpType* PolygonImp::stype()
   return &t;
 }
 
-const ObjectImpType* PolygonImp::stypeb()
+const ObjectImpType* ClosedPolygonalImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "closedpolygonal",
@@ -474,7 +694,7 @@ const ObjectImpType* PolygonImp::stypeb()
   return &t;
 }
 
-const ObjectImpType* PolygonImp::stypeo()
+const ObjectImpType* OpenPolygonalImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "polygonal",
@@ -492,10 +712,10 @@ const ObjectImpType* PolygonImp::stypeo()
   return &t;
 }
 
-const ObjectImpType* PolygonImp::stype3()
+const ObjectImpType* FilledPolygonImp::stype3()
 {
   static const ObjectImpType t3(
-    PolygonImp::stype(), "triangle",
+    FilledPolygonImp::stype(), "triangle",
     I18N_NOOP( "triangle" ),
     I18N_NOOP( "Select this triangle" ),
     I18N_NOOP( "Select triangle %1" ),
@@ -510,10 +730,10 @@ const ObjectImpType* PolygonImp::stype3()
   return &t3;
 }
 
-const ObjectImpType* PolygonImp::stype4()
+const ObjectImpType* FilledPolygonImp::stype4()
 {
   static const ObjectImpType t4(
-    PolygonImp::stype(), "quadrilateral",
+    FilledPolygonImp::stype(), "quadrilateral",
     I18N_NOOP( "quadrilateral" ),
     I18N_NOOP( "Select this quadrilateral" ),
     I18N_NOOP( "Select quadrilateral %1" ),
@@ -528,26 +748,58 @@ const ObjectImpType* PolygonImp::stype4()
   return &t4;
 }
 
-const ObjectImpType* PolygonImp::type() const
+const ObjectImpType* FilledPolygonImp::type() const
 {
-  uint n = mpoints.size();
+  uint n = mnpoints;
 
-  if ( ! minside && mopen ) return PolygonImp::stypeo();
-  if ( ! minside ) return PolygonImp::stypeb();
-  if ( n == 3 ) return PolygonImp::stype3();
-  if ( n == 4 ) return PolygonImp::stype4();
-  return PolygonImp::stype();
+  if ( n == 3 ) return FilledPolygonImp::stype3();
+  if ( n == 4 ) return FilledPolygonImp::stype4();
+  return FilledPolygonImp::stype();
 }
 
-bool PolygonImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+const ObjectImpType* ClosedPolygonalImp::type() const
 {
-  assert( which < PolygonImp::numberOfProperties() );
+  return ClosedPolygonalImp::stype();
+}
+
+const ObjectImpType* OpenPolygonalImp::type() const
+{
+  return OpenPolygonalImp::stype();
+}
+
+bool AbstractPolygonImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+{
+  assert( which < AbstractPolygonImp::numberOfProperties() );
   if ( which < Parent::numberOfProperties() )
     return Parent::isPropertyDefinedOnOrThroughThisImp( which );
   return false;
 }
 
-Rect PolygonImp::surroundingRect() const
+bool FilledPolygonImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+{
+  assert( which < FilledPolygonImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  return false;
+}
+
+bool ClosedPolygonalImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+{
+  assert( which < ClosedPolygonalImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  return false;
+}
+
+bool OpenPolygonalImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+{
+  assert( which < OpenPolygonalImp::numberOfProperties() );
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  return false;
+}
+
+Rect AbstractPolygonImp::surroundingRect() const
 {
   Rect r( 0., 0., 0., 0. );
   for ( uint i = 0; i < mpoints.size(); ++i )
@@ -557,7 +809,7 @@ Rect PolygonImp::surroundingRect() const
   return r;
 }
 
-int PolygonImp::windingNumber() const
+int AbstractPolygonImp::windingNumber() const
 {
   /*
    * this is defined as the sum of the external angles while at
@@ -591,7 +843,7 @@ int PolygonImp::windingNumber() const
   return winding;
 }
 
-bool PolygonImp::isTwisted() const
+bool AbstractPolygonImp::isTwisted() const
 {
   /*
    * returns true if this is a "twisted" polygon, i.e.
@@ -639,7 +891,7 @@ bool PolygonImp::isTwisted() const
   return false;
 }
 
-bool PolygonImp::isMonotoneSteering() const
+bool AbstractPolygonImp::isMonotoneSteering() const
 {
   /*
    * returns true if while walking along the boundary,
@@ -668,7 +920,7 @@ bool PolygonImp::isMonotoneSteering() const
   return true;
 }
 
-bool PolygonImp::isConvex() const
+bool AbstractPolygonImp::isConvex() const
 {
   if ( ! isMonotoneSteering() ) return false;
   int winding = windingNumber();
@@ -676,6 +928,65 @@ bool PolygonImp::isConvex() const
   assert ( winding > 0 );
   return winding == 1;
 }
+
+/*
+ * end of abstract type, start three real types
+ */
+
+FilledPolygonImp::FilledPolygonImp( const std::vector<Coordinate>& points )
+  : AbstractPolygonImp( points )
+{
+}
+
+void FilledPolygonImp::draw( KigPainter& p ) const
+{
+  p.drawPolygon( mpoints );
+}
+
+bool FilledPolygonImp::contains( const Coordinate& p, int,
+         const KigWidget& ) const
+{
+  return isInPolygon( p );
+}
+
+ClosedPolygonalImp::ClosedPolygonalImp( const std::vector<Coordinate>& points )
+  : AbstractPolygonImp( points )
+{
+}
+
+void ClosedPolygonalImp::draw( KigPainter& p ) const
+{
+  for ( unsigned int i = 0; i < mnpoints - 1; i++ )
+    p.drawSegment( mpoints[i], mpoints[i+1] );
+  p.drawSegment( mpoints[mnpoints-1], mpoints[0] );
+}
+
+bool ClosedPolygonalImp::contains( const Coordinate& p, int width,
+         const KigWidget& w ) const
+{
+  return isOnCPolygonBorder( p, width,  w );
+}
+
+OpenPolygonalImp::OpenPolygonalImp( const std::vector<Coordinate>& points )
+  : AbstractPolygonImp( points )
+{
+}
+
+void OpenPolygonalImp::draw( KigPainter& p ) const
+{
+  for ( unsigned int i = 0; i < mnpoints - 1; i++ )
+    p.drawSegment( mpoints[i], mpoints[i+1] );
+}
+
+bool OpenPolygonalImp::contains( const Coordinate& p, int width,
+         const KigWidget& w ) const
+{
+  return isOnOPolygonBorder( p, width,  w );
+}
+
+/*
+ *
+ */
 
 std::vector<Coordinate> computeConvexHull( const std::vector<Coordinate>& points )
 {

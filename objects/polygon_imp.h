@@ -25,13 +25,14 @@
 /**
  * An ObjectImp representing a polygon.
  */
-class PolygonImp
+class AbstractPolygonImp
   : public ObjectImp
 {
+protected:
   uint mnpoints;
   std::vector<Coordinate> mpoints;
-  bool minside;   // true: filled polygon, false: polygon boundary
-  bool mopen;     // true: polygonal curve (minside must be false)
+//  bool minside;   // true: filled polygon, false: polygon boundary
+//  bool mopen;     // true: polygonal curve (minside must be false)
   Coordinate mcenterofmass;
 public:
   typedef ObjectImp Parent;
@@ -39,26 +40,17 @@ public:
    * Returns the ObjectImpType representing the PolygonImp type.
    */
   static const ObjectImpType* stype();
-  static const ObjectImpType* stype3();
-  static const ObjectImpType* stype4();
-  static const ObjectImpType* stypeb();
-  static const ObjectImpType* stypeo();
 
-  /**
-   * Constructs a polygon.
-   */
-  // open polygon == polyline
-  PolygonImp( const std::vector<Coordinate>& points, bool inside = true, bool open = false );
-  PolygonImp( const uint nsides, const std::vector<Coordinate>& points, 
+//  PolygonImp( const std::vector<Coordinate>& points, bool inside = true, bool open = false );
+  AbstractPolygonImp( const std::vector<Coordinate>& points );
+  AbstractPolygonImp( const uint nsides, const std::vector<Coordinate>& points, 
               const Coordinate& centerofmass );
-  ~PolygonImp();
-  PolygonImp* copy() const;
+  ~AbstractPolygonImp();
+//  PolygonImp* copy() const;
 
   Coordinate attachPoint() const;
-  ObjectImp* transform( const Transformation& ) const;
+  std::vector<Coordinate> ptransform( const Transformation& ) const;
 
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   bool valid() const;
   Rect surroundingRect() const;
@@ -70,9 +62,6 @@ public:
   const char* iconForProperty( int which ) const;
   const ObjectImpType* impRequirementForProperty( int which ) const;
   bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
-
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
 
   /**
    * Returns the vector with polygon points.
@@ -89,7 +78,8 @@ public:
   /**
    * Returns the perimeter of this polygon.
    */
-  double perimeter() const;
+  double operimeter() const;
+  double cperimeter() const;
   /**
    * Returns the area of this polygon.
    */
@@ -97,11 +87,95 @@ public:
 
   bool equals( const ObjectImp& rhs ) const;
   bool isInPolygon( const Coordinate& p ) const;
-  bool isOnPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const;
+  bool isOnOPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const;
+  bool isOnCPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const;
   int windingNumber() const;
   bool isTwisted() const;
   bool isMonotoneSteering() const;
   bool isConvex() const;
+};
+
+/**
+ * An ObjectImp representing a filled polygon.
+ */
+class FilledPolygonImp
+  : public AbstractPolygonImp
+{
+public:
+  typedef ObjectImp Parent;
+  FilledPolygonImp( const std::vector<Coordinate>& points );
+  static const ObjectImpType* stype();
+  static const ObjectImpType* stype3();
+  static const ObjectImpType* stype4();
+  ObjectImp* transform( const Transformation& ) const;
+  void draw( KigPainter& p ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
+  int numberOfProperties() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+
+  const ObjectImpType* type() const;
+  void visit( ObjectImpVisitor* vtor ) const;
+
+  FilledPolygonImp* copy() const;
+};
+
+/**
+ * An ObjectImp representing a closed polygonal.
+ */
+class ClosedPolygonalImp
+  : public AbstractPolygonImp
+{
+public:
+  typedef ObjectImp Parent;
+  ClosedPolygonalImp( const std::vector<Coordinate>& points );
+  static const ObjectImpType* stype();
+  ObjectImp* transform( const Transformation& ) const;
+  void draw( KigPainter& p ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
+  int numberOfProperties() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+
+  const ObjectImpType* type() const;
+  void visit( ObjectImpVisitor* vtor ) const;
+
+  ClosedPolygonalImp* copy() const;
+};
+
+/**
+ * An ObjectImp representing an open polygonal.
+ */
+class OpenPolygonalImp
+  : public AbstractPolygonImp
+{
+public:
+  typedef ObjectImp Parent;
+  OpenPolygonalImp( const std::vector<Coordinate>& points );
+  static const ObjectImpType* stype();
+  ObjectImp* transform( const Transformation& ) const;
+  void draw( KigPainter& p ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
+  int numberOfProperties() const;
+  const QByteArrayList properties() const;
+  const QByteArrayList propertiesInternalNames() const;
+  ObjectImp* property( int which, const KigDocument& w ) const;
+  const char* iconForProperty( int which ) const;
+  const ObjectImpType* impRequirementForProperty( int which ) const;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+
+  const ObjectImpType* type() const;
+  void visit( ObjectImpVisitor* vtor ) const;
+
+  OpenPolygonalImp* copy() const;
 };
 
 std::vector<Coordinate> computeConvexHull( const std::vector<Coordinate>& points );
