@@ -357,9 +357,9 @@ KigDocument* KigFilterCabri::load( const QString& file )
     else if ( obj->type == "Perp" || obj->type == "Par" )
     {
       if ( args.size() == 2
-           && ( args[1]->imp()->inherits( PolygonImp::stype() )
-             || args[1]->imp()->inherits( PolygonImp::stype3() )
-             || args[1]->imp()->inherits( PolygonImp::stype4() ) ) )
+           && ( args[1]->imp()->inherits( FilledPolygonImp::stype() )
+             || args[1]->imp()->inherits( FilledPolygonImp::stype3() )
+             || args[1]->imp()->inherits( FilledPolygonImp::stype4() ) ) )
       {
         std::vector<ObjectCalcer*> sideargs;
         sideargs.push_back( args[1] );
@@ -409,9 +409,9 @@ KigDocument* KigFilterCabri::load( const QString& file )
         args.push_back( c );
       }
       if ( args.size() == 1
-           && ( args[0]->imp()->inherits( PolygonImp::stype() )
-             || args[0]->imp()->inherits( PolygonImp::stype3() )
-             || args[0]->imp()->inherits( PolygonImp::stype4() ) ) )
+           && ( args[0]->imp()->inherits( FilledPolygonImp::stype() )
+             || args[0]->imp()->inherits( FilledPolygonImp::stype3() )
+             || args[0]->imp()->inherits( FilledPolygonImp::stype4() ) ) )
       {
         std::vector<ObjectCalcer*> sideargs;
         sideargs.push_back( args[0] );
@@ -444,9 +444,9 @@ KigDocument* KigFilterCabri::load( const QString& file )
         args.push_back( c );
       }
       if ( args.size() == 1
-           && ( args[0]->imp()->inherits( PolygonImp::stype() )
-             || args[0]->imp()->inherits( PolygonImp::stype3() )
-             || args[0]->imp()->inherits( PolygonImp::stype4() ) ) )
+           && ( args[0]->imp()->inherits( FilledPolygonImp::stype() )
+             || args[0]->imp()->inherits( FilledPolygonImp::stype3() )
+             || args[0]->imp()->inherits( FilledPolygonImp::stype4() ) ) )
       {
         std::vector<ObjectCalcer*> sideargs;
         sideargs.push_back( args[0] );

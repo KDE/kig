@@ -662,7 +662,7 @@ void PolygonBNPTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPaint
     SegmentImp segment = SegmentImp( points[0], points[1] );
     drawer.draw( segment, p, true );
   } else {
-    PolygonImp polygon = PolygonImp( points, true, false );
+    FilledPolygonImp polygon = FilledPolygonImp( points );
     drawer.draw( polygon, p, true );
   }
 }
@@ -741,7 +741,7 @@ void OpenPolygonTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPain
     SegmentImp segment = SegmentImp( points[0], points[1] );
     drawer.draw( segment, p, true );
   } else {
-    PolygonImp polygon = PolygonImp( points, false, true );
+    OpenPolygonalImp polygon = OpenPolygonalImp( points );
     drawer.draw( polygon, p, true );
   }
 }
@@ -752,7 +752,7 @@ void OpenPolygonTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPain
 
 static const struct ArgsParser::spec argsspecpv[] =
 {
-  { PolygonImp::stype(), I18N_NOOP( "Polygon" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Polygon" ),
     I18N_NOOP( "Construct the vertices of this polygon..." ), true }
 };
 
@@ -774,7 +774,7 @@ void PolygonVertexTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPa
 {
   if ( parents.size() != 1 ) return;
 
-  const PolygonImp* polygon = dynamic_cast<const PolygonImp*>( parents.front()->imp() );
+  const FilledPolygonImp* polygon = dynamic_cast<const FilledPolygonImp*>( parents.front()->imp() );
   const std::vector<Coordinate> points = polygon->points();
 
   int sides = points.size();
@@ -789,7 +789,7 @@ std::vector<ObjectHolder*> PolygonVertexTypeConstructor::build( const std::vecto
 {
   std::vector<ObjectHolder*> ret;
   assert( parents.size() == 1 );
-  const PolygonImp* polygon = dynamic_cast<const PolygonImp*>( parents.front()->imp() );
+  const FilledPolygonImp* polygon = dynamic_cast<const FilledPolygonImp*>( parents.front()->imp() );
   const std::vector<Coordinate> points = polygon->points();
 
   int sides = points.size();
@@ -819,7 +819,7 @@ bool PolygonVertexTypeConstructor::isTransform() const
 
 static const struct ArgsParser::spec argsspecps[] =
 {
-  { PolygonImp::stype(), I18N_NOOP( "Polygon" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Polygon" ),
     I18N_NOOP( "Construct the sides of this polygon..." ), false }
 };
 
@@ -841,7 +841,7 @@ void PolygonSideTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPain
 {
   if ( parents.size() != 1 ) return;
 
-  const PolygonImp* polygon = dynamic_cast<const PolygonImp*>( parents.front()->imp() );
+  const FilledPolygonImp* polygon = dynamic_cast<const FilledPolygonImp*>( parents.front()->imp() );
   const std::vector<Coordinate> points = polygon->points();
 
   uint sides = points.size();
@@ -857,7 +857,7 @@ std::vector<ObjectHolder*> PolygonSideTypeConstructor::build( const std::vector<
 {
   std::vector<ObjectHolder*> ret;
   assert( parents.size() == 1 );
-  const PolygonImp* polygon = dynamic_cast<const PolygonImp*>( parents.front()->imp() );
+  const FilledPolygonImp* polygon = dynamic_cast<const FilledPolygonImp*>( parents.front()->imp() );
   const std::vector<Coordinate> points = polygon->points();
 
   uint sides = points.size();
@@ -1810,7 +1810,7 @@ QString GenericIntersectionConstructor::useText(
         return i18n( "Intersect this Cubic Curve" );
       else if ( o.imp()->inherits( ArcImp::stype() ) )
         return i18n( "Intersect this Arc" );
-      else if ( o.imp()->inherits( PolygonImp::stype() ) )
+      else if ( o.imp()->inherits( FilledPolygonImp::stype() ) )
         return i18n( "Intersect this Polygon" );
       else assert( false );
       break;
@@ -1825,7 +1825,7 @@ QString GenericIntersectionConstructor::useText(
         return i18n( "with this Cubic Curve" );
       else if ( o.imp()->inherits( ArcImp::stype() ) )
         return i18n( "with this Arc" );
-      else if ( o.imp()->inherits( PolygonImp::stype() ) )
+      else if ( o.imp()->inherits( FilledPolygonImp::stype() ) )
         return i18n( "with this Polygon" );
       else assert( false );
       break;

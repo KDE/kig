@@ -111,7 +111,9 @@ public:
   void visit( const SegmentImp* imp );
   void visit( const RayImp* imp );
   void visit( const ArcImp* imp );
-  void visit( const PolygonImp* imp );
+  void visit( const FilledPolygonImp* imp );
+  void visit( const ClosedPolygonalImp* imp );
+  void visit( const OpenPolygonalImp* imp );
 
   double unit;
 
@@ -461,7 +463,7 @@ void LatexExportImpVisitor::visit( const ArcImp* imp )
   newLine();
 }
 
-void LatexExportImpVisitor::visit( const PolygonImp* imp )
+void LatexExportImpVisitor::visit( const FilledPolygonImp* imp )
 {
   int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;

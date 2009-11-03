@@ -235,14 +235,14 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "circumference", &CircleImp::circumference )
     ;
 
-  class_<PolygonImp, bases<ObjectImp>, boost::noncopyable>( "Polygon", no_init )
-    .def( "stype", &PolygonImp::stype,
+  class_<FilledPolygonImp, bases<ObjectImp>, boost::noncopyable>( "Polygon", no_init )
+    .def( "stype", &FilledPolygonImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )
-    .def( "npoints", &PolygonImp::npoints )
-    .def( "perimeter", &PolygonImp::perimeter )
-    .def( "area", &PolygonImp::area )
-    .def( "windingNumber", &PolygonImp::windingNumber )
+    .def( "npoints", &FilledPolygonImp::npoints )
+    .def( "perimeter", &FilledPolygonImp::cperimeter )
+    .def( "area", &FilledPolygonImp::area )
+    .def( "windingNumber", &FilledPolygonImp::windingNumber )
     ;
 
   class_<VectorImp, bases<CurveImp> >( "Vector", init<Coordinate, Coordinate>() )

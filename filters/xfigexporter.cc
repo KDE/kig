@@ -124,7 +124,9 @@ public:
   void visit( const SegmentImp* imp );
   void visit( const RayImp* imp );
   void visit( const ArcImp* imp );
-  void visit( const PolygonImp* imp );
+  void visit( const FilledPolygonImp* imp );
+  void visit( const ClosedPolygonalImp* imp );
+  void visit( const OpenPolygonalImp* imp );
 };
 
 void XFigExportImpVisitor::mapColor( const ObjectDrawer* obj )
@@ -423,7 +425,7 @@ void XFigExportImpVisitor::visit( const ArcImp* imp )
           << "\n";
 }
 
-void XFigExportImpVisitor::visit( const PolygonImp* imp )
+void XFigExportImpVisitor::visit( const FilledPolygonImp* imp )
 {
   int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;

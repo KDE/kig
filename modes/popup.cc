@@ -1087,7 +1087,7 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
         i != objs.end(); ++i )
   {
     if ( (*i)->imp()->inherits( PointImp::stype() ) ) numpoints++;
-    else if ( (*i)->imp()->inherits( PolygonImp::stype() ) ) numpolygons++;
+    else if ( (*i)->imp()->inherits( FilledPolygonImp::stype() ) ) numpolygons++;
     else numothers++;
   }
 

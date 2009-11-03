@@ -655,9 +655,9 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_AREA_MEASURE:
         {
           if ( nparents != 1 ) KIG_FILTER_PARSE_ERROR;
-          if ( parents[0]->imp()->inherits( PolygonImp::stype() )
-               || parents[0]->imp()->inherits( PolygonImp::stype3() )
-               || parents[0]->imp()->inherits( PolygonImp::stype4() ) )
+          if ( parents[0]->imp()->inherits( FilledPolygonImp::stype() )
+               || parents[0]->imp()->inherits( FilledPolygonImp::stype3() )
+               || parents[0]->imp()->inherits( FilledPolygonImp::stype4() ) )
             prop = "polygon-surface";
           else KIG_FILTER_PARSE_ERROR;
           break;
