@@ -77,7 +77,6 @@ std::vector<ObjectHolder*> KigDocument::whatAmIOn( const Coordinate& p, const Ki
       if ( !oimp->inherits( FilledPolygonImp::stype() ) ) curves.push_back( *i );
       else
       {
-// TODO (mp) with the introduction of open polygon this is not always a "fat" object!
         fatobjects.push_back( *i );
       }
   };
