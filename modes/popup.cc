@@ -272,6 +272,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   KIconLoader* l = part.iconLoader();
   for ( uint i = 0; i < NumberOfMenus; ++i )
   {
+    if ( i == ToplevelMenu ) continue;
     mmenus[i] = new QMenu( this );
     if ( !menunames[i].isEmpty() )
       mmenus[i]->setTitle( menunames[i] );
@@ -280,6 +281,13 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       mmenus[i]->setIcon( KIcon( menuicons[i], l ) );
     }
   }
+  mmenus[ToplevelMenu] = this;
+  /*
+   * mp: previously ToplevelMenu was treated like a submenu (of itself).
+   * unfortunately this had as side effect a duplicated triggering of its
+   * actions with unpredictable consequences.  In this way the addAction
+   * in addInternalAction directly adds the action at toplevel.
+   */
 
   connect( this, SIGNAL( triggered( QAction* ) ),
            this, SLOT( toplevelMenuSlot( QAction* ) ) );
@@ -290,13 +298,15 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     for ( uint j = 0; j < mproviders.size(); ++j )
       mproviders[j]->fillUpMenu( *this, i, nextfree );
   };
+  QAction* firstrealaction = actions()[1];
   for ( int i = 0; i < NumberOfMenus; ++i )
   {
-    if ( mmenus[i]->actions().count() == 0 ) continue;
     if ( i == ToplevelMenu ) continue;
-    addMenu( mmenus[i] );
+    if ( mmenus[i]->actions().count() == 0 ) continue;
+    //addMenu( mmenus[i] );
+    insertMenu( firstrealaction, mmenus[i] );
   };
-  addActions( mmenus[ToplevelMenu]->actions() );
+  // addActions( mmenus[ToplevelMenu]->actions() );
 }
 
 void NormalModePopupObjects::toplevelMenuSlot( QAction* act )
@@ -768,24 +778,21 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& pix, 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& icon, const QString& name, int id )
 {
 //kDebug() << "ID: " << id;
-  QMenu* m = mmenus[menu];
-  QAction* newaction = m->addAction( icon, name );
+  QAction* newaction = mmenus[menu]->addAction( icon, name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
   return newaction;
 }
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QString& name, int id )
 {
-  QMenu* m = mmenus[menu];
-  QAction* newaction = m->addAction( name );
+  QAction* newaction = mmenus[menu]->addAction( name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
   return newaction;
 }
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, QAction* act )
 {
-  QMenu* m = mmenus[menu];
-  m->addAction( act );
+  mmenus[menu]->addAction( act );
   return act;
 }
 
