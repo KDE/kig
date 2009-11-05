@@ -89,6 +89,12 @@ protected:
   std::vector<PopupActionProvider*> mproviders;
 
   QMenu* mmenus[NumberOfMenus];
+  QMenu* mmenuslast[NumberOfMenus];
+  /* mp: usually mmenus[i] = mmenuslast[i], however, if there are too many entries
+   * in the submenu, new subsubmenus are added and mmenuslast[i] points to
+   * the last of these (where new actions can be inserted)
+   * presently this happens only in the "start" menu for a point
+   */
 
 private:
   bool monlylabels;

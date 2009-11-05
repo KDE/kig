@@ -63,6 +63,12 @@
 
 #include <config-kig.h>
 
+#define MAXMENUITEMS 20
+/*
+ * mp: if a submenus requires more than MAXMENUITEMS items then a new
+ * submenu titled " more..." is added
+ */
+
 using namespace std;
 
 class NormalModePopupObjects;
@@ -273,7 +279,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   for ( uint i = 0; i < NumberOfMenus; ++i )
   {
     if ( i == ToplevelMenu ) continue;
-    mmenus[i] = new QMenu( this );
+    mmenus[i] = mmenuslast[i] = new QMenu( this );
     if ( !menunames[i].isEmpty() )
       mmenus[i]->setTitle( menunames[i] );
     if ( !menuicons[i].isEmpty() )
@@ -281,7 +287,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       mmenus[i]->setIcon( KIcon( menuicons[i], l ) );
     }
   }
-  mmenus[ToplevelMenu] = this;
+  mmenus[ToplevelMenu] = mmenuslast[ToplevelMenu] = this;
   /*
    * mp: previously ToplevelMenu was treated like a submenu (of itself).
    * unfortunately this had as side effect a duplicated triggering of its
@@ -778,21 +784,27 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& pix, 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& icon, const QString& name, int id )
 {
 //kDebug() << "ID: " << id;
-  QAction* newaction = mmenus[menu]->addAction( icon, name );
+  if ( mmenuslast[menu]->actions().size() >= MAXMENUITEMS )
+    mmenuslast[menu] = mmenuslast[menu]->addMenu( "   more..." );
+  QAction* newaction = mmenuslast[menu]->addAction( icon, name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
   return newaction;
 }
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QString& name, int id )
 {
-  QAction* newaction = mmenus[menu]->addAction( name );
+  if ( mmenuslast[menu]->actions().size() >= MAXMENUITEMS )
+    mmenuslast[menu] = mmenuslast[menu]->addMenu( "   more..." );
+  QAction* newaction = mmenuslast[menu]->addAction( name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
   return newaction;
 }
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, QAction* act )
 {
-  mmenus[menu]->addAction( act );
+  if ( mmenuslast[menu]->actions().size() >= MAXMENUITEMS )
+    mmenuslast[menu] = mmenuslast[menu]->addMenu( "   more..." );
+  mmenuslast[menu]->addAction( act );
   return act;
 }
 
