@@ -27,6 +27,8 @@
 class CurveImp
   : public ObjectImp
 {
+private:
+  double revert (int n) const;
 protected:
   // following two functions are used by generic getParam()
   double getParamofmin( double a, double b,
@@ -63,6 +65,7 @@ public:
    * threshold value.
    */
   virtual bool containsPoint( const Coordinate& p, const KigDocument& ) const = 0;
+  QString cartesianEquationString( const KigDocument& w ) const;
 };
 
 #endif
