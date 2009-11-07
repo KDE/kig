@@ -1254,6 +1254,177 @@ void BezierCurveTypeConstructor::drawprelim( const ObjectDrawer& ,
   B.draw( p );
 }
 
+/*
+ * generic rational Bézier curve constructor
+ */
+
+RationalBezierCurveTypeConstructor::RationalBezierCurveTypeConstructor()
+{
+}
+
+RationalBezierCurveTypeConstructor::~RationalBezierCurveTypeConstructor()
+{
+}
+
+const QString RationalBezierCurveTypeConstructor::descriptiveName() const
+{
+  return i18n( "Rational Bézier Curve by its Control Points" );
+}
+
+const QString RationalBezierCurveTypeConstructor::description() const
+{
+  return i18n( "Construct a Bézier curve by giving its control points and positive weights" );
+}
+
+const QByteArray RationalBezierCurveTypeConstructor::iconFileName( const bool ) const
+{
+  return "rbezierN";
+}
+
+bool RationalBezierCurveTypeConstructor::isAlreadySelectedOK(
+ const std::vector<ObjectCalcer*>& os, const uint& pos ) const
+{
+  if ( pos == os.size() - 2 && os.size() >= 3 ) return true;
+  return false;
+}
+
+int RationalBezierCurveTypeConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
+                                                  const KigDocument&,
+                                                  const KigWidget& ) const
+{
+  int count=os.size() - 1;
+
+  for ( int i = 0; i <= count; i++ )
+  {
+    if ( ! ( os[i]->imp()->inherits( i % 2 == 0 ? PointImp::stype() : NumericTextImp::stype() ) ) ) 
+      return ArgsParser::Invalid;
+  }
+  if ( count < 6 ) return ArgsParser::Valid;
+  if ( count % 2 == 0 && ( os[count] == os[count - 2] ) ) return ArgsParser::Complete;
+  return ArgsParser::Valid;
+}
+
+std::vector<ObjectHolder*> RationalBezierCurveTypeConstructor::build( const std::vector<ObjectCalcer*>& parents, KigDocument&, KigWidget& ) const
+{
+  uint count = parents.size() - 1;
+  assert ( count >= 3 );
+  std::vector<ObjectCalcer*> args;
+  for ( uint i = 0; i < count; ++i ) args.push_back( parents[i] );
+  ObjectTypeCalcer* calcer = new ObjectTypeCalcer( RationalBezierCurveType::instance(), args );
+  ObjectHolder* h = new ObjectHolder( calcer );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( h );
+  return ret;
+}
+
+void RationalBezierCurveTypeConstructor::handleArgs( const std::vector<ObjectCalcer*>& os, 
+                                                     KigPart& d,
+                                                     KigWidget& v ) const
+{
+  std::vector<ObjectHolder*> bos = build( os, d.document(), v );
+  for ( std::vector<ObjectHolder*>::iterator i = bos.begin();
+        i != bos.end(); ++i )
+  {
+    (*i)->calc( d.document() );
+  }
+
+  d.addObjects( bos );
+}
+
+QString RationalBezierCurveTypeConstructor::useText( const ObjectCalcer&, 
+                                                     const std::vector<ObjectCalcer*>& os,
+                                                     const KigDocument&, 
+                                                     const KigWidget& ) const
+{
+  if ( os.size() % 2 == 0 )
+    return i18n("... assign this weight to last selected control point");
+
+  if ( os.size() > 6 )
+    return i18n("... with this control point (click again on the last control point or weight to terminate construction)");
+  else return i18n("Construct a rational Bézier curve with this control point");
+}
+
+QString RationalBezierCurveTypeConstructor::selectStatement(
+  const std::vector<ObjectCalcer*>& os, const KigDocument&,
+  const KigWidget& ) const
+{
+  if ( os.size() % 2 == 0 )
+    return i18n("Select a point to be a control point of the new rational Bézier curve...");
+  else
+    return i18n("Select a numeric label to be a weight of last selected point ...");
+}
+
+void RationalBezierCurveTypeConstructor::drawprelim( const ObjectDrawer& , 
+                                                     KigPainter& p, 
+                                                     const std::vector<ObjectCalcer*>& parents,
+                                                     const KigDocument& ) const
+{
+  if ( parents.size() < 5 ) return;
+
+  std::vector<Coordinate> points;
+  std::vector<double> weights;
+
+  for ( uint i = 0; i < parents.size(); i++ )
+  {
+    if ( parents[i]->imp()->inherits( PointImp::stype() ) ) 
+    { 
+      assert ( i % 2 == 0 );
+      const Coordinate vertex =
+          static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
+      points.push_back( vertex );
+    }
+    else if ( parents[i]->imp()->inherits( NumericTextImp::stype() ) )
+    {
+      assert ( i % 2 == 1 );
+      const double weigth =
+          static_cast<const NumericTextImp*>( parents[i]->imp() )->getValue();
+      weights.push_back( weigth );
+    }
+  }
+
+  assert ( points.size() - weights.size() <=1 );
+
+  if ( points.size() - weights.size() == 1) // point was selected, we
+    weights.push_back( 1 );                 // don't have its weight so far
+
+  RationalBezierImp rB = RationalBezierImp( points, weights );
+  rB.draw( p );
+}
+
+void RationalBezierCurveTypeConstructor::handlePrelim(
+  KigPainter& p, const std::vector<ObjectCalcer*>& os,
+  const KigDocument& d, const KigWidget&
+  ) const
+{
+  uint count = os.size();
+  if ( count < 5 ) return;
+
+  for ( uint i = 0; i < count; i++ )
+  {
+    assert ( os[i]->imp()->inherits( PointImp::stype() ) || 
+             os[i]->imp()->inherits( NumericTextImp::stype() ) );
+  }
+
+  std::vector<ObjectCalcer*> args = os;
+  p.setBrushStyle( Qt::NoBrush );
+  p.setBrushColor( Qt::red );
+  p.setPen( QPen ( Qt::red,  1) );
+  p.setWidth( -1 ); // -1 means the default width for the object being
+                    // drawn..
+
+  ObjectDrawer drawer( Qt::red );
+  drawprelim( drawer, p, args, d );
+}
+
+void RationalBezierCurveTypeConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool RationalBezierCurveTypeConstructor::isTransform() const
+{
+  return false;
+}
+
 
 /*
  * ConicConic intersection...

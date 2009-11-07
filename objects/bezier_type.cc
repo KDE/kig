@@ -267,10 +267,8 @@ ObjectImp* BezierCurveType::calc( const Args& parents, const KigDocument& ) cons
 //  if ( parents[0] != parents[count] ) return new InvalidImp;
   std::vector<Coordinate> points;
 
-  uint npoints = 0;
   for ( uint i = 0; i < count; ++i )
   {
-    npoints++;
     if ( ! parents[i]->inherits( PointImp::stype() ) ) return new InvalidImp;
     Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
     points.push_back( point );
@@ -394,14 +392,24 @@ ObjectImp* RationalBezierQuadricType::calc( const Args& parents, const KigDocume
   std::vector<Coordinate> points;
   std::vector<double> weights;
 
-  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+  for ( uint i = 0; i < 6; ++i )
   {
-    Coordinate point = static_cast<const PointImp*>( *i )->coordinate();
-    points.push_back( point );
-    ++i;
-    double weight = static_cast<const NumericTextImp*>( *i )->getValue();
-    weights.push_back( weight );
+    if ( parents[i]->inherits( PointImp::stype() ) )
+    {
+      Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
+      points.push_back( point );
+    }
+    else if ( parents[i]->inherits( NumericTextImp::stype() ) )
+    {
+      double value = static_cast<const NumericTextImp*>( parents[i] )->getValue();
+      weights.push_back( value );
+    }
+    else
+    {
+      return new InvalidImp;
+    }
   }
+
   return new RationalBezierImp( points, weights );
 }
 
@@ -505,14 +513,24 @@ ObjectImp* RationalBezierCubicType::calc( const Args& parents, const KigDocument
   std::vector<Coordinate> points;
   std::vector<double> weights;
 
-  for ( Args::const_iterator i = parents.begin(); i != parents.end(); ++i )
+  for ( uint i = 0; i < 8; ++i )
   {
-    Coordinate point = static_cast<const PointImp*>( *i )->coordinate();
-    points.push_back( point );
-    ++i;
-    double weight = static_cast<const NumericTextImp*>( *i )->getValue();
-    weights.push_back( weight );
+    if ( parents[i]->inherits( PointImp::stype() ) )
+    {
+      Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
+      points.push_back( point );
+    }
+    else if ( parents[i]->inherits( NumericTextImp::stype() ) )
+    {
+      double value = static_cast<const NumericTextImp*>( parents[i] )->getValue();
+      weights.push_back( value );
+    }
+    else
+    {
+      return new InvalidImp;
+    }
   }
+
   return new RationalBezierImp( points, weights );
 }
 
@@ -578,5 +596,130 @@ std::vector<ObjectCalcer*> RationalBezierCubicType::movableParents( const Object
   return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
 }
 
+
+/*
+ * generic rational Bézier curve
+ */
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( RationalBezierCurveType )
+
+RationalBezierCurveType::RationalBezierCurveType()
+  : ObjectType( "RationalBezierCurve" )
+{
+}
+
+RationalBezierCurveType::~RationalBezierCurveType()
+{
+}
+
+const RationalBezierCurveType* RationalBezierCurveType::instance()
+{
+  static const RationalBezierCurveType s;
+  return &s;
+}
+
+ObjectImp* RationalBezierCurveType::calc( const Args& parents, const KigDocument& ) const
+{
+  uint count = parents.size();
+  std::vector<Coordinate> points;
+  std::vector<double> weights;
+ 
+  for ( uint i = 0; i < count; ++i )
+  {
+    if ( parents[i]->inherits( PointImp::stype() ) )
+    {
+      assert ( i % 2 == 0 );
+      Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
+      points.push_back( point );
+    }
+    else if ( parents[i]->inherits( NumericTextImp::stype() ) )
+    {
+      assert ( i % 2 == 1 );
+      double value = static_cast<const NumericTextImp*>( parents[i] )->getValue();
+      weights.push_back( value );
+    }
+    else
+    {
+      return new InvalidImp;
+    }
+  }
+
+  assert ( points.size() == weights.size() );
+  return new RationalBezierImp( points, weights );
+}
+
+const ObjectImpType* RationalBezierCurveType::resultId() const
+{
+  return RationalBezierImp::stype();
+}
+
+const ObjectImpType* RationalBezierCurveType::impRequirement( const ObjectImp*, const Args& ) const
+{
+  return PointImp::stype();
+}
+
+bool RationalBezierCurveType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
+{
+  // TODO: this should result as true if this is the first or last control point, false otherwise
+  // in the meantime it is better to leave it as false
+  return false;  /* should be true? */
+}
+
+std::vector<ObjectCalcer*> RationalBezierCurveType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+{
+  return args;  /* should already be in correct order */
+}
+
+Args RationalBezierCurveType::sortArgs( const Args& args ) const
+{
+  return args;
+}
+
+bool RationalBezierCurveType::canMove( const ObjectTypeCalcer& o ) const
+{
+  return isFreelyTranslatable( o );
+}
+
+bool RationalBezierCurveType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    if ( !parents[i]->isFreelyTranslatable() ) return false;
+  }
+  return true;
+}
+
+void RationalBezierCurveType::move( ObjectTypeCalcer& o, const Coordinate& to,
+                                 const KigDocument& d ) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  const Coordinate ref = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+     const Coordinate a = static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
+     parents[i]->move( to + a - ref, d );
+  }
+}
+
+const Coordinate RationalBezierCurveType::moveReferencePoint( const ObjectTypeCalcer& o
+) const
+{
+  std::vector<ObjectCalcer*> parents = o.parents();
+  return static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+}
+
+std::vector<ObjectCalcer*> RationalBezierCurveType::movableParents( const ObjectTypeCalcer& ourobj ) const
+{
+  std::vector<ObjectCalcer*> parents = ourobj.parents();
+  std::set<ObjectCalcer*> ret;
+  for ( uint i = 0; i < parents.size(); ++i )
+  {
+    std::vector<ObjectCalcer*> tmp = parents[i]->movableParents();
+    ret.insert( tmp.begin(), tmp.end() );
+  }
+  ret.insert( parents.begin(), parents.end() );
+  return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
+}
 
 

@@ -567,6 +567,10 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_rationalbeziercubic" ) );
 
+    c = new RationalBezierCurveTypeConstructor();
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_rationalbeziercurve" ));
+
 
    /* ----------- end bezier ----------- */
 

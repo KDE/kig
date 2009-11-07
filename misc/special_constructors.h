@@ -231,6 +231,47 @@ public:
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
 };
 
+class RationalBezierCurveTypeConstructor
+   : public ObjectConstructor
+{
+public:
+  RationalBezierCurveTypeConstructor();
+  ~RationalBezierCurveTypeConstructor();
+
+  const QString descriptiveName() const;
+  const QString description() const;
+  const QByteArray iconFileName( const bool canBeNull = false ) const;
+ 
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const uint& ) const;
+
+  int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d, const KigWidget& v) const;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
+  void handleArgs( const std::vector<ObjectCalcer*>& os,
+                   KigPart& d,
+                   KigWidget& v ) const;
+ 
+ QString useText( const ObjectCalcer& o, 
+                   const std::vector<ObjectCalcer*>& sel,
+                   const KigDocument& d, 
+                   const KigWidget& v ) const;
+  QString selectStatement( const std::vector<ObjectCalcer*>& sel, 
+                           const KigDocument& d,
+                           const KigWidget& w ) const;
+
+
+  void handlePrelim( KigPainter& p,
+                     const std::vector<ObjectCalcer*>& sel,
+                     const KigDocument& d,
+                     const KigWidget& v ) const;
+  void drawprelim( const ObjectDrawer& drawer, 
+                   KigPainter& p, 
+                   const std::vector<ObjectCalcer*>& parents, 
+                   const KigDocument& d ) const;
+
+ void plug( KigPart* doc, KigGUIAction* kact );
+  bool isTransform() const;
+};
+
 class MeasureTransportConstructor
   : public ObjectConstructor
 {

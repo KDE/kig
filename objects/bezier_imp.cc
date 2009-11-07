@@ -1,4 +1,5 @@
-// Copyright (C)  2009  Petr Gajdos <pgajdos@suse.cz>
+// Copyright (C)  2009  Petr Gajdos <pgajdos@suse.cz> and 
+// Maurizio Paolini <paolini@dmf.unicatt.it>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
