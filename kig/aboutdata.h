@@ -59,6 +59,10 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
                              "of a locus." ),
                   "frency.gatti@gmail.com" );
 
+  tmp.addAuthor( ki18n("Petr Gajdos"),
+                  ki18n( "Contributed the Bézier curves and related icons." ),
+                  "pgajdos@suse.cz" );
+
   tmp.addCredit( ki18n("Eric Depagne"),
                   ki18n( "The French translator, who also sent me some useful "
                              "feedback, like feature requests and bug reports." ),
