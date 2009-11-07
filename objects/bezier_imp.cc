@@ -414,7 +414,7 @@ bool RationalBezierImp::valid() const
 
 int RationalBezierImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 2;
+  return Parent::numberOfProperties() + 3;
 }
 
 const QByteArrayList RationalBezierImp::propertiesInternalNames() const
@@ -422,6 +422,7 @@ const QByteArrayList RationalBezierImp::propertiesInternalNames() const
   QByteArrayList l = Parent::propertiesInternalNames();
   l += "bezier-number-of-control-points";
   l += "bezier-control-polygon";
+  l += "cartesian-equation";    //on purpose, this has the same name as in LocusImp!
   assert( l.size() == RationalBezierImp::numberOfProperties() );
   return l;
 }
@@ -431,6 +432,7 @@ const QByteArrayList RationalBezierImp::properties() const
   QByteArrayList l = Parent::properties();
   l += I18N_NOOP( "Number of control points" );
   l += I18N_NOOP( "Control polygon" );
+  l += I18N_NOOP( "Cartesian Equation" );
   assert( l.size() == RationalBezierImp::numberOfProperties() );
   return l;
 }
@@ -451,6 +453,8 @@ const char* RationalBezierImp::iconForProperty( int which ) const
     return "en"; // number of sides
   else if ( which == Parent::numberOfProperties() + 1 )
     return "controlpolygon";
+  else if ( which == Parent::numberOfProperties() + 2 )
+    return "kig_text";
   else assert( false );
   return "";
 }
@@ -469,6 +473,11 @@ ObjectImp* RationalBezierImp::property( int which, const KigDocument& w ) const
   {
     // control polygon
     return new OpenPolygonalImp( mpoints );
+  }
+  else if ( which == Parent::numberOfProperties() + 2 )
+  {
+    // cartesian equation
+    return new StringImp( cartesianEquationString( w ) );
   }
   else assert( false );
   return new InvalidImp;
