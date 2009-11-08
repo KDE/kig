@@ -652,7 +652,7 @@ bool AbstractPolygonImp::equals( const ObjectImp& rhs ) const
 const ObjectImpType* AbstractPolygonImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "polygon",
+    Parent::stype(), "abstractpolygon",
     I18N_NOOP( "polygon" ),
     I18N_NOOP( "Select this polygon" ), 0, 0, 0, 0, 0, 0, 0 );
   return &t;
