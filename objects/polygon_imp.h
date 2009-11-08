@@ -102,7 +102,7 @@ class FilledPolygonImp
   : public AbstractPolygonImp
 {
 public:
-  typedef ObjectImp Parent;
+  typedef AbstractPolygonImp Parent;
   FilledPolygonImp( const std::vector<Coordinate>& points );
   static const ObjectImpType* stype();
   static const ObjectImpType* stype3();
@@ -131,7 +131,7 @@ class ClosedPolygonalImp
   : public AbstractPolygonImp
 {
 public:
-  typedef ObjectImp Parent;
+  typedef AbstractPolygonImp Parent;
   ClosedPolygonalImp( const std::vector<Coordinate>& points );
   static const ObjectImpType* stype();
   ObjectImp* transform( const Transformation& ) const;
@@ -158,7 +158,7 @@ class OpenPolygonalImp
   : public AbstractPolygonImp
 {
 public:
-  typedef ObjectImp Parent;
+  typedef AbstractPolygonImp Parent;
   OpenPolygonalImp( const std::vector<Coordinate>& points );
   static const ObjectImpType* stype();
   ObjectImp* transform( const Transformation& ) const;
