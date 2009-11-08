@@ -121,7 +121,12 @@ public:
 
 int polygonlineintersection( const std::vector<Coordinate>& ppoints, 
       const Coordinate a, const Coordinate b,
-      bool boundleft, bool boundright, double& t1, double& t2,
+      double& t1, double& t2,
+      std::vector<Coordinate>::const_iterator& intersectionside );
+
+int polygonlineintersection( const std::vector<Coordinate>& ppoints, 
+      const Coordinate a, const Coordinate b,
+      bool boundleft, bool boundright, bool openpolygon, double& t1, double& t2,
       std::vector<Coordinate>::const_iterator& intersectionside );
 
 class PolygonLineIntersectionType

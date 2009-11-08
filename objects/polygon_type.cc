@@ -504,7 +504,7 @@ std::vector<ObjectCalcer*> PolygonBCVType::movableParents( const ObjectTypeCalce
 
 static const ArgsParser::spec argsspecPolygonLineIntersection[] =
 {
-  { FilledPolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
+  { AbstractPolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
     I18N_NOOP( "Select the polygon of which you want the intersection with a line..." ), false },
   { AbstractLineImp::stype(), 
     I18N_NOOP( "Intersect this line with a polygon" ), 
@@ -550,7 +550,7 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  const FilledPolygonImp* polygon = static_cast<const FilledPolygonImp*>( parents[0] );
+  const AbstractPolygonImp* polygon = static_cast<const AbstractPolygonImp*>( parents[0] );
   const std::vector<Coordinate> ppoints = polygon->points();
   const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
   double t1, t2;
@@ -568,8 +568,19 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
     boundleft = true;
   } 
 
+  bool openpolygon = false;
+  if ( parents[0]->inherits( OpenPolygonalImp::stype() ) ) openpolygon = true;
+
   numintersections = polygonlineintersection( ppoints, line.a, line.b,
-                         boundleft, boundright, t1, t2, intersectionside );
+                         boundleft, boundright, openpolygon, t1, t2, intersectionside );
+
+  bool filledpolygon = false;
+  if ( parents[0]->inherits( FilledPolygonImp::stype() ) ) filledpolygon = true;
+
+  // TODO: at the moment return just the first intersection.
+  // we should at least allow for the case of two intersections!
+  if ( ! filledpolygon )
+    return new PointImp( line.a + t1*(line.b - line.a) );
 
   if (numintersections > 2) return new InvalidImp;
 
@@ -612,7 +623,7 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
 int
 polygonlineintersection( const std::vector<Coordinate>& ppoints, 
                          const Coordinate a, const Coordinate b,
-                         bool boundleft, bool boundright, double& t1, double& t2,
+                         bool boundleft, bool boundright, bool openpolygon, double& t1, double& t2,
                          std::vector<Coordinate>::const_iterator& intersectionside )
 {
   double intersections[2] = {0.0, 0.0};
@@ -627,9 +638,11 @@ polygonlineintersection( const std::vector<Coordinate>& ppoints,
   bool leftendinside = false;
   bool rightendinside = false;
   Coordinate prevpoint = ppoints.back() - a;
+  if ( openpolygon ) prevpoint = ppoints.front() - a;
   bool prevpointbelow = ( abx*prevpoint.y <= aby*prevpoint.x );
   for ( i = ppoints.begin(); i != ppoints.end(); ++i )
   {
+    if ( openpolygon && i == ppoints.begin() ) continue;
     Coordinate point = *i - a;
     bool pointbelow = ( abx*point.y <= aby*point.x );
     if ( pointbelow != prevpointbelow ) 
@@ -708,6 +721,15 @@ polygonlineintersection( const std::vector<Coordinate>& ppoints,
   return numintersections;
 }
 
+int
+polygonlineintersection( const std::vector<Coordinate>& ppoints, 
+                         const Coordinate a, const Coordinate b,
+                         double& t1, double& t2,
+                         std::vector<Coordinate>::const_iterator& intersectionside )
+{
+  return polygonlineintersection ( ppoints, a, b, true, true, false, t1, t2, intersectionside );
+}
+
 const ObjectImpType* PolygonLineIntersectionType::resultId() const
 {
   return SegmentImp::stype();
@@ -770,7 +792,7 @@ ObjectImp* PolygonPolygonIntersectionType::calc( const Args& parents, const KigD
     for (ipoint = ppointsa->begin(); ipoint != ppointsa->end(); ++ipoint)
     {
       numintersections = polygonlineintersection( *ppointsb, 
-                           *iprevpoint, *ipoint, true, true, t1, t2, intersectionside);
+                           *iprevpoint, *ipoint, t1, t2, intersectionside);
       if (numintersections >= 2)
       {
         intersect = true;
@@ -804,7 +826,7 @@ ObjectImp* PolygonPolygonIntersectionType::calc( const Args& parents, const KigD
       ipoint += direction;
       if ( ipoint == ppointsa->end() ) ipoint = ppointsa->begin();
       numintersections = polygonlineintersection( *ppointsb, 
-                           *iprevpoint, *ipoint, true, true, t1, t2, intersectionside);
+                           *iprevpoint, *ipoint, t1, t2, intersectionside);
       if ( numintersections < 2 )
       {
         /*
@@ -816,7 +838,7 @@ ObjectImp* PolygonPolygonIntersectionType::calc( const Args& parents, const KigD
          */
         point = 1e-10*(*iprevprevpoint) + (1 - 1e-10)*(*iprevpoint);
         numintersections = polygonlineintersection( *ppointsb, 
-                             point, *ipoint, true, true, t1, t2, intersectionside);
+                             point, *ipoint, t1, t2, intersectionside);
       } else
       {
         if ( t1 != 0.0 ) return new InvalidImp;             /* can this happen? */
@@ -837,13 +859,13 @@ ObjectImp* PolygonPolygonIntersectionType::calc( const Args& parents, const KigD
       point = ppointsint.back();
       direction = 1;
       numintersections = polygonlineintersection( *ppointsb, 
-                           point, *ipoint, true, true, t1, t2, intersectionside);
+                           point, *ipoint, t1, t2, intersectionside);
       if ( numintersections < 2 || t2 < 1e-12)
       {
         direction = -1;
         ipoint = iprevpoint;
         numintersections = polygonlineintersection( *ppointsb, 
-                             point, *ipoint, true, true, t1, t2, intersectionside);
+                             point, *ipoint, t1, t2, intersectionside);
         if (numintersections < 2) return new InvalidImp;
       }
       point = point + t2*(*ipoint-point);
