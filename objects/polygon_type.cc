@@ -955,7 +955,7 @@ const ObjectImpType* PolygonSideType::resultId() const
 
 static const ArgsParser::spec argsspecConvexHull[] =
 {
-  { FilledPolygonImp::stype(), I18N_NOOP( "Construct the convex hull of this polygon" ),
+  { AbstractPolygonImp::stype(), I18N_NOOP( "Construct the convex hull of this polygon" ),
     I18N_NOOP( "Select the polygon of which you want to construct the convex hull..." ), false }
 };
 
@@ -980,7 +980,7 @@ ObjectImp* ConvexHullType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
-  const std::vector<Coordinate> ppoints = static_cast<const FilledPolygonImp*>( parents[0] )->points();
+  const std::vector<Coordinate> ppoints = static_cast<const AbstractPolygonImp*>( parents[0] )->points();
 
   if ( ppoints.size() < 3 ) return new InvalidImp;
 
