@@ -1351,7 +1351,7 @@ QString RationalBezierCurveTypeConstructor::selectStatement(
   if ( os.size() % 2 == 0 )
     return i18n("Select a point to be a control point of the new rational Bézier curve...");
   else
-    return i18n("Select a numeric label to be a weight of last selected point ...");
+    return i18n("Select a numeric label to be a weight of last selected point...");
 }
 
 void RationalBezierCurveTypeConstructor::drawprelim( const ObjectDrawer& , 
