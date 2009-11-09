@@ -1989,14 +1989,20 @@ QString GenericIntersectionConstructor::useText(
         return i18n( "Intersect this Circle" );
       else if ( o.imp()->inherits( ConicImp::stype() ) )
         return i18n( "Intersect this Conic" );
-      else if ( o.imp()->inherits( AbstractLineImp::stype() ) )
+      else if ( o.imp()->inherits( SegmentImp::stype() ) )
+        return i18n( "Intersect this Segment" );
+      else if ( o.imp()->inherits( RayImp::stype() ) )
+        return i18n( "Intersect this Half-line" );
+      else if ( o.imp()->inherits( LineImp::stype() ) )
         return i18n( "Intersect this Line" );
       else if ( o.imp()->inherits( CubicImp::stype() ) )
         return i18n( "Intersect this Cubic Curve" );
       else if ( o.imp()->inherits( ArcImp::stype() ) )
         return i18n( "Intersect this Arc" );
-      else if ( o.imp()->inherits( AbstractPolygonImp::stype() ) )
+      else if ( o.imp()->inherits( FilledPolygonImp::stype() ) )
         return i18n( "Intersect this Polygon" );
+      else if ( o.imp()->inherits( AbstractPolygonImp::stype() ) )
+        return i18n( "Intersect this Polygonal" );
       else assert( false );
       break;
     case 2:
@@ -2004,14 +2010,20 @@ QString GenericIntersectionConstructor::useText(
         return i18n( "with this Circle" );
       else if ( o.imp()->inherits( ConicImp::stype() ) )
         return i18n( "with this Conic" );
-      else if ( o.imp()->inherits( AbstractLineImp::stype() ) )
+      else if ( o.imp()->inherits( SegmentImp::stype() ) )
+        return i18n( "with this Segment" );
+      else if ( o.imp()->inherits( RayImp::stype() ) )
+        return i18n( "with this Half-line" );
+      else if ( o.imp()->inherits( LineImp::stype() ) )
         return i18n( "with this Line" );
       else if ( o.imp()->inherits( CubicImp::stype() ) )
         return i18n( "with this Cubic Curve" );
       else if ( o.imp()->inherits( ArcImp::stype() ) )
         return i18n( "with this Arc" );
-      else if ( o.imp()->inherits( AbstractPolygonImp::stype() ) )
+      else if ( o.imp()->inherits( FilledPolygonImp::stype() ) )
         return i18n( "with this Polygon" );
+      else if ( o.imp()->inherits( AbstractPolygonImp::stype() ) )
+        return i18n( "with this Polygonal" );
       else assert( false );
       break;
   }
