@@ -185,24 +185,23 @@ bool AbstractPolygonImp::isInPolygon( const Coordinate& p ) const
   return inside_flag;
 }
 
-bool AbstractPolygonImp::isOnCPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const
+bool AbstractPolygonImp::isOnCPolygonBorder( const Coordinate& p, double dist, const KigDocument& doc ) const
 {
   uint reduceddim = mpoints.size() - 1;
 
-  if ( isOnSegment( p, mpoints[reduceddim], mpoints[0],
-                  w.screenInfo().normalMiss( width ) ) )
+  if ( isOnSegment( p, mpoints[reduceddim], mpoints[0], dist ) )
     return true;
 
-  return isOnOPolygonBorder( p, width, w );
+  return isOnOPolygonBorder( p, dist, doc );
 }
 
-bool AbstractPolygonImp::isOnOPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const
+bool AbstractPolygonImp::isOnOPolygonBorder( const Coordinate& p, double dist, const KigDocument& ) const
 {
   bool ret = false;
   uint reduceddim = mpoints.size() - 1;
   for ( uint i = 0; i < reduceddim; ++i )
   {
-    ret |= isOnSegment( p, mpoints[i], mpoints[i+1], w.screenInfo().normalMiss( width ) );
+    ret |= isOnSegment( p, mpoints[i], mpoints[i+1], dist );
   }
 
   return ret;
@@ -964,7 +963,7 @@ void ClosedPolygonalImp::draw( KigPainter& p ) const
 bool ClosedPolygonalImp::contains( const Coordinate& p, int width,
          const KigWidget& w ) const
 {
-  return isOnCPolygonBorder( p, width,  w );
+  return isOnCPolygonBorder( p, w.screenInfo().normalMiss( width ),  w.document() );
 }
 
 OpenPolygonalImp::OpenPolygonalImp( const std::vector<Coordinate>& points )
@@ -981,7 +980,7 @@ void OpenPolygonalImp::draw( KigPainter& p ) const
 bool OpenPolygonalImp::contains( const Coordinate& p, int width,
          const KigWidget& w ) const
 {
-  return isOnOPolygonBorder( p, width,  w );
+  return isOnOPolygonBorder( p, w.screenInfo().normalMiss( width ),  w.document() );
 }
 
 /*

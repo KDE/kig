@@ -126,17 +126,42 @@ int polygonlineintersection( const std::vector<Coordinate>& ppoints,
 
 int polygonlineintersection( const std::vector<Coordinate>& ppoints, 
       const Coordinate a, const Coordinate b,
-      bool boundleft, bool boundright, bool openpolygon, double& t1, double& t2,
+      bool boundleft, bool boundright, bool inside, 
+      bool openpolygon, double& t1, double& t2,
       std::vector<Coordinate>::const_iterator& intersectionside );
 
 class PolygonLineIntersectionType
   : public ArgsParserObjectType
 {
   PolygonLineIntersectionType();
+protected:
+  PolygonLineIntersectionType( const char fulltypename[],
+                        const struct ArgsParser::spec argsspec[],
+                        int n );
   ~PolygonLineIntersectionType();
 public:
   static const PolygonLineIntersectionType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+class OPolygonalLineIntersectionType
+  : public PolygonLineIntersectionType
+{
+  OPolygonalLineIntersectionType();
+  ~OPolygonalLineIntersectionType();
+public:
+  static const OPolygonalLineIntersectionType* instance();
+  const ObjectImpType* resultId() const;
+};
+
+class CPolygonalLineIntersectionType
+  : public PolygonLineIntersectionType
+{
+  CPolygonalLineIntersectionType();
+  ~CPolygonalLineIntersectionType();
+public:
+  static const CPolygonalLineIntersectionType* instance();
   const ObjectImpType* resultId() const;
 };
 

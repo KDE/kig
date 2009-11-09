@@ -1944,6 +1944,18 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
       "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
       "curvelineintersection" );
 
+  MultiObjectTypeConstructor* opolygonalline =
+    new MultiObjectTypeConstructor(
+      OPolygonalLineIntersectionType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "curvelineintersection", -1, 1 );
+
+  MultiObjectTypeConstructor* cpolygonalline =
+    new MultiObjectTypeConstructor(
+      CPolygonalLineIntersectionType::instance(),
+      "SHOULDNOTBESEEN", "SHOULDNOTBESEEN",
+      "curvelineintersection", -1, 1 );
+
   merge( lineline );
   merge( circlecircle );
   merge( lineconic );
@@ -1951,6 +1963,8 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
   merge( conicconic );
   merge( arcline );
   merge( polygonline );
+  merge( opolygonalline );
+  merge( cpolygonalline );
   merge( polygonpolygon );
 }
 
@@ -1981,7 +1995,7 @@ QString GenericIntersectionConstructor::useText(
         return i18n( "Intersect this Cubic Curve" );
       else if ( o.imp()->inherits( ArcImp::stype() ) )
         return i18n( "Intersect this Arc" );
-      else if ( o.imp()->inherits( FilledPolygonImp::stype() ) )
+      else if ( o.imp()->inherits( AbstractPolygonImp::stype() ) )
         return i18n( "Intersect this Polygon" );
       else assert( false );
       break;
@@ -1996,7 +2010,7 @@ QString GenericIntersectionConstructor::useText(
         return i18n( "with this Cubic Curve" );
       else if ( o.imp()->inherits( ArcImp::stype() ) )
         return i18n( "with this Arc" );
-      else if ( o.imp()->inherits( FilledPolygonImp::stype() ) )
+      else if ( o.imp()->inherits( AbstractPolygonImp::stype() ) )
         return i18n( "with this Polygon" );
       else assert( false );
       break;

@@ -504,7 +504,7 @@ std::vector<ObjectCalcer*> PolygonBCVType::movableParents( const ObjectTypeCalce
 
 static const ArgsParser::spec argsspecPolygonLineIntersection[] =
 {
-  { AbstractPolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
+  { FilledPolygonImp::stype(), I18N_NOOP( "Intersect this polygon with a line" ),
     I18N_NOOP( "Select the polygon of which you want the intersection with a line..." ), false },
   { AbstractLineImp::stype(), 
     I18N_NOOP( "Intersect this line with a polygon" ), 
@@ -518,6 +518,13 @@ PolygonLineIntersectionType::PolygonLineIntersectionType()
 {
 }
 
+PolygonLineIntersectionType::PolygonLineIntersectionType( const char fulltypename[],
+                        const struct ArgsParser::spec argsspec[],
+                        int n )
+  : ArgsParserObjectType( fulltypename, argsspec, n )
+{
+}
+
 PolygonLineIntersectionType::~PolygonLineIntersectionType()
 {
 }
@@ -526,6 +533,11 @@ const PolygonLineIntersectionType* PolygonLineIntersectionType::instance()
 {
   static const PolygonLineIntersectionType t;
   return &t;
+}
+
+const ObjectImpType* PolygonLineIntersectionType::resultId() const
+{
+  return SegmentImp::stype();
 }
 
 /*
@@ -554,9 +566,12 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
   const std::vector<Coordinate> ppoints = polygon->points();
   const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
   double t1, t2;
+  int side = 0;
   uint numintersections;
   std::vector<Coordinate>::const_iterator intersectionside;
 
+  // since we use the same constructor as for ConicLine, we get the values -1 and +1
+  if ( parents.size() >= 3 ) side = static_cast<const IntImp*>( parents[2] )->data();
   bool boundleft = false;
   bool boundright = false;
   if ( parents[1]->inherits( SegmentImp::stype() ) )
@@ -569,18 +584,22 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
   } 
 
   bool openpolygon = false;
+  bool inside = false;
   if ( parents[0]->inherits( OpenPolygonalImp::stype() ) ) openpolygon = true;
+  if ( parents[0]->inherits( FilledPolygonImp::stype() ) ) inside = true;
 
   numintersections = polygonlineintersection( ppoints, line.a, line.b,
-                         boundleft, boundright, openpolygon, t1, t2, intersectionside );
+                         boundleft, boundright, inside, openpolygon, t1, t2, intersectionside );
 
   bool filledpolygon = false;
   if ( parents[0]->inherits( FilledPolygonImp::stype() ) ) filledpolygon = true;
 
-  // TODO: at the moment return just the first intersection.
-  // we should at least allow for the case of two intersections!
   if ( ! filledpolygon )
-    return new PointImp( line.a + t1*(line.b - line.a) );
+  {
+    if ( side ==  -1 && numintersections >= 1) return new PointImp( line.a + t1*(line.b - line.a) );
+    if ( side == 1 && numintersections >= 2) return new PointImp( line.a + t2*(line.b - line.a) );
+    return new InvalidImp;
+  } 
 
   if (numintersections > 2) return new InvalidImp;
 
@@ -595,6 +614,75 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
       break;
   }
   return new InvalidImp;
+}
+
+/*
+ * polygonal-line intersection, this has an extra parameter
+ * indicating which intersection point we want
+ */
+
+static const ArgsParser::spec argsspecOPolygonalLineIntersection[] =
+{
+  { OpenPolygonalImp::stype(), I18N_NOOP( "Intersect this polygonal with a line" ),
+    I18N_NOOP( "Select the polygonal of which you want the intersection with a line..." ), false },
+  { AbstractLineImp::stype(),
+    I18N_NOOP( "Intersect this line with a polygonal" ),
+    I18N_NOOP( "Select the line of which you want the intersection with a polygonal..." ), false },
+  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( OPolygonalLineIntersectionType )
+
+OPolygonalLineIntersectionType::OPolygonalLineIntersectionType()
+  : PolygonLineIntersectionType( "OPolygonalLineIntersection", argsspecOPolygonalLineIntersection, 3 )
+{
+}
+
+OPolygonalLineIntersectionType::~OPolygonalLineIntersectionType()
+{
+}
+
+const OPolygonalLineIntersectionType* OPolygonalLineIntersectionType::instance()
+{
+  static const OPolygonalLineIntersectionType t;
+  return &t;
+}
+
+const ObjectImpType* OPolygonalLineIntersectionType::resultId() const
+{
+  return PointImp::stype();
+}
+
+static const ArgsParser::spec argsspecCPolygonalLineIntersection[] =
+{
+  { ClosedPolygonalImp::stype(), I18N_NOOP( "Intersect this polygonal with a line" ),
+    I18N_NOOP( "Select the polygonal of which you want the intersection with a line..." ), false },
+  { AbstractLineImp::stype(),
+    I18N_NOOP( "Intersect this line with a polygonal" ),
+    I18N_NOOP( "Select the line of which you want the intersection with a polygonal..." ), false },
+  { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CPolygonalLineIntersectionType )
+
+CPolygonalLineIntersectionType::CPolygonalLineIntersectionType()
+  : PolygonLineIntersectionType( "CPolygonalLineIntersection", argsspecCPolygonalLineIntersection, 3 )
+{
+}
+
+CPolygonalLineIntersectionType::~CPolygonalLineIntersectionType()
+{
+}
+
+const CPolygonalLineIntersectionType* CPolygonalLineIntersectionType::instance()
+{
+  static const CPolygonalLineIntersectionType t;
+  return &t;
+}
+
+const ObjectImpType* CPolygonalLineIntersectionType::resultId() const
+{
+  return PointImp::stype();
 }
 
 /*
@@ -623,7 +711,8 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
 int
 polygonlineintersection( const std::vector<Coordinate>& ppoints, 
                          const Coordinate a, const Coordinate b,
-                         bool boundleft, bool boundright, bool openpolygon, double& t1, double& t2,
+                         bool boundleft, bool boundright, bool inside,
+			 bool openpolygon, double& t1, double& t2,
                          std::vector<Coordinate>::const_iterator& intersectionside )
 {
   double intersections[2] = {0.0, 0.0};
@@ -685,24 +774,26 @@ polygonlineintersection( const std::vector<Coordinate>& ppoints,
     prevpointbelow = pointbelow;
   }
 
-  if ( leftendinside )
+  if ( inside )
   {
-    numintersections++;
-    intersections[1] = intersections[0];
-    intersectionsides[1] = intersectionsides[0];
-    intersections[0] = 0.0;
-    intersectionsides[0] = ppoints.end();
-  }
-
-  if ( rightendinside )
-  {
-    numintersections++;
-    intersections[1] = 1.0;
-    intersectionsides[1] = ppoints.end();
-    if ( numintersections < 2 )
+    if ( leftendinside )
     {
-      intersections[0] = 1.0;
+      numintersections++;
+      intersections[1] = intersections[0];
+      intersectionsides[1] = intersectionsides[0];
+      intersections[0] = 0.0;
+      intersectionsides[0] = ppoints.end();
+    }
+    if ( rightendinside )
+    {
+      numintersections++;
+      intersections[1] = 1.0;
       intersectionsides[1] = ppoints.end();
+      if ( numintersections < 2 )
+      {
+        intersections[0] = 1.0;
+        intersectionsides[1] = ppoints.end();
+      }
     }
   }
 
@@ -727,12 +818,7 @@ polygonlineintersection( const std::vector<Coordinate>& ppoints,
                          double& t1, double& t2,
                          std::vector<Coordinate>::const_iterator& intersectionside )
 {
-  return polygonlineintersection ( ppoints, a, b, true, true, false, t1, t2, intersectionside );
-}
-
-const ObjectImpType* PolygonLineIntersectionType::resultId() const
-{
-  return SegmentImp::stype();
+  return polygonlineintersection ( ppoints, a, b, true, true, true, false, t1, t2, intersectionside );
 }
 
 /* polygon-polygon intersection */

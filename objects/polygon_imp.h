@@ -87,8 +87,8 @@ public:
 
   bool equals( const ObjectImp& rhs ) const;
   bool isInPolygon( const Coordinate& p ) const;
-  bool isOnOPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const;
-  bool isOnCPolygonBorder( const Coordinate& p, int width, const KigWidget& w ) const;
+  bool isOnOPolygonBorder( const Coordinate& p, double dist, const KigDocument& doc ) const;
+  bool isOnCPolygonBorder( const Coordinate& p, double dist, const KigDocument& doc ) const;
   int windingNumber() const;
   bool isTwisted() const;
   bool isMonotoneSteering() const;
