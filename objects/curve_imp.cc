@@ -20,6 +20,7 @@
 #include "../misc/coordinate.h"
 #include "../misc/kignumerics.h"
 #include "../misc/equation.h"
+#include "../kig/kig_document.h"
 
 #include <cmath>
 
@@ -147,6 +148,20 @@ double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
   // written by Franco Pasquarelli <pasqui@dmf.bs.unicatt.it>.
   // I ( domi ) have adapted and documented it a bit.
 
+  // mp: the following two lines are especially useful in conjunction to
+  // differential geometry constructions like tangent, center of curvature,...
+  // such constructions need to recover the param associated to a (constrained)
+  // PointImp, but do not have direct access to it since it is a parent of the
+  // calcer accociated to the ConstrainedPointType, whereas we only have the
+  // ObjectImps of the Curve and of the Point; in such case the only possibility
+  // consists in a call to getParam, which is unnecessarily heavy since the PointImp
+  // was itself computed previously using getPoint.  So the param used in getPoint
+  // is cached in LocusImp, BezierImp, ... and then checked for validity here.
+
+  if ( doc.mcachedparam >= 0. && doc.mcachedparam <= 1. &&
+       getPoint ( doc.mcachedparam, doc ) == p )
+    return doc.mcachedparam;
+
   // consider the function that returns the distance for a point at
   // parameter x to the locus for a given parameter x.  What we do
   // here is look for the global minimum of this function.  We do that
@@ -154,7 +169,7 @@ double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
   // for a local minimum from there on.  If we find one, we keep it if
   // it is the lowest of all the ones we've already found..
 
-  const int N = 100;
+  const int N = 64;
   const double incr = 1. / (double) N;
 
   // xm is the best parameter we've found so far, fxm is the distance
@@ -168,7 +183,9 @@ double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
   int j = 0;
   double mm = fxm;
 
-  while( j < N - 1 )
+//  while( j < N - 1 )
+// TODO: this function is under revision anyway...
+  while( j < N )
   {
     // [x1,x2] is the range we're currently considering..
     double x1 = j * incr;

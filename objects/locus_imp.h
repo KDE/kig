@@ -48,7 +48,7 @@
  */
 
 /**
- * TODO: getParam has been moved by Petr Gajdos at the "curve_imp" level
+ * NOTE: getParam has been moved by Petr Gajdos at the "curve_imp" level
  * which should be fine, since it makes sense more generally for curves
  * and not only for locuses.  In particular it will be useful for the
  * new "bezier" curves, to be added shortly
@@ -60,11 +60,7 @@ class LocusImp
   CurveImp* mcurve;
   const ObjectHierarchy mhier;
 
-// TODO: getDist should be removed from here
-  double getDist(double param, const Coordinate& p, const KigDocument& doc) const;
   void getInterval(double& x1,double& x2,double incr,const Coordinate& p, const KigDocument& doc) const;
-// TODO: getParamofmin should be removed from here
-  double getParamofmin(double a, double b, const Coordinate& p, const KigDocument& doc) const;
 public:
   typedef CurveImp Parent;
   static const ObjectImpType* stype();
@@ -79,8 +75,6 @@ public:
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
-// TODO: getParam should be removed from here
-  double getParam( const Coordinate& point, const KigDocument& ) const;
   const Coordinate getPoint( double param, const KigDocument& ) const;
 
   // TODO ?

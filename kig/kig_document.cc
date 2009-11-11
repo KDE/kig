@@ -30,7 +30,7 @@
 KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
                           bool showgrid, bool showaxes, bool nv )
   : mobjects( objects ), mcoordsystem( coordsystem ), mshowgrid( showgrid ),
-    mshowaxes( showaxes ), mnightvision( nv )
+    mshowaxes( showaxes ), mnightvision( nv ), mcachedparam( 0.0 )
 {
 }
 

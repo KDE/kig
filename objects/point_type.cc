@@ -133,6 +133,7 @@ ObjectImp* ConstrainedPointType::calc( const Args& parents, const KigDocument& d
 
   double param = static_cast<const DoubleImp*>( parents[0] )->data();
   const Coordinate nc = static_cast<const CurveImp*>( parents[1] )->getPoint( param, doc );
+  doc.mcachedparam = param;
   if ( nc.valid() ) return new PointImp( nc );
   else return new InvalidImp;
 }

@@ -320,11 +320,12 @@ Coordinate BezierImp::deCasteljau( unsigned int m, unsigned int k, double p ) co
   return (1 - p)*deCasteljau( m - 1, k, p ) + p*deCasteljau( m - 1, k + 1, p );
 }
 
-const Coordinate BezierImp::getPoint( double p, const KigDocument& ) const
+const Coordinate BezierImp::getPoint( double p, const KigDocument& doc ) const
 {
   /*
    *  Algorithm de Casteljau
    */
+  doc.mcachedparam = p;
   return deCasteljau( mpoints.size() - 1, 0, p );
 }
 
@@ -624,11 +625,12 @@ double RationalBezierImp::deCasteljauWeights( unsigned int m, unsigned int k, do
   return (1 - p)*deCasteljauWeights( m - 1, k, p ) + p*deCasteljauWeights( m - 1, k + 1, p );
 }
 
-const Coordinate RationalBezierImp::getPoint( double p, const KigDocument& ) const
+const Coordinate RationalBezierImp::getPoint( double p, const KigDocument& doc ) const
 {
   /*
    *  Algorithm de Casteljau
    */
+  doc.mcachedparam = p;
   return deCasteljauPoints( mpoints.size() - 1, 0, p ) / deCasteljauWeights( mweights.size() - 1, 0, p );
 }
 

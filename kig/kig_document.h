@@ -61,6 +61,8 @@ class KigDocument {
    */
   bool mnightvision;
 public:
+  mutable double mcachedparam;
+public:
   KigDocument();
   KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
                bool showgrid = true, bool showaxes = true, bool nv = false );
