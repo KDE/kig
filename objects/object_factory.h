@@ -72,6 +72,8 @@ public:
   ObjectHolder* constrainedPoint(
     ObjectCalcer* curve, const Coordinate& c, const KigDocument& ) const;
 
+  ObjectTypeCalcer* constrainedRelativePointCalcer( ObjectCalcer* curve, double param ) const;
+
   /**
    * this returns a "sensible point".
    * By a "sensible point", I mean a point that would be about what

@@ -168,6 +168,18 @@ ObjectHolder* ObjectFactory::constrainedPoint(
   return new ObjectHolder( constrainedPointCalcer( curve, c, d ) );
 }
 
+ObjectTypeCalcer* ObjectFactory::constrainedRelativePointCalcer(
+  ObjectCalcer* curve, double param ) const
+{
+  assert( curve->imp()->inherits( CurveImp::stype() ) );
+  std::vector<ObjectCalcer*> parents;
+  parents.push_back( new ObjectConstCalcer( new DoubleImp( 0.0 ) ) );
+  parents.push_back( new ObjectConstCalcer( new DoubleImp( 0.0 ) ) );
+  parents.push_back( new ObjectConstCalcer( new DoubleImp( param ) ) );
+  parents.push_back( curve );
+  return new ObjectTypeCalcer( ConstrainedRelativePointType::instance(), parents );
+}
+
 ObjectTypeCalcer* ObjectFactory::locusCalcer(
   ObjectCalcer* a, ObjectCalcer* b ) const
 {
@@ -244,8 +256,8 @@ ObjectCalcer* ObjectFactory::getAttachPoint(
  * as follows:
  * - if attachPoint() returns a valid coordinate, then we use the new method
  * - if it is a point: 'old-style' treatment (we can change this shortly)
- * - if it is a curve: 'old-style' treatment (we could use the new approach,
- *   which can be better/worse depending on personal taste, I think)
+ * - if it is a curve: use the new (nov 2009) ConstrainedRelativePoint 
+ *   similar to the RelativePoint
  *
  * the first condition that matches determines the behaviour.
  * the new method works similarly to the curve case, but we generate a new
@@ -274,7 +286,7 @@ ObjectCalcer* ObjectFactory::getAttachPoint(
     if ( loc.valid() )
       param = static_cast<const CurveImp*>( p->imp() )->getParam( loc, doc );
 
-    ObjectCalcer* o = constrainedPointCalcer( p, param );
+    ObjectCalcer* o = constrainedRelativePointCalcer( p, param );
     o->calc( doc );
     return o;
   }
