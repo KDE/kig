@@ -27,6 +27,7 @@
 #include "point_imp.h"
 #include "point_type.h"
 #include "text_type.h"
+#include "conic_types.h"
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
@@ -99,12 +100,17 @@ ObjectTypeCalcer* ObjectFactory::sensiblePointCalcer(
     std::vector<ObjectCalcer*> args;
     int linecount = 0;
     int coniccount = 0;
+    int circlecount = 0;  // Note: a circle is a conic
+//    int cubiccount = 0;  // not yet implemented
     int lineid = -1;
     int conicid = -1;
+//    int cubicid = -1;
     for (int i = 0; i < 2; i++)
     {
       if ( os[i]->imp()->inherits( AbstractLineImp::stype() ) ) {linecount++; lineid = i;}
       if ( os[i]->imp()->inherits( ConicImp::stype() ) ) {coniccount++; conicid = i;}
+      if ( os[i]->imp()->inherits( CircleImp::stype() ) ) circlecount++;
+//      if ( os[i]->imp()->inherits( CubicImp::stype() ) ) {cubiccount++; cubicid = i;}
     }
     if ( linecount == 2 )
     {
@@ -126,17 +132,89 @@ ObjectTypeCalcer* ObjectFactory::sensiblePointCalcer(
       // the identification of the two points might be different!
 
       // we have two intersections, select the nearest one
-      Coordinate p1 = calcConicLineIntersect(
-        conic->cartesianData(), line->data(), 0.0, -1 );
-      Coordinate p2 = calcConicLineIntersect(
-        conic->cartesianData(), line->data(), 0.0, 1 );
+      Coordinate p1, p2;
+      if ( circlecount ) // we cannot use the Conic computation because of how which is used!
+      {
+        const CircleImp* c = static_cast<const CircleImp*>( conic );
+        p1 = calcCircleLineIntersect(
+          c->center(), c->squareRadius(), line->data(), -1 );
+        p2 = calcCircleLineIntersect(
+          c->center(), c->squareRadius(), line->data(), 1 );
+      } else {
+        p1 = calcConicLineIntersect(
+          conic->cartesianData(), line->data(), 0.0, -1 );
+        p2 = calcConicLineIntersect(
+          conic->cartesianData(), line->data(), 0.0, 1 );
+      }
       int which = -1;
       if ( (p2-c).length() < (p1-c).length() ) which = 1;
       args.push_back( os[conicid]->calcer() );
       args.push_back( os[lineid]->calcer() );
       args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
       return new ObjectTypeCalcer( ConicLineIntersectionType::instance(), args );
-    } 
+    }
+    if ( circlecount == 2 )
+    {
+      // circle-circle intersection...
+      const CircleImp* c1 = static_cast<const CircleImp*>( os[0]->imp() );
+      const CircleImp* c2 = static_cast<const CircleImp*>( os[1]->imp() );
+      const Coordinate o1 = c1->center();
+      const Coordinate o2 = c2->center();
+      const double r1sq = c1->squareRadius();
+      const Coordinate a = calcCircleRadicalStartPoint(
+        o1, o2, r1sq, c2->squareRadius()
+        );
+      const LineData lined = LineData (a, Coordinate ( a.x -o2.y + o1.y, a.y + o2.x - o1.x ));
+      Coordinate p1 = calcCircleLineIntersect( o1, r1sq, lined, -1 );
+      Coordinate p2 = calcCircleLineIntersect( o1, r1sq, lined, 1 );
+      int which = -1;
+      if ( (p2-c).length() < (p1-c).length() ) which = 1;
+      args.push_back( os[0]->calcer() );
+      args.push_back( os[1]->calcer() );
+      args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+      return new ObjectTypeCalcer( CircleCircleIntersectionType::instance(), args );
+    }
+/*
+TODO: this is work-in-progress; the skeleton is ok, but all validity checks
+are missing together with the choice of the right point to create
+
+    if ( coniccount == 2 )
+    {
+      // conic-conic intersection...
+      // TODO...
+      const ConicImp* conic1 = static_cast<const ConicImp*>( os[0]->imp() );
+      const ConicImp* conic2 = static_cast<const ConicImp*>( os[1]->imp() );
+      bool valid;
+      const LineData l1 = calcConicRadical(
+        static_cast<const ConicImp*>( conic1 )->cartesianData(),
+        static_cast<const ConicImp*>( conic2 )->cartesianData(),
+        -1, 1, valid);
+      Coordinate p1 = calcConicLineIntersect(
+          conic1->cartesianData(), l1, 0.0, -1 );
+      Coordinate p2 = calcConicLineIntersect(
+          conic1->cartesianData(), l1, 0.0, 1 );
+      const LineData l2 = calcConicRadical(
+        static_cast<const ConicImp*>( conic1 )->cartesianData(),
+        static_cast<const ConicImp*>( conic2 )->cartesianData(),
+        1, 1, valid);
+      Coordinate p3 = calcConicLineIntersect(
+          conic1->cartesianData(), l2, 0.0, -1 );
+      Coordinate p4 = calcConicLineIntersect(
+          conic1->cartesianData(), l2, 0.0, 1 );
+      // test which is the right point, by now just choose p1
+      int whichline = -1;
+      int whichpoint = -1;
+      std::vector<ObjectCalcer*> argsradical;
+      argsradical.push_back( os[0]->calcer() );
+      argsradical.push_back( os[1]->calcer() );
+      argsradical.push_back( new ObjectConstCalcer( new IntImp( whichline ) ) );
+      argsradical.push_back( new ObjectConstCalcer( new IntImp( 1 ) ) );
+      args.push_back( os[0]->calcer() );
+      args.push_back( new ObjectTypeCalcer( ConicRadicalType::instance(), argsradical ) );
+      args.push_back( new ObjectConstCalcer( new IntImp( whichpoint ) ) );
+      return new ObjectTypeCalcer( ConicLineIntersectionType::instance(), args );
+    }
+ */
     // other cases will follow...
   }
   for ( std::vector<ObjectHolder*>::iterator i = os.begin(); i != os.end(); ++i )
