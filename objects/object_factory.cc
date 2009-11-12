@@ -95,14 +95,42 @@ ObjectTypeCalcer* ObjectFactory::sensiblePointCalcer(
   std::vector<ObjectHolder*> os = d.whatAmIOn( c, w );
   if ( os.size() == 2 )
   {
-    // we can calc intersection point *olny* between two objects...
+    // we can calc intersection point *only* between two objects...
     std::vector<ObjectCalcer*> args;
-    args.push_back( os[0]->calcer() );
-    args.push_back( os[1]->calcer() );
-    // the simplest case: two lines...
-    if ( ( os[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
-         ( os[1]->imp()->inherits( AbstractLineImp::stype() ) ) )
+    int linecount = 0;
+    int coniccount = 0;
+    int lineid = -1;
+    int conicid = -1;
+    for (int i = 0; i < 2; i++)
+    {
+      if ( os[i]->imp()->inherits( AbstractLineImp::stype() ) ) {linecount++; lineid = i;}
+      if ( os[i]->imp()->inherits( ConicImp::stype() ) ) {coniccount++; conicid = i;}
+    }
+    if ( linecount == 2 )
+    {
+      // the simplest case: two lines...
+      args.push_back( os[0]->calcer() );
+      args.push_back( os[1]->calcer() );
       return new ObjectTypeCalcer( LineLineIntersectionType::instance(), args );
+    }
+    if ( coniccount == 1 && linecount == 1 )
+    {
+      // conic-line intersection...
+      const ConicImp* conic = static_cast<const ConicImp*>( os[conicid]->imp() );
+      const AbstractLineImp* line = static_cast<const AbstractLineImp*>( os[lineid]->imp() );
+      // we have two intersections, select the nearest one
+
+      Coordinate p1 = calcConicLineIntersect(
+        conic->cartesianData(), line->data(), 0.0, -1 );
+      Coordinate p2 = calcConicLineIntersect(
+        conic->cartesianData(), line->data(), 0.0, 1 );
+      int which = -1;
+      if ( (p2-c).length() < (p1-c).length() ) which = 1;
+      args.push_back( os[conicid]->calcer() );
+      args.push_back( os[lineid]->calcer() );
+      args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
+      return new ObjectTypeCalcer( ConicLineIntersectionType::instance(), args );
+    } 
     // other cases will follow...
   }
   for ( std::vector<ObjectHolder*>::iterator i = os.begin(); i != os.end(); ++i )
