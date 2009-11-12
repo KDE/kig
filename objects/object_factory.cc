@@ -116,10 +116,16 @@ ObjectTypeCalcer* ObjectFactory::sensiblePointCalcer(
     if ( coniccount == 1 && linecount == 1 )
     {
       // conic-line intersection...
+      // TODO: we should also check for existence of the other intersection
+      // point and in that case build an "OtherIntersection"...
       const ConicImp* conic = static_cast<const ConicImp*>( os[conicid]->imp() );
       const AbstractLineImp* line = static_cast<const AbstractLineImp*>( os[lineid]->imp() );
-      // we have two intersections, select the nearest one
 
+      // TODO: warning: if the conic is a circle, then we MUST use
+      // calcCircleLineIntersect in place of calcConicLineIntersect, because
+      // the identification of the two points might be different!
+
+      // we have two intersections, select the nearest one
       Coordinate p1 = calcConicLineIntersect(
         conic->cartesianData(), line->data(), 0.0, -1 );
       Coordinate p2 = calcConicLineIntersect(
