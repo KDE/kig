@@ -70,9 +70,9 @@ double CurveImp::getParamofmin( double a, double b,
 
   double t2 = a + r2 * ( b - a );
   double t1 = a + r1 * ( b - a );
-  Coordinate p1 = getPoint( fmod( t1, 1. ), doc);
+  Coordinate p1 = getPoint( t1, doc);
   double f1 = (p1 - p).length();
-  Coordinate p2 = getPoint( fmod( t2, 1. ), doc);
+  Coordinate p2 = getPoint( t2, doc);
   double f2 = (p2 - p).length();
 
   double fmin, tmin;
@@ -99,7 +99,8 @@ double CurveImp::getParamofmin( double a, double b,
       t2 = t1;
       t1 = a + r1*(b - a);
       f2 = f1;
-      p1 = getPoint( fmod( t1, 1. ), doc);
+      //p1 = getPoint( fmod( t1, 1. ), doc);
+      p1 = getPoint( t1, doc);
       f1 = (p1 - p).length();
     }
     else
@@ -107,7 +108,8 @@ double CurveImp::getParamofmin( double a, double b,
       t1 = t2;
       t2 = a + r2*(b - a);
       f1 = f2;
-      p2 = getPoint( fmod( t2, 1. ), doc);
+      // p2 = getPoint( fmod( t2, 1. ), doc);
+      p2 = getPoint( t2, doc);
       f2 = (p2 - p).length();
     }
     if ( f1 < f2 )
@@ -134,8 +136,10 @@ double CurveImp::getParamofmin( double a, double b,
  */
 double CurveImp::getDist(double param, const Coordinate& p, const KigDocument& doc) const
 {
-  param = fmod( param, 1 );
-  if( param < 0 ) param += 1.;
+//  param = fmod( param, 1 );
+//  if( param < 0 ) param += 1.;
+  if( param < 0 ) param = 0.;
+  if( param > 1 ) param = 1.;
   Coordinate p1 = getPoint( param, doc );
   // i don't think the p1.valid() switch is really necessary, but I
   // prefer to not take any chances :)
@@ -179,61 +183,70 @@ double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
   // whole interval [0,1] this value will be returned in the end.
   double xm = 0.;
   double fxm = getDist( xm, p, doc );
+  double x1,x2;
 
-  int j = 0;
-  double mm = fxm;
+  int j = 1;
+  double mm[N+1];
+  mm[0] = fxm;
 
 //  while( j < N - 1 )
 // TODO: this function is under revision anyway...
-  while( j < N )
+  while( j <= N )
   {
     // [x1,x2] is the range we're currently considering..
-    double x1 = j * incr;
-    double x2 = x1 + incr;
+    x1 = j * incr;
 
     // check the range x1,x2 for the first local maximum..
-    double mm1 = getDist( x2, p, doc);
-    double mm2;
-    j++;
-    if( mm  < mm1 )
-       mm = mm1;
-
-    else
+    double mm1 = getDist( x1, p, doc);
+    if( mm1 < fxm)
     {
-      if ( mm > mm1 )
-      {
-        double x3 = x2 + incr;
-        mm2 = getDist (x3, p, doc);
-        j++;
-        while( mm1 > mm2 && j <= N )
-        {
-          x1 = x2;
-          x2 = x3;
-          x3 = x2 + incr;
-          mm = mm1;
-          mm1 = mm2;
-          mm2 = getDist (x3, p, doc);
-          j++;
-        }
-        x2 = x3;
-      }
-      else
-        mm2 = mm1;
-
-      if ( mm1 <= mm2 )
-      {
-        mm = mm2;
-
-        double xm1 = getParamofmin( x1, x2, p, doc);
-        double fxm1 = getDist( xm1, p, doc );
-        if( fxm1 < fxm )
-        {
-          // we found a new minimum, save it..
-          xm=xm1;
-          fxm=fxm1;
-        }
-      }
+      xm=x1;
+      fxm=mm1;
     }
+    j++;
+    mm[j]=mm1;
+  }
+  if ( xm == 0.)
+  {
+     x1=0.;
+     x2=incr;
+  }
+  else if ( xm >= 1.)
+  {
+     x1=1.-incr;
+     x2=1.;
+  }
+  else
+  {
+    x1=xm-incr;
+    x2=xm+incr;
+  }
+  double xm1 = getParamofmin( x1, x2, p, doc);
+  double fxm1 = getDist( xm1, p, doc );
+  if( fxm1 < fxm )
+  {
+    // we found a new minimum, save it..
+    xm=xm1;
+    fxm=fxm1;
+  }
+  j=1;
+  while (j <N -1 )
+  {
+    if (mm[j] < mm[j-1] && mm[j] < mm[j+1])
+    {
+       if ( fxm > 2*mm[j]-mm[j-1] || fxm > 2*mm[j]-mm[j+1])
+       {
+          xm1 = getParamofmin( (j-1)*incr, (j+1)*incr, p, doc);
+          fxm1 = getDist( xm1, p, doc );
+          if( fxm1 < fxm )
+          {
+    // we found a new minimum, save it..
+             xm=xm1;
+             fxm=fxm1;
+           }
+        }
+    }
+    j++;
   }
   return xm;
 }
