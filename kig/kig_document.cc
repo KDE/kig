@@ -218,7 +218,7 @@ bool KigDocument::getNightVision() const
 
 std::vector<ObjectCalcer*> 
 KigDocument::findIntersectionPoints( const ObjectCalcer* c1,
-                                     const ObjectCalcer* c2)
+                                     const ObjectCalcer* c2) const
 {
   std::vector<ObjectCalcer*> ret;
   for ( std::set<ObjectHolder*>::const_iterator i = mobjects.begin();

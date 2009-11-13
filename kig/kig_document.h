@@ -142,7 +142,7 @@ public:
    * there.
    */
   std::vector<ObjectCalcer*> findIntersectionPoints( const ObjectCalcer* c1,
-                                                     const ObjectCalcer* c2);
+                                                     const ObjectCalcer* c2) const;
 };
 
 #endif

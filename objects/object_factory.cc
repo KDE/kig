@@ -34,9 +34,11 @@
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate.h"
 #include "../misc/object_hierarchy.h"
+#include "../misc/special_constructors.h"
 
 #include <algorithm>
 #include <functional>
+#include <limits>
 
 ObjectHolder* ObjectFactory::fixedPoint( const Coordinate& c ) const
 {
@@ -119,22 +121,60 @@ ObjectTypeCalcer* ObjectFactory::sensiblePointCalcer(
       args.push_back( os[1]->calcer() );
       return new ObjectTypeCalcer( LineLineIntersectionType::instance(), args );
     }
+    if ( circlecount == 2 || ( coniccount == 1 && linecount == 1 ) )
+    {
+      // in this case there are generally two intersections, we need
+      // to check if one of these is already present, in which case
+      // we must use the "Other" variant of the intersection types
+      std::vector<ObjectCalcer*> points =
+        d.findIntersectionPoints( os[0]->calcer(), os[1]->calcer() );
+      std::vector<ObjectCalcer*> uniquepoints = removeDuplicatedPoints( points );
+      if ( uniquepoints.size() == 1 )
+      {
+        bool doother = true;
+        std::vector<ObjectCalcer*> parents = uniquepoints[0]->parents();
+        if ( parents.size() == 3 )
+        {
+          if ( ( parents[0] == os[0]->calcer() && parents[1] == os[1]->calcer() )
+            || ( parents[0] == os[1]->calcer() && parents[1] == os[0]->calcer() ) )
+          {
+            if ( parents[2]->imp()->inherits( IntImp::stype() ) )
+              doother = false;  // we should test if the type is
+                                // ConicLineIntersectionType or
+                                // CircleCircleIntersectionType
+          }
+        }
+        if ( doother )
+        {
+          // in this case we construct an OtherIntersection
+printf ("*** trovata altra intersezione!\n");
+          if ( circlecount == 2 )
+          {
+            args.push_back( os[0]->calcer() );
+            args.push_back( os[1]->calcer() );
+            args.push_back( uniquepoints[0] );
+            return new ObjectTypeCalcer(
+              CircleCircleOtherIntersectionType::instance(), args );
+          } else {
+            args.push_back( os[conicid]->calcer() );
+            args.push_back( os[lineid]->calcer() );
+            args.push_back( uniquepoints[0] );
+            return new ObjectTypeCalcer(
+              ConicLineOtherIntersectionType::instance(), args );
+          }
+        }
+      }
+    }
     if ( coniccount == 1 && linecount == 1 )
     {
       // conic-line intersection...
-      // TODO: we should also check for existence of the other intersection
-      // point and in that case build an "OtherIntersection"...
       const ConicImp* conic = static_cast<const ConicImp*>( os[conicid]->imp() );
       const AbstractLineImp* line = static_cast<const AbstractLineImp*>( os[lineid]->imp() );
 
-      // TODO: warning: if the conic is a circle, then we MUST use
-      // calcCircleLineIntersect in place of calcConicLineIntersect, because
-      // the identification of the two points might be different!
-
       // we have two intersections, select the nearest one
       Coordinate p1, p2;
-      if ( circlecount ) // we cannot use the Conic computation because of how which is used!
-      {
+      if ( circlecount ) // in this case we cannot use the ConicLine computation
+      {                  // because "which" behaves differently when "calc"-ing
         const CircleImp* c = static_cast<const CircleImp*>( conic );
         p1 = calcCircleLineIntersect(
           c->center(), c->squareRadius(), line->data(), -1 );
@@ -174,47 +214,66 @@ ObjectTypeCalcer* ObjectFactory::sensiblePointCalcer(
       args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
       return new ObjectTypeCalcer( CircleCircleIntersectionType::instance(), args );
     }
-/*
-TODO: this is work-in-progress; the skeleton is ok, but all validity checks
-are missing together with the choice of the right point to create
-
     if ( coniccount == 2 )
     {
       // conic-conic intersection...
-      // TODO...
       const ConicImp* conic1 = static_cast<const ConicImp*>( os[0]->imp() );
       const ConicImp* conic2 = static_cast<const ConicImp*>( os[1]->imp() );
       bool valid;
+      double d1, d2, d3, d4;
+      Coordinate p1, p2, p3, p4;
+      d1 = d2 = d3 = d4 = std::numeric_limits<double>::max();
       const LineData l1 = calcConicRadical(
         static_cast<const ConicImp*>( conic1 )->cartesianData(),
         static_cast<const ConicImp*>( conic2 )->cartesianData(),
         -1, 1, valid);
-      Coordinate p1 = calcConicLineIntersect(
-          conic1->cartesianData(), l1, 0.0, -1 );
-      Coordinate p2 = calcConicLineIntersect(
-          conic1->cartesianData(), l1, 0.0, 1 );
+      if ( valid )
+      {
+        p1 = calcConicLineIntersect(
+            conic1->cartesianData(), l1, 0.0, -1 );
+        p2 = calcConicLineIntersect(
+            conic1->cartesianData(), l1, 0.0, 1 );
+        d1 = (p1-c).length();
+        d2 = (p2-c).length();
+      }
       const LineData l2 = calcConicRadical(
         static_cast<const ConicImp*>( conic1 )->cartesianData(),
         static_cast<const ConicImp*>( conic2 )->cartesianData(),
         1, 1, valid);
-      Coordinate p3 = calcConicLineIntersect(
-          conic1->cartesianData(), l2, 0.0, -1 );
-      Coordinate p4 = calcConicLineIntersect(
-          conic1->cartesianData(), l2, 0.0, 1 );
+      if ( valid )
+      {
+        p3 = calcConicLineIntersect(
+            conic1->cartesianData(), l2, 0.0, -1 );
+        p4 = calcConicLineIntersect(
+            conic1->cartesianData(), l2, 0.0, 1 );
+        d3 = (p3-c).length();
+        d4 = (p4-c).length();
+      }
+      double d12 = fmin( d1, d2 );
+      double d34 = fmin( d3, d4 );
       // test which is the right point, by now just choose p1
       int whichline = -1;
+      if ( d34 < d12 )
+      {
+        whichline = 1;
+        d1 = d3;
+        d2 = d4;
+      }
       int whichpoint = -1;
-      std::vector<ObjectCalcer*> argsradical;
-      argsradical.push_back( os[0]->calcer() );
-      argsradical.push_back( os[1]->calcer() );
-      argsradical.push_back( new ObjectConstCalcer( new IntImp( whichline ) ) );
-      argsradical.push_back( new ObjectConstCalcer( new IntImp( 1 ) ) );
+      if ( d2 < d1 ) whichpoint = 1;
       args.push_back( os[0]->calcer() );
-      args.push_back( new ObjectTypeCalcer( ConicRadicalType::instance(), argsradical ) );
+      args.push_back( os[1]->calcer() );
+      args.push_back( new ObjectConstCalcer( new IntImp( whichline ) ) );
+      args.push_back( new ObjectConstCalcer( new IntImp( 1 ) ) );
+      ObjectTypeCalcer* radical =
+          new ObjectTypeCalcer( ConicRadicalType::instance(), args );
+      radical->calc( d );
+      args.clear();
+      args.push_back( os[0]->calcer() );
+      args.push_back( radical );
       args.push_back( new ObjectConstCalcer( new IntImp( whichpoint ) ) );
       return new ObjectTypeCalcer( ConicLineIntersectionType::instance(), args );
     }
- */
     // other cases will follow...
   }
   for ( std::vector<ObjectHolder*>::iterator i = os.begin(); i != os.end(); ++i )
