@@ -259,7 +259,7 @@
     <ActionList name="user_conic_types" />
     <Action name="objects_new_lineconicradical" />
   </ToolBar>
-  <ToolBar name="bezier_toolbar" position="left" iconText="icononly" iconSize="22">
+  <ToolBar name="bezier_toolbar" hidden="true" position="left" iconText="icononly" iconSize="22">
     <text>Bézier Curves</text>
     <Action name="objects_new_bezierquadric" />
     <Action name="objects_new_beziercubic" />
