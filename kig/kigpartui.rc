@@ -288,7 +288,7 @@
     <Action name="objects_new_genericaffinity" />
     <Action name="objects_new_genericprojectivity" />
   </ToolBar>
-  <ToolBar name="tests_toolbar" position="right" iconText="icononly" iconSize="22">
+  <ToolBar name="tests_toolbar" hidden="true" position="right" iconText="icononly" iconSize="22">
     <text>Tests</text>
     <Action name="objects_new_areparallel" />
     <Action name="objects_new_areorthogonal" />
