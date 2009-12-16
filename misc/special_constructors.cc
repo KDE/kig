@@ -1284,6 +1284,7 @@ const QByteArray RationalBezierCurveTypeConstructor::iconFileName( const bool ) 
 bool RationalBezierCurveTypeConstructor::isAlreadySelectedOK(
  const std::vector<ObjectCalcer*>& os, const uint& pos ) const
 {
+  if ( pos % 2 == 1 ) return true;
   if ( pos == os.size() - 2 && os.size() >= 3 ) return true;
   return false;
 }
@@ -1296,7 +1297,7 @@ int RationalBezierCurveTypeConstructor::wantArgs( const std::vector<ObjectCalcer
 
   for ( int i = 0; i <= count; i++ )
   {
-    if ( ! ( os[i]->imp()->inherits( i % 2 == 0 ? PointImp::stype() : NumericTextImp::stype() ) ) ) 
+    if ( ! ( os[i]->imp()->inherits( i % 2 == 0 ? PointImp::stype() : &weightimptypeinstance ) ) ) 
       return ArgsParser::Invalid;
   }
   if ( count < 6 ) return ArgsParser::Valid;
@@ -1364,28 +1365,29 @@ void RationalBezierCurveTypeConstructor::drawprelim( const ObjectDrawer& ,
   std::vector<Coordinate> points;
   std::vector<double> weights;
 
-  for ( uint i = 0; i < parents.size(); i++ )
+  uint count = parents.size();
+  for ( uint i = 0; i < count; i += 2 )
   {
-    if ( parents[i]->imp()->inherits( PointImp::stype() ) ) 
-    { 
-      assert ( i % 2 == 0 );
-      const Coordinate vertex =
-          static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
-      points.push_back( vertex );
-    }
-    else if ( parents[i]->imp()->inherits( NumericTextImp::stype() ) )
-    {
-      assert ( i % 2 == 1 );
-      const double weigth =
-          static_cast<const NumericTextImp*>( parents[i]->imp() )->getValue();
-      weights.push_back( weigth );
-    }
+    bool valid;
+    assert ( parents[i]->imp()->inherits( PointImp::stype() ) );
+    const Coordinate vertex =
+        static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
+    points.push_back( vertex );
+    if ( i+1 >= count ) break;
+    assert ( parents[i+1]->imp()->inherits( &weightimptypeinstance ) );
+    const double weight =
+        getDoubleFromImp( parents[i+1]->imp(), valid );
+    assert ( valid );
+    weights.push_back( weight );
   }
 
-  assert ( points.size() - weights.size() <=1 );
-
-  if ( points.size() - weights.size() == 1) // point was selected, we
+  if ( count % 2 == 1 )
+  {
+                                            // point was selected, we
     weights.push_back( 1 );                 // don't have its weight so far
+  }
+
+  assert ( points.size() == weights.size() );
 
   RationalBezierImp rB = RationalBezierImp( points, weights );
   rB.draw( p );
@@ -1399,10 +1401,11 @@ void RationalBezierCurveTypeConstructor::handlePrelim(
   uint count = os.size();
   if ( count < 5 ) return;
 
-  for ( uint i = 0; i < count; i++ )
+  for ( uint i = 0; i < count; i += 2 )
   {
-    assert ( os[i]->imp()->inherits( PointImp::stype() ) || 
-             os[i]->imp()->inherits( NumericTextImp::stype() ) );
+    assert ( os[i]->imp()->inherits( PointImp::stype() ) );
+    if ( i+1 >= count ) break;
+    assert ( os[i+1]->imp()->inherits( &weightimptypeinstance ) );
   }
 
   std::vector<ObjectCalcer*> args = os;

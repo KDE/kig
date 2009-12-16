@@ -33,7 +33,10 @@
  * is used to match different Imp(s) upon construction
  *
  * lengthimptypeinstance: is just an instance of such class
- * angleimptypeinstance: is just an instance of such class
+ *
+ * Similarly for AngleImpType and WeightImpType
+ * angleimptypeinstance: is just an instance of AngleImpType class
+ * weightimptypeinstance: is just an instance of WeightImpType class
  *
  */
 
@@ -60,6 +63,17 @@ public:
 };
 
 extern AngleImpType angleimptypeinstance;
+
+class WeightImpType
+  : public ObjectImpType
+{
+public:
+  WeightImpType( const ObjectImpType* parent, const char* internalname );
+  ~WeightImpType();
+  virtual bool match( const ObjectImpType* t ) const;
+};
+
+extern WeightImpType weightimptypeinstance;
 
 /*
  * The "InvertibleImpType" class, inherited fron ObjectImpType

@@ -89,6 +89,26 @@ bool AngleImpType::match( const ObjectImpType* t ) const
 AngleImpType angleimptypeinstance(
     ObjectImp::stype(), "angle-object" );
 
+WeightImpType::WeightImpType( const ObjectImpType* parent,
+    const char* internalname )
+  : ObjectImpType( parent, internalname, snbs, snbs,
+                   snbs, snbs, snbs, snbs, snbs, snbs, snbs )
+{
+}
+
+WeightImpType::~WeightImpType()
+{
+}
+
+bool WeightImpType::match( const ObjectImpType* t ) const
+{
+  return t == this || t == SegmentImp::stype() || t == ArcImp::stype()
+                   || t == NumericTextImp::stype() || t == DoubleImp::stype();
+}
+
+WeightImpType weightimptypeinstance(
+    ObjectImp::stype(), "weight-object" );
+
 InvertibleImpType::InvertibleImpType( const ObjectImpType* parent,
     const char* internalname )
   : ObjectImpType( parent, internalname, snbs, snbs,

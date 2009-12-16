@@ -25,6 +25,7 @@
 #include "text_imp.h"
 #include "bezier_imp.h"
 #include "object_calcer.h"
+#include "special_imptypes.h"
 
 #include "../misc/common.h"
 
@@ -362,11 +363,11 @@ static const char rbezier2_constructstatement3[] = I18N_NOOP( "Select this value
 static const struct ArgsParser::spec argsspecRationalBezier2[] =
 {
   { PointImp::stype(), rbezier2_constructstatement, rbezier2_constructstatement2, true },
-  { NumericTextImp::stype(), rbezier2_constructstatement3, rbezier2_constructstatement2, false },
+  { &weightimptypeinstance, rbezier2_constructstatement3, rbezier2_constructstatement2, false },
   { PointImp::stype(), rbezier2_constructstatement, rbezier2_constructstatement2, false },
-  { NumericTextImp::stype(), rbezier2_constructstatement3, rbezier2_constructstatement2, false },
+  { &weightimptypeinstance, rbezier2_constructstatement3, rbezier2_constructstatement2, false },
   { PointImp::stype(), rbezier2_constructstatement, rbezier2_constructstatement2, true },
-  { NumericTextImp::stype(), rbezier2_constructstatement3, rbezier2_constructstatement2, false }
+  { &weightimptypeinstance, rbezier2_constructstatement3, rbezier2_constructstatement2, false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( RationalBezierQuadricType )
@@ -392,22 +393,14 @@ ObjectImp* RationalBezierQuadricType::calc( const Args& parents, const KigDocume
   std::vector<Coordinate> points;
   std::vector<double> weights;
 
-  for ( uint i = 0; i < 6; ++i )
+  for ( uint i = 0; i < 6; i += 2 )
   {
-    if ( parents[i]->inherits( PointImp::stype() ) )
-    {
-      Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
-      points.push_back( point );
-    }
-    else if ( parents[i]->inherits( NumericTextImp::stype() ) )
-    {
-      double value = static_cast<const NumericTextImp*>( parents[i] )->getValue();
-      weights.push_back( value );
-    }
-    else
-    {
-      return new InvalidImp;
-    }
+    bool valid;
+    Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
+    points.push_back( point );
+    double value = getDoubleFromImp( parents[i+1], valid );
+    if ( ! valid ) return new InvalidImp;
+    weights.push_back( value );
   }
 
   return new RationalBezierImp( points, weights );
@@ -481,13 +474,13 @@ static const char rbezier3_constructstatement3[] = I18N_NOOP( "Select this value
 static const struct ArgsParser::spec argsspecRationalBezier3[] =
 {
   { PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, true },
-  { NumericTextImp::stype(), rbezier3_constructstatement3, rbezier3_constructstatement2, false },
+  { &weightimptypeinstance, rbezier3_constructstatement3, rbezier3_constructstatement2, false },
   { PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, false },
-  { NumericTextImp::stype(), rbezier3_constructstatement3, rbezier3_constructstatement2, false },
+  { &weightimptypeinstance, rbezier3_constructstatement3, rbezier3_constructstatement2, false },
   { PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, false },
-  { NumericTextImp::stype(), rbezier3_constructstatement3, rbezier3_constructstatement2, false },
+  { &weightimptypeinstance, rbezier3_constructstatement3, rbezier3_constructstatement2, false },
   { PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, true },
-  { NumericTextImp::stype(), rbezier3_constructstatement3, rbezier3_constructstatement2, false }
+  { &weightimptypeinstance, rbezier3_constructstatement3, rbezier3_constructstatement2, false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( RationalBezierCubicType )
@@ -513,22 +506,14 @@ ObjectImp* RationalBezierCubicType::calc( const Args& parents, const KigDocument
   std::vector<Coordinate> points;
   std::vector<double> weights;
 
-  for ( uint i = 0; i < 8; ++i )
+  for ( uint i = 0; i < 8; i += 2 )
   {
-    if ( parents[i]->inherits( PointImp::stype() ) )
-    {
-      Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
-      points.push_back( point );
-    }
-    else if ( parents[i]->inherits( NumericTextImp::stype() ) )
-    {
-      double value = static_cast<const NumericTextImp*>( parents[i] )->getValue();
-      weights.push_back( value );
-    }
-    else
-    {
-      return new InvalidImp;
-    }
+    bool valid;
+    Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
+    points.push_back( point );
+    double value = getDoubleFromImp( parents[i+1], valid );
+    if ( ! valid ) return new InvalidImp;
+    weights.push_back( value );
   }
 
   return new RationalBezierImp( points, weights );
@@ -623,28 +608,19 @@ ObjectImp* RationalBezierCurveType::calc( const Args& parents, const KigDocument
   uint count = parents.size();
   std::vector<Coordinate> points;
   std::vector<double> weights;
+
+  assert ( count % 2 == 0 );
  
-  for ( uint i = 0; i < count; ++i )
+  for ( uint i = 0; i < count; i += 2 )
   {
-    if ( parents[i]->inherits( PointImp::stype() ) )
-    {
-      assert ( i % 2 == 0 );
-      Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
-      points.push_back( point );
-    }
-    else if ( parents[i]->inherits( NumericTextImp::stype() ) )
-    {
-      assert ( i % 2 == 1 );
-      double value = static_cast<const NumericTextImp*>( parents[i] )->getValue();
-      weights.push_back( value );
-    }
-    else
-    {
-      return new InvalidImp;
-    }
+    bool valid;
+    Coordinate point = static_cast<const PointImp*>( parents[i] )->coordinate();
+    points.push_back( point );
+    double value = getDoubleFromImp( parents[i+1], valid );
+    if ( ! valid ) return new InvalidImp;
+    weights.push_back( value );
   }
 
-  assert ( points.size() == weights.size() );
   return new RationalBezierImp( points, weights );
 }
 
@@ -683,7 +659,7 @@ bool RationalBezierCurveType::canMove( const ObjectTypeCalcer& o ) const
 bool RationalBezierCurveType::isFreelyTranslatable( const ObjectTypeCalcer& o ) const
 {
   std::vector<ObjectCalcer*> parents = o.parents();
-  for ( uint i = 0; i < parents.size(); ++i )
+  for ( uint i = 0; i < parents.size(); i += 2 )
   {
     if ( !parents[i]->isFreelyTranslatable() ) return false;
   }
@@ -695,7 +671,7 @@ void RationalBezierCurveType::move( ObjectTypeCalcer& o, const Coordinate& to,
 {
   std::vector<ObjectCalcer*> parents = o.parents();
   const Coordinate ref = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
-  for ( uint i = 0; i < parents.size(); ++i )
+  for ( uint i = 0; i < parents.size(); i += 2 )
   {
      const Coordinate a = static_cast<const PointImp*>( parents[i]->imp() )->coordinate();
      parents[i]->move( to + a - ref, d );
@@ -713,7 +689,7 @@ std::vector<ObjectCalcer*> RationalBezierCurveType::movableParents( const Object
 {
   std::vector<ObjectCalcer*> parents = ourobj.parents();
   std::set<ObjectCalcer*> ret;
-  for ( uint i = 0; i < parents.size(); ++i )
+  for ( uint i = 0; i < parents.size(); i += 2 )
   {
     std::vector<ObjectCalcer*> tmp = parents[i]->movableParents();
     ret.insert( tmp.begin(), tmp.end() );
@@ -721,5 +697,4 @@ std::vector<ObjectCalcer*> RationalBezierCurveType::movableParents( const Object
   ret.insert( parents.begin(), parents.end() );
   return std::vector<ObjectCalcer*>( ret.begin(), ret.end() );
 }
-
 
