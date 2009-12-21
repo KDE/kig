@@ -37,8 +37,8 @@
  * Bézier curve of degree 2
  */
 
-static const char bezier2_constructstatement[] = I18N_NOOP( "Construct a quadric with this control point" );
-static const char bezier2_constructstatement2[] = I18N_NOOP( "Select a point to be a control point of the new quadric..." );
+static const char bezier2_constructstatement[] = I18N_NOOP( "Construct a Bézier curve with this control point" );
+static const char bezier2_constructstatement2[] = I18N_NOOP( "Select a point to be a control point of the new Bézier curve..." );
 
 static const struct ArgsParser::spec argsspecBezier2[] =
 {
@@ -355,8 +355,8 @@ std::vector<ObjectCalcer*> BezierCurveType::movableParents( const ObjectTypeCalc
  * Rational Bézier curve of degree 2
  */
 
-static const char rbezier2_constructstatement[] = I18N_NOOP( "Construct a rational quadric with this control point" );
-static const char rbezier2_constructstatement2[] = I18N_NOOP( "Select three points and three numeric values as weights to construct rational quadric..." );
+static const char rbezier2_constructstatement[] = I18N_NOOP( "Construct a rational Bézier curve with this control point" );
+static const char rbezier2_constructstatement2[] = I18N_NOOP( "Select three points and three numeric values as weights to construct rational Bézier curve..." );
 static const char rbezier2_constructstatement3[] = I18N_NOOP( "Select this value as weight" );
 
 

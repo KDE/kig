@@ -119,11 +119,11 @@
       </Menu>
       <Menu name="new_bezier" icon="beziercurves">
         <text>&amp;Bézier curves</text>
-        <Action name="objects_new_bezierquadric" />
+        <Action name="objects_new_bezierquadratic" />
         <Action name="objects_new_beziercubic" />
         <Action name="objects_new_beziercurve" />
         <Separator />
-        <Action name="objects_new_rationalbezierquadric" />
+        <Action name="objects_new_rationalbezierquadratic" />
         <Action name="objects_new_rationalbeziercubic" />
         <Action name="objects_new_rationalbeziercurve" />
       </Menu>
@@ -261,11 +261,11 @@
   </ToolBar>
   <ToolBar name="bezier_toolbar" hidden="true" position="left" iconText="icononly" iconSize="22">
     <text>Bézier Curves</text>
-    <Action name="objects_new_bezierquadric" />
+    <Action name="objects_new_bezierquadratic" />
     <Action name="objects_new_beziercubic" />
     <Action name="objects_new_beziercurve" />
     <Separator />
-    <Action name="objects_new_rationalbezierquadric" />
+    <Action name="objects_new_rationalbezierquadratic" />
     <Action name="objects_new_rationalbeziercubic" />
     <Action name="objects_new_rationalbeziercurve" />
   </ToolBar>

@@ -236,16 +236,16 @@ const ObjectImpType* BezierImp::stype()
 const ObjectImpType* BezierImp::stype2()
 {
   static const ObjectImpType B3(
-    BezierImp::stype(), "bezier_quadric",
-    I18N_NOOP( "Bézier Quadric" ),
-    I18N_NOOP( "Select this Bézier Quadric" ),
-    I18N_NOOP( "Select Bézier Quadric %1" ),
-    I18N_NOOP( "Remove a Bézier Quadric" ),
-    I18N_NOOP( "Add a Bézier Quadric" ),
-    I18N_NOOP( "Move a Bézier Quadric" ),
-    I18N_NOOP( "Attach to this Bézier Quadric" ),
-    I18N_NOOP( "Show a Bézier Quadric" ),
-    I18N_NOOP( "Hide a Bézier Quadric" )
+    BezierImp::stype(), "bezier_quadratic",
+    I18N_NOOP( "Bézier Quadratic" ),
+    I18N_NOOP( "Select this Bézier Quadratic" ),
+    I18N_NOOP( "Select Bézier Quadratic %1" ),
+    I18N_NOOP( "Remove a Bézier Quadratic" ),
+    I18N_NOOP( "Add a Bézier Quadratic" ),
+    I18N_NOOP( "Move a Bézier Quadratic" ),
+    I18N_NOOP( "Attach to this Bézier Quadratic" ),
+    I18N_NOOP( "Show a Bézier Quadratic" ),
+    I18N_NOOP( "Hide a Bézier Quadratic" )
     );
 
   return &B3;
@@ -534,16 +534,16 @@ const ObjectImpType* RationalBezierImp::stype()
 const ObjectImpType* RationalBezierImp::stype2()
 {
   static const ObjectImpType R3(
-    BezierImp::stype(), "rational_bezier_quadric",
-    I18N_NOOP( "Rational Bézier Quadric" ),
-    I18N_NOOP( "Select this Rational Bézier Quadric" ),
-    I18N_NOOP( "Select Rational Bézier Quadric %1" ),
-    I18N_NOOP( "Remove a Rational Bézier Quadric" ),
-    I18N_NOOP( "Add a Rational Bézier Quadric" ),
-    I18N_NOOP( "Move a Rational Bézier Quadric" ),
-    I18N_NOOP( "Attach to this Rational Bézier Quadric" ),
-    I18N_NOOP( "Show a Rational Bézier Quadric" ),
-    I18N_NOOP( "Hide a Rational Bézier Quadric" )
+    BezierImp::stype(), "rational_bezier_quadratic",
+    I18N_NOOP( "Rational Bézier Quadratic" ),
+    I18N_NOOP( "Select this Rational Bézier Quadratic" ),
+    I18N_NOOP( "Select Rational Bézier Quadratic %1" ),
+    I18N_NOOP( "Remove a Rational Bézier Quadratic" ),
+    I18N_NOOP( "Add a Rational Bézier Quadratic" ),
+    I18N_NOOP( "Move a Rational Bézier Quadratic" ),
+    I18N_NOOP( "Attach to this Rational Bézier Quadratic" ),
+    I18N_NOOP( "Show a Rational Bézier Quadratic" ),
+    I18N_NOOP( "Hide a Rational Bézier Quadratic" )
     );
 
   return &R3;

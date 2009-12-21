@@ -533,11 +533,11 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       BezierQuadricType::instance(),
-      I18N_NOOP( "Bézier Quadric by its Control Points" ),
-      I18N_NOOP( "Construct a Bézier quadric given its three control points." ),
+      I18N_NOOP( "Bézier Quadratic by its Control Points" ),
+      I18N_NOOP( "Construct a Bézier quadratic given its three control points." ),
       "bezier3" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_bezierquadric" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_bezierquadratic" ) );
 
      c = new SimpleObjectTypeConstructor(
       BezierCubicType::instance(),
@@ -553,11 +553,11 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       RationalBezierQuadricType::instance(),
-      I18N_NOOP( "Rational Bézier Quadric by its Control Points" ),
-      I18N_NOOP( "Construct a Rational Bézier quadric given its three control points." ),
+      I18N_NOOP( "Rational Bézier Quadratic by its Control Points" ),
+      I18N_NOOP( "Construct a Rational Bézier quadratic given its three control points." ),
       "rbezier3" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_rationalbezierquadric" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_rationalbezierquadratic" ) );
 
      c = new SimpleObjectTypeConstructor(
       RationalBezierCubicType::instance(),
