@@ -82,7 +82,7 @@ Bug...</guimenuitem></menuchoice>), or just contact me at
 <email>toscano.pino@tiscali.it</email>.
 </para>
 <para>
-Since &kig; supports macros and the construction of locuses, it allows for
+Since &kig; supports macros and the construction of loci, it allows for
 some
 rather advanced macros to be defined. If you have created an
 interesting macro, which you think might be useful for other
@@ -265,7 +265,7 @@ moving them by &LMB; clicking and dragging any one of them. When you are done,
 simply release the &LMB;.
 </para>
 <note><para>For some types of objects (especially when defined by
-complicated locuses), moving them can be slow on old hardware. This
+complicated loci), moving them can be slow on old hardware. This
 is unfortunate, but inevitable, given the calculations involved.
 </para></note> <note><para>If you &RMB; click one of the selected objects, and
 choose
@@ -612,14 +612,14 @@ format="PNG"/>
 </screenshot>
 </section>
 
-<section id="locuses">
-<title>Locuses</title>
+<section id="loci">
+<title>Loci</title>
 <para>
-&kig; supports the use of locuses. A locus is mathematically defined as
+&kig; supports the use of loci. A locus is mathematically defined as
 the set of all points or lines that satisfy or are determined by specific
 conditions; as in <quote>the locus of points
 equidistant from a given point is a circle</quote>.
-Let's look at an example of how to use locuses in &kig;:
+Let's look at an example of how to use loci in &kig;:
 </para>
 <para>
 Consider the following geometrical construction: We draw a
@@ -853,7 +853,7 @@ to files, import them from files, edit and delete them.
 </listitem>
 <listitem>
 <para>
-&kig; supports the construction of locuses.
+&kig; supports the construction of loci.
 </para>
 </listitem>
 <listitem>
