@@ -37,8 +37,8 @@
  * Bézier curve of degree 2
  */
 
-static const char bezier2_constructstatement[] = I18N_NOOP( "Construct a Bézier curve with this control point" );
-static const char bezier2_constructstatement2[] = I18N_NOOP( "Select a point to be a control point of the new Bézier curve..." );
+static const char bezier2_constructstatement[] = I18N_NOOP( "Construct a quadratic Bézier curve with this control point" );
+static const char bezier2_constructstatement2[] = I18N_NOOP( "Select a point to be a control point of the new quadratic Bézier curve..." );
 
 static const struct ArgsParser::spec argsspecBezier2[] =
 {
@@ -137,8 +137,8 @@ std::vector<ObjectCalcer*> BezierQuadricType::movableParents( const ObjectTypeCa
  * Bézier curve of degree 3
  */
 
-static const char bezier3_constructstatement[] = I18N_NOOP( "Construct a cubic with this control point" );
-static const char bezier3_constructstatement2[] = I18N_NOOP( "Select a point to be a control point of the new cubic..." );
+static const char bezier3_constructstatement[] = I18N_NOOP( "Construct a cubic Bézier curve with this control point" );
+static const char bezier3_constructstatement2[] = I18N_NOOP( "Select a point to be a control point of the new cubic Bézier curve..." );
 
 static const struct ArgsParser::spec argsspecBezier3[] =
 {
@@ -355,7 +355,7 @@ std::vector<ObjectCalcer*> BezierCurveType::movableParents( const ObjectTypeCalc
  * Rational Bézier curve of degree 2
  */
 
-static const char rbezier2_constructstatement[] = I18N_NOOP( "Construct a rational Bézier curve with this control point" );
+static const char rbezier2_constructstatement[] = I18N_NOOP( "Construct a quadratic rational Bézier curve with this control point" );
 static const char rbezier2_constructstatement2[] = I18N_NOOP( "Select three points and three numeric values as weights to construct rational Bézier curve..." );
 static const char rbezier2_constructstatement3[] = I18N_NOOP( "Select this value as weight" );
 
@@ -466,8 +466,8 @@ std::vector<ObjectCalcer*> RationalBezierQuadricType::movableParents( const Obje
  * Rational Bézier curve of degree 3
  */
 
-static const char rbezier3_constructstatement[] = I18N_NOOP( "Construct a rational cubic with this control point" );
-static const char rbezier3_constructstatement2[] = I18N_NOOP( "Select three points and three numeric values as weights to construct rational cubic..." );
+static const char rbezier3_constructstatement[] = I18N_NOOP( "Construct a cubic rational Bézier curve with this control point" );
+static const char rbezier3_constructstatement2[] = I18N_NOOP( "Select three points and three numeric values as weights to construct rational Bézier curve..." );
 static const char rbezier3_constructstatement3[] = I18N_NOOP( "Select this value as weight" );
 
 
