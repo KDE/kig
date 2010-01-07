@@ -785,7 +785,7 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& icon,
 {
 //kDebug() << "ID: " << id;
   if ( mmenuslast[menu]->actions().size() >= MAXMENUITEMS )
-    mmenuslast[menu] = mmenuslast[menu]->addMenu( "   more..." );
+    mmenuslast[menu] = mmenuslast[menu]->addMenu( i18nc( "More menu items", "More..." ) );
   QAction* newaction = mmenuslast[menu]->addAction( icon, name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
   return newaction;
@@ -794,7 +794,7 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& icon,
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QString& name, int id )
 {
   if ( mmenuslast[menu]->actions().size() >= MAXMENUITEMS )
-    mmenuslast[menu] = mmenuslast[menu]->addMenu( "   more..." );
+    mmenuslast[menu] = mmenuslast[menu]->addMenu( i18nc( "More menu items", "More..." ) );
   QAction* newaction = mmenuslast[menu]->addAction( name );
   newaction->setData( QVariant::fromValue( ( menu << 8 ) | id ) );
   return newaction;
@@ -803,7 +803,7 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QString& nam
 QAction* NormalModePopupObjects::addInternalAction( int menu, QAction* act )
 {
   if ( mmenuslast[menu]->actions().size() >= MAXMENUITEMS )
-    mmenuslast[menu] = mmenuslast[menu]->addMenu( "   more..." );
+    mmenuslast[menu] = mmenuslast[menu]->addMenu( i18nc( "More menu items", "More..." ) );
   mmenuslast[menu]->addAction( act );
   return act;
 }
