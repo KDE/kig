@@ -35,7 +35,7 @@ Devriese</holder>
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2005-08-20</date> <releaseinfo>1.0 (&kde; 4.1.1)</releaseinfo>
+<date>2010-08-07</date> <releaseinfo>1.0 (&kde; 4.4)</releaseinfo>
 
 <abstract>
 <para>
@@ -232,14 +232,14 @@ to keep the current selection.
 </listitem>
 </itemizedlist>
 <para>
-When you have more than one object under the mouse, you can easily
+When you have more than one object under the mouse (indicated by <guilabel>Which object?
+</guilabel> in the statusbar and at the mouse cursor), you can easily
 choose which object select or add to the current selection. Click
 with the &LMB;, while holding the &Shift; key, to have a popup with
 all the objects under the mouse. Then, you can select the object
 you need. As said before, the behaviour of the &Ctrl; key will
 affect the selection.
 </para>
-
 <screenshot>
 <screeninfo>Selecting objects</screeninfo>
 <mediaobject>
@@ -394,12 +394,70 @@ Toolbars...</guimenuitem></menuchoice> option if you want to do this.
 &kig; has context menus for its objects. Try
 &RMB; clicking on an object in order to see
 a context menu appear. There are many options: for
-constructing other objects, setting colours, and even hiding,
+constructing other objects, setting colours, pen width, style, and even hiding,
 moving or deleting objects. Some objects have options of
 their own (&eg; you can redefine certain points to be
 constrained to a line if they previously weren't, &etc;).
 These options should be very straightforward to understand.
 </para>
+
+<para>Some of the actions in the context menu of an object need another 
+defined object as reference, for example:</para>
+
+<variablelist>
+<varlistentry>
+<term>Rotate a shape a specific number of degrees around a point</term>
+<listitem>
+<orderedlist>
+<listitem><para>Click on <menuchoice><guimenu>Objects</guimenu>
+<guisubmenu>Angles</guisubmenu><guimenuitem>Angle by Three Points</guimenuitem> 
+</menuchoice> and make your desired angle of rotation somewhere in the &kig; window, generally in 
+an unobtrusive place. If desired, right click on the angle and click on 
+<menuchoice><guimenu>Add Text Label</guimenu><guimenuitem>Angle in Degrees.
+</guimenuitem></menuchoice>.</para></listitem>
+<listitem><para>Click with the &RMB; on the angle and select <guimenuitem>Set 
+Size</guimenuitem> and insert the new size for this angle in the dialog.
+</para></listitem>
+<listitem><para>Click on <guimenu>Objects</guimenu> and construct your desired object.
+</para></listitem>
+<listitem><para>Right click on your shape, and select on <menuchoice><guimenu>
+Transform</guimenu><guimenuitem>Rotate</guimenuitem></menuchoice>.</para></listitem>
+<listitem><para>Set your desired point of rotation.</para></listitem>
+<listitem><para>Click on your angle.</para></listitem>
+<listitem><para>Your shape is rotated!</para></listitem>
+</orderedlist>
+<note>
+<para>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left AND
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Translate an object</term>
+<listitem>
+<orderedlist>
+<listitem><para>Click on <menuchoice><guimenu>Objects</guimenu>
+<guisubmenu>Vectors &amp; Segments</guisubmenu><guimenuitem>Vector</guimenuitem> 
+</menuchoice> and construct the object by selecting the start and end point somewhere
+in the &kig; window.</para></listitem>
+<listitem><para>To adjust length and direction of the vector you have to edit its start
+and end point. Select them and choose in the context menu <guimenuitem>Set Coordinate...</guimenuitem>
+</para></listitem>
+<listitem><para>Click on <guimenu>Objects</guimenu> and construct your desired object.
+</para></listitem>
+<listitem><para>Right click on your object, and select on <menuchoice><guimenu>
+Transform</guimenu><guimenuitem>Translate</guimenuitem></menuchoice>.</para></listitem>
+<listitem><para>Select the vector to translate by.</para></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
 </section>
 
 <section id="document-context-menus">
@@ -409,7 +467,7 @@ These options should be very straightforward to understand.
 object) will
 present a popup that you can use to start constructing a new object, change the
 coordinate system used, show hidden
-objects, and even zoom in and zoom out of the document.
+objects, zoom in and zoom out of the document and switch to the full screen mode.
 </para>
 </section>
 
@@ -718,7 +776,7 @@ code is valid Python code. People familiar with Python will
 notice that we are actually defining a Python function called
 <function>calc</function>. It is therefore necessary to adhere
 to the Python rules for defining functions. For example, every
-line of the function should start with a <keysym>Tab</keysym>.
+line of the function should start with a &Tab;.
 The first line not starting with a <keysym>tab</keysym> ends the
 definition of the function.
 </para>
