@@ -232,8 +232,8 @@ to keep the current selection.
 </listitem>
 </itemizedlist>
 <para>
-When you have more than one object under the mouse (indicated by <guilabel>Which object?
-</guilabel> in the statusbar and at the mouse cursor), you can easily
+When you have more than one object under the mouse (indicated by <guilabel>Which object?</guilabel>
+in the statusbar and at the mouse cursor), you can easily
 choose which object select or add to the current selection. Click
 with the &LMB;, while holding the &Shift; key, to have a popup with
 all the objects under the mouse. Then, you can select the object
@@ -413,8 +413,7 @@ defined object as reference, for example:</para>
 <guisubmenu>Angles</guisubmenu><guimenuitem>Angle by Three Points</guimenuitem> 
 </menuchoice> and make your desired angle of rotation somewhere in the &kig; window, generally in 
 an unobtrusive place. If desired, right click on the angle and click on 
-<menuchoice><guimenu>Add Text Label</guimenu><guimenuitem>Angle in Degrees.
-</guimenuitem></menuchoice>.</para></listitem>
+<menuchoice><guimenu>Add Text Label</guimenu><guimenuitem>Angle in Degrees</guimenuitem></menuchoice>.</para></listitem>
 <listitem><para>Click with the &RMB; on the angle and select <guimenuitem>Set 
 Size</guimenuitem> and insert the new size for this angle in the dialog.
 </para></listitem>
@@ -451,8 +450,8 @@ and end point. Select them and choose in the context menu <guimenuitem>Set Coord
 </para></listitem>
 <listitem><para>Click on <guimenu>Objects</guimenu> and construct your desired object.
 </para></listitem>
-<listitem><para>Right click on your object, and select on <menuchoice><guimenu>
-Transform</guimenu><guimenuitem>Translate</guimenuitem></menuchoice>.</para></listitem>
+<listitem><para>Right click on your object, and select on <menuchoice><guimenu>Transform</guimenu>
+<guimenuitem>Translate</guimenuitem></menuchoice>.</para></listitem>
 <listitem><para>Select the vector to translate by.</para></listitem>
 </orderedlist>
 </listitem>
