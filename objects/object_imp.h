@@ -39,7 +39,9 @@ class CubicImp;
 class SegmentImp;
 class RayImp;
 class ArcImp;
-class PolygonImp;
+class FilledPolygonImp;
+class ClosedPolygonalImp;
+class OpenPolygonalImp;
 class BezierImp;
 
 /**
@@ -74,7 +76,9 @@ public:
   virtual void visit( const SegmentImp* imp );
   virtual void visit( const RayImp* imp );
   virtual void visit( const ArcImp* imp );
-  virtual void visit( const PolygonImp* imp );
+  virtual void visit( const FilledPolygonImp* imp );
+  virtual void visit( const ClosedPolygonalImp* imp );
+  virtual void visit( const OpenPolygonalImp* imp );
   virtual void visit( const BezierImp* imp );
 };
 

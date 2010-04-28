@@ -476,6 +476,13 @@ void XFigExportImpVisitor::visit( const FilledPolygonImp* imp )
       mstream << "\n";
 }
 
+void XFigExportImpVisitor::visit(const ClosedPolygonalImp* imp)
+{
+}
+void XFigExportImpVisitor::visit(const OpenPolygonalImp* imp)
+{
+}
+
 void XFigExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(

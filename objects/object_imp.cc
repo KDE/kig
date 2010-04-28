@@ -151,7 +151,15 @@ void ObjectImpVisitor::visit( const ArcImp* )
 {
 }
 
-void ObjectImpVisitor::visit( const PolygonImp* )
+void ObjectImpVisitor::visit( const FilledPolygonImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const ClosedPolygonalImp* )
+{
+}
+
+void ObjectImpVisitor::visit( const OpenPolygonalImp* )
 {
 }
 

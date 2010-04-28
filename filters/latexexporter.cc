@@ -481,6 +481,14 @@ void LatexExportImpVisitor::visit( const FilledPolygonImp* imp )
   newLine();
 }
 
+void LatexExportImpVisitor::visit(const ClosedPolygonalImp* imp)
+{
+}
+
+void LatexExportImpVisitor::visit(const OpenPolygonalImp* imp)
+{
+}
+
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
