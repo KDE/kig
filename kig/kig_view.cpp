@@ -40,6 +40,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include <iterator>
 
 KigWidget::KigWidget( KigPart* part,
                       KigView* view,

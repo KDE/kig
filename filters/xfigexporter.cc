@@ -43,6 +43,7 @@
 #include <kmessagebox.h>
 
 #include <map>
+#include <iterator>
 
 // we need this for storing colors in a std::map..
 static bool operator<( const QColor& a, const QColor& b )

@@ -31,6 +31,7 @@
 #include <functional>
 #include <algorithm>
 #include <cmath>
+#include <iterator>
 
 using std::find;
 

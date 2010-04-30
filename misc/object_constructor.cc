@@ -42,6 +42,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <iterator>
 
 const QString StandardConstructorBase::descriptiveName() const
 {

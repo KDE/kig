@@ -26,6 +26,8 @@
 
 #include <klocale.h>
 
+#include <iterator>
+
 const char* ObjectType::fullName() const
 {
   return mfulltypename;

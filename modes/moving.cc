@@ -34,6 +34,7 @@
 #include <functional>
 #include <algorithm>
 #include <map>
+#include <iterator>
 
 void MovingModeBase::initScreen( const std::vector<ObjectCalcer*>& in )
 {

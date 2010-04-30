@@ -27,6 +27,7 @@
 #include <algorithm>
 #include <set>
 #include <typeinfo>
+#include <iterator>
 
 void ObjectTypeCalcer::calc( const KigDocument& doc )
 {

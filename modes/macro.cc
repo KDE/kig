@@ -34,6 +34,7 @@
 
 #include <functional>
 #include <algorithm>
+#include <iterator>
 
 using namespace std;
 

@@ -57,6 +57,8 @@
 #include <kdebug.h>
 #include <klocale.h>
 
+#include <iterator>
+
 static ObjectTypeCalcer* intersectionPoints( const std::vector<ObjectCalcer*>& parents, int which )
 {
   if ( parents.size() != 2 ) return 0;

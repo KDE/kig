@@ -38,6 +38,7 @@
 #include <kfontdialog.h>
 
 #include <cmath>
+#include <iterator>
 
 static const ArgsParser::spec arggspeccs[] =
 {

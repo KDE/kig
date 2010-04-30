@@ -64,6 +64,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <iterator>
 
 /*
  * conic-line and circle-circle intersection (with search for already computed

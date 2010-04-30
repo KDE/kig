@@ -49,6 +49,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <iterator>
 
 class TextLabelModeBase::Private
 {

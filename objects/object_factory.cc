@@ -39,6 +39,7 @@
 #include <algorithm>
 #include <functional>
 #include <limits>
+#include <iterator>
 
 ObjectHolder* ObjectFactory::fixedPoint( const Coordinate& c ) const
 {

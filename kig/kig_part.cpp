@@ -42,6 +42,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <iterator>
 
 #include <kaction.h>
 #include <kdebug.h>

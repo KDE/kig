@@ -29,6 +29,7 @@
 #include <qdom.h>
 #include <qregexp.h>
 #include <algorithm>
+#include <iterator>
 using namespace std;
 
 template<typename T>

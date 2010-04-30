@@ -31,6 +31,7 @@
 #include "../misc/coordinate_system.h"
 
 #include <vector>
+#include <iterator>
 
 using std::vector;
 using std::max;

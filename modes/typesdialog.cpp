@@ -42,6 +42,7 @@
 #include <qstringlist.h>
 
 #include <algorithm>
+#include <iterator>
 
 static QString wrapAt( const QString& str, int col = 50 )
 {

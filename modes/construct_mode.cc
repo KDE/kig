@@ -42,6 +42,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <iterator>
 
 static void redefinePoint( ObjectTypeCalcer* mpt, const Coordinate& c, KigDocument& doc, const KigWidget& w )
 {

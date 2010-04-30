@@ -26,6 +26,7 @@
 #include "../misc/calcpaths.h"
 
 #include <assert.h>
+#include <iterator>
 
 KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
                           bool showgrid, bool showaxes, bool nv )
