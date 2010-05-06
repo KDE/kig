@@ -235,7 +235,7 @@ to keep the current selection.
 When you have more than one object under the mouse (indicated by <guilabel>Which object?</guilabel>
 in the statusbar and at the mouse cursor), you can easily
 choose which object select or add to the current selection. Click
-with the &LMB;, while holding the &Shift; key, to have a popup with
+with the &LMB;, while holding the &Shift; key or click the &RMB;, to have a popup with
 all the objects under the mouse. Then, you can select the object
 you need. As said before, the behaviour of the &Ctrl; key will
 affect the selection.
