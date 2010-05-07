@@ -427,7 +427,7 @@ Transform</guimenu><guimenuitem>Rotate</guimenuitem></menuchoice>.</para></listi
 </orderedlist>
 <note>
 <para>Constructing your angle with an opening to the right allows for clockwise
-shape rotation. Constructing your angle with an opening to the left AND
+shape rotation. Constructing your angle with an opening to the left <emphasis>and</emphasis>
 adding the text label will allow both clockwise and counter-clockwise
 rotations.</para></note>
 <para>
