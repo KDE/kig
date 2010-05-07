@@ -805,8 +805,8 @@ The Python code needed is:</para>
 
 <programlisting>
 def calc( a, b ):
-m = ( a.coordinate() + b.coordinate() ) / 2;
-return Point( m )
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
 </programlisting>
 
 <screenshot>
