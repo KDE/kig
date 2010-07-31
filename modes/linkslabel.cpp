@@ -19,9 +19,9 @@
 #include "linkslabel.h"
 #include "linkslabel.moc"
 
-#include <qlabel.h>
+#include <tqlabel.h>
 #include <kurllabel.h>
-#include <qlayout.h>
+#include <tqlayout.h>
 
 #include <vector>
 #include <algorithm>
@@ -33,27 +33,27 @@ using namespace std;
 class LinksLabel::Private
 {
 public:
-  QHBoxLayout* layout;
-  std::vector<QLabel*> labels;
+  TQHBoxLayout* layout;
+  std::vector<TQLabel*> labels;
   std::vector<KURLLabel*> urllabels;
 };
 
-LinksLabel::LinksLabel( QWidget* parent, const char* name )
-  : QWidget( parent, name )
+LinksLabel::LinksLabel( TQWidget* parent, const char* name )
+  : TQWidget( parent, name )
 {
   p = new Private;
-  p->layout = new QHBoxLayout( this );
+  p->layout = new TQHBoxLayout( this );
 
-  QLabel* l = new QLabel( QString::fromUtf8( "Dit is een " ), this );
+  TQLabel* l = new TQLabel( TQString::fromUtf8( "Dit is een " ), this );
   p->labels.push_back( l );
   p->layout->addWidget( l );
 
-  KURLLabel* u = new KURLLabel( QString::fromUtf8( "http://www.kde.org/" ),
-                                QString::fromUtf8( "url"), this );
+  KURLLabel* u = new KURLLabel( TQString::fromUtf8( "http://www.kde.org/" ),
+                                TQString::fromUtf8( "url"), this );
   p->urllabels.push_back( u );
   p->layout->addWidget( u );
 
-  l = new QLabel( QString::fromUtf8( " !" ), this );
+  l = new TQLabel( TQString::fromUtf8( " !" ), this );
   p->labels.push_back( l );
   p->layout->addWidget(l );
 
@@ -67,7 +67,7 @@ LinksLabel::~LinksLabel()
 
 void LinksLabel::urlClicked()
 {
-  const QObject* o = sender();
+  const TQObject* o = sender();
   std::vector<KURLLabel*>::iterator i = std::find( p->urllabels.begin(), p->urllabels.end(), static_cast<const KURLLabel*>( o ) );
   assert( i != p->urllabels.end() );
   emit linkClicked( i - p->urllabels.begin() );
@@ -78,18 +78,18 @@ LinksLabel::LinksLabelEditBuf LinksLabel::startEdit()
   return LinksLabelEditBuf();
 }
 
-void LinksLabel::addText( const QString& s, LinksLabelEditBuf& buf )
+void LinksLabel::addText( const TQString& s, LinksLabelEditBuf& buf )
 {
-  buf.data.push_back( std::pair<bool, QString>( false, s ) );
+  buf.data.push_back( std::pair<bool, TQString>( false, s ) );
 }
 
-void LinksLabel::addLink( const QString& s, LinksLabelEditBuf& buf )
+void LinksLabel::addLink( const TQString& s, LinksLabelEditBuf& buf )
 {
-  buf.data.push_back( std::pair<bool, QString>( true, s ) );
+  buf.data.push_back( std::pair<bool, TQString>( true, s ) );
 }
 
 namespace {
-  void deleteObj( QObject* o ) { delete o; }
+  void deleteObj( TQObject* o ) { delete o; }
 }
 
 void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
@@ -100,7 +100,7 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
   p->labels.clear();
 
   delete p->layout;
-  p->layout = new QHBoxLayout( this );
+  p->layout = new TQHBoxLayout( this );
 
   for ( LinksLabelEditBuf::vec::iterator i = buf.data.begin(); i != buf.data.end(); ++i )
   {
@@ -108,27 +108,27 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
     {
       // we need a KURLLabel...
       // the url is an unused stub...
-      KURLLabel* l = new KURLLabel( QString::fromUtf8( "http://edu.kde.org/kig" ),
+      KURLLabel* l = new KURLLabel( TQString::fromUtf8( "http://edu.kde.org/kig" ),
                                     i->second, this );
       p->urllabels.push_back( l );
       p->layout->addWidget( l );
-      connect( l, SIGNAL( leftClickedURL() ), SLOT( urlClicked() ) );
+      connect( l, TQT_SIGNAL( leftClickedURL() ), TQT_SLOT( urlClicked() ) );
     }
     else
     {
       // we need a normal label...
-      QLabel* l = new QLabel( i->second, this );
+      TQLabel* l = new TQLabel( i->second, this );
       p->labels.push_back( l );
       p->layout->addWidget( l );
     };
   };
 
-  QSpacerItem* spacer = new QSpacerItem( 40,  20,  QSizePolicy::Expanding,  QSizePolicy::Minimum );
+  TQSpacerItem* spacer = new TQSpacerItem( 40,  20,  TQSizePolicy::Expanding,  TQSizePolicy::Minimum );
 
   p->layout->addItem( spacer );
 
   p->layout->activate();
 
-  std::for_each( p->urllabels.begin(), p->urllabels.end(), mem_fun( &QWidget::show ) );
-  std::for_each( p->labels.begin(), p->labels.end(), mem_fun( &QWidget::show ) );
+  std::for_each( p->urllabels.begin(), p->urllabels.end(), mem_fun( &TQWidget::show ) );
+  std::for_each( p->labels.begin(), p->labels.end(), mem_fun( &TQWidget::show ) );
 }

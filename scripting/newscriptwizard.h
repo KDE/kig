@@ -37,15 +37,15 @@ class NewScriptWizard
   Q_OBJECT
   ScriptModeBase* mmode;
 public:
-  NewScriptWizard( QWidget* parent, ScriptModeBase* mode );
+  NewScriptWizard( TQWidget* parent, ScriptModeBase* mode );
   ~NewScriptWizard();
 
   void back();
   void next();
   void reject();
 
-  void setText( const QString& text );
-  QString text();
+  void setText( const TQString& text );
+  TQString text();
 
   void setType( ScriptType::Type type );
 

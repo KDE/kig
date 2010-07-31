@@ -17,7 +17,7 @@
 
 #include "coordinate.h"
 
-#include <qglobal.h>
+#include <tqglobal.h>
 #include <cmath>
 #include <kdebug.h>
 
@@ -25,7 +25,7 @@
 
 using namespace std;
 
-Coordinate Coordinate::fromQPoint( const QPoint& p )
+Coordinate Coordinate::fromQPoint( const TQPoint& p )
 {
   return Coordinate( p.x(), p.y() );
 }
@@ -162,10 +162,10 @@ const Coordinate Coordinate::round() const
   return Coordinate( qRound( x ), qRound( y ) );
 }
 
-QPoint Coordinate::toQPoint() const
+TQPoint Coordinate::toQPoint() const
 {
   Coordinate t = round();
-  return QPoint( (int) t.x, (int) t.y );
+  return TQPoint( (int) t.x, (int) t.y );
 }
 
 Coordinate Coordinate::invalidCoord()

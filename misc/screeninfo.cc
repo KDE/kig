@@ -19,12 +19,12 @@
 
 #include <cmath>
 
-ScreenInfo::ScreenInfo( const Rect& docRect, const QRect& viewRect )
+ScreenInfo::ScreenInfo( const Rect& docRect, const TQRect& viewRect )
   : mkrect( docRect.normalized() ), mqrect( viewRect.normalize() )
 {
 }
 
-Rect ScreenInfo::fromScreen( const QRect& r ) const
+Rect ScreenInfo::fromScreen( const TQRect& r ) const
 {
   return Rect(
     fromScreen( r.topLeft() ),
@@ -32,7 +32,7 @@ Rect ScreenInfo::fromScreen( const QRect& r ) const
     ).normalized();
 }
 
-Coordinate ScreenInfo::fromScreen( const QPoint& p ) const
+Coordinate ScreenInfo::fromScreen( const TQPoint& p ) const
 {
   // invert the y-axis: 0 is at the bottom !
   Coordinate t( p.x(), mqrect.height() - p.y() );
@@ -41,18 +41,18 @@ Coordinate ScreenInfo::fromScreen( const QPoint& p ) const
   return t + mkrect.bottomLeft();
 }
 
-QPoint ScreenInfo::toScreen( const Coordinate& p ) const
+TQPoint ScreenInfo::toScreen( const Coordinate& p ) const
 {
   Coordinate t = p - mkrect.bottomLeft();
   t *= mqrect.width();
   t /= mkrect.width();
   // invert the y-axis: 0 is at the bottom !
-  return QPoint( (int) t.x, mqrect.height() - (int) t.y );
+  return TQPoint( (int) t.x, mqrect.height() - (int) t.y );
 }
 
-QRect ScreenInfo::toScreen( const Rect& r ) const
+TQRect ScreenInfo::toScreen( const Rect& r ) const
 {
-  return QRect(
+  return TQRect(
     toScreen( r.bottomLeft() ),
     toScreen( r.topRight() )
     ).normalize();
@@ -60,8 +60,8 @@ QRect ScreenInfo::toScreen( const Rect& r ) const
 
 double ScreenInfo::pixelWidth() const
 {
-  Coordinate a = fromScreen( QPoint( 0, 0 ) );
-  Coordinate b = fromScreen( QPoint( 0, 1000 ) );
+  Coordinate a = fromScreen( TQPoint( 0, 0 ) );
+  Coordinate b = fromScreen( TQPoint( 0, 1000 ) );
   return std::fabs( b.y - a.y ) / 1000;
 }
 
@@ -75,12 +75,12 @@ void ScreenInfo::setShownRect( const Rect& r )
   mkrect = r;
 }
 
-const QRect ScreenInfo::viewRect() const
+const TQRect ScreenInfo::viewRect() const
 {
   return mqrect;
 }
 
-void ScreenInfo::setViewRect( const QRect& r )
+void ScreenInfo::setViewRect( const TQRect& r )
 {
   mqrect = r;
 }

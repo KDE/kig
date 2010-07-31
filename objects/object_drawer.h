@@ -18,8 +18,8 @@
 #ifndef KIG_OBJECTS_OBJECT_DRAWER_H
 #define KIG_OBJECTS_OBJECT_DRAWER_H
 
-#include <qcolor.h>
-#include <qnamespace.h>
+#include <tqcolor.h>
+#include <tqnamespace.h>
 
 class ObjectImp;
 class KigPainter;
@@ -45,7 +45,7 @@ class Rect;
  */
 class ObjectDrawer
 {
-  QColor mcolor;
+  TQColor mcolor;
   bool mshown;
   int mwidth;
   Qt::PenStyle mstyle;
@@ -57,7 +57,7 @@ public:
    * and pointstyle ( 0 )
    */
   ObjectDrawer();
-  ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0 );
+  ObjectDrawer( const TQColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0 );
   /**
    * Draw the object \p imp on kigpainter \p p .  If \p selected is true, it is
    * drawn in red, otherwise in its normal color.
@@ -83,7 +83,7 @@ public:
   /**
    * returns the color that the object will be drawn in
    */
-  QColor color() const;
+  TQColor color() const;
   /**
    * return the width of the object
    */
@@ -99,11 +99,11 @@ public:
   /**
    * return pointStyle trasnformed in a string
    */
-  QString pointStyleToString() const;
+  TQString pointStyleToString() const;
   /**
    * return style trasnformed in a string
    */
-  QString styleToString() const;
+  TQString styleToString() const;
   /**
    * returns a new ObjectDrawer that is identical to this one.. except
    * that the shown state is set to \p s ..
@@ -113,7 +113,7 @@ public:
    * returns a new ObjectDrawer that is identical to this one.. except
    * that the color is set to \p c ..
    */
-  ObjectDrawer* getCopyColor( const QColor& c ) const;
+  ObjectDrawer* getCopyColor( const TQColor& c ) const;
   /**
    * returns a new ObjectDrawer that is identical to this one.. except
    * that the width is set to \p w ..
@@ -134,13 +134,13 @@ public:
    * the given \p style string is unknown. In that case it returns a
    * default value.
    */
-  static int pointStyleFromString( const QString& style );
+  static int pointStyleFromString( const TQString& style );
   /**
    * Note that this returns a valid style in every case, even if the
    * given \p style string is unknown. In that case it returns a default
    * value.
    */
-  static Qt::PenStyle styleFromString( const QString& style );
+  static Qt::PenStyle styleFromString( const TQString& style );
 };
 
 #endif

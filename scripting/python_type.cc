@@ -114,7 +114,7 @@ ObjectImp* PythonCompileType::calc( const Args& parents, const KigDocument& ) co
   if ( !parents[0]->inherits( StringImp::stype() ) ) return new InvalidImp;
 
   const StringImp* si = static_cast<const StringImp*>( parents[0] );
-  QString s = si->data();
+  TQString s = si->data();
 
   CompiledPythonScript cs = PythonScripter::instance()->compile( s.latin1() );
 

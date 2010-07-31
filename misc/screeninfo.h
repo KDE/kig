@@ -18,7 +18,7 @@
 #ifndef SCREENINFO_H
 #define SCREENINFO_H
 
-#include <qrect.h>
+#include <tqrect.h>
 
 #include "rect.h"
 
@@ -31,15 +31,15 @@
 class ScreenInfo
 {
   Rect mkrect;
-  QRect mqrect;
+  TQRect mqrect;
 public:
-  ScreenInfo( const Rect& docRect, const QRect& viewRect );
+  ScreenInfo( const Rect& docRect, const TQRect& viewRect );
 
-  Coordinate fromScreen( const QPoint& p ) const;
-  Rect fromScreen( const QRect& r ) const;
+  Coordinate fromScreen( const TQPoint& p ) const;
+  Rect fromScreen( const TQRect& r ) const;
 
-  QPoint toScreen( const Coordinate& p ) const;
-  QRect toScreen( const Rect& r ) const;
+  TQPoint toScreen( const Coordinate& p ) const;
+  TQRect toScreen( const Rect& r ) const;
 
   double pixelWidth() const;
 
@@ -49,9 +49,9 @@ public:
 
   void setShownRect( const Rect& r );
 
-  const QRect viewRect() const;
+  const TQRect viewRect() const;
 
-  void setViewRect( const QRect& r );
+  void setViewRect( const TQRect& r );
 };
 
 #endif

@@ -22,7 +22,7 @@
 
 #include "../misc/coordinate.h"
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 
 #include <klocale.h>
 
@@ -86,9 +86,9 @@ bool ObjectType::isTransform() const
   return false;
 }
 
-QStringList ObjectType::specialActions() const
+TQStringList ObjectType::specialActions() const
 {
-  return QStringList();
+  return TQStringList();
 }
 
 void ObjectType::executeAction( int, ObjectHolder&, ObjectTypeCalcer&, KigPart&, KigWidget&,

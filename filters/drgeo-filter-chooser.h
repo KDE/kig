@@ -30,12 +30,12 @@ class KigFilterDrgeoChooser
   Q_OBJECT
 
 public:
-  KigFilterDrgeoChooser( const QStringList& l );
+  KigFilterDrgeoChooser( const TQStringList& l );
   ~KigFilterDrgeoChooser();
 public slots:
   void slotOKPressed();
   void slotCancelPressed();
-  void slotExecuted( QListBoxItem* );
+  void slotExecuted( TQListBoxItem* );
 };
 
 #endif

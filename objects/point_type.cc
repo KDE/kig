@@ -360,17 +360,17 @@ const ObjectImpType* MidPointType::resultId() const
   return PointImp::stype();
 }
 
-QStringList FixedPointType::specialActions() const
+TQStringList FixedPointType::specialActions() const
 {
-  QStringList ret;
+  TQStringList ret;
   ret << i18n( "Set &Coordinate..." );
   ret << i18n( "Redefine" );
   return ret;
 }
 
-QStringList ConstrainedPointType::specialActions() const
+TQStringList ConstrainedPointType::specialActions() const
 {
-  QStringList ret;
+  TQStringList ret;
   ret << i18n( "Set &Parameter..." );
   ret << i18n( "Redefine" );
   return ret;
@@ -395,7 +395,7 @@ void FixedPointType::executeAction(
     Coordinate oldc = static_cast<const PointImp*>( o.imp() )->coordinate();
     KigInputDialog::getCoordinate(
       i18n( "Set Coordinate" ),
-      i18n( "Enter the new coordinate." ) + QString::fromLatin1( "<br>" ) +
+      i18n( "Enter the new coordinate." ) + TQString::fromLatin1( "<br>" ) +
       d.document().coordinateSystem().coordinateFormatNoticeMarkup(),
       &w, &ok, d.document(), &oldc );
     if ( ! ok ) break;

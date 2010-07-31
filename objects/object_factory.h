@@ -98,11 +98,11 @@ public:
    * is calced already...
    */
   ObjectHolder* label(
-    const QString& s, const Coordinate& loc,
+    const TQString& s, const Coordinate& loc,
     bool needframe, const std::vector<ObjectCalcer*>& parents,
     const KigDocument& doc ) const;
   ObjectTypeCalcer* labelCalcer(
-    const QString& s, const Coordinate& loc,
+    const TQString& s, const Coordinate& loc,
     bool needframe, const std::vector<ObjectCalcer*>& parents,
     const KigDocument& doc ) const;
 
@@ -111,7 +111,7 @@ public:
    * attached to locationparent if it is non-null..
    */
   ObjectTypeCalcer* attachedLabelCalcer(
-    const QString& s, ObjectCalcer* locationparent,
+    const TQString& s, ObjectCalcer* locationparent,
     const Coordinate& loc, bool needframe,
     const std::vector<ObjectCalcer*>& parents,
     const KigDocument& doc ) const;
@@ -125,7 +125,7 @@ public:
     const Coordinate& loc,
     const KigDocument& doc ) const;
   ObjectHolder* attachedLabel(
-    const QString& s, ObjectCalcer* locationparent,
+    const TQString& s, ObjectCalcer* locationparent,
     const Coordinate& loc, bool needframe,
     const std::vector<ObjectCalcer*>& parents,
     const KigDocument& doc ) const;

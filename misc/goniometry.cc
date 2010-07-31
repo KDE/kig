@@ -22,7 +22,7 @@
 
 #include "goniometry.h"
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -115,9 +115,9 @@ double Goniometry::convert( const double angle, const Goniometry::System from, c
   return angle;
 }
 
-QStringList Goniometry::systemList()
+TQStringList Goniometry::systemList()
 {
-  QStringList sl;
+  TQStringList sl;
   sl << i18n( "Translators: Degrees", "Deg" );
   sl << i18n( "Translators: Radians", "Rad" );
   sl << i18n( "Translators: Gradians", "Grad" );

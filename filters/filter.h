@@ -19,7 +19,7 @@
 #ifndef FILTER_H
 #define FILTER_H
 
-#include <qstring.h>
+#include <tqstring.h>
 
 #include <vector>
 
@@ -34,14 +34,14 @@ class KigFilters
 {
 public:
   static KigFilters* instance();
-  KigFilter* find (const QString& mime);
+  KigFilter* find (const TQString& mime);
 
-//  bool save ( const KigDocument& data, QTextStream& stream );
+//  bool save ( const KigDocument& data, TQTextStream& stream );
   /**
    * saving is always done with the native filter.  We don't support
    * output filters..
    */
-  bool save ( const KigDocument& data, const QString& outfile );
+  bool save ( const KigDocument& data, const TQString& outfile );
 protected:
   KigFilters();
   static KigFilters* sThis;
@@ -53,7 +53,7 @@ protected:
 // return a very useful parse error in a filter's load function..
 #define KIG_FILTER_PARSE_ERROR \
   { \
-    QString locs = i18n( "An error was encountered at " \
+    TQString locs = i18n( "An error was encountered at " \
                          "line %1 in file %2." ) \
       .arg( __LINE__ ).arg( __FILE__ ); \
     parseError( file, locs ); \
@@ -70,10 +70,10 @@ class KigFilter
 {
 protected:
   // shows errors to the user..
-  void fileNotFound( const QString& file ) const;
-  void parseError( const QString& file, const QString& explanation = QString::null ) const;
-  void notSupported( const QString& file, const QString& explanation ) const;
-  void warning( const QString& explanation ) const;
+  void fileNotFound( const TQString& file ) const;
+  void parseError( const TQString& file, const TQString& explanation = TQString::null ) const;
+  void notSupported( const TQString& file, const TQString& explanation ) const;
+  void warning( const TQString& explanation ) const;
 public:
   KigFilter();
   virtual ~KigFilter();
@@ -81,7 +81,7 @@ public:
   /**
    * can the filter handle the mimetype \p mime ?
    */
-  virtual bool supportMime ( const QString& mime );
+  virtual bool supportMime ( const TQString& mime );
 
   /**
    * load file \p fromfile and build a KigDocument from it..  If this
@@ -91,6 +91,6 @@ public:
    * functions ). If this functions returns non-0, the caller owns
    * the returned KigDocument ( that was allocated with "new" ).
    */
-  virtual KigDocument* load ( const QString& fromfile ) = 0;
+  virtual KigDocument* load ( const TQString& fromfile ) = 0;
 };
 #endif

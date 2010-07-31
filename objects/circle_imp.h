@@ -107,17 +107,17 @@ public:
    * Return a string containing the cartesian equation of this circle.
    * This will be of the form "x^2 + y^2 + a x + b y + c = 0"
    */
-  QString cartesianEquationString( const KigDocument& w ) const;
+  TQString cartesianEquationString( const KigDocument& w ) const;
   /**
    * Return a string containing the cartesian equation of this circle.
    * This will be of the form "( x - x0 )^2 + ( y - y0 )^2 = r^2"
    */
-  QString simplyCartesianEquationString( const KigDocument& w ) const;
+  TQString simplyCartesianEquationString( const KigDocument& w ) const;
   /**
    * Return a string containing the polar equation of this circle.
    * This will be of the form "rho = r  [centered at p]"
    */
-  QString polarEquationString( const KigDocument& w ) const;
+  TQString polarEquationString( const KigDocument& w ) const;
 
   bool equals( const ObjectImp& rhs ) const;
 };

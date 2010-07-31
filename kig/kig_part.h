@@ -22,7 +22,7 @@
 #ifndef KIGPART_H
 #define KIGPART_H
 
-#include <qptrlist.h>
+#include <tqptrlist.h>
 
 #include <kparts/part.h>
 
@@ -65,9 +65,9 @@ public:
   /**
    * Default constructor
    */
-  KigPart( QWidget* parentWidget, const char* widgetName,
-	       QObject* parent = 0, const char* name = 0,
-	       const QStringList& = QStringList()
+  KigPart( TQWidget* parentWidget, const char* widgetName,
+	       TQObject* parent = 0, const char* name = 0,
+	       const TQStringList& = TQStringList()
 	       );
 
   /**
@@ -89,7 +89,7 @@ protected:
   virtual bool saveFile();
 
 public:
-  void emitStatusBarText( const QString& text );
+  void emitStatusBarText( const TQString& text );
   void redrawScreen();
   void redrawScreen( KigWidget* w );
 
@@ -191,13 +191,13 @@ public:
   // the previous mode.  Enabling/disabling is done at the same time,
   // of course..
   // some MenuActions..
-  QPtrList<KAction> aMNewSegment;
-  QPtrList<KAction> aMNewPoint;
-  QPtrList<KAction> aMNewCircle;
-  QPtrList<KAction> aMNewLine;
-  QPtrList<KAction> aMNewOther;
-  QPtrList<KAction> aMNewAll;
-  QPtrList<KAction> aMNewConic;
+  TQPtrList<KAction> aMNewSegment;
+  TQPtrList<KAction> aMNewPoint;
+  TQPtrList<KAction> aMNewCircle;
+  TQPtrList<KAction> aMNewLine;
+  TQPtrList<KAction> aMNewOther;
+  TQPtrList<KAction> aMNewAll;
+  TQPtrList<KAction> aMNewConic;
 
 
   KAction* aCancelConstruction;

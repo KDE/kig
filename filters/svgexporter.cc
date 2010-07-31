@@ -26,10 +26,10 @@
 #include "../misc/kigfiledialog.h"
 #include "../misc/kigpainter.h"
 
-#include <qcheckbox.h>
-#include <qfile.h>
-#include <qpicture.h>
-#include <qrect.h>
+#include <tqcheckbox.h>
+#include <tqfile.h>
+#include <tqpicture.h>
+#include <tqrect.h>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -40,17 +40,17 @@ SVGExporter::~SVGExporter()
 {
 }
 
-QString SVGExporter::exportToStatement() const
+TQString SVGExporter::exportToStatement() const
 {
   return i18n( "&Export to SVG..." );
 }
 
-QString SVGExporter::menuEntryName() const
+TQString SVGExporter::menuEntryName() const
 {
   return i18n( "&SVG..." );
 }
 
-QString SVGExporter::menuIcon() const
+TQString SVGExporter::menuIcon() const
 {
   // TODO
   return "vectorgfx";
@@ -59,7 +59,7 @@ QString SVGExporter::menuIcon() const
 void SVGExporter::run( const KigPart& part, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QString::null, i18n( "*.svg|Scalable Vector Graphics (*.svg)" ),
+      TQString::null, i18n( "*.svg|Scalable Vector Graphics (*.svg)" ),
       i18n( "Export as SVG" ), &w );
   kfd->setOptionCaption( i18n( "SVG Options" ) );
   SVGExporterOptions* opts = new SVGExporterOptions( 0L );
@@ -69,14 +69,14 @@ void SVGExporter::run( const KigPart& part, KigWidget& w )
   if ( !kfd->exec() )
     return;
 
-  QString file_name = kfd->selectedFile();
+  TQString file_name = kfd->selectedFile();
   bool showgrid = opts->showGridCheckBox->isOn();
   bool showaxes = opts->showAxesCheckBox->isOn();
 
   delete opts;
   delete kfd;
 
-  QFile file( file_name );
+  TQFile file( file_name );
   if ( ! file.open( IO_WriteOnly ) )
   {
     KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
@@ -85,10 +85,10 @@ void SVGExporter::run( const KigPart& part, KigWidget& w )
     return;
   };
 
-  QRect viewrect( w.screenInfo().viewRect() );
-  QRect r( 0, 0, viewrect.width(), viewrect.height() );
+  TQRect viewrect( w.screenInfo().viewRect() );
+  TQRect r( 0, 0, viewrect.width(), viewrect.height() );
 
-  QPicture pic;
+  TQPicture pic;
   pic.setBoundingRect( r );
   KigPainter* p = new KigPainter( ScreenInfo( w.screenInfo().shownRect(), viewrect ),
                                   &pic, part.document() );

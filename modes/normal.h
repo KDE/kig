@@ -20,7 +20,7 @@
 
 #include "base_mode.h"
 
-#include <qpoint.h>
+#include <tqpoint.h>
 #include <set>
 
 class NormalMode
@@ -30,14 +30,14 @@ public:
   NormalMode( KigPart& );
   ~NormalMode();
 protected:
-  void dragRect( const QPoint& p, KigWidget& w );
-  void dragObject( const std::vector<ObjectHolder*>& os, const QPoint& pointClickedOn,
+  void dragRect( const TQPoint& p, KigWidget& w );
+  void dragObject( const std::vector<ObjectHolder*>& os, const TQPoint& pointClickedOn,
                    KigWidget& w, bool ctrlOrShiftDown );
-  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+  void leftClickedObject( ObjectHolder* o, const TQPoint& p,
                           KigWidget& w, bool ctrlOrShiftDown );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w,
+  void midClicked( const TQPoint& p, KigWidget& w );
+  void rightClicked( const std::vector<ObjectHolder*>& os, const TQPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const TQPoint& p, KigWidget& w,
                    bool shiftpressed );
   void selectAll();
   void deselectAll();

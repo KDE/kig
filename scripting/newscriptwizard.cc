@@ -20,8 +20,8 @@
 
 #include "script_mode.h"
 
-#include <qlabel.h>
-#include <qlayout.h>
+#include <tqlabel.h>
+#include <tqlayout.h>
 
 //#include <kactionclasses.h>
 //#include <kactioncollection.h>
@@ -56,7 +56,7 @@ NewScriptWizard::~NewScriptWizard()
   }
 }
 
-NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
+NewScriptWizard::NewScriptWizard( TQWidget* parent, ScriptModeBase* mode )
   : NewScriptWizardBase( parent, "New Script Wizard" ),
     mmode( mode )
 {
@@ -97,11 +97,11 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
     KPopupMenu* pm = new KPopupMenu( editor );
     // creating the actions for the code editor...
     KActionCollection* ac = new KActionCollection( editor );
-    KAction* undoAction = KStdAction::undo( this, SLOT( slotUndo() ), ac );
-    KAction* redoAction = KStdAction::redo( this, SLOT( slotRedo() ), ac );
-    KAction* cutAction = KStdAction::cut( this, SLOT( slotCut() ), ac );
-    KAction* copyAction = KStdAction::copy( this, SLOT( slotCopy() ), ac );
-    KAction* pasteAction = KStdAction::paste( this, SLOT( slotPaste() ), ac );
+    KAction* undoAction = KStdAction::undo( this, TQT_SLOT( slotUndo() ), ac );
+    KAction* redoAction = KStdAction::redo( this, TQT_SLOT( slotRedo() ), ac );
+    KAction* cutAction = KStdAction::cut( this, TQT_SLOT( slotCut() ), ac );
+    KAction* copyAction = KStdAction::copy( this, TQT_SLOT( slotCopy() ), ac );
+    KAction* pasteAction = KStdAction::paste( this, TQT_SLOT( slotPaste() ), ac );
     // ... and plugging them into the popup menu (to build it, of course :) )
     undoAction->plug( pm );
     redoAction->plug( pm );
@@ -114,7 +114,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
     dynamic_cast<KTextEditor::PopupMenuInterface*>( editor )->installPopup( pm );
   }
 
-  connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelpClicked() ) );
+  connect( this, TQT_SIGNAL( helpClicked() ), this, TQT_SLOT( slotHelpClicked() ) );
 }
 
 void NewScriptWizard::back()
@@ -159,11 +159,11 @@ void NewScriptWizard::accept()
 
 void NewScriptWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( QString::fromLatin1( "scripting" ),
-                    QString::fromLatin1( "kig" ) );
+  kapp->invokeHelp( TQString::fromLatin1( "scripting" ),
+                    TQString::fromLatin1( "kig" ) );
 }
 
-void NewScriptWizard::setText( const QString& text )
+void NewScriptWizard::setText( const TQString& text )
 {
   if ( !document )
   {
@@ -175,7 +175,7 @@ void NewScriptWizard::setText( const QString& text )
   }
 }
 
-QString NewScriptWizard::text()
+TQString NewScriptWizard::text()
 {
   if ( !document )
   {

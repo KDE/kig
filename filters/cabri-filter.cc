@@ -41,9 +41,9 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <qcolor.h>
-#include <qfile.h>
-#include <qregexp.h>
+#include <tqcolor.h>
+#include <tqfile.h>
+#include <tqregexp.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -108,10 +108,10 @@
 struct CabriObject
 {
   uint id;
-  QCString type;
+  TQCString type;
   uint numberOfParents;
-  QColor color;
-  QColor fillColor;
+  TQColor color;
+  TQColor fillColor;
   int thick;
   int lineSegLength;
   int lineSegSplit;
@@ -130,7 +130,7 @@ KigFilterCabri::~KigFilterCabri()
 {
 }
 
-bool KigFilterCabri::supportMime( const QString& mime )
+bool KigFilterCabri::supportMime( const TQString& mime )
 {
   // ugly hack to avoid duplicate extension ( XFig and Cabri files
   // have the same .fig extension ).
@@ -138,9 +138,9 @@ bool KigFilterCabri::supportMime( const QString& mime )
          ( mime == "application/x-cabri" );
 }
 
-static QString readLine( QFile& file )
+static TQString readLine( TQFile& file )
 {
-  QString ret;
+  TQString ret;
   file.readLine( ret, 10000L );
   if ( ret[ret.length() - 1] == '\n' )
     ret.truncate( ret.length() - 1 );
@@ -149,7 +149,7 @@ static QString readLine( QFile& file )
   return ret;
 }
 
-static QColor translatecolor( const QString& s )
+static TQColor translatecolor( const TQString& s )
 {
   if ( s == "R" ) return Qt::red;
   if ( s == "O" ) return Qt::magenta;
@@ -160,8 +160,8 @@ static QColor translatecolor( const QString& s )
   if ( s == "lBl" ) return Qt::cyan; // TODO: bright blue
   if ( s == "G" ) return Qt::green;
   if ( s == "dG" ) return Qt::darkGreen;
-  if ( s == "Br" ) return QColor( 165, 42, 42 );
-  if ( s == "dBr" ) return QColor( 128, 128, 0 );
+  if ( s == "Br" ) return TQColor( 165, 42, 42 );
+  if ( s == "dBr" ) return TQColor( 128, 128, 0 );
   if ( s == "lGr" ) return Qt::lightGray;
   if ( s == "Gr" ) return Qt::gray;
   if ( s == "dGr" ) return Qt::darkGray;
@@ -172,24 +172,24 @@ static QColor translatecolor( const QString& s )
   return Qt::black;
 }
 
-bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
+bool KigFilterCabri::readObject( TQFile& f, CabriObject& myobj )
 {
   // there are 4 lines per object in the file, so we read them all
   // four now.
-  QString line1, line2, line3, s;
-  QString file = f.name();
+  TQString line1, line2, line3, s;
+  TQString file = f.name();
   line1 = readLine( f );
   line2 = readLine( f );
   line3 = readLine( f );
   // ignore line 4, it is empty..
   s = readLine( f );
 
-  QRegExp firstlinere( "^([^:]+): ([^,]+), ([^,]+), CN:([^,]*), VN:(.*)$" );
+  TQRegExp firstlinere( "^([^:]+): ([^,]+), ([^,]+), CN:([^,]*), VN:(.*)$" );
   if ( ! firstlinere.exactMatch( line1 ) )
     KIG_FILTER_PARSE_ERROR;
 
   bool ok;
-  QString tmp;
+  TQString tmp;
 
   tmp = firstlinere.cap( 1 );
   myobj.id = tmp.toInt( &ok );
@@ -208,7 +208,7 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
   tmp = firstlinere.cap( 5 );
   // i have no idea what this number means..
 
-  QRegExp secondlinere( "^([^,]+), ([^,]+), ([^,]+), DS:([^ ]+) ([^,]+), GT:([^,]+), ([^,]+), (.*)$" );
+  TQRegExp secondlinere( "^([^,]+), ([^,]+), ([^,]+), DS:([^ ]+) ([^,]+), GT:([^,]+), ([^,]+), (.*)$" );
   if ( ! secondlinere.exactMatch( line2 ) )
     KIG_FILTER_PARSE_ERROR;
 
@@ -241,13 +241,13 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
   tmp = secondlinere.cap( 8 );
   myobj.fixed = tmp == "St";
 
-  QRegExp thirdlinere( "^(Const: ([^,]*),? ?)?(Val: (.*))?$" );
+  TQRegExp thirdlinere( "^(Const: ([^,]*),? ?)?(Val: (.*))?$" );
   if ( ! thirdlinere.exactMatch( line3 ) )
     KIG_FILTER_PARSE_ERROR;
 
   tmp = thirdlinere.cap( 2 );
-  QStringList parentsids = QStringList::split( ' ', tmp );
-  for ( QStringList::iterator i = parentsids.begin();
+  TQStringList parentsids = TQStringList::split( ' ', tmp );
+  for ( TQStringList::iterator i = parentsids.begin();
         i != parentsids.end(); ++i )
   {
     myobj.parents.push_back( ( *i ).toInt( &ok ) );
@@ -257,8 +257,8 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
     KIG_FILTER_PARSE_ERROR;
 
   tmp = thirdlinere.cap( 4 );
-  QStringList valIds = QStringList::split( ' ', tmp );
-  for ( QStringList::iterator i = valIds.begin();
+  TQStringList valIds = TQStringList::split( ' ', tmp );
+  for ( TQStringList::iterator i = valIds.begin();
         i != valIds.end(); ++i )
   {
     myobj.data.push_back( ( *i ).toDouble( &ok ) );
@@ -287,9 +287,9 @@ bool KigFilterCabri::readObject( QFile& f, CabriObject& myobj )
   return true;
 }
 
-KigDocument* KigFilterCabri::load( const QString& file )
+KigDocument* KigFilterCabri::load( const TQString& file )
 {
-  QFile f( file );
+  TQFile f( file );
   if ( ! f.open( IO_ReadOnly ) )
   {
     fileNotFound( file );
@@ -298,9 +298,9 @@ KigDocument* KigFilterCabri::load( const QString& file )
 
   KigDocument* ret = new KigDocument();
 
-  QString s = readLine( f );
-  QString a = s.left( 21 );
-  QString b = s.mid( 21 );
+  TQString s = readLine( f );
+  TQString a = s.left( 21 );
+  TQString b = s.mid( 21 );
   if( a != "FIGURE CabriII vers. " ||
       ( b != "DOS 1.0" && b != "MS-Windows 1.0" ) )
   {

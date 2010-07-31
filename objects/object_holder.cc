@@ -137,7 +137,7 @@ bool ObjectHolder::shown( ) const
   return mdrawer->shown( );
 }
 
-const QString ObjectHolder::name() const
+const TQString ObjectHolder::name() const
 {
   if ( mnamecalcer )
   {
@@ -145,7 +145,7 @@ const QString ObjectHolder::name() const
     return static_cast<const StringImp*>( mnamecalcer->imp() )->data();
   }
   else
-    return QString::null;
+    return TQString::null;
 }
 
 void ObjectHolder::setNameCalcer( ObjectConstCalcer* namecalcer )
@@ -154,9 +154,9 @@ void ObjectHolder::setNameCalcer( ObjectConstCalcer* namecalcer )
   mnamecalcer = namecalcer;
 }
 
-QString ObjectHolder::selectStatement() const
+TQString ObjectHolder::selectStatement() const
 {
-  const QString n = name();
+  const TQString n = name();
   if ( n.isEmpty() )
     return i18n( imp()->type()->selectStatement() );
   else

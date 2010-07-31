@@ -178,7 +178,7 @@ ObjectHolder* ObjectFactory::locus( ObjectCalcer* a, ObjectCalcer* b ) const
 }
 
 ObjectHolder* ObjectFactory::label(
-  const QString& s, const Coordinate& loc,
+  const TQString& s, const Coordinate& loc,
   bool needframe, const std::vector<ObjectCalcer*>& parents,
   const KigDocument& doc ) const
 {
@@ -186,7 +186,7 @@ ObjectHolder* ObjectFactory::label(
 }
 
 ObjectTypeCalcer* ObjectFactory::labelCalcer(
- const QString& s, const Coordinate& loc,
+ const TQString& s, const Coordinate& loc,
  bool needframe, const std::vector<ObjectCalcer*>& parents,
  const KigDocument& doc ) const
 {
@@ -194,7 +194,7 @@ ObjectTypeCalcer* ObjectFactory::labelCalcer(
 }
 
 ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
-  const QString& s, ObjectCalcer* p,
+  const TQString& s, ObjectCalcer* p,
   const Coordinate& loc, bool needframe,
   const std::vector<ObjectCalcer*>& nparents,
   const KigDocument& doc ) const
@@ -266,7 +266,7 @@ ObjectCalcer* ObjectFactory::getAttachPoint(
 }
 
 ObjectHolder* ObjectFactory::attachedLabel(
-  const QString& s, ObjectCalcer* locationparent,
+  const TQString& s, ObjectCalcer* locationparent,
   const Coordinate& loc, bool needframe,
   const std::vector<ObjectCalcer*>& parents,
   const KigDocument& doc ) const

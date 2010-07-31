@@ -23,7 +23,7 @@
 
 #include "../misc/rect.h"
 
-#include <qpoint.h>
+#include <tqpoint.h>
 #include <vector>
 
 class ObjectHolder;
@@ -40,37 +40,37 @@ class ObjectHolder;
 class DragRectMode
   : public KigMode
 {
-  QPoint mstart;
+  TQPoint mstart;
   std::vector<ObjectHolder*> mret;
   Rect mrect;
   bool mnc;
   bool mstartselected;
   bool mcancelled;
 private:
-  void clicked( const QPoint& p, KigWidget& w );
-  void clicked( const QMouseEvent* e, KigWidget& w );
-  void released( const QPoint& p, KigWidget& w, bool nc );
-  void released( QMouseEvent* e, KigWidget& w );
-  void moved( const QPoint& p, KigWidget& w );
-  void moved( QMouseEvent*, KigWidget& w );
+  void clicked( const TQPoint& p, KigWidget& w );
+  void clicked( const TQMouseEvent* e, KigWidget& w );
+  void released( const TQPoint& p, KigWidget& w, bool nc );
+  void released( TQMouseEvent* e, KigWidget& w );
+  void moved( const TQPoint& p, KigWidget& w );
+  void moved( TQMouseEvent*, KigWidget& w );
 
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void leftMouseMoved( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
-  void midClicked( QMouseEvent*, KigWidget* );
-  void midMouseMoved( QMouseEvent*, KigWidget* );
-  void midReleased( QMouseEvent*, KigWidget* );
-  void rightClicked( QMouseEvent*, KigWidget* );
-  void rightMouseMoved( QMouseEvent*, KigWidget* );
-  void rightReleased( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent*, KigWidget* );
+  void leftClicked( TQMouseEvent*, KigWidget* );
+  void leftMouseMoved( TQMouseEvent*, KigWidget* );
+  void leftReleased( TQMouseEvent*, KigWidget* );
+  void midClicked( TQMouseEvent*, KigWidget* );
+  void midMouseMoved( TQMouseEvent*, KigWidget* );
+  void midReleased( TQMouseEvent*, KigWidget* );
+  void rightClicked( TQMouseEvent*, KigWidget* );
+  void rightMouseMoved( TQMouseEvent*, KigWidget* );
+  void rightReleased( TQMouseEvent*, KigWidget* );
+  void mouseMoved( TQMouseEvent*, KigWidget* );
 
   void cancelConstruction();
 
   void enableActions();
 
 public:
-  DragRectMode( const QPoint& start, KigPart& d, KigWidget& w );
+  DragRectMode( const TQPoint& start, KigPart& d, KigWidget& w );
   DragRectMode( KigPart& d, KigWidget& w );
   ~DragRectMode();
 

@@ -27,4 +27,4 @@ class KigDocument;
  */
 ObjectTypeCalcer* filtersConstructTextObject(
   const Coordinate& c, ObjectCalcer* o,
-  const QCString& arg, const KigDocument& doc, bool needframe );
+  const TQCString& arg, const KigDocument& doc, bool needframe );

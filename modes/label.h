@@ -61,7 +61,7 @@ protected:
   ~TextLabelModeBase();
 
   void setCoordinate( const Coordinate& coord );
-  void setText( const QString& s );
+  void setText( const TQString& s );
   void setLocationParent( ObjectCalcer* o );
   /**
    * objects you pass here, should be newly created property objects,
@@ -70,16 +70,16 @@ protected:
   void setPropertyObjects( const argvect& props );
   void setFrame( bool f );
 
-  virtual void finish( const Coordinate& c, const QString& s,
+  virtual void finish( const Coordinate& c, const TQString& s,
                        const argvect& props, bool needframe,
                        ObjectCalcer* locationparent ) = 0;
 
 private:
   // the KigMode interface..
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
+  void leftClicked( TQMouseEvent*, KigWidget* );
+  void leftReleased( TQMouseEvent*, KigWidget* );
 
-  void mouseMoved( QMouseEvent*, KigWidget* );
+  void mouseMoved( TQMouseEvent*, KigWidget* );
 
   void enableActions();
 
@@ -109,7 +109,7 @@ public:
   TextLabelConstructionMode( KigPart& d );
   ~TextLabelConstructionMode();
 
-  void finish( const Coordinate& coord, const QString& s,
+  void finish( const Coordinate& coord, const TQString& s,
                const argvect& props, bool needframe,
                ObjectCalcer* locationparent );
 };
@@ -118,7 +118,7 @@ class TextLabelRedefineMode
   : public TextLabelModeBase
 {
   ObjectTypeCalcer* mlabel;
-  void finish( const Coordinate& coord, const QString& s,
+  void finish( const Coordinate& coord, const TQString& s,
                const argvect& props, bool needframe,
                ObjectCalcer* locationparent );
 public:

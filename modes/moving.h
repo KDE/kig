@@ -66,9 +66,9 @@ protected:
   virtual void moveTo( const Coordinate& o, bool snaptogrid ) = 0;
 
 public:
-  void leftReleased( QMouseEvent*, KigWidget* );
-  void leftMouseMoved( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent*, KigWidget* );
+  void leftReleased( TQMouseEvent*, KigWidget* );
+  void leftMouseMoved( TQMouseEvent*, KigWidget* );
+  void mouseMoved( TQMouseEvent*, KigWidget* );
 };
 
 class MovingMode

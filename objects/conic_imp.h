@@ -82,18 +82,18 @@ public:
   /**
    * A string containing "Hyperbola", "Parabola" or "Ellipse".
    */
-  virtual QString conicTypeString() const;
+  virtual TQString conicTypeString() const;
   /**
    * A string containing the cartesian equation of the conic.  This
    * will be of the form "a x^2 + b y^2 + c xy + d x + e y + f = 0".
    */
-  virtual QString cartesianEquationString( const KigDocument& w ) const;
+  virtual TQString cartesianEquationString( const KigDocument& w ) const;
   /**
    * A string containing the polar equation of the conic.  This will
    * be of the form "rho = pdimen/(1 + ect cos( theta ) + est sin(
    * theta ) )\n    [centered at p]"
    */
-  virtual QString polarEquationString( const KigDocument& w ) const;
+  virtual TQString polarEquationString( const KigDocument& w ) const;
   /**
    * Return the cartesian representation of this conic.
    */

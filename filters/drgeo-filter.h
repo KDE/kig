@@ -37,10 +37,10 @@ protected:
 public:
   static KigFilterDrgeo* instance();
 
-  bool supportMime( const QString& mime );
-  KigDocument* load( const QString& file );
+  bool supportMime( const TQString& mime );
+  KigDocument* load( const TQString& file );
 private:
-  KigDocument* importFigure( QDomNode f, const QString& file, const bool grid );
+  KigDocument* importFigure( TQDomNode f, const TQString& file, const bool grid );
 };
 
 #endif

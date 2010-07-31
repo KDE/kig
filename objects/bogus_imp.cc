@@ -17,8 +17,8 @@
 
 #include "bogus_imp.h"
 
-#include <qcstring.h>
-#include <qstringlist.h>
+#include <tqcstring.h>
+#include <tqstringlist.h>
 #include <klocale.h>
 
 #include "../misc/rect.h"
@@ -52,7 +52,7 @@ IntImp::IntImp( const int d )
 {
 }
 
-StringImp::StringImp( const QString& d )
+StringImp::StringImp( const TQString& d )
   : mdata( d )
 {
 }
@@ -86,22 +86,22 @@ InvalidImp::InvalidImp()
 {
 }
 
-void InvalidImp::fillInNextEscape( QString& s, const KigDocument& ) const
+void InvalidImp::fillInNextEscape( TQString& s, const KigDocument& ) const
 {
   s = s.arg( "[invalid]" );
 }
 
-void DoubleImp::fillInNextEscape( QString& s, const KigDocument& ) const
+void DoubleImp::fillInNextEscape( TQString& s, const KigDocument& ) const
 {
   s = s.arg( mdata );
 }
 
-void IntImp::fillInNextEscape( QString& s, const KigDocument& ) const
+void IntImp::fillInNextEscape( TQString& s, const KigDocument& ) const
 {
   s = s.arg( mdata );
 }
 
-void StringImp::fillInNextEscape( QString& s, const KigDocument& ) const
+void StringImp::fillInNextEscape( TQString& s, const KigDocument& ) const
 {
   s = s.arg( mdata );
 }
@@ -300,7 +300,7 @@ const ObjectImpType* TestResultImp::stype()
 
 }
 
-TestResultImp::TestResultImp( const QString& s )
+TestResultImp::TestResultImp( const TQString& s )
   : mdata( s )
 {
 }

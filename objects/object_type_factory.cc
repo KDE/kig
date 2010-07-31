@@ -35,7 +35,7 @@
 #include "../scripting/python_type.h"
 #endif
 
-#include <qdom.h>
+#include <tqdom.h>
 #include <string>
 
 ObjectTypeFactory::ObjectTypeFactory()

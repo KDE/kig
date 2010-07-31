@@ -21,20 +21,20 @@
 #include "label.h"
 #include "linkslabel.h"
 
-#include <qtextedit.h>
+#include <tqtextedit.h>
 #include <kapplication.h>
 
-#include <qlayout.h>
+#include <tqlayout.h>
 
-TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
+TextLabelWizard::TextLabelWizard( TQWidget* parent, TextLabelModeBase* mode )
   : TextLabelWizardBase( parent, "TextLabelWizard", false ), mmode( mode )
 {
-  connect( labelTextInput, SIGNAL( textChanged() ),
-           SLOT( textChanged() ) );
-  connect( myCustomWidget1, SIGNAL( linkClicked( int ) ),
-           SLOT( linkClicked( int ) ) );
-  connect( this, SIGNAL( helpClicked() ),
-           this, SLOT( slotHelpClicked() ) );
+  connect( labelTextInput, TQT_SIGNAL( textChanged() ),
+           TQT_SLOT( textChanged() ) );
+  connect( myCustomWidget1, TQT_SIGNAL( linkClicked( int ) ),
+           TQT_SLOT( linkClicked( int ) ) );
+  connect( this, TQT_SIGNAL( helpClicked() ),
+           this, TQT_SLOT( slotHelpClicked() ) );
   labelTextInput->setFocus();
 }
 
@@ -89,7 +89,7 @@ void TextLabelWizard::relayoutArgsPage()
 
 void TextLabelWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( QString::fromLatin1( "text-labels" ),
-                    QString::fromLatin1( "kig" ) );
+  kapp->invokeHelp( TQString::fromLatin1( "text-labels" ),
+                    TQString::fromLatin1( "kig" ) );
 }
 

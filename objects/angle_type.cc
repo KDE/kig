@@ -33,7 +33,7 @@
 #include <algorithm>
 #include <cmath>
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 
 static const char* constructanglethroughpoint =
   I18N_NOOP( "Construct an angle through this point" );
@@ -97,9 +97,9 @@ const ObjectImpType* AngleType::resultId() const
   return AngleImp::stype();
 }
 
-QStringList AngleType::specialActions() const
+TQStringList AngleType::specialActions() const
 {
-  QStringList ret;
+  TQStringList ret;
   ret << i18n( "Set Si&ze" );
   return ret;
 }

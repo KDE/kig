@@ -23,7 +23,7 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
 
-#include <qevent.h>
+#include <tqevent.h>
 #include <kcursor.h>
 
 BaseMode::BaseMode( KigPart& d )
@@ -35,7 +35,7 @@ BaseMode::~BaseMode()
 {
 }
 
-void BaseMode::leftClicked( QMouseEvent* e, KigWidget* v )
+void BaseMode::leftClicked( TQMouseEvent* e, KigWidget* v )
 {
   // touch screens don't send a mouseMoved event before a click event,
   // apparently, so we simulate it.
@@ -64,7 +64,7 @@ void BaseMode::leftClicked( QMouseEvent* e, KigWidget* v )
   };
 }
 
-void BaseMode::leftMouseMoved( QMouseEvent* e, KigWidget* w )
+void BaseMode::leftMouseMoved( TQMouseEvent* e, KigWidget* w )
 {
   if( !moco.empty() && ( mplc - e->pos() ).manhattanLength() > 3 )
     dragObject( moco, mplc, *w,
@@ -72,7 +72,7 @@ void BaseMode::leftMouseMoved( QMouseEvent* e, KigWidget* w )
       );
 }
 
-void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
+void BaseMode::leftReleased( TQMouseEvent* e, KigWidget* v )
 {
   if( (mplc - e->pos()).manhattanLength() > 4 ) return;
 
@@ -93,7 +93,7 @@ void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
   leftClickedObject( o, e->pos(), *v, keyCtrl );
 }
 
-void BaseMode::midClicked( QMouseEvent* e, KigWidget* v )
+void BaseMode::midClicked( TQMouseEvent* e, KigWidget* v )
 {
   // get rid of text still showing...
   v->updateCurPix();
@@ -103,14 +103,14 @@ void BaseMode::midClicked( QMouseEvent* e, KigWidget* v )
   moco = mdoc.document().whatAmIOn( v->fromScreen( e->pos() ), *v );
 }
 
-void BaseMode::midReleased( QMouseEvent* e, KigWidget* v )
+void BaseMode::midReleased( TQMouseEvent* e, KigWidget* v )
 {
   if( (e->pos() - mplc).manhattanLength() > 4 ) return;
 
   midClicked( mplc, *v );
 }
 
-void BaseMode::rightClicked( QMouseEvent* e, KigWidget* w )
+void BaseMode::rightClicked( TQMouseEvent* e, KigWidget* w )
 {
   // get rid of text still showing...
   w->updateCurPix();
@@ -124,22 +124,22 @@ void BaseMode::rightClicked( QMouseEvent* e, KigWidget* w )
   rightClicked( moco, mplc, *w );
 }
 
-void BaseMode::mouseMoved( QMouseEvent* e, KigWidget* w )
+void BaseMode::mouseMoved( TQMouseEvent* e, KigWidget* w )
 {
   std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( w->fromScreen( e->pos() ), *w );
   mouseMoved( os, e->pos(), *w, e->state() & Qt::ShiftButton );
 }
 
-void BaseMode::dragRect( const QPoint&, KigWidget& )
+void BaseMode::dragRect( const TQPoint&, KigWidget& )
 {
 }
 
-void BaseMode::leftClickedObject( ObjectHolder*, const QPoint&,
+void BaseMode::leftClickedObject( ObjectHolder*, const TQPoint&,
                                   KigWidget&, bool )
 {
 }
 
-void BaseMode::dragObject( const std::vector<ObjectHolder*>&, const QPoint&,
+void BaseMode::dragObject( const std::vector<ObjectHolder*>&, const TQPoint&,
                            KigWidget&, bool )
 {
 }
@@ -154,7 +154,7 @@ std::vector<ObjectHolder*> BaseMode::oco()
   return moco;
 }
 
-QPoint BaseMode::pointLocation()
+TQPoint BaseMode::pointLocation()
 {
   return mplc;
 }

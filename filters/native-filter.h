@@ -38,29 +38,29 @@ private:
    * this is the load function for the Kig format that is used,
    * starting at Kig 0.4
    */
-  KigDocument* load04( const QString& file, const QDomElement& doc );
+  KigDocument* load04( const TQString& file, const TQDomElement& doc );
   /**
    * this is the load function for the Kig format that is used
    * starting at Kig 0.7
    */
-  KigDocument* load07( const QString& file, const QDomElement& doc );
+  KigDocument* load07( const TQString& file, const TQDomElement& doc );
 
   /**
    * save in the Kig format that is used starting at Kig 0.7
    */
-  bool save07( const KigDocument& data, const QString& outfile );
-  bool save07( const KigDocument& data, QTextStream& file );
+  bool save07( const KigDocument& data, const TQString& outfile );
+  bool save07( const KigDocument& data, TQTextStream& file );
 
   KigFilterNative();
   ~KigFilterNative();
 public:
   static KigFilterNative* instance();
 
-  bool supportMime( const QString& mime );
-  KigDocument* load( const QString& file );
+  bool supportMime( const TQString& mime );
+  KigDocument* load( const TQString& file );
 
-  bool save( const KigDocument& data, const QString& file );
-//  bool save( const KigDocument& data, QTextStream& stream );
+  bool save( const KigDocument& data, const TQString& file );
+//  bool save( const KigDocument& data, TQTextStream& stream );
 };
 
 #endif

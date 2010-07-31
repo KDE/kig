@@ -47,12 +47,12 @@
 #include <algorithm>
 #include <functional>
 
-bool KigFilterKGeo::supportMime( const QString& mime )
+bool KigFilterKGeo::supportMime( const TQString& mime )
 {
   return mime == "application/x-kgeo";
 }
 
-KigDocument* KigFilterKGeo::load( const QString& sFrom )
+KigDocument* KigFilterKGeo::load( const TQString& sFrom )
 {
   // kgeo uses a KSimpleConfig to save its contents...
   KSimpleConfig config ( sFrom );
@@ -100,13 +100,13 @@ static std::vector<KGeoHierarchyElement> sortElems( const std::vector<KGeoHierar
   return ret;
 }
 
-KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
+KigDocument* KigFilterKGeo::loadObjects( const TQString& file, KSimpleConfig* c )
 {
   KigDocument* ret = new KigDocument();
 
   using namespace std;
 
-  QString group;
+  TQString group;
   bool ok = true;
   c->setGroup("Main");
   int number = c->readNumEntry ("Number");
@@ -125,12 +125,12 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     group.setNum( i + 1 );
     group.prepend( "Object " );
     c->setGroup( group );
-    QStrList parents;
+    TQStrList parents;
     c->readListEntry( "Parents", parents );
     elems.push_back( elem );
     for ( const char* parent = parents.first(); parent; parent = parents.next() )
     {
-      int parentIndex = QString::fromLatin1( parent ).toInt( &ok );
+      int parentIndex = TQString::fromLatin1( parent ).toInt( &ok );
       if ( ! ok ) KIG_FILTER_PARSE_ERROR;
       if ( parentIndex != 0 )
         elems[i].parents.push_back( parentIndex - 1 );
@@ -166,8 +166,8 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     case ID_point:
     {
       // fetch the coordinates...
-      QString strX = c->readEntry("QPointX");
-      QString strY = c->readEntry("QPointY");
+      TQString strX = c->readEntry("QPointX");
+      TQString strY = c->readEntry("QPointY");
       double x = strX.toDouble(&ok);
       if (!ok) KIG_FILTER_PARSE_ERROR;
       double y = strY.toDouble(&ok);
@@ -251,7 +251,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
       bool frame = c->readBoolEntry( "Frame" );
       double x = c->readDoubleNumEntry( "TextRectCenterX" );
       double y = c->readDoubleNumEntry( "TextRectCenterY" );
-      QString text = c->readEntry( "TextRectEntry" );
+      TQString text = c->readEntry( "TextRectEntry" );
       double height = c->readNumEntry( "TextRectHeight" );
       double width  = c->readNumEntry( "TextRectWidth" );
       // we don't want the center, but the top left..
@@ -344,7 +344,7 @@ KigDocument* KigFilterKGeo::loadObjects( const QString& file, KSimpleConfig* c )
     };
 
     // set the color...
-    QColor co = c->readColorEntry( "Color" );
+    TQColor co = c->readColorEntry( "Color" );
     if( !co.isValid() )
       co = Qt::blue;
     ObjectDrawer* d = new ObjectDrawer( co );

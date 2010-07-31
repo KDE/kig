@@ -51,7 +51,7 @@ class NormalModePopupObjects
 public:
   NormalModePopupObjects( KigPart& part, KigWidget& view,
                           NormalMode& mode, 
-			  const std::vector<ObjectHolder*>& objs, const QPoint& p );
+			  const std::vector<ObjectHolder*>& objs, const TQPoint& p );
   ~NormalModePopupObjects();
 
   // the different "menu's", the toplevel is considered as just
@@ -61,9 +61,9 @@ public:
          SetCoordinateSystemMenu, NumberOfMenus };
 
   // used by the PopupActionProvider's to add actions to us..
-  void addAction( int menu, const QString& name, int id );
-  void addAction( int menu, const QPixmap& icon, const QString& name, int id );
-  void addAction( int menu, const QPixmap& pix, int id );
+  void addAction( int menu, const TQString& name, int id );
+  void addAction( int menu, const TQPixmap& icon, const TQString& name, int id );
+  void addAction( int menu, const TQPixmap& pix, int id );
 
   /**
    * set the checked state of the \p n 'th item in \p menu to \p checked ..
@@ -73,7 +73,7 @@ public:
   std::vector<ObjectHolder*> objects() const { return mobjs; }
   KigPart& part() { return mpart; }
   KigWidget& widget() { return mview; }
-  QPoint plc() { return mplc; }
+  TQPoint plc() { return mplc; }
 
   bool onlyLabels() const { return monlylabels; }
 
@@ -93,7 +93,7 @@ private slots:
   void setCoordinateSystemMenuSlot( int );
 
 protected:
-  QPoint mplc;
+  TQPoint mplc;
   KigPart& mpart;
   KigWidget& mview;
   std::vector<ObjectHolder*> mobjs;
@@ -101,7 +101,7 @@ protected:
 
   std::vector<PopupActionProvider*> mproviders;
 
-  QPopupMenu* mmenus[NumberOfMenus];
+  TQPopupMenu* mmenus[NumberOfMenus];
 
 private:
   bool monlylabels;
@@ -130,12 +130,12 @@ public:
    * \return the index of the chosen element ( starting from 0 ), or -1
    *         if none was selected.
    */
-  static int getObjectFromList( const QPoint& p, KigWidget* w,
+  static int getObjectFromList( const TQPoint& p, KigWidget* w,
                                 const std::vector<ObjectHolder*>& objs,
                                 bool givepopup = true );
 
 protected:
-  ObjectChooserPopup( const QPoint& p, KigWidget& view,
+  ObjectChooserPopup( const TQPoint& p, KigWidget& view,
                       const std::vector<ObjectHolder*>& objs );
   ~ObjectChooserPopup();
 
@@ -143,7 +143,7 @@ protected slots:
   void actionActivatedSlot( int );
 
 protected:
-  QPoint mplc;
+  TQPoint mplc;
   KigWidget& mview;
   std::vector<ObjectHolder*> mobjs;
 

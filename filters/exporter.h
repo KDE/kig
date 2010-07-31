@@ -52,15 +52,15 @@ public:
   /**
    * Returns a statement like i18n( "Export to image" )
    */
-  virtual QString exportToStatement() const = 0;
+  virtual TQString exportToStatement() const = 0;
   /**
    * Returns a string like i18n( "Image..." )
    */
-  virtual QString menuEntryName() const = 0;
+  virtual TQString menuEntryName() const = 0;
   /**
    * Returns a string with the name of the icon
    */
-  virtual QString menuIcon() const = 0;
+  virtual TQString menuIcon() const = 0;
 
   /**
    * Do what you need to do.  It's up to the individual exporters to
@@ -78,9 +78,9 @@ class ImageExporter
 {
 public:
   ~ImageExporter();
-  QString exportToStatement() const;
-  QString menuEntryName() const;
-  QString menuIcon() const;
+  TQString exportToStatement() const;
+  TQString menuEntryName() const;
+  TQString menuIcon() const;
   void run( const KigPart& doc, KigWidget& w );
 };
 
@@ -94,9 +94,9 @@ class XFigExporter
 {
 public:
   ~XFigExporter();
-  QString exportToStatement() const;
-  QString menuEntryName() const;
-  QString menuIcon() const;
+  TQString exportToStatement() const;
+  TQString menuEntryName() const;
+  TQString menuIcon() const;
   void run( const KigPart& doc, KigWidget& w );
 };
 #endif

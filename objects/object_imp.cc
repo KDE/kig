@@ -27,7 +27,7 @@
 class ObjectImpType::StaticPrivate
 {
 public:
-  std::map<QCString, const ObjectImpType*> namemap;
+  std::map<TQCString, const ObjectImpType*> namemap;
 };
 
 ObjectImp::ObjectImp()
@@ -43,7 +43,7 @@ bool ObjectImp::valid() const
   return ! type()->inherits( InvalidImp::stype() );
 }
 
-void ObjectImp::fillInNextEscape( QString&, const KigDocument& ) const
+void ObjectImp::fillInNextEscape( TQString&, const KigDocument& ) const
 {
   assert( false );
 }
@@ -215,7 +215,7 @@ const char* ObjectImpType::internalName() const
   return minternalname;
 }
 
-QString ObjectImpType::translatedName() const
+TQString ObjectImpType::translatedName() const
 {
   return i18n( mtranslatedname );
 }
@@ -230,25 +230,25 @@ const char* ObjectImpType::selectNameStatement() const
   return mselectnamestatement;
 }
 
-QString ObjectImpType::removeAStatement() const
+TQString ObjectImpType::removeAStatement() const
 {
   return i18n( mremoveastatement );
 }
 
-QString ObjectImpType::addAStatement() const
+TQString ObjectImpType::addAStatement() const
 {
   return i18n( maddastatement );
 }
 
-QString ObjectImpType::moveAStatement() const
+TQString ObjectImpType::moveAStatement() const
 {
   return i18n( mmoveastatement );
 }
 
 const ObjectImpType* ObjectImpType::typeFromInternalName( const char* string )
 {
-  QCString s( string );
-  std::map<QCString, const ObjectImpType*>::iterator i = sd()->namemap.find( s );
+  TQCString s( string );
+  std::map<TQCString, const ObjectImpType*>::iterator i = sd()->namemap.find( s );
   if ( i == sd()->namemap.end() )
     return 0;
   else return i->second;
@@ -286,17 +286,17 @@ bool ObjectImp::isCache() const
   return false;
 }
 
-QString ObjectImpType::attachToThisStatement() const
+TQString ObjectImpType::attachToThisStatement() const
 {
   return i18n( mattachtothisstatement );
 }
 
-QString ObjectImpType::showAStatement() const
+TQString ObjectImpType::showAStatement() const
 {
   return i18n( mshowastatement );
 }
 
-QString ObjectImpType::hideAStatement() const
+TQString ObjectImpType::hideAStatement() const
 {
   return i18n( mhideastatement );
 }

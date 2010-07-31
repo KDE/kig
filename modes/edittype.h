@@ -29,15 +29,15 @@ class EditType : public EditTypeBase
 {
   Q_OBJECT
 
-  QString mname;
-  QString mdesc;
-  QString micon;
+  TQString mname;
+  TQString mdesc;
+  TQString micon;
 public:
-  EditType( QWidget* parent, QString name = QString::null, QString desc = QString::null, QString icon = QString::null );
+  EditType( TQWidget* parent, TQString name = TQString::null, TQString desc = TQString::null, TQString icon = TQString::null );
   ~EditType();
-  const QString name() const;
-  const QString description() const;
-  const QString icon() const;
+  const TQString name() const;
+  const TQString description() const;
+  const TQString icon() const;
 
 public slots:
   void helpSlot();

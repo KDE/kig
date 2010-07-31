@@ -17,7 +17,7 @@
 
 #include "script-common.h"
 
-#include <qstring.h>
+#include <tqstring.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -35,18 +35,18 @@ static const script_prop scripts_properties[] =
   { I18N_NOOP( "Now fill in the Python code:" ), "source_py", "Python-Kig" }
 };
 
-QString ScriptType::fillCodeStatement( ScriptType::Type type )
+TQString ScriptType::fillCodeStatement( ScriptType::Type type )
 {
   return i18n( scripts_properties[type].fillCodeStatement );
 }
 
-QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*> args )
+TQString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*> args )
 {
   if ( type == Python )
   {
-    QString tempcode = QString::fromLatin1( "def calc( " );
+    TQString tempcode = TQString::fromLatin1( "def calc( " );
     bool firstarg = true;
-    QString temparg = i18n( "Note to translators: this should be a default "
+    TQString temparg = i18n( "Note to translators: this should be a default "
                             "name for an argument in a Python function. The "
                             "default is \"arg%1\" which would become arg1, "
                             "arg2, etc. Give something which seems "
@@ -57,7 +57,7 @@ QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*
     {
       if ( !firstarg ) tempcode += ", ";
       else firstarg = false;
-      QString n = ( *i )->name();
+      TQString n = ( *i )->name();
       tempcode += n.isEmpty() ? temparg.arg( id ) : n;
       id++;
     };
@@ -81,9 +81,9 @@ const char* ScriptType::icon( ScriptType::Type type )
   return scripts_properties[type].icon;
 }
 
-QString ScriptType::highlightStyle( ScriptType::Type type )
+TQString ScriptType::highlightStyle( ScriptType::Type type )
 {
-  return QString( scripts_properties[type].highlightStyle );
+  return TQString( scripts_properties[type].highlightStyle );
 }
 
 ScriptType::Type ScriptType::intToType( int type )

@@ -33,7 +33,7 @@ class kdbgstream;
 class Coordinate
 {
 public:
-  static Coordinate fromQPoint( const QPoint& p );
+  static Coordinate fromQPoint( const TQPoint& p );
 
   /** Constructor.  Construct a new Coordinate, with a given x and y
    * value.
@@ -102,7 +102,7 @@ public:
    * x/y ratio untouched...
    */
   const Coordinate normalize( double length = 1 ) const;
-  QPoint toQPoint() const;
+  TQPoint toQPoint() const;
 
   Coordinate& operator= ( const Coordinate& c );
   /** Add.  Add c to this Coordinate

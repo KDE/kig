@@ -31,7 +31,7 @@
 
 KigFilters* KigFilters::sThis;
 
-KigFilter* KigFilters::find(const QString& mime)
+KigFilter* KigFilters::find(const TQString& mime)
 {
   for (vect::iterator i = mFilters.begin(); i != mFilters.end(); ++i)
     {
@@ -62,12 +62,12 @@ KigFilter::~KigFilter()
 {
 }
 
-bool KigFilter::supportMime( const QString& )
+bool KigFilter::supportMime( const TQString& )
 {
   return false;
 }
 
-void KigFilter::fileNotFound( const QString& file ) const
+void KigFilter::fileNotFound( const TQString& file ) const
 {
   KMessageBox::sorry( 0,
                       i18n( "The file \"%1\" could not be opened.  "
@@ -76,12 +76,12 @@ void KigFilter::fileNotFound( const QString& file ) const
                             "its permissions" ).arg( file ) );
 }
 
-void KigFilter::parseError( const QString& file, const QString& explanation ) const
+void KigFilter::parseError( const TQString& file, const TQString& explanation ) const
 {
-  const QString text =
+  const TQString text =
     i18n( "An error was encountered while parsing the file \"%1\".  It "
           "cannot be opened." ).arg( file );
-  const QString title = i18n( "Parse Error" );
+  const TQString title = i18n( "Parse Error" );
 
   if ( explanation.isNull() )
     KMessageBox::sorry( 0, text, title );
@@ -89,25 +89,25 @@ void KigFilter::parseError( const QString& file, const QString& explanation ) co
     KMessageBox::detailedSorry( 0, text, explanation, title );
 }
 
-void KigFilter::notSupported( const QString& file, const QString& explanation ) const
+void KigFilter::notSupported( const TQString& file, const TQString& explanation ) const
 {
   KMessageBox::detailedSorry( 0,
                               i18n( "Kig cannot open the file \"%1\"." ).arg( file ),
                               explanation, i18n( "Not Supported" ) );
 }
 
-void KigFilter::warning( const QString& explanation ) const
+void KigFilter::warning( const TQString& explanation ) const
 {
   KMessageBox::information( 0, explanation );
 }
 
-bool KigFilters::save( const KigDocument& data, const QString& tofile )
+bool KigFilters::save( const KigDocument& data, const TQString& tofile )
 {
   return KigFilterNative::instance()->save( data, tofile );
 }
 
 /*
-bool KigFilters::save( const KigDocument& data, QTextStream& stream )
+bool KigFilters::save( const KigDocument& data, TQTextStream& stream )
 {
   return KigFilterNative::instance()->save( data, stream );
 }

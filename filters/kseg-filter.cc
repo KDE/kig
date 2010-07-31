@@ -43,12 +43,12 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <qfont.h>
-#include <qpen.h>
-#include <qbrush.h>
-#include <qfile.h>
-#include <qdatastream.h>
-#include <qbuffer.h>
+#include <tqfont.h>
+#include <tqpen.h>
+#include <tqbrush.h>
+#include <tqfile.h>
+#include <tqdatastream.h>
+#include <tqbuffer.h>
 
 #include <klocale.h>
 
@@ -60,7 +60,7 @@ KigFilterKSeg::~KigFilterKSeg()
 {
 }
 
-bool KigFilterKSeg::supportMime( const QString& mime )
+bool KigFilterKSeg::supportMime( const TQString& mime )
 {
   return mime == "application/x-kseg";
 }
@@ -68,12 +68,12 @@ bool KigFilterKSeg::supportMime( const QString& mime )
 struct drawstyle
 {
   Q_INT8 pointstyle;
-  QFont font;
-  QPen pen;
-  QBrush brush;
+  TQFont font;
+  TQPen pen;
+  TQBrush brush;
 };
 
-static Coordinate readKSegCoordinate( QDataStream& stream )
+static Coordinate readKSegCoordinate( TQDataStream& stream )
 {
   // read the coord..
   float inx, iny;
@@ -135,7 +135,7 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
   else return 0;
 }
 
-ObjectCalcer* KigFilterKSeg::transformObject( const QString& file, KigDocument& kigdoc,
+ObjectCalcer* KigFilterKSeg::transformObject( const TQString& file, KigDocument& kigdoc,
                                               std::vector<ObjectCalcer*>& parents,
                                               int subtype, bool& ok )
 {
@@ -196,9 +196,9 @@ ObjectCalcer* KigFilterKSeg::transformObject( const QString& file, KigDocument& 
   return retobj;
 }
 
-KigDocument* KigFilterKSeg::load( const QString& file )
+KigDocument* KigFilterKSeg::load( const TQString& file )
 {
-  QFile ffile( file );
+  TQFile ffile( file );
   if ( ! ffile.open( IO_ReadOnly ) )
   {
     fileNotFound( file );
@@ -207,18 +207,18 @@ KigDocument* KigFilterKSeg::load( const QString& file )
 
   KigDocument* retdoc = new KigDocument();
 
-  QDataStream fstream( &ffile );
+  TQDataStream fstream( &ffile );
 
-  QString versionstring;
+  TQString versionstring;
   fstream >> versionstring;
   if ( !versionstring.startsWith( "KSeg Document Version " ) )
     KIG_FILTER_PARSE_ERROR;
 
-  QByteArray array;
+  TQByteArray array;
   fstream >> array;
-  QBuffer buf( array );
+  TQBuffer buf( array );
   buf.open( IO_ReadOnly );
-  QDataStream stream( &buf );
+  TQDataStream stream( &buf );
 
   stream.setVersion( 3 );
 
@@ -281,7 +281,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
 
     if ( type == G_LOOP ) continue;
     // read the label..
-    QString labeltext;
+    TQString labeltext;
     stream >> labeltext;
     Coordinate relcoord = readKSegCoordinate( stream );
     // shut up gcc
@@ -298,7 +298,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     ObjectCalcer* o = 0;
     bool ok = true;
 
-    QColor color = style.pen.color();
+    TQColor color = style.pen.color();
     int width = style.pen.width();
 
 /*
@@ -636,7 +636,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       std::vector<ObjectCalcer*> args2;
       args2.push_back( object->nameCalcer() );
       ObjectCalcer* oc2 = fact->attachedLabelCalcer(
-               QString::fromLatin1( "%1" ), object->calcer(),
+               TQString::fromLatin1( "%1" ), object->calcer(),
                static_cast<const PointImp*>( object->imp() )->coordinate(),
                false, args2, *retdoc );
       oc2->calc( *retdoc );
@@ -652,7 +652,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
   stream >> selgroupcount;
   for ( int i = 0; i < selgroupcount; ++i )
   {
-    QString name;
+    TQString name;
     stream >> name;
     int size;
     stream >> size;

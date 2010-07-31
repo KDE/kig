@@ -173,7 +173,7 @@
 //   return tNotGood;
 // }
 
-// QString getTransformMessage ( const Objects& os, const Object *o )
+// TQString getTransformMessage ( const Objects& os, const Object *o )
 // {
 //   int size = os.size();
 //   switch (size)

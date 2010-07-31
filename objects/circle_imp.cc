@@ -231,18 +231,18 @@ double CircleImp::circumference() const
   return 2 * M_PI * radius();
 }
 
-QString CircleImp::polarEquationString( const KigDocument& w ) const
+TQString CircleImp::polarEquationString( const KigDocument& w ) const
 {
-  QString ret = i18n( "rho = %1   [centered at %2]" );
+  TQString ret = i18n( "rho = %1   [centered at %2]" );
   ConicPolarData data = polarData();
   ret = ret.arg( data.pdimen, 0, 'g', 3 );
   ret = ret.arg( w.coordinateSystem().fromScreen( data.focus1, w ) );
   return ret;
 }
 
-QString CircleImp::cartesianEquationString( const KigDocument& ) const
+TQString CircleImp::cartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "x² + y² + %1 x + %2 y + %3 = 0" );
+  TQString ret = i18n( "x² + y² + %1 x + %2 y + %3 = 0" );
   ConicCartesianData data = cartesianData();
   ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
   ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
@@ -250,9 +250,9 @@ QString CircleImp::cartesianEquationString( const KigDocument& ) const
   return ret;
 }
 
-QString CircleImp::simplyCartesianEquationString( const KigDocument& ) const
+TQString CircleImp::simplyCartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "( x - %1 )² + ( y - %2 )² = %3" );
+  TQString ret = i18n( "( x - %1 )² + ( y - %2 )² = %3" );
   ret = ret.arg( mcenter.x, 0, 'g', 3 );
   ret = ret.arg( mcenter.y, 0, 'g', 3 );
   ret = ret.arg( mradius * mradius, 0, 'g', 3 );

@@ -24,12 +24,12 @@
 
 #include "coordinate.h"
 
-#include <qrect.h>
+#include <tqrect.h>
 #include <kdebug.h>
 
 /**
- * like Coordinate is a QPoint replacement with doubles, this is a
- * QRect replacement with doubles...
+ * like Coordinate is a TQPoint replacement with doubles, this is a
+ * TQRect replacement with doubles...
  */
 class Rect
 {
@@ -103,7 +103,7 @@ public:
    */
   Rect matchShape( const Rect& rhs, bool shrink = false ) const;
 
-  QRect toQRect() const;
+  TQRect toQRect() const;
   Coordinate bottomLeft() const;
   Coordinate bottomRight() const;
   Coordinate topLeft() const;
@@ -121,7 +121,7 @@ public:
   Rect normalized() const;
   friend kdbgstream& operator<<( kdbgstream& s, const Rect& t );
 
-  static Rect fromQRect( const QRect& );
+  static Rect fromQRect( const TQRect& );
 protected:
   Coordinate mBottomLeft;
   double mwidth;

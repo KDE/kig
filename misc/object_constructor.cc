@@ -36,24 +36,24 @@
 
 #include "../modes/construct_mode.h"
 
-#include <qpen.h>
+#include <tqpen.h>
 
 #include <klocale.h>
 
 #include <algorithm>
 #include <functional>
 
-const QString StandardConstructorBase::descriptiveName() const
+const TQString StandardConstructorBase::descriptiveName() const
 {
   return i18n( mdescname );
 }
 
-const QString StandardConstructorBase::description() const
+const TQString StandardConstructorBase::description() const
 {
   return i18n( mdesc );
 }
 
-const QCString StandardConstructorBase::iconFileName( const bool ) const
+const TQCString StandardConstructorBase::iconFileName( const bool ) const
 {
   return miconfile;
 }
@@ -103,7 +103,7 @@ void StandardConstructorBase::handlePrelim(
   std::vector<ObjectCalcer*> args = margsparser.parse( os );
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
+  p.setPen( TQPen ( Qt::red,  1) );
   p.setWidth( -1 ); // -1 means the default width for the object being
                     // drawn..
 
@@ -236,17 +236,17 @@ void MergeObjectConstructor::merge( ObjectConstructor* e )
   mctors.push_back( e );
 }
 
-const QString MergeObjectConstructor::descriptiveName() const
+const TQString MergeObjectConstructor::descriptiveName() const
 {
   return i18n( mdescname );
 }
 
-const QString MergeObjectConstructor::description() const
+const TQString MergeObjectConstructor::description() const
 {
   return i18n( mdesc );
 }
 
-const QCString MergeObjectConstructor::iconFileName( const bool ) const
+const TQCString MergeObjectConstructor::iconFileName( const bool ) const
 {
   return miconfilename;
 }
@@ -297,7 +297,7 @@ void MergeObjectConstructor::handlePrelim(
   };
 }
 
-QString StandardConstructorBase::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+TQString StandardConstructorBase::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                                           const KigDocument&, const KigWidget& ) const
 {
   using namespace std;
@@ -305,11 +305,11 @@ QString StandardConstructorBase::useText( const ObjectCalcer& o, const std::vect
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
   std::string ret = margsparser.usetext( o.imp(), args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return TQString::null;
   return i18n( ret.c_str() );
 }
 
-QString StandardConstructorBase::selectStatement(
+TQString StandardConstructorBase::selectStatement(
   const std::vector<ObjectCalcer*>& sel, const KigDocument&,
   const KigWidget& ) const
 {
@@ -318,11 +318,11 @@ QString StandardConstructorBase::selectStatement(
   transform( sel.begin(), sel.end(), back_inserter( args ), mem_fun( &ObjectCalcer::imp ) );
 
   std::string ret = margsparser.selectStatement( args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return TQString::null;
   return i18n( ret.c_str() );
 }
 
-QString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+TQString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                                          const KigDocument& d, const KigWidget& v ) const
 {
   for ( vectype::const_iterator i = mctors.begin(); i != mctors.end(); ++i )
@@ -331,10 +331,10 @@ QString MergeObjectConstructor::useText( const ObjectCalcer& o, const std::vecto
     int w = (*i)->wantArgs( args, d, v );
     if ( w != ArgsParser::Invalid ) return (*i)->useText( o, sel, d, v );
   };
-  return QString::null;
+  return TQString::null;
 }
 
-QString MergeObjectConstructor::selectStatement(
+TQString MergeObjectConstructor::selectStatement(
   const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
   const KigWidget& w ) const
 {
@@ -344,11 +344,11 @@ QString MergeObjectConstructor::selectStatement(
     int wa = (*i)->wantArgs( args, d, w );
     if ( wa != ArgsParser::Invalid ) return (*i)->selectStatement( sel, d, w );
   };
-  return QString::null;
+  return TQString::null;
 }
 
-MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const QString& name,
-                                    const QString& desc, const QCString& iconfile )
+MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const TQString& name,
+                                    const TQString& desc, const TQCString& iconfile )
   : ObjectConstructor(), mhier( hier ), mname( name ), mdesc( desc ),
     mbuiltin( false ), miconfile( iconfile ),
     mparser( mhier.argParser() )
@@ -357,8 +357,8 @@ MacroConstructor::MacroConstructor( const ObjectHierarchy& hier, const QString& 
 
 MacroConstructor::MacroConstructor(
   const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
-  const QString& name, const QString& description,
-  const QCString& iconfile )
+  const TQString& name, const TQString& description,
+  const TQCString& iconfile )
   : ObjectConstructor(), mhier( input, output ),
     mname( name ), mdesc( description ), mbuiltin( false ),
     miconfile( iconfile ),
@@ -370,19 +370,19 @@ MacroConstructor::~MacroConstructor()
 {
 }
 
-const QString MacroConstructor::descriptiveName() const
+const TQString MacroConstructor::descriptiveName() const
 {
   return mname;
 }
 
-const QString MacroConstructor::description() const
+const TQString MacroConstructor::description() const
 {
   return mdesc;
 }
 
-const QCString MacroConstructor::iconFileName( const bool canBeNull ) const
+const TQCString MacroConstructor::iconFileName( const bool canBeNull ) const
 {
-  return ( miconfile.isNull() && !canBeNull ) ? QCString( "gear" ) : miconfile;
+  return ( miconfile.isNull() && !canBeNull ) ? TQCString( "gear" ) : miconfile;
 }
 
 const bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) const
@@ -412,7 +412,7 @@ void MacroConstructor::handleArgs( const std::vector<ObjectCalcer*>& os, KigPart
   d.addObjects( hos );
 }
 
-QString MacroConstructor::selectStatement(
+TQString MacroConstructor::selectStatement(
   const std::vector<ObjectCalcer*>& sel, const KigDocument&,
   const KigWidget& ) const
 {
@@ -421,11 +421,11 @@ QString MacroConstructor::selectStatement(
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &ObjectCalcer::imp ) );
   std::string ret = mparser.selectStatement( args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return TQString::null;
   else return i18n( ret.c_str() );
 }
 
-QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+TQString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                                    const KigDocument&, const KigWidget&
   ) const
 {
@@ -434,7 +434,7 @@ QString MacroConstructor::useText( const ObjectCalcer& o, const std::vector<Obje
   transform( sel.begin(), sel.end(), back_inserter( args ),
              mem_fun( &ObjectCalcer::imp ) );
   std::string ret = mparser.usetext( o.imp(), args );
-  if ( ret.empty() ) return QString::null;
+  if ( ret.empty() ) return TQString::null;
   else return i18n( ret.c_str() );
 }
 
@@ -593,17 +593,17 @@ BaseConstructMode* ObjectConstructor::constructMode( KigPart& doc )
   return new ConstructMode( doc, this );
 }
 
-void MacroConstructor::setName( const QString& name )
+void MacroConstructor::setName( const TQString& name )
 {
   mname = name;
 }
 
-void MacroConstructor::setDescription( const QString& desc )
+void MacroConstructor::setDescription( const TQString& desc )
 {
   mdesc = desc;
 }
 
-void MacroConstructor::setIcon( QCString& icon )
+void MacroConstructor::setIcon( TQCString& icon )
 {
   miconfile = icon;
 }

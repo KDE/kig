@@ -18,14 +18,14 @@
 #include "kigfiledialog.h"
 #include "kigfiledialog.moc"
 
-#include <qfile.h>
-#include <qpoint.h>
+#include <tqfile.h>
+#include <tqpoint.h>
 
 #include <klocale.h>
 #include <kmessagebox.h>
 
-KigFileDialog::KigFileDialog( const QString& startDir, const QString& filter,
-              const QString& caption,  QWidget* parent )
+KigFileDialog::KigFileDialog( const TQString& startDir, const TQString& filter,
+              const TQString& caption,  TQWidget* parent )
   : KFileDialog( startDir, filter, parent, "kigfiledialog", true ),
     mow( 0L )
 {
@@ -35,7 +35,7 @@ KigFileDialog::KigFileDialog( const QString& startDir, const QString& filter,
   moptcaption = i18n( "Options" );
 }
 
-void KigFileDialog::setOptionsWidget( QWidget* w )
+void KigFileDialog::setOptionsWidget( TQWidget* w )
 {
   mow = w;
 }
@@ -46,10 +46,10 @@ void KigFileDialog::accept()
   // the selected file name _before_ the dialog is accept()'ed or
   // reject()'ed... in every case, below we make sure to accept() or
   // reject()...
-  setResult( QDialog::Accepted );
+  setResult( TQDialog::Accepted );
 
-  QString sFile = selectedFile();
-  if ( QFile::exists( sFile ) )
+  TQString sFile = selectedFile();
+  if ( TQFile::exists( sFile ) )
   {
     int ret = KMessageBox::warningContinueCancel( this,
                                          i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
@@ -64,15 +64,15 @@ void KigFileDialog::accept()
   {
     KDialogBase* optdlg = new KDialogBase(
         this, "optdlg", true, moptcaption, Cancel|Ok, Cancel, true );
-    mow->reparent( optdlg, QPoint() );
+    mow->reparent( optdlg, TQPoint() );
     optdlg->setMainWidget( mow );
-    optdlg->exec() == QDialog::Accepted ? KFileDialog::accept() : KFileDialog::reject();
+    optdlg->exec() == TQDialog::Accepted ? KFileDialog::accept() : KFileDialog::reject();
   }
   else
     KFileDialog::accept();
 }
 
-void KigFileDialog::setOptionCaption( const QString& caption )
+void KigFileDialog::setOptionCaption( const TQString& caption )
 {
   if ( caption.isEmpty() )
     return;

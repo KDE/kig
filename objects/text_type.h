@@ -45,7 +45,7 @@ public:
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
              const KigDocument& ) const;
 
-  QStringList specialActions() const;
+  TQStringList specialActions() const;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
                       KigPart& d, KigWidget& w, NormalMode& m ) const;
 

@@ -72,7 +72,7 @@ public:
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  void fillInNextEscape( TQString& s, const KigDocument& ) const;
   bool canFillInNextEscape() const;
 
   bool equals( const ObjectImp& rhs ) const;

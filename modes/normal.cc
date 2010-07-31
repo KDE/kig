@@ -128,7 +128,7 @@ NormalMode::~NormalMode()
 {
 }
 
-void NormalMode::dragRect( const QPoint& p, KigWidget& w )
+void NormalMode::dragRect( const TQPoint& p, KigWidget& w )
 {
   DragRectMode d( p, mdoc, w );
   mdoc.runMode( &d );
@@ -153,7 +153,7 @@ void NormalMode::dragRect( const QPoint& p, KigWidget& w )
   w.updateWidget();
 }
 
-void NormalMode::dragObject( const std::vector<ObjectHolder*>& oco, const QPoint& pco,
+void NormalMode::dragObject( const std::vector<ObjectHolder*>& oco, const TQPoint& pco,
                              KigWidget& w, bool ctrlOrShiftDown )
 {
   // first determine what to move...
@@ -171,7 +171,7 @@ void NormalMode::dragObject( const std::vector<ObjectHolder*>& oco, const QPoint
   mdoc.runMode( &m );
 }
 
-void NormalMode::leftClickedObject( ObjectHolder* o, const QPoint&,
+void NormalMode::leftClickedObject( ObjectHolder* o, const TQPoint&,
                                     KigWidget& w, bool ctrlOrShiftDown )
 {
   KigPainter pter( w.screenInfo(), &w.stillPix, mdoc.document() );
@@ -202,7 +202,7 @@ void NormalMode::leftClickedObject( ObjectHolder* o, const QPoint&,
   w.updateWidget();
 }
 
-void NormalMode::midClicked( const QPoint& p, KigWidget& w )
+void NormalMode::midClicked( const TQPoint& p, KigWidget& w )
 {
   ObjectHolder* pto = ObjectFactory::instance()->sensiblePoint( w.fromScreen( p ), mdoc.document(), w );
   pto->calc( mdoc.document() );
@@ -215,11 +215,11 @@ void NormalMode::midClicked( const QPoint& p, KigWidget& w )
 }
 
 void NormalMode::rightClicked( const std::vector<ObjectHolder*>& os,
-                               const QPoint& plc,
+                               const TQPoint& plc,
                                KigWidget& w )
 {
   // saving the current cursor position
-  QPoint pt = QCursor::pos();
+  TQPoint pt = TQCursor::pos();
   if( !os.empty() )
   {
     ObjectHolder* o = 0;
@@ -246,7 +246,7 @@ void NormalMode::rightClicked( const std::vector<ObjectHolder*>& os,
 }
 
 void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
-                             const QPoint& plc,
+                             const TQPoint& plc,
                              KigWidget& w,
                              bool )
 {
@@ -265,14 +265,14 @@ void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
     w.setCursor( KCursor::handCursor() );
 
     int id = ObjectChooserPopup::getObjectFromList( plc, &w, os, false );
-    QString stat = id == 0 ? os.front()->selectStatement() : i18n( "Which object?" );
+    TQString stat = id == 0 ? os.front()->selectStatement() : i18n( "Which object?" );
 
     // statusbar text
     mdoc.emitStatusBarText( stat );
     KigPainter p( w.screenInfo(), &w.curPix, mdoc.document() );
 
     // set the text next to the arrow cursor
-    QPoint point = plc;
+    TQPoint point = plc;
     point.setX(point.x()+15);
 
     p.drawTextStd( point, stat );

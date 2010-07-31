@@ -28,8 +28,8 @@
 #include "goniometry.h"
 #include "kigpainter.h"
 
-#include <qpainter.h>
-#include <qregexp.h>
+#include <tqpainter.h>
+#include <tqregexp.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -48,17 +48,17 @@ class CoordinateValidator
 #else
   KFloatValidator mdv;
 #endif
-  mutable QRegExp mre;
+  mutable TQRegExp mre;
 public:
   CoordinateValidator( bool polar );
   ~CoordinateValidator();
-  State validate ( QString & input,  int & pos ) const;
-  void fixup ( QString & input ) const;
+  State validate ( TQString & input,  int & pos ) const;
+  void fixup ( TQString & input ) const;
 };
 
 
 CoordinateValidator::CoordinateValidator( bool polar )
-  : QValidator( 0, 0 ), mpolar( polar ), mdv( 0, 0 ),
+  : TQValidator( 0, 0 ), mpolar( polar ), mdv( 0, 0 ),
     mre( polar ? "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?"
          : "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" )
 {
@@ -68,9 +68,9 @@ CoordinateValidator::~CoordinateValidator()
 {
 }
 
-QValidator::State CoordinateValidator::validate( QString & input, int & pos ) const
+TQValidator::State CoordinateValidator::validate( TQString & input, int & pos ) const
 {
-  QString tinput = input;
+  TQString tinput = input;
   if ( tinput[tinput.length() - 1 ] == ')' ) tinput.truncate( tinput.length() - 1 );
   if ( mpolar )
   {
@@ -84,8 +84,8 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
   if ( scp == -1 ) return mdv.validate( tinput, pos ) == Invalid ? Invalid : Valid;
   else
   {
-    QString p1 = tinput.left( scp );
-    QString p2 = tinput.mid( scp + 1 );
+    TQString p1 = tinput.left( scp );
+    TQString p2 = tinput.mid( scp + 1 );
 
     State ret = Acceptable;
 
@@ -99,7 +99,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
   };
 }
 
-void CoordinateValidator::fixup( QString & input ) const
+void CoordinateValidator::fixup( TQString & input ) const
 {
   int nsc = input.contains( ';' );
   if ( nsc > 1 )
@@ -116,26 +116,26 @@ void CoordinateValidator::fixup( QString & input ) const
     sc = input.length();
     KLocale* l = KGlobal::locale();
     if ( mpolar )
-      input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
-                    QString::fromLatin1( "0°" ) );
+      input.append( TQString::fromLatin1( ";" ) + l->positiveSign() +
+                    TQString::fromLatin1( "0°" ) );
     else
-      input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
-                    QString::fromLatin1( "0" ) + l->decimalSymbol() +
-                    QString::fromLatin1( "0" ) );
+      input.append( TQString::fromLatin1( ";" ) + l->positiveSign() +
+                    TQString::fromLatin1( "0" ) + l->decimalSymbol() +
+                    TQString::fromLatin1( "0" ) );
   };
   mre.exactMatch( input );
-  QString ds1 = mre.cap( 1 );
+  TQString ds1 = mre.cap( 1 );
   mdv.fixup( ds1 );
-  QString ds2 = mre.cap( 2 );
+  TQString ds2 = mre.cap( 2 );
   mdv.fixup( ds2 );
-  input = ds1 + QString::fromLatin1( "; " ) + ds2;
+  input = ds1 + TQString::fromLatin1( "; " ) + ds2;
 }
 
 EuclideanCoords::EuclideanCoords()
 {
 }
 
-QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d ) const
+TQString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d ) const
 {
   // i used to use the widget size here, but that's no good idea,
   // since an object isn't asked to recalc every time the widget size
@@ -144,19 +144,19 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   Rect sr = d.suggestedRect();
   double m = kigMax( sr.width(), sr.height() );
   int l = kigMax( 0, (int) ( 3 - log10( m ) ) );
-  QString xs = KGlobal::locale()->formatNumber( p.x, l );
-  QString ys = KGlobal::locale()->formatNumber( p.y, l );
-  return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
+  TQString xs = KGlobal::locale()->formatNumber( p.x, l );
+  TQString ys = KGlobal::locale()->formatNumber( p.y, l );
+  return TQString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
 }
 
-Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
+Coordinate EuclideanCoords::toScreen(const TQString& s, bool& ok) const
 {
-  QRegExp r( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" );
+  TQRegExp r( "\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?\\)?" );
   ok = ( r.search(s) == 0 );
   if (ok)
   {
-    QString xs = r.cap(1);
-    QString ys = r.cap(2);
+    TQString xs = r.cap(1);
+    TQString ys = r.cap(2);
     KLocale* l = KGlobal::locale();
     double x = l->readNumber( xs, &ok );
     if ( ! ok ) x = xs.toDouble( &ok );
@@ -241,7 +241,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   /****** the grid lines ******/
   if ( showgrid )
   {
-    p.setPen( QPen( lightGray, 0, DotLine ) );
+    p.setPen( TQPen( lightGray, 0, DotLine ) );
     // vertical lines...
     for ( double i = hgraphmin; i <= hgraphmax + hd/2; i += hd )
       p.drawSegment( Coordinate( i, vgraphmin ),
@@ -255,7 +255,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   /****** the axes ******/
   if ( showaxes )
   {
-    p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
+    p.setPen( TQPen( Qt::gray, 1, Qt::SolidLine ) );
     // x axis
     p.drawSegment( Coordinate( hmin, 0 ), Coordinate( hmax, 0 ) );
     // y axis
@@ -286,8 +286,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
         );
     };
     // arrows on the ends of the axes...
-    p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
-    p.setBrush( QBrush( Qt::gray ) );
+    p.setPen( TQPen( Qt::gray, 1, Qt::SolidLine ) );
+    p.setBrush( TQBrush( Qt::gray ) );
     std::vector<Coordinate> a;
 
     // the arrow on the right end of the X axis...
@@ -310,13 +310,13 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   }; // if( showaxes )
 }
 
-QString EuclideanCoords::coordinateFormatNotice() const
+TQString EuclideanCoords::coordinateFormatNotice() const
 {
   return i18n( "Enter coordinates in the following format: \"x;y\",\n"
                "where x is the x coordinate, and y is the y coordinate." );
 }
 
-QString EuclideanCoords::coordinateFormatNoticeMarkup() const
+TQString EuclideanCoords::coordinateFormatNoticeMarkup() const
 {
   return i18n( "Enter coordinates in the following format: <b>\"x;y\"</b>, "
                "where x is the x coordinate, and y is the y coordinate." );
@@ -342,7 +342,7 @@ PolarCoords::~PolarCoords()
 {
 }
 
-QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) const
+TQString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) const
 {
   Rect sr = d.suggestedRect();
   double m = kigMax( sr.width(), sr.height() );
@@ -351,37 +351,37 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
   double r = pt.length();
   double theta = Goniometry::convert( atan2( pt.y, pt.x ), Goniometry::Rad, Goniometry::Deg );
 
-  QString rs = KGlobal::locale()->formatNumber( r, l );
-  QString ts = KGlobal::locale()->formatNumber( theta, 0 );
+  TQString rs = KGlobal::locale()->formatNumber( r, l );
+  TQString ts = KGlobal::locale()->formatNumber( theta, 0 );
 
-  return QString::fromLatin1("( %1; %2° )").arg( rs ).arg( ts );
+  return TQString::fromLatin1("( %1; %2° )").arg( rs ).arg( ts );
 }
 
-QString PolarCoords::coordinateFormatNotice() const
+TQString PolarCoords::coordinateFormatNotice() const
 {
   // \xCE\xB8 is utf8 for the greek theta sign..
   return i18n( "Enter coordinates in the following format: \"r; \xCE\xB8Â°\",\n"
                "where r and \xCE\xB8 are the polar coordinates." );
 }
 
-QString PolarCoords::coordinateFormatNoticeMarkup() const
+TQString PolarCoords::coordinateFormatNoticeMarkup() const
 {
   // \xCE\xB8 is utf8 for the greek theta sign..
   return i18n( "Enter coordinates in the following format: <b>\"r; \xCE\xB8Â°\"</b>, "
                "where r and \xCE\xB8 are the polar coordinates." );
 }
 
-Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
+Coordinate PolarCoords::toScreen(const TQString& s, bool& ok) const
 {
-  QRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?" );
+  TQRegExp regexp("\\(? ?([0-9.,+-]+); ?([0-9.,+-]+) ?°? ?\\)?" );
   ok = ( regexp.search( s ) == 0 );
   if (ok)
   {
-    QString rs = regexp.cap( 1 );
+    TQString rs = regexp.cap( 1 );
     double r = KGlobal::locale()->readNumber( rs, &ok );
     if ( ! ok ) r = rs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
-    QString ts = regexp.cap( 2 );
+    TQString ts = regexp.cap( 2 );
     double theta = KGlobal::locale()->readNumber( ts, &ok );
     if ( ! ok ) theta = ts.toDouble( &ok );
     if ( ! ok ) return Coordinate();
@@ -442,7 +442,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     // we also want the circles that don't fit entirely in the
     // screen..
     Coordinate c( 0, 0 );
-    p.setPen( QPen( lightGray, 0, DotLine ) );
+    p.setPen( TQPen( lightGray, 0, DotLine ) );
     for ( double i = begin; i <= end + d / 2; i += d )
       drawGridLine( p, c, fabs( i ) );
   }
@@ -450,7 +450,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   /****** the axes ******/
   if ( showaxes )
   {
-    p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
+    p.setPen( TQPen( Qt::gray, 1, Qt::SolidLine ) );
     // x axis
     p.drawSegment( Coordinate( hmin, 0 ), Coordinate( hmax, 0 ) );
     // y axis
@@ -465,7 +465,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
       // through the 0 etc. )
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
+      TQString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
         is, AlignLeft | AlignTop );
@@ -475,15 +475,15 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     {
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
+      TQString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
 
       p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
                    is, AlignBottom | AlignLeft
         );
     };
     // arrows on the ends of the axes...
-    p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
-    p.setBrush( QBrush( Qt::gray ) );
+    p.setPen( TQPen( Qt::gray, 1, Qt::SolidLine ) );
+    p.setBrush( TQBrush( Qt::gray ) );
     std::vector<Coordinate> a;
 
     // the arrow on the right end of the X axis...
@@ -506,19 +506,19 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   }; // if( showaxes )
 }
 
-QValidator* EuclideanCoords::coordinateValidator() const
+TQValidator* EuclideanCoords::coordinateValidator() const
 {
   return new CoordinateValidator( false );
 }
 
-QValidator* PolarCoords::coordinateValidator() const
+TQValidator* PolarCoords::coordinateValidator() const
 {
   return new CoordinateValidator( true );
 }
 
-QStringList CoordinateSystemFactory::names()
+TQStringList CoordinateSystemFactory::names()
 {
-  QStringList ret;
+  TQStringList ret;
   ret << i18n( "&Euclidean" )
       << i18n( "&Polar" );
   return ret;
@@ -565,7 +565,7 @@ int PolarCoords::id() const
   return CoordinateSystemFactory::Polar;
 }
 
-QString CoordinateSystemFactory::setCoordinateSystemStatement( int id )
+TQString CoordinateSystemFactory::setCoordinateSystemStatement( int id )
 {
   switch( id )
   {
@@ -575,7 +575,7 @@ QString CoordinateSystemFactory::setCoordinateSystemStatement( int id )
     return i18n( "Set Polar Coordinate System" );
   default:
     assert( false );
-    return QString::null;
+    return TQString::null;
   }
 }
 

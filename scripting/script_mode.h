@@ -52,14 +52,14 @@ private:
 public:
   virtual ~ScriptModeBase();
 
-  void dragRect( const QPoint& p, KigWidget& w );
-//  void dragObject( const Objects& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
-  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+  void dragRect( const TQPoint& p, KigWidget& w );
+//  void dragObject( const Objects& os, const TQPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
+  void leftClickedObject( ObjectHolder* o, const TQPoint& p,
                           KigWidget& w, bool actrlOrShiftDown );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const TQPoint& p,
                    KigWidget& w, bool shiftpressed );
-  void midClicked( const QPoint&, KigWidget& );
-  void rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& );
+  void midClicked( const TQPoint&, KigWidget& );
+  void rightClicked( const std::vector<ObjectHolder*>&, const TQPoint&, KigWidget& );
 
   void argsPageEntered();
   void codePageEntered();
@@ -106,7 +106,7 @@ private:
   std::vector<ObjectCalcer*> mexecargs;
   std::vector<ObjectCalcer*> mcompiledargs;
 
-  QString morigscript;
+  TQString morigscript;
 
 public:
   ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc );

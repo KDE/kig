@@ -30,7 +30,7 @@ class KigPlugin: public KFilePlugin
     Q_OBJECT
     
 public:
-    KigPlugin( QObject *parent, const char *name, const QStringList& args );
+    KigPlugin( TQObject *parent, const char *name, const TQStringList& args );
 
     virtual bool readInfo( KFileMetaInfo& metainfo, uint what);
 protected:

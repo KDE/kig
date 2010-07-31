@@ -48,46 +48,46 @@ KigMode::KigMode( KigPart& d )
 {
 }
 
-void KigMode::leftClicked( QMouseEvent*, KigWidget* )
+void KigMode::leftClicked( TQMouseEvent*, KigWidget* )
 {
 }
 
-void KigMode::leftMouseMoved( QMouseEvent*, KigWidget* )
+void KigMode::leftMouseMoved( TQMouseEvent*, KigWidget* )
 {
 }
 
-void KigMode::leftReleased( QMouseEvent*, KigWidget* )
+void KigMode::leftReleased( TQMouseEvent*, KigWidget* )
 {
   /* insist disabling the undo button to avoid crashes */
   mdoc.action( "edit_undo" )->setEnabled( false );
   mdoc.action( "edit_redo" )->setEnabled( false );
 }
 
-void KigMode::midClicked( QMouseEvent*, KigWidget* )
+void KigMode::midClicked( TQMouseEvent*, KigWidget* )
 {
 }
 
-void KigMode::midMouseMoved( QMouseEvent*, KigWidget* )
+void KigMode::midMouseMoved( TQMouseEvent*, KigWidget* )
 {
 }
 
-void KigMode::midReleased( QMouseEvent*, KigWidget* )
+void KigMode::midReleased( TQMouseEvent*, KigWidget* )
 {
 }
 
-void KigMode::rightClicked( QMouseEvent*, KigWidget* )
+void KigMode::rightClicked( TQMouseEvent*, KigWidget* )
 {
 }
 
-void KigMode::rightMouseMoved( QMouseEvent*, KigWidget* )
+void KigMode::rightMouseMoved( TQMouseEvent*, KigWidget* )
 {
 }
 
-void KigMode::rightReleased( QMouseEvent*, KigWidget* )
+void KigMode::rightReleased( TQMouseEvent*, KigWidget* )
 {
 }
 
-void KigMode::mouseMoved( QMouseEvent*, KigWidget* )
+void KigMode::mouseMoved( TQMouseEvent*, KigWidget* )
 {
 }
 

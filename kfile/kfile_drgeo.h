@@ -30,7 +30,7 @@ class DrgeoPlugin: public KFilePlugin
     Q_OBJECT
     
 public:
-    DrgeoPlugin( QObject *parent, const char *name, const QStringList& args );
+    DrgeoPlugin( TQObject *parent, const char *name, const TQStringList& args );
 
     virtual bool readInfo( KFileMetaInfo& metainfo, uint what);
 protected:

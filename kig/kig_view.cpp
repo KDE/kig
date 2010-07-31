@@ -30,11 +30,11 @@
 #include "../modes/mode.h"
 #include "../modes/dragrectmode.h"
 
-#include <qdialog.h>
-#include <qevent.h>
-#include <qwhatsthis.h>
-#include <qlayout.h>
-#include <qscrollbar.h>
+#include <tqdialog.h>
+#include <tqevent.h>
+#include <tqwhatsthis.h>
+#include <tqlayout.h>
+#include <tqscrollbar.h>
 
 #include <kdebug.h>
 #include <kcursor.h>
@@ -47,7 +47,7 @@
 #include <cmath>
 #include <algorithm>
 
-kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
+kdbgstream& operator<< ( kdbgstream& s, const TQPoint& t )
 {
   s << "x: " << t.x() << " y: " << t.y();
   return s;
@@ -55,10 +55,10 @@ kdbgstream& operator<< ( kdbgstream& s, const QPoint& t )
 
 KigWidget::KigWidget( KigPart* part,
                       KigView* view,
-                      QWidget* parent,
+                      TQWidget* parent,
                       const char* name,
                       bool fullscreen )
-  : QWidget( parent, name,
+  : TQWidget( parent, name,
              fullscreen ? WStyle_Customize | WStyle_NoBorder : 0 ),
     mpart( part ),
     mview( view ),
@@ -82,12 +82,12 @@ KigWidget::~KigWidget()
   mpart->delWidget( this );
 }
 
-void KigWidget::paintEvent(QPaintEvent*)
+void KigWidget::paintEvent(TQPaintEvent*)
 {
   updateEntireWidget();
 }
 
-void KigWidget::mousePressEvent (QMouseEvent* e)
+void KigWidget::mousePressEvent (TQMouseEvent* e)
 {
   if( e->button() & Qt::LeftButton )
     return mpart->mode()->leftClicked( e, this );
@@ -97,7 +97,7 @@ void KigWidget::mousePressEvent (QMouseEvent* e)
     return mpart->mode()->rightClicked( e, this );
 }
 
-void KigWidget::mouseMoveEvent (QMouseEvent* e)
+void KigWidget::mouseMoveEvent (TQMouseEvent* e)
 {
   if( e->state() & Qt::LeftButton )
     return mpart->mode()->leftMouseMoved( e, this );
@@ -108,7 +108,7 @@ void KigWidget::mouseMoveEvent (QMouseEvent* e)
   return mpart->mode()->mouseMoved( e, this );
 }
 
-void KigWidget::mouseReleaseEvent (QMouseEvent* e)
+void KigWidget::mouseReleaseEvent (TQMouseEvent* e)
 {
   if( e->state() & Qt::LeftButton )
     return mpart->mode()->leftReleased( e, this );
@@ -118,18 +118,18 @@ void KigWidget::mouseReleaseEvent (QMouseEvent* e)
     return mpart->mode()->rightReleased( e, this );
 }
 
-void KigWidget::updateWidget( const std::vector<QRect>& overlay )
+void KigWidget::updateWidget( const std::vector<TQRect>& overlay )
 {
 #undef SHOW_OVERLAY_RECTS
 #ifdef SHOW_OVERLAY_RECTS
-  QPainter debug (this, this);
+  TQPainter debug (this, this);
   debug.setPen(Qt::yellow);
 #endif // SHOW_OVERLAY_RECTS
   // we undo our old changes...
-  for ( std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
+  for ( std::vector<TQRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
     bitBlt( this, i->topLeft(), &curPix, *i );
   // we add our new changes...
-  for ( std::vector<QRect>::const_iterator i = overlay.begin(); i != overlay.end(); ++i )
+  for ( std::vector<TQRect>::const_iterator i = overlay.begin(); i != overlay.end(); ++i )
   {
     bitBlt( this, i->topLeft(), &curPix, *i );
 #ifdef SHOW_OVERLAY_RECTS
@@ -141,15 +141,15 @@ void KigWidget::updateWidget( const std::vector<QRect>& overlay )
 
 void KigWidget::updateEntireWidget()
 {
-  std::vector<QRect> overlay;
-  overlay.push_back( QRect( QPoint( 0, 0 ), size() ) );
+  std::vector<TQRect> overlay;
+  overlay.push_back( TQRect( TQPoint( 0, 0 ), size() ) );
   updateWidget( overlay );
 }
 
-void KigWidget::resizeEvent( QResizeEvent* e )
+void KigWidget::resizeEvent( TQResizeEvent* e )
 {
-  QSize osize = e->oldSize();
-  QSize nsize = e->size();
+  TQSize osize = e->oldSize();
+  TQSize nsize = e->size();
   Rect orect = msi.shownRect();
 
   curPix.resize( nsize );
@@ -173,12 +173,12 @@ void KigWidget::resizeEvent( QResizeEvent* e )
   updateScrollBars();
 }
 
-void KigWidget::updateCurPix( const std::vector<QRect>& ol )
+void KigWidget::updateCurPix( const std::vector<TQRect>& ol )
 {
   // we make curPix look like stillPix again...
-  for ( std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
+  for ( std::vector<TQRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
     bitBlt( &curPix, i->topLeft(), &stillPix, *i );
-  for ( std::vector<QRect>::const_iterator i = ol.begin(); i != ol.end(); ++i )
+  for ( std::vector<TQRect>::const_iterator i = ol.begin(); i != ol.end(); ++i )
     bitBlt( &curPix, i->topLeft(), &stillPix, *i );
 
   // we add ol to oldOverlay, so that part of the widget will be
@@ -233,7 +233,7 @@ void KigWidget::clearStillPix()
 {
   stillPix.fill(Qt::white);
   oldOverlay.clear();
-  oldOverlay.push_back ( QRect( QPoint(0,0), size() ) );
+  oldOverlay.push_back ( TQRect( TQPoint(0,0), size() ) );
 }
 
 void KigWidget::redrawScreen( const std::vector<ObjectHolder*>& selection, bool dos )
@@ -264,7 +264,7 @@ const Rect KigWidget::showingRect() const
   return msi.shownRect();
 }
 
-const Coordinate KigWidget::fromScreen( const QPoint& p )
+const Coordinate KigWidget::fromScreen( const TQPoint& p )
 {
   return msi.fromScreen( p );
 }
@@ -274,7 +274,7 @@ double KigWidget::pixelWidth() const
   return msi.pixelWidth();
 }
 
-const Rect KigWidget::fromScreen( const QRect& r )
+const Rect KigWidget::fromScreen( const TQRect& r )
 {
   return msi.fromScreen( r );
 }
@@ -287,28 +287,28 @@ void KigWidget::updateScrollBars()
 
 KigView::KigView( KigPart* part,
                   bool fullscreen,
-                  QWidget* parent,
+                  TQWidget* parent,
                   const char* name )
-  : QWidget( parent, name ),
+  : TQWidget( parent, name ),
     mlayout( 0 ), mrightscroll( 0 ), mbottomscroll( 0 ),
     mupdatingscrollbars( false ),
     mrealwidget( 0 ), mpart( part )
 {
-  connect( part, SIGNAL( recenterScreen() ), this, SLOT( slotInternalRecenterScreen() ) );
+  connect( part, TQT_SIGNAL( recenterScreen() ), this, TQT_SLOT( slotInternalRecenterScreen() ) );
 
-  mlayout = new QGridLayout( this, 2, 2 );
-  mrightscroll = new QScrollBar( Vertical, this, "Right Scrollbar" );
+  mlayout = new TQGridLayout( this, 2, 2 );
+  mrightscroll = new TQScrollBar( Vertical, this, "Right Scrollbar" );
   // TODO: make this configurable...
   mrightscroll->setTracking( true );
-  connect( mrightscroll, SIGNAL( valueChanged( int ) ),
-           this, SLOT( slotRightScrollValueChanged( int ) ) );
-  connect( mrightscroll, SIGNAL( sliderReleased() ),
-           this, SLOT( updateScrollBars() ) );
-  mbottomscroll = new QScrollBar( Horizontal, this, "Bottom Scrollbar" );
-  connect( mbottomscroll, SIGNAL( valueChanged( int ) ),
-           this, SLOT( slotBottomScrollValueChanged( int ) ) );
-  connect( mbottomscroll, SIGNAL( sliderReleased() ),
-           this, SLOT( updateScrollBars() ) );
+  connect( mrightscroll, TQT_SIGNAL( valueChanged( int ) ),
+           this, TQT_SLOT( slotRightScrollValueChanged( int ) ) );
+  connect( mrightscroll, TQT_SIGNAL( sliderReleased() ),
+           this, TQT_SLOT( updateScrollBars() ) );
+  mbottomscroll = new TQScrollBar( Horizontal, this, "Bottom Scrollbar" );
+  connect( mbottomscroll, TQT_SIGNAL( valueChanged( int ) ),
+           this, TQT_SLOT( slotBottomScrollValueChanged( int ) ) );
+  connect( mbottomscroll, TQT_SIGNAL( sliderReleased() ),
+           this, TQT_SLOT( updateScrollBars() ) );
   mrealwidget = new KigWidget( part, this, this, "Kig Widget", fullscreen );
   mlayout->addWidget( mbottomscroll, 1, 0 );
   mlayout->addWidget( mrealwidget, 0, 0 );
@@ -443,12 +443,12 @@ const KigDocument& KigWidget::document() const
   return mpart->document();
 }
 
-QSize KigWidget::sizeHint() const
+TQSize KigWidget::sizeHint() const
 {
-  return QSize( 630, 450 );
+  return TQSize( 630, 450 );
 }
 
-void KigWidget::wheelEvent( QWheelEvent* e )
+void KigWidget::wheelEvent( TQWheelEvent* e )
 {
   int delta = e->delta();
   Qt::Orientation orient = e->orientation();
@@ -568,7 +568,7 @@ void KigWidget::zoomArea()
   KigInputDialog::getTwoCoordinates( i18n( "Select Zoom Area" ),
         i18n( "Select the zoom area by entering the coordinates of "
               "the upper left corner and the lower right corner." ) +
-        QString::fromLatin1("<br>") +
+        TQString::fromLatin1("<br>") +
         mpart->document().coordinateSystem().coordinateFormatNoticeMarkup(),
         this, &ok, mpart->document(), &tl, &br );
   if ( ok )

@@ -18,18 +18,18 @@
 #include "imageexporteroptions.h"
 #include "imageexporteroptions.moc"
 
-#include <qcheckbox.h>
-#include <qsize.h>
+#include <tqcheckbox.h>
+#include <tqsize.h>
 
 #include <knuminput.h>
 
-ImageExporterOptions::ImageExporterOptions( QWidget* parent, const QSize& s )
+ImageExporterOptions::ImageExporterOptions( TQWidget* parent, const TQSize& s )
   : ImageExporterOptionsBase( parent, "imageexporteroptions" ), msize( s ),
     minternallysettingstuff( false )
 {
   keepAspectRatio->setChecked( true );
-  connect( WidthInput, SIGNAL( valueChanged( int ) ), this, SLOT( slotWidthChanged( int ) ) );
-  connect( HeightInput, SIGNAL( valueChanged( int ) ), this, SLOT( slotHeightChanged( int ) ) );
+  connect( WidthInput, TQT_SIGNAL( valueChanged( int ) ), this, TQT_SLOT( slotWidthChanged( int ) ) );
+  connect( HeightInput, TQT_SIGNAL( valueChanged( int ) ), this, TQT_SLOT( slotHeightChanged( int ) ) );
 }
 
 ImageExporterOptions::~ImageExporterOptions()

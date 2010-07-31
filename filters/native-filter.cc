@@ -32,9 +32,9 @@
 
 #include "config.h"
 
-#include <qdom.h>
-#include <qfile.h>
-#include <qregexp.h>
+#include <tqdom.h>
+#include <tqfile.h>
+#include <tqregexp.h>
 
 #include <karchive.h>
 #include <kdebug.h>
@@ -52,7 +52,7 @@ struct HierElem
 {
   int id;
   std::vector<int> parents;
-  QDomElement el;
+  TQDomElement el;
 };
 
 static void extendVect( std::vector<HierElem>& vect, uint size )
@@ -97,21 +97,21 @@ KigFilterNative::~KigFilterNative()
 {
 }
 
-bool KigFilterNative::supportMime( const QString& mime )
+bool KigFilterNative::supportMime( const TQString& mime )
 {
   return mime == "application/x-kig";
 }
 
-KigDocument* KigFilterNative::load( const QString& file )
+KigDocument* KigFilterNative::load( const TQString& file )
 {
-  QFile ffile( file );
+  TQFile ffile( file );
   if ( ! ffile.open( IO_ReadOnly ) )
   {
     fileNotFound( file );
     return 0;
   };
 
-  QFile kigdoc( file );
+  TQFile kigdoc( file );
 #ifndef KIG_NO_COMPRESSED_FILES
   bool iscompressed = false;
   if ( !file.endsWith( ".kig", false ) )
@@ -120,14 +120,14 @@ KigDocument* KigFilterNative::load( const QString& file )
     // kig file inside it...
     iscompressed = true;
 
-    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    TQString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
     if ( tempdir.isEmpty() )
       KIG_FILTER_PARSE_ERROR;
 
-    QString tempname = file.section( '/', -1 );
+    TQString tempname = file.section( '/', -1 );
     if ( file.endsWith( ".kigz", false ) )
     {
-      tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
+      tempname.remove( TQRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
     }
     else
       KIG_FILTER_PARSE_ERROR;
@@ -136,8 +136,8 @@ KigDocument* KigFilterNative::load( const QString& file )
     ark->open( IO_ReadOnly );
     const KArchiveDirectory* dir = ark->directory();
 //    assert( dir );
-    QStringList entries = dir->entries();
-    QStringList kigfiles = entries.grep( QRegExp( "\\.kig$" ) );
+    TQStringList entries = dir->entries();
+    TQStringList kigfiles = entries.grep( TQRegExp( "\\.kig$" ) );
     if ( kigfiles.count() != 1 )
       // I throw a generic parse error here, but I should warn the user that
       // this kig archive file doesn't contain one kig file (it contains no
@@ -148,7 +148,7 @@ KigDocument* KigFilterNative::load( const QString& file )
       KIG_FILTER_PARSE_ERROR;
     dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
     kdDebug() << "extracted file: " << tempdir + kigz->name() << endl
-              << "exists: " << QFile::exists( tempdir + kigz->name() ) << endl;
+              << "exists: " << TQFile::exists( tempdir + kigz->name() ) << endl;
 
     kigdoc.setName( tempdir + kigz->name() );
   }
@@ -157,7 +157,7 @@ KigDocument* KigFilterNative::load( const QString& file )
   if ( !kigdoc.open( IO_ReadOnly ) )
     KIG_FILTER_PARSE_ERROR;
 
-  QDomDocument doc( "KigDocument" );
+  TQDomDocument doc( "KigDocument" );
   if ( !doc.setContent( &kigdoc ) )
     KIG_FILTER_PARSE_ERROR;
   kigdoc.close();
@@ -168,16 +168,16 @@ KigDocument* KigFilterNative::load( const QString& file )
     kigdoc.remove();
 #endif
 
-  QDomElement main = doc.documentElement();
+  TQDomElement main = doc.documentElement();
 
-  QString version = main.attribute( "CompatibilityVersion" );
+  TQString version = main.attribute( "CompatibilityVersion" );
   if ( version.isEmpty() ) version = main.attribute( "Version" );
   if ( version.isEmpty() ) version = main.attribute( "version" );
   if ( version.isEmpty() )
     KIG_FILTER_PARSE_ERROR;
 
   // matches 0.1, 0.2.0, 153.128.99 etc.
-  QRegExp versionre( "(\\d+)\\.(\\d+)(\\.(\\d+))?" );
+  TQRegExp versionre( "(\\d+)\\.(\\d+)(\\.(\\d+))?" );
   if ( ! versionre.exactMatch( version ) )
     KIG_FILTER_PARSE_ERROR;
   bool ok = true;
@@ -213,19 +213,19 @@ KigDocument* KigFilterNative::load( const QString& file )
     return load07( file, main );
 }
 
-KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& docelem )
+KigDocument* KigFilterNative::load04( const TQString& file, const TQDomElement& docelem )
 {
   bool ok = true;
 
   KigDocument* ret = new KigDocument();
 
-  for ( QDomNode n = docelem.firstChild(); ! n.isNull(); n = n.nextSibling() )
+  for ( TQDomNode n = docelem.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
-    QDomElement e = n.toElement();
+    TQDomElement e = n.toElement();
     if ( e.isNull() ) continue;
     if ( e.tagName() == "CoordinateSystem" )
     {
-      const QCString type = e.text().latin1();
+      const TQCString type = e.text().latin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type );
       if ( ! s )
       {
@@ -244,8 +244,8 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
       // first pass: do a topological sort of the objects, to support
       // randomly ordered files...
       std::vector<HierElem> elems;
-      QDomElement objectselem = e;
-      for ( QDomNode o = objectselem.firstChild(); ! o.isNull(); o = o.nextSibling() )
+      TQDomElement objectselem = e;
+      for ( TQDomNode o = objectselem.firstChild(); ! o.isNull(); o = o.nextSibling() )
       {
         e = o.toElement();
         if ( e.isNull() ) continue;
@@ -253,7 +253,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
         if ( e.tagName() == "Data" || e.tagName() == "Property" || e.tagName() == "Object" )
         {
           // fetch the id
-          QString tmp = e.attribute("id");
+          TQString tmp = e.attribute("id");
           id = tmp.toInt(&ok);
           if ( !ok ) KIG_FILTER_PARSE_ERROR;
 
@@ -262,13 +262,13 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
         }
         else continue;
 
-        for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
+        for ( TQDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
         {
-          QDomElement f = p.toElement();
+          TQDomElement f = p.toElement();
           if ( f.isNull() ) continue;
           if ( f.tagName() == "Parent" )
           {
-            QString tmp = f.attribute( "id" );
+            TQString tmp = f.attribute( "id" );
             uint pid = tmp.toInt( &ok );
             if ( ! ok ) KIG_FILTER_PARSE_ERROR;
 
@@ -288,15 +288,15 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
       for ( std::vector<HierElem>::iterator i = elems.begin();
             i != elems.end(); ++i )
       {
-        QDomElement e = i->el;
+        TQDomElement e = i->el;
         bool internal = e.attribute( "internal" ) == "true" ? true : false;
         ObjectCalcer* o = 0;
         if ( e.tagName() == "Data" )
         {
-          QString tmp = e.attribute( "type" );
+          TQString tmp = e.attribute( "type" );
           if ( tmp.isNull() )
             KIG_FILTER_PARSE_ERROR;
-          QString error;
+          TQString error;
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
           if ( ( !imp ) && !error.isEmpty() )
           {
@@ -307,8 +307,8 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
         }
         else if ( e.tagName() == "Property" )
         {
-          QCString propname;
-          for ( QDomElement ec = e.firstChild().toElement(); !ec.isNull();
+          TQCString propname;
+          for ( TQDomElement ec = e.firstChild().toElement(); !ec.isNull();
                 ec = ec.nextSibling().toElement() )
           {
             if ( ec.tagName() == "Property" )
@@ -326,7 +326,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
         }
         else if ( e.tagName() == "Object" )
         {
-          QString tmp = e.attribute( "type" );
+          TQString tmp = e.attribute( "type" );
           if ( tmp.isNull() )
             KIG_FILTER_PARSE_ERROR;
 
@@ -356,8 +356,8 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
 
         if ( ! internal )
         {
-          QString tmp = e.attribute( "color" );
-          QColor color( tmp );
+          TQString tmp = e.attribute( "color" );
+          TQColor color( tmp );
           if ( !color.isValid() )
             KIG_FILTER_PARSE_ERROR;
 
@@ -386,7 +386,7 @@ KigFilterNative* KigFilterNative::instance()
   return &f;
 }
 
-KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& docelem )
+KigDocument* KigFilterNative::load07( const TQString& file, const TQDomElement& docelem )
 {
   KigDocument* ret = new KigDocument();
 
@@ -394,19 +394,19 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
   std::vector<ObjectCalcer::shared_ptr> calcers;
   std::vector<ObjectHolder*> holders;
 
-  QString t = docelem.attribute( "grid" );
+  TQString t = docelem.attribute( "grid" );
   bool tmphide = ( t == "false" ) || ( t == "no" ) || ( t == "0" );
   ret->setGrid( !tmphide );
   t = docelem.attribute( "axes" );
   tmphide = ( t == "false" ) || ( t == "no" ) || ( t == "0" );
   ret->setAxes( !tmphide );
 
-  for ( QDomElement subsectionelement = docelem.firstChild().toElement(); ! subsectionelement.isNull();
+  for ( TQDomElement subsectionelement = docelem.firstChild().toElement(); ! subsectionelement.isNull();
         subsectionelement = subsectionelement.nextSibling().toElement() )
   {
     if ( subsectionelement.tagName() == "CoordinateSystem" )
     {
-      QString tmptype = subsectionelement.text();
+      TQString tmptype = subsectionelement.text();
       // compatibility code - to support Invisible coord system...
       if ( tmptype == "Invisible" )
       {
@@ -414,7 +414,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         ret->setGrid( false );
         ret->setAxes( false );
       }
-      const QCString type = tmptype.latin1();
+      const TQCString type = tmptype.latin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type );
       if ( ! s )
       {
@@ -427,19 +427,19 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
     }
     else if ( subsectionelement.tagName() == "Hierarchy" )
     {
-      for ( QDomElement e = subsectionelement.firstChild().toElement(); ! e.isNull();
+      for ( TQDomElement e = subsectionelement.firstChild().toElement(); ! e.isNull();
             e = e.nextSibling().toElement() )
       {
-        QString tmp = e.attribute( "id" );
+        TQString tmp = e.attribute( "id" );
         uint id = tmp.toInt( &ok );
         if ( id <= 0 ) KIG_FILTER_PARSE_ERROR;
 
         std::vector<ObjectCalcer*> parents;
-        for ( QDomElement parentel = e.firstChild().toElement(); ! parentel.isNull();
+        for ( TQDomElement parentel = e.firstChild().toElement(); ! parentel.isNull();
               parentel = parentel.nextSibling().toElement() )
         {
           if ( parentel.tagName() != "Parent" ) continue;
-          QString tmp = parentel.attribute( "id" );
+          TQString tmp = parentel.attribute( "id" );
           uint parentid = tmp.toInt( &ok );
           if ( ! ok ) KIG_FILTER_PARSE_ERROR;
           if ( parentid == 0 || parentid > calcers.size() ) KIG_FILTER_PARSE_ERROR;
@@ -453,8 +453,8 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         if ( e.tagName() == "Data" )
         {
           if ( !parents.empty() ) KIG_FILTER_PARSE_ERROR;
-          QString tmp = e.attribute( "type" );
-          QString error;
+          TQString tmp = e.attribute( "type" );
+          TQString error;
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
           if ( ( !imp ) && !error.isEmpty() )
           {
@@ -466,7 +466,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         else if ( e.tagName() == "Property" )
         {
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-          QCString propname = e.attribute( "which" ).latin1();
+          TQCString propname = e.attribute( "which" ).latin1();
 
           ObjectCalcer* parent = parents[0];
           int propid = parent->imp()->propertiesInternalNames().findIndex( propname );
@@ -476,7 +476,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         }
         else if ( e.tagName() == "Object" )
         {
-          QString tmp = e.attribute( "type" );
+          TQString tmp = e.attribute( "type" );
           const ObjectType* type =
             ObjectTypeFactory::instance()->find( tmp.latin1() );
           if ( ! type )
@@ -511,12 +511,12 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
     }
     else if ( subsectionelement.tagName() == "View" )
     {
-      for ( QDomElement e = subsectionelement.firstChild().toElement(); ! e.isNull();
+      for ( TQDomElement e = subsectionelement.firstChild().toElement(); ! e.isNull();
             e = e.nextSibling().toElement() )
       {
         if ( e.tagName() != "Draw" ) KIG_FILTER_PARSE_ERROR;
 
-        QString tmp = e.attribute( "object" );
+        TQString tmp = e.attribute( "object" );
         uint id = tmp.toInt( &ok );
         if ( !ok ) KIG_FILTER_PARSE_ERROR;
         if ( id <= 0 || id > calcers.size() )
@@ -524,7 +524,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         ObjectCalcer* calcer = calcers[id-1].get();
 
         tmp = e.attribute( "color" );
-        QColor color( tmp );
+        TQColor color( tmp );
         if ( !color.isValid() )
           KIG_FILTER_PARSE_ERROR;
 
@@ -564,17 +564,17 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
   return ret;
 }
 
-bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
+bool KigFilterNative::save07( const KigDocument& kdoc, TQTextStream& stream )
 {
-  QDomDocument doc( "KigDocument" );
+  TQDomDocument doc( "KigDocument" );
 
-  QDomElement docelem = doc.createElement( "KigDocument" );
+  TQDomElement docelem = doc.createElement( "KigDocument" );
   docelem.setAttribute( "Version", KIGVERSION );
   docelem.setAttribute( "CompatibilityVersion", "0.7.0" );
   docelem.setAttribute( "grid", kdoc.grid() );
   docelem.setAttribute( "axes", kdoc.axes() );
 
-  QDomElement cselem = doc.createElement( "CoordinateSystem" );
+  TQDomElement cselem = doc.createElement( "CoordinateSystem" );
   cselem.appendChild( doc.createTextNode( kdoc.coordinateSystem().type() ) );
   docelem.appendChild( cselem );
 
@@ -582,7 +582,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   std::vector<ObjectCalcer*> calcers = getAllParents( getAllCalcers( holders ) );
   calcers = calcPath( calcers );
 
-  QDomElement hierelem = doc.createElement( "Hierarchy" );
+  TQDomElement hierelem = doc.createElement( "Hierarchy" );
   std::map<const ObjectCalcer*, int> idmap;
   for ( std::vector<ObjectCalcer*>::const_iterator i = calcers.begin();
         i != calcers.end(); ++i )
@@ -591,11 +591,11 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
 
   for ( std::vector<ObjectCalcer*>::const_iterator i = calcers.begin(); i != calcers.end(); ++i )
   {
-    QDomElement objectelem;
+    TQDomElement objectelem;
     if ( dynamic_cast<ObjectConstCalcer*>( *i ) )
     {
       objectelem = doc.createElement( "Data" );
-      QString ser =
+      TQString ser =
         ObjectImpFactory::instance()->serialize( *(*i)->imp(), objectelem, doc );
       objectelem.setAttribute( "type", ser );
     }
@@ -604,7 +604,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
       const ObjectPropertyCalcer* o = static_cast<const ObjectPropertyCalcer*>( *i );
       objectelem = doc.createElement( "Property" );
 
-      QCString propname = o->parent()->imp()->propertiesInternalNames()[o->propId()];
+      TQCString propname = o->parent()->imp()->propertiesInternalNames()[o->propId()];
       objectelem.setAttribute( "which", propname );
     }
     else if ( dynamic_cast<const ObjectTypeCalcer*>( *i ) )
@@ -621,7 +621,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
       std::map<const ObjectCalcer*,int>::const_iterator idp = idmap.find( *i );
       assert( idp != idmap.end() );
       int pid = idp->second;
-      QDomElement pel = doc.createElement( "Parent" );
+      TQDomElement pel = doc.createElement( "Parent" );
       pel.setAttribute( "id", pid );
       objectelem.appendChild( pel );
     }
@@ -631,7 +631,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   }
   docelem.appendChild( hierelem );
 
-  QDomElement windowelem = doc.createElement( "View" );
+  TQDomElement windowelem = doc.createElement( "View" );
   for ( std::vector<ObjectHolder*>::iterator i = holders.begin(); i != holders.end(); ++i )
   {
     std::map<const ObjectCalcer*,int>::const_iterator idp = idmap.find( ( *i )->calcer() );
@@ -639,11 +639,11 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
     int id = idp->second;
 
     const ObjectDrawer* d = ( *i )->drawer();
-    QDomElement drawelem = doc.createElement( "Draw" );
+    TQDomElement drawelem = doc.createElement( "Draw" );
     drawelem.setAttribute( "object", id );
     drawelem.setAttribute( "color", d->color().name() );
-    drawelem.setAttribute( "shown", QString::fromLatin1( d->shown() ? "true" : "false" ) );
-    drawelem.setAttribute( "width", QString::number( d->width() ) );
+    drawelem.setAttribute( "shown", TQString::fromLatin1( d->shown() ? "true" : "false" ) );
+    drawelem.setAttribute( "width", TQString::number( d->width() ) );
     drawelem.setAttribute( "style", d->styleToString() );
     drawelem.setAttribute( "point-style", d->pointStyleToString() );
 
@@ -669,17 +669,17 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   return true;
 }
 
-bool KigFilterNative::save( const KigDocument& data, const QString& file )
+bool KigFilterNative::save( const KigDocument& data, const TQString& file )
 {
   return save07( data, file );
 }
 
-bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
+bool KigFilterNative::save07( const KigDocument& data, const TQString& outfile )
 {
   // we have an empty outfile, so we have to print all to stdout
   if ( outfile.isEmpty() )
   {
-    QTextStream stdoutstream( stdout, IO_WriteOnly );
+    TQTextStream stdoutstream( stdout, IO_WriteOnly );
     return save07( data, stdoutstream );
   }
 #ifndef KIG_NO_COMPRESSED_FILES
@@ -688,21 +688,21 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     // the user wants to save a compressed file, so we have to save our kig
     // file to a temp file and then compress it...
 
-    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    TQString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
     if ( tempdir.isEmpty() )
       return false;
 
-    QString tempname = outfile.section( '/', -1 );
+    TQString tempname = outfile.section( '/', -1 );
     if ( outfile.endsWith( ".kigz", false ) )
-      tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
+      tempname.remove( TQRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
     else
       return false;
 
-    QString tmpfile = tempdir + tempname + ".kig";
-    QFile ftmpfile( tmpfile );
+    TQString tmpfile = tempdir + tempname + ".kig";
+    TQFile ftmpfile( tmpfile );
     if ( !ftmpfile.open( IO_WriteOnly ) )
       return false;
-    QTextStream stream( &ftmpfile );
+    TQTextStream stream( &ftmpfile );
     if ( !save07( data, stream ) )
       return false;
     ftmpfile.close();
@@ -716,20 +716,20 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     ark->close();
 
     // finally, removing temp file
-    QFile::remove( tmpfile );
+    TQFile::remove( tmpfile );
 
     return true;
   }
   else
   {
 #endif
-    QFile file( outfile );
+    TQFile file( outfile );
     if ( ! file.open( IO_WriteOnly ) )
     {
       fileNotFound( outfile );
       return false;
     }
-    QTextStream stream( &file );
+    TQTextStream stream( &file );
     return save07( data, stream );
 #ifndef KIG_NO_COMPRESSED_FILES
   }
@@ -740,7 +740,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
 }
 
 /*
-bool KigFilterNative::save( const KigDocument& data, QTextStream& stream )
+bool KigFilterNative::save( const KigDocument& data, TQTextStream& stream )
 {
   return save07( data, stream );
 }

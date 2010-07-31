@@ -20,9 +20,9 @@
 
 #include <set>
 #include <vector>
-#include <qcstring.h>
-#include <qvaluelist.h>
-#include <qstringlist.h>
+#include <tqcstring.h>
+#include <tqvaluelist.h>
+#include <tqstringlist.h>
 #include <cassert>
 #include <klocale.h>
 
@@ -47,7 +47,7 @@ class ScreenInfo;
 class Transformation;
 
 typedef std::vector<const ObjectImp*> Args;
-typedef QValueList<QCString> QCStringList;
+typedef TQValueList<TQCString> QCStringList;
 
 template<typename T>
 void delete_all( T begin, T end )

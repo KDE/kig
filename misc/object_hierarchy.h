@@ -75,14 +75,14 @@ public:
   /**
    * saves the ObjectHierarchy data in children xml tags of \p parent ..
    */
-  void serialize( QDomElement& parent, QDomDocument& doc ) const;
+  void serialize( TQDomElement& parent, TQDomDocument& doc ) const;
   /**
    * Deserialize the ObjectHierarchy data from the xml element \p parent ..
    * Since this operation can fail for some reasons, we provide it as a
    * static to return 0 in case of error.
    */
-  static ObjectHierarchy* buildSafeObjectHierarchy( const QDomElement& parent, QString& error );
-//  ObjectHierarchy( const QDomElement& parent );
+  static ObjectHierarchy* buildSafeObjectHierarchy( const TQDomElement& parent, TQString& error );
+//  ObjectHierarchy( const TQDomElement& parent );
 
   /**
    * build a set of objects that interdepend according to this

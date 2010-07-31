@@ -32,9 +32,9 @@ class SVGExporter
 {
 public:
   ~SVGExporter();
-  QString exportToStatement() const;
-  QString menuEntryName() const;
-  QString menuIcon() const;
+  TQString exportToStatement() const;
+  TQString menuEntryName() const;
+  TQString menuIcon() const;
   void run( const KigPart& part, KigWidget& w );
 };
 

@@ -55,7 +55,7 @@ public:
   std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
   Args sortArgs( const Args& args ) const;
 
-//   virtual QStringList specialActions() const;
+//   virtual TQStringList specialActions() const;
 //   virtual void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
 //                               NormalMode& m ) const;
 };

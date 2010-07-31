@@ -43,7 +43,7 @@ public:
   bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
-  QString cartesianEquationString( const KigDocument& ) const;
+  TQString cartesianEquationString( const KigDocument& ) const;
 
   const uint numberOfProperties() const;
   const QCStringList properties() const;

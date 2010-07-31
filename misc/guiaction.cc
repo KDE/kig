@@ -34,7 +34,7 @@
 #include <kiconloader.h>
 #include <klocale.h>
 
-#include <qregexp.h>
+#include <tqregexp.h>
 
 int GUIAction::shortcut() const
 {
@@ -51,23 +51,23 @@ ConstructibleAction::~ConstructibleAction()
 
 ConstructibleAction::ConstructibleAction(
   ObjectConstructor* ctor,
-  const QCString& actionname,
+  const TQCString& actionname,
   int shortcut )
   : GUIAction(), mctor( ctor ), mactionname( actionname ), mshortcut( shortcut )
 {
 }
 
-QString ConstructibleAction::description() const
+TQString ConstructibleAction::description() const
 {
   return mctor->description();
 }
 
-QCString ConstructibleAction::iconFileName() const
+TQCString ConstructibleAction::iconFileName() const
 {
   return mctor->iconFileName();
 }
 
-QString ConstructibleAction::descriptiveName() const
+TQString ConstructibleAction::descriptiveName() const
 {
   return mctor->descriptiveName();
 }
@@ -81,7 +81,7 @@ void ConstructibleAction::act( KigPart& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc,
-                            QObject* parent )
+                            TQObject* parent )
   : KAction( act->descriptiveName(),
              doc.instance()->iconLoader()->loadIcon(
                act->iconFileName(), KIcon::Toolbar, 0, KIcon::DefaultState, 0L, true ),
@@ -92,8 +92,8 @@ KigGUIAction::KigGUIAction( GUIAction* act,
   mdoc( doc )
 {
   setWhatsThis( act->description() );
-  QString tooltip = act->descriptiveName();
-  tooltip.replace( QRegExp( "&&" ), "&" );
+  TQString tooltip = act->descriptiveName();
+  tooltip.replace( TQRegExp( "&&" ), "&" );
   setToolTip( tooltip );
 }
 
@@ -111,7 +111,7 @@ ConstructPointAction::~ConstructPointAction()
 {
 }
 
-QString ConstructPointAction::description() const
+TQString ConstructPointAction::description() const
 {
   return i18n(
     "A normal point, i.e. one that is either independent or attached "
@@ -119,12 +119,12 @@ QString ConstructPointAction::description() const
     );
 }
 
-QCString ConstructPointAction::iconFileName() const
+TQCString ConstructPointAction::iconFileName() const
 {
   return "point";
 }
 
-QString ConstructPointAction::descriptiveName() const
+TQString ConstructPointAction::descriptiveName() const
 {
   return i18n("Point");
 }
@@ -165,17 +165,17 @@ void ConstructibleAction::plug( KigPart* doc, KigGUIAction* kact )
   mctor->plug( doc, kact );
 }
 
-QString ConstructTextLabelAction::description() const
+TQString ConstructTextLabelAction::description() const
 {
   return i18n( "Construct a text label." );
 }
 
-QCString ConstructTextLabelAction::iconFileName() const
+TQCString ConstructTextLabelAction::iconFileName() const
 {
   return "kig_text";
 }
 
-QString ConstructTextLabelAction::descriptiveName() const
+TQString ConstructTextLabelAction::descriptiveName() const
 {
   return i18n( "Text Label" );
 }
@@ -196,17 +196,17 @@ ConstructTextLabelAction::ConstructTextLabelAction( const char* actionname )
 {
 }
 
-QString AddFixedPointAction::description() const
+TQString AddFixedPointAction::description() const
 {
   return i18n( "Construct a Point by its Coordinates" );
 }
 
-QCString AddFixedPointAction::iconFileName() const
+TQCString AddFixedPointAction::iconFileName() const
 {
   return "pointxy";
 }
 
-QString AddFixedPointAction::descriptiveName() const
+TQString AddFixedPointAction::descriptiveName() const
 {
   return i18n( "Point by Coordinates" );
 }
@@ -223,7 +223,7 @@ void AddFixedPointAction::act( KigPart& doc )
   KigInputDialog::getCoordinate(
     i18n( "Fixed Point" ),
     i18n( "Enter the coordinates for the new point." ) +
-    QString::fromLatin1( "<br>" ) +
+    TQString::fromLatin1( "<br>" ) +
     doc.document().coordinateSystem().coordinateFormatNoticeMarkup(),
     doc.widget(), &ok, doc.document(), &c );
   if ( ! ok ) return;
@@ -270,19 +270,19 @@ TestAction::~TestAction()
 {
 }
 
-QString TestAction::description() const
+TQString TestAction::description() const
 {
-  return QString::fromLatin1( "Test stuff !!!" );
+  return TQString::fromLatin1( "Test stuff !!!" );
 }
 
-QCString TestAction::iconFileName() const
+TQCString TestAction::iconFileName() const
 {
   return "new";
 }
 
-QString TestAction::descriptiveName() const
+TQString TestAction::descriptiveName() const
 {
-  return QString::fromLatin1( "Test stuff !!!" );
+  return TQString::fromLatin1( "Test stuff !!!" );
 }
 
 const char* TestAction::actionName() const
@@ -297,7 +297,7 @@ void TestAction::act( KigPart& doc )
   Object* constantpoint = ObjectFactory::instance()->fixedPoint( Coordinate( -1, -1 ) );
   constantpoint->calc( doc );
 
-  Object* codeobject = new DataObject( new StringImp( QString::fromLatin1( script ) ) );
+  Object* codeobject = new DataObject( new StringImp( TQString::fromLatin1( script ) ) );
   Object* compiledcode = new RealObject( PythonCompileType::instance(), Objects( codeobject ) );
   compiledcode->calc( doc );
 
@@ -322,7 +322,7 @@ NewScriptAction::NewScriptAction( const char* descname, const char* description,
   : GUIAction(), mactionname( actionname ), mdescname( descname ),
     mdescription( description ), micon( icon ), mtype( type )
 {
-  if ( QString( micon ).isEmpty() )
+  if ( TQString( micon ).isEmpty() )
   {
     micon = ScriptType::icon( type );
   }
@@ -332,17 +332,17 @@ NewScriptAction::~NewScriptAction()
 {
 }
 
-QString NewScriptAction::description() const
+TQString NewScriptAction::description() const
 {
   return i18n( mdescription );
 }
 
-QCString NewScriptAction::iconFileName() const
+TQCString NewScriptAction::iconFileName() const
 {
   return micon;
 }
 
-QString NewScriptAction::descriptiveName() const
+TQString NewScriptAction::descriptiveName() const
 {
   return i18n( mdescname );
 }

@@ -26,7 +26,7 @@ class MacroWizard : public MacroWizardBase
 {
   Q_OBJECT
 public:
-  MacroWizard( QWidget* parent, DefineMacroMode* m );
+  MacroWizard( TQWidget* parent, DefineMacroMode* m );
   ~MacroWizard();
 
   void back();
@@ -34,7 +34,7 @@ public:
   void reject();
   void accept();
 private slots:
-  void nameTextChanged( const QString& );
+  void nameTextChanged( const TQString& );
   void slotHelpClicked();
 private:
   DefineMacroMode* mmode;

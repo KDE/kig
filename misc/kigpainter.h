@@ -26,8 +26,8 @@
 #include "rect.h"
 #include "screeninfo.h"
 
-#include <qpainter.h>
-#include <qcolor.h>
+#include <tqpainter.h>
+#include <tqcolor.h>
 
 #include <vector>
 
@@ -43,7 +43,7 @@ class KigDocument;
 class ObjectHolder;
 
 /**
- * KigPainter is an extended QPainter.
+ * KigPainter is an extended TQPainter.
  *
  * Currently the only difference is that it translates coordinates
  * from and to the internal coordinates/ the widget coordinates...
@@ -56,14 +56,14 @@ class KigPainter
 protected:
   // don't blaim me for this mutable hack.  It's TT that hasn't got
   // its consts correctly...
-  mutable QPainter mP;
+  mutable TQPainter mP;
 
-  QColor color;
+  TQColor color;
   PenStyle style;
   int pointstyle;
   int width;
   BrushStyle brushStyle;
-  QColor brushColor;
+  TQColor brushColor;
 
   const KigDocument& mdoc;
   ScreenInfo msi;
@@ -78,7 +78,7 @@ public:
    * needOverlay sets whether we try to remember the places we're
    * drawing on using the various overlay methods. @see overlay()
    */
-  KigPainter( const ScreenInfo& r, QPaintDevice* device, const KigDocument& doc,
+  KigPainter( const ScreenInfo& r, TQPaintDevice* device, const KigDocument& doc,
               bool needOverlay = true );
   ~KigPainter();
 
@@ -87,27 +87,27 @@ public:
    */
   Rect window();
 
-  QPoint toScreen( const Coordinate p ) const;
-  QRect toScreen( const Rect r ) const;
-  QRect toScreenEnlarge( const Rect r ) const;
-  Coordinate fromScreen( const QPoint& p ) const;
-  Rect fromScreen( const QRect& r ) const;
+  TQPoint toScreen( const Coordinate p ) const;
+  TQRect toScreen( const Rect r ) const;
+  TQRect toScreenEnlarge( const Rect r ) const;
+  Coordinate fromScreen( const TQPoint& p ) const;
+  Rect fromScreen( const TQRect& r ) const;
 
   // colors and stuff...
   void setStyle( const PenStyle c );
-  void setColor( const QColor& c );
+  void setColor( const TQColor& c );
   /**
    * setting this to -1 means to use the default width for the object
    * being drawn..  a point -> 5, other objects -> 1
    */
   void setWidth( const int c );
   void setPointStyle( const int p );
-  void setPen( const QPen& p );
+  void setPen( const TQPen& p );
   void setBrushStyle( const BrushStyle c );
-  void setBrush( const QBrush& b );
-  void setBrushColor( const QColor& c );
+  void setBrush( const TQBrush& b );
+  void setBrushColor( const TQColor& c );
 
-  QColor getColor() const;
+  TQColor getColor() const;
   bool getNightVision( ) const;
 
   double pixelWidth();
@@ -141,12 +141,12 @@ public:
   /**
    * draws text in a standard manner, convenience function...
    */
-  void drawTextStd( const QPoint& p, const QString& s );
+  void drawTextStd( const TQPoint& p, const TQString& s );
 
   /**
    * draws a rect filled up with a pattern of cyan lines...
    */
-  void drawFilledRect( const QRect& );
+  void drawFilledRect( const TQRect& );
 
   /**
    * draw a rect..
@@ -157,7 +157,7 @@ public:
    * overload, mainly for drawing the selection rectangle by
    * KigWidget...
    */
-  void drawRect( const QRect& r );
+  void drawRect( const TQRect& r );
 
   /**
    * draw a circle...
@@ -184,7 +184,7 @@ public:
 
   /**
    * draw a point...  This means a single point, as in
-   * QPainter::drawPoint(), unlike drawFatPoint()...
+   * TQPainter::drawPoint(), unlike drawFatPoint()...
    */
   void drawPoint( const Coordinate& p );
 
@@ -198,7 +198,7 @@ public:
   /**
    * draw a polygon defined by the points in pts...
    */
-  void drawPolygon( const std::vector<QPoint>& pts, bool winding = false, int index = 0, int npoints = -1 );
+  void drawPolygon( const std::vector<TQPoint>& pts, bool winding = false, int index = 0, int npoints = -1 );
   void drawPolygon( const std::vector<Coordinate>& pts, bool winding = false, int index = 0, int npoints = -1 );
 
   /**
@@ -230,27 +230,27 @@ public:
 
   /**
    * draw text...
-   * \see QPainter::drawText()
+   * \see TQPainter::drawText()
    */
-  void drawText( const Rect r, const QString s, int textFlags = 0,
+  void drawText( const Rect r, const TQString s, int textFlags = 0,
                  int len = -1);
-  void drawText( const Coordinate p, const QString s,
+  void drawText( const Coordinate p, const TQString s,
                  int textFlags = 0, int len = -1);
 
-  void drawSimpleText( const Coordinate& c, const QString s );
-  void drawTextFrame( const Rect& frame, const QString& s, bool needframe );
+  void drawSimpleText( const Coordinate& c, const TQString s );
+  void drawTextFrame( const Rect& frame, const TQString& s, bool needframe );
 
-  const Rect boundingRect( const Rect& r, const QString s,
+  const Rect boundingRect( const Rect& r, const TQString s,
                             int f = 0, int l = -1 ) const;
 
-  const Rect boundingRect( const Coordinate& c, const QString s,
+  const Rect boundingRect( const Coordinate& c, const TQString s,
                             int f = 0, int l = -1 ) const;
 
-  const Rect simpleBoundingRect( const Coordinate& c, const QString s );
+  const Rect simpleBoundingRect( const Coordinate& c, const TQString s );
 
   void drawGrid( const CoordinateSystem& c, bool showGrid = true, bool showAxes = true );
 
-  const std::vector<QRect>& overlay() { return mOverlay; }
+  const std::vector<TQRect>& overlay() { return mOverlay; }
 
 protected:
   /**
@@ -276,16 +276,16 @@ protected:
 
   /**
    * ...
-   * \see drawText(), QPainter::boundingRect()
+   * \see drawText(), TQPainter::boundingRect()
    */
-  void textOverlay( const QRect& r, const QString s, int textFlags, int len );
+  void textOverlay( const TQRect& r, const TQString s, int textFlags, int len );
 
   /**
    * the size we want the overlay rects to be...
    */
   double overlayRectSize();
 
-  std::vector<QRect> mOverlay;
+  std::vector<TQRect> mOverlay;
 };
 
 #endif

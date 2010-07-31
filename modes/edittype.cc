@@ -31,7 +31,7 @@
 #include <kpushbutton.h>
 #include <kstdguiitem.h>
 
-EditType::EditType( QWidget* parent, QString name, QString desc, QString icon )
+EditType::EditType( TQWidget* parent, TQString name, TQString desc, TQString icon )
   : EditTypeBase( parent, "edittype", true ), mname( name ), mdesc( desc ), micon( icon )
 {
   // improving GUI look'n'feel...
@@ -50,13 +50,13 @@ EditType::~EditType()
 
 void EditType::helpSlot()
 {
-  kapp->invokeHelp( QString::fromLatin1( "working-with-types" ),
-                    QString::fromLatin1( "kig" ) );
+  kapp->invokeHelp( TQString::fromLatin1( "working-with-types" ),
+                    TQString::fromLatin1( "kig" ) );
 }
 
 void EditType::okSlot()
 {
-  QString tmp = editName->text();
+  TQString tmp = editName->text();
   if ( tmp.isEmpty() )
   {
     KMessageBox::information( this, i18n( "The name of the macro can not be empty." ) );
@@ -91,17 +91,17 @@ void EditType::cancelSlot()
   done( 0 );
 }
 
-const QString EditType::name() const
+const TQString EditType::name() const
 {
   return mname;
 }
 
-const QString EditType::description() const
+const TQString EditType::description() const
 {
   return mdesc;
 }
 
-const QString EditType::icon() const
+const TQString EditType::icon() const
 {
   return micon;
 }

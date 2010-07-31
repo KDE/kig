@@ -29,7 +29,7 @@
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate_system.h"
 
-#include <qevent.h>
+#include <tqevent.h>
 
 #include <functional>
 #include <algorithm>
@@ -65,7 +65,7 @@ void MovingModeBase::initScreen( const std::vector<ObjectCalcer*>& in )
   p2.drawObjects( drawableset.begin(), drawableset.end(), true );
 }
 
-void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
+void MovingModeBase::leftReleased( TQMouseEvent*, KigWidget* v )
 {
   // clean up after ourselves:
   for ( std::vector<ObjectCalcer*>::iterator i = mcalcable.begin();
@@ -81,7 +81,7 @@ void MovingModeBase::leftReleased( QMouseEvent*, KigWidget* v )
   mdoc.doneMode( this );
 }
 
-void MovingModeBase::mouseMoved( QMouseEvent* e, KigWidget* v )
+void MovingModeBase::mouseMoved( TQMouseEvent* e, KigWidget* v )
 {
   v->updateCurPix();
   Coordinate c = v->fromScreen( e->pos() );
@@ -152,7 +152,7 @@ MovingMode::MovingMode( const std::vector<ObjectHolder*>& os, const Coordinate& 
 
 void MovingMode::stopMove()
 {
-  QString text = d->emo.size() == 1 ?
+  TQString text = d->emo.size() == 1 ?
                  d->emo[0]->imp()->type()->moveAStatement() :
                  i18n( "Move %1 Objects" ).arg( d->emo.size() );
   KigCommand* mc = new KigCommand( mdoc, text );
@@ -208,7 +208,7 @@ MovingModeBase::~MovingModeBase()
 {
 }
 
-void MovingModeBase::leftMouseMoved( QMouseEvent* e, KigWidget* v )
+void MovingModeBase::leftMouseMoved( TQMouseEvent* e, KigWidget* v )
 {
   mouseMoved( e, v );
 }

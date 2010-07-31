@@ -26,7 +26,7 @@
 class TextImp
   : public ObjectImp
 {
-  QString mtext;
+  TQString mtext;
   Coordinate mloc;
   bool mframe;
   // with this var, we keep track of the place we drew in, for use in
@@ -37,7 +37,7 @@ public:
   static const ObjectImpType* stype();
 
   Coordinate attachPoint() const;
-  TextImp( const QString& text, const Coordinate& loc, bool frame = false );
+  TextImp( const TQString& text, const Coordinate& loc, bool frame = false );
   TextImp* copy() const;
   ~TextImp();
 
@@ -60,7 +60,7 @@ public:
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
-  QString text() const;
+  TQString text() const;
   const Coordinate coordinate() const;
   bool hasFrame() const;
 

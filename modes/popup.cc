@@ -46,11 +46,11 @@
 #include <algorithm>
 #include <functional>
 
-#include <qcursor.h>
-#include <qdialog.h>
-#include <qpen.h>
-#include <qregexp.h>
-#include <qvalidator.h>
+#include <tqcursor.h>
+#include <tqdialog.h>
+#include <tqpen.h>
+#include <tqregexp.h>
+#include <tqvalidator.h>
 
 #include <kaction.h>
 #include <kcolordialog.h>
@@ -184,21 +184,21 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
                                                 KigWidget& view,
                                                 NormalMode& mode,
                                                 const std::vector<ObjectHolder*>& objs,
-						const QPoint& plc )
+						const TQPoint& plc )
   : KPopupMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
     mmode( mode ), monlylabels( false )
 {
   bool empty = objs.empty();
   bool single = objs.size() == 1;
-  connect( this, SIGNAL( activated( int ) ), this, SLOT( toplevelMenuSlot( int ) ) );
+  connect( this, TQT_SIGNAL( activated( int ) ), this, TQT_SLOT( toplevelMenuSlot( int ) ) );
 
-  QString title;
+  TQString title;
   if ( empty )
     title = i18n( "Kig Document" );
   else if ( single )
   {
     if ( !objs[0]->name().isNull() )
-      title = QString::fromLatin1( "%1 %2" ).arg( objs[0]->imp()->type()->translatedName() ).arg( objs[0]->name() );
+      title = TQString::fromLatin1( "%1 %2" ).arg( objs[0]->imp()->type()->translatedName() ).arg( objs[0]->name() );
     else
       title = objs[0]->imp()->type()->translatedName();
   }
@@ -244,26 +244,26 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
 #endif
 
   for ( uint i = 0; i < NumberOfMenus; ++i )
-    mmenus[i] = new QPopupMenu( this );
+    mmenus[i] = new TQPopupMenu( this );
 
-  connect( mmenus[TransformMenu], SIGNAL( activated( int ) ),
-           this, SLOT( transformMenuSlot( int ) ) );
-  connect( mmenus[TestMenu], SIGNAL( activated( int ) ),
-           this, SLOT( testMenuSlot( int ) ) );
-  connect( mmenus[ConstructMenu], SIGNAL( activated( int ) ),
-           this, SLOT( constructMenuSlot( int ) ) );
-  connect( mmenus[StartMenu], SIGNAL( activated( int ) ),
-           this, SLOT( startMenuSlot( int ) ) );
-  connect( mmenus[ShowMenu], SIGNAL( activated( int ) ),
-           this, SLOT( showMenuSlot( int ) ) );
-  connect( mmenus[SetColorMenu], SIGNAL( activated( int ) ),
-           this, SLOT( setColorMenuSlot( int ) ) );
-  connect( mmenus[SetSizeMenu], SIGNAL( activated( int ) ),
-           this, SLOT( setSizeMenuSlot( int ) ) );
-  connect( mmenus[SetStyleMenu], SIGNAL( activated( int ) ),
-           this, SLOT( setStyleMenuSlot( int ) ) );
-  connect( mmenus[SetCoordinateSystemMenu], SIGNAL( activated( int ) ),
-           this, SLOT( setCoordinateSystemMenuSlot( int ) ) );
+  connect( mmenus[TransformMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( transformMenuSlot( int ) ) );
+  connect( mmenus[TestMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( testMenuSlot( int ) ) );
+  connect( mmenus[ConstructMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( constructMenuSlot( int ) ) );
+  connect( mmenus[StartMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( startMenuSlot( int ) ) );
+  connect( mmenus[ShowMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( showMenuSlot( int ) ) );
+  connect( mmenus[SetColorMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( setColorMenuSlot( int ) ) );
+  connect( mmenus[SetSizeMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( setSizeMenuSlot( int ) ) );
+  connect( mmenus[SetStyleMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( setStyleMenuSlot( int ) ) );
+  connect( mmenus[SetCoordinateSystemMenu], TQT_SIGNAL( activated( int ) ),
+           this, TQT_SLOT( setCoordinateSystemMenuSlot( int ) ) );
 
   for ( int i = 0; i <= NumberOfMenus; ++i )
   {
@@ -271,7 +271,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     for ( uint j = 0; j < mproviders.size(); ++j )
       mproviders[j]->fillUpMenu( *this, i, nextfree );
   };
-  static const QString menunames[NumberOfMenus] =
+  static const TQString menunames[NumberOfMenus] =
     {
       i18n( "&Transform" ),
       i18n( "T&est" ),
@@ -281,22 +281,22 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       i18n( "Set Co&lor" ),
       i18n( "Set &Pen Width" ),
       i18n( "Set St&yle" ),
-      QString::null,
+      TQString::null,
       i18n( "Set Coordinate S&ystem" )
     };
-  static const QString menuicons[NumberOfMenus] =
+  static const TQString menuicons[NumberOfMenus] =
     {
       "centralsymmetry",
       "test",
-      QString::null,
+      TQString::null,
       "launch",
       "kig_text",
       "color_fill",
 //      "colorize",
       "sizer",
       "paintbrush",
-      QString::null,
-      QString::null
+      TQString::null,
+      TQString::null
     };
   int index = 1;
   for ( int i = 0; i < NumberOfMenus; ++i )
@@ -307,8 +307,8 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     else
     {
       KIconLoader* l = part.instance()->iconLoader();
-      QPixmap icon = l->loadIcon( menuicons[i], KIcon::Small, 22, KIcon::DefaultState, 0L, true );
-      insertItem( QIconSet( icon ), menunames[i], mmenus[i], i, index++ );
+      TQPixmap icon = l->loadIcon( menuicons[i], KIcon::Small, 22, KIcon::DefaultState, 0L, true );
+      insertItem( TQIconSet( icon ), menunames[i], mmenus[i], i, index++ );
     }
   };
 }
@@ -358,7 +358,7 @@ NormalModePopupObjects::~NormalModePopupObjects()
   delete_all ( mproviders.begin(), mproviders.end() );
 }
 
-static const QColor* colors[] =
+static const TQColor* colors[] =
 {
   &Qt::blue,
   &Qt::black,
@@ -369,7 +369,7 @@ static const QColor* colors[] =
   &Qt::yellow,
   &Qt::darkRed
 };
-static const int numberofcolors = sizeof( colors ) / sizeof( QColor* );
+static const int numberofcolors = sizeof( colors ) / sizeof( TQColor* );
 
 void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
@@ -397,15 +397,15 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       popup.addAction( menu, i18n( "&Show" ), nextfree+1 );
     }
     nextfree += 2;
-    QPixmap p = l->loadIcon( "move", KIcon::Toolbar );
+    TQPixmap p = l->loadIcon( "move", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "&Move" ), nextfree++ );
     p = l->loadIcon( "editdelete", KIcon::Toolbar );
     popup.addAction( menu, p, i18n( "&Delete" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetColorMenu )
   {
-    QPixmap p( 50, 20 );
-    for( const QColor** c = colors; c < colors + numberofcolors; ++c )
+    TQPixmap p( 50, 20 );
+    for( const TQColor** c = colors; c < colors + numberofcolors; ++c )
     {
       p.fill( **c );
       popup.addAction( menu, p, nextfree++ );
@@ -417,7 +417,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     bool point = true;
     bool samecolor = true;
     std::vector<ObjectHolder*> os = popup.objects();
-    QColor color = os.front()->drawer()->color();
+    TQColor color = os.front()->drawer()->color();
     for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
     {
       if ( ! (*i)->imp()->inherits( PointImp::stype() ) )
@@ -425,23 +425,23 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       if ( (*i)->drawer()->color() != color ) samecolor = false;
     };
     if ( ! samecolor ) color = Qt::blue;
-    QPixmap p( point ? 20 : 50, 20 );
+    TQPixmap p( point ? 20 : 50, 20 );
     for ( int i = 1; i < 8; ++i )
     {
       p.fill( popup.eraseColor() );
-      QPainter ptr( &p );
-      ptr.setPen( QPen( color, 1 ) );
-      ptr.setBrush( QBrush( color, Qt::SolidPattern ) );
+      TQPainter ptr( &p );
+      ptr.setPen( TQPen( color, 1 ) );
+      ptr.setBrush( TQBrush( color, Qt::SolidPattern ) );
       if ( point )
       {
         int size = 2*i;
-        QRect r( ( 20 - size ) / 2,  ( 20 - size ) / 2, size, size );
+        TQRect r( ( 20 - size ) / 2,  ( 20 - size ) / 2, size, size );
         ptr.drawEllipse( r );
       }
       else
       {
-        ptr.setPen( QPen( color, -1 + 2*i ) );
-        ptr.drawLine( QPoint( 0, 10 ), QPoint( 50, 10 ) );
+        ptr.setPen( TQPen( color, -1 + 2*i ) );
+        ptr.drawLine( TQPoint( 0, 10 ), TQPoint( 50, 10 ) );
       };
       ptr.end();
       popup.addAction( menu, p, nextfree++ );
@@ -453,7 +453,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     int npoints = 0;
     int nothers = 0;
     std::vector<ObjectHolder*> os = popup.objects();
-    QColor color = os.front()->drawer()->color();
+    TQColor color = os.front()->drawer()->color();
     for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
     {
       if ( (*i)->imp()->inherits( PointImp::stype() ) )
@@ -467,7 +467,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     if ( point )
       for ( int i = 0; i < 5; ++i )
       {
-        QPixmap p( 20, 20 );
+        TQPixmap p( 20, 20 );
         p.fill( popup.eraseColor() );
         ScreenInfo si( Rect( -1, -1, 2, 2 ), p.rect() );
         KigPainter ptr( si, &p, popup.part().document(), false );
@@ -481,7 +481,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       Qt::PenStyle penstyles[] = {Qt::SolidLine, Qt::DashLine, Qt::DashDotLine, Qt::DashDotDotLine, Qt::DotLine};
       for ( int i = 0; i < (int) ( sizeof( penstyles ) / sizeof( Qt::PenStyle ) ); ++i )
       {
-        QPixmap p( 50, 20 );
+        TQPixmap p( 50, 20 );
         p.fill( popup.eraseColor() );
         ScreenInfo si( Rect( -2.5, -1, 5, 2 ), p.rect() );
         KigPainter ptr( si, &p, popup.part().document(), false );
@@ -518,7 +518,7 @@ static void addNameLabel( ObjectCalcer* object, ObjectCalcer* namecalcer, const 
        object->imp()->inherits( CurveImp::stype() ) )
     attachto = object;
   ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
-      QString::fromLatin1( "%1" ), attachto, loc, namelabelneedsframe, args, doc.document() );
+      TQString::fromLatin1( "%1" ), attachto, loc, namelabelneedsframe, args, doc.document() );
   doc.addObject( label );
 }
 
@@ -534,12 +534,12 @@ bool NameObjectActionsProvider::executeAction(
       return false;
     }
     assert( os.size() == 1 );
-    QString name = os[0]->name();
+    TQString name = os[0]->name();
     bool ok;
-    QRegExp re(  ".*" );
-    QRegExpValidator* rev = new QRegExpValidator(  re,  &doc );
-    QString caption = i18n( "Set Object Name" );
-    QString label = i18n( "Set Name of this Object:" );
+    TQRegExp re(  ".*" );
+    TQRegExpValidator* rev = new TQRegExpValidator(  re,  &doc );
+    TQString caption = i18n( "Set Object Name" );
+    TQString label = i18n( "Set Name of this Object:" );
 #if KDE_IS_VERSION( 3, 1, 90 )
     name = KInputDialog::getText( caption, label, name, &ok, &w, 0, rev );
 #else
@@ -567,7 +567,7 @@ bool NameObjectActionsProvider::executeAction(
       // if we just added the name, we add a label to show it to the user.
       if ( justadded )
         addNameLabel( os[0]->calcer(), namecalcer,
-//                    w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) ),
+//                    w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( TQPoint( 5, 0 ) ) ) ),
                       w.fromScreen( popup.plc() ),
                       doc );
     }
@@ -589,7 +589,7 @@ bool NameObjectActionsProvider::executeAction(
       namecalcer = c;
     }
     addNameLabel( os[0]->calcer(), namecalcer,
-//                  w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) ), doc );
+//                  w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( TQPoint( 5, 0 ) ) ) ), doc );
                   w.fromScreen( popup.plc() ), doc );
     return true;
   }
@@ -623,8 +623,8 @@ bool BuiltinObjectActionsProvider::executeAction(
     case 2:
     {
       // move
-      QCursor::setPos( popup.mapToGlobal( QPoint( 0, 0 ) ) );
-      QPoint p = w.mapFromGlobal( QCursor::pos() );
+      TQCursor::setPos( popup.mapToGlobal( TQPoint( 0, 0 ) ) );
+      TQPoint p = w.mapFromGlobal( TQCursor::pos() );
       Coordinate c = w.fromScreen( p );
       MovingMode m( os, c, w, doc );
       doc.runMode( &m );
@@ -648,7 +648,7 @@ bool BuiltinObjectActionsProvider::executeAction(
       id -= numberofcolors + 1;
       return false;
     };
-    QColor color;
+    TQColor color;
     if ( id < numberofcolors )
       color = *colors[id];
     else
@@ -753,10 +753,10 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     };
     if ( add )
     {
-      QCString iconfile = (*i)->iconFileName();
+      TQCString iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
-        QPixmap icon = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
+        TQPixmap icon = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
         popup.addAction( menu, icon, (*i)->descriptiveName(), nextfree++ );
       }
       else
@@ -794,9 +794,9 @@ bool ObjectConstructorActionsProvider::executeAction(
   return true;
 }
 
-void NormalModePopupObjects::addAction( int menu, const QPixmap& pix, int id )
+void NormalModePopupObjects::addAction( int menu, const TQPixmap& pix, int id )
 {
-  QPopupMenu* m = 0;
+  TQPopupMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
   int ret = m->insertItem( pix, id );
@@ -825,20 +825,20 @@ void NormalModePopupObjects::setCoordinateSystemMenuSlot( int i )
   activateAction( SetCoordinateSystemMenu, i );
 }
 
-void NormalModePopupObjects::addAction( int menu, const QPixmap& icon, const QString& name, int id )
+void NormalModePopupObjects::addAction( int menu, const TQPixmap& icon, const TQString& name, int id )
 {
-  QPopupMenu* m = 0;
+  TQPopupMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
-  int ret = m->insertItem( QIconSet( icon ), name, id );
+  int ret = m->insertItem( TQIconSet( icon ), name, id );
   assert( ret == id );
   // pretend to use this var..
   (void)ret;
 }
 
-void NormalModePopupObjects::addAction( int menu, const QString& name, int id )
+void NormalModePopupObjects::addAction( int menu, const TQString& name, int id )
 {
-  QPopupMenu* m = 0;
+  TQPopupMenu* m = 0;
   if ( menu == ToplevelMenu ) m = this;
   else m = mmenus[menu];
   int ret = m->insertItem( name, id );
@@ -881,7 +881,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
     {
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
+        TQPixmap pix = popup.part().instance()->iconLoader()->loadIcon( iconfile, KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
         popup.addAction( menu, pix, i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else
@@ -917,14 +917,14 @@ bool PropertiesActionsProvider::executeAction(
     args.back()->calc( doc.document() );
 // TODO: recover the cursor position somehow... the following does not work
 // in general...
-//    Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( QPoint( 5, 0 ) ) ) );
+//    Coordinate c = w.fromScreen( w.mapFromGlobal( popup.mapToGlobal( TQPoint( 5, 0 ) ) ) );
 // mp: it seems that we have no idea where to position the label, 
 // btw what's the meaning of (5,0)?    let the
 // attach method decide what to do... (passing an invalidCoord)
 //  ///////    Coordinate c = Coordinate::invalidCoord();
     Coordinate c = w.fromScreen( popup.plc() );
     ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
-      QString::fromLatin1( "%1" ), parent->calcer(), c,
+      TQString::fromLatin1( "%1" ), parent->calcer(), c,
       false, args, doc.document() );
     doc.addObject( label );
   }
@@ -948,7 +948,7 @@ void ObjectTypeActionsProvider::fillUpMenu(
   if ( ! c ) return;
   const ObjectType* t = c->type();
 
-  QStringList l = t->specialActions();
+  TQStringList l = t->specialActions();
   mnoa = l.count();
   for ( int i = 0; i < mnoa; ++i )
     popup.addAction( menu, l[i], nextfree++ );
@@ -986,7 +986,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
   else if ( menu == NormalModePopupObjects::SetCoordinateSystemMenu )
   {
     int idoffset = nextfree;
-    QStringList l = CoordinateSystemFactory::names();
+    TQStringList l = CoordinateSystemFactory::names();
     mnumberofcoordsystems = l.count();
     for ( uint i = 0; i < l.count(); ++i )
       popup.addAction( menu, l[i], nextfree++ );
@@ -1053,7 +1053,7 @@ void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu,
   if ( menu == NormalModePopupObjects::StartMenu )
   {
     KIconLoader* l = popup.part().instance()->iconLoader();
-    QPixmap p = l->loadIcon( ScriptType::icon( ScriptType::Python ), KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
+    TQPixmap p = l->loadIcon( ScriptType::icon( ScriptType::Python ), KIcon::Toolbar, 22, KIcon::DefaultState, 0L, true );
     popup.addAction( menu, p, i18n( "Python Script" ), nextfree++ );
     mns++;
   }
@@ -1115,7 +1115,7 @@ bool ScriptActionsProvider::executeAction(
 }
 #endif
 
-int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
+int ObjectChooserPopup::getObjectFromList( const TQPoint& p, KigWidget* w,
                                            const std::vector<ObjectHolder*>& objs,
                                            bool givepopup )
 {
@@ -1153,7 +1153,7 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
     if ( givepopup )
     {
       ObjectChooserPopup* ppp = new ObjectChooserPopup( p, *w, objs );
-      ppp->exec( QCursor::pos() );
+      ppp->exec( TQCursor::pos() );
 
       id = ppp->mselected;
 
@@ -1175,19 +1175,19 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
   return id;
 }
 
-ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
+ObjectChooserPopup::ObjectChooserPopup( const TQPoint& p, KigWidget& view,
                                         const std::vector<ObjectHolder*>& objs )
   : KPopupMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
 {
   for ( uint i = 0; i < mobjs.size(); i++ )
   {
     insertItem( !mobjs[i]->name().isEmpty()
-                ? QString::fromLatin1( "%1 %2" ).arg( mobjs[i]->imp()->type()->translatedName() ).arg( mobjs[i]->name() )
+                ? TQString::fromLatin1( "%1 %2" ).arg( mobjs[i]->imp()->type()->translatedName() ).arg( mobjs[i]->name() )
                 : mobjs[i]->imp()->type()->translatedName(),
                 i );
   }
 
-  connect( this, SIGNAL( activated( int ) ), this, SLOT( actionActivatedSlot( int ) ) );
+  connect( this, TQT_SIGNAL( activated( int ) ), this, TQT_SLOT( actionActivatedSlot( int ) ) );
 }
 
 ObjectChooserPopup::~ObjectChooserPopup()

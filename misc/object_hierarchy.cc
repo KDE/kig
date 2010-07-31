@@ -27,7 +27,7 @@
 #include "../objects/object_type.h"
 
 #include <kglobal.h>
-#include <qdom.h>
+#include <tqdom.h>
 
 class ObjectHierarchy::Node
 {
@@ -187,13 +187,13 @@ class FetchPropertyNode
 {
   mutable int mpropid;
   int mparent;
-  const QCString mname;
+  const TQCString mname;
 public:
   // propid is a cache of the location of name in the parent's
   // propertiesInternalNames(), just as it is in PropertyObject.  We
   // don't want to ever save this value, since we cannot guarantee it
   // remains consistent if we add properties some place..
-  FetchPropertyNode( const int parent, const QCString& name, const int propid = -1 )
+  FetchPropertyNode( const int parent, const TQCString& name, const int propid = -1 )
     : mpropid( propid ), mparent( parent ), mname( name ) {}
   ~FetchPropertyNode();
   Node* copy() const;
@@ -201,7 +201,7 @@ public:
   void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const;
   void checkArgumentsUsed( std::vector<bool>& usedstack ) const;
   int parent() const { return mparent; }
-  const QCString& propinternalname() const { return mname; }
+  const TQCString& propinternalname() const { return mname; }
 
   int id() const;
   void apply( std::vector<const ObjectImp*>& stack,
@@ -408,21 +408,21 @@ ObjectHierarchy::ObjectHierarchy( const std::vector<ObjectCalcer*>& from, const 
   init( from, to );
 }
 
-void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
+void ObjectHierarchy::serialize( TQDomElement& parent, TQDomDocument& doc ) const
 {
   int id = 1;
   for ( uint i = 0; i < mnumberofargs; ++i )
   {
-    QDomElement e = doc.createElement( "input" );
+    TQDomElement e = doc.createElement( "input" );
     e.setAttribute( "id", id++ );
     e.setAttribute( "requirement", margrequirements[i]->internalName() );
     // we don't save these atm, since the user can't define them.
     // we only load them from builtin macro's.
-//     QDomElement ut = doc.createElement( "UseText" );
-//     ut.appendChild( doc.createTextNode( QString::fromLatin1(musetexts[i].c_str() ) ) );
+//     TQDomElement ut = doc.createElement( "UseText" );
+//     ut.appendChild( doc.createTextNode( TQString::fromLatin1(musetexts[i].c_str() ) ) );
 //     e.appendChild( ut );
-//     QDomElement ss = doc.createElement( "SelectStatement" );
-//     ss.appendChild( doc.createTextNode( QString::fromLatin1(mselectstatements[i].c_str() ) ) );
+//     TQDomElement ss = doc.createElement( "SelectStatement" );
+//     ss.appendChild( doc.createTextNode( TQString::fromLatin1(mselectstatements[i].c_str() ) ) );
 //     e.appendChild( ss );
     parent.appendChild( e );
   }
@@ -430,19 +430,19 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
   for ( uint i = 0; i < mnodes.size(); ++i )
   {
     bool result = mnodes.size() - ( id - mnumberofargs - 1 ) <= mnumberofresults;
-    QDomElement e = doc.createElement( result ? "result" : "intermediate" );
+    TQDomElement e = doc.createElement( result ? "result" : "intermediate" );
     e.setAttribute( "id", id++ );
 
     if ( mnodes[i]->id() == Node::ID_ApplyType )
     {
       const ApplyTypeNode* node = static_cast<const ApplyTypeNode*>( mnodes[i] );
       e.setAttribute( "action", "calc" );
-      e.setAttribute( "type", QString::fromLatin1( node->type()->fullName() ) );
+      e.setAttribute( "type", TQString::fromLatin1( node->type()->fullName() ) );
       for ( uint i = 0; i < node->parents().size(); ++i )
       {
         int parent = node->parents()[i] + 1;
-        QDomElement arge = doc.createElement( "arg" );
-        arge.appendChild( doc.createTextNode( QString::number( parent ) ) );
+        TQDomElement arge = doc.createElement( "arg" );
+        arge.appendChild( doc.createTextNode( TQString::number( parent ) ) );
         e.appendChild( arge );
       };
     }
@@ -451,8 +451,8 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
       const FetchPropertyNode* node = static_cast<const FetchPropertyNode*>( mnodes[i] );
       e.setAttribute( "action", "fetch-property" );
       e.setAttribute( "property", node->propinternalname() );
-      QDomElement arge = doc.createElement( "arg" );
-      arge.appendChild( doc.createTextNode( QString::number( node->parent() + 1 ) ) );
+      TQDomElement arge = doc.createElement( "arg" );
+      arge.appendChild( doc.createTextNode( TQString::number( node->parent() + 1 ) ) );
       e.appendChild( arge );
     }
     else
@@ -460,7 +460,7 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
       assert( mnodes[i]->id() == ObjectHierarchy::Node::ID_PushStack );
       const PushStackNode* node = static_cast<const PushStackNode*>( mnodes[i] );
       e.setAttribute( "action", "push" );
-      QString type = ObjectImpFactory::instance()->serialize( *node->imp(), e, doc );
+      TQString type = ObjectImpFactory::instance()->serialize( *node->imp(), e, doc );
       e.setAttribute( "type", type );
     };
 
@@ -473,7 +473,7 @@ ObjectHierarchy::ObjectHierarchy()
 {
 }
 
-ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& parent, QString& error )
+ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const TQDomElement& parent, TQString& error )
 {
 #define KIG_GENERIC_PARSE_ERROR \
   { \
@@ -485,8 +485,8 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
   ObjectHierarchy* obhi = new ObjectHierarchy();
 
   bool ok = true;
-  QString tmp;
-  QDomElement e = parent.firstChild().toElement();
+  TQString tmp;
+  TQDomElement e = parent.firstChild().toElement();
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
     if ( e.tagName() != "input" ) break;
@@ -505,7 +505,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     obhi->mselectstatements.resize( obhi->mnumberofargs, "" );
     obhi->margrequirements[id - 1] = req;
     obhi->musetexts[id - 1] = req->selectStatement();
-    QDomElement esub = e.firstChild().toElement();
+    TQDomElement esub = e.firstChild().toElement();
     for ( ; !esub.isNull(); esub = esub.nextSibling().toElement() )
     {
       if ( esub.tagName() == "UseText" )
@@ -536,7 +536,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     if ( tmp == "calc" )
     {
       // ApplyTypeNode
-      QCString typen = e.attribute( "type" ).latin1();
+      TQCString typen = e.attribute( "type" ).latin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
       if ( ! type )
       {
@@ -549,9 +549,9 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
       }
 
       std::vector<int> parents;
-      for ( QDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
+      for ( TQDomNode p = e.firstChild(); !p.isNull(); p = p.nextSibling() )
       {
-        QDomElement q = p.toElement();
+        TQDomElement q = p.toElement();
         if ( q.isNull() ) KIG_GENERIC_PARSE_ERROR; // see above
         if ( q.tagName() != "arg" ) KIG_GENERIC_PARSE_ERROR;
         int pid = q.text().toInt(&ok );
@@ -563,8 +563,8 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     else if ( tmp == "fetch-property" )
     {
       // FetchPropertyNode
-      QCString propname = e.attribute( "property" ).latin1();
-      QDomElement arge = e.firstChild().toElement();
+      TQCString propname = e.attribute( "property" ).latin1();
+      TQDomElement arge = e.firstChild().toElement();
       int parent = arge.text().toInt( &ok );
       if ( !ok ) KIG_GENERIC_PARSE_ERROR;
       newnode = new FetchPropertyNode( parent - 1, propname );
@@ -573,7 +573,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     {
       // PushStackNode
       if ( e.attribute( "action" ) != "push" ) KIG_GENERIC_PARSE_ERROR;
-      QString typen = e.attribute( "type" );
+      TQString typen = e.attribute( "type" );
       if ( typen.isNull() ) KIG_GENERIC_PARSE_ERROR;
       ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e, error );
       if ( ( ! imp ) && !error.isEmpty() ) return 0;

@@ -20,7 +20,7 @@
 
 #include "mode.h"
 
-#include <qpoint.h>
+#include <tqpoint.h>
 #include <vector>
 
 class KigWidget;
@@ -30,31 +30,31 @@ class ObjectHolder;
 class BaseMode
   : public KigMode
 {
-  QPoint mplc;
+  TQPoint mplc;
   std::vector<ObjectHolder*> moco;
 
-  void leftClicked( QMouseEvent* e, KigWidget* v );
-  void leftMouseMoved( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent* e, KigWidget* v );
-  void midClicked( QMouseEvent* e, KigWidget* v );
-  void midReleased( QMouseEvent* e, KigWidget* v );
-  void rightClicked( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent* e, KigWidget* v );
+  void leftClicked( TQMouseEvent* e, KigWidget* v );
+  void leftMouseMoved( TQMouseEvent*, KigWidget* );
+  void leftReleased( TQMouseEvent* e, KigWidget* v );
+  void midClicked( TQMouseEvent* e, KigWidget* v );
+  void midReleased( TQMouseEvent* e, KigWidget* v );
+  void rightClicked( TQMouseEvent*, KigWidget* );
+  void mouseMoved( TQMouseEvent* e, KigWidget* v );
 
 protected:
   void enableActions();
 
   std::vector<ObjectHolder*> oco();
-  QPoint pointLocation();
+  TQPoint pointLocation();
 protected:
 
-  virtual void dragRect( const QPoint& p, KigWidget& w );
-  virtual void dragObject( const std::vector<ObjectHolder*>& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
-  virtual void leftClickedObject( ObjectHolder* o, const QPoint& p,
+  virtual void dragRect( const TQPoint& p, KigWidget& w );
+  virtual void dragObject( const std::vector<ObjectHolder*>& os, const TQPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
+  virtual void leftClickedObject( ObjectHolder* o, const TQPoint& p,
                                   KigWidget& w, bool ctrlOrShiftDown ) = 0;
-  virtual void midClicked( const QPoint& p, KigWidget& w ) = 0;
-  virtual void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w ) = 0;
-  virtual void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed ) = 0;
+  virtual void midClicked( const TQPoint& p, KigWidget& w ) = 0;
+  virtual void rightClicked( const std::vector<ObjectHolder*>& oco, const TQPoint& p, KigWidget& w ) = 0;
+  virtual void mouseMoved( const std::vector<ObjectHolder*>& os, const TQPoint& p, KigWidget& w, bool shiftpressed ) = 0;
 
 protected:
   BaseMode( KigPart& );

@@ -161,7 +161,7 @@ void DefineMacroMode::macroNameChanged()
     );
 }
 
-void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
+void DefineMacroMode::dragRect( const TQPoint& p, KigWidget& w )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
   std::vector<ObjectHolder*>* objs = mwizard->currentPage() == mwizard->mpgiven ? &mgiven : &mfinal;
@@ -186,7 +186,7 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
   updateNexts();
 }
 
-void DefineMacroMode::leftClickedObject( ObjectHolder* o, const QPoint&,
+void DefineMacroMode::leftClickedObject( ObjectHolder* o, const TQPoint&,
                                          KigWidget& w, bool )
 {
   if ( mwizard->currentPage() == mwizard->mpname ) return;
@@ -204,7 +204,7 @@ void DefineMacroMode::leftClickedObject( ObjectHolder* o, const QPoint&,
   updateNexts();
 }
 
-void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& pt, KigWidget& w, bool )
+void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const TQPoint& pt, KigWidget& w, bool )
 {
   w.updateCurPix();
 
@@ -220,14 +220,14 @@ void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QP
     // and set statusbar text
 
     w.setCursor( KCursor::handCursor() );
-    QString selectstat = os.front()->selectStatement();
+    TQString selectstat = os.front()->selectStatement();
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );
     KigPainter p( w.screenInfo(), &w.curPix, mdoc.document() );
 
     // set the text next to the arrow cursor
-    QPoint point = pt;
+    TQPoint point = pt;
     point.setX(point.x()+15);
 
     p.drawTextStd( point, selectstat );
@@ -235,11 +235,11 @@ void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QP
   }
 }
 
-void DefineMacroMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
+void DefineMacroMode::rightClicked( const std::vector<ObjectHolder*>&, const TQPoint&, KigWidget& )
 {
 }
 
-void DefineMacroMode::midClicked( const QPoint&, KigWidget& )
+void DefineMacroMode::midClicked( const TQPoint&, KigWidget& )
 {
 }
 

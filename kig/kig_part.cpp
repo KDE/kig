@@ -61,19 +61,19 @@
 #include <kparts/genericfactory.h>
 #include <kdeprint/kprintdialogpage.h>
 
-#include <qcheckbox.h>
-#include <qfile.h>
-#include <qlayout.h>
-#include <qpaintdevicemetrics.h>
-#include <qsizepolicy.h>
-#include <qtimer.h>
+#include <tqcheckbox.h>
+#include <tqfile.h>
+#include <tqlayout.h>
+#include <tqpaintdevicemetrics.h>
+#include <tqsizepolicy.h>
+#include <tqtimer.h>
 #if QT_VERSION >= 0x030100
-#include <qeventloop.h>
+#include <tqeventloop.h>
 #endif
 
 using namespace std;
 
-static const QString typesFile = "macros.kigt";
+static const TQString typesFile = "macros.kigt";
 
 // export this library...
 typedef KParts::GenericFactory<KigPart> KigPartFactory;
@@ -114,47 +114,47 @@ class KigPrintDialogPage
   : public KPrintDialogPage
 {
 public:
-  KigPrintDialogPage( QWidget* parent = 0, const char* name = 0 );
+  KigPrintDialogPage( TQWidget* parent = 0, const char* name = 0 );
   ~KigPrintDialogPage();
 
-  void getOptions( QMap<QString,QString>& opts, bool );
-  void setOptions( const QMap<QString,QString>& opts );
-  bool isValid( QString& );
+  void getOptions( TQMap<TQString,TQString>& opts, bool );
+  void setOptions( const TQMap<TQString,TQString>& opts );
+  bool isValid( TQString& );
 
 private:
-  QCheckBox *showgrid;
-  QCheckBox *showaxes;
+  TQCheckBox *showgrid;
+  TQCheckBox *showaxes;
 };
 
-KigPrintDialogPage::KigPrintDialogPage( QWidget* parent, const char* name )
+KigPrintDialogPage::KigPrintDialogPage( TQWidget* parent, const char* name )
  : KPrintDialogPage( parent, name )
 {
   setTitle( i18n( "Kig Options" ) );
 
- QVBoxLayout* vl = new QVBoxLayout( this, 0 , 11 );
+ TQVBoxLayout* vl = new TQVBoxLayout( this, 0 , 11 );
 
- showgrid = new QCheckBox( i18n( "Show grid" ), this );
+ showgrid = new TQCheckBox( i18n( "Show grid" ), this );
  vl->addWidget( showgrid );
 
- showaxes = new QCheckBox( i18n( "Show axes" ), this );
+ showaxes = new TQCheckBox( i18n( "Show axes" ), this );
  vl->addWidget( showaxes );
 
- vl->addItem( new QSpacerItem( 10, 10, QSizePolicy::Fixed, QSizePolicy::Expanding ) );
+ vl->addItem( new TQSpacerItem( 10, 10, TQSizePolicy::Fixed, TQSizePolicy::Expanding ) );
 }
 
 KigPrintDialogPage::~KigPrintDialogPage()
 {
 }
 
-void KigPrintDialogPage::getOptions( QMap< QString, QString >& opts, bool )
+void KigPrintDialogPage::getOptions( TQMap< TQString, TQString >& opts, bool )
 {
-  opts[ "kde-kig-showgrid" ] = QString::number( showgrid->isChecked() );
-  opts[ "kde-kig-showaxes" ] = QString::number( showaxes->isChecked() );
+  opts[ "kde-kig-showgrid" ] = TQString::number( showgrid->isChecked() );
+  opts[ "kde-kig-showaxes" ] = TQString::number( showaxes->isChecked() );
 }
 
-void KigPrintDialogPage::setOptions( const QMap< QString, QString >& opts )
+void KigPrintDialogPage::setOptions( const TQMap< TQString, TQString >& opts )
 {
-  QString tmp = opts[ "kde-kig-showgrid" ];
+  TQString tmp = opts[ "kde-kig-showgrid" ];
   bool bt = ( tmp != "0" );
   showgrid->setChecked( bt );
   tmp = opts[ "kde-kig-showaxes" ];
@@ -162,14 +162,14 @@ void KigPrintDialogPage::setOptions( const QMap< QString, QString >& opts )
   showaxes->setChecked( bt );
 }
 
-bool KigPrintDialogPage::isValid( QString& )
+bool KigPrintDialogPage::isValid( TQString& )
 {
   return true;
 }
 
-KigPart::KigPart( QWidget *parentWidget, const char *,
-			  QObject *parent, const char *name,
-			  const QStringList& )
+KigPart::KigPart( TQWidget *parentWidget, const char *,
+			  TQObject *parent, const char *name,
+			  const TQStringList& )
   : KParts::ReadWritePart( parent, name ),
     mMode( 0 ), mdocument( new KigDocument() )
 {
@@ -195,7 +195,7 @@ KigPart::KigPart( QWidget *parentWidget, const char *,
   // construct our command history
   mhistory = new KCommandHistory(actionCollection());
   mhistory->documentSaved();
-  connect( mhistory, SIGNAL( documentRestored() ), this, SLOT( setUnmodified() ) );
+  connect( mhistory, TQT_SIGNAL( documentRestored() ), this, TQT_SLOT( setUnmodified() ) );
 
   // we are read-write by default
   setReadWrite(true);
@@ -208,72 +208,72 @@ KigPart::KigPart( QWidget *parentWidget, const char *,
 void KigPart::setupActions()
 {
   // save actions..
-  (void) KStdAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
-  (void) KStdAction::save(this, SLOT(fileSave()), actionCollection());
+  (void) KStdAction::saveAs(this, TQT_SLOT(fileSaveAs()), actionCollection());
+  (void) KStdAction::save(this, TQT_SLOT(fileSave()), actionCollection());
 
   // print actions
-  (void) KStdAction::print( this, SLOT( filePrint() ), actionCollection() );
-  (void) KStdAction::printPreview( this, SLOT( filePrintPreview() ), actionCollection() );
+  (void) KStdAction::print( this, TQT_SLOT( filePrint() ), actionCollection() );
+  (void) KStdAction::printPreview( this, TQT_SLOT( filePrintPreview() ), actionCollection() );
 
   // selection actions
   aSelectAll = KStdAction::selectAll(
-    this, SLOT( slotSelectAll() ), actionCollection() );
+    this, TQT_SLOT( slotSelectAll() ), actionCollection() );
   aDeselectAll = KStdAction::deselect(
-    this, SLOT( slotDeselectAll() ), actionCollection() );
+    this, TQT_SLOT( slotDeselectAll() ), actionCollection() );
   aInvertSelection = new KAction(
     i18n( "Invert Selection" ), "", 0, this,
-    SLOT( slotInvertSelection() ), actionCollection(),
+    TQT_SLOT( slotInvertSelection() ), actionCollection(),
     "edit_invert_selection" );
 
   // we need icons...
   KIconLoader* l = instance()->iconLoader();
-  QPixmap tmp;
+  TQPixmap tmp;
 
   aDeleteObjects = new KAction(
       i18n("&Delete Objects"), "editdelete", Key_Delete, this,
-      SLOT(deleteObjects()), actionCollection(), "delete_objects");
+      TQT_SLOT(deleteObjects()), actionCollection(), "delete_objects");
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
   aCancelConstruction = new KAction(
       i18n("Cancel Construction"), "stop", Key_Escape, this,
-      SLOT(cancelConstruction()), actionCollection(), "cancel_construction");
+      TQT_SLOT(cancelConstruction()), actionCollection(), "cancel_construction");
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
   aShowHidden = new KAction(
-    i18n("U&nhide All"), 0, this, SLOT( showHidden() ),
+    i18n("U&nhide All"), 0, this, TQT_SLOT( showHidden() ),
     actionCollection(), "edit_unhide_all");
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
   aNewMacro = new KAction(
-    i18n("&New Macro..."), "gear", 0, this, SLOT(newMacro()),
+    i18n("&New Macro..."), "gear", 0, this, TQT_SLOT(newMacro()),
     actionCollection(), "macro_action");
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes = new KAction(
-    i18n("Manage &Types..."), 0, this, SLOT(editTypes()),
+    i18n("Manage &Types..."), 0, this, TQT_SLOT(editTypes()),
     actionCollection(), "types_edit");
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
 
-  KAction* a = KStdAction::zoomIn( m_widget, SLOT( slotZoomIn() ),
+  KAction* a = KStdAction::zoomIn( m_widget, TQT_SLOT( slotZoomIn() ),
                                    actionCollection() );
   a->setToolTip( i18n( "Zoom in on the document" ) );
   a->setWhatsThis( i18n( "Zoom in on the document" ) );
 
-  a = KStdAction::zoomOut( m_widget, SLOT( slotZoomOut() ),
+  a = KStdAction::zoomOut( m_widget, TQT_SLOT( slotZoomOut() ),
                            actionCollection() );
   a->setToolTip( i18n( "Zoom out of the document" ) );
   a->setWhatsThis( i18n( "Zoom out of the document" ) );
 
-  a = KStdAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
+  a = KStdAction::fitToPage( m_widget, TQT_SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
-  a->setIconSet( QIconSet( l->loadIcon( "view_fit_to_page", KIcon::Toolbar ) ) );
+  a->setIconSet( TQIconSet( l->loadIcon( "view_fit_to_page", KIcon::Toolbar ) ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
@@ -283,12 +283,12 @@ void KigPart::setupActions()
 #endif
 #endif
 #ifdef KIG_PART_CPP_STD_FULLSCREEN_ACTION
-  a = KStdAction::fullScreen( m_widget, SLOT( toggleFullScreen() ), actionCollection(), (QWidget*)(widget()->parent()),"fullscreen" );
+  a = KStdAction::fullScreen( m_widget, TQT_SLOT( toggleFullScreen() ), actionCollection(), (TQWidget*)(widget()->parent()),"fullscreen" );
 #else
   tmp = l->loadIcon( "window_fullscreen", KIcon::Toolbar );
   a = new KAction(
     i18n( "Full Screen" ), tmp, CTRL+SHIFT+Key_F,
-    m_widget, SLOT( toggleFullScreen() ),
+    m_widget, TQT_SLOT( toggleFullScreen() ),
     actionCollection(), "fullscreen" );
 #endif
   a->setToolTip( i18n( "View this document full-screen." ) );
@@ -296,31 +296,31 @@ void KigPart::setupActions()
 
   // TODO: an icon for this..
   a = new KAction(
-    i18n( "&Select Shown Area" ), "viewmagfit", 0, m_widget, SLOT( zoomRect() ),
+    i18n( "&Select Shown Area" ), "viewmagfit", 0, m_widget, TQT_SLOT( zoomRect() ),
     actionCollection(), "view_select_shown_rect" );
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
   a = new KAction(
-    i18n( "S&elect Zoom Area" ), "viewmag", 0, m_widget, SLOT( zoomArea() ),
+    i18n( "S&elect Zoom Area" ), "viewmag", 0, m_widget, TQT_SLOT( zoomArea() ),
     actionCollection(), "view_zoom_area" );
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
   aToggleGrid = new KToggleAction(
-    i18n( "Show &Grid" ), 0, this, SLOT( toggleGrid() ),
+    i18n( "Show &Grid" ), 0, this, TQT_SLOT( toggleGrid() ),
     actionCollection(), "settings_show_grid" );
   aToggleGrid->setToolTip( i18n( "Show or hide the grid." ) );
   aToggleGrid->setChecked( true );
 
   aToggleAxes = new KToggleAction(
-    i18n( "Show &Axes" ), 0, this, SLOT( toggleAxes() ),
+    i18n( "Show &Axes" ), 0, this, TQT_SLOT( toggleAxes() ),
     actionCollection(), "settings_show_axes" );
   aToggleAxes->setToolTip( i18n( "Show or hide the axes." ) );
   aToggleAxes->setChecked( true );
 
   aToggleNightVision = new KToggleAction(
-    i18n( "Wear Infrared Glasses" ), 0, this, SLOT( toggleNightVision() ),
+    i18n( "Wear Infrared Glasses" ), 0, this, TQT_SLOT( toggleNightVision() ),
     actionCollection(), "settings_toggle_nightvision" );
   aToggleNightVision->setToolTip( i18n( "Enable/Disable hidden objects visibility." ) );
   aToggleNightVision->setChecked( false );
@@ -366,7 +366,7 @@ KigPart::~KigPart()
 
 bool KigPart::openFile()
 {
-  QFileInfo fileinfo( m_file );
+  TQFileInfo fileinfo( m_file );
   if ( ! fileinfo.exists() )
   {
     KMessageBox::sorry( widget(),
@@ -591,7 +591,7 @@ void KigPart::plugActionLists()
   plugActionList( "user_types", aMNewAll );
 }
 
-void KigPart::emitStatusBarText( const QString& text )
+void KigPart::emitStatusBarText( const TQString& text )
 {
   emit setStatusBarText( text );
 }
@@ -609,15 +609,15 @@ void KigPart::fileSave()
 bool KigPart::internalSaveAs()
 {
   // this slot is connected to the KStdAction::saveAs action...
-  QString formats = i18n( "*.kig|Kig Documents (*.kig)\n"
+  TQString formats = i18n( "*.kig|Kig Documents (*.kig)\n"
                           "*.kigz|Compressed Kig Documents (*.kigz)" );
 
   //  formats += "\n";
   //  formats += KImageIO::pattern( KImageIO::Writing );
 
-  QString file_name = KFileDialog::getSaveFileName(":document", formats );
+  TQString file_name = KFileDialog::getSaveFileName(":document", formats );
   if (file_name.isEmpty()) return false;
-  else if ( QFileInfo( file_name ).exists() )
+  else if ( TQFileInfo( file_name ).exists() )
   {
     int ret = KMessageBox::warningContinueCancel( m_widget,
                                          i18n( "The file \"%1\" already exists. Do you wish to overwrite it?" )
@@ -710,11 +710,11 @@ void KigPart::setupMacroTypes()
     alreadysetup = true;
 
     // the user's saved macro types:
-    QStringList dataFiles =
+    TQStringList dataFiles =
       KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
                                         true, false );
     std::vector<Macro*> macros;
-    for ( QStringList::iterator file = dataFiles.begin();
+    for ( TQStringList::iterator file = dataFiles.begin();
           file != dataFiles.end(); ++file )
     {
       std::vector<Macro*> nmacros;
@@ -726,7 +726,7 @@ void KigPart::setupMacroTypes()
   };
   // hack: we need to plug the action lists _after_ the gui is
   // built.. i can't find a better solution than this...
-  QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
+  TQTimer::singleShot( 0, this, TQT_SLOT( plugActionLists() ) );
 }
 
 void KigPart::setupBuiltinMacros()
@@ -737,9 +737,9 @@ void KigPart::setupBuiltinMacros()
     alreadysetup = true;
     // builtin macro types ( we try to make the user think these are
     // normal types )..
-    QStringList builtinfiles =
+    TQStringList builtinfiles =
       KGlobal::dirs()->findAllResources( "appdata", "builtin-macros/*.kigt", true, false );
-    for ( QStringList::iterator file = builtinfiles.begin();
+    for ( TQStringList::iterator file = builtinfiles.begin();
           file != builtinfiles.end(); ++file )
     {
       std::vector<Macro*> macros;
@@ -784,8 +784,8 @@ void KigPart::filePrint()
   KigPrintDialogPage* kp = new KigPrintDialogPage();
   printer.addDialogPage( kp );
   printer.setFullPage( true );
-  printer.setOption( "kde-kig-showgrid", QString::number( document().grid() ) );
-  printer.setOption( "kde-kig-showaxes", QString::number( document().axes() ) );
+  printer.setOption( "kde-kig-showgrid", TQString::number( document().grid() ) );
+  printer.setOption( "kde-kig-showaxes", TQString::number( document().axes() ) );
   printer.setPageSelection( KPrinter::ApplicationSide );
   if ( printer.setup( m_widget, i18n("Print Geometry") ) )
   {
@@ -795,9 +795,9 @@ void KigPart::filePrint()
 
 void KigPart::doPrint( KPrinter& printer )
 {
-  QPaintDeviceMetrics metrics( &printer );
+  TQPaintDeviceMetrics metrics( &printer );
   Rect rect = document().suggestedRect();
-  QRect qrect( 0, 0, metrics.width(), metrics.height() );
+  TQRect qrect( 0, 0, metrics.width(), metrics.height() );
   if ( rect.width() * qrect.height() > rect.height() * qrect.width() )
   {
     // qrect is too high..
@@ -910,7 +910,7 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" int convertToNative( const KURL& url, const QCString& outfile )
+extern "C" int convertToNative( const KURL& url, const TQCString& outfile )
 {
   kdDebug() << "converting " << url.prettyURL() << " to " << outfile << endl;
 
@@ -921,9 +921,9 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
     return -1;
   }
 
-  QString file = url.path();
+  TQString file = url.path();
 
-  QFileInfo fileinfo( file );
+  TQFileInfo fileinfo( file );
   if ( ! fileinfo.exists() )
   {
     kdError() << "The file \"" << file << "\" does not exist" << endl;
@@ -952,7 +952,7 @@ extern "C" int convertToNative( const KURL& url, const QCString& outfile )
   for ( std::vector<ObjectCalcer*>::iterator i = tmp.begin(); i != tmp.end(); ++i )
     ( *i )->calc( *doc );
 
-  QString out = ( outfile == "-" ) ? QString::null : outfile;
+  TQString out = ( outfile == "-" ) ? TQString::null : outfile;
   bool success = KigFilters::instance()->save( *doc, out );
   if ( !success )
   {
@@ -999,14 +999,14 @@ void KigPart::coordSystemChanged( int id )
 
 void KigPart::saveTypes()
 {
-  QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
+  TQString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
   if ( typesDir[ typesDir.length() - 1 ] != '/' )
     typesDir += '/';
-  QString typesFileWithPath = typesDir + typesFile;
+  TQString typesFileWithPath = typesDir + typesFile;
 
   // removing existant types file
-  if ( QFile::exists( typesFileWithPath ) )
-    QFile::remove( typesFileWithPath );
+  if ( TQFile::exists( typesFileWithPath ) )
+    TQFile::remove( typesFileWithPath );
 
   MacroList* macrolist = MacroList::instance();
   macrolist->save( macrolist->macros(), typesFileWithPath );
@@ -1014,12 +1014,12 @@ void KigPart::saveTypes()
 
 void KigPart::loadTypes()
 {
-  QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
+  TQString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
   if ( typesDir[ typesDir.length() - 1 ] != '/' )
     typesDir += '/';
-  QString typesFileWithPath = typesDir + typesFile;
+  TQString typesFileWithPath = typesDir + typesFile;
 
-  if ( QFile::exists( typesFileWithPath ) )
+  if ( TQFile::exists( typesFileWithPath ) )
   {
     std::vector<Macro*> macros;
     MacroList::instance()->load( typesFileWithPath, macros, *this );

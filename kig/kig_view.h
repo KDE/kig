@@ -22,8 +22,8 @@
 #ifndef KIG_VIEW_H
 #define KIG_VIEW_H
 
-#include <qwidget.h>
-#include <qpixmap.h>
+#include <tqwidget.h>
+#include <tqpixmap.h>
 
 #include <kparts/part.h>
 
@@ -54,14 +54,14 @@ class KigWidget : public QWidget
   KigPart* mpart;
   KigView* mview;
 
-  // we reimplement these from QWidget to suit our needs
-  void mousePressEvent( QMouseEvent* e );
-  void mouseMoveEvent( QMouseEvent* e );
-  void mouseReleaseEvent( QMouseEvent* e );
-  void paintEvent( QPaintEvent* e );
-  void wheelEvent( QWheelEvent* e );
-  void resizeEvent( QResizeEvent* );
-  QSize sizeHint() const;
+  // we reimplement these from TQWidget to suit our needs
+  void mousePressEvent( TQMouseEvent* e );
+  void mouseMoveEvent( TQMouseEvent* e );
+  void mouseReleaseEvent( TQMouseEvent* e );
+  void paintEvent( TQPaintEvent* e );
+  void wheelEvent( TQWheelEvent* e );
+  void resizeEvent( TQResizeEvent* );
+  TQSize sizeHint() const;
 
   /**
    * this is called to match a rect's dimensions to the dimensions of
@@ -76,15 +76,15 @@ public:
    * wondering if this is appropriate, maybe it should be part of
    * MovingMode ?
    */
-  QPixmap stillPix;
+  TQPixmap stillPix;
   /**
    * temporary, gets bitBlt'd (copied) onto the widget
    * (to avoid flickering)
    */
-  QPixmap curPix;
+  TQPixmap curPix;
 
 protected:
-  std::vector<QRect> oldOverlay;
+  std::vector<TQRect> oldOverlay;
 
   /**
    * this is a class that maps from our widget coordinates to the
@@ -104,7 +104,7 @@ public:
    */
   KigWidget( KigPart* doc,
              KigView* view,
-             QWidget* parent = 0,
+             TQWidget* parent = 0,
              const char* name = 0,
              bool fullscreen = false
 	   );
@@ -127,7 +127,7 @@ public:
    * i tried to optimise the drawing as much as possible, using
    * much ideas from kgeo
    * DOUBLE BUFFERING:
-   * we don't draw on the widget directly, we draw on a QPixmap (
+   * we don't draw on the widget directly, we draw on a TQPixmap (
    * curPix ), and bitBlt that onto the widget to avoid flickering.
    * TRIPLE BUFFERING:
    * we also currently keep an extra pixmap of what the widget looks
@@ -153,12 +153,12 @@ public:
   /**
    * update curPix (bitBlt stillPix onto curPix..)
    */
-  void updateCurPix( const std::vector<QRect>& = std::vector<QRect>());
+  void updateCurPix( const std::vector<TQRect>& = std::vector<TQRect>());
 
   /**
    * this means bitBlting curPix on the actual widget...
    */
-  void updateWidget( const std::vector<QRect>& = std::vector<QRect>() );
+  void updateWidget( const std::vector<TQRect>& = std::vector<TQRect>() );
   void updateEntireWidget();
 
   /**
@@ -174,8 +174,8 @@ public:
   const Rect showingRect() const;
   void setShowingRect( const Rect& r );
 
-  const Coordinate fromScreen( const QPoint& p );
-  const Rect fromScreen( const QRect& r );
+  const Coordinate fromScreen( const TQPoint& p );
+  const Rect fromScreen( const TQRect& r );
   double pixelWidth() const;
 
   /**
@@ -228,12 +228,12 @@ class KigView
 {
   Q_OBJECT
 
-  QGridLayout* mlayout;
-  QScrollBar* mrightscroll;
-  QScrollBar* mbottomscroll;
+  TQGridLayout* mlayout;
+  TQScrollBar* mrightscroll;
+  TQScrollBar* mbottomscroll;
 
   /**
-   * apparently, QScrollBar also emits its signals when you update it
+   * apparently, TQScrollBar also emits its signals when you update it
    * manually, so we ignore them while we're in \ref updateScrollBars()...
    */
   bool mupdatingscrollbars;
@@ -244,7 +244,7 @@ class KigView
 public:
   KigView( KigPart* part,
            bool fullscreen = false,
-	   QWidget* parent = 0,
+	   TQWidget* parent = 0,
 	   const char* name = 0
 	   );
   ~KigView();

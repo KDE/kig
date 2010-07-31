@@ -30,8 +30,8 @@
 
 #include <algorithm>
 
-#include <qclipboard.h>
-#include <qstringlist.h>
+#include <tqclipboard.h>
+#include <tqstringlist.h>
 
 #include <kapplication.h>
 
@@ -87,7 +87,7 @@ ObjectImp* TextType::calc( const Args& parents, const KigDocument& doc ) const
   int frame = static_cast<const IntImp*>( firstthree[0] )->data();
   bool needframe = frame != 0;
   const Coordinate t = static_cast<const PointImp*>( firstthree[1] )->coordinate();
-  QString s = static_cast<const StringImp*>( firstthree[2] )->data();
+  TQString s = static_cast<const StringImp*>( firstthree[2] )->data();
 
   for ( Args::iterator i = varargs.begin(); i != varargs.end(); ++i )
     (*i)->fillInNextEscape( s, doc );
@@ -120,9 +120,9 @@ void TextType::move( ObjectTypeCalcer& ourobj, const Coordinate& to,
     firstthree[1]->move( to, d );
 }
 
-QStringList TextType::specialActions() const
+TQStringList TextType::specialActions() const
 {
-  QStringList ret;
+  TQStringList ret;
   ret << i18n( "&Copy Text" );
   ret << i18n( "&Toggle Frame" );
   ret << i18n( "&Redefine..." );

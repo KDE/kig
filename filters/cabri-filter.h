@@ -45,10 +45,10 @@ class KigFilterCabri
 public:
   static KigFilterCabri* instance();
 
-  bool supportMime ( const QString& mime );
-  KigDocument* load ( const QString& fromfile );
+  bool supportMime ( const TQString& mime );
+  KigDocument* load ( const TQString& fromfile );
 private:
-  bool readObject( QFile& f, CabriObject& myobj );
+  bool readObject( TQFile& f, CabriObject& myobj );
 
 };
 

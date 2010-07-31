@@ -20,7 +20,7 @@
 
 #include "object_calcer.h"
 
-#include <qstring.h>
+#include <tqstring.h>
 
 /**
  * An ObjectHolder represents an object as it is known to the
@@ -77,9 +77,9 @@ public:
   void setNameCalcer( ObjectConstCalcer* namecalcer );
 
   /**
-   * returns QString::null if no name is set.
+   * returns TQString::null if no name is set.
    */
-  const QString name() const;
+  const TQString name() const;
   /**
    * Set the ObjectDrawer of this ObjectHolder to \p d , the old
    * ObjectDrawer is deleted.
@@ -139,7 +139,7 @@ public:
    * "select segment ab" depending on whether this ObjectHolder has a
    * name.
    */
-  QString selectStatement() const;
+  TQString selectStatement() const;
 };
 
 #endif

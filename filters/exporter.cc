@@ -36,11 +36,11 @@
 #include "../objects/point_imp.h"
 #include "../objects/text_imp.h"
 
-#include <qcheckbox.h>
-#include <qcolor.h>
-#include <qfile.h>
-#include <qiconset.h>
-#include <qtextstream.h>
+#include <tqcheckbox.h>
+#include <tqcolor.h>
+#include <tqfile.h>
+#include <tqiconset.h>
+#include <tqtextstream.h>
 
 #include <kaction.h>
 #include <kiconloader.h>
@@ -52,7 +52,7 @@
 #include <map>
 
 // we need this for storing colors in a std::map..
-static bool operator<( const QColor& a, const QColor& b )
+static bool operator<( const TQColor& a, const TQColor& b )
 {
   return a.rgb() < b.rgb();
 }
@@ -74,13 +74,13 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
   : KAction( exp->menuEntryName(), KShortcut(), 0, 0, parent ),
     mexp( exp ), mdoc( doc ), mw( w )
 {
-  QString iconstr = exp->menuIcon();
+  TQString iconstr = exp->menuIcon();
   if ( iconstr.isEmpty() )
     return;
   KIconLoader* l = doc->instance()->iconLoader();
-  QPixmap icon = l->loadIcon( iconstr, KIcon::Small, 16, KIcon::DefaultState, 0L, true );
+  TQPixmap icon = l->loadIcon( iconstr, KIcon::Small, 16, KIcon::DefaultState, 0L, true );
   if ( !icon.isNull() )
-    setIconSet( QIconSet( icon ) );
+    setIconSet( TQIconSet( icon ) );
 }
 
 void ExporterAction::slotActivated()
@@ -96,17 +96,17 @@ ImageExporter::~ImageExporter()
 {
 }
 
-QString ImageExporter::exportToStatement() const
+TQString ImageExporter::exportToStatement() const
 {
   return i18n( "&Export to image" );
 }
 
-QString ImageExporter::menuEntryName() const
+TQString ImageExporter::menuEntryName() const
 {
   return i18n( "&Image..." );
 }
 
-QString ImageExporter::menuIcon() const
+TQString ImageExporter::menuIcon() const
 {
   return "image";
 }
@@ -121,7 +121,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   }
 
   KigFileDialog* kfd = new KigFileDialog(
-      QString::null, KImageIO::pattern( KImageIO::Writing ),
+      TQString::null, KImageIO::pattern( KImageIO::Writing ),
       i18n( "Export as Image" ), &w );
   kfd->setOptionCaption( i18n( "Image Options" ) );
   ImageExporterOptions* opts = new ImageExporterOptions( 0L, w.size() );
@@ -133,7 +133,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   if ( !kfd->exec() )
     return;
 
-  QString filename = kfd->selectedFile();
+  TQString filename = kfd->selectedFile();
   bool showgrid = opts->showGridCheckBox->isOn();
   bool showaxes = opts->showAxesCheckBox->isOn();
   int width = opts->WidthInput->value();
@@ -142,7 +142,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   delete opts;
   delete kfd;
 
-  QString type = KImageIO::type( filename );
+  TQString type = KImageIO::type( filename );
   if ( type.isNull() )
   {
     KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
@@ -151,7 +151,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
 
   kdDebug() << k_funcinfo << type << endl;
 
-  QFile file( filename );
+  TQFile file( filename );
   if ( ! file.open( IO_WriteOnly ) )
   {
     KMessageBox::sorry( &w,
@@ -160,7 +160,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
     return;
   };
 
-  QPixmap img( QSize( width, height ) );
+  TQPixmap img( TQSize( width, height ) );
   img.fill( Qt::white );
   KigPainter p( ScreenInfo( w.screenInfo().shownRect(), img.rect() ), &img, doc.document() );
   p.setWholeWinOverlay();
@@ -208,18 +208,18 @@ XFigExporter::~XFigExporter()
 {
 }
 
-QString XFigExporter::exportToStatement() const
+TQString XFigExporter::exportToStatement() const
 {
   return i18n( "Export to &XFig file" );
 }
 
 
-QString XFigExporter::menuEntryName() const
+TQString XFigExporter::menuEntryName() const
 {
   return i18n( "&XFig File..." );
 }
 
-QString XFigExporter::menuIcon() const
+TQString XFigExporter::menuIcon() const
 {
   return "kig_xfig";
 }
@@ -227,15 +227,15 @@ QString XFigExporter::menuIcon() const
 class XFigExportImpVisitor
   : public ObjectImpVisitor
 {
-  QTextStream& mstream;
+  TQTextStream& mstream;
   ObjectHolder* mcurobj;
   const KigWidget& mw;
   Rect msr;
-  std::map<QColor, int> mcolormap;
+  std::map<TQColor, int> mcolormap;
   int mnextcolorid;
   int mcurcolorid;
 
-  QPoint convertCoord( const Coordinate& c )
+  TQPoint convertCoord( const Coordinate& c )
     {
       Coordinate ret = ( c - msr.bottomLeft() );
       ret.y = msr.height() - ret.y;
@@ -252,7 +252,7 @@ public:
   void visit( ObjectHolder* obj );
   void mapColor( const ObjectDrawer* obj );
 
-  XFigExportImpVisitor( QTextStream& s, const KigWidget& w )
+  XFigExportImpVisitor( TQTextStream& s, const KigWidget& w )
     : mstream( s ), mw( w ), msr( mw.showingRect() ),
       mnextcolorid( 32 )
     {
@@ -283,7 +283,7 @@ public:
 void XFigExportImpVisitor::mapColor( const ObjectDrawer* obj )
 {
   if ( ! obj->shown() ) return;
-  QColor color = obj->color();
+  TQColor color = obj->color();
   if ( mcolormap.find( color ) == mcolormap.end() )
   {
     int newcolorid = mnextcolorid++;
@@ -351,15 +351,15 @@ void XFigExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b, i
             << "165.00 " // arrow_height
             << "\n\t";
   }
-  QPoint ca = convertCoord( a );
-  QPoint cb = convertCoord( b );
+  TQPoint ca = convertCoord( a );
+  TQPoint cb = convertCoord( b );
 
   mstream << ca.x() << " " << ca.y() << " " << cb.x() << " " << cb.y() << "\n";
 }
 
 void XFigExportImpVisitor::visit( const PointImp* imp )
 {
-  const QPoint center = convertCoord( imp->coordinate() );
+  const TQPoint center = convertCoord( imp->coordinate() );
   int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 5;
   width *= 10;
@@ -387,8 +387,8 @@ void XFigExportImpVisitor::visit( const PointImp* imp )
 
 void XFigExportImpVisitor::visit( const TextImp* imp )
 {
-  QString text = imp->text();
-  QPoint coord = convertCoord( imp->surroundingRect().bottomLeft() );
+  TQString text = imp->text();
+  TQPoint coord = convertCoord( imp->surroundingRect().bottomLeft() );
 
   mstream << "4 "    // text type
           << "0 "    // subtype: left justfied
@@ -424,7 +424,7 @@ void XFigExportImpVisitor::visit( const LocusImp* )
 
 void XFigExportImpVisitor::visit( const CircleImp* imp )
 {
-  const QPoint center = convertCoord( imp->center() );
+  const TQPoint center = convertCoord( imp->center() );
   const int radius =
     ( convertCoord( imp->center() + Coordinate( imp->radius(), 0 ) ) - center ).x();
 
@@ -477,12 +477,12 @@ void XFigExportImpVisitor::visit( const ConicImp* imp )
     double radiusy = sqrt( r*r - d*d );
 
     Coordinate center = data.focus1 - Coordinate( cos( anglex ), sin( anglex ) ).normalize( d );
-    const QPoint qcenter = convertCoord( center );
+    const TQPoint qcenter = convertCoord( center );
     const int radius_x = ( convertCoord( center + Coordinate( radiusx, 0 ) ) -
                            convertCoord( center ) ).x();
     const int radius_y = ( convertCoord( center + Coordinate( radiusy, 0 ) ) -
                            convertCoord( center ) ).x();
-    const QPoint qpoint2 = convertCoord( center + Coordinate( -sin( anglex ), cos( anglex ) ) * radiusy );
+    const TQPoint qpoint2 = convertCoord( center + Coordinate( -sin( anglex ), cos( anglex ) ) * radiusy );
 
     mstream << "1 "  // ellipse type
             << "1 "  // subtype: ellipse defined by readii
@@ -544,10 +544,10 @@ void XFigExportImpVisitor::visit( const ArcImp* imp )
   const Coordinate ad = Coordinate( cos( startangle ), sin( startangle ) ).normalize( radius );
   const Coordinate bd = Coordinate( cos( middleangle ), sin( middleangle ) ).normalize( radius );
   const Coordinate cd = Coordinate( cos( endangle ), sin( endangle ) ).normalize( radius );
-  const QPoint a = convertCoord( center + ad );
-  const QPoint b = convertCoord( center + bd );
-  const QPoint c = convertCoord( center + cd );
-  const QPoint cent = convertCoord( center );
+  const TQPoint a = convertCoord( center + ad );
+  const TQPoint b = convertCoord( center + bd );
+  const TQPoint c = convertCoord( center + cd );
+  const TQPoint cent = convertCoord( center );
 
   mstream << "5 "  // Ellipse type
           << "1 "  // subtype: open ended arc
@@ -584,11 +584,11 @@ void XFigExporter::run( const KigPart& doc, KigWidget& w )
   if ( !kfd->exec() )
     return;
 
-  QString file_name = kfd->selectedFile();
+  TQString file_name = kfd->selectedFile();
 
   delete kfd;
 
-  QFile file( file_name );
+  TQFile file( file_name );
   if ( ! file.open( IO_WriteOnly ) )
   {
     KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
@@ -596,7 +596,7 @@ void XFigExporter::run( const KigPart& doc, KigWidget& w )
                         .arg( file_name ) );
     return;
   };
-  QTextStream stream( &file );
+  TQTextStream stream( &file );
   stream << "#FIG 3.2\n";
   stream << "Landscape\n";
   stream << "Center\n";

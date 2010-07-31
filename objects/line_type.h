@@ -33,7 +33,7 @@ public:
   ObjectImp* calc( const Coordinate& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 
-  QStringList specialActions() const;
+  TQStringList specialActions() const;
   /**
    * execute the \p i 'th action from the specialActions above..
    */

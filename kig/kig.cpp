@@ -21,8 +21,8 @@
 #include "kig.h"
 #include "kig.moc"
 
-#include <qevent.h>
-#include <qtimer.h>
+#include <tqevent.h>
+#include <tqtimer.h>
 
 #include <kaction.h>
 #include <kapplication.h>
@@ -78,7 +78,7 @@ Kig::Kig()
 	  // and integrate the part's GUI with the shell's
 	  createGUI(m_part);
 	  // finally show tip-of-day ( if the user wants it :) )
-	  QTimer::singleShot( 0, this, SLOT( startupTipOfDay() ) );
+	  TQTimer::singleShot( 0, this, TQT_SLOT( startupTipOfDay() ) );
       }
   }
   else
@@ -105,30 +105,30 @@ Kig::~Kig()
 
 void Kig::setupActions()
 {
-  KStdAction::openNew(this, SLOT(fileNew()), actionCollection());
-  KStdAction::open(this, SLOT(fileOpen()), actionCollection());
-  KStdAction::quit(this, SLOT(close()), actionCollection());
+  KStdAction::openNew(this, TQT_SLOT(fileNew()), actionCollection());
+  KStdAction::open(this, TQT_SLOT(fileOpen()), actionCollection());
+  KStdAction::quit(this, TQT_SLOT(close()), actionCollection());
 
 #ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
-  m_toolbarAction = KStdAction::showToolbar(this, SLOT(optionsShowToolbar()), actionCollection());
-  m_statusbarAction = KStdAction::showStatusbar(this, SLOT(optionsShowStatusbar()), actionCollection());
+  m_toolbarAction = KStdAction::showToolbar(this, TQT_SLOT(optionsShowToolbar()), actionCollection());
+  m_statusbarAction = KStdAction::showStatusbar(this, TQT_SLOT(optionsShowStatusbar()), actionCollection());
 #else
   createStandardStatusBarAction();
   setStandardToolBarMenuEnabled(true);
 #endif
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
-  m_recentFilesAction = KStdAction::openRecent(this, SLOT(openURL(const KURL&)), actionCollection());
+  m_recentFilesAction = KStdAction::openRecent(this, TQT_SLOT(openURL(const KURL&)), actionCollection());
   m_recentFilesAction->loadEntries(config);
 
 #if KDE_IS_VERSION( 3, 2, 90 )
-  KStdAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
+  KStdAction::keyBindings( guiFactory(), TQT_SLOT( configureShortcuts() ), actionCollection() );
 #else
-  KStdAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
+  KStdAction::keyBindings(this, TQT_SLOT(optionsConfigureKeys()), actionCollection());
 #endif
-  KStdAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
+  KStdAction::configureToolbars(this, TQT_SLOT(optionsConfigureToolbars()), actionCollection());
 
-  KStdAction::tipOfDay( this, SLOT( tipOfDay() ), actionCollection(), "help_tipofday" );
+  KStdAction::tipOfDay( this, TQT_SLOT( tipOfDay() ), actionCollection(), "help_tipofday" );
 }
 
 void Kig::saveProperties(KConfig* config)
@@ -203,8 +203,8 @@ void Kig::optionsConfigureToolbars()
 
   // use the standard toolbar editor
   KEditToolbar dlg(factory());
-  connect(&dlg, SIGNAL(newToolbarConfig()),
-	  this, SLOT(applyNewToolbarConfig()));
+  connect(&dlg, TQT_SIGNAL(newToolbarConfig()),
+	  this, TQT_SLOT(applyNewToolbarConfig()));
   dlg.exec();
 }
 
@@ -236,12 +236,12 @@ bool Kig::queryClose()
     };
 }
 
-void Kig::dragEnterEvent(QDragEnterEvent* e)
+void Kig::dragEnterEvent(TQDragEnterEvent* e)
 {
   e->accept(KURLDrag::canDecode(e));
 }
 
-void Kig::dropEvent(QDropEvent* e)
+void Kig::dropEvent(TQDropEvent* e)
 {
   KURL::List urls;
   if ( KURLDrag::decode (e, urls) )
@@ -257,7 +257,7 @@ void Kig::dropEvent(QDropEvent* e)
 
 void Kig::fileOpen()
 {
-  QString formats =
+  TQString formats =
      i18n( "*.kig *.kigz *.kgeo *.seg|All Supported Files (*.kig *.kigz *.kgeo *.seg)\n"
            "*.kig|Kig Documents (*.kig)\n"
            "*.kigz|Compressed Kig Documents (*.kigz)\n"
@@ -267,7 +267,7 @@ void Kig::fileOpen()
            "*.fig *.FIG|Cabri Documents (*.fig *.FIG)" );
 
   // this slot is connected to the KStdAction::open action...
-  QString file_name = KFileDialog::getOpenFileName(":document", formats );
+  TQString file_name = KFileDialog::getOpenFileName(":document", formats );
 
   if (!file_name.isEmpty()) openURL(file_name);
 }

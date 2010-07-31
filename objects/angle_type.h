@@ -31,7 +31,7 @@ public:
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 
-  QStringList specialActions() const;
+  TQStringList specialActions() const;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
                       KigPart& d, KigWidget& w, NormalMode& m ) const;
 };

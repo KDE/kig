@@ -37,14 +37,14 @@ class KigFilterKGeo
 {
 public:
   static KigFilterKGeo* instance();
-  bool supportMime ( const QString& mime );
-  KigDocument* load ( const QString& from );
+  bool supportMime ( const TQString& mime );
+  KigDocument* load ( const TQString& from );
 protected:
   KigFilterKGeo();
   ~KigFilterKGeo();
 
   void loadMetrics ( KSimpleConfig* );
-  KigDocument* loadObjects ( const QString& file, KSimpleConfig* );
+  KigDocument* loadObjects ( const TQString& file, KSimpleConfig* );
 
   int xMax;
   int yMax;

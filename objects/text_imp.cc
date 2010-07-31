@@ -20,7 +20,7 @@
 #include "bogus_imp.h"
 #include "../misc/kigpainter.h"
 
-TextImp::TextImp( const QString& text, const Coordinate& loc, bool frame )
+TextImp::TextImp( const TQString& text, const Coordinate& loc, bool frame )
   : mtext( text), mloc( loc ), mframe( frame ), mboundrect( Rect::invalidRect() )
 {
 }
@@ -112,7 +112,7 @@ ObjectImp* TextImp::property( uint which, const KigDocument& w ) const
   return new InvalidImp;
 }
 
-QString TextImp::text() const
+TQString TextImp::text() const
 {
   return mtext;
 }

@@ -20,7 +20,7 @@
 #ifndef KIG_MISC_GONIOMETRY_H
 #define KIG_MISC_GONIOMETRY_H
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 
 /**
  * Manage an angle and convert it from/to other goniometric systems.
@@ -58,7 +58,7 @@ public:
   /**
    * Get a list of the supported goniometric systems.
    */
-  static QStringList systemList();
+  static TQStringList systemList();
   static Goniometry::System intToSystem( const int index );
 
   Goniometry& operator= ( const Goniometry& g );

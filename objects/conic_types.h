@@ -175,7 +175,7 @@ public:
   static const ConicRadicalType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
-  QStringList specialActions() const;
+  TQStringList specialActions() const;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
                       KigPart& d, KigWidget& w, NormalMode& m ) const;
 };

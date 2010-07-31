@@ -21,7 +21,7 @@
 #ifndef KIG_MISC_COORDINATE_SYSTEM_H
 #define KIG_MISC_COORDINATE_SYSTEM_H
 
-#include <qnamespace.h>
+#include <tqnamespace.h>
 
 class KigPainter;
 class KigDocument;
@@ -42,8 +42,8 @@ class CoordinateSystemFactory
 public:
   enum { Euclidean = 0, Polar = 1 };
 
-  static QStringList names();
-  static QString setCoordinateSystemStatement( int id );
+  static TQStringList names();
+  static TQString setCoordinateSystemStatement( int id );
   static CoordinateSystem* build( int which );
   static CoordinateSystem* build( const char* type );
 };
@@ -65,23 +65,23 @@ public:
   CoordinateSystem();
   virtual ~CoordinateSystem();
 
-  virtual QString fromScreen ( const Coordinate& pt, const KigDocument& w ) const = 0;
+  virtual TQString fromScreen ( const Coordinate& pt, const KigDocument& w ) const = 0;
   /**
    * This returns a notice to say in which format coordinates should
    * be entered.  This should be something like:
    * i18n( "Enter coordinates in the following form: \"(x,y)\", where
    * x is the x coordinate, and y is the y coordinate." );
    */
-  virtual QString coordinateFormatNotice() const = 0;
+  virtual TQString coordinateFormatNotice() const = 0;
   /**
    * Like \ref coordinateFormatNotice(), but with HTML tags useful to
    * have a rich text...
    */
-  virtual QString coordinateFormatNoticeMarkup() const = 0;
-  virtual Coordinate toScreen (const QString& pt, bool& ok) const = 0;
+  virtual TQString coordinateFormatNoticeMarkup() const = 0;
+  virtual Coordinate toScreen (const TQString& pt, bool& ok) const = 0;
   virtual void drawGrid ( KigPainter& p, bool showgrid = true,
                           bool showaxes = true ) const = 0;
-  virtual QValidator* coordinateValidator() const = 0;
+  virtual TQValidator* coordinateValidator() const = 0;
   virtual Coordinate snapToGrid( const Coordinate& c,
                                  const KigWidget& w ) const = 0;
 
@@ -95,13 +95,13 @@ class EuclideanCoords
 public:
   EuclideanCoords();
   ~EuclideanCoords();
-  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
-  QString coordinateFormatNotice() const;
-  QString coordinateFormatNoticeMarkup() const;
-  Coordinate toScreen (const QString& pt, bool& ok) const;
+  TQString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
+  TQString coordinateFormatNotice() const;
+  TQString coordinateFormatNoticeMarkup() const;
+  Coordinate toScreen (const TQString& pt, bool& ok) const;
   void drawGrid ( KigPainter& p, bool showgrid = true,
                   bool showaxes = true ) const;
-  QValidator* coordinateValidator() const;
+  TQValidator* coordinateValidator() const;
   Coordinate snapToGrid( const Coordinate& c,
                          const KigWidget& w ) const;
 
@@ -117,13 +117,13 @@ class PolarCoords
 public:
   PolarCoords();
   ~PolarCoords();
-  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
-  QString coordinateFormatNotice() const;
-  QString coordinateFormatNoticeMarkup() const;
-  Coordinate toScreen (const QString& pt, bool& ok) const;
+  TQString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
+  TQString coordinateFormatNotice() const;
+  TQString coordinateFormatNoticeMarkup() const;
+  Coordinate toScreen (const TQString& pt, bool& ok) const;
   void drawGrid ( KigPainter& p, bool showgrid = true,
                   bool showaxes = true ) const;
-  QValidator* coordinateValidator() const;
+  TQValidator* coordinateValidator() const;
   Coordinate snapToGrid( const Coordinate& c,
                          const KigWidget& w ) const;
 

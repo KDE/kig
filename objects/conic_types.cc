@@ -663,9 +663,9 @@ const ObjectImpType* ConicRadicalType::resultId() const
   return LineImp::stype();
 }
 
-QStringList ConicRadicalType::specialActions() const
+TQStringList ConicRadicalType::specialActions() const
 {
-  QStringList ret;
+  TQStringList ret;
   ret << i18n( "Switch Radical Lines" );
   return ret;
 }

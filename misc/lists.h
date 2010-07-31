@@ -141,11 +141,11 @@ public:
   /**
    * Save macro \p m to file \p f ..
    */
-  bool save( Macro* m, const QString& f );
+  bool save( Macro* m, const TQString& f );
   /**
    * Save macros \p ms to file \p f ..
    */
-  bool save( const vectype& ms, const QString& f );
+  bool save( const vectype& ms, const TQString& f );
 
   /**
    * load macro's from file \p f ..
@@ -156,7 +156,7 @@ public:
    * semantically incorrect, but i haven't been able to work around
    * it..
    */
-  bool load( const QString& f, vectype& ret, const KigPart& );
+  bool load( const TQString& f, vectype& ret, const KigPart& );
 
   /**
    * get access to the list of macro's..
@@ -164,7 +164,7 @@ public:
   const vectype& macros() const;
 
 private:
-  bool loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, const KigPart& );
+  bool loadNew( const TQDomElement& docelem, std::vector<Macro*>& ret, const KigPart& );
 };
 
 #endif

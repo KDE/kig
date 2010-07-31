@@ -184,7 +184,7 @@ int ConicImp::conicType() const
   return 0;
 }
 
-QString ConicImp::conicTypeString() const
+TQString ConicImp::conicTypeString() const
 {
   switch (conicType())
   {
@@ -200,9 +200,9 @@ QString ConicImp::conicTypeString() const
   }
 }
 
-QString ConicImp::cartesianEquationString( const KigDocument& ) const
+TQString ConicImp::cartesianEquationString( const KigDocument& ) const
 {
-  QString ret = i18n( "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0" );
+  TQString ret = i18n( "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0" );
   ConicCartesianData data = cartesianData();
   ret = ret.arg( data.coeffs[0], 0, 'g', 3 );
   ret = ret.arg( data.coeffs[1], 0, 'g', 3 );
@@ -213,9 +213,9 @@ QString ConicImp::cartesianEquationString( const KigDocument& ) const
   return ret;
 }
 
-QString ConicImp::polarEquationString( const KigDocument& w ) const
+TQString ConicImp::polarEquationString( const KigDocument& w ) const
 {
-  QString ret = i18n( "rho = %1/(1 + %2 cos theta + %3 sin theta)\n    [centered at %4]" );
+  TQString ret = i18n( "rho = %1/(1 + %2 cos theta + %3 sin theta)\n    [centered at %4]" );
   const ConicPolarData data = polarData();
 
   ret = ret.arg( data.pdimen, 0, 'g', 3 );

@@ -18,7 +18,7 @@
 #ifndef KIG_lINKS_LABEL_H
 #define KIG_lINKS_LABEL_H
 
-#include <qwidget.h>
+#include <tqwidget.h>
 
 #include <vector>
 #include <utility>
@@ -32,7 +32,7 @@ class LinksLabel : public QWidget
   Q_OBJECT
 
 public:
-  LinksLabel( QWidget* parent = 0, const char* name = 0 );
+  LinksLabel( TQWidget* parent = 0, const char* name = 0 );
   ~LinksLabel();
 
   class LinksLabelEditBuf
@@ -43,7 +43,7 @@ public:
   private:
     // declare these private so only LinksLabel can use them...
     LinksLabelEditBuf() {}
-    typedef std::vector<std::pair<bool,QString> > vec;
+    typedef std::vector<std::pair<bool,TQString> > vec;
     vec data;
   };
 
@@ -55,11 +55,11 @@ public:
   /**
    * add a piece of normal text..
    */
-  void addText( const QString& s, LinksLabelEditBuf& buf );
+  void addText( const TQString& s, LinksLabelEditBuf& buf );
   /**
    * add a link...
    */
-  void addLink( const QString& s, LinksLabelEditBuf& buf );
+  void addLink( const TQString& s, LinksLabelEditBuf& buf );
   /**
    * apply the changes... This clears the current contents and adds
    * the new data...

@@ -52,7 +52,7 @@
 #include "../objects/text_imp.h"
 #include "../objects/transform_types.h"
 
-#include <qpen.h>
+#include <tqpen.h>
 
 #include <klocale.h>
 
@@ -242,7 +242,7 @@ std::vector<ObjectHolder*> LocusConstructor::build( const std::vector<ObjectCalc
   return ret;
 }
 
-QString LocusConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& os,
+TQString LocusConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& os,
                                    const KigDocument&, const KigWidget& ) const
 {
   if ( dynamic_cast<const ObjectTypeCalcer*>( &o ) &&
@@ -284,17 +284,17 @@ PolygonBNPTypeConstructor::~PolygonBNPTypeConstructor()
 {
 }
 
-const QString PolygonBNPTypeConstructor::descriptiveName() const
+const TQString PolygonBNPTypeConstructor::descriptiveName() const
 {
   return i18n("Polygon by Its Vertices");
 }
 
-const QString PolygonBNPTypeConstructor::description() const
+const TQString PolygonBNPTypeConstructor::description() const
 {
   return i18n("Construct a polygon by giving its vertices");
 }
 
-const QCString PolygonBNPTypeConstructor::iconFileName( const bool ) const
+const TQCString PolygonBNPTypeConstructor::iconFileName( const bool ) const
 {
   return "kig_polygon";
 }
@@ -351,7 +351,7 @@ void PolygonBNPTypeConstructor::handlePrelim(
   std::vector<ObjectCalcer*> args = os;
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
+  p.setPen( TQPen ( Qt::red,  1) );
   p.setWidth( -1 ); // -1 means the default width for the object being
                     // drawn..
 
@@ -359,7 +359,7 @@ void PolygonBNPTypeConstructor::handlePrelim(
   drawprelim( drawer, p, args, d );
 }
 
-QString PolygonBNPTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
+TQString PolygonBNPTypeConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
                                           const KigDocument&, const KigWidget& ) const
 {
   if ( os.size() > 3 )
@@ -367,7 +367,7 @@ QString PolygonBNPTypeConstructor::useText( const ObjectCalcer&, const std::vect
   else return i18n("Construct a polygon with this vertex");
 }
 
-QString PolygonBNPTypeConstructor::selectStatement(
+TQString PolygonBNPTypeConstructor::selectStatement(
   const std::vector<ObjectCalcer*>&, const KigDocument&,
   const KigWidget& ) const
 {
@@ -568,17 +568,17 @@ PolygonBCVConstructor::~PolygonBCVConstructor()
 {
 }
 
-const QString PolygonBCVConstructor::descriptiveName() const
+const TQString PolygonBCVConstructor::descriptiveName() const
 {
   return i18n("Regular Polygon with Given Center");
 }
 
-const QString PolygonBCVConstructor::description() const
+const TQString PolygonBCVConstructor::description() const
 {
   return i18n("Construct a regular polygon with a given center and vertex");
 }
 
-const QCString PolygonBCVConstructor::iconFileName( const bool ) const
+const TQCString PolygonBCVConstructor::iconFileName( const bool ) const
 {
   return "hexagonbcv";
 }
@@ -660,7 +660,7 @@ void PolygonBCVConstructor::handlePrelim(
 
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
+  p.setPen( TQPen ( Qt::red,  1) );
   p.setWidth( -1 ); // -1 means the default width for the object being
                     // drawn..
 
@@ -682,7 +682,7 @@ void PolygonBCVConstructor::handlePrelim(
       ptn = PointImp( where );
       ptn.draw( p );
       if ( i > 5 ) continue;
-      text = TextImp( QString( "(%1)" ).arg(i), where, false );
+      text = TextImp( TQString( "(%1)" ).arg(i), where, false );
       text.draw( p );
     }
     p.setStyle( Qt::DotLine );
@@ -728,7 +728,7 @@ std::vector<ObjectHolder*> PolygonBCVConstructor::build( const std::vector<Objec
   return ret;
 }
 
-QString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
+TQString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<ObjectCalcer*>& os,
                                           const KigDocument&, const KigWidget& ) const
 {
   switch ( os.size() )
@@ -750,13 +750,13 @@ QString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<O
 
     if ( winding > 1 )
     {
-      QString result = QString(
+      TQString result = TQString(
         i18n( "Adjust the number of sides (%1/%2)" )
         ).arg( nsides ).arg( winding );
       return result;
     } else
     {
-      QString result = QString(
+      TQString result = TQString(
         i18n( "Adjust the number of sides (%1)" )
         ).arg( nsides );
       return result;
@@ -767,7 +767,7 @@ QString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<O
   return "";
 }
 
-QString PolygonBCVConstructor::selectStatement(
+TQString PolygonBCVConstructor::selectStatement(
   const std::vector<ObjectCalcer*>& os, const KigDocument&,
   const KigWidget& ) const
 {
@@ -970,7 +970,7 @@ ArcLineIntersectionConstructor::~ArcLineIntersectionConstructor()
 {
 }
 
-QString ConicRadicalConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
+TQString ConicRadicalConstructor::useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
                                           const KigDocument&, const KigWidget& ) const
 {
   if ( o.imp()->inherits( CircleImp::stype() ) )
@@ -1099,17 +1099,17 @@ MeasureTransportConstructor::~MeasureTransportConstructor()
 {
 }
 
-const QString MeasureTransportConstructor::descriptiveName() const
+const TQString MeasureTransportConstructor::descriptiveName() const
 {
   return i18n("Measure Transport");
 }
 
-const QString MeasureTransportConstructor::description() const
+const TQString MeasureTransportConstructor::description() const
 {
   return i18n("Transport the measure of a segment or arc over a line or circle.");
 }
 
-const QCString MeasureTransportConstructor::iconFileName( const bool ) const
+const TQCString MeasureTransportConstructor::iconFileName( const bool ) const
 {
   return "measuretransport";
 }
@@ -1180,7 +1180,7 @@ void MeasureTransportConstructor::handlePrelim(
 {
   p.setBrushStyle( Qt::NoBrush );
   p.setBrushColor( Qt::red );
-  p.setPen( QPen ( Qt::red,  1) );
+  p.setPen( TQPen ( Qt::red,  1) );
   p.setWidth( -1 ); // -1 means the default width for the object being
                     // drawn..
 
@@ -1202,7 +1202,7 @@ void MeasureTransportConstructor::drawprelim( const ObjectDrawer& drawer,
   delete data;
 }
 
-QString MeasureTransportConstructor::useText( const ObjectCalcer& o,
+TQString MeasureTransportConstructor::useText( const ObjectCalcer& o,
                         const std::vector<ObjectCalcer*>& os,
                         const KigDocument&, const KigWidget& ) const
 {
@@ -1227,7 +1227,7 @@ QString MeasureTransportConstructor::useText( const ObjectCalcer& o,
   return "";
 }
 
-QString MeasureTransportConstructor::selectStatement(
+TQString MeasureTransportConstructor::selectStatement(
   const std::vector<ObjectCalcer*>&, const KigDocument&,
   const KigWidget& ) const
 {
@@ -1323,11 +1323,11 @@ bool GenericIntersectionConstructor::isIntersection() const
   return true;
 }
 
-QString GenericIntersectionConstructor::useText(
+TQString GenericIntersectionConstructor::useText(
   const ObjectCalcer& o, const std::vector<ObjectCalcer*>& os,
   const KigDocument&, const KigWidget& ) const
 {
-  QString preamble;
+  TQString preamble;
   switch (os.size())
   {
     case 1:
@@ -1362,7 +1362,7 @@ QString GenericIntersectionConstructor::useText(
       break;
   }
 
-  return QString::null;
+  return TQString::null;
 }
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =
@@ -1475,7 +1475,7 @@ const int TestConstructor::wantArgs( const std::vector<ObjectCalcer*>& os,
   return ret;
 }
 
-QString GenericIntersectionConstructor::selectStatement(
+TQString GenericIntersectionConstructor::selectStatement(
   const std::vector<ObjectCalcer*>& sel, const KigDocument&,
   const KigWidget& ) const
 {
@@ -1525,7 +1525,7 @@ TangentConstructor::~TangentConstructor()
 {
 }
 
-QString TangentConstructor::useText(
+TQString TangentConstructor::useText(
   const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
   const KigDocument&, const KigWidget& ) const
 {
@@ -1542,10 +1542,10 @@ QString TangentConstructor::useText(
   else if ( o.imp()->inherits( PointImp::stype() ) )
     return i18n( "Tangent at This Point" );
 //  else assert( false );
-  return QString::null;
+  return TQString::null;
 }
 
-//QString TangentConstructor::selectStatement(
+//TQString TangentConstructor::selectStatement(
 //  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
 //  const KigWidget& ) const
 //{
@@ -1592,7 +1592,7 @@ CocConstructor::~CocConstructor()
 {
 }
 
-QString CocConstructor::useText(
+TQString CocConstructor::useText(
   const ObjectCalcer& o, const std::vector<ObjectCalcer*>&,
   const KigDocument&, const KigWidget& ) const
 {
@@ -1604,7 +1604,7 @@ QString CocConstructor::useText(
     return i18n( "Center of Curvature of This Curve" );
   else if ( o.imp()->inherits( PointImp::stype() ) )
     return i18n( "Center of Curvature at This Point" );
-  return QString::null;
+  return TQString::null;
 }
 
 bool relativePrimes( int n, int p )
@@ -1617,7 +1617,7 @@ bool relativePrimes( int n, int p )
   return relativePrimes( p, n-d*p );
 }
 
-//QString CocConstructor::selectStatement(
+//TQString CocConstructor::selectStatement(
 //  const std::vector<ObjectCalcer*>& sel, const KigDocument&,
 //  const KigWidget& ) const
 //{

@@ -20,8 +20,8 @@
 
 #include "kfile_drgeo.h"
 
-#include <qdom.h>
-#include <qfile.h>
+#include <tqdom.h>
+#include <tqfile.h>
 
 #include <kgenericfactory.h>
 
@@ -29,16 +29,16 @@ typedef KGenericFactory<DrgeoPlugin> drgeoFactory;
 
 K_EXPORT_COMPONENT_FACTORY( kfile_drgeo, drgeoFactory( "kfile_drgeo" ) )
 
-DrgeoPlugin::DrgeoPlugin( QObject *parent, const char *name, const QStringList &args )
+DrgeoPlugin::DrgeoPlugin( TQObject *parent, const char *name, const TQStringList &args )
     : KFilePlugin( parent, name, args )
 {
   info = addMimeTypeInfo( "application/x-drgeo" );
 
   KFileMimeTypeInfo::GroupInfo* group = addGroupInfo( info, "DrgeoInfo", i18n( "Summary" ) );
   KFileMimeTypeInfo::ItemInfo* item;
-  item = addItemInfo( group, "NumOfFigures", i18n( "Figures" ), QVariant::Int );
-  item = addItemInfo( group, "NumOfTexts", i18n( "Texts" ), QVariant::Int );
-  item = addItemInfo( group, "NumOfMacros", i18n( "Macros" ), QVariant::Int );
+  item = addItemInfo( group, "NumOfFigures", i18n( "Figures" ), TQVariant::Int );
+  item = addItemInfo( group, "NumOfTexts", i18n( "Texts" ), TQVariant::Int );
+  item = addItemInfo( group, "NumOfMacros", i18n( "Macros" ), TQVariant::Int );
   
   group_contents = addGroupInfo( info, "DrgeoContents", i18n( "Translators: what this drgeo "
                                                               "file contains", "Contents" ) );
@@ -50,39 +50,39 @@ bool DrgeoPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
 
   KFileMimeTypeInfo::ItemInfo* item;
 
-  QFile f( metainfo.path() );
-  QDomDocument doc( "drgenius" );
+  TQFile f( metainfo.path() );
+  TQDomDocument doc( "drgenius" );
   if ( !doc.setContent( &f ) )
     return false;
-  QDomElement main = doc.documentElement();
+  TQDomElement main = doc.documentElement();
   int numfig = 0;
   int numtext = 0;
   int nummacro = 0;
-  QString sectname;
+  TQString sectname;
   // reading figures...
-  for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
+  for ( TQDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
-    QDomElement e = n.toElement();
+    TQDomElement e = n.toElement();
     if ( e.isNull() ) continue;
     else if ( e.tagName() == "drgeo" )
     {
       numfig++;
-      sectname = QString( "Figure" ) + QString::number( numfig );
-      item = addItemInfo( group_contents, sectname, i18n( "Figure" ), QVariant::String );
+      sectname = TQString( "Figure" ) + TQString::number( numfig );
+      item = addItemInfo( group_contents, sectname, i18n( "Figure" ), TQVariant::String );
       appendItem( metagroup, sectname, e.attribute( "name" ) );
     }
     else if ( e.tagName() == "text" )
     {
       numtext++;
-      sectname = QString( "Text" ) + QString::number( numtext );
-      item = addItemInfo( group_contents, sectname, i18n( "Text" ), QVariant::String );
+      sectname = TQString( "Text" ) + TQString::number( numtext );
+      item = addItemInfo( group_contents, sectname, i18n( "Text" ), TQVariant::String );
       appendItem( metagroup, sectname, e.attribute( "name" ) );
     }
     else if ( e.tagName() == "macro" )
     {
       nummacro++;
-      sectname = QString( "Macro" ) + QString::number( nummacro );
-      item = addItemInfo( group_contents, sectname, i18n( "Macro" ), QVariant::String );
+      sectname = TQString( "Macro" ) + TQString::number( nummacro );
+      item = addItemInfo( group_contents, sectname, i18n( "Macro" ), TQVariant::String );
       appendItem( metagroup, sectname, e.attribute( "name" ) );
     }
   }

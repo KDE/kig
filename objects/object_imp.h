@@ -158,7 +158,7 @@ public:
   /**
    * The name of this type, translated to the currently used language.
    */
-  QString translatedName() const;
+  TQString translatedName() const;
   /**
    * Returns a translatable string of the form "Select this %1".
    * E.g. "Select this segment".  Note that users of this function
@@ -178,35 +178,35 @@ public:
    * Returns a translated string of the form "Remove a xxx".
    * E.g. "Remove a Segment".
    */
-  QString removeAStatement() const;
+  TQString removeAStatement() const;
   /**
    * Returns a translated string of the form "Add a xxx".
    * E.g. "Add a Segment".
    */
-  QString addAStatement() const;
+  TQString addAStatement() const;
   /**
    * Returns a translated string of the form "Move a xxx".
    * E.g. "Move a Segment".
    */
-  QString moveAStatement() const;
+  TQString moveAStatement() const;
   /**
    * Returns a translated string of the form "Attach to this xxx".
    * E.g. "Attach to this segment".
    * \internal This is used by the text label construction mode
    */
-  QString attachToThisStatement() const;
+  TQString attachToThisStatement() const;
 
   /**
    * Returns a translated string of the form "Show a xxx".
    * E.g. "Show a Segment".
    */
-  QString showAStatement() const;
+  TQString showAStatement() const;
 
   /**
    * Returns a translated string of the form "Hide a xxx".
    * E.g. "Hide a Segment".
    */
-  QString hideAStatement() const;
+  TQString hideAStatement() const;
 };
 
 /**
@@ -328,7 +328,7 @@ public:
 
   // s is a string with at least one escape ( "%N" where N is a
   // number ) somewhere.  This function replaces the first escape it
-  // sees with the "value" of this imp ( using the QString::arg
+  // sees with the "value" of this imp ( using the TQString::arg
   // functions ).  This is e.g. used by TextType to turn its variable
   // args into strings..
   // if you implement this, then you should return true in
@@ -336,7 +336,7 @@ public:
   // override fillInNextEscape() ( standard implementation does an
   // assert( false ) )..
   virtual bool canFillInNextEscape() const;
-  virtual void fillInNextEscape( QString& s, const KigDocument& ) const;
+  virtual void fillInNextEscape( TQString& s, const KigDocument& ) const;
 
   /**
    * Returns true if this ObjectImp is equal to rhs.

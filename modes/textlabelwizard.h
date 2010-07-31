@@ -26,7 +26,7 @@ class TextLabelWizard : public TextLabelWizardBase
 {
   Q_OBJECT
 public:
-  TextLabelWizard( QWidget* parent, TextLabelModeBase* mode );
+  TextLabelWizard( TQWidget* parent, TextLabelModeBase* mode );
   ~TextLabelWizard();
 
   void back();

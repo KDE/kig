@@ -36,7 +36,7 @@
 
 using std::find;
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 
 static const char constructarcstartingstat[] = I18N_NOOP( "Construct an arc starting at this point" );
 

@@ -21,7 +21,7 @@
 #ifndef KIG_PART_MODE_H
 #define KIG_PART_MODE_H
 
-#include <qnamespace.h>
+#include <tqnamespace.h>
 
 class KigDocument;
 class KigPart;
@@ -41,23 +41,23 @@ public:
 
   virtual StdConstructionMode* toStdConstructionMode();
 
-  virtual void leftClicked( QMouseEvent*, KigWidget* );
+  virtual void leftClicked( TQMouseEvent*, KigWidget* );
   /**
    * this means: mouse moved with left mouse button down (in case that
    * wasn't clear...)
    */
-  virtual void leftMouseMoved( QMouseEvent*, KigWidget* );
-  virtual void leftReleased( QMouseEvent*, KigWidget* );
-  virtual void midClicked( QMouseEvent*, KigWidget* );
-  virtual void midMouseMoved( QMouseEvent*, KigWidget* );
-  virtual void midReleased( QMouseEvent*, KigWidget* );
-  virtual void rightClicked( QMouseEvent*, KigWidget* );
-  virtual void rightMouseMoved( QMouseEvent*, KigWidget* );
-  virtual void rightReleased( QMouseEvent*, KigWidget* );
+  virtual void leftMouseMoved( TQMouseEvent*, KigWidget* );
+  virtual void leftReleased( TQMouseEvent*, KigWidget* );
+  virtual void midClicked( TQMouseEvent*, KigWidget* );
+  virtual void midMouseMoved( TQMouseEvent*, KigWidget* );
+  virtual void midReleased( TQMouseEvent*, KigWidget* );
+  virtual void rightClicked( TQMouseEvent*, KigWidget* );
+  virtual void rightMouseMoved( TQMouseEvent*, KigWidget* );
+  virtual void rightReleased( TQMouseEvent*, KigWidget* );
   /**
    * mouse moved without any buttons down...
    */
-  virtual void mouseMoved( QMouseEvent*, KigWidget* );
+  virtual void mouseMoved( TQMouseEvent*, KigWidget* );
 
   /**
    * actions: we enable the actions we want when our mode is made

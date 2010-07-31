@@ -25,7 +25,7 @@
 #include "coordinate.h"
 #include "rect.h"
 
-#include <qrect.h>
+#include <tqrect.h>
 #include <kdeversion.h>
 
 #include <vector>
@@ -51,8 +51,8 @@ extern const double double_inf;
  * various places...
  */
 
-double getDoubleFromUser( const QString& caption, const QString& label, double value,
-                          QWidget* parent, bool* ok, double min, double max, int decimals );
+double getDoubleFromUser( const TQString& caption, const TQString& label, double value,
+                          TQWidget* parent, bool* ok, double min, double max, int decimals );
 
 /**
  * Simple class representing a line.  Used by various functions in Kig.

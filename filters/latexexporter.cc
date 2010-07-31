@@ -44,10 +44,10 @@
 #include <math.h>
 #include <algorithm>
 
-#include <qcheckbox.h>
-#include <qcolor.h>
-#include <qfile.h>
-#include <qtextstream.h>
+#include <tqcheckbox.h>
+#include <tqcolor.h>
+#include <tqfile.h>
+#include <tqtextstream.h>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -59,25 +59,25 @@
 #endif
 
 struct ColorMap {
-  QColor color;
-  QString name;
+  TQColor color;
+  TQString name;
 };
 
 LatexExporter::~LatexExporter()
 {
 }
 
-QString LatexExporter::exportToStatement() const
+TQString LatexExporter::exportToStatement() const
 {
   return i18n( "Export to &Latex..." );
 }
 
-QString LatexExporter::menuEntryName() const
+TQString LatexExporter::menuEntryName() const
 {
   return i18n( "&Latex..." );
 }
 
-QString LatexExporter::menuIcon() const
+TQString LatexExporter::menuIcon() const
 {
   // TODO
   return "tex";
@@ -86,17 +86,17 @@ QString LatexExporter::menuIcon() const
 class LatexExportImpVisitor
   : public ObjectImpVisitor
 {
-  QTextStream& mstream;
+  TQTextStream& mstream;
   ObjectHolder* mcurobj;
   const KigWidget& mw;
   Rect msr;
   std::vector<ColorMap> mcolors;
-  QString mcurcolorid;
+  TQString mcurcolorid;
 public:
   void visit( ObjectHolder* obj );
-  void mapColor( QColor color );
+  void mapColor( TQColor color );
 
-  LatexExportImpVisitor( QTextStream& s, const KigWidget& w )
+  LatexExportImpVisitor( TQTextStream& s, const KigWidget& w )
     : mstream( s ), mw( w ), msr( mw.showingRect() )
     {
     }
@@ -135,7 +135,7 @@ private:
    * Searches if a color is already mapped into mcolors, and returns its
    * index or -1 if not found.
    */
-  int findColor( QColor c );
+  int findColor( TQColor c );
   /**
    * Use to convert a dimension "on the screen" to a dimension wrt.
    * Kig coordinate system.
@@ -144,7 +144,7 @@ private:
   /**
    * Converts a pen style into latex style string.
    */
-  QString writeStyle( Qt::PenStyle style );
+  TQString writeStyle( Qt::PenStyle style );
   /**
    * Plots a generic curve though its points calc'ed with getPoint.
    */
@@ -177,7 +177,7 @@ void LatexExportImpVisitor::newLine()
   mstream << "\n";
 }
 
-int LatexExportImpVisitor::findColor( QColor c )
+int LatexExportImpVisitor::findColor( TQColor c )
 {
   for ( uint i = 0; i < mcolors.size(); ++i )
   {
@@ -187,13 +187,13 @@ int LatexExportImpVisitor::findColor( QColor c )
   return -1;
 }
 
-void LatexExportImpVisitor::mapColor( QColor color )
+void LatexExportImpVisitor::mapColor( TQColor color )
 {
   if ( findColor( color ) == -1 )
   {
     ColorMap newcolor;
     newcolor.color = color;
-    QString tmpname = color.name();
+    TQString tmpname = color.name();
     tmpname.replace( "#", "" );
     newcolor.name = tmpname;
     mcolors.push_back( newcolor );
@@ -205,14 +205,14 @@ void LatexExportImpVisitor::mapColor( QColor color )
 
 double LatexExportImpVisitor::dimRealToCoord( int dim )
 {
-  QRect qr( 0, 0, dim, dim );
+  TQRect qr( 0, 0, dim, dim );
   Rect r = mw.screenInfo().fromScreen( qr );
   return fabs( r.width() );
 }
 
-QString LatexExportImpVisitor::writeStyle( Qt::PenStyle style )
+TQString LatexExportImpVisitor::writeStyle( Qt::PenStyle style )
 {
-  QString ret( "linestyle=" );
+  TQString ret( "linestyle=" );
   if ( style == Qt::DashLine )
     ret += "dashed";
   else if ( style == Qt::DotLine )
@@ -227,7 +227,7 @@ void LatexExportImpVisitor::plotGenericCurve( const CurveImp* imp )
   int width = mcurobj->drawer()->width();
   if ( width == -1 ) width = 1;
 
-  QString prefix = QString( "\\pscurve[linecolor=%1,linewidth=%2,%3]" )
+  TQString prefix = TQString( "\\pscurve[linecolor=%1,linewidth=%2,%3]" )
       .arg( mcurcolorid )
       .arg( width / 100.0 )
       .arg( writeStyle( mcurobj->drawer()->style() ) );
@@ -319,7 +319,7 @@ void LatexExportImpVisitor::visit( const PointImp* imp )
   mstream << "\\psdots[linecolor=" << mcurcolorid
           << ",dotscale=" << width << ",dotstyle=";
   const int ps = mcurobj->drawer()->pointStyle();
-  QString pss( "*,fillstyle=solid,fillcolor=" + mcurcolorid );
+  TQString pss( "*,fillstyle=solid,fillcolor=" + mcurcolorid );
   if ( ps == 1 )
     pss = "o,fillstyle=none";
   else if ( ps == 2 )
@@ -483,7 +483,7 @@ void LatexExportImpVisitor::visit( const PolygonImp* imp )
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QString::null, i18n( "*.tex|Latex Documents (*.tex)" ),
+      TQString::null, i18n( "*.tex|Latex Documents (*.tex)" ),
       i18n( "Export as Latex" ), &w );
   kfd->setOptionCaption( i18n( "Latex Options" ) );
   LatexExporterOptions* opts = new LatexExporterOptions( 0L );
@@ -494,7 +494,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
   if ( !kfd->exec() )
     return;
 
-  QString file_name = kfd->selectedFile();
+  TQString file_name = kfd->selectedFile();
   bool showgrid = opts->showGridCheckBox->isOn();
   bool showaxes = opts->showAxesCheckBox->isOn();
   bool showframe = opts->showExtraFrameCheckBox->isOn();
@@ -502,7 +502,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
   delete opts;
   delete kfd;
 
-  QFile file( file_name );
+  TQFile file( file_name );
   if ( ! file.open( IO_WriteOnly ) )
   {
     KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
@@ -511,7 +511,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     return;
   };
 
-  QTextStream stream( &file );
+  TQTextStream stream( &file );
   stream << "\\documentclass[a4paper]{minimal}\n";
 //  stream << "\\usepackage[latin1]{inputenc}\n";
   stream << "\\usepackage{pstricks}\n";
@@ -549,10 +549,10 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     if ( ! ( *i )->shown() ) continue;
     visitor.mapColor( ( *i )->drawer()->color() );
   };
-  visitor.mapColor( QColor( 255, 255, 222 ) ); // ffffde - text label background
-  visitor.mapColor( QColor( 197, 194, 197 ) ); // c5c2c5 - text label border line
-  visitor.mapColor( QColor( 160, 160, 164 ) ); // a0a0a4 - axes color
-  visitor.mapColor( QColor( 192, 192, 192 ) ); // c0c0c0 - grid color
+  visitor.mapColor( TQColor( 255, 255, 222 ) ); // ffffde - text label background
+  visitor.mapColor( TQColor( 197, 194, 197 ) ); // c5c2c5 - text label border line
+  visitor.mapColor( TQColor( 160, 160, 164 ) ); // a0a0a4 - axes color
+  visitor.mapColor( TQColor( 192, 192, 192 ) ); // c0c0c0 - grid color
 
   // extra frame
   if ( showframe )

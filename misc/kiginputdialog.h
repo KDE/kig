@@ -45,11 +45,11 @@ Q_OBJECT
 public:
 
 private:
-  KigInputDialog( const QString& caption, const QString& label, QWidget* parent,
+  KigInputDialog( const TQString& caption, const TQString& label, TQWidget* parent,
         const KigDocument& doc, Coordinate* c1, Coordinate* c2 );
-  KigInputDialog( QWidget* parent, const Goniometry& g );
+  KigInputDialog( TQWidget* parent, const Goniometry& g );
 
-  virtual void keyPressEvent( QKeyEvent* e );
+  virtual void keyPressEvent( TQKeyEvent* e );
 
   KigInputDialogPrivate* const d;
   friend class KInputDialogPrivate;
@@ -59,9 +59,9 @@ private:
   Goniometry goniometry() const;
 
 private slots:
-  void slotCoordsChanged( const QString& );
+  void slotCoordsChanged( const TQString& );
   void slotGonioSystemChanged( int index );
-  void slotGonioTextChanged( const QString& txt );
+  void slotGonioTextChanged( const TQString& txt );
 
 public:
   /**
@@ -78,8 +78,8 @@ public:
    *               here. If this points to a valid Coordinate, then it will be
    *               displayed as initial value of the correspondenting text edit
    */
-  static void getCoordinate( const QString& caption, const QString& label,
-        QWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue );
+  static void getCoordinate( const TQString& caption, const TQString& label,
+        TQWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue );
 
   /**
    * Static convenience function to get two Coordinates at once from the user.
@@ -101,8 +101,8 @@ public:
    *                Coordinate, then it will be displayed as initial value of
    *                the text edit representing the second Coordinate.
    */
-  static void getTwoCoordinates( const QString& caption, const QString& label,
-        QWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue,
+  static void getTwoCoordinates( const TQString& caption, const TQString& label,
+        TQWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue,
         Coordinate* cvalue2 );
 
   /**
@@ -117,7 +117,7 @@ public:
    *
    * \return a Goniometry class containing the new angle
    */
-  static Goniometry getAngle( QWidget* parent, bool* ok, const Goniometry& g );
+  static Goniometry getAngle( TQWidget* parent, bool* ok, const Goniometry& g );
 };
 
 #endif

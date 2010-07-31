@@ -28,15 +28,15 @@ class KigFilterKSeg
   KigFilterKSeg();
   ~KigFilterKSeg();
 
-  ObjectCalcer* transformObject( const QString& file, KigDocument& kigdoc,
+  ObjectCalcer* transformObject( const TQString& file, KigDocument& kigdoc,
                                  std::vector<ObjectCalcer*>& parents,
                                  int subtype, bool& ok );
 
 public:
   static KigFilterKSeg* instance();
 
-  bool supportMime ( const QString& mime );
-  KigDocument* load ( const QString& fromfile );
+  bool supportMime ( const TQString& mime );
+  KigDocument* load ( const TQString& fromfile );
 };
 
 #endif

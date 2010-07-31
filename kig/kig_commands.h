@@ -41,13 +41,13 @@ class Rect;
  * Used mainly in the Undo/Redo stuff...
  */
 class KigCommand
-  : public QObject, public KNamedCommand
+  : public TQObject, public KNamedCommand
 {
   Q_OBJECT
   class Private;
   Private* d;
 public:
-  KigCommand( KigPart& inDoc, const QString& name );
+  KigCommand( KigPart& inDoc, const TQString& name );
   ~KigCommand();
 
   /**

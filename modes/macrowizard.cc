@@ -24,13 +24,13 @@
 #include <klineedit.h>
 #include <kapplication.h>
 
-MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
+MacroWizard::MacroWizard( TQWidget* parent, DefineMacroMode* m )
   : MacroWizardBase( parent, "Define Macro Wizard", false ), mmode( m )
 {
-  connect( KLineEdit2, SIGNAL( textChanged( const QString& ) ),
-           this, SLOT( nameTextChanged( const QString& ) ) );
-  connect( this, SIGNAL( helpClicked() ), this,
-           SLOT( slotHelpClicked() ) );
+  connect( KLineEdit2, TQT_SIGNAL( textChanged( const TQString& ) ),
+           this, TQT_SLOT( nameTextChanged( const TQString& ) ) );
+  connect( this, TQT_SIGNAL( helpClicked() ), this,
+           TQT_SLOT( slotHelpClicked() ) );
 }
 
 MacroWizard::~MacroWizard()
@@ -73,7 +73,7 @@ void MacroWizard::reject()
   mmode->cancelPressed();
 }
 
-void MacroWizard::nameTextChanged( const QString& )
+void MacroWizard::nameTextChanged( const TQString& )
 {
   mmode->macroNameChanged();
 }
@@ -85,6 +85,6 @@ void MacroWizard::accept()
 
 void MacroWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( QString::fromLatin1( "defining-macros"),
-                    QString::fromLatin1( "kig" ) );
+  kapp->invokeHelp( TQString::fromLatin1( "defining-macros"),
+                    TQString::fromLatin1( "kig" ) );
 }

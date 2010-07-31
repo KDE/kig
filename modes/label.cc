@@ -38,12 +38,12 @@
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <klocale.h>
-#include <qtextedit.h>
+#include <tqtextedit.h>
 #include <kdebug.h>
 #include <kiconloader.h>
-#include <qregexp.h>
-#include <qpopupmenu.h>
-#include <qcheckbox.h>
+#include <tqregexp.h>
+#include <tqpopupmenu.h>
+#include <tqcheckbox.h>
 
 #include <algorithm>
 #include <functional>
@@ -52,14 +52,14 @@ class TextLabelModeBase::Private
 {
 public:
   // point last clicked..
-  QPoint plc;
+  TQPoint plc;
   // the currently selected coordinate
   Coordinate mcoord;
   // the possible parent object that defines the location of the label..
   ObjectCalcer* locationparent;
 
   // the text is only kept in the text input widget, not here
-  // QString mtext;
+  // TQString mtext;
 
   // the property objects we'll be using as args, we keep a reference
   // to them in the args object, and keep a pointer to them ( or 0 )
@@ -96,7 +96,7 @@ TextLabelModeBase::TextLabelModeBase( KigPart& doc )
   d->wiz = new TextLabelWizard( doc.widget(), this );
 }
 
-void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
+void TextLabelModeBase::leftClicked( TQMouseEvent* e, KigWidget* )
 {
   d->plc = e->pos();
   switch( d->mwawd )
@@ -111,7 +111,7 @@ void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
   };
 }
 
-void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
+void TextLabelModeBase::leftReleased( TQMouseEvent* e, KigWidget* v )
 {
   switch( d->mwawd )
   {
@@ -132,19 +132,19 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
     std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( v->fromScreen( d->plc ), *v );
     if ( os.empty() ) break;
     ObjectHolder* o = os[0];
-    QPopupMenu* p = new QPopupMenu( v, "text_label_select_arg_popup" );
+    TQPopupMenu* p = new TQPopupMenu( v, "text_label_select_arg_popup" );
     p->insertItem( i18n( "Name" ), 0 );
     QCStringList l = o->imp()->properties();
     assert( l.size() == o->imp()->numberOfProperties() );
     for ( int i = 0; static_cast<uint>( i ) < l.size(); ++i )
     {
-      QString s = i18n( l[i] );
+      TQString s = i18n( l[i] );
       const char* iconfile = o->imp()->iconForProperty( i );
       int t;
       if ( iconfile && *iconfile )
       {
-        QPixmap pix = mdoc.instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
-        t = p->insertItem( QIconSet( pix ), s, i + 1 );
+        TQPixmap pix = mdoc.instance()->iconLoader()->loadIcon( iconfile, KIcon::User );
+        t = p->insertItem( TQIconSet( pix ), s, i + 1 );
       }
       else
       {
@@ -200,7 +200,7 @@ void TextLabelModeBase::enableActions()
   mdoc.aCancelConstruction->setEnabled( true );
 }
 
-void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
+void TextLabelModeBase::mouseMoved( TQMouseEvent* e, KigWidget* w )
 {
   if ( d->mwawd == ReallySelectingArgs )
   {
@@ -228,13 +228,13 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
     if ( attachable )
     {
       w->setCursor( KCursor::handCursor() );
-      QString s = d->locationparent->imp()->type()->attachToThisStatement();
+      TQString s = d->locationparent->imp()->type()->attachToThisStatement();
       mdoc.emitStatusBarText( s );
 
       KigPainter p( w->screenInfo(), &w->curPix, mdoc.document() );
 
       // set the text next to the arrow cursor
-      QPoint point = e->pos();
+      TQPoint point = e->pos();
       point.setX(point.x()+15);
 
       p.drawTextStd( point, s );
@@ -263,10 +263,10 @@ void TextLabelModeBase::cancelPressed()
   cancelConstruction();
 }
 
-static uint percentCount( const QString& s )
+static uint percentCount( const TQString& s )
 {
-//  QRegExp re( QString::fromUtf8( "%[0-9]" ) );
-  QRegExp re( QString::fromUtf8( "%[\\d]+" ) );
+//  TQRegExp re( TQString::fromUtf8( "%[0-9]" ) );
+  TQRegExp re( TQString::fromUtf8( "%[\\d]+" ) );
   int offset = 0;
   uint percentcount = 0;
   while ( ( offset = re.search( s, offset ) ) != -1 )
@@ -280,7 +280,7 @@ static uint percentCount( const QString& s )
 void TextLabelModeBase::finishPressed()
 {
   bool needframe = d->wiz->needFrameCheckBox->isChecked();
-  QString s = d->wiz->labelTextInput->text();
+  TQString s = d->wiz->labelTextInput->text();
 
   assert( percentCount( s ) == d->args.size() );
   if ( d->wiz->currentPage() == d->wiz->enter_text_page )
@@ -303,7 +303,7 @@ void TextLabelModeBase::finishPressed()
 
 void TextLabelModeBase::updateWiz()
 {
-  QString s = d->wiz->labelTextInput->text();
+  TQString s = d->wiz->labelTextInput->text();
   uint percentcount = percentCount( s );
   if ( d->lpc > percentcount )
   {
@@ -344,9 +344,9 @@ void TextLabelModeBase::labelTextChanged()
 void TextLabelModeBase::updateLinksLabel()
 {
   LinksLabel::LinksLabelEditBuf buf = d->wiz->myCustomWidget1->startEdit();
-  QString s = d->wiz->labelTextInput->text();
-//  QRegExp re( "%[0-9]" );
-  QRegExp re( "%[\\d]+" );
+  TQString s = d->wiz->labelTextInput->text();
+//  TQRegExp re( "%[0-9]" );
+  TQRegExp re( "%[\\d]+" );
   int prevpos = 0;
   int pos = 0;
   uint count = 0;
@@ -361,12 +361,12 @@ void TextLabelModeBase::updateLinksLabel()
       // "link"...
       assert( prevpos < pos );
       // fetch the text part...
-      QString subs = s.mid( prevpos, pos - prevpos );
+      TQString subs = s.mid( prevpos, pos - prevpos );
       // and add it...
       d->wiz->myCustomWidget1->addText( subs, buf );
     };
     // we always need a link part...
-    QString linktext( "%1" );
+    TQString linktext( "%1" );
     assert( count < d->args.size() );
     if ( d->args[count] )
     {
@@ -428,7 +428,7 @@ void TextLabelModeBase::setCoordinate( const Coordinate& coord )
   };
 }
 
-void TextLabelModeBase::setText( const QString& s )
+void TextLabelModeBase::setText( const TQString& s )
 {
   d->wiz->labelTextInput->setText( s );
 }
@@ -450,7 +450,7 @@ TextLabelConstructionMode::~TextLabelConstructionMode()
 }
 
 void TextLabelConstructionMode::finish(
-  const Coordinate& coord, const QString& s,
+  const Coordinate& coord, const TQString& s,
   const argvect& props, bool needframe,
   ObjectCalcer* locationparent )
 {
@@ -483,7 +483,7 @@ TextLabelRedefineMode::TextLabelRedefineMode( KigPart& d, ObjectTypeCalcer* labe
 
   bool frame = static_cast<const IntImp*>( firstthree[0]->imp() )->data() != 0;
   Coordinate coord = static_cast<const PointImp*>( firstthree[1]->imp() )->coordinate();
-  QString text = static_cast<const StringImp*>( firstthree[2]->imp() )->data();
+  TQString text = static_cast<const StringImp*>( firstthree[2]->imp() )->data();
 
   // don't set it, let the user redefine it..
 //  setCoordinate( coord );
@@ -505,7 +505,7 @@ TextLabelRedefineMode::~TextLabelRedefineMode()
 }
 
 void TextLabelRedefineMode::finish(
-  const Coordinate& coord, const QString& s,
+  const Coordinate& coord, const TQString& s,
   const argvect& props, bool needframe,
   ObjectCalcer* locationparent )
 {

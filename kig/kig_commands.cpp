@@ -45,7 +45,7 @@ public:
   vector<KigCommandTask*> tasks;
 };
 
-KigCommand::KigCommand( KigPart& doc, const QString& name )
+KigCommand::KigCommand( KigPart& doc, const TQString& name )
   : KNamedCommand(name), d( new Private( doc ) )
 {
 }
@@ -93,7 +93,7 @@ KigCommand* KigCommand::addCommand( KigPart& doc, ObjectHolder* o )
 KigCommand* KigCommand::removeCommand( KigPart& doc, const std::vector<ObjectHolder*>& os )
 {
   assert( os.size() > 0 );
-  QString text;
+  TQString text;
   if ( os.size() == 1 )
     text = os.back()->imp()->type()->removeAStatement();
   else
@@ -105,7 +105,7 @@ KigCommand* KigCommand::removeCommand( KigPart& doc, const std::vector<ObjectHol
 
 KigCommand* KigCommand::addCommand( KigPart& doc, const std::vector<ObjectHolder*>& os )
 {
-  QString text;
+  TQString text;
   if ( os.size() == 1 )
     text = os.back()->imp()->type()->addAStatement();
   else
@@ -117,7 +117,7 @@ KigCommand* KigCommand::addCommand( KigPart& doc, const std::vector<ObjectHolder
 
 KigCommand* KigCommand::changeCoordSystemCommand( KigPart& doc, CoordinateSystem* s )
 {
-  QString text = CoordinateSystemFactory::setCoordinateSystemStatement( s->id() );
+  TQString text = CoordinateSystemFactory::setCoordinateSystemStatement( s->id() );
   KigCommand* ret = new KigCommand( doc, text );
   ret->addTask( new ChangeCoordSystemTask( s ) );
   return ret;

@@ -32,14 +32,14 @@
 #include "cubic-common.h"
 #include "coordinate_system.h"
 
-#include <qpen.h>
+#include <tqpen.h>
 
 #include <cmath>
 #include <stack>
 #include <functional>
 #include <algorithm>
 
-KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device,
+KigPainter::KigPainter( const ScreenInfo& si, TQPaintDevice* device,
                         const KigDocument& doc, bool no )
   : mP ( device ),
     color( Qt::blue ),
@@ -63,13 +63,13 @@ KigPainter::~KigPainter()
 void KigPainter::drawRect( const Rect& r )
 {
   Rect rt = r.normalized();
-  QRect qr = toScreen(rt);
+  TQRect qr = toScreen(rt);
   qr.normalize();
   mP.drawRect(qr);
   if( mNeedOverlay ) mOverlay.push_back( qr );
 }
 
-void KigPainter::drawRect( const QRect& r )
+void KigPainter::drawRect( const TQRect& r )
 {
   mP.drawRect(r);
   if( mNeedOverlay ) mOverlay.push_back( r );
@@ -80,14 +80,14 @@ void KigPainter::drawCircle( const Coordinate& center, const double radius )
   Coordinate bottomLeft = center - Coordinate(radius, radius);
   Coordinate topRight = center + Coordinate(radius, radius);
   Rect r( bottomLeft, topRight );
-  QRect qr = toScreen( r );
+  TQRect qr = toScreen( r );
   mP.drawEllipse ( qr );
   if( mNeedOverlay ) circleOverlay( center, radius );
 }
 
 void KigPainter::drawSegment( const Coordinate& from, const Coordinate& to )
 {
-  QPoint tF = toScreen(from), tT = toScreen(to);
+  TQPoint tF = toScreen(from), tT = toScreen(to);
   mP.drawLine( tF, tT );
   if( mNeedOverlay ) segmentOverlay( from, to );
 }
@@ -95,7 +95,7 @@ void KigPainter::drawSegment( const Coordinate& from, const Coordinate& to )
 void KigPainter::drawFatPoint( const Coordinate& p )
 {
   int twidth = width == -1 ? 5 : width;
-  mP.setPen( QPen( color, 1, style ) );
+  mP.setPen( TQPen( color, 1, style ) );
   switch ( pointstyle )
   {
     case 0:
@@ -107,7 +107,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       Coordinate tl = p - rad;
       Coordinate br = p + rad;
       Rect r( tl, br );
-      QRect qr = toScreen( r );
+      TQRect qr = toScreen( r );
       mP.drawEllipse( qr );
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
@@ -121,7 +121,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       Coordinate tl = p - rad;
       Coordinate br = p + rad;
       Rect r( tl, br );
-      QRect qr = toScreen( r );
+      TQRect qr = toScreen( r );
       mP.drawEllipse( qr );
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
@@ -134,9 +134,9 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       Coordinate tl = p - rad;
       Coordinate br = p + rad;
       Rect r( tl, br );
-      QRect qr = toScreen( r );
+      TQRect qr = toScreen( r );
       mP.drawRect( qr );
-      mP.fillRect( qr, QBrush( color, Qt::SolidPattern ) );
+      mP.fillRect( qr, TQBrush( color, Qt::SolidPattern ) );
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
     }
@@ -148,7 +148,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       Coordinate tl = p - rad;
       Coordinate br = p + rad;
       Rect r( tl, br );
-      QRect qr = toScreen( r );
+      TQRect qr = toScreen( r );
       mP.drawRect( qr );
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
@@ -161,15 +161,15 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       Coordinate tl = p - rad;
       Coordinate br = p + rad;
       Rect r( tl, br );
-      QRect qr = toScreen( r );
-      mP.setPen( QPen( color, 2 ) );
+      TQRect qr = toScreen( r );
+      mP.setPen( TQPen( color, 2 ) );
       mP.drawLine( qr.topLeft(), qr.bottomRight() );
       mP.drawLine( qr.topRight(), qr.bottomLeft() );
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
     }
   }
-  mP.setPen( QPen( color, twidth, style ) );
+  mP.setPen( TQPen( color, twidth, style ) );
 }
 
 void KigPainter::drawPoint( const Coordinate& p )
@@ -183,9 +183,9 @@ void KigPainter::drawLine( const Coordinate& p1, const Coordinate& p2 )
   drawLine( LineData( p1, p2 ) );
 }
 
-void KigPainter::drawText( const Rect p, const QString s, int textFlags, int len )
+void KigPainter::drawText( const Rect p, const TQString s, int textFlags, int len )
 {
-  QRect t = toScreen(p);
+  TQRect t = toScreen(p);
   int tf = textFlags;
   t.moveBy( 2, 2 );
   t.setWidth( t.width() - 4 );
@@ -194,41 +194,41 @@ void KigPainter::drawText( const Rect p, const QString s, int textFlags, int len
   if( mNeedOverlay ) textOverlay( t, s, tf, len );
 }
 
-void KigPainter::textOverlay( const QRect& r, const QString s, int textFlags, int len )
+void KigPainter::textOverlay( const TQRect& r, const TQString s, int textFlags, int len )
 {
   //  kdDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) ) << endl;
-  QRect newr( mP.boundingRect( r, textFlags, s, len ) );
+  TQRect newr( mP.boundingRect( r, textFlags, s, len ) );
   newr.setWidth( newr.width() + 4 );
   newr.setHeight( newr.height() + 4 );
   mOverlay.push_back( newr );
 }
 
-const Rect KigPainter::boundingRect( const Rect& r, const QString s,
+const Rect KigPainter::boundingRect( const Rect& r, const TQString s,
                                      int f, int l ) const
 {
-  QRect qr = mP.boundingRect( toScreen( r ), f, s, l );
+  TQRect qr = mP.boundingRect( toScreen( r ), f, s, l );
   qr.setWidth( qr.width() + 4 );
   qr.setHeight( qr.height() + 4 );
   return fromScreen( qr );
 }
 
-void KigPainter::setColor( const QColor& c )
+void KigPainter::setColor( const TQColor& c )
 {
   color = c;
-  mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
+  mP.setPen( TQPen( color, width == -1 ? 1 : width, style ) );
 }
 
 void KigPainter::setStyle( const PenStyle c )
 {
   style = c;
-  mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
+  mP.setPen( TQPen( color, width == -1 ? 1 : width, style ) );
 }
 
 void KigPainter::setWidth( const int c )
 {
   width = c;
   if (c > 0) overlayenlarge = c - 1;
-  mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
+  mP.setPen( TQPen( color, width == -1 ? 1 : width, style ) );
 }
 
 void KigPainter::setPointStyle( const int p )
@@ -236,7 +236,7 @@ void KigPainter::setPointStyle( const int p )
   pointstyle = p;
 }
 
-void KigPainter::setPen( const QPen& p )
+void KigPainter::setPen( const TQPen& p )
 {
   color = p.color();
   width = p.width();
@@ -244,7 +244,7 @@ void KigPainter::setPen( const QPen& p )
   mP.setPen(p);
 }
 
-void KigPainter::setBrush( const QBrush& b )
+void KigPainter::setBrush( const TQBrush& b )
 {
   brushStyle = b.style();
   brushColor = b.color();
@@ -254,13 +254,13 @@ void KigPainter::setBrush( const QBrush& b )
 void KigPainter::setBrushStyle( const BrushStyle c )
 {
   brushStyle = c;
-  mP.setBrush( QBrush( brushColor, brushStyle ) );
+  mP.setBrush( TQBrush( brushColor, brushStyle ) );
 }
 
-void KigPainter::setBrushColor( const QColor& c )
+void KigPainter::setBrushColor( const TQColor& c )
 {
   brushColor = c;
-  mP.setBrush( QBrush( brushColor, brushStyle ) );
+  mP.setBrush( TQBrush( brushColor, brushStyle ) );
 }
 
 bool KigPainter::getNightVision( ) const
@@ -268,13 +268,13 @@ bool KigPainter::getNightVision( ) const
   return mdoc.getNightVision();
 }
 
-QColor KigPainter::getColor() const
+TQColor KigPainter::getColor() const
 {
   return color;
 }
 
 /*
-static void setContains( QRect& r, const QPoint& p )
+static void setContains( TQRect& r, const TQPoint& p )
 {
   if ( r.left() > p.x() ) r.setLeft( p.x() );
   if ( r.right() < p.x() ) r.setRight( p.x() );
@@ -285,18 +285,18 @@ static void setContains( QRect& r, const QPoint& p )
 }
 */
 
-void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
+void KigPainter::drawPolygon( const std::vector<TQPoint>& pts,
                               bool winding, int index, int npoints )
 {
-  QPen oldpen = mP.pen();
-  QBrush oldbrush = mP.brush();
-  setBrush( QBrush( color, Dense4Pattern ) );
+  TQPen oldpen = mP.pen();
+  TQBrush oldbrush = mP.brush();
+  setBrush( TQBrush( color, Dense4Pattern ) );
   setPen( Qt::NoPen );
   // i know this isn't really fast, but i blame it all on Qt with its
   // stupid container classes... what's wrong with the STL ?
-  QPointArray t( pts.size() );
+  TQPointArray t( pts.size() );
   int c = 0;
-  for( std::vector<QPoint>::const_iterator i = pts.begin(); i != pts.end(); ++i )
+  for( std::vector<TQPoint>::const_iterator i = pts.begin(); i != pts.end(); ++i )
   {
     t.putPoints( c++, 1, i->x(), i->y() );
   };
@@ -308,18 +308,18 @@ void KigPainter::drawPolygon( const std::vector<QPoint>& pts,
 
 void KigPainter::drawArea( const std::vector<Coordinate>& pts, bool border )
 {
-  QPen oldpen = mP.pen();
-  QBrush oldbrush = mP.brush();
-  setBrush( QBrush( color, SolidPattern ) );
+  TQPen oldpen = mP.pen();
+  TQBrush oldbrush = mP.brush();
+  setBrush( TQBrush( color, SolidPattern ) );
   if ( border )
-    setPen( QPen( color, width == -1 ? 1 : width ) );
+    setPen( TQPen( color, width == -1 ? 1 : width ) );
   else
     setPen( Qt::NoPen );
-  QPointArray t( pts.size() );
+  TQPointArray t( pts.size() );
   int c = 0;
   for( std::vector<Coordinate>::const_iterator i = pts.begin(); i != pts.end(); ++i )
   {
-    QPoint p = toScreen( *i );
+    TQPoint p = toScreen( *i );
     t.putPoints( c++, 1, p.x(), p.y() );
   }
   mP.drawPolygon( t );
@@ -476,7 +476,7 @@ void KigPainter::setWholeWinOverlay()
   mNeedOverlay = false;
 }
 
-QPoint KigPainter::toScreen( const Coordinate p ) const
+TQPoint KigPainter::toScreen( const Coordinate p ) const
 {
   return msi.toScreen( p );
 }
@@ -497,21 +497,21 @@ void KigPainter::drawObjects( const std::vector<ObjectHolder*>& os, bool sel )
   drawObjects( os.begin(), os.end(), sel );
 }
 
-void KigPainter::drawFilledRect( const QRect& r )
+void KigPainter::drawFilledRect( const TQRect& r )
 {
-  QPen pen( Qt::black, 1, Qt::DotLine );
+  TQPen pen( Qt::black, 1, Qt::DotLine );
   setPen( pen );
-  setBrush( QBrush( Qt::cyan, Dense6Pattern ) );
+  setBrush( TQBrush( Qt::cyan, Dense6Pattern ) );
   drawRect( r.normalize() );
 }
 
-void KigPainter::drawTextStd( const QPoint& p, const QString& s )
+void KigPainter::drawTextStd( const TQPoint& p, const TQString& s )
 {
   if ( s.isNull() ) return;
   // tf = text formatting flags
   int tf = AlignLeft | AlignTop | DontClip | WordBreak;
   // we need the rect where we're going to paint text
-  setPen(QPen(Qt::blue, 1, SolidLine));
+  setPen(TQPen(Qt::blue, 1, SolidLine));
   setBrush(Qt::NoBrush);
   drawText( Rect(
               msi.fromScreen(p), window().bottomRight()
@@ -519,16 +519,16 @@ void KigPainter::drawTextStd( const QPoint& p, const QString& s )
 
 }
 
-QRect KigPainter::toScreen( const Rect r ) const
+TQRect KigPainter::toScreen( const Rect r ) const
 {
   return msi.toScreen( r );
 }
 
-QRect KigPainter::toScreenEnlarge( const Rect r ) const
+TQRect KigPainter::toScreenEnlarge( const Rect r ) const
 {
   if ( overlayenlarge == 0 ) return msi.toScreen( r );
 
-  QRect qr = msi.toScreen( r );
+  TQRect qr = msi.toScreen( r );
   qr.moveBy ( -overlayenlarge, -overlayenlarge );
   int w = qr.width();
   int h = qr.height();
@@ -537,37 +537,37 @@ QRect KigPainter::toScreenEnlarge( const Rect r ) const
   return qr;
 }
 
-void KigPainter::drawSimpleText( const Coordinate& c, const QString s )
+void KigPainter::drawSimpleText( const Coordinate& c, const TQString s )
 {
   int tf = AlignLeft | AlignTop | DontClip | WordBreak;
   drawText( c, s, tf);
 }
 
-void KigPainter::drawText( const Coordinate p, const QString s,
+void KigPainter::drawText( const Coordinate p, const TQString s,
                            int textFlags, int len )
 {
   drawText( Rect( p, mP.window().right(), mP.window().top() ),
             s, textFlags, len );
 }
-const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const QString s )
+const Rect KigPainter::simpleBoundingRect( const Coordinate& c, const TQString s )
 {
   int tf = AlignLeft | AlignTop | DontClip | WordBreak;
   return boundingRect( c, s, tf );
 }
 
-const Rect KigPainter::boundingRect( const Coordinate& c, const QString s,
+const Rect KigPainter::boundingRect( const Coordinate& c, const TQString s,
                                      int f, int l ) const
 {
   return boundingRect( Rect( c, mP.window().right(), mP.window().top() ),
                        s, f, l );
 }
 
-Coordinate KigPainter::fromScreen( const QPoint& p ) const
+Coordinate KigPainter::fromScreen( const TQPoint& p ) const
 {
   return msi.fromScreen( p );
 }
 
-Rect KigPainter::fromScreen( const QRect& r ) const
+Rect KigPainter::fromScreen( const TQRect& r ) const
 {
   return msi.fromScreen( r );
 }
@@ -616,29 +616,29 @@ void KigPainter::drawAngle( const Coordinate& cpoint, const double dstartangle,
   const int startangle = static_cast<int>( Goniometry::convert( 16 * dstartangle, Goniometry::Rad, Goniometry::Deg ) );
   const int angle = static_cast<int>( Goniometry::convert( 16 * dangle, Goniometry::Rad, Goniometry::Deg ) );
 
-  QPoint point = toScreen( cpoint );
+  TQPoint point = toScreen( cpoint );
 
 //   int radius = mP.window().width() / 5;
   int radius = 50;
-  QRect surroundingRect( 0, 0, radius*2, radius*2 );
+  TQRect surroundingRect( 0, 0, radius*2, radius*2 );
   surroundingRect.moveCenter( point );
 
   mP.drawArc( surroundingRect, startangle, angle );
 
   // now for the arrow...
-  QPoint end( static_cast<int>( point.x() + radius * cos( dstartangle + dangle ) ),
+  TQPoint end( static_cast<int>( point.x() + radius * cos( dstartangle + dangle ) ),
               static_cast<int>( point.y() - radius * sin( dstartangle + dangle ) ) );
-  QPoint vect = (end - point);
+  TQPoint vect = (end - point);
   double vectlen = sqrt( float( vect.x() * vect.x() + vect.y() * vect.y() ) );
-  QPoint orthvect( -vect.y(), vect.x() );
+  TQPoint orthvect( -vect.y(), vect.x() );
   vect = vect * 6 / vectlen;
   orthvect = orthvect * 6 / vectlen;
 
-  QPointArray arrow( 3 );
+  TQPointArray arrow( 3 );
   arrow.setPoint( 0, end );
   arrow.setPoint( 1, end + orthvect + vect );
   arrow.setPoint( 2, end + orthvect - vect );
-//  std::vector<QPoint> arrow;
+//  std::vector<TQPoint> arrow;
 //  arrow.push_back( end );
 //  arrow.push_back( end + orthvect + vect );
 //  arrow.push_back( end + orthvect - vect );
@@ -656,7 +656,7 @@ void KigPainter::drawPolygon( const std::vector<Coordinate>& pts,
                               bool winding, int index, int npoints )
 {
   using namespace std;
-  vector<QPoint> points;
+  vector<TQPoint> points;
   for ( uint i = 0; i < pts.size(); ++i )
     points.push_back( toScreen( pts[i] ) );
   drawPolygon( points, winding, index, npoints );
@@ -679,11 +679,11 @@ void KigPainter::drawVector( const Coordinate& a, const Coordinate& b )
   Coordinate c = b - dir + perp;
   Coordinate d = b - dir - perp;
   // draw the arrow lines with a normal style
-  mP.setPen( QPen( color, width == -1 ? 1 : width, Qt::SolidLine ) );
+  mP.setPen( TQPen( color, width == -1 ? 1 : width, Qt::SolidLine ) );
   drawSegment( b, c );
   drawSegment( b, d );
   // setting again the original style
-  mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
+  mP.setPen( TQPen( color, width == -1 ? 1 : width, style ) );
 }
 
 /* *** this function is commented out ***
@@ -733,7 +733,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
   bool tNeedOverlay = mNeedOverlay;
   mNeedOverlay = false;
 
-  QPen pen = mP.pen();
+  TQPen pen = mP.pen();
 
   // this stack contains pairs of Coordinates ( parameter intervals )
   // that we still need to process:
@@ -790,11 +790,11 @@ void KigPainter::drawCurve( const CurveImp* curve )
 
   // what this algorithm does is approximating the curve with a set of
   // segments.  we don't draw the individual segments, but use
-  // QPainter::drawPolyline() so that the line styles work properly.
+  // TQPainter::drawPolyline() so that the line styles work properly.
   // Possibly there are performance advantages as well ?  this array
   // is a buffer of the polyline approximation of the part of the
   // curve that we are currently processing.
-  QPointArray curpolyline( 1000 );
+  TQPointArray curpolyline( 1000 );
   int curpolylinenextfree = 0;
 
   // we don't use recursion, but a stack based approach for efficiency
@@ -853,9 +853,9 @@ void KigPainter::drawCurve( const CurveImp* curve )
       if ( dodraw )
       {
         // draw the two segments
-        QPoint tp0 = toScreen(p0);
-        QPoint tp1 = toScreen(p1);
-        QPoint tp2 = toScreen(p2);
+        TQPoint tp0 = toScreen(p0);
+        TQPoint tp1 = toScreen(p1);
+        TQPoint tp2 = toScreen(p2);
         if ( curpolylinenextfree > 0 && curpolyline[curpolylinenextfree - 1] != tp1 )
         {
           // flush the current part of the curve
@@ -904,20 +904,20 @@ void KigPainter::drawCurve( const CurveImp* curve )
 }
 
 void KigPainter::drawTextFrame( const Rect& frame,
-                                const QString& s, bool needframe )
+                                const TQString& s, bool needframe )
 {
-  QPen oldpen = mP.pen();
-  QBrush oldbrush = mP.brush();
+  TQPen oldpen = mP.pen();
+  TQBrush oldbrush = mP.brush();
   if ( needframe )
   {
     // inspired upon kgeo, thanks to Marc Bartsch, i've taken some of
     // his code too..
-    setPen( QPen( Qt::black, 1 ) );
-    setBrush( QBrush( QColor( 255, 255, 222 ) ) );
+    setPen( TQPen( Qt::black, 1 ) );
+    setBrush( TQBrush( TQColor( 255, 255, 222 ) ) );
     drawRect( frame );
-    setPen( QPen( QColor( 197, 194, 197 ), 1, Qt::SolidLine ) );
+    setPen( TQPen( TQColor( 197, 194, 197 ), 1, Qt::SolidLine ) );
 
-    QRect qr = toScreen( frame );
+    TQRect qr = toScreen( frame );
 
     mP.drawLine( qr.topLeft(), qr.topRight() );
     mP.drawLine( qr.topLeft(), qr.bottomLeft() );
@@ -944,7 +944,7 @@ void KigPainter::drawArc( const Coordinate& center, const double radius,
   { 
     Rect krect( 0, 0, 2*radius, 2*radius );
     krect.setCenter( center );
-    QRect rect = toScreen( krect );
+    TQRect rect = toScreen( krect );
 
     mP.drawArc( rect, startangle, angle );
     setWholeWinOverlay();

@@ -33,9 +33,9 @@ private:
   /**
    * Options widget
    */
-  QWidget* mow;
+  TQWidget* mow;
 
-  QString moptcaption;
+  TQString moptcaption;
 
 public:
   /**
@@ -47,8 +47,8 @@ public:
    * \param caption the caption of this file dialog
    * \param parent the parent for this file dialog
    */
-  KigFileDialog( const QString& startDir, const QString& filter,
-                 const QString& caption, QWidget *parent );
+  KigFileDialog( const TQString& startDir, const TQString& filter,
+                 const TQString& caption, TQWidget *parent );
 
   /**
    * Use this to set the widget containing the options of eg an export filter.
@@ -60,14 +60,14 @@ public:
    *
    * \param w the option widget
    */
-  void setOptionsWidget( QWidget* w );
+  void setOptionsWidget( TQWidget* w );
 
   /**
    * Set the caption of the option dialog
    *
    * \param caption the caption of the option dialog
    */
-  void setOptionCaption( const QString& caption );
+  void setOptionCaption( const TQString& caption );
 
 protected slots:
   virtual void accept();

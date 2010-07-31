@@ -66,7 +66,7 @@ public:
    * Get a string containing the equation of this line in the form "y
    * = a * x + b ".
    */
-  const QString equationString() const;
+  const TQString equationString() const;
   /**
    * Get the LineData for this AbstractLineImp.
    */

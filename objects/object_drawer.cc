@@ -20,8 +20,8 @@
 #include "object_imp.h"
 #include "../misc/kigpainter.h"
 
-#include <qpen.h>
-#include <qnamespace.h>
+#include <tqpen.h>
+#include <tqnamespace.h>
 #include <cassert>
 
 #include <kdebug.h>
@@ -33,7 +33,7 @@ void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
   {
     p.setBrushStyle( Qt::NoBrush );
     p.setBrushColor( sel ? Qt::red : ( mshown?mcolor:Qt::gray ) );
-    p.setPen( QPen ( sel ? Qt::red : ( mshown?mcolor:Qt::gray ),  1) );
+    p.setPen( TQPen ( sel ? Qt::red : ( mshown?mcolor:Qt::gray ),  1) );
     p.setWidth( mwidth );
     p.setStyle( mstyle );
     p.setPointStyle( mpointstyle );
@@ -52,7 +52,7 @@ bool ObjectDrawer::shown( ) const
   return mshown;
 }
 
-QColor ObjectDrawer::color() const
+TQColor ObjectDrawer::color() const
 {
   return mcolor;
 }
@@ -68,7 +68,7 @@ ObjectDrawer* ObjectDrawer::getCopyShown( bool s ) const
   return ret;
 }
 
-ObjectDrawer* ObjectDrawer::getCopyColor( const QColor& c ) const
+ObjectDrawer* ObjectDrawer::getCopyColor( const TQColor& c ) const
 {
   ObjectDrawer* ret = new ObjectDrawer;
   ret->mcolor = c;
@@ -127,7 +127,7 @@ int ObjectDrawer::pointStyle() const
   return mpointstyle;
 }
 
-ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown, Qt::PenStyle style, int pointStyle )
+ObjectDrawer::ObjectDrawer( const TQColor& color, int width, bool shown, Qt::PenStyle style, int pointStyle )
   : mcolor( color ), mshown( shown ), mwidth( width ), mstyle( style ), mpointstyle( pointStyle )
 {
 }
@@ -142,7 +142,7 @@ bool ObjectDrawer::inRect( const ObjectImp& imp, const Rect& r, const KigWidget&
   return mshown && imp.inRect( r, mwidth, w );
 }
 
-int ObjectDrawer::pointStyleFromString( const QString& style )
+int ObjectDrawer::pointStyleFromString( const TQString& style )
 {
   if ( style == "Round" )
     return 0;
@@ -157,7 +157,7 @@ int ObjectDrawer::pointStyleFromString( const QString& style )
   return 0;
 }
 
-QString ObjectDrawer::pointStyleToString() const
+TQString ObjectDrawer::pointStyleToString() const
 {
   if ( mpointstyle == 0 )
     return "Round";
@@ -170,10 +170,10 @@ QString ObjectDrawer::pointStyleToString() const
   else if ( mpointstyle == 4 )
     return "Cross";
   assert( false );
-  return QString::null;
+  return TQString::null;
 }
 
-Qt::PenStyle ObjectDrawer::styleFromString( const QString& style )
+Qt::PenStyle ObjectDrawer::styleFromString( const TQString& style )
 {
   if ( style == "SolidLine" )
     return Qt::SolidLine;
@@ -188,7 +188,7 @@ Qt::PenStyle ObjectDrawer::styleFromString( const QString& style )
   else return Qt::SolidLine;
 }
 
-QString ObjectDrawer::styleToString() const
+TQString ObjectDrawer::styleToString() const
 {
   if ( mstyle == Qt::SolidLine )
     return "SolidLine";

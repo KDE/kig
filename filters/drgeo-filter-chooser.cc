@@ -25,7 +25,7 @@
 #include <kpushbutton.h>
 #include <kstdguiitem.h>
 
-KigFilterDrgeoChooser::KigFilterDrgeoChooser( const QStringList& l )
+KigFilterDrgeoChooser::KigFilterDrgeoChooser( const TQStringList& l )
   : KigFilterDrgeoChooserBase( 0, "drgeo_filter", true )
 {
   OKButton->setGuiItem( KStdGuiItem::ok() );
@@ -33,9 +33,9 @@ KigFilterDrgeoChooser::KigFilterDrgeoChooser( const QStringList& l )
 
   FigureListBox->insertStringList( l );
 
-  connect( OKButton, SIGNAL( clicked() ), SLOT( slotOKPressed() ) );
-  connect( CancelButton, SIGNAL( clicked() ), SLOT( slotCancelPressed() ) );
-  connect( FigureListBox, SIGNAL( executed( QListBoxItem* ) ), SLOT( slotExecuted( QListBoxItem* ) ) );
+  connect( OKButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotOKPressed() ) );
+  connect( CancelButton, TQT_SIGNAL( clicked() ), TQT_SLOT( slotCancelPressed() ) );
+  connect( FigureListBox, TQT_SIGNAL( executed( TQListBoxItem* ) ), TQT_SLOT( slotExecuted( TQListBoxItem* ) ) );
 }
 
 void KigFilterDrgeoChooser::slotOKPressed()
@@ -59,7 +59,7 @@ KigFilterDrgeoChooser::~KigFilterDrgeoChooser()
 
 }
 
-void KigFilterDrgeoChooser::slotExecuted( QListBoxItem* i )
+void KigFilterDrgeoChooser::slotExecuted( TQListBoxItem* i )
 {
   done( FigureListBox->index( i ) );
 }

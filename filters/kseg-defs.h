@@ -47,7 +47,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <qglobal.h>
+#include <tqglobal.h>
 
 using namespace std;
 

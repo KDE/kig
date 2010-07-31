@@ -87,12 +87,12 @@ void KigApplication::handleArgs( KCmdLineArgs* args )
   }
 }
 
-static int convertToNative( const KURL& file, const QCString& outfile )
+static int convertToNative( const KURL& file, const TQCString& outfile )
 {
   KigApplication app( false );
   KLibrary* library = KLibLoader::self()->globalLibrary( "libkigpart" );
-  int ( *converterfunction )( const KURL&, const QCString& );
-  converterfunction = ( int ( * )( const KURL&, const QCString& ) ) library->symbol( "convertToNative" );
+  int ( *converterfunction )( const KURL&, const TQCString& );
+  converterfunction = ( int ( * )( const KURL&, const TQCString& ) ) library->symbol( "convertToNative" );
   if ( !converterfunction )
   {
     kdError() << "Error: broken Kig installation: different library and application version !" << endl;
@@ -112,7 +112,7 @@ int main(int argc, char **argv)
   KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
   if ( args->isSet( "convert-to-native" ) )
   {
-    QCString outfile = args->getOption( "outfile" );
+    TQCString outfile = args->getOption( "outfile" );
     if ( outfile.isNull() )
       outfile = "-";
 

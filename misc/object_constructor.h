@@ -46,9 +46,9 @@ class ObjectConstructor
 public:
   virtual ~ObjectConstructor();
 
-  virtual const QString descriptiveName() const = 0;
-  virtual const QString description() const = 0;
-  virtual const QCString iconFileName( const bool canBeNull = false ) const = 0;
+  virtual const TQString descriptiveName() const = 0;
+  virtual const TQString description() const = 0;
+  virtual const TQCString iconFileName( const bool canBeNull = false ) const = 0;
 
   /**
    * the following function is called in case of duplication of arguments
@@ -81,7 +81,7 @@ public:
    * return a string describing what you would use \p o for if it were
    * selected...  \p o should be part of \p sel .
    */
-  virtual QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+  virtual TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const = 0;
 
@@ -89,7 +89,7 @@ public:
    * return a string describing what argument you want next, if the
    * given selection of objects were selected.
    */
-  virtual QString selectStatement(
+  virtual TQString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const = 0;
 
@@ -145,9 +145,9 @@ public:
 
   virtual ~StandardConstructorBase();
 
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QCString iconFileName( const bool canBeNull = false ) const;
+  const TQString descriptiveName() const;
+  const TQString description() const;
+  const TQCString iconFileName( const bool canBeNull = false ) const;
 
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
@@ -168,10 +168,10 @@ public:
   virtual void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                            const KigDocument& ) const = 0;
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v ) const;
 
-  QString selectStatement(
+  TQString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
 
@@ -297,9 +297,9 @@ public:
 
   void merge( ObjectConstructor* e );
 
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QCString iconFileName( const bool canBeNull = false ) const;
+  const TQString descriptiveName() const;
+  const TQString description() const;
+  const TQCString iconFileName( const bool canBeNull = false ) const;
 
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
@@ -308,10 +308,10 @@ public:
                       const KigWidget& v
     ) const;
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v ) const;
 
-  QString selectStatement(
+  TQString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
 
@@ -337,25 +337,25 @@ class MacroConstructor
   : public ObjectConstructor
 {
   ObjectHierarchy mhier;
-  QString mname;
-  QString mdesc;
+  TQString mname;
+  TQString mdesc;
   bool mbuiltin;
-  QCString miconfile;
+  TQCString miconfile;
   ArgsParser mparser;
 public:
   MacroConstructor( const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
-                    const QString& name, const QString& description,
-                    const QCString& iconfile = 0 );
-  MacroConstructor( const ObjectHierarchy& hier, const QString& name,
-                    const QString& desc,
-                    const QCString& iconfile = 0 );
+                    const TQString& name, const TQString& description,
+                    const TQCString& iconfile = 0 );
+  MacroConstructor( const ObjectHierarchy& hier, const TQString& name,
+                    const TQString& desc,
+                    const TQCString& iconfile = 0 );
   ~MacroConstructor();
 
   const ObjectHierarchy& hierarchy() const;
 
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QCString iconFileName( const bool canBeNull = false ) const;
+  const TQString descriptiveName() const;
+  const TQString description() const;
+  const TQCString iconFileName( const bool canBeNull = false ) const;
 
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const int& ) const;
@@ -365,11 +365,11 @@ public:
   void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d,
                    KigWidget& v ) const;
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v
     ) const;
 
-  QString selectStatement(
+  TQString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
 
@@ -388,9 +388,9 @@ public:
    */
   bool isTransform() const;
 
-  void setName( const QString& name );
-  void setDescription( const QString& desc );
-  void setIcon( QCString& icon );
+  void setName( const TQString& name );
+  void setDescription( const TQString& desc );
+  void setIcon( TQCString& icon );
 };
 
 #endif

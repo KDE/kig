@@ -30,7 +30,7 @@
 
 #include "../misc/coordinate.h"
 
-#include <qdom.h>
+#include <tqdom.h>
 
 #include <klocale.h>
 
@@ -48,94 +48,94 @@ ObjectImpFactory::~ObjectImpFactory()
 {
 }
 
-static void addXYElements( const Coordinate& c, QDomElement& parent, QDomDocument& doc )
+static void addXYElements( const Coordinate& c, TQDomElement& parent, TQDomDocument& doc )
 {
-  QDomElement xe = doc.createElement( "x" );
+  TQDomElement xe = doc.createElement( "x" );
   xe.appendChild(
     doc.createTextNode(
-      QString::number( c.x ) ) );
+      TQString::number( c.x ) ) );
   parent.appendChild( xe );
-  QDomElement ye = doc.createElement( "y" );
+  TQDomElement ye = doc.createElement( "y" );
   ye.appendChild(
     doc.createTextNode(
-      QString::number( c.y ) ) );
+      TQString::number( c.y ) ) );
   parent.appendChild( ye );
 }
 
-static void addDoubleElement( const char* name, double d, QDomElement& parent, QDomDocument& doc )
+static void addDoubleElement( const char* name, double d, TQDomElement& parent, TQDomDocument& doc )
 {
-  QDomElement e = doc.createElement( name );
-  e.appendChild( doc.createTextNode( QString::number( d ) ) );
+  TQDomElement e = doc.createElement( name );
+  e.appendChild( doc.createTextNode( TQString::number( d ) ) );
   parent.appendChild( e );
 }
 
-static void addCoordinateElement( const char* name, const Coordinate& d, QDomElement& p, QDomDocument& doc )
+static void addCoordinateElement( const char* name, const Coordinate& d, TQDomElement& p, TQDomDocument& doc )
 {
-  QDomElement e = doc.createElement( name );
+  TQDomElement e = doc.createElement( name );
   addXYElements( d, e, doc );
   p.appendChild( e );
 }
 
-QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
-                                     QDomDocument& doc ) const
+TQString ObjectImpFactory::serialize( const ObjectImp& d, TQDomElement& parent,
+                                     TQDomDocument& doc ) const
 {
   if( d.inherits( IntImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
-        QString::number( static_cast<const IntImp&>( d ).data() ) ) );
-    return QString::fromLatin1( "int" );
+        TQString::number( static_cast<const IntImp&>( d ).data() ) ) );
+    return TQString::fromLatin1( "int" );
   }
   else if ( d.inherits( DoubleImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
-        QString::number( static_cast<const DoubleImp&>( d ).data() ) ) );
-    return QString::fromLatin1( "double" );
+        TQString::number( static_cast<const DoubleImp&>( d ).data() ) ) );
+    return TQString::fromLatin1( "double" );
   }
   else if( d.inherits( StringImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
         static_cast<const StringImp&>( d ).data() ) );
-    return QString::fromLatin1( "string" );
+    return TQString::fromLatin1( "string" );
   }
   else if ( d.inherits( TestResultImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
         static_cast<const TestResultImp&>( d ).data() ) );
-    return QString::fromLatin1( "testresult" );
+    return TQString::fromLatin1( "testresult" );
   }
   else if( d.inherits( HierarchyImp::stype() ) )
   {
     static_cast<const HierarchyImp&>( d ).data().serialize( parent, doc );
-    return QString::fromLatin1( "hierarchy" );
+    return TQString::fromLatin1( "hierarchy" );
   }
   else if ( d.inherits( TransformationImp::stype() ) )
   {
     const Transformation& trans = static_cast<const TransformationImp&>( d ).data();
 
-    QDomElement matrixe = doc.createElement( "matrix" );
+    TQDomElement matrixe = doc.createElement( "matrix" );
     for ( int i = 0; i < 3; ++i )
     {
       for ( int j = 0; j < 3; ++j )
       {
-        QDomElement elel = doc.createElement( "element" );
-        elel.setAttribute( "row", QString::number( i ) );
-        elel.setAttribute( "column", QString::number( j ) );
-        elel.appendChild( doc.createTextNode( QString::number( trans.data( i, j ) ) ) );
+        TQDomElement elel = doc.createElement( "element" );
+        elel.setAttribute( "row", TQString::number( i ) );
+        elel.setAttribute( "column", TQString::number( j ) );
+        elel.appendChild( doc.createTextNode( TQString::number( trans.data( i, j ) ) ) );
         matrixe.appendChild( elel );
       };
     }
     parent.appendChild( matrixe );
 
-    QDomElement homothetye = doc.createElement( "homothetic" );
+    TQDomElement homothetye = doc.createElement( "homothetic" );
     const char* ishomothety = trans.isHomothetic() ? "true" : "false";
     homothetye.appendChild( doc.createTextNode( ishomothety ) );
     parent.appendChild( homothetye );
 
-    return QString::fromLatin1( "transformation" );
+    return TQString::fromLatin1( "transformation" );
   }
   else if( d.inherits( AbstractLineImp::stype() ) )
   {
@@ -143,28 +143,28 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     addCoordinateElement( "a", l.a, parent, doc );
     addCoordinateElement( "b", l.b, parent, doc );
     if( d.inherits( SegmentImp::stype() ) )
-      return QString::fromLatin1( "segment" );
+      return TQString::fromLatin1( "segment" );
     else if( d.inherits( RayImp::stype() ) )
-      return QString::fromLatin1( "ray" );
-    else return QString::fromLatin1( "line" );
+      return TQString::fromLatin1( "ray" );
+    else return TQString::fromLatin1( "line" );
   }
   else if( d.inherits( PointImp::stype() ) )
   {
     addXYElements( static_cast<const PointImp&>( d ).coordinate(),
                    parent, doc );
-    return QString::fromLatin1( "point" );
+    return TQString::fromLatin1( "point" );
   }
   else if( d.inherits( TextImp::stype() ) )
   {
-    QString text = static_cast<const TextImp&>( d ).text();
+    TQString text = static_cast<const TextImp&>( d ).text();
     parent.appendChild(
       doc.createTextNode( text ) );
-    return QString::fromLatin1( "text" );
+    return TQString::fromLatin1( "text" );
   }
   else if( d.inherits( AngleImp::stype() ) )
   {
     addDoubleElement( "size", static_cast<const AngleImp&>( d ).size(), parent, doc );
-    return QString::fromLatin1( "angle" );
+    return TQString::fromLatin1( "angle" );
   }
   else if ( d.inherits( ArcImp::stype() ) )
   {
@@ -173,38 +173,38 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     addDoubleElement( "radius", a.radius(), parent, doc );
     addDoubleElement( "startangle", a.startAngle(), parent, doc );
     addDoubleElement( "angle", a.angle(), parent, doc );
-    return QString::fromLatin1( "arc" );
+    return TQString::fromLatin1( "arc" );
   }
   else if( d.inherits( VectorImp::stype() ) )
   {
     Coordinate dir = static_cast<const VectorImp&>( d ).dir();
     addXYElements( dir, parent, doc );
-    return QString::fromLatin1( "vector" );
+    return TQString::fromLatin1( "vector" );
   }
   else if( d.inherits( LocusImp::stype() ) )
   {
     const LocusImp& locus = static_cast<const LocusImp&>( d );
 
     // serialize the curve..
-    QDomElement curve = doc.createElement( "curve" );
+    TQDomElement curve = doc.createElement( "curve" );
     const CurveImp& curveimp = *locus.curve();
-    QString type = serialize( curveimp, curve, doc );
+    TQString type = serialize( curveimp, curve, doc );
     curve.setAttribute( "type", type );
     parent.appendChild( curve );
 
     // serialize the hierarchy..
-    QDomElement hier = doc.createElement( "calculation" );
+    TQDomElement hier = doc.createElement( "calculation" );
     locus.hierarchy().serialize( hier, doc );
     parent.appendChild( hier );
 
-    return QString::fromLatin1( "locus" );
+    return TQString::fromLatin1( "locus" );
   }
   else if( d.inherits( CircleImp::stype() ) )
   {
     const CircleImp& c = static_cast<const CircleImp&>( d );
     addCoordinateElement( "center", c.center(), parent, doc );
     addDoubleElement( "radius", c.radius(), parent, doc );
-    return QString::fromLatin1( "circle" );
+    return TQString::fromLatin1( "circle" );
   }
   else if( d.inherits( ConicImp::stype() ) )
   {
@@ -213,12 +213,12 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     addDoubleElement( "pdimen", data.pdimen, parent, doc );
     addDoubleElement( "ecostheta0", data.ecostheta0, parent, doc );
     addDoubleElement( "esintheta0", data.esintheta0, parent, doc );
-    return QString::fromLatin1( "conic" );
+    return TQString::fromLatin1( "conic" );
   }
   else if( d.inherits( CubicImp::stype() ) )
   {
     const CubicCartesianData data = static_cast<const CubicImp&>( d ).data();
-    QDomElement coeffs = doc.createElement( "coefficients" );
+    TQDomElement coeffs = doc.createElement( "coefficients" );
     addDoubleElement( "a000", data.coeffs[0], coeffs, doc );
     addDoubleElement( "a001", data.coeffs[1], coeffs, doc );
     addDoubleElement( "a002", data.coeffs[2], coeffs, doc );
@@ -230,17 +230,17 @@ QString ObjectImpFactory::serialize( const ObjectImp& d, QDomElement& parent,
     addDoubleElement( "a122", data.coeffs[8], coeffs, doc );
     addDoubleElement( "a222", data.coeffs[9], coeffs, doc );
     parent.appendChild( coeffs );
-    return QString::fromLatin1( "cubic" );
+    return TQString::fromLatin1( "cubic" );
   }
   assert( false );
-  return QString::null;
+  return TQString::null;
 }
 
-static Coordinate readXYElements( const QDomElement& e, bool& ok )
+static Coordinate readXYElements( const TQDomElement& e, bool& ok )
 {
   double x, y;
   ok = true;
-  QDomElement xe = e.firstChild().toElement();
+  TQDomElement xe = e.firstChild().toElement();
   if ( xe.isNull() || xe.tagName() != "x" )
   {
     ok = false;
@@ -248,7 +248,7 @@ static Coordinate readXYElements( const QDomElement& e, bool& ok )
   }
   else x = xe.text().toDouble( &ok );
 
-  QDomElement ye = xe.nextSibling().toElement();
+  TQDomElement ye = xe.nextSibling().toElement();
   if ( ye.isNull() || ye.tagName() != "y" )
   {
     ok = false;
@@ -259,10 +259,10 @@ static Coordinate readXYElements( const QDomElement& e, bool& ok )
   return Coordinate( x, y );
 }
 
-static Coordinate readCoordinateElement( QDomNode n, bool& ok,
+static Coordinate readCoordinateElement( TQDomNode n, bool& ok,
                                          const char* tagname )
 {
-  QDomElement e = n.toElement();
+  TQDomElement e = n.toElement();
   if ( e.isNull() || e.tagName() != tagname )
   {
     ok = false;
@@ -272,10 +272,10 @@ static Coordinate readCoordinateElement( QDomNode n, bool& ok,
   return readXYElements( e, ok );
 }
 
-static double readDoubleElement( QDomNode n, bool& ok,
+static double readDoubleElement( TQDomNode n, bool& ok,
                                  const char* tagname )
 {
-  QDomElement e = n.toElement();
+  TQDomElement e = n.toElement();
   if ( e.isNull() || e.tagName() != tagname )
   {
     ok = false;
@@ -284,9 +284,9 @@ static double readDoubleElement( QDomNode n, bool& ok,
   return e.text().toDouble( &ok );
 }
 
-ObjectImp* ObjectImpFactory::deserialize( const QString& type,
-                                          const QDomElement& parent,
-                                          QString& error ) const
+ObjectImp* ObjectImpFactory::deserialize( const TQString& type,
+                                          const TQDomElement& parent,
+                                          TQString& error ) const
 {
 #define KIG_GENERIC_PARSE_ERROR \
   { \
@@ -328,12 +328,12 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   {
     double data[3][3];
     bool homothetic = false;
-    for ( QDomElement childe = parent.firstChild().toElement();
+    for ( TQDomElement childe = parent.firstChild().toElement();
           ! childe.isNull(); childe = childe.nextSibling().toElement() )
     {
       if ( childe.tagName() == "matrix" )
       {
-        for ( QDomElement elel = childe.firstChild().toElement();
+        for ( TQDomElement elel = childe.firstChild().toElement();
               ! elel.isNull(); elel = elel.nextSibling().toElement() )
         {
           if ( elel.tagName() != "element" ) KIG_GENERIC_PARSE_ERROR;
@@ -363,7 +363,7 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   }
   else if ( type == "line" || type == "segment" || type == "ray" )
   {
-    QDomNode n = parent.firstChild();
+    TQDomNode n = parent.firstChild();
     Coordinate a = readCoordinateElement( n, ok, "a" );
     if ( !ok ) KIG_GENERIC_PARSE_ERROR;
     n = n.nextSibling();
@@ -381,7 +381,7 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   }
   else if ( type == "arc" )
   {
-    QDomNode n = parent.firstChild();
+    TQDomNode n = parent.firstChild();
     Coordinate center = readCoordinateElement( n, ok, "center" );
     if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
     n = n.nextSibling();
@@ -403,21 +403,21 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   }
   else if( type == "locus" )
   {
-    QDomElement curvee = parent.firstChild().toElement();
+    TQDomElement curvee = parent.firstChild().toElement();
     if ( curvee.isNull() || curvee.tagName() != "curve" ) KIG_GENERIC_PARSE_ERROR;
-    QString type = curvee.attribute( "type" );
+    TQString type = curvee.attribute( "type" );
     ObjectImp* oi = deserialize( type, curvee, error );
     if ( ! oi || ! oi->inherits( CurveImp::stype() ) ) KIG_GENERIC_PARSE_ERROR;
     //CurveImp* curvei = static_cast<CurveImp*>( oi );
 
-    QDomElement hiere = curvee.nextSibling().toElement();
+    TQDomElement hiere = curvee.nextSibling().toElement();
     if ( hiere.isNull() || hiere.tagName() != "calculation" ) KIG_GENERIC_PARSE_ERROR;
     assert( false );    // TODO
 //    return new LocusImp( curvei, hier );
   }
   else if( type == "circle" )
   {
-    QDomNode n = parent.firstChild();
+    TQDomNode n = parent.firstChild();
     Coordinate center = readCoordinateElement( n, ok, "center" );
     if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
@@ -429,7 +429,7 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   }
   else if( type == "conic" )
   {
-    QDomNode n = parent.firstChild();
+    TQDomNode n = parent.firstChild();
     Coordinate focus1 = readCoordinateElement( n, ok, "focus1" );
     if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 
@@ -450,11 +450,11 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   }
   else if( type == "cubic" )
   {
-    QDomElement coeffse = parent.firstChild().toElement();
+    TQDomElement coeffse = parent.firstChild().toElement();
     if ( coeffse.isNull() || coeffse.tagName() != "coefficients" )
       KIG_GENERIC_PARSE_ERROR;
 
-    QDomNode n = coeffse.firstChild();
+    TQDomNode n = coeffse.firstChild();
     double a000 = readDoubleElement( n, ok, "a000" );
     if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
 

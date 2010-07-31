@@ -47,7 +47,7 @@
 #endif
 
 #include <iostream>
-#include <qstring.h>
+#include <tqstring.h>
 #include <klocale.h>
 
 ///////////////////////////////////////////////////////////////////

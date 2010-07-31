@@ -346,20 +346,20 @@ Coordinate calcCircleRadicalStartPoint( const Coordinate& ca, const Coordinate& 
   return m + direc;
 }
 
-double getDoubleFromUser( const QString& caption, const QString& label, double value,
-                          QWidget* parent, bool* ok, double min, double max, int decimals )
+double getDoubleFromUser( const TQString& caption, const TQString& label, double value,
+                          TQWidget* parent, bool* ok, double min, double max, int decimals )
 {
 #ifdef KIG_USE_KDOUBLEVALIDATOR
   KDoubleValidator vtor( min, max, decimals, 0, 0 );
 #else
-  KFloatValidator vtor( min, max, (QWidget*) 0, 0 );
+  KFloatValidator vtor( min, max, (TQWidget*) 0, 0 );
 #endif
 #if KDE_IS_VERSION( 3, 1, 90 )
-  QString input = KInputDialog::getText(
+  TQString input = KInputDialog::getText(
     caption, label, KGlobal::locale()->formatNumber( value, decimals ),
     ok, parent, "getDoubleFromUserDialog", &vtor );
 #else
-  QString input =
+  TQString input =
     KLineEditDlg::getText( caption, label,
                            KGlobal::locale()->formatNumber( value, decimals ),
                            ok, parent, &vtor );

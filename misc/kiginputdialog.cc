@@ -27,11 +27,11 @@
 
 #include "../kig/kig_document.h"
 
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qpushbutton.h>
-#include <qvalidator.h>
-#include <qwhatsthis.h>
+#include <tqlabel.h>
+#include <tqlayout.h>
+#include <tqpushbutton.h>
+#include <tqvalidator.h>
+#include <tqwhatsthis.h>
 
 #include <kcombobox.h>
 #include <kdebug.h>
@@ -44,7 +44,7 @@ class KigInputDialogPrivate
 public:
   KigInputDialogPrivate();
 
-  QLabel* m_label;
+  TQLabel* m_label;
   KLineEdit* m_lineEditFirst;
   KLineEdit* m_lineEditSecond;
   KComboBox* m_comboBox;
@@ -53,7 +53,7 @@ public:
   Coordinate m_coord1;
   Coordinate m_coord2;
   KigDocument m_doc;
-  QValidator* m_vtor;
+  TQValidator* m_vtor;
   Goniometry m_gonio;
   bool m_gonioIsNum;
 };
@@ -64,8 +64,8 @@ KigInputDialogPrivate::KigInputDialogPrivate()
 {
 }
 
-KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
-      QWidget* parent, const KigDocument& doc, Coordinate* c1, Coordinate* c2 )
+KigInputDialog::KigInputDialog( const TQString& caption, const TQString& label,
+      TQWidget* parent, const KigDocument& doc, Coordinate* c1, Coordinate* c2 )
   : KDialogBase( parent, "kigdialog", true, caption, Ok|Cancel, Cancel, true ),
     d( new KigInputDialogPrivate() )
 {
@@ -77,8 +77,8 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   int deltay = 0;
   bool ok = false;
 
-  QFrame* frame = makeMainWidget();
-  QVBoxLayout* mainlay = new QVBoxLayout( frame, 0, spacingHint() );
+  TQFrame* frame = makeMainWidget();
+  TQVBoxLayout* mainlay = new TQVBoxLayout( frame, 0, spacingHint() );
   mainlay->activate();
 
   d->m_textEdit = new KTextEdit( frame );
@@ -86,7 +86,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   d->m_textEdit->setReadOnly( true );
   d->m_textEdit->setFocusPolicy( NoFocus );
 //  d->m_textEdit->setAlignment( d->m_textEdit->alignment() | Qt::WordBreak );
-  d->m_textEdit->setFrameStyle( QFrame::NoFrame );
+  d->m_textEdit->setFrameStyle( TQFrame::NoFrame );
   mainlay->addWidget( d->m_textEdit );
 
   d->m_lineEditFirst = new KLineEdit( frame );
@@ -98,8 +98,8 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   }
   mainlay->addWidget( d->m_lineEditFirst );
 
-  connect( d->m_lineEditFirst, SIGNAL(textChanged(const QString&)),
-           this, SLOT(slotCoordsChanged(const QString&)) );
+  connect( d->m_lineEditFirst, TQT_SIGNAL(textChanged(const TQString&)),
+           this, TQT_SLOT(slotCoordsChanged(const TQString&)) );
 
   if ( d->m_coord2.valid() )
   {
@@ -108,8 +108,8 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
     d->m_lineEditSecond->setText( d->m_doc.coordinateSystem().fromScreen( d->m_coord2, d->m_doc ) );
     mainlay->addWidget( d->m_lineEditSecond );
 
-    connect( d->m_lineEditSecond, SIGNAL(textChanged(const QString&)),
-             this, SLOT(slotCoordsChanged(const QString&)) );
+    connect( d->m_lineEditSecond, TQT_SIGNAL(textChanged(const TQString&)),
+             this, TQT_SLOT(slotCoordsChanged(const TQString&)) );
 
     deltay += d->m_lineEditSecond->height() + spacingHint();
   }
@@ -121,27 +121,27 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   enableButtonOK( ok );
 }
 
-KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
+KigInputDialog::KigInputDialog( TQWidget* parent, const Goniometry& g )
   : KDialogBase( parent, "kigdialog", true, i18n( "Set Angle Size" ), Ok|Cancel, Cancel, true ),
     d( new KigInputDialogPrivate() )
 {
   d->m_gonio = g;
   d->m_gonioIsNum = true;
 
-  QFrame* frame = makeMainWidget();
-  QVBoxLayout* mainlay = new QVBoxLayout( frame, 0, spacingHint() );
+  TQFrame* frame = makeMainWidget();
+  TQVBoxLayout* mainlay = new TQVBoxLayout( frame, 0, spacingHint() );
   mainlay->activate();
 
-  d->m_label = new QLabel( frame );
+  d->m_label = new TQLabel( frame );
   d->m_label->setText( i18n( "Insert the new size of this angle:" ) );
   mainlay->addWidget( d->m_label );
 
-  QHBoxLayout* horlay = new QHBoxLayout( 0, 0, spacingHint() );
+  TQHBoxLayout* horlay = new TQHBoxLayout( 0, 0, spacingHint() );
   horlay->activate();
 
   d->m_lineEditFirst = new KLineEdit( frame );
-  d->m_lineEditFirst->setText( QString::number( d->m_gonio.value() ) );
-  QWhatsThis::add(
+  d->m_lineEditFirst->setText( TQString::number( d->m_gonio.value() ) );
+  TQWhatsThis::add(
         d->m_lineEditFirst,
         i18n( "Use this edit field to modify the size of this angle." ) );
   horlay->addWidget( d->m_lineEditFirst );
@@ -149,7 +149,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   d->m_comboBox = new KComboBox( frame );
   d->m_comboBox->insertStringList( Goniometry::systemList() );
   d->m_comboBox->setCurrentItem( d->m_gonio.system() );
-  QWhatsThis::add(
+  TQWhatsThis::add(
         d->m_comboBox,
         i18n( "Choose from this list the goniometric unit you want to use to "
               "modify the size of this angle.<br>\n"
@@ -159,17 +159,17 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 
   mainlay->addLayout( horlay );
 
-  connect( d->m_lineEditFirst, SIGNAL(textChanged(const QString&)),
-           this, SLOT(slotGonioTextChanged(const QString&)) );
-  connect( d->m_comboBox, SIGNAL(activated(int)),
-           this, SLOT(slotGonioSystemChanged(int)) );
+  connect( d->m_lineEditFirst, TQT_SIGNAL(textChanged(const TQString&)),
+           this, TQT_SLOT(slotGonioTextChanged(const TQString&)) );
+  connect( d->m_comboBox, TQT_SIGNAL(activated(int)),
+           this, TQT_SLOT(slotGonioSystemChanged(int)) );
 
   resize( 350, 100 );
 
   d->m_lineEditFirst->setFocus();
 }
 
-void KigInputDialog::keyPressEvent( QKeyEvent* e )
+void KigInputDialog::keyPressEvent( TQKeyEvent* e )
 {
   if ( ( e->key() == Qt::Key_Return ) && ( e->state() == 0 ) )
   {
@@ -189,18 +189,18 @@ void KigInputDialog::keyPressEvent( QKeyEvent* e )
 
 }
 
-void KigInputDialog::slotCoordsChanged( const QString& )
+void KigInputDialog::slotCoordsChanged( const TQString& )
 {
   int p = 0;
-  QString t = d->m_lineEditFirst->text();
-  bool ok = d->m_vtor->validate( t, p ) == QValidator::Acceptable;
+  TQString t = d->m_lineEditFirst->text();
+  bool ok = d->m_vtor->validate( t, p ) == TQValidator::Acceptable;
   if ( ok )
     d->m_coord1 = d->m_doc.coordinateSystem().toScreen( t, ok );
   if ( d->m_lineEditSecond )
   {
     p = 0;
     t = d->m_lineEditSecond->text();
-    ok &= d->m_vtor->validate( t, p ) == QValidator::Acceptable;
+    ok &= d->m_vtor->validate( t, p ) == TQValidator::Acceptable;
     if ( ok )
       d->m_coord2 = d->m_doc.coordinateSystem().toScreen( t, ok );
   }
@@ -214,11 +214,11 @@ void KigInputDialog::slotGonioSystemChanged( int index )
   {
     Goniometry::System newsys = Goniometry::intToSystem( index );
     d->m_gonio.convertTo( newsys );
-    d->m_lineEditFirst->setText( QString::number( d->m_gonio.value() ) );
+    d->m_lineEditFirst->setText( TQString::number( d->m_gonio.value() ) );
   }
 }
 
-void KigInputDialog::slotGonioTextChanged( const QString& txt )
+void KigInputDialog::slotGonioTextChanged( const TQString& txt )
 {
   if ( txt.isNull() )
     d->m_gonioIsNum = false;
@@ -246,14 +246,14 @@ Goniometry KigInputDialog::goniometry() const
   return d->m_gonio;
 }
 
-void KigInputDialog::getCoordinate( const QString& caption, const QString& label,
-      QWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue )
+void KigInputDialog::getCoordinate( const TQString& caption, const TQString& label,
+      TQWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue )
 {
   getTwoCoordinates( caption, label, parent, ok, doc, cvalue, 0 );
 }
 
-void KigInputDialog::getTwoCoordinates( const QString& caption, const QString& label,
-      QWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue,
+void KigInputDialog::getTwoCoordinates( const TQString& caption, const TQString& label,
+      TQWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue,
       Coordinate* cvalue2 )
 {
   KigInputDialog dlg( caption, label, parent, doc, cvalue, cvalue2 );
@@ -273,7 +273,7 @@ void KigInputDialog::getTwoCoordinates( const QString& caption, const QString& l
 
 }
 
-Goniometry KigInputDialog::getAngle( QWidget* parent, bool* ok, const Goniometry& g )
+Goniometry KigInputDialog::getAngle( TQWidget* parent, bool* ok, const Goniometry& g )
 {
   KigInputDialog dlg( parent, g );
 

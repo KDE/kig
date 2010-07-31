@@ -24,8 +24,8 @@
 #include "../scripting/script-common.h"
 #endif
 
-#include <qstring.h>
-#include <qcstring.h>
+#include <tqstring.h>
+#include <tqcstring.h>
 #include <kaction.h>
 
 class GUIAction;
@@ -40,7 +40,7 @@ class KigGUIAction
 public:
   KigGUIAction( GUIAction* act,
                 KigPart& doc,
-                QObject* parent );
+                TQObject* parent );
   void slotActivated();
 
   GUIAction* guiAction();
@@ -53,9 +53,9 @@ class GUIAction
 public:
   virtual ~GUIAction();
 
-  virtual QString description() const = 0;
-  virtual QCString iconFileName() const = 0;
-  virtual QString descriptiveName() const = 0;
+  virtual TQString description() const = 0;
+  virtual TQCString iconFileName() const = 0;
+  virtual TQString descriptiveName() const = 0;
   virtual const char* actionName() const = 0;
   virtual int shortcut() const = 0;
   virtual void act( KigPart& ) = 0;
@@ -69,15 +69,15 @@ class ConstructibleAction
   : public GUIAction
 {
   ObjectConstructor* mctor;
-  QCString mactionname;
+  TQCString mactionname;
   int mshortcut;
 public:
-  ConstructibleAction( ObjectConstructor* ctor, const QCString& actionname,
+  ConstructibleAction( ObjectConstructor* ctor, const TQCString& actionname,
                        int shortcut = 0 );
   ~ConstructibleAction();
-  QString description() const;
-  QCString iconFileName() const;
-  QString descriptiveName() const;
+  TQString description() const;
+  TQCString iconFileName() const;
+  TQString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
   void act( KigPart& );
@@ -92,9 +92,9 @@ public:
   ConstructPointAction( const char* actionname );
   ~ConstructPointAction();
 
-  QString description() const;
-  QCString iconFileName() const;
-  QString descriptiveName() const;
+  TQString description() const;
+  TQCString iconFileName() const;
+  TQString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
   void act( KigPart& );
@@ -107,9 +107,9 @@ class ConstructTextLabelAction
 public:
   ConstructTextLabelAction( const char* actionname );
 
-  QString description() const;
-  QCString iconFileName() const;
-  QString descriptiveName() const;
+  TQString description() const;
+  TQCString iconFileName() const;
+  TQString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
   void act( KigPart& );
@@ -122,9 +122,9 @@ class AddFixedPointAction
 public:
   AddFixedPointAction( const char* actionname );
   ~AddFixedPointAction();
-  QString description() const;
-  QCString iconFileName() const;
-  QString descriptiveName() const;
+  TQString description() const;
+  TQCString iconFileName() const;
+  TQString descriptiveName() const;
   const char* actionName() const;
   int shortcut() const;
   void act( KigPart& );
@@ -138,9 +138,9 @@ class TestAction
 public:
   TestAction( const char* actionname );
   ~TestAction();
-  QString description() const;
-  QCString iconFileName() const;
-  QString descriptiveName() const;
+  TQString description() const;
+  TQCString iconFileName() const;
+  TQString descriptiveName() const;
   const char* actionName() const;
   void act( KigPart& );
 };
@@ -161,9 +161,9 @@ public:
                    const char* actionname, const ScriptType::Type type,
                    const char* icon = "" );
   ~NewScriptAction();
-  QString description() const;
-  QCString iconFileName() const;
-  QString descriptiveName() const;
+  TQString description() const;
+  TQCString iconFileName() const;
+  TQString descriptiveName() const;
   const char* actionName() const;
   void act( KigPart& );
   int shortcut() const;

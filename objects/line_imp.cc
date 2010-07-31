@@ -174,7 +174,7 @@ double AbstractLineImp::slope() const
   return diff.y / diff.x;
 }
 
-const QString AbstractLineImp::equationString() const
+const TQString AbstractLineImp::equationString() const
 {
   Coordinate p = mdata.a;
   Coordinate q = mdata.b;
@@ -182,9 +182,9 @@ const QString AbstractLineImp::equationString() const
   double m = ( q.y - p.y ) / ( q.x - p.x );
   double r = - ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;
 
-  QString ret = QString::fromUtf8( "y = %1x " ) +
-                QString::fromUtf8( r > 0 ? "+" : "-" ) +
-                QString::fromUtf8( " %2" );
+  TQString ret = TQString::fromUtf8( "y = %1x " ) +
+                TQString::fromUtf8( r > 0 ? "+" : "-" ) +
+                TQString::fromUtf8( " %2" );
 
   ret = ret.arg( m, 0, 'g', 3 );
   ret = ret.arg( abs( r ), 0, 'g', 3 );

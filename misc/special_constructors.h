@@ -58,9 +58,9 @@ public:
   PolygonBNPTypeConstructor();
   ~PolygonBNPTypeConstructor();
 
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QCString iconFileName( const bool canBeNull = false ) const;
+  const TQString descriptiveName() const;
+  const TQString description() const;
+  const TQCString iconFileName( const bool canBeNull = false ) const;
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
 			      const int& ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os,
@@ -71,10 +71,10 @@ public:
                            KigPart& d,
                            KigWidget& v
     ) const;
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const;
-  QString selectStatement(
+  TQString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
   void handlePrelim( KigPainter& p,
@@ -97,9 +97,9 @@ public:
   PolygonBCVConstructor();
   ~PolygonBCVConstructor();
 
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QCString iconFileName( const bool canBeNull = false ) const;
+  const TQString descriptiveName() const;
+  const TQString description() const;
+  const TQCString iconFileName( const bool canBeNull = false ) const;
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
                               const int& ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os,
@@ -110,10 +110,10 @@ public:
                            KigPart& d,
                            KigWidget& v
     ) const;
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const;
-  QString selectStatement(
+  TQString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
   void handlePrelim( KigPainter& p,
@@ -138,9 +138,9 @@ public:
   MeasureTransportConstructor();
   ~MeasureTransportConstructor();
 
-  const QString descriptiveName() const;
-  const QString description() const;
-  const QCString iconFileName( const bool canBeNull = false ) const;
+  const TQString descriptiveName() const;
+  const TQString description() const;
+  const TQCString iconFileName( const bool canBeNull = false ) const;
   const bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
                               const int& ) const;
   const int wantArgs( const std::vector<ObjectCalcer*>& os,
@@ -151,10 +151,10 @@ public:
                            KigPart& d,
                            KigWidget& v
     ) const;
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                            const KigDocument& d, const KigWidget& v
     ) const;
-  QString selectStatement(
+  TQString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
   void handlePrelim( KigPainter& p,
@@ -177,7 +177,7 @@ class ConicRadicalConstructor
 public:
   ConicRadicalConstructor();
   ~ConicRadicalConstructor();
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
@@ -202,7 +202,7 @@ public:
     const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v
     ) const;
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents, const KigDocument& ) const;
@@ -245,9 +245,9 @@ public:
 
   bool isIntersection() const;
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
-  QString selectStatement(
+  TQString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
     const KigWidget& w ) const;
 };
@@ -295,9 +295,9 @@ public:
   TangentConstructor();
   ~TangentConstructor();
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
-//  QString selectStatement(
+//  TQString selectStatement(
 //    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
 //    const KigWidget& w ) const;
 };
@@ -309,9 +309,9 @@ public:
   CocConstructor();
   ~CocConstructor();
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
+  TQString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
                    const KigWidget& v ) const;
-//  QString selectStatement(
+//  TQString selectStatement(
 //    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
 //    const KigWidget& w ) const;
 };

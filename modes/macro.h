@@ -20,7 +20,7 @@
 
 #include "base_mode.h"
 
-#include <qobject.h>
+#include <tqobject.h>
 
 class MacroWizard;
 
@@ -31,12 +31,12 @@ public:
   DefineMacroMode( KigPart& );
   ~DefineMacroMode();
 
-  void dragRect( const QPoint& p, KigWidget& w );
-  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+  void dragRect( const TQPoint& p, KigWidget& w );
+  void leftClickedObject( ObjectHolder* o, const TQPoint& p,
                           KigWidget& w, bool ctrlOrShiftDown );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const TQPoint& p, KigWidget& w );
+  void midClicked( const TQPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const TQPoint& p, KigWidget& w, bool shiftpressed );
 
   // called by MacroWizard class
   void givenPageEntered();
@@ -57,7 +57,7 @@ protected:
    */
   void abandonMacro();
 
-  QPoint plc;
+  TQPoint plc;
   MacroWizard* mwizard;
 
   // we can't use a set for this because the order is important

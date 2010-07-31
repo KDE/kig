@@ -38,11 +38,11 @@ public:
   PointConstructMode( KigPart& d );
   ~PointConstructMode();
 protected:
-  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+  void leftClickedObject( ObjectHolder* o, const TQPoint& p,
                                 KigWidget& w, bool ctrlOrShiftDown );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+  void midClicked( const TQPoint& p, KigWidget& w );
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const TQPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const TQPoint& p, KigWidget& w, bool shiftpressed );
 
   void enableActions();
   void cancelConstruction();
@@ -73,7 +73,7 @@ class BaseConstructMode
 //  ObjectHolder* mcursorholder;
   std::vector<ObjectHolder*> mparents;
 
-  void leftReleased( QMouseEvent* e, KigWidget* v );
+  void leftReleased( TQMouseEvent* e, KigWidget* v );
 
 public:
   void selectObject( ObjectHolder* o, KigWidget& w );
@@ -82,19 +82,19 @@ public:
 protected:
   BaseConstructMode( KigPart& d );
 protected:
-  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+  void leftClickedObject( ObjectHolder* o, const TQPoint& p,
                           KigWidget& w, bool ctrlOrShiftDown );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+  void midClicked( const TQPoint& p, KigWidget& w );
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const TQPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const TQPoint& p, KigWidget& w, bool shiftpressed );
 
   void enableActions();
   void cancelConstruction();
   void finish();
 
 protected:
-  virtual void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w ) = 0;
-  virtual QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w ) = 0;
+  virtual void handlePrelim( const std::vector<ObjectCalcer*>& os, const TQPoint& p, KigPainter&, KigWidget& w ) = 0;
+  virtual TQString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w ) = 0;
   virtual int isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) = 0;
   virtual int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w ) = 0;
   virtual void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w ) = 0;
@@ -110,8 +110,8 @@ public:
   ConstructMode( KigPart& d, const ObjectConstructor* ctor );
   ~ConstructMode();
 
-  void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
-  QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );
+  void handlePrelim( const std::vector<ObjectCalcer*>& os, const TQPoint& p, KigPainter&, KigWidget& w );
+  TQString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );
   int isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& );
   int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w );
   void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w );
@@ -138,17 +138,17 @@ public:
   TestConstructMode( KigPart& d, const ArgsParserObjectType* type );
   ~TestConstructMode();
 
-  void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
-  QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );
+  void handlePrelim( const std::vector<ObjectCalcer*>& os, const TQPoint& p, KigPainter&, KigWidget& w );
+  TQString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );
   int isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& );
   int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w );
   void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w );
 
-  void leftClickedObject( ObjectHolder* o, const QPoint& p,
+  void leftClickedObject( ObjectHolder* o, const TQPoint& p,
                           KigWidget& w, bool ctrlOrShiftDown );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+  void midClicked( const TQPoint& p, KigWidget& w );
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const TQPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const TQPoint& p, KigWidget& w, bool shiftpressed );
 };
 
 #endif

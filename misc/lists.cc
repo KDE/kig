@@ -26,10 +26,10 @@
 
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <qfile.h>
-#include <qtextstream.h>
-#include <qdom.h>
-#include <qregexp.h>
+#include <tqfile.h>
+#include <tqtextstream.h>
+#include <tqdom.h>
+#include <tqregexp.h>
 #include <algorithm>
 using namespace std;
 
@@ -238,18 +238,18 @@ Macro::~Macro()
 {
 }
 
-bool MacroList::save( Macro* m, const QString& f )
+bool MacroList::save( Macro* m, const TQString& f )
 {
   std::vector<Macro*> ms;
   ms.push_back( m );
   return save( ms, f );
 }
 
-bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
+bool MacroList::save( const std::vector<Macro*>& ms, const TQString& f )
 {
-  QDomDocument doc( "KigMacroFile" );
+  TQDomDocument doc( "KigMacroFile" );
 
-  QDomElement docelem = doc.createElement( "KigMacroFile" );
+  TQDomElement docelem = doc.createElement( "KigMacroFile" );
   docelem.setAttribute( "Version", KIGVERSION );
   docelem.setAttribute( "Number", ms.size() );
 
@@ -257,29 +257,29 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
   {
     MacroConstructor* ctor = ms[i]->ctor;
 
-    QDomElement macroelem = doc.createElement( "Macro" );
+    TQDomElement macroelem = doc.createElement( "Macro" );
 
     // name
-    QDomElement nameelem = doc.createElement( "Name" );
+    TQDomElement nameelem = doc.createElement( "Name" );
     nameelem.appendChild( doc.createTextNode( ctor->descriptiveName() ) );
     macroelem.appendChild( nameelem );
 
     // desc
-    QDomElement descelem = doc.createElement( "Description" );
+    TQDomElement descelem = doc.createElement( "Description" );
     descelem.appendChild( doc.createTextNode( ctor->description() ) );
     macroelem.appendChild( descelem );
 
     // icon
-    QCString icon = ctor->iconFileName( true );
+    TQCString icon = ctor->iconFileName( true );
     if ( !icon.isNull() )
     {
-      QDomElement descelem = doc.createElement( "IconFileName" );
+      TQDomElement descelem = doc.createElement( "IconFileName" );
       descelem.appendChild( doc.createTextNode( icon ) );
       macroelem.appendChild( descelem );
     }
 
     // data
-    QDomElement hierelem = doc.createElement( "Construction" );
+    TQDomElement hierelem = doc.createElement( "Construction" );
     ctor->hierarchy().serialize( hierelem, doc );
     macroelem.appendChild( hierelem );
 
@@ -288,30 +288,30 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
 
   doc.appendChild( docelem );
 
-  QFile file( f );
+  TQFile file( f );
   if ( ! file.open( IO_WriteOnly ) )
     return false;
-  QTextStream stream( &file );
+  TQTextStream stream( &file );
   stream << doc.toCString();
   return true;
 }
 
-bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart& kdoc )
+bool MacroList::load( const TQString& f, std::vector<Macro*>& ret, const KigPart& kdoc )
 {
-  QFile file( f );
+  TQFile file( f );
   if ( ! file.open( IO_ReadOnly ) )
   {
     KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'" ).arg( f ) );
     return false;
   }
-  QDomDocument doc( "KigMacroFile" );
+  TQDomDocument doc( "KigMacroFile" );
   if ( !doc.setContent( &file ) )
   {
     KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'" ).arg( f ) );
     return false;
   }
   file.close();
-  QDomElement main = doc.documentElement();
+  TQDomElement main = doc.documentElement();
 
   if ( main.tagName() == "KigMacroFile" )
     return loadNew( main, ret, kdoc );
@@ -328,15 +328,15 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
   }
 }
 
-bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, const KigPart& )
+bool MacroList::loadNew( const TQDomElement& docelem, std::vector<Macro*>& ret, const KigPart& )
 {
   bool sok = true;
   // unused..
 //  int number = docelem.attribute( "Number" ).toInt( &sok );
   if ( ! sok ) return false;
 
-  QString version = docelem.attribute( "Version" );
-//  QRegExp re( "(\\d+)\\.(\\d+)\\.(\\d+)" );
+  TQString version = docelem.attribute( "Version" );
+//  TQRegExp re( "(\\d+)\\.(\\d+)\\.(\\d+)" );
 //  re.match( version );
   // unused..
 //  int major = re.cap( 1 ).toInt( &sok );
@@ -345,16 +345,16 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
 //  if ( ! sok ) return false;
 
   int unnamedindex = 1;
-  QString tmp;
+  TQString tmp;
 
-  for ( QDomElement macroelem = docelem.firstChild().toElement();
+  for ( TQDomElement macroelem = docelem.firstChild().toElement();
         ! macroelem.isNull(); macroelem = macroelem.nextSibling().toElement() )
   {
-    QString name, description;
+    TQString name, description;
     ObjectHierarchy* hierarchy = 0;
-    QCString actionname, iconfile;
+    TQCString actionname, iconfile;
     if ( macroelem.tagName() != "Macro" ) continue; // forward compat ?
-    for ( QDomElement dataelem = macroelem.firstChild().toElement();
+    for ( TQDomElement dataelem = macroelem.firstChild().toElement();
           ! dataelem.isNull(); dataelem = dataelem.nextSibling().toElement() )
     {
       if ( dataelem.tagName() == "Name" )

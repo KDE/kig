@@ -153,9 +153,9 @@ void Rect::scale( const double r )
 }
 
 
-QRect Rect::toQRect() const
+TQRect Rect::toQRect() const
 {
-  return QRect(mBottomLeft.toQPoint(), topRight().toQPoint());
+  return TQRect(mBottomLeft.toQPoint(), topRight().toQPoint());
 }
 
 Coordinate Rect::bottomLeft() const
@@ -253,7 +253,7 @@ Rect Rect::normalized() const
   return t;
 }
 
-Rect Rect::fromQRect( const QRect& r )
+Rect Rect::fromQRect( const TQRect& r )
 {
   return Rect( r.left(), r.top(), r.right(), r.bottom() );
 }

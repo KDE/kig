@@ -29,7 +29,7 @@
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 
 #include <klocale.h>
 
@@ -218,9 +218,9 @@ const ObjectImpType* LineParallelLPType::resultId() const
   return LineImp::stype();
 }
 
-QStringList SegmentABType::specialActions() const
+TQStringList SegmentABType::specialActions() const
 {
-  QStringList ret;
+  TQStringList ret;
   ret << i18n( "Set &Length..." );
   return ret;
 }

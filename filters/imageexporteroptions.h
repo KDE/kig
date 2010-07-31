@@ -27,14 +27,14 @@ class ImageExporterOptions
 {
   Q_OBJECT
 
-  QSize msize;
+  TQSize msize;
 
   // this is set by slotWidthChanged() when they set the other input
   // widget's value, to avoid reacting to internal changes to the
   // value like to user changes...
   bool minternallysettingstuff;
 public:
-  ImageExporterOptions( QWidget* parent, const QSize& s );
+  ImageExporterOptions( TQWidget* parent, const TQSize& s );
   ~ImageExporterOptions();
 
 protected slots:

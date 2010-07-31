@@ -30,14 +30,14 @@
 #include "../objects/bogus_imp.h"
 #include "../objects/object_imp.h"
 
-#include <qlabel.h>
-#include <qpushbutton.h>
+#include <tqlabel.h>
+#include <tqpushbutton.h>
 
 #include <kcursor.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-void ScriptModeBase::dragRect( const QPoint& p, KigWidget& w )
+void ScriptModeBase::dragRect( const TQPoint& p, KigWidget& w )
 {
   if ( mwawd != SelectingArgs ) return;
 
@@ -60,7 +60,7 @@ void ScriptModeBase::dragRect( const QPoint& p, KigWidget& w )
   w.updateWidget();
 }
 
-void ScriptModeBase::leftClickedObject( ObjectHolder* o, const QPoint&,
+void ScriptModeBase::leftClickedObject( ObjectHolder* o, const TQPoint&,
                                         KigWidget& w, bool )
 {
   std::list<ObjectHolder*>::iterator dup_o;
@@ -84,7 +84,7 @@ void ScriptModeBase::leftClickedObject( ObjectHolder* o, const QPoint&,
 }
 
 void ScriptModeBase::mouseMoved( const std::vector<ObjectHolder*>& os,
-                                 const QPoint& pt, KigWidget& w, bool )
+                                 const TQPoint& pt, KigWidget& w, bool )
 {
   if ( mwawd != SelectingArgs ) return;
 
@@ -101,14 +101,14 @@ void ScriptModeBase::mouseMoved( const std::vector<ObjectHolder*>& os,
     // and set statusbar text
 
     w.setCursor( KCursor::handCursor() );
-    QString selectstat = os.front()->selectStatement();
+    TQString selectstat = os.front()->selectStatement();
 
     // statusbar text
     mdoc.emitStatusBarText( selectstat );
     KigPainter p( w.screenInfo(), &w.curPix, mdoc.document() );
 
     // set the text next to the arrow cursor
-    QPoint point = pt;
+    TQPoint point = pt;
     point.setX(point.x()+15);
 
     p.drawTextStd( point, selectstat );
@@ -157,7 +157,7 @@ void ScriptModeBase::codePageEntered()
   if ( mwizard->text().isEmpty() )
   {
     // insert template code..
-    QString tempcode = ScriptType::templateCode( mtype, margs );
+    TQString tempcode = ScriptType::templateCode( mtype, margs );
     mwizard->setText( tempcode );
   };
   mwizard->setFinishEnabled( mwizard->mpcode, true );
@@ -178,7 +178,7 @@ bool ScriptCreationMode::queryFinish()
 {
   std::vector<ObjectCalcer*> args;
 
-  QString script = mwizard->text();
+  TQString script = mwizard->text();
   args.push_back( new ObjectConstCalcer( new StringImp( script ) ) );
 
   ObjectTypeCalcer* compiledscript =
@@ -198,7 +198,7 @@ bool ScriptCreationMode::queryFinish()
   if ( reto->imp()->inherits( InvalidImp::stype() ) )
   {
     PythonScripter* inst = PythonScripter::instance();
-    QCString errtrace = inst->lastErrorExceptionTraceback().c_str();
+    TQCString errtrace = inst->lastErrorExceptionTraceback().c_str();
     if ( inst->errorOccurred() )
     {
       KMessageBox::detailedSorry(
@@ -224,12 +224,12 @@ bool ScriptCreationMode::queryFinish()
   }
 }
 
-void ScriptModeBase::midClicked( const QPoint&, KigWidget& )
+void ScriptModeBase::midClicked( const TQPoint&, KigWidget& )
 {
 }
 
 void ScriptModeBase::rightClicked( const std::vector<ObjectHolder*>&,
-                                   const QPoint&, KigWidget& )
+                                   const TQPoint&, KigWidget& )
 {
 }
 
@@ -316,7 +316,7 @@ bool ScriptEditMode::queryFinish()
   if ( mexecuted->imp()->inherits( InvalidImp::stype() ) )
   {
     PythonScripter* inst = PythonScripter::instance();
-    QCString errtrace = inst->lastErrorExceptionTraceback().c_str();
+    TQCString errtrace = inst->lastErrorExceptionTraceback().c_str();
     if ( inst->errorOccurred() )
     {
       KMessageBox::detailedSorry(

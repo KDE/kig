@@ -51,8 +51,8 @@
 
 #include <math.h>
 
-#include <qfile.h>
-#include <qnamespace.h>
+#include <tqfile.h>
+#include <tqnamespace.h>
 
 #include <klocale.h>
 
@@ -61,8 +61,8 @@
 
 struct DrGeoHierarchyElement
 {
-  QString id;
-  std::vector<QString> parents;
+  TQString id;
+  std::vector<TQString> parents;
 };
 
 KigFilterDrgeo::KigFilterDrgeo()
@@ -73,30 +73,30 @@ KigFilterDrgeo::~KigFilterDrgeo()
 {
 }
 
-bool KigFilterDrgeo::supportMime( const QString& mime )
+bool KigFilterDrgeo::supportMime( const TQString& mime )
 {
   return mime == "application/x-drgeo";
 }
 
-KigDocument* KigFilterDrgeo::load( const QString& file )
+KigDocument* KigFilterDrgeo::load( const TQString& file )
 {
-  QFile f( file );
+  TQFile f( file );
   if ( ! f.open( IO_ReadOnly ) )
   {
     fileNotFound( file );
     return 0;
   }
 
-  QStringList figures;
-  QDomDocument doc( "drgenius" );
+  TQStringList figures;
+  TQDomDocument doc( "drgenius" );
   if ( !doc.setContent( &f ) )
     KIG_FILTER_PARSE_ERROR;
-  QDomElement main = doc.documentElement();
+  TQDomElement main = doc.documentElement();
   int nmacros = 0;
   // reading figures...
-  for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
+  for ( TQDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
-    QDomElement e = n.toElement();
+    TQDomElement e = n.toElement();
     if ( e.isNull() ) continue;
     else if ( e.tagName() == "drgeo" )
       figures.append( e.attribute( "name" ) );
@@ -132,9 +132,9 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
 #endif
   int curfig = -1;
 
-  for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
+  for ( TQDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
   {
-    QDomElement e = n.toElement();
+    TQDomElement e = n.toElement();
     if ( e.isNull() ) continue;
     else if ( e.tagName() == "drgeo" )
     {
@@ -154,7 +154,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   return 0;
 }
 
-int convertDrgeoIndex( const std::vector<DrGeoHierarchyElement> es, const QString myid )
+int convertDrgeoIndex( const std::vector<DrGeoHierarchyElement> es, const TQString myid )
 {
   for ( uint i = 0; i < es.size(); ++i )
     if ( es[i].id == myid )
@@ -178,7 +178,7 @@ const Coordinate convertDrgeoHalflineParam( const double param, const LineData& 
   return p;
 }
 
-KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, const bool grid )
+KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, const bool grid )
 {
   KigDocument* ret = new KigDocument();
 
@@ -187,9 +187,9 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
   int withoutid = 0;
 
   // 1st: fetch relationships and build an appropriate structure
-  for (QDomNode a = f; ! a.isNull(); a = a.nextSibling() )
+  for (TQDomNode a = f; ! a.isNull(); a = a.nextSibling() )
   {
-    QDomElement domelem = a.toElement();
+    TQDomElement domelem = a.toElement();
     if ( domelem.isNull() ) continue;
     else
     {
@@ -197,21 +197,21 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
 #ifdef DRGEO_DEBUG
       kdDebug() << "  * " << domelem.tagName() << "(" << domelem.attribute("type") << ")" << endl;
 #endif
-      for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
+      for ( TQDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
       {
-        QDomElement ce = c.toElement();
+        TQDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
         else if ( ce.tagName() == "parent" )
           elem.parents.push_back( ce.attribute( "ref" ) );
       }
-      QString curid = domelem.attribute( "id" );
-      elem.id = !curid.isNull() ? curid : QString::number( withoutid++ ) ;
+      TQString curid = domelem.attribute( "id" );
+      elem.id = !curid.isNull() ? curid : TQString::number( withoutid++ ) ;
       elems.push_back( elem );
     }
   }
 
 #ifdef DRGEO_DEBUG
-  QString x;
+  TQString x;
   kdDebug() << "+++ elems" << endl;
   for ( uint i = 0; i < elems.size(); ++i )
   {
@@ -235,7 +235,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
 
   // there's no need to sort the objects because it seems that DrGeo objects
   // appear in the right order... so let's go!
-  for (QDomNode a = f; ! a.isNull(); a = a.nextSibling() )
+  for (TQDomNode a = f; ! a.isNull(); a = a.nextSibling() )
   {
 #ifdef DRGEO_DEBUG
     kdDebug() << "+++ id: " << curid << endl;
@@ -249,7 +249,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         KIG_FILTER_PARSE_ERROR;
       parents.push_back( holders[parentid-nignored]->calcer() );
     };
-    QDomElement domelem = a.toElement();
+    TQDomElement domelem = a.toElement();
 
 #ifdef DRGEO_DEBUG
     if ( parents.size() > 0 )
@@ -266,12 +266,12 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
     if ( domelem.isNull() ) continue;
     else if ( domelem.tagName() == "point" )
     {
-      QString xs;
-      QString ys;
-      QString values;
-      for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
+      TQString xs;
+      TQString ys;
+      TQString values;
+      for ( TQDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
       {
-        QDomElement ce = c.toElement();
+        TQDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
         else if ( ce.tagName() == "x" )
           xs = ce.text();
@@ -501,12 +501,12 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
     else if( ( domelem.tagName() == "numeric" ) ||
              ( domelem.tagName() == "equation" ) )
     {
-      QString xs;
-      QString ys;
-      QString value;
-      for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
+      TQString xs;
+      TQString ys;
+      TQString value;
+      for ( TQDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
       {
-        QDomElement ce = c.toElement();
+        TQDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
         else if ( ce.tagName() == "x" )
           xs = ce.text();
@@ -529,7 +529,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
         bool ok3;
         double dvalue = value.toDouble( &ok3 );
         if ( ok3 )
-          value = QString( "%1" ).arg( dvalue, 0, 'g', 3 );
+          value = TQString( "%1" ).arg( dvalue, 0, 'g', 3 );
         oc = fact->labelCalcer( value, m, false, std::vector<ObjectCalcer*>(), *ret );
       }
       else if ( domelem.attribute( "type" ) == "pt_abscissa" )
@@ -646,12 +646,12 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
     }
     else if ( domelem.tagName() == "script" )
     {
-      QString xs;
-      QString ys;
-      QString text;
-      for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
+      TQString xs;
+      TQString ys;
+      TQString text;
+      for ( TQDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
       {
-        QDomElement ce = c.toElement();
+        TQDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
         else if ( ce.tagName() == "x" )
           xs = ce.text();
@@ -718,7 +718,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       continue;
 
 // reading color
-    QColor co( domelem.attribute( "color" ) );
+    TQColor co( domelem.attribute( "color" ) );
     if ( ! co.isValid() )
       if ( domelem.attribute( "color" ) == "Bordeaux" )
         co.setRgb( 145, 0, 0 );
@@ -744,7 +744,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       if ( domelem.attribute( "thickness" ) == "Thick" )
         w = 2;
     }
-    QString ps = domelem.attribute( "style" );
+    TQString ps = domelem.attribute( "style" );
     int pointstyle = ObjectDrawer::pointStyleFromString( ps );
 // show this object?
     bool show = ( ( domelem.attribute( "masked" ) != "True" ) &&
@@ -752,7 +752,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
 // costructing the ObjectDrawer*
     ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
 // reading object name
-    QString strname = domelem.attribute( "name" );
+    TQString strname = domelem.attribute( "name" );
     ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( strname ) );
 
 // creating the ObjectHolder*
@@ -770,7 +770,7 @@ KigDocument* KigFilterDrgeo::importFigure( QDomNode f, const QString& file, cons
       {
         std::vector<ObjectCalcer*> args2;
         args2.push_back( o->nameCalcer() );
-        oc2 = fact->attachedLabelCalcer( QString::fromLatin1( "%1" ), oc,
+        oc2 = fact->attachedLabelCalcer( TQString::fromLatin1( "%1" ), oc,
                  static_cast<const PointImp*>( oc->imp() )->coordinate(),
                  false, args2, *ret );
         co = Qt::black;

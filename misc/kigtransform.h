@@ -183,7 +183,7 @@ bool operator==( const Transformation& lhs, const Transformation& rhs );
 // tWantArgsResult WantTransformation ( Objects::const_iterator& i,
 //          const Objects& os );
 
-// QString getTransformMessage ( const Objects& os, const Object *o );
+// TQString getTransformMessage ( const Objects& os, const Object *o );
 
 // bool isHomoteticTransformation ( double transformation[3][3] );
 

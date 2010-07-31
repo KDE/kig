@@ -22,7 +22,7 @@
 #include "../misc/object_hierarchy.h"
 #include "../misc/kigtransform.h"
 
-#include <qstring.h>
+#include <tqstring.h>
 
 /**
  * This is the base class for the so-called BogusImp's.  These
@@ -78,7 +78,7 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  void fillInNextEscape( TQString& s, const KigDocument& ) const;
 
   bool equals( const ObjectImp& rhs ) const;
 };
@@ -117,7 +117,7 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  void fillInNextEscape( TQString& s, const KigDocument& ) const;
 
   bool equals( const ObjectImp& rhs ) const;
 };
@@ -156,7 +156,7 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  void fillInNextEscape( TQString& s, const KigDocument& ) const;
 
   bool equals( const ObjectImp& rhs ) const;
 };
@@ -167,7 +167,7 @@ public:
 class StringImp
   : public BogusImp
 {
-  QString mdata;
+  TQString mdata;
 public:
   /**
    * Returns the ObjectImpType representing the StringImp type..
@@ -178,16 +178,16 @@ public:
   /**
    * Construct a new StringImp containing the string d.
    */
-  StringImp( const QString& d );
+  StringImp( const TQString& d );
 
   /**
    * Get hold of the contained data.
    */
-  const QString& data() const { return mdata; }
+  const TQString& data() const { return mdata; }
   /**
    * Set the contained data.
    */
-  void setData( const QString& s ) { mdata = s; }
+  void setData( const TQString& s ) { mdata = s; }
 
   StringImp* copy() const;
 
@@ -195,7 +195,7 @@ public:
   void visit( ObjectImpVisitor* vtor ) const;
 
   bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  void fillInNextEscape( TQString& s, const KigDocument& ) const;
 
   bool equals( const ObjectImp& rhs ) const;
 };
@@ -253,16 +253,16 @@ public:
 class TestResultImp
   : public BogusImp
 {
-  const QString mdata;
+  const TQString mdata;
 public:
   static const ObjectImpType* stype();
   typedef BogusImp Parent;
 
-  TestResultImp( const QString& s );
+  TestResultImp( const TQString& s );
 
   TestResultImp* copy() const;
 
-  const QString& data() const { return mdata; }
+  const TQString& data() const { return mdata; }
 
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;

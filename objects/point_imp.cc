@@ -135,7 +135,7 @@ void PointImp::setCoordinate( const Coordinate& c )
   mc = c;
 }
 
-void PointImp::fillInNextEscape( QString& s, const KigDocument& doc ) const
+void PointImp::fillInNextEscape( TQString& s, const KigDocument& doc ) const
 {
   s = s.arg( doc.coordinateSystem().fromScreen( mc, doc ) );
 }
