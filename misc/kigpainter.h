@@ -32,7 +32,7 @@
 #include <vector>
 
 class KigWidget;
-class QPaintDevice;
+class TQPaintDevice;
 class CoordinateSystem;
 class ObjectHierarchy;
 class ConicPolarData;

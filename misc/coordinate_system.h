@@ -27,11 +27,11 @@ class KigPainter;
 class KigDocument;
 class KigWidget;
 class CoordinateSystem;
-class QValidator;
+class TQValidator;
 class Coordinate;
-class QString;
-class QStringList;
-class QWidget;
+class TQString;
+class TQStringList;
+class TQWidget;
 
 /**
  * a factory to build a CoordinateSystem and a small handle to the

@@ -22,7 +22,7 @@
 #ifndef KIG_MISC_COORDINATE_H
 #define KIG_MISC_COORDINATE_H
 
-class QPoint;
+class TQPoint;
 class kdbgstream;
 
 /**

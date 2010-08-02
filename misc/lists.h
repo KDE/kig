@@ -27,8 +27,8 @@ class MacroConstructor;
 class KigDocument;
 class KigPart;
 class KigWidget;
-class QString;
-class QDomElement;
+class TQString;
+class TQDomElement;
 class ObjectCalcer;
 
 /**

@@ -21,7 +21,7 @@
 #ifndef KIG_MISC_KIGINPUTDIALOG_H
 #define KIG_MISC_KIGINPUTDIALOG_H
 
-class QString;
+class TQString;
 class Coordinate;
 class Goniometry;
 class KigDocument;

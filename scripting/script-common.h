@@ -23,7 +23,7 @@
 
 #include "../objects/object_holder.h"
 
-class QString;
+class TQString;
 
 class ScriptType
 {

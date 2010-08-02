@@ -20,7 +20,7 @@
 
 #include "exporter.h"
 
-class QString;
+class TQString;
 class KigPart;
 class KigWidget;
 

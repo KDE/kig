@@ -21,8 +21,8 @@
 
 #include "drgeo-filter-chooserbase.h"
 
-class QListBoxItem;
-class QStringList;
+class TQListBoxItem;
+class TQStringList;
 
 class KigFilterDrgeoChooser
   : public KigFilterDrgeoChooserBase

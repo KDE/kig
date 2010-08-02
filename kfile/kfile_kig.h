@@ -23,7 +23,7 @@
 
 #include <kfilemetainfo.h>
 
-class QStringList;
+class TQStringList;
 
 class KigPlugin: public KFilePlugin
 {

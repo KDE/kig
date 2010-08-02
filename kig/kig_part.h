@@ -36,7 +36,7 @@ class KSelectAction;
 class KToolBar;
 class KToggleAction;
 class KURL;
-class QWidget;
+class TQWidget;
 
 class Coordinate;
 class CoordinateSystem;

@@ -20,7 +20,7 @@
 
 #include <vector>
 
-class QString;
+class TQString;
 class KigDocument;
 class KigPart;
 class KigWidget;

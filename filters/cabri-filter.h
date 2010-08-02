@@ -23,7 +23,7 @@
 
 struct CabriObject;
 
-class QFile;
+class TQFile;
 
 /**
  * This is an import filter for the output of the commercial program

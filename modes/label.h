@@ -27,7 +27,7 @@
 class TextLabelWizard;
 class NormalMode;
 class Coordinate;
-class QString;
+class TQString;
 class ObjectPropertyCalcer;
 class ObjectTypeCalcer;
 class ObjectCalcer;

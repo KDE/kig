@@ -21,9 +21,9 @@
 
 #include "filter.h"
 
-class QDomNode;
+class TQDomNode;
 class KigDocument;
-class QString;
+class TQString;
 
 /**
  * This is an import filter for the GNOME geometry program DrGeo.

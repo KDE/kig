@@ -33,8 +33,8 @@
 #include "../misc/rect.h"
 #include "../misc/screeninfo.h"
 
-class QGridLayout;
-class QScrollBar;
+class TQGridLayout;
+class TQScrollBar;
 
 class KigDocument;
 class KigView;

@@ -18,7 +18,7 @@
 class ObjectTypeCalcer;
 class Coordinate;
 class ObjectCalcer;
-class QCString;
+class TQCString;
 class KigDocument;
 
 /**

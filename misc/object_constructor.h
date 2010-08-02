@@ -29,8 +29,8 @@ class ArgsParserObjectType;
 class ObjectType;
 class BaseConstructMode;
 
-class QString;
-class QCString;
+class TQString;
+class TQCString;
 
 /**
  * This class represents a way to construct a set of objects from a

@@ -26,7 +26,7 @@
 class KigDocument;
 class KigPart;
 class KigWidget;
-class QMouseEvent;
+class TQMouseEvent;
 class StdConstructionMode;
 
 /**

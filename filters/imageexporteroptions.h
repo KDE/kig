@@ -20,7 +20,7 @@
 
 #include "imageexporteroptionsbase.h"
 
-class QSize;
+class TQSize;
 
 class ImageExporterOptions
   : public ImageExporterOptionsBase

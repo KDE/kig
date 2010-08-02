@@ -20,10 +20,10 @@
 
 #include "filter.h"
 
-class QDomElement;
+class TQDomElement;
 class KigDocument;
-class QTextStream;
-class QString;
+class TQTextStream;
+class TQString;
 
 /**
  * Kig's native format.  Between versions 0.3.1 and 0.4, there was a
