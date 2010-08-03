@@ -113,12 +113,18 @@ Select <menuchoice><guimenu>Objects</guimenu>
 menubar or
 press the appropriate button in the toolbar. You can
 then construct a point by clicking at the desired
-position in the window.</para> <note><para>Actually, this
+position in the window.</para>
+
+<note><para>Press the &Shift; key to activate a snap raster mode
+which allows you to set any point in a construction exactly to points
+of the grid.</para></note>
+<note><para>Actually, this
 works the same way for constructing other objects as
 well: click on the desired menubar entry or toolbar
 button and select the necessary items to construct
 the object.</para></note>
 </listitem>
+
 <listitem>
 <para>
 Since you often need to construct points, simply
@@ -425,6 +431,7 @@ Transform</guimenu><guimenuitem>Rotate</guimenuitem></menuchoice>.</para></listi
 <listitem><para>Click on your angle.</para></listitem>
 <listitem><para>Your shape is rotated!</para></listitem>
 </orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
 <note>
 <para>Constructing your angle with an opening to the right allows for clockwise
 shape rotation. Constructing your angle with an opening to the left <emphasis>and</emphasis>
@@ -434,6 +441,7 @@ rotations.</para></note>
 Clicking on the arrow created by the angle makes a counter-clockwise
 rotation. Clicking on the text label of the angle makes a clockwise
 rotation.</para>
+-->
 </listitem>
 </varlistentry>
 
@@ -776,7 +784,7 @@ notice that we are actually defining a Python function called
 <function>calc</function>. It is therefore necessary to adhere
 to the Python rules for defining functions. For example, every
 line of the function should start with a &Tab;.
-The first line not starting with a <keysym>tab</keysym> ends the
+The first line not starting with a &Tab; ends the
 definition of the function.
 </para>
 <para>
