@@ -479,9 +479,99 @@ void XFigExportImpVisitor::visit( const FilledPolygonImp* imp )
 
 void XFigExportImpVisitor::visit(const ClosedPolygonalImp* imp)
 {
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
+  const std::vector<Coordinate> oldpts = imp->points();
+  // it has n points, but the first point is counted twice (ie. as ending too)
+  std::vector<Coordinate> pts;
+  std::copy( oldpts.begin(), oldpts.end(), std::back_inserter( pts ) );
+  pts.push_back( pts[0] );
+  mstream << "2 "; // polyline type;
+  mstream << "3 "; // polygon subtype;
+  mstream << "0 "; // line_style: Solid
+  mstream << width << " "; // thickness: *1/80 inch
+  mstream << mcurcolorid << " "; // pen_color: our color
+  mstream << mcurcolorid << " "; // fill_color: our color
+  mstream << "50 "; // depth: 50
+  mstream << "-1 "; // pen_style: unused by XFig
+  mstream << "20 "; // area_fill: 0% of opacity
+  mstream << "0.000 "; // style_val: the distance between dots and
+                       // dashes in case of dotted or dashed lines..
+  mstream << "0 "; // join_style: Miter
+  mstream << "0 "; // cap_style: Butt
+  mstream << "-1 "; // radius in case of an arc-box, but we're a
+                    // polygon, so nothing here..
+  mstream << "0 "; // forward arrow: no
+  mstream << "0 "; // backward arrow: no
+  mstream << pts.size(); // it has n (well, n+1) points
+  mstream << "\n";
+
+  // write the list of points, max 6 per line..
+  bool in_line = false;
+  for ( uint i = 0; i < pts.size(); ++i )
+  {
+    int m = i % 6;
+    if ( m == 0 )
+    {
+      in_line = true;
+      mstream << "\t";
+    }
+    QPoint p = convertCoord( pts[i] );
+    mstream << " " << p.x() << " " << p.y();
+    if ( m == 5 )
+    {
+      in_line = false;
+      mstream << "\n";
+    }
+  }
+  if ( in_line )
+      mstream << "\n";
 }
 void XFigExportImpVisitor::visit(const OpenPolygonalImp* imp)
 {
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
+  const std::vector<Coordinate> pts = imp->points();
+  mstream << "2 "; // polyline type;
+  mstream << "3 "; // polygon subtype;
+  mstream << "0 "; // line_style: Solid
+  mstream << width << " "; // thickness: *1/80 inch
+  mstream << mcurcolorid << " "; // pen_color: our color
+  mstream << mcurcolorid << " "; // fill_color: our color
+  mstream << "50 "; // depth: 50
+  mstream << "-1 "; // pen_style: unused by XFig
+  mstream << "20 "; // area_fill: 0% of opacity
+  mstream << "0.000 "; // style_val: the distance between dots and
+                       // dashes in case of dotted or dashed lines..
+  mstream << "0 "; // join_style: Miter
+  mstream << "0 "; // cap_style: Butt
+  mstream << "-1 "; // radius in case of an arc-box, but we're a
+                    // polygon, so nothing here..
+  mstream << "0 "; // forward arrow: no
+  mstream << "0 "; // backward arrow: no
+  mstream << pts.size(); // it has n (well, n+1) points
+  mstream << "\n";
+
+  // write the list of points, max 6 per line..
+  bool in_line = false;
+  for ( uint i = 0; i < pts.size(); ++i )
+  {
+    int m = i % 6;
+    if ( m == 0 )
+    {
+      in_line = true;
+      mstream << "\t";
+    }
+    QPoint p = convertCoord( pts[i] );
+    mstream << " " << p.x() << " " << p.y();
+    if ( m == 5 )
+    {
+      in_line = false;
+      mstream << "\n";
+    }
+  }
+  if ( in_line )
+      mstream << "\n";
 }
 
 void XFigExporter::run( const KigPart& doc, KigWidget& w )
