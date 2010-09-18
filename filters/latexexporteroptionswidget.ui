@@ -1,79 +1,103 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>LatexExporterOptionsWidget</class>
- <widget class="QWidget" name="LatexExporterOptionsWidget" >
-  <property name="geometry" >
+ <widget class="QWidget" name="LatexExporterOptionsWidget">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>403</width>
-    <height>113</height>
+    <width>417</width>
+    <height>375</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>8</number>
-   </property>
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>6</number>
    </property>
+   <property name="margin">
+    <number>8</number>
+   </property>
    <item>
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
-      <string>Options</string>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Output format</string>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>8</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>0</number>
+       <widget class="QRadioButton" name="psTricksRadioButton">
+        <property name="text">
+         <string>PSTricks</string>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="tikzRadioButton">
+        <property name="text">
+         <string>Tikz/PGF</string>
         </property>
-        <item row="1" column="0" >
-         <widget class="QCheckBox" name="showFrameCheckBox" >
-          <property name="text" >
-           <string>Show Extra Frame</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" >
-         <widget class="QCheckBox" name="showAxesCheckBox" >
-          <property name="text" >
-           <string>Show Axes</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" >
-         <widget class="QCheckBox" name="showGridCheckBox" >
-          <property name="text" >
-           <string>Show Grid</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item>
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Document options</string>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>5</height>
-      </size>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QRadioButton" name="pictureRadioButton">
+        <property name="text">
+         <string>Picture only</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="documentRadioButton">
+        <property name="text">
+         <string>Standalone document</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Options</string>
      </property>
-    </spacer>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="showGridCheckBox">
+        <property name="text">
+         <string>Show Grid</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="showFrameCheckBox">
+        <property name="text">
+         <string>Show Extra Frame</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="showAxesCheckBox">
+        <property name="text">
+         <string>Show Axes</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

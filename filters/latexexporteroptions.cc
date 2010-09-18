@@ -37,6 +37,48 @@ LatexExporterOptions::~LatexExporterOptions()
   delete expwidget;
 }
 
+void LatexExporterOptions::setFormat(LatexExporterOptions::LatexOutputFormat format)
+{
+  switch (format)
+  {
+    case PSTricks:
+      expwidget->psTricksRadioButton->setChecked(true);
+      break;
+    case Tikz:
+      expwidget->tikzRadioButton->setChecked(true);
+      break;
+  }
+}
+
+LatexExporterOptions::LatexOutputFormat LatexExporterOptions::format()
+{
+  if (expwidget->psTricksRadioButton->isChecked())
+  {
+    return PSTricks;
+  }
+  else
+  {
+    return Tikz;
+  }
+}
+
+void LatexExporterOptions::setStandalone(bool standalone)
+{
+  if (standalone)
+  {
+    expwidget->documentRadioButton->setChecked(true);
+  }
+  else
+  {
+    expwidget->pictureRadioButton->setChecked(true);
+  }
+}
+
+bool LatexExporterOptions::standalone()
+{
+  return expwidget->documentRadioButton->isChecked();
+}
+
 void LatexExporterOptions::setGrid( bool grid )
 {
   expwidget->showGridCheckBox->setChecked( grid );

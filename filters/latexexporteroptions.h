@@ -30,8 +30,21 @@ class LatexExporterOptions
   Ui_LatexExporterOptionsWidget* expwidget;
 
 public:
+
+  enum LatexOutputFormat
+  {
+    PSTricks,
+    Tikz
+  };
+
   LatexExporterOptions( QWidget* parent );
   ~LatexExporterOptions();
+
+  void setFormat( LatexOutputFormat format );
+  LatexOutputFormat format();
+
+  void setStandalone( bool standalone );
+  bool standalone();
 
   void setGrid( bool grid );
   bool showGrid() const;
