@@ -10,7 +10,7 @@
 <firstname>Ben</firstname>
 <surname>Burton</surname>
 </personname><email>bab@debian.org</email></author>
-<date>May 25, 2005</date>
+<date>2010-10-06</date>
 <productname>K Desktop Environment</productname>
 </refentryinfo>
 
@@ -57,7 +57,6 @@ exports both to and from foreign file formats including
 
 <refsect1>
 <title>Options</title>
-<para>App options, in a variablelist</para>
 
 <variablelist>
 <varlistentry>
