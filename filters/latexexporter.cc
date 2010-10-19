@@ -665,7 +665,7 @@ void TikZExportImpVisitor::plotGenericCurve( const CurveImp* imp )
 
     Coordinate c;
     Coordinate prev = Coordinate::invalidCoord();
-    for ( double i = 0.0; i <= 1.0; i += 0.05 )
+    for ( double i = 0.0; i <= 1.0; i += 0.005 )
     {
         c = imp->getPoint( i, mw.document() );
         if ( !c.valid() )
