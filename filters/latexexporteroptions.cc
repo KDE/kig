@@ -44,7 +44,7 @@ void LatexExporterOptions::setFormat(LatexExporterOptions::LatexOutputFormat for
     case PSTricks:
       expwidget->psTricksRadioButton->setChecked(true);
       break;
-    case Tikz:
+    case TikZ:
       expwidget->tikzRadioButton->setChecked(true);
       break;
   }
@@ -58,7 +58,7 @@ LatexExporterOptions::LatexOutputFormat LatexExporterOptions::format()
   }
   else
   {
-    return Tikz;
+    return TikZ;
   }
 }
 

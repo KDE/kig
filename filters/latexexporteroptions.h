@@ -34,7 +34,8 @@ public:
   enum LatexOutputFormat
   {
     PSTricks,
-    Tikz
+    TikZ,
+    FormatCount
   };
 
   LatexExporterOptions( QWidget* parent );

@@ -948,9 +948,20 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     kfd->setOptionCaption( i18n( "Latex Options" ) );
     LatexExporterOptions* opts = new LatexExporterOptions( 0L );
     kfd->setOptionsWidget( opts );
+    
     opts->setGrid( doc.document().grid() );
     opts->setAxes( doc.document().axes() );
     opts->setExtraFrame( false );
+    
+    KConfigGroup cg = KGlobal::config()->group("Latex Exporter");
+    
+    int fmt = cg.readEntry<int>("OutputFormat", LatexExporterOptions::PSTricks);
+    if (fmt > -1 && fmt < LatexExporterOptions::FormatCount)
+    {
+        opts->setFormat((LatexExporterOptions::LatexOutputFormat)fmt);
+    }
+    opts->setStandalone(cg.readEntry("Standalone", true));
+    
     if ( !kfd->exec() )
         return;
 
@@ -963,6 +974,9 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
 
     delete opts;
     delete kfd;
+    
+    cg.writeEntry("OutputFormat", (int)format);
+    cg.writeEntry("Standalone", standalone);
 
     QFile file( file_name );
     if ( ! file.open( QIODevice::WriteOnly ) )
@@ -981,7 +995,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
         if (standalone)
         {
             stream << "\\documentclass[a4paper]{minimal}\n";
-//  stream << "\\usepackage[latin1]{inputenc}\n";
+            //  stream << "\\usepackage[latin1]{inputenc}\n";
             stream << "\\usepackage{pstricks}\n";
             stream << "\\usepackage{pst-plot}\n";
             stream << "\\author{Kig " << KIGVERSION << "}\n";
@@ -1116,7 +1130,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
         }
 
         frameRect += Coordinate(-frameRect.width()/10, -frameRect.height()/10);
-        frameRect *= 1.2;
+        frameRect *= 1.2; // Add some 20% padding to the frame
 
         double size = qMax(frameRect.height(),frameRect.width());
         double scale = (size == 0) ? 1 : 10/size;
