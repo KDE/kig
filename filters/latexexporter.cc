@@ -1115,22 +1115,14 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
       }
       TikZExportImpVisitor visitor( stream, w );
 
-        Rect frameRect;
+        Rect frameRect = w.showingRect();
 
         for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
                 i != os.end(); ++i )
         {
             if ( ! ( *i )->shown() ) continue;
             visitor.mapColor( ( *i )->drawer()->color() );
-            Rect r = (*i)->imp()->surroundingRect();
-            if (r.valid())
-            {
-                frameRect |= (*i)->imp()->surroundingRect();
-            }
         }
-
-        frameRect += Coordinate(-frameRect.width()/10, -frameRect.height()/10);
-        frameRect *= 1.2; // Add some 20% padding to the frame
 
         double size = qMax(frameRect.height(),frameRect.width());
         double scale = (size == 0) ? 1 : 10/size;
