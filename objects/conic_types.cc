@@ -465,7 +465,7 @@ static const ArgsParser::spec argsspecParabolaBDP[] =
   { AbstractLineImp::stype(), I18N_NOOP( "Construct a parabola with this directrix" ),
     I18N_NOOP( "Select the directrix of the new parabola..." ), false },
   { PointImp::stype(), I18N_NOOP( "Construct a parabola with this focus" ),
-    I18N_NOOP( "Select the focus of the new parabola..." ), true }
+    I18N_NOOP( "Select the focus of the new parabola..." ), false }
 };
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ParabolaBDPType )
