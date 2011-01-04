@@ -198,7 +198,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   else if ( single )
   {
     if ( !objs[0]->name().isNull() )
-      title = TQString::fromLatin1( "%1 %2" ).arg( objs[0]->imp()->type()->translatedName() ).arg( objs[0]->name() );
+      title = TQString::tqfromLatin1( "%1 %2" ).arg( objs[0]->imp()->type()->translatedName() ).arg( objs[0]->name() );
     else
       title = objs[0]->imp()->type()->translatedName();
   }
@@ -518,7 +518,7 @@ static void addNameLabel( ObjectCalcer* object, ObjectCalcer* namecalcer, const 
        object->imp()->inherits( CurveImp::stype() ) )
     attachto = object;
   ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
-      TQString::fromLatin1( "%1" ), attachto, loc, namelabelneedsframe, args, doc.document() );
+      TQString::tqfromLatin1( "%1" ), attachto, loc, namelabelneedsframe, args, doc.document() );
   doc.addObject( label );
 }
 
@@ -924,7 +924,7 @@ bool PropertiesActionsProvider::executeAction(
 //  ///////    Coordinate c = Coordinate::invalidCoord();
     Coordinate c = w.fromScreen( popup.plc() );
     ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
-      TQString::fromLatin1( "%1" ), parent->calcer(), c,
+      TQString::tqfromLatin1( "%1" ), parent->calcer(), c,
       false, args, doc.document() );
     doc.addObject( label );
   }
@@ -1182,7 +1182,7 @@ ObjectChooserPopup::ObjectChooserPopup( const TQPoint& p, KigWidget& view,
   for ( uint i = 0; i < mobjs.size(); i++ )
   {
     insertItem( !mobjs[i]->name().isEmpty()
-                ? TQString::fromLatin1( "%1 %2" ).arg( mobjs[i]->imp()->type()->translatedName() ).arg( mobjs[i]->name() )
+                ? TQString::tqfromLatin1( "%1 %2" ).arg( mobjs[i]->imp()->type()->translatedName() ).arg( mobjs[i]->name() )
                 : mobjs[i]->imp()->type()->translatedName(),
                 i );
   }

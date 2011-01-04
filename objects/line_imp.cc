@@ -197,7 +197,7 @@ void SegmentImp::draw( KigPainter& p ) const
   p.drawSegment( mdata );
 }
 
-bool SegmentImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+bool SegmentImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   return internalContainsPoint( p, w.screenInfo().normalMiss( width ) );
 }
@@ -207,7 +207,7 @@ void RayImp::draw( KigPainter& p ) const
   p.drawRay( mdata );
 }
 
-bool RayImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+bool RayImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   return internalContainsPoint( p, w.screenInfo().normalMiss( width ) );
 }
@@ -217,7 +217,7 @@ void LineImp::draw( KigPainter& p ) const
   p.drawLine( mdata );
 }
 
-bool LineImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+bool LineImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   return internalContainsPoint( p, w.screenInfo().normalMiss( width ) );
 }
@@ -507,7 +507,7 @@ const ObjectImpType* LineImp::type() const
   return LineImp::stype();
 }
 
-bool SegmentImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+bool SegmentImp::tqcontainsPoint( const Coordinate& p, const KigDocument& ) const
 {
   return internalContainsPoint( p, test_threshold );
 }
@@ -517,7 +517,7 @@ bool SegmentImp::internalContainsPoint( const Coordinate& p, double threshold ) 
   return isOnSegment( p, mdata.a, mdata.b, threshold );
 }
 
-bool RayImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+bool RayImp::tqcontainsPoint( const Coordinate& p, const KigDocument& ) const
 {
   return internalContainsPoint( p, test_threshold );
 }
@@ -527,7 +527,7 @@ bool RayImp::internalContainsPoint( const Coordinate& p, double threshold ) cons
   return isOnRay( p, mdata.a, mdata.b, threshold );
 }
 
-bool LineImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+bool LineImp::tqcontainsPoint( const Coordinate& p, const KigDocument& ) const
 {
   return internalContainsPoint( p, test_threshold );
 }

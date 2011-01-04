@@ -69,15 +69,15 @@ void BaseConstructMode::leftReleased( TQMouseEvent* e, KigWidget* v )
 
   ObjectHolder* o = 0;
   bool keyCtrlOrShift = ( e->state() & ( ControlButton | ShiftButton) ) != 0;
-  std::vector<ObjectHolder*> moco = oco();
-  if ( ! moco.empty() )
+  std::vector<ObjectHolder*> tqmoco = oco();
+  if ( ! tqmoco.empty() )
   {
     std::vector<ObjectHolder*> goodargs;
-    if ( !moco.empty() )
+    if ( !tqmoco.empty() )
     {
       std::vector<ObjectHolder*>::const_iterator it;
       std::vector<ObjectCalcer*> testargs = getCalcers( mparents );
-      for ( std::vector<ObjectHolder*>::const_iterator i = moco.begin(); i != moco.end(); ++i )
+      for ( std::vector<ObjectHolder*>::const_iterator i = tqmoco.begin(); i != tqmoco.end(); ++i )
       {
         it = std::find( mparents.begin(), mparents.end(), *i );
         bool newdup =
@@ -485,7 +485,7 @@ void TestConstructMode::leftClickedObject( ObjectHolder* o, const TQPoint& p,
     std::vector<ObjectCalcer*> parents;
     parents.push_back( new ObjectConstCalcer( new IntImp( test_has_frame_dflt ) ) );
     parents.push_back( new ObjectConstCalcer( new PointImp( loc ) ) );
-    parents.push_back( new ObjectConstCalcer( new StringImp( TQString::fromLatin1( "%1" ) ) ) );
+    parents.push_back( new ObjectConstCalcer( new StringImp( TQString::tqfromLatin1( "%1" ) ) ) );
     assert( mresult->imp()->inherits( TestResultImp::stype() ) );
     parents.push_back(
       new ObjectPropertyCalcer(

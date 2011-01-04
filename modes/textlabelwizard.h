@@ -34,7 +34,7 @@ public:
   void reject();
   void accept();
 
-  void relayoutArgsPage();
+  void retqlayoutArgsPage();
 private slots:
   void textChanged();
   void linkClicked( int which );

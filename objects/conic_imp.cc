@@ -47,7 +47,7 @@ bool ConicImp::valid() const
   return true;
 }
 
-bool ConicImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
+bool ConicImp::tqcontains( const Coordinate& o, int width, const KigWidget& w ) const
 {
   return internalContainsPoint( o, w.screenInfo().normalMiss( width ) );
 }
@@ -332,7 +332,7 @@ const ObjectImpType* ConicImp::type() const
   return ConicImp::stype();
 }
 
-bool ConicImp::containsPoint( const Coordinate& p, const KigDocument& ) const
+bool ConicImp::tqcontainsPoint( const Coordinate& p, const KigDocument& ) const
 {
   const ConicPolarData d = polarData();
 

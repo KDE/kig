@@ -4,7 +4,7 @@
     <property name="name">
         <cstring>MacroWizardBase</cstring>
     </property>
-    <property name="geometry">
+    <property name="tqgeometry">
         <rect>
             <x>4</x>
             <y>0</y>
@@ -55,7 +55,7 @@
                 <property name="text">
                     <string>Select the "given" objects for your new macro and press "Next".</string>
                 </property>
-                <property name="alignment">
+                <property name="tqalignment">
                     <set>WordBreak|AlignVCenter</set>
                 </property>
             </widget>
@@ -180,7 +180,7 @@
         </vbox>
     </widget>
 </widget>
-<layoutdefaults spacing="6" margin="11"/>
+<tqlayoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klineedit.h</includehint>
     <includehint>klineedit.h</includehint>

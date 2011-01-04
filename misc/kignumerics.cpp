@@ -331,7 +331,7 @@ bool GaussianElimination( double *matrix[], int numrows,
 /*
  * solve an undetermined homogeneous triangular system. the matrix is nonzero
  * on its diagonal. The last unknown(s) are chosen to be 1. The
- * vector "exchange" contains exchanges to be performed on the
+ * vector "exchange" tqcontains exchanges to be performed on the
  * final solution components.
  */
 

@@ -159,12 +159,12 @@ bool PolygonImp::isInPolygon( const Coordinate& p ) const
 }
 #define selectpolygonwithinside 1
 #ifdef selectpolygonwithinside
-bool PolygonImp::contains( const Coordinate& p, int, const KigWidget& ) const
+bool PolygonImp::tqcontains( const Coordinate& p, int, const KigWidget& ) const
 {
   return isInPolygon( p );
 }
 #else
-bool PolygonImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+bool PolygonImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   bool ret = false;
   uint reduceddim = mpoints.size() - 1;

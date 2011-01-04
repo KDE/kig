@@ -159,7 +159,7 @@ const Coordinate Coordinate::normalize( double l ) const
 
 const Coordinate Coordinate::round() const
 {
-  return Coordinate( qRound( x ), qRound( y ) );
+  return Coordinate( tqRound( x ), tqRound( y ) );
 }
 
 TQPoint Coordinate::toQPoint() const

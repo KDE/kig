@@ -101,7 +101,7 @@ TQValidator::State CoordinateValidator::validate( TQString & input, int & pos ) 
 
 void CoordinateValidator::fixup( TQString & input ) const
 {
-  int nsc = input.contains( ';' );
+  int nsc = input.tqcontains( ';' );
   if ( nsc > 1 )
   {
     // where is the second ';'
@@ -116,19 +116,19 @@ void CoordinateValidator::fixup( TQString & input ) const
     sc = input.length();
     KLocale* l = KGlobal::locale();
     if ( mpolar )
-      input.append( TQString::fromLatin1( ";" ) + l->positiveSign() +
-                    TQString::fromLatin1( "0°" ) );
+      input.append( TQString::tqfromLatin1( ";" ) + l->positiveSign() +
+                    TQString::tqfromLatin1( "0°" ) );
     else
-      input.append( TQString::fromLatin1( ";" ) + l->positiveSign() +
-                    TQString::fromLatin1( "0" ) + l->decimalSymbol() +
-                    TQString::fromLatin1( "0" ) );
+      input.append( TQString::tqfromLatin1( ";" ) + l->positiveSign() +
+                    TQString::tqfromLatin1( "0" ) + l->decimalSymbol() +
+                    TQString::tqfromLatin1( "0" ) );
   };
   mre.exactMatch( input );
   TQString ds1 = mre.cap( 1 );
   mdv.fixup( ds1 );
   TQString ds2 = mre.cap( 2 );
   mdv.fixup( ds2 );
-  input = ds1 + TQString::fromLatin1( "; " ) + ds2;
+  input = ds1 + TQString::tqfromLatin1( "; " ) + ds2;
 }
 
 EuclideanCoords::EuclideanCoords()
@@ -146,7 +146,7 @@ TQString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d 
   int l = kigMax( 0, (int) ( 3 - log10( m ) ) );
   TQString xs = KGlobal::locale()->formatNumber( p.x, l );
   TQString ys = KGlobal::locale()->formatNumber( p.y, l );
-  return TQString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
+  return TQString::tqfromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
 }
 
 Coordinate EuclideanCoords::toScreen(const TQString& s, bool& ok) const
@@ -354,7 +354,7 @@ TQString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) c
   TQString rs = KGlobal::locale()->formatNumber( r, l );
   TQString ts = KGlobal::locale()->formatNumber( theta, 0 );
 
-  return TQString::fromLatin1("( %1; %2° )").arg( rs ).arg( ts );
+  return TQString::tqfromLatin1("( %1; %2° )").arg( rs ).arg( ts );
 }
 
 TQString PolarCoords::coordinateFormatNotice() const
@@ -608,8 +608,8 @@ Coordinate EuclideanCoords::snapToGrid( const Coordinate& c,
   const double hgraphmin = ceil( hmin / hd) * hd;
   const double vgraphmin = ceil( vmin / vd ) * vd;
 
-  const double nx = qRound( ( c.x - hgraphmin ) / hd ) * hd + hgraphmin;
-  const double ny = qRound( ( c.y - vgraphmin ) / vd ) * vd + vgraphmin;
+  const double nx = tqRound( ( c.x - hgraphmin ) / hd ) * hd + hgraphmin;
+  const double ny = tqRound( ( c.y - vgraphmin ) / vd ) * vd + vgraphmin;
   return Coordinate( nx, ny );
 }
 
@@ -643,7 +643,7 @@ Coordinate PolarCoords::snapToGrid( const Coordinate& c,
   double d = kigMin( hd, vd );
 
   double dist = c.length();
-  double ndist = qRound( dist / d ) * d;
+  double ndist = tqRound( dist / d ) * d;
   return c.normalize( ndist );
 }
 

@@ -99,7 +99,7 @@ public:
   SegmentImp( const LineData& d );
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+  bool tqcontains( const Coordinate& p, int width, const KigWidget& si ) const;
   Rect surroundingRect() const;
 
   ObjectImp* transform( const Transformation& ) const;
@@ -124,7 +124,7 @@ public:
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool tqcontainsPoint( const Coordinate& p, const KigDocument& doc ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
@@ -154,7 +154,7 @@ public:
   RayImp( const LineData& d );
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+  bool tqcontains( const Coordinate& p, int width, const KigWidget& si ) const;
   Rect surroundingRect() const;
 
   ObjectImp* transform( const Transformation& ) const;
@@ -167,7 +167,7 @@ public:
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool tqcontainsPoint( const Coordinate& p, const KigDocument& doc ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
@@ -195,7 +195,7 @@ public:
    */
   LineImp( const LineData& d );
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
+  bool tqcontains( const Coordinate& p, int width, const KigWidget& si ) const;
   Rect surroundingRect() const;
 
   ObjectImp* transform( const Transformation& ) const;
@@ -208,7 +208,7 @@ public:
   const ObjectImpType* type() const;
   void visit( ObjectImpVisitor* vtor ) const;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool tqcontainsPoint( const Coordinate& p, const KigDocument& doc ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 

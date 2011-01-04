@@ -49,7 +49,7 @@ public:
   ObjectImp* transform( const Transformation& ) const;
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
+  bool tqcontains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
 
@@ -113,7 +113,7 @@ public:
   double getParam( const Coordinate&, const KigDocument& ) const;
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
+  bool tqcontains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
 
@@ -153,7 +153,7 @@ public:
 
   bool equals( const ObjectImp& rhs ) const;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool tqcontainsPoint( const Coordinate& p, const KigDocument& doc ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
@@ -186,7 +186,7 @@ public:
   ObjectImp* transform( const Transformation& t ) const;
 
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& w ) const;
+  bool tqcontains( const Coordinate& p, int width, const KigWidget& w ) const;
   bool inRect( const Rect& r, int width, const KigWidget& si ) const;
   Rect surroundingRect() const;
   bool valid() const;
@@ -236,7 +236,7 @@ public:
 
   bool equals( const ObjectImp& rhs ) const;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool tqcontainsPoint( const Coordinate& p, const KigDocument& doc ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 

@@ -46,7 +46,7 @@ public:
 
   Coordinate attachPoint( ) const;
   void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& w ) const;
+  bool tqcontains( const Coordinate& p, int width, const KigWidget& w ) const;
   bool inRect( const Rect& r, int width, const KigWidget& w ) const;
   Rect surroundingRect() const;
 

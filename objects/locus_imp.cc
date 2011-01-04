@@ -49,7 +49,7 @@ void LocusImp::draw( KigPainter& p ) const
   p.drawCurve( this );
 }
 
-bool LocusImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+bool LocusImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   return internalContainsPoint( p, w.screenInfo().normalMiss( width ), w.document() );
 }
@@ -372,7 +372,7 @@ const ObjectImpType* LocusImp::type() const
   return LocusImp::stype();
 }
 
-bool LocusImp::containsPoint( const Coordinate& p, const KigDocument& doc ) const
+bool LocusImp::tqcontainsPoint( const Coordinate& p, const KigDocument& doc ) const
 {
   return internalContainsPoint( p, test_threshold, doc );
 }

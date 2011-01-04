@@ -167,7 +167,7 @@ bool KigPrintDialogPage::isValid( TQString& )
   return true;
 }
 
-KigPart::KigPart( TQWidget *parentWidget, const char *,
+KigPart::KigPart( TQWidget *tqparentWidget, const char *,
 			  TQObject *parent, const char *name,
 			  const TQStringList& )
   : KParts::ReadWritePart( parent, name ),
@@ -179,7 +179,7 @@ KigPart::KigPart( TQWidget *parentWidget, const char *,
   mMode = new NormalMode( *this );
 
   // we need a widget, to actually show the document
-  m_widget = new KigView(this, false, parentWidget, "kig_view");
+  m_widget = new KigView(this, false, tqparentWidget, "kig_view");
   // notify the part that this is our internal widget
   setWidget( m_widget );
 
@@ -378,7 +378,7 @@ bool KigPart::openFile()
 
   // m_file is always local, so we can use findByPath instead of
   // findByURL...
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
+  KMimeType::Ptr mimeType = KMimeType::tqfindByPath ( m_file );
   kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
@@ -429,7 +429,7 @@ bool KigPart::saveFile()
 {
   if ( m_file.isEmpty() || m_bTemp ) return internalSaveAs();
   // mimetype:
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( m_file );
+  KMimeType::Ptr mimeType = KMimeType::tqfindByPath ( m_file );
   if ( mimeType->name() != "application/x-kig" )
   {
     // we don't support this mime type...
@@ -930,7 +930,7 @@ extern "C" int convertToNative( const KURL& url, const TQCString& outfile )
     return -1;
   };
 
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( file );
+  KMimeType::Ptr mimeType = KMimeType::tqfindByPath ( file );
   kdDebug() << k_funcinfo << "mimetype: " << mimeType->name() << endl;
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )

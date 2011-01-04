@@ -69,7 +69,7 @@ std::vector<ObjectHolder*> KigDocument::whatAmIOn( const Coordinate& p, const Ki
   for ( std::set<ObjectHolder*>::const_iterator i = mobjects.begin();
         i != mobjects.end(); ++i )
   {
-    if(!(*i)->contains(p, w, mnightvision)) continue;
+    if(!(*i)->tqcontains(p, w, mnightvision)) continue;
     if ( (*i)->imp()->inherits( PointImp::stype() ) ) ret.push_back( *i );
     else 
       if ( !(*i)->imp()->inherits( PolygonImp::stype() ) ) curves.push_back( *i );

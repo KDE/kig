@@ -32,7 +32,7 @@ void BogusImp::draw( KigPainter& ) const
 {
 }
 
-bool BogusImp::contains( const Coordinate&, int, const KigWidget& ) const
+bool BogusImp::tqcontains( const Coordinate&, int, const KigWidget& ) const
 {
   return false;
 }

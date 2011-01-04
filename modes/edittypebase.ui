@@ -4,7 +4,7 @@
     <property name="name">
         <cstring>EditTypeBase</cstring>
     </property>
-    <property name="geometry">
+    <property name="tqgeometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -43,7 +43,7 @@
         </widget>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>layout8</cstring>
+                <cstring>tqlayout8</cstring>
             </property>
             <hbox>
                 <property name="name">
@@ -51,7 +51,7 @@
                 </property>
                 <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>layout8</cstring>
+                        <cstring>tqlayout8</cstring>
                     </property>
                     <vbox>
                         <property name="name">
@@ -125,7 +125,7 @@
                 </widget>
                 <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>layout23</cstring>
+                        <cstring>tqlayout23</cstring>
                     </property>
                     <vbox>
                         <property name="name">
@@ -152,7 +152,7 @@
                             <property name="sizeType">
                                 <enum>Expanding</enum>
                             </property>
-                            <property name="sizeHint">
+                            <property name="tqsizeHint">
                                 <size>
                                     <width>20</width>
                                     <height>20</height>
@@ -179,7 +179,7 @@
         </widget>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>layout24</cstring>
+                <cstring>tqlayout24</cstring>
             </property>
             <hbox>
                 <property name="name">
@@ -212,7 +212,7 @@
                     <property name="sizeType">
                         <enum>Expanding</enum>
                     </property>
-                    <property name="sizeHint">
+                    <property name="tqsizeHint">
                         <size>
                             <width>20</width>
                             <height>20</height>
@@ -275,7 +275,7 @@
     <slot>okSlot()</slot>
     <slot>cancelSlot()</slot>
 </slots>
-<layoutdefaults spacing="6" margin="11"/>
+<tqlayoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klineedit.h</includehint>
     <includehint>klineedit.h</includehint>

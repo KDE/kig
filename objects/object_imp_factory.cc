@@ -84,33 +84,33 @@ TQString ObjectImpFactory::serialize( const ObjectImp& d, TQDomElement& parent,
     parent.appendChild(
       doc.createTextNode(
         TQString::number( static_cast<const IntImp&>( d ).data() ) ) );
-    return TQString::fromLatin1( "int" );
+    return TQString::tqfromLatin1( "int" );
   }
   else if ( d.inherits( DoubleImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
         TQString::number( static_cast<const DoubleImp&>( d ).data() ) ) );
-    return TQString::fromLatin1( "double" );
+    return TQString::tqfromLatin1( "double" );
   }
   else if( d.inherits( StringImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
         static_cast<const StringImp&>( d ).data() ) );
-    return TQString::fromLatin1( "string" );
+    return TQString::tqfromLatin1( "string" );
   }
   else if ( d.inherits( TestResultImp::stype() ) )
   {
     parent.appendChild(
       doc.createTextNode(
         static_cast<const TestResultImp&>( d ).data() ) );
-    return TQString::fromLatin1( "testresult" );
+    return TQString::tqfromLatin1( "testresult" );
   }
   else if( d.inherits( HierarchyImp::stype() ) )
   {
     static_cast<const HierarchyImp&>( d ).data().serialize( parent, doc );
-    return TQString::fromLatin1( "hierarchy" );
+    return TQString::tqfromLatin1( "hierarchy" );
   }
   else if ( d.inherits( TransformationImp::stype() ) )
   {
@@ -135,7 +135,7 @@ TQString ObjectImpFactory::serialize( const ObjectImp& d, TQDomElement& parent,
     homothetye.appendChild( doc.createTextNode( ishomothety ) );
     parent.appendChild( homothetye );
 
-    return TQString::fromLatin1( "transformation" );
+    return TQString::tqfromLatin1( "transformation" );
   }
   else if( d.inherits( AbstractLineImp::stype() ) )
   {
@@ -143,28 +143,28 @@ TQString ObjectImpFactory::serialize( const ObjectImp& d, TQDomElement& parent,
     addCoordinateElement( "a", l.a, parent, doc );
     addCoordinateElement( "b", l.b, parent, doc );
     if( d.inherits( SegmentImp::stype() ) )
-      return TQString::fromLatin1( "segment" );
+      return TQString::tqfromLatin1( "segment" );
     else if( d.inherits( RayImp::stype() ) )
-      return TQString::fromLatin1( "ray" );
-    else return TQString::fromLatin1( "line" );
+      return TQString::tqfromLatin1( "ray" );
+    else return TQString::tqfromLatin1( "line" );
   }
   else if( d.inherits( PointImp::stype() ) )
   {
     addXYElements( static_cast<const PointImp&>( d ).coordinate(),
                    parent, doc );
-    return TQString::fromLatin1( "point" );
+    return TQString::tqfromLatin1( "point" );
   }
   else if( d.inherits( TextImp::stype() ) )
   {
     TQString text = static_cast<const TextImp&>( d ).text();
     parent.appendChild(
       doc.createTextNode( text ) );
-    return TQString::fromLatin1( "text" );
+    return TQString::tqfromLatin1( "text" );
   }
   else if( d.inherits( AngleImp::stype() ) )
   {
     addDoubleElement( "size", static_cast<const AngleImp&>( d ).size(), parent, doc );
-    return TQString::fromLatin1( "angle" );
+    return TQString::tqfromLatin1( "angle" );
   }
   else if ( d.inherits( ArcImp::stype() ) )
   {
@@ -173,13 +173,13 @@ TQString ObjectImpFactory::serialize( const ObjectImp& d, TQDomElement& parent,
     addDoubleElement( "radius", a.radius(), parent, doc );
     addDoubleElement( "startangle", a.startAngle(), parent, doc );
     addDoubleElement( "angle", a.angle(), parent, doc );
-    return TQString::fromLatin1( "arc" );
+    return TQString::tqfromLatin1( "arc" );
   }
   else if( d.inherits( VectorImp::stype() ) )
   {
     Coordinate dir = static_cast<const VectorImp&>( d ).dir();
     addXYElements( dir, parent, doc );
-    return TQString::fromLatin1( "vector" );
+    return TQString::tqfromLatin1( "vector" );
   }
   else if( d.inherits( LocusImp::stype() ) )
   {
@@ -197,14 +197,14 @@ TQString ObjectImpFactory::serialize( const ObjectImp& d, TQDomElement& parent,
     locus.hierarchy().serialize( hier, doc );
     parent.appendChild( hier );
 
-    return TQString::fromLatin1( "locus" );
+    return TQString::tqfromLatin1( "locus" );
   }
   else if( d.inherits( CircleImp::stype() ) )
   {
     const CircleImp& c = static_cast<const CircleImp&>( d );
     addCoordinateElement( "center", c.center(), parent, doc );
     addDoubleElement( "radius", c.radius(), parent, doc );
-    return TQString::fromLatin1( "circle" );
+    return TQString::tqfromLatin1( "circle" );
   }
   else if( d.inherits( ConicImp::stype() ) )
   {
@@ -213,7 +213,7 @@ TQString ObjectImpFactory::serialize( const ObjectImp& d, TQDomElement& parent,
     addDoubleElement( "pdimen", data.pdimen, parent, doc );
     addDoubleElement( "ecostheta0", data.ecostheta0, parent, doc );
     addDoubleElement( "esintheta0", data.esintheta0, parent, doc );
-    return TQString::fromLatin1( "conic" );
+    return TQString::tqfromLatin1( "conic" );
   }
   else if( d.inherits( CubicImp::stype() ) )
   {
@@ -230,7 +230,7 @@ TQString ObjectImpFactory::serialize( const ObjectImp& d, TQDomElement& parent,
     addDoubleElement( "a122", data.coeffs[8], coeffs, doc );
     addDoubleElement( "a222", data.coeffs[9], coeffs, doc );
     parent.appendChild( coeffs );
-    return TQString::fromLatin1( "cubic" );
+    return TQString::tqfromLatin1( "cubic" );
   }
   assert( false );
   return TQString::null;

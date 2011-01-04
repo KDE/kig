@@ -4,7 +4,7 @@
     <property name="name">
         <cstring>TypesDialogBase</cstring>
     </property>
-    <property name="geometry">
+    <property name="tqgeometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -30,7 +30,7 @@
         </property>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>layout1</cstring>
+                <cstring>tqlayout1</cstring>
             </property>
             <hbox>
                 <property name="name">
@@ -90,7 +90,7 @@
         </widget>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>layout4</cstring>
+                <cstring>tqlayout4</cstring>
             </property>
             <hbox>
                 <property name="name">
@@ -98,7 +98,7 @@
                 </property>
                 <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>layout3</cstring>
+                        <cstring>tqlayout3</cstring>
                     </property>
                     <vbox>
                         <property name="name">
@@ -138,7 +138,7 @@
                     <property name="sizeType">
                         <enum>Expanding</enum>
                     </property>
-                    <property name="sizeHint">
+                    <property name="tqsizeHint">
                         <size>
                             <width>20</width>
                             <height>20</height>
@@ -147,7 +147,7 @@
                 </spacer>
                 <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>layout4</cstring>
+                        <cstring>tqlayout4</cstring>
                     </property>
                     <vbox>
                         <property name="name">
@@ -228,7 +228,7 @@
                     <property name="sizeType">
                         <enum>Expanding</enum>
                     </property>
-                    <property name="sizeHint">
+                    <property name="tqsizeHint">
                         <size>
                             <width>20</width>
                             <height>20</height>
@@ -323,7 +323,7 @@
     <slot access="protected">contextMenuRequested( QListViewItem* i, const QPoint&amp; p, int c )</slot>
     <slot>cancelSlot()</slot>
 </slots>
-<layoutdefaults spacing="6" margin="11"/>
+<tqlayoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klistview.h</includehint>
     <includehint>kpushbutton.h</includehint>

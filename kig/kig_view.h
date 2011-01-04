@@ -61,7 +61,7 @@ class KigWidget : public QWidget
   void paintEvent( TQPaintEvent* e );
   void wheelEvent( TQWheelEvent* e );
   void resizeEvent( TQResizeEvent* );
-  TQSize sizeHint() const;
+  TQSize tqsizeHint() const;
 
   /**
    * this is called to match a rect's dimensions to the dimensions of
@@ -228,7 +228,7 @@ class KigView
 {
   Q_OBJECT
 
-  TQGridLayout* mlayout;
+  TQGridLayout* mtqlayout;
   TQScrollBar* mrightscroll;
   TQScrollBar* mbottomscroll;
 

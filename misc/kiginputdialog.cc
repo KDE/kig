@@ -85,7 +85,7 @@ KigInputDialog::KigInputDialog( const TQString& caption, const TQString& label,
   d->m_textEdit->setText( label );
   d->m_textEdit->setReadOnly( true );
   d->m_textEdit->setFocusPolicy( NoFocus );
-//  d->m_textEdit->setAlignment( d->m_textEdit->alignment() | Qt::WordBreak );
+//  d->m_textEdit->tqsetAlignment( d->m_textEdit->tqalignment() | Qt::WordBreak );
   d->m_textEdit->setFrameStyle( TQFrame::NoFrame );
   mainlay->addWidget( d->m_textEdit );
 

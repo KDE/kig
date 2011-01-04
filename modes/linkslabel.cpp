@@ -33,7 +33,7 @@ using namespace std;
 class LinksLabel::Private
 {
 public:
-  TQHBoxLayout* layout;
+  TQHBoxLayout* tqlayout;
   std::vector<TQLabel*> labels;
   std::vector<KURLLabel*> urllabels;
 };
@@ -42,22 +42,22 @@ LinksLabel::LinksLabel( TQWidget* parent, const char* name )
   : TQWidget( parent, name )
 {
   p = new Private;
-  p->layout = new TQHBoxLayout( this );
+  p->tqlayout = new TQHBoxLayout( this );
 
   TQLabel* l = new TQLabel( TQString::fromUtf8( "Dit is een " ), this );
   p->labels.push_back( l );
-  p->layout->addWidget( l );
+  p->tqlayout->addWidget( l );
 
   KURLLabel* u = new KURLLabel( TQString::fromUtf8( "http://www.kde.org/" ),
                                 TQString::fromUtf8( "url"), this );
   p->urllabels.push_back( u );
-  p->layout->addWidget( u );
+  p->tqlayout->addWidget( u );
 
   l = new TQLabel( TQString::fromUtf8( " !" ), this );
   p->labels.push_back( l );
-  p->layout->addWidget(l );
+  p->tqlayout->addWidget(l );
 
-  p->layout->activate();
+  p->tqlayout->activate();
 }
 
 LinksLabel::~LinksLabel()
@@ -99,8 +99,8 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
   p->urllabels.clear();
   p->labels.clear();
 
-  delete p->layout;
-  p->layout = new TQHBoxLayout( this );
+  delete p->tqlayout;
+  p->tqlayout = new TQHBoxLayout( this );
 
   for ( LinksLabelEditBuf::vec::iterator i = buf.data.begin(); i != buf.data.end(); ++i )
   {
@@ -111,7 +111,7 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
       KURLLabel* l = new KURLLabel( TQString::fromUtf8( "http://edu.kde.org/kig" ),
                                     i->second, this );
       p->urllabels.push_back( l );
-      p->layout->addWidget( l );
+      p->tqlayout->addWidget( l );
       connect( l, TQT_SIGNAL( leftClickedURL() ), TQT_SLOT( urlClicked() ) );
     }
     else
@@ -119,15 +119,15 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
       // we need a normal label...
       TQLabel* l = new TQLabel( i->second, this );
       p->labels.push_back( l );
-      p->layout->addWidget( l );
+      p->tqlayout->addWidget( l );
     };
   };
 
   TQSpacerItem* spacer = new TQSpacerItem( 40,  20,  TQSizePolicy::Expanding,  TQSizePolicy::Minimum );
 
-  p->layout->addItem( spacer );
+  p->tqlayout->addItem( spacer );
 
-  p->layout->activate();
+  p->tqlayout->activate();
 
   std::for_each( p->urllabels.begin(), p->urllabels.end(), mem_fun( &TQWidget::show ) );
   std::for_each( p->labels.begin(), p->labels.end(), mem_fun( &TQWidget::show ) );

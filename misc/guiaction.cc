@@ -93,7 +93,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
 {
   setWhatsThis( act->description() );
   TQString tooltip = act->descriptiveName();
-  tooltip.replace( TQRegExp( "&&" ), "&" );
+  tooltip.tqreplace( TQRegExp( "&&" ), "&" );
   setToolTip( tooltip );
 }
 
@@ -223,7 +223,7 @@ void AddFixedPointAction::act( KigPart& doc )
   KigInputDialog::getCoordinate(
     i18n( "Fixed Point" ),
     i18n( "Enter the coordinates for the new point." ) +
-    TQString::fromLatin1( "<br>" ) +
+    TQString::tqfromLatin1( "<br>" ) +
     doc.document().coordinateSystem().coordinateFormatNoticeMarkup(),
     doc.widget(), &ok, doc.document(), &c );
   if ( ! ok ) return;
@@ -272,7 +272,7 @@ TestAction::~TestAction()
 
 TQString TestAction::description() const
 {
-  return TQString::fromLatin1( "Test stuff !!!" );
+  return TQString::tqfromLatin1( "Test stuff !!!" );
 }
 
 TQCString TestAction::iconFileName() const
@@ -282,7 +282,7 @@ TQCString TestAction::iconFileName() const
 
 TQString TestAction::descriptiveName() const
 {
-  return TQString::fromLatin1( "Test stuff !!!" );
+  return TQString::tqfromLatin1( "Test stuff !!!" );
 }
 
 const char* TestAction::actionName() const
@@ -297,7 +297,7 @@ void TestAction::act( KigPart& doc )
   Object* constantpoint = ObjectFactory::instance()->fixedPoint( Coordinate( -1, -1 ) );
   constantpoint->calc( doc );
 
-  Object* codeobject = new DataObject( new StringImp( TQString::fromLatin1( script ) ) );
+  Object* codeobject = new DataObject( new StringImp( TQString::tqfromLatin1( script ) ) );
   Object* compiledcode = new RealObject( PythonCompileType::instance(), Objects( codeobject ) );
   compiledcode->calc( doc );
 

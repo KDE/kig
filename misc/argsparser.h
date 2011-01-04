@@ -29,7 +29,7 @@ class ObjectImpType;
  * parents to ObjectCalcer's, and to put them in the correct order.
  * An ObjectType should construct an ArgsParser with a specification
  * of the arguments it wants.  This specification is given as an array
- * of ArgsParser::spec structs.  This struct contains a pointer to an
+ * of ArgsParser::spec structs.  This struct tqcontains a pointer to an
  * ObjectImpType ( which is the type you want the argument to have ),
  * a string ( which is an I18N_NOOP'd string describing what you will
  * be using the argument for ) and a boolean ( which says whether the

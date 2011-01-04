@@ -101,9 +101,9 @@ public:
    */
   void draw( KigPainter& p, bool selected ) const;
   /**
-   * Returns whether this object contains the point \p p .
+   * Returns whether this object tqcontains the point \p p .
    */
-  bool contains( const Coordinate& p, const KigWidget& w, bool nv = false ) const;
+  bool tqcontains( const Coordinate& p, const KigWidget& w, bool nv = false ) const;
   /**
    * Returns whether this object is in the rectangle \p r .
    */

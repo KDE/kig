@@ -42,7 +42,7 @@ void PointImp::draw( KigPainter& p ) const
   p.drawFatPoint( mc );
 }
 
-bool PointImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
+bool PointImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   int twidth = width == -1 ? 5 : width;
   return (p - mc).length() - twidth*w.screenInfo().pixelWidth() < 0;
@@ -51,7 +51,7 @@ bool PointImp::contains( const Coordinate& p, int width, const KigWidget& w ) co
 bool PointImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
   double am = w.screenInfo().normalMiss( width );
-  return r.contains( mc, am );
+  return r.tqcontains( mc, am );
 }
 
 const uint PointImp::numberOfProperties() const

@@ -211,7 +211,7 @@ double Rect::height() const
   return mheight;
 }
 
-bool Rect::contains( const Coordinate& p, double allowed_miss ) const
+bool Rect::tqcontains( const Coordinate& p, double allowed_miss ) const
 {
   return p.x - left() >= - allowed_miss &&
     p.y - bottom() >= - allowed_miss &&
@@ -219,7 +219,7 @@ bool Rect::contains( const Coordinate& p, double allowed_miss ) const
     p.y - bottom() - height() <= allowed_miss;
 }
 
-bool Rect::contains( const Coordinate& p ) const
+bool Rect::tqcontains( const Coordinate& p ) const
 {
   return p.x >= left() &&
     p.y >= bottom() &&

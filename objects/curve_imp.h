@@ -51,12 +51,12 @@ public:
   virtual CurveImp* copy() const = 0;
 
   /**
-   * Return whether this Curve contains the given point.  This is
+   * Return whether this Curve tqcontains the given point.  This is
    * implemented as a numerical approximation.  Implementations
    * can/should use the value test_threshold in common.h as a
    * threshold value.
    */
-  virtual bool containsPoint( const Coordinate& p, const KigDocument& ) const = 0;
+  virtual bool tqcontainsPoint( const Coordinate& p, const KigDocument& ) const = 0;
 };
 
 #endif

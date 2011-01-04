@@ -26,7 +26,7 @@ class KigDocument;
 class TQString;
 
 /**
- * This is an import filter for the GNOME geometry program DrGeo.
+ * This is an import filter for the GNOME tqgeometry program DrGeo.
  */
 class KigFilterDrgeo
   : public KigFilter

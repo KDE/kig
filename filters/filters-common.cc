@@ -34,6 +34,6 @@ ObjectTypeCalcer* filtersConstructTextObject(
   propo->calc( doc );
   std::vector<ObjectCalcer*> args;
   args.push_back( propo );
-  return fact->labelCalcer( TQString::fromLatin1( "%1" ), c, needframe,
+  return fact->labelCalcer( TQString::tqfromLatin1( "%1" ), c, needframe,
                             args, doc );
 }

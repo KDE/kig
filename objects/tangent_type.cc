@@ -68,7 +68,7 @@ ObjectImp* TangentConicType::calc( const Args& args, const KigDocument& doc ) co
   const ConicImp* c = static_cast<const ConicImp*>( args[0] );
   const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
 
-  if ( !c->containsPoint( p, doc ) )
+  if ( !c->tqcontainsPoint( p, doc ) )
     return new InvalidImp;
 
   bool ok;
@@ -118,7 +118,7 @@ ObjectImp* TangentArcType::calc( const Args& args, const KigDocument& doc ) cons
   const ArcImp* arc = static_cast<const ArcImp*>( args[0] );
   const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
 
-  if ( !arc->containsPoint( p, doc ) )
+  if ( !arc->tqcontainsPoint( p, doc ) )
     return new InvalidImp;
 
   Coordinate c = arc->center();
@@ -173,7 +173,7 @@ ObjectImp* TangentCubicType::calc( const Args& args, const KigDocument& doc ) co
   const CubicImp* cubic = static_cast<const CubicImp*>( args[0] );
   const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
 
-  if ( !cubic->containsPoint( p, doc ) )
+  if ( !cubic->tqcontainsPoint( p, doc ) )
     return new InvalidImp;
 
   double x = p.x;
@@ -243,7 +243,7 @@ ObjectImp* TangentCurveType::calc( const Args& args, const KigDocument& doc ) co
 
   const CurveImp* curve = static_cast<const CurveImp*>( args[0] );
   const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
-  if ( !curve->containsPoint( p, doc ) )
+  if ( !curve->tqcontainsPoint( p, doc ) )
     return new InvalidImp;
 
   const double t = curve->getParam( p, doc );

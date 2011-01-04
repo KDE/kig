@@ -41,7 +41,7 @@ DrgeoPlugin::DrgeoPlugin( TQObject *parent, const char *name, const TQStringList
   item = addItemInfo( group, "NumOfMacros", i18n( "Macros" ), TQVariant::Int );
   
   group_contents = addGroupInfo( info, "DrgeoContents", i18n( "Translators: what this drgeo "
-                                                              "file contains", "Contents" ) );
+                                                              "file tqcontains", "Contents" ) );
 }
 
 bool DrgeoPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )

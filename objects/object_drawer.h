@@ -64,11 +64,11 @@ public:
    */
   void draw( const ObjectImp& imp, KigPainter& p, bool selected ) const;
   /**
-   * returns whether the object \p imp contains coordinate \p p . This is
+   * returns whether the object \p imp tqcontains coordinate \p p . This is
    * dependent on whether it is shown ( when it will never contain
    * anything ), and on its width..
    */
-  bool contains( const ObjectImp& imp, const Coordinate& pt, const KigWidget& w, bool nv = false ) const;
+  bool tqcontains( const ObjectImp& imp, const Coordinate& pt, const KigWidget& w, bool nv = false ) const;
   /**
    * returns whether the object \p imp is in the rectangle \p r . This is
    * dependent on whether it is shown and on its width..

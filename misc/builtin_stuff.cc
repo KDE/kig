@@ -508,15 +508,15 @@ void setupBuiltinStuff()
     c = new TestConstructor(
       ContainsTestType::instance(),
       I18N_NOOP( "Contains Test" ),
-      I18N_NOOP( "Test whether a given curve contains a given point" ),
-      "testcontains" );
+      I18N_NOOP( "Test whether a given curve tqcontains a given point" ),
+      "testqcontains" );
     ctors->add( c );
-    actions->add( new ConstructibleAction( c, "objects_new_containstest" ) );
+    actions->add( new ConstructibleAction( c, "objects_new_tqcontainstest" ) );
 
     c = new TestConstructor(
       InPolygonTestType::instance(),
       I18N_NOOP( "In Polygon Test" ),
-      I18N_NOOP( "Test whether a given polygon contains a given point" ),
+      I18N_NOOP( "Test whether a given polygon tqcontains a given point" ),
       "test" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_inpolygontest" ) );

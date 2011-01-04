@@ -188,7 +188,7 @@ void calcBorderPoints( Coordinate& p1, Coordinate& p2, const Rect& r );
  */
 void calcBorderPoints( double& xa, double& xb, double& ya, double& yb, const Rect& r);
 /**
- * cleaner overload, intended to replace the above two...
+ * cleaner overload, intended to tqreplace the above two...
  */
 const LineData calcBorderPoints( const LineData& l, const Rect& r );
 
@@ -257,7 +257,7 @@ Coordinate calcCircleRadicalStartPoint( const Coordinate& ca,
 /**
  * Is the line, segment, ray or vector inside r ?  We need the imp to
  * distinguish between rays, lines, segments or whatever.. ( we use
- * their contains functions actually.. )
+ * their tqcontains functions actually.. )
  */
 bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
                  const int width, const ObjectImp* imp, const KigWidget& w );
