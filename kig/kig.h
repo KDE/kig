@@ -114,10 +114,10 @@ class Kig : public KParts::MainWindow
  private slots:
   void fileNew();
   void fileOpen();
-  // Qt tqmoc doesn't handle ifdef's, so i'm disabling it..
+  // Qt moc doesn't handle ifdef's, so i'm disabling it..
 // #ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
   void optionsShowToolbar();
-  void optionsShowtqStatusbar();
+  void optionsShowStatusbar();
 // #endif
 // #if KDE_IS_VERSION( 3, 2, 90 )
   void optionsConfigureKeys();

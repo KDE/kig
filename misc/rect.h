@@ -28,8 +28,8 @@
 #include <kdebug.h>
 
 /**
- * like Coordinate is a TQPoint tqreplacement with doubles, this is a
- * TQRect tqreplacement with doubles...
+ * like Coordinate is a TQPoint replacement with doubles, this is a
+ * TQRect replacement with doubles...
  */
 class Rect
 {
@@ -85,7 +85,7 @@ public:
   Rect& operator/=( const double r ) { scale(1/r); return *this; }
 
   /**
-   * This expands the rect so that it tqcontains r.  It has friends
+   * This expands the rect so that it contains r.  It has friends
    * '|=' and '|' below...
    */
   void eat( const Rect& r );
@@ -115,8 +115,8 @@ public:
   double top() const;
   double width() const;
   double height() const;
-  bool tqcontains( const Coordinate& p ) const;
-  bool tqcontains( const Coordinate& p, double allowed_miss ) const;
+  bool contains( const Coordinate& p ) const;
+  bool contains( const Coordinate& p, double allowed_miss ) const;
   bool intersects( const Rect& p ) const;
   Rect normalized() const;
   friend kdbgstream& operator<<( kdbgstream& s, const Rect& t );
@@ -131,7 +131,7 @@ protected:
 bool operator==( const Rect& r, const Rect& s );
 kdbgstream& operator<<( kdbgstream& s, const Rect& t );
 /**
- * this operator returns a Rect that tqcontains both the given
+ * this operator returns a Rect that contains both the given
  * rects..
  */
 Rect operator|( const Rect& lhs, const Rect& rhs );

@@ -81,15 +81,15 @@ void TextLabelWizard::linkClicked( int which )
   mmode->linkClicked( which );
 }
 
-void TextLabelWizard::retqlayoutArgsPage()
+void TextLabelWizard::relayoutArgsPage()
 {
   select_arguments_pageLayout->activate();
-  tqrepaint();
+  repaint();
 }
 
 void TextLabelWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( TQString::tqfromLatin1( "text-labels" ),
-                    TQString::tqfromLatin1( "kig" ) );
+  kapp->invokeHelp( TQString::fromLatin1( "text-labels" ),
+                    TQString::fromLatin1( "kig" ) );
 }
 

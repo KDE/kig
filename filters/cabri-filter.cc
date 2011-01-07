@@ -548,7 +548,7 @@ KigDocument* KigFilterCabri::load( const TQString& file )
     }
     else
     {
-      notSupported( file, i18n( "This Cabri file tqcontains a \"%1\" object, "
+      notSupported( file, i18n( "This Cabri file contains a \"%1\" object, "
                                 "which Kig does not currently support." ).arg( obj.type ) );
       return 0;
     }

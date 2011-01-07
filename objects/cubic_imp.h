@@ -40,7 +40,7 @@ public:
 
   ObjectImp* transform( const Transformation& ) const;
   void draw( KigPainter& p ) const;
-  bool tqcontains( const Coordinate& p, int width, const KigWidget& ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   Rect surroundingRect() const;
   TQString cartesianEquationString( const KigDocument& ) const;
@@ -74,7 +74,7 @@ public:
 
   bool equals( const ObjectImp& rhs ) const;
 
-  bool tqcontainsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 

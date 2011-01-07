@@ -268,7 +268,7 @@ public:
   virtual ObjectImp* transform( const Transformation& t ) const = 0;
 
   virtual void draw( KigPainter& p ) const = 0;
-  virtual bool tqcontains( const Coordinate& p, int width,
+  virtual bool contains( const Coordinate& p, int width,
                          const KigWidget& si ) const = 0;
   virtual bool inRect( const Rect& r, int width,
                        const KigWidget& si ) const = 0;
@@ -327,7 +327,7 @@ public:
   virtual ObjectImp* copy() const = 0;
 
   // s is a string with at least one escape ( "%N" where N is a
-  // number ) somewhere.  This function tqreplaces the first escape it
+  // number ) somewhere.  This function replaces the first escape it
   // sees with the "value" of this imp ( using the TQString::arg
   // functions ).  This is e.g. used by TextType to turn its variable
   // args into strings..
@@ -341,7 +341,7 @@ public:
   /**
    * Returns true if this ObjectImp is equal to rhs.
    * This function checks whether rhs is of the same ObjectImp type,
-   * and whether it tqcontains the same data as this ObjectImp.
+   * and whether it contains the same data as this ObjectImp.
    * \internal It is used e.g. by the KigCommand stuff to see what the
    * user has changed during a move..
    */

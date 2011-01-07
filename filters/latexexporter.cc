@@ -194,7 +194,7 @@ void LatexExportImpVisitor::mapColor( TQColor color )
     ColorMap newcolor;
     newcolor.color = color;
     TQString tmpname = color.name();
-    tmpname.tqreplace( "#", "" );
+    tmpname.replace( "#", "" );
     newcolor.name = tmpname;
     mcolors.push_back( newcolor );
     mstream << "\\newrgbcolor{" << tmpname << "}{" 

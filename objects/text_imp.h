@@ -30,7 +30,7 @@ class TextImp
   Coordinate mloc;
   bool mframe;
   // with this var, we keep track of the place we drew in, for use in
-  // the tqcontains() function..
+  // the contains() function..
   mutable Rect mboundrect;
 public:
   typedef ObjectImp Parent;
@@ -44,7 +44,7 @@ public:
   ObjectImp* transform( const Transformation& ) const;
 
   void draw( KigPainter& p ) const;
-  bool tqcontains( const Coordinate& p, int width, const KigWidget& ) const;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
   bool inRect( const Rect& r, int width, const KigWidget& ) const;
   bool valid() const;
   Rect surroundingRect() const;

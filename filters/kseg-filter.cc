@@ -67,7 +67,7 @@ bool KigFilterKSeg::supportMime( const TQString& mime )
 
 struct drawstyle
 {
-  TQ_INT8 pointstyle;
+  Q_INT8 pointstyle;
   TQFont font;
   TQPen pen;
   TQBrush brush;
@@ -556,19 +556,19 @@ KigDocument* KigFilterKSeg::load( const TQString& file )
       };
       case G_CIRCLEINTERIOR:
       {
-        notSupported( file, i18n( "This KSeg file tqcontains a filled circle, "
+        notSupported( file, i18n( "This KSeg file contains a filled circle, "
                                   "which Kig does not currently support." ) );
         return false;
       };
       case G_ARCSECTOR:
       {
-        notSupported( file, i18n( "This KSeg file tqcontains an arc sector, "
+        notSupported( file, i18n( "This KSeg file contains an arc sector, "
                                   "which Kig does not currently support." ) );
         return false;
       };
       case G_ARCSEGMENT:
       {
-        notSupported( file, i18n( "This KSeg file tqcontains an arc segment, "
+        notSupported( file, i18n( "This KSeg file contains an arc segment, "
                                   "which Kig does not currently support." ) );
         return false;
       };
@@ -636,7 +636,7 @@ KigDocument* KigFilterKSeg::load( const TQString& file )
       std::vector<ObjectCalcer*> args2;
       args2.push_back( object->nameCalcer() );
       ObjectCalcer* oc2 = fact->attachedLabelCalcer(
-               TQString::tqfromLatin1( "%1" ), object->calcer(),
+               TQString::fromLatin1( "%1" ), object->calcer(),
                static_cast<const PointImp*>( object->imp() )->coordinate(),
                false, args2, *retdoc );
       oc2->calc( *retdoc );

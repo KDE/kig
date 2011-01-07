@@ -111,7 +111,7 @@ void Kig::setupActions()
 
 #ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
   m_toolbarAction = KStdAction::showToolbar(this, TQT_SLOT(optionsShowToolbar()), actionCollection());
-  m_statusbarAction = KStdAction::showtqStatusbar(this, TQT_SLOT(optionsShowtqStatusbar()), actionCollection());
+  m_statusbarAction = KStdAction::showStatusbar(this, TQT_SLOT(optionsShowStatusbar()), actionCollection());
 #else
   createStandardStatusBarAction();
   setStandardToolBarMenuEnabled(true);
@@ -272,7 +272,7 @@ void Kig::fileOpen()
   if (!file_name.isEmpty()) openURL(file_name);
 }
 
-// ifdef's disabled, cause Qt tqmoc doesn't handle ifdef's..
+// ifdef's disabled, cause Qt moc doesn't handle ifdef's..
 // #ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
 void Kig::optionsShowToolbar()
 {
@@ -286,7 +286,7 @@ void Kig::optionsShowToolbar()
 #endif
 }
 
-void Kig::optionsShowtqStatusbar()
+void Kig::optionsShowStatusbar()
 {
 #ifdef KIG_DONT_USE_NEW_KMAINWINDOW_FEATURES
   if (m_statusbarAction->isChecked())

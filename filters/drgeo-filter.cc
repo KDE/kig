@@ -105,7 +105,7 @@ KigDocument* KigFilterDrgeo::load( const TQString& file )
   }
   if ( figures.isEmpty() ) {
     if( nmacros > 0 )
-      warning( i18n( "The Dr. Geo file \"%1\" is a macro file so it tqcontains no "
+      warning( i18n( "The Dr. Geo file \"%1\" is a macro file so it contains no "
                      "figures." ).arg( file ) );
     else
       warning( i18n( "There are no figures in Dr. Geo file \"%1\"." ).arg( file ) );
@@ -332,7 +332,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
         else
         {
 //          oc = fact->constrainedPointCalcer( parents[0], value );
-          notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                       domelem.attribute( "type" ) ) );
           return false;
@@ -369,7 +369,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
             type = ArcLineIntersectionType::instance();
           else
           {
-            notSupported( file, i18n( "This Dr. Geo file tqcontains an intersection type, "
+            notSupported( file, i18n( "This Dr. Geo file contains an intersection type, "
                                       "which Kig does not currently support." ) );
             return false;
           }
@@ -386,7 +386,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
         oc = new ObjectTypeCalcer( RotationType::instance(), parents );
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                     domelem.attribute( "type" ) ) );
         return false;
@@ -418,7 +418,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
           type = CircleBCPType::instance();
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                     domelem.attribute( "type" ) ) );
           return false;
@@ -431,7 +431,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
           type = ArcBTPType::instance();
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                     domelem.attribute( "type" ) ) );
           return false;
@@ -452,7 +452,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
         }
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                     domelem.attribute( "type" ) ) );
           return false;
@@ -468,7 +468,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
         }
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                     domelem.attribute( "type" ) ) );
           return false;
@@ -489,7 +489,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
         oc = new ObjectTypeCalcer( RotationType::instance(), parents );
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                   domelem.attribute( "type" ) ) );
         return false;
@@ -617,7 +617,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
       }
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                   domelem.attribute( "type" ) ) );
         return false;
@@ -635,7 +635,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
       }
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                   domelem.attribute( "type" ) ) );
         return false;
@@ -676,7 +676,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
         oc = fact->labelCalcer( text, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), *ret );
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                   domelem.attribute( "type" ) ) );
         return false;
@@ -688,7 +688,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
         oc = fact->locusCalcer( parents[0], parents[1] );
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                   domelem.attribute( "type" ) ) );
         return false;
@@ -708,7 +708,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
 #ifdef DRGEO_DEBUG
       kdDebug() << ">>>>>>>>> UNKNOWN OBJECT" << endl;
 #endif
-      notSupported( file, i18n( "This Dr. Geo file tqcontains a \"%1 %2\" object, "
+      notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                 "which Kig does not currently support." ).arg( domelem.tagName() ).arg(
                                 domelem.attribute( "type" ) ) );
       return false;
@@ -747,8 +747,8 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
     TQString ps = domelem.attribute( "style" );
     int pointstyle = ObjectDrawer::pointStyleFromString( ps );
 // show this object?
-    bool show = ( ( domelem.attribute( "tqmasked" ) != "True" ) &&
-                  ( domelem.attribute( "tqmasked" ) != "Alway" ) );
+    bool show = ( ( domelem.attribute( "masked" ) != "True" ) &&
+                  ( domelem.attribute( "masked" ) != "Alway" ) );
 // costructing the ObjectDrawer*
     ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
 // reading object name
@@ -770,7 +770,7 @@ KigDocument* KigFilterDrgeo::importFigure( TQDomNode f, const TQString& file, co
       {
         std::vector<ObjectCalcer*> args2;
         args2.push_back( o->nameCalcer() );
-        oc2 = fact->attachedLabelCalcer( TQString::tqfromLatin1( "%1" ), oc,
+        oc2 = fact->attachedLabelCalcer( TQString::fromLatin1( "%1" ), oc,
                  static_cast<const PointImp*>( oc->imp() )->coordinate(),
                  false, args2, *ret );
         co = Qt::black;

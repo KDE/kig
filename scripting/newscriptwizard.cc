@@ -159,8 +159,8 @@ void NewScriptWizard::accept()
 
 void NewScriptWizard::slotHelpClicked()
 {
-  kapp->invokeHelp( TQString::tqfromLatin1( "scripting" ),
-                    TQString::tqfromLatin1( "kig" ) );
+  kapp->invokeHelp( TQString::fromLatin1( "scripting" ),
+                    TQString::fromLatin1( "kig" ) );
 }
 
 void NewScriptWizard::setText( const TQString& text )

@@ -416,13 +416,13 @@ bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
 //mp: the following test didn't work for vertical segments;
 // fortunately the ieee floating point standard allows us to avoid
 // the test altogether, since it would produce an infinity value that
-// makes the final r.tqcontains to fail
+// makes the final r.contains to fail
 // in any case the corresponding test for a.y - b.y was missing.
 
 //  if ( fabs( a.x - b.x ) <= 1e-7 )
 //  {
 //    // too small to be useful..
-//    return r.tqcontains( Coordinate( a.x, r.center().y ), miss );
+//    return r.contains( Coordinate( a.x, r.center().y ), miss );
 //  }
 
 // in case we have a segment we need also to check for the case when
@@ -433,7 +433,7 @@ bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
 // - if the midpoint is in the rect than returning true is safe (also
 //   in the cases where we have a ray or a line)
 
-  if ( r.tqcontains( 0.5*( a + b ), miss ) ) return true;
+  if ( r.contains( 0.5*( a + b ), miss ) ) return true;
 
   Coordinate dir = b - a;
   double m = dir.y / dir.x;
@@ -453,12 +453,12 @@ bool lineInRect( const Rect& r, const Coordinate& a, const Coordinate& b,
   // For each intersection, we now check if we contain the
   // intersection ( this might not be the case for a segment, when the
   // intersection is not between the begin and end point.. ) and if
-  // the rect tqcontains the intersection..  If it does, we have a winner..
+  // the rect contains the intersection..  If it does, we have a winner..
   return
-    ( imp->tqcontains( leftint, width, w ) && r.tqcontains( leftint, miss ) ) ||
-    ( imp->tqcontains( rightint, width, w ) && r.tqcontains( rightint, miss ) ) ||
-    ( imp->tqcontains( bottomint, width, w ) && r.tqcontains( bottomint, miss ) ) ||
-    ( imp->tqcontains( topint, width, w ) && r.tqcontains( topint, miss ) );
+    ( imp->contains( leftint, width, w ) && r.contains( leftint, miss ) ) ||
+    ( imp->contains( rightint, width, w ) && r.contains( rightint, miss ) ) ||
+    ( imp->contains( bottomint, width, w ) && r.contains( bottomint, miss ) ) ||
+    ( imp->contains( topint, width, w ) && r.contains( topint, miss ) );
 }
 
 bool operator==( const LineData& l, const LineData& r )

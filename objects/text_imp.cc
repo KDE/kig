@@ -51,9 +51,9 @@ void TextImp::draw( KigPainter& p ) const
   p.drawTextFrame( mboundrect, mtext, mframe );
 }
 
-bool TextImp::tqcontains( const Coordinate& p, int, const KigWidget& ) const
+bool TextImp::contains( const Coordinate& p, int, const KigWidget& ) const
 {
-  return mboundrect.tqcontains( p );
+  return mboundrect.contains( p );
 }
 
 bool TextImp::inRect( const Rect& r, int, const KigWidget& ) const

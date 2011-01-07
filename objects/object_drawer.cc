@@ -41,10 +41,10 @@ void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
   }
 }
 
-bool ObjectDrawer::tqcontains( const ObjectImp& imp, const Coordinate& pt, const KigWidget& w, bool nv ) const
+bool ObjectDrawer::contains( const ObjectImp& imp, const Coordinate& pt, const KigWidget& w, bool nv ) const
 {
   bool shownornv = mshown || nv;
-  return shownornv && imp.tqcontains( pt, mwidth, w );
+  return shownornv && imp.contains( pt, mwidth, w );
 }
 
 bool ObjectDrawer::shown( ) const

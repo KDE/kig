@@ -50,7 +50,7 @@ void CubicImp::draw( KigPainter& p ) const
   p.drawCurve( this );
 }
 
-bool CubicImp::tqcontains( const Coordinate& o, int width, const KigWidget& w ) const
+bool CubicImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
 {
   return internalContainsPoint( o, w.screenInfo().normalMiss( width ) );
 }
@@ -363,7 +363,7 @@ const ObjectImpType* CubicImp::stype()
   return &t;
 }
 
-bool CubicImp::tqcontainsPoint( const Coordinate& p, const KigDocument& ) const
+bool CubicImp::containsPoint( const Coordinate& p, const KigDocument& ) const
 {
   return internalContainsPoint( p, test_threshold );
 }
@@ -431,7 +431,7 @@ TQString CubicImp::cartesianEquationString( const KigDocument& ) const
   ret = ret.arg( mdata.coeffs[0], 0, 'g', 3 );
 
   // we should find a common place to do this...
-  ret.tqreplace( "+ -", "- " );
-  ret.tqreplace( "+-", "-" );
+  ret.replace( "+ -", "- " );
+  ret.replace( "+-", "-" );
   return ret;
 }

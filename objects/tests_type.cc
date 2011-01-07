@@ -159,7 +159,7 @@ const ObjectImpType* AreCollinearType::resultId() const
   return TestResultImp::stype();
 }
 
-static const ArgsParser::spec tqcontainsTestArgsSpec[] =
+static const ArgsParser::spec containsTestArgsSpec[] =
 {
   { PointImp::stype(), I18N_NOOP( "Check whether this point is on a curve" ),
     I18N_NOOP( "Select the point you want to test..." ), false },
@@ -170,7 +170,7 @@ static const ArgsParser::spec tqcontainsTestArgsSpec[] =
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ContainsTestType )
 
 ContainsTestType::ContainsTestType()
-  : ArgsParserObjectType( "ContainsTest", tqcontainsTestArgsSpec, 2 )
+  : ArgsParserObjectType( "ContainsTest", containsTestArgsSpec, 2 )
 {
 }
 
@@ -190,8 +190,8 @@ ObjectImp* ContainsTestType::calc( const Args& parents, const KigDocument& doc )
   const Coordinate& p = static_cast<const PointImp*>( parents[0] )->coordinate();
   const CurveImp* c = static_cast<const CurveImp*>( parents[1] );
 
-  if ( c->tqcontainsPoint( p, doc ) )
-    return new TestResultImp( i18n( "This curve tqcontains the point." ) );
+  if ( c->containsPoint( p, doc ) )
+    return new TestResultImp( i18n( "This curve contains the point." ) );
   else
     return new TestResultImp( i18n( "This curve does not contain the point." ) );
 }
@@ -237,7 +237,7 @@ ObjectImp* InPolygonTestType::calc( const Args& parents, const KigDocument& ) co
   const PolygonImp* pol = static_cast<const PolygonImp*>( parents[1] );
 
   if ( pol->isInPolygon( p ) )
-    return new TestResultImp( i18n( "This polygon tqcontains the point." ) );
+    return new TestResultImp( i18n( "This polygon contains the point." ) );
   else
     return new TestResultImp( i18n( "This polygon does not contain the point." ) );
 }

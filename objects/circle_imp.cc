@@ -63,19 +63,19 @@ void CircleImp::draw( KigPainter& p ) const
   p.drawCircle( mcenter, mradius );
 }
 
-bool CircleImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
+bool CircleImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   return fabs((mcenter - p).length() - mradius) <= w.screenInfo().normalMiss( width );
 }
 
 bool CircleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
-  // first we check if the rect tqcontains at least one of the
+  // first we check if the rect contains at least one of the
   // north/south/east/west points of the circle
-  if ( r.tqcontains( mcenter + Coordinate( 0, -mradius ) ) ) return true;
-  if ( r.tqcontains( mcenter + Coordinate( mradius, 0 ) ) ) return true;
-  if ( r.tqcontains( mcenter + Coordinate( 0, mradius ) ) ) return true;
-  if ( r.tqcontains( mcenter + Coordinate( -mradius, 0 ) ) ) return true;
+  if ( r.contains( mcenter + Coordinate( 0, -mradius ) ) ) return true;
+  if ( r.contains( mcenter + Coordinate( mradius, 0 ) ) ) return true;
+  if ( r.contains( mcenter + Coordinate( 0, mradius ) ) ) return true;
+  if ( r.contains( mcenter + Coordinate( -mradius, 0 ) ) ) return true;
 
   // we allow a miss of some pixels ..
   double miss = w.screenInfo().normalMiss( width );

@@ -4,7 +4,7 @@
     <property name="name">
         <cstring>KigFilterDrgeoChooserBase</cstring>
     </property>
-    <property name="tqgeometry">
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -30,10 +30,10 @@
                 <cstring>ExplanationTextLabel</cstring>
             </property>
             <property name="text">
-                <string>The current Dr. Geo file tqcontains more than one figure.
+                <string>The current Dr. Geo file contains more than one figure.
 Please select which to import:</string>
             </property>
-            <property name="tqalignment">
+            <property name="alignment">
                 <set>WordBreak|AlignVCenter</set>
             </property>
         </widget>
@@ -96,7 +96,7 @@ Please select which to import:</string>
                     <property name="sizeType">
                         <enum>Expanding</enum>
                     </property>
-                    <property name="tqsizeHint">
+                    <property name="sizeHint">
                         <size>
                             <width>20</width>
                             <height>20</height>
@@ -131,7 +131,7 @@ Please select which to import:</string>
         </widget>
     </vbox>
 </widget>
-<tqlayoutdefaults spacing="6" margin="11"/>
+<layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klistbox.h</includehint>
     <includehint>kpushbutton.h</includehint>

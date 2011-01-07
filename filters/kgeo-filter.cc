@@ -130,7 +130,7 @@ KigDocument* KigFilterKGeo::loadObjects( const TQString& file, KSimpleConfig* c 
     elems.push_back( elem );
     for ( const char* parent = parents.first(); parent; parent = parents.next() )
     {
-      int parentIndex = TQString::tqfromLatin1( parent ).toInt( &ok );
+      int parentIndex = TQString::fromLatin1( parent ).toInt( &ok );
       if ( ! ok ) KIG_FILTER_PARSE_ERROR;
       if ( parentIndex != 0 )
         elems[i].parents.push_back( parentIndex - 1 );
@@ -310,7 +310,7 @@ KigDocument* KigFilterKGeo::loadObjects( const TQString& file, KSimpleConfig* c 
     }
     case ID_slope:
     {
-      // if parents tqcontains a segment, line, vector or whatever, we
+      // if parents contains a segment, line, vector or whatever, we
       // take its parents cause we want points..
       if ( parents.size() == 1 ) parents = parents[0]->parents();
       if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;

@@ -50,8 +50,8 @@ EditType::~EditType()
 
 void EditType::helpSlot()
 {
-  kapp->invokeHelp( TQString::tqfromLatin1( "working-with-types" ),
-                    TQString::tqfromLatin1( "kig" ) );
+  kapp->invokeHelp( TQString::fromLatin1( "working-with-types" ),
+                    TQString::fromLatin1( "kig" ) );
 }
 
 void EditType::okSlot()

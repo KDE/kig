@@ -395,7 +395,7 @@ void FixedPointType::executeAction(
     Coordinate oldc = static_cast<const PointImp*>( o.imp() )->coordinate();
     KigInputDialog::getCoordinate(
       i18n( "Set Coordinate" ),
-      i18n( "Enter the new coordinate." ) + TQString::tqfromLatin1( "<br>" ) +
+      i18n( "Enter the new coordinate." ) + TQString::fromLatin1( "<br>" ) +
       d.document().coordinateSystem().coordinateFormatNoticeMarkup(),
       &w, &ok, d.document(), &oldc );
     if ( ! ok ) break;
@@ -514,7 +514,7 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
   {
     const LineImp* c = static_cast<const LineImp*>( parents[1] );
 
-    if ( !c->tqcontainsPoint( p, doc ) )
+    if ( !c->containsPoint( p, doc ) )
       return new InvalidImp;
 
     const LineData line = c->data();
@@ -526,7 +526,7 @@ ObjectImp* MeasureTransportType::calc( const Args& parents, const KigDocument& d
   } else if ( parents[1]->inherits (CircleImp::stype()) )
   {
     const CircleImp* c = static_cast<const CircleImp*>( parents[1] );
-    if ( !c->tqcontainsPoint( p, doc ) )
+    if ( !c->containsPoint( p, doc ) )
       return new InvalidImp;
 
     double param = c->getParam( p, doc );
@@ -614,7 +614,7 @@ ObjectImp* MeasureTransportTypeOld::calc( const Args& parents, const KigDocument
   const CircleImp* c = static_cast<const CircleImp*>( parents[0] );
   const Coordinate& p = static_cast<const PointImp*>( parents[1] )->coordinate();
 
-  if ( !c->tqcontainsPoint( p, doc ) )
+  if ( !c->containsPoint( p, doc ) )
     return new InvalidImp;
 
   const SegmentImp* s = static_cast<const SegmentImp*>( parents[2] );

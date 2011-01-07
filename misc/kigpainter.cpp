@@ -374,7 +374,7 @@ void KigPainter::circleOverlayRecurse( const Coordinate& centre,
   // too near to the centre
   if (distmaxsq < radiussq) return;
 
-  // the rect tqcontains some of the circle
+  // the rect contains some of the circle
   // -> if it's small enough, we keep it
   if( currentRect.width() < overlayRectSize() ) {
     mOverlay.push_back( toScreenEnlarge( currentRect) );
@@ -735,10 +735,10 @@ void KigPainter::drawCurve( const CurveImp* curve )
 
   TQPen pen = mP.pen();
 
-  // this stack tqcontains pairs of Coordinates ( parameter intervals )
+  // this stack contains pairs of Coordinates ( parameter intervals )
   // that we still need to process:
   std::stack<workitem> workstack;
-  // mp: this stack tqcontains all the generated overlays:
+  // mp: this stack contains all the generated overlays:
   // the strategy for generating the overlay structure is the same
   // recursive-like used to draw the segments: a new rectangle is
   // generated whenever the length of a segment becomes lower than
@@ -758,7 +758,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
   std::stack<Rect> overlaystack;
 
   // mp: the original version in which an initial set of 20 intervals
-  // were pushed onto the stack is tqreplaced by a single interval and
+  // were pushed onto the stack is replaced by a single interval and
   // by forcing subdivision till h < hmax (with more or less the same
   // final result).
   // First push the [0,1] interval into the stack:
@@ -835,7 +835,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
       bool dooverlay = ! overlaypt && h < hmaxoverlay && valid0 && valid1
                        && fabs( p0.x - p1.x ) <= overlayRectSize()
                        && fabs( p0.y - p1.y ) <= overlayRectSize();
-      bool addn = sr.tqcontains( p2 ) || h >= hmax;
+      bool addn = sr.contains( p2 ) || h >= hmax;
       // estimated error between the curve and the segments
       double errsq = 1e21;
       if ( allvalid ) errsq = (0.5*p0 + 0.5*p1 - p2).squareLength();
@@ -870,10 +870,10 @@ void KigPainter::drawCurve( const CurveImp* curve )
       else if ( h >= hmin )   // we do not continue to subdivide indefinitely!
       {
         // push into stack in order to process both subintervals
-        if ( addn || ( valid0 && sr.tqcontains( p0 ) ) )
+        if ( addn || ( valid0 && sr.contains( p0 ) ) )
           workstack.push( workitem( curitem.first, coordparampair( t2, p2 ),
                                     overlaypt ) );
-        if ( addn || ( valid1 && sr.tqcontains( p1 ) ) )
+        if ( addn || ( valid1 && sr.contains( p1 ) ) )
         {
           curitem = workitem( coordparampair( t2, p2 ), curitem.second ,
                               overlaypt );

@@ -10,11 +10,11 @@ kde_module_LTLIBRARIES = \
 
 kfile_drgeo_la_SOURCES = kfile_drgeo.cpp
 kfile_drgeo_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
-kfile_drgeo_la_LIBADD = $(LIB_KIO) $(LIB_QT) $(LIB_KDECORE)
+kfile_drgeo_la_LIBADD = $(LIB_KIO)
 
 kfile_kig_la_SOURCES = kfile_kig.cpp
 kfile_kig_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
-kfile_kig_la_LIBADD = $(LIB_KIO) $(LIB_QT) $(LIB_KDECORE)
+kfile_kig_la_LIBADD = $(LIB_KIO)
 
 METASOURCES = AUTO
 

@@ -4,7 +4,7 @@
     <property name="name">
         <cstring>NewScriptWizardBase</cstring>
     </property>
-    <property name="tqgeometry">
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -34,7 +34,7 @@
                     <string>Select the argument objects ( if any )
 in the Kig window and press "Next".</string>
                 </property>
-                <property name="tqalignment">
+                <property name="alignment">
                     <set>AlignCenter</set>
                 </property>
             </widget>
@@ -74,7 +74,7 @@ in the Kig window and press "Next".</string>
 </widget>
 <customwidgets>
 </customwidgets>
-<tqlayoutdefaults spacing="6" margin="11"/>
+<layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>ktextedit.h</includehint>
 </includehints>

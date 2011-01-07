@@ -56,7 +56,7 @@ AngleImp::AngleImp( const Coordinate& pt, double start_angle_in_radials,
 {
 }
 
-bool AngleImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
+bool AngleImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   double radius = 50*w.screenInfo().pixelWidth();
 
@@ -73,7 +73,7 @@ bool AngleImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) 
 bool AngleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 {
   // TODO ?
-  return r.tqcontains( mpoint, w.screenInfo().normalMiss( width ) );
+  return r.contains( mpoint, w.screenInfo().normalMiss( width ) );
 }
 
 Coordinate AngleImp::attachPoint() const
@@ -179,7 +179,7 @@ void VectorImp::draw( KigPainter& p ) const
   p.drawVector( mdata.a, mdata.b );
 }
 
-bool VectorImp::tqcontains( const Coordinate& o, int width, const KigWidget& w ) const
+bool VectorImp::contains( const Coordinate& o, int width, const KigWidget& w ) const
 {
   return internalContainsPoint( o, w.screenInfo().normalMiss( width ) );
 }
@@ -340,7 +340,7 @@ void ArcImp::draw( KigPainter& p ) const
   p.drawArc( mcenter, mradius, msa, ma );
 }
 
-bool ArcImp::tqcontains( const Coordinate& p, int width, const KigWidget& w ) const
+bool ArcImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
   return internalContainsPoint( p, w.screenInfo().normalMiss( width ) );
 }
@@ -614,7 +614,7 @@ const ObjectImpType* ArcImp::type() const
   return ArcImp::stype();
 }
 
-bool ArcImp::tqcontainsPoint( const Coordinate& p, const KigDocument& ) const
+bool ArcImp::containsPoint( const Coordinate& p, const KigDocument& ) const
 {
   return internalContainsPoint( p, test_threshold );
 }
@@ -694,7 +694,7 @@ double VectorImp::getParam( const Coordinate& p, const KigDocument& ) const
   return ( ( pt - mdata.a ).length() ) / ( dir().length() );
 }
 
-bool VectorImp::tqcontainsPoint( const Coordinate& p, const KigDocument& ) const
+bool VectorImp::containsPoint( const Coordinate& p, const KigDocument& ) const
 {
   return internalContainsPoint( p, test_threshold );
 }

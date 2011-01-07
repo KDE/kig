@@ -391,7 +391,7 @@ void TextLabelModeBase::updateLinksLabel()
     d->wiz->myCustomWidget1->addText( s.mid( prevpos ), buf );
 
   d->wiz->myCustomWidget1->applyEdit( buf );
-  d->wiz->retqlayoutArgsPage();
+  d->wiz->relayoutArgsPage();
 
   d->wiz->resize( d->wiz->size() );
 }

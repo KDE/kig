@@ -46,9 +46,9 @@ void BaseMode::leftClicked( TQMouseEvent* e, KigWidget* v )
   v->updateWidget();
 
   mplc = e->pos();
-  tqmoco = mdoc.document().whatAmIOn( v->fromScreen( mplc ), *v );
+  moco = mdoc.document().whatAmIOn( v->fromScreen( mplc ), *v );
 
-  if( tqmoco.empty() )
+  if( moco.empty() )
   {
     // clicked on an empty spot --> we show the rectangle for
     // selecting stuff...
@@ -66,8 +66,8 @@ void BaseMode::leftClicked( TQMouseEvent* e, KigWidget* v )
 
 void BaseMode::leftMouseMoved( TQMouseEvent* e, KigWidget* w )
 {
-  if( !tqmoco.empty() && ( mplc - e->pos() ).manhattanLength() > 3 )
-    dragObject( tqmoco, mplc, *w,
+  if( !moco.empty() && ( mplc - e->pos() ).manhattanLength() > 3 )
+    dragObject( moco, mplc, *w,
                 ( e->state() & (ShiftButton | ControlButton ) ) != 0
       );
 }
@@ -79,16 +79,16 @@ void BaseMode::leftReleased( TQMouseEvent* e, KigWidget* v )
   ObjectHolder* o = 0;
   bool keyCtrl = ( e->state() & ControlButton ) != 0;
   bool keyShift = ( e->state() & ShiftButton ) != 0;
-  if ( ! tqmoco.empty() )
+  if ( ! moco.empty() )
   {
     if ( keyShift )
     {
-      int id = ObjectChooserPopup::getObjectFromList( e->pos(), v, tqmoco );
+      int id = ObjectChooserPopup::getObjectFromList( e->pos(), v, moco );
       if ( id >= 0 )
-        o = tqmoco[id];
+        o = moco[id];
     }
     else
-      o = tqmoco.front();
+      o = moco.front();
   }
   leftClickedObject( o, e->pos(), *v, keyCtrl );
 }
@@ -100,7 +100,7 @@ void BaseMode::midClicked( TQMouseEvent* e, KigWidget* v )
   v->updateWidget();
 
   mplc = e->pos();
-  tqmoco = mdoc.document().whatAmIOn( v->fromScreen( e->pos() ), *v );
+  moco = mdoc.document().whatAmIOn( v->fromScreen( e->pos() ), *v );
 }
 
 void BaseMode::midReleased( TQMouseEvent* e, KigWidget* v )
@@ -119,9 +119,9 @@ void BaseMode::rightClicked( TQMouseEvent* e, KigWidget* w )
   w->setCursor( KCursor::arrowCursor() );
 
   mplc = e->pos();
-  tqmoco = mdoc.document().whatAmIOn( w->fromScreen( mplc ), *w );
+  moco = mdoc.document().whatAmIOn( w->fromScreen( mplc ), *w );
 
-  rightClicked( tqmoco, mplc, *w );
+  rightClicked( moco, mplc, *w );
 }
 
 void BaseMode::mouseMoved( TQMouseEvent* e, KigWidget* w )
@@ -151,7 +151,7 @@ void BaseMode::enableActions()
 
 std::vector<ObjectHolder*> BaseMode::oco()
 {
-  return tqmoco;
+  return moco;
 }
 
 TQPoint BaseMode::pointLocation()

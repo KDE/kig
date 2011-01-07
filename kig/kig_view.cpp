@@ -290,13 +290,13 @@ KigView::KigView( KigPart* part,
                   TQWidget* parent,
                   const char* name )
   : TQWidget( parent, name ),
-    mtqlayout( 0 ), mrightscroll( 0 ), mbottomscroll( 0 ),
+    mlayout( 0 ), mrightscroll( 0 ), mbottomscroll( 0 ),
     mupdatingscrollbars( false ),
     mrealwidget( 0 ), mpart( part )
 {
   connect( part, TQT_SIGNAL( recenterScreen() ), this, TQT_SLOT( slotInternalRecenterScreen() ) );
 
-  mtqlayout = new TQGridLayout( this, 2, 2 );
+  mlayout = new TQGridLayout( this, 2, 2 );
   mrightscroll = new TQScrollBar( Vertical, this, "Right Scrollbar" );
   // TODO: make this configurable...
   mrightscroll->setTracking( true );
@@ -310,11 +310,11 @@ KigView::KigView( KigPart* part,
   connect( mbottomscroll, TQT_SIGNAL( sliderReleased() ),
            this, TQT_SLOT( updateScrollBars() ) );
   mrealwidget = new KigWidget( part, this, this, "Kig Widget", fullscreen );
-  mtqlayout->addWidget( mbottomscroll, 1, 0 );
-  mtqlayout->addWidget( mrealwidget, 0, 0 );
-  mtqlayout->addWidget( mrightscroll, 0, 1 );
+  mlayout->addWidget( mbottomscroll, 1, 0 );
+  mlayout->addWidget( mrealwidget, 0, 0 );
+  mlayout->addWidget( mrightscroll, 0, 1 );
 
-  resize( tqsizeHint() );
+  resize( sizeHint() );
   mrealwidget->recenterScreen();
   part->redrawScreen( mrealwidget );
   updateScrollBars();
@@ -324,7 +324,7 @@ void KigView::updateScrollBars()
 {
   // we update the scrollbars to reflect the new "total size" of the
   // document...  The total size is calced in entireDocumentRect().
-  // ( it is calced as a rect that tqcontains all the points in the
+  // ( it is calced as a rect that contains all the points in the
   // document, and then enlarged a bit, and scaled to match the screen
   // width/height ratio...
   // What we do here is tell the scroll bars what they should show as
@@ -336,7 +336,7 @@ void KigView::updateScrollBars()
   Rect er = mrealwidget->entireDocumentRect();
   Rect sr = mrealwidget->screenInfo().shownRect();
 
-  // we define the total rect to be the smallest rect that tqcontains
+  // we define the total rect to be the smallest rect that contains
   // both er and sr...
   er |= sr;
 
@@ -443,7 +443,7 @@ const KigDocument& KigWidget::document() const
   return mpart->document();
 }
 
-TQSize KigWidget::tqsizeHint() const
+TQSize KigWidget::sizeHint() const
 {
   return TQSize( 630, 450 );
 }
@@ -508,9 +508,9 @@ void KigView::toggleFullScreen()
 {
   mrealwidget->setFullScreen( ! mrealwidget->isFullScreen() );
   if ( mrealwidget->isFullScreen() )
-    tqtopLevelWidget()->showFullScreen();
+    topLevelWidget()->showFullScreen();
   else
-    tqtopLevelWidget()->showNormal();
+    topLevelWidget()->showNormal();
 }
 
 void KigWidget::setFullScreen( bool f )
@@ -568,7 +568,7 @@ void KigWidget::zoomArea()
   KigInputDialog::getTwoCoordinates( i18n( "Select Zoom Area" ),
         i18n( "Select the zoom area by entering the coordinates of "
               "the upper left corner and the lower right corner." ) +
-        TQString::tqfromLatin1("<br>") +
+        TQString::fromLatin1("<br>") +
         mpart->document().coordinateSystem().coordinateFormatNoticeMarkup(),
         this, &ok, mpart->document(), &tl, &br );
   if ( ok )

@@ -172,8 +172,8 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocumen
     calcIntersectionPoint(
       static_cast<const AbstractLineImp*>( parents[0] )->data(),
       static_cast<const AbstractLineImp*>( parents[1] )->data() );
-  if ( static_cast<const AbstractLineImp*>( parents[0] )->tqcontainsPoint( p, d ) &&
-       static_cast<const AbstractLineImp*>( parents[1] )->tqcontainsPoint( p, d ) )
+  if ( static_cast<const AbstractLineImp*>( parents[0] )->containsPoint( p, d ) &&
+       static_cast<const AbstractLineImp*>( parents[1] )->containsPoint( p, d ) )
     return new PointImp( p );
   else return new InvalidImp();
 }

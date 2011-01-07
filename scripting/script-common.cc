@@ -44,7 +44,7 @@ TQString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder
 {
   if ( type == Python )
   {
-    TQString tempcode = TQString::tqfromLatin1( "def calc( " );
+    TQString tempcode = TQString::fromLatin1( "def calc( " );
     bool firstarg = true;
     TQString temparg = i18n( "Note to translators: this should be a default "
                             "name for an argument in a Python function. The "

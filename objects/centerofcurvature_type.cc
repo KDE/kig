@@ -66,7 +66,7 @@ ObjectImp* CocConicType::calc( const Args& args, const KigDocument& doc ) const
   const ConicImp* conic = static_cast<const ConicImp*>( args[0] );
   const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
 
-  if ( !conic->tqcontainsPoint( p, doc ) )
+  if ( !conic->containsPoint( p, doc ) )
     return new InvalidImp;
 
   double x = p.x;
@@ -152,7 +152,7 @@ ObjectImp* CocCubicType::calc( const Args& args, const KigDocument& doc ) const
   const CubicImp* cubic = static_cast<const CubicImp*>( args[0] );
   const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
 
-  if ( !cubic->tqcontainsPoint( p, doc ) )
+  if ( !cubic->containsPoint( p, doc ) )
     return new InvalidImp;
 
   double x = p.x;
@@ -234,7 +234,7 @@ ObjectImp* CocCurveType::calc( const Args& args, const KigDocument& doc ) const
   const CurveImp* curve = static_cast<const CurveImp*>( args[0] );
   const Coordinate& p = static_cast<const PointImp*>( args[1] )->coordinate();
 
-  if ( !curve->tqcontainsPoint( p, doc ) )
+  if ( !curve->containsPoint( p, doc ) )
     return new InvalidImp;
 
 

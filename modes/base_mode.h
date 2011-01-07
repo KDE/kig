@@ -31,7 +31,7 @@ class BaseMode
   : public KigMode
 {
   TQPoint mplc;
-  std::vector<ObjectHolder*> tqmoco;
+  std::vector<ObjectHolder*> moco;
 
   void leftClicked( TQMouseEvent* e, KigWidget* v );
   void leftMouseMoved( TQMouseEvent*, KigWidget* );

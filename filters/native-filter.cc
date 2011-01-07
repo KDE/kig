@@ -140,7 +140,7 @@ KigDocument* KigFilterNative::load( const TQString& file )
     TQStringList kigfiles = entries.grep( TQRegExp( "\\.kig$" ) );
     if ( kigfiles.count() != 1 )
       // I throw a generic parse error here, but I should warn the user that
-      // this kig archive file doesn't contain one kig file (it tqcontains no
+      // this kig archive file doesn't contain one kig file (it contains no
       // kig files or more than one).
       KIG_FILTER_PARSE_ERROR;
     const KArchiveEntry* kigz = dir->entry( kigfiles[0] );
@@ -642,7 +642,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, TQTextStream& stream )
     TQDomElement drawelem = doc.createElement( "Draw" );
     drawelem.setAttribute( "object", id );
     drawelem.setAttribute( "color", d->color().name() );
-    drawelem.setAttribute( "shown", TQString::tqfromLatin1( d->shown() ? "true" : "false" ) );
+    drawelem.setAttribute( "shown", TQString::fromLatin1( d->shown() ? "true" : "false" ) );
     drawelem.setAttribute( "width", TQString::number( d->width() ) );
     drawelem.setAttribute( "style", d->styleToString() );
     drawelem.setAttribute( "point-style", d->pointStyleToString() );

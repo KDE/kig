@@ -44,14 +44,14 @@ public:
   virtual void apply( std::vector<ObjectCalcer*>& stack, int loc ) const = 0;
 
   // this function is used to check whether the final objects depend
-  // on the given objects.  The dependsstack tqcontains a set of
+  // on the given objects.  The dependsstack contains a set of
   // booleans telling which parts of the hierarchy certainly depend on
   // the given objects.  In this function, the node should check
   // whether any of its parents have true set, and if so, set its own
   // value to true.
   virtual void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const = 0;
   // this function is used to check whether the given objects are all
-  // used by one or more of the final objects.  The usedstack tqcontains
+  // used by one or more of the final objects.  The usedstack contains
   // a set of booleans telling which parts of the hierarchy are
   // certainly ancestors of the final objects.  In this function, the
   // node should set all of its parents' booleans to true.
@@ -419,10 +419,10 @@ void ObjectHierarchy::serialize( TQDomElement& parent, TQDomDocument& doc ) cons
     // we don't save these atm, since the user can't define them.
     // we only load them from builtin macro's.
 //     TQDomElement ut = doc.createElement( "UseText" );
-//     ut.appendChild( doc.createTextNode( TQString::tqfromLatin1(musetexts[i].c_str() ) ) );
+//     ut.appendChild( doc.createTextNode( TQString::fromLatin1(musetexts[i].c_str() ) ) );
 //     e.appendChild( ut );
 //     TQDomElement ss = doc.createElement( "SelectStatement" );
-//     ss.appendChild( doc.createTextNode( TQString::tqfromLatin1(mselectstatements[i].c_str() ) ) );
+//     ss.appendChild( doc.createTextNode( TQString::fromLatin1(mselectstatements[i].c_str() ) ) );
 //     e.appendChild( ss );
     parent.appendChild( e );
   }
@@ -437,7 +437,7 @@ void ObjectHierarchy::serialize( TQDomElement& parent, TQDomDocument& doc ) cons
     {
       const ApplyTypeNode* node = static_cast<const ApplyTypeNode*>( mnodes[i] );
       e.setAttribute( "action", "calc" );
-      e.setAttribute( "type", TQString::tqfromLatin1( node->type()->fullName() ) );
+      e.setAttribute( "type", TQString::fromLatin1( node->type()->fullName() ) );
       for ( uint i = 0; i < node->parents().size(); ++i )
       {
         int parent = node->parents()[i] + 1;
@@ -696,7 +696,7 @@ const ObjectImpType* lowermost( const ObjectImpType* a, const ObjectImpType* b )
 // this function is part of the visit procedure really.  It is
 // factored out, because it recurses for cache ObjectImp's.  What this
 // does is, it makes sure that object o is calcable, by putting
-// appropriate Node's in mnodes..  po is o->parents() and pl tqcontains
+// appropriate Node's in mnodes..  po is o->parents() and pl contains
 // the location of objects that are already in mnodes and -1
 // otherwise..  -1 means we have to store their ObjectImp, unless
 // they're cache ObjectImp's etc.

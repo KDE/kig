@@ -65,7 +65,7 @@ public:
   /**
    * Default constructor
    */
-  KigPart( TQWidget* tqparentWidget, const char* widgetName,
+  KigPart( TQWidget* parentWidget, const char* widgetName,
 	       TQObject* parent = 0, const char* name = 0,
 	       const TQStringList& = TQStringList()
 	       );
