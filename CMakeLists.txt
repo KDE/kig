@@ -4,6 +4,7 @@ kde4_no_enable_final(kig)
 
 include(KigConfigureChecks.cmake)
 
+add_subdirectory( doc )
 add_subdirectory( icons )
 add_subdirectory( kig )
 add_subdirectory( mimetypes )
