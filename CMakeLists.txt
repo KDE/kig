@@ -30,11 +30,6 @@ include_directories (${QDBUS_INCLUDE_DIRS}  ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_D
 
 # ...to here
 
-find_package(KDE4 REQUIRED)
-include(KDE4Defaults)
-
-include_directories (${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES} ${QT4_INCLUDES})
-
 kde4_no_enable_final(kig)
 
 include(KigConfigureChecks.cmake)
