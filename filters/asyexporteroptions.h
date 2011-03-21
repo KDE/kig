@@ -1,5 +1,5 @@
-// Copyright (C)  2005  Pino Toscano       <toscano.pino@tiscali.it>
-
+// Copyright (C)  2010 Raoul Bourquin
+//
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2
@@ -15,38 +15,23 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#ifndef KIG_FILTERS_LATEXEXPORTEROPTIONS_H
-#define KIG_FILTERS_LATEXEXPORTEROPTIONS_H
+#ifndef KIG_FILTERS_ASYEXPORTEROPTIONS_H
+#define KIG_FILTERS_ASYEXPORTEROPTIONS_H
 
 #include <qwidget.h>
 
-class Ui_LatexExporterOptionsWidget;
+class Ui_AsyExporterOptionsWidget;
 
-class LatexExporterOptions
+class AsyExporterOptions
   : public QWidget
 {
   Q_OBJECT
 
-  Ui_LatexExporterOptionsWidget* expwidget;
+  Ui_AsyExporterOptionsWidget* expwidget;
 
 public:
-
-  enum LatexOutputFormat
-  {
-    PSTricks,
-    TikZ,
-    Asymptote,
-    FormatCount
-  };
-
-  LatexExporterOptions( QWidget* parent );
-  ~LatexExporterOptions();
-
-  void setFormat( LatexOutputFormat format );
-  LatexOutputFormat format();
-
-  void setStandalone( bool standalone );
-  bool standalone();
+  AsyExporterOptions( QWidget* parent );
+  ~AsyExporterOptions();
 
   void setGrid( bool grid );
   bool showGrid() const;

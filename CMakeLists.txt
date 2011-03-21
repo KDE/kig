@@ -134,6 +134,9 @@ set(kigpart_PART_SRCS
    modes/popup.cc
    modes/textlabelwizard.cc
    modes/typesdialog.cpp
+   filters/asyexporter.cc
+   filters/asyexporteroptions.cc
+   filters/asyexporterimpvisitor.cc
    filters/cabri-filter.cc
    filters/cabri-utils.cc
    filters/drgeo-filter.cc
@@ -159,6 +162,7 @@ kde4_add_ui_files(kigpart_PART_SRCS
    modes/typeswidget.ui
    modes/edittypewidget.ui
    modes/historywidget.ui
+   filters/asyexporteroptionswidget.ui
    filters/imageexporteroptionswidget.ui
    filters/latexexporteroptionswidget.ui
    filters/svgexporteroptionswidget.ui

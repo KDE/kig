@@ -16,7 +16,7 @@
 // 02110-1301, USA.
 
 #include "latexexporter.h"
-
+#include "asyexporterimpvisitor.h"
 #include "latexexporteroptions.h"
 
 #include "../kig/kig_document.h"
@@ -1091,7 +1091,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
             stream << "\\end{document}\n";
         }
     }
-    else // format == TikZ then
+    else if (format == LatexExporterOptions::TikZ)
     {
       if (standalone)
       {
@@ -1173,7 +1173,88 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
         {
           stream << "\\end{document}\n";
         }
-        file.close();
+        
     }
+    else if (format == LatexExporterOptions::Asymptote)
+    {
+        const double bottom = w.showingRect().bottom();
+        const double left = w.showingRect().left();
+        const double height = w.showingRect().height();
+        const double width = w.showingRect().width();
+      
+        if (standalone)
+        {
+	    // The header if we embed into latex
+	    stream << "\\documentclass[a4paper,10pt]{article}\n";
+	    stream << "\\usepackage{asymptote}\n";
+	    stream << "\n";
+	    stream << "\\pagestyle{empty}";
+	    stream << "\n";
+	    stream << "\\begin{document}\n";
+        }
+
+	stream << "\\begin{asy}[width=\\the\\linewidth]\n";
+	stream << "\n";
+	stream << "import math;\n";
+	stream << "import graph;\n";
+	stream << "\n";
+	stream << "real textboxmargin = 2mm;\n";
+	stream << "\n";
+      
+	// grid
+	if ( showgrid )
+	{
+	  // TODO: Polar grid
+	  // vertical lines...
+	  double startingpoint = startingpoint = static_cast<double>( KDE_TRUNC( left ) );
+	  for ( double i = startingpoint; i < left+width; ++i )
+	  {
+	    stream << "draw((" << i << "," << bottom << ")--(" << i << "," << bottom+height << "),gray);\n";
+	  }
+	  // horizontal lines...
+	  startingpoint = static_cast<double>( KDE_TRUNC( bottom ) );
+	  for ( double i = startingpoint; i < bottom+height; ++i )
+	  {
+	    stream << "draw((" << left << "," << i << ")--(" << left+width << "," << i << "),gray);\n";
+	  }
+	}
+
+	// axes
+	if ( showaxes )
+	{
+	  stream << "xaxis(\"\", Arrow);\n";
+	  stream << "yaxis(\"\", Arrow);\n";
+	}
+        
+        // Visit all the objects
+        AsyExporterImpVisitor visitor( stream, w );
+        
+        for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
+        {
+            visitor.visit( *i );
+        }
+
+        // extra frame for clipping
+        stream << "path frame = ("<<left<<","<<bottom<<")--("
+                                  <<left<<","<<bottom+height<<")--("
+                                  <<left+width<<","<<bottom+height<<")--("
+                                  <<left+width<<","<<bottom<<")--cycle;\n";
+        
+        if ( showframe )
+        {
+            stream << "draw(frame, black);\n";
+        }
+        stream << "clip(frame);\n";
+        stream << "\n";
+        stream << "\\end{asy}\n";
+	
+        // The file footer in case we embed into latex
+        if ( standalone )
+        {
+	    stream << "\\end{document}\n";
+        }
+    }
+    
+    // And close the output file
+    file.close();
 }
-// kate: indent-mode cstyle; space-indent on; indent-width 0; 

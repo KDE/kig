@@ -47,6 +47,9 @@ void LatexExporterOptions::setFormat(LatexExporterOptions::LatexOutputFormat for
     case TikZ:
       expwidget->tikzRadioButton->setChecked(true);
       break;
+    case Asymptote:
+      expwidget->asyRadioButton->setChecked(true);
+      break;
   }
 }
 
@@ -56,10 +59,14 @@ LatexExporterOptions::LatexOutputFormat LatexExporterOptions::format()
   {
     return PSTricks;
   }
-  else
+  else if (expwidget->tikzRadioButton->isChecked())
   {
     return TikZ;
-  }
+  } 
+  else 
+  {
+    return Asymptote;
+  } 
 }
 
 void LatexExporterOptions::setStandalone(bool standalone)

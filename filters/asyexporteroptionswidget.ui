@@ -1,0 +1,82 @@
+<ui version="4.0" >
+ <class>AsyExporterOptionsWidget</class>
+ <widget class="QWidget" name="AsyExporterOptionsWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>403</width>
+    <height>113</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>8</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Options</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>8</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QGridLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item row="1" column="0" >
+         <widget class="QCheckBox" name="showFrameCheckBox" >
+          <property name="text" >
+           <string>Show Extra Frame</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" >
+         <widget class="QCheckBox" name="showAxesCheckBox" >
+          <property name="text" >
+           <string>Show Axes</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" >
+         <widget class="QCheckBox" name="showGridCheckBox" >
+          <property name="text" >
+           <string>Show Grid</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -20,6 +20,7 @@
 
 #include "imageexporteroptions.h"
 #include "latexexporter.h"
+#include "asyexporter.h"
 #include "svgexporter.h"
 #include "xfigexporter.h"
 
@@ -139,9 +140,9 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
 KigExportManager::KigExportManager()
 {
   mexporters.push_back( new ImageExporter );
-  // working on this one ;)
   mexporters.push_back( new XFigExporter );
   mexporters.push_back( new LatexExporter );
+  mexporters.push_back( new AsyExporter );
   mexporters.push_back( new SVGExporter );
 }
 

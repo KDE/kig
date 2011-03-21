@@ -1,3 +1,9 @@
+2011-03-21  Raoul Bourquin <raoulb@bluewin.ch>
+
+	* New export filter: asyexporter is a filter to export
+	into the format of "asymptote". It creates an "asy"
+	file and optionally interfaces it with latex.
+
 2009-10-29  Petr Gajdos <pgajdos@suse.cz>
 
 	* New object: Bezier curves and rational Bezier curves:

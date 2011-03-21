@@ -63,6 +63,10 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
                   ki18n( "Contributed the Bézier curves and related icons." ),
                   "pgajdos@suse.cz" );
 
+  tmp.addAuthor( ki18n("Raoul Bourquin"),
+                  ki18n( "Contributed the 'asymptote' export filter." ),
+                  "raoulb@bluewin.ch" );
+
   tmp.addCredit( ki18n("Eric Depagne"),
                   ki18n( "The French translator, who also sent me some useful "
                              "feedback, like feature requests and bug reports." ),
