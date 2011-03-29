@@ -1,4 +1,4 @@
-// Copyright (C)  2010 Raoul Bourquin
+// Copyright (C)  2010,2011 Raoul Bourquin
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -495,4 +495,56 @@ void AsyExporterImpVisitor::visit(const OpenPolygonalImp* imp)
 	  << emitStyle( mcurobj->drawer()->style() )
 	  << " );";
   newLine();
+}
+
+
+void AsyExporterImpVisitor::visit ( const BezierImp* imp )
+{
+  std::vector<Coordinate> pts = imp->points();
+  switch ( pts.size() )
+  {
+  case 3:
+    // Formula for cubic control points
+    // CP1 = QP0 + 2/3 *(QP1-QP0)
+    // CP2 = CP1 + 1/3 *(QP2-QP0)
+    mstream << "pair cp1 = " << emitCoord(pts.at(0)) << " +2/3*(" << emitCoord(pts.at(1)) << "-" << emitCoord(pts.at(0)) << ");";
+    newLine();
+    mstream << "pair cp2 = cp1 +1/3*(" << emitCoord(pts.at(2)) << "-" << emitCoord(pts.at(0)) << ");";
+    newLine();
+    mstream << "path bezier = ";
+    mstream << emitCoord( pts.at(0) );
+    mstream << " .. controls cp1 and cp2 .. ";
+    mstream << emitCoord( pts.at(2) );
+    mstream << ";";
+    newLine();
+    mstream << "draw(bezier, "
+            << emitColor( mcurobj->drawer()->color() )
+            << "+"
+            << emitStyle( mcurobj->drawer()->style() )
+            << " );";
+    newLine();
+    break;
+  case 4:
+    mstream << "path bezier = ";
+    mstream << emitCoord( pts.at(0) );
+    mstream << " .. controls ";
+    mstream << emitCoord( pts.at(1) );
+    mstream << " and ";
+    mstream << emitCoord( pts.at(2) );
+    mstream << " .. ";
+    mstream << emitCoord( pts.at(3) );
+    mstream << ";";
+    newLine();
+    mstream << "draw(bezier, "
+            << emitColor( mcurobj->drawer()->color() )
+            << "+"
+            << emitStyle( mcurobj->drawer()->style() )
+            << " );";
+    newLine();
+    break;
+// TODO: Rational bezier curves
+  default:
+    plotGenericCurve ( imp );
+    break;
+  }
 }

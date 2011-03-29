@@ -1,4 +1,4 @@
-// Copyright (C)  2010 Raoul Bourquin
+// Copyright (C)  2010,2011 Raoul Bourquin
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -71,6 +71,7 @@ public:
   void visit( const FilledPolygonImp* imp );
   void visit( const ClosedPolygonalImp* imp );
   void visit( const OpenPolygonalImp* imp );
+  void visit ( const BezierImp* imp );
 
   double unit;
 

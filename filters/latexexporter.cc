@@ -1,4 +1,5 @@
 // Copyright (C)  2004  Pino Toscano <toscano.pino@tiscali.it>
+// Copyright (C)  2010,2011 Raoul Bourquin (asymptote exporter part)
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -915,12 +916,34 @@ void TikZExportImpVisitor::visit(const BezierImp* imp)
     switch (pts.size())
     {
     case 3:
+        // Formula for cubic control points
+        // CP1 = QP0 + 2/3 *(QP1-QP0)
+	// CP2 = CP1 + 1/3 *(QP2-QP0)
+	// TODO: Improve emitCoords as in asy exporter
         mstream << "\\path [draw,color=" << mcurcolorid << ",line width=" << width << "] ";
-        emitCoord(pts.front());
+        emitCoord(pts.at(0));
         mstream << ".. controls ";
-        emitCoord(pts.at(1));
-        mstream << " .. ";
-        emitCoord(pts.back());
+        mstream << "($";
+        emitCoord(pts.at(0));
+        mstream << "+2/3*";
+	emitCoord(pts.at(1));
+	mstream << "-2/3*";
+	emitCoord(pts.at(0));
+	mstream << "$)";
+	mstream << " and ";
+        mstream << "($";
+        emitCoord(pts.at(0));
+        mstream << "+2/3*";
+	emitCoord(pts.at(1));
+	mstream << "-2/3*";
+	emitCoord(pts.at(0));	
+	mstream << "+1/3*";
+	emitCoord(pts.at(2));
+	mstream << "-1/3*";
+	emitCoord(pts.at(0));
+	mstream << "$)";
+	mstream << " .. ";
+	emitCoord(pts.at(2));
         newLine();
         break;
     case 4:
@@ -1098,6 +1121,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
             stream << "\\documentclass[a4paper]{minimal}\n";
         //  stream << "\\usepackage[latin1]{inputenc}\n";
             stream << "\\usepackage{tikz}\n";
+            stream << "\\usetikzlibrary{calc}\n";
             if (showgrid)
             {
               stream << "\\tikzset{kig grid/.style=draw,help lines}\n";
