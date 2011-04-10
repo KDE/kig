@@ -167,6 +167,10 @@ void ObjectImpVisitor::visit( const BezierImp* )
 {
 }
 
+void ObjectImpVisitor::visit( const RationalBezierImp* )
+{
+}
+
 ObjectImpVisitor::~ObjectImpVisitor()
 {
 

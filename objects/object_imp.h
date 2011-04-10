@@ -43,6 +43,7 @@ class FilledPolygonImp;
 class ClosedPolygonalImp;
 class OpenPolygonalImp;
 class BezierImp;
+class RationalBezierImp;
 
 /**
  * \internal This is some OO magic commonly referred to as "double
@@ -80,6 +81,7 @@ public:
   virtual void visit( const ClosedPolygonalImp* imp );
   virtual void visit( const OpenPolygonalImp* imp );
   virtual void visit( const BezierImp* imp );
+  virtual void visit( const RationalBezierImp* imp );
 };
 
 typedef unsigned int uint;

@@ -116,7 +116,9 @@ public:
     void visit( const FilledPolygonImp* imp );
     void visit( const ClosedPolygonalImp* imp );
     void visit( const OpenPolygonalImp* imp );
-
+    void visit( const BezierImp* imp );
+    void visit( const RationalBezierImp* imp );
+    
     double unit;
 
 private:
@@ -515,6 +517,19 @@ void PSTricksExportImpVisitor::visit(const OpenPolygonalImp* imp)
     newLine();
 }
 
+// TODO: Just a quick fix, improve when reviewing PSTricks exporter
+void PSTricksExportImpVisitor::visit(const BezierImp* imp)
+{
+  plotGenericCurve(imp);
+}
+
+// TODO: Just a quick fix, improve when reviewing PSTricks exporter
+void PSTricksExportImpVisitor::visit(const RationalBezierImp* imp)
+{
+  plotGenericCurve(imp);
+}
+
+
 class TikZExportImpVisitor
             : public ObjectImpVisitor
 {
@@ -548,6 +563,7 @@ public:
     void visit( const ClosedPolygonalImp* imp );
     void visit( const OpenPolygonalImp* imp );
     void visit( const BezierImp* imp);
+    void visit( const RationalBezierImp* imp);
 
     double unit;
 
@@ -962,6 +978,13 @@ void TikZExportImpVisitor::visit(const BezierImp* imp)
         break;
     }
 }
+
+// TODO: Just a quick fix, improve when reviewing TikZ exporter
+void TikZExportImpVisitor::visit(const RationalBezierImp* imp)
+{
+  plotGenericCurve(imp);
+}
+
 
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {

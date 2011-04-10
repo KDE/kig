@@ -131,7 +131,7 @@ public:
 };
 
 /**
- * Bézier curve of degree n
+ * Rational Bézier curve of degree n
  */
 class RationalBezierCurveType
   : public ObjectType

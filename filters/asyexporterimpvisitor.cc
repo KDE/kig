@@ -542,9 +542,15 @@ void AsyExporterImpVisitor::visit ( const BezierImp* imp )
             << " );";
     newLine();
     break;
-// TODO: Rational bezier curves
   default:
     plotGenericCurve ( imp );
     break;
   }
 }
+
+
+void AsyExporterImpVisitor::visit ( const RationalBezierImp* imp )
+{
+  plotGenericCurve ( imp );
+}
+

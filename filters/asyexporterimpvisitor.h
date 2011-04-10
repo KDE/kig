@@ -72,6 +72,7 @@ public:
   void visit( const ClosedPolygonalImp* imp );
   void visit( const OpenPolygonalImp* imp );
   void visit ( const BezierImp* imp );
+  void visit ( const RationalBezierImp* imp );
 
   double unit;
 
