@@ -58,9 +58,9 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
   kfd->setOptionCaption( i18n( "Asymptote Options" ) );
   AsyExporterOptions* opts = new AsyExporterOptions( 0L );
   kfd->setOptionsWidget( opts );
-  opts->setGrid( false );
-  opts->setAxes( false );
-  opts->setExtraFrame( true );
+  opts->setGrid( true );
+  opts->setAxes( true );
+  opts->setExtraFrame( false );
   if ( !kfd->exec() )
     return;
 
@@ -68,7 +68,7 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
   bool showgrid = opts->showGrid();
   bool showaxes = opts->showAxes();
   bool showframe = opts->showExtraFrame();
-  
+
   delete opts;
   delete kfd;
 
@@ -76,8 +76,8 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
   if ( ! file.open( QIODevice::WriteOnly ) )
   {
     KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
-				  "check if the file permissions are set correctly." ,
-			  file_name ) );
+                                  "check if the file permissions are set correctly." ,
+                                  file_name ) );
     return;
   };
 
@@ -89,9 +89,9 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
   std::vector<ObjectHolder*> os = doc.document().objects();
   QTextStream stream( &file );
   AsyExporterImpVisitor visitor( stream, w );
-  
+
   // Start building the output stream containing the asymptote script commands
-  
+
   // The file header for pure asymptote
   stream << "settings.outformat=\"pdf\";\n";
   stream << "\n";
@@ -102,18 +102,18 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
   stream << "\n";
   stream << "real textboxmargin = 2mm;\n";
   stream << "\n";
-  
-  // grid
+
+  // Grid
   if ( showgrid )
   {
     // TODO: Polar grid
-    // vertical lines...
+    // Vertical lines
     double startingpoint = startingpoint = static_cast<double>( KDE_TRUNC( left ) );
     for ( double i = startingpoint; i < left+width; ++i )
     {
       stream << "draw((" << i << "," << bottom << ")--(" << i << "," << bottom+height << "),gray);\n";
     }
-    // horizontal lines...
+    // Horizontal lines
     startingpoint = static_cast<double>( KDE_TRUNC( bottom ) );
     for ( double i = startingpoint; i < bottom+height; ++i )
     {
@@ -121,11 +121,11 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
     }
   }
 
-  // axes
+  // Axes
   if ( showaxes )
   {
-    stream << "xaxis(\"\", Arrow);\n";
-    stream << "yaxis(\"\", Arrow);\n";
+    stream << "draw(("<<left<<",0)--("<<left+width<<",0), black, Arrow);\n";
+    stream << "draw((0,"<<bottom<<")--(0,"<<bottom+height<<"), black, Arrow);\n";
   }
 
   // Visit all the objects
@@ -135,14 +135,17 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
   }
 
   stream << "path frame = ("<<left<<","<<bottom<<")--("
-			    <<left<<","<<bottom+height<<")--("
-			    <<left+width<<","<<bottom+height<<")--("
-			    <<left+width<<","<<bottom<<")--cycle;\n";
-  // extra frame
+          <<left<<","<<bottom+height<<")--("
+          <<left+width<<","<<bottom+height<<")--("
+          <<left+width<<","<<bottom<<")--cycle;\n";
+
+  // Extra frame
   if ( showframe )
   {
     stream << "draw(frame, black);\n";
   }
   stream << "clip(frame);\n";
 
+  // And close the output file
+  file.close();
 }

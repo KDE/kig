@@ -18,11 +18,6 @@
 #ifndef KIG_FILTERS_ASYEXPORTERIMPVISITOR_H
 #define KIG_FILTERS_ASYEXPORTERIMPVISITOR_H
 
-// #include <qcheckbox.h>
-// #include <qcolor.h>
-// #include <qfile.h>
-// #include <qtextstream.h>
-
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
@@ -82,28 +77,39 @@ private:
     * the lines may have a few more characters.)
     */
   static const uint maxlinelength = 500;
-  
+
   /**
-   * Converts Kig coords to pstrick coord system and sends them to stream
-   * using the format: (xcoord,ycoord)
+   * Return the pen color definition as a string.
+   */
+  QString emitPenColor( const QColor& c );
+
+  /**
+   * Return the pen style definition as a string.
+   */
+  QString emitPenStyle( const Qt::PenStyle& style );
+
+  /**
+   * Return the pen width definition as a string.
+   */
+  QString emitPenSize( const int width );
+
+  /**
+   * Return the full pen definition including color, size and style as a string.
+   */
+  QString emitPen( const QColor& c, const int width, const Qt::PenStyle& style );
+
+  /**
+   * Converts Kig coords to Asymptote coord system and sends them to stream
+   * using the format (xcoord,ycoord) wich is of asymptote data type "pair".
    */
   QString emitCoord( const Coordinate& c );
-  
+
   /**
    * Draws a line (segment) or a vector if vector is true.
    */
   void emitLine( const Coordinate& a, const Coordinate& b, const int width,
                  const Qt::PenStyle s, bool vector = false );
-  /**
-   * Writes the color to the stream as rgb(r,g,b)
-   */
-  QString emitColor( const QColor& c );
-  
-  /**
-   * Writes a style definition to the stream.
-   */
-  QString emitStyle( Qt::PenStyle style );
-  
+
   /**
    * Sends a new line character ( \n ) to stream.
    */
@@ -114,7 +120,7 @@ private:
    * Kig coordinate system.
    */
   double dimRealToCoord( int dim );
-  
+
   /**
    * Plots a generic curve though its points calc'ed with getPoint.
    */

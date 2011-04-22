@@ -39,29 +39,58 @@ void AsyExporterImpVisitor::newLine()
 }
 
 
-QString AsyExporterImpVisitor::emitColor( const QColor& c )
+QString AsyExporterImpVisitor::emitPenColor( const QColor& c )
 {
-  QString ret("");
-  ret = "rgb(" + QString::number(c.red()) + "," + QString::number(c.green()) + "," + QString::number(c.blue()) + ")";
-  return ret;
+  QString pencolor("");
+  // Asymptote definition of pen color
+  pencolor = "rgb(" + QString::number(c.red()) + "," + QString::number(c.green()) + "," + QString::number(c.blue()) + ")";
+  return pencolor;
 }
 
 
-QString AsyExporterImpVisitor::emitStyle( Qt::PenStyle style )
+QString AsyExporterImpVisitor::emitPenStyle( const Qt::PenStyle& style )
 {
-  QString linetype("");
+  QString penstyle("");
+  // Asymptote definition of pen (line) style
+  // TODO: Needs finetuning of Asymptote linestyle parameters
   if ( style == Qt::SolidLine ) {
-    linetype = "solid";
+    penstyle = "solid";
   } else if ( style == Qt::DashLine ) {
-    linetype = "dashed";
+    penstyle = "dashed";
   } else if ( style == Qt::DotLine ) {
-    linetype = "dotted";
+    penstyle = "dotted";
   } else if ( style == Qt::DashDotLine ) {
-    linetype = "dashdotted";
+    penstyle = "dashdotted";
   } else if ( style == Qt::DashDotDotLine ) {
-    linetype = "longdashdotted";
+    penstyle = "longdashdotted";
   }
-  return linetype;
+  return penstyle;
+}
+
+
+QString AsyExporterImpVisitor::emitPenSize( const int width )
+{
+  QString pensize("");
+  if ( width < 0 )
+  {
+    // Nothing specified, use asymptote default
+    pensize = "linewidth(0.5)";
+  }
+  else
+  {
+    // Asymptote definition of pen size
+    pensize = "linewidth(" + QString::number(width) + ")";
+  }
+  return  pensize;
+}
+
+
+QString AsyExporterImpVisitor::emitPen( const QColor& c, const int width, const Qt::PenStyle& style )
+{
+  QString pen("");
+  // Asymptote definition of a pen
+  pen = emitPenColor(c) + "+" + emitPenSize(width) + "+" + emitPenStyle(style);
+  return  pen;
 }
 
 
@@ -87,18 +116,14 @@ void AsyExporterImpVisitor::emitLine( const Coordinate& a, const Coordinate& b,
   if ( vector == true )
   {
     mstream << "draw(line, "
-	    << emitColor( mcurobj->drawer()->color() )
-	    << "+"
-	    << emitStyle( s )
-	    << ", Arrow );";
+            << emitPen( mcurobj->drawer()->color(), width, s )
+            << ", Arrow );";
   }
   else
   {
     mstream << "draw(line, "
-	    << emitColor( mcurobj->drawer()->color() )
-	    << "+"
-	    << emitStyle( s )
-	    << " );";
+            << emitPen( mcurobj->drawer()->color(), width, s )
+            << " );";
   }
   newLine();
 }
@@ -180,31 +205,31 @@ void AsyExporterImpVisitor::plotGenericCurve( const CurveImp* imp )
       // Avoid too long lines in the output file
       if(linelength + tmp.length() > maxlinelength)
       {
-	linelength = tmp.length();
-	newLine();
+    linelength = tmp.length();
+    newLine();
       }
       else
       {
-	linelength += tmp.length();
+    linelength += tmp.length();
       }
       mstream << tmp;
       if ( j < s-1 )
       {
-	linelength += 2;
-	mstream << "--";
+    linelength += 2;
+    mstream << "--";
       }
       else
       {
-	mstream << ";";
-	newLine();
-	linelength = 0;
+    mstream << ";";
+    newLine();
+    linelength = 0;
       }
     }
+    int width = mcurobj->drawer()->width();
+    if ( width == -1 ) width = 1;
     mstream << "draw(curve, "
-	    << emitColor( mcurobj->drawer()->color() )
-	    << "+"
-	    << emitStyle( mcurobj->drawer()->style() )
-	    << " );";
+            << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+            << " );";
     newLine();
   }
 }
@@ -215,8 +240,8 @@ void AsyExporterImpVisitor::visit( const LineImp* imp )
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
   calcBorderPoints( a, b, msr );
-
-  int width = 1;
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   emitLine( a, b, width, mcurobj->drawer()->style() );
 }
 
@@ -227,9 +252,11 @@ void AsyExporterImpVisitor::visit( const PointImp* imp )
           << emitCoord( imp->coordinate() )
           << ";";
   newLine();
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 3;
   mstream << "dot(point, "
-	  << emitColor( mcurobj->drawer()->color() )
-	  << ");";
+          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << ");";
   newLine();
 }
 
@@ -242,10 +269,10 @@ void AsyExporterImpVisitor::visit( const TextImp* imp )
           << ";";
   newLine();
   mstream << "Label l = Label(\""
-	  << imp->text()
-	  << "\", "
-	  << emitColor( mcurobj-> drawer()->color() )
-	  << ");";
+          << imp->text()
+          << "\", "
+          << emitPenColor( mcurobj-> drawer()->color() )
+          << ");";
   newLine();
   if ( imp->hasFrame() )
   {
@@ -269,24 +296,22 @@ void AsyExporterImpVisitor::visit( const AngleImp* imp )
 
   startangle = Goniometry::convert( startangle, Goniometry::Rad, Goniometry::Deg );
   endangle = Goniometry::convert( endangle, Goniometry::Rad, Goniometry::Deg );
-  
-  // TODO: Allow arrow tips?
-  
+
   mstream << "path a = Arc("
-	  << emitCoord(center)
-	  << ", "
-	  << radius
-	  << ", "
-	  << startangle
-	  << ", "
-	  << endangle
-	  << " );";
+          << emitCoord(center)
+          << ", "
+          << radius
+          << ", "
+          << startangle
+          << ", "
+          << endangle
+          << " );";
   newLine();
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   mstream << "draw(a, "
-	  << emitColor( mcurobj->drawer()->color() )
-	  << "+"
-	  << emitStyle( mcurobj->drawer()->style() )
-	  << " );";
+          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << ", Arrow );";
   newLine();
 }
 
@@ -295,8 +320,8 @@ void AsyExporterImpVisitor::visit( const VectorImp* imp )
 {
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
-
-  int width = 1;
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   emitLine( a, b, width, mcurobj->drawer()->style(), true );
 }
 
@@ -318,11 +343,11 @@ void AsyExporterImpVisitor::visit( const CircleImp* imp )
   newLine();
   mstream << "path circle = Circle(center, radius);";
   newLine();
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   mstream << "draw(circle, "
-	  << emitColor( mcurobj->drawer()->color() )
-	  << "+"
-	  << emitStyle( mcurobj->drawer()->style() )
-	  << " );";
+          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << " );";
   newLine();
 }
 
@@ -333,10 +358,10 @@ void AsyExporterImpVisitor::visit( const ConicImp* imp )
 }
 
 
-void AsyExporterImpVisitor::visit( const CubicImp* )
+void AsyExporterImpVisitor::visit( const CubicImp* imp )
 {
   // FIXME: cubic are not drawn correctly with plotGenericCurve
-  //  plotGenericCurve( imp );
+  plotGenericCurve( imp );
 }
 
 
@@ -345,7 +370,8 @@ void AsyExporterImpVisitor::visit( const SegmentImp* imp )
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
 
-  int width = 1;
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   emitLine( a, b, width, mcurobj->drawer()->style() );
 }
 
@@ -356,7 +382,8 @@ void AsyExporterImpVisitor::visit( const RayImp* imp )
   Coordinate b = imp->data().b;
   calcRayBorderPoints( a, b, msr );
 
-  int width = 1;
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   emitLine( a, b, width, mcurobj->drawer()->style() );
 }
 
@@ -372,20 +399,20 @@ void AsyExporterImpVisitor::visit( const ArcImp* imp )
   endangle = Goniometry::convert( endangle, Goniometry::Rad, Goniometry::Deg );
 
   mstream << "path arc = Arc("
-	  << emitCoord(center)
-	  << ", "
-	  << radius
-	  << ", "
-	  << startangle
-	  << ", "
-	  << endangle
-	  << " );";
+          << emitCoord(center)
+          << ", "
+          << radius
+          << ", "
+          << startangle
+          << ", "
+          << endangle
+          << " );";
   newLine();
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   mstream << "draw(arc, "
-	  << emitColor( mcurobj->drawer()->color() )
-	  << "+"
-	  << emitStyle( mcurobj->drawer()->style() )
-	  << " );";
+          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << " );";
   newLine();
 }
 
@@ -414,14 +441,14 @@ void AsyExporterImpVisitor::visit( const FilledPolygonImp* imp )
   mstream << "cycle;";
   newLine();
   mstream << "fill(polygon, "
-	  << emitColor( mcurobj->drawer()->color() )
-	  << "+opacity(0.5) );";
+          << emitPenColor( mcurobj->drawer()->color() )
+          << "+opacity(0.5) );";
   newLine();
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   mstream << "draw(polygon, "
-	  << emitColor( mcurobj->drawer()->color() )
-	  << "+"
-	  << emitStyle( mcurobj->drawer()->style() )
-	  << " );";
+          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << " );";
   newLine();
 }
 
@@ -446,14 +473,14 @@ void AsyExporterImpVisitor::visit(const ClosedPolygonalImp* imp)
       linelength += tmp.length();
     }
     mstream << tmp;
-  } 
+  }
   mstream << "cycle;";
   newLine();
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   mstream << "draw(polygon, "
-	  << emitColor( mcurobj->drawer()->color() )
-	  << "+"
-	  << emitStyle( mcurobj->drawer()->style() )
-	  << " );";
+          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << " );";
   newLine();
 }
 
@@ -477,7 +504,7 @@ void AsyExporterImpVisitor::visit(const OpenPolygonalImp* imp)
       linelength += tmp.length();
     }
     mstream << tmp;
-    if ( i < pts.size()-1 ) 
+    if ( i < pts.size()-1 )
     {
       linelength += 2;
       mstream << "--";
@@ -489,17 +516,19 @@ void AsyExporterImpVisitor::visit(const OpenPolygonalImp* imp)
     }
   }
   newLine();
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   mstream << "draw(polygon, "
-	  << emitColor( mcurobj->drawer()->color() )
-	  << "+"
-	  << emitStyle( mcurobj->drawer()->style() )
-	  << " );";
+          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << " );";
   newLine();
 }
 
 
 void AsyExporterImpVisitor::visit ( const BezierImp* imp )
 {
+  int width = mcurobj->drawer()->width();
+  if ( width == -1 ) width = 1;
   std::vector<Coordinate> pts = imp->points();
   switch ( pts.size() )
   {
@@ -518,9 +547,7 @@ void AsyExporterImpVisitor::visit ( const BezierImp* imp )
     mstream << ";";
     newLine();
     mstream << "draw(bezier, "
-            << emitColor( mcurobj->drawer()->color() )
-            << "+"
-            << emitStyle( mcurobj->drawer()->style() )
+            << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
             << " );";
     newLine();
     break;
@@ -536,9 +563,7 @@ void AsyExporterImpVisitor::visit ( const BezierImp* imp )
     mstream << ";";
     newLine();
     mstream << "draw(bezier, "
-            << emitColor( mcurobj->drawer()->color() )
-            << "+"
-            << emitStyle( mcurobj->drawer()->style() )
+            << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
             << " );";
     newLine();
     break;
@@ -553,4 +578,3 @@ void AsyExporterImpVisitor::visit ( const RationalBezierImp* imp )
 {
   plotGenericCurve ( imp );
 }
-

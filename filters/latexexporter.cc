@@ -118,7 +118,7 @@ public:
     void visit( const OpenPolygonalImp* imp );
     void visit( const BezierImp* imp );
     void visit( const RationalBezierImp* imp );
-    
+
     double unit;
 
 private:
@@ -952,7 +952,7 @@ void TikZExportImpVisitor::visit(const BezierImp* imp)
         mstream << "+2/3*";
 	emitCoord(pts.at(1));
 	mstream << "-2/3*";
-	emitCoord(pts.at(0));	
+	emitCoord(pts.at(0));
 	mstream << "+1/3*";
 	emitCoord(pts.at(2));
 	mstream << "-1/3*";
@@ -994,20 +994,20 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     kfd->setOptionCaption( i18n( "Latex Options" ) );
     LatexExporterOptions* opts = new LatexExporterOptions( 0L );
     kfd->setOptionsWidget( opts );
-    
+
     opts->setGrid( doc.document().grid() );
     opts->setAxes( doc.document().axes() );
     opts->setExtraFrame( false );
-    
+
     KConfigGroup cg = KGlobal::config()->group("Latex Exporter");
-    
+
     int fmt = cg.readEntry<int>("OutputFormat", LatexExporterOptions::PSTricks);
     if (fmt > -1 && fmt < LatexExporterOptions::FormatCount)
     {
         opts->setFormat((LatexExporterOptions::LatexOutputFormat)fmt);
     }
     opts->setStandalone(cg.readEntry("Standalone", true));
-    
+
     if ( !kfd->exec() )
         return;
 
@@ -1020,7 +1020,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
 
     delete opts;
     delete kfd;
-    
+
     cg.writeEntry("OutputFormat", (int)format);
     cg.writeEntry("Standalone", standalone);
 
@@ -1220,7 +1220,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
         {
           stream << "\\end{document}\n";
         }
-        
+
     }
     else if (format == LatexExporterOptions::Asymptote)
     {
@@ -1228,7 +1228,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
         const double left = w.showingRect().left();
         const double height = w.showingRect().height();
         const double width = w.showingRect().width();
-      
+
         if (standalone)
         {
 	    // The header if we embed into latex
@@ -1247,7 +1247,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
 	stream << "\n";
 	stream << "real textboxmargin = 2mm;\n";
 	stream << "\n";
-      
+
 	// grid
 	if ( showgrid )
 	{
@@ -1266,16 +1266,16 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
 	  }
 	}
 
-	// axes
-	if ( showaxes )
-	{
-	  stream << "xaxis(\"\", Arrow);\n";
-	  stream << "yaxis(\"\", Arrow);\n";
-	}
-        
+    // axes
+    if ( showaxes )
+    {
+      stream << "draw(("<<left<<",0)--("<<left+width<<",0), black, Arrow);\n";
+      stream << "draw((0,"<<bottom<<")--(0,"<<bottom+height<<"), black, Arrow);\n";
+    }
+
         // Visit all the objects
         AsyExporterImpVisitor visitor( stream, w );
-        
+
         for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
         {
             visitor.visit( *i );
@@ -1286,7 +1286,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
                                   <<left<<","<<bottom+height<<")--("
                                   <<left+width<<","<<bottom+height<<")--("
                                   <<left+width<<","<<bottom<<")--cycle;\n";
-        
+
         if ( showframe )
         {
             stream << "draw(frame, black);\n";
@@ -1294,14 +1294,14 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
         stream << "clip(frame);\n";
         stream << "\n";
         stream << "\\end{asy}\n";
-	
+
         // The file footer in case we embed into latex
         if ( standalone )
         {
 	    stream << "\\end{document}\n";
         }
     }
-    
+
     // And close the output file
     file.close();
 }
