@@ -70,6 +70,9 @@ QString AsyExporterImpVisitor::emitPenStyle( const Qt::PenStyle& style )
 
 QString AsyExporterImpVisitor::emitPenSize( const int width )
 {
+  // In this function we map the logical (integer) linewidth of Kig
+  // to real line widths that can be used in Asymptote.
+  // Default mapping is currently: asy_width = kig_width / 2.0
   QString pensize("");
   if ( width < 0 )
   {
@@ -79,7 +82,7 @@ QString AsyExporterImpVisitor::emitPenSize( const int width )
   else
   {
     // Asymptote definition of pen size
-    pensize = "linewidth(" + QString::number(width) + ")";
+    pensize = "linewidth(" + QString::number(width/2.0) + ")";
   }
   return  pensize;
 }
@@ -225,10 +228,8 @@ void AsyExporterImpVisitor::plotGenericCurve( const CurveImp* imp )
     linelength = 0;
       }
     }
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
     mstream << "draw(curve, "
-            << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+            << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
             << " );";
     newLine();
   }
@@ -240,9 +241,7 @@ void AsyExporterImpVisitor::visit( const LineImp* imp )
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
   calcBorderPoints( a, b, msr );
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
-  emitLine( a, b, width, mcurobj->drawer()->style() );
+  emitLine( a, b, mcurobj->drawer()->width(), mcurobj->drawer()->style() );
 }
 
 
@@ -252,8 +251,10 @@ void AsyExporterImpVisitor::visit( const PointImp* imp )
           << emitCoord( imp->coordinate() )
           << ";";
   newLine();
+  // The factor of 6 is necessary to get the asymptote default dot size
+  // which is 6*asy_default_linewidth where asy_default_linewidth = 0.5
   int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 3;
+  if ( width == -1 ) width = 6;
   mstream << "dot(point, "
           << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
           << ");";
@@ -307,10 +308,8 @@ void AsyExporterImpVisitor::visit( const AngleImp* imp )
           << endangle
           << " );";
   newLine();
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
   mstream << "draw(a, "
-          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
           << ", Arrow );";
   newLine();
 }
@@ -320,9 +319,7 @@ void AsyExporterImpVisitor::visit( const VectorImp* imp )
 {
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
-  emitLine( a, b, width, mcurobj->drawer()->style(), true );
+  emitLine( a, b, mcurobj->drawer()->width(), mcurobj->drawer()->style(), true );
 }
 
 
@@ -343,10 +340,8 @@ void AsyExporterImpVisitor::visit( const CircleImp* imp )
   newLine();
   mstream << "path circle = Circle(center, radius);";
   newLine();
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
   mstream << "draw(circle, "
-          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
           << " );";
   newLine();
 }
@@ -369,10 +364,7 @@ void AsyExporterImpVisitor::visit( const SegmentImp* imp )
 {
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
-
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
-  emitLine( a, b, width, mcurobj->drawer()->style() );
+  emitLine( a, b, mcurobj->drawer()->width(), mcurobj->drawer()->style() );
 }
 
 
@@ -381,10 +373,7 @@ void AsyExporterImpVisitor::visit( const RayImp* imp )
   Coordinate a = imp->data().a;
   Coordinate b = imp->data().b;
   calcRayBorderPoints( a, b, msr );
-
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
-  emitLine( a, b, width, mcurobj->drawer()->style() );
+  emitLine( a, b, mcurobj->drawer()->width(), mcurobj->drawer()->style() );
 }
 
 
@@ -408,10 +397,8 @@ void AsyExporterImpVisitor::visit( const ArcImp* imp )
           << endangle
           << " );";
   newLine();
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
   mstream << "draw(arc, "
-          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
           << " );";
   newLine();
 }
@@ -444,10 +431,8 @@ void AsyExporterImpVisitor::visit( const FilledPolygonImp* imp )
           << emitPenColor( mcurobj->drawer()->color() )
           << "+opacity(0.5) );";
   newLine();
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
   mstream << "draw(polygon, "
-          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
           << " );";
   newLine();
 }
@@ -476,10 +461,8 @@ void AsyExporterImpVisitor::visit(const ClosedPolygonalImp* imp)
   }
   mstream << "cycle;";
   newLine();
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
   mstream << "draw(polygon, "
-          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
           << " );";
   newLine();
 }
@@ -516,10 +499,8 @@ void AsyExporterImpVisitor::visit(const OpenPolygonalImp* imp)
     }
   }
   newLine();
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
   mstream << "draw(polygon, "
-          << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+          << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
           << " );";
   newLine();
 }
@@ -527,8 +508,6 @@ void AsyExporterImpVisitor::visit(const OpenPolygonalImp* imp)
 
 void AsyExporterImpVisitor::visit ( const BezierImp* imp )
 {
-  int width = mcurobj->drawer()->width();
-  if ( width == -1 ) width = 1;
   std::vector<Coordinate> pts = imp->points();
   switch ( pts.size() )
   {
@@ -547,7 +526,7 @@ void AsyExporterImpVisitor::visit ( const BezierImp* imp )
     mstream << ";";
     newLine();
     mstream << "draw(bezier, "
-            << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+            << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
             << " );";
     newLine();
     break;
@@ -563,7 +542,7 @@ void AsyExporterImpVisitor::visit ( const BezierImp* imp )
     mstream << ";";
     newLine();
     mstream << "draw(bezier, "
-            << emitPen( mcurobj->drawer()->color(), width, mcurobj->drawer()->style() )
+            << emitPen( mcurobj->drawer()->color(), mcurobj->drawer()->width(), mcurobj->drawer()->style() )
             << " );";
     newLine();
     break;
