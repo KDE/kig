@@ -214,7 +214,7 @@ void GenericTextType::executeAction( int i, ObjectHolder& oh, ObjectTypeCalcer& 
   {
     // change label font
     QFont f = oh.drawer()->font();
-    int result = KFontDialog::getFont( f, false, &w );
+    int result = KFontDialog::getFont( f, KFontChooser::NoDisplayFlags, &w );
     if ( result != KFontDialog::Accepted ) return;
     KigCommand* kc = new KigCommand( doc, i18n( "Change Label Font" ) );
     kc->addTask( new ChangeObjectDrawerTask( &oh, oh.drawer()->getCopyFont( f ) ) );
