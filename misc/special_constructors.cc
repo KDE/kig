@@ -1821,11 +1821,25 @@ QString MeasureTransportConstructor::useText( const ObjectCalcer& o,
 }
 
 QString MeasureTransportConstructor::selectStatement(
-  const std::vector<ObjectCalcer*>&, const KigDocument&,
+  const std::vector<ObjectCalcer*>& os, const KigDocument&,
   const KigWidget& ) const
 {
-//TODO
-  return i18n("Select a point to be a vertex of the new polygon...");
+  switch ( os.size() )
+  {
+    case 0:
+    return i18n( "Select a segment, arc or numeric label to be transported..." );
+    break;
+
+    case 1:
+    return i18n( "Select a destination line or circle..." );
+    break;
+
+    case 2:
+    return i18n( "Choose a starting point on the line/circle..." );
+    break;
+  }
+
+  return "";
 }
 
 std::vector<ObjectHolder*> MeasureTransportConstructor::build(
