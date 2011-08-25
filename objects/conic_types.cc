@@ -682,7 +682,7 @@ void ConicRadicalType::executeAction( int i, ObjectHolder&, ObjectTypeCalcer& t,
   int oldzeroindex = static_cast<const IntImp*>( zeroindexo->imp() )->data();
   int newzeroindex = oldzeroindex % 3 + 1;
   zeroindexo->setImp( new IntImp( newzeroindex ) );
-  KigCommand* kc = new KigCommand( d, "Switch Conic Radical Lines" );
+  KigCommand* kc = new KigCommand( d, i18n( "Switch Conic Radical Lines" ) );
   mon.finish( kc );
   d.history()->push( kc );
 }
