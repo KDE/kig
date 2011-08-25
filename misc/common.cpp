@@ -26,6 +26,7 @@
 #include "../objects/object_imp.h"
 
 #include <cmath>
+#include <limits>
 
 #include <kdebug.h>
 #include <knumvalidator.h>
@@ -93,10 +94,10 @@ const LineData calcBorderPoints( const LineData& l, const Rect& r )
 void calcBorderPoints( double& xa, double& ya, double& xb, double& yb, const Rect& r )
 {
   // we calc where the line through a(xa,ya) and b(xb,yb) intersects with r:
-  double left = (r.left()-xa)*(yb-ya)/(xb-xa)+ya;
-  double right = (r.right()-xa)*(yb-ya)/(xb-xa)+ya;
-  double top = (r.top()-ya)*(xb-xa)/(yb-ya)+xa;
-  double bottom = (r.bottom()-ya)*(xb-xa)/(yb-ya)+xa;
+  double left = (xa == xb) ? -std::numeric_limits<double>::infinity() :(r.left()-xa)*(yb-ya)/(xb-xa)+ya;
+  double right = (xa == xb) ? std::numeric_limits<double>::infinity() :(r.right()-xa)*(yb-ya)/(xb-xa)+ya;
+  double top = (ya == yb) ? std::numeric_limits<double>::infinity() : (r.top()-ya)*(xb-xa)/(yb-ya)+xa;
+  double bottom = (ya == yb) ? -std::numeric_limits<double>::infinity() : (r.bottom()-ya)*(xb-xa)/(yb-ya)+xa;
 
   // now we go looking for valid points
   int novp = 0; // number of valid points we have already found
