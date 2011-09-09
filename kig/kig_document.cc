@@ -17,6 +17,7 @@
 
 #include "kig_document.h"
 
+#include "../misc/common.h"
 #include "../objects/object_calcer.h"
 #include "../objects/object_holder.h"
 #include "../objects/point_imp.h"
@@ -27,11 +28,12 @@
 
 #include <assert.h>
 #include <iterator>
+#include <cmath>
 
 KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
                           bool showgrid, bool showaxes, bool nv )
   : mobjects( objects ), mcoordsystem( coordsystem ), mshowgrid( showgrid ),
-    mshowaxes( showaxes ), mnightvision( nv ), mcachedparam( 0.0 )
+    mshowaxes( showaxes ), mnightvision( nv ), mcachedparam( 0.0 ), coordinatePrecision( -1 )
 {
 }
 
@@ -164,6 +166,7 @@ KigDocument::KigDocument()
   mshowgrid = true;
   mshowaxes = true;
   mnightvision = false;
+  coordinatePrecision = -1;
 }
 
 KigDocument::~KigDocument()
@@ -195,6 +198,11 @@ void KigDocument::setNightVision( bool nv )
   mnightvision = nv;
 }
 
+void KigDocument::setCoordinatePrecision( int precision )
+{
+  coordinatePrecision = precision;
+}
+
 bool KigDocument::axes() const
 {
   return mshowaxes;
@@ -203,6 +211,25 @@ bool KigDocument::axes() const
 bool KigDocument::getNightVision() const
 {
   return mnightvision;
+}
+
+bool KigDocument::isUserSpecifiedCoordinatePrecision() const
+{
+  return coordinatePrecision != -1;
+}
+
+int KigDocument::getCoordinatePrecision() const
+{
+  if( coordinatePrecision == -1 )
+  {
+    // we use default coordinate precision calculation
+    Rect sr = suggestedRect();
+    double m = kigMax( sr.width(), sr.height() );
+    
+    return kigMax( 0, (int) ( 3 - log10( m ) ) );
+  }
+  
+  return coordinatePrecision;
 }
 
 /*

@@ -194,6 +194,7 @@
     <Menu name="settings">
       <Action name="fullscreen" />
       <Action name="settings_set_coordinate_system" />
+      <Action name="settings_set_coordinate_precision" />
       <Action name="settings_show_grid" />
       <Action name="settings_show_axes" />
       <Action name="settings_toggle_nightvision" />

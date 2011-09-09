@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>KigCoordinatePrecisionDialog</class>
+ <widget class="QWidget" name="KigCoordinatePrecisionDialog">
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QCheckBox" name="m_defaultCheckBox">
+     <property name="text">
+      <string>&amp;Use default coordinate precision</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="m_precisionLabel">
+     <property name="text">
+      <string>&amp;Specify coordinate precision:</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_precisionSpinBox</cstring>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="m_precisionSpinBox">
+     <property name="maximum">
+      <number>15</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

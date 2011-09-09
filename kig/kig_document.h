@@ -60,6 +60,9 @@ class KigDocument {
    * Whether to enable visibility of hidden objects.
    */
   bool mnightvision;
+  
+  int coordinatePrecision;
+  
 public:
   mutable double mcachedparam;
 public:
@@ -72,6 +75,8 @@ public:
   bool grid() const;
   bool axes() const;
   bool getNightVision() const;
+  bool isUserSpecifiedCoordinatePrecision() const;
+  int getCoordinatePrecision() const;
   /**
    * Get a hold of the objects of this KigDocument.
    */
@@ -102,6 +107,8 @@ public:
    * set to enable/disable night-vision (visibility of hidden objects)
    */
   void setNightVision( bool nv );
+  
+  void setCoordinatePrecision( int precision );
 
   /**
    * Return a vector of objects that contain the given point.

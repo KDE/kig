@@ -153,9 +153,7 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   // since an object isn't asked to recalc every time the widget size
   // changes..  might be a good idea to do that, but well, maybe some
   // other time :)
-  Rect sr = d.suggestedRect();
-  double m = kigMax( sr.width(), sr.height() );
-  int l = kigMax( 0, (int) ( 3 - log10( m ) ) );
+  int l = d.getCoordinatePrecision();
   QString xs = KGlobal::locale()->formatNumber( p.x, l );
   QString ys = KGlobal::locale()->formatNumber( p.y, l );
   return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
@@ -356,9 +354,7 @@ PolarCoords::~PolarCoords()
 
 QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) const
 {
-  Rect sr = d.suggestedRect();
-  double m = kigMax( sr.width(), sr.height() );
-  int l = kigMax( 0, (int) ( 3 - log10( m ) ) );
+  int l = d.getCoordinatePrecision();
 
   double r = pt.length();
   double theta = Goniometry::convert( atan2( pt.y, pt.x ), Goniometry::Rad, Goniometry::Deg );

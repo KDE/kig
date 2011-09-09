@@ -32,6 +32,7 @@
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/guiaction.h"
+#include "../misc/kigcoordinateprecisiondialog.h"
 #include "../misc/kigpainter.h"
 #include "../misc/lists.h"
 #include "../misc/object_constructor.h"
@@ -310,6 +311,11 @@ void KigPart::setupActions()
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
+  aSetCoordinatePrecision = new KAction(i18n("Set Coordinate &Precision..."), this);
+  actionCollection()->addAction("settings_set_coordinate_precision", aSetCoordinatePrecision);
+  aSetCoordinatePrecision->setToolTip( i18n("Set the floating point precision of coordinates in the document. " ));
+  connect(aSetCoordinatePrecision, SIGNAL( triggered() ), this, SLOT( setCoordinatePrecision() ));
+  
   aToggleGrid  = new KToggleAction(i18n("Show &Grid"), this);
   actionCollection()->addAction("settings_show_grid", aToggleGrid );
   aToggleGrid->setToolTip( i18n( "Show or hide the grid." ) );
@@ -561,6 +567,18 @@ void KigPart::browseHistory()
 void KigPart::setHistoryClean( bool clean )
 {
   setModified( !clean );
+}
+
+void KigPart::setCoordinatePrecision()
+{
+  KigCoordinatePrecisionDialog dlg(document().isUserSpecifiedCoordinatePrecision(), document().getCoordinatePrecision() );
+  
+  if( dlg.exec() == QDialog::Accepted )
+  {
+    int coordinatePrecision = dlg.getUserSpecifiedCoordinatePrecision();
+    
+    document().setCoordinatePrecision( coordinatePrecision );
+  }
 }
 
 QUndoStack* KigPart::history()

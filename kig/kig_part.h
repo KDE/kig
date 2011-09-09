@@ -125,6 +125,8 @@ public slots:
   void toggleNightVision();
 
   void setHistoryClean( bool );
+  
+  void setCoordinatePrecision();
 
   /****************** cooperation with stuff ******************/
 public:
@@ -212,6 +214,7 @@ public:
   KAction* aShowHidden;
   KAction* aConfigureTypes;
   KAction* aBrowseHistory;
+  KAction* aSetCoordinatePrecision;
   KToggleAction* aToggleGrid;
   KToggleAction* aToggleAxes;
   KToggleAction* aToggleNightVision;
