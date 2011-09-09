@@ -107,6 +107,7 @@ set(kigpart_PART_SRCS
    misc/equation.cc
    misc/goniometry.cc
    misc/guiaction.cc
+   misc/kigcoordinateprecisiondialog.cpp
    misc/kigfiledialog.cc
    misc/kiginputdialog.cc
    misc/kignumerics.cpp
@@ -166,6 +167,7 @@ kde4_add_ui_files(kigpart_PART_SRCS
    filters/imageexporteroptionswidget.ui
    filters/latexexporteroptionswidget.ui
    filters/svgexporteroptionswidget.ui
+   misc/kigcoordinateprecisiondialog.ui
 )
 
 if(BOOST_PYTHON_FOUND)
