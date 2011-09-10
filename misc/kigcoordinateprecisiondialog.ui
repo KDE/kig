@@ -2,9 +2,6 @@
 <ui version="4.0">
  <class>KigCoordinatePrecisionDialog</class>
  <widget class="QWidget" name="KigCoordinatePrecisionDialog">
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QCheckBox" name="m_defaultCheckBox">
