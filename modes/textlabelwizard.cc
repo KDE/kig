@@ -166,8 +166,11 @@ void TextLabelWizard::reject()
 
 void TextLabelWizard::accept()
 {
-  QWizard::accept();
-  mmode->finishPressed();
+  if( validateCurrentPage() )
+  {
+    QWizard::accept();
+    mmode->finishPressed();
+  }
 }
 
 void TextLabelWizard::textChanged()
