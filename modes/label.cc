@@ -320,16 +320,14 @@ bool TextLabelModeBase::canFinish()
   if ( d->wiz->currentId() == TextLabelWizard::TextPageId )
     assert( d->args.size() == 0 );
 
-  bool finished = true;
   for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
-    finished &= ( *i != 0 );
+    finish = finish && ( *i != 0 );
 
-  if ( ! finished )
+  if ( ! finish )
   {
     KMessageBox::sorry( mdoc.widget(),
                         i18n( "There are '%n' parts in the text that you have not selected a "
                               "value for. Please remove them or select enough arguments." ) );
-    finished = false;
   };
 
   return finish;
@@ -337,9 +335,6 @@ bool TextLabelModeBase::canFinish()
 
 void TextLabelModeBase::finishPressed()
 {
-  if ( !canFinish() )
-    return;
-
   bool needframe = d->wiz->field( "wantframe" ).toBool();
   QString s = d->wiz->text();
 
