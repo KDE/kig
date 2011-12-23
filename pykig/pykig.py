@@ -1,17 +1,20 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 #-------------------------------python------------------------pykig.py--#
 #                                                                       #
-#                          Da Python a Kig                              #
+#                         From Python to Kig                            #
 #                                                                       #
 #--Maurizio Paolini-Daniele Zambelli-----------------------------2005---#
 #
-# (licenza GPL)
+# Some comments translated to English by Bartosz DziewoÅ„ski
+# during Google Code-In 2011
+#
+# (licensed under GPL)
 
 version="0.2.11"
 
 #####
-# Type constant
+# Type constants
 #####
 TI=type(0)
 TF=type(0.)
@@ -19,7 +22,7 @@ TS=type("")
 TT=type((0, 0))
 
 #####
-# Constants: Point Style, Line Style, defaults values...
+# Constants: Point Style, Line Style, default values...
 #####
 PS=("Round", "RoundEmpty", "Rectangular", "RectangularEmpty", "Cross")
 LS=("SolidLine", "DashLine", "DashDotLine", "DashDotDotLine", "DotLine")
@@ -32,17 +35,15 @@ PROPERTY_INI="Property which"
 OBJECT_INI="Object type"
 PROPERTY_END="Property"
 OBJECT_END="Object"
-DICT=(("&","&amp;"), ("<","&lt;"), (">","&gt;"),
-      ("à","Ã "), ("è","Ã¨"), ("ì","Ã¬"), ("ò","Ã²"), ("ù","Ã¹"), ("é","Ã©"))
 
 #
-# this is a trick to allow definitions like  "p=Point(0,0,HIDDEN)"
+# this is a trick to allow definitions like "p=Point(0,0,HIDDEN)"
 # 
 HIDDEN=KIGFALSE
 VISIBLE=KIGTRUE
 
 #####
-# Validation parameters
+# Validating parameters
 #####
 
 def parameter(val, defval):
@@ -68,11 +69,11 @@ def validcolor(color):
   if type(color)==TS: return color
 
 #####
-# if as function
+# if as a function
 #####
 
 def rif(condition, val1, val2):
-  """Return val1 if condition is True else return val2."""
+  """Return val1 if condition is True; else return val2."""
   if condition: return val1
   else:         return val2
 
@@ -112,18 +113,18 @@ def kig_relpoint(obj, displ):
 #####
 
 #####
-# Classe KigDocument
+# KigDocument class
 #####
 
 class KigDocument(object):
-  """ Classe che produce il documento kig.
+  """A class representing a Kig document.
 
-    genealogia:
+    ancestor chain:
       KigDocument <- object
 
-    attributi di classe:
+    class attributes:
 
-    attributi:
+    attributes:
       axes
       grid
       outfilename
@@ -140,7 +141,7 @@ class KigDocument(object):
       shown
       color
       
-    metodi:
+    methods:
       viewappend
       hierarchyappend
       setcallkig
@@ -178,7 +179,7 @@ class KigDocument(object):
     KigView._kd=self
     self.viewkig=[]
     self.hierarchy=[]
-# Defaults values  
+# Default values  
     self.internal=False
     self.width=DEFWIDTH
     self.pointstyle=PS[0]
@@ -194,7 +195,8 @@ class KigDocument(object):
   def setof(v):                     self.of=v
   
   def str_open(self):
-    return """<!DOCTYPE KigDocument>
+    return """<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE KigDocument>
 <KigDocument axes="%s" grid="%s" CompatibilityVersion="0.7.0" Version="0.9.1" >
  <CoordinateSystem>Euclidean</CoordinateSystem>
  <Hierarchy>
@@ -234,24 +236,24 @@ class KigDocument(object):
   def setinternal(self, v):    self.internal=v
 
 #####
-# Classe KigDOP
+# KigDOP class
 #####
 
 #class KigDOP(KigOut):
 class KigDOP(object):
-  """Classe da cui deriva ogni elemento che ha un id: Data, Object, Property.
+  """An class from which all elements having an id (Data, Object, Property) inherit.
 
-    genealogia:
-      kigDOP <- object
+    ancestor chain:
+      KigDOP <- object
 
-    attributo di classe:
+    class attributes:
       id-counter
 
-    attributi:
+    attributes:
       id
       type
 
-    metodi:
+    methods:
       getid
       str_hierarchy
   """
@@ -269,20 +271,20 @@ class KigDOP(object):
   def str_hierarchy(self):  pass
 
 #####
-# Classe KigView
+# KigView class
 #####
 
 #class KigView(KigOut):
 class KigView(object):
-  """ Classe con i dati di visualizzazione
+  """A class containing visualisation data.
 
-    genealogia:
+    ancestor chain:
       KigView <- object
 
-    attributi di classe:
+    class attributes:
       _kd
       
-    attributi:
+    attributes:
       shown
       width
       style
@@ -290,7 +292,7 @@ class KigView(object):
       name
       pointstyle
 
-    metodi:
+    methods:
       str_view
       show
       hide
@@ -308,9 +310,9 @@ class KigView(object):
     KigView._kd.viewappend(self)
 
   def str_view(self):
-    """Produce la stringa che viene scritta sotto <View>.
+    """Returns a string which can be placed inside <View> tags.
 
-    esempio:
+    example:
   <Draw width="-1" point-style="Round" namecalcer="none"
 style="SolidLine" shown=None color="#0000ff" object="3" />
 """
@@ -321,19 +323,19 @@ style="SolidLine" shown=None color="#0000ff" object="3" />
             self.linestyle, self.shown, self.color, self.object.getid())
 
 #####
-# Classe Data
+# Data class
 #####
 
 class Data(KigDOP):
-  """ Classe da cui deriva ogni elemento Data
+  """An class from which all Data elements inherit.
 
-    genealogia:
+    ancestor chain:
       Data <- KigDOP <- object
 
-    attributi:
+    attributes:
       val
 
-    metodi:
+    methods:
       str_hierarchy
 """
   def __init__(self, type, val):
@@ -341,32 +343,32 @@ class Data(KigDOP):
     KigDOP.__init__(self, type)
 
   def str_hierarchy(self):
-    """Produce la stringa che viene scritta sotto <Data>.
+    """Returns a string which can be placed inside <Hierarchy> tags.
 
-    esempio:
+    example:
   <Data type="double" id="170" >0.1</Data>
 """
     return '  <Data type="%s" id="%s" >%s</Data>\n' % \
           (self._type, self.getid(), self.val)
 
 #####
-# Classe PropObj
+# PropObj class
 #####
 
 class PropObj(KigDOP):
-  """ Classe da cui deriva ogni elemento visibile
+  """A class from which all visible elements inherit.
 
-    genealogia:
+    ancestor chain:
       PropObj <- KigDOP <- object
 
-    attributi di classe:
+    class attributes:
 
-    attributi:
+    attributes:
       prop
       objvec
       view
 
-    metodi:
+    methods:
       str_hierarchy
       showname(self, n)
       show(self)
@@ -393,8 +395,8 @@ class PropObj(KigDOP):
     if internal:
       self.view = None
     else:
-# Qui si assume che, se viene dato un nome ad un oggetto,
-# si voglia anche visualizzare questo nome
+# Here we assume that, if we're given a name of an object,
+# we want to visualize the name as well
       if name: n_id=self.showname(name, shown, width, pointstyle, linestyle,
                                   color)
       else:    n_id=None
@@ -402,14 +404,14 @@ class PropObj(KigDOP):
                           color)
 
   def str_hierarchy(self):
-    """Produce la stringa che viene scritta sotto <Data>.
+    """Returns a string which can be placed inside <Hierarchy> tags.
 
-    esempio:
+    example:
   <Property which="mid-point" id="170" >
    <Parent id="..." />
   </Property>
 
-    oppure:
+    example:
   <Object type="ConstrainedPoint" id="14" >
    <Parent id="13" />
    <Parent id="10" />
@@ -448,13 +450,13 @@ class PropObj(KigDOP):
   def setshown(self, s):           self.view.shown=s
 
 #####
-# Classe Property
+# Property class
 #####
 
 class Property(PropObj):
-  """ Classe da cui deriva ogni elemento Property
+  """A class from which all Property elements inherit.
 
-    genealogia:
+    ancestor chain:
       Property <- PropObj <- KigDOP <- object
   """
   def __init__(self, type, parent, shown, name, internal,
@@ -464,13 +466,13 @@ class Property(PropObj):
 #    print shown
 
 #####
-# Classe Object
+# Object class
 #####
 
 class Object(PropObj):
-  """ Classe da cui deriva ogni elemento Oggetto
+  """A class from which all Object elements inherit.
 
-    genealogia:
+    ancestor chain:
       Object <- PropObj <- KigDOP <- object
   """
 
@@ -486,13 +488,8 @@ class Object(PropObj):
 data=(\
 ("Int",    "int",    "val"),
 ("Double", "double", "val"),
-("String", "string", "convstr(val)"),
+("String", "string", "xml.sax.saxutils.escape(val)"),
 )
-
-def convstr(s):
-  for o, n in DICT:
-    s=s.replace(o, n)
-  return s
 
 def databuild(nomeclasse, nomekig, v="val"):
   """Create string with a Data class definition."""
@@ -509,11 +506,11 @@ for d in data:
 #####
 # Objects
 #####
-"""Da aggiungere:
-("ConvexHall", "ConvexHall", "polygon,", "(polygon,),"),
+"""To add:
+("ConvexHull", "ConvexHull", "polygon,", "(polygon,),"),
 ("EllipseByFocusFocusPoint", "EllipseBFFP", "p1, p2, p3,", "(p1, p2, p3,),"),
 ("HyperbolaByFocusFocusPoint", "HyperbolaBFFP", "p1, p2, p3,", "(p1, p2, p3,),"),
-(ConicsBy5Points", "ConicB5P", "p1, p2, p3, p4, p5,", "(p1, p2, p3, p4, p5),"),
+("ConicBy5Points", "ConicB5P", "p1, p2, p3, p4, p5,", "(p1, p2, p3, p4, p5),"),
 ("ParabolaBy3Points", "ParabolaBTP", "p1, p2, p3,", "(p1, p2, p3,),"),
 ("CocCurve", "CocCurve", "line, point,", "(line, point,),"),
 """
@@ -524,7 +521,7 @@ objects=(\
                     "t, curve,", "(kig_double(t), curve),"),
 ("RelativePoint",   "RelativePoint",
                     "x, y, p,", "(kig_double(x), kig_double(y), p),"),
-###### segments, rays, lines
+###### Segments, rays, lines
 ("Line",            "LineAB", "p1, p2,", "(p1, p2),"),
 ("Segment",         "SegmentAB", "p1, p2,", "(p1, p2),"),
 ("Ray",             "RayAB", "p1, p2,", "(p1, p2),"),
@@ -549,15 +546,14 @@ objects=(\
 #### Cubics
 ("CubicBy9Points", "CubicB9P", "p1, p2, p3, p4, p5, p6, p7, p8, p9,","(p1, p2, p3, p4, p5, p6, p7, p8, p9,)," ),
 #####
-# intersections.  The only standard object is the intersection
-# of two lines, which always gives one single point
+# Intersections.  The only standard object is the intersection
+# of two lines, which always gives one single point.
 #####
 ("LineLineIntersection", "LineLineIntersection", "l1, l2,", "(l1, l2),"),
 #####
-# Classe CircleCircleIntersection e ConicLineIntersection
-# l'intero "which" puo' assumere i valori 1 o -1 per indicare quale
-# delle due intersezioni si desidera ottenere
-# si potrebbe mettere un controllo...
+# CircleCircleIntersection and ConicLineIntersection classes
+# The "which" argument takes values of 1 or -1, to indicate
+# which of the intersections you want to get.
 #####
 ("CircleCircleIntersection", "CircleCircleIntersection",
                     "c1, c2, which,", "(c1, c2, Int(which),),"),
@@ -568,22 +564,22 @@ objects=(\
 ("CubicLineIntersection", "CubicLineIntersection",
                     "cubic, line, which,", "(cubic, line, Int(which),),"),
 ("CubicLineOtherIntersection", "CubicLineOtherIntersection", "cubic, line, p1, p2,", "(cubic, line, p1, p2),"),
-###### Classe Triangle
+###### Triangle class
 ("Triangle",        "TriangleB3P", "p1, p2, p3,", "(p1, p2, p3),"),
-###### Classe Polygon   (the only argument is a points vect)
+###### Polygon class   (the only argument is a points vect)
 ("Polygon",         "PolygonBNP", "pvec,", "pvec,"),
-###### Classe PolygonBCV
-# Poligono regolare dati il centro e un vertice; il terzo argomento
-# e' un intero contenente il numero di lati
+###### PolygonBCV class
+# Regular polygon data - center and a vertex. The third argument
+# is an integer signifying the number of sides.
 ("PolygonBCV",      "PoligonBCV",
                     "center, vertex, n,", "(center, vertex, Int(n)),"),
-##### Classe PolygonVertex    (poligono, intero >= 0)
+##### PolygonVertex class    (polygon, integer >= 0)
 ("PolygonVertex",   "PolygonVertex",
                     "polygon, i,", "(polygon, Int(i)),"),
-##### Classe PolygonSide    (poligono, intero >= 0)
+##### PolygonSide class    (polygon, integer >= 0)
 ("PolygonSide",     "PolygonSide",
                     "polygon, i,", "(polygon, Int(i)),"),
-###### vector, angle,...
+###### Vector, angle,...
 ("Vector",          "Vector", "p1, p2,", "(p1, p2),"),
 ("Angle",           "Angle", "p1, v, p2,", "(p1, v, p2),"),
 ###### Transformations
@@ -646,7 +642,7 @@ for o in objects:
   exec objectbuild(p1, p2, p3, p4)
 
 #####
-# Propertys
+# Properties
 #####
 
 property=(\
@@ -689,9 +685,9 @@ for p in property:
   exec propertybuild(p1, p2, p3, p4)
 
 #####
-# Start of properties definitions as Object's metod
+# Start of properties definitions as Object's methods
 #####
-# da sistemare!
+# to be cleaned up!
 points  =(Point, ConstrainedPoint, RelativePoint, PolygonVertex)
 lines=(Segment, Ray, Vector, InvertLine)
 segments=(Segment, Vector, PolygonSide, InvertSegment)
@@ -747,9 +743,9 @@ usage: pykig.py [options...] file ...
 Options:
     -h, --help          Show this text.
     -o <kig_file>
-    --output <kig_file> output <kig_file> no call Kig
-    -v, --version       output version
-    -n, --nokig         no call Kig
+    --output <kig_file> Output to <kig_file> and don't call Kig.
+    -v, --version       Output version and exit.
+    -n, --nokig         Don't call Kig.
 
 examples:
     $ pykig.py my_file.kpy
@@ -767,6 +763,7 @@ import sys, traceback, os
 import math            # for user's programs
 import getopt
 import atexit
+import xml.sax.saxutils
 
 def prog():
   try:
@@ -781,28 +778,28 @@ def prog():
     if _opt in ("-h", "--help"):
       usage(0)
     if _opt in ("-v", "--version"):
-      print "version:", version
+      print "Version:", version
       sys.exit(0)
     if _opt in ("-n", "--nokig"):
       _callKig=False
     elif _opt in ("-o", "--output"):
       _outfilename=_arg
       _of=True
-      _callKig=False   # se c'è il file di output, non viene chiamato Kig
+      _callKig=False   # if there's an output file, don't call Kig
   if len(_args)==0:
-    _infilename=raw_input("Nome del file di input: ")
+    _infilename=raw_input("Input file name: ")
     if not _infilename:
-      print "No Input filename"
+      print "No input file name."
       usage(2)
   elif len(_args)==1:
     _infilename=_args[0]
   else:
-    print "No infilename"
+    print "No input file name."
     usage(2)
   try:
     _infile = open(_infilename, 'r')
   except:
-    print >> sys.stderr, _infilename, 'unreadable'
+    print >> sys.stderr, _infilename, "input file can't be read."
     sys.exit(2)
   if _of:
     if _outfilename=="-":
@@ -816,8 +813,8 @@ def prog():
   try:
     execfile(_infilename, globals())
   except:
-    print >> sys.stderr, 'syntax error in', _infilename
-    _info = sys.exc_info()    # vorrei stampare il traceback...
+    print >> sys.stderr, 'Syntax error in', _infilename
+    _info = sys.exc_info()    # print out the traceback
     traceback.print_exc()
     sys.exit(3)
   kigdocument.close()
