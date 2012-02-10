@@ -30,6 +30,8 @@ include_directories (${QDBUS_INCLUDE_DIRS}  ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_D
 
 # ...to here
 
+find_package(BoostPython)
+
 kde4_no_enable_final(kig)
 
 include(KigConfigureChecks.cmake)
