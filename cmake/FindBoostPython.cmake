@@ -20,6 +20,8 @@ include(CheckCXXSourceCompiles)
 include(CheckIncludeFileCXX)
 include(CheckLibraryExists)
 
+find_package(PkgConfig)
+
 # reset vars
 set(BOOST_PYTHON_INCLUDES)
 set(BOOST_PYTHON_LIBS)
@@ -35,8 +37,25 @@ check_include_file_cxx(boost/shared_ptr.hpp HAVE_BOOST_SHARED_PTR_HPP)
 
 if(HAVE_BOOST_SHARED_PTR_HPP)
 
+  # try pkg-config next
   set(_found FALSE)
+  foreach(_pyver ${PYTHON_VERSIONS})
+    if(NOT _found)
+      pkg_check_modules(_python QUIET ${_pyver})
+      if (_python_FOUND)
+	find_package(Boost 1.33 COMPONENTS python)
+	if (Boost_PYTHON_FOUND)
+	  set(_found TRUE)
+	  set(BOOST_PYTHON_INCLUDES "${_python_INCLUDE_DIRS};${Boost_INCLUDE_DIRS}")
+          set(BOOST_PYTHON_LIBS "${_python_LDFLAGS} ${Boost_PYTHON_LIBRARY}")
+	endif(Boost_PYTHON_FOUND)
+      endif(_python_FOUND)
+    endif(NOT _found)
+  endforeach(_pyver ${PYTHON_VERSIONS})
 
+endif(HAVE_BOOST_SHARED_PTR_HPP)
+
+if(HAVE_BOOST_SHARED_PTR_HPP AND NOT _found)
   # save the old flags and setting the new ones
   set(_save_CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
@@ -113,7 +132,7 @@ int main() { return 0; }
 
   set(CMAKE_CXX_FLAGS ${_save_CMAKE_CXX_FLAGS})
 
-endif(HAVE_BOOST_SHARED_PTR_HPP)
+endif(HAVE_BOOST_SHARED_PTR_HPP AND NOT _found)
 
 if(BOOST_PYTHON_INCLUDES AND BOOST_PYTHON_LIBS)
   set(BOOST_PYTHON_FOUND TRUE)
@@ -121,7 +140,7 @@ endif(BOOST_PYTHON_INCLUDES AND BOOST_PYTHON_LIBS)
 
 if(BOOST_PYTHON_FOUND)
   if(NOT BoostPython_FIND_QUIETLY)
-    message(STATUS "Found Boost+Python: ${BOOST_PYTHON_LIBS}")
+    message(STATUS "Found Boost+Python: libs ${BOOST_PYTHON_LIBS}, headers ${BOOST_PYTHON_INCLUDES}")
   endif(NOT BoostPython_FIND_QUIETLY)
   set(KIG_ENABLE_PYTHON_SCRIPTING 1)
 else (BOOST_PYTHON_FOUND)
