@@ -617,17 +617,17 @@ ObjectImp* PolygonLineIntersectionType::calc( const Args& parents, const KigDocu
 }
 
 /*
- * polygonal-line intersection, this has an extra parameter
+ * polygonal curve--line intersection, this has an extra parameter
  * indicating which intersection point we want
  */
 
 static const ArgsParser::spec argsspecOPolygonalLineIntersection[] =
 {
-  { OpenPolygonalImp::stype(), I18N_NOOP( "Intersect this polygonal with a line" ),
-    I18N_NOOP( "Select the polygonal of which you want the intersection with a line..." ), false },
+  { OpenPolygonalImp::stype(), I18N_NOOP( "Intersect this polygonal curve with a line" ),
+    I18N_NOOP( "Select the polygonal curve of which you want the intersection with a line..." ), false },
   { AbstractLineImp::stype(),
-    I18N_NOOP( "Intersect this line with a polygonal" ),
-    I18N_NOOP( "Select the line of which you want the intersection with a polygonal..." ), false },
+    I18N_NOOP( "Intersect this line with a polygonal curve" ),
+    I18N_NOOP( "Select the line of which you want the intersection with a polygonal curve..." ), false },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 
@@ -655,11 +655,11 @@ const ObjectImpType* OPolygonalLineIntersectionType::resultId() const
 
 static const ArgsParser::spec argsspecCPolygonalLineIntersection[] =
 {
-  { ClosedPolygonalImp::stype(), I18N_NOOP( "Intersect this polygonal with a line" ),
-    I18N_NOOP( "Select the polygonal of which you want the intersection with a line..." ), false },
+  { ClosedPolygonalImp::stype(), I18N_NOOP( "Intersect this polygonal curve with a line" ),
+    I18N_NOOP( "Select the polygonal curve of which you want the intersection with a line..." ), false },
   { AbstractLineImp::stype(),
-    I18N_NOOP( "Intersect this line with a polygonal" ),
-    I18N_NOOP( "Select the line of which you want the intersection with a polygonal..." ), false },
+    I18N_NOOP( "Intersect this line with a polygonal curve" ),
+    I18N_NOOP( "Select the line of which you want the intersection with a polygonal curve..." ), false },
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 

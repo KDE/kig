@@ -18,7 +18,7 @@
 //
 // note (mp): there are now two boolean flags:
 //   minside: tells if we want a "filled polygon"
-//   mopen: in case of boundary, if we want an open polygonal
+//   mopen: in case of boundary, if we want an open polygonal curve
 //
 // a much more clean solution would be to have an AbstractPolygon class
 // from which to inherit "Polygon", "ClosedPolygonal" and "OpenPolygonal"
@@ -321,7 +321,7 @@ const QByteArrayList ClosedPolygonalImp::properties() const
   l += I18N_NOOP( "Perimeter" );
   l += I18N_NOOP( "Surface" );
   l += I18N_NOOP( "Inside Polygon" );
-  l += I18N_NOOP( "Open Polygonal" );
+  l += I18N_NOOP( "Open Polygonal Curve" );
   l += I18N_NOOP( "Center of Mass of the Vertices" );
   l += I18N_NOOP( "Winding Number" );
   assert( l.size() == ClosedPolygonalImp::numberOfProperties() );
@@ -335,7 +335,7 @@ const QByteArrayList OpenPolygonalImp::properties() const
   l += I18N_NOOP( "Length" );
   l += I18N_NOOP( "Bézier Curve" );
   l += I18N_NOOP( "Associated Polygon" );
-  l += I18N_NOOP( "Closed Polygonal" );
+  l += I18N_NOOP( "Closed Polygonal Curve" );
   assert( l.size() == OpenPolygonalImp::numberOfProperties() );
   return l;
 }
@@ -479,7 +479,7 @@ ObjectImp* FilledPolygonImp::property( int which, const KigDocument& w ) const
   }
   else if ( which == Parent::numberOfProperties() + 4)
   {
-    return new OpenPolygonalImp( mpoints ); // open polygonal
+    return new OpenPolygonalImp( mpoints ); // open polygonal curve
   }
   else if ( which == Parent::numberOfProperties() + 5 )
   {
@@ -522,7 +522,7 @@ ObjectImp* ClosedPolygonalImp::property( int which, const KigDocument& w ) const
   }
   else if ( which == Parent::numberOfProperties() + 4)
   {
-    return new OpenPolygonalImp( mpoints ); // open polygonal
+    return new OpenPolygonalImp( mpoints ); // open polygonal curve
   }
   else if ( which == Parent::numberOfProperties() + 5 )
   {
@@ -679,15 +679,15 @@ const ObjectImpType* ClosedPolygonalImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "closedpolygonal",
-    I18N_NOOP( "closed polygonal" ),
-    I18N_NOOP( "Select this closed polygonal" ),
-    I18N_NOOP( "Select closed polygonal %1" ),
-    I18N_NOOP( "Remove a closed polygonal" ),
-    I18N_NOOP( "Add a closed polygonal" ),
-    I18N_NOOP( "Move a closed polygonal" ),
-    I18N_NOOP( "Attach to this closed polygonal" ),
-    I18N_NOOP( "Show a closed polygonal" ),
-    I18N_NOOP( "Hide a closed polygonal" )
+    I18N_NOOP( "closed polygonal curve" ),
+    I18N_NOOP( "Select this closed polygonal curve" ),
+    I18N_NOOP( "Select closed polygonal curve %1" ),
+    I18N_NOOP( "Remove a closed polygonal curve" ),
+    I18N_NOOP( "Add a closed polygonal curve" ),
+    I18N_NOOP( "Move a closed polygonal curve" ),
+    I18N_NOOP( "Attach to this closed polygonal curve" ),
+    I18N_NOOP( "Show a closed polygonal curve" ),
+    I18N_NOOP( "Hide a closed polygonal curve" )
     );
 
   return &t;
