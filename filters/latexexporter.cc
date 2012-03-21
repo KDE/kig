@@ -1,5 +1,6 @@
 // Copyright (C)  2004  Pino Toscano <toscano.pino@tiscali.it>
 // Copyright (C)  2010,2011 Raoul Bourquin (asymptote exporter part)
+// Copyright (C)  2012 Raoul Bourquin (PGF/TikZ exporter part)
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -17,8 +18,10 @@
 // 02110-1301, USA.
 
 #include "latexexporter.h"
-#include "asyexporterimpvisitor.h"
 #include "latexexporteroptions.h"
+
+#include "asyexporterimpvisitor.h"
+#include "pgfexporterimpvisitor.h"
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
@@ -55,9 +58,9 @@
 #include <config-kig.h>
 
 #ifdef HAVE_TRUNC
-#define KDE_TRUNC(a)	trunc(a)
+#define KDE_TRUNC(a)    trunc(a)
 #else
-#define KDE_TRUNC(a)	rint(a)
+#define KDE_TRUNC(a)    rint(a)
 #endif
 
 struct ColorMap {
@@ -162,8 +165,8 @@ void PSTricksExportImpVisitor::emitCoord( const Coordinate& c )
 }
 
 void PSTricksExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b,
-                                      const int width, const Qt::PenStyle s,
-                                      bool vector )
+        const int width, const Qt::PenStyle s,
+        bool vector )
 {
     mstream << "\\psline[linecolor=" << mcurcolorid << ",linewidth=" << width / 100.0
     << "," << writeStyle( s );
@@ -520,471 +523,14 @@ void PSTricksExportImpVisitor::visit(const OpenPolygonalImp* imp)
 // TODO: Just a quick fix, improve when reviewing PSTricks exporter
 void PSTricksExportImpVisitor::visit(const BezierImp* imp)
 {
-  plotGenericCurve(imp);
+    plotGenericCurve(imp);
 }
 
 // TODO: Just a quick fix, improve when reviewing PSTricks exporter
 void PSTricksExportImpVisitor::visit(const RationalBezierImp* imp)
 {
-  plotGenericCurve(imp);
-}
-
-
-class TikZExportImpVisitor
-            : public ObjectImpVisitor
-{
-    QTextStream& mstream;
-    ObjectHolder* mcurobj;
-    const KigWidget& mw;
-    Rect msr;
-    std::vector<ColorMap> mcolors;
-    QString mcurcolorid;
-public:
-    void visit( ObjectHolder* obj );
-    void mapColor( const QColor& color );
-
-    TikZExportImpVisitor( QTextStream& s, const KigWidget& w )
-            : mstream( s ), mw( w ), msr( mw.showingRect() )
-    {
-    }
-    void visit( const LineImp* imp );
-    void visit( const PointImp* imp );
-    void visit( const TextImp* imp );
-    void visit( const AngleImp* imp );
-    void visit( const VectorImp* imp );
-    void visit( const LocusImp* imp );
-    void visit( const CircleImp* imp );
-    void visit( const ConicImp* imp );
-    void visit( const CubicImp* imp );
-    void visit( const SegmentImp* imp );
-    void visit( const RayImp* imp );
-    void visit( const ArcImp* imp );
-    void visit( const FilledPolygonImp* imp );
-    void visit( const ClosedPolygonalImp* imp );
-    void visit( const OpenPolygonalImp* imp );
-    void visit( const BezierImp* imp);
-    void visit( const RationalBezierImp* imp);
-
-    double unit;
-
-private:
-    /**
-     * Converts Kig coords to pstrick coord system and sends them to stream
-     * using the format: (xcoord,ycoord)
-     */
-    void emitCoord( const Coordinate& c );
-    /**
-     * Draws a line (segment) or a vector if vector is true.
-     */
-    void emitLine( const Coordinate& a, const Coordinate& b, const int width,
-                   const Qt::PenStyle s, bool vector = false );
-    /**
-     * Sends a new line character ( \n ) to stream.
-     */
-    void newLine();
-    /**
-     * Searches if a color is already mapped into mcolors, and returns its
-     * index or -1 if not found.
-     */
-    int findColor( const QColor& c );
-    /**
-     * Use to convert a dimension "on the screen" to a dimension wrt.
-     * Kig coordinate system.
-     */
-    double dimRealToCoord( int dim );
-    /**
-     * Converts a pen style into latex style string.
-     */
-    QString writeStyle( Qt::PenStyle style );
-    /**
-     * Plots a generic curve though its points calc'ed with getPoint.
-     */
-    void plotGenericCurve( const CurveImp* imp );
-};
-
-void TikZExportImpVisitor::emitCoord( const Coordinate& c )
-{
-    mstream << '(' << c.x << ',' << c.y << ')';
-}
-
-void TikZExportImpVisitor::emitLine( const Coordinate& a, const Coordinate& b,
-                                     const int width, const Qt::PenStyle s,
-                                     bool vector )
-{
-    if (vector)
-    {
-        mstream << "\\draw[->,color=" << mcurcolorid << ",line width=" << width <<']';
-    }
-    else
-    {
-        mstream << "\\draw[color=" << mcurcolorid << ",line width=" << width << ']';
-    }
-    mstream << ' ';
-    emitCoord(a);
-    mstream << " -- ";
-    emitCoord(b);
-    newLine();
-}
-
-void TikZExportImpVisitor::newLine()
-{
-    mstream << ";\n";
-    mstream.flush();
-}
-
-int TikZExportImpVisitor::findColor( const QColor& c )
-{
-    for ( uint i = 0; i < mcolors.size(); ++i )
-    {
-        if ( c == mcolors[i].color )
-            return i;
-    }
-    return -1;
-}
-
-void TikZExportImpVisitor::mapColor( const QColor& color )
-{
-    if ( findColor( color ) == -1 )
-    {
-        ColorMap newcolor;
-        newcolor.color = color;
-        QString tmpname = color.name();
-        tmpname.remove( '#' );
-        newcolor.name = tmpname;
-        mcolors.push_back( newcolor );
-        mstream << "\\definecolor{" << tmpname << "}{RGB}{" << color.red() << ',' << color.green() << ',' << color.blue() << "}\n";
-    }
-}
-
-QString TikZExportImpVisitor::writeStyle( Qt::PenStyle style )
-{
-    QString ret;
-    /*
-    ret += "line style=";
-    if ( style == Qt::DashLine )
-    ret += "dashed";
-    else if ( style == Qt::DotLine )
-    ret += "dotted,dotsep=2pt";
-    else
-    ret += "solid";
-    */
-    return ret;
-}
-
-void TikZExportImpVisitor::plotGenericCurve( const CurveImp* imp )
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    std::vector< std::vector< Coordinate > > coordlist;
-    coordlist.push_back( std::vector< Coordinate >() );
-    uint curid = 0;
-
-    Coordinate c;
-    Coordinate prev = Coordinate::invalidCoord();
-    for ( double i = 0.0; i <= 1.0; i += 0.005 )
-    {
-        c = imp->getPoint( i, mw.document() );
-        if ( !c.valid() )
-        {
-            if ( coordlist[curid].size() > 0 )
-            {
-                coordlist.push_back( std::vector< Coordinate >() );
-                ++curid;
-                prev = Coordinate::invalidCoord();
-            }
-            continue;
-        }
-        if ( ! ( ( fabs( c.x ) <= 1000 ) && ( fabs( c.y ) <= 1000 ) ) )
-            continue;
-        // if there's too much distance between this coordinate and the previous
-        // one, then it's another piece of curve not joined with the rest
-        if ( prev.valid() && ( c.distance( prev ) > 4.0 ) )
-        {
-            coordlist.push_back( std::vector< Coordinate >() );
-            ++curid;
-        }
-        coordlist[curid].push_back( c );
-        prev = c;
-    }
-
-    for ( uint i = 0; i < coordlist.size(); ++i )
-    {
-        uint s = coordlist[i].size();
-        // there's no point in draw curves empty or with only one point
-        if ( s <= 1 )
-            continue;
-
-        mstream << "\\path [draw,color=" << mcurcolorid << ",line width=" << width << ']';
-        for ( uint j = 0; j < s; ++j )
-        {
-            emitCoord( coordlist[i][j] );
-            if (j < s - 1)
-            {
-                mstream << " -- ";
-            }
-        }
-        newLine();
-    }
-
-}
-
-void TikZExportImpVisitor::visit( ObjectHolder* obj )
-{
-    mstream << "%% " << obj->imp()->type()->translatedName();
-    newLine();
-    if ( ! obj->drawer()->shown() )
-        return;
-    const int id = findColor( obj->drawer()->color() );
-    if ( id == -1 )
-        return;
-    mcurcolorid = mcolors[id].name;
-    mcurobj = obj;
-    obj->imp()->visit( this );
-}
-
-void TikZExportImpVisitor::visit( const LineImp* imp )
-{
-    Coordinate a = imp->data().a;
-    Coordinate b = imp->data().b;
-    calcBorderPoints( a, b, msr );
-
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    emitLine( a, b, width, mcurobj->drawer()->style() );
-}
-
-void TikZExportImpVisitor::visit( const PointImp* imp )
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    mstream << "\\path [fill=" << mcurcolorid << "] ";
-    emitCoord (imp->coordinate());
-    mstream << " circle (" << width << "pt)";
-    newLine();
-}
-
-void TikZExportImpVisitor::visit( const TextImp* imp )
-{
-    mstream << "\\node ";
-    if (imp->hasFrame())
-    {
-        mstream << "[rectangle,draw] ";
-    }
-    mstream << "at ";
-    emitCoord(imp->coordinate());
-    mstream << " {" << imp->text() << "}";
-    newLine();
-}
-
-void TikZExportImpVisitor::visit( const AngleImp* imp )
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    double start = Goniometry::convert( imp->startAngle(), Goniometry::Rad, Goniometry::Deg );
-    double end = Goniometry::convert( imp->startAngle() + imp->angle(), Goniometry::Rad, Goniometry::Deg );
-    double radius = 0.5;
-    mstream << "\\path [draw,color=" << mcurcolorid << ",line width=" << width << ']';
-    emitCoord(imp->point());
-    mstream << " +(" << start << ':' << radius << ')';
-    mstream << " arc (" << start << ':' << end <<  ':' << radius << ')';
-    newLine();
-}
-
-void TikZExportImpVisitor::visit( const VectorImp* imp )
-{
-    Coordinate a = imp->data().a;
-    Coordinate b = imp->data().b;
-
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    emitLine( a, b, width, mcurobj->drawer()->style(), true );
-}
-
-void TikZExportImpVisitor::visit( const LocusImp* imp )
-{
-    plotGenericCurve( imp );
-}
-
-void TikZExportImpVisitor::visit( const CircleImp* imp )
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    mstream << "\\path [draw,color=" << mcurcolorid << ",line width=" << width << "] ";
-    emitCoord( imp->center() );
-    mstream << " circle (" << imp->radius() << ')';
-    newLine();
-}
-
-void TikZExportImpVisitor::visit( const ConicImp* imp )
-{
     plotGenericCurve(imp);
 }
-
-void TikZExportImpVisitor::visit( const CubicImp* imp )
-{
-    plotGenericCurve(imp);
-}
-
-void TikZExportImpVisitor::visit( const SegmentImp* imp )
-{
-    Coordinate a = imp->data().a;
-    Coordinate b = imp->data().b;
-
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    emitLine( a, b, width, mcurobj->drawer()->style() );
-}
-
-void TikZExportImpVisitor::visit( const RayImp* imp )
-{
-    Coordinate a = imp->data().a;
-    Coordinate b = imp->data().b;
-    calcRayBorderPoints( a, b, msr );
-
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    emitLine( a, b, width, mcurobj->drawer()->style() );
-}
-
-void TikZExportImpVisitor::visit( const ArcImp* imp )
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    double start = Goniometry::convert( imp->startAngle(), Goniometry::Rad, Goniometry::Deg );
-    double end = Goniometry::convert( imp->startAngle() + imp->angle(), Goniometry::Rad, Goniometry::Deg );
-    double radius = imp->radius();
-    mstream << "\\draw [color=" << mcurcolorid << ",line width=" << width << ']';
-    emitCoord(imp->center());
-    mstream << " +(" << start << ':' << radius << ')';
-    mstream << " arc (" << start << ':' << end <<  ':' << radius << ")";
-    newLine();
-}
-
-void TikZExportImpVisitor::visit( const FilledPolygonImp* imp )
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    mstream << "\\path [fill,color=" << mcurcolorid << ",line width=" << width << "] ";
-
-    std::vector<Coordinate> pts = imp->points();
-    for ( uint i = 0; i < pts.size(); i++ )
-    {
-        emitCoord( pts[i] );
-        mstream << "  --  ";
-    }
-    mstream << "cycle";
-    newLine();
-}
-
-
-void TikZExportImpVisitor::visit ( const ClosedPolygonalImp* imp )
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    mstream << "\\path [draw,color=" << mcurcolorid << ",line width=" << width << "] ";
-
-    std::vector<Coordinate> pts = imp->points();
-    for ( uint i = 0; i < pts.size(); i++ )
-    {
-        emitCoord( pts[i] );
-        mstream << "  --  ";
-    }
-    mstream << "cycle";
-    newLine();
-}
-
-void TikZExportImpVisitor::visit ( const OpenPolygonalImp* imp )
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    mstream << "\\path [draw,color=" << mcurcolorid << ",line width=" << width << "] ";
-
-    std::vector<Coordinate> pts = imp->points();
-    for ( uint i = 0; i < pts.size(); i++ )
-    {
-        emitCoord( pts[i] );
-        if (i < pts.size() - 1)
-        {
-            mstream << "  --  ";
-        }
-    }
-    newLine();
-}
-
-void TikZExportImpVisitor::visit(const BezierImp* imp)
-{
-    int width = mcurobj->drawer()->width();
-    if ( width == -1 ) width = 1;
-
-    std::vector<Coordinate> pts = imp->points();
-    switch (pts.size())
-    {
-    case 3:
-        // Formula for cubic control points
-        // CP1 = QP0 + 2/3 *(QP1-QP0)
-	// CP2 = CP1 + 1/3 *(QP2-QP0)
-	// TODO: Improve emitCoords as in asy exporter
-        mstream << "\\path [draw,color=" << mcurcolorid << ",line width=" << width << "] ";
-        emitCoord(pts.at(0));
-        mstream << ".. controls ";
-        mstream << "($";
-        emitCoord(pts.at(0));
-        mstream << "+2/3*";
-	emitCoord(pts.at(1));
-	mstream << "-2/3*";
-	emitCoord(pts.at(0));
-	mstream << "$)";
-	mstream << " and ";
-        mstream << "($";
-        emitCoord(pts.at(0));
-        mstream << "+2/3*";
-	emitCoord(pts.at(1));
-	mstream << "-2/3*";
-	emitCoord(pts.at(0));
-	mstream << "+1/3*";
-	emitCoord(pts.at(2));
-	mstream << "-1/3*";
-	emitCoord(pts.at(0));
-	mstream << "$)";
-	mstream << " .. ";
-	emitCoord(pts.at(2));
-        newLine();
-        break;
-    case 4:
-        mstream << "\\path [draw,color=" << mcurcolorid << ",line width=" << width << "] ";
-        emitCoord(pts.front());
-        mstream << ".. controls ";
-        emitCoord(pts.at(1));
-        mstream << " and ";
-        emitCoord(pts.at(2));
-        mstream << " .. ";
-        emitCoord(pts.back());
-        newLine();
-        break;
-    default:
-        plotGenericCurve(imp);
-        break;
-    }
-}
-
-// TODO: Just a quick fix, improve when reviewing TikZ exporter
-void TikZExportImpVisitor::visit(const RationalBezierImp* imp)
-{
-  plotGenericCurve(imp);
-}
-
 
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {
@@ -1139,86 +685,74 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     }
     else if (format == LatexExporterOptions::TikZ)
     {
-      if (standalone)
-      {
+        if (standalone)
+        {
             stream << "\\documentclass[a4paper]{minimal}\n";
-        //  stream << "\\usepackage[latin1]{inputenc}\n";
             stream << "\\usepackage{tikz}\n";
             stream << "\\usetikzlibrary{calc}\n";
-            if (showgrid)
-            {
-              stream << "\\tikzset{kig grid/.style=draw,help lines}\n";
-            }
-            if (showaxes)
-            {
-              stream << "\\tikzset{kig axes/.style=draw,help lines,->}\n";
-            }
-            if (showframe)
-            {
-              stream << "\\tikzset{kig frame/.style=draw,black}\n";
-            }
-            stream << "\\author{Kig " << KIGVERSION << "}\n";
+			stream << "\\usepgflibrary{fpu}\n";
             stream << "\\begin{document}\n";
-      }
-      TikZExportImpVisitor visitor( stream, w );
+        }
+        PGFExporterImpVisitor visitor( stream, w );
 
         Rect frameRect = w.showingRect();
-
-        for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
-                i != os.end(); ++i )
-        {
-            if ( ! ( *i )->shown() ) continue;
-            visitor.mapColor( ( *i )->drawer()->color() );
-        }
 
         double size = qMax(frameRect.height(),frameRect.width());
         double scale = (size == 0) ? 1 : 10/size;
 
-        stream << "\\begin{tikzpicture}";
-        stream << "[scale=" << scale << "]\n";
+		// Start a figure and set its global options
+        stream << "\\begin{tikzpicture}"
+               << "[%\n"
+               << "scale=" << scale << ",\n"
+               << "]\n";
+
         double gLeft = frameRect.left();
         double gBottom = frameRect.bottom();
         double gRight = frameRect.right();
         double gTop = frameRect.top();
 
+        // extra frame for clipping
         stream << "\\clip (" << gLeft << ',' << gBottom << ") rectangle (" << gRight << ',' << gTop << ");\n";
 
-        if (showframe)
-        {
-            stream << "\\path [kig frame] (" << gLeft << ',' << gBottom << ") rectangle (" << gRight << ',' << gTop << ");\n";
-        }
         if (showgrid)
         {
-            stream << "\\path [kig grid] ("<< floor(qMin(0.0,gRight)) << ',' << floor(qMin(0.0,gTop))
+            stream << "\\draw [help lines] ("<< floor(qMin(0.0,gRight)) << ',' << floor(qMin(0.0,gTop))
                    << ") grid (" << ceil(qMax(0.0,gRight)) << ',' << ceil(qMax(0.0,gTop)) << ");\n";
-            stream << "\\path [kig grid] ("<< floor(qMin(0.0,gLeft)) << ',' << floor(qMin(0.0,gTop))
+            stream << "\\draw [help lines] ("<< floor(qMin(0.0,gLeft)) << ',' << floor(qMin(0.0,gTop))
                    << ") grid (" << ceil(qMax(0.0,gLeft)) << ',' << ceil(qMax(0.0,gTop)) << ");\n";
-            stream << "\\path [kig grid] ("<< floor(qMin(0.0,gRight)) << ',' << floor(qMin(0.0,gBottom))
+            stream << "\\draw [help lines] ("<< floor(qMin(0.0,gRight)) << ',' << floor(qMin(0.0,gBottom))
                    << ") grid (" << ceil(qMax(0.0,gRight)) << ',' << ceil(qMax(0.0,gBottom)) << ");\n";
-            stream << "\\path [kig grid] ("<< floor(qMin(0.0,gLeft)) << ',' << floor(qMin(0.0,gBottom))
+            stream << "\\draw [help lines] ("<< floor(qMin(0.0,gLeft)) << ',' << floor(qMin(0.0,gBottom))
                    << ") grid (" << ceil(qMax(0.0,gLeft)) << ',' << ceil(qMax(0.0,gBottom)) << ");\n";
         }
         if (showaxes)
         {
             if (gBottom < 0 && gTop > 0)
             {
-                stream << "\\path [kig axes] (" << gLeft << ",0) -- (" << gRight << ",0);\n";
+                stream << "\\draw [color=black,->] (" << gLeft << ",0) -- (" << gRight << ",0);\n";
             }
             if (gLeft < 0 && gRight > 0)
             {
-                stream << "\\path [kig axes] (0," << gBottom <<") -- (0," << gTop << ");\n";
+                stream << "\\draw [color=black,->] (0," << gBottom <<") -- (0," << gTop << ");\n";
             }
         }
-        for ( std::vector<ObjectHolder*>::const_iterator i = os.begin();
-                i != os.end(); ++i )
+        if (showframe)
+        {
+            stream << "\\draw [color=black] (" << gLeft << ',' << gBottom << ") rectangle (" << gRight << ',' << gTop << ");\n";
+        }
+
+        // Visit all the objects
+        for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
         {
             visitor.visit( *i );
         };
 
         stream << "\\end{tikzpicture}\n";
+
+		// The file footer in case we embed into full latex document
         if (standalone)
         {
-          stream << "\\end{document}\n";
+            stream << "\\end{document}\n";
         }
 
     }
@@ -1231,47 +765,47 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
 
         if (standalone)
         {
-	    // The header if we embed into latex
-	    stream << "\\documentclass[a4paper,10pt]{article}\n";
-	    stream << "\\usepackage{asymptote}\n";
-	    stream << "\n";
-	    stream << "\\pagestyle{empty}";
-	    stream << "\n";
-	    stream << "\\begin{document}\n";
+            // The header if we embed into latex
+            stream << "\\documentclass[a4paper,10pt]{article}\n";
+            stream << "\\usepackage{asymptote}\n";
+            stream << "\n";
+            stream << "\\pagestyle{empty}";
+            stream << "\n";
+            stream << "\\begin{document}\n";
         }
 
-	stream << "\\begin{asy}[width=\\the\\linewidth]\n";
-	stream << "\n";
-	stream << "import math;\n";
-	stream << "import graph;\n";
-	stream << "\n";
-	stream << "real textboxmargin = 2mm;\n";
-	stream << "\n";
+        stream << "\\begin{asy}[width=\\the\\linewidth]\n";
+        stream << "\n";
+        stream << "import math;\n";
+        stream << "import graph;\n";
+        stream << "\n";
+        stream << "real textboxmargin = 2mm;\n";
+        stream << "\n";
 
-	// grid
-	if ( showgrid )
-	{
-	  // TODO: Polar grid
-	  // vertical lines...
-	  double startingpoint = startingpoint = static_cast<double>( KDE_TRUNC( left ) );
-	  for ( double i = startingpoint; i < left+width; ++i )
-	  {
-	    stream << "draw((" << i << "," << bottom << ")--(" << i << "," << bottom+height << "),gray);\n";
-	  }
-	  // horizontal lines...
-	  startingpoint = static_cast<double>( KDE_TRUNC( bottom ) );
-	  for ( double i = startingpoint; i < bottom+height; ++i )
-	  {
-	    stream << "draw((" << left << "," << i << ")--(" << left+width << "," << i << "),gray);\n";
-	  }
-	}
+        // grid
+        if ( showgrid )
+        {
+            // TODO: Polar grid
+            // vertical lines...
+            double startingpoint = startingpoint = static_cast<double>( KDE_TRUNC( left ) );
+            for ( double i = startingpoint; i < left+width; ++i )
+            {
+                stream << "draw((" << i << "," << bottom << ")--(" << i << "," << bottom+height << "),gray);\n";
+            }
+            // horizontal lines...
+            startingpoint = static_cast<double>( KDE_TRUNC( bottom ) );
+            for ( double i = startingpoint; i < bottom+height; ++i )
+            {
+                stream << "draw((" << left << "," << i << ")--(" << left+width << "," << i << "),gray);\n";
+            }
+        }
 
-    // axes
-    if ( showaxes )
-    {
-      stream << "draw(("<<left<<",0)--("<<left+width<<",0), black, Arrow);\n";
-      stream << "draw((0,"<<bottom<<")--(0,"<<bottom+height<<"), black, Arrow);\n";
-    }
+        // axes
+        if ( showaxes )
+        {
+            stream << "draw(("<<left<<",0)--("<<left+width<<",0), black, Arrow);\n";
+            stream << "draw((0,"<<bottom<<")--(0,"<<bottom+height<<"), black, Arrow);\n";
+        }
 
         // Visit all the objects
         AsyExporterImpVisitor visitor( stream, w );
@@ -1283,9 +817,9 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
 
         // extra frame for clipping
         stream << "path frame = ("<<left<<","<<bottom<<")--("
-                                  <<left<<","<<bottom+height<<")--("
-                                  <<left+width<<","<<bottom+height<<")--("
-                                  <<left+width<<","<<bottom<<")--cycle;\n";
+        <<left<<","<<bottom+height<<")--("
+        <<left+width<<","<<bottom+height<<")--("
+        <<left+width<<","<<bottom<<")--cycle;\n";
 
         if ( showframe )
         {
@@ -1298,7 +832,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
         // The file footer in case we embed into latex
         if ( standalone )
         {
-	    stream << "\\end{document}\n";
+            stream << "\\end{document}\n";
         }
     }
 

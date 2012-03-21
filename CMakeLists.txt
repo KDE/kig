@@ -152,6 +152,7 @@ set(kigpart_PART_SRCS
    filters/latexexporter.cc
    filters/latexexporteroptions.cc
    filters/native-filter.cc
+   filters/pgfexporterimpvisitor.cc
    filters/svgexporter.cc
    filters/svgexporteroptions.cc
    filters/xfigexporter.cc
