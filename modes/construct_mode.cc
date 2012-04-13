@@ -57,13 +57,14 @@ BaseConstructMode::BaseConstructMode( KigPart& d )
   mpt->calc( d.document() );
   mcursor = ObjectFactory::instance()->cursorPointCalcer( Coordinate( 0, 0 ) );
   mcursor->calc( d.document() );
-//  mcursorholder = new ObjectHolder( mcursor );
+  mdoc.startObjectGroup();
 }
 
 BaseConstructMode::~BaseConstructMode()
 {
+  mdoc.finishObjectGroup();
+  
   delete mcursor;
-//  delete mcursorholder;
 }
 
 void BaseConstructMode::leftReleased( QMouseEvent* e, KigWidget* v )
@@ -357,6 +358,7 @@ void BaseConstructMode::enableActions()
 
 void BaseConstructMode::cancelConstruction()
 {
+  mdoc.cancelObjectGroup();
   finish();
 }
 
