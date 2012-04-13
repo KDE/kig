@@ -164,6 +164,28 @@ public:
   void _addObjects( const std::vector<ObjectHolder*>& o);
   void _delObject( ObjectHolder* inObject );
   void _delObjects( const std::vector<ObjectHolder*>& o );
+  
+  /**
+   * Call this method to start an object group which will
+   * be deleted as a whole if the construction is canceled
+   * or undone
+   * \sa See also cancelObjectGroup finishObjectGroup
+   */
+  void startObjectGroup();
+  
+  /**
+   * Deletes the current group of objects from the document
+   * without adding them to the Undo history
+   * \sa See also startObjectGroup finishObjectGroup
+   */
+  void cancelObjectGroup();
+  
+  /**
+   * Draws the current group of objects and add them
+   * as a whole to the Undo history
+   * \sa See also startObjectGroup cancelObjectGroup
+   */
+  void finishObjectGroup();
 
 /************* internal stuff *************/
 protected:
@@ -249,6 +271,21 @@ protected:
   KigView* m_widget;
 
   KigDocument* mdocument;
+  
+  /**
+   * Indicates whether objects added to the documents
+   * are being grouped or not.
+   * \sa See also startObjectGroup cancelObjectGroup finishObjectGroup
+   */
+  bool misGroupingObjects;
+  
+  /**
+   * Stores the current group of object being drawn
+   * if an object group has been started.
+   * \sa See also startObjectGroup cancelObjectGroup finishObjectGroup
+   */
+  std::vector<ObjectHolder*> mcurrentObjectGroup;
+  
 public:
   const KigDocument& document() const;
   KigDocument& document();

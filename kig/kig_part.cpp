@@ -478,12 +478,24 @@ bool KigPart::saveFile()
 
 void KigPart::addObject(ObjectHolder* o)
 {
-  mhistory->push( KigCommand::addCommand( *this, o ) );
+  if ( !misGroupingObjects )
+    mhistory->push( KigCommand::addCommand( *this, o ) );
+  else
+  {
+    _addObject( o );
+    mcurrentObjectGroup.push_back( o );
+  }
 }
 
 void KigPart::addObjects( const std::vector<ObjectHolder*>& os )
 {
-  mhistory->push( KigCommand::addCommand( *this, os ) );
+  if ( !misGroupingObjects )
+    mhistory->push( KigCommand::addCommand( *this, os ) );
+  else
+  {
+    _addObjects( os );
+    mcurrentObjectGroup.insert( mcurrentObjectGroup.end(), os.begin(), os.end() );
+  }
 }
 
 void KigPart::_addObject( ObjectHolder* o )
@@ -528,6 +540,30 @@ void KigPart::_addObjects( const std::vector<ObjectHolder*>& os )
 void KigPart::deleteObjects()
 {
   mode()->deleteObjects();
+}
+
+void KigPart::startObjectGroup()
+{
+  if ( mcurrentObjectGroup.size() > 0 )
+    kWarning() << "New object group started while already having objects in object group. Current group will be lost";
+  
+  mcurrentObjectGroup.clear();
+  misGroupingObjects = true;
+}
+
+void KigPart::cancelObjectGroup()
+{
+  misGroupingObjects = false;
+  _delObjects( mcurrentObjectGroup );
+  mcurrentObjectGroup.clear();
+}
+
+void KigPart::finishObjectGroup()
+{
+  misGroupingObjects = false;
+  _delObjects( mcurrentObjectGroup );
+  addObjects( mcurrentObjectGroup );
+  mcurrentObjectGroup.clear();
 }
 
 void KigPart::cancelConstruction()
