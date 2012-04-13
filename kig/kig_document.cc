@@ -33,7 +33,7 @@
 KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
                           bool showgrid, bool showaxes, bool nv )
   : mobjects( objects ), mcoordsystem( coordsystem ), mshowgrid( showgrid ),
-    mshowaxes( showaxes ), mnightvision( nv ), mcachedparam( 0.0 ), coordinatePrecision( -1 )
+    mshowaxes( showaxes ), mnightvision( nv ), mcachedparam( 0.0 ), mcoordinatePrecision( -1 )
 {
 }
 
@@ -166,7 +166,7 @@ KigDocument::KigDocument()
   mshowgrid = true;
   mshowaxes = true;
   mnightvision = false;
-  coordinatePrecision = -1;
+  mcoordinatePrecision = -1;
 }
 
 KigDocument::~KigDocument()
@@ -200,7 +200,7 @@ void KigDocument::setNightVision( bool nv )
 
 void KigDocument::setCoordinatePrecision( int precision )
 {
-  coordinatePrecision = precision;
+  mcoordinatePrecision = precision;
 }
 
 bool KigDocument::axes() const
@@ -215,12 +215,12 @@ bool KigDocument::getNightVision() const
 
 bool KigDocument::isUserSpecifiedCoordinatePrecision() const
 {
-  return coordinatePrecision != -1;
+  return mcoordinatePrecision != -1;
 }
 
 int KigDocument::getCoordinatePrecision() const
 {
-  if( coordinatePrecision == -1 )
+  if( mcoordinatePrecision == -1 )
   {
     // we use default coordinate precision calculation
     Rect sr = suggestedRect();
@@ -229,7 +229,7 @@ int KigDocument::getCoordinatePrecision() const
     return kigMax( 0, (int) ( 3 - log10( m ) ) );
   }
   
-  return coordinatePrecision;
+  return mcoordinatePrecision;
 }
 
 /*
