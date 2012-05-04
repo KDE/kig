@@ -98,9 +98,9 @@ so that other people can freely use and adapt it).
 
 <chapter id="using-kig-basic">
 <title>Basic usage</title>
-<section id="constructing-objects">
+<sect1 id="constructing-objects">
 <title>Constructing Objects</title>
-<section id="constructing-points">
+<sect2 id="constructing-points">
 <title>Constructing points</title>
 <para>
 You can construct points in several ways:</para>
@@ -155,9 +155,9 @@ format="PNG"/>
 </textobject>
 </mediaobject>
 </screenshot>
-</section>
+</sect2>
 
-<section id="constructing-other-objects">
+<sect2 id="constructing-other-objects">
 <title>Constructing Other Objects</title>
 <para>
 Constructing objects other than points is usually done by
@@ -210,10 +210,10 @@ format="PNG"/>
 </textobject>
 </mediaobject>
 </screenshot>
-</section>
-</section>
+</sect2>
+</sect1>
 
-<section id="selecting-objects">
+<sect1 id="selecting-objects">
 <title>Selecting Objects</title>
 <para>
 Selecting objects can be done in two ways:
@@ -257,9 +257,9 @@ affect the selection.
 </textobject>
 </mediaobject>
 </screenshot>
-</section>
+</sect1>
 
-<section id="moving-objects">
+<sect1 id="moving-objects">
 <title>Moving Objects</title>
 <para>
 To move objects, you must first <link
@@ -278,8 +278,8 @@ choose
 <guimenuitem>Move</guimenuitem>, moving the mouse will move the object. When the
 object is moved to the desired position, another &LMB; click will stop the
 moving of the object.</para></note>
-</section>
-<section id="deleting-objects">
+</sect1>
+<sect1 id="deleting-objects">
 <title>Deleting objects</title>
 <para>
 Deleting objects is done by first <link
@@ -307,9 +307,9 @@ menu</link> that appears.
 </listitem>
 </itemizedlist>
 </para>
-</section>
+</sect1>
 
-<section id="showing-hiding-objects">
+<sect1 id="showing-hiding-objects">
 <title>Showing and hiding objects</title>
 <para>
 In &kig;, objects can be hidden. This is done by selecting
@@ -326,7 +326,7 @@ All</guimenuitem></menuchoice>. This will unhide all
 currently hidden objects.
 </para>
 
-<section id="night-vision">
+<sect2 id="night-vision">
 <title>Night Vision</title>
 <para>
 Night Vision is a particular way of working with hidden
@@ -345,10 +345,10 @@ To toggle the night vision mode, use
 <menuchoice><guimenu>Settings</guimenu><guimenuitem>Wear
 Infrared Glasses</guimenuitem></menuchoice>.
 </para>
-</section>
-</section>
+</sect2>
+</sect1>
 
-<section id="undo-redo">
+<sect1 id="undo-redo">
 <title>Undo/Redo</title>
 <para>
 In &kig;, you can undo almost any change you make in the
@@ -356,9 +356,9 @@ document. Just use the
 <guiicon>Undo</guiicon>/<guiicon>Redo</guiicon> buttons on the
 toolbar, the <guimenu>Edit</guimenu> menu or the appropriate shortcuts.
 </para>
-</section>
+</sect1>
 
-<section id="full-screen-mode">
+<sect1 id="full-screen-mode">
 <title>Full Screen Mode</title>
 <para>
 &kig; also has a Full Screen mode. To use it, click the
@@ -373,7 +373,7 @@ where there is no object present, and select
 <guimenuitem>Exit Full Screen Mode</guimenuitem>, or press the shortcut
 <keycombo action="simul">&Ctrl;&Shift;<keycap>F</keycap></keycombo>.
 </para>
-</section>
+</sect1>
 </chapter>
 
 
@@ -394,7 +394,7 @@ Toolbars...</guimenuitem></menuchoice> option if you want to do this.
 
 <chapter id="using-advanced">
 <title>Advanced Usage</title>
-<section id="objects-context-menus">
+<sect1 id="objects-context-menus">
 <title>Context Menus</title>
 <para>
 &kig; has context menus for its objects. Try
@@ -465,9 +465,9 @@ and end point. Select them and choose in the context menu <guimenuitem>Set Coord
 </listitem>
 </varlistentry>
 </variablelist>
-</section>
+</sect1>
 
-<section id="document-context-menus">
+<sect1 id="document-context-menus">
 <title>Document context menus</title>
 <para>
 <mousebutton>Right</mousebutton>-clicking on the document (&ie; not on an
@@ -476,9 +476,9 @@ present a popup that you can use to start constructing a new object, change the
 coordinate system used, show hidden
 objects, zoom in and zoom out of the document and switch to the full screen mode.
 </para>
-</section>
+</sect1>
 
-<section id="defining-macros">
+<sect1 id="defining-macros">
 <title>Defining Macros</title>
 <para>
 One of the more advanced features in &kig; is its support for
@@ -552,9 +552,9 @@ object is just like constructing any other object.
 </textobject>
 </mediaobject>
 </screenshot>
-</section>
+</sect1>
 
-<section id="working-with-types">
+<sect1 id="working-with-types">
 <title>Working with types</title>
 <para>
 As you saw in the previous chapter, &kig; allows you to create
@@ -579,9 +579,9 @@ them to a file, or even load them from another file.
 </textobject>
 </mediaobject>
 </screenshot>
-</section>
+</sect1>
 
-<section id="text-labels">
+<sect1 id="text-labels">
 <title>Text labels</title>
 <para>
 &kig; allows you to add text labels to a construction. This
@@ -675,9 +675,9 @@ format="PNG"/>
 </textobject>
 </mediaobject>
 </screenshot>
-</section>
+</sect1>
 
-<section id="loci">
+<sect1 id="loci">
 <title>Loci</title>
 <para>
 &kig; supports the use of loci. A locus is mathematically defined as
@@ -728,7 +728,7 @@ moving point (the text <guilabel>Moving Point</guilabel> will
 appear as you move the mouse over it), and the other as the
 dependent point. The locus of the dependent point will then be drawn.
 </para>
-</section>
+</sect1>
 </chapter>
 
 <chapter id="scripting">
@@ -1001,7 +1001,7 @@ Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.
 
 <appendix id="contributing">
 <title>Contribute</title>
-<section id="kig-is-free">
+<sect1 id="kig-is-free">
 <title>Free Software</title>
 <para>
 &kig; is <ulink
@@ -1013,9 +1013,9 @@ hobby project, and I have already learned a lot about
 programming, C++, &kde;/&Qt;, math, software collaboration and open
 source projects in the process.
 </para>
-</section>
+</sect1>
 
-<section id="contribute-to-kig">
+<sect1 id="contribute-to-kig">
 <title>Contribute</title>
 <para>
 In this chapter I want to point out to you (the user) the
@@ -1036,9 +1036,9 @@ program &etc;, please read the license. You can find it in the
 the license link in the <guilabel>About
 Kig</guilabel> dialog.
 </para>
-</section>
+</sect1>
 
-<section id="howto-contribute">
+<sect1 id="howto-contribute">
 <title>How to contribute ?</title>
 <para>
 Any contributions are welcome. If you don't like the icons,
@@ -1051,7 +1051,7 @@ contributions will be distributed under the terms of the &GNU;
 and in the <link linkend="credits">Credits and
 Licenses</link> chapter in this manual.
 </para>
-</section>
+</sect1>
 </appendix>
 
 &documentation.index;
