@@ -61,7 +61,11 @@ class KigDocument {
    */
   bool mnightvision;
   
-  int coordinatePrecision;
+  /**
+   * Specify the number of decimal digits to show
+   * when displaying coordinates
+   */
+  int mcoordinatePrecision;
   
 public:
   mutable double mcachedparam;
