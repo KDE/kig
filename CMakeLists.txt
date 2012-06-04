@@ -49,7 +49,7 @@ if(BOOST_PYTHON_FOUND)
   add_subdirectory( scripting )
 endif(BOOST_PYTHON_FOUND)
 
-include_directories( ${CMAKE_SOURCE_DIR}/kig/modes )
+include_directories( ${CMAKE_SOURCE_DIR}/modes )
 if(BOOST_PYTHON_FOUND)
   include_directories(${BOOST_PYTHON_INCLUDES})
 endif(BOOST_PYTHON_FOUND)

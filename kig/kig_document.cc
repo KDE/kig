@@ -33,7 +33,7 @@
 KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
                           bool showgrid, bool showaxes, bool nv )
   : mobjects( objects ), mcoordsystem( coordsystem ), mshowgrid( showgrid ),
-    mshowaxes( showaxes ), mnightvision( nv ), mcachedparam( 0.0 ), mcoordinatePrecision( -1 )
+    mshowaxes( showaxes ), mnightvision( nv ), mcoordinatePrecision( -1 ), mcachedparam( 0.0 )
 {
 }
 
@@ -76,7 +76,7 @@ std::vector<ObjectHolder*> KigDocument::whatAmIOn( const Coordinate& p, const Ki
     if(!(*i)->contains(p, w, mnightvision)) continue;
     const ObjectImp* oimp = (*i)->imp();
     if ( oimp->inherits( PointImp::stype() ) ) ret.push_back( *i );
-    else 
+    else
       if ( !oimp->inherits( FilledPolygonImp::stype() ) ) curves.push_back( *i );
       else
       {
@@ -225,10 +225,10 @@ int KigDocument::getCoordinatePrecision() const
     // we use default coordinate precision calculation
     Rect sr = suggestedRect();
     double m = kigMax( sr.width(), sr.height() );
-    
+
     return kigMax( 0, (int) ( 3 - log10( m ) ) );
   }
-  
+
   return mcoordinatePrecision;
 }
 
@@ -244,7 +244,7 @@ int KigDocument::getCoordinatePrecision() const
  * constructed point is *always* the other intersection
  */
 
-std::vector<ObjectCalcer*> 
+std::vector<ObjectCalcer*>
 KigDocument::findIntersectionPoints( const ObjectCalcer* c1,
                                      const ObjectCalcer* c2) const
 {
@@ -254,7 +254,7 @@ KigDocument::findIntersectionPoints( const ObjectCalcer* c1,
   {
     if ( !(*i)->imp()->inherits( PointImp::stype() ) ) continue;
     ObjectCalcer* o = (*i)->calcer();
-    if ( isPointOnCurve( o, c1 ) && 
+    if ( isPointOnCurve( o, c1 ) &&
          isPointOnCurve( o, c2 ) )
     {
       ret.push_back( o );
