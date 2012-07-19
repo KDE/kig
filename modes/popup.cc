@@ -646,7 +646,6 @@ bool BuiltinObjectActionsProvider::executeAction(
     for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
       kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyColor( color ) ) );
     doc.history()->push( kc );
-    mode.clearSelection();
     return true;
   }
   else if ( menu == NormalModePopupObjects::SetSizeMenu )
@@ -661,7 +660,6 @@ bool BuiltinObjectActionsProvider::executeAction(
     for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
       kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyWidth( 1 + 2 * id ) ) );
     doc.history()->push( kc );
-    mode.clearSelection();
     return true;
   }
   else if ( menu == NormalModePopupObjects::SetStyleMenu )
@@ -690,7 +688,6 @@ bool BuiltinObjectActionsProvider::executeAction(
         if ( (*i)->imp()->inherits( PointImp::stype() ) )
           kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyPointStyle( id ) ) );
       doc.history()->push( kc );
-      mode.clearSelection();
       return true;
     }
     else
@@ -703,7 +700,6 @@ bool BuiltinObjectActionsProvider::executeAction(
         if ( ! (*i)->imp()->inherits( PointImp::stype() ) )
           kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyStyle( p ) ) );
       doc.history()->push( kc );
-      mode.clearSelection();
     }
     return true;
   }
