@@ -110,7 +110,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
                      "figures.", file ) );
     else
       warning( i18n( "There are no figures in Dr. Geo file \"%1\".", file ) );
-    return false;
+    return 0;
   }
 
   int nfig = figures.count();
@@ -339,7 +339,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support.", domelem.tagName() , 
                                       domelem.attribute( "type" ) ) );
-          return false;
+          return 0;
         }
       }
       else if ( domelem.attribute( "type" ) == "Intersection" )
@@ -375,7 +375,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           {
             notSupported( file, i18n( "This Dr. Geo file contains an intersection type, "
                                       "which Kig does not currently support." ) );
-            return false;
+            return 0;
           }
           oc = new ObjectTypeCalcer( type, args );
         }
@@ -397,7 +397,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
-        return false;
+        return 0;
       }
 #ifdef DRGEO_DEBUG
       kDebug() << "+++++++++ oc:" << oc;
@@ -429,7 +429,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
-          return false;
+          return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -442,7 +442,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
-          return false;
+          return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -465,7 +465,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
-          return false;
+          return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -481,7 +481,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                     "which Kig does not currently support.", domelem.tagName() , 
                                     domelem.attribute( "type" ) ) );
-          return false;
+          return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -504,7 +504,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
-        return false;
+        return 0;
       }
 #ifdef DRGEO_DEBUG
       kDebug() << "+++++++++ oc:" << oc;
@@ -631,7 +631,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
-        return false;
+        return 0;
       }
 #ifdef DRGEO_DEBUG
       kDebug() << "+++++++++ oc:" << oc;
@@ -649,7 +649,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
-        return false;
+        return 0;
       }
 #ifdef DRGEO_DEBUG
       kDebug() << "+++++++++ oc:" << oc;
@@ -690,7 +690,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
-        return false;
+        return 0;
       }
     }
     else if ( domelem.tagName() == "locus" )
@@ -702,7 +702,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                   "which Kig does not currently support.", domelem.tagName() , 
                                   domelem.attribute( "type" ) ) );
-        return false;
+        return 0;
       }
 #ifdef DRGEO_DEBUG
       kDebug() << "+++++++++ oc:" << oc;
@@ -722,7 +722,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                                 "which Kig does not currently support.", domelem.tagName() , 
                                 domelem.attribute( "type" ) ) );
-      return false;
+      return 0;
     }
     curid++;
     if ( oc == 0 )

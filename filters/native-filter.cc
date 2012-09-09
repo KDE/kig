@@ -193,7 +193,7 @@ KigDocument* KigFilterNative::load( const QString& file )
   {
     notSupported( file, i18n( "This file was created by Kig version \"%1\", "
                               "which this version cannot open.", version ) );
-    return false;
+    return 0;
   }
   else if ( major == 0 && minor <= 3 )
   {
@@ -204,7 +204,7 @@ KigDocument* KigFilterNative::load( const QString& file )
                               "version (0.4 to 0.6),\n"
                               "and then save it again, which will save it in the "
                               "new format.", version ) );
-    return false;
+    return 0;
   }
   else if ( major == 0 && minor <= 6 )
     return load04( file, main );
@@ -300,7 +300,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
           if ( ( !imp ) && !error.isEmpty() )
           {
             parseError( file, error );
-            return false;
+            return 0;
           }
           o = new ObjectConstCalcer( imp );
         }
@@ -338,7 +338,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
                                       "Perhaps you have compiled Kig without support "
                                       "for this object type,"
                                       "or perhaps you are using an older Kig version.", tmp ) );
-            return false;
+            return 0;
           };
 
           std::vector<ObjectCalcer*> parents;
@@ -463,7 +463,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
           if ( ( !imp ) && !error.isEmpty() )
           {
             parseError( file, error );
-            return false;
+            return 0;
           }
           o = new ObjectConstCalcer( imp );
         }
@@ -531,7 +531,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
                                         "Perhaps you have compiled Kig without support "
                                         "for this object type,"
                                         "or perhaps you are using an older Kig version.", tmp ) );
-              return false;
+              return 0;
             }
           }
 

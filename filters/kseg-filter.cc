@@ -204,7 +204,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
   if ( ! ffile.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
-    return false;
+    return 0;
   };
 
   KigDocument* retdoc = new KigDocument();
@@ -560,19 +560,19 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       {
         notSupported( file, i18n( "This KSeg file contains a filled circle, "
                                   "which Kig does not currently support." ) );
-        return false;
+        return 0;
       };
       case G_ARCSECTOR:
       {
         notSupported( file, i18n( "This KSeg file contains an arc sector, "
                                   "which Kig does not currently support." ) );
-        return false;
+        return 0;
       };
       case G_ARCSEGMENT:
       {
         notSupported( file, i18n( "This KSeg file contains an arc segment, "
                                   "which Kig does not currently support." ) );
-        return false;
+        return 0;
       };
       case G_LOCUS:
       {
