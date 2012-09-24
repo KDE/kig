@@ -667,6 +667,25 @@ void KigPainter::drawAngle( const Coordinate& cpoint, double dstartangle, double
                           //    mOverlay.push_back( arrow.boundingRect() ); 
 }
 
+void KigPainter::drawRightAngle( const Coordinate& point, double startangle, int diagonal )
+{
+  const int startangleDegrees = static_cast<int>( Goniometry::convert( startangle, Goniometry::Rad, Goniometry::Deg ) );
+  QPolygon rightAnglePolygon;
+  QMatrix rotationMatrix;
+  int halfSide = diagonal * sin( M_PI / 4 );
+  const QPoint screenPoint = toScreen( point );
+
+  rightAnglePolygon << QPoint( halfSide, 0 ) << QPoint( halfSide, -halfSide ) << QPoint( 0, -halfSide );
+
+  rotationMatrix.rotate( -startangleDegrees );
+  rightAnglePolygon = rotationMatrix.map( rightAnglePolygon );
+  rightAnglePolygon.translate( screenPoint );
+
+  mP.drawPolyline( rightAnglePolygon );
+  
+  setWholeWinOverlay();
+}
+
 void KigPainter::drawPolygon( const std::vector<Coordinate>& pts, Qt::FillRule fillRule )
 {
   using namespace std;

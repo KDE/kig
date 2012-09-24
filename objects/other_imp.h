@@ -45,7 +45,7 @@ public:
    * dimension (both in radians).
    */
   AngleImp( const Coordinate& pt, double start_angle_in_radials,
-            double angle_in_radials );
+            double angle_in_radials, bool markRightAngle );
   ~AngleImp();
 
   ObjectImp* transform( const Transformation& ) const;

@@ -215,7 +215,13 @@ public:
    * at the angle startAngle..  Angles should be in radians.
    */
   void drawAngle( const Coordinate& point, double startangle, double angle, int radius );
-
+  
+  /**
+   * draw the angle with center point, with size angle, starting
+   * at the angle startAngle..  Angles should be in radians.
+   */
+  void drawRightAngle( const Coordinate& point, double startangle, int diagonal );
+  
   /**
    * draw the arc ( a part of a circle ), of the circle with center
    * center, radius radius, with size angle, starting at the angle

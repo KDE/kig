@@ -37,7 +37,7 @@
 #include <utility>
 using namespace std;
 
-const int AngleImp::radius = 50;
+const int AngleImp::radius = 30;
 
 AngleImp::~AngleImp()
 {
@@ -51,13 +51,20 @@ ObjectImp* AngleImp::transform( const Transformation& ) const
 
 void AngleImp::draw( KigPainter& p ) const
 {
-  p.drawAngle( mpoint, mstartangle, mangle, AngleImp::radius );
+  if ( mangle == M_PI / 2 && mmarkRightAngle )
+  {
+    p.drawRightAngle( mpoint, mstartangle, AngleImp::radius );
+  }
+  else
+  {
+    p.drawAngle( mpoint, mstartangle, mangle, AngleImp::radius );
+  }
 }
 
 AngleImp::AngleImp( const Coordinate& pt, double start_angle_in_radials,
-                    double angle_in_radials )
+                    double angle_in_radials, bool markRightAngle )
   : mpoint( pt ), mstartangle( start_angle_in_radials ),
-    mangle( angle_in_radials )
+    mangle( angle_in_radials ), mmarkRightAngle(markRightAngle)
 {
 }
 
@@ -65,14 +72,33 @@ bool AngleImp::contains( const Coordinate& p, int width, const KigWidget& w ) co
 {
   double radius = AngleImp::radius * w.screenInfo().pixelWidth();
 
-  if ( fabs( (p-mpoint).length() - radius ) > w.screenInfo().normalMiss( width ) )
-    return false;
+  if ( mangle == M_PI / 2 && mmarkRightAngle )
+  {
+    //rotate around -mstartangle
+    double fixedX = cos( mstartangle ) * ( p.x - mpoint.x ) + sin( mstartangle ) * ( p.y - mpoint.y );
+    double fixedY = -sin( mstartangle ) * ( p.x - mpoint.x ) + cos( mstartangle ) * ( p.y - mpoint.y );
 
-  // and next we check if the angle is appropriate...
-  Coordinate vect = p - mpoint;
-  double angle = atan2( vect.y, vect.x );
-  while ( angle < mstartangle ) angle += 2*M_PI;
-  return angle <= mstartangle + mangle;
+    if ( fabs( fixedX - radius * sin( M_PI / 4 ) ) < w.screenInfo().normalMiss( width ) )
+    {
+      return ( fixedY <= radius * sin( M_PI / 4 ) ) && ( fixedY > 0 );
+    }
+    else if ( fabs( fixedY - radius * sin( M_PI / 4 ) ) < w.screenInfo().normalMiss( width ) )
+    {
+      return ( fixedX <= radius * sin( M_PI / 4 ) ) && ( fixedX > 0 );
+    }
+
+    return false;
+  }
+  else
+  {
+    if ( fabs( (p-mpoint).length() - radius ) > w.screenInfo().normalMiss( width ) )
+      return false;
+
+    Coordinate vect = p - mpoint;
+    double angle = atan2( vect.y, vect.x );
+    while ( angle < mstartangle ) angle += 2*M_PI;
+    return angle <= mstartangle + mangle;
+  }
 }
 
 bool AngleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
@@ -159,7 +185,7 @@ double AngleImp::size() const
 
 ObjectImp* AngleImp::copy() const
 {
-  return new AngleImp( mpoint, mstartangle, mangle );
+  return new AngleImp( mpoint, mstartangle, mangle, mmarkRightAngle );
 }
 
 VectorImp::VectorImp( const Coordinate& a, const Coordinate& b )
@@ -445,7 +471,7 @@ ObjectImp* ArcImp::property( int which, const KigDocument& d ) const
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( mradius );
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return new AngleImp( mcenter, msa, ma );
+    return new AngleImp( mcenter, msa, ma, false );
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new IntImp( static_cast<int>( Goniometry::convert( ma, Goniometry::Rad, Goniometry::Deg ) ) );
   else if ( which == Parent::numberOfProperties() + numprop++ )

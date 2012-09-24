@@ -254,7 +254,8 @@ BOOST_PYTHON_MODULE_INIT( kig )
     .def( "data", &VectorImp::data )
     ;
 
-  class_<AngleImp, bases<ObjectImp> >( "Angle", init<Coordinate, double, double>() )
+  //TODO find how to mark default
+  class_<AngleImp, bases<ObjectImp> >( "Angle", init<Coordinate, double, double, bool>() )
     .def( "stype", &AngleImp::stype,
           return_value_policy<reference_existing_object>() )
     .staticmethod( "stype" )

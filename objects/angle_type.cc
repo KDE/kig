@@ -77,11 +77,16 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
 
   Coordinate lvect = points[0] - points[1];
   Coordinate rvect;
+  bool markRightAngle = true;
+  
   if ( points.size() == 3 )
+  {
     rvect = points[2] - points[1];
+  }
   else
   {
     rvect = lvect.orthogonal();
+    markRightAngle = false; // angle is still incomplete
   }
 
   double startangle = atan2( lvect.y, lvect.x );
@@ -90,7 +95,7 @@ ObjectImp* AngleType::calc( const Args& parents, const KigDocument& ) const
   if ( anglelength < 0 ) anglelength += 2* M_PI;
   if ( startangle < 0 ) startangle += 2*M_PI;
 
-  return new AngleImp( points[1], startangle, anglelength );
+  return new AngleImp( points[1], startangle, anglelength, markRightAngle );
 }
 
 const ObjectImpType* AngleType::resultId() const
@@ -199,7 +204,7 @@ ObjectImp* HalfAngleType::calc( const Args& parents, const KigDocument& ) const
     if ( anglelength < 0 ) anglelength += 2 * M_PI;
   }
 
-  return new AngleImp( points[1], startangle, anglelength );
+  return new AngleImp( points[1], startangle, anglelength, true );
 }
 
 const ObjectImpType* HalfAngleType::resultId() const

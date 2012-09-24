@@ -379,7 +379,9 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   {
     double size = readDoubleElement( parent.firstChild(), ok, "size" );
     if ( ! ok ) KIG_GENERIC_PARSE_ERROR;
-    return new AngleImp( Coordinate(), 0, size );
+    
+    //TODO figure out how to know if this should be marked as a right angle
+    return new AngleImp( Coordinate(), 0, size, false );
   }
   else if ( type == "arc" )
   {
