@@ -628,17 +628,13 @@ void KigPainter::drawRay( const LineData& d )
   drawRay( d.a, d.b );
 }
 
-void KigPainter::drawAngle( const Coordinate& cpoint, double dstartangle,
-                            double dangle )
+void KigPainter::drawAngle( const Coordinate& cpoint, double dstartangle, double dangle, int radius )
 {
   // convert to 16th of degrees...
   const int startangle = static_cast<int>( Goniometry::convert( 16 * dstartangle, Goniometry::Rad, Goniometry::Deg ) );
   const int angle = static_cast<int>( Goniometry::convert( 16 * dangle, Goniometry::Rad, Goniometry::Deg ) );
 
   QPoint point = toScreen( cpoint );
-
-//   int radius = mP.window().width() / 5;
-  int radius = 50;
   QRect surroundingRect( 0, 0, radius*2, radius*2 );
   surroundingRect.moveCenter( point );
 

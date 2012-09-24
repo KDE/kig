@@ -37,6 +37,8 @@
 #include <utility>
 using namespace std;
 
+const int AngleImp::radius = 50;
+
 AngleImp::~AngleImp()
 {
 }
@@ -49,7 +51,7 @@ ObjectImp* AngleImp::transform( const Transformation& ) const
 
 void AngleImp::draw( KigPainter& p ) const
 {
-  p.drawAngle( mpoint, mstartangle, mangle );
+  p.drawAngle( mpoint, mstartangle, mangle, AngleImp::radius );
 }
 
 AngleImp::AngleImp( const Coordinate& pt, double start_angle_in_radials,
@@ -61,7 +63,7 @@ AngleImp::AngleImp( const Coordinate& pt, double start_angle_in_radials,
 
 bool AngleImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  double radius = 50*w.screenInfo().pixelWidth();
+  double radius = AngleImp::radius * w.screenInfo().pixelWidth();
 
   if ( fabs( (p-mpoint).length() - radius ) > w.screenInfo().normalMiss( width ) )
     return false;
