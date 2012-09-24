@@ -28,9 +28,11 @@
 class AngleImp
   : public ObjectImp
 {
+  static const int radius;
   const Coordinate mpoint;
   const double mstartangle;
   const double mangle;
+  bool mmarkRightAngle: 1;
 public:
   typedef ObjectImp Parent;
   /**
