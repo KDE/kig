@@ -628,22 +628,21 @@ void KigPainter::drawRay( const LineData& d )
   drawRay( d.a, d.b );
 }
 
-void KigPainter::drawAngle( const Coordinate& cpoint, double dstartangle, double dangle, int radius )
+void KigPainter::drawAngle( const Coordinate& point, double startangle, double angle, int radius )
 {
-  // convert to 16th of degrees...
-  const int startangle = static_cast<int>( Goniometry::convert( 16 * dstartangle, Goniometry::Rad, Goniometry::Deg ) );
-  const int angle = static_cast<int>( Goniometry::convert( 16 * dangle, Goniometry::Rad, Goniometry::Deg ) );
+  const int startangleDegrees = static_cast<int>( Goniometry::convert( startangle, Goniometry::Rad, Goniometry::Deg ) );
+  const int angleDegrees = static_cast<int>( Goniometry::convert( angle, Goniometry::Rad, Goniometry::Deg ) );
 
-  QPoint point = toScreen( cpoint );
+  QPoint screenPoint = toScreen( point );
   QRect surroundingRect( 0, 0, radius*2, radius*2 );
-  surroundingRect.moveCenter( point );
+  surroundingRect.moveCenter( screenPoint );
 
-  mP.drawArc( surroundingRect, startangle, angle );
+  mP.drawArc( surroundingRect, 16 * startangleDegrees, 16 * angleDegrees );
 
   // now for the arrow...
-  QPoint end( static_cast<int>( point.x() + radius * cos( dstartangle + dangle ) ),
-              static_cast<int>( point.y() - radius * sin( dstartangle + dangle ) ) );
-  QPoint vect = (end - point);
+  QPoint end( static_cast<int>( screenPoint.x() + radius * cos( startangle + angle ) ),
+              static_cast<int>( screenPoint.y() - radius * sin( startangle + angle ) ) );
+  QPoint vect = (end - screenPoint);
   double vectlen = std::sqrt( float( vect.x() * vect.x() + vect.y() * vect.y() ) );
   QPoint orthvect( -vect.y(), vect.x() );
   vect = vect * 6 / vectlen;
@@ -653,13 +652,8 @@ void KigPainter::drawAngle( const Coordinate& cpoint, double dstartangle, double
   arrow.setPoint( 0, end );
   arrow.setPoint( 1, end + orthvect + vect );
   arrow.setPoint( 2, end + orthvect - vect );
-//  std::vector<QPoint> arrow;
-//  arrow.push_back( end );
-//  arrow.push_back( end + orthvect + vect );
-//  arrow.push_back( end + orthvect - vect );
 
   setBrushStyle( Qt::SolidPattern );
-//  drawPolygon( arrow );
   mP.drawPolygon( arrow );
 
 //  if ( mNeedOverlay ) mOverlay.push_back( toScreen( r ) );
