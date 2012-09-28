@@ -134,7 +134,8 @@ set(kigpart_PART_SRCS
    modes/mode.cc
    modes/moving.cc
    modes/normal.cc
-   modes/popup.cc
+   modes/popup/popup.cc
+   modes/popup/objectchooserpopup.cc
    modes/textlabelwizard.cc
    modes/typesdialog.cpp
    filters/asyexporter.cc
@@ -198,4 +199,3 @@ install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 
 # unit tests
 add_subdirectory(tests)
-

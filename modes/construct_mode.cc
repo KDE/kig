@@ -33,7 +33,8 @@
 #include "../misc/kigpainter.h"
 #include "../misc/calcpaths.h"
 
-#include "popup.h"
+#include "popup/popup.h"
+#include "popup/objectchooserpopup.h"
 
 #include <qevent.h>
 

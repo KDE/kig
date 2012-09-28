@@ -17,7 +17,8 @@
 
 #include "base_mode.h"
 
-#include "popup.h"
+#include "popup/popup.h"
+#include "popup/objectchooserpopup.h"
 
 #include "../kig/kig_view.h"
 #include "../kig/kig_part.h"
