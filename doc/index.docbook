@@ -12,9 +12,9 @@
 ]
 >
 
-<book lang="&language;">
+<book id="kig" lang="&language;">
 
-<bookinfo>
+<book id="kig"info>
 <title>The &kig; Handbook</title>
 
 <authorgroup>
