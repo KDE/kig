@@ -49,6 +49,8 @@ if(BOOST_PYTHON_FOUND)
   add_subdirectory( scripting )
 endif(BOOST_PYTHON_FOUND)
 
+macro_display_feature_log()
+
 include_directories( ${CMAKE_SOURCE_DIR}/modes )
 if(BOOST_PYTHON_FOUND)
   include_directories(${BOOST_PYTHON_INCLUDES})
