@@ -86,6 +86,10 @@ public:
    */
   double angle() const { return mangle; }
 
+  bool markRightAngle() const { return mmarkRightAngle; }
+
+  void setMarkRightAngle( bool markRightAngle ) { mmarkRightAngle = markRightAngle; }
+
   bool equals( const ObjectImp& rhs ) const;
 };
 
