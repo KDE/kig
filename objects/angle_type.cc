@@ -106,7 +106,10 @@ const ObjectImpType* AngleType::resultId() const
 QStringList AngleType::specialActions() const
 {
   QStringList ret;
+
   ret << i18n( "Set Si&ze" );
+  ret << i18n( "Toggle &Right Angle Mark" );
+
   return ret;
 }
 
@@ -114,45 +117,51 @@ void AngleType::executeAction(
   int i, ObjectHolder&, ObjectTypeCalcer& t,
   KigPart& d, KigWidget& w, NormalMode& ) const
 {
-  assert( i == 0 );
-  // pretend to use this var..
-  (void) i;
+  if ( i == 0 )
+  {
+    std::vector<ObjectCalcer*> parents = t.parents();
 
-  std::vector<ObjectCalcer*> parents = t.parents();
+    assert( margsparser.checkArgs( parents ) );
 
-  assert( margsparser.checkArgs( parents ) );
+    Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
+    Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
+    Coordinate c = static_cast<const PointImp*>( parents[2]->imp() )->coordinate();
 
-  Coordinate a = static_cast<const PointImp*>( parents[0]->imp() )->coordinate();
-  Coordinate b = static_cast<const PointImp*>( parents[1]->imp() )->coordinate();
-  Coordinate c = static_cast<const PointImp*>( parents[2]->imp() )->coordinate();
+    Coordinate lvect = a - b;
+    Coordinate rvect = c - b;
 
-  Coordinate lvect = a - b;
-  Coordinate rvect = c - b;
+    double startangle = atan2( lvect.y, lvect.x );
+    double endangle = atan2( rvect.y, rvect.x );
+    double anglelength = endangle - startangle;
+    if ( anglelength < 0 ) anglelength += 2* M_PI;
+    if ( startangle < 0 ) startangle += 2*M_PI;
 
-  double startangle = atan2( lvect.y, lvect.x );
-  double endangle = atan2( rvect.y, rvect.x );
-  double anglelength = endangle - startangle;
-  if ( anglelength < 0 ) anglelength += 2* M_PI;
-  if ( startangle < 0 ) startangle += 2*M_PI;
+    Goniometry go( anglelength, Goniometry::Rad );
+    go.convertTo( Goniometry::Deg );
 
-  Goniometry go( anglelength, Goniometry::Rad );
-  go.convertTo( Goniometry::Deg );
+    bool ok;
+    Goniometry newsize = KigInputDialog::getAngle( &w, &ok, go );
+    if ( !ok )
+      return;
+    newsize.convertTo( Goniometry::Rad );
 
-  bool ok;
-  Goniometry newsize = KigInputDialog::getAngle( &w, &ok, go );
-  if ( !ok )
-    return;
-  newsize.convertTo( Goniometry::Rad );
+    double newcangle = startangle + newsize.value();
+    Coordinate cdir( cos( newcangle ), sin( newcangle ) );
+    Coordinate nc = b + cdir.normalize( rvect.length() );
 
-  double newcangle = startangle + newsize.value();
-  Coordinate cdir( cos( newcangle ), sin( newcangle ) );
-  Coordinate nc = b + cdir.normalize( rvect.length() );
+    MonitorDataObjects mon( getAllParents( parents ) );
+    parents[2]->move( nc, d.document() );
+    KigCommand* kc = new KigCommand( d, i18n( "Resize Angle" ) );
+    mon.finish( kc );
+    d.history()->push( kc );
+  }
+  else if ( i == 1 )
+  {
+    AngleImp * angleImp = const_cast< AngleImp * >( dynamic_cast< const AngleImp *>( t.imp() ) );
 
-  MonitorDataObjects mon( getAllParents( parents ) );
-  parents[2]->move( nc, d.document() );
-  KigCommand* kc = new KigCommand( d, i18n( "Resize Angle" ) );
-  mon.finish( kc );
-  d.history()->push( kc );
+    angleImp->setMarkRightAngle( !angleImp->markRightAngle() );
+    d.redrawScreen();
+  }
 }
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( HalfAngleType )
