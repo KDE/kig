@@ -1585,6 +1585,11 @@ GenericAffinityConstructor::GenericAffinityConstructor()
 
 GenericAffinityConstructor::~GenericAffinityConstructor() {}
 
+bool GenericAffinityConstructor::isAlreadySelectedOK(const std::vector< ObjectCalcer* >& os, const uint& ) const
+{
+    return true;
+}
+
 GenericProjectivityConstructor::GenericProjectivityConstructor()
   : MergeObjectConstructor(
     I18N_NOOP( "Generic Projective Transformation" ),
@@ -1608,6 +1613,11 @@ GenericProjectivityConstructor::GenericProjectivityConstructor()
 }
 
 GenericProjectivityConstructor::~GenericProjectivityConstructor() {}
+
+bool GenericProjectivityConstructor::isAlreadySelectedOK(const std::vector< ObjectCalcer* >& os, const uint& ) const
+{
+    return true;
+}
 
 /*
  * inversion of points, lines with respect to a circle
