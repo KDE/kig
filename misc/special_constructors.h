@@ -360,6 +360,7 @@ class GenericAffinityConstructor
 public:
   GenericAffinityConstructor();
   ~GenericAffinityConstructor();
+  virtual bool isAlreadySelectedOK(const std::vector< ObjectCalcer* >& os, const uint& ) const;
 };
 
 class GenericProjectivityConstructor
@@ -368,6 +369,7 @@ class GenericProjectivityConstructor
 public:
   GenericProjectivityConstructor();
   ~GenericProjectivityConstructor();
+  virtual bool isAlreadySelectedOK(const std::vector< ObjectCalcer* >& os, const uint& ) const;
 };
 
 class InversionConstructor

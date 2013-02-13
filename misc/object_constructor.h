@@ -301,8 +301,8 @@ public:
   const QString description() const;
   const QByteArray iconFileName( const bool canBeNull = false ) const;
 
-  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                                  const uint& ) const;
+  virtual bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const uint& ) const;
+
   int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d,
                       const KigWidget& v
