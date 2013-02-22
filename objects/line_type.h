@@ -70,6 +70,7 @@ class LinePerpendLPType
   ~LinePerpendLPType();
 public:
   static LinePerpendLPType* instance();
+  using ObjectLPType::calc;
   ObjectImp* calc( const LineData& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 };
@@ -81,6 +82,7 @@ class LineParallelLPType
   ~LineParallelLPType();
 public:
   static LineParallelLPType* instance();
+  using ObjectLPType::calc;
   ObjectImp* calc( const LineData& a, const Coordinate& b ) const;
   const ObjectImpType* resultId() const;
 };
