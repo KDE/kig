@@ -178,14 +178,16 @@ std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& from, con
 static void addNonCache( ObjectCalcer* o, std::vector<ObjectCalcer*>& ret )
 {
   if ( ! o->imp()->isCache() )
+  {
     if ( std::find( ret.begin(), ret.end(), o ) == ret.end() )
       ret.push_back( o );
-  else
-  {
-    std::vector<ObjectCalcer*> parents = o->parents();
-    for ( uint i = 0; i < parents.size(); ++i )
-      addNonCache( parents[i], ret );
-  };
+    else
+    {
+      std::vector<ObjectCalcer*> parents = o->parents();
+      for ( uint i = 0; i < parents.size(); ++i )
+        addNonCache( parents[i], ret );
+    };
+  }
 }
 
 static bool visit( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& from, std::vector<ObjectCalcer*>& ret )
