@@ -50,6 +50,8 @@ void LatexExporterOptions::setFormat(LatexExporterOptions::LatexOutputFormat for
     case Asymptote:
       expwidget->asyRadioButton->setChecked(true);
       break;
+    default:
+      break;
   }
 }
 
