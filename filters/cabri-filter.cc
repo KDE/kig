@@ -229,7 +229,6 @@ KigDocument* KigFilterCabri::load( const QString& file )
 
   std::vector<ObjectCalcer*> args;
   ObjectCalcer* oc = 0;
-  bool gridspecified = false;
   std::vector<uint> idsToSkip;
   int previd = 0;
   uint lowerbound = 2;
@@ -251,7 +250,6 @@ KigDocument* KigFilterCabri::load( const QString& file )
     if ( obj->type == "Grid" )
     {
       havegrid = obj->visible;
-      gridspecified = true;
       idsToSkip.push_back( obj->id );
       if ( obj->id == lowerbound + 1 )
         ++lowerbound;
