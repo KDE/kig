@@ -1587,7 +1587,9 @@ GenericAffinityConstructor::~GenericAffinityConstructor() {}
 
 bool GenericAffinityConstructor::isAlreadySelectedOK(const std::vector< ObjectCalcer* >& os, const uint& ) const
 {
-    return true;
+  Q_UNUSED(os)
+
+  return true;
 }
 
 GenericProjectivityConstructor::GenericProjectivityConstructor()
@@ -1616,7 +1618,9 @@ GenericProjectivityConstructor::~GenericProjectivityConstructor() {}
 
 bool GenericProjectivityConstructor::isAlreadySelectedOK(const std::vector< ObjectCalcer* >& os, const uint& ) const
 {
-    return true;
+  Q_UNUSED(os)
+
+  return true;
 }
 
 /*
