@@ -178,12 +178,8 @@ std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& from, con
 static void addNonCache( ObjectCalcer* o, std::vector<ObjectCalcer*>& ret )
 {
   if ( ! o->imp()->isCache() )
-  {
     if ( std::find( ret.begin(), ret.end(), o ) == ret.end() )
-    {
       ret.push_back( o );
-    }
-  }
   else
   {
     std::vector<ObjectCalcer*> parents = o->parents();
