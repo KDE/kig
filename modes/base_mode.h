@@ -36,6 +36,7 @@ class BaseMode
   QPoint mplc;
   std::vector<ObjectHolder*> moco;
 
+public:
   void leftClicked( QMouseEvent* e, KigWidget* v );
   void leftMouseMoved( QMouseEvent*, KigWidget* );
   void leftReleased( QMouseEvent* e, KigWidget* v );
