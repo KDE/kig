@@ -29,6 +29,11 @@ class NormalMode
 public:
   NormalMode( KigPart& );
   ~NormalMode();
+
+  using BaseMode::midClicked;
+  using BaseMode::rightClicked;
+  using BaseMode::mouseMoved;
+
 protected:
   void dragRect( const QPoint& p, KigWidget& w );
   void dragObject( const std::vector<ObjectHolder*>& os, const QPoint& pointClickedOn,
