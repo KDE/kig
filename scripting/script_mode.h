@@ -52,8 +52,11 @@ private:
 public:
   virtual ~ScriptModeBase();
 
+  using BaseMode::midClicked;
+  using BaseMode::rightClicked;
+  using BaseMode::mouseMoved;
+
   void dragRect( const QPoint& p, KigWidget& w );
-//  void dragObject( const Objects& os, const QPoint& pointClickedOn, KigWidget& w, bool ctrlOrShiftDown );
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
                           KigWidget& w, bool actrlOrShiftDown );
   void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
