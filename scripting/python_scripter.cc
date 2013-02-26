@@ -19,13 +19,13 @@
 // been moved before all qt includes in order to avoid a clash related to
 // the "slots" identifier
 // krazy:excludeall=includes
+#undef _XOPEN_SOURCE // it will be defined inside Python
 #include <Python.h>
 #include "python_scripter.h"
 
 #include <iostream>
 #include <string>
 
-//#include <Python.h>   // (see above)
 #include <boost/python.hpp>
 #include <boost/mpl/bool.hpp>
 
