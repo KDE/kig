@@ -50,7 +50,8 @@ void LatexExporterOptions::setFormat(LatexExporterOptions::LatexOutputFormat for
     case Asymptote:
       expwidget->asyRadioButton->setChecked(true);
       break;
-    default:
+    // This enum member is just to track the number of formats, nothing to do here
+    case FormatCount:
       break;
   }
 }
