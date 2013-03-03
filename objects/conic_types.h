@@ -151,6 +151,7 @@ class ParabolaBDPType
   ~ParabolaBDPType();
 public:
   static const ParabolaBDPType* instance();
+  using ObjectLPType::calc;
   ObjectImp* calc( const LineData& l, const Coordinate& c ) const;
   const ObjectImpType* resultId() const;
 };

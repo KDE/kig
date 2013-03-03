@@ -34,9 +34,9 @@ public:
   void dragRect( const QPoint& p, KigWidget& w );
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
                           KigWidget& w, bool ctrlOrShiftDown );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+  using BaseMode::midClicked;
+  using BaseMode::rightClicked;
+  using BaseMode::mouseMoved;
 
   // called by MacroWizard class
   void givenPageEntered();
@@ -49,6 +49,9 @@ public:
   bool hasFinalArgs() const;
 
 protected:
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
+  void midClicked( const QPoint& p, KigWidget& w );
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
   void enableActions();
   /**
    * quit this mode...

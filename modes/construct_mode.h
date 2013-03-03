@@ -37,6 +37,11 @@ class PointConstructMode
 public:
   PointConstructMode( KigPart& d );
   ~PointConstructMode();
+
+  using BaseMode::midClicked;
+  using BaseMode::rightClicked;
+  using BaseMode::mouseMoved;
+
 protected:
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
                                 KigWidget& w, bool ctrlOrShiftDown );
@@ -76,9 +81,13 @@ class BaseConstructMode
   void leftReleased( QMouseEvent* e, KigWidget* v );
 
 public:
+  using BaseMode::midClicked;
+  using BaseMode::rightClicked;
+  using BaseMode::mouseMoved;
   void selectObject( ObjectHolder* o, KigWidget& w );
   void selectObjects( const std::vector<ObjectHolder*>& os, KigWidget& w );
   virtual ~BaseConstructMode();
+
 protected:
   BaseConstructMode( KigPart& d );
 protected:
@@ -137,6 +146,10 @@ class TestConstructMode
 public:
   TestConstructMode( KigPart& d, const ArgsParserObjectType* type );
   ~TestConstructMode();
+
+  using BaseMode::midClicked;
+  using BaseMode::rightClicked;
+  using BaseMode::mouseMoved;
 
   void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
   QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );

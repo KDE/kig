@@ -113,6 +113,7 @@ public:
       mcolormap[Qt::yellow] = 6;
       mcolormap[Qt::white] = 7;
     }
+  using ObjectImpVisitor::visit;
   void visit( const LineImp* imp );
   void visit( const PointImp* imp );
   void visit( const TextImp* imp );

@@ -53,6 +53,7 @@ public:
     : mstream( s ), mw( w ), msr( mw.showingRect() )
     {
     }
+  using ObjectImpVisitor::visit;
   void visit( const LineImp* imp );
   void visit( const PointImp* imp );
   void visit( const TextImp* imp );

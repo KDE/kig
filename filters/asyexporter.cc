@@ -108,7 +108,7 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
   {
     // TODO: Polar grid
     // Vertical lines
-    double startingpoint = startingpoint = static_cast<double>( KDE_TRUNC( left ) );
+    double startingpoint = static_cast<double>( KDE_TRUNC( left ) );
     for ( double i = startingpoint; i < left+width; ++i )
     {
       stream << "draw((" << i << "," << bottom << ")--(" << i << "," << bottom+height << "),gray);\n";
