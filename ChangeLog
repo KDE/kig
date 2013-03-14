@@ -1386,7 +1386,7 @@
 
 2004-03-27  Dominique Devriese  <devriese@kde.org>
 
-	* Apply a patch by Albert Astals Cid <tsdgeos@terra.es> that gives
+	* Apply a patch by Albert Astals Cid <aacid@kde.org> that gives
 	focus to the text input on first opening the text dialog.
 	Closes:78409.
 
