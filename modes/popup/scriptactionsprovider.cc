@@ -23,9 +23,9 @@
 
 #include "popup.h"
 
-#include "../kig/kig_part.h"
-#include "../modes/normal.h"
-#include "../objects/text_type.h"
+#include "../../kig/kig_part.h"
+#include "../../modes/normal.h"
+#include "../../objects/text_type.h"
 
 #include <KIconLoader>
 

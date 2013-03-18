@@ -19,13 +19,13 @@
 
 #include "objectconstructoractionsprovider.h"
 
-#include "../kig/kig_part.h"
-#include "../kig/kig_view.h"
-#include "../misc/argsparser.h"
-#include "../misc/lists.h"
-#include "../misc/object_constructor.h"
-#include "../modes/construct_mode.h"
-#include "../modes/normal.h"
+#include "../../kig/kig_part.h"
+#include "../../kig/kig_view.h"
+#include "../../misc/argsparser.h"
+#include "../../misc/lists.h"
+#include "../../misc/object_constructor.h"
+#include "../../modes/construct_mode.h"
+#include "../../modes/normal.h"
 
 void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {

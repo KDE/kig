@@ -21,12 +21,12 @@
 
 #include <cassert>
 
-#include "../kig/kig_part.h"
-#include "../kig/kig_view.h"
-#include "../objects/bogus_imp.h"
-#include "../objects/object_factory.h"
-#include "../objects/object_holder.h"
-#include "../objects/point_imp.h"
+#include "../../kig/kig_part.h"
+#include "../../kig/kig_view.h"
+#include "../../objects/bogus_imp.h"
+#include "../../objects/object_factory.h"
+#include "../../objects/object_holder.h"
+#include "../../objects/point_imp.h"
 
 #include <KLocale>
 #include <KIcon>

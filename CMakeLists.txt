@@ -138,6 +138,13 @@ set(kigpart_PART_SRCS
    modes/normal.cc
    modes/popup/popup.cc
    modes/popup/objectchooserpopup.cc
+   modes/popup/propertiesactionsprovider.cc
+   modes/popup/objectchooserpopup.cc
+   modes/popup/objecttypeactionsprovider.cc
+   modes/popup/nameobjectactionsprovider.cc
+   modes/popup/objectconstructoractionsprovider.cc
+   modes/popup/builtindocumentactionsprovider.cc
+   modes/popup/builtinobjectactionsprovider.cc
    modes/textlabelwizard.cc
    modes/typesdialog.cpp
    filters/asyexporter.cc
@@ -178,6 +185,7 @@ kde4_add_ui_files(kigpart_PART_SRCS
 
 if(BOOST_PYTHON_FOUND)
   set(kigpart_PART_SRCS ${kigpart_PART_SRCS}
+     modes/popup/scriptactionsprovider.cc
      scripting/newscriptwizard.cc
      scripting/python_scripter.cc
      scripting/python_type.cc
