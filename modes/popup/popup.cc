@@ -258,21 +258,6 @@ static const color_struct colors[] =
 
 const int numberofcolors = 7; // is there a better way to calc that?
 
-static void addNameLabel( ObjectCalcer* object, ObjectCalcer* namecalcer, const Coordinate& loc, KigPart& doc )
-{
-  std::vector<ObjectCalcer*> args;
-  args.push_back( namecalcer );
-  const bool namelabelneedsframe = false;
-  ObjectCalcer* attachto = 0;
-  if ( object->imp()->inherits( PointImp::stype() ) || 
-       object->imp()->attachPoint().valid() || 
-       object->imp()->inherits( CurveImp::stype() ) )
-    attachto = object;
-  ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
-      QString::fromLatin1( "%1" ), attachto, loc, namelabelneedsframe, args, doc.document() );
-  doc.addObject( label );
-}
-
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& pix, int id )
 {
   return addInternalAction( menu, pix, "", id );
