@@ -19,9 +19,9 @@
 
 #include "objectchooserpopup.h"
 
-#include "../objects/object_holder.h"
-#include "../objects/point_imp.h"
-#include "../objects/polygon_imp.h"
+#include "../../objects/object_holder.h"
+#include "../../objects/point_imp.h"
+#include "../../objects/polygon_imp.h"
 
 int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
                                            const std::vector<ObjectHolder*>& objs,

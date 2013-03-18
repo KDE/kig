@@ -26,9 +26,9 @@
 
 #include "popupactionprovider.h"
 
-#include "../scripting/script-common.h"
-#include "../scripting/script_mode.h"
-#include "../scripting/python_type.h"
+#include "../../scripting/script-common.h"
+#include "../../scripting/script_mode.h"
+#include "../../scripting/python_type.h"
 
 class ScriptActionsProvider
   : public PopupActionProvider

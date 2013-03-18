@@ -21,11 +21,11 @@
 
 #include "popup.h"
 
-#include "../kig/kig_part.h"
-#include "../kig/kig_view.h"
-#include "../modes/normal.h"
-#include "../objects/object_holder.h"
-#include "../objects/object_type.h"
+#include "../../kig/kig_part.h"
+#include "../../kig/kig_view.h"
+#include "../../modes/normal.h"
+#include "../../objects/object_holder.h"
+#include "../../objects/object_type.h"
 
 void ObjectTypeActionsProvider::fillUpMenu(
   NormalModePopupObjects& popup, int menu, int& nextfree )

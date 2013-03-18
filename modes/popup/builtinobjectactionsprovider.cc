@@ -22,15 +22,15 @@
 #include "popup.h"
 #include "popupactionprovider.h"
 
-#include "../kig/kig_commands.h"
-#include "../kig/kig_part.h"
-#include "../kig/kig_view.h"
-#include "../misc/kigpainter.h"
-#include "../objects/line_imp.h"
-#include "../modes/moving.h"
-#include "../modes/normal.h"
-#include "../objects/object_drawer.h"
-#include "../objects/point_imp.h"
+#include "../../kig/kig_commands.h"
+#include "../../kig/kig_part.h"
+#include "../../kig/kig_view.h"
+#include "../../misc/kigpainter.h"
+#include "../../objects/line_imp.h"
+#include "../../modes/moving.h"
+#include "../../modes/normal.h"
+#include "../../objects/object_drawer.h"
+#include "../../objects/point_imp.h"
 
 #include <QPen>
 #include <QRect>

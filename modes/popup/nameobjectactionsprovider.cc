@@ -23,15 +23,15 @@
 
 #include "popup.h"
 
-#include "../kig/kig_commands.h"
-#include "../kig/kig_part.h"
-#include "../kig/kig_view.h"
-#include "../modes/normal.h"
-#include "../objects/curve_imp.h"
-#include "../objects/bogus_imp.h"
-#include "../objects/object_calcer.h"
-#include "../objects/object_factory.h"
-#include "../objects/point_imp.h"
+#include "../../kig/kig_commands.h"
+#include "../../kig/kig_part.h"
+#include "../../kig/kig_view.h"
+#include "../../modes/normal.h"
+#include "../../objects/curve_imp.h"
+#include "../../objects/bogus_imp.h"
+#include "../../objects/object_calcer.h"
+#include "../../objects/object_factory.h"
+#include "../../objects/point_imp.h"
 
 #include <QRegExpValidator>
 
