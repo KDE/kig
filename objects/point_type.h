@@ -189,4 +189,16 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class ProjectedPointType
+  : public ArgsParserObjectType
+{
+  ProjectedPointType();
+  ~ProjectedPointType();
+public:
+  static const ProjectedPointType* instance();
+
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  const ObjectImpType * resultId() const;
+};
+
 #endif

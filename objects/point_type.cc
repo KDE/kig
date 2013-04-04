@@ -807,3 +807,45 @@ const ObjectImpType* PointByCoordsType::resultId() const
   return PointImp::stype();
 }
 
+static const ArgsParser::spec argsspecProjectedPoint[] =
+{
+  { PointImp::stype(), "Point to project",
+    I18N_NOOP( "Select a point to project onto a line..." ), false },
+  { LineImp::stype(), "Line where to project",
+    I18N_NOOP( "Line where the projected point will lie..." ), true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ProjectedPointType )
+
+ProjectedPointType::ProjectedPointType()
+  : ArgsParserObjectType( "ProjectedPoint", argsspecProjectedPoint, 2 )
+{
+}
+
+ProjectedPointType::~ProjectedPointType()
+{
+}
+
+const ProjectedPointType* ProjectedPointType::instance()
+{
+  static const ProjectedPointType t;
+  return &t;
+}
+
+ObjectImp* ProjectedPointType::calc(const Args& parents, const KigDocument& ) const
+{
+  if( parents.size() == 2 )
+  {
+    const PointImp* point = static_cast<const PointImp*>( parents[0] );
+    const LineImp* line = static_cast<const LineImp*>( parents[1] );
+
+    return new PointImp( calcPointProjection( point->coordinate(), line->data() ) );
+  }
+
+  return new InvalidImp();
+}
+
+const ObjectImpType* ProjectedPointType::resultId() const
+{
+  return PointImp::stype();
+}

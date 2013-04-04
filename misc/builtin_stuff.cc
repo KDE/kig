@@ -665,6 +665,14 @@ void setupBuiltinStuff()
 //    ctors->add( c );
 //    actions->add( new ConstructibleAction( c, "objects_new_measuretransport" ) );
 
+    c = new SimpleObjectTypeConstructor(
+      ProjectedPointType::instance(),
+      I18N_NOOP( "Point Projection" ),
+      I18N_NOOP( "Project a point on a line" ),
+      "projection" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_projection" ) );
+
     // the generic intersection constructor..
     c = new GenericIntersectionConstructor();
     ctors->add( c );
