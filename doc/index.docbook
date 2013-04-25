@@ -894,7 +894,7 @@ the need to start an external application.
 <para>
 Working with &kig; should be very straightforward.
 Constructing objects is easy and interactive, with
-preliminary results being shown, &etc;. Moving, selecting
+preliminary results being shown, &etc; Moving, selecting
 and building all work as one would expect them to. Undo
 support should also be very intuitive.
 </para>
