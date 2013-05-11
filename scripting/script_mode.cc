@@ -17,6 +17,8 @@
 
 #include "script_mode.h"
 
+#include <iterator>
+
 #include "newscriptwizard.h"
 #include "python_type.h"
 #include "python_scripter.h"
