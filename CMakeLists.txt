@@ -29,7 +29,6 @@ add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS} -DQT_USE_FAST_CONCATENATI
 include_directories (${QDBUS_INCLUDE_DIRS}  ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 
 # ...to here
-
 find_package(BoostPython)
 
 kde4_no_enable_final(kig)

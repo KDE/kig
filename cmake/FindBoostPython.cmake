@@ -32,6 +32,15 @@ set(PYTHON_INCLUDE_DIRS "/usr/include/$pyver;/usr/local/include/$pyver;/usr/$pyv
 set(PYTHON_LIBRARY_DIRS "/usr/lib${LIB_SUFFIX};/usr/local/lib${LIB_SUFFIX};/usr/lib${LIB_SUFFIX}/$pyver/config")
 set(PYTHON_LIBS "boost_python-gcc-mt;boost_python-mt;boost_python-gcc-mt-1_33;boost_python-gcc-mt-1_33_1;boost_python;boost_python-gcc-mt-1_32;boost_python")
 
+if(WIN32)
+    set(PythonLibs_FIND_VERSION 2.7.0)
+    find_package(PythonLibs)
+    find_package(Boost COMPONENTS python QUIET)
+    if(PYTHONLIBS_FOUND AND Boost_FOUND)
+        set(BOOST_PYTHON_INCLUDES ${PYTHON_INCLUDE_DIRS} ${Boost_INCLUDE_DIR})
+        set(BOOST_PYTHON_LIBS ${Boost_PYTHON_LIBRARY} ${PYTHON_LIBRARIES})
+    endif(PYTHONLIBS_FOUND AND Boost_FOUND)
+else(WIN32)
 # 1st: check for boost/shared_ptr.hpp
 check_include_file_cxx(boost/shared_ptr.hpp HAVE_BOOST_SHARED_PTR_HPP)
 
@@ -133,6 +142,7 @@ int main() { return 0; }
   set(CMAKE_CXX_FLAGS ${_save_CMAKE_CXX_FLAGS})
 
 endif(HAVE_BOOST_SHARED_PTR_HPP AND NOT _found)
+endif(WIN32)
 
 if(BOOST_PYTHON_INCLUDES AND BOOST_PYTHON_LIBS)
   set(BOOST_PYTHON_FOUND TRUE)
