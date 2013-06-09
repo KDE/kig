@@ -811,7 +811,7 @@ static const ArgsParser::spec argsspecProjectedPoint[] =
 {
   { PointImp::stype(), "Point to project",
     I18N_NOOP( "Select a point to project onto a line..." ), false },
-  { LineImp::stype(), "Line where to project",
+  { AbstractLineImp::stype(), "Line where to project",
     I18N_NOOP( "Line where the projected point will lie..." ), true }
 };
 
