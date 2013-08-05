@@ -25,9 +25,9 @@ include(MacroBoolTo01)
 add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS} -DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 include_directories (${QDBUS_INCLUDE_DIRS}  ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 
-find_package(BoostPython)
-
 kde4_no_enable_final(kig)
+
+find_package(BoostPython)
 
 include(KigConfigureChecks.cmake)
 
@@ -40,16 +40,16 @@ add_subdirectory( macros )
 #add_subdirectory( kfile )
 add_subdirectory( data )
 add_subdirectory( pykig )
-if(BOOST_PYTHON_FOUND)
+if(BoostPython_FOUND)
   add_subdirectory( scripting )
-endif(BOOST_PYTHON_FOUND)
+endif(BoostPython_FOUND)
 
 macro_display_feature_log()
 
 include_directories( ${CMAKE_SOURCE_DIR}/modes )
-if(BOOST_PYTHON_FOUND)
-  include_directories(${BOOST_PYTHON_INCLUDES})
-endif(BOOST_PYTHON_FOUND)
+if(BoostPython_FOUND)
+  include_directories(${BoostPython_INCLUDE_DIRS})
+endif(BoostPython_FOUND)
 
 # kigpart
 
@@ -178,7 +178,7 @@ kde4_add_ui_files(kigpart_PART_SRCS
    misc/kigcoordinateprecisiondialog.ui
 )
 
-if(BOOST_PYTHON_FOUND)
+if(BoostPython_FOUND)
   set(kigpart_PART_SRCS ${kigpart_PART_SRCS}
      modes/popup/scriptactionsprovider.cc
      scripting/newscriptwizard.cc
@@ -189,18 +189,27 @@ if(BOOST_PYTHON_FOUND)
   )
 
   set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "${KDE4_ENABLE_EXCEPTIONS}")
-endif(BOOST_PYTHON_FOUND)
+endif(BoostPython_FOUND)
 
 
 kde4_add_plugin(kigpart ${kigpart_PART_SRCS})
 
 target_link_libraries(kigpart ${KDE4_KPARTS_LIBS} ${KDE4_KUTILS_LIBS} )
-if(BOOST_PYTHON_FOUND)
-  target_link_libraries(kigpart ${BOOST_PYTHON_LIBS} ${KDE4_KTEXTEDITOR_LIBS})
-endif(BOOST_PYTHON_FOUND)
+if(BoostPython_FOUND)
+  target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE4_KTEXTEDITOR_LIBS})
+endif(BoostPython_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 
+macro_log_feature(
+   BoostPython_FOUND
+   "Boost.Python"
+   "Kig can optionally use Boost.Python for Python scripting"
+   "http://www.boost.org/"
+   FALSE
+   "1.31"
+   ""
+)
 
 # unit tests
 add_subdirectory(tests)
