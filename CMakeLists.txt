@@ -44,6 +44,16 @@ if(BoostPython_FOUND)
   add_subdirectory( scripting )
 endif(BoostPython_FOUND)
 
+macro_log_feature(
+   BoostPython_FOUND
+   "Boost.Python"
+   "Kig can optionally use Boost.Python for Python scripting"
+   "http://www.boost.org/"
+   FALSE
+   "1.31"
+   ""
+)
+
 macro_display_feature_log()
 
 include_directories( ${CMAKE_SOURCE_DIR}/modes )
@@ -200,16 +210,6 @@ if(BoostPython_FOUND)
 endif(BoostPython_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
-
-macro_log_feature(
-   BoostPython_FOUND
-   "Boost.Python"
-   "Kig can optionally use Boost.Python for Python scripting"
-   "http://www.boost.org/"
-   FALSE
-   "1.31"
-   ""
-)
 
 # unit tests
 add_subdirectory(tests)
