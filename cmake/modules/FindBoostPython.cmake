@@ -16,53 +16,95 @@ if(BoostPython_INCLUDE_DIRS AND BoostPython_LIBRARIES)
 endif(BoostPython_INCLUDE_DIRS AND BoostPython_LIBRARIES)
 
 include(CheckIncludeFileCXX)
+include(CMakePushCheckState)
+include(FindPackageHandleStandardArgs)
 
-find_package(PkgConfig)
+# Set varname to true if we found good combination of Boost and Python.
+# NOTE: varname should be different each time, or test won't run.
+# Also, varname is printed as test name, so it should not be too cryptic.
+macro(BoostPython_TRY_COMPILE varname)
+  check_cxx_source_compiles("
+#include <boost/python.hpp>
+const char* greet() { return \"Hello world!\"; }
+BOOST_PYTHON_MODULE(hello) { boost::python::def(\"greet\", greet); }
+int main() { return 0; }
+" ${varname} )
+endmacro(BoostPython_TRY_COMPILE)
 
-# reset vars
-set(BoostPython_INCLUDE_DIRS)
-set(BoostPython_LIBRARIES)
+find_package(Boost QUIET COMPONENTS python)
 
-# handy arrays
-set(PYTHON_VERSIONS "python;python2.7;python2.6;python2.5;python2.4;python2.3;python2.2")
+cmake_push_check_state()
+set(CMAKE_REQUIRED_FLAGS     ${CMAKE_REQUIRED_FLAGS}     ${KDE4_ENABLE_EXCEPTIONS})
+set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${Boost_INCLUDE_DIRS})
+set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${Boost_PYTHON_LIBRARY})
 
-# 1st: check for boost/shared_ptr.hpp
 check_include_file_cxx(boost/shared_ptr.hpp HAVE_BOOST_SHARED_PTR_HPP)
 
-if(HAVE_BOOST_SHARED_PTR_HPP)
+# This variable is not checked/used when user provide both
+# BoostPython_INCLUDE_DIRS and BoostPython_LIBRARIES, by design.
+# If user wants to speed up configure stage, he's allowed to do this.
+# If user wants to shoot himself in the foot, he is allowed to do this, too.
+set(BoostPython_COMPILES)
 
-  # try pkg-config next
-  set(_found FALSE)
-  foreach(_pyver ${PYTHON_VERSIONS})
-    if(NOT _found)
-      pkg_check_modules(_python QUIET ${_pyver})
-      if (_python_FOUND)
-        find_package(Boost 1.31 COMPONENTS python)
-        if (Boost_PYTHON_FOUND)
-          set(_found TRUE)
-          set(BoostPython_INCLUDE_DIRS "${_python_INCLUDE_DIRS};${Boost_INCLUDE_DIRS}")
-          set(BoostPython_LIBRARIES "${_python_LDFLAGS} ${Boost_PYTHON_LIBRARY}")
-        endif(Boost_PYTHON_FOUND)
-      endif(_python_FOUND)
-    endif(NOT _found)
-  endforeach(_pyver ${PYTHON_VERSIONS})
+# If shared_ptr.hpp or Python library is not available, then there is
+# no point to do anything.
+if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON_FOUND)
+  if(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES)
+    # First try: check if CMake Python is suitable.
+    set(Python_ADDITIONAL_VERSIONS "2.7;2.6;2.5;2.4;2.3;2.2")
+    find_package(PythonLibs QUIET)
+    if(PYTHONLIBS_FOUND)
+      cmake_push_check_state()
+      set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${PYTHON_INCLUDE_DIRS})
+      set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${PYTHON_LIBRARIES})
+      BoostPython_TRY_COMPILE(BoostPython_FromCMake)
+      cmake_pop_check_state()
 
-endif(HAVE_BOOST_SHARED_PTR_HPP)
+      if(BoostPython_FromCMake)
+        set(BoostPython_COMPILES Yes)
+        set(BoostPython_INCLUDE_DIRS ${PYTHON_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS}
+            CACHE INTERNAL "Includes search path for Boost+Python")
+        set(BoostPython_LIBRARIES    ${PYTHON_LIBRARIES}    ${Boost_PYTHON_LIBRARY}
+            CACHE INTERNAL "Linker flags for Boost+Python")
+      endif(BoostPython_FromCMake)
+    endif(PYTHONLIBS_FOUND)
+  endif(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES)
 
-if(BoostPython_INCLUDE_DIRS AND BoostPython_LIBRARIES)
-  set(BoostPython_FOUND TRUE)
-endif(BoostPython_INCLUDE_DIRS AND BoostPython_LIBRARIES)
+  if(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES)
+    # Second try: try pkg-config way
+    find_package(PkgConfig)
+    if(PKG_CONFIG_FOUND)
+      set(PYTHON_VERSIONS "python;python2.7;python2.6;python2.5;python2.4;python2.3;python2.2")
+      foreach(_pyver ${PYTHON_VERSIONS})
+        if(NOT BoostPython_INCLUDES OR NOT BoostPython_LIBS)
+          pkg_check_modules(${_pyver} QUIET ${_pyver})
+          if(${_pyver}_FOUND)
+            cmake_push_check_state()
+            set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${${_pyver}_INCLUDE_DIRS})
+            set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${${_pyver}_LDFLAGS})
+            BoostPython_TRY_COMPILE(BoostPython_${_pyver})
+            cmake_pop_check_state()
 
-if(BoostPython_FOUND)
-  if(NOT BoostPython_FIND_QUIETLY)
-    message(STATUS "Found Boost+Python: libs ${BoostPython_LIBRARIES}, headers ${BoostPython_INCLUDE_DIRS}")
-  endif(NOT BoostPython_FIND_QUIETLY)
-  set(KIG_ENABLE_PYTHON_SCRIPTING 1)
-else (BoostPython_FOUND)
-  if (BoostPython_FIND_REQUIRED)
-    message(FATAL_ERROR "Could NOT find Boost+Python")
-  endif(BoostPython_FIND_REQUIRED)
-  set(KIG_ENABLE_PYTHON_SCRIPTING 0)
-endif(BoostPython_FOUND)
+            if(BoostPython_${_pyver})
+              set(BoostPython_COMPILES Yes)
+              set(BoostPython_INCLUDE_DIRS ${${_pyver}_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS}
+                  CACHE INTERNAL "Includes search path for Boost+Python")
+              set(BoostPython_LIBRARIES    ${${_pyver}_LDFLAGS}      ${Boost_PYTHON_LIBRARY}
+                  CACHE INTERNAL "Linker flags for Boost+Python")
+            endif(BoostPython_${_pyver})
+
+          endif(${_pyver}_FOUND)
+        endif(NOT BoostPython_INCLUDES OR NOT BoostPython_LIBS)
+      endforeach(_pyver ${PYTHON_VERSIONS})
+    endif(PKG_CONFIG_FOUND)
+  endif(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES )
+endif(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON_FOUND)
+
+cmake_pop_check_state()
+
+find_package_handle_standard_args(BoostPython
+                                  FOUND_VAR BoostPython_FOUND
+                                  REQUIRED_VARS BoostPython_LIBRARIES BoostPython_INCLUDE_DIRS
+                                 )
 
 mark_as_advanced(BoostPython_INCLUDE_DIRS BoostPython_LIBRARIES)
