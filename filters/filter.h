@@ -35,7 +35,6 @@ public:
   static KigFilters* instance();
   KigFilter* find (const QString& mime);
 
-//  bool save ( const KigDocument& data, QTextStream& stream );
   /**
    * saving is always done with the native filter.  We don't support
    * output filters..

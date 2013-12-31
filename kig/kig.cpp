@@ -43,9 +43,13 @@
 #include <kapplication.h>
 #include <assert.h>
 
+#include <KService>
+
 Kig::Kig()
   : KParts::MainWindow(), m_part( 0 )
 {
+  KService::Ptr kigpartService = KService::serviceByDesktopName("kig_part");
+
   setObjectName( QLatin1String( "Kig" ) );
   // setting the configation file
   config = new KConfig( "kigrc" );
@@ -54,37 +58,29 @@ Kig::Kig()
   // then, setup our actions
   setupActions();
 
-  // this routine will find and load our Part.  it finds the Part by
-  // name which is a bad idea usually.. but it's alright in this
-  // case since our Part is made for this Shell
-  KPluginLoader libraryLoader( "kigpart" );
-
-  libraryLoader.setLoadHints( QLibrary::ExportExternalSymbolsHint );
-
-  if ( KPluginFactory* factory = libraryLoader.factory() )
+  if ( kigpartService )
   {
-      // now that the Part is loaded, we cast it to a Part to get
-      // our hands on it
-      m_part = factory->create< KParts::ReadWritePart >( this );
-      if (m_part)
-      {
-	  // tell the KParts::MainWindow that this is indeed the main widget
-	  setCentralWidget(m_part->widget());
+    m_part = kigpartService->createInstance< KParts::ReadWritePart >( this );
+    m_mimeTypes = kigpartService->mimeTypes();
+    if (m_part)
+    {
+      // tell the KParts::MainWindow that this is indeed the main widget
+      setCentralWidget(m_part->widget());
 
-	  // and integrate the part's GUI with the shell's
-	  // FIXME!!! disabling for now as it seems to create a unending loop
-	  createGUI(m_part);
-	  // finally show tip-of-day ( if the user wants it :) )
-	  QTimer::singleShot( 0, this, SLOT( startupTipOfDay() ) );
-      }
+      // and integrate the part's GUI with the shell's
+      createGUI(m_part);
+
+      // finally show tip-of-day ( if the user wants it :) )
+      QTimer::singleShot( 0, this, SLOT( startupTipOfDay() ) );
+    }
   }
   else
   {
-      // if we couldn't find our Part, we exit since the Shell by
-      // itself can't do anything useful
-      KMessageBox::error(this, i18n( "Could not find the necessary Kig library, check your installation." ) );
-      KApplication::exit();
-      return;
+    // if we couldn't find our Part, we exit since the Shell by
+    // itself can't do anything useful
+    KMessageBox::error(this, i18n( "Could not find the necessary Kig library, check your installation." ) );
+    QApplication::exit();
+    return;
   }
 
   // we have drag'n'drop
@@ -230,17 +226,8 @@ void Kig::dropEvent(QDropEvent* e)
 
 void Kig::fileOpen()
 {
-  QString formats =
-     i18n( "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *.seg *.fgeo *.fig)\n"
-           "*.kig|Kig Documents (*.kig)\n"
-           "*.kigz|Compressed Kig Documents (*.kigz)\n"
-           "*.kgeo|KGeo Documents (*.kgeo)\n"
-           "*.seg|KSeg Documents (*.seg)\n"
-           "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
-           "*.fig *.FIG|Cabri Documents (*.fig *.FIG)" );
-
   // this slot is connected to the KStandardAction::open action...
-  QString file_name = KFileDialog::getOpenFileName( KUrl( "kfiledialog:///document" ), formats );
+  QString file_name = KFileDialog::getOpenFileName( KUrl( "kfiledialog:///document" ), m_mimeTypes.join( " " ) );
 
   if (!file_name.isEmpty()) openUrl(file_name);
 }

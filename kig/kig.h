@@ -106,7 +106,7 @@ class Kig : public KParts::MainWindow
   void setupActions();
 
   KParts::ReadWritePart *m_part;
-
+  QStringList m_mimeTypes;
   KRecentFilesAction *m_recentFilesAction;
 
   KConfig* config;
