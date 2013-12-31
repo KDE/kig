@@ -25,6 +25,7 @@
 #include "native-filter.h"
 #include "kseg-filter.h"
 #include "drgeo-filter.h"
+#include "geogebra-filter.h"
 
 #include <kmessagebox.h>
 #include <klocale.h>
@@ -47,6 +48,7 @@ KigFilters::KigFilters()
   mFilters.push_back( KigFilterCabri::instance() );
   mFilters.push_back( KigFilterNative::instance() );
   mFilters.push_back( KigFilterDrgeo::instance() );
+  mFilters.push_back( KigFilterGeogebra::instance() );
 }
 
 KigFilters* KigFilters::instance()

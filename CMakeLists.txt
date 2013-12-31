@@ -161,6 +161,7 @@ set(kigpart_PART_SRCS
    filters/exporter.cc
    filters/filter.cc
    filters/filters-common.cc
+   filters/geogebra-filter.cpp
    filters/imageexporteroptions.cc
    filters/kgeo-filter.cc
    filters/kseg-filter.cc
