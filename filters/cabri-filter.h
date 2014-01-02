@@ -21,6 +21,8 @@
 
 #include "filter.h"
 
+class CabriReader;
+
 /**
  * This is an import filter for the output of the commercial program
  * Cabri ("CAhier de BRouillon Interactif" or something like that),
@@ -43,12 +45,8 @@ public:
 
   bool supportMime ( const QString& mime );
   KigDocument* load ( const QString& fromfile );
-
-  /**
-   * \internal
-   * Used by the CabriReader to report a parse error dialog to the user.
-   */
-  void publicParseError( const QString& file, const QString& text ) const;
+  
+  friend class CabriReader;
 };
 
 #endif

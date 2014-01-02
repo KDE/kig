@@ -125,6 +125,7 @@ protected:
   CabriReader( const KigFilterCabri* filter );
 
   static void initColorMap();
+  void parseError( const QString& explanation = QString() ) const;
 
 public:
   virtual ~CabriReader();
@@ -156,7 +157,7 @@ class CabriReader_v12
 {
 private:
   static void initColorMap();
-  bool readStyles( const QString& file, const QString& s, CabriObject_v12* myobj );
+  bool readStyles( const QString& s, CabriObject_v12* myobj );
 
 public:
   CabriReader_v12( const KigFilterCabri* filter );

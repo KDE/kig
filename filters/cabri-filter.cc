@@ -705,11 +705,6 @@ KigDocument* KigFilterCabri::load( const QString& file )
   return ret;
 }
 
-void KigFilterCabri::publicParseError( const QString& file, const QString& text ) const
-{
-  parseError( file, text );
-}
-
 KigFilterCabri* KigFilterCabri::instance()
 {
   static KigFilterCabri t;

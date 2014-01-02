@@ -78,11 +78,11 @@ void KigFilter::fileNotFound( const QString& file ) const
                             "its permissions", file ) );
 }
 
-void KigFilter::parseError( const QString& file, const QString& explanation ) const
+void KigFilter::parseError( const QString& explanation ) const
 {
   const QString text =
-    i18n( "An error was encountered while parsing the file \"%1\".  It "
-          "cannot be opened.", file );
+    i18n( "An error was encountered while parsing this file.  It "
+          "cannot be opened." );
   const QString title = i18n( "Parse Error" );
 
   if ( explanation.isEmpty() )

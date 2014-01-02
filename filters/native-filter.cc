@@ -299,7 +299,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
           if ( ( !imp ) && !error.isEmpty() )
           {
-            parseError( file, error );
+            parseError( error );
             return 0;
           }
           o = new ObjectConstCalcer( imp );
@@ -462,7 +462,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
           if ( ( !imp ) && !error.isEmpty() )
           {
-            parseError( file, error );
+            parseError( error );
             return 0;
           }
           o = new ObjectConstCalcer( imp );

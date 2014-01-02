@@ -44,7 +44,7 @@ protected:
   ~KigFilterKGeo();
 
   void loadMetrics ( KConfig* );
-  KigDocument* loadObjects ( const QString& file, KConfig* );
+  KigDocument* loadObjects ( KConfig* );
 
   int xMax;
   int yMax;
