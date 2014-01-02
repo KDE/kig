@@ -105,7 +105,7 @@ bool KigFilterNative::supportMime( const QString& mime )
   return mime == "application/x-kig";
 }
 
-KigDocument* KigFilterNative::load( const QString& file )
+KigDocument* KigFilterNative::load( const QString& file)
 {
   QFile ffile( file );
   if ( ! ffile.open( QIODevice::ReadOnly ) )
@@ -166,7 +166,12 @@ KigDocument* KigFilterNative::load( const QString& file )
   // removing temp file
   if ( iscompressed )
     kigdoc.remove();
+  
+  return load( doc );
+}
 
+KigDocument* KigFilterNative::load( const QDomDocument& doc )
+{
   QDomElement main = doc.documentElement();
 
   QString version = main.attribute( "CompatibilityVersion" );
@@ -207,12 +212,12 @@ KigDocument* KigFilterNative::load( const QString& file )
     return 0;
   }
   else if ( major == 0 && minor <= 6 )
-    return load04( file, main );
+    return load04( main );
   else
-    return load07( file, main );
+    return load07( main );
 }
 
-KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& docelem )
+KigDocument* KigFilterNative::load04( const QDomElement& docelem )
 {
   bool ok = true;
 
@@ -390,7 +395,7 @@ static const char* obsoletemessage = I18N_NOOP(
                            "which is obsolete, you should save the construction with "
                            "a different name and check that it works as expected." );
 
-KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& docelem )
+KigDocument* KigFilterNative::load07( const QDomElement& docelem )
 {
   KigDocument* ret = new KigDocument();
 
