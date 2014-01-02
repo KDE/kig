@@ -70,7 +70,7 @@ protected:
   // shows errors to the user..
   void fileNotFound( const QString& file ) const;
   void parseError( const QString& explanation = QString() ) const;
-  void notSupported( const QString& file, const QString& explanation ) const;
+  void notSupported( const QString& explanation ) const;
   void warning( const QString& explanation ) const;
 public:
   KigFilter();

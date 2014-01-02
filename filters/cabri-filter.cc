@@ -154,7 +154,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
   {
     if ( s.startsWith( "#FIG " ) )
     {
-      notSupported( file, i18n( "This is an XFig file, not a Cabri figure." ) );
+      notSupported( i18n( "This is an XFig file, not a Cabri figure." ) );
       return 0;
     }
     else
@@ -198,10 +198,9 @@ KigDocument* KigFilterCabri::load( const QString& file )
   }
   else
   {
-    notSupported( file,
-        i18n( "This Cabri version (%1) is not supported yet.\n"
-              "Please contact the Kig authors to help supporting this Cabri "
-              "version.", header.cap( 3 ) ) );
+    notSupported( i18n( "This Cabri version (%1) is not supported yet.\n"
+                        "Please contact the Kig authors to help supporting this Cabri "
+                        "version.", header.cap( 3 ) ) );
     return 0;
   }
 
@@ -654,8 +653,8 @@ KigDocument* KigFilterCabri::load( const QString& file )
     }
     else
     {
-      notSupported( file, i18n( "This Cabri file contains a \"%1\" object, "
-                                "which Kig does not currently support.", QString( obj->type ) ) );
+      notSupported( i18n( "This Cabri file contains a \"%1\" object, "
+                          "which Kig does not currently support.", QString( obj->type ) ) );
       return 0;
     }
 #ifdef CABRI_DEBUG

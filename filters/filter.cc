@@ -91,10 +91,10 @@ void KigFilter::parseError( const QString& explanation ) const
     KMessageBox::detailedSorry( 0, text, explanation, title );
 }
 
-void KigFilter::notSupported( const QString& file, const QString& explanation ) const
+void KigFilter::notSupported( const QString& explanation ) const
 {
   KMessageBox::detailedSorry( 0,
-                              i18n( "Kig cannot open the file \"%1\".", file ),
+                              i18n( "Kig cannot open this file." ),
                               explanation, i18n( "Not Supported" ) );
 }
 
