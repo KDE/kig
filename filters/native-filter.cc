@@ -793,10 +793,3 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
   // we should never reach this point...
   return false;
 }
-
-/*
-bool KigFilterNative::save( const KigDocument& data, QTextStream& stream )
-{
-  return save07( data, stream );
-}
-*/
