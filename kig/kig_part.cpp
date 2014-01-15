@@ -413,13 +413,10 @@ bool KigPart::openFile()
     KMessageBox::sorry
       (
         widget(),
-        i18n( "You tried to open a document of type \"%1\"; unfortunately, "
-              "Kig does not support this format. If you think the format in "
-              "question would be worth implementing support for, you can "
-              "always ask us nicely on mailto:pino@kde.org "
-              "or do the work yourself and send me a patch."
+        i18n( "You tried to open a document of type \"%1\"; unfortunately, Kig does not support this format. If you think the format in question would be worth implementing support for, you can open a feature request in <a href=\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist\">KDE's bug tracking system</a>"
           , mimeType->name()),
-        i18n( "Format Not Supported" )
+        i18n( "Format Not Supported" ),
+        KMessageBox::Notify | KMessageBox::AllowLink
         );
     return false;
   };
