@@ -141,12 +141,16 @@ void KigFilterGeogebra::endElement()
     case KigFilterGeogebra::ReadingObject:
       if ( m_currentObject )
       {
-	ObjectTypeCalcer * oc = new ObjectTypeCalcer( m_currentObject, m_currentArgStack );
-	ObjectHolder * oh = new ObjectHolder( oc );
-	
-	oc->calc( *m_document );
-	m_objectMap.insert( m_currentObjectLabel, oc );
-	m_document->addObject( oh );
+	if ( !m_objectMap.contains( m_currentObjectLabel ) )
+	{
+	  ObjectTypeCalcer * oc = new ObjectTypeCalcer( m_currentObject, m_currentArgStack );
+	  ObjectHolder * oh = new ObjectHolder( oc );
+	  
+	  oc->calc( *m_document );
+	  m_objectMap.insert( m_currentObjectLabel, oc );
+	  m_document->addObject( oh );
+	}
+
 	m_currentArgStack.clear();
 	m_currentObject = nullptr;
       } 
