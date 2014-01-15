@@ -207,6 +207,14 @@ void KigFilterGeogebra::startElement(const QXmlName& name)
       {
 	m_currentObject = SegmentABType::instance();
       }
+      else if( name.localName( m_np ) == QLatin1String( "RayAB" ) )
+      {
+	m_currentObject = RayABType::instance();
+      }
+      else if( name.localName( m_np ) == QLatin1String( "Midpoint" ) )
+      {
+	m_currentObject = MidPointType::instance();
+      }
       
       break;
     case KigFilterGeogebra::ReadingArguments:

@@ -10,14 +10,18 @@
     </FixedPoint>
   </xsl:template>
 
-  <xsl:template match="element" name="segmentTemplate">
+  <xsl:template match="element" name="abTemplate">
+    <xsl:param name="abType" as="xs:string"/>
     <xsl:variable name="label" as="xs:string" select="./output/@a0"/>
     <xsl:variable name="A" as="xs:string" select="./input/@a0"/>
     <xsl:variable name="B" as="xs:string" select="./input/@a1"/>
-    <SegmentAB label="{$label}">
+    <xsl:element name="{$abType}">
+      <xsl:attribute name="label" type="xs:string">
+	<xsl:value-of select="$label"/>
+      </xsl:attribute>
       <Parent label="{$A}"/>
       <Parent label="{$B}"/>
-    </SegmentAB>
+    </xsl:element>
   </xsl:template>
 
   <xsl:template match="/geogebra/construction">
@@ -28,7 +32,24 @@
             <xsl:call-template name="pointTemplate"/>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Segment')">
-            <xsl:call-template name="segmentTemplate"/>
+            <xsl:call-template name="abTemplate">
+	      <xsl:with-param name="abType" select="'SegmentAB'"/>
+	    </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Line')">
+            <xsl:call-template name="abTemplate">
+	      <xsl:with-param name="abType" select="'LineAB'"/>
+	    </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Ray')">
+            <xsl:call-template name="abTemplate">
+	      <xsl:with-param name="abType" select="'RayAB'"/>
+	    </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Midpoint')">
+            <xsl:call-template name="abTemplate">
+	      <xsl:with-param name="abType" select="'Midpoint'"/>
+	    </xsl:call-template>
           </xsl:when>
         </xsl:choose>
       </xsl:for-each>
