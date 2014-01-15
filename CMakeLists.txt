@@ -58,6 +58,16 @@ macro_log_feature(
    ""
 )
 
+macro_log_feature(
+   QT_QTXMLPATTERNS_FOUND
+   "QtXmlPatterns"
+   "Kig uses the XML Patterns module in Qt to support Geogebra files"
+   "http://qt-project.org/"
+   FALSE
+   "4.8.5"
+   ""
+)
+
 macro_display_feature_log()
 
 include_directories( ${CMAKE_SOURCE_DIR}/modes )
@@ -165,7 +175,6 @@ set(kigpart_PART_SRCS
    filters/exporter.cc
    filters/filter.cc
    filters/filters-common.cc
-   filters/geogebra-filter.cpp
    filters/imageexporteroptions.cc
    filters/kgeo-filter.cc
    filters/kseg-filter.cc
@@ -181,6 +190,12 @@ set(kigpart_PART_SRCS
    kig/kig_part.cpp
    kig/kig_view.cpp
 )
+
+if (QT_QTXMLPATTERNS_FOUND)
+  set(kigpart_PART_SRCS ${kigpart_PART_SRCS} filters/geogebra-filter.cpp)
+  qt4_add_resources(kigpart_PART_SRCS ${CMAKE_SOURCE_DIR}/filters/geogebra.qrc)
+  include_directories(${QT_QTXMLPATTERNS_INCLUDE_DIRS})
+endif(QT_QTXMLPATTERNS_FOUND)
 
 kde4_add_ui_files(kigpart_PART_SRCS
    modes/typeswidget.ui
@@ -213,6 +228,10 @@ target_link_libraries(kigpart ${KDE4_KPARTS_LIBS} ${KDE4_KUTILS_LIBS} )
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE4_KTEXTEDITOR_LIBS})
 endif(BoostPython_FOUND)
+
+if (QT_QTXMLPATTERNS_FOUND)
+  target_link_libraries(kigpart ${QT_QTXMLPATTERNS_LIBRARY})
+endif(QT_QTXMLPATTERNS_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 

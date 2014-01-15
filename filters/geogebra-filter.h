@@ -25,16 +25,53 @@
 
 #include "filter.h"
 
-class KigFilterGeogebra : public KigFilter
+#include <QMap>
+#include <QAbstractXmlReceiver>
+#include <QXmlNamePool>
+
+class ObjectCalcer;
+class ObjectType;
+
+class KigFilterGeogebra : public KigFilter, public QAbstractXmlReceiver
 {
 public:
   static KigFilterGeogebra* instance();
   virtual KigDocument* load(const QString& fromfile);
   virtual bool supportMime(const QString& mime);
   
+  // QAbstractXmlReceiver implementation
+  virtual void atomicValue(const QVariant &);
+  virtual void attribute(const QXmlName & name, const QStringRef & value);
+  virtual void characters(const QStringRef &);
+  virtual void comment(const QString &);
+  virtual void endDocument();
+  virtual void endElement();
+  virtual void endOfSequence();
+  virtual void namespaceBinding(const QXmlName &);
+  virtual void processingInstruction(const QXmlName &, const QString &);
+  virtual void startDocument();
+  virtual void startElement(const QXmlName & name);
+  virtual void startOfSequence();
+  
 protected:
   KigFilterGeogebra() {}
   ~KigFilterGeogebra() {}
+  
+private:
+  enum State
+  {
+    ReadingDouble,
+    ReadingObject,
+    ReadingArguments
+  };
+  
+  State m_currentState;
+  QMap<QByteArray, ObjectCalcer *> m_objectMap;
+  std::vector<ObjectCalcer *> m_currentArgStack;
+  const ObjectType * m_currentObject;
+  QByteArray m_currentObjectLabel;
+  KigDocument * m_document;
+  QXmlNamePool m_np;
 };
 
 #endif // KIGFILTERGEOGEBRA_H
