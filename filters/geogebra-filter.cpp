@@ -24,11 +24,12 @@
 
 #include <kig/kig_document.h>
 #include <objects/object_factory.h>
-#include <objects/point_type.h>
 #include <objects/object_calcer.h>
 #include <objects/object_holder.h>
 #include <objects/bogus_imp.h>
+#include <objects/point_type.h>
 #include <objects/line_type.h>
+#include <objects/circle_type.h>
 
 #include <KZip>
 #include <KDebug>
@@ -218,6 +219,18 @@ void KigFilterGeogebra::startElement(const QXmlName& name)
       else if( name.localName( m_np ) == QLatin1String( "Midpoint" ) )
       {
 	m_currentObject = MidPointType::instance();
+      }
+      else if( name.localName( m_np ) == QLatin1String( "LinePerpend" ) )
+      {
+	m_currentObject = LinePerpendLPType::instance();
+      }
+      else if( name.localName( m_np ) == QLatin1String( "CircleBCPType" ) )
+      {
+	m_currentObject = CircleBCPType::instance();
+      }
+      else if( name.localName( m_np ) == QLatin1String( "CircleBTPType" ) )
+      {
+	m_currentObject = CircleBTPType::instance();
       }
       
       break;
