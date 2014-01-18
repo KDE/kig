@@ -1,32 +1,11 @@
-
-
-
-
-########### next target ###############
-
 set(kfile_drgeo_PART_SRCS kfile_drgeo.cpp )
-
-
-kde4_add_plugin(kfile_drgeo ${kfile_drgeo_PART_SRCS})
-
-
-
-target_link_libraries(kfile_drgeo  ${KDE4_KIO_LIBS} ${QT_QTXML_LIBRARY} )
-
+add_library(kfile_drgeo ${kfile_drgeo_PART_SRCS} MODULE)
+target_link_libraries(kfile_drgeo KF5::KIO ${QT_QTXML_LIBRARY} )
 install(TARGETS kfile_drgeo DESTINATION ${PLUGIN_INSTALL_DIR})
 
-
-########### next target ###############
-
 set(kfile_kig_PART_SRCS kfile_kig.cpp )
-
-
-kde4_add_plugin(kfile_kig ${kfile_kig_PART_SRCS})
-
-
-
-target_link_libraries(kfile_kig  ${KDE4_KIO_LIBS} ${QT_QTXML_LIBRARY} )
-
+add_library(kfile_kig ${kfile_kig_PART_SRCS} MODULE)
+add_library(kfile_kig KF5::KIO ${QT_QTXML_LIBRARY} )
 install(TARGETS kfile_kig DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
