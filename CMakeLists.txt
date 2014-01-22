@@ -3,6 +3,7 @@ project(kig)
 cmake_minimum_required(VERSION 2.8.12)
 
 find_package(ECM REQUIRED NO_MODULE)
+find_package(KF5Parts)
 find_package(KF5DocTools)
 find_package(KF5KDE4Support)
 
@@ -12,6 +13,7 @@ find_package(KF5ItemModels)
 
 set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
+# TODO Figure this out for Frameworks
 # search packages used by KDE
 if(WIN32)
   find_package(KDEWIN32 REQUIRED)
@@ -34,7 +36,7 @@ include(KDECMakeSettings)
 include(FeatureSummary)
 
 add_definitions (${QT_DEFINITIONS} ${KDE5_DEFINITIONS} -DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-include_directories (${QDBUS_INCLUDE_DIRS}  ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE5_INCLUDES})
+include_directories (${Qt5Gui_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE5_INCLUDES})
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -215,7 +217,7 @@ endif(BoostPython_FOUND)
 
 add_library(kigpart MODULE ${kigpart_PART_SRCS})
 
-target_link_libraries(kigpart ${KDE5_KPARTS_LIBS} ${KDE5_KUTILS_LIBS} )
+target_link_libraries(kigpart KF5::Parts Qt5::Gui ${KDE5_KUTILS_LIBS} )
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE5_KTEXTEDITOR_LIBS})
 endif(BoostPython_FOUND)
