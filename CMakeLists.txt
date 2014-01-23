@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 2.8.12)
 find_package(ECM REQUIRED NO_MODULE)
 find_package(KF5Parts)
 find_package(KF5DocTools)
+find_package(KF5I18n)
 find_package(KF5KDE4Support)
 
 # Needed for unit tests
@@ -217,7 +218,7 @@ endif(BoostPython_FOUND)
 
 add_library(kigpart MODULE ${kigpart_PART_SRCS})
 
-target_link_libraries(kigpart KF5::Parts Qt5::Gui ${KDE5_KUTILS_LIBS} )
+target_link_libraries(kigpart KF5::Parts KF5::I18n Qt5::Gui ${KDE5_KUTILS_LIBS} )
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE5_KTEXTEDITOR_LIBS})
 endif(BoostPython_FOUND)
