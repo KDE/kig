@@ -45,7 +45,7 @@ KigMode::~KigMode()
 }
 
 KigMode::KigMode( KigPart& d )
-  : mdoc( d )
+  : mdoc( d ), mevloop( 0 )
 {
 }
 
