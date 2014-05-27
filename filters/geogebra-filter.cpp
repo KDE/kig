@@ -52,21 +52,21 @@ bool KigFilterGeogebra::supportMime( const QString& mime )
 KigDocument* KigFilterGeogebra::load( const QString& sFrom )
 {
   KZip geogebraFile( sFrom );
-  
+
   m_document = new KigDocument();
-  
-  if ( geogebraFile.open(QIODevice::ReadOnly) )
+
+  if ( geogebraFile.open( QIODevice::ReadOnly ) )
   {
     const KZipFileEntry* geogebraXMLEntry = dynamic_cast<const KZipFileEntry*>( geogebraFile.directory()->entry( "geogebra.xml" ) );
-    
+
     if ( geogebraXMLEntry )
     {
       QXmlQuery geogebraXSLT( QXmlQuery::XSLT20, m_np );
       const QString encodedData = QString::fromUtf8( geogebraXMLEntry->data().constData() );
       QFile queryDevice( ":/kig/geogebra/geogebra.xsl" );
-      
+
       m_currentState = KigFilterGeogebra::ReadingObject;
-      
+
       queryDevice.open( QFile::ReadOnly );
       geogebraXSLT.setFocus( encodedData );
       geogebraXSLT.setQuery( &queryDevice );
@@ -77,16 +77,16 @@ KigDocument* KigFilterGeogebra::load( const QString& sFrom )
   {
     kWarning() << "Failed to open zip archive";
   }
-  
+
   return m_document;
 }
 
-void KigFilterGeogebra::atomicValue(const QVariant&)
+void KigFilterGeogebra::atomicValue( const QVariant& )
 {
   // I wish I could use this...
 }
 
-void KigFilterGeogebra::attribute(const QXmlName& name, const QStringRef& value)
+void KigFilterGeogebra::attribute( const QXmlName& name, const QStringRef& value )
 {
   if( name.localName( m_np ) == QLatin1String( "label" ) )
   {
@@ -94,40 +94,41 @@ void KigFilterGeogebra::attribute(const QXmlName& name, const QStringRef& value)
 
     switch( m_currentState )
     {
-      case KigFilterGeogebra::ReadingObject:
-	m_currentObjectLabel = value.toAscii();
-	// There must be a better place for this
-	m_currentState = KigFilterGeogebra::ReadingArguments;
-	
-	break;
-      case KigFilterGeogebra::ReadingArguments:
-        if(m_objectMap.contains(objectLabel))
-        {
-            m_currentArgStack.push_back(m_objectMap[objectLabel]);
-        }
-        else {
-            parseError( i18n( "Referenced object %1 does not exist", value.toString() ) );
-        }
+    case KigFilterGeogebra::ReadingObject:
+      m_currentObjectLabel = value.toAscii();
+      // There must be a better place for this
+      m_currentState = KigFilterGeogebra::ReadingArguments;
 
-        break;
-      default:
-	break;
+      break;
+    case KigFilterGeogebra::ReadingArguments:
+      if( m_objectMap.contains( objectLabel ) )
+      {
+        m_currentArgStack.push_back( m_objectMap[objectLabel] );
+      }
+      else
+      {
+        parseError( i18n( "Referenced object %1 does not exist", value.toString() ) );
+      }
+
+      break;
+    default:
+      break;
     }
   }
-  else if ( name.localName(m_np) == QLatin1String("value") )
+  else if ( name.localName( m_np ) == QLatin1String( "value" ) )
   {
     Q_ASSERT( m_currentState == ReadingDouble );
     DoubleImp * doubleImp = new DoubleImp( value.toString().toDouble() );
-    
+
     m_currentArgStack.push_back( new ObjectConstCalcer( doubleImp ) );
   }
 }
 
-void KigFilterGeogebra::characters(const QStringRef&)
+void KigFilterGeogebra::characters( const QStringRef& )
 {
 }
 
-void KigFilterGeogebra::comment(const QString&)
+void KigFilterGeogebra::comment( const QString& )
 {
 }
 
@@ -137,37 +138,37 @@ void KigFilterGeogebra::endDocument()
 
 void KigFilterGeogebra::endElement()
 {
-  switch(m_currentState)
+  switch( m_currentState )
   {
-    case KigFilterGeogebra::ReadingObject:
-      if ( m_currentObject )
+  case KigFilterGeogebra::ReadingObject:
+    if ( m_currentObject )
+    {
+      if ( !m_objectMap.contains( m_currentObjectLabel ) )
       {
-	if ( !m_objectMap.contains( m_currentObjectLabel ) )
-	{
-	  ObjectTypeCalcer * oc = new ObjectTypeCalcer( m_currentObject, m_currentArgStack );
-	  ObjectHolder * oh = new ObjectHolder( oc );
-	  
-	  oc->calc( *m_document );
-	  m_objectMap.insert( m_currentObjectLabel, oc );
-	  m_document->addObject( oh );
-	}
+        ObjectTypeCalcer * oc = new ObjectTypeCalcer( m_currentObject, m_currentArgStack );
+        ObjectHolder * oh = new ObjectHolder( oc );
 
-	m_currentArgStack.clear();
-	m_currentObject = nullptr;
-      } 
-      
-      break;
-    case KigFilterGeogebra::ReadingArguments:
-    case KigFilterGeogebra::ReadingDouble:
-      /* We do this because every argument may be the
-       * last argument of the stack. If it is not, then
-       * startElement() will reset this to ReadingArguments
-       */
-      m_currentState = KigFilterGeogebra::ReadingObject;
-      
-      break;
-    default:
-      break;
+        oc->calc( *m_document );
+        m_objectMap.insert( m_currentObjectLabel, oc );
+        m_document->addObject( oh );
+      }
+
+      m_currentArgStack.clear();
+      m_currentObject = nullptr;
+    }
+
+    break;
+  case KigFilterGeogebra::ReadingArguments:
+  case KigFilterGeogebra::ReadingDouble:
+    /* We do this because every argument may be the
+     * last argument of the stack. If it is not, then
+     * startElement() will reset this to ReadingArguments
+     */
+    m_currentState = KigFilterGeogebra::ReadingObject;
+
+    break;
+  default:
+    break;
   }
 }
 
@@ -175,11 +176,11 @@ void KigFilterGeogebra::endOfSequence()
 {
 }
 
-void KigFilterGeogebra::namespaceBinding(const QXmlName&)
+void KigFilterGeogebra::namespaceBinding( const QXmlName& )
 {
 }
 
-void KigFilterGeogebra::processingInstruction(const QXmlName&, const QString&)
+void KigFilterGeogebra::processingInstruction( const QXmlName&, const QString& )
 {
 }
 
@@ -187,62 +188,62 @@ void KigFilterGeogebra::startDocument()
 {
 }
 
-void KigFilterGeogebra::startElement(const QXmlName& name)
+void KigFilterGeogebra::startElement( const QXmlName& name )
 {
   switch( m_currentState )
   {
-    case KigFilterGeogebra::ReadingObject:
-      if( m_currentObject )
-      {
-	// We are already building an object
-	m_currentState = KigFilterGeogebra::ReadingArguments;
-	startElement( name );
-	return;
-      }
-      
-      if( name.localName( m_np ) == QLatin1String( "FixedPoint" ) )
-      {
-	m_currentObject = FixedPointType::instance();
-      }
-      else if( name.localName( m_np ) == QLatin1String( "LineAB" ) )
-      {
-	m_currentObject = LineABType::instance();
-      }
-      else if( name.localName( m_np ) == QLatin1String( "SegmentAB" ) )
-      {
-	m_currentObject = SegmentABType::instance();
-      }
-      else if( name.localName( m_np ) == QLatin1String( "RayAB" ) )
-      {
-	m_currentObject = RayABType::instance();
-      }
-      else if( name.localName( m_np ) == QLatin1String( "Midpoint" ) )
-      {
-	m_currentObject = MidPointType::instance();
-      }
-      else if( name.localName( m_np ) == QLatin1String( "LinePerpend" ) )
-      {
-	m_currentObject = LinePerpendLPType::instance();
-      }
-      else if( name.localName( m_np ) == QLatin1String( "CircleBCPType" ) )
-      {
-	m_currentObject = CircleBCPType::instance();
-      }
-      else if( name.localName( m_np ) == QLatin1String( "CircleBTPType" ) )
-      {
-	m_currentObject = CircleBTPType::instance();
-      }
-      
-      break;
-    case KigFilterGeogebra::ReadingArguments:
-      if ( name.localName( m_np ) == QLatin1String( "Double" ) )
-      {
-	m_currentState = KigFilterGeogebra::ReadingDouble;
-      }
+  case KigFilterGeogebra::ReadingObject:
+    if( m_currentObject )
+    {
+      // We are already building an object
+      m_currentState = KigFilterGeogebra::ReadingArguments;
+      startElement( name );
+      return;
+    }
 
-      break;
-    default:
-      break;
+    if( name.localName( m_np ) == QLatin1String( "FixedPoint" ) )
+    {
+      m_currentObject = FixedPointType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "LineAB" ) )
+    {
+      m_currentObject = LineABType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "SegmentAB" ) )
+    {
+      m_currentObject = SegmentABType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "RayAB" ) )
+    {
+      m_currentObject = RayABType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "Midpoint" ) )
+    {
+      m_currentObject = MidPointType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "LinePerpend" ) )
+    {
+      m_currentObject = LinePerpendLPType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "CircleBCPType" ) )
+    {
+      m_currentObject = CircleBCPType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "CircleBTPType" ) )
+    {
+      m_currentObject = CircleBTPType::instance();
+    }
+
+    break;
+  case KigFilterGeogebra::ReadingArguments:
+    if ( name.localName( m_np ) == QLatin1String( "Double" ) )
+    {
+      m_currentState = KigFilterGeogebra::ReadingDouble;
+    }
+
+    break;
+  default:
+    break;
   }
 }
 
