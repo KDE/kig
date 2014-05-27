@@ -93,6 +93,13 @@ protected:
    */
   virtual bool saveFile();
 
+  /**
+   * KigPart cannot be safely destroyed if it's in a nested event loop
+   * (construct mode). As a workaround, call this first so it can cancel the
+   * construction.
+   */
+  virtual bool queryClose();
+
 public:
   void emitStatusBarText( const QString& text );
   void redrawScreen();

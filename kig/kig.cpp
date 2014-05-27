@@ -187,25 +187,7 @@ void Kig::applyNewToolbarConfig()
 
 bool Kig::queryClose()
 {
-  if (!m_part->isReadWrite() || !m_part->isModified()) return true;
-  switch( KMessageBox::warningYesNoCancel
-	  (
-	   widget(),
-	   i18n("Save changes to document %1?", m_part->url().toLocalFile()),
-	   i18n("Save Changes?"),KStandardGuiItem::save(),KStandardGuiItem::discard()
-	   ))
-    {
-    case KMessageBox::Yes:
-      if (m_part->save()) return true;
-      else return false;
-      break;
-    case KMessageBox::No:
-      return true;
-      break;
-    default: // cancel
-      return false;
-      break;
-    };
+  return m_part->queryClose();
 }
 
 void Kig::dragEnterEvent(QDragEnterEvent* e)

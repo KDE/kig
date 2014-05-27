@@ -473,6 +473,19 @@ bool KigPart::saveFile()
   return false;
 }
 
+bool KigPart::queryClose()
+{
+  if ( KParts::ReadWritePart::queryClose() )
+  {
+    if ( mode()->eventLoop() != 0 )
+    {
+      cancelConstruction();
+    }
+    return true;
+  }
+  return false;
+}
+
 void KigPart::addObject(ObjectHolder* o)
 {
   if ( !misGroupingObjects )
