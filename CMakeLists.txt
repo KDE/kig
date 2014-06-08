@@ -44,8 +44,10 @@ add_subdirectory( macros )
 #add_subdirectory( kfile )
 add_subdirectory( data )
 add_subdirectory( pykig )
+
 if(BoostPython_FOUND)
   add_subdirectory( scripting )
+  add_definitions(-DKIG_ENABLE_PYTHON_SCRIPTING)
 endif(BoostPython_FOUND)
 
 macro_log_feature(
@@ -225,6 +227,7 @@ endif(BoostPython_FOUND)
 kde4_add_plugin(kigpart ${kigpart_PART_SRCS})
 
 target_link_libraries(kigpart ${KDE4_KPARTS_LIBS} ${KDE4_KUTILS_LIBS} )
+
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE4_KTEXTEDITOR_LIBS})
 endif(BoostPython_FOUND)
