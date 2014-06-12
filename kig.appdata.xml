@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<component type="desktop">
+  <id>kig.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Kig</name>
+  <summary>Interactive Geometry</summary>
+  <description>
+    <p>Kig is an interactive mathematics software for learning and teaching geometry. It allows to explore mathematical figures and concepts using the computer and also can serve as a drawing tool for mathematical figures. Constructions can be made with points, vectors, lines, and polygons and all elements can be modified directly by using the mouse. Kig helps teachers and students to make conjectures and to understand how to prove geometric theorems.</p>
+  </description>
+  <url type="homepage">http://edu.kde.org/kig/</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kig</url>
+  <url type="help">http://docs.kde.org/stable/en/kdeedu/kig/index.html</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://kde.org/images/screenshots/kig.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+  <provides>
+    <binary>kig</binary>
+  </provides>
+</component>
