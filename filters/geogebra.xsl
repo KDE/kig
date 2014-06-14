@@ -72,6 +72,26 @@
 	      </xsl:when>
 	    </xsl:choose>
           </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Parabola')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'ParabolaBDPType'"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Ellipse')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'EllipseBFFPType'"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Hyperbola')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'HyperbolaBFFPType'"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Conic')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'ConicB5PType'"/>
+            </xsl:call-template>
+          </xsl:when>
 	</xsl:choose>
       </xsl:for-each>
     </Kig>

@@ -30,6 +30,7 @@
 #include <objects/point_type.h>
 #include <objects/line_type.h>
 #include <objects/circle_type.h>
+#include <objects/conic_types.h>
 
 #include <KZip>
 #include <KDebug>
@@ -232,6 +233,22 @@ void KigFilterGeogebra::startElement( const QXmlName& name )
     else if( name.localName( m_np ) == QLatin1String( "CircleBTPType" ) )
     {
       m_currentObject = CircleBTPType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "ParabolaBDPType" ) )
+    {
+      m_currentObject = ParabolaBDPType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "EllipseBFFPType" ) )
+    {
+      m_currentObject = EllipseBFFPType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "HyperbolaBFFPType" ) )
+    {
+      m_currentObject = HyperbolaBFFPType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "ConicB5PType" ) )
+    {
+      m_currentObject = ConicB5PType::instance();
     }
 
     break;
