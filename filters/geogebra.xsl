@@ -39,9 +39,20 @@
 	    </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Line')">
-            <xsl:call-template name="argsTemplate">
-	      <xsl:with-param name="objectType" select="'LineAB'"/>
-	    </xsl:call-template>
+            <xsl:variable name="labelInput1" select="./input/@a0"/>
+            <xsl:variable name="labelInput2" select="./input/@a1"/>
+            <xsl:variable name="typeInput2" select="../command[output/@a0=current()/$labelInput1]/@name"/>
+            <xsl:variable name="typeInput1" select="../command[output/@a0=current()/$labelInput2]/@name"/>
+            <xsl:if test="($typeInput1='Line' or $typeInput2='Line')">
+              <xsl:call-template name="argsTemplate">
+                <xsl:with-param name="objectType" select="'LineParallelLPType'"/>
+              </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="not($typeInput1='Line' or $typeInput2='Line')">
+              <xsl:call-template name="argsTemplate">
+                <xsl:with-param name="objectType" select="'LineAB'"/>
+              </xsl:call-template>
+            </xsl:if>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Ray')">
             <xsl:call-template name="argsTemplate">

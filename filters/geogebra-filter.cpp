@@ -210,6 +210,10 @@ void KigFilterGeogebra::startElement( const QXmlName& name )
     {
       m_currentObject = LineABType::instance();
     }
+    else if( name.localName( m_np ) == QLatin1String( "LineParallelLPType" ) )
+    {
+      m_currentObject = LineParallelLPType::instance();
+    }
     else if( name.localName( m_np ) == QLatin1String( "SegmentAB" ) )
     {
       m_currentObject = SegmentABType::instance();
