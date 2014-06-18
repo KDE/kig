@@ -92,6 +92,8 @@ void KigFilterGeogebra::attribute( const QXmlName& name, const QStringRef& value
   if( name.localName( m_np ) == QLatin1String( "label" ) )
   {
     const QByteArray objectLabel = value.toAscii();
+    bool isDoubleValue;
+    const double dblval = value.toString().toDouble( &isDoubleValue );
 
     switch( m_currentState )
     {
@@ -102,7 +104,21 @@ void KigFilterGeogebra::attribute( const QXmlName& name, const QStringRef& value
 
       break;
     case KigFilterGeogebra::ReadingArguments:
-      if( m_objectMap.contains( objectLabel ) )
+      if( isDoubleValue )
+      {
+        /* This is to handle the circle-point-radius (and similar) type of Geogebra objects.
+         * <command name="Circle">
+         * <input a0="A" a1="3"/>
+         * <output a0="c"/>
+         *
+         * Notice the attribute 'a1' of the 'input' element. The value - '3' is the radius of the circle.
+         * First, we try to convert that value to Double. If the conversion suceeds, we stack a DoubleImp (Calcer)
+         * in the the m_currentArgStack and break. Otherwise, we check the m_objectMap for that label entry.
+         */
+        DoubleImp * doubleImp = new DoubleImp( dblval );
+        m_currentArgStack.push_back( new ObjectConstCalcer( doubleImp ) );
+      }
+      else if( m_objectMap.contains( objectLabel ) )
       {
         m_currentArgStack.push_back( m_objectMap[objectLabel] );
       }
@@ -233,6 +249,10 @@ void KigFilterGeogebra::startElement( const QXmlName& name )
     else if( name.localName( m_np ) == QLatin1String( "CircleBCPType" ) )
     {
       m_currentObject = CircleBCPType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "CircleBPRType" ) )
+    {
+      m_currentObject = CircleBPRType::instance();
     }
     else if( name.localName( m_np ) == QLatin1String( "CircleBTPType" ) )
     {

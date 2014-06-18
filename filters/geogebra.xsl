@@ -72,9 +72,24 @@
           <xsl:when test="(name(.) = 'command') and (./@name = 'Circle')">
 	    <xsl:choose>
 	      <xsl:when test="count(./input/@*) = 2">
-		<xsl:call-template name="argsTemplate">
-		  <xsl:with-param name="objectType" select="'CircleBCPType'"/>
-		</xsl:call-template>
+                <xsl:variable name="labelInput1" select="./input/@a0"/>
+                <xsl:variable name="labelInput2" select="./input/@a1"/>
+                <xsl:variable name="typeInput1" select="../element[@label=current()/$labelInput1]/@type"/>
+                <xsl:variable name="typeInput2" select="../element[@label=current()/$labelInput2]/@type"/>
+                <!-- These tests separate geogebra's circle-center-point type from compass and circle-center-radius types
+                  if both the inputs are of point type then the circle is of circle-center-point type (CircleBCPType),
+                  otherwise (CircleBPRType).
+                  -->
+                <xsl:if test="not($typeInput1='point' and $typeInput2='point')">
+                  <xsl:call-template name="argsTemplate">
+                    <xsl:with-param name="objectType" select="'CircleBPRType'"/>
+                  </xsl:call-template>
+                </xsl:if>
+                <xsl:if test="($typeInput1='point' and $typeInput2='point')">
+                  <xsl:call-template name="argsTemplate">
+                    <xsl:with-param name="objectType" select="'CircleBCPType'"/>
+                  </xsl:call-template>
+                </xsl:if>
 	      </xsl:when>
 	      <xsl:when test="count(./input/@*) = 3">
 		<xsl:call-template name="argsTemplate">
