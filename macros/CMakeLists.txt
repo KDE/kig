@@ -4,7 +4,6 @@ install(FILES
    equitriangle.kigt
    evolute.kigt
    osculating_circle.kigt
-   segment_axis.kigt
    square.kigt
    vector_difference.kigt
    DESTINATION ${DATA_INSTALL_DIR}/kig/builtin-macros)
