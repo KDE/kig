@@ -71,6 +71,14 @@ void setupBuiltinStuff()
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_segment", Qt::Key_S ) );
 
+    // segment axis...
+    c = new SimpleObjectTypeConstructor(
+      SegmentAxisABType::instance(), I18N_NOOP( "Segment Axis" ),
+      I18N_NOOP( "The perpendicular line through a given segment's mid point." ),
+      "segmentaxis" );
+    ctors->add( c );
+    actions->add( new ConstructibleAction( c, "objects_new_segment_axis" ) );
+
     // line by two points..
     c = new SimpleObjectTypeConstructor(
       LineABType::instance(), I18N_NOOP( "Line by Two Points" ),

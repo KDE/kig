@@ -63,6 +63,17 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class SegmentAxisABType
+  : public ObjectABType
+{
+  SegmentAxisABType();
+  ~SegmentAxisABType();
+public:
+  static const SegmentAxisABType* instance();
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class LinePerpendLPType
   : public ObjectLPType
 {

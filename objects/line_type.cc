@@ -127,6 +127,44 @@ ObjectImp* RayABType::calcx( const Coordinate& a, const Coordinate& b ) const
   return new RayImp( a, b );
 }
 
+static const ArgsParser::spec argspecSegmentAxisABType[] =
+{
+  { PointImp::stype(), I18N_NOOP( "Construct the axis of the segment with this and another point" ),
+    I18N_NOOP( "Select the first of the two points..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct the axis of the segment with the previous and this point" ),
+    I18N_NOOP( "Select the second of the two points..." ), true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( SegmentAxisABType );
+
+SegmentAxisABType::SegmentAxisABType()
+  : ObjectABType( "Segment Axis", argspecSegmentAxisABType, 2 )
+{
+}
+
+SegmentAxisABType::~SegmentAxisABType()
+{
+}
+
+const SegmentAxisABType* SegmentAxisABType::instance()
+{
+  static const SegmentAxisABType s;
+  return &s;
+}
+
+ObjectImp* SegmentAxisABType::calcx( const Coordinate& a, const Coordinate& b ) const
+{
+  const Coordinate mp( ( a + b ) / 2 );
+  const Coordinate dir( b - a );
+  const Coordinate perpPoint = calcPointOnPerpend( dir, mp );
+  return new LineImp( mp, perpPoint  );
+}
+
+const ObjectImpType* SegmentAxisABType::resultId() const
+{
+  return LineImp::stype();
+}
+
 LinePerpendLPType* LinePerpendLPType::instance()
 {
   static LinePerpendLPType l;
