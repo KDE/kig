@@ -1,11 +1,34 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <component type="desktop">
   <id>kig.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>Kig</name>
+  <name xml:lang="es">Kig</name>
+  <name xml:lang="nl">Kig</name>
+  <name xml:lang="pt">Kig</name>
+  <name xml:lang="pt-BR">Kig</name>
+  <name xml:lang="sk">Kig</name>
+  <name xml:lang="sv">Kig</name>
+  <name xml:lang="uk">Kig</name>
+  <name xml:lang="x-test">xxKigxx</name>
   <summary>Interactive Geometry</summary>
+  <summary xml:lang="es">Geometría interactiva</summary>
+  <summary xml:lang="nl">Interactieve meetkunde</summary>
+  <summary xml:lang="pt">Geometria Interactiva</summary>
+  <summary xml:lang="pt-BR">Geometria interativa</summary>
+  <summary xml:lang="sk">Interaktívna geometria</summary>
+  <summary xml:lang="sv">Interaktiv geometri</summary>
+  <summary xml:lang="uk">Інтерактивна геометрія</summary>
+  <summary xml:lang="x-test">xxInteractive Geometryxx</summary>
   <description>
     <p>Kig is an interactive mathematics software for learning and teaching geometry. It allows to explore mathematical figures and concepts using the computer and also can serve as a drawing tool for mathematical figures. Constructions can be made with points, vectors, lines, and polygons and all elements can be modified directly by using the mouse. Kig helps teachers and students to make conjectures and to understand how to prove geometric theorems.</p>
+    <p xml:lang="es">Kig es un software matemático interactivo para el aprendizaje y la enseñanza de la geometría. Permite explorar figuras matemáticas y conceptos usando un equipo informático, además de servir como herramienta de dibujo de figuras matemáticas. Puede realizar construcciones con puntos, vectores, líneas y polígonos, y permite modificar todos estos elementos directamente usando el ratón. Kig ayuda a los profesores y a los estudiantes a hacer conjeturas y a entender cómo probar teoremas geométricos.</p>
+    <p xml:lang="pt">O Kig é uma aplicação matemática interactiva para aprender e ensinar geometria. Permite explorar as figuras e conceitos da matemática, usando o computador, e também pode servir como ferramenta de desenho para figuras matemáticas. As construções podem ser feitas com pontos, vectores, linhas e polígonos, podendo todos os elementos ser modificados directamente através do rato. O Kig ajuda os professores e os alunos a tirar conclusões e a compreender como provar teoremas geométricos.</p>
+    <p xml:lang="pt-BR">Kig é um aplicativo de matemática interativo para aprender e ensinar geometria. Ele permite explorar as figuras e conceitos da matemática usando o computador e também pode servir como ferramenta de desenho de figuras matemáticas. As construções podem ser feitas com pontos, vetores, linhas e polígonos, onde todos os elementos podem ser modificados diretamente com o mouse. O Kig ajuda os professores e alunos a tirar conclusões e compreender como provar teoremas geométricos.</p>
+    <p xml:lang="sk">Kig je interaktívny matematický softvér na výuku geometrie. Umožňuje preskúmať matematické objekty a koncepty pomocou počítača a môže slúžiť aj ako kresliaci nástroj pre matematické objekty. Konštrukcie je možné vytvárať pomocou bodov, vektorov, čiar a polygónov a všetky prvky sa dajú meniť priamo pomocou myši. Kig pomáha učiteľom a študentom vytvoriť dohady a pochopiť, ako dokázať geometrické teorémy.</p>
+    <p xml:lang="sv">Kig är en interaktiv matematisk programvara för att lära sig och lära ut geometri. Det möjliggör utforskning av matematiska figurer och begrepp med datorn, och kan också fungera som ett ritverktyg för matematiska figurer. Konstruktioner kan göras av punkter, vektorer, linjer och polygoner, där alla element kan ändras direkt genom att använda musen. Kig hjälper lärare och elever att dra slutsatser och förstå hur man bevisar geometriska teorem.</p>
+    <p xml:lang="uk">Kig — інтерактивне математичне програмне забезпечення для вивчення і викладання геометрії. За його допомогою можна вивчати математичні фігури та поняття на комп’ютері. Також програма може слугувати для створення креслень до геометричних задач. Побудови можна здійснювати на основі точок, векторів, ліній та багатокутників. Усі побудови можна змінювати безпосередньо за допомогою вказівника миші. Kig допомагає викладачам та учням робити припущення та розбиратися у доведенні теорем геометрії.</p>
+    <p xml:lang="x-test">xxKig is an interactive mathematics software for learning and teaching geometry. It allows to explore mathematical figures and concepts using the computer and also can serve as a drawing tool for mathematical figures. Constructions can be made with points, vectors, lines, and polygons and all elements can be modified directly by using the mouse. Kig helps teachers and students to make conjectures and to understand how to prove geometric theorems.xx</p>
   </description>
   <url type="homepage">http://edu.kde.org/kig/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kig</url>
