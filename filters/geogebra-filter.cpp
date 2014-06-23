@@ -31,6 +31,7 @@
 #include <objects/line_type.h>
 #include <objects/circle_type.h>
 #include <objects/conic_types.h>
+#include <objects/arc_type.h>
 
 #include <KZip>
 #include <KDebug>
@@ -257,6 +258,10 @@ void KigFilterGeogebra::startElement( const QXmlName& name )
     else if( name.localName( m_np ) == QLatin1String( "CircleBTPType" ) )
     {
       m_currentObject = CircleBTPType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "ArcBTPType" ) )
+    {
+      m_currentObject = ArcBTPType::instance();
     }
     else if( name.localName( m_np ) == QLatin1String( "ParabolaBDPType" ) )
     {

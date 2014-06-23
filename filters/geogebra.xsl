@@ -98,6 +98,11 @@
 	      </xsl:when>
 	    </xsl:choose>
           </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'CircumcircleArc')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'ArcBTPType'"/>
+            </xsl:call-template>
+          </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Parabola')">
             <xsl:call-template name="argsTemplate">
               <xsl:with-param name="objectType" select="'ParabolaBDPType'"/>
