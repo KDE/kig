@@ -129,38 +129,41 @@ ObjectImp* RayABType::calcx( const Coordinate& a, const Coordinate& b ) const
 
 static const ArgsParser::spec argspecSegmentAxisABType[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct the axis of the segment with this and another point" ),
-    I18N_NOOP( "Select the first of the two points..." ), true },
-  { PointImp::stype(), I18N_NOOP( "Construct the axis of the segment with the previous and this point" ),
-    I18N_NOOP( "Select the second of the two points..." ), true }
+  { SegmentImp::stype(), I18N_NOOP( "Construct the axis of this segment" ),
+    I18N_NOOP( "Select the segment of which you want to draw the axis..." ), true }
 };
 
-KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( SegmentAxisABType );
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( SegmentAxisType );
 
-SegmentAxisABType::SegmentAxisABType()
-  : ObjectABType( "Segment Axis", argspecSegmentAxisABType, 2 )
+SegmentAxisType::SegmentAxisType()
+  : ArgsParserObjectType( "Segment Axis", argspecSegmentAxisABType, 1 )
 {
 }
 
-SegmentAxisABType::~SegmentAxisABType()
+SegmentAxisType::~SegmentAxisType()
 {
 }
 
-const SegmentAxisABType* SegmentAxisABType::instance()
+const SegmentAxisType* SegmentAxisType::instance()
 {
-  static const SegmentAxisABType s;
+  static const SegmentAxisType s;
   return &s;
 }
 
-ObjectImp* SegmentAxisABType::calcx( const Coordinate& a, const Coordinate& b ) const
+ObjectImp* SegmentAxisType::calc( const Args& args, const KigDocument& ) const
 {
-  const Coordinate mp( ( a + b ) / 2 );
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  const SegmentImp * l = static_cast< const SegmentImp * >( args[0] );
+  const Coordinate a = l->data().a;
+  const Coordinate b = l->data().b;
+  const Coordinate mp = ( a + b ) / 2;
   const Coordinate dir( b - a );
   const Coordinate perpPoint = calcPointOnPerpend( dir, mp );
   return new LineImp( mp, perpPoint  );
 }
 
-const ObjectImpType* SegmentAxisABType::resultId() const
+const ObjectImpType* SegmentAxisType::resultId() const
 {
   return LineImp::stype();
 }

@@ -73,7 +73,7 @@ void setupBuiltinStuff()
 
     // segment axis...
     c = new SimpleObjectTypeConstructor(
-      SegmentAxisABType::instance(), I18N_NOOP( "Segment Axis" ),
+      SegmentAxisType::instance(), I18N_NOOP( "Segment Axis" ),
       I18N_NOOP( "The perpendicular line through a given segment's mid point." ),
       "segmentaxis" );
     ctors->add( c );
