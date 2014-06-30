@@ -32,6 +32,10 @@
 #include <objects/circle_type.h>
 #include <objects/conic_types.h>
 #include <objects/arc_type.h>
+#include <objects/polygon_type.h>
+#include <objects/transform_types.h>
+#include <objects/vector_type.h>
+#include <objects/inversion_type.h>
 
 #include <KZip>
 #include <KDebug>
@@ -107,7 +111,7 @@ void KigFilterGeogebra::attribute( const QXmlName& name, const QStringRef& value
     case KigFilterGeogebra::ReadingArguments:
       if( isDoubleValue )
       {
-        /* This is to handle the circle-point-radius (and similar) type of Geogebra objects.
+        /* This is to handle the circle-point-radius, dilate (and similar) type of Geogebra objects.
          * <command name="Circle">
          * <input a0="A" a1="3"/>
          * <output a0="c"/>
@@ -247,6 +251,22 @@ void KigFilterGeogebra::startElement( const QXmlName& name )
     {
       m_currentObject = LinePerpendLPType::instance();
     }
+    else if( name.localName( m_np ) == QLatin1String( "OpenPolygonType" ) )
+    {
+      m_currentObject = OpenPolygonType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "VectorType" ) )
+    {
+      m_currentObject = VectorType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "ConicPolarLineType" ) )
+    {
+      m_currentObject = ConicPolarLineType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "PolygonBNPType" ) )
+    {
+      m_currentObject = PolygonBNPType::instance();
+    }
     else if( name.localName( m_np ) == QLatin1String( "CircleBCPType" ) )
     {
       m_currentObject = CircleBCPType::instance();
@@ -278,6 +298,26 @@ void KigFilterGeogebra::startElement( const QXmlName& name )
     else if( name.localName( m_np ) == QLatin1String( "ConicB5PType" ) )
     {
       m_currentObject = ConicB5PType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "LineReflectionType" ) )
+    {
+      m_currentObject = LineReflectionType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "PointReflectionType" ) )
+    {
+      m_currentObject = PointReflectionType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "CircularInversionType" ) )
+    {
+      m_currentObject = CircularInversionType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "TranslatedType" ) )
+    {
+      m_currentObject = TranslatedType::instance();
+    }
+    else if( name.localName( m_np ) == QLatin1String( "ScalingOverCenterType" ) )
+    {
+      m_currentObject = ScalingOverCenterType::instance();
     }
 
     break;

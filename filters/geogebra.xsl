@@ -69,6 +69,21 @@
 	      <xsl:with-param name="objectType" select="'LinePerpend'"/>
 	    </xsl:call-template>
           </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'PolyLine')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'OpenPolygonType'"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Vector')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'VectorType'"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Polygon')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'PolygonBNPType'"/>
+            </xsl:call-template>
+          </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Circle')">
 	    <xsl:choose>
 	      <xsl:when test="count(./input/@*) = 2">
@@ -122,6 +137,50 @@
             <xsl:call-template name="argsTemplate">
               <xsl:with-param name="objectType" select="'ConicB5PType'"/>
             </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Mirror')">
+            <xsl:variable name="labelReflector" select="./input/@a1"/>
+            <xsl:variable name="typeReflector" select="../command[output/@a0=current()/$labelReflector]/@name"/>
+            <xsl:choose>
+              <xsl:when test="($typeReflector='Line')">
+                <xsl:call-template name="argsTemplate">
+                  <xsl:with-param name="objectType" select="'LineReflectionType'"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:when test="($typeReflector='Circle')">
+                <!--TODO It cannot open reflection of Polygons. Make some arrangement to open
+                reflections of polygons-->
+                <xsl:call-template name="argsTemplate">
+                  <xsl:with-param name="objectType" select="'CircularInversionType'"/>
+                </xsl:call-template>
+              </xsl:when>
+              <!-- The following test should have been for null string but it is not working here
+              ( Line, Circle or null are the only possible values of typeReflector variable. )
+              -->
+              <xsl:when test="not($typeReflector='Line' or $typeReflector='Circle')">
+                <xsl:call-template name="argsTemplate">
+                  <xsl:with-param name="objectType" select="'PointReflectionType'"/>
+                </xsl:call-template>
+              </xsl:when>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Translate')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'TranslatedType'"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Dilate')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'ScalingOverCenterType'"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Polar')">
+            <xsl:call-template name="argsTemplate">
+              <xsl:with-param name="objectType" select="'ConicPolarLineType'"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Diameter')">
+            <!-- Kig can't draw diameters of conics ( ?? )-->
           </xsl:when>
 	</xsl:choose>
       </xsl:for-each>
