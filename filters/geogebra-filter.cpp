@@ -71,12 +71,16 @@ KigDocument* KigFilterGeogebra::load( const QString& sFrom )
       const QString encodedData = QString::fromUtf8( geogebraXMLEntry->data().constData() );
       QFile queryDevice( ":/kig/geogebra/geogebra.xsl" );
 
+      // Reset all variables
       m_currentState = KigFilterGeogebra::ReadingObject;
+      m_currentArgStack.clear();
+      m_objectMap.clear();
 
       queryDevice.open( QFile::ReadOnly );
       geogebraXSLT.setFocus( encodedData );
       geogebraXSLT.setQuery( &queryDevice );
       geogebraXSLT.evaluateTo( this );
+      queryDevice.close();
     }
   }
   else
