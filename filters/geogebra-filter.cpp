@@ -27,15 +27,7 @@
 #include <objects/object_calcer.h>
 #include <objects/object_holder.h>
 #include <objects/bogus_imp.h>
-#include <objects/point_type.h>
-#include <objects/line_type.h>
-#include <objects/circle_type.h>
-#include <objects/conic_types.h>
-#include <objects/arc_type.h>
-#include <objects/polygon_type.h>
-#include <objects/transform_types.h>
-#include <objects/vector_type.h>
-#include <objects/inversion_type.h>
+#include <objects/object_type_factory.h>
 
 #include <KZip>
 #include <KDebug>
@@ -227,101 +219,14 @@ void KigFilterGeogebra::startElement( const QXmlName& name )
       return;
     }
 
-    if( name.localName( m_np ) == QLatin1String( "FixedPoint" ) )
     {
-      m_currentObject = FixedPointType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "LineAB" ) )
-    {
-      m_currentObject = LineABType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "LineParallelLPType" ) )
-    {
-      m_currentObject = LineParallelLPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "SegmentAB" ) )
-    {
-      m_currentObject = SegmentABType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "RayAB" ) )
-    {
-      m_currentObject = RayABType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "Midpoint" ) )
-    {
-      m_currentObject = MidPointType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "LinePerpend" ) )
-    {
-      m_currentObject = LinePerpendLPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "OpenPolygonType" ) )
-    {
-      m_currentObject = OpenPolygonType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "VectorType" ) )
-    {
-      m_currentObject = VectorType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "ConicPolarLineType" ) )
-    {
-      m_currentObject = ConicPolarLineType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "PolygonBNPType" ) )
-    {
-      m_currentObject = PolygonBNPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "CircleBCPType" ) )
-    {
-      m_currentObject = CircleBCPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "CircleBPRType" ) )
-    {
-      m_currentObject = CircleBPRType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "CircleBTPType" ) )
-    {
-      m_currentObject = CircleBTPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "ArcBTPType" ) )
-    {
-      m_currentObject = ArcBTPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "ParabolaBDPType" ) )
-    {
-      m_currentObject = ParabolaBDPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "EllipseBFFPType" ) )
-    {
-      m_currentObject = EllipseBFFPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "HyperbolaBFFPType" ) )
-    {
-      m_currentObject = HyperbolaBFFPType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "ConicB5PType" ) )
-    {
-      m_currentObject = ConicB5PType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "LineReflectionType" ) )
-    {
-      m_currentObject = LineReflectionType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "PointReflectionType" ) )
-    {
-      m_currentObject = PointReflectionType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "CircularInversionType" ) )
-    {
-      m_currentObject = CircularInversionType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "TranslatedType" ) )
-    {
-      m_currentObject = TranslatedType::instance();
-    }
-    else if( name.localName( m_np ) == QLatin1String( "ScalingOverCenterType" ) )
-    {
-      m_currentObject = ScalingOverCenterType::instance();
+      const QByteArray nameData = name.localName( m_np ).toLatin1();
+      m_currentObject = ObjectTypeFactory::instance()->find( nameData );
+
+      if ( !m_currentObject )
+      {
+        kWarning() << name.localName( m_np ) << " object not found!";
+      }
     }
 
     break;

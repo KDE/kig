@@ -11,6 +11,8 @@
   </xsl:template>
 
   <xsl:template match="element" name="argsTemplate">
+    <!-- The parameter - 'ObjectType' passed to this template *must* only be the 'fullTypeName' of some valid Kig
+    ObjectType. Passing self-chosen names as parameter will not recognise the Object (and it will not draw..) -->
     <xsl:param name="objectType" as="xs:string"/>
     <xsl:variable name="label" as="xs:string" select="./output/@a0"/>
     <xsl:variable name="A" as="xs:string" select="./input/@a0"/>
@@ -45,7 +47,7 @@
             <xsl:variable name="typeInput1" select="../command[output/@a0=current()/$labelInput2]/@name"/>
             <xsl:if test="($typeInput1='Line' or $typeInput2='Line')">
               <xsl:call-template name="argsTemplate">
-                <xsl:with-param name="objectType" select="'LineParallelLPType'"/>
+                <xsl:with-param name="objectType" select="'LineParallel'"/>
               </xsl:call-template>
             </xsl:if>
             <xsl:if test="not($typeInput1='Line' or $typeInput2='Line')">
@@ -71,17 +73,17 @@
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'PolyLine')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'OpenPolygonType'"/>
+              <xsl:with-param name="objectType" select="'OpenPolygon'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Vector')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'VectorType'"/>
+              <xsl:with-param name="objectType" select="'Vector'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Polygon')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'PolygonBNPType'"/>
+              <xsl:with-param name="objectType" select="'PolygonBNP'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Circle')">
@@ -98,45 +100,45 @@
                 -->
                 <xsl:if test="not($typeInput1='point' and $typeInput2='point')">
                   <xsl:call-template name="argsTemplate">
-                    <xsl:with-param name="objectType" select="'CircleBPRType'"/>
+                    <xsl:with-param name="objectType" select="'CircleBPR'"/>
                   </xsl:call-template>
                 </xsl:if>
                 <xsl:if test="($typeInput1='point' and $typeInput2='point')">
                   <xsl:call-template name="argsTemplate">
-                    <xsl:with-param name="objectType" select="'CircleBCPType'"/>
+                    <xsl:with-param name="objectType" select="'CircleBCP'"/>
                   </xsl:call-template>
                 </xsl:if>
               </xsl:when>
               <xsl:when test="count(./input/@*) = 3">
                 <xsl:call-template name="argsTemplate">
-                  <xsl:with-param name="objectType" select="'CircleBTPType'"/>
+                  <xsl:with-param name="objectType" select="'CircleBTP'"/>
                 </xsl:call-template>
               </xsl:when>
             </xsl:choose>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'CircumcircleArc')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'ArcBTPType'"/>
+              <xsl:with-param name="objectType" select="'ArcBTP'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Parabola')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'ParabolaBDPType'"/>
+              <xsl:with-param name="objectType" select="'ParabolaBDP'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Ellipse')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'EllipseBFFPType'"/>
+              <xsl:with-param name="objectType" select="'EllipseBFFP'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Hyperbola')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'HyperbolaBFFPType'"/>
+              <xsl:with-param name="objectType" select="'HyperbolaBFFP'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Conic')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'ConicB5PType'"/>
+              <xsl:with-param name="objectType" select="'ConicB5P'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Mirror')">
@@ -145,14 +147,14 @@
             <xsl:choose>
               <xsl:when test="($typeReflector='Line')">
                 <xsl:call-template name="argsTemplate">
-                  <xsl:with-param name="objectType" select="'LineReflectionType'"/>
+                  <xsl:with-param name="objectType" select="'LineReflection'"/>
                 </xsl:call-template>
               </xsl:when>
               <xsl:when test="($typeReflector='Circle')">
                 <!--TODO It cannot open reflection of Polygons. Make some arrangement to open
                 reflections of polygons-->
                 <xsl:call-template name="argsTemplate">
-                  <xsl:with-param name="objectType" select="'CircularInversionType'"/>
+                  <xsl:with-param name="objectType" select="'CircularInversion'"/>
                 </xsl:call-template>
               </xsl:when>
               <!-- The following test should have been for null string but it is not working here
@@ -160,24 +162,24 @@
               -->
               <xsl:when test="not($typeReflector='Line' or $typeReflector='Circle')">
                 <xsl:call-template name="argsTemplate">
-                  <xsl:with-param name="objectType" select="'PointReflectionType'"/>
+                  <xsl:with-param name="objectType" select="'PointReflection'"/>
                 </xsl:call-template>
               </xsl:when>
             </xsl:choose>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Translate')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'TranslatedType'"/>
+              <xsl:with-param name="objectType" select="'Translation'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Dilate')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'ScalingOverCenterType'"/>
+              <xsl:with-param name="objectType" select="'ScalingOverCenter'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Polar')">
             <xsl:call-template name="argsTemplate">
-              <xsl:with-param name="objectType" select="'ConicPolarLineType'"/>
+              <xsl:with-param name="objectType" select="'ConicPolarLine'"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:when test="(name(.) = 'command') and (./@name = 'Diameter')">
