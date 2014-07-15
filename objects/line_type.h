@@ -63,14 +63,14 @@ public:
   const ObjectImpType* resultId() const;
 };
 
-class SegmentAxisABType
-  : public ObjectABType
+class SegmentAxisType
+  : public ArgsParserObjectType
 {
-  SegmentAxisABType();
-  ~SegmentAxisABType();
+  SegmentAxisType();
+  ~SegmentAxisType();
 public:
-  static const SegmentAxisABType* instance();
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
+  static const SegmentAxisType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
   const ObjectImpType* resultId() const;
 };
 

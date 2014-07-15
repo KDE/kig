@@ -237,6 +237,7 @@ if (QT_QTXMLPATTERNS_FOUND)
 endif(QT_QTXMLPATTERNS_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
+install(FILES kig.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
 
 # unit tests
 add_subdirectory(tests)
