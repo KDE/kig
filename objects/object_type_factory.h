@@ -30,7 +30,6 @@ class ObjectTypeFactory
   bool malreadysetup;
   ObjectTypeFactory();
   ~ObjectTypeFactory();
-  void setupBuiltinTypes();
 public:
   static ObjectTypeFactory* instance();
   void add( const ObjectType* type );
