@@ -28,8 +28,7 @@
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="/geogebra/construction">
-    <Kig>
+  <xsl:template match="construction" name="objectsTemplate" mode="readingSection">
       <xsl:for-each select="./*">
         <xsl:choose>
           <xsl:when test="(name(.) = 'element') and (./@type = 'point')">
@@ -93,7 +92,7 @@
                 <xsl:variable name="labelInput2" select="./input/@a1"/>
                 <xsl:variable name="typeInput1" select="../element[@label=current()/$labelInput1]/@type"/>
                 <xsl:variable name="typeInput2" select="../element[@label=current()/$labelInput2]/@type"/>
-                <!-- 
+                <!--
                      These tests separate geogebra's circle-center-point type from compass and circle-center-radius types
                      if both the inputs are of point type then the circle is of circle-center-point type (CircleBCPType),
                      otherwise (CircleBPRType).
@@ -187,6 +186,39 @@
           </xsl:when>
         </xsl:choose>
       </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="construction">
+    <Section>
+      <xsl:apply-templates select=".." mode="readingSection"/>
+    </Section>
+  </xsl:template>
+
+  <xsl:template match="macro">
+    <Section>
+      <xsl:attribute name="Name">
+        <xsl:value-of select="./@toolName"/>
+      </xsl:attribute>
+      <xsl:attribute name="Description">
+        <xsl:value-of select="./toolHelp"/>
+      </xsl:attribute>
+      <xsl:for-each select="./macroInput/@*">
+        <xsl:attribute name="Input">
+          <xsl:value-of select="string(.)"/>
+        </xsl:attribute>
+      </xsl:for-each>
+      <xsl:for-each select="./macroOutput/@*">
+        <xsl:attribute name="Output">
+          <xsl:value-of select="string(.)"/>
+        </xsl:attribute>
+      </xsl:for-each>
+      <xsl:apply-templates select="construction" mode="readingSection"/>
+    </Section>
+  </xsl:template>
+
+  <xsl:template match="geogebra">
+    <Kig>
+      <xsl:apply-templates select="./*"/>
     </Kig>
   </xsl:template>
 </xsl:stylesheet>

@@ -1,6 +1,6 @@
 /*
- * GeoGebra Filter for Kig
- * Copyright 2013  David E. Narvaez <david.narvaez@computer.org>
+ * GeogebraSection class for Kig
+ * Copyright 2014  Aniket Anvit <seeanvit@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -17,32 +17,46 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
-#ifndef KIGFILTERGEOGEBRA_H
-#define KIGFILTERGEOGEBRA_H
+#include "geogebrasection.h"
 
-#include "filter.h"
-
-#include <QMap>
-#include <QAbstractXmlReceiver>
-#include <QXmlNamePool>
-
-class ObjectCalcer;
-class ObjectType;
-
-class KigFilterGeogebra : public KigFilter
+const QString GeogebraSection::getName() const
 {
-public:
-    static KigFilterGeogebra* instance();
-    KigDocument* load ( const QString& fromfile );
-    virtual bool supportMime ( const QString& mime );
+  return m_name;
+}
 
-protected:
-    KigFilterGeogebra() {}
-    ~KigFilterGeogebra() {}
-};
+void GeogebraSection::setName( const QString& name )
+{
+  m_name = name;
+}
 
-#endif // KIGFILTERGEOGEBRA_H
+const QString GeogebraSection::getDescription() const
+{
+  return m_description;
+}
 
+void GeogebraSection::setDescription( const QString& desc )
+{
+  m_description = desc;
+}
+
+const std::vector< ObjectCalcer* > GeogebraSection::getInputObjects() const
+{
+  return m_inputObjects;
+}
+
+void GeogebraSection::addInputObject( ObjectCalcer* inp )
+{
+  m_inputObjects.push_back( inp );
+}
+
+const std::vector< ObjectCalcer* > GeogebraSection::getOutputObjects() const
+{
+  return m_outputObjects;
+}
+
+void GeogebraSection::addOutputObject( ObjectCalcer* op )
+{
+  m_outputObjects.push_back( op );
+}

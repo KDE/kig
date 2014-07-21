@@ -26,6 +26,8 @@
 #include "../kig/kig_part.h"
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
+#include "../geogebra/geogebratransformer.h"
+#include "../kig/kig_document.h"
 
 #include <kfiledialog.h>
 #include <kiconloader.h>
@@ -33,7 +35,10 @@
 #include <kmessagebox.h>
 #include <kpushbutton.h>
 #include <ktoolinvocation.h>
+#include <KZip>
+#include <KDebug>
 
+#include <QXmlQuery>
 #include <qbytearray.h>
 #include <qevent.h>
 #include <qfile.h>
@@ -462,15 +467,21 @@ void TypesDialog::exportType()
 
 void TypesDialog::importTypes()
 {
+    //TODO : Take care of the MIME type of Geogebra Tools
   QStringList file_names =
-    KFileDialog::getOpenFileNames( KUrl( "kfiledialog:///importTypes" ), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Import Types" ));
+    KFileDialog::getOpenFileNames( KUrl( "kfiledialog:///importTypes" ), i18n("*.kigt|Kig Types Files\n*|All Files\n*.ggt|Geogebra Tool Files"), this, i18n( "Import Types" ));
 
   std::vector<Macro*> macros;
-
   for ( QStringList::const_iterator i = file_names.constBegin();
         i != file_names.constEnd(); ++i)
   {
     std::vector<Macro*> nmacros;
+    if( (*i).contains( QRegExp( "^*.ggt$" ) ) )// The input file is a Geogebra Tool file..
+    {
+      loadGeogebraTools( *i, nmacros, mpart );
+      std::copy( nmacros.begin(), nmacros.end(), std::back_inserter( macros ) );
+      continue;
+    }
     bool ok = MacroList::instance()->load( *i, nmacros, mpart );
     if ( ! ok )
       continue;
@@ -547,3 +558,50 @@ void TypesDialog::typeListContextMenu( const QPoint& pos )
 
   popup->exec( mtypeswidget->typeList->viewport()->mapToGlobal( pos ) );
 }
+
+bool TypesDialog::loadGeogebraTools( const QString& sFrom, std::vector<Macro*>& vec, KigPart& /*kigpart*/ )
+{
+  KZip geogebraFile( sFrom );
+
+  if ( geogebraFile.open( QIODevice::ReadOnly ) )
+  {
+    const KZipFileEntry* geogebraXMLEntry = dynamic_cast<const KZipFileEntry*>( geogebraFile.directory()->entry( "geogebra_macro.xml" ) );
+
+    if ( geogebraXMLEntry )
+    {
+      KigDocument * document = new KigDocument();
+      QXmlNamePool np;
+      QXmlQuery geogebraXSLT( QXmlQuery::XSLT20, np );
+      const QString encodedData = QString::fromUtf8( geogebraXMLEntry->data().constData() );
+      QFile queryDevice( ":/kig/geogebra/geogebra.xsl" );
+      GeogebraTransformer ggttransformer( document, np );
+
+      queryDevice.open( QFile::ReadOnly );
+      geogebraXSLT.setFocus( encodedData );
+      geogebraXSLT.setQuery( &queryDevice );
+      geogebraXSLT.evaluateTo( &ggttransformer );
+      queryDevice.close();
+
+      const size_t nmacros = ggttransformer.getNumberOfSections();
+
+      for( size_t i = 0; i < nmacros; i++ )
+      {
+        const GeogebraSection f = ggttransformer.getSection( i );
+        ObjectHierarchy hrchy( f.getInputObjects(), f.getOutputObjects() );
+        MacroConstructor* ctor = new MacroConstructor( hrchy, ggttransformer.getSection( i ).getName(), ggttransformer.getSection( i ).getDescription() );
+        ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
+
+        Macro* newmacro = new Macro( act, ctor );
+        vec.push_back( newmacro );
+      }
+    }
+  }
+  else
+  {
+    kWarning() << "Failed to open zip archive";
+    return false;
+  }
+
+  return true;
+}
+

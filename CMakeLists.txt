@@ -194,8 +194,11 @@ set(kigpart_PART_SRCS
 )
 
 if (QT_QTXMLPATTERNS_FOUND)
-  set(kigpart_PART_SRCS ${kigpart_PART_SRCS} filters/geogebra-filter.cpp)
-  qt4_add_resources(kigpart_PART_SRCS ${CMAKE_SOURCE_DIR}/filters/geogebra.qrc)
+  set(kigpart_PART_SRCS ${kigpart_PART_SRCS}
+  geogebra/geogebratransformer.cpp
+  geogebra/geogebrasection.cpp
+  filters/geogebra-filter.cpp)
+  qt4_add_resources(kigpart_PART_SRCS ${CMAKE_SOURCE_DIR}/geogebra/geogebra.qrc)
   include_directories(${QT_QTXMLPATTERNS_INCLUDE_DIRS})
 endif(QT_QTXMLPATTERNS_FOUND)
 
