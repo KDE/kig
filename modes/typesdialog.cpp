@@ -39,12 +39,12 @@
 #include <KDebug>
 
 #include <QXmlQuery>
-#include <qbytearray.h>
-#include <qevent.h>
-#include <qfile.h>
-#include <qlayout.h>
-#include <qmenu.h>
-#include <qstringlist.h>
+#include <QByteArray>
+#include <QEvent>
+#include <QFile>
+#include <QLayout>
+#include <QMenu>
+#include <QStringList>
 
 #include <algorithm>
 #include <iterator>
