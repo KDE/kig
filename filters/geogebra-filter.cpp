@@ -37,7 +37,6 @@
 #include <QXmlQuery>
 
 #include <algorithm>
-#include <functional>
 
 KigFilterGeogebra* KigFilterGeogebra::instance()
 {
