@@ -44,12 +44,10 @@ class ThreeTwoOneIntersectionConstructor
 {
   const ArgsParserObjectType* mtype_std;
   const ArgsParserObjectType* mtype_special;
-  const ArgsParserObjectType* mtype_special2;
   ArgsParser margsparser;
 public:
   ThreeTwoOneIntersectionConstructor( const ArgsParserObjectType* t_std,
                                    const ArgsParserObjectType* t_special,
-				   const ArgsParserObjectType* t_special2,
                                    const char* iconfile,
                                    const struct ArgsParser::spec argsspecv[] );
   ~ThreeTwoOneIntersectionConstructor();

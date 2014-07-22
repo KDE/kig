@@ -186,14 +186,12 @@ bool TwoOrOneIntersectionConstructor::isTransform() const
 ThreeTwoOneIntersectionConstructor::ThreeTwoOneIntersectionConstructor(
                                        const ArgsParserObjectType* t_std,
                                        const ArgsParserObjectType* t_special,
-				       const ArgsParserObjectType* t_special2,
                                        const char* iconfile,
                                        const struct ArgsParser::spec argsspecv[] )
   : StandardConstructorBase( "SHOULD NOT BE SEEN", "SHOULD NOT BE SEEN",
        iconfile, margsparser ),
     mtype_std( t_std ),
     mtype_special( t_special ),
-    mtype_special2( t_special2 ),
     margsparser( argsspecv, 2 )
 {
 }
@@ -1941,7 +1939,6 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
     new ThreeTwoOneIntersectionConstructor(
           LineCubicIntersectionType::instance(),
           CubicLineOtherIntersectionType::instance(),
-	  CubicLineTwoIntersectionType::instance(),
           "curvelineintersection",
           argsspeccbli);
 

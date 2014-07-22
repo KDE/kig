@@ -27,7 +27,6 @@ class ObjectTypeFactory
 {
   typedef std::map<std::string, const ObjectType*> maptype;
   maptype mmap;
-  bool malreadysetup;
   ObjectTypeFactory();
   ~ObjectTypeFactory();
 public:

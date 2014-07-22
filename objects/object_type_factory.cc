@@ -39,7 +39,6 @@
 #include <string>
 
 ObjectTypeFactory::ObjectTypeFactory()
-  : malreadysetup( false )
 {
 }
 
