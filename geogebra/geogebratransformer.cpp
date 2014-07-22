@@ -77,7 +77,7 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
       }
       else
       {
-//         parseError( i18n( "Referenced object %1 does not exist", value.toString() ) );
+          //TODO Figure out error reporting
       }
 
       break;
