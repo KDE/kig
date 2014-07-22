@@ -36,16 +36,13 @@ extern uint percentCount( const QString& s );
 class TextPage : public QWizardPage
 {
 public:
-  TextPage( QWidget* parent, TextLabelModeBase* mode );
+  TextPage( QWidget* parent );
 
   QTextEdit* mtext;
-
-private:
-  TextLabelModeBase* mmode;
 };
 
-TextPage::TextPage( QWidget* parent, TextLabelModeBase* mode )
-  : QWizardPage( parent ), mmode( mode )
+TextPage::TextPage( QWidget* parent )
+  : QWizardPage( parent )
 {
   setTitle( i18n( "Enter Label Text" ) );
   setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
@@ -124,7 +121,7 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
   setOption( HaveHelpButton );
   setOption( HaveFinishButtonOnEarlyPages );
 
-  mtextPage = new TextPage( this, mmode );
+  mtextPage = new TextPage( this );
   setPage( TextPageId, mtextPage );
   margsPage = new ArgsPage( this, mmode );
   setPage( ArgsPageId, margsPage );

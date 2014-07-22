@@ -118,14 +118,11 @@ class MacroInfoPage
   : public QWizardPage
 {
 public:
-  MacroInfoPage( QWidget* parent, DefineMacroMode* mode );
-
-private:
-  DefineMacroMode* mmode;
+  MacroInfoPage( QWidget* parent );
 };
 
-MacroInfoPage::MacroInfoPage( QWidget* parent, DefineMacroMode* mode )
-  : QWizardPage( parent ), mmode( mode )
+MacroInfoPage::MacroInfoPage( QWidget* parent )
+  : QWizardPage( parent )
 {
   setTitle( i18n( "Name" ) );
   setSubTitle( i18n( "Enter a name and description for your new type." ) );
@@ -178,7 +175,7 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
   setPage( GivenArgsPageId, mgivenArgsPage );
   mfinalArgsPage = new FinalArgsPage( this, mmode );
   setPage( FinalArgsPageId, mfinalArgsPage );
-  setPage( MacroInfoPageId, new MacroInfoPage( this, mmode ) );
+  setPage( MacroInfoPageId, new MacroInfoPage( this ) );
 
   connect( this, SIGNAL( helpRequested() ), this,
            SLOT( slotHelpClicked() ) );
