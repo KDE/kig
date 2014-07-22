@@ -21,7 +21,7 @@
 
 #include "geogebrasection.h"
 
-const QString GeogebraSection::getName() const
+const QString & GeogebraSection::getName() const
 {
   return m_name;
 }
@@ -31,7 +31,7 @@ void GeogebraSection::setName( const QString& name )
   m_name = name;
 }
 
-const QString GeogebraSection::getDescription() const
+const QString & GeogebraSection::getDescription() const
 {
   return m_description;
 }
@@ -41,7 +41,7 @@ void GeogebraSection::setDescription( const QString& desc )
   m_description = desc;
 }
 
-const std::vector< ObjectCalcer* > GeogebraSection::getInputObjects() const
+const std::vector< ObjectCalcer* > & GeogebraSection::getInputObjects() const
 {
   return m_inputObjects;
 }
@@ -51,7 +51,7 @@ void GeogebraSection::addInputObject( ObjectCalcer* inp )
   m_inputObjects.push_back( inp );
 }
 
-const std::vector< ObjectCalcer* > GeogebraSection::getOutputObjects() const
+const std::vector< ObjectCalcer* > & GeogebraSection::getOutputObjects() const
 {
   return m_outputObjects;
 }

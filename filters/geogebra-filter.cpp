@@ -79,7 +79,8 @@ KigDocument* KigFilterGeogebra::load( const QString& sFrom )
 
       assert( ggbtransform.getNumberOfSections() == 1 );
 
-      std::vector<ObjectCalcer *> f = ggbtransform.getSection( 0 ).getOutputObjects();
+      const GeogebraSection & gs = ggbtransform.getSection( 0 );
+      const std::vector<ObjectCalcer *> & f = gs.getOutputObjects();
       std::vector<ObjectHolder *> holders( f.size() );
 
       std::transform( f.cbegin(), f.cend(), holders.begin(), holderFromCalcer );

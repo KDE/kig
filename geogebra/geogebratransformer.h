@@ -51,7 +51,7 @@ public:
     ~GeogebraTransformer() {}
 
     size_t getNumberOfSections() const { return m_nsections; };
-    const GeogebraSection getSection( size_t sectionIdx ) const { return m_sections[sectionIdx]; };
+    const GeogebraSection & getSection( size_t sectionIdx ) const { return m_sections[sectionIdx]; };
 
     // QAbstractXmlReceiver implementation
     virtual void atomicValue ( const QVariant & );

@@ -37,10 +37,10 @@ public:
     { }
     ~GeogebraSection() { }
 
-    const QString getName() const;
-    const QString getDescription() const;
-    const std::vector<ObjectCalcer*> getInputObjects() const;
-    const std::vector<ObjectCalcer*> getOutputObjects() const;
+    const QString & getName() const;
+    const QString & getDescription() const;
+    const std::vector<ObjectCalcer*> & getInputObjects() const;
+    const std::vector<ObjectCalcer*> & getOutputObjects() const;
     void addInputObject( ObjectCalcer* );
     void addOutputObject( ObjectCalcer* );
     void setDescription( const QString& );
