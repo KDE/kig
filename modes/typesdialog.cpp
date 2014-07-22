@@ -469,7 +469,7 @@ void TypesDialog::importTypes()
 {
     //TODO : Take care of the MIME type of Geogebra Tools
   QStringList file_names =
-    KFileDialog::getOpenFileNames( KUrl( "kfiledialog:///importTypes" ), i18n("*.kigt|Kig Types Files\n*|All Files\n*.ggt|Geogebra Tool Files"), this, i18n( "Import Types" ));
+    KFileDialog::getOpenFileNames( KUrl( "kfiledialog:///importTypes" ), i18n( "*.kigt|Kig Types Files\n*.ggt|Geogebra Tool Files\n*|All Files" ), this, i18n( "Import Types" ));
 
   std::vector<Macro*> macros;
   for ( QStringList::const_iterator i = file_names.constBegin();
