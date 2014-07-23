@@ -24,7 +24,7 @@
 
 #include <qlist.h>
 
-#include <kparts/part.h>
+#include <KParts/ReadWritePart>
 #include <kselectaction.h>
 
 #include <vector>
