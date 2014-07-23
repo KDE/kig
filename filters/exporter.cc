@@ -43,7 +43,7 @@
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )
-  : KAction( exp->menuEntryName(), parent),
+  : QAction( exp->menuEntryName(), parent),
     mexp( exp ), mdoc( doc ), mw( w )
 {
   QString iconstr = exp->menuIcon();

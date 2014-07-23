@@ -25,7 +25,7 @@
 #include <qlayout.h>
 #include <qmenu.h>
 
-#include <kaction.h>
+#include <QAction>
 #include <kactioncollection.h>
 #include <kdialog.h>
 #include <kglobalsettings.h>

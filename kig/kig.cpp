@@ -24,7 +24,7 @@
 #include <qevent.h>
 #include <qtimer.h>
 
-#include <kaction.h>
+#include <QAction>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kedittoolbar.h>

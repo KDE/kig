@@ -26,13 +26,13 @@
 
 #include <qstring.h>
 #include <qbytearray.h>
-#include <kaction.h>
+#include <QAction>
 
 class GUIAction;
 class KigPart;
 
 class KigGUIAction
-  : public KAction
+  : public QAction
 {
   Q_OBJECT
   GUIAction* mact;

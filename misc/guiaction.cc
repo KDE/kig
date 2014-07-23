@@ -84,7 +84,7 @@ void ConstructibleAction::act( KigPart& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc )
-  : KAction( act->descriptiveName(), doc.actionCollection() ),
+  : QAction( act->descriptiveName(), doc.actionCollection() ),
   mact( act ),
   mdoc( doc )
 {

@@ -45,7 +45,7 @@
 #include <functional>
 #include <iterator>
 
-#include <kaction.h>
+#include <QAction>
 #include <kdebug.h>
 #include <kdemacros.h>
 #include <kfiledialog.h>
@@ -224,20 +224,20 @@ void KigPart::setupActions()
     this, SLOT( slotSelectAll() ), actionCollection() );
   aDeselectAll = KStandardAction::deselect(
     this, SLOT( slotDeselectAll() ), actionCollection() );
-  aInvertSelection  = new KAction(i18n("Invert Selection"), this);
+  aInvertSelection  = new QAction(i18n("Invert Selection"), this);
   actionCollection()->addAction("edit_invert_selection", aInvertSelection );
   connect(aInvertSelection, SIGNAL(triggered(bool) ), SLOT( slotInvertSelection() ));
 
   // we need icons...
   KIconLoader* l = iconLoader();
 
-  aDeleteObjects  = new KAction(KIcon("edit-delete"), i18n("&Delete Objects"), this);
+  aDeleteObjects  = new QAction(KIcon("edit-delete"), i18n("&Delete Objects"), this);
   actionCollection()->addAction("delete_objects", aDeleteObjects );
   connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
   aDeleteObjects->setShortcut(QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  aCancelConstruction  = new KAction(KIcon("process-stop"), i18n("Cancel Construction"), this);
+  aCancelConstruction  = new QAction(KIcon("process-stop"), i18n("Cancel Construction"), this);
   actionCollection()->addAction("cancel_construction", aCancelConstruction );
   connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
   aCancelConstruction->setShortcut(QKeySequence(Qt::Key_Escape));
@@ -245,7 +245,7 @@ void KigPart::setupActions()
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
-  aRepeatLastConstruction = new KAction(KIcon("system-run"), i18n("Repeat Construction"), this);
+  aRepeatLastConstruction = new QAction(KIcon("system-run"), i18n("Repeat Construction"), this);
   actionCollection()->addAction("repeat_last_construction", aRepeatLastConstruction );
   connect(aRepeatLastConstruction, SIGNAL(triggered(bool) ), SLOT(repeatLastConstruction()));
   aRepeatLastConstruction->setShortcut(QKeySequence(Qt::Key_Z));
@@ -253,23 +253,23 @@ void KigPart::setupActions()
       i18n("Repeat the last construction (with new data)"));
   aRepeatLastConstruction->setEnabled(false);
 
-  aShowHidden  = new KAction(i18n("U&nhide All"), this);
+  aShowHidden  = new QAction(i18n("U&nhide All"), this);
   actionCollection()->addAction("edit_unhide_all", aShowHidden );
   connect(aShowHidden, SIGNAL(triggered(bool) ), SLOT( showHidden() ));
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  aNewMacro  = new KAction(KIcon("system-run"), i18n("&New Macro..."), this);
+  aNewMacro  = new QAction(KIcon("system-run"), i18n("&New Macro..."), this);
   actionCollection()->addAction("macro_action", aNewMacro );
   connect(aNewMacro, SIGNAL(triggered(bool) ), SLOT(newMacro()));
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
-  aConfigureTypes  = new KAction(i18n("Manage &Types..."), this);
+  aConfigureTypes  = new QAction(i18n("Manage &Types..."), this);
   actionCollection()->addAction("types_edit", aConfigureTypes );
   connect(aConfigureTypes, SIGNAL(triggered(bool) ), SLOT(editTypes()));
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
-  aBrowseHistory  = new KAction(KIcon("view-history"), i18n("&Browse History..."), this);
+  aBrowseHistory  = new QAction(KIcon("view-history"), i18n("&Browse History..."), this);
   actionCollection()->addAction("browse_history", aBrowseHistory );
   connect( aBrowseHistory, SIGNAL( triggered( bool ) ), SLOT( browseHistory() ) );
   aBrowseHistory->setToolTip( i18n( "Browse the history of the current construction." ) );
@@ -299,19 +299,19 @@ void KigPart::setupActions()
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  a  = new KAction(KIcon("zoom-fit-best"), i18n("&Select Shown Area"), this);
+  a  = new QAction(KIcon("zoom-fit-best"), i18n("&Select Shown Area"), this);
   actionCollection()->addAction("view_select_shown_rect", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomRect() ));
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  a  = new KAction(KIcon("zoom-original"), i18n("S&elect Zoom Area"), this);
+  a  = new QAction(KIcon("zoom-original"), i18n("S&elect Zoom Area"), this);
   actionCollection()->addAction("view_zoom_area", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomArea() ));
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  aSetCoordinatePrecision = new KAction(i18n("Set Coordinate &Precision..."), this);
+  aSetCoordinatePrecision = new QAction(i18n("Set Coordinate &Precision..."), this);
   actionCollection()->addAction("settings_set_coordinate_precision", aSetCoordinatePrecision);
   aSetCoordinatePrecision->setToolTip( i18n("Set the floating point precision of coordinates in the document. " ));
   connect(aSetCoordinatePrecision, SIGNAL( triggered() ), this, SLOT( setCoordinatePrecision() ));
@@ -663,7 +663,7 @@ void KigPart::delObjects( const std::vector<ObjectHolder*>& os )
 void KigPart::enableConstructActions( bool enabled )
 {
   for_each( aActions.begin(), aActions.end(),
-            bind2nd( mem_fun( &KAction::setEnabled ),
+            bind2nd( mem_fun( &QAction::setEnabled ),
                      enabled ) );
 }
 

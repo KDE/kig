@@ -62,7 +62,7 @@
 #include <qregexp.h>
 #include <qvalidator.h>
 
-#include <kaction.h>
+#include <QAction>
 #include <kcolordialog.h>
 #include <kicon.h>
 #include <kinputdialog.h>
