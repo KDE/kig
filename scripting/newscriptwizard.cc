@@ -26,16 +26,18 @@
 #include <qmenu.h>
 
 #include <QAction>
-#include <kactioncollection.h>
+#include <QTextEdit>
 #include <QDialog>
+
+#include <kactioncollection.h>
 #include <kglobalsettings.h>
 #include <kiconloader.h>
 #include <klocale.h>
-#include <ktextedit.h>
-#include <ktexteditor/document.h>
-#include <ktexteditor/editor.h>
-#include <ktexteditor/editorchooser.h>
-#include <ktexteditor/view.h>
+
+#include <KTextEditor/Document>
+#include <KTextEditor/Editor>
+#include <KTextEditor/View>
+
 #include <ktoolinvocation.h>
 
 #include <assert.h>
@@ -85,15 +87,14 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   lay2->addWidget( mLabelFillCode );
   setPage( CodePageId, secondPage );
 
-  KTextEditor::Editor* editor = KTextEditor::EditorChooser::editor();
-//  KTextEditor::Editor* editor = 0;
-  kDebug() << "EDITOR: " << editor;
+  KTextEditor::Editor* editor = KTextEditor::Editor::instance();
+  qDebug() << "EDITOR: " << editor;
 
   if ( !editor )
   {
     // there is no KDE textditor component installed, so we'll use a
     // simplier KTextEdit
-    textedit = new KTextEdit( secondPage );
+    textedit = new QTextEdit( secondPage );
     textedit->setObjectName( "textedit" );
     textedit->setFont( KGlobalSettings::fixedFont() );
     textedit->setAcceptRichText( false );
@@ -103,8 +104,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   {
     document = editor->createDocument( 0 );
     // creating the 'view', that is what the user see and interact with
-    (void)document->createView( secondPage );
-    docview = document->activeView();
+    docview = document->createView( secondPage );
 
     lay2->addWidget( docview );
 
