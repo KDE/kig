@@ -28,8 +28,9 @@
 #include "../../objects/object_holder.h"
 #include "../../objects/point_imp.h"
 
+#include <QIcon>
+
 #include <KLocale>
-#include <KIcon>
 
 void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
                                             int menu, int& nextfree )
@@ -61,7 +62,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
     {
       if ( iconfile && *iconfile )
       {
-        popup.addInternalAction( menu, KIcon( iconfile, popup.part().iconLoader() ), i18n( o->imp()->properties()[i] ), nextfree++ );
+        popup.addInternalAction( menu, QIcon::fromTheme( iconfile, popup.part().iconLoader() ), i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else
       {

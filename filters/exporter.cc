@@ -31,11 +31,11 @@
 #include "../misc/kigfiledialog.h"
 #include "../misc/kigpainter.h"
 
+#include <QIcon>
 #include <qfile.h>
 
 #include <kactionmenu.h>
 #include <kactioncollection.h>
-#include <kicon.h>
 #include <kimageio.h>
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -48,7 +48,7 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
 {
   QString iconstr = exp->menuIcon();
   if ( !iconstr.isEmpty() )
-    setIcon( KIcon( iconstr, const_cast<KigPart*>( doc )->iconLoader() ) );
+    setIcon( QIcon::fromTheme( iconstr, const_cast<KigPart*>( doc )->iconLoader() ) );
   connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
   if(parent)
     parent->addAction("action", this );
@@ -156,7 +156,7 @@ void KigExportManager::addMenuAction( const KigPart* doc, KigWidget* w,
                                       KActionCollection* coll )
 {
   KActionMenu* m = new KActionMenu( i18n( "&Export To" ), w );
-  m->setIcon( KIcon( "document-export", const_cast<KigPart*>( doc )->iconLoader() ) );
+  m->setIcon( QIcon::fromTheme( "document-export", const_cast<KigPart*>( doc )->iconLoader() ) );
   for ( uint i = 0; i < mexporters.size(); ++i )
     m->addAction( new ExporterAction( doc, w, coll, mexporters[i] ) );
   if(coll)

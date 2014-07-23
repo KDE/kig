@@ -61,7 +61,7 @@ void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu,
   if ( menu == NormalModePopupObjects::StartMenu )
   {
     KIconLoader* l = popup.part().iconLoader();
-    popup.addInternalAction( menu, KIcon( ScriptType::icon( ScriptType::Python ), l ), i18n( "Python Script" ), nextfree++ );
+    popup.addInternalAction( menu, QIcon::fromTheme( ScriptType::icon( ScriptType::Python ), l ), i18n( "Python Script" ), nextfree++ );
     mns++;
   }
   else if ( menu == NormalModePopupObjects::ToplevelMenu )

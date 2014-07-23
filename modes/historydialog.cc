@@ -29,7 +29,7 @@
 #include <qundostack.h>
 
 #include <kdebug.h>
-#include <kicon.h>
+#include <QIcon>
 #include <klineedit.h>
 #include <klocale.h>
 #include <knumvalidator.h>
@@ -62,19 +62,19 @@ HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
 
   bool reversed = layoutDirection() == Qt::RightToLeft;
 
-  mwidget->buttonFirst->setIcon( KIcon( reversed ? "go-last" : "go-first" ) );
+  mwidget->buttonFirst->setIcon( QIcon::fromTheme( reversed ? "go-last" : "go-first" ) );
   connect( mwidget->buttonFirst, SIGNAL( clicked() ), this, SLOT( goToFirst() ) );
 
-  mwidget->buttonBack->setIcon( KIcon( reversed ? "go-next" : "go-previous" ) );
+  mwidget->buttonBack->setIcon( QIcon::fromTheme( reversed ? "go-next" : "go-previous" ) );
   connect( mwidget->buttonBack, SIGNAL( clicked() ), this, SLOT( goBack() ) );
 
   mwidget->editStep->setValidator( new KIntValidator( 1, mtotalsteps, mwidget->editStep ) );
   mwidget->labelSteps->setText( QString::number( mtotalsteps ) );
 
-  mwidget->buttonNext->setIcon( KIcon( reversed ? "go-previous" : "go-next" ) );
+  mwidget->buttonNext->setIcon( QIcon::fromTheme( reversed ? "go-previous" : "go-next" ) );
   connect( mwidget->buttonNext, SIGNAL( clicked() ), this, SLOT( goToNext() ) );
 
-  mwidget->buttonLast->setIcon( KIcon( reversed ? "go-first" : "go-last" ) );
+  mwidget->buttonLast->setIcon( QIcon::fromTheme( reversed ? "go-first" : "go-last" ) );
   connect( mwidget->buttonLast, SIGNAL( clicked() ), this, SLOT( goToLast() ) );
 
   updateWidgets();

@@ -54,6 +54,7 @@
 #include <algorithm>
 #include <functional>
 
+#include <QIcon>
 #include <qaction.h>
 #include <qcursor.h>
 #include <qdialog.h>
@@ -64,7 +65,6 @@
 
 #include <QAction>
 #include <kcolordialog.h>
-#include <kicon.h>
 #include <kinputdialog.h>
 #include <klocale.h>
 
@@ -182,7 +182,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       mmenus[i]->setTitle( menunames[i] );
     if ( !menuicons[i].isEmpty() )
     {
-      mmenus[i]->setIcon( KIcon( menuicons[i], l ) );
+      mmenus[i]->setIcon( QIcon::fromTheme( menuicons[i], l ) );
     }
   }
   mmenus[ToplevelMenu] = mmenuslast[ToplevelMenu] = this;

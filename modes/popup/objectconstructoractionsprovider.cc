@@ -56,7 +56,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
       QByteArray iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
-        popup.addInternalAction( menu, KIcon( iconfile, popup.part().iconLoader() ), (*i)->descriptiveName(), nextfree++ );
+        popup.addInternalAction( menu, QIcon::fromTheme( iconfile, popup.part().iconLoader() ), (*i)->descriptiveName(), nextfree++ );
       }
       else
         popup.addInternalAction( menu, (*i)->descriptiveName(), nextfree++ );

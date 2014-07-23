@@ -33,9 +33,9 @@
 
 #include <kiconloader.h>
 #include <klocale.h>
-#include <kicon.h>
 #include <kactioncollection.h>
 
+#include <QIcon>
 #include <qregexp.h>
 
 int GUIAction::shortcut() const
@@ -90,7 +90,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
 {
   QByteArray icon = act->iconFileName( true );
   if ( !icon.isEmpty() )
-    setIcon( KIcon( icon, doc.iconLoader() ) );
+    setIcon( QIcon::fromTheme( icon, doc.iconLoader() ) );
   setWhatsThis( act->description() );
   QString tooltip = act->descriptiveName();
   tooltip.replace( QRegExp( "&&" ), "&" );

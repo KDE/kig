@@ -63,7 +63,6 @@
 #include <ktogglefullscreenaction.h>
 #include <kundostack.h>
 #include <kparts/genericfactory.h>
-#include <kicon.h>
 #include <kdeprintdialog.h>
 #include <kprintpreview.h>
 
@@ -74,6 +73,7 @@
 #include <qlayout.h>
 #include <qsizepolicy.h>
 #include <qtimer.h>
+#include <QIcon>
 #include <QtGui/QPrinter>
 #include <QtGui/QPrintDialog>
 
@@ -231,13 +231,13 @@ void KigPart::setupActions()
   // we need icons...
   KIconLoader* l = iconLoader();
 
-  aDeleteObjects  = new QAction(KIcon("edit-delete"), i18n("&Delete Objects"), this);
+  aDeleteObjects  = new QAction(QIcon::fromTheme("edit-delete"), i18n("&Delete Objects"), this);
   actionCollection()->addAction("delete_objects", aDeleteObjects );
   connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
   aDeleteObjects->setShortcut(QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  aCancelConstruction  = new QAction(KIcon("process-stop"), i18n("Cancel Construction"), this);
+  aCancelConstruction  = new QAction(QIcon::fromTheme("process-stop"), i18n("Cancel Construction"), this);
   actionCollection()->addAction("cancel_construction", aCancelConstruction );
   connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
   aCancelConstruction->setShortcut(QKeySequence(Qt::Key_Escape));
@@ -245,7 +245,7 @@ void KigPart::setupActions()
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
-  aRepeatLastConstruction = new QAction(KIcon("system-run"), i18n("Repeat Construction"), this);
+  aRepeatLastConstruction = new QAction(QIcon::fromTheme("system-run"), i18n("Repeat Construction"), this);
   actionCollection()->addAction("repeat_last_construction", aRepeatLastConstruction );
   connect(aRepeatLastConstruction, SIGNAL(triggered(bool) ), SLOT(repeatLastConstruction()));
   aRepeatLastConstruction->setShortcut(QKeySequence(Qt::Key_Z));
@@ -259,7 +259,7 @@ void KigPart::setupActions()
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  aNewMacro  = new QAction(KIcon("system-run"), i18n("&New Macro..."), this);
+  aNewMacro  = new QAction(QIcon::fromTheme("system-run"), i18n("&New Macro..."), this);
   actionCollection()->addAction("macro_action", aNewMacro );
   connect(aNewMacro, SIGNAL(triggered(bool) ), SLOT(newMacro()));
   aNewMacro->setToolTip(i18n("Define a new macro"));
@@ -269,7 +269,7 @@ void KigPart::setupActions()
   connect(aConfigureTypes, SIGNAL(triggered(bool) ), SLOT(editTypes()));
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
-  aBrowseHistory  = new QAction(KIcon("view-history"), i18n("&Browse History..."), this);
+  aBrowseHistory  = new QAction(QIcon::fromTheme("view-history"), i18n("&Browse History..."), this);
   actionCollection()->addAction("browse_history", aBrowseHistory );
   connect( aBrowseHistory, SIGNAL( triggered( bool ) ), SLOT( browseHistory() ) );
   aBrowseHistory->setToolTip( i18n( "Browse the history of the current construction." ) );
@@ -290,7 +290,7 @@ void KigPart::setupActions()
   a = KStandardAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
-  a->setIcon( KIcon( "view_fit_to_page", l ) );
+  a->setIcon( QIcon::fromTheme( "view_fit_to_page", l ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
@@ -299,13 +299,13 @@ void KigPart::setupActions()
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  a  = new QAction(KIcon("zoom-fit-best"), i18n("&Select Shown Area"), this);
+  a  = new QAction(QIcon::fromTheme("zoom-fit-best"), i18n("&Select Shown Area"), this);
   actionCollection()->addAction("view_select_shown_rect", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomRect() ));
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  a  = new QAction(KIcon("zoom-original"), i18n("S&elect Zoom Area"), this);
+  a  = new QAction(QIcon::fromTheme("zoom-original"), i18n("S&elect Zoom Area"), this);
   actionCollection()->addAction("view_zoom_area", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomArea() ));
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
