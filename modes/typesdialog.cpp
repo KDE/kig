@@ -43,6 +43,10 @@
 
 #include <algorithm>
 #include <iterator>
+#include <QDialogButtonBox>
+#include <KConfigGroup>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 static QString wrapAt( const QString& str, int col = 50 )
 {
@@ -333,14 +337,25 @@ int TypesModel::rowCount( const QModelIndex& parent ) const
 
 
 TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
-  : KDialog( parent ),
+  : QDialog( parent ),
     mpart( part )
 {
-  setCaption( i18n( "Manage Types" ) );
-  setButtons( Help | Ok | Cancel );
+  setWindowTitle( i18n( "Manage Types" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Help);
+  QWidget *mainWidget = new QWidget(this);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mainLayout->addWidget(mainWidget);
+  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+  okButton->setDefault(true);
+  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
+  mainLayout->addWidget(buttonBox);
 
   QWidget* base = new QWidget( this );
-  setMainWidget( base );
+//PORTING: Verify that widget was added to mainLayout   setMainWidget( base );
   mtypeswidget = new Ui_TypesWidget();
   mtypeswidget->setupUi( base );
   base->layout()->setMargin( 0 );
@@ -379,8 +394,8 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   connect( mtypeswidget->buttonEdit, SIGNAL( clicked() ), this, SLOT( editType() ) );
   connect( mtypeswidget->typeList, SIGNAL( customContextMenuRequested( const QPoint& ) ), this, SLOT( typeListContextMenu( const QPoint& ) ) );
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
-  connect( this, SIGNAL( okClicked() ), this, SLOT( slotOk() ) );
-  connect( this, SIGNAL( cancelClicked() ), this, SLOT( slotCancel() ) );
+  connect(okButton, SIGNAL( clicked() ), this, SLOT( slotOk() ) );
+  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL( clicked() ), this, SLOT( slotCancel() ) );
 
   resize( 460, 270 );
 }

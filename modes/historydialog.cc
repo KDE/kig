@@ -34,17 +34,29 @@
 #include <klocale.h>
 #include <knumvalidator.h>
 #include <kpushbutton.h>
+#include <QDialogButtonBox>
+#include <KConfigGroup>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
-  : KDialog( parent ), mch( kch )
+  : QDialog( parent ), mch( kch )
 {
-  setCaption( i18n( "History Browser" ) );
-  setButtons( Close );
+  setWindowTitle( i18n( "History Browser" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+  QWidget *mainWidget = new QWidget(this);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mainLayout->addWidget(mainWidget);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
+  mainLayout->addWidget(buttonBox);
 
   QWidget* main = new QWidget( this );
   mwidget = new Ui_HistoryWidget();
   mwidget->setupUi( main );
-  setMainWidget( main );
+//PORTING: Verify that widget was added to mainLayout   setMainWidget( main );
 
   mtotalsteps = mch->count() + 1;
 

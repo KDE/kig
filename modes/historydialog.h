@@ -25,14 +25,14 @@ class QUndoStack;
 class QWidget;
 class Ui_HistoryWidget;
 
-#include <kdialog.h>
+#include <QDialog>
 
 /**
  * The HistoryDialog represents a small dialog to navigate back and forth in
  * the history of a construction.
  */
 class HistoryDialog
-  : public KDialog
+  : public QDialog
 {
 Q_OBJECT
 

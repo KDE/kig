@@ -18,7 +18,7 @@
  USA
 **/
 
-#include <kdialog.h>
+#include <QDialog>
 
 #ifndef KIGCOORDINATEPRECISIONDIALOG_H
 #define KIGCOORDINATEPRECISIONDIALOG_H
@@ -26,7 +26,7 @@
 #include <ui_kigcoordinateprecisiondialog.h>
 
 class KigCoordinatePrecisionDialog
-  : public KDialog
+  : public QDialog
 {
 Q_OBJECT
 

@@ -24,7 +24,7 @@
 #include <qlayout.h>
 
 #include <kdebug.h>
-#include <kdialog.h>
+#include <QDialog>
 #include <kicondialog.h>
 #include <klineedit.h>
 #include <klocale.h>
@@ -168,7 +168,7 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
 {
   setModal( false );
   setObjectName( QLatin1String( "Define Macro Wizard" ) );
-  setWindowTitle( KDialog::makeStandardCaption( i18n( "Define New Macro" ) ) );
+  setWindowTitle( QDialog::makeStandardCaption( i18n( "Define New Macro" ) ) );
   setOption( HaveHelpButton );
 
   mgivenArgsPage = new GivenArgsPage( this, mmode );

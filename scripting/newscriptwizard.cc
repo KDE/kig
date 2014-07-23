@@ -27,7 +27,7 @@
 
 #include <QAction>
 #include <kactioncollection.h>
-#include <kdialog.h>
+#include <QDialog>
 #include <kglobalsettings.h>
 #include <kiconloader.h>
 #include <klocale.h>
@@ -60,7 +60,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
     mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 ), mIconLoader( il )
 {
   setObjectName( QLatin1String( "New Script Wizard" ) );
-  setWindowTitle( KDialog::makeStandardCaption( i18n( "New Script" ) ) );
+  setWindowTitle( QDialog::makeStandardCaption( i18n( "New Script" ) ) );
   setOption( HaveHelpButton );
 
   QWizardPage* firstPage = new QWizardPage( this );

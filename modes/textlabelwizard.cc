@@ -26,7 +26,7 @@
 #include <qlayout.h>
 #include <qtextedit.h>
 
-#include <kdialog.h>
+#include <QDialog>
 #include <ktoolinvocation.h>
 #include <kdebug.h>
 
@@ -117,7 +117,7 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
 {
   setModal( false );
   setObjectName( QLatin1String( "TextLabelWizard" ) );
-  setWindowTitle( KDialog::makeStandardCaption( i18n( "Construct Label" ) ) );
+  setWindowTitle( QDialog::makeStandardCaption( i18n( "Construct Label" ) ) );
   setOption( HaveHelpButton );
   setOption( HaveFinishButtonOnEarlyPages );
 

@@ -28,7 +28,7 @@ KigFileDialog::KigFileDialog( const QString& startDir, const QString& filter,
   : KFileDialog( startDir, filter, parent ),
     mow( 0L )
 {
-  setCaption( caption );
+  setWindowTitle( caption );
   setOperationMode( Saving );
   setMode( KFile::File | KFile::LocalOnly );
   moptcaption = i18n( "Options" );
@@ -61,11 +61,11 @@ void KigFileDialog::accept()
   }
   if ( mow )
   {
-    KDialog* optdlg = new KDialog( this );
-    optdlg->setCaption( moptcaption );
-    optdlg->setButtons( KDialog::Cancel | KDialog::Ok );
+    QDialog* optdlg = new QDialog( this );
+    optdlg->setWindowTitle( moptcaption );
+    optdlg->setButtons( QDialog::Cancel | QDialog::Ok );
     mow->setParent( optdlg );
-    optdlg->setMainWidget( mow );
+//PORTING: Verify that widget was added to mainLayout     optdlg->setMainWidget( mow );
     optdlg->exec() == QDialog::Accepted ? KFileDialog::accept() : KFileDialog::reject();
   }
   else

@@ -38,7 +38,7 @@
 #include <qpushbutton.h>
 
 #include <kcursor.h>
-#include <kdialog.h>
+#include <QDialog>
 #include <kicon.h>
 #include <kmessagebox.h>
 
@@ -316,7 +316,7 @@ ScriptEditMode::ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc )
   // in the editor and aborts the editing
   morigscript = static_cast<const StringImp*>( imp )->data();
 
-  mwizard->setWindowTitle( KDialog::makeStandardCaption( i18nc( "'Edit' is a verb", "Edit Script" ) ) );
+  mwizard->setWindowTitle( QDialog::makeStandardCaption( i18nc( "'Edit' is a verb", "Edit Script" ) ) );
   mwizard->setText( morigscript );
   mwizard->show();
   mwizard->next();
