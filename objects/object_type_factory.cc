@@ -39,9 +39,7 @@
 #include <string>
 
 ObjectTypeFactory::ObjectTypeFactory()
-  : malreadysetup( false )
 {
-  setupBuiltinTypes();
 }
 
 ObjectTypeFactory::~ObjectTypeFactory()
@@ -67,82 +65,4 @@ const ObjectType* ObjectTypeFactory::find( const char* name ) const
   else return i->second;
 }
 
-void ObjectTypeFactory::setupBuiltinTypes()
-{
-//   assert( ! malreadysetup );
-//   malreadysetup = true;
 
-//   // circle_type.h
-//   add( CircleBCPType::instance() );
-//   add( CircleBPRType::instance() );
-//   add( CircleBTPType::instance() );
-
-//   // conic_types.h
-//   add( ConicB5PType::instance() );
-//   add( ConicBAAPType::instance() );
-//   add( EllipseBFFPType::instance() );
-//   add( HyperbolaBFFPType::instance() );
-//   add( ConicBDFPType::instance() );
-//   add( ParabolaBTPType::instance() );
-//   add( EquilateralHyperbolaB4PType::instance() );
-//   add( ConicPolarPointType::instance() );
-//   add( ConicPolarLineType::instance() );
-//   add( ConicDirectrixType::instance() );
-//   add( ParabolaBDPType::instance() );
-//   add( ConicAsymptoteType::instance() );
-//   add( ConicRadicalType::instance() );
-
-//   // cubic_type.h
-//   add( CubicB9PType::instance() );
-//   add( CubicNodeB6PType::instance() );
-//   add( CubicCuspB4PType::instance() );
-
-//   // intersection_types.h
-//   add( ConicLineIntersectionType::instance() );
-//   add( ConicLineOtherIntersectionType::instance() );
-//   add( LineLineIntersectionType::instance() );
-//   add( LineCubicIntersectionType::instance() );
-//   add( CircleCircleIntersectionType::instance() );
-
-//   // line_type.h
-//   add( SegmentABType::instance() );
-//   add( LineABType::instance() );
-//   add( RayABType::instance() );
-//   add( LinePerpendLPType::instance() );
-//   add( LineParallelLPType::instance() );
-
-//   // other_type.h
-//   add( AngleType::instance() );
-//   add( VectorType::instance() );
-//   add( LocusType::instance() );
-//   add( ArcBTPType::instance() );
-//   add( CopyObjectType::instance() );
-
-//   // point_type.h
-//   add( FixedPointType::instance() );
-//   add( ConstrainedPointType::instance() );
-//   add( MidPointType::instance() );
-//   add( MeasureTransportType::instance() );
-
-//   // text_type.h
-//   add( TextType::instance() );
-
-//   // tests_type.h
-//   add( AreParallelType::instance() );
-
-//   // transform_types.h
-//   add( TranslatedType::instance() );
-//   add( PointReflectionType::instance() );
-//   add( LineReflectionType::instance() );
-//   add( RotationType::instance() );
-//   add( ScalingOverCenterType::instance() );
-//   add( ScalingOverLineType::instance() );
-//   add( ProjectiveRotationType::instance() );
-//   add( CastShadowType::instance() );
-
-// #ifdef KIG_ENABLE_PYTHON_SCRIPTING
-//   // python types
-//   add( PythonCompileType::instance() );
-//   add( PythonExecuteType::instance() );
-// #endif
-}

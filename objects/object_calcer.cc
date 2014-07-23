@@ -137,34 +137,25 @@ const ObjectType* ObjectTypeCalcer::type() const
 ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, const char* pname )
   : mimp( 0 ), mparent( parent ), mparenttype( 0 )
 {
-  // Some weird C++ thing prevents me from calling protected members
-  // of ObjectCalcer on mparent.. This is an ugly workaround..
-  ( mparent->*&ObjectCalcer::addChild )( this );
+  mparent->addChild( this );
   mpropgid = mparent->imp()->getPropGid( pname );
-  //mparent->addChild( this );
 }
 
 ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, int propid, bool islocal )
   : mimp( 0 ), mparent( parent ), mparenttype( 0 )
 {
-  // Some weird C++ thing prevents me from calling protected members
-  // of ObjectCalcer on mparent.. This is an ugly workaround..
-  ( mparent->*&ObjectCalcer::addChild )( this );
+  mparent->addChild( this );
   if ( islocal )
   {
     mpropgid = parent->imp()->getPropGid( parent->imp()->propertiesInternalNames()[propid] );
   } else {
     mpropgid = propid;
   }
-  //mparent->addChild( this );
 }
 
 ObjectPropertyCalcer::~ObjectPropertyCalcer()
 {
-  // Some weird C++ thing prevents me from calling protected members
-  // of ObjectCalcer on mparent.. This is an ugly workaround..
-  ( mparent->*&ObjectCalcer::delChild )( this );
-  //mparent->delChild( this );
+  mparent->delChild( this );
   delete mimp;
 }
 

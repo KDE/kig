@@ -26,7 +26,6 @@ class BuiltinDocumentActionsProvider
   : public PopupActionProvider
 {
   int mnumberofcoordsystems;
-  bool misfullscreen;
 public:
   void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
   bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,

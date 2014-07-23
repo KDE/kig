@@ -239,25 +239,6 @@ NormalModePopupObjects::~NormalModePopupObjects()
   delete_all ( mproviders.begin(), mproviders.end() );
 }
 
-struct color_struct
-{
-  const Qt::GlobalColor color;
-  const char* name;
-};
-
-static const color_struct colors[] =
-{
-  { Qt::black, I18N_NOOP( "Black" ) },
-  { Qt::gray, I18N_NOOP( "Gray" ) },
-  { Qt::red, I18N_NOOP( "Red" ) },
-  { Qt::green, I18N_NOOP( "Green" ) },
-  { Qt::cyan, I18N_NOOP( "Cyan" ) },
-  { Qt::yellow, I18N_NOOP( "Yellow" ) },
-  { Qt::darkRed, I18N_NOOP( "Dark Red" ) }
-};
-
-const int numberofcolors = 7; // is there a better way to calc that?
-
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& pix, int id )
 {
   return addInternalAction( menu, pix, "", id );

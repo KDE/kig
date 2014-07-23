@@ -63,6 +63,17 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+class SegmentAxisType
+  : public ArgsParserObjectType
+{
+  SegmentAxisType();
+  ~SegmentAxisType();
+public:
+  static const SegmentAxisType* instance();
+  ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
+  const ObjectImpType* resultId() const;
+};
+
 class LinePerpendLPType
   : public ObjectLPType
 {

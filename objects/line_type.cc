@@ -127,6 +127,47 @@ ObjectImp* RayABType::calcx( const Coordinate& a, const Coordinate& b ) const
   return new RayImp( a, b );
 }
 
+static const ArgsParser::spec argspecSegmentAxisABType[] =
+{
+  { SegmentImp::stype(), I18N_NOOP( "Construct the axis of this segment" ),
+    I18N_NOOP( "Select the segment of which you want to draw the axis..." ), true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( SegmentAxisType );
+
+SegmentAxisType::SegmentAxisType()
+  : ArgsParserObjectType( "Segment Axis", argspecSegmentAxisABType, 1 )
+{
+}
+
+SegmentAxisType::~SegmentAxisType()
+{
+}
+
+const SegmentAxisType* SegmentAxisType::instance()
+{
+  static const SegmentAxisType s;
+  return &s;
+}
+
+ObjectImp* SegmentAxisType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args ) ) return new InvalidImp;
+
+  const SegmentImp * l = static_cast< const SegmentImp * >( args[0] );
+  const Coordinate a = l->data().a;
+  const Coordinate b = l->data().b;
+  const Coordinate mp = ( a + b ) / 2;
+  const Coordinate dir( b - a );
+  const Coordinate perpPoint = calcPointOnPerpend( dir, mp );
+  return new LineImp( mp, perpPoint  );
+}
+
+const ObjectImpType* SegmentAxisType::resultId() const
+{
+  return LineImp::stype();
+}
+
 LinePerpendLPType* LinePerpendLPType::instance()
 {
   static LinePerpendLPType l;

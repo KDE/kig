@@ -6,7 +6,7 @@ find_package(ECM REQUIRED NO_MODULE)
 find_package(KF5Parts)
 find_package(KF5DocTools)
 find_package(KF5I18n)
-find_package(KF5KDE4Support)
+find_package(KF5KDELibs4Support)
 
 # Needed for unit tests
 find_package(KF5Emoticons)
@@ -56,8 +56,10 @@ add_subdirectory( macros )
 #add_subdirectory( kfile )
 add_subdirectory( data )
 add_subdirectory( pykig )
+
 if(BoostPython_FOUND)
   add_subdirectory( scripting )
+  add_definitions(-DKIG_ENABLE_PYTHON_SCRIPTING)
 endif(BoostPython_FOUND)
 
 set_package_properties(
@@ -219,11 +221,13 @@ endif(BoostPython_FOUND)
 add_library(kigpart MODULE ${kigpart_PART_SRCS})
 
 target_link_libraries(kigpart KF5::Parts KF5::I18n Qt5::Gui ${KDE5_KUTILS_LIBS} )
+
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE5_KTEXTEDITOR_LIBS})
 endif(BoostPython_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
+install(FILES kig.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
 
 # unit tests
 add_subdirectory(tests)
