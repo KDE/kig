@@ -25,10 +25,11 @@
 #include <qtimer.h>
 
 #include <QAction>
+#include <QFileDialog>
+
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kedittoolbar.h>
-#include <kfiledialog.h>
 #include <kshortcutsdialog.h>
 #include <klibloader.h>
 #include <klocale.h>
@@ -44,6 +45,7 @@
 #include <assert.h>
 
 #include <KService>
+#include <QFileDialog>
 
 Kig::Kig()
   : KParts::MainWindow(), m_part( 0 )
@@ -209,7 +211,7 @@ void Kig::dropEvent(QDropEvent* e)
 void Kig::fileOpen()
 {
   // this slot is connected to the KStandardAction::open action...
-  QString file_name = KFileDialog::getOpenFileName( KUrl( "kfiledialog:///document" ), m_mimeTypes.join( " " ) );
+  QString file_name = QFileDialog::getOpenFileName(0, QString(),  KUrl( "kfiledialog:///document" ), m_mimeTypes.join( " " ) );
 
   if (!file_name.isEmpty()) openUrl(file_name);
 }
