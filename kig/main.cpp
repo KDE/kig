@@ -79,7 +79,7 @@ void KigApplication::handleArgs( KCmdLineArgs* args )
   }
 }
 
-static int convertToNative( const KUrl& file, const QByteArray& outfile )
+static int convertToNative( const QUrl &file, const QByteArray& outfile )
 {
   KComponentData maindata( KCmdLineArgs::aboutData() );
   KPluginLoader libraryLoader( "kigpart" );

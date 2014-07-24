@@ -26,6 +26,7 @@
 
 #include <QAction>
 #include <QFileDialog>
+#include <QUrl>
 
 #include <kconfig.h>
 #include <kdebug.h>
@@ -39,7 +40,6 @@
 #include <kstatusbar.h>
 #include <kstandardaction.h>
 #include <ktip.h>
-#include <kurl.h>
 #include <kxmlguifactory.h>
 #include <kapplication.h>
 #include <assert.h>
@@ -134,7 +134,7 @@ void Kig::readProperties(const KConfigGroup &config)
   load( KUrl( config.readPathEntry( "fileName", QString() ) ) );
 }
 
-void Kig::load( const KUrl& url )
+void Kig::load( const QUrl &url )
 {
   // we check for m_part not being 0, because in the case of us not
   // finding our library, we would otherwise get a crash...
@@ -153,7 +153,7 @@ void Kig::fileNew()
     (new Kig)->show();
 }
 
-void Kig::openUrl( const KUrl& url )
+void Kig::openUrl( const QUrl &url )
 {
   // Called for opening a file by either the KRecentFilesAction or our
   // own fileOpen() method.
@@ -211,7 +211,7 @@ void Kig::dropEvent(QDropEvent* e)
 void Kig::fileOpen()
 {
   // this slot is connected to the KStandardAction::open action...
-  QString file_name = QFileDialog::getOpenFileName(0, QString(),  KUrl( "kfiledialog:///document" ), m_mimeTypes.join( " " ) );
+  QString file_name = QFileDialog::getOpenFileName(0, QString(),  QUrl("kfiledialog:///document"), m_mimeTypes.join( " " ) );
 
   if (!file_name.isEmpty()) openUrl(file_name);
 }

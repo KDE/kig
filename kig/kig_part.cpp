@@ -713,7 +713,7 @@ bool KigPart::internalSaveAs()
   //  formats += "\n";
   //  formats += KImageIO::pattern( KImageIO::Writing );
 
-  QString file_name = KFileDialog::getSaveFileName( KUrl( "kfiledialog:///document" ), formats );
+  QString file_name = KFileDialog::getSaveFileName( QUrl("kfiledialog:///document"), formats );
   if (file_name.isEmpty()) return false;
   else if ( QFileInfo( file_name ).exists() )
   {
@@ -993,7 +993,7 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" KDE_EXPORT int convertToNative( const KUrl& url, const QByteArray& outfile )
+extern "C" KDE_EXPORT int convertToNative( const QUrl &url, const QByteArray& outfile )
 {
   kDebug() << "converting " << url.prettyUrl() << " to " << outfile;
 

@@ -463,7 +463,7 @@ void TypesDialog::exportType()
       types.push_back( macro );
   }
   if (types.empty()) return;
-  QString file_name = KFileDialog::getSaveFileName( KUrl( "kfiledialog:///macro" ), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
+  QString file_name = KFileDialog::getSaveFileName( QUrl("kfiledialog:///macro"), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
   if ( file_name.isNull() )
     return;
   QFile fi( file_name );
@@ -478,7 +478,7 @@ void TypesDialog::exportType()
 void TypesDialog::importTypes()
 {
   QStringList file_names =
-    KFileDialog::getOpenFileNames( KUrl( "kfiledialog:///importTypes" ), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Import Types" ));
+    KFileDialog::getOpenFileNames( QUrl("kfiledialog:///importTypes"), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Import Types" ));
 
   std::vector<Macro*> macros;
 
