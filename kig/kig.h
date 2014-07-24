@@ -19,7 +19,8 @@
 #ifndef KIG_KIG_H
 #define KIG_KIG_H
 
-#include <kparts/mainwindow.h>
+#include <KParts/MainWindow>
+#include <KParts/ReadWritePart>
 
 class KRecentFilesAction;
 
