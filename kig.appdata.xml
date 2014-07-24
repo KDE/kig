@@ -7,7 +7,6 @@
   <name xml:lang="de">Kig</name>
   <name xml:lang="en-GB">Kig</name>
   <name xml:lang="es">Kig</name>
-  <name xml:lang="et">Kig</name>
   <name xml:lang="lt">Kig</name>
   <name xml:lang="nds">Kig</name>
   <name xml:lang="nl">Kig</name>
@@ -24,7 +23,6 @@
   <summary xml:lang="cs">Interaktivní geometrie</summary>
   <summary xml:lang="en-GB">Interactive Geometry</summary>
   <summary xml:lang="es">Geometría interactiva</summary>
-  <summary xml:lang="et">Interaktiivne geomeetria</summary>
   <summary xml:lang="lt">Interaktyvi geometrija</summary>
   <summary xml:lang="nds">Wesselwarken Geometrie</summary>
   <summary xml:lang="nl">Interactieve meetkunde</summary>
@@ -41,7 +39,6 @@
     <p>Kig is an interactive mathematics software for learning and teaching geometry. It allows to explore mathematical figures and concepts using the computer and also can serve as a drawing tool for mathematical figures. Constructions can be made with points, vectors, lines, and polygons and all elements can be modified directly by using the mouse. Kig helps teachers and students to make conjectures and to understand how to prove geometric theorems.</p>
     <p xml:lang="en-GB">Kig is an interactive mathematics software for learning and teaching geometry. It allows to explore mathematical figures and concepts using the computer and also can serve as a drawing tool for mathematical figures. Constructions can be made with points, vectors, lines, and polygons and all elements can be modified directly by using the mouse. Kig helps teachers and students to make conjectures and to understand how to prove geometric theorems.</p>
     <p xml:lang="es">Kig es un software matemático interactivo para el aprendizaje y la enseñanza de la geometría. Permite explorar figuras matemáticas y conceptos usando un equipo informático, además de servir como herramienta de dibujo de figuras matemáticas. Puede realizar construcciones con puntos, vectores, líneas y polígonos, y permite modificar todos estos elementos directamente usando el ratón. Kig ayuda a los profesores y a los estudiantes a hacer conjeturas y a entender cómo probar teoremas geométricos.</p>
-    <p xml:lang="et">Kig on interaktiivne matemaatikatarkvara geomeetria õppimiseks ja õpetamiseks. See võimaldab arvuti vahendusel uurida matemaatilisi kujundeid ja põhimõtteid ning ühtlasi matemaatilisi kujundeid joonistada. Kujundeid võib luua punktide, vektorite, sirgete ja hulknurkade põhjal, kõiki elemente saab muuta otse hiirega. Kig aitab õpetajatele ja õpilastel püstitada hüpoteese ja mõista, kuidas tuleks teoreeme tõestada.</p>
     <p xml:lang="nds">Kig is en wesselwarken Mathematikprogramm för't Lehren vun Geometrie. Du kannst dor mathemaatsch Figuren un Konzepten mit ünnersöken, mat dat lett sik ok as Tekenwarktüüch för mathemaatsch Figuren bruken. Du kannst Dien Konstrukschonen ut Pünkt, Vektoren, Lienen un Veelecken opbuen, un all Elementen laat sik direktemang mit de Muus bewerken. Kig hölpt Schölers un Lehrers bi't Opstellen vun Vermoden, bi't Bewiesen un bi't Verstahn, wodennig een wat bewiesen kann.</p>
     <p xml:lang="nl">Kig is een interactief programma voor het leren en onderwijzen van meetkunde. Wiskundige figuren en ideeën kunnen er mee worden bestudeerd op de computer, en er kunnen wiskundige figuren mee worden getekend. Ook kunnen er constructies mee worden gemaakt met punten, vectoren, lijnstukken, en veelhoeken, en alle elementen kunnen direct met de muis worden gewijzigd. Kig helpt zowel leraren als leerlingen met het opstellen  van vermoedens, en het begrip hoe meetkundige stellingen te bewijzen.</p>
     <p xml:lang="pl">Kig jest interaktywnym oprogramowaniem matematycznym do nauki i nauczania geometrii. Umożliwia poznawanie figur matematycznych i pomysłów przy użyciu komputera. Program może także służyć jako narzędzie do rysowania figur matematycznych. Konstrukcje można tworzyć przy użyciu punktów, wektorów, linii oraz wielokątów, a wszystkie elementy można bezpośrednio zmieniać przy użyciu myszy. Kig pomaga nauczycielom i uczniom czynić przypuszczenia i pojąć sposób  udowadniania teorii geometrycznych.</p>
