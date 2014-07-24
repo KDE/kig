@@ -29,9 +29,9 @@
 #include <QTextEdit>
 #include <QDialog>
 
+#include <KIconThemes/KIconLoader>
 #include <kactioncollection.h>
 #include <kglobalsettings.h>
-#include <kiconloader.h>
 #include <klocale.h>
 
 #include <KTextEditor/Document>

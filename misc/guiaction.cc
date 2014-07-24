@@ -31,7 +31,7 @@
 #include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
 
-#include <kiconloader.h>
+#include <KIconThemes/KIconLoader>
 #include <klocale.h>
 #include <kactioncollection.h>
 
