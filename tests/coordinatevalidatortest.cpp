@@ -20,9 +20,10 @@
 #include "../misc/common.h"
 
 #include <qtest_kde.h>
-#include <kglobal.h>
-#include <qobject.h>
-#include <qvalidator.h>
+#include <QObject>
+#include <QValidator>
+
+#include <KLocale>
 
 // this class is copied from coordinate_system.cpp, with the following differences:
 // - QDoubleValidator is used instead of KDoubleValidator
@@ -113,7 +114,7 @@ void CoordinateValidator::fixup( QString & input ) const
   if ( sc == -1 )
   {
     sc = input.length();
-    KLocale* l = KGlobal::locale();
+    KLocale* l = KLocale::global();
     if ( mpolar )
       input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
                     QString::fromLatin1( "0" ) );
