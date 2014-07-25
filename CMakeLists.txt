@@ -2,6 +2,7 @@ project(kig)
 
 cmake_minimum_required(VERSION 2.8.12)
 
+find_package(Qt5Svg REQUIRED)
 find_package(ECM REQUIRED NO_MODULE)
 find_package(KF5Parts REQUIRED)
 find_package(KF5DocTools REQUIRED)
@@ -222,7 +223,16 @@ endif(BoostPython_FOUND)
 
 add_library(kigpart MODULE ${kigpart_PART_SRCS})
 
-target_link_libraries(kigpart KF5::Parts KF5::I18n KF5::TextEditor KF5::IconThemes KF5::KDELibs4Support Qt5::Gui ${KDE5_KUTILS_LIBS} )
+target_link_libraries(kigpart
+  Qt5::Gui
+  Qt5::Svg
+  KF5::Parts
+  KF5::I18n
+  KF5::TextEditor
+  KF5::IconThemes
+  KF5::KDELibs4Support
+  ${KDE5_KUTILS_LIBS}
+)
 
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE5_KTEXTEDITOR_LIBS})

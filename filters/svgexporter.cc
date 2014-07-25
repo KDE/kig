@@ -29,7 +29,7 @@
 #include <qcheckbox.h>
 #include <qfile.h>
 #include <qrect.h>
-#include <qsvggenerator.h>
+#include <QSvgGenerator>
 
 #include <klocale.h>
 #include <kmessagebox.h>
