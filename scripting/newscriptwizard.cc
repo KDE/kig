@@ -29,7 +29,7 @@
 #include <QTextEdit>
 #include <QDialog>
 
-#include <KIconThemes/KIconLoader>
+#include <KIconEngine>
 #include <kactioncollection.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
@@ -195,7 +195,7 @@ QString NewScriptWizard::text() const
 void NewScriptWizard::setType( ScriptType::Type type )
 {
   mLabelFillCode->setText( ScriptType::fillCodeStatement( type ) );
-  KIcon scriptIcon( ScriptType::icon( type ), mIconLoader );
+  QIcon scriptIcon( new KIconEngine( ScriptType::icon( type ), mIconLoader ) );
   if ( type != ScriptType::Unknown )
   {
     setWindowIcon( scriptIcon );

@@ -31,7 +31,7 @@
 #include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
 
-#include <KIconThemes/KIconLoader>
+#include <KIconEngine>
 #include <klocale.h>
 #include <kactioncollection.h>
 
@@ -90,7 +90,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
 {
   QByteArray icon = act->iconFileName( true );
   if ( !icon.isEmpty() )
-    setIcon( QIcon::fromTheme( icon, doc.iconLoader() ) );
+    setIcon( QIcon( new KIconEngine( icon, doc.iconLoader() ) ) );
   setWhatsThis( act->description() );
   QString tooltip = act->descriptiveName();
   tooltip.replace( QRegExp( "&&" ), "&" );

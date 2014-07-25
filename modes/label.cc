@@ -42,6 +42,7 @@
 #include <qregexp.h>
 #include <qvariant.h>
 
+#include <KIconEngine>
 #include <kcursor.h>
 #include <kdebug.h>
 #include <klocale.h>
@@ -175,7 +176,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
       const char* iconfile = o->imp()->iconForProperty( i );
       if ( iconfile && *iconfile )
       {
-        act = p.addAction( QIcon::fromTheme( QLatin1String( iconfile ), mdoc.iconLoader() ), s );
+        act = p.addAction( QIcon( new KIconEngine( QLatin1String( iconfile ), mdoc.iconLoader() ) ), s );
       }
       else
       {
