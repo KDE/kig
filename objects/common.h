@@ -20,11 +20,13 @@
 
 #include <set>
 #include <vector>
-#include <qbytearray.h>
-#include <qlist.h>
-#include <qstringlist.h>
 #include <cassert>
-#include <klocale.h>
+
+#include <QByteArray>
+#include <QList>
+#include <QStringList>
+
+#include <KI18n/KLocalizedString>
 
 class Coordinate;
 class KigDocument;
