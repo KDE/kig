@@ -345,20 +345,12 @@ Coordinate calcCircleRadicalStartPoint( const Coordinate& ca, const Coordinate& 
   return m + direc;
 }
 
+//TODO Decide whether we need to reimplement locale handling or if we can just remove this
 double getDoubleFromUser( const QString& caption, const QString& label, double value,
                           QWidget* parent, bool* ok, double min, double max, int decimals )
 {
-  KDoubleValidator vtor( min, max, decimals,0 );
+  double ret = QInputDialog::getDouble( parent, caption, label, value, min, max, decimals, ok );
 
-  QString input = QInputDialog::getText(
-    caption, label, KLocale::global()->formatNumber( value, decimals ),
-    ok, parent, &vtor );
-
-  bool myok = true;
-  double ret = KLocale::global()->readNumber( input, &myok );
-  if ( ! myok )
-    ret = input.toDouble( & myok );
-  if ( ok ) *ok = myok;
   return ret;
 }
 
