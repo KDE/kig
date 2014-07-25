@@ -26,5 +26,15 @@ install( PROGRAMS kig.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kig_part.desktop  DESTINATION  ${SERVICES_INSTALL_DIR} )
 install( FILES kigui.rc kigpartui.rc DESTINATION ${CMAKE_INSTALL_DATADIR}/kig )
 
-ecm_install_icons( ${ICON_INSTALL_DIR}   )
+ecm_install_icons(ICONS
+  22-apps-kig.png
+  16-apps-kig.png
+  32-apps-kig.png
+  64-apps-kig.png
+  48-apps-kig.png
+  sc-apps-kig.svgz
+  DESTINATION ${ICON_INSTALL_DIR}
+  THEME hicolor
+)
+
 
