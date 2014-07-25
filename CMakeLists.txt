@@ -3,12 +3,12 @@ project(kig)
 cmake_minimum_required(VERSION 2.8.12)
 
 find_package(ECM REQUIRED NO_MODULE)
-find_package(KF5Parts)
-find_package(KF5DocTools)
-find_package(KF5I18n)
-find_package(KF5TextEditor)
-find_package(KF5IconThemes)
-find_package(KF5KDELibs4Support)
+find_package(KF5Parts REQUIRED)
+find_package(KF5DocTools REQUIRED)
+find_package(KF5I18n REQUIRED)
+find_package(KF5TextEditor REQUIRED)
+find_package(KF5IconThemes REQUIRED)
+find_package(KF5KDELibs4Support REQUIRED)
 
 # Needed for unit tests
 find_package(KF5Emoticons)
