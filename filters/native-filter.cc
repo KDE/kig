@@ -38,10 +38,10 @@
 #include <qfont.h>
 #include <qregexp.h>
 #include <qtextstream.h>
+#include <QStandardPaths>
 
 #include <karchive.h>
 #include <kdebug.h>
-#include <kglobal.h>
 #include <kstandarddirs.h>
 #include <ktar.h>
 
@@ -122,7 +122,7 @@ KigDocument* KigFilterNative::load( const QString& file )
     // kig file inside it...
     iscompressed = true;
 
-    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    QString tempdir = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
     if ( tempdir.isEmpty() )
       KIG_FILTER_PARSE_ERROR;
 
@@ -744,7 +744,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     // the user wants to save a compressed file, so we have to save our kig
     // file to a temp file and then compress it...
 
-    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    QString tempdir = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
     if ( tempdir.isEmpty() )
       return false;
 

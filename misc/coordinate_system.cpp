@@ -28,16 +28,16 @@
 #include "goniometry.h"
 #include "kigpainter.h"
 
+#include <string>
+#include <cmath>
+
 #include <qpainter.h>
 #include <qregexp.h>
 
 #include <kdebug.h>
-#include <kglobal.h>
-#include <klocale.h>
 #include <knumvalidator.h>
 
-#include <string>
-#include <math.h>
+#include <KLocale>
 
 static QString withoutSpaces( const QString& str )
 {
@@ -126,7 +126,7 @@ void CoordinateValidator::fixup( QString & input ) const
   if ( sc == -1 )
   {
     sc = input.length();
-    KLocale* l = KGlobal::locale();
+    KLocale* l = KLocale::global();
     if ( mpolar )
       input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
                     QString::fromLatin1( "0" ) );
@@ -154,8 +154,8 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   // changes..  might be a good idea to do that, but well, maybe some
   // other time :)
   int l = d.getCoordinatePrecision();
-  QString xs = KGlobal::locale()->formatNumber( p.x, l );
-  QString ys = KGlobal::locale()->formatNumber( p.y, l );
+  QString xs = KLocale::global()->formatNumber( p.x, l );
+  QString ys = KLocale::global()->formatNumber( p.y, l );
   return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
 }
 
@@ -167,7 +167,7 @@ Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
   {
     QString xs = r.cap(1);
     QString ys = r.cap(2);
-    KLocale* l = KGlobal::locale();
+    KLocale* l = KLocale::global();
     double x = l->readNumber( xs, &ok );
     if ( ! ok ) x = xs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
@@ -282,7 +282,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
 
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
-        KGlobal::locale()->formatNumber( i, hnfrac ),
+        KLocale::global()->formatNumber( i, hnfrac ),
         Qt::AlignLeft | Qt::AlignTop
         );
     };
@@ -291,7 +291,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
     {
       if( fabs( i ) < 1e-8 ) continue;
       p.drawText ( Rect( Coordinate( 0, i ), 2*hd, vd ).normalized(),
-                   KGlobal::locale()->formatNumber( i, vnfrac ),
+                   KLocale::global()->formatNumber( i, vnfrac ),
                    Qt::AlignBottom | Qt::AlignLeft
         );
     };
@@ -359,8 +359,8 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
   double r = pt.length();
   double theta = Goniometry::convert( atan2( pt.y, pt.x ), Goniometry::Rad, Goniometry::Deg );
 
-  QString rs = KGlobal::locale()->formatNumber( r, l );
-  QString ts = KGlobal::locale()->formatNumber( theta, 0 );
+  QString rs = KLocale::global()->formatNumber( r, l );
+  QString ts = KLocale::global()->formatNumber( theta, 0 );
 
   return QString::fromLatin1("( %1; %2 )").arg( rs ).arg( ts );
 }
@@ -386,11 +386,11 @@ Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
   if (ok)
   {
     QString rs = regexp.cap( 1 );
-    double r = KGlobal::locale()->readNumber( rs, &ok );
+    double r = KLocale::global()->readNumber( rs, &ok );
     if ( ! ok ) r = rs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     QString ts = regexp.cap( 2 );
-    double theta = KGlobal::locale()->readNumber( ts, &ok );
+    double theta = KLocale::global()->readNumber( ts, &ok );
     if ( ! ok ) theta = ts.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     theta *= M_PI;
@@ -473,7 +473,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
       // through the 0 etc. )
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
+      QString is = KLocale::global()->formatNumber( fabs( i ), nfrac );
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
         is, Qt::AlignLeft | Qt::AlignTop );
@@ -483,7 +483,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     {
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
+      QString is = KLocale::global()->formatNumber( fabs( i ), nfrac );
 
       p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
                    is, Qt::AlignBottom | Qt::AlignLeft

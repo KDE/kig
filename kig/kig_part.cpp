@@ -49,7 +49,6 @@
 #include <kdebug.h>
 #include <kdemacros.h>
 #include <kfiledialog.h>
-#include <kglobal.h>
 #include <kiconloader.h>
 #include <kcomponentdata.h>
 #include <klocale.h>

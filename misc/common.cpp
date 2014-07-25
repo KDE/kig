@@ -28,11 +28,10 @@
 #include <cmath>
 #include <limits>
 
-#include <kdebug.h>
+#include <QInputDialog>
+
+#include <KLocale>
 #include <knumvalidator.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kinputdialog.h>
 
 Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t )
 {
@@ -351,12 +350,12 @@ double getDoubleFromUser( const QString& caption, const QString& label, double v
 {
   KDoubleValidator vtor( min, max, decimals,0 );
 
-  QString input = KInputDialog::getText(
-    caption, label, KGlobal::locale()->formatNumber( value, decimals ),
+  QString input = QInputDialog::getText(
+    caption, label, KLocale::global()->formatNumber( value, decimals ),
     ok, parent, &vtor );
 
   bool myok = true;
-  double ret = KGlobal::locale()->readNumber( input, &myok );
+  double ret = KLocale::global()->readNumber( input, &myok );
   if ( ! myok )
     ret = input.toDouble( & myok );
   if ( ok ) *ok = myok;
