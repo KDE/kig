@@ -30,15 +30,13 @@
 #include "../misc/coordinate_system.h"
 
 #include <algorithm>
-
-#include <qapplication.h>
-#include <qclipboard.h>
-#include <qstringlist.h>
-
-#include <kfontdialog.h>
-
 #include <cmath>
 #include <iterator>
+
+#include <QApplication>
+#include <QClipboard>
+#include <QStringList>
+#include <QFontDialog>
 
 static const ArgsParser::spec arggspeccs[] =
 {
@@ -214,8 +212,9 @@ void GenericTextType::executeAction( int i, ObjectHolder& oh, ObjectTypeCalcer& 
   {
     // change label font
     QFont f = oh.drawer()->font();
-    int result = KFontDialog::getFont( f, KFontChooser::NoDisplayFlags, &w );
-    if ( result != KFontDialog::Accepted ) return;
+    bool result;
+    f = QFontDialog::getFont( &result, f, &w );
+    if ( !result ) return;
     KigCommand* kc = new KigCommand( doc, i18n( "Change Label Font" ) );
     kc->addTask( new ChangeObjectDrawerTask( &oh, oh.drawer()->getCopyFont( f ) ) );
     doc.history()->push( kc );
