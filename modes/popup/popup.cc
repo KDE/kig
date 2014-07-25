@@ -87,7 +87,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
                                                 NormalMode& mode,
                                                 const std::vector<ObjectHolder*>& objs,
                                                 const QPoint& plc )
-  : KMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
+  : QMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
     mmode( mode ), monlylabels( false )
 {
   bool empty = objs.empty();

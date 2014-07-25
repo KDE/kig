@@ -21,9 +21,9 @@
 #ifndef KIG_MODES_POPUP_H
 #define KIG_MODES_POPUP_H
 
-#include <kmenu.h>
-
 #include <vector>
+
+#include <QMenu>
 
 class QAction;
 class KigPart;
@@ -44,7 +44,7 @@ class ObjectHolder;
  * PopupActionProviders are disabled, and some others enabled..
  */
 class NormalModePopupObjects
-  : public KMenu
+  : public QMenu
 {
   Q_OBJECT
 

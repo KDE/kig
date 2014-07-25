@@ -85,7 +85,7 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
 
 ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
                                         const std::vector<ObjectHolder*>& objs )
-  : KMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
+  : QMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
 {
   addTitle( i18np( "%1 Object", "%1 Objects", mobjs.size() ) );
   QAction* newaction = 0;
