@@ -52,10 +52,11 @@
 #include <qfile.h>
 #include <qtextstream.h>
 
-#include <klocale.h>
 #include <kmessagebox.h>
 
 #include <config-kig.h>
+#include <KSharedConfig>
+#include <KConfigGroup>
 
 #ifdef HAVE_TRUNC
 #define KDE_TRUNC(a)    trunc(a)
@@ -546,7 +547,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     opts->setAxes( doc.document().axes() );
     opts->setExtraFrame( false );
 
-    KConfigGroup cg = KGlobal::config()->group("Latex Exporter");
+    KConfigGroup cg = KSharedConfig::openConfig()->group("Latex Exporter");
 
     int fmt = cg.readEntry<int>("OutputFormat", LatexExporterOptions::PSTricks);
     if (fmt > -1 && fmt < LatexExporterOptions::FormatCount)
