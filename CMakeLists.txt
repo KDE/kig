@@ -14,7 +14,7 @@ find_package(KF5KDELibs4Support REQUIRED)
 find_package(KF5Emoticons)
 find_package(KF5ItemModels)
 
-set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
 
 # TODO Figure this out for Frameworks
 # search packages used by KDE
