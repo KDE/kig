@@ -25,10 +25,11 @@
 
 #include <kdebug.h>
 #include <QDialog>
-#include <kicondialog.h>
 #include <klineedit.h>
-#include <klocale.h>
 #include <ktoolinvocation.h>
+
+#include <KIconButton>
+#include <KLocale>
 
 class GivenArgsPage
   : public QWizardPage
@@ -129,6 +130,7 @@ MacroInfoPage::MacroInfoPage( QWidget* parent )
   setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   setFinalPage( true );
 
+  //TODO Make this a ui file
   QGridLayout* lay = new QGridLayout( this );
   lay->setMargin( 0 );
   QLabel* label = new QLabel( this );
