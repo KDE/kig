@@ -19,7 +19,6 @@
 **/
 
 #include "kig_part.h"
-#include "kig_part.moc"
 
 #include "aboutdata.h"
 #include "kig_commands.h"
@@ -46,12 +45,15 @@
 #include <iterator>
 
 #include <QAction>
+
+#include <KGlobal>
+#include <KAboutData>
+
 #include <kdebug.h>
 #include <kdemacros.h>
 #include <kfiledialog.h>
 #include <kiconloader.h>
 #include <kcomponentdata.h>
-#include <klocale.h>
 #include <kxmlguiwindow.h>
 #include <kactioncollection.h>
 #include <kmessagebox.h>
@@ -61,9 +63,12 @@
 #include <ktoggleaction.h>
 #include <ktogglefullscreenaction.h>
 #include <kundostack.h>
-#include <kparts/genericfactory.h>
 #include <kdeprintdialog.h>
 #include <kprintpreview.h>
+#include <KPluginFactory>
+#include <KIconEngine>
+
+#include <KParts/OpenUrlArguments>
 
 #include <qbytearray.h>
 #include <qcheckbox.h>
@@ -73,8 +78,8 @@
 #include <qsizepolicy.h>
 #include <qtimer.h>
 #include <QIcon>
-#include <QtGui/QPrinter>
-#include <QtGui/QPrintDialog>
+#include <QPrinter>
+#include <QPrintDialog>
 
 using namespace std;
 
@@ -82,7 +87,6 @@ static const QString typesFile = "macros.kigt";
 
 // export this library...
 K_PLUGIN_FACTORY( KigPartFactory, registerPlugin< KigPart >(); )
-K_EXPORT_PLUGIN( KigPartFactory( kigAboutData( "kig", I18N_NOOP( "KigPart" ) ) ) )
 
 SetCoordinateSystemAction::SetCoordinateSystemAction(
   KigPart& d, KActionCollection* parent )
@@ -175,7 +179,7 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
     mMode( 0 ), mRememberConstruction( 0 ), mdocument( new KigDocument() )
 {
   // we need an instance
-  setComponentData( KigPartFactory::componentData() );
+  setComponentData( kigAboutData( "kig", I18N_NOOP( "KigPart" ) ) );
 
   mMode = new NormalMode( *this );
 
@@ -289,7 +293,7 @@ void KigPart::setupActions()
   a = KStandardAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
-  a->setIcon( QIcon::fromTheme( "view_fit_to_page", l ) );
+  a->setIcon( QIcon( new KIconEngine( "view_fit_to_page", l ) ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
@@ -424,7 +428,7 @@ bool KigPart::openFile()
   if ( !newdoc )
   {
     closeUrl();
-    setUrl( KUrl() );
+    setUrl( QUrl() );
     return false;
   }
   delete mdocument;
@@ -724,7 +728,7 @@ bool KigPart::internalSaveAs()
       return false;
     }
   }
-  saveAs( KUrl( file_name ) );
+  saveAs( QUrl::fromLocalFile( file_name ) );
   return true;
 }
 
@@ -994,7 +998,7 @@ KigDocument& KigPart::document()
 
 extern "C" KDE_EXPORT int convertToNative( const QUrl &url, const QByteArray& outfile )
 {
-  kDebug() << "converting " << url.prettyUrl() << " to " << outfile;
+  kDebug() << "converting " << url.toDisplayString( QUrl::PrettyDecoded ) << " to " << outfile;
 
   if ( ! url.isLocalFile() )
   {

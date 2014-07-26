@@ -18,18 +18,18 @@
 #ifndef KIG_ABOUTDATA_H
 #define KIG_ABOUTDATA_H
 
-#include <kaboutdata.h>
-#include <klocale.h>
+#include <K4AboutData>
+#include <KLocalizedString>
 
 #include <config-kig.h>
 
-inline KAboutData kigAboutData( const char* name, const char* iname )
+inline K4AboutData kigAboutData( const char* name, const char* iname )
 {
   const char* version = "v" KIGVERSION;
   const char* description = I18N_NOOP( "KDE Interactive Geometry" );
 
-  KAboutData tmp( name, 0, ki18n(iname), version,
-				   ki18n(description), KAboutData::License_GPL,
+  K4AboutData tmp( name, 0, ki18n(iname), version,
+				   ki18n(description), K4AboutData::License_GPL,
 				   ki18n( "(C) 2002-2005, The Kig developers" ),
 				   KLocalizedString(), "http://edu.kde.org/kig" );
   tmp.addAuthor(ki18n("Dominique Devriese"),
