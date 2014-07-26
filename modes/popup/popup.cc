@@ -107,7 +107,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   }
   else
     title = i18np( "%1 Object", "%1 Objects", objs.size() );
-  addTitle( title );
+  addSection( title );
 
   if ( !empty )
   {
