@@ -3,6 +3,8 @@ project(kig)
 cmake_minimum_required(VERSION 2.8.12)
 
 find_package(Qt5Svg REQUIRED)
+find_package(Qt5PrintSupport REQUIRED)
+
 find_package(ECM REQUIRED NO_MODULE)
 find_package(KF5Parts REQUIRED)
 find_package(KF5DocTools REQUIRED)
@@ -226,6 +228,7 @@ add_library(kigpart MODULE ${kigpart_PART_SRCS})
 target_link_libraries(kigpart
   Qt5::Gui
   Qt5::Svg
+  Qt5::PrintSupport
   KF5::Parts
   KF5::I18n
   KF5::TextEditor
