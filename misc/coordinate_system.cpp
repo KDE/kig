@@ -33,9 +33,9 @@
 
 #include <qpainter.h>
 #include <qregexp.h>
+#include <QDoubleValidator>
 
 #include <kdebug.h>
-#include <knumvalidator.h>
 
 #include <KLocale>
 
@@ -54,7 +54,7 @@ class CoordinateValidator
   : public QValidator
 {
   bool mpolar;
-  KDoubleValidator mdv;
+  QDoubleValidator mdv;
   mutable QRegExp mre;
 public:
   static const char reEuclidean[];
