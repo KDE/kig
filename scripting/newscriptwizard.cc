@@ -30,6 +30,7 @@
 #include <QDialog>
 
 #include <KIconEngine>
+#include <KHelpClient>
 #include <kactioncollection.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
@@ -37,8 +38,6 @@
 #include <KTextEditor/Document>
 #include <KTextEditor/Editor>
 #include <KTextEditor/View>
-
-#include <ktoolinvocation.h>
 
 #include <assert.h>
 
@@ -165,7 +164,7 @@ void NewScriptWizard::accept()
 
 void NewScriptWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( "scripting", "kig" );
+  KHelpClient::invokeHelp( "scripting", "kig" );
 }
 
 void NewScriptWizard::setText( const QString& text )

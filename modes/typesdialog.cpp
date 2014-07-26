@@ -32,7 +32,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
-#include <ktoolinvocation.h>
+#include <KHelpClient>
 
 #include <qbytearray.h>
 #include <qevent.h>
@@ -407,7 +407,7 @@ TypesDialog::~TypesDialog()
 
 void TypesDialog::slotHelp()
 {
-  KToolInvocation::invokeHelp( "working-with-types", "kig" );
+  KHelpClient::invokeHelp( "working-with-types", "kig" );
 }
 
 void TypesDialog::slotOk()

@@ -27,8 +27,8 @@
 #include <qtextedit.h>
 
 #include <QDialog>
-#include <ktoolinvocation.h>
-#include <kdebug.h>
+
+#include <KHelpClient>
 
 // defined in label.cc
 extern uint percentCount( const QString& s );
@@ -205,6 +205,6 @@ void TextLabelWizard::currentIdChanged( int id )
 
 void TextLabelWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( "text-labels", "kig" );
+  KHelpClient::invokeHelp( "text-labels", "kig" );
 }
 

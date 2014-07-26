@@ -26,8 +26,8 @@
 #include <kdebug.h>
 #include <QDialog>
 #include <klineedit.h>
-#include <ktoolinvocation.h>
 
+#include <KHelpClient>
 #include <KIconButton>
 #include <KLocale>
 
@@ -202,7 +202,7 @@ void MacroWizard::accept()
 
 void MacroWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( "defining-macros", "kig" );
+  KHelpClient::invokeHelp( "defining-macros", "kig" );
 }
 
 void MacroWizard::currentIdChanged( int id )

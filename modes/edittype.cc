@@ -28,7 +28,7 @@
 #include <klineedit.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <ktoolinvocation.h>
+#include <KHelpClient>
 #include <QDialogButtonBox>
 #include <KConfigGroup>
 #include <QPushButton>
@@ -85,7 +85,7 @@ EditType::~EditType()
 
 void EditType::slotHelp()
 {
-  KToolInvocation::invokeHelp( "working-with-types", "kig" );
+  KHelpClient::invokeHelp( "working-with-types", "kig" );
 }
 
 void EditType::slotOk()
