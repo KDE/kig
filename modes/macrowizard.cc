@@ -170,7 +170,7 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
 {
   setModal( false );
   setObjectName( QLatin1String( "Define Macro Wizard" ) );
-  setWindowTitle( QDialog::makeStandardCaption( i18n( "Define New Macro" ) ) );
+  setWindowTitle( i18n( "Define New Macro" ) );
   setOption( HaveHelpButton );
 
   mgivenArgsPage = new GivenArgsPage( this, mmode );

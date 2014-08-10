@@ -316,7 +316,7 @@ ScriptEditMode::ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc )
   // in the editor and aborts the editing
   morigscript = static_cast<const StringImp*>( imp )->data();
 
-  mwizard->setWindowTitle( QDialog::makeStandardCaption( i18nc( "'Edit' is a verb", "Edit Script" ) ) );
+  mwizard->setWindowTitle( i18nc( "'Edit' is a verb", "Edit Script" ) );
   mwizard->setText( morigscript );
   mwizard->show();
   mwizard->next();

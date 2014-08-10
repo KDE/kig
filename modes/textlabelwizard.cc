@@ -117,7 +117,7 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
 {
   setModal( false );
   setObjectName( QLatin1String( "TextLabelWizard" ) );
-  setWindowTitle( QDialog::makeStandardCaption( i18n( "Construct Label" ) ) );
+  setWindowTitle( i18n( "Construct Label" ) );
   setOption( HaveHelpButton );
   setOption( HaveFinishButtonOnEarlyPages );
 
