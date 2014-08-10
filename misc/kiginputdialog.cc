@@ -40,6 +40,7 @@
 #include <KConfigGroup>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QApplication>
 
 class KigInputDialogPrivate
 {
@@ -50,6 +51,7 @@ public:
   KLineEdit* m_lineEditFirst;
   KLineEdit* m_lineEditSecond;
   KComboBox* m_comboBox;
+  QPushButton* okButton;
 
   Coordinate m_coord1;
   Coordinate m_coord2;
@@ -81,12 +83,11 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   QVBoxLayout *mainLayout = new QVBoxLayout;
   setLayout(mainLayout);
   mainLayout->addWidget(mainWidget);
-  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
-  okButton->setDefault(true);
-  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  d->okButton = buttonBox->button(QDialogButtonBox::Ok);
+  d->okButton->setDefault(true);
+  d->okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
   connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
   connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
-  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
   mainLayout->addWidget(buttonBox);
 
   d->m_coord1 = c1 ? Coordinate( *c1 ) : Coordinate::invalidCoord();
@@ -100,7 +101,6 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 //PORTING: Verify that widget was added to mainLayout   setMainWidget( frame );
   QVBoxLayout* mainlay = new QVBoxLayout( frame );
   mainlay->setMargin( 0 );
-  mainlay->setSpacing( spacingHint() );
   mainlay->activate();
 
   d->m_label = new QLabel( frame );
@@ -135,7 +135,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 
   d->m_lineEditFirst->setFocus();
 
-  okButton->setEnabled( ok );
+  d->okButton->setEnabled( ok );
 }
 
 KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
@@ -149,8 +149,6 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
   connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
   connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
-  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
-  mainLayout->addWidget(buttonBox);
 
   d->m_gonio = g;
   d->m_gonioIsNum = true;
@@ -159,7 +157,6 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 //PORTING: Verify that widget was added to mainLayout   setMainWidget( frame );
   QVBoxLayout* mainlay = new QVBoxLayout( frame );
   mainlay->setMargin( 0 );
-  mainlay->setSpacing( spacingHint() );
   mainlay->activate();
 
   d->m_label = new QLabel( frame );
@@ -168,7 +165,6 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 
   QHBoxLayout* horlay = new QHBoxLayout( (QWidget*)0 );
   horlay->setMargin( 0 );
-  horlay->setSpacing( spacingHint() );
   horlay->activate();
 
   d->m_lineEditFirst = new KLineEdit( frame );
@@ -188,6 +184,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   horlay->addWidget( d->m_comboBox );
 
   mainlay->addLayout( horlay );
+  mainlay->addWidget( buttonBox );
 
   connect( d->m_lineEditFirst, SIGNAL(textChanged(const QString&)),
            this, SLOT(slotGonioTextChanged(const QString&)) );
@@ -237,7 +234,7 @@ void KigInputDialog::slotCoordsChanged( const QString& )
       d->m_coord2 = d->m_doc->coordinateSystem().toScreen( t, ok );
   }
 
-  okButton->setEnabled( ok );
+  d->okButton->setEnabled( ok );
 }
 
 void KigInputDialog::slotGonioSystemChanged( int index )
@@ -259,7 +256,7 @@ void KigInputDialog::slotGonioTextChanged( const QString& txt )
     double v = txt.toDouble( &(d->m_gonioIsNum) );
     d->m_gonio.setValue( v );
   }
-  okButton->setEnabled( d->m_gonioIsNum );
+  d->okButton->setEnabled( d->m_gonioIsNum );
 }
 
 
