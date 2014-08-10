@@ -220,7 +220,7 @@ if(BoostPython_FOUND)
      scripting/script_mode.cc
   )
 
-  set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "${KDE5_ENABLE_EXCEPTIONS}")
+  kde_source_files_enable_exceptions(scripting/python_scripter.cc)
 endif(BoostPython_FOUND)
 
 
