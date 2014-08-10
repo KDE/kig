@@ -12,6 +12,7 @@ find_package(KF5I18n REQUIRED)
 find_package(KF5TextEditor REQUIRED)
 find_package(KF5IconThemes REQUIRED)
 find_package(KF5ConfigWidgets REQUIRED)
+find_package(KF5Archive REQUIRED)
 find_package(KF5KDELibs4Support REQUIRED)
 
 # Needed for unit tests
@@ -236,6 +237,7 @@ target_link_libraries(kigpart
   KF5::IconThemes
   KF5::ConfigWidgets
   KF5::KDELibs4Support
+  KF5::Archive
   ${KDE5_KUTILS_LIBS}
 )
 
