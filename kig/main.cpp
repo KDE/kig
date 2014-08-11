@@ -22,7 +22,9 @@
 
 #include <qbytearray.h>
 
-#include <kuniqueapplication.h>
+#include <QApplication>
+
+#include <KComponentData>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
@@ -32,16 +34,16 @@
 #include "aboutdata.h"
 
 class KigApplication
-  : public KUniqueApplication
+  : public QApplication
 {
 public:
-  KigApplication( bool gui = true );
+  KigApplication( int & argc, char ** argv );
   int newInstance();
   void handleArgs( KCmdLineArgs* args );
 };
 
-KigApplication::KigApplication( bool gui )
-  : KUniqueApplication( gui, gui )
+KigApplication::KigApplication( int & argc, char ** argv )
+  : QApplication( argc, argv )
 {
 }
 
@@ -84,8 +86,8 @@ static int convertToNative( const QUrl &file, const QByteArray& outfile )
   KComponentData maindata( KCmdLineArgs::aboutData() );
   KPluginLoader libraryLoader( "kigpart" );
   QLibrary library( libraryLoader.fileName() );
-  int ( *converterfunction )( const KUrl&, const QByteArray& );
-  converterfunction = ( int ( * )( const KUrl&, const QByteArray& ) ) library.resolve( "convertToNative" );
+  int ( *converterfunction )( const QUrl&, const QByteArray& );
+  converterfunction = ( int ( * )( const QUrl&, const QByteArray& ) ) library.resolve( "convertToNative" );
   if ( !converterfunction )
   {
     qCritical() << "Error: broken Kig installation: different library and application version !" << endl;
@@ -96,7 +98,7 @@ static int convertToNative( const QUrl &file, const QByteArray& outfile )
 
 int main(int argc, char **argv)
 {
-  KAboutData about = kigAboutData( "kig", I18N_NOOP("Kig") );
+  K4AboutData about = kigAboutData( "kig", I18N_NOOP("Kig") );
 
   KCmdLineArgs::init(argc, argv, &about);
 
@@ -107,7 +109,7 @@ int main(int argc, char **argv)
   options.add("outfile <file>", ki18n( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ));
   options.add("+[URL]", ki18n( "Document to open" ));
   KCmdLineArgs::addCmdLineOptions( options );
-  KigApplication::addCmdLineOptions();
+  //TODO  KigApplication::addCmdLineOptions();
 
   KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
   if ( args->isSet( "convert-to-native" ) )
@@ -135,7 +137,7 @@ int main(int argc, char **argv)
       qCritical() << "Error: --outfile specified without convert-to-native." << endl;
       return -1;
     }
-    KigApplication app;
+    KigApplication app( KCmdLineArgs::qtArgc(), KCmdLineArgs::qtArgv() );
 
     // see if we are starting with session management
     if (app.isSessionRestored()) RESTORE(Kig)

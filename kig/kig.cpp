@@ -27,8 +27,9 @@
 #include <QAction>
 #include <QFileDialog>
 #include <QUrl>
+#include <QMimeData>
 
-#include <kconfig.h>
+#include <KConfigGroup>
 #include <QDebug>
 #include <kedittoolbar.h>
 #include <kshortcutsdialog.h>
@@ -37,7 +38,6 @@
 #include <kactioncollection.h>
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
-#include <kstatusbar.h>
 #include <kstandardaction.h>
 #include <ktip.h>
 #include <kxmlguifactory.h>
@@ -122,7 +122,7 @@ void Kig::saveProperties(KConfigGroup &config)
   // the 'config' object points to the session managed
   // config file.  anything you write here will be available
   // later when this app is restored
-  config.writePathEntry("fileName", m_part->url().path());
+  config.writePathEntry( "fileName", m_part->url().toLocalFile() );
 }
 
 void Kig::readProperties(const KConfigGroup &config)
@@ -131,7 +131,7 @@ void Kig::readProperties(const KConfigGroup &config)
   // config file.  this function is automatically called whenever
   // the app is being restored.  read in here whatever you wrote
   // in 'saveProperties'
-  load( KUrl( config.readPathEntry( "fileName", QString() ) ) );
+  load( QUrl( config.readPathEntry( "fileName", QString() ) ) );
 }
 
 void Kig::load( const QUrl &url )
@@ -173,7 +173,8 @@ void Kig::openUrl( const QUrl &url )
 
 void Kig::optionsConfigureToolbars()
 {
-  saveMainWindowSettings(KGlobal::config()->group( "MainWindow") );
+  KConfigGroup configGroup = KGlobal::config()->group( "MainWindow");
+  saveMainWindowSettings( configGroup );
 
   // use the standard toolbar editor
   KEditToolBar dlg(factory());
@@ -184,7 +185,7 @@ void Kig::optionsConfigureToolbars()
 
 void Kig::applyNewToolbarConfig()
 {
-  applyMainWindowSettings(KGlobal::config()->group( "MainWindow") );
+  applyMainWindowSettings( KGlobal::config()->group( "MainWindow") );
 }
 
 bool Kig::queryClose()
@@ -194,13 +195,13 @@ bool Kig::queryClose()
 
 void Kig::dragEnterEvent(QDragEnterEvent* e)
 {
-  e->setAccepted( KUrl::List::canDecode( e->mimeData() ) );
+  e->setAccepted( e->mimeData()->hasUrls() );
 }
 
 void Kig::dropEvent(QDropEvent* e)
 {
-  KUrl::List urls = KUrl::List::fromMimeData( e->mimeData() );
-  for ( KUrl::List::iterator u = urls.begin(); u != urls.end(); ++u )
+  const QList<QUrl> urls = e->mimeData()->urls();
+  for ( QList<QUrl>::const_iterator u = urls.cbegin(); u != urls.cend(); ++u )
   {
     Kig* k = new Kig();
     k->show();
@@ -211,7 +212,7 @@ void Kig::dropEvent(QDropEvent* e)
 void Kig::fileOpen()
 {
   // this slot is connected to the KStandardAction::open action...
-  QString file_name = QFileDialog::getOpenFileName(0, QString(),  QUrl("kfiledialog:///document"), m_mimeTypes.join( " " ) );
+  QString file_name = QFileDialog::getOpenFileName(0, QString(),  "kfiledialog:///document", m_mimeTypes.join( " " ) );
 
   if (!file_name.isEmpty()) openUrl(file_name);
 }
