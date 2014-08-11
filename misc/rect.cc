@@ -25,7 +25,7 @@ bool operator==( const Rect& r, const Rect& s )
            && r.height() == s.height() );
 }
 
-kdbgstream& operator<<( kdbgstream& s, const Rect& t )
+QDebug& operator<<( QDebug& s, const Rect& t )
 {
   s << "left: " << t.left()
     << "bottom: " << t.bottom()

@@ -35,7 +35,7 @@
 #include <qregexp.h>
 #include <QDoubleValidator>
 
-#include <kdebug.h>
+#include <QDebug>
 
 #include <KLocale>
 

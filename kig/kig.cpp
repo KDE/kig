@@ -29,7 +29,7 @@
 #include <QUrl>
 
 #include <kconfig.h>
-#include <kdebug.h>
+#include <QDebug>
 #include <kedittoolbar.h>
 #include <kshortcutsdialog.h>
 #include <klibloader.h>

@@ -41,7 +41,7 @@
 #include <QStandardPaths>
 
 #include <karchive.h>
-#include <kdebug.h>
+#include <QDebug>
 #include <kstandarddirs.h>
 #include <ktar.h>
 
@@ -149,7 +149,7 @@ KigDocument* KigFilterNative::load( const QString& file )
     if ( !kigz->isFile() )
       KIG_FILTER_PARSE_ERROR;
     dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
-    kDebug() << "extracted file: " << tempdir + kigz->name()
+    qDebug() << "extracted file: " << tempdir + kigz->name()
               << "exists: " << QFile::exists( tempdir + kigz->name() ) << endl;
 
     kigdoc.setFileName( tempdir + kigz->name() );
@@ -764,7 +764,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
       return false;
     ftmpfile.close();
 
-    kDebug() << "tmp saved file: " << tmpfile;
+    qDebug() << "tmp saved file: " << tmpfile;
 
     // creating the archive and adding our file
     KTar ark( outfile,  "application/x-gzip" );

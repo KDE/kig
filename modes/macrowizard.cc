@@ -23,7 +23,7 @@
 #include <qlabel.h>
 #include <qlayout.h>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <QDialog>
 #include <klineedit.h>
 

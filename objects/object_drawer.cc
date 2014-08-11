@@ -24,7 +24,7 @@
 #include <qnamespace.h>
 #include <cassert>
 
-#include <kdebug.h>
+#include <QDebug>
 
 void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
 {

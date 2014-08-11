@@ -75,10 +75,6 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
       id = 1;
     }
   }
-//  kDebug() << "numpoints: " << numpoints
-//            << "numothers: " << numothers << endl
-//            << "numpolygons: " << numpolygons << endl
-//            << "id: " << id << endl;
 
   return id;
 }

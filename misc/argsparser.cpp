@@ -22,7 +22,7 @@
 
 #include <cassert>
 #include <algorithm>
-#include <kdebug.h>
+#include <QDebug>
 
 void ArgsParser::initialize( const struct spec* args, int n )
 {
@@ -178,7 +178,7 @@ ArgsParser::spec ArgsParser::findSpec( const ObjectImp* obj, const Args& parents
   matched:
     ;
   };
-  kDebug() << "no proper spec found :(";
+  qDebug() << "no proper spec found :(";
   return ret;
 }
 
@@ -261,7 +261,7 @@ std::string ArgsParser::selectStatement( const Args& selection ) const
     if ( !found[i] )
       return margs[i].selectstat;
   }
-  kDebug() << "no proper select statement found :(";
+  qDebug() << "no proper select statement found :(";
   return "";
 }
 

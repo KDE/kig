@@ -28,7 +28,7 @@
 #include <qtimer.h>
 #include <qundostack.h>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <QIcon>
 #include <klineedit.h>
 #include <klocale.h>

@@ -221,7 +221,7 @@ void NormalModePopupObjects::toplevelMenuSlot( QAction* act )
   int data = act->data().toInt();
   int id = data & 0xFF;
   int menu = data >> 8;
-kDebug() << "menu: " << menu << " - id: " << id;
+qDebug() << "menu: " << menu << " - id: " << id;
   activateAction( menu, id );
 }
 
@@ -231,7 +231,7 @@ void NormalModePopupObjects::activateAction( int menu, int action )
   // we need action - 10 cause we called fillUpMenu with nextfree set
   // to 10 initially..
   action -= 10;
-kDebug() << "MENU: " << menu << " - ACTION: " << action;
+qDebug() << "MENU: " << menu << " - ACTION: " << action;
   for ( uint i = 0; ! done && i < mproviders.size(); ++i )
     done = mproviders[i]->executeAction( menu, action, mobjs, *this, mpart, mview, mmode );
 }
@@ -248,7 +248,6 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& pix, 
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& icon, const QString& name, int id )
 {
-//kDebug() << "ID: " << id;
   if ( mmenuslast[menu]->actions().size() >= MAXMENUITEMS )
     mmenuslast[menu] = mmenuslast[menu]->addMenu( i18nc( "More menu items", "More..." ) );
   QAction* newaction = mmenuslast[menu]->addAction( icon, name );

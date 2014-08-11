@@ -49,7 +49,7 @@
 #include <KGlobal>
 #include <KAboutData>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <kdemacros.h>
 #include <kfiledialog.h>
 #include <kiconloader.h>
@@ -408,7 +408,7 @@ bool KigPart::openFile()
     // we can always use findByPath instead of findByURL with localFilePath()
     mimeType = KMimeType::findByPath( localFilePath() );
   }
-  kDebug() << "mimetype: " << mimeType->name();
+  qDebug() << "mimetype: " << mimeType->name();
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
   {
@@ -558,7 +558,7 @@ void KigPart::deleteObjects()
 void KigPart::startObjectGroup()
 {
   if ( mcurrentObjectGroup.size() > 0 )
-    kWarning() << "New object group started while already having objects in object group. Current group will be lost";
+    qWarning() << "New object group started while already having objects in object group. Current group will be lost";
   
   mcurrentObjectGroup.clear();
   misGroupingObjects = true;
@@ -998,12 +998,12 @@ KigDocument& KigPart::document()
 
 extern "C" KDE_EXPORT int convertToNative( const QUrl &url, const QByteArray& outfile )
 {
-  kDebug() << "converting " << url.toDisplayString( QUrl::PrettyDecoded ) << " to " << outfile;
+  qDebug() << "converting " << url.toDisplayString( QUrl::PrettyDecoded ) << " to " << outfile;
 
   if ( ! url.isLocalFile() )
   {
     // TODO
-    kError() << "--convert-to-native only supports local files for now." << endl;
+    qCritical() << "--convert-to-native only supports local files for now." << endl;
     return -1;
   }
 
@@ -1012,23 +1012,23 @@ extern "C" KDE_EXPORT int convertToNative( const QUrl &url, const QByteArray& ou
   QFileInfo fileinfo( file );
   if ( ! fileinfo.exists() )
   {
-    kError() << "The file \"" << file << "\" does not exist" << endl;
+    qCritical() << "The file \"" << file << "\" does not exist" << endl;
     return -1;
   };
 
   KMimeType::Ptr mimeType = KMimeType::findByPath ( file );
-  kDebug() << "mimetype: " << mimeType->name();
+  qDebug() << "mimetype: " << mimeType->name();
   KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
   if ( !filter )
   {
-    kError() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
+    qCritical() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
     return -1;
   };
 
   KigDocument* doc = filter->load (file);
   if ( !doc )
   {
-    kError() << "Parse error in file \"" << file << "\"." << endl;
+    qCritical() << "Parse error in file \"" << file << "\"." << endl;
     return -1;
   }
 
@@ -1042,7 +1042,7 @@ extern "C" KDE_EXPORT int convertToNative( const QUrl &url, const QByteArray& ou
   bool success = KigFilters::instance()->save( *doc, out );
   if ( !success )
   {
-    kError() << "something went wrong while saving" << endl;
+    qCritical() << "something went wrong while saving" << endl;
     return -1;
   }
 
