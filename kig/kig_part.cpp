@@ -1125,3 +1125,5 @@ void KigPart::deleteTypes()
   }
   plugActionLists();
 }
+
+#include "kig_part.moc"
