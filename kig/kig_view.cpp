@@ -57,7 +57,6 @@ KigWidget::KigWidget( KigPart* part,
     mispainting( false ),
     malreadyresized( false )
 {
-  setAttribute( Qt::WA_PaintOnScreen, true );
   part->addWidget(this);
 
   setFocusPolicy(Qt::ClickFocus);
