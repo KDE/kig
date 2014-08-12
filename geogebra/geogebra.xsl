@@ -15,8 +15,6 @@
     ObjectType. Passing self-chosen names as parameter will not recognise the Object (and it will not draw..) -->
     <xsl:param name="objectType" as="xs:string"/>
     <xsl:variable name="label" as="xs:string" select="./output/@a0"/>
-    <xsl:variable name="A" as="xs:string" select="./input/@a0"/>
-    <xsl:variable name="B" as="xs:string" select="./input/@a1"/>
     <xsl:element name="{$objectType}">
       <xsl:attribute name="label" type="xs:string">
         <xsl:value-of select="$label"/>
