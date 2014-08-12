@@ -4,10 +4,13 @@
     <xsl:variable name="label" as="xs:string" select="./@label"/>
     <xsl:variable name="x" as="xs:double" select="./coords/@x"/>
     <xsl:variable name="y" as="xs:double" select="./coords/@y"/>
-    <FixedPoint label="{$label}">
-      <Double value="{$x}"/>
-      <Double value="{$y}"/>
-    </FixedPoint>
+    <xsl:variable name="commmandType" as="xs:string" select="../command[output/@*=current()/$label]/@name"/>
+    <xsl:if test="not($commmandType='Intersect' or $commmandType='Point')">
+      <FixedPoint label="{$label}">
+        <Double value="{$x}"/>
+        <Double value="{$y}"/>
+      </FixedPoint>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="element" name="argsTemplate">
