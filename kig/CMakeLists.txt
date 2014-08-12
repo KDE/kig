@@ -14,7 +14,7 @@ set(kig_SRCS
 kde4_add_app_icon(kig_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kig.png")
 add_executable(kig ${kig_SRCS})
 
-target_link_libraries(kig KF5::Parts KF5::ConfigCore KF5::KDELibs4Support)
+target_link_libraries(kig KF5::Parts KF5::ConfigCore KF5::DBusAddons KF5::KDELibs4Support)
 
 install(TARGETS kig ${INSTALL_TARGETS_DEFAULT_ARGS})
 
