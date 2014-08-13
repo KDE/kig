@@ -13,7 +13,6 @@ find_package(KF5TextEditor REQUIRED)
 find_package(KF5IconThemes REQUIRED)
 find_package(KF5ConfigWidgets REQUIRED)
 find_package(KF5Archive REQUIRED)
-find_package(KF5DBusAddons REQUIRED)
 find_package(KF5KDELibs4Support REQUIRED)
 
 # Needed for unit tests

@@ -25,7 +25,6 @@
 #include <QApplication>
 
 #include <KComponentData>
-#include <KDBusService>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
@@ -37,15 +36,10 @@
 class KigApplication
   : public QApplication
 {
-  Q_OBJECT
-
 public:
   KigApplication( int & argc, char ** argv );
-
+  int newInstance();
   void handleArgs( KCmdLineArgs* args );
-
-public slots:
-  void newInstance( const QStringList & arguments, const QString & workingDirectory );
 };
 
 KigApplication::KigApplication( int & argc, char ** argv )
@@ -53,21 +47,20 @@ KigApplication::KigApplication( int & argc, char ** argv )
 {
 }
 
-void KigApplication::newInstance( const QStringList & arguments, const QString & workingDirectory )
+int KigApplication::newInstance()
 {
   static bool first = true;
   if (isSessionRestored() && first)
   {
     first = false;
-    return;
+    return 0;
   }
   first = false;
 
-  //FIXME This gives the wrong parsed args
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
   handleArgs(args);
   args->clear();
-  return;
+  return 0;
 }
 
 void KigApplication::handleArgs( KCmdLineArgs* args )
@@ -145,20 +138,9 @@ int main(int argc, char **argv)
       return -1;
     }
     KigApplication app( KCmdLineArgs::qtArgc(), KCmdLineArgs::qtArgv() );
-    KDBusService service(KDBusService::Unique);
-
-    QObject::connect(&service, SIGNAL( activateRequested(const QStringList & , const QString & ) ), &app, SLOT( newInstance( const QStringList &, const QString & ) )  );
 
     // see if we are starting with session management
-    if (app.isSessionRestored())
-    {
-      RESTORE(Kig);
-    }
-
-    app.handleArgs( args );
-
-    return app.exec();
+    if (app.isSessionRestored()) RESTORE(Kig)
+      return app.exec();
   }
 }
-
-#include "main.moc"
