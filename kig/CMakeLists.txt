@@ -23,7 +23,7 @@ install(TARGETS kig ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install( PROGRAMS kig.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kig_part.desktop  DESTINATION  ${SERVICES_INSTALL_DIR} )
-install( FILES kigui.rc kigpartui.rc DESTINATION ${CMAKE_INSTALL_DATADIR}/kig )
+install( FILES kigui.rc kigpartui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}/kig )
 
 ecm_install_icons(ICONS
   22-apps-kig.png
