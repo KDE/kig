@@ -108,7 +108,7 @@ void Kig::setupActions()
   setStandardToolBarMenuEnabled(true);
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
-  m_recentFilesAction = KStandardAction::openRecent( this, SLOT( openUrl( const KUrl& ) ), actionCollection() );
+  m_recentFilesAction = KStandardAction::openRecent( this, SLOT( openUrl( const QUrl& ) ), actionCollection() );
   m_recentFilesAction->loadEntries(config->group( QString() ) );
 
   KStandardAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
