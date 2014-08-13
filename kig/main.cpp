@@ -38,29 +38,12 @@ class KigApplication
 {
 public:
   KigApplication( int & argc, char ** argv );
-  int newInstance();
   void handleArgs( KCmdLineArgs* args );
 };
 
 KigApplication::KigApplication( int & argc, char ** argv )
   : QApplication( argc, argv )
 {
-}
-
-int KigApplication::newInstance()
-{
-  static bool first = true;
-  if (isSessionRestored() && first)
-  {
-    first = false;
-    return 0;
-  }
-  first = false;
-
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-  handleArgs(args);
-  args->clear();
-  return 0;
 }
 
 void KigApplication::handleArgs( KCmdLineArgs* args )
@@ -140,7 +123,23 @@ int main(int argc, char **argv)
     KigApplication app( KCmdLineArgs::qtArgc(), KCmdLineArgs::qtArgv() );
 
     // see if we are starting with session management
-    if (app.isSessionRestored()) RESTORE(Kig)
-      return app.exec();
+    if (app.isSessionRestored())
+    {
+        RESTORE(Kig)
+    }    
+    
+    static bool first = true;
+    if (app.isSessionRestored() && first)
+    {
+        first = false;
+        return 0;
+    }
+    first = false;
+
+    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    app.handleArgs(args);
+    args->clear();
+    
+    return app.exec();
   }
 }
