@@ -185,6 +185,17 @@
           <xsl:when test="(name(.) = 'command') and (./@name = 'Diameter')">
             <!-- Kig can't draw diameters of conics ( ?? )-->
           </xsl:when>
+          <xsl:when test="(name(.) = 'command') and (./@name = 'Intersect')">
+            <xsl:variable name="input1" select="./input/@a0"/>
+            <xsl:variable name="input2" select="./input/@a1"/>
+            <xsl:variable name="typeInput1" select="../command[output/@a0=current()/$input1]/@name"/>
+            <xsl:variable name="typeInput2" select="../command[output/@a0=current()/$input2]/@name"/>
+            <xsl:if test="$typeInput1='Line' and $typeInput2='Line'">
+              <xsl:call-template name="argsTemplate">
+                <xsl:with-param name="objectType" select="'LineLineIntersection'"/>
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:when>
         </xsl:choose>
       </xsl:for-each>
   </xsl:template>
