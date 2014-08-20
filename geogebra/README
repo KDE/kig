@@ -1,0 +1,39 @@
+============================
+About the Geogebra Filter :
+============================
+
+The Geogebra Filter makes use of XSLT ( Extensible Stylesheet Language Transformations ).
+Qt's XmlPatterns Module is used for providing support for XSLT. Using XSLT we
+first convert the XML representation of the Geogebra files into a more suitable intermediate
+representation from which constructing the ObjectCalcers ( and thus the objectHolders )
+is easier and homogenous for most object-types. We use the callback interface provided
+by the QAbstractXmlReceiver class to read the transformed XML and construct the objects
+present in the document.
+
+
+Important Classes :
+===================
+
+There are two important classes involved :
+
+1) GeogebraSection Class -
+   This class stores the Objects present in the document (either
+   a worksheet or a tool file ). The input-Objects and the
+   output-Objects are kept track of by using objects of this class in the GeogebraTransformer
+   class.
+
+2) GeogebraTransformer Class -
+   This class transforms the XML representation of the
+   Geogebra files into a more suitable intermediate XML
+   representation from which readingand allocating corresponding objectHolders is easier and
+   homogenous. The two filters - worksheet-filter and tool-filter make use of  objects of this class.
+
+
+File-Types Supported and Usage :
+================================
+
+The Geogebra Filter supports both types of Geogebra-files - 1) Geogebra WorkSheets
+                                                            2) Geogebra Tools
+WorkSheets files can be opened from the open-file Dialog ( just like .kig files of Kig ).
+Tool files can be opened from the types Dialog. The behaviour in case of tool files
+is exactly similar to that of Kig's macros ( .kigt files ).
