@@ -43,7 +43,7 @@ void PGFExporterImpVisitor::newLine()
 QString PGFExporterImpVisitor::emitPenColor( const QColor& c )
 {
   QString pencolor("");
-  pencolor = "color={rgb:red," + QString::number(c.red()) + ";green," + QString::number(c.green()) + ";blue," + QString::number(c.blue()) + "}";
+  pencolor = "color={rgb,255:red," + QString::number(c.red()) + ";green," + QString::number(c.green()) + ";blue," + QString::number(c.blue()) + "}";
   return pencolor;
 }
 
