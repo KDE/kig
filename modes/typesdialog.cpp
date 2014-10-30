@@ -32,7 +32,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
-#include <ktoolinvocation.h>
+#include <KHelpClient>
 
 #include <qbytearray.h>
 #include <qevent.h>
@@ -43,6 +43,10 @@
 
 #include <algorithm>
 #include <iterator>
+#include <QDialogButtonBox>
+#include <KConfigGroup>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 static QString wrapAt( const QString& str, int col = 50 )
 {
@@ -254,7 +258,7 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
     case Qt::DecorationRole:
     {
       if ( index.column() == 1 )
-        return KIcon( melems[ index.row() ]->icon() );
+        return QIcon::fromTheme( melems[ index.row() ]->icon() );
       else
         return QVariant();
       break;
@@ -333,14 +337,25 @@ int TypesModel::rowCount( const QModelIndex& parent ) const
 
 
 TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
-  : KDialog( parent ),
+  : QDialog( parent ),
     mpart( part )
 {
-  setCaption( i18n( "Manage Types" ) );
-  setButtons( Help | Ok | Cancel );
+  setWindowTitle( i18n( "Manage Types" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Help);
+  QWidget *mainWidget = new QWidget(this);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mainLayout->addWidget(mainWidget);
+  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+  okButton->setDefault(true);
+  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
+  mainLayout->addWidget(buttonBox);
 
   QWidget* base = new QWidget( this );
-  setMainWidget( base );
+//PORTING: Verify that widget was added to mainLayout   setMainWidget( base );
   mtypeswidget = new Ui_TypesWidget();
   mtypeswidget->setupUi( base );
   base->layout()->setMargin( 0 );
@@ -352,10 +367,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->setContextMenuPolicy( Qt::CustomContextMenu );
 
   // improving GUI look'n'feel...
-  mtypeswidget->buttonEdit->setIcon( KIcon( "document-properties" ) );
-  mtypeswidget->buttonRemove->setIcon( KIcon( "edit-delete" ) );
-  mtypeswidget->buttonExport->setIcon( KIcon( "document-export" ) );
-  mtypeswidget->buttonImport->setIcon( KIcon( "document-import" ) );
+  mtypeswidget->buttonEdit->setIcon( QIcon::fromTheme( "document-properties" ) );
+  mtypeswidget->buttonRemove->setIcon( QIcon::fromTheme( "edit-delete" ) );
+  mtypeswidget->buttonExport->setIcon( QIcon::fromTheme( "document-export" ) );
+  mtypeswidget->buttonImport->setIcon( QIcon::fromTheme( "document-import" ) );
 
   // loading macros...
   mmodel->addMacros( MacroList::instance()->macros() );
@@ -365,10 +380,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->resizeColumnToContents( 0 );
 
   popup = new QMenu( this );
-  popup->addAction( KIcon( "document-properties" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
-  popup->addAction( KIcon( "edit-delete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
+  popup->addAction( QIcon::fromTheme( "document-properties" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
+  popup->addAction( QIcon::fromTheme( "edit-delete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
   popup->addSeparator();
-  popup->addAction( KIcon( "document-export" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
+  popup->addAction( QIcon::fromTheme( "document-export" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
 
   // saving types
   mpart.saveTypes();
@@ -379,8 +394,8 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   connect( mtypeswidget->buttonEdit, SIGNAL( clicked() ), this, SLOT( editType() ) );
   connect( mtypeswidget->typeList, SIGNAL( customContextMenuRequested( const QPoint& ) ), this, SLOT( typeListContextMenu( const QPoint& ) ) );
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
-  connect( this, SIGNAL( okClicked() ), this, SLOT( slotOk() ) );
-  connect( this, SIGNAL( cancelClicked() ), this, SLOT( slotCancel() ) );
+  connect(okButton, SIGNAL( clicked() ), this, SLOT( slotOk() ) );
+  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL( clicked() ), this, SLOT( slotCancel() ) );
 
   resize( 460, 270 );
 }
@@ -392,7 +407,7 @@ TypesDialog::~TypesDialog()
 
 void TypesDialog::slotHelp()
 {
-  KToolInvocation::invokeHelp( "working-with-types", "kig" );
+  KHelpClient::invokeHelp( "working-with-types", "kig" );
 }
 
 void TypesDialog::slotOk()
@@ -448,7 +463,7 @@ void TypesDialog::exportType()
       types.push_back( macro );
   }
   if (types.empty()) return;
-  QString file_name = KFileDialog::getSaveFileName( KUrl( "kfiledialog:///macro" ), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
+  QString file_name = KFileDialog::getSaveFileName( QUrl("kfiledialog:///macro"), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
   if ( file_name.isNull() )
     return;
   QFile fi( file_name );
@@ -463,7 +478,7 @@ void TypesDialog::exportType()
 void TypesDialog::importTypes()
 {
   QStringList file_names =
-    KFileDialog::getOpenFileNames( KUrl( "kfiledialog:///importTypes" ), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Import Types" ));
+    KFileDialog::getOpenFileNames( QUrl("kfiledialog:///importTypes"), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Import Types" ));
 
   std::vector<Macro*> macros;
 

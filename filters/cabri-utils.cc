@@ -25,7 +25,7 @@
 #include <qregexp.h>
 #include <qstring.h>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <klocale.h>
 
 #define KIG_CABRI_FILTER_PARSE_ERROR \
@@ -112,7 +112,7 @@ QString readText( QFile& f, const QString& s, const QString& sep )
   }
   QString ret = text.mid( 1, text.length() - 2 );
 
-kDebug() << "+++++++++ text: \"" << ret << "\"";
+qDebug() << "+++++++++ text: \"" << ret << "\"";
 
   return ret;
 }
@@ -177,7 +177,7 @@ QColor CabriReader::translateColor( const QString& s )
   cmit it = colormap.find( s );
   if ( it != colormap.end() ) return (*it).second;
 
-  kDebug() << "unknown color: " << s;
+  qDebug() << "unknown color: " << s;
   return Qt::black;
 }
 
@@ -384,26 +384,6 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     line4 = CabriNS::readLine( f );
   }
 
-//     kDebug()
-//       << endl
-//       << "id = " << myobj->id << endl
-//       << "type = " << myobj->type << endl
-//       << "numberOfParents = " << numberOfParents << endl
-//       << "color = " << myobj->color.name() << endl
-//       << "fillcolor = " << myobj->fillColor.name() << endl
-//       << "thick = " << myobj->thick << endl
-//       << "lineseglength = " << myobj->lineSegLength << endl
-//       << "linesegsplit = " << myobj->lineSegSplit << endl
-//       << "specialAppearanceSwitch = " << myobj->specialAppearanceSwitch << endl
-//       << "visible = " << myobj->visible << endl
-//       << "fixed = " << myobj->fixed << endl
-//       << "parents =" << endl;
-//     for ( std::vector<int>::iterator i = myobj->parents.begin(); i != myobj->parents.end(); ++i )
-//       kDebug() << "	" << *i;
-//     kDebug() << "vals = ";
-//     for ( std::vector<double>::iterator i = myobj->data.begin(); i != myobj->data.end(); ++i )
-//       kDebug() << "	" << *i;
-
   return myobj;
 }
 
@@ -528,7 +508,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   QString line = CabriNS::readLine( f );
 
 #ifdef CABRI_DEBUG
-  kDebug() << "+++++++++ line: \"" << line << "\"";
+  qDebug() << "+++++++++ line: \"" << line << "\"";
 #endif
   QRegExp firstlinere( "^([^:]+): ([^,]+), (Const: [,0-9\\s]+)?(int ind:([^,]+),\\s)?(cart, )?(side:(\\d+), )?(inc\\.elmts: ([,0-9\\s]+))?(axis:(x|y), )?(on mark, )?(Val: ([^,]+))?(.*)$" );
   if ( !firstlinere.exactMatch( line ) )
@@ -567,7 +547,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
     long intId = tmp.toLong( &ok, 16 );
     if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
 #ifdef CABRI_DEBUG
-    kDebug() << "+++++++++ intId: " << intId;
+    qDebug() << "+++++++++ intId: " << intId;
 #endif
     if ( intId == 0 ) myobj->intersectionId = -1;
     else if ( intId == 0x10000 ) myobj->intersectionId = 1;
@@ -690,14 +670,14 @@ QColor CabriReader_v12::translateColor( const QString& s )
   cmit it = colormap_v12.find( s );
   if ( it != colormap_v12.end() ) return (*it).second;
 
-  kDebug() << "unknown color: " << s;
+  qDebug() << "unknown color: " << s;
   return CabriReader::translateColor( s );
 }
 
 bool CabriReader_v12::readStyles( const QString& file, const QString& line, CabriObject_v12* myobj )
 {
 #ifdef CABRI_DEBUG
-  kDebug() << ">>>>>>>>> style line: \"" << line << "\"";
+  qDebug() << ">>>>>>>>> style line: \"" << line << "\"";
 #endif
   QStringList styles = line.split( ", ", QString::SkipEmptyParts );
   bool ok = true;
@@ -770,7 +750,7 @@ bool CabriReader_v12::readStyles( const QString& file, const QString& line, Cabr
 #ifdef CABRI_DEBUG
     else
     {
-      kDebug() << ">>>>>>>>> UNKNOWN STYLE STRING: \"" << *it << "\"";
+      qDebug() << ">>>>>>>>> UNKNOWN STYLE STRING: \"" << *it << "\"";
     }
 #endif
   }

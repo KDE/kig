@@ -23,12 +23,13 @@
 #include <qlabel.h>
 #include <qlayout.h>
 
-#include <kdebug.h>
-#include <kdialog.h>
-#include <kicondialog.h>
+#include <QDebug>
+#include <QDialog>
 #include <klineedit.h>
-#include <klocale.h>
-#include <ktoolinvocation.h>
+
+#include <KHelpClient>
+#include <KIconButton>
+#include <KLocale>
 
 class GivenArgsPage
   : public QWizardPage
@@ -129,6 +130,7 @@ MacroInfoPage::MacroInfoPage( QWidget* parent )
   setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   setFinalPage( true );
 
+  //TODO Make this a ui file
   QGridLayout* lay = new QGridLayout( this );
   lay->setMargin( 0 );
   QLabel* label = new QLabel( this );
@@ -168,7 +170,7 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
 {
   setModal( false );
   setObjectName( QLatin1String( "Define Macro Wizard" ) );
-  setWindowTitle( KDialog::makeStandardCaption( i18n( "Define New Macro" ) ) );
+  setWindowTitle( i18n( "Define New Macro" ) );
   setOption( HaveHelpButton );
 
   mgivenArgsPage = new GivenArgsPage( this, mmode );
@@ -200,7 +202,7 @@ void MacroWizard::accept()
 
 void MacroWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( "defining-macros", "kig" );
+  KHelpClient::invokeHelp( "defining-macros", "kig" );
 }
 
 void MacroWizard::currentIdChanged( int id )

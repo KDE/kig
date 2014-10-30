@@ -35,15 +35,16 @@
 #include "../objects/text_imp.h"
 #include "../objects/text_type.h"
 
+#include <QIcon>
 #include <qaction.h>
 #include <qevent.h>
 #include <qmenu.h>
 #include <qregexp.h>
 #include <qvariant.h>
 
+#include <KIconEngine>
 #include <kcursor.h>
-#include <kdebug.h>
-#include <kicon.h>
+#include <QDebug>
 #include <klocale.h>
 #include <kmessagebox.h>
 
@@ -175,7 +176,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
       const char* iconfile = o->imp()->iconForProperty( i );
       if ( iconfile && *iconfile )
       {
-        act = p.addAction( KIcon( QLatin1String( iconfile ), mdoc.iconLoader() ), s );
+        act = p.addAction( QIcon( new KIconEngine( QLatin1String( iconfile ), mdoc.iconLoader() ) ), s );
       }
       else
       {

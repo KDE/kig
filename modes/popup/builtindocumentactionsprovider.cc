@@ -63,7 +63,7 @@ bool BuiltinDocumentActionsProvider::executeAction(
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    kDebug() << "id: " << id;
+    qDebug() << "id: " << id;
     if ( id == 0 )
     {
       doc.showHidden();

@@ -26,9 +26,9 @@
 #include <qlayout.h>
 #include <qtextedit.h>
 
-#include <kdialog.h>
-#include <ktoolinvocation.h>
-#include <kdebug.h>
+#include <QDialog>
+
+#include <KHelpClient>
 
 // defined in label.cc
 extern uint percentCount( const QString& s );
@@ -117,7 +117,7 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
 {
   setModal( false );
   setObjectName( QLatin1String( "TextLabelWizard" ) );
-  setWindowTitle( KDialog::makeStandardCaption( i18n( "Construct Label" ) ) );
+  setWindowTitle( i18n( "Construct Label" ) );
   setOption( HaveHelpButton );
   setOption( HaveFinishButtonOnEarlyPages );
 
@@ -205,6 +205,6 @@ void TextLabelWizard::currentIdChanged( int id )
 
 void TextLabelWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( "text-labels", "kig" );
+  KHelpClient::invokeHelp( "text-labels", "kig" );
 }
 

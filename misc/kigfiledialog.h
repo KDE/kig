@@ -18,14 +18,14 @@
 #ifndef KIG_MISC_KIGFILEDIALOG_H
 #define KIG_MISC_KIGFILEDIALOG_H
 
-#include <kfiledialog.h>
+#include <QFileDialog>
 
 /**
- * This file dialog is pretty like KFileDialog, but allow us to make an option
+ * This file dialog is pretty like QFileDialog, but allow us to make an option
  * widget popup to the user.
  */
 class KigFileDialog
-  : public KFileDialog
+  : public QFileDialog
 {
   Q_OBJECT
 
@@ -42,7 +42,7 @@ public:
    * Construct a new KigFileDialog.
    *
    * \param startDir the start dir of the file dialog. Consult the
-   *                 documentation of KFileDialog for more help about this
+   *                 documentation of QFileDialog for more help about this
    * \param filter the filter for the file dialog
    * \param caption the caption of this file dialog
    * \param parent the parent for this file dialog
@@ -68,6 +68,11 @@ public:
    * \param caption the caption of the option dialog
    */
   void setOptionCaption( const QString& caption );
+
+  /**
+   * We lost this from KigFileDialog
+   */
+  QString selectedFile();
 
 protected slots:
   virtual void accept();

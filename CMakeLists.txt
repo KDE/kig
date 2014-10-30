@@ -1,35 +1,55 @@
 project(kig)
 
-set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules)
+cmake_minimum_required(VERSION 2.8.12)
 
+find_package(Qt5Svg REQUIRED)
+find_package(Qt5PrintSupport REQUIRED)
+
+find_package(ECM REQUIRED NO_MODULE)
+find_package(KF5Parts REQUIRED)
+find_package(KF5DocTools REQUIRED)
+find_package(KF5I18n REQUIRED)
+find_package(KF5TextEditor REQUIRED)
+find_package(KF5IconThemes REQUIRED)
+find_package(KF5ConfigWidgets REQUIRED)
+find_package(KF5Archive REQUIRED)
+find_package(KF5XmlGui 5.1 REQUIRED)
+find_package(KF5KDELibs4Support REQUIRED)
+
+# Needed for unit tests
+find_package(KF5Emoticons)
+find_package(KF5ItemModels)
+
+set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
+
+# TODO Figure this out for Frameworks
 # search packages used by KDE
-find_package(KDE4 4.3.80 REQUIRED)
 if(WIN32)
   find_package(KDEWIN32 REQUIRED)
   # detect oxygen icon dir at configure time based on KDEDIRS - there may be different package installation locations
-  execute_process(COMMAND "${KDE4_KDECONFIG_EXECUTABLE}" --path icon OUTPUT_VARIABLE _dir ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+  execute_process(COMMAND "${KDE5_KDECONFIG_EXECUTABLE}" --path icon OUTPUT_VARIABLE _dir ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
   file(TO_CMAKE_PATH "${_dir}" __dir)
-  find_path(KDE4_ICON_DIR oxygen PATHS
+  find_path(KDE5_ICON_DIR oxygen PATHS
       ${__dir}
   )
-  message(STATUS "using oxygen application icons from ${KDE4_ICON_DIR}")
+  message(STATUS "using oxygen application icons from ${KDE5_ICON_DIR}")
 else(WIN32)
-    set (KDE4_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
+    set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 endif(WIN32)
 
-include(KDE4Defaults)
-include(MacroLibrary)
-include(MacroOptionalAddSubdirectory)
-include(MacroBoolTo01)
+include(ECMInstallIcons)
+include(ECMAddTests)
+include(KDEInstallDirs)
+include(KDECompilerSettings)
+include(KDECMakeSettings)
+include(FeatureSummary)
 
-add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS} -DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-include_directories (${QDBUS_INCLUDE_DIRS}  ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
+add_definitions (${QT_DEFINITIONS} ${KDE5_DEFINITIONS} -DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+include_directories (${Qt5Gui_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE5_INCLUDES})
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 endif()
-
-kde4_no_enable_final(kig)
 
 find_package(BoostPython)
 
@@ -50,17 +70,15 @@ if(BoostPython_FOUND)
   add_definitions(-DKIG_ENABLE_PYTHON_SCRIPTING)
 endif(BoostPython_FOUND)
 
-macro_log_feature(
-   BoostPython_FOUND
-   "Boost.Python"
-   "Kig can optionally use Boost.Python for Python scripting"
-   "http://www.boost.org/"
-   FALSE
-   "1.31"
-   ""
+set_package_properties(
+   FEATURE PROPERTIES
+   DESCRIPTION "Boost.Python"
+   URL "http://www.boost.org/"
+   TYPE OPTIONAL
+   PURPOSE "Kig can optionally use Boost.Python for Python scripting"
 )
 
-macro_display_feature_log()
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 include_directories( ${CMAKE_SOURCE_DIR}/modes )
 if(BoostPython_FOUND)
@@ -183,7 +201,7 @@ set(kigpart_PART_SRCS
    kig/kig_view.cpp
 )
 
-kde4_add_ui_files(kigpart_PART_SRCS
+qt5_wrap_ui(kigpart_PART_SRCS
    modes/typeswidget.ui
    modes/edittypewidget.ui
    modes/historywidget.ui
@@ -204,16 +222,28 @@ if(BoostPython_FOUND)
      scripting/script_mode.cc
   )
 
-  set_source_files_properties(scripting/python_scripter.cc PROPERTIES COMPILE_FLAGS "${KDE4_ENABLE_EXCEPTIONS}")
+  kde_source_files_enable_exceptions(scripting/python_scripter.cc)
 endif(BoostPython_FOUND)
 
 
-kde4_add_plugin(kigpart ${kigpart_PART_SRCS})
+add_library(kigpart MODULE ${kigpart_PART_SRCS})
 
-target_link_libraries(kigpart ${KDE4_KPARTS_LIBS} ${KDE4_KUTILS_LIBS} )
+target_link_libraries(kigpart
+  Qt5::Gui
+  Qt5::Svg
+  Qt5::PrintSupport
+  KF5::Parts
+  KF5::I18n
+  KF5::TextEditor
+  KF5::IconThemes
+  KF5::ConfigWidgets
+  KF5::KDELibs4Support
+  KF5::Archive
+  ${KDE5_KUTILS_LIBS}
+)
 
 if(BoostPython_FOUND)
-  target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE4_KTEXTEDITOR_LIBS})
+  target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE5_KTEXTEDITOR_LIBS})
 endif(BoostPython_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})

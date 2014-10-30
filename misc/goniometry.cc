@@ -25,7 +25,7 @@
 
 #include <qstringlist.h>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <klocale.h>
 
 #include <cmath>
@@ -133,6 +133,6 @@ Goniometry::System Goniometry::intToSystem( const int index )
     return Rad;
   else if( index == 2 )
     return Grad;
-  kDebug() << "No goniometric system with index " << index;
+  qDebug() << "No goniometric system with index " << index;
   return Rad;
 }

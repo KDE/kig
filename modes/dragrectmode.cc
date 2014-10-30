@@ -24,7 +24,7 @@
 
 #include <qevent.h>
 #include <qglobal.h>
-#include <kaction.h>
+#include <QAction>
 
 DragRectMode::DragRectMode( const QPoint& start, KigPart& d, KigWidget& w )
   : KigMode( d ), mstart( start ), mnc( true ), mstartselected( true ),

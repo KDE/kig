@@ -24,26 +24,28 @@
 #include <qevent.h>
 #include <qtimer.h>
 
-#include <kaction.h>
-#include <kconfig.h>
-#include <kdebug.h>
+#include <QAction>
+#include <QFileDialog>
+#include <QUrl>
+#include <QMimeData>
+
+#include <KConfigGroup>
+#include <QDebug>
 #include <kedittoolbar.h>
-#include <kfiledialog.h>
 #include <kshortcutsdialog.h>
 #include <klibloader.h>
 #include <klocale.h>
 #include <kactioncollection.h>
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
-#include <kstatusbar.h>
 #include <kstandardaction.h>
 #include <ktip.h>
-#include <kurl.h>
 #include <kxmlguifactory.h>
 #include <kapplication.h>
 #include <assert.h>
 
 #include <KService>
+#include <QFileDialog>
 
 Kig::Kig()
   : KParts::MainWindow(), m_part( 0 )
@@ -106,7 +108,7 @@ void Kig::setupActions()
   setStandardToolBarMenuEnabled(true);
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
-  m_recentFilesAction = KStandardAction::openRecent( this, SLOT( openUrl( const KUrl& ) ), actionCollection() );
+  m_recentFilesAction = KStandardAction::openRecent( this, SLOT( openUrl( const QUrl& ) ), actionCollection() );
   m_recentFilesAction->loadEntries(config->group( QString() ) );
 
   KStandardAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
@@ -120,7 +122,7 @@ void Kig::saveProperties(KConfigGroup &config)
   // the 'config' object points to the session managed
   // config file.  anything you write here will be available
   // later when this app is restored
-  config.writePathEntry("fileName", m_part->url().path());
+  config.writePathEntry( "fileName", m_part->url().toLocalFile() );
 }
 
 void Kig::readProperties(const KConfigGroup &config)
@@ -129,10 +131,10 @@ void Kig::readProperties(const KConfigGroup &config)
   // config file.  this function is automatically called whenever
   // the app is being restored.  read in here whatever you wrote
   // in 'saveProperties'
-  load( KUrl( config.readPathEntry( "fileName", QString() ) ) );
+  load( QUrl( config.readPathEntry( "fileName", QString() ) ) );
 }
 
-void Kig::load( const KUrl& url )
+void Kig::load( const QUrl &url )
 {
   // we check for m_part not being 0, because in the case of us not
   // finding our library, we would otherwise get a crash...
@@ -151,7 +153,7 @@ void Kig::fileNew()
     (new Kig)->show();
 }
 
-void Kig::openUrl( const KUrl& url )
+void Kig::openUrl( const QUrl &url )
 {
   // Called for opening a file by either the KRecentFilesAction or our
   // own fileOpen() method.
@@ -171,7 +173,8 @@ void Kig::openUrl( const KUrl& url )
 
 void Kig::optionsConfigureToolbars()
 {
-  saveMainWindowSettings(KGlobal::config()->group( "MainWindow") );
+  KConfigGroup configGroup = KGlobal::config()->group( "MainWindow");
+  saveMainWindowSettings( configGroup );
 
   // use the standard toolbar editor
   KEditToolBar dlg(factory());
@@ -182,7 +185,7 @@ void Kig::optionsConfigureToolbars()
 
 void Kig::applyNewToolbarConfig()
 {
-  applyMainWindowSettings(KGlobal::config()->group( "MainWindow") );
+  applyMainWindowSettings( KGlobal::config()->group( "MainWindow") );
 }
 
 bool Kig::queryClose()
@@ -192,13 +195,13 @@ bool Kig::queryClose()
 
 void Kig::dragEnterEvent(QDragEnterEvent* e)
 {
-  e->setAccepted( KUrl::List::canDecode( e->mimeData() ) );
+  e->setAccepted( e->mimeData()->hasUrls() );
 }
 
 void Kig::dropEvent(QDropEvent* e)
 {
-  KUrl::List urls = KUrl::List::fromMimeData( e->mimeData() );
-  for ( KUrl::List::iterator u = urls.begin(); u != urls.end(); ++u )
+  const QList<QUrl> urls = e->mimeData()->urls();
+  for ( QList<QUrl>::const_iterator u = urls.cbegin(); u != urls.cend(); ++u )
   {
     Kig* k = new Kig();
     k->show();
@@ -209,7 +212,7 @@ void Kig::dropEvent(QDropEvent* e)
 void Kig::fileOpen()
 {
   // this slot is connected to the KStandardAction::open action...
-  QString file_name = KFileDialog::getOpenFileName( KUrl( "kfiledialog:///document" ), m_mimeTypes.join( " " ) );
+  QString file_name = QFileDialog::getOpenFileName(0, QString(),  "kfiledialog:///document", m_mimeTypes.join( " " ) );
 
   if (!file_name.isEmpty()) openUrl(file_name);
 }

@@ -19,7 +19,7 @@
 #ifndef OBJECTCHOOSERPOPUP_H
 #define OBJECTCHOOSERPOPUP_H
 
-#include <kmenu.h>
+#include <QMenu>
 
 #include <vector>
 
@@ -33,7 +33,7 @@ class ObjectHolder;
  * You can't use this class directly, but these's a convenience method.
  */
 class ObjectChooserPopup
-  : public KMenu
+  : public QMenu
 {
   Q_OBJECT
 

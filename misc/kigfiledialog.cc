@@ -18,19 +18,22 @@
 #include "kigfiledialog.h"
 #include "kigfiledialog.moc"
 
+#include <QVBoxLayout>
+#include <QPushButton>
 #include <qfile.h>
 
 #include <klocale.h>
 #include <kmessagebox.h>
 
+#include <cassert>
+
 KigFileDialog::KigFileDialog( const QString& startDir, const QString& filter,
               const QString& caption,  QWidget* parent )
-  : KFileDialog( startDir, filter, parent ),
+  : QFileDialog( parent, caption, startDir, filter ),
     mow( 0L )
 {
-  setCaption( caption );
-  setOperationMode( Saving );
-  setMode( KFile::File | KFile::LocalOnly );
+  setAcceptMode( QFileDialog::AcceptSave );
+  setFileMode( QFileDialog::AnyFile );
   moptcaption = i18n( "Options" );
 }
 
@@ -48,6 +51,7 @@ void KigFileDialog::accept()
   setResult( QDialog::Accepted );
 
   QString sFile = selectedFile();
+
   if ( QFile::exists( sFile ) )
   {
     int ret = KMessageBox::warningContinueCancel( this,
@@ -55,21 +59,34 @@ void KigFileDialog::accept()
                                            sFile ), i18n( "Overwrite File?" ), KStandardGuiItem::overwrite() );
     if ( ret != KMessageBox::Continue )
     {
-      KFileDialog::reject();
+      QFileDialog::reject();
       return;
     }
   }
   if ( mow )
   {
-    KDialog* optdlg = new KDialog( this );
-    optdlg->setCaption( moptcaption );
-    optdlg->setButtons( KDialog::Cancel | KDialog::Ok );
+    QDialog* optdlg = new QDialog( this );
+    QWidget* mainWidget = new QWidget( optdlg );
+    QDialogButtonBox* buttonBox = new QDialogButtonBox( QDialogButtonBox::Cancel | QDialogButtonBox::Ok );
+    QPushButton *okButton = buttonBox->button( QDialogButtonBox::Ok );
+    QVBoxLayout* mainLayout = new QVBoxLayout;
+    
+    okButton->setDefault( true );
+    okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
+    optdlg->setLayout( mainLayout );
+    mainLayout->addWidget( mainWidget );
+    mainLayout->addWidget( buttonBox );
+    optdlg->setWindowTitle( moptcaption );
+    
+    connect( buttonBox, SIGNAL( accepted() ), optdlg, SLOT( accept() ) );
+    connect( buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ));
+
     mow->setParent( optdlg );
-    optdlg->setMainWidget( mow );
-    optdlg->exec() == QDialog::Accepted ? KFileDialog::accept() : KFileDialog::reject();
+//PORTING: Verify that widget was added to mainLayout     optdlg->setMainWidget( mow );
+    optdlg->exec() == QDialog::Accepted ? QFileDialog::accept() : QFileDialog::reject();
   }
   else
-    KFileDialog::accept();
+    QFileDialog::accept();
 }
 
 void KigFileDialog::setOptionCaption( const QString& caption )
@@ -79,3 +96,13 @@ void KigFileDialog::setOptionCaption( const QString& caption )
 
   moptcaption = caption;
 }
+
+QString KigFileDialog::selectedFile()
+{
+  QStringList files = selectedFiles();
+
+  assert( files.size() == 1 );
+
+  return files[0];
+}
+

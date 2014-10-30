@@ -35,7 +35,7 @@
 #include <qlayout.h>
 #include <qscrollbar.h>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <klocale.h>
 
 #include <cmath>
@@ -57,7 +57,6 @@ KigWidget::KigWidget( KigPart* part,
     mispainting( false ),
     malreadyresized( false )
 {
-  setAttribute( Qt::WA_PaintOnScreen, true );
   part->addWidget(this);
 
   setFocusPolicy(Qt::ClickFocus);

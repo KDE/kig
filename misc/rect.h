@@ -25,7 +25,7 @@
 #include "coordinate.h"
 
 #include <qrect.h>
-#include <kdebug.h>
+#include <QDebug>
 
 /**
  * like Coordinate is a QPoint replacement with doubles, this is a
@@ -119,7 +119,7 @@ public:
   bool contains( const Coordinate& p, double allowed_miss ) const;
   bool intersects( const Rect& p ) const;
   Rect normalized() const;
-  friend kdbgstream& operator<<( kdbgstream& s, const Rect& t );
+  friend QDebug& operator<<( QDebug& s, const Rect& t );
 
   static Rect fromQRect( const QRect& );
 protected:
@@ -129,7 +129,7 @@ protected:
 };
 
 bool operator==( const Rect& r, const Rect& s );
-kdbgstream& operator<<( kdbgstream& s, const Rect& t );
+QDebug& operator<<( QDebug& s, const Rect& t );
 /**
  * this operator returns a Rect that contains both the given
  * rects..

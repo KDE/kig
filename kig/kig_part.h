@@ -24,7 +24,7 @@
 
 #include <qlist.h>
 
-#include <kparts/part.h>
+#include <KParts/ReadWritePart>
 #include <kselectaction.h>
 
 #include <vector>
@@ -233,17 +233,17 @@ public:
   QList<QAction*> aMNewConic;
 
 
-  KAction* aCancelConstruction;
-  KAction* aRepeatLastConstruction;
-  KAction* aSelectAll;
-  KAction* aDeselectAll;
-  KAction* aInvertSelection;
-  KAction* aDeleteObjects;
-  KAction* aNewMacro;
-  KAction* aShowHidden;
-  KAction* aConfigureTypes;
-  KAction* aBrowseHistory;
-  KAction* aSetCoordinatePrecision;
+  QAction * aCancelConstruction;
+  QAction * aRepeatLastConstruction;
+  QAction * aSelectAll;
+  QAction * aDeselectAll;
+  QAction * aInvertSelection;
+  QAction * aDeleteObjects;
+  QAction * aNewMacro;
+  QAction * aShowHidden;
+  QAction * aConfigureTypes;
+  QAction * aBrowseHistory;
+  QAction * aSetCoordinatePrecision;
   KToggleAction* aToggleGrid;
   KToggleAction* aToggleAxes;
   KToggleAction* aToggleNightVision;

@@ -25,7 +25,7 @@
 #include <qundostack.h>
 
 #include <klocale.h>
-#include <kdebug.h>
+#include <QDebug>
 
 #include "../objects/object_holder.h"
 
