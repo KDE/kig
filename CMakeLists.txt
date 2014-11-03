@@ -201,7 +201,7 @@ set(kigpart_PART_SRCS
    kig/kig_view.cpp
 )
 
-qt5_wrap_ui(kigpart_PART_SRCS
+ki18n_wrap_ui(kigpart_PART_SRCS
    modes/typeswidget.ui
    modes/edittypewidget.ui
    modes/historywidget.ui
