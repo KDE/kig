@@ -70,4 +70,4 @@ void KigCoordinatePrecisionDialog::toggleCoordinateControls( int state )
   ui->m_precisionSpinBox->setEnabled( controlsEnabled );
 }
 
-#include "kigcoordinateprecisiondialog.moc"
+

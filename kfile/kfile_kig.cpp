@@ -151,4 +151,4 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   return true;
 }
 
-#include "kfile_kig.moc"
+

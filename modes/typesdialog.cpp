@@ -19,7 +19,7 @@
 **/
 
 #include "typesdialog.h"
-#include "typesdialog.moc"
+
 
 #include "edittype.h"
 #include "ui_typeswidget.h"

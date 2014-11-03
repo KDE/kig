@@ -19,7 +19,7 @@
 **/
 
 #include "kig.h"
-#include "kig.moc"
+
 
 #include <qevent.h>
 #include <qtimer.h>
