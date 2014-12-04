@@ -408,7 +408,7 @@ const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
     } else {
       t = -bbb + which*sqrt(discrim);
       t /= 2*aaa;
-      /* mp: this threshold test for a point at infinity allows to 
+      /* mp: this threshold test for a point at infinity allows to
        * solve Bug https://bugs.kde.org/show_bug.cgi?id=316693
        */
       if (fabs(t) > 1e15) return Coordinate::invalidCoord();
@@ -889,6 +889,6 @@ ConicCartesianData ConicCartesianData::invalidData()
 
 bool ConicCartesianData::valid() const
 {
-  return finite( coeffs[0] );
+  return std::isfinite( coeffs[0] );
 }
 

@@ -22,20 +22,7 @@ find_package(KF5ItemModels)
 
 set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
 
-# TODO Figure this out for Frameworks
-# search packages used by KDE
-if(WIN32)
-  find_package(KDEWIN32 REQUIRED)
-  # detect oxygen icon dir at configure time based on KDEDIRS - there may be different package installation locations
-  execute_process(COMMAND "${KDE5_KDECONFIG_EXECUTABLE}" --path icon OUTPUT_VARIABLE _dir ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
-  file(TO_CMAKE_PATH "${_dir}" __dir)
-  find_path(KDE5_ICON_DIR oxygen PATHS
-      ${__dir}
-  )
-  message(STATUS "using oxygen application icons from ${KDE5_ICON_DIR}")
-else(WIN32)
-    set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
-endif(WIN32)
+set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 
 include(ECMInstallIcons)
 include(ECMAddTests)
