@@ -252,11 +252,15 @@ void PGFExporterImpVisitor::visit( const TextImp* imp )
     mstream << "\\node ";
     if (imp->hasFrame())
     {
-        mstream << "[rectangle,draw] ";
+        mstream << "[rectangle,draw,align=left] ";
     }
+    else
+    {
+        mstream << "[align=left] ";
+    }    
     mstream << "at "
             << emitCoord(imp->coordinate())
-            << " {" << imp->text() << "}";
+            << " {" << imp->text().replace(QString("\n"),QString("\\\\")) << "}";
     newLine();
 }
 
