@@ -19,7 +19,6 @@
 **/
 
 #include "popup.h"
-#include "popup.moc"
 
 #include "../../kig/kig_part.h"
 #include "../../kig/kig_document.h"

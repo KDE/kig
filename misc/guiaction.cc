@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "guiaction.h"
-#include "guiaction.moc"
 
 #include "coordinate_system.h"
 #include "coordinate.h"

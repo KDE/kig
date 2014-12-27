@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "svgexporteroptions.h"
-#include "svgexporteroptions.moc"
 
 #include "ui_svgexporteroptionswidget.h"
 

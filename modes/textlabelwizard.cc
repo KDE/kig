@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "textlabelwizard.h"
-#include "textlabelwizard.moc"
 
 #include "label.h"
 #include "linkslabel.h"
