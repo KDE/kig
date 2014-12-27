@@ -20,7 +20,6 @@
 */
 
 #include "edittype.h"
-#include "edittype.moc"
 
 #include "ui_edittypewidget.h"
 

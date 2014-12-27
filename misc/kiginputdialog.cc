@@ -19,7 +19,6 @@
 **/
 
 #include "kiginputdialog.h"
-#include "kiginputdialog.moc"
 
 #include "coordinate.h"
 #include "coordinate_system.h"

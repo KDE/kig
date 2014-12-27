@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "exporter.h"
-#include "exporter.moc"
 
 #include "imageexporteroptions.h"
 #include "latexexporter.h"

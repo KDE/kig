@@ -16,7 +16,6 @@
 // USA
 
 #include "kigfiledialog.h"
-#include "kigfiledialog.moc"
 
 #include <QVBoxLayout>
 #include <QPushButton>

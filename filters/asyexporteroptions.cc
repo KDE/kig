@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "asyexporteroptions.h"
-#include "asyexporteroptions.moc"
 
 #include "ui_asyexporteroptionswidget.h"
 

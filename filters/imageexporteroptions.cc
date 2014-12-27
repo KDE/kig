@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "imageexporteroptions.h"
-#include "imageexporteroptions.moc"
 
 #include "ui_imageexporteroptionswidget.h"
 

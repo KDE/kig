@@ -19,7 +19,7 @@
 */
 
 #include "historydialog.h"
-#include "historydialog.moc"
+
 
 #include "ui_historywidget.h"
 

@@ -17,7 +17,6 @@
 // 02110-1301, USA.
 
 #include "newscriptwizard.h"
-#include "newscriptwizard.moc"
 
 #include "script_mode.h"
 
