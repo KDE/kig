@@ -49,9 +49,9 @@ bool KigFilterGeogebra::supportMime( const QString& mime )
   return mime == "application/vnd.geogebra.file";
 }
 
-static ObjectHolder* holderFromCalcer( ObjectCalcer* oc )
+static ObjectHolder* holderFromCalcerAndDrawer( ObjectCalcer* oc, ObjectDrawer* od )
 {
-  return new ObjectHolder( oc );
+  return new ObjectHolder( oc, od );
 }
 
 KigDocument* KigFilterGeogebra::load( const QString& sFrom )
@@ -81,9 +81,10 @@ KigDocument* KigFilterGeogebra::load( const QString& sFrom )
 
       const GeogebraSection & gs = ggbtransform.getSection( 0 );
       const std::vector<ObjectCalcer *> & f = gs.getOutputObjects();
+      const std::vector<ObjectDrawer *> & d = gs.getDrawers();
       std::vector<ObjectHolder *> holders( f.size() );
 
-      std::transform( f.cbegin(), f.cend(), holders.begin(), holderFromCalcer );
+      std::transform( f.cbegin(), f.cend(), d.begin(), holders.begin(), holderFromCalcerAndDrawer );
 
       document->addObjects( holders );
     }

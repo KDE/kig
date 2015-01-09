@@ -7,6 +7,34 @@
     <xsl:variable name="commmandType" as="xs:string" select="../command[output/@*=current()/$label]/@name"/>
     <xsl:if test="not($commmandType='Intersect' or $commmandType='Point')">
       <FixedPoint label="{$label}">
+        <xsl:variable name="show" select="../element[@label=current()/$label]/show/@object"/>
+        <xsl:attribute name="show">
+          <xsl:value-of select="$show"/>
+        </xsl:attribute>
+        <xsl:variable name="thickness" select="../element[@label=current()/$label]/pointSize/@val"/>
+        <xsl:attribute name="thickness_point">
+          <xsl:value-of select="$thickness"/>
+        </xsl:attribute>
+        <xsl:variable name="pointType" select="../element[@label=current()/$label]/pointStyle/@val"/>
+        <xsl:attribute name="pointType">
+          <xsl:value-of select="$pointType"/>
+        </xsl:attribute>
+        <xsl:variable name="r" select="../element[@label=current()/$label]/objColor/@r"/>
+        <xsl:attribute name="r">
+          <xsl:value-of select="$r"/>
+        </xsl:attribute>
+        <xsl:variable name="g" select="../element[@label=current()/$label]/objColor/@g"/>
+        <xsl:attribute name="g">
+          <xsl:value-of select="$g"/>
+        </xsl:attribute>
+        <xsl:variable name="b" select="../element[@label=current()/$label]/objColor/@b"/>
+        <xsl:attribute name="b">
+          <xsl:value-of select="$b"/>
+        </xsl:attribute>
+        <xsl:variable name="alpha" select="../element[@label=current()/$label]/objColor/@alpha"/>
+        <xsl:attribute name="alpha">
+          <xsl:value-of select="$alpha"/>
+        </xsl:attribute>
         <Double value="{$x}"/>
         <Double value="{$y}"/>
       </FixedPoint>
@@ -21,6 +49,34 @@
     <xsl:element name="{$objectType}">
       <xsl:attribute name="label" type="xs:string">
         <xsl:value-of select="$label"/>
+      </xsl:attribute>
+      <xsl:variable name="show" select="../element[@label=current()/$label]/show/@object"/>
+      <xsl:attribute name="show">
+        <xsl:value-of select="$show"/>
+      </xsl:attribute>
+      <xsl:variable name="thickness" select="../element[@label=current()/$label]/lineStyle/@thickness"/>
+      <xsl:attribute name="thickness">
+        <xsl:value-of select="$thickness"/>
+      </xsl:attribute>
+      <xsl:variable name="type" select="../element[@label=current()/$label]/lineStyle/@type"/>
+      <xsl:attribute name="type">
+        <xsl:value-of select="$type"/>
+      </xsl:attribute>
+      <xsl:variable name="r" select="../element[@label=current()/$label]/objColor/@r"/>
+      <xsl:attribute name="r">
+        <xsl:value-of select="$r"/>
+      </xsl:attribute>
+      <xsl:variable name="g" select="../element[@label=current()/$label]/objColor/@g"/>
+      <xsl:attribute name="g">
+        <xsl:value-of select="$g"/>
+      </xsl:attribute>
+      <xsl:variable name="b" select="../element[@label=current()/$label]/objColor/@b"/>
+      <xsl:attribute name="b">
+        <xsl:value-of select="$b"/>
+      </xsl:attribute>
+      <xsl:variable name="alpha" select="../element[@label=current()/$label]/objColor/@alpha"/>
+      <xsl:attribute name="alpha">
+        <xsl:value-of select="$alpha"/>
       </xsl:attribute>
       <xsl:for-each select="./input/@*">
         <xsl:variable name="objectLabel" select="string(.)"/>

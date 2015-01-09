@@ -25,6 +25,7 @@
 #include <objects/object_factory.h>
 #include <objects/object_calcer.h>
 #include <objects/object_holder.h>
+#include <objects/object_drawer.h>
 #include <objects/bogus_imp.h>
 #include <objects/object_type_factory.h>
 
@@ -34,6 +35,7 @@
 #include <QFile>
 #include <QXmlQuery>
 #include <QXmlName>
+#include <QColor>
 
 void GeogebraTransformer::atomicValue( const QVariant& )
 {
@@ -77,7 +79,7 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
       }
       else
       {
-          //TODO Figure out error reporting
+        //TODO Figure out error reporting
       }
 
       break;
@@ -107,6 +109,75 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
   else if ( name.localName( m_np ) == QLatin1String( "Output" ) )
   {
     m_outputObjectLabels.insert( value.toAscii() );
+  }
+  else if( name.localName( m_np ) == QLatin1String( "show" ) )
+  {
+    m_show = ( ( value.toString()=="true" ) ? true:false );
+  }
+  else if( name.localName( m_np ) == QLatin1String( "thickness" ) )
+  {
+    m_thickness = value.toString().toInt();
+  }
+  else if( name.localName( m_np ) == QLatin1String( "thickness_point" ) )
+  {
+    m_thickness = value.toString().toInt();
+    m_thickness += 6;
+  }
+  else if( name.localName( m_np ) == QLatin1String( "type" ) )
+  {
+    int penType = value.toString().toInt() ;
+    switch( penType )
+    {
+    case SOLIDLINE:
+      m_type = Qt::SolidLine;
+      break;
+    case DASHDOTDOTLINE:
+      m_type = Qt::DashDotDotLine;
+      break;
+    case DASHLINE:
+      m_type = Qt::DashLine;
+      break;
+    case DOTLINE:
+      m_type = Qt::DotLine;
+      break;
+    case DASHDOTLINE:
+      m_type = Qt::DashDotLine;
+      break;
+    default:
+      m_type = Qt::SolidLine;
+    };
+  }
+  else if( name.localName( m_np ) == QLatin1String( "pointType" ) )
+  {
+    int pt = value.toString().toInt();
+    if( pt == SOLIDCIRCLEPOINT )
+      m_pointType = ObjectDrawer::pointStyleFromString( "Round" );
+    else if( pt == SOLIDDIAMONDPOINT || pt == UPARROWPOINT || pt == DOWNARROWPOINT || pt == RIGHTARROWPOINT || pt == LEFTARROWPOINT )
+      m_pointType = ObjectDrawer::pointStyleFromString( "Rectangular" );
+    else if( pt == HOLLOWCIRCLEPOINT )
+      m_pointType = ObjectDrawer::pointStyleFromString( "Round" );//TODO should be mapped to RoundEmpty ( i.e. 1) but for some reason it is not drawing in KIG
+    else if( pt == HOLLOWDIAMONDPOINT )
+      m_pointType = ObjectDrawer::pointStyleFromString( "Rectangular" );//TODO should be mapped to RectangularEmpty ( i.e. 3) but for some reason it is not drawing in KIG
+    else if( pt == CROSSPOINT  || pt == PLUSPOINT )
+      m_pointType = ObjectDrawer::pointStyleFromString( "Cross" );
+    else
+      m_pointType = 0;
+  }
+  else if( name.localName( m_np ) == QLatin1String( "r" ) )
+  {
+    m_r = value.toString().toInt();
+  }
+  else if( name.localName( m_np ) == QLatin1String( "g" ) )
+  {
+    m_g = value.toString().toInt();
+  }
+  else if( name.localName( m_np ) == QLatin1String( "b" ) )
+  {
+    m_b = value.toString().toInt();
+  }
+  else if( name.localName( m_np ) == QLatin1String( "alpha" ) )
+  {
+    m_alpha = value.toString().toInt();
   }
 }
 
@@ -140,7 +211,10 @@ void GeogebraTransformer::endElement()
         if( m_inputObjectLabels.empty() )
         {
           // Not handling input/output objects, put everything in second
+          ObjectDrawer* od = new ObjectDrawer( QColor( m_r, m_g, m_b ), m_thickness, m_show, m_type, m_pointType );
+
           m_sections[m_nsections - 1].addOutputObject( oc );
+          m_sections[m_nsections - 1].addDrawer( od );
         }
         else
         {
@@ -217,6 +291,7 @@ void GeogebraTransformer::startElement( const QXmlName& name )
     }
 
     {
+      resetDrawerVars();
       const QByteArray nameData = name.localName( m_np ).toLatin1();
       m_currentObject = ObjectTypeFactory::instance()->find( nameData );
 

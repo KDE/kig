@@ -60,3 +60,13 @@ void GeogebraSection::addOutputObject( ObjectCalcer* op )
 {
   m_outputObjects.push_back( op );
 }
+
+const std::vector< ObjectDrawer* > & GeogebraSection::getDrawers() const
+{
+  return m_drawers;
+}
+
+void GeogebraSection::addDrawer( ObjectDrawer* od )
+{
+  m_drawers.push_back( od );
+}

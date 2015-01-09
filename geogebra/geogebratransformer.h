@@ -68,10 +68,47 @@ public:
     virtual void startOfSequence();
 
 private:
+    void resetDrawerVars()
+    {
+        m_show = true;
+        m_thickness = -1;
+        m_pointType = 0;
+        m_type = Qt::SolidLine;
+        m_r = 0;
+        m_g = 0;
+        m_b = 0;
+        m_alpha = 0;
+    };
+
+private:
     enum State {
         ReadingDouble,
         ReadingObject,
         ReadingArguments,
+    };
+
+    // Enumerations of the Line Styles used by Geogebra
+    // The values 0, 10, 15, 20 are the values used by Geogebra to represent the corresponding styles.
+    enum {
+        SOLIDLINE = 0,
+        DASHDOTDOTLINE = 10,
+        DASHLINE = 15,
+        DOTLINE = 20,
+        DASHDOTLINE = 30,
+    };
+
+    // Enumerations of the point styles used by Geogebra.
+    enum {
+      SOLIDCIRCLEPOINT = 0,
+      CROSSPOINT,
+      HOLLOWCIRCLEPOINT,
+      PLUSPOINT,
+      SOLIDDIAMONDPOINT,
+      HOLLOWDIAMONDPOINT,
+      UPARROWPOINT,
+      DOWNARROWPOINT,
+      RIGHTARROWPOINT,
+      LEFTARROWPOINT
     };
 
     KigDocument * m_document;
@@ -85,6 +122,12 @@ private:
     std::vector<GeogebraSection> m_sections;
     size_t m_nsections;
     QXmlNamePool m_np;
+    /* members required for constructing the object-drawers*/
+    bool m_show;
+    int  m_thickness;
+    int m_pointType;
+    Qt::PenStyle  m_type;
+    int  m_r, m_g, m_b, m_alpha; // m_alpha is causing trouble at the moment as Geogebra somehow generates decimal values for it
 };
 
 #endif // GEOGEBRATRANSFORMER_H
