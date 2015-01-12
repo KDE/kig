@@ -179,6 +179,16 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
   {
     m_alpha = value.toString().toInt();
   }
+  else if( name.localName( m_np ) == QLatin1String( "axes" ) )
+  {
+    bool showAxes = value.toString() == "true" ? true:false;
+    m_document->setAxes( showAxes );
+  }
+  else if( name.localName( m_np ) == QLatin1String( "grid" ) )
+  {
+    bool showGrid = value.toString() == "true" ? true:false;
+    m_document->setGrid( showGrid );
+  }
 }
 
 void GeogebraTransformer::characters( const QStringRef& )

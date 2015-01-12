@@ -286,6 +286,13 @@
 
   <xsl:template match="geogebra">
     <Kig>
+      <xsl:attribute name="axes">
+        <xsl:value-of select="$axes"/>
+      </xsl:attribute>
+      <xsl:variable name="grid" select="./euclidianView/evSettings/@grid"/>
+      <xsl:attribute name="grid">
+        <xsl:value-of select="$grid"/>
+      </xsl:attribute>
       <xsl:apply-templates select="./*"/>
     </Kig>
   </xsl:template>
