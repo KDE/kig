@@ -214,7 +214,7 @@ void Kig::fileOpen()
   // this slot is connected to the KStandardAction::open action...
   QString file_name = QFileDialog::getOpenFileName(0, QString(),  "kfiledialog:///document", m_mimeTypes.join( " " ) );
 
-  if (!file_name.isEmpty()) openUrl(file_name);
+  if (!file_name.isEmpty()) openUrl( QUrl::fromLocalFile( file_name ) );
 }
 
 void Kig::tipOfDay() {
