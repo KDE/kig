@@ -25,6 +25,7 @@
 #include <qtimer.h>
 
 #include <QAction>
+#include <QStandardPaths>
 #include <QFileDialog>
 #include <QUrl>
 #include <QMimeData>
@@ -212,7 +213,19 @@ void Kig::dropEvent(QDropEvent* e)
 void Kig::fileOpen()
 {
   // this slot is connected to the KStandardAction::open action...
-  QString file_name = QFileDialog::getOpenFileName(0, QString(),  "kfiledialog:///document", m_mimeTypes.join( " " ) );
+  QString currentDir = m_part->url().isLocalFile() ? m_part->url().toLocalFile() : QString();
+
+  if ( currentDir.isNull() )
+  {
+    const QStringList documentsPath = QStandardPaths::standardLocations( QStandardPaths::DocumentsLocation );
+
+    if ( !documentsPath.empty() )
+    {
+      currentDir = documentsPath[0];
+    }
+  }
+
+  const QString file_name = QFileDialog::getOpenFileName(0, QString(), currentDir,  m_mimeTypes.join( " " ) );
 
   if (!file_name.isEmpty()) openUrl( QUrl::fromLocalFile( file_name ) );
 }
