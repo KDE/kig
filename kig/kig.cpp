@@ -217,12 +217,7 @@ void Kig::fileOpen()
 
   if ( currentDir.isNull() )
   {
-    const QStringList documentsPath = QStandardPaths::standardLocations( QStandardPaths::DocumentsLocation );
-
-    if ( !documentsPath.empty() )
-    {
-      currentDir = documentsPath[0];
-    }
+    currentDir = QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation );
   }
 
   const QString file_name = QFileDialog::getOpenFileName(0, QString(), currentDir,  m_mimeTypes.join( " " ) );
