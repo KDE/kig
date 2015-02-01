@@ -341,24 +341,22 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
     mpart( part )
 {
   setWindowTitle( i18n( "Manage Types" ) );
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Help);
-  QWidget *mainWidget = new QWidget(this);
+  QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help );
+  QWidget *mainWidget = new QWidget( this );
   QVBoxLayout *mainLayout = new QVBoxLayout;
-  setLayout(mainLayout);
-  mainLayout->addWidget(mainWidget);
-  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
-  okButton->setDefault(true);
-  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
-  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
-  mainLayout->addWidget(buttonBox);
+  setLayout( mainLayout );
+  mainLayout->addWidget( mainWidget );
+  QPushButton *okButton = buttonBox->button( QDialogButtonBox::Ok );
+  okButton->setDefault( true );
+  okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
+  connect(buttonBox, SIGNAL( accepted() ), this, SLOT( accept() ) );
+  connect(buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ) );
+  mainLayout->addWidget( buttonBox );
 
-  QWidget* base = new QWidget( this );
 //PORTING: Verify that widget was added to mainLayout   setMainWidget( base );
   mtypeswidget = new Ui_TypesWidget();
-  mtypeswidget->setupUi( base );
-  base->layout()->setMargin( 0 );
+  mtypeswidget->setupUi( mainWidget );
+  mainWidget->layout()->setMargin( 0 );
 
   // model creation and usage
   mmodel = new TypesModel( mtypeswidget->typeList );
