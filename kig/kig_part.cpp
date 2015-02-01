@@ -45,20 +45,20 @@
 #include <iterator>
 
 #include <QAction>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QDirIterator>
+#include <QDebug>
 
-#include <KGlobal>
 #include <KAboutData>
 
-#include <QDebug>
 #include <kdemacros.h>
-#include <kfiledialog.h>
 #include <kiconloader.h>
 #include <kcomponentdata.h>
 #include <kxmlguiwindow.h>
 #include <kactioncollection.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
-#include <kstandarddirs.h>
 #include <kstandardaction.h>
 #include <ktoggleaction.h>
 #include <ktogglefullscreenaction.h>
@@ -84,6 +84,29 @@
 using namespace std;
 
 static const QString typesFile = "macros.kigt";
+
+QStringList getDataFiles( const QString & folder )
+{
+  QStringList dataFiles;
+  const QStringList allFolders = QStandardPaths::locateAll( QStandardPaths::DataLocation, folder, QStandardPaths::LocateDirectory );
+
+  for( const QString & folderPath : allFolders )
+  {
+    QDirIterator folderIterator( folderPath, QDirIterator::Subdirectories );
+
+    while ( folderIterator.hasNext() )
+    {
+      const QString fileName = folderIterator.next();
+
+      if ( fileName.endsWith( ".kigt" ) )
+      {
+        dataFiles << fileName;
+      }
+    }
+  }
+
+  return dataFiles;
+}
 
 // export this library...
 K_PLUGIN_FACTORY( KigPartFactory, registerPlugin< KigPart >(); )
@@ -712,11 +735,14 @@ bool KigPart::internalSaveAs()
   // this slot is connected to the KStandardAction::saveAs action...
   QString formats = i18n( "*.kig|Kig Documents (*.kig)\n"
                           "*.kigz|Compressed Kig Documents (*.kigz)" );
+  QString currentDir = url().toLocalFile();
 
-  //  formats += "\n";
-  //  formats += KImageIO::pattern( KImageIO::Writing );
+  if ( currentDir.isNull() )
+  {
+    currentDir = QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation );
+  }
 
-  QString file_name = KFileDialog::getSaveFileName( QUrl("kfiledialog:///document"), formats );
+  const QString file_name = QFileDialog::getSaveFileName( 0, QString(), currentDir, formats );
   if (file_name.isEmpty()) return false;
   else if ( QFileInfo( file_name ).exists() )
   {
@@ -805,9 +831,7 @@ void KigPart::setupMacroTypes()
     alreadysetup = true;
 
     // the user's saved macro types:
-    const QStringList dataFiles =
-      KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
-                                        KStandardDirs::Recursive);
+    const QStringList dataFiles = getDataFiles( "kig-types" );
     std::vector<Macro*> macros;
     for ( QStringList::const_iterator file = dataFiles.begin();
           file != dataFiles.end(); ++file )
@@ -832,8 +856,7 @@ void KigPart::setupBuiltinMacros()
     alreadysetup = true;
     // builtin macro types ( we try to make the user think these are
     // normal types )..
-    const QStringList builtinfiles =
-      KGlobal::dirs()->findAllResources( "appdata", "builtin-macros/*.kigt", KStandardDirs::Recursive);
+    const QStringList builtinfiles = getDataFiles( "builtin-macros" );
     for ( QStringList::const_iterator file = builtinfiles.begin();
           file != builtinfiles.end(); ++file )
     {
@@ -1085,10 +1108,15 @@ void KigPart::coordSystemChanged( int id )
 
 void KigPart::saveTypes()
 {
-  QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
-  if ( !typesDir.endsWith( '/' ) )
-    typesDir += '/';
-  QString typesFileWithPath = typesDir + typesFile;
+  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ) );
+  const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
+
+  if ( !typesDir.exists() )
+  {
+    writeableDataLocation.mkdir( "kig-types" );
+  }
+
+  const QString typesFileWithPath =  typesDir.absoluteFilePath( typesFile );
 
   // removing existent types file
   if ( QFile::exists( typesFileWithPath ) )
@@ -1100,16 +1128,19 @@ void KigPart::saveTypes()
 
 void KigPart::loadTypes()
 {
-  QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
-  if ( !typesDir.endsWith( '/' ) )
-    typesDir += '/';
-  QString typesFileWithPath = typesDir + typesFile;
+  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ) );
+  const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
 
-  if ( QFile::exists( typesFileWithPath ) )
+  if ( typesDir.exists() )
   {
-    std::vector<Macro*> macros;
-    MacroList::instance()->load( typesFileWithPath, macros, *this );
-    MacroList::instance()->add( macros );
+    const QString typesFileWithPath =  typesDir.absoluteFilePath( typesFile );
+
+    if ( QFile::exists( typesFileWithPath ) )
+    {
+        std::vector<Macro*> macros;
+        MacroList::instance()->load( typesFileWithPath, macros, *this );
+        MacroList::instance()->add( macros );
+    }
   }
 }
 
