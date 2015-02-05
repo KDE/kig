@@ -585,7 +585,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
         Qt::PenStyle style = ObjectDrawer::styleFromString( tmp );
 
         tmp = e.attribute( "point-style" );
-        int pointstyle = ObjectDrawer::pointStyleFromString( tmp );
+        Kig::PointStyle pointstyle = Kig::pointStyleFromString( tmp );
 
         tmp = e.attribute( "font" );
         QFont f;
@@ -700,7 +700,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
     drawelem.setAttribute( "shown", QLatin1String( d->shown() ? "true" : "false" ) );
     drawelem.setAttribute( "width", QString::number( d->width() ) );
     drawelem.setAttribute( "style", d->styleToString() );
-    drawelem.setAttribute( "point-style", d->pointStyleToString() );
+    drawelem.setAttribute( "point-style", Kig::pointStyleToString( d->pointStyle() ) );
     drawelem.setAttribute( "font", d->font().toString() );
 
     ObjectCalcer* namecalcer = ( *i )->nameCalcer();

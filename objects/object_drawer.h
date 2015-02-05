@@ -22,6 +22,8 @@
 #include <qfont.h>
 #include <qnamespace.h>
 
+#include "../misc/point_style.h"
+
 class ObjectImp;
 class KigPainter;
 class Coordinate;
@@ -46,12 +48,6 @@ class Rect;
  */
 class ObjectDrawer
 {
-  QColor mcolor;
-  bool mshown;
-  int mwidth;
-  Qt::PenStyle mstyle;
-  int mpointstyle;
-  QFont mfont;
 public:
   /**
    * Construct a new ObjectDrawer with a default color ( Qt::blue ),
@@ -59,7 +55,7 @@ public:
    * pointstyle ( 0 ) and font ( default application font )
    */
   ObjectDrawer();
-  explicit ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, int pointStyle = 0, const QFont& f = QFont() );
+  explicit ObjectDrawer( const QColor& color, int width = -1, bool shown = true, Qt::PenStyle = Qt::SolidLine, Kig::PointStyle pointStyle = Kig::Round, const QFont& f = QFont() );
   /**
    * Draw the object \p imp on kigpainter \p p .  If \p selected is true, it is
    * drawn in red, otherwise in its normal color.
@@ -97,15 +93,11 @@ public:
   /**
    * return pointStyle for points
    */
-  int pointStyle() const;
+  Kig::PointStyle pointStyle() const;
   /**
    * return the font
    */
   QFont font() const;
-  /**
-   * return pointStyle transformed in a string
-   */
-  QString pointStyleToString() const;
   /**
    * return style transformed in a string
    */
@@ -134,24 +126,26 @@ public:
    * returns a new ObjectDrawer that is identical to this one, except
    * that the pointStyle state is set to \p p
    */
-  ObjectDrawer* getCopyPointStyle( int p ) const;
+  ObjectDrawer* getCopyPointStyle( Kig::PointStyle p ) const;
   /**
    * returns a new ObjectDrawer that is identical to this one, except
    * that the font state is set to \p f 
    */
   ObjectDrawer* getCopyFont( const QFont& f ) const;
-  /**
-   * Note that this returns a valid point style in every case, even if
-   * the given \p style string is unknown. In that case it returns a
-   * default value.
-   */
-  static int pointStyleFromString( const QString& style );
+
   /**
    * Note that this returns a valid style in every case, even if the
    * given \p style string is unknown. In that case it returns a default
    * value.
    */
   static Qt::PenStyle styleFromString( const QString& style );
+private:
+  QColor mcolor;
+  bool mshown;
+  int mwidth;
+  Qt::PenStyle mstyle;
+  Kig::PointStyle mpointstyle;
+  QFont mfont;
 };
 
 #endif

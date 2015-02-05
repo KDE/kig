@@ -25,6 +25,7 @@
 #include "coordinate.h"
 #include "rect.h"
 #include "screeninfo.h"
+#include "../misc/point_style.h"
 
 #include <qpainter.h>
 #include <qcolor.h>
@@ -58,7 +59,7 @@ protected:
 
   QColor color;
   Qt::PenStyle style;
-  int pointstyle;
+  Kig::PointStyle pointstyle;
   int width;
   Qt::BrushStyle brushStyle;
   QColor brushColor;
@@ -100,7 +101,7 @@ public:
    * being drawn..  a point -> 5, other objects -> 1
    */
   void setWidth( int c );
-  void setPointStyle( int p );
+  void setPointStyle( Kig::PointStyle p );
   void setPen( const QPen& p );
   void setBrushStyle( Qt::BrushStyle c );
   void setBrush( const QBrush& b );

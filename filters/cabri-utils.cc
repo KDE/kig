@@ -387,7 +387,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
   return myobj;
 }
 
-void CabriReader_v10::decodeStyle( CabriObject* obj, Qt::PenStyle& ps, int& pointType )
+void CabriReader_v10::decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType )
 {
   CabriObject_v10* myobj = (CabriObject_v10*)obj;
 
@@ -408,13 +408,13 @@ void CabriReader_v10::decodeStyle( CabriObject* obj, Qt::PenStyle& ps, int& poin
       case 3:
       {
         myobj->thick += 1;
-        pointType = 1;
+        pointType = Kig::RoundEmpty;
         break;
       }
       case 4:
       {
         myobj->thick += 2;
-        pointType = 4;
+        pointType = Kig::Cross;
         break;
       }
     }
@@ -618,7 +618,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   return myobj;
 }
 
-void CabriReader_v12::decodeStyle( CabriObject* obj, Qt::PenStyle& ps, int& pointType )
+void CabriReader_v12::decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType )
 {
   CabriObject_v12* myobj = (CabriObject_v12*)obj;
 
@@ -635,17 +635,17 @@ void CabriReader_v12::decodeStyle( CabriObject* obj, Qt::PenStyle& ps, int& poin
         }
         case 1:
         {
-          pointType = 2;
+          pointType = Kig::Rectangular;
           break;
         }
         case 2:
         {
-          pointType = 1;
+          pointType = Kig::RoundEmpty;
           break;
         }
         case 3:
         {
-          pointType = 4;
+          pointType = Kig::Cross;
           break;
         }
         case 4:

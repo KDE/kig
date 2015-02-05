@@ -758,7 +758,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         w = 2;
     }
     QString ps = domelem.attribute( "style" );
-    int pointstyle = ObjectDrawer::pointStyleFromString( ps );
+    Kig::PointStyle pointstyle = Kig::pointStyleFromString( ps );
 // show this object?
     bool show = ( ( domelem.attribute( "masked" ) != "True" ) &&
                   ( domelem.attribute( "masked" ) != "Alway" ) );

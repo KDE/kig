@@ -150,17 +150,19 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     bool point = ( npoints > nothers );
     if ( ! samecolor ) color = Qt::blue;
     if ( point )
-      for ( int i = 0; i < 5; ++i )
+    {
+      for ( int i = 0; i < (int)Kig::NumberOfPointStyles; ++i )
       {
         QPixmap p( 20, 20 );
         p.fill( popup.palette().color( popup.backgroundRole() ) );
         ScreenInfo si( Rect( -1, -1, 2, 2 ), p.rect() );
         KigPainter ptr( si, &p, popup.part().document(), false );
         PointImp pt( Coordinate( 0, 0 ) );
-        ObjectDrawer d( color, -1, true, Qt::SolidLine, i );
+        ObjectDrawer d( color, -1, true, Qt::SolidLine, (Kig::PointStyle)i );
         d.draw( pt, ptr, false );
         popup.addInternalAction( menu, QIcon( p ), nextfree++ );
       }
+    }
     else
     {
       Qt::PenStyle penstyles[] = {Qt::SolidLine, Qt::DashLine, Qt::DashDotLine, Qt::DashDotDotLine, Qt::DotLine};
@@ -172,7 +174,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
         KigPainter ptr( si, &p, popup.part().document(), false );
         LineImp line( Coordinate( -1, 0 ), Coordinate( 1, 0 ) );
         Qt::PenStyle ps = penstyles[i];
-        ObjectDrawer d( color, 2, true, ps, 1 );
+        ObjectDrawer d( color, 2, true, ps, Kig::RoundEmpty );
         d.draw( line, ptr, false );
         popup.addInternalAction( menu, QIcon( p ), nextfree++ );
       };
@@ -271,20 +273,18 @@ bool BuiltinObjectActionsProvider::executeAction(
       else
         nothers++;
     };
-    bool point = ( npoints > nothers );
-    int max = point ? 5 : 5;
-    if ( id >= max )
+    if ( id >= Kig::NumberOfPointStyles )
     {
-      id -= max;
+      id -= Kig::NumberOfPointStyles;
       return false;
     };
 
-    if ( point )
+    if ( npoints > nothers )
     {
       KigCommand* kc = new KigCommand( doc, i18n( "Change Point Style" ) );
       for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
         if ( (*i)->imp()->inherits( PointImp::stype() ) )
-          kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyPointStyle( id ) ) );
+          kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyPointStyle( (Kig::PointStyle)id ) ) );
       doc.history()->push( kc );
       return true;
     }

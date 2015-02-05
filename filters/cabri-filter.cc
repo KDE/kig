@@ -673,7 +673,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
 
     // decoding the style and building the ObjectDrawer
     Qt::PenStyle ls = Qt::SolidLine;
-    int ps = 0;
+    Kig::PointStyle ps = Kig::Round;
     reader->decodeStyle( obj, ls, ps );
     ObjectDrawer* d = new ObjectDrawer( obj->color, obj->thick, obj->visible, ls, ps );
 
