@@ -1108,7 +1108,7 @@ void KigPart::coordSystemChanged( int id )
 
 void KigPart::saveTypes()
 {
-  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ) );
+  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
   const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
 
   if ( !typesDir.exists() )
@@ -1128,7 +1128,7 @@ void KigPart::saveTypes()
 
 void KigPart::loadTypes()
 {
-  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ) );
+  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
   const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
 
   if ( typesDir.exists() )
