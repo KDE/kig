@@ -55,7 +55,7 @@ int main(int argc, char **argv)
   QCoreApplication::setApplicationName( "kig" );
   QCoreApplication::setApplicationVersion( i18n( KIGVERSION ) );
   QCoreApplication::setOrganizationDomain( i18n( "kde.org" ) );
-
+  KAboutData::setApplicationData( about );
   KLocalizedString::setApplicationDomain("kig");
 
   about.setupCommandLine( &parser );
