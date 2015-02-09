@@ -29,9 +29,10 @@
 #include <QFileDialog>
 #include <QUrl>
 #include <QMimeData>
+#include <QProcess>
+#include <QDebug>
 
 #include <KConfigGroup>
-#include <QDebug>
 #include <kedittoolbar.h>
 #include <kshortcutsdialog.h>
 #include <klibloader.h>
@@ -151,7 +152,10 @@ void Kig::fileNew()
   // create a new window if we aren't in the "initial state" ( see
   // the KDE style guide on the file menu stuff...)
   if ( ! m_part->url().isEmpty() || m_part->isModified() )
-    (new Kig)->show();
+  {
+    QString kigBinary = QStandardPaths::findExecutable( "kig" );
+    QProcess::startDetached( kigBinary );
+  }
 }
 
 void Kig::openUrl( const QUrl &url )
