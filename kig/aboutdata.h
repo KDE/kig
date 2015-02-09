@@ -32,8 +32,13 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
 				   i18n(description), KAboutLicense::GPL,
 				   i18n( "(C) 2002-2005, The Kig developers" ),
 				   QString(), "http://edu.kde.org/kig" );
+
+  tmp.addAuthor( i18n("David E. Narvaez"),
+                 i18n("Current maintainer."),
+                 "david.narvaez@computer.org" );
+
   tmp.addAuthor(i18n("Dominique Devriese"),
-                 i18n("Original author, long time maintainer, design and lots of code."),
+                 i18n("Original author, former maintainer, design and lots of code."),
 		  "devriese@kde.org" );
 
   tmp.addAuthor(i18n("Maurizio Paolini"),
@@ -43,7 +48,7 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
 		 "paolini@dmf.unicatt.it");
 
   tmp.addAuthor( i18n("Pino Toscano"),
-                  i18n( "Actual maintainer, Dr. Geo import filter, point and "
+                  i18n( "Former maintainer, Dr. Geo import filter, point and "
                              "line styles, Italian translation, "
                              "miscellaneous stuff here and there." ),
                   "toscano.pino@tiscali.it" );
@@ -68,7 +73,7 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
                   "raoulb@bluewin.ch" );
 
   tmp.addCredit( i18n("Eric Depagne"),
-                  i18n( "The French translator, who also sent me some useful "
+                  i18n( "The French translator, who also contributed some useful "
                              "feedback, like feature requests and bug reports." ),
                   "edepagne@eso.org" );
 
@@ -84,11 +89,11 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
                  "oelewapperke@ulyssis.org" );
 
   tmp.addCredit(i18n("Christophe Prud'homme"),
-                 i18n( "Sent me a patch for some bugs." ),
+                 i18n( "Contributed a patch for some bugs." ),
                  "prudhomm@mit.edu" );
 
   tmp.addCredit(i18n("Robert Gogolok"),
-                 i18n("Gave me some good feedback on Kig, some feature "
+                 i18n("Contributed some good feedback on Kig, some feature "
                            "requests, cleanups and style fixes, and someone "
                            "to chat with on irc :)" ),
                  "robertgogolok@gmx.de");
