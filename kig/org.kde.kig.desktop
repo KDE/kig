@@ -199,3 +199,4 @@ Type=Application
 X-DocPath=kig/index.html
 Terminal=false
 Categories=Qt;KDE;Education;Math;
+X-DBUS-ServiceName=org.kde.kig
