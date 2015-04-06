@@ -3,7 +3,6 @@
   <id>kig.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>Kig</name>
-  <name xml:lang="ast">Kig</name>
   <name xml:lang="bs">Kig</name>
   <name xml:lang="ca">Kig</name>
   <name xml:lang="cs">Kig</name>
@@ -29,7 +28,6 @@
   <name xml:lang="zh-CN">Kig</name>
   <name xml:lang="zh-TW">數學_Kig</name>
   <summary>Interactive Geometry</summary>
-  <summary xml:lang="ast">Xeometría interactiva</summary>
   <summary xml:lang="bs">Interaktivna Geometrija</summary>
   <summary xml:lang="ca">Geometria interactiva</summary>
   <summary xml:lang="cs">Interaktivní geometrie</summary>
