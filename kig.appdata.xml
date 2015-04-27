@@ -15,6 +15,7 @@
   <name xml:lang="fi">Kig</name>
   <name xml:lang="fr">Kig</name>
   <name xml:lang="it">Kig</name>
+  <name xml:lang="ko">Kig</name>
   <name xml:lang="lt">Kig</name>
   <name xml:lang="nds">Kig</name>
   <name xml:lang="nl">Kig</name>
@@ -40,6 +41,7 @@
   <summary xml:lang="fi">Vuorovaikutteinen geometria</summary>
   <summary xml:lang="fr">Géométrie interactive</summary>
   <summary xml:lang="it">Geometria interattiva</summary>
+  <summary xml:lang="ko">인터랙티브 기하학</summary>
   <summary xml:lang="lt">Interaktyvi geometrija</summary>
   <summary xml:lang="nds">Wesselwarken Geometrie</summary>
   <summary xml:lang="nl">Interactieve meetkunde</summary>
