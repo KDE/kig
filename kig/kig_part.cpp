@@ -44,11 +44,11 @@
 #include <functional>
 #include <iterator>
 
-#include <QAction>
-#include <QFileDialog>
-#include <QStandardPaths>
 #include <QDirIterator>
-#include <QDebug>
+#include <QFileDialog>
+#include <QFile>
+#include <QPrintDialog>
+#include <QTimer>
 
 #include <KAboutData>
 
@@ -69,17 +69,6 @@
 #include <KIconEngine>
 
 #include <KParts/OpenUrlArguments>
-
-#include <qbytearray.h>
-#include <qcheckbox.h>
-#include <qeventloop.h>
-#include <qfile.h>
-#include <qlayout.h>
-#include <qsizepolicy.h>
-#include <qtimer.h>
-#include <QIcon>
-#include <QPrinter>
-#include <QPrintDialog>
 
 using namespace std;
 
