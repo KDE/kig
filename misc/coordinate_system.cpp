@@ -37,8 +37,6 @@
 
 #include <QDebug>
 
-#include <KLocale>
-
 static QString withoutSpaces( const QString& str )
 {
   QString newstr;
@@ -143,17 +141,17 @@ void CoordinateValidator::fixup( QString & input ) const
   int sc = input.indexOf( ';' );
   if ( sc == -1 )
   {
+    const QLocale l;
     sc = input.length();
-    KLocale* l = KLocale::global();
     switch ( mtype )
     {
     case Polar:
-      input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
+      input.append( QString::fromLatin1( ";" ) + l.positiveSign() +
                     QString::fromLatin1( "0" ) );
       break;
     case Euclidean:
-      input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
-                    QString::fromLatin1( "0" ) + l->decimalSymbol() +
+      input.append( QString::fromLatin1( ";" ) + l.positiveSign() +
+                    QString::fromLatin1( "0" ) + l.decimalPoint() +
                     QString::fromLatin1( "0" ) );
       break;
     default:
@@ -178,9 +176,10 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   // since an object isn't asked to recalc every time the widget size
   // changes..  might be a good idea to do that, but well, maybe some
   // other time :)
+  const QLocale currentLocale;
   int l = d.getCoordinatePrecision();
-  QString xs = KLocale::global()->formatNumber( p.x, l );
-  QString ys = KLocale::global()->formatNumber( p.y, l );
+  QString xs = currentLocale.toString( p.x, 'g', l );
+  QString ys = currentLocale.toString( p.y, 'g', l );
   return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
 }
 
@@ -192,11 +191,11 @@ Coordinate EuclideanCoords::toScreen( const QString& s, bool& ok ) const
   {
     QString xs = r.cap( 1 );
     QString ys = r.cap( 2 );
-    KLocale* l = KLocale::global();
-    double x = l->readNumber( xs, &ok );
+    const QLocale currentLocale;
+    double x = currentLocale.toDouble( xs, &ok );
     if ( ! ok ) x = xs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
-    double y = l->readNumber( ys, &ok );
+    double y = currentLocale.toDouble( ys, &ok );
     if ( ! ok ) y = ys.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     return Coordinate( x, y );
@@ -290,6 +289,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   /****** the axes ******/
   if ( showaxes )
   {
+    const QLocale currentLocale;
+
     p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
     // x axis
     p.drawSegment( Coordinate( hmin, 0 ), Coordinate( hmax, 0 ) );
@@ -307,7 +308,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
 
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
-        KLocale::global()->formatNumber( i, hnfrac ),
+        currentLocale.toString( i, 'g', hnfrac ),
         Qt::AlignLeft | Qt::AlignTop
       );
     };
@@ -316,7 +317,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
     {
       if( fabs( i ) < 1e-8 ) continue;
       p.drawText ( Rect( Coordinate( 0, i ), 2*hd, vd ).normalized(),
-                   KLocale::global()->formatNumber( i, vnfrac ),
+                   currentLocale.toString( i, 'g', vnfrac ),
                    Qt::AlignBottom | Qt::AlignLeft
                  );
     };
@@ -380,12 +381,13 @@ PolarCoords::~PolarCoords()
 QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) const
 {
   int l = d.getCoordinatePrecision();
+  const QLocale currentLocale;
 
   double r = pt.length();
   double theta = Goniometry::convert( atan2( pt.y, pt.x ), Goniometry::Rad, Goniometry::Deg );
 
-  QString rs = KLocale::global()->formatNumber( r, l );
-  QString ts = KLocale::global()->formatNumber( theta, 0 );
+  QString rs = currentLocale.toString( r, 'g', l );
+  QString ts = currentLocale.toString( theta, 'g', 0 );
 
   return QString::fromLatin1( "( %1; %2 )" ).arg( rs ).arg( ts );
 }
@@ -410,12 +412,13 @@ Coordinate PolarCoords::toScreen( const QString& s, bool& ok ) const
   ok = ( regexp.indexIn( s ) == 0 );
   if ( ok )
   {
+    const QLocale currentLocale;
     QString rs = regexp.cap( 1 );
-    double r = KLocale::global()->readNumber( rs, &ok );
+    double r = currentLocale.toDouble( rs, &ok );
     if ( ! ok ) r = rs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     QString ts = regexp.cap( 2 );
-    double theta = KLocale::global()->readNumber( ts, &ok );
+    double theta = currentLocale.toDouble( ts, &ok );
     if ( ! ok ) theta = ts.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     theta *= M_PI;
@@ -483,6 +486,8 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   /****** the axes ******/
   if ( showaxes )
   {
+    const QLocale currentLocale;
+
     p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
     // x axis
     p.drawSegment( Coordinate( hmin, 0 ), Coordinate( hmax, 0 ) );
@@ -498,7 +503,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
       // through the 0 etc. )
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = KLocale::global()->formatNumber( fabs( i ), nfrac );
+      QString is = currentLocale.toString( fabs( i ), 'g', nfrac );
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
         is, Qt::AlignLeft | Qt::AlignTop );
@@ -508,7 +513,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     {
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = KLocale::global()->formatNumber( fabs( i ), nfrac );
+      QString is = currentLocale.toString( fabs( i ), 'g', nfrac );
 
       p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
                    is, Qt::AlignBottom | Qt::AlignLeft
