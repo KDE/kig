@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8.12)
 find_package(Qt5Svg REQUIRED)
 find_package(Qt5PrintSupport REQUIRED)
 
-find_package(ECM REQUIRED NO_MODULE)
+find_package(ECM 1.7 REQUIRED NO_MODULE)
 find_package(KF5Parts REQUIRED)
 find_package(KF5DocTools REQUIRED)
 find_package(KF5I18n REQUIRED)
@@ -24,6 +24,7 @@ set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
 
 set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 
+include(ECMAddAppIcon)
 include(ECMInstallIcons)
 include(ECMAddTests)
 include(KDEInstallDirs)
