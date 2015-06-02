@@ -62,9 +62,9 @@
 #include <kstandardaction.h>
 #include <ktoggleaction.h>
 #include <ktogglefullscreenaction.h>
-#include <kundostack.h>
 #include <kdeprintdialog.h>
 #include <kprintpreview.h>
+#include <KUndoActions>
 #include <KPluginFactory>
 #include <KIconEngine>
 
@@ -222,9 +222,9 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   setupTypes();
 
   // construct our command history
-  mhistory = new KUndoStack();
-  mhistory->createUndoAction( actionCollection() );
-  mhistory->createRedoAction( actionCollection() );
+  mhistory = new QUndoStack();
+  KUndoActions::createUndoAction( mhistory, actionCollection() );
+  KUndoActions::createRedoAction( mhistory, actionCollection() );
   connect( mhistory, SIGNAL( cleanChanged( bool ) ), this, SLOT( setHistoryClean( bool ) ) );
 
   // we are read-write by default

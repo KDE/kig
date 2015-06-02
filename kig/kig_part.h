@@ -31,7 +31,6 @@
 
 class KAboutData;
 class KToggleAction;
-class KUndoStack;
 class QUndoStack;
 class QWidget;
 class QPrinter;
@@ -212,7 +211,7 @@ protected:
   /**
    * the command history
    */
-  KUndoStack* mhistory;
+  QUndoStack* mhistory;
 
 public:
   // actions: this is an annoying case, didn't really fit into my
