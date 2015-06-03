@@ -20,34 +20,28 @@
 
 #include "kig.h"
 
-
-#include <qevent.h>
-#include <qtimer.h>
-
 #include <QAction>
-#include <QStandardPaths>
+#include <QApplication>
+#include <QDropEvent>
 #include <QFileDialog>
-#include <QUrl>
+#include <QMessageBox>
 #include <QMimeData>
 #include <QProcess>
-#include <QDebug>
+#include <QStandardPaths>
+#include <QTimer>
+#include <QUrl>
 
+#include <KActionCollection>
 #include <KConfigGroup>
-#include <kedittoolbar.h>
-#include <kshortcutsdialog.h>
-#include <klibloader.h>
-#include <klocale.h>
-#include <kactioncollection.h>
-#include <kmessagebox.h>
-#include <krecentfilesaction.h>
-#include <kstandardaction.h>
-#include <ktip.h>
-#include <kxmlguifactory.h>
-#include <kapplication.h>
-#include <assert.h>
-
+#include <KEditToolBar>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KRecentFilesAction>
 #include <KService>
-#include <QFileDialog>
+#include <KSharedConfig>
+#include <KStandardAction>
+#include <KTipDialog>
+#include <KXMLGUIFactory>
 
 Kig::Kig()
   : KParts::MainWindow(), m_part( 0 )
@@ -178,7 +172,7 @@ void Kig::openUrl( const QUrl &url )
 
 void Kig::optionsConfigureToolbars()
 {
-  KConfigGroup configGroup = KGlobal::config()->group( "MainWindow");
+  KConfigGroup configGroup = KSharedConfig::openConfig()->group( "MainWindow" );
   saveMainWindowSettings( configGroup );
 
   // use the standard toolbar editor
@@ -190,7 +184,7 @@ void Kig::optionsConfigureToolbars()
 
 void Kig::applyNewToolbarConfig()
 {
-  applyMainWindowSettings( KGlobal::config()->group( "MainWindow") );
+  applyMainWindowSettings( KSharedConfig::openConfig()->group( "MainWindow") );
 }
 
 bool Kig::queryClose()
