@@ -48,6 +48,8 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QPrintDialog>
+#include <QPrinter>
+#include <QPrintPreviewDialog>
 #include <QTimer>
 
 #include <KAboutData>
@@ -62,8 +64,6 @@
 #include <kstandardaction.h>
 #include <ktoggleaction.h>
 #include <ktogglefullscreenaction.h>
-#include <kdeprintdialog.h>
-#include <kprintpreview.h>
 #include <KUndoActions>
 #include <KPluginFactory>
 #include <KIconEngine>
@@ -881,7 +881,7 @@ void KigPart::delWidget( KigWidget* v )
 void KigPart::filePrintPreview()
 {
   QPrinter printer;
-  KPrintPreview printPreview( &printer );
+  QPrintPreviewDialog printPreview( &printer );
   doPrint( printer, document().grid(), document().axes() );
   printPreview.exec();
 }
@@ -890,18 +890,18 @@ void KigPart::filePrint()
 {
   QPrinter printer;
   KigPrintDialogPage* kp = new KigPrintDialogPage();
-  QPrintDialog *printDialog = KdePrint::createPrintDialog( &printer, QList<QWidget*>() << kp, m_widget );
-  printDialog->setWindowTitle( i18n("Print Geometry") );
+  QPrintDialog printDialog( &printer, m_widget );
+  printDialog.setWindowTitle( i18n("Print Geometry") );
+  printDialog.setOptionTabs( { kp } );
   printer.setFullPage( true );
   //Unsupported in Qt
   //printer.setPageSelection( QPrinter::ApplicationSide );
   kp->setPrintShowGrid( document().grid() );
   kp->setPrintShowAxes( document().axes() );
-  if (printDialog->exec())
+  if (printDialog.exec())
   {
     doPrint( printer, kp->printShowGrid(), kp->printShowAxes() );
   }
-  delete printDialog;
 }
 
 void KigPart::doPrint( QPrinter& printer, bool printGrid, bool printAxes )
