@@ -23,7 +23,6 @@
 #include <QBoxLayout>
 #include <QCheckBox>
 #include <QLabel>
-#include <knuminput.h>
 
 #include <klocale.h>
 #include <QVBoxLayout>
