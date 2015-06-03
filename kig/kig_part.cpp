@@ -47,6 +47,8 @@
 #include <QDirIterator>
 #include <QFileDialog>
 #include <QFile>
+#include <QMimeType>
+#include <QMimeDatabase>
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QPrintPreviewDialog>
@@ -60,7 +62,6 @@
 #include <kxmlguiwindow.h>
 #include <kactioncollection.h>
 #include <kmessagebox.h>
-#include <kmimetype.h>
 #include <kstandardaction.h>
 #include <ktoggleaction.h>
 #include <ktogglefullscreenaction.h>
@@ -69,7 +70,6 @@
 #include <KIconEngine>
 
 #include <KParts/OpenUrlArguments>
-
 using namespace std;
 
 static const QString typesFile = "macros.kigt";
@@ -414,14 +414,15 @@ bool KigPart::openFile()
     return false;
   };
 
-  KMimeType::Ptr mimeType = KMimeType::mimeType( arguments().mimeType() );
-  if ( !mimeType )
+  const QMimeDatabase mimeDb;
+  QMimeType mimeType = mimeDb.mimeTypeForName( arguments().mimeType() );
+  if ( !mimeType.isValid() )
   {
     // we can always use findByPath instead of findByURL with localFilePath()
-    mimeType = KMimeType::findByPath( localFilePath() );
+    mimeType = mimeDb.mimeTypeForFile( localFilePath() );
   }
-  qDebug() << "mimetype: " << mimeType->name();
-  KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
+  qDebug() << "mimetype: " << mimeType.name();
+  KigFilter* filter = KigFilters::instance()->find( mimeType.name() );
   if ( !filter )
   {
     // we don't support this mime type...
@@ -429,7 +430,7 @@ bool KigPart::openFile()
       (
         widget(),
         i18n( "You tried to open a document of type \"%1\"; unfortunately, Kig does not support this format. If you think the format in question would be worth implementing support for, you can open a feature request in <a href=\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist\">KDE's bug tracking system</a>"
-          , mimeType->name()),
+          , mimeType.name()),
         i18n( "Format Not Supported" ),
         KMessageBox::Notify | KMessageBox::AllowLink
         );
@@ -467,8 +468,9 @@ bool KigPart::saveFile()
 {
   if ( url().isEmpty() ) return internalSaveAs();
   // mimetype:
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( localFilePath() );
-  if ( mimeType->name() != "application/x-kig" )
+  const QMimeDatabase mimeDb;
+  const QMimeType mimeType = mimeDb.mimeTypeForFile( localFilePath() );
+  if ( mimeType.name() != "application/x-kig" )
   {
     // we don't support this mime type...
     if( KMessageBox::warningYesNo( widget(),
@@ -1028,9 +1030,10 @@ extern "C" KDE_EXPORT int convertToNative( const QUrl &url, const QByteArray& ou
     return -1;
   };
 
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( file );
-  qDebug() << "mimetype: " << mimeType->name();
-  KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
+  const QMimeDatabase mimeDb;
+  const QMimeType mimeType = mimeDb.mimeTypeForFile( file );
+  qDebug() << "mimetype: " << mimeType.name();
+  KigFilter* filter = KigFilters::instance()->find( mimeType.name() );
   if ( !filter )
   {
     qCritical() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
