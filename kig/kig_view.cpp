@@ -47,7 +47,7 @@ KigWidget::KigWidget( KigPart* part,
                       QWidget* parent,
                       bool fullscreen )
   : QWidget( parent,
-             fullscreen ? Qt::FramelessWindowHint : (Qt::WFlags)0 ),
+             fullscreen ? Qt::FramelessWindowHint : Qt::Widget ),
     mpart( part ),
     mview( view ),
     stillPix(size()),
