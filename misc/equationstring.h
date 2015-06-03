@@ -15,8 +15,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#ifndef KIG_EQUATION_H
-#define KIG_EQUATION_H
+#ifndef KIG_EQUATIONSTRING_H
+#define KIG_EQUATIONSTRING_H
 
 #include <qstring.h>
 

@@ -125,7 +125,7 @@ set(kigpart_PART_SRCS
    misc/coordinate.cpp
    misc/coordinate_system.cpp
    misc/cubic-common.cc
-   misc/equation.cc
+   misc/equationstring.cc
    misc/goniometry.cc
    misc/guiaction.cc
    misc/kigcoordinateprecisiondialog.cpp

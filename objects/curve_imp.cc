@@ -19,7 +19,7 @@
 #include "../misc/common.h"
 #include "../misc/coordinate.h"
 #include "../misc/kignumerics.h"
-#include "../misc/equation.h"
+#include "../misc/equationstring.h"
 #include "../kig/kig_document.h"
 
 #include <cmath>

@@ -22,7 +22,7 @@
 #include "../misc/kigpainter.h"
 #include "../misc/screeninfo.h"
 #include "../misc/kignumerics.h"
-#include "../misc/equation.h"
+#include "../misc/equationstring.h"
 #include "../misc/common.h"
 #include "../kig/kig_view.h"
 
