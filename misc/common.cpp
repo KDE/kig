@@ -20,8 +20,6 @@
 
 #include "common.h"
 
-#include <math.h>
-
 #include "../kig/kig_view.h"
 #include "../objects/object_imp.h"
 
@@ -29,9 +27,6 @@
 #include <limits>
 
 #include <QInputDialog>
-
-#include <KLocale>
-#include <knumvalidator.h>
 
 Coordinate calcPointOnPerpend( const LineData& l, const Coordinate& t )
 {
