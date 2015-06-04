@@ -27,26 +27,20 @@
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
 
-#include <QFileDialog>
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <kpushbutton.h>
-#include <KHelpClient>
-
-#include <qbytearray.h>
-#include <qevent.h>
-#include <qfile.h>
-#include <qlayout.h>
-#include <qmenu.h>
-#include <qstringlist.h>
-
 #include <algorithm>
 #include <iterator>
+
 #include <QDialogButtonBox>
-#include <KConfigGroup>
+#include <QFileDialog>
+#include <QMenu>
 #include <QPushButton>
+#include <QStandardPaths>
 #include <QVBoxLayout>
+
+#include <KConfigGroup>
+#include <KHelpClient>
+#include <KIconLoader>
+#include <KMessageBox>
 
 static QString wrapAt( const QString& str, int col = 50 )
 {
