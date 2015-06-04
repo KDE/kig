@@ -20,19 +20,16 @@
 
 #include "script_mode.h"
 
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qmenu.h>
-
 #include <QAction>
-#include <QFontDatabase>
-#include <QTextEdit>
 #include <QDialog>
+#include <QFontDatabase>
+#include <QLabel>
+#include <QTextEdit>
+#include <QVBoxLayout>
 
+#include <KActionCollection>
 #include <KIconEngine>
 #include <KHelpClient>
-#include <kactioncollection.h>
-#include <klocale.h>
 
 #include <KTextEditor/Document>
 #include <KTextEditor/Editor>
