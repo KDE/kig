@@ -27,12 +27,11 @@
 #include <qtextedit.h>
 #include <qtimer.h>
 #include <qundostack.h>
-
+#include <QIntValidator>
 #include <QDebug>
 #include <QIcon>
 #include <klineedit.h>
 #include <klocale.h>
-#include <knumvalidator.h>
 #include <kpushbutton.h>
 #include <QDialogButtonBox>
 #include <KConfigGroup>
@@ -68,7 +67,7 @@ HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
   mwidget->buttonBack->setIcon( QIcon::fromTheme( reversed ? "go-next" : "go-previous" ) );
   connect( mwidget->buttonBack, SIGNAL( clicked() ), this, SLOT( goBack() ) );
 
-  mwidget->editStep->setValidator( new KIntValidator( 1, mtotalsteps, mwidget->editStep ) );
+  mwidget->editStep->setValidator( new QIntValidator( 1, mtotalsteps, mwidget->editStep ) );
   mwidget->labelSteps->setText( QString::number( mtotalsteps ) );
 
   mwidget->buttonNext->setIcon( QIcon::fromTheme( reversed ? "go-previous" : "go-next" ) );
