@@ -25,13 +25,13 @@
 #include <qmenu.h>
 
 #include <QAction>
+#include <QFontDatabase>
 #include <QTextEdit>
 #include <QDialog>
 
 #include <KIconEngine>
 #include <KHelpClient>
 #include <kactioncollection.h>
-#include <kglobalsettings.h>
 #include <klocale.h>
 
 #include <KTextEditor/Document>
@@ -94,7 +94,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
     // simplier KTextEdit
     textedit = new QTextEdit( secondPage );
     textedit->setObjectName( "textedit" );
-    textedit->setFont( KGlobalSettings::fixedFont() );
+    textedit->setFont( QFontDatabase::systemFont( QFontDatabase::FixedFont ) );
     textedit->setAcceptRichText( false );
     lay2->addWidget( textedit );
   }
