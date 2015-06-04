@@ -31,7 +31,7 @@
 #include <qlayout.h>
 #include <qvalidator.h>
 
-#include <kcombobox.h>
+#include <QComboBox>
 #include <QLineEdit>
 #include <klocale.h>
 #include <kpushbutton.h>
@@ -49,7 +49,7 @@ public:
   QLabel* m_label;
   QLineEdit* m_lineEditFirst;
   QLineEdit* m_lineEditSecond;
-  KComboBox* m_comboBox;
+  QComboBox* m_comboBox;
   QPushButton* okButton;
 
   Coordinate m_coord1;
@@ -174,7 +174,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
         i18n( "Use this edit field to modify the size of this angle." ) );
   horlay->addWidget( d->m_lineEditFirst );
 
-  d->m_comboBox = new KComboBox( mainWidget );
+  d->m_comboBox = new QComboBox( mainWidget );
   d->m_comboBox->addItems( Goniometry::systemList() );
   d->m_comboBox->setCurrentIndex( d->m_gonio.system() );
   d->m_comboBox->setWhatsThis(
