@@ -29,7 +29,7 @@
 
 #include <KHelpClient>
 #include <KIconButton>
-#include <KLocale>
+#include <KLocalizedString>
 
 class GivenArgsPage
   : public QWizardPage
