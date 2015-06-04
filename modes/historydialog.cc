@@ -23,20 +23,15 @@
 
 #include "ui_historywidget.h"
 
-#include <qlabel.h>
-#include <qtextedit.h>
-#include <qtimer.h>
-#include <qundostack.h>
 #include <QIntValidator>
 #include <QDebug>
-#include <QIcon>
-#include <klineedit.h>
-#include <klocale.h>
-#include <kpushbutton.h>
 #include <QDialogButtonBox>
-#include <KConfigGroup>
+#include <QIcon>
 #include <QPushButton>
+#include <QUndoStack>
 #include <QVBoxLayout>
+
+#include <KConfigGroup>
 
 HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
   : QDialog( parent ), mch( kch )
