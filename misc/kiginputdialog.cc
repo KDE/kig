@@ -32,7 +32,7 @@
 #include <qvalidator.h>
 
 #include <kcombobox.h>
-#include <klineedit.h>
+#include <QLineEdit>
 #include <klocale.h>
 #include <kpushbutton.h>
 #include <QDialogButtonBox>
@@ -47,8 +47,8 @@ public:
   KigInputDialogPrivate();
 
   QLabel* m_label;
-  KLineEdit* m_lineEditFirst;
-  KLineEdit* m_lineEditSecond;
+  QLineEdit* m_lineEditFirst;
+  QLineEdit* m_lineEditSecond;
   KComboBox* m_comboBox;
   QPushButton* okButton;
 
@@ -105,7 +105,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   d->m_label->setText( label );
   mainlay->addWidget( d->m_label );
 
-  d->m_lineEditFirst = new KLineEdit( mainWidget );
+  d->m_lineEditFirst = new QLineEdit( mainWidget );
 //  d->m_lineEditFirst->setValidator( d->m_vtor );
   if ( d->m_coord1.valid() )
   {
@@ -119,7 +119,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 
   if ( d->m_coord2.valid() )
   {
-    d->m_lineEditSecond = new KLineEdit( mainWidget );
+    d->m_lineEditSecond = new QLineEdit( mainWidget );
 //    d->m_lineEditSecond->setValidator( d->m_vtor );
     d->m_lineEditSecond->setText( d->m_doc->coordinateSystem().fromScreen( d->m_coord2, *d->m_doc ) );
     mainlay->addWidget( d->m_lineEditSecond );
@@ -168,7 +168,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
 //   horlay->setMargin( 0 );
 //   horlay->activate();
 
-  d->m_lineEditFirst = new KLineEdit( mainWidget );
+  d->m_lineEditFirst = new QLineEdit( mainWidget );
   d->m_lineEditFirst->setText( QString::number( d->m_gonio.value() ) );
   d->m_lineEditFirst->setWhatsThis(
         i18n( "Use this edit field to modify the size of this angle." ) );
