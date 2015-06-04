@@ -26,20 +26,17 @@
 
 #include "../kig/kig_document.h"
 
-#include <qevent.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qvalidator.h>
-
-#include <QComboBox>
-#include <QLineEdit>
-#include <klocale.h>
-#include <kpushbutton.h>
-#include <QDialogButtonBox>
-#include <KConfigGroup>
-#include <QPushButton>
-#include <QVBoxLayout>
 #include <QApplication>
+#include <QComboBox>
+#include <QDialogButtonBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QValidator>
+#include <QVBoxLayout>
+
+#include <KConfigGroup>
+#include <KLocalizedString>
 
 class KigInputDialogPrivate
 {
