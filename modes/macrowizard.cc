@@ -25,7 +25,7 @@
 
 #include <QDebug>
 #include <QDialog>
-#include <klineedit.h>
+#include <QLineEdit>
 
 #include <KHelpClient>
 #include <KIconButton>
@@ -137,14 +137,14 @@ MacroInfoPage::MacroInfoPage( QWidget* parent )
   lay->addWidget( label, 0, 0 );
   label->setText( i18n( "&Name:" ) );
   label->setAlignment( Qt::AlignRight );
-  KLineEdit* editname = new KLineEdit( this );
+  QLineEdit* editname = new QLineEdit( this );
   lay->addWidget( editname, 0, 1 );
   label->setBuddy( editname );
   label = new QLabel( this );
   lay->addWidget( label, 1, 0 );
   label->setText( i18n( "&Description:" ) );
   label->setAlignment( Qt::AlignRight );
-  KLineEdit* editdesc = new KLineEdit( this );
+  QLineEdit* editdesc = new QLineEdit( this );
   lay->addWidget( editdesc, 1, 1 );
   label->setBuddy( editdesc );
   label = new QLabel( this );
