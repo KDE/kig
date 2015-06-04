@@ -27,7 +27,7 @@
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
 
-#include <kfiledialog.h>
+#include <QFileDialog>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -461,7 +461,7 @@ void TypesDialog::exportType()
       types.push_back( macro );
   }
   if (types.empty()) return;
-  QString file_name = KFileDialog::getSaveFileName( QUrl("kfiledialog:///macro"), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
+  QString file_name = QFileDialog::getSaveFileName( this, i18n( "Export Types" ), QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n("*.kigt|Kig Types Files\n*|All Files") );
   if ( file_name.isNull() )
     return;
   QFile fi( file_name );
@@ -475,8 +475,7 @@ void TypesDialog::exportType()
 
 void TypesDialog::importTypes()
 {
-  QStringList file_names =
-    KFileDialog::getOpenFileNames( QUrl("kfiledialog:///importTypes"), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Import Types" ));
+  QStringList file_names = QFileDialog::getOpenFileNames( this, i18n( "Import Types" ), QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n("*.kigt|Kig Types Files\n*|All Files") );
 
   std::vector<Macro*> macros;
 
