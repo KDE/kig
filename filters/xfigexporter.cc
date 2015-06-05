@@ -250,7 +250,7 @@ void XFigExportImpVisitor::visit( const TextImp* imp )
           << "500 500 " // height, width: large enough..
           << coord.x() << " " // x, y
           << coord.y() << " "
-          << text.toAscii() << "\\001" // text, terminated by \001
+          << text.toLatin1() << "\\001" // text, terminated by \001
           << "\n";
 }
 
