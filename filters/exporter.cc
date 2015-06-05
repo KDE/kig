@@ -31,7 +31,7 @@
 #include "../misc/kigpainter.h"
 
 #include <QIcon>
-#include <qfile.h>
+#include <QMimeDatabase>
 
 #include <KIconEngine>
 #include <kactionmenu.h>
@@ -39,7 +39,6 @@
 #include <kimageio.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kmimetype.h>
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )
@@ -104,9 +103,10 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   delete opts;
   delete kfd;
 
-  KMimeType::Ptr mimeType = KMimeType::findByPath( filename );
-  qDebug() << "mimetype: " << mimeType->name();
-  if ( !KImageIO::isSupported( mimeType->name(), KImageIO::Writing ) )
+  QMimeDatabase db;
+  QMimeType mimeType = db.mimeTypeForFile( filename );
+  qDebug() << "mimetype: " << mimeType.name();
+  if ( !KImageIO::isSupported( mimeType.name(), KImageIO::Writing ) )
   {
     KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
     return;
@@ -128,7 +128,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   p.drawGrid( doc.document().coordinateSystem(), showgrid, showaxes );
   // FIXME: show the selections ?
   p.drawObjects( doc.document().objects(), false );
-  QStringList types = KImageIO::typeForMime( mimeType->name() );
+  QStringList types = KImageIO::typeForMime( mimeType.name() );
   if ( types.isEmpty() ) return; // TODO error dialog?
   if ( !img.save( filename, types.at(0).toLatin1() ) )
   {
