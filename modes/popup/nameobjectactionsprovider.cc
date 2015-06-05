@@ -33,9 +33,9 @@
 #include "../../objects/object_factory.h"
 #include "../../objects/point_imp.h"
 
+#include <QInputDialog>
 #include <QRegExpValidator>
 
-#include <KInputDialog>
 #include <KLocale>
 
 void addNameLabel( ObjectCalcer* object, ObjectCalcer* namecalcer, const Coordinate& loc, KigPart& doc )
@@ -79,11 +79,7 @@ bool NameObjectActionsProvider::executeAction(
     assert( os.size() == 1 );
     QString name = os[0]->name();
     bool ok;
-    QRegExp re( ".*" );
-    QRegExpValidator* rev = new QRegExpValidator( re,  &doc );
-    name = KInputDialog::getText(
-               i18n( "Set Object Name" ), i18n( "Set Name of this Object:" ),
-               name, &ok, &w, rev );
+    name = QInputDialog::getText( &w, i18n( "Set Object Name" ), i18n( "Set Name of this Object:" ), QLineEdit::Normal, name, &ok );
     if ( ok )
     {
       bool justadded = false;
