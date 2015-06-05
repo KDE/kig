@@ -32,10 +32,10 @@
 #include "../../objects/object_drawer.h"
 #include "../../objects/point_imp.h"
 
+#include <QColorDialog>
 #include <QPen>
 #include <QRect>
 
-#include <KColorDialog>
 #include <KIconEngine>
 #include <KLocale>
 
@@ -238,8 +238,8 @@ bool BuiltinObjectActionsProvider::executeAction(
     {
       if ( os.size() == 1 )
         color = os.front()->drawer()->color();
-      int result = KColorDialog::getColor( color, &w );
-      if ( result != KColorDialog::Accepted ) return true;
+      color = QColorDialog::getColor( color, &w );
+      if ( !color.isValid() ) return true;
     }
     KigCommand* kc = new KigCommand( doc, i18n( "Change Object Color" ) );
     assert( color.isValid() );
