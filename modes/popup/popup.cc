@@ -50,24 +50,7 @@
 #include "objecttypeactionsprovider.h"
 #include "propertiesactionsprovider.h"
 
-#include <algorithm>
-#include <functional>
-
-#include <QIcon>
-#include <qaction.h>
-#include <qcursor.h>
-#include <qdialog.h>
-#include <qfont.h>
-#include <qpen.h>
-#include <qregexp.h>
-#include <qvalidator.h>
-
-#include <QAction>
-
 #include <KIconEngine>
-#include <kcolordialog.h>
-#include <kinputdialog.h>
-#include <klocale.h>
 
 #include <config-kig.h>
 
