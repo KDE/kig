@@ -30,14 +30,14 @@
 #include "../misc/kigfiledialog.h"
 #include "../misc/kigpainter.h"
 
-#include <QIcon>
 #include <QMimeDatabase>
+#include <QStandardPaths>
 
 #include <KIconEngine>
-#include <kactionmenu.h>
-#include <kactioncollection.h>
+#include <KActionMenu>
+#include <KActionCollection>
 #include <kimageio.h>
-#include <kmessagebox.h>
+#include <KMessageBox>
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )

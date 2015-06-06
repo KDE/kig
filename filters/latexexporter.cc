@@ -44,19 +44,17 @@
 #include "../objects/polygon_imp.h"
 #include "../objects/text_imp.h"
 
-#include <math.h>
+#include <config-kig.h>
+
+#include <cmath>
 #include <algorithm>
 
-#include <qcheckbox.h>
-#include <qcolor.h>
-#include <qfile.h>
-#include <qtextstream.h>
+#include <QFile>
+#include <QTextStream>
 
-#include <kmessagebox.h>
-
-#include <config-kig.h>
-#include <KSharedConfig>
 #include <KConfigGroup>
+#include <KMessageBox>
+#include <KSharedConfig>
 
 #ifdef HAVE_TRUNC
 #define KDE_TRUNC(a)    trunc(a)

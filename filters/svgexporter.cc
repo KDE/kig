@@ -26,14 +26,13 @@
 #include "../misc/kigfiledialog.h"
 #include "../misc/kigpainter.h"
 
-#include <qcheckbox.h>
-#include <qfile.h>
-#include <qrect.h>
+#include <map>
+
+#include <QFile>
+#include <QStandardPaths>
 #include <QSvgGenerator>
 
-#include <kmessagebox.h>
-
-#include <map>
+#include <KMessageBox>
 
 SVGExporter::~SVGExporter()
 {

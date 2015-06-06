@@ -21,11 +21,11 @@
 
 #include "../misc/kigfiledialog.h"
 
-#include <qfile.h>
-#include <qtextstream.h>
+#include <QFile>
+#include <QTextStream>
 #include <QStandardPaths>
 
-#include <kmessagebox.h>
+#include <KMessageBox>
 
 #ifdef HAVE_TRUNC
 #define KDE_TRUNC(a)	trunc(a)

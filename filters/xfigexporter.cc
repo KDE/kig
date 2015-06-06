@@ -35,14 +35,14 @@
 #include "../objects/polygon_imp.h"
 #include "../objects/text_imp.h"
 
-#include <qcolor.h>
-#include <qfile.h>
-#include <qtextstream.h>
-
-#include <kmessagebox.h>
-
 #include <map>
 #include <iterator>
+
+#include <QFile>
+#include <QStandardPaths>
+#include <QTextStream>
+
+#include <KMessageBox>
 
 // we need this for storing colors in a std::map..
 static bool operator<( const QColor& a, const QColor& b )
