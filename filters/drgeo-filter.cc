@@ -48,14 +48,11 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <math.h>
+#include <cmath>
 
-#include <qfile.h>
-#include <qnamespace.h>
 #include <QDomDocument>
 #include <QInputDialog>
-
-#include <klocale.h>
+#include <QFile>
 
 #undef DRGEO_DEBUG
 //#define DRGEO_DEBUG
