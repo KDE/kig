@@ -53,8 +53,8 @@
 #include <qfile.h>
 #include <qnamespace.h>
 #include <QDomDocument>
+#include <QInputDialog>
 
-#include <kinputdialog.h>
 #include <klocale.h>
 
 #undef DRGEO_DEBUG
@@ -124,7 +124,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   {
     // Dr. Geo file has more than 1 figure, let the user choose one...
     bool ok = true;
-    myfig = KInputDialog::getItem(
+    myfig = QInputDialog::getItem( nullptr,
                 i18n( "Dr. Geo Filter" ),
                 i18n( "The current Dr. Geo file contains more than one figure.\n"
                       "Please select which to import:" ),
