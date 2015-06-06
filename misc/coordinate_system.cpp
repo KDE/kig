@@ -178,8 +178,8 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   // other time :)
   const QLocale currentLocale;
   int l = d.getCoordinatePrecision();
-  QString xs = currentLocale.toString( p.x, 'g', l );
-  QString ys = currentLocale.toString( p.y, 'g', l );
+  QString xs = currentLocale.toString( p.x, 'f', l );
+  QString ys = currentLocale.toString( p.y, 'f', l );
   return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
 }
 
@@ -308,7 +308,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
 
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
-        currentLocale.toString( i, 'g', hnfrac ),
+        currentLocale.toString( i, 'f', hnfrac ),
         Qt::AlignLeft | Qt::AlignTop
       );
     };
@@ -317,7 +317,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
     {
       if( fabs( i ) < 1e-8 ) continue;
       p.drawText ( Rect( Coordinate( 0, i ), 2*hd, vd ).normalized(),
-                   currentLocale.toString( i, 'g', vnfrac ),
+                   currentLocale.toString( i, 'f', vnfrac ),
                    Qt::AlignBottom | Qt::AlignLeft
                  );
     };
@@ -386,8 +386,8 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
   double r = pt.length();
   double theta = Goniometry::convert( atan2( pt.y, pt.x ), Goniometry::Rad, Goniometry::Deg );
 
-  QString rs = currentLocale.toString( r, 'g', l );
-  QString ts = currentLocale.toString( theta, 'g', 0 );
+  QString rs = currentLocale.toString( r, 'f', l );
+  QString ts = currentLocale.toString( theta, 'f', 0 );
 
   return QString::fromLatin1( "( %1; %2 )" ).arg( rs ).arg( ts );
 }
@@ -503,7 +503,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
       // through the 0 etc. )
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = currentLocale.toString( fabs( i ), 'g', nfrac );
+      QString is = currentLocale.toString( fabs( i ), 'f', nfrac );
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
         is, Qt::AlignLeft | Qt::AlignTop );
@@ -513,7 +513,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     {
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = currentLocale.toString( fabs( i ), 'g', nfrac );
+      QString is = currentLocale.toString( fabs( i ), 'f', nfrac );
 
       p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
                    is, Qt::AlignBottom | Qt::AlignLeft

@@ -56,7 +56,7 @@ void EquationString::addTerm( double coeff, const QString& monomial, bool& needs
   }
   coeff = std::fabs( coeff );
   if ( monomial.isEmpty() || std::fabs( coeff - 1.0 ) > 1e-6 ) 
-    append( QLocale().toString( coeff, 'g', 3 ) );
+    append( QLocale().toString( coeff, 'f', 3 ) );
   if ( !monomial.isEmpty() )
   {
     append( " " );
