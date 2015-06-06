@@ -20,6 +20,8 @@
 
 #include "kig_part.h"
 
+#include <kigpart_export.h>
+
 #include "aboutdata.h"
 #include "kig_commands.h"
 #include "kig_document.h"
@@ -52,24 +54,21 @@
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QPrintPreviewDialog>
+#include <QStandardPaths>
 #include <QTimer>
 
 #include <KAboutData>
-
-#include <kdemacros.h>
-#include <kiconloader.h>
-#include <kcomponentdata.h>
-#include <kxmlguiwindow.h>
-#include <kactioncollection.h>
-#include <kmessagebox.h>
-#include <kstandardaction.h>
-#include <ktoggleaction.h>
-#include <ktogglefullscreenaction.h>
+#include <KActionCollection>
+#include <KIconLoader>
+#include <KIconEngine>
+#include <KMessageBox>
 #include <KUndoActions>
 #include <KPluginFactory>
-#include <KIconEngine>
+#include <KStandardAction>
+#include <KToggleAction>
 
 #include <KParts/OpenUrlArguments>
+
 using namespace std;
 
 static const QString typesFile = "macros.kigt";
@@ -1010,7 +1009,7 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" KDE_EXPORT int convertToNative( const QUrl &url, const QByteArray& outfile )
+extern "C" KIGPART_EXPORT int convertToNative( const QUrl &url, const QByteArray& outfile )
 {
   qDebug() << "converting " << url.toDisplayString( QUrl::PrettyDecoded ) << " to " << outfile;
 

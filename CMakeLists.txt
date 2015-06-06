@@ -31,6 +31,7 @@ include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
 include(FeatureSummary)
+include(GenerateExportHeader)
 
 add_definitions (${QT_DEFINITIONS} ${KDE5_DEFINITIONS} -DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 include_directories (${Qt5Gui_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE5_INCLUDES})
@@ -215,6 +216,7 @@ endif(BoostPython_FOUND)
 
 
 add_library(kigpart MODULE ${kigpart_PART_SRCS})
+generate_export_header(kigpart)
 
 target_link_libraries(kigpart
   Qt5::Gui
