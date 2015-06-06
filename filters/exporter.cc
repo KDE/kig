@@ -30,13 +30,13 @@
 #include "../misc/kigfiledialog.h"
 #include "../misc/kigpainter.h"
 
+#include <QImageWriter>
 #include <QMimeDatabase>
 #include <QStandardPaths>
 
 #include <KIconEngine>
 #include <KActionMenu>
 #include <KActionCollection>
-#include <kimageio.h>
 #include <KMessageBox>
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
@@ -83,8 +83,15 @@ QString ImageExporter::menuIcon() const
 void ImageExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), KImageIO::pattern( KImageIO::Writing ),
+      QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), QString(),
       i18n( "Export as Image" ), &w );
+  const QList<QByteArray> mimeFilters = QImageWriter::supportedMimeTypes();
+  QStringList mimeFiltersConverted;
+  // Since someone didn't get the memo about what's the type of a mime name...
+  for (auto mimeFilter : mimeFilters) {
+      mimeFiltersConverted.append( QString::fromUtf8( mimeFilter ) );
+  }
+  kfd->setMimeTypeFilters( mimeFiltersConverted );
   kfd->setOptionCaption( i18n( "Image Options" ) );
   ImageExporterOptions* opts = new ImageExporterOptions( 0L );
   kfd->setOptionsWidget( opts );
@@ -105,7 +112,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   QMimeDatabase db;
   QMimeType mimeType = db.mimeTypeForFile( filename );
   qDebug() << "mimetype: " << mimeType.name();
-  if ( !KImageIO::isSupported( mimeType.name(), KImageIO::Writing ) )
+  if ( !QImageWriter::supportedMimeTypes().contains( mimeType.name().toUtf8() ) )
   {
     KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
     return;
@@ -127,7 +134,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   p.drawGrid( doc.document().coordinateSystem(), showgrid, showaxes );
   // FIXME: show the selections ?
   p.drawObjects( doc.document().objects(), false );
-  QStringList types = KImageIO::typeForMime( mimeType.name() );
+  const QStringList types = mimeType.suffixes();
   if ( types.isEmpty() ) return; // TODO error dialog?
   if ( !img.save( filename, types.at(0).toLatin1() ) )
   {
